@@ -1,77 +1,96 @@
-X-GM-THRID: 9438545051648
-X-Received: by 10.50.122.7 with SMTP id lo7mr4236150igb.7.1426961645584;
-        Sat, 21 Mar 2015 11:14:05 -0700 (PDT)
+X-GM-THRID: 6332135193668747264
+X-Received: by 10.66.167.234 with SMTP id zr10mr58657pab.96.1474523459461;
+        Wed, 21 Sep 2016 22:50:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.142.67 with SMTP id ru3ls995272obb.14.gmail; Sat, 21 Mar
- 2015 11:14:05 -0700 (PDT)
-X-Received: by 10.182.181.105 with SMTP id dv9mr83180946obc.16.1426961645349;
-        Sat, 21 Mar 2015 11:14:05 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
-        by gmr-mx.google.com with ESMTPS id pj7si242170pbb.2.2015.03.21.11.14.05
+Received: by 10.107.39.6 with SMTP id n6ls5293950ion.17.gmail; Wed, 21 Sep
+ 2016 22:50:59 -0700 (PDT)
+X-Received: by 10.66.124.162 with SMTP id mj2mr53087pab.25.1474523459023;
+        Wed, 21 Sep 2016 22:50:59 -0700 (PDT)
+Return-Path: <juliana.orod@gmail.com>
+Received: from mail-yw0-x243.google.com (mail-yw0-x243.google.com. [2607:f8b0:4002:c05::243])
+        by gmr-mx.google.com with ESMTPS id 63si13633ywe.1.2016.09.21.22.50.58
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Mar 2015 11:14:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 21 Sep 2016 22:50:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:4002:c05::243 as permitted sender) client-ip=2607:f8b0:4002:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mail=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:4002:c05::243 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pacwe9 with SMTP id we9so143081675pac.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Mar 2015 11:14:05 -0700 (PDT)
+Received: by mail-yw0-x243.google.com with SMTP id g192so4313397ywh.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 21 Sep 2016 22:50:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=4hzkSq1j5+yzTT8thrOLBDsrw4crp/BJ5Afyi4YtmwA=;
+        b=f26Ghcd4ePuzHLwqgrXn2YsU69vKReACI1HFTbSN8lFVp6eBE/f1ffBTHkP7Mml/ye
+         G+askCmtqQuQt0rGZB2Tv0ziSnpOyYrmbWb8ob/NdwjDRzjy5GAH5dGPKoVJ3AhEqpFD
+         845giX9UoI8ussp4W75gBl4Srnve1qQLTNlgkyT2hZdS2W3SCklgMxPEm5/cn6JjUpKJ
+         pKUS+TA2q4v1jW3KEVrAeQmvb228zGekou5w+MBt8Gy1W8vkizKRQATV2Wmrgf3+TTkj
+         4HfZqms6eEGLEW2YbeEa4ICHTi2Xu9bD6MdK+toyBz0v/NjzybyFjO3BC6cjbums2VO+
+         mtzg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=8ApaflZw4681fMGKowCnhjPrkq9ICSFb4SwfHxkOHXM=;
-        b=QaSOhHbeS3yvEuhmyHP3QQ6ZonYji62I9FV/+pTx/rdXcRffOMMqsRfaCq9gVwPWvm
-         PXYNPalahV4X7d0XUfC4urpWDnFhCTWi1NhaEJdcLfbZouzCfGWmvK8ZK9SUXZYVsHTI
-         tc6iqZ8h2U80/kJX8udPPaTBVk9cWCnhFstts2lEkGpiQMc23IyLuaZQtv2bfrA05wZE
-         sWcEN25KreTAJbuZ5hoppUBhtDs9MMRFliy7qrLSNxO1pNuZrxZqkA4n3IXcyvbafAM0
-         uO3KalGoadHmfTE4QYOm8fK7jSlnQfPn22lMb3K/mRzmYM/TpioVzC+H8EKaYkhgWuMj
-         dEQg==
-X-Received: by 10.68.237.226 with SMTP id vf2mr6725434pbc.12.1426961645181;
-        Sat, 21 Mar 2015 11:14:05 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.209.90])
-        by mx.google.com with ESMTPSA id mi9sm12256919pab.3.2015.03.21.11.14.03
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sat, 21 Mar 2015 11:14:04 -0700 (PDT)
-Date: Sat, 21 Mar 2015 23:44:01 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: sm750fb: Use tabs instead of spaces
-Message-ID: <20150321181401.GA27560@amitoj-Inspiron-3542>
+        bh=4hzkSq1j5+yzTT8thrOLBDsrw4crp/BJ5Afyi4YtmwA=;
+        b=Jj0Yyj3jQItVJBc+rAJrr36lZi7ad+wInLs0dtzuLDUVBls39Ut+KLCldbH4MbE6NQ
+         l0RVQ12zu8JSxnpeKv0QeImSKMLzYpW4zLA3ilKmzh/GijzNLB5gNGtbNOWf1mqSIcWD
+         Kxcflwsr8QwmUTNlcdnRNq/FpcmP8dZfemlQ08Q8+gNrZhY10ZJgdbNr6pbdQDpAeVni
+         U1yi0dWisfbh0/vINrapbiU/H1YcqN9VuXlw2rVEvOAxRycT6gYl7OY78oYoR6ZTVYll
+         cEXr7xR6Aa0nIoP99Zh8OVyA03j2XgNRuigaGBpZRPy4GOfnU22P0ZIR17PjVrPnaPTs
+         177g==
+X-Gm-Message-State: AE9vXwPDrNKfx3cr7avL95llHmKhbPCXkPdwkPfmeBdmx+XST7McU9p7ZlXgoqsQlrWb4g==
+X-Received: by 10.13.197.197 with SMTP id h188mr130555ywd.202.1474523458807;
+        Wed, 21 Sep 2016 22:50:58 -0700 (PDT)
+Return-Path: <juliana.orod@gmail.com>
+Received: from spock ([189.61.236.196])
+        by smtp.gmail.com with ESMTPSA id f188sm70284ywa.35.2016.09.21.22.50.58
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 21 Sep 2016 22:50:58 -0700 (PDT)
+Date: Thu, 22 Sep 2016 02:50:56 -0300
+From: Juliana Rodrigues <juliana.orod@gmail.com>
+To: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: [PATCH v4] staging: wlan-ng: fixed parenthesis alignment
+Message-ID: <20160922055056.GA32719@spock>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.7.0 (2016-08-17)
 
-This patch fixes warning in file ddk750_chip.c of using spaces rather
-than tabs.
+This patch fixes a checkpatch warning by moving
+arguments to the right and aligning them to the open
+parenthesis above.
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
 ---
- drivers/staging/sm750fb/ddk750_chip.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Changes in v4:
+   - Fixed commit message line lenght
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index de56302..b748689 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -102,8 +102,8 @@ unsigned int getChipClock(void)
-  */
- void setChipClock(unsigned int frequency)
+Changes in v3:
+   - Fixed patch author's name
+
+Changes in v2:
+   - Make the commit message clearer.
+---
+ drivers/staging/wlan-ng/cfg80211.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/wlan-ng/cfg80211.c b/drivers/staging/wlan-ng/cfg80211.c
+index bed4672..f1d93b7 100644
+--- a/drivers/staging/wlan-ng/cfg80211.c
++++ b/drivers/staging/wlan-ng/cfg80211.c
+@@ -661,7 +661,7 @@ void prism2_connect_result(struct wlandevice *wlandev, u8 failed)
+ void prism2_disconnected(struct wlandevice *wlandev)
  {
--    pll_value_t pll;
--    unsigned int ulActualMxClk;
-+	pll_value_t pll;
-+	unsigned int ulActualMxClk;
- #if 1
- 		/* Cheok_0509: For SM750LE, the chip clock is fixed. Nothing to set. */
- 		if (getChipType() == SM750LE)
+ 	cfg80211_disconnected(wlandev->netdev, 0, NULL,
+-		0, false, GFP_KERNEL);
++			      0, false, GFP_KERNEL);
+ }
+ 
+ void prism2_roamed(struct wlandevice *wlandev)
 -- 
-1.9.1
+2.10.0
 
 
