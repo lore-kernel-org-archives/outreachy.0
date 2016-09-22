@@ -1,93 +1,77 @@
 X-GM-THRID: 6332712433108385792
-X-Received: by 10.66.146.66 with SMTP id ta2mr344305pab.128.1474558449480;
-        Thu, 22 Sep 2016 08:34:09 -0700 (PDT)
+X-Received: by 10.129.153.69 with SMTP id q66mr358412ywg.96.1474558448225;
+        Thu, 22 Sep 2016 08:34:08 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.10.229 with SMTP id 98ls4486037iok.35.gmail; Thu, 22 Sep
- 2016 08:34:08 -0700 (PDT)
-X-Received: by 10.67.30.225 with SMTP id kh1mr359950pad.135.1474558447999;
-        Thu, 22 Sep 2016 08:34:07 -0700 (PDT)
+Received: by 10.107.174.38 with SMTP id x38ls5876149ioe.42.gmail; Thu, 22 Sep
+ 2016 08:34:04 -0700 (PDT)
+X-Received: by 10.36.204.68 with SMTP id x65mr374670itf.3.1474558444909;
+        Thu, 22 Sep 2016 08:34:04 -0700 (PDT)
 Return-Path: <eraretuya@gmail.com>
-Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
-        by gmr-mx.google.com with ESMTPS id um12si738527pab.2.2016.09.22.08.34.07
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id si10si845050pab.1.2016.09.22.08.34.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 22 Sep 2016 08:34:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
+        Thu, 22 Sep 2016 08:34:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
+       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x244.google.com with SMTP id my20so3810824pab.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 22 Sep 2016 08:34:07 -0700 (PDT)
+Received: by mail-pf0-x242.google.com with SMTP id 6so3954447pfl.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 22 Sep 2016 08:34:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :in-reply-to:references;
-        bh=RFKsC0ZV1OEXm5B8FOkdVlRbwSnZJL+SKDzBvKvyYTo=;
-        b=NUYmwNRrr3q/DeUiCutK1qkFDybANZlJYPuEaef9lJ14TotvmXKFYbkWPoXs9amNcZ
-         kc6LSZHRtQe/witMR26vmDH//OWYA8tRQ51WHF0VNV5Gds9Wr9S/2b8iEcGlYVGVZQCx
-         wrHjUfm42kymX8LgyHInbVjRNr5GtI6fMlOQtK+Nl8FpbJV3hjHLA9kmDjw6TXAF6Iww
-         Go9PCv+ZebGhn+dISHqt2kVh4bhNttflvEm9LqjQeS4NRzs5+BgOygDN9V8oG6kGDMjo
-         a3siz7AXYFTsGpfnSlxrnBLsDQq9hF0OBqwh3u1eqvERvjrrprMOZ+ih4lCr/EUx11hX
-         Uztg==
+        h=from:to:cc:subject:date:message-id;
+        bh=C1WkXUA5LF6Y6Xy5irrEgESAD4BR9OjsGV07tb0yZ4o=;
+        b=yQuD56YqSOG6dSwFaimgl3e+gh0pM0rYw4Rd6ypBcXfOiAwgoUPOIZE3T09yrSW0BT
+         wsD+vgNd+3OpME4NyAaSCsw8KBT+O5h65IDCEdSuvifyrtWrinVgjPv3hxLl7UAXncL5
+         6cghP82DS6quHUjIJlxccQW30OfFlsOFMK+dC0FdXoYy+LoMzalpZi2h/7pmVvui3FH4
+         KBnzZnBDBiOy8Z+qUeWsCnHCISte+l3ZzRYqQxca8Z26Sz5nhQTO2ekJor9yaWgAsCTn
+         m9MDhJ/q9uoAks+C/G3uj1E8v64YW1OcJejLAr8aWrEjbSrTpKxgkA7928hp2ei8SuFe
+         b8Lw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:in-reply-to:references;
-        bh=RFKsC0ZV1OEXm5B8FOkdVlRbwSnZJL+SKDzBvKvyYTo=;
-        b=eWk4bFE6P4xK7CeHswJ7LXKP5r9EPY+k3HjU9nz7aFpeJAt0CFJiIqV8V7uGQvVPWO
-         f/k2Sf6AGTVSczjar0vyqmc1b7sciV8IPem12iLsBWuWDS2xZabZ65LyV8vwvv1qrE2k
-         ODTMM5B7G2rduG7YwVYKj0aYG7ahH9K8YanUSM0jmHOBCNPF4x5MyyjfZcifmGWOMVNU
-         9WHMw3b5Jh4IJUakQhjFwe3fBXFBpJ0+bUASU1GRA/SYrf3VvIVEpqTq9yViw89F4fCc
-         wNINIMeu7McAXYRKuZ37ISGQvCk5T3KHjcp7TnY8nK+TwbqNPZ2yUX52gNh5meuB+FYb
-         Qb6g==
-X-Gm-Message-State: AE9vXwNDTcHODYqnp2sm5Qm6YdC46YTzGvDgHzfFoHtPkNVVRbwZomVMcApIohVWsaPMGw==
-X-Received: by 10.66.25.143 with SMTP id c15mr4332613pag.90.1474558447844;
-        Thu, 22 Sep 2016 08:34:07 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=C1WkXUA5LF6Y6Xy5irrEgESAD4BR9OjsGV07tb0yZ4o=;
+        b=EMKZBUDE88ayoEsqDehNEpOXNAXblI48tb0NTOV9TjO/ehbulOP105dbCsPlgfRSZ8
+         y7vnmNA5E8rTawAj68tcqnskr3nO5AqiiYdo4MlsBpadmik6K+x1vx1r7nyvx8Af+wms
+         F1u4NsME8XXBR4aaaQj4tTAWunq0jWAMBsw4gbRFUcTzNOCLQJSB4nZHSDQCZsCmxUE3
+         J7+luNFyCW2INPXipbbbxBp1TNG4HxHtbWNillHT9o9x+qWVfVU2lyFTT0tjqfi9jDCJ
+         bpBDfGkDdcN4lTmpz039mtnZpXQmzL41kFhDvw0WP0pHs3n+X9zRKR03ru2Vww7v8vYu
+         CbQw==
+X-Gm-Message-State: AE9vXwNIcS8JVlE6MF1lyL0dwsumOs1trn6Jdd5LO3zktvaZxSQsa4GkQ8OwjCUYZTM8bQ==
+X-Received: by 10.98.93.85 with SMTP id r82mr4290314pfb.168.1474558444736;
+        Thu, 22 Sep 2016 08:34:04 -0700 (PDT)
 Return-Path: <eraretuya@gmail.com>
 Received: from Socrates-DK ([125.212.122.59])
-        by smtp.gmail.com with ESMTPSA id i68sm5065983pfc.25.2016.09.22.08.34.07
+        by smtp.gmail.com with ESMTPSA id s7sm5078020pfk.11.2016.09.22.08.34.03
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 22 Sep 2016 08:34:07 -0700 (PDT)
+        Thu, 22 Sep 2016 08:34:04 -0700 (PDT)
 From: Eva Rachel Retuya <eraretuya@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: johan@kernel.org,
 	elder@kernel.org,
 	gregkh@linuxfoundation.org,
 	Eva Rachel Retuya <eraretuya@gmail.com>
-Subject: [PATCH v2 1/2] staging: greybus: arche-apb-ctrl: declare struct of_device_id as const
-Date: Thu, 22 Sep 2016 23:33:33 +0800
-Message-Id: <73bf637009e2bf747be008639227cbe544f7a262.1474557838.git.eraretuya@gmail.com>
+Subject: [PATCH v2 0/2] staging: greybus: declare struct of_device_id as const
+Date: Thu, 22 Sep 2016 23:33:32 +0800
+Message-Id: <cover.1474557838.git.eraretuya@gmail.com>
 X-Mailer: git-send-email 2.7.4
-In-Reply-To: <cover.1474557838.git.eraretuya@gmail.com>
-References: <cover.1474557838.git.eraretuya@gmail.com>
-In-Reply-To: <cover.1474557838.git.eraretuya@gmail.com>
-References: <cover.1474557838.git.eraretuya@gmail.com>
 
-Declare the 'arche_apb_ctrl_of_match' array as const. This array is only stored
-in the .of_match_table field of a device_driver structure, which is declared as
-const. This addresses the checkpatch warning:
-
+Address the following checkpatch warning:
 WARNING: struct of_device_id should be normally const
 
-Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
----
- drivers/staging/greybus/arche-apb-ctrl.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Change in v2:
+* Explain in the commit message why the change is correct
 
-diff --git a/drivers/staging/greybus/arche-apb-ctrl.c b/drivers/staging/greybus/arche-apb-ctrl.c
-index 59d9d42..70323aa 100644
---- a/drivers/staging/greybus/arche-apb-ctrl.c
-+++ b/drivers/staging/greybus/arche-apb-ctrl.c
-@@ -495,7 +495,7 @@ static void arche_apb_ctrl_shutdown(struct platform_device *pdev)
- static SIMPLE_DEV_PM_OPS(arche_apb_ctrl_pm_ops, arche_apb_ctrl_suspend,
- 			 arche_apb_ctrl_resume);
- 
--static struct of_device_id arche_apb_ctrl_of_match[] = {
-+static const struct of_device_id arche_apb_ctrl_of_match[] = {
- 	{ .compatible = "usbffff,2", },
- 	{ },
- };
+Eva Rachel Retuya (2):
+  staging: greybus: arche-apb-ctrl: declare struct of_device_id as const
+  staging: greybus: arche-platform: declare struct of_device_id as const
+
+ drivers/staging/greybus/arche-apb-ctrl.c | 2 +-
+ drivers/staging/greybus/arche-platform.c | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
 -- 
 2.7.4
 
