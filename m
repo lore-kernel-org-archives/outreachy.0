@@ -1,84 +1,97 @@
-X-GM-THRID: 6337544242768904192
-X-Received: by 10.157.56.209 with SMTP id k17mr495616ote.99.1475574505284;
-        Tue, 04 Oct 2016 02:48:25 -0700 (PDT)
+X-GM-THRID: 6332502470301843456
+X-Received: by 10.200.40.231 with SMTP id j36mr1870400qtj.47.1474649626185;
+        Fri, 23 Sep 2016 09:53:46 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.50.244 with SMTP id u107ls12088090otb.37.gmail; Tue, 04
- Oct 2016 02:48:25 -0700 (PDT)
-X-Received: by 10.13.245.68 with SMTP id e65mr626452ywf.118.1475574504984;
-        Tue, 04 Oct 2016 02:48:24 -0700 (PDT)
-Return-Path: <elise.lennion@gmail.com>
-Received: from mail-yw0-x241.google.com (mail-yw0-x241.google.com. [2607:f8b0:4002:c05::241])
-        by gmr-mx.google.com with ESMTPS id v21si2530056ywa.7.2016.10.04.02.48.24
+Received: by 10.157.41.71 with SMTP id d65ls9373774otb.16.gmail; Fri, 23 Sep
+ 2016 09:53:45 -0700 (PDT)
+X-Received: by 10.129.75.15 with SMTP id y15mr2057672ywa.93.1474649625804;
+        Fri, 23 Sep 2016 09:53:45 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id 7si2340645par.0.2016.09.23.09.53.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 04 Oct 2016 02:48:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:4002:c05::241 as permitted sender) client-ip=2607:f8b0:4002:c05::241;
+        Fri, 23 Sep 2016 09:53:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:4002:c05::241 as permitted sender) smtp.mailfrom=elise.lennion@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-yw0-x241.google.com with SMTP id g192so7475268ywh.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 04 Oct 2016 02:48:24 -0700 (PDT)
+Received: by mail-pf0-x241.google.com with SMTP id 6so5511611pfl.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 23 Sep 2016 09:53:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=+Hfng+yEkjuToL6J74emVg09jwE1y2o3J5mgNPFihx4=;
-        b=NL1pXU0+M07+/OOBvgamKGX2hYB9t/IxIwryx49QQ7X0Eor1DfFT6jhsavasj6h1Ui
-         bmDlTihh0gPRkYkRW9xk0BwH6tad1oolmYMOP/oovgnE4Ocx3d8e3SlnpadWfsH7oHAw
-         OGqS39mA6t2LKbUniGWGtJZqWjvq1ycq0xi2QKkjuLGU6wABaLjNYCLiCLqEl5aXHx20
-         FuVeG1wBJpah6lCgQosL1EfU/wObBaItjPOG8mSd4aSuGNViCYNa2mRxDPJCu//MFlBk
-         YIydjYgljATHFJ0ClCztoyuJ3sGIwjuhPuRT8MGIPuiGkTDPZHjE7pxQtuL9pvKwrJmb
-         gzdg==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=sZNrqetl264OApXldx7J9falw9eAZSXpVJ6cMDECwB0=;
+        b=PHSSsh/LZB8G/apKXIvGkt9Y7sRZ8odoUqLMJ6zfNUBU7CPvTmFH5iDv/oizYtbsjz
+         FU9tQvzNiWBFK/c58iMlPDGHRYRrcK/cFf4NSvPJBUp1fXTbujB/Yd719UXqU+B5UnT9
+         x4uON72xOv06dY6bu+XF4iTlpJsihrOU9PAwY9UGYpbrsSq33KwZVmMPv3oSdQvqZ9KS
+         /uMVnIkkyRZjaQ7BnJ4wRKwKkUykw+l1LWKDrw59/ma9aoW0pgMBt1crkmYmS/eqY6rM
+         1jCuAP0kYEl8hqZzRQQDnzLE/K4ep5EF4FtWeF9rWkTUF83eUMBbZq1BTesHS+pGhHnl
+         xgdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=+Hfng+yEkjuToL6J74emVg09jwE1y2o3J5mgNPFihx4=;
-        b=gWnKrkPNmOJSj1vKUx9Ok/XBnow3GazSAWvVTlKThNYYPVSITPFoVRdALk6uCokqOn
-         dD/mYab4AcpajLsneLJpFDkgf4mFIyNERaw4B5UrJ+MlrqHSdgu5LHlrUOnYJitHxHon
-         htYb/RZqtEPHpQ+hEWlU9Qne5KItmQvKUyVRPFcvWa6/biYfbAwXDFhcmiiujwQCao9t
-         Kq5pdnP+50uMgPXrdd+6QxyFehFF786va825zliP8zX2X+LxFRvPeUdbXDq5lKlV+Fjg
-         juWewo+zNgXjIFjhBvBb4U0BYriJiK5GRhS8qoM7fcTk6Oq0CePrxezB9G5ojXYyK27L
-         M38A==
-X-Gm-Message-State: AA6/9Rmy78S9mGRP53BOBOlAjWf0A6L/8ckE+h/qOjQnpyveVMRHJeglQ3u71ydRtpwE/w==
-X-Received: by 10.129.101.132 with SMTP id z126mr1768667ywb.241.1475574504743;
-        Tue, 04 Oct 2016 02:48:24 -0700 (PDT)
-Return-Path: <elise.lennion@gmail.com>
-Received: from lennorien ([187.64.224.84])
-        by smtp.gmail.com with ESMTPSA id x134sm17324565ywg.14.2016.10.04.02.48.24
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=sZNrqetl264OApXldx7J9falw9eAZSXpVJ6cMDECwB0=;
+        b=SBXs+kP8alj5jDFS3f5/WVISM9ockfSm4J+37WpNzHXTsugYjuRCfDZ5JJDZrorQlb
+         WqiBAcJi3ETcKOPrQOzCmY800fAoM7s/obKwrMMNaKdIXHTGdcgvx7O3Js5iOzycIyBk
+         Q/eQYXlRJsUA2wG9cwOAtXyuf8xac4cNlihoMR+8Wu1jU0nbsyS5K6UV1o/3JjsiADaa
+         DLnUxvq8JDhiodoBV3cxIg2wiYM/JUh1K4BIh18986oodsNtU4ykozaInlKv1lmShLGt
+         wc5JSIDAeuqSM76yi+l3uKJYLyA/f/IaHyIZR7bLlqN5r82JVf0Pib2wCIBc/YO60jXl
+         ugvg==
+X-Gm-Message-State: AE9vXwPdJmZaE+W2erTebi+YzA4Nfq60ft1RkfzL+KBVtBs7Sqaus1sgx9MdVJi3VmqB8g==
+X-Received: by 10.98.202.135 with SMTP id y7mr14084752pfk.10.1474649625590;
+        Fri, 23 Sep 2016 09:53:45 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-77-201.dhcp.embarqhsd.net. [67.232.77.201])
+        by smtp.gmail.com with ESMTPSA id si1sm274064pab.0.2016.09.23.09.53.44
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 04 Oct 2016 02:48:24 -0700 (PDT)
-Date: Tue, 4 Oct 2016 06:48:22 -0300
-From: Elise-Lennion <elise.lennion@gmail.com>
-To: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: ks7010: Add blank line after variable declarations.
-Message-ID: <20161004094822.GA3800@lennorien.com>
+        Fri, 23 Sep 2016 09:53:45 -0700 (PDT)
+Date: Fri, 23 Sep 2016 09:53:44 -0700
+From: Alison Schofield <amsfield22@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: daniel.baluta@gmail.com, lars@metafoo.de
+Subject: Re: [Outreachy kernel] IIO Coding Task Added
+Message-ID: <20160923165343.GB6861@d830.WORKGROUP>
+References: <20160920194343.GA5194@d830.WORKGROUP>
+ <CAEnQRZCkdXRBhjMfEQZYDenWxn4KdCwL+tmFwaMabEJZLerWDg@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <CAEnQRZCkdXRBhjMfEQZYDenWxn4KdCwL+tmFwaMabEJZLerWDg@mail.gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Fix checkpatch WARNING: Missing a blank line after declarations.
+On Wed, Sep 21, 2016 at 11:01:57AM +0300, Daniel Baluta wrote:
+> On Tue, Sep 20, 2016 at 10:43 PM, Alison Schofield <amsfield22@gmail.com> wrote:
+> > An IIO Coding Task has been added to the IIO Task Page.
+> > https://kernelnewbies.org/IIO_tasks
+> >
+> > So now you have 2 types of IIO Tasks:
+> >
+> > 1) Experimenting with the IIO Subsystem
+> >    Do these independently and submit to Daniel & Alison.
+> >
+> > 2) Coding Tasks
+> >    It's a single task but it applies to multiple drivers. You will
+> >    find your driver and claim it on the tasks page before working on
+> >    your patch.  See the description for the details.
+> 
+> I added one more IIO coding task suggested by Lars-Peter.
+> 
+> It's about using sparse to detect endianness issues.
+> Please read the documentation carefully and don't
+> hesitate to ask questions :).
+> 
+> Daniel.
 
-Signed-off-by: Elise-Lennion <elise.lennion@gmail.com>
----
- drivers/staging/ks7010/ks7010_sdio.c | 1 +
- 1 file changed, 1 insertion(+)
+I updated IIO Coding Task 2 just now with a bit of help to find
+those IIO Endianess sparse warnings.
 
-diff --git a/drivers/staging/ks7010/ks7010_sdio.c b/drivers/staging/ks7010/ks7010_sdio.c
-index 81c46f4..db5e632 100644
---- a/drivers/staging/ks7010/ks7010_sdio.c
-+++ b/drivers/staging/ks7010/ks7010_sdio.c
-@@ -1117,6 +1117,7 @@ static void ks7010_sdio_remove(struct sdio_func *func)
- 	int ret;
- 	struct ks_sdio_card *card;
- 	struct ks_wlan_private *priv;
-+
- 	DPRINTK(1, "ks7010_sdio_remove()\n");
- 
- 	card = sdio_get_drvdata(func);
--- 
-2.7.4
+You can subscribe to the IIO Task page of kernelnewbies to be
+notified of updates to the page automatically.  Click 'subscribe'
+link on page.
 
+alisons
 
