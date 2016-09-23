@@ -1,88 +1,94 @@
 X-GM-THRID: 6333608176063086592
-X-Received: by 10.46.5.203 with SMTP id 194mr478801ljf.11.1474658839886;
-        Fri, 23 Sep 2016 12:27:19 -0700 (PDT)
+X-Received: by 10.25.17.205 with SMTP id 74mr473352lfr.30.1474658068354;
+        Fri, 23 Sep 2016 12:14:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.69.193 with SMTP id s184ls1656311lja.43.gmail; Fri, 23 Sep
- 2016 12:27:19 -0700 (PDT)
-X-Received: by 10.25.16.202 with SMTP id 71mr487557lfq.27.1474658839238;
-        Fri, 23 Sep 2016 12:27:19 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id e21si320983wmc.2.2016.09.23.12.27.19
+Received: by 10.46.71.209 with SMTP id u200ls1782877lja.6.gmail; Fri, 23 Sep
+ 2016 12:14:27 -0700 (PDT)
+X-Received: by 10.46.5.68 with SMTP id 65mr470377ljf.28.1474658067640;
+        Fri, 23 Sep 2016 12:14:27 -0700 (PDT)
+Return-Path: <georgiana.chelu93@gmail.com>
+Received: from mail-wm0-x242.google.com (mail-wm0-x242.google.com. [2a00:1450:400c:c09::242])
+        by gmr-mx.google.com with ESMTPS id s6si346258wmb.1.2016.09.23.12.14.27
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Sep 2016 12:27:19 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Fri, 23 Sep 2016 12:14:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) client-ip=2a00:1450:400c:c09::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.30,383,1470693600"; 
-   d="scan'208";a="238066075"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien.local) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 23 Sep 2016 21:27:18 +0200
-Date: Fri, 23 Sep 2016 21:27:17 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
-cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
-Subject: Re: [Outreachy kernel] [PATCH] staging: ks7010: ks_wlan_net: Remove
- unnecessary variable used to store return value
-In-Reply-To: <20160923191425.GA6587@fireworks>
-Message-ID: <alpine.DEB.2.10.1609232125300.3463@hadrien>
-References: <20160923191425.GA6587@fireworks>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x242.google.com with SMTP id w84so4186897wmg.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 23 Sep 2016 12:14:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=nL22At9tDMfiY+gD2RAtwzLSx8P4XT0OWudZwCJpwl8=;
+        b=ilJs0QqSx9KEXjiHCYuIFu22ZkRigH0ky2SB27Q4+AiSH+Y0ozorh1AmyhNBwGirOa
+         g2IMLbPeFpv5ZiMechN+kGH92k84uXOW/2nqSL13AOAMkq1Se/5c7lKQ2z4XAej65+3T
+         UcHPEf+0zAYGS4Ma/lwAt4oFbCKet+0pMahCRiDDGf83mG8jWI2yfR5U81mNfe6TVEdG
+         ybUb1Uxl4IwWkkcKC6yi3bfrlRxp1IEs1L+H2jleE59JzMkZxHAoES81zN0oCCL6RaHR
+         6rJj3+Zfa51PcL2rXGkR2mvawfpHnwbp373wnr8lY2Noj8nCVy4sdMqfKAhyyD+AQ5t/
+         2vKw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=nL22At9tDMfiY+gD2RAtwzLSx8P4XT0OWudZwCJpwl8=;
+        b=YezgTOITt2d4Mz/mAekbM30fiWdWwDx12DJcuwocupU93qW0JvqC0o7+430mH7pd1h
+         QvbefNMaavo4lnR7vXFSNUOQmXny/Z1q4FKfyAXI0VB9STNHRLAiUq5O1JmOnAVn1Bcb
+         +PPxbIT2nhRuORP2QtEiq9/8hnnlPllM/DJeUzFZkIZGn2xBg8+figvDV5gB7RioXZNU
+         UyqzT7F2bH/QfzWhwEcuyP0CLVSULiCe192AhKkeHuZvze5uNZ16YMZcu7YXrdAFsNSu
+         WJO2kZgcWCWHtQI11Ftfs4HVfSJuXI+EZgtyNn/SHhbTjQCNLHqlWJC0SprQ4UupUjuj
+         1yjw==
+X-Gm-Message-State: AA6/9RnRs83xNM5oQYsylKe2qrvpi6/dgomNtPSJfoXcoNTLtYJRAgjP/csrM99fzzEMqA==
+X-Received: by 10.195.12.4 with SMTP id em4mr8110024wjd.32.1474658067417;
+        Fri, 23 Sep 2016 12:14:27 -0700 (PDT)
+Return-Path: <georgiana.chelu93@gmail.com>
+Received: from fireworks ([84.117.92.113])
+        by smtp.gmail.com with ESMTPSA id lj2sm8561209wjc.38.2016.09.23.12.14.26
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 23 Sep 2016 12:14:26 -0700 (PDT)
+Date: Fri, 23 Sep 2016 22:14:25 +0300
+From: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: ks7010: ks_wlan_net: Remove unnecessary variable
+ used to store return value
+Message-ID: <20160923191425.GA6587@fireworks>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
+Remove unneeded variable used to store return values.
+The reason is to reduce the memory usage.
+Done using returnvar.cocci script.
 
+Signed-off-by: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
+---
+ drivers/staging/ks7010/ks_wlan_net.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-On Fri, 23 Sep 2016, Georgiana Rodica Chelu wrote:
+diff --git a/drivers/staging/ks7010/ks_wlan_net.c b/drivers/staging/ks7010/ks_wlan_net.c
+index f1cd90e..d13a06b 100644
+--- a/drivers/staging/ks7010/ks_wlan_net.c
++++ b/drivers/staging/ks7010/ks_wlan_net.c
+@@ -3507,12 +3507,11 @@ int ks_wlan_net_stop(struct net_device *dev)
+ {
+ 	struct ks_wlan_private *priv = netdev_priv(dev);
+ 
+-	int ret = 0;
+ 	priv->device_open_status = 0;
+ 	del_timer_sync(&update_phyinfo_timer);
+ 
+ 	if (netif_running(dev))
+ 		netif_stop_queue(dev);
+ 
+-	return ret;
++	return 0;
+ }
+-- 
+2.7.4
 
-> Remove unneeded variable used to store return values.
-> The reason is to reduce the memory usage.
-
-I don't think that it would have any impact on the memory usage.  The
-compiler should be clever enough to produce the same code in both cases,
-since ret isn't used anywhere else in the function.
-
-But the change makes the function shorter, so there is less noise to look
-at, and it makes it completely obvious that the only possible return value
-is 0 (success).
-
-julia
-
-> Done using returnvar.cocci script.
->
-> Signed-off-by: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
-> ---
->  drivers/staging/ks7010/ks_wlan_net.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
->
-> diff --git a/drivers/staging/ks7010/ks_wlan_net.c b/drivers/staging/ks7010/ks_wlan_net.c
-> index f1cd90e..d13a06b 100644
-> --- a/drivers/staging/ks7010/ks_wlan_net.c
-> +++ b/drivers/staging/ks7010/ks_wlan_net.c
-> @@ -3507,12 +3507,11 @@ int ks_wlan_net_stop(struct net_device *dev)
->  {
->  	struct ks_wlan_private *priv = netdev_priv(dev);
->
-> -	int ret = 0;
->  	priv->device_open_status = 0;
->  	del_timer_sync(&update_phyinfo_timer);
->
->  	if (netif_running(dev))
->  		netif_stop_queue(dev);
->
-> -	return ret;
-> +	return 0;
->  }
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160923191425.GA6587%40fireworks.
-> For more options, visit https://groups.google.com/d/optout.
->
 
