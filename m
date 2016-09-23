@@ -1,120 +1,84 @@
-X-GM-THRID: 6329663993990348800
-X-Received: by 10.157.54.216 with SMTP id s24mr19643387otd.49.1473739741026;
-        Mon, 12 Sep 2016 21:09:01 -0700 (PDT)
+X-GM-THRID: 6333608176063086592
+X-Received: by 10.46.1.77 with SMTP id 74mr451879ljb.21.1474660259193;
+        Fri, 23 Sep 2016 12:50:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.54.178 with SMTP id h47ls396593otc.37.gmail; Mon, 12 Sep
- 2016 21:09:00 -0700 (PDT)
-X-Received: by 10.200.52.230 with SMTP id x35mr18823902qtb.23.1473739740546;
-        Mon, 12 Sep 2016 21:09:00 -0700 (PDT)
-Return-Path: <eraretuya@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id 142si3153020pfx.2.2016.09.12.21.09.00
+Received: by 10.28.175.7 with SMTP id y7ls487381wme.25.canary; Fri, 23 Sep
+ 2016 12:50:58 -0700 (PDT)
+X-Received: by 10.28.67.132 with SMTP id q126mr262864wma.21.1474660258749;
+        Fri, 23 Sep 2016 12:50:58 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id s6si351806wmb.1.2016.09.23.12.50.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Sep 2016 21:09:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Fri, 23 Sep 2016 12:50:58 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id z84so670405pfi.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Sep 2016 21:09:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=J0GWMLpmel5tIbOehvbTOJpoLdn7PahiIOoCT280C8s=;
-        b=pWelaxuyNnPnBO4AD+swRfFNHQfUeS9Q5qsfSbDUnMkZtppFwj+mW9+oQH9I4JOQeT
-         loxKaioix1VwKcDUR/PVXAuAfk/I25DZk8Ectvmb2E5wZ6mqn5qTEfDYftMl9HgR8zv7
-         3XbmPS3nKDoCWd4BYOJoB7YclIIs2CZY+lSgUe4u17/af/La0ertbt8zm/CiE3uO+IQm
-         zzttwOHJLJWYVdODRG7VJSkVT8qdvJh0ROjBVQi3Iz+jzlUUioE4e2yqXmrBUImdYlXY
-         C860nv5LqFkEA61HlOyy+I6981C4jo4a00GVGCqpRy0J0WDq2EKK4g3Rg6Y3fYcP1iBp
-         Bw4w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=J0GWMLpmel5tIbOehvbTOJpoLdn7PahiIOoCT280C8s=;
-        b=DR9gp+GbZWzQZ6PtrfK5QgRiZnwJffiugx0FDdk+ISMhG4AZkEBaeOQRbuuMuvM9cf
-         XQlDO4pi/M81uKzNtiScdoHBx6Lae9rYPW7dBdylFlxO5n/s03SIeMNuRofLujiuY3Gk
-         ZWKlzXZcJE0kERCCMU7ovXuxQ3iOPeLLetXSdeI1peFEg2RUJlAo4rEux7pDZEdYjOK5
-         yPxYNrHpDTUxjvK/4gwy09xfVX71BPhny9eI9T49n8iBW43/mDkvmhOxvPx9gdcJz9L3
-         ttwhb5AcwalUMIslrHEfrEEEVCuJKYgvcntQNg807tr0SI0lx4pd56RHxeCL7rqxyXkG
-         R9KA==
-X-Gm-Message-State: AE9vXwP4R2MoDwYe0rMZyXgPRiXV6T6q4fMplS0gZiaTaYQrKel6BJkovqj6BsW0jB1gmw==
-X-Received: by 10.98.23.140 with SMTP id 134mr39662444pfx.96.1473739740342;
-        Mon, 12 Sep 2016 21:09:00 -0700 (PDT)
-Return-Path: <eraretuya@gmail.com>
-Received: from Socrates-DK ([125.212.122.94])
-        by smtp.gmail.com with ESMTPSA id d5sm27615640pfa.44.2016.09.12.21.08.59
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 12 Sep 2016 21:08:59 -0700 (PDT)
-From: Eva Rachel Retuya <eraretuya@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	Eva Rachel Retuya <eraretuya@gmail.com>
-Subject: [PATCH] staging: most: move assignment out of function call
-Date: Tue, 13 Sep 2016 12:07:09 +0800
-Message-Id: <1473739629-17286-1-git-send-email-eraretuya@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,383,1470693600"; 
+   d="scan'208";a="238067219"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien.local) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 23 Sep 2016 21:50:58 +0200
+Date: Fri, 23 Sep 2016 21:50:57 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: ks7010: ks_wlan_net:
+ Remove unnecessary variable used to store return value
+In-Reply-To: <20160923194525.GA7252@fireworks>
+Message-ID: <alpine.DEB.2.10.1609232150360.3463@hadrien>
+References: <20160923194525.GA7252@fireworks>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Pull out assignment used as a function argument before the function call to
-improve readability. Change was made by hand while the following coccinelle
-script was used to pinpoint the issue:
 
-@a@
-identifier func;
-expression list E;
-position p;
-@@
 
-func@p(E);
+On Fri, 23 Sep 2016, Georgiana Rodica Chelu wrote:
 
-@script:python b@
-E << a.E;
-func << a.func;
-p << a.p;
-arg_list;
-@@
-arg_list = []
-for i in E:
-    if (        '=' in i
-        and not '"' in i
-	and not '==' in i
-	and not '!=' in i
-	and not '<=' in i
-	and not '>=' in i
-       ):
-       print "function: " + func + " has assignment at arg: " + i
-       print "in file: " + p[0].file + " , line: " + p[0].line
-       arg_list.append(i)
-for j in arg_list:
-    print j
+> Remove unneeded code in order to make clear
+> that the function returns 0(success) in all cases.
+>
+> Done using returnvar.cocci script.
+>
+> Signed-off-by: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
 
-Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
----
- drivers/staging/most/aim-sound/sound.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 
-diff --git a/drivers/staging/most/aim-sound/sound.c b/drivers/staging/most/aim-sound/sound.c
-index 9c64580..e9d6b67 100644
---- a/drivers/staging/most/aim-sound/sound.c
-+++ b/drivers/staging/most/aim-sound/sound.c
-@@ -236,12 +236,12 @@ static int playback_thread(void *data)
- 		bool period_elapsed = false;
- 		int ret;
- 
-+		mbo = most_get_mbo(channel->iface, channel->id,
-+				   &audio_aim);
- 		wait_event_interruptible(
- 			channel->playback_waitq,
- 			kthread_should_stop() ||
--			(channel->is_stream_running &&
--			 (mbo = most_get_mbo(channel->iface, channel->id,
--					     &audio_aim))));
-+			(channel->is_stream_running && mbo));
- 		if (!mbo)
- 			continue;
- 
--- 
-2.7.4
-
+> ---
+> Changes in v2:
+>         - Give a better reason for the modification
+>
+>  drivers/staging/ks7010/ks_wlan_net.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/ks7010/ks_wlan_net.c b/drivers/staging/ks7010/ks_wlan_net.c
+> index f1cd90e..d13a06b 100644
+> --- a/drivers/staging/ks7010/ks_wlan_net.c
+> +++ b/drivers/staging/ks7010/ks_wlan_net.c
+> @@ -3507,12 +3507,11 @@ int ks_wlan_net_stop(struct net_device *dev)
+>  {
+>  	struct ks_wlan_private *priv = netdev_priv(dev);
+>
+> -	int ret = 0;
+>  	priv->device_open_status = 0;
+>  	del_timer_sync(&update_phyinfo_timer);
+>
+>  	if (netif_running(dev))
+>  		netif_stop_queue(dev);
+>
+> -	return ret;
+> +	return 0;
+>  }
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160923194525.GA7252%40fireworks.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
