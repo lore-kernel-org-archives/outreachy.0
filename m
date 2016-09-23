@@ -1,61 +1,61 @@
 X-GM-THRID: 6333636808059912192
-X-Received: by 10.25.195.134 with SMTP id t128mr568064lff.1.1474666426500;
-        Fri, 23 Sep 2016 14:33:46 -0700 (PDT)
+X-Received: by 10.28.35.203 with SMTP id j194mr269897wmj.20.1474664734849;
+        Fri, 23 Sep 2016 14:05:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.33.18 with SMTP id h18ls1704898ljh.52.gmail; Fri, 23 Sep
- 2016 14:33:45 -0700 (PDT)
-X-Received: by 10.25.22.65 with SMTP id m62mr482774lfi.29.1474666425634;
-        Fri, 23 Sep 2016 14:33:45 -0700 (PDT)
+Received: by 10.28.197.135 with SMTP id v129ls508146wmf.3.canary; Fri, 23 Sep
+ 2016 14:05:33 -0700 (PDT)
+X-Received: by 10.28.154.76 with SMTP id c73mr270189wme.20.1474664733403;
+        Fri, 23 Sep 2016 14:05:33 -0700 (PDT)
 Return-Path: <georgiana.chelu93@gmail.com>
 Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
-        by gmr-mx.google.com with ESMTPS id c13si338691wme.3.2016.09.23.14.33.45
+        by gmr-mx.google.com with ESMTPS id 82si338098wmg.3.2016.09.23.14.05.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Sep 2016 14:33:45 -0700 (PDT)
+        Fri, 23 Sep 2016 14:05:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
        spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x241.google.com with SMTP id w84so4620386wmg.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 23 Sep 2016 14:33:45 -0700 (PDT)
+Received: by mail-wm0-x241.google.com with SMTP id 133so4532627wmq.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 23 Sep 2016 14:05:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=86L4RkPpPmpzV+Xu81zAleu9ogZUXDQX/dQdK1Sh9qM=;
-        b=QI0pLAB8hYi8BgVoD0MMWTYfm6EKyb7KD+ma/Gd4Nc/3GH6uasXrKoyaMyXloXFTBA
-         KKR690IuejG1j/4sEuVmwKBZjimBJYl+ZBJmRvQdhHb36dzZFp8ySnztBW33PkK+VN6F
-         Pae70+0X4nPdBmek68D4n2lkormKGqk7mqppVU9bPSHMCLTSAWThPtpMaESWdE74sY78
-         p+HSBP3d/tinZplsIXaI+4GpY9T1eScUcKsyP7YX1XkMp4g3CjVGGVuHeXNBl33EPkix
-         VZlTwVSH0PaTCApQkPq/wFq8G/KrPWwZ8V2Jb7+kSUuRU5MTYubP6S3XLy/B92eYLQqY
-         CONQ==
+        bh=6vKzQVrBBxCe72Sp/5y3svGurQ2MxCfzaHKKTyrpjDs=;
+        b=tffgt8C22f8cFAeHEoyVuI2zlG+dwBHTgBJSmc/EgmHyEV3RrOFvgtfJtjvzgVGX0U
+         /NQA+GssjHapsYVJxHWYGMJNzCoczj/9VRcwdSddcDXXevuwzltmtxgxI2G2Yd1i6tUR
+         M9o8EgRx1nq4XtREzbxCeQ29/jp9qYbCjDFYIEYtgfMghtBRyxcRBYBCkK5v0yz0odBa
+         L5DF3aQfCSN3W3LAlQEVNrbl93ts3in+OqJab6YE7Oa4LY7dIGUGem/cHX/+w7xIR+d6
+         PF+FToWYa/WZyqlYAK6zL/wM04gHcroNsxp9laKDjmgkpLd0XFG31vB60ySEMO9aoPEp
+         0+Jg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=86L4RkPpPmpzV+Xu81zAleu9ogZUXDQX/dQdK1Sh9qM=;
-        b=mNC3patLAYxfJUStinyPkDK1Lbko0ngNNfLSYgWMZjqwrRo5Jnet+mEL+buJny6/4L
-         hx3Nxm7geHSUJsKQ+pWbcpTchntiT3VecqoSxPmsLSeAMh1dz79JEgkPAqIjCbhxCEPt
-         zCmoxRzMxTqjzBIWSG9wPy8264uIvb+47hq1/0vOa+YY4OJe5mCbBQ/lOFg48fsFLGgx
-         k3T5p/ozTGw6UnNO6BwcW+9FPJiUQSjaiB9pb26KAB7weBNo8OU1vFxTV6LljYhE2jj2
-         Hl6OxWyP3vZ14vhlFQMLveHPmJct8bsUQgQmNvT3VFKgQ056VEZmTVWU/feMRr4q9fiH
-         53PQ==
-X-Gm-Message-State: AE9vXwMNXKjc9l1DaUXAuovWtbkYF4ZqZxzz/SQ9vPSKgS4vbFwn4Ap11Sn2F0vEBdu02g==
-X-Received: by 10.194.28.231 with SMTP id e7mr10408674wjh.170.1474666425355;
-        Fri, 23 Sep 2016 14:33:45 -0700 (PDT)
+        bh=6vKzQVrBBxCe72Sp/5y3svGurQ2MxCfzaHKKTyrpjDs=;
+        b=TQ428NajP0jlTHtOqSOyY1Q6D2nD7MUfOlfTbgYoPTqwY8xLNpvkFtzVe5xGSHiMY9
+         5/onBHDAETy8cHreXTYILovP/bmNg9Ot1kfN5jbe6wn6Hv+HFhb5wxt+1ExI8Yz3XEbu
+         bdJn3fPaBdDO3Z8t/pp+nConsNiv8Vos09orXQCow6/P9LuwSZ0TNamD1CQf5+6JqsbH
+         GAtq3QSE6k7ao0ikeDWHtCleHTCbKzg/LuNLP6K43bOoAjMEYtW4qub+TB7ocRgFUl46
+         ADzyd2Ly1nOK+cFCngGwrusfp7fIus8SM6h0qQFWqeTsHFwRpPK0zYYX3gBTaBt/aqzf
+         S7iA==
+X-Gm-Message-State: AE9vXwO9Yh7+4MrGS2MRPvfbCfUD/o4vfvKEFIEPoIFscg6gkZii5sFv/IEd7En58cpjCw==
+X-Received: by 10.194.88.137 with SMTP id bg9mr8480150wjb.155.1474664733184;
+        Fri, 23 Sep 2016 14:05:33 -0700 (PDT)
 Return-Path: <georgiana.chelu93@gmail.com>
 Received: from fireworks ([84.117.92.113])
-        by smtp.gmail.com with ESMTPSA id p144sm4995022wme.0.2016.09.23.14.33.44
+        by smtp.gmail.com with ESMTPSA id q10sm4857031wme.6.2016.09.23.14.05.32
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 23 Sep 2016 14:33:44 -0700 (PDT)
-Date: Sat, 24 Sep 2016 00:33:43 +0300
+        Fri, 23 Sep 2016 14:05:32 -0700 (PDT)
+Date: Sat, 24 Sep 2016 00:05:31 +0300
 From: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org
-Subject: [PATCH v2] staging: ks7010: ks_wlan_net: Use netdev_ or pr_info
- instead of printk
-Message-ID: <20160923213343.GA20036@fireworks>
+Subject: [PATCH] staging: ks7010: ks_wlan_net: Use netdev_ or pr_info instead
+ of printk
+Message-ID: <20160923210531.GA14238@fireworks>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -71,36 +71,18 @@ another warning:
 WARNING: Prefer [subsystem eg: netdev]_info([subsystem]dev, ... then
 dev_info(dev, ... then pr_info(...  to printk(KERN_INFO ...
 
-The warning is similar for KERN_ERR and KERN_DEBUG. In conclusion,
-use netdev_info(), netdev_err() or netdev_dbg() when there is
-a netdev device and use pr_info() in the remained cases.
+In conclusion, use netdev_info() or netdev_err() when there is
+a netdev device. If there is no available dev structure, use pr_info().
 
 Signed-off-by: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
 ---
-Changes in v2:
-        - make the commit message more clear
-	- replace all the appearances of printk()
-
- drivers/staging/ks7010/ks_wlan_net.c | 92 ++++++++++++++++++------------------
- 1 file changed, 46 insertions(+), 46 deletions(-)
+ drivers/staging/ks7010/ks_wlan_net.c | 78 ++++++++++++++++++------------------
+ 1 file changed, 39 insertions(+), 39 deletions(-)
 
 diff --git a/drivers/staging/ks7010/ks_wlan_net.c b/drivers/staging/ks7010/ks_wlan_net.c
-index d13a06b..9ef44cc 100644
+index d13a06b..58c3aa8 100644
 --- a/drivers/staging/ks7010/ks_wlan_net.c
 +++ b/drivers/staging/ks7010/ks_wlan_net.c
-@@ -233,9 +233,9 @@ static int ks_wlan_set_freq(struct net_device *dev,
- 		/* We should do a better check than that,
- 		 * based on the card capability !!! */
- 		if ((channel < 1) || (channel > 14)) {
--			printk(KERN_DEBUG
--			       "%s: New channel value of %d is invalid!\n",
--			       dev->name, fwrq->m);
-+			netdev_dbg(dev,
-+				   "%s: New channel value of %d is invalid!\n",
-+				   dev->name, fwrq->m);
- 			rc = -EINVAL;
- 		} else {
- 			/* Yes ! We can set it !!! */
 @@ -2671,17 +2671,17 @@ static int ks_wlan_set_sleep_mode(struct net_device *dev,
  
  	if (*uwrq == SLP_SLEEP) {
@@ -122,15 +104,6 @@ index d13a06b..9ef44cc 100644
  		return -EINVAL;
  	}
  
-@@ -2783,7 +2783,7 @@ static int ks_wlan_get_wps_enable(struct net_device *dev,
- 	}
- 	/* for SLEEP MODE */
- 	*uwrq = priv->wps.wps_enabled;
--	printk("return=%d\n", *uwrq);
-+	netdev_info(dev, "return=%d\n", *uwrq);
- 
- 	return 0;
- }
 @@ -2978,112 +2978,112 @@ static void print_hif_event(int event)
  
  	switch (event) {
@@ -280,33 +253,6 @@ index d13a06b..9ef44cc 100644
  	}
  }
  
-@@ -3330,7 +3330,7 @@ int ks_wlan_set_mac_address(struct net_device *dev, void *addr)
- 
- 	priv->mac_address_valid = 0;
- 	hostif_sme_enqueue(priv, SME_MACADDRESS_SET_REQUEST);
--	printk(KERN_INFO
-+	netdev_info(dev,
- 	       "ks_wlan: MAC ADDRESS = %02x:%02x:%02x:%02x:%02x:%02x\n",
- 	       priv->eth_addr[0], priv->eth_addr[1], priv->eth_addr[2],
- 	       priv->eth_addr[3], priv->eth_addr[4], priv->eth_addr[5]);
-@@ -3362,7 +3362,7 @@ int ks_wlan_start_xmit(struct sk_buff *skb, struct net_device *dev)
- 	DPRINTK(3, "in_interrupt()=%ld\n", in_interrupt());
- 
- 	if (!skb) {
--		printk(KERN_ERR "ks_wlan:  skb == NULL!!!\n");
-+		netdev_err(dev, "ks_wlan:  skb == NULL!!!\n");
- 		return 0;
- 	}
- 	if (priv->dev_state < DEVICE_STATE_READY) {
-@@ -3428,7 +3428,7 @@ int ks_wlan_open(struct net_device *dev)
- 	priv->cur_rx = 0;
- 
- 	if (!priv->mac_address_valid) {
--		printk(KERN_ERR "ks_wlan : %s Not READY !!\n", dev->name);
-+		netdev_err(dev, "ks_wlan : %s Not READY !!\n", dev->name);
- 		return -EBUSY;
- 	} else
- 		netif_start_queue(dev);
 -- 
 2.7.4
 
