@@ -1,55 +1,55 @@
 X-GM-THRID: 6333834735065759744
-X-Received: by 10.200.45.232 with SMTP id q37mr2767297qta.78.1474710944609;
-        Sat, 24 Sep 2016 02:55:44 -0700 (PDT)
+X-Received: by 10.107.174.135 with SMTP id n7mr2837700ioo.20.1474710928119;
+        Sat, 24 Sep 2016 02:55:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.25.138 with SMTP id 132ls7098429ioz.13.gmail; Sat, 24 Sep
- 2016 02:55:44 -0700 (PDT)
-X-Received: by 10.107.145.134 with SMTP id t128mr2607202iod.14.1474710944174;
-        Sat, 24 Sep 2016 02:55:44 -0700 (PDT)
+Received: by 10.36.227.70 with SMTP id d67ls1227741ith.3.canary; Sat, 24 Sep
+ 2016 02:55:27 -0700 (PDT)
+X-Received: by 10.107.174.135 with SMTP id n7mr2837692ioo.20.1474710927783;
+        Sat, 24 Sep 2016 02:55:27 -0700 (PDT)
 Return-Path: <namrataashettar@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id 7si3021924pfw.1.2016.09.24.02.55.44
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id si10si3151487pab.1.2016.09.24.02.55.27
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Sep 2016 02:55:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Sat, 24 Sep 2016 02:55:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
+       spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id 21so6414250pfy.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 24 Sep 2016 02:55:44 -0700 (PDT)
+Received: by mail-pf0-x244.google.com with SMTP id q2so6388832pfj.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 24 Sep 2016 02:55:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :in-reply-to:user-agent;
-        bh=iPbWIlQM3B5W/8IRTIEbakYMrsmCY7/yNfrNcgZRpcM=;
-        b=lp94iJtQUm3SnCXgsy95Y0tNXD2hxiw/tlBNSOnAyHJH3uWNXIUgGKhr/F6+iV31So
-         ubLcWLPB7Fnqnl2nCVdGZ3iuvFwxQ9sAZqdj5/FewviclP3TmB/szcU3fS/xUhf/TfcA
-         te4LJAfs+BZEoL0QOIJx1F0Bt+SKI7AuL5km4nvYWCxt5HdjpQKvvgMn5iEUSk+SUPP9
-         Urz7hYHAnoiTP5Yeb6gUF9uTA24PD/zSRxe4q5XX+moMGesYJPBnBWJJIngdiSowlIii
-         LHC2rmWm41L//e3KpEpZNOFKJfvvKhvC1nEk5p1ZI8bznxs/QDrKKEkdV4t8+dY/TpQU
-         A4fw==
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=YdrB/w60wCM+3sk5RNhNI9C11GGT0OZVigxF8sUZNR0=;
+        b=HryaQjt+hcBB/py/zSDJbj0V3ab3Gq9tO14fhYVIuNkj3+dSh/FZ+eRIA5FxrqCO9G
+         ttGT+s/buFgfgJGBrMB8yekS55txporksXoda1IOlk933oRkPwDka0jQmsLK5XQ4dyii
+         j7cg9JYAvO3VBeZ2Ko0wgXcb/UXz8GXVMd9kHreXaIDVnylU5I6eTyBmghLqxtD8xhdW
+         doOjkFuAimFRPUqFq0ncJehis/IZSRhLFrmth3crQEx/X1SkbAa+PA7EPcKKuc3Hkc1z
+         zyHEzVfkWRHjeUK9m1ObRMklFLY628bsJYjksY8ojHZO8B/j910O6biiKxvXIgMYLfz8
+         6xag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=iPbWIlQM3B5W/8IRTIEbakYMrsmCY7/yNfrNcgZRpcM=;
-        b=fTm+BSrS6dkMeQMaM1YiFm24HDc7nb6cYc0winZfu+/sd9Cs6meSDZTtJcjbisyNFD
-         f+lt5aeQ/w90p3DngMdboU8JVpDtbo+T+bywIQXO1eJB9NBoYLJsSFXdQZKzvsDzkFQw
-         JkNIUYFv7XNUSBRWuYTwhBhMfGEvOmJkgsZtk/+WLnlRp8Ch8JY57e9mMAn1e0ra1upB
-         +zi6a+p/7zKB6ehaTNTj1Pytkc0L0sDU0fB81SLjm3n79oX9xLuij34yGOqFADrWmnFt
-         PK4O0SN8pYR3hL8OX5eEZPqOxgeZ/MTZgwDdeN0bKEEwoBU8UssnwPrpojI8wQMmgFDf
-         SeIw==
-X-Gm-Message-State: AE9vXwO1+3emdI5D0ZkQCWBgpZBZZgqirF1RX5LdKU42eSkXcBdYxxWTu3xQz3iW195sDw==
-X-Received: by 10.98.15.8 with SMTP id x8mr20112796pfi.141.1474710943976;
-        Sat, 24 Sep 2016 02:55:43 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=YdrB/w60wCM+3sk5RNhNI9C11GGT0OZVigxF8sUZNR0=;
+        b=WkPdlw927EjfHBM7wO1/VczZCICm9Tc4tc1A4X5rAUpiXeK7vuD32r9qNH1Tjqfd4y
+         7RlUyEth+ydy+AK8wdxFz12GRF1ppyBFj48gnNlenDySgdVcaO3wTrNpGFQmg9MepUqm
+         1bPDv5gK8KojWn+u43d/Pfzwlfke/pSywPN69YNyp17fEW15X0mGC+tQf1BqOjCbKtbV
+         IXu4+YLrbtQFsmdpxHU7hlaZJ7fjQJVllpTYTdpB/tOY15yyVZkKdfO8EU/ClbXsobfY
+         c1XHqnSulctUwbCtiLK/ihUwserPkfGFann9V/MIiVfAIm5IjeDU4X8/3/j+Nh/ETdk1
+         vEEQ==
+X-Gm-Message-State: AE9vXwPKW820l52HV4Lc3T1cetWVvBZeA0lU0BznynBm93JCqaR2vfYUCikm/7EMCinAag==
+X-Received: by 10.98.129.131 with SMTP id t125mr20574642pfd.157.1474710927601;
+        Sat, 24 Sep 2016 02:55:27 -0700 (PDT)
 Return-Path: <namrataashettar@gmail.com>
 Received: from namrata-HP-Pavilion-g6-Notebook-PC ([103.225.101.21])
-        by smtp.gmail.com with ESMTPSA id 21sm17233640pfo.80.2016.09.24.02.55.40
+        by smtp.gmail.com with ESMTPSA id tq5sm17254908pac.42.2016.09.24.02.55.23
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Sep 2016 02:55:43 -0700 (PDT)
-Date: Sat, 24 Sep 2016 15:25:37 +0530
+        Sat, 24 Sep 2016 02:55:27 -0700 (PDT)
+Date: Sat, 24 Sep 2016 15:25:20 +0530
 From: Namrata A Shettar <namrataashettar@gmail.com>
 To: Jarod Wilson <jarod@wilsonet.com>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -62,123 +62,46 @@ To: Jarod Wilson <jarod@wilsonet.com>,
 	Arnd Bergmann <arnd@arndb.de>,
 	Shraddha Barke <shraddha.6596@gmail.com>,
 	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH 6/6] staging: media: lirc: Replace data type with pointer in
- sizeof()
-Message-ID: <c8caeedace5534475eeadfa5286256e361761edb.1474708456.git.namrataashettar@gmail.com>
+Subject: [PATCH 5/6] staging: media: lirc: Mention data type along with
+ 'unsigned'
+Message-ID: <e1de5318efff31d1f7f18242ae534d5979aff12b.1474708456.git.namrataashettar@gmail.com>
+References: <cover.1474708455.git.namrataashettar@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1474708455.git.namrataashettar@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Replace data tupe with pointer of same type in sizeof() to resolve
-checkpatch issue as they are of the same size.
+Mention the data type along with the variable to resolve checkpatch
+issue.
 
 Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
 ---
- drivers/staging/media/lirc/lirc_sasem.c | 18 ++++--------------
- 1 file changed, 4 insertions(+), 14 deletions(-)
+ drivers/staging/media/lirc/lirc_sasem.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/staging/media/lirc/lirc_sasem.c b/drivers/staging/media/lirc/lirc_sasem.c
-index 9eb1eec..828efb3 100644
+index b080fde..9eb1eec 100644
 --- a/drivers/staging/media/lirc/lirc_sasem.c
 +++ b/drivers/staging/media/lirc/lirc_sasem.c
-@@ -47,7 +47,6 @@
- #include <media/lirc.h>
- #include <media/lirc_dev.h>
+@@ -73,7 +73,7 @@ static void usb_tx_callback(struct urb *urb);
  
--
- #define MOD_AUTHOR	"Oliver Stabel <oliver.stabel@gmx.de>, " \
- 			"Tim Davies <tim@opensystems.net.au>"
- #define MOD_DESC	"USB Driver for Sasem Remote Controller V1.1"
-@@ -86,7 +85,6 @@ static void ir_close(void *data);
- #define SASEM_DATA_BUF_SZ	32
- 
- struct sasem_context {
--
- 	struct usb_device *dev;
- 	int vfd_isopen;			/* VFD port has been opened */
- 	unsigned int vfd_contrast;	/* VFD contrast */
-@@ -156,7 +154,6 @@ static int debug;
- 
- 
- /*** M O D U L E   C O D E ***/
--
- MODULE_AUTHOR(MOD_AUTHOR);
- MODULE_DESCRIPTION(MOD_DESC);
- MODULE_LICENSE("GPL");
-@@ -186,7 +183,6 @@ static void deregister_from_lirc(struct sasem_context *context)
- 	else
- 		dev_info(&context->dev->dev,
- 			 "Deregistered Sasem driver (minor:%d)\n", minor);
--
- }
- 
- /**
-@@ -297,7 +293,6 @@ static int vfd_close(struct inode *inode, struct file *file)
- 		context->vfd_isopen = 0;
- 		dev_info(&context->dev->dev, "VFD port closed\n");
- 		if (!context->dev_present && !context->ir_isopen) {
--
- 			/* Device disconnected before close and IR port is
- 			 * not open. If IR port is open, context will be
- 			 * deleted by ir_close. */
-@@ -548,8 +543,7 @@ static void ir_close(void *data)
- 		deregister_from_lirc(context);
- 
- 		if (!context->vfd_isopen) {
--
--			mutex_unlock(&context->ctx_lock);
-+                	mutex_unlock(&context->ctx_lock);
- 			delete_context(context);
- 			return;
- 		}
-@@ -633,7 +627,6 @@ static void usb_rx_callback(struct urb *urb)
- 		return;
- 
- 	switch (urb->status) {
--
- 	case -ENOENT:		/* usbcore unlink successful! */
- 		return;
- 
-@@ -651,8 +644,6 @@ static void usb_rx_callback(struct urb *urb)
- 	usb_submit_urb(context->rx_urb, GFP_ATOMIC);
- }
- 
--
--
- /**
-  * Callback function for USB core API: Probe
+ /* VFD file_operations function prototypes */
+ static int vfd_open(struct inode *inode, struct file *file);
+-static long vfd_ioctl(struct file *file, unsigned cmd, unsigned long arg);
++static long vfd_ioctl(struct file *file, unsigned int cmd, unsigned long arg);
+ static int vfd_close(struct inode *inode, struct file *file);
+ static ssize_t vfd_write(struct file *file, const char __user *buf,
+ 				size_t n_bytes, loff_t *pos);
+@@ -243,7 +243,7 @@ exit:
+  * Called when the VFD device (e.g. /dev/usb/lcd)
+  * is closed by the application.
   */
-@@ -709,7 +700,6 @@ static int sasem_probe(struct usb_interface *interface,
+-static long vfd_ioctl(struct file *file, unsigned cmd, unsigned long arg)
++static long vfd_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+ {
+ 	struct sasem_context *context;
  
- 		} else if (!vfd_ep_found &&
- 			usb_endpoint_is_int_out(ep)) {
--
- 			tx_endpoint = ep;
- 			vfd_ep_found = 1;
- 			if (debug)
-@@ -735,17 +725,17 @@ static int sasem_probe(struct usb_interface *interface,
- 	/* Allocate memory */
- 	alloc_status = 0;
- 
--	context = kzalloc(sizeof(struct sasem_context), GFP_KERNEL);
-+	context = kzalloc(sizeof(*context), GFP_KERNEL);
- 	if (!context) {
- 		alloc_status = 1;
- 		goto alloc_status_switch;
- 	}
--	driver = kzalloc(sizeof(struct lirc_driver), GFP_KERNEL);
-+	driver = kzalloc(sizeof(*driver), GFP_KERNEL);
- 	if (!driver) {
- 		alloc_status = 2;
- 		goto alloc_status_switch;
- 	}
--	rbuf = kmalloc(sizeof(struct lirc_buffer), GFP_KERNEL);
-+	rbuf = kmalloc(sizeof(*rbuf), GFP_KERNEL);
- 	if (!rbuf) {
- 		alloc_status = 3;
- 		goto alloc_status_switch;
 -- 
 2.7.4
 
