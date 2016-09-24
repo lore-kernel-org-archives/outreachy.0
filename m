@@ -1,55 +1,55 @@
 X-GM-THRID: 6333834735065759744
-X-Received: by 10.66.8.66 with SMTP id p2mr3282959paa.11.1474732865606;
-        Sat, 24 Sep 2016 09:01:05 -0700 (PDT)
+X-Received: by 10.13.255.67 with SMTP id p64mr3269274ywf.137.1474732848926;
+        Sat, 24 Sep 2016 09:00:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.203.7 with SMTP id u7ls1375798itg.16.canary; Sat, 24 Sep
- 2016 09:01:05 -0700 (PDT)
-X-Received: by 10.66.12.168 with SMTP id z8mr3550896pab.29.1474732865120;
-        Sat, 24 Sep 2016 09:01:05 -0700 (PDT)
+Received: by 10.157.43.196 with SMTP id u62ls10804804ota.15.gmail; Sat, 24 Sep
+ 2016 09:00:48 -0700 (PDT)
+X-Received: by 10.157.54.250 with SMTP id s55mr3041840otd.48.1474732848645;
+        Sat, 24 Sep 2016 09:00:48 -0700 (PDT)
 Return-Path: <namrataashettar@gmail.com>
 Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id 7si2968376par.0.2016.09.24.09.01.05
+        by gmr-mx.google.com with ESMTPS id f12si3000576pfk.0.2016.09.24.09.00.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Sep 2016 09:01:05 -0700 (PDT)
+        Sat, 24 Sep 2016 09:00:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
        spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id n24so6703052pfb.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 24 Sep 2016 09:01:05 -0700 (PDT)
+Received: by mail-pf0-x244.google.com with SMTP id q2so6706753pfj.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 24 Sep 2016 09:00:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=MLrRQseTHOUMw2onzco5obL1R2vvkq0adfudSPtTA3Y=;
-        b=vSWkknl/fsZ2OqIQ9yFdit3caI3Rg5A0tgv2h+IHgbaZHgA7rSjxHHGn0V+tTwwegP
-         00LjwPjM2leWbwI1jfLvJkpIDSLpWOFJK591n/FGVTJ/PLTTlxSxbaEm4Zhg+DpYuZOL
-         nWnBJqQ/ypN3yOltlWy1TNy2dHACzVt4NnW1xiunG6xOQ2LbvYMWBDOQGXY3gazyIYiL
-         ZTa2zLHKB006xMoh5bCwdvhlhbOwJcihbKJcIHe0kIvDHGzHXQ7jh0LyH7SMnSC74Ld2
-         c0wpTk3BXM3LyFVcbmQ+SLCe+XDtj3TmkrATPnela3Qd6OwTOfC3BGFjFhM9Oxs+kIoP
-         CKOg==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :in-reply-to:user-agent;
+        bh=utm9o0bJjgv/KGgHejordV7VL7OU566SUkoEOoRqoXk=;
+        b=nW4m2TaFC2ZDLZ5AhVX3QW2JzFYIIpQDqTEDz24V2OHsG83hZXUW3OvOgj9SvC36xU
+         QlaaymbxFCDWTEm1Kg+rfdvHZDDMgmS6AtzB/mjBcsmvtQTM1wpyAH0tzzDfReNyrpjH
+         EHveoSCsFvIwSmpuZ/VPzBKBZ4JMwIll45tu7IAJpYdt1Rjk/Zxs1+/2GDlRe6GN8D5K
+         OFX/YbRJf69mo66aUKSVHbBSp1QrixMgk0dqXsia5AqawDm++5EIz5QBOy1cnUlIcW3y
+         5oSyledwvwrclZF3TfphpZ6NaG60c0rc43GKMc5oNxhI0vpkZZ5T3Eg94N98Gf8m40m8
+         a3Jg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=MLrRQseTHOUMw2onzco5obL1R2vvkq0adfudSPtTA3Y=;
-        b=V+FjBZPTLMI74ViKzmtHcPLyOLroW4cG/QZk/c7zhFc+3YJo/dFjypEnjxvnSGpOzy
-         aw6hxiUtuv9m5NrH6iIEsB0sd+wh35QgNx55cKwS6NIPIcf4ParZGJa6X5oyeyReU8k8
-         Xm1tGzrwziTLKQ/D9+npATR4KefJqV8+DagAHu3rV/M33LXH8JkLtdvcEU30ZH2NXv6l
-         4GvwAPXdPpBaiYKVumetwc3HGjiQZWkt48oZAC5Uaplr8iorDHGhtKc2HXIK5VVlQEpK
-         2RYXUrkrMPajuJd8SFkFNjXLvrl8JzzjrCpWz3zdd4zlqD7tVJXXyTsnezDyKrDb5FrU
-         5MoA==
-X-Gm-Message-State: AE9vXwNjzQQwen8zoPbEF8aUns6qUqsEfkeiPNGaZVCEBLFW94qBKaWfvZXBajpDwZ78Ug==
-X-Received: by 10.98.71.5 with SMTP id u5mr22367824pfa.98.1474732864941;
-        Sat, 24 Sep 2016 09:01:04 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=utm9o0bJjgv/KGgHejordV7VL7OU566SUkoEOoRqoXk=;
+        b=Nxz/AxXZlhUTzv1Gc53K1r1a6P+FF2NUHf7Kctl02npaAx+mUgEwupxJ4Y34ZOlVeT
+         Fm8kd3pqmiflr93DbNXEruKEEwsEC8nmkbcalvEbivXRqenW+YZidlOYYz38ejunbhVF
+         oE8sVSb3yi3N3URIgN+S9A1zF5JCIXm6LtXEeOze3MTJl5MAUVMjWzRNFf+kRakuF3bJ
+         JPftxKklaSwkCdceSM4F+qJH2GtC6kA4KOJG5r7e8QdWP22WCiIeGejrYpXuJVP5jPbf
+         Ezhuwxjs5BbLZyXHxMR4x/BwcQaFTR8hZ2lhlmpzIBLfkD1qShUf7a4iiz9dr4xdg4k2
+         w+qA==
+X-Gm-Message-State: AE9vXwMwl50tm+a1ZDEG1nF65aG2v4kghVpNydI6u9UVvhNuStp5vFLeV6Df5z0Y8cDSpw==
+X-Received: by 10.98.55.71 with SMTP id e68mr20817349pfa.147.1474732848400;
+        Sat, 24 Sep 2016 09:00:48 -0700 (PDT)
 Return-Path: <namrataashettar@gmail.com>
 Received: from namrata-HP-Pavilion-g6-Notebook-PC ([103.225.101.21])
-        by smtp.gmail.com with ESMTPSA id z185sm19499550pfb.56.2016.09.24.09.01.01
+        by smtp.gmail.com with ESMTPSA id c66sm19537101pfd.24.2016.09.24.09.00.45
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Sep 2016 09:01:04 -0700 (PDT)
-Date: Sat, 24 Sep 2016 21:30:57 +0530
+        Sat, 24 Sep 2016 09:00:48 -0700 (PDT)
+Date: Sat, 24 Sep 2016 21:30:42 +0530
 From: Namrata A Shettar <namrataashettar@gmail.com>
 To: Jarod Wilson <jarod@wilsonet.com>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -58,43 +58,50 @@ To: Jarod Wilson <jarod@wilsonet.com>,
 	Maciek Borzecki <maciek.borzecki@gmail.com>,
 	Arnd Bergmann <arnd@arndb.de>,
 	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH v2 4/6] staging: media: lirc: Add space around binary
- operators
-Message-ID: <a84f4ffd4eb14442060ed45e993e322cf72b2cf1.1474722341.git.namrataashettar@gmail.com>
-References: <cover.1474722340.git.namrataashettar@gmail.com>
+Subject: [PATCH v2 3/6] staging: media: lirc: Replace data type with pointer
+ of same type
+Message-ID: <328a70961fc82df3d3444f551bdf1e7ab3fc0985.1474722340.git.namrataashettar@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1474722340.git.namrataashettar@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Add space around binary operators to resolve checkpatch issue.
+Replace data type with pointer of same type in sizeof() to resolve
+checkpatch issue.
 
 Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
 ---
- drivers/staging/media/lirc/lirc_parallel.c | 6 +++---
+ drivers/staging/media/lirc/lirc_imon.c | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/media/lirc/lirc_parallel.c b/drivers/staging/media/lirc/lirc_parallel.c
-index 3906ac6..64d99ec 100644
---- a/drivers/staging/media/lirc/lirc_parallel.c
-+++ b/drivers/staging/media/lirc/lirc_parallel.c
-@@ -163,12 +163,12 @@ static unsigned int init_lirc_timer(void)
- 	if (count >= 1000 && timeelapsed > 0) {
- 		if (default_timer == 0) {
- 			/* autodetect timer */
--			newtimer = (1000000*count)/timeelapsed;
-+			newtimer = (1000000 * count) / timeelapsed;
- 			pr_info("%u Hz timer detected\n", newtimer);
- 			return newtimer;
- 		}
--		newtimer = (1000000*count)/timeelapsed;
--		if (abs(newtimer - default_timer) > default_timer/10) {
-+		newtimer = (1000000 * count) / timeelapsed;
-+		if (abs(newtimer - default_timer) > default_timer / 10) {
- 			/* bad timer */
- 			pr_notice("bad timer: %u Hz\n", newtimer);
- 			pr_notice("using default timer: %u Hz\n",
+diff --git a/drivers/staging/media/lirc/lirc_imon.c b/drivers/staging/media/lirc/lirc_imon.c
+index b1c28e5..198a805 100644
+--- a/drivers/staging/media/lirc/lirc_imon.c
++++ b/drivers/staging/media/lirc/lirc_imon.c
+@@ -702,7 +702,7 @@ static int imon_probe(struct usb_interface *interface,
+ 	/* prevent races probing devices w/multiple interfaces */
+ 	mutex_lock(&driver_lock);
+ 
+-	context = kzalloc(sizeof(struct imon_context), GFP_KERNEL);
++	context = kzalloc(sizeof(*context), GFP_KERNEL);
+ 	if (!context)
+ 		goto driver_unlock;
+ 
+@@ -782,11 +782,11 @@ static int imon_probe(struct usb_interface *interface,
+ 			__func__, vfd_proto_6p);
+ 	}
+ 
+-	driver = kzalloc(sizeof(struct lirc_driver), GFP_KERNEL);
++	driver = kzalloc(sizeof(*driver), GFP_KERNEL);
+ 	if (!driver)
+ 		goto free_context;
+ 
+-	rbuf = kmalloc(sizeof(struct lirc_buffer), GFP_KERNEL);
++	rbuf = kmalloc(sizeof(*rbuf), GFP_KERNEL);
+ 	if (!rbuf)
+ 		goto free_driver;
+ 
 -- 
 2.7.4
 
