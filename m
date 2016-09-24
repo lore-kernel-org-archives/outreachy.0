@@ -1,105 +1,102 @@
 X-GM-THRID: 6333834735065759744
-X-Received: by 10.157.2.101 with SMTP id 92mr655833otb.100.1474732901104;
-        Sat, 24 Sep 2016 09:01:41 -0700 (PDT)
+X-Received: by 10.129.95.11 with SMTP id t11mr3011393ywb.112.1474732889789;
+        Sat, 24 Sep 2016 09:01:29 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.13.165 with SMTP id 34ls2262548ots.13.gmail; Sat, 24 Sep
- 2016 09:01:40 -0700 (PDT)
-X-Received: by 10.157.43.4 with SMTP id o4mr3019325otb.38.1474732900830;
-        Sat, 24 Sep 2016 09:01:40 -0700 (PDT)
+Received: by 10.157.13.165 with SMTP id 34ls2262409ots.13.gmail; Sat, 24 Sep
+ 2016 09:01:29 -0700 (PDT)
+X-Received: by 10.13.242.1 with SMTP id b1mr3253880ywf.151.1474732889381;
+        Sat, 24 Sep 2016 09:01:29 -0700 (PDT)
 Return-Path: <namrataashettar@gmail.com>
-Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
-        by gmr-mx.google.com with ESMTPS id f12si3002073pfk.0.2016.09.24.09.01.40
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id 7si2968376par.0.2016.09.24.09.01.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Sep 2016 09:01:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
+        Sat, 24 Sep 2016 09:01:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
+       spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x243.google.com with SMTP id i5so3305078pad.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 24 Sep 2016 09:01:40 -0700 (PDT)
+Received: by mail-pf0-x244.google.com with SMTP id n24so6703052pfb.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 24 Sep 2016 09:01:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :in-reply-to:user-agent;
-        bh=0jkMHN5+DkILDZrBQ9J0vF/rM5OI6xr/1rTDYahY4+I=;
-        b=TShIODkhgyr2KkeEqMQr+SfQPQIu/UwIgzFSjPFSV4iW7ISgs8qzXNmG62DyF3FbrW
-         o3RfAxLe90MXgQJUyBHGj0nUWrEDSUOayf7/VZad3HygfQly3kll8JkE53+ydkLQ0dp9
-         pFmpYBh1TLVhRFOYiry8liijA/o/sHyBuG5LAMLaWsb97VXlxsbxS1gkXAVRYiIThllb
-         KSRJpxmzJfYCw+b9wgw2hCz12WjW531uiEokRHJrTpFy/ZfSz5SgHk+/bmbM2RUJU2GE
-         oA6NzisdDE0PAw88qdXNkrSO0gQcE9FrO7QT26gJAdLZ9jlZpppufk5qbLe7EQ0jOkki
-         Pxww==
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=Cz4OtlmyHWzBew//eKxDmmkPuIUjZYU7DT9BF7Q01nA=;
+        b=dtKj3kNHjh4FafGz6teOdbliu8416sduNSbh7D6kylADElSCta1EGWKJWdZUAnASSw
+         lyitxg05l4NFoK9cpRLxArlAKhDbvEax6tG9fm1vcdnpjGrLkB/AC7AVPsrfY3D9ujVB
+         BlpY2dZTEq14RRATIb6uzpsvZqosoHOmNf0Yh2Y2Rqv/xgObsmEy2KAO385MWBKSf0FS
+         U9XSvppvqR/hYWpiiQ29n9309nto9YZtr5YWM7x6jThlivHhNEPtdqGsDkaKKHwA1ZIC
+         v5FG06rIdMwZu4YGa+yvBvGbS58aqNOI8+QrFoCTYKIymjSkAZW7kpup6kBfef1/LjGg
+         50EA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=0jkMHN5+DkILDZrBQ9J0vF/rM5OI6xr/1rTDYahY4+I=;
-        b=AyfyLYM0NCGh+rOjKWv4KbxS1HuoD86PpHOidpb759Ncr4sfzXraw/Q51Hkhx8gDMg
-         czaoE/3eoZQVDPjOYygb3orgyUsPMAyi6Z5DnQzAyJRpC7ra5rVLA8+SKCc5fL84dBN8
-         hsNF80DRMxoLqvR6RMcpQlUGps7681JUMCK8j/YQ0x3E5WH68Z5L0i8Y++dYLnwLAz4P
-         CM6Ys21hR0wm+G1fRf0iNSO7cT/h1q1+g4EBvEygp1HI6T3q3lq+h5i2riZwR2WhyWR0
-         CU4CFE84cSbcxiv0al7KzDTsIn31HNHs1r04NrN+4zZPxMgOtSiC9Ru8ZbtCv7XcK4uy
-         t/gw==
-X-Gm-Message-State: AA6/9RmrKmYKllZcAQssEwJHe8jK8aNiXCyJfVaHNROVbCycTdla/bZtir5cbKT+zkPI+g==
-X-Received: by 10.66.8.135 with SMTP id r7mr5199489paa.169.1474732900648;
-        Sat, 24 Sep 2016 09:01:40 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=Cz4OtlmyHWzBew//eKxDmmkPuIUjZYU7DT9BF7Q01nA=;
+        b=T+OZVk6Ks3GWPEuFRDVckQMO1M21+ZtwsVW/OQfha5UeGPwEapevYwOtvHMaxeAWj7
+         /BLAx99NOeKP3RISeRBdLmou7Ll4or4t7DcPZN7ustMJ6YZX+C5go6u8I03vh0d7ajFW
+         nv7MHVeH4miee4jut2T0aN15nYSr2krxVKWK/oUlZCPtlDeQk3RUeBqgwMQNOtWfG+GB
+         qzIynznVO80oNN0KqMJ8wMHfcrx246OrL9mC4KEAZ0mNac2KwvtPR58hA2OVl9IjSx4p
+         FEhgkdJWzds8c6oPnR5rxWIFYgClvs+uMkHuN/C05GMmOOZNBv1murbG3HBx6pJCzn+0
+         aTcg==
+X-Gm-Message-State: AE9vXwMkEKwm3tNgX29phb34UTCc872WrmFvh0gVZd799TG7NIyXMbVWGmt1WZU7Y9ZqrA==
+X-Received: by 10.98.152.138 with SMTP id d10mr22486872pfk.8.1474732889147;
+        Sat, 24 Sep 2016 09:01:29 -0700 (PDT)
 Return-Path: <namrataashettar@gmail.com>
 Received: from namrata-HP-Pavilion-g6-Notebook-PC ([103.225.101.21])
-        by smtp.gmail.com with ESMTPSA id xn11sm19507012pac.38.2016.09.24.09.01.37
+        by smtp.gmail.com with ESMTPSA id s82sm15047225pfg.42.2016.09.24.09.01.26
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Sep 2016 09:01:40 -0700 (PDT)
-Date: Sat, 24 Sep 2016 21:31:34 +0530
+        Sat, 24 Sep 2016 09:01:28 -0700 (PDT)
+Date: Sat, 24 Sep 2016 21:31:23 +0530
 From: Namrata A Shettar <namrataashettar@gmail.com>
 To: Jarod Wilson <jarod@wilsonet.com>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	Wolfram Sang <wsa-dev@sang-engineering.com>,
-	MaciekBorzecki <maciek.borzecki@gmail.com>,
+	Maciek Borzecki <maciek.borzecki@gmail.com>,
 	Arnd Bergmann <arnd@arndb.de>,
 	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH v2 6/6] staging: media: lirc: Replace data type with pointer
- in sizeof()
-Message-ID: <c8caeedace5534475eeadfa5286256e361761edb.1474722341.git.namrataashettar@gmail.com>
+Subject: [PATCH v2 5/6] staging: media: lirc: Convert 'unsigned' to 'unsigned
+ int'
+Message-ID: <e1de5318efff31d1f7f18242ae534d5979aff12b.1474722341.git.namrataashettar@gmail.com>
+References: <cover.1474722340.git.namrataashettar@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1474722340.git.namrataashettar@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Replace data type with pointer of same type in sizeof() to resolve
-checkpatch issue.
+Mention data type along with the variable to resolve checkpatch issue.
 
 Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
 ---
- drivers/staging/media/lirc/lirc_sasem.c | 3 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/media/lirc/lirc_sasem.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/staging/media/lirc/lirc_sasem.c b/drivers/staging/media/lirc/lirc_sasem.c
-index 9eb1eec..828efb3 100644
+index b080fde..9eb1eec 100644
 --- a/drivers/staging/media/lirc/lirc_sasem.c
 +++ b/drivers/staging/media/lirc/lirc_sasem.c
-@@ -735,17 +735,17 @@ static int sasem_probe(struct usb_interface *interface,
- 	/* Allocate memory */
- 	alloc_status = 0;
+@@ -73,7 +73,7 @@ static void usb_tx_callback(struct urb *urb);
  
--	context = kzalloc(sizeof(struct sasem_context), GFP_KERNEL);
-+	context = kzalloc(sizeof(*context), GFP_KERNEL);
- 	if (!context) {
- 		alloc_status = 1;
- 		goto alloc_status_switch;
- 	}
--	driver = kzalloc(sizeof(struct lirc_driver), GFP_KERNEL);
-+	driver = kzalloc(sizeof(*driver), GFP_KERNEL);
- 	if (!driver) {
- 		alloc_status = 2;
- 		goto alloc_status_switch;
- 	}
--	rbuf = kmalloc(sizeof(struct lirc_buffer), GFP_KERNEL);
-+	rbuf = kmalloc(sizeof(*rbuf), GFP_KERNEL);
- 	if (!rbuf) {
- 		alloc_status = 3;
- 		goto alloc_status_switch;
+ /* VFD file_operations function prototypes */
+ static int vfd_open(struct inode *inode, struct file *file);
+-static long vfd_ioctl(struct file *file, unsigned cmd, unsigned long arg);
++static long vfd_ioctl(struct file *file, unsigned int cmd, unsigned long arg);
+ static int vfd_close(struct inode *inode, struct file *file);
+ static ssize_t vfd_write(struct file *file, const char __user *buf,
+ 				size_t n_bytes, loff_t *pos);
+@@ -243,7 +243,7 @@ exit:
+  * Called when the VFD device (e.g. /dev/usb/lcd)
+  * is closed by the application.
+  */
+-static long vfd_ioctl(struct file *file, unsigned cmd, unsigned long arg)
++static long vfd_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+ {
+ 	struct sasem_context *context;
+ 
 -- 
 2.7.4
 
