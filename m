@@ -1,90 +1,83 @@
 X-GM-THRID: 6333834735065759744
-X-Received: by 10.176.3.247 with SMTP id 110mr2865959uau.41.1474732793570;
-        Sat, 24 Sep 2016 08:59:53 -0700 (PDT)
+X-Received: by 10.46.33.163 with SMTP id h35mr574984lji.22.1474721764782;
+        Sat, 24 Sep 2016 05:56:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.43.24 with SMTP id o24ls10712279otb.35.gmail; Sat, 24 Sep
- 2016 08:59:53 -0700 (PDT)
-X-Received: by 10.31.233.67 with SMTP id g64mr1093761vkh.33.1474732793234;
-        Sat, 24 Sep 2016 08:59:53 -0700 (PDT)
-Return-Path: <namrataashettar@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id f12si3000576pfk.0.2016.09.24.08.59.53
+Received: by 10.46.0.161 with SMTP id e33ls1756379lji.10.gmail; Sat, 24 Sep
+ 2016 05:56:04 -0700 (PDT)
+X-Received: by 10.25.74.71 with SMTP id x68mr602430lfa.6.1474721764247;
+        Sat, 24 Sep 2016 05:56:04 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id w16si43615wmd.0.2016.09.24.05.56.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Sep 2016 08:59:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Sat, 24 Sep 2016 05:56:04 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id q2so6706753pfj.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 24 Sep 2016 08:59:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=s50B/J5q+s0qWU3DSopb+O10QBkgcvdoghelVv7d2tc=;
-        b=mYLNgStq9rKEwhwrXsYhJqGNr2UH9Lo3vS+68RqzPZOsVNDLrqPNfYE6oRRsHaZiZa
-         wYiCZnuJZ7oXYPO/uHA1+3L/eQohD3jwMev+aVU821SuNC8js50+ireK61ilR7L7iPYv
-         BXo8evtKqsvgkkqmjLbxMQUGpJfBWHIrSQKkVZHS66XNKqOH6Mc+1IKU2+W9nHGoO0/C
-         abwH+U1XqFdBT7HWwq3dVqgFnTO4dQe9ILQL2FX74HI5UiUtMGAtPY9alGBz3+e9Jp2w
-         x+xR3TY3BHhsgDiJRQLsXVVi1WnsBtbTPNNHAF+nyeevIgL6cDZKw89ii0zeKGt2icUv
-         mOEw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=s50B/J5q+s0qWU3DSopb+O10QBkgcvdoghelVv7d2tc=;
-        b=VKB2r1fwt4Vq5Y/K4EvewVWB0TcgmnJbV2uFgLv9lpUsfsk4GUca9Um6bdcYCxhElc
-         4G6B7h4yVu4Rr0dZiTKV8Bg+RB7yLCXH785RlpjSk7dU7pmZrpQa7y8zo2Etyy317H+1
-         1I8yha8Zp99VB0aJty7N98o8Q1XZOPLnQKKatH5TRxDTnp8uXYg961v7VqduS9hg9u2W
-         AlFHtUXaDXpX5+MsSxkrbj5abDWgFRVFKdZGBdMNm6ljQBa/9ABY3xkRlS5PZ3OU550+
-         x1cLg62h1CQGzF7Mx+HIKfXo2VBhkmimgT5vky0EMzuyqzCZUWVMLmTAIm3iX+w2AuYi
-         mqkg==
-X-Gm-Message-State: AE9vXwMZ+n8H1VZPariFKtb3XGWEB3i0GHfbX67R3N7t1aPa5eBk6MUpxo4cufnSJQnvGA==
-X-Received: by 10.98.158.90 with SMTP id s87mr22601756pfd.117.1474732793017;
-        Sat, 24 Sep 2016 08:59:53 -0700 (PDT)
-Return-Path: <namrataashettar@gmail.com>
-Received: from namrata-HP-Pavilion-g6-Notebook-PC ([103.225.101.21])
-        by smtp.gmail.com with ESMTPSA id y9sm19566702pfk.2.2016.09.24.08.59.49
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Sep 2016 08:59:52 -0700 (PDT)
-Date: Sat, 24 Sep 2016 21:29:46 +0530
-From: Namrata A Shettar <namrataashettar@gmail.com>
-To: Jarod Wilson <jarod@wilsonet.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Wolfram Sang <wsa-dev@sang-engineering.com>,
-	Maciek Borzecki <maciek.borzecki@gmail.com>,
-	Arnd Bergmann <arnd@arndb.de>,
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH v2 0/6] staging: media: lirc: Resolve checkpatch issues
-Message-ID: <cover.1474722340.git.namrataashettar@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,387,1470693600"; 
+   d="scan'208";a="238114158"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien.local) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 24 Sep 2016 14:56:03 +0200
+Date: Sat, 24 Sep 2016 14:56:02 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Namrata A Shettar <namrataashettar@gmail.com>
+cc: Jarod Wilson <jarod@wilsonet.com>, 
+    Mauro Carvalho Chehab <mchehab@kernel.org>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    Amitoj Kaur Chawla <amitoj1606@gmail.com>, 
+    Tapasweni Pathak <tapaswenipathak@gmail.com>, 
+    Wolfram Sang <wsa-dev@sang-engineering.com>, 
+    Maciek Borzecki <maciek.borzecki@gmail.com>, Arnd Bergmann <arnd@arndb.de>, 
+    Shraddha Barke <shraddha.6596@gmail.com>, 
+    outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH 2/6] staging: media: lirc: Add space
+ around '+'
+In-Reply-To: <d0f1bdc5ccaa602ba0a53232be35202e326e395f.1474708456.git.namrataashettar@gmail.com>
+Message-ID: <alpine.DEB.2.10.1609241455520.3447@hadrien>
+References: <cover.1474708455.git.namrataashettar@gmail.com> <d0f1bdc5ccaa602ba0a53232be35202e326e395f.1474708456.git.namrataashettar@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Fix multiple checkpatch issues.
 
-Namrata A Shettar (6):
-  staging: media: lirc: Remove multiple blank lines
-  staging: media: lirc: Add space around '*'
-  staging: media: lirc: Replace pointer of data type with pointer of same type
-  staging: media: lirc: Add space around binary operators
-  staging: media: lirc: Convert 'unsigned' to 'unsigned int'
-  Replace data type with pointer in sizeof()
 
- drivers/staging/media/lirc/lirc_bt829.c    |  5 +----
- drivers/staging/media/lirc/lirc_imon.c     |  6 +++---
- drivers/staging/media/lirc/lirc_parallel.c |  6 +++---
- drivers/staging/media/lirc/lirc_sasem.c    | 10 +++++------
- 4 files changed, 13 insertions(+), 26 deletions(-)
+On Sat, 24 Sep 2016, Namrata A Shettar wrote:
 
--- 
- Changes in v2:
- - Subject line and commit messages
+> Add space around '+' to resolve checkpatch issue.
+>
+> Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
+> ---
+>  drivers/staging/media/lirc/lirc_bt829.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/media/lirc/lirc_bt829.c b/drivers/staging/media/lirc/lirc_bt829.c
+> index 06eac71..04d881b 100644
+> --- a/drivers/staging/media/lirc/lirc_bt829.c
+> +++ b/drivers/staging/media/lirc/lirc_bt829.c
+> @@ -185,7 +185,7 @@ static int atir_init_start(void)
+>
+>  static void cycle_delay(int cycle)
+>  {
+> -	udelay(WAIT_CYCLE*cycle);
+> +	udelay(WAIT_CYCLE * cycle);
 
-2.7.4
+This is not a +.
 
+julia
+
+>  }
+>
+>  static int poll_main(void)
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/d0f1bdc5ccaa602ba0a53232be35202e326e395f.1474708456.git.namrataashettar%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
