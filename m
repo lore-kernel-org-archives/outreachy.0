@@ -1,55 +1,55 @@
 X-GM-THRID: 6333834735065759744
-X-Received: by 10.13.219.144 with SMTP id d138mr2998740ywe.30.1474710834142;
-        Sat, 24 Sep 2016 02:53:54 -0700 (PDT)
+X-Received: by 10.157.61.137 with SMTP id l9mr2700884otc.53.1474710818889;
+        Sat, 24 Sep 2016 02:53:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.39.6 with SMTP id n6ls6926038ion.17.gmail; Sat, 24 Sep
- 2016 02:53:53 -0700 (PDT)
-X-Received: by 10.67.6.199 with SMTP id cw7mr2878102pad.76.1474710833576;
-        Sat, 24 Sep 2016 02:53:53 -0700 (PDT)
+Received: by 10.36.77.8 with SMTP id l8ls1135425itb.14.canary; Sat, 24 Sep
+ 2016 02:53:37 -0700 (PDT)
+X-Received: by 10.98.29.7 with SMTP id d7mr2764870pfd.22.1474710817196;
+        Sat, 24 Sep 2016 02:53:37 -0700 (PDT)
 Return-Path: <namrataashettar@gmail.com>
 Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id e66si2905130pfk.2.2016.09.24.02.53.53
+        by gmr-mx.google.com with ESMTPS id e66si2905032pfk.2.2016.09.24.02.53.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Sep 2016 02:53:53 -0700 (PDT)
+        Sat, 24 Sep 2016 02:53:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
        spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id n24so6385047pfb.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 24 Sep 2016 02:53:53 -0700 (PDT)
+Received: by mail-pf0-x241.google.com with SMTP id 6so6389611pfl.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 24 Sep 2016 02:53:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=55qen8iDfthZOSpVHf/VTSIgOp4/z0sfTBJlaPcQj0g=;
-        b=o9wcXA2j5jcDB3jt6qStj11czQyRVFvklO8Cs2Q7MdMhHAg+UxGzKuroHKb514Pyya
-         R6rPDgDkNmcw0XUTYDdDZtzXkHCsHCEumxZQU1Vn42qLlx2RnkQTbLe6ILdpNc4NzkxC
-         WbOGF27iiQHAb6rLiH0rct54jHgureq4D2kinrK9e9ydU6YF7XkzG9qAGvxUcQLMjhrh
-         G36jC5xpeYH5px1UMvFeGNf+Ujz4YlZqdjeWWmPutDjwVwLVm4O24Z1BMBOsC9JyTdDl
-         0n9XjJlCqXVI6oRsRbnPyumfpbfzszk7B/PaMnl0M7M9H2OCOhodP9s1B1OQhnHtYKip
-         edDQ==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=HmFwz2gnI+cPQDnaIgBDigsq1L6FYS1LSNHr4oIA4r4=;
+        b=DHkvb6xXsTS/ECNlVrf17H1dsLrniYGViOU8XpTdked1SjTWQPKwNMH29qmuDY/OYr
+         R6GVgtiMBQ2qqqHd3MNyP37KJ4a0mq+ccVOi7d+QcXv5UypGYQ9gkWw/c3EASebw4xpe
+         6A38uBExc3imGl5XdCUdhBX6Kdw5I8Njy/TT3smKjx9HYcgAPPiY7gPUu+URXiVMD1xu
+         EJOg0jQgDDmvsODdsjrYhodYS3GcuzaEX/V2eRySGyWUBgae/L4IuxQGLBkciJHBg7yW
+         JwBVRd3ZTU0gWokuyZIcntwhVSqNT1FR7lNabI6CUi61tc4bjDEknYfguJ2GegN0yzw1
+         WIpQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=55qen8iDfthZOSpVHf/VTSIgOp4/z0sfTBJlaPcQj0g=;
-        b=DUki2n0dKWu2g70Ox7OobhyU/r6GuR/XECd6ad7Upvlowkv6sfWHva9CNjKmf1CScZ
-         /TSBdMSm7f0GV+vUsSsfSJmUhXvjz0BgHxa6rkbAi04e9DPhNZo15TtsZg7OFjZTOAKx
-         bq+nQwmQ14kVkbXMHY5axGu/vYPf/Er1QrIcUOT61d96JYRphO4h0RSyBfHlQIbffTwr
-         s4UHS9IbV5klKXC9i+1d60K6u8Ws3StiDIxuMvnH0ue9VItd90/13siTOlhUkVwlKW2X
-         aarSNewLC1oAiue1Wg0u2eSfju4EJ4K2Gq+qLMqArRgOU6mkhP1MnSJoBeg8Q7TS5/YA
-         z0vQ==
-X-Gm-Message-State: AE9vXwM4kmi/+pIR5fiNeme6IGHeiBm50zj+iDZH9oLRZYR+CT0i/3wVH0ry56W9K4gfgw==
-X-Received: by 10.98.14.221 with SMTP id 90mr20002902pfo.181.1474710833429;
-        Sat, 24 Sep 2016 02:53:53 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=HmFwz2gnI+cPQDnaIgBDigsq1L6FYS1LSNHr4oIA4r4=;
+        b=I3gEzggT3c8dMDQhme7TO+6ijT4s1ws+dJNt9acMGBU4+UhoeIBA2XEN6oe1jlfECc
+         dXJbHq7LtZYZ3/baZQe7m58nI0IEWMzN0zsSy7LNNXpwzzY7U9NZVrieY4yPrB1wH/eB
+         r80g6UndCn8bCgliEKwwdKF4xBR8BrFGVRnHchPAtqVXdrYfUZyHAQl6Iv/3rvM5sVQY
+         t43kUfgAz2vqJ8jlUlY2igDsvbGl41WHTPbOom+spwyCzVZz+Sg8YIthOrhcyjncx04E
+         rplS14Xh121FdgyTUGy2F7U9vKdIH6S3u/YJ3nwiWr/7plP+3Kv+CTOBwwNmG8y4JANF
+         IenA==
+X-Gm-Message-State: AE9vXwOyq4vbb8O+jlu/0pOmjBzulhp5DgksZm+bbpsssTaQ0eNVJTJ5Ph4mAzqtC7UbPA==
+X-Received: by 10.98.208.195 with SMTP id p186mr19996140pfg.90.1474710817050;
+        Sat, 24 Sep 2016 02:53:37 -0700 (PDT)
 Return-Path: <namrataashettar@gmail.com>
 Received: from namrata-HP-Pavilion-g6-Notebook-PC ([103.225.101.21])
-        by smtp.gmail.com with ESMTPSA id h8sm17217403pfk.88.2016.09.24.02.53.49
+        by smtp.gmail.com with ESMTPSA id s1sm17228558paz.47.2016.09.24.02.53.31
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Sep 2016 02:53:53 -0700 (PDT)
-Date: Sat, 24 Sep 2016 15:23:46 +0530
+        Sat, 24 Sep 2016 02:53:36 -0700 (PDT)
+Date: Sat, 24 Sep 2016 15:23:27 +0530
 From: Namrata A Shettar <namrataashettar@gmail.com>
 To: Jarod Wilson <jarod@wilsonet.com>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -62,50 +62,29 @@ To: Jarod Wilson <jarod@wilsonet.com>,
 	Arnd Bergmann <arnd@arndb.de>,
 	Shraddha Barke <shraddha.6596@gmail.com>,
 	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH 1/6] staging: media: lirc: Remove multiple blank lines
-Message-ID: <003f1241daa3380987f980dfba53f0cc79bf16b6.1474708455.git.namrataashettar@gmail.com>
-References: <cover.1474708455.git.namrataashettar@gmail.com>
+Subject: [PATCH 0/6] staging: media: lirc: Resolve checkpatch issues
+Message-ID: <cover.1474708455.git.namrataashettar@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1474708455.git.namrataashettar@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Remove multiple blank lines to resolve checkpatch issue.
+Fix multiple checkpatch issues.
 
-Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
----
- drivers/staging/media/lirc/lirc_bt829.c | 3 ---
- 1 file changed, 3 deletions(-)
+Namrata A Shettar (6):
+  staging: media: lirc: Remove multiple blank lines
+  staging: media: lirc: Add space around '+'
+  staging: media: lirc: Replace data type with pointer of same type
+  staging: media: lirc: Add space around binary operator '+'
+  staging: media: lirc: Mention data type along with 'unsigned'
+  staging: media: lirc: Replace data type with pointer in sizeof()
 
-diff --git a/drivers/staging/media/lirc/lirc_bt829.c b/drivers/staging/media/lirc/lirc_bt829.c
-index f740115..06eac71 100644
---- a/drivers/staging/media/lirc/lirc_bt829.c
-+++ b/drivers/staging/media/lirc/lirc_bt829.c
-@@ -163,7 +163,6 @@ err_put_dev:
- 	return rc;
- }
- 
--
- void cleanup_module(void)
- {
- 	struct pci_dev *pdev = to_pci_dev(atir_driver.dev);
-@@ -174,7 +173,6 @@ void cleanup_module(void)
- 	pci_dev_put(pdev);
- }
- 
--
- static int atir_init_start(void)
- {
- 	pci_addr_lin = ioremap(pci_addr_phys + DATA_PCI_OFF, 0x400);
-@@ -190,7 +188,6 @@ static void cycle_delay(int cycle)
- 	udelay(WAIT_CYCLE*cycle);
- }
- 
--
- static int poll_main(void)
- {
- 	unsigned char status_high, status_low;
+ drivers/staging/media/lirc/lirc_bt829.c    |  5 +----
+ drivers/staging/media/lirc/lirc_imon.c     |  6 +++---
+ drivers/staging/media/lirc/lirc_parallel.c |  6 +++---
+ drivers/staging/media/lirc/lirc_sasem.c    | 22 ++++++----------------
+ 4 files changed, 13 insertions(+), 26 deletions(-)
+
 -- 
 2.7.4
 
