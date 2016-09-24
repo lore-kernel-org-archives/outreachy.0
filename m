@@ -1,25 +1,25 @@
 X-GM-THRID: 6333834735065759744
-X-Received: by 10.25.24.20 with SMTP id o20mr589609lfi.20.1474721741378;
-        Sat, 24 Sep 2016 05:55:41 -0700 (PDT)
+X-Received: by 10.46.5.196 with SMTP id 187mr30126ljf.13.1474721674474;
+        Sat, 24 Sep 2016 05:54:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.157.71 with SMTP id g68ls711483wme.16.gmail; Sat, 24 Sep
- 2016 05:55:40 -0700 (PDT)
-X-Received: by 10.28.4.200 with SMTP id 191mr393458wme.21.1474721740930;
-        Sat, 24 Sep 2016 05:55:40 -0700 (PDT)
+Received: by 10.46.69.193 with SMTP id s184ls1737132lja.43.gmail; Sat, 24 Sep
+ 2016 05:54:33 -0700 (PDT)
+X-Received: by 10.25.75.21 with SMTP id y21mr619307lfa.11.1474721673909;
+        Sat, 24 Sep 2016 05:54:33 -0700 (PDT)
 Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id p199si74658wmd.1.2016.09.24.05.55.40
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 185si56718wmr.2.2016.09.24.05.54.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Sep 2016 05:55:40 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Sat, 24 Sep 2016 05:54:33 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.30,387,1470693600"; 
-   d="scan'208";a="194517001"
+   d="scan'208";a="238114006"
 Received: from 198.67.28.109.rev.sfr.net (HELO hadrien.local) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 24 Sep 2016 14:55:39 +0200
-Date: Sat, 24 Sep 2016 14:55:39 +0200 (CEST)
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 24 Sep 2016 14:54:33 +0200
+Date: Sat, 24 Sep 2016 14:54:32 +0200 (CEST)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: Namrata A Shettar <namrataashettar@gmail.com>
@@ -35,21 +35,24 @@ cc: Jarod Wilson <jarod@wilsonet.com>,
 Subject: Re: [Outreachy kernel] [PATCH 3/6] staging: media: lirc: Replace
  data type with pointer of same type
 In-Reply-To: <328a70961fc82df3d3444f551bdf1e7ab3fc0985.1474708456.git.namrataashettar@gmail.com>
-Message-ID: <alpine.DEB.2.10.1609241454380.3447@hadrien>
+Message-ID: <alpine.DEB.2.10.1609241453220.3447@hadrien>
 References: <cover.1474708455.git.namrataashettar@gmail.com> <328a70961fc82df3d3444f551bdf1e7ab3fc0985.1474708456.git.namrataashettar@gmail.com>
 User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
 Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-You are also sending the patch to too many people.  Not all of the listed
-people are maintainers of this code.  See the arguments suggested to
-get_maintainers in the Submit a patch section of the tutorial.
 
-julia
 
 On Sat, 24 Sep 2016, Namrata A Shettar wrote:
 
 > Replace data type with pointer of same type in sizeof()  to resolve checkpatch issue as both are of same size.
+
+There is an unnecessary double space after sizeof() in the commit message,
+and the message exceeds 80 characters.  It is better to stop around 70 as
+the message will end up indented a bit in the git history.
+
+julia
+
 >
 > Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
 > ---
