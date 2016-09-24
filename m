@@ -1,98 +1,78 @@
 X-GM-THRID: 6333999917767327744
-X-Received: by 10.25.43.76 with SMTP id r73mr685955lfr.9.1474749322802;
-        Sat, 24 Sep 2016 13:35:22 -0700 (PDT)
+X-Received: by 10.28.154.76 with SMTP id c73mr449045wme.20.1474749277596;
+        Sat, 24 Sep 2016 13:34:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.157.71 with SMTP id g68ls811136wme.16.gmail; Sat, 24 Sep
- 2016 13:35:22 -0700 (PDT)
-X-Received: by 10.28.29.13 with SMTP id d13mr453747wmd.19.1474749322191;
-        Sat, 24 Sep 2016 13:35:22 -0700 (PDT)
+Received: by 10.46.71.149 with SMTP id u143ls1763284lja.27.gmail; Sat, 24 Sep
+ 2016 13:34:36 -0700 (PDT)
+X-Received: by 10.46.32.154 with SMTP id g26mr671109lji.3.1474749276975;
+        Sat, 24 Sep 2016 13:34:36 -0700 (PDT)
 Return-Path: <georgiana.chelu93@gmail.com>
-Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
-        by gmr-mx.google.com with ESMTPS id p199si177894wmd.1.2016.09.24.13.35.22
+Received: from mail-wm0-x230.google.com (mail-wm0-x230.google.com. [2a00:1450:400c:c09::230])
+        by gmr-mx.google.com with ESMTPS id 82si122550wmg.3.2016.09.24.13.34.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Sep 2016 13:35:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
+        Sat, 24 Sep 2016 13:34:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::230 as permitted sender) client-ip=2a00:1450:400c:c09::230;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
+       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::230 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x243.google.com with SMTP id 133so8015114wmq.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 24 Sep 2016 13:35:22 -0700 (PDT)
+Received: by mail-wm0-x230.google.com with SMTP id l132so87884784wmf.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 24 Sep 2016 13:34:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=3Yn7ALa3yPE1ZPe0HO+UjLQO6gBRN1LeBhvvGw9xuZ0=;
-        b=wYwNgQgGugMzwRYjE8CBnPUf/U56cqSoWlXZa70DPmPxIoaU+/4KRA7KoFgmzuUdAp
-         5yrIHdoJSdOCo+myO4pbb/17qRwnEGrIycdhbddl1q5TaAVJWX5uHx9JKxbs6FMal/E+
-         6tfk9tCGhmre1iTy27qLJolo76cLToC//itiyVn/lDIOJtdzc/ZwnZB28gbUk6i40v1x
-         t3eqJLx7c5p4loYt7s749OTOyjHfu7NuG978cpI6rfc9ShdeM/rr7ratGqymoUYsIwCb
-         YrgxDTn+9IXASfshwYZ76bdxZq9aY39qVYEXpTPFDfQFBP8VRihf7LUQuxyFXFUJmbs0
-         6kpw==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=kyTR6SQIEiDRhgJR/2cPVv+qL8NjK0VigvOt1S7+ee4=;
+        b=aWSTxqU30aQAeIIKLsazkZvoj+ggWWFcNoqassAZb+3Pgxm1f6RH1uW1PZwN88Hwzq
+         GFkjPWPyhJ+fN/V3TMPLH8t+zagxM5OoHM47MGOXhrmR+c25Duztst8IH9HDzIPW2BgZ
+         9sfkEr86LDfogFz4baXFr7WJyW4Z++LW8atvXRMTsqtmyJy4885pDX1GffIaZ5kkOlmZ
+         uP1mw7ra+gGC3zUNq51MlmuAQBOjyS50JgMM4p6ypf/W0+72/3C0xs+FKHCJHrtU5cuQ
+         j6TRoiXrsRLkyxmUbS0F6V1ldxYeliwPRh+GUTQN0aOz2VJn2xZ3xtK4P5nh39UZUgSP
+         Vr5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=3Yn7ALa3yPE1ZPe0HO+UjLQO6gBRN1LeBhvvGw9xuZ0=;
-        b=lFRX2uegdzIY+y8OA3y6CNRLzajt8BeGwpXHPZBceurmJ4N1PUF625ydz/IjGFuJh0
-         5X+4DkQef35qGhcCYSpC0MgujpMotH1KsKOzEJOzkByMSfiEjId/8/BH4nfX5DPc/XaE
-         SmNDSQYBtC6ABX6nX3Jb229VcaQ4a1WgefdrAizgzScEZ33fZE8bL+Xqt0citpZVvE3L
-         k/HGkd5mr6RZPxoEo5cxXwHqA/OHDdio6PtkBaCTzjiWwPGpVFihe/PL7xMo1ezchaQE
-         EtDjYM4dcEgR2vP/QF5Q/5K8NYLb3AVs5NPMqPBVwnKpPeNTMcnAJZDenT3SCUjCuB5A
-         6V6w==
-X-Gm-Message-State: AA6/9RlwZhwLWMDPEG5ZSAyyuXi7VUA6hgIyZe4CQbnhXP3KfTovJSOrQT2FsodorLi2yg==
-X-Received: by 10.194.101.131 with SMTP id fg3mr15002247wjb.33.1474749321993;
-        Sat, 24 Sep 2016 13:35:21 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=kyTR6SQIEiDRhgJR/2cPVv+qL8NjK0VigvOt1S7+ee4=;
+        b=Td2xRwnQd2v7crTT5GOcw0vsnWBxK797ja/k5FCLhprSEyMhUhfXtr0uxm/dQcT6xG
+         fryEIhlWrXbVR+49kkaQfX20q8LwPNvmimIXlhsYIDHHYmvRokt9Sp4EX4QaMJhksuaI
+         kbCb42EdlQE50WivUr8YEwDTI8Npjgj2gqypmPHMua86ZIQ4VBkuafJU2sw0499hK5dp
+         Q7wRna8STZHUozQnq5YbLXy1YO2Z9i7v28CXlH0HO2w4AdMB2XDiyBFGD59iC9k8Kc4a
+         YQWOKq8DQ0a/Ze9/vGlQqzVLkv2/ob5DfgM7MUYEHpFdu9/OTcR0G6nLL0/7xJ9ozRd0
+         Z7Sw==
+X-Gm-Message-State: AA6/9RnK6fR2GSukYntr8tqjGQbm88IoD9D6PAokSLe1VwPC3u0DUkdeEqjqwruLAjg+ow==
+X-Received: by 10.194.21.200 with SMTP id x8mr11735928wje.129.1474749276755;
+        Sat, 24 Sep 2016 13:34:36 -0700 (PDT)
 Return-Path: <georgiana.chelu93@gmail.com>
 Received: from fireworks ([84.117.92.113])
-        by smtp.gmail.com with ESMTPSA id p144sm2675679wme.0.2016.09.24.13.35.21
+        by smtp.gmail.com with ESMTPSA id n7sm13743118wjz.32.2016.09.24.13.34.35
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 24 Sep 2016 13:35:21 -0700 (PDT)
-Date: Sat, 24 Sep 2016 23:35:20 +0300
+        Sat, 24 Sep 2016 13:34:36 -0700 (PDT)
+Date: Sat, 24 Sep 2016 23:34:35 +0300
 From: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org
-Subject: [PATCH 1/2] staging: rtl8188eu: core: rtw_mlme: Remove return
- statement from void function
-Message-ID: <d0824f184fc4965de7bd4f884729316890268f76.1474748334.git.georgiana.chelu93@gmail.com>
-References: <cover.1474748334.git.georgiana.chelu93@gmail.com>
+Subject: [PATCH 0/2] Remove return statement from void function
+Message-ID: <cover.1474748334.git.georgiana.chelu93@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1474748334.git.georgiana.chelu93@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Remove the return statement from the end of a void function
-to clean up the code.
+Remove all the return statements from void function in staging/rtl8188eu
+driver. The purpose of the patches is to clean up the code.
 
-Issue found by checkpatch.pl script.
+Georgiana Rodica Chelu (2):
+  staging: rtl8188eu: core: rtw_mlme: Remove return statement from void
+    function
+  staging: rtl8188eu: core: rtw_security: Remove return statement from
+    void function
 
-Signed-off-by: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
----
- drivers/staging/rtl8188eu/core/rtw_mlme.c | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_mlme.c     | 2 --
+ drivers/staging/rtl8188eu/core/rtw_security.c | 1 -
+ 2 files changed, 3 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c b/drivers/staging/rtl8188eu/core/rtw_mlme.c
-index 249568c..ee2dcd0 100644
---- a/drivers/staging/rtl8188eu/core/rtw_mlme.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_mlme.c
-@@ -259,7 +259,6 @@ void rtw_generate_random_ibss(u8 *pibss)
- 	pibss[3] = (u8)(curtime & 0xff);/* p[0]; */
- 	pibss[4] = (u8)((curtime>>8) & 0xff);/* p[1]; */
- 	pibss[5] = (u8)((curtime>>16) & 0xff);/* p[2]; */
--	return;
- }
- 
- u8 *rtw_get_capability_from_ie(u8 *ie)
-@@ -557,7 +556,6 @@ static int rtw_is_desired_network(struct adapter *adapter, struct wlan_network *
- void rtw_atimdone_event_callback(struct adapter *adapter, u8 *pbuf)
- {
- 	RT_TRACE(_module_rtl871x_mlme_c_, _drv_err_, ("receive atimdone_evet\n"));
--	return;
- }
- 
- 
 -- 
 2.7.4
 
