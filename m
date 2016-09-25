@@ -1,100 +1,90 @@
-X-GM-THRID: 6802697836699844608
-X-Received: by 2002:a6b:d609:: with SMTP id w9mr76755ioa.41.1583876515787;
-        Tue, 10 Mar 2020 14:41:55 -0700 (PDT)
+X-GM-THRID: 6334340423439351808
+X-Received: by 10.129.0.194 with SMTP id 185mr3421307ywa.12.1474828557504;
+        Sun, 25 Sep 2016 11:35:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6638:31c:: with SMTP id w28ls974580jap.1.gmail; Tue, 10
- Mar 2020 14:41:54 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vu410qwwEJVLhsnwglXDNmtgsnYLN8i+cAopK4NwGibiweYZjdQ5Hy8TnEbHSGsoEWX36D6
-X-Received: by 2002:a02:94c7:: with SMTP id x65mr193196jah.138.1583876514517;
-        Tue, 10 Mar 2020 14:41:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583876514; cv=none;
-        d=google.com; s=arc-20160816;
-        b=I1aQDk2LQRLiYhaJYqHgoiUk77Q/XRa3BeVhh4Q+bS4YrnXI/PbwK5UUYt01UF+8US
-         Txt9KA9j4H1qL1p+oosSbH32AiSM2vciy+6dHWhH/8GtXgiwgEHpsjsDylUirhv2oS8b
-         434ohypJ3HEfFR0CFqmN78N3I65gNfTnkfYoagB1O1rJ29I+ChbaUSnkmU0sBIpfi8Gg
-         bUVwoBIzOoU7ljYmVio6LFXx7OHw078ReA4O4AycbLtJGIfgyujeziOsL4LVgKUIJBBR
-         GgdEKWy9oV2vqt45cUwiU1AXcq5TdjApu905+uWXAb6K7k7WiK9UMEr0bIjbnPAguQJd
-         mjXw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :date:from:dkim-signature;
-        bh=EDKalawlNRD0P4bAMLRyhwzPChGUjjAR+YAw5E8ACp4=;
-        b=kSJnWe1+zWgQVH0OXpqCGA54eeO02PO62nETwFQHtRKvEfPV7shTdWjelxftWctYgX
-         c9BfrCy/YWKaZjDBOTSw3VNK1HZeFKlwlg9/VHSSMkS4+H6ds+HcXz4kLf4Rxu1EAAjK
-         x+ziHoQZnuPf+0PcwQ/kjYNFyjxXs5eFIrntFZhBisrkc44tkHv4XnSg5FCBiaTTwkF1
-         UbsL6WlDsAce2/NE/Zs4aLtMbi9aCaZosnSJhdFm0IV5DeumA3EzXa/JofgFHNLlIAOl
-         98AxHVTncckkfnxZtALV79bnKHIeTvxv2BpZzX2mMHKDaFJxov/L1NeeCkQ7ykGjVN4j
-         s7Nw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@es-iitr-ac-in.20150623.gappssmtp.com header.s=20150623 header.b=i71FcQSJ;
-       spf=neutral (google.com: 2607:f8b0:4864:20::1031 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) smtp.mailfrom=kgupta@es.iitr.ac.in;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=iitr.ac.in
-Return-Path: <kgupta@es.iitr.ac.in>
-Received: from mail-pj1-x1031.google.com (mail-pj1-x1031.google.com. [2607:f8b0:4864:20::1031])
-        by gmr-mx.google.com with ESMTPS id t64si665551iof.2.2020.03.10.14.41.51
+Received: by 10.107.13.203 with SMTP id 194ls7896263ion.11.gmail; Sun, 25 Sep
+ 2016 11:35:54 -0700 (PDT)
+X-Received: by 10.98.22.79 with SMTP id 76mr4599905pfw.32.1474828554496;
+        Sun, 25 Sep 2016 11:35:54 -0700 (PDT)
+Return-Path: <namrataashettar@gmail.com>
+Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
+        by gmr-mx.google.com with ESMTPS id 7si3932896pfw.1.2016.09.25.11.35.54
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 10 Mar 2020 14:41:51 -0700 (PDT)
-Received-SPF: neutral (google.com: 2607:f8b0:4864:20::1031 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) client-ip=2607:f8b0:4864:20::1031;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 25 Sep 2016 11:35:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@es-iitr-ac-in.20150623.gappssmtp.com header.s=20150623 header.b=i71FcQSJ;
-       spf=neutral (google.com: 2607:f8b0:4864:20::1031 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) smtp.mailfrom=kgupta@es.iitr.ac.in;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=iitr.ac.in
-Received: by mail-pj1-x1031.google.com with SMTP id a16so1004245pju.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2020 14:41:51 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x242.google.com with SMTP id zl8so1037778pac.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 25 Sep 2016 11:35:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=es-iitr-ac-in.20150623.gappssmtp.com; s=20150623;
-        h=from:date:to:subject:message-id:mime-version:content-disposition
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=EDKalawlNRD0P4bAMLRyhwzPChGUjjAR+YAw5E8ACp4=;
-        b=i71FcQSJaoYbd1ivk6YRPjuMq7N4vWaspIfLVDqP7xlqFo5zlx7IzpqYJbNgI1JsBn
-         w8W5g+RFSDTD/V2nJYGT+49lYJF7AUZ6p0J5bMoIz3VZup0hRwcwsypxJMBfOJ6LjjaF
-         q3zQKngtf+6xBDVeYMrYpy0XxFTGbhXA3kulN+QlBoDIb5O3S1l6Ss/nwdx9IMqVo9B6
-         uLN2/aHSvbUr7xfqqUlYb+oar5uC2IB+ew1t0nUB2jopCWlchd/cYDF2bgNdFs80Tz48
-         dSzcQepD0sIEz3lt1fSf6dKS+RHNfF9zXTtl0IrApSHgt3dGMBHDirb1lSzAzLEcZbA0
-         4KtQ==
+        bh=FEGqU+uOGZFJ3slIc2R5Ez3AZUKWsl4cT6HY2hgWp6U=;
+        b=wcsGHnOgaOL7HotH3xQ8tK1zKNKxSYwqEKib+hDt0JS4OyGQu195yf1ZvZaFnP3d2o
+         BIEsE4AmKutaO++qTuMGhpBHdKI2/5pEqOu/SPO6nqIeIVEWxSEp94flZfJbtW7BAjqL
+         JY0vPT51fvfz2XPH06hrsNdHkk9cxQ24Tbwqyo85FliWrS+HxWoDVTEYiBK7ffmIY0cI
+         sozRFRy3CjUHZH0myfzwIlbus8EDPAkyrcPk2sCeZBI22NwjxXvIvJ7b0IBUSzpn2BzR
+         8voqhCbEha7JzuYddCkT6u8KsZ7dITwxPMLzvPDPUiUEdnClyTjS3qaLgZeUD7ZfJ2so
+         wzUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:date:to:subject:message-id:mime-version
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=EDKalawlNRD0P4bAMLRyhwzPChGUjjAR+YAw5E8ACp4=;
-        b=JpGnSk9LxbBDdfP1ami12Eb2rugXnCzDpSDLJxTPk24AP39yPqwsnnmjJ/ElRxj7OW
-         kxmDpTwLSWx0hdnzl6X+aZ2833/Z4zJkx093+XYBvy9qF85B8HmnnI+BEgjqU0PaqY6i
-         viCwJOBOFyj0iNw/3V8zVbtCBsEdFf+cB0nI2BxUUy/9MubCVT2eicqTRdGHTvcoc1p5
-         ydDuT7DfWhYt8s3W9W/iEos8Q6OcgLcKB5CoXgZKz0hoLW32fN0+Dr11M5mz+FlSe7Df
-         nfG6EZMPQLdnUDzyCbaztMz0sSaSHF9TJrPUFJJXKovd3ubzwyk431+IbE9g9TVjRh8H
-         Qw5Q==
-X-Gm-Message-State: ANhLgQ0fyOPHquIVjsgjmkxWhzBhj5AsFuLlpKg2FEK2bcqd38160l3N
-	MWGWWnV9n2UWKfY/iHCQm1zOJvtIf2eNEw==
-X-Received: by 2002:a17:902:a514:: with SMTP id s20mr22775419plq.300.1583876511005;
-        Tue, 10 Mar 2020 14:41:51 -0700 (PDT)
-Return-Path: <kgupta@es.iitr.ac.in>
-Received: from kaaira-HP-Pavilion-Notebook ([103.37.201.177])
-        by smtp.gmail.com with ESMTPSA id u3sm3094579pfb.36.2020.03.10.14.41.49
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Mar 2020 14:41:50 -0700 (PDT)
-From: Kaaira Gupta <kgupta@es.iitr.ac.in>
-X-Google-Original-From: Kaaira Gupta <Kaairakgupta@es.iitr.ac.in>
-Date: Wed, 11 Mar 2020 03:11:45 +0530
-To: outreachy-kernel@googlegroups.com
-Subject: [OUTREACHY] Help regarding patch sets
-Message-ID: <20200310214145.GA14139@kaaira-HP-Pavilion-Notebook>
+        bh=FEGqU+uOGZFJ3slIc2R5Ez3AZUKWsl4cT6HY2hgWp6U=;
+        b=KUCnoD4XwlmokK/0uT2s1A6K9yut5cyDAZoamXsqoF4/ezCpXtkik1FhqM+g4j8afG
+         9cBVmoaGtb+9qI4HKKeqp0HjlY1rwL4IQy4dRS8PWZJT6+UQY8b3NIM6XXoCUJdP2p65
+         41cBSAbn5gG6MADl0zOITzm+rd6Y+X0dxOzFJ5oKVSUFsGT4ojOc0tcfPDmmgAdhQMEh
+         5bLWdyAoftLLWDRn0lIzX7SLpdGJUjtxFaqgJ4RLOyw4Py0ZxKa+0JN69TcWR9HJrmth
+         8UhEq/jzBVIGE7WGVr7laRwDxfDVaniNzIX2dQNBIyjQog2B2ITiWgEl8STPV9wZpT+L
+         mf+g==
+X-Gm-Message-State: AA6/9RnjIBq9pEkQRmkXs5bpP5fhg4UuRD5OdJ9W4BU8aOStQvCUCHzNkc1Ns+5WoH3Etw==
+X-Received: by 10.66.163.227 with SMTP id yl3mr17977164pab.0.1474828554326;
+        Sun, 25 Sep 2016 11:35:54 -0700 (PDT)
+Return-Path: <namrataashettar@gmail.com>
+Received: from namrata-HP-Pavilion-g6-Notebook-PC ([103.225.101.21])
+        by smtp.gmail.com with ESMTPSA id 25sm25253160pfj.23.2016.09.25.11.35.51
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 25 Sep 2016 11:35:53 -0700 (PDT)
+Date: Mon, 26 Sep 2016 00:05:49 +0530
+From: Namrata A Shettar <namrataashettar@gmail.com>
+To: Larry Finger <Larry.Finger@lwfinger.net>,
+	Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Luis de Bethencourt <luisbg@osg.samsung.com>,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: [PATCH] staging: rtl8712: Remove unnecessary 'else'
+Message-ID: <20160925183544.GA4221@namrata-HP-Pavilion-g6-Notebook-PC>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Sir/Ma'am,
+Remove unnecessary 'else' after 'return' to resolve checkpatch issue.
 
-I was guided to submit a patchset with patches in a
-single driver, but I am unable to find 5-6 different clean-ups in a
-single driver. I am using sparse, TODOs, coccinelle, and checkpatch.pl
-to find cleanups for the same. Can I submit a patchset with changes in
-multiple drivers as for moving onto small tasks I have to finish at
-least 2 patchsets?
+Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
+---
+ drivers/staging/rtl8712/rtl8712_recv.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Thanks for your time!
-Regards,
-Kaaira Gupta
+diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
+index 66f0e0a..cf46592 100644
+--- a/drivers/staging/rtl8712/rtl8712_recv.c
++++ b/drivers/staging/rtl8712/rtl8712_recv.c
+@@ -508,8 +508,7 @@ static int enqueue_reorder_recvframe(struct recv_reorder_ctrl *preorder_ctrl,
+ 			plist = plist->next;
+ 		else if (SN_EQUAL(pnextattrib->seq_num, pattrib->seq_num))
+ 			return false;
+-		else
+-			break;
++		break;
+ 	}
+ 	list_del_init(&(prframe->u.hdr.list));
+ 	list_add_tail(&(prframe->u.hdr.list), plist);
+-- 
+2.7.4
+
 
