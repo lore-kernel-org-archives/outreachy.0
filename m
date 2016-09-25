@@ -1,77 +1,112 @@
-X-GM-THRID: 6334501758545428480
-X-Received: by 10.157.24.124 with SMTP id t57mr1918383ott.68.1474866121732;
-        Sun, 25 Sep 2016 22:02:01 -0700 (PDT)
+X-GM-THRID: 6333039689396649984
+X-Received: by 10.107.130.144 with SMTP id m16mr3563002ioi.41.1474785885077;
+        Sat, 24 Sep 2016 23:44:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.61.202 with SMTP id l68ls13239089otc.1.gmail; Sun, 25 Sep
- 2016 22:02:01 -0700 (PDT)
-X-Received: by 10.129.106.193 with SMTP id f184mr5460639ywc.56.1474866121414;
-        Sun, 25 Sep 2016 22:02:01 -0700 (PDT)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id um12si3972375pab.2.2016.09.25.22.02.01
+Received: by 10.157.13.112 with SMTP id 103ls11595596oti.31.gmail; Sat, 24 Sep
+ 2016 23:44:44 -0700 (PDT)
+X-Received: by 10.237.45.39 with SMTP id h36mr3903630qtd.14.1474785884679;
+        Sat, 24 Sep 2016 23:44:44 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id 7si3304493par.0.2016.09.24.23.44.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 25 Sep 2016 22:02:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Sat, 24 Sep 2016 23:44:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id 21so8582041pfy.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 25 Sep 2016 22:02:01 -0700 (PDT)
+Received: by mail-pf0-x241.google.com with SMTP id n24so7375057pfb.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 24 Sep 2016 23:44:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=9sVL1K0JzHgF+eYHFOXsffnImbiR8LuGSYwcw6bpKJE=;
-        b=kdK9ercCNxybdBv98nxAKK3+qUURxYCiyvYBSLbqKGnzJXFtjVHaGQOTwVMaXkLyq6
-         OgILo7Lzw+ixil2ln8Q7qGp9fjeo4kes5winW/h0PrM8NKitIH52hExwRhc8j3V0fUWC
-         8gtuxzPcjMa2h4p7u/Jrum7nPmuMeiEKaawi38NwH4Y/tI4xUajyx1cZMnxaxvZxrXf1
-         MtcxNn/8adH73YRkREk4zV72OSRpGrlPgD8nf0Q+TLh8rMFGO7QvEIIVJk1pwggyFqfB
-         aIvzpipEUcNE7CWHVRlmL+qEr5FJ5lNQ/wBN93FuaN10eKqaE60QS7hgYU7qczxw2Z7T
-         afUg==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=cXZYOmiET1d9dWWqPucs1fU6Tjib9o8jjWoDHuQehRg=;
+        b=Z7HFkmFfFxAPqt/Q5+1C59FoHKqdn6tPlqF5fz1WrwUsR44JbKpJSkny7spJrdCmlL
+         YIL9vkjBUMCtNVcD4sNssd/fQ5yIB8hdaLSnqnmnN8WsI7W0vPYsp5Ol6csBvILURH3I
+         gMYUfoWb4OKSxWLFG0cGwc+NPuKGpenvty4tj9bBqt65//ndTavvuCE1XVwl7Xz2lYso
+         Fk0lnYxh90Z8318QJ/AvlN4pmu847m1YoxhNRJWxf9LDVadpMHU8iOFJe29vTCRTwiwP
+         asdCikeYzvlB+oT6jyI3UYQYdJI/q6wKcvuwjWRp/hxWzPxYI2kqltIR/Trxr0sKeLTk
+         VePQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=9sVL1K0JzHgF+eYHFOXsffnImbiR8LuGSYwcw6bpKJE=;
-        b=c/tPyyAr1XK4f5/yyIV57c0E5UuA4sLxLydPEs/0CV9ClFBRlV7kI+AnSB0T9EUxy0
-         EBxzRaP38bhh3H6C6pU1hTKzCD0cO+61hlgGf8+v1j/Q2tYpnR82hcjv98yBLb7mxFau
-         XKoFxECEvEOMK/AtM4NnknPb4OzcKzIKe6VSfXqkIJXiIQuZuTWOxMwJ9+uY8Wuxq9rk
-         jbAMCtVj07ugtH4594PcOOrKhBMLrIqEmd5Aj4hmkRBbRp9SQw/Egb+sTf0f+xdHehLf
-         V3sPfcfXcF03IxocRXmFOAd95PF0qaA6dgdNkSqBQUSCXle5y9zueeqZHk6W7Qgufv5S
-         3ZOA==
-X-Gm-Message-State: AE9vXwOVphhAdDpSuLkDzyTYg+AVduGdTJ+shoPIyxrSLHct6jgh3eCWkEvI5Fs+2OAkVg==
-X-Received: by 10.98.204.85 with SMTP id a82mr34523574pfg.180.1474866121223;
-        Sun, 25 Sep 2016 22:02:01 -0700 (PDT)
-Return-Path: <bhumirks@gmail.com>
-Received: from gmail.com ([106.215.164.95])
-        by smtp.gmail.com with ESMTPSA id t5sm26962085pfi.26.2016.09.25.22.01.54
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 25 Sep 2016 22:01:59 -0700 (PDT)
-Received: by gmail.com (sSMTP sendmail emulation); Mon, 26 Sep 2016 10:31:40 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	jic23@kernel.org,
-	knaack.h@gmx.de,
-	lars@metafoo.de,
-	pmeerw@pmeerw.net,
-	gregkh@linuxfoundation.org
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH 0/2]  Staging: iio: constify attribute_group structures
-Date: Mon, 26 Sep 2016 10:31:37 +0530
-Message-Id: <1474866099-12282-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=cXZYOmiET1d9dWWqPucs1fU6Tjib9o8jjWoDHuQehRg=;
+        b=iVS+Jul9IfN1HJGjRz35Ft6y+q8zWAoi0C8WloQM/UpqPE0Ld676TcdXNoM7P6LiGS
+         if4udx9opqBuPu1djnMBt1/cjv5riKn0ZZ28C0Dy7b0Lrq/kqCoRoOklGBV9vm2kqQWG
+         69mY+bJUlJg5+P3e+lh13hVtysQpQeRxOpjjOEr7DJKdMgR9yjRiZQ4Kmm+FUcwXqYX2
+         YxQRZQQMJWjXQvkLhU63MzlO4WIM487Y3fI9JIO/eVqT8sTd+O18gi7XaShCi0hxBkSY
+         bV4HCjHKG+sKpW9x//9YGdUDGGxHkA4oW+C+aKINyp02TqKlAARHtGOLATOiBqO6wsVA
+         n+jg==
+X-Gm-Message-State: AE9vXwPtHs7o+o5tsmrYmXt9c53SelrQ0np3Yjo6IPVCg7A8Tsmy/oCdSUO3iBJDda6Ttg==
+X-Received: by 10.98.129.131 with SMTP id t125mr27690942pfd.157.1474785884471;
+        Sat, 24 Sep 2016 23:44:44 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-77-201.dhcp.embarqhsd.net. [67.232.77.201])
+        by smtp.gmail.com with ESMTPSA id u1sm22029992pfb.62.2016.09.24.23.44.43
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 24 Sep 2016 23:44:44 -0700 (PDT)
+Date: Sat, 24 Sep 2016 23:44:42 -0700
+From: Alison Schofield <amsfield22@gmail.com>
+To: Rehas Sachdeva <aquannie@gmail.com>
+Cc: julia.lawall@lip6.fr, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [SMALL TASK 2] Doubts, approach and sample
+ code
+Message-ID: <20160925064441.GB9644@d830.WORKGROUP>
+References: <20160922062817.GA11923@toblerone>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20160922062817.GA11923@toblerone>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Constify attribute_group structures.
+On Thu, Sep 22, 2016 at 11:58:17AM +0530, Rehas Sachdeva wrote:
+> Hello
+> 
+> I have made an inital attempt on small task 2 found here:
+> https://kernelnewbies.org/JuliaLawall/#head-64863b6a2bfaec7448a8755a3430b311d2c0ce7d
+> 
+> This is the code I have written:
+> http://pastebin.com/raw/uS4JAcWC
+> 
+> This is the sample diff I have tested the code on:
+> http://pastebin.com/raw/h3PMSuae
+> 
+> Approach:
+> 1. Grep out the names of the files modified by pattern '--- a'.
+> 2. make the files and use stat to get total size.
+> 3. Apply the patch and repeat procedure to get total size.
+> 
+> Doubts:
+> 1. whether my assumptions of patch_file and dir paths are correct.
+> 2. whether the method to get the files modified is foolproof.
+> 
+> Please check my approach and suggest ways of improving it.
+> 
+> Once the logic is approved, I would like to work on error handling, refining
+> the code including de-duplication and any other necessary changes.
+> 
+> Thanks for your time.
+> 
+> Rehas
 
-Bhumika Goyal (2):
-  Staging: iio: adc: constify attribute_group structures
-  Staging: iio: light: constify attribute_group structures
+Hi Rehas,
+Sorry, no technical answer from me, just wondering what's up with the
+pastebin?  Sayli just used it also, and I had to jump out of mutt to
+see her error message.  If I was going to comment on the code you put in
+the pastebin, how do i do that inline? 
+alisons
 
- drivers/staging/iio/adc/ad7280a.c   | 2 +-
- drivers/staging/iio/light/tsl2583.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
 
--- 
-1.9.1
 
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160922062817.GA11923%40toblerone.
+> For more options, visit https://groups.google.com/d/optout.
 
