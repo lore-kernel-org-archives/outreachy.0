@@ -1,131 +1,149 @@
-X-GM-THRID: 6333564205641236480
-X-Received: by 10.129.91.136 with SMTP id p130mr1965319ywb.61.1474647830621;
-        Fri, 23 Sep 2016 09:23:50 -0700 (PDT)
+X-GM-THRID: 6334391952263348224
+X-Received: by 10.107.19.156 with SMTP id 28mr5156792iot.75.1474860375715;
+        Sun, 25 Sep 2016 20:26:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.12.234 with SMTP id 103ls6676138iom.0.gmail; Fri, 23 Sep
- 2016 09:23:48 -0700 (PDT)
-X-Received: by 10.66.41.114 with SMTP id e18mr1826754pal.37.1474647828797;
-        Fri, 23 Sep 2016 09:23:48 -0700 (PDT)
+Received: by 10.157.7.7 with SMTP id 7ls11613580ote.37.gmail; Sun, 25 Sep 2016
+ 20:26:15 -0700 (PDT)
+X-Received: by 10.157.47.9 with SMTP id h9mr3750362otb.81.1474860375128;
+        Sun, 25 Sep 2016 20:26:15 -0700 (PDT)
 Return-Path: <amsfield22@gmail.com>
-Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
-        by gmr-mx.google.com with ESMTPS id 7si2476366pfw.1.2016.09.23.09.23.48
+Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
+        by gmr-mx.google.com with ESMTPS id 7si3847310par.0.2016.09.25.20.26.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Sep 2016 09:23:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
+        Sun, 25 Sep 2016 20:26:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22c.google.com with SMTP id wk8so41632454pab.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 23 Sep 2016 09:23:48 -0700 (PDT)
+Received: by mail-pa0-x243.google.com with SMTP id oz2so8119823pac.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 25 Sep 2016 20:26:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :content-transfer-encoding:user-agent;
-        bh=Hva4sCX1+o+AXU/CtPgCzCGTP3Eo6RDK8cvfyp563gE=;
-        b=SxQHa4JHiqCMrQCVTU1ejNwCsm9KNx7vw3D4xQ73X82f70nMhAtgtwy3jlu3/Dxq/9
-         hXYcRjLQxxiEEB6CWl9dNTVVox5yHYoqeDAShMuGTJNUUQLYtt2CcGGgd9S4mGvDPWok
-         AFTbS+qPqDF3L0zx1CkFnkQoISUUls1cjobkZLZtIypAwLHBCrxZq2h2wOwPbKX+HorJ
-         UMnfJFAK+2INeRwVvuqtIQcI37qhL2kUHJS7bS0/jHf0KCYM0+mQuVdxyU73JVk+Pyft
-         4WuNHWZUvKNY1C+l2FQK0QswBAQaTmInSUzVu7IfG00ZbbmaNrwVi/+xLAoXgKmRVFQR
-         80rw==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=oLMsFT6ephBYlAa10SzPncDaWeASTyrsu7Pp0onhuow=;
+        b=02SyjhSK8xDlxs4+xPHDvCWOzOEB0DmHAnU/CZy2mrYvb5Rre0t/LC6cTR85X/FmO1
+         3hBVN3e3VDJhBunOq464t3mYljBgKlIDClAHoHlCpLSqkvzR3FP20+eHF6YOHYcmvp9t
+         wNFDa3BTz5t+ijU+AEjNN1A+GksPp4eGP2OBRYVVLo+Hq5kb/YtNOSH56iveL6iQMH8L
+         dAXLjj8hDAKtsuGz/OwwT5AGm9GsjHlQ2HoQ2dNwTrBdVUHgptFAx0RqvCrpi+cxA8kP
+         qi5qya3GheI5a+bYY4n534p+wYgUUifl7rJCnzZLdBXRlQlVDzFcBpJpiTTqr5SEQ/lz
+         CHvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:content-transfer-encoding:user-agent;
-        bh=Hva4sCX1+o+AXU/CtPgCzCGTP3Eo6RDK8cvfyp563gE=;
-        b=IFXBQDjJ+K2kvtvR279sKTrgzheDBsf1bzkv6koJtS3Kz6+r3EUUgthmPc/pu0UEKG
-         joev3a5+mMIiJzjetwxUnCsxEIIflxam7tAwVKOGHXhVyD491mohPaK96M2liuUO3AT2
-         8DWRQ7Y7zweRg/jvqaCIOa5pNIQ/qPotcDPq0pgfVT0eMholmpvqpX4E+sw6PHdH/p1B
-         PpZOqsJ8s8+7DVmqN/QHBMteqbJOGgpVU1ylUiCncGZeySUHikJqxozniMRt1LSqxqeF
-         7OXMV/q5SU6SbZx9t5qp5t4cx2+h0/XpjhZHIf2iAr0gESPad6lYWHkSi2K9+qFQhtd2
-         tWsA==
-X-Gm-Message-State: AE9vXwMyKGOyFFqo+mTpVChp8aTyvi0bub5RxddnEHcWeBEfJAChoHKKNH8gUg7B4xR3bg==
-X-Received: by 10.66.249.134 with SMTP id yu6mr14010502pac.44.1474647828452;
-        Fri, 23 Sep 2016 09:23:48 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=oLMsFT6ephBYlAa10SzPncDaWeASTyrsu7Pp0onhuow=;
+        b=UAOOo1wvcnXLJjqW2fFh+HSmFvgzEFFrSLh01n1GjG5zuG3fLcSU2GeYhFY65cPi/0
+         yV5tnihA7bNg4kwTUgl+7Q6NeB7BqvOyXJE6qZ7hvJu7tIEcAl/SQdnCYfN/19bqWoRD
+         dGkyrPtt691rZUNl9ZcHGHfHZRnk1Oq2JAGEZLMo+GKYjsVzXYgqEgmekUodULi/RW7d
+         LY+vRTKfZswiVksclsZqxzVnyccHzb7oZUiLEAH8dM6/fP6Kxdscah/6uQQC+KCTzkwA
+         hd3Gc2bbmGTXljHxPXXuSSmDoTfev4MDIr7UI+6nVwKSjinMFrRHxP13Dp7DSaqcegAA
+         UyDw==
+X-Gm-Message-State: AA6/9RnS9Lzc9lsnnOpVUxWo0M5mh19+AR9hvSk0xaKYZJmjP7e3e+a8TbWVskegydEyAw==
+X-Received: by 10.66.227.132 with SMTP id sa4mr12801900pac.176.1474860374924;
+        Sun, 25 Sep 2016 20:26:14 -0700 (PDT)
 Return-Path: <amsfield22@gmail.com>
 Received: from d830 (or-67-232-77-201.dhcp.embarqhsd.net. [67.232.77.201])
-        by smtp.gmail.com with ESMTPSA id e21sm12620244pfb.96.2016.09.23.09.23.47
+        by smtp.gmail.com with ESMTPSA id y11sm24545918pfa.4.2016.09.25.20.26.14
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 23 Sep 2016 09:23:48 -0700 (PDT)
-Date: Fri, 23 Sep 2016 09:23:47 -0700
+        Sun, 25 Sep 2016 20:26:14 -0700 (PDT)
+Date: Sun, 25 Sep 2016 20:26:12 -0700
 From: Alison Schofield <amsfield22@gmail.com>
-To: bankarsandhya512@gmail.com
-Cc: outreachy-kernel@googlegroups.com
-Subject: claiming tasks, upstream & endianess work "OutreachyTasks" by
- sandhyabankar]
-Message-ID: <20160923162346.GA6861@d830.WORKGROUP>
+To: sayli karnik <karniksayli1995@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, Jonathan Cameron <jic23@kernel.org>,
+	Hartmut Knaack <knaack.h@gmx.de>,
+	Lars-Peter Clausen <lars@metafoo.de>,
+	Peter Meerwald-Stadler <pmeerw@pmeerw.net>
+Subject: Re: [Outreachy kernel] [PATCH] drivers: iio: temperature: Fix sparse
+ endianness warnings
+Message-ID: <20160926032611.GA7995@d830.WORKGROUP>
+References: <20160925215530.GA7543@sayli-HP-15-Notebook-PC>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20160925215530.GA7543@sayli-HP-15-Notebook-PC>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 
------ Forwarded message from wiki@kernelnewbies.org -----
+On Mon, Sep 26, 2016 at 03:25:30AM +0530, sayli karnik wrote:
+> Fix following endianness warnings:
+> warning: cast to restricted __be16
+> warning: cast to restricted __be32
+> 
+> Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
 
-Date: Fri, 23 Sep 2016 15:53:25 -0000
-=46rom: wiki@kernelnewbies.org
-To: wiki@kernelnewbies.org
-Subject: [Linux Kernel Newbies] Update of "OutreachyTasks" by sandhyabankar
+Hi Sayli - Thanks for picking up one of these Endianess issues!
 
-Dear Wiki user,
+Please take another look at what the function was trying to do before
+your patch.  Although the definition of 2 bufs may be part of the
+solution, 2 reads won't be.  
 
-You have subscribed to a wiki page or wiki category on "Linux Kernel Newbie=
-s" for change notification.
+The solution may be what you have started: define 2 different size bufs
+based on the storage_bytes but you'll need to then move the reads into
+the appropriate case statement. Maybe you'll come up with another
+option.
 
-The following page has been changed by sandhyabankar:
-http://kernelnewbies.org/OutreachyTasks
+In v2 - please also:
+- path is: iio: temperature: maxim_thermocouple: 
+- commit msg needs to be something like: use __be16 type for incoming read data
+  (say what you end up changing....in a nutshell ;))
+- see Lar's msg http://marc.info/?l=linux-iio&m=147481589111338&w=2 
+  and try to distinguish in your changelog if it's cosmetic or bug.
+- You should keep the reference to the tool you used to find the bug,
+  and the warning you fixed.  It's nice to be able to grep for those.
+- There's a checkpatch CHECK hiding in there. You didn't put it in, but
+  since you are probably touching that line of code. Fix it. Your checkpatch
+  check should have caught that. 
 
-The comment on the change is:
-updating tasks.
-
-  =3D=3D Ongoing Tasks from round 13 =3D+  * Task name: Fix endianness warn=
-ings in drivers/iio/accel/mma7660 code
-+
-+  * Claimed by: Sandhya Bankar
-+
-+  * Date claimed: 23 Sep 2016
-+
-+
-+  * Links to patch submissions: http://marc.info/?l=3Dlinux-iio&m=14745770=
-9326372&w=3D2
-+  * Current status:WIP
-+  * Task name: Fix endianness warnings in drivers/iio/adc/max1027 code
-+
-+  * Claimed by: Sandhya Bankar
-+
-+  * Date claimed: 23 Sep 2016
-+
-+
-+  * Links to patch submissions: http://marc.info/?l=3Dlinux-iio&m=14746441=
-7710596&w=3D2
-+
-
-Hi Sandhya,
-
-'cc-ing outreachy group...
-
-I see that you got your kernelnewbies access working.  Great!
-
-The sparse warnings in these drivers were not related to Endianess,
-so they don't need to be claimed here.  The IIO claims here will only be
-for Coding Task 2 - IIO Endianess work.
-
-I do see that you've submitted the patches upstream already, so you'll
-need to follow up on those as needed with the IIO maintainer.
-
-Gentle reminder - try to stick to drivers/staging/ patches.=20
-
-The exception is for IIO Coding Task 2 Endianess issues. We are not
-intending to go upstream in general.  That is, we won't go looking
-for sparse and checkpatch fixes to do upstream now.
-
-Let me know if this isn't clear.  You are out front on some of this, so
-if it's not clear to you, it probably won't be clear to others, and I
-want to fix that.
-
-Thanks,
+Questions....please ask,
 alisons
 
+
+> ---
+>  drivers/iio/temperature/maxim_thermocouple.c | 13 +++++++++----
+>  1 file changed, 9 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/iio/temperature/maxim_thermocouple.c b/drivers/iio/temperature/maxim_thermocouple.c
+> index 39dd202..3e99056 100644
+> --- a/drivers/iio/temperature/maxim_thermocouple.c
+> +++ b/drivers/iio/temperature/maxim_thermocouple.c
+> @@ -123,19 +123,24 @@ static int maxim_thermocouple_read(struct maxim_thermocouple_data *data,
+>  {
+>  	unsigned int storage_bytes = data->chip->read_size;
+>  	unsigned int shift = chan->scan_type.shift + (chan->address * 8);
+> -	unsigned int buf;
+> +	__be16 buf1;
+> +	__be32 buf2;
+>  	int ret;
+>  
+> -	ret = spi_read(data->spi, (void *) &buf, storage_bytes);
+> +	ret = spi_read(data->spi, (void *) &buf1, storage_bytes);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = spi_read(data->spi, (void *) &buf2, storage_bytes);
+>  	if (ret)
+>  		return ret;
+>  
+>  	switch (storage_bytes) {
+>  	case 2:
+> -		*val = be16_to_cpu(buf);
+> +		*val = be16_to_cpu(buf1);
+>  		break;
+>  	case 4:
+> -		*val = be32_to_cpu(buf);
+> +		*val = be32_to_cpu(buf2);
+>  		break;
+>  	}
+>  
+> -- 
+> 2.7.4
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160925215530.GA7543%40sayli-HP-15-Notebook-PC.
+> For more options, visit https://groups.google.com/d/optout.
 
