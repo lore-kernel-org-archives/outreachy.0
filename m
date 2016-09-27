@@ -1,119 +1,170 @@
 X-GM-THRID: 6334961343676809216
-X-Received: by 10.194.96.237 with SMTP id dv13mr1324228wjb.6.1474980848509;
-        Tue, 27 Sep 2016 05:54:08 -0700 (PDT)
+X-Received: by 10.157.58.34 with SMTP id j31mr6602982otc.129.1474978596002;
+        Tue, 27 Sep 2016 05:16:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.203.196 with SMTP id b187ls1809889wmg.10.canary; Tue, 27
- Sep 2016 05:54:02 -0700 (PDT)
-X-Received: by 10.28.67.132 with SMTP id q126mr205795wma.22.1474980842798;
-        Tue, 27 Sep 2016 05:54:02 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id p199si1193466wmd.1.2016.09.27.05.54.02
+Received: by 10.157.34.18 with SMTP id o18ls15307772ota.40.gmail; Tue, 27 Sep
+ 2016 05:16:35 -0700 (PDT)
+X-Received: by 10.13.197.65 with SMTP id h62mr6652605ywd.4.1474978595598;
+        Tue, 27 Sep 2016 05:16:35 -0700 (PDT)
+Return-Path: <anchalj109@gmail.com>
+Received: from mail-qt0-x244.google.com (mail-qt0-x244.google.com. [2607:f8b0:400d:c0d::244])
+        by gmr-mx.google.com with ESMTPS id u139si125265ywe.5.2016.09.27.05.16.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Sep 2016 05:54:02 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Tue, 27 Sep 2016 05:16:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400d:c0d::244 as permitted sender) client-ip=2607:f8b0:400d:c0d::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.30,405,1470693600"; 
-   d="scan'208";a="194806664"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 27 Sep 2016 14:54:02 +0200
-Date: Tue, 27 Sep 2016 14:53:58 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Anchal Jain <anchalj109@gmail.com>
-cc: Greg KH <gregkh@linuxfoundation.org>, Michael.Hennerich@analog.com, 
-    outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] Re: [PATCH] staging: iio: cdc: add comment
- to mutex
-In-Reply-To: <CAAbeOSuN_FAYa_PUDQRQBsyvuKriv5SQykZwsM8KM=9dsMJOGg@mail.gmail.com>
-Message-ID: <alpine.DEB.2.10.1609271448210.3044@hadrien>
-References: <20160927104504.GA13155@life-desktop> <20160927111608.GA18326@kroah.com> <CAAbeOSuN_FAYa_PUDQRQBsyvuKriv5SQykZwsM8KM=9dsMJOGg@mail.gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400d:c0d::244 as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qt0-x244.google.com with SMTP id z36so323502qtc.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 27 Sep 2016 05:16:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=cPDYQqs/RhyQL5/XOzqwQqfWeJ1BQ31vycbMYW391GA=;
+        b=ytZkJUBjO3e44xvTXn/wKFYmSPHp/Il77mGVHXa7sD8EalQv1QRrYhZTAZZLww0raF
+         bx8eIP+7yapQ456mfKCKp8oZHhjUGDfzLvtiDI+k3nAVrubUVWyPbTcCxhY023M5+0Hv
+         SPiyAC/aE6t6+jISZ6OB17ER9fEEi1ZesYot/98Grur5WX2zGzWzixDjcZS3wK68iWr7
+         IqVFVLdxcLHzsYE0l8NRS3NMO5JctwykJ6jprxp/3/oNwysyQv5vXXrakq8SI5dbfczx
+         o3DJxD1u2fb3U+er86wVCWAFoA+RXTR81MgLrm5IT4iKKhthjMN91l5xhCo8kIBOYBwk
+         jcGg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=cPDYQqs/RhyQL5/XOzqwQqfWeJ1BQ31vycbMYW391GA=;
+        b=HBvC4mkd/QzKRg0OUuue8aZrAmM7Fr0emAfVPAzM5Z4TLzVwqOQwY04aKFSu/B2jIW
+         bwvkvdIwJ51q7hd54LVyOE5tQEps7tO37dnJkSxnfjOQ8stJ7HT1CvtYOnBxTRaj4s4b
+         CSxX0fseYSOY/klAQgD0C9GwnP55AMB+UE0aK8yylejV2laJckpnj6Cq7ZAGJgxfK8dF
+         Glkl88vCskJ2f9Nx76I48xLOo8/YoElLUiHEYoUGt1XFkruMKfQF7ecGYroQWZIsUZ1r
+         HiP0BI2sXVBncqZvvLCugJ/2QVQpYlwTzGtGcq5pU2pR4sCe8293vVr90hAqL3XIzqqV
+         0HmQ==
+X-Gm-Message-State: AA6/9RnMfR7BnKYySztk5UDTwpcHUo0nQwrvc8xSTHwQr4ta91Nxtme0SrqI1TgfEyT+S9wrM1thfLRbrN24jg==
+X-Received: by 10.237.53.201 with SMTP id d9mr27998423qte.90.1474978595353;
+ Tue, 27 Sep 2016 05:16:35 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-1568120614-1474980839=:3044"
+Received: by 10.12.171.92 with HTTP; Tue, 27 Sep 2016 05:16:34 -0700 (PDT)
+In-Reply-To: <20160927111608.GA18326@kroah.com>
+References: <20160927104504.GA13155@life-desktop> <20160927111608.GA18326@kroah.com>
+From: Anchal Jain <anchalj109@gmail.com>
+Date: Tue, 27 Sep 2016 17:46:34 +0530
+Message-ID: <CAAbeOSuN_FAYa_PUDQRQBsyvuKriv5SQykZwsM8KM=9dsMJOGg@mail.gmail.com>
+Subject: Re: [PATCH] staging: iio: cdc: add comment to mutex
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: Michael.Hennerich@analog.com, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: multipart/alternative; boundary=001a11c02be03a3b72053d7c37a6
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+--001a11c02be03a3b72053d7c37a6
+Content-Type: text/plain; charset=UTF-8
 
---8323329-1568120614-1474980839=:3044
-Content-Type: TEXT/PLAIN; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+>That's the best description for this?  I don't understand this, do you?
+>
+>Why no ' ' after and before '*'?
 
+because the in C we prefer in the comment in like that
+/*....*/
+not like this
+/'*'....'*'/
+If I used this there is not problem the compiler should read as a comment
+because in normal C program we can use comment in these pattern /..../
+but according to  Linux kernel Coding style
+<https://www.kernel.org/doc/Documentation/CodingStyle>
 
+And I am not sure it is the best description may be it is not fully correct
+if you want to do some change in comment than I can.
 
-On Tue, 27 Sep 2016, Anchal Jain wrote:
+Thank you,
+<https://www.kernel.org/doc/Documentation/CodingStyle>
 
-> >That's the best description for this?  I don't understand this, do you?
+On Tue, Sep 27, 2016 at 4:46 PM, Greg KH <gregkh@linuxfoundation.org> wrote:
+
+> On Tue, Sep 27, 2016 at 04:15:12PM +0530, Anchal Jain wrote:
+> > Fix the checkpatch.pl issues:
+> > CHECK: struct mutes definition without comment
 > >
-> >Why no ' ' after and before '*'?
+> > Signed-off-by: Anchal Jain <anchalj109@gmail.com>
+> > ---
+> >  drivers/staging/iio/cdc/ad7150.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/staging/iio/cdc/ad7150.c b/drivers/staging/iio/cdc/
+> ad7150.c
+> > index f6b9a10..88c6ebe 100644
+> > --- a/drivers/staging/iio/cdc/ad7150.c
+> > +++ b/drivers/staging/iio/cdc/ad7150.c
+> > @@ -78,7 +78,7 @@ struct ad7150_chip_info {
+> >       u8 mag_timeout[2][2];
+> >       int old_state;
+> >       char *conversion_mode;
+> > -     struct mutex state_lock;
+> > +     struct mutex state_lock; /*generic mutex for cdc and drivers*/
 >
-> because the in C we prefer in the comment in like that
-> /*....*/
-> not like this
-> /'*'....'*'/
+> That's the best description for this?  I don't understand this, do you?
+>
+> Why no ' ' after and before '*'?
+>
+> thnks,
+>
+> greg k-h
+>
 
-Normally comments /* look like this */, /*not like this*/.
+--001a11c02be03a3b72053d7c37a6
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-> If I used this there is not problem the compiler should read as a comment
-> because in normal C program we can use comment in these pattern /..../
-> but according to  Linux kernel Coding style
->
-> And I am not sure it is the best description may be it is not fully correct
-> if you want to do some change in comment than I can.
+<div dir=3D"ltr"><div><div><div><div><div><div>&gt;That&#39;s the best desc=
+ription for this?=C2=A0 I don&#39;t understand this, do you?<br>&gt;<br>&gt=
+;Why no &#39; &#39; after and before &#39;*&#39;?<br><br></div>because the =
+in C we prefer in the  comment in like that <br>/*....*/<br></div>not like =
+this<br>/&#39;*&#39;....&#39;*&#39;/<br></div>If I used this there is not p=
+roblem the compiler should read as a comment because in normal C program we=
+ can use comment in these pattern /..../<br></div>but according to=C2=A0<a =
+href=3D"https://www.kernel.org/doc/Documentation/CodingStyle"> Linux kernel=
+ Coding style</a><br><br></div>And I am not sure it is the best description=
+ may be it is not fully correct if you want to do some change in comment th=
+an I can.<br><br></div>Thank you,<br><div><div><a href=3D"https://www.kerne=
+l.org/doc/Documentation/CodingStyle"> </a></div></div></div><div class=3D"g=
+mail_extra"><br><div class=3D"gmail_quote">On Tue, Sep 27, 2016 at 4:46 PM,=
+ Greg KH <span dir=3D"ltr">&lt;<a href=3D"mailto:gregkh@linuxfoundation.org=
+" target=3D"_blank">gregkh@linuxfoundation.org</a>&gt;</span> wrote:<br><bl=
+ockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #=
+ccc solid;padding-left:1ex"><span class=3D"">On Tue, Sep 27, 2016 at 04:15:=
+12PM +0530, Anchal Jain wrote:<br>
+&gt; Fix the <a href=3D"http://checkpatch.pl" rel=3D"noreferrer" target=3D"=
+_blank">checkpatch.pl</a> issues:<br>
+&gt; CHECK: struct mutes definition without comment<br>
+&gt;<br>
+&gt; Signed-off-by: Anchal Jain &lt;<a href=3D"mailto:anchalj109@gmail.com"=
+>anchalj109@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 drivers/staging/iio/cdc/<wbr>ad7150.c | 2 +-<br>
+&gt;=C2=A0 1 file changed, 1 insertion(+), 1 deletion(-)<br>
+&gt;<br>
+&gt; diff --git a/drivers/staging/iio/cdc/<wbr>ad7150.c b/drivers/staging/i=
+io/cdc/<wbr>ad7150.c<br>
+&gt; index f6b9a10..88c6ebe 100644<br>
+&gt; --- a/drivers/staging/iio/cdc/<wbr>ad7150.c<br>
+&gt; +++ b/drivers/staging/iio/cdc/<wbr>ad7150.c<br>
+&gt; @@ -78,7 +78,7 @@ struct ad7150_chip_info {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0u8 mag_timeout[2][2];<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0int old_state;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0char *conversion_mode;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0struct mutex state_lock;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0struct mutex state_lock; /*generic mutex for cdc =
+and drivers*/<br>
+<br>
+</span>That&#39;s the best description for this?=C2=A0 I don&#39;t understa=
+nd this, do you?<br>
+<br>
+Why no &#39; &#39; after and before &#39;*&#39;?<br>
+<br>
+thnks,<br>
+<br>
+greg k-h<br>
+</blockquote></div><br></div>
 
-I think it is a problem that can only be solved with a good understanding
-of what the mutex is used for.  You may want to look at what comments are
-associated with mutex declarations in other files.
-
-julia
-
-> Thank you,
->
-> On Tue, Sep 27, 2016 at 4:46 PM, Greg KH <gregkh@linuxfoundation.org> wrote:
->       On Tue, Sep 27, 2016 at 04:15:12PM +0530, Anchal Jain wrote:
->       > Fix the checkpatch.pl issues:
->       > CHECK: struct mutes definition without comment
->       >
->       > Signed-off-by: Anchal Jain <anchalj109@gmail.com>
->       > ---
->       >  drivers/staging/iio/cdc/ad7150.c | 2 +-
->       >  1 file changed, 1 insertion(+), 1 deletion(-)
->       >
->       > diff --git a/drivers/staging/iio/cdc/ad7150.c
->       b/drivers/staging/iio/cdc/ad7150.c
->       > index f6b9a10..88c6ebe 100644
->       > --- a/drivers/staging/iio/cdc/ad7150.c
->       > +++ b/drivers/staging/iio/cdc/ad7150.c
->       > @@ -78,7 +78,7 @@ struct ad7150_chip_info {
->       >       u8 mag_timeout[2][2];
->       >       int old_state;
->       >       char *conversion_mode;
->       > -     struct mutex state_lock;
->       > +     struct mutex state_lock; /*generic mutex for cdc and
->       drivers*/
->
->       That's the best description for this?  I don't understand this,
->       do you?
->
->       Why no ' ' after and before '*'?
->
->       thnks,
->
->       greg k-h
->
->
-> --
-> You received this message because you are subscribed to the Google Groups
-> "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an
-> email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CAAbeOSuN_FAYa_PUDQRQBsy
-> vuKriv5SQykZwsM8KM%3D9dsMJOGg%40mail.gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
->
---8323329-1568120614-1474980839=:3044--
+--001a11c02be03a3b72053d7c37a6--
 
