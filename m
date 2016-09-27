@@ -1,75 +1,94 @@
-X-GM-THRID: 3063531175936
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,8a7b7b306baa2356,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.80.7 with SMTP id n7mr1581986wix.0.1424724494827;
-        Mon, 23 Feb 2015 12:48:14 -0800 (PST)
+X-GM-THRID: 6334764587884216320
+X-Received: by 10.28.72.196 with SMTP id v187mr83889wma.0.1474953255257;
+        Mon, 26 Sep 2016 22:14:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.101.169 with SMTP id fh9ls75606wib.48.canary; Mon, 23 Feb
- 2015 12:48:14 -0800 (PST)
-X-Received: by 10.194.239.41 with SMTP id vp9mr1621178wjc.5.1424724494448;
-        Mon, 23 Feb 2015 12:48:14 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from mail-we0-x22f.google.com (mail-we0-x22f.google.com. [2a00:1450:400c:c03::22f])
-        by gmr-mx.google.com with ESMTPS id i7si779647wif.0.2015.02.23.12.48.14
+Received: by 10.28.48.6 with SMTP id w6ls1623831wmw.17.canary; Mon, 26 Sep
+ 2016 22:14:14 -0700 (PDT)
+X-Received: by 10.28.207.3 with SMTP id f3mr83304wmg.10.1474953254610;
+        Mon, 26 Sep 2016 22:14:14 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id e21si48998wmc.2.2016.09.26.22.14.14
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Feb 2015 12:48:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) client-ip=2a00:1450:400c:c03::22f;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 26 Sep 2016 22:14:14 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) smtp.mail=dilekuzulmez@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22f.google.com with SMTP id x3so21238740wes.6
-        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 12:48:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=nF0gpWxf5MkosYPvy32i0O9+SSwMZY+LKCky6bJPRuM=;
-        b=WZyzFcNL4T0PLxM1d7BAFxqe1MhlpFWMdbtwhkJhmuh9na/Eji+0wg9ihhxYGAtlOI
-         rukBH/QGfDx4Jcb0ViDjiyk+9L1WABm4ltKbsti0vkJN39QJc2GErSb7IpZrUKAxwIP0
-         MxGs0fAXcu+RLcX96d9Uexam59cB6DAuGDMpK1KKIaLGwn767YwKLpb8LikPaG8JjlJ/
-         U7oHkBdyRD+YPmQ3trM7oqDr8b8jgOD0LavDLi2is6a5dj6T0xPOGCgc87GkEl1Tj7b/
-         OJUfYkdtEjRhglR6D2vPKdY5rOd/XjOhEFWE0JY1T8LMZ/Xkta0zf8hJtnVNp8wd9UaP
-         ilWg==
-X-Received: by 10.194.143.109 with SMTP id sd13mr26507163wjb.70.1424724494130;
-        Mon, 23 Feb 2015 12:48:14 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from localhost.localdomain ([88.236.245.176])
-        by mx.google.com with ESMTPSA id ka1sm57160931wjc.2.2015.02.23.12.48.12
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 23 Feb 2015 12:48:13 -0800 (PST)
-From: Dilek Uzulmez <dilekuzulmez@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Subject: [PATCH] Staging: media: Fix do not use C99 // comments
-Date: Mon, 23 Feb 2015 22:48:05 +0200
-Message-Id: <1424724485-5872-1-git-send-email-dilekuzulmez@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,403,1470693600"; 
+   d="scan'208";a="238364353"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien.local) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 27 Sep 2016 07:14:13 +0200
+Date: Tue, 27 Sep 2016 07:14:12 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Elizabeth Ferdman <gnudevliz@gmail.com>
+cc: outreachy-kernel@googlegroups.com, amsfield22@gmail.com, 
+    daniel.baluta@intel.com, sudipm.mukherjee@gmail.com, 
+    teddy.wang@siliconmotion.com, gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH] staging: sm750fb: Refactor camelCase
+ macro
+In-Reply-To: <20160926220150.GA2273@localhost>
+Message-ID: <alpine.DEB.2.10.1609270713180.3413@hadrien>
+References: <20160926220150.GA2273@localhost>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Fix checkpatch.pl issues with do not use C99 //
-comments in saa7191.c
+On Mon, 26 Sep 2016, Elizabeth Ferdman wrote:
 
-Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
----
- drivers/staging/media/vino/saa7191.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> This patch refactors a camelcase macro roundedDiv to rounded_div. Error found by checkpatch.
 
-diff --git a/drivers/staging/media/vino/saa7191.c b/drivers/staging/media/vino/saa7191.c
-index f411e1f..2e54970 100644
---- a/drivers/staging/media/vino/saa7191.c
-+++ b/drivers/staging/media/vino/saa7191.c
-@@ -33,7 +33,7 @@ MODULE_AUTHOR("Mikael Nousiainen <tmnousia@cc.hut.fi>");
- MODULE_LICENSE("GPL");
- 
- 
--// #define SAA7191_DEBUG
-+/* #define SAA7191_DEBUG */
- 
- #ifdef SAA7191_DEBUG
- #define dprintk(x...) printk("SAA7191: " x);
--- 
-1.9.1
+Refactors seems like kind of a big word for just a renaming.  Refactoring
+would suggest a larger scale reorganization.
 
+julia
+
+>
+> Signed-off-by: Elizabeth Ferdman <gnudevliz@gmail.com>
+> ---
+>  drivers/staging/sm750fb/ddk750_chip.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
+> index f557b6d..81df4c4 100644
+> --- a/drivers/staging/sm750fb/ddk750_chip.c
+> +++ b/drivers/staging/sm750fb/ddk750_chip.c
+> @@ -7,7 +7,7 @@
+>  #include "ddk750_power.h"
+>
+>  /* n / d + 1 / 2 = (2n + d) / 2d */
+> -#define roundedDiv(num, denom)	((2 * (num) + (denom)) / (2 * (denom)))
+> +#define rounded_div(num, denom)	((2 * (num) + (denom)) / (2 * (denom)))
+>  #define MHz(x) ((x) * 1000000)
+>
+>  logical_chip_type_t getChipType(void)
+> @@ -102,7 +102,7 @@ static void setMemoryClock(unsigned int frequency)
+>  			frequency = MHz(336);
+>
+>  		/* Calculate the divisor */
+> -		divisor = roundedDiv(get_mxclk_freq(), frequency);
+> +		divisor = rounded_div(get_mxclk_freq(), frequency);
+>
+>  		/* Set the corresponding divisor in the register. */
+>  		reg = PEEK32(CURRENT_GATE) & ~CURRENT_GATE_M2XCLK_MASK;
+> @@ -152,7 +152,7 @@ static void setMasterClock(unsigned int frequency)
+>  			frequency = MHz(190);
+>
+>  		/* Calculate the divisor */
+> -		divisor = roundedDiv(get_mxclk_freq(), frequency);
+> +		divisor = rounded_div(get_mxclk_freq(), frequency);
+>
+>  		/* Set the corresponding divisor in the register. */
+>  		reg = PEEK32(CURRENT_GATE) & ~CURRENT_GATE_MCLK_MASK;
+> --
+> 2.1.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160926220150.GA2273%40localhost.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
