@@ -1,275 +1,250 @@
-X-GM-THRID: 6332965623002300416
-X-Received: by 10.66.50.6 with SMTP id y6mr5619452pan.5.1474508462337;
-        Wed, 21 Sep 2016 18:41:02 -0700 (PDT)
+X-GM-THRID: 6335483864335515648
+X-Received: by 10.28.29.13 with SMTP id d13mr728913wmd.19.1475096042166;
+        Wed, 28 Sep 2016 13:54:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.25.138 with SMTP id 132ls5340894ioz.13.gmail; Wed, 21 Sep
- 2016 18:41:00 -0700 (PDT)
-X-Received: by 10.36.37.139 with SMTP id g133mr1916799itg.0.1474508460369;
-        Wed, 21 Sep 2016 18:41:00 -0700 (PDT)
-Return-Path: <kdunne@mail.ccsf.edu>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id f12si280390pfk.0.2016.09.21.18.41.00
+Received: by 10.28.146.18 with SMTP id u18ls46883wmd.14.canary; Wed, 28 Sep
+ 2016 13:54:01 -0700 (PDT)
+X-Received: by 10.194.175.166 with SMTP id cb6mr1880632wjc.15.1475096041473;
+        Wed, 28 Sep 2016 13:54:01 -0700 (PDT)
+Return-Path: <georgiana.chelu93@gmail.com>
+Received: from mail-lf0-x242.google.com (mail-lf0-x242.google.com. [2a00:1450:4010:c07::242])
+        by gmr-mx.google.com with ESMTPS id e21si777564wmc.2.2016.09.28.13.54.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Sep 2016 18:41:00 -0700 (PDT)
-Received-SPF: neutral (google.com: 2607:f8b0:400e:c00::243 is neither permitted nor denied by best guess record for domain of kdunne@mail.ccsf.edu) client-ip=2607:f8b0:400e:c00::243;
+        Wed, 28 Sep 2016 13:54:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:4010:c07::242 as permitted sender) client-ip=2a00:1450:4010:c07::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@mail-ccsf-edu.20150623.gappssmtp.com;
-       spf=neutral (google.com: 2607:f8b0:400e:c00::243 is neither permitted nor denied by best guess record for domain of kdunne@mail.ccsf.edu) smtp.mailfrom=kdunne@mail.ccsf.edu
-Received: by mail-pf0-x243.google.com with SMTP id 21so3071548pfy.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 21 Sep 2016 18:41:00 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:4010:c07::242 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-lf0-x242.google.com with SMTP id b71so3792664lfg.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 28 Sep 2016 13:54:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=mail-ccsf-edu.20150623.gappssmtp.com; s=20150623;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=urzfRke0GnN4YH4F8ShM2pIWeFIAs8geVYN6fAwRF7k=;
-        b=po6zKljqmEyeyuK4vqo9+oaW6aQTtAyb1FXruEfmfEpc7dk+v4mtpXBtJZCoLIM8Wn
-         yXBpR4aoGlRyJRRpCB9T1xNLWsNppJ/gETTNxBPoo4nR+4zLRyem1UfxyN3pfQy3aqTP
-         sgew4ItoWJdZsAP7NKyYdaQnI6U8ZRtuCNB0o7SKWRrqz0dPGUn0az1lfnV/huX5EgjH
-         u09l5yGhh3kSvxl0aHjfYFbbmPiP34++aKUx026Da8gAUj3ass9SGSBs7cgr819yrc5b
-         bHZufsA2LCEIxyJpZLfB7aA/inlRxlYxw+wgrBL30QFMhTHx8Qr8ICeZzt/Fj9OKEUVo
-         S2/A==
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=K9iIUONKgOCxBDtLQUpsxFwVC761deo9ZpMqBNyOT2s=;
+        b=XdZ0uv28zg3yeA/kK45ygY+vWpqh9BdVj9TVuF6bmBNsx/Unm83zA2kO2EZQtg0qB4
+         IXC+BUBsPmQblMnui+sZeRSn1vWcReDp+CzNdoMXzSSGaTQMzQKHLLZposzfxaB3gJsG
+         r0W6xDCW9Q8I1ntA6Bh7ygRAkFPbqWDGOVaxvEar6ekZLGaC7tEpgXcMCiAv5nYlNLnX
+         1JQNH5zZkf0Ap423FXV3KH3vX+L/CFfSMK592sdvc8l573Z0HQM8ar2GmLSPM7kuhJmV
+         fz8XH780jIZVXaDTIOKnyYRL0hOjTvpG/DTV8F98uG85hJQGzWK+iBpNVS5D8XnGgYZe
+         oSIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=urzfRke0GnN4YH4F8ShM2pIWeFIAs8geVYN6fAwRF7k=;
-        b=mXmCkIJeRASEDf4KeFlXFoynnmlR0YLadm9YVOK1MnvfKbViqIuh9Py68c2uIdt/CR
-         sml+DGHQoI4hZiAKdaNkUR/2s/pi1w6uv+Thg8D8JeJ1GvqmEaq7qAvFr3AjVqJ7WgZ4
-         hXglZXWxlJlw/EhVomid9v+X5zXmdvtSd39M0K0LoSK8R81keKldk6AjMZrqnWp44v2n
-         YWv2xExoBk5WF4lh4WdmW3PaeEy00QkJM7tjlz2iy2HkQSG9ZxWByChafrR415XNqlpb
-         1EmJ7jGskCrww0nHI87KGqETk8fkOEmh3byPR6mRSjPq3xX8RkF/pZZAvjEeEqQz2C6V
-         5OjA==
-X-Gm-Message-State: AE9vXwMYVHYsegFLPfa4z25D1QNjPwvGgFGvaAqUpl/W9DlXl7LSVcir1W5hRtKlTsGCpKNz
-X-Received: by 10.98.37.130 with SMTP id l124mr69146852pfl.60.1474508459921;
-        Wed, 21 Sep 2016 18:40:59 -0700 (PDT)
-Return-Path: <kdunne@mail.ccsf.edu>
-Received: from katie-Inspiron-5748 ([2001:558:6045:106:7d84:83db:c3b2:274a])
-        by smtp.gmail.com with ESMTPSA id y1sm611089pfd.90.2016.09.21.18.40.59
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 21 Sep 2016 18:40:59 -0700 (PDT)
-Date: Wed, 21 Sep 2016 18:40:58 -0700
-From: Katie Dunne <kdunne@mail.ccsf.edu>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: wlan-ng: End block comments with */ on new line
-Message-ID: <20160922014058.GA24631@katie-Inspiron-5748>
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=K9iIUONKgOCxBDtLQUpsxFwVC761deo9ZpMqBNyOT2s=;
+        b=V0oNiOP3NJR8Lspdkwdm2dwcyqmbWc3sK0kT70qDI7QxH5SrqjLS3Ju5U0RxTnEBQg
+         guevTTtVh8v4NyR5dCZWfOyxeWX2wYVRsVJErSkCLqNfpuUmKgTNj4JDcaS2PHKDokYE
+         SIeBtNeVCfhSnwJKpRRwLpBchYSP6/+QmqW+iL/IaML/zSIMjzkSqFanY+jJhVbe14lr
+         hP4Mzemn5hz8vYsV+JgSKXX4t+WNNy9aTqvpzREo8uqmt+puWfd1sxNvUvgaIz3na2Zv
+         ll4IQKK+QCWLX/gPiU857ZXsXyOzgOocg79I3G668okQngxer4plVNDwiQNgUNf0DcNj
+         tjUw==
+X-Gm-Message-State: AE9vXwPeVULTxb0uR1OkZDzSBmnKSm9YtjHg1k6V4urbphjzwtfrYigffyc1bMOKaVsC9ond1xAKemYtWoNr8g==
+X-Received: by 10.25.167.209 with SMTP id q200mr13179013lfe.122.1475096041141;
+ Wed, 28 Sep 2016 13:54:01 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Received: by 10.114.59.103 with HTTP; Wed, 28 Sep 2016 13:54:00 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.10.1609282247380.3211@hadrien>
+References: <20160928203302.GA19044@fireworks> <alpine.DEB.2.10.1609282247380.3211@hadrien>
+From: Georgiana Chelu <georgiana.chelu93@gmail.com>
+Date: Wed, 28 Sep 2016 23:54:00 +0300
+Message-ID: <CALta04xP+sSdDcU7zMffUmWODwp5ScMV-+DBXAjgHC0__MvexA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8188eu: core: rtw_xmit:
+ Move constant of the right side
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel@googlegroups.com, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Content-Type: multipart/alternative; boundary=001a114030088aba8d053d978f36
 
-Warning found by checkpatch. Also cleans up the start of the
-comment for less noise and easier reading.
+--001a114030088aba8d053d978f36
+Content-Type: text/plain; charset=UTF-8
 
-Signed-off-by: Katie Dunne <kdunne@mail.ccsf.edu>
----
- drivers/staging/wlan-ng/prism2fw.c | 44 +++++++++++++++++++-------------------
- 1 file changed, 22 insertions(+), 22 deletions(-)
+Yes, I am working on this :)
 
-diff --git a/drivers/staging/wlan-ng/prism2fw.c b/drivers/staging/wlan-ng/prism2fw.c
-index e2fba30..fdf69fb 100644
---- a/drivers/staging/wlan-ng/prism2fw.c
-+++ b/drivers/staging/wlan-ng/prism2fw.c
-@@ -190,7 +190,7 @@ static int validate_identity(void);
- /*================================================================*/
- /* Function Definitions */
- 
--/*----------------------------------------------------------------
-+/*
- * prism2_fwtry
- *
- * Try and get firmware into memory
-@@ -202,7 +202,7 @@ static int validate_identity(void);
- * Returns:
- *	0	- success
- *	~0	- failure
------------------------------------------------------------------*/
-+*/
- static int prism2_fwtry(struct usb_device *udev, struct wlandevice *wlandev)
- {
- 	const struct firmware *fw_entry = NULL;
-@@ -227,7 +227,7 @@ static int prism2_fwtry(struct usb_device *udev, struct wlandevice *wlandev)
- 	return 0;
- }
- 
--/*----------------------------------------------------------------
-+/*
- * prism2_fwapply
- *
- * Apply the firmware loaded into memory
-@@ -239,7 +239,7 @@ static int prism2_fwtry(struct usb_device *udev, struct wlandevice *wlandev)
- * Returns:
- *	0	- success
- *	~0	- failure
------------------------------------------------------------------*/
-+*/
- static int prism2_fwapply(const struct ihex_binrec *rfptr,
- 			  struct wlandevice *wlandev)
- {
-@@ -373,7 +373,7 @@ out:
- 	return result;
- }
- 
--/*----------------------------------------------------------------
-+/*
- * crcimage
- *
- * Adds a CRC16 in the two bytes prior to each block identified by
-@@ -389,7 +389,7 @@ out:
- * Returns:
- *	0	success
- *	~0	failure
------------------------------------------------------------------*/
-+*/
- static int crcimage(struct imgchunk *fchunk, unsigned int nfchunks,
- 		    struct s3crcrec *s3crc, unsigned int ns3crc)
- {
-@@ -440,7 +440,7 @@ static int crcimage(struct imgchunk *fchunk, unsigned int nfchunks,
- 	return result;
- }
- 
--/*----------------------------------------------------------------
-+/*
- * free_chunks
- *
- * Clears the chunklist data structures in preparation for a new file.
-@@ -450,7 +450,7 @@ static int crcimage(struct imgchunk *fchunk, unsigned int nfchunks,
- *
- * Returns:
- *	nothing
------------------------------------------------------------------*/
-+*/
- static void free_chunks(struct imgchunk *fchunk, unsigned int *nfchunks)
- {
- 	int i;
-@@ -463,7 +463,7 @@ static void free_chunks(struct imgchunk *fchunk, unsigned int *nfchunks)
- 
- }
- 
--/*----------------------------------------------------------------
-+/*
- * free_srecs
- *
- * Clears the srec data structures in preparation for a new file.
-@@ -473,7 +473,7 @@ static void free_chunks(struct imgchunk *fchunk, unsigned int *nfchunks)
- *
- * Returns:
- *	nothing
------------------------------------------------------------------*/
-+*/
- static void free_srecs(void)
- {
- 	ns3data = 0;
-@@ -487,7 +487,7 @@ static void free_srecs(void)
- 	startaddr = 0;
- }
- 
--/*----------------------------------------------------------------
-+/*
- * mkimage
- *
- * Scans the currently loaded set of S records for data residing
-@@ -500,7 +500,7 @@ static void free_srecs(void)
- * Returns:
- *	0	- success
- *	~0	- failure (probably an errno)
------------------------------------------------------------------*/
-+*/
- static int mkimage(struct imgchunk *clist, unsigned int *ccnt)
- {
- 	int result = 0;
-@@ -578,7 +578,7 @@ static int mkimage(struct imgchunk *clist, unsigned int *ccnt)
- 	return result;
- }
- 
--/*----------------------------------------------------------------
-+/*
- * mkpdrlist
- *
- * Reads a raw PDA and builds an array of pdrec_t structures.
-@@ -591,7 +591,7 @@ static int mkimage(struct imgchunk *clist, unsigned int *ccnt)
- * Returns:
- *	0	- success
- *	~0	- failure (probably an errno)
------------------------------------------------------------------*/
-+*/
- static int mkpdrlist(struct pda *pda)
- {
- 	u16 *pda16 = (u16 *)pda->buf;
-@@ -645,7 +645,7 @@ static int mkpdrlist(struct pda *pda)
- 	return 0;
- }
- 
--/*----------------------------------------------------------------
-+/*
- * plugimage
- *
- * Plugs the given image using the given plug records from the given
-@@ -661,7 +661,7 @@ static int mkpdrlist(struct pda *pda)
- * Returns:
- *	0	success
- *	~0	failure
------------------------------------------------------------------*/
-+*/
- static int plugimage(struct imgchunk *fchunk, unsigned int nfchunks,
- 		     struct s3plugrec *s3plug, unsigned int ns3plug,
- 		     struct pda *pda)
-@@ -751,7 +751,7 @@ static int plugimage(struct imgchunk *fchunk, unsigned int nfchunks,
- 
- }
- 
--/*----------------------------------------------------------------
-+/*
- * read_cardpda
- *
- * Sends the command for the driver to read the pda from the card
-@@ -768,7 +768,7 @@ static int plugimage(struct imgchunk *fchunk, unsigned int nfchunks,
- * Returns:
- *	0	- success
- *	~0	- failure (probably an errno)
------------------------------------------------------------------*/
-+*/
- static int read_cardpda(struct pda *pda, struct wlandevice *wlandev)
- {
- 	int result = 0;
-@@ -804,7 +804,7 @@ static int read_cardpda(struct pda *pda, struct wlandevice *wlandev)
- 	return result;
- }
- 
--/*----------------------------------------------------------------
-+/*
- * read_fwfile
- *
- * Reads the given fw file which should have been compiled from an srec
-@@ -863,7 +863,7 @@ static int read_cardpda(struct pda *pda, struct wlandevice *wlandev)
- * Returns:
- *	0	- success
- *	~0	- failure (probably an errno)
------------------------------------------------------------------*/
-+*/
- static int read_fwfile(const struct ihex_binrec *record)
- {
- 	int		i;
-@@ -970,7 +970,7 @@ static int read_fwfile(const struct ihex_binrec *record)
- 	return 0;
- }
- 
--/*----------------------------------------------------------------
-+/*
- * writeimage
- *
- * Takes the chunks, builds p80211 messages and sends them down
-@@ -984,7 +984,7 @@ static int read_fwfile(const struct ihex_binrec *record)
- * Returns:
- *	0	success
- *	~0	failure
------------------------------------------------------------------*/
-+*/
- static int writeimage(struct wlandevice *wlandev, struct imgchunk *fchunk,
- 		      unsigned int nfchunks)
- {
--- 
-2.7.4
+Georgiana
 
+On 28 September 2016 at 23:48, Julia Lawall <julia.lawall@lip6.fr> wrote:
+
+>
+>
+> On Wed, 28 Sep 2016, Georgiana Rodica Chelu wrote:
+>
+> > Constants should be on the right side of comparisons.
+> >
+> > Issue found by checkpatch.pl script.
+> >
+> > Signed-off-by: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
+>
+> Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+>
+> I wonder if there is some more meaningful way to describe 0x888e.
+>
+> julia
+>
+> > ---
+> >  drivers/staging/rtl8188eu/core/rtw_xmit.c | 6 +++---
+> >  1 file changed, 3 insertions(+), 3 deletions(-)
+> >
+> > diff --git a/drivers/staging/rtl8188eu/core/rtw_xmit.c
+> b/drivers/staging/rtl8188eu/core/rtw_xmit.c
+> > index 1d2817b..1392899 100644
+> > --- a/drivers/staging/rtl8188eu/core/rtw_xmit.c
+> > +++ b/drivers/staging/rtl8188eu/core/rtw_xmit.c
+> > @@ -451,14 +451,14 @@ static s32 update_attrib(struct adapter *padapter,
+> struct sk_buff *pkt, struct p
+> >
+> >       pattrib->pktlen = pktfile.pkt_len;
+> >
+> > -     if (ETH_P_IP == pattrib->ether_type) {
+> > +     if (pattrib->ether_type == ETH_P_IP) {
+> >               /*  The following is for DHCP and ARP packet, we use cck1M
+> to tx these packets and let LPS awake some time */
+> >               /*  to prevent DHCP protocol fail */
+> >               u8 tmp[24];
+> >               _rtw_pktfile_read(&pktfile, &tmp[0], 24);
+> >               pattrib->dhcp_pkt = 0;
+> >               if (pktfile.pkt_len > 282) {/* MINIMUM_DHCP_PACKET_SIZE) {
+> */
+> > -                     if (ETH_P_IP == pattrib->ether_type) {/*  IP
+> header */
+> > +                     if (pattrib->ether_type == ETH_P_IP) {/*  IP
+> header */
+> >                               if (((tmp[21] == 68) && (tmp[23] == 67)) ||
+> >                                   ((tmp[21] == 67) && (tmp[23] == 68))) {
+> >                                       /*  68 : UDP BOOTP client */
+> > @@ -469,7 +469,7 @@ static s32 update_attrib(struct adapter *padapter,
+> struct sk_buff *pkt, struct p
+> >                               }
+> >                       }
+> >               }
+> > -     } else if (0x888e == pattrib->ether_type) {
+> > +     } else if (pattrib->ether_type == 0x888e) {
+> >               DBG_88E_LEVEL(_drv_info_, "send eapol packet\n");
+> >       }
+> >
+> > --
+> > 2.7.4
+> >
+> > --
+> > You received this message because you are subscribed to the Google
+> Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send
+> an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/
+> msgid/outreachy-kernel/20160928203302.GA19044%40fireworks.
+> > For more options, visit https://groups.google.com/d/optout.
+> >
+>
+
+--001a114030088aba8d053d978f36
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Yes, I am working on this :)<br><br></div>Georgiana<b=
+r></div><div class=3D"gmail_extra"><br><div class=3D"gmail_quote">On 28 Sep=
+tember 2016 at 23:48, Julia Lawall <span dir=3D"ltr">&lt;<a href=3D"mailto:=
+julia.lawall@lip6.fr" target=3D"_blank">julia.lawall@lip6.fr</a>&gt;</span>=
+ wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;bor=
+der-left:1px #ccc solid;padding-left:1ex"><span class=3D""><br>
+<br>
+On Wed, 28 Sep 2016, Georgiana Rodica Chelu wrote:<br>
+<br>
+&gt; Constants should be on the right side of comparisons.<br>
+&gt;<br>
+&gt; Issue found by <a href=3D"http://checkpatch.pl" rel=3D"noreferrer" tar=
+get=3D"_blank">checkpatch.pl</a> script.<br>
+&gt;<br>
+&gt; Signed-off-by: Georgiana Rodica Chelu &lt;<a href=3D"mailto:georgiana.=
+chelu93@gmail.com">georgiana.chelu93@gmail.com</a>&gt;<br>
+<br>
+</span>Acked-by: Julia Lawall &lt;<a href=3D"mailto:julia.lawall@lip6.fr">j=
+ulia.lawall@lip6.fr</a>&gt;<br>
+<br>
+I wonder if there is some more meaningful way to describe 0x888e.<br>
+<br>
+julia<br>
+<div class=3D"HOEnZb"><div class=3D"h5"><br>
+&gt; ---<br>
+&gt;=C2=A0 drivers/staging/rtl8188eu/<wbr>core/rtw_xmit.c | 6 +++---<br>
+&gt;=C2=A0 1 file changed, 3 insertions(+), 3 deletions(-)<br>
+&gt;<br>
+&gt; diff --git a/drivers/staging/rtl8188eu/<wbr>core/rtw_xmit.c b/drivers/=
+staging/rtl8188eu/<wbr>core/rtw_xmit.c<br>
+&gt; index 1d2817b..1392899 100644<br>
+&gt; --- a/drivers/staging/rtl8188eu/<wbr>core/rtw_xmit.c<br>
+&gt; +++ b/drivers/staging/rtl8188eu/<wbr>core/rtw_xmit.c<br>
+&gt; @@ -451,14 +451,14 @@ static s32 update_attrib(struct adapter *padapte=
+r, struct sk_buff *pkt, struct p<br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0pattrib-&gt;pktlen =3D pktfile.pkt_len;<br>
+&gt;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0if (ETH_P_IP =3D=3D pattrib-&gt;ether_type) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0if (pattrib-&gt;ether_type =3D=3D ETH_P_IP) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/*=C2=A0 The fol=
+lowing is for DHCP and ARP packet, we use cck1M to tx these packets and let=
+ LPS awake some time */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/*=C2=A0 to prev=
+ent DHCP protocol fail */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0u8 tmp[24];<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0_rtw_pktfile_rea=
+d(&amp;pktfile, &amp;tmp[0], 24);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0pattrib-&gt;dhcp=
+_pkt =3D 0;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (pktfile.pkt_=
+len &gt; 282) {/* MINIMUM_DHCP_PACKET_SIZE) { */<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0if (ETH_P_IP =3D=3D pattrib-&gt;ether_type) {/*=C2=A0 IP header */<b=
+r>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0if (pattrib-&gt;ether_type =3D=3D ETH_P_IP) {/*=C2=A0 IP header */<b=
+r>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (((tmp[21] =3D=3D 68) &amp;&amp=
+; (tmp[23] =3D=3D 67)) ||<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0((tmp[21] =3D=3D 67)=
+ &amp;&amp; (tmp[23] =3D=3D 68))) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/*=C2=
+=A0 68 : UDP BOOTP client */<br>
+&gt; @@ -469,7 +469,7 @@ static s32 update_attrib(struct adapter *padapter,=
+ struct sk_buff *pkt, struct p<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0}<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0} else if (0x888e =3D=3D pattrib-&gt;ether_type) =
+{<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0} else if (pattrib-&gt;ether_type =3D=3D 0x888e) =
+{<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0DBG_88E_LEVEL(_d=
+rv_info_, &quot;send eapol packet\n&quot;);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+&gt;<br>
+&gt; --<br>
+&gt; 2.7.4<br>
+&gt;<br>
+</div></div><span class=3D"HOEnZb"><font color=3D"#888888">&gt; --<br>
+&gt; You received this message because you are subscribed to the Google Gro=
+ups &quot;outreachy-kernel&quot; group.<br>
+&gt; To unsubscribe from this group and stop receiving emails from it, send=
+ an email to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.=
+com">outreachy-kernel+unsubscribe@<wbr>googlegroups.com</a>.<br>
+&gt; To post to this group, send email to <a href=3D"mailto:outreachy-kerne=
+l@googlegroups.com">outreachy-kernel@googlegroups.<wbr>com</a>.<br>
+&gt; To view this discussion on the web visit <a href=3D"https://groups.goo=
+gle.com/d/msgid/outreachy-kernel/20160928203302.GA19044%40fireworks" rel=3D=
+"noreferrer" target=3D"_blank">https://groups.google.com/d/<wbr>msgid/outre=
+achy-kernel/<wbr>20160928203302.GA19044%<wbr>40fireworks</a>.<br>
+&gt; For more options, visit <a href=3D"https://groups.google.com/d/optout"=
+ rel=3D"noreferrer" target=3D"_blank">https://groups.google.com/d/<wbr>opto=
+ut</a>.<br>
+&gt;<br>
+</font></span></blockquote></div><br></div>
+
+--001a114030088aba8d053d978f36--
 
