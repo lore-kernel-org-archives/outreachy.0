@@ -1,113 +1,134 @@
-X-GM-THRID: 6530656197776769024
-X-Received: by 2002:a17:902:8501:: with SMTP id bj1-v6mr5355641plb.8.1520536886153;
-        Thu, 08 Mar 2018 11:21:26 -0800 (PST)
+X-GM-THRID: 6335417907044941824
+X-Received: by 10.13.220.66 with SMTP id f63mr9293871ywe.129.1475079429583;
+        Wed, 28 Sep 2016 09:17:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.101.98.203 with SMTP id m11ls1105262pgv.23.gmail; Thu, 08 Mar
- 2018 11:21:24 -0800 (PST)
-X-Google-Smtp-Source: AG47ELt8rRbwu7CX81HX3RxRHHVE/1NUDdyCeU4hLQKqryimcbyBok5ae1t6d3T7nHAG4XSVVlZf
-X-Received: by 10.99.175.70 with SMTP id s6mr5453916pgo.15.1520536884691;
-        Thu, 08 Mar 2018 11:21:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520536884; cv=none;
-        d=google.com; s=arc-20160816;
-        b=txnjKombU8bSII6gElalWrW5CAcCf39c6LhprDanVnzF81sGyM51kaYsW6qN+Gw1LR
-         pZnzleRnGDYiL1uPl+HUhGGEx90mLOLyoCbF+D3PTK1yZuaDO5s5S+3kgd163bB7+gnU
-         ozC4sCy9J0KCKFj95Ja/sFQJjsAYDeOHU76P1mOS0p4V6BDZzd2xivYM/hCh/wVSEQkG
-         cSVPjgud7GOQAP9hqBVrFbooss+UCQevIeeyprzJ2aVvRmR6doziqs0HMghVPn9+bivV
-         /Tia1qSniH7gH39xmYCwLMpDFLgCbSiyAFWrIL3bXRA4+8f1+fri9rzOUrDZKQdIIWOw
-         XuaQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=H69AxVOcnjZRsFWhRDXI1Hwuc/wRuYacfuDJJ+ZaWpU=;
-        b=YfU5kGWWPpOYtGfwJPwTx4i/B4I2r8CvCtEW6CidXC0afI8foUODdFouMpkKI2PnrX
-         4Fu9nHqAZMsRE8WVoBSD7OoSCFG2cP/dj5zz3jXRVW6EhwMaL3MabRQqJ/KP3mYHS3BI
-         shAyKo22zuUaExhELXpVTCkaSvNaOrRuP9L8ZSvNbRkmLIRWc7RLbtRv6rUAi3EEOymJ
-         yirGMzbdyQapiRvyhmOstmEm/IDC6J5le966tRE4ELeQJCt0GuMhxZ4/LGzBViIvUu/V
-         WK9rEEy7kzKgTUh2a7wZyMA9g1UrMdMn7uqXE8jUR72URnkkhZSJx3M4X9DzkRXjzlUF
-         3UYA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=Ebq3evCm;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c05::22d as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from mail-pg0-x22d.google.com (mail-pg0-x22d.google.com. [2607:f8b0:400e:c05::22d])
-        by gmr-mx.google.com with ESMTPS id p6si1008507pgq.5.2018.03.08.11.21.24
+Received: by 10.157.13.165 with SMTP id 34ls1402511ots.13.gmail; Wed, 28 Sep
+ 2016 09:17:09 -0700 (PDT)
+X-Received: by 10.200.34.169 with SMTP id f38mr9159174qta.68.1475079429034;
+        Wed, 28 Sep 2016 09:17:09 -0700 (PDT)
+Return-Path: <karniksayli1995@gmail.com>
+Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
+        by gmr-mx.google.com with ESMTPS id um12si2274703pab.2.2016.09.28.09.17.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 08 Mar 2018 11:21:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c05::22d as permitted sender) client-ip=2607:f8b0:400e:c05::22d;
+        Wed, 28 Sep 2016 09:17:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=Ebq3evCm;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c05::22d as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Received: by mail-pg0-x22d.google.com with SMTP id l24so2599901pgc.5
-        for <outreachy-kernel@googlegroups.com>; Thu, 08 Mar 2018 11:21:24 -0800 (PST)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x241.google.com with SMTP id r9so1590756paz.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 28 Sep 2016 09:17:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ashoka.edu.in; s=google;
-        h=from:to:cc:subject:date:message-id;
-        bh=H69AxVOcnjZRsFWhRDXI1Hwuc/wRuYacfuDJJ+ZaWpU=;
-        b=Ebq3evCmBazY0/vbRO52eCE6y7z8zrsY/PTYbj+/fXwJ9AXLo2pJfudKAo+Hb615N9
-         zYcRecNFibO/j2e2CBJ9k8B8+xMzy4ol/6aP2emhslgR7l9DjhPB6ulrujvqXYdXLC7V
-         Nh20JTVCtzT9FyVwLfLSto+bkdNvB3ZiEBgkU=
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=iitDn2kwluI0+sh5YQSVH7aAvjTITnZ0w3eUWdpruXw=;
+        b=IfaJ3VlnMCbMYe6hNZCTjXqMYfljew7UBOYyl7ocW1hUjo4GfeU5TpyuMB3KElAdoP
+         yWKyx6igDLTx9P2u37qf803MiJRZgnHCGiWAq9YSY7fwBSkktf6ckj3btXdP5l7YWr4+
+         dsbP4qrCGe0IKPinY+MiqzgW46nHjbLgRvmxpVla8RAmzPqo/4a2L3fnWtkDlAPoQBKA
+         dnHMCuDJyAxLk4S4GWtxh7V4krwwoMIRFpn5dT8sxjiAgEu3BF0wDjQY8uQ2bJf5p5kJ
+         qgYdVq8CSW49oI19Or+CFhiVzVb33hqrS+ExJjMxyQKVEDyb42sa9w/wDPE0oZmQ59rY
+         yUbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=H69AxVOcnjZRsFWhRDXI1Hwuc/wRuYacfuDJJ+ZaWpU=;
-        b=uUKBzHffiUmve6H8V1+0yCcpJX5dqdqMwtuViKWUtnRNfPd+i+7yr6j+vEvDCeXMPJ
-         g+Fj3P9EIRodA/4m/uYgM5JWGLgr0hs2io3clHOewSRi0EvKY9klpy3L6VKnGwxJ1vw2
-         +hvIZ7pPqkQQRgIcuu/rW8EGyfSmen0/oxaMPumUTZIu1i/6N/NdhL7GgUedd6fqABqn
-         u0x/Hcs4FMcJWAF79HwkTfU2b5aHpj+7eMzLZl+MDD98w9WzbHV3YRm10EiLUtahPrFf
-         reLWJhhxRk5ywzEd/Tg8NgNnkMRHZbRcB4y7p2otzav1H4lChCtHgVspQy3hDQm9GYVx
-         //1Q==
-X-Gm-Message-State: APf1xPB7ufrlFGqfD+VhIasT40Gb0GSAN6PgyEhdcZTo/KXw96Ewc5Yx
-	kVOinCaOYT367bugequESyyCTw==
-X-Received: by 10.98.133.86 with SMTP id u83mr27473630pfd.172.1520536884107;
-        Thu, 08 Mar 2018 11:21:24 -0800 (PST)
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from ashoka-ThinkCentre-E73z.internal.ashoka.edu.in ([125.22.40.140])
-        by smtp.gmail.com with ESMTPSA id j25sm36381817pgn.92.2018.03.08.11.21.21
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 08 Mar 2018 11:21:23 -0800 (PST)
-From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-To: gregkh@linuxfoundation.org,
-	w.d.hubbs@gmail.com,
-	chris@the-brannons.com,
-	kirk@reisers.ca,
-	samuel.thibault@ens-lyon.org,
-	outreachy-kernel@googlegroups.com
-Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-Subject: [PATCH] staging: speakup: Replace simple_strtoul with kstrtoul
-Date: Fri,  9 Mar 2018 00:51:16 +0530
-Message-Id: <1520536876-14181-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-X-Mailer: git-send-email 1.9.1
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=iitDn2kwluI0+sh5YQSVH7aAvjTITnZ0w3eUWdpruXw=;
+        b=MtqQWUiK4juG+fezkVW2SUNptZIybRJwfXtnxDv9Sz087iA7XG1rblJG9YzmpvF7SQ
+         yq9mesRUXrQjB0FvdN+JnlpT8LBe7WWtxb/jnl77Ko4uzziqvQVzzjd7GAZGbvg6JOUv
+         GNTqyyz4gCA8IUGXSiErgyWEPV+UFtz2BWraeMfb1jd+MGJXKDrVidGM85cMdEtxTO2i
+         av+fwqDgiIu85cr3NYBv7mDZkhblmESniAbNLovybbbDolMUWcVuJwde34pPVon5iW0z
+         61nXjHkaR3/Z3pvj6GdUjfz1MUo6NazolLAHs27TERUyJKn6BPusKIJ9htWbDaII1dPr
+         ro1w==
+X-Gm-Message-State: AA6/9RkOCUift3AqqCmuvLBBmfxWDxTXeE1Bw8pgQx7sJdNzXfSyf0Sr4AId3ptMc8pDDg==
+X-Received: by 10.66.135.50 with SMTP id pp18mr31658517pab.18.1475079428814;
+        Wed, 28 Sep 2016 09:17:08 -0700 (PDT)
+Return-Path: <karniksayli1995@gmail.com>
+Received: from sayli-HP-15-Notebook-PC ([182.58.172.176])
+        by smtp.gmail.com with ESMTPSA id c4sm13775618pab.5.2016.09.28.09.16.59
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 28 Sep 2016 09:17:08 -0700 (PDT)
+Date: Wed, 28 Sep 2016 21:46:51 +0530
+From: sayli karnik <karniksayli1995@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: jic23@kernel.org, mranostay@gmail.com, knaack.h@gmx.de, lars@metafoo.de,
+	pmeerw@pmeerw.net, linux-iio@vger.kernel.org
+Subject: [PATCH v4] iio: maxim_thermocouple: Align 16 bit big endian value of
+ raw reads
+Message-ID: <20160928161651.GA28186@sayli-HP-15-Notebook-PC>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Replace simple_strtoul with kstrtoul. Issue found with checkpatch.
+Driver was reporting invalid raw read values for MAX6675 on big
+endian architectures. MAX6675 buffered mode is not affected, nor
+is the MAX31855.
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+The driver was losing a 2 byte read value when it used a 32 bit
+integer buffer to store a 16 bit big endian value. Use big endian
+types to properly align buffers on big endian architectures.
+
+Fixes following sparse endianness warnings:
+warning: cast to restricted __be16
+warning: cast to restricted __be32
+Fixes checkpatch issue:
+CHECK: No space is necessary after a cast
+
+Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
+Fixes: 1f25ca11d84a ("iio: temperature: add support for Maxim
+thermocouple chips")
 ---
- drivers/staging/speakup/kobjects.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Changes in v4:
+Reverted back to v2 with changed names for buffers
 
-diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
-index f1f9022..bd7cfab 100644
---- a/drivers/staging/speakup/kobjects.c
-+++ b/drivers/staging/speakup/kobjects.c
-@@ -120,6 +120,7 @@ static ssize_t chars_chartab_store(struct kobject *kobj,
- 	ssize_t retval = count;
- 	unsigned long flags;
- 	unsigned long index = 0;
-+	unsigned long val = 0;
- 	int charclass = 0;
- 	int received = 0;
- 	int used = 0;
-@@ -154,7 +155,7 @@ static ssize_t chars_chartab_store(struct kobject *kobj,
- 			continue;
- 		}
+Changes in v3:
+Updated the commit message
+Updated the changelog to include explanation to the bug fix
+Fixed the checkpatch issue: CHECK: No space is necessary after a cast
+Added the fixes tag
+
+ drivers/iio/temperature/maxim_thermocouple.c | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/iio/temperature/maxim_thermocouple.c b/drivers/iio/temperature/maxim_thermocouple.c
+index 39dd202..066161a 100644
+--- a/drivers/iio/temperature/maxim_thermocouple.c
++++ b/drivers/iio/temperature/maxim_thermocouple.c
+@@ -123,22 +123,24 @@ static int maxim_thermocouple_read(struct maxim_thermocouple_data *data,
+ {
+ 	unsigned int storage_bytes = data->chip->read_size;
+ 	unsigned int shift = chan->scan_type.shift + (chan->address * 8);
+-	unsigned int buf;
++	__be16 buf16;
++	__be32 buf32;
+ 	int ret;
  
--		index = simple_strtoul(cp, &temp, 10);
-+		index = kstrtoul(cp, 10, &val);
- 		if (index > 255) {
- 			rejected++;
- 			cp = linefeed + 1;
+-	ret = spi_read(data->spi, (void *) &buf, storage_bytes);
+-	if (ret)
+-		return ret;
+-
+ 	switch (storage_bytes) {
+ 	case 2:
+-		*val = be16_to_cpu(buf);
++		ret = spi_read(data->spi, (void *)&buf16, storage_bytes);
++		*val = be16_to_cpu(buf16);
+ 		break;
+ 	case 4:
+-		*val = be32_to_cpu(buf);
++		ret = spi_read(data->spi, (void *)&buf32, storage_bytes);
++		*val = be32_to_cpu(buf32);
+ 		break;
+ 	}
+ 
++	if (ret)
++		return ret;
++
+ 	/* check to be sure this is a valid reading */
+ 	if (*val & data->chip->status_bit)
+ 		return -EINVAL;
 -- 
-1.9.1
+2.7.4
 
 
