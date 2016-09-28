@@ -1,132 +1,157 @@
-X-GM-THRID: 6669079539693387776
-X-Received: by 2002:a05:6830:8b:: with SMTP id a11mr5663005oto.33.1552766081378;
-        Sat, 16 Mar 2019 12:54:41 -0700 (PDT)
+X-GM-THRID: 6335492673577680896
+X-Received: by 10.28.203.3 with SMTP id b3mr730385wmg.17.1475098159915;
+        Wed, 28 Sep 2016 14:29:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:764b:: with SMTP id o11ls1420443otl.4.gmail; Sat, 16 Mar
- 2019 12:54:40 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz1Tz4t9JUca82b6ijkYizD970r3APzsv11kR5nNdbn4IvX/509gbII8SwkJCzuPrTuXwaq
-X-Received: by 2002:a9d:7654:: with SMTP id o20mr5313005otl.70.1552766080600;
-        Sat, 16 Mar 2019 12:54:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552766080; cv=none;
-        d=google.com; s=arc-20160816;
-        b=CyGC+4JrWHMnrbI0RiTrHLqeMAURFlFuOhI2zheD6H5KwDzVno3k4oEXMcWQAmBbfm
-         BnaMfpbDaoRBkKZKgUD9EY0CDtN6nF9XX+NiSEyvZdLyJolP7dWkbfNGojN6sylkrhUJ
-         bKn0CQBqs4YRewxan0dmSFosoOZim/nwrP57J3uykZprTXlrlAZIXTcdR0jM6gODtcrT
-         XdeAlcc8cJCEvuVeRzWCQ3Io1sMTZ9Bz+JQfCt9ZJVSpX5HL3XZ8UXuJ7+3j1ZH8kgyY
-         8JFyabRiyD+pFN7F3AX4Ayb/Qwe+od4U2OPPgMGt+eC84kJPsg6wGQeK37hnhxB5fG75
-         DwJg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=bnuGqOwTmew5QigThuWtTZRmPhbX64v5vbBISMu+ngg=;
-        b=hqMt79rh+QCdDX1DE+yFG78Brpe/Fh6dVCXAE4Xhuc/XIScygyonAoUa/oQCQSnBaH
-         iFhFDE4MG9vtDTy/H6IzSYabnn8xk4spsS7+Rb/AtizRbsyApDKs3ZDeHmyQ2+XfDwpW
-         W6XGx7mUDRCtYF0wLGB1bunfmtNAC3YuMDpQWOr958WPT5IqcJE+jxsbHVW9y+7FM1mJ
-         sira/crEDehxnhG2OgrlE1wxKrB0rB2LCqbbDTWBwvw46h2eC7SkoSANoR5/lXnw5kXY
-         2//oVblyLDagz52Jypdqz24ii29C+DYhLf9bJhJ+U4ZvJWlyofK+gtRhfcTPocDOKlgy
-         dW5A==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ks5JpYyk;
-       spf=pass (google.com: domain of anushkacharu9@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=anushkacharu9@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <anushkacharu9@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id p8si203393oig.5.2019.03.16.12.54.40
+Received: by 10.46.0.161 with SMTP id e33ls172585lji.10.gmail; Wed, 28 Sep
+ 2016 14:29:19 -0700 (PDT)
+X-Received: by 10.25.221.149 with SMTP id w21mr2026300lfi.25.1475098159327;
+        Wed, 28 Sep 2016 14:29:19 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id e21si788351wmc.2.2016.09.28.14.29.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Mar 2019 12:54:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anushkacharu9@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        Wed, 28 Sep 2016 14:29:19 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ks5JpYyk;
-       spf=pass (google.com: domain of anushkacharu9@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=anushkacharu9@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id i7so5483859pgq.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 16 Mar 2019 12:54:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=bnuGqOwTmew5QigThuWtTZRmPhbX64v5vbBISMu+ngg=;
-        b=ks5JpYykduYTdkFZsQhstQ8SqwsB1i4P6rSwVI64yeF63zs1JtEnLrddxQ85MtAbXH
-         I5timzMCAgNHfLZuiWpRm+E5N+hwhnninB00Ig1WHIV5GWCRjZxqXgzJx9i6zEFXpuaR
-         IRqJ1PiQEcYXoNNlrWuWHuKApFCLp9ySgM7mbp4bUf7d3IxauptuUyxopIMPBmPawaqT
-         6qs42wSJ4biVkSe4vzlNQlyS/gLrgKF+ZOJDRK6TDlhO01+6IlT3gERDNBajK5IIk1pi
-         TwNAx6IeFHtleypNifaT+lcoETqWydxLDeNZTky/YhBK/YVkJgP9kTjnvrzzmiaY1CHk
-         YqbA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=bnuGqOwTmew5QigThuWtTZRmPhbX64v5vbBISMu+ngg=;
-        b=X99ovY/hQTmWncfRsAicKeAM6r6Jj9gFS3md23wRAgpomY80dn1G8FEZd7Q3UlNPGY
-         KbNiign/HSQsHTyBaytIfWUUu1IcsVP7dlslNBNlprA/IggDLR09nzWyPsdHyOj0lwic
-         Vcyb7+vxH5crhQIzKoZGoluf1yAcPv+FZ5KGoiFg7MrWODKVjdjrKdXcIsV1e6hjuIJO
-         NSF2/qmv7CziUxvBOQwEUurVisipyonhM6zkyjH+jDfEdbQdSdBt/LgRAnKkuwLrViLN
-         aRUxziZNc+7GftG8psazOkcBP1l0hChMsN1tvmJP52zYq7hE9BrGc1sbY3sd0fllc3Oo
-         xsFw==
-X-Gm-Message-State: APjAAAUjued7iHlos1Fs7u2nn5ucqe6saQdqNWQednqjCTjke7F5pilt
-	03KKB4zvVoNzmP3/02CK0pM=
-X-Received: by 2002:a17:902:b708:: with SMTP id d8mr11006011pls.322.1552766079879;
-        Sat, 16 Mar 2019 12:54:39 -0700 (PDT)
-Return-Path: <anushkacharu9@gmail.com>
-Received: from localhost.localdomain ([42.110.217.69])
-        by smtp.gmail.com with ESMTPSA id w26sm2340525pfn.27.2019.03.16.12.54.37
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Mar 2019 12:54:39 -0700 (PDT)
-From: anushkacharu9@gmail.com
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Anushka Shukla <anushkacharu9@gmail.com>
-Subject: [PATCH] Staging: gasket: Create a new variable to improve readability 
-Date: Sun, 17 Mar 2019 01:24:27 +0530
-Message-Id: <20190316195427.2673-1-anushkacharu9@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <anushkacharu9@gmail.com>
-References: <anushkacharu9@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,411,1470693600"; 
+   d="scan'208";a="194991949"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 28 Sep 2016 23:29:18 +0200
+Date: Wed, 28 Sep 2016 23:29:17 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Georgiana Chelu <georgiana.chelu93@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, 
+    gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] Re: [PATCH] staging: rtl8188eu: core: rtw_xmit:
+ Use macros instead of constants
+In-Reply-To: <a1722811-0eb9-4e28-af52-e234cd6e7107@googlegroups.com>
+Message-ID: <alpine.DEB.2.10.1609282327140.3211@hadrien>
+References: <20160928210715.GA26545@fireworks> <a1722811-0eb9-4e28-af52-e234cd6e7107@googlegroups.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-714694688-1475098158=:3211"
 
-From: Anushka Shukla <anushkacharu9@gmail.com>
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-- Define a new variable temp_table.
-- Modify it to maintain Linux Kernel Coding style.
+--8323329-714694688-1475098158=:3211
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-Signed-off-by: Anushka Shukla <anushkacharu9@gmail.com>
----
- drivers/staging/gasket/apex_driver.c | 13 +++++++------
- 1 file changed, 7 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/gasket/apex_driver.c b/drivers/staging/gasket/apex_driver.c
-index 7c2ffa467557..d0fffb51c9c4 100644
---- a/drivers/staging/gasket/apex_driver.c
-+++ b/drivers/staging/gasket/apex_driver.c
-@@ -526,21 +526,22 @@ static ssize_t sysfs_show(struct device *device, struct device_attribute *attr,
- 	}
- 
- 	type = (enum sysfs_attribute_type)gasket_attr->data.attr_type;
-+	struct gasket_page_table *temp_table = gasket_dev->page_table[0]
- 	switch (type) {
- 	case ATTR_KERNEL_HIB_PAGE_TABLE_SIZE:
- 		ret = scnprintf(buf, PAGE_SIZE, "%u\n",
--				gasket_page_table_num_entries
--				       (gasket_dev->page_table[0]));
-+				gasket_page_table_num_entries(temp_table);
-+				       
- 		break;
- 	case ATTR_KERNEL_HIB_SIMPLE_PAGE_TABLE_SIZE:
- 		ret = scnprintf(buf, PAGE_SIZE, "%u\n",
--				gasket_page_table_num_entries
--				       (gasket_dev->page_table[0]));
-+				gasket_page_table_num_entries(temp_table);
-+				       
- 		break;
- 	case ATTR_KERNEL_HIB_NUM_ACTIVE_PAGES:
- 		ret = scnprintf(buf, PAGE_SIZE, "%u\n",
--				gasket_page_table_num_active_pages
--				       (gasket_dev->page_table[0]));
-+				gasket_page_table_num_active_pages(temp_table);
-+				       
- 		break;
- 	default:
- 		dev_dbg(gasket_dev->dev, "Unknown attribute: %s\n",
--- 
-2.17.1
 
+On Wed, 28 Sep 2016, Georgiana Chelu wrote:
+
+>
+> I have some doubts about changing the constant with
+> a string in the 531 line. My opinion is to let this line
+> unchanged.
+>
+> Any help?
+
+Maybe move ETH_P_PAE into the argument list?  Then if this value changes
+for some reason in the future, the code will be robust.
+
+You could also reformat the code in that hunk that you are changing so
+that it better respects the 80 character limit.  If it seems unnatural,
+you don't have to respect that perfectly, but there is no need for the
+code to extend as far to the right as it does now.
+
+julia
+
+>
+> Also, I forgot to replace the constant from 398 line,
+> so I will submit the second version of the patch soon.
+>
+> Georgiana  
+>
+>
+> On Thursday, 29 September 2016 00:07:17 UTC+3, Georgiana Chelu wrote:
+>       Replace the 0x888e with ETH_P_PAE and 0x0806 with ETH_P_ARP.
+>       These macros can be found in drivers/staging/rtl8192e/rtllib.h
+>
+>       Hexadecimal numbers are not case sensitive,
+>       therefore 0x888e is equal with 0x888E.
+>
+>       The modifications improve the readability of the code.
+>
+>       Signed-off-by: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
+>       ---
+>        drivers/staging/rtl8188eu/core/rtw_xmit.c | 12 ++++++------
+>        drivers/staging/rtl8192e/rtllib.h         |  2 +-
+>        2 files changed, 7 insertions(+), 7 deletions(-)
+>
+>       diff --git a/drivers/staging/rtl8188eu/core/rtw_xmit.c b/drivers/staging/rtl8188eu/core/rtw_xmit.c
+>       index 1392899..0f8b8e0 100644
+>       --- a/drivers/staging/rtl8188eu/core/rtw_xmit.c
+>       +++ b/drivers/staging/rtl8188eu/core/rtw_xmit.c
+>       @@ -402,7 +402,7 @@ static void set_qos(struct pkt_file *ppktfile, struct pkt_attrib *pattrib)
+>                        _rtw_pktfile_read(ppktfile, (u8 *)&ip_hdr, sizeof(ip_hdr));
+>        /*                 user_prio = (ntohs(ip_hdr.tos) >> 5) & 0x3; */
+>                        user_prio = ip_hdr.tos >> 5;
+>       -        } else if (pattrib->ether_type == 0x888e) {
+>       +        } else if (pattrib->ether_type == ETH_P_PAE) {
+>                        /*  "When priority processing of data frames is supported, */
+>                        /*  a STA's SME should send EAPOL-Key frames at the highest priority." */
+>                        user_prio = 7;
+>       @@ -469,15 +469,15 @@ static s32 update_attrib(struct adapter *padapter, struct sk_buff *pkt, struct p
+>                                        }
+>                                }
+>                        }
+>       -        } else if (pattrib->ether_type == 0x888e) {
+>       +        } else if (pattrib->ether_type == ETH_P_PAE) {
+>                        DBG_88E_LEVEL(_drv_info_, "send eapol packet\n");
+>                }
+>        
+>       -        if ((pattrib->ether_type == 0x888e) || (pattrib->dhcp_pkt == 1))
+>       +        if ((pattrib->ether_type == ETH_P_PAE) || (pattrib->dhcp_pkt == 1))
+>                        rtw_set_scan_deny(padapter, 3000);
+>        
+>                /*  If EAPOL , ARP , OR DHCP packet, driver must be in active mode. */
+>       -        if ((pattrib->ether_type == 0x0806) || (pattrib->ether_type == 0x888e) || (pattrib->dhcp_pkt == 1))
+>       +        if ((pattrib->ether_type == ETH_P_ARP) || (pattrib->ether_type == ETH_P_PAE) || (pattrib->dhcp_pkt == 1))
+>                        rtw_lps_ctrl_wk_cmd(padapter, LPS_CTRL_SPECIAL_PACKET, 1);
+>        
+>                bmcast = IS_MCAST(pattrib->ra);
+>       @@ -531,8 +531,8 @@ static s32 update_attrib(struct adapter *padapter, struct sk_buff *pkt, struct p
+>        
+>                        pattrib->encrypt = 0;
+>        
+>       -                if ((pattrib->ether_type != 0x888e) && !check_fwstate(pmlmepriv, WIFI_MP_STATE)) {
+>       -                        RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("\npsta->ieee8021x_blocked == true,  pattrib->ether_type(%.4x) != 0x888e\n",
+>       pattrib->ether_type));
+>       +                if ((pattrib->ether_type != ETH_P_PAE) && !check_fwstate(pmlmepriv, WIFI_MP_STATE)) {
+>       +                        RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("\npsta->ieee8021x_blocked == true,  pattrib->ether_type(%.4x) != ETH_P_PAE\n",
+>       pattrib->ether_type));
+>                                res = _FAIL;
+>                                goto exit;
+>                        }
+>       diff --git a/drivers/staging/rtl8192e/rtllib.h b/drivers/staging/rtl8192e/rtllib.h
+>       index 38247fa..b895a53 100644
+>       --- a/drivers/staging/rtl8192e/rtllib.h
+>       +++ b/drivers/staging/rtl8192e/rtllib.h
+>       @@ -521,7 +521,7 @@ enum wireless_mode {
+>        };
+>        
+>        #ifndef ETH_P_PAE
+>       -#define ETH_P_PAE 0x888E /* Port Access Entity (IEEE 802.1X) */
+>       +#define ETH_P_PAE        0x888E                /* Port Access Entity (IEEE 802.1X) */
+>        #define ETH_P_IP        0x0800                /* Internet Protocol packet        */
+>        #define ETH_P_ARP        0x0806                /* Address Resolution packet        */
+>        #endif /* ETH_P_PAE */
+>       --
+>       2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/a1722811-0eb9-4e28-af52-e234cd6e7107%40googlegroups.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-714694688-1475098158=:3211--
 
