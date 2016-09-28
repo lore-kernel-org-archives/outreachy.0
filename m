@@ -1,95 +1,554 @@
-X-GM-THRID: 6335831660956745728
-X-Received: by 10.28.206.2 with SMTP id e2mr63488wmg.0.1475175763863;
-        Thu, 29 Sep 2016 12:02:43 -0700 (PDT)
+X-GM-THRID: 6335134925218381824
+X-Received: by 10.237.38.37 with SMTP id z34mr9248138qtc.20.1475098435076;
+        Wed, 28 Sep 2016 14:33:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.22.77 with SMTP id 74ls39760wmw.15.canary; Thu, 29 Sep 2016
- 12:02:43 -0700 (PDT)
-X-Received: by 10.28.203.10 with SMTP id b10mr14446wmg.17.1475175763425;
-        Thu, 29 Sep 2016 12:02:43 -0700 (PDT)
-Return-Path: <laurana5@gmail.com>
-Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
-        by gmr-mx.google.com with ESMTPS id c13si5447wme.3.2016.09.29.12.02.43
+Received: by 10.157.33.198 with SMTP id s64ls1879986otb.15.gmail; Wed, 28 Sep
+ 2016 14:33:54 -0700 (PDT)
+X-Received: by 10.157.9.157 with SMTP id q29mr9405437otd.135.1475098434511;
+        Wed, 28 Sep 2016 14:33:54 -0700 (PDT)
+Return-Path: <gnudevliz@gmail.com>
+Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
+        by gmr-mx.google.com with ESMTPS id 7si2742605pfw.1.2016.09.28.14.33.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 29 Sep 2016 12:02:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of laurana5@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
+        Wed, 28 Sep 2016 14:33:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of laurana5@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=laurana5@gmail.com;
+       spf=pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=gnudevliz@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x244.google.com with SMTP id b4so181638wmb.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 29 Sep 2016 12:02:43 -0700 (PDT)
+Received: by mail-pa0-x243.google.com with SMTP id r9so1853600paz.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 28 Sep 2016 14:33:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=528HImrCiKN+iGNEjDxoFJyI70uhswdVrPsCEMCQUig=;
-        b=hvBLFn2EXXD2ELczANIRIKnwo+GTq0IhOrd8AR61iVu7SdTXZbtDgllv2i5IqUxinq
-         GDuW5m301rWQ3PJxsuC5K36bgXaor/RLJblM2OBGfrUGnUSxBDF9KM9uG2ySTmm8Iq7q
-         3kA/yXdIbWWAuAuT90PEQscFZEMuDH4HkpXKV86hSnlMn38IIua/5NiMjMUfVIw/sRS1
-         aO6AYIuh/GMud7wlw2DvxojaF4zaa8K1siF56u7GmEfkBT3CTnm7HDLR5qDeWyrfroaP
-         P3EnJDnRcFxhc011Gbx/ua51AgCFr4FDG+/GRk0B4PYpQGYrftsR5EpaI/3t/AripKJ0
-         YAIQ==
+        bh=yWRf4gdqzmIQQiFGYE0BcfyofA9e7H5sWm0vfYmpI5s=;
+        b=jztt3m2mDHe9jEnW4O7YEElWQQxBdGyiXIqpGkN2SkhPlkyQ1fHYQ43qEwgs7VrN+6
+         1bxaHpfEJx4K4+1yodes2Aj2xq8uWlKUi8SnIMOLHwoT+kxIYwF67+PRmorTGjQv0JMv
+         8dlx89H+GTsByCtn/c746XZMtqjrmetsljN0zXh42sxRf76kN96jOB3n7Aw9ye1NPk7O
+         7UJj5ZdrNwDT/dSO2Swb53IyXRZIMH4eHKmQFV6HwlyMqasee7svy1LMQwQlnnmqvTzx
+         15AlgUKQjcMprK17o76N4FrnP8dnXKpPxUGegbVVfSWAyCIupRT86Ew2/4Wtie3mA2XG
+         Qc6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=528HImrCiKN+iGNEjDxoFJyI70uhswdVrPsCEMCQUig=;
-        b=IGglO1yrD4pvd/FUWbTuEk7ALEjzuCneOR6aw+QqcmKTvb6iaXNiXOUM+tLLzS2piY
-         oDZR49m+SeEln1UIv+2rQQ5LOEOWjXFJygrduKXIL3bgTLIpLF6kjlpxV9yvH1zrr03t
-         muaXGTzgh4KI5lYscaDUAeVN6cWIVFNZ+7A2QB5u+5cPSxsByIiXV54UdatndG0KansI
-         +s+Xljp7C49XXWX4PjaA/bwA/SyUie0o9wn24770cwJpoSLsaJTzu7YFBEe5vWaBJvmt
-         5Jl2R+F6Al5BGjJq+a7GJDQE9hA4mZxJt+NcGO6cUrckFZQO1GCJfeZRF2boOfUqb1Q/
-         LizA==
-X-Gm-Message-State: AA6/9Rmuet+i7dlUMS7mvAZw9I+HGowHhu/scfMwExR85nxXGy09cgPNkggRbzewG2E2Pw==
-X-Received: by 10.194.103.3 with SMTP id fs3mr2790839wjb.115.1475175763188;
-        Thu, 29 Sep 2016 12:02:43 -0700 (PDT)
-Return-Path: <laurana5@gmail.com>
-Received: from kheixx-VB (71.red-83-32-143.dynamicip.rima-tde.net. [83.32.143.71])
-        by smtp.gmail.com with ESMTPSA id gg10sm15669501wjd.4.2016.09.29.12.02.42
+        bh=yWRf4gdqzmIQQiFGYE0BcfyofA9e7H5sWm0vfYmpI5s=;
+        b=eqMDx1q8+iPFhQgANZsVAUpk9uNYyIdToX7UVQkPmlhuaht9lxrYm/XxCF9eokOL8U
+         o0G47VfhCXeke7lJc/I7oJB3QNGS0VegB23Nly2PpuIpcaFTHDTvmUpFi5wC6FvwRO24
+         YWYjtOCAOse05XYIc7pBPP3HbxzdSgzx1snm/0+7UmPEsRxy19HjxLhYyY3pGEGGf/Vk
+         XwjXzabpti/MotzMPF9Sape/sxH5eY7lVT+7s2HOGXOWaKiEOmlb8VtwwWNfvefWzLdt
+         pewYqDmLfO4NlP/SfvVpA3RcwBk1hFolor2jtY6e5pjITowkezGmE6rMeG5I9UK8zDuz
+         8L+Q==
+X-Gm-Message-State: AA6/9RmZi5a0pPpwFF3BrQD04JP2uwDgGq/0VANT4/3VrrZ1nWbTlU0p8fTLL8DSzLZuVg==
+X-Received: by 10.66.173.47 with SMTP id bh15mr17890893pac.42.1475098434203;
+        Wed, 28 Sep 2016 14:33:54 -0700 (PDT)
+Return-Path: <gnudevliz@gmail.com>
+Received: from localhost ([2601:644:300:fd6b:4e0f:6eff:fe69:e9ea])
+        by smtp.gmail.com with ESMTPSA id x13sm144827pfd.17.2016.09.28.14.33.53
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 29 Sep 2016 12:02:42 -0700 (PDT)
-Date: Wed, 28 Sep 2016 15:27:57 +0200
-From: Keila Novo <laurana5@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] Add a paragraph that describes the config simbol
-Message-ID: <20160928132757.GA28908@kheixx-VB>
+        Wed, 28 Sep 2016 14:33:54 -0700 (PDT)
+Date: Wed, 28 Sep 2016 14:33:51 -0700
+From: Elizabeth Ferdman <gnudevliz@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: sudipm.mukherjee@gmail.com, teddy.wang@siliconmotion.com,
+	gregkh@linuxfoundation.org, amsfield22@gmail.com,
+	daniel.baluta@intel.com
+Subject: [PATCH v2] staging: sm750fb: conform to block comment style
+Message-ID: <20160928213349.GA4071@localhost>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This Linux Kernel configuration item is a part of the a
- collection of configuration options which are organized in a tree structure.
- This item like the others has its own dependecies and depends on others too.
- In the description I add an explanation of which are the three dependencies
- that STAGING_BOARD depends on and they have to be visible/avaible to
- STAGING_BOARD dependency be avaible/visible too.
-Reply-To: 
+Fix 2 checkpatch errors:
+-Block comments use * on subsequent lines,
+-Block comments use a trailing */ on a separate line
+to conform to block commenting style.
 
-Signed-off-by: Keila Novo <laurana5@gmail.com>
+Signed-off-by: Elizabeth Ferdman <gnudevliz@gmail.com>
 ---
- drivers/staging/board/Kconfig | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+Changes in v2:
+ - Rebase and resend
+ - Add spacing between vertical bars in last comment for consistency 
 
-diff --git a/drivers/staging/board/Kconfig b/drivers/staging/board/Kconfig
-index 8951531..006b134 100644
---- a/drivers/staging/board/Kconfig
-+++ b/drivers/staging/board/Kconfig
-@@ -1,7 +1,7 @@
--#These a Linux kernel configuration item.The items we can configure are:
--#OF_IRQ is an interrupt requests item
--#OF_ADDRESS is an device address item
--#CLKDEV_LOOKUP is clock lookup from devices tree configuration item
-+#These is a Linux kernel configuration item. STAGING_BOARD directly depends on
-+#OF_ADDRESS && OF_IRQ && CLKDEV_LOOKUP.
-+#It will only be visible, if OF_ADDRESS, OF_IRQ and CLKDEV_LOOKUP are different
-+#from 'n'.
- config STAGING_BOARD
- 	bool "Staging Board Support"
- 	depends on OF_ADDRESS && OF_IRQ && CLKDEV_LOOKUP
+ drivers/staging/sm750fb/ddk750_display.h |  50 ++++++++--------
+ drivers/staging/sm750fb/ddk750_hwi2c.c   |   2 +-
+ drivers/staging/sm750fb/ddk750_mode.c    |  27 ++++-----
+ drivers/staging/sm750fb/ddk750_sii164.c  |   7 ++-
+ drivers/staging/sm750fb/ddk750_swi2c.c   |  12 ++--
+ drivers/staging/sm750fb/sm750.h          |  16 ++---
+ drivers/staging/sm750fb/sm750_accel.c    | 100 ++++++++++++++++++-------------
+ 7 files changed, 113 insertions(+), 101 deletions(-)
+
+diff --git a/drivers/staging/sm750fb/ddk750_display.h b/drivers/staging/sm750fb/ddk750_display.h
+index 5fc9f6f..e3fde42 100644
+--- a/drivers/staging/sm750fb/ddk750_display.h
++++ b/drivers/staging/sm750fb/ddk750_display.h
+@@ -2,8 +2,8 @@
+ #define DDK750_DISPLAY_H__
+ 
+ /* panel path select
+-	80000[29:28]
+-*/
++ *	80000[29:28]
++ */
+ 
+ #define PNL_2_OFFSET 0
+ #define PNL_2_MASK (3 << PNL_2_OFFSET)
+@@ -13,9 +13,9 @@
+ 
+ 
+ /* primary timing & plane enable bit
+-	1: 80000[8] & 80000[2] on
+-	0: both off
+-*/
++ *	1: 80000[8] & 80000[2] on
++ *	0: both off
++ */
+ #define PRI_TP_OFFSET 4
+ #define PRI_TP_MASK BIT(PRI_TP_OFFSET)
+ #define PRI_TP_USAGE (PRI_TP_MASK << 16)
+@@ -24,8 +24,8 @@
+ 
+ 
+ /* panel sequency status
+-	80000[27:24]
+-*/
++ *	80000[27:24]
++ */
+ #define PNL_SEQ_OFFSET 6
+ #define PNL_SEQ_MASK BIT(PNL_SEQ_OFFSET)
+ #define PNL_SEQ_USAGE (PNL_SEQ_MASK << 16)
+@@ -33,8 +33,8 @@
+ #define PNL_SEQ_OFF ((0 << PNL_SEQ_OFFSET) | PNL_SEQ_USAGE)
+ 
+ /* dual digital output
+-	80000[19]
+-*/
++ *	80000[19]
++ */
+ #define DUAL_TFT_OFFSET 8
+ #define DUAL_TFT_MASK BIT(DUAL_TFT_OFFSET)
+ #define DUAL_TFT_USAGE (DUAL_TFT_MASK << 16)
+@@ -42,9 +42,9 @@
+ #define DUAL_TFT_OFF ((0 << DUAL_TFT_OFFSET) | DUAL_TFT_USAGE)
+ 
+ /* secondary timing & plane enable bit
+-	1:80200[8] & 80200[2] on
+-	0: both off
+-*/
++ *	1:80200[8] & 80200[2] on
++ *	0: both off
++ */
+ #define SEC_TP_OFFSET 5
+ #define SEC_TP_MASK BIT(SEC_TP_OFFSET)
+ #define SEC_TP_USAGE (SEC_TP_MASK << 16)
+@@ -52,8 +52,8 @@
+ #define SEC_TP_OFF ((0x0 << SEC_TP_OFFSET) | SEC_TP_USAGE)
+ 
+ /* crt path select
+-	80200[19:18]
+-*/
++ *	80200[19:18]
++ */
+ #define CRT_2_OFFSET 2
+ #define CRT_2_MASK (3 << CRT_2_OFFSET)
+ #define CRT_2_USAGE (CRT_2_MASK << 16)
+@@ -62,8 +62,8 @@
+ 
+ 
+ /* DAC affect both DVI and DSUB
+-	4[20]
+-*/
++ *	4[20]
++ */
+ #define DAC_OFFSET 7
+ #define DAC_MASK BIT(DAC_OFFSET)
+ #define DAC_USAGE (DAC_MASK << 16)
+@@ -71,8 +71,8 @@
+ #define DAC_OFF ((0x1 << DAC_OFFSET) | DAC_USAGE)
+ 
+ /* DPMS only affect D-SUB head
+-	0[31:30]
+-*/
++ *	0[31:30]
++ */
+ #define DPMS_OFFSET 9
+ #define DPMS_MASK (3 << DPMS_OFFSET)
+ #define DPMS_USAGE (DPMS_MASK << 16)
+@@ -81,19 +81,17 @@
+ 
+ 
+ 
+-/*
+-	LCD1 means panel path TFT1  & panel path DVI (so enable DAC)
+-	CRT means crt path DSUB
+-*/
++/* LCD1 means panel path TFT1  & panel path DVI (so enable DAC)
++ * CRT means crt path DSUB
++ */
+ typedef enum _disp_output_t {
+ 	do_LCD1_PRI = PNL_2_PRI | PRI_TP_ON | PNL_SEQ_ON | DAC_ON,
+ 	do_LCD1_SEC = PNL_2_SEC | SEC_TP_ON | PNL_SEQ_ON | DAC_ON,
+ 	do_LCD2_PRI = CRT_2_PRI | PRI_TP_ON | DUAL_TFT_ON,
+ 	do_LCD2_SEC = CRT_2_SEC | SEC_TP_ON | DUAL_TFT_ON,
+-	/*
+-	do_DSUB_PRI = CRT_2_PRI|PRI_TP_ON|DPMS_ON|DAC_ON,
+-	do_DSUB_SEC = CRT_2_SEC|SEC_TP_ON|DPMS_ON|DAC_ON,
+-	*/
++	/* do_DSUB_PRI = CRT_2_PRI | PRI_TP_ON | DPMS_ON|DAC_ON,
++	 * do_DSUB_SEC = CRT_2_SEC | SEC_TP_ON | DPMS_ON|DAC_ON,
++	 */
+ 	do_CRT_PRI = CRT_2_PRI | PRI_TP_ON | DPMS_ON | DAC_ON,
+ 	do_CRT_SEC = CRT_2_SEC | SEC_TP_ON | DPMS_ON | DAC_ON,
+ }
+diff --git a/drivers/staging/sm750fb/ddk750_hwi2c.c b/drivers/staging/sm750fb/ddk750_hwi2c.c
+index 39c3e1c..d391c12 100644
+--- a/drivers/staging/sm750fb/ddk750_hwi2c.c
++++ b/drivers/staging/sm750fb/ddk750_hwi2c.c
+@@ -21,7 +21,7 @@ unsigned char bus_speed_mode
+ 	POKE32(GPIO_MUX, value);
+ 
+ 	/* Enable Hardware I2C power.
+-	 TODO: Check if we need to enable GPIO power?
++	 * TODO: Check if we need to enable GPIO power?
+ 	 */
+ 	enableI2C(1);
+ 
+diff --git a/drivers/staging/sm750fb/ddk750_mode.c b/drivers/staging/sm750fb/ddk750_mode.c
+index b767c7d..05b8364 100644
+--- a/drivers/staging/sm750fb/ddk750_mode.c
++++ b/drivers/staging/sm750fb/ddk750_mode.c
+@@ -4,15 +4,14 @@
+ #include "ddk750_mode.h"
+ #include "ddk750_chip.h"
+ 
+-/*
+-	SM750LE only:
+-    This function takes care extra registers and bit fields required to set
+-    up a mode in SM750LE
+-
+-	Explanation about Display Control register:
+-    HW only supports 7 predefined pixel clocks, and clock select is
+-    in bit 29:27 of	Display Control register.
+-*/
++/* SM750LE only:
++ * This function takes care extra registers and bit fields required to set
++ * up a mode in SM750LE
++ *
++ * Explanation about Display Control register:
++ * HW only supports 7 predefined pixel clocks, and clock select is
++ * in bit 29:27 of Display Control register.
++ */
+ static unsigned long displayControlAdjust_SM750LE(mode_parameter_t *pModeParam, unsigned long dispControl)
+ {
+ 	unsigned long x, y;
+@@ -21,9 +20,9 @@ static unsigned long displayControlAdjust_SM750LE(mode_parameter_t *pModeParam,
+ 	y = pModeParam->vertical_display_end;
+ 
+ 	/* SM750LE has to set up the top-left and bottom-right
+-	   registers as well.
+-	   Note that normal SM750/SM718 only use those two register for
+-	   auto-centering mode.
++	 * registers as well.
++	 * Note that normal SM750/SM718 only use those two register for
++	 * auto-centering mode.
+ 	 */
+ 	POKE32(CRT_AUTO_CENTERING_TL, 0);
+ 
+@@ -33,8 +32,8 @@ static unsigned long displayControlAdjust_SM750LE(mode_parameter_t *pModeParam,
+ 		((x - 1) & CRT_AUTO_CENTERING_BR_RIGHT_MASK));
+ 
+ 	/* Assume common fields in dispControl have been properly set before
+-	   calling this function.
+-	   This function only sets the extra fields in dispControl.
++	 * calling this function.
++	 * This function only sets the extra fields in dispControl.
+ 	 */
+ 
+ 	/* Clear bit 29:27 of display control register */
+diff --git a/drivers/staging/sm750fb/ddk750_sii164.c b/drivers/staging/sm750fb/ddk750_sii164.c
+index 67f36e7..99a8683 100644
+--- a/drivers/staging/sm750fb/ddk750_sii164.c
++++ b/drivers/staging/sm750fb/ddk750_sii164.c
+@@ -174,8 +174,8 @@ long sii164InitChip(
+ 		i2cWriteReg(SII164_I2C_ADDRESS, SII164_CONFIGURATION, config);
+ 
+ 		/* De-skew enabled with default 111b value.
+-		   This will fix some artifacts problem in some mode on board 2.2.
+-		   Somehow this fix does not affect board 2.1.
++		 * This fixes some artifacts problem in some mode on board 2.2.
++		 * Somehow this fix does not affect board 2.1.
+ 		 */
+ 		if (deskewEnable == 0)
+ 			config = SII164_DESKEW_DISABLE;
+@@ -344,7 +344,8 @@ void sii164EnableHotPlugDetection(
+ 	detectReg = i2cReadReg(SII164_I2C_ADDRESS, SII164_DETECT);
+ 
+ 	/* Depending on each DVI controller, need to enable the hot plug based on each
+-	   individual chip design. */
++	 * individual chip design.
++	 */
+ 	if (enableHotPlug != 0)
+ 		sii164SelectHotPlugDetectionMode(SII164_HOTPLUG_USE_MDI);
+ 	else
+diff --git a/drivers/staging/sm750fb/ddk750_swi2c.c b/drivers/staging/sm750fb/ddk750_swi2c.c
+index 6c1ffa1..72a4233 100644
+--- a/drivers/staging/sm750fb/ddk750_swi2c.c
++++ b/drivers/staging/sm750fb/ddk750_swi2c.c
+@@ -89,12 +89,12 @@ static void sw_i2c_wait(void)
+ 	 * always be non-zero,which makes the while loop
+ 	 * never finish.
+ 	 * use non-ultimate for loop below is safe
+-	 * */
++	 */
+ 
+     /* Change wait algorithm to use PCI bus clock,
+-       it's more reliable than counter loop ..
+-       write 0x61 to 0x3ce and read from 0x3cf
+-       */
++     * it's more reliable than counter loop ..
++     * write 0x61 to 0x3ce and read from 0x3cf
++     */
+ 	int i, tmp;
+ 
+ 	for (i = 0; i < 600; i++) {
+@@ -501,8 +501,8 @@ long sm750_sw_i2c_write_reg(
+ 	sw_i2c_start();
+ 
+ 	/* Send the device address and read the data. All should return success
+-	   in order for the writing processed to be successful
+-	*/
++	 * in order for the writing processed to be successful
++	 */
+ 	if ((sw_i2c_write_byte(addr) != 0) ||
+ 	    (sw_i2c_write_byte(reg) != 0) ||
+ 	    (sw_i2c_write_byte(data) != 0)) {
+diff --git a/drivers/staging/sm750fb/sm750.h b/drivers/staging/sm750fb/sm750.h
+index 8e70ce0..ff31c5c 100644
+--- a/drivers/staging/sm750fb/sm750.h
++++ b/drivers/staging/sm750fb/sm750.h
+@@ -147,17 +147,17 @@ struct lynxfb_output {
+ 	int dpms;
+ 	int paths;
+ 	/* which paths(s) this output stands for,for sm750:
+-	   paths=1:means output for panel paths
+-	   paths=2:means output for crt paths
+-	   paths=3:means output for both panel and crt paths
+-	*/
++	 * paths=1:means output for panel paths
++	 * paths=2:means output for crt paths
++	 * paths=3:means output for both panel and crt paths
++	 */
+ 
+ 	int *channel;
+ 	/* which channel these outputs linked with,for sm750:
+-	   *channel=0 means primary channel
+-	   *channel=1 means secondary channel
+-	   output->channel ==> &crtc->channel
+-	*/
++	 * *channel=0 means primary channel
++	 * *channel=1 means secondary channel
++	 * output->channel ==> &crtc->channel
++	 */
+ 	void *priv;
+ 
+ 	int (*proc_setBLANK)(struct lynxfb_output*, int);
+diff --git a/drivers/staging/sm750fb/sm750_accel.c b/drivers/staging/sm750fb/sm750_accel.c
+index 9aa4066..38adae6 100644
+--- a/drivers/staging/sm750fb/sm750_accel.c
++++ b/drivers/staging/sm750fb/sm750_accel.c
+@@ -67,7 +67,8 @@ void hw_de_init(struct lynx_accel *accel)
+ 
+ /* set2dformat only be called from setmode functions
+  * but if you need dual framebuffer driver,need call set2dformat
+- * every time you use 2d function */
++ * every time you use 2d function
++ */
+ 
+ void hw_set2dformat(struct lynx_accel *accel, int fmt)
+ {
+@@ -90,7 +91,8 @@ int hw_fillrect(struct lynx_accel *accel,
+ 
+ 	if (accel->de_wait() != 0) {
+ 		/* int time wait and always busy,seems hardware
+-		 * got something error */
++		 * got something error
++		 */
+ 		pr_debug("De engine always busy\n");
+ 		return -1;
+ 	}
+@@ -152,24 +154,26 @@ unsigned int rop2)   /* ROP value */
+ 		/* Determine direction of operation */
+ 		if (sy < dy) {
+ 			/* +----------+
+-			   |S         |
+-			   |   +----------+
+-			   |   |      |   |
+-			   |   |      |   |
+-			   +---|------+   |
+-			   |         D|
+-			   +----------+ */
++			 * |S         |
++			 * |   +----------+
++			 * |   |      |   |
++			 * |   |      |   |
++			 * +---|------+   |
++			 * |         D|
++			 * +----------+
++			 */
+ 
+ 			nDirection = BOTTOM_TO_TOP;
+ 		} else if (sy > dy) {
+ 			/* +----------+
+-			   |D         |
+-			   |   +----------+
+-			   |   |      |   |
+-			   |   |      |   |
+-			   +---|------+   |
+-			   |         S|
+-			   +----------+ */
++			 * |D         |
++			 * |   +----------+
++			 * |   |      |   |
++			 * |   |      |   |
++			 * +---|------+   |
++			 * |         S|
++			 * +----------+
++			 */
+ 
+ 			nDirection = TOP_TO_BOTTOM;
+ 		} else {
+@@ -177,22 +181,24 @@ unsigned int rop2)   /* ROP value */
+ 
+ 			if (sx <= dx) {
+ 				/* +------+---+------+
+-				   |S     |   |     D|
+-				   |      |   |      |
+-				   |      |   |      |
+-				   |      |   |      |
+-				   +------+---+------+ */
++				 * |S     |   |     D|
++				 * |      |   |      |
++				 * |      |   |      |
++				 * |      |   |      |
++				 * +------+---+------+
++				 */
+ 
+ 				nDirection = RIGHT_TO_LEFT;
+ 			} else {
+ 			/* sx > dx */
+ 
+ 				/* +------+---+------+
+-				   |D     |   |     S|
+-				   |      |   |      |
+-				   |      |   |      |
+-				   |      |   |      |
+-				   +------+---+------+ */
++				 * |D     |   |     S|
++				 * |      |   |      |
++				 * |      |   |      |
++				 * |      |   |      |
++				 * +------+---+------+
++				 */
+ 
+ 				nDirection = LEFT_TO_RIGHT;
+ 			}
+@@ -208,32 +214,36 @@ unsigned int rop2)   /* ROP value */
+ 	}
+ 
+ 	/* Note:
+-	   DE_FOREGROUND are DE_BACKGROUND are don't care.
+-	  DE_COLOR_COMPARE and DE_COLOR_COMPARE_MAKS are set by set deSetTransparency().
++	 * DE_FOREGROUND are DE_BACKGROUND are don't care.
++	 * DE_COLOR_COMPARE and DE_COLOR_COMPARE_MAKS
++	 * are set by set deSetTransparency().
+ 	 */
+ 
+ 	/* 2D Source Base.
+-	 It is an address offset (128 bit aligned) from the beginning of frame buffer.
++	 * It is an address offset (128 bit aligned)
++	 * from the beginning of frame buffer.
+ 	 */
+ 	write_dpr(accel, DE_WINDOW_SOURCE_BASE, sBase); /* dpr40 */
+ 
+ 	/* 2D Destination Base.
+-	 It is an address offset (128 bit aligned) from the beginning of frame buffer.
++	 * It is an address offset (128 bit aligned)
++	 * from the beginning of frame buffer.
+ 	 */
+ 	write_dpr(accel, DE_WINDOW_DESTINATION_BASE, dBase); /* dpr44 */
+ 
+     /* Program pitch (distance between the 1st points of two adjacent lines).
+-       Note that input pitch is BYTE value, but the 2D Pitch register uses
+-       pixel values. Need Byte to pixel conversion.
+-    */
++     * Note that input pitch is BYTE value, but the 2D Pitch register uses
++     * pixel values. Need Byte to pixel conversion.
++     */
+ 	write_dpr(accel, DE_PITCH,
+ 		  ((dPitch / Bpp << DE_PITCH_DESTINATION_SHIFT) &
+ 		   DE_PITCH_DESTINATION_MASK) |
+ 		  (sPitch / Bpp & DE_PITCH_SOURCE_MASK)); /* dpr10 */
+ 
+     /* Screen Window width in Pixels.
+-       2D engine uses this value to calculate the linear address in frame buffer for a given point.
+-    */
++     * 2D engine uses this value to calculate the linear address in frame buffer
++     * for a given point.
++     */
+ 	write_dpr(accel, DE_WINDOW_WIDTH,
+ 		  ((dPitch / Bpp << DE_WINDOW_WIDTH_DST_SHIFT) &
+ 		   DE_WINDOW_WIDTH_DST_MASK) |
+@@ -307,33 +317,37 @@ int hw_imageblit(struct lynx_accel *accel,
+ 		return -1;
+ 
+ 	/* 2D Source Base.
+-	 Use 0 for HOST Blt.
++	 * Use 0 for HOST Blt.
+ 	 */
+ 	write_dpr(accel, DE_WINDOW_SOURCE_BASE, 0);
+ 
+ 	/* 2D Destination Base.
+-	 It is an address offset (128 bit aligned) from the beginning of frame buffer.
++	 * It is an address offset (128 bit aligned)
++	 * from the beginning of frame buffer.
+ 	 */
+ 	write_dpr(accel, DE_WINDOW_DESTINATION_BASE, dBase);
+     /* Program pitch (distance between the 1st points of two adjacent lines).
+-       Note that input pitch is BYTE value, but the 2D Pitch register uses
+-       pixel values. Need Byte to pixel conversion.
+-    */
++     * Note that input pitch is BYTE value, but the 2D Pitch register uses
++     * pixel values. Need Byte to pixel conversion.
++     */
+ 	write_dpr(accel, DE_PITCH,
+ 		  ((dPitch / bytePerPixel << DE_PITCH_DESTINATION_SHIFT) &
+ 		   DE_PITCH_DESTINATION_MASK) |
+ 		  (dPitch / bytePerPixel & DE_PITCH_SOURCE_MASK)); /* dpr10 */
+ 
+ 	/* Screen Window width in Pixels.
+-	 2D engine uses this value to calculate the linear address in frame buffer for a given point.
++	 * 2D engine uses this value to calculate the linear address
++	 * in frame buffer for a given point.
+ 	 */
+ 	write_dpr(accel, DE_WINDOW_WIDTH,
+ 		  ((dPitch / bytePerPixel << DE_WINDOW_WIDTH_DST_SHIFT) &
+ 		   DE_WINDOW_WIDTH_DST_MASK) |
+ 		  (dPitch / bytePerPixel & DE_WINDOW_WIDTH_SRC_MASK));
+ 
+-	 /* Note: For 2D Source in Host Write, only X_K1_MONO field is needed, and Y_K2 field is not used.
+-	    For mono bitmap, use startBit for X_K1. */
++	 /* Note: For 2D Source in Host Write, only X_K1_MONO field is needed,
++	  * and Y_K2 field is not used.
++	  * For mono bitmap, use startBit for X_K1.
++	  */
+ 	write_dpr(accel, DE_SOURCE,
+ 		  (startBit << DE_SOURCE_X_K1_SHIFT) &
+ 		  DE_SOURCE_X_K1_MONO_MASK); /* dpr00 */
 -- 
-2.7.4
+2.1.4
 
 
