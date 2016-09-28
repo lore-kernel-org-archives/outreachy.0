@@ -1,131 +1,198 @@
-X-GM-THRID: 6334649026563014656
-X-Received: by 10.157.16.68 with SMTP id o4mr5545747oto.32.1474900410315;
-        Mon, 26 Sep 2016 07:33:30 -0700 (PDT)
+X-GM-THRID: 6334961343676809216
+X-Received: by 10.237.33.226 with SMTP id m31mr9064539qtc.19.1475084098081;
+        Wed, 28 Sep 2016 10:34:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.14.162 with SMTP id 31ls6747560otj.21.gmail; Mon, 26 Sep
- 2016 07:33:29 -0700 (PDT)
-X-Received: by 10.237.39.71 with SMTP id n65mr5630626qtd.53.1474900409937;
-        Mon, 26 Sep 2016 07:33:29 -0700 (PDT)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
-        by gmr-mx.google.com with ESMTPS id f133si636830ita.1.2016.09.26.07.33.29
+Received: by 10.107.152.13 with SMTP id a13ls609998ioe.18.gmail; Wed, 28 Sep
+ 2016 10:34:55 -0700 (PDT)
+X-Received: by 10.66.123.74 with SMTP id ly10mr9541568pab.104.1475084095868;
+        Wed, 28 Sep 2016 10:34:55 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
+        by gmr-mx.google.com with ESMTPS id 7si2535577pfw.1.2016.09.28.10.34.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 26 Sep 2016 07:33:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
+        Wed, 28 Sep 2016 10:34:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x242.google.com with SMTP id j3so859378paj.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 26 Sep 2016 07:33:29 -0700 (PDT)
+Received: by mail-pa0-x244.google.com with SMTP id r9so1659069paz.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 28 Sep 2016 10:34:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=QekTocR7xeWX0n80ZithjvmLDSLrVNZLe0XeOUVInlQ=;
-        b=08Y5b2pQXzovMAPt84pc9EQVcZqtN1ph5TUrpaAKz1O4c9VZaJHd6alWJrr3LxpBln
-         8Jl7aVpRmzE3KZJieLxX9ouWMtgLHph0A9KPksy6aHXNsqtutxDhac+ItRWPINgLCV5o
-         2gdrROFbvfeRtTrSRST0GxCPlRvxngzhZJNXfxslMxqGHE4Wq4LFBJJN8jGLtZf1cKMb
-         QUe7Bb56GUfZf3uMUih3mBE/Q3Kl0zEtoGwUpOZy4/WxxdqgMKCYktqjos54JPBNDUSj
-         Z+9DEWTPdTVDtho0OqBxhcTzIMx/Qoom2GMsSQphBu+5aD7p8VXBCihKzfMOxvTClPG3
-         eEmw==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=WKqxbqbmaGLpGRse8Bxf/soGhef00c7VaMnL3BrsNm0=;
+        b=aYKrsNA4MqUxJFzwa/RbKTKoXFJa1jsGK01p1mwDOeFRpetn8z7bY3aMNg+OeJdVub
+         BfYaBTRlTdZ1jQnSlp77DeoiWOJmmb2cqOCXsWOa4DwhrJovnJn/L01zhpf7xDApdIcG
+         4xzH+AQZgikpDNAZm1K1qOcsyY76Iv06k3FBCBelcNzrCtdx3Fr7pB5UlU/gmHKUBtC2
+         UgZb7S11rPmTJsPF19wfIPvtARyk/TM4vN03qJFTdOm2NksybzuAo56Zkst9V9iu/G/o
+         Rfu3xmxFmWYO/EMymGwe1kNRoiUZ0a9EmUdPRT1M/qOREaAEpSNjWKvIugHKMWJjCyQd
+         yA5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=QekTocR7xeWX0n80ZithjvmLDSLrVNZLe0XeOUVInlQ=;
-        b=G8P1UT0ANrPAh5UtWpGqhSyoEPYFJW5EJETp+oiCPYKvlhz+AhPdc/qki1lbdzT9SH
-         qoJlpiEKKUNZvXDvZAt09G2vjyDBzsOsNJHPeXbdCHN6kZJ7fJm5L2Bht6luL3V9mBfC
-         rjJ2BY/8oMR7RMgZNO2ZqV2X2UEaXVIsblEkXSKh5RiDieCS6kMl5D34EXsNVDGiPPSS
-         DX8RrlojrFsR9JeZZ3coosfLCg2haZbBjr10qgj0/ZZoGYjOkuuGeC9RDDcG7NuB4Wg5
-         85MF62c+Z+XQxG2G1/p/buh+Y3wMaVK1cI+0B/BpmN0b+xeskYk34sW+sawbq15xeBw9
-         U8LA==
-X-Gm-Message-State: AE9vXwNN4J4/2Tw6c2AWvgEJYL/OchRtRExrPDIpmRig8TN0eDoabnGR01Oc9gXwpT8jnw==
-X-Received: by 10.66.227.4 with SMTP id rw4mr39203843pac.119.1474900409713;
-        Mon, 26 Sep 2016 07:33:29 -0700 (PDT)
-Return-Path: <bhumirks@gmail.com>
-Received: from gmail.com ([106.215.149.145])
-        by smtp.gmail.com with ESMTPSA id y2sm31767714pan.31.2016.09.26.07.33.23
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 26 Sep 2016 07:33:28 -0700 (PDT)
-Received: by gmail.com (sSMTP sendmail emulation); Mon, 26 Sep 2016 20:03:08 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	aditya.shankar@microchip.com,
-	ganesh.krishna@microchip.com,
-	gregkh@linuxfoundation.org
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: wilc1000: constify cfg80211_ops structures
-Date: Mon, 26 Sep 2016 20:03:06 +0530
-Message-Id: <1474900386-17042-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=WKqxbqbmaGLpGRse8Bxf/soGhef00c7VaMnL3BrsNm0=;
+        b=CvODYGzMBaMukYAEE00fcBCoF41CRW0HA7nAb+Latxop4at8NYckMtK5486Uw4Tv1C
+         CYbsqO1skaoOMLzyj245V3v8lpw3tPNvMDM3/utpAbQhPRDfwIs7OS615rU34WbI+ZG1
+         8GGdFDsVfEUA8fJ4XkYwoCgsk/6Y487g8FzcCbw8N/f/ViSzRcsxsmYwJU6IWkY7kf0x
+         9Zb0hsAfLaHoddF9e3SuvXYPDLNGLtSNssywDCJMOjKb7Y6UDsl7FIfUSk9Kfj9SXzG8
+         xKv7lfSa6fVz/K1VGd9EBaqOgB6OLGUxCnK6I/FMY3OgsxV35e3sRo4WgDhDJqr4Q9Wl
+         UEOg==
+X-Gm-Message-State: AA6/9RnNZc+gb+32pQbdFSTdl/w/KVUYRH3r8u4ufXdUm4gxYTKIg60Q3n+UFnOvYx9XQA==
+X-Received: by 10.66.185.133 with SMTP id fc5mr50513563pac.71.1475084095488;
+        Wed, 28 Sep 2016 10:34:55 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-77-201.dhcp.embarqhsd.net. [67.232.77.201])
+        by smtp.gmail.com with ESMTPSA id p7sm14101403paa.3.2016.09.28.10.34.54
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 28 Sep 2016 10:34:55 -0700 (PDT)
+Date: Wed, 28 Sep 2016 10:34:54 -0700
+From: Alison Schofield <amsfield22@gmail.com>
+To: Anchal Jain <anchalj109@gmail.com>
+Cc: Greg KH <gregkh@linuxfoundation.org>, Michael.Hennerich@analog.com,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: iio: cdc: add comment to
+ mutex
+Message-ID: <20160928173453.GA9841@d830.WORKGROUP>
+References: <20160927104504.GA13155@life-desktop>
+ <20160927170701.GA18239@d830.WORKGROUP>
+ <20160927194634.GA20266@d830.WORKGROUP>
+ <CAAbeOSs60S7DuxD30og0w=zP24i2dPrvo=vqPUMCWryJuL-LOg@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAAbeOSs60S7DuxD30og0w=zP24i2dPrvo=vqPUMCWryJuL-LOg@mail.gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Check for cfg80211_ops structures that are only passed as the first
-argument to the function wiphy_new. As this argument is constant, so
-cfg80211_ops structures having this property can also be declared
-constant.
-Done using coccinelle:
+On Wed, Sep 28, 2016 at 10:30:59PM +0530, Anchal Jain wrote:
+> >Ahah ;) I've been wondering when someone would get around
+> >to these.  There are a lot of these CHECK's in IIO.
+> >
+> >Following on Julia & Greg's comments, you do need to
+> >explore what the lock is for and give a succinct comment.
+> >
+> >Unfortunately, when you: git grep "struct mutex", even in
+> >upstream iio, you won't find too many examples...but you'll
+> >find a few.  Usually, simply say /* protect <something> */
+> >
+> >Fortunately, in this case, there is a comment for it, just
+> >in the wrong place - scroll up. That makes your task easier,
+> >although I still would suggest condensing it to a short phrase that
+> >fit adjacent to the definition.
+> 
+> 
+> 
+> 
+> I according to your suggestion I read the comment above the "struct
+> ad7150_chip_info"
+> And check the other files where they used the "struct mutex"
+> 
+> As you said to use just simply /* protect <something> */
+> then in the comment, Mention some hardware stuff what was that stuff ?
+> so I can make the comment.
+> 
+> 
 
-@r1 disable optional_qualifier @
-identifier i;
-position p;
-@@
-static struct cfg80211_ops i@p = {...};
+That header comment says:
+state_lock: ensure consistent state of this structure wrt the hardware.
 
-@ok1@
-identifier r1.i;
-position p;
-expression e1;
-@@
-wiphy_new(&i@p,e1)
+At the risk of being overly pedantic...the lock will make sure that the state
+data in this structure always accurately reflects the state of the
+hardware.  When you look above at the structure fields...all those u8
+items, I'm guessing they are settings in the hardware.  So, when parts
+of this driver start changing those settings, we need to use a lock
+so that simultaneous writes of that state data don't conflict
 
-@bad@
-position p!={r1.p,ok1.p};
-identifier r1.i;
-@@
-i@p
+If there had not been that comment to tell us what the lock was for,
+we would have had to go review all the places it was used to create
+the comment.
 
-@depends on !bad disable optional_qualifier@
-identifier r1.i;
-@@
-static
-+const
-struct cfg80211_ops i={...};
+So, back to your task of shrinking that comment.  I see it's the
+last item in the struct, so we wouldn't mess up the beauty of the
+struct by making a multiline comment.  Probably not needed though,
+since the nice header comment is available a short scroll away.
 
-@depends on !bad disable optional_qualifier@
-identifier r1.i;
-@@
-+const
-struct cfg80211_ops i;
+Shortened version of that to append could be:
+	struct mutex state_lock;	/* protect hardware state */
 
-File size before:
-   text	   data	    bss	    dec	    hex	filename
-  17468	   2417	  14912	  34797	   87ed
-drivers/staging/wilc1000/wilc_wfi_cfgoperations.o
+I'd suggest going with similar and sending it out for further review.
+Your CC list looks off.  Seems it should have picked up iio maintainers,
+reviewers, and the linux-iio list.
 
-File size after:
-   text	   data	    bss	    dec	    hex	filename
-  18204	   1681	  14912	  34797	   87ed
-drivers/staging/wilc1000/wilc_wfi_cfgoperations.o
+Need to put driver name in commit msg (iio: cdc: ad7150)
 
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
- drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+alisons
 
-diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-index 3b26130..8df5524 100644
---- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-+++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-@@ -2197,7 +2197,7 @@ static int get_tx_power(struct wiphy *wiphy, struct wireless_dev *wdev,
- 	return ret;
- }
- 
--static struct cfg80211_ops wilc_cfg80211_ops = {
-+static const struct cfg80211_ops wilc_cfg80211_ops = {
- 	.set_monitor_channel = set_channel,
- 	.scan = scan,
- 	.connect = connect,
--- 
-1.9.1
-
+> On Wed, Sep 28, 2016 at 1:16 AM, Alison Schofield <amsfield22@gmail.com>
+> wrote:
+> 
+> > On Tue, Sep 27, 2016 at 10:07:02AM -0700, Alison Schofield wrote:
+> > > On Tue, Sep 27, 2016 at 04:15:12PM +0530, Anchal Jain wrote:
+> > > > Fix the checkpatch.pl issues:
+> > > > CHECK: struct mutes definition without comment
+> > > >
+> > > > Signed-off-by: Anchal Jain <anchalj109@gmail.com>
+> > >
+> > > Ahah ;) I've been wondering when someone would get around
+> > > to these.  There are a lot of these CHECK's in IIO.
+> > >
+> > > Following on Julia & Greg's comments, you do need to
+> > > explore what the lock is for and give a succinct comment.
+> > >
+> > > Unfortunately, when you: git grep "struct mutex", even in
+> > > upstream iio, you won't find too many examples...but you'll
+> > > find a few.  Usually, simply say /* protect <something> */
+> > >
+> > > Fortunately, in this case, there is a comment for it, just
+> > > in the wrong place - scroll up. That makes your task easier,
+> > > although I still would suggest condensing it to a short phrase that
+> > > fit adjacent to the definition.
+> > >
+> > > alisons
+> >
+> > Although, this change is 'just a comment', if you do a few of them
+> > you'll begin developing an understanding of where and why things
+> > are locked in IIO drivers.  That's where the value is - you are
+> > exploring the code and figuring things out.
+> >
+> > Good patches for honing your patching skills.
+> >
+> > alisons
+> >
+> >
+> > > > ---
+> > > >  drivers/staging/iio/cdc/ad7150.c | 2 +-
+> > > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > > >
+> > > > diff --git a/drivers/staging/iio/cdc/ad7150.c
+> > b/drivers/staging/iio/cdc/ad7150.c
+> > > > index f6b9a10..88c6ebe 100644
+> > > > --- a/drivers/staging/iio/cdc/ad7150.c
+> > > > +++ b/drivers/staging/iio/cdc/ad7150.c
+> > > > @@ -78,7 +78,7 @@ struct ad7150_chip_info {
+> > > >     u8 mag_timeout[2][2];
+> > > >     int old_state;
+> > > >     char *conversion_mode;
+> > > > -   struct mutex state_lock;
+> > > > +   struct mutex state_lock; /*generic mutex for cdc and drivers*/
+> > > >  };
+> > > >
+> > > >  /*
+> > > > --
+> > > > 1.9.1
+> > > >
+> > > > --
+> > > > You received this message because you are subscribed to the Google
+> > Groups "outreachy-kernel" group.
+> > > > To unsubscribe from this group and stop receiving emails from it, send
+> > an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > > To post to this group, send email to outreachy-kernel@googlegroups.com
+> > .
+> > > > To view this discussion on the web visit https://groups.google.com/d/
+> > msgid/outreachy-kernel/20160927104504.GA13155%40life-desktop.
+> > > > For more options, visit https://groups.google.com/d/optout.
+> >
 
