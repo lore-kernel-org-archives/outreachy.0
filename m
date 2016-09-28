@@ -1,78 +1,77 @@
 X-GM-THRID: 6335472108323209216
-X-Received: by 10.67.5.39 with SMTP id cj7mr599804pad.144.1475166905257;
-        Thu, 29 Sep 2016 09:35:05 -0700 (PDT)
+X-Received: by 10.46.69.137 with SMTP id s131mr1952319lja.31.1475095797032;
+        Wed, 28 Sep 2016 13:49:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.2.1 with SMTP id 1ls3632725otb.4.gmail; Thu, 29 Sep 2016
- 09:35:04 -0700 (PDT)
-X-Received: by 10.129.119.70 with SMTP id s67mr629606ywc.102.1475166904912;
-        Thu, 29 Sep 2016 09:35:04 -0700 (PDT)
-Return-Path: <namrataashettar@gmail.com>
-Received: from mail-pf0-x22e.google.com (mail-pf0-x22e.google.com. [2607:f8b0:400e:c00::22e])
-        by gmr-mx.google.com with ESMTPS id f12si3470183pfk.0.2016.09.29.09.35.04
+Received: by 10.46.32.80 with SMTP id g77ls169618ljg.40.gmail; Wed, 28 Sep
+ 2016 13:49:56 -0700 (PDT)
+X-Received: by 10.25.33.10 with SMTP id h10mr783212lfh.10.1475095796751;
+        Wed, 28 Sep 2016 13:49:56 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id p199si41778wmd.1.2016.09.28.13.49.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 29 Sep 2016 09:35:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c00::22e as permitted sender) client-ip=2607:f8b0:400e:c00::22e;
+        Wed, 28 Sep 2016 13:49:56 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c00::22e as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22e.google.com with SMTP id s13so30650948pfd.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 29 Sep 2016 09:35:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=zrory/gc9E7a5LN1hFN9mmsLkDrQupO39zN6eKswMBQ=;
-        b=xzD7NZ5TysxuCTstDS5CJnOdhWlz/+cTWyJcnLSl7m52Fgci7o8D+qqS9ICQXDDsbI
-         JBIgwkrtidLvZqvj93bzxa0cgyr0SMJNDsJ5hYhgN9uwxyl6xiGwca/itkJ1PgbTLZEL
-         gcm+H5sJcyY0iNy4Mmrm3KR0MOvxgIR8dqHgBfYin9H6y9V2YboP2Y07ADwVuPaKQes+
-         wk7SqfGGZQj5/WSakfRBiMuOP0f3Vnphgu3wRsRu4uTaYMCF1Ujvtzsn3gF6X5BfjjqZ
-         nAa88Shkt9ZyOs1nHlf0wq+QuTRqcKigPGHVyFiTgbn2AyJENOmYEEL7/nZee7X4QNEJ
-         3RIg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=zrory/gc9E7a5LN1hFN9mmsLkDrQupO39zN6eKswMBQ=;
-        b=P29D6ekvryW9IZoMPUFkJXoWLWqlGOJTpOWw7h4JABcVjghPKHUc85DHoK7sBqK7S1
-         32QxLq0fEOAgzjoHqJZs/MD93SNhu0HWioVofZ3LaIoDpoco4bDEZ8JwiJ3jQKivgT7o
-         Re+/OmROQ/WaH4bchuLVzpzAZzVmnMbuqCd0DpRWrLprtt5jnAE20pmTQDTwCj2kmnNt
-         Zb2Ab21ge2K8MtRTmrgEjX3EsWp8tzzvz2WPeW4RDxMswsNKtw+0FDjicKpYV4/+FFtr
-         PNsWCBN31ndb1iDxMQakdu/KxYlzXoCfZLfoxvxNSHi19yqkRGVBQqyu3KJHb9tsotiU
-         wL4w==
-X-Gm-Message-State: AA6/9RkCzXBVaJGzlqzALofqj2AT20nwfqRheAxyqPIU+JEOAOQQjZDZ9wv/jK2sD/ej3g==
-X-Received: by 10.98.13.149 with SMTP id 21mr3901135pfn.19.1475166904727;
-        Thu, 29 Sep 2016 09:35:04 -0700 (PDT)
-Return-Path: <namrataashettar@gmail.com>
-Received: from namrata-HP-Pavilion-g6-Notebook-PC ([103.225.101.21])
-        by smtp.gmail.com with ESMTPSA id z5sm21526374pff.3.2016.09.29.09.35.02
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 29 Sep 2016 09:35:04 -0700 (PDT)
-Date: Thu, 29 Sep 2016 22:04:58 +0530
-From: Namrata A Shettar <namrataashettar@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Jonas Rickert <jrickertkc@gmail.com>,
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH v2 0/2] staging: rts5208: Fix checkpatch issues
-Message-ID: <cover.1475155905.git.namrataashettar@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.30,411,1470693600"; 
+   d="scan'208";a="238659682"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 28 Sep 2016 22:49:55 +0200
+Date: Wed, 28 Sep 2016 22:49:55 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Namrata A Shettar <namrataashettar@gmail.com>
+cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    Jonas Rickert <jrickertkc@gmail.com>, 
+    outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH 2/2] staging: rts5208: Replace explicit
+ NULL comparison
+In-Reply-To: <1c71305629b78a42717f794e9b8e3eef3cc12010.1475089953.git.namrataashettar@gmail.com>
+Message-ID: <alpine.DEB.2.10.1609282249340.3211@hadrien>
+References: <1c71305629b78a42717f794e9b8e3eef3cc12010.1475089953.git.namrataashettar@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Fix checkpatch issues.
 
-Namrata A Shettar (2):
-  staging: rts5208: Add space around binary operators
-  staging: rts5208: Replace explicit NULL comparison.
 
- drivers/staging/rts5208/rtsx_scsi.c | 22 +++++++++++-----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
+On Thu, 29 Sep 2016, Namrata A Shettar wrote:
 
- Changes in v2:
- - Drop parenthesis in [PATCH 2/2] 
--- 
-2.7.4
+> Replace explicit NULL comparison to resolve checkpatch issue.
+>
+> Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
+> ---
+>  drivers/staging/rts5208/rtsx_scsi.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/rts5208/rtsx_scsi.c b/drivers/staging/rts5208/rtsx_scsi.c
+> index d11b173..7c2ef03 100644
+> --- a/drivers/staging/rts5208/rtsx_scsi.c
+> +++ b/drivers/staging/rts5208/rtsx_scsi.c
+> @@ -1397,7 +1397,7 @@ static int trace_msg_cmd(struct scsi_cmnd *srb, struct rtsx_chip *chip)
+>  	buf_len = 4 + ((2 + MSG_FUNC_LEN + MSG_FILE_LEN + TIME_VAL_LEN) *
+>  		TRACE_ITEM_CNT);
+>
+> -	if ((scsi_bufflen(srb) < buf_len) || (scsi_sglist(srb) == NULL)) {
+> +	if ((scsi_bufflen(srb) < buf_len) || !(scsi_sglist(srb))) {
 
+The parentheses around the function call shouldn't be needed either.
+
+julia
+
+>  		set_sense_type(chip, SCSI_LUN(srb),
+>  			SENSE_TYPE_MEDIA_UNRECOVER_READ_ERR);
+>  		rtsx_trace(chip);
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1c71305629b78a42717f794e9b8e3eef3cc12010.1475089953.git.namrataashettar%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
