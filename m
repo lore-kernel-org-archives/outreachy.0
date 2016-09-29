@@ -1,59 +1,99 @@
-X-GM-THRID: 6334373273787170816
-X-Received: by 10.98.135.65 with SMTP id i62mr4631194pfe.18.1474836206468;
-        Sun, 25 Sep 2016 13:43:26 -0700 (PDT)
+X-GM-THRID: 6335831660956745728
+X-Received: by 10.25.74.71 with SMTP id x68mr221774lfa.6.1475176242997;
+        Thu, 29 Sep 2016 12:10:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.32.200 with SMTP id x66ls12837152ota.23.gmail; Sun, 25 Sep
- 2016 13:43:26 -0700 (PDT)
-X-Received: by 10.157.9.243 with SMTP id 48mr3588487otz.0.1474836206117;
-        Sun, 25 Sep 2016 13:43:26 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-yb0-x236.google.com (mail-yb0-x236.google.com. [2607:f8b0:4002:c09::236])
-        by gmr-mx.google.com with ESMTPS id d206si1208689ywh.3.2016.09.25.13.43.26
+Received: by 10.28.154.14 with SMTP id c14ls41311wme.17.gmail; Thu, 29 Sep
+ 2016 12:10:42 -0700 (PDT)
+X-Received: by 10.28.199.198 with SMTP id x189mr18047wmf.13.1475176242500;
+        Thu, 29 Sep 2016 12:10:42 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id u190si22202wmf.0.2016.09.29.12.10.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 25 Sep 2016 13:43:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:4002:c09::236 as permitted sender) client-ip=2607:f8b0:4002:c09::236;
+        Thu, 29 Sep 2016 12:10:42 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:4002:c09::236 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-yb0-x236.google.com with SMTP id t5so5807588yba.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 25 Sep 2016 13:43:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:from:date:message-id:subject:to;
-        bh=ehYPo/+mIRnyO79UxOvl565b65dzXnjUZCGXRneIPKU=;
-        b=G4O4afVH51l4937pwyJG0PkEZTda7lZgSdeXNrQblB1pHf/daVOL+CczLoKbtEFfJL
-         iNEIdC0XDdlC+FA15amvwyr0FMeGIiXVYmguSi1pjnS4Y+IjDZQQRcSegph0JuxM7xGW
-         cN/Ib/v39l/NjWr5LZhZDKG/h6DyfG/7gJ4hdKe0vUPc6tMHDIi+XD+x3QxQItTWJD1B
-         caae41cB5bXUdVooBfml9vZbKVW66ysuoQTF5h9MT+7sg6+lUyBH1y8jo/Sx/XTatmEe
-         Msocw/gfZJLj9VT4wvDEFe5MdCyk8mnVUqx+zI3TTM2KYaK6iVQoySprNIpREfvln88V
-         fE6A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-        bh=ehYPo/+mIRnyO79UxOvl565b65dzXnjUZCGXRneIPKU=;
-        b=T6wslvhyN9kOw+qjJKz1neS79w7u9TMq88vd2n9aI3H5mocWHZg3zxy5/XetfBHZ00
-         lyitES8+IR078tAS9yYUdVUDm5r+3kIT4maD8UXIotqMGx081Mrm92NT4i0OgUTZgFS1
-         TVTd665UfAAUJtCgv66csCQqKBR8oTftaWqiik/NwO1yOaJcM52kUjsXwz3VcJ0seKDe
-         hqyqCG4FU4g3i7GDbC+pqYZoRdgBvc+zl8UWTLGbjFuK59RL80txdV6uOuR69zky83p8
-         0X2G86dWtLRXvTviGtoq3S59Nl/Vop2cz1ov4+5/E5VznfSA/QzW5WEGDWOuP9o/yDEH
-         AG4w==
-X-Gm-Message-State: AE9vXwNBQeuZKhSdw5gn5BEj7DeBNueWOzXNRUJiHp25rkCDajoggJNaabhoNyjKsjJVHvX0cwyXRmy9GY0POw==
-X-Received: by 10.37.192.12 with SMTP id c12mr14423144ybf.187.1474836205742;
- Sun, 25 Sep 2016 13:43:25 -0700 (PDT)
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.31,268,1473112800"; 
+   d="scan'208";a="238805008"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 29 Sep 2016 21:10:26 +0200
+Date: Thu, 29 Sep 2016 21:10:25 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Keila Novo <laurana5@gmail.com>
+cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Add a paragraph that describes the
+ config simbol
+In-Reply-To: <20160928132757.GA28908@kheixx-VB>
+Message-ID: <alpine.DEB.2.10.1609292107280.3160@hadrien>
+References: <20160928132757.GA28908@kheixx-VB>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Received: by 10.37.41.132 with HTTP; Sun, 25 Sep 2016 13:42:44 -0700 (PDT)
-From: sayli karnik <karniksayli1995@gmail.com>
-Date: Mon, 26 Sep 2016 02:12:44 +0530
-Message-ID: <CAKG5xWgGDaSwa+Jihq9n2TwKPGLCYO-X4PvUMMvtw6qANwsGGQ@mail.gmail.com>
-Subject: [KERNEL NEWBIES ACCESS] Sayli Karnik
-To: outreachy-kernel@googlegroups.com
-Content-Type: text/plain; charset=UTF-8
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-I require access in order to claim an iio driver (temperature) for
-endianness warnings.
-Username: Sayli Karnik
 
-thanks!
+
+On Wed, 28 Sep 2016, Keila Novo wrote:
+
+> This Linux Kernel configuration item is a part of the a
+>  collection of configuration options which are organized in a tree structure.
+>  This item like the others has its own dependecies and depends on others too.
+>  In the description I add an explanation of which are the three dependencies
+>  that STAGING_BOARD depends on and they have to be visible/avaible to
+>  STAGING_BOARD dependency be avaible/visible too.
+
+Commit messages should be limited to 72 characters.  They will end up
+indented in the git history, so limiting them to 72 characters ensures
+that they will be within 80 characters later.
+
+The beginning of this commit message seems to be too low level.  A good
+idea could be to search for other patches that add comments in Kconfig
+files, and see what their commit messages look like.
+
+> Reply-To:
+
+This should not be here.
+
+> Signed-off-by: Keila Novo <laurana5@gmail.com>
+> ---
+>  drivers/staging/board/Kconfig | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/staging/board/Kconfig b/drivers/staging/board/Kconfig
+> index 8951531..006b134 100644
+> --- a/drivers/staging/board/Kconfig
+> +++ b/drivers/staging/board/Kconfig
+> @@ -1,7 +1,7 @@
+> -#These a Linux kernel configuration item.The items we can configure are:
+> -#OF_IRQ is an interrupt requests item
+> -#OF_ADDRESS is an device address item
+> -#CLKDEV_LOOKUP is clock lookup from devices tree configuration item
+> +#These is a Linux kernel configuration item. STAGING_BOARD directly depends on
+> +#OF_ADDRESS && OF_IRQ && CLKDEV_LOOKUP.
+> +#It will only be visible, if OF_ADDRESS, OF_IRQ and CLKDEV_LOOKUP are different
+> +#from 'n'.
+
+These lines seem also to be too long.
+
+Also, I wonder if this patch is on top of your previous patch?  It should
+be on top of what is in Greg's tree.
+
+julia
+
+>  config STAGING_BOARD
+>  	bool "Staging Board Support"
+>  	depends on OF_ADDRESS && OF_IRQ && CLKDEV_LOOKUP
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160928132757.GA28908%40kheixx-VB.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
