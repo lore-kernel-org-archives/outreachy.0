@@ -1,75 +1,74 @@
 X-GM-THRID: 6335813974195437568
-X-Received: by 10.25.92.200 with SMTP id u69mr238657lfi.23.1475173514594;
-        Thu, 29 Sep 2016 11:25:14 -0700 (PDT)
+X-Received: by 10.66.27.196 with SMTP id v4mr721007pag.46.1475171645342;
+        Thu, 29 Sep 2016 10:54:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.63.23 with SMTP id m23ls29558wma.3.gmail; Thu, 29 Sep 2016
- 11:25:14 -0700 (PDT)
-X-Received: by 10.28.165.138 with SMTP id o132mr3210wme.23.1475173514116;
-        Thu, 29 Sep 2016 11:25:14 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id s6si1008wmb.1.2016.09.29.11.25.13
+Received: by 10.157.12.40 with SMTP id 37ls3749315otr.25.gmail; Thu, 29 Sep
+ 2016 10:54:04 -0700 (PDT)
+X-Received: by 10.129.73.65 with SMTP id w62mr778484ywa.28.1475171644907;
+        Thu, 29 Sep 2016 10:54:04 -0700 (PDT)
+Return-Path: <gnudevliz@gmail.com>
+Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
+        by gmr-mx.google.com with ESMTPS id f12si3540939pfk.0.2016.09.29.10.54.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 29 Sep 2016 11:25:14 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Thu, 29 Sep 2016 10:54:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.31,268,1473112800"; 
-   d="scan'208";a="195112701"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 29 Sep 2016 20:25:13 +0200
-Date: Thu, 29 Sep 2016 20:25:12 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Elizabeth Ferdman <gnudevliz@gmail.com>
-cc: outreachy-kernel@googlegroups.com, amsfield22@gmail.com
-Subject: Re: [Outreachy kernel] mail delivery subsystem failure
-In-Reply-To: <20160929175401.GB3294@localhost>
-Message-ID: <alpine.DEB.2.10.1609292023060.3160@hadrien>
-References: <20160929175401.GB3294@localhost>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=gnudevliz@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x22d.google.com with SMTP id cd13so26656902pac.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 29 Sep 2016 10:54:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=Yjvvv2NM+fiXJNpzjBIltShhyZeXyPW8gxbZreC46MM=;
+        b=0DvO7/BEU5KMh13AFB4GGTrHPum313Q+fMEiGDRZr6GvyypD/pDcySoY4oInKNYfmR
+         BvaMoQ+p7f0JkzGIw7/kAi/CmY0yK8gGJeirauBvEApSH2IjbVMnaJ9Rt6kiM/ZMvC/q
+         C4SQdMC6U8ml4MGj0eg+Z8ydAlm+H2SB1K6vdgUUI6QcVMyKOX85qPDPTrs1vGqiZZjO
+         IUs2jOs7Mc6ThDJy9X/9WS7t6lqpxME7E/7+Jotil1hMjrnBvMtZ5vQ6zFNBoMKNEI6K
+         ISZODVSOnWiv9jLczmc4wGnb4OY7MdM17oxKoMNWCc1UGIqVv/0Lz6GsK7a7KCLkFgaT
+         dFsA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=Yjvvv2NM+fiXJNpzjBIltShhyZeXyPW8gxbZreC46MM=;
+        b=mIXyLnqX9YhezuVwsMreD+4OEJTOBPD6NHGYKOaXDYU/jbufyESGHztVRogTa7SL5L
+         EOvB3ym1HZnZ1JSoBBnsrLUWC0N8Vd8nTEGW0dPv9LuRxDlR6duReQ6ShISsyU1BrHmG
+         DDm9vYQ6QDqffS+yBo72lmJsYWc8QSBKUDD44OnRLnm4iAhqA4xGLe6X6RDYDpe/+hzQ
+         JLeTx7ORGncp4tve0XGgUBn1jBigzb9+umQ97ocB0YVXXNt/DnND6oHWtwUbYqXHl5ZU
+         mEGyLEetlnZgGseIn67xzdVxdn+7Nbaj1NiLUGys+sRilVjvA+Ir6Nui1f7z4soiwsfQ
+         IVeQ==
+X-Gm-Message-State: AA6/9RnnyVHwQ8VDOOz6uqACR+2d0DT3+gaLUjPfcsccW/eWZ/Qbv9i4S5+X0GjknQXUEw==
+X-Received: by 10.66.193.135 with SMTP id ho7mr4527840pac.12.1475171644721;
+        Thu, 29 Sep 2016 10:54:04 -0700 (PDT)
+Return-Path: <gnudevliz@gmail.com>
+Received: from localhost ([2601:644:300:fd6b:4e0f:6eff:fe69:e9ea])
+        by smtp.gmail.com with ESMTPSA id q8sm21837592pac.32.2016.09.29.10.54.04
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 29 Sep 2016 10:54:04 -0700 (PDT)
+Date: Thu, 29 Sep 2016 10:54:02 -0700
+From: Elizabeth Ferdman <gnudevliz@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: juia.lawall@lip6.fr, amsfield22@gmail.com
+Subject: mail delivery subsystem failure
+Message-ID: <20160929175401.GB3294@localhost>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
+I'm trying to group-reply to a message Julia sent about my patch. It
+fails to send and I get this error for each recipient from Mail Delivery
+Subsystem: "Delivery to the following recipient failed permanently:"
 
+It's making it impossible to group-reply from mutt because google thinks
+it's spam... I tried doing it a second time but the same thing happened.
+I believe I've group replied before and it worked fine.
 
-On Thu, 29 Sep 2016, Elizabeth Ferdman wrote:
-
-> I'm trying to group-reply to a message Julia sent about my patch. It
-> fails to send and I get this error for each recipient from Mail Delivery
-> Subsystem: "Delivery to the following recipient failed permanently:"
->
-> It's making it impossible to group-reply from mutt because google thinks
-> it's spam... I tried doing it a second time but the same thing happened.
-> I believe I've group replied before and it worked fine.
->
-> Technical details of permanent failure:
-> Message rejected. See https://support.google.com/mail/answer/69585 for
-> more information.
-
-I'm the moderator of the group, so normally I should get informed about
-any messages that are considered to be spam.  I haven't gotten anything
-recently, and I didn't see anything in the web interface.
-
-On the other hand, I see that you did spell my name incorrectly:
-
-juia.lawall@lip6.fr,
-
-Maybe lip6.fr is reacting in some way that google groups doesn't like?
-
-In any case, you can try just dropping me from the CC list.  I will get
-the message via the group anyway.
-
-julia
-
-
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160929175401.GB3294%40localhost.
-> For more options, visit https://groups.google.com/d/optout.
->
+Technical details of permanent failure:
+Message rejected. See https://support.google.com/mail/answer/69585 for
+more information.
 
