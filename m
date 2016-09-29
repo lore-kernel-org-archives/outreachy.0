@@ -1,98 +1,89 @@
-X-GM-THRID: 6396185012305133568
-X-Received: by 10.25.17.102 with SMTP id g99mr3089682lfi.6.1489227873643;
-        Sat, 11 Mar 2017 02:24:33 -0800 (PST)
+X-GM-THRID: 6335472108323209216
+X-Received: by 10.13.204.207 with SMTP id o198mr583289ywd.167.1475167067028;
+        Thu, 29 Sep 2016 09:37:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.77.217 with SMTP id c86ls1194711ljd.10.gmail; Sat, 11 Mar
- 2017 02:24:24 -0800 (PST)
-X-Received: by 10.46.9.141 with SMTP id 135mr4144548ljj.19.1489227864048;
-        Sat, 11 Mar 2017 02:24:24 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
-        by gmr-mx.google.com with ESMTPS id y19si215069wmd.0.2017.03.11.02.24.24
+Received: by 10.36.107.207 with SMTP id v198ls1387270itc.12.gmail; Thu, 29 Sep
+ 2016 09:37:44 -0700 (PDT)
+X-Received: by 10.107.11.106 with SMTP id v103mr972445ioi.37.1475167064798;
+        Thu, 29 Sep 2016 09:37:44 -0700 (PDT)
+Return-Path: <namrataashettar@gmail.com>
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id um12si3514489pab.2.2016.09.29.09.37.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 11 Mar 2017 02:24:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
+        Thu, 29 Sep 2016 09:37:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x244.google.com with SMTP id u132so2523040wmg.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 11 Mar 2017 02:24:24 -0800 (PST)
+       spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x243.google.com with SMTP id q2so3789049pfj.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 29 Sep 2016 09:37:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=1JB5ENLQW9+jnYBarQCO2QO+ZU0OzqxjZHJGFzkb8xI=;
-        b=mL1fH8MVwzzsda/0QgjYvUj4uiusuw9deIEV4DGm1XLXDbBm2yOZ2VeuNjnKuGFJFC
-         8ZiZV7eMsv9ur/SX2gQA5F5M6U8fUeujgXq4OxbfYchetATKcvTseL/BNI5G51MS0kBP
-         oaX+r6o5YqMytRgTkz6qDHmcXcXoZdSWyreiIEkk/p+Hc5hq9g2yHa0ibq1Txo2IcHjs
-         PNzt+wZo3XHnVkj/HJYhgUBUrJ54gnH+Y4Bqyj8pPDylKAoWoXMBozNEMCSvpAFD6UpK
-         BbRb5Pwghv+MKT6qLMSPdBBNYqyg40D3/MUE9BILFy330MBv/s2f1kbQS+jpdesBjiK+
-         2dhA==
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=Auv2a0YsT2hS8NVwbMUV+qPjlRGqfTm8PAClqHL95Sk=;
+        b=s6ucACAG/o9YtPStHwqv5NDZSKECSXKMU9j/R3lxbS3W29+NYcLLmVA5xNcyPxcVBZ
+         9phcVJxoMPoadQ0oNbWI/0pGn8B4846zPRwuQVqTOG3KapGpKc1JYc+1wTt194c2EE3I
+         SLdYtDKBzniJpBmclSGw/WN+i+OOKTzkveZELS7MDWUpHu5ZDkeZT9XehNlEgypzGb+x
+         mrUayk6LUPQmJJkgZBm0Ir65k6UlEyPumneEzRnz9hgvn6Be5vN6iRmvvLq77Ll5Hgs3
+         HBQn1Vv+rUE9cmHx2o4T6c2/Ctt/LUxCR15WqBRlRoLdheCfzgS3oJq2+MvYDRmnZ9hB
+         mY4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=1JB5ENLQW9+jnYBarQCO2QO+ZU0OzqxjZHJGFzkb8xI=;
-        b=hxOeT/H8aEZNDuvBJvZxrvYJmUZOCtplmqaB87j64cST/TtQajTUKnXEM9XZuB6X+j
-         u5Wzj2Q/AtqcH1c6aLcJUV0JR86EKQh3BDsWRMCgpgOHbynfZBrjRiN50iblVIKR1tXH
-         Q4uPvfkEFbVkRnNJJnp8yHI3ECutpIXoyMA8/MJWwSUkRbsKqIogBukpEkKrP7BqEV98
-         pjUuwvB7q9Kv4zuPJiGQXjl9V5lR1+w987/R2Vle6qoptNWu0E24ypUouVK7ml8/4pgR
-         IyfsvN5HgbnXfg2p0dooSVmzC+lXOIUE75ys0err0B3UWpUEFewXxGWLLLfNvFmioV+u
-         Q2WQ==
-X-Gm-Message-State: AFeK/H0OVhop8izAnfp36sF1V6cto9yl1E9lBm09T9Qfe68fBv0qTNimXkyAfBMzMwZCUg==
-X-Received: by 10.28.226.4 with SMTP id z4mr2583721wmg.135.1489227863874;
-        Sat, 11 Mar 2017 02:24:23 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([141.85.228.77])
-        by smtp.gmail.com with ESMTPSA id e6sm16825566wrc.30.2017.03.11.02.24.22
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 11 Mar 2017 02:24:22 -0800 (PST)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: aditya.shankar@microchip.com,
-	ganesh.krishna@microchip.com,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH] staging: wilc1000: Avoid excessive indentation
-Date: Sat, 11 Mar 2017 12:24:19 +0200
-Message-Id: <20170311102419.7302-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=Auv2a0YsT2hS8NVwbMUV+qPjlRGqfTm8PAClqHL95Sk=;
+        b=BZhYtyu3PvwZ0dyRNTw8HtFE3U9rxeuI3ynd8HpBcoxwP1x4SDLgXTZAabzQoegKt2
+         k2Wlnaf6wK47JGpAM76lMnyJiP2qAYjoOgdBj07lPV33kkhzTfZe8DNygKypAzABR46t
+         1M/EynEcr1POCro7zueQXve7CNh2wEzO2vh92gbqit8wU/wgk79Qpsohw5jejAIPlhAa
+         RhD+fuMbbowcN89DPU+74RISpYL46MJiMtshZNi74cpBukNu9Kd9YfKJrak2gRbW5dwf
+         2Cqv6p6Z8S0KV6lr5Pc2uM5SRRGmVkIu8J/ySB7iWLBCkdq9Wpmyjdbq6x+KciK/dd4x
+         1UzQ==
+X-Gm-Message-State: AA6/9RnyJSDsJxSJqXRedWZIMLicYhejXWfGhDhR50mp1btgK1vbbE8UGR19wW/8lB/JcA==
+X-Received: by 10.98.26.139 with SMTP id a133mr3840496pfa.167.1475167064622;
+        Thu, 29 Sep 2016 09:37:44 -0700 (PDT)
+Return-Path: <namrataashettar@gmail.com>
+Received: from namrata-HP-Pavilion-g6-Notebook-PC ([103.225.101.21])
+        by smtp.gmail.com with ESMTPSA id ao5sm21564340pad.1.2016.09.29.09.37.42
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 29 Sep 2016 09:37:44 -0700 (PDT)
+Date: Thu, 29 Sep 2016 22:07:39 +0530
+From: Namrata A Shettar <namrataashettar@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jonas Rickert <jrickertkc@gmail.com>,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: [PATCH v2 2/2] staging: rts5208: Replace explicit NULL comparison
+Message-ID: <3bd29afc56a6812f1264be0167d0fa83c152f904.1475155905.git.namrataashettar@gmail.com>
+References: <cover.1475155905.git.namrataashettar@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1475155905.git.namrataashettar@gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Modified if/else segment to avoid excessive indentation.
-Fix the checkpatch.pl warning:
-WARNING: line over 80 characters.
+Replace explicit NULL comparison to resolve checkpatch issues.
 
-Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
+Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
 ---
- drivers/staging/wilc1000/linux_wlan.c | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
+ drivers/staging/rts5208/rtsx_scsi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/wilc1000/linux_wlan.c b/drivers/staging/wilc1000/linux_wlan.c
-index 2eebc62..0292aab 100644
---- a/drivers/staging/wilc1000/linux_wlan.c
-+++ b/drivers/staging/wilc1000/linux_wlan.c
-@@ -866,14 +866,13 @@ static int wilc_mac_open(struct net_device *ndev)
- 				wilc_set_wfi_drv_handler(vif,
- 							 wilc_get_vif_idx(vif),
- 							 wl->open_ifcs);
--			} else {
--				if (memcmp(wl->vif[i ^ 1]->bssid,
--					   wl->vif[i ^ 1]->src_addr, 6))
--					wilc_set_wfi_drv_handler(vif,
-+			} else if (memcmp(wl->vif[i ^ 1]->bssid,
-+					   wl->vif[i ^ 1]->src_addr, 6)){
-+				wilc_set_wfi_drv_handler(vif,
- 							 wilc_get_vif_idx(vif),
- 							 0);
--				else
--					wilc_set_wfi_drv_handler(vif,
-+			else
-+				wilc_set_wfi_drv_handler(vif,
- 							 wilc_get_vif_idx(vif),
- 							 1);
- 			}
+diff --git a/drivers/staging/rts5208/rtsx_scsi.c b/drivers/staging/rts5208/rtsx_scsi.c
+index d11b173..becb4bb 100644
+--- a/drivers/staging/rts5208/rtsx_scsi.c
++++ b/drivers/staging/rts5208/rtsx_scsi.c
+@@ -1397,7 +1397,7 @@ static int trace_msg_cmd(struct scsi_cmnd *srb, struct rtsx_chip *chip)
+ 	buf_len = 4 + ((2 + MSG_FUNC_LEN + MSG_FILE_LEN + TIME_VAL_LEN) *
+ 		TRACE_ITEM_CNT);
+ 
+-	if ((scsi_bufflen(srb) < buf_len) || (scsi_sglist(srb) == NULL)) {
++	if ((scsi_bufflen(srb) < buf_len) || !scsi_sglist(srb)) {
+ 		set_sense_type(chip, SCSI_LUN(srb),
+ 			SENSE_TYPE_MEDIA_UNRECOVER_READ_ERR);
+ 		rtsx_trace(chip);
 -- 
-2.9.3
+2.7.4
 
 
