@@ -1,162 +1,216 @@
-X-GM-THRID: 6252733249788837888
-X-Received: by 10.182.29.41 with SMTP id g9mr9099857obh.27.1455827907879;
-        Thu, 18 Feb 2016 12:38:27 -0800 (PST)
+X-GM-THRID: 6335688613427150848
+X-Received: by 10.66.183.166 with SMTP id en6mr240822pac.78.1475149187341;
+        Thu, 29 Sep 2016 04:39:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.107.163 with SMTP id h32ls5208687qgf.70.gmail; Thu, 18 Feb
- 2016 12:38:27 -0800 (PST)
-X-Received: by 10.129.131.206 with SMTP id t197mr8618428ywf.50.1455827907371;
-        Thu, 18 Feb 2016 12:38:27 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
-        by gmr-mx.google.com with ESMTPS id yd9si1190338pab.1.2016.02.18.12.38.27
+Received: by 10.107.161.69 with SMTP id k66ls1231534ioe.22.gmail; Thu, 29 Sep
+ 2016 04:39:44 -0700 (PDT)
+X-Received: by 10.107.168.211 with SMTP id e80mr624193ioj.36.1475149184605;
+        Thu, 29 Sep 2016 04:39:44 -0700 (PDT)
+Return-Path: <anchalj109@gmail.com>
+Received: from mail-qk0-x243.google.com (mail-qk0-x243.google.com. [2607:f8b0:400d:c09::243])
+        by gmr-mx.google.com with ESMTPS id c75si643554ywh.0.2016.09.29.04.39.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 18 Feb 2016 12:38:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
+        Thu, 29 Sep 2016 04:39:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400d:c09::243 as permitted sender) client-ip=2607:f8b0:400d:c09::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400d:c09::243 as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x231.google.com with SMTP id ho8so37747817pac.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 18 Feb 2016 12:38:27 -0800 (PST)
+Received: by mail-qk0-x243.google.com with SMTP id n189so2119125qke.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 29 Sep 2016 04:39:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=Ps5z+4Hw9rJmkPEQkpUVcbogqr3ooK1iuojO3AMdwx4=;
-        b=iSyBcANVYhhELDN3iTLkynM2KLk5SuCJT4/kju4gP/u2qVG5jfgDn3sm5m+1n2YOZM
-         jRjHNzyLN/1nd67Qchmg/Pr6iQvzY3p9DCslbn/rXbAiPG0KRLIuIEQ6ZX4zMX7VDbgg
-         /Mg5CX1oXg6ldEaxXa3HOtJXpG/BBc3TUI0ty/GnHnqffJ0IatLOBRm977T9RBVYAmcU
-         9LSizbdxFjnsOInE8OqZPtHeiX7cXg/qh8qmcOhsqEjKo1ISSgCfJ7+Du27uUA/A7jUP
-         PxdHjADxbSbKOMkraQDxdD1QssI0j+s/GkLVbQd5OmUDiuEF3UFYSnUz9b5l/hVGpnoh
-         WmvA==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=yuomgN8/GGV6avo4HDBZlk5AIoGrBRaYL/SWiu7j1ig=;
+        b=QdGAAkI0TRlV4RQrxEcYwlsmptGWgLyI40k+ORDMThSIhgoXb8Zxx6Av3l9Uty6T5e
+         QdW9bluj9vvdmT1zFc+gSBnf9glgb2p/b6NqXa/2x6LBq6yEykpf2IEpIE1as/zzrqDy
+         8BZzFxDw1LSapABsJCwq5HPPQFjNcqLCx1Yrzu/oKlFqrug4YdEl2fgJFcGr4pk8Ht6O
+         RPu0xKT8FhUt/+lP3woZ1SlS3byQTrdfY3sDPVL+5gW4aAXZgsoho7Vp7krt2t71eu0q
+         MANqQYBsNnN0vDCh4fD0zVLVqpnRiRWvfqqlUU3vo9RZdwZpna6RM6TpfrzMkEAKUDZ0
+         xl1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=Ps5z+4Hw9rJmkPEQkpUVcbogqr3ooK1iuojO3AMdwx4=;
-        b=N9DugQMmkOYYSC9PBW4S4uUOZuozVtLT45uigJXMKMWpkQv0+Ralx0eUeW1ZLuVFwd
-         bVwFv+41/Aoyrl1WD/mGDLVvG5pW+MkFcLbSTfc9r0DQGkrhXO7PBKBxjYw8Nh/p6+nu
-         mOhfMTm2HRsRCNGT58ssiQh5+5aRqV6RhURay1s8ks1mhp2L+P8N49rA5pIGYuUj3KNP
-         y8spj0E4DrfRwMji8XYa9GpFfgVlJe6PG/AyfGiN0Os3O6ibyNffScJu0U2IUEd80Hph
-         nk/TlAt7+TZC4GWQkaEpShpJqsQxT59evYv+x1BIdDemuEMbuDcsRSBE89r3Lmz0gkF6
-         otPw==
-X-Gm-Message-State: AG10YOSDSHn/4J+mp0YpsT87U2cyADSzK7eJvlDBzsU8eri7Fs9mmQ1XukJB22ugi3M28Q==
-X-Received: by 10.66.102.8 with SMTP id fk8mr13241037pab.12.1455827907191;
-        Thu, 18 Feb 2016 12:38:27 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id wh9sm12364098pab.8.2016.02.18.12.38.26
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 18 Feb 2016 12:38:26 -0800 (PST)
-Date: Fri, 19 Feb 2016 02:08:52 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8712: Compress return logic into one line
-Message-ID: <20160218203852.GA6542@Karyakshetra>
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=yuomgN8/GGV6avo4HDBZlk5AIoGrBRaYL/SWiu7j1ig=;
+        b=L1noJZjowadURUHzaW0kTkSwaNl64qXUsMN4VRVmhu6/+QbjZ38R7p+nIXGlqx46J+
+         bGxYJL3X5YA93lvmyXXYEmUkv5LS7uXVYejX/3FgQ5g2OwUyrmPoOLs1LkAKq+edioi0
+         PrvIosn+wJE3e6TBOtMc6P6q/woWDoapokXqcrvEcBIAD+f0LQn8wtlwchzSuzj/OJ+F
+         KQXrksGokNiiaIylyo4vsO5Wpw6seobY36c24DavEF4YpBG89N+GqD9yMGkFb8yNEGqp
+         xxLdrTtX3Qs2FCTP+4PZETBuii+uOiHkqRpfoVpyAiuC7pbB44VIiiVBAEX5MJWOmo8j
+         EIwg==
+X-Gm-Message-State: AA6/9RnNOGmF4XpRov4nKy636AzRZpH3SyATeMsl6hNnM4JMQMfa0uo7KytCBWJaE+8PS6IZxgInIx8qYUGJPA==
+X-Received: by 10.55.81.84 with SMTP id f81mr881057qkb.255.1475149184406; Thu,
+ 29 Sep 2016 04:39:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Received: by 10.12.171.92 with HTTP; Thu, 29 Sep 2016 04:39:44 -0700 (PDT)
+In-Reply-To: <c1540d4979226f22ca311535bcb98807@jic23.retrosnub.co.uk>
+References: <cover.1475141738.git.anchalj109@gmail.com> <6034b360c798be8bdbf156582dc2b4e0c174121b.1475141738.git.anchalj109@gmail.com>
+ <c1540d4979226f22ca311535bcb98807@jic23.retrosnub.co.uk>
+From: Anchal Jain <anchalj109@gmail.com>
+Date: Thu, 29 Sep 2016 17:09:44 +0530
+Message-ID: <CAAbeOSvOX3HQ7JDaqc+0R635eebYFAEW3f0f49VrD+Mp7PoZig@mail.gmail.com>
+Subject: Re: [PATCH 2/3] staging: iio: cdc: ad7152: Fix CamelCase checkpatch warning
+To: jic23@jic23.retrosnub.co.uk
+Cc: Greg KH <gregkh@linuxfoundation.org>, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>, jic23@kernel.org
+Content-Type: multipart/alternative; boundary=001a114a8d9420a2f8053da3eff1
 
-Simplified function return by merging assignment and return into
-one line.
+--001a114a8d9420a2f8053da3eff1
+Content-Type: text/plain; charset=UTF-8
 
-Found with Coccinelle.
+>Don't assume that checkpatch is right.
+>
+>Like all units that are named after a person (here Faraday)
+>the unit should be capitals.  Checkpatch assumes that
+>it is camel case but is wrong.
+>
+>J
 
-@@ expression ex, r; @@
--r =
-+return
-	ex;
--return r;
+Thank you for informing me next time I'll sure that kind of mistake not
+happen.
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 4 +---
- drivers/staging/rtl8712/rtl871x_ioctl_set.c   | 3 +--
- drivers/staging/rtl8712/rtl871x_mp.c          | 3 +--
- drivers/staging/rtl8712/rtl871x_mp_ioctl.c    | 9 +++------
- 4 files changed, 6 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-index db2e31bc..3e6ff23 100644
---- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-+++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-@@ -329,9 +329,7 @@ static inline char *translate_scan(struct _adapter *padapter,
- 	iwe.u.qual.level = rssi;  /* signal strength */
- 	iwe.u.qual.qual = 0; /* signal quality */
- 	iwe.u.qual.noise = 0; /* noise level */
--	start = iwe_stream_add_event(info, start, stop, &iwe, IW_EV_QUAL_LEN);
--	/* how to translate rssi to ?% */
--	return start;
-+	return iwe_stream_add_event(info, start, stop, &iwe, IW_EV_QUAL_LEN);
- }
+On Thu, Sep 29, 2016 at 4:44 PM, <jic23@jic23.retrosnub.co.uk> wrote:
 
- static int wpa_set_auth_algs(struct net_device *dev, u32 value)
-diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_set.c b/drivers/staging/rtl8712/rtl871x_ioctl_set.c
-index f772675..c32dec9 100644
---- a/drivers/staging/rtl8712/rtl871x_ioctl_set.c
-+++ b/drivers/staging/rtl8712/rtl871x_ioctl_set.c
-@@ -131,8 +131,7 @@ u8 r8712_set_802_11_bssid(struct _adapter *padapter, u8 *bssid)
- 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
+> On 29.09.2016 10:47, Anchal Jain wrote:
+>
+>> This patch fix the check detect by the checkpatch.pl
+>> CHECK: Avoid CamelCase
+>> Convert the names into normal naming pattern
+>>
+> Don't assume that checkpatch is right.
+>
+> Like all units that are named after a person (here Faraday)
+> the unit should be capitals.  Checkpatch assumes that
+> it is camel case but is wrong.
+>
+> J
+>
+>
+>> Signed-off-by: Anchal Jain <anchalj109@gmail.com>
+>> ---
+>>  drivers/staging/iio/cdc/ad7152.c | 10 +++++-----
+>>  1 file changed, 5 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/drivers/staging/iio/cdc/ad7152.c
+>> b/drivers/staging/iio/cdc/ad7152.c
+>> index 1962052..2473af3 100644
+>> --- a/drivers/staging/iio/cdc/ad7152.c
+>> +++ b/drivers/staging/iio/cdc/ad7152.c
+>> @@ -48,10 +48,10 @@
+>>
+>>  /* Setup Register Bit Designations (AD7152_REG_CHx_SETUP) */
+>>  #define AD7152_SETUP_CAPDIFF           bit(5)
+>> -#define AD7152_SETUP_RANGE_2pF         (0 << 6)
+>> -#define AD7152_SETUP_RANGE_0_5pF       bit(6)
+>> -#define AD7152_SETUP_RANGE_1pF         (2 << 6)
+>> -#define AD7152_SETUP_RANGE_4pF         (3 << 6)
+>> +#define AD7152_SETUP_RANGE_2pf         (0 << 6)
+>> +#define AD7152_SETUP_RANGE_0_5pf       bit(6)
+>> +#define AD7152_SETUP_RANGE_1pf         (2 << 6)
+>> +#define AD7152_SETUP_RANGE_4pf         (3 << 6)
+>>  #define AD7152_SETUP_RANGE(x)          ((x) << 6)
+>>
+>>  /* Config Register Bit Designations (AD7152_REG_CFG) */
+>> @@ -298,7 +298,7 @@ static int ad7152_write_raw(struct iio_dev *indio_dev,
+>>                         if (val2 == ad7152_scale_table[i])
+>>                                 break;
+>>
+>> -               chip->setup[chan->channel] &= ~AD7152_SETUP_RANGE_4pF;
+>> +               chip->setup[chan->channel] &= ~AD7152_SETUP_RANGE_4pf;
+>>                 chip->setup[chan->channel] |= AD7152_SETUP_RANGE(i);
+>>
+>>                 ret = i2c_smbus_write_byte_data(chip->client,
+>>
+>
 
- 	if (is_zero_ether_addr(bssid) || is_broadcast_ether_addr(bssid)) {
--		status = false;
--		return status;
-+		return false;
- 	}
- 	spin_lock_irqsave(&pmlmepriv->lock, irqL);
- 	if (check_fwstate(pmlmepriv, _FW_UNDER_SURVEY |
-diff --git a/drivers/staging/rtl8712/rtl871x_mp.c b/drivers/staging/rtl8712/rtl871x_mp.c
-index 44da4fe..c2cd412 100644
---- a/drivers/staging/rtl8712/rtl871x_mp.c
-+++ b/drivers/staging/rtl8712/rtl871x_mp.c
-@@ -715,8 +715,7 @@ static u32 GetPhyRxPktCounts(struct _adapter *pAdapter, u32 selbit)
- 	phyrx_set |= (SelectBit & 0xF0000000);
- 	r8712_write32(pAdapter, RXERR_RPT, phyrx_set);
- 	/*Read packet count*/
--	count = r8712_read32(pAdapter, RXERR_RPT) & RPTMaxCount;
--	return count;
-+	return r8712_read32(pAdapter, RXERR_RPT) & RPTMaxCount;
- }
+--001a114a8d9420a2f8053da3eff1
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
- u32 r8712_GetPhyRxPktReceived(struct _adapter *pAdapter)
-diff --git a/drivers/staging/rtl8712/rtl871x_mp_ioctl.c b/drivers/staging/rtl8712/rtl871x_mp_ioctl.c
-index b98a596..edf2661 100644
---- a/drivers/staging/rtl8712/rtl871x_mp_ioctl.c
-+++ b/drivers/staging/rtl8712/rtl871x_mp_ioctl.c
-@@ -383,8 +383,7 @@ uint oid_rt_pro_query_tx_packet_sent_hdl(
- 				   (poid_par_priv->adapter_context);
+<div dir=3D"ltr"><div>&gt;Don&#39;t assume that checkpatch is right.<br>
+&gt;<br>&gt;Like all units that are named after a person (here Faraday)<br>=
+&gt;the unit should be capitals.=C2=A0 Checkpatch assumes that<br>&gt;it is=
+ camel case but is wrong.<br>
+&gt;<br>&gt;J<br><br></div>Thank you for informing me next time I&#39;ll su=
+re that kind of mistake not happen.<br><br></div><div class=3D"gmail_extra"=
+><br><div class=3D"gmail_quote">On Thu, Sep 29, 2016 at 4:44 PM,  <span dir=
+=3D"ltr">&lt;<a href=3D"mailto:jic23@jic23.retrosnub.co.uk" target=3D"_blan=
+k">jic23@jic23.retrosnub.co.uk</a>&gt;</span> wrote:<br><blockquote class=
+=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padd=
+ing-left:1ex"><span class=3D"">On 29.09.2016 10:47, Anchal Jain wrote:<br>
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex">
+This patch fix the check detect by the <a href=3D"http://checkpatch.pl" rel=
+=3D"noreferrer" target=3D"_blank">checkpatch.pl</a><br>
+CHECK: Avoid CamelCase<br>
+Convert the names into normal naming pattern<br>
+</blockquote></span>
+Don&#39;t assume that checkpatch is right.<br>
+<br>
+Like all units that are named after a person (here Faraday)<br>
+the unit should be capitals.=C2=A0 Checkpatch assumes that<br>
+it is camel case but is wrong.<br>
+<br>
+J<div class=3D"HOEnZb"><div class=3D"h5"><br>
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex">
+<br>
+Signed-off-by: Anchal Jain &lt;<a href=3D"mailto:anchalj109@gmail.com" targ=
+et=3D"_blank">anchalj109@gmail.com</a>&gt;<br>
+---<br>
+=C2=A0drivers/staging/iio/cdc/ad715<wbr>2.c | 10 +++++-----<br>
+=C2=A01 file changed, 5 insertions(+), 5 deletions(-)<br>
+<br>
+diff --git a/drivers/staging/iio/cdc/ad71<wbr>52.c b/drivers/staging/iio/cd=
+c/ad71<wbr>52.c<br>
+index 1962052..2473af3 100644<br>
+--- a/drivers/staging/iio/cdc/ad71<wbr>52.c<br>
++++ b/drivers/staging/iio/cdc/ad71<wbr>52.c<br>
+@@ -48,10 +48,10 @@<br>
+<br>
+=C2=A0/* Setup Register Bit Designations (AD7152_REG_CHx_SETUP) */<br>
+=C2=A0#define AD7152_SETUP_CAPDIFF=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+bit(5)<br>
+-#define AD7152_SETUP_RANGE_2pF=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(0 &lt;&lt=
+; 6)<br>
+-#define AD7152_SETUP_RANGE_0_5pF=C2=A0 =C2=A0 =C2=A0 =C2=A0bit(6)<br>
+-#define AD7152_SETUP_RANGE_1pF=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(2 &lt;&lt=
+; 6)<br>
+-#define AD7152_SETUP_RANGE_4pF=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(3 &lt;&lt=
+; 6)<br>
++#define AD7152_SETUP_RANGE_2pf=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(0 &lt;&lt=
+; 6)<br>
++#define AD7152_SETUP_RANGE_0_5pf=C2=A0 =C2=A0 =C2=A0 =C2=A0bit(6)<br>
++#define AD7152_SETUP_RANGE_1pf=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(2 &lt;&lt=
+; 6)<br>
++#define AD7152_SETUP_RANGE_4pf=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(3 &lt;&lt=
+; 6)<br>
+=C2=A0#define AD7152_SETUP_RANGE(x)=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ((x) =
+&lt;&lt; 6)<br>
+<br>
+=C2=A0/* Config Register Bit Designations (AD7152_REG_CFG) */<br>
+@@ -298,7 +298,7 @@ static int ad7152_write_raw(struct iio_dev *indio_dev,<=
+br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 if (val2 =3D=3D ad7152_scale_table[i])<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0chip-&gt;setup[chan=
+-&gt;channel] &amp;=3D ~AD7152_SETUP_RANGE_4pF;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0chip-&gt;setup[chan=
+-&gt;channel] &amp;=3D ~AD7152_SETUP_RANGE_4pf;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 chip-&gt;setup[chan=
+-&gt;channel] |=3D AD7152_SETUP_RANGE(i);<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D i2c_smbus_w=
+rite_byte_data(chip<wbr>-&gt;client,<br>
+</blockquote>
+</div></div></blockquote></div><br></div>
 
- 	if (poid_par_priv->type_of_oid != QUERY_OID) {
--		status = RNDIS_STATUS_NOT_ACCEPTED;
--		return status;
-+		return RNDIS_STATUS_NOT_ACCEPTED;
- 	}
- 	if (poid_par_priv->information_buf_len == sizeof(u32)) {
- 		*(u32 *)poid_par_priv->information_buf =
-@@ -404,8 +403,7 @@ uint oid_rt_pro_query_rx_packet_received_hdl(
- 				   (poid_par_priv->adapter_context);
-
- 	if (poid_par_priv->type_of_oid != QUERY_OID) {
--		status = RNDIS_STATUS_NOT_ACCEPTED;
--		return status;
-+		return RNDIS_STATUS_NOT_ACCEPTED;
- 	}
- 	if (poid_par_priv->information_buf_len == sizeof(u32)) {
- 		*(u32 *)poid_par_priv->information_buf =
-@@ -425,8 +423,7 @@ uint oid_rt_pro_query_rx_packet_crc32_error_hdl(
- 				   (poid_par_priv->adapter_context);
-
- 	if (poid_par_priv->type_of_oid != QUERY_OID) {
--		status = RNDIS_STATUS_NOT_ACCEPTED;
--		return status;
-+		return RNDIS_STATUS_NOT_ACCEPTED;
- 	}
- 	if (poid_par_priv->information_buf_len == sizeof(u32)) {
- 		*(u32 *)poid_par_priv->information_buf =
---
-2.1.4
-
+--001a114a8d9420a2f8053da3eff1--
 
