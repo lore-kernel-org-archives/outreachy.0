@@ -1,131 +1,171 @@
-X-GM-THRID: 7025609319157596160
-X-Received: by 2002:a2e:7e02:: with SMTP id z2mr32100943ljc.169.1635777139748;
-        Mon, 01 Nov 2021 07:32:19 -0700 (PDT)
+X-GM-THRID: 6335813974195437568
+X-Received: by 10.28.55.205 with SMTP id e196mr37290wma.0.1475177888577;
+        Thu, 29 Sep 2016 12:38:08 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a19:c74d:: with SMTP id x74ls1216828lff.3.gmail; Mon, 01 Nov
- 2021 07:32:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyo8LuivFVkKz49scTpgD2U179e3pYSThSfmnAUdNXjuGFn0FDXK9e1l5Lh3wnEjC3lHyHA
-X-Received: by 2002:a05:6512:3a8f:: with SMTP id q15mr28121578lfu.425.1635777138150;
-        Mon, 01 Nov 2021 07:32:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635777138; cv=none;
-        d=google.com; s=arc-20160816;
-        b=yPdVSJIFaPabfaNPyasdtx5j6QrYfl0/u2S640LwEiwW/UT8CRIpOX2yGP9Xagbjs6
-         qt2GPhhgXTDASllnzDb9R+upXTkKx4cfShpFnTfTU0ao4/Of2a1fOI/tahPKIrkUZXMf
-         zKeOtZ2khv1UgsqEsqzJ+4tERO8bLA828HvvqPs5GEaSSvUnjqv7Cllj5VzXfzlDYHFZ
-         7tFScnsDTc72pLTYAEM7rYRMOd8WgXT8GvqaQBbGvbmmMgUSnyV3B1a19QmsGhVopHYT
-         KA1VMbhB/M7qXsFRVeU9XZD63bFvqAAGFxLRk+5jURYrKQTz98/H9x+O4YymtKGl8Ban
-         0ciQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=Nk+zvXAt/yARZGxNV8fi4WGClbaS5+zS5+rohIvR53Y=;
-        b=WhXv+2EDD7G69ARf/qug6YlWrfm8AZXo4RNnUcBC+ojDqGz4kkDA1GxLxQYHZdWpIy
-         ktffYr/wU6gFvzU7DZeRXtxD8PhqouoY+HBuXcIijI9EpmA6H9hrXTYgaSQFjVty5cBq
-         +1TimoTTTK0Nv+pNGuuHiCM04P+t66bbhRNIXF5OYNH66Ck2nDK7dAkYL+AcjFiz3vH8
-         /T0hsyPoo5EphWlB54SIxJHfdItJg7QWrLEu0/vGWFJ6MirHI3MvDD2KfPEDEHsIQASw
-         /eF9Dgg3qAeDlUwH3qRDu9s+UH9kG0/5mTH4EgRYYL0VZeq7RxqBxFMJ6fAdoq9jOlv/
-         pMHQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=GUcjWsJL;
-       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::32e as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <karolinadrobnik@gmail.com>
-Received: from mail-wm1-x32e.google.com (mail-wm1-x32e.google.com. [2a00:1450:4864:20::32e])
-        by gmr-mx.google.com with ESMTPS id t1si431844ljg.3.2021.11.01.07.32.18
+Received: by 10.28.228.85 with SMTP id b82ls52371wmh.19.gmail; Thu, 29 Sep
+ 2016 12:38:08 -0700 (PDT)
+X-Received: by 10.28.72.196 with SMTP id v187mr35327wma.0.1475177888043;
+        Thu, 29 Sep 2016 12:38:08 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id u190si33476wmf.0.2016.09.29.12.38.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 01 Nov 2021 07:32:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::32e as permitted sender) client-ip=2a00:1450:4864:20::32e;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 29 Sep 2016 12:38:08 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=GUcjWsJL;
-       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::32e as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x32e.google.com with SMTP id 67-20020a1c1946000000b0030d4c90fa87so79334wmz.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 01 Nov 2021 07:32:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=Nk+zvXAt/yARZGxNV8fi4WGClbaS5+zS5+rohIvR53Y=;
-        b=GUcjWsJLUg2Lf2WmjGU/RQeJcsua7eeLBxuChpYxP84Ylg2tZelUYkJxQv6ZXlVeO7
-         8mWWgVkxsk4XcBhKxmMdwwd7kC26Qzw/3/WLIqBwgFt6nMyOezDBclDAi/HkCCj9iK6Y
-         uZMweyotbPljtq08Efsdx4usDZu+iDk5BD/tfgZwAvNREUEcCu7TzLlMpX+ud5K0o+UQ
-         LxTioXUX0OAobNBRFNMQkQ2bEpgYthF+RKOdSGIw9V+6WoqJmvZjRo7MnNw1M0/Yx5C4
-         Ov65aJlQLKr6DrHSmrgecYBxlK6gGri5rS2rn8kKEB036vmgIC0dLcy3vtmz46+rI4CU
-         Gbwg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=Nk+zvXAt/yARZGxNV8fi4WGClbaS5+zS5+rohIvR53Y=;
-        b=cGqnd5DAwXcHabQb5N1oGads2ASxOllif5YklJqxC79fbnOv/eCepxR046u/4tCeHq
-         coNpkoNsdcdjck9DSURcw7bX438SqdQ/b6sRTvoXxYFtgEJDHHJCxN2W4L9BLEAwVxGt
-         CraujbA9TkQDaiS+wvuu8kOOoYFRHwPbCbqcJfj1BIq79zFW0s2iifyR7Syc6BbSOtzt
-         idoc5o2roDjd+5mgb0CLYMnuN4wE3KoQd571ZBtf1EVeDUHIK21GJWdNLgROrOMdCNeT
-         A9tfJjsbuVqK9UWEI+bz+cqEYG/G7a1zgetSNJa5b42IzGhAUBYp6MEdoJQcIZhw+kuU
-         c1dA==
-X-Gm-Message-State: AOAM530hyU+QksEmQpxJkJ3V8p80wBzj0tLHz21oZhLaJhvTeneqcKfR
-	zHQg9X+6vUljy9nsPOTmV/4x1Q6voLchGw==
-X-Received: by 2002:a1c:f405:: with SMTP id z5mr31418913wma.72.1635777137721;
-        Mon, 01 Nov 2021 07:32:17 -0700 (PDT)
-Return-Path: <karolinadrobnik@gmail.com>
-Received: from localhost.localdomain ([2a01:4b00:f411:e700:e085:8cb7:7bf6:5d62])
-        by smtp.gmail.com with ESMTPSA id l8sm17157721wry.43.2021.11.01.07.32.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 01 Nov 2021 07:32:17 -0700 (PDT)
-From: Karolina Drobnik <karolinadrobnik@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	forest@alittletooquiet.net,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	Karolina Drobnik <karolinadrobnik@gmail.com>
-Subject: [PATCH v2 0/8] subject: staging: vt6655: Fix line wrapping in `RFvWriteWakeProgSyn`
-Date: Mon,  1 Nov 2021 14:31:58 +0000
-Message-Id: <cover.1635773679.git.karolinadrobnik@gmail.com>
-X-Mailer: git-send-email 2.30.2
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.31,268,1473112800"; 
+   d="scan'208";a="238806623"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 29 Sep 2016 21:38:07 +0200
+Date: Thu, 29 Sep 2016 21:38:06 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Elizabeth Ferdman <gnudevliz@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] mail delivery subsystem failure
+In-Reply-To: <20160929192712.GA4242@localhost>
+Message-ID: <alpine.DEB.2.10.1609292135180.3160@hadrien>
+References: <20160929175401.GB3294@localhost> <alpine.DEB.2.10.1609292023060.3160@hadrien> <20160929183847.GD3294@localhost> <alpine.DEB.2.10.1609292058190.3160@hadrien> <20160929192712.GA4242@localhost>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patch set is a series of small refactorings of the function
-`RFvWriteWakeProgSyn`, now renamed to `rf_write_wake_prog_syn`.
-The work here allowed to shorten lines marked by checkpatch.pl as
-being too long by:
-  * introducing two new temporary variables (`idx` and `init_table`)
-  * rewriting a conditional to switch between two modes of
-    AL7320 initialization.
 
-In addition to this, the patch set renames the function to align it with
-the kernel coding style, updates the function description and removes two
-unnecessary conditionals checking if the value of `init_count` is lower than
-a predefined value.
 
-Changes in v2:
-  * drop "staging: vt6655: Introduce `data` temporary variable" patch, suggested
-    by Julia Lawall <julia.lawall@inria.fr> 
-  * amend "staging: vt6655: Rewrite conditional in AL7320 initialization" patch
-    to use indexing and `init_table` temporary variable
-  * add two new patches to remove unnecessary checks for init count, suggested
-    by Mike Rapoport <mike.rapoport@gmail.com>:
-      - "staging: vt6655: Delete bogus check for `init_count` in AL2230"
-      - "staging: vt6655: Delete bogus check for `init_count` in AL7230"
+On Thu, 29 Sep 2016, Elizabeth Ferdman wrote:
 
-Karolina Drobnik (8):
-  staging: vt6655: Introduce `idx` temporary variable
-  staging: vt6655: Use incrementation in `idx`
-  staging: vt6655: Remove unused `i` increments
-  staging: vt6655: Rewrite conditional in AL7320 initialization
-  staging: vt6655: Rename `RFvWriteWakeProgSyn` function
-  staging: vt6655: Update comment for `rf_write_wake_prog_syn`
-  staging: vt6655: Delete bogus check for `init_count` in AL2230
-  staging: vt6655: Delete bogus check for `init_count` in AL7230
+> On Thu, Sep 29, 2016 at 08:59:37PM +0200, Julia Lawall wrote:
+> >
+> >
+> > On Thu, 29 Sep 2016, Elizabeth Ferdman wrote:
+> >
+> > > On Thu, Sep 29, 2016 at 08:25:12PM +0200, Julia Lawall wrote:
+> > > >
+> > > >
+> > > > On Thu, 29 Sep 2016, Elizabeth Ferdman wrote:
+> > > >
+> > > > > I'm trying to group-reply to a message Julia sent about my patch. It
+> > > > > fails to send and I get this error for each recipient from Mail Delivery
+> > > > > Subsystem: "Delivery to the following recipient failed permanently:"
+> > > > >
+> > > > > It's making it impossible to group-reply from mutt because google thinks
+> > > > > it's spam... I tried doing it a second time but the same thing happened.
+> > > > > I believe I've group replied before and it worked fine.
+> > > > >
+> > > > > Technical details of permanent failure:
+> > > > > Message rejected. See https://support.google.com/mail/answer/69585 for
+> > > > > more information.
+> > > >
+> > > > I'm the moderator of the group, so normally I should get informed about
+> > > > any messages that are considered to be spam.  I haven't gotten anything
+> > > > recently, and I didn't see anything in the web interface.
+> > > >
+> > > > On the other hand, I see that you did spell my name incorrectly:
+> > > >
+> > > > juia.lawall@lip6.fr,
+> > > >
+> > > The ellipsis is how google groups abbreviates all email addresses in the
+> > > mailing list; I wrote out your full email address when I sent it.
+> > > > Maybe lip6.fr is reacting in some way that google groups doesn't like?
+> > > >
+> > > Possibly: here's what i'm getting:
+> > > Delivery to the following recipient failed permanently:
+> > >
+> > >      juia.lawall@lip6.fr
+> >
+> > This is the problem.  The first name in my email address is julia, not
+> > juia.  You left out the l.  I'm surprised that it would cause no one else
+> > to receive the mail, though.
+> >
+> > julia
+> >
+>
+> Hey Julia,
+> I did spell your name wrong in that particular thread but it wasn't
+> spelled wrong when i group replied (separate thread). I actually just
+> hit 'g' in mutt to group reply.
+> Even when i only reply to outreachy-kernel@googlegroups.com,
+> it refuses to go through. I tried sending it lots of times.
+> Mutt is not showing any errors.
+>
+> To save some time I'm just going to paste what I've been trying to
+> respond to this whole time here:
+> -----------------------------------------------------------------------
+> > > Replace the unique arithmetic macro expression with a built-in
+> > I don't understand "unique arithmetic macro expression".
+> >
+> What I meant to say was that the author wrote his own rounding
+> expression instead of using a built in function that achieved the same
+> thing. I was trying to be concise but I guess I should have just said
+> that directly. Do you have a better idea? I can submit a v3
 
- drivers/staging/vt6655/channel.c |  2 +-
- drivers/staging/vt6655/rf.c      | 44 +++++++++++++-------------------
- drivers/staging/vt6655/rf.h      |  2 +-
- 3 files changed, 20 insertions(+), 28 deletions(-)
+It was too concise.  Maybe "drop a local macro definition and replace its
+uses with a standard macro from XXX.h" (find out what XXX is).
 
--- 
-2.30.2
+> with a better description.
+> > > function from linux/kernel.h DIV_ROUND_CLOSEST(x, divisor).
+> >
+> > Some blank lines are deleted at the end of the patch.  This seems like
+> > a
+> > separate change.
+> >
+> Oh, I did delete two blank lines at the very end of the file, out of
+> habit and not realizing that would distract from the change.
+> I could just go back in and add those two blank lines to clear that up.
 
+You need to just start over.  Or in any case, you should not submit a
+patch that modifies things that were done in a previous patch that was not
+accepted.
+
+julia
+
+
+>
+> Liz
+> -------------------------------------------------------------------
+>
+>
+> > >
+> > >      Technical details of permanent failure:
+> > >      Google tried to deliver your message, but it was rejected by the
+> > >      server for the recipient domain lip6.fr by isis.lip6.fr.
+> > >      [2001:660:3302:283c::2].
+> > >
+> > >      The error that the other server returned was:
+> > >      550 5.1.1 <juia.lawall@lip6.fr>... User unknown
+> > >
+> > > > In any case, you can try just dropping me from the CC list.  I will get
+> > > > the message via the group anyway.
+> > > >
+> > > Good idea i will try that.
+> > > Liz
+> > > > julia
+> > > >
+> > > >
+> > > > >
+> > > > > --
+> > > > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > > > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > > > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160929175401.GB3294%40localhost.
+> > > > > For more options, visit https://groups.google.com/d/optout.
+> > > > >
+> > >
+> > > --
+> > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160929183847.GD3294%40localhost.
+> > > For more options, visit https://groups.google.com/d/optout.
+> > >
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20160929192712.GA4242%40localhost.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
