@@ -1,97 +1,101 @@
-X-GM-THRID: 6336450754880995328
-X-Received: by 10.36.0.77 with SMTP id 74mr2362746ita.28.1475319907475;
-        Sat, 01 Oct 2016 04:05:07 -0700 (PDT)
+X-GM-THRID: 6336076827441758208
+X-Received: by 10.129.124.196 with SMTP id x187mr100899ywc.51.1475232845490;
+        Fri, 30 Sep 2016 03:54:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.9.30 with SMTP id j30ls2688275ioi.30.gmail; Sat, 01 Oct
- 2016 04:05:03 -0700 (PDT)
-X-Received: by 10.98.217.7 with SMTP id s7mr3138599pfg.16.1475319903177;
-        Sat, 01 Oct 2016 04:05:03 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
-        by gmr-mx.google.com with ESMTPS id um12si5949266pab.2.2016.10.01.04.05.03
+Received: by 10.157.36.202 with SMTP id z68ls590668ota.47.gmail; Fri, 30 Sep
+ 2016 03:54:05 -0700 (PDT)
+X-Received: by 10.237.59.118 with SMTP id q51mr298815qte.64.1475232845093;
+        Fri, 30 Sep 2016 03:54:05 -0700 (PDT)
+Return-Path: <eraretuya@gmail.com>
+Received: from mail-pf0-x232.google.com (mail-pf0-x232.google.com. [2607:f8b0:400e:c00::232])
+        by gmr-mx.google.com with ESMTPS id f12si4431795pfk.0.2016.09.30.03.54.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 01 Oct 2016 04:05:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
+        Fri, 30 Sep 2016 03:54:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) client-ip=2607:f8b0:400e:c00::232;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
+       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x244.google.com with SMTP id r9so5276216paz.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 01 Oct 2016 04:05:03 -0700 (PDT)
+Received: by mail-pf0-x232.google.com with SMTP id u78so13910525pfa.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 30 Sep 2016 03:54:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=b+gs77bRh2KN+ZCtfQ0SPpQkNBusLwzszhmSn9pYJl4=;
-        b=F8jLABWuoDVIOje1uPn0PmVonGzaPhx0zbILpr0vH640/GeWKUIYJiIw3dzmzr8L/k
-         7scCTFWxeRD4EMSJdJ9KftiwPIYlTV3GOarcHIuYHWqzDgpWjxuaSaiYxmvBzStodW8m
-         FaoKBhNrIdvMpSIO3Kztkn9GUBNnMb5q1FuN07kmbFgysf2vFG+OCqxd7AZb5y0NS8gj
-         Ay2sg2DQmpy1YAB2QKsEFmbymZDSsj2nq/GIVg+lpARhN+JlRUzywvfON5rIZHeOBJRE
-         hpCwbFhOp+DHvZwoJbGJbJ7HV1eH61+VEOu0/8SkR+6EQfRiy3zZ56vKm/bBxawaG70s
-         2ikw==
+        h=date:from:to:cc:subject:message-id:mail-followup-to:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=Wuij2avjSh3r7MYK4FB1xa25IVFtXO+BpcnI3n/5IX8=;
+        b=vlkBEFkOSpBa9jn1UymCJHtmJc2uVvmKHk7Xt55vGEOJMZ6UDOUnhg4O0RWfv11CSA
+         w+rwxCZc+cK+RMLOk/TDsvB+WhoTTbrMLr5Zwn+22C2JopFKB2bsKWYIie/YrrO3VIke
+         GZ9h5nzhL4OD8dajDQB+sfLgLSo1LvEfaYKX6OpRKqxQaYeeyOELie6PYMU0qNQoCh6C
+         cX5eAjQQaYqT8CSEM0BoXU+GoN3wOYX1XpMdOCqwAElNRU97L+ZYdIIjLlkoNX1LCLsZ
+         i4Dy7Ftve8j4Y9IaJeeBJfp8l+8eMU2uwzTTwhJ5GVQFdGpx38EAoj5HximBG95zY/oW
+         rSVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=b+gs77bRh2KN+ZCtfQ0SPpQkNBusLwzszhmSn9pYJl4=;
-        b=aXdFzbju1cQEIAvMU8buVWUTJaxE/NDH36hZkFwC2uZmyvR12naKbWkcI1zm45jcmV
-         qx+W9PBsaaTPKMBLsPmb8c7keJYeLPHs4ja+4a6qvGlKYZUuDrXfeDWBtIipW/8L6MQi
-         77GQ0DvMfh7YC4Vw3FsvOx6+nwEJH+GoIPiVd0Kfsv0Ot0LpcqeqtIoDPZ64hpTVqNaX
-         PlWaXPnkrJ38WqQTU+82teq8eWMqf9Hm2HzymddYnjKTofJfPERiiAI/2k7U0xxvyxDf
-         Dr/YYu7QQvIv64pD6EnIQp9ADR/jc2KxJ0P/XjF0YpFkHiuAvarxdrjvKu1b6S5PtLZ+
-         AREQ==
-X-Gm-Message-State: AA6/9RlgNiyRYjC6YgAaQ38JwWGZQeLiJT9BeXBSoVm50dhyjpdHH/wrvfAakzWVcxzATg==
-X-Received: by 10.66.232.164 with SMTP id tp4mr19418888pac.29.1475319902729;
-        Sat, 01 Oct 2016 04:05:02 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from sayli-HP-15-Notebook-PC ([182.58.217.210])
-        by smtp.gmail.com with ESMTPSA id f67sm12490407pfg.88.2016.10.01.04.04.52
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 01 Oct 2016 04:05:01 -0700 (PDT)
-Date: Sat, 1 Oct 2016 16:34:18 +0530
-From: sayli karnik <karniksayli1995@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>
-Subject: [Outreachy kernel] [PATCH] iio: imu: bmi160: bmi160_core: Fix sparse
- warning
-Message-ID: <20161001110418.GA25515@sayli-HP-15-Notebook-PC>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id
+         :mail-followup-to:references:mime-version:content-disposition
+         :in-reply-to:user-agent;
+        bh=Wuij2avjSh3r7MYK4FB1xa25IVFtXO+BpcnI3n/5IX8=;
+        b=EGkIQ4LfmE9zxCzk5KtLEGN1C2YA5I2qkrHJUiIIVqXZ+3tFhwTetbmpppTPd8TRN2
+         KA096lQ1nlnp5HW1wyv7hnDKjHxb/a168hjmRbdJlfL2Eclgl3ATDgH6mkDfQmzSNrJ9
+         8TSND4snoHKnXS/nAvP6gL4oNykQEvJ6bHzGP7wWjFTI0E2mnN89FnRNWifvytg+DPW4
+         4Gb4eEYPKOD+zgpLhUOO/Yis9nGqE1o6GIapvTguPF0mHhgpNcLvjWo/ooUcYW8YuMC3
+         lcHHZCz+50WtGp6SwZqQCNR4ew+C7ihSbhxM0ZGtGCudQ78hEbeiUZo/axYNeajvg1/m
+         m+Wg==
+X-Gm-Message-State: AA6/9RlYHY6y26Pm/2EyPUyAFT0c/kXfQRDFa6mxsSpJhfHmpyAGI2Hs/FcAi4L9SWFivw==
+X-Received: by 10.98.207.130 with SMTP id b124mr10526907pfg.113.1475232844541;
+        Fri, 30 Sep 2016 03:54:04 -0700 (PDT)
+Return-Path: <eraretuya@gmail.com>
+Received: from Socrates-DK ([125.212.122.26])
+        by smtp.gmail.com with ESMTPSA id 19sm26953937pfk.58.2016.09.30.03.54.02
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 30 Sep 2016 03:54:03 -0700 (PDT)
+Date: Fri, 30 Sep 2016 18:53:56 +0800
+From: Eva Rachel Retuya <eraretuya@gmail.com>
+To: Alison Schofield <amsfield22@gmail.com>
+Cc: Daniel Baluta <daniel.baluta@gmail.com>,
+	outreachy-kernel@googlegroups.com
+Subject: Re: ad7192 small task 1
+Message-ID: <20160930105354.GB3206@Socrates-DK>
+Mail-Followup-To: Alison Schofield <amsfield22@gmail.com>,
+	Daniel Baluta <daniel.baluta@gmail.com>,
+	outreachy-kernel@googlegroups.com
+References: <20160929155112.GA7009@Socrates-DK>
+ <006091a2-210b-4e20-9632-197ce7894d64@gmail.com>
+ <CAM=phmjgezWqnb-65qU6+m=ymp98jp_nHFvD0qC8wwLmeEy6Bw@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <CAM=phmjgezWqnb-65qU6+m=ymp98jp_nHFvD0qC8wwLmeEy6Bw@mail.gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Fix the following sparse warning due to incorrect type in assignment:
-drivers/iio/imu/bmi160/bmi160_core.c:411:26: warning: incorrect type
-in assignment (different base types)
+On Thu, Sep 29, 2016 at 10:36:50PM -0700, Alison Schofield wrote:
+> Ok...well I'll reply back via non-mutt also ;) I didn't get to look at it
+> today. I'll try tomorrow.
+> 
+> I don't mind previewing it, but you are also welcome to post it, as Sandhya
+> did today. You would write your outstanding questions below the ---
+> 
+> Alison
 
-drivers/iio/imu/bmi160/bmi160_core.c:411:26: expected signed short
-[signed] [short] [explicitly-signed] <noident>
-drivers/iio/imu/bmi160/bmi160_core.c:411:26: got restricted __le16
-[addressable] [usertype] sample
+OK. Submitted it to maintainers separately and cc'ing the outreachy mailing
+list on this thread so that the other applicants can benefit from the answers.
 
-Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
----
- drivers/iio/imu/bmi160/bmi160_core.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Recap:
+> > Datasheet (if needed):
+> > http://www.analog.com/media/en/technical-documentation/
+> > data-sheets/AD7192.pdf
+> >
+> > Questions:
+> > * How do I know the proper IIO_VAL_INT* to return? _raw_fmt may have
+> > something
+> > to do but it's fuzzy to me.
+> >
+> > * How do I know which val (between val and val2) to manipulate in the
+> > read/write
+> > hooks? I understand this has something to do with the precision of data
+> > and from what I see it's mostly val.
 
-diff --git a/drivers/iio/imu/bmi160/bmi160_core.c b/drivers/iio/imu/bmi160/bmi160_core.c
-index e0251b8..5355507 100644
---- a/drivers/iio/imu/bmi160/bmi160_core.c
-+++ b/drivers/iio/imu/bmi160/bmi160_core.c
-@@ -398,7 +398,8 @@ static irqreturn_t bmi160_trigger_handler(int irq, void *p)
- 	struct iio_poll_func *pf = p;
- 	struct iio_dev *indio_dev = pf->indio_dev;
- 	struct bmi160_data *data = iio_priv(indio_dev);
--	s16 buf[16]; /* 3 sens x 3 axis x s16 + 3 x s16 pad + 4 x s16 tstamp */
-+	__le16 buf[16];
-+	/* 3 sens x 3 axis x __le16 + 3 x __le16 pad + 4 x __le16 tstamp */
- 	int i, ret, j = 0, base = BMI160_REG_DATA_MAGN_XOUT_L;
- 	__le16 sample;
- 
--- 
-2.7.4
-
+Thanks,
+Eva
 
