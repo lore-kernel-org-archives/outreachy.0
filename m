@@ -1,88 +1,118 @@
 X-GM-THRID: 6336227865604915200
-X-Received: by 10.66.134.174 with SMTP id pl14mr1585869pab.111.1475270466264;
-        Fri, 30 Sep 2016 14:21:06 -0700 (PDT)
+X-Received: by 10.129.136.198 with SMTP id y189mr2457273ywf.132.1475269191272;
+        Fri, 30 Sep 2016 13:59:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.203.7 with SMTP id u7ls982567itg.16.canary; Fri, 30 Sep
- 2016 14:21:04 -0700 (PDT)
-X-Received: by 10.66.147.34 with SMTP id th2mr2530957pab.24.1475270464363;
-        Fri, 30 Sep 2016 14:21:04 -0700 (PDT)
-Return-Path: <gnudevliz@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id ua1si809414pac.1.2016.09.30.14.21.04
+Received: by 10.157.50.244 with SMTP id u107ls6256354otb.37.gmail; Fri, 30 Sep
+ 2016 13:59:50 -0700 (PDT)
+X-Received: by 10.157.63.2 with SMTP id m2mr2308747otc.70.1475269190754;
+        Fri, 30 Sep 2016 13:59:50 -0700 (PDT)
+Return-Path: <gs051095@gmail.com>
+Received: from mail-qk0-x229.google.com (mail-qk0-x229.google.com. [2607:f8b0:400d:c09::229])
+        by gmr-mx.google.com with ESMTPS id w124si1399591ywc.4.2016.09.30.13.59.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 30 Sep 2016 14:21:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Fri, 30 Sep 2016 13:59:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400d:c09::229 as permitted sender) client-ip=2607:f8b0:400d:c09::229;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=gnudevliz@gmail.com;
+       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400d:c09::229 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id 21so5443509pfy.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 30 Sep 2016 14:21:04 -0700 (PDT)
+Received: by mail-qk0-x229.google.com with SMTP id z190so118455981qkc.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 30 Sep 2016 13:59:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=br+X4y/qdR1At9TP4YWaE1/DRyI64toDsfU9RkheS1E=;
-        b=Zb3n67R15YPuuDFL0iThTGpjNKO1W+bupiVMyMpmxn5R9g+QjH/6e/O7xjV1lEwqoW
-         /xkjCX5VVy76EO2sAjSfQCwiOocfiw3BbNNixLWS9Lbbg3z8mr0cpEWARIw9s6wo8Rrg
-         jwiwx8xBkNNDGT6vQsuIdhxaPnWYgh/TLqmhFz0gFHh6DfzOOipL5l6cYKCY2WpACu63
-         yb85FqXVMKQqPVTDRa7hTeb/GIcMRa2dqyf1C8tl5Rbz28dlmlVLqHthdjfh4oINSsj+
-         k5qsIj8y7Fqmrew1CNh7JpE/q73JqOFO0xrTjxPhGssHXW35WBlKIPEpUUZSi7enT2mE
-         Gp8Q==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=p0QFNsO8hLx9M/yhC1L4r24enuGfuEm2biu0AW1/ZrA=;
+        b=m+SaqzGAFFzs3BuDB5XJoOK4Rdp0VTX/rFodDIu0d46CIgyWr6vIMkfjuO+XgoN7tE
+         fNIf6TxDPKKFpNgiGLT5kwJ1Q2QqtwLpthY66uLuK+VGHirTBms2RGo0bjWIbvdeUOaQ
+         B6GLSb3AWQqyPG2R2AIEV1n+SoZy4urnkx654iJMFYZL2qHF6u1AB0P6qgy2Dx8XO3Oy
+         iB5pGgTDQN4lnM+TH+S2qUz8t5XYVbDFJi+zgcczHRCrD622k7P+y7iD5CwbiWIx9aZN
+         gua3lWVdVUcjvBWZDj37GsaKOjwJH9+2oYj5qOr7uSi1wJeP6bzvv69kcGPB3hHk8vAt
+         nIcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=br+X4y/qdR1At9TP4YWaE1/DRyI64toDsfU9RkheS1E=;
-        b=lNO/3PquwdvgBfNTYPhSoInrhyNZjKeptZziyQQMfan5UkRMc5oBNe4hTCIXQXJxur
-         +xQrZQv5xk4XtAYWGtJSp7RFuTa25LlqGxMFR2Qmd5D6IIxuhOrdJPA9XLL/Fqt1cEdS
-         F8+0eCyYZ50PmAyLiM3q4HmayzEHd2lDC+lN83THDSMC/paSvELZ2uMHPB7ilYbea/tk
-         LRJT0uk9AZDk+ofiaZzCiuZflldMm4rSG4B6zu8JO/tTSijLv6tqffrVK2f/sVa4I9+h
-         pleRUhG3wq4imAXA/Y7WxMiXbFJq5e0wislDQHICjDmncBu/ZwN9F87HyTepfnpyhAPl
-         9nXQ==
-X-Gm-Message-State: AA6/9RmE1yQ/u+vJR614NQgfAuYDnHFyd0j1ICxLf4SjyoukXzLa11rVzTsWdwoQaG/P5g==
-X-Received: by 10.98.41.131 with SMTP id p125mr15421177pfp.108.1475270464199;
-        Fri, 30 Sep 2016 14:21:04 -0700 (PDT)
-Return-Path: <gnudevliz@gmail.com>
-Received: from localhost ([2601:644:300:fd6b:4e0f:6eff:fe69:e9ea])
-        by smtp.gmail.com with ESMTPSA id l3sm19330742pfl.75.2016.09.30.14.21.03
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 30 Sep 2016 14:21:03 -0700 (PDT)
-Date: Fri, 30 Sep 2016 14:21:01 -0700
-From: Elizabeth Ferdman <gnudevliz@gmail.com>
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=p0QFNsO8hLx9M/yhC1L4r24enuGfuEm2biu0AW1/ZrA=;
+        b=jCpUbv5soukHP6QD95P2oJJfzbJe6uXmXh/mDMradvBYEJ7WzNE5kSvsk5xosk1StW
+         kcgbAURoZcoH8+JuhHgjDmpzdT4n/4FDik8/yz6XlnLgha1sVQedxFgEF7EI4BTzF0qg
+         kCDk7eJLg3yMyWRDghvijPku9sbv6ta4Q16abo9PFLCxbFbbUkuqx6GLYsIvlDDXhiIz
+         +XEb+d1LfvH/2T7QqnyPHpDA2Y8sJxhGKUenqCrYFxbZu71YYNiX+UccexPzQPAQV/8Z
+         VzYFKz3k1+hVz8+SqU0QCXyPCEu6PFQ4DiTBkSfNSQQfUWgSEl8uCvBBal17H5zOsNU2
+         JC3g==
+X-Gm-Message-State: AA6/9RmzFKZCoHhMTpyv38lOE/wEsuAPiMiOOLU4dFLcAfD3mNa/PExfTLwgLJy+8utX9YR+BzHPJFzbcy99dg==
+X-Received: by 10.55.120.195 with SMTP id t186mr9148191qkc.118.1475269190541;
+ Fri, 30 Sep 2016 13:59:50 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.200.56.184 with HTTP; Fri, 30 Sep 2016 13:59:20 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.10.1609302238110.3399@hadrien>
+References: <alpine.DEB.2.10.1609302238110.3399@hadrien>
+From: Gargi Sharma <gs051095@gmail.com>
+Date: Sat, 1 Oct 2016 02:29:20 +0530
+Message-ID: <CAOCi2DGkfPirL+4HMFNuttJih411a4QVxsbhwiKk7hVr3VEpyw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] outreachy
 To: Julia Lawall <julia.lawall@lip6.fr>
 Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] outreachy
-Message-ID: <20160930212101.GA3662@localhost>
-References: <alpine.DEB.2.10.1609302238110.3399@hadrien>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.10.1609302238110.3399@hadrien>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: multipart/alternative; boundary=94eb2c05f9200cf609053dbfe0f9
 
-On Fri, Sep 30, 2016 at 10:40:10PM +0200, Julia Lawall wrote:
+--94eb2c05f9200cf609053dbfe0f9
+Content-Type: text/plain; charset=UTF-8
+
+Hi Julia,
+
+My first choice is radix tree __alloc_fd mentored by Rik van Riel and
+Matthew Wilcox.
+My second nftables mentored by Pablo Neira Ayuso.
+
+Thanks!
+Gargi
+
+On Sat, Oct 1, 2016 at 2:10 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+
 > Hello,
-> 
+>
 > We are around the halfway mark of the application period.
-> 
+>
 > So that I can get an overview of the current interests of the applicants,
 > could you send me a list of your current first and second project choices?
 > It's OK to change your mind later, but I would like to know what everyone
 > is thinking about now.
-> 
+>
 > Please do this even if you don't yet have many accepted patches.
-> 
-Hey Julia,
-
-My first two project choices are: 
-
-1. IIO driver
-2. Coccinelle
-
-thanks,
-liz
+>
 > thanks,
 > julia
+>
+
+--94eb2c05f9200cf609053dbfe0f9
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi Julia,<div><br></div><div>My first choice is radix tree=
+ __alloc_fd mentored by Rik van Riel and Matthew Wilcox.</div><div>My secon=
+d nftables mentored by Pablo Neira Ayuso.</div><div><br></div><div>Thanks!<=
+/div><div>Gargi</div></div><div class=3D"gmail_extra"><br><div class=3D"gma=
+il_quote">On Sat, Oct 1, 2016 at 2:10 AM, Julia Lawall <span dir=3D"ltr">&l=
+t;<a href=3D"mailto:julia.lawall@lip6.fr" target=3D"_blank">julia.lawall@li=
+p6.fr</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">Hello,<br>
+<br>
+We are around the halfway mark of the application period.<br>
+<br>
+So that I can get an overview of the current interests of the applicants,<b=
+r>
+could you send me a list of your current first and second project choices?<=
+br>
+It&#39;s OK to change your mind later, but I would like to know what everyo=
+ne<br>
+is thinking about now.<br>
+<br>
+Please do this even if you don&#39;t yet have many accepted patches.<br>
+<br>
+thanks,<br>
+julia<br>
+</blockquote></div><br></div>
+
+--94eb2c05f9200cf609053dbfe0f9--
 
