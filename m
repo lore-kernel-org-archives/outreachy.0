@@ -1,106 +1,91 @@
-X-GM-THRID: 6254162958177271808
-X-Received: by 10.129.158.2 with SMTP id v2mr28117267ywg.42.1456160787932;
-        Mon, 22 Feb 2016 09:06:27 -0800 (PST)
+X-GM-THRID: 6336182805735669760
+X-Received: by 10.25.203.81 with SMTP id b78mr589792lfg.8.1475263269993;
+        Fri, 30 Sep 2016 12:21:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.84.243 with SMTP id l106ls1686397qgd.43.gmail; Mon, 22 Feb
- 2016 09:06:27 -0800 (PST)
-X-Received: by 10.140.140.18 with SMTP id 18mr810852qhm.26.1456160787513;
-        Mon, 22 Feb 2016 09:06:27 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
-        by gmr-mx.google.com with ESMTPS id 12si3206034pfb.1.2016.02.22.09.06.27
+Received: by 10.28.156.141 with SMTP id f135ls354963wme.7.canary; Fri, 30 Sep
+ 2016 12:21:08 -0700 (PDT)
+X-Received: by 10.194.119.196 with SMTP id kw4mr606331wjb.1.1475263268985;
+        Fri, 30 Sep 2016 12:21:08 -0700 (PDT)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-lf0-x244.google.com (mail-lf0-x244.google.com. [2a00:1450:4010:c07::244])
+        by gmr-mx.google.com with ESMTPS id e21si465051wmc.2.2016.09.30.12.21.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Feb 2016 09:06:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
+        Fri, 30 Sep 2016 12:21:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:4010:c07::244 as permitted sender) client-ip=2a00:1450:4010:c07::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:4010:c07::244 as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x236.google.com with SMTP id fy10so93852859pac.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 09:06:27 -0800 (PST)
+Received: by mail-lf0-x244.google.com with SMTP id h96so2410030lfi.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 30 Sep 2016 12:21:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=61T69xXoZAoTxmRF68iS8kKJgW8SlcAsQbqbCarFG1I=;
-        b=MXsi1OL2h5Mm1k+EpeQh71YzC748vJbLrLw37cMb6I2iv84l476NbaE2AejAKVhdr1
-         G+Diyws4llpxHAuj+s/Mq+8N5fRYQ8nKa5Occ/aLLCyyPjKTyWOuaDSQZ8m+GeodbVp8
-         alc5XLIjckAlj+7iEKX8hBfZQwhyjVijtStJuwZKvpasOuhc7+aNZ9vQhiyOx9siykM/
-         UkK4UoO/X8/xxdEzgbHWQs5V4enFMge1C+/VAV6cPtPPcGdlTVXri16FOMd4T8JgD9+Q
-         UZhJFTVjhq1migffRh0y3MbTXuaAsxZtrsU605ZzudS5uXtIfGmYiTPxQAof56oF59lW
-         HXMw==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=RZECsoFda9g3RM1d5CK6zV+D6svvc/d+Xu7UpJPTIb4=;
+        b=tScDqJbrcZu4gZL+ysLEmpow0K9qgF7DOzA314BujbsWYfeeKhN/hlhojI5lZIb36s
+         6weVxcSUKdFDEgpR3Ok/eXzpLtsXsvMUVUx/WoG41o+oHQSeX5jPve1ErkQ4be+mZ0hd
+         /FvgC6thPO08V38/0Uq35A5QP/vm7j8lppfd1ifJyzCkmADpEv224wvnk6QpaLj9lRdS
+         +RZaOYhhBD38z5/GIOvZd7tq7sqBKxToegqW21KH2hPeo9UROw6Jk+GF+SSQwz33dabc
+         2DSo+Y21elXEK5GWyZ1JeCcuogLOhropXOhOX4FrpMrqr4Qruo3uz3iHkau9hoMpiQHv
+         y6mQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=61T69xXoZAoTxmRF68iS8kKJgW8SlcAsQbqbCarFG1I=;
-        b=LtpP0EwUwUtrjMXKoNtgNqoavE55xFY79uHjxGH7RjdgNF+PvhUMzXHMwVlCHzm1cv
-         xLnA95Uv2f6UmISok39nfp4b/CvRQ30Jn/0WLY8IFBSIxlywMCA/ofJu3ZyBB5/ar0mN
-         fr/csEMpCVi5QC5THUepy4G6DA2jVyPidrj66F9BsvNKXO7vqapsFK9mmTK50M8yZSIx
-         sRZW8yXtxKi2Y62kGq998LH+D8jVkkjSsMkb3zFnsGLN7NzlaE+2yN+2Ac4VvPs78fvD
-         ChCebm4uzFU1qzQXRDIq/+7DKXB6+leYZGVkxUeYvDindgCxI9+p1uKvZVQvRqvuYbXr
-         X19w==
-X-Gm-Message-State: AG10YOSt0LEvyrHi1ttO32FoVtJLK0+jk3PUC7wMBw8C6yLRnGWPK/uY/uKJcY35dytItg==
-X-Received: by 10.66.226.238 with SMTP id rv14mr39612859pac.41.1456160787372;
-        Mon, 22 Feb 2016 09:06:27 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id u5sm38224568pfi.15.2016.02.22.09.06.26
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 22 Feb 2016 09:06:26 -0800 (PST)
-Date: Mon, 22 Feb 2016 22:37:00 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8723au: Remove unnecessary parantheses
-Message-ID: <20160222170700.GA26089@Karyakshetra>
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=RZECsoFda9g3RM1d5CK6zV+D6svvc/d+Xu7UpJPTIb4=;
+        b=iv5ZZ+pKQPOh/5qhUpVtN043hl3L4H9ueyqVtit5KGbcfm4p7XYIN3yvW5mXo2MOQi
+         Q2gIaM9rAWMLfEL0PV6iSBLkpi8vrtT6j9KVQc/BS43vnzYAwTCOH1s2DZ+N7F9A/HI0
+         a0dL4OPdrKva7ptRJN106rqJm5FUCy3QPEro033ROeKEfvu5VQm2p4ikxgQPBV1uLYIk
+         n0xH/9JInagf7Io7QFPPTuwr0fTNEgWGUGOcPI8yAOEDjKaWkLpIIwF4iOb+l+frOb7s
+         fZo5DHtm2uNtDn7lsNbZfday3/weIkS1Ngrpq2TSN48npzYESPjNCHL+pGWgUhi8mM5X
+         tZ/g==
+X-Gm-Message-State: AA6/9Rlj1OPXoWxaQrT7OE8pcaoEnVTRpMAzPpPid+zRSjWit5HSRRVBcD6nH3edwb1YrWrGUqbcCK6bFxM3eg==
+X-Received: by 10.25.75.17 with SMTP id y17mr1866202lfa.28.1475263268417; Fri,
+ 30 Sep 2016 12:21:08 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Received: by 10.25.208.15 with HTTP; Fri, 30 Sep 2016 12:21:07 -0700 (PDT)
+In-Reply-To: <20160930161922.GA11685@localhost.localdomain>
+References: <20160930161922.GA11685@localhost.localdomain>
+From: Daniel Baluta <daniel.baluta@gmail.com>
+Date: Fri, 30 Sep 2016 22:21:07 +0300
+Message-ID: <CAEnQRZA_vtutS7xbUVi4Xvdkx9Eph+4cuD-MR=A11Fb15ULekw@mail.gmail.com>
+Subject: Re: [PATCH] iio: Documentation: Correct the path used to create triggers.
+To: Sandhya Bankar <bankarsandhya512@gmail.com>
+Cc: Jonathan Corbet <corbet@lwn.net>, Alison Schofield <amsfield22@gmail.com>, 
+	"linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-Removed parantheses on the right hand side of assignments as they are
-not needed.
+On Fri, Sep 30, 2016 at 7:19 PM, Sandhya Bankar
+<bankarsandhya512@gmail.com> wrote:
+> Correct the path used to create triggers.
+>
+> Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
 
-This was done with Coccinelle:
+Acked-by: Daniel Baluta <daniel.baluta@intel.com>
 
-@@ expression a, b; @@
-
-a =
-- (
-b
-- )
-;
-
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c b/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c
-index 908b84c..8850898 100644
---- a/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c
-+++ b/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c
-@@ -458,7 +458,7 @@ static int set_group_key(struct rtw_adapter *padapter, struct key_params *parms,
-
- 	pcmd->cmdcode = _SetKey_CMD_;
- 	pcmd->parmbuf = (u8 *) psetkeyparm;
--	pcmd->cmdsz = (sizeof(struct setkey_parm));
-+	pcmd->cmdsz = sizeof(struct setkey_parm);
- 	pcmd->rsp = NULL;
- 	pcmd->rspsz = 0;
-
-@@ -2197,7 +2197,7 @@ static int cfg80211_rtw_get_txpower(struct wiphy *wiphy,
- 				    struct wireless_dev *wdev, int *dbm)
- {
- 	DBG_8723A("%s\n", __func__);
--	*dbm = (12);
-+	*dbm = 12;
- 	return 0;
- }
-
---
-2.1.4
-
+> ---
+>  Documentation/iio/iio_configfs.txt | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/Documentation/iio/iio_configfs.txt b/Documentation/iio/iio_configfs.txt
+> index f0add35..4e5f101 100644
+> --- a/Documentation/iio/iio_configfs.txt
+> +++ b/Documentation/iio/iio_configfs.txt
+> @@ -82,8 +82,8 @@ users to create hrtimer triggers under /config/iio/triggers/hrtimer.
+>
+>  e.g:
+>
+> -$ mkdir /config/triggers/hrtimer/instance1
+> -$ rmdir /config/triggers/hrtimer/instance1
+> +$ mkdir /config/iio/triggers/hrtimer/instance1
+> +$ rmdir /config/iio/triggers/hrtimer/instance1
+>
+>  Each trigger can have one or more attributes specific to the trigger type.
+>
+> --
+> 1.8.3.1
+>
 
