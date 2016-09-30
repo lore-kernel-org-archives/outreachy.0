@@ -1,118 +1,127 @@
-X-GM-THRID: 6667995620579475456
-X-Received: by 2002:ac8:28b7:: with SMTP id i52mr25267772qti.8.1552513712427;
-        Wed, 13 Mar 2019 14:48:32 -0700 (PDT)
+X-GM-THRID: 6336162776541560832
+X-Received: by 10.25.33.10 with SMTP id h10mr602343lfh.10.1475256936113;
+        Fri, 30 Sep 2016 10:35:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:4ad6:: with SMTP id x205ls1511348qka.5.gmail; Wed, 13
- Mar 2019 14:48:31 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzmL36xGEnrcRR+Tf243Cw4Q2sKEnaUdrlmhRL4+fvKepOPqm4U+5iaSQb/4EE7lanZIDeB
-X-Received: by 2002:a37:7f07:: with SMTP id a7mr575206qkd.24.1552513711721;
-        Wed, 13 Mar 2019 14:48:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552513711; cv=none;
-        d=google.com; s=arc-20160816;
-        b=FUWho9qeNJoFGs8EjRkqsvAtGBPtDiMNm1brmugI1FA9jv6o/iCdgzNrp+WJ2Ye+6I
-         YqQsc1l76i8QY7NIcKXC9bAMRAQ6ttxbnOH9/SCABlxitNniyF3R1JTFcryT2gu22MDB
-         caXHZRNfX74jqoX88jGuswUuv6sW1+AQyrNNOEUCZs4lPtWSmYYTX/31nJwYzgpzO2Hp
-         0uwYWAhDmAD5ni8dg8+wugpBgPjG3PsbRBdvv+xFHNHhLEngc8jXPn2exb56rmUrIp+Y
-         wsR5/me3yH09hriwlg2se5mNQBj/Xk0TPflqrfwphp+xMPFtIs7nZPHPLpj1h46AxfVS
-         sx6Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ISywHpMSgp/Thi8t1aOV6ISxNJe2CATFelx2ZDmTbIc=;
-        b=hx4X8bInfW0OB4th42CpkyCrHG/Or4haX/GVd9skWLTVC8sdTNL4nuymdmJnpnZrdJ
-         FzvhcxIvqRHN8lonpFk+c9Su/AIEWHcJoFJHIivway+vFakGopfSotjMAkynooPiP+jT
-         iqc9umllmSw1pYLoMJDwbkxQBgS1Ha/DEfnXmKLZZUPbcVUzgogK4UYWU/8zRDBLQ7gQ
-         4GwaIqkVqpfQWDO+mVbgvqGKMXN1CFv+9GgdrFHtG6wyxkZyLC6UXqSPfXV8AOH84PMO
-         VVI7YQwg9OrE/UL8pLBBOqmFAULKKwMDdbMq7j3WpTNgMRzNTy9Sf2bmr19RLK8VoRBp
-         frMg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=AZdihZKE;
-       spf=pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::d44 as permitted sender) smtp.mailfrom=brandonbonaby94@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <brandonbonaby94@gmail.com>
-Received: from mail-io1-xd44.google.com (mail-io1-xd44.google.com. [2607:f8b0:4864:20::d44])
-        by gmr-mx.google.com with ESMTPS id e12si379588qtg.5.2019.03.13.14.48.31
+Received: by 10.28.26.129 with SMTP id a123ls378881wma.15.gmail; Fri, 30 Sep
+ 2016 10:35:34 -0700 (PDT)
+X-Received: by 10.28.198.2 with SMTP id w2mr364787wmf.3.1475256934405;
+        Fri, 30 Sep 2016 10:35:34 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 185si432414wmr.2.2016.09.30.10.35.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 13 Mar 2019 14:48:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::d44 as permitted sender) client-ip=2607:f8b0:4864:20::d44;
+        Fri, 30 Sep 2016 10:35:34 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=AZdihZKE;
-       spf=pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::d44 as permitted sender) smtp.mailfrom=brandonbonaby94@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-io1-xd44.google.com with SMTP id n11so3269094ioh.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 13 Mar 2019 14:48:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=ISywHpMSgp/Thi8t1aOV6ISxNJe2CATFelx2ZDmTbIc=;
-        b=AZdihZKEa6QqthjbK6TgnEnSZpD+jfxKp3TtZFJBkBTvq4+fBKTkHsJU81LJfEOHDE
-         91A286uCP8TpZ304MrHFerZvxwtMErP3eF638hKlNDM7HaVjy9P+7HIBmpRWkKU2vM2T
-         YMlopE3355faW3DOclJYrYAp4Y/bMksjN3qWZz65kiNSD6SRS6FGMSVXA7j1l+ABa+az
-         D6Hs3NP6m77nfhanqL2Hi5wYEpjg6pZIOhbFR4XB53boeAR93CJ2NRYUH7Arz5T7WQha
-         Fqj34TiIraaWHRqDoak+jR6F1h7EO5u2Bro6XYDymu4CrP1qRS9QQxZinnHPkNgVsCVm
-         AXmQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=ISywHpMSgp/Thi8t1aOV6ISxNJe2CATFelx2ZDmTbIc=;
-        b=qOSwHISeJrz8FSwDysXkoeyeG9ve2iaTlEAAQEr6XUGDAKTc2xfju+aezPIzskTf6X
-         AfemUBZoO1Lw8n8G/StJeCMzPj+ycRFsavlIXwPT9OVwAocPQfl62bWj4By1ziqHtv/e
-         +imXpKCb49QMI34AqK081H+BmOmWrgo0GmwgkvsiY/+O4fSLIx9ktjrTPVjjLiLCQbIJ
-         F//faTZnQggzmMKZK2kMu5t1VS6R7b5y+6K2vWNc0aqizRrcVZa+efV3qr+gCXb1/dc0
-         5899q1bsY1YE1k7weOQrcZ2yQI87BAfiSoCCK79TxlGJ1V3BsKo69+8Ieib7N5gGZXFZ
-         oPKw==
-X-Gm-Message-State: APjAAAXogZQw6UGR8OaEmZuRK+BH0Kr5FC1hPXF9SK99NKOcb+eeo4hf
-	fpbjNnkzAQ5b9oyk2FzeXSxdNGaq10ds
-X-Received: by 2002:a6b:5913:: with SMTP id n19mr20383125iob.62.1552513711033;
-        Wed, 13 Mar 2019 14:48:31 -0700 (PDT)
-Return-Path: <brandonbonaby94@gmail.com>
-Received: from branx011-Vostro-430 ([2607:fea8:29a0:ff5:3918:abee:3577:8b72])
-        by smtp.gmail.com with ESMTPSA id y3sm123587itb.2.2019.03.13.14.48.30
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Mar 2019 14:48:30 -0700 (PDT)
-From: Branden Bonaby <brandonbonaby94@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: Branden Bonaby <brandonbonaby94@gmail.com>,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: wlan-ng: line over 80 character limit
-Date: Wed, 13 Mar 2019 17:48:25 -0400
-Message-Id: <20190313214825.7089-1-brandonbonaby94@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.31,273,1473112800"; 
+   d="scan'208";a="238958014"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 30 Sep 2016 19:35:33 +0200
+Date: Fri, 30 Sep 2016 19:35:33 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Anchal Jain <anchalj109@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com, 
+    arve@android.com, riandrews@android.com
+Subject: Re: [Outreachy kernel] [PATCH 2/2] staging: android: ion: Replace
+ structure with the *pointer of structure in kzalloc
+In-Reply-To: <2d05b9d8c7873fa3e04438f4deabadc372e132df.1475252219.git.anchalj109@gmail.com>
+Message-ID: <alpine.DEB.2.10.1609301932430.3399@hadrien>
+References: <cover.1475252219.git.anchalj109@gmail.com> <2d05b9d8c7873fa3e04438f4deabadc372e132df.1475252219.git.anchalj109@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Align Macro and function to prevent them from going over
-the 80 character a line limit for readability.
-WARNING: line over 80 characters
 
-Signed-off-by: Branden Bonaby <brandonbonaby94@gmail.com>
----
- drivers/staging/wlan-ng/hfa384x.h | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/wlan-ng/hfa384x.h b/drivers/staging/wlan-ng/hfa384x.h
-index 992ebaa1071f..7a36e82bef57 100644
---- a/drivers/staging/wlan-ng/hfa384x.h
-+++ b/drivers/staging/wlan-ng/hfa384x.h
-@@ -517,7 +517,7 @@ struct hfa384x_tx_frame {
- 	HFA384x_TXSTATUS_DISCON | HFA384x_TXSTATUS_AGEDERR | \
- 	HFA384x_TXSTATUS_RETRYERR))
- 
--#define	HFA384x_TX_SET(v, m, s)		((((u16)(v)) << ((u16)(s))) & ((u16)(m)))
-+#define	HFA384x_TX_SET(v, m, s)        ((((u16)(v)) << ((u16)(s))) & ((u16)(m)))
- 
- #define	HFA384x_TX_MACPORT_SET(v)	HFA384x_TX_SET(v, HFA384x_TX_MACPORT, 8)
- #define	HFA384x_TX_STRUCTYPE_SET(v)	HFA384x_TX_SET(v, \
-@@ -1369,8 +1369,8 @@ struct hfa384x {
- void hfa384x_create(struct hfa384x *hw, struct usb_device *usb);
- void hfa384x_destroy(struct hfa384x *hw);
- 
--int
--hfa384x_corereset(struct hfa384x *hw, int holdtime, int settletime, int genesis);
-+int hfa384x_corereset(struct hfa384x *hw, int holdtime, int settletime,
-+		       int genesis);
- int hfa384x_drvr_disable(struct hfa384x *hw, u16 macport);
- int hfa384x_drvr_enable(struct hfa384x *hw, u16 macport);
- int hfa384x_drvr_flashdl_enable(struct hfa384x *hw);
--- 
-2.17.1
+On Fri, 30 Sep 2016, Anchal Jain wrote:
 
+> Replace structure with the *pointer of stucture in kzalloc
+> Use pointer instead of structure to save memory and run faster because it
+> doesn't have to duplicate the data.
+
+The explanation is not correct.  The argument of sizeof is not evaluated.
+The compiler just checks the type, and replaces the sizeof call with the
+size of the type.
+
+Look at Documentation/CodingStyle for the proper reason why the form *x
+may be preferred.
+
+>
+> Signed-off-by: Anchal Jain <anchalj109@gmail.com>
+> ---
+>  drivers/staging/android/ion/ion.c | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
+>
+> diff --git a/drivers/staging/android/ion/ion.c b/drivers/staging/android/ion/ion.c
+> index 7ff2a7e..5f94aee 100644
+> --- a/drivers/staging/android/ion/ion.c
+> +++ b/drivers/staging/android/ion/ion.c
+> @@ -184,7 +184,7 @@ static struct ion_buffer *ion_buffer_create(struct ion_heap *heap,
+>  	struct scatterlist *sg;
+>  	int i, ret;
+>
+> -	buffer = kzalloc(sizeof(struct ion_buffer), GFP_KERNEL);
+> +	buffer = kzalloc(sizeof(*ion_buffer_create), GFP_KERNEL);
+
+This is not correct.  ion_buffer_create is a function that returns a value
+of type struct ion_buffer.  I'm a bit surprised that this would compile,
+but in any case it would not give the same size as the size of the
+structure.
+
+Check the subsequent changes accordingly.
+
+julia
+
+>  	if (!buffer)
+>  		return ERR_PTR(-ENOMEM);
+>
+> @@ -341,7 +341,7 @@ static struct ion_handle *ion_handle_create(struct ion_client *client,
+>  {
+>  	struct ion_handle *handle;
+>
+> -	handle = kzalloc(sizeof(struct ion_handle), GFP_KERNEL);
+> +	handle = kzalloc(sizeof(*handle), GFP_KERNEL);
+>  	if (!handle)
+>  		return ERR_PTR(-ENOMEM);
+>  	kref_init(&handle->ref);
+> @@ -802,7 +802,7 @@ struct ion_client *ion_client_create(struct ion_device *dev,
+>  	}
+>  	task_unlock(current->group_leader);
+>
+> -	client = kzalloc(sizeof(struct ion_client), GFP_KERNEL);
+> +	client = kzalloc(sizeof(*ion_client_create), GFP_KERNEL);
+>  	if (!client)
+>  		goto err_put_task_struct;
+>
+> @@ -1010,7 +1010,7 @@ static void ion_vm_open(struct vm_area_struct *vma)
+>  	struct ion_buffer *buffer = vma->vm_private_data;
+>  	struct ion_vma_list *vma_list;
+>
+> -	vma_list = kmalloc(sizeof(struct ion_vma_list), GFP_KERNEL);
+> +	vma_list = kmalloc(sizeof(*vma_list), GFP_KERNEL);
+>  	if (!vma_list)
+>  		return;
+>  	vma_list->vma = vma;
+> @@ -1621,7 +1621,7 @@ struct ion_device *ion_device_create(long (*custom_ioctl)
+>  	struct ion_device *idev;
+>  	int ret;
+>
+> -	idev = kzalloc(sizeof(struct ion_device), GFP_KERNEL);
+> +	idev = kzalloc(sizeof(*ion_device_create), GFP_KERNEL);
+>  	if (!idev)
+>  		return ERR_PTR(-ENOMEM);
+>
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/2d05b9d8c7873fa3e04438f4deabadc372e132df.1475252219.git.anchalj109%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
