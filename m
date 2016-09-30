@@ -1,108 +1,92 @@
-X-GM-THRID: 6342042153586262016
-X-Received: by 10.13.252.5 with SMTP id m5mr6103613ywf.156.1476621756438;
-        Sun, 16 Oct 2016 05:42:36 -0700 (PDT)
+X-GM-THRID: 6336205965002539008
+X-Received: by 10.36.50.66 with SMTP id j63mr1594657ita.13.1475262913337;
+        Fri, 30 Sep 2016 12:15:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.57.181 with SMTP id y50ls11751088otb.10.gmail; Sun, 16 Oct
- 2016 05:42:36 -0700 (PDT)
-X-Received: by 10.200.44.7 with SMTP id d7mr5735568qta.68.1476621756120;
-        Sun, 16 Oct 2016 05:42:36 -0700 (PDT)
-Return-Path: <d.sandy5990@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id um12si4277668pab.2.2016.10.16.05.42.36
+Received: by 10.157.27.155 with SMTP id z27ls6380214otd.46.gmail; Fri, 30 Sep
+ 2016 12:15:12 -0700 (PDT)
+X-Received: by 10.31.172.12 with SMTP id v12mr2375955vke.36.1475262912916;
+        Fri, 30 Sep 2016 12:15:12 -0700 (PDT)
+Return-Path: <gnudevliz@gmail.com>
+Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
+        by gmr-mx.google.com with ESMTPS id 7si5141586par.0.2016.09.30.12.15.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 16 Oct 2016 05:42:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of d.sandy5990@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Fri, 30 Sep 2016 12:15:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of d.sandy5990@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=d.sandy5990@gmail.com;
+       spf=pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=gnudevliz@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id i85so7440072pfa.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 16 Oct 2016 05:42:36 -0700 (PDT)
+Received: by mail-pa0-x242.google.com with SMTP id oz2so5125605pac.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 30 Sep 2016 12:15:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=RNVlZVuedGEAFBv+2+j+NgKTXtgiVgyG9vN2w4thbq0=;
-        b=th2HYXWuG9SiiafaovOSs3gLLquZJroCMOoGcbB6fO8xwLrpYx2PD2sIUGTuiwTwKh
-         xOYqlaEVppSkXrphjclznrdSjfBx7wnGpgJML7vk0Aj9L7Mc95dYPSOh2tj5GLsIpdWI
-         3HaskRdjuj9fSUDlRQd/dZaIUh1AIAA416AZJaG+vmh5teirLMAjrYNSTl4zO3grXt5j
-         zm9VzZKjNxFDOzH7oL434R5E/Ilr5KYIGcQbfpil/zm7LPTVWlFs9uyHgdcBAvzLg2bM
-         4UbgXJGYCLDJo1F4WPBSmdclgaS4q2jSKeoIpg4rg3IS98qr4PhI4GiBqVOhwiBNeVaG
-         DaFA==
+        bh=bTAjJLZ7immfhhxuAYZaQs7TtEcasnxrt/sJ1viBO60=;
+        b=0VebQcoJQLyRIX6U6lJhHOlzOkYZMrxTnmP4u5zZ8I1cxOHfXv8KhhEalJpD28FB+J
+         pkS98NTRHpxvhGkuiLKatFoIZkb4vNPVaKbmps7MrHoMT4nBFyFCv3cMQywXwuOu3iFo
+         T4e7Xzx48wPIanFO9as+2n3FX6/1N28NyR3PT2IbmK8olbJIwL3PXRsJIeyHd91XNaQp
+         te5yhOAbnQI9eeuk8fBW45DyR+1ig6JkCFe8kHCTnS556+1FAZbnuq1LwbTuV6R5L7RT
+         ezljZRMSKyfrGfSQgn0wh/eDj18S7BLSyf1NQmbXTmrJrLeJnu3t6JwMmfIllx55CWUM
+         urWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=RNVlZVuedGEAFBv+2+j+NgKTXtgiVgyG9vN2w4thbq0=;
-        b=boA7Eyj6o6kSK7xfXhlQorim8YoMHjPs9EsbKYuTiuM60o/Ht8ciF4Aazvr2zRTat/
-         aWHWqywxYBxMk7xLzPfw9nIdOSv2LmDKQEl2HzEnlJIy8mZeCmPKV2CDGzmvejBiwT/w
-         equRC6m57MWlYN0/Za3u7CSnwzJo39xP8K7dKuEd/CioVyu+tE1zPqKxK9/0P4eCNIYA
-         ojW+7721UZM8CH4Np3QLphb25EY7cVzSb/1lgk/I6lEQ8iHUMQknt7/toolv9f8aP1Sm
-         wpU1Ja3OEV260Ybtpp4Ypor/GMGFpyT5jG0bItVwcsGH/kPtuONLFvnzMlS9ksvu0XWY
-         aTog==
-X-Gm-Message-State: AA6/9RnmScU+cgrTDiB3rfqtv8VvkeIGuhnJ8dxa+d6oHBBxXxRcLiPKy6snGlRtDAVP8A==
-X-Received: by 10.98.150.79 with SMTP id c76mr30742896pfe.154.1476621755754;
-        Sun, 16 Oct 2016 05:42:35 -0700 (PDT)
-Return-Path: <d.sandy5990@gmail.com>
-Received: from siddhi-home-laptop ([45.124.141.33])
-        by smtp.gmail.com with ESMTPSA id a7sm12810652pan.34.2016.10.16.05.42.34
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 16 Oct 2016 05:42:34 -0700 (PDT)
-Date: Sun, 16 Oct 2016 18:12:32 +0530
-From: Siddhi Dave <d.sandy5990@gmail.com>
-To: lidza.louina@gmail.com, markh@compro.net, gregkh@linuxfoundation.org,
-	driverdev-devel@linuxdriverproject.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: dgnc: Clean up Macros
-Message-ID: <20161016124231.GA18162@siddhi-home-laptop>
+        bh=bTAjJLZ7immfhhxuAYZaQs7TtEcasnxrt/sJ1viBO60=;
+        b=T5wxeJHgrNPR2YCW6+0hc6sjeDTfAYCaAd+IFqkLygYq3RqDXGmLSDcDXi6gaa2UWe
+         0P7YWOFV5qt5zSUCmENRZ6g2inl9bRYjhjeuCtLEiCp0VsSkq2TloHn9CB07GtlUK7ik
+         P3XvT2Omqii6j1tcYwYv9LRuN4pxPsM9mKhLdBXDe/tCf8txeOJuenxB7aur7D2gmn2w
+         TJJ2LQfqbn0wBciWNO6EQCbCeWPC5v5ZsYWp1TV/LwQsnRkK5oopdKLXMtWz+b9e6VY5
+         qRmMPlMkLOTzGvR94H1q+a9xZWXPkCTMwn5WUfLwz9q+DdMeufe+OQDL/RoWYXFQMSHx
+         UDsw==
+X-Gm-Message-State: AA6/9Rm4bYT9r2L9JQiQlpV8dHdm0S0nP+JC848HxG0jFnd5uvEws+TLFbPYPT81vAXxYg==
+X-Received: by 10.66.216.167 with SMTP id or7mr14385142pac.86.1475262912714;
+        Fri, 30 Sep 2016 12:15:12 -0700 (PDT)
+Return-Path: <gnudevliz@gmail.com>
+Received: from localhost ([2601:644:300:fd6b:4e0f:6eff:fe69:e9ea])
+        by smtp.gmail.com with ESMTPSA id i4sm29722981pav.27.2016.09.30.12.15.11
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 30 Sep 2016 12:15:12 -0700 (PDT)
+Date: Fri, 30 Sep 2016 12:15:09 -0700
+From: Elizabeth Ferdman <gnudevliz@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: amsfield22@gmail.com, daniel.baluta@intel.com,
+	aditya.shankar@microchip.com, ganesh.krishna@microchip.com,
+	gregkh@linuxfoundation.org
+Subject: [PATCH] staging: wilc1000: remove unnecessary braces
+Message-ID: <20160930191506.GA3159@localhost>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Fix checkpatch warning: Macros with flow control statements should be avoided
+Fix checkpatch warning "braces {} are not necessary for single statement
+blocks" to conform to linux kernel coding style.
 
-Because Macros with flow control statements (goto and return) are
-not very nice to read as any flow movement is unexpected.
-
-Signed-off-by: Siddhi Dave <d.sandy5990@gmail.com>
+Signed-off-by: Elizabeth Ferdman <gnudevliz@gmail.com>
 ---
- drivers/staging/dgnc/dgnc_sysfs.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ drivers/staging/wilc1000/wilc_wlan.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/dgnc/dgnc_sysfs.c b/drivers/staging/dgnc/dgnc_sysfs.c
-index 290bf6e..0767740 100644
---- a/drivers/staging/dgnc/dgnc_sysfs.c
-+++ b/drivers/staging/dgnc/dgnc_sysfs.c
-@@ -90,16 +90,16 @@ void dgnc_remove_driver_sysfiles(struct pci_driver *dgnc_driver)
- 	driver_remove_file(driverfs, &driver_attr_pollrate);
- }
+diff --git a/drivers/staging/wilc1000/wilc_wlan.c b/drivers/staging/wilc1000/wilc_wlan.c
+index 2b307ce..ac5e506 100644
+--- a/drivers/staging/wilc1000/wilc_wlan.c
++++ b/drivers/staging/wilc1000/wilc_wlan.c
+@@ -621,9 +621,9 @@ int wilc_wlan_handle_txq(struct net_device *dev, u32 *txq_count)
+ 			if (!ret)
+ 				break;
  
--#define DGNC_VERIFY_BOARD(p, bd)				\
--	do {							\
--		if (!p)						\
--			return 0;				\
--								\
--		bd = dev_get_drvdata(p);			\
--		if (!bd || bd->magic != DGNC_BOARD_MAGIC)	\
--			return 0;				\
--		if (bd->state != BOARD_READY)			\
--			return 0;				\
-+#define DGNC_VERIFY_BOARD(p, bd)
-+do {
-+	if (!p)
-+		return 0;
+-			if ((reg & 0x1) == 0) {
++			if ((reg & 0x1) == 0)
+ 				break;
+-			}
 +
-+		bd = dev_get_drvdata(p);
-+		if (!bd || bd->magic != DGNC_BOARD_MAGIC)
-+			return 0;
-+		if (bd->state != BOARD_READY)
-+			return 0;
- 	} while (0)
- 
- static ssize_t vpd_show(struct device *p, struct device_attribute *attr,
+ 			counter++;
+ 			if (counter > 200) {
+ 				counter = 0;
 -- 
-2.7.4
+2.1.4
 
 
