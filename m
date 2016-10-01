@@ -1,36 +1,36 @@
 X-GM-THRID: 6336577206052978688
-X-Received: by 10.28.221.9 with SMTP id u9mr161759wmg.2.1475349973008;
-        Sat, 01 Oct 2016 12:26:13 -0700 (PDT)
+X-Received: by 10.46.33.101 with SMTP id h98mr208327ljh.5.1475349876671;
+        Sat, 01 Oct 2016 12:24:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.211.20 with SMTP id k20ls186227lfg.10.gmail; Sat, 01 Oct
- 2016 12:26:12 -0700 (PDT)
-X-Received: by 10.46.5.196 with SMTP id 187mr785872ljf.13.1475349972199;
-        Sat, 01 Oct 2016 12:26:12 -0700 (PDT)
+Received: by 10.25.200.144 with SMTP id y138ls201905lff.25.gmail; Sat, 01 Oct
+ 2016 12:24:35 -0700 (PDT)
+X-Received: by 10.46.33.77 with SMTP id h74mr884802ljh.24.1475349875386;
+        Sat, 01 Oct 2016 12:24:35 -0700 (PDT)
 Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id s6si747490wmb.1.2016.10.01.12.26.12
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id e21si710400wmc.2.2016.10.01.12.24.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 01 Oct 2016 12:26:12 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sat, 01 Oct 2016 12:24:35 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.31,428,1473112800"; 
-   d="scan'208";a="239031316"
+   d="scan'208";a="195303805"
 Received: from 198.67.28.109.rev.sfr.net (HELO hadrien.local) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 01 Oct 2016 21:26:11 +0200
-Date: Sat, 1 Oct 2016 21:26:10 +0200 (CEST)
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 01 Oct 2016 21:24:34 +0200
+Date: Sat, 1 Oct 2016 21:24:33 +0200 (CEST)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: Bhumika Goyal <bhumirks@gmail.com>
 cc: outreachy-kernel@googlegroups.com, jic23@kernel.org, knaack.h@gmx.de, 
     lars@metafoo.de, pmeerw@pmeerw.net, gregkh@linuxfoundation.org, 
     joe@perches.com, apw@canonical.com
-Subject: Re: [Outreachy kernel] [PATCH 4/5] Staging: iio: addac: constify
+Subject: Re: [Outreachy kernel] [PATCH 5/5] Staging: iio: ad7150: constify
  attribute_group structures
-In-Reply-To: <1475349315-6155-5-git-send-email-bhumirks@gmail.com>
-Message-ID: <alpine.DEB.2.10.1610012125520.3445@hadrien>
-References: <1475349315-6155-1-git-send-email-bhumirks@gmail.com> <1475349315-6155-5-git-send-email-bhumirks@gmail.com>
+In-Reply-To: <1475349315-6155-6-git-send-email-bhumirks@gmail.com>
+Message-ID: <alpine.DEB.2.10.1610012124120.3445@hadrien>
+References: <1475349315-6155-1-git-send-email-bhumirks@gmail.com> <1475349315-6155-6-git-send-email-bhumirks@gmail.com>
 User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
 Content-Type: TEXT/PLAIN; charset=US-ASCII
@@ -79,42 +79,31 @@ On Sun, 2 Oct 2016, Bhumika Goyal wrote:
 >
 > File size before:
 >    text	   data	    bss	    dec	    hex	filename
->   11013	   6096	      0	  17109	   42d5
-> drivers/staging/iio/addac/adt7316.o
+>    3561	   1152	      8	   4721	   1271	drivers/staging/iio/cdc/ad7150.o
 >
 > File size after:
 >    text	   data	    bss	    dec	    hex	filename
->   11141	   5968	      0	  17109	   42d5
-> drivers/staging/iio/addac/adt7316.o
+>    3625	   1088	      8	   4721	   1271	drivers/staging/iio/cdc/ad7150.o
 >
 > Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
 
 Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 
 > ---
->  drivers/staging/iio/addac/adt7316.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  drivers/staging/iio/cdc/ad7150.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/drivers/staging/iio/addac/adt7316.c b/drivers/staging/iio/addac/adt7316.c
-> index 3faffe5..a7d90c8 100644
-> --- a/drivers/staging/iio/addac/adt7316.c
-> +++ b/drivers/staging/iio/addac/adt7316.c
-> @@ -2039,7 +2039,7 @@ static struct attribute *adt7316_event_attributes[] = {
+> diff --git a/drivers/staging/iio/cdc/ad7150.c b/drivers/staging/iio/cdc/ad7150.c
+> index 5578a07..6998c3d 100644
+> --- a/drivers/staging/iio/cdc/ad7150.c
+> +++ b/drivers/staging/iio/cdc/ad7150.c
+> @@ -562,7 +562,7 @@ static struct attribute *ad7150_event_attributes[] = {
 >  	NULL,
 >  };
 >
-> -static struct attribute_group adt7316_event_attribute_group = {
-> +static const struct attribute_group adt7316_event_attribute_group = {
->  	.attrs = adt7316_event_attributes,
->  	.name = "events",
->  };
-> @@ -2060,7 +2060,7 @@ static struct attribute *adt7516_event_attributes[] = {
->  	NULL,
->  };
->
-> -static struct attribute_group adt7516_event_attribute_group = {
-> +static const struct attribute_group adt7516_event_attribute_group = {
->  	.attrs = adt7516_event_attributes,
+> -static struct attribute_group ad7150_event_attribute_group = {
+> +static const struct attribute_group ad7150_event_attribute_group = {
+>  	.attrs = ad7150_event_attributes,
 >  	.name = "events",
 >  };
 > --
@@ -124,7 +113,7 @@ Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
 > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
 > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1475349315-6155-5-git-send-email-bhumirks%40gmail.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1475349315-6155-6-git-send-email-bhumirks%40gmail.com.
 > For more options, visit https://groups.google.com/d/optout.
 >
 
