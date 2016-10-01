@@ -1,54 +1,54 @@
 X-GM-THRID: 6336577206052978688
-X-Received: by 10.13.249.6 with SMTP id j6mr3573847ywf.37.1475349412862;
-        Sat, 01 Oct 2016 12:16:52 -0700 (PDT)
+X-Received: by 10.200.53.133 with SMTP id k5mr3629281qtb.34.1475349397285;
+        Sat, 01 Oct 2016 12:16:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.69.204 with SMTP id c73ls1431705itd.22.gmail; Sat, 01 Oct
- 2016 12:16:52 -0700 (PDT)
-X-Received: by 10.66.43.36 with SMTP id t4mr3743411pal.115.1475349412366;
-        Sat, 01 Oct 2016 12:16:52 -0700 (PDT)
+Received: by 10.157.9.151 with SMTP id q23ls6915863otd.18.gmail; Sat, 01 Oct
+ 2016 12:16:36 -0700 (PDT)
+X-Received: by 10.157.40.120 with SMTP id h53mr3684629otd.44.1475349396891;
+        Sat, 01 Oct 2016 12:16:36 -0700 (PDT)
 Return-Path: <bhumirks@gmail.com>
-Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
-        by gmr-mx.google.com with ESMTPS id 128si447383pfz.2.2016.10.01.12.16.52
+Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
+        by gmr-mx.google.com with ESMTPS id um12si6139790pab.2.2016.10.01.12.16.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 01 Oct 2016 12:16:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
+        Sat, 01 Oct 2016 12:16:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x244.google.com with SMTP id cd13so4460051pac.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 01 Oct 2016 12:16:52 -0700 (PDT)
+Received: by mail-pa0-x241.google.com with SMTP id oz2so6289625pac.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 01 Oct 2016 12:16:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=o22q4fV1YnLdk5V2OTt/oKLctTE6QVGUCKHwqD+z1ow=;
-        b=jJxN8TyRWhdJjbPtu4Maj3x3zHT7MFZ46x1MTWvR7KetKEt//QId59u6OR9oYxwFN0
-         sYlgltB1qLS6w5YRUoDb0vnOtniSJRrsl4dYqiBVajPCmHBTumKPCQdd8aLQh/bt+PEn
-         mdzj7CBLucJ6RfprcTxh1cFd+BjwJpvpiu6fwyMt27pmjiF7cmqXR7tYy1AOQF4gSR0P
-         hN0jX/qvJJWTdE4WbIj50oOd0ClL+mQFpDg3Vrqi8L+zMn1fEkwyWNbUajAjP5I/JHeu
-         JMfffbGjGdxYjQ9vnJ5vu2HiSR04gALKqdL4gGrHviRLIuCvzvaWlpPLkaUBdLOpvTn7
-         DPrQ==
+        bh=K2n8+LwpvwH5lvUaN0EN1HZc0KSY2qvCeZvTvWfufhQ=;
+        b=xU3bo+9TU2/zmKIAzLFJsOAfXbzQp/km9J8rO8awVHgsDg/qijTzWmzqM758tdBsJC
+         gL2gahGyQiD1Gt9fnrGDZgnlKe4gIAtGPqtTiRNOafUgtkVC+z1DG5sAtxjwKZ7ffzov
+         BP1JPdv8DDYGUwfACioFmtKNcXsEVcYMlX7CyRQCkCWeujmYds+oa8wBIynHOmnDxTkt
+         gJG8jwSzG/WPHikzkG3Rej3j3z1OCEDbJrFcW+8iAQHmb+HfFhspDXs/DmcHed9HLR6I
+         rCNjZ/OK/kAWXAzgqNCsOgYQhQBSt9oIMGq8sAUcEY/zQq1zI9eUTidtxwUjkh78zajR
+         wSAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=o22q4fV1YnLdk5V2OTt/oKLctTE6QVGUCKHwqD+z1ow=;
-        b=b4PrbE2dNqdDilG8gFnrGHTZ1r/oh5HO+2CXgbFAyoU6Dgq09eKkPJlbh5m7T2nXtM
-         q19920GcyWUbU9Ku/WF4JUvoG2CnCMknTWTsfD4+BTeMCD8dzcMoTsIxjGjWg/fQ4Xa8
-         ssgcm7H8SW00PJHwujoAGbMD/rxXVOCM6L5+fyl0P360j6GUIfBXLq0a4MP9w1mYh3bh
-         clfEc/2s0z5ht81WHN14Sen8m+PxKRHR6Rl53CTbodgXSLulAqJ7J3aLmmg1f7Oc8HFQ
-         WeO+738ayKHHvv5f7FGPMDvrJ9FvHxng1QhsJ97B9OOFcqsDHSoKH9p+8dNXImkePj4t
-         piWg==
-X-Gm-Message-State: AA6/9RnsNd3d/EtOnUPsjuWLMWEJWZ81t34Hved6LgB/uRwfOnNCV93VjS16KwlaeklkKQ==
-X-Received: by 10.66.237.133 with SMTP id vc5mr954308pac.24.1475349412200;
-        Sat, 01 Oct 2016 12:16:52 -0700 (PDT)
+        bh=K2n8+LwpvwH5lvUaN0EN1HZc0KSY2qvCeZvTvWfufhQ=;
+        b=Czmp1yOdppw0ub1072pkZ3s6elpdu0UK5NjrpEI7/reiL5n44XS4qMv4igsvycCc8T
+         hGzcG8Zd9xv2I/XZk3mk26mg3C3aA4saGOEx4/PP68vGUYKAcC9HLkrI1Ol1KscpPNZN
+         ObKt3oAWXckIqb3/2afSFmH7DdOSjVcDpCf39vBp9mN/s6nkjJMYLje0kCSX+IkmSFok
+         lSNCRhrpnmYceNLLnYqUVbkSQ0mNVhScwHzJbC956lP/173v3N/BUfftU6VyZyP1UsQz
+         I6JmP47+UDiiF2/fcJUnVelgbW1fhzm5jJBXDjnE5C4GwPUa15fkkqqJi40QEbbYjF1M
+         EmYg==
+X-Gm-Message-State: AA6/9Rmj8n5kIi+N4arxyiCYHrUGIdLMi7yBUTmhZBS1zs3BrLUniQ0kD/o37WqNgz6Zjg==
+X-Received: by 10.66.89.72 with SMTP id bm8mr23120235pab.1.1475349396693;
+        Sat, 01 Oct 2016 12:16:36 -0700 (PDT)
 Return-Path: <bhumirks@gmail.com>
 Received: from gmail.com ([106.215.189.15])
-        by smtp.gmail.com with ESMTPSA id v6sm36614476pfv.8.2016.10.01.12.16.41
+        by smtp.gmail.com with ESMTPSA id xv9sm36642256pab.36.2016.10.01.12.16.25
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 01 Oct 2016 12:16:51 -0700 (PDT)
-Received: by gmail.com (sSMTP sendmail emulation); Sun, 02 Oct 2016 00:46:37 +0530
+        Sat, 01 Oct 2016 12:16:35 -0700 (PDT)
+Received: by gmail.com (sSMTP sendmail emulation); Sun, 02 Oct 2016 00:46:20 +0530
 From: Bhumika Goyal <bhumirks@gmail.com>
 To: outreachy-kernel@googlegroups.com,
 	jic23@kernel.org,
@@ -59,9 +59,9 @@ To: outreachy-kernel@googlegroups.com,
 	joe@perches.com,
 	apw@canonical.com
 Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH 4/5] Staging: iio: addac: constify attribute_group structures
-Date: Sun,  2 Oct 2016 00:45:14 +0530
-Message-Id: <1475349315-6155-5-git-send-email-bhumirks@gmail.com>
+Subject: [PATCH 3/5] Staging: iio: ad7816: constify attribute_group structures
+Date: Sun,  2 Oct 2016 00:45:13 +0530
+Message-Id: <1475349315-6155-4-git-send-email-bhumirks@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1475349315-6155-1-git-send-email-bhumirks@gmail.com>
 References: <1475349315-6155-1-git-send-email-bhumirks@gmail.com>
@@ -106,39 +106,28 @@ struct attribute_group i;
 
 File size before:
    text	   data	    bss	    dec	    hex	filename
-  11013	   6096	      0	  17109	   42d5
-drivers/staging/iio/addac/adt7316.o
+   3295	    768	      0	   4063	    fdf	drivers/staging/iio/adc/ad7816.o
 
 File size after:
    text	   data	    bss	    dec	    hex	filename
-  11141	   5968	      0	  17109	   42d5
-drivers/staging/iio/addac/adt7316.o
+   3359	    736	      0	   4095	    fff	drivers/staging/iio/adc/ad7816.o
 
 Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
 ---
- drivers/staging/iio/addac/adt7316.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/iio/adc/ad7816.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/iio/addac/adt7316.c b/drivers/staging/iio/addac/adt7316.c
-index 3faffe5..a7d90c8 100644
---- a/drivers/staging/iio/addac/adt7316.c
-+++ b/drivers/staging/iio/addac/adt7316.c
-@@ -2039,7 +2039,7 @@ static struct attribute *adt7316_event_attributes[] = {
+diff --git a/drivers/staging/iio/adc/ad7816.c b/drivers/staging/iio/adc/ad7816.c
+index d5f0620..4f10225 100644
+--- a/drivers/staging/iio/adc/ad7816.c
++++ b/drivers/staging/iio/adc/ad7816.c
+@@ -327,7 +327,7 @@ static struct attribute *ad7816_event_attributes[] = {
  	NULL,
  };
  
--static struct attribute_group adt7316_event_attribute_group = {
-+static const struct attribute_group adt7316_event_attribute_group = {
- 	.attrs = adt7316_event_attributes,
- 	.name = "events",
- };
-@@ -2060,7 +2060,7 @@ static struct attribute *adt7516_event_attributes[] = {
- 	NULL,
- };
- 
--static struct attribute_group adt7516_event_attribute_group = {
-+static const struct attribute_group adt7516_event_attribute_group = {
- 	.attrs = adt7516_event_attributes,
+-static struct attribute_group ad7816_event_attribute_group = {
++static const struct attribute_group ad7816_event_attribute_group = {
+ 	.attrs = ad7816_event_attributes,
  	.name = "events",
  };
 -- 
