@@ -1,105 +1,71 @@
 X-GM-THRID: 6336586801480728576
-X-Received: by 10.36.115.194 with SMTP id y185mr2305491itb.24.1475514907379;
-        Mon, 03 Oct 2016 10:15:07 -0700 (PDT)
+X-Received: by 10.31.63.203 with SMTP id m194mr1127533vka.22.1475351583291;
+        Sat, 01 Oct 2016 12:53:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.47.23 with SMTP id j23ls2813588ioo.15.gmail; Mon, 03 Oct
- 2016 10:15:03 -0700 (PDT)
-X-Received: by 10.107.145.134 with SMTP id t128mr6682636iod.14.1475514903500;
-        Mon, 03 Oct 2016 10:15:03 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-yb0-x244.google.com (mail-yb0-x244.google.com. [2607:f8b0:4002:c09::244])
-        by gmr-mx.google.com with ESMTPS id u139si2339241ywe.5.2016.10.03.10.15.03
+Received: by 10.107.139.4 with SMTP id n4ls367670iod.14.gmail; Sat, 01 Oct
+ 2016 12:53:02 -0700 (PDT)
+X-Received: by 10.67.6.199 with SMTP id cw7mr3835576pad.76.1475351582129;
+        Sat, 01 Oct 2016 12:53:02 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
+        by gmr-mx.google.com with ESMTPS id 128si462196pfz.2.2016.10.01.12.53.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 03 Oct 2016 10:15:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:4002:c09::244 as permitted sender) client-ip=2607:f8b0:4002:c09::244;
+        Sat, 01 Oct 2016 12:53:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:4002:c09::244 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-yb0-x244.google.com with SMTP id 191so843081ybv.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 03 Oct 2016 10:15:03 -0700 (PDT)
+Received: by mail-pa0-x22f.google.com with SMTP id qn7so48684632pac.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 01 Oct 2016 12:53:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=VtWdh0PGZdcWdPVrsTQxnwv+b0H0sVZpNtWFKORAbVQ=;
-        b=aI5IH7PrcHMK1k8EIoZ1tIaAKpkzQUkLac4mSkwgkCUdpqUOHUcKBN32zo2fTNwt2z
-         970n5l0uVlPG2Ku07nMWIPFyVD0b3gqD6VJZgBkjJLAYpqFgy6alZALZw8/11p5f54fD
-         +IusJjf1ntXVFEpHwrbx9hq4Txi6331w9CS3UEcgiuxLUM8rI+gmoeUI4ZRZhtDi4De/
-         WyAMkkk6mJ29r+7lKjv3FHAbbojvVf9P9aYxzr4zR+lVly3xV1uzHsKqoP9rHJx4ucUn
-         LiNbvzyUOcLMr/m1KD4EpSX1hGlm1qwOc21MCA8CE7Fr8zH79mVDDyWyxehNthnUv4Q7
-         trXA==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=RgvJ8jjPvR0VeTkHPcUEzO35XsdkawtMhUC81cN7fu4=;
+        b=PlWnhEDXx98/ldk0PrVxgragoalC9RYT0NpPcjGF1cbpyIIlhJkc0UHyaXcqTHXP8O
+         Wmj6d6cQ1go/cKclwwgVe3QnPsQBqGRgxj+/7Ro2sK/fpemey00UOJ/iu1lBlomm+Ecj
+         sAQsfrrKy5/1W/3uU5E+iUHF7Ii/nf6JCwN7cxGB6szprzyvu8rcW0BvoPYQzQmsGRUB
+         6go7KjVucWXhrI/4bsv9b4lnW6/34HT0G5Yh4JLOoCDEpmyI4apMVnQ0PsYMcthcE3OG
+         KQrBE/FyqX7oxufEgsKMVDaK2Yv0YuYyn9l6fUUPBzvOpycvFJ6yUlgvLTC+gwYHtiXm
+         RsLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=VtWdh0PGZdcWdPVrsTQxnwv+b0H0sVZpNtWFKORAbVQ=;
-        b=NdaZJOp9EaRmmC0rgKjZazsDWfXxULcGwwiKobykIdA+J79Wy7RwlyahgU+0XZtaKg
-         OyCLRJl/awmKdz8BMdYHgQdebBLGsDXJpPGikP7uCouk6siQaAnOvkmp2LNPQkQtyDi/
-         r2kX+ItLDNPtbGY3yz7aj/FjaFm3841iPQXvtRoK+WFkbeAXikQa2rHWl5pUqD3uD+Rp
-         7rwPdBtBza4Zjjr4E9Jk5/Vdqf4tJhZsOE6bHXCeuFwlL1xEMIWrtZS2222/chWI1K9m
-         ISCaFHX5govp38S2gVTEFnwHPUUjUNvkZjvrnXKNPU7k6RZB8f9T5Djo4uJEi3BnaOyh
-         7xLA==
-X-Gm-Message-State: AA6/9RlI3InaxYIUBhK71GoVC7T9bq3xHVpsMlXr0ANGBtt2i9YuZYU6SgTZH+VQs5t2jRQm5q9xzAOIfpt4sA==
-X-Received: by 10.37.170.20 with SMTP id s20mr6560465ybi.126.1475514903238;
- Mon, 03 Oct 2016 10:15:03 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=RgvJ8jjPvR0VeTkHPcUEzO35XsdkawtMhUC81cN7fu4=;
+        b=gmbz81UZMhBEH2qe8FaXXP2JSwv28rUggzxpsaNYktW+ptsrXBiWa1T5frsWgTHZi/
+         IGbHqMdSjploHU1o7Rm2zbbldJFNNvLv/J5muS7KKMXowiOHnpk8Yl0i8RAlGmkfvw6Q
+         RXaphwD02dXiPf5K4ZnUnjuyCwYyHh4KZlN96kyAh//D3pE3ytRj1ved6bEN5IiNVPVi
+         7wP1NHw9DNZ/CWVsgRASvzBzQy311H8aDe8nzCCz0NRC/nc+noXlJo1WAyVe2koyndui
+         YB7FZunxdBqbUZqFjYNQIhw7wKdtUbKg8g7yg18B55if05Vnu2qQc5XkOnlx4r0Ff4QT
+         HnZA==
+X-Gm-Message-State: AA6/9Rnw5LrQwoCf1Gh6Josa583xnSrNefdxakmXt22NDUSK7RSc1zXO6eza9LW+TphS8A==
+X-Received: by 10.66.199.38 with SMTP id jh6mr23113524pac.160.1475351581805;
+        Sat, 01 Oct 2016 12:53:01 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-77-201.dhcp.embarqhsd.net. [67.232.77.201])
+        by smtp.gmail.com with ESMTPSA id wd7sm36761798pab.2.2016.10.01.12.53.00
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 01 Oct 2016 12:53:01 -0700 (PDT)
+Date: Sat, 1 Oct 2016 12:52:59 -0700
+From: Alison Schofield <amsfield22@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: IIO Experiment #1 Build Dummy Help
+Message-ID: <20161001195259.GB12284@d830.WORKGROUP>
 MIME-Version: 1.0
-Received: by 10.37.21.4 with HTTP; Mon, 3 Oct 2016 10:14:22 -0700 (PDT)
-In-Reply-To: <20161001195259.GB12284@d830.WORKGROUP>
-References: <20161001195259.GB12284@d830.WORKGROUP>
-From: sayli karnik <karniksayli1995@gmail.com>
-Date: Mon, 3 Oct 2016 22:44:22 +0530
-Message-ID: <CAKG5xWhDNtKrZuAKFjBPdj+VV=bPSZmCNM2_ySM0Nr_YHiiDbA@mail.gmail.com>
-Subject: Re: [Outreachy kernel] IIO Experiment #1 Build Dummy Help
-To: Alison Schofield <amsfield22@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Hello,
-I encountered 'Invalid format error' while inserting the iio_dummy_evgen module.
+If you have questions about building the modules in IIO Experimenting
+Task #1, please post here.
 
-On Sun, Oct 2, 2016 at 1:22 AM, Alison Schofield <amsfield22@gmail.com> wrote:
-> If you have questions about building the modules in IIO Experimenting
-> Task #1, please post here.
->
+If you can help those who are having troubles, please post that here
+also.
 
-I ran:
-sudo insmod drivers/iio/dummy/iio_dummy_evgen.ko
-I got:
-insmod: ERROR: could not insert module
-drivers/iio/dummy/iio_dummy_evgen.ko: Invalid module format
-
-dmesg output after insmod:
-[36856.453312] iio_dummy_evgen: no symbol version for module_layout
-
-What I learned so far:
-The error arises because the kernel booted in and the one the driver
-belongs to are different.
-A post on Google says this is because the vermagic strings don't match.
-( 'modinfo' gives different vermagic strings for drivers in different kernels)
-So I tried copying my running kernel's Makefile into the driver's
-Makefile. But the error persists.
-
-I also tried:
-export KBUILD_SRC=<location of the running kernel's source>
-But that didn't help either.
-
-Any ideas?
-
-thanks,
-sayli
-
-> If you can help those who are having troubles, please post that here
-> also.
->
-> Thanks!
-> alisons
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20161001195259.GB12284%40d830.WORKGROUP.
-> For more options, visit https://groups.google.com/d/optout.
+Thanks!
+alisons
 
