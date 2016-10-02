@@ -1,104 +1,154 @@
-X-GM-THRID: 6664965756693774336
-X-Received: by 2002:a6b:6603:: with SMTP id a3mr713695ioc.11.1551808267928;
-        Tue, 05 Mar 2019 09:51:07 -0800 (PST)
+X-GM-THRID: 6336889298052186112
+X-Received: by 10.28.38.194 with SMTP id m185mr306119wmm.5.1475423336566;
+        Sun, 02 Oct 2016 08:48:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:147:: with SMTP id 68ls519274itk.1.gmail; Tue, 05 Mar
- 2019 09:51:07 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxGBOjEZmjWQ65cif7x2Y3muYB1iXiRB/aYoHExmVRQ1W/gVTU1HwG5SXXyx/Vm20HXiXyu
-X-Received: by 2002:a24:2ed2:: with SMTP id i201mr3504755ita.3.1551808266988;
-        Tue, 05 Mar 2019 09:51:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551808266; cv=none;
-        d=google.com; s=arc-20160816;
-        b=nugJhCG3p8N8Cby8PW3oEifO45hVHefiOIwO8lGZxsSG/BM5k0X7BInMqyXXkBCOVy
-         aj4x6zkVBo/RukE742rhMexwnaM31lvVqGaxoHVjH5XHzjab1Z5QNx8V5iyI3nL7X0k6
-         Rl0LC4ZmRzWnqbfTUwtonZlysumeE91CnwOwsm/Nn5jyLjVsYq7407HpOFyY5PG9MF1e
-         pmw2ROSGmKfx/EKnvT/aqRoWoDA8tQw4hzNkCqbPf1Z3oH37yAcuJkGGrQe6j/aWEqxk
-         fIc5P0XRkO4Xw/VGB7Kefb7wVlXcElavg4z2kbix/LynyWPjt1LJE6l7tE4uYWQ0mazu
-         92Tw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=XxHWqXZhUnoVhfXjoB8IDp3Yc8qlKVGTmV5rSJ86z1E=;
-        b=yGnHmE9P7UV12uEXzpvDtut/GHe30Y79r8Kupz73J4Qf0VlE93GfcgkHcyKSM++YKQ
-         VCPvygnu1vSHxyR9zVRHpLrktJjU7lgrR1VYQhfuNpcYBY6nzqPaYB3nZ/ylkwrAxmQT
-         4d84jSpdp/JQkWYzpOxkbcJG2GQH46DmD1Q/PLguhCixEThuU2+YKgH1++ygrGq/wHTy
-         TLRpScsEomuaSXRP8OmRGs9V89xCrqHxQsM8Qmc+8g4sakX9YODMGHWDlGwZuzJTfwR4
-         eMtkdbG/WRX20I2xO1J0rs/LF8Wd81ZaJFidr27VVdwAAdKAwMu6RsSbHTm10CWBG7Fu
-         7qIQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Pm8B8oqj;
-       spf=pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::231 as permitted sender) smtp.mailfrom=idebleenasen@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <idebleenasen@gmail.com>
-Received: from mail-oi1-x231.google.com (mail-oi1-x231.google.com. [2607:f8b0:4864:20::231])
-        by gmr-mx.google.com with ESMTPS id e74si3150ite.1.2019.03.05.09.51.06
+Received: by 10.46.1.42 with SMTP id 42ls746972ljb.21.gmail; Sun, 02 Oct 2016
+ 08:48:55 -0700 (PDT)
+X-Received: by 10.46.32.17 with SMTP id g17mr217487ljg.3.1475423335887;
+        Sun, 02 Oct 2016 08:48:55 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 185si901288wmr.2.2016.10.02.08.48.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 05 Mar 2019 09:51:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::231 as permitted sender) client-ip=2607:f8b0:4864:20::231;
+        Sun, 02 Oct 2016 08:48:55 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Pm8B8oqj;
-       spf=pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::231 as permitted sender) smtp.mailfrom=idebleenasen@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-oi1-x231.google.com with SMTP id b4so7527701oif.6
-        for <outreachy-kernel@googlegroups.com>; Tue, 05 Mar 2019 09:51:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:from:date:message-id:subject:to;
-        bh=XxHWqXZhUnoVhfXjoB8IDp3Yc8qlKVGTmV5rSJ86z1E=;
-        b=Pm8B8oqj82frmK8pWbeujwKRUrhGHiLb5Nitd3Hl8e5k5CVJosjeSSGVCjeOaY1Md2
-         j5qRH8/l/UsyYHnSVYCmamoZtaobwepVSpzmM7FId8lBdaQ4pdjEIHO8RYybYkuNMIFc
-         08C7fL29KoQiK8B/sYd1UsJG+MZaEItVcglExmpBp994jD9FBjs0mBjoJXN97O3+8EQk
-         ztuBKOnImqox4xAS3jNzFsQmL0eWo5FwZ99dZYraiFvV6Ed99nSvMcS8bgz8zrv4Mt8E
-         OkTBQtA+WGtANfav5hH2hS+0nMme8BOQLyaisVXEut7attRjD4uF9VghNah0YvGM8b7x
-         OXyw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-        bh=XxHWqXZhUnoVhfXjoB8IDp3Yc8qlKVGTmV5rSJ86z1E=;
-        b=soPkUcXNZZ762cIhRKUvac+VLK+bDwHOKaYZjkb9zsY9ymrFrh8xmH64Pi5Z0fa0JO
-         DP3cBjLRIV1T0W2ESpbmO0Ta+s4hSS7mxaT76QhgGmlaRTAtvM4e9gYpi+aKi8fWfd87
-         hwwDGlsjppQ19/HTtWkFZ6h7Rh+VxJ9nTPC2nS4aq0Y4GLOw+HFlsnSThGWJA5WLApLI
-         B7a/4hhCrmlzU6DR/IzNgV8NSRHue7gDBn/ADH3qGwoJva2T8IjlZjg3p/hiI2UFW4ci
-         9Lxh3VdVuIHKo6tRJ1LqQRM879p0avoXVblPCEqT9d0pzaAuShSPLr8S/A5WS8iDnZGs
-         RTew==
-X-Gm-Message-State: APjAAAWbAlVdeCg9cBTkQJNZd8SJXmMhwH847ZMQIcYr7YFgFU6dlzH0
-	plLwaxmDE9AJDM+0YMAypSImJFIYgATyuzS67VBODt3H
-X-Received: by 2002:aca:b683:: with SMTP id g125mr2793459oif.17.1551808266566;
- Tue, 05 Mar 2019 09:51:06 -0800 (PST)
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.31,285,1473112800"; 
+   d="scan'208";a="195348474"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 02 Oct 2016 17:48:54 +0200
+Date: Sun, 2 Oct 2016 17:48:54 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Anchal Jain <anchalj109@gmail.com>
+cc: Greg KH <gregkh@linuxfoundation.org>, 
+    outreachy-kernel <outreachy-kernel@googlegroups.com>, 
+    Jonathan Cameron <jic23@kernel.org>
+Subject: Re: [Outreachy kernel] [PATCH v3 1/2] staging: iio: cdc: ad7152:
+ Add blank line after
+In-Reply-To: <CAAbeOStiOFD5gOQ_m6Fb7ZabMT6Sh-6YAsOp2jbrFOw-ReLTww@mail.gmail.com>
+Message-ID: <alpine.DEB.2.10.1610021748110.3327@hadrien>
+References: <20161002152635.GA4163@life-desktop> <alpine.DEB.2.10.1610021729380.3327@hadrien> <CAAbeOStiOFD5gOQ_m6Fb7ZabMT6Sh-6YAsOp2jbrFOw-ReLTww@mail.gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-From: Debleena Sen <idebleenasen@gmail.com>
-Date: Tue, 5 Mar 2019 23:20:54 +0530
-Message-ID: <CACw+u4H=4T8_daSPgAstpNFNUJ46zXw2DikwCeu4tzm-MQCSRw@mail.gmail.com>
-Subject: Warning about ENOSYS
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: multipart/alternative; boundary="0000000000007cff3405835c841d"
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-1198736982-1475423335=:3327"
 
---0000000000007cff3405835c841d
-Content-Type: text/plain; charset="UTF-8"
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-I came across the following warning in
-git/kernels/staging/drivers/staging/vboxvideo/vbox_prime.c
+--8323329-1198736982-1475423335=:3327
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-WARNING: ENOSYS means 'invalid syscall nr' and nothing else
-For the following line:
-                 return ERR_PTR(-ENOSYS);
 
-How should I go about fixing this issue?
 
-Thanks,
-Debleena
+On Sun, 2 Oct 2016, Anchal Jain wrote:
 
---0000000000007cff3405835c841d
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+> yes,
+>
+> I used the get_maintainer command but In CC I need to add maintainers only
+> or everyone which listed there?
 
-<div dir=3D"ltr">I came across the following warning in git/kernels/staging=
-/drivers/staging/vboxvideo/vbox_prime.c<div><br></div><div>WARNING: ENOSYS =
-means &#39;invalid syscall nr&#39; and nothing else=C2=A0</div><div>For the=
- following line:</div><div>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0return ERR_PTR(-ENOSYS);<br></div><div><br></div><div>How sho=
-uld I go about fixing this issue?</div><div><br></div><div>Thanks,</div><di=
-v>Debleena</div></div>
+The command that is shown in the Submit a patch section only gives
+maintainers.  If you run get_maintainer in some other way, you will indeed
+get people who are not maintainers.
 
---0000000000007cff3405835c841d--
+julia
+
+>
+> On Sun, Oct 2, 2016 at 9:02 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+>       On Sun, 2 Oct 2016, Anchal Jain wrote:
+>
+>       > declarations to increase readability
+>       > Reply-To:
+>       >
+>       > Add a blank line after a function declaration because local
+>       variable
+>       > declarations should be seprated from the function's statments
+>       by a blank line
+>       > to increase the readability of a code.
+>
+>       The log message is not formatted properly.  It looks like a
+>       newline ended
+>       up in the subject line, and the Reply-to is not needed.
+>
+>       There are people who should be on the CC list who are not.  Are
+>       you using
+>       the get_maintainer command shown in the Submit a patch section
+>       of the
+>       tutorial?
+>
+>       julia
+>
+>       >
+>       > Signed-off-by: Anchal Jain <anchalj109@gmail.com>
+>       > ---
+>       >  drivers/staging/iio/cdc/ad7152.c | 4 ++++
+>       >  1 file changed, 4 insertions(+)
+>       >
+>       > diff --git a/drivers/staging/iio/cdc/ad7152.c
+>       b/drivers/staging/iio/cdc/ad7152.c
+>       > index 1962052..f9767e9 100644
+>       > --- a/drivers/staging/iio/cdc/ad7152.c
+>       > +++ b/drivers/staging/iio/cdc/ad7152.c
+>       > @@ -134,6 +134,7 @@ static inline ssize_t
+>       ad7152_start_calib(struct device *dev,
+>       >       mutex_unlock(&indio_dev->mlock);
+>       >       return len;
+>       >  }
+>       > +
+>       >  static ssize_t ad7152_start_offset_calib(struct device *dev,
+>       >                                        struct
+>       device_attribute *attr,
+>       >                                        const char *buf,
+>       > @@ -142,6 +143,7 @@ static ssize_t
+>       ad7152_start_offset_calib(struct device *dev,
+>       >       return ad7152_start_calib(dev, attr, buf, len,
+>       >                                 AD7152_CONF_MODE_OFFS_CAL);
+>       >  }
+>       > +
+>       >  static ssize_t ad7152_start_gain_calib(struct device *dev,
+>       >                                      struct device_attribute
+>       *attr,
+>       >                                      const char *buf,
+>       > @@ -317,6 +319,7 @@ out:
+>       >       mutex_unlock(&indio_dev->mlock);
+>       >       return ret;
+>       >  }
+>       > +
+>       >  static int ad7152_read_raw(struct iio_dev *indio_dev,
+>       >                          struct iio_chan_spec const *chan,
+>       >                          int *val, int *val2,
+>       > @@ -470,6 +473,7 @@ static const struct iio_chan_spec
+>       ad7152_channels[] = {
+>       >               BIT(IIO_CHAN_INFO_SCALE),
+>       >       }
+>       >  };
+>       > +
+>       >  /*
+>       >   * device probe and remove
+>       >   */
+>       > --
+>       > 1.9.1
+>       >
+> > --
+> > You received this message because you are subscribed to the Google
+> Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it,
+> send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to
+> outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/20161002152635.GA4163%4
+> 0life-desktop.
+> > For more options, visit https://groups.google.com/d/optout.
+> >
+>
+>
+>
+>
+--8323329-1198736982-1475423335=:3327--
 
