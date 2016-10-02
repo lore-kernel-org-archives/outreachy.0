@@ -1,157 +1,213 @@
-X-GM-THRID: 6392947062257745920
-X-Received: by 10.13.212.195 with SMTP id w186mr5749489ywd.105.1488473979401;
-        Thu, 02 Mar 2017 08:59:39 -0800 (PST)
+X-GM-THRID: 6336810115106078720
+X-Received: by 10.194.87.67 with SMTP id v3mr908024wjz.23.1475412358220;
+        Sun, 02 Oct 2016 05:45:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.27.71 with SMTP id l65ls6955132otl.41.gmail; Thu, 02 Mar
- 2017 08:59:39 -0800 (PST)
-X-Received: by 10.157.14.213 with SMTP id 79mr5363633otj.36.1488473979043;
-        Thu, 02 Mar 2017 08:59:39 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id 2si872153pfz.1.2017.03.02.08.59.38
+Received: by 10.46.1.42 with SMTP id 42ls732894ljb.21.gmail; Sun, 02 Oct 2016
+ 05:45:57 -0700 (PDT)
+X-Received: by 10.46.0.228 with SMTP id e97mr57989lji.23.1475412357605;
+        Sun, 02 Oct 2016 05:45:57 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 82si841967wmg.3.2016.10.02.05.45.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 08:59:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Sun, 02 Oct 2016 05:45:57 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id 25so9878536pgy.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 08:59:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=oyi+rVUPnG2nz+mB1b6DV5Hy0QEzJPg749uebo/oiEs=;
-        b=Hor433XdtgcEwABBB98cgQyht/J3mdsVVELeoJXZh701KTy9ubaJOy2Ox50x8O0peA
-         PjTDzfRDuj+3JCKI2vzIfIpcBkB96hcN4F9ZaYU4BMAB9Uav6fC5LrHsaloQQUxaYkjh
-         4eROEvv3fy/YL+n3MysWYrX0745wrF44KJP9Ok25x3wUq9HUWOBEokVlGWI0/hSXt1oa
-         FT5p6vahucQxU1WFa2lJ5meoUbMEeidVOeZny6ljSiGDhysUTECqo7FfXhXBpCf+XHKL
-         Azo0bPJk+lg7as08+LMyj/CEA3G11+Bb33L82Sz8uqFYjPPgSLEUsQjw6vLhBe2ZR8hz
-         zWyQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=oyi+rVUPnG2nz+mB1b6DV5Hy0QEzJPg749uebo/oiEs=;
-        b=M60WTrv1QJFZsp1sR3YPJNeFuMfpHbKfnlCV74jo/Z5Xvb2R+iTGjnYNHNF0DtkdEb
-         jEkbM3/ddd1dmMvyNrzDW4eFHd/U5M86p63B0K4USIHir+zpUpWKsmKO5kDHD7EzicFN
-         jSAO8zvJ7a1V01wqW9F0034mCAt4QO4AbfB5UrboVjKHMolLGv74Rc3rdjDF2N3KbByd
-         09TCQ6bLdUBbtKA9/a/FkfdS13k+H5v2xAMEanxsPNMnK7Fk9D74xluIHsCEpy/I5AOS
-         SdUau4Ma9K3vjVhNLyn3eDqRB20jcclWsDItowKYUnZMZkM5ZJhL1baSpufmGEu04yAF
-         A53A==
-X-Gm-Message-State: AMke39n5ytpfbVR2u+a9jWH9SvEwL/NQa9RAZUOhJitJllt/KiegeoVmv5MRDHNKK2+fvA==
-X-Received: by 10.84.208.227 with SMTP id c32mr19843579plj.71.1488473978739;
-        Thu, 02 Mar 2017 08:59:38 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id h9sm18167046pfd.103.2017.03.02.08.59.34
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 02 Mar 2017 08:59:38 -0800 (PST)
-From: Gargi Sharma <gs051095@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: oleg.drokin@intel.com,
-	andreas.dilger@intel.com,
-	jsimmons@infradead.org,
-	gregkh@linuxfoundation.org,
-	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH] staging: lustre: lnet: Constify kernel_param_ops structure
-Date: Thu,  2 Mar 2017 22:27:15 +0530
-Message-Id: <1488473835-13701-1-git-send-email-gs051095@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.31,284,1473112800"; 
+   d="scan'208";a="239069964"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 02 Oct 2016 14:45:56 +0200
+Date: Sun, 2 Oct 2016 14:45:56 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Muraru Mihaela <mihaela.muraru21@gmail.com>
+cc: Julia Lawall <julia.lawall@lip6.fr>, 
+    Sudip Mukherjee <sudipm.mukherjee@gmail.com>, 
+    Teddy Wang <teddy.wang@siliconmotion.com>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v3] Staging: sm750fb: fix comment
+ block coding style issue in ddk750_display.h
+In-Reply-To: <20161002124245.GA14194@domino-MS-16Y1>
+Message-ID: <alpine.DEB.2.10.1610021444560.3327@hadrien>
+References: <20161002124245.GA14194@domino-MS-16Y1>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-The structure is used as an argument to module_param macro. This
-macro calls a bunch of other macros and finally assigns the instance
-of the kernel_param_ops structure to the const struct
-kernel_param_ops* field of a variable of type kernel_param. Hence,
-const can be added to the structure.
+Oops, sorry one more thing.  There is no need to put the file name in the
+subject line.  Indeed the subject line should try to be at most 50
+characters.  You could really stop with "style".
 
-Coccinelle Script:
+julia
 
-@r disable optional_qualifier@
-identifier i;
-position p;
-@@
-static struct kernel_param_ops i@p = { ... };
+On Sun, 2 Oct 2016, Muraru Mihaela wrote:
 
-@ok1@
-identifier r.i;
-expression e;
-position p;
-@@
-e = i@p
-
-@script:python s@
-i << r.i;
-t;
-@@
-coccinelle.t = i[10:];
-
-@ok2@
-declarer name module_param;
-expression e1,e2;
-position p;
-@@
-module_param(e1,s.t@p,e2);
-
-@bad@
-position p != {r.p,ok1.p,ok2.p};
-identifier r.i;
-@@
-e@i@p
-
-@depends on !bad disable optional_qualifier@
-identifier r.i;
-@@
-static
-+const
-struct kernel_param_ops i = { ... };
-
-Signed-off-by: Gargi Sharma <gs051095@gmail.com>
----
- drivers/staging/lustre/lnet/libcfs/debug.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/staging/lustre/lnet/libcfs/debug.c b/drivers/staging/lustre/lnet/libcfs/debug.c
-index 3408041..c56e992 100644
---- a/drivers/staging/lustre/lnet/libcfs/debug.c
-+++ b/drivers/staging/lustre/lnet/libcfs/debug.c
-@@ -80,7 +80,7 @@ static int libcfs_param_debug_mb_set(const char *val,
-  * it needs quite a bunch of extra processing, so we define special
-  * debugmb parameter type with corresponding methods to handle this case
-  */
--static struct kernel_param_ops param_ops_debugmb = {
-+static const struct kernel_param_ops param_ops_debugmb = {
- 	.set = libcfs_param_debug_mb_set,
- 	.get = param_get_uint,
- };
-@@ -138,7 +138,7 @@ static int param_set_console_max_delay(const char *val,
- 				      libcfs_console_min_delay, INT_MAX);
- }
- 
--static struct kernel_param_ops param_ops_console_max_delay = {
-+static const struct kernel_param_ops param_ops_console_max_delay = {
- 	.set = param_set_console_max_delay,
- 	.get = param_get_delay,
- };
-@@ -156,7 +156,7 @@ static int param_set_console_min_delay(const char *val,
- 				      1, libcfs_console_max_delay);
- }
- 
--static struct kernel_param_ops param_ops_console_min_delay = {
-+static const struct kernel_param_ops param_ops_console_min_delay = {
- 	.set = param_set_console_min_delay,
- 	.get = param_get_delay,
- };
-@@ -188,7 +188,7 @@ static int param_set_uintpos(const char *val, const struct kernel_param *kp)
- 	return param_set_uint_minmax(val, kp, 1, -1);
- }
- 
--static struct kernel_param_ops param_ops_uintpos = {
-+static const struct kernel_param_ops param_ops_uintpos = {
- 	.set = param_set_uintpos,
- 	.get = param_get_uint,
- };
--- 
-2.7.4
-
+> This is a patch to the ddk750_display.h file that fixes up a comment
+> block warning, found by checkpatch.pl tool, by adding a * for each line
+> of the comment block.
+>
+> Signed-off-by: Muraru Mihaela <mihaela.muraru21@gmail.com>
+>
+> ---
+> Changes in v3:
+> 	- arrange the subject line
+> ---
+>  drivers/staging/sm750fb/ddk750_display.h | 73 +++++++++++++++++---------------
+>  1 file changed, 40 insertions(+), 33 deletions(-)
+>
+> diff --git a/drivers/staging/sm750fb/ddk750_display.h b/drivers/staging/sm750fb/ddk750_display.h
+> index 5fc9f6f..e998f21 100644
+> --- a/drivers/staging/sm750fb/ddk750_display.h
+> +++ b/drivers/staging/sm750fb/ddk750_display.h
+> @@ -1,10 +1,10 @@
+>  #ifndef DDK750_DISPLAY_H__
+>  #define DDK750_DISPLAY_H__
+>
+> -/* panel path select
+> -	80000[29:28]
+> -*/
+> -
+> +/*
+> + * panel path select
+> + * 80000[29:28]
+> + */
+>  #define PNL_2_OFFSET 0
+>  #define PNL_2_MASK (3 << PNL_2_OFFSET)
+>  #define PNL_2_USAGE	(PNL_2_MASK << 16)
+> @@ -12,10 +12,11 @@
+>  #define PNL_2_SEC	((2 << PNL_2_OFFSET) | PNL_2_USAGE)
+>
+>
+> -/* primary timing & plane enable bit
+> -	1: 80000[8] & 80000[2] on
+> -	0: both off
+> -*/
+> +/*
+> + * primary timing & plane enable bit
+> + * 1: 80000[8] & 80000[2] on
+> + * 0: both off
+> + */
+>  #define PRI_TP_OFFSET 4
+>  #define PRI_TP_MASK BIT(PRI_TP_OFFSET)
+>  #define PRI_TP_USAGE (PRI_TP_MASK << 16)
+> @@ -23,37 +24,41 @@
+>  #define PRI_TP_OFF ((0x0 << PRI_TP_OFFSET) | PRI_TP_USAGE)
+>
+>
+> -/* panel sequency status
+> -	80000[27:24]
+> -*/
+> +/*
+> + * panel sequency status
+> + * 80000[27:24]
+> + */
+>  #define PNL_SEQ_OFFSET 6
+>  #define PNL_SEQ_MASK BIT(PNL_SEQ_OFFSET)
+>  #define PNL_SEQ_USAGE (PNL_SEQ_MASK << 16)
+>  #define PNL_SEQ_ON (BIT(PNL_SEQ_OFFSET) | PNL_SEQ_USAGE)
+>  #define PNL_SEQ_OFF ((0 << PNL_SEQ_OFFSET) | PNL_SEQ_USAGE)
+>
+> -/* dual digital output
+> -	80000[19]
+> -*/
+> +/*
+> + * dual digital output
+> + * 80000[19]
+> + */
+>  #define DUAL_TFT_OFFSET 8
+>  #define DUAL_TFT_MASK BIT(DUAL_TFT_OFFSET)
+>  #define DUAL_TFT_USAGE (DUAL_TFT_MASK << 16)
+>  #define DUAL_TFT_ON (BIT(DUAL_TFT_OFFSET) | DUAL_TFT_USAGE)
+>  #define DUAL_TFT_OFF ((0 << DUAL_TFT_OFFSET) | DUAL_TFT_USAGE)
+>
+> -/* secondary timing & plane enable bit
+> -	1:80200[8] & 80200[2] on
+> -	0: both off
+> -*/
+> +/*
+> + * secondary timing & plane enable bit
+> + * 1:80200[8] & 80200[2] on
+> + * 0: both off
+> + */
+>  #define SEC_TP_OFFSET 5
+>  #define SEC_TP_MASK BIT(SEC_TP_OFFSET)
+>  #define SEC_TP_USAGE (SEC_TP_MASK << 16)
+>  #define SEC_TP_ON  ((0x1 << SEC_TP_OFFSET) | SEC_TP_USAGE)
+>  #define SEC_TP_OFF ((0x0 << SEC_TP_OFFSET) | SEC_TP_USAGE)
+>
+> -/* crt path select
+> -	80200[19:18]
+> -*/
+> +/*
+> + * crt path select
+> + * 80200[19:18]
+> + */
+>  #define CRT_2_OFFSET 2
+>  #define CRT_2_MASK (3 << CRT_2_OFFSET)
+>  #define CRT_2_USAGE (CRT_2_MASK << 16)
+> @@ -61,18 +66,20 @@
+>  #define CRT_2_SEC ((0x2 << CRT_2_OFFSET) | CRT_2_USAGE)
+>
+>
+> -/* DAC affect both DVI and DSUB
+> -	4[20]
+> -*/
+> +/*
+> + * DAC affect both DVI and DSUB
+> + * 4[20]
+> + */
+>  #define DAC_OFFSET 7
+>  #define DAC_MASK BIT(DAC_OFFSET)
+>  #define DAC_USAGE (DAC_MASK << 16)
+>  #define DAC_ON ((0x0 << DAC_OFFSET) | DAC_USAGE)
+>  #define DAC_OFF ((0x1 << DAC_OFFSET) | DAC_USAGE)
+>
+> -/* DPMS only affect D-SUB head
+> -	0[31:30]
+> -*/
+> +/*
+> + * DPMS only affect D-SUB head
+> + * 0[31:30]
+> + */
+>  #define DPMS_OFFSET 9
+>  #define DPMS_MASK (3 << DPMS_OFFSET)
+>  #define DPMS_USAGE (DPMS_MASK << 16)
+> @@ -82,18 +89,18 @@
+>
+>
+>  /*
+> -	LCD1 means panel path TFT1  & panel path DVI (so enable DAC)
+> -	CRT means crt path DSUB
+> -*/
+> + * LCD1 means panel path TFT1  & panel path DVI (so enable DAC)
+> + * CRT means crt path DSUB
+> + */
+>  typedef enum _disp_output_t {
+>  	do_LCD1_PRI = PNL_2_PRI | PRI_TP_ON | PNL_SEQ_ON | DAC_ON,
+>  	do_LCD1_SEC = PNL_2_SEC | SEC_TP_ON | PNL_SEQ_ON | DAC_ON,
+>  	do_LCD2_PRI = CRT_2_PRI | PRI_TP_ON | DUAL_TFT_ON,
+>  	do_LCD2_SEC = CRT_2_SEC | SEC_TP_ON | DUAL_TFT_ON,
+>  	/*
+> -	do_DSUB_PRI = CRT_2_PRI|PRI_TP_ON|DPMS_ON|DAC_ON,
+> -	do_DSUB_SEC = CRT_2_SEC|SEC_TP_ON|DPMS_ON|DAC_ON,
+> -	*/
+> +	 * do_DSUB_PRI = CRT_2_PRI|PRI_TP_ON|DPMS_ON|DAC_ON,
+> +	 * do_DSUB_SEC = CRT_2_SEC|SEC_TP_ON|DPMS_ON|DAC_ON,
+> +	 */
+>  	do_CRT_PRI = CRT_2_PRI | PRI_TP_ON | DPMS_ON | DAC_ON,
+>  	do_CRT_SEC = CRT_2_SEC | SEC_TP_ON | DPMS_ON | DAC_ON,
+>  }
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20161002124245.GA14194%40domino-MS-16Y1.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
