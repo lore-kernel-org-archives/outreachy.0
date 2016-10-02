@@ -1,112 +1,79 @@
-X-GM-THRID: 6390400830187503616
-X-Received: by 10.129.107.134 with SMTP id g128mr6727005ywc.139.1487881138404;
-        Thu, 23 Feb 2017 12:18:58 -0800 (PST)
+X-GM-THRID: 6336898988213534720
+X-Received: by 10.129.40.79 with SMTP id o76mr3066259ywo.18.1475424713845;
+        Sun, 02 Oct 2016 09:11:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.103.2 with SMTP id u2ls57476itc.10.gmail; Thu, 23 Feb 2017
- 12:18:57 -0800 (PST)
-X-Received: by 10.36.83.14 with SMTP id n14mr1354753itb.30.1487881137713;
-        Thu, 23 Feb 2017 12:18:57 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id c123si871841pfa.4.2017.02.23.12.18.57
+Received: by 10.107.159.139 with SMTP id i133ls2963922ioe.54.gmail; Sun, 02
+ Oct 2016 09:11:53 -0700 (PDT)
+X-Received: by 10.107.38.129 with SMTP id m123mr4350682iom.20.1475424713293;
+        Sun, 02 Oct 2016 09:11:53 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id x14si2447173vkd.3.2016.10.02.09.11.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 23 Feb 2017 12:18:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Sun, 02 Oct 2016 09:11:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id 1so205650pgz.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 23 Feb 2017 12:18:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Po2xHNr8ChY6ulJ6LfXQ9pBdNfNZj8nnpwkmAD4ii8Q=;
-        b=C5pLH9/jtBaajA3ITb8vHug5am30gKOjaLawUrr1ihdCYGr5g9n3ZdDTt1ICr4w3vF
-         7W8TPeRpAX+qdAsLKRwL4PnTsiO6PqhEReIVmAXf39FAgeUlcUd1tB5EvUWa2eqJdgrZ
-         Z/ZXyeNKoCByCMU8jy7H86p8xDVZkCK4SpPL6k8a5wL7n8C64DkfFHl7xU2WCLYzXNOi
-         QTTwD7oISpj9YzjpbiMUZB6aGpmZnMpuWoFUFR2opacYDR+03Nr7HxkYMWMleBVrejA0
-         XwOrdFFtotQAHR6DH8bFoPiqoNXG1dqE7RYlRP1/nr49j5pP5xSvRGfP+MCaWEnzn9yV
-         Aw6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Po2xHNr8ChY6ulJ6LfXQ9pBdNfNZj8nnpwkmAD4ii8Q=;
-        b=okH9l+nkDlR71wPAyNYyuhFj+WSSgFVh2mneVAAxYJVLkgjzS2VN8cojNr7N/j/U07
-         fsUCa3adT1O4JP0utPtzKehnlQAAwsDkSCvxqf8sDGYMZ2KpsuL5PUsqNtTfEIqtgrVh
-         CQpp+j8t6U/tjsfML3OR3jynAZb/LXhBI/BDimmmCEFqMaalFXvNFFJhAlvkIAlG3D+q
-         +AHo3h1p1IiVnqNSfOE0CEaksT3+c26u3LvS1sabVKRmW9dg/vN87sJ49k3lpexQmEcz
-         76W+1ux68gm9Lrjj+JK7/gkiB4BGj5bncEpQXVACckXTS3YKcsmYUGWAHO72Tywp+zwS
-         Dz3A==
-X-Gm-Message-State: AMke39lIBY+JXXcnGaZIgx+JwiZsEIfY2b6tJT+LvMsAqTSrZE8nAYm/kwdg/Pe3sJ5bqQ==
-X-Received: by 10.98.42.151 with SMTP id q145mr47866789pfq.175.1487881137473;
-        Thu, 23 Feb 2017 12:18:57 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id d68sm11318643pfj.92.2017.02.23.12.18.55
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 23 Feb 2017 12:18:57 -0800 (PST)
-From: Gargi Sharma <gs051095@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH] staging: rtl8192u: Replace explicit NULL comparison
-Date: Fri, 24 Feb 2017 01:46:46 +0530
-Message-Id: <1487881006-29871-1-git-send-email-gs051095@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [62.214.2.210])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 2AE0B8DC;
+	Sun,  2 Oct 2016 16:11:51 +0000 (UTC)
+Date: Sun, 2 Oct 2016 18:11:58 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Anchal Jain <anchalj109@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v2] staging: rtl8188eu: core: rtw_ap: Replace memcmp()
+ with ether_addr_equal()
+Message-ID: <20161002161158.GA22196@kroah.com>
+References: <20161002160401.GA4550@life-desktop>
+ <20161002161120.GC22039@kroah.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20161002161120.GC22039@kroah.com>
+User-Agent: Mutt/1.7.0 (2016-08-17)
 
-Replace explicit NULL comparison with ! operator to
-simplify code.
+On Sun, Oct 02, 2016 at 06:11:20PM +0200, Greg KH wrote:
+> On Sun, Oct 02, 2016 at 09:34:17PM +0530, Anchal Jain wrote:
+> > When comparing MAC addresses, use ether_addr_equal instead of memcmp to
+> > ETH_ALEN length.
+> > 
+> > Signed-off-by: Anchal Jain <anchalj109@gmail.com>
+> > ---
+> >  drivers/staging/rtl8188eu/core/rtw_ap.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/staging/rtl8188eu/core/rtw_ap.c b/drivers/staging/rtl8188eu/core/rtw_ap.c
+> > index fbe9941..6a3dc5e 100644
+> > --- a/drivers/staging/rtl8188eu/core/rtw_ap.c
+> > +++ b/drivers/staging/rtl8188eu/core/rtw_ap.c
+> > @@ -1163,7 +1163,7 @@ int rtw_acl_add_sta(struct adapter *padapter, u8 *addr)
+> >  		paclnode = container_of(plist, struct rtw_wlan_acl_node, list);
+> >  		plist = plist->next;
+> >  
+> > -		if (!memcmp(paclnode->addr, addr, ETH_ALEN)) {
+> > +		if (!ether_addr_equal(paclnode->addr, addr)) {
+> >  			if (paclnode->valid) {
+> >  				added = true;
+> >  				DBG_88E("%s, sta has been added\n", __func__);
+> > @@ -1223,7 +1223,7 @@ int rtw_acl_remove_sta(struct adapter *padapter, u8 *addr)
+> >  		paclnode = container_of(plist, struct rtw_wlan_acl_node, list);
+> >  		plist = plist->next;
+> >  
+> > -		if (!memcmp(paclnode->addr, addr, ETH_ALEN)) {
+> > +		if (!ether_addr_equal(paclnode->addr, addr, ETH_ALEN)) {
+> >  			if (paclnode->valid) {
+> >  				paclnode->valid = false;
+> >  
+> > -- 
+> > 1.9.1
+> 
+> I don't see a change here that will fix the build warnings, what did you
+> do differently from version 1?
+> 
+> Always put that information in the patch, below the --- line, as it is
+> described in Documentation/SubmittingPatches
 
-Found with Coccinelle script:
-@@
-expression ptr;
-position p;
-statement s0, s1;
-@@
-
-ptr@p =
-\(kmalloc\|devm_kzalloc\|kmalloc_array\|devm_ioremap\|usb_alloc_urb\|
-alloc_netdev\|dev_alloc_skb\)(...)
-... when != ptr
-
-if (
-(
-+ !
-ptr
-- == NULL
-)
-) s0 else s1
-
-Signed-off-by: Gargi Sharma <gs051095@gmail.com>
----
- drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c b/drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c
-index 51503ee..9f1ac96 100644
---- a/drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c
-+++ b/drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c
-@@ -117,7 +117,7 @@ static struct sk_buff *ieee80211_ADDBA(struct ieee80211_device *ieee, u8 *Dst, P
- 		return NULL;
- 	}
- 	skb = dev_alloc_skb(len + sizeof( struct rtl_80211_hdr_3addr)); //need to add something others? FIXME
--	if (skb == NULL) {
-+	if (!skb) {
- 		IEEE80211_DEBUG(IEEE80211_DL_ERR, "can't alloc skb for ADDBA_REQ\n");
- 		return NULL;
- 	}
-@@ -202,7 +202,7 @@ static struct sk_buff *ieee80211_DELBA(
- 	DelbaParamSet.field.TID	= pBA->BaParamSet.field.TID;
- 
- 	skb = dev_alloc_skb(len + sizeof( struct rtl_80211_hdr_3addr)); //need to add something others? FIXME
--	if (skb == NULL) {
-+	if (!skb) {
- 		IEEE80211_DEBUG(IEEE80211_DL_ERR, "can't alloc skb for ADDBA_REQ\n");
- 		return NULL;
- 	}
--- 
-2.7.4
-
+Also, you didn't test this, why not?  That's a bit rude to not do so,
+don't you think?
 
