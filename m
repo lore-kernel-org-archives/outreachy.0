@@ -1,220 +1,123 @@
 X-GM-THRID: 6336950026186522624
-X-Received: by 10.28.209.129 with SMTP id i123mr580239wmg.1.1475505447207;
-        Mon, 03 Oct 2016 07:37:27 -0700 (PDT)
+X-Received: by 10.31.191.7 with SMTP id p7mr5535327vkf.8.1475491461307;
+        Mon, 03 Oct 2016 03:44:21 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.74.78 with SMTP id x75ls1521031wma.4.gmail; Mon, 03 Oct
- 2016 07:37:26 -0700 (PDT)
-X-Received: by 10.194.175.166 with SMTP id cb6mr1229195wjc.15.1475505446606;
-        Mon, 03 Oct 2016 07:37:26 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id 82si1118640wmg.3.2016.10.03.07.37.26
+Received: by 10.157.50.244 with SMTP id u107ls9902556otb.37.gmail; Mon, 03 Oct
+ 2016 03:44:20 -0700 (PDT)
+X-Received: by 10.200.55.21 with SMTP id o21mr3643332qtb.61.1475491460943;
+        Mon, 03 Oct 2016 03:44:20 -0700 (PDT)
+Return-Path: <aquannie@gmail.com>
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id z73si1544106pfa.1.2016.10.03.03.44.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 03 Oct 2016 07:37:26 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Mon, 03 Oct 2016 03:44:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.31,438,1473112800"; 
-   d="scan'208";a="195462604"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien.local) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 03 Oct 2016 16:37:19 +0200
-Date: Mon, 3 Oct 2016 16:37:18 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=aquannie@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x243.google.com with SMTP id i85so2059816pfa.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 03 Oct 2016 03:44:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:content-transfer-encoding:in-reply-to
+         :user-agent;
+        bh=C/Bx557lCkRaw7EBM4r8Bh3DaopoWk6IDdrJtTwZOT4=;
+        b=NyXoYZnDfW1bO7LzieEhl9ah9+Wg+B7am1Bgw6T/V7Ew9E7XPozo68Fp6BOui//ijr
+         Lm7V0W3OIg5Vm55p+Qj5VowzwCYSe8Pcjm0kLsWNVzagbcfInetTLXq4lgvFekZMW247
+         6j34tAEYZbldG4r1BfxCNuoAw6vrBznPu8koamH1Zw4q2+dv1FglZ5+vQZvoEAGRA11F
+         SVAniG+BpNuXMveRt2WzHzMtNCRzvf+9Zf9SPhhVlgRnuhlocz1JsLOPMEnkX4SsX6Ku
+         N+S9TDXVrx8OEgRpAryM5UoOj14E1FOBX/KxwnKKbBjD+CHDoSBwimdNSyRBgAyvoovP
+         UYDA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:content-transfer-encoding
+         :in-reply-to:user-agent;
+        bh=C/Bx557lCkRaw7EBM4r8Bh3DaopoWk6IDdrJtTwZOT4=;
+        b=c4BBBiYgBG+BDMLk3LwztGSTdD87DjHwoDXN2XdifCrAMuv9ad5zeRhd8TikZoaUFh
+         UJgaY5PriVl6rQO2PAre/zknoH837Xt+RpQvm8zQ2Kx9DwRbF5CbcuQsITOGv84aeAjH
+         n+5MwTJzLq0+2f9DCT3FNuiONafoojvKC5UG5F7VfU+4W1BXkP68CdoILRkSD00pHNer
+         6EIeu2hSrEjpofIOFz0JJlNkqTaAc3wrCh6wJf6LuWEKq23HOipo9p5xJ97bfH9Bi7/R
+         udDWLgYCfm3JaySHy7+w3e8wj2npS0vd8hUpgwhIx1ulXbeunqhbVVbVPuOqCIQxGehj
+         Mwtw==
+X-Gm-Message-State: AA6/9RkHDuqH1OAT3eDmHebZsIv+LA7em/+0HlYTqtylSp241ziRAP4qRY/icP8RPwU/cg==
+X-Received: by 10.98.129.132 with SMTP id t126mr1739713pfd.59.1475491460717;
+        Mon, 03 Oct 2016 03:44:20 -0700 (PDT)
+Return-Path: <aquannie@gmail.com>
+Received: from toblerone ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id c64sm39879877pfa.0.2016.10.03.03.44.17
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 03 Oct 2016 03:44:19 -0700 (PDT)
+Date: Mon, 3 Oct 2016 16:14:14 +0530
+From: Rehas Sachdeva <aquannie@gmail.com>
 To: Bryan O'Donoghue <pure.logic@nexus-software.ie>
-cc: Rehas Sachdeva <aquannie@gmail.com>, outreachy-kernel@googlegroups.com, 
-    Julia Lawall <julia.lawall@lip6.fr>, Johan Hovold <johan@kernel.org>, 
-    Alex Elder <elder@kernel.org>, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com, Julia Lawall <julia.lawall@lip6.fr>,
+	Bryan O'Donoghue <pure.logic@nexus-software.ie>,
+	Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Subject: Re: [Outreachy kernel] [Outreachy Kernel] [PATCH] staging: greybus:
  Constify local struct gb_loopback_stats
-In-Reply-To: <1475497775.28319.95.camel@nexus-software.ie>
-Message-ID: <alpine.DEB.2.10.1610031636550.3509@hadrien>
-References: <20161002192224.GA5295@toblerone>  <alpine.DEB.2.10.1610022135511.3327@hadrien>  <1475489763.28319.85.camel@nexus-software.ie>  <20161003104414.GA18762@toblerone> <1475497775.28319.95.camel@nexus-software.ie>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+Message-ID: <20161003104414.GA18762@toblerone>
+References: <20161002192224.GA5295@toblerone>
+ <alpine.DEB.2.10.1610022135511.3327@hadrien>
+ <1475489763.28319.85.camel@nexus-software.ie>
 MIME-Version: 1.0
-Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-750997066-1475505439=:3509"
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <1475489763.28319.85.camel@nexus-software.ie>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
-
---8323329-750997066-1475505439=:3509
-Content-Type: TEXT/PLAIN; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
-
-
-
-On Mon, 3 Oct 2016, Bryan O'Donoghue wrote:
-
-> On Mon, 2016-10-03 at 16:14 +0530, Rehas Sachdeva wrote:
-> > On Mon, Oct 03, 2016 at 11:16:03AM +0100, Bryan O'Donoghue wrote:
+On Mon, Oct 03, 2016 at 11:16:03AM +0100, Bryan O'Donoghue wrote:
+> On Sun, 2016-10-02 at 21:36 +0200, Julia Lawall wrote:
+> > 
+> > On Mon, 3 Oct 2016, Rehas Sachdeva wrote:
+> > 
+> > > The local declaration "struct gb_loopback_stats reset" is not
+> > modified
+> > > throughout its scope and hence can be made const. Done using
+> > Coccinelle.
 > > >
-> > > On Sun, 2016-10-02 at 21:36 +0200, Julia Lawall wrote:
-> > > >
-> > > >
-> > > > On Mon, 3 Oct 2016, Rehas Sachdeva wrote:
-> > > >
-> > > > >
-> > > > > The local declaration "struct gb_loopback_stats reset" is not
-> > > > modified
-> > > > >
-> > > > > throughout its scope and hence can be made const. Done using
-> > > > Coccinelle.
-> > > > >
-> > > > >
-> > > > > Signed-off-by: Rehas Sachdeva <aquannie@gmail.com>
-> > > > > ---
-> > > > >   drivers/staging/greybus/loopback.c | 2 +-
-> > > > >   1 file changed, 1 insertion(+), 1 deletion(-)
-> > > > >
-> > > > > diff --git a/drivers/staging/greybus/loopback.c
-> > > > b/drivers/staging/greybus/loopback.c
-> > > > >
-> > > > > index 7882306..fb5a068 100644
-> > > > > --- a/drivers/staging/greybus/loopback.c
-> > > > > +++ b/drivers/staging/greybus/loopback.c
-> > > > > @@ -837,7 +837,7 @@ static int
-> > > > > gb_loopback_request_handler(struct
-> > > > gb_operation *operation)
-> > > > >
-> > > > >
-> > > > >   static void gb_loopback_reset_stats(struct gb_loopback *gb)
-> > > > >   {
-> > > > > -     struct gb_loopback_stats reset = {
-> > > > > +     const struct gb_loopback_stats reset = {
-> > > > Should it also be static?  I recall this comment being made in
-> > > > another
-> > > > case, but I don't know what the tradeoffs are.
-> > Yes it can be static too, since we are not updating it, so we don't
-> > care
-> > if its value is retained in subsequent function calls. I agree with
-> > Bryan that
-> > we might as well make all locally scoped const variables static too.
-> >
-> > Making it static decreases the size of text segment, without
-> > affecting any
-> > other segment. I don't know if its particularly useful.
-> >
-> > Rehas
->
-> Hmm..
->
-> Looking at the resulting assembler on x86 anyway - I do kind of agree
-> that static makes sense. For this compound type the # of operations we
-> end up executing is a fair bit less for static (v) non-static will very
-> little penalty in the .text section.
->
-> ### static ###
->
-> somefunction:
-> .LFB0:
->         .cfi_startproc
->         pushq   %rbp
->         .cfi_def_cfa_offset 16
->         .cfi_offset 6, -16
->         movq    %rsp, %rbp
->         .cfi_def_cfa_register 6
->         subq    $16, %rsp
->         movq    %rdi, -8(%rbp)
->         movq    -8(%rbp), %rax
->         movl    $80, %edx
->         movl    $assign.2474, %esi
->         movq    %rax, %rdi 
->         call    memcpy
->         nop
->         leave   
->         .cfi_def_cfa 7, 8
->         ret
->         .cfi_endproc 
->
-> ### non-static ###
->
-> somefunction:
-> .LFB0:
->         .cfi_startproc
->         pushq   %rbp
->         .cfi_def_cfa_offset 16
->         .cfi_offset 6, -16
->         movq    %rsp, %rbp
->         .cfi_def_cfa_register 6
->         subq    $112, %rsp
->         movq    %rdi, -104(%rbp)
->         movq    %fs:40, %rax
->         movq    %rax, -8(%rbp)
->         xorl    %eax, %eax
->         leaq    -96(%rbp), %rdx
->         movl    $0, %eax
->         movl    $10, %ecx
->         movq    %rdx, %rdi
->         rep stosq
->         movl    $10, -96(%rbp)
->         movl    $11, -92(%rbp)
->         leaq    -96(%rbp), %rcx
->         movq    -104(%rbp), %rax
->         movl    $80, %edx
->         movq    %rcx, %rsi
->         movq    %rax, %rdi
->         call    memcpy
->         nop
->         movq    -8(%rbp), %rax
->         xorq    %fs:40, %rax
->         je      .L2
->         call    __stack_chk_fail
->
-> #### test program ####
-> #include <stdio.h>
-> #include <string.h>
->
-> struct a {
-> 	int a;
-> 	int b;
-> 	int c;
-> 	int d;
-> 	int e;
-> 	int f;
-> 	int g;
-> 	int h;
-> 	int i;
-> 	int j;
-> 	int k;
-> 	int l;
-> 	int m;
-> 	int n;
-> 	int o;
-> 	int p;
-> 	int q;
-> 	int r;
-> 	int s;
-> 	int t;
-> };
->
-> void somefunction(struct a *assign_me)
-> {
-> 	const struct a assign = {
-> 		.a = 10,
-> 		.b = 11,
-> 	};
->
-> 	memcpy(assign_me, &assign, sizeof(assign));
-> }
->
-> int main(int argc, char *argv[])
-> {
-> 	struct a assign;
->
-> 	somefunction(&assign);
-> 	printf("values of assignment are %d and %d\n", assign.a,
-> assign.b);
->
-> 	return 0;
-> }
->
->
-> So actually I'd say static is a good call
+> > > Signed-off-by: Rehas Sachdeva <aquannie@gmail.com>
+> > > ---
+> > >� drivers/staging/greybus/loopback.c | 2 +-
+> > >� 1 file changed, 1 insertion(+), 1 deletion(-)
+> > >
+> > > diff --git a/drivers/staging/greybus/loopback.c
+> > b/drivers/staging/greybus/loopback.c
+> > > index 7882306..fb5a068 100644
+> > > --- a/drivers/staging/greybus/loopback.c
+> > > +++ b/drivers/staging/greybus/loopback.c
+> > > @@ -837,7 +837,7 @@ static int gb_loopback_request_handler(struct
+> > gb_operation *operation)
+> > >
+> > >� static void gb_loopback_reset_stats(struct gb_loopback *gb)
+> > >� {
+> > > -�����struct gb_loopback_stats reset = {
+> > > +�����const struct gb_loopback_stats reset = {
+> > 
+> > Should it also be static?� I recall this comment being made in
+> > another
+> > case, but I don't know what the tradeoffs are.
+> 
 
-Thanks for looking into it.
+Yes it can be static too, since we are not updating it, so we don't care
+if its value is retained in subsequent function calls. I agree with Bryan that
+we might as well make all locally scoped const variables static too.
 
-julia
---8323329-750997066-1475505439=:3509--
+Making it static decreases the size of text segment, without affecting any
+other segment. I don't know if its particularly useful.
+
+Rehas
+
+> const yes agree - good catch.
+> 
+> static ... can't see a reason why TBH. Making this variable static we
+> might as well declare all locally scoped variables static.
+> 
+> ---
+> bod
 
