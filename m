@@ -1,118 +1,142 @@
-X-GM-THRID: 6464108731042889728
-X-Received: by 10.55.51.78 with SMTP id z75mr4415957qkz.51.1505042596405;
-        Sun, 10 Sep 2017 04:23:16 -0700 (PDT)
+X-GM-THRID: 6337407610900185088
+X-Received: by 10.25.24.147 with SMTP id 19mr99797lfy.18.1475560860620;
+        Mon, 03 Oct 2016 23:01:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.190.79 with SMTP id i76ls826899itf.17.gmail; Sun, 10 Sep
- 2017 04:23:15 -0700 (PDT)
-X-Received: by 10.200.49.87 with SMTP id h23mr4520641qtb.37.1505042595559;
-        Sun, 10 Sep 2017 04:23:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505042595; cv=none;
-        d=google.com; s=arc-20160816;
-        b=G6k7n2TI1RUuc4I6PivRDfWGKqhIvYS9yOoh023+F+H4uzWprrgcjV5uA8kfDgt5N2
-         Shbfn8G6CQJdCpa2tTSkxIZwvd/anJ5GcxP9FtIN1fzGuCCfibqgjk0oee5+h6z75T4B
-         f+5i6sIF02Vt8QY2Cs85v0SNthrmYDCdVr+/Y02A/MDcPBYYuMxLNiVvezyCRzN6s5+x
-         /LDeNjf8MCk+Ri4mhkYmmYq6pYrU8n6Q8WhoSViDY4mqLDBi5wRzeXJMb4yg2rykNOAX
-         S/050/gRD0v8fnKphuhQVjw3oCZXUipzSypFHXFxgZXxTSKOuxtS4S5+aXgGec/GFEYw
-         jJgA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=qfulGKKm5zy3KnIs+p/1YnGvbYt/rSwmNUP6FISraoY=;
-        b=re12YZTJxMyVYnaH0bwK7boIw931hd8wpb3eAm6jCUd5Sfhg0klF6ptohK547VyIw0
-         u7yoTbBNdG9H4zjHUfaBHmYBGoprmfqbhrS3kZCrTfFQ5V6/5uoKHtw3qSPAGI1pXI1R
-         QVlGptz3HnEPWDW8DRVz6XuuMeaofN4gXxgwpXaDQCLizEVTrVE9FA4ez+IlRTotjzaS
-         2onDkPZIE6+8KTx4x5xUMrrRTcT+IhosKawZ2sVH2y44si9KGv6/qeLT7l4C5oMXqRX6
-         UqnChytlEQeSVoi5ldSOhwqLBt6kfTcLQzjhG4NYPBFl5b92i9DscgDc5AHYrnif/hSh
-         E4iw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CT3LL2po;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <srishtishar@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id p6si679346pfg.6.2017.09.10.04.23.15
+Received: by 10.46.0.152 with SMTP id e24ls310849lji.49.gmail; Mon, 03 Oct
+ 2016 23:00:59 -0700 (PDT)
+X-Received: by 10.46.33.202 with SMTP id h71mr94078lji.22.1475560859976;
+        Mon, 03 Oct 2016 23:00:59 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 185si1456565wmr.2.2016.10.03.23.00.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 10 Sep 2017 04:23:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Mon, 03 Oct 2016 23:00:59 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CT3LL2po;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id v82so3371017pgb.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 10 Sep 2017 04:23:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=qfulGKKm5zy3KnIs+p/1YnGvbYt/rSwmNUP6FISraoY=;
-        b=CT3LL2poMcnc+52S3NnoVMQMByqHHjz3LAtqSBZVJUpVK1bJTZV8veeNyuBnk/96dQ
-         QS/88u7eO1Qaar6vjbPc4DaFGW9y+uSZw05/fZAHpKK7ranXjyN/YfoubhnURXW1ms3r
-         vwuPOgnPV5uIVEPbcs5/jVkyoq7gPFhGx/nCfDnmcRjBUvZPQuk7d0SbMdh2aUVZTbuA
-         nD1eWvMLt0xd7ErjSfpqYSgKqFKm4HcJwITcjPyCLg4kqhG+yGM7KpBkf6ssXbOGZBV0
-         m25ycArhGVoDcUTlPqWfq+5kOve0vo5hCFxRHX27crbal5uzViiODGjSt86ZajoZpA1S
-         p0zw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=qfulGKKm5zy3KnIs+p/1YnGvbYt/rSwmNUP6FISraoY=;
-        b=MbaQEzKzwvLPaVIPAgT7wU8oEo9/LHl7XIAEUvaHWRVzLMBkBjbx8msDiAPCPhD+oH
-         ZuiXRkTMUOFfKe3em13J97NdTsg5R8u95oJMOGC8cDRyMl3Mt1dvIDCGuEQzuopO8fsY
-         Iwrv/Jb6NFm1Yshmag28Lk8+BDawk5gAnZMCiN9D+UEZgvv/cCmPGKb4b2xfI5nOVysv
-         RaE4Nb7Dd4lWoNGnRNkKnQcELx57DX9qkA77kTt1ljcWRs0fxKdA3BXdfQ7z6dSLzsT8
-         lHzGq9OSmtobsxIt0fYFaRWoEJQ9J/Sf3jYVBpSvilnxmSI1sAaKHoqsQxLVdghALFFV
-         b7Ng==
-X-Gm-Message-State: AHPjjUi8vktQg5gbQH+4vj8O4VGt3gc4smUSYKRtwN72GLnH1ZfPO1We
-	4PSJaOe0VqpZlDeL
-X-Google-Smtp-Source: ADKCNb6tLV6bnVm6NSVRaNjEOEhhpcc6cPl58b5VhRy/KgXOjaLPO8L9Mny3yIG67DSZt9UsIlErYQ==
-X-Received: by 10.84.210.73 with SMTP id z67mr10056252plh.306.1505042595280;
-        Sun, 10 Sep 2017 04:23:15 -0700 (PDT)
-Return-Path: <srishtishar@gmail.com>
-Received: from srishti-PRODiiGY-945G ([171.49.130.205])
-        by smtp.gmail.com with ESMTPSA id b4sm11115646pfa.98.2017.09.10.04.23.13
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 10 Sep 2017 04:23:14 -0700 (PDT)
-From: Srishti Sharma <srishtishar@gmail.com>
-To: arnaud.patard@rtp-net.org
-Cc: gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Srishti Sharma <srishtishar@gmail.com>
-Subject: [PATCH] Staging: xgifb: XGI_main_26.c: Fix alignment to match parentheses
-Date: Sun, 10 Sep 2017 16:53:09 +0530
-Message-Id: <1505042589-4432-1-git-send-email-srishtishar@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.31,441,1473112800"; 
+   d="scan'208";a="195519212"
+Received: from p57801a74.dip0.t-ipconnect.de (HELO hadrien.local) ([87.128.26.116])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 04 Oct 2016 08:00:56 +0200
+Date: Tue, 4 Oct 2016 08:00:43 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Elizabeth Ferdman <gnudevliz@gmail.com>
+cc: Oleg Drokin <oleg.drokin@intel.com>, outreachy-kernel@googlegroups.com, 
+    amsfield22@gmail.com, daniel.baluta@intel.com, andreas.dilger@intel.com, 
+    jsimmons@infradead.org, gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] Re: [PATCH] staging: lustre: move int literal
+ to right side of comparison test
+In-Reply-To: <20161004022031.GA7732@localhost>
+Message-ID: <alpine.DEB.2.10.1610040759300.2900@hadrien>
+References: <20161004005807.GA13033@localhost> <C9C47919-34D8-49D2-80AA-345EDD169236@intel.com> <20161004022031.GA7732@localhost>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Fix alignment so that it matches open parentheses.
 
-Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
----
- drivers/staging/xgifb/XGI_main_26.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/xgifb/XGI_main_26.c b/drivers/staging/xgifb/XGI_main_26.c
-index b450c74..b813f1d 100644
---- a/drivers/staging/xgifb/XGI_main_26.c
-+++ b/drivers/staging/xgifb/XGI_main_26.c
-@@ -1697,7 +1697,7 @@ static int xgifb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+On Mon, 3 Oct 2016, Elizabeth Ferdman wrote:
 
- 	if (XGIfb_get_dram_size(xgifb_info)) {
- 		xgifb_info->video_size = min_t(unsigned long, video_size_max,
--						SZ_16M);
-+					       SZ_16M);
- 	} else if (xgifb_info->video_size > video_size_max) {
- 		xgifb_info->video_size = video_size_max;
- 	}
-@@ -1736,7 +1736,7 @@ static int xgifb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	hw_info->pjVideoMemoryAddress =
- 		ioremap_wc(xgifb_info->video_base, xgifb_info->video_size);
- 	xgifb_info->mmio_vbase = ioremap(xgifb_info->mmio_base,
--					    xgifb_info->mmio_size);
-+					 xgifb_info->mmio_size);
+> On Mon, Oct 03, 2016 at 09:04:56PM -0400, Oleg Drokin wrote:
+> >
+> > On Oct 3, 2016, at 8:58 PM, Elizabeth Ferdman wrote:
+> >
+> > > Move the integer literal 0 to the right side of the comparison test
+> > > for improved readability.
+> > >
+> > > Error caught by checkpatch:
+> > > Constants should be placed on the right side of the comparison.
+> > >
+> > > Signed-off-by: Elizabeth Ferdman <gnudevliz@gmail.com>
+> > > ---
+> > > drivers/staging/lustre/lustre/lov/lov_object.c | 8 ++++----
+> > > 1 file changed, 4 insertions(+), 4 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/lustre/lustre/lov/lov_object.c b/drivers/staging/lustre/lustre/lov/lov_object.c
+> > > index 52f7363..49a288f 100644
+> > > --- a/drivers/staging/lustre/lustre/lov/lov_object.c
+> > > +++ b/drivers/staging/lustre/lustre/lov/lov_object.c
+> > > @@ -597,7 +597,7 @@ static const struct lov_layout_operations lov_dispatch[] = {
+> > > 	enum lov_layout_type		    __llt;		  \
+> > > 									\
+> > > 	__llt = __obj->lo_type;					 \
+> > > -	LASSERT(0 <= __llt && __llt < ARRAY_SIZE(lov_dispatch));	\
+> > > +	LASSERT(__llt >= 0 && __llt < ARRAY_SIZE(lov_dispatch));	\
+> >
+> > Do you think this is more readable than the version before it?
+> >
+> >  at least the previous one easily shows that:
+> > 0 <= llt < ARRAY_SIZE(lov_dispatch)
+> >
+>
+> Hey Oleg,
+> In my opinion, yes. I like reading from left to right rather than
+> staring at a compound inequality so to me it's
+> more readable. __llt is the important part, so the way I think is
+> __llt has to be greater than or equal to 0 and less than
+> arraysize(lov_dispatch). Obviously the compound way says the exact same
+> thing, but it doesn't read from left to right in the same way.
+>
+> Actually, it looks so much like a compound inequality that
+> I initially glossed over the && part and kept thinking, 'ok the left
+> side results in either 0 or 1, and that's supposed to be less than array
+> size?'... which I realize doesn't make sense, but that's just the way I
+> interpreted it initially. Then I looked at it again and saw the &&.
+>
+> Lastly, since the rule is to put constants on the right side, I figured
+> that way is more readable because that's the standard way of doing it,
+> therefore it's more readable...as in, it conforms to the way the rest of
+> the code in the kernel looks, it's not necessarily better or worse.
 
- 	dev_info(&pdev->dev,
- 		 "Framebuffer at 0x%llx, mapped to 0x%p, size %dk\n",
---
-2.7.4
+I think that A < x && x < B etc should be quite common in the kernel.
+The constant on the right rule is more appropriate, in my opinion, when
+there is only one comparison.
 
+julia
+
+>
+> Thanks for the reply,
+> Liz
+>
+> > (same with the rest).
+> >
+> > > 	lov_dispatch[__llt].op(__VA_ARGS__);			    \
+> > > })
+> > >
+> > > @@ -652,7 +652,7 @@ do {								    \
+> > > 									\
+> > > 	lov_conf_freeze(__obj);						\
+> > > 	__llt = __obj->lo_type;					 \
+> > > -	LASSERT(0 <= __llt && __llt < ARRAY_SIZE(lov_dispatch));	\
+> > > +	LASSERT(__llt >= 0 && __llt < ARRAY_SIZE(lov_dispatch));	\
+> > > 	lov_dispatch[__llt].op(__VA_ARGS__);			    \
+> > > 	lov_conf_thaw(__obj);						\
+> > > } while (0)
+> > > @@ -700,11 +700,11 @@ static int lov_layout_change(const struct lu_env *unused,
+> > > 	struct lu_env *env;
+> > > 	int refcheck;
+> > >
+> > > -	LASSERT(0 <= lov->lo_type && lov->lo_type < ARRAY_SIZE(lov_dispatch));
+> > > +	LASSERT(lov->lo_type >= 0 && lov->lo_type < ARRAY_SIZE(lov_dispatch));
+> > >
+> > > 	if (conf->u.coc_md)
+> > > 		llt = lov_type(conf->u.coc_md->lsm);
+> > > -	LASSERT(0 <= llt && llt < ARRAY_SIZE(lov_dispatch));
+> > > +	LASSERT(llt >= 0 && llt < ARRAY_SIZE(lov_dispatch));
+> > >
+> > > 	cookie = cl_env_reenter();
+> > > 	env = cl_env_get(&refcheck);
+> > > --
+> > > 2.1.4
+> >
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20161004022031.GA7732%40localhost.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
