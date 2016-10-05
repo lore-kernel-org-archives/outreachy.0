@@ -1,25 +1,25 @@
 X-GM-THRID: 6337746861682589696
-X-Received: by 10.194.220.66 with SMTP id pu2mr489328wjc.4.1475647680520;
-        Tue, 04 Oct 2016 23:08:00 -0700 (PDT)
+X-Received: by 10.28.157.212 with SMTP id g203mr206284wme.7.1475647523970;
+        Tue, 04 Oct 2016 23:05:23 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.71.209 with SMTP id u200ls1213175lja.6.gmail; Tue, 04 Oct
- 2016 23:07:59 -0700 (PDT)
-X-Received: by 10.46.5.68 with SMTP id 65mr485428ljf.28.1475647679282;
-        Tue, 04 Oct 2016 23:07:59 -0700 (PDT)
+Received: by 10.46.69.4 with SMTP id s4ls942789lja.39.gmail; Tue, 04 Oct 2016
+ 23:05:23 -0700 (PDT)
+X-Received: by 10.25.190.206 with SMTP id o197mr492581lff.25.1475647523280;
+        Tue, 04 Oct 2016 23:05:23 -0700 (PDT)
 Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id w79si675863wmw.0.2016.10.04.23.07.59
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id a126si696618wmd.1.2016.10.04.23.05.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 04 Oct 2016 23:07:59 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Tue, 04 Oct 2016 23:05:23 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.31,447,1473112800"; 
-   d="scan'208";a="239439524"
+   d="scan'208";a="195653615"
 Received: from p57801a74.dip0.t-ipconnect.de (HELO hadrien.local) ([87.128.26.116])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 05 Oct 2016 08:07:57 +0200
-Date: Wed, 5 Oct 2016 08:07:46 +0200 (CEST)
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 05 Oct 2016 08:05:20 +0200
+Date: Wed, 5 Oct 2016 08:05:03 +0200 (CEST)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: Muraru Mihaela <mihaela.muraru21@gmail.com>
@@ -31,7 +31,7 @@ cc: Julia Lawall <julia.lawall@lip6.fr>,
 Subject: Re: [Outreachy kernel] [PATCH] Staging: sm750fb: remove typedefs in
  ddk750_chip.h
 In-Reply-To: <20161004225439.GA10563@domino-MS-16Y1>
-Message-ID: <alpine.DEB.2.10.1610050807230.3061@hadrien>
+Message-ID: <alpine.DEB.2.10.1610050801290.3061@hadrien>
 References: <20161004225439.GA10563@domino-MS-16Y1>
 User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
@@ -44,14 +44,26 @@ On Wed, 5 Oct 2016, Muraru Mihaela wrote:
 > This patch fixes the checkpatch.pl warning: "WARNING: do not add new
 > typedefs" by removing the typedefs and changing the files where it was
 > used.
->
-> Signed-off-by: Muraru Mihaela <mihaela.muraru21@gmail.com>
 
-Do you have your name inverted here?  The order doesn't match that of your
-email address.
+This is a nice problem to work on.  I would suggest to make the commit
+message a bit more specific by saying which types you are converting.  It
+would help orient the reader when looking at the subsequent code.
+
+Also, it would be good to change the type name.  The _t suggests a
+typedef.  So you can remove that in each case.
+
+Be sure that you have a .o file for each .c file that you modify.  And
+check with grep to be double sure that you have adjusted all references to
+this type in the Linux kernel.  Whether a particular line of code is
+compiled depends on configuration options, so there is a small chance that
+you could accidentally miss one occurrence, and that occurrence would be
+one that is under some #ifdefs that are not compatible with your
+configuration.
 
 julia
 
+>
+> Signed-off-by: Muraru Mihaela <mihaela.muraru21@gmail.com>
 > ---
 >  drivers/staging/sm750fb/ddk750_chip.c |  8 ++++----
 >  drivers/staging/sm750fb/ddk750_chip.h | 16 +++++++---------
