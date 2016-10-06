@@ -1,78 +1,89 @@
 X-GM-THRID: 6338470134532800512
-X-Received: by 10.25.152.10 with SMTP id a10mr1217995lfe.4.1475817807072;
-        Thu, 06 Oct 2016 22:23:27 -0700 (PDT)
+X-Received: by 10.66.10.37 with SMTP id f5mr3572605pab.70.1475790081765;
+        Thu, 06 Oct 2016 14:41:21 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.69.7 with SMTP id s7ls404754lja.47.gmail; Thu, 06 Oct 2016
- 22:23:24 -0700 (PDT)
-X-Received: by 10.46.33.161 with SMTP id h33mr1225828lji.19.1475817804660;
-        Thu, 06 Oct 2016 22:23:24 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id c74si64866wmd.3.2016.10.06.22.23.24
+Received: by 10.157.44.208 with SMTP id e16ls4054398otd.6.gmail; Thu, 06 Oct
+ 2016 14:41:21 -0700 (PDT)
+X-Received: by 10.13.247.7 with SMTP id h7mr4041814ywf.46.1475790081275;
+        Thu, 06 Oct 2016 14:41:21 -0700 (PDT)
+Return-Path: <gnudevliz@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id d11si1293145pfl.2.2016.10.06.14.41.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 06 Oct 2016 22:23:24 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Thu, 06 Oct 2016 14:41:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.31,454,1473112800"; 
-   d="scan'208";a="239759266"
-Received: from p57801a74.dip0.t-ipconnect.de (HELO hadrien.local) ([87.128.26.116])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 07 Oct 2016 07:23:23 +0200
-Date: Fri, 7 Oct 2016 07:23:12 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Elizabeth Ferdman <gnudevliz@gmail.com>
-cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
-    amsfield22@gmail.com, daniel.baluta@intel.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: i4l: move open brace to
- previous line
-In-Reply-To: <20161006214116.GA10879@localhost>
-Message-ID: <alpine.DEB.2.10.1610070722510.3074@hadrien>
-References: <20161006214116.GA10879@localhost>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=gnudevliz@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x244.google.com with SMTP id 128so123832pfz.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 06 Oct 2016 14:41:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=r2ycTx9VCTWP1bekNrAEuSkmQe9jjQCXv5T3UWew7xs=;
+        b=S7iCi2GAmIm28bjQcvH8ClPgd3NzAv9vCyU6G4p1/oYYw7y8Yhc0c2af114WzzFt26
+         BdSVwjjtt/Kra8MBIwRfVXAnFNGgQWhlzts8SwqNUldmW1NDlEdlaz7BEmJ8MCKyhv3r
+         GvbcKuNTsAyNeXGo6s8l5y3/gaBhSefYpEvwGk0XnGtSX9lR0p8AXcauSdTG6kc/bmLL
+         iwb7sJqbsh5eCgu+7li0O0kDcQfkc9IwoXrqV7jXaww5USgR6md4RP0nP8oyoV6Q0S/I
+         4VqohHCVgW8TXGE9eZ6rPkpa4AFNYSOoRCn4cnG1hbXgPvmCmN/CMhcZ6fRkIGgmDLI9
+         L64w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=r2ycTx9VCTWP1bekNrAEuSkmQe9jjQCXv5T3UWew7xs=;
+        b=UlI3yZkEOWdscuok1fp+nXHEmqMNYTbidVphxQOqbfBfgD0F2c0pNOBJASZzUh6kTp
+         d6s0//G6hAnSyFKlNN5919q5yUNvA6T7y3woexWdTlars9ImB8uD0r07WZoIy+idg5IB
+         QR2Gsl+7tHZCT/XL2DJgTMKt4dYGD2JdoVneftoi+wP6XIyhzFlH8jK5uJu9JwwG/Oke
+         1IykTgJT4bMYt9b3FRrHlghVZxAahntHvCvPUI4yOSbkp4+1RcQ4xBzA3XigHqInnmXx
+         h4fOGoPlImOsm0D0dQIXmv7pwJak3uHDzq0k2krhKUQAXrg4My3d0iX1xb3uVSYand7N
+         eNCQ==
+X-Gm-Message-State: AA6/9Rki972f4g1nz1C03XXuC1hrniwRttOJzi8lVE1TlQDnL/rhCRWyBp2wGzNgZ5k3ew==
+X-Received: by 10.98.92.197 with SMTP id q188mr29839029pfb.31.1475790081052;
+        Thu, 06 Oct 2016 14:41:21 -0700 (PDT)
+Return-Path: <gnudevliz@gmail.com>
+Received: from localhost ([2601:644:300:fd6b:4e0f:6eff:fe69:e9ea])
+        by smtp.gmail.com with ESMTPSA id f86sm8123465pfd.83.2016.10.06.14.41.20
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 06 Oct 2016 14:41:20 -0700 (PDT)
+Date: Thu, 6 Oct 2016 14:41:18 -0700
+From: Elizabeth Ferdman <gnudevliz@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org, amsfield22@gmail.com,
+	daniel.baluta@intel.com
+Subject: [PATCH] staging: i4l: move open brace to previous line
+Message-ID: <20161006214116.GA10879@localhost>
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
+Fix checkpatch error "open brace should be on previous line" since only
+functions should have their opening brace on a new line.
 
+Signed-off-by: Elizabeth Ferdman <gnudevliz@gmail.com>
+---
+ drivers/staging/i4l/act2000/module.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-On Thu, 6 Oct 2016, Elizabeth Ferdman wrote:
+diff --git a/drivers/staging/i4l/act2000/module.c b/drivers/staging/i4l/act2000/module.c
+index 0573f51..4746a62 100644
+--- a/drivers/staging/i4l/act2000/module.c
++++ b/drivers/staging/i4l/act2000/module.c
+@@ -19,8 +19,7 @@
+ #include <linux/slab.h>
+ #include <linux/init.h>
+ 
+-static unsigned short act2000_isa_ports[] =
+-{
++static unsigned short act2000_isa_ports[] = {
+ 	0x0200, 0x0240, 0x0280, 0x02c0, 0x0300, 0x0340, 0x0380,
+ 	0xcfe0, 0xcfa0, 0xcf60, 0xcf20, 0xcee0, 0xcea0, 0xce60,
+ };
+-- 
+2.1.4
 
-> Fix checkpatch error "open brace should be on previous line" since only
-> functions should have their opening brace on a new line.
->
-> Signed-off-by: Elizabeth Ferdman <gnudevliz@gmail.com>
-> ---
->  drivers/staging/i4l/act2000/module.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
->
-> diff --git a/drivers/staging/i4l/act2000/module.c b/drivers/staging/i4l/act2000/module.c
-> index 0573f51..4746a62 100644
-> --- a/drivers/staging/i4l/act2000/module.c
-> +++ b/drivers/staging/i4l/act2000/module.c
-> @@ -19,8 +19,7 @@
->  #include <linux/slab.h>
->  #include <linux/init.h>
->
-> -static unsigned short act2000_isa_ports[] =
-> -{
-> +static unsigned short act2000_isa_ports[] = {
->  	0x0200, 0x0240, 0x0280, 0x02c0, 0x0300, 0x0340, 0x0380,
->  	0xcfe0, 0xcfa0, 0xcf60, 0xcf20, 0xcee0, 0xcea0, 0xce60,
->  };
-
-Not related to this patch, but could this array be const?
-
-julia
-
-> --
-> 2.1.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20161006214116.GA10879%40localhost.
-> For more options, visit https://groups.google.com/d/optout.
->
 
