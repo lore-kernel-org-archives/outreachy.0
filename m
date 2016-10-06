@@ -1,92 +1,115 @@
-X-GM-THRID: 6332825078954196992
-X-Received: by 10.107.168.211 with SMTP id e80mr8014847ioj.36.1474475739764;
-        Wed, 21 Sep 2016 09:35:39 -0700 (PDT)
+X-GM-THRID: 6338415801559678976
+X-Received: by 10.36.107.138 with SMTP id v132mr4052002itc.24.1475777430521;
+        Thu, 06 Oct 2016 11:10:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.15.42 with SMTP id 39ls597839ott.0.gmail; Wed, 21 Sep 2016
- 09:35:39 -0700 (PDT)
-X-Received: by 10.157.42.75 with SMTP id t69mr3182463ota.92.1474475739336;
-        Wed, 21 Sep 2016 09:35:39 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id 7si519187par.0.2016.09.21.09.35.39
+Received: by 10.36.54.199 with SMTP id l190ls694031itl.2.gmail; Thu, 06 Oct
+ 2016 11:10:26 -0700 (PDT)
+X-Received: by 10.66.1.136 with SMTP id 8mr3473825pam.14.1475777426089;
+        Thu, 06 Oct 2016 11:10:26 -0700 (PDT)
+Return-Path: <bhumirks@gmail.com>
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id 80si1221841pfw.0.2016.10.06.11.10.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Sep 2016 09:35:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Thu, 06 Oct 2016 11:10:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id 6so2590502pfl.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 21 Sep 2016 09:35:39 -0700 (PDT)
+Received: by mail-pf0-x243.google.com with SMTP id 190so1490274pfv.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 06 Oct 2016 11:10:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=ulFBFNGZhWQ1Opb3V6mVuOr9VTfun3dh2b2Qitle2Ok=;
-        b=WwTWoya16fwu5SD+RprLjb8AqAvyLUVaPIHo/h906h1zfDEO3DiIJzp2CFCjSEs7VA
-         ZfPwKQm++z2vEaNxxynvS7HtFZ44Nbn4qztGyfZLouzfus00EhJognUJvF9f9bsfu6LC
-         XmFdxS9FUoStH4lQaNQewOwnfh/qnSCkCMoYeeSVcODNqJc35k5s0koNdkbVgWvmjWNA
-         TFU4rn60ivD2vECwA/wBNjMcF/aGtbRTKVhje/kHpvSPO/E4zSlCfrtRLKdyarcBBmKK
-         9h/o9PU+plfdKARdaOnB9qrppTkQrr+W1l8T06BLn7Ry4C5ViBFiMKR65KUaWE6tuNnj
-         kBHA==
+        h=from:to:cc:subject:date:message-id;
+        bh=HOlWJwzadOxKYHx02ctgjFSepuZDXar+z26yupSOgiU=;
+        b=FQJ6ul4ruGKrwZi7DlwYTPyIHs/ExXZgIyn5b7JObAiCog0wQE/g1pBgRR6pKtjKVU
+         9wuv92P/mB9XZsYd4QU3KZmRUDO+E8k2Qirpejx5R9Ze3JYVwdOy2cDWV0712bdKFHtY
+         /ISNPYGdAOE1J7Qujmm0yXr7XQ9pr8ypv+ABBkGxVcpVzzZHaK4KfEjudOyq6DMqDFcH
+         wEpe+oCJjFAgJacdXjySlOGKW+Eg0XDOAG8efHfAOj9T0dDad9Ajqh8GjA5chTQpaRY/
+         GUKCh4TSJb93t7KjatOpXNzQ+GDvWteTPV1RokZ2ZGIjttgRdXFdonge5c8q/mAcobjM
+         QFNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=ulFBFNGZhWQ1Opb3V6mVuOr9VTfun3dh2b2Qitle2Ok=;
-        b=OCnnFLT956LKbQ0Tkcw+Bp2rIfAOoblT3jN9ZXyQIZ/O6l+hvlgRaYWfNxO2m7Lhe3
-         9LDPdPcjhCajDNeTG6Ffd6Re6IWk/KEh1YgBF4jGYsUoy4w0mpp8DUreuI5BxQLq2g6s
-         irQSyI/67xhlgiTmoxDcTc3Akl5Dutx7TQq08Q3mwiv1yw9bxDte53/i/S11LX6GUt0x
-         b6np8h2kPhI1OH+H98hTtM/tS7T8sR6VE8qvjpmp9arKeThVkMt3Jt00iOb4DijW9Umu
-         aADRQ1FSgMqO9yG7JslkrIYyEXl6UT6ndg5L9cAunWV1RNMdClgSdVHtchj6ZPBjrCZ/
-         wOCg==
-X-Gm-Message-State: AE9vXwNt+dqLYc7MFt12tSe634lsH2ouBSGyz188Zj3BuZRj6AC+0UO8fLgwGte9VlMtPA==
-X-Received: by 10.98.150.157 with SMTP id s29mr32429917pfk.3.1474475738997;
-        Wed, 21 Sep 2016 09:35:38 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from d830 (or-67-232-77-201.dhcp.embarqhsd.net. [67.232.77.201])
-        by smtp.gmail.com with ESMTPSA id an11sm47895394pac.26.2016.09.21.09.35.38
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 21 Sep 2016 09:35:38 -0700 (PDT)
-Date: Wed, 21 Sep 2016 09:35:37 -0700
-From: Alison Schofield <amsfield22@gmail.com>
-To: sandhya bankar <bankarsandhya512@gmail.com>
-Cc: Daniel Baluta <Daniel.baluta@gmail.com>,
-	outreachy-kernel@googlegroups.com
-Subject: Re: Regarding Coding tasks
-Message-ID: <20160921163537.GB2358@d830.WORKGROUP>
-References: <CAA3ASznBotgs6B63N3S2T8Uzb1PYQobhttBtXkDiYiR1Bxs7-w@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAA3ASznBotgs6B63N3S2T8Uzb1PYQobhttBtXkDiYiR1Bxs7-w@mail.gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=HOlWJwzadOxKYHx02ctgjFSepuZDXar+z26yupSOgiU=;
+        b=KASBc1RNsPiM59N3Dc40go9r2SMUQtchsPk8o2AcLSwz5vMUCR5eQ0ki0hpU0/Z/p0
+         r8ZhqeVFsCvrUit2glOB19iGC+Q5/kudd2FzA5JnqNQwBzWOG2CHD32luM4fmggomjkO
+         LoF1PfoRe84PqTzCDln21s8dxoHhL/2TiCK91Q0ibbVZO6YsLUq2s8CLtB4cxefY9dWl
+         WBJfm/9vn0+ztTQYb7errVgiCP1/iHPWz23edAl2NI4XppDLFqirw69NCF3rZhqRM6p8
+         xm9cy0mHizfYOoX1IQDqXzMaxK/Ap165uxzqgAbc2uARMC6GXs2r0y2qxkxMM9shig4z
+         s1iQ==
+X-Gm-Message-State: AA6/9RlTyJ4YH2rPIIpBulA8EUe34t4YNdoyhU/18Ct5/ca6jmRiT2tEDOVhQAlhqtotyw==
+X-Received: by 10.98.34.212 with SMTP id p81mr28744717pfj.18.1475777425930;
+        Thu, 06 Oct 2016 11:10:25 -0700 (PDT)
+Return-Path: <bhumirks@gmail.com>
+Received: from gmail.com ([106.215.181.180])
+        by smtp.gmail.com with ESMTPSA id b197sm7450810pfb.52.2016.10.06.11.10.19
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 06 Oct 2016 11:10:24 -0700 (PDT)
+Received: by gmail.com (sSMTP sendmail emulation); Thu, 06 Oct 2016 23:40:03 +0530
+From: Bhumika Goyal <bhumirks@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	gregkh@linuxfoundation.org
+Cc: Bhumika Goyal <bhumirks@gmail.com>
+Subject: [PATCH] Staging: vc04_services: vchiq_arm: Remove unused function remote_event_destroy
+Date: Thu,  6 Oct 2016 23:40:01 +0530
+Message-Id: <1475777401-30076-1-git-send-email-bhumirks@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-On Wed, Sep 21, 2016 at 09:09:38PM +0530, sandhya bankar wrote:
-> Hello,
-> 
->     I have seen coding tasks on https://kernelnewbies.org/IIO_tasks.
-> Please let me know that, can I start with coding task ?
-> 
-> Thanks,
-> Sandhya Bankar
+Remove function remote_event_destroy as it is not used anywhere in the
+kernel. Function detected using Coccinelle but changes done by hand.
+Script:
 
-Sandhya,
+@initialize:python@
+@@
+def display(name,p):
+        print(name,p[0].file)
 
-CC'ing Outreachy group on reply as others may need similar info.
+@r1@
+identifier func;
+type T;
+position p;
+@@
+static T func@p(...)
+{
+...
+}
 
-Check the intro page, https://kernelnewbies.org/OutreachyIntro, for
-guideline to start on coding tasks.
+@r@
+identifier r1.func;
+@@
+func
 
-Check your patch count by doing something like this:
-https://git.kernel.org/cgit/linux/kernel/git/gregkh/staging.git/log/?h=staging-testing&qt=grep&q=sandhya+bankar
+@script:python depends on !r@
+func << r1.func;
+p << r1.p;
+@@
+display(func,p)
 
-Check with Julia or other mentors if guideline doesn't guide you.
-Perhaps you have patches elsewhere, or this is a return round for you.
+Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+---
+ drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c | 6 ------
+ 1 file changed, 6 deletions(-)
 
-And, Sandhya, short answer to your question: Yes!
-
-alisons
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+index 2c98da4..7ed3277 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+@@ -414,12 +414,6 @@ remote_event_create(REMOTE_EVENT_T *event)
+ 	sema_init(event->event, 0);
+ }
+ 
+-static inline void
+-remote_event_destroy(REMOTE_EVENT_T *event)
+-{
+-	(void)event;
+-}
+-
+ static inline int
+ remote_event_wait(REMOTE_EVENT_T *event)
+ {
+-- 
+1.9.1
 
 
