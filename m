@@ -1,110 +1,107 @@
-X-GM-THRID: 6253702006622388224
-X-Received: by 10.50.70.1 with SMTP id i1mr6256855igu.2.1456053463896;
-        Sun, 21 Feb 2016 03:17:43 -0800 (PST)
+X-GM-THRID: 6338861029933449216
+X-Received: by 10.194.172.131 with SMTP id bc3mr1441514wjc.19.1475881093956;
+        Fri, 07 Oct 2016 15:58:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.16.164 with SMTP id 33ls1286151qgb.61.gmail; Sun, 21 Feb
- 2016 03:17:42 -0800 (PST)
-X-Received: by 10.129.159.131 with SMTP id w125mr21357986ywg.26.1456053462864;
-        Sun, 21 Feb 2016 03:17:42 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x234.google.com (mail-pf0-x234.google.com. [2607:f8b0:400e:c00::234])
-        by gmr-mx.google.com with ESMTPS id u66si2847376pfa.2.2016.02.21.03.17.42
+Received: by 10.28.71.16 with SMTP id u16ls1045716wma.12.gmail; Fri, 07 Oct
+ 2016 15:58:13 -0700 (PDT)
+X-Received: by 10.194.96.177 with SMTP id dt17mr13056wjb.21.1475881093332;
+        Fri, 07 Oct 2016 15:58:13 -0700 (PDT)
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
+        by gmr-mx.google.com with ESMTPS id 82si263584wmg.3.2016.10.07.15.58.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 21 Feb 2016 03:17:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::234 as permitted sender) client-ip=2607:f8b0:400e:c00::234;
+        Fri, 07 Oct 2016 15:58:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::234 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x234.google.com with SMTP id c10so79124315pfc.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 21 Feb 2016 03:17:42 -0800 (PST)
+Received: by mail-wm0-x241.google.com with SMTP id i130so4912854wmg.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 07 Oct 2016 15:58:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=KlgoLSX8JtamE9p9sMMzEQD9ImYQPvFGgthANOlfaG8=;
-        b=yPQZrFiZH/n/ZQRLPjZsaSomDKzTO4XI+FYoyFvAUJaqZKLu4694fakWCA262gMcgR
-         e+48YvF9vTVk46F3BoL3jOM2xtTAcprTwxyhnWFVqWhDi7Zl/QY0adz2qBH5oiVYBCFb
-         5WbDT+N5mIuvDVJtEJNO7x+ZhKoKjieGt13DWUDJBw9Sk665RL1PMw8UaIyETITms3mR
-         Tze9o0Sk/VCcMD+izpf5uwqldmOrHSWjhnXvTWTGNAtRCV3LUscVqXeVdWzkFY8FUhao
-         olcgISOY+/x90hWFReSOsIKPw2PLNr+SDjDkbP7mk8TOxlFzm6vYBIwST8A+1RXGLdbL
-         h/pA==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=aiY0+NWLLwP33FUkGVxc9yjOYq4zuCiVJ5ExRXiXUmw=;
+        b=HP6EapO9jBiv/UsI6Zr1jn8Gp2Si1RkvkUriCfJp9CJARQhA5/GaYGB918PeHCMKAl
+         LNlnBUlq0RwETwK2D+YMRhIXdzGI5BcXEj5ViHxhBD9FcnYLJytkRrNkU3RE23MoZR85
+         1VoiFOpEUSCb1vpBK1ndM2K1vkVBHaQmnuuaKsZtYB4/EdzykFskLSSVvUSs+M3FujHO
+         mXlJG35cRB/weOJfoMgC4IVOoCRLQCSBp7qprPKNCn85RsmJW3X+SfRPRBVfb+MmG3OI
+         94BOjJUwgKG+2GmCDoR4JQA0NzuV0vZqPvYHVidaEF7FcLqTPIIeMRDbNU6ZAwg8rosX
+         RHbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=KlgoLSX8JtamE9p9sMMzEQD9ImYQPvFGgthANOlfaG8=;
-        b=JBfhRmoGFrm/Y/cZU8azgfaY+N4NrbojZs/2d7b4bkDUNZfctolGF8Cu2gpL/9NdO5
-         foMS6Ybbx3RTAc/vU12CqFaLGHHh0XoBzHoAIPBtxi4MOMAOWzj4Mv8NiwJA8lACz+t/
-         gJukNFlmrkpuvModBNSdz3KQNW/PJUKUeQGnOaAqeW9RhlNMvKjE/gGlZDL5JWXW1hEx
-         5UAcq4yg4bkbZGLqqBpU7PhxTMKtq1cgreXOgvUYD5tOt3MNwnqgej1SaMMKzodhaq41
-         H9MUYotycv0E75667oey8DOGN95/cMttF6KeoaykJdPMnyELvz6T3su2YIO3pf6SNc9s
-         xNhA==
-X-Gm-Message-State: AG10YOS2CACSmczHPvtCT24Jg80KD7Z6Pzs+zWrNdYrXZWhr6DgSinVnb6ail7aolw0E9g==
-X-Received: by 10.98.16.150 with SMTP id 22mr30643817pfq.128.1456053462709;
-        Sun, 21 Feb 2016 03:17:42 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id z67sm29444521pfa.71.2016.02.21.03.17.41
-        for <outreachy-kernel@googlegroups.com>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=aiY0+NWLLwP33FUkGVxc9yjOYq4zuCiVJ5ExRXiXUmw=;
+        b=MyIxL7/Kadlx2q8aHl0w4S4T2J0WRUkB2B9rkOMpUb0Hxqr0MkAY/W376EHhBS0FmA
+         GiWU1jpZOwrSquKoPcpwWVHuzitRq0SherhHilJ3embbBPqrm6cSAxSDaNNKgjGZGTw/
+         0HWOGuJWzO4snR4DFx67QtUqyUaoBKc1ESA50Q2Xsgk2W0UVKpKa+oN5kMw2yjSqLmhd
+         4PtJyf/B2Xtvksa3UxlhmtLVLj3Pg3/afFoRywGr75KAK0VOCHM+NDoKT1anCR6GqwfI
+         OWdEGpwonZMEL1VerLvilHF+ReESQHFxA0e8j5MZAS9M2Hw11Td9Zd0UAC2velANp0TY
+         5TdQ==
+X-Gm-Message-State: AA6/9RkCuyc5Ouk2Kpo2HUYqJgw0zay2x4GI5+9xjUDWsyvkPS518K6E8SuwPSHsMhUZuQ==
+X-Received: by 10.28.164.130 with SMTP id n124mr651570wme.105.1475881093135;
+        Fri, 07 Oct 2016 15:58:13 -0700 (PDT)
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from domino-MS-16Y1 ([92.81.89.162])
+        by smtp.gmail.com with ESMTPSA id qa7sm21827537wjc.39.2016.10.07.15.58.12
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 21 Feb 2016 03:17:42 -0800 (PST)
-Date: Sun, 21 Feb 2016 16:48:15 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: lusture: libcfs: Prefer kmalloc_array over kmalloc
-Message-ID: <20160221111815.GA27645@Karyakshetra>
+        Fri, 07 Oct 2016 15:58:12 -0700 (PDT)
+Date: Sat, 8 Oct 2016 01:58:11 +0300
+From: Mihaela Muraru <mihaela.muraru21@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: ks7010: __packed instedad of __attribute__((packed))
+Message-ID: <20161007225811.GA25180@domino-MS-16Y1>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Use kmalloc_array instead of kmalloc for arrays to prevent integer
-overflows.
-This was done using Coccinelle:
+Fix a issue found by  checkpatch.pl tool:
 
-@@
-expression e1, e2;
-constant C;
-type t;
-@@
-(
-- kmalloc(sizeof(e1)*e2, C)
-+ kmalloc_array(e2, sizeof(e1), C)
-|
-- kmalloc(e2*sizeof(e1), C)
-+ kmalloc_array(e2, sizeof(e1), C)
-|
-- kmalloc(e2*sizeof(t), C)
-+ kmalloc_array(e2, sizeof(t), C)
-|
-- kmalloc(sizeof(t)*e2, C)
-+ kmalloc_array(e2, sizeof(t), C)
-)
+"WARNING: __packed is preferred over __attribute__((packed))".
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Replace  __attribute__((packed)) with __packed.
+
+Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
 ---
- drivers/staging/lustre/lustre/libcfs/linux/linux-tracefile.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/staging/ks7010/ks_hostif.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/lustre/lustre/libcfs/linux/linux-tracefile.c b/drivers/staging/lustre/lustre/libcfs/linux/linux-tracefile.c
-index 91c2ae8..dda7e3a 100644
---- a/drivers/staging/lustre/lustre/libcfs/linux/linux-tracefile.c
-+++ b/drivers/staging/lustre/lustre/libcfs/linux/linux-tracefile.c
-@@ -61,8 +61,9 @@ int cfs_tracefile_init_arch(void)
- 	memset(cfs_trace_data, 0, sizeof(cfs_trace_data));
- 	for (i = 0; i < CFS_TCD_TYPE_MAX; i++) {
- 		cfs_trace_data[i] =
--			kmalloc(sizeof(union cfs_trace_data_union) *
--				num_possible_cpus(), GFP_KERNEL);
-+			kmalloc_array(num_possible_cpus(),
-+				      sizeof(union cfs_trace_data_union),
-+				      GFP_KERNEL);
- 		if (!cfs_trace_data[i])
- 			goto out;
- 	}
---
-2.1.4
+diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
+index 5ae013b..924b902 100644
+--- a/drivers/staging/ks7010/ks_hostif.c
++++ b/drivers/staging/ks7010/ks_hostif.c
+@@ -1938,12 +1938,12 @@ void hostif_sme_set_wep(struct ks_wlan_private *priv, int type)
+ struct wpa_suite_t {
+ 	unsigned short size;
+ 	unsigned char suite[4][CIPHER_ID_LEN];
+-} __attribute__ ((packed));
++} __packed;
+ 
+ struct rsn_mode_t {
+ 	uint32_t rsn_mode;
+ 	uint16_t rsn_capability;
+-} __attribute__ ((packed));
++} __packed;
+ 
+ static
+ void hostif_sme_set_rsn(struct ks_wlan_private *priv, int type)
+@@ -2418,8 +2418,8 @@ void hostif_sme_set_pmksa(struct ks_wlan_private *priv)
+ 		struct {
+ 			uint8_t bssid[ETH_ALEN];
+ 			uint8_t pmkid[IW_PMKID_LEN];
+-		} __attribute__ ((packed)) list[PMK_LIST_MAX];
+-	} __attribute__ ((packed)) pmkcache;
++		} __packed list[PMK_LIST_MAX];
++	} __packed pmkcache;
+ 	struct pmk_t *pmk;
+ 	struct list_head *ptr;
+ 	int i;
+-- 
+2.7.4
 
 
