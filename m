@@ -1,25 +1,25 @@
 X-GM-THRID: 6338411449271975936
-X-Received: by 10.46.69.69 with SMTP id s66mr1190178lja.1.1475819285866;
-        Thu, 06 Oct 2016 22:48:05 -0700 (PDT)
+X-Received: by 10.46.5.11 with SMTP id 11mr845232ljf.6.1475819158222;
+        Thu, 06 Oct 2016 22:45:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.203.193 with SMTP id b184ls429077wmg.1.gmail; Thu, 06 Oct
- 2016 22:48:05 -0700 (PDT)
-X-Received: by 10.28.207.5 with SMTP id f5mr138609wmg.11.1475819285370;
-        Thu, 06 Oct 2016 22:48:05 -0700 (PDT)
+Received: by 10.28.142.71 with SMTP id q68ls642698wmd.21.gmail; Thu, 06 Oct
+ 2016 22:45:57 -0700 (PDT)
+X-Received: by 10.194.102.233 with SMTP id fr9mr1184581wjb.22.1475819157632;
+        Thu, 06 Oct 2016 22:45:57 -0700 (PDT)
 Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id w16si69714wmd.0.2016.10.06.22.48.05
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id a126si77551wmd.1.2016.10.06.22.45.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 06 Oct 2016 22:48:05 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Thu, 06 Oct 2016 22:45:57 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.31,454,1473112800"; 
-   d="scan'208";a="195927147"
+   d="scan'208";a="239761150"
 Received: from p57801a74.dip0.t-ipconnect.de (HELO hadrien.local) ([87.128.26.116])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 07 Oct 2016 07:48:03 +0200
-Date: Fri, 7 Oct 2016 07:47:52 +0200 (CEST)
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 07 Oct 2016 07:45:56 +0200
+Date: Fri, 7 Oct 2016 07:45:42 +0200 (CEST)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: rvarsha016@gmail.com
@@ -28,27 +28,20 @@ cc: outreachy-kernel <outreachy-kernel@googlegroups.com>,
 Subject: Re: [Outreachy kernel] Re: [PATCH] staging:vt6655:Fix checkpatch
  issues.
 In-Reply-To: <452c5458-c9c5-4a78-b153-956f34946aef@googlegroups.com>
-Message-ID: <alpine.DEB.2.10.1610070746070.3074@hadrien>
+Message-ID: <alpine.DEB.2.10.1610070745020.3074@hadrien>
 References: <f446eb36-0b26-4c2c-840b-fa12785b88f0@googlegroups.com> <452c5458-c9c5-4a78-b153-956f34946aef@googlegroups.com>
 User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-1461573421-1475819284=:3074"
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-1184654866-1475819156=:3074"
 
   This message is in MIME format.  The first part should be readable text,
   while the remaining parts are likely unreadable without MIME-aware tools.
 
---8323329-1461573421-1475819284=:3074
+--8323329-1184654866-1475819156=:3074
 Content-Type: TEXT/PLAIN; charset=UTF-8
 Content-Transfer-Encoding: 8BIT
 
-There should also be a space after each : in the above subject line.
 
-The subject and the commit message don't say much about what you have
-done.  A fix could in general be done in many different ways.  Try to say
-what change you have made and why it is beneficial, and say this as
-concisely as possible.
-
-julia
 
 On Thu, 6 Oct 2016, rvarsha016@gmail.com wrote:
 
@@ -64,6 +57,13 @@ On Thu, 6 Oct 2016, rvarsha016@gmail.com wrote:
 > CHECK: Avoid CamelCase
 >
 > Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
+
+The name is still not in the From line.
+
+Also, as Greg mentioned, this message still includes html.
+
+julia
+
 > ---
 >  drivers/staging/vt6655/baseband.c | 526
 > +++++++++++++++++++-------------------
@@ -986,5 +986,5 @@ On Thu, 6 Oct 2016, rvarsha016@gmail.com wrote:
 > For more options, visit https://groups.google.com/d/optout.
 >
 >
---8323329-1461573421-1475819284=:3074--
+--8323329-1184654866-1475819156=:3074--
 
