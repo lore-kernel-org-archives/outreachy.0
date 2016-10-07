@@ -1,90 +1,111 @@
-X-GM-THRID: 6336950026186522624
-X-Received: by 10.31.169.5 with SMTP id s5mr4797236vke.19.1475436153187;
-        Sun, 02 Oct 2016 12:22:33 -0700 (PDT)
+X-GM-THRID: 6338484445622829056
+X-Received: by 10.25.99.71 with SMTP id x68mr1194384lfb.28.1475817951272;
+        Thu, 06 Oct 2016 22:25:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.36.85 with SMTP id p79ls3341516ota.25.gmail; Sun, 02 Oct
- 2016 12:22:32 -0700 (PDT)
-X-Received: by 10.200.49.49 with SMTP id g46mr4952456qtb.62.1475436152860;
-        Sun, 02 Oct 2016 12:22:32 -0700 (PDT)
-Return-Path: <aquannie@gmail.com>
-Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
-        by gmr-mx.google.com with ESMTPS id z73si1020792pfa.1.2016.10.02.12.22.32
+Received: by 10.46.0.152 with SMTP id e24ls409038lji.49.gmail; Thu, 06 Oct
+ 2016 22:25:50 -0700 (PDT)
+X-Received: by 10.25.139.9 with SMTP id n9mr1124790lfd.22.1475817950309;
+        Thu, 06 Oct 2016 22:25:50 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id a126si74373wmd.1.2016.10.06.22.25.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 02 Oct 2016 12:22:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
+        Thu, 06 Oct 2016 22:25:50 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=aquannie@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x244.google.com with SMTP id cd13so5601217pac.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 02 Oct 2016 12:22:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=VlTqLGHyIyU1GzFYqrMbSeB++RR5QIwW/Zr89k+1uIQ=;
-        b=u6ggWagsFsws0Pu/WecZHMrjEJeR7NwFo9cKnsyBW9XH8R5Zxg2G2Naakq7DPtP5+8
-         5zbsSbtN6tSBfAy00P/Jdwtpz2F8zJnpuH+QS1seKzGh6PVZf1s8ap/hQTOV+aIqLRWh
-         6FPzxPLy/au2ff3gCQkRJpMYmZm0BtRebQXEXICp0/w6gduZwv2d29ZvyCtxd0J3seUu
-         7YHDav3fNsiuf4kWzpIWIN7PpeUYJgytleyJOV1I7KGc44zvn/1+QmrvmP37iJq+J4LA
-         H6ItnwHODPSANR7fzHNW3r6eKcNWU7xagV3HI1dRXX324OzZMQFdZyRRJJdh1isbTvx/
-         n4uA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=VlTqLGHyIyU1GzFYqrMbSeB++RR5QIwW/Zr89k+1uIQ=;
-        b=NKY6LB8zNuqcW97w27qh34dG7KZ/DpZr7GoAR8Y6UODUMdpSi9Ze3bFlkkwIfi/Ovo
-         v8EU08jCmyB7FR3ZNrL3Ia5yeYx51Hfy+yyAlBYHm+cRpZX0KZAEvMyN9hq0AVmWunKF
-         Ga6KqaPd2V1GATEQovYRbE7n7O/xNMLDwR1mbAV9FJU+er5q6MsUDLesRgoIaOq50uIk
-         0UiQ2YTwInC9No52ymYHL0Ksfg1ufMU2uVM7tQcwUEKoMsFuqwykZCTfAplYzPjOO45v
-         oIo4/Tm0DdOTqbvSKsgj1SEswhbfnE5S8XohJRphFyqz7IrP+nlfZ1sfjrlrf4XvAQvJ
-         SZBQ==
-X-Gm-Message-State: AA6/9RlsWqDJJ3UA1dHFzm1h7ELjAtEcl6LkHxc7a21Kc6iEiYJdUf1jdLb0NslLv6ZDjg==
-X-Received: by 10.66.81.42 with SMTP id w10mr30846004pax.141.1475436152533;
-        Sun, 02 Oct 2016 12:22:32 -0700 (PDT)
-Return-Path: <aquannie@gmail.com>
-Received: from toblerone ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id d85sm28182609pfj.57.2016.10.02.12.22.29
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 02 Oct 2016 12:22:31 -0700 (PDT)
-Date: Mon, 3 Oct 2016 00:52:24 +0530
-From: Rehas Sachdeva <aquannie@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Bryan O'Donoghue <pure.logic@nexus-software.ie>,
-	Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [Outreachy Kernel] [PATCH] staging: greybus: Constify local struct
- gb_loopback_stats
-Message-ID: <20161002192224.GA5295@toblerone>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.31,454,1473112800"; 
+   d="scan'208";a="239759404"
+Received: from p57801a74.dip0.t-ipconnect.de (HELO hadrien.local) ([87.128.26.116])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 07 Oct 2016 07:25:46 +0200
+Date: Fri, 7 Oct 2016 07:25:10 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Mihaela Muraru <mihaela.muraru21@gmail.com>
+cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: ks7010: replace printk()
+ with pr*format
+In-Reply-To: <20161006223651.GA8132@domino-MS-16Y1>
+Message-ID: <alpine.DEB.2.10.1610070724350.3074@hadrien>
+References: <20161006223651.GA8132@domino-MS-16Y1>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-The local declaration "struct gb_loopback_stats reset" is not modified
-throughout its scope and hence can be made const. Done using Coccinelle.
 
-Signed-off-by: Rehas Sachdeva <aquannie@gmail.com>
----
- drivers/staging/greybus/loopback.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/greybus/loopback.c b/drivers/staging/greybus/loopback.c
-index 7882306..fb5a068 100644
---- a/drivers/staging/greybus/loopback.c
-+++ b/drivers/staging/greybus/loopback.c
-@@ -837,7 +837,7 @@ static int gb_loopback_request_handler(struct gb_operation *operation)
- 
- static void gb_loopback_reset_stats(struct gb_loopback *gb)
- {
--	struct gb_loopback_stats reset = {
-+	const struct gb_loopback_stats reset = {
- 		.min = U32_MAX,
- 	};
- 
--- 
-2.7.4
+On Fri, 7 Oct 2016, Mihaela Muraru wrote:
 
+> This patch replaces printk() with pr_warn and pr_info macros.
+>
+> By doing this it is reduce to silence  checkpatch.pl WARNING:
+> Prefer [subsystem eg: netdev]_info([subsystem]dev, ... then dev_info(dev, ... then pr_info(... to printk(KERN_INFO ...
+
+It looks like you should be able to use the netdev functions somehow.
+
+julia
+
+>
+> Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
+> ---
+>  drivers/staging/ks7010/ks_hostif.c | 13 +++++--------
+>  1 file changed, 5 insertions(+), 8 deletions(-)
+>
+> diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
+> index c57ca58..1241f67 100644
+> --- a/drivers/staging/ks7010/ks_hostif.c
+> +++ b/drivers/staging/ks7010/ks_hostif.c
+> @@ -476,8 +476,7 @@ void hostif_data_indication(struct ks_wlan_private *priv)
+>  			skb->dev->last_rx = jiffies;
+>  			netif_rx(skb);
+>  		} else {
+> -			printk(KERN_WARNING
+> -			       "ks_wlan: Memory squeeze, dropping packet.\n");
+> +			pr_warn("ks_wlan: Memory squeeze, dropping packet.\n");
+>  			priv->nstats.rx_dropped++;
+>  		}
+>  		break;
+> @@ -511,8 +510,7 @@ void hostif_data_indication(struct ks_wlan_private *priv)
+>  			skb->dev->last_rx = jiffies;
+>  			netif_rx(skb);
+>  		} else {
+> -			printk(KERN_WARNING
+> -			       "ks_wlan: Memory squeeze, dropping packet.\n");
+> +			pr_warn("ks_wlan: Memory squeeze, dropping packet.\n");
+>  			priv->nstats.rx_dropped++;
+>  		}
+>  		break;
+> @@ -560,8 +558,7 @@ void hostif_mib_get_confirm(struct ks_wlan_private *priv)
+>  		dev->dev_addr[5] = priv->eth_addr[5];
+>  		dev->dev_addr[6] = 0x00;
+>  		dev->dev_addr[7] = 0x00;
+> -		printk(KERN_INFO
+> -		       "ks_wlan: MAC ADDRESS = %02x:%02x:%02x:%02x:%02x:%02x\n",
+> +		pr_info("ks_wlan: MAC ADDRESS = %02x:%02x:%02x:%02x:%02x:%02x\n",
+>  		       priv->eth_addr[0], priv->eth_addr[1], priv->eth_addr[2],
+>  		       priv->eth_addr[3], priv->eth_addr[4], priv->eth_addr[5]);
+>  		break;
+> @@ -571,8 +568,8 @@ void hostif_mib_get_confirm(struct ks_wlan_private *priv)
+>  		priv->version_size = priv->rx_size;
+>  		memcpy(priv->firmware_version, priv->rxp, priv->rx_size);
+>  		priv->firmware_version[priv->rx_size] = '\0';
+> -		printk(KERN_INFO "ks_wlan: firmware ver. = %s\n",
+> -		       priv->firmware_version);
+> +		pr_info("ks_wlan: firmware ver. = %s\n",
+> +				priv->firmware_version);
+>  		hostif_sme_enqueue(priv, SME_GET_PRODUCT_VERSION);
+>  		/* wake_up_interruptible_all(&priv->confirm_wait); */
+>  		complete(&priv->confirm_wait);
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20161006223651.GA8132%40domino-MS-16Y1.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
