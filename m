@@ -1,117 +1,88 @@
-X-GM-THRID: 6465312034582953984
-X-Received: by 10.99.65.133 with SMTP id o127mr11533579pga.44.1505322762891;
-        Wed, 13 Sep 2017 10:12:42 -0700 (PDT)
+X-GM-THRID: 6338573002731421696
+X-Received: by 10.157.35.137 with SMTP id t9mr4723123otb.105.1475814032001;
+        Thu, 06 Oct 2016 21:20:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.150.135 with SMTP id y129ls211109iod.32.gmail; Wed, 13 Sep
- 2017 10:12:41 -0700 (PDT)
-X-Received: by 10.98.134.135 with SMTP id x129mr10237580pfd.24.1505322761648;
-        Wed, 13 Sep 2017 10:12:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505322761; cv=none;
-        d=google.com; s=arc-20160816;
-        b=czRtvbA8sqOm3bNLS/wMclERI8v4eXRG7o9lSefaox3LEqGyv7GGg2LNyGVZmbWuOC
-         yR9qcAuwIZ2KvNYNKivIuNGptJj0fIdG2bSut3Qjs+I9niIZRX4FdAbjW+VWlMovo2kk
-         f4PwewFwa4K2AGZ9ppt0IiDV6nvmZlfbOUm7MLZ7Ft3ydc7VQl0sLKFrtps0I/waum/t
-         0qIveBd7pJJlHeQXnUAgaNuteagXibhnwg2j2FEQiVlPLBZZf/KGnQt7XiH8GbF0wRJl
-         XpAbFvk7ji8/CirXGrh1Rz/zO+mPmrOHaY/vT5C5cCSYlyhNxTLhd3h6fFWhwI3rrUdV
-         oQrQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature:arc-authentication-results;
-        bh=QAI+i0iACmIfFt5ivSLX4O6S9BHowUSox6syX3wT+SQ=;
-        b=If58/8H7fKp7sVzhTYTwJqw+antROWXVZSbzpaKBvxGQkM7BvzfrtqaOOiucsd2+dA
-         G7EFJO6sNNVGqb9ph9lRBDRdl8lCe4TpTd7kXGE9zEIBah7rEOmzQkYielinLveQvK86
-         Z1d7nyLmKzPd5mjdfQD9zLY7nIkOka4uk5rOFHgzsIq0d3r4oxrzOfCZRf9t+604Wj35
-         eLg0pSkhA2CgRoVBGRD3b7fdckK5VDAj4Fm7ACW8iydkYTcYkd2NuWKKuZ2O1xtGJZnb
-         8VL1CU/2bDwF9oVi3NKkgY1mWq8gmzAkDJlehKlN3uKJBEJve5PDkBJCwkq9zEA1Ssko
-         sNnw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=c/dryMXO;
-       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <keerthigd4990@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id c200si534037pfb.14.2017.09.13.10.12.41
+Received: by 10.36.122.12 with SMTP id a12ls1172462itc.22.canary; Thu, 06 Oct
+ 2016 21:20:28 -0700 (PDT)
+X-Received: by 10.36.70.130 with SMTP id j124mr9390561itb.18.1475814028116;
+        Thu, 06 Oct 2016 21:20:28 -0700 (PDT)
+Return-Path: <elise.lennion@gmail.com>
+Received: from mail-vk0-x243.google.com (mail-vk0-x243.google.com. [2607:f8b0:400c:c05::243])
+        by gmr-mx.google.com with ESMTPS id o72si1682797vkc.0.2016.10.06.21.20.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 13 Sep 2017 10:12:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Thu, 06 Oct 2016 21:20:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::243 as permitted sender) client-ip=2607:f8b0:400c:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=c/dryMXO;
-       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id f84so330408pfj.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 13 Sep 2017 10:12:41 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::243 as permitted sender) smtp.mailfrom=elise.lennion@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-vk0-x243.google.com with SMTP id z126so1503845vkd.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 06 Oct 2016 21:20:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
+        d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=QAI+i0iACmIfFt5ivSLX4O6S9BHowUSox6syX3wT+SQ=;
-        b=c/dryMXOnoSM63ddsgU31xVWOADPzLTcKPCQflkuSe/UKpMNzy4e1cLM1O+cwOwu6W
-         37q2m0DFZ97Zqja+t7Y8Is4DxYX8GMQrTqLVKG35j/OZRsRMzmKKPTaVAcmXGMmtbEx4
-         nHu11N+Wes0TqZEDEsGxFl5lyqJrKOA0OAkNv0jTifX4A5/w3Waj2+a74q7+zCtJxs2w
-         J+jmpempZnaFE0O0IdKUiWRLzRyXrpVN/WE6NL2di/SR+WnngQP3ApK0vrPlVx/hzgxG
-         RnAwmCZsYcUStWoyKElGiiGQeBtgy6dh08L/zYntY/mmf0IWZJ7JFYbiUDycMRlyShcy
-         6zrQ==
+        bh=flJEWTr9gC2t0s4fmmkkkgm3Zq7fjMGs5iJEYYwwgpA=;
+        b=s2k/EGFXFqA5vCMZ4Ycv0aqFTQW4wMTPU4gaX5b+v/h7TWHYGWlvy45I4A2go23OTe
+         Msev5kbUGST7Q6DpT3mRA/lm0LGi9EWhbAS/4OMuj7u6pOl5+J6pPEU0MI6RNWv4O3RS
+         kMAzqKzUL2tT4AOu15s4ocpgrdW/Jn2RxYyeDqGhsABJJNomwzXnrotjFoc5htuMzOFW
+         A3qAFZdJAu0XDq5WS1IQ1RCHkP0dVLjiLU41SHiA43EIhr5U3I38DfBtWeHeaj8SnfCj
+         qPmCKKqdwvKczFOS87jPhywR8QJakMf4MSuIQTT1cQfKFHcymGE3G07DO4kcRRhUaZOl
+         k2JA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
+        d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=QAI+i0iACmIfFt5ivSLX4O6S9BHowUSox6syX3wT+SQ=;
-        b=mU8UdvPamiX/SN0u1gS2iUsbq5hTwY4RI5SsCI6aAaQnacR+Lg4mg+XBvdY9agyY0t
-         /FrFOcnDhlse/pC6KxMTWqLqIBbL8wSva6CIFo36D3lE1BtBfxhFgM5TBb+jMsgkVGmH
-         7JOxWL3Zh5hFPTIKJOVMiLp/ndrGfyOmcjg2A6dl4bP4YD3SCAm9oVfj1N89N4RvEpzB
-         Ful4ytl2As4wufZnu8coJcZr3eRcXVcSdhLpqDQQxWqy0Q9+FivTW0IRshdBbXa3ZcKn
-         C56ObIlacLGdY6L14hj44RE0U2sqX6RNPOSHUVl1cYXq5mZUGG4VOBFOfyrs9vQLsokp
-         /UOg==
-X-Gm-Message-State: AHPjjUgOQonkFVJ65nophxD7XZObDeGfi+A8qOMS4y3oAMZt1WzvWORE
-	OAS05pxrFOiNQTBAnLs=
-X-Google-Smtp-Source: ADKCNb6SOacaUNl8tKLpTF0Dsa1TxBp+ARv19QnlB/MllwQ0f1mXT06alMjoQFiK2uranG1MS0mOHA==
-X-Received: by 10.101.72.199 with SMTP id o7mr19216750pgs.450.1505322761436;
-        Wed, 13 Sep 2017 10:12:41 -0700 (PDT)
-Return-Path: <keerthigd4990@gmail.com>
-Received: from manoharreddy ([42.106.92.147])
-        by smtp.gmail.com with ESMTPSA id n19sm27048002pfj.114.2017.09.13.10.12.38
+        bh=flJEWTr9gC2t0s4fmmkkkgm3Zq7fjMGs5iJEYYwwgpA=;
+        b=E1y/9+S4KcCJ8bmwGjUUcxwGK2gGUeeNwnpwJr15R90laTadHLRP+buRkzJFDdynqz
+         etMKSHfNjKZsQ1ltCyT6q6MDzbZB2s6piXfPv5hNf3vzN+t2WOsjDAbYIbj2LY8zU+7d
+         /AewNEnb6goDXgSVsJ/6svxFiBdoITAtRunTv519IRU3Xd5IMf5K8q9BCvJyMKKcgoES
+         GvHGvRqSvgBhyNEOj3ktsAFetspJIZbxOtt2hLeFLf8GgEEYMHJJfa9udyDPS/Sj+cmF
+         CPW3YVcfuAfrxg5VxSRDnbZli8c+kFmuZWPrTfhBYcYamfSBCes4t6n7qzuqD17KtWlA
+         EIlg==
+X-Gm-Message-State: AA6/9RnvQvAa3vvvbaVgXnoxCVQBrtdxFMDeRYbNmugkTV1R7v+6b1/gz9LE2zL68SJZSg==
+X-Received: by 10.31.1.212 with SMTP id 203mr11594584vkb.99.1475814027938;
+        Thu, 06 Oct 2016 21:20:27 -0700 (PDT)
+Return-Path: <elise.lennion@gmail.com>
+Received: from lennorien.com ([187.64.224.84])
+        by smtp.gmail.com with ESMTPSA id q135sm5524589vka.8.2016.10.06.21.20.26
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 13 Sep 2017 10:12:40 -0700 (PDT)
-Date: Wed, 13 Sep 2017 22:42:34 +0530
-From: Keerthi Reddy <keerthigd4990@gmail.com>
-To: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com,
-	julia.lawall@lip6.fr
-Subject: [PATCH] staging: Android: follow coding guidlines
-Message-ID: <20170913171234.GA4052@manoharreddy>
+        Thu, 06 Oct 2016 21:20:27 -0700 (PDT)
+Date: Fri, 7 Oct 2016 01:20:23 -0300
+From: Elise Lennion <elise.lennion@gmail.com>
+To: aditya.shankar@microchip.com, ganesh.krishna@microchip.com,
+	gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: [PATCH 1/4] staging: wilc1000: Format block comment.
+Message-ID: <20161007042023.GA20391@lennorien.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-- Add a new line after struct declaration
-- remove extra new line.
+Fix checkpatch warning:
 
-Signed-off-by: Keerthi Reddy <keerthigd4990@gmail.com>
+WARNING: Block comments use a trailing */ on a separate line
+
+Signed-off-by: Elise Lennion <elise.lennion@gmail.com>
 ---
- drivers/staging/android/ion/ion.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/wilc1000/wilc_spi.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/android/ion/ion.h b/drivers/staging/android/ion/ion.h
-index 621e5f7..f5f9cd6 100644
---- a/drivers/staging/android/ion/ion.h
-+++ b/drivers/staging/android/ion/ion.h
-@@ -86,6 +86,7 @@ struct ion_buffer {
- 	struct sg_table *sg_table;
- 	struct list_head attachments;
- };
-+
- void ion_buffer_destroy(struct ion_buffer *buffer);
- 
- /**
-@@ -299,7 +300,6 @@ size_t ion_heap_freelist_shrink(struct ion_heap *heap,
-  */
- size_t ion_heap_freelist_size(struct ion_heap *heap);
- 
--
- /**
-  * functions for creating and destroying a heap pool -- allows you
-  * to keep a pool of pre allocated memory to use from your heap.  Keeping
+diff --git a/drivers/staging/wilc1000/wilc_spi.c b/drivers/staging/wilc1000/wilc_spi.c
+index f08cf6d..572e57d 100644
+--- a/drivers/staging/wilc1000/wilc_spi.c
++++ b/drivers/staging/wilc1000/wilc_spi.c
+@@ -858,7 +858,8 @@ static int wilc_spi_init(struct wilc *wilc, bool resume)
+ 	/* the SPI to it's initial value. */
+ 	if (!spi_internal_read(wilc, WILC_SPI_PROTOCOL_OFFSET, &reg)) {
+ 		/* Read failed. Try with CRC off. This might happen when module
+-		 * is removed but chip isn't reset*/
++		 * is removed but chip isn't reset
++		 */
+ 		g_spi.crc_off = 1;
+ 		dev_err(&spi->dev, "Failed internal read protocol with CRC on, retrying with CRC off...\n");
+ 		if (!spi_internal_read(wilc, WILC_SPI_PROTOCOL_OFFSET, &reg)) {
 -- 
 2.7.4
 
