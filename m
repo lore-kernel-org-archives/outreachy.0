@@ -1,83 +1,139 @@
-X-GM-THRID: 6389988404749139968
-X-Received: by 10.31.12.18 with SMTP id 18mr8626326vkm.32.1487785113515;
-        Wed, 22 Feb 2017 09:38:33 -0800 (PST)
+X-GM-THRID: 6338362197429714944
+X-Received: by 10.107.169.35 with SMTP id s35mr62062ioe.26.1475837026357;
+        Fri, 07 Oct 2016 03:43:46 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.50.71 with SMTP id j68ls3848140ita.12.canary-gmail; Wed, 22
- Feb 2017 09:38:32 -0800 (PST)
-X-Received: by 10.98.156.200 with SMTP id u69mr8627825pfk.12.1487785112851;
-        Wed, 22 Feb 2017 09:38:32 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id u12si403022pfd.3.2017.02.22.09.38.32
+Received: by 10.36.69.5 with SMTP id y5ls1374778ita.1.canary; Fri, 07 Oct 2016
+ 03:43:41 -0700 (PDT)
+X-Received: by 10.36.29.148 with SMTP id 142mr5019204itj.0.1475837020925;
+        Fri, 07 Oct 2016 03:43:40 -0700 (PDT)
+Return-Path: <lars@metafoo.de>
+Received: from www381.your-server.de (www381.your-server.de. [78.46.137.84])
+        by gmr-mx.google.com with ESMTPS id w124si458537ywc.4.2016.10.07.03.43.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 22 Feb 2017 09:38:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Fri, 07 Oct 2016 03:43:40 -0700 (PDT)
+Received-SPF: neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) client-ip=78.46.137.84;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id c193so23592pfb.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 22 Feb 2017 09:38:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:mime-version:content-disposition
-         :user-agent;
-        bh=fgsZlgv97pS/erBQR6cDJxNDps1+UzfUTPQwEr++/D4=;
-        b=P1EwSxj7GEfXlP+odbsKOF1MhstyYNPdW8EDbH55NkYYkpzqqLbXohxs3uMSwTdMws
-         B/dhLzrLvkX5JpMjkr768L9X85S7NKVdJg28M+GQH4ezQkBWiCVaPJ8nJkOnmxTWjusw
-         07OYxZHJ4xoJWmN+RJ6VyN3ngJQPwceu7pIghjsi4SNvD2I/wqb+3byHLR6bh7JdNKrW
-         1ZXfTvAkHG5hq3ehgI+9htVjJfe6X1UBlNcVCVFG9E3AflAxzko7GFZFJU2pSceOe7EC
-         LdKNSa9UYmksipnlKjPRxDPNLxyWNOvh4zQjPd3d4zC49eDmCSdw5q4j2OXjDQ21EBcT
-         Zskw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
-         :content-disposition:user-agent;
-        bh=fgsZlgv97pS/erBQR6cDJxNDps1+UzfUTPQwEr++/D4=;
-        b=cZKO5XLvtyoW7GOXRIDvcNb/YeCX+/USGFkVYo4caxZKoz/GsCWOIi1JrvGX90cadA
-         nZXekxbLiwkTalCkbmXTuLmzRq9VsfTtEn/DG5Ysga6VJ411CsV2/UrQnAxr5dSSX3Sd
-         835xgemxHpPGq+JcfqE33gadQdtqk888YDP4khxXJDlLkysA4cTDd3SVC3j8QdX4BGSD
-         nW2+r+scGyRt/+DiiuvakJC97gHixDW2AIlRck9wdgzqbdQsnzkQcIGKEmVqxqwD6yLe
-         la7YgmqTmX37/PZtFesn1TnV34esf+Gv7dkZPAUsg/rHlUdjvfYUuiU0kBwo3Y0n8Qvo
-         xzuw==
-X-Gm-Message-State: AMke39kr1hdTJ8IY5R4snK7UdTVqqSLomowMB0D2Li5O3fhXLj3kzztf5frBdZgTGhR8+w==
-X-Received: by 10.84.142.101 with SMTP id 92mr48975200plw.66.1487785112704;
-        Wed, 22 Feb 2017 09:38:32 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([2405:204:5189:4d06:6cf8:d067:30d5:ddb2])
-        by smtp.gmail.com with ESMTPSA id j185sm4932447pgd.13.2017.02.22.09.38.31
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 22 Feb 2017 09:38:32 -0800 (PST)
-Message-ID: <58adcc98.c280630a.51210.7ec4@mx.google.com>
-X-Google-Original-Message-ID: <20170222173824.GA16593@<rvarsha016@gmail.com>>
-Date: Wed, 22 Feb 2017 23:08:24 +0530
-From: Varsha Rao <rvarsha016@gmail.com>
-To: William Hubbs <w.d.hubbs@gmail.com>,
-	Chris Brannon <chris@the-brannons.com>,
-	Kirk Reiser <kirk@reisers.ca>,
-	Samuel Thibault <samuel.thibault@ens-lyon.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] staging: speakup: Fix multiple checkpatch issues.
+       spf=neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) smtp.mailfrom=lars@metafoo.de
+Received: from [88.198.220.131] (helo=sslproxy02.your-server.de)
+	by www381.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
+	(Exim 4.85_2)
+	(envelope-from <lars@metafoo.de>)
+	id 1bsScq-0006hV-3e; Fri, 07 Oct 2016 12:43:36 +0200
+Received: from [2003:86:2c57:7e00:8200:bff:fe9b:6612]
+	by sslproxy02.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-SHA:256)
+	(Exim 4.84_2)
+	(envelope-from <lars@metafoo.de>)
+	id 1bsScp-0003wi-RV; Fri, 07 Oct 2016 12:43:35 +0200
+Subject: Re: [PATCH] staging: iio: ad7606: implement
+ IIO_CHAN_INFO_OVERSAMPLING_RATIO
+To: linux-iio@vger.kernel.org, outreachy-kernel@googlegroups.com,
+ Michael.Hennerich@analog.com, jic23@kernel.org, knaack.h@gmx.de,
+ pmeerw@pmeerw.net, gregkh@linuxfoundation.org
+References: <1475764920-7770-1-git-send-email-eraretuya@gmail.com>
+ <baef9fc5-c3de-3b47-4e17-de559027e0b4@metafoo.de>
+ <20161007060246.GA7872@Socrates-DK>
+From: Lars-Peter Clausen <lars@metafoo.de>
+X-Enigmail-Draft-Status: N1110
+Message-ID: <c68ee3c5-60f8-a50f-629c-31b1aee3ba02@metafoo.de>
+Date: Fri, 7 Oct 2016 12:43:35 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+ Icedove/45.1.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.7.1 (2016-10-04)
+In-Reply-To: <20161007060246.GA7872@Socrates-DK>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 8bit
+X-Authenticated-Sender: lars@metafoo.de
+X-Virus-Scanned: Clear (ClamAV 0.99.2/22319/Fri Oct  7 07:44:46 2016)
 
-Fixes multiple checkpatch issues in speakup driver.
+On 10/07/2016 08:02 AM, Eva Rachel Retuya wrote:
+> On Thu, Oct 06, 2016 at 05:43:36PM +0200, Lars-Peter Clausen wrote:
+>> On 10/06/2016 04:42 PM, Eva Rachel Retuya wrote:
+>>> This driver predates the availability of IIO_CHAN_INFO_OVERSAMPLING_RATIO
+>>> attribute wherein usage has some advantages like it can be accessed by
+>>> in-kernel consumers as well as reduces the code size.
+>>>
+>>> Therefore, use IIO_CHAN_INFO_OVERSAMPLING_RATIO to implement the
+>>> oversampling_ratio attribute instead of using IIO_DEVICE_ATTR() macro.
+>>>
+>>> Move code from the functions associated with IIO_DEVICE_ATTR() into
+>>> the read_raw hook as well as add the write_raw hook with both masks set
+>>> to IIO_CHAN_INFO_OVERSAMPLING_RATIO.
+>>>
+>>> Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
+>>
+>> Looks good, thanks.
+>>
+>> Acked-by: Lars-Peter Clausen <lars@metafoo.de>
+>>
+> 
+> Thank you for the feedback!
+> 
+>> I did some cleanup on this driver last week (not yet submitted), this was
+>> the last bit I hadn't gotten to yet that needs to be done before the driver
+>> can be moved out of staging.
+> 
+> Anything else about this driver that needs to be addressed? I'll be glad
+> to help submit patches for those (and in the process learn something new).
 
-Varsha Rao (2):
-  staging: speakup: Removed blank line after open braces.
-  staging: speakup: Added spaces around arithmetic operators.
+One thing I haven't addressed yet is the regulator handling. Currently the
+driver ignores all errors regulator_get(). This is incorrect and among other
+things breaks probe deferral (EPROBE_DEFER). The correct behavior is to
+propagate the error to the upper layers so they can handle it accordingly.
+Another reason to do this is that the device can't work without power
+enabled, so it needs a regulator connected. If the specific design uses a
+static always-on regulator and does not explicitly specify it
+regulator_get() will return the dummy regulator.
 
- drivers/staging/speakup/kobjects.c       |  7 +++----
- drivers/staging/speakup/selection.c      |  2 +-
- drivers/staging/speakup/serialio.c       | 13 ++++++-------
- drivers/staging/speakup/speakup_acntpc.c | 10 +++++-----
- 4 files changed, 15 insertions(+), 17 deletions(-)
+Another thing regarding regulator handling is that the names passed to
+regulator_get() should match the name of the supply as specified in the
+device datasheet. In this case the supply is called AVcc, while the driver
+passes just "vcc". Since it is custom to use the lower-caps version of the
+datasheet name this should be replaced with "avcc".
 
--- 
-2.9.3
+If you are interested in this type of issue I think you'll be able to find a
+few more in the staging IIO tree that also need to be addressed. And
+potentially even in the regular IIO tree. The following cocci snippet should
+be able to help you identify potential candidates (it's not very
+sophisticated, so there will be false positives and false negatives).
+
+@r1@
+expression reg;
+position p;
+@@
+reg = \(devm_regulator_get@p\|regulator_get@p\)(...);
+if (IS_ERR(reg)) {
+	...
+	PTR_ERR(reg)
+	...
+}
+
+@@
+position p != r1.p;
+@@
+*\(devm_regulator_get@p\|regulator_get@p\)(...)
+
+
+I've pushed my changes to ad7606 driver for reference to
+https://github.com/analogdevicesinc/linux/tree/iio-ad7605
+
+I still need to test them with real hardware before I'll submit them and
+this has to wait until after ELCE next week.
+
+> 
+> By the way, this particular code took my attention (from write_raw of
+> this patch):
+> 
+> 		gpio_set_value(st->pdata->gpio_os0, (ret >> 0) & 1);
+> 		gpio_set_value(st->pdata->gpio_os1, (ret >> 1) & 1);
+> 		gpio_set_value(st->pdata->gpio_os1, (ret >> 2) & 1);
+> 
+> The last line, st->pdata->gpio_os1, is that really intended or is it a
+> typo? It could have been st->pdata->gpio_os2. I checked the datasheet
+> and definition, looks like a typo to me. Just checking with everyone for
+> confirmation.
+
+Nice catch, that's most certainly a bug. I didn't even notice this when
+refactoring the code. Please send a fix.
 
 
