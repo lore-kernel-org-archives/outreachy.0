@@ -1,112 +1,114 @@
-X-GM-THRID: 6389055061138341888
-X-Received: by 10.200.46.185 with SMTP id h54mr340315qta.42.1487567802178;
-        Sun, 19 Feb 2017 21:16:42 -0800 (PST)
+X-GM-THRID: 6339007538213683200
+X-Received: by 10.107.169.35 with SMTP id s35mr1273805ioe.26.1475920116085;
+        Sat, 08 Oct 2016 02:48:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.141.19 with SMTP id p19ls2669346iod.9.gmail; Sun, 19 Feb
- 2017 21:16:41 -0800 (PST)
-X-Received: by 10.99.222.21 with SMTP id f21mr7398292pgg.23.1487567801485;
-        Sun, 19 Feb 2017 21:16:41 -0800 (PST)
-Return-Path: <kdunne@mail.ccsf.edu>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id h130si2033491pfe.1.2017.02.19.21.16.41
+Received: by 10.36.3.17 with SMTP id e17ls1899494ite.21.canary; Sat, 08 Oct
+ 2016 02:48:35 -0700 (PDT)
+X-Received: by 10.66.23.35 with SMTP id j3mr3758743paf.39.1475920115629;
+        Sat, 08 Oct 2016 02:48:35 -0700 (PDT)
+Return-Path: <juliana.orod@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id 80si2871143pfw.0.2016.10.08.02.48.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 19 Feb 2017 21:16:41 -0800 (PST)
-Received-SPF: neutral (google.com: 2607:f8b0:400e:c05::244 is neither permitted nor denied by best guess record for domain of kdunne@mail.ccsf.edu) client-ip=2607:f8b0:400e:c05::244;
+        Sat, 08 Oct 2016 02:48:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@mail-ccsf-edu.20150623.gappssmtp.com;
-       spf=neutral (google.com: 2607:f8b0:400e:c05::244 is neither permitted nor denied by best guess record for domain of kdunne@mail.ccsf.edu) smtp.mailfrom=kdunne@mail.ccsf.edu
-Received: by mail-pg0-x244.google.com with SMTP id 1so4181003pgz.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 19 Feb 2017 21:16:41 -0800 (PST)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x241.google.com with SMTP id 128so2614408pfz.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 08 Oct 2016 02:48:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=mail-ccsf-edu.20150623.gappssmtp.com; s=20150623;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=lyLy9zxeOLJlTjOJ24n/xhKi/V8Gyqj8doyzErA78/g=;
-        b=UBznN59aDx8jAIauqemMa7KmHqR99KlL2jGPOmAEvSb+jYEuLbkkX18IGTciIRA4f9
-         HqPMy18TJR5R4Gp07nwZMVBmmF4Q4fln6KMOvYo0clnuwRQzggWYO+2cWXhoB8znNkRG
-         uiGTFQIgBTHoZXJYwdIehboMZ8H3gFWZ9QpkavIiLqny1cyNL1VMJ3epTuIN0+SoWb88
-         bEJGr09sfbX6BNk06h2c5yxMr5fLgwudjvIYeBRzp7NzJpLQQ+d/WIn69sS8Hc1gIF1S
-         e/CBLf7PnRPjA66oUSBJQw4ijE6rCUR2MGoNEIRmK36Ujd1Hgj9lzZI+IZh44W/O04AI
-         ARLQ==
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=HaWOd9SOs1F2kja1sv/XsgnjpPQidM5oOR8sHYQ3/EA=;
+        b=dX/KC9KMBRsqULPFkiyT4g2OC0o2vU9jnNJTOdvOqHO7uwiqLSsAWIgj6wKnHpAH5x
+         d9qI49OYzHfEUncl/fdpI7/SkoUNz27fF3zls/KlLw56byYkyurx1CoRg7SgqphbpVrB
+         3s/pv10sW9npwxneBol1raoAOPCGMH3PCMVagEcFc8xoUMXAEy4y9femepnrC9oprCC2
+         Bv9IbO7ky1kvjMcQlozhDtyCcPuqXZGiKy6bid40fLx/hzoIhEtLOWOUoUEVneEujjXg
+         KnQqDhQZ+tjXxYN0J+gQ/UsX8I/Ms1nMMeVTtdfDptWxDkCccpdmhMhHyUmpj10MqJ/C
+         V8Rw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=lyLy9zxeOLJlTjOJ24n/xhKi/V8Gyqj8doyzErA78/g=;
-        b=ez40Y0KZRfDqHEDK4I2NaCJuZdWNJ3nY2yahczklD0XOKFjQ1F3JI66vKSme+2Ur/y
-         jrZOBUTFwGE4pS3689DDluVGeVNuHJwaPbVrjpwCQ6Aq3XjSL/4CdGcv3I2J3tFAtNFl
-         KlAtsBZ5I71C5yxk9ngpar+5keqHxC/cp9n2cZXdZxWhvQobG0fhZnNMP4DlOKi15+QY
-         4TyPlgUqRN/yTukghigWH/bJ1OorVmrhe5/5dTIZrsFz+K138hKS68STS2YJ1lIDkKfC
-         XcboCCkI7CbaHo2emM6VesVYy+cUuqZAAhownqYi04/2IjrXYLV0XfL6EBoyKLwL3MwK
-         fhUg==
-X-Gm-Message-State: AMke39nQW85IfxNJzWlUEG58H+/xzoMKV52/KnyVaCsufHzOQ78lfD4lLyPDTIxj7uhqftMA
-X-Received: by 10.99.231.5 with SMTP id b5mr25639268pgi.80.1487567801253;
-        Sun, 19 Feb 2017 21:16:41 -0800 (PST)
-Return-Path: <kdunne@mail.ccsf.edu>
-Received: from katie-Inspiron-5748 (c-67-188-119-183.hsd1.ca.comcast.net. [67.188.119.183])
-        by smtp.gmail.com with ESMTPSA id c74sm31983139pfc.1.2017.02.19.21.16.40
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=HaWOd9SOs1F2kja1sv/XsgnjpPQidM5oOR8sHYQ3/EA=;
+        b=ZmMk6L3pUpNEazJlyOg3AGdct9WO2oLvGp+eteSv949iJwZuK6FFEcH3HmrgS3TVT4
+         X3zxj/HymQTGLXrHYcfbxq8TyGVr1Tjf2Un0wRVUu/UfaCEAd9bJqm1uHtXpPzrpavXm
+         t4SzprSdsw0QQ3na/5CMXpEF2bySgYC8NPLE0uJla+MkaWvkDl6+bTgYGxprapnBFig4
+         DTGFpUc39KbElDt2OPPVQsYdWfYWVRXqiLa2oWsZ6IOy7SGiqw/PafBJCRphz29NrlBR
+         9+1QSn6GHqrv/gl+XeI/DhbJHhIWtDv/w0+npR2fyVieVQpOxLaP2hEvRLrhhJmX1j2s
+         c1Dw==
+X-Gm-Message-State: AA6/9RlqeguuCK725rSYb2eYQH+acXQRRBhp3CirQbOWsbh6IgcdjXDp2U5HClOd0qvIbg==
+X-Received: by 10.98.87.140 with SMTP id i12mr37192539pfj.157.1475920115453;
+        Sat, 08 Oct 2016 02:48:35 -0700 (PDT)
+Return-Path: <juliana.orod@gmail.com>
+Received: from spock ([177.68.230.98])
+        by smtp.gmail.com with ESMTPSA id p26sm19962832pfj.80.2016.10.08.02.48.34
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 19 Feb 2017 21:16:40 -0800 (PST)
-Date: Sun, 19 Feb 2017 21:14:29 -0800
-From: Katie Dunne <kdunne@mail.ccsf.edu>
-To: outreachy-kernel@googlegroups.com
-Cc: greg@kroah.com, sudipm.mukherjee@gmail.com,
-	teddy.wang@siliconmotion.com, sudip@vectorindia.org
-Subject: [PATCH] staging: sm750fb: add spaces around operators
-Message-ID: <20170220051429.GA3847@katie-Inspiron-5748>
+        Sat, 08 Oct 2016 02:48:35 -0700 (PDT)
+Date: Sat, 8 Oct 2016 06:48:31 -0300
+From: Juliana Rodrigues <juliana.orod@gmail.com>
+To: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: [PATCH v2 08/13] staging: wlan-ng: renames hfa384x_ChInfoResultSub
+ to avoid camelcase
+Message-ID: <20161008094831.GA13546@spock>
+References: <cover.1475919731.git.juliana.orod@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <cover.1475919731.git.juliana.orod@gmail.com>
+User-Agent: Mutt/1.7.0 (2016-08-17)
 
-Add spaces around operators -, *, ?:, >>, << to conform to kernel style.
-These instances were found with checkpatch.pl
+Renames the camelcased struct hfa384x_ChInfoResultSub to
+hfa384x_ch_info_result_sub in order to fix a checkpatch warning.
 
-Signed-off-by: Katie Dunne <kdunne@mail.ccsf.edu>
+Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
 ---
- drivers/staging/sm750fb/sm750_cursor.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/wlan-ng/hfa384x.h   | 4 ++--
+ drivers/staging/wlan-ng/prism2sta.c | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/sm750fb/sm750_cursor.c b/drivers/staging/sm750fb/sm750_cursor.c
-index b1651b0..dbc8bb1 100644
---- a/drivers/staging/sm750fb/sm750_cursor.c
-+++ b/drivers/staging/sm750fb/sm750_cursor.c
-@@ -111,14 +111,14 @@ void sm750_hw_cursor_setData(struct lynx_cursor *cursor,
- 		data = 0;
+diff --git a/drivers/staging/wlan-ng/hfa384x.h b/drivers/staging/wlan-ng/hfa384x.h
+index e3fae14..7b6b373 100644
+--- a/drivers/staging/wlan-ng/hfa384x.h
++++ b/drivers/staging/wlan-ng/hfa384x.h
+@@ -678,7 +678,7 @@ struct hfa384x_scan_result {
+ } __packed;
  
- 		for (j = 0; j < 8; j++) {
--			if (mask & (0x80>>j)) {
-+			if (mask & (0x80 >> j)) {
- 				if (rop == ROP_XOR)
- 					opr = mask ^ color;
- 				else
- 					opr = mask & color;
+ /*--  Inquiry Frame, Diagnose: ChInfo Results & Subfields--*/
+-struct hfa384x_ChInfoResultSub {
++struct hfa384x_ch_info_result_sub {
+ 	u16 chid;
+ 	u16 anl;
+ 	u16 pnl;
+@@ -690,7 +690,7 @@ struct hfa384x_ChInfoResultSub {
  
- 				/* 2 stands for forecolor and 1 for backcolor */
--				data |= ((opr & (0x80>>j))?2:1)<<(j*2);
-+				data |= ((opr & (0x80 >> j)) ? 2 : 1) << (j * 2);
- 			}
- 		}
- 		iowrite16(data, pbuffer);
-@@ -165,13 +165,13 @@ void sm750_hw_cursor_setData2(struct lynx_cursor *cursor,
- 		data = 0;
+ struct hfa384x_ChInfoResult {
+ 	u16 scanchannels;
+-	struct hfa384x_ChInfoResultSub result[HFA384x_CHINFORESULT_MAX];
++	struct hfa384x_ch_info_result_sub result[HFA384x_CHINFORESULT_MAX];
+ } __packed;
  
- 		for (j = 0; j < 8; j++) {
--			if (mask & (1<<j))
--				data |= ((color & (1<<j))?1:2)<<(j*2);
-+			if (mask & (1 << j))
-+				data |= ((color & (1 << j)) ? 1 : 2) << (j * 2);
- 		}
- 		iowrite16(data, pbuffer);
+ /*--  Inquiry Frame, Diagnose: Host Scan Results & Subfields--*/
+diff --git a/drivers/staging/wlan-ng/prism2sta.c b/drivers/staging/wlan-ng/prism2sta.c
+index 8a91534..0d2bc69 100644
+--- a/drivers/staging/wlan-ng/prism2sta.c
++++ b/drivers/staging/wlan-ng/prism2sta.c
+@@ -1139,8 +1139,8 @@ static void prism2sta_inf_chinforesults(struct wlandevice *wlandev,
+ 	    le16_to_cpu(inf->info.chinforesult.scanchannels);
  
- 		/* assume pitch is 1,2,4,8,...*/
--		if (!(i&(pitch-1))) {
-+		if (!(i & (pitch - 1))) {
- 			/* need a return */
- 			pstart += offset;
- 			pbuffer = pstart;
+ 	for (i = 0, n = 0; i < HFA384x_CHINFORESULT_MAX; i++) {
+-		struct hfa384x_ChInfoResultSub *result;
+-		struct hfa384x_ChInfoResultSub *chinforesult;
++		struct hfa384x_ch_info_result_sub *result;
++		struct hfa384x_ch_info_result_sub *chinforesult;
+ 		int chan;
+ 
+ 		if (!(hw->channel_info.results.scanchannels & (1 << i)))
 -- 
-2.7.4
+2.10.0
 
 
