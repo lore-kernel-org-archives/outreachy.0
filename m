@@ -1,75 +1,80 @@
 X-GM-THRID: 6338894673462951936
-X-Received: by 10.28.207.131 with SMTP id f125mr88560wmg.10.1475903951365;
-        Fri, 07 Oct 2016 22:19:11 -0700 (PDT)
+X-Received: by 10.66.22.100 with SMTP id c4mr561418paf.110.1475888926018;
+        Fri, 07 Oct 2016 18:08:46 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.193.130 with SMTP id r124ls1118077wmf.19.canary; Fri, 07
- Oct 2016 22:19:10 -0700 (PDT)
-X-Received: by 10.28.224.195 with SMTP id x186mr89981wmg.14.1475903950803;
-        Fri, 07 Oct 2016 22:19:10 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id p199si426565wmd.1.2016.10.07.22.19.10
+Received: by 10.157.29.220 with SMTP id w28ls6287658otw.27.gmail; Fri, 07 Oct
+ 2016 18:08:45 -0700 (PDT)
+X-Received: by 10.31.108.92 with SMTP id h89mr5672106vkc.18.1475888925671;
+        Fri, 07 Oct 2016 18:08:45 -0700 (PDT)
+Return-Path: <ruchandani.tina@gmail.com>
+Received: from mail-oi0-x230.google.com (mail-oi0-x230.google.com. [2607:f8b0:4003:c06::230])
+        by gmr-mx.google.com with ESMTPS id f196si394079ita.1.2016.10.07.18.08.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 07 Oct 2016 22:19:10 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Fri, 07 Oct 2016 18:08:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruchandani.tina@gmail.com designates 2607:f8b0:4003:c06::230 as permitted sender) client-ip=2607:f8b0:4003:c06::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.31,310,1473112800"; 
-   d="scan'208";a="196053807"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 08 Oct 2016 07:19:10 +0200
-Date: Sat, 8 Oct 2016 07:19:09 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Tina Ruchandani <ruchandani.tina@gmail.com>
-cc: outreachy-alums@gnome.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] 'Hobbyist' pass available for Linux Plumbers
- Conference, 2016
-In-Reply-To: <CAB__kkmMzZRg=p1zyKpUquS30cfQ7bwJUn5vo==nDqTUadyZFA@mail.gmail.com>
-Message-ID: <alpine.DEB.2.10.1610080718280.3176@hadrien>
-References: <CAB__kkmMzZRg=p1zyKpUquS30cfQ7bwJUn5vo==nDqTUadyZFA@mail.gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of ruchandani.tina@gmail.com designates 2607:f8b0:4003:c06::230 as permitted sender) smtp.mailfrom=ruchandani.tina@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-oi0-x230.google.com with SMTP id m72so74797893oik.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 07 Oct 2016 18:08:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:from:date:message-id:subject:to;
+        bh=6a+vDjNgy7metmCUkBiQkpp6gWsRk0/wIRxdIV2OWoU=;
+        b=AvuUupbM0wYAiVq9wAQbBff79oLIIjaV33jN6TQ/fiqhzphtoKm8WoFExdXafXETF0
+         Ptc4dIrnei7bZD8oktJTY/hShHePpSKSUO4GKY2DmPD9zUMLL9Wq+s3s+s/AUjVpUjdi
+         D8Kt0nBK13PBANE1G8TTYo0TIw5BV0NfvUqZaHnXJxuEFZownInsYn8Ol4bKyZ1rCl99
+         uSGaORuo0QKol4oEO1/73Hg3F5X4IMEZ1+k0krzxhQiNtDb8rkHrI5eqhbjT6FAjNUa0
+         kwT/KYqnigziE+TLVRYdGxLoA2ynYYMSyJNVor3Jg6LIpCn/DZiF8PB3GgP3OiqFHr2/
+         WkjA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+        bh=6a+vDjNgy7metmCUkBiQkpp6gWsRk0/wIRxdIV2OWoU=;
+        b=BSG4niGOeZAtbpIGouUrjQOHgPk9YsHyAZN2cL6CAylWvV5lRsB+VftlKYAl6GjWkZ
+         Q4IaSXUCHOD0a8k6KsGFetKNxYGJwsMXp5kKh2RQoSlOBl8XaY7N1Kehpm0hubJe0FqW
+         pc6IP6s90F1dodYE2ZpAX47icuq+peTuscPnaQugiAafLiG//CxV6Umk7M7GlD6RxFrQ
+         cfC/njLt0lZu2xQqJ8qazdljbS3U6rhr+FltpNBIqgxkQ8lCM1BppPiNcA7Ryzl+0m1+
+         9ul0RplOj3cYuvI0r3YsDSH0U5yPXeIjFJNn0F4yHsdiXace+Xae+InGPZySWYymiPt9
+         U2hg==
+X-Gm-Message-State: AA6/9Rn5O8QZqYouk+kXAe2i/gTx2Lp48d9e1DInN7Cpbe5jISS9bFYV5waJ1DH92F4V8mhxHVhsD95f81pXVw==
+X-Received: by 10.202.82.7 with SMTP id g7mr18443612oib.112.1475888925476;
+ Fri, 07 Oct 2016 18:08:45 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-96886493-1475903950=:3176"
+Received: by 10.182.158.167 with HTTP; Fri, 7 Oct 2016 18:08:45 -0700 (PDT)
+From: Tina Ruchandani <ruchandani.tina@gmail.com>
+Date: Fri, 7 Oct 2016 18:08:45 -0700
+Message-ID: <CAB__kkmMzZRg=p1zyKpUquS30cfQ7bwJUn5vo==nDqTUadyZFA@mail.gmail.com>
+Subject: 'Hobbyist' pass available for Linux Plumbers Conference, 2016
+To: outreachy-alums@gnome.org, outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary=001a113d7a1a2190b5053e502b3f
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+--001a113d7a1a2190b5053e502b3f
+Content-Type: text/plain; charset=UTF-8
 
---8323329-96886493-1475903950=:3176
-Content-Type: TEXT/PLAIN; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+Hello fellow Outreachy folks,
+I have a hobbyist registration pass for Linux Plumbers Conference in Santa
+Fe, New Mexico, this year (Nov 1st-4th). Unfortunately, I am not able to
+make it there due to visa issues. If any of you fellow OPW folks are
+interested in attending, I will be happy to transfer my registration. The
+requirement for the hobbyist pass is that you cannot be employed in a
+Linux-based role in industry.
+Thanks,
+Tina
 
+--001a113d7a1a2190b5053e502b3f
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
+<div dir=3D"ltr">Hello fellow Outreachy folks,<div>I have a hobbyist regist=
+ration pass for Linux Plumbers Conference in Santa Fe, New Mexico, this yea=
+r (Nov 1st-4th). Unfortunately, I am not able to make it there due to visa =
+issues. If any of you fellow OPW folks are interested in attending, I will =
+be happy to transfer my registration. The requirement for the hobbyist pass=
+ is that you cannot be employed in a Linux-based role in industry.=C2=A0</d=
+iv><div>Thanks,</div><div>Tina</div></div>
 
-On Fri, 7 Oct 2016, Tina Ruchandani wrote:
-
-> Hello fellow Outreachy folks,I have a hobbyist registration pass for Linux
-> Plumbers Conference in Santa Fe, New Mexico, this year (Nov 1st-4th).
-> Unfortunately, I am not able to make it there due to visa issues. If any of
-> you fellow OPW folks are interested in attending, I will be happy to
-> transfer my registration. The requirement for the hobbyist pass is that you
-> cannot be employed in a Linux-based role in industry. 
-
-I highly recommend this conference for anyone interested in the details of
-Linux kernel development.
-
-julia
-
-
-> Thanks,
-> Tina
->
-> --
-> You received this message because you are subscribed to the Google Groups
-> "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an
-> email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CAB__kkmMzZRg%3Dp1zyKpUq
-> uS30cfQ7bwJUn5vo%3D%3DnDqTUadyZFA%40mail.gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
->
---8323329-96886493-1475903950=:3176--
+--001a113d7a1a2190b5053e502b3f--
 
