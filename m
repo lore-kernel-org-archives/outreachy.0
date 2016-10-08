@@ -1,60 +1,73 @@
 X-GM-THRID: 6339053517033963520
-X-Received: by 10.98.207.69 with SMTP id b66mr7544160pfg.2.1476021038910;
-        Sun, 09 Oct 2016 06:50:38 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.3.212 with SMTP id f78ls7844380otf.43.gmail; Sun, 09 Oct
- 2016 06:50:38 -0700 (PDT)
-X-Received: by 10.159.39.138 with SMTP id b10mr7296914uab.7.1476021038458;
-        Sun, 09 Oct 2016 06:50:38 -0700 (PDT)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id 7si7427144par.0.2016.10.09.06.50.38
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 09 Oct 2016 06:50:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (pes75-3-78-192-101-3.fbxo.proxad.net [78.192.101.3])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 8146578D;
-	Sun,  9 Oct 2016 13:50:37 +0000 (UTC)
-Date: Sun, 9 Oct 2016 15:50:44 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Varsha Rao <rvarsha016@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, forest@alittletooquiet.net
-Subject: Re: [PATCH] staging: vt6655: Replace BBvClearFOE by bbvclearfoe
-Message-ID: <20161009135044.GA30914@kroah.com>
+Date: Sat, 8 Oct 2016 13:10:50 -0700 (PDT)
+From: Varsha Rao <rvarsha016@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: rvarsha016@gmail.com, forest@alittletooquiet.net,
+	gregkh@linuxfoundation.org
+Message-Id: <d15336f4-5027-4b19-b3fd-52f4fac150c0@googlegroups.com>
+In-Reply-To: <a1961e47-6b73-4943-aac5-f2b5593bfc32@googlegroups.com>
 References: <20161008112506.GA12694@euri>
+ <alpine.DEB.2.10.1610081940270.3259@hadrien>
+ <a1961e47-6b73-4943-aac5-f2b5593bfc32@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: vt6655: Replace BBvClearFOE
+ by bbvclearfoe
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20161008112506.GA12694@euri>
-User-Agent: Mutt/1.7.0 (2016-08-17)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_823_554107149.1475957450253"
+X-Google-Token: EMql5b8FupXy_fijk0E0
+X-Google-IP: 103.62.68.129
 
-On Sat, Oct 08, 2016 at 04:55:06PM +0530, Varsha Rao wrote:
-> This patch fixes the checkpatch issue by replacing BBvClearFOE with bbvclearfoe.
-> Avoid CamelCase: <BBvClearFOE>
-> 
-> Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
-> ---
->  drivers/staging/vt6655/baseband.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/vt6655/baseband.h b/drivers/staging/vt6655/baseband.h
-> index 6d9a936..a732fba 100644
-> --- a/drivers/staging/vt6655/baseband.h
-> +++ b/drivers/staging/vt6655/baseband.h
-> @@ -58,7 +58,7 @@
->  #define TOP_RATE_2M         0x00200000
->  #define TOP_RATE_1M         0x00100000
->  
-> -#define BBvClearFOE(dwIoBase)				\
-> +#define bbvclearfoe(dwIoBase)				\
->  	BBbWriteEmbedded(dwIoBase, 0xB1, 0)
+------=_Part_823_554107149.1475957450253
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_824_856099804.1475957450253"
 
-As this isn't used at all, why not just remove it?
+------=_Part_824_856099804.1475957450253
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-thanks,
 
-greg k-h
+
+On Saturday, October 8, 2016 at 11:39:12 PM UTC+5:30, Varsha Rao wrote:
+>
+>
+> Is the macro never used?  It is strange to change a definition without at 
+>> least one use.  If there is no use, then the macro can be dropped. 
+>>
+>
+>     No,it is not used anywhere else.I have checked it using grep command .
+>     I will remove it.
+>
+
+     On executing make command ,after it's removal  gives error.
+
+      In file included from drivers/staging/vt6655/device_main.c:53:0:
+     drivers/staging/vt6655/baseband.h:62:34: error: "0xB1" may not appear 
+in 
+      macro parameter list
+      #define BBbWriteEmbedded(iobase, 0xB1, 0)
+
+
+------=_Part_824_856099804.1475957450253
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Saturday, October 8, 2016 at 11:39:12 PM UTC+5:=
+30, Varsha Rao wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;m=
+argin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><div dir=
+=3D"ltr"><br><blockquote class=3D"gmail_quote" style=3D"margin:0;margin-lef=
+t:0.8ex;border-left:1px #ccc solid;padding-left:1ex">Is the macro never use=
+d? =C2=A0It is strange to change a definition without at
+<br>least one use. =C2=A0If there is no use, then the macro can be dropped.
+<br></blockquote><div><br>=C2=A0 =C2=A0 No,it is not used anywhere else.I h=
+ave checked it using grep command .<br>=C2=A0=C2=A0=C2=A0 I will remove it.=
+<br></div></div></blockquote><div><br>=C2=A0 =C2=A0=C2=A0 On executing make=
+ command ,after it&#39;s removal=C2=A0 gives error.<br><br>=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 In file included from drivers/staging/vt6655/device_main.c:=
+53:0:<br>=C2=A0=C2=A0=C2=A0=C2=A0 drivers/staging/vt6655/baseband.h:62:34: =
+error: &quot;0xB1&quot; may not appear in <br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 macro parameter list<br>=C2=A0 =C2=A0 =C2=A0 #define BBbWriteEmbedded(i=
+obase, 0xB1, 0)<br><br></div></div>
+------=_Part_824_856099804.1475957450253--
+
+------=_Part_823_554107149.1475957450253--
 
