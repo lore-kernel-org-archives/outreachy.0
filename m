@@ -1,170 +1,97 @@
-X-GM-THRID: 6342326313987080192
-X-Received: by 10.98.150.142 with SMTP id s14mr6456890pfk.33.1476687917635;
-        Mon, 17 Oct 2016 00:05:17 -0700 (PDT)
+X-GM-THRID: 6339006763773198336
+X-Received: by 10.129.102.137 with SMTP id a131mr6348720ywc.80.1475919959080;
+        Sat, 08 Oct 2016 02:45:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.111.201 with SMTP id x192ls2034045itb.14.canary; Mon, 17
- Oct 2016 00:05:16 -0700 (PDT)
-X-Received: by 10.36.228.198 with SMTP id o189mr2660300ith.22.1476687916431;
-        Mon, 17 Oct 2016 00:05:16 -0700 (PDT)
-Return-Path: <gnudevliz@gmail.com>
-Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
-        by gmr-mx.google.com with ESMTPS id 7si4864824par.0.2016.10.17.00.05.16
+Received: by 10.107.59.15 with SMTP id i15ls2620060ioa.28.gmail; Sat, 08 Oct
+ 2016 02:45:55 -0700 (PDT)
+X-Received: by 10.98.97.193 with SMTP id v184mr3460868pfb.10.1475919955220;
+        Sat, 08 Oct 2016 02:45:55 -0700 (PDT)
+Return-Path: <juliana.orod@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id 80si2869495pfw.0.2016.10.08.02.45.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 17 Oct 2016 00:05:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
+        Sat, 08 Oct 2016 02:45:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=gnudevliz@gmail.com;
+       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x236.google.com with SMTP id rz1so61337846pab.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 17 Oct 2016 00:05:16 -0700 (PDT)
+Received: by mail-pf0-x241.google.com with SMTP id 190so4197901pfv.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 08 Oct 2016 02:45:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+        h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=OEijSEQtuc2zOH0Xvnah3HlnI3eRjVgSYmEmXwrheIs=;
-        b=km3dnbI68Ics4M/lHNGRANfHowaGGLGdxeZyDw0jWXi2k9VwYrnH/DrLV9ZR+PdLov
-         sLFHbodM2/B3QKedmKu9mxXcPUxjl/e4GhsHe1/wPACsRi09H1TspCHObkSoZD94aA7H
-         Ulv7klXqYMsIi2xGPHOYe78q1/D9f3Jb50ur28qqZ6uwvn8SSUmS296ZDEZklrhGPRDV
-         jmPIrQQ/Jh3GH3WVt6/N5dNIoFFGl2w+SRexipn6olV71+Ydq+dVAwnLkRCGlP1wdH7u
-         jhP0TWaAaSbDRtV1H0BJITKFMXOe/MrlHN0lrovI2v3xHfLgXHoLj/6ksTQUAcYW1Nsp
-         mE8Q==
+        bh=gp43AXDKXxz9rHMyahfk7u9TyNmtUJ1Xt8QcXX2dhC4=;
+        b=Jyz6gwrg3UH5Aupp4Jhp0oHKOuGeP3UncQ6Uvh2WKDFIX+bP2g1jq1q44R8UfM5EW8
+         ppI0c3502o8LBk6KRZKf9Qtzh+SrP6igV7Fhqm8TvR4hpOVkpKUJ2+g4XCafsoo1DDIX
+         iElm4gfTQL8UamCCQP8B/zJITZYiD7hl6qtM29SiWbTecXl1S9GGTD+AipAxYrlvG1LM
+         sibClDv+CzwdNQR0v82P1GScFqyijjRzPEYauoeaaUU0ecCPo1zevG3lDYwbXCi239JU
+         yXYz/e2A2t1i3mVZpeEN8ZYQvyQWhFz0SL2s60/2SsGOhZwDHdtWklrqoT7FprV3LJ5A
+         mM6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=OEijSEQtuc2zOH0Xvnah3HlnI3eRjVgSYmEmXwrheIs=;
-        b=XzeViAe8h3pu4HMjVocqe1ANQ3ZH9sm65VknbE7hZsh+bkGjNXQorEdAK+4WyVPc08
-         zsi4PrwcPrXhvpMGKygJVl4L8MYIRlWNyfwBvDR23keAOAhjT0NqJ2t3FIkk2eJ7lYM5
-         vCpenH2RiVSDlJGjgqAWYE8bi6cfV5M2/ROJII05BcwaxCI6ScBYRZk57J67eJ625vvP
-         hz/pXAUt6U3xYtNbIhps0H7fNMdhmcxzcS0tkkkHnTyyEyQQa+F0EJvT7W9bDKFNCpRk
-         rJIo9pk7abuVne2wL5cKm9YP5qwGAvYT8YBq4ugsUeObnMQFZlaN0mfC3a3lfwYtII0V
-         K6IQ==
-X-Gm-Message-State: AA6/9Rlr4IUy3E7dwo+7B3BSHsLFjktv5vPHzmG9Kn1beBU8A3kFh5TrCl1fcKErPATHug==
-X-Received: by 10.66.222.5 with SMTP id qi5mr29156779pac.138.1476687916089;
-        Mon, 17 Oct 2016 00:05:16 -0700 (PDT)
-Return-Path: <gnudevliz@gmail.com>
-Received: from localhost ([2601:644:300:fd6b:4e0f:6eff:fe69:e9ea])
-        by smtp.gmail.com with ESMTPSA id e74sm44153008pfk.13.2016.10.17.00.05.15
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 17 Oct 2016 00:05:15 -0700 (PDT)
-Date: Mon, 17 Oct 2016 00:05:13 -0700
-From: Elizabeth Ferdman <gnudevliz@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: julia.lawall@lip6.fr
-Subject: Coccinelle Small Task 1
-Message-ID: <20161017070509.GA21688@localhost>
+        bh=gp43AXDKXxz9rHMyahfk7u9TyNmtUJ1Xt8QcXX2dhC4=;
+        b=ZMWbFx1fR74MLoQEom0nBYOH/KRRQNzMWPoDZjpqN6/A+Msa7VLPeK+cHFxhxbFY3p
+         P/3KOd1LL11Le9y2JO6qq8+CttJROnRVCuXluknB7DzOvuBMYosiXs2snYy3MqAiZ8Wv
+         QGIySZDX128GieSs2mtDunoRGGhwL/hbSuTCRRK0qXF1fklyokReDSjZgYXu3EFWCJbu
+         ur8cCXK0DH9feiTrP/3TefqFDmnTQo8cW1ykTN8n7r6+/zQXTQSMLapoTZZpJO5ZUYPu
+         jwHiTG0A9wIWKfNViJ0aOlm3B0gs/Al/t1S4fSs9KLqbWUhBLTbWkh9iVjzgRvPfwuTU
+         PTJA==
+X-Gm-Message-State: AA6/9Rn45lYXDCFaqG3KJbeD30nvQPtebmoFH5YqNp6OGhox4NAQ1ksjXxFQ2zH78h/YIw==
+X-Received: by 10.98.103.193 with SMTP id t62mr26393028pfj.150.1475919955036;
+        Sat, 08 Oct 2016 02:45:55 -0700 (PDT)
+Return-Path: <juliana.orod@gmail.com>
+Received: from spock ([177.68.230.98])
+        by smtp.gmail.com with ESMTPSA id s74sm19966827pfs.44.2016.10.08.02.45.53
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 08 Oct 2016 02:45:54 -0700 (PDT)
+Date: Sat, 8 Oct 2016 06:45:51 -0300
+From: Juliana Rodrigues <juliana.orod@gmail.com>
+To: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: [PATCH v2 00/13] wlan-ng prism2sta cleanup
+Message-ID: <20161008094551.GA12055@spock>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="qMm9M+Fa2AknHoGS"
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
-
-
---qMm9M+Fa2AknHoGS
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+User-Agent: Mutt/1.7.0 (2016-08-17)
 
-Hey Julia,
+This patchset focuses on solving the following checkpatch warnings
+found on wlan-ng, mostly related to prism2sta file:
 
-I'm attaching Small Task 1. I found 9 cases where I thought
-constification was not possible and one where it was and I sent in a
-patch for that one. 
+  - Lines over 80 characters
+  - Block alignment to parenthesis
+  - Camelcased variables and structs
 
-Liz
+Changes in v2:
+  - fixed alignment blocks
+  - changed pointer line break for better comprehension
 
---qMm9M+Fa2AknHoGS
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: attachment; filename=cannotconst
+Juliana Rodrigues (13):
+  staging: wlan-ng: aligned block to open parenthesis
+  staging: wlan-ng: fixed lines over 80 characters
+  staging: wlan-ng: renames hfa384x_InfFrame to avoid camelcase
+  staging: wlan-ng: renames hfa384x_CommTallies32 to avoid camelcase
+  staging: wlan-ng: renames hfa384x_ScanResult to avoid camelcase
+  staging: wlan-ng: renames hfa384x_JoinRequest_data to avoid camelcase
+  staging: wlan-ng: renames hfa384x_scanResultSub to avoid camelcase
+  staging: wlan-ng: renames hfa384x_ChInfoResultSub to avoid camelcase
+  staging: wlan-ng: renames hfa384x_AssocStatus to avoid camelcase
+  staging: wlan-ng: renames hfa384x_authenticateStation_data to avoid
+    camelcase
+  staging: wlan-ng: renames CQ_currBSS to avoid camelcase
+  staging: wlan-ng: renames ASL_currBSS to avoid camelcase
+  staging: wlan-ng: renames ANL_currFC to avoid camelcase
 
-Constification is not possible in these cases because they break one of these rules: 
+ drivers/staging/wlan-ng/hfa384x.h    |  42 ++++-----
+ drivers/staging/wlan-ng/prism2mgmt.h |   3 +-
+ drivers/staging/wlan-ng/prism2sta.c  | 167 ++++++++++++++++++-----------------
+ 3 files changed, 109 insertions(+), 103 deletions(-)
 
-1. Never reassigned.
-2. Address never taken
-3. Not passed to a top-level macro call
-4. No pointer or array-typed field passed to a function or stored in a
-variable.
+-- 
+2.10.0
 
-1. drivers/staging/vme/devices/vme_user.c contains this struct:
-
-static struct vme_driver vme_user_driver = {
-         .name = driver_name,
-         .match = vme_user_match,
-         .probe = vme_user_probe,
-         .remove = vme_user_remove,
-}
-
-&vme_user_driver is then passed to this function where its members are being modified:
-
-int vme_register_driver(struct vme_driver *drv, unsigned int ndevs)
-{
-
-         drv->driver.name = drv->name;
-         drv->driver.bus = &vme_bus_type;
-
-2. Similar pattern occurs in drivers/staging/rtl8192u/r8192U_core.c 
-
-static struct usb_driver rtl8192_usb_driver
-
-is passed to usb_register and then usb_register_driver which modifies its members.
-
-The pattern seems to be when a struct is passed to a function with "register" in the name it gets modified?
-
-3. drivers/staging/sm750fb/sm750.c contains this struct:
-
-static struct fb_ops lynxfb_ops = {
-        .owner = THIS_MODULE,
-        .fb_check_var =  lynxfb_ops_check_var,
-        .fb_set_par = lynxfb_ops_set_par,
-        .fb_setcolreg = lynxfb_ops_setcolreg,
-        .fb_blank = lynxfb_ops_blank,
-        .fb_fillrect = cfb_fillrect,
-        .fb_imageblit = cfb_imageblit,
-        .fb_copyarea = cfb_copyarea,
-        /* cursor */
-        .fb_cursor = lynxfb_ops_cursor,
-};
-
-it gets assigned a new member in the same file:
-
-        lynxfb_ops.fb_pan_display = lynxfb_ops_pan_display;
-
-4. drivers/staging/rtl8712/usb_intf.c contains
-static struct drv_priv drvpriv = {...}
-
-The init function modifies this struct: 
-static int __init r8712u_drv_entry(void)
-{
-        drvpriv.drv_registered = true;
-5. In drivers/staging/wilc1000/wilc_sdio.c
- static struct sdio_driver wilc1000_sdio_driver is passed to module_driverfunction which is a macro call.
-
-6. In drivers/staging/octeon-usb/octeon-hcd.c,
-There is a 
-static struct platform_driver octeon_usb_driver
-
-Its address is passed to a platform_driver_register function 
-
-7. In drivers/staging/comedi/drivers/rtd520.c,
-
-The address of static struct comedi_driver rtd520_driver is passed to comedi_pci_auto_config
-
-8. In drivers/staging/android/ion/ion_carveout_heap.c,
-
-static struct ion_heap_ops carveout_heap_ops 
-
-There is an assignment which looks like this: 
-
-carveout_heap->heap.ops = &carveout_heap_ops;
-
-The address shouldn't be taken 
-
-9. In  drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c:
-
-static struct ieee80211_crypto_ops ieee80211_crypt_null
-
-Its address is passed to a register function 
-ret = ieee80211_register_crypto_ops(&ieee80211_crypt_null);
-
---qMm9M+Fa2AknHoGS--
 
