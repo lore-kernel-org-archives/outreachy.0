@@ -1,60 +1,60 @@
 X-GM-THRID: 6338591064541102080
-X-Received: by 10.237.32.228 with SMTP id 91mr4174395qtb.22.1475951402795;
-        Sat, 08 Oct 2016 11:30:02 -0700 (PDT)
+X-Received: by 10.157.60.245 with SMTP id t50mr5926214otf.133.1475890770394;
+        Fri, 07 Oct 2016 18:39:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.135.70 with SMTP id j67ls138661iod.24.gmail; Sat, 08 Oct
- 2016 11:30:02 -0700 (PDT)
-X-Received: by 10.66.221.225 with SMTP id qh1mr5533880pac.140.1475951402091;
-        Sat, 08 Oct 2016 11:30:02 -0700 (PDT)
+Received: by 10.36.230.3 with SMTP id e3ls1808640ith.7.gmail; Fri, 07 Oct 2016
+ 18:39:26 -0700 (PDT)
+X-Received: by 10.66.167.198 with SMTP id zq6mr4608264pab.96.1475890766099;
+        Fri, 07 Oct 2016 18:39:26 -0700 (PDT)
 Return-Path: <gnudevliz@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id 80si3151514pfw.0.2016.10.08.11.30.02
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id d11si2508555pfl.2.2016.10.07.18.39.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 08 Oct 2016 11:30:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Fri, 07 Oct 2016 18:39:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=gnudevliz@gmail.com;
+       spf=pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=gnudevliz@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id 190so4718295pfv.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 08 Oct 2016 11:30:02 -0700 (PDT)
+Received: by mail-pf0-x241.google.com with SMTP id 128so2067194pfz.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 07 Oct 2016 18:39:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=dcgyA+9omE/n0L0EsfZUoEoChAMZD7eIpSBCXkHximI=;
-        b=ougOo4DAZhjVZ5HSjENnzmeK3MVops0YhlPNCi+e7nnP/qF+1WGBGvIY9hpVI4ieXt
-         AsU9B4yljwOFPgGk6H5JUKkgmGooZtT1Cui4KHkcR38fXnXV3n7tm6IlcVCo50zE3+KF
-         6IhiCxEarfmhuf9S08IWPuHr3aRPBo3nQu0YYYkm5DD7/lGYn8kDxkB4kuFfoopnkXEj
-         OEaBbhUh0j866a1Mrax+tKJCD0JkWKsoac5hGD1EhoTtm171rTa9BTgeeNRSDmZt45Xt
-         Kpedirgasw03IGc3bUC4r7b5R1I8fMZAk89IOGe6QHZKoNiCdq8HgTHPYE4Cp8eBivAI
-         Nx9w==
+        bh=9kWiFAbJRCV7qVu68pMlTdB1WogaW55x6VyKh/K2Cdo=;
+        b=yV5jiBfnvF0rxS7UbadZAgpJFM1cTBnwTVEXU+UxwstqsefkDY3jRNXWCFgv+MeF7e
+         IrSlCkCaUekaOI+9v3H0sxYtqnCzJ9CYXsfuAzCYT9Zo6hLdF2Yas5zwChTwXfFm6AcG
+         +FLPuADHEnF41/FPgXUlhe4YxNyrdMyJl94F0Sz3l1q+OE3pxoY9ZiFRUS7eNVUWM/7X
+         QdU6AIF+ZbZ6Gf5Wcd1twd2DDV4fwqotO41qE1M8DOId4JWWLdl1KliQzSGnB3BCqjyR
+         y5lhp8nK9IKlYZMKQXq/DnEeJZF69wX9WpOnLpGynZzQOdIydrs1LZT2K8pUxMX4xzCy
+         PhOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=dcgyA+9omE/n0L0EsfZUoEoChAMZD7eIpSBCXkHximI=;
-        b=I5XPGHZ1c/vOy34gTfhsFpl4VsoWayN0TOu8vg2ClfCxGEkD3rnJcoV9JS1CpkJnmH
-         AR5Zr3u5Nux1wt9AZly1NMNnmDnFAjWxZ/+wXE21M0j9EhMwRNxVo4Igl9DL+FtM9eet
-         kta2tWM5eFk1ZSshUaTWRp/jSgyGJpPhid9m2fJuYaIdQtXpUh788IKjml1FY078jLFt
-         anna/SJwBI1pbmGp8DDUTxQS1R4MrYenFJTXABltIXdcAIZBqqFsK4nRHwIFoPekXZSZ
-         1znxIiPuhbZFaO3Djy22IS+x2Y224VfAw45gSa4v4Bs1g+36da80hq2qX+Oe3G8fZ7ho
-         VXUg==
-X-Gm-Message-State: AA6/9Rk09TdTQr08TD/x1QnpUcpQQrsqEHzLMOGUZBP9rdZ2tXGLlFoNqU5NozQIb1RJlQ==
-X-Received: by 10.98.56.147 with SMTP id f141mr38857856pfa.83.1475951401929;
-        Sat, 08 Oct 2016 11:30:01 -0700 (PDT)
+        bh=9kWiFAbJRCV7qVu68pMlTdB1WogaW55x6VyKh/K2Cdo=;
+        b=BmqI/pfYadzn3QdzkEpHYpBq4Bvk6txhLZXEVmztua9iaRxvAynq82dl/7Z8FW6NJm
+         5sh3ko8udUk3ePZ1Vw7uPdRNKuiJj+TpzjBn0gr8d9RqeYKyleb4ArUiw8JURSsaJQhn
+         FCkle1HcJFVToKSLUhAVdzpe9Iu3NQZU8H7uxz+YTSS9XjO5zUSswr0eaXXKHmBWOjAY
+         ib744HIdZsLHmw2EK1wFZ2aE1yRumdLEaAlIe00QfNpMmwwBYcflTQzUFUMfIFTisc+g
+         FvKsVQmGOqoQQ2HT6q4sojKJUdJiq3zmvf8ijf8IvnJADPUHJuFmsDtneMYULdYDhYzW
+         T/Uw==
+X-Gm-Message-State: AA6/9RlrNJuWinrfoGl02+hCeTpUn1vl68SR7uviO99eRlrxZv4BC2BjZUfEvhLoj4n7HA==
+X-Received: by 10.98.15.90 with SMTP id x87mr17549838pfi.162.1475890765885;
+        Fri, 07 Oct 2016 18:39:25 -0700 (PDT)
 Return-Path: <gnudevliz@gmail.com>
 Received: from localhost ([2601:644:300:fd6b:4e0f:6eff:fe69:e9ea])
-        by smtp.gmail.com with ESMTPSA id s1sm39904698paz.47.2016.10.08.11.30.01
+        by smtp.gmail.com with ESMTPSA id yo3sm33916439pac.42.2016.10.07.18.39.25
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 08 Oct 2016 11:30:01 -0700 (PDT)
-Date: Sat, 8 Oct 2016 11:29:59 -0700
+        Fri, 07 Oct 2016 18:39:25 -0700 (PDT)
+Date: Fri, 7 Oct 2016 18:39:23 -0700
 From: Elizabeth Ferdman <gnudevliz@gmail.com>
 To: Greg KH <gregkh@linuxfoundation.org>
 Cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] vc04_services driver question
-Message-ID: <20161008182959.GA2175@localhost>
+Message-ID: <20161008013923.GA17413@localhost>
 References: <20161007053033.GA13812@localhost>
  <20161007125608.GA1317@kroah.com>
 MIME-Version: 1.0
@@ -79,19 +79,18 @@ On Fri, Oct 07, 2016 at 02:56:08PM +0200, Greg KH wrote:
 > have a patchset in my queue to fix up the obvious build issues.  Feel
 > free to get them out of the driverdevel mailing list archives and apply
 > them locally if you wish to start working on that code.
-> 
 
 Hey Greg,
+Thanks for the tip. I'd love to do that but how? They've already been
+sent so I won't get them if I apply to the mailing-list now, right? I
+read that you can just save it and use something like git am/git apply.
+I am seeing some vc04 patches in the driverdevel archive.. On the bottom
+there is a url with a .bin file... I'm not really sure if that's what I
+want. Can you clue me in on how to do it?
 
-I think I figured out how to do that but I think that you did it before
-me. I downloaded them off patchwork.kernel.org and did
-
-$ git am --patch-format=mbox path/to/file
-
-I think it failed though since it had already been done.
-Anyways, I ran make on the path/to/file.o but I can't get a .o file. Is
-it because there's no Makefile in that dir? How do I compile it...?
-
+thanks, 
+liz
+> 
 > thanks,
 > 
 > greg k-h
