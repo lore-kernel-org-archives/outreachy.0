@@ -1,77 +1,79 @@
-X-GM-THRID: 6337361071288877056
-X-Received: by 10.157.45.200 with SMTP id g66mr71376otb.84.1475531857642;
-        Mon, 03 Oct 2016 14:57:37 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.11.162 with SMTP id 34ls1216399iol.13.gmail; Mon, 03 Oct
- 2016 14:57:35 -0700 (PDT)
-X-Received: by 10.66.180.10 with SMTP id dk10mr65157pac.55.1475531855013;
-        Mon, 03 Oct 2016 14:57:35 -0700 (PDT)
-Return-Path: <gnudevliz@gmail.com>
-Received: from mail-pf0-x22a.google.com (mail-pf0-x22a.google.com. [2607:f8b0:400e:c00::22a])
-        by gmr-mx.google.com with ESMTPS id 80si368442pfw.0.2016.10.03.14.57.35
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 03 Oct 2016 14:57:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) client-ip=2607:f8b0:400e:c00::22a;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) smtp.mailfrom=gnudevliz@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22a.google.com with SMTP id s13so67914388pfd.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 03 Oct 2016 14:57:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=wGRxIOEfvNS1O4mHASuxKHKhIR4eWrv1RqvOrbb3S0Q=;
-        b=gHolvhn1IWWXTE0KU0xR8ymQWKtr2FyGSez8ghV4xd4w17ekYYQNlorKzQiMMaHsiB
-         tMB0I+a+gG5TUzU+e1Pr8Qrwp+SN4GOPXlekllttEBbR+PANiS+rcBtzAJUUcu9F22b4
-         VX2ExtPjkUnjNjs69tpHsIm1F/qodjKCinwT8toa6qtsaKGf7CN0OJBKb5cmAEfJ2aa1
-         KdjCleBXn1j0KMdm/LKe8PzUbgagR4/UA2X5okxiTCsboutGnjURT/kkkIO6qTZIXlq2
-         wod4swfdzId8unEpb+aTDNTs+nvds+iuai+L4QKGPbCHqbsya0fQFnWCNh03Vq9aBVgX
-         xGuQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=wGRxIOEfvNS1O4mHASuxKHKhIR4eWrv1RqvOrbb3S0Q=;
-        b=KP1VbZy5CDjUzTg6Jp14T183yr7cGb2AhOXv4uCw3LJ1T6N25O7WvNCq37uILv4PQw
-         XmxNh9J247hgPJeMaJFx3jUf/lfP0ZM5RQkd0xaKpF+numJFXt5ZHYU2bx0VWtM0ufzy
-         oSihYBf3CjKfJrx7k1BmCIZTzFsgl32d7pbswBhaWoGCX2uuGj9Oc/yR7d0GjkcJNXmR
-         5x5eG59oFjVDKo04YSEwtVDAmOFHJRahcvSzV1r3rV92l/eIT8zQQAEABA2sA6avXAYf
-         onCHzWxdhT8q7NvTB9fj3oX/SLP7LuC9mVvHY+CfVwfYE7l07/R9FcZX9XPsmSr3vBeL
-         orSg==
-X-Gm-Message-State: AA6/9RkviTxt5z9oqng1Tfb2nH6VigTLnyOU398aY/uu1w0yMbxCmriljOeX+Y6n3oKLcw==
-X-Received: by 10.98.12.4 with SMTP id u4mr481299pfi.80.1475531854885;
-        Mon, 03 Oct 2016 14:57:34 -0700 (PDT)
-Return-Path: <gnudevliz@gmail.com>
-Received: from localhost ([2601:644:300:fd6b:4e0f:6eff:fe69:e9ea])
-        by smtp.gmail.com with ESMTPSA id x24sm10303985pfa.17.2016.10.03.14.57.34
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 03 Oct 2016 14:57:34 -0700 (PDT)
-Date: Mon, 3 Oct 2016 14:57:32 -0700
-From: Elizabeth Ferdman <gnudevliz@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: amsfield22@gmail.com
-Subject: trailing comma in parameter list
-Message-ID: <20161003215732.GA4343@localhost>
+X-GM-THRID: 6339082417419059200
+Date: Sat, 8 Oct 2016 07:38:36 -0700 (PDT)
+From: Varsha Rao <rvarsha016@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: rvarsha016@gmail.com, forest@alittletooquiet.net
+Message-Id: <53764933-f3f0-44e3-bcae-b97a976074bb@googlegroups.com>
+In-Reply-To: <20161008135851.GA3533@kroah.com>
+References: <20161008131709.GA489@euri>
+ <20161008135851.GA3533@kroah.com>
+Subject: Re: [PATCH] Staging: vt6655: Replace dwIoBase by dwiobase
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_1419_1271951778.1475937516181"
+X-Google-Token: EOyJ5L8FPB1aMqTlS0Y0
+X-Google-IP: 103.62.68.129
 
-A question just came up after seeing this checkpatch error:
+------=_Part_1419_1271951778.1475937516181
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1420_8392728.1475937516181"
 
-ERROR: space prohibited before that close parenthesis ')'
-#71: FILE:
-/home/lizadev/git/kernels/staging/drivers/staging/fbtft/fbtft-bus.c:71:
-+define_fbtft_write_reg(fbtft_write_reg8_bus8, u8, )
+------=_Part_1420_8392728.1475937516181
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-I'm wondering why there's a comma after the last parameter. I found
-something about variadic macros on gcc.gnu.org. Not seeing how that
-applies here though...
 
-I wonder if taking out that space would be a problem. 
 
--liz
+On Saturday, October 8, 2016 at 7:28:45 PM UTC+5:30, gregkh wrote:
+>
+> On Sat, Oct 08, 2016 at 06:47:09PM +0530, Varsha Rao wrote: 
+> > This patch fixes the checkpatch issue of CamelCase by replacing dwIoBase 
+> with dwiobase. 
+>
+> why keep the "dw"?  The Linux style is to not use "Hungarian notation" 
+> for variables. 
+>
+> "iobase" is the simplest, don't you think?
+
+
+       Yes,it is and I will change it.Thanks for your reply.      
+ 
+
+>
+>
+> thanks, 
+>
+> greg k-h 
+>
+
+------=_Part_1420_8392728.1475937516181
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Saturday, October 8, 2016 at 7:28:45 PM UTC+5:3=
+0, gregkh wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin=
+-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">On Sat, Oct 08=
+, 2016 at 06:47:09PM +0530, Varsha Rao wrote:
+<br>&gt; This patch fixes the checkpatch issue of CamelCase by replacing dw=
+IoBase with dwiobase.
+<br>
+<br>why keep the &quot;dw&quot;? =C2=A0The Linux style is to not use &quot;=
+Hungarian notation&quot;
+<br>for variables.
+<br>
+<br></blockquote><blockquote class=3D"gmail_quote" style=3D"margin: 0;margi=
+n-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">&quot;iobase&=
+quot; is the simplest, don&#39;t you think?</blockquote><div><br>=C2=A0 =C2=
+=A0 =C2=A0=C2=A0 Yes,it is and I will change it.Thanks for your reply.=C2=
+=A0 =C2=A0 =C2=A0 <br>=C2=A0<br></div><blockquote class=3D"gmail_quote" sty=
+le=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left=
+: 1ex;">
+<br>
+<br>thanks,
+<br>
+<br>greg k-h
+<br></blockquote></div>
+------=_Part_1420_8392728.1475937516181--
+
+------=_Part_1419_1271951778.1475937516181--
 
