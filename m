@@ -1,70 +1,66 @@
 X-GM-THRID: 6339138687062769664
-X-Received: by 10.200.46.83 with SMTP id s19mr4232856qta.56.1475952943447;
-        Sat, 08 Oct 2016 11:55:43 -0700 (PDT)
+X-Received: by 10.107.11.153 with SMTP id 25mr6652529iol.16.1475951776403;
+        Sat, 08 Oct 2016 11:36:16 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.152.6 with SMTP id n6ls2160415itd.12.canary; Sat, 08 Oct
- 2016 11:55:43 -0700 (PDT)
-X-Received: by 10.98.27.2 with SMTP id b2mr2612317pfb.36.1475952942960;
-        Sat, 08 Oct 2016 11:55:42 -0700 (PDT)
+Received: by 10.107.150.4 with SMTP id y4ls190148iod.48.gmail; Sat, 08 Oct
+ 2016 11:36:15 -0700 (PDT)
+X-Received: by 10.66.89.227 with SMTP id br3mr5655032pab.75.1475951775283;
+        Sat, 08 Oct 2016 11:36:15 -0700 (PDT)
 Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id 7si6865510par.0.2016.10.08.11.55.42
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id ua1si6825289pac.1.2016.10.08.11.36.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 08 Oct 2016 11:55:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
+        Sat, 08 Oct 2016 11:36:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x241.google.com with SMTP id hh10so4446217pac.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 08 Oct 2016 11:55:42 -0700 (PDT)
+Received: by mail-pf0-x244.google.com with SMTP id 190so4722020pfv.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 08 Oct 2016 11:36:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=RZIWQOwEJ/Fp4Um9+HjPcdveW+LTc4O41r0BLxpVCxs=;
-        b=0UzZLqu9IvpqvO5Ao8Y2RxNhZhk5FgZ05ZqRGaq1KM8TiXoOiS41V6PN44oAsFkjun
-         i6I6S+HHj5WGUOXbZJsuOCce1XNsaWZARQC6J61/A2u9MZmFuFPER9Xk5g5Sdz8hHjg/
-         Z0LGLgtBuuo6tSglGL54l5aXYbQvKUqegrDWCx9W0Lctgep0w2DBSbieUjPeQcO66XtO
-         TAkEpS6P/HwW9CEp9ahfWJWE6jrsSv3+a5lLxy4gKilbn4HwloN8rxYdN+gJ5duSu1m8
-         L0L5KD/3LzPDy4rxwK/vDwRMUQWtyEaZPyCQGe2p4fsqSwKoSjqR6yZ3SW85AKlJCkN8
-         Xr9Q==
+        bh=zwjxQ/kXdu35fESc9jZMPzE/Atv9wF1dwUo7Ke3zdc4=;
+        b=iCVG6VuAHkcVmEPyyjW7atSIeApZ/f6DpPMAx69H8pEFw+Zo3eAE37XJQsDADaog38
+         1VqkhpyFC9PVklUX8HtcKsnAMiW+U81yVHl64jONITS3dJm4XAnQG/+hgChfcXEHNOZ2
+         0uVNzTFXbLX9cIcMP0RlMZF2SvGBe0eRtTvKRQSftupAWyJcMkHElhMIWa7hK0K7F/S3
+         NiRjwM+FFttSu8Dq89CmEXS3+uR9eaZMiMOZ8V+gXIhT+98GqK9hNh1YZ33fQ7EHuw3z
+         v3v0RvuP3iZuCVo+G30IEnVyl/FfkMu9SeDW/dbv3j8yjUqVKtnSqNHTBsQtWwXQqdGN
+         bTaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=RZIWQOwEJ/Fp4Um9+HjPcdveW+LTc4O41r0BLxpVCxs=;
-        b=gIs0TkjVHzZPIxtvxc1sf5793PGbdXLMCCmA231ObdyGT4C1dEYSMPKvc0YK9vQbpW
-         pRf7esohi4Urp30t0EH5ykPfvZLCe0zE27LIEnCA1U9GEFFz1piF6JxyITLKJ9InT1FF
-         pjqoyHGBHP7DhPLYuSKxqvsnnDpCspBPyJpYWTenIN9sEjOGB5YD5vCxrwskJOCWyOsn
-         ydRShpX2+t1dM6Owube/MMc+dzOzvs18jKQktv4/6SFo4wMK/FsJA0SfKJeQIK3iMHuH
-         zUGxoq58d07FlDBW0QRpz7Zl+Adhw6+YSWJ4m0bRQVZwRXYfM3U/YDIT4L7h5XSfPtET
-         5Urw==
-X-Gm-Message-State: AA6/9RmobisfXs+O8PrAYQFbdwqMS+jTbArb7w2dpj1bHzMqtZxojjWc1PRogv8VXWNw0Q==
-X-Received: by 10.66.27.165 with SMTP id u5mr40136675pag.200.1475952942498;
-        Sat, 08 Oct 2016 11:55:42 -0700 (PDT)
+        bh=zwjxQ/kXdu35fESc9jZMPzE/Atv9wF1dwUo7Ke3zdc4=;
+        b=cn1k6o4HNuM/1fgwHLGJrwe2f7KFaniiPgmnyCxlLZlPKiaK0htF7M12UwwVBhV7hk
+         wdU3QPvfG2EnO71jLqqLT7SkRoocy6eRJ1N7WS/SvnrBN8O8zxjREhz064uug4j8LuEN
+         K7hivprPGFs1thnqw0DYrCW+LTrdq4QJFItuNotBlQnavw1e36KD5kZGxM2OaCxHFEQa
+         bxO4SDrGwe7eoyl1eDyCnqi4cz6ddvgv0bs9ixKbfOccrrz1b6Bo+1mBI3MunyyOwbkB
+         9svoPUOSlTOHQqiPgjbIWGkCA+KyJ618mBgONVfTHUSbY6TwooTv8rDcLZieIGxh0F5/
+         uVyA==
+X-Gm-Message-State: AA6/9RngBdireUu+S1+F6rQi63qX5DmYAQh2px/EJsphOzJqByPg4gYwt0t75UD7tc/BXQ==
+X-Received: by 10.98.217.7 with SMTP id s7mr39885162pfg.72.1475951774812;
+        Sat, 08 Oct 2016 11:36:14 -0700 (PDT)
 Return-Path: <rvarsha016@gmail.com>
 Received: from euri ([103.62.68.129])
-        by smtp.gmail.com with ESMTPSA id qd12sm30978181pab.22.2016.10.08.11.55.39
+        by smtp.gmail.com with ESMTPSA id qd12sm30912938pab.22.2016.10.08.11.36.11
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 08 Oct 2016 11:55:42 -0700 (PDT)
-Date: Sun, 9 Oct 2016 00:25:36 +0530
+        Sat, 08 Oct 2016 11:36:14 -0700 (PDT)
+Date: Sun, 9 Oct 2016 00:06:09 +0530
 From: varsha Rao <rvarsha016@gmail.com>
-To: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
+To: outreachy-kernel@googlegroups.com, gregkh@linux.org,
 	forest@alittletooquiet.net
 Cc: rvarsha016@gmail.com
-Subject: [Patch v2] Staging: vt6655: Replace dwIoBase by iobase
-Message-ID: <20161008185536.GA6203@euri>
+Subject: [Patch] Staging: vt6655: Replace dwIoBase by iobase
+Message-ID: <20161008183608.GA5836@euri>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.7.0 (2016-08-17)
 
-In this version:
-Limited the commit message line to 70 characters.
-Proper alignment of different comments.
- 
 In this patch dwIoBase is renamed as iobase.
 This is done to fix the checkpatch issue of CamelCase.
 
