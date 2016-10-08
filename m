@@ -1,108 +1,119 @@
-X-GM-THRID: 6389239074104803328
-X-Received: by 10.176.80.54 with SMTP id b51mr6129983uaa.6.1487610646763;
-        Mon, 20 Feb 2017 09:10:46 -0800 (PST)
+X-GM-THRID: 6339123844405526528
+X-Received: by 10.98.97.193 with SMTP id v184mr3797123pfb.10.1475942284920;
+        Sat, 08 Oct 2016 08:58:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.164.100 with SMTP id n97ls2947619ioe.16.gmail; Mon, 20 Feb
- 2017 09:10:46 -0800 (PST)
-X-Received: by 10.99.114.9 with SMTP id n9mr7226187pgc.145.1487610646059;
-        Mon, 20 Feb 2017 09:10:46 -0800 (PST)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id 23si2588141pfw.4.2017.02.20.09.10.46
+Received: by 10.157.32.200 with SMTP id x66ls4404925ota.40.gmail; Sat, 08 Oct
+ 2016 08:58:04 -0700 (PDT)
+X-Received: by 10.176.3.206 with SMTP id 72mr6607467uau.9.1475942284543;
+        Sat, 08 Oct 2016 08:58:04 -0700 (PDT)
+Return-Path: <bhumirks@gmail.com>
+Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
+        by gmr-mx.google.com with ESMTPS id d11si2913219pfl.2.2016.10.08.08.58.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 20 Feb 2017 09:10:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Sat, 08 Oct 2016 08:58:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id 5so13695912pgj.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 20 Feb 2017 09:10:46 -0800 (PST)
+       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x241.google.com with SMTP id r9so4305583paz.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 08 Oct 2016 08:58:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=PMrYGBHHCpYe2H59Zhnhqf9CcEzYo5bPH3YQkL/qpHU=;
-        b=THOUrw6a8mXEc7NUmfVUMwuab2xOYhjrlON5SvN+Cz+bbfqy4xKyrhjsr1qc8Mb1WA
-         91nDFOaFmLjjPe2F7uRI7FuBMFyx/CqP8T1i41ECxG+yyvOZVOSXtDvQAg1DYRr1wEeK
-         kWCD9YZmW0xQhI7y1G/bIKzGioYEW+ZUwQuaSSx2DtkdKXHcaRoCCDEaC0XmfYNpt/Z2
-         2b7lioEdNZHAbAowqSlzS3GF+nvdAfV0kAx94qoNt/yjCimVW2LT0ZSl5OBvXU00l0Jk
-         u9lwVU7HgUhWxsKjC8ZVLW+ZqYojG9AfNpHvWWwY2vX0eqeVsHCrN6YyahkuULXRa1+s
-         J0pQ==
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=kFtH8Aawr0o2FE9HOvNipzAUCPkQMiKe5mxcptQrs2w=;
+        b=0lDo21m2v5XlHrCCDqs9cbiyE69YaNpjFXkVwJFDEa6ZUoozbIdJsoFfXc25qrUNsM
+         G5QYiRQVB7Wkx2NED2520rbpHOSB/wBWUbarZYAjKnAIaLst+4TR8q+LcY+/aTur5brS
+         lS+f44AFE9s0rDVWy3YbjhWx8pASgp33lRHLo8kVUEd+sCuq23cx33UJgfaH1kL4W6Rn
+         RFrejD2FNshtdSNldWg6VtxtYiSgRwOCDtSbeROWryf4ofH0qh/go6a7vUmilZwE33vH
+         yaT36sb7IRs4Kj2PMjW5//OER0dM9PENG0cWJGnndSEAmaLpmQkIBQFpo19q3lJ1CbmT
+         1+cA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=PMrYGBHHCpYe2H59Zhnhqf9CcEzYo5bPH3YQkL/qpHU=;
-        b=FbWOnRkAlPRfZpx2ktXqpBQrUZMGYaJp0Ki7rZ+Y/RdokI4vptfW8G7VLYn+XpvVld
-         Lgp7nbqga7aYwpJVXFl9jeq9YGp9DkKbsHtzZUJoz9ebKJL86RLlkdokIsY9tdWlHRin
-         bP7oQz6cWlvEtEKoH+1NOkEVCvAiH33qJ2NJtb67UOafAsrLzOJMEWHRPjsEclIhVaQ4
-         22ad2gli9UFhCX4TOQjf9v67hIxVoStmiIi8Zp39jdPX5Y+BEqWNLwtddqMXODHkEmMm
-         eRGTOEbdnks7d9ktrlmS/IDLsHDpShCnRfncyLyrerxSTfr8dqsKgG62JY0j0zAJwqjg
-         tYLQ==
-X-Gm-Message-State: AMke39lpgIAJLUyFc+lKLFN2i/S2ivgXSopj+jltakfXLrPeV1W4eVz8mPyPqJt3KGzr9w==
-X-Received: by 10.98.150.70 with SMTP id c67mr27384764pfe.84.1487610645805;
-        Mon, 20 Feb 2017 09:10:45 -0800 (PST)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from sayli-HP-15-Notebook-PC ([182.58.245.66])
-        by smtp.gmail.com with ESMTPSA id x30sm36375455pgc.67.2017.02.20.09.10.37
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 20 Feb 2017 09:10:45 -0800 (PST)
-Date: Mon, 20 Feb 2017 22:40:28 +0530
-From: sayli karnik <karniksayli1995@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	greybus-dev@lists.linaro.org, devel@driverdev.osuosl.org
-Subject: [PATCH v2] staging: greybus: loopback_test: Fix open error path
-Message-ID: <20170220171028.GA32505@sayli-HP-15-Notebook-PC>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=kFtH8Aawr0o2FE9HOvNipzAUCPkQMiKe5mxcptQrs2w=;
+        b=bLkvdkKOyjmNQfscaf70AsJtU+Pz0Vq/Nyw/A41FC50BCA+BfO0jriFVDRaBS8PZuI
+         P1SIOV7Xxg0puBk0HeywK70JJhS7hBkzC34cStq7nPRMkikz9uVVsmJ1fj39f+hKzqjt
+         2RjcmCOe26M1QpnNtiEv3PRYtEfJQuSJE5NCARWyqh3qJLGQFV782x9m/2RHakEQVkZl
+         CywfUn3k3TSDie98Uwrjql/pdjry9a7wXBmcgVx//Y2diWLCfNvwSRjxp/PP9UYICbde
+         4hSRwHK5bqm5pJ1z6PcWD7sLRt6GB8Oi4SEh8rdd4h0wA7kqDgUP2L9fCj1Q8ty0c4/L
+         5W3Q==
+X-Gm-Message-State: AA6/9RlotCnHGSygERm3hzyRfRf7YC9AwQ2pTVKaVMvcO4e+KHelZIomlMYytprSYQ/vOA==
+X-Received: by 10.66.228.226 with SMTP id sl2mr38913731pac.131.1475942283904;
+        Sat, 08 Oct 2016 08:58:03 -0700 (PDT)
+Return-Path: <bhumirks@gmail.com>
+Received: from gmail.com ([106.215.183.145])
+        by smtp.gmail.com with ESMTPSA id id6sm39284461pad.28.2016.10.08.08.57.52
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Sat, 08 Oct 2016 08:58:02 -0700 (PDT)
+Received: by gmail.com (sSMTP sendmail emulation); Sat, 08 Oct 2016 21:27:45 +0530
+From: Bhumika Goyal <bhumirks@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	gregkh@linuxfoundation.org,
+	lidza.louina@gmail.com,
+	markh@compro.net
+Cc: Bhumika Goyal <bhumirks@gmail.com>
+Subject: [PATCH] Staging: dgnc: Remove useless type conversion
+Date: Sat,  8 Oct 2016 21:27:44 +0530
+Message-Id: <1475942264-552-1-git-send-email-bhumirks@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Change array index from the loop bound variable to loop index.
-If a poll file fails to open for any intermediate device, all poll files with
-fds of devices from 0 upto that device must be closed in the open_poll_files()
-function. The current code only closes the poll file with the most recent fd
-allocated, and at times tries to close the same file multiple times.
-
-Detected by coccinelle:
+Some type conversions like casting a pointer to a pointer of same type,
+casting to the original type using addressof(&) operator etc. are not
+needed. Therefore, remove them. Done using coccinelle:
 
 @@
-expression arr,ex1,ex2;
+type t;
+t *p;
+t a;
 @@
+(
+- (t)(a)
++ a
+|
+- (t *)(p)
++ p
+|
+- (t *)(&a)
++ &a
+)
 
-for(ex1 = 0; ex1 < ex2; ex1++) { <...
-  arr[
-- ex2
-+ ex1
-  ]
-  ...> }
-
-Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
+Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
 ---
-v2:
-Made the subject and changelog more concise
+ drivers/staging/dgnc/dgnc_mgmt.c | 4 ++--
+ drivers/staging/dgnc/dgnc_neo.c  | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
- drivers/staging/greybus/tools/loopback_test.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/greybus/tools/loopback_test.c b/drivers/staging/greybus/tools/loopback_test.c
-index 18d7a3d..2ee9a22 100644
---- a/drivers/staging/greybus/tools/loopback_test.c
-+++ b/drivers/staging/greybus/tools/loopback_test.c
-@@ -674,7 +674,7 @@ static int open_poll_files(struct loopback_test *t)
+diff --git a/drivers/staging/dgnc/dgnc_mgmt.c b/drivers/staging/dgnc/dgnc_mgmt.c
+index 683c098..ecfd1df 100644
+--- a/drivers/staging/dgnc/dgnc_mgmt.c
++++ b/drivers/staging/dgnc/dgnc_mgmt.c
+@@ -143,8 +143,8 @@ long dgnc_mgmt_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+ 		di.info_bdtype = dgnc_board[brd]->dpatype;
+ 		di.info_bdstate = dgnc_board[brd]->dpastatus;
+ 		di.info_ioport = 0;
+-		di.info_physaddr = (ulong)dgnc_board[brd]->membase;
+-		di.info_physsize = (ulong)dgnc_board[brd]->membase
++		di.info_physaddr = dgnc_board[brd]->membase;
++		di.info_physsize = dgnc_board[brd]->membase
+ 			- dgnc_board[brd]->membase_end;
+ 		if (dgnc_board[brd]->state != BOARD_FAILED)
+ 			di.info_nports = dgnc_board[brd]->nasync;
+diff --git a/drivers/staging/dgnc/dgnc_neo.c b/drivers/staging/dgnc/dgnc_neo.c
+index 5becb37..c6b2c37 100644
+--- a/drivers/staging/dgnc/dgnc_neo.c
++++ b/drivers/staging/dgnc/dgnc_neo.c
+@@ -1267,7 +1267,7 @@ static void neo_copy_data_from_uart_to_queue(struct channel_t *ch)
  
- err:
- 	for (i = 0; i < fds_idx; i++)
--		close(t->fds[fds_idx].fd);
-+		close(t->fds[i].fd);
+ 		memcpy_fromio(ch->ch_rqueue + head,
+ 			      &ch->ch_neo_uart->txrxburst, 1);
+-		ch->ch_equeue[head] = (unsigned char)linestatus;
++		ch->ch_equeue[head] = linestatus;
  
- 	return -1;
- }
+ 		/* Ditch any remaining linestatus value. */
+ 		linestatus = 0;
 -- 
-2.7.4
+1.9.1
 
 
