@@ -1,88 +1,106 @@
-X-GM-THRID: 6392323962132496384
-X-Received: by 10.46.9.206 with SMTP id 197mr654750ljj.12.1488328902350;
-        Tue, 28 Feb 2017 16:41:42 -0800 (PST)
+X-GM-THRID: 6339198950396919808
+X-Received: by 10.129.157.199 with SMTP id u190mr429504ywg.115.1475959771834;
+        Sat, 08 Oct 2016 13:49:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.80.22 with SMTP id e22ls278758ljb.12.gmail; Tue, 28 Feb
- 2017 16:41:41 -0800 (PST)
-X-Received: by 10.46.87.80 with SMTP id r16mr707551ljd.16.1488328901755;
-        Tue, 28 Feb 2017 16:41:41 -0800 (PST)
-Return-Path: <narcisaanamaria12@gmail.com>
-Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
-        by gmr-mx.google.com with ESMTPS id y19si1384434wmd.0.2017.02.28.16.41.41
+Received: by 10.157.34.166 with SMTP id y35ls3293780ota.26.gmail; Sat, 08 Oct
+ 2016 13:49:31 -0700 (PDT)
+X-Received: by 10.31.33.79 with SMTP id h76mr2792077vkh.27.1475959771502;
+        Sat, 08 Oct 2016 13:49:31 -0700 (PDT)
+Return-Path: <juliana.orod@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id 7si6919974par.0.2016.10.08.13.49.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Feb 2017 16:41:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
+        Sat, 08 Oct 2016 13:49:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=narcisaanamaria12@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x241.google.com with SMTP id m70so4857484wma.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 28 Feb 2017 16:41:41 -0800 (PST)
+       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x241.google.com with SMTP id 190so4827629pfv.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 08 Oct 2016 13:49:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=uxzlT8mIJwqNBw6CqFc9YY2OEuFoAhAlIxlg/It6fGY=;
-        b=gInOhePJYl3d7frRpId0wdZ4racguNcFunFOcx9XOktxTbeRI7ua2ZEtLCGKYMLqoK
-         YSve+c256eKsPqqJGxN+mSDfPl3LU706cVr7YHfMuTzgyA3h2yrjlxsdvowon/pCOVJP
-         aLD7prbQWkVxyRcVV0K5BT90YuJ0e3CijhogEJdWKMqkGMZ7mzvKxKXioteGcxfrkrXU
-         uUgY2ho+oIhgaOpdlMlx7pdHzRfpwIkGnCsx07w37O8+orYp7zowF8BYJ6qyGib8XpsK
-         iExfbsqacmBHdWuFVYGCweS4GkW0jn0ikvgzrEK56fgMzOOLULbUHWxgrJiI39PeSFo5
-         pIAQ==
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=Es0gbJgxxhlNWpJB2+Y1vpTF5mHkhS638KHtPcrTJA0=;
+        b=R24+F+WO872FwDHa+RNg18TWqItBrg2y6X1T3K3/7tg/o5ncVt7dF0BKn01+k7bgtR
+         n1opDWd8BsPR6ZL83LW+6wbL3DqM6S4OjG2QegxeUUdgNhTv1/1trOXJJWoYufDkgn1r
+         Gtx9A+ulaxcuBhd5Da68QaUlLocMpnwodQ49SHSFU4aidB+csJOD6pUUT7FNSdoVkKnV
+         8p8YlW49vNlVDYpgz6ffMLULPZ0ye8kUlf/qVBjNdw3asr7e/pISPYHQ7piS12X8xEdy
+         kJj/2pCOgbK5g+xv3XIkILmCfqAqGZLHkQgzbmZzBRfoT+icIj8ETt+DrWo1xHk56/EK
+         1mMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=uxzlT8mIJwqNBw6CqFc9YY2OEuFoAhAlIxlg/It6fGY=;
-        b=JUohlQeGHdiDNXyzC6iQLSOqJSEcUqnPtrifYnD3q6KXvu0gWtjgqvkSmhnKf1uTs0
-         NAc2KrwsLHinRyLHruvdf/eD1LlW7XMpZ1hp/skXPjyJomLQBxe5xkQE0tx5S3mFnJMR
-         rmBUN5VjPPLoTIwH9m1fdWCk2UBeA6aMFIE4bjyXZykKWPI2CFjRm+b8ye0h3EAg4GIw
-         9dKpfhne/J5xtomont26Y6VF/z4lzviZMKugjhjoHqTp9iy0f/3Yjale2HeGmuLIAiUl
-         lP2yx1Sp6mUK/L4Bi6CQPHzE0X3rnOmhnhqtthk3s/j0V+RoGd4yBWexpdGEDwzGU98s
-         qfzA==
-X-Gm-Message-State: AMke39neXMRsL1hqhZUCo6b0XBMGzrunePDT6imkL+rz8DA4mcGyxrMqLuNQjsWKsfwwEg==
-X-Received: by 10.28.134.67 with SMTP id i64mr874343wmd.5.1488328901531;
-        Tue, 28 Feb 2017 16:41:41 -0800 (PST)
-Return-Path: <narcisaanamaria12@gmail.com>
-Received: from localhost.localdomain (p22.eregie.pub.ro. [141.85.0.122])
-        by smtp.gmail.com with ESMTPSA id 61sm4337169wrs.29.2017.02.28.16.41.40
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 28 Feb 2017 16:41:40 -0800 (PST)
-From: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
-To: swarren@wwwdotorg.org,
-	lee@kernel.org,
-	eric@anholt.net,
-	gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
-Subject: [PATCH] staging: vc04_services: Removed unnecessary variable
-Date: Wed,  1 Mar 2017 02:40:59 +0200
-Message-Id: <1488328859-6925-1-git-send-email-narcisaanamaria12@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=Es0gbJgxxhlNWpJB2+Y1vpTF5mHkhS638KHtPcrTJA0=;
+        b=FWa4rg+qixrCfLJqpX1dAOZLg2Z+SgA3xOfO9+L0BIPhVO/KVjjYtyl0SBQpMyVkhu
+         ancvSGYiHtzCHiJcgbiBPkh3JTQIk9pKvFX7mpQaTKf27Uj6YAslULgoMvIJB8+PYaH7
+         u0zloB83hJXZof4gLf7vBCDkul67aJpB8CDa39Bombbd3HRL+9ieFmEQwJn7NWrOS8Td
+         GcJtB3Ag0FDjOuZKJk0o8M/6hVrXNiBL9fWfTlWeVMU1ffjyo19hSR/Ksi7kf7o4iiIb
+         bXFYt6d18F+4oabhMV+Ke48NcRyEw5j7U6a1jUPVnFHf+g3nDO4a/yqZkQtkdv0I2Cq9
+         3+xw==
+X-Gm-Message-State: AA6/9RncZlwkE9GKqjESUm06904SZzo1h3fyK5kSgBPCwp4aIt2U7eBYAa7sLD6XZMfRPQ==
+X-Received: by 10.98.100.2 with SMTP id y2mr40129758pfb.169.1475959771280;
+        Sat, 08 Oct 2016 13:49:31 -0700 (PDT)
+Return-Path: <juliana.orod@gmail.com>
+Received: from spock ([177.68.230.98])
+        by smtp.gmail.com with ESMTPSA id z66sm23298028pfd.11.2016.10.08.13.49.30
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 08 Oct 2016 13:49:30 -0700 (PDT)
+Date: Sat, 8 Oct 2016 17:49:28 -0300
+From: Juliana Rodrigues <juliana.orod@gmail.com>
+To: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: [PATCH 4/4] staging: rtl8188eu: core: fixes tabstop alignment
+Message-ID: <20161008204928.GA8987@spock>
+References: <cover.1475959255.git.juliana.orod@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1475959255.git.juliana.orod@gmail.com>
+User-Agent: Mutt/1.7.0 (2016-08-17)
 
-Removed unnecessary variable and used instead the parameter
-that was already defined
+Fixes a tabstop alignment checkpatch issue by removing extra blank
+spaces.
 
-Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
 ---
- drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_led.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-index 2815387..ff0a1ff 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-@@ -755,9 +755,7 @@ static const char *msg_type_str(unsigned int msg_type)
- 	void *context, void *dest,
- 	size_t offset, size_t maxsize)
- {
--	void *src = context;
--
--	memcpy(dest + offset, src + offset, maxsize);
-+	memcpy(dest + offset, context + offset, maxsize);
- 	return maxsize;
- }
- 
+diff --git a/drivers/staging/rtl8188eu/core/rtw_led.c b/drivers/staging/rtl8188eu/core/rtw_led.c
+index 147eded..e3924f5f 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_led.c
++++ b/drivers/staging/rtl8188eu/core/rtw_led.c
+@@ -339,7 +339,7 @@ static void SwLedControlMode1(struct adapter *padapter,
+ 				pLed->BlinkingLedState = RTW_LED_ON;
+ 			mod_timer(&pLed->BlinkTimer, jiffies +
+ 				  msecs_to_jiffies(LED_BLINK_SCAN_INTERVAL_ALPHA));
+-		 }
++		}
+ 		break;
+ 	case LED_CTL_TX:
+ 	case LED_CTL_RX:
+@@ -368,7 +368,7 @@ static void SwLedControlMode1(struct adapter *padapter,
+ 		break;
+ 	case LED_CTL_START_WPS: /* wait until xinpin finish */
+ 	case LED_CTL_START_WPS_BOTTON:
+-		 if (!pLed->bLedWPSBlinkInProgress) {
++		if (!pLed->bLedWPSBlinkInProgress) {
+ 			if (pLed->bLedNoLinkBlinkInProgress) {
+ 				del_timer_sync(&pLed->BlinkTimer);
+ 				pLed->bLedNoLinkBlinkInProgress = false;
+@@ -393,7 +393,7 @@ static void SwLedControlMode1(struct adapter *padapter,
+ 				pLed->BlinkingLedState = RTW_LED_ON;
+ 			mod_timer(&pLed->BlinkTimer, jiffies +
+ 				  msecs_to_jiffies(LED_BLINK_SCAN_INTERVAL_ALPHA));
+-		 }
++		}
+ 		break;
+ 	case LED_CTL_STOP_WPS:
+ 		if (pLed->bLedNoLinkBlinkInProgress) {
 -- 
-1.9.1
+2.10.0
 
 
