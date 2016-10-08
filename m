@@ -1,105 +1,121 @@
-X-GM-THRID: 6332811112929558528
-X-Received: by 10.36.107.208 with SMTP id v199mr1101961itc.39.1474472487819;
-        Wed, 21 Sep 2016 08:41:27 -0700 (PDT)
+X-GM-THRID: 6339007205300240384
+X-Received: by 10.31.208.199 with SMTP id h190mr6234543vkg.9.1475920044812;
+        Sat, 08 Oct 2016 02:47:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.17.56 with SMTP id g53ls4639257ote.32.gmail; Wed, 21 Sep
- 2016 08:41:27 -0700 (PDT)
-X-Received: by 10.157.18.176 with SMTP id g45mr2942525otg.43.1474472487226;
-        Wed, 21 Sep 2016 08:41:27 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id si10si8411067pab.1.2016.09.21.08.41.27
+Received: by 10.157.34.166 with SMTP id y35ls2554399ota.26.gmail; Sat, 08 Oct
+ 2016 02:47:24 -0700 (PDT)
+X-Received: by 10.157.40.151 with SMTP id s23mr6185250ota.124.1475920044455;
+        Sat, 08 Oct 2016 02:47:24 -0700 (PDT)
+Return-Path: <juliana.orod@gmail.com>
+Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
+        by gmr-mx.google.com with ESMTPS id 7si6583663par.0.2016.10.08.02.47.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Sep 2016 08:41:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Sat, 08 Oct 2016 02:47:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
+       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id n24so2535464pfb.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 21 Sep 2016 08:41:27 -0700 (PDT)
+Received: by mail-pa0-x242.google.com with SMTP id cd13so3945545pac.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 08 Oct 2016 02:47:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=bSSHhLLUK2curXWfBUXuGpOgd7cn/DS8nB/iBESKZPs=;
-        b=Av14AWok2//5TU1Z713nA4C+dE/FhRittJQIPqhbJkrEMoo+nvhrsYsQaXtjcE+UEK
-         iLM6OBDm9uJB7YxEu6Y1EaRbNGMZjrw2Bm1mCbOI/Jlw7598Tfs6yCywxfRaKQxlJxzs
-         kvYRNj5x7Ev5GLEDOpnehgEN7F4H65JMn1JePKAT4UcZ3WuAtmFg+BCKYIGzKNdQmAay
-         ZP3CDWVUWQpIsumatodt5vXrmdEvC7nmp9PqjBiv0O4X/5ijSvHh3IodT06jwSAl5Fk+
-         hVILhEes2NW1t7g+ctZNb6lU45fMCBmllPUc9qJhZzxDWZJQqUf+oug2Vwnyo8bx7/Zt
-         5pwA==
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=Rsph3YA75ai7FOZggP/Yu/sDLd+5umj2ZnSutooiuhA=;
+        b=sLlgvAmWNkFvHhS9A8WTUw00SK/wECYpUqYPyRXlSlLm4QZsywXzc6oKaVJzewXyLJ
+         canLXt91ICO4Jhr7wAkYrUWdmHMCfL9byCO3R+HiIgI+ViRqY857eHdZZbgZQRTHf4Bd
+         Q1jwotd7dXfNW/0bjEEAhyuRocSpaNz5FlBtiudlhuCm9i7HFExSOXoWhZwT9b0YJaT9
+         V+5RbwjnDzEU86BMbVWzThUk34VWEdq/OoQG7u0GMyiml+4GFIXD5hr5/K/UuTOqjkFw
+         ekeJ9JPH7Wbfob0Yto6m6WONZV3MvBpdXUc69VBfsR4xGosXT//+/u6oWvWlUzJyZ4qC
+         JhZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=bSSHhLLUK2curXWfBUXuGpOgd7cn/DS8nB/iBESKZPs=;
-        b=mviGzBWnfoAs4DLFiWzrk2ISgiCcVJCSSw7jFN0yKf3ck14X/v4zCrpb1+qHtaA2+R
-         tzqhw8l3/PeJpMyPH4lLYl61ozjcAx53b2u0bf8p/c1QZneJICLZIuuQGO9gVYFAe9CF
-         vfeGnOBy+Cc2m5s1Tds9XhZQlTECd8DklJzuA6YN+PT7EiVvpBdO95QsXqy9mP8uE1eq
-         bOYcT42HoRfPvTVZYb3qM1ut+HokULQFj94F4vpxqlAMaXtI8DzM3Fo9wlFDRoVlgHpD
-         tz6A9eFTyJZvd3HjAnLBYmeZr/sZ1KqEzZzEdw3JNeJz0q3qx8jBXk9ARaKlQul4eELg
-         HQTA==
-X-Gm-Message-State: AE9vXwPGE/wlPnmIZZy0z1zQSnv+UcWOWGe3qn02x4lWjly1oPJnIUmUfZBahaaYME/AOg==
-X-Received: by 10.98.156.81 with SMTP id f78mr33559890pfe.139.1474472486740;
-        Wed, 21 Sep 2016 08:41:26 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from sayli-HP-15-Notebook-PC ([182.58.174.252])
-        by smtp.gmail.com with ESMTPSA id u1sm85625457pfb.62.2016.09.21.08.41.22
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Sep 2016 08:41:25 -0700 (PDT)
-Date: Wed, 21 Sep 2016 21:11:14 +0530
-From: sayli karnik <karniksayli1995@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Laura Abbott <labbott@redhat.com>,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
-	Riley Andrews <riandrews@android.com>
-Subject: [PATCH] staging: android: ion: hisilicon: Use pointer to memory
- being allocated as the sizeof argument
-Message-ID: <20160921154114.GA18681@sayli-HP-15-Notebook-PC>
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=Rsph3YA75ai7FOZggP/Yu/sDLd+5umj2ZnSutooiuhA=;
+        b=W9cizqrRlHTyYLiMALh+HGBE3/DMOHB604num3n7rmIuIX3Tn4kdINniP0J2kysSJg
+         QY+g4EBBegr7o0um0p1N2ZJZCOMCSCwq6SmdxY9tDVhufykdj32mlgScyH9zP5OrihsU
+         qGxaHZRsAd5cvpbSmlbIOafZpSDiBTl5ZFQQCShseCUqdGFTgVfrBoqZy7eccKhG7Jq7
+         whKSdWmTJio1Kk2zBJRbNXc75y6u9KaXTIPWPrqtGegmGtAbHXxQkaoDmlpLKT6Mt1g6
+         ulYGkxcqEVW2CbNNxoYZPyfGhKDkJrMJ/ne4wRzY0/ZDdbAkSA0BYui21TN0HPLUFe1K
+         S0Bw==
+X-Gm-Message-State: AA6/9RkTyM+L/PafsYE39vn+e6No/e71XnxjqVMqb/9n2WIxngcKQms1Jzl5giq5eNiJEw==
+X-Received: by 10.66.94.163 with SMTP id dd3mr3979920pab.194.1475920044247;
+        Sat, 08 Oct 2016 02:47:24 -0700 (PDT)
+Return-Path: <juliana.orod@gmail.com>
+Received: from spock ([177.68.230.98])
+        by smtp.gmail.com with ESMTPSA id j82sm11352851pfj.71.2016.10.08.02.47.23
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 08 Oct 2016 02:47:23 -0700 (PDT)
+Date: Sat, 8 Oct 2016 06:47:21 -0300
+From: Juliana Rodrigues <juliana.orod@gmail.com>
+To: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: [PATCH v2 04/13] staging: wlan-ng: renames hfa384x_CommTallies32 to
+ avoid camelcase
+Message-ID: <20161008094721.GA12831@spock>
+References: <cover.1475919731.git.juliana.orod@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <cover.1475919731.git.juliana.orod@gmail.com>
+User-Agent: Mutt/1.7.0 (2016-08-17)
 
-This patch finds cases where the argument to sizeof is wrong in memory
-allocation functions by checking the type of the allocated memory when it is a
-double pointer and ensuring the sizeof argument takes a pointer to the memory
-being allocated.
-Done using coccinelle:
-@@
-type T;
-T **x;
-@@
+Fixes a checkpatch warning by renaming the camelcased struct
+hfa384x_CommTallies32 to hfa384x_comm_tallies_32.
 
-  x =
-  <+...sizeof(
-- T
-+ *x
-  )...+>
-
-Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
+Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
 ---
- drivers/staging/android/ion/hisilicon/hi6220_ion.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/wlan-ng/hfa384x.h   | 6 +++---
+ drivers/staging/wlan-ng/prism2sta.c | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/android/ion/hisilicon/hi6220_ion.c b/drivers/staging/android/ion/hisilicon/hi6220_ion.c
-index 659aa71..9f9b244 100644
---- a/drivers/staging/android/ion/hisilicon/hi6220_ion.c
-+++ b/drivers/staging/android/ion/hisilicon/hi6220_ion.c
-@@ -57,7 +57,7 @@ static int hi6220_ion_probe(struct platform_device *pdev)
- 		return PTR_ERR(ipdev->data);
+diff --git a/drivers/staging/wlan-ng/hfa384x.h b/drivers/staging/wlan-ng/hfa384x.h
+index 7577f2b..e4105e1 100644
+--- a/drivers/staging/wlan-ng/hfa384x.h
++++ b/drivers/staging/wlan-ng/hfa384x.h
+@@ -634,7 +634,7 @@ struct hfa384x_CommTallies16 {
+ 	u16 rxmsginbadmsgfrag;
+ } __packed;
  
- 	ipdev->heaps = devm_kzalloc(&pdev->dev,
--				sizeof(struct ion_heap)*ipdev->data->nr,
-+				sizeof(*ipdev->heaps) * ipdev->data->nr,
- 				GFP_KERNEL);
- 	if (!ipdev->heaps) {
- 		ion_destroy_platform_data(ipdev->data);
+-struct hfa384x_CommTallies32 {
++struct hfa384x_comm_tallies_32 {
+ 	u32 txunicastframes;
+ 	u32 txmulticastframes;
+ 	u32 txfragments;
+@@ -763,7 +763,7 @@ struct hfa384x_KeyIDChanged {
+ /*--  Collection of all Inf frames ---------------*/
+ union hfa384x_infodata {
+ 	struct hfa384x_CommTallies16 commtallies16;
+-	struct hfa384x_CommTallies32 commtallies32;
++	struct hfa384x_comm_tallies_32 commtallies32;
+ 	struct hfa384x_ScanResult scanresult;
+ 	struct hfa384x_ChInfoResult chinforesult;
+ 	struct hfa384x_HScanResult hscanresult;
+@@ -1360,7 +1360,7 @@ struct hfa384x {
+ 	struct hfa384x_caplevel cap_act_ap_mfi;	/* ap f/w to modem interface */
+ 
+ 	u32 psusercount;	/* Power save user count. */
+-	struct hfa384x_CommTallies32 tallies;	/* Communication tallies. */
++	struct hfa384x_comm_tallies_32 tallies;	/* Communication tallies. */
+ 	u8 comment[WLAN_COMMENT_MAX + 1];	/* User comment */
+ 
+ 	/* Channel Info request results (AP only) */
+diff --git a/drivers/staging/wlan-ng/prism2sta.c b/drivers/staging/wlan-ng/prism2sta.c
+index 2641641..73dd344 100644
+--- a/drivers/staging/wlan-ng/prism2sta.c
++++ b/drivers/staging/wlan-ng/prism2sta.c
+@@ -1001,7 +1001,7 @@ static void prism2sta_inf_tallies(struct wlandevice *wlandev,
+ 	 * record length of the info record.
+ 	 */
+ 
+-	cnt = sizeof(struct hfa384x_CommTallies32) / sizeof(u32);
++	cnt = sizeof(struct hfa384x_comm_tallies_32) / sizeof(u32);
+ 	if (inf->framelen > 22) {
+ 		dst = (u32 *)&hw->tallies;
+ 		src32 = (u32 *)&inf->info.commtallies32;
 -- 
-2.7.4
+2.10.0
 
 
