@@ -1,137 +1,184 @@
-X-GM-THRID: 6335492673577680896
-X-Received: by 10.194.175.166 with SMTP id cb6mr1885528wjc.15.1475096837488;
-        Wed, 28 Sep 2016 14:07:17 -0700 (PDT)
+X-GM-THRID: 6338219457268154368
+X-Received: by 10.13.243.193 with SMTP id c184mr6731117ywf.154.1476038157840;
+        Sun, 09 Oct 2016 11:35:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.165.196 with SMTP id o187ls493954wme.14.gmail; Wed, 28 Sep
- 2016 14:07:17 -0700 (PDT)
-X-Received: by 10.194.106.72 with SMTP id gs8mr2004908wjb.14.1475096837038;
-        Wed, 28 Sep 2016 14:07:17 -0700 (PDT)
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
-        by gmr-mx.google.com with ESMTPS id u190si1126706wmf.0.2016.09.28.14.07.17
+Received: by 10.157.52.238 with SMTP id t43ls762837otd.27.gmail; Sun, 09 Oct
+ 2016 11:35:57 -0700 (PDT)
+X-Received: by 10.237.34.216 with SMTP id q24mr5110284qtc.69.1476038157444;
+        Sun, 09 Oct 2016 11:35:57 -0700 (PDT)
+Return-Path: <gnudevliz@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id 7si7564681par.0.2016.10.09.11.35.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Sep 2016 14:07:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
+        Sun, 09 Oct 2016 11:35:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
+       spf=pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=gnudevliz@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x244.google.com with SMTP id b184so7762860wma.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 28 Sep 2016 14:07:17 -0700 (PDT)
+Received: by mail-pf0-x244.google.com with SMTP id i85so6071722pfa.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 09 Oct 2016 11:35:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=PDmWAoWH9VAc6ezsJxqioE9S7rISOFp4yRGGjyBksWo=;
-        b=DgM4JQg5rb4PyKlUuDdM6vN7yNsFhwNUAsXi5wr70r4jkfg28dJ/Uy5RorALlHj/cA
-         1JtjUc/ILcrxa8KESSZIj2J/rRZzz8xtD+JVl4Ob95CIkJVEbZCfwYHI/PP4rdPDFmUe
-         0UJS0WKleFAQohWEsYL0TEe5mdHbWR0oVnHDEuCfq3/ufKOBPFznBopkV2ySmFSJokak
-         FSsw0w0P6p7+VysWkOwiJzBCRMliHX8sn6WzW6/Zt4eq1EnixAcY4RVQPHGWTtR21TQT
-         JnAc82Ck187MpfOVUf/vuVOg2ZCYJREUWV93GzgQys7OGZl8xqLwEmjFkBZTxBgg7SDg
-         cLmg==
+        bh=GrY1vBHyZ2QYscw9zqEnDLhTVPY0Qc+cKLO/zy4B9Eo=;
+        b=r0QZjBvLW+LnLFrqfWoWzIGiD711mN0b+CcfSPsSbpqlbn9UvfLhvHeNQHiq9PHfq3
+         oiU/t+p1TWDC99tKLgqkhq0cz/cFMk42aaOXRL5PjGmau1JMhPXRMJesoZvl08g5YRrB
+         fxDD2c0J1wAxRiKB9svrLbJNJpvJKQ1YonhmP2D+YooQ6aZij/O4rb/EqXH3YoSPSdDF
+         MLvSMkelaSco7sriz2dnOCWiq/1HOWxbnvntlLfkUL3o52nnA1U+ap7D/wFUHPAEjNxW
+         ZPTGVN85uYjUwI1jpApFWC1kgKentuBD86yr7kWrGNy3+0JVm+2iuqRw2JRXWIbbpxSL
+         efcg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=PDmWAoWH9VAc6ezsJxqioE9S7rISOFp4yRGGjyBksWo=;
-        b=Bny3Q2loL2GWxbn0nGZF3D37q8Fo+vbaO0tTwhJReMCyxwdtxkHvoaUZkSxEmnft/u
-         q8V0EA6wu7hyGCfI7sXFOspLeCZfRV0qZIPss3u0VA4V2CRPRC1Yl/s8YH7wQLekRAV+
-         Y1X9JBKZETCUfeqUsYOQ0ja+wov6H/V9W0zhWnzbjHNplL8ZX3E/3Z8mftm8stjFbXPu
-         QI/RvBB5nivEVTrP1o79i1QR9RhrzvNCjGTZc0VQzolb+OwwO2tL24GOHKyhjBJZOpBO
-         j6y6qftQD+0ccy5lY+JyEvOXjOHw/eNycoSFKZ0rgVK9jC95RnptzqBCpb6e1Z2j2E7a
-         bM4g==
-X-Gm-Message-State: AE9vXwN5UtLTdI4qng9BL6XBWwi1qZKcrk0m0eXs2+kdtFZAMDOyQWzoVQQWmyv6qLvSLQ==
-X-Received: by 10.194.59.84 with SMTP id x20mr29366545wjq.89.1475096836811;
-        Wed, 28 Sep 2016 14:07:16 -0700 (PDT)
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from fireworks ([84.117.92.113])
-        by smtp.gmail.com with ESMTPSA id a84sm24565058wme.6.2016.09.28.14.07.15
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 28 Sep 2016 14:07:16 -0700 (PDT)
-Date: Thu, 29 Sep 2016 00:07:15 +0300
-From: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
+        bh=GrY1vBHyZ2QYscw9zqEnDLhTVPY0Qc+cKLO/zy4B9Eo=;
+        b=hRL1yKwpsAHZipZ0vO5CL439uTYuEv/HvokoQBySDnbr/Vrfj43gkej454JdE1IA8m
+         oCHhP8jsmieHPGz0MO5F+n00Sl7/Y4hF+wckfvm8G+tgegZGJhwfy+j4cWq9MeDjGXzj
+         W5yNW/6M1k3n0TPsTCGaKdldWH7MliwoUrJYJ5oqbvdkeyWr3YyHQNBcs3xYPw+Kj+oq
+         FMCU4j8G33ACuI3mXdchjU8ki3goTBLWw+EnlNORoWPIhS8p1XNdSyH9XaWgWlnb69su
+         Zt8zsXZKRdqlJOTMuRujW67jOuuG1em7uQYi0KQolpojQfKFdxO7nZIVeInpNwdMmWgz
+         xDQw==
+X-Gm-Message-State: AA6/9Rmn1ujci+2P/kuzCD0UOl0WUSBe3BFFSDEHmfZA8yj6rJrVuyzbrgf8TniysaPa+w==
+X-Received: by 10.98.157.210 with SMTP id a79mr48856302pfk.179.1476038157213;
+        Sun, 09 Oct 2016 11:35:57 -0700 (PDT)
+Return-Path: <gnudevliz@gmail.com>
+Received: from localhost ([2601:644:300:fd6b:4e0f:6eff:fe69:e9ea])
+        by smtp.gmail.com with ESMTPSA id w198sm28453930pfd.70.2016.10.09.11.35.56
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 09 Oct 2016 11:35:56 -0700 (PDT)
+Date: Sun, 9 Oct 2016 11:35:54 -0700
+From: Elizabeth Ferdman <gnudevliz@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8188eu: core: rtw_xmit: Use macros instead of
- constants
-Message-ID: <20160928210715.GA26545@fireworks>
+Cc: amsfield22@gmail.com, daniel.baluta@intel.com,
+	gregkh@linuxfoundation.org
+Subject: [PATCH] staging: i4l: remove parens around return statement
+Message-ID: <20161009183549.GA6474@localhost>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Replace the 0x888e with ETH_P_PAE and 0x0806 with ETH_P_ARP.
-These macros can be found in drivers/staging/rtl8192e/rtllib.h
+Remove parentheses surrounding return statements. Error found by
+checkpatch.
 
-Hexadecimal numbers are not case sensitive,
-therefore 0x888e is equal with 0x888E.
+changes made using coccinelle script:
 
-The modifications improve the readability of the code.
+@@
+expression e,e1;
+@@
+(
+return (e / e1);
+|
+return
+-(
+e
+-)
+;
+)
 
-Signed-off-by: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
+Signed-off-by: Elizabeth Ferdman <gnudevliz@gmail.com>
 ---
- drivers/staging/rtl8188eu/core/rtw_xmit.c | 12 ++++++------
- drivers/staging/rtl8192e/rtllib.h         |  2 +-
- 2 files changed, 7 insertions(+), 7 deletions(-)
+ drivers/staging/i4l/act2000/capi.c   |  2 +-
+ drivers/staging/i4l/act2000/module.c | 18 +++++++++---------
+ 2 files changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_xmit.c b/drivers/staging/rtl8188eu/core/rtw_xmit.c
-index 1392899..0f8b8e0 100644
---- a/drivers/staging/rtl8188eu/core/rtw_xmit.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_xmit.c
-@@ -402,7 +402,7 @@ static void set_qos(struct pkt_file *ppktfile, struct pkt_attrib *pattrib)
- 		_rtw_pktfile_read(ppktfile, (u8 *)&ip_hdr, sizeof(ip_hdr));
- /* 		user_prio = (ntohs(ip_hdr.tos) >> 5) & 0x3; */
- 		user_prio = ip_hdr.tos >> 5;
--	} else if (pattrib->ether_type == 0x888e) {
-+	} else if (pattrib->ether_type == ETH_P_PAE) {
- 		/*  "When priority processing of data frames is supported, */
- 		/*  a STA's SME should send EAPOL-Key frames at the highest priority." */
- 		user_prio = 7;
-@@ -469,15 +469,15 @@ static s32 update_attrib(struct adapter *padapter, struct sk_buff *pkt, struct p
- 				}
- 			}
+diff --git a/drivers/staging/i4l/act2000/capi.c b/drivers/staging/i4l/act2000/capi.c
+index 66c1e57..61386a7 100644
+--- a/drivers/staging/i4l/act2000/capi.c
++++ b/drivers/staging/i4l/act2000/capi.c
+@@ -99,7 +99,7 @@ actcapi_chkhdr(act2000_card *card, actcapi_msghdr *hdr)
+ 	for (i = 0; i < num_valid_imsg; i++)
+ 		if ((hdr->cmd.cmd == valid_msg[i].cmd.cmd) &&
+ 		    (hdr->cmd.subcmd == valid_msg[i].cmd.subcmd)) {
+-			return (i ? 1 : 2);
++			return i ? 1 : 2;
  		}
--	} else if (pattrib->ether_type == 0x888e) {
-+	} else if (pattrib->ether_type == ETH_P_PAE) {
- 		DBG_88E_LEVEL(_drv_info_, "send eapol packet\n");
+ 	return 0;
+ }
+diff --git a/drivers/staging/i4l/act2000/module.c b/drivers/staging/i4l/act2000/module.c
+index e227c08..6aa1203 100644
+--- a/drivers/staging/i4l/act2000/module.c
++++ b/drivers/staging/i4l/act2000/module.c
+@@ -94,7 +94,7 @@ act2000_find_msn(act2000_card *card, char *msn, int ia5)
+ 		p = p->next;
  	}
+ 	if (!ia5)
+-		return (1 << (eaz - '0'));
++		return 1 << (eaz - '0');
+ 	else
+ 		return eaz;
+ }
+@@ -110,10 +110,10 @@ act2000_find_eaz(act2000_card *card, char eaz)
  
--	if ((pattrib->ether_type == 0x888e) || (pattrib->dhcp_pkt == 1))
-+	if ((pattrib->ether_type == ETH_P_PAE) || (pattrib->dhcp_pkt == 1))
- 		rtw_set_scan_deny(padapter, 3000);
+ 	while (p) {
+ 		if (p->eaz == eaz)
+-			return (p->msn);
++			return p->msn;
+ 		p = p->next;
+ 	}
+-	return ("\0");
++	return "\0";
+ }
  
- 	/*  If EAPOL , ARP , OR DHCP packet, driver must be in active mode. */
--	if ((pattrib->ether_type == 0x0806) || (pattrib->ether_type == 0x888e) || (pattrib->dhcp_pkt == 1))
-+	if ((pattrib->ether_type == ETH_P_ARP) || (pattrib->ether_type == ETH_P_PAE) || (pattrib->dhcp_pkt == 1))
- 		rtw_lps_ctrl_wk_cmd(padapter, LPS_CTRL_SPECIAL_PACKET, 1);
+ /*
+@@ -292,7 +292,7 @@ act2000_command(act2000_card *card, isdn_ctrl *c)
+ 			if (ret)
+ 				return ret;
+ 			if (card->flags & ACT2000_FLAGS_RUNNING)
+-				return (actcapi_manufacturer_req_msn(card));
++				return actcapi_manufacturer_req_msn(card);
+ 			return 0;
+ 		case ACT2000_IOCTL_ADDCARD:
+ 			if (copy_from_user(&cdef, arg,
+@@ -512,7 +512,7 @@ if_command(isdn_ctrl *c)
+ 	act2000_card *card = act2000_findcard(c->driver);
  
- 	bmcast = IS_MCAST(pattrib->ra);
-@@ -531,8 +531,8 @@ static s32 update_attrib(struct adapter *padapter, struct sk_buff *pkt, struct p
- 
- 		pattrib->encrypt = 0;
- 
--		if ((pattrib->ether_type != 0x888e) && !check_fwstate(pmlmepriv, WIFI_MP_STATE)) {
--			RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("\npsta->ieee8021x_blocked == true,  pattrib->ether_type(%.4x) != 0x888e\n", pattrib->ether_type));
-+		if ((pattrib->ether_type != ETH_P_PAE) && !check_fwstate(pmlmepriv, WIFI_MP_STATE)) {
-+			RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("\npsta->ieee8021x_blocked == true,  pattrib->ether_type(%.4x) != ETH_P_PAE\n", pattrib->ether_type));
- 			res = _FAIL;
- 			goto exit;
+ 	if (card)
+-		return (act2000_command(card, c));
++		return act2000_command(card, c);
+ 	printk(KERN_ERR
+ 	       "act2000: if_command %d called with invalid driverId %d!\n",
+ 	       c->command, c->driver);
+@@ -527,7 +527,7 @@ if_writecmd(const u_char __user *buf, int len, int id, int channel)
+ 	if (card) {
+ 		if (!(card->flags & ACT2000_FLAGS_RUNNING))
+ 			return -ENODEV;
+-		return (len);
++		return len;
+ 	}
+ 	printk(KERN_ERR
+ 	       "act2000: if_writecmd called with invalid driverId!\n");
+@@ -542,7 +542,7 @@ if_readstatus(u_char __user *buf, int len, int id, int channel)
+ 	if (card) {
+ 		if (!(card->flags & ACT2000_FLAGS_RUNNING))
+ 			return -ENODEV;
+-		return (act2000_readstatus(buf, len, card));
++		return act2000_readstatus(buf, len, card);
+ 	}
+ 	printk(KERN_ERR
+ 	       "act2000: if_readstatus called with invalid driverId!\n");
+@@ -557,7 +557,7 @@ if_sendbuf(int id, int channel, int ack, struct sk_buff *skb)
+ 	if (card) {
+ 		if (!(card->flags & ACT2000_FLAGS_RUNNING))
+ 			return -ENODEV;
+-		return (act2000_sendbuf(card, channel, ack, skb));
++		return act2000_sendbuf(card, channel, ack, skb);
+ 	}
+ 	printk(KERN_ERR
+ 	       "act2000: if_sendbuf called with invalid driverId!\n");
+@@ -777,7 +777,7 @@ act2000_addcard(int bus, int port, int irq, char *id)
+ 			failed++;
  		}
-diff --git a/drivers/staging/rtl8192e/rtllib.h b/drivers/staging/rtl8192e/rtllib.h
-index 38247fa..b895a53 100644
---- a/drivers/staging/rtl8192e/rtllib.h
-+++ b/drivers/staging/rtl8192e/rtllib.h
-@@ -521,7 +521,7 @@ enum wireless_mode {
- };
+ 	}
+-	return (added - failed);
++	return added - failed;
+ }
  
- #ifndef ETH_P_PAE
--#define ETH_P_PAE 0x888E /* Port Access Entity (IEEE 802.1X) */
-+#define ETH_P_PAE	0x888E		/* Port Access Entity (IEEE 802.1X) */
- #define ETH_P_IP	0x0800		/* Internet Protocol packet	*/
- #define ETH_P_ARP	0x0806		/* Address Resolution packet	*/
- #endif /* ETH_P_PAE */
+ #define DRIVERNAME "IBM Active 2000 ISDN driver"
 -- 
-2.7.4
+2.1.4
 
 
