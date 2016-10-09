@@ -1,92 +1,120 @@
-X-GM-THRID: 4714696540160
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,6c1918fc46e7b79,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.42.81.68 with SMTP id y4mr14608755ick.17.1425060471399;
-        Fri, 27 Feb 2015 10:07:51 -0800 (PST)
+X-GM-THRID: 6339411924355121152
+X-Received: by 10.129.120.196 with SMTP id t187mr6581552ywc.65.1476009850328;
+        Sun, 09 Oct 2016 03:44:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.80.75 with SMTP id p11ls287588igx.40.canary; Fri, 27 Feb
- 2015 10:07:51 -0800 (PST)
-X-Received: by 10.42.163.196 with SMTP id d4mr7932830icy.28.1425060471225;
-        Fri, 27 Feb 2015 10:07:51 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pd0-x231.google.com (mail-pd0-x231.google.com. [2607:f8b0:400e:c02::231])
-        by gmr-mx.google.com with ESMTPS id ri9si579721pdb.1.2015.02.27.10.07.51
+Received: by 10.36.116.130 with SMTP id o124ls2553203itc.5.gmail; Sun, 09 Oct
+ 2016 03:44:08 -0700 (PDT)
+X-Received: by 10.66.17.137 with SMTP id o9mr6315195pad.124.1476009847984;
+        Sun, 09 Oct 2016 03:44:07 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id x14si1828331vkd.3.2016.10.09.03.44.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 10:07:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::231 as permitted sender) client-ip=2607:f8b0:400e:c02::231;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 09 Oct 2016 03:44:07 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::231 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pdbfp1 with SMTP id fp1so22655069pdb.9
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 10:07:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=bGBEvT7IpP6MVnIrBP+AMmoHzIO0xsbNCgdVavaXd0A=;
-        b=okk1rOjh2yS0gU6R2quYyHbZw7Jy3g8bj/nYDo7/hPlwWU9weohswMoXtoPJW0NDk7
-         DxgIC1Tlc/hrnxts4rqzDv/9cPM70pXdPlrqAifWYe0HoFRRrfc5r8z39A9Lpu3Gio9u
-         k6DsihibBmRMRG/tZt4Qtg6mkOyLjIXay2HBxd8sCZ1UNGKI2XgF34BYVw1WCjcig2fS
-         OZsJnFUDU/SlhSce/ZcDtg3ExK+oqUrLXA00kioAeZwc7psIJz7qgN+cAo5cokHLxS4y
-         MeDyyqu1GNaFpA8RIE/Q3YQyEq/JjiOc8SJc+navJgm8/PDfV6N2AGg5LiUmA3UTabnZ
-         6VNQ==
-X-Received: by 10.66.65.169 with SMTP id y9mr25990948pas.60.1425060471087;
-        Fri, 27 Feb 2015 10:07:51 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from batra ([14.139.82.6])
-        by mx.google.com with ESMTPSA id g11sm4642971pat.24.2015.02.27.10.07.49
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 27 Feb 2015 10:07:50 -0800 (PST)
-Date: Fri, 27 Feb 2015 23:37:28 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8188eu: Refactor loop to increase compactness
-Message-ID: <20150227180728.GA22813@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.31,465,1473112800"; 
+   d="scan'208";a="239995416"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien.local) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 09 Oct 2016 12:44:05 +0200
+Date: Sun, 9 Oct 2016 12:44:04 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Bhumika Goyal <bhumirks@gmail.com>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
+    mchehab@kernel.org
+Subject: Re: [Outreachy kernel] [PATCH] Staging: media: radio-bcm2048: constify
+ v4l2_ioctl_ops structure
+In-Reply-To: <1476009323-19232-1-git-send-email-bhumirks@gmail.com>
+Message-ID: <alpine.DEB.2.10.1610091243300.3462@hadrien>
+References: <1476009323-19232-1-git-send-email-bhumirks@gmail.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-The variables tmp1 and tmp2 are assigned the same values
-in the nested else and the outer else. They can be 
-assigned without nesting to increase readability.
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
----
- drivers/staging/rtl8188eu/hal/phy.c | 10 ++--------
- 1 file changed, 2 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
-index 3d0e447..05379be 100644
---- a/drivers/staging/rtl8188eu/hal/phy.c
-+++ b/drivers/staging/rtl8188eu/hal/phy.c
-@@ -1039,18 +1039,12 @@ static bool simularity_compare(struct adapter *adapt, s32 resulta[][8],
- 
- 	for (i = 0; i < bound; i++) {
- 		if (i%2 == 1) {
-+			tmp1 = resulta[c1][i];
-+			tmp2 = resulta[c2][i];
- 			if ((resulta[c1][i] & 0x00000200) != 0)
- 				tmp1 = resulta[c1][i] | 0xFFFFFC00;
--			else
--				tmp1 = resulta[c1][i];
--
- 			if ((resulta[c2][i] & 0x00000200) != 0)
- 				tmp2 = resulta[c2][i] | 0xFFFFFC00;
--			else
--				tmp2 = resulta[c2][i];
--		} else {
--			tmp1 = resulta[c1][i];
--			tmp2 = resulta[c2][i];
- 		}
- 
- 		diff = (tmp1 > tmp2) ? (tmp1 - tmp2) : (tmp2 - tmp1);
--- 
-1.9.1
+On Sun, 9 Oct 2016, Bhumika Goyal wrote:
 
+> Declare the structure v4l2_ioctl_ops as const as it is only stored in
+> the ioctl_ops field of video_device structure. As this field is of type
+> const struct v4l2_ioctl_ops *, so v4l2_ioctl_ops structures having this
+> property can also be made const.
+> Done using coccinelle:
+>
+> @r1 disable optional_qualifier @
+> identifier i;
+> position p;
+> @@
+> static struct v4l2_ioctl_ops i@p = {...};
+>
+> @ok1@
+> identifier r1.i;
+> position p;
+> struct video_device s;
+> @@
+> s.ioctl_ops=&i@p;
+>
+> @bad@
+> position p!={r1.p,ok1.p};
+> identifier r1.i;
+> @@
+> i@p
+>
+> @depends on !bad disable optional_qualifier@
+> identifier r1.i;
+> @@
+> static
+> +const
+> struct v4l2_ioctl_ops i={...};
+>
+> @depends on !bad disable optional_qualifier@
+> identifier r1.i;
+> @@
+> +const
+> struct v4l2_ioctl_ops i;
+>
+> File size before:
+>    text	   data	    bss	    dec	    hex	filename
+>   20465	   3220	     32	  23717	   5ca5
+> drivers/staging/media/bcm2048/radio-bcm2048.o
+>
+> File size after:
+>    text	   data	    bss	    dec	    hex	filename
+>   21425	   2260	     32	  23717	   5ca5
+> drivers/staging/media/bcm2048/radio-bcm2048.o
+>
+> Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+> ---
+>  drivers/staging/media/bcm2048/radio-bcm2048.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/media/bcm2048/radio-bcm2048.c b/drivers/staging/media/bcm2048/radio-bcm2048.c
+> index ea15cc6..fe637ce 100644
+> --- a/drivers/staging/media/bcm2048/radio-bcm2048.c
+> +++ b/drivers/staging/media/bcm2048/radio-bcm2048.c
+> @@ -2540,7 +2540,7 @@ static int bcm2048_vidioc_s_hw_freq_seek(struct file *file, void *priv,
+>  	return err;
+>  }
+>
+> -static struct v4l2_ioctl_ops bcm2048_ioctl_ops = {
+> +static const struct v4l2_ioctl_ops bcm2048_ioctl_ops = {
+>  	.vidioc_querycap	= bcm2048_vidioc_querycap,
+>  	.vidioc_g_input		= bcm2048_vidioc_g_input,
+>  	.vidioc_s_input		= bcm2048_vidioc_s_input,
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1476009323-19232-1-git-send-email-bhumirks%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
