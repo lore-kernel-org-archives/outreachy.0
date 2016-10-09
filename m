@@ -1,71 +1,50 @@
 X-GM-THRID: 6339138687062769664
-X-Received: by 10.157.26.80 with SMTP id u16mr8375131otu.44.1476087894915;
-        Mon, 10 Oct 2016 01:24:54 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.46.25 with SMTP id q25ls9438635otb.2.gmail; Mon, 10 Oct
- 2016 01:24:54 -0700 (PDT)
-X-Received: by 10.13.230.70 with SMTP id p67mr6103064ywe.5.1476087894587;
-        Mon, 10 Oct 2016 01:24:54 -0700 (PDT)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id ua1si8251868pac.1.2016.10.10.01.24.54
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 10 Oct 2016 01:24:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (pes75-3-78-192-101-3.fbxo.proxad.net [78.192.101.3])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id DCCFC8CC;
-	Mon, 10 Oct 2016 08:24:53 +0000 (UTC)
-Date: Mon, 10 Oct 2016 10:25:02 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Varsha Rao <rvarsha016@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, forest@alittletooquiet.net
-Subject: Re: [Patch v2] Staging: vt6655: Replace dwIoBase by iobase
-Message-ID: <20161010082502.GA19439@kroah.com>
-References: <CAAFX7JT4acPoN+yGojG6jrfXB5y=73rFhRP46t+pTZv==tj=nQ@mail.gmail.com>
+Date: Sun, 9 Oct 2016 12:29:42 -0700 (PDT)
+From: Varsha Rao <rvarsha016@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: rvarsha016@gmail.com, gregkh@linuxfoundation.org,
+	forest@alittletooquiet.net
+Message-Id: <5468fb4a-c7e9-45f5-8a0b-44e9f202229b@googlegroups.com>
+In-Reply-To: <alpine.DEB.2.10.1610091256090.3462@hadrien>
+References: <20161008165532.GA26251@euri> <alpine.DEB.2.10.1610081936330.3259@hadrien> <e6b02b9a-d35b-4945-b6a6-1a5a8c964f1d@googlegroups.com>
+ <alpine.DEB.2.10.1610091256090.3462@hadrien>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: vt6655: Replace dwIoBase by
+ iobase
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAAFX7JT4acPoN+yGojG6jrfXB5y=73rFhRP46t+pTZv==tj=nQ@mail.gmail.com>
-User-Agent: Mutt/1.7.0 (2016-08-17)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_5353_1481277462.1476041383054"
+X-Google-Token: EKa16r8FHOdw9J3aCMY0
+X-Google-IP: 117.232.163.80
 
-On Mon, Oct 10, 2016 at 12:45:17AM +0530, Varsha Rao wrote:
-> In this patch dwIoBase is renamed as iobase.This is done to fix the
-> checkpatch issue of the CamelCase.
+------=_Part_5353_1481277462.1476041383054
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_5354_154215219.1476041383054"
 
-Please put a space after a . in a sentance.
+------=_Part_5354_154215219.1476041383054
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-> 
-> Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
-> ---
->  Changes in v2:
->  -Limited commit message line to 70 characters.
->  -Proper alignment of different comments.
-> 
->  drivers/staging/vt6655/baseband.c |  52 +++---
->  drivers/staging/vt6655/baseband.h |   8 +-
->  drivers/staging/vt6655/card.c     |  30 ++--
->  drivers/staging/vt6655/mac.h      | 322 +++++++++++++++++++-------------------
->  drivers/staging/vt6655/rf.c       |  64 ++++----
->  drivers/staging/vt6655/srom.c     |  32 ++--
->  drivers/staging/vt6655/srom.h     |   6 +-
->  7 files changed, 257 insertions(+), 257 deletions(-)
-> 
-> diff --git a/drivers/staging/vt6655/baseband.c
-> b/drivers/staging/vt6655/baseband.c
-> index ba051ff..1ab91f9 100644
-> --- a/drivers/staging/vt6655/baseband.c
-> +++ b/drivers/staging/vt6655/baseband.c
-> @@ -1914,7 +1914,7 @@ void vnt_get_phy_field(struct vnt_private *priv,
-> u32 frame_length,
 
-Your patch is line-wrapped and can not be applied :(
 
-How did that happen?  Are you using 'git send-email' or something else?
+> Not sure what you mean.  Probably your mail client is misconfigured in 
+> some way then? 
+>
 
-thanks,
+    At the time of modifying the code, I had aligned it accordingly. But 
+this alignment would change when sent. I have found solution.
 
-greg k-h
+------=_Part_5354_154215219.1476041383054
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><blockquote class=3D"gmail_quote" style=3D"margin: 0;m=
+argin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Not sure =
+what you mean. =C2=A0Probably your mail client is misconfigured in
+<br>some way then?
+<br></blockquote><div><br>=C2=A0 =C2=A0 At the time of modifying the code, =
+I had aligned it accordingly. But this alignment would change when sent. I =
+have found solution.<br></div></div>
+------=_Part_5354_154215219.1476041383054--
+
+------=_Part_5353_1481277462.1476041383054--
 
