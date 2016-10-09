@@ -1,110 +1,85 @@
-X-GM-THRID: 6259013595271528448
-X-Received: by 10.182.47.132 with SMTP id d4mr14145715obn.40.1457290164121;
-        Sun, 06 Mar 2016 10:49:24 -0800 (PST)
+X-GM-THRID: 6339549036813484032
+X-Received: by 10.200.44.134 with SMTP id 6mr2881774qtw.31.1476041282039;
+        Sun, 09 Oct 2016 12:28:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.21.47 with SMTP id 44ls1340638qgk.90.gmail; Sun, 06 Mar
- 2016 10:49:23 -0800 (PST)
-X-Received: by 10.13.192.134 with SMTP id b128mr14137842ywd.43.1457290163389;
-        Sun, 06 Mar 2016 10:49:23 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
-        by gmr-mx.google.com with ESMTPS id 12si2451880pfb.1.2016.03.06.10.49.23
+Received: by 10.157.43.80 with SMTP id f16ls7755603otd.28.gmail; Sun, 09 Oct
+ 2016 12:28:01 -0700 (PDT)
+X-Received: by 10.13.222.70 with SMTP id h67mr7415037ywe.158.1476041281727;
+        Sun, 09 Oct 2016 12:28:01 -0700 (PDT)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from mail-lf0-x243.google.com (mail-lf0-x243.google.com. [2a00:1450:4010:c07::243])
+        by gmr-mx.google.com with ESMTPS id x14si2095713vkd.3.2016.10.09.12.28.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 06 Mar 2016 10:49:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
+        Sun, 09 Oct 2016 12:28:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:4010:c07::243 as permitted sender) client-ip=2a00:1450:4010:c07::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
        dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:4010:c07::243 as permitted sender) smtp.mailfrom=dilekuzulmez@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x243.google.com with SMTP id fl4so6362917pad.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 06 Mar 2016 10:49:23 -0800 (PST)
+Received: by mail-lf0-x243.google.com with SMTP id b75so6543234lfg.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 09 Oct 2016 12:28:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=15TDz1S/Aihgc1d8+L0BYDmxFAN18RSJKVum3e7gcXA=;
-        b=v2pEkLoTNR2Jx4fjUJp/KYYmjJJ71KKZDqAoPKVgDOwuvsBXB1IatPoOnE14lIO7iE
-         En7Gr3pBRw/kh7La1t5/ufbYuaF6tPvF9xCuS9+b/UCCmLKI7+4i5HdUOHdcrV8UdllR
-         aHA5Yb3ZwDlyuR3tg2E125aU8U24+IzHEsfqL02USHaBhzDtP7X/gButp9kQfx5y/i0h
-         X5NVsh5ieDyKbEmfUGXSSLBMBaqQskgm+IYBI33quA3EIRMlmGOQ4Xp3zjRZW3bzXNla
-         2hUi6rSQZJror1oTJnK2XxAovpzCjWDF0HeoaINlNBbnoiqaelGBmxz1aD3LUEbvqcwX
-         tnVg==
+        h=from:to:cc:subject:date:message-id;
+        bh=3HMrtuL+Ry5UO69NXupLt36aBo5xv9AIonaJa+uBpq8=;
+        b=XTMWxQvKL2iJl4kVcle7DoQEClmoRw0C7ldF8aPu3iSNxhWwpMKGRZ9Yl6bM0FL41p
+         TIHSp2sb0Z63NiZiuMYZTRuIF15oc/RkrbnrIITzrAn/NB/FS+avwJMx+qAR60efERYT
+         cD3Bphj3cPW9OlEdoJzyxQzUkp3YUFM/buOGre0yEDxG5isOVQRxMSigiK5sfg2u3kKV
+         pVTm6zUE2olrSdK7fyK4otp1FGp+ElljD0P4zpRFuBfLLp4KtX3MN6Jn35B4osNWHcxi
+         5kVEl/ryKI+vBpSCVp85S9lm16PfXrXrXwy9arjuo+lX5QC3A80WqkwsWPmB7HspSP+F
+         QJCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=15TDz1S/Aihgc1d8+L0BYDmxFAN18RSJKVum3e7gcXA=;
-        b=OR7L0WG+BRbrbSnhGGo5BRNee6fTlJA5B5OFYriwfiPkFEr0VHsMkcAIQWKXJsSkBX
-         Inp26eHgAmuEHfWdZpWfIyF6KongZhBPbROYjqZ/LsbhyNYUGLSZBBNeSlmHIExQW5uO
-         ijlbaBv036HcNUN3no9bYr5pjDPJUAPaf2WwIenbTruOfTXuVrc5o2Pvz9IDzVB9Lhwi
-         uV2ZXuZv6ulVMmRkGDyB//GZtfDSeWvlIhg2R9WfYMG5shqL7OtTrEIk8rH/Ho6Sp+n8
-         qc6NbgqW+80n1gyw0EA6YU2O9niYnsq8Pa917HCrrVsCRuL7d6Sd3u0u3gEnlyle2ibh
-         nYXQ==
-X-Gm-Message-State: AD7BkJKXz7+tu2PDbeYPzQxL546bKR5rg3/E6zaXquV7qMwKLaZku7tt9misH7z3UE3g6g==
-X-Received: by 10.66.144.134 with SMTP id sm6mr28100760pab.158.1457290163186;
-        Sun, 06 Mar 2016 10:49:23 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.154])
-        by smtp.gmail.com with ESMTPSA id ta2sm19094808pab.42.2016.03.06.10.49.21
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 06 Mar 2016 10:49:22 -0800 (PST)
-Date: Sun, 6 Mar 2016 16:19:28 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=3HMrtuL+Ry5UO69NXupLt36aBo5xv9AIonaJa+uBpq8=;
+        b=mSEB9mrP4TPUkbSvG+kIddV+E5Pkx/LNBHt4paOMUQBZrp4hbA8flGYkPwz9J06jL/
+         fqUYBE8AWFMauPeMbtHDRtMtIm5S/oTNlUnKMjbWDZk+yaM/40Si7fkZ0K6JnPCBVO8l
+         8buUEAzK3PcEHRtDESaaKZRXlHzcH0ByEQI24c9WomUPntL0KIZ1XzljK5wzZrTsBbYy
+         4bdN8RFTb1zjmTgUxXOh3cQHswqeBlXOCd3sZr87V6PVCdMZ3lzU/mHh3OyRFyKgggpy
+         hpd97bTTNoYWeBKnpQTISGfXjfki3qmUKezjayGO0gl4gDqm1is1LDSFZurnKiq3zwPx
+         h+HQ==
+X-Gm-Message-State: AA6/9Rkb8jj3ncjMpKMHH52HqYR9MParoqQvgrH9dsSc0VNGF8O6qHP26iqk4Y6VGf9xuQ==
+X-Received: by 10.194.63.145 with SMTP id g17mr6989651wjs.166.1476041281154;
+        Sun, 09 Oct 2016 12:28:01 -0700 (PDT)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from localhost.localdomain ([88.236.251.249])
+        by smtp.gmail.com with ESMTPSA id jn7sm33030196wjb.5.2016.10.09.12.27.59
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 09 Oct 2016 12:28:00 -0700 (PDT)
+From: Dilek Uzulmez <dilekuzulmez@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: ieee80211: Place constant on right side of the
- test.
-Message-ID: <20160306104928.GA5237@sandhya>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Subject: [PATCH] Staging: wilc1000: Remove unnecessary 'out of memory' message.
+Date: Sun,  9 Oct 2016 22:27:53 +0300
+Message-Id: <1476041273-3050-1-git-send-email-dilekuzulmez@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Place constant on right side of the test.
+This patch fixes checkpatch.pl warning in file host_interface.c
+WARNING: Possible unnecessary 'out of memory' message
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
 ---
+ drivers/staging/wilc1000/host_interface.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-Changes in v2:
-* No change.
-*Compile this patch to check nothing is broken.
-
- drivers/staging/rtl8192u/ieee80211/dot11d.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/staging/rtl8192u/ieee80211/dot11d.c b/drivers/staging/rtl8192u/ieee80211/dot11d.c
-index 82d6038..00b6052 100644
---- a/drivers/staging/rtl8192u/ieee80211/dot11d.c
-+++ b/drivers/staging/rtl8192u/ieee80211/dot11d.c
-@@ -103,7 +103,7 @@ u8 DOT11D_GetMaxTxPwrInDbm(struct ieee80211_device *dev, u8 Channel)
- 	PRT_DOT11D_INFO pDot11dInfo = GET_DOT11D_INFO(dev);
- 	u8 MaxTxPwrInDbm = 255;
+diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
+index 78f5613..0d16e49 100644
+--- a/drivers/staging/wilc1000/host_interface.c
++++ b/drivers/staging/wilc1000/host_interface.c
+@@ -2322,10 +2322,8 @@ static u32 Handle_ListenStateExpired(struct wilc_vif *vif,
+ 		wid.size = 2;
+ 		wid.val = kmalloc(wid.size, GFP_KERNEL);
  
--	if (MAX_CHANNEL_NUMBER < Channel) {
-+	if (Channel > MAX_CHANNEL_NUMBER) {
- 		netdev_err(dev->dev, "DOT11D_GetMaxTxPwrInDbm(): Invalid Channel\n");
- 		return MaxTxPwrInDbm;
- 	}
-@@ -139,7 +139,7 @@ int IsLegalChannel(struct ieee80211_device *dev, u8 channel)
- {
- 	PRT_DOT11D_INFO pDot11dInfo = GET_DOT11D_INFO(dev);
+-		if (!wid.val) {
+-			netdev_err(vif->ndev, "Failed to allocate memory\n");
++		if (!wid.val)
+ 			return -ENOMEM;
+-		}
  
--	if (MAX_CHANNEL_NUMBER < channel) {
-+	if (channel > MAX_CHANNEL_NUMBER) {
- 		netdev_err(dev->dev, "IsLegalChannel(): Invalid Channel\n");
- 		return 0;
- 	}
-@@ -162,7 +162,7 @@ int ToLegalChannel(struct ieee80211_device *dev, u8 channel)
- 		}
- 	}
- 
--	if (MAX_CHANNEL_NUMBER < channel) {
-+	if (channel > MAX_CHANNEL_NUMBER) {
- 		netdev_err(dev->dev, "IsLegalChannel(): Invalid Channel\n");
- 		return default_chn;
- 	}
+ 		wid.val[0] = u8remain_on_chan_flag;
+ 		wid.val[1] = FALSE_FRMWR_CHANNEL;
 -- 
-1.8.3.4
+1.9.1
 
 
