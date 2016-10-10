@@ -1,99 +1,116 @@
-X-GM-THRID: 6394099894364143616
-X-Received: by 10.25.193.213 with SMTP id r204mr1575108lff.24.1488742393443;
-        Sun, 05 Mar 2017 11:33:13 -0800 (PST)
+X-GM-THRID: 6339690897688494080
+X-Received: by 10.36.123.197 with SMTP id q188mr3740949itc.26.1476120647522;
+        Mon, 10 Oct 2016 10:30:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.72.196 with SMTP id v187ls277427lfa.52.gmail; Sun, 05 Mar
- 2017 11:33:12 -0800 (PST)
-X-Received: by 10.46.8.90 with SMTP id g26mr996398ljd.16.1488742392641;
-        Sun, 05 Mar 2017 11:33:12 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
-        by gmr-mx.google.com with ESMTPS id p144si221723wme.2.2017.03.05.11.33.12
+Received: by 10.157.33.198 with SMTP id s64ls9903827otb.15.gmail; Mon, 10 Oct
+ 2016 10:30:47 -0700 (PDT)
+X-Received: by 10.237.59.118 with SMTP id q51mr6435041qte.64.1476120647037;
+        Mon, 10 Oct 2016 10:30:47 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id 7si9013899par.0.2016.10.10.10.30.46
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 05 Mar 2017 11:33:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
+        Mon, 10 Oct 2016 10:30:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x243.google.com with SMTP id n11so10692812wma.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 05 Mar 2017 11:33:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=QnzVBDXZv+EUE/CSFaM5jR1z7qQx1l7UM5riq/d4TzU=;
-        b=Ina0XxB13oloARSQQt7N11Alw3xp5GYS6R7etaJ3R8sHcHdn4ofGxalM/wxdf8BhSZ
-         h6YExS70UlSSK5kLOh4t2aJoM2UHzxV06BCJddsVgMkShhMV0XHTn3gjxpw4iZQIbYNj
-         yZ+fbBK9ckwbYhpXc7ez6xL8cUE1O/YBEuTGIhNyhImyW96kT5i+rr3WftcfnMvpvmfj
-         vGUDnEmAz+quEGE23mH9CnOk+gaHYUSi/jrdP39K8kJvNiIa3cYrCXLDqOCU1Cgnlnmd
-         2m0MRR76amdbCWsczdGyL9gQqvpEaW+NWABT8g8eumWz9VgH+0URElaqk9QFexVYDWmT
-         lEEg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=QnzVBDXZv+EUE/CSFaM5jR1z7qQx1l7UM5riq/d4TzU=;
-        b=q/MaV2e8RU6kLx49tXiz9V7kPGQKifqKhhHfp0Q4gJlPAtyqpTBm2HJgy8eoj+mYSs
-         tV1FmPWY3rfS67D7XV80FVGzqw3x9zFL93MvHPjGcs1Wp9yWyb3mv6cUz4RbRjlQs/p2
-         FxXkaB+iRdro2eoVLZq0ahdv6tDcIpYsbsIb1iQkEFQL2VHooVdih7W5dnpojLzV6fgT
-         C4CFTb056xCcT5+ilfWfuFjzKmJEpBIopfHR/hlvb8O3VLMBtCKiZwsmvjqXx28dKNRX
-         ZJFLP/TkxnVfVbBJcQ1SIiba8EIbr1wZZ2yLLuGf3HD7asdx3zHaUzTiKIE1VxPv3iGY
-         152Q==
-X-Gm-Message-State: AMke39ls5ynfz1qucXGXbAPlQ2OYiOL0jdT2udsrgSrGcf7eRagah94CiUJ0AmXFAcPHcg==
-X-Received: by 10.28.72.193 with SMTP id v184mr10871049wma.105.1488742392399;
-        Sun, 05 Mar 2017 11:33:12 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([2a02:2f0b:8170:1398:c85a:3772:cb0c:b839])
-        by smtp.gmail.com with ESMTPSA id q66sm11843935wmb.28.2017.03.05.11.33.11
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 05 Mar 2017 11:33:11 -0800 (PST)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: w.d.hubbs@gmail.com,
-	chris@the-brannons.com,
-	kirk@reisers.ca,
-	samuel.thibault@ens-lyon.org,
-	gregkh@linuxfoundation.org,
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (smb-adpcdg2-01.hotspot.hub-one.net [213.174.99.135])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 46694725;
+	Mon, 10 Oct 2016 17:30:45 +0000 (UTC)
+Date: Mon, 10 Oct 2016 19:30:53 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Elise Lennion <elise.lennion@gmail.com>
+Cc: lidza.louina@gmail.com, markh@compro.net,
 	outreachy-kernel@googlegroups.com
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH 1/3] staging:speakup:keyhelp.c: Add spaces to align
-Date: Sun,  5 Mar 2017 21:33:00 +0200
-Message-Id: <20170305193300.19697-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+Subject: Re: [PATCH v2] staging: dgnc: replace DGNC_VERIFY_BOARD macro with
+ dgnc_verify_board function.
+Message-ID: <20161010173053.GD7299@kroah.com>
+References: <20161010140016.GA18255@lennorien.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20161010140016.GA18255@lennorien.com>
+User-Agent: Mutt/1.7.1 (2016-10-04)
 
-Add spaces to fic the following checkpath.pl issue:
-CHECK: Alignment should match open paranthesis
+On Mon, Oct 10, 2016 at 11:00:16AM -0300, Elise Lennion wrote:
+> Fix checkpatch warning:
+> 
+> WARNING: Macros with flow control statements should be avoided
+> 
+> Macros with flow control statements should be avoided. They break
+> the flow of the calling function and make it harder to test the code.
+> 
+> Signed-off-by: Elise Lennion <elise.lennion@gmail.com>
+> ---
+> 
+> v2: Fixed the return values of dgnc_verify_board. 
+>     Reworked to return NULL instead of 0, as suggested 
+>     by Julia Lawall <julia.lawall@lip6.fr>.
+> 
+>  drivers/staging/dgnc/dgnc_sysfs.c | 74 +++++++++++++++++++++++++++------------
+>  1 file changed, 51 insertions(+), 23 deletions(-)
+> 
+> diff --git a/drivers/staging/dgnc/dgnc_sysfs.c b/drivers/staging/dgnc/dgnc_sysfs.c
+> index 290bf6e..cdec40a 100644
+> --- a/drivers/staging/dgnc/dgnc_sysfs.c
+> +++ b/drivers/staging/dgnc/dgnc_sysfs.c
+> @@ -90,17 +90,21 @@ void dgnc_remove_driver_sysfiles(struct pci_driver *dgnc_driver)
+>  	driver_remove_file(driverfs, &driver_attr_pollrate);
+>  }
+>  
+> -#define DGNC_VERIFY_BOARD(p, bd)				\
+> -	do {							\
+> -		if (!p)						\
+> -			return 0;				\
+> -								\
+> -		bd = dev_get_drvdata(p);			\
+> -		if (!bd || bd->magic != DGNC_BOARD_MAGIC)	\
+> -			return 0;				\
+> -		if (bd->state != BOARD_READY)			\
+> -			return 0;				\
+> -	} while (0)
+> +static struct dgnc_board *dgnc_verify_board(struct device *p)
+> +{
+> +	struct dgnc_board *bd;
+> +
+> +	if (!p)
+> +		return NULL;
+> +
+> +	bd = dev_get_drvdata(p);
+> +	if (!bd || bd->magic != DGNC_BOARD_MAGIC)
+> +		return NULL;
+> +	if (bd->state != BOARD_READY)
+> +		return NULL;
+> +
+> +	return bd;
+> +}
 
-Deleted a tab and addes spaces to align the code.
+While this is a nice cleanup, take a step back and see what is being
+done with this code.
 
-Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
----
- drivers/staging/speakup/keyhelp.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+First off, (!p) can never be true, so checking for it shows that the
+original author didn't understand how sysfs worked.  After that, bd will
+also always be not NULL, as the driver already set that up.  Same for
+the ->magic field, that's pointless to check as it can't be wrong.
 
-diff --git a/drivers/staging/speakup/keyhelp.c b/drivers/staging/speakup/keyhelp.c
-index ce94cb1..f5156bb 100644
---- a/drivers/staging/speakup/keyhelp.c
-+++ b/drivers/staging/speakup/keyhelp.c
-@@ -117,7 +117,7 @@ static void say_key(int key)
- 	}
- 	if ((key > 0) && (key <= num_key_names))
- 		synth_printf(" %s\n",
--				spk_msg_get(MSG_KEYNAMES_START + (key - 1)));
-+			     spk_msg_get(MSG_KEYNAMES_START + (key - 1)));
- }
- 
- static int help_init(void)
-@@ -182,7 +182,7 @@ int spk_handle_help(struct vc_data *vc, u_char type, u_char ch, u_short key)
- 		name = NULL;
- 		if ((type != KT_SPKUP) && (key > 0) && (key <= num_key_names)) {
- 			synth_printf("%s\n",
--				spk_msg_get(MSG_KEYNAMES_START + key - 1));
-+				     spk_msg_get(MSG_KEYNAMES_START + key - 1));
- 			return 1;
- 		}
- 		for (i = 0; funcvals[i] != 0 && !name; i++) {
--- 
-2.9.3
+So maybe, BOARD_READY matters, but that's impossible to be not correct
+as it is set before the sysfs files are created, and never changes from
+what I can tell.
 
+So all of these checks are pointless and can just be removed.
+
+But then, step back even further, what code is checking for these
+things?  It's odd sysfs files that I have said need to be removed from
+the driver as they are pointless and not something that any tty driver
+should have.
+
+So how about just dropping the sysfs files instead?  That deletes a
+bunch of code (some of it wrong and pointless as described above), gets
+the driver closer to being mergable out of the staging directory, and it
+keeps anyone from ever copying bad coding patterns like this ever again.
+
+thanks,
+
+greg k-h
 
