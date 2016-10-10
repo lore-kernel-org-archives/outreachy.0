@@ -1,92 +1,109 @@
-X-GM-THRID: 6671951385382092800
-X-Received: by 2002:a6b:db04:: with SMTP id t4mr14153420ioc.243.1553434735990;
-        Sun, 24 Mar 2019 06:38:55 -0700 (PDT)
+X-GM-THRID: 6339051787828330496
+X-Received: by 10.107.143.150 with SMTP id r144mr7626785iod.34.1476087197790;
+        Mon, 10 Oct 2016 01:13:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:90d:: with SMTP id 13ls3912459itm.2.canary-gmail; Sun,
- 24 Mar 2019 06:38:54 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyTVFy0v7wuKNz+mauGcg3FCD7gCcga1DqCsAcI0YjlsG00MBkPLerM4ULQFtcKnyLcxjOx
-X-Received: by 2002:a24:94cd:: with SMTP id j196mr5460570ite.159.1553434734854;
-        Sun, 24 Mar 2019 06:38:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553434734; cv=none;
-        d=google.com; s=arc-20160816;
-        b=CevqfTe9vJ1Cg0+CC4G+Sn3j+6SxOhnp0PKRVgsm3gZ014ALPOwJM3z+Z4H2u2cbPA
-         SMyIKzX4Ggo8BsobNXTVvJdLoeGK9McqhPwWArJR9MS7wZNdTOduXWPQPXrD2NhBhWmZ
-         YipVbPPc7T21rDs4veXpqL0nQGANI3ylqzRO5cSidIOaIVS98rB0v89z7z4PaXaFwv+N
-         Ij6JPfNRnCj1vURUfAia4ZFtDvN8Ua7ojoKPdmQgMux6RGNFqgmp+5tdHczLblG/a5mL
-         XjmBXhR3kbJX2Wp22WKMvp2P2enNCWM3oEDTaqczYc9t8TCLC0buAGed4YrXT9a2yYhb
-         UpEA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:subject:message-id:date:from:mime-version;
-        bh=TaKz8dI9Zy8PWjSwOHPpzbU1ucXF8DStVr9x4Ll4PRM=;
-        b=O6wTvL2rb/ZslpebPIdzfFfWQjtxiu8rIhoRakKsU/I1yoXHf9C8lUUk2Om9gNP+67
-         U4UtjeB8TYmfV+TEspIL/fXe6pUApxDP0ir8kI52EiAdwGJbXJRwcYEFR4i2Zr/ToZou
-         HIUSpPShthyEFGCnXTZj5iRwn3TX/r0Ba/o9TZAkXY8+OTQkXeO4n+mDhaAGxSKA3aCR
-         7ggql2/s2DNq2hri21uH5MCVGlNZ6PWJJ5kB5k211LesytrnQ5+15MEkMWbEDBx9DQ9r
-         aj9EYeggXeASwbCNMvWiKYXpQNtS9rOdVFfV15BfPyIVuvApP2g7oogg6mf/v5ZcQxDw
-         J4pQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 68.178.252.231 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
-Return-Path: <vthakkar@vaishalithakkar.in>
-Received: from p3plsmtpa12-02.prod.phx3.secureserver.net (p3plsmtpa12-02.prod.phx3.secureserver.net. [68.178.252.231])
-        by gmr-mx.google.com with ESMTPS id n6si543287iod.1.2019.03.24.06.38.54
+Received: by 10.107.11.162 with SMTP id 34ls3250599iol.13.gmail; Mon, 10 Oct
+ 2016 01:13:16 -0700 (PDT)
+X-Received: by 10.66.159.65 with SMTP id xa1mr7310719pab.80.1476087196759;
+        Mon, 10 Oct 2016 01:13:16 -0700 (PDT)
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from mail-qk0-x244.google.com (mail-qk0-x244.google.com. [2607:f8b0:400d:c09::244])
+        by gmr-mx.google.com with ESMTPS id p193si947886ywe.6.2016.10.10.01.13.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 24 Mar 2019 06:38:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vthakkar@vaishalithakkar.in designates 68.178.252.231 as permitted sender) client-ip=68.178.252.231;
+        Mon, 10 Oct 2016 01:13:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2607:f8b0:400d:c09::244 as permitted sender) client-ip=2607:f8b0:400d:c09::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 68.178.252.231 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
-Received: from mail-lj1-f174.google.com ([209.85.208.174])
-	by :SMTPAUTH: with ESMTPSA
-	id 83Kuhm9r28J8p83KvhbLIw; Sun, 24 Mar 2019 06:38:53 -0700
-Received: by mail-lj1-f174.google.com with SMTP id q66so5566379ljq.7
-        for <outreachy-kernel@googlegroups.com>; Sun, 24 Mar 2019 06:38:53 -0700 (PDT)
-X-Gm-Message-State: APjAAAXh5T4ZYgaOisDn+bgpzfkwhgrpyZ8ki/OXSsXsq0lWRTg68lhS
-	3McH9L5Dz3PcQ+g5LcAGMHGYkIl6KnWGqP6W3CI=
-X-Received: by 2002:a2e:9655:: with SMTP id z21mr10571739ljh.60.1553434732177;
- Sun, 24 Mar 2019 06:38:52 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2607:f8b0:400d:c09::244 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qk0-x244.google.com with SMTP id z190so6163365qkc.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 10 Oct 2016 01:13:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=P5aWIqAhVNVxYAKkkD/afZCPEGLruYicvvjBt3ovnFM=;
+        b=G+e2ttMgJgi4AfMxQAgCAZcBSKhH40hCSgvI8bTnsWrpzUpsB1ax85WsM6zKzxRTCj
+         Xo32Wa+15b21f4zO1MyGd6NjH2y2pE5S8zedAmqjWlKkCmh0fCoatGjThNgZH46vll06
+         teHv73ViVv1tTR/0981HzZS1TnNf74cVto0hOVdE1aWLOfh6Ix2k9STMK9Lp8ZKI/FPw
+         mGGItboESCCjk4bKN3rdSG8GZK+KzKY87dq/iz+opox0zbjZbPk2fQeTE1SsvZvghsgC
+         OyRStI2SkhiBoxfQP9QJszGjCECp73gaRb83QAEljN5pDa8kO3s2cgL8P5w5H8RuJKER
+         OH5g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=P5aWIqAhVNVxYAKkkD/afZCPEGLruYicvvjBt3ovnFM=;
+        b=cvKVuexeKM2p89z4Q9089b6gdaUcAm/cAyd88u/3aPXqPMThiEggmj2cZWnI1bNWRG
+         Bk3evuhSd71rHTOXN6vqp2GXGlB+5S0w92yk3GvEdbIK84v7N2qs/wqUL/ILc34wuly3
+         yhVZ04BhyAuFaB0xwY7pA2CU/9487bV6hroJdWhlW1A+UwdEd65dodsJ4Gd2xqnCD0lx
+         PMqxDd2k347U98z9rWrX11flPKaOnHBQoGk4dYJUDN+jZGOhTAJQCxm6/HjuKaq2j7aj
+         KmncUgwwCAWlPOf8rHit6dOJrvXEctIXw2cANg8K5CvY82oBOsgYiXYCZlaufJ/fZokY
+         1UrA==
+X-Gm-Message-State: AA6/9RnEUJQ4PDynAkS9kGxZYHn35RxP0+L4KUhZt7d/M5xc9f1fAHChSEH3/XNRnXCT/Q==
+X-Received: by 10.194.28.5 with SMTP id x5mr32146934wjg.63.1476087196176;
+        Mon, 10 Oct 2016 01:13:16 -0700 (PDT)
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from domino-MS-16Y1 ([92.81.89.162])
+        by smtp.gmail.com with ESMTPSA id q8sm38087216wjj.7.2016.10.10.01.13.15
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 10 Oct 2016 01:13:15 -0700 (PDT)
+Date: Mon, 10 Oct 2016 11:13:14 +0300
+From: Mihaela Muraru <mihaela.muraru21@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Aditya Shankar <aditya.shankar@microchip.com>,
+	Ganesh Krishna <ganesh.krishna@microchip.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH v3] Staging: wilc1000: Unnecessary 'out of memory' message
+Message-ID: <20161010081314.GA8795@domino-MS-16Y1>
 MIME-Version: 1.0
-From: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
-Date: Sun, 24 Mar 2019 19:08:40 +0530
-X-Gmail-Original-Message-ID: <CAK-LDbKFxTUL8ed0BqDHrCcK+ZchY28h2aES6+39OC=2YdkUsg@mail.gmail.com>
-Message-ID: <CAK-LDbKFxTUL8ed0BqDHrCcK+ZchY28h2aES6+39OC=2YdkUsg@mail.gmail.com>
-Subject: Outreachy Application
-To: Outreachy <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset="UTF-8"
-X-CMAE-Envelope: MS4wfFgCM8zrfyXea16OuiaEZxZdzEwHvYIjVfGydNrUQnOqxmvcDOzDGDHJYP2R720WrZ8XKXV/JIEvc1j1xnlSlNkbenGCYPfP0NrlRvdm1Z5wcgzXQiIa
- XKucrFy8uPPP/H+DZPjvsqtI28jaN/cGUvxR+ObNhtkcY3glcyutjJZgNy8raeDeHkkXGWG+J5WdWyBOSkU+8khlNkG8EOhoSVs=
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Hello Outreachy Applicants,
+This patch fixes checkpatch.pl warning in file host_interface.c
+WARNING : possible unecessary 'out of memory' message.
 
-Thanks for your interest in Linux Kernel and contributing to Linux
-Kernel over the past few weeks. I have received bunch of queries
-regarding the application process so here are a bunch of points
-regarding the same:
+Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
 
-1. Some of our projects have March 26, 2019 as a deadline so if you
-wish to apply for those projects please make sure that you fill out
-your application before March 26, 2019 and have recorded contributions
-accordingly.
+---
+Changes in v3:
+	- change the description.
+	- correct spelling mistakes.
+---
+ drivers/staging/wilc1000/host_interface.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-2. When it comes recording your contributions, it's ok if you don't
-record separate contribution for each cleanup patch. You can group
-them according to the changes or can specify all of them in one. As
-far as we have links to your patches, it should be fine. So, please
-make sure that you have put links to your patches.
+diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
+index 78f5613..ff3d267 100644
+--- a/drivers/staging/wilc1000/host_interface.c
++++ b/drivers/staging/wilc1000/host_interface.c
+@@ -1722,10 +1722,8 @@ _WPAPtk_end_case_:
+ 
+ 	case PMKSA:
+ 		pu8keybuf = kmalloc((pstrHostIFkeyAttr->attr.pmkid.numpmkid * PMKSA_KEY_LEN) + 1, GFP_KERNEL);
+-		if (!pu8keybuf) {
+-			netdev_err(vif->ndev, "No buffer to send PMKSA Key\n");
++		if (!pu8keybuf)
+ 			return -ENOMEM;
+-		}
+ 
+ 		pu8keybuf[0] = pstrHostIFkeyAttr->attr.pmkid.numpmkid;
+ 
+@@ -2322,10 +2320,8 @@ static u32 Handle_ListenStateExpired(struct wilc_vif *vif,
+ 		wid.size = 2;
+ 		wid.val = kmalloc(wid.size, GFP_KERNEL);
+ 
+-		if (!wid.val) {
+-			netdev_err(vif->ndev, "Failed to allocate memory\n");
++		if (!wid.val)
+ 			return -ENOMEM;
+-		}
+ 
+ 		wid.val[0] = u8remain_on_chan_flag;
+ 		wid.val[1] = FALSE_FRMWR_CHANNEL;
+-- 
+2.7.4
 
-3. In the 'community specific question' , please mention your project
-preferences. So for example, if you have applied for project X and
-project Y in Linux Kernel and you prefer to work on project X over Y,
-write like the following:
-
-Project Preferences:
-
-1. Project X
-2. Project Y
-
-4. Feel free to ask mentors if they want you to put any specific
-information in the application related to their projects.
-
-I hope this covers most of your queries. If you still have any
-questions, please feel free to email me or ping me on IRC. My nickname
-is 'vaishali' on both Freenode and OFTC.
 
