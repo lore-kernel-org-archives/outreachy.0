@@ -1,141 +1,91 @@
-X-GM-THRID: 6255232975470854144
-X-Received: by 10.66.221.100 with SMTP id qd4mr41384175pac.0.1456409919680;
-        Thu, 25 Feb 2016 06:18:39 -0800 (PST)
+X-GM-THRID: 6340281739033706496
+X-Received: by 10.28.166.6 with SMTP id p6mr13117wme.7.1476211878844;
+        Tue, 11 Oct 2016 11:51:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.108.139 with SMTP id j11ls451568qgf.54.gmail; Thu, 25 Feb
- 2016 06:18:39 -0800 (PST)
-X-Received: by 10.129.51.2 with SMTP id z2mr41091072ywz.49.1456409919097;
-        Thu, 25 Feb 2016 06:18:39 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-io0-x232.google.com (mail-io0-x232.google.com. [2607:f8b0:4001:c06::232])
-        by gmr-mx.google.com with ESMTPS id k15si211208igt.3.2016.02.25.06.18.39
+Received: by 10.28.31.81 with SMTP id f78ls18256wmf.11.gmail; Tue, 11 Oct 2016
+ 11:51:18 -0700 (PDT)
+X-Received: by 10.194.126.69 with SMTP id mw5mr431468wjb.20.1476211878462;
+        Tue, 11 Oct 2016 11:51:18 -0700 (PDT)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
+        by gmr-mx.google.com with ESMTPS id r11si8356wmf.0.2016.10.11.11.51.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 06:18:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::232 as permitted sender) client-ip=2607:f8b0:4001:c06::232;
+        Tue, 11 Oct 2016 11:51:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::232 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
        dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=dilekuzulmez@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-io0-x232.google.com with SMTP id l127so88998829iof.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 06:18:39 -0800 (PST)
+Received: by mail-wm0-x243.google.com with SMTP id b80so167150wme.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 11 Oct 2016 11:51:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=sD3qs6fs9WgcrWZa1ILd61HOs9rBshmVCJJIMXEjnyY=;
-        b=QADra1/aoWIJbzmiRaD2MVHUJf//+8PqeWyhsU/p5Ly2R1ZEZlhDxdBAQE0nIPfSdV
-         GsF3YDOPqoIP7LGcJFFaPN1VgBOUd/dji9q4f78yz/O2rw0Pr7xyaVOSF1uStAr9/P1W
-         D3otGY01ha8BXMG24qOalcb3Jcjpn0iWWP9ewxNT5vPvyFuCFpuSqwum3eV/vNGgjL1Y
-         0rcmJ2yGFSlAwJqej22iG6zK10zqERLKgSaGtF0F1Hf6eccHzoWzyLCUR4l0Vsg+cL42
-         wfhwcpgxeZeL7VycSdsXILtzdpj32CQSxDtXmmSNUPCfjXUSgKT83nKkfVcCH45z1WjS
-         GIPQ==
+        h=from:to:cc:subject:date:message-id;
+        bh=+Hic4nRzUB/YIIFe9kDicP9OtdSAh1g+DgUZt/WPmIA=;
+        b=XsBrLnLnrzodl5KzVoBVErleurX7KSQdDKw3rIEWBFaHt5LQ+i38nJJnoQP6C1gl92
+         ge4z+8zAyuQ2TyV3m0LLpAkaoz2LX1gi4KbwQ62KaPeuOc34KpEYrErgL0gUinDwOblE
+         2w6cGSCQvrinAPSXhATrIf85nBDuNEtm4vGZqqhuSlICs/g252qD5nkIhg4eXj0suMP6
+         SuL+9Oi2ewjiZMKZas48mWmDrFZ4ARtmK0b+7AE7QyhTULwF0cILQv2LZzhXIMP7T0qq
+         VCJP7YuWplrOKlXVun7Du5lrb1DMFPXzilEY60iKyHq0LvZ0UdusVnbapTXcK9K0eDI6
+         s6ug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=sD3qs6fs9WgcrWZa1ILd61HOs9rBshmVCJJIMXEjnyY=;
-        b=INseZUdgJ8yRXCpAgsg3eKGtq5wcqn98baefrZ4M11hKwV7EcLfqhcuReSCmInLgtd
-         QfcFiCHaaFi8o0HH59SIMGen0+J3/siyOAEPiiiMfk8jU8WY/HxBWnDIY5txREYTb95o
-         8iJwz8lPMBa2pE3e+Ee8M3OaV5KC0W+qB7wto9MPkNG6nt7BzYqj24HnzrES3BlRhdKF
-         fDS5VdRT2MLb5z5UBpxmvNsZ7JcEliuJJGdcPBn4MCv7lq1Ew8uYbfJKjqP+r5KPGA5i
-         Z/Hzy+Yt5MmUp3Zf2zW4UywEgjAhumolGd2wqcwH8YlBr3UbFt/nvysyM6mx+ngeM+Ze
-         pktw==
-X-Gm-Message-State: AG10YOTQturk+5BcQVSb3s57QYbAUFit6ZDsarLFnz/k0B48obiJZkAxLN47niwBIEQpAw==
-X-Received: by 10.107.12.152 with SMTP id 24mr3732336iom.152.1456409918896;
-        Thu, 25 Feb 2016 06:18:38 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id n1sm1301007ige.19.2016.02.25.06.18.38
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 06:18:38 -0800 (PST)
-Date: Thu, 25 Feb 2016 14:17:50 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=+Hic4nRzUB/YIIFe9kDicP9OtdSAh1g+DgUZt/WPmIA=;
+        b=UjnYLeZvBwl/WOnXWJ97S6HXM7U1PCn9udpez5mpQDYltaJE8xM6YwsjViwQtSv9es
+         FQweQVTsOniwEPcHa3dC9xxAa0qcqykE1KfACFKoy5oUvBMn7mu9B4+GOiWr5YHzCwMj
+         tOzA+cq07uanHSj0SxG+p34FWoUgcYJqJ5eB705cZ49+dVbtxgQhdCk0SROLpMyHCGpD
+         PjkodaLyLJZjyE1qZCpSDSglm1kiOTL3QxfDHHwT8fOMa7nn0WfHyUoOufkSnRBg1sq8
+         3pXtXpc5IdDT2q+lIO/C+Xv3KJuQ77N3pK7RqSBA7olQaEDrgSsVo4bgXdswJAwtwedM
+         Vujg==
+X-Gm-Message-State: AA6/9RlZ0ZZVIw1ux1PtUoO0GggqCsBMYGP4VB2K4WLsP6q0reOZsmoWz15UMYegObpCPw==
+X-Received: by 10.194.102.67 with SMTP id fm3mr6519961wjb.80.1476211878108;
+        Tue, 11 Oct 2016 11:51:18 -0700 (PDT)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from localhost.localdomain ([88.236.251.249])
+        by smtp.gmail.com with ESMTPSA id w73sm211081wmd.18.2016.10.11.11.51.16
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 11 Oct 2016 11:51:17 -0700 (PDT)
+From: Dilek Uzulmez <dilekuzulmez@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: wlan-ng: prism2mib.c: Drop void pointer cast
-Message-ID: <20160225191750.GA6975@janani-Inspiron-3521>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Subject: [PATCH] Staging: olpc_dcon: Add space around '|'
+Date: Tue, 11 Oct 2016 21:51:10 +0300
+Message-Id: <1476211870-10083-1-git-send-email-dilekuzulmez@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Void pointers don't need to be cast to other pointer types.
-Semantic patch used:
+Add space around operator '|'. Problem found using checkpatch.pl
+CHECK: spaces preferred around that '|' (ctx:VxV)
 
-@r@
-expression x;
-void* e;
-type T;
-identifier f;
-@@
-
-(
-  *((T *)e)
-| 
-  ((T *)x) [...]
-| 
-  ((T *)x)->f
-| 
-- (T *)
-  e
-)
-
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
+Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
 ---
- drivers/staging/wlan-ng/prism2mib.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/olpc_dcon/olpc_dcon_xo_1_5.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/wlan-ng/prism2mib.c b/drivers/staging/wlan-ng/prism2mib.c
-index 5f3c7ea..fe914b1 100644
---- a/drivers/staging/wlan-ng/prism2mib.c
-+++ b/drivers/staging/wlan-ng/prism2mib.c
-@@ -428,7 +428,7 @@ static int prism2mib_uint32(struct mibrec *mib,
- 			    struct p80211msg_dot11req_mibset *msg, void *data)
- {
- 	int result;
--	u32 *uint32 = (u32 *) data;
-+	u32 *uint32 = data;
- 	u8 bytebuf[MIB_TMP_MAXLEN];
- 	u16 *wordbuf = (u16 *) bytebuf;
+diff --git a/drivers/staging/olpc_dcon/olpc_dcon_xo_1_5.c b/drivers/staging/olpc_dcon/olpc_dcon_xo_1_5.c
+index 1e23ef1..a4f61b7 100644
+--- a/drivers/staging/olpc_dcon/olpc_dcon_xo_1_5.c
++++ b/drivers/staging/olpc_dcon/olpc_dcon_xo_1_5.c
+@@ -65,7 +65,7 @@ static int dcon_init_xo_1_5(struct dcon_priv *dcon)
+ 	dcon_clear_irq();
  
-@@ -475,7 +475,7 @@ static int prism2mib_flag(struct mibrec *mib,
- 			  struct p80211msg_dot11req_mibset *msg, void *data)
- {
- 	int result;
--	u32 *uint32 = (u32 *) data;
-+	u32 *uint32 = data;
- 	u8 bytebuf[MIB_TMP_MAXLEN];
- 	u16 *wordbuf = (u16 *) bytebuf;
- 	u32 flags;
-@@ -533,7 +533,7 @@ static int prism2mib_wepdefaultkey(struct mibrec *mib,
- 				   void *data)
- {
- 	int result;
--	p80211pstrd_t *pstr = (p80211pstrd_t *) data;
-+	p80211pstrd_t *pstr = data;
- 	u8 bytebuf[MIB_TMP_MAXLEN];
- 	u16 len;
+ 	/* set   PMIO_Rx52[6] to enable SCI/SMI on gpio12 */
+-	outb(inb(VX855_GPI_SCI_SMI)|BIT_GPIO12, VX855_GPI_SCI_SMI);
++	outb(inb(VX855_GPI_SCI_SMI) | BIT_GPIO12, VX855_GPI_SCI_SMI);
  
-@@ -660,7 +660,7 @@ static int prism2mib_fragmentationthreshold(struct mibrec *mib,
- 					    struct p80211msg_dot11req_mibset *msg,
- 					    void *data)
- {
--	u32 *uint32 = (u32 *) data;
-+	u32 *uint32 = data;
+ 	/* Determine the current state of DCONLOAD, likely set by firmware */
+ 	/* GPIO1 */
+@@ -131,7 +131,7 @@ static void dcon_wiggle_xo_1_5(void)
+ 	udelay(5);
  
- 	if (!isget)
- 		if ((*uint32) % 2) {
-@@ -705,7 +705,7 @@ static int prism2mib_priv(struct mibrec *mib,
- 			  hfa384x_t *hw,
- 			  struct p80211msg_dot11req_mibset *msg, void *data)
- {
--	p80211pstrd_t *pstr = (p80211pstrd_t *) data;
-+	p80211pstrd_t *pstr = data;
+ 	/* set   PMIO_Rx52[6] to enable SCI/SMI on gpio12 */
+-	outb(inb(VX855_GPI_SCI_SMI)|BIT_GPIO12, VX855_GPI_SCI_SMI);
++	outb(inb(VX855_GPI_SCI_SMI) | BIT_GPIO12, VX855_GPI_SCI_SMI);
+ }
  
- 	switch (mib->did) {
- 	case DIDmib_lnx_lnxConfigTable_lnxRSNAIE:{
+ static void dcon_set_dconload_xo_1_5(int val)
 -- 
-2.5.0
+1.9.1
 
 
