@@ -1,100 +1,119 @@
-X-GM-THRID: 6376626533381963776
-X-Received: by 10.99.149.13 with SMTP id p13mr13845656pgd.77.1484674060293;
-        Tue, 17 Jan 2017 09:27:40 -0800 (PST)
+X-GM-THRID: 6340280388266491904
+X-Received: by 10.28.7.199 with SMTP id 190mr11543wmh.20.1476211563555;
+        Tue, 11 Oct 2016 11:46:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.73.152 with SMTP id e24ls3751912itd.10.canary-gmail; Tue,
- 17 Jan 2017 09:27:39 -0800 (PST)
-X-Received: by 10.98.134.194 with SMTP id x185mr10038723pfd.34.1484674059482;
-        Tue, 17 Jan 2017 09:27:39 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id r8si5866224pfa.5.2017.01.17.09.27.39
+Received: by 10.28.47.143 with SMTP id v137ls16605wmv.24.gmail; Tue, 11 Oct
+ 2016 11:46:02 -0700 (PDT)
+X-Received: by 10.28.31.81 with SMTP id f78mr11756wmf.2.1476211562886;
+        Tue, 11 Oct 2016 11:46:02 -0700 (PDT)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
+        by gmr-mx.google.com with ESMTPS id 128si6518wmd.3.2016.10.11.11.46.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Jan 2017 09:27:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Tue, 11 Oct 2016 11:46:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id e4so6324257pfg.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 17 Jan 2017 09:27:39 -0800 (PST)
+       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=dilekuzulmez@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x243.google.com with SMTP id 123so146549wmb.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 11 Oct 2016 11:46:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=X/0FyXMhdXdKsmavtDVWbHBdUPC2FThv9pizwJ2iHtY=;
-        b=oFCF7SOmPevtUILlCujPBXuGnPQlGAPcCPaPTjr0mBvYWtUTJAJhPGR57wW5bfbgBf
-         sX+JBjvPOW71HCbUsnW+hq5laDpcWV5NNN7xcSKQ0SQm+Y8PDioXAhYQ+9PGmCM0Zmdc
-         EaGMuZAgejk503p6IO3EnuljDbzRCH1wZYtMd70B7s0wB6z0AJ1HokNlAoXhtHIUA0gv
-         4uMY3/p/P1gQ1JnVW1lvpITNc3XnLQ/xwBr6y3e+Bqbc8ymz9CsT+RfrGjird9C2b9FS
-         f5neXAe+n1AtfsnKbakO9ZV8oXBRUtMfIEajm7UgtUVtwj8RwGuYZyQKZ4aPRKjEDbWy
-         dCLA==
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=1b05wbox8q2wF86bMDf43C0PVON9aGBN83GPtK8jOSw=;
+        b=FO4J7fobQ9Tepc9OWq7U0sBGg+zJJynMMeq1ULr2xWFQeMFXhWdithqGf/hKAm4cGz
+         1WExLyJi1BLbGWXqnw/8XYeyruXRLeOHvjlGK33xm16RH7EgVxM/W1G/P0lGGv90GVOS
+         smneQTNAa1hHHzTtoEmFbhVQEf6XawNhKbqSlakfJ1cjhhPKJ65xOHcExwxMDwjKrpLj
+         0oCxi5fg2gmK1yT21repmlMIFXT9NkD10FDhXpCUWD1OmQ46Atg46UHny2e+MPN1BSX5
+         FTUy8C10nob8jCcLpJ5PEyInpoNPqtmv8wjkZIUkzU3EU5qe6I+AqrEJ0mhtrWvgI+Vp
+         1Shw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=X/0FyXMhdXdKsmavtDVWbHBdUPC2FThv9pizwJ2iHtY=;
-        b=mhON0ijoIigHqJJgKwzVE53OKj4BqguxNdS+HHlE9WR7ajeQSkZsS8ec/DzPVYw1kX
-         oQ4NYIYaMQf40zVpjTyekQusfiSyBzaqN9Tpy+vu2xBm2PlQ+aet1WO1aS6MHKqhZqYM
-         Bro1QD5vh0pyvaozoeNY27O9GhwRoW4x7+zix/f6p4hHAsV1BG3lRiklPIKqMLZmdZ8B
-         v7N9tLy6WQgpMgrqUduehGSZuO2b7zr15Upwzoiuu8ST/c8HhTvmr6J8xanJMGDfHoJE
-         sTcLJxEf5pZJgHmAhcCvNsZiR4EjCMp6XsQUbFxj/WBpEOZBwp4Ay2f5vummaZayAE+f
-         7OTA==
-X-Gm-Message-State: AIkVDXJrSsdYuBqkA0JRCLASqXiTymkIkhtQ4q8NyNLTNLxXWRTujDsn8VNW8FzUrlPUVg==
-X-Received: by 10.84.202.12 with SMTP id w12mr61247264pld.156.1484674058819;
-        Tue, 17 Jan 2017 09:27:38 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id u29sm27572690pfl.17.2017.01.17.09.27.37
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 17 Jan 2017 09:27:37 -0800 (PST)
-Date: Tue, 17 Jan 2017 22:58:58 +0530
-From: simran singhal <singhalsimran0@gmail.com>
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=1b05wbox8q2wF86bMDf43C0PVON9aGBN83GPtK8jOSw=;
+        b=ErAtYdTugiwI6S6kubTflMcrEREGVz/sV/1HCKKLZZ3anTHY9OFh9BE5VGYxhDvnN6
+         5K6TB0uU6k4NFta8KrI6qj41/e0QBniV0BlR/kYp0bLpLMqDv1l2bBMDJJE6wmdK4I9F
+         vxx65JosbgMGa0VCal6r2CyTnI47GcSCi2OXJa/0SVMNMNXzmPXxC8Yccm0ZM0Awd9VS
+         Py0X+YRoCGX7j/dXG/yWxTXmcUzw8REvgwH+SNRI1GUJHVITErM/W5tXu8uPVwYKpvgV
+         5Tp/bMzTtgUUDRS3HXmx8PUICDx3M+wV8ieVltZaQg/jqrmavMORvFudgI3otj5jI67Y
+         +7lw==
+X-Gm-Message-State: AA6/9RmAtLbERghcPI2BGVDxhytZYtjny4fvMXQ33iNL/VDjSfXZZM2zFgABJY07OrSgsg==
+X-Received: by 10.28.216.148 with SMTP id p142mr163319wmg.4.1476211562688;
+        Tue, 11 Oct 2016 11:46:02 -0700 (PDT)
+Return-Path: <dilekuzulmez@gmail.com>
+Received: from localhost.localdomain ([88.236.251.249])
+        by smtp.gmail.com with ESMTPSA id a7sm5391923wjj.22.2016.10.11.11.45.55
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 11 Oct 2016 11:45:56 -0700 (PDT)
+From: Dilek Uzulmez <dilekuzulmez@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] drivers: staging: Fix "space required after that ','" errors
-Message-ID: <20170117172858.GA32083@singhal-Inspiron-5558>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Subject: [PATCH] Staging: olpc_dcon: Add space around '<<'
+Date: Tue, 11 Oct 2016 21:45:50 +0300
+Message-Id: <1476211550-9937-1-git-send-email-dilekuzulmez@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-Fix checkpatch.pl "space required after that ','" errors
+Add space around operator '<<'. Problem found using checkpatch.pl
+CHECK: spaces preferred around that '<<' (ctx:VxV)
 
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
-
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-index d7d85b3..6380b41 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-@@ -3177,7 +3177,7 @@ int ieee80211_wpa_supplicant_ioctl(struct ieee80211_device *ieee, struct iw_poin
- 		break;
-
- 	default:
--		printk("Unknown WPA supplicant request: %d\n",param->cmd);
-+		printk("Unknown WPA supplicant request: %d\n", param->cmd);
- 		ret = -EOPNOTSUPP;
- 		break;
- 	}
+Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
 ---
- drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/olpc_dcon/olpc_dcon.h | 30 +++++++++++++++---------------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-index d7d85b3..6380b41 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-@@ -3177,7 +3177,7 @@ int ieee80211_wpa_supplicant_ioctl(struct ieee80211_device *ieee, struct iw_poin
- 		break;
+diff --git a/drivers/staging/olpc_dcon/olpc_dcon.h b/drivers/staging/olpc_dcon/olpc_dcon.h
+index 215e7ec..2fe8a70 100644
+--- a/drivers/staging/olpc_dcon/olpc_dcon.h
++++ b/drivers/staging/olpc_dcon/olpc_dcon.h
+@@ -9,18 +9,18 @@
+ #define DCON_REG_ID		 0
+ #define DCON_REG_MODE		 1
  
- 	default:
--		printk("Unknown WPA supplicant request: %d\n",param->cmd);
-+		printk("Unknown WPA supplicant request: %d\n", param->cmd);
- 		ret = -EOPNOTSUPP;
- 		break;
- 	}
+-#define MODE_PASSTHRU	(1<<0)
+-#define MODE_SLEEP	(1<<1)
+-#define MODE_SLEEP_AUTO	(1<<2)
+-#define MODE_BL_ENABLE	(1<<3)
+-#define MODE_BLANK	(1<<4)
+-#define MODE_CSWIZZLE	(1<<5)
+-#define MODE_COL_AA	(1<<6)
+-#define MODE_MONO_LUMA	(1<<7)
+-#define MODE_SCAN_INT	(1<<8)
+-#define MODE_CLOCKDIV	(1<<9)
+-#define MODE_DEBUG	(1<<14)
+-#define MODE_SELFTEST	(1<<15)
++#define MODE_PASSTHRU	(1 << 0)
++#define MODE_SLEEP	(1 << 1)
++#define MODE_SLEEP_AUTO	(1 << 2)
++#define MODE_BL_ENABLE	(1 << 3)
++#define MODE_BLANK	(1 << 4)
++#define MODE_CSWIZZLE	(1 << 5)
++#define MODE_COL_AA	(1 << 6)
++#define MODE_MONO_LUMA	(1 << 7)
++#define MODE_SCAN_INT	(1 << 8)
++#define MODE_CLOCKDIV	(1 << 9)
++#define MODE_DEBUG	(1 << 14)
++#define MODE_SELFTEST	(1 << 15)
+ 
+ #define DCON_REG_HRES		0x2
+ #define DCON_REG_HTOTAL		0x3
+@@ -35,11 +35,11 @@
+ #define DCON_REG_MEM_OPT_B	0x42
+ 
+ /* Load Delay Locked Loop (DLL) settings for clock delay */
+-#define MEM_DLL_CLOCK_DELAY	(1<<0)
++#define MEM_DLL_CLOCK_DELAY	(1 << 0)
+ /* Memory controller power down function */
+-#define MEM_POWER_DOWN		(1<<8)
++#define MEM_POWER_DOWN		(1 << 8)
+ /* Memory controller software reset */
+-#define MEM_SOFT_RESET		(1<<0)
++#define MEM_SOFT_RESET		(1 << 0)
+ 
+ /* Status values */
+ 
 -- 
-2.7.4
+1.9.1
 
 
