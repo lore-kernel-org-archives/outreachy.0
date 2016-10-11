@@ -1,60 +1,181 @@
-X-GM-THRID: 6333559927817109504
-X-Received: by 10.25.152.10 with SMTP id a10mr429849lfe.4.1474646834472;
-        Fri, 23 Sep 2016 09:07:14 -0700 (PDT)
+X-GM-THRID: 6336450754880995328
+X-Received: by 10.157.33.137 with SMTP id s9mr775041otb.53.1476184646478;
+        Tue, 11 Oct 2016 04:17:26 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.29.133 with SMTP id d127ls406167wmd.27.canary; Fri, 23 Sep
- 2016 09:07:13 -0700 (PDT)
-X-Received: by 10.194.222.198 with SMTP id qo6mr418408wjc.11.1474646833965;
-        Fri, 23 Sep 2016 09:07:13 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id c13si291076wme.3.2016.09.23.09.07.13
+Received: by 10.157.35.106 with SMTP id k39ls1126975otd.3.gmail; Tue, 11 Oct
+ 2016 04:17:26 -0700 (PDT)
+X-Received: by 10.129.89.84 with SMTP id n81mr918852ywb.23.1476184646057;
+        Tue, 11 Oct 2016 04:17:26 -0700 (PDT)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-lf0-x241.google.com (mail-lf0-x241.google.com. [2a00:1450:4010:c07::241])
+        by gmr-mx.google.com with ESMTPS id p131si518486vkf.1.2016.10.11.04.17.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Sep 2016 09:07:13 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Tue, 11 Oct 2016 04:17:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:4010:c07::241 as permitted sender) client-ip=2a00:1450:4010:c07::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.30,382,1470693600"; 
-   d="scan'208";a="194459518"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 23 Sep 2016 18:07:13 +0200
-Date: Fri, 23 Sep 2016 18:07:11 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: outreachy-kernel@googlegroups.com
-Subject: status
-Message-ID: <alpine.DEB.2.10.1609231803020.2934@hadrien>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:4010:c07::241 as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-lf0-x241.google.com with SMTP id x79so3159649lff.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 11 Oct 2016 04:17:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=lFhgBN2C9t4Gh5zeuhbLjRwZYCszZA2lME7fHG8Hiqw=;
+        b=yUjWxYzOOycOkTeCll4fvSNseaShrhpzpNrWN6LdV1exhZWmZp2ZUXzD0vk1h17xpC
+         kf+w+ZZTkAmCF9wnxd2iFqxuL0SsXperL1sD+IYY072n3ZA9evfmXu9zLP/KyKL/n+bi
+         igbgOZttXAoSb3Kn9mkjyRiFWNna7BEeljNjxhXXjDscYI2yWE/pm9TvKMbUFfT6/ChA
+         PA6xyDyUkA87m5nvzXMi4LX/X9qEXL95Q2bm7CrFrBYiZXKdKWdBMnzAl/a3tiIM21N5
+         B23FMAOmI13szEIUtLXXN1z2B2XzsoGenEXYLvB06tRcdQJcOkNmB6fr+hMMm1+QSUMf
+         pvTw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=lFhgBN2C9t4Gh5zeuhbLjRwZYCszZA2lME7fHG8Hiqw=;
+        b=ZwLEfyRw7IBprl4yxfufdLCljzQt1Va7eAElqEq0cj93mCoy93HeaQNy0NGAu/0dRC
+         hX1TZJAJdx5mcDrHC2HUwzqQl58H0Qpx/DG7Rw6ORYPCMl3EtEm3UQ4SncvfWYFxg8MG
+         XcZhBivKKJhzkAorC6PrH3np2tW63LX94g1NCMY1g8t5UB8/6+g13uNEsQtNJwySQJeR
+         PFvk5FaONo0iQX7ciVFUPj67eVx+uucrE3ZsD1NRnbP6jq9Jcx0tFkFisTofqVX3G/gD
+         FVEAkG7GVWJ58wJvo66cvN5GYmLuZFN0snslSm9oDcF7A8qfYXeFQmT/0F6Zje3LCWfa
+         eYzQ==
+X-Gm-Message-State: AA6/9RlgNsbjvnrX5mUWlsmkVEb/+FJfLGqEU9c4dbVNqm9GoxXx++DDNf8cgKLc57XKKDvDJwgMHSeiGEfSCw==
+X-Received: by 10.46.5.67 with SMTP id 64mr2087935ljf.13.1476184645550; Tue,
+ 11 Oct 2016 04:17:25 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Received: by 10.25.149.14 with HTTP; Tue, 11 Oct 2016 04:17:24 -0700 (PDT)
+In-Reply-To: <CAKG5xWinDmtPcdQT+5h9rOLQTST6s6h7W0YL3OZePVs0TrHDNw@mail.gmail.com>
+References: <20161001110418.GA25515@sayli-HP-15-Notebook-PC>
+ <20161002050032.GA14117@d830.WORKGROUP> <e4800421-2dc9-2460-470b-a043d198f469@metafoo.de>
+ <20161002232524.GA2822@d830.WORKGROUP> <CAKG5xWi6M5jemARfENuVgigaqUbvdJmeVbwpR3kWDM9d8LBW-w@mail.gmail.com>
+ <20161003171601.GC3132@d830.WORKGROUP> <CAKG5xWj7RSTpeGcnJtA-2PJk5NVFO_2DV-Fgo938wAafvhS8PA@mail.gmail.com>
+ <20161004234757.GA5635@d830.WORKGROUP> <CAKG5xWhxd0N6ogx2GvkET1TOhJFrrOmOMRLPtBp1L7FcTBhkPQ@mail.gmail.com>
+ <89fc892c-d9ef-118f-4d9a-5f47e7ac914c@kernel.org> <CAKG5xWinDmtPcdQT+5h9rOLQTST6s6h7W0YL3OZePVs0TrHDNw@mail.gmail.com>
+From: Daniel Baluta <daniel.baluta@gmail.com>
+Date: Tue, 11 Oct 2016 14:17:24 +0300
+Message-ID: <CAEnQRZAVVOSKXX8T0hXN7FiJWbEXbgHj+2cLa+sjgbYDCfDmWQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] iio: imu: bmi160: bmi160_core: Fix
+ sparse warning
+To: sayli karnik <karniksayli1995@gmail.com>
+Cc: Jonathan Cameron <jic23@kernel.org>, Alison Schofield <amsfield22@gmail.com>, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>, 
+	"linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>, Lars-Peter Clausen <lars@metafoo.de>
+Content-Type: text/plain; charset=UTF-8
 
-Hello,
+On Tue, Oct 11, 2016 at 1:50 AM, sayli karnik <karniksayli1995@gmail.com> wrote:
+> On Sun, Oct 9, 2016 at 1:13 PM, Jonathan Cameron <jic23@kernel.org> wrote:
+>> On 05/10/16 19:00, sayli karnik wrote:
+>>> On Wed, Oct 5, 2016 at 5:17 AM, Alison Schofield <amsfield22@gmail.com> wrote:
+>>>> On Wed, Oct 05, 2016 at 03:17:22AM +0530, sayli karnik wrote:
+>>>>> On Mon, Oct 3, 2016 at 10:46 PM, Alison Schofield <amsfield22@gmail.com> wrote:
+>>>>>> On Mon, Oct 03, 2016 at 07:07:39PM +0530, sayli karnik wrote:
+>>>>>>> On Mon, Oct 3, 2016 at 4:55 AM, Alison Schofield <amsfield22@gmail.com> wrote:
+>>>>>>>> On Sun, Oct 02, 2016 at 05:53:08PM +0200, Lars-Peter Clausen wrote:
+>>>>>>>>> On 10/02/2016 07:00 AM, Alison Schofield wrote:
+>>>>>>>>> [...]
+>>>>>>>>>>> ---
+>>>>>>>>>>>  drivers/iio/imu/bmi160/bmi160_core.c | 3 ++-
+>>>>>>>>>>>  1 file changed, 2 insertions(+), 1 deletion(-)
+>>>>>>>>>>>
+>>>>>>>>>>> diff --git a/drivers/iio/imu/bmi160/bmi160_core.c b/drivers/iio/imu/bmi160/bmi160_core.c
+>>>>>>>>>>> index e0251b8..5355507 100644
+>>>>>>>>>>> --- a/drivers/iio/imu/bmi160/bmi160_core.c
+>>>>>>>>>>> +++ b/drivers/iio/imu/bmi160/bmi160_core.c
+>>>>>>>>>>> @@ -398,7 +398,8 @@ static irqreturn_t bmi160_trigger_handler(int irq, void *p)
+>>>>>>>>>>>    struct iio_poll_func *pf = p;
+>>>>>>>>>>>    struct iio_dev *indio_dev = pf->indio_dev;
+>>>>>>>>>>>    struct bmi160_data *data = iio_priv(indio_dev);
+>>>>>>>>>>> -  s16 buf[16]; /* 3 sens x 3 axis x s16 + 3 x s16 pad + 4 x s16 tstamp */
+>>>>>>>>>>> +  __le16 buf[16];
+>>>>>>>>>>> +  /* 3 sens x 3 axis x __le16 + 3 x __le16 pad + 4 x __le16 tstamp */
+>>>>>>>>>>>    int i, ret, j = 0, base = BMI160_REG_DATA_MAGN_XOUT_L;
+>>>>>>>>>>>    __le16 sample;
+>>>>>>>>>>
+>>>>>>>>>> Wondering about this option below.  Data was read into an __le16, so that
+>>>>>>>>>> was good diligence on drivers part.  Seems we can use le16_to_cpu() for the
+>>>>>>>>>> conversion into the buf.
+>>>>>>>>>>
+>>>>>>>>>> --- a/drivers/iio/imu/bmi160/bmi160_core.c
+>>>>>>>>>> +++ b/drivers/iio/imu/bmi160/bmi160_core.c
+>>>>>>>>>> @@ -408,7 +408,7 @@ static irqreturn_t bmi160_trigger_handler(int irq, void *p)
+>>>>>>>>>>                                    &sample, sizeof(__le16));
+>>>>>>>>>>             if (ret < 0)
+>>>>>>>>>>                     goto done;
+>>>>>>>>>> -           buf[j++] = sample;
+>>>>>>>>>> +           buf[j++] = le16_to_cpu(sample);
+>>>>>>>>>>     }
+>>>>>>>>>
+>>>>>>>>> This conversion is usually skipped on purpose and delayed until it is
+>>>>>>>>> actually needed by the user. The IIO channel is accordingly marked that it
+>>>>>>>>> will produce LE data.
+>>>>>>>> Thanks Lars.  I knew that for buffers, overlooked it, now I'll know it
+>>>>>>>> better!
+>>>>>>>>
+>>>>>>>> So, Sayli, you probably got this from the analysis of the last patch.
+>>>>>>>> In buffered mode, we'll go ahead and return the data in it's 'native'
+>>>>>>>> order.  So, my suggestion to convert it here, is wrong.  Ignore ;)
+>>>>>>>>
+>>>>>>> Oh I see! So should I resend the patch with an updated
+>>>>>>> description?(cosmetic/bug fix)
+>>>>>>
+>>>>>> Yes.  In the commit message, you can leave out the subdirs (imu: bmc160:)
+>>>>>> so that you have more space for a descriptive message of the change.
+>>>>>
+>>>>> A quick question about this being a bug fix or not. This would have
+>>>>> worked fine on little endian systems. But wouldn't the byte order have
+>>>>> changed in case of a big endian buffer, when the little endian samples
+>>>>> are stored in it?
+>>>>> If not, then this will be a cosmetic patch.
+>>>>>
+>>>>> thanks,
+>>>>> sayli
+>>>>
+>>>> Hi Sayli,
+>>>> Pulling linux-iio back in.  Once we've started group thread, we need to
+>>>> keep replying to 'all'.  It helps those invested in this particular
+>>>> patch, and also helps those who search in the future with similar
+>>>> issues.
+>>>>
+>>>> To answer your question.  I say cosmetic, because the le16 is going
+>>>> into a 16bit buf element, and is labelled as IIO_LE in the channel
+>>>> buffer definition.  That's why Lars was saying we don't need to do
+>>>> any conversion. We'll pass the bits as they came in, and tell the
+>>>> readers of the buf that they are in little endian format.  (And, also
+>>>> note we weren't truncating any as was the case in your first endian fix.)
+>>>>
+>>> Noted!
+>>>
+>>>> OK - having said that, I stare at this code more, and wonder why
+>>>> we are even bothering to label the sample as __le16, and whether
+>>>> we should just label it as s16.
+>>>
+>>> Oh, in that case we could make both buf and sample s16.
+>> I actually fall just the other way.  They are little endian so we
+>> should mark them as such, whether or not we are going to do any
+>> conversions on them in kernel. It acts as a form of documentation
+>> and makes it a little more obvious what the code is doing.
+>> It gets vaguer with buffer as that is a mixed endian beast.
+>> If you really want that one right you could use a structure, but
+>> honestly it's not worth the hassle.
+>>
+>>>
+>>>  Also, I'm wondering about the use
+>>>> of sizeof().  Shouldn't we be saying sizeof(sample) not sizeof(__le16)?
+>>>> It's not a checkpatch error, but I feel like I've seen coccichecks
+>>>> or coccinelle script patches repairing these misuses of sizeof
+>>>>
+>>> Yes sizeof(variable) instead of sizeof(type) makes code resistant to
+>>> future type changes.
+>> Absolutely (I missed that in the original reviews!)
+>>
+> I have sent an updated patch, but forgot to mention the version.
+> Does this comment make sense with __le16 instead of s16?
+> /* 3 sens x 3 axis x __le16 + 3 x __le16 pad + 4 x __le16 tstamp */
 
-Thanks everyone for all of the patches submitted so far!
+Yup, it makes sense if you change to type of the buf. Anyhow,
+place put it above the declaration of buf.
 
-The following people already have a good number of accepted patches and
-can work on the small tasks:
-
-Sayli Karnik
-Eva Rachel Retuya
-Sandhya Bankar
-Rehas Sachdeva
-Anchal Jain
-Bhumika Goyal
-Gargi Sharma
-
-The following people should still work on cleanup patches, but should
-avoid cleanups in whitespace and comments:
-
-Katie Dunne
-Georgiana Rodica Chelu
-Juliana Rodrigues
-Namrata A Shettar
-
-Let me know if you think you should be on one or the other of these lists,
-but don't see your name.
-
-thanks,
-julia
+Daniel.
 
