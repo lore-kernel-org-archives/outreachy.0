@@ -1,159 +1,115 @@
-X-GM-THRID: 6524254373964414976
-X-Received: by 10.99.174.68 with SMTP id e4mr597319pgp.122.1519046345736;
-        Mon, 19 Feb 2018 05:19:05 -0800 (PST)
+X-GM-THRID: 6340251719489814528
+X-Received: by 10.129.166.21 with SMTP id d21mr1229615ywh.166.1476204888320;
+        Tue, 11 Oct 2016 09:54:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.99.102.195 with SMTP id a186ls1712371pgc.4.gmail; Mon, 19 Feb
- 2018 05:19:04 -0800 (PST)
-X-Google-Smtp-Source: AH8x227HJe+OA2EkJXHh2nrsKooasTAFkc1cbw/5D/KGZkzLm10bDQZgfEEuWTUIP0XaD9BA1L80
-X-Received: by 10.99.8.130 with SMTP id 124mr3207864pgi.32.1519046344279;
-        Mon, 19 Feb 2018 05:19:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519046344; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Bk90eENqDt1udVmzkyvTb/bLTE5YnsehXa/oI4vxzM63yNbDD5AzAqDq0+ltvaM3A3
-         o0Vq17zaBaJS5fV4cfNcMN9Z10GpIc071YWT3GFFf7jCmOiCOS0SM/NesdwUmLBd5zRu
-         u+//ednpgxu24Bf1uCvPKN5YFrbeKUL34UEnefLPlZFQ/cD9I/PUk/sulhdlA0UrWvBe
-         KG3e+axXU9tSTp8bmF0Pgx4CiXAiTsHfU72YC3Ock8BpZerqrePpLmix2CSMZQpQXf7s
-         w2wa7h7a6ju50G94XEKQxrat+36TbhK1M7eKJ2KAnz/6n+SFtafkBQNYSKrPUGxmuOu8
-         uBbA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=Q+gHhwLPC77JwOOyhZIll9Mi9ebJzOBjJ2I//E41Re0=;
-        b=q/v7li5UXZaNF8g06v8PlaYH9VhNo2CYgthqrEpRQcMivrPbhnhZMbHSGbkgZLlG+T
-         P0VaA4vaJn3t5+cI7rFDY4AhsN4ryvOT90VssBIQ6lsZsRrhWYxRBYs4YHLWgXQlNGah
-         yU4UEkVy3NBW3SSNn60Ayjei1zx5LIPIowpbVCe+Yuj4WdwmmDH8o/EUhKAalTMRiMLx
-         2JQhOofr5WcRAiRFyedEMmeBhYHGw5PB0N3LjteW5bS5t4r1Mb4AJFcH9nCyswXZntqv
-         tyTg/uDCMpIinqoER8+Iu6/OKg4HZl26+z1v1PoT777itOQAm4K1zC5HMZY4hPh9XNnV
-         TR6w==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pdaROg9n;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <shreeya.patel23498@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id w4-v6si363596plp.4.2018.02.19.05.19.04
+Received: by 10.107.176.201 with SMTP id z192ls625059ioe.43.gmail; Tue, 11 Oct
+ 2016 09:54:45 -0700 (PDT)
+X-Received: by 10.66.135.7 with SMTP id po7mr975718pab.102.1476204885239;
+        Tue, 11 Oct 2016 09:54:45 -0700 (PDT)
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from mail-qk0-x243.google.com (mail-qk0-x243.google.com. [2607:f8b0:400d:c09::243])
+        by gmr-mx.google.com with ESMTPS id p193si202922ywe.6.2016.10.11.09.54.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 19 Feb 2018 05:19:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Tue, 11 Oct 2016 09:54:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2607:f8b0:400d:c09::243 as permitted sender) client-ip=2607:f8b0:400d:c09::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pdaROg9n;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id a6so2132827pfi.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 19 Feb 2018 05:19:04 -0800 (PST)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2607:f8b0:400d:c09::243 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qk0-x243.google.com with SMTP id z190so1863812qkc.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 11 Oct 2016 09:54:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Q+gHhwLPC77JwOOyhZIll9Mi9ebJzOBjJ2I//E41Re0=;
-        b=pdaROg9nMgj+T+YJaNPZ2TELc/d0LObJydX9vWcZt1RQqrdyvXZ2R2XSzld2t3GFLe
-         1PXm0yKQYhqb+TYlqsyVHF4EEXwBXaIyZwwO/GYPa+GmITVt21Jkr6qyOEF8jKbkta/L
-         TVfgloZo+Jqe8dSC6vx6+JXCPhLzotH8eXuDTqiHqHZ0g+WmczP5OAWGk+xsy8aYCBPZ
-         rKPpB1LLwy12Md352YQtavoiMpRR5NCKqXLNX+NAtHwT/JHfVvhOP15ZHpC5aT2Wk0QB
-         Te8q2jrwnY1VOv1WmqKyYSB9teqt4cQbIU4GxYgc3QDeh+6Ak790Ll/AzYSC9DCuk/rq
-         5zag==
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=qqftMUZXcZs2ev60v2GG12gBD66iw0+tcvE9G7yCHqE=;
+        b=JeNRu+HFNnKVmumUVgKKKNNVkaVFYYtQTsTylMkcJnbnuFkxtI3JGDZp2zuaJOhGV7
+         GAT661sAPesm1rd0J6hHmcGxltNlYRMABxf9Q3Th3joU8EJlTnwTEjymQiUYf3sj7f60
+         beyTNSjUDTrhJtWCzTCeK1Gb9tJ24WQVblDcPj43HWvsOhhIZIpDxPYOXv18+ccLmrXg
+         9EpSlKYSvlRR3OYB3pdvjvR4s6d9Wp25meIjdSHLcVxZGzvaFYnFRYqLSPOaUjDBKI0F
+         X5SFEg5KXxKMLPpvNJFwdaMna9ihon64FW+0c6sevo4RhST+qVk3eI73R5BDWDuTZQCQ
+         H7Dw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Q+gHhwLPC77JwOOyhZIll9Mi9ebJzOBjJ2I//E41Re0=;
-        b=loCfXV592zQwhBUWsSz1hYimPJNUtFWjBLIsVXU24/IVq9D/TY+WlANVsJ9b16TyY5
-         fosyINtdLybw92iHZmUbPnnhyo3EWcSj39mvfCV5JawHAh/v1eBbkgO79TE+sL8U6fwS
-         saMza9aSRQel3J2bZCL/Pl144xta+TTe1LHwp6jcLwNnK+SI4u+BDmG108jCe9WjRkKH
-         7UGga6LRhsRnbgQRxLJbLryO6EscTc/9jLu+s8eaXE+BsQOKmK/DKpwpzojLstHGo3V0
-         Ru86+yszAdZJI8lp/CRur9RBPDwRa3a+Ex3brKvobwQSWqPK5/6TESPWmzM+baCiToRV
-         GjcQ==
-X-Gm-Message-State: APf1xPCvkaU4mgcVrs8K0D2xWpQOQgQydhrjVfDrZRch3ydy8y3o6QI+
-	Ljl4SGVdiCa0F2WmyAfG6zI=
-X-Received: by 10.99.113.75 with SMTP id b11mr12539735pgn.271.1519046344002;
-        Mon, 19 Feb 2018 05:19:04 -0800 (PST)
-Return-Path: <shreeya.patel23498@gmail.com>
-Received: from shreeya-VirtualBox ([103.212.140.144])
-        by smtp.gmail.com with ESMTPSA id z125sm53333841pfz.27.2018.02.19.05.19.02
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=qqftMUZXcZs2ev60v2GG12gBD66iw0+tcvE9G7yCHqE=;
+        b=ZBo3s6C5ftrUGKIsMFxOu2XqlBWaZByhaGLBufg3eSM4HDIIVx39wRRKpUbFg8/SG2
+         Ir4agk2kcdjz1d7etIOs0HqYYCRvFcsLgTV8wEEHvSwHzdRR59KWb/JOCtnj5osGcuN+
+         NNfVDvBlv9+bnIAkndjBSdz0H4QfzERwV6Ko9yDpJG8oL6FDyvy9lU8BcFY3LGZdDSQx
+         7/kBv1YGOt/LSSAYpc+WtvJNWLk+GVmbDg63v0ew1mJ7tZcI/aT3K2X3SsOZkAc48dgx
+         4+MVxPwIkkwdYdSg7h4WXKh9ic1o0IE9URi2fJ7ZZLgi5jt9eYm2JvF+DinuVdgBB6KC
+         Wq1Q==
+X-Gm-Message-State: AA6/9Rl0aLF1ttLMnETz3fz6TYgmK9WRPtYQknxgg4RTeh8brPLRk4Lao+vwt8b+V24P0Q==
+X-Received: by 10.194.117.135 with SMTP id ke7mr6417803wjb.46.1476204883905;
+        Tue, 11 Oct 2016 09:54:43 -0700 (PDT)
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from domino-MS-16Y1 ([92.81.89.162])
+        by smtp.gmail.com with ESMTPSA id g17sm7765425wjs.38.2016.10.11.09.54.43
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 19 Feb 2018 05:19:03 -0800 (PST)
-From: Shreeya Patel <shreeya.patel23498@gmail.com>
-To: boris.brezillon@free-electrons.com,
-	richard@nod.at,
-	dwmw2@infradead.org,
-	computersforpeace@gmail.com,
-	marek.vasut@gmail.com,
-	cyrille.pitchen@wedev4u.fr,
-	maximlevitsky@gmail.com,
-	linux-mtd@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	ezequiel@vanguardiasur.com.ar,
-	outreachy-kernel@googlegroups.com
-Cc: Shreeya Patel <shreeya.patel23498@gmail.com>
-Subject: [PATCH NAND] mtd: nand: Replace printk() with appropriate dev_*macro()
-Date: Mon, 19 Feb 2018 18:48:59 +0530
-Message-Id: <1519046339-9678-1-git-send-email-shreeya.patel23498@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        Tue, 11 Oct 2016 09:54:43 -0700 (PDT)
+Date: Tue, 11 Oct 2016 19:54:42 +0300
+From: Mihaela Muraru <mihaela.muraru21@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: wilc1000: Replace memcpy by ether_addr_copy
+Message-ID: <20161011165442.GA2384@domino-MS-16Y1>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Replace printks having a log level with the appropriate
-dev_*macro.
-Also, use pdev->dev as it is guaranteed in each case to be
-properly initialized when passed into dev_*macro().
+This patch fixes the following checkpatch.pl warning: Prefer
 
-Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
+ether_addr_copy() over memcpy() if the Ethernet addresses are
+__aligned(2)
+
+According to ether_addr_copy() description and functionality, all
+Ethernet addresses should align to the u16 datatype.
+
+Here is the output of pahole for the relevant datastructures:
+struct del_sta {
+	u8                         mac_addr[6];          /*     0     6 */
+
+	/* size: 6, cachelines: 1, members: 1 */
+	/* last cacheline: 6 bytes */
+};
+
+struct sta_inactive_t {
+	u8                         mac[6];               /*     0     6 */
+
+	/* size: 6, cachelines: 1, members: 1 */
+	/* last cacheline: 6 bytes */
+};
+
+Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
 ---
- drivers/mtd/nand/ams-delta.c | 6 ++++--
- drivers/mtd/nand/cafe_nand.c | 5 +++--
- drivers/mtd/nand/sh_flctl.c  | 2 +-
- 3 files changed, 8 insertions(+), 5 deletions(-)
+ drivers/staging/wilc1000/host_interface.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/mtd/nand/ams-delta.c b/drivers/mtd/nand/ams-delta.c
-index dcec9cf..2419ca8 100644
---- a/drivers/mtd/nand/ams-delta.c
-+++ b/drivers/mtd/nand/ams-delta.c
-@@ -185,7 +185,8 @@ static int ams_delta_init(struct platform_device *pdev)
- 	/* Allocate memory for MTD device structure and private data */
- 	this = kzalloc(sizeof(struct nand_chip), GFP_KERNEL);
- 	if (!this) {
--		printk (KERN_WARNING "Unable to allocate E3 NAND MTD device structure.\n");
-+		dev_warn(&pdev->dev,
-+			 "Unable to allocate E3 NAND MTD device structure.\n");
- 		err = -ENOMEM;
- 		goto out;
- 	}
-@@ -219,7 +220,8 @@ static int ams_delta_init(struct platform_device *pdev)
- 		this->dev_ready = ams_delta_nand_ready;
- 	} else {
- 		this->dev_ready = NULL;
--		printk(KERN_NOTICE "Couldn't request gpio for Delta NAND ready.\n");
-+		dev_notice(&pdev->dev,
-+			   "Couldn't request gpio for Delta NAND ready.\n");
- 	}
- 	/* 25 us command delay time */
- 	this->chip_delay = 30;
-diff --git a/drivers/mtd/nand/cafe_nand.c b/drivers/mtd/nand/cafe_nand.c
-index bc558c4..51f58ea 100644
---- a/drivers/mtd/nand/cafe_nand.c
-+++ b/drivers/mtd/nand/cafe_nand.c
-@@ -773,8 +773,9 @@ static int cafe_nand_probe(struct pci_dev *pdev,
- 		cafe->nand.bbt_td = &cafe_bbt_main_descr_512;
- 		cafe->nand.bbt_md = &cafe_bbt_mirror_descr_512;
- 	} else {
--		printk(KERN_WARNING "Unexpected NAND flash writesize %d. Aborting\n",
--		       mtd->writesize);
-+		dev_warn(&cafe->pdev->dev,
-+			 "Unexpected NAND flash writesize %d. Aborting\n",
-+			 mtd->writesize);
- 		goto out_free_dma;
- 	}
- 	cafe->nand.ecc.mode = NAND_ECC_HW_SYNDROME;
-diff --git a/drivers/mtd/nand/sh_flctl.c b/drivers/mtd/nand/sh_flctl.c
-index e7f3c98..c534c49 100644
---- a/drivers/mtd/nand/sh_flctl.c
-+++ b/drivers/mtd/nand/sh_flctl.c
-@@ -877,7 +877,7 @@ static void flctl_cmdfunc(struct mtd_info *mtd, unsigned int command,
- 			else if (!flctl->seqin_column)
- 				execmd_write_page_sector(mtd);
- 			else
--				printk(KERN_ERR "Invalid address !?\n");
-+				dev_err(&flctl->pdev->dev, "Invalid address !?\n");
- 			break;
- 		}
- 		set_cmd_regs(mtd, command, (command << 8) | NAND_CMD_SEQIN);
+diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
+index 78f5613..c636982 100644
+--- a/drivers/staging/wilc1000/host_interface.c
++++ b/drivers/staging/wilc1000/host_interface.c
+@@ -1932,7 +1932,7 @@ static s32 Handle_Get_InActiveTime(struct wilc_vif *vif,
+ 	wid.val = kmalloc(wid.size, GFP_KERNEL);
+ 
+ 	stamac = wid.val;
+-	memcpy(stamac, strHostIfStaInactiveT->mac, ETH_ALEN);
++	ether_addr_copy(stamac, strHostIfStaInactiveT->mac);
+ 
+ 	result = wilc_send_config_pkt(vif, SET_CFG, &wid, 1,
+ 				      wilc_get_vif_idx(vif));
+@@ -2168,7 +2168,7 @@ static void Handle_DelStation(struct wilc_vif *vif,
+ 
+ 	pu8CurrByte = wid.val;
+ 
+-	memcpy(pu8CurrByte, pstrDelStaParam->mac_addr, ETH_ALEN);
++	ether_addr_copy(pu8CurrByte, pstrDelStaParam->mac_addr);
+ 
+ 	result = wilc_send_config_pkt(vif, SET_CFG, &wid, 1,
+ 				      wilc_get_vif_idx(vif));
 -- 
 2.7.4
 
