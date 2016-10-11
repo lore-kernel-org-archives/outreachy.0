@@ -1,112 +1,91 @@
-X-GM-THRID: 6951097380954439680
-X-Received: by 2002:a05:6000:1249:: with SMTP id j9mr14770030wrx.416.1618428477410;
-        Wed, 14 Apr 2021 12:27:57 -0700 (PDT)
+X-GM-THRID: 6340040067935895552
+X-Received: by 10.66.10.169 with SMTP id j9mr336594pab.142.1476155609844;
+        Mon, 10 Oct 2016 20:13:29 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:24d4:: with SMTP id k203ls1645580wmk.0.canary-gmail;
- Wed, 14 Apr 2021 12:27:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxxl3eQBxyJNVXG1AOZLSYvEKkNDHdloHQSZnjfcOg7ZwK9FQU1ksP9gmGxxwwlbH5XhIE3
-X-Received: by 2002:a1c:5fd7:: with SMTP id t206mr2904965wmb.71.1618428476019;
-        Wed, 14 Apr 2021 12:27:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618428476; cv=none;
-        d=google.com; s=arc-20160816;
-        b=vM4e2PriLu0+EdtPXr/TXDgBNduzlY/wJ4yjKA36oIdgWDai/NI3BzfL6z+uEzemng
-         vWZOosutbJVyeu78s8YKKunu++yZSZQERoapGRuaFbWckW0+4kp6/oKIqVPCZOz1NDrM
-         67sxvoYGFqJj4H4sTVJ5Hv/POHkUG4lnfYCzYAOfRV+h+5Tk13KQaAOpr7Gg44Wr7G3q
-         ZCFWuIaTfNjkVgTcicJ52cxDoIpBxk5GOrxulqAbSWlOVSdOLzC3FIAhYRf2DJWNwXWc
-         FxFLdH0vwC2mIexKd9aZ3//P8jBbl+J1BAXVOsRiKBcar66M4wAjeWtNkYhit4HrPenW
-         OXOg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=l3Dfg+t81O6iIBFRL3yKUv5Drx9glzGHFqa+e6m1HgM=;
-        b=1CuN4atd9163wnbFMlkvmxflnA9XbW5hmBqxrTjXagShAAF9x/VL9Uc6hgL3nB6Q0P
-         FYyOOhXESb12KzQuPd7KNsHuqcvtD2caUOjJuumkvQq0bclpKQtjkC5lIXk94Z1KSBmF
-         fZL1rUwlZcFSFVPgBg1Nw7jVRI9lSLsK2Q5IHjJT1YDarS+NqfqaVQMAzT+lsHk6+Ip5
-         h3JTfANB5n3sXFgh9FQlJ//RSMZuuhOsY2XysNVVPktbp1eUditH/DfPAurpC2JaM/QZ
-         pJc3n2r+7LQ9d6L8tMc8uIaT61bMgpY+vpe/V/yxgz3l99FFgqCFSr+umYlDL9dMU00N
-         Ma3w==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TymgCV05;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ej1-x62b.google.com (mail-ej1-x62b.google.com. [2a00:1450:4864:20::62b])
-        by gmr-mx.google.com with ESMTPS id s141si112647wme.2.2021.04.14.12.27.56
+Received: by 10.157.56.29 with SMTP id i29ls535174otc.12.gmail; Mon, 10 Oct
+ 2016 20:13:29 -0700 (PDT)
+X-Received: by 10.157.9.195 with SMTP id 3mr428829otz.135.1476155609410;
+        Mon, 10 Oct 2016 20:13:29 -0700 (PDT)
+Return-Path: <elise.lennion@gmail.com>
+Received: from mail-vk0-x244.google.com (mail-vk0-x244.google.com. [2607:f8b0:400c:c05::244])
+        by gmr-mx.google.com with ESMTPS id p131si207743vkf.1.2016.10.10.20.13.29
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 14 Apr 2021 12:27:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) client-ip=2a00:1450:4864:20::62b;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 10 Oct 2016 20:13:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::244 as permitted sender) client-ip=2607:f8b0:400c:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TymgCV05;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ej1-x62b.google.com with SMTP id w3so33171237ejc.4
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Apr 2021 12:27:56 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::244 as permitted sender) smtp.mailfrom=elise.lennion@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-vk0-x244.google.com with SMTP id b186so375819vkb.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 10 Oct 2016 20:13:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=l3Dfg+t81O6iIBFRL3yKUv5Drx9glzGHFqa+e6m1HgM=;
-        b=TymgCV05iTqKAdGAjC97+N/q4GoSVXD9mWjK5skpZ9Ge6BbpWqu2DXzQW9WE6/8cjq
-         wU2UPbCkn5qKzQWpjLVCWSPqASNcrfE8z6DabgcvTz8bLUZkLgv5HrG+RMHig5A3LPOw
-         QOqnHyEB7S+QA63x/mmarxWpDRn+Vtwe+2wsB7M+r83OMnlB9fjDY3sYagbJNJP1En9t
-         NwAw9KNdeum0QixGZL1ah3EVdG1KryTeoGyldKiSW+httLClEAsk/9Dcqm9mWxhvL49D
-         j3yNpJ/PCY2j5sSG4r5b0bNzTan7LIAqce3iKOa51qSEstbeX34x4I1hMM75gLGgOIFe
-         YTCw==
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=1Z8Zg2V1JjDf4HLWEBhmUOdUIMfXqC2qghKFNHIy+NQ=;
+        b=Fxiiz0QxCXJJhbT+APG5iZXpvn+iW57fuy0b3cg7idiG2vdGiwkyuASY9/VlHRrUBg
+         8O96lyI4oLmPD0t9D2F4FFMlNWud3B5HGiB0yB8n8B6we9gqa7qeaaQzxbsqifEX+rwI
+         AqUYB/sDviH02Y7r4VaT4/2C0/b2IEXR11S+kDzG2qZaM2eRPmNwqgRZcasCODtXi1f5
+         FZBvd50XhormNMyVlXa3pCJOiTsDi7+gARoYTQuH/xkLR/hGXjL1IgOR38QrjhD7AJTl
+         hmGLA2PAeiBIIt7a+Dgl7TThC0W4ywHKdYtazYEDTBnhGd28sXWlN+8xdJL49kLUPStA
+         HjbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=l3Dfg+t81O6iIBFRL3yKUv5Drx9glzGHFqa+e6m1HgM=;
-        b=S+OLqiqWE4qEDHXoIky4s2pkOA3Iw39SRt1RW+EV9eASvj6bW0oQqxv5g7j0gNRiRV
-         db3JBDNDACqnMMwciFLaFNdfXUEi0Ntzo4d0JcmVfQofj8KaMxZ/dUefp/SHQMVtRMrq
-         goGZJfq4krm1XtkhZrKwHzjedgu6mfotDvrbIl7hRHS/eZqrKOadyMCWQuhdqibYlJ1b
-         lZzs3mLapLGKWdk9KSJ/2mbhPnLug+damocCK2qZ6YDTVkEhyWhDJotSGD4xLkDolzG3
-         FeWQMrcGN8pnV8v4+w86QGvRynJb8eVR3xw9fERAA/Uhqux8LmwIyuwv8KPWhK9BPlrt
-         Kcsw==
-X-Gm-Message-State: AOAM533Q1L+LgNtNzfxyzT4sCr3YgosPOLY+AOiG6NtMl64vKElcQORI
-	ai8QYHPai8lQcvGuhT+OfF1HhbnQJ1saFS4+
-X-Received: by 2002:a17:906:6d01:: with SMTP id m1mr421426ejr.501.1618428475504;
-        Wed, 14 Apr 2021 12:27:55 -0700 (PDT)
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from linux.local (host-95-237-55-30.retail.telecomitalia.it. [95.237.55.30])
-        by smtp.gmail.com with ESMTPSA id gn3sm259049ejc.2.2021.04.14.12.27.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Apr 2021 12:27:55 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	Matthew Wilcox <willy@infradead.org>,
-	Julia Lawall <julia.lawall@inria.fr>,
-	Fabio Aiuto <fabioaiuto83@gmail.com>
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [Outreachy kernel] [PATCH v3 0/2] Remove led_blink_hdl and other related symbols
-Date: Wed, 14 Apr 2021 21:27:48 +0200
-Message-Id: <20210414192750.4974-1-fmdefrancesco@gmail.com>
-X-Mailer: git-send-email 2.31.1
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=1Z8Zg2V1JjDf4HLWEBhmUOdUIMfXqC2qghKFNHIy+NQ=;
+        b=C6rhZ9CY6o6mxN+zNS2lfa8wCRZloXNsagXSWEPrDIcoKbvj9HXIIlvQ+JNxlscFlK
+         TrXhnUi17BWfdfsAunSycnximHlp3nIe/yagWIDcuxxjyTBJJmERJ+EMyf86BcCqOs9p
+         V5WcjAzCjKYlHUKfFKYrzkEdrpDeZlApbFTc+dpsU+mhybd1hUUDe7P787afsGen3Rrc
+         WqNhN2iPDB4e13ZBNMWcM0ki9W+hTfoFg6JCGtgyTHfiX2xBjxBAj4digMuZDD+HeuGS
+         +bR9fEOYrq8WH42DibgU6yu4u+UEICyrTSz4buWPwnxr8iwpkdbV5BeUUsTU59Tq+UdG
+         Kttg==
+X-Gm-Message-State: AA6/9Rn6BuxH0364pWKnaTiUqMCnkLRDSjZGHiIV/aYHlYsWrXWzjmMv/ibYCqjMLHQiQw==
+X-Received: by 10.31.92.216 with SMTP id q207mr1370763vkb.147.1476155609255;
+        Mon, 10 Oct 2016 20:13:29 -0700 (PDT)
+Return-Path: <elise.lennion@gmail.com>
+Received: from lennorien.com ([187.64.224.84])
+        by smtp.gmail.com with ESMTPSA id m194sm589212vke.7.2016.10.10.20.13.27
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 10 Oct 2016 20:13:28 -0700 (PDT)
+Date: Tue, 11 Oct 2016 00:13:24 -0300
+From: Elise Lennion <elise.lennion@gmail.com>
+To: vaibhav.sr@gmail.com, mgreer@animalcreek.com, johan@kernel.org,
+	elder@kernel.org, gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH 4/7] staging: greybus: Remove useless return statement.
+Message-ID: <20161011031324.GA21978@lennorien.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Removed useless led_blink_hdl() prototype and definition.
-Removed struct LedBlink_param. Removed LedBlink entries in
-rtw_cmd_callback[] and in wlancmds[]. Everything related to LedBlink is
-not anymore needed. Removed extra blank lines in the two mentioned
-arrays and changend the numbers set in comments for having them in line
-with the shift. 
+Fix checkpatch warning:
 
-Fabio M. De Francesco (2):
-  staging: rtl8723bs: Remove useless led_blink_hdl()
-  staging: rtl8723bs: Remove everything related with LedBlink
+WARNING: void function return statements are not generally useful
 
- drivers/staging/rtl8723bs/core/rtw_cmd.c      | 27 +++++--------------
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c |  9 -------
- drivers/staging/rtl8723bs/include/rtw_cmd.h   | 14 +++-------
- .../staging/rtl8723bs/include/rtw_mlme_ext.h  |  1 -
- 4 files changed, 11 insertions(+), 40 deletions(-)
+This return statement is immediately followed by the closing bracket
+of the function and serves no purpose.
 
+Signed-off-by: Elise Lennion <elise.lennion@gmail.com>
+---
+ drivers/staging/greybus/audio_codec.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/drivers/staging/greybus/audio_codec.c b/drivers/staging/greybus/audio_codec.c
+index 8a0744b..0be7991 100644
+--- a/drivers/staging/greybus/audio_codec.c
++++ b/drivers/staging/greybus/audio_codec.c
+@@ -405,7 +405,6 @@ static void gbcodec_shutdown(struct snd_pcm_substream *substream,
+ 	params->state = GBAUDIO_CODEC_SHUTDOWN;
+ 	mutex_unlock(&codec->lock);
+ 	pm_relax(dai->dev);
+-	return;
+ }
+ 
+ static int gbcodec_hw_params(struct snd_pcm_substream *substream,
 -- 
-2.31.1
+2.7.4
 
 
