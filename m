@@ -1,62 +1,62 @@
 X-GM-THRID: 6340041071062417408
-X-Received: by 10.107.26.130 with SMTP id a124mr2667886ioa.42.1476398766710;
-        Thu, 13 Oct 2016 15:46:06 -0700 (PDT)
+X-Received: by 10.13.241.3 with SMTP id a3mr355601ywf.161.1476155843361;
+        Mon, 10 Oct 2016 20:17:23 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.2.67 with SMTP id 61ls7378089otb.4.gmail; Thu, 13 Oct 2016
- 15:46:06 -0700 (PDT)
-X-Received: by 10.200.51.97 with SMTP id u30mr2431177qta.16.1476398766023;
-        Thu, 13 Oct 2016 15:46:06 -0700 (PDT)
+Received: by 10.157.12.40 with SMTP id 37ls537143otr.33.gmail; Mon, 10 Oct
+ 2016 20:17:23 -0700 (PDT)
+X-Received: by 10.157.15.171 with SMTP id d40mr429206otd.51.1476155843100;
+        Mon, 10 Oct 2016 20:17:23 -0700 (PDT)
 Return-Path: <elise.lennion@gmail.com>
 Received: from mail-vk0-x242.google.com (mail-vk0-x242.google.com. [2607:f8b0:400c:c05::242])
-        by gmr-mx.google.com with ESMTPS id x14si2129255vkd.3.2016.10.13.15.46.05
+        by gmr-mx.google.com with ESMTPS id p131si209389vkf.1.2016.10.10.20.17.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 13 Oct 2016 15:46:05 -0700 (PDT)
+        Mon, 10 Oct 2016 20:17:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::242 as permitted sender) client-ip=2607:f8b0:400c:c05::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
        spf=pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::242 as permitted sender) smtp.mailfrom=elise.lennion@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-vk0-x242.google.com with SMTP id 130so1817528vkg.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 13 Oct 2016 15:46:05 -0700 (PDT)
+Received: by mail-vk0-x242.google.com with SMTP id 192so382893vkl.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 10 Oct 2016 20:17:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=zj4DHkjAYDG1zq4XoOANN9sZ5ugtEhTV6FO9OxapxxU=;
-        b=owaNz2Neh1rbMtvfA7QD3NcSNwAlpENj3q3S2V8zG6KvC+LzH8/AUGWhosqeSVyBnO
-         f5FE0TM2IsUFiuyPmJJw5Z9C/m4jOkESiSOQz/PrYDYAMbKQnnATb5c+CS81f5Hmzpq0
-         /0w/8+zSnEeaanfRKDF6/ZTHn3MMFovcWkwUJGIN4LYV2u6oHCjZ8BkLRoZcZ+oE3gR/
-         jVJJ1vrK5ZMt/EKVg4nqEx+odM31qwgJvku/IvQC0/r5+5Ltv/TEgDGcfi9uOiW3f/Ud
-         1JL22oEP+4etLHZSFl7s73PWYXTikvbw21FJBtzFRXuOjz+5YBZutl4GwUPgo1w9S9HS
-         wEiw==
+        bh=ZWdFABgYVjjABiMnnY74A3qsjmqzT9bNoFrMX5ib6Sg=;
+        b=shtBjDBbNqtXf/vFYcoQVTLcZa6C2p2PsGts+aGMl7OQrbKMPJOIdNlGvROt/JwPxB
+         0/FLj08Uxs/9sxNazpxL0lBlkfMYWtqMrVGAFoKMK95568v54dsyVFw1zL8aOBDZZea1
+         Mx4DqEmeHNH6w8ArBi6tkqpSt8MeNxyWMwETNHmfu8i7O0Ptjc+HfX0hax0wRW8WYloI
+         ooLaudvJI1YT8JjtsAGCnLCux75r0BK5zR7f1LOgjElIsxh11lvjSedP8wtUoAVgXO7u
+         yyps+fGRMb5EHSc1iUZIA3M07AQ+JCJeK5h0oavMadbsLCnOP/TG/NPn3u2dfBCuIRan
+         HVFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=zj4DHkjAYDG1zq4XoOANN9sZ5ugtEhTV6FO9OxapxxU=;
-        b=B+VoLIkVNa3STjXVtEGs5mSaGMRLTgTo2u+5HzIN7F5DKshdro9YhKrGhSYLhZQWB4
-         knzUe3moNpUQIvcnQ2GWgM9K9O4bpoDC4ez7xGL+6BB4k8fc8GcQWxXb9rOJSfnO2RRl
-         j8RxzGxkjvECmd5UbkyoxZsE/i/Qd7AGqIOYdnzB/96a+yGKQte7cGA52nTMF8K102x0
-         T16Z3Dr3Cxjfg+r+UkYfYc4M7izWntdgDw12SsCkF2kT/sAdvzRWoaWQ+SdSkgMGRW1k
-         +4F2nevkTDdpUkwy26ETRNRmDVbQLXrtNGD3Sq0RP7vKFjbOBSHUucsaERap+2hSUJWR
-         +7eg==
-X-Gm-Message-State: AA6/9RkYZmDeBJlXZySeZAPZqHz0hrC+uoZlkKXKNOPWRPXI4seyAc7nehTxlrF2bUyntA==
-X-Received: by 10.31.13.133 with SMTP id 127mr3095883vkn.132.1476398765868;
-        Thu, 13 Oct 2016 15:46:05 -0700 (PDT)
+        bh=ZWdFABgYVjjABiMnnY74A3qsjmqzT9bNoFrMX5ib6Sg=;
+        b=QM/1qnzjswzRT65/L0zyj7NrudXjsc6ZhMERpPXTVxosqDoJm5a2BPK5ZWPH7I+KDT
+         0rcWskskTLVfGbS0o3Jnp5fAVRh6kf/5Sc3v+aXh0FjmHJ4otrwC/FpbBcEwUXUq6bl4
+         66BCYxX9eUkWE0zEWmelo6nxNIjgCyHsry1jcGXW0o4GtlE7QPBha5lBft6YjVdLJTe8
+         LysbANLIZCULewb2RUgyN42aI06TRqAO9sFqMr+9Zz8mVxrd+bOCyjSj5wUEdnYnoRk6
+         zRISlWcwt+GH8TFNbN9FXWoaU21UIXJHFJa4zOWVSEFfyaP5BGZaPgq2CaEPKTMBRsi1
+         kzjw==
+X-Gm-Message-State: AA6/9RlIRMeGgAq71o0tRHDh4c6tovGq/xNJRwQjhnNklq2lQiOygeLDbteMyTQHukMh9w==
+X-Received: by 10.31.21.80 with SMTP id 77mr1359171vkv.111.1476155842925;
+        Mon, 10 Oct 2016 20:17:22 -0700 (PDT)
 Return-Path: <elise.lennion@gmail.com>
 Received: from lennorien.com ([187.64.224.84])
-        by smtp.gmail.com with ESMTPSA id n71sm6138106vke.23.2016.10.13.15.46.03
+        by smtp.gmail.com with ESMTPSA id m12sm603992vkd.3.2016.10.10.20.17.21
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 13 Oct 2016 15:46:05 -0700 (PDT)
-Date: Thu, 13 Oct 2016 19:45:59 -0300
+        Mon, 10 Oct 2016 20:17:22 -0700 (PDT)
+Date: Tue, 11 Oct 2016 00:17:18 -0300
 From: Elise Lennion <elise.lennion@gmail.com>
 To: vaibhav.sr@gmail.com, mgreer@animalcreek.com, johan@kernel.org,
 	elder@kernel.org, gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 2/2] staging: greybus: Replace sscanf with kstrto* to
- single variable conversion.
-Message-ID: <20161013224559.GA13383@lennorien.com>
+Subject: [PATCH 7/7] staging: greybus: Replace sscanf with kstrto* to single
+ variable conversion.
+Message-ID: <20161011031718.GA22105@lennorien.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -71,14 +71,11 @@ it easier to understand what the code does.
 
 Signed-off-by: Elise Lennion <elise.lennion@gmail.com>
 ---
-
- v2: No change since v1 in this file.
-
  drivers/staging/greybus/audio_manager_sysfs.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/staging/greybus/audio_manager_sysfs.c b/drivers/staging/greybus/audio_manager_sysfs.c
-index 376e17c..e74fdcf 100644
+index d8bf859..469a922 100644
 --- a/drivers/staging/greybus/audio_manager_sysfs.c
 +++ b/drivers/staging/greybus/audio_manager_sysfs.c
 @@ -44,7 +44,7 @@ static ssize_t manager_sysfs_remove_store(
