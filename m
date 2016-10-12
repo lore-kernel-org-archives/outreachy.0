@@ -1,137 +1,105 @@
-X-GM-THRID: 6340351948666961920
-X-Received: by 10.66.190.3 with SMTP id gm3mr1366041pac.81.1476228225734;
-        Tue, 11 Oct 2016 16:23:45 -0700 (PDT)
+X-GM-THRID: 6340627833359958016
+X-Received: by 10.66.145.193 with SMTP id sw1mr452608pab.129.1476292459728;
+        Wed, 12 Oct 2016 10:14:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.182.195 with SMTP id g186ls1002364iof.6.gmail; Tue, 11 Oct
- 2016 16:23:41 -0700 (PDT)
-X-Received: by 10.107.129.78 with SMTP id c75mr94801iod.17.1476228221448;
-        Tue, 11 Oct 2016 16:23:41 -0700 (PDT)
-Return-Path: <gnudevliz@gmail.com>
-Received: from mail-pf0-x229.google.com (mail-pf0-x229.google.com. [2607:f8b0:400e:c00::229])
-        by gmr-mx.google.com with ESMTPS id co10si419888pad.1.2016.10.11.16.23.41
+Received: by 10.157.62.131 with SMTP id b3ls1336485otc.1.gmail; Wed, 12 Oct
+ 2016 10:14:19 -0700 (PDT)
+X-Received: by 10.13.250.129 with SMTP id k123mr570781ywf.1.1476292459370;
+        Wed, 12 Oct 2016 10:14:19 -0700 (PDT)
+Return-Path: <elise.lennion@gmail.com>
+Received: from mail-vk0-x241.google.com (mail-vk0-x241.google.com. [2607:f8b0:400c:c05::241])
+        by gmr-mx.google.com with ESMTPS id p70si998760vkd.0.2016.10.12.10.14.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 11 Oct 2016 16:23:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c00::229 as permitted sender) client-ip=2607:f8b0:400e:c00::229;
+        Wed, 12 Oct 2016 10:14:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::241 as permitted sender) client-ip=2607:f8b0:400c:c05::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c00::229 as permitted sender) smtp.mailfrom=gnudevliz@gmail.com;
+       spf=pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::241 as permitted sender) smtp.mailfrom=elise.lennion@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x229.google.com with SMTP id e6so8969877pfk.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 11 Oct 2016 16:23:41 -0700 (PDT)
+Received: by mail-vk0-x241.google.com with SMTP id 2so2395028vkb.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 12 Oct 2016 10:14:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+        h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=pPuk5VZxkn9enbf2Gc/FMmsMT3VOlTJnpCvAno0RuL8=;
-        b=wcgiRxLXZGd3I873LRTlukpWx4FGv0OQaETbO/MipgKY4YLwK62NToEipJcI35L9Q2
-         c1JgV0op9yWQh35VSXp3Edl18NOwK1Jirtot8uz9SjsTSg7uexEKulfR0DDp1TC0TBx0
-         eGzz6pwvmgX1+BREvBKuqVudzMRUlt12kLrHxUrCE7RLUvr8pYHimiuUvZm3DDh7oslK
-         lC/YQJrn7d3f1skWZMq1D+8qjOweHtkL35sFL8SXJicq6dVHo8fv8TRTAO8qzWWXpXfL
-         QwOUItdLiLfk9468P5AgnsjptuQZyqk1Ln3dqzfiMbLI8hWwV7jSXT7WtfaB7Z9ph9tJ
-         K54w==
+        bh=yofqBS5nhrcfaZW+7njOpEW3DmjnxRnm9o5ebaCFi+E=;
+        b=Rqbxc75oqExVLoVikF/snXwZwdlcYazGHojfrJy32yHv2+qIM7NQLNwK7iI8Tz9M19
+         w/5fCrxtnwRa32GFEdaSSEWipmrHCiSq/rpfelaKcNqo9zHehNVadMbhJnClnzZafLp7
+         nJQdC/WzqsKyVCh99kLfNtL5NQuvnROTj6rdB788IRRSuj1hPjEWEoZJlD/D24azteQ6
+         dYCKmMvUbGO+ZPpFOgaVaWAXozrlb/Ti/d+rejW+FmS3bULLWfZ/F+CodpBe0pZ95rcP
+         vP1iZUDOOIBb7wI14MO5vqRfl0+avT5q+prtPWXkt61DEfBA6WSWc5l9HjhtR0KVQnuq
+         mWPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=pPuk5VZxkn9enbf2Gc/FMmsMT3VOlTJnpCvAno0RuL8=;
-        b=EK8+dcDCATA90IlR2Pwht7BZ4l6r4sPG2UtQswPxVMlomAu4WdcagYQsmorKrdRdHa
-         y0cFM9L1IvXaldQnJsb/r/0EN20kGxHL+cEMLWjhgjVrU2/cc0JuqJZxIpSw+WojD6Xb
-         kFaMToL7L+ns2RsjK5PBbWZkuvOPFiDmBCaF0uGf9I6VSxQLDpoxPO+T8Tw/K1osWq8S
-         39O8oOaupHEq35Eo8Trn2egmng2YluDHYJDQ8waGTD96z1bNIoNChJx+WHoSyrNgpseg
-         rY7KV9ldJIr93OXmCs+96WWj/zv4emIqsk1sQuXY4Yy5uwrIkpNVucnsC/gTwoKPf09d
-         NTcQ==
-X-Gm-Message-State: AA6/9Rmtz3s/Jjw00NmaBa7bwAj9IfL1lCh96UZbUTX+A9w8M98FNcIS0+s9U+FTLT6+vA==
-X-Received: by 10.99.149.72 with SMTP id t8mr4843903pgn.29.1476228221264;
-        Tue, 11 Oct 2016 16:23:41 -0700 (PDT)
-Return-Path: <gnudevliz@gmail.com>
-Received: from localhost ([2601:644:300:fd6b:4e0f:6eff:fe69:e9ea])
-        by smtp.gmail.com with ESMTPSA id v73sm6820160pfd.63.2016.10.11.16.23.40
+        bh=yofqBS5nhrcfaZW+7njOpEW3DmjnxRnm9o5ebaCFi+E=;
+        b=UrQWVoCHvCoBIs0kA7vln9JqZasCavUHSiMktYDJSj8or4+lTJO2N4oYafgcthH8Dx
+         DXkQ5Oi7RxP+V+8TR2Gond3IC+8LNKDaaRmtiVeqvet/q1ibm1BfBfaiFeT1kojNfxyw
+         dNhKRsXeUSDn5TeZu56VeU1FgmzDQQKAqq6p7RzFwJsp/XEsLbGxnMjUoT61UyZzJINL
+         aPtOGp8qCvRWec3vIxPMkNwDvs3P33586NVHuysy2lYOavucLUQF/BADpErV3UkB3wJH
+         y4JzRbZurYz5jJUlt2DU3xKwf2d0jirPv8Ih2mg/lUtqqgHIIDMpm1acZZEgGw4iF8vx
+         dlYQ==
+X-Gm-Message-State: AA6/9Rmtwh2IcyyMlRzbaglqbKUbzJIBzPBf8/LDc6HGQc5o1VKhLtw7NGqcucdglHwSbQ==
+X-Received: by 10.31.171.75 with SMTP id u72mr1331757vke.22.1476292459212;
+        Wed, 12 Oct 2016 10:14:19 -0700 (PDT)
+Return-Path: <elise.lennion@gmail.com>
+Received: from lennorien.com ([187.64.224.84])
+        by smtp.gmail.com with ESMTPSA id q10sm3437957vkd.0.2016.10.12.10.14.17
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 11 Oct 2016 16:23:41 -0700 (PDT)
-Date: Tue, 11 Oct 2016 16:23:38 -0700
-From: Elizabeth Ferdman <gnudevliz@gmail.com>
-To: julia.lawal@lip6.fr
-Cc: outreachy-kernel@googlegroups.com
-Subject: Coccinelle Challenge 1
-Message-ID: <20161011232338.GA11666@localhost>
+        Wed, 12 Oct 2016 10:14:18 -0700 (PDT)
+Date: Wed, 12 Oct 2016 14:14:14 -0300
+From: Elise Lennion <elise.lennion@gmail.com>
+To: johan@kernel.org, elder@kernel.org, gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH v3 3/4] staging: greybus: camera: Use kcalloc for array's
+ memory allocation.
+Message-ID: <20161012171414.GA30622@lennorien.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Hi Julia, 
-I worked on the first challenge and I wanted to run my findings and
-questions by you. Please confirm whether these observations are correct.
+Fix checkpatch warning:
 
-I looked at the difference between local idexpression, expression, and
-identifier for ret.cocci. 
+WARNING: Prefer kcalloc over kzalloc with multiply
 
-Local idexpression basically means what local identifier
-would mean-- just local vars--  except that's invalid. 
+kcalloc is designed to allocate memory for arrays, its use is
+preferable than kzalloc in these cases.
 
-Using expression in place of local identifier included results like
-this: 
+Signed-off-by: Elise Lennion <elise.lennion@gmail.com>
+---
 
-- a->b = c;
-- return a->b;
-+ return c;
+ v2: Changed the subject of the patch.
+ v3: Added versions information.
 
-I don't know whether or not that's always the right thing to do. I think
-that if the changes are only local, it'd be fine to compress the lines.
-But if a->b happens to have a global effect than it'd be wrong. I'm not
-sure about this, but if the function receives *a as a parameter, then
-would a->b = c be a persistent change? 
+ drivers/staging/greybus/camera.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Using identifier included results where 'ret' was not necessarily local,
-so compressing the lines would be bad because the global assignment
-would be deleted.
+diff --git a/drivers/staging/greybus/camera.c b/drivers/staging/greybus/camera.c
+index 0c73445..1c5b41a 100644
+--- a/drivers/staging/greybus/camera.c
++++ b/drivers/staging/greybus/camera.c
+@@ -797,7 +797,7 @@ static int gb_camera_op_configure_streams(void *priv, unsigned int *nstreams,
+ 	if (gb_nstreams > GB_CAMERA_MAX_STREAMS)
+ 		return -EINVAL;
+ 
+-	gb_streams = kzalloc(gb_nstreams * sizeof(*gb_streams), GFP_KERNEL);
++	gb_streams = kcalloc(gb_nstreams, sizeof(*gb_streams), GFP_KERNEL);
+ 	if (!gb_streams)
+ 		return -ENOMEM;
+ 
+@@ -938,7 +938,7 @@ static ssize_t gb_camera_debugfs_configure_streams(struct gb_camera *gcam,
+ 		return ret;
+ 
+ 	/* For each stream to configure parse width, height and format */
+-	streams = kzalloc(nstreams * sizeof(*streams), GFP_KERNEL);
++	streams = kcalloc(nstreams, sizeof(*streams), GFP_KERNEL);
+ 	if (!streams)
+ 		return -ENOMEM;
+ 
+-- 
+2.7.4
 
-I noticed some potentially bad results with ret.cocci:
-1. When the type of 'ret' happens to be important, lines shouldn't be
-compressed. For example, a function receives a variable of type u64 but
-then returns it as u32. Deleting the assignment line means that the
-value will be returned as the wrong type.
-
-2. spatch deletes a comment between the assignment and the return
-statement. E.g.:
-
--       start = iwe(info);
--       /* how to translate rssi to ?% */
--       return start;
-+       return iwe(info);
- }
-
-3. readability issues-- 
-- the return value is very long with many |'s or ||'s
-- the name of the variable might be meaningful to the reader
-- there are if blocks with return statements: 
- same variable name but different values might provide meaning/order to
- the program.
-In these cases the variable reassignment or creation isn't actually
-necessary, but does it increase readability?
-
-Questions:
-
-I'm pretty confused about how these lines work: 
-
--ret =
-+return
-     e;
--return ret;
-
-The first line deletes the name of the variable and the equals sign, 
-but what happens to the expression on the right?
-I'm confused as to why it doesn't say -ret = e to signify that the
-expression on the right is what we want 'e' to be. Then return gets
-added, and it's replacing 'ret ='. But why is 'e' even necessary if it
-wasn't deleted? And why is it on a new line with spaces in front? 
-The last line '-return ret;' makes sense, we just want to delete the 
-word return followed by the variable name. 
-
-I've read some basics of coccinelle, went through the slides, and read
-some articles people wrote about it but I'm still pretty confused. :/
-
-Thanks for your time, 
-Elizabeth
 
