@@ -1,56 +1,110 @@
-X-GM-THRID: 6470558615893704704
-X-Received: by 10.28.1.146 with SMTP id 140mr404197wmb.2.1506544327107;
-        Wed, 27 Sep 2017 13:32:07 -0700 (PDT)
+X-GM-THRID: 6338982763407867904
+X-Received: by 10.157.47.4 with SMTP id h4mr218949otb.109.1476277417943;
+        Wed, 12 Oct 2016 06:03:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.223.160.247 with SMTP id n52ls691991wrn.6.gmail; Wed, 27 Sep
- 2017 13:32:06 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QBDaesDj1+52LVaZXnMKyr9ksxIrd0O/CCKsvUJALL5wPec5mGtBM5veYiwNxj4FtDC0XQk
-X-Received: by 10.28.215.195 with SMTP id o186mr410838wmg.9.1506544326043;
-        Wed, 27 Sep 2017 13:32:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506544326; cv=none;
-        d=google.com; s=arc-20160816;
-        b=YZIpI4j1iCA+ZidsEUFcFa8Rji4gzJQh55abc4n6Dlg3vInItQomZI7L7APnTewS73
-         +gVxP1O0wBmkTjewZZ1faMuuYf5rAkYgRbi7/fkHwwA/ecrEViPnM8usj4WdUHpCQvMX
-         74hc14m+0dJHVe0uHrT20JT6uc92L6dnoC/7M8ZVQHT4uD+xIs/vh/2tsYgsbCWzNc8B
-         nSfmS1YkZfweJwamJgH3w4JCYB7mrOV++8CKMhdvmgy+AkCkOoUmDxiYVMK9vgAmehqg
-         FtQ9A69OI89ebfuOYtMKdX5pWiZYKQpbeGsS+ErTJNutqL9otSzYbd3r+mf9hmrDiAyv
-         Iz6Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:message-id:subject:to:from:date
-         :arc-authentication-results;
-        bh=Z+Ljs6ce+TqJo9wIgiVWSJgQ5oDGqgajrL+slGYzvYE=;
-        b=So8oM5YRP4QsXqlyH7a22fPLbJqIO0/WPQimW9vd2trobDTzhlBxbvP+o0+vP8RGEn
-         jV9QmgtxEGriJJAGFcTOncDlqfW9LdtY2gTMNC1wlo3TIegJZGWKKcAKMU3MRs95P5BE
-         rsIa8I/UnH0191SZsI1FSVYfQr1eww43qgKGsmf5Ag8ea5wtk7ZrcR2OPKAKGhDu7ECb
-         yG5u/hEBRqAIYSjf5A5eBgQy/moXaujkJKrPKfV6Arnnz2pbvJKkNdvGc0CMCZpNPF2I
-         SxXKbg1YEV3vlTnWNjxLUxJjQXbXgLU1uNOyO1ENlGXnstcZyilPErwZZQdBuvCPwuRl
-         V/kw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id j4si29380wmi.2.2017.09.27.13.32.05
+Received: by 10.157.38.213 with SMTP id i21ls3404004otd.8.gmail; Wed, 12 Oct
+ 2016 06:03:37 -0700 (PDT)
+X-Received: by 10.159.48.29 with SMTP id h29mr231003uab.19.1476277417532;
+        Wed, 12 Oct 2016 06:03:37 -0700 (PDT)
+Return-Path: <eraretuya@gmail.com>
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id 7si1382380par.0.2016.10.12.06.03.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 27 Sep 2017 13:32:05 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Wed, 12 Oct 2016 06:03:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.42,446,1500933600"; 
-   d="scan'208";a="293020540"
-Received: from unknown (HELO hadrien.local) ([93.83.33.58])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 27 Sep 2017 22:32:05 +0200
-Date: Wed, 27 Sep 2017 22:31:55 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: outreachy-kernel@googlegroups.com
-Subject: web site
-Message-ID: <alpine.DEB.2.20.1709272231310.3493@hadrien>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x243.google.com with SMTP id s8so2722467pfj.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 12 Oct 2016 06:03:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:mail-followup-to:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=awUdWhuvxQl/OJiNMUYwYKk/6lfKK68EGym8aK6dE/I=;
+        b=X6YXKF9dMJUqbW9jt2pX76a+BmxLrcJm4JuXziwGomK7lMMID0TT4ahL6kslX4NQPA
+         1XE5QmWNB4hO5uqDgc0vY9hA4zJnYd82/lDau2PHFD5l1+gOqC5ZD4mdbd7RHMe162RS
+         RYQXG7OaH9K1Tx+QFgxAYWtlDJygOBZUbAwmQR09ZdBzyZR4yy28SlOr0nbBGFe6z8Y9
+         5+A+Rc4bMAJ6xzEbd2RviT134gwdg8IbBecIRxfsc0ZUrZAZukjzDWIMG0BmUFTNF0p8
+         ryQScIajHw4qQiD0cutG/omYxiohXiWHdFruUqlm+06alqQPFVcl/TNcqDRaGrzUIYAF
+         Oo/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id
+         :mail-followup-to:references:mime-version:content-disposition
+         :in-reply-to:user-agent;
+        bh=awUdWhuvxQl/OJiNMUYwYKk/6lfKK68EGym8aK6dE/I=;
+        b=j0I1VmHSaf7+peTHhRh8nHoqJvwaSv555J0Y68fyHVi2PmStWbAPe5v7ZZx/4qHL/B
+         GsSGIj8pAyatLmrWlQMPKSjyKLWZ52hh/v45IqlzmcufDhuNbWDf7guCuy0SEpSo03Ri
+         SxhpsSAlK9EXjF63qH7OXJtgTpPgaP8aa07X9HFqwB9Kyc9Ziraqb/1363DhwigtrwvU
+         zIlJVthR37HsP3fU9wbr/B3DACJlBGZFENKgBl89ncREFWASgn0q1KuGGNuIEG39pWuk
+         QQ7HHotJXw1hrTCCftJQHeHYb+T+7UIkFOVNNAz5HQ3DitxHBOj3ExglRVcTrfLfPtaG
+         oGqA==
+X-Gm-Message-State: AA6/9RmXUvjTbFhyuAQ3h91N8OAkM1jJsngRoUEWS4kva1UkuewsZq+b3QOVlNs3OanXLw==
+X-Received: by 10.98.152.213 with SMTP id d82mr1562175pfk.105.1476277417310;
+        Wed, 12 Oct 2016 06:03:37 -0700 (PDT)
+Return-Path: <eraretuya@gmail.com>
+Received: from Socrates-DK ([125.212.122.8])
+        by smtp.gmail.com with ESMTPSA id id6sm11794497pad.28.2016.10.12.06.03.35
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 12 Oct 2016 06:03:36 -0700 (PDT)
+Date: Wed, 12 Oct 2016 21:03:33 +0800
+From: Eva Rachel Retuya <eraretuya@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: Lars-Peter Clausen <lars@metafoo.de>, linux-iio@vger.kernel.org,
+	outreachy-kernel@googlegroups.com, Michael.Hennerich@analog.com,
+	jic23@kernel.org, knaack.h@gmx.de, pmeerw@pmeerw.net
+Subject: Re: [Outreachy kernel] Re: [PATCH v3 2/2] staging: iio: ad7606: fix
+ improper setting of oversampling pins
+Message-ID: <20161012130331.GA2726@Socrates-DK>
+Mail-Followup-To: Greg KH <gregkh@linuxfoundation.org>,
+	Lars-Peter Clausen <lars@metafoo.de>, linux-iio@vger.kernel.org,
+	outreachy-kernel@googlegroups.com, Michael.Hennerich@analog.com,
+	jic23@kernel.org, knaack.h@gmx.de, pmeerw@pmeerw.net
+References: <cover.1475907512.git.eraretuya@gmail.com>
+ <9018314d134e3e33f892ad78969e11bf5ffa0950.1475907512.git.eraretuya@gmail.com>
+ <39a0c2c4-6fcb-21f2-f9b3-ddb360f58c75@metafoo.de>
+ <20161012124217.GA18782@kroah.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20161012124217.GA18782@kroah.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-The web site shoould be working again.
+On Wed, Oct 12, 2016 at 02:42:17PM +0200, Greg KH wrote:
+> On Sat, Oct 08, 2016 at 02:21:46PM +0200, Lars-Peter Clausen wrote:
+> > On 10/08/2016 08:50 AM, Eva Rachel Retuya wrote:
+> > > The oversampling ratio is controlled using the oversampling pins,
+> > > OS [2:0] with OS2 being the MSB control bit, and OS0 the LSB control
+> > > bit.
+> > > 
+> > > The gpio connected to the OS2 pin is not being set correctly, only OS0
+> > > and OS1 pins are being set. Fix the typo to allow proper control of the
+> > > oversampling pins.
+> > > 
+> > > Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
+> > > Fixes: b9618c0 ("staging: IIO: ADC: New driver for AD7606/AD7606-6/AD7606-4")
+> > 
+> > Looks good, thanks.
+> > 
+> > Acked-by: Lars-Peter Clausen <lars@metafoo.de>
+> > 
+> > Ideally you'd have but the patches in the opposite order, fix first, then
+> > rework. As it is right now with the fix after the rework the fix no longer
+> > applies cleanly to older versions.
+> 
+> Yes, please do that, so it can be applied to older kernels properly.
+> 
+> thanks,
+> 
+> greg k-h
 
-julia
+Lars and Greg:
+
+Thanks for the feedback. I got the v4 accepted using the proper order,
+fix first then rework as suggested.
+
+Eva
 
