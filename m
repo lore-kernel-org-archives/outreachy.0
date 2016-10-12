@@ -1,63 +1,63 @@
 X-GM-THRID: 6340633511691550720
-X-Received: by 10.98.194.74 with SMTP id l71mr2208222pfg.11.1476391120489;
-        Thu, 13 Oct 2016 13:38:40 -0700 (PDT)
+X-Received: by 10.36.28.82 with SMTP id c79mr1019265itc.29.1476293781767;
+        Wed, 12 Oct 2016 10:36:21 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.136.230 with SMTP id s99ls2687152ioi.38.gmail; Thu, 13 Oct
- 2016 13:38:37 -0700 (PDT)
-X-Received: by 10.66.25.136 with SMTP id c8mr1785637pag.3.1476391117632;
-        Thu, 13 Oct 2016 13:38:37 -0700 (PDT)
+Received: by 10.157.10.166 with SMTP id 35ls3976510otq.35.gmail; Wed, 12 Oct
+ 2016 10:36:21 -0700 (PDT)
+X-Received: by 10.129.158.135 with SMTP id v129mr581510ywg.10.1476293781371;
+        Wed, 12 Oct 2016 10:36:21 -0700 (PDT)
 Return-Path: <juliana.orod@gmail.com>
-Received: from mail-vk0-x243.google.com (mail-vk0-x243.google.com. [2607:f8b0:400c:c05::243])
-        by gmr-mx.google.com with ESMTPS id p70si2028094vkd.0.2016.10.13.13.38.37
+Received: from mail-vk0-x241.google.com (mail-vk0-x241.google.com. [2607:f8b0:400c:c05::241])
+        by gmr-mx.google.com with ESMTPS id t8si1172080vkb.2.2016.10.12.10.36.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 13 Oct 2016 13:38:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400c:c05::243 as permitted sender) client-ip=2607:f8b0:400c:c05::243;
+        Wed, 12 Oct 2016 10:36:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400c:c05::241 as permitted sender) client-ip=2607:f8b0:400c:c05::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400c:c05::243 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
+       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400c:c05::241 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-vk0-x243.google.com with SMTP id 83so3063440vkd.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 13 Oct 2016 13:38:37 -0700 (PDT)
+Received: by mail-vk0-x241.google.com with SMTP id 83so1348581vkd.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 12 Oct 2016 10:36:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+        h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
         bh=b4gC00npLsQ9qMgRqw97il3BIiz8rss++Ebm/9R3Qfg=;
-        b=b6OlLwTAN36+hD6/Aro0Yo2m2HzQ9YAyiqIDBz8NoUXqPMecDj8To3AzTwRsKP3qyn
-         +AD2Jf5GT7HaFlNJWJkD7r9BXIxmHx9YQNCGr7Lryq++c6Acf3hAqpRaQkL/tUEMc91U
-         isrGeP2zJVH40y0IBeDuetxEfxr3yhCj4wcJGS/qAsHOushPrFs0W2ivrevzFgiH/fNt
-         38ZDIAY3YOy/RO/hL4jfjZMwotaiJvdlpr8ruW6y4cTPE+4tzs75YNB9r34cbhQ7X20T
-         HlA5owyi6lZRPGdaycURvppbHqcZFK92bX9xXP9/npGXiQzgCHIIfyoXRhfKoU+wIso7
-         CSSA==
+        b=SbI1o3S0kLQS3DXPzHww9ifwUoW+GaGdU5WAYSu6svZoriJorSCFFha72tWiHgL0Z9
+         VFAtZWJf9isMAU269wAGKv35EfQx0xy+/SP1yP+qNloE6ObBqnQmjSeeGfGP5QlMx2en
+         GtxAN4a2Ky4V3bAx+kCpwLH11Ydz9RBXBrCFobIOeK3fXHPGmMp6KKjq9HjsO9NRgamM
+         dAssukCqWR2tFe6pbTuUqNbhrRyvWm6NCMs84NEfgfEsuqs/LcRD9Uw0P475eepRRgvf
+         q9NJsEY9+8wsvX2YTf3wTgRVIPU8gNoQKCi4MFRgZHjAcR48S0Sn9DZR0pK/ul9+FpYW
+         KsHA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
         bh=b4gC00npLsQ9qMgRqw97il3BIiz8rss++Ebm/9R3Qfg=;
-        b=iW+dGeBl1uGNEgRZYIKXOC6uCsr5N2ldY6gezNlengkJD01x2M9iF3WUKdqxCsHxk1
-         YAwCx1fXQsYXUg2F9TOBuxRwwUhAPl0N3ruNA8+6UDaTAGDQpFxOXGdvwyklJ22NffKD
-         rxPNOi5NJXQQJ6QHC9glkysqzVm61o21kj5EXG6aEdpQ0IeDieogRdFSVG3KgzoN4lMj
-         aT9d5MMazHNWLhxrhGiC4ldrdQPYZY6Ns36R29epo5l4NMb9afFzN4lbi9Jnj9HkXZ+x
-         2wmw8bOFMs2PxdeYCj7oNrVKzQtAmOY97f3gvZBpk8n4zl0/5jR/5h1cVZBPxJO0M4U3
-         d8yQ==
-X-Gm-Message-State: AA6/9RkJ0VVPrD2CsCHR1jFH2JTkNKlAD9edNLOemfNsbR8yGTxRbJTTJVIXIGoDcgk6HQ==
-X-Received: by 10.31.92.216 with SMTP id q207mr6558491vkb.147.1476391117142;
-        Thu, 13 Oct 2016 13:38:37 -0700 (PDT)
+        b=D/sQS+T+8AJfgvPGJ9gKP5Hmq+oZ3wxdcuRHwOyt7YYgZ+8SGa4umChRjktfF7cRYo
+         djoPscfL7MwoTYnBj3nMbsMc9oQDhd4z8MOcUFtBjW8vVqF3276V8RFprDRDiOIPAM6D
+         j9InQ5icsRbUcponeMyJxiTTJBzgy6eDSD4j1qYj0q3USfxulSkQw+0WOw6bY6FrzPZS
+         eRu1Ji0p13EiZxcYU3US96bNVjG3ZGyxJO3gEQWXsy0JNTvoKrSI9kEQiIr+Ho4oj467
+         oeHYrSaTonnvmHaa84KtsY7OjTqysTNUMgN1oZWkZ+zWQoAnT3tc+si4L3JRWYwXujRP
+         M7KQ==
+X-Gm-Message-State: AA6/9Rkoko7gEStDeOOxY9Nc2PWAZU0Bhv5xB846vUR6qTaDnx1EKkXHlWYPS09DmSFvTw==
+X-Received: by 10.31.99.197 with SMTP id x188mr1410053vkb.125.1476293781111;
+        Wed, 12 Oct 2016 10:36:21 -0700 (PDT)
 Return-Path: <juliana.orod@gmail.com>
 Received: from spock ([189.61.236.196])
-        by smtp.gmail.com with ESMTPSA id 127sm5966745vkj.16.2016.10.13.13.38.35
+        by smtp.gmail.com with ESMTPSA id o15sm3434802vkd.21.2016.10.12.10.36.17
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 13 Oct 2016 13:38:36 -0700 (PDT)
-Date: Thu, 13 Oct 2016 17:38:31 -0300
+        Wed, 12 Oct 2016 10:36:20 -0700 (PDT)
+Date: Wed, 12 Oct 2016 14:36:05 -0300
 From: Juliana Rodrigues <juliana.orod@gmail.com>
 To: outreachy-kernel@googlegroups.com, lars@metafoo.de,
 	michael.hennerich@analog.com, jic23@kernel.org, knaack.h@gmx.de,
 	pmeerw@pmeerw.net
-Cc: linux-iio@vger.kernel.org
-Subject: [RESEND PATCH] iio: gyro: adis16136: implemented
- IIO_CHAN_INFO_SAMP_FREQ
-Message-ID: <20161013203831.GA1666@spock>
+Bcc: samuel.chenatti@gmail.com, juliana.orod@gmail.com,
+	eliasfrancasouza@gmail.com
+Subject: [PATCH] iio: gyro: adis16136: implemented IIO_CHAN_INFO_SAMP_FREQ
+Message-ID: <20161012173605.GA25492@spock>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
