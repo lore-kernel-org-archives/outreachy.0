@@ -1,127 +1,96 @@
-X-GM-THRID: 6807744599816142848
-X-Received: by 2002:a2e:b804:: with SMTP id u4mr7445829ljo.159.1585051557533;
-        Tue, 24 Mar 2020 05:05:57 -0700 (PDT)
+X-GM-THRID: 6340432633918390272
+X-Received: by 10.129.77.87 with SMTP id a84mr2072960ywb.30.1476247011956;
+        Tue, 11 Oct 2016 21:36:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:8941:: with SMTP id b1ls3479700ljk.8.gmail; Tue, 24 Mar
- 2020 05:05:56 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvlJFhIUfsi9ewtg15CVqhSJ/fNCUamCtE/nlulsgnLxXyr/kYUHT0LhxNafG56DfFSLih+
-X-Received: by 2002:a2e:780a:: with SMTP id t10mr9001650ljc.83.1585051556016;
-        Tue, 24 Mar 2020 05:05:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585051556; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Y9wF7A9/CeUf7ASWzJLeeDDJem18qlK20K4aohq7nn34DP7WBlss7pUJOCJhN7FMK5
-         YSnYuSBq5WKLDyDKhg9HzEuM0419QbcB70ykgBus1d74URbMn5ZCYFw6uS5E6JtBlv88
-         0LyInGClrh9/Kb7lneRs1nlIL4ucLu0uQKcbzh32IoeJy8yQ+A9wTsLLTHUvuXnurqNm
-         SWu//XZw0RpvLW1DootBxx5JAgLqmql4k0jvdcP/5CmxEqqxoY3OFyQNmBRJXlBy05bu
-         wuq+P2y152eq2EuYIaRZvqp7e3gGfgk8c/z3/CsbT79FBljVHZPeHvHEzvH5i0dr6S4f
-         YzwQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:date:cc:to:from
-         :subject:message-id:dkim-signature;
-        bh=tBrDaRVqpTdtsZXCEwzj5mC9CVjfCtLEGAmNGUPnDFI=;
-        b=XhLkwVkaHKOTgyrKOzIEItsjmXjQwK9PEez7EzG7JVObxLFSl3mjH/FBm9r6b5U0U5
-         RdzF0KAvjGADfpqydmpPq6mUtlD7+82tO18uaGtRVlmLhXfCIyG13PDxnpeIe/HOEB/E
-         X51B0bdBwTQi8bJgKp15YIQ0txS1w2WhtKC4AxY38aA61qO0AL9SGBfjtMQtjLEh25pE
-         pQZAAux1Y1w9V0djLtHyZuNlcUHG3Wm3TH7anyoUVxx68sOPERXiXJxX0z3GlrPRu77r
-         gCC9ACEhl2y9JBDPGwpCaEVPK5TkhzPRyHq6SIXKAKtS5B4K7oqeQhNQdPn+gVcLLncq
-         naMw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ppjyDTVK;
-       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::42a as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jane.pnx9@gmail.com>
-Received: from mail-wr1-x42a.google.com (mail-wr1-x42a.google.com. [2a00:1450:4864:20::42a])
-        by gmr-mx.google.com with ESMTPS id d12si1030690lfi.2.2020.03.24.05.05.56
+Received: by 10.157.43.147 with SMTP id u19ls2854565ota.0.gmail; Tue, 11 Oct
+ 2016 21:36:51 -0700 (PDT)
+X-Received: by 10.237.53.2 with SMTP id a2mr1947980qte.62.1476247011569;
+        Tue, 11 Oct 2016 21:36:51 -0700 (PDT)
+Return-Path: <rvarsha016@gmail.com>
+Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
+        by gmr-mx.google.com with ESMTPS id f133si1354991ita.1.2016.10.11.21.36.51
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 24 Mar 2020 05:05:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::42a as permitted sender) client-ip=2a00:1450:4864:20::42a;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 11 Oct 2016 21:36:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ppjyDTVK;
-       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::42a as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x42a.google.com with SMTP id t7so16404535wrw.12
-        for <outreachy-kernel@googlegroups.com>; Tue, 24 Mar 2020 05:05:55 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pa0-x243.google.com with SMTP id qn10so2700251pac.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 11 Oct 2016 21:36:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:subject:from:to:cc:date:user-agent:mime-version
-         :content-transfer-encoding;
-        bh=tBrDaRVqpTdtsZXCEwzj5mC9CVjfCtLEGAmNGUPnDFI=;
-        b=ppjyDTVKzt619otVEOkXcXX/u5HZDF1/iVMpqBHonCzlOLDB6lv4r+nHg6+fSx3dJs
-         JJvjWVDETnrEmbLYoXShMB1Iz3RtGgtz8NB5SflSfDrY/FZBNaMLOQUrWkQx0sVINBPN
-         aOH2MOMODuAEto2HRAz4/D4f4oAAsqvx2RLRSC18Cxl2jauctXvapgNqyor3yI9++iS7
-         f9UeVRuoq3vETpuAQ3y3QZzRh5D/6EQK/L46tRMB543BqWRmj7HIMfkGKWwLzjfeDJEe
-         m+LLGNZSeuP54umQ3NxcMCmJdCU52V6anMzI0kp+OfLo/BHZayTyg0ymEoPFhjyFMejr
-         8NUg==
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=IXNuGx+0ragUOAsEh+kXm7qHZwxxHNqhumaa/mfYbB8=;
+        b=jG5IlFHcEzLw0xpjRMFfxm1/hVRlYyJ1Ztp3X4JAAgNjhzDVVraSzVTFysRIAZO6Bk
+         TIvHeP7QwEIS3QFFCol0GMlC2T2cH3+cExI6loQr/8JQpFG8Gacqb9exHOJGm2iPPEfr
+         TxJj3nM++d40Zt6Y4wmOm/bvZq1mS7nlI2IavEqzpjNRAsBWTIoW3N3/GPrw0wzlOfQA
+         Z4k6Ycb/vbiS+YaKYZEi4rwRiF3caFpEeoo1SenevUSTxBNI+KE1udEzLTS4w7s+QtwF
+         rgftmAzL+UzRCFD1DHJ41GVMjtKGraRp75LFYSxVPQMX8FjhMlxnJoiIiE178pPLbZiE
+         MF3g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:subject:from:to:cc:date:user-agent
-         :mime-version:content-transfer-encoding;
-        bh=tBrDaRVqpTdtsZXCEwzj5mC9CVjfCtLEGAmNGUPnDFI=;
-        b=CM0DlIs0k5M5pM3QqOMimUnx4cJk0AENqT9FR3Qru33HAIqGjhEbWKwTZ1GR0KVHoM
-         zJDq+1omkafL2i10cWrqcATxqUtL4LdWylXG7VrXcODCGMq9vLFzBY7oPDE7VF+deTJp
-         MLG3FyxWrPrtoDch6790GJhK7HaqQ8xlTQHkKxO8Jp8uUI6VfeOhreynUg/I41yA6CWt
-         XL7JqzrDKQeLhm26So4ybXuZ4NcvNi9UJy9VEbXVLE9926tJwHxAOeerIAOYdU3+ynMX
-         yab4vSu55I5ZRYmI0vvMZLwqm7cCWxK78kcUKSInn0bqfefbxYTw08BmnXl2cAlEp1Bb
-         Ekag==
-X-Gm-Message-State: ANhLgQ0JP6NOhDLXUYD97v/oKbwSK3iFiNdHb9TytX7+G+Rg/Bb52ZC3
-	u2Iofx5ajf582Cv7qwBg1UytzByLX4E=
-X-Received: by 2002:a5d:50d1:: with SMTP id f17mr19628798wrt.150.1585051555663;
-        Tue, 24 Mar 2020 05:05:55 -0700 (PDT)
-Return-Path: <jane.pnx9@gmail.com>
-Received: from debian ([197.34.93.161])
-        by smtp.gmail.com with ESMTPSA id z188sm4123761wme.46.2020.03.24.05.05.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Mar 2020 05:05:55 -0700 (PDT)
-Message-ID: <eaac641de00be14d48192180c624c2e13f7d897a.camel@gmail.com>
-Subject: Following up on Coccinelle.
-From: Sam Muhammed <jane.pnx9@gmail.com>
-To: Stefano Brivio <sbrivio@redhat.com>, Julia Lawall <julia.lawall@inria.fr>
-Cc: "outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>
-Date: Tue, 24 Mar 2020 08:05:53 -0400
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.30.5-1.1 
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=IXNuGx+0ragUOAsEh+kXm7qHZwxxHNqhumaa/mfYbB8=;
+        b=SzI/AoIFOVJdF0toxLzm2VmC9Jf/Gv9jSo0x/gM8aF8Ly4/JqAXzGGZyESHf0E2JgN
+         C86kcWLinHpP7+VeH1Md8WisyM9SWD+wqfdGTIwYRKrkKCS3RMKIJ8J0n4jOTnuY7sJi
+         ObPzt76FCtKUKqrkvcMpYNGPjrWrOqOJ0HS2US2NvKjMFBXs5RdTM/UbsPUDD1oO+Z/M
+         W8+5/wdJlRDjPLmJcygcU1+kiZJfU6i8dgMGcwe6VKgW2xsfeG1Uf2smARB8n7icaB1C
+         AA6x1490MugRTmDIp6zBUuB5rqG7UlVYYDGc6kDFrZWSqiZdcvx9Xj9p4dybbtz9Dmdv
+         MDhw==
+X-Gm-Message-State: AA6/9RnS/u4cJYHkhbgJdKVIAgD+DyqhiirpTu0ocE1nNJ7s9lwrvFY+N7VpHJIAt2eo9A==
+X-Received: by 10.66.248.132 with SMTP id ym4mr12167054pac.182.1476247011131;
+        Tue, 11 Oct 2016 21:36:51 -0700 (PDT)
+Return-Path: <rvarsha016@gmail.com>
+Received: from euri ([117.237.178.166])
+        by smtp.gmail.com with ESMTPSA id 136sm7909007pfu.87.2016.10.11.21.36.49
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 11 Oct 2016 21:36:50 -0700 (PDT)
+Date: Wed, 12 Oct 2016 10:06:46 +0530
+From: Varsha Rao <rvarsha016@gmail.com>
+To: outreachy-kernel@googlegroups.com, forest@alittletooquiet.net,
+	gregkh@linuxfoundation.org
+Cc: rvarsha016@gmail.com
+Subject: [PATCH] staging: vt6655: Adding space around '*'
+Message-ID: <20161012043646.GA3153@euri>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.7.0 (2016-08-17)
 
-Following this thread:
-<20200311181134.GA17847%40supernova>
+This patch fixes the checkpatch issue by adding space around '*'.
 
-While tinkering with Coccinelle, i found that this error:
+Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
+---
+ drivers/staging/vt6655/card.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-coccicheck failed
-make: *** [Makefile:1742: coccicheck] Error 255
-
-only happens with (as far as i tried) two COCCIs:
-using MODE=patch
-scripts/coccinelle/api/atomic_as_refcounter.cocci
-scripts/coccinelle/api/check_bq27xxx_data.cocci 
-
-So running make coccicheck with no COCCI= will always fail at the 
-scripts/coccinelle/api/atomic_as_refcounter.cocci
-
-Adding that MODE=report is okay to report all ERRORs ..etc
-
-so specifying a COCCI to get round it worked for me.
-
-++
-but i have a question, maybe a couple:
-
-+ If i have a simple .cocci and it produces patches, how do i make a
-commit of it?    _newbie_ :)
-
-+ If this .cocci propagated across a driver, a patchset of this change
-across the driver will have the same subject for all patches, I guess
-thats not okay? so one patch of all the driver files should do it?
-
-+ Basically, how to format a patch found by EITHER an existing .cocci
-in the source tree, or one that is made and not included in the
-/scripts/coccinelle ??
-++
-
-Thank you!
-
-Sam
-
+diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
+index d7ddb6c..928c336 100644
+--- a/drivers/staging/vt6655/card.c
++++ b/drivers/staging/vt6655/card.c
+@@ -257,7 +257,7 @@ bool CARDbSetPhyParameter(struct vnt_private *priv, u8 bb_type)
+ 		BBbWriteEmbedded(priv, 0x88, 0x02);
+ 		bySlot = C_SLOT_LONG;
+ 		bySIFS = C_SIFS_BG;
+-		byDIFS = C_SIFS_BG + 2*C_SLOT_LONG;
++		byDIFS = C_SIFS_BG + 2 * C_SLOT_LONG;
+ 		byCWMaxMin = 0xA5;
+ 	} else { /* PK_TYPE_11GA & PK_TYPE_11GB */
+ 		MACvSetBBType(priv->PortOffset, BB_TYPE_11G);
+@@ -285,7 +285,7 @@ bool CARDbSetPhyParameter(struct vnt_private *priv, u8 bb_type)
+ 			byDIFS = C_SIFS_BG + 2 * C_SLOT_SHORT;
+ 		} else {
+ 			bySlot = C_SLOT_LONG;
+-			byDIFS = C_SIFS_BG + 2*C_SLOT_LONG;
++			byDIFS = C_SIFS_BG + 2 * C_SLOT_LONG;
+ 		}
+ 
+ 		byCWMaxMin = 0xa4;
+-- 
+2.7.4
 
 
