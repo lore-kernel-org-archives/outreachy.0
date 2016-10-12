@@ -1,84 +1,50 @@
-X-GM-THRID: 6396911528982872064
-X-Received: by 10.99.139.202 with SMTP id j193mr12167054pge.151.1489397028231;
-        Mon, 13 Mar 2017 02:23:48 -0700 (PDT)
+X-GM-THRID: 6339992797560438784
+X-Received: by 10.157.13.202 with SMTP id 68mr233395ots.56.1476277485522;
+        Wed, 12 Oct 2016 06:04:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.43.103 with SMTP id f36ls2185182otd.0.gmail; Mon, 13 Mar
- 2017 02:23:47 -0700 (PDT)
-X-Received: by 10.129.84.136 with SMTP id i130mr15275938ywb.54.1489397027845;
-        Mon, 13 Mar 2017 02:23:47 -0700 (PDT)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id g82si3019142pfb.5.2017.03.13.02.23.47
+Received: by 10.157.42.101 with SMTP id t92ls3254205ota.29.gmail; Wed, 12 Oct
+ 2016 06:04:45 -0700 (PDT)
+X-Received: by 10.129.85.209 with SMTP id j200mr234963ywb.40.1476277485169;
+        Wed, 12 Oct 2016 06:04:45 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id z76si1204047pff.1.2016.10.12.06.04.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 13 Mar 2017 02:23:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Wed, 12 Oct 2016 06:04:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id b5so17535337pgg.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 13 Mar 2017 02:23:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:mime-version:content-disposition
-         :user-agent;
-        bh=SvnvavC3I3MLNjuMAslB/nOVInyRXdnv6bIuTp/NjZ4=;
-        b=Jb+rRKy9yP+IxPfc/IL8yMg8eiaUYo/iyzp9o/RlN8uB6YUzSBKYb/uGb9ejL81avM
-         uBntLwRYApmkvDDspyMK5ZKnyEWSq4rzd862hSSBXLAYfMI/TaMHreBrkCKylQrAxnAI
-         UPBczbFw7/c6XYYZij+Rd/SJ2F7nZ6FhDApLr46SOyEycrH9uedyQjjlQmIfXlvu5WR9
-         vCZSNxed+jX4lNUnyLRmFecGtCkDN4noArm5Zv+Kg6OjoZf+aIVTEZu5AMaSNBZpcrhH
-         1sTIu7R+7ZY6kQBiNJ713a+q1lOpV4GfEVXOEAUU37PbkXBw02m6hJkxG2zydSacfZtp
-         2kSg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
-         :content-disposition:user-agent;
-        bh=SvnvavC3I3MLNjuMAslB/nOVInyRXdnv6bIuTp/NjZ4=;
-        b=Plppk98GzLA/B8+h6rMosmmfl9uu05uQx/On+0LqTOnZtPjlvxJuNKsrYySteU0Wue
-         q2BQwpFLVAIIlQOXoxvGIp8zwgqUTyLkN3l4MsoatnMLinDSTMrjsa4xBs37oGZyqvkz
-         t6T8SX6mcfiW9fBLXoJ9SoctQY8hIg5LyWi4JkYZ5jlluKe4qIQ7fon2FftSeLTViUe3
-         KZTMBbfBqgFcG8frbm9lkT0EejRdYrs1ngXc9mwynJK7vzoMtcIihx0yBkM6FI1HkvLZ
-         F9iAYWwFsea3m/GlcFhtWsAvrSCQFUbnC305kIR22aeMbzFNA/C386GB35V6hwz64l1J
-         uOmQ==
-X-Gm-Message-State: AMke39kaZxoerotSZaOvGtyZc3BCqbQu+SbLDSQsPXdncNJCpkgQihTmTXEYVJ6Z1lhTnw==
-X-Received: by 10.98.9.29 with SMTP id e29mr37165902pfd.101.1489397027630;
-        Mon, 13 Mar 2017 02:23:47 -0700 (PDT)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([117.192.132.44])
-        by smtp.gmail.com with ESMTPSA id f205sm32023569pfa.35.2017.03.13.02.23.46
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 13 Mar 2017 02:23:47 -0700 (PDT)
-Message-ID: <58c66523.d638620a.5414c.30b9@mx.google.com>
-X-Google-Original-Message-ID: <20170313092335.GA14358@<rvarsha016@gmail.com>>
-Date: Mon, 13 Mar 2017 14:53:35 +0530
-From: Varsha Rao <rvarsha016@gmail.com>
-To: Lars-Peter Clausen <lars@metafoo.de>,
-	Michael Hennerich <Michael.Hennerich@analog.com>,
-	Jonathan Cameron <jic23@kernel.org>,
-	Hartmut Knaack <knaack.h@gmx.de>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Barry Song <21cnbao@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, linux-iio@vger.kernel.org
-Subject: [PATCH 0/2] staging: iio: adis16240: Replace mlock with private lock
- and modify comment.
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (pes75-3-78-192-101-3.fbxo.proxad.net [78.192.101.3])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 8D8B69C;
+	Wed, 12 Oct 2016 13:04:44 +0000 (UTC)
+Date: Wed, 12 Oct 2016 15:04:53 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Elise Lennion <elise.lennion@gmail.com>
+Cc: sudipm.mukherjee@gmail.com, teddy.wang@siliconmotion.com,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v2] staging: sm750fb: Merge ddk750_help.* into
+ ddk750_chip.*.
+Message-ID: <20161012130453.GA15450@kroah.com>
+References: <20161011224307.GA31089@lennorien.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <20161011224307.GA31089@lennorien.com>
 User-Agent: Mutt/1.7.1 (2016-10-04)
 
-This patchset replaces mlock with private lock and modifies existing
-comment in iio driver.
+On Tue, Oct 11, 2016 at 07:43:07PM -0300, Elise Lennion wrote:
+> The file ddk750_help.c contained only one function declaration,
+> so it was merged into ddk750_chip.c to simplify the driver.
+> 
+> Also, ddk750_help.h was merged into ddk750_chip.h to keep consistency.
+> 
+> With these changes a few global variables are removed and the function
+> ddk750_set_mmio is rewritten, so its purpose in the code is clearer.
+> 
+> Signed-off-by: Elise Lennion <elise.lennion@gmail.com>
 
-Varsha Rao (2):
-  staging: iio: adis16240: Replace mlock with driver private lock.
-  staging: iio: adis16240: Modify existing comment.
+Nice cleanups and changes, thanks for doing this.
 
- drivers/staging/iio/accel/adis16240.c | 19 ++++++++++---------
- 1 file changed, 10 insertions(+), 9 deletions(-)
-
--- 
-2.9.3
-
+greg k-h
 
