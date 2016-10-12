@@ -1,86 +1,91 @@
-X-GM-THRID: 6337006318696529920
-X-Received: by 10.194.242.8 with SMTP id wm8mr680136wjc.2.1475449260377;
-        Sun, 02 Oct 2016 16:01:00 -0700 (PDT)
+X-GM-THRID: 6340626092861161472
+X-Received: by 10.13.250.129 with SMTP id k123mr566954ywf.1.1476292296821;
+        Wed, 12 Oct 2016 10:11:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.209.66 with SMTP id i63ls1207691wmg.1.gmail; Sun, 02 Oct
- 2016 16:00:59 -0700 (PDT)
-X-Received: by 10.194.119.196 with SMTP id kw4mr1019070wjb.1.1475449259813;
-        Sun, 02 Oct 2016 16:00:59 -0700 (PDT)
-Return-Path: <laurana5@gmail.com>
-Received: from mail-wm0-x242.google.com (mail-wm0-x242.google.com. [2a00:1450:400c:c09::242])
-        by gmr-mx.google.com with ESMTPS id u64si479712wmf.0.2016.10.02.16.00.59
+Received: by 10.36.17.205 with SMTP id 196ls1752115itf.21.gmail; Wed, 12 Oct
+ 2016 10:11:36 -0700 (PDT)
+X-Received: by 10.98.200.196 with SMTP id i65mr517866pfk.37.1476292296347;
+        Wed, 12 Oct 2016 10:11:36 -0700 (PDT)
+Return-Path: <elise.lennion@gmail.com>
+Received: from mail-vk0-x242.google.com (mail-vk0-x242.google.com. [2607:f8b0:400c:c05::242])
+        by gmr-mx.google.com with ESMTPS id t8si1147057vkb.2.2016.10.12.10.11.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 02 Oct 2016 16:00:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of laurana5@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) client-ip=2a00:1450:400c:c09::242;
+        Wed, 12 Oct 2016 10:11:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::242 as permitted sender) client-ip=2607:f8b0:400c:c05::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of laurana5@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) smtp.mailfrom=laurana5@gmail.com;
+       spf=pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::242 as permitted sender) smtp.mailfrom=elise.lennion@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x242.google.com with SMTP id f193so7478518wmg.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 02 Oct 2016 16:00:59 -0700 (PDT)
+Received: by mail-vk0-x242.google.com with SMTP id b186so2389525vkb.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 12 Oct 2016 10:11:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=fTnnBd1lW1RYFSnaUMulpj3QKsxsMDVCgiKNtL5eqUI=;
-        b=Qdjy7htKhfB0bIpHXHfk6TxouJm5Tm7q5xR50/fVzKxANPT18MFurBOHo0N5DhMQJF
-         /3ah9sZN35WPSwU37imJcGfHGpJm8cnc7cNSub9w+53dhU0fR3Ze3cezbKL1BVK3wKaF
-         aQE/CSWeK3YSgbcnH2Dl1Ft6K5T1JSkEElKpVsZiTxWYwFZmSJC33uYFDI8P6LcH6L20
-         ynnP03DZRNwSBctF/EeABzBDduvb2cfscTtn/Wyr7AspSYcbQRBqgPzAlpwu5qWKpmqA
-         ojjMeHWQKBnN5ZUw6XRj+6zOXxvCIAaqiVn0Z3+3YtCvp1/aZCNYWklhL7OJUBmBtmYY
-         8n+A==
+        bh=+1nyeYzsTeaAIJo8rkqZUhDGi7PJqgH7Vg3fvk6+5RE=;
+        b=EWA0BvNQxW7+0Oetg7ow7QrX89lN0NFlno4G4pHkZYilAcQDIwlP53p/qVsyQdki4z
+         b/jrS7L8UqzGe+BpmOyZluSzqOW5EajGS75ur+1N6VWj6tDA+xTM0OQTNaX2fY6x7ORp
+         K3pawRSGNkMpJH8bHS6l53Jb0kkOIQHTzsVatYJrP4UjNwTdi8KciJFkqIaf4fJ2hFEC
+         kNjfF1UIdTe8rNz1K92BPwziWVpGugkBcxr1W3N8rTdsBy1sGVjnrzUId2ei5bVJF4so
+         6ZI/dukpHCiJpP9yUZIN7XauSWJElcBJRksgcY50kCvoTVxzZv6pxswjTReQ0UNiI4jM
+         iPpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=fTnnBd1lW1RYFSnaUMulpj3QKsxsMDVCgiKNtL5eqUI=;
-        b=LYx62Sd32OOfQswaeWupxiq/E27w4V2Xax/CvbQ16DxOi7vg3QCTQMiGfxTljg9H4L
-         KnwpCYi2F5tqzsTYF2ITzaeT+in+pxzDivtM5sqRPxtQpqZC6RI9B6NbQslbapyiQeSU
-         3jcYqUjWTESUYnv+4E4WudTd6ZLKYFpYk1t6Kv5Il/Z0Z1l0GYD3Ul08qK3Jl2xwN60d
-         Y/xDjqoESqqc6+UaEbXtp8jzKwybB+VFDWThKoz5iXEc6r0SNzqdQXoU9PJGYIGfZfmP
-         8daKQCxmml1xMeLgM7iaeymBnHAp3LHura6+jx4VOyxzbEnWYsuBGjIdlrgEd1p1DzZw
-         xbxw==
-X-Gm-Message-State: AA6/9RnSAnPzY6c/bPYuJYWfJYn6hLUknBKNFdoQe1wTj8AczHjOVFg29lFdb2nRHOWTiA==
-X-Received: by 10.28.196.200 with SMTP id u191mr6563727wmf.67.1475449259622;
-        Sun, 02 Oct 2016 16:00:59 -0700 (PDT)
-Return-Path: <laurana5@gmail.com>
-Received: from kheixx-VB (240.red-79-150-62.dynamicip.rima-tde.net. [79.150.62.240])
-        by smtp.gmail.com with ESMTPSA id bl3sm31344290wjc.26.2016.10.02.16.00.58
+        bh=+1nyeYzsTeaAIJo8rkqZUhDGi7PJqgH7Vg3fvk6+5RE=;
+        b=m2HYCMh4MvE9ykz70RAs+LpmJx/RVpiOhOQjWzdnMyk+X4vTuzZG2HgTo6OP2ER9uH
+         QgZxORDkqxVNCLMiaLA/ueRCq1tjkPMiRLHLJ+Cmw7C7MxEFpsLdZFU5Y4bIq8cvYehe
+         tjk9cdRBQ2ZfwGHJ1OXCertihq/03w0Q1qGNG9AQYpuyx3Z8AIhS7fyG1T69Dz+z+p5L
+         chKOkw/fQY4fllC1VYVXrbdDO7DiG2PWaTt8ja1RkzzpJKC0VsiI9K862kPZejr5ZOVE
+         vG8OycwbgGtC55jQt4Rz2OOfjHRlKqbJm0NzWiUxjwUoyhQS4rnD+ix4b5njZMC8w9Lq
+         uj9Q==
+X-Gm-Message-State: AA6/9RlPvh2r3hryT4SXhEKQLQqwFKCSjuwKAR8FXJSI59lXZYayvnSNrsbpUCLxjr6g4w==
+X-Received: by 10.31.3.25 with SMTP id 25mr1101799vkd.116.1476292296149;
+        Wed, 12 Oct 2016 10:11:36 -0700 (PDT)
+Return-Path: <elise.lennion@gmail.com>
+Received: from lennorien.com ([187.64.224.84])
+        by smtp.gmail.com with ESMTPSA id k194sm3395808vkf.17.2016.10.12.10.11.34
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 02 Oct 2016 16:00:58 -0700 (PDT)
-Date: Thu, 29 Sep 2016 01:10:22 +0200
-From: Keila <laurana5@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+        Wed, 12 Oct 2016 10:11:35 -0700 (PDT)
+Date: Wed, 12 Oct 2016 14:11:31 -0300
+From: Elise Lennion <elise.lennion@gmail.com>
+To: johan@kernel.org, elder@kernel.org, gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCH]board/Kconfig: Add a paragraph that describes the simbol.
-Message-ID: <20160928231022.GA14711@kheixx-VB>
+Subject: [PATCH v3 1/4] staging: greybus: camera: Add blank lines after
+ variable declarations.
+Message-ID: <20161012171131.GA27697@lennorien.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-The staging board allows continous upstream in-tree development and
-integration of new platform devices.
----
- drivers/staging/board/Kconfig | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+Fix checkpatch warning:
 
-diff --git a/drivers/staging/board/Kconfig b/drivers/staging/board/Kconfig
-index 006b134..deb7fda 100644
---- a/drivers/staging/board/Kconfig
-+++ b/drivers/staging/board/Kconfig
-@@ -1,7 +1,6 @@
--#These is a Linux kernel configuration item. STAGING_BOARD directly depends on
--#OF_ADDRESS && OF_IRQ && CLKDEV_LOOKUP.
--#It will only be visible, if OF_ADDRESS, OF_IRQ and CLKDEV_LOOKUP are different
--#from 'n'.
-+#
-+#Staging board gives support and configures the Kernel build.
-+#
- config STAGING_BOARD
- 	bool "Staging Board Support"
- 	depends on OF_ADDRESS && OF_IRQ && CLKDEV_LOOKUP
+WARNING: Missing a blank line after declarations
+
+Signed-off-by: Elise Lennion <elise.lennion@gmail.com>
+---
+
+ v2: Changed subject of the patch.
+ v3: Added versions information.
+
+ drivers/staging/greybus/camera.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/staging/greybus/camera.c b/drivers/staging/greybus/camera.c
+index 491bdd7..d89a329 100644
+--- a/drivers/staging/greybus/camera.c
++++ b/drivers/staging/greybus/camera.c
+@@ -289,6 +289,7 @@ static const int gb_camera_configure_streams_validate_response(
+ 
+ 	for (i = 0; i < resp->num_streams; i++) {
+ 		struct gb_camera_stream_config_response *cfg = &resp->config[i];
++
+ 		if (cfg->padding) {
+ 			gcam_err(gcam, "stream #%u padding != 0\n", i);
+ 			return -EIO;
 -- 
 2.7.4
 
