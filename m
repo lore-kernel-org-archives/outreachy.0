@@ -1,236 +1,78 @@
-X-GM-THRID: 6255071966661705728
-X-Received: by 10.66.236.199 with SMTP id uw7mr39870441pac.47.1456372432331;
-        Wed, 24 Feb 2016 19:53:52 -0800 (PST)
+X-GM-THRID: 6340040411169423360
+X-Received: by 10.66.176.140 with SMTP id ci12mr443187pac.18.1476293041828;
+        Wed, 12 Oct 2016 10:24:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.87.229 with SMTP id bb5ls59622obb.54.gmail; Wed, 24 Feb
- 2016 19:53:51 -0800 (PST)
-X-Received: by 10.182.91.9 with SMTP id ca9mr3419453obb.7.1456372431914;
-        Wed, 24 Feb 2016 19:53:51 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pf0-x235.google.com (mail-pf0-x235.google.com. [2607:f8b0:400e:c00::235])
-        by gmr-mx.google.com with ESMTPS id 79si926944pft.0.2016.02.24.19.53.51
+Received: by 10.107.156.13 with SMTP id f13ls1567230ioe.45.gmail; Wed, 12 Oct
+ 2016 10:24:01 -0700 (PDT)
+X-Received: by 10.36.34.3 with SMTP id o3mr1064159ito.36.1476293041428;
+        Wed, 12 Oct 2016 10:24:01 -0700 (PDT)
+Return-Path: <elise.lennion@gmail.com>
+Received: from mail-vk0-x243.google.com (mail-vk0-x243.google.com. [2607:f8b0:400c:c05::243])
+        by gmr-mx.google.com with ESMTPS id t8si1158893vkb.2.2016.10.12.10.24.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 24 Feb 2016 19:53:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) client-ip=2607:f8b0:400e:c00::235;
+        Wed, 12 Oct 2016 10:24:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::243 as permitted sender) client-ip=2607:f8b0:400c:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
        dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::243 as permitted sender) smtp.mailfrom=elise.lennion@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x235.google.com with SMTP id c10so25813527pfc.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 24 Feb 2016 19:53:51 -0800 (PST)
+Received: by mail-vk0-x243.google.com with SMTP id b186so2402617vkb.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 12 Oct 2016 10:24:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=hI3TQTXm0lsy4iyJIEUThTGfy3W7OKY4qbPfCPL2nYs=;
-        b=uGwPrHShzvZxr/O9y/N+trXzbf+rE63mga5VEP+yHdK1cd2Rsc2HNPmRiCthbtPLKQ
-         SPmZGt9qUo1Io/vrKFu11Ofpp7KTvxN17gBJCzur4ePis/9Z1op4ItKWcM/XW8Ih7wu1
-         pTvkjEyzKQG6+Zz0EFHqVciT4TYJOEOw4fjF/032Ct9LZHH1MRZRPtHlUVyvetb2Suos
-         c5nVPSJeV2eGe6F3ouldFddVqihvEVOxqmB+ofUglFiWAhj4AcPdcHL0QYrtVzZ+PJWp
-         5r9io4yztKR3PZy4MAdpXY+iuwuvWh2hbKkdWt174oUyK6eIqhhDWMam4pwKGJ00KPHX
-         Xdog==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=GlbFupoe8uRUlU+sVJqpinJ+l+pQCihYnv6ta/RasYE=;
+        b=RNjvWzInGBN5DIGS8MByuIh/YhDfaBRd6x+x/DNT6y4a72TOBJOyfYq90J91NVCRDO
+         yorpBbDuyCJATfg1miq8GVJYxEL6s3G06jTx3scgOirmQ24uBkNva2u3tf7ALVmoyYE1
+         WrT7bS7ZULvAgqB4mIWEHbU1hn0cnhfDr8xIYBvHIyFSBoJOdxoYZXnn/BoyZeqdpF9K
+         gq2Yzp3qL/NDEkMe+RL1Be+BkFBGtG82+iuionSVNnnC5TFyRMhDvQlpAI45cXF+Xt1+
+         X5DMnTm4PxHtZgn/saQ29nCmWexofeOLuvlKZt06FaJodBTCNyPDbMtA5jAcbKOcTZVL
+         CXEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=hI3TQTXm0lsy4iyJIEUThTGfy3W7OKY4qbPfCPL2nYs=;
-        b=Q5MErVmcpXNQJ9TtRmIUBOWJCdB7k2KEa39abRLDEJGzf8agnL7YvZ7dYRvqSZY5bL
-         74LeW6LoCeVaCVCaN8MNo9yd5lbcqyj6Xl0ciRSu+BOQ8x5RLcCg7DzQ45Vm3Aw5E0mv
-         LJW3a3MuHZwaWX7CBqF5BS8Oo9H8SboghB9qEZbOmCnaD1neluQu27iYJLkDuwWoYLh3
-         wn+mnbU4ccgBpQe1djeVNg3/LJLRx5Jhh+bpQZd2KkNhNE6ypm7WtErdKzdGAiCBuZT/
-         8LQaBW9QDM7pIuuQEgxSZZWjLt73Y+WmsRaFYi00c6BzUyzii6WdIwGr+zdHS8jkqy2A
-         c0jA==
-X-Gm-Message-State: AG10YOT6fBwXgUb29qJ0YUbQZhVUP3N3F8mzCMrk1aPyfNxhZMNjFSsTCse3FQPEzA4YhQ==
-X-Received: by 10.98.16.202 with SMTP id 71mr60399765pfq.138.1456372431662;
-        Wed, 24 Feb 2016 19:53:51 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([122.176.170.221])
-        by smtp.gmail.com with ESMTPSA id e20sm8155554pfd.4.2016.02.24.19.53.47
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Wed, 24 Feb 2016 19:53:51 -0800 (PST)
-Date: Thu, 25 Feb 2016 09:23:31 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8192e: rtl8192e: Remove create_workqueue()
-Message-ID: <20160225035331.GA28139@amitoj-Inspiron-3542>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=GlbFupoe8uRUlU+sVJqpinJ+l+pQCihYnv6ta/RasYE=;
+        b=XosuGSBsKG5WSiNjQ6sEK8SiHEAeQI9EtXPDGP4z4v5DoxO4bsIONv8p97SsmZ711K
+         xwUfluQMMiUxy1ahZkIynKd522Ubq9ncbDk7+alcUCZRk3e99KenqiwMJEpv1z2c83Zo
+         WkWjC3kMpU++JgT56Qk567xKDWE0n4+5LsRpfYLPtCXTtGznPtFBU+hrdnhzLFOzxdWU
+         lqbu6DdrGFaDIpl+OP6O2ONA1WMVWbrw6NSmd12W+6kSTfPdjkYc0yPXhvRVk7MqpFph
+         F3limphi86b2I03eiQBX6/WcFpGDK0GI1gYhce2cXXfqYS0x0XUi33flpFPGeajA+0Ag
+         yHqg==
+X-Gm-Message-State: AA6/9RmQjs5U8DZ22/dIzw6YDhY5DZYRFbthq1XlWhCUh5in4N62HsnOnh1V64sutOO17A==
+X-Received: by 10.31.179.69 with SMTP id c66mr1404272vkf.52.1476293041260;
+        Wed, 12 Oct 2016 10:24:01 -0700 (PDT)
+Return-Path: <elise.lennion@gmail.com>
+Received: from lennorien.com ([187.64.224.84])
+        by smtp.gmail.com with ESMTPSA id n191sm3488320vkc.1.2016.10.12.10.23.59
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 12 Oct 2016 10:24:00 -0700 (PDT)
+Date: Wed, 12 Oct 2016 14:23:56 -0300
+From: Elise Lennion <elise.lennion@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: vaibhav.sr@gmail.com, johan@kernel.org, elder@kernel.org,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH 6/7] staging: greybus: Use kcalloc for array's memory
+ allocation.
+Message-ID: <20161012172356.GB4296@lennorien.com>
+References: <20161011031614.GA22058@lennorien.com>
+ <20161012132246.GB22338@kroah.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20161012132246.GB22338@kroah.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-With conccurency managed workqueues, use of dedicated workqueues can
-be replaced by system_wq. Drop priv_wq by using system_wq. 
+> 
+> Same issue with the subject:, it's the same as the previous patch.
+> 
+> A way to make it more unique would be to add the driver name to it, so
+> for this one, it would be:
+> 	staging: greybus: camera: use kcalloc for array's memory
+> 
 
-Since there are multiple work items per priv but they do not need 
-to be ordered, increase of concurrency by switching to system_wq 
-should not break anything. 
-
-All work items are sync canceled on so it is guaranteed that
-no work is running when rtl92e_suspend function is called.
-
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/rtl8192e/rtl8192e/rtl_core.c | 20 +++++++++-----------
- drivers/staging/rtl8192e/rtl8192e/rtl_core.h |  2 --
- drivers/staging/rtl8192e/rtl8192e/rtl_dm.c   |  7 +++----
- drivers/staging/rtl8192e/rtl8192e/rtl_pm.c   |  2 +-
- 4 files changed, 13 insertions(+), 18 deletions(-)
-
-diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-index 18d0fe3..bb6b62f 100644
---- a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-+++ b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-@@ -437,7 +437,7 @@ static int _rtl92e_qos_handle_probe_response(struct r8192_priv *priv,
- 			network->qos_data.old_param_count =
- 				network->qos_data.param_count;
- 	priv->rtllib->wmm_acm = network->qos_data.wmm_acm;
--			queue_work_rsl(priv->priv_wq, &priv->qos_activate);
-+			schedule_work(&priv->qos_activate);
- 			RT_TRACE(COMP_QOS,
- 				 "QoS parameters change call qos_activate\n");
- 		}
-@@ -446,7 +446,7 @@ static int _rtl92e_qos_handle_probe_response(struct r8192_priv *priv,
- 		       &def_qos_parameters, size);
- 
- 		if ((network->qos_data.active == 1) && (active_network == 1)) {
--			queue_work_rsl(priv->priv_wq, &priv->qos_activate);
-+			schedule_work(&priv->qos_activate);
- 			RT_TRACE(COMP_QOS,
- 				 "QoS was disabled call qos_activate\n");
- 		}
-@@ -465,7 +465,7 @@ static int _rtl92e_handle_beacon(struct net_device *dev,
- 
- 	_rtl92e_qos_handle_probe_response(priv, 1, network);
- 
--	queue_delayed_work_rsl(priv->priv_wq, &priv->update_beacon_wq, 0);
-+	schedule_delayed_work(&priv->update_beacon_wq, 0);
- 	return 0;
- 
- }
-@@ -512,7 +512,7 @@ static int _rtl92e_qos_assoc_resp(struct r8192_priv *priv,
- 		 network->flags, priv->rtllib->current_network.qos_data.active);
- 	if (set_qos_param == 1) {
- 		rtl92e_dm_init_edca_turbo(priv->rtllib->dev);
--		queue_work_rsl(priv->priv_wq, &priv->qos_activate);
-+		schedule_work(&priv->qos_activate);
- 	}
- 	return 0;
- }
-@@ -1002,7 +1002,6 @@ static void _rtl92e_init_priv_task(struct net_device *dev)
- {
- 	struct r8192_priv *priv = rtllib_priv(dev);
- 
--	priv->priv_wq = create_workqueue(DRV_NAME);
- 	INIT_WORK_RSL(&priv->reset_wq, (void *)_rtl92e_restart, dev);
- 	INIT_WORK_RSL(&priv->rtllib->ips_leave_wq, (void *)rtl92e_ips_leave_wq,
- 		      dev);
-@@ -1536,7 +1535,7 @@ static void _rtl92e_watchdog_timer_cb(unsigned long data)
- {
- 	struct r8192_priv *priv = rtllib_priv((struct net_device *)data);
- 
--	queue_delayed_work_rsl(priv->priv_wq, &priv->watch_dog_wq, 0);
-+	schedule_delayed_work(&priv->watch_dog_wq, 0);
- 	mod_timer(&priv->watch_dog_timer, jiffies +
- 		  msecs_to_jiffies(RTLLIB_WATCH_DOG_TIME));
- }
-@@ -2161,8 +2160,8 @@ static void _rtl92e_irq_rx_tasklet(struct r8192_priv *priv)
- *****************************************************************************/
- static void _rtl92e_cancel_deferred_work(struct r8192_priv *priv)
- {
--	cancel_delayed_work(&priv->watch_dog_wq);
--	cancel_delayed_work(&priv->update_beacon_wq);
-+	cancel_delayed_work_sync(&priv->watch_dog_wq);
-+	cancel_delayed_work_sync(&priv->update_beacon_wq);
- 	cancel_delayed_work(&priv->rtllib->hw_sleep_wq);
- 	cancel_work_sync(&priv->reset_wq);
- 	cancel_work_sync(&priv->qos_activate);
-@@ -2693,7 +2692,7 @@ static void _rtl92e_pci_disconnect(struct pci_dev *pdev)
- 		priv = rtllib_priv(dev);
- 
- 		del_timer_sync(&priv->gpio_polling_timer);
--		cancel_delayed_work(&priv->gpio_change_rf_wq);
-+		cancel_delayed_work_sync(&priv->gpio_change_rf_wq);
- 		priv->polling_timer_on = 0;
- 		_rtl92e_down(dev, true);
- 		rtl92e_dm_deinit(dev);
-@@ -2701,7 +2700,6 @@ static void _rtl92e_pci_disconnect(struct pci_dev *pdev)
- 			vfree(priv->pFirmware);
- 			priv->pFirmware = NULL;
- 		}
--		destroy_workqueue(priv->priv_wq);
- 		_rtl92e_free_rx_ring(dev);
- 		for (i = 0; i < MAX_TX_QUEUE_COUNT; i++)
- 			_rtl92e_free_tx_ring(dev, i);
-@@ -2783,7 +2781,7 @@ void rtl92e_check_rfctrl_gpio_timer(unsigned long data)
- 
- 	priv->polling_timer_on = 1;
- 
--	queue_delayed_work_rsl(priv->priv_wq, &priv->gpio_change_rf_wq, 0);
-+	schedule_delayed_work(&priv->gpio_change_rf_wq, 0);
- 
- 	mod_timer(&priv->gpio_polling_timer, jiffies +
- 		  msecs_to_jiffies(RTLLIB_WATCH_DOG_TIME));
-diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_core.h b/drivers/staging/rtl8192e/rtl8192e/rtl_core.h
-index a7777a3..f627fdc 100644
---- a/drivers/staging/rtl8192e/rtl8192e/rtl_core.h
-+++ b/drivers/staging/rtl8192e/rtl8192e/rtl_core.h
-@@ -338,8 +338,6 @@ struct r8192_priv {
- 	struct delayed_work		rfpath_check_wq;
- 	struct delayed_work		gpio_change_rf_wq;
- 
--	struct workqueue_struct		*priv_wq;
--
- 	struct channel_access_setting ChannelAccessSetting;
- 
- 	struct rtl819x_ops			*ops;
-diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c b/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-index b6b714d..9bc2848 100644
---- a/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-+++ b/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-@@ -994,8 +994,7 @@ static void _rtl92e_dm_check_tx_power_tracking_tssi(struct net_device *dev)
- 
- 
- 	 if (tx_power_track_counter >= 180) {
--		queue_delayed_work_rsl(priv->priv_wq,
--				       &priv->txpower_tracking_wq, 0);
-+		schedule_delayed_work(&priv->txpower_tracking_wq, 0);
- 		tx_power_track_counter = 0;
- 	}
- 
-@@ -1028,7 +1027,7 @@ static void _rtl92e_dm_check_tx_power_tracking_thermal(struct net_device *dev)
- 		return;
- 	}
- 	netdev_info(dev, "===============>Schedule TxPowerTrackingWorkItem\n");
--	queue_delayed_work_rsl(priv->priv_wq, &priv->txpower_tracking_wq, 0);
-+	schedule_delayed_work(&priv->txpower_tracking_wq, 0);
- 	TM_Trigger = 0;
- 
- }
-@@ -2121,7 +2120,7 @@ static void _rtl92e_dm_check_rx_path_selection(struct net_device *dev)
- {
- 	struct r8192_priv *priv = rtllib_priv(dev);
- 
--	queue_delayed_work_rsl(priv->priv_wq, &priv->rfpath_check_wq, 0);
-+	schedule_delayed_work(&priv->rfpath_check_wq, 0);
- }
- 
- 
-diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_pm.c b/drivers/staging/rtl8192e/rtl8192e/rtl_pm.c
-index b2b5ada..9e04dc2 100644
---- a/drivers/staging/rtl8192e/rtl8192e/rtl_pm.c
-+++ b/drivers/staging/rtl8192e/rtl8192e/rtl_pm.c
-@@ -27,7 +27,7 @@ int rtl92e_suspend(struct pci_dev *pdev, pm_message_t state)
- 
- 	netdev_info(dev, "============> r8192E suspend call.\n");
- 	del_timer_sync(&priv->gpio_polling_timer);
--	cancel_delayed_work(&priv->gpio_change_rf_wq);
-+	cancel_delayed_work_sync(&priv->gpio_change_rf_wq);
- 	priv->polling_timer_on = 0;
- 
- 	if (!netif_running(dev)) {
--- 
-1.9.1
-
+New version of the patch:
+https://groups.google.com/forum/#!topic/outreachy-kernel/C6QYYyoxzP8
 
