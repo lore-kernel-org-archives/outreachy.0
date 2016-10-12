@@ -1,98 +1,86 @@
 X-GM-THRID: 6339053517033963520
-Date: Thu, 13 Oct 2016 05:18:06 -0700 (PDT)
-From: Varsha Rao <rvarsha016@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Cc: rvarsha016@gmail.com, forest@alittletooquiet.net,
-	gregkh@linuxfoundation.org
-Message-Id: <21e853d5-b5bb-4b00-b1b5-7ec1a38145f6@googlegroups.com>
-In-Reply-To: <alpine.DEB.2.10.1610120710390.3282@hadrien>
-References: <20161008112506.GA12694@euri> <alpine.DEB.2.10.1610081940270.3259@hadrien> <a1961e47-6b73-4943-aac5-f2b5593bfc32@googlegroups.com> <d15336f4-5027-4b19-b3fd-52f4fac150c0@googlegroups.com> <alpine.DEB.2.10.1610091553500.5891@hadrien>
- <fd933dbe-c8ef-4f38-ae1c-7f75a8bab6c7@googlegroups.com> <alpine.DEB.2.10.1610112221080.3192@hadrien> <5a2e45cf-903e-41c4-91d8-37d45aea9ce7@googlegroups.com>
- <alpine.DEB.2.10.1610120710390.3282@hadrien>
+X-Received: by 10.194.175.166 with SMTP id cb6mr550242wjc.15.1476249117312;
+        Tue, 11 Oct 2016 22:11:57 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.28.25.69 with SMTP id 66ls77344wmz.21.gmail; Tue, 11 Oct 2016
+ 22:11:56 -0700 (PDT)
+X-Received: by 10.28.87.73 with SMTP id l70mr69640wmb.1.1476249116640;
+        Tue, 11 Oct 2016 22:11:56 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id w124si45009wmf.3.2016.10.11.22.11.56
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 11 Oct 2016 22:11:56 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.31,332,1473112800"; 
+   d="scan'208";a="240401617"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 12 Oct 2016 07:11:56 +0200
+Date: Wed, 12 Oct 2016 07:11:55 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Varsha Rao <rvarsha016@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, 
+    forest@alittletooquiet.net, gregkh@linuxfoundation.org
 Subject: Re: [Outreachy kernel] [PATCH] staging: vt6655: Replace BBvClearFOE
  by bbvclearfoe
+In-Reply-To: <5a2e45cf-903e-41c4-91d8-37d45aea9ce7@googlegroups.com>
+Message-ID: <alpine.DEB.2.10.1610120710390.3282@hadrien>
+References: <20161008112506.GA12694@euri> <alpine.DEB.2.10.1610081940270.3259@hadrien> <a1961e47-6b73-4943-aac5-f2b5593bfc32@googlegroups.com> <d15336f4-5027-4b19-b3fd-52f4fac150c0@googlegroups.com> <alpine.DEB.2.10.1610091553500.5891@hadrien>
+ <fd933dbe-c8ef-4f38-ae1c-7f75a8bab6c7@googlegroups.com> <alpine.DEB.2.10.1610112221080.3192@hadrien> <5a2e45cf-903e-41c4-91d8-37d45aea9ce7@googlegroups.com>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_669_1126950437.1476361086147"
-X-Google-Token: EP72_b8FTqNfSup_qDA0
-X-Google-IP: 117.246.90.206
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-1950946370-1476249116=:3282"
 
-------=_Part_669_1126950437.1476361086147
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_670_1729322451.1476361086147"
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-------=_Part_670_1729322451.1476361086147
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+--8323329-1950946370-1476249116=:3282
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
 
-This patch fixes the checkpatch issue by replacing BBvClearFOE with 
-bbvclearfoe. 
 
-Signed-off-by: Varsha Rao <rvarsha016@gmail.com> 
---- 
- drivers/staging/vt6655/
-baseband.h | 2 +- 
- 1 file changed, 1 insertion(+), 1 deletion(-) 
+On Tue, 11 Oct 2016, Varsha Rao wrote:
 
-diff --git a/drivers/staging/vt6655/baseband.h 
-b/drivers/staging/vt6655/baseband.h 
-index 6d9a936..a732fba 100644 
---- a/drivers/staging/vt6655/baseband.h 
-+++ b/drivers/staging/vt6655/baseband.h 
-@@ -58,7 +58,7 @@ 
- #define TOP_RATE_2M         0x00200000 
- #define TOP_RATE_1M         0x00100000 
-  
--#define BBvClearFOE(dwIoBase)                                \ 
-+#define bbvclearfoe(dwIoBase)                                \ 
-         BBbWriteEmbedded(dwIoBase, 0xB1, 0) 
-  
- #define BBvSetFOE(dwIoBase)                                \ 
--- 
-2.7.4 
+>
+>       The above code is not a proper macro definition.  What is the
+>       actual
+>       change that you made?  You can see this by doing git diff on
+>       the file.
+>        
+>
+>
+>     I have posted the patch by making the changes
 
+Posted it where?  If it is on the mailing list, I no longer have easy
+access to it.  Please send it again in response to this message.
 
-------=_Part_670_1729322451.1476361086147
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+thanks,
+julia
 
-<div dir=3D"ltr"><br>This patch fixes the checkpatch issue by replacing BBv=
-ClearFOE with bbvclearfoe.
-<br><br>Signed-off-by: Varsha Rao &lt;<a href=3D"mailto:rvarsha016@gmail.co=
-m" target=3D"_blank" rel=3D"nofollow">rvarsha016@gmail.com</a>&gt;
-<br>---
-<br>=C2=A0drivers/staging/vt6655/<div dir=3D"ltr"><wbr>baseband.h | 2 +-
-<br>=C2=A01 file changed, 1 insertion(+), 1 deletion(-)
-<br>
-<br>diff --git a/drivers/staging/vt6655/<wbr>baseband.h b/drivers/staging/v=
-t6655/<wbr>baseband.h
-<br>index 6d9a936..a732fba 100644
-<br>--- a/drivers/staging/vt6655/<wbr>baseband.h
-<br>+++ b/drivers/staging/vt6655/<wbr>baseband.h
-<br>@@ -58,7 +58,7 @@
-<br>=C2=A0#define TOP_RATE_2M =C2=A0 =C2=A0 =C2=A0 =C2=A0 0x00200000
-<br>=C2=A0#define TOP_RATE_1M =C2=A0 =C2=A0 =C2=A0 =C2=A0 0x00100000
-<br>=C2=A0
-<br>-#define BBvClearFOE(dwIoBase)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0\
-<br>+#define bbvclearfoe(dwIoBase)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0\
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0BBbWriteEmbedded(=
-<wbr>dwIoBase, 0xB1, 0)
-<br>=C2=A0
-<br>=C2=A0#define BBvSetFOE(dwIoBase)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0\
-<br>--=20
-<br>2.7.4
-</div><br></div>
-------=_Part_670_1729322451.1476361086147--
-
-------=_Part_669_1126950437.1476361086147--
+> and  but git diff won't
+> give information on from where it is imported . Since it is not macro
+> definition , it has to be defined   
+>     somewhere. My question is how to locate the definition of it to remove
+> the macro completely? For that I have tried using grep and gcc -dN -E but
+> could not locate using them.
+>
+>     Varsha
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/5a2e45cf-903e-41c4-91d8
+> -37d45aea9ce7%40googlegroups.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-1950946370-1476249116=:3282--
 
