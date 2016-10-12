@@ -1,90 +1,233 @@
-X-GM-THRID: 6399255849068396544
-X-Received: by 10.176.69.197 with SMTP id u63mr303732uau.36.1489942858227;
-        Sun, 19 Mar 2017 10:00:58 -0700 (PDT)
+X-GM-THRID: 6340704143294857216
+X-Received: by 10.237.45.70 with SMTP id h64mr890745qtd.60.1476310226555;
+        Wed, 12 Oct 2016 15:10:26 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.121.200 with SMTP id z191ls1613140itc.5.gmail; Sun, 19 Mar
- 2017 10:00:57 -0700 (PDT)
-X-Received: by 10.99.161.10 with SMTP id b10mr13146110pgf.159.1489942857343;
-        Sun, 19 Mar 2017 10:00:57 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id r66si2214499pfb.7.2017.03.19.10.00.57
+Received: by 10.157.13.6 with SMTP id 6ls541229oti.32.gmail; Wed, 12 Oct 2016
+ 15:10:26 -0700 (PDT)
+X-Received: by 10.129.40.79 with SMTP id o76mr846947ywo.18.1476310226105;
+        Wed, 12 Oct 2016 15:10:26 -0700 (PDT)
+Return-Path: <juliana.orod@gmail.com>
+Received: from mail-vk0-x244.google.com (mail-vk0-x244.google.com. [2607:f8b0:400c:c05::244])
+        by gmr-mx.google.com with ESMTPS id x14si1254266vkd.3.2016.10.12.15.10.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 19 Mar 2017 10:00:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Wed, 12 Oct 2016 15:10:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400c:c05::244 as permitted sender) client-ip=2607:f8b0:400c:c05::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id n11so2860745pfg.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 19 Mar 2017 10:00:57 -0700 (PDT)
+       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400c:c05::244 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-vk0-x244.google.com with SMTP id 2so2691048vkb.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 12 Oct 2016 15:10:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
+        d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=r+y5x5rJrKgzSQgYnwxDrsICJpiQNYPH7aqSuIaJwfs=;
-        b=C46YxHChPaJZPHSypLQPOT9gG5fF7LVzKK2KMmq8IKqwCSNFEGD/9HWp/fbqHX77tx
-         ADcH7Dk2nro3DuzGciwC7wfLmvr7c8tMqp5yq7BocFzyhGBWLp48SqHo2Xt6VlgkC4KW
-         nMFMURNcT3iHR83Iy3oDgUTDnMIDO+TDk38oMm87f/Ui/3z7dqQJrC1jbdZ19gU9NTjO
-         JSejt5vSa/G6f6L7SfX/SLAUYJxuARa5yNJTx0FopREazOh6/8R8ZdHA2xvGAHbaAtvC
-         Gt21rnM1UeffKHQQhY9XZ7N/oQcgfqusnxazh+hSV7MgGrOfTxMCJ5ahdg9a8ipPI4ig
-         kWew==
+        bh=NfgGYmicbzYj8aiB9SN/XEfIHESURerwWGbfW7/OKw0=;
+        b=eDTI5Sqx2lbPGoLYhPkWkkTHNg8/Aj4EmAYlWToZGXbx46iYr8d5JFyrtZS+GyV4cB
+         ULb0SpXBvmQzli6DfuGRs9ZfGHlSh/kT8VHsk9Yu9OrO5+4EWAAZq+rJ+TIxfU+6HO6j
+         Au63qLtU+9UJ6r9R3e/YVegFGPFhClgeLH0X5fRrQkbG1QqAl7P4xgPKdKMsx73s61R1
+         gVRVK4hCaNFQa0ypz6MRowgbxAVXUhuoU9EfyJqBKSiqFSbMBpa1WqkZwcXMZ2p4vYtz
+         lYwJ5yPc5M6xXShAW25gBv9gKYDATcCe09VtQqKk9Luk+n9KyA6+GlaR2pYblOK02nlR
+         KFQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
+        d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=r+y5x5rJrKgzSQgYnwxDrsICJpiQNYPH7aqSuIaJwfs=;
-        b=a5dAOa0wGSeMYfbE8Go8UYBONqHxLlbnYNiEddb5s8AdoUj/521iwajc07dnEOzZSr
-         eW18bi16Zq8oE5/8SEWXWNoToTOOey9EROQ9O3BMtz13dgZH1+dNUjTWI8m0+zU7qAPY
-         HCAXYCoPprIYGk+rmlMaDk1ppLPc3iJYWVx5cwfXiLJqqLZxn4AtP9IetTC0K8fxzwJL
-         kWwv+Z8AmL4QYyMvkQ2QCETpbvzqEvvEfAiGiXLq0CSOwmkqQPnbghWOXrMDoqMcBk1a
-         AzDlMDA20I6h8r5zK5PBhAHlwPXeAl4E20FwmcZFtXC4TrwU0TbBaIWgNLZ/OfLPFrcr
-         IdNQ==
-X-Gm-Message-State: AFeK/H0DAksoGX8HIRT4VQE7ZReNZOnKxCir1DL3od0bIizDsFfWFtbMXFawczyEVKCOpQ==
-X-Received: by 10.98.69.86 with SMTP id s83mr28687827pfa.232.1489942857128;
-        Sun, 19 Mar 2017 10:00:57 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 73sm28154686pfh.56.2017.03.19.10.00.54
+        bh=NfgGYmicbzYj8aiB9SN/XEfIHESURerwWGbfW7/OKw0=;
+        b=XDhRTlhKTIbT8yrQTCEezZG2xPN0sxSiP1bEWZ6xH/hn9hM0dwRI2dHyVJON3LJ9v8
+         jx0rrBLFxRfCmvead24ZHwmaiJSCMl2Ioffw0vh/5qGX4WfhkVp2nVgBP7Fwd6sZnu/5
+         bzFv/+6vSYkjHQlIE15uoAb2iWyunW/NYOCtonh5f7GozQA6HnQ446r1FigRRE4Pxtle
+         MobJSjiPTeI4PcqJxdcjfC4Mrbz+S0P4y6e7x7n9I71iqoJqtm4AGly/gtzWXfI8kD5y
+         XE/wKQndfk0ixYUzuEfLxhZcvmSyByeAPTJLX6e59dtV+bh9GmXltNT33Ei16eeWfss6
+         vJMg==
+X-Gm-Message-State: AA6/9RmjQLb2PrGmFf+B+j3NZQRXeEIV8WJAWHoN+wPn7s8cnRDJy5vmOoq3r/Uq553Q/A==
+X-Received: by 10.31.61.204 with SMTP id k195mr2260566vka.76.1476310225865;
+        Wed, 12 Oct 2016 15:10:25 -0700 (PDT)
+Return-Path: <juliana.orod@gmail.com>
+Received: from spock ([189.61.236.196])
+        by smtp.gmail.com with ESMTPSA id b186sm3936154vkf.15.2016.10.12.15.10.24
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 19 Mar 2017 10:00:55 -0700 (PDT)
-Date: Sun, 19 Mar 2017 22:30:51 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: w.d.hubbs@gmail.com
-Cc: Chris Brannon <chris@the-brannons.com>, Kirk Reiser <kirk@reisers.ca>,
-	Samuel Thibault <samuel.thibault@ens-lyon.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	speakup@linux-speakup.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: speakup: Removed Unnecessary parentheses.
-Message-ID: <20170319170051.GA20533@arushi-HP-Pavilion-Notebook>
+        Wed, 12 Oct 2016 15:10:25 -0700 (PDT)
+Date: Wed, 12 Oct 2016 19:10:20 -0300
+From: Juliana Rodrigues <juliana.orod@gmail.com>
+To: lars@metafoo.de, jic23@kernel.org, knaack.h@gmx.de, pmeerw@pmeerw.net
+Cc: outreachy-kernel@googlegroups.com
+Bcc: juliana.orod@gmail.com, samuel.chenatti@gmail.com
+Subject: [PATCH] iio: adc: max1363: implemented IIO_CHAN_INFO_SAMP_FREQ
+Message-ID: <20161012221020.GA17329@spock>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.7.0 (2016-08-17)
 
-Unnecessary parentheses are removed to improve readability.
+Moved functionality from IIO_DEV_ATTR_SAMP_FREQ macro into
+IIO_CHAN_INFO_SAMP_FREQ. Modified max1363_read_raw and added
+max1363_write_raw to allow reading and writing the element.
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
 ---
- drivers/staging/speakup/kobjects.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/iio/adc/max1363.c | 98 +++++++++++++++++++++++++----------------------
+ 1 file changed, 53 insertions(+), 45 deletions(-)
 
-diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
-index afb61e153592..ca85476e3ff7 100644
---- a/drivers/staging/speakup/kobjects.c
-+++ b/drivers/staging/speakup/kobjects.c
-@@ -392,7 +392,7 @@ static ssize_t synth_store(struct kobject *kobj, struct kobj_attribute *attr,
- 		len--;
- 	new_synth_name[len] = '\0';
- 	spk_strlwr(new_synth_name);
--	if (synth && (!strcmp(new_synth_name, synth->name))) {
-+	if (synth && !strcmp(new_synth_name, synth->name)) {
- 		pr_warn("%s already in use\n", new_synth_name);
- 	} else if (synth_init(new_synth_name) != 0) {
- 		pr_warn("failed to init synth %s\n", new_synth_name);
+diff --git a/drivers/iio/adc/max1363.c b/drivers/iio/adc/max1363.c
+index 841a13c..6aa7e15 100644
+--- a/drivers/iio/adc/max1363.c
++++ b/drivers/iio/adc/max1363.c
+@@ -413,6 +413,34 @@ static int max1363_read_single_chan(struct iio_dev *indio_dev,
+ 
+ }
+ 
++static const int max1363_monitor_speeds[] = { 133000, 665000, 33300, 16600,
++					      8300, 4200, 2000, 1000 };
++
++/**
++ * write_raw handler for IIO_CHAN_INFO_SAMP_FREQ
++ */
++int max1363_write_raw_samp_freq(struct iio_dev *indio_dev,
++				struct max1363_state *st, int *val)
++{
++
++	int i, ret;
++	bool found = false;
++
++	for (i = 0; i < ARRAY_SIZE(max1363_monitor_speeds); i++)
++		if (ret == max1363_monitor_speeds[i]) {
++			found = true;
++			break;
++		}
++	if (!found)
++		return -EINVAL;
++
++	mutex_lock(&indio_dev->mlock);
++	st->monitor_speed = i;
++	mutex_unlock(&indio_dev->mlock);
++
++	return 0;
++}
++
+ static int max1363_read_raw(struct iio_dev *indio_dev,
+ 			    struct iio_chan_spec const *chan,
+ 			    int *val,
+@@ -432,12 +460,34 @@ static int max1363_read_raw(struct iio_dev *indio_dev,
+ 		*val = st->vref_uv / 1000;
+ 		*val2 = st->chip_info->bits;
+ 		return IIO_VAL_FRACTIONAL_LOG2;
++	case IIO_CHAN_INFO_SAMP_FREQ:
++		*val = max1363_monitor_speeds[st->monitor_speed];
++		return IIO_VAL_INT;
++
+ 	default:
+ 		return -EINVAL;
+ 	}
+ 	return 0;
+ }
+ 
++static int max1363_write_raw(struct iio_dev *indio_dev,
++			    struct iio_chan_spec const *chan,
++			    int val,
++			    int val2,
++			    long m)
++{
++	struct max1363_state *st = iio_priv(indio_dev);
++
++	switch (m) {
++
++	case IIO_CHAN_INFO_SAMP_FREQ:
++		return max1363_write_raw_samp_freq(indio_dev, st, &val);
++
++	default:
++		return -EINVAL;
++	}
++}
++
+ /* Applies to max1363 */
+ static const enum max1363_modes max1363_mode_list[] = {
+ 	_s0, _s1, _s2, _s3,
+@@ -468,6 +518,7 @@ static const struct iio_event_spec max1363_events[] = {
+ 		.address = addr,					\
+ 		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW),		\
+ 		.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_SCALE),	\
++		.info_mask_shared_by_all = BIT(IIO_CHAN_INFO_SAMP_FREQ),\
+ 		.datasheet_name = "AIN"#num,				\
+ 		.scan_type = {						\
+ 			.sign = 'u',					\
+@@ -491,6 +542,7 @@ static const struct iio_event_spec max1363_events[] = {
+ 		.address = addr,					\
+ 		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW),		\
+ 		.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_SCALE),	\
++		.info_mask_shared_by_all = BIT(IIO_CHAN_INFO_SAMP_FREQ),\
+ 		.datasheet_name = "AIN"#num"-AIN"#num2,			\
+ 		.scan_type = {						\
+ 			.sign = 's',					\
+@@ -675,50 +727,6 @@ enum { max1361,
+        max11647
+ };
+ 
+-static const int max1363_monitor_speeds[] = { 133000, 665000, 33300, 16600,
+-					      8300, 4200, 2000, 1000 };
+-
+-static ssize_t max1363_monitor_show_freq(struct device *dev,
+-					struct device_attribute *attr,
+-					char *buf)
+-{
+-	struct max1363_state *st = iio_priv(dev_to_iio_dev(dev));
+-	return sprintf(buf, "%d\n", max1363_monitor_speeds[st->monitor_speed]);
+-}
+-
+-static ssize_t max1363_monitor_store_freq(struct device *dev,
+-					struct device_attribute *attr,
+-					const char *buf,
+-					size_t len)
+-{
+-	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
+-	struct max1363_state *st = iio_priv(indio_dev);
+-	int i, ret;
+-	unsigned long val;
+-	bool found = false;
+-
+-	ret = kstrtoul(buf, 10, &val);
+-	if (ret)
+-		return -EINVAL;
+-	for (i = 0; i < ARRAY_SIZE(max1363_monitor_speeds); i++)
+-		if (val == max1363_monitor_speeds[i]) {
+-			found = true;
+-			break;
+-		}
+-	if (!found)
+-		return -EINVAL;
+-
+-	mutex_lock(&indio_dev->mlock);
+-	st->monitor_speed = i;
+-	mutex_unlock(&indio_dev->mlock);
+-
+-	return 0;
+-}
+-
+-static IIO_DEV_ATTR_SAMP_FREQ(S_IRUGO | S_IWUSR,
+-			max1363_monitor_show_freq,
+-			max1363_monitor_store_freq);
+-
+ static IIO_CONST_ATTR(sampling_frequency_available,
+ 		"133000 665000 33300 16600 8300 4200 2000 1000");
+ 
+@@ -1002,7 +1010,6 @@ static int max1363_write_event_config(struct iio_dev *indio_dev,
+  * be combined.
+  */
+ static struct attribute *max1363_event_attributes[] = {
+-	&iio_dev_attr_sampling_frequency.dev_attr.attr,
+ 	&iio_const_attr_sampling_frequency_available.dev_attr.attr,
+ 	NULL,
+ };
+@@ -1039,6 +1046,7 @@ static const struct iio_info max1363_info = {
+ 	.read_event_config = &max1363_read_event_config,
+ 	.write_event_config = &max1363_write_event_config,
+ 	.read_raw = &max1363_read_raw,
++	.write_raw = &max1363_write_raw,
+ 	.update_scan_mode = &max1363_update_scan_mode,
+ 	.driver_module = THIS_MODULE,
+ 	.event_attrs = &max1363_event_attribute_group,
 -- 
-2.11.0
+2.10.0
 
 
