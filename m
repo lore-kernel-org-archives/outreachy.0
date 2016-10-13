@@ -1,31 +1,31 @@
 X-GM-THRID: 6339053517033963520
-X-Received: by 10.36.211.76 with SMTP id n73mr2129505itg.30.1476361495153;
-        Thu, 13 Oct 2016 05:24:55 -0700 (PDT)
+X-Received: by 10.98.138.73 with SMTP id y70mr1642524pfd.36.1476361477754;
+        Thu, 13 Oct 2016 05:24:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.15.105 with SMTP id 96ls5721355ott.41.gmail; Thu, 13 Oct
- 2016 05:24:54 -0700 (PDT)
-X-Received: by 10.157.41.3 with SMTP id d3mr1691257otb.69.1476361494835;
-        Thu, 13 Oct 2016 05:24:54 -0700 (PDT)
+Received: by 10.157.38.213 with SMTP id i21ls5743584otd.8.gmail; Thu, 13 Oct
+ 2016 05:24:37 -0700 (PDT)
+X-Received: by 10.157.58.35 with SMTP id j32mr1617872otc.13.1476361477455;
+        Thu, 13 Oct 2016 05:24:37 -0700 (PDT)
 Return-Path: <gregkh@linuxfoundation.org>
 Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id 203si2307244pfw.0.2016.10.13.05.24.54
+        by gmr-mx.google.com with ESMTPS id a143si2199144pfa.2.2016.10.13.05.24.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 13 Oct 2016 05:24:54 -0700 (PDT)
+        Thu, 13 Oct 2016 05:24:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
 Received: from localhost (pes75-3-78-192-101-3.fbxo.proxad.net [78.192.101.3])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 4114C7AA;
-	Thu, 13 Oct 2016 12:24:53 +0000 (UTC)
-Date: Thu, 13 Oct 2016 14:25:02 +0200
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id B9F4D7AA;
+	Thu, 13 Oct 2016 12:24:36 +0000 (UTC)
+Date: Thu, 13 Oct 2016 14:24:45 +0200
 From: Greg KH <gregkh@linuxfoundation.org>
 To: Varsha Rao <rvarsha016@gmail.com>
 Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>,
 	forest@alittletooquiet.net
 Subject: Re: [Outreachy kernel] [PATCH] staging: vt6655: Replace BBvClearFOE
  by bbvclearfoe
-Message-ID: <20161013122502.GB15134@kroah.com>
+Message-ID: <20161013122445.GA15134@kroah.com>
 References: <20161008112506.GA12694@euri>
  <alpine.DEB.2.10.1610081940270.3259@hadrien>
  <a1961e47-6b73-4943-aac5-f2b5593bfc32@googlegroups.com>
@@ -53,6 +53,9 @@ On Thu, Oct 13, 2016 at 05:18:06AM -0700, Varsha Rao wrote:
 > �drivers/staging/vt6655/
 > baseband.h | 2 +-
 > �1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/vt6655/baseband.h b/drivers/staging/vt6655/
+> baseband.h
 
-It's also sent in html format which does not work :(
+Patch is line-wrapped and can not be applied :(
 
