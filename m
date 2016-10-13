@@ -1,61 +1,65 @@
 X-GM-THRID: 6341087993048072192
-X-Received: by 10.13.255.69 with SMTP id p66mr1786801ywf.118.1476526380926;
-        Sat, 15 Oct 2016 03:13:00 -0700 (PDT)
+X-Received: by 10.107.19.211 with SMTP id 80mr2388005iot.90.1476399598959;
+        Thu, 13 Oct 2016 15:59:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.39.117 with SMTP id r108ls9721083ota.19.gmail; Sat, 15 Oct
- 2016 03:13:00 -0700 (PDT)
-X-Received: by 10.129.78.77 with SMTP id c74mr4282457ywb.50.1476526380556;
-        Sat, 15 Oct 2016 03:13:00 -0700 (PDT)
+Received: by 10.157.33.60 with SMTP id i57ls6573580otb.48.gmail; Thu, 13 Oct
+ 2016 15:59:58 -0700 (PDT)
+X-Received: by 10.31.171.201 with SMTP id u192mr2475972vke.12.1476399598644;
+        Thu, 13 Oct 2016 15:59:58 -0700 (PDT)
 Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id f3si297907pfa.0.2016.10.15.03.13.00
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id 203si2787605pfw.0.2016.10.13.15.59.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 15 Oct 2016 03:13:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Thu, 13 Oct 2016 15:59:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id r16so8945034pfg.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 15 Oct 2016 03:13:00 -0700 (PDT)
+Received: by mail-pf0-x243.google.com with SMTP id r16so5907838pfg.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 13 Oct 2016 15:59:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=Q1GBcJy4/PRZsMEq7PyMnL4Xs3y7HRKzQcpL8Mljf00=;
-        b=WAZwT8zYMZANk9+TaZ9Z+raBdCb4sSa+ioiKks/2Opw55WD7Z7LzfsrJjGpZ/xNt6r
-         HR8C3BgtHMaXcOfHuIYPVzSaYzS4/XoZ6WGkz749DPFI0PcefjzGzEpqQZ9ZufHGwIO/
-         I94Ppl8xuL0HUI/cf7EYz4yhFok0Wj71QqX5cpU3K5H86NPBZM7ORx0rJH4SL5OkUnpV
-         s2LcBNOliT4GjAxPS3UrUbU1RA1SaTSpLocGZNeD07C3QN3hGPh6hOiS9gBjbI6VyIcv
-         haBxeXMBANS8aU0j9LQrCM5fQJj/0Q3SZltoDIXOzJxT/lMjYyF0EcQQ/3q4FaicTPbj
-         ikDA==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=V1iB5LT4aBDKqOeRcHWHfMx5u4oi8raNmMMlf6SiUi8=;
+        b=uJ1wl3h6KM1t2odkJ1tzCkWI+Adb3nkj2a6hg/GHZ+mLgFP8oArOGWAo05XAMBfO4n
+         gYZCB70l7+VT4FpaaSIpvv7g9/odBt4xHTZWl7DphNdZqHk1yyTXd+P2pp+wAYoYbJbL
+         L/5Gi64dtpmM03j0mHreXdEC9QJeIQsLX/IOX6S43ml/1wvgpiiztHrMy9D7MQ2QlsDu
+         wUQJYPIDCigFyevJse6Nl5JIffCd2RDEnpAz+6xWpQ5h7MnxyULot1QCHdYqef7NI8e9
+         BEE86FZxuhWi+jec1PAZxUtmfmmuqJCZ4tiOxrxl3tmnb6SbL2OnvkGDpg3YQjvffseX
+         wquQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Q1GBcJy4/PRZsMEq7PyMnL4Xs3y7HRKzQcpL8Mljf00=;
-        b=XnvAGcRbiAcoIKyFAWoEnr/kFbyjbp6Sz8p73TgZTBqgGSi8SIW17CUvLQFIHTI2zF
-         NXR8X5D+iEFIbgwnCurcWWDDQ4kLelswuG6BXKaB3tk+su36wOmFzI90dewb52//Lhmq
-         +auFts1bI3AwHWWbFkp5Sfwijszn1bYKwiorfU5Qtu6KcFJCg486KS/fBJlL06dAzOTL
-         h1ckAQxLDb/hlcrC7gB9XW07+USE0wZtmHZJR6nwpyhUEQNoTVOMF8z3JX13INP/UNeB
-         It4Ru6l/d5RQH3yP8j9LMBH/cHFNqgOHi651XD44qyCFdQM8zEPmJhPNeSlJc8qpqYip
-         hJBg==
-X-Gm-Message-State: AA6/9Rl6xx4wVKNA8pshvTfb4sa6FFB+OdNkvEr71Vph87TmmTB2lpzah6xNrlJ9lnGPrg==
-X-Received: by 10.98.94.7 with SMTP id s7mr24454719pfb.37.1476526380374;
-        Sat, 15 Oct 2016 03:13:00 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=V1iB5LT4aBDKqOeRcHWHfMx5u4oi8raNmMMlf6SiUi8=;
+        b=VH+nDlMlvnKmNGDLvlt8qZ1vqZ/99ejjlSX0MI8Q0UGPFHNiPFQj0zgJp25kwovJYU
+         fDHi8JbQMwJ+8gRkd4E9KLX9Xjq1WJG/KUN0x6seLkPDXnwGgCWPE+2ma9VZpRxCiq6Z
+         Axicz4PAyd4GTtkSOH34s0qi8q8WBySAq91jO/cxv9u/4iAVO7dbe2Aufj55VeFR3mHH
+         y+OjXtkfFMyjzX0Rzq9LuCEZuL1vnDY8+FMOL5Gx1AXWGgNDOshCJN9un+BMpC3l6+yr
+         4U0arISb9tR+dgQPEdNoPRj1Kjdf1XDmVGgQ010g5J693HNGHiFENBLB84vrk5d/2qwy
+         J5Qw==
+X-Gm-Message-State: AA6/9RnVtc50zGCrdqobFnwlyp5AgBPgGFYwQihNGZi/jhIQ4BzdDmUnuZxlHlUGQ+XzTw==
+X-Received: by 10.98.80.130 with SMTP id g2mr13381624pfj.179.1476399598454;
+        Thu, 13 Oct 2016 15:59:58 -0700 (PDT)
 Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([117.243.11.213])
-        by smtp.gmail.com with ESMTPSA id w70sm33709201pfa.89.2016.10.15.03.12.57
+Received: from euri ([117.249.209.2])
+        by smtp.gmail.com with ESMTPSA id x16sm21674518pff.39.2016.10.13.15.59.57
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 15 Oct 2016 03:12:59 -0700 (PDT)
+        Thu, 13 Oct 2016 15:59:58 -0700 (PDT)
+Date: Fri, 14 Oct 2016 04:29:54 +0530
 From: Varsha Rao <rvarsha016@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	forest@alittletooquiet.net,
+To: outreachy-kernel@googlegroups.com, forest@alittletooquiet.net,
 	gregkh@linuxfoundation.org
-Cc: Varsha Rao <rvarsha016@gmail.com>
+Cc: rvarsha016@gmail.com
 Subject: [PATCH v2] Staging: vt6655: Removes unused macros.
-Date: Fri, 14 Oct 2016 04:22:06 +0530
-Message-Id: <1476399126-20282-1-git-send-email-rvarsha016@gmail.com>
-X-Mailer: git-send-email 2.7.4
+Message-ID: <20161013225954.GA20687@euri>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.7.0 (2016-08-17)
 
 This patch removes the macros BBvClearFOE and BBvSetFOE. As they are not
 used anywhere else.
@@ -63,8 +67,8 @@ used anywhere else.
 Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
 ---
  Changes in v2:
-  -Both the macros are removed completely instead of solving camelcase issue.
-
+  -Instead of solving camelcase issue, both the macros are removed
+   completely.
  drivers/staging/vt6655/baseband.h | 6 ------
  1 file changed, 6 deletions(-)
 
