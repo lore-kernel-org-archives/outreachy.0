@@ -1,77 +1,92 @@
-X-GM-THRID: 6619842705607360512
-X-Received: by 2002:a62:d849:: with SMTP id e70-v6mr1181875pfg.34.1541302238854;
-        Sat, 03 Nov 2018 20:30:38 -0700 (PDT)
+X-GM-THRID: 6341082895708323840
+X-Received: by 10.157.53.90 with SMTP id l26mr2220407ote.72.1476398412006;
+        Thu, 13 Oct 2016 15:40:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:688a:: with SMTP id d132-v6ls7477865pgc.19.gmail; Sat,
- 03 Nov 2018 20:30:38 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5fMZYNBdjerUdMdaEvPY8ka11CxZEREs8/6pfmJE4uSZ74/Oq3rpc9zZrJv2yNfEmCIwaO0
-X-Received: by 2002:a63:8ac9:: with SMTP id y192mr3803703pgd.145.1541302238010;
-        Sat, 03 Nov 2018 20:30:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1541302237; cv=none;
-        d=google.com; s=arc-20160816;
-        b=d58HiuQLgbu7oyrzrgKj5p8VcN9LEFuBjJjq9hpd4VehevuQfS9W16vX62XknLqRow
-         yAu+pRojoDY3TKhgTwX5hRTVkKs9cZCUrainAZ2VCw6obyyiEeRX7z+wZugesnc5gpDh
-         NrBknhuiUeBZoPF4jqGeSMnT5c+93P4OuTrezi0nYR1Fhp95J9rWhbJrpj6YsS9QAqR4
-         /g7ZhXEcgJ5KU06WIyag5LsXrlkC6IOca7k4d/g9tKIlAuA73yYNGBbksPjuoYETtGJr
-         FYQn+eEBNZGckKpSkOlPuXatDwClodEPPx5SENyNTxmFeOFSL4Xj/iIbj5JVdz3qoILI
-         Gp2Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:subject:message-id:date:from:mime-version;
-        bh=DmVRYg2+g1rydmihhwWj3UKRyJVBOoM2el916NY5lYY=;
-        b=NRJY/VOkSKr9nKtUgOrpQqGbLsx0eio4cPd8KSPZC3V70vXzsT1KEKafLMEdqPOT58
-         kzCXexv/IQycKXMXRbzbnTHYy6QklhvQT7IygpqZ5yu2Akj4R5P0CaJmdjtPwPoOBUc4
-         LVzJcpuikhtAr4SJShoPj5Wv4Ii7jqMGCIyOFIgBIE6EBktNfs7UI49rHRnk95x2edKf
-         Q6AzGZy2RPsI7JfEzUD5zWuQxFQq+bs7JYHJHHii9yN4bPFmas+1QvRx+OkSXfg6IDxS
-         gOHkxurgM+5UU/PHH9CstJwXY3Fflxq7wEhL0MjnOW+vKkto1TlMXL/8QkDR3pnrJOx9
-         breQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.192.103 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
-Return-Path: <vthakkar@vaishalithakkar.in>
-Received: from p3plsmtpa06-02.prod.phx3.secureserver.net (p3plsmtpa06-02.prod.phx3.secureserver.net. [173.201.192.103])
-        by gmr-mx.google.com with ESMTPS id p85-v6si1968362pfa.3.2018.11.03.20.30.37
+Received: by 10.36.85.4 with SMTP id e4ls15429itb.8.gmail; Thu, 13 Oct 2016
+ 15:40:11 -0700 (PDT)
+X-Received: by 10.36.86.19 with SMTP id o19mr2489471itb.11.1476398411464;
+        Thu, 13 Oct 2016 15:40:11 -0700 (PDT)
+Return-Path: <elise.lennion@gmail.com>
+Received: from mail-vk0-x243.google.com (mail-vk0-x243.google.com. [2607:f8b0:400c:c05::243])
+        by gmr-mx.google.com with ESMTPS id p131si2725512vkf.1.2016.10.13.15.40.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 03 Nov 2018 20:30:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.192.103 as permitted sender) client-ip=173.201.192.103;
+        Thu, 13 Oct 2016 15:40:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::243 as permitted sender) client-ip=2607:f8b0:400c:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.192.103 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
-Received: from mail-wr1-f53.google.com ([209.85.221.53])
-	by :SMTPAUTH: with ESMTPSA
-	id J97TgMY2Z8nSqJ97UgZ5YU; Sat, 03 Nov 2018 20:30:36 -0700
-Received: by mail-wr1-f53.google.com with SMTP id 74-v6so5754339wrb.13
-        for <outreachy-kernel@googlegroups.com>; Sat, 03 Nov 2018 20:30:36 -0700 (PDT)
-X-Gm-Message-State: AGRZ1gJso80k8uMfIxxhhJehCpz7+B2LlWA02vn7t03+RQPTC7R+nSEI
-	l4jiRqZtJK0gtaJUAl6bSAJKTyzzY73+ezeBsHE=
-X-Received: by 2002:a5d:6105:: with SMTP id v5-v6mr6524968wrt.69.1541302235243;
- Sat, 03 Nov 2018 20:30:35 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::243 as permitted sender) smtp.mailfrom=elise.lennion@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-vk0-x243.google.com with SMTP id 2so4259789vkb.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 13 Oct 2016 15:40:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=eaAJNSmVhvgQosS/gBswfCQIYGBtEMTwWWPTh3d57nc=;
+        b=RwybfLhOK8UekRSH6AGSjNrWwH10Q+fOUPULiZho+j7SKx45lQ7BgxFpbm41VORUiA
+         OC4z3RHTTUxwJ/OO1e5hP3Q5lQfeJbstBBr+fHukNU/dUBbcdRfjGM4lkd/Z/lMRy7Nm
+         D4CJco338HEc/geKlPDMKbv7e3bYilHbPDwZzLFiWqHgQQspSlHzWc+BUWTTTZqv+QY0
+         1ozWNkxXZtB2I+64m7djQMKAkrii+ey4zFdCpe0lY5JPqDRUs3y6lmzNNsdOwWFtDue8
+         Ush+yR//f8HtTDW6wIgXFgoboRMh2ss9v2MozXQzfE+v+7DyV2p/XKa4mv4jhcxMhWzB
+         RGeQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=eaAJNSmVhvgQosS/gBswfCQIYGBtEMTwWWPTh3d57nc=;
+        b=Dw11Te+EFAUQvaM/Bz9MFm54y+seo1zM1QqpG0pHz8EI04WsyyR9VMbd10W9JmbvGX
+         g00B+aLzubmJ/zPTc6gwMzc5h/VG7zLL9tTKWdwxVt4F6x22L2BLhMEhiutNGD5ABp84
+         xdahOLcEJ1t4mjoslvKFxi7CmIUzuSkvuT/orQRFJmHr6AwsKczDXIhNpt3Hedbnh1jh
+         w3jK8AIqLpodlrfndsuffO1q+96VrkSERzVuHQzygYxKikhbKtKkoS6ag79IUq4ezXjb
+         McW5X5ysjjW6jMbTAnsWrgMAIaePgc7X+0seGMdlKmo/GNCXLLS2fWgTSr8GQs76rdNx
+         UgJw==
+X-Gm-Message-State: AA6/9RmV8Hay5GrA8ShxsZ/HQLa8gEYShYxLYpZE4+jpplP1KXUAHM9yNmaIIjgMJ+SF6w==
+X-Received: by 10.31.9.210 with SMTP id 201mr6787706vkj.106.1476398411312;
+        Thu, 13 Oct 2016 15:40:11 -0700 (PDT)
+Return-Path: <elise.lennion@gmail.com>
+Received: from lennorien.com ([187.64.224.84])
+        by smtp.gmail.com with ESMTPSA id n191sm6228791vkc.1.2016.10.13.15.40.09
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 13 Oct 2016 15:40:10 -0700 (PDT)
+Date: Thu, 13 Oct 2016 19:40:04 -0300
+From: Elise Lennion <elise.lennion@gmail.com>
+To: vaibhav.sr@gmail.com, mgreer@animalcreek.com, johan@kernel.org,
+	elder@kernel.org, gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH v2 1/2] staging: greybus: audio_codec: Remove useless return
+ statement.
+Message-ID: <20161013224003.GA13160@lennorien.com>
 MIME-Version: 1.0
-From: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
-Date: Sun, 4 Nov 2018 09:00:13 +0530
-X-Gmail-Original-Message-ID: <CAK-LDbJoMEKgjyyion0O6RWn3p4j04mwupEwY7CK1wZqJWkd3g@mail.gmail.com>
-Message-ID: <CAK-LDbJoMEKgjyyion0O6RWn3p4j04mwupEwY7CK1wZqJWkd3g@mail.gmail.com>
-Subject: [Announcement] Outreachy application reminder
-To: outreachy-kernel@googlegroups.com
-Content-Type: text/plain; charset="UTF-8"
-X-CMAE-Envelope: MS4wfOoMz0g0McuA//q9FRcuAAR34J04CErOFfw7H1Z3Z8nzRUh9qGAhhXFjkHQycHb68Rakfc5KdCISDrnlgZKIKYQTPR6KsgGBJHtN3TsV4wn8gNMbzim1
- 3Dy6ZGF8jl+NqQjPbMxtlVPdWnPK7sC1K1jeOT5P80av/ZAsmRBOFOW4l2lgKivCX6G/jHirfVZJsNybgcepdr3Jk2OtZuOntM8=
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Hi All,
+Remove return statement that is immediately followed by the function
+closing bracket.
 
-As you know, Outreachy deadline for Linux kernel projects is November
-6, 2018. So, don't forget to submit your application before deadline.
-Here, are bunch of points you need to take care of:
+Signed-off-by: Elise Lennion <elise.lennion@gmail.com>
+---
 
-- Record your contributions on Outreachy's website. Remember that for
-each project you want to apply for, you will need to record separate
-contributions and fill separate application. Make sure that you put
-links to patches when you record the contributions. If you have
-written any blog post etc related to your Linux kernel experience,
-feel free to put links as well.
+ v2: Add file name to the patch subject name.
+  Rewrite git log message.
 
-- We normally advise each applicant to apply for at least 2 projects.
-Make sure to add your project preferences under the question
-'Community-specific Questions' in the application.
+ drivers/staging/greybus/audio_codec.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-All the best and we're looking forward to reviewing your applications.
-Feel free to ask questions, if any.
+diff --git a/drivers/staging/greybus/audio_codec.c b/drivers/staging/greybus/audio_codec.c
+index 1bdf849..f8862c6 100644
+--- a/drivers/staging/greybus/audio_codec.c
++++ b/drivers/staging/greybus/audio_codec.c
+@@ -405,7 +405,6 @@ static void gbcodec_shutdown(struct snd_pcm_substream *substream,
+ 	params->state = GBAUDIO_CODEC_SHUTDOWN;
+ 	mutex_unlock(&codec->lock);
+ 	pm_relax(dai->dev);
+-	return;
+ }
+ 
+ static int gbcodec_hw_params(struct snd_pcm_substream *substream,
+-- 
+2.7.4
+
 
