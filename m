@@ -1,102 +1,806 @@
-X-GM-THRID: 6670874322503991296
-X-Received: by 2002:a25:2d5b:: with SMTP id s27mr3578102ybe.454.1553183962949;
-        Thu, 21 Mar 2019 08:59:22 -0700 (PDT)
+X-GM-THRID: 6341026034490540032
+X-Received: by 10.129.73.150 with SMTP id w144mr2230667ywa.28.1476385173290;
+        Thu, 13 Oct 2016 11:59:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a81:3d0e:: with SMTP id k14ls2276981ywa.4.gmail; Thu, 21 Mar
- 2019 08:59:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz7L41WbGpZmS4OsUYVjj3xLpSfxTKVrw39JTQ611rDFjiZOQokXf+jbgiy0+5X865dDWtA
-X-Received: by 2002:a81:f005:: with SMTP id p5mr3835678ywm.103.1553183961911;
-        Thu, 21 Mar 2019 08:59:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553183961; cv=none;
-        d=google.com; s=arc-20160816;
-        b=yvG8YdtYlcP5gEe84qDJkMZh40xq/E0igv4JVNi8K3KX3yKpr//x22fuzhL9n90pFI
-         kd/pRdPaZ/C6cdKKT09RZP7xWwCU/vqUzPa+tATzzKZ58RiqM0eUjBcuR8mTjS6BBDpX
-         ykaKIQeYqx81G19NKpXQbN7KOxa8TgPZKUCYtOXZVisGvJTUg4C4PR0ulziEL6pQGHuD
-         IKcnIwQW6X7gp/HuwG8FQv/nreeSxU7WuHt71RUIFXO+GGbgbBdFBeoth6+usX1gDHDu
-         GyqRb7D57ZUI77I2wFndUUrHr6NDjCtejqppL8dvPgEmU9yJ4j7wHUt6KY9iE17Wv6q1
-         mNjg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=UulXr3xzwUxO5hFHSLMapMtG42geHt2nV3BA7/C++eU=;
-        b=gSd5dBh4B8/R31FBR89UJ4h4PTcVVQVUu9473gAtr1slFfGwdW8NfcaRG7mineN33g
-         l5jTNdgKyXz9Vf2gIozXb6R1mM32p8EmnU7OEfT1Zv4iKMBdkSjW/b4MkQxHJrM+8GAm
-         t6B95EyZ+A6G9OZRupBjV/XqGZccMNVmw5N4HavCGaIEfPRitk2KUVblXH1bklTtuWpp
-         qq3naWAlfD2Ci868flL2uO/yj7oePEPp1CYf8NA8HNZNdwoY6HTIJltACgCbpqAAWCva
-         lxQUTNe6ziF4762+B/76ru7smPIqTwSGmXpcHq0NHRa/yL2A//Ekexlwq5b3gGK5i3Lr
-         l+TQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=U+CyjIBy;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id s11si349811ywg.3.2019.03.21.08.59.21
+Received: by 10.36.175.67 with SMTP id l3ls6401572iti.15.canary; Thu, 13 Oct
+ 2016 11:59:32 -0700 (PDT)
+X-Received: by 10.66.163.167 with SMTP id yj7mr1879030pab.139.1476385172753;
+        Thu, 13 Oct 2016 11:59:32 -0700 (PDT)
+Return-Path: <rvarsha016@gmail.com>
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id co10si1996348pad.1.2016.10.13.11.59.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 08:59:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        Thu, 13 Oct 2016 11:59:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=U+CyjIBy;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id 8so4583705pfr.4
-        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 08:59:21 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x243.google.com with SMTP id s8so5603955pfj.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 13 Oct 2016 11:59:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=UulXr3xzwUxO5hFHSLMapMtG42geHt2nV3BA7/C++eU=;
-        b=U+CyjIByjOyoRvR0Z7l3NKXK45FvKLnhnVL2Um0nVoYiT1j/eRPxRmeirvLv06vhzJ
-         4MtPOa4XlH9qmh+xdXNUZlI8a9LZJyIXcKbM8rI5TOxR813vZzKwxOEqgLXJSrx/KPro
-         tHCTJw9usv9Kp+nTtECFRskjKmYvTECFcwPaU2kcWAvtVtzqoXu2a8qvzwxFK6wsKiqH
-         FKFWGSs4N8E6IJylTzgq1L5w2laoOLFZlfjlTRcAB4vsQgCPz1Ka6QC512P+OevIHW3Y
-         +BrDOY4WwrZPU9szA5oAkUwUu+ST+B9DIFwnnB7diCeXFWSll5D1VVh4hyku+swsrx3w
-         BBjQ==
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=Yy8lBMvPVQj72dcCS2nX2A0uB2WzLDucanZqh+uQI3s=;
+        b=COvLt1hMvIzsjq+qB+imTGLBvdfij/y/CH5wOMzpZuUuabm1MmQ9eKDsFLfUD9nhRb
+         AAD293ZM2GMY14oN5Lf0UMAaLCpIjNIAzUAnHAVWOYc6tYPuG+LadnMLeeouqhcFWQuW
+         lc9nrRmTM4XhC8mAa+8AgKEvlHRmTblgiFD0/RJQ0HxTqd9N5HdGtWhZqjAaoNhkUhPl
+         JM8XY6YMlhs2Zz6AkcKjEsB0eL/FVQ9ZiS43QtNtwKZoYacWv833ZUna2AXu0XymQtId
+         gUf2vaD1uArP4AiuKA23qALHlU/ITsNHtJDET+hMUz3hnhhUq8ErGrDXB99D8Xw9qSmS
+         Zovw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=UulXr3xzwUxO5hFHSLMapMtG42geHt2nV3BA7/C++eU=;
-        b=AJIKp8+RoPTlhxyN6gMzSENkxsD2+mpWHOgBHn/VDsWgTjyCevGklIyse5jY5nyNo8
-         8jx+pfGADnKev6aiW48jUdidy6hxg1aRDZcukDa+lv3/6qnExatBCgwUNodGMbbKkB6D
-         NtozN0uuCEt3s9zFn4aH6vUyc/+2phlv7acWlsE7ApfOF9+yEa9x14h5kX4VME+fWNhJ
-         lr4ShU+u1qxr46NPZ2YBJbAY1PLbiFpv0nTaJLZv3xKZ1ZABLH7jWTjIWOoqQ2hNpNKa
-         3YQ46RqjCLHBoioRekpyQn3FEqQ4o24/GJMu8W68gbP7dWfqUYy+Si1IfGoIxBEnvDiX
-         xOnQ==
-X-Gm-Message-State: APjAAAXcDra6RdtRGshZOOBAIYIrgAc2RRzXFCG9k9VPjbx0DGpXpG3h
-	Z6zG8i7mXVeQo23mJZoR9V64sKrY
-X-Received: by 2002:a62:5e46:: with SMTP id s67mr4069837pfb.126.1553183960878;
-        Thu, 21 Mar 2019 08:59:20 -0700 (PDT)
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from localhost.localdomain ([157.33.235.30])
-        by smtp.gmail.com with ESMTPSA id v1sm8106877pff.9.2019.03.21.08.59.18
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 21 Mar 2019 08:59:19 -0700 (PDT)
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [PATCH 3/3] [Outreachy kernel] staging: rtl8712: rtl8712_led.c: remove blank line
-Date: Thu, 21 Mar 2019 21:29:06 +0530
-Message-Id: <1553183946-9459-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=Yy8lBMvPVQj72dcCS2nX2A0uB2WzLDucanZqh+uQI3s=;
+        b=Vo2GGFZvZHyc+S6PinGjEBmlGEkRLB900uI8yDlugFnoTAtf5vRKeEXL8bkYRUJ5DG
+         sQO0IPRY9lxop66VulPQRpdisBNWHaMw9eIs4NRNP8RiObiZpN6V2tbOHaUww5XEW9tb
+         x49mLqGW64QTILm/5OHhf2fLY0pJG5XhN+KJFcqfTzpm9tBUq/DOFlmiuc3Dc5uYdewX
+         kFfr/Qks/3e12UPVR1MN1H4b01/QBodMvTS7+Wolv+IxHGzLlw4yiM1tY/7oeMUpeB86
+         4phv12rddnZJg61kg/LHwtQi0yCY4uBr8a0UgwVvMemkav1e188koZbOz6Y3z4MJF1Jv
+         0gCQ==
+X-Gm-Message-State: AA6/9RlU42nOjvaR7Zci3m6/0+G/qEGnTi/n7SUT9PcPkd2sBwT1CtOytHnlj1f38QFZuQ==
+X-Received: by 10.98.110.73 with SMTP id j70mr12555433pfc.18.1476385172111;
+        Thu, 13 Oct 2016 11:59:32 -0700 (PDT)
+Return-Path: <rvarsha016@gmail.com>
+Received: from euri ([117.235.149.33])
+        by smtp.gmail.com with ESMTPSA id g9sm3289083paw.40.2016.10.13.11.59.30
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 13 Oct 2016 11:59:31 -0700 (PDT)
+Date: Fri, 14 Oct 2016 00:29:22 +0530
+From: Varsha Rao <rvarsha016@gmail.com>
+To: gregkh@linuxfoundation.org, forest@alittletooquiet.net,
+	outreachy-kernel@googlegroups.com
+Cc: rvarsha016@gmail.com
+Subject: [PATCH] staging: vt6655: Adding space around '<<'
+Message-ID: <20161013185922.GA18129@euri>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.7.0 (2016-08-17)
 
-To avoid style issues, remove multiple blank lines.
+This patch fixes the checkpatch issue by adding space around '<<'.
 
-Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
 ---
- drivers/staging/rtl8712/rtl8712_led.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/staging/vt6655/rf.c | 638 ++++++++++++++++++++++----------------------
+ 1 file changed, 319 insertions(+), 319 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/rtl8712_led.c b/drivers/staging/rtl8712/rtl8712_led.c
-index 344971d..db99129 100644
---- a/drivers/staging/rtl8712/rtl8712_led.c
-+++ b/drivers/staging/rtl8712/rtl8712_led.c
-@@ -1704,7 +1704,6 @@ static void SwLedControlMode5(struct _adapter *padapter,
- 	}
- }
+diff --git a/drivers/staging/vt6655/rf.c b/drivers/staging/vt6655/rf.c
+index fa5690d..1762c05 100644
+--- a/drivers/staging/vt6655/rf.c
++++ b/drivers/staging/vt6655/rf.c
+@@ -45,359 +45,359 @@
+ #define AL7230_PWR_IDX_LEN    64
  
+ static const unsigned long dwAL2230InitTable[CB_AL2230_INIT_SEQ] = {
+-	0x03F79000 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x03333100 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x01A00200 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x00FFF300 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0005A400 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0F4DC500 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0805B600 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0146C700 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x00068800 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0403B900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x00DBBA00 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x00099B00 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0BDFFC00 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x00000D00 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x00580F00 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW
++	0x03F79000 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x03333100 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x01A00200 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x00FFF300 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0005A400 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0F4DC500 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0805B600 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0146C700 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x00068800 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0403B900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x00DBBA00 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x00099B00 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0BDFFC00 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x00000D00 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x00580F00 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW
+ };
+ 
+ static const unsigned long dwAL2230ChannelTable0[CB_MAX_CHANNEL] = {
+-	0x03F79000 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 1, Tf = 2412MHz */
+-	0x03F79000 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 2, Tf = 2417MHz */
+-	0x03E79000 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 3, Tf = 2422MHz */
+-	0x03E79000 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 4, Tf = 2427MHz */
+-	0x03F7A000 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 5, Tf = 2432MHz */
+-	0x03F7A000 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 6, Tf = 2437MHz */
+-	0x03E7A000 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 7, Tf = 2442MHz */
+-	0x03E7A000 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 8, Tf = 2447MHz */
+-	0x03F7B000 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 9, Tf = 2452MHz */
+-	0x03F7B000 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 10, Tf = 2457MHz */
+-	0x03E7B000 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 11, Tf = 2462MHz */
+-	0x03E7B000 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 12, Tf = 2467MHz */
+-	0x03F7C000 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 13, Tf = 2472MHz */
+-	0x03E7C000 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW  /* channel = 14, Tf = 2412M */
++	0x03F79000 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 1, Tf = 2412MHz */
++	0x03F79000 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 2, Tf = 2417MHz */
++	0x03E79000 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 3, Tf = 2422MHz */
++	0x03E79000 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 4, Tf = 2427MHz */
++	0x03F7A000 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 5, Tf = 2432MHz */
++	0x03F7A000 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 6, Tf = 2437MHz */
++	0x03E7A000 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 7, Tf = 2442MHz */
++	0x03E7A000 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 8, Tf = 2447MHz */
++	0x03F7B000 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 9, Tf = 2452MHz */
++	0x03F7B000 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 10, Tf = 2457MHz */
++	0x03E7B000 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 11, Tf = 2462MHz */
++	0x03E7B000 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 12, Tf = 2467MHz */
++	0x03F7C000 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 13, Tf = 2472MHz */
++	0x03E7C000 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW  /* channel = 14, Tf = 2412M */
+ };
+ 
+ static const unsigned long dwAL2230ChannelTable1[CB_MAX_CHANNEL] = {
+-	0x03333100 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 1, Tf = 2412MHz */
+-	0x0B333100 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 2, Tf = 2417MHz */
+-	0x03333100 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 3, Tf = 2422MHz */
+-	0x0B333100 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 4, Tf = 2427MHz */
+-	0x03333100 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 5, Tf = 2432MHz */
+-	0x0B333100 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 6, Tf = 2437MHz */
+-	0x03333100 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 7, Tf = 2442MHz */
+-	0x0B333100 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 8, Tf = 2447MHz */
+-	0x03333100 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 9, Tf = 2452MHz */
+-	0x0B333100 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 10, Tf = 2457MHz */
+-	0x03333100 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 11, Tf = 2462MHz */
+-	0x0B333100 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 12, Tf = 2467MHz */
+-	0x03333100 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 13, Tf = 2472MHz */
+-	0x06666100 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW  /* channel = 14, Tf = 2412M */
++	0x03333100 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 1, Tf = 2412MHz */
++	0x0B333100 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 2, Tf = 2417MHz */
++	0x03333100 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 3, Tf = 2422MHz */
++	0x0B333100 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 4, Tf = 2427MHz */
++	0x03333100 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 5, Tf = 2432MHz */
++	0x0B333100 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 6, Tf = 2437MHz */
++	0x03333100 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 7, Tf = 2442MHz */
++	0x0B333100 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 8, Tf = 2447MHz */
++	0x03333100 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 9, Tf = 2452MHz */
++	0x0B333100 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 10, Tf = 2457MHz */
++	0x03333100 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 11, Tf = 2462MHz */
++	0x0B333100 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 12, Tf = 2467MHz */
++	0x03333100 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 13, Tf = 2472MHz */
++	0x06666100 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW  /* channel = 14, Tf = 2412M */
+ };
+ 
+ static unsigned long dwAL2230PowerTable[AL2230_PWR_IDX_LEN] = {
+-	0x04040900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04041900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04042900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04043900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04044900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04045900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04046900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04047900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04048900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04049900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0404A900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0404B900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0404C900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0404D900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0404E900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0404F900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04050900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04051900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04052900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04053900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04054900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04055900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04056900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04057900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04058900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04059900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0405A900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0405B900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0405C900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0405D900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0405E900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0405F900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04060900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04061900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04062900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04063900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04064900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04065900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04066900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04067900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04068900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04069900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0406A900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0406B900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0406C900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0406D900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0406E900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0406F900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04070900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04071900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04072900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04073900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04074900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04075900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04076900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04077900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04078900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x04079900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0407A900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0407B900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0407C900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0407D900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0407E900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x0407F900 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW
++	0x04040900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04041900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04042900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04043900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04044900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04045900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04046900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04047900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04048900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04049900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0404A900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0404B900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0404C900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0404D900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0404E900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0404F900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04050900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04051900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04052900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04053900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04054900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04055900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04056900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04057900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04058900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04059900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0405A900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0405B900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0405C900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0405D900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0405E900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0405F900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04060900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04061900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04062900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04063900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04064900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04065900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04066900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04067900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04068900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04069900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0406A900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0406B900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0406C900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0406D900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0406E900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0406F900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04070900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04071900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04072900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04073900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04074900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04075900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04076900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04077900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04078900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x04079900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0407A900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0407B900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0407C900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0407D900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0407E900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x0407F900 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW
+ };
+ 
+ /* 40MHz reference frequency
+  * Need to Pull PLLON(PE3) low when writing channel registers through 3-wire.
+  */
+ static const unsigned long dwAL7230InitTable[CB_AL7230_INIT_SEQ] = {
+-	0x00379000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* Channel1 // Need modify for 11a */
+-	0x13333100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* Channel1 // Need modify for 11a */
+-	0x841FF200 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* Need modify for 11a: 451FE2 */
+-	0x3FDFA300 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* Need modify for 11a: 5FDFA3 */
+-	0x7FD78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* 11b/g    // Need modify for 11a */
++	0x00379000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* Channel1 // Need modify for 11a */
++	0x13333100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* Channel1 // Need modify for 11a */
++	0x841FF200 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* Need modify for 11a: 451FE2 */
++	0x3FDFA300 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* Need modify for 11a: 5FDFA3 */
++	0x7FD78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* 11b/g    // Need modify for 11a */
+ 	/* RoberYu:20050113, Rev0.47 Regsiter Setting Guide */
+-	0x802B5500 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* Need modify for 11a: 8D1B55 */
+-	0x56AF3600 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0xCE020700 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* Need modify for 11a: 860207 */
+-	0x6EBC0800 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x221BB900 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0xE0000A00 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* Need modify for 11a: E0600A */
+-	0x08031B00 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* init 0x080B1B00 => 0x080F1B00 for 3 wire control TxGain(D10) */
++	0x802B5500 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* Need modify for 11a: 8D1B55 */
++	0x56AF3600 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW,
++	0xCE020700 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* Need modify for 11a: 860207 */
++	0x6EBC0800 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x221BB900 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW,
++	0xE0000A00 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* Need modify for 11a: E0600A */
++	0x08031B00 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* init 0x080B1B00 => 0x080F1B00 for 3 wire control TxGain(D10) */
+ 	/* RoberYu:20050113, Rev0.47 Regsiter Setting Guide */
+-	0x000A3C00 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* Need modify for 11a: 00143C */
+-	0xFFFFFD00 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x00000E00 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x1ABA8F00 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW  /* Need modify for 11a: 12BACF */
++	0x000A3C00 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* Need modify for 11a: 00143C */
++	0xFFFFFD00 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x00000E00 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x1ABA8F00 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW  /* Need modify for 11a: 12BACF */
+ };
+ 
+ static const unsigned long dwAL7230InitTableAMode[CB_AL7230_INIT_SEQ] = {
+-	0x0FF52000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* Channel184 // Need modify for 11b/g */
+-	0x00000100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* Channel184 // Need modify for 11b/g */
+-	0x451FE200 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* Need modify for 11b/g */
+-	0x5FDFA300 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* Need modify for 11b/g */
+-	0x67F78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* 11a    // Need modify for 11b/g */
+-	0x853F5500 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* Need modify for 11b/g, RoberYu:20050113 */
+-	0x56AF3600 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0xCE020700 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* Need modify for 11b/g */
+-	0x6EBC0800 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x221BB900 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0xE0600A00 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* Need modify for 11b/g */
+-	0x08031B00 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* init 0x080B1B00 => 0x080F1B00 for 3 wire control TxGain(D10) */
+-	0x00147C00 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* Need modify for 11b/g */
+-	0xFFFFFD00 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x00000E00 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW,
+-	0x12BACF00 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW  /* Need modify for 11b/g */
++	0x0FF52000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* Channel184 // Need modify for 11b/g */
++	0x00000100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* Channel184 // Need modify for 11b/g */
++	0x451FE200 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* Need modify for 11b/g */
++	0x5FDFA300 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* Need modify for 11b/g */
++	0x67F78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* 11a    // Need modify for 11b/g */
++	0x853F5500 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* Need modify for 11b/g, RoberYu:20050113 */
++	0x56AF3600 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW,
++	0xCE020700 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* Need modify for 11b/g */
++	0x6EBC0800 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x221BB900 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW,
++	0xE0600A00 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* Need modify for 11b/g */
++	0x08031B00 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* init 0x080B1B00 => 0x080F1B00 for 3 wire control TxGain(D10) */
++	0x00147C00 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* Need modify for 11b/g */
++	0xFFFFFD00 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x00000E00 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW,
++	0x12BACF00 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW  /* Need modify for 11b/g */
+ };
+ 
+ static const unsigned long dwAL7230ChannelTable0[CB_MAX_CHANNEL] = {
+-	0x00379000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  1, Tf = 2412MHz */
+-	0x00379000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  2, Tf = 2417MHz */
+-	0x00379000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  3, Tf = 2422MHz */
+-	0x00379000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  4, Tf = 2427MHz */
+-	0x0037A000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  5, Tf = 2432MHz */
+-	0x0037A000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  6, Tf = 2437MHz */
+-	0x0037A000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  7, Tf = 2442MHz */
+-	0x0037A000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  8, Tf = 2447MHz //RobertYu: 20050218, update for APNode 0.49 */
+-	0x0037B000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  9, Tf = 2452MHz //RobertYu: 20050218, update for APNode 0.49 */
+-	0x0037B000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 10, Tf = 2457MHz //RobertYu: 20050218, update for APNode 0.49 */
+-	0x0037B000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 11, Tf = 2462MHz //RobertYu: 20050218, update for APNode 0.49 */
+-	0x0037B000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 12, Tf = 2467MHz //RobertYu: 20050218, update for APNode 0.49 */
+-	0x0037C000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 13, Tf = 2472MHz //RobertYu: 20050218, update for APNode 0.49 */
+-	0x0037C000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 14, Tf = 2484MHz */
++	0x00379000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  1, Tf = 2412MHz */
++	0x00379000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  2, Tf = 2417MHz */
++	0x00379000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  3, Tf = 2422MHz */
++	0x00379000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  4, Tf = 2427MHz */
++	0x0037A000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  5, Tf = 2432MHz */
++	0x0037A000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  6, Tf = 2437MHz */
++	0x0037A000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  7, Tf = 2442MHz */
++	0x0037A000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  8, Tf = 2447MHz //RobertYu: 20050218, update for APNode 0.49 */
++	0x0037B000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  9, Tf = 2452MHz //RobertYu: 20050218, update for APNode 0.49 */
++	0x0037B000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 10, Tf = 2457MHz //RobertYu: 20050218, update for APNode 0.49 */
++	0x0037B000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 11, Tf = 2462MHz //RobertYu: 20050218, update for APNode 0.49 */
++	0x0037B000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 12, Tf = 2467MHz //RobertYu: 20050218, update for APNode 0.49 */
++	0x0037C000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 13, Tf = 2472MHz //RobertYu: 20050218, update for APNode 0.49 */
++	0x0037C000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 14, Tf = 2484MHz */
+ 
+ 	/* 4.9G => Ch 183, 184, 185, 187, 188, 189, 192, 196  (Value:15 ~ 22) */
+-	0x0FF52000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 183, Tf = 4915MHz (15) */
+-	0x0FF52000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 184, Tf = 4920MHz (16) */
+-	0x0FF52000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 185, Tf = 4925MHz (17) */
+-	0x0FF52000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 187, Tf = 4935MHz (18) */
+-	0x0FF52000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 188, Tf = 4940MHz (19) */
+-	0x0FF52000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 189, Tf = 4945MHz (20) */
+-	0x0FF53000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 192, Tf = 4960MHz (21) */
+-	0x0FF53000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 196, Tf = 4980MHz (22) */
++	0x0FF52000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 183, Tf = 4915MHz (15) */
++	0x0FF52000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 184, Tf = 4920MHz (16) */
++	0x0FF52000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 185, Tf = 4925MHz (17) */
++	0x0FF52000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 187, Tf = 4935MHz (18) */
++	0x0FF52000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 188, Tf = 4940MHz (19) */
++	0x0FF52000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 189, Tf = 4945MHz (20) */
++	0x0FF53000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 192, Tf = 4960MHz (21) */
++	0x0FF53000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 196, Tf = 4980MHz (22) */
+ 
+ 	/* 5G => Ch 7, 8, 9, 11, 12, 16, 34, 36, 38, 40, 42, 44, 46, 48, 52, 56, 60, 64,
+ 	 * 100, 104, 108, 112, 116, 120, 124, 128, 132, 136, 140, 149, 153, 157, 161, 165  (Value 23 ~ 56) */
+ 
+-	0x0FF54000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =   7, Tf = 5035MHz (23) */
+-	0x0FF54000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =   8, Tf = 5040MHz (24) */
+-	0x0FF54000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =   9, Tf = 5045MHz (25) */
+-	0x0FF54000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  11, Tf = 5055MHz (26) */
+-	0x0FF54000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  12, Tf = 5060MHz (27) */
+-	0x0FF55000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  16, Tf = 5080MHz (28) */
+-	0x0FF56000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  34, Tf = 5170MHz (29) */
+-	0x0FF56000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  36, Tf = 5180MHz (30) */
+-	0x0FF57000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  38, Tf = 5190MHz (31) //RobertYu: 20050218, update for APNode 0.49 */
+-	0x0FF57000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  40, Tf = 5200MHz (32) */
+-	0x0FF57000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  42, Tf = 5210MHz (33) */
+-	0x0FF57000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  44, Tf = 5220MHz (34) */
+-	0x0FF57000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  46, Tf = 5230MHz (35) */
+-	0x0FF57000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  48, Tf = 5240MHz (36) */
+-	0x0FF58000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  52, Tf = 5260MHz (37) */
+-	0x0FF58000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  56, Tf = 5280MHz (38) */
+-	0x0FF58000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  60, Tf = 5300MHz (39) */
+-	0x0FF59000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  64, Tf = 5320MHz (40) */
 -
- static void SwLedControlMode6(struct _adapter *padapter,
- 			      enum LED_CTL_MODE LedAction)
- {
+-	0x0FF5C000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 100, Tf = 5500MHz (41) */
+-	0x0FF5C000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 104, Tf = 5520MHz (42) */
+-	0x0FF5C000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 108, Tf = 5540MHz (43) */
+-	0x0FF5D000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 112, Tf = 5560MHz (44) */
+-	0x0FF5D000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 116, Tf = 5580MHz (45) */
+-	0x0FF5D000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 120, Tf = 5600MHz (46) */
+-	0x0FF5E000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 124, Tf = 5620MHz (47) */
+-	0x0FF5E000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 128, Tf = 5640MHz (48) */
+-	0x0FF5E000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 132, Tf = 5660MHz (49) */
+-	0x0FF5F000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 136, Tf = 5680MHz (50) */
+-	0x0FF5F000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 140, Tf = 5700MHz (51) */
+-	0x0FF60000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 149, Tf = 5745MHz (52) */
+-	0x0FF60000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 153, Tf = 5765MHz (53) */
+-	0x0FF60000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 157, Tf = 5785MHz (54) */
+-	0x0FF61000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 161, Tf = 5805MHz (55) */
+-	0x0FF61000 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW  /* channel = 165, Tf = 5825MHz (56) */
++	0x0FF54000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =   7, Tf = 5035MHz (23) */
++	0x0FF54000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =   8, Tf = 5040MHz (24) */
++	0x0FF54000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =   9, Tf = 5045MHz (25) */
++	0x0FF54000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  11, Tf = 5055MHz (26) */
++	0x0FF54000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  12, Tf = 5060MHz (27) */
++	0x0FF55000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  16, Tf = 5080MHz (28) */
++	0x0FF56000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  34, Tf = 5170MHz (29) */
++	0x0FF56000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  36, Tf = 5180MHz (30) */
++	0x0FF57000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  38, Tf = 5190MHz (31) //RobertYu: 20050218, update for APNode 0.49 */
++	0x0FF57000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  40, Tf = 5200MHz (32) */
++	0x0FF57000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  42, Tf = 5210MHz (33) */
++	0x0FF57000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  44, Tf = 5220MHz (34) */
++	0x0FF57000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  46, Tf = 5230MHz (35) */
++	0x0FF57000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  48, Tf = 5240MHz (36) */
++	0x0FF58000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  52, Tf = 5260MHz (37) */
++	0x0FF58000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  56, Tf = 5280MHz (38) */
++	0x0FF58000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  60, Tf = 5300MHz (39) */
++	0x0FF59000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  64, Tf = 5320MHz (40) */
++
++	0x0FF5C000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 100, Tf = 5500MHz (41) */
++	0x0FF5C000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 104, Tf = 5520MHz (42) */
++	0x0FF5C000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 108, Tf = 5540MHz (43) */
++	0x0FF5D000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 112, Tf = 5560MHz (44) */
++	0x0FF5D000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 116, Tf = 5580MHz (45) */
++	0x0FF5D000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 120, Tf = 5600MHz (46) */
++	0x0FF5E000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 124, Tf = 5620MHz (47) */
++	0x0FF5E000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 128, Tf = 5640MHz (48) */
++	0x0FF5E000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 132, Tf = 5660MHz (49) */
++	0x0FF5F000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 136, Tf = 5680MHz (50) */
++	0x0FF5F000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 140, Tf = 5700MHz (51) */
++	0x0FF60000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 149, Tf = 5745MHz (52) */
++	0x0FF60000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 153, Tf = 5765MHz (53) */
++	0x0FF60000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 157, Tf = 5785MHz (54) */
++	0x0FF61000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 161, Tf = 5805MHz (55) */
++	0x0FF61000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW  /* channel = 165, Tf = 5825MHz (56) */
+ };
+ 
+ static const unsigned long dwAL7230ChannelTable1[CB_MAX_CHANNEL] = {
+-	0x13333100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  1, Tf = 2412MHz */
+-	0x1B333100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  2, Tf = 2417MHz */
+-	0x03333100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  3, Tf = 2422MHz */
+-	0x0B333100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  4, Tf = 2427MHz */
+-	0x13333100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  5, Tf = 2432MHz */
+-	0x1B333100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  6, Tf = 2437MHz */
+-	0x03333100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  7, Tf = 2442MHz */
+-	0x0B333100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  8, Tf = 2447MHz */
+-	0x13333100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  9, Tf = 2452MHz */
+-	0x1B333100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 10, Tf = 2457MHz */
+-	0x03333100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 11, Tf = 2462MHz */
+-	0x0B333100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 12, Tf = 2467MHz */
+-	0x13333100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 13, Tf = 2472MHz */
+-	0x06666100+(BY_AL7230_REG_LEN<<3)+IFREGCTL_REGW, /* channel = 14, Tf = 2484MHz */
++	0x13333100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  1, Tf = 2412MHz */
++	0x1B333100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  2, Tf = 2417MHz */
++	0x03333100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  3, Tf = 2422MHz */
++	0x0B333100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  4, Tf = 2427MHz */
++	0x13333100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  5, Tf = 2432MHz */
++	0x1B333100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  6, Tf = 2437MHz */
++	0x03333100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  7, Tf = 2442MHz */
++	0x0B333100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  8, Tf = 2447MHz */
++	0x13333100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  9, Tf = 2452MHz */
++	0x1B333100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 10, Tf = 2457MHz */
++	0x03333100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 11, Tf = 2462MHz */
++	0x0B333100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 12, Tf = 2467MHz */
++	0x13333100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 13, Tf = 2472MHz */
++	0x06666100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 14, Tf = 2484MHz */
+ 
+ 	/* 4.9G => Ch 183, 184, 185, 187, 188, 189, 192, 196  (Value:15 ~ 22) */
+-	0x1D555100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 183, Tf = 4915MHz (15) */
+-	0x00000100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 184, Tf = 4920MHz (16) */
+-	0x02AAA100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 185, Tf = 4925MHz (17) */
+-	0x08000100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 187, Tf = 4935MHz (18) */
+-	0x0AAAA100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 188, Tf = 4940MHz (19) */
+-	0x0D555100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 189, Tf = 4945MHz (20) */
+-	0x15555100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 192, Tf = 4960MHz (21) */
+-	0x00000100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 196, Tf = 4980MHz (22) */
++	0x1D555100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 183, Tf = 4915MHz (15) */
++	0x00000100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 184, Tf = 4920MHz (16) */
++	0x02AAA100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 185, Tf = 4925MHz (17) */
++	0x08000100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 187, Tf = 4935MHz (18) */
++	0x0AAAA100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 188, Tf = 4940MHz (19) */
++	0x0D555100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 189, Tf = 4945MHz (20) */
++	0x15555100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 192, Tf = 4960MHz (21) */
++	0x00000100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 196, Tf = 4980MHz (22) */
+ 
+ 	/* 5G => Ch 7, 8, 9, 11, 12, 16, 34, 36, 38, 40, 42, 44, 46, 48, 52, 56, 60, 64,
+ 	 * 100, 104, 108, 112, 116, 120, 124, 128, 132, 136, 140, 149, 153, 157, 161, 165  (Value 23 ~ 56) */
+-	0x1D555100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =   7, Tf = 5035MHz (23) */
+-	0x00000100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =   8, Tf = 5040MHz (24) */
+-	0x02AAA100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =   9, Tf = 5045MHz (25) */
+-	0x08000100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  11, Tf = 5055MHz (26) */
+-	0x0AAAA100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  12, Tf = 5060MHz (27) */
+-	0x15555100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  16, Tf = 5080MHz (28) */
+-	0x05555100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  34, Tf = 5170MHz (29) */
+-	0x0AAAA100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  36, Tf = 5180MHz (30) */
+-	0x10000100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  38, Tf = 5190MHz (31) */
+-	0x15555100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  40, Tf = 5200MHz (32) */
+-	0x1AAAA100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  42, Tf = 5210MHz (33) */
+-	0x00000100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  44, Tf = 5220MHz (34) */
+-	0x05555100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  46, Tf = 5230MHz (35) */
+-	0x0AAAA100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  48, Tf = 5240MHz (36) */
+-	0x15555100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  52, Tf = 5260MHz (37) */
+-	0x00000100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  56, Tf = 5280MHz (38) */
+-	0x0AAAA100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  60, Tf = 5300MHz (39) */
+-	0x15555100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  64, Tf = 5320MHz (40) */
+-	0x15555100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 100, Tf = 5500MHz (41) */
+-	0x00000100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 104, Tf = 5520MHz (42) */
+-	0x0AAAA100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 108, Tf = 5540MHz (43) */
+-	0x15555100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 112, Tf = 5560MHz (44) */
+-	0x00000100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 116, Tf = 5580MHz (45) */
+-	0x0AAAA100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 120, Tf = 5600MHz (46) */
+-	0x15555100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 124, Tf = 5620MHz (47) */
+-	0x00000100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 128, Tf = 5640MHz (48) */
+-	0x0AAAA100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 132, Tf = 5660MHz (49) */
+-	0x15555100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 136, Tf = 5680MHz (50) */
+-	0x00000100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 140, Tf = 5700MHz (51) */
+-	0x18000100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 149, Tf = 5745MHz (52) */
+-	0x02AAA100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 153, Tf = 5765MHz (53) */
+-	0x0D555100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 157, Tf = 5785MHz (54) */
+-	0x18000100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 161, Tf = 5805MHz (55) */
+-	0x02AAA100 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW  /* channel = 165, Tf = 5825MHz (56) */
++	0x1D555100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =   7, Tf = 5035MHz (23) */
++	0x00000100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =   8, Tf = 5040MHz (24) */
++	0x02AAA100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =   9, Tf = 5045MHz (25) */
++	0x08000100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  11, Tf = 5055MHz (26) */
++	0x0AAAA100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  12, Tf = 5060MHz (27) */
++	0x15555100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  16, Tf = 5080MHz (28) */
++	0x05555100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  34, Tf = 5170MHz (29) */
++	0x0AAAA100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  36, Tf = 5180MHz (30) */
++	0x10000100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  38, Tf = 5190MHz (31) */
++	0x15555100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  40, Tf = 5200MHz (32) */
++	0x1AAAA100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  42, Tf = 5210MHz (33) */
++	0x00000100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  44, Tf = 5220MHz (34) */
++	0x05555100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  46, Tf = 5230MHz (35) */
++	0x0AAAA100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  48, Tf = 5240MHz (36) */
++	0x15555100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  52, Tf = 5260MHz (37) */
++	0x00000100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  56, Tf = 5280MHz (38) */
++	0x0AAAA100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  60, Tf = 5300MHz (39) */
++	0x15555100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  64, Tf = 5320MHz (40) */
++	0x15555100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 100, Tf = 5500MHz (41) */
++	0x00000100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 104, Tf = 5520MHz (42) */
++	0x0AAAA100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 108, Tf = 5540MHz (43) */
++	0x15555100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 112, Tf = 5560MHz (44) */
++	0x00000100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 116, Tf = 5580MHz (45) */
++	0x0AAAA100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 120, Tf = 5600MHz (46) */
++	0x15555100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 124, Tf = 5620MHz (47) */
++	0x00000100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 128, Tf = 5640MHz (48) */
++	0x0AAAA100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 132, Tf = 5660MHz (49) */
++	0x15555100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 136, Tf = 5680MHz (50) */
++	0x00000100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 140, Tf = 5700MHz (51) */
++	0x18000100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 149, Tf = 5745MHz (52) */
++	0x02AAA100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 153, Tf = 5765MHz (53) */
++	0x0D555100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 157, Tf = 5785MHz (54) */
++	0x18000100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 161, Tf = 5805MHz (55) */
++	0x02AAA100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW  /* channel = 165, Tf = 5825MHz (56) */
+ };
+ 
+ static const unsigned long dwAL7230ChannelTable2[CB_MAX_CHANNEL] = {
+-	0x7FD78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  1, Tf = 2412MHz */
+-	0x7FD78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  2, Tf = 2417MHz */
+-	0x7FD78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  3, Tf = 2422MHz */
+-	0x7FD78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  4, Tf = 2427MHz */
+-	0x7FD78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  5, Tf = 2432MHz */
+-	0x7FD78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  6, Tf = 2437MHz */
+-	0x7FD78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  7, Tf = 2442MHz */
+-	0x7FD78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  8, Tf = 2447MHz */
+-	0x7FD78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  9, Tf = 2452MHz */
+-	0x7FD78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 10, Tf = 2457MHz */
+-	0x7FD78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 11, Tf = 2462MHz */
+-	0x7FD78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 12, Tf = 2467MHz */
+-	0x7FD78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 13, Tf = 2472MHz */
+-	0x7FD78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 14, Tf = 2484MHz */
++	0x7FD78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  1, Tf = 2412MHz */
++	0x7FD78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  2, Tf = 2417MHz */
++	0x7FD78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  3, Tf = 2422MHz */
++	0x7FD78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  4, Tf = 2427MHz */
++	0x7FD78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  5, Tf = 2432MHz */
++	0x7FD78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  6, Tf = 2437MHz */
++	0x7FD78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  7, Tf = 2442MHz */
++	0x7FD78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  8, Tf = 2447MHz */
++	0x7FD78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  9, Tf = 2452MHz */
++	0x7FD78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 10, Tf = 2457MHz */
++	0x7FD78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 11, Tf = 2462MHz */
++	0x7FD78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 12, Tf = 2467MHz */
++	0x7FD78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 13, Tf = 2472MHz */
++	0x7FD78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 14, Tf = 2484MHz */
+ 
+ 	/* 4.9G => Ch 183, 184, 185, 187, 188, 189, 192, 196  (Value:15 ~ 22) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 183, Tf = 4915MHz (15) */
+-	0x67D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 184, Tf = 4920MHz (16) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 185, Tf = 4925MHz (17) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 187, Tf = 4935MHz (18) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 188, Tf = 4940MHz (19) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 189, Tf = 4945MHz (20) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 192, Tf = 4960MHz (21) */
+-	0x67D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 196, Tf = 4980MHz (22) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 183, Tf = 4915MHz (15) */
++	0x67D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 184, Tf = 4920MHz (16) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 185, Tf = 4925MHz (17) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 187, Tf = 4935MHz (18) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 188, Tf = 4940MHz (19) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 189, Tf = 4945MHz (20) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 192, Tf = 4960MHz (21) */
++	0x67D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 196, Tf = 4980MHz (22) */
+ 
+ 	/* 5G => Ch 7, 8, 9, 11, 12, 16, 34, 36, 38, 40, 42, 44, 46, 48, 52, 56, 60, 64,
+ 	 * 100, 104, 108, 112, 116, 120, 124, 128, 132, 136, 140, 149, 153, 157, 161, 165  (Value 23 ~ 56) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =   7, Tf = 5035MHz (23) */
+-	0x67D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =   8, Tf = 5040MHz (24) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =   9, Tf = 5045MHz (25) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  11, Tf = 5055MHz (26) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  12, Tf = 5060MHz (27) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  16, Tf = 5080MHz (28) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  34, Tf = 5170MHz (29) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  36, Tf = 5180MHz (30) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  38, Tf = 5190MHz (31) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  40, Tf = 5200MHz (32) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  42, Tf = 5210MHz (33) */
+-	0x67D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  44, Tf = 5220MHz (34) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  46, Tf = 5230MHz (35) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  48, Tf = 5240MHz (36) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  52, Tf = 5260MHz (37) */
+-	0x67D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  56, Tf = 5280MHz (38) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  60, Tf = 5300MHz (39) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel =  64, Tf = 5320MHz (40) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 100, Tf = 5500MHz (41) */
+-	0x67D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 104, Tf = 5520MHz (42) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 108, Tf = 5540MHz (43) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 112, Tf = 5560MHz (44) */
+-	0x67D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 116, Tf = 5580MHz (45) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 120, Tf = 5600MHz (46) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 124, Tf = 5620MHz (47) */
+-	0x67D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 128, Tf = 5640MHz (48) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 132, Tf = 5660MHz (49) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 136, Tf = 5680MHz (50) */
+-	0x67D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 140, Tf = 5700MHz (51) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 149, Tf = 5745MHz (52) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 153, Tf = 5765MHz (53) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 157, Tf = 5785MHz (54) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW, /* channel = 161, Tf = 5805MHz (55) */
+-	0x77D78400 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW  /* channel = 165, Tf = 5825MHz (56) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =   7, Tf = 5035MHz (23) */
++	0x67D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =   8, Tf = 5040MHz (24) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =   9, Tf = 5045MHz (25) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  11, Tf = 5055MHz (26) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  12, Tf = 5060MHz (27) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  16, Tf = 5080MHz (28) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  34, Tf = 5170MHz (29) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  36, Tf = 5180MHz (30) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  38, Tf = 5190MHz (31) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  40, Tf = 5200MHz (32) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  42, Tf = 5210MHz (33) */
++	0x67D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  44, Tf = 5220MHz (34) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  46, Tf = 5230MHz (35) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  48, Tf = 5240MHz (36) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  52, Tf = 5260MHz (37) */
++	0x67D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  56, Tf = 5280MHz (38) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  60, Tf = 5300MHz (39) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel =  64, Tf = 5320MHz (40) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 100, Tf = 5500MHz (41) */
++	0x67D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 104, Tf = 5520MHz (42) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 108, Tf = 5540MHz (43) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 112, Tf = 5560MHz (44) */
++	0x67D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 116, Tf = 5580MHz (45) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 120, Tf = 5600MHz (46) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 124, Tf = 5620MHz (47) */
++	0x67D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 128, Tf = 5640MHz (48) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 132, Tf = 5660MHz (49) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 136, Tf = 5680MHz (50) */
++	0x67D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 140, Tf = 5700MHz (51) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 149, Tf = 5745MHz (52) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 153, Tf = 5765MHz (53) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 157, Tf = 5785MHz (54) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* channel = 161, Tf = 5805MHz (55) */
++	0x77D78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW  /* channel = 165, Tf = 5825MHz (56) */
+ };
+ 
+ /*
+@@ -436,10 +436,10 @@ static bool s_bAL7230Init(struct vnt_private *priv)
+ 	/* Calibration */
+ 	MACvTimer0MicroSDelay(priv, 150);/* 150us */
+ 	/* TXDCOC:active, RCK:disable */
+-	ret &= IFRFbWriteEmbedded(priv, (0x9ABA8F00 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW));
++	ret &= IFRFbWriteEmbedded(priv, (0x9ABA8F00 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW));
+ 	MACvTimer0MicroSDelay(priv, 30);/* 30us */
+ 	/* TXDCOC:disable, RCK:active */
+-	ret &= IFRFbWriteEmbedded(priv, (0x3ABA8F00 + (BY_AL7230_REG_LEN<<3) + IFREGCTL_REGW));
++	ret &= IFRFbWriteEmbedded(priv, (0x3ABA8F00 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW));
+ 	MACvTimer0MicroSDelay(priv, 30);/* 30us */
+ 	/* TXDCOC:disable, RCK:disable */
+ 	ret &= IFRFbWriteEmbedded(priv, dwAL7230InitTable[CB_AL7230_INIT_SEQ-1]);
+@@ -550,7 +550,7 @@ static bool RFbAL2230Init(struct vnt_private *priv)
+ 	MACvWordRegBitsOff(dwIoBase, MAC_REG_SOFTPWRCTL, SOFTPWRCTL_SWPE3);
+ 
+ 	/* patch abnormal AL2230 frequency output */
+-	IFRFbWriteEmbedded(priv, (0x07168700 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW));
++	IFRFbWriteEmbedded(priv, (0x07168700 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW));
+ 
+ 	for (ii = 0; ii < CB_AL2230_INIT_SEQ; ii++)
+ 		ret &= IFRFbWriteEmbedded(priv, dwAL2230InitTable[ii]);
+@@ -560,9 +560,9 @@ static bool RFbAL2230Init(struct vnt_private *priv)
+ 	MACvWordRegBitsOn(dwIoBase, MAC_REG_SOFTPWRCTL, SOFTPWRCTL_SWPE3);
+ 
+ 	MACvTimer0MicroSDelay(priv, 150);/* 150us */
+-	ret &= IFRFbWriteEmbedded(priv, (0x00d80f00 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW));
++	ret &= IFRFbWriteEmbedded(priv, (0x00d80f00 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW));
+ 	MACvTimer0MicroSDelay(priv, 30);/* 30us */
+-	ret &= IFRFbWriteEmbedded(priv, (0x00780f00 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW));
++	ret &= IFRFbWriteEmbedded(priv, (0x00780f00 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW));
+ 	MACvTimer0MicroSDelay(priv, 30);/* 30us */
+ 	ret &= IFRFbWriteEmbedded(priv, dwAL2230InitTable[CB_AL2230_INIT_SEQ-1]);
+ 
+@@ -850,20 +850,20 @@ bool RFbRawSetPower(
+ 	case RF_AIROHA:
+ 		ret &= IFRFbWriteEmbedded(priv, dwAL2230PowerTable[byPwr]);
+ 		if (rate <= RATE_11M)
+-			ret &= IFRFbWriteEmbedded(priv, 0x0001B400 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW);
++			ret &= IFRFbWriteEmbedded(priv, 0x0001B400 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW);
+ 		else
+-			ret &= IFRFbWriteEmbedded(priv, 0x0005A400 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW);
++			ret &= IFRFbWriteEmbedded(priv, 0x0005A400 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW);
+ 
+ 		break;
+ 
+ 	case RF_AL2230S:
+ 		ret &= IFRFbWriteEmbedded(priv, dwAL2230PowerTable[byPwr]);
+ 		if (rate <= RATE_11M) {
+-			ret &= IFRFbWriteEmbedded(priv, 0x040C1400 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW);
+-			ret &= IFRFbWriteEmbedded(priv, 0x00299B00 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW);
++			ret &= IFRFbWriteEmbedded(priv, 0x040C1400 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW);
++			ret &= IFRFbWriteEmbedded(priv, 0x00299B00 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW);
+ 		} else {
+-			ret &= IFRFbWriteEmbedded(priv, 0x0005A400 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW);
+-			ret &= IFRFbWriteEmbedded(priv, 0x00099B00 + (BY_AL2230_REG_LEN<<3) + IFREGCTL_REGW);
++			ret &= IFRFbWriteEmbedded(priv, 0x0005A400 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW);
++			ret &= IFRFbWriteEmbedded(priv, 0x00099B00 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW);
+ 		}
+ 
+ 		break;
 -- 
 2.7.4
 
