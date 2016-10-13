@@ -1,104 +1,88 @@
 X-GM-THRID: 6340987629622788096
-X-Received: by 10.107.11.153 with SMTP id 25mr2081501iol.16.1476377165381;
-        Thu, 13 Oct 2016 09:46:05 -0700 (PDT)
+X-Received: by 10.31.169.22 with SMTP id s22mr1928045vke.34.1476376765126;
+        Thu, 13 Oct 2016 09:39:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.103.72 with SMTP id u69ls2584700itc.6.gmail; Thu, 13 Oct
- 2016 09:46:02 -0700 (PDT)
-X-Received: by 10.98.223.66 with SMTP id u63mr1931409pfg.3.1476377162855;
-        Thu, 13 Oct 2016 09:46:02 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from mail-lf0-x242.google.com (mail-lf0-x242.google.com. [2a00:1450:4010:c07::242])
-        by gmr-mx.google.com with ESMTPS id t8si2137318vkb.2.2016.10.13.09.46.02
+Received: by 10.107.141.15 with SMTP id p15ls2349308iod.36.gmail; Thu, 13 Oct
+ 2016 09:39:20 -0700 (PDT)
+X-Received: by 10.36.28.82 with SMTP id c79mr2377565itc.29.1476376760963;
+        Thu, 13 Oct 2016 09:39:20 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id t8si2133752vkb.2.2016.10.13.09.39.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 13 Oct 2016 09:46:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:4010:c07::242 as permitted sender) client-ip=2a00:1450:4010:c07::242;
+        Thu, 13 Oct 2016 09:39:20 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:4010:c07::242 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-lf0-x242.google.com with SMTP id x23so7800218lfi.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 13 Oct 2016 09:46:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=ghq0ngGC+taH/9WRHKLQejR/bruQEbxrBey3s7QY5gQ=;
-        b=1HQuQMfWPFPsFNaHZo1llNTVbdZJHXuLHthlN80etObOe38t2SrQa6RFTfwtNduKM0
-         r1jlFLqVjNLZChgv1JhguGZtoYT7+aU0AANEVyMYAn2EnBObkxdwl9r6gfMaetfO5FnI
-         LfEGCLfUH6WriRdifImBzL6tq8lHxGEDFmoQCeNee16Wba0gT27JvUshglpy1vsr9wbp
-         Jm1V3nJXuOzTUsIi4NXoCdMhtgnUEDSOIbHQn+HSccUYQ3otYz0CvvM8JZwRcBy3U72o
-         wHAAHsFngOEohopWHDMabYElMrwvVHenkvzx594UHZ+hGPWxHSz+8H2MENftQR6bW9I0
-         JXKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=ghq0ngGC+taH/9WRHKLQejR/bruQEbxrBey3s7QY5gQ=;
-        b=QYBQOHJYJPb0+92e8QmyPoKAflUFkcP53crr62PbvVDJ1rQqW0yOQu9uqnBHT4T8J7
-         OpfRL1ioP2KBNsrBxlivkz4Ib/6RWVPUv7yB7wfHx1QI9EfrypPyW1SwgifHUFXrSHpg
-         Mvb5LCzgq3Im01l8TF/FsvqhpB/U6IRPHsJh9WtTMcYpiWYr5Tr7iY55GhbrXFN2UAGx
-         pcGg4VlBcOhffbr+NdEJ4X6iuVD31GgOU25FGpWJpp4GdxcNVdDxt6q94IyTJ3xiMYfx
-         64V/ZhFdI7jttdACw8A+/bsVmVp1C3VgjO1LRtVN6QmQCelpPBS+kdUIX10rCEl6G4GX
-         G8uA==
-X-Gm-Message-State: AA6/9RlCYxvzmM2h3o7PAzitj97S1RpPRfzgQYThIppXWdBFeH0USlpfUo57djcbnr9IYA==
-X-Received: by 10.28.95.213 with SMTP id t204mr2746659wmb.18.1476377162385;
-        Thu, 13 Oct 2016 09:46:02 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from domino-MS-16Y1 ([93.122.248.0])
-        by smtp.gmail.com with ESMTPSA id i10sm9846925wjw.1.2016.10.13.09.46.01
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 13 Oct 2016 09:46:01 -0700 (PDT)
-Date: Thu, 13 Oct 2016 19:45:59 +0300
-From: Mihaela Muraru <mihaela.muraru21@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: netlogic: Compress return logic into one line
-Message-ID: <20161013164559.GA7204@domino-MS-16Y1>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.31,340,1473112800"; 
+   d="scan'208";a="240685712"
+Received: from ppp-seco11pareq2-46-193-142-73.wb.wifirst.net (HELO hadrien) ([46.193.142.73])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 13 Oct 2016 18:39:18 +0200
+Date: Thu, 13 Oct 2016 18:39:15 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Mihaela Muraru <mihaela.muraru21@gmail.com>
+cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: netlogic: Compress return
+ logic into one line
+In-Reply-To: <20161013163027.GA6040@domino-MS-16Y1>
+Message-ID: <alpine.DEB.2.10.1610131838520.3674@hadrien>
+References: <20161013163027.GA6040@domino-MS-16Y1>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Simplify function returns by merging assignment and return into
-one command line.
-Found with Coccinelle
-@@
-expression e, ret;
-@@
 
--ret =
-+return
-        e;
--return ret;
 
-Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
+On Thu, 13 Oct 2016, Mihaela Muraru wrote:
 
----
-Changes in v2:
-	- delete unnecessary braces
----
- drivers/staging/netlogic/xlr_net.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+> Simplify function returns by merging assignment and return into
+> one command line.
+> Found with Coccinelle
+> @@
+> expression e, ret;
+> @@
+>
+> -ret =
+> +return
+>         e;
+> -return ret;
+>
+> Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
+> ---
+>  drivers/staging/netlogic/xlr_net.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/netlogic/xlr_net.c b/drivers/staging/netlogic/xlr_net.c
+> index 552a7dc..766969d 100644
+> --- a/drivers/staging/netlogic/xlr_net.c
+> +++ b/drivers/staging/netlogic/xlr_net.c
+> @@ -1006,8 +1006,7 @@ static int xlr_net_probe(struct platform_device *pdev)
+>  	adapter = (struct xlr_adapter *)
+>  		devm_kzalloc(&pdev->dev, sizeof(*adapter), GFP_KERNEL);
+>  	if (!adapter) {
+> -		err = -ENOMEM;
+> -		return err;
+> +		return -ENOMEM;
+>  	}
 
-diff --git a/drivers/staging/netlogic/xlr_net.c b/drivers/staging/netlogic/xlr_net.c
-index 552a7dc..7fa1a61 100644
---- a/drivers/staging/netlogic/xlr_net.c
-+++ b/drivers/staging/netlogic/xlr_net.c
-@@ -1005,10 +1005,8 @@ static int xlr_net_probe(struct platform_device *pdev)
- 	 */
- 	adapter = (struct xlr_adapter *)
- 		devm_kzalloc(&pdev->dev, sizeof(*adapter), GFP_KERNEL);
--	if (!adapter) {
--		err = -ENOMEM;
--		return err;
--	}
-+	if (!adapter)
-+		return -ENOMEM;
- 
- 	/*
- 	 * XLR and XLS have 1 and 2 NAE controller respectively
--- 
-2.7.4
+Now there is only one statement in the if branch so the braces aren't
+needed.
 
+julia
+
+>
+>  	/*
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20161013163027.GA6040%40domino-MS-16Y1.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
