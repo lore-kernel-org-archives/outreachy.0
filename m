@@ -1,88 +1,57 @@
-X-GM-THRID: 6335466366571642880
-X-Received: by 10.66.251.231 with SMTP id zn7mr7932478pac.63.1475090711790;
-        Wed, 28 Sep 2016 12:25:11 -0700 (PDT)
+X-GM-THRID: 6340923647299944448
+X-Received: by 10.13.243.198 with SMTP id c189mr1578534ywf.158.1476361334637;
+        Thu, 13 Oct 2016 05:22:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.9.151 with SMTP id q23ls1260079otd.18.gmail; Wed, 28 Sep
- 2016 12:25:11 -0700 (PDT)
-X-Received: by 10.31.180.71 with SMTP id d68mr2046630vkf.3.1475090711435;
-        Wed, 28 Sep 2016 12:25:11 -0700 (PDT)
-Return-Path: <gnudevliz@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id e66si2465866pfk.2.2016.09.28.12.25.11
+Received: by 10.36.105.201 with SMTP id e192ls5853343itc.11.canary; Thu, 13
+ Oct 2016 05:22:13 -0700 (PDT)
+X-Received: by 10.107.51.210 with SMTP id z201mr1761630ioz.54.1476361333871;
+        Thu, 13 Oct 2016 05:22:13 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id x14si1685174vkd.3.2016.10.13.05.22.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Sep 2016 12:25:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Thu, 13 Oct 2016 05:22:13 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=gnudevliz@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id n24so2487881pfb.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 28 Sep 2016 12:25:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=zfuRQNz6Ja24BuXFwhoFRy5Pfg+CE7YPRN3xFGL1lEc=;
-        b=tp/emGYOu0GMCIjjEoPT1zzuztndWFoxoYv5uvQ43BJifYrurf1ydA2gKa8CLwW9yG
-         OMqBiOQgtt1MxDWhO9Yah0gHqfo+V4NHW2TiHcvORAlT+lIGgp87vYWVthfG+bAlSeZp
-         XWALolXfsdiLLBKUaalqREv9QH05N7Yupkr9xCuLLKyx9XmRmgrr+hIHslcRchc9o02G
-         ReVzUlmN90dup5g5k1ld+bvR420cgD2m3xApi0jOuD703hK8m/IMEPaYf5xCPnXS8Pdg
-         kVuuCM720httSUsPg3j0wuIa+A+CRh9MZ3DtjdDT64VJ8tePpfgAKYp4Ts7I2iCMTYzn
-         KmDw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=zfuRQNz6Ja24BuXFwhoFRy5Pfg+CE7YPRN3xFGL1lEc=;
-        b=XV8z03+5k8qtWRlMG4lggy9994U/RXoEHzCuQ4lk8WtzjGGF31FFIbpd3+bn2il78Y
-         unOuP2VegI129PYtSViHvV3qt0TvpiD480nzPLo5IwEdAhZxXupzfGYDfHOPV6wGQbWb
-         emLpThiR4jSZHU0rX1hWyLDyuLR8NdrqBy9Dd5YUCRpLVN9lK/Yx1ZONwS8jdur/CjzP
-         Qbx8GyDTnIxRL7LoRr+tQKmMkGmEJ/8RnGP6daiV7DyuOw0SzS+8raxHErdc7HOBh+ks
-         Qu4E3Qr3/amxdTjn9A3pA3kzzwnH7iJz4cqbEVyUL/66s2xQWQgrin5NuHYRKeEP58Lv
-         F8Pg==
-X-Gm-Message-State: AE9vXwNlzQbtV0X4tsVuo+Xwi6csL/jYiuZB1lXTLpCfO0XrlHTvPcKqG983aaShUVpQIQ==
-X-Received: by 10.98.91.197 with SMTP id p188mr60615346pfb.101.1475090711233;
-        Wed, 28 Sep 2016 12:25:11 -0700 (PDT)
-Return-Path: <gnudevliz@gmail.com>
-Received: from localhost ([2601:644:300:fd6b:4e0f:6eff:fe69:e9ea])
-        by smtp.gmail.com with ESMTPSA id q25sm14405223pfj.48.2016.09.28.12.25.10
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Sep 2016 12:25:11 -0700 (PDT)
-Date: Wed, 28 Sep 2016 12:25:08 -0700
-From: Elizabeth Ferdman <gnudevliz@gmail.com>
-To: amsfield22@gmail.com, outreachy-kernel@googlegroups.com
-Subject: Rebase/line wrap question
-Message-ID: <20160928192508.GB2193@localhost>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.31,339,1473112800"; 
+   d="scan'208";a="240635982"
+Received: from lstlambert-656-1-236-67.w82-127.abo.wanadoo.fr (HELO hadrien.local) ([82.127.3.67])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 13 Oct 2016 14:21:55 +0200
+Date: Thu, 13 Oct 2016 14:21:53 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: outreachy-kernel@googlegroups.com
+Subject: Kernel Recipes 2016: Videos and slides are available online! (fwd)
+Message-ID: <alpine.DEB.2.10.1610131421110.3086@hadrien>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-Hey Alison,
+There are many interesting talks in this conference.
 
-I received some feedback from Greg that I want
-to fix and I have a bunch of questions. The plus side is that maybe
-some of the answers could go into the tutorial.
+julia
 
-First he said "please wrap your changelog comments at 72 columns."
+---------- Forwarded message ----------
+Date: Thu, 13 Oct 2016 11:46:09 +0000
+From: Kernel Recipes <wordpress@kernel-recipes.org>
+Reply-To: Kernel Recipes <kernel-recipes@hupstream.com>
+To: Julia.Lawall@lip6.fr
+Subject: Kernel Recipes 2016: Videos and slides are available online!
 
-Is this something I add to my .vimrc? I've been using "git commit -m".
-Is that causing the issue? I thought git commit messages were supposed
-to be less than 50 chars anyway. I'm confused.
+Kernel Recipes 2016 is over and we hope you enjoyed it.
 
-The other issue was that my commit didn't apply to his tree. He says
-please rebase and resend. I think I need to do:
+You can now watch the videos and slides of this 5th edition:
 
-$ git fetch origin
-$ git rebase origin/staging-testing
-Then reformat the patch?
-$ git format-patch -o ~/mypatches/ HEAD^
-$ mutt -H <file>
+- Videos: https://kernel-recipes.org/en/2016/all-the-videos/
+- Photos: https://kernel-recipes.org/en/2016/photos/kernel-recipes-2016-tour/
+- Speakers Drawings: https://kernel-recipes.org/en/2016/photos/sketches-2016-speakers/
+- Attendees Drawings: https://kernel-recipes.org/en/2016/photos/sketches-attendees/
 
-So I don't need to uncommit/recommit?
+Thanks again for attending and see you around for Kernel Recipes 2017 in september 2017!
 
-Thanks,
-Liz
+The Kernel Recipes Team
+
 
 
