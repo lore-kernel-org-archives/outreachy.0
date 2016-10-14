@@ -1,107 +1,162 @@
-X-GM-THRID: 8361998286848
-X-Received: by 10.182.112.167 with SMTP id ir7mr60395352obb.29.1426390981511;
-        Sat, 14 Mar 2015 20:43:01 -0700 (PDT)
+X-GM-THRID: 6341057310426660864
+X-Received: by 10.129.73.150 with SMTP id w144mr2846186ywa.28.1476423773782;
+        Thu, 13 Oct 2016 22:42:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.42.164 with SMTP id c33ls2315832qga.42.gmail; Sat, 14 Mar
- 2015 20:43:01 -0700 (PDT)
-X-Received: by 10.236.230.39 with SMTP id i37mr55557345yhq.47.1426390981332;
-        Sat, 14 Mar 2015 20:43:01 -0700 (PDT)
-Return-Path: <iskaranth@gmail.com>
-Received: from mail-pd0-x22b.google.com (mail-pd0-x22b.google.com. [2607:f8b0:400e:c02::22b])
-        by gmr-mx.google.com with ESMTPS id gu4si1135009pac.1.2015.03.14.20.43.01
+Received: by 10.157.36.85 with SMTP id p79ls7034715ota.25.gmail; Thu, 13 Oct
+ 2016 22:42:53 -0700 (PDT)
+X-Received: by 10.200.53.101 with SMTP id z34mr2759740qtb.72.1476423773271;
+        Thu, 13 Oct 2016 22:42:53 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id v187si2314279ith.2.2016.10.13.22.42.52
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 14 Mar 2015 20:43:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of iskaranth@gmail.com designates 2607:f8b0:400e:c02::22b as permitted sender) client-ip=2607:f8b0:400e:c02::22b;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 13 Oct 2016 22:42:53 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of iskaranth@gmail.com designates 2607:f8b0:400e:c02::22b as permitted sender) smtp.mail=iskaranth@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x22b.google.com with SMTP id cz9so23887471pdb.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 14 Mar 2015 20:43:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id;
-        bh=e/rwXOGSWpDRKIhcCZa/HOO4BYOaCDO5nttq6LhKU9s=;
-        b=PMan6yYCyDdQpqxWWXnsN/Tad6hYbPgNJfQuCOoT81lgrRB0hRTielBsc6SvCTBErv
-         YZpolAlFdQldq50fg81xydaAzAYPUWmviifuq0Ifv+roYa10DY0eQOH+Lvz0IumgTEgh
-         qG1GUwnr3v6jgSdBSLR2SaYBoBUDIRCQIoauI0KL2YfzFV4Z31IRXlJEZdHtrB/8Mtps
-         xm0CvNWM6WC/ZzHnxI9wTmr7DulsWz0IG0Gyjoqvz+5LKXRNqz5QQLMOYj8gK9h89eDP
-         6eO8nY2FlALzbpSNsuzc/TQTr+U/TUMxgeZe4LPiHXapI1XsKKHiRHRAMJLSAGMA3pDa
-         B5vg==
-X-Received: by 10.66.63.7 with SMTP id c7mr121729224pas.13.1426390981184;
-        Sat, 14 Mar 2015 20:43:01 -0700 (PDT)
-Return-Path: <iskaranth@gmail.com>
-Received: from localhost.localdomain ([222.117.133.143])
-        by mx.google.com with ESMTPSA id lr1sm10521846pab.39.2015.03.14.20.42.58
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 14 Mar 2015 20:43:00 -0700 (PDT)
-From: Supriya Karanth <iskaranth@gmail.com>
-To: iskaranth@gmail.com,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8192u: remove return from end of void function
-Date: Sun, 15 Mar 2015 12:42:52 +0900
-Message-Id: <1426390972-31372-1-git-send-email-iskaranth@gmail.com>
-X-Mailer: git-send-email 2.1.0
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.31,491,1473112800"; 
+   d="scan'208";a="240728497"
+Received: from ppp-seco11pareq2-46-193-142-73.wb.wifirst.net (HELO hadrien) ([46.193.142.73])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 14 Oct 2016 07:42:51 +0200
+Date: Fri, 14 Oct 2016 07:42:50 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Mihaela Muraru <mihaela.muraru21@gmail.com>
+cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: wilc1000: Compress return
+ logic into one line
+In-Reply-To: <20161013210051.GA8259@domino-MS-16Y1>
+Message-ID: <alpine.DEB.2.10.1610140741400.2969@hadrien>
+References: <20161013210051.GA8259@domino-MS-16Y1>
+User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 
-This patch removes the return statement at the end of a void
-function as it is not necessary.
 
-found by checkpatch.pl: WARNING: void function return statements
-are not generally useful
 
-changes made using coccinelle script:
+On Fri, 14 Oct 2016, Mihaela Muraru wrote:
 
-@@
-@@
+> Simplify function returns by merging assignment and return into
+> one command line.
+>
+> Delete unnecesarry return variable.
+>
+> Found with Coccinelle
+> @@
+> expression e, ret;
+> @@
+>
+> -ret =
+> +return
+>         e;
+> -return ret
+>
+> Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
+> ---
+>  drivers/staging/wilc1000/coreconfigurator.c       |  4 +---
+>  drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 18 +++++-------------
+>  2 files changed, 6 insertions(+), 16 deletions(-)
+>
+> diff --git a/drivers/staging/wilc1000/coreconfigurator.c b/drivers/staging/wilc1000/coreconfigurator.c
+> index 4b51c0a..6229947 100644
+> --- a/drivers/staging/wilc1000/coreconfigurator.c
+> +++ b/drivers/staging/wilc1000/coreconfigurator.c
+> @@ -224,9 +224,7 @@ static inline u16 get_asoc_status(u8 *data)
+>  	u16 asoc_status;
+>
+>  	asoc_status = data[3];
+> -	asoc_status = (asoc_status << 8) | data[2];
+> -
+> -	return asoc_status;
+> +	return (asoc_status << 8) | data[2];
+>  }
+>
+>  static inline u16 get_asoc_id(u8 *data)
+> diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+> index 60d8b05..60e1bc3 100644
+> --- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+> +++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+> @@ -1590,28 +1590,25 @@ static int remain_on_channel(struct wiphy *wiphy,
+>  	priv->strRemainOnChanParams.u32ListenDuration = duration;
+>  	priv->strRemainOnChanParams.u32ListenSessionID++;
+>
+> -	s32Error = wilc_remain_on_channel(vif,
+> +	return wilc_remain_on_channel(vif,
+>  				priv->strRemainOnChanParams.u32ListenSessionID,
+>  				duration, chan->hw_value,
+>  				WILC_WFI_RemainOnChannelExpired,
+>  				WILC_WFI_RemainOnChannelReady, (void *)priv);
+> -
+> -	return s32Error;
 
-... when != if (...) return;
-    when != if (...) { ... return;}
--return;
+I see that in the other cases you have deleted the varable declaration
+too, so I guess that in this case it was needed.  But it would be nice to
+have another patch changing the horrible name.  err or ret would be fine.
 
-Signed-off-by: Supriya Karanth <iskaranth@gmail.com>
----
- drivers/staging/rtl8192u/r8192U_core.c | 5 -----
- 1 file changed, 5 deletions(-)
+julia
 
-diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
-index 8f7a321..6f89939 100644
---- a/drivers/staging/rtl8192u/r8192U_core.c
-+++ b/drivers/staging/rtl8192u/r8192U_core.c
-@@ -827,7 +827,6 @@ void rtl8192_rtx_disable(struct net_device *dev)
- 		netdev_warn(dev, "skb_queue not empty\n");
- 
- 	skb_queue_purge(&priv->skb_queue);
--	return;
- }
- 
- inline u16 ieeerate2rtlrate(int rate)
-@@ -966,8 +965,6 @@ static void rtl8192_hard_data_xmit(struct sk_buff *skb, struct net_device *dev,
- 	ret = rtl8192_tx(dev, skb);
- 
- 	spin_unlock_irqrestore(&priv->tx_lock, flags);
--
--	return;
- }
- 
- /* This is a rough attempt to TX a frame
-@@ -2067,7 +2064,6 @@ static void rtl8192_refresh_supportrate(struct r8192_priv *priv)
- 		memcpy(ieee->Regdot11HTOperationalRateSet, ieee->RegHTSuppRateSet, 16);
- 	else
- 		memset(ieee->Regdot11HTOperationalRateSet, 0, 16);
--	return;
- }
- 
- static u8 rtl8192_getSupportedWireleeMode(struct net_device *dev)
-@@ -2507,7 +2503,6 @@ static void rtl8192_read_eeprom_info(struct net_device *dev)
- 	//we need init DIG RATR table here again.
- 
- 	RT_TRACE(COMP_EPROM, "<===========%s()\n", __func__);
--	return;
- }
- 
- static short rtl8192_get_channel_map(struct net_device *dev)
--- 
-2.1.0
-
+>  }
+>
+>  static int cancel_remain_on_channel(struct wiphy *wiphy,
+>  				    struct wireless_dev *wdev,
+>  				    u64 cookie)
+>  {
+> -	s32 s32Error = 0;
+>  	struct wilc_priv *priv;
+>  	struct wilc_vif *vif;
+>
+>  	priv = wiphy_priv(wiphy);
+>  	vif = netdev_priv(priv->dev);
+>
+> -	s32Error = wilc_listen_state_expired(vif, priv->strRemainOnChanParams.u32ListenSessionID);
+> -	return s32Error;
+> +	return wilc_listen_state_expired(vif,
+> +			priv->strRemainOnChanParams.u32ListenSessionID);
+>  }
+>
+>  static int mgmt_tx(struct wiphy *wiphy,
+> @@ -1935,12 +1932,10 @@ static int start_ap(struct wiphy *wiphy, struct net_device *dev,
+>  	wilc_wlan_set_bssid(dev, wl->vif[vif->idx]->src_addr, AP_MODE);
+>  	wilc_set_power_mgmt(vif, 0, 0);
+>
+> -	s32Error = wilc_add_beacon(vif, settings->beacon_interval,
+> +	return wilc_add_beacon(vif, settings->beacon_interval,
+>  				   settings->dtim_period, beacon->head_len,
+>  				   (u8 *)beacon->head, beacon->tail_len,
+>  				   (u8 *)beacon->tail);
+> -
+> -	return s32Error;
+>  }
+>
+>  static int change_beacon(struct wiphy *wiphy, struct net_device *dev,
+> @@ -1948,16 +1943,13 @@ static int change_beacon(struct wiphy *wiphy, struct net_device *dev,
+>  {
+>  	struct wilc_priv *priv;
+>  	struct wilc_vif *vif;
+> -	s32 s32Error = 0;
+>
+>  	priv = wiphy_priv(wiphy);
+>  	vif = netdev_priv(priv->dev);
+>
+> -	s32Error = wilc_add_beacon(vif, 0, 0, beacon->head_len,
+> +	return wilc_add_beacon(vif, 0, 0, beacon->head_len,
+>  				   (u8 *)beacon->head, beacon->tail_len,
+>  				   (u8 *)beacon->tail);
+> -
+> -	return s32Error;
+>  }
+>
+>  static int stop_ap(struct wiphy *wiphy, struct net_device *dev)
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20161013210051.GA8259%40domino-MS-16Y1.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
