@@ -1,58 +1,107 @@
-X-GM-THRID: 6470437626319994880
-X-Received: by 10.28.184.81 with SMTP id i78mr230736wmf.2.1506516157411;
-        Wed, 27 Sep 2017 05:42:37 -0700 (PDT)
+X-GM-THRID: 6341442141271621632
+X-Received: by 10.13.243.198 with SMTP id c189mr3648749ywf.158.1476482419949;
+        Fri, 14 Oct 2016 15:00:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.38.134 with SMTP id m128ls391286wmm.4.gmail; Wed, 27 Sep
- 2017 05:42:36 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QDPijh1vUMSh1bAkpBW9MNjqQi2EBrjVBOQkoJ2kBG2aH+mifOTFdSzEx4CTUhDeutPUB4t
-X-Received: by 10.28.7.196 with SMTP id 187mr190856wmh.7.1506516156479;
-        Wed, 27 Sep 2017 05:42:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506516156; cv=none;
-        d=google.com; s=arc-20160816;
-        b=sX0OLNKkzQ3aB76t7Mnuvc+JIFxpbDjXTgvUcxx0Lo3+/bU508qcia0cRgyIvrp6Ob
-         RAWPKfB1jxWnw5N2SJHNfhIxq0B5Jh+jVvqAjq82Z/YAF1eSeEP7BiOftUo1femBJQiQ
-         Q+B4ANfUI6k2GS5I4p8lYjzM6cai7ZWCW5BPWiVTB73PDdzEOSFkFTVFudY+735B0a4c
-         RtEYUBuOyjnJ4CYZzqbnUDHYlXBqwQz+P7MIAOIiBb6wUr9iXv8oSGhHf20xQafTsR0U
-         ig6r6DGoH/P6UFxnHeM5AIoVWYFpQsyB1BDEF9Fu41t9ozQcrv1uHCyg5eI4rgv5pCHw
-         5yBA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:message-id:subject:to:from:date
-         :arc-authentication-results;
-        bh=UFZCWI1rx+56XO6202wOKExRYERPoK4lk0JOvvppP4A=;
-        b=theqRRlkeFK9MQYk9kEtUucj1RkpX8DdTZrGDi5Gy05uZ79AlacUQitbo1tvY1F2HV
-         jrxcEtgp35+eGmxYePN3h1KME9/ldrVm+cBJ43dJqts5w/2wPELMzkEVhlxxUb4Nhmb0
-         8yEuty8uPkmaId80RVACXp8NaVweLVeR/f6xCshrwZK/fhloSgpWrAVnjIcdpjtlq7gW
-         pv/i9iiO8GyeNm/eqaB2T/ohxlopsJ/HsWvhpKN70fnEABZ/uE6MbV4sL4UnoVL0p1Gl
-         qRpagUdFWqD5BhsYjPaCprec1oVOKGdwiuN2/fTtCocoAuJvW7hDxWdpyI4XN/D+QYx/
-         zfNw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id p200si443876wmg.4.2017.09.27.05.42.36
+Received: by 10.157.7.18 with SMTP id 18ls9363434ote.9.gmail; Fri, 14 Oct 2016
+ 15:00:19 -0700 (PDT)
+X-Received: by 10.157.18.211 with SMTP id g77mr3706041otg.43.1476482419583;
+        Fri, 14 Oct 2016 15:00:19 -0700 (PDT)
+Return-Path: <elise.lennion@gmail.com>
+Received: from mail-ua0-x241.google.com (mail-ua0-x241.google.com. [2607:f8b0:400c:c08::241])
+        by gmr-mx.google.com with ESMTPS id p131si3519662vkf.1.2016.10.14.15.00.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 27 Sep 2017 05:42:36 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Fri, 14 Oct 2016 15:00:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c08::241 as permitted sender) client-ip=2607:f8b0:400c:c08::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.42,445,1500933600"; 
-   d="scan'208";a="292961033"
-Received: from mx.artech.at (HELO hadrien.local) ([188.21.106.106])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 27 Sep 2017 14:42:35 +0200
-Date: Wed, 27 Sep 2017 14:42:34 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: outreachy-kernel@googlegroups.com
-Subject: kernelnewbies wiki
-Message-ID: <alpine.DEB.2.20.1709271441260.3186@hadrien>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c08::241 as permitted sender) smtp.mailfrom=elise.lennion@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-ua0-x241.google.com with SMTP id p25so23154uaa.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 14 Oct 2016 15:00:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=NbR/coE49b9VelD+KpAfrUiOvLveKKVbe3Egcr7Y0rQ=;
+        b=rh5Buqf8DOQdP66PPTMih8+FN5I8JRJKZ1lDpgElQeHYQc25dJatonV955RdG3OKdv
+         OApgtxOwNft2xlcOYRBFbCQFX9Qq0PTt1VoJXl6r8LJmLY6kwn0/Sx3Jtf4vKshvSCcg
+         O3+w9hcCoAWXX/A1iTbB3mNYxISk4LO6hZfy09g0r7QUQsjJWHh1IL2IPuU+8FBszf7/
+         tuR85OeQQvtGFiH6mAMfCNvWqZhX/cc9Sjx/c0vi4ZqDYLf6NfZrx8KNaJkvSuB+EqWP
+         oQqjDkTiXx6TX29NDnZ4Xra/stByTnfDUsvAz+srIM5oRhSJ7Cs7+ApY+TZ3pkAYkyWP
+         Htcw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=NbR/coE49b9VelD+KpAfrUiOvLveKKVbe3Egcr7Y0rQ=;
+        b=PnqEgASWq08AEKCDrRuk41UpTxDlJAO7we73D8UfmQY1VQRbMCzzIYeFJQJRIP3xG7
+         H9JxxVvAvBDsKOfyXLxd6NrvUPrYG+76XnDqz9HFICxHR7cYkGlpvCQiaDfWU0tLt9if
+         yKRly22YQBFH6JH/k/rupa5pSge2TsYb04veLa3x3aFeZ9xKWfe/Lc8k7+etNNevhEnV
+         R29kos0n50BtwEI2KtSeYByBHLX6pGiV50rClcrIBNVldOKKQrKlT8+jBI+lCPe47SSu
+         2xvec0M+Kj1Cz5hC+KOYzYZJY5VyFwPXMHhJP/q40CwhtsOCKfnK4IHdRMv9hy7mr548
+         2AMQ==
+X-Gm-Message-State: AA6/9Rl0WdVgrn3cJvgyPXpEU1YxKcID7yZmghFc5FshMeE9fwlQwkneyUtET+PY5HwxlQ==
+X-Received: by 10.176.83.147 with SMTP id k19mr97707uaa.77.1476482419429;
+        Fri, 14 Oct 2016 15:00:19 -0700 (PDT)
+Return-Path: <elise.lennion@gmail.com>
+Received: from lennorien.com ([187.64.224.84])
+        by smtp.gmail.com with ESMTPSA id p28sm56106uaa.8.2016.10.14.15.00.16
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 14 Oct 2016 15:00:18 -0700 (PDT)
+Date: Fri, 14 Oct 2016 19:00:11 -0300
+From: Elise Lennion <elise.lennion@gmail.com>
+To: vaibhav.sr@gmail.com, mgreer@animalcreek.com, johan@kernel.org,
+	elder@kernel.org, gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH v4] staging: greybus: audio_manager_sysfs: Replace sscanf
+ with kstrto* to single variable conversion.
+Message-ID: <20161014220011.GA7040@lennorien.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-At the moment, it seems that no one has edit privileges.  I don't, anyway,
-an several people have contacted me about it.  Perhaps it will start
-working again shortly...
+Fix checkpatch warning:
 
-julia
+WARNING: Prefer kstrto<type> to single variable sscanf
+
+kstrto* is designed to convert string to numerical value and makes
+it easier to understand what the code does.
+
+Signed-off-by: Elise Lennion <elise.lennion@gmail.com>
+---
+
+ v4: Add version changes to patch.
+ v3: Add modified file name to patch subject.
+ v2: No changes.
+
+ drivers/staging/greybus/audio_manager_sysfs.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/greybus/audio_manager_sysfs.c b/drivers/staging/greybus/audio_manager_sysfs.c
+index 376e17c..e74fdcf 100644
+--- a/drivers/staging/greybus/audio_manager_sysfs.c
++++ b/drivers/staging/greybus/audio_manager_sysfs.c
+@@ -44,7 +44,7 @@ static ssize_t manager_sysfs_remove_store(
+ {
+ 	int id;
+ 
+-	int num = sscanf(buf, "%d", &id);
++	int num = kstrtoint(buf, 10, &id);
+ 
+ 	if (num != 1)
+ 		return -EINVAL;
+@@ -65,7 +65,7 @@ static ssize_t manager_sysfs_dump_store(
+ {
+ 	int id;
+ 
+-	int num = sscanf(buf, "%d", &id);
++	int num = kstrtoint(buf, 10, &id);
+ 
+ 	if (num == 1) {
+ 		num = gb_audio_manager_dump_module(id);
+-- 
+2.7.4
+
 
