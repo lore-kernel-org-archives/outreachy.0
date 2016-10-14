@@ -1,74 +1,70 @@
 X-GM-THRID: 6341120519688945664
-X-Received: by 10.237.34.216 with SMTP id q24mr3816238qtc.69.1476491530782;
-        Fri, 14 Oct 2016 17:32:10 -0700 (PDT)
+X-Received: by 10.66.17.137 with SMTP id o9mr2268996pad.124.1476407172499;
+        Thu, 13 Oct 2016 18:06:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.6.41 with SMTP id 38ls2296326otn.34.gmail; Fri, 14 Oct
- 2016 17:32:10 -0700 (PDT)
-X-Received: by 10.157.61.97 with SMTP id a88mr3799077otc.148.1476491530377;
-        Fri, 14 Oct 2016 17:32:10 -0700 (PDT)
+Received: by 10.157.20.213 with SMTP id r21ls6943959otr.17.gmail; Thu, 13 Oct
+ 2016 18:06:12 -0700 (PDT)
+X-Received: by 10.129.77.87 with SMTP id a84mr2690917ywb.30.1476407172003;
+        Thu, 13 Oct 2016 18:06:12 -0700 (PDT)
 Return-Path: <elise.lennion@gmail.com>
-Received: from mail-ua0-x243.google.com (mail-ua0-x243.google.com. [2607:f8b0:400c:c08::243])
-        by gmr-mx.google.com with ESMTPS id p70si2811491vkd.0.2016.10.14.17.32.10
+Received: from mail-vk0-x242.google.com (mail-vk0-x242.google.com. [2607:f8b0:400c:c05::242])
+        by gmr-mx.google.com with ESMTPS id p70si2151431vkd.0.2016.10.13.18.06.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 14 Oct 2016 17:32:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c08::243 as permitted sender) client-ip=2607:f8b0:400c:c08::243;
+        Thu, 13 Oct 2016 18:06:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::242 as permitted sender) client-ip=2607:f8b0:400c:c05::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c08::243 as permitted sender) smtp.mailfrom=elise.lennion@gmail.com;
+       spf=pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::242 as permitted sender) smtp.mailfrom=elise.lennion@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-ua0-x243.google.com with SMTP id u68so73218uau.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 14 Oct 2016 17:32:10 -0700 (PDT)
+Received: by mail-vk0-x242.google.com with SMTP id 83so3297042vkd.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 13 Oct 2016 18:06:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=Y7tlwL+pz/sIdvjO0xbLv9HNPbEnl+a67/VZ3PewUZA=;
-        b=EK2yP+bHXQDYpm0F8TbiOVr7D/5RbL4D97uWfbcSo8dLi5IVab6H+EkL6J+gGtDp3Y
-         3QdvQFYqlZR7OMEr7A609NiDawnewndVOoQF7uUJpliTFFJG1EqaViM35/D2vR6DjRae
-         p2nBDVWoybecbfLI0zT6T1x+aXeOzNEMEt7kowezGyUy1P0+Lb7d2s2YbI3dwG2IRYzn
-         HL8xqcgi18/DxhGPc6q2ZPZtKawmivrZ+rqZJcR/Y161dVYXhlLYS6H/lhEya+N3Bxm2
-         e+YlWCD/Xzh44uGhBPiqO439rTizSvdM9vmsBSMMAH9QMLnfV/UqoqmJn+spgZutlQ9w
-         Cc4Q==
+        bh=GmxfoLdk1AiaWpQL/eGtGAL+2iDM0W64GXUAbd2mgX0=;
+        b=tHoaG9uOx1TEbRxGYEtiZFBC0Rc0MkUh2GJvK41x4av6RUWdwPmhIQsn4SmD19BDNB
+         6NWvUysV+q5Lxv1igHX8WXKnygiPGFKeRFWQfdDAHhxdxGqSg5lXJgDXvw/8wUTZBg+L
+         Zx/TFb3kGWJRjq9J/bxbSniTgBZ8OT9c8vLfndLYpOJg1ROU2S986fPVqlx0lw7tOqY2
+         1AXtPDj08/c21pYpmKrmuf/KJs0bRDtsi/lH7vS9bWjCBnBueA3vpGuu7XGDv1M+4aev
+         sI3ttbF9EyjJQDiUswIl9FxVd33fQVVwXqLdd4T28HJYr1+70evjR+hDrUw+0zib8guM
+         +VPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=Y7tlwL+pz/sIdvjO0xbLv9HNPbEnl+a67/VZ3PewUZA=;
-        b=FPnF3JUtt2+l4N82YqKq+hn51kF7uLEXNyXuwelDzjKIqZibMsuAesI4wIFPMc4MYY
-         Jl4rNr1ROLmjsBdxVRDmq/s1wHrut9Mf/08ynQ72FiWzcqOVhjUiq6cLYIhNsu/579mK
-         M9xEWcCKnLsvGOhUmmZwfhQ3t7KbWmhW9pUlCVoyDxMlhF8Dccv5AP/rYKjeISbAzaKB
-         yYLRfAm0Hq5Th5XWRzJFNd0qkL8q2vMnHZ9xFHoswgHSe/E6wbfXC+kws0ebKnnnTDoe
-         yqpqKAdkE4kKOgCC96Ie+YEfhYXe/7jykIw2JGtrp1IMfkuEf3wVAWdA0oEUmdUE+bHo
-         0X8Q==
-X-Gm-Message-State: AA6/9RlJPYXX1Owa6dBUAFKW6Uxn330QH6foLbr6w99BqTFXwhwW6wcNtM5aWW7gPbyShQ==
-X-Received: by 10.176.67.33 with SMTP id k30mr386915uak.148.1476491530216;
-        Fri, 14 Oct 2016 17:32:10 -0700 (PDT)
+        bh=GmxfoLdk1AiaWpQL/eGtGAL+2iDM0W64GXUAbd2mgX0=;
+        b=lO5t1J2qy6jF084EJ2tf8YJPvpNDdIBf8Mia0IgBwjRUALsnBNBm7flifFREbeR60Q
+         nhAsxHbniuEwfOZN3CQdpNjzcguEFCp0seesrL8yUXa6EDLqGK6n4Fjr8LNPxJkfz/Sn
+         +ZpJ0U4OYsAx9jBVSelZ4VmTpbPc5vSJLBhBoJJbQgwy4/ioZGD0DvCsQOn0HtUUd+rn
+         zqumZyWwvvddLTeGisWf0XQeDf485cyUxguEQfSRsSjayoLbvR+SGuAYS0BnAazzlmUO
+         QQLeXK6ijKA1gpwtaysr6H9CHhENPzO26RWAgN4fpooSjzY62OoCkOafSvLU8TjRE/QB
+         nvLA==
+X-Gm-Message-State: AA6/9RkVj8nwzre+Lk4kVy7fOtEdPcJY9RORu7A3f0wq0KID1mtvCS6MMN+Xclr6gKuPcQ==
+X-Received: by 10.31.16.73 with SMTP id g70mr7168255vki.175.1476407171836;
+        Thu, 13 Oct 2016 18:06:11 -0700 (PDT)
 Return-Path: <elise.lennion@gmail.com>
 Received: from lennorien.com ([187.64.224.84])
-        by smtp.gmail.com with ESMTPSA id o187sm8380774vkf.10.2016.10.14.17.32.08
+        by smtp.gmail.com with ESMTPSA id n191sm6474389vkc.1.2016.10.13.18.06.09
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 14 Oct 2016 17:32:09 -0700 (PDT)
-Date: Fri, 14 Oct 2016 21:32:03 -0300
+        Thu, 13 Oct 2016 18:06:11 -0700 (PDT)
+Date: Thu, 13 Oct 2016 22:06:03 -0300
 From: Elise Lennion <elise.lennion@gmail.com>
 To: sudipm.mukherjee@gmail.com, teddy.wang@siliconmotion.com,
 	gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: sm750fb: Add const qualifier to struct
- declaration.
-Message-ID: <20161015003202.GA15932@lennorien.com>
+Subject: [PATCH] staging: sm750fb: Add const qualifier to struct declaration.
+Message-ID: <20161014010603.GA27171@lennorien.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Const qualifier added to struct declaration to avoid data overwrite
-during runtime and improve security.
+Const qualifier added to struct declaration to make the code more
+efficient.
 
 Signed-off-by: Elise Lennion <elise.lennion@gmail.com>
 ---
-
- v2: Rewrite log message.
-
  drivers/staging/sm750fb/sm750.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
