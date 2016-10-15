@@ -1,67 +1,66 @@
 X-GM-THRID: 6341582423579426816
-X-Received: by 10.25.99.78 with SMTP id x75mr431288lfb.11.1476523429587;
-        Sat, 15 Oct 2016 02:23:49 -0700 (PDT)
+X-Received: by 10.28.63.213 with SMTP id m204mr97034wma.21.1476523320978;
+        Sat, 15 Oct 2016 02:22:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.76.214 with SMTP id z205ls1615879lfa.32.gmail; Sat, 15 Oct
- 2016 02:23:48 -0700 (PDT)
-X-Received: by 10.25.211.204 with SMTP id k195mr486408lfg.24.1476523428919;
-        Sat, 15 Oct 2016 02:23:48 -0700 (PDT)
+Received: by 10.28.223.214 with SMTP id w205ls340082wmg.14.canary; Sat, 15 Oct
+ 2016 02:22:00 -0700 (PDT)
+X-Received: by 10.28.26.75 with SMTP id a72mr98886wma.19.1476523320513;
+        Sat, 15 Oct 2016 02:22:00 -0700 (PDT)
 Return-Path: <jhovold@gmail.com>
 Received: from mail-wm0-x242.google.com (mail-wm0-x242.google.com. [2a00:1450:400c:c09::242])
-        by gmr-mx.google.com with ESMTPS id w63si97366wmf.2.2016.10.15.02.23.48
+        by gmr-mx.google.com with ESMTPS id r65si150860wmf.3.2016.10.15.02.22.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 15 Oct 2016 02:23:48 -0700 (PDT)
+        Sat, 15 Oct 2016 02:22:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of jhovold@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) client-ip=2a00:1450:400c:c09::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
        spf=pass (google.com: domain of jhovold@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) smtp.mailfrom=jhovold@gmail.com
-Received: by mail-wm0-x242.google.com with SMTP id b80so1821996wme.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 15 Oct 2016 02:23:48 -0700 (PDT)
+Received: by mail-wm0-x242.google.com with SMTP id 191so1827067wmr.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 15 Oct 2016 02:22:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=sender:date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=UbgOmr2NepXJXxIjdIRisQ/uas7pm2tTnHWSnFhIfjw=;
-        b=VWXcJJSlRPPDz0fptf54zAiUYIn1indE38nupKGd6Ghp6Y3+v8R1GXABLwSoAuV6b8
-         y0L9TNR7fqoNRgQMh0rp/FMBeHK687LGB2hD3fmIrAPxs7fURj90EQ6Id70HzXP0w8/n
-         taICHmZcxDk4KWtU2GVqUt3afvXJZjnZ907cycVKgAsQf/z3ZyPL95k2LSs41NGB4Tev
-         0hwfosTRuknJKvP93ZL6bkYBpPNckjjApxSRxf0dddxB4LEgGnv5GvkOmENTpOFnhSQh
-         kQHk3aF1pGwMler9x3J4oUD7n7n62uBMIlYkCBYm0C+gI1BzS2CBBNUNpykSTYgkm2j5
-         hjLA==
+        bh=0hoK8/qNWQ8N5HtHP7QVoL75kgSdA1AaWiSKsO9p0MA=;
+        b=Gjb73DVOii4DjGZlbl2YfibT/J9f7md/gABN1OYbCv5Zy17iULRwNT8RyF7J/B5mfm
+         IOG5j1/RKo7Iz8Em7HLT0lydM31EE3FFsOgy7iVcyNId9CS0UZm0g0f/u7ZHlJD/imrk
+         4FTv6rbbWIXdRylyqL+vsB+LXOE/J2BxKRiuvT37TOyLorjVjSxFI1k5UhJxDIp71tZ8
+         LJOPWCstRiO45RTLLcXoQXU6ahQOOzXJnoK40ULWbeQQLcJUmkZ2MK83NrAnK883gEbX
+         xY8j0t+HBAcQigLhbk5XzvZBiDw6K7makUpHRnAQMs7GbV+i3091VXvU0RDWigQUMocc
+         a5Tw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
          :references:mime-version:content-disposition:in-reply-to:user-agent;
-        bh=UbgOmr2NepXJXxIjdIRisQ/uas7pm2tTnHWSnFhIfjw=;
-        b=jn1LSZxdP8y2gdYazRyNkGSGf0NX4WDaBZ1GUjy9XMKkKAP/6/tuR5mOOQtLRqMRJn
-         RV+vX8RS/PYcdAceDxjeZUBS6wAvUUD2goEUhaTsxcwJtH++hEcVr0KPrHoGYshGLy9f
-         dxETqIhILRTcFjCSS5eufhUQ9MD4UtXQVwOwyMEIQqYNk5NJpK3+F0H08+k6mu6rlAFL
-         0KBqANgzf6SIOxeQ8QEggMFZrsBlXQesEWU+LMDW8i7TA9T5m6w7PZNJBsQtO5lRbYVd
-         Y0CsQaPMp2iENkpa09p3OqqOba3q+B7S7xj1Yj2vXlsphhl64ea2kz4V28CC6ylWHqDW
-         qwsA==
-X-Gm-Message-State: AA6/9RkA2B2xfdtcEfpYuFkgKwIwFfwwn+PxYwzg8EZjpvSTxciWV4yQQKwP7cp2lv4X/A==
-X-Received: by 10.28.126.68 with SMTP id z65mr1254968wmc.81.1476523428643;
-        Sat, 15 Oct 2016 02:23:48 -0700 (PDT)
+        bh=0hoK8/qNWQ8N5HtHP7QVoL75kgSdA1AaWiSKsO9p0MA=;
+        b=hpUE7fxouyynJ+tDXvwV/6jpEBpWumDmYsBsWsuNjfip6ggLPDstuapXEcVhM/Pl8x
+         BcC3Mk1aT6B3C2IcA/ohQBaMbDEWZt3hbFbuUxgB8zwcfSfVNh+E+v4iFclv/rG1Pj8J
+         lhchi8Cl67LqnmlJm1Y4CSshk6KdCq9gx9ARXRmZP6pIe0BHXQzUwm7CRnnPPiZ0bp8y
+         cKMs0WmGWp4f8ps9oF5nx5Ikw72KC9aQZbt7QEER4WwQBo1Nw+uoXDQIZCSTmN7mvgVx
+         fRRI3j4S8KiWbSFtsY2ddAXVcLhYuEBk15NCi6+ZcxlNa0rYqoG6KhpbPWP1Tb1Pe/Ze
+         ie5w==
+X-Gm-Message-State: AA6/9RllNraEPa/B+d6bKgV3ZkFBGenr4gtcr+rFENPg+cHaU5ZSykmNW8wCa5aPgw29Cw==
+X-Received: by 10.28.0.2 with SMTP id 2mr1456861wma.79.1476523320268;
+        Sat, 15 Oct 2016 02:22:00 -0700 (PDT)
 Return-Path: <jhovold@gmail.com>
 Received: from pi ([94.186.205.19])
-        by smtp.gmail.com with ESMTPSA id ct1sm36011238wjd.13.2016.10.15.02.23.48
+        by smtp.gmail.com with ESMTPSA id ma5sm36000214wjb.47.2016.10.15.02.21.59
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 15 Oct 2016 02:23:48 -0700 (PDT)
+        Sat, 15 Oct 2016 02:21:59 -0700 (PDT)
 Sender: Johan Hovold <jhovold@gmail.com>
 X-Google-Original-Sender: <johan@kernel.org>
 Received: from johan by pi with local (Exim 4.87)
 	(envelope-from <johan@pi>)
-	id 1bvLBv-0001yq-5V; Sat, 15 Oct 2016 11:23:43 +0200
-Date: Sat, 15 Oct 2016 11:23:43 +0200
+	id 1bvLAA-0001ue-FF; Sat, 15 Oct 2016 11:21:54 +0200
+Date: Sat, 15 Oct 2016 11:21:54 +0200
 From: Johan Hovold <johan@kernel.org>
 To: Bhumika Goyal <bhumirks@gmail.com>
 Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
-	dtwlin@gmail.com, johan@kernel.org, elder@kernel.org,
-	devel@driverdev.osuosl.org
+	dtwlin@gmail.com, johan@kernel.org, elder@kernel.org
 Subject: Re: [PATCH] Staging: greybus: uart: constify tty_port_operations
  structure
-Message-ID: <20161015092343.GC13900@localhost>
+Message-ID: <20161015092154.GB13900@localhost>
 References: <1476514681-10619-1-git-send-email-bhumirks@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -69,7 +68,7 @@ Content-Disposition: inline
 In-Reply-To: <1476514681-10619-1-git-send-email-bhumirks@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-[ +CC: staging list (for real this time) ]
+[ +CC: staging list ]
 
 On Sat, Oct 15, 2016 at 12:28:01PM +0530, Bhumika Goyal wrote:
 > Declare tty_port_operations structure as const as it is only stored in
