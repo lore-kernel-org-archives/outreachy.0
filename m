@@ -1,262 +1,143 @@
-X-GM-THRID: 6336365196847611904
-X-Received: by 10.237.46.103 with SMTP id j94mr2924898qtd.0.1475299987410;
-        Fri, 30 Sep 2016 22:33:07 -0700 (PDT)
+X-GM-THRID: 6341582423579426816
+X-Received: by 10.25.99.78 with SMTP id x75mr431288lfb.11.1476523429587;
+        Sat, 15 Oct 2016 02:23:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.29.220 with SMTP id w28ls6599796otw.27.gmail; Fri, 30 Sep
- 2016 22:33:07 -0700 (PDT)
-X-Received: by 10.31.125.139 with SMTP id y133mr2958275vkc.2.1475299987027;
-        Fri, 30 Sep 2016 22:33:07 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id ua1si1225523pac.1.2016.09.30.22.33.06
+Received: by 10.25.76.214 with SMTP id z205ls1615879lfa.32.gmail; Sat, 15 Oct
+ 2016 02:23:48 -0700 (PDT)
+X-Received: by 10.25.211.204 with SMTP id k195mr486408lfg.24.1476523428919;
+        Sat, 15 Oct 2016 02:23:48 -0700 (PDT)
+Return-Path: <jhovold@gmail.com>
+Received: from mail-wm0-x242.google.com (mail-wm0-x242.google.com. [2a00:1450:400c:c09::242])
+        by gmr-mx.google.com with ESMTPS id w63si97366wmf.2.2016.10.15.02.23.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 30 Sep 2016 22:33:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
+        Sat, 15 Oct 2016 02:23:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jhovold@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) client-ip=2a00:1450:400c:c09::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x241.google.com with SMTP id oz2so5616735pac.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 30 Sep 2016 22:33:06 -0700 (PDT)
+       spf=pass (google.com: domain of jhovold@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) smtp.mailfrom=jhovold@gmail.com
+Received: by mail-wm0-x242.google.com with SMTP id b80so1821996wme.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 15 Oct 2016 02:23:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=0rP8ij7k/LOYNr8VL4GMyUGGmNWk0SyejlJ4bLdMUTw=;
-        b=Y5ikiEiJlUQ5DIHY2M1dlO45l31pfeb5T3krnfeAjE3aYRrBzuffM9zNcIp3xMME0T
-         rQu+OE/hpsWLeWjTPq6QlNiEH/e8APL/ve/YT/Yx0yzwhdxRmyB0ETuFU3E97kp1/CCt
-         BfgX4k4N6WJ23ZHiEYzmrAZlrVkGUSsAjfONJkL7G7hN/SOZdQPaElUJzOhTemhCdaFs
-         l+wcThHBSVLZsuTpE4j6SpLS79HbDd/IIiGhBwSmuATQp0KzoNjCZ2QTAl3wvzM/Jnt3
-         c5ejy8yQRZSfcRizvZprCjTzngYAhAEIXAZAe0x+4VZHdlzbnlEOIBxNfCVojMg3yRgM
-         vWjA==
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=UbgOmr2NepXJXxIjdIRisQ/uas7pm2tTnHWSnFhIfjw=;
+        b=VWXcJJSlRPPDz0fptf54zAiUYIn1indE38nupKGd6Ghp6Y3+v8R1GXABLwSoAuV6b8
+         y0L9TNR7fqoNRgQMh0rp/FMBeHK687LGB2hD3fmIrAPxs7fURj90EQ6Id70HzXP0w8/n
+         taICHmZcxDk4KWtU2GVqUt3afvXJZjnZ907cycVKgAsQf/z3ZyPL95k2LSs41NGB4Tev
+         0hwfosTRuknJKvP93ZL6bkYBpPNckjjApxSRxf0dddxB4LEgGnv5GvkOmENTpOFnhSQh
+         kQHk3aF1pGwMler9x3J4oUD7n7n62uBMIlYkCBYm0C+gI1BzS2CBBNUNpykSTYgkm2j5
+         hjLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=0rP8ij7k/LOYNr8VL4GMyUGGmNWk0SyejlJ4bLdMUTw=;
-        b=bn1xvxo6nNmAg249TLplMqbGov6ISMh+xXmgr/f+SvlFiicUZi45VdYRQSmK27UOHD
-         Oy3pbHvLxq6tWdYL/J3HO8IrR8Nc7R7zx+q7zhUgLJkjQ+UNElr/hB9fbJTmJkw6PzZk
-         +7BPofTOHVPWdkE5VcwehWo9MJmWc8iICeRQ5Q6XhQFVyY8aUnWcmNwYfHO14I+jSp+T
-         xw4XmNQqN4BF98L5/4lLZC3jFvrc9isILD/L1Ycr9HixC+xz8JOr/+B4SI6vEW1dgvrw
-         U/dlLjsfNBSA3XVeNYFpTm86zq1CqupKYeH8utRnTPs9hxBoCsCCtc738aybh8z/1bb0
-         RTKw==
-X-Gm-Message-State: AA6/9Rk1D+RENn5Y3ZxHfObRQjLPJa2YQY3bj/LlVSYIRJaWmqJJhHRJehbx4L5Fc27M2g==
-X-Received: by 10.66.48.170 with SMTP id m10mr17705063pan.43.1475299986765;
-        Fri, 30 Sep 2016 22:33:06 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from sayli-HP-15-Notebook-PC ([182.58.217.210])
-        by smtp.gmail.com with ESMTPSA id yk6sm9241435pab.43.2016.09.30.22.32.56
+        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+         :references:mime-version:content-disposition:in-reply-to:user-agent;
+        bh=UbgOmr2NepXJXxIjdIRisQ/uas7pm2tTnHWSnFhIfjw=;
+        b=jn1LSZxdP8y2gdYazRyNkGSGf0NX4WDaBZ1GUjy9XMKkKAP/6/tuR5mOOQtLRqMRJn
+         RV+vX8RS/PYcdAceDxjeZUBS6wAvUUD2goEUhaTsxcwJtH++hEcVr0KPrHoGYshGLy9f
+         dxETqIhILRTcFjCSS5eufhUQ9MD4UtXQVwOwyMEIQqYNk5NJpK3+F0H08+k6mu6rlAFL
+         0KBqANgzf6SIOxeQ8QEggMFZrsBlXQesEWU+LMDW8i7TA9T5m6w7PZNJBsQtO5lRbYVd
+         Y0CsQaPMp2iENkpa09p3OqqOba3q+B7S7xj1Yj2vXlsphhl64ea2kz4V28CC6ylWHqDW
+         qwsA==
+X-Gm-Message-State: AA6/9RkA2B2xfdtcEfpYuFkgKwIwFfwwn+PxYwzg8EZjpvSTxciWV4yQQKwP7cp2lv4X/A==
+X-Received: by 10.28.126.68 with SMTP id z65mr1254968wmc.81.1476523428643;
+        Sat, 15 Oct 2016 02:23:48 -0700 (PDT)
+Return-Path: <jhovold@gmail.com>
+Received: from pi ([94.186.205.19])
+        by smtp.gmail.com with ESMTPSA id ct1sm36011238wjd.13.2016.10.15.02.23.48
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 30 Sep 2016 22:33:06 -0700 (PDT)
-Date: Sat, 1 Oct 2016 11:02:47 +0530
-From: sayli karnik <karniksayli1995@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Lars-Peter Clausen <lars@metafoo.de>,
-	Michael Hennerich <Michael.Hennerich@analog.com>,
-	Jonathan Cameron <jic23@kernel.org>,
-	Hartmut Knaack <knaack.h@gmx.de>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [Outreachy kernel] [PATCH] staging: iio: cdc: ad7152: Implement
- IIO_CHAN_INFO_SAMP_FREQ attribute
-Message-ID: <20161001053247.GA14195@sayli-HP-15-Notebook-PC>
+        Sat, 15 Oct 2016 02:23:48 -0700 (PDT)
+Sender: Johan Hovold <jhovold@gmail.com>
+X-Google-Original-Sender: <johan@kernel.org>
+Received: from johan by pi with local (Exim 4.87)
+	(envelope-from <johan@pi>)
+	id 1bvLBv-0001yq-5V; Sat, 15 Oct 2016 11:23:43 +0200
+Date: Sat, 15 Oct 2016 11:23:43 +0200
+From: Johan Hovold <johan@kernel.org>
+To: Bhumika Goyal <bhumirks@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
+	dtwlin@gmail.com, johan@kernel.org, elder@kernel.org,
+	devel@driverdev.osuosl.org
+Subject: Re: [PATCH] Staging: greybus: uart: constify tty_port_operations
+ structure
+Message-ID: <20161015092343.GC13900@localhost>
+References: <1476514681-10619-1-git-send-email-bhumirks@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <1476514681-10619-1-git-send-email-bhumirks@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Move functionality from IIO_DEV_ATTR_SAMP_FREQ attribute into
-IIO_CHAN_INFO_SAMP_FREQ. Modify ad7152_read_raw() and
-ad7152_write_raw() to allow reading and writing the element.
+[ +CC: staging list (for real this time) ]
 
-Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
----
- drivers/staging/iio/cdc/ad7152.c | 115 ++++++++++++++++++++++-----------------
- 1 file changed, 64 insertions(+), 51 deletions(-)
+On Sat, Oct 15, 2016 at 12:28:01PM +0530, Bhumika Goyal wrote:
+> Declare tty_port_operations structure as const as it is only stored in
+> the ops field of a tty_port structure which is a field of a gb_tty
+> structure. The ops field is of type const struct tty_port_operations *,
+> so tty_port_operations structures having this property can be
+> declared as const.
+> Done using Coccinelle:
+> 
+> @r1 disable optional_qualifier @
+> identifier i;
+> position p;
+> @@
+> static struct tty_port_operations i@p = {...};
+> 
+> @ok1@
+> identifier r1.i;
+> position p;
+> struct gb_tty q;
+> @@
+> q.port.ops=&i@p
+> 
+> @bad@
+> position p!={r1.p,ok1.p};
+> identifier r1.i;
+> @@
+> i@p
+> 
+> @depends on !bad disable optional_qualifier@
+> identifier r1.i;
+> @@
+> static
+> +const
+> struct tty_port_operations i={...};
+> 
+> @depends on !bad disable optional_qualifier@
+> identifier r1.i;
+> @@
+> +const
+> struct tty_port_operations i;
+> 
+> File size before:
+>    text	   data	    bss	    dec	    hex	filename
+>    7646	    512	     56	   8214	   2016	drivers/staging/greybus/uart.o
+> 
+> File size after:
+>    text	   data	    bss	    dec	    hex	filename
+>    7710	    448	     56	   8214	   2016	drivers/staging/greybus/uart.o
+> 
+> Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
 
-diff --git a/drivers/staging/iio/cdc/ad7152.c b/drivers/staging/iio/cdc/ad7152.c
-index 485d0a5..7b0f26e 100644
---- a/drivers/staging/iio/cdc/ad7152.c
-+++ b/drivers/staging/iio/cdc/ad7152.c
-@@ -165,63 +165,12 @@ static const unsigned char ad7152_filter_rate_table[][2] = {
- 	{200, 5 + 1}, {50, 20 + 1}, {20, 50 + 1}, {17, 60 + 1},
- };
- 
--static ssize_t ad7152_show_filter_rate_setup(struct device *dev,
--		struct device_attribute *attr,
--		char *buf)
--{
--	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
--	struct ad7152_chip_info *chip = iio_priv(indio_dev);
--
--	return sprintf(buf, "%d\n",
--		       ad7152_filter_rate_table[chip->filter_rate_setup][0]);
--}
--
--static ssize_t ad7152_store_filter_rate_setup(struct device *dev,
--		struct device_attribute *attr,
--		const char *buf,
--		size_t len)
--{
--	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
--	struct ad7152_chip_info *chip = iio_priv(indio_dev);
--	u8 data;
--	int ret, i;
--
--	ret = kstrtou8(buf, 10, &data);
--	if (ret < 0)
--		return ret;
--
--	for (i = 0; i < ARRAY_SIZE(ad7152_filter_rate_table); i++)
--		if (data >= ad7152_filter_rate_table[i][0])
--			break;
--
--	if (i >= ARRAY_SIZE(ad7152_filter_rate_table))
--		i = ARRAY_SIZE(ad7152_filter_rate_table) - 1;
--
--	mutex_lock(&indio_dev->mlock);
--	ret = i2c_smbus_write_byte_data(chip->client,
--			AD7152_REG_CFG2, AD7152_CFG2_OSR(i));
--	if (ret < 0) {
--		mutex_unlock(&indio_dev->mlock);
--		return ret;
--	}
--
--	chip->filter_rate_setup = i;
--	mutex_unlock(&indio_dev->mlock);
--
--	return len;
--}
--
--static IIO_DEV_ATTR_SAMP_FREQ(S_IRUGO | S_IWUSR,
--		ad7152_show_filter_rate_setup,
--		ad7152_store_filter_rate_setup);
--
- static IIO_CONST_ATTR_SAMP_FREQ_AVAIL("200 50 20 17");
- 
- static IIO_CONST_ATTR(in_capacitance_scale_available,
- 		      "0.000061050 0.000030525 0.000015263 0.000007631");
- 
- static struct attribute *ad7152_attributes[] = {
--	&iio_dev_attr_sampling_frequency.dev_attr.attr,
- 	&iio_dev_attr_in_capacitance0_calibbias_calibration.dev_attr.attr,
- 	&iio_dev_attr_in_capacitance1_calibbias_calibration.dev_attr.attr,
- 	&iio_dev_attr_in_capacitance0_calibscale_calibration.dev_attr.attr,
-@@ -247,6 +196,56 @@ static const int ad7152_scale_table[] = {
- 	30525, 7631, 15263, 61050
- };
- 
-+/**
-+ * read_raw handler for IIO_CHAN_INFO_SAMP_FREQ
-+ *
-+ * lock must be held
-+ **/
-+static int ad7152_read_raw_samp_freq(struct device *dev, int *val)
-+{
-+	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
-+	struct ad7152_chip_info *chip = iio_priv(indio_dev);
-+	*val = ad7152_filter_rate_table[chip->filter_rate_setup][0];
-+
-+	return 0;
-+}
-+
-+/**
-+ * write_raw handler for IIO_CHAN_INFO_SAMP_FREQ
-+ *
-+ * lock must be held
-+ **/
-+static int ad7152_write_raw_samp_freq(struct device *dev, int val)
-+{
-+	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
-+	struct ad7152_chip_info *chip = iio_priv(indio_dev);
-+	u8 data;
-+	int ret, i;
-+
-+	if (!val)
-+		return -EINVAL;
-+
-+	for (i = 0; i < ARRAY_SIZE(ad7152_filter_rate_table); i++)
-+		if (data >= ad7152_filter_rate_table[i][0])
-+			break;
-+
-+	if (i >= ARRAY_SIZE(ad7152_filter_rate_table))
-+		i = ARRAY_SIZE(ad7152_filter_rate_table) - 1;
-+
-+	mutex_lock(&indio_dev->mlock);
-+	ret = i2c_smbus_write_byte_data(chip->client,
-+					AD7152_REG_CFG2, AD7152_CFG2_OSR(i));
-+	if (ret < 0) {
-+		mutex_unlock(&indio_dev->mlock);
-+		goto out;
-+	}
-+
-+	chip->filter_rate_setup = i;
-+	mutex_unlock(&indio_dev->mlock);
-+
-+out:
-+	return ret;
-+}
- static int ad7152_write_raw(struct iio_dev *indio_dev,
- 			    struct iio_chan_spec const *chan,
- 			    int val,
-@@ -309,6 +308,11 @@ static int ad7152_write_raw(struct iio_dev *indio_dev,
- 
- 		ret = 0;
- 		break;
-+	case IIO_CHAN_INFO_SAMP_FREQ:
-+		ret = ad7152_write_raw_samp_freq(&indio_dev->dev, val);
-+		if (ret < 0)
-+			goto out;
-+		break;
- 	default:
- 		ret = -EINVAL;
- 	}
-@@ -403,6 +407,11 @@ static int ad7152_read_raw(struct iio_dev *indio_dev,
- 
- 		ret = IIO_VAL_INT_PLUS_NANO;
- 		break;
-+	case IIO_CHAN_INFO_SAMP_FREQ:
-+		ret = ad7152_read_raw_samp_freq(&indio_dev->dev, val);
-+		if (ret < 0)
-+			goto out;
-+		break;
- 	default:
- 		ret = -EINVAL;
- 	}
-@@ -440,6 +449,7 @@ static const struct iio_chan_spec ad7152_channels[] = {
- 		BIT(IIO_CHAN_INFO_CALIBSCALE) |
- 		BIT(IIO_CHAN_INFO_CALIBBIAS) |
- 		BIT(IIO_CHAN_INFO_SCALE),
-+		.info_mask_shared_by_all = BIT(IIO_CHAN_INFO_SAMP_FREQ),
- 	}, {
- 		.type = IIO_CAPACITANCE,
- 		.differential = 1,
-@@ -450,6 +460,7 @@ static const struct iio_chan_spec ad7152_channels[] = {
- 		BIT(IIO_CHAN_INFO_CALIBSCALE) |
- 		BIT(IIO_CHAN_INFO_CALIBBIAS) |
- 		BIT(IIO_CHAN_INFO_SCALE),
-+		.info_mask_shared_by_all = BIT(IIO_CHAN_INFO_SAMP_FREQ),
- 	}, {
- 		.type = IIO_CAPACITANCE,
- 		.indexed = 1,
-@@ -458,6 +469,7 @@ static const struct iio_chan_spec ad7152_channels[] = {
- 		BIT(IIO_CHAN_INFO_CALIBSCALE) |
- 		BIT(IIO_CHAN_INFO_CALIBBIAS) |
- 		BIT(IIO_CHAN_INFO_SCALE),
-+		.info_mask_shared_by_all = BIT(IIO_CHAN_INFO_SAMP_FREQ),
- 	}, {
- 		.type = IIO_CAPACITANCE,
- 		.differential = 1,
-@@ -468,6 +480,7 @@ static const struct iio_chan_spec ad7152_channels[] = {
- 		BIT(IIO_CHAN_INFO_CALIBSCALE) |
- 		BIT(IIO_CHAN_INFO_CALIBBIAS) |
- 		BIT(IIO_CHAN_INFO_SCALE),
-+		.info_mask_shared_by_all = BIT(IIO_CHAN_INFO_SAMP_FREQ),
- 	}
- };
- /*
--- 
-2.7.4
+Acked-by: Johan Hovold <johan@kernel.org>
 
+> ---
+>  drivers/staging/greybus/uart.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/greybus/uart.c b/drivers/staging/greybus/uart.c
+> index 5ee7954..8162886 100644
+> --- a/drivers/staging/greybus/uart.c
+> +++ b/drivers/staging/greybus/uart.c
+> @@ -832,7 +832,7 @@ static void gb_tty_port_shutdown(struct tty_port *port)
+>  	.tiocmset =		gb_tty_tiocmset,
+>  };
+>  
+> -static struct tty_port_operations gb_port_ops = {
+> +static const struct tty_port_operations gb_port_ops = {
+>  	.dtr_rts =		gb_tty_dtr_rts,
+>  	.activate =		gb_tty_port_activate,
+>  	.shutdown =		gb_tty_port_shutdown,
 
