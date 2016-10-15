@@ -1,61 +1,60 @@
 X-GM-THRID: 6340186644258226176
-X-Gmail-Labels: Topic type: DISCUSSION
-X-Received: by 10.66.194.168 with SMTP id hx8mr3492336pac.97.1476527591784;
-        Sat, 15 Oct 2016 03:33:11 -0700 (PDT)
+X-Received: by 10.129.96.8 with SMTP id u8mr4234600ywb.90.1476527385755;
+        Sat, 15 Oct 2016 03:29:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.35.106 with SMTP id k39ls9420701otd.3.gmail; Sat, 15 Oct
- 2016 03:33:11 -0700 (PDT)
-X-Received: by 10.200.52.204 with SMTP id x12mr4479848qtb.26.1476527591442;
-        Sat, 15 Oct 2016 03:33:11 -0700 (PDT)
+Received: by 10.36.160.140 with SMTP id o134ls1147408ite.2.canary; Sat, 15 Oct
+ 2016 03:29:42 -0700 (PDT)
+X-Received: by 10.107.18.226 with SMTP id 95mr4474808ios.82.1476527382751;
+        Sat, 15 Oct 2016 03:29:42 -0700 (PDT)
 Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id a143si3798082pfa.2.2016.10.15.03.33.11
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id a143si3796821pfa.2.2016.10.15.03.29.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 15 Oct 2016 03:33:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Sat, 15 Oct 2016 03:29:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id r16so8974203pfg.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 15 Oct 2016 03:33:11 -0700 (PDT)
+Received: by mail-pf0-x243.google.com with SMTP id s8so8957487pfj.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 15 Oct 2016 03:29:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id;
-        bh=WmUS2paT/9nze5W3LdR01K9l12Qz7inuWMjnaBszKMg=;
-        b=vo4ucHrRbxXyX4KURSJYG3pDW+GH4rNWaADWzqRpK9S0DZn5DCHRw3bBirvJ0Vi7FZ
-         /too27R2IZ6vGfAYxGlroafbAKCoC7gGtK0EoSyGMj6SjgyNc57VBn2ZeVGd4GTKRFEU
-         q5GluGu0+h/XgM+OMHof6dsdRNUiD1wB8esI2XDmUwDcKhtDvy0obpJBWGqZKM7rNs8q
-         CVM/PmxfhHf3yrriha7SZiu34CQzQYwU7HpeXhzmlg5dXnNzKX+6U+5v6SQahr3EFLqh
-         E/Mx2ptfeNQNjjPwjiyETvjNWdb1p6M+yaQPqsyt8KaNUCkD3D7EsHhLN30o2bfDAnpi
-         TbTg==
+        bh=PgtbiAo3sgBZVWvVL9g0tvXaRmjCwUDCnnnAX7+z+7k=;
+        b=G8DlbUCMfta1utE1HiUEuueqjjoacGU6n2errSn6nzLBqsmLs7X869jjI+7tDG8rAC
+         +c8NxJEYJT3MhGbMjoDjZl40Glv88TeD9xRywH0KC9QcwF1Z5IOMOn4DiWHEY0aiCJDt
+         nKXQLnamP88lkaxD8Eui37RVnFdLt4m93pUVV0bofgz7XKO07NVURT/N/E2LMuhtSFCW
+         YphTB5ZdIfNvRrdRhyJgIfGEVycYjNb0vTqbTyWpHiF9PFUUdsDfTlEyzfqiu/u6LlpL
+         bqicfh3j+ViNF7lOl6xLiX1zKO6i3i4N4ydn7NmPqPsky08Y7ldCOWvMMdMB1/ZK/AzB
+         Zr9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=WmUS2paT/9nze5W3LdR01K9l12Qz7inuWMjnaBszKMg=;
-        b=jY4Hb3qOUCnN8V9gdqL55FRUJMgVG++lMXL31/tonsO69AZxW4Vb/l63jRRBWwYp2R
-         kS5pSmVoof5d2RgHXdnKaDe9+KjWqpB1SrLSGZz2f0F6D5snvQkeRDLHj3u40Vyvd9eI
-         3k+tUX4IGB9RV4qdkTQGvxKjdouVfPC6+GPFvS0sjwT4aB46DqzSxepyU+csd9i159Cc
-         hS2IVVGV2Cn/JD0ySA1dBI4RFl3hn+lSB2Z8GLHRo1Pfset4B1XgfAAhHyJm5aVL2IT1
-         /FZnjkGz2kPFRJKw7LEr9v4O3VEostqTMT010fZFVlXmnng9i61hzMs7hcd5K+UxvJAx
-         /IMQ==
-X-Gm-Message-State: AA6/9RlugFvjNRk8vaNN4ZLeMZDCgAp0AM6JyPJkUlNo0P6AXouZIgsMooSWxsF1x1TGZA==
-X-Received: by 10.98.129.130 with SMTP id t124mr24614013pfd.5.1476527590995;
-        Sat, 15 Oct 2016 03:33:10 -0700 (PDT)
+        bh=PgtbiAo3sgBZVWvVL9g0tvXaRmjCwUDCnnnAX7+z+7k=;
+        b=hZMD1uE1YNBEEfi9kX9Pyi74dswHpftVqHTfbTrIvTHg+6gkBYreFxjH1oKDo42eWQ
+         8Ce1Q1rXAgWTLskHFQy/evf6kk6bXBA0C5cj2IxvcquKUFCq7MixphRFlMdtcvkUgDpw
+         JpxDk6lg58ODGQzy/vBmOe0WJzgABJ0hRR3msvQygslTcflD3aTxBcV7N2IpPDo80FUq
+         IwIUXAoPfmhbNzvIQU3h13CSMh2zSEo+5Ngw4z+wdBmjsyKmgrQEPkyuZA6JC4jEWYF2
+         0sYl5D0oDuAlZjP2shRfiGhrTNQYjBXcLSrxF9rWtNvK/P7KjN7ujuYL0QzBlWr8I8FF
+         Nwhw==
+X-Gm-Message-State: AA6/9RkT0zP7oeJGATw6KZY3KVuGJ/D8CTslEVCYn7AYjQVmobvm6DtoMLhUAow2kTBDaA==
+X-Received: by 10.98.147.78 with SMTP id b75mr24578506pfe.167.1476527382321;
+        Sat, 15 Oct 2016 03:29:42 -0700 (PDT)
 Return-Path: <rvarsha016@gmail.com>
 Received: from euri ([117.243.11.213])
-        by smtp.gmail.com with ESMTPSA id g21sm33911859pfb.43.2016.10.15.03.33.09
+        by smtp.gmail.com with ESMTPSA id g9sm7951045paw.40.2016.10.15.03.29.40
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 15 Oct 2016 03:33:10 -0700 (PDT)
+        Sat, 15 Oct 2016 03:29:41 -0700 (PDT)
 From: Varsha Rao <rvarsha016@gmail.com>
 To: gregkh@linuxfoundation.org,
 	forest@alittletooquiet.net,
 	outreachy-kernel@googlegroups.com
 Cc: Varsha Rao <rvarsha016@gmail.com>
 Subject: [PATCH v3] Staging: vt6655: Replace dwIoBase by iobase
-Date: Sat, 15 Oct 2016 16:02:58 +0530
-Message-Id: <1476527578-21418-1-git-send-email-rvarsha016@gmail.com>
+Date: Sat, 15 Oct 2016 15:56:11 +0530
+Message-Id: <1476527171-17337-1-git-send-email-rvarsha016@gmail.com>
 X-Mailer: git-send-email 2.7.4
 
 In this patch dwIoBase is renamed as iobase. This is done to fix the
@@ -65,6 +64,7 @@ Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
 ---
  Changes in v3:
   -Edited commit message.
+
  drivers/staging/vt6655/baseband.c |  52 +++---
  drivers/staging/vt6655/card.c     |  30 ++--
  drivers/staging/vt6655/mac.h      | 322 +++++++++++++++++++-------------------
