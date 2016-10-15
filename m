@@ -1,57 +1,56 @@
 X-GM-THRID: 6341798298000556032
-X-Received: by 10.98.206.14 with SMTP id y14mr6895442pfg.4.1476709828738;
-        Mon, 17 Oct 2016 06:10:28 -0700 (PDT)
+X-Received: by 10.157.60.216 with SMTP id t24mr4445880otf.71.1476564979634;
+        Sat, 15 Oct 2016 13:56:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.103.72 with SMTP id u69ls2353846itc.6.gmail; Mon, 17 Oct
- 2016 06:10:25 -0700 (PDT)
-X-Received: by 10.67.7.225 with SMTP id df1mr5790765pad.106.1476709825504;
-        Mon, 17 Oct 2016 06:10:25 -0700 (PDT)
+Received: by 10.157.15.105 with SMTP id 96ls10399381ott.41.gmail; Sat, 15 Oct
+ 2016 13:56:19 -0700 (PDT)
+X-Received: by 10.176.0.244 with SMTP id 107mr1149350uaj.10.1476564979155;
+        Sat, 15 Oct 2016 13:56:19 -0700 (PDT)
 Return-Path: <gs051095@gmail.com>
-Received: from mail-qt0-x233.google.com (mail-qt0-x233.google.com. [2607:f8b0:400d:c0d::233])
-        by gmr-mx.google.com with ESMTPS id g8si2029315ywe.2.2016.10.17.06.10.25
+Received: from mail-qk0-x22b.google.com (mail-qk0-x22b.google.com. [2607:f8b0:400d:c09::22b])
+        by gmr-mx.google.com with ESMTPS id i84si1714652ywg.0.2016.10.15.13.56.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 17 Oct 2016 06:10:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400d:c0d::233 as permitted sender) client-ip=2607:f8b0:400d:c0d::233;
+        Sat, 15 Oct 2016 13:56:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400d:c09::22b as permitted sender) client-ip=2607:f8b0:400d:c09::22b;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400d:c0d::233 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
+       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400d:c09::22b as permitted sender) smtp.mailfrom=gs051095@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qt0-x233.google.com with SMTP id s49so117287043qta.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 17 Oct 2016 06:10:25 -0700 (PDT)
+Received: by mail-qk0-x22b.google.com with SMTP id o68so232652326qkf.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 15 Oct 2016 13:56:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=mime-version:from:date:message-id:subject:to
          :content-transfer-encoding;
-        bh=F4zM07fpnJY8lk8FhnJxYrxf46a6T0TYssBgvRhflLw=;
-        b=jIUqXDhECHghce/6ZHVKvO5/40VqY5LZoAKLtFT4v1oTG7MRxcC0zLm+ldpVh3tDsO
-         1Vbest/qpQO4ByT0Gtxj88iZxCNmfmbMinOrT4B1tgzP6KWTYlZIOQ+OKT6jLiwyDZPc
-         gH1zwffMSZYFWVcoVBMtDR1RD5CuKr/X1axZkySm2oV1ZT1kr59Rj0cWPYyT8VBHioU1
-         ef9WLvPKL1ljJBSCwplZn6fCpGHMgfacbG2hnVNvKLjsff86WZgq7V7WGnL757oY8DwY
-         ZKqahBAQ4oFRZb38LF7wuXh4kikcQASeIfl7Nqm+uOW89JD9AntpgTBtmeyp1fUrBBFR
-         SAgA==
+        bh=vmk7e8tctqHdlh1FcSRA5gU0JOsXJoDVTD1V6BcrVtU=;
+        b=Ofi+xb1T8tMkWwUyUhD03HrJt/JuPQmDCiK34XgxKDLJXKExaANrx01SgHDJpQX7zm
+         ODPCmzhJnIectnPXvG2pUQHccTrXbVjfPooPYWk4P+TYGcc5XOc91EG6Xl8hi3dXD7Qf
+         oZtkVBZPda98ywfnyPgCJPGdrINXKsTwwLgVDepLR5Jo9NBf0Ux5bww4jGosHbCqLbDn
+         fpMV1V7+hJKIiKv2/wDVavtMKbSRQLFAGBwM8H8JmH4957/rhaAvVAKuC34Imnjmxif1
+         GV/5EtFtjihjJJwVTMdRGksNGvsr6JccPvpKqrDAewwk8NxF2vTvhowcg7w9LIlpdGUR
+         9xrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:mime-version:from:date:message-id:subject:to
          :content-transfer-encoding;
-        bh=F4zM07fpnJY8lk8FhnJxYrxf46a6T0TYssBgvRhflLw=;
-        b=SwzNuRSWE8jpgutMag6AdSgT4Idk8w+RZOtRev3ezlegrGXRDHgS4YKvWrGDMrD2AN
-         a7x4r4dmf2xVZAbE4Am167YJyKdD2HGjTx4uUxehm1SGbpjNhY66J1GR7C1B1dVjnCbf
-         c39HW8TVyugvgZQMGgxHbVAigPREsWAOsDZJj1uSOafjv2ivpCnBvefE9g0/zbUxvofr
-         PIA7gTn3XmW1CISb+Z5Dlzta6P8eh+w53bxkPl0K5JJONl5rCCL/QmBOUwX0IFe9EAAC
-         XuSWbPPVS1hWus8Qda9CYddCAMnJaoceopCiLZl6FiAYD/BkfKE6msv6wAJ8pdaJhGsU
-         ZnPg==
-X-Gm-Message-State: AA6/9RnyrC7p1HcRBmn5cuR751EhPJ/DQfdqZd6cpWg2VovtuC4rmqO93qkp14VBE7batWEKGqdO5nDxOFu+tg==
-X-Received: by 10.237.36.179 with SMTP id t48mr22657911qtc.19.1476709823803;
- Mon, 17 Oct 2016 06:10:23 -0700 (PDT)
+        bh=vmk7e8tctqHdlh1FcSRA5gU0JOsXJoDVTD1V6BcrVtU=;
+        b=LbAjZp0lB1dq7tqv7WNJygVueaK8xyjuDhdyWqRKJOv3Ip3xv40Kk/zmKRbclJ6Rfk
+         /BaxwcdPYBMs6vyuB73IsqHVUDiCnlcpnI2APk9TokKnkzH2bIgHaVy1mOgGuLGhbRWp
+         6IHPINhiJy5WWt34BiS9AWIRPEpD48Om6vZbaDw770pbEt8iRnnzu32yBUaAvWunj3M7
+         16dDUF67ClX89JwaBJFlKVWXtY88uhLgEjvXQurMGYsY3GkIdmLQUS3HqNDGiZEFokXN
+         z6OJ3oQCpYrfqDr3jGpcXkvUsrnoRsJomCwV+4H0TgPHq5dEMH5zObe1kzqPLfRkyc/7
+         GfIg==
+X-Gm-Message-State: AA6/9RnLyIIEzpmb4uJ3VXrNB4TpikpqjtDRwi/kg1q5MAIMv8djf3lnmrJAeEPb9PdIEdF/rwP3pbTZ2atRDQ==
+X-Received: by 10.55.121.131 with SMTP id u125mr234592qkc.114.1476564978930;
+ Sat, 15 Oct 2016 13:56:18 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.200.50.42 with HTTP; Mon, 17 Oct 2016 06:09:53 -0700 (PDT)
+Received: by 10.200.50.42 with HTTP; Sat, 15 Oct 2016 13:55:48 -0700 (PDT)
 From: Gargi Sharma <gs051095@gmail.com>
-Date: Mon, 17 Oct 2016 18:39:53 +0530
-Message-ID: <CAOCi2DGc1rRtzG+LwLmUgn5AvKh=Uu+yRVGiZ9irtDxpaoJ8aA@mail.gmail.com>
+Date: Sun, 16 Oct 2016 02:25:48 +0530
+Message-ID: <CAOCi2DHraHDKg3fnpezVf05FRLQL=KTK6Gk3yXtd4B4rJBu1hw@mail.gmail.com>
 Subject: task for radix tree __alloc_fd
-To: outreachy-kernel@googlegroups.com, Rik van Riel <riel@surriel.com>, 
-	Matthew Wilcox <matthew@wil.cx>
+To: Rik van Riel <riel@surriel.com>, outreachy-kernel@googlegroups.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 
@@ -140,9 +139,9 @@ in the [start,end) {the parameters start and end are given to
 __alloc_fd, the same parameters can be used}
 
 Using IDR API is better because the idr_alloc implementation uses
-radix trees to find an empty slot, and this will take lesser time as
-the bitmap did a linear search for an empty descriptor while the radix
-tree can return a descriptor in logarithm time complexity.
+radix trees to find an empty slot.
+
+Also, the expand the fdset earlier we simply, no we need to
 
 ---
 Part 4
@@ -159,7 +158,5 @@ Week 4 to 8: replace the implementation of expand_files since we are
 not using bitmap anymore.
 
 Week 9 to 12: figure out locking mechanism such that there is not race
-condition for the same file descriptor in the function. Performance
-Benchmarks to see how much improvement was caused by using the IDR api
-for allocating fds.
+condition for the same file descriptor in the function.
 
