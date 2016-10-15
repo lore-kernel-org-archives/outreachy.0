@@ -1,134 +1,184 @@
-X-GM-THRID: 6401312092482174976
-X-Received: by 10.157.40.246 with SMTP id s109mr3804204ota.97.1490421614048;
-        Fri, 24 Mar 2017 23:00:14 -0700 (PDT)
+X-GM-THRID: 6341665121383743488
+X-Received: by 10.194.69.133 with SMTP id e5mr512949wju.8.1476538195070;
+        Sat, 15 Oct 2016 06:29:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.5.241 with SMTP id 104ls4292712otd.35.gmail; Fri, 24 Mar
- 2017 23:00:13 -0700 (PDT)
-X-Received: by 10.129.50.12 with SMTP id y12mr4288099ywy.111.1490421613647;
-        Fri, 24 Mar 2017 23:00:13 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id r66si947164pfb.7.2017.03.24.23.00.13
+Received: by 10.25.21.75 with SMTP id l72ls1639935lfi.31.gmail; Sat, 15 Oct
+ 2016 06:29:53 -0700 (PDT)
+X-Received: by 10.25.23.164 with SMTP id 36mr522276lfx.4.1476538193669;
+        Sat, 15 Oct 2016 06:29:53 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id h10si164729wmg.0.2016.10.15.06.29.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 24 Mar 2017 23:00:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Sat, 15 Oct 2016 06:29:53 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id 79so1723156pgf.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 24 Mar 2017 23:00:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=iR4B2gE4f1QbfpSwXx/jbBh5ARvPeNz8bQnCPQp0xGw=;
-        b=A+bZpZQuBywDkG3OKIJ8RNfLIjtP7cDd9HxS+5vYKHTPnsmrpN0xRTZ/jjl4gb5Rg9
-         Tj9h/dzY696WII2yspTw1hs7K0aIbwhR3oRTuSKIe7EAakDInebpZ+J1wSP6sTejFMgz
-         KMqSk+cD3GW3tYODde2Tb+naxRytccGTDComRm7HGgtPQPx05o6gUBtlawV09Otv6cu1
-         hEuqh4OH20gMD+F8G6AjYirRvxukfYxiENejOnOpqQwJbH4JUtQlx+evFgyFd8VqtHfL
-         QG5uR6Ahyr46W9XTdLKC0F8N0KILYity+4t9pOX+bWtcpm+PFzzSJuiqC+2qOddLuhqz
-         5bxQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=iR4B2gE4f1QbfpSwXx/jbBh5ARvPeNz8bQnCPQp0xGw=;
-        b=KdY8boIlxYX/9kVPleE3G8nV75WRssWFaeTqfYViGdMiEZwT/gd02MZu7rDB4EeiIO
-         rOBxpina1rSntPy+RMsnyFmlWN9DbiwORL18KuVrDffa9Rmq8PatbhvrNEdGMpiAoqRv
-         w4BzuOmStfpo/nLjwksOeV9L9uYN1XjziLXjrrwfUMHtJy92OuNRL5IbLzqjznkfVnPT
-         SisXTgk6dSklb2mlXM5qEkSfrs7xliRae+r6bd+ItWALINi+DGNU5BCMkQylsHQx4lQN
-         hp54OR405ltUWr6FuTu74SuDHNCDDgOwyLziDzYv2opyLRZkFUmBpnWM9IhslHBlf7n/
-         j+Sw==
-X-Gm-Message-State: AFeK/H3V/SdZUxKA/JLJtQgGCqLkjoI8k7TbpJyv0gR8IC9CoPs08n9yYH1Sm9z8ALaTNA==
-X-Received: by 10.99.114.16 with SMTP id n16mr10017274pgc.230.1490421613417;
-        Fri, 24 Mar 2017 23:00:13 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 80sm7896940pfy.67.2017.03.24.23.00.10
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 24 Mar 2017 23:00:11 -0700 (PDT)
-Date: Sat, 25 Mar 2017 11:30:07 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: mchehab@kernel.org
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-media@vger.kernel.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: media: atomisp: compress return logic
-Message-ID: <20170325060007.GA5497@arushi-HP-Pavilion-Notebook>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.31,497,1473112800"; 
+   d="scan'208";a="240902649"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 15 Oct 2016 15:29:31 +0200
+Date: Sat, 15 Oct 2016 15:29:30 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Mihaela Muraru <mihaela.muraru21@gmail.com>
+cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: i4l: No assignment in if
+ statements
+In-Reply-To: <20161015132041.GA20307@domino-MS-16Y1>
+Message-ID: <alpine.DEB.2.20.1610151525310.9280@hadrien>
+References: <20161015132041.GA20307@domino-MS-16Y1>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: text/plain; charset=US-ASCII
 
-Simplify function returns by merging assignment and return.
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
- drivers/staging/media/atomisp/pci/atomisp2/atomisp_v4l2.c         | 8 ++------
- .../media/atomisp/pci/atomisp2/css2400/runtime/bufq/src/bufq.c    | 7 ++-----
- 2 files changed, 4 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_v4l2.c b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_v4l2.c
-index b1f685a841ba..a04cd3ba7e68 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_v4l2.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_v4l2.c
-@@ -519,9 +519,7 @@ int atomisp_runtime_suspend(struct device *dev)
- 	if (ret)
- 		return ret;
- 	pm_qos_update_request(&isp->pm_qos, PM_QOS_DEFAULT_VALUE);
--	ret = atomisp_mrfld_power_down(isp);
--
--	return ret;
-+	return atomisp_mrfld_power_down(isp);
- }
- 
- int atomisp_runtime_resume(struct device *dev)
-@@ -587,9 +585,7 @@ static int atomisp_suspend(struct device *dev)
- 		return ret;
- 	}
- 	pm_qos_update_request(&isp->pm_qos, PM_QOS_DEFAULT_VALUE);
--	ret = atomisp_mrfld_power_down(isp);
--
--	return ret;
-+	return atomisp_mrfld_power_down(isp);
- }
- 
- static int atomisp_resume(struct device *dev)
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/bufq/src/bufq.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/bufq/src/bufq.c
-index 737ad66da900..10418c190f93 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/bufq/src/bufq.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/bufq/src/bufq.c
-@@ -440,7 +440,6 @@ enum ia_css_err ia_css_bufq_enqueue_psys_event(
- enum  ia_css_err ia_css_bufq_dequeue_psys_event(
- 	uint8_t item[BUFQ_EVENT_SIZE])
- {
--	enum ia_css_err return_err;
- 	int error = 0;
- 	ia_css_queue_t *q;
- 
-@@ -457,8 +456,7 @@ enum  ia_css_err ia_css_bufq_dequeue_psys_event(
- 	}
- 	error = ia_css_eventq_recv(q, item);
- 
--	return_err = ia_css_convert_errno(error);
--	return return_err;
-+	return ia_css_convert_errno(error);
- 
- }
- 
-@@ -482,8 +480,7 @@ enum  ia_css_err ia_css_bufq_dequeue_isys_event(
- 		return IA_CSS_ERR_RESOURCE_NOT_AVAILABLE;
- 	}
- 	error = ia_css_eventq_recv(q, item);
--	return_err = ia_css_convert_errno(error);
--	return return_err;
-+	return ia_css_convert_errno(error);
- #else
- 	(void)item;
- 	return IA_CSS_ERR_RESOURCE_NOT_AVAILABLE;
--- 
-2.11.0
+On Sat, 15 Oct 2016, Mihaela Muraru wrote:
 
+> Move the assignment before the statement 'if'.
+> Found with Coccinelle:
+> @r1@
+> identifier ptr;
+> expression fn;
+> statement S;
+> constant c;
+> @@
+>
+> +ptr=fn;
+>  if (
+> -	(ptr=fn)
+> +	ptr
+> 	< c) S
+>
+> Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
+> ---
+> Changes in v2:
+> 	- rewrite the semantic patch;
+> ---
+>  drivers/staging/i4l/pcbit/callbacks.c | 28 ++++++++++++++++++----------
+>  1 file changed, 18 insertions(+), 10 deletions(-)
+>
+> diff --git a/drivers/staging/i4l/pcbit/callbacks.c b/drivers/staging/i4l/pcbit/callbacks.c
+> index efb6d6a..6d8d02d 100644
+> --- a/drivers/staging/i4l/pcbit/callbacks.c
+> +++ b/drivers/staging/i4l/pcbit/callbacks.c
+> @@ -56,8 +56,8 @@ void cb_out_1(struct pcbit_dev *dev, struct pcbit_chan *chan,
+>  	 *     - kfree   when msg has been sent
+>  	 */
+>
+> -	if ((len = capi_conn_req(cbdata->data.setup.CalledPN, &skb,
+> -				 chan->proto)) < 0)
+> +	len = capi_conn_req(cbdata->data.setup.CalledPN, &skb, chan->proto);
+> +	if (len < 0)
+>  	{
+
+Perhaps you could push this { up to the previous line at the same time.
+
+>  		printk("capi_conn_req failed\n");
+>  		return;
+> @@ -89,7 +89,8 @@ void cb_out_2(struct pcbit_dev *dev, struct pcbit_chan *chan,
+>  	int len;
+>  	ushort refnum;
+>
+> -	if ((len = capi_conn_active_resp(chan, &skb)) < 0)
+> +	len = capi_conn_active_resp(chan, &skb);
+> +	if (len < 0)
+>  	{
+>  		printk("capi_conn_active_req failed\n");
+>  		return;
+> @@ -110,7 +111,8 @@ void cb_out_2(struct pcbit_dev *dev, struct pcbit_chan *chan,
+>
+>  	/* Select protocol  */
+>
+> -	if ((len = capi_select_proto_req(chan, &skb, 1 /*outgoing*/)) < 0) {
+> +	len = capi_select_proto_req(chan, &skb, 1);
+> +	if (len /*outgoing*/< 0) {
+
+The outgoing comment really seems to be attached to the argument 1 in the
+function call.
+
+>  		printk("capi_select_proto_req failed\n");
+>  		return;
+>  	}
+> @@ -170,7 +172,8 @@ void cb_in_1(struct pcbit_dev *dev, struct pcbit_chan *chan,
+>  	dev->dev_if->statcallb(&ictl);
+>
+>
+> -	if ((len = capi_conn_resp(chan, &skb)) < 0) {
+> +	len = capi_conn_resp(chan, &skb);
+> +	if (len < 0) {
+>  		printk(KERN_DEBUG "capi_conn_resp failed\n");
+>  		return;
+>  	}
+> @@ -194,7 +197,8 @@ void cb_in_2(struct pcbit_dev *dev, struct pcbit_chan *chan,
+>  	struct sk_buff *skb;
+>  	int len;
+>
+> -	if ((len = capi_conn_active_req(chan, &skb)) < 0) {
+> +	len = capi_conn_active_req(chan, &skb);
+> +	if (len < 0) {
+>  		printk(KERN_DEBUG "capi_conn_active_req failed\n");
+>  		return;
+>  	}
+> @@ -220,7 +224,8 @@ void cb_in_3(struct pcbit_dev *dev, struct pcbit_chan *chan,
+>  	struct sk_buff *skb;
+>  	int len;
+>
+> -	if ((len = capi_select_proto_req(chan, &skb, 0 /*incoming*/)) < 0)
+> +	len = capi_select_proto_req(chan, &skb, 0);
+> +	if (len /*incoming*/< 0)
+
+Likewise here the incoming seems to be attached to the 0 argument.
+
+It's a separate issue, but it really looks like this argument should be a
+boolean, or an enum that would eliminate the need for the comment.
+
+julia
+
+>  	{
+>  		printk("capi_select_proto_req failed\n");
+>  		return;
+> @@ -247,7 +252,8 @@ void cb_disc_1(struct pcbit_dev *dev, struct pcbit_chan *chan,
+>  	ushort refnum;
+>  	isdn_ctrl ictl;
+>
+> -	if ((len = capi_disc_resp(chan, &skb)) < 0) {
+> +	len = capi_disc_resp(chan, &skb);
+> +	if (len < 0) {
+>  		printk("capi_disc_resp failed\n");
+>  		return;
+>  	}
+> @@ -275,7 +281,8 @@ void cb_disc_2(struct pcbit_dev *dev, struct pcbit_chan *chan,
+>  	int len;
+>  	ushort refnum;
+>
+> -	if ((len = capi_disc_req(chan->callref, &skb, CAUSE_NORMAL)) < 0)
+> +	len = capi_disc_req(chan->callref, &skb, CAUSE_NORMAL);
+> +	if (len < 0)
+>  	{
+>  		printk("capi_disc_req failed\n");
+>  		return;
+> @@ -318,7 +325,8 @@ void cb_selp_1(struct pcbit_dev *dev, struct pcbit_chan *chan,
+>  	int len;
+>  	ushort refnum;
+>
+> -	if ((len = capi_activate_transp_req(chan, &skb)) < 0)
+> +	len = capi_activate_transp_req(chan, &skb);
+> +	if (len < 0)
+>  	{
+>  		printk("capi_conn_activate_transp_req failed\n");
+>  		return;
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20161015132041.GA20307%40domino-MS-16Y1.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
