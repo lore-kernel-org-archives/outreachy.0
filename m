@@ -1,93 +1,92 @@
-X-GM-THRID: 6339138687062769664
-X-Received: by 10.36.68.148 with SMTP id o142mr1177078ita.12.1475945740380;
-        Sat, 08 Oct 2016 09:55:40 -0700 (PDT)
+X-GM-THRID: 6340186644258226176
+X-Gmail-Labels: Topic type: DISCUSSION
+X-Received: by 10.66.194.168 with SMTP id hx8mr3492336pac.97.1476527591784;
+        Sat, 15 Oct 2016 03:33:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.156.13 with SMTP id f13ls2555620ioe.45.gmail; Sat, 08 Oct
- 2016 09:55:37 -0700 (PDT)
-X-Received: by 10.67.14.202 with SMTP id fi10mr1592816pad.52.1475945737658;
-        Sat, 08 Oct 2016 09:55:37 -0700 (PDT)
+Received: by 10.157.35.106 with SMTP id k39ls9420701otd.3.gmail; Sat, 15 Oct
+ 2016 03:33:11 -0700 (PDT)
+X-Received: by 10.200.52.204 with SMTP id x12mr4479848qtb.26.1476527591442;
+        Sat, 15 Oct 2016 03:33:11 -0700 (PDT)
 Return-Path: <rvarsha016@gmail.com>
 Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id 7si6795302par.0.2016.10.08.09.55.37
+        by gmr-mx.google.com with ESMTPS id a143si3798082pfa.2.2016.10.15.03.33.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 08 Oct 2016 09:55:37 -0700 (PDT)
+        Sat, 15 Oct 2016 03:33:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
        spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id t25so4625370pfg.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 08 Oct 2016 09:55:37 -0700 (PDT)
+Received: by mail-pf0-x241.google.com with SMTP id r16so8974203pfg.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 15 Oct 2016 03:33:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=2Zv8+DLHaRdOspBOQnmVrXlV11RYhPDzo5kO1Cwmnf4=;
-        b=C0/6SgNcsON5VlQMkW/bQhrTrorI46ez/vmim40+PwbNyX9cBxWH+WORMOFeP+gjqx
-         FCVKrYJwzYzPgygAvhJts2dvgsq7lLaWhiqg3Bs84ixryiNtHCzTHw0old4zs+6V8lwA
-         qAKJqe3tsPevz0g6QtafWA7rj6wjo5ePmg8/MGkXPc6j3Zl2JYcV2FAVPNndXlPrnuor
-         IcuYvw9YGU0oQtDXPUdYYUNc4q9kiNCF49DCAoRzJZX8IcyPKAuw3fGQ40TSvRCimDUY
-         FEH2rYKsO8T/554qpN9vYungfEtQsCYhnvGmUj6NZSufd76h73r3Urzlakc/eTq01vVf
-         C+ew==
+        h=from:to:cc:subject:date:message-id;
+        bh=WmUS2paT/9nze5W3LdR01K9l12Qz7inuWMjnaBszKMg=;
+        b=vo4ucHrRbxXyX4KURSJYG3pDW+GH4rNWaADWzqRpK9S0DZn5DCHRw3bBirvJ0Vi7FZ
+         /too27R2IZ6vGfAYxGlroafbAKCoC7gGtK0EoSyGMj6SjgyNc57VBn2ZeVGd4GTKRFEU
+         q5GluGu0+h/XgM+OMHof6dsdRNUiD1wB8esI2XDmUwDcKhtDvy0obpJBWGqZKM7rNs8q
+         CVM/PmxfhHf3yrriha7SZiu34CQzQYwU7HpeXhzmlg5dXnNzKX+6U+5v6SQahr3EFLqh
+         E/Mx2ptfeNQNjjPwjiyETvjNWdb1p6M+yaQPqsyt8KaNUCkD3D7EsHhLN30o2bfDAnpi
+         TbTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=2Zv8+DLHaRdOspBOQnmVrXlV11RYhPDzo5kO1Cwmnf4=;
-        b=cxjSZFSdDGocpL/xS/6wPZpD/k8fSV+eV80LmvTuHyWp2G6LuRGY8KsvcOrQBhlszP
-         HRGuC2qlcn/OQhMYOZ2+7+b2yBnIUqOOnLlbAICSYiBRFxzEUcwlAw+Bm4L3LSd+jsWr
-         HdJFwI7yR98+ODp+JkaHrjGcA/xB1nc1amdbLw+0Yfx4oI8FpGaMtvk9t4dZnp1RAgHX
-         zoiCc4zqXa3E3nADmmrnJrwR+kJHGBb7pXGn0ghO/3GMNzQ8tB3LjPdyhL2Em78TNBla
-         imitjywBe5SuWcClBN4CphUoUupc91CDvVI7C90tEEox9iou4QuVkBEb+e2jtvjHrFFB
-         OX9Q==
-X-Gm-Message-State: AA6/9Rn+dOIlyf8HfwiNBPfOCSZLuL3sFD4VBygTUyRXkhd5lpja1mWrxI0kJkYddQonCg==
-X-Received: by 10.98.89.84 with SMTP id n81mr11328854pfb.39.1475945737180;
-        Sat, 08 Oct 2016 09:55:37 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=WmUS2paT/9nze5W3LdR01K9l12Qz7inuWMjnaBszKMg=;
+        b=jY4Hb3qOUCnN8V9gdqL55FRUJMgVG++lMXL31/tonsO69AZxW4Vb/l63jRRBWwYp2R
+         kS5pSmVoof5d2RgHXdnKaDe9+KjWqpB1SrLSGZz2f0F6D5snvQkeRDLHj3u40Vyvd9eI
+         3k+tUX4IGB9RV4qdkTQGvxKjdouVfPC6+GPFvS0sjwT4aB46DqzSxepyU+csd9i159Cc
+         hS2IVVGV2Cn/JD0ySA1dBI4RFl3hn+lSB2Z8GLHRo1Pfset4B1XgfAAhHyJm5aVL2IT1
+         /FZnjkGz2kPFRJKw7LEr9v4O3VEostqTMT010fZFVlXmnng9i61hzMs7hcd5K+UxvJAx
+         /IMQ==
+X-Gm-Message-State: AA6/9RlugFvjNRk8vaNN4ZLeMZDCgAp0AM6JyPJkUlNo0P6AXouZIgsMooSWxsF1x1TGZA==
+X-Received: by 10.98.129.130 with SMTP id t124mr24614013pfd.5.1476527590995;
+        Sat, 15 Oct 2016 03:33:10 -0700 (PDT)
 Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([103.62.68.129])
-        by smtp.gmail.com with ESMTPSA id g71sm20011233pfd.60.2016.10.08.09.55.34
+Received: from euri ([117.243.11.213])
+        by smtp.gmail.com with ESMTPSA id g21sm33911859pfb.43.2016.10.15.03.33.09
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 08 Oct 2016 09:55:36 -0700 (PDT)
-Date: Sat, 8 Oct 2016 22:25:32 +0530
+        Sat, 15 Oct 2016 03:33:10 -0700 (PDT)
 From: Varsha Rao <rvarsha016@gmail.com>
-To: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
-	forest@alittletooquiet.net
-Cc: rvarsha016@gmail.com
-Subject: [PATCH] Staging: vt6655: Replace dwIoBase by iobase
-Message-ID: <20161008165532.GA26251@euri>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.7.0 (2016-08-17)
+To: gregkh@linuxfoundation.org,
+	forest@alittletooquiet.net,
+	outreachy-kernel@googlegroups.com
+Cc: Varsha Rao <rvarsha016@gmail.com>
+Subject: [PATCH v3] Staging: vt6655: Replace dwIoBase by iobase
+Date: Sat, 15 Oct 2016 16:02:58 +0530
+Message-Id: <1476527578-21418-1-git-send-email-rvarsha016@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-In this patch dwIoBase is renamed as iobase.This is done to fix the checkpatch issue of CamelCase.
+In this patch dwIoBase is renamed as iobase. This is done to fix the
+checkpatch issue of CamelCase.
 
 Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
 ---
+ Changes in v3:
+  -Edited commit message.
  drivers/staging/vt6655/baseband.c |  52 +++---
- drivers/staging/vt6655/baseband.h |   8 +-
  drivers/staging/vt6655/card.c     |  30 ++--
  drivers/staging/vt6655/mac.h      | 322 +++++++++++++++++++-------------------
  drivers/staging/vt6655/rf.c       |  64 ++++----
  drivers/staging/vt6655/srom.c     |  32 ++--
  drivers/staging/vt6655/srom.h     |   6 +-
- 7 files changed, 257 insertions(+), 257 deletions(-)
+ 6 files changed, 253 insertions(+), 253 deletions(-)
 
 diff --git a/drivers/staging/vt6655/baseband.c b/drivers/staging/vt6655/baseband.c
-index de503a3..e739ecc 100644
+index 2696f50..44dfa54 100644
 --- a/drivers/staging/vt6655/baseband.c
 +++ b/drivers/staging/vt6655/baseband.c
-@@ -1916,7 +1916,7 @@ void vnt_get_phy_field(struct vnt_private *priv, u32 frame_length,
+@@ -1911,7 +1911,7 @@ void vnt_get_phy_field(struct vnt_private *priv, u32 frame_length,
   *
   * Parameters:
   *  In:
 - *      dwIoBase    - I/O base address
-+ *      iobase    - I/O base address
++ *      iobase      - I/O base address
   *      byBBAddr    - address of register in Baseband
   *  Out:
   *      pbyData     - data read
-@@ -1927,24 +1927,24 @@ void vnt_get_phy_field(struct vnt_private *priv, u32 frame_length,
+@@ -1922,24 +1922,24 @@ void vnt_get_phy_field(struct vnt_private *priv, u32 frame_length,
  bool BBbReadEmbedded(struct vnt_private *priv,
  		     unsigned char byBBAddr, unsigned char *pbyData)
  {
@@ -117,16 +116,16 @@ index de503a3..e739ecc 100644
  
  	if (ww == W_MAX_TIMEOUT) {
  		pr_debug(" DBG_PORT80(0x30)\n");
-@@ -1958,7 +1958,7 @@ bool BBbReadEmbedded(struct vnt_private *priv,
+@@ -1953,7 +1953,7 @@ bool BBbReadEmbedded(struct vnt_private *priv,
   *
   * Parameters:
   *  In:
 - *      dwIoBase    - I/O base address
-+ *      iobase    - I/O base address
++ *      iobase      - I/O base address
   *      byBBAddr    - address of register in Baseband
   *      byData      - data to write
   *  Out:
-@@ -1970,20 +1970,20 @@ bool BBbReadEmbedded(struct vnt_private *priv,
+@@ -1965,20 +1965,20 @@ bool BBbReadEmbedded(struct vnt_private *priv,
  bool BBbWriteEmbedded(struct vnt_private *priv,
  		      unsigned char byBBAddr, unsigned char byData)
  {
@@ -152,16 +151,16 @@ index de503a3..e739ecc 100644
  		if (byValue & BBREGCTL_DONE)
  			break;
  	}
-@@ -2000,7 +2000,7 @@ bool BBbWriteEmbedded(struct vnt_private *priv,
+@@ -1995,7 +1995,7 @@ bool BBbWriteEmbedded(struct vnt_private *priv,
   *
   * Parameters:
   *  In:
 - *      dwIoBase    - I/O base address
-+ *      iobase    - I/O base address
++ *      iobase      - I/O base address
   *      byRevId     - Revision ID
   *      byRFType    - RF type
   *  Out:
-@@ -2014,7 +2014,7 @@ bool BBbVT3253Init(struct vnt_private *priv)
+@@ -2009,7 +2009,7 @@ bool BBbVT3253Init(struct vnt_private *priv)
  {
  	bool bResult = true;
  	int        ii;
@@ -170,7 +169,7 @@ index de503a3..e739ecc 100644
  	unsigned char byRFType = priv->byRFType;
  	unsigned char byLocalID = priv->byLocalID;
  
-@@ -2036,8 +2036,8 @@ bool BBbVT3253Init(struct vnt_private *priv)
+@@ -2031,8 +2031,8 @@ bool BBbVT3253Init(struct vnt_private *priv)
  					byVT3253B0_AGC4_RFMD2959[ii][0],
  					byVT3253B0_AGC4_RFMD2959[ii][1]);
  
@@ -181,7 +180,7 @@ index de503a3..e739ecc 100644
  		}
  		priv->abyBBVGA[0] = 0x18;
  		priv->abyBBVGA[1] = 0x0A;
-@@ -2076,8 +2076,8 @@ bool BBbVT3253Init(struct vnt_private *priv)
+@@ -2071,8 +2071,8 @@ bool BBbVT3253Init(struct vnt_private *priv)
  				byVT3253B0_AGC[ii][0],
  				byVT3253B0_AGC[ii][1]);
  
@@ -192,7 +191,7 @@ index de503a3..e739ecc 100644
  
  		priv->abyBBVGA[0] = 0x14;
  		priv->abyBBVGA[1] = 0x0A;
-@@ -2098,7 +2098,7 @@ bool BBbVT3253Init(struct vnt_private *priv)
+@@ -2093,7 +2093,7 @@ bool BBbVT3253Init(struct vnt_private *priv)
  		 * 0x45->0x41(VC1/VC2 define, make the ANT_A, ANT_B inverted)
  		 */
  
@@ -201,7 +200,7 @@ index de503a3..e739ecc 100644
  
  		/* Init ANT B select,
  		 * RX Config CR10 = 0x28->0x2A,
-@@ -2106,7 +2106,7 @@ bool BBbVT3253Init(struct vnt_private *priv)
+@@ -2101,7 +2101,7 @@ bool BBbVT3253Init(struct vnt_private *priv)
  		 * make the ANT_A, ANT_B inverted)
  		 */
  
@@ -210,7 +209,7 @@ index de503a3..e739ecc 100644
  		/* Select VC1/VC2, CR215 = 0x02->0x06 */
  		bResult &= BBbWriteEmbedded(priv, 0xd7, 0x06);
  
-@@ -2154,7 +2154,7 @@ bool BBbVT3253Init(struct vnt_private *priv)
+@@ -2149,7 +2149,7 @@ bool BBbVT3253Init(struct vnt_private *priv)
  		priv->ldBmThreshold[2] = 0;
  		priv->ldBmThreshold[3] = 0;
  		/* Fix VT3226 DFC system timing issue */
@@ -219,7 +218,7 @@ index de503a3..e739ecc 100644
  		/* {{ RobertYu: 20050104 */
  	} else if (byRFType == RF_AIROHA7230) {
  		for (ii = 0; ii < CB_VT3253B0_INIT_FOR_AIROHA2230; ii++)
-@@ -2167,11 +2167,11 @@ bool BBbVT3253Init(struct vnt_private *priv)
+@@ -2161,11 +2161,11 @@ bool BBbVT3253Init(struct vnt_private *priv)
  		/* Init ANT B select,TX Config CR09 = 0x61->0x45,
  		 * 0x45->0x41(VC1/VC2 define, make the ANT_A, ANT_B inverted)
  		 */
@@ -233,58 +232,38 @@ index de503a3..e739ecc 100644
  		/* Select VC1/VC2, CR215 = 0x02->0x06 */
  		bResult &= BBbWriteEmbedded(priv, 0xd7, 0x06);
  		/* }} */
-@@ -2259,7 +2259,7 @@ void BBvSetVGAGainOffset(struct vnt_private *priv, unsigned char byData)
+@@ -2253,7 +2253,7 @@ void BBvSetVGAGainOffset(struct vnt_private *priv, unsigned char byData)
   *
   * Parameters:
   *  In:
 - *      dwIoBase    - I/O base address
-+ *      iobase    - I/O base address
++ *      iobase      - I/O base address
   *  Out:
   *      none
   *
-@@ -2280,7 +2280,7 @@ BBvSoftwareReset(struct vnt_private *priv)
+@@ -2274,7 +2274,7 @@ BBvSoftwareReset(struct vnt_private *priv)
   *
   * Parameters:
   *  In:
 - *      dwIoBase    - I/O base address
-+ *      iobase    - I/O base address
++ *      iobase      - I/O base address
   *  Out:
   *      none
   *
-@@ -2302,7 +2302,7 @@ BBvPowerSaveModeON(struct vnt_private *priv)
+@@ -2296,7 +2296,7 @@ BBvPowerSaveModeON(struct vnt_private *priv)
   *
   * Parameters:
   *  In:
 - *      dwIoBase    - I/O base address
-+ *      iobase    - I/O base address
++ *      iobase      - I/O base address
   *  Out:
   *      none
   *
-diff --git a/drivers/staging/vt6655/baseband.h b/drivers/staging/vt6655/baseband.h
-index a732fba..1d1d4fc 100644
---- a/drivers/staging/vt6655/baseband.h
-+++ b/drivers/staging/vt6655/baseband.h
-@@ -58,11 +58,11 @@
- #define TOP_RATE_2M         0x00200000
- #define TOP_RATE_1M         0x00100000
- 
--#define bbvclearfoe(dwIoBase)				\
--	BBbWriteEmbedded(dwIoBase, 0xB1, 0)
-+#define bbvclearfoe(iobase)				\
-+	BBbWriteEmbedded(iobase, 0xB1, 0)
- 
--#define BBvSetFOE(dwIoBase)				\
--	BBbWriteEmbedded(dwIoBase, 0xB1, 0x0C)
-+#define BBvSetFOE(iobase)				\
-+	BBbWriteEmbedded(iobase, 0xB1, 0x0C)
- 
- unsigned int
- BBuGetFrameTime(
 diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
-index dbcea44..03790bb 100644
+index 2e2f96d..928c336 100644
 --- a/drivers/staging/vt6655/card.c
 +++ b/drivers/staging/vt6655/card.c
-@@ -36,7 +36,7 @@
+@@ -32,7 +32,7 @@
   *
   * Revision History:
   *      06-10-2003 Bryan YC Fan:  Re-write codes to support VT3253 spec.
@@ -293,7 +272,7 @@ index dbcea44..03790bb 100644
   *      09-01-2003 Bryan YC Fan:  Add vUpdateIFS().
   *
   */
-@@ -938,20 +938,20 @@ u64 CARDqGetTSFOffset(unsigned char byRxRate, u64 qwTSF1, u64 qwTSF2)
+@@ -934,20 +934,20 @@ u64 CARDqGetTSFOffset(unsigned char byRxRate, u64 qwTSF1, u64 qwTSF2)
   */
  bool CARDbGetCurrentTSF(struct vnt_private *priv, u64 *pqwCurrTSF)
  {
@@ -319,16 +298,16 @@ index dbcea44..03790bb 100644
  
  	return true;
  }
-@@ -989,7 +989,7 @@ u64 CARDqGetNextTBTT(u64 qwTSF, unsigned short wBeaconInterval)
+@@ -985,7 +985,7 @@ u64 CARDqGetNextTBTT(u64 qwTSF, unsigned short wBeaconInterval)
   *
   * Parameters:
   *  In:
 - *      dwIoBase        - IO Base
-+ *      iobase        - IO Base
++ *      iobase          - IO Base
   *      wBeaconInterval - Beacon Interval
   *  Out:
   *      none
-@@ -999,16 +999,16 @@ u64 CARDqGetNextTBTT(u64 qwTSF, unsigned short wBeaconInterval)
+@@ -995,16 +995,16 @@ u64 CARDqGetNextTBTT(u64 qwTSF, unsigned short wBeaconInterval)
  void CARDvSetFirstNextTBTT(struct vnt_private *priv,
  			   unsigned short wBeaconInterval)
  {
@@ -349,7 +328,7 @@ index dbcea44..03790bb 100644
  }
  
  /*
-@@ -1028,12 +1028,12 @@ void CARDvSetFirstNextTBTT(struct vnt_private *priv,
+@@ -1024,12 +1024,12 @@ void CARDvSetFirstNextTBTT(struct vnt_private *priv,
  void CARDvUpdateNextTBTT(struct vnt_private *priv, u64 qwTSF,
  			 unsigned short wBeaconInterval)
  {
@@ -367,10 +346,10 @@ index dbcea44..03790bb 100644
  	pr_debug("Card:Update Next TBTT[%8llx]\n", qwTSF);
  }
 diff --git a/drivers/staging/vt6655/mac.h b/drivers/staging/vt6655/mac.h
-index 030f529..4d8b748 100644
+index d7faaf9..33b758c 100644
 --- a/drivers/staging/vt6655/mac.h
 +++ b/drivers/staging/vt6655/mac.h
-@@ -554,341 +554,341 @@
+@@ -549,341 +549,341 @@
  
  /*---------------------  Export Macros ------------------------------*/
  
@@ -874,19 +853,19 @@ index 030f529..4d8b748 100644
  bool MACbIsRegBitsOn(struct vnt_private *, unsigned char byRegOfs,
  		     unsigned char byTestBits);
 diff --git a/drivers/staging/vt6655/rf.c b/drivers/staging/vt6655/rf.c
-index 447882c..92bb1c6 100644
+index 1762c05..431a5d4 100644
 --- a/drivers/staging/vt6655/rf.c
 +++ b/drivers/staging/vt6655/rf.c
-@@ -410,7 +410,7 @@ static const unsigned long dwAL7230ChannelTable2[CB_MAX_CHANNEL] = {
+@@ -405,7 +405,7 @@ static const unsigned long dwAL7230ChannelTable2[CB_MAX_CHANNEL] = {
   *
   * Parameters:
   *  In:
 - *      dwIoBase    - I/O base address
-+ *      iobase    - I/O base address
++ *      iobase      - I/O base address
   *  Out:
   *      none
   *
-@@ -419,16 +419,16 @@ static const unsigned long dwAL7230ChannelTable2[CB_MAX_CHANNEL] = {
+@@ -414,16 +414,16 @@ static const unsigned long dwAL7230ChannelTable2[CB_MAX_CHANNEL] = {
   */
  static bool s_bAL7230Init(struct vnt_private *priv)
  {
@@ -906,7 +885,7 @@ index 447882c..92bb1c6 100644
  							 SOFTPWRCTL_TXPEINV));
  	BBvPowerSaveModeOFF(priv); /* RobertYu:20050106, have DC value for Calibration */
  
-@@ -436,7 +436,7 @@ static bool s_bAL7230Init(struct vnt_private *priv)
+@@ -431,7 +431,7 @@ static bool s_bAL7230Init(struct vnt_private *priv)
  		ret &= IFRFbWriteEmbedded(priv, dwAL7230InitTable[ii]);
  
  	/* PLL On */
@@ -915,7 +894,7 @@ index 447882c..92bb1c6 100644
  
  	/* Calibration */
  	MACvTimer0MicroSDelay(priv, 150);/* 150us */
-@@ -449,7 +449,7 @@ static bool s_bAL7230Init(struct vnt_private *priv)
+@@ -444,7 +444,7 @@ static bool s_bAL7230Init(struct vnt_private *priv)
  	/* TXDCOC:disable, RCK:disable */
  	ret &= IFRFbWriteEmbedded(priv, dwAL7230InitTable[CB_AL7230_INIT_SEQ-1]);
  
@@ -924,7 +903,7 @@ index 447882c..92bb1c6 100644
  							 SOFTPWRCTL_SWPE2    |
  							 SOFTPWRCTL_SWPECTI  |
  							 SOFTPWRCTL_TXPEINV));
-@@ -458,7 +458,7 @@ static bool s_bAL7230Init(struct vnt_private *priv)
+@@ -453,7 +453,7 @@ static bool s_bAL7230Init(struct vnt_private *priv)
  
  	/* PE1: TX_ON, PE2: RX_ON, PE3: PLLON */
  	/* 3-wire control for power saving mode */
@@ -933,7 +912,7 @@ index 447882c..92bb1c6 100644
  
  	return ret;
  }
-@@ -468,26 +468,26 @@ static bool s_bAL7230Init(struct vnt_private *priv)
+@@ -463,26 +463,26 @@ static bool s_bAL7230Init(struct vnt_private *priv)
   */
  static bool s_bAL7230SelectChannel(struct vnt_private *priv, unsigned char byChannel)
  {
@@ -965,16 +944,16 @@ index 447882c..92bb1c6 100644
  
  	return ret;
  }
-@@ -497,7 +497,7 @@ static bool s_bAL7230SelectChannel(struct vnt_private *priv, unsigned char byCha
+@@ -492,7 +492,7 @@ static bool s_bAL7230SelectChannel(struct vnt_private *priv, unsigned char byCha
   *
   * Parameters:
   *  In:
 - *      dwIoBase    - I/O base address
-+ *      iobase    - I/O base address
++ *      iobase      - I/O base address
   *      dwData      - data to write
   *  Out:
   *      none
-@@ -507,15 +507,15 @@ static bool s_bAL7230SelectChannel(struct vnt_private *priv, unsigned char byCha
+@@ -502,15 +502,15 @@ static bool s_bAL7230SelectChannel(struct vnt_private *priv, unsigned char byCha
   */
  bool IFRFbWriteEmbedded(struct vnt_private *priv, unsigned long dwData)
  {
@@ -993,16 +972,16 @@ index 447882c..92bb1c6 100644
  		if (dwValue & IFREGCTL_DONE)
  			break;
  	}
-@@ -531,7 +531,7 @@ bool IFRFbWriteEmbedded(struct vnt_private *priv, unsigned long dwData)
+@@ -526,7 +526,7 @@ bool IFRFbWriteEmbedded(struct vnt_private *priv, unsigned long dwData)
   *
   * Parameters:
   *  In:
 - *      dwIoBase    - I/O base address
-+ *      iobase    - I/O base address
++ *      iobase      - I/O base address
   *  Out:
   *      none
   *
-@@ -540,19 +540,19 @@ bool IFRFbWriteEmbedded(struct vnt_private *priv, unsigned long dwData)
+@@ -535,19 +535,19 @@ bool IFRFbWriteEmbedded(struct vnt_private *priv, unsigned long dwData)
   */
  static bool RFbAL2230Init(struct vnt_private *priv)
  {
@@ -1025,8 +1004,8 @@ index 447882c..92bb1c6 100644
 +	MACvWordRegBitsOff(iobase, MAC_REG_SOFTPWRCTL, SOFTPWRCTL_SWPE3);
  
  	/* patch abnormal AL2230 frequency output */
- 	IFRFbWriteEmbedded(priv, (0x07168700+(BY_AL2230_REG_LEN<<3)+IFREGCTL_REGW));
-@@ -562,7 +562,7 @@ static bool RFbAL2230Init(struct vnt_private *priv)
+ 	IFRFbWriteEmbedded(priv, (0x07168700 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW));
+@@ -557,7 +557,7 @@ static bool RFbAL2230Init(struct vnt_private *priv)
  	MACvTimer0MicroSDelay(priv, 30); /* delay 30 us */
  
  	/* PLL On */
@@ -1034,8 +1013,8 @@ index 447882c..92bb1c6 100644
 +	MACvWordRegBitsOn(iobase, MAC_REG_SOFTPWRCTL, SOFTPWRCTL_SWPE3);
  
  	MACvTimer0MicroSDelay(priv, 150);/* 150us */
- 	ret &= IFRFbWriteEmbedded(priv, (0x00d80f00+(BY_AL2230_REG_LEN<<3)+IFREGCTL_REGW));
-@@ -571,20 +571,20 @@ static bool RFbAL2230Init(struct vnt_private *priv)
+ 	ret &= IFRFbWriteEmbedded(priv, (0x00d80f00 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW));
+@@ -566,20 +566,20 @@ static bool RFbAL2230Init(struct vnt_private *priv)
  	MACvTimer0MicroSDelay(priv, 30);/* 30us */
  	ret &= IFRFbWriteEmbedded(priv, dwAL2230InitTable[CB_AL2230_INIT_SEQ-1]);
  
@@ -1059,7 +1038,7 @@ index 447882c..92bb1c6 100644
  	bool ret;
  
  	ret = true;
-@@ -593,10 +593,10 @@ static bool RFbAL2230SelectChannel(struct vnt_private *priv, unsigned char byCha
+@@ -588,10 +588,10 @@ static bool RFbAL2230SelectChannel(struct vnt_private *priv, unsigned char byCha
  	ret &= IFRFbWriteEmbedded(priv, dwAL2230ChannelTable1[byChannel - 1]);
  
  	/* Set Channel[7] = 0 to tell H/W channel is changing now. */
@@ -1072,16 +1051,16 @@ index 447882c..92bb1c6 100644
  
  	return ret;
  }
-@@ -681,7 +681,7 @@ bool RFbSelectChannel(struct vnt_private *priv, unsigned char byRFType,
+@@ -676,7 +676,7 @@ bool RFbSelectChannel(struct vnt_private *priv, unsigned char byRFType,
   *
   * Parameters:
   *  In:
 - *      dwIoBase    - I/O base address
-+ *      iobase    - I/O base address
++ *      iobase      - I/O base address
   *      uChannel    - channel number
   *      bySleepCnt  - SleepProgSyn count
   *
-@@ -691,12 +691,12 @@ bool RFbSelectChannel(struct vnt_private *priv, unsigned char byRFType,
+@@ -686,12 +686,12 @@ bool RFbSelectChannel(struct vnt_private *priv, unsigned char byRFType,
  bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char byRFType,
  			 u16 uChannel)
  {
@@ -1096,38 +1075,38 @@ index 447882c..92bb1c6 100644
  	switch (byRFType) {
  	case RF_AIROHA:
  	case RF_AL2230S:
-@@ -758,7 +758,7 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char byRFType,
+@@ -753,7 +753,7 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char byRFType,
   *
   * Parameters:
   *  In:
 - *      dwIoBase       - I/O base address
-+ *      iobase       - I/O base address
++ *      iobase         - I/O base address
   *      dwRFPowerTable - RF Tx Power Setting
   *  Out:
   *      none
-@@ -830,7 +830,7 @@ bool RFbSetPower(
+@@ -825,7 +825,7 @@ bool RFbSetPower(
   *
   * Parameters:
   *  In:
 - *      dwIoBase       - I/O base address
-+ *      iobase       - I/O base address
++ *      iobase         - I/O base address
   *      dwRFPowerTable - RF Tx Power Setting
   *  Out:
   *      none
 diff --git a/drivers/staging/vt6655/srom.c b/drivers/staging/vt6655/srom.c
-index ee99277..0b612d3 100644
+index e6d1280..635f271 100644
 --- a/drivers/staging/vt6655/srom.c
 +++ b/drivers/staging/vt6655/srom.c
-@@ -64,7 +64,7 @@
+@@ -60,7 +60,7 @@
   *
   * Parameters:
   *  In:
 - *      dwIoBase        - I/O base address
-+ *      iobase        - I/O base address
++ *      iobase          - I/O base address
   *      byContntOffset  - address of EEPROM
   *  Out:
   *      none
-@@ -72,7 +72,7 @@
+@@ -68,7 +68,7 @@
   * Return Value: data read
   *
   */
@@ -1136,7 +1115,7 @@ index ee99277..0b612d3 100644
  				 unsigned char byContntOffset)
  {
  	unsigned short wDelay, wNoACK;
-@@ -81,18 +81,18 @@ unsigned char SROMbyReadEmbedded(void __iomem *dwIoBase,
+@@ -77,18 +77,18 @@ unsigned char SROMbyReadEmbedded(void __iomem *dwIoBase,
  	unsigned char byOrg;
  
  	byData = 0xFF;
@@ -1161,7 +1140,7 @@ index ee99277..0b612d3 100644
  			if (byWait & (I2MCSR_DONE | I2MCSR_NACK))
  				break;
  			PCAvDelayByIO(CB_DELAY_LOOP_WAIT);
-@@ -102,8 +102,8 @@ unsigned char SROMbyReadEmbedded(void __iomem *dwIoBase,
+@@ -98,8 +98,8 @@ unsigned char SROMbyReadEmbedded(void __iomem *dwIoBase,
  			break;
  		}
  	}
@@ -1172,12 +1151,12 @@ index ee99277..0b612d3 100644
  	return byData;
  }
  
-@@ -112,20 +112,20 @@ unsigned char SROMbyReadEmbedded(void __iomem *dwIoBase,
+@@ -108,20 +108,20 @@ unsigned char SROMbyReadEmbedded(void __iomem *dwIoBase,
   *
   * Parameters:
   *  In:
 - *      dwIoBase        - I/O base address
-+ *      iobase        - I/O base address
++ *      iobase          - I/O base address
   *  Out:
   *      pbyEepromRegs   - EEPROM content Buffer
   *
@@ -1196,12 +1175,12 @@ index ee99277..0b612d3 100644
  						    (unsigned char)ii);
  		pbyEepromRegs++;
  	}
-@@ -136,21 +136,21 @@ void SROMvReadAllContents(void __iomem *dwIoBase, unsigned char *pbyEepromRegs)
+@@ -132,21 +132,21 @@ void SROMvReadAllContents(void __iomem *dwIoBase, unsigned char *pbyEepromRegs)
   *
   * Parameters:
   *  In:
 - *      dwIoBase        - I/O base address
-+ *      iobase        - I/O base address
++ *      iobase          - I/O base address
   *  Out:
   *      pbyEtherAddress - Ethernet Address buffer
   *
@@ -1222,10 +1201,10 @@ index ee99277..0b612d3 100644
  	}
  }
 diff --git a/drivers/staging/vt6655/srom.h b/drivers/staging/vt6655/srom.h
-index 531bf00..3087d56 100644
+index b3215a2..6e03ab6 100644
 --- a/drivers/staging/vt6655/srom.h
 +++ b/drivers/staging/vt6655/srom.h
-@@ -90,12 +90,12 @@
+@@ -85,12 +85,12 @@
  
  /*---------------------  Export Functions  --------------------------*/
  
