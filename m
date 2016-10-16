@@ -1,130 +1,95 @@
 X-GM-THRID: 6341882177714651136
-X-Received: by 10.66.26.116 with SMTP id k20mr4844570pag.50.1476643170906;
-        Sun, 16 Oct 2016 11:39:30 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.40.182 with SMTP id s51ls11591434ota.14.gmail; Sun, 16 Oct
- 2016 11:39:30 -0700 (PDT)
-X-Received: by 10.157.10.199 with SMTP id 65mr3580924otq.112.1476643170478;
-        Sun, 16 Oct 2016 11:39:30 -0700 (PDT)
-Return-Path: <gnudevliz@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id um12si4424066pab.2.2016.10.16.11.39.30
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 16 Oct 2016 11:39:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=gnudevliz@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id r16so11237128pfg.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 16 Oct 2016 11:39:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=df7SZ9KhXnrn0mlbYm49WJowTAxFbYmLRNn1bXgPWPU=;
-        b=ztSq6ikRRIpiN23BIeZUuFSxEQ4hwHPLNOc5prOLBOdQWZIJYWH4Oic5oS3w37knLt
-         Y7kG9LUjYZ8MGhOatnssDFzzv1DMAdRchIfy/9gQbpuGCiMRBYjo1IV6Qqsw13HlF9Bl
-         uHe5mbJmjqZslRjH2bA9VvXremjCz9Es/RwkHccewUHJ7Zhm1BbeXBwmqt4ChE++TW8+
-         IV7EfNrGB3DV/kAu+rXjl0nye3nAZ1wijplcTDf5QeiEH/xKRmxgRdXlUUNDhd7NWNp8
-         BfvnJkaKNmQQX+Dtexxlj+L8LMXcMgYdZtcQYFASJ/gz/qhpVHCkxat6sAfKjPLtvTs2
-         KNYQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=df7SZ9KhXnrn0mlbYm49WJowTAxFbYmLRNn1bXgPWPU=;
-        b=Ioy7fYFlTlL4LriEq8ULP+hNtZvks8XqK/vTPjN+GTmF/zFj1d4AMuPDCW8q55UG+U
-         G4fEAiHtZDbUyd7fE/emTuQK2bcIby0ganioWsCjhKqYfGMsLjTLJIikiPxIqDRsE5FJ
-         YF/+n7zRbvXeTecpEBW0qFnaex8ISqeoWaEjQGp/Tq29sF0BrGTbDh55328VS5n8FUTv
-         kxqdTgohf3j4gAqVucubJ4KW+MTVe8NlXJ9UwGBvEJz/7duvKPblpKYCUMJrfcR8Rq9P
-         /uyu85DH4Ay3Hb6t/7oKvsQW3hzerueVsCstC50/hqxo6wRKY6ssz87qWY1+lTwYM++w
-         OFIg==
-X-Gm-Message-State: AA6/9RlD41DPULzsWNllHE2gRAcBUvYXDevHRYjzvCFWT7Zsu0KXwm6CyhkL2NFEjmr+7w==
-X-Received: by 10.98.155.152 with SMTP id e24mr32254484pfk.99.1476643170094;
-        Sun, 16 Oct 2016 11:39:30 -0700 (PDT)
-Return-Path: <gnudevliz@gmail.com>
-Received: from localhost ([2601:644:300:fd6b:4e0f:6eff:fe69:e9ea])
-        by smtp.gmail.com with ESMTPSA id ym3sm5138424pac.42.2016.10.16.11.39.29
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 16 Oct 2016 11:39:29 -0700 (PDT)
-Date: Sun, 16 Oct 2016 11:39:27 -0700
-From: Elizabeth Ferdman <gnudevliz@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: eraretuya@gmail.com
-Subject: Re: [Outreachy kernel] Coccinelle Constification
-Message-ID: <20161016183926.GA2242@localhost>
+Date: Sat, 15 Oct 2016 22:33:11 -0700 (PDT)
+From: Bhumika Goyal <bhumirks@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <d11cf10a-059c-48ae-a33f-7950190831f5@googlegroups.com>
+In-Reply-To: <20161016022145.GA2215@localhost>
 References: <20161016022145.GA2215@localhost>
- <20161016030416.GC2406@Socrates-DK>
+Subject: Re: Coccinelle Constification
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20161016030416.GC2406@Socrates-DK>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_2763_1425429400.1476595991790"
+X-Google-Token: EJeijMAFraW0Nr4af9w0
+X-Google-IP: 14.139.242.195
 
-On Sun, Oct 16, 2016 at 11:04:20AM +0800, Eva Rachel Retuya wrote:
-> Hello Liz,
-> 
-> I'm a fellow applicant so I might be wrong on some things but let me
-> share my experience so far with coccinelle usage.
-> 
-> On Sat, Oct 15, 2016 at 07:21:46PM -0700, Elizabeth Ferdman wrote:
-> > I'd like to try doing constification using Coccinelle but I'm having
-> > trouble starting on this task. Bhumika Goyal has submitted lots of these
-> > and I've looked at the scripts she uses but I'm very confused about the
-> > process.
-> > 
-> > Do you identify the structs that
-> > need to be const first, then write the cocci script? If not, then what
-> > is a basic script to use to find structs that need to be const? I can't
-> > find any specific documentation that pertains to constification and
-> > coccinelle.
-> > 
-> 
-> It depends on your approach. Sure you can manually identify by code
-> tracing if the struct qualifies to be made const then make a script to
-> write the changes esp. if there are lots of places to be changed.
-> 
-> You can also define a set of properties/situations where declaring the
-> structure const is justified like this:
-> https://git.kernel.org/cgit/linux/kernel/git/gregkh/staging.git/commit/drivers/staging?h=staging-testing&id=1c099ed63f8363228a0b075a25511c9feb90e03f
-> 
-Hey Eva,
+------=_Part_2763_1425429400.1476595991790
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2764_729016232.1476595991790"
 
-Thanks so much for your reply and thanks for this link. That criteria is
-very helpful esp because I'm a beginner in C and that clears up more of
-what was going on in the long cocci script. It's a good idea to search
-in greg's staging tree-- I had just been searching inside the
-outreachy mailing list for the most part.
+------=_Part_2764_729016232.1476595991790
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-Liz
 
-> and from there write your script so that it'll detect instances where
-> the criteria you previously defined is met. Now that covers detection,
-> for making the changes I suggest you write another one to cater
-> specifically to a specific driver and also include the transformation
-> that needs to be done.
-> 
-> About the basic script, I suggest you try to match any struct
-> declaration first using the disable optional_qualifier isomorphism
-> stated on the project's small task 1. Start small then build your way
-> up.
-> 
-> Once you get your basic script running, coordinate the rest with Julia.
-> Bhumika's patches are great reference, just observe the 'criteria' at
-> which structures can be deemed 'const'.
-> 
-> I hope I clear some of your confusion,
-> Eva
-> 
-> > Thanks,
-> > Liz
-> > 
-> > -- 
-> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20161016022145.GA2215%40localhost.
-> > For more options, visit https://groups.google.com/d/optout.
+Hey Liz,
+
+Eva has already explained the process well but I would like to
+share my approach :
+
+1. Firstly, I find all structures of the form static struct s i ={...};
+by using the script:
+@r disable optional_qualifier@
+identifier s,i;
+@@
+* static struct s i ={...};
+disable optional_qualifier is used here as we want to look only for
+the non-const structures.
+
+2. Now pick a structure instance from a file and look how it is used
+in that file.
+If the structure's fields are not getting modified => it can be
+declared as const.
+You will have to analyze the usage carefully so that nothing is missed.
+Also, you can do a grep to be sure that all the referenced are covered.
+
+3. After this you can write a Coccinelle script to constify all the
+instances that follows this particular pattern of usage.
+
+Make a rule in the script which matches the structure's reference that 
+is justified for const declaration and stores the reference position.
+Look for the @ok@ rule in my scripts.
+Now make another rule which looks for any other reference other 
+than the above one and stores this position as well.
+Look for @bad@ rule for this step.
+Next, add another rule @depends on !bad disable optional_qualifier@
+that declares the structure as const.
+
+4. After doing the changes compile the affected drivers and run
+size <affected_file_name> to get the size details of the affected
+file.
+
+I hope this helps :)
+
+Thanks,
+Bhumika
+
+------=_Part_2764_729016232.1476595991790
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br>Hey Liz,<br><br>Eva has already explained the process =
+well but I would like to<br>share my approach :<br><br>1. Firstly, I find a=
+ll structures of the form static struct s i =3D{...};<br>by using the scrip=
+t:<br>@r disable optional_qualifier@<br>identifier s,i;<br>@@<br>* static s=
+truct s i =3D{...};<br>disable optional_qualifier is used here as we want t=
+o look only for<br>the non-const structures.<br><br>2. Now pick a structure=
+ instance from a file and look how it is used<br>in that file.<br>If the st=
+ructure&#39;s fields are not getting modified =3D&gt; it can be<br>declared=
+ as const.<br>You will have to analyze the usage carefully so that nothing =
+is missed.<br>Also, you can do a grep to be sure that all the referenced ar=
+e covered.<br><br>3. After this you can write a Coccinelle script to consti=
+fy all the<br>instances that follows this particular pattern of usage.<br><=
+br>Make a rule in the script which matches the structure&#39;s reference th=
+at <br>is justified for const declaration and stores the reference position=
+.<br>Look for the @ok@ rule in my scripts.<br>Now make another rule which l=
+ooks for any other reference other <br>than the above one and stores this p=
+osition as well.<br>Look for @bad@ rule for this step.<br>Next, add another=
+ rule @depends on !bad disable optional_qualifier@<br>that declares the str=
+ucture as const.<br><br>4. After doing the changes compile the affected dri=
+vers and run<br>size &lt;affected_file_name&gt; to get the size details of =
+the affected<br>file.<br><br>I hope this helps :)<br><br>Thanks,<br>Bhumika=
+<br></div>
+------=_Part_2764_729016232.1476595991790--
+
+------=_Part_2763_1425429400.1476595991790--
 
