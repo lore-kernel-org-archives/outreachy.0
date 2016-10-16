@@ -1,49 +1,53 @@
 X-GM-THRID: 6342042153586262016
-X-Received: by 10.200.40.189 with SMTP id i58mr5537160qti.76.1476632153379;
-        Sun, 16 Oct 2016 08:35:53 -0700 (PDT)
+X-Received: by 10.66.193.3 with SMTP id hk3mr5021110pac.87.1476624664844;
+        Sun, 16 Oct 2016 06:31:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.47.7 with SMTP id h7ls12181828otb.23.gmail; Sun, 16 Oct
- 2016 08:35:53 -0700 (PDT)
-X-Received: by 10.157.57.194 with SMTP id y60mr5605069otb.113.1476632153003;
-        Sun, 16 Oct 2016 08:35:53 -0700 (PDT)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id z76si4119907pff.1.2016.10.16.08.35.52
+Received: by 10.36.178.27 with SMTP id u27ls1747493ite.13.gmail; Sun, 16 Oct
+ 2016 06:31:00 -0700 (PDT)
+X-Received: by 10.66.118.199 with SMTP id ko7mr4535210pab.109.1476624660294;
+        Sun, 16 Oct 2016 06:31:00 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id p131si4121901vkf.1.2016.10.16.06.30.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 16 Oct 2016 08:35:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Sun, 16 Oct 2016 06:31:00 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (unknown [37.162.138.181])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 69CC325A;
-	Sun, 16 Oct 2016 15:35:52 +0000 (UTC)
-Date: Sun, 16 Oct 2016 17:09:39 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.31,354,1473112800"; 
+   d="scan'208";a="240960554"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 16 Oct 2016 15:30:57 +0200
+Date: Sun, 16 Oct 2016 15:30:57 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Siddhi Dave <d.sandy5990@gmail.com>
-Cc: lidza.louina@gmail.com, markh@compro.net,
-	driverdev-devel@linuxdriverproject.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] Staging: dgnc: Clean up Macros
-Message-ID: <20161016150939.GA7287@kroah.com>
-References: <20161016124231.GA18162@siddhi-home-laptop>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+cc: lidza.louina@gmail.com, markh@compro.net, gregkh@linuxfoundation.org, 
+    driverdev-devel@linuxdriverproject.org, devel@driverdev.osuosl.org, 
+    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: dgnc: Clean up Macros
 In-Reply-To: <20161016124231.GA18162@siddhi-home-laptop>
-User-Agent: Mutt/1.7.1 (2016-10-04)
+Message-ID: <alpine.DEB.2.20.1610161525490.2207@hadrien>
+References: <20161016124231.GA18162@siddhi-home-laptop>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-On Sun, Oct 16, 2016 at 06:12:32PM +0530, Siddhi Dave wrote:
+
+
+On Sun, 16 Oct 2016, Siddhi Dave wrote:
+
 > Fix checkpatch warning: Macros with flow control statements should be avoided
-> 
+>
 > Because Macros with flow control statements (goto and return) are
 > not very nice to read as any flow movement is unexpected.
-> 
+>
 > Signed-off-by: Siddhi Dave <d.sandy5990@gmail.com>
 > ---
 >  drivers/staging/dgnc/dgnc_sysfs.c | 20 ++++++++++----------
 >  1 file changed, 10 insertions(+), 10 deletions(-)
-> 
+>
 > diff --git a/drivers/staging/dgnc/dgnc_sysfs.c b/drivers/staging/dgnc/dgnc_sysfs.c
 > index 290bf6e..0767740 100644
 > --- a/drivers/staging/dgnc/dgnc_sysfs.c
@@ -51,7 +55,7 @@ On Sun, Oct 16, 2016 at 06:12:32PM +0530, Siddhi Dave wrote:
 > @@ -90,16 +90,16 @@ void dgnc_remove_driver_sysfiles(struct pci_driver *dgnc_driver)
 >  	driver_remove_file(driverfs, &driver_attr_pollrate);
 >  }
->  
+>
 > -#define DGNC_VERIFY_BOARD(p, bd)				\
 > -	do {							\
 > -		if (!p)						\
@@ -73,17 +77,26 @@ On Sun, Oct 16, 2016 at 06:12:32PM +0530, Siddhi Dave wrote:
 > +		if (bd->state != BOARD_READY)
 > +			return 0;
 >  	} while (0)
->  
+
+This does not look correct.  You are still sort of defining a macro,
+except that you have dropped all of the \s.  A macro has to be defined on
+a single line, or a line continued with \, so this would cause major
+syntax errors.  I think that someone else worked on similar code and found
+that some of the tests were also not needed in the context in which this
+code is used.
+
+julia
+
+>
 >  static ssize_t vpd_show(struct device *p, struct device_attribute *attr,
-
-You didn't test-build this code, why not?
-
-Also, please see the archives for why this type of change is not going
-to be correct and I can't take it.
-
-And finally, you sent 3 copies of this, why?
-
-thanks,
-
-greg k-h
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20161016124231.GA18162%40siddhi-home-laptop.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
