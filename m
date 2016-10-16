@@ -1,75 +1,64 @@
 X-GM-THRID: 6341988616413118464
-X-Received: by 10.31.132.7 with SMTP id g7mr4165695vkd.41.1476734423375;
-        Mon, 17 Oct 2016 13:00:23 -0700 (PDT)
+X-Received: by 10.159.39.169 with SMTP id b38mr1624067uab.27.1476609291598;
+        Sun, 16 Oct 2016 02:14:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.11.231 with SMTP id 94ls13741817oth.16.gmail; Mon, 17 Oct
- 2016 13:00:22 -0700 (PDT)
-X-Received: by 10.129.116.66 with SMTP id p63mr7113925ywc.83.1476734422090;
-        Mon, 17 Oct 2016 13:00:22 -0700 (PDT)
-Return-Path: <riel@surriel.com>
-Received: from shelob.surriel.com (shelob.surriel.com. [74.92.59.67])
-        by gmr-mx.google.com with ESMTPS id i84si2359823ywg.0.2016.10.17.13.00.21
+Received: by 10.107.34.19 with SMTP id i19ls4226942ioi.46.gmail; Sun, 16 Oct
+ 2016 02:14:50 -0700 (PDT)
+X-Received: by 10.107.174.15 with SMTP id x15mr5925672ioe.72.1476609290679;
+        Sun, 16 Oct 2016 02:14:50 -0700 (PDT)
+Return-Path: <gs051095@gmail.com>
+Received: from mail-qk0-x244.google.com (mail-qk0-x244.google.com. [2607:f8b0:400d:c09::244])
+        by gmr-mx.google.com with ESMTPS id g8si1718351ywe.2.2016.10.16.02.14.50
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 17 Oct 2016 13:00:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of riel@surriel.com designates 74.92.59.67 as permitted sender) client-ip=74.92.59.67;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 16 Oct 2016 02:14:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400d:c09::244 as permitted sender) client-ip=2607:f8b0:400d:c09::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of riel@surriel.com designates 74.92.59.67 as permitted sender) smtp.mailfrom=riel@surriel.com
-Received: from [2601:186:302:8100:224:e8ff:fe38:995c] (helo=annuminas.surriel.com)
-	by shelob.surriel.com with esmtpsa (TLSv1:AES256-SHA:256)
-	(Exim 4.63)
-	(envelope-from <riel@surriel.com>)
-	id 1bwE55-0005pb-MJ; Mon, 17 Oct 2016 16:00:19 -0400
-Message-ID: <1476734419.23685.3.camel@surriel.com>
-Subject: Re: task for radix tree test suite
-From: Rik van Riel <riel@surriel.com>
-To: Gargi Sharma <gs051095@gmail.com>, outreachy-kernel@googlegroups.com
-Cc: mawilcox@microsoft.com
-Date: Mon, 17 Oct 2016 16:00:19 -0400
-In-Reply-To: <CAOCi2DH08-HimwEs+SU=TcQBpi9RnHe5bafbFFi=oW=vFU1_6g@mail.gmail.com>
-References: 
-	<CAOCi2DH08-HimwEs+SU=TcQBpi9RnHe5bafbFFi=oW=vFU1_6g@mail.gmail.com>
-Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-A0YPsfpHC8G1sOyS+JxE"
-X-Mailer: Evolution 3.20.5 (3.20.5-1.fc24) 
-Mime-Version: 1.0
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400d:c09::244 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qk0-x244.google.com with SMTP id z190so11673207qkc.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 16 Oct 2016 02:14:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:from:date:message-id:subject:to:cc;
+        bh=1qUokh7e7PBL5Jeku1EaOTZxnNdpzBT2mGMesIvqPRg=;
+        b=TYgqhpnor3A6+Igv9vkpTP31qErRnE2A4HRwLLbxfkH9MJiOmubqZGVRFfvra2I8MV
+         Mo87KyvxWwORK29HRUyIXPSpxG9W55CxBgjXhVLpJi9yG5BsFpI9VeP37vsexo3JlLxs
+         W5O+z/QQpnSjgvw5hFWlxNKrE6HQYnVQlOZN1k+BBRuzLsZIsAjjl2MHV9tXVFSmKZJr
+         XUJ9iyc9iE4gzEyJKWx3N+6elcWYszhJJ6QHC2FsHf/uUMrL5MN9+mANECa30FeyhpX7
+         5uPvd02MUSRd5v2Dis07zpsh3lklLZdMuRG/4kA/K8RF+BuI8HXZJ9rM0UJaCuWT/T2w
+         NoBw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+        bh=1qUokh7e7PBL5Jeku1EaOTZxnNdpzBT2mGMesIvqPRg=;
+        b=gwwJdqyYFiey/XYEtaDTm0w6flRTqT4XyGt2V8U4D9eAoBmne+dk48Z4lMjsnzH3Ma
+         qIBo1IJLSUhf1rfMv0x/eBQSI4SwyAvgAKrYfM14J3cPCKW0NYXV0xxuRWZT8I/KPkJT
+         G3DXHf6v30NITAjr16THq2fX5/CgDcMVbcBPyySFngzK4I5GV0QUhV+gsfWr8nnCSmnF
+         FWBhBIekLzP88AcEiiOfjMAqxxYkcJKiOpTnjKaRCkzdO6E3aNWnoomePqTk0PrlNXRa
+         ncaMXgar7tePX1mMj8Y3syqA96Dj9ytbRf3OqpdaKstQ1RfORzGolkPWC6USU+mlbxD5
+         tCOg==
+X-Gm-Message-State: AA6/9RkMB8+lbPDCI3CS5yDXCkMz24H5fbzOoABolahY1aYdsN0aUsPbOTiM9r8mBDGzK2aLPwEeTOui4gxsBg==
+X-Received: by 10.55.151.70 with SMTP id z67mr21591802qkd.185.1476609290447;
+ Sun, 16 Oct 2016 02:14:50 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.200.50.42 with HTTP; Sun, 16 Oct 2016 02:14:20 -0700 (PDT)
+From: Gargi Sharma <gs051095@gmail.com>
+Date: Sun, 16 Oct 2016 14:44:20 +0530
+Message-ID: <CAOCi2DH08-HimwEs+SU=TcQBpi9RnHe5bafbFFi=oW=vFU1_6g@mail.gmail.com>
+Subject: task for radix tree test suite
+To: outreachy-kernel@googlegroups.com
+Cc: Rik van Riel <riel@surriel.com>, willy@linux.intel.com
+Content-Type: text/plain; charset=UTF-8
 
+Hello Mentors,
 
---=-A0YPsfpHC8G1sOyS+JxE
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+No task is listed for the radix tree test suite project on the
+Outreachy Kernel Page. Will a timeline for the proposed project be
+sufficient? Is there a small task I can do before the deadline
+tomorrow?
 
-On Sun, 2016-10-16 at 14:44 +0530, Gargi Sharma wrote:
-> Hello Mentors,
->=20
-> No task is listed for the radix tree test suite project on the
-> Outreachy Kernel Page. Will a timeline for the proposed project be
-> sufficient? Is there a small task I can do before the deadline
-> tomorrow?
-
-A timeline, and a piece of text with your understanding
-of how the radix tree works, and how it can be used, will
-be enough.
-
---=20
-All Rights Reversed.
---=-A0YPsfpHC8G1sOyS+JxE
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAABCAAGBQJYBS3TAAoJEM553pKExN6DJ2QIAJs6iiAwA2JYUd5AqOLnbBEJ
-BuotOHLOZyMDBAN4gW44HE0l3aAe+XGpAYhzWZn8ILQeqS31+WX8ijZhyoGuOCSL
-PiMcOaqkLgkrmLF5iMji7sbpdrPJ+ZPfEOlrvjpSaSL4Zfvz8y6NgZY+YJqONRxh
-3uhn/Giuo0WUUx9Oxmpf/UN090CE4yy72o9ZTxjqM1jmnKc82AFwCxcp+WT7LVkI
-oCJRPa+6YGZaCebES+HpMl56Vn4vhZzQDPgzsmvuqKbJ4vcfRNNm3lMmml74q7AJ
-NB5DuaPyVAQKnsMz9buNjIbm/jI2To8Y9dLcm3FzVaannqsi2IzH84j1y2yTpKk=
-=NGmJ
------END PGP SIGNATURE-----
-
---=-A0YPsfpHC8G1sOyS+JxE--
-
+Thanks
+Gargi
 
