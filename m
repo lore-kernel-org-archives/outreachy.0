@@ -1,75 +1,115 @@
-X-GM-THRID: 5524303118336
-X-Received: by 10.180.87.166 with SMTP id az6mr1728242wib.1.1425234120696;
-        Sun, 01 Mar 2015 10:22:00 -0800 (PST)
+X-GM-THRID: 6342507519581093888
+X-Received: by 10.66.74.232 with SMTP id x8mr6150663pav.10.1476730108556;
+        Mon, 17 Oct 2016 11:48:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.8.13 with SMTP id n13ls360622laa.80.gmail; Sun, 01 Mar
- 2015 10:21:59 -0800 (PST)
-X-Received: by 10.112.25.7 with SMTP id y7mr3224652lbf.21.1425234119243;
-        Sun, 01 Mar 2015 10:21:59 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from mail-we0-x22f.google.com (mail-we0-x22f.google.com. [2a00:1450:400c:c03::22f])
-        by gmr-mx.google.com with ESMTPS id ew5si527714wid.1.2015.03.01.10.21.59
+Received: by 10.36.135.133 with SMTP id f127ls2533954ite.18.canary; Mon, 17
+ Oct 2016 11:48:26 -0700 (PDT)
+X-Received: by 10.36.216.4 with SMTP id b4mr3424645itg.33.1476730106696;
+        Mon, 17 Oct 2016 11:48:26 -0700 (PDT)
+Return-Path: <aquannie@gmail.com>
+Received: from mail-pf0-x232.google.com (mail-pf0-x232.google.com. [2607:f8b0:400e:c00::232])
+        by gmr-mx.google.com with ESMTPS id z76si4972841pff.1.2016.10.17.11.48.26
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 10:21:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) client-ip=2a00:1450:400c:c03::22f;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 17 Oct 2016 11:48:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) client-ip=2607:f8b0:400e:c00::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c03::22f as permitted sender) smtp.mail=dilekuzulmez@gmail.com;
        dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) smtp.mailfrom=aquannie@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22f.google.com with SMTP id u56so29311543wes.10
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 10:21:59 -0800 (PST)
+Received: by mail-pf0-x232.google.com with SMTP id e6so81997027pfk.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 17 Oct 2016 11:48:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=uV+iCewJlFNXPY74Dj3j/m5rCpyGgmgt8EWTxR6LHGE=;
-        b=yS5EwgnJAh+8WhLBrNG9rB2r4SuMwDV5rgGDlYlRdsvoMvfsSIjxit33nN46kM4rY+
-         wYb+udk/xtiU8dwB+9bg3ZttyKHNyvB13fj6FOn6Bbz9lFDSASxAoDck2DeoWX+wP/dm
-         chcSfpdUETJqBkMLYZP0rFGmsvQBNavaryXxue6pVFM0tVNtoNFDFDZdsPV/xD5B7yVX
-         0Fq87UTAG5DzrjIVv6LUEmGiVpOtnIjeg+hAQR60JrF5fJqAkT+sakI3YWBLM3mowrjc
-         UVpQ1vcI5wBOd7qcacqa16Epd2pJz5XHV/oIPp8SOmOuN8MiqyMqLgrpjAOIMD2CthDI
-         +W2g==
-X-Received: by 10.180.207.6 with SMTP id ls6mr28676176wic.13.1425234119142;
-        Sun, 01 Mar 2015 10:21:59 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from localhost.localdomain ([78.178.131.202])
-        by mx.google.com with ESMTPSA id bf8sm15714082wjb.37.2015.03.01.10.21.57
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 01 Mar 2015 10:21:58 -0800 (PST)
-From: Dilek Uzulmez <dilekuzulmez@gmail.com>
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=etowX38NeDDMKnZEVDUeal9pVSlevZ2VIoWXxyJvOmo=;
+        b=Yiu0tES+GN66yEyH+0bfTtloWs72NI8IBSEG8uCD8w1uwsSTCEzk6KOvxpWGP8/DEJ
+         G+wr5MdRXQ+z2YDheGyK5zYzLOaH1pH5xnvOBUthM7NUR5tJUYA1TgsKqLFnXIGR3GiS
+         AUyIGrX41JGq/Ksi/uq8IqDXnV9Ymvcuo9SNilyklFMNsH6T4WxgsI7E0WMYt/+u4FAw
+         8u1cXBORtAXo8XE5fqHzoZFjHnEum48NamcUgUcwaJv1IQ6bYcJ7UJvMWFGxQtp/HJ0a
+         G3Zp3WNS/iMCU2L8EDhQv43jxHmMoROEUgpbDhPb/pZRccG+vbdcVXszZiWYLVo7QZZ+
+         SlMg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=etowX38NeDDMKnZEVDUeal9pVSlevZ2VIoWXxyJvOmo=;
+        b=SFGnMkaLSMB6PNiZ3zOSh2tq901nIdRUz5yUtk/TY2X0PnTxSCW9tO6p0m+uUJ0+0s
+         2q7m9/D44INVdGTvJ1VqsiLCnaa5CyhsytJZ0z+OFfFjuk+jOfhC8ArbTmShaf7j1NOO
+         IAYaGw7v61tNJxt3XpqIwLyDEoY3vCYoY+aLigHBQ/hwaXW+lOqj6jRKw1NVPRjNMc3M
+         wXT31+HB7qcqsl//usi9r2aKW2aspC8npWq0fNu2rj3BfWh75EIPmW2J/WOXTyRXxr8Z
+         JlJCamLieoERD1LEDDuvC1/2ENvoFjaj4Pq6XERRstZFUCU+cV7eqJkfuFws+DYGFfxV
+         iYyA==
+X-Gm-Message-State: AA6/9Rm9uCc07Egk53LIWk5JbF8XFpdJVxH76Pms3/JeaVsw/JnH6rU9qkQsKeJFPwtDpA==
+X-Received: by 10.99.157.75 with SMTP id i72mr33057408pgd.147.1476730106331;
+        Mon, 17 Oct 2016 11:48:26 -0700 (PDT)
+Return-Path: <aquannie@gmail.com>
+Received: from toblerone ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id w70sm49795329pfa.89.2016.10.17.11.48.24
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 17 Oct 2016 11:48:25 -0700 (PDT)
+Date: Tue, 18 Oct 2016 00:18:19 +0530
+From: Rehas Sachdeva <aquannie@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Subject: [PATCH v2] Staging: lustre: Remove space after function name
-Date: Sun,  1 Mar 2015 20:21:52 +0200
-Message-Id: <1425234112-8267-1-git-send-email-dilekuzulmez@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Cc: mawilcox@microsoft.com, riel@surriel.com
+Subject: [TASKS] Report for project: radix tree test suite
+Message-ID: <20161017184819.GA4830@toblerone>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Fix checkpatch.pl issues with "space prohibited between function name
-and open parenthesis" in lporc_echo.c
+Here is what I read about Kernel radix trees:
 
-Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
----
+There are two implementations.
+One is in <include/linux/idr.h> and <lib/idr.c>, the other in
+<include/linux/radix-tree.h> and <lib/radix-tree.c>. Both provide a mapping
+from a number (unsigned long) to an arbitrary pointer (void *), though
+radix-tree also allows up to two "tags" to be stored with each entry.
 
-Changes in v2:
-   Changed commit message
+At each level, starting from most significant 6 bits at the root, we use the
+next 6 bits of the key to choose the slot at that node. At the last level, we
+have the desired value (user pointer), otherwise we have a pointer to a next
+level node.
 
- drivers/staging/lustre/lustre/obdecho/lproc_echo.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+I took a look at the implementation of insert, delete, lookup, preload and
+tag processing functions.
 
-diff --git a/drivers/staging/lustre/lustre/obdecho/lproc_echo.c b/drivers/staging/lustre/lustre/obdecho/lproc_echo.c
-index 1d3bf6c..0beb97d 100644
---- a/drivers/staging/lustre/lustre/obdecho/lproc_echo.c
-+++ b/drivers/staging/lustre/lustre/obdecho/lproc_echo.c
-@@ -36,7 +36,7 @@
- #include "../include/lprocfs_status.h"
- #include "../include/obd_class.h"
- 
--#if defined (CONFIG_PROC_FS)
-+#if defined(CONFIG_PROC_FS)
- LPROC_SEQ_FOPS_RO_TYPE(echo, uuid);
- static struct lprocfs_vars lprocfs_echo_obd_vars[] = {
- 	{ "uuid",	 &echo_uuid_fops,	NULL, 0 },
--- 
-1.9.1
+Radix tree is used for checking presence of pages in cache, finding pages with
+dirty/ under writeback tag etc, many places where we want resizable arrays like
+drivers, example NVM Express, File Systems like NFS, interrupt controllers.
 
+Project: radix tree test suite
+
+The Radix Tree Test Suite was first merged into Linux 4.6. It can be enhanced
+in the following ways:
+(From the project introduction)
+-Providing test coverage by adding missing tests. We can use tools like gcov
+for this.
+-Adding performance measures.
+-Make it share common test infrastructure, macros, for example using
+tools/include.
+
+I looked at many patches, about tests for insertion and lookup, tests for
+multiorder entries, about using common kernel macros, to allow option for less
+testing time, or ad-hoc tests for corner cases and benchmark test for iterators.
+I think they are a good starting point to learn about what is expected from this
+project.
+
+Some more thoughts:
+-Running tests in parallel (I did see single_thread_tests for regression tests)
+-I could also look at other types of tests, performance benchmarks in other
+parts of the kernel, used for other data structures and see if we can
+incorporate them/similar ones into radix tree test suite.
+-If IDR is re-written on Radix tree core, we might need test suite to be part
+generic to both, and part specific.
+
+Timeline for project - radix tree test suite:
+- Get a deeper understanding of Radix tree implementation, clear any doubts about it.(1 week)
+- Try gcov, and look for other ways/scripts to identify corner cases or functions that need coverage, Add missing tests identified. (2-3 weeks)
+- Use more common, generic kernel code instead of specific, example from tools/include. (1-2 weeks)
+- Add performance/Benchmark tests based on memory, time usage etc. (1-2 weeks)
+- Document the changes. Any other cleanups/refactoring/modifications required to radix_tree or test suite. (1-2 weeks).
+- Buffer time for unexpected delays, or necessary work unidentified in the beginning. (1-2 weeks).
 
