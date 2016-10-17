@@ -1,130 +1,170 @@
-X-GM-THRID: 6339007383550820352
-X-Received: by 10.159.33.167 with SMTP id 36mr5956733uac.39.1475915169442;
-        Sat, 08 Oct 2016 01:26:09 -0700 (PDT)
+X-GM-THRID: 6342326313987080192
+X-Received: by 10.98.150.142 with SMTP id s14mr6456890pfk.33.1476687917635;
+        Mon, 17 Oct 2016 00:05:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.69.204 with SMTP id c73ls1992918itd.22.gmail; Sat, 08 Oct
- 2016 01:26:08 -0700 (PDT)
-X-Received: by 10.107.170.90 with SMTP id t87mr6362125ioe.4.1475915167986;
-        Sat, 08 Oct 2016 01:26:07 -0700 (PDT)
-Return-Path: <juliana.orod@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id 7si6537431par.0.2016.10.08.01.26.07
+Received: by 10.36.111.201 with SMTP id x192ls2034045itb.14.canary; Mon, 17
+ Oct 2016 00:05:16 -0700 (PDT)
+X-Received: by 10.36.228.198 with SMTP id o189mr2660300ith.22.1476687916431;
+        Mon, 17 Oct 2016 00:05:16 -0700 (PDT)
+Return-Path: <gnudevliz@gmail.com>
+Received: from mail-pa0-x236.google.com (mail-pa0-x236.google.com. [2607:f8b0:400e:c03::236])
+        by gmr-mx.google.com with ESMTPS id 7si4864824par.0.2016.10.17.00.05.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 08 Oct 2016 01:26:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Mon, 17 Oct 2016 00:05:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) client-ip=2607:f8b0:400e:c03::236;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
+       spf=pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c03::236 as permitted sender) smtp.mailfrom=gnudevliz@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id t25so4091444pfg.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 08 Oct 2016 01:26:07 -0700 (PDT)
+Received: by mail-pa0-x236.google.com with SMTP id rz1so61337846pab.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 17 Oct 2016 00:05:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=Zl7AjfrTFAriV9Juu/p6e1S8B4fJSiu7kIcDf7nCORM=;
-        b=Wpj1LxADlXBX9RqoSKUah6MWnv7r3oSguurMAoYiUeMOl4aobY1jHIFKau+nuULII5
-         +fmbtdjgcLNUsPFyE4ZgN/N0CdxP92FHRbmwgtB53KCXPjdEa2sz7UzyiAxf+srBvfXk
-         +4umRwBy2WBB5RMpQlyrA7wMc4CA0aDiMfPSrygPCy8Yf4qJjcjZppEOvewsETIxnYML
-         6r1OlMwuWqs9Dvv/cdWFB4xxc0VYWHTf7xjG1X4OfZly16Uupfn0GwtztOrPxXz74LZK
-         y3fUQMMRGjvPrnK3wi5WukLSX+X9Kd8i+rdHTVGq37H0Pxczqft0VUsYFChwFYjAMzvP
-         57Mw==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=OEijSEQtuc2zOH0Xvnah3HlnI3eRjVgSYmEmXwrheIs=;
+        b=km3dnbI68Ics4M/lHNGRANfHowaGGLGdxeZyDw0jWXi2k9VwYrnH/DrLV9ZR+PdLov
+         sLFHbodM2/B3QKedmKu9mxXcPUxjl/e4GhsHe1/wPACsRi09H1TspCHObkSoZD94aA7H
+         Ulv7klXqYMsIi2xGPHOYe78q1/D9f3Jb50ur28qqZ6uwvn8SSUmS296ZDEZklrhGPRDV
+         jmPIrQQ/Jh3GH3WVt6/N5dNIoFFGl2w+SRexipn6olV71+Ydq+dVAwnLkRCGlP1wdH7u
+         jhP0TWaAaSbDRtV1H0BJITKFMXOe/MrlHN0lrovI2v3xHfLgXHoLj/6ksTQUAcYW1Nsp
+         mE8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=Zl7AjfrTFAriV9Juu/p6e1S8B4fJSiu7kIcDf7nCORM=;
-        b=I4Kf+xNo6jqJoMKK7QcaZE36PTOcxhe8TXSbWMLysTDo0FAvDHep/sI8LJV+47Iyuy
-         9t045v+IU5PnhJbFETQFvJ9rdaQYOHY8yFkVE08zpWdixEWgBTEdHhimqBc1qBffLsNE
-         cu1U0FrG0SUDC1b4l9LNgkpdOVWi4yu+Nlj/urPF44w4L1YJ2Mocq7WNLVAw8cCCrmfH
-         oyNPCEwNAHDtjoFVLy2PD9wQ4KkFP9NoAo+eVo8DeZzqfdQaHhbtWjY2sRbzxyomwfCA
-         9vFh5IgN/OFG84HCupdnskMZfKizWpYYGteoGn41L3hleXZPhNxYvbEli3BpencFxWAg
-         iM8w==
-X-Gm-Message-State: AA6/9RnyAZCPrF3E6vSi4ErYiXKwE7md/MjV5pn5sil6NOTpRRudLqMsEYy4WfY/SmObTQ==
-X-Received: by 10.98.61.198 with SMTP id x67mr35727161pfj.2.1475915167723;
-        Sat, 08 Oct 2016 01:26:07 -0700 (PDT)
-Return-Path: <juliana.orod@gmail.com>
-Received: from spock ([177.68.230.98])
-        by smtp.gmail.com with ESMTPSA id j82sm10735940pfj.71.2016.10.08.01.26.06
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 08 Oct 2016 01:26:07 -0700 (PDT)
-Date: Sat, 8 Oct 2016 05:26:05 -0300
-From: Juliana Rodrigues <juliana.orod@gmail.com>
-To: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
-Subject: [PATCH 06/13] staging: wlan-ng: renames hfa384x_JoinRequest_data to
- avoid camelcase
-Message-ID: <20161008082605.GA8624@spock>
-References: <cover.1475912465.git.juliana.orod@gmail.com>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=OEijSEQtuc2zOH0Xvnah3HlnI3eRjVgSYmEmXwrheIs=;
+        b=XzeViAe8h3pu4HMjVocqe1ANQ3ZH9sm65VknbE7hZsh+bkGjNXQorEdAK+4WyVPc08
+         zsi4PrwcPrXhvpMGKygJVl4L8MYIRlWNyfwBvDR23keAOAhjT0NqJ2t3FIkk2eJ7lYM5
+         vCpenH2RiVSDlJGjgqAWYE8bi6cfV5M2/ROJII05BcwaxCI6ScBYRZk57J67eJ625vvP
+         hz/pXAUt6U3xYtNbIhps0H7fNMdhmcxzcS0tkkkHnTyyEyQQa+F0EJvT7W9bDKFNCpRk
+         rJIo9pk7abuVne2wL5cKm9YP5qwGAvYT8YBq4ugsUeObnMQFZlaN0mfC3a3lfwYtII0V
+         K6IQ==
+X-Gm-Message-State: AA6/9Rlr4IUy3E7dwo+7B3BSHsLFjktv5vPHzmG9Kn1beBU8A3kFh5TrCl1fcKErPATHug==
+X-Received: by 10.66.222.5 with SMTP id qi5mr29156779pac.138.1476687916089;
+        Mon, 17 Oct 2016 00:05:16 -0700 (PDT)
+Return-Path: <gnudevliz@gmail.com>
+Received: from localhost ([2601:644:300:fd6b:4e0f:6eff:fe69:e9ea])
+        by smtp.gmail.com with ESMTPSA id e74sm44153008pfk.13.2016.10.17.00.05.15
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 17 Oct 2016 00:05:15 -0700 (PDT)
+Date: Mon, 17 Oct 2016 00:05:13 -0700
+From: Elizabeth Ferdman <gnudevliz@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: julia.lawall@lip6.fr
+Subject: Coccinelle Small Task 1
+Message-ID: <20161017070509.GA21688@localhost>
 MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="qMm9M+Fa2AknHoGS"
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
+
+
+--qMm9M+Fa2AknHoGS
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1475912465.git.juliana.orod@gmail.com>
-User-Agent: Mutt/1.7.0 (2016-08-17)
 
-Renames the camelcased struct hfa384x_JoinRequest_data to
-hfa384x_join_request_data in order to fix a checkpatch warning.
+Hey Julia,
 
-Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
----
- drivers/staging/wlan-ng/hfa384x.h   | 6 +++---
- drivers/staging/wlan-ng/prism2sta.c | 4 ++--
- 2 files changed, 5 insertions(+), 5 deletions(-)
+I'm attaching Small Task 1. I found 9 cases where I thought
+constification was not possible and one where it was and I sent in a
+patch for that one. 
 
-diff --git a/drivers/staging/wlan-ng/hfa384x.h b/drivers/staging/wlan-ng/hfa384x.h
-index 6268703..7af07cb 100644
---- a/drivers/staging/wlan-ng/hfa384x.h
-+++ b/drivers/staging/wlan-ng/hfa384x.h
-@@ -266,7 +266,7 @@
- #define		HFA384x_RID_DBMCOMMSQUALITY_LEN	 \
- 	((u16)sizeof(struct hfa384x_dbmcommsquality))
- #define		HFA384x_RID_JOINREQUEST_LEN \
--	((u16)sizeof(struct hfa384x_JoinRequest_data))
-+	((u16)sizeof(struct hfa384x_join_request_data))
- 
- /*--------------------------------------------------------------------
-  * Information RIDs:  Modem Information
-@@ -415,7 +415,7 @@ struct hfa384x_HostScanRequest_data {
- } __packed;
- 
- /*-- Configuration Record: JoinRequest (data portion only) --*/
--struct hfa384x_JoinRequest_data {
-+struct hfa384x_join_request_data {
- 	u8 bssid[WLAN_BSSID_LEN];
- 	u16 channel;
- } __packed;
-@@ -1294,7 +1294,7 @@ struct hfa384x {
- 	int scanflag;		/* to signal scan complete */
- 	int join_ap;		/* are we joined to a specific ap */
- 	int join_retries;	/* number of join retries till we fail */
--	struct hfa384x_JoinRequest_data joinreq;	/* join request saved data */
-+	struct hfa384x_join_request_data joinreq;/* join request saved data */
- 
- 	struct wlandevice *wlandev;
- 	/* Timer to allow for the deferred processing of linkstatus messages */
-diff --git a/drivers/staging/wlan-ng/prism2sta.c b/drivers/staging/wlan-ng/prism2sta.c
-index 7a487cf..effe46b 100644
---- a/drivers/staging/wlan-ng/prism2sta.c
-+++ b/drivers/staging/wlan-ng/prism2sta.c
-@@ -1039,7 +1039,7 @@ static void prism2sta_inf_scanresults(struct wlandevice *wlandev,
- 	int nbss;
- 	struct hfa384x_scan_result *sr = &inf->info.scanresult;
- 	int i;
--	struct hfa384x_JoinRequest_data joinreq;
-+	struct hfa384x_join_request_data joinreq;
- 	int result;
- 
- 	/* Get the number of results, first in bytes, then in results */
-@@ -1394,7 +1394,7 @@ void prism2sta_processing_defer(struct work_struct *data)
- 		 * Disable Transmits, Ignore receives of data frames
- 		 */
- 		if (hw->join_ap && --hw->join_retries > 0) {
--			struct hfa384x_JoinRequest_data joinreq;
-+			struct hfa384x_join_request_data joinreq;
- 
- 			joinreq = hw->joinreq;
- 			/* Send the join request */
--- 
-2.10.0
+Liz
 
+--qMm9M+Fa2AknHoGS
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: attachment; filename=cannotconst
+
+Constification is not possible in these cases because they break one of these rules: 
+
+1. Never reassigned.
+2. Address never taken
+3. Not passed to a top-level macro call
+4. No pointer or array-typed field passed to a function or stored in a
+variable.
+
+1. drivers/staging/vme/devices/vme_user.c contains this struct:
+
+static struct vme_driver vme_user_driver = {
+         .name = driver_name,
+         .match = vme_user_match,
+         .probe = vme_user_probe,
+         .remove = vme_user_remove,
+}
+
+&vme_user_driver is then passed to this function where its members are being modified:
+
+int vme_register_driver(struct vme_driver *drv, unsigned int ndevs)
+{
+
+         drv->driver.name = drv->name;
+         drv->driver.bus = &vme_bus_type;
+
+2. Similar pattern occurs in drivers/staging/rtl8192u/r8192U_core.c 
+
+static struct usb_driver rtl8192_usb_driver
+
+is passed to usb_register and then usb_register_driver which modifies its members.
+
+The pattern seems to be when a struct is passed to a function with "register" in the name it gets modified?
+
+3. drivers/staging/sm750fb/sm750.c contains this struct:
+
+static struct fb_ops lynxfb_ops = {
+        .owner = THIS_MODULE,
+        .fb_check_var =  lynxfb_ops_check_var,
+        .fb_set_par = lynxfb_ops_set_par,
+        .fb_setcolreg = lynxfb_ops_setcolreg,
+        .fb_blank = lynxfb_ops_blank,
+        .fb_fillrect = cfb_fillrect,
+        .fb_imageblit = cfb_imageblit,
+        .fb_copyarea = cfb_copyarea,
+        /* cursor */
+        .fb_cursor = lynxfb_ops_cursor,
+};
+
+it gets assigned a new member in the same file:
+
+        lynxfb_ops.fb_pan_display = lynxfb_ops_pan_display;
+
+4. drivers/staging/rtl8712/usb_intf.c contains
+static struct drv_priv drvpriv = {...}
+
+The init function modifies this struct: 
+static int __init r8712u_drv_entry(void)
+{
+        drvpriv.drv_registered = true;
+5. In drivers/staging/wilc1000/wilc_sdio.c
+ static struct sdio_driver wilc1000_sdio_driver is passed to module_driverfunction which is a macro call.
+
+6. In drivers/staging/octeon-usb/octeon-hcd.c,
+There is a 
+static struct platform_driver octeon_usb_driver
+
+Its address is passed to a platform_driver_register function 
+
+7. In drivers/staging/comedi/drivers/rtd520.c,
+
+The address of static struct comedi_driver rtd520_driver is passed to comedi_pci_auto_config
+
+8. In drivers/staging/android/ion/ion_carveout_heap.c,
+
+static struct ion_heap_ops carveout_heap_ops 
+
+There is an assignment which looks like this: 
+
+carveout_heap->heap.ops = &carveout_heap_ops;
+
+The address shouldn't be taken 
+
+9. In  drivers/staging/rtl8192u/ieee80211/ieee80211_crypt.c:
+
+static struct ieee80211_crypto_ops ieee80211_crypt_null
+
+Its address is passed to a register function 
+ret = ieee80211_register_crypto_ops(&ieee80211_crypt_null);
+
+--qMm9M+Fa2AknHoGS--
 
