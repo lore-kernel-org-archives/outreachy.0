@@ -1,111 +1,93 @@
-X-GM-THRID: 6808859565738688512
-X-Received: by 2002:a1c:988d:: with SMTP id a135mr5543549wme.16.1585311155873;
-        Fri, 27 Mar 2020 05:12:35 -0700 (PDT)
+X-GM-THRID: 6342438450471370752
+X-Received: by 10.157.8.170 with SMTP id 39mr1680097otf.63.1476714026475;
+        Mon, 17 Oct 2016 07:20:26 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:230e:: with SMTP id j14ls358856wmj.0.canary-gmail; Fri,
- 27 Mar 2020 05:12:34 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvAHEEl+0jF8kIzdVO5CiZM9EDyi38dc2OYUhwYBeLq5UFgqAJghLykV+Aceu34YKb3moRU
-X-Received: by 2002:a7b:c5cb:: with SMTP id n11mr5329474wmk.160.1585311154562;
-        Fri, 27 Mar 2020 05:12:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585311154; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Sg63AhnD1iFnDdAfIoFN9qef7ADDS1jxRng6J9yG4NH6XqyD3xQKj/NsSPqCt03hUG
-         rVefVqs/UgylJg5UoNBqhAjoHE6Qyx5oOKFwi81hWeianvvQIVnzx/iWGWFpQ8aaoubE
-         w9yHE2jppM+LFotJiDocpubeTPIEXJ9TXeRFZp0CVWKZo5bxQegV1a2Ecra3XZJUEvys
-         CEnXqkG3LeOx2wfbHreHddTTWHEToA5MmVpNgV1fSXFrEP+Xyju4TGvXgsOOo6+KpdXr
-         GhkOKKz3PLMt/tKb3vRFbUo4j3Ldufflg/JGrFs4TbdNmZ/HRyoS5GgboGlY2r7YNR1m
-         7DNQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=7mcKm4yGiGKgDlp5s0j377/A7OBEO3XCSnYW//VZVVQ=;
-        b=KkV/onwLsZ9wWUr/timbNgIq5hyivvT2o7Oi7nL3ODu/1ZW+CaxO7UTQE3luoSzyzW
-         jpwt3nWK41V3xj5N2aCX6b7Sdc5WrbAWWg35XtRNShtCAFN6SWS6V2KKOOL7fg1nlj9v
-         d3YOnqhuVq6khX8Sn12PdcUlUMJDpN+NhzV+fZybrv4bRdn+rRYUjFzl1OZyIiUdJ1fI
-         Obz2rnTXtcKqTRlSiNEOrscffRKegJnL38K75bACewxARRrQ9eMMndKsIoUVJsw8Vf02
-         DPfg2iU6nO3e/FuWBDQpsiZoH+C2E77TIIm3YWruZyfQT+riaKP9qM7NA0Sly3YIVCZM
-         2Bfw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fLKHWSrn;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2a00:1450:4864:20::230 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <debsoumyajit100@gmail.com>
-Received: from mail-lj1-x230.google.com (mail-lj1-x230.google.com. [2a00:1450:4864:20::230])
-        by gmr-mx.google.com with ESMTPS id f3si507188wmc.2.2020.03.27.05.12.34
+Received: by 10.107.150.4 with SMTP id y4ls4816162iod.48.gmail; Mon, 17 Oct
+ 2016 07:20:22 -0700 (PDT)
+X-Received: by 10.107.51.210 with SMTP id z201mr7128372ioz.54.1476714022146;
+        Mon, 17 Oct 2016 07:20:22 -0700 (PDT)
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from mail-lf0-x241.google.com (mail-lf0-x241.google.com. [2a00:1450:4010:c07::241])
+        by gmr-mx.google.com with ESMTPS id p131si5131307vkf.1.2016.10.17.07.20.22
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 27 Mar 2020 05:12:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2a00:1450:4864:20::230 as permitted sender) client-ip=2a00:1450:4864:20::230;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 17 Oct 2016 07:20:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:4010:c07::241 as permitted sender) client-ip=2a00:1450:4010:c07::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fLKHWSrn;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2a00:1450:4864:20::230 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lj1-x230.google.com with SMTP id 19so9911739ljj.7
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Mar 2020 05:12:34 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:4010:c07::241 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-lf0-x241.google.com with SMTP id l131so24056469lfl.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 17 Oct 2016 07:20:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:from:date:message-id:subject:to;
-        bh=7mcKm4yGiGKgDlp5s0j377/A7OBEO3XCSnYW//VZVVQ=;
-        b=fLKHWSrnASDMDTkd9K0uVOP17Tv7DS7w29+tKPeYfGdbBrK/bRHMWrC46yT8tUnMXV
-         JStfnBKUI8fXn16B9N1o/xcZ8ok+vveWmOScR8LnB78xrxe873kkS4jjDkSdfkQWMYhG
-         pui7ajvKu+vBgyFdlzfN8RhI9v+j+imM13wX/4hI+17WA8uoYhBcjLtx1RTAKP3VSzpM
-         bXSVHNbgrvSqLl1Fu3nbXvaRpqOdXuWZST3Sq3xfHCrYUrEk0Za15Dtp87t33hy8WWX0
-         YlpbxKHgKfjj59gloU5wvteO2b9iptDmpMOxmJQ/XPJ9j0dQGvjLl39QmSzOm6qtAHoY
-         L86A==
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=Mip3qJn1OedoLP0hgJVYiEGulkw5Oe6EVWBduCzgK1Y=;
+        b=RnqTqqsRZue7RG4DpSPrj+jA7afgbAeQvnhXJEsO6ajUBMH/fGEnpWHLaGLESfai+w
+         K4rQMwOxrlBSUJY5kyWHgwlK0f2sXCsZ2oZv1VKIlo2OiJTMHGcLvRA1kgPSPxJoMhsX
+         a5z91E/wI6Vbbj1gWAroqNaFj/8U+5eBteQjthUWLx6tZQItpt4tGw/QTlvywCg+XQBb
+         tptsN0FEo+Jmk/znV3Vy1FoXIZ5WtqBq3NQteQNNS6OZTE7ROvPZkl0GrFHmACCu12S5
+         JmxYAJT6/xPXPbaS9H0GiYrAyFC7lIljdNgwcgi6sAiBnUMGHv7uEjbi8CmferH2fvK9
+         t1CQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-        bh=7mcKm4yGiGKgDlp5s0j377/A7OBEO3XCSnYW//VZVVQ=;
-        b=nEqAfjklAyZ1Jhh61b77mjz+5kQ8XNpNSYgbdkJEELAQXyJZbKg1KjwRS5cF5wOfBx
-         PwJZ9dchhNaUlUI8w1eE2G8XMhOvXwS2D0l9eskc3Lv5ghkyClOG1JOQF/GW6ZAPCVlh
-         N2+J6vD+VtJx98YAplM3C42YbKFYuVnbmxt945CCvXhcxTZpe1vWMGEfAjjqzymRJEc4
-         iaadZ3IsY4LVeiM4eTrho8ZMb1E6ZGa7Hhm67a9wCaBafdG8Ps7DNRiCxBVlQe9fyPH2
-         D1ZLEBtFf3TYaMV/dqdO6z3h77+twt7Gs0aY92F1uL1DZ4sEDB6vFqDazp9OJ6RbBlax
-         Pbew==
-X-Gm-Message-State: AGi0PuaicY6hGf2kYRwvx9qY+obQuLmOb5H8CzScu0qySzo02SAcmKcm
-	otSoXAEaSRk5Np3tBDb4XVKHUPjrNukCthpHT85q8xVq/itMfw==
-X-Received: by 2002:a2e:45c2:: with SMTP id s185mr1278205lja.66.1585311153717;
- Fri, 27 Mar 2020 05:12:33 -0700 (PDT)
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=Mip3qJn1OedoLP0hgJVYiEGulkw5Oe6EVWBduCzgK1Y=;
+        b=VmlLwYTtxdBM4KRepZkqaeOSIE9VJVHFAys+wSMWqfiF+HQrO0cEhKdMVozHLpkDjm
+         qV3XElPjvOKnJHgVobJM4EHfOsgM816SqiAlWER6yKkVTpU+Lkvp9ODJidlaqO2V9Zsz
+         5E0DYsYVnPkH1p0x5MqoY+etME2Y+N32r1olVkXtThQiz6nBx219HNklS1M0NKgKGkGo
+         O/2PSn4yqTmng8mbcVMzMjOBwFW6rl7wKjoXTYyI2B7h9tqiX0AyTXbVh5H6ujvfxqu0
+         m5ZTUESSBXPFXfSDIZ+D+l32SHrBrHgJH/z63XWW7+Bw3iT2Wh/0cz3tEgZar/mEkrRi
+         g4XQ==
+X-Gm-Message-State: AA6/9Rk2zRslPhLWn7D1GS3eh1npj+Yz6q79huw74SEqxxlsRM9qWBrwUiACKVnypxE3wA==
+X-Received: by 10.28.87.85 with SMTP id l82mr7950785wmb.99.1476714020511;
+        Mon, 17 Oct 2016 07:20:20 -0700 (PDT)
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from domino-MS-16Y1 ([92.81.89.162])
+        by smtp.gmail.com with ESMTPSA id ma5sm53405847wjb.47.2016.10.17.07.20.19
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 17 Oct 2016 07:20:19 -0700 (PDT)
+Date: Mon, 17 Oct 2016 17:20:18 +0300
+From: Mihaela Muraru <mihaela.muraru21@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: android: ion: Make a read-only structure
+Message-ID: <20161017142018.GA6427@domino-MS-16Y1>
 MIME-Version: 1.0
-From: Soumyajit Deb <debsoumyajit100@gmail.com>
-Date: Fri, 27 Mar 2020 17:42:22 +0530
-Message-ID: <CAMS7mKAjK8OgRzpCifKn+_17y-NzMbAepKSqnOMzRDbWLqTV1A@mail.gmail.com>
-Subject: [Outreachy kernel] Converting unsigned type to signed type.
-To: outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary="0000000000002d060305a1d5044a"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
---0000000000002d060305a1d5044a
-Content-Type: text/plain; charset="UTF-8"
+This patch add const qualifier at the declaration of the structure.
+The structure become a read-only data, this increase the security.
 
-Hi,
+Found with Coccinelle:
+@r disable optional_qualifier@
+identifier s,i;
+@@
+* static struct s i ={...};
 
-(msg2.signal.data - 65536) * 100, /* Conversion to signed type */
+Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
+---
+ drivers/staging/android/ion/ion_dummy_driver.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I came across the above line in one of the staging driver which it seems is
-trying to convert msg2.signal.data to signed type according the comment
-provided. I looked it up and msg2.signal.data field is of type u32. My
-question is can't we change type to signed type by simply type casting to
-i32 ?
-Also, I can't understand how the above expression is performing the type
-conversion?
-Currently the above expression is giving a "more than 80 characters"
-warning when I run checkpatch.pl script. So a simple typecast to i32 will
-be able to resolve that warning.
+diff --git a/drivers/staging/android/ion/ion_dummy_driver.c b/drivers/staging/android/ion/ion_dummy_driver.c
+index b23f2c7..cf5c010 100644
+--- a/drivers/staging/android/ion/ion_dummy_driver.c
++++ b/drivers/staging/android/ion/ion_dummy_driver.c
+@@ -58,7 +58,7 @@ static struct ion_platform_heap dummy_heaps[] = {
+ 		},
+ };
+ 
+-static struct ion_platform_data dummy_ion_pdata = {
++static const struct ion_platform_data dummy_ion_pdata = {
+ 	.nr = ARRAY_SIZE(dummy_heaps),
+ 	.heaps = dummy_heaps,
+ };
+-- 
+2.7.4
 
---0000000000002d060305a1d5044a
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Hi,</div><div><br></div><div>(msg2.signal.data - 6553=
-6) * 100, /* Conversion to signed type */</div><div><br></div><div>I came a=
-cross the above line in one of the staging driver which it seems is trying =
-to convert msg2.signal.data to signed type according the comment provided. =
-I looked it up and msg2.signal.data field is of type u32. My question is ca=
-n&#39;t we change type to signed type by simply type casting to i32 ? <br><=
-/div><div>Also, I can&#39;t understand how the above expression is performi=
-ng the type conversion?</div><div>Currently the above expression is giving =
-a &quot;more than 80 characters&quot; warning when I run <a href=3D"http://=
-checkpatch.pl">checkpatch.pl</a> script. So a simple typecast to i32 will b=
-e able to resolve that warning.<br></div></div>
-
---0000000000002d060305a1d5044a--
 
