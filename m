@@ -1,339 +1,376 @@
 X-GM-THRID: 6341139750972293120
-X-Received: by 10.25.89.197 with SMTP id n188mr1705905lfb.26.1477158877469;
-        Sat, 22 Oct 2016 10:54:37 -0700 (PDT)
+X-Received: by 10.157.21.88 with SMTP id z24mr680659otz.10.1476819797164;
+        Tue, 18 Oct 2016 12:43:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.46.145 with SMTP id u139ls339445wmu.22.canary-gmail; Sat,
- 22 Oct 2016 10:54:36 -0700 (PDT)
-X-Received: by 10.28.198.198 with SMTP id w189mr2608804wmf.7.1477158876727;
-        Sat, 22 Oct 2016 10:54:36 -0700 (PDT)
-Return-Path: <jic23@kernel.org>
-Received: from saturn.retrosnub.co.uk (saturn.retrosnub.co.uk. [2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466])
-        by gmr-mx.google.com with ESMTPS id d62si206939wmd.0.2016.10.22.10.54.36
+Received: by 10.157.37.131 with SMTP id q3ls281009ota.8.gmail; Tue, 18 Oct
+ 2016 12:43:16 -0700 (PDT)
+X-Received: by 10.157.33.196 with SMTP id s62mr760839otb.8.1476819796790;
+        Tue, 18 Oct 2016 12:43:16 -0700 (PDT)
+Return-Path: <juliana.orod@gmail.com>
+Received: from mail-qk0-x242.google.com (mail-qk0-x242.google.com. [2607:f8b0:400d:c09::242])
+        by gmr-mx.google.com with ESMTPS id p70si5006740vkd.0.2016.10.18.12.43.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 22 Oct 2016 10:54:36 -0700 (PDT)
-Received-SPF: neutral (google.com: 2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466 is neither permitted nor denied by best guess record for domain of jic23@kernel.org) client-ip=2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466;
+        Tue, 18 Oct 2016 12:43:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) client-ip=2607:f8b0:400d:c09::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466 is neither permitted nor denied by best guess record for domain of jic23@kernel.org) smtp.mailfrom=jic23@kernel.org
-Received: from localhost.localdomain (cpc91196-cmbg18-2-0-cust659.5-4.cable.virginm.net [81.96.234.148])
-	by saturn.retrosnub.co.uk (Postfix; Retrosnub mail submission) with ESMTPSA id E9FFA4062F;
-	Sat, 22 Oct 2016 18:54:35 +0100 (BST)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qk0-x242.google.com with SMTP id v138so294832qka.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 18 Oct 2016 12:43:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=7c9msVkGSUZCmFTwPKHHhlZwWA4+2TQsqU2Fj2U52zU=;
+        b=wztA9g1bwfBgGqBUs2zJSefrR828XvwEUGt/RwFX2gxF1g81s4yoLGMt+a4zTsjQtD
+         9khOnqd2msfuiE5KfvRAFSVCjVTkNh9EW51oNDIF0OphDct6zazqoQJOktoAsW1JCXxA
+         /ELLyRtSKhZwW1W8+YUFSE4OT0SNgY5OV3x+36twhkP+dT5QThuk8dnW0PjGrsbciEZT
+         wvVikjhJhPiSo6b1eb7XDUfnsRpeyZjaQRuyYwA5CM2YnTQqGrrkE5ioHqgfX6oc4Nn8
+         LWIAik2d9oNRAzEOAXusXZTwdGxEnzwxfjkEoIqu7OIN1oBkgQQwrljRIwz2CmyUDlTh
+         s4eA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=7c9msVkGSUZCmFTwPKHHhlZwWA4+2TQsqU2Fj2U52zU=;
+        b=fDk+kaHYkvAZSff+6KLK0HCuzHrLQKsKj8fmk+69Uz1Xa3y03bJXHZkOywtQOoCuUl
+         n8WZ2WqSUV8TrHe6nw3y1eSehWRt5rKMVB0DGesSWWYHpKtNGPdE/QV4YB2B8fxdHn6r
+         eGy2qHlJFOR7pyAUOPyn7+iVx7HGOj8aN/MpKXfl50bNc+67642cjePE0GNdaG+Wme7H
+         94nvbu+Fz2gmhPOaGRsl8icIhCdCFAHa930726TvtcCz7KUUIriRZovlAOFccb/Q/tq6
+         pO/wudw714cy9eqQMjGg4VR7+EejYhE39ddqz/lFKxta3oBV/Blm50Zt88jHiJBh/tmN
+         5myA==
+X-Gm-Message-State: ABUngvcx5PTVak5uiPVcE52vBN7riJqH1uEwHvrYnY3b+ZTYKDCJEEsmcueG7awLNLWgNQ==
+X-Received: by 10.55.135.1 with SMTP id j1mr2305114qkd.46.1476819796372;
+        Tue, 18 Oct 2016 12:43:16 -0700 (PDT)
+Return-Path: <juliana.orod@gmail.com>
+Received: from spock (wifi-177-220-85-19.wifi.ic.unicamp.br. [177.220.85.19])
+        by smtp.gmail.com with ESMTPSA id s22sm3591685qts.11.2016.10.18.12.43.15
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 18 Oct 2016 12:43:15 -0700 (PDT)
+Date: Tue, 18 Oct 2016 17:43:12 -0200
+From: Juliana Rodrigues <juliana.orod@gmail.com>
+To: Peter Meerwald-Stadler <pmeerw@pmeerw.net>
+Cc: outreachy-kernel@googlegroups.com, lars@metafoo.de, jic23@kernel.org,
+	knaack.h@gmx.de, linux-iio@vger.kernel.org
 Subject: Re: [PATCH] iio: imu: inv_mpu6050: implemented
  IIO_CHAN_INFO_SAMP_FREQ
-To: Juliana Rodrigues <juliana.orod@gmail.com>
+Message-ID: <20161018194312.GB11725@spock>
 References: <20161014022043.GA8114@spock>
- <45751c64-ae17-fed1-74e9-bf749562a59d@kernel.org>
- <20161018193652.GA11725@spock>
-Cc: outreachy-kernel@googlegroups.com, lars@metafoo.de, knaack.h@gmx.de,
- pmeerw@pmeerw.net, linux-iio@vger.kernel.org
-From: Jonathan Cameron <jic23@kernel.org>
-Message-ID: <cb660d9c-fd08-8553-dd22-78f061ec5686@kernel.org>
-Date: Sat, 22 Oct 2016 18:54:35 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
- Thunderbird/45.4.0
+ <alpine.DEB.2.02.1610172316480.31400@pmeerw.net>
 MIME-Version: 1.0
-In-Reply-To: <20161018193652.GA11725@spock>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.02.1610172316480.31400@pmeerw.net>
+User-Agent: Mutt/1.7.0 (2016-08-17)
 
-On 18/10/16 20:36, Juliana Rodrigues wrote:
-> On Sat, Oct 15, 2016 at 03:36:47PM +0100, Jonathan Cameron wrote:
->> On 14/10/16 03:20, Juliana Rodrigues wrote:
->>> Moved functionality from IIO_DEV_ATTR_SAMP_FREQ macro into
->>> IIO_CHAN_INFO_SAMP_FREQ in order to create a generic attribute.
->>> Modified inv_mpu6050_read_raw and inv_mpu6050_write_raw to allow
->>> reading and writing the element.
->>>
->>> Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
->> Hi Juliana,
->>
->> This driver does things a little differently from some others, so you need
->> to take a little more care when reworking elements to add them to the
->> write_raw callback.
->>
->> Anyhow, take another look at that, and perhaps whilst you are there
->> check out the odd error handling path in that function which I'm embarrassed
->> to say I've never noticed before!
->>
->> Jonathan
+On Mon, Oct 17, 2016 at 11:27:11PM +0200, Peter Meerwald-Stadler wrote:
 > 
-> Hi Jonathan,
+> > Moved functionality from IIO_DEV_ATTR_SAMP_FREQ macro into
+> > IIO_CHAN_INFO_SAMP_FREQ in order to create a generic attribute.
+> > Modified inv_mpu6050_read_raw and inv_mpu6050_write_raw to allow
+> > reading and writing the element.
 > 
-> Thank you for your comments. I'll write a new patch to fix the issues
-> you've mentioned. I just have a few questions bellow.
-> 
-> Juliana
->>> ---
->>>  drivers/iio/imu/inv_mpu6050/inv_mpu_core.c | 187 ++++++++++++++---------------
->>>  1 file changed, 92 insertions(+), 95 deletions(-)
->>>
->>> diff --git a/drivers/iio/imu/inv_mpu6050/inv_mpu_core.c b/drivers/iio/imu/inv_mpu6050/inv_mpu_core.c
->>> index b9fcbf1..20722c8 100644
->>> --- a/drivers/iio/imu/inv_mpu6050/inv_mpu_core.c
->>> +++ b/drivers/iio/imu/inv_mpu6050/inv_mpu_core.c
->>> @@ -263,6 +263,88 @@ static int inv_mpu6050_sensor_set(struct inv_mpu6050_state  *st, int reg,
->>>  	return 0;
->>>  }
->>>  
->>> +/**
->>> + *  inv_mpu6050_set_lpf() - set low pass filer based on fifo rate.
->>> + *
->>> + *                  Based on the Nyquist principle, the sampling rate must
->>> + *                  exceed twice of the bandwidth of the signal, or there
->>> + *                  would be alising. This function basically search for the
->>> + *                  correct low pass parameters based on the fifo rate, e.g,
->>> + *                  sampling frequency.
->>> + */
->>> +static int inv_mpu6050_set_lpf(struct inv_mpu6050_state *st, int rate)
->>> +{
->>> +	const int hz[] = {188, 98, 42, 20, 10, 5};
->>> +	const int d[] = {INV_MPU6050_FILTER_188HZ, INV_MPU6050_FILTER_98HZ,
->>> +			INV_MPU6050_FILTER_42HZ, INV_MPU6050_FILTER_20HZ,
->>> +			INV_MPU6050_FILTER_10HZ, INV_MPU6050_FILTER_5HZ};
->>> +	int i, h, result;
->>> +	u8 data;
->>> +
->>> +	h = (rate >> 1);
->>> +	i = 0;
->>> +	while ((h < hz[i]) && (i < ARRAY_SIZE(d) - 1))
->>> +		i++;
->>> +	data = d[i];
->>> +	result = regmap_write(st->map, st->reg->lpf, data);
->>> +	if (result)
->>> +		return result;
->>> +	st->chip_config.lpf = data;
->>> +
->>> +	return 0;
->>> +}
->>> +
->>> +/**
->>> + * inv_mpu6050_write_raw_samp_freq() - Set current raw sampling rate.
->>> + */
->>> +static int inv_mpu6050_write_raw_samp_freq(struct iio_dev *indio_dev,
->>> +					   struct inv_mpu6050_state *st,
->>> +					   int val) {
->>> +
->>> +	u8 d;
->>> +	int result;
->>> +
->>> +	if (val < INV_MPU6050_MIN_FIFO_RATE || val > INV_MPU6050_MAX_FIFO_RATE)
->>> +		return -EINVAL;
->>> +	if (val == st->chip_config.fifo_rate)
->>> +		return 0;
->>> +
->>> +	mutex_lock(&indio_dev->mlock);
->> Please take a close look at the write_raw function... It is doing various
->> things before calling this - including taking mlock. Also does some stuff
->> afterwards, including some truely mistifying error handling which definitely
->> looks buggy.
->>
-> 
-> Maybe would be better to move checks and mutex locks outside?
-Might do.  Have a go and see if looks simpler that way.
-> 
-> About the error handling, looks like it's trying to turn on, write,
-> and turn off with a lot of gotos in the middle to check if it was
-> sucessful. I don't see, though, how it's buggy. Can you enlighten me? (:
-> 
->>> +	if (st->chip_config.enable) {
->>> +		result = -EBUSY;
->>> +		goto fifo_rate_fail;
->>> +	}
->>> +
->>> +	result = inv_mpu6050_set_power_itg(st, true);
->>> +	if (result)
->>> +		goto fifo_rate_fail;
->>> +
->>> +	d = INV_MPU6050_ONE_K_HZ / val - 1;
->>> +
->>> +	result = regmap_write(st->map, st->reg->sample_rate_div, d);
->>> +
->>> +	if (result)
->>> +		goto fifo_rate_fail;
->>> +
->>> +	st->chip_config.fifo_rate = val;
->>> +
->>> +	result = inv_mpu6050_set_lpf(st, val);
->>> +
->>> +	if (result)
->>> +		goto fifo_rate_fail;
->>> +
->>> +fifo_rate_fail:
->>> +	result |= inv_mpu6050_set_power_itg(st, false);
-What is result now set to?
->>> +	mutex_unlock(&indio_dev->mlock);
->>> +
->>> +	if (result)
->>> +		return result;
->>> +
->>> +	return 0;
-simple return result in all cases should be fine once the above mysterious
-| is dealt with.   If we are in a fail condition we should not overwrite
-or scramble the original error.
+> comments below
 
->>> +
->>> +}
->>> +
->>> +
->>>  static int inv_mpu6050_sensor_show(struct inv_mpu6050_state  *st, int reg,
->>>  				   int axis, int *val)
->>>  {
->>> @@ -399,6 +481,10 @@ inv_mpu6050_read_raw(struct iio_dev *indio_dev,
->>>  		default:
->>>  			return -EINVAL;
->>>  		}
->>> +	case IIO_CHAN_INFO_SAMP_FREQ:
->>> +		*val = st->chip_config.fifo_rate;
->>> +
->>> +		return IIO_VAL_INT;
->>>  	default:
->>>  		return -EINVAL;
->>>  	}
->>> @@ -511,6 +597,10 @@ static int inv_mpu6050_write_raw(struct iio_dev *indio_dev,
->>>  		default:
->>>  			result = -EINVAL;
->>>  		}
->>> +		break;
->>> +	case IIO_CHAN_INFO_SAMP_FREQ:
->>> +		result = inv_mpu6050_write_raw_samp_freq(indio_dev, st, val);
->> Sanity check that val2 == 0 please.
->>> +		break;
->>>  	default:
->>>  		result = -EINVAL;
->>>  		break;
->>> @@ -524,98 +614,6 @@ static int inv_mpu6050_write_raw(struct iio_dev *indio_dev,
->>>  }
->>>  
->>>  /**
->>> - *  inv_mpu6050_set_lpf() - set low pass filer based on fifo rate.
->>> - *
->>> - *                  Based on the Nyquist principle, the sampling rate must
->>> - *                  exceed twice of the bandwidth of the signal, or there
->>> - *                  would be alising. This function basically search for the
->>> - *                  correct low pass parameters based on the fifo rate, e.g,
->>> - *                  sampling frequency.
->>> - */
->>> -static int inv_mpu6050_set_lpf(struct inv_mpu6050_state *st, int rate)
->>> -{
->>> -	const int hz[] = {188, 98, 42, 20, 10, 5};
->>> -	const int d[] = {INV_MPU6050_FILTER_188HZ, INV_MPU6050_FILTER_98HZ,
->>> -			INV_MPU6050_FILTER_42HZ, INV_MPU6050_FILTER_20HZ,
->>> -			INV_MPU6050_FILTER_10HZ, INV_MPU6050_FILTER_5HZ};
->>> -	int i, h, result;
->>> -	u8 data;
->>> -
->>> -	h = (rate >> 1);
->>> -	i = 0;
->>> -	while ((h < hz[i]) && (i < ARRAY_SIZE(d) - 1))
->>> -		i++;
->>> -	data = d[i];
->>> -	result = regmap_write(st->map, st->reg->lpf, data);
->>> -	if (result)
->>> -		return result;
->>> -	st->chip_config.lpf = data;
->>> -
->>> -	return 0;
->>> -}
->>> -
->>> -/**
->>> - * inv_mpu6050_fifo_rate_store() - Set fifo rate.
->>> - */
->>> -static ssize_t
->>> -inv_mpu6050_fifo_rate_store(struct device *dev, struct device_attribute *attr,
->>> -			    const char *buf, size_t count)
->>> -{
->>> -	s32 fifo_rate;
->>> -	u8 d;
->>> -	int result;
->>> -	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
->>> -	struct inv_mpu6050_state *st = iio_priv(indio_dev);
->>> -
->>> -	if (kstrtoint(buf, 10, &fifo_rate))
->>> -		return -EINVAL;
->>> -	if (fifo_rate < INV_MPU6050_MIN_FIFO_RATE ||
->>> -	    fifo_rate > INV_MPU6050_MAX_FIFO_RATE)
->>> -		return -EINVAL;
->>> -	if (fifo_rate == st->chip_config.fifo_rate)
->>> -		return count;
->>> -
->>> -	mutex_lock(&indio_dev->mlock);
->>> -	if (st->chip_config.enable) {
->>> -		result = -EBUSY;
->>> -		goto fifo_rate_fail;
->>> -	}
->>> -	result = inv_mpu6050_set_power_itg(st, true);
->>> -	if (result)
->>> -		goto fifo_rate_fail;
->>> -
->>> -	d = INV_MPU6050_ONE_K_HZ / fifo_rate - 1;
->>> -	result = regmap_write(st->map, st->reg->sample_rate_div, d);
->>> -	if (result)
->>> -		goto fifo_rate_fail;
->>> -	st->chip_config.fifo_rate = fifo_rate;
->>> -
->>> -	result = inv_mpu6050_set_lpf(st, fifo_rate);
->>> -	if (result)
->>> -		goto fifo_rate_fail;
->>> -
->>> -fifo_rate_fail:
->>> -	result |= inv_mpu6050_set_power_itg(st, false);
->>> -	mutex_unlock(&indio_dev->mlock);
->>> -	if (result)
->>> -		return result;
->>> -
->>> -	return count;
->>> -}
->>> -
->>> -/**
->>> - * inv_fifo_rate_show() - Get the current sampling rate.
->>> - */
->>> -static ssize_t
->>> -inv_fifo_rate_show(struct device *dev, struct device_attribute *attr,
->>> -		   char *buf)
->>> -{
->>> -	struct inv_mpu6050_state *st = iio_priv(dev_to_iio_dev(dev));
->>> -
->>> -	return sprintf(buf, "%d\n", st->chip_config.fifo_rate);
->>> -}
->>> -
->>> -/**
->>>   * inv_attr_show() - calling this function will show current
->>>   *                    parameters.
->>>   *
->>> @@ -686,6 +684,7 @@ static const struct iio_chan_spec_ext_info inv_ext_info[] = {
->>>  		.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_SCALE), \
->>>  		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW) |	      \
->>>  				      BIT(IIO_CHAN_INFO_CALIBBIAS),   \
->>> +		.info_mask_shared_by_all = BIT(IIO_CHAN_INFO_SAMP_FREQ), \
->>>  		.scan_index = _index,                                 \
->>>  		.scan_type = {                                        \
->>>  				.sign = 's',                          \
->>> @@ -708,6 +707,7 @@ static const struct iio_chan_spec inv_mpu_channels[] = {
->>>  		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW)
->>>  				| BIT(IIO_CHAN_INFO_OFFSET)
->>>  				| BIT(IIO_CHAN_INFO_SCALE),
->>> +		.info_mask_shared_by_all = BIT(IIO_CHAN_INFO_SAMP_FREQ),
->>>  		.scan_index = -1,
->>>  	},
->>>  	INV_MPU6050_CHAN(IIO_ANGL_VEL, IIO_MOD_X, INV_MPU6050_SCAN_GYRO_X),
->>> @@ -725,8 +725,6 @@ static IIO_CONST_ATTR(in_anglvel_scale_available,
->>>  					  "0.000133090 0.000266181 0.000532362 0.001064724");
->>>  static IIO_CONST_ATTR(in_accel_scale_available,
->>>  					  "0.000598 0.001196 0.002392 0.004785");
->>> -static IIO_DEV_ATTR_SAMP_FREQ(S_IRUGO | S_IWUSR, inv_fifo_rate_show,
->>> -	inv_mpu6050_fifo_rate_store);
->>>  
->>>  /* Deprecated: kept for userspace backward compatibility. */
->>>  static IIO_DEVICE_ATTR(in_gyro_matrix, S_IRUGO, inv_attr_show, NULL,
->>> @@ -737,7 +735,6 @@ static IIO_DEVICE_ATTR(in_accel_matrix, S_IRUGO, inv_attr_show, NULL,
->>>  static struct attribute *inv_attributes[] = {
->>>  	&iio_dev_attr_in_gyro_matrix.dev_attr.attr,  /* deprecated */
->>>  	&iio_dev_attr_in_accel_matrix.dev_attr.attr, /* deprecated */
->>> -	&iio_dev_attr_sampling_frequency.dev_attr.attr,
->>>  	&iio_const_attr_sampling_frequency_available.dev_attr.attr,
->>>  	&iio_const_attr_in_accel_scale_available.dev_attr.attr,
->>>  	&iio_const_attr_in_anglvel_scale_available.dev_attr.attr,
->>>
->>
+Hi Peter,
 
+Lots of typos! I'll send a patchset to fix these also. Thank you for
+taking your time to comment on this. 
+
+Juliana
+
+>  
+> > Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
+> > ---
+> >  drivers/iio/imu/inv_mpu6050/inv_mpu_core.c | 187 ++++++++++++++---------------
+> >  1 file changed, 92 insertions(+), 95 deletions(-)
+> > 
+> > diff --git a/drivers/iio/imu/inv_mpu6050/inv_mpu_core.c b/drivers/iio/imu/inv_mpu6050/inv_mpu_core.c
+> > index b9fcbf1..20722c8 100644
+> > --- a/drivers/iio/imu/inv_mpu6050/inv_mpu_core.c
+> > +++ b/drivers/iio/imu/inv_mpu6050/inv_mpu_core.c
+> > @@ -263,6 +263,88 @@ static int inv_mpu6050_sensor_set(struct inv_mpu6050_state  *st, int reg,
+> >  	return 0;
+> >  }
+> >  
+> > +/**
+> > + *  inv_mpu6050_set_lpf() - set low pass filer based on fifo rate.
+> 
+> filter
+> 
+> > + *
+> > + *                  Based on the Nyquist principle, the sampling rate must
+> > + *                  exceed twice of the bandwidth of the signal, or there
+> > + *                  would be alising. This function basically search for the
+> 
+> will be
+> searches
+> 
+> > + *                  correct low pass parameters based on the fifo rate, e.g,
+> 
+> e.g.
+> but maybe it should be rather i.e.
+> 
+> > + *                  sampling frequency.
+> > + */
+> > +static int inv_mpu6050_set_lpf(struct inv_mpu6050_state *st, int rate)
+> > +{
+> > +	const int hz[] = {188, 98, 42, 20, 10, 5};
+> > +	const int d[] = {INV_MPU6050_FILTER_188HZ, INV_MPU6050_FILTER_98HZ,
+> > +			INV_MPU6050_FILTER_42HZ, INV_MPU6050_FILTER_20HZ,
+> > +			INV_MPU6050_FILTER_10HZ, INV_MPU6050_FILTER_5HZ};
+> 
+> it is not/only somewhat obvious that hz and d must have the same number of 
+> entries, could use a #define to make that clear (and could be used 
+> instead of ARRAY_SIZE)
+> 
+> > +	int i, h, result;
+> > +	u8 data;
+> > +
+> > +	h = (rate >> 1);
+> > +	i = 0;
+> 
+> i, h could be unsigned
+> can't we use initialization instead of assignment to save some lines?
+> 
+> > +	while ((h < hz[i]) && (i < ARRAY_SIZE(d) - 1))
+> > +		i++;
+> > +	data = d[i];
+> > +	result = regmap_write(st->map, st->reg->lpf, data);
+> > +	if (result)
+> > +		return result;
+> > +	st->chip_config.lpf = data;
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +/**
+> > + * inv_mpu6050_write_raw_samp_freq() - Set current raw sampling rate.
+> 
+> frequency is not the same as rate
+> 
+> > + */
+> > +static int inv_mpu6050_write_raw_samp_freq(struct iio_dev *indio_dev,
+> > +					   struct inv_mpu6050_state *st,
+> > +					   int val) {
+> > +
+> > +	u8 d;
+> > +	int result;
+> > +
+> > +	if (val < INV_MPU6050_MIN_FIFO_RATE || val > INV_MPU6050_MAX_FIFO_RATE)
+> > +		return -EINVAL;
+> > +	if (val == st->chip_config.fifo_rate)
+> > +		return 0;
+> > +
+> > +	mutex_lock(&indio_dev->mlock);
+> > +	if (st->chip_config.enable) {
+> > +		result = -EBUSY;
+> > +		goto fifo_rate_fail;
+> > +	}
+> > +
+> > +	result = inv_mpu6050_set_power_itg(st, true);
+> > +	if (result)
+> > +		goto fifo_rate_fail;
+> > +
+> > +	d = INV_MPU6050_ONE_K_HZ / val - 1;
+> > +
+> > +	result = regmap_write(st->map, st->reg->sample_rate_div, d);
+> > +
+> 
+> drop newline
+> 
+> > +	if (result)
+> > +		goto fifo_rate_fail;
+> > +
+> > +	st->chip_config.fifo_rate = val;
+> > +
+> > +	result = inv_mpu6050_set_lpf(st, val);
+> > +
+> 
+> drop newline
+> 
+> > +	if (result)
+> > +		goto fifo_rate_fail;
+> > +
+> > +fifo_rate_fail:
+> > +	result |= inv_mpu6050_set_power_itg(st, false);
+> > +	mutex_unlock(&indio_dev->mlock);
+> > +
+> 
+> just
+> return result;
+> 
+> > +	if (result)
+> > +		return result;
+> > +
+> > +	return 0;
+> > +
+> > +}
+> > +
+> > +
+> >  static int inv_mpu6050_sensor_show(struct inv_mpu6050_state  *st, int reg,
+> >  				   int axis, int *val)
+> >  {
+> > @@ -399,6 +481,10 @@ inv_mpu6050_read_raw(struct iio_dev *indio_dev,
+> >  		default:
+> >  			return -EINVAL;
+> >  		}
+> > +	case IIO_CHAN_INFO_SAMP_FREQ:
+> > +		*val = st->chip_config.fifo_rate;
+> > +
+> > +		return IIO_VAL_INT;
+> >  	default:
+> >  		return -EINVAL;
+> >  	}
+> > @@ -511,6 +597,10 @@ static int inv_mpu6050_write_raw(struct iio_dev *indio_dev,
+> >  		default:
+> >  			result = -EINVAL;
+> >  		}
+> > +		break;
+> > +	case IIO_CHAN_INFO_SAMP_FREQ:
+> > +		result = inv_mpu6050_write_raw_samp_freq(indio_dev, st, val);
+> > +		break;
+> >  	default:
+> >  		result = -EINVAL;
+> >  		break;
+> > @@ -524,98 +614,6 @@ static int inv_mpu6050_write_raw(struct iio_dev *indio_dev,
+> >  }
+> >  
+> >  /**
+> > - *  inv_mpu6050_set_lpf() - set low pass filer based on fifo rate.
+> > - *
+> > - *                  Based on the Nyquist principle, the sampling rate must
+> > - *                  exceed twice of the bandwidth of the signal, or there
+> > - *                  would be alising. This function basically search for the
+> > - *                  correct low pass parameters based on the fifo rate, e.g,
+> > - *                  sampling frequency.
+> > - */
+> > -static int inv_mpu6050_set_lpf(struct inv_mpu6050_state *st, int rate)
+> > -{
+> > -	const int hz[] = {188, 98, 42, 20, 10, 5};
+> > -	const int d[] = {INV_MPU6050_FILTER_188HZ, INV_MPU6050_FILTER_98HZ,
+> > -			INV_MPU6050_FILTER_42HZ, INV_MPU6050_FILTER_20HZ,
+> > -			INV_MPU6050_FILTER_10HZ, INV_MPU6050_FILTER_5HZ};
+> > -	int i, h, result;
+> > -	u8 data;
+> > -
+> > -	h = (rate >> 1);
+> > -	i = 0;
+> > -	while ((h < hz[i]) && (i < ARRAY_SIZE(d) - 1))
+> > -		i++;
+> > -	data = d[i];
+> > -	result = regmap_write(st->map, st->reg->lpf, data);
+> > -	if (result)
+> > -		return result;
+> > -	st->chip_config.lpf = data;
+> > -
+> > -	return 0;
+> > -}
+> > -
+> > -/**
+> > - * inv_mpu6050_fifo_rate_store() - Set fifo rate.
+> > - */
+> > -static ssize_t
+> > -inv_mpu6050_fifo_rate_store(struct device *dev, struct device_attribute *attr,
+> > -			    const char *buf, size_t count)
+> > -{
+> > -	s32 fifo_rate;
+> > -	u8 d;
+> > -	int result;
+> > -	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
+> > -	struct inv_mpu6050_state *st = iio_priv(indio_dev);
+> > -
+> > -	if (kstrtoint(buf, 10, &fifo_rate))
+> > -		return -EINVAL;
+> > -	if (fifo_rate < INV_MPU6050_MIN_FIFO_RATE ||
+> > -	    fifo_rate > INV_MPU6050_MAX_FIFO_RATE)
+> > -		return -EINVAL;
+> > -	if (fifo_rate == st->chip_config.fifo_rate)
+> > -		return count;
+> > -
+> > -	mutex_lock(&indio_dev->mlock);
+> > -	if (st->chip_config.enable) {
+> > -		result = -EBUSY;
+> > -		goto fifo_rate_fail;
+> > -	}
+> > -	result = inv_mpu6050_set_power_itg(st, true);
+> > -	if (result)
+> > -		goto fifo_rate_fail;
+> > -
+> > -	d = INV_MPU6050_ONE_K_HZ / fifo_rate - 1;
+> > -	result = regmap_write(st->map, st->reg->sample_rate_div, d);
+> > -	if (result)
+> > -		goto fifo_rate_fail;
+> > -	st->chip_config.fifo_rate = fifo_rate;
+> > -
+> > -	result = inv_mpu6050_set_lpf(st, fifo_rate);
+> > -	if (result)
+> > -		goto fifo_rate_fail;
+> > -
+> > -fifo_rate_fail:
+> > -	result |= inv_mpu6050_set_power_itg(st, false);
+> > -	mutex_unlock(&indio_dev->mlock);
+> > -	if (result)
+> > -		return result;
+> > -
+> > -	return count;
+> > -}
+> > -
+> > -/**
+> > - * inv_fifo_rate_show() - Get the current sampling rate.
+> > - */
+> > -static ssize_t
+> > -inv_fifo_rate_show(struct device *dev, struct device_attribute *attr,
+> > -		   char *buf)
+> > -{
+> > -	struct inv_mpu6050_state *st = iio_priv(dev_to_iio_dev(dev));
+> > -
+> > -	return sprintf(buf, "%d\n", st->chip_config.fifo_rate);
+> > -}
+> > -
+> > -/**
+> >   * inv_attr_show() - calling this function will show current
+> >   *                    parameters.
+> >   *
+> > @@ -686,6 +684,7 @@ static const struct iio_chan_spec_ext_info inv_ext_info[] = {
+> >  		.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_SCALE), \
+> >  		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW) |	      \
+> >  				      BIT(IIO_CHAN_INFO_CALIBBIAS),   \
+> > +		.info_mask_shared_by_all = BIT(IIO_CHAN_INFO_SAMP_FREQ), \
+> >  		.scan_index = _index,                                 \
+> >  		.scan_type = {                                        \
+> >  				.sign = 's',                          \
+> > @@ -708,6 +707,7 @@ static const struct iio_chan_spec inv_mpu_channels[] = {
+> >  		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW)
+> >  				| BIT(IIO_CHAN_INFO_OFFSET)
+> >  				| BIT(IIO_CHAN_INFO_SCALE),
+> > +		.info_mask_shared_by_all = BIT(IIO_CHAN_INFO_SAMP_FREQ),
+> >  		.scan_index = -1,
+> >  	},
+> >  	INV_MPU6050_CHAN(IIO_ANGL_VEL, IIO_MOD_X, INV_MPU6050_SCAN_GYRO_X),
+> > @@ -725,8 +725,6 @@ static IIO_CONST_ATTR(in_anglvel_scale_available,
+> >  					  "0.000133090 0.000266181 0.000532362 0.001064724");
+> >  static IIO_CONST_ATTR(in_accel_scale_available,
+> >  					  "0.000598 0.001196 0.002392 0.004785");
+> > -static IIO_DEV_ATTR_SAMP_FREQ(S_IRUGO | S_IWUSR, inv_fifo_rate_show,
+> > -	inv_mpu6050_fifo_rate_store);
+> >  
+> >  /* Deprecated: kept for userspace backward compatibility. */
+> >  static IIO_DEVICE_ATTR(in_gyro_matrix, S_IRUGO, inv_attr_show, NULL,
+> > @@ -737,7 +735,6 @@ static IIO_DEVICE_ATTR(in_accel_matrix, S_IRUGO, inv_attr_show, NULL,
+> >  static struct attribute *inv_attributes[] = {
+> >  	&iio_dev_attr_in_gyro_matrix.dev_attr.attr,  /* deprecated */
+> >  	&iio_dev_attr_in_accel_matrix.dev_attr.attr, /* deprecated */
+> > -	&iio_dev_attr_sampling_frequency.dev_attr.attr,
+> >  	&iio_const_attr_sampling_frequency_available.dev_attr.attr,
+> >  	&iio_const_attr_in_accel_scale_available.dev_attr.attr,
+> >  	&iio_const_attr_in_anglvel_scale_available.dev_attr.attr,
+> > 
+> 
+> -- 
+> 
+> Peter Meerwald-Stadler
+> +43-664-2444418 (mobile)
 
