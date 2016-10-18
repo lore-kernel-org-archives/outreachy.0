@@ -1,88 +1,96 @@
 X-GM-THRID: 6341139750972293120
-X-Received: by 10.157.21.88 with SMTP id z24mr680659otz.10.1476819797164;
-        Tue, 18 Oct 2016 12:43:17 -0700 (PDT)
+X-Received: by 10.31.48.216 with SMTP id w207mr682838vkw.33.1476819418434;
+        Tue, 18 Oct 2016 12:36:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.37.131 with SMTP id q3ls281009ota.8.gmail; Tue, 18 Oct
- 2016 12:43:16 -0700 (PDT)
-X-Received: by 10.157.33.196 with SMTP id s62mr760839otb.8.1476819796790;
-        Tue, 18 Oct 2016 12:43:16 -0700 (PDT)
+Received: by 10.157.14.129 with SMTP id 1ls356670otj.31.gmail; Tue, 18 Oct
+ 2016 12:36:57 -0700 (PDT)
+X-Received: by 10.13.195.193 with SMTP id f184mr717589ywd.153.1476819417895;
+        Tue, 18 Oct 2016 12:36:57 -0700 (PDT)
 Return-Path: <juliana.orod@gmail.com>
-Received: from mail-qk0-x242.google.com (mail-qk0-x242.google.com. [2607:f8b0:400d:c09::242])
-        by gmr-mx.google.com with ESMTPS id p70si5006740vkd.0.2016.10.18.12.43.16
+Received: from mail-qt0-x244.google.com (mail-qt0-x244.google.com. [2607:f8b0:400d:c0d::244])
+        by gmr-mx.google.com with ESMTPS id p131si6443463vkf.1.2016.10.18.12.36.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 18 Oct 2016 12:43:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) client-ip=2607:f8b0:400d:c09::242;
+        Tue, 18 Oct 2016 12:36:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c0d::244 as permitted sender) client-ip=2607:f8b0:400d:c0d::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
+       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c0d::244 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qk0-x242.google.com with SMTP id v138so294832qka.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 18 Oct 2016 12:43:16 -0700 (PDT)
+Received: by mail-qt0-x244.google.com with SMTP id f6so144018qtd.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 18 Oct 2016 12:36:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=7c9msVkGSUZCmFTwPKHHhlZwWA4+2TQsqU2Fj2U52zU=;
-        b=wztA9g1bwfBgGqBUs2zJSefrR828XvwEUGt/RwFX2gxF1g81s4yoLGMt+a4zTsjQtD
-         9khOnqd2msfuiE5KfvRAFSVCjVTkNh9EW51oNDIF0OphDct6zazqoQJOktoAsW1JCXxA
-         /ELLyRtSKhZwW1W8+YUFSE4OT0SNgY5OV3x+36twhkP+dT5QThuk8dnW0PjGrsbciEZT
-         wvVikjhJhPiSo6b1eb7XDUfnsRpeyZjaQRuyYwA5CM2YnTQqGrrkE5ioHqgfX6oc4Nn8
-         LWIAik2d9oNRAzEOAXusXZTwdGxEnzwxfjkEoIqu7OIN1oBkgQQwrljRIwz2CmyUDlTh
-         s4eA==
+        bh=VWkqSrgkMR/pHzwTYr4QdHciJBvkBsTMa7XUI2KhPfs=;
+        b=KcwOAYueJ/WbQmdFJiy0h47TPF/IvqbmLYqrwRApJFPNP+o7f0adb+T1JZT0/0luMm
+         H3LcdIuqMeVpKm1VM+44jQBoCRXb8ozmX9riw0bO0grX23DjP0Y8qVb7B7DvpIzyg+XE
+         E5oKeak4SlDbfczjZptVlyegu6L671FviZcukcMp3BTQon9/8frV27oT6prySwxwFkp0
+         CvxEkbdVBbDAOvnT5MKbjuV9D2ZqlnEvfWJbLo4l+vGPgOqW4UXOdvBxMsSdAmWiimMy
+         kWhr4sr+IRhOouy898//gL2Ec+FPrWSjVsIWb+pF53ETMNrCQvbiVaJZwauLO9XHMIbh
+         SmdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=7c9msVkGSUZCmFTwPKHHhlZwWA4+2TQsqU2Fj2U52zU=;
-        b=fDk+kaHYkvAZSff+6KLK0HCuzHrLQKsKj8fmk+69Uz1Xa3y03bJXHZkOywtQOoCuUl
-         n8WZ2WqSUV8TrHe6nw3y1eSehWRt5rKMVB0DGesSWWYHpKtNGPdE/QV4YB2B8fxdHn6r
-         eGy2qHlJFOR7pyAUOPyn7+iVx7HGOj8aN/MpKXfl50bNc+67642cjePE0GNdaG+Wme7H
-         94nvbu+Fz2gmhPOaGRsl8icIhCdCFAHa930726TvtcCz7KUUIriRZovlAOFccb/Q/tq6
-         pO/wudw714cy9eqQMjGg4VR7+EejYhE39ddqz/lFKxta3oBV/Blm50Zt88jHiJBh/tmN
-         5myA==
-X-Gm-Message-State: ABUngvcx5PTVak5uiPVcE52vBN7riJqH1uEwHvrYnY3b+ZTYKDCJEEsmcueG7awLNLWgNQ==
-X-Received: by 10.55.135.1 with SMTP id j1mr2305114qkd.46.1476819796372;
-        Tue, 18 Oct 2016 12:43:16 -0700 (PDT)
+        bh=VWkqSrgkMR/pHzwTYr4QdHciJBvkBsTMa7XUI2KhPfs=;
+        b=bJnCqtOAusGQtLT2vb9UmUOeHslRaQUE7rBLKXpdAIibfRmlq9nQpQS+FXa+9AtKRp
+         05Ko+KWPG71TNhzF7ACSIW1YzU1F+fOQuxmyQIKvtXgoVHgJogRTKkVhmsZkKBmPnDTN
+         x/qtjjeZR4awMdH0B4Awsj9Z06qtNo5I28IFVqrgyesJp0zE+7npzcUWzTsF48V8zQtr
+         Yi3Zs8yh+tflTi5nG+UOqu+ezlTN8h4fQ4TXqKw2cn8djBd9TeZ+RYCRL7/CHNiDw11O
+         G+B6GjBPtopwsmn38MGyLpac9Dey12m39T/uY6hZbZtxpxqnZSNRlM0wRvDU6/GonF1t
+         0GRg==
+X-Gm-Message-State: AA6/9RlVSkt2NSKFSJ2VUNqnk7lZbdrhgUaTxWDwv0UMIa3dTSyxOMFxo6V7Y/q3Z6E8kQ==
+X-Received: by 10.200.57.58 with SMTP id s55mr2455446qtb.68.1476819417493;
+        Tue, 18 Oct 2016 12:36:57 -0700 (PDT)
 Return-Path: <juliana.orod@gmail.com>
 Received: from spock (wifi-177-220-85-19.wifi.ic.unicamp.br. [177.220.85.19])
-        by smtp.gmail.com with ESMTPSA id s22sm3591685qts.11.2016.10.18.12.43.15
+        by smtp.gmail.com with ESMTPSA id c64sm18859594qkg.21.2016.10.18.12.36.56
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 18 Oct 2016 12:43:15 -0700 (PDT)
-Date: Tue, 18 Oct 2016 17:43:12 -0200
+        Tue, 18 Oct 2016 12:36:56 -0700 (PDT)
+Date: Tue, 18 Oct 2016 17:36:52 -0200
 From: Juliana Rodrigues <juliana.orod@gmail.com>
-To: Peter Meerwald-Stadler <pmeerw@pmeerw.net>
-Cc: outreachy-kernel@googlegroups.com, lars@metafoo.de, jic23@kernel.org,
-	knaack.h@gmx.de, linux-iio@vger.kernel.org
+To: Jonathan Cameron <jic23@kernel.org>
+Cc: outreachy-kernel@googlegroups.com, lars@metafoo.de, knaack.h@gmx.de,
+	pmeerw@pmeerw.net, linux-iio@vger.kernel.org
 Subject: Re: [PATCH] iio: imu: inv_mpu6050: implemented
  IIO_CHAN_INFO_SAMP_FREQ
-Message-ID: <20161018194312.GB11725@spock>
+Message-ID: <20161018193652.GA11725@spock>
 References: <20161014022043.GA8114@spock>
- <alpine.DEB.2.02.1610172316480.31400@pmeerw.net>
+ <45751c64-ae17-fed1-74e9-bf749562a59d@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.02.1610172316480.31400@pmeerw.net>
+In-Reply-To: <45751c64-ae17-fed1-74e9-bf749562a59d@kernel.org>
 User-Agent: Mutt/1.7.0 (2016-08-17)
 
-On Mon, Oct 17, 2016 at 11:27:11PM +0200, Peter Meerwald-Stadler wrote:
-> 
+On Sat, Oct 15, 2016 at 03:36:47PM +0100, Jonathan Cameron wrote:
+> On 14/10/16 03:20, Juliana Rodrigues wrote:
 > > Moved functionality from IIO_DEV_ATTR_SAMP_FREQ macro into
 > > IIO_CHAN_INFO_SAMP_FREQ in order to create a generic attribute.
 > > Modified inv_mpu6050_read_raw and inv_mpu6050_write_raw to allow
 > > reading and writing the element.
+> > 
+> > Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
+> Hi Juliana,
 > 
-> comments below
+> This driver does things a little differently from some others, so you need
+> to take a little more care when reworking elements to add them to the
+> write_raw callback.
+> 
+> Anyhow, take another look at that, and perhaps whilst you are there
+> check out the odd error handling path in that function which I'm embarrassed
+> to say I've never noticed before!
+> 
+> Jonathan
 
-Hi Peter,
+Hi Jonathan,
 
-Lots of typos! I'll send a patchset to fix these also. Thank you for
-taking your time to comment on this. 
+Thank you for your comments. I'll write a new patch to fix the issues
+you've mentioned. I just have a few questions bellow.
 
 Juliana
-
->  
-> > Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
 > > ---
 > >  drivers/iio/imu/inv_mpu6050/inv_mpu_core.c | 187 ++++++++++++++---------------
 > >  1 file changed, 92 insertions(+), 95 deletions(-)
@@ -97,22 +105,11 @@ Juliana
 > >  
 > > +/**
 > > + *  inv_mpu6050_set_lpf() - set low pass filer based on fifo rate.
-> 
-> filter
-> 
 > > + *
 > > + *                  Based on the Nyquist principle, the sampling rate must
 > > + *                  exceed twice of the bandwidth of the signal, or there
 > > + *                  would be alising. This function basically search for the
-> 
-> will be
-> searches
-> 
 > > + *                  correct low pass parameters based on the fifo rate, e.g,
-> 
-> e.g.
-> but maybe it should be rather i.e.
-> 
 > > + *                  sampling frequency.
 > > + */
 > > +static int inv_mpu6050_set_lpf(struct inv_mpu6050_state *st, int rate)
@@ -121,20 +118,11 @@ Juliana
 > > +	const int d[] = {INV_MPU6050_FILTER_188HZ, INV_MPU6050_FILTER_98HZ,
 > > +			INV_MPU6050_FILTER_42HZ, INV_MPU6050_FILTER_20HZ,
 > > +			INV_MPU6050_FILTER_10HZ, INV_MPU6050_FILTER_5HZ};
-> 
-> it is not/only somewhat obvious that hz and d must have the same number of 
-> entries, could use a #define to make that clear (and could be used 
-> instead of ARRAY_SIZE)
-> 
 > > +	int i, h, result;
 > > +	u8 data;
 > > +
 > > +	h = (rate >> 1);
 > > +	i = 0;
-> 
-> i, h could be unsigned
-> can't we use initialization instead of assignment to save some lines?
-> 
 > > +	while ((h < hz[i]) && (i < ARRAY_SIZE(d) - 1))
 > > +		i++;
 > > +	data = d[i];
@@ -148,9 +136,6 @@ Juliana
 > > +
 > > +/**
 > > + * inv_mpu6050_write_raw_samp_freq() - Set current raw sampling rate.
-> 
-> frequency is not the same as rate
-> 
 > > + */
 > > +static int inv_mpu6050_write_raw_samp_freq(struct iio_dev *indio_dev,
 > > +					   struct inv_mpu6050_state *st,
@@ -165,6 +150,18 @@ Juliana
 > > +		return 0;
 > > +
 > > +	mutex_lock(&indio_dev->mlock);
+> Please take a close look at the write_raw function... It is doing various
+> things before calling this - including taking mlock. Also does some stuff
+> afterwards, including some truely mistifying error handling which definitely
+> looks buggy.
+> 
+
+Maybe would be better to move checks and mutex locks outside?
+
+About the error handling, looks like it's trying to turn on, write,
+and turn off with a lot of gotos in the middle to check if it was
+sucessful. I don't see, though, how it's buggy. Can you enlighten me? (:
+
 > > +	if (st->chip_config.enable) {
 > > +		result = -EBUSY;
 > > +		goto fifo_rate_fail;
@@ -178,9 +175,6 @@ Juliana
 > > +
 > > +	result = regmap_write(st->map, st->reg->sample_rate_div, d);
 > > +
-> 
-> drop newline
-> 
 > > +	if (result)
 > > +		goto fifo_rate_fail;
 > > +
@@ -188,9 +182,6 @@ Juliana
 > > +
 > > +	result = inv_mpu6050_set_lpf(st, val);
 > > +
-> 
-> drop newline
-> 
 > > +	if (result)
 > > +		goto fifo_rate_fail;
 > > +
@@ -198,10 +189,6 @@ Juliana
 > > +	result |= inv_mpu6050_set_power_itg(st, false);
 > > +	mutex_unlock(&indio_dev->mlock);
 > > +
-> 
-> just
-> return result;
-> 
 > > +	if (result)
 > > +		return result;
 > > +
@@ -231,6 +218,7 @@ Juliana
 > > +		break;
 > > +	case IIO_CHAN_INFO_SAMP_FREQ:
 > > +		result = inv_mpu6050_write_raw_samp_freq(indio_dev, st, val);
+> Sanity check that val2 == 0 please.
 > > +		break;
 > >  	default:
 > >  		result = -EINVAL;
@@ -369,8 +357,4 @@ Juliana
 > >  	&iio_const_attr_in_anglvel_scale_available.dev_attr.attr,
 > > 
 > 
-> -- 
-> 
-> Peter Meerwald-Stadler
-> +43-664-2444418 (mobile)
 
