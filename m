@@ -1,163 +1,119 @@
-X-GM-THRID: 6333917468410511360
-Date: Sat, 24 Sep 2016 08:14:41 -0700 (PDT)
-From: Yajushi Srivastava <yajushi.sri@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <5c55ec89-a0de-47f8-8c4e-08601b6b8578@googlegroups.com>
-Subject: Error "Pattern not found" in Step: Make a driver change (Test your
- changes).
+X-GM-THRID: 6343724675739156480
+X-Received: by 10.200.42.164 with SMTP id b33mr5081702qta.3.1477026571465;
+        Thu, 20 Oct 2016 22:09:31 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.25.32.211 with SMTP id g202ls1023322lfg.11.gmail; Thu, 20 Oct
+ 2016 22:09:30 -0700 (PDT)
+X-Received: by 10.25.201.81 with SMTP id z78mr500375lff.22.1477026570205;
+        Thu, 20 Oct 2016 22:09:30 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id f4si103332wmf.1.2016.10.20.22.09.30
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 20 Oct 2016 22:09:30 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.31,374,1473112800"; 
+   d="scan'208";a="197600500"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 21 Oct 2016 07:09:29 +0200
+Date: Fri, 21 Oct 2016 07:09:28 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Elise Lennion <elise.lennion@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 1/3] staging: rtl8192e: Standardize
+ test for NULL.
+In-Reply-To: <20161021013132.GA27656@lennorien.com>
+Message-ID: <alpine.DEB.2.20.1610210708560.1901@hadrien>
+References: <20161021013132.GA27656@lennorien.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_738_2035858755.1474730081740"
-X-Google-Token: EOGwmr8FEJNAE1Vh0WM0
-X-Google-IP: 61.0.31.222
+Content-Type: text/plain; charset=US-ASCII
 
-------=_Part_738_2035858755.1474730081740
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_739_1460843017.1474730081740"
+No more mailing list.  You can just send the patch to whoevere
+get_maintainers tells you.
 
-------=_Part_739_1460843017.1474730081740
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+julia
 
+On Thu, 20 Oct 2016, Elise Lennion wrote:
 
-
-/* Step: Make a driver change
-            Modifying a driver under native Linux
-              Modifying a driver under VM */
-
-static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
-{
-        struct net_device *netdev;
-        struct e1000_adapter *adapter;
-        struct e1000_hw *hw;
-        printk(KERN_DEBUG "I can modify the Linux kernel!\n");
-        static int cards_found = 0;
-        static int global_quad_port_a;
-
---------------------------------------------------------------------------------
-
-
-/* Step: Make a driver change
-           Install your changes 
-              sudo make modules_install install */
-  INSTALL /lib/firmware/yam/9600.bin
-  DEPMOD  4.8.0-rc6+
-sh ./arch/x86/boot/install.sh 4.8.0-rc6+ arch/x86/boot/bzImage \
-	System.map "/boot"
-run-parts: executing /etc/kernel/postinst.d/apt-auto-removal 4.8.0-rc6+ /boot/vmlinuz-4.8.0-rc6+
-run-parts: executing /etc/kernel/postinst.d/initramfs-tools 4.8.0-rc6+ /boot/vmlinuz-4.8.0-rc6+
-update-initramfs: Generating /boot/initrd.img-4.8.0-rc6+
-W: Possible missing firmware /lib/firmware/i915/kbl_dmc_ver1_01.bin for module i915
-W: Possible missing firmware /lib/firmware/i915/kbl_guc_ver9_14.bin for module i915
-W: Possible missing firmware /lib/firmware/i915/bxt_guc_ver8_7.bin for module i915
-W: Possible missing firmware /lib/firmware/i915/skl_guc_ver6_1.bin for module i915
-run-parts: executing /etc/kernel/postinst.d/pm-utils 4.8.0-rc6+ /boot/vmlinuz-4.8.0-rc6+
-run-parts: executing /etc/kernel/postinst.d/unattended-upgrades 4.8.0-rc6+ /boot/vmlinuz-4.8.0-rc6+
-run-parts: executing /etc/kernel/postinst.d/update-notifier 4.8.0-rc6+ /boot/vmlinuz-4.8.0-rc6+
-run-parts: executing /etc/kernel/postinst.d/zz-update-grub 4.8.0-rc6+ /boot/vmlinuz-4.8.0-rc6+
-Generating grub configuration file ...
-Found linux image: /boot/vmlinuz-4.8.0-rc6+
-Found initrd image: /boot/initrd.img-4.8.0-rc6+
-Found linux image: /boot/vmlinuz-4.8.0-rc6+.old
-Found initrd image: /boot/initrd.img-4.8.0-rc6+
-Found linux image: /boot/vmlinuz-4.4.0-38-generic
-Found initrd image: /boot/initrd.img-4.4.0-38-generic
-Found linux image: /boot/vmlinuz-4.4.0-36-generic
-Found initrd image: /boot/initrd.img-4.4.0-36-generic
-Adding boot menu entry for EFI firmware configuration
-done
-
---------------------------------------------------------------------------------
-
-/* Step: Make a driver change
-            Test your changes 
-                dmesg | less */
-
-[ 1875.202235] FAT-fs (sda3): bogus number of reserved sectors
-[ 1875.202240] FAT-fs (sda3): Can't find a valid FAT filesystem
-[ 1875.206091] VFS: Can't find a Minix filesystem V1 | V2 | V3 on device sda3.
-[ 1875.209869] hfsplus: unable to find HFS+ superblock
-[ 1875.211439] qnx4: no qnx4 filesystem (no root dir).
-[ 1875.212781] ufs: You didn't specify the type of your ufs filesystem
-               
-               mount -t ufs -o ufstype=sun|sunx86|44bsd|ufs2|5xbsd|old|hp|nextstep|nextstep-cd|openstep ...
-               
-               >>>WARNING<<< Wrong ufstype may corrupt your filesystem, default is ufstype=old
-[ 1875.212999] ufs: ufs_fill_super(): bad magic number
-[ 1875.215828] hfs: can't find a HFS filesystem on dev sda3
-Pattern not found  (press RETURN)     //Error on typing "/I can modify"
-
-
-------=_Part_739_1460843017.1474730081740
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: 7bit
-
-<div dir="ltr"><pre>/* Step: Make a driver change
-            Modifying a driver under native Linux
-              Modifying a driver under VM */
-
-static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
-{
-        struct net_device *netdev;
-        struct e1000_adapter *adapter;
-        struct e1000_hw *hw;
-        printk(KERN_DEBUG &quot;I can modify the Linux kernel!\n&quot;);
-        static int cards_found = 0;
-        static int global_quad_port_a;
-
---------------------------------------------------------------------------------
-
-
-/* Step: Make a driver change
-           Install your changes 
-              sudo make modules_install install */
-  INSTALL /lib/firmware/yam/9600.bin
-  DEPMOD  4.8.0-rc6+
-sh ./arch/x86/boot/install.sh 4.8.0-rc6+ arch/x86/boot/bzImage \
-	System.map &quot;/boot&quot;
-run-parts: executing /etc/kernel/postinst.d/apt-auto-removal 4.8.0-rc6+ /boot/vmlinuz-4.8.0-rc6+
-run-parts: executing /etc/kernel/postinst.d/initramfs-tools 4.8.0-rc6+ /boot/vmlinuz-4.8.0-rc6+
-update-initramfs: Generating /boot/initrd.img-4.8.0-rc6+
-W: Possible missing firmware /lib/firmware/i915/kbl_dmc_ver1_01.bin for module i915
-W: Possible missing firmware /lib/firmware/i915/kbl_guc_ver9_14.bin for module i915
-W: Possible missing firmware /lib/firmware/i915/bxt_guc_ver8_7.bin for module i915
-W: Possible missing firmware /lib/firmware/i915/skl_guc_ver6_1.bin for module i915
-run-parts: executing /etc/kernel/postinst.d/pm-utils 4.8.0-rc6+ /boot/vmlinuz-4.8.0-rc6+
-run-parts: executing /etc/kernel/postinst.d/unattended-upgrades 4.8.0-rc6+ /boot/vmlinuz-4.8.0-rc6+
-run-parts: executing /etc/kernel/postinst.d/update-notifier 4.8.0-rc6+ /boot/vmlinuz-4.8.0-rc6+
-run-parts: executing /etc/kernel/postinst.d/zz-update-grub 4.8.0-rc6+ /boot/vmlinuz-4.8.0-rc6+
-Generating grub configuration file ...
-Found linux image: /boot/vmlinuz-4.8.0-rc6+
-Found initrd image: /boot/initrd.img-4.8.0-rc6+
-Found linux image: /boot/vmlinuz-4.8.0-rc6+.old
-Found initrd image: /boot/initrd.img-4.8.0-rc6+
-Found linux image: /boot/vmlinuz-4.4.0-38-generic
-Found initrd image: /boot/initrd.img-4.4.0-38-generic
-Found linux image: /boot/vmlinuz-4.4.0-36-generic
-Found initrd image: /boot/initrd.img-4.4.0-36-generic
-Adding boot menu entry for EFI firmware configuration
-done
-
---------------------------------------------------------------------------------
-
-/* Step: Make a driver change
-            Test your changes 
-                dmesg | less */
-
-[ 1875.202235] FAT-fs (sda3): bogus number of reserved sectors
-[ 1875.202240] FAT-fs (sda3): Can&#39;t find a valid FAT filesystem
-[ 1875.206091] VFS: Can&#39;t find a Minix filesystem V1 | V2 | V3 on device sda3.
-[ 1875.209869] hfsplus: unable to find HFS+ superblock
-[ 1875.211439] qnx4: no qnx4 filesystem (no root dir).
-[ 1875.212781] ufs: You didn&#39;t specify the type of your ufs filesystem
-               
-               mount -t ufs -o ufstype=sun|sunx86|44bsd|ufs2|5xbsd|old|hp|nextstep|nextstep-cd|openstep ...
-               
-               &gt;&gt;&gt;WARNING&lt;&lt;&lt; Wrong ufstype may corrupt your filesystem, default is ufstype=old
-[ 1875.212999] ufs: ufs_fill_super(): bad magic number
-[ 1875.215828] hfs: can&#39;t find a HFS filesystem on dev sda3
-Pattern not found  (press RETURN)     //Error on typing &quot;/I can modify&quot;</pre></div>
-------=_Part_739_1460843017.1474730081740--
-
-------=_Part_738_2035858755.1474730081740--
+> The test for NULL of the return variable of functions was changed from
+> (ret == NULL) to !ret to match the standard.
+>
+> Coccinelle was used with semantic patch:
+> @@
+> expression e;
+> identifier id, f;
+> statement S;
+> @@
+>
+> f(...) { <+...
+>
+> id =
+> \(kmalloc\|devm_kzalloc\|kmalloc_array\|devm_ioremap
+> \|usb_alloc_urb\|alloc_netdev\|dev_alloc_skb\) (...)
+>
+> ... when any
+>     when != id = e
+>
+> + if (!id)
+> - if (\(NULL == id\|id == NULL\))
+> S
+>
+> ...+> }
+>
+> Signed-off-by: Elise Lennion <elise.lennion@gmail.com>
+> ---
+>  drivers/staging/rtl8192e/rtl8192e/r8192E_cmdpkt.c | 2 +-
+>  drivers/staging/rtl8192e/rtllib_rx.c              | 4 ++--
+>  2 files changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8192e/rtl8192e/r8192E_cmdpkt.c b/drivers/staging/rtl8192e/rtl8192e/r8192E_cmdpkt.c
+> index f9003a2..757ffd4 100644
+> --- a/drivers/staging/rtl8192e/rtl8192e/r8192E_cmdpkt.c
+> +++ b/drivers/staging/rtl8192e/rtl8192e/r8192E_cmdpkt.c
+> @@ -49,7 +49,7 @@ bool rtl92e_send_cmd_pkt(struct net_device *dev, u32 type, const void *data,
+>  		else
+>  			skb = dev_alloc_skb(frag_length + 4);
+>
+> -		if (skb == NULL) {
+> +		if (!skb) {
+>  			rt_status = false;
+>  			goto Failed;
+>  		}
+> diff --git a/drivers/staging/rtl8192e/rtllib_rx.c b/drivers/staging/rtl8192e/rtllib_rx.c
+> index c743182..93ebc26 100644
+> --- a/drivers/staging/rtl8192e/rtllib_rx.c
+> +++ b/drivers/staging/rtl8192e/rtllib_rx.c
+> @@ -130,7 +130,7 @@ rtllib_frag_cache_get(struct rtllib_device *ieee,
+>  				    ETH_ALEN /* WDS */ +
+>  				    /* QOS Control */
+>  				    (RTLLIB_QOS_HAS_SEQ(fc) ? 2 : 0));
+> -		if (skb == NULL)
+> +		if (!skb)
+>  			return NULL;
+>
+>  		entry = &ieee->frag_cache[tid][ieee->frag_next_idx[tid]];
+> @@ -1430,7 +1430,7 @@ static int rtllib_rx_InfraAdhoc(struct rtllib_device *ieee, struct sk_buff *skb,
+>  	/* skb: hdr + (possible reassembled) full plaintext payload */
+>  	payload = skb->data + hdrlen;
+>  	rxb = kmalloc(sizeof(struct rtllib_rxb), GFP_ATOMIC);
+> -	if (rxb == NULL)
+> +	if (!rxb)
+>  		goto rx_dropped;
+>
+>  	/* to parse amsdu packets */
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20161021013132.GA27656%40lennorien.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
