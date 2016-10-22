@@ -1,230 +1,167 @@
-X-GM-THRID: 6477544069099683840
-X-Received: by 10.99.125.76 with SMTP id m12mr2458809pgn.123.1508170754502;
-        Mon, 16 Oct 2017 09:19:14 -0700 (PDT)
+X-GM-THRID: 6342268830362894336
+X-Received: by 10.28.152.147 with SMTP id a141mr2593316wme.17.1477158317467;
+        Sat, 22 Oct 2016 10:45:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.84.241.72 with SMTP id u8ls3735295plm.6.gmail; Mon, 16 Oct
- 2017 09:19:13 -0700 (PDT)
-X-Received: by 10.98.89.82 with SMTP id n79mr2381288pfb.2.1508170753304;
-        Mon, 16 Oct 2017 09:19:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508170753; cv=none;
-        d=google.com; s=arc-20160816;
-        b=e2gtDlkwoLRmnNPQlRq7bPRDriVv4Tmy8cffh8NOBLIgIxseInKT9YxUdwPzNKcm9l
-         lkfuUId6z8YzHF7cYCAEFudvkHGgDy4IS+cVxSqqBkqtRcUNPAfqJybRTMcBm2tz5X8P
-         jenHDMX4wbNS9ZfyuO7z2li7NpwZvfS7tfveQBTgDg7l6XSudwanBgp3aL1CJmA4+gLT
-         yZHD0dRkZMCwPP3ss3tGMUPcCufvIYFScZJYezHFo+QGV5NQpDyoSpMk9ZfArpGsLpqx
-         5jujxdoj4hEK4VbV5SEwfnmSu+ISBQTxFuaD+MsbA27xvkxvnb/KuhqXK/5ReP1gK8Gb
-         SooA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=A9HzVKj8vwCxQn6RMk3UfXw36zD6OOywZ5zxRFG5nVg=;
-        b=HX7MRP3jRn7CZdAoUcWcteqLt4Mk1aC38cVi2+Kbxp8mQj2l9yPh+gVF1Ck60gtYmm
-         QSLmkeuA3UdJSw8WbPisHsOfoeXlBE0lXFSpPuq87fA/jubmzM4PGGRNWgA67kv3yrpc
-         8Qb5je8tET8UviWgRqV4BqKJw2G8vAV6bfd9dHM9tXldWE3YYJBrblwFO1EOB0AC7D9m
-         sWAEtvTG/nNfAgsX0AAdeYeaQoqODa1p629s93oiXA6YukOLNqYkIWsg8GSEKDcBu/0U
-         YOb+g3tl7TmVpVuQCfb1urQZMVE2yfGDx7EnBqCdeX8LlaJUFwXsXlvHPXoVPaO62+a8
-         1Hlw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=X4TK7vQz;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::22b as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
-Return-Path: <frank@generalsoftwareinc.com>
-Received: from mail-ua0-x22b.google.com (mail-ua0-x22b.google.com. [2607:f8b0:400c:c08::22b])
-        by gmr-mx.google.com with ESMTPS id f20si587253plj.0.2017.10.16.09.19.13
+Received: by 10.28.4.86 with SMTP id 83ls353617wme.27.canary-gmail; Sat, 22
+ Oct 2016 10:45:16 -0700 (PDT)
+X-Received: by 10.28.30.202 with SMTP id e193mr1214016wme.14.1477158316635;
+        Sat, 22 Oct 2016 10:45:16 -0700 (PDT)
+Return-Path: <jic23@kernel.org>
+Received: from saturn.retrosnub.co.uk (saturn.retrosnub.co.uk. [2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466])
+        by gmr-mx.google.com with ESMTPS id f4si263758wmf.1.2016.10.22.10.45.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Oct 2017 09:19:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::22b as permitted sender) client-ip=2607:f8b0:400c:c08::22b;
+        Sat, 22 Oct 2016 10:45:16 -0700 (PDT)
+Received-SPF: neutral (google.com: 2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466 is neither permitted nor denied by best guess record for domain of jic23@kernel.org) client-ip=2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=X4TK7vQz;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::22b as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
-Received: by mail-ua0-x22b.google.com with SMTP id w45so10067018uac.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 16 Oct 2017 09:19:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=generalsoftwareinc-com.20150623.gappssmtp.com; s=20150623;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=A9HzVKj8vwCxQn6RMk3UfXw36zD6OOywZ5zxRFG5nVg=;
-        b=X4TK7vQz6GLjZqPJNjNGRR5oz/pJml8v/NrGl1uG2Kp4auKoEMDcVpvFZQGZx14Lav
-         De1VfjeSl/0aha42xzdEbVP2VviiMzuBLGngxiXkpEgIs0iYFg/r0rGAyUcJADoj19ch
-         X3ITd3WfgBryRb2aHiKCfJCqjPfGANsb8nQkwdiPickgt+36blvi6Y2ldIGoKv4wG2Ie
-         VJNaiI9IHKHkRzBKNulggei33RqRzGxofK325/w+OMduzIxmAFNqZaf30hPpamoHmYE7
-         psLKx95esB+Zuvx/Z7YMKTOIONNxjolTc58QDz1gvqGLwh9ds8Tmh9efRQFHwxRDuYRq
-         8C+w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=A9HzVKj8vwCxQn6RMk3UfXw36zD6OOywZ5zxRFG5nVg=;
-        b=Zzdgi4X2BQFkbR2hv7l88GMbWMK5xXDRkq21T9vqFJHy/w9CThOXMT9fscKkDbqTMy
-         usjUR8/xkfN+roQbcdUO1XhBrPqfHn7VUVYDvxuaP2L2zRfJfUe6DghhZ3lZCb1wsxmN
-         6Rxx4Y5Qdxbw6j/tWx96OMSzxTfEmNnxys3bzBIR20lveNZuuJ191ryJLY8IVcRwPTv3
-         Vnyju7C+05b8bQyomtp0ZUEieZ0XJmEoq5kQF8TJjncYwhgfa7QNQ0eW/q4mecl3j9kZ
-         qA88aW0Pe9iw8kB32/oV3o2Sp+D+v6CmBGADD2RICm7ypgs9jhK82iFzexf+kpMfbHUN
-         IUbA==
-X-Gm-Message-State: AMCzsaXL4MOKF+vVs1zQegQ2zWrhG6X9O+fxWUdG00z7YAL1FWTiHyy2
-	l3eAYBKi4lFNG+pKKGaNdKtJandF
-X-Google-Smtp-Source: AOwi7QD4djUwFGUoQnFZnrw+rHPadZsGpOmBL5YLM2LI6uho74N4rGGu4YYkgUB2Umak0lPKxdkI+g==
-X-Received: by 10.159.54.107 with SMTP id s40mr7879609uad.95.1508170752121;
-        Mon, 16 Oct 2017 09:19:12 -0700 (PDT)
-Return-Path: <frank@generalsoftwareinc.com>
-Received: from ubuntu-server-1604 ([152.207.29.87])
-        by smtp.gmail.com with ESMTPSA id f93sm2541741uaf.40.2017.10.16.09.19.11
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 16 Oct 2017 09:19:11 -0700 (PDT)
-Date: Mon, 16 Oct 2017 12:19:09 -0400
-From: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
-To: pablo@netfilter.org, Julia.Lawall@lip6.fr
-Cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: net: netlogic: Fix alignment issue
-Message-ID: <20171016161909.GA2135@ubuntu-server-1604>
+       spf=neutral (google.com: 2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466 is neither permitted nor denied by best guess record for domain of jic23@kernel.org) smtp.mailfrom=jic23@kernel.org
+Received: from localhost.localdomain (cpc91196-cmbg18-2-0-cust659.5-4.cable.virginm.net [81.96.234.148])
+	by saturn.retrosnub.co.uk (Postfix; Retrosnub mail submission) with ESMTPSA id 9730140605;
+	Sat, 22 Oct 2016 18:45:15 +0100 (BST)
+Subject: Re: [PATCH v2] staging: iio: cdc: ad7746: add additional config
+ defines
+To: Eva Rachel Retuya <eraretuya@gmail.com>, linux-iio@vger.kernel.org,
+ outreachy-kernel@googlegroups.com
+References: <1476886753-9739-1-git-send-email-eraretuya@gmail.com>
+Cc: lars@metafoo.de, Michael.Hennerich@analog.com, knaack.h@gmx.de,
+ pmeerw@pmeerw.net, gregkh@linuxfoundation.org
+From: Jonathan Cameron <jic23@kernel.org>
+Message-ID: <d20a6894-2a56-d8ac-dcdb-f662ea2c5879@kernel.org>
+Date: Sat, 22 Oct 2016 18:45:15 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+ Thunderbird/45.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <1476886753-9739-1-git-send-email-eraretuya@gmail.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 
-checkpatch message: 'CHECK: Alignment should match open parenthesis'
+On 19/10/16 15:19, Eva Rachel Retuya wrote:
+> Introduce defines for shifting and mask under the config register for
+> better readability.
+> 
+> Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
+Worth sanity checking the resulting values when using macros (and reading
+the docs closely!)
+> ---
+> Changes in v2:
+> * Use GENMASK to generate both VTFS and CAPFS masks including offset,
+>   respectively.
+> * Introduce helper variables for index calculation.
+> 
+>  drivers/staging/iio/cdc/ad7746.c | 36 ++++++++++++++++++++++--------------
+>  1 file changed, 22 insertions(+), 14 deletions(-)
+> 
+> diff --git a/drivers/staging/iio/cdc/ad7746.c b/drivers/staging/iio/cdc/ad7746.c
+> index f41251c..5e9ceeb 100644
+> --- a/drivers/staging/iio/cdc/ad7746.c
+> +++ b/drivers/staging/iio/cdc/ad7746.c
+> @@ -70,8 +70,12 @@
+>  #define AD7746_EXCSETUP_EXCLVL(x)	(((x) & 0x3) << 0)
+>  
+>  /* Config Register Bit Designations (AD7746_REG_CFG) */
+> -#define AD7746_CONF_VTFS(x)		((x) << 6)
+> -#define AD7746_CONF_CAPFS(x)		((x) << 3)
+> +#define AD7746_CONF_VTFS_SHIFT		6
+> +#define AD7746_CONF_CAPFS_SHIFT		3
+> +#define AD7746_CONF_VTFS_MASK(x)	GENMASK(1, x)
+> +#define AD7746_CONF_CAPFS_MASK(x)	GENMASK(2, x)
+These are only safe if x <= 1, 2
 
-Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
----
-RFC:
-	* I'm leaving without a fix the following checkpatch issue: 'CHECK: Alignment should match open parenthesis' '#395: FILE: drivers/staging/netlogic/xlr_net.c:395:'. The reason is that to get fixed the line would have to reach the 89 characters long. Is OK to leave it like that to avoid a long line?
 
-	* I see parameters like 'MAX_FRIN_SPILL * sizeof(u64)' split into two lines, putting a newline character after the '*', e.g. lines #454 and #455 of file 'drivers/staging/netlogic/xlr_net.c'. I think that is more clear to write that kind of parameters in one line instead of two. Is OK if I create another patch to fix cases like this in that file?
+> +#define AD7746_CONF_VTFS(x)		((x) << AD7746_CONF_VTFS_SHIFT)
+> +#define AD7746_CONF_CAPFS(x)		((x) << AD7746_CONF_CAPFS_SHIFT)
+>  #define AD7746_CONF_MODE_IDLE		(0 << 0)
+>  #define AD7746_CONF_MODE_CONT_CONV	(1 << 0)
+>  #define AD7746_CONF_MODE_SINGLE_CONV	(2 << 0)
+> @@ -217,15 +221,16 @@ static int ad7746_select_channel(struct iio_dev *indio_dev,
+>  			    struct iio_chan_spec const *chan)
+>  {
+>  	struct ad7746_chip_info *chip = iio_priv(indio_dev);
+> -	int ret, delay;
+> +	int ret, delay, idx;
+>  	u8 vt_setup, cap_setup;
+>  
+>  	switch (chan->type) {
+>  	case IIO_CAPACITANCE:
+>  		cap_setup = (chan->address & 0xFF) | AD7746_CAPSETUP_CAPEN;
+>  		vt_setup = chip->vt_setup & ~AD7746_VTSETUP_VTEN;
+> -		delay = ad7746_cap_filter_rate_table[(chip->config >> 3) &
+> -			0x7][1];
+> +		idx = (chip->config >> AD7746_CONF_CAPFS_SHIFT) &
+> +			AD7746_CONF_CAPFS_MASK(0);
+> +		delay = ad7746_cap_filter_rate_table[idx][1];
+>  
+>  		if (chip->capdac_set != chan->channel) {
+>  			ret = i2c_smbus_write_byte_data(chip->client,
+> @@ -246,8 +251,9 @@ static int ad7746_select_channel(struct iio_dev *indio_dev,
+>  	case IIO_TEMP:
+>  		vt_setup = (chan->address & 0xFF) | AD7746_VTSETUP_VTEN;
+>  		cap_setup = chip->cap_setup & ~AD7746_CAPSETUP_CAPEN;
+> -		delay = ad7746_cap_filter_rate_table[(chip->config >> 6) &
+> -			0x3][1];
+> +		idx = (chip->config >> AD7746_CONF_VTFS_SHIFT) &
+> +			AD7746_CONF_VTFS_MASK(0);
+> +		delay = ad7746_cap_filter_rate_table[idx][1];
+>  		break;
+>  	default:
+>  		return -EINVAL;
+> @@ -369,7 +375,7 @@ static int ad7746_store_cap_filter_rate_setup(struct ad7746_chip_info *chip,
+>  	if (i >= ARRAY_SIZE(ad7746_cap_filter_rate_table))
+>  		i = ARRAY_SIZE(ad7746_cap_filter_rate_table) - 1;
+>  
+> -	chip->config &= ~AD7746_CONF_CAPFS(0x7);
+> +	chip->config &= ~AD7746_CONF_CAPFS_MASK(AD7746_CONF_CAPFS_SHIFT);
+>  	chip->config |= AD7746_CONF_CAPFS(i);
+>  
+>  	return 0;
+> @@ -387,7 +393,7 @@ static int ad7746_store_vt_filter_rate_setup(struct ad7746_chip_info *chip,
+>  	if (i >= ARRAY_SIZE(ad7746_vt_filter_rate_table))
+>  		i = ARRAY_SIZE(ad7746_vt_filter_rate_table) - 1;
+>  
+> -	chip->config &= ~AD7746_CONF_VTFS(0x3);
+> +	chip->config &= ~AD7746_CONF_VTFS_MASK(AD7746_CONF_VTFS_SHIFT);
+This evaulates (I think) to GENMASK(1, 6);
+Now this is gibberish (mask from bit 1 downto 6...)
+To satisfy curiousity the implementation is:
+GENMASK(h, l)
+(((~0UL) << (l)) & (~0UL >> (BITS_PER_LONG - 1 - (h))))
 
- drivers/staging/netlogic/xlr_net.c | 88 +++++++++++++++++++-------------------
- 1 file changed, 44 insertions(+), 44 deletions(-)
+so we have something like (0xFFFFFFFF << 6) & (0xFFFFFFFF >> (32 - 1 - 1))
+0xFFFFFFC0 & ( 0x00000003) = 0.  Not good.
 
-diff --git a/drivers/staging/netlogic/xlr_net.c b/drivers/staging/netlogic/xlr_net.c
-index e05ae46..58513e8 100644
---- a/drivers/staging/netlogic/xlr_net.c
-+++ b/drivers/staging/netlogic/xlr_net.c
-@@ -364,39 +364,39 @@ static void xlr_stats(struct net_device *ndev, struct rtnl_link_stats64 *stats)
- 	stats->tx_bytes = xlr_nae_rdreg(priv->base_addr, TX_BYTE_COUNTER);
- 	stats->tx_errors = xlr_nae_rdreg(priv->base_addr, TX_FCS_ERROR_COUNTER);
- 	stats->rx_dropped = xlr_nae_rdreg(priv->base_addr,
--			RX_DROP_PACKET_COUNTER);
-+					  RX_DROP_PACKET_COUNTER);
- 	stats->tx_dropped = xlr_nae_rdreg(priv->base_addr,
--			TX_DROP_FRAME_COUNTER);
-+					  TX_DROP_FRAME_COUNTER);
- 
- 	stats->multicast = xlr_nae_rdreg(priv->base_addr,
--			RX_MULTICAST_PACKET_COUNTER);
-+					 RX_MULTICAST_PACKET_COUNTER);
- 	stats->collisions = xlr_nae_rdreg(priv->base_addr,
--			TX_TOTAL_COLLISION_COUNTER);
-+					  TX_TOTAL_COLLISION_COUNTER);
- 
- 	stats->rx_length_errors = xlr_nae_rdreg(priv->base_addr,
--			RX_FRAME_LENGTH_ERROR_COUNTER);
-+						RX_FRAME_LENGTH_ERROR_COUNTER);
- 	stats->rx_over_errors = xlr_nae_rdreg(priv->base_addr,
--			RX_DROP_PACKET_COUNTER);
-+					      RX_DROP_PACKET_COUNTER);
- 	stats->rx_crc_errors = xlr_nae_rdreg(priv->base_addr,
--			RX_FCS_ERROR_COUNTER);
-+					     RX_FCS_ERROR_COUNTER);
- 	stats->rx_frame_errors = xlr_nae_rdreg(priv->base_addr,
--			RX_ALIGNMENT_ERROR_COUNTER);
-+					       RX_ALIGNMENT_ERROR_COUNTER);
- 
- 	stats->rx_fifo_errors = xlr_nae_rdreg(priv->base_addr,
--			RX_DROP_PACKET_COUNTER);
-+					      RX_DROP_PACKET_COUNTER);
- 	stats->rx_missed_errors = xlr_nae_rdreg(priv->base_addr,
--			RX_CARRIER_SENSE_ERROR_COUNTER);
-+						RX_CARRIER_SENSE_ERROR_COUNTER);
- 
- 	stats->rx_errors = (stats->rx_over_errors + stats->rx_crc_errors +
--			stats->rx_frame_errors + stats->rx_fifo_errors +
--			stats->rx_missed_errors);
-+			    stats->rx_frame_errors + stats->rx_fifo_errors +
-+			    stats->rx_missed_errors);
- 
- 	stats->tx_aborted_errors = xlr_nae_rdreg(priv->base_addr,
- 			TX_EXCESSIVE_COLLISION_PACKET_COUNTER);
- 	stats->tx_carrier_errors = xlr_nae_rdreg(priv->base_addr,
--			TX_DROP_FRAME_COUNTER);
-+						 TX_DROP_FRAME_COUNTER);
- 	stats->tx_fifo_errors = xlr_nae_rdreg(priv->base_addr,
--			TX_DROP_FRAME_COUNTER);
-+					      TX_DROP_FRAME_COUNTER);
- }
- 
- static const struct net_device_ops xlr_netdev_ops = {
-@@ -448,41 +448,41 @@ static void *xlr_config_spill(struct xlr_net_priv *priv, int reg_start_0,
- static void xlr_config_fifo_spill_area(struct xlr_net_priv *priv)
- {
- 	priv->frin_spill = xlr_config_spill(priv,
--			R_REG_FRIN_SPILL_MEM_START_0,
--			R_REG_FRIN_SPILL_MEM_START_1,
--			R_REG_FRIN_SPILL_MEM_SIZE,
--			MAX_FRIN_SPILL *
--			sizeof(u64));
-+					    R_REG_FRIN_SPILL_MEM_START_0,
-+					    R_REG_FRIN_SPILL_MEM_START_1,
-+					    R_REG_FRIN_SPILL_MEM_SIZE,
-+					    MAX_FRIN_SPILL *
-+					    sizeof(u64));
- 	priv->frout_spill = xlr_config_spill(priv,
--			R_FROUT_SPILL_MEM_START_0,
--			R_FROUT_SPILL_MEM_START_1,
--			R_FROUT_SPILL_MEM_SIZE,
--			MAX_FROUT_SPILL *
--			sizeof(u64));
-+					     R_FROUT_SPILL_MEM_START_0,
-+					     R_FROUT_SPILL_MEM_START_1,
-+					     R_FROUT_SPILL_MEM_SIZE,
-+					     MAX_FROUT_SPILL *
-+					     sizeof(u64));
- 	priv->class_0_spill = xlr_config_spill(priv,
--			R_CLASS0_SPILL_MEM_START_0,
--			R_CLASS0_SPILL_MEM_START_1,
--			R_CLASS0_SPILL_MEM_SIZE,
--			MAX_CLASS_0_SPILL *
--			sizeof(u64));
-+					       R_CLASS0_SPILL_MEM_START_0,
-+					       R_CLASS0_SPILL_MEM_START_1,
-+					       R_CLASS0_SPILL_MEM_SIZE,
-+					       MAX_CLASS_0_SPILL *
-+					       sizeof(u64));
- 	priv->class_1_spill = xlr_config_spill(priv,
--			R_CLASS1_SPILL_MEM_START_0,
--			R_CLASS1_SPILL_MEM_START_1,
--			R_CLASS1_SPILL_MEM_SIZE,
--			MAX_CLASS_1_SPILL *
--			sizeof(u64));
-+					       R_CLASS1_SPILL_MEM_START_0,
-+					       R_CLASS1_SPILL_MEM_START_1,
-+					       R_CLASS1_SPILL_MEM_SIZE,
-+					       MAX_CLASS_1_SPILL *
-+					       sizeof(u64));
- 	priv->class_2_spill = xlr_config_spill(priv,
--			R_CLASS2_SPILL_MEM_START_0,
--			R_CLASS2_SPILL_MEM_START_1,
--			R_CLASS2_SPILL_MEM_SIZE,
--			MAX_CLASS_2_SPILL *
--			sizeof(u64));
-+					       R_CLASS2_SPILL_MEM_START_0,
-+					       R_CLASS2_SPILL_MEM_START_1,
-+					       R_CLASS2_SPILL_MEM_SIZE,
-+					       MAX_CLASS_2_SPILL *
-+					       sizeof(u64));
- 	priv->class_3_spill = xlr_config_spill(priv,
--			R_CLASS3_SPILL_MEM_START_0,
--			R_CLASS3_SPILL_MEM_START_1,
--			R_CLASS3_SPILL_MEM_SIZE,
--			MAX_CLASS_3_SPILL *
--			sizeof(u64));
-+					       R_CLASS3_SPILL_MEM_START_0,
-+					       R_CLASS3_SPILL_MEM_START_1,
-+					       R_CLASS3_SPILL_MEM_SIZE,
-+					       MAX_CLASS_3_SPILL *
-+					       sizeof(u64));
- }
- 
- /*
--- 
-2.7.4
+
+>  	chip->config |= AD7746_CONF_VTFS(i);
+>  
+>  	return 0;
+> @@ -527,7 +533,7 @@ static int ad7746_read_raw(struct iio_dev *indio_dev,
+>  			   long mask)
+>  {
+>  	struct ad7746_chip_info *chip = iio_priv(indio_dev);
+> -	int ret, delay;
+> +	int ret, delay, idx;
+>  	u8 regval, reg;
+>  
+>  	mutex_lock(&indio_dev->mlock);
+> @@ -635,13 +641,15 @@ static int ad7746_read_raw(struct iio_dev *indio_dev,
+>  	case IIO_CHAN_INFO_SAMP_FREQ:
+>  		switch (chan->type) {
+>  		case IIO_CAPACITANCE:
+> -			*val = ad7746_cap_filter_rate_table[
+> -					(chip->config >> 3) & 0x7][0];
+> +			idx = (chip->config >> AD7746_CONF_CAPFS_SHIFT) &
+> +				AD7746_CONF_CAPFS_MASK(0);
+> +			*val = ad7746_cap_filter_rate_table[idx][0];
+>  			ret = IIO_VAL_INT;
+>  			break;
+>  		case IIO_VOLTAGE:
+> -			*val = ad7746_vt_filter_rate_table[
+> -					(chip->config >> 6) & 0x3][0];
+> +			idx = (chip->config >> AD7746_CONF_VTFS_SHIFT) &
+> +				AD7746_CONF_VTFS_MASK(0);
+> +			*val = ad7746_vt_filter_rate_table[idx][0];
+>  			break;
+>  		default:
+>  			ret = -EINVAL;
+> 
 
 
