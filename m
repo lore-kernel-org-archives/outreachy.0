@@ -1,88 +1,86 @@
 X-GM-THRID: 6374319834458488832
-X-Gmail-Labels: Topic type: DISCUSSION
-Date: Sun, 15 Jan 2017 11:15:00 -0800 (PST)
-From: SIMRAN SINGHAL <singhalsimran0@gmail.com>
+Date: Thu, 12 Jan 2017 05:10:02 -0800 (PST)
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
 To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <11f9892a-2437-4c98-ba12-72a155cdb20e@googlegroups.com>
-In-Reply-To: <c81ecc02-03b8-4a0a-ad9b-6de06226e5de@googlegroups.com>
+Message-Id: <140e33b6-ad81-40a2-ac64-606a75e5acd1@googlegroups.com>
+In-Reply-To: <306428e8-1204-4b38-804a-e54ce0db03c8@googlegroups.com>
 References: <c81ecc02-03b8-4a0a-ad9b-6de06226e5de@googlegroups.com>
+ <306428e8-1204-4b38-804a-e54ce0db03c8@googlegroups.com>
 Subject: Re: COMMAND NOT WORKING
 MIME-Version: 1.0
 Content-Type: multipart/mixed; 
-	boundary="----=_Part_4131_2121742150.1484507700469"
-X-Google-Token: ELSU78MFv7KGIP67RO00
+	boundary="----=_Part_526_1298391117.1484226602766"
+X-Google-Token: EKqA3sMF75KNFGOqx-I0
 X-Google-IP: 14.139.82.6
 
-------=_Part_4131_2121742150.1484507700469
+------=_Part_526_1298391117.1484226602766
 Content-Type: multipart/alternative; 
-	boundary="----=_Part_4132_254608230.1484507700469"
+	boundary="----=_Part_527_6795224.1484226602767"
 
-------=_Part_4132_254608230.1484507700469
+------=_Part_527_6795224.1484226602767
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 
-In my previous reply, there is some typing mistake in the command for 
-configuring proxy so the correct command is 
 
-git config --global http.proxy http://user:passwd@proxy.example.com:8080 <http://user:passwd@proxy.example.com:3128>
+Hi Simran you are right there that first I have to config the proxy and 
+then proceed further and thank-you for the reply and solution.
+Thanks
+Arushi  
 
 
-there is no '=' after http.proxy
-
-On Wednesday, January 11, 2017 at 5:46:29 PM UTC+5:30, Arushi Singhal wrote:
+On Thursday, January 12, 2017 at 6:07:07 PM UTC+5:30, SIMRAN SINGHAL wrote:
 >
-> *I have tried the command :*
-> git clone -b staging-testing git://
+> Hello Arushi,
+>
+> I have recently faced the same problem and the solution which works for me 
+> is:-
+> if you are working under proxy first configure proxy which looks like:
+>
+> git config --global http.proxy=http://user:passwd@proxy.example.com:8080 <http://user:passwd@proxy.example.com:3128>
+>
+>
+> and then try this command
+>
+> git clone -b staging-testing http://
 > git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
-> *But this is showing the output:*
-> Cloning into 'staging'...
-> fatal: unable to connect to git.kernel.org:
-> git.kernel.org[0: 198.145.20.140]: errno=Connection refused
-> git.kernel.org[1: 199.204.44.194]: errno=Connection refused
-> git.kernel.org[2: 149.20.4.72]: errno=Connection refused
-> git.kernel.org[3: 2001:4f8:1:10:0:1991:8:25]: errno=Network is unreachable
-> git.kernel.org[4: 2620:3:c000:a:0:1991:8:25]: errno=Network is unreachable
 >
 >
 >
->
->
-> *Can anyone help me out?Thanks and RegardsArushi Singhal*
->
-
-------=_Part_4132_254608230.1484507700469
+------=_Part_527_6795224.1484226602767
 Content-Type: text/html; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr">In my previous reply, there is some typing mistake in the =
-command for configuring proxy so the correct command is <br><pre dir=3D"ltr=
-" style=3D"margin:0px;padding:3px;border:1px inset;width:98%;min-height:34p=
-x;text-align:left;overflow:auto">git config --global http.proxy <a href=3D"=
-http://user:passwd@proxy.example.com:3128" rel=3D"nofollow" target=3D"_blan=
-k"><span>http</span><span>://</span><span>user</span><span>:</span><span>pa=
-sswd</span><span>@</span><span><wbr>proxy</span><span>.</span><span>example=
-</span><span>.</span><span>com</span><span>:</span><span>8080</span></a></p=
-re><br>there is no &#39;=3D&#39; after http.proxy<br><br>On Wednesday, Janu=
-ary 11, 2017 at 5:46:29 PM UTC+5:30, Arushi Singhal wrote:<blockquote class=
-=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #cc=
-c solid;padding-left: 1ex;"><div dir=3D"ltr"><b>I have tried the command :<=
-/b><br>git clone -b staging-testing git://<a href=3D"http://git.kernel.org/=
-pub/scm/linux/kernel/git/gregkh/staging.git" rel=3D"nofollow">git.kernel.or=
-g/pub/scm/<wbr>linux/kernel/git/gregkh/<wbr>staging.git</a><br><b>But this =
-is showing the output:</b><br>Cloning into &#39;staging&#39;...<br>fatal: u=
-nable to connect to <a href=3D"http://git.kernel.org" rel=3D"nofollow">git.=
-kernel.org</a>:<br><a href=3D"http://git.kernel.org" rel=3D"nofollow">git.k=
-ernel.org</a>[0: 198.145.20.140]: errno=3DConnection refused<br><a href=3D"=
-http://git.kernel.org" rel=3D"nofollow">git.kernel.org</a>[1: 199.204.44.19=
-4]: errno=3DConnection refused<br><a href=3D"http://git.kernel.org" rel=3D"=
-nofollow">git.kernel.org</a>[2: 149.20.4.72]: errno=3DConnection refused<br=
-><a href=3D"http://git.kernel.org" rel=3D"nofollow">git.kernel.org</a>[3: 2=
-001:4f8:1:10:0:1991:8:25]: errno=3DNetwork is unreachable<br><a href=3D"htt=
-p://git.kernel.org" rel=3D"nofollow">git.kernel.org</a>[4: 2620:3:c000:a:0:=
-1991:8:25]: errno=3DNetwork is unreachable<br><br><b>Can anyone help me out=
-?<br><br>Thanks and Regards<br>Arushi Singhal<br></b><br></div></blockquote=
-></div>
-------=_Part_4132_254608230.1484507700469--
+<div dir=3D"ltr"><br>Hi Simran you are right there that first I have to con=
+fig the proxy and then proceed further and thank-you for the reply and solu=
+tion.<br>Thanks<br>Arushi=C2=A0 <br><br><br>On Thursday, January 12, 2017 a=
+t 6:07:07 PM UTC+5:30, SIMRAN SINGHAL wrote:<blockquote class=3D"gmail_quot=
+e" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;paddin=
+g-left: 1ex;"><div dir=3D"ltr">Hello Arushi,<br><br>I have recently faced t=
+he same problem and the solution which works for me is:-<br>if you are work=
+ing under proxy first configure proxy which looks like:<br><br><pre dir=3D"=
+ltr" style=3D"margin:0px;padding:3px;border:1px inset;width:98%;min-height:=
+34px;text-align:left;overflow:auto">git config --global http.proxy=3D<a hre=
+f=3D"http://user:passwd@proxy.example.com:3128" rel=3D"nofollow" target=3D"=
+_blank" onmousedown=3D"this.href=3D&#39;http://www.google.com/url?q\x3dhttp=
+%3A%2F%2Fuser%3Apasswd%40proxy.example.com%3A3128\x26sa\x3dD\x26sntz\x3d1\x=
+26usg\x3dAFQjCNHXXEu7SNJqoP_FTMjc7be-ei2r9g&#39;;return true;" onclick=3D"t=
+his.href=3D&#39;http://www.google.com/url?q\x3dhttp%3A%2F%2Fuser%3Apasswd%4=
+0proxy.example.com%3A3128\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNHXXEu7SNJ=
+qoP_FTMjc7be-ei2r9g&#39;;return true;"><span>http</span><span>://</span><sp=
+an>user</span><span>:</span><span>passwd</span><span>@</span><span><wbr>pro=
+xy</span><span>.</span><span>example</span><span>.</span><span>com</span><s=
+pan>:</span><span>8080</span></a></pre><br>and then try this command<br><br=
+>git clone -b staging-testing http://<a href=3D"http://git.kernel.org/pub/s=
+cm/linux/kernel/git/gregkh/staging.git" rel=3D"nofollow" target=3D"_blank" =
+onmousedown=3D"this.href=3D&#39;http://www.google.com/url?q\x3dhttp%3A%2F%2=
+Fgit.kernel.org%2Fpub%2Fscm%2Flinux%2Fkernel%2Fgit%2Fgregkh%2Fstaging.git\x=
+26sa\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNEwAL1027OsEIqhiuqonOyjQBBG1g&#39;;re=
+turn true;" onclick=3D"this.href=3D&#39;http://www.google.com/url?q\x3dhttp=
+%3A%2F%2Fgit.kernel.org%2Fpub%2Fscm%2Flinux%2Fkernel%2Fgit%2Fgregkh%2Fstagi=
+ng.git\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNEwAL1027OsEIqhiuqonOyjQBBG1g=
+&#39;;return true;">git.kernel.org/pub/scm/<wbr>linux/kernel/git/gregkh/<wb=
+r>staging.git</a><br><br><br></div></blockquote></div>
+------=_Part_527_6795224.1484226602767--
 
-------=_Part_4131_2121742150.1484507700469--
+------=_Part_526_1298391117.1484226602766--
 
