@@ -1,99 +1,94 @@
-X-GM-THRID: 6394877671484948480
-X-Received: by 10.46.82.157 with SMTP id n29mr563340lje.29.1488923484517;
-        Tue, 07 Mar 2017 13:51:24 -0800 (PST)
+X-GM-THRID: 6376626533381963776
+X-Received: by 10.157.24.60 with SMTP id b57mr458050ote.65.1484723336701;
+        Tue, 17 Jan 2017 23:08:56 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.15.1 with SMTP id 1ls184819ljp.36.gmail; Tue, 07 Mar 2017
- 13:51:23 -0800 (PST)
-X-Received: by 10.46.7.10 with SMTP id 10mr513655ljh.1.1488923483974;
-        Tue, 07 Mar 2017 13:51:23 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wr0-x243.google.com (mail-wr0-x243.google.com. [2a00:1450:400c:c0c::243])
-        by gmr-mx.google.com with ESMTPS id n128si481257wmf.2.2017.03.07.13.51.23
+Received: by 10.157.40.214 with SMTP id s80ls736288ota.11.gmail; Tue, 17 Jan
+ 2017 23:08:56 -0800 (PST)
+X-Received: by 10.31.202.68 with SMTP id a65mr347773vkg.25.1484723336260;
+        Tue, 17 Jan 2017 23:08:56 -0800 (PST)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from mail-qk0-x243.google.com (mail-qk0-x243.google.com. [2607:f8b0:400d:c09::243])
+        by gmr-mx.google.com with ESMTPS id m71si1020913ywd.1.2017.01.17.23.08.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 07 Mar 2017 13:51:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) client-ip=2a00:1450:400c:c0c::243;
+        Tue, 17 Jan 2017 23:08:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400d:c09::243 as permitted sender) client-ip=2607:f8b0:400d:c09::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400d:c09::243 as permitted sender) smtp.mailfrom=vthakkar1994@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x243.google.com with SMTP id l37so1881298wrc.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 07 Mar 2017 13:51:23 -0800 (PST)
+Received: by mail-qk0-x243.google.com with SMTP id a20so605268qkc.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 17 Jan 2017 23:08:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=nkTDD5Xc0YrFJ4xCeL9DMfNJFH88Eh3H5v2Sdu7ISKQ=;
-        b=ncT+/9ytBlzqAOD5aeFNrP62UzNamrsCE9ZVwsU6lpEvsC2r4TYb0NuvlID0OKW8tx
-         DTU3eIoRE8USiE4zffK1gK8k184Q406Q568NrKctaq8ONXH2jN5ExGeCas0EvtjaCUWy
-         zRECXPWOrrPjLLwfSGojviLCda4D8KM6znw3uKeJvDNKtdiTv6Vi9xuNLkJTwN6EC7x4
-         id2TRNfChEQmlIyey/Vo0/QFNwJj8a/6eiy2PCIFmB4rkqfZ3GSkhbpXdUbdNGPNdqdL
-         TTLNuPa2lOu8HQdlyA5x7+nsG19qQ0R6WPHPlgFxrqvUyaPhUVTRL4bkVJCKxehFyGVb
-         s+5w==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=QoBtkprLz3tNetLdS7zTX9deYkNHgam57vH9V2cnnnU=;
+        b=cwp6XxjD8GfocgZWPCS6pQkGUohiBKPFtOtLq6emd0OQwCt+3JnkPY0Gk/2ZUsfKp0
+         CrdPPV+N7qSJ1B5UqrtA3LJsVCKygLJNxHOPqT78HsQoQnX8fTtlkM9Jeb1INbVlJ/i0
+         A136hwv2qMNGuiy+73Ini3JSQA6X/gzcPIXKUDEQBavh7RHzXDU7PKnTZfQcxhDZ8BSL
+         fL/QaWkyFBjPHczaF0SGf/clcfElxSxCz0XeDhPRSfxrm4UVkpxQDTMbp+qG20OlcCjB
+         s52XrROIpLZ5NSXV46AKn9TAbC6ST0x/JQyL7IFJrVwGNkfysst1dKCbEZlOhvXK0b1H
+         hd+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=nkTDD5Xc0YrFJ4xCeL9DMfNJFH88Eh3H5v2Sdu7ISKQ=;
-        b=aN+eHV5MGG8WR2FHcPRAI8ujV1wBRi7Qf+Xx3C+g5qzQ/LFSKtIbqxY7ZMbno5vRUf
-         TbMNJ7XOiY3nX4pVPzobjYw0uZ+/D1gmrNhcfh1oGoMn93cdiTt3eiHfkso8yD0z4kbz
-         N4hvBIwK8Mq7KvY84UuaFEXMwbE3PbdfmE8nP2LwIO+VLyjjMzd7fVgk/6m9Zo/z9Y0E
-         J3aLjgQz9SVvCLE5fQZnja3WTqJqIM3rbYn9TkHZrGbC+ihlyr4r8jCNfMiecuFLbmsh
-         zLSvxy1fuCkLX0sJ1SkhXvagjGzMhLb6MYsL/1qzEtiQSLEtQ16Mk5kuJ+e9PQSsnTpo
-         VpBg==
-X-Gm-Message-State: AMke39lM1JX2uy999ah8ildp1oUvmXceQQ63KqcY7s1CTrbE6M4+j/RK1ONXwz5taIaigg==
-X-Received: by 10.223.148.35 with SMTP id 32mr2204977wrq.82.1488923483805;
-        Tue, 07 Mar 2017 13:51:23 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([2a02:2f0b:8130:11ea:8168:a9b6:7cd0:c4cf])
-        by smtp.gmail.com with ESMTPSA id w207sm20496419wmw.29.2017.03.07.13.51.22
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 07 Mar 2017 13:51:22 -0800 (PST)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: aditya.shankar@microchip.com,
-	ganesh.krishna@microchip.com,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH] staging: wilc1000: wilc_wlan.h Add identifier name
-Date: Tue,  7 Mar 2017 23:51:20 +0200
-Message-Id: <20170307215120.4545-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=QoBtkprLz3tNetLdS7zTX9deYkNHgam57vH9V2cnnnU=;
+        b=GJtkGi47bvyG4hkJ0F1Urz/6vEbd8l9lTz+CxcyMc9b5lnswp6wjHLLokjJ/XvhyBA
+         iOPK9/GavI4r6xQXenzpck+BMfdydiyJ0+UrjzWldBGjGGo0C1H1UMfMhlpglv2DffCY
+         beC3lezvI7+akHHPUUJFMISNrQOe1n5jiOhawcpoAO3Uun+nowKnsvMN5gmzPOH6SfO7
+         JoK6g3OnAjUGLjeklBn6oDI5wOzefVr6bVq7OOtzl/J1e3qH1UOWFi9dcJ0ZhcEr3YVK
+         lFBczYDaqgMxEg9tECnUM9wU02emvJjdHiO+pVTruWYgjTRpLGHtoccbu9pjXMhzeRLu
+         n2Jg==
+X-Gm-Message-State: AIkVDXJ6ACUC+YHUQN+RXFz4yCSQV3ip09td224MKPG8N/SLqD2jWkG88Xiugw9w7LCq9u8x+wjI33DTwhb/yQ==
+X-Received: by 10.55.197.194 with SMTP id k63mr1487929qkl.85.1484723336050;
+ Tue, 17 Jan 2017 23:08:56 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.12.161.37 with HTTP; Tue, 17 Jan 2017 23:08:55 -0800 (PST)
+In-Reply-To: <CALrZqyPW2ou_krA2C=HsqM0bkDEPOk_ENZi_otN+zOMJFnv9Aw@mail.gmail.com>
+References: <20170117163523.GA18643@singhal-Inspiron-5558> <20170117163806.GA9147@kroah.com>
+ <CALrZqyO=O=zu6XRsC=+DaFR4=tCjr2GTjC+ep=0K4A2YEXEFzg@mail.gmail.com> <CALrZqyPW2ou_krA2C=HsqM0bkDEPOk_ENZi_otN+zOMJFnv9Aw@mail.gmail.com>
+From: Vaishali Thakkar <vthakkar1994@gmail.com>
+Date: Wed, 18 Jan 2017 12:38:55 +0530
+Message-ID: <CAK-LDbL9tR6SXHYsz=icnEF0J6N__4BY0FuWJ=x-ARm54DPPww@mail.gmail.com>
+Subject: Re: [PATCH] drivers: staging: Fix "space required after that ','" errors
+To: SIMRAN SINGHAL <singhalsimran0@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, 
+	Christian Gromm <christian.gromm@microchip.com>
+Content-Type: text/plain; charset=UTF-8
 
-Add identifier name for function definition argument.
-Fix the checkpath.pl warning:
-WARNING: function definition argument 'struct wilc *' should also have
-an identifier name.
+On Wed, Jan 18, 2017 at 12:28 AM, SIMRAN SINGHAL
+<singhalsimran0@gmail.com> wrote:
+> Hi,
+>
+>  I am doing what is given on FirstPatchTutorial. I am attaching the
+> screenshot of what I got after running the script.
 
-Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
----
- drivers/staging/wilc1000/wilc_wlan.h | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Please cc outreachy-mailing list for this thread.
 
-diff --git a/drivers/staging/wilc1000/wilc_wlan.h b/drivers/staging/wilc1000/wilc_wlan.h
-index 11365ef..7a5eba9 100644
---- a/drivers/staging/wilc1000/wilc_wlan.h
-+++ b/drivers/staging/wilc1000/wilc_wlan.h
-@@ -274,8 +274,8 @@ struct wilc_vif;
- 
- int wilc_wlan_firmware_download(struct wilc *wilc, const u8 *buffer,
- 				u32 buffer_size);
--int wilc_wlan_start(struct wilc *);
--int wilc_wlan_stop(struct wilc *);
-+int wilc_wlan_start(struct wilc *wilc);
-+int wilc_wlan_stop(struct wilc *wilc);
- int wilc_wlan_txq_add_net_pkt(struct net_device *dev, void *priv, u8 *buffer,
- 			      u32 buffer_size, wilc_tx_complete_func_t func);
- int wilc_wlan_handle_txq(struct net_device *dev, u32 *txq_count);
-@@ -291,7 +291,7 @@ int wilc_wlan_txq_add_mgmt_pkt(struct net_device *dev, void *priv, u8 *buffer,
- void wilc_chip_sleep_manually(struct wilc *wilc);
- 
- void wilc_enable_tcp_ack_filter(bool value);
--int wilc_wlan_get_num_conn_ifcs(struct wilc *);
-+int wilc_wlan_get_num_conn_ifcs(struct wilc *wilc);
- int wilc_mac_xmit(struct sk_buff *skb, struct net_device *dev);
- 
- void WILC_WFI_p2p_rx(struct net_device *dev, u8 *buff, u32 size);
+> I will be thankful if you tell me the mailing lists I have to cc.
+
+Ok. Looking at the Maintainers file, it seems that maintainers entry is not
+yet added for drivers/staging/most driver(s). That's why it shows Greg as
+a result.
+
+I've CC'ed Christian who seems to be the person of contact for these drivers
+[from TODO file].
+
+Christian, can you please send a patch to add a Maintainers entry
+for drivers/staging/most/ ?
+
+Simran, you can may be try sending patches for other files to the mailing list
+and maintainers based on the result of get_maintainer.pl.
+
+> Thanks,
+> Simran Singhal
+>
+
+
+
 -- 
-2.9.3
-
+Vaishali
+http://vaishalithakkar.in/
 
