@@ -1,234 +1,115 @@
-X-GM-THRID: 6476861978347307008
-X-Received: by 10.55.78.70 with SMTP id c67mr4039608qkb.46.1508011943959;
-        Sat, 14 Oct 2017 13:12:23 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.237.50.68 with SMTP id y62ls3049750qtd.5.gmail; Sat, 14 Oct
- 2017 13:12:23 -0700 (PDT)
-X-Received: by 10.200.1.77 with SMTP id f13mr4560045qtg.4.1508011943459;
-        Sat, 14 Oct 2017 13:12:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508011943; cv=none;
-        d=google.com; s=arc-20160816;
-        b=t6RcrgTiEafLYiZYYxGhbA7UJW+T5+S16O6/0SqyEiHZ6yIBCeo+p8T7pndGOmQp++
-         5ifZsqayOEG7ixtJAwESXuEviwTY3qIVT6xnnlCSACJROWAGND0AwqXQIvl/Y6lgrsWi
-         6zvQXz7OTKLYO5FG77LveH2ehljyuJnRV4/kvV5gYJvUYCqu4b8H4PXhMozmmUr4jEhN
-         lwHfyJR1sufflsdkr6o5L3qTcazhBuxy7KGXgKzePCVaTs2VPMq6bQeCyY0pDo6ckr5Z
-         55DxQ/GP1i7P67f6dKEzm51rUnD8e/y9A0Rl0NvFEyXxUhXpncGpMXIXYqrhr21ckZNk
-         lEVw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=Uno1BOV23/nMtZm4n9mCujAfeQFz3uRT7fPyh8vbQuE=;
-        b=wXjo45vYtX+gMcCBi4lZC19Dy+nyLy7HTx+Ovm+VOES/S5D3VuTJfv0YUGdTiH2LZS
-         Uj9xqCZuk1Pd/VjxUd3X405ZIBG9UKgnxHoTa+zdGGj1uBmBCV0/4bOv0ZWBpQCcyvO0
-         U5RJ2pf/R7ZpTjDqZ5Ug67kKk1xE7GX47jNwP+Kt1YdiquE/HbZ14YdmE16dfG8JPzhH
-         n843DblQchO6ep0ic+9Px9iGAfTVs9I4OdZNPDE/3b3m7CQID5OTj27pO4mtUHnI3g+E
-         vH3bTc+FD0z+Hi1fEY55YsMCIxkkn+JiEgYJv6g/XkM91WsW5nurl5TRMX3DDWPeSjUy
-         rMcw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=k6W879Yl;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id v90si178000qte.4.2017.10.14.13.12.23
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 14 Oct 2017 13:12:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=k6W879Yl;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id n89so5259467pfk.11
-        for <outreachy-kernel@googlegroups.com>; Sat, 14 Oct 2017 13:12:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Uno1BOV23/nMtZm4n9mCujAfeQFz3uRT7fPyh8vbQuE=;
-        b=k6W879Yl0mzhlbI/3+sogK/rYNOwqy1wh73w6+3Fi7En544YLrb1YB2v3Ky69s+I9o
-         MzU2dc+98jSYzdSNC4FmaIx0In+wuY/1xSlsQurty3dkJkTvRt64Dtg22pd4d0knC8bh
-         59QyJX9/OCR745GR2ffo9ft1ugOtFghYM8pJfBPq8wu4TPhc1ANh70fVoQ6oWP4k3Vik
-         u1iBR1Px9PGbTLTwFhAKRPYBNvMJQAllCeW7a5h7pue9y5A746n0H5Es24BZolvutO+B
-         lUO+ILMu4YPt4ByjhFuQz6Kso2SYz8RGUoNkN+0B8Ki1/E+5aij/3MizP/gMVAa1MfBE
-         CbMQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Uno1BOV23/nMtZm4n9mCujAfeQFz3uRT7fPyh8vbQuE=;
-        b=XKCa5oW5FEzQXkU1UqdedrAvwvbRhRNmAKFqY0DZWOqyEyd7Mt+2Y8PoekuKkUy1Q0
-         dPKxZlF7lGzRuRJRHHfZv52u4QoulNOUjq1nJUoFhNciiARJUJBmv34KgsDQc2zFN4Fh
-         02oafzTQ8OrzHrbUgDi420gkHSnt+oKcutRFj3u/0LXcEWMhHcOo73KAWWjWKAUkQmli
-         y8F4OCMfShVx4qNqszOo/OYMEUmOFFGWx/BwargiPK3Hg8bloikRHBnq0sUwE4B+JnKl
-         EKKgs8muG2I+w2BjTxZLgS9uSoeVp9XMTVeEFgNaQFt6MYz1oKpIxMHQIRPBMU5HOV81
-         Lltg==
-X-Gm-Message-State: AMCzsaXL3OjMXG2rdWx9qIDnrlmT2r8JaFp5HbiCwCh8j0ufDwni5jT4
-	Ns+0fjXoMHGGz0li3UpUjd8=
-X-Google-Smtp-Source: AOwi7QDahNpieVRWr+lsBB3I2kP9X9/EEKIUpVD7MhirgFXwvDp/nBF9mta5RMC2mwtVmlQ8kLbgLA==
-X-Received: by 10.101.65.197 with SMTP id b5mr4378513pgq.91.1508011942657;
-        Sat, 14 Oct 2017 13:12:22 -0700 (PDT)
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from localhost.localdomain ([103.37.201.27])
-        by smtp.gmail.com with ESMTPSA id i72sm8328838pfi.137.2017.10.14.13.12.14
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 14 Oct 2017 13:12:22 -0700 (PDT)
-From: Harsha Sharma <harshasharmaiitr@gmail.com>
-To: tomi.valkeinen@ti.com,
-	airlied@linux.ie
-Cc: dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Harsha Sharma <harshasharmaiitr@gmail.com>
-Subject: [PATCH] drm/omap: Replace list_for_each with list_for_each_entry
-Date: Sun, 15 Oct 2017 01:39:42 +0530
-Message-Id: <20171014200942.27388-1-harshasharmaiitr@gmail.com>
-X-Mailer: git-send-email 2.11.0
+X-GM-THRID: 6387814559590121472
+Date: Thu, 16 Feb 2017 13:15:13 -0800 (PST)
+From: SIMRAN SINGHAL <singhalsimran0@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org
+Message-Id: <f93df0da-f4a8-47f1-a858-e7256152a633@googlegroups.com>
+In-Reply-To: <20170216210249.GA28497@singhal-Inspiron-5558>
+References: <20170216210249.GA28497@singhal-Inspiron-5558>
+Subject: Re: [PATCH 2/3] staging: rtl8192u: Fixed 'tabstop' coding style
+ warnings
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_12580_2062380589.1487279713591"
+X-Google-Token: EOGsmMUFYfCto5eUUxY0
+X-Google-IP: 14.139.82.6
 
-Replace use of list_for_each with list_for_each_entry to simplify the
-code and remove variables that are used only in list_for_each.
-Done with following coccinelle patch:
+------=_Part_12580_2062380589.1487279713591
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_12581_1779220621.1487279713591"
 
-@r@
-identifier fn,i,f,p;
-expression e;
-iterator name list_for_each, list_for_each_entry;
-type T;
-@@
+------=_Part_12581_1779220621.1487279713591
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-fn(...) {
-++ T *i;
-  <+...
-- list_for_each(p,e)
-+ list_for_each_entry(i,e,f)
-  {
-	      ...
--   T *i = list_entry(p,T,f);
-	          ...
-   }
-   ...+>
-}
 
-@@
-identifier r.fn,r.p;
-@@
 
-fn(...) {
-  ...
-- struct list_head *p;
-  ... when != p
-}
-
-@@
-identifier r.fn,r.i,r.f;
-expression r.e;
-statement S;
-@@
-
-fn(...) {
-  <...
-  list_for_each_entry(i,e,f)
-- {
-  S
-- }
-  ...>
-}
-
-@s@
-identifier i,f,p;
-expression e;
-type T;
-@@
-
-- list_for_each(p,e)
-+ list_for_each_entry(i,e,f)
-  {
-    ... when != T *i;
--   i = list_entry(p,T,f);
-    ...
-  }
-
-@@
-identifier s.p;
-@@
-
-- struct list_head *p;
-  ... when != p
-
-@@
-identifier s.i,s.f;
-expression s.e;
-statement S;
-@@
-
-  list_for_each_entry(i,e,f)
-- {
-  S
-- }
-
-Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
----
- drivers/gpu/drm/omapdrm/dss/display.c | 14 ++++----------
- 1 file changed, 4 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/gpu/drm/omapdrm/dss/display.c b/drivers/gpu/drm/omapdrm/dss/display.c
-index 42279933790e..e6f86026dd93 100644
---- a/drivers/gpu/drm/omapdrm/dss/display.c
-+++ b/drivers/gpu/drm/omapdrm/dss/display.c
-@@ -43,6 +43,7 @@ static int disp_num_counter;
+On Friday, February 17, 2017 at 2:32:55 AM UTC+5:30, SIMRAN SINGHAL wrote:
+>
+> Replace a mix of tabs and spaces indentation by tabs only. 
+>
+> Fixed checkpatch warning "Statements should start on a tabstop" in 
+> rtl8192u module. 
+>
+> Signed-off-by: simran singhal <singhalsimran0@gmail.com> 
+> --- 
+>  drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c | 2 +- 
+>  1 file changed, 1 insertion(+), 1 deletion(-) 
+>
+> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c 
+> b/drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c 
+> index 563d7fe..814ab5a 100644 
+> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c 
+> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c 
+> @@ -666,7 +666,7 @@ int ieee80211_wx_set_encode_ext(struct 
+> ieee80211_device *ieee, 
+>          if (ieee->set_security) 
+>                  ieee->set_security(ieee->dev, &sec); 
+>   
+> -         if (ieee->reset_on_keychange && 
+> +        if (ieee->reset_on_keychange && 
+>              ieee->iw_mode != IW_MODE_INFRA && 
+>              ieee->reset_port && ieee->reset_port(dev)) { 
+>                  IEEE80211_DEBUG_WX("%s: reset_port failed\n", dev->name); 
+> -- 
+> 2.7.4 
+>
+> ok, I will fix it and resend it again. 
  
- int omapdss_register_display(struct omap_dss_device *dssdev)
- {
-+	struct omp_dss_device *ldev;
- 	struct omap_dss_driver *drv = dssdev->driver;
- 	struct list_head *cur;
- 	int id;
-@@ -67,13 +68,9 @@ int omapdss_register_display(struct omap_dss_device *dssdev)
- 		drv->get_timings = omapdss_default_get_timings;
- 
- 	mutex_lock(&panel_list_mutex);
--	list_for_each(cur, &panel_list) {
--		struct omap_dss_device *ldev = list_entry(cur,
--							 struct omap_dss_device,
--							 panel_list);
-+	list_for_each_entry(ldev, &panel_list, panel_list)
- 		if (strcmp(ldev->alias, dssdev->alias) > 0)
- 			break;
--	}
- 	list_add_tail(&dssdev->panel_list, cur);
- 	mutex_unlock(&panel_list_mutex);
- 	return 0;
-@@ -94,12 +91,11 @@ bool omapdss_component_is_display(struct device_node *node)
- 	bool found = false;
- 
- 	mutex_lock(&panel_list_mutex);
--	list_for_each_entry(dssdev, &panel_list, panel_list) {
-+	list_for_each_entry(dssdev, &panel_list, panel_list)
- 		if (dssdev->dev->of_node == node) {
- 			found = true;
- 			goto out;
- 		}
--	}
- out:
- 	mutex_unlock(&panel_list_mutex);
- 	return found;
-@@ -152,8 +148,7 @@ struct omap_dss_device *omap_dss_get_next_device(struct omap_dss_device *from)
- 
- 	omap_dss_put_device(from);
- 
--	list_for_each(l, &panel_list) {
--		dssdev = list_entry(l, struct omap_dss_device, panel_list);
-+	list_for_each_entry(dssdev, &panel_list, panel_list)
- 		if (dssdev == from) {
- 			if (list_is_last(l, &panel_list)) {
- 				dssdev = NULL;
-@@ -165,7 +160,6 @@ struct omap_dss_device *omap_dss_get_next_device(struct omap_dss_device *from)
- 			omap_dss_get_device(dssdev);
- 			goto out;
- 		}
--	}
- 
- 	WARN(1, "'from' dssdev not found\n");
- 
--- 
-2.11.0
 
+------=_Part_12581_1779220621.1487279713591
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Friday, February 17, 2017 at 2:32:55 AM UTC+5:3=
+0, SIMRAN SINGHAL wrote:<blockquote class=3D"gmail_quote" style=3D"margin: =
+0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Replac=
+e a mix of tabs and spaces indentation by tabs only.
+<br>
+<br>Fixed checkpatch warning &quot;Statements should start on a tabstop&quo=
+t; in
+<br>rtl8192u module.
+<br>
+<br>Signed-off-by: simran singhal &lt;<a href=3D"mailto:singhalsimran0@gmai=
+l.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;m=
+ailto:singhalsimran0@gmail.com&#39;;return true;" onclick=3D"this.href=3D&#=
+39;mailto:singhalsimran0@gmail.com&#39;;return true;">singhalsimran0@gmail.=
+com</a>&gt;
+<br>---
+<br>=C2=A0drivers/staging/rtl8192u/<wbr>ieee80211/ieee80211_wx.c | 2 +-
+<br>=C2=A01 file changed, 1 insertion(+), 1 deletion(-)
+<br>
+<br>diff --git a/drivers/staging/rtl8192u/<wbr>ieee80211/ieee80211_wx.c b/d=
+rivers/staging/rtl8192u/<wbr>ieee80211/ieee80211_wx.c
+<br>index 563d7fe..814ab5a 100644
+<br>--- a/drivers/staging/rtl8192u/<wbr>ieee80211/ieee80211_wx.c
+<br>+++ b/drivers/staging/rtl8192u/<wbr>ieee80211/ieee80211_wx.c
+<br>@@ -666,7 +666,7 @@ int ieee80211_wx_set_encode_ext(<wbr>struct ieee802=
+11_device *ieee,
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (ieee-&gt;set_=
+security)
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ieee-&gt;set_<wbr>security(ieee-&gt;dev, &=
+amp;sec);
+<br>=C2=A0
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (ieee-&gt;reset_on=
+_keychange &amp;&amp;
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (ieee-&gt;reset_on_=
+keychange &amp;&amp;
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0iee=
+e-&gt;iw_mode !=3D IW_MODE_INFRA &amp;&amp;
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0iee=
+e-&gt;reset_port &amp;&amp; ieee-&gt;reset_port(dev)) {
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0IEEE80211_<wbr>DEBUG_WX(&quot;%s: reset_po=
+rt failed\n&quot;, dev-&gt;name);
+<br>--=20
+<br>2.7.4
+<br>
+<br></blockquote><div>ok, I will fix it and resend it again. <br>=C2=A0</di=
+v></div>
+------=_Part_12581_1779220621.1487279713591--
+
+------=_Part_12580_2062380589.1487279713591--
 
