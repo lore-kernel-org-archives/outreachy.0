@@ -1,81 +1,76 @@
-X-GM-THRID: 6399599665816272896
-X-Received: by 10.129.158.213 with SMTP id v204mr15684947ywg.70.1490022909078;
-        Mon, 20 Mar 2017 08:15:09 -0700 (PDT)
+X-GM-THRID: 6387802033040130048
+X-Received: by 10.25.213.11 with SMTP id m11mr488898lfg.19.1487277203938;
+        Thu, 16 Feb 2017 12:33:23 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.7.195 with SMTP id 61ls13363544oto.31.gmail; Mon, 20 Mar
- 2017 08:15:08 -0700 (PDT)
-X-Received: by 10.157.6.76 with SMTP id 70mr14117590otn.5.1490022908674;
-        Mon, 20 Mar 2017 08:15:08 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id g82si2728618pfb.5.2017.03.20.08.15.08
+Received: by 10.28.2.130 with SMTP id 124ls2481wmc.24.gmail; Thu, 16 Feb 2017
+ 12:33:23 -0800 (PST)
+X-Received: by 10.28.45.71 with SMTP id t68mr231884wmt.2.1487277203463;
+        Thu, 16 Feb 2017 12:33:23 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id v70si110947wmf.0.2017.02.16.12.33.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 20 Mar 2017 08:15:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Thu, 16 Feb 2017 12:33:23 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id p189so12244599pfp.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 20 Mar 2017 08:15:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=x9qZqAJ2t2qpvhnvYATh/PHZPuvW95lE8Pnk5SH2aaY=;
-        b=WBwfm81kc4Wx4RsfrG4+RH4IMJvdBEgfeNXhMp7RLm91rTPglcEX9Q15u77qrCKSDZ
-         sR9tt2zJoPp1vQvKbh8lNu1YGf5A876MsumlzH/7BfAawgWkMVBacZmV0GL6awWD+0Gk
-         skL14RTQqKl8Qexj6H7sLVwU4dK0vpHAz3KBwZRszMZAlZK4ArkVSsoVZjkADYWteX2Z
-         fmKhHY9tETh48FG+tMMXdGM8MksQRqYPQ5m3cP0CIHlIsEVeA4HFSZM7cvjOLNgAs01B
-         /ML3FSaY/dZOzo1jDsvsFxX3ssKaiGI4K8fS56LKen3uay2LeyWLAGPVM7HOOcqOMbV3
-         8aSg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=x9qZqAJ2t2qpvhnvYATh/PHZPuvW95lE8Pnk5SH2aaY=;
-        b=Hcj1dqu9a4WKEFLX5XqtqkUR1VNz8NkKHmtWwq/6jrNeeq2SW9Nqntsm7XIGwy1oEF
-         YnjBqYIf4x8zylSALC5RHyqjCSRru00ylqcgFBQU1RQhTad4WgJM0XHZtEvs/VWKVzGV
-         CiFboKaQwy/FPwuk7K0jvXh0vB8ve0qFlkbyI9z+Nr4RfLfpYLn6DDHfSFNKFSZMAGg1
-         VpxrQHVz2SRRwvuSimc/REVpR+HHZLYkZAtHfH9Qjx+yaOwpz4KiVzR7068SZRCITQf5
-         9pDNtx2eZofhZDdDUk2RmiG8VB/NNJi/5ITA7nkpIdrXD9zZAm2qf5h8KX1liCTOQ7E0
-         WgKA==
-X-Gm-Message-State: AFeK/H2onWFv3q+gya9mppceoQM+peIwEbmO1d1UywWxk64pgIsNVatuwqT1gUtdmACrZw==
-X-Received: by 10.98.214.4 with SMTP id r4mr32664520pfg.185.1490022908463;
-        Mon, 20 Mar 2017 08:15:08 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id g64sm33988251pfc.57.2017.03.20.08.15.07
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 20 Mar 2017 08:15:07 -0700 (PDT)
-From: simran singhal <singhalsimran0@gmail.com>
-To: lars@metafoo.de
-Cc: Michael.Hennerich@analog.com,
-	jic23@kernel.org,
-	knaack.h@gmx.de,
-	pmeerw@pmeerw.net,
-	gregkh@linuxfoundation.org,
-	linux-iio@vger.kernel.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] staging: iio: ade7754: Header file maintenance
-Date: Mon, 20 Mar 2017 20:45:03 +0530
-Message-Id: <1490022905-18422-1-git-send-email-singhalsimran0@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,169,1484002800"; 
+   d="scan'208";a="213499018"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 16 Feb 2017 21:33:22 +0100
+Date: Thu, 16 Feb 2017 21:33:21 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Gargi Sharma <gs051095@gmail.com>
+cc: outreachy-kernel@googlegroups.com, thomas.petazzoni@free-electrons.com, 
+    noralf@tronnes.org, gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH 2/2] staging: fbtft: Remove blank
+ line
+In-Reply-To: <900fa97ebe415c28a0980b7b21c92a4f961fc6ce.1487275508.git.gs051095@gmail.com>
+Message-ID: <alpine.DEB.2.20.1702162133100.2121@hadrien>
+References: <cover.1487275508.git.gs051095@gmail.com> <900fa97ebe415c28a0980b7b21c92a4f961fc6ce.1487275508.git.gs051095@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Collapse header file into source, and clean up includes in 
-implementation.
 
-simran singhal (2):
-  staging: ade7754: Move header content to implementation file
-  staging: ade7754: Clean up #includes
 
- drivers/staging/iio/meter/ade7754.c | 98 ++++++++++++++++++++++++++++++++++---
- drivers/staging/iio/meter/ade7754.h | 90 ----------------------------------
- 2 files changed, 91 insertions(+), 97 deletions(-)
- delete mode 100644 drivers/staging/iio/meter/ade7754.h
+On Fri, 17 Feb 2017, Gargi Sharma wrote:
 
--- 
-2.7.4
+> Remove blank line before closing brace to fix the checkpatch
+> issue blank lines aren't necessary before a close brace '}'.
 
+Good message here too.
+
+julia
+
+>
+> Signed-off-by: Gargi Sharma <gs051095@gmail.com>
+> ---
+>  drivers/staging/fbtft/fbtft-core.c | 1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/drivers/staging/fbtft/fbtft-core.c b/drivers/staging/fbtft/fbtft-core.c
+> index ee842e9..f548513 100644
+> --- a/drivers/staging/fbtft/fbtft-core.c
+> +++ b/drivers/staging/fbtft/fbtft-core.c
+> @@ -556,7 +556,6 @@ static int fbtft_fb_setcolreg(unsigned int regno, unsigned int red, unsigned int
+>  			ret = 0;
+>  		}
+>  		break;
+> -
+>  	}
+>  	return ret;
+>  }
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/900fa97ebe415c28a0980b7b21c92a4f961fc6ce.1487275508.git.gs051095%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
