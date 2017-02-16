@@ -1,91 +1,92 @@
 X-GM-THRID: 6387840311027040256
-X-Received: by 10.46.88.70 with SMTP id x6mr450126ljd.22.1487285385451;
-        Thu, 16 Feb 2017 14:49:45 -0800 (PST)
+X-Received: by 10.99.251.83 with SMTP id w19mr1712652pgj.24.1487284971176;
+        Thu, 16 Feb 2017 14:42:51 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.141.204 with SMTP id p195ls174208lfd.31.gmail; Thu, 16 Feb
- 2017 14:49:44 -0800 (PST)
-X-Received: by 10.25.79.23 with SMTP id d23mr531448lfb.27.1487285384593;
-        Thu, 16 Feb 2017 14:49:44 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id q4si135810wma.3.2017.02.16.14.49.44
+Received: by 10.107.15.68 with SMTP id x65ls843347ioi.33.gmail; Thu, 16 Feb
+ 2017 14:42:50 -0800 (PST)
+X-Received: by 10.107.164.216 with SMTP id d85mr1595223ioj.10.1487284970533;
+        Thu, 16 Feb 2017 14:42:50 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id z73si381078pfa.2.2017.02.16.14.42.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 16 Feb 2017 14:49:44 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Thu, 16 Feb 2017 14:42:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.35,169,1484002800"; 
-   d="scan'208";a="213507466"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 16 Feb 2017 23:49:43 +0100
-Date: Thu, 16 Feb 2017 23:49:43 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Varsha Rao <rvarsha016@gmail.com>
-cc: Larry Finger <Larry.Finger@lwfinger.net>, 
-    Florian Schilhabel <florian.c.schilhabel@googlemail.com>, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-    outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8712: Moved logical OR
- operator to previous line.
-In-Reply-To: <20170216224234.GA25084@euri>
-Message-ID: <alpine.DEB.2.20.1702162347080.2121@hadrien>
-References: <20170216224234.GA25084@euri>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x244.google.com with SMTP id o64so2533552pfb.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 16 Feb 2017 14:42:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=pxIAFYUADKHdt4I9tZ85IfDrC1bgJHstazalmKxpRd4=;
+        b=hgVDy026nsVlJBU1rjmtQeG6YwpcXfQJrF/mwrEkMkLe8qVZwqAR8D8UqqEKobw4o4
+         gEQwly91uPPxdmfDRdlNfDJ6FM89r+5Ka4hmB/dI6sGVH+KtlUKsIdiJXlN5yexeeYjv
+         WzUQnwqPFl3mEnb1ekw2c385eD4UlhNy/NnAB5ZdNcoVgTVEIiKHhxQ7rih8cq9qbo8l
+         yrcVp2HBPOsviIEaEp5RRa/f67V7xos9xr0s3wnYXp+/flt22eVr3AWc1yj07tBgPo9d
+         toXcS1uGg7clrb8zNAydNGavUBkjsJ6qWmVmxEROt9+Ifn22VckWOrQP2L5LnRBex9lT
+         ojlQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=pxIAFYUADKHdt4I9tZ85IfDrC1bgJHstazalmKxpRd4=;
+        b=E76vlWAod25tsJZxfscFsRwBq4aG86t7JMAQ0DI0v3864GhFeOLAoC+T6y+LnRViep
+         bxU4IV5XY2WVp5d27towS3WnQop6zL62X+Ey+IIBI1W7xgrcnV7fL2nwnhrkZQ1pxafq
+         cyFLimjCwtNe4OvfB1igmZlYIpoyHNql3zw/uhwfgdxcdW6xYbVtrQM1yL92GhDsh0vk
+         4Y5OYtRE8I3jvrKnspaafQdUSFF5FkNSv7yJpZzGllqCsnkWkARHPcUf9unxtDhliG19
+         ad/7LU6xa14uhcVv2mCHWjQrOJ7Yh8wItnc6Z7M3kgZTiGTet5LKgUX956MUwSO2p27Y
+         ir8A==
+X-Gm-Message-State: AMke39mtKI++buiII/e3LF9TUEXy4MC7j08YpTkHhyPjeBmJ3k5kJGNd04UngtVUdBp4Lg==
+X-Received: by 10.84.192.107 with SMTP id b98mr6557517pld.160.1487284970319;
+        Thu, 16 Feb 2017 14:42:50 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from euri ([2405:204:5206:c79d:5773:ab8a:9cfc:4b88])
+        by smtp.gmail.com with ESMTPSA id e90sm15485977pfl.32.2017.02.16.14.42.48
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 16 Feb 2017 14:42:49 -0800 (PST)
+Date: Fri, 17 Feb 2017 04:12:34 +0530
+From: Varsha Rao <rvarsha016@gmail.com>
+To: Larry Finger <Larry.Finger@lwfinger.net>,
+	Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: rtl8712: Moved logical OR operator to previous line.
+Message-ID: <20170216224234.GA25084@euri>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.7.1 (2016-10-04)
 
+Logical OR operator is moved to previous line to fix the following checkpatch issue:
 
+CHECK: Logical continuations should be on the previous line.
 
-On Fri, 17 Feb 2017, Varsha Rao wrote:
+Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
+---
+ drivers/staging/rtl8712/ieee80211.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-> Logical OR operator is moved to previous line to fix the following checkpatch issue:
+diff --git a/drivers/staging/rtl8712/ieee80211.c b/drivers/staging/rtl8712/ieee80211.c
+index d84da2b..bce78b6 100644
+--- a/drivers/staging/rtl8712/ieee80211.c
++++ b/drivers/staging/rtl8712/ieee80211.c
+@@ -288,8 +288,8 @@ int r8712_parse_wpa_ie(u8 *wpa_ie, int wpa_ie_len, int *group_cipher,
+ 		/* No WPA IE - fail silently */
+ 		return _FAIL;
+ 	}
+-	if ((*wpa_ie != _WPA_IE_ID_) || (*(wpa_ie + 1) != (u8)(wpa_ie_len - 2))
+-	     || (memcmp(wpa_ie + 2, (void *)WPA_OUI_TYPE, WPA_SELECTOR_LEN)))
++	if ((*wpa_ie != _WPA_IE_ID_) || (*(wpa_ie + 1) != (u8)(wpa_ie_len - 2)) ||
++	    (memcmp(wpa_ie + 2, (void *)WPA_OUI_TYPE, WPA_SELECTOR_LEN)))
+ 		return _FAIL;
+ 	pos = wpa_ie;
+ 	pos += 8;
+-- 
+2.9.3
 
-Commit messages should respect the 80 character limit.  Actually they
-should be smaller, because they willbe a bit indented in the git log.
-
-Use the imperative: Move the logical OR operator...
-
->
-> CHECK: Logical continuations should be on the previous line.
->
-> Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
-> ---
->  drivers/staging/rtl8712/ieee80211.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/staging/rtl8712/ieee80211.c b/drivers/staging/rtl8712/ieee80211.c
-> index d84da2b..bce78b6 100644
-> --- a/drivers/staging/rtl8712/ieee80211.c
-> +++ b/drivers/staging/rtl8712/ieee80211.c
-> @@ -288,8 +288,8 @@ int r8712_parse_wpa_ie(u8 *wpa_ie, int wpa_ie_len, int *group_cipher,
->  		/* No WPA IE - fail silently */
->  		return _FAIL;
->  	}
-> -	if ((*wpa_ie != _WPA_IE_ID_) || (*(wpa_ie + 1) != (u8)(wpa_ie_len - 2))
-> -	     || (memcmp(wpa_ie + 2, (void *)WPA_OUI_TYPE, WPA_SELECTOR_LEN)))
-> +	if ((*wpa_ie != _WPA_IE_ID_) || (*(wpa_ie + 1) != (u8)(wpa_ie_len - 2)) ||
-> +	    (memcmp(wpa_ie + 2, (void *)WPA_OUI_TYPE, WPA_SELECTOR_LEN)))
-
-The first added line appears to be now over 80 characters.  One fix should
-not add new warnings.  You can put a newline after each || in this case
-for better readability.  Another possible solution could be to drop the
-unneeded parentheses.
-
-julia
-
->  		return _FAIL;
->  	pos = wpa_ie;
->  	pos += 8;
-> --
-> 2.9.3
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170216224234.GA25084%40euri.
-> For more options, visit https://groups.google.com/d/optout.
->
 
