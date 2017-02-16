@@ -1,276 +1,91 @@
-X-GM-THRID: 6395022798134181888
-X-Received: by 10.99.38.199 with SMTP id m190mr2311186pgm.42.1488957274462;
-        Tue, 07 Mar 2017 23:14:34 -0800 (PST)
+X-GM-THRID: 6387642607582838784
+X-Received: by 10.176.2.208 with SMTP id 74mr907293uah.7.1487270534450;
+        Thu, 16 Feb 2017 10:42:14 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.62.1 with SMTP id a1ls2567562otd.37.gmail; Tue, 07 Mar
- 2017 23:14:34 -0800 (PST)
-X-Received: by 10.129.124.138 with SMTP id x132mr2233186ywc.138.1488957274072;
-        Tue, 07 Mar 2017 23:14:34 -0800 (PST)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id u12si458575pfd.3.2017.03.07.23.14.34
+Received: by 10.157.35.13 with SMTP id j13ls2342647otb.40.gmail; Thu, 16 Feb
+ 2017 10:42:14 -0800 (PST)
+X-Received: by 10.176.3.148 with SMTP id 20mr942635uau.9.1487270533964;
+        Thu, 16 Feb 2017 10:42:13 -0800 (PST)
+Return-Path: <gs051095@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id 23si213284pfw.4.2017.02.16.10.42.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 07 Mar 2017 23:14:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Thu, 16 Feb 2017 10:42:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
+       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id j5so2808583pfb.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 07 Mar 2017 23:14:34 -0800 (PST)
+Received: by mail-pg0-x244.google.com with SMTP id v184so2647338pgv.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 16 Feb 2017 10:42:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=u+TCE0xALN1ojJnzOlebJCyQs9wCg3PzBj9hQtKhbR4=;
-        b=IgX9lahVesenXjTzF05JrQ8YNsaewcgwS6qSICXOcbOOlh5xNrL06FkXXiaCHQd5VT
-         PHZhM+FHhdSK0uh/aPq4pea5X6bZM+UGCaYrRNYmzjvek9abJQcvBmi1gFBmjjmc3eEs
-         0imI7Jp+T2g2fpZWyp7R4+X5fB4NArEPLVFvlEYR+3zBvy+sC1Ej7OkBVWauJ9EA8tdD
-         97P7mDw28vgv8Td76xkw5nHML9Jgbp7SdtAxjSKZOYV3uWpu5invMxcdrfIB1xUY95B/
-         3oMo52118CstOvdPx6qLjHanva8UNOQG71X+KiT6lgcc+ez1jlPeDf2qgY0nrsGp3P8W
-         lInw==
+        h=from:to:cc:subject:date:message-id;
+        bh=nYQdOKErW8U/4vezqnhAKaKbntEH0KZgyGvUCiWLPhg=;
+        b=jB4/SLr9suj28mdz2E7YNNYctCxcwbOzX/Nd9i0W6odGB3Lo/iXKQv237OZpNERASR
+         97/eXHUeVKbsZPgWXA8FozGIpK5Xq6dMFQezV7aXX/iyfmluqOxHqF4GGSZWLZCtrNHd
+         Sr70G2VtqgYAinJeJ+wZutSJIa0sIwOwKcExCEG8So6p6aIn60HWl69SOuyBBV3wN7nl
+         ckknfetLYV23/glBz1oktgnR9tQJlXoOP2CxakrHrz9R/WNmeI4DRtMMb5M1sRxgJc7z
+         KFkrBhvy5kNZBD4FSDjkDubWegqlU9er5eh9mv6SOIi45m+vlxkQzwQY93MXQELSCwOX
+         u1wQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=u+TCE0xALN1ojJnzOlebJCyQs9wCg3PzBj9hQtKhbR4=;
-        b=m3zAqT9VJNtJi0NrUFX1OgJvkEkCZY4mtYkXW3lNykzXNM4h1eCATEJfzPRD2DXB3X
-         5jL+eMGVDoJDv8T03OsewIjDqqAuIby6LcrkKBMIqGj1fERQLk2DqAvx/9Q3XeCdWKc9
-         crzcH6BeZVvx8TIxay9eXLI3Iskczg1sOx3w3GVT/9wxKnUFXH+jVUdzDjJHWZ0M+gE5
-         dNfmPdgPwKPwptCDaVCFte8QFwE2M1zlEBLc6weXQ0MsKlRE/VQ/ALoQYI2XCJ+wW3Xm
-         eTez24iuVf5HTJHPPKk7qwtD9tne3kxnKhQbp341I+3AlugiioinSUkS4Ur6vZyxPqZj
-         1R7w==
-X-Gm-Message-State: AMke39nMSBPlKzlTOvbKrCMSOCAiPLe8i+dC/d0i9/XUCluDoQJ+dZlqAFrtfB0hpXALSg==
-X-Received: by 10.98.252.211 with SMTP id e202mr5273168pfh.118.1488957273744;
-        Tue, 07 Mar 2017 23:14:33 -0800 (PST)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from sayli-HP-15-Notebook-PC ([182.58.210.173])
-        by smtp.gmail.com with ESMTPSA id w29sm3728021pfi.131.2017.03.07.23.14.16
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 07 Mar 2017 23:14:33 -0800 (PST)
-Date: Wed, 8 Mar 2017 12:44:08 +0530
-From: sayli karnik <karniksayli1995@gmail.com>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=nYQdOKErW8U/4vezqnhAKaKbntEH0KZgyGvUCiWLPhg=;
+        b=YnaDSYGNrtpX3G+O11mvvx3DyjXiwe8S7hrbPswH5DpSLAmdyOMoG0ANzzK75wyJ8T
+         uJOtGtS6p2d2VhYbQVZM1RfuRL6x0wlUkXPoenRVX975rAmzd9bSxe9rVi3mMHMkTTJv
+         cHwlFgdrCEKDOqP3iy82Ot8JRaY1zrqoPg+4Sfl87LfC+t9nXisyTjjV0tugbYyMn6Mb
+         5Vfe0JLp6VOXkEKoL/EmULgh+h/ZKSdlbKwP4U1eufY8vQ1Y7IpsxMykwzQwvVnAN1Kr
+         SldHZB8JZwkbwCLLT/f/h/CnKH5zA5noqhHlOAoAOfRarAxwlNnjJBjyerioTIuPyqF3
+         SS7w==
+X-Gm-Message-State: AMke39ll68B41ElDxe69zo82h+mbdV0FZSG9eZe16cfj++6FtvODbHkJlBHBl3Pb1jVbaw==
+X-Received: by 10.84.232.202 with SMTP id x10mr5175550plm.119.1487270533579;
+        Thu, 16 Feb 2017 10:42:13 -0800 (PST)
+Return-Path: <gs051095@gmail.com>
+Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
+        by smtp.googlemail.com with ESMTPSA id 89sm15030288pfo.40.2017.02.16.10.42.11
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 16 Feb 2017 10:42:12 -0800 (PST)
+From: Gargi Sharma <gs051095@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Lars-Peter Clausen <lars@metafoo.de>,
-	Michael Hennerich <Michael.Hennerich@analog.com>,
-	Jonathan Cameron <jic23@kernel.org>,
-	Hartmut Knaack <knaack.h@gmx.de>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-iio@vger.kernel.org
-Subject: [PATCH] staging: iio: ade7754: Move contents of header file to
- source file
-Message-ID: <20170308071408.GA9173@sayli-HP-15-Notebook-PC>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Cc: arnaud.patard@rtp-net.org,
+	gregkh@linuxfoundation.org,
+	Gargi Sharma <gs051095@gmail.com>
+Subject: [PATCH v2] staging: xgifb: add braces around if statement
+Date: Fri, 17 Feb 2017 00:09:55 +0530
+Message-Id: <1487270395-7837-1-git-send-email-gs051095@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-The contents of ade7754.h are only used in ade7754.c. Move the header
-contents to the source file and delete the header file.
+add braces around if statment to fix the checkpatch issue, braces {}
+should be used on all arms of this statement.
 
-Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
+Signed-off-by: Gargi Sharma <gs051095@gmail.com>
 ---
- drivers/staging/iio/meter/ade7754.c | 87 ++++++++++++++++++++++++++++++++++-
- drivers/staging/iio/meter/ade7754.h | 90 -------------------------------------
- 2 files changed, 86 insertions(+), 91 deletions(-)
- delete mode 100644 drivers/staging/iio/meter/ade7754.h
+Changes in v2:
+move the closing brace for if statement on the same line as the else
+statement.
+`
+---
+ drivers/staging/xgifb/XGI_main_26.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/iio/meter/ade7754.c b/drivers/staging/iio/meter/ade7754.c
-index 024463a..42f7b06 100644
---- a/drivers/staging/iio/meter/ade7754.c
-+++ b/drivers/staging/iio/meter/ade7754.c
-@@ -21,7 +21,92 @@
- #include <linux/iio/iio.h>
- #include <linux/iio/sysfs.h>
- #include "meter.h"
--#include "ade7754.h"
-+
-+#define ADE7754_AENERGY   0x01
-+#define ADE7754_RAENERGY  0x02
-+#define ADE7754_LAENERGY  0x03
-+#define ADE7754_VAENERGY  0x04
-+#define ADE7754_RVAENERGY 0x05
-+#define ADE7754_LVAENERGY 0x06
-+#define ADE7754_PERIOD    0x07
-+#define ADE7754_TEMP      0x08
-+#define ADE7754_WFORM     0x09
-+#define ADE7754_OPMODE    0x0A
-+#define ADE7754_MMODE     0x0B
-+#define ADE7754_WAVMODE   0x0C
-+#define ADE7754_WATMODE   0x0D
-+#define ADE7754_VAMODE    0x0E
-+#define ADE7754_IRQEN     0x0F
-+#define ADE7754_STATUS    0x10
-+#define ADE7754_RSTATUS   0x11
-+#define ADE7754_ZXTOUT    0x12
-+#define ADE7754_LINCYC    0x13
-+#define ADE7754_SAGCYC    0x14
-+#define ADE7754_SAGLVL    0x15
-+#define ADE7754_VPEAK     0x16
-+#define ADE7754_IPEAK     0x17
-+#define ADE7754_GAIN      0x18
-+#define ADE7754_AWG       0x19
-+#define ADE7754_BWG       0x1A
-+#define ADE7754_CWG       0x1B
-+#define ADE7754_AVAG      0x1C
-+#define ADE7754_BVAG      0x1D
-+#define ADE7754_CVAG      0x1E
-+#define ADE7754_APHCAL    0x1F
-+#define ADE7754_BPHCAL    0x20
-+#define ADE7754_CPHCAL    0x21
-+#define ADE7754_AAPOS     0x22
-+#define ADE7754_BAPOS     0x23
-+#define ADE7754_CAPOS     0x24
-+#define ADE7754_CFNUM     0x25
-+#define ADE7754_CFDEN     0x26
-+#define ADE7754_WDIV      0x27
-+#define ADE7754_VADIV     0x28
-+#define ADE7754_AIRMS     0x29
-+#define ADE7754_BIRMS     0x2A
-+#define ADE7754_CIRMS     0x2B
-+#define ADE7754_AVRMS     0x2C
-+#define ADE7754_BVRMS     0x2D
-+#define ADE7754_CVRMS     0x2E
-+#define ADE7754_AIRMSOS   0x2F
-+#define ADE7754_BIRMSOS   0x30
-+#define ADE7754_CIRMSOS   0x31
-+#define ADE7754_AVRMSOS   0x32
-+#define ADE7754_BVRMSOS   0x33
-+#define ADE7754_CVRMSOS   0x34
-+#define ADE7754_AAPGAIN   0x35
-+#define ADE7754_BAPGAIN   0x36
-+#define ADE7754_CAPGAIN   0x37
-+#define ADE7754_AVGAIN    0x38
-+#define ADE7754_BVGAIN    0x39
-+#define ADE7754_CVGAIN    0x3A
-+#define ADE7754_CHKSUM    0x3E
-+#define ADE7754_VERSION   0x3F
-+
-+#define ADE7754_READ_REG(a)    a
-+#define ADE7754_WRITE_REG(a) ((a) | 0x80)
-+
-+#define ADE7754_MAX_TX    4
-+#define ADE7754_MAX_RX    4
-+#define ADE7754_STARTUP_DELAY 1000
-+
-+#define ADE7754_SPI_SLOW	(u32)(300 * 1000)
-+#define ADE7754_SPI_BURST	(u32)(1000 * 1000)
-+#define ADE7754_SPI_FAST	(u32)(2000 * 1000)
-+
-+/**
-+ * struct ade7754_state - device instance specific data
-+ * @us:			actual spi_device
-+ * @buf_lock:		mutex to protect tx and rx
-+ * @tx:			transmit buffer
-+ * @rx:			receive buffer
-+ **/
-+struct ade7754_state {
-+	struct spi_device	*us;
-+	struct mutex		buf_lock;
-+	u8			tx[ADE7754_MAX_TX] ____cacheline_aligned;
-+	u8			rx[ADE7754_MAX_RX];
-+};
+diff --git a/drivers/staging/xgifb/XGI_main_26.c b/drivers/staging/xgifb/XGI_main_26.c
+index 6930f7e..6895235 100644
+--- a/drivers/staging/xgifb/XGI_main_26.c
++++ b/drivers/staging/xgifb/XGI_main_26.c
+@@ -178,9 +178,9 @@ static int XGIfb_mode_rate_to_ddata(struct vb_device_info *XGI_Pr,
+ 		*sync |= FB_SYNC_HOR_HIGH_ACT;
  
- static int ade7754_spi_write_reg_8(struct device *dev, u8 reg_address, u8 val)
- {
-diff --git a/drivers/staging/iio/meter/ade7754.h b/drivers/staging/iio/meter/ade7754.h
-deleted file mode 100644
-index 28f71c2..0000000
---- a/drivers/staging/iio/meter/ade7754.h
-+++ /dev/null
-@@ -1,90 +0,0 @@
--#ifndef _ADE7754_H
--#define _ADE7754_H
--
--#define ADE7754_AENERGY   0x01
--#define ADE7754_RAENERGY  0x02
--#define ADE7754_LAENERGY  0x03
--#define ADE7754_VAENERGY  0x04
--#define ADE7754_RVAENERGY 0x05
--#define ADE7754_LVAENERGY 0x06
--#define ADE7754_PERIOD    0x07
--#define ADE7754_TEMP      0x08
--#define ADE7754_WFORM     0x09
--#define ADE7754_OPMODE    0x0A
--#define ADE7754_MMODE     0x0B
--#define ADE7754_WAVMODE   0x0C
--#define ADE7754_WATMODE   0x0D
--#define ADE7754_VAMODE    0x0E
--#define ADE7754_IRQEN     0x0F
--#define ADE7754_STATUS    0x10
--#define ADE7754_RSTATUS   0x11
--#define ADE7754_ZXTOUT    0x12
--#define ADE7754_LINCYC    0x13
--#define ADE7754_SAGCYC    0x14
--#define ADE7754_SAGLVL    0x15
--#define ADE7754_VPEAK     0x16
--#define ADE7754_IPEAK     0x17
--#define ADE7754_GAIN      0x18
--#define ADE7754_AWG       0x19
--#define ADE7754_BWG       0x1A
--#define ADE7754_CWG       0x1B
--#define ADE7754_AVAG      0x1C
--#define ADE7754_BVAG      0x1D
--#define ADE7754_CVAG      0x1E
--#define ADE7754_APHCAL    0x1F
--#define ADE7754_BPHCAL    0x20
--#define ADE7754_CPHCAL    0x21
--#define ADE7754_AAPOS     0x22
--#define ADE7754_BAPOS     0x23
--#define ADE7754_CAPOS     0x24
--#define ADE7754_CFNUM     0x25
--#define ADE7754_CFDEN     0x26
--#define ADE7754_WDIV      0x27
--#define ADE7754_VADIV     0x28
--#define ADE7754_AIRMS     0x29
--#define ADE7754_BIRMS     0x2A
--#define ADE7754_CIRMS     0x2B
--#define ADE7754_AVRMS     0x2C
--#define ADE7754_BVRMS     0x2D
--#define ADE7754_CVRMS     0x2E
--#define ADE7754_AIRMSOS   0x2F
--#define ADE7754_BIRMSOS   0x30
--#define ADE7754_CIRMSOS   0x31
--#define ADE7754_AVRMSOS   0x32
--#define ADE7754_BVRMSOS   0x33
--#define ADE7754_CVRMSOS   0x34
--#define ADE7754_AAPGAIN   0x35
--#define ADE7754_BAPGAIN   0x36
--#define ADE7754_CAPGAIN   0x37
--#define ADE7754_AVGAIN    0x38
--#define ADE7754_BVGAIN    0x39
--#define ADE7754_CVGAIN    0x3A
--#define ADE7754_CHKSUM    0x3E
--#define ADE7754_VERSION   0x3F
--
--#define ADE7754_READ_REG(a)    a
--#define ADE7754_WRITE_REG(a) ((a) | 0x80)
--
--#define ADE7754_MAX_TX    4
--#define ADE7754_MAX_RX    4
--#define ADE7754_STARTUP_DELAY 1000
--
--#define ADE7754_SPI_SLOW	(u32)(300 * 1000)
--#define ADE7754_SPI_BURST	(u32)(1000 * 1000)
--#define ADE7754_SPI_FAST	(u32)(2000 * 1000)
--
--/**
-- * struct ade7754_state - device instance specific data
-- * @us:			actual spi_device
-- * @buf_lock:		mutex to protect tx and rx
-- * @tx:			transmit buffer
-- * @rx:			receive buffer
-- **/
--struct ade7754_state {
--	struct spi_device	*us;
--	struct mutex		buf_lock;
--	u8			tx[ADE7754_MAX_TX] ____cacheline_aligned;
--	u8			rx[ADE7754_MAX_RX];
--};
--
--#endif
+ 	*vmode = FB_VMODE_NONINTERLACED;
+-	if (XGI330_RefIndex[RefreshRateTableIndex].Ext_InfoFlag & 0x0080)
++	if (XGI330_RefIndex[RefreshRateTableIndex].Ext_InfoFlag & 0x0080) {
+ 		*vmode = FB_VMODE_INTERLACED;
+-	else {
++	} else {
+ 		j = 0;
+ 		while (XGI330_EModeIDTable[j].Ext_ModeID != 0xff) {
+ 			if (XGI330_EModeIDTable[j].Ext_ModeID ==
 -- 
 2.7.4
 
