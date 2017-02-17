@@ -1,123 +1,254 @@
-X-GM-THRID: 6389746860709380096
-X-Received: by 10.200.37.208 with SMTP id f16mr9396710qtf.15.1487728874309;
-        Tue, 21 Feb 2017 18:01:14 -0800 (PST)
+X-GM-THRID: 6387958804710948864
+X-Received: by 10.31.12.18 with SMTP id 18mr1629604vkm.32.1487313763382;
+        Thu, 16 Feb 2017 22:42:43 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.32.196 with SMTP id x62ls14256693ota.32.gmail; Tue, 21 Feb
- 2017 18:01:13 -0800 (PST)
-X-Received: by 10.13.206.196 with SMTP id q187mr10392914ywd.153.1487728873877;
-        Tue, 21 Feb 2017 18:01:13 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id h130si3341424pfe.1.2017.02.21.18.01.13
+Received: by 10.107.9.199 with SMTP id 68ls1045555ioj.3.gmail; Thu, 16 Feb
+ 2017 22:42:42 -0800 (PST)
+X-Received: by 10.99.181.67 with SMTP id u3mr2159203pgo.66.1487313762626;
+        Thu, 16 Feb 2017 22:42:42 -0800 (PST)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from mail-ot0-x244.google.com (mail-ot0-x244.google.com. [2607:f8b0:4003:c0f::244])
+        by gmr-mx.google.com with ESMTPS id n132si80551ith.0.2017.02.16.22.42.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 21 Feb 2017 18:01:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Thu, 16 Feb 2017 22:42:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:4003:c0f::244 as permitted sender) client-ip=2607:f8b0:4003:c0f::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:4003:c0f::244 as permitted sender) smtp.mailfrom=vthakkar1994@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id 1so13852014pgz.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 21 Feb 2017 18:01:13 -0800 (PST)
+Received: by mail-ot0-x244.google.com with SMTP id l26so3786120ota.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 16 Feb 2017 22:42:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=NlzzOy1V+l2X6FmSBbqnMIk6j3uv/7Q/HZbfRXBp0KM=;
-        b=nDXfEYvFV5sR2pSvZwlvE9wt5ffDKX5KY7rgLBR5cGRp+jgLrEHh/fhdr8c3DCegGT
-         Elt2bMwTvUFLDVXb7sQ7p57K1IKk3+cflAWcF5+qzINOd/ClkUEQ9sGXlrwTOJ+lXuxz
-         uF/aGQXZFxJ0obqsQMdHATjzDVY1gnbyavasqb1R+Xwa+PCDG+bi2b/lp+l6jy4Qf+QR
-         z9aIV8p7ERO5f8RaBbT2ZvL5s7kM6xr3AwAuFxBbpU3Y00E2gRfJ8uSiwrwKXIM+1o2N
-         Q3+lQG5jzIS5XscYrrtVkLKdcwlTTmHi3WkBYFcEGbbg6kxclNyAKqhixB7u7vIlFhZi
-         l3vA==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=F1PR8V1GywDCMCpZgj4Xaae3ss7oNGYd2VHvHIoHFwI=;
+        b=FkRHBnZ07RceRo39DBeNjvIF1I3s4onOcfIWytD/3O556U0qYdxlkn2aSzrWDnItVn
+         x6Yv3gTJUoK6/8wlCSuEt0xf+mwbuxdU85GaFKP7RAkm0UmwJ50XKRjP126egl3i4DYC
+         fWyia+XNAgdPGZwifps0p2j+ZnS54yikLpiRCY6coGNbJA9Gw0/L8nFfIAXE4v2N/6Gz
+         vEuZQqWkYWk6SXoR+HvrfMRfGEG6PeNK2g2zhWpyQ16LwTXjOkPg0kwnawbgJMvuHiM3
+         Wm1L3J3NDEoSAuCMogIEm+lJFNz1p3MevAH8L02tTSGmOlCYkLvGJxtOZoXkmZJW1NJ7
+         XBPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=NlzzOy1V+l2X6FmSBbqnMIk6j3uv/7Q/HZbfRXBp0KM=;
-        b=bWnZAI/LlI8pof6r4D1LBwdPFjq8QVJ+Z1aRUJHRrwUn3fsD8tntYI8hdePcaLX03q
-         fsDepew+d5H9gu5tDZndz8hBX4oxvwA9pwjVVgJMx8Rd+0oToCQPvdaPDu8/QogBb6lt
-         3j9hHRIyqd8xhLWlb8CQJNpK8K5m0oWtPbnr/4pfAS0DfH+LRfY7ZcHhT0eYnv8m/uYn
-         baEByASTDFKdXCgjOc8ByOoFSNfs6Pb7K3TUQcZ4LADd/VrQ7MSrt5oFv2C7NThGGviw
-         AieWQKjOxfgBUGPiUU7h7yv5W6rtvlbyKquhbQD2dG55btPAihX18eEXCx4qx8+BVBQX
-         sJtw==
-X-Gm-Message-State: AMke39m+IEoi3JJxvQO20ksYb1LK0lnxfvVrWSRX5DcYYqhTC+JkH48GALdM53HWVS+JyQ==
-X-Received: by 10.99.136.198 with SMTP id l189mr976729pgd.45.1487728873608;
-        Tue, 21 Feb 2017 18:01:13 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id x30sm43370284pgc.67.2017.02.21.18.01.11
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 21 Feb 2017 18:01:12 -0800 (PST)
-Date: Wed, 22 Feb 2017 07:31:09 +0530
-From: simran singhal <singhalsimran0@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH 3/7] staging: gdm724x: Drop useless initialisation
-Message-ID: <20170222020109.GA27876@singhal-Inspiron-5558>
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=F1PR8V1GywDCMCpZgj4Xaae3ss7oNGYd2VHvHIoHFwI=;
+        b=JfVSy2Cd3zTP3MhqLUcPvevKArASd1lrqdRIW3HUwt8YzyI/Izw9U1zsvae6I+Ep9C
+         f19HX4H+tgz1n42gCAa+ljbeKYsarLyl1nxfrl+h2NqQVnzduvQAA+i1q/IkxMhNgoCn
+         Qp130X7CqknAg4U7AbGsQcvoNxFplUZ6hNfuYO/M6CS4g9KMhpRd9kUxJ1sF9ML3SlO7
+         NLm8EheK3JtkcNuze4N6RrpdE10qUbhv5jF2NHMCzBCCnNCYjA/SSy49IMylhJo+HoXk
+         JpMPYS+nZTj1VvWOle3UWi4ibdEIMbzG4dHWUVmVVBlludlOR12JxMfRirAI1GET9/6o
+         ysDQ==
+X-Gm-Message-State: AMke39lp6vMJpqpXCFOY0Pq1udPlHQWP9dMmSqRVLF1r/spcyeZ6ovwuBZiIjPXKX6ZD9c47R4aukSFDBQHQdg==
+X-Received: by 10.157.15.220 with SMTP id m28mr3140868otd.67.1487313762170;
+ Thu, 16 Feb 2017 22:42:42 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Received: by 10.182.107.100 with HTTP; Thu, 16 Feb 2017 22:42:41 -0800 (PST)
+In-Reply-To: <alpine.DEB.2.20.1702170735310.2062@hadrien>
+References: <cover.1487312015.git.gs051095@gmail.com> <14a9e39afeca192713f279577e381c908f98e5ba.1487312015.git.gs051095@gmail.com>
+ <CAK-LDbLb=1rss2n7kzpGaTdtyJFrh56ay4WmD7vsJO67sewMwQ@mail.gmail.com> <alpine.DEB.2.20.1702170735310.2062@hadrien>
+From: Vaishali Thakkar <vthakkar1994@gmail.com>
+Date: Fri, 17 Feb 2017 12:12:41 +0530
+Message-ID: <CAK-LDbL8+Af6uNy=g-w+aUva0V4=YGbk1M2OXPe5aPj6Q0xy1w@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 2/6] staging: rtl8188eu: Fix block
+ comments warning
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Gargi Sharma <gs051095@gmail.com>, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>, Greg KH <gregkh@linuxfoundation.org>
+Content-Type: text/plain; charset=UTF-8
 
-Removed initialisation of a varible if it is immediately reassigned.
+On Fri, Feb 17, 2017 at 12:05 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> On Fri, 17 Feb 2017, Vaishali Thakkar wrote:
+>
+>> On Fri, Feb 17, 2017 at 11:50 AM, Gargi Sharma <gs051095@gmail.com> wrote:
+>> > Align * on each line and move final */ to a new line, to
+>> > conform to the kernel coding style for block comments.
+>>
+>> Typo there: s/conform/confirm
+>
+> Conform is correct.
 
-Changes were made using Coccinelle.
+Oops! My bad! :)
 
-@@
-type T;
-constant C;
-expression e;
-identifier i;
-@@
-T i
-- = C
-;
-i = e;
+> julia
+>
+>>
+>> > Signed-off-by: Gargi Sharma <gs051095@gmail.com>
+>> > ---
+>> >  drivers/staging/rtl8188eu/core/rtw_mlme.c | 61 ++++++++++++++++---------------
+>> >  1 file changed, 31 insertions(+), 30 deletions(-)
+>> >
+>> > diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c b/drivers/staging/rtl8188eu/core/rtw_mlme.c
+>> > index a98a550..0215b65 100644
+>> > --- a/drivers/staging/rtl8188eu/core/rtw_mlme.c
+>> > +++ b/drivers/staging/rtl8188eu/core/rtw_mlme.c
+>> > @@ -181,10 +181,10 @@ void _rtw_free_network_nolock(struct      mlme_priv *pmlmepriv, struct wlan_network *
+>> >  }
+>> >
+>> >  /*
+>> > -       return the wlan_network with the matching addr
+>> > -
+>> > -       Shall be calle under atomic context... to avoid possible racing condition...
+>> > -*/
+>> > + * return the wlan_network with the matching addr
+>> > + *
+>> > + * Shall be called under atomic context... to avoid possible racing condition...
+>> > + */
+>> >  struct wlan_network *rtw_find_network(struct __queue *scanned_queue, u8 *addr)
+>> >  {
+>> >         struct list_head *phead, *plist;
+>> > @@ -408,8 +408,8 @@ static void update_current_network(struct adapter *adapter, struct wlan_bssid_ex
+>> >  }
+>> >
+>> >  /*
+>> > -Caller must hold pmlmepriv->lock first.
+>> > -*/
+>> > + * Caller must hold pmlmepriv->lock first.
+>> > + */
+>> >  void rtw_update_scanned_network(struct adapter *adapter, struct wlan_bssid_ex *target)
+>> >  {
+>> >         struct list_head *plist, *phead;
+>> > @@ -434,7 +434,8 @@ void rtw_update_scanned_network(struct adapter *adapter, struct wlan_bssid_ex *t
+>> >                 plist = plist->next;
+>> >         }
+>> >         /* If we didn't find a match, then get a new network slot to initialize
+>> > -        * with this beacon's information */
+>> > +        * with this beacon's information
+>> > +        */
+>> >         if (phead == plist) {
+>> >                 if (list_empty(&(pmlmepriv->free_bss_pool.queue))) {
+>> >                         /* If there are no more slots, expire the oldest */
+>> > @@ -726,8 +727,8 @@ static void free_scanqueue(struct   mlme_priv *pmlmepriv)
+>> >  }
+>> >
+>> >  /*
+>> > -*rtw_free_assoc_resources: the caller has to lock pmlmepriv->lock
+>> > -*/
+>> > + * rtw_free_assoc_resources: the caller has to lock pmlmepriv->lock
+>> > + */
+>> >  void rtw_free_assoc_resources(struct adapter *adapter)
+>> >  {
+>> >         struct  mlme_priv *pmlmepriv = &adapter->mlmepriv;
+>> > @@ -738,8 +739,8 @@ void rtw_free_assoc_resources(struct adapter *adapter)
+>> >  }
+>> >
+>> >  /*
+>> > -*rtw_free_assoc_resources_locked: the caller has to lock pmlmepriv->lock
+>> > -*/
+>> > + * rtw_free_assoc_resources_locked: the caller has to lock pmlmepriv->lock
+>> > + */
+>> >  void rtw_free_assoc_resources_locked(struct adapter *adapter)
+>> >  {
+>> >         struct wlan_network *pwlan = NULL;
+>> > @@ -789,8 +790,8 @@ void rtw_free_assoc_resources_locked(struct adapter *adapter)
+>> >  }
+>> >
+>> >  /*
+>> > -*rtw_indicate_connect: the caller has to lock pmlmepriv->lock
+>> > -*/
+>> > + * rtw_indicate_connect: the caller has to lock pmlmepriv->lock
+>> > + */
+>> >  void rtw_indicate_connect(struct adapter *padapter)
+>> >  {
+>> >         struct mlme_priv        *pmlmepriv = &padapter->mlmepriv;
+>> > @@ -815,8 +816,8 @@ void rtw_indicate_connect(struct adapter *padapter)
+>> >  }
+>> >
+>> >  /*
+>> > -*rtw_indicate_disconnect: the caller has to lock pmlmepriv->lock
+>> > -*/
+>> > + * rtw_indicate_disconnect: the caller has to lock pmlmepriv->lock
+>> > + */
+>> >  void rtw_indicate_disconnect(struct adapter *padapter)
+>> >  {
+>> >         struct  mlme_priv *pmlmepriv = &padapter->mlmepriv;
+>> > @@ -1338,9 +1339,9 @@ void rtw_cpwm_event_callback(struct adapter *padapter, u8 *pbuf)
+>> >  }
+>> >
+>> >  /*
+>> > -* _rtw_join_timeout_handler - Timeout/faliure handler for CMD JoinBss
+>> > -* @adapter: pointer to struct adapter structure
+>> > -*/
+>> > + * _rtw_join_timeout_handler - Timeout/faliure handler for CMD JoinBss
+>> > + * @adapter: pointer to struct adapter structure
+>> > + */
+>> >  void _rtw_join_timeout_handler (unsigned long data)
+>> >  {
+>> >         struct adapter *adapter = (struct adapter *)data;
+>> > @@ -1380,9 +1381,9 @@ void _rtw_join_timeout_handler (unsigned long data)
+>> >  }
+>> >
+>> >  /*
+>> > -* rtw_scan_timeout_handler - Timeout/Faliure handler for CMD SiteSurvey
+>> > -* @adapter: pointer to struct adapter structure
+>> > -*/
+>> > + * rtw_scan_timeout_handler - Timeout/Faliure handler for CMD SiteSurvey
+>> > + * @adapter: pointer to struct adapter structure
+>> > + */
+>> >  void rtw_scan_timeout_handler (unsigned long data)
+>> >  {
+>> >         struct adapter *adapter = (struct adapter *)data;
+>> > @@ -1437,10 +1438,10 @@ void rtw_dynamic_check_timer_handlder(unsigned long data)
+>> >  #define RTW_SCAN_RESULT_EXPIRE 2000
+>> >
+>> >  /*
+>> > -* Select a new join candidate from the original @param candidate and @param competitor
+>> > -* @return true: candidate is updated
+>> > -* @return false: candidate is not updated
+>> > -*/
+>> > + * Select a new join candidate from the original @param candidate and @param competitor
+>> > + * @return true: candidate is updated
+>> > + * @return false: candidate is not updated
+>> > + */
+>> >  static int rtw_check_join_candidate(struct mlme_priv *pmlmepriv
+>> >         , struct wlan_network **candidate, struct wlan_network *competitor)
+>> >  {
+>> > @@ -1491,11 +1492,11 @@ static int rtw_check_join_candidate(struct mlme_priv *pmlmepriv
+>> >  }
+>> >
+>> >  /*
+>> > -Calling context:
+>> > -The caller of the sub-routine will be in critical section...
+>> > -The caller must hold the following spinlock
+>> > -pmlmepriv->lock
+>> > -*/
+>> > + * Calling context:
+>> > + * The caller of the sub-routine will be in critical section...
+>> > + * The caller must hold the following spinlock
+>> > + * pmlmepriv->lock
+>> > + */
+>> >
+>> >  int rtw_select_and_join_from_scanned_queue(struct mlme_priv *pmlmepriv)
+>> >  {
+>> > --
+>> > 2.7.4
+>> >
+>> > --
+>> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/14a9e39afeca192713f279577e381c908f98e5ba.1487312015.git.gs051095%40gmail.com.
+>> > For more options, visit https://groups.google.com/d/optout.
+>>
+>>
+>>
+>> --
+>> Vaishali
+>> http://vaishalithakkar.in/
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAK-LDbLb%3D1rss2n7kzpGaTdtyJFrh56ay4WmD7vsJO67sewMwQ%40mail.gmail.com.
+>> For more options, visit https://groups.google.com/d/optout.
+>>
 
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
----
- drivers/staging/gdm724x/gdm_lte.c | 2 +-
- drivers/staging/gdm724x/gdm_mux.c | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/gdm724x/gdm_lte.c b/drivers/staging/gdm724x/gdm_lte.c
-index a182757..e0f0912 100644
---- a/drivers/staging/gdm724x/gdm_lte.c
-+++ b/drivers/staging/gdm724x/gdm_lte.c
-@@ -353,7 +353,7 @@ static s32 gdm_lte_tx_nic_type(struct net_device *dev, struct sk_buff *skb)
- 	struct ipv6hdr *ipv6;
- 	int mac_proto;
- 	void *network_data;
--	u32 nic_type = 0;
-+	u32 nic_type;
- 
- 	/* NIC TYPE is based on the nic_id of this net_device */
- 	nic_type = 0x00000010 | nic->nic_id;
-diff --git a/drivers/staging/gdm724x/gdm_mux.c b/drivers/staging/gdm724x/gdm_mux.c
-index 4009691..aba32e2 100644
---- a/drivers/staging/gdm724x/gdm_mux.c
-+++ b/drivers/staging/gdm724x/gdm_mux.c
-@@ -62,7 +62,7 @@ static int packet_type_to_index(u16 packetType)
- 
- static struct mux_tx *alloc_mux_tx(int len)
- {
--	struct mux_tx *t = NULL;
-+	struct mux_tx *t;
- 
- 	t = kzalloc(sizeof(*t), GFP_ATOMIC);
- 	if (!t)
-@@ -91,7 +91,7 @@ static void free_mux_tx(struct mux_tx *t)
- 
- static struct mux_rx *alloc_mux_rx(void)
- {
--	struct mux_rx *r = NULL;
-+	struct mux_rx *r;
- 
- 	r = kzalloc(sizeof(*r), GFP_KERNEL);
- 	if (!r)
+
 -- 
-2.7.4
-
+Vaishali
+http://vaishalithakkar.in/
 
