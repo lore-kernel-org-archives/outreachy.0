@@ -1,73 +1,108 @@
-X-GM-THRID: 6387802033040130048
-X-Received: by 10.99.241.69 with SMTP id o5mr1250169pgk.167.1487276058182;
-        Thu, 16 Feb 2017 12:14:18 -0800 (PST)
+X-GM-THRID: 6387984774735069184
+X-Received: by 10.157.25.145 with SMTP id k17mr2297117otk.60.1487326407807;
+        Fri, 17 Feb 2017 02:13:27 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.18.240 with SMTP id g103ls2604344otg.39.gmail; Thu, 16 Feb
- 2017 12:14:17 -0800 (PST)
-X-Received: by 10.157.63.169 with SMTP id r38mr1240879otc.112.1487276057824;
-        Thu, 16 Feb 2017 12:14:17 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id z73si285521pfa.2.2017.02.16.12.14.17
+Received: by 10.157.33.226 with SMTP id s89ls2328899otb.19.gmail; Fri, 17 Feb
+ 2017 02:13:27 -0800 (PST)
+X-Received: by 10.13.211.5 with SMTP id v5mr2199610ywd.128.1487326407364;
+        Fri, 17 Feb 2017 02:13:27 -0800 (PST)
+Return-Path: <karniksayli1995@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id u12si643872pfd.3.2017.02.17.02.13.27
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 16 Feb 2017 12:14:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Fri, 17 Feb 2017 02:13:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
+       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id e4so2309803pfg.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 16 Feb 2017 12:14:17 -0800 (PST)
+Received: by mail-pf0-x244.google.com with SMTP id o64so3815153pfb.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 17 Feb 2017 02:13:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=YNibiMQ/aeKV01IAD6ryhnT/mjwOeMKH/xcoUBs/Zto=;
-        b=SFULJiJbsKfkpts/9hxlLQe7lC9Thl3x4aj1FTJECv3tw3y9R3TP3H7lHplHMsQGt5
-         TX8FKPlATTT73V7+MkiN2CAZ99ivxkaTTkNRnA+akZbYmDEl7gug3RD75ov0WpnW6j69
-         UrzQdvKT66nM6FH0JrWAyoplpVNw82YU5AYCvCMmwncAFH32qqam7/52S1vd3coOlFBU
-         +oxcDWoNY8JgEBtfZoHeFJn2wp1Z6Ga4BA5LOFO7GWk1ICLn9kCSHOaQaWGRqRZ4zlUp
-         5Edo7rt6TUPa2CXaGpLLe2mUlWMlZoNDk5deUGS0cJsEGE+LtfXVFB2vJ8bIcvGDyMLD
-         Wn9A==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=csIW9t199jd3Ux+YWTRICPkVDZA4tGHvf8b5zKYlCNs=;
+        b=u3CHvbT8iu+sVm3o+wngRGsp6zWLQ24FQxSDCTimPaGjgfwfLZsZ15cvINiAUutX60
+         +wefkgZiWZnNL50ebjX/hAkC7ZBvdFC2ErsrPd/Y+/jcBNK2tTY1K4xhd4urA69wM4Tp
+         1M3MLulbae/wSQSzv3/F+x24w148AZfijbubqV7pOLysxGSDhse1kTzT+CifzBMq9pTL
+         hfloln7RCiuczOK1IXkH3oHYzc2AO+MArUrO7udNrl0thkkms6PZ6NYhH3tTyBeMfK70
+         qjzruanUgQ+FyvnjZrKQMPs2OgCNCHr0l1bI2F29nxIEggWkddMb++FGAuX710IrtZvk
+         TA+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=YNibiMQ/aeKV01IAD6ryhnT/mjwOeMKH/xcoUBs/Zto=;
-        b=MoCC3UhiJMn0dcpo9CGmz080txpWvysn6djdl5dZG7YJ6X43ttjhs+55qLSz/evCMh
-         j8Dfg+6cUpZK2sm81PFNFmGFB3FOK3RB8Vl1Plp5CdXYI+rrvh3m4VC64MH6AdmuaI66
-         d0eQ4IC1RA1iLWt+LMUCGPoJzmJ9XvHoEv8o+IEeISJtzde7xth0jaQVAifELSycWW/0
-         Aa0yid8vX4IMjG2qUrhRZNz9DUUxeb75gyPG4nfhNihReMm4qipHTQElRPR35j/1F+oW
-         donLdq8C2BY7+XpkBQgMiXbg4Od2kSPqpPv0uWZiZQ+wYbfq6S0X17LoIbR6lp5CAD3W
-         mfig==
-X-Gm-Message-State: AMke39miNf94AKPYxgLzP7gw0d9Wf+e8uepvUamI4jXND7D7CRDfr4AY9ZbAeHSHHuniHg==
-X-Received: by 10.84.136.135 with SMTP id 7mr5745613pll.149.1487276057606;
-        Thu, 16 Feb 2017 12:14:17 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id p14sm1062738pfl.75.2017.02.16.12.14.14
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 16 Feb 2017 12:14:16 -0800 (PST)
-From: Gargi Sharma <gs051095@gmail.com>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=csIW9t199jd3Ux+YWTRICPkVDZA4tGHvf8b5zKYlCNs=;
+        b=M5eGgxtHaSmRW5ZVw4d/meHexIVo5i3p7v1qqq4v9lQ83EsTkDKI+qJ5/IYeG1XINI
+         eRcktH7u+HIa8Q/XIANjIXCOv2TFydxrjU/aYZCz97NmRKcKcMQQqeLpIFkcMCNCTNCP
+         6VfsrXtx47fEVQ9og2kyA/yLLE0Ds/KDCZ2BpIzeLharh8olzcStHauw7I+NVxJ6IJXu
+         +hM/s1jq80Mi78X/Y9EWuGQv98uT7LWlipgtNvaExpI0OSKmzJbReRJENdtlqvOqHyL5
+         gjAs1z/0e3BG8avbVh19AucNB7fieIxscdMpeNvLpWzFBcYNoN/6TNJ3Pu3lPaV9wxV7
+         GbpA==
+X-Gm-Message-State: AMke39n8kLcD1FX9mlmZ0BfWv/GYZerRfTenDUpd/Tm4g33E47nh9Y9l7SGmj+rzz/yH4Q==
+X-Received: by 10.98.147.78 with SMTP id b75mr8436533pfe.128.1487326407088;
+        Fri, 17 Feb 2017 02:13:27 -0800 (PST)
+Return-Path: <karniksayli1995@gmail.com>
+Received: from sayli-HP-15-Notebook-PC ([182.58.201.59])
+        by smtp.gmail.com with ESMTPSA id p66sm18573524pfb.88.2017.02.17.02.13.20
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 17 Feb 2017 02:13:26 -0800 (PST)
+Date: Fri, 17 Feb 2017 15:43:07 +0530
+From: sayli karnik <karniksayli1995@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: thomas.petazzoni@free-electrons.com,
-	noralf@tronnes.org,
-	gregkh@linuxfoundation.org,
-	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH 0/2] staging: fbtft: Cleanup to improve readability
-Date: Fri, 17 Feb 2017 01:41:55 +0530
-Message-Id: <cover.1487275508.git.gs051095@gmail.com>
-X-Mailer: git-send-email 2.7.4
+Cc: gregkh@linuxfoundation.org
+Subject: [PATCH v2] staging: rtl8192u: ieee80211: Remove typedef to the
+ tx_pending_t structure
+Message-ID: <20170217101307.GA17027@sayli-HP-15-Notebook-PC>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-This patchset contains patches that improve the code readability by removing
-unnecessary blank lines and matching alignment with open parenthesis.
+Using typedef for a structure type is not suggested in Linux kernel coding
+style guidelines. So remove typedef from structure tx_pending_t.
+The typedef name is not used anywhere. All variables of this type are declared
+using "struct tx_pending_t".
+Also change the structure name to tx_pending since it is normally only
+typedefs that have names that end in _t.
 
-Gargi Sharma (2):
-  staging: fbtft: Match alignment with open parentheses
-  staging: fbtft: Remove blank line
+Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
+---
+v2:
+Changed the structure name from tx_pending_t to tx_pending
+Made the changelog clearer
 
- drivers/staging/fbtft/fbtft-core.c | 55 +++++++++++++++++++-------------------
- 1 file changed, 27 insertions(+), 28 deletions(-)
+ drivers/staging/rtl8192u/ieee80211/ieee80211.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211.h b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
+index 0d24705..176083e 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211.h
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
+@@ -1456,10 +1456,10 @@ enum ieee80211_state {
+ 
+ 
+ 
+-typedef struct tx_pending_t{
++struct tx_pending {
+ 	int frag;
+ 	struct ieee80211_txb *txb;
+-}tx_pending_t;
++};
+ 
+ typedef struct _bandwidth_autoswitch {
+ 	long threshold_20Mhzto40Mhz;
+@@ -1883,7 +1883,7 @@ struct ieee80211_device {
+ 	RT_POWER_SAVE_CONTROL	PowerSaveControl;
+ //}
+ 	/* used if IEEE_SOFTMAC_TX_QUEUE is set */
+-	struct  tx_pending_t tx_pending;
++	struct  tx_pending tx_pending;
+ 
+ 	/* used if IEEE_SOFTMAC_ASSOCIATE is set */
+ 	struct timer_list associate_timer;
 -- 
 2.7.4
 
