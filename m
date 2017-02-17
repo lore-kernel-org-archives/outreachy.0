@@ -1,167 +1,95 @@
 X-GM-THRID: 6387958804710948864
-X-Received: by 10.157.35.107 with SMTP id k40mr2042374otd.92.1487312572401;
-        Thu, 16 Feb 2017 22:22:52 -0800 (PST)
+X-Received: by 10.200.55.205 with SMTP id e13mr1903292qtc.13.1487312570134;
+        Thu, 16 Feb 2017 22:22:50 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.107.18 with SMTP id v18ls301414itc.7.canary-gmail; Thu, 16
- Feb 2017 22:22:51 -0800 (PST)
-X-Received: by 10.107.178.3 with SMTP id b3mr2183611iof.93.1487312571928;
-        Thu, 16 Feb 2017 22:22:51 -0800 (PST)
+Received: by 10.107.191.134 with SMTP id p128ls1074311iof.31.gmail; Thu, 16
+ Feb 2017 22:22:49 -0800 (PST)
+X-Received: by 10.107.162.209 with SMTP id l200mr2176242ioe.4.1487312569459;
+        Thu, 16 Feb 2017 22:22:49 -0800 (PST)
 Return-Path: <gs051095@gmail.com>
 Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id u12si557451pfd.3.2017.02.16.22.22.51
+        by gmr-mx.google.com with ESMTPS id z3si560894pfj.0.2017.02.16.22.22.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 16 Feb 2017 22:22:51 -0800 (PST)
+        Thu, 16 Feb 2017 22:22:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
        spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id a123so1287807pgc.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 16 Feb 2017 22:22:51 -0800 (PST)
+Received: by mail-pg0-x241.google.com with SMTP id 5so4068550pgj.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 16 Feb 2017 22:22:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=JWmLzLQ4vuwmcuqGIoQFcbwb2GSqILn1+wVybfEf8NI=;
-        b=QIUB+J5C3JrO1ZEY9mrXb7P5rrC2EexgGnzJtAdlFb2WGZbeXLyYJYOf2V1I8yCCuj
-         T+SbLcHDD0ZEbMGbwNs0GZcPqyJlLF2INZUhhYFg9i8Iiwvlxgd0Nq+x+FRrPPuDLBeK
-         Kh2HNHlsmusaQGYxaQGaX1ObxtbI59yMHD4KhjC5AotzdeeENzr7qu9ueDyFj5hV4gv/
-         ycZ9UN22WCPu/y4l2z7iQ1QeLQr3BGsO8Bo2ChipWiFnIpGncbAN0AJQkK66qfNdjDlJ
-         Z4+WtP5EN3BkU9Lq9skyis7vgIsfzSQwEu7mKaLeJhXnrl8fY+t8Pr+Zf35NIKFpRBYH
-         2CGQ==
+        bh=/gILbOnKqal+7H6wtZ3ucZuS0OlEp2ozZS8NO8GTOjo=;
+        b=uiGm6YDoAEWEw8kpHrXrClp1p0WFkaUc4HN0pK0PDvt4EN+unKjFFcJI6MKoO5IslC
+         ngAHAE7NFekejOOOa6vvALUjHaHvxZ8KBGjStlXzhmHemY656UnKWAsf6bAfEC5m8CMj
+         EByU79c/cr7/1MOXFDhkCYt8Z1TLnuRE8LJ6LMwGuQi9Sx7alTPkOVv3Droq8nKvha7c
+         jhtBrp04wloj7fdJ6OX6Mt2Ddlz4d4CgxQMLpEg2sU4D3NwmN2Q9Lkdpv5iqHWIc2QjA
+         DPYEOcabK6+nMllvrYlh6HysVqc8YvkxVD2L1ueZljC2Imgr9pL1jOneisBgzOjPO0ax
+         DvYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=JWmLzLQ4vuwmcuqGIoQFcbwb2GSqILn1+wVybfEf8NI=;
-        b=bG5g8Rrt9m3GycPQZHalK3E7D/SrIgkvEWN5CBtTb1h+reia5zLm2UbdhcSEDLyRMa
-         jxaRKhLtz2rgnqLzrEpMGSKvYN7DxhJsvvO46bpFh4Nffr6oFXoFyAgnrFXQCScdX8iI
-         qY3g4fYr9EknxFN0wAjU2uKRelsvLTb7PkwI0A7vxK+c34YgwLfBsO6PJAgM3Hr7Op04
-         VGxMKUYAKt6b5Ss7DulkPoNyiC7/o+mi2efwlhQKUja2oVP17le+FT5B9Zfxjkbp2Kgj
-         RWCTqnLljfDWuGFQnlOwmT/sQxizOhujeac8DxCk8aXaMEM1ALlAuPP7NWafRhvWJ198
-         /LDw==
-X-Gm-Message-State: AMke39krBrdBcJ1qbTCqepSs5zoLlAw5ukGGaBfIKFPUOXOa/AGbQBO4QNHjWTolOwQ/FA==
-X-Received: by 10.98.209.16 with SMTP id z16mr7375380pfg.139.1487312571684;
-        Thu, 16 Feb 2017 22:22:51 -0800 (PST)
+        bh=/gILbOnKqal+7H6wtZ3ucZuS0OlEp2ozZS8NO8GTOjo=;
+        b=auQPPgzD4NBy+VffcpYl6za0FZj6/3Cx7VW5UDZwRZIlb2r49sZ+Gs+F6xtQ/k2P6c
+         wUs4ZgJYlnq95hNCmA54ySm63Q4oBwOF4ET2ZPkLgmZTbfqY3Iyojwt7MUiG+MMyaMyX
+         BOitKkNWLHN67IS/zmXdssdJoEQ4EOzxGcDW9tOJOHDzCjB+zcuQ8lu5ZofZIUrOK94e
+         T3JcAt253nwenQPtb4fbQ1LNcFLCQu24+P+pzgpGYX4uhryEb1edGij89U2U81hAy3pV
+         61p5oN+1ZlBvKou7SEbkG2kNpVUW9t2GFSj9tIkOS876Pw2DdBfEs8xPKuNbwGupd9wJ
+         /v9A==
+X-Gm-Message-State: AMke39nDSe+BDEVxt+kEOFaLINSGC+ZDwmfcfZ3tleongC6G4e0Bm1uVY2d8s60tX07o9Q==
+X-Received: by 10.98.19.145 with SMTP id 17mr7428461pft.26.1487312569269;
+        Thu, 16 Feb 2017 22:22:49 -0800 (PST)
 Return-Path: <gs051095@gmail.com>
 Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id l3sm17141628pgn.10.2017.02.16.22.22.49
+        by smtp.googlemail.com with ESMTPSA id l3sm17141628pgn.10.2017.02.16.22.22.47
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 16 Feb 2017 22:22:51 -0800 (PST)
+        Thu, 16 Feb 2017 22:22:48 -0800 (PST)
 From: Gargi Sharma <gs051095@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org,
 	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH 5/6] staging: rtl8188eu: Remove multiple blank lines
-Date: Fri, 17 Feb 2017 11:50:29 +0530
-Message-Id: <3c8e389f01e08e2e0059b3fc5d50b2145e367d55.1487312015.git.gs051095@gmail.com>
+Subject: [PATCH 4/6] staging: rtl8188eu: Remove unnecessary blank lines
+Date: Fri, 17 Feb 2017 11:50:28 +0530
+Message-Id: <dab6bd329520168bda6570e1b8140f7ceee9f72b.1487312015.git.gs051095@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <cover.1487312015.git.gs051095@gmail.com>
 References: <cover.1487312015.git.gs051095@gmail.com>
 In-Reply-To: <cover.1487312015.git.gs051095@gmail.com>
 References: <cover.1487312015.git.gs051095@gmail.com>
 
-Remove blank lines to fix the checkpatch issue,
-don't use multiple blank lines.
+Remove unnecessary blank lines to fix the checkpatch issue,
+blank lines are not required before '}'.
 
 Signed-off-by: Gargi Sharma <gs051095@gmail.com>
 ---
- drivers/staging/rtl8188eu/core/rtw_mlme.c | 11 -----------
- 1 file changed, 11 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_mlme.c | 2 --
+ 1 file changed, 2 deletions(-)
 
 diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c b/drivers/staging/rtl8188eu/core/rtw_mlme.c
-index 289e809..6316a27 100644
+index 8bdb539..289e809 100644
 --- a/drivers/staging/rtl8188eu/core/rtw_mlme.c
 +++ b/drivers/staging/rtl8188eu/core/rtw_mlme.c
-@@ -322,7 +322,6 @@ int is_same_network(struct wlan_bssid_ex *src, struct wlan_bssid_ex *dst)
- 	memcpy((u8 *)&le_scap, rtw_get_capability_from_ie(src->IEs), 2);
- 	memcpy((u8 *)&le_dcap, rtw_get_capability_from_ie(dst->IEs), 2);
- 
+@@ -392,7 +392,6 @@ void update_network(struct wlan_bssid_ex *dst, struct wlan_bssid_ex *src,
+ 	dst->PhyInfo.SignalStrength = ss_final;
+ 	dst->PhyInfo.SignalQuality = sq_final;
+ 	dst->Rssi = rssi_final;
 -
- 	s_cap = le16_to_cpu(le_scap);
- 	d_cap = le16_to_cpu(le_dcap);
- 
-@@ -547,7 +546,6 @@ static int rtw_is_desired_network(struct adapter *adapter, struct wlan_network *
- 			bselected = false;
- 	}
- 
--
- 	return bselected;
  }
  
-@@ -557,7 +555,6 @@ void rtw_atimdone_event_callback(struct adapter *adapter, u8 *pbuf)
- 	RT_TRACE(_module_rtl871x_mlme_c_, _drv_err_, ("receive atimdone_evet\n"));
+ static void update_current_network(struct adapter *adapter, struct wlan_bssid_ex *pnetwork)
+@@ -494,7 +493,6 @@ void rtw_update_scanned_network(struct adapter *adapter, struct wlan_bssid_ex *t
+ 
+ exit:
+ 	spin_unlock_bh(&queue->lock);
+-
  }
  
--
- void rtw_survey_event_callback(struct adapter	*adapter, u8 *pbuf)
- {
- 	u32 len;
-@@ -824,7 +821,6 @@ void rtw_indicate_disconnect(struct adapter *padapter)
- 
- 	_clr_fwstate_(pmlmepriv, _FW_UNDER_LINKING | WIFI_UNDER_WPS);
- 
--
- 	if (pmlmepriv->to_roaming > 0)
- 		_clr_fwstate_(pmlmepriv, _FW_LINKED);
- 
-@@ -958,7 +954,6 @@ static void rtw_joinbss_update_network(struct adapter *padapter, struct wlan_net
- 
- 	cur_network->aid = pnetwork->join_res;
- 
--
- 	rtw_set_signal_stat_timer(&padapter->recvpriv);
- 	padapter->recvpriv.signal_strength = ptarget_wlan->network.PhyInfo.SignalStrength;
- 	padapter->recvpriv.signal_qual = ptarget_wlan->network.PhyInfo.SignalQuality;
-@@ -1010,7 +1005,6 @@ void rtw_joinbss_event_prehandle(struct adapter *adapter, u8 *pbuf)
- 
- 	rtw_get_encrypt_decrypt_from_registrypriv(adapter);
- 
--
- 	if (pmlmepriv->assoc_ssid.SsidLength == 0)
- 		RT_TRACE(_module_rtl871x_mlme_c_, _drv_err_, ("@@@@@   joinbss event call back  for Any SSid\n"));
- 	else
-@@ -1070,7 +1064,6 @@ void rtw_joinbss_event_prehandle(struct adapter *adapter, u8 *pbuf)
- 				goto ignore_joinbss_callback;
- 			}
- 
--
- 			/* s3. find ptarget_sta & update ptarget_sta after update cur_network only for station mode */
- 			if (check_fwstate(pmlmepriv, WIFI_STATION_STATE) == true) {
- 				ptarget_sta = rtw_joinbss_update_stainfo(adapter, pnetwork);
-@@ -1351,7 +1344,6 @@ void _rtw_join_timeout_handler (unsigned long data)
- 	if (adapter->bDriverStopped || adapter->bSurpriseRemoved)
- 		return;
- 
--
- 	spin_lock_bh(&pmlmepriv->lock);
- 
- 	if (pmlmepriv->to_roaming > 0) { /*  join timeout caused by roaming */
-@@ -1447,7 +1439,6 @@ static int rtw_check_join_candidate(struct mlme_priv *pmlmepriv
- 	unsigned long since_scan;
- 	struct adapter *adapter = container_of(pmlmepriv, struct adapter, mlmepriv);
- 
--
- 	/* check bssid, if needed */
- 	if (pmlmepriv->assoc_by_bssid) {
- 		if (memcmp(competitor->network.MacAddress, pmlmepriv->assoc_bssid, ETH_ALEN))
-@@ -1530,7 +1521,6 @@ int rtw_select_and_join_from_scanned_queue(struct mlme_priv *pmlmepriv)
- 			candidate->network.Configuration.DSConfig);
- 	}
- 
--
- 	/*  check for situation of  _FW_LINKED */
- 	if (check_fwstate(pmlmepriv, _FW_LINKED) == true) {
- 		DBG_88E("%s: _FW_LINKED while ask_for_joinbss!!!\n", __func__);
-@@ -1928,7 +1918,6 @@ unsigned int rtw_restructure_ht_ie(struct adapter *padapter, u8 *in_ie, u8 *out_
- 	struct ht_priv		*phtpriv = &pmlmepriv->htpriv;
- 	u32 rx_packet_offset, max_recvbuf_sz;
- 
--
- 	phtpriv->ht_option = false;
- 
- 	p = rtw_get_ie(in_ie+12, _HT_CAPABILITY_IE_, &ielen, in_len-12);
+ static void rtw_add_network(struct adapter *adapter,
 -- 
 2.7.4
 
