@@ -1,84 +1,97 @@
-X-GM-THRID: 6393685966647721984
-X-Received: by 10.99.152.9 with SMTP id q9mr3414334pgd.84.1488646018681;
-        Sat, 04 Mar 2017 08:46:58 -0800 (PST)
+X-GM-THRID: 6387840311027040256
+X-Received: by 10.25.56.6 with SMTP id f6mr719826lfa.4.1487314349867;
+        Thu, 16 Feb 2017 22:52:29 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.18.240 with SMTP id g103ls12382668otg.39.gmail; Sat, 04
- Mar 2017 08:46:58 -0800 (PST)
-X-Received: by 10.129.44.69 with SMTP id s66mr3342543yws.132.1488646018332;
-        Sat, 04 Mar 2017 08:46:58 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id 207si566347pfu.8.2017.03.04.08.46.58
+Received: by 10.46.83.15 with SMTP id h15ls141553ljb.14.gmail; Thu, 16 Feb
+ 2017 22:52:28 -0800 (PST)
+X-Received: by 10.46.20.72 with SMTP id 8mr649722lju.19.1487314348923;
+        Thu, 16 Feb 2017 22:52:28 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id f7si21979wmg.3.2017.02.16.22.52.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 04 Mar 2017 08:46:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Thu, 16 Feb 2017 22:52:28 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id 25so15652982pgy.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 04 Mar 2017 08:46:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=QfJq096v2opntKiZU1aqYixkPilsfO7iCI+LAc5xHGM=;
-        b=u7hAnfk8FUfNyNG3gfcjS+/in7i/F9NVoL/X0bXZfshvAt/EW0aTFzmVVyWO27+BUR
-         AlWM6cSPyMWlCC9IzQJ3KoqIFcutHehs6ApBAna2sZ8iDQZB7Xdk/rKm05YO2jUTTr+/
-         EXV2CyqcnzWN+pnzXWr/CVp6A4D4IgYR1UfY96guK90fqpjELySDb0Uw4VEZnpCmciON
-         l/LZhnOcBIIqu+CvBpysWTTOEZcRWy2lE0cxKqPUzxfBJ4Z77FmgnxKigPIVTq+zwJEa
-         t8gqSeSUhpBr7lHpPF5PE9pSZuVvMmMdnfpVWDd+8govWthVcO32yyDyu6yPIbw5k3g3
-         LSQA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=QfJq096v2opntKiZU1aqYixkPilsfO7iCI+LAc5xHGM=;
-        b=XpGmj9QvNrpIVeKoXFqaKLH6CpN3AA3ih7oPAD1RcuWPRqNwePnxYdOIQJbpV6Youq
-         PViBUh3dvXDtjkXbcfVtP2BGlsucc+RChMH0IIrEjMbeyHZfqhlfmefWsAnDN4cFiQUk
-         iHZWJbxe0z/DdgBX1KWv7ai97AbqXMeVqm6NSgIhFXtXob6P6YyLZIP4SSggQy2qYA85
-         21wa5d2TAGJhfVtPyTqOFPYhxP15pwuZfRTteRS0b8gF4+uWlXwAE3zvH9LClT8jsOTV
-         k8shLWOiTbdBe99rmpu8Wk8Jopf4v+3rHbSGJVWuLPS/u9AcPtFDlzqkL9KfeuYTRWgU
-         8lxA==
-X-Gm-Message-State: AMke39n3QR7u2uway8Tq8fsgEpg24xrgR9pQK2aADF7ol7Q/6YefXWZIWeLOCfPhQ+a8jA==
-X-Received: by 10.98.4.71 with SMTP id 68mr10572456pfe.92.1488646018127;
-        Sat, 04 Mar 2017 08:46:58 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id b8sm30399172pgn.6.2017.03.04.08.46.56
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 04 Mar 2017 08:46:56 -0800 (PST)
-From: simran singhal <singhalsimran0@gmail.com>
-To: w.d.hubbs@gmail.com
-Cc: chris@the-brannons.com,
-	gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	speakup@linux-speakup.org,
-	linux-rpi-kernel@lists.infradead.org,
-	outreachy-kernel@googlegroups.com,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH 0/3] staging: Clean up tests if NULL returned on failure
-Date: Sat,  4 Mar 2017 22:16:52 +0530
-Message-Id: <1488646015-7059-1-git-send-email-singhalsimran0@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,171,1484002800"; 
+   d="scan'208";a="213528798"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 17 Feb 2017 07:52:27 +0100
+Date: Fri, 17 Feb 2017 07:52:27 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Julia Lawall <julia.lawall@lip6.fr>
+cc: Varsha Rao <rvarsha016@gmail.com>, 
+    Larry Finger <Larry.Finger@lwfinger.net>, 
+    Florian Schilhabel <florian.c.schilhabel@googlemail.com>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: rtl8712: Moved logical
+ OR operator to previous line.
+In-Reply-To: <alpine.DEB.2.20.1702170649570.2062@hadrien>
+Message-ID: <alpine.DEB.2.20.1702170752010.2062@hadrien>
+References: <20170217051238.GA3213@euri> <alpine.DEB.2.20.1702170649570.2062@hadrien>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-This patch series tests if functions like kmalloc/kzalloc return NULL
-on failure. When NULL represents failure, !x is commonly used.
 
-simran singhal (3):
-  staging: rtl8192u: Clean up tests if NULL returned on failure
-  staging: speakup: Clean up tests if NULL returned on failure
-  staging: vc04_services: Clean up tests if NULL returned on failure
 
- drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_tkip.c      | 2 +-
- drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_wep.c       | 2 +-
- drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c         | 2 +-
- drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c              | 4 ++--
- drivers/staging/speakup/main.c                                 | 2 +-
- drivers/staging/vc04_services/interface/vchiq_arm/vchiq_util.c | 2 +-
- 6 files changed, 7 insertions(+), 7 deletions(-)
+On Fri, 17 Feb 2017, Julia Lawall wrote:
 
--- 
-2.7.4
+>
+>
+> On Fri, 17 Feb 2017, Varsha Rao wrote:
+>
+> > Moved logical OR operator to previous line to fix the following
+> > checkpatch issue:
+> >
+> > CHECK: Logical continuations should be on the previous line.
+>
+> Acked-by: drivers/staging/rtl8712/ieee80211.c
 
+Sorry!
+
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+>
+> > Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
+> > ---
+> >  v2:
+> >
+> >  -Edited commit message.
+> >  -Fixed the warning of line over 80 characters.
+> >
+> >  drivers/staging/rtl8712/ieee80211.c | 5 +++--
+> >  1 file changed, 3 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/drivers/staging/rtl8712/ieee80211.c b/drivers/staging/rtl8712/ieee80211.c
+> > index d84da2b..f35121e 100644
+> > --- a/drivers/staging/rtl8712/ieee80211.c
+> > +++ b/drivers/staging/rtl8712/ieee80211.c
+> > @@ -288,8 +288,9 @@ int r8712_parse_wpa_ie(u8 *wpa_ie, int wpa_ie_len, int *group_cipher,
+> >  		/* No WPA IE - fail silently */
+> >  		return _FAIL;
+> >  	}
+> > -	if ((*wpa_ie != _WPA_IE_ID_) || (*(wpa_ie + 1) != (u8)(wpa_ie_len - 2))
+> > -	     || (memcmp(wpa_ie + 2, (void *)WPA_OUI_TYPE, WPA_SELECTOR_LEN)))
+> > +	if ((*wpa_ie != _WPA_IE_ID_) ||
+> > +	    (*(wpa_ie + 1) != (u8)(wpa_ie_len - 2)) ||
+> > +	    (memcmp(wpa_ie + 2, (void *)WPA_OUI_TYPE, WPA_SELECTOR_LEN)))
+> >  		return _FAIL;
+> >  	pos = wpa_ie;
+> >  	pos += 8;
+> > --
+> > 2.9.3
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170217051238.GA3213%40euri.
+> > For more options, visit https://groups.google.com/d/optout.
+> >
+>
 
