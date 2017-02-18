@@ -1,98 +1,104 @@
 X-GM-THRID: 6388342428982575104
-X-Received: by 10.46.88.70 with SMTP id x6mr1147169ljd.22.1487423768876;
-        Sat, 18 Feb 2017 05:16:08 -0800 (PST)
+X-Received: by 10.99.125.27 with SMTP id y27mr3741132pgc.130.1487401879022;
+        Fri, 17 Feb 2017 23:11:19 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.33.152 with SMTP id h24ls316287lji.53.gmail; Sat, 18 Feb
- 2017 05:16:08 -0800 (PST)
-X-Received: by 10.25.168.20 with SMTP id r20mr1263976lfe.10.1487423768033;
-        Sat, 18 Feb 2017 05:16:08 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id f7si359896wmg.3.2017.02.18.05.16.07
+Received: by 10.36.76.84 with SMTP id a81ls1038573itb.7.gmail; Fri, 17 Feb
+ 2017 23:11:18 -0800 (PST)
+X-Received: by 10.98.27.199 with SMTP id b190mr2947648pfb.5.1487401878301;
+        Fri, 17 Feb 2017 23:11:18 -0800 (PST)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id h130si1159333pfe.1.2017.02.17.23.11.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 18 Feb 2017 05:16:07 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Fri, 17 Feb 2017 23:11:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.35,174,1484002800"; 
-   d="scan'208";a="261082918"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 18 Feb 2017 14:16:07 +0100
-Date: Sat, 18 Feb 2017 14:16:03 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: simran singhal <singhalsimran0@gmail.com>
-cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org, 
-    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 1/6] staging: rtl8192e: Replaced
- comparison to NULL statements
-In-Reply-To: <20170218071115.GA10540@singhal-Inspiron-5558>
-Message-ID: <alpine.DEB.2.20.1702181414290.3112@hadrien>
-References: <20170218071115.GA10540@singhal-Inspiron-5558>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x244.google.com with SMTP id o64so5661886pfb.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 17 Feb 2017 23:11:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=Coz6iyd+ozSbcq02D9W2shrdSXwC+7aZDnPIWX1Z8GA=;
+        b=R+4fCX8UPBjf6owBqxb9EuJ+W2Jag0naf3Yq5zbcXH739ibcM1KusUI6IlYMN4o8oE
+         hCLuoB7usaOHOmGQgVxDaji8QMkvNrr5XIEIKGXfvQkLh3FZlbXnU5tJxzTtEacSSkPb
+         5+8exEkfr8ppfn5L4gfALAqqmEigsvvwHvEBnNvzt18Ex2me6E3QtJmGgPNAaMHSZI+h
+         IObSOWYbwjSANSB3QLN8hejNyCH/V11bn7/J1dLU45/z2Z9BLZh8AMXOBtvhsWkob403
+         WHuFWzQERiMCJ1R1vQylXkf0AF97hHgTqdROCvXsNetcT7PfgBaC3aXiDLNITiLT/Ij7
+         jgew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=Coz6iyd+ozSbcq02D9W2shrdSXwC+7aZDnPIWX1Z8GA=;
+        b=HkfOIDAYPsrrpkT8rvUkx/FaU8NQ27EZngqSUVak44sRUxcUERavcRYxFR1LL0LDaB
+         meaaGhYs9rQVgz4HGMKzzPPNR+7vqYvqFCeLpATUZBz+DNSKkVMLC/lTLE8LOSeAXL0B
+         p76Oa88RpODTQ41cZALjN9Y4e9gWakFGGzjKHxTpwUwFb/XQARIqPHz/6LIX/hrLH6x1
+         OOFz8aqooQPpKOh2qTVUiHWYRICkppCbI2io2KxGKRLjJUechCkvnMudvn2wry3aWLZ1
+         Kn8qkEMg8ZxkMM+Ftb66xs9CdNLyHe7EVEHNMwMqHsucO9WHtI2iV/aeqYlz/HuWohll
+         hBkw==
+X-Gm-Message-State: AMke39mRCWankP5A+x27ZyJJgz8gmjLwqFyxHownlwCjHXA6mRZ2hdTVmQpqjLL3si2E9g==
+X-Received: by 10.99.253.81 with SMTP id m17mr14849615pgj.78.1487401878125;
+        Fri, 17 Feb 2017 23:11:18 -0800 (PST)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from singhal-Inspiron-5558 ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id r17sm23357607pgg.19.2017.02.17.23.11.16
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 17 Feb 2017 23:11:17 -0800 (PST)
+Date: Sat, 18 Feb 2017 12:41:15 +0530
+From: simran singhal <singhalsimran0@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH 1/6] staging: rtl8192e: Replaced comparison to NULL statements
+Message-ID: <20170218071115.GA10540@singhal-Inspiron-5558>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
+This patch corrects check generated by checkpatch.pl by
+replacing comparison to null statements with equivalent
+statements in the form of "!x".
 
+Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+---
+ drivers/staging/rtl8192e/rtl819x_BAProc.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-On Sat, 18 Feb 2017, simran singhal wrote:
+diff --git a/drivers/staging/rtl8192e/rtl819x_BAProc.c b/drivers/staging/rtl8192e/rtl819x_BAProc.c
+index 20260af..bdbd21c 100644
+--- a/drivers/staging/rtl8192e/rtl819x_BAProc.c
++++ b/drivers/staging/rtl8192e/rtl819x_BAProc.c
+@@ -83,12 +83,12 @@ static struct sk_buff *rtllib_ADDBA(struct rtllib_device *ieee, u8 *Dst,
+ 	netdev_dbg(ieee->dev, "%s(): frame(%d) sentd to: %pM, ieee->dev:%p\n",
+ 		   __func__, type, Dst, ieee->dev);
+ 
+-	if (pBA == NULL) {
++	if (!pBA) {
+ 		netdev_warn(ieee->dev, "pBA is NULL\n");
+ 		return NULL;
+ 	}
+ 	skb = dev_alloc_skb(len + sizeof(struct rtllib_hdr_3addr));
+-	if (skb == NULL)
++	if (!skb)
+ 		return NULL;
+ 
+ 	memset(skb->data, 0, sizeof(struct rtllib_hdr_3addr));
+@@ -154,7 +154,7 @@ static struct sk_buff *rtllib_DELBA(struct rtllib_device *ieee, u8 *dst,
+ 	DelbaParamSet.field.TID	= pBA->BaParamSet.field.TID;
+ 
+ 	skb = dev_alloc_skb(len + sizeof(struct rtllib_hdr_3addr));
+-	if (skb == NULL)
++	if (!skb)
+ 		return NULL;
+ 
+ 	skb_reserve(skb, ieee->tx_headroom);
+-- 
+2.7.4
 
-> This patch corrects check generated by checkpatch.pl by
-
-There is not much information in the first line.  Use the imperative:
-
-Replace comparisons to NULL by ...
-
-> replacing comparison to null statements with equivalent
-> statements in the form of "!x".
-
-Actually, they are expressions.  An expression returns a value.  A
-statement is performed for its side effects only.
-
-julia
-
-> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
-> ---
->  drivers/staging/rtl8192e/rtl819x_BAProc.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/staging/rtl8192e/rtl819x_BAProc.c b/drivers/staging/rtl8192e/rtl819x_BAProc.c
-> index 20260af..bdbd21c 100644
-> --- a/drivers/staging/rtl8192e/rtl819x_BAProc.c
-> +++ b/drivers/staging/rtl8192e/rtl819x_BAProc.c
-> @@ -83,12 +83,12 @@ static struct sk_buff *rtllib_ADDBA(struct rtllib_device *ieee, u8 *Dst,
->  	netdev_dbg(ieee->dev, "%s(): frame(%d) sentd to: %pM, ieee->dev:%p\n",
->  		   __func__, type, Dst, ieee->dev);
->
-> -	if (pBA == NULL) {
-> +	if (!pBA) {
->  		netdev_warn(ieee->dev, "pBA is NULL\n");
->  		return NULL;
->  	}
->  	skb = dev_alloc_skb(len + sizeof(struct rtllib_hdr_3addr));
-> -	if (skb == NULL)
-> +	if (!skb)
->  		return NULL;
->
->  	memset(skb->data, 0, sizeof(struct rtllib_hdr_3addr));
-> @@ -154,7 +154,7 @@ static struct sk_buff *rtllib_DELBA(struct rtllib_device *ieee, u8 *dst,
->  	DelbaParamSet.field.TID	= pBA->BaParamSet.field.TID;
->
->  	skb = dev_alloc_skb(len + sizeof(struct rtllib_hdr_3addr));
-> -	if (skb == NULL)
-> +	if (!skb)
->  		return NULL;
->
->  	skb_reserve(skb, ieee->tx_headroom);
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170218071115.GA10540%40singhal-Inspiron-5558.
-> For more options, visit https://groups.google.com/d/optout.
->
 
