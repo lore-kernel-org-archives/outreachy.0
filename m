@@ -1,120 +1,97 @@
-X-GM-THRID: 6395948557689421824
-X-Received: by 10.46.76.17 with SMTP id z17mr3557269lja.13.1489172819075;
-        Fri, 10 Mar 2017 11:06:59 -0800 (PST)
+X-GM-THRID: 6388128141195345920
+X-Received: by 10.25.18.35 with SMTP id h35mr1532714lfi.11.1487444435364;
+        Sat, 18 Feb 2017 11:00:35 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.6.2 with SMTP id 2ls1053672ljg.13.gmail; Fri, 10 Mar 2017
- 11:06:58 -0800 (PST)
-X-Received: by 10.25.216.154 with SMTP id r26mr2958917lfi.7.1489172818650;
-        Fri, 10 Mar 2017 11:06:58 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
-        by gmr-mx.google.com with ESMTPS id p144si28734wme.2.2017.03.10.11.06.58
+Received: by 10.46.21.83 with SMTP id 19ls376096ljv.49.gmail; Sat, 18 Feb 2017
+ 11:00:34 -0800 (PST)
+X-Received: by 10.46.87.27 with SMTP id l27mr1376829ljb.28.1487444434583;
+        Sat, 18 Feb 2017 11:00:34 -0800 (PST)
+Return-Path: <jic23@kernel.org>
+Received: from saturn.retrosnub.co.uk (saturn.retrosnub.co.uk. [178.18.118.26])
+        by gmr-mx.google.com with ESMTPS id y19si354376wmd.0.2017.02.18.11.00.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 10 Mar 2017 11:06:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
+        Sat, 18 Feb 2017 11:00:34 -0800 (PST)
+Received-SPF: neutral (google.com: 178.18.118.26 is neither permitted nor denied by best guess record for domain of jic23@kernel.org) client-ip=178.18.118.26;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x244.google.com with SMTP id n11so489273wma.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 11:06:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=9lIs7fZN94ALWpY/CLQ/f9FrzhsxfOdtLTyOR9neufs=;
-        b=qEBxmmkMtdflWaY7DCYL5lwg37FCcFJo8RnXxls/e0rYsBtMzZrYrtVtBPPFnnYoF4
-         BFWaqLdSZtL4ZF7IH1Vmu8h7aXjmB/5ttU/CWFfTC/mga3mb/FKr8+BfUPn3DvNvfnR0
-         qp6iV+G1QfdwNtLLIaRdvSxNysrEbmcr391C4Ndd/L1mM2d5sdMoBJ8T6qlzcY7s7wO7
-         vvwXP8dIMmHVXZYf7Xke6ie9NIoqe78pdU3f5KefRXZdKReiky8d0HnXQpqBmunSYy9F
-         AR4PqG7hbWS54diDkPGCgsfPa2LXrN0UCq8p4jfY8zC91/E/9pg4fuRZXqNyuHKe12dK
-         Tqeg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=9lIs7fZN94ALWpY/CLQ/f9FrzhsxfOdtLTyOR9neufs=;
-        b=oV5Rc8VvDImOj4lwLumrPmOtJZggxv44XiCfjKFX58P/k6qSOgNbI9WxDqFoZqzfBh
-         KYb+2U8aSFKQM3/t5HL8AeQOamY+K2iatrY8i50Ir5cd6mI0Dtx+CKquVI+TvFErlk7t
-         er3ki2U66GpyCeIoZiGkLyMDjj+J7UFWvyY5cV1tlKWMJ6HrMojrdCW1W0VujphcEvNf
-         Voh+igFmb8tBEqwuYHp+YXiyiybU87P+5zQYNFBZjsgTPBmlow0JJvF1HCIryvgmWUd6
-         cpy614DEy7WoLFGQtwEp7DoaQb//QmSIGfcuvHUp7/MYnuSUDLaWn/vrjQrVy+s3b020
-         k9yQ==
-X-Gm-Message-State: AFeK/H20orn/1dxZxzNmiVj1ZjQcMa81idYy9EkqO2wqYboWyER99CpV+REGvCYB8yFzYA==
-X-Received: by 10.28.111.3 with SMTP id k3mr414632wmc.39.1489172818436;
-        Fri, 10 Mar 2017 11:06:58 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([2a02:2f0b:8130:11ea:9935:36c4:c373:a2cc])
-        by smtp.gmail.com with ESMTPSA id b10sm357617wmi.34.2017.03.10.11.06.56
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 10 Mar 2017 11:06:57 -0800 (PST)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: aditya.shankar@microchip.com,
-	ganesh.krishna@microchip.com,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH 2/7] staging: wilc1000: Declare variables at top of function
-Date: Fri, 10 Mar 2017 21:06:55 +0200
-Message-Id: <20170310190655.19864-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+       spf=neutral (google.com: 178.18.118.26 is neither permitted nor denied by best guess record for domain of jic23@kernel.org) smtp.mailfrom=jic23@kernel.org
+Received: from localhost.localdomain (cpc91196-cmbg18-2-0-cust659.5-4.cable.virginm.net [81.96.234.148])
+	by saturn.retrosnub.co.uk (Postfix; Retrosnub mail submission) with ESMTPSA id 08A4B40603;
+	Sat, 18 Feb 2017 19:00:34 +0000 (GMT)
+Subject: Re: [Outreachy kernel] [PATCH] staging: iio: compress return logic
+To: Julia Lawall <julia.lawall@lip6.fr>, Gargi Sharma <gs051095@gmail.com>
+References: <1487351841-6639-1-git-send-email-gs051095@gmail.com>
+ <alpine.DEB.2.20.1702171852520.3109@hadrien>
+Cc: outreachy-kernel@googlegroups.com, lars@metafoo.de,
+ Michael.Hennerich@analog.com, knaack.h@gmx.de, pmeerw@pmeerw.net,
+ gregkh@linuxfoundation.org
+From: Jonathan Cameron <jic23@kernel.org>
+Message-ID: <339b68da-1e2c-cc4a-d072-3edc74aa69b3@kernel.org>
+Date: Sat, 18 Feb 2017 19:00:33 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.0
+MIME-Version: 1.0
+In-Reply-To: <alpine.DEB.2.20.1702171852520.3109@hadrien>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 
-Moving declaration of some variables at top of wilc_spi_read_int
-function to imrpove code readability.
+On 17/02/17 17:53, Julia Lawall wrote:
+> 
+> 
+> On Fri, 17 Feb 2017, Gargi Sharma wrote:
+> 
+>> Simplify function returns by merging assignment and return.
+>> Found with Coccinelle.
+>>
+>> Semantic patch:
+>> @@
+>> local idexpression ret;
+>> expression e;
+>> @@
+>>
+>> -ret =
+>> +return
+>>      e;
+>> -return ret;
+>>
+>> Signed-off-by: Gargi Sharma <gs051095@gmail.com>
+> 
+> Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+Applied to the togreg branch of iio.git and pushed out as testing for the autobuilders to
+play with it.
 
-Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
----
- drivers/staging/wilc1000/wilc_spi.c | 19 ++++++++-----------
- 1 file changed, 8 insertions(+), 11 deletions(-)
+Thanks,
 
-diff --git a/drivers/staging/wilc1000/wilc_spi.c b/drivers/staging/wilc1000/wilc_spi.c
-index b3c0594..887f45f 100644
---- a/drivers/staging/wilc1000/wilc_spi.c
-+++ b/drivers/staging/wilc1000/wilc_spi.c
-@@ -929,6 +929,9 @@ static int wilc_spi_read_int(struct wilc *wilc, u32 *int_status)
- {
- 	struct spi_device *spi = to_spi_device(wilc->dev);
- 	int ret;
-+	int happended, j;
-+	u32 irq_flags;
-+	u32 unkmown_mask;
- 
- 	if (g_spi.has_thrpt_enh) {
- 		ret = spi_internal_read(wilc, 0xe840 - WILC_SPI_REG_BASE,
-@@ -946,12 +949,8 @@ static int wilc_spi_read_int(struct wilc *wilc, u32 *int_status)
- 		}
- 		tmp = (byte_cnt >> 2) & IRQ_DMA_WD_CNT_MASK;
- 
--		int happended, j;
--
- 		j = 0;
- 		do {
--			u32 irq_flags;
--
- 			happended = 0;
- 
- 			wilc_spi_read_reg(wilc, 0x1a90, &irq_flags);
-@@ -963,14 +962,12 @@ static int wilc_spi_read_int(struct wilc *wilc, u32 *int_status)
- 				tmp |= (((irq_flags >> 0) & 0x7) << (IRG_FLAGS_OFFSET + 5));
- 			}
- 
--				u32 unkmown_mask;
--
--				unkmown_mask = ~((1ul << g_spi.nint) - 1);
-+			unkmown_mask = ~((1ul << g_spi.nint) - 1);
- 
--				if ((tmp >> IRG_FLAGS_OFFSET) & unkmown_mask) {
--					dev_err(&spi->dev, "Unexpected interrupt (2): j=%d, tmp=%x, mask=%x\n", j, tmp, unkmown_mask);
--					happended = 1;
--				}
-+			if ((tmp >> IRG_FLAGS_OFFSET) & unkmown_mask) {
-+				dev_err(&spi->dev, "Unexpected interrupt (2): j=%d, tmp=%x, mask=%x\n", j, tmp, unkmown_mask);
-+				happended = 1;
-+			}
- 			j++;
- 		} while (happended);
- 
--- 
-2.9.3
+Jonathan
+> 
+>> ---
+>>  drivers/staging/iio/meter/ade7854.c | 4 +---
+>>  1 file changed, 1 insertion(+), 3 deletions(-)
+>>
+>> diff --git a/drivers/staging/iio/meter/ade7854.c b/drivers/staging/iio/meter/ade7854.c
+>> index e8007f0..c6cffc1 100644
+>> --- a/drivers/staging/iio/meter/ade7854.c
+>> +++ b/drivers/staging/iio/meter/ade7854.c
+>> @@ -426,9 +426,7 @@ static int ade7854_set_irq(struct device *dev, bool enable)
+>>  	else
+>>  		irqen &= ~BIT(17);
+>>
+>> -	ret = st->write_reg_32(dev, ADE7854_MASK0, irqen);
+>> -
+>> -	return ret;
+>> +	return st->write_reg_32(dev, ADE7854_MASK0, irqen);
+>>  }
+>>
+>>  static int ade7854_initial_setup(struct iio_dev *indio_dev)
+>> --
+>> 2.7.4
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1487351841-6639-1-git-send-email-gs051095%40gmail.com.
+>> For more options, visit https://groups.google.com/d/optout.
+>>
 
 
