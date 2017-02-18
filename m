@@ -1,62 +1,61 @@
 X-GM-THRID: 6388479452970483712
-X-Received: by 10.98.106.194 with SMTP id f185mr4414206pfc.42.1487523302777;
-        Sun, 19 Feb 2017 08:55:02 -0800 (PST)
+X-Received: by 10.36.64.11 with SMTP id n11mr3957202ita.7.1487437133598;
+        Sat, 18 Feb 2017 08:58:53 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.35.13 with SMTP id j13ls8616626otb.40.gmail; Sun, 19 Feb
- 2017 08:55:02 -0800 (PST)
-X-Received: by 10.157.23.232 with SMTP id j95mr5780180otj.132.1487523302351;
-        Sun, 19 Feb 2017 08:55:02 -0800 (PST)
+Received: by 10.157.13.110 with SMTP id 101ls714919oti.43.gmail; Sat, 18 Feb
+ 2017 08:58:53 -0800 (PST)
+X-Received: by 10.157.51.38 with SMTP id f35mr4320560otc.84.1487437133207;
+        Sat, 18 Feb 2017 08:58:53 -0800 (PST)
 Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id z73si1906961pfa.2.2017.02.19.08.55.02
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id s64si707360pfk.0.2017.02.18.08.58.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 19 Feb 2017 08:55:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Sat, 18 Feb 2017 08:58:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id v184so9822335pgv.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 19 Feb 2017 08:55:02 -0800 (PST)
+Received: by mail-pg0-x243.google.com with SMTP id v184so7670105pgv.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 18 Feb 2017 08:58:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
         bh=82HAWwIN9HHtEAs4L24EbzVy51ypJ0ndQmgzPBGRt5k=;
-        b=RXR7CgCkEf3aGy65O8tU6ftEElovRhAO4CGADQOpcL42zkEn3Gbnp7vaBaPFCyj4BN
-         aZGs3FTzEzI6V+Q99/l2fShQehHUsULknFISDGxF1nTJJXfgJ/37dvkHKZXS7/gOWIwu
-         5AV7peA5bUHzAXLYG9dDC4tZORyy/EL7PbPB2H6ujYpXE2cM4nEmQHTYL2n2YlxO2Ivh
-         y8Lsr4F4//8nzrs0iS6sEivnB3BuZHMoIA732UEQaCZ6WhY3Xp0A0Y9HrB+PZ8U6eNyP
-         R0OQ/r09ke3KdYzzADWIcAac6+KejYPExgDyiMGzu7oz9RuYSYv3r0wVvIaWY0MZ/qPE
-         AA2A==
+        b=GdxM2hJC2ojXYkoqf9dOYr21fpyD/Qwf4Vom4IJaS9RjhoBiRopPuxhaP2wKKn8rOB
+         PfLGC2QOg3opfUE9nUPY4F6aJd3c668Dkfhgd2jtnPcmXQZ8pz8EigxyesIYHHjxcJpJ
+         +nr4ReFewr2SCiOTMGbtlJ9RYrxbvYG1VGIg16pd00dQUeOMr55ORFVZ4YArxgyJCcAU
+         gKpLKfINUmhfz53dQFr9Of7AZEIV+VcwCbDKzkF91UTyREbZnKEI/MkLlsKOcnK6c+vp
+         IQ8EdWh5iDn+Y+EW0gTt86iDYh8gpqhtSAphE59UahbBLOIWwXATirha0Awdo8QCUZGm
+         DCVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
         bh=82HAWwIN9HHtEAs4L24EbzVy51ypJ0ndQmgzPBGRt5k=;
-        b=jOpAPtll49zFMedvPAtZrQyLtqFX61b9PCIKd1BfPlcP0SH/6t1ziAEf77l8GQ9F4Z
-         ioPy8U7pp1QKd5WVvxkIKp9MfOgDyoXqzQ0U0CLFKo+baPYfbNf6J93u6FH+TsaCV+mV
-         IgMWO9FNhzRNst2SE8xpeWrB7f4eHlhDS4yTtl8JrRBId+vR2Ud5U1I9wzRWTViSkQnP
-         hKscwbaA95Qs6MNFPJwe4Q8LmMsGG04nhs66qFl+yGTkzyaJ8bZpf9VWDDH7WAOq9Sra
-         D+dOa4m40ZOWAnHa8J7HEZdFw8LdLJ4BpSNwQdp0iq2lnGq4VD4I2WRei7gR3DndSQoI
-         5YDQ==
-X-Gm-Message-State: AMke39n2UVmA9rKshBxVnEWY5VipLuUnEgFxBP9Bsax8SvEnn30xyuydvTW7OIRAtTbmYg==
-X-Received: by 10.84.217.153 with SMTP id p25mr25696291pli.164.1487523301584;
-        Sun, 19 Feb 2017 08:55:01 -0800 (PST)
+        b=p4t1VJfURb9GUAOgSpRrNqaZ56VDA8hGXU09U4LsuCV7dxKBuyTM5twNJsyu+sovOS
+         rugOELDEECSKj7bVyM/2vKyC6JGuo+iO/vX0bxvK6CyGA8iewI9/vDG8u62qnuIQjVbX
+         6aOCMzNjZzPW1tgZmucghkVNLs+CRY5FjLHYam1NPwxELl8KOE7trJlUcdAwzr88LEJr
+         HLRt7KGDNnenLP6a4Lmdo14yiYhUhmBMttyNX2JHqqW9WPNpEcShFT/Hic+yIXUZIyf/
+         uc6TZH8LJ/1TYLZpjHRk4xY0FYnbn2YUfh1KqWasTuHSZMcXkObHkpRYM/8eHSYdkbj5
+         XM6g==
+X-Gm-Message-State: AMke39nkBArlXM2kVqf0kK0+QrIS4+24Ui+7LgWkb/upOg2yXKsjEDFH/ZX1254Pbbi2hA==
+X-Received: by 10.84.212.2 with SMTP id d2mr19494587pli.152.1487437132860;
+        Sat, 18 Feb 2017 08:58:52 -0800 (PST)
 Return-Path: <arushisinghal19971997@gmail.com>
 Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 191sm30479227pgd.40.2017.02.19.08.54.58
+        by smtp.gmail.com with ESMTPSA id e13sm26375253pgf.48.2017.02.18.08.58.50
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 19 Feb 2017 08:54:59 -0800 (PST)
-Date: Sun, 19 Feb 2017 22:24:56 +0530
+        Sat, 18 Feb 2017 08:58:51 -0800 (PST)
+Date: Sat, 18 Feb 2017 22:28:48 +0530
 From: Arushi Singhal <arushisinghal19971997@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 1/2] staging: ks7010: Unnecessary parentheses should be
- avoided
-Message-ID: <20170219165421.GA14771@arushi-HP-Pavilion-Notebook>
+Subject: [PATCH] staging: ks7010: Unnecessary parentheses should be avoided
+Message-ID: <20170218165848.GA7462@arushi-HP-Pavilion-Notebook>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
