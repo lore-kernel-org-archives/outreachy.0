@@ -1,102 +1,301 @@
-X-GM-THRID: 6389561220722065408
-X-Received: by 10.99.111.6 with SMTP id k6mr9258532pgc.131.1487685651760;
-        Tue, 21 Feb 2017 06:00:51 -0800 (PST)
+X-GM-THRID: 6388430317309394944
+X-Received: by 10.28.126.210 with SMTP id z201mr410217wmc.7.1487423213872;
+        Sat, 18 Feb 2017 05:06:53 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.127.209 with SMTP id r200ls2943486itc.20.gmail; Tue, 21 Feb
- 2017 06:00:50 -0800 (PST)
-X-Received: by 10.99.107.1 with SMTP id g1mr9223820pgc.100.1487685650938;
-        Tue, 21 Feb 2017 06:00:50 -0800 (PST)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id 23si3189335pfw.4.2017.02.21.06.00.50
+Received: by 10.46.77.141 with SMTP id c13ls351883ljd.11.gmail; Sat, 18 Feb
+ 2017 05:06:52 -0800 (PST)
+X-Received: by 10.46.88.70 with SMTP id x6mr1145582ljd.22.1487423212810;
+        Sat, 18 Feb 2017 05:06:52 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id q4si364305wma.3.2017.02.18.05.06.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 21 Feb 2017 06:00:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Sat, 18 Feb 2017 05:06:52 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id 1so11235569pgz.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 21 Feb 2017 06:00:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=WkGJAs8MbLEpbn0mRH8l8JFp9A6ZrOQGTQS/lybCh6Q=;
-        b=AgyqvGDVmu7MmdiS1GtdOjhdUn8/TJX6OWoQ7c37N6uYPWbnpt5W4GS4KhguAvedl+
-         CqundgKGvydh17w1yn4RRWiWYBlxxzYpPDJmMLRLp47Ut7/YVw+5uT1Ovz2ZxMqQqEg1
-         4LpcdRFtRUZ/HabsfamJcgAT+y6aWeYgh0fMahykn/5BZB5scjQjwNK7nj3vMD1apaw8
-         VHjicCh1W32JuAOBS3ya7FAdCSVPym/2vGJqjWupT5PSGPYcrV4+p7u9mit9BbyCNd+b
-         ENpaHcN2FIMzxuFULSgYqMFCZ0PfBgVVEiMNdQUW4/EaEpR0NXSpRMCnGdvekeTSNyxM
-         NBTg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=WkGJAs8MbLEpbn0mRH8l8JFp9A6ZrOQGTQS/lybCh6Q=;
-        b=d4vR+KqAPnXzksOdH3Kkm5HQLe6Xcv75C/63DvV+Ook1iCayVyqGcQy9ODjsV7yPQS
-         Y9kwVFoxNrYmzo+FQs04MVVr3WlP0DKp4XEpIVuwvRe4wc5FV01DDqsszq8cMPVC/Zkn
-         A/Tq7Hdq6Q0l6CGIIuIDIrWh6YkCqjd26Db8dTeuYXdLAB0Wc+WEU4MXUsq3vpZP0T3S
-         uCf9icKZvyGM9HgN7265LpEAx1/iK0hlFJ3uHO5DXVDsn2RtujUgrVCwul7kfcZAQXqr
-         C9ugesoi2XRZjI+muxoljzjWVmIqiddctvFOggTw107PfUaz1DBI2Ny/QSAuOzVHIlKS
-         qtNw==
-X-Gm-Message-State: AMke39mddTIfdTz31U5/5K7sIWK2TNbNgwtliaKzldCQ4555eoItIe0b88O72dm51Vnm7g==
-X-Received: by 10.98.7.150 with SMTP id 22mr3545500pfh.69.1487685650701;
-        Tue, 21 Feb 2017 06:00:50 -0800 (PST)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id t22sm41347418pfa.114.2017.02.21.06.00.48
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 21 Feb 2017 06:00:49 -0800 (PST)
-Date: Tue, 21 Feb 2017 19:30:46 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 1/2] staging: ks7010: Unnecessary parentheses are removed
- and also improved coding style.
-Message-ID: <20170221140046.GA15208@arushi-HP-Pavilion-Notebook>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,174,1484002800"; 
+   d="scan'208";a="213891888"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 18 Feb 2017 14:06:52 +0100
+Date: Sat, 18 Feb 2017 14:06:47 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: simran singhal <singhalsimran0@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com, 
+    devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH 2/6] staging: rtl8192e: Remove
+ CamelCase
+In-Reply-To: <20170218125217.GA5942@singhal-Inspiron-5558>
+Message-ID: <alpine.DEB.2.20.1702181405280.3112@hadrien>
+References: <20170218125217.GA5942@singhal-Inspiron-5558>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: text/plain; charset=US-ASCII
 
-Unnecessary parentheses are removed as reported by checkpatch.pl
-to make coder nicer and to improve readability.
-Also coding style is improved.For example:-
-It's often nicer to read if &(foo[0]) is converted to foo like:
-     memcpy(&(ap->bssid[0]), &(ap_info->bssid[0]), ETH_ALEN);
-     memcpy(ap->bssid, ap_info->bssid, ETH_ALEN);
+On Sat, 18 Feb 2017, simran singhal wrote:
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
-Changes in v2:
-  - Make the commit message more clearer.
-  - And correct the error on line number 116
-    in file drivers/staging/ks7010/ks_hostif.c
-     changes:-
-     ap = priv->current_ap;
-     is changed to
-     ap = &priv->current_ap;
----
- drivers/staging/ks7010/ks_hostif.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> This patch renames pBA to pba to avoid camelcase.
 
-diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
-index ba283ab741a7..b643a37fb943 100644
---- a/drivers/staging/ks7010/ks_hostif.c
-+++ b/drivers/staging/ks7010/ks_hostif.c
-@@ -113,7 +113,7 @@ int get_current_ap(struct ks_wlan_private *priv, struct link_ap_info_t *ap_info)
- 	int rc = 0;
- 
- 	DPRINTK(3, "\n");
--	ap = priv->current_ap;
-+	ap = &priv->current_ap;
- 
- 	if ((priv->connect_status & CONNECT_STATUS_MASK) == DISCONNECT_STATUS) {
- 		memset(ap, 0, sizeof(struct local_ap_t));
--- 
-2.11.0
+I think that this was tried in the last round and was rejected, because BA
+is meaningful.  You also see BA in the name of a header file.  The kind of
+camel case that one should remove is whenTextIsWrittenLikeThis.
 
+julia
+
+>
+> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+> ---
+>  drivers/staging/rtl8192e/rtl819x_BAProc.c | 100 +++++++++++++++---------------
+>  1 file changed, 50 insertions(+), 50 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8192e/rtl819x_BAProc.c b/drivers/staging/rtl8192e/rtl819x_BAProc.c
+> index bdbd21c..e51ec16 100644
+> --- a/drivers/staging/rtl8192e/rtl819x_BAProc.c
+> +++ b/drivers/staging/rtl8192e/rtl819x_BAProc.c
+> @@ -18,18 +18,18 @@
+>  #include "rtllib.h"
+>  #include "rtl819x_BA.h"
+>
+> -static void ActivateBAEntry(struct rtllib_device *ieee, struct ba_record *pBA,
+> +static void ActivateBAEntry(struct rtllib_device *ieee, struct ba_record *pba,
+>  			    u16 Time)
+>  {
+> -	pBA->bValid = true;
+> +	pba->bValid = true;
+>  	if (Time != 0)
+> -		mod_timer(&pBA->Timer, jiffies + msecs_to_jiffies(Time));
+> +		mod_timer(&pba->Timer, jiffies + msecs_to_jiffies(Time));
+>  }
+>
+> -static void DeActivateBAEntry(struct rtllib_device *ieee, struct ba_record *pBA)
+> +static void DeActivateBAEntry(struct rtllib_device *ieee, struct ba_record *pba)
+>  {
+> -	pBA->bValid = false;
+> -	del_timer_sync(&pBA->Timer);
+> +	pba->bValid = false;
+> +	del_timer_sync(&pba->Timer);
+>  }
+>
+>  static u8 TxTsDeleteBA(struct rtllib_device *ieee, struct tx_ts_record *pTxTs)
+> @@ -63,16 +63,16 @@ static u8 RxTsDeleteBA(struct rtllib_device *ieee, struct rx_ts_record *pRxTs)
+>  	return bSendDELBA;
+>  }
+>
+> -void ResetBaEntry(struct ba_record *pBA)
+> +void ResetBaEntry(struct ba_record *pba)
+>  {
+> -	pBA->bValid			= false;
+> -	pBA->BaParamSet.shortData	= 0;
+> -	pBA->BaTimeoutValue		= 0;
+> -	pBA->DialogToken		= 0;
+> -	pBA->BaStartSeqCtrl.ShortData	= 0;
+> +	pba->bValid			= false;
+> +	pba->BaParamSet.shortData	= 0;
+> +	pba->BaTimeoutValue		= 0;
+> +	pba->DialogToken		= 0;
+> +	pba->BaStartSeqCtrl.ShortData	= 0;
+>  }
+>  static struct sk_buff *rtllib_ADDBA(struct rtllib_device *ieee, u8 *Dst,
+> -				    struct ba_record *pBA,
+> +				    struct ba_record *pba,
+>  				    u16 StatusCode, u8 type)
+>  {
+>  	struct sk_buff *skb = NULL;
+> @@ -83,8 +83,8 @@ static struct sk_buff *rtllib_ADDBA(struct rtllib_device *ieee, u8 *Dst,
+>  	netdev_dbg(ieee->dev, "%s(): frame(%d) sentd to: %pM, ieee->dev:%p\n",
+>  		   __func__, type, Dst, ieee->dev);
+>
+> -	if (!pBA) {
+> -		netdev_warn(ieee->dev, "pBA is NULL\n");
+> +	if (!pba) {
+> +		netdev_warn(ieee->dev, "pba is NULL\n");
+>  		return NULL;
+>  	}
+>  	skb = dev_alloc_skb(len + sizeof(struct rtllib_hdr_3addr));
+> @@ -107,7 +107,7 @@ static struct sk_buff *rtllib_ADDBA(struct rtllib_device *ieee, u8 *Dst,
+>  	tag = (u8 *)skb_put(skb, 9);
+>  	*tag++ = ACT_CAT_BA;
+>  	*tag++ = type;
+> -	*tag++ = pBA->DialogToken;
+> +	*tag++ = pba->DialogToken;
+>
+>  	if (type == ACT_ADDBARSP) {
+>  		RT_TRACE(COMP_DBG, "====>to send ADDBARSP\n");
+> @@ -116,14 +116,14 @@ static struct sk_buff *rtllib_ADDBA(struct rtllib_device *ieee, u8 *Dst,
+>  		tag += 2;
+>  	}
+>
+> -	put_unaligned_le16(pBA->BaParamSet.shortData, tag);
+> +	put_unaligned_le16(pba->BaParamSet.shortData, tag);
+>  	tag += 2;
+>
+> -	put_unaligned_le16(pBA->BaTimeoutValue, tag);
+> +	put_unaligned_le16(pba->BaTimeoutValue, tag);
+>  	tag += 2;
+>
+>  	if (type == ACT_ADDBAREQ) {
+> -		memcpy(tag, (u8 *)&(pBA->BaStartSeqCtrl), 2);
+> +		memcpy(tag, (u8 *)&(pba->BaStartSeqCtrl), 2);
+>  		tag += 2;
+>  	}
+>
+> @@ -135,7 +135,7 @@ static struct sk_buff *rtllib_ADDBA(struct rtllib_device *ieee, u8 *Dst,
+>  }
+>
+>  static struct sk_buff *rtllib_DELBA(struct rtllib_device *ieee, u8 *dst,
+> -				    struct ba_record *pBA,
+> +				    struct ba_record *pba,
+>  				    enum tr_select TxRxSelect, u16 ReasonCode)
+>  {
+>  	union delba_param_set DelbaParamSet;
+> @@ -151,7 +151,7 @@ static struct sk_buff *rtllib_DELBA(struct rtllib_device *ieee, u8 *dst,
+>  	memset(&DelbaParamSet, 0, 2);
+>
+>  	DelbaParamSet.field.Initiator = (TxRxSelect == TX_DIR) ? 1 : 0;
+> -	DelbaParamSet.field.TID	= pBA->BaParamSet.field.TID;
+> +	DelbaParamSet.field.TID	= pba->BaParamSet.field.TID;
+>
+>  	skb = dev_alloc_skb(len + sizeof(struct rtllib_hdr_3addr));
+>  	if (!skb)
+> @@ -187,11 +187,11 @@ static struct sk_buff *rtllib_DELBA(struct rtllib_device *ieee, u8 *dst,
+>  }
+>
+>  static void rtllib_send_ADDBAReq(struct rtllib_device *ieee, u8 *dst,
+> -				 struct ba_record *pBA)
+> +				 struct ba_record *pba)
+>  {
+>  	struct sk_buff *skb;
+>
+> -	skb = rtllib_ADDBA(ieee, dst, pBA, 0, ACT_ADDBAREQ);
+> +	skb = rtllib_ADDBA(ieee, dst, pba, 0, ACT_ADDBAREQ);
+>
+>  	if (skb) {
+>  		RT_TRACE(COMP_DBG, "====>to send ADDBAREQ!!!!!\n");
+> @@ -202,11 +202,11 @@ static void rtllib_send_ADDBAReq(struct rtllib_device *ieee, u8 *dst,
+>  }
+>
+>  static void rtllib_send_ADDBARsp(struct rtllib_device *ieee, u8 *dst,
+> -				 struct ba_record *pBA, u16 StatusCode)
+> +				 struct ba_record *pba, u16 StatusCode)
+>  {
+>  	struct sk_buff *skb;
+>
+> -	skb = rtllib_ADDBA(ieee, dst, pBA, StatusCode, ACT_ADDBARSP);
+> +	skb = rtllib_ADDBA(ieee, dst, pba, StatusCode, ACT_ADDBARSP);
+>  	if (skb)
+>  		softmac_mgmt_xmit(skb, ieee);
+>  	else
+> @@ -214,12 +214,12 @@ static void rtllib_send_ADDBARsp(struct rtllib_device *ieee, u8 *dst,
+>  }
+>
+>  static void rtllib_send_DELBA(struct rtllib_device *ieee, u8 *dst,
+> -			      struct ba_record *pBA, enum tr_select TxRxSelect,
+> +			      struct ba_record *pba, enum tr_select TxRxSelect,
+>  			      u16 ReasonCode)
+>  {
+>  	struct sk_buff *skb;
+>
+> -	skb = rtllib_DELBA(ieee, dst, pBA, TxRxSelect, ReasonCode);
+> +	skb = rtllib_DELBA(ieee, dst, pba, TxRxSelect, ReasonCode);
+>  	if (skb)
+>  		softmac_mgmt_xmit(skb, ieee);
+>  	else
+> @@ -231,7 +231,7 @@ int rtllib_rx_ADDBAReq(struct rtllib_device *ieee, struct sk_buff *skb)
+>  	struct rtllib_hdr_3addr *req = NULL;
+>  	u16 rc = 0;
+>  	u8 *dst = NULL, *pDialogToken = NULL, *tag = NULL;
+> -	struct ba_record *pBA = NULL;
+> +	struct ba_record *pba = NULL;
+>  	union ba_param_set *pBaParamSet = NULL;
+>  	u16 *pBaTimeoutVal = NULL;
+>  	union sequence_control *pBaStartSeqCtrl = NULL;
+> @@ -275,7 +275,7 @@ int rtllib_rx_ADDBAReq(struct rtllib_device *ieee, struct sk_buff *skb)
+>  		netdev_warn(ieee->dev, "%s(): can't get TS\n", __func__);
+>  		goto OnADDBAReq_Fail;
+>  	}
+> -	pBA = &pTS->RxAdmittedBARecord;
+> +	pba = &pTS->RxAdmittedBARecord;
+>
+>  	if (pBaParamSet->field.BAPolicy == BA_POLICY_DELAYED) {
+>  		rc = ADDBA_STATUS_INVALID_PARAM;
+> @@ -286,20 +286,20 @@ int rtllib_rx_ADDBAReq(struct rtllib_device *ieee, struct sk_buff *skb)
+>
+>  	rtllib_FlushRxTsPendingPkts(ieee, pTS);
+>
+> -	DeActivateBAEntry(ieee, pBA);
+> -	pBA->DialogToken = *pDialogToken;
+> -	pBA->BaParamSet = *pBaParamSet;
+> -	pBA->BaTimeoutValue = *pBaTimeoutVal;
+> -	pBA->BaStartSeqCtrl = *pBaStartSeqCtrl;
+> +	DeActivateBAEntry(ieee, pba);
+> +	pba->DialogToken = *pDialogToken;
+> +	pba->BaParamSet = *pBaParamSet;
+> +	pba->BaTimeoutValue = *pBaTimeoutVal;
+> +	pba->BaStartSeqCtrl = *pBaStartSeqCtrl;
+>
+>  	if (ieee->GetHalfNmodeSupportByAPsHandler(ieee->dev) ||
+>  	   (ieee->pHTInfo->IOTAction & HT_IOT_ACT_ALLOW_PEER_AGG_ONE_PKT))
+> -		pBA->BaParamSet.field.BufferSize = 1;
+> +		pba->BaParamSet.field.BufferSize = 1;
+>  	else
+> -		pBA->BaParamSet.field.BufferSize = 32;
+> +		pba->BaParamSet.field.BufferSize = 32;
+>
+> -	ActivateBAEntry(ieee, pBA, 0);
+> -	rtllib_send_ADDBARsp(ieee, dst, pBA, ADDBA_STATUS_SUCCESS);
+> +	ActivateBAEntry(ieee, pba, 0);
+> +	rtllib_send_ADDBARsp(ieee, dst, pba, ADDBA_STATUS_SUCCESS);
+>
+>  	return 0;
+>
+> @@ -485,25 +485,25 @@ int rtllib_rx_DELBA(struct rtllib_device *ieee, struct sk_buff *skb)
+>  void TsInitAddBA(struct rtllib_device *ieee, struct tx_ts_record *pTS,
+>  		 u8 Policy, u8	bOverwritePending)
+>  {
+> -	struct ba_record *pBA = &pTS->TxPendingBARecord;
+> +	struct ba_record *pba = &pTS->TxPendingBARecord;
+>
+> -	if (pBA->bValid == true && bOverwritePending == false)
+> +	if (pba->bValid == true && bOverwritePending == false)
+>  		return;
+>
+> -	DeActivateBAEntry(ieee, pBA);
+> +	DeActivateBAEntry(ieee, pba);
+>
+> -	pBA->DialogToken++;
+> -	pBA->BaParamSet.field.AMSDU_Support = 0;
+> -	pBA->BaParamSet.field.BAPolicy = Policy;
+> -	pBA->BaParamSet.field.TID =
+> +	pba->DialogToken++;
+> +	pba->BaParamSet.field.AMSDU_Support = 0;
+> +	pba->BaParamSet.field.BAPolicy = Policy;
+> +	pba->BaParamSet.field.TID =
+>  			 pTS->TsCommonInfo.TSpec.f.TSInfo.field.ucTSID;
+> -	pBA->BaParamSet.field.BufferSize = 32;
+> -	pBA->BaTimeoutValue = 0;
+> -	pBA->BaStartSeqCtrl.field.SeqNum = (pTS->TxCurSeq + 3) % 4096;
+> +	pba->BaParamSet.field.BufferSize = 32;
+> +	pba->BaTimeoutValue = 0;
+> +	pba->BaStartSeqCtrl.field.SeqNum = (pTS->TxCurSeq + 3) % 4096;
+>
+> -	ActivateBAEntry(ieee, pBA, BA_SETUP_TIMEOUT);
+> +	ActivateBAEntry(ieee, pba, BA_SETUP_TIMEOUT);
+>
+> -	rtllib_send_ADDBAReq(ieee, pTS->TsCommonInfo.Addr, pBA);
+> +	rtllib_send_ADDBAReq(ieee, pTS->TsCommonInfo.Addr, pba);
+>  }
+>
+>  void TsInitDelBA(struct rtllib_device *ieee,
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170218125217.GA5942%40singhal-Inspiron-5558.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
