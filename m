@@ -1,89 +1,143 @@
-X-GM-THRID: 6397018299173961728
-X-Received: by 10.13.232.73 with SMTP id r70mr16786226ywe.53.1489421888829;
-        Mon, 13 Mar 2017 09:18:08 -0700 (PDT)
+X-GM-THRID: 6388900397139886080
+X-Received: by 10.129.155.201 with SMTP id s192mr6023228ywg.159.1487535726462;
+        Sun, 19 Feb 2017 12:22:06 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.68.202 with SMTP id p10ls8350624otg.18.gmail; Mon, 13 Mar
- 2017 09:18:08 -0700 (PDT)
-X-Received: by 10.176.80.240 with SMTP id d45mr1204053uaa.4.1489421888176;
-        Mon, 13 Mar 2017 09:18:08 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id r66si3162053pfb.7.2017.03.13.09.18.08
+Received: by 10.157.63.11 with SMTP id m11ls8406645otc.20.gmail; Sun, 19 Feb
+ 2017 12:22:06 -0800 (PST)
+X-Received: by 10.13.253.6 with SMTP id n6mr6381175ywf.84.1487535726140;
+        Sun, 19 Feb 2017 12:22:06 -0800 (PST)
+Return-Path: <gs051095@gmail.com>
+Received: from mail-it0-x243.google.com (mail-it0-x243.google.com. [2607:f8b0:4001:c0b::243])
+        by gmr-mx.google.com with ESMTPS id e196si1088856itc.2.2017.02.19.12.22.06
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 13 Mar 2017 09:18:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Sun, 19 Feb 2017 12:22:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:4001:c0b::243 as permitted sender) client-ip=2607:f8b0:4001:c0b::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:4001:c0b::243 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id 77so18488162pgc.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 13 Mar 2017 09:18:08 -0700 (PDT)
+Received: by mail-it0-x243.google.com with SMTP id e137so8782592itc.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 19 Feb 2017 12:22:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=5zpk825ATHxz5K4TSO7UH0PqgRzYKTKHdEAN8EQK11c=;
-        b=F/Kg4Ex7k0/KUwm+KSlo0cMMZBONu897W8kit4CGYF3Pmr04eVkkhgveDq06jF1l8p
-         ag1APLxykAs1h0X+9T+7s0J2POMPPNn/uF3KOv4w1woewSipPNGcs5JGB8WLsLpb5wux
-         sYrmxUwBpMnM/boz5/RxT06NdK3M1Sq8FSGAxLXXVNkjZvxZWn9wlLFS3ElXwHfY/B8S
-         tSYXnXdZEVBcLX1T7oUDC0XF/MAwjxVAoGa85Oqw2vIo3N7U8S1ZD6zg/8b/4kYGqEQ7
-         1hr2mVYQhZ0EIpmE32+oQVfcwcrKaaq1momp8fSVd39VJJ2v6jhCR1g0Ru2CR8O1xuNe
-         pyfg==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=DQA4MRCLuGDKqXQp/I4N/+Gj8yj3+yQy5aZuk9o3+KI=;
+        b=u6gtfoPgREvZbux6Cw3JvZmuLJpgWWAPml/J8sLeDVI3Tw6OL4ABTz54iqoz1c52w3
+         dA5Ra5QoywQqxLm9jIlUgCttj8lEYl0pIZRuVqOjd2ff/xCfmEZ/P99B1DYSkBFbpLIy
+         WWFlxT3JzDCDtfBQ+Fo/pJzFPupXU4tLwKqLzQHt7rLqF3oxmquq9RbRPAjpGjp26QtG
+         zkihFqyrWrHBo5ycpsuGyBZr5A3lLRG3iChz55jFKw7qTM2FQiIIZeFZxOPKK8qHg8ZX
+         gPsN+KrRyoiyVuZaImaY86qG73X5e8J3rbDT27fsKeLdX3k5ZHr8iGdKVqh4ShmVVQQ3
+         WWWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=5zpk825ATHxz5K4TSO7UH0PqgRzYKTKHdEAN8EQK11c=;
-        b=ipBL72WOy+TWKVITOWsUkkg2/qlihWrUDP48e6zp46RbpVqKnmVwP9SKPzhuLjgiBo
-         s3Y+h3a2LijE6m39Fo/+BwKcEKDZa9nKA0WV8YxvGysFOAMEuLieCUK9kOxxDtKZjhYc
-         y8fkPdb2kv4SwNIIe2GsL6xf79LxrlmfapPrtdgs4nWAVaZVbvwrhzeN5AYmuFbhB34b
-         09sE5DvY1u4Wq19KExcLbes/AeAvfEeL87+quaItQCQpUlT9U1MgQ3l0R7RpSCW5fUeS
-         5Nemf98conlRecUSNoickxj1e4XmM/7t17unC1LBQkrZ/bAs9gdohJMEX1y7Ox6NsfB1
-         W+vg==
-X-Gm-Message-State: AMke39lGy+5XKvTYbwGCNIKabQnyvyLKwA9wGT0YK40JLecPFQiJ/PLcmhwCKklDt5KC8g==
-X-Received: by 10.84.149.168 with SMTP id m37mr47952195pla.97.1489421887890;
-        Mon, 13 Mar 2017 09:18:07 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 78sm33613987pfm.122.2017.03.13.09.18.05
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 13 Mar 2017 09:18:06 -0700 (PDT)
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: sudipm.mukherjee@gmail.com
-Cc: teddy.wang@siliconmotion.com,
-	outreachy-kernel@googlegroups.com,
-	kirk@reisers.ca,
-	samuel.thibault@ens-lyon.org,
-	gregkh@linuxfoundation.org,
-	speakup@linux-speakup.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	Arushi Singhal <arushisinghal19971997@gmail.com>
-Subject: [PATCH v2 0/4] fix multiple checkpatch warnings
-Date: Mon, 13 Mar 2017 21:47:56 +0530
-Message-Id: <20170313161800.17338-1-arushisinghal19971997@gmail.com>
-X-Mailer: git-send-email 2.11.0
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=DQA4MRCLuGDKqXQp/I4N/+Gj8yj3+yQy5aZuk9o3+KI=;
+        b=q04yMXRUHrFdp6oEFTekeH9K227j5Kznp0nMws9hGMXx3kOHco7C9HqRjNkBnPHi6G
+         0dos7RXzt8DtKlnx6dDpgMspHDkqcJA1QS51OfV0V6bbDdNDBjADCWaXnx8+BmJlxTDc
+         xWCQPCtKv7vGiDjEbeIyoeVExx61+8s2cBLzDyb8xUI5PU5Vzbfs0V68nXe3Pudh2/pS
+         ew6UcArZ8+rxnHFz8rfZG0W2xOrJg/29HFCGFmji0sW8Uyw0bxJmjGKQN2zqzlT5K3bh
+         wP5U1O/Daoac0Ajzj8evrno7LBhZaHdp2DTP9Inn5sCS/xz/dga9rlZYxHvc7fFozE73
+         I/Kg==
+X-Gm-Message-State: AMke39kb5ptRaf/pwXx4T4fSkCsXVFKrhzH4An+JNTxcHRVAvfR+Pzsdb3uD21eArwf0eu8pQxgpFvhpqzw+jA==
+X-Received: by 10.36.66.145 with SMTP id i139mr2839753itb.6.1487535725928;
+ Sun, 19 Feb 2017 12:22:05 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.36.103.141 with HTTP; Sun, 19 Feb 2017 12:21:35 -0800 (PST)
+In-Reply-To: <1487535533-22366-1-git-send-email-gs051095@gmail.com>
+References: <1487535533-22366-1-git-send-email-gs051095@gmail.com>
+From: Gargi Sharma <gs051095@gmail.com>
+Date: Mon, 20 Feb 2017 01:51:35 +0530
+Message-ID: <CAOCi2DGcsbVhJAtrrhxJ1XHM9UE7JdTGH2XhCBQ8V_Du13u1qw@mail.gmail.com>
+Subject: Re: [PATCH] staging: media: Remove ternary operator
+To: outreachy-kernel@googlegroups.com
+Cc: Greg KH <gregkh@linuxfoundation.org>, Gargi Sharma <gs051095@gmail.com>
+Content-Type: multipart/alternative; boundary=001a1144b94888f1130548e7e61b
 
-Fix multiple code styling warnings issued by checkpatch on files
-in sm750fb driver 
+--001a1144b94888f1130548e7e61b
+Content-Type: text/plain; charset=UTF-8
 
-Arushi Singhal (4):
-  staging: sm750fb: function prototype argument should have an
-    identifier name
-  staging: sm750fb: fixes add blank line after
-    function/struct/union/enum declarations
-  staging: sm750fb: Alignment should match open parenthesis
-  staging: sm750fb: Remove typedefs
+Please ignore.
+On Mon, Feb 20, 2017 at 1:48 AM, Gargi Sharma <gs051095@gmail.com> wrote:
+>
+> Relational and logical operators evaluate to either true or false.
+> Explicit conversion is not needed so remove the ternary operator.
+> Done using coccinelle:
+>
+> @r@
+> expression A,B;
+> symbol true,false;
+> binary operator b = {==,!=,&&,||,>=,<=,>,<};
+> @@
+> - (A b B) ? true : false
+> + A b B
+>
+> Signed-off-by: Gargi Sharma <gs051095@gmail.com>
+> ---
+>  drivers/staging/media/platform/bcm2835/controls.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/media/platform/bcm2835/controls.c
+b/drivers/staging/media/platform/bcm2835/controls.c
+> index a40987b..4d7e2a2 100644
+> --- a/drivers/staging/media/platform/bcm2835/controls.c
+> +++ b/drivers/staging/media/platform/bcm2835/controls.c
+> @@ -218,9 +218,7 @@ static int ctrl_set_iso(struct bm2835_mmal_dev *dev,
+>                 dev->iso = iso_values[ctrl->val];
+>         else if (ctrl->id == V4L2_CID_ISO_SENSITIVITY_AUTO)
+>                 dev->manual_iso_enabled =
+> -                               (ctrl->val == V4L2_ISO_SENSITIVITY_MANUAL
+?
+> -                                                       true :
+> -                                                       false);
+> +                               (ctrl->val ==
+V4L2_ISO_SENSITIVITY_MANUAL);
+>
+>         control = &dev->component[MMAL_COMPONENT_CAMERA]->control;
+>
+> --
+> 2.7.4
+>
 
- drivers/staging/sm750fb/ddk750_display.h |  2 +-
- drivers/staging/sm750fb/ddk750_mode.c    | 83 ++++++++++++++++----------------
- drivers/staging/sm750fb/ddk750_mode.h    | 20 ++++----
- drivers/staging/sm750fb/ddk750_power.h   |  2 +-
- drivers/staging/sm750fb/sm750.h          |  4 +-
- drivers/staging/sm750fb/sm750_cursor.c   |  3 ++
- drivers/staging/sm750fb/sm750_hw.c       |  2 +-
- 7 files changed, 58 insertions(+), 58 deletions(-)
+--001a1144b94888f1130548e7e61b
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
--- 
-2.11.0
+<div dir=3D"ltr">Please ignore.<br>On Mon, Feb 20, 2017 at 1:48 AM, Gargi S=
+harma &lt;<a href=3D"mailto:gs051095@gmail.com">gs051095@gmail.com</a>&gt; =
+wrote:<br>&gt;<br>&gt; Relational and logical operators evaluate to either =
+true or false.<br>&gt; Explicit conversion is not needed so remove the tern=
+ary operator.<br>&gt; Done using coccinelle:<br>&gt;<br>&gt; @r@<br>&gt; ex=
+pression A,B;<br>&gt; symbol true,false;<br>&gt; binary operator b =3D {=3D=
+=3D,!=3D,&amp;&amp;,||,&gt;=3D,&lt;=3D,&gt;,&lt;};<br>&gt; @@<br>&gt; - (A =
+b B) ? true : false<br>&gt; + A b B<br>&gt;<br>&gt; Signed-off-by: Gargi Sh=
+arma &lt;<a href=3D"mailto:gs051095@gmail.com">gs051095@gmail.com</a>&gt;<b=
+r>&gt; ---<br>&gt; =C2=A0drivers/staging/media/platform/bcm2835/controls.c =
+| 4 +---<br>&gt; =C2=A01 file changed, 1 insertion(+), 3 deletions(-)<br>&g=
+t;<br>&gt; diff --git a/drivers/staging/media/platform/bcm2835/controls.c b=
+/drivers/staging/media/platform/bcm2835/controls.c<br>&gt; index a40987b..4=
+d7e2a2 100644<br>&gt; --- a/drivers/staging/media/platform/bcm2835/controls=
+.c<br>&gt; +++ b/drivers/staging/media/platform/bcm2835/controls.c<br>&gt; =
+@@ -218,9 +218,7 @@ static int ctrl_set_iso(struct bm2835_mmal_dev *dev,<br=
+>&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 dev-&gt;iso =
+=3D iso_values[ctrl-&gt;val];<br>&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 else if (=
+ctrl-&gt;id =3D=3D V4L2_CID_ISO_SENSITIVITY_AUTO)<br>&gt; =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 dev-&gt;manual_iso_enabled =3D<br>&g=
+t; - =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (ctrl-&gt;val =3D=3D V4L2_ISO_SENSITIVIT=
+Y_MANUAL ?<br>&gt; - =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 true :<br>&g=
+t; - =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 false);<br>&gt; + =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 (ctrl-&gt;val =3D=3D V4L2_ISO_SENSITIVITY_MANUAL);<br>=
+&gt;<br>&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 control =3D &amp;dev-&gt;component=
+[MMAL_COMPONENT_CAMERA]-&gt;control;<br>&gt;<br>&gt; --<br>&gt; 2.7.4<br>&g=
+t;<br></div>
 
+--001a1144b94888f1130548e7e61b--
 
