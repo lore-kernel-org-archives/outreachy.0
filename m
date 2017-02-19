@@ -1,144 +1,87 @@
 X-GM-THRID: 6388510642623479808
-X-Gmail-Labels: Topic type: DISCUSSION
-Date: Sun, 19 Feb 2017 14:20:06 -0800 (PST)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Cc: diaconitatamara@gmail.com
-Message-Id: <6cca7dfa-1fed-4027-a186-5881037983f9@googlegroups.com>
-In-Reply-To: <alpine.DEB.2.20.1702181910560.3112@hadrien>
-References: <41595753-854c-4474-9649-c5c858ffa117@googlegroups.com>
- <alpine.DEB.2.20.1702181910560.3112@hadrien>
-Subject: Re: [Outreachy kernel] Trouble with IRC
+X-Received: by 10.13.201.4 with SMTP id l4mr3961406ywd.75.1487531357771;
+        Sun, 19 Feb 2017 11:09:17 -0800 (PST)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.157.35.13 with SMTP id j13ls8758140otb.40.gmail; Sun, 19 Feb
+ 2017 11:09:17 -0800 (PST)
+X-Received: by 10.129.112.83 with SMTP id l80mr502262ywc.45.1487531357465;
+        Sun, 19 Feb 2017 11:09:17 -0800 (PST)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-it0-x243.google.com (mail-it0-x243.google.com. [2607:f8b0:4001:c0b::243])
+        by gmr-mx.google.com with ESMTPS id g205si1227620ita.2.2017.02.19.11.09.17
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 19 Feb 2017 11:09:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2607:f8b0:4001:c0b::243 as permitted sender) client-ip=2607:f8b0:4001:c0b::243;
+Authentication-Results: gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2607:f8b0:4001:c0b::243 as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-it0-x243.google.com with SMTP id r141so8698098ita.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 19 Feb 2017 11:09:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=ralLLSZiP34o0nqX1rGS5jEJzy0H0R5MK1K04Ec4b8o=;
+        b=J53boBdX7yBWw/ojI28UeBmrGnaOsLbJVMnmXFuQ2MmNLOHcrhBCBeZUVKPqgySZ/W
+         qlurjd/K6vJ7FU8hz+1GIq29slSmT652zN2Av5BcBmythQcwY3VRSR++/UC/bwhVHveo
+         yM8Wn0VXHZRAUerwZVGhjv2mO6/jjgheIypTsogRUCunOZn32KtF+7tjf7rVo+nVWNxO
+         KorRIHyJ9BP9OXw4BAK36WmxM84GV7vHmI8NScQrhSPHM+7GBLRWct1lm1gX6HRVGmR2
+         zTdPWHxcy8ugNkuPuJ3M4O+Ei0RcQ1E2klBXzDT7NeWNT6pVPRiIgcY56VEbVm/LLHpf
+         H1FQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=ralLLSZiP34o0nqX1rGS5jEJzy0H0R5MK1K04Ec4b8o=;
+        b=V8jY6cOcoPCzMQeJbqiObfDGe4NDObZ0/9Da4MPnu6zHgI57HLGBccED76LZflQAin
+         6GXJaRaSBKy5AjQhRULy1SDXRDCamNl+ZV1N3KNT5QB35QvgNyda2EGnsaGuQ223BCcp
+         fXiO12BYvIfrEQwXJqVKFK1jhwzV0bo57TO0aYgvWbtVnP+0GN9WirB2cmNz4PtN6WEM
+         jjwFTQNKj7h6OdO2FvFpOkZ8GZBQutLV0SL6CiYNAj2ybbXblQ2H3M6sDUOQN3RAKVBy
+         lABKAFyzwEn0Bwm/9xihmTJaeFrhHkPUqAbc+GxqlOOH9bV9sr+e53PkDBw//lHI37LG
+         3hHw==
+X-Gm-Message-State: AMke39njVG2F6fCu90/I6L0cL71TptziIHPxf4wKTLMvgns2UkmWh/Vxn1Avl/q3J6G5WyuHkTvWOKuZmd9tjA==
+X-Received: by 10.36.10.3 with SMTP id 3mr16397608itw.108.1487531357270; Sun,
+ 19 Feb 2017 11:09:17 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_766_601807329.1487542806687"
-X-Google-Token: EJa0qMUFUbrtVW4NWnY0
-X-Google-IP: 83.249.137.78
-
-------=_Part_766_601807329.1487542806687
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_767_322422355.1487542806687"
-
-------=_Part_767_322422355.1487542806687
+Received: by 10.107.6.203 with HTTP; Sun, 19 Feb 2017 11:09:16 -0800 (PST)
+In-Reply-To: <alpine.DEB.2.20.1702181910560.3112@hadrien>
+References: <41595753-854c-4474-9649-c5c858ffa117@googlegroups.com> <alpine.DEB.2.20.1702181910560.3112@hadrien>
+From: Daniel Baluta <daniel.baluta@gmail.com>
+Date: Sun, 19 Feb 2017 21:09:16 +0200
+Message-ID: <CAEnQRZCU=HQBbA+umqkXHdQAt0sNbuDSHfkQkT=VjCk7tDYfFQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] Trouble with IRC
+To: Tamara Diaconita <diaconitatamara@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, Julia Lawall <julia.lawall@lip6.fr>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 
-Firstly, I used Polari, but I couldn't find the server. With Pidgin works=
-=20
-fine. Thank you!
+On Sat, Feb 18, 2017 at 8:11 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+> On Sat, 18 Feb 2017, Tamara Diaconita wrote:
+>
+>> Hello, I have some troubles when I try to access irc.gnome.org. I get the
+>> message "The owner of this web site has not put up any pages yet. Please
+>> come back later. ", and I cannot find the #outreachy channel. The page looks
+>> like this:
+>>
+>> [irc.gnome.org.png]
 
-s=C3=A2mb=C4=83t=C4=83, 18 februarie 2017, 20:11:25 UTC+2, Julia Lawall a s=
-cris:
->
->
->
-> On Sat, 18 Feb 2017, Tamara Diaconita wrote:=20
->
-> > Hello, I have some troubles when I try to access irc.gnome.org. I get=
-=20
-> the=20
-> > message "The owner of this web site has not put up any pages yet. Pleas=
-e=20
-> > come back later. ", and I cannot find the #outreachy channel. The page=
-=20
-> looks=20
-> > like this:=20
-> >=20
-> > [irc.gnome.org.png]=20
->
-> How are you trying to access it?  I use pidgin, and it is fine.=20
->
-> julia=20
->
-> >=20
-> > --=20
-> > You received this message because you are subscribed to the Google=20
-> Groups=20
-> > "outreachy-kernel" group.=20
-> > To unsubscribe from this group and stop receiving emails from it, send=
-=20
-> an=20
-> > email to outreachy-kern...@googlegroups.com <javascript:>.=20
-> > To post to this group, send email to outreach...@googlegroups.com=20
-> <javascript:>.=20
-> > To view this discussion on the web visithttps://
-> groups.google.com/d/msgid/outreachy-kernel/41595753-854c-4474-9649-=20
-> > c5c858ffa117%40googlegroups.com.=20
-> > For more options, visit https://groups.google.com/d/optout.=20
-> >=20
-> >=20
->
+Hi Tamara,
 
-------=_Part_767_322422355.1487542806687
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+The best way to join irc is via an IRC client. The simplest way is to
+install pidgin [1].
 
-<div dir=3D"ltr">Firstly, I used Polari, but I couldn&#39;t find the server=
-. With Pidgin works fine. Thank you!<br><br>s=C3=A2mb=C4=83t=C4=83, 18 febr=
-uarie 2017, 20:11:25 UTC+2, Julia Lawall a scris:<blockquote class=3D"gmail=
-_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;p=
-adding-left: 1ex;">
-<br>
-<br>On Sat, 18 Feb 2017, Tamara Diaconita wrote:
-<br>
-<br>&gt; Hello, I have some troubles when I try to access <a href=3D"http:/=
-/irc.gnome.org" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=
-=3D&#39;http://www.google.com/url?q\x3dhttp%3A%2F%2Firc.gnome.org\x26sa\x3d=
-D\x26sntz\x3d1\x26usg\x3dAFQjCNFUhcq01xF7TnzGfLdUxviPJzN6fA&#39;;return tru=
-e;" onclick=3D"this.href=3D&#39;http://www.google.com/url?q\x3dhttp%3A%2F%2=
-Firc.gnome.org\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNFUhcq01xF7TnzGfLdUxv=
-iPJzN6fA&#39;;return true;">irc.gnome.org</a>. I get the
-<br>&gt; message &quot;The owner of this web site has not put up any pages =
-yet. Please
-<br>&gt; come back later. &quot;, and I cannot find the #outreachy channel.=
- The page looks
-<br>&gt; like this:
-<br>&gt;
-<br>&gt; [irc.gnome.org.png]
-<br>
-<br>How are you trying to access it? =C2=A0I use pidgin, and it is fine.
-<br>
-<br>julia
-<br>
-<br>&gt;
-<br>&gt; --
-<br>&gt; You received this message because you are subscribed to the Google=
- Groups
-<br>&gt; &quot;outreachy-kernel&quot; group.
-<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
-send an
-<br>&gt; email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-=
-mailto=3D"Tu9OxugKEgAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;ja=
-vascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;r=
-eturn true;">outreachy-kern...@<wbr>googlegroups.com</a>.
-<br>&gt; To post to this group, send email to <a href=3D"javascript:" targe=
-t=3D"_blank" gdf-obfuscated-mailto=3D"Tu9OxugKEgAJ" rel=3D"nofollow" onmous=
-edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
-ef=3D&#39;javascript:&#39;;return true;">outreach...@googlegroups.<wbr>com<=
-/a>.
-<br>&gt; To view this discussion on the web visithttps://<a href=3D"http://=
-groups.google.com/d/msgid/outreachy-kernel/41595753-854c-4474-9649-" target=
-=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://groups.=
-google.com/d/msgid/outreachy-kernel/41595753-854c-4474-9649-&#39;;return tr=
-ue;" onclick=3D"this.href=3D&#39;http://groups.google.com/d/msgid/outreachy=
--kernel/41595753-854c-4474-9649-&#39;;return true;">groups.google.<wbr>com/=
-d/msgid/outreachy-kernel/<wbr>41595753-854c-4474-9649-</a>
-<br>&gt; c5c858ffa117%<a href=3D"http://40googlegroups.com" target=3D"_blan=
-k" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://www.google.com/u=
-rl?q\x3dhttp%3A%2F%2F40googlegroups.com\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dA=
-FQjCNEjt8k9OhR10y0jYLX0ZgJix1hnBQ&#39;;return true;" onclick=3D"this.href=
-=3D&#39;http://www.google.com/url?q\x3dhttp%3A%2F%2F40googlegroups.com\x26s=
-a\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNEjt8k9OhR10y0jYLX0ZgJix1hnBQ&#39;;retur=
-n true;">40googlegroups.<wbr>com</a>.
-<br>&gt; For more options, visit <a href=3D"https://groups.google.com/d/opt=
-out" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;htt=
-ps://groups.google.com/d/optout&#39;;return true;" onclick=3D"this.href=3D&=
-#39;https://groups.google.com/d/optout&#39;;return true;">https://groups.go=
-ogle.com/d/<wbr>optout</a>.
-<br>&gt;
-<br>&gt;
-<br></blockquote></div>
-------=_Part_767_322422355.1487542806687--
+If you are interested only in Linux kernel Outreachy IRC channel there is also
+a webchat page.
 
-------=_Part_766_601807329.1487542806687--
+https://webchat.oftc.net/
+
+Enter your username and #kernel-outreachy for channel.
+
+thanks,
+Daniel.
+
+[1] https://www.pidgin.im/
 
