@@ -1,85 +1,93 @@
-X-GM-THRID: 6399943701223702528
-X-Received: by 10.157.40.36 with SMTP id m33mr16293549otb.49.1490103011676;
-        Tue, 21 Mar 2017 06:30:11 -0700 (PDT)
+X-GM-THRID: 6388489014907764736
+X-Received: by 10.36.29.80 with SMTP id 77mr6225329itj.18.1487530396999;
+        Sun, 19 Feb 2017 10:53:16 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.17.16 with SMTP id 16ls2824787itf.12.gmail; Tue, 21 Mar
- 2017 06:30:10 -0700 (PDT)
-X-Received: by 10.107.178.15 with SMTP id b15mr9180652iof.93.1490103010586;
-        Tue, 21 Mar 2017 06:30:10 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id y90si3410644pfa.6.2017.03.21.06.30.10
+Received: by 10.157.6.194 with SMTP id 60ls6777433otx.21.gmail; Sun, 19 Feb
+ 2017 10:53:16 -0800 (PST)
+X-Received: by 10.129.73.20 with SMTP id w20mr6005982ywa.90.1487530396707;
+        Sun, 19 Feb 2017 10:53:16 -0800 (PST)
+Received: by 10.55.39.82 with SMTP id n79msqkn;
+        Sun, 19 Feb 2017 10:27:33 -0800 (PST)
+X-Received: by 10.25.72.216 with SMTP id v207mr483999lfa.7.1487528853272;
+        Sun, 19 Feb 2017 10:27:33 -0800 (PST)
+Return-Path: <joe@perches.com>
+Received: from smtprelay.hostedemail.com (smtprelay0166.hostedemail.com. [216.40.44.166])
+        by gmr-mx.google.com with ESMTPS id v70si638115wmf.0.2017.02.19.10.27.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 21 Mar 2017 06:30:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Sun, 19 Feb 2017 10:27:33 -0800 (PST)
+Received-SPF: neutral (google.com: 216.40.44.166 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.166;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id o126so21977078pfb.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 06:30:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=LhuHk2TugdqkEpFILMiLcwHL2IplQru0EP6OvblMyKQ=;
-        b=cY1KwnorePNlLUkB0me6sQbcERukPZoPNP5rQH4ajhU5MHG4GacXmut9Ru1OH+nAV9
-         se69H92w9iELh3VriMDo4GQ4m+1ZQL8lu8xYJJaJiugIlvqXdZ8aF8IZLAO/0jQiHtPY
-         kvyo0gtlreyJd/MkH0iQr0cvmIE+Ct5NmrYROppDNpsmWA7VqOSpuyKK3RMFQhI88kXP
-         5NooPuNvikwwSJ1t8UeP7rHWiveiZah2nfnN/Ty5gXfNSHJsn3gY0vaWuO8saUOP72Vn
-         UqOx7T909mbejnCeU4xsGGAsXgdE4p5fCemFRGHai+nHFAmhGgAeTgSLE1JkbM+VUk1L
-         hNIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=LhuHk2TugdqkEpFILMiLcwHL2IplQru0EP6OvblMyKQ=;
-        b=RbJYccE5qxZtge2x6K+UdedUJ8NbO/KGaTD4taj4qXZD5aM8vaGkQ+ts09OnZWPMNS
-         Tk6O3ieKpLAus1cgRFXe1+1JKpDO/CWkIriv6rlhxgwFGttO0HmztHP710FeuaUn1fiH
-         WpbDswF7yUTZEHjYSDIechh+h2nl4YPAAejH+pVQraIL0U4j3BT3D00NpUQUOXjs3cO8
-         xbi4iXoewhbhVd5Y5w8YYTi7BBr2YN+mKbmhDLbuiiN1OQ3See9B9bq4lN496AZm9C1M
-         MZ7WT99hsdB/+DUDqLU1fpLqFrlD3i5LeuGCoWTWYND29Ykipa+KZZhqbmcwb7uo4XoV
-         JDrQ==
-X-Gm-Message-State: AFeK/H1MCoqxaZeaVKpt5q+gTRm3PerhbMEzeBth2xYZJelxds3H6imhCVCiwRPfaZFHKw==
-X-Received: by 10.98.103.146 with SMTP id t18mr39867921pfj.135.1490103010326;
-        Tue, 21 Mar 2017 06:30:10 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id h20sm39824868pfh.79.2017.03.21.06.30.09
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 21 Mar 2017 06:30:09 -0700 (PDT)
-From: simran singhal <singhalsimran0@gmail.com>
-To: pablo@netfilter.org
-Cc: kadlec@blackhole.kfki.hu,
-	davem@davemloft.net,
-	netfilter-devel@vger.kernel.org,
-	coreteam@netfilter.org,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com,
-	wensong@linux-vs.org,
-	horms@verge.net.au,
-	ja@ssi.bg
-Subject: [PATCH v2 0/2] netfilter: Compress return logic
-Date: Tue, 21 Mar 2017 19:00:06 +0530
-Message-Id: <1490103008-665-1-git-send-email-singhalsimran0@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=neutral (google.com: 216.40.44.166 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
+	by smtprelay08.hostedemail.com (Postfix) with ESMTP id B924029DD78;
+	Sun, 19 Feb 2017 18:27:31 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,:::::::::::,RULES_HIT:41:355:379:541:599:960:973:988:989:1260:1277:1311:1313:1314:1345:1359:1373:1437:1515:1516:1518:1534:1542:1593:1594:1711:1714:1730:1747:1777:1792:2393:2553:2559:2562:2828:2902:3138:3139:3140:3141:3142:3351:3622:3865:3866:3867:3868:3871:3874:4321:5007:6119:8660:10004:10400:10848:11026:11232:11658:11914:12043:12740:12895:13148:13161:13229:13230:13255:13439:13894:14181:14659:14721:14828:21060:21080:21451:30012:30054:30090:30091,0,RBL:none,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:fn,MSBL:0,DNSBL:none,Custom_rules:0:0:0,LFtime:2,LUA_SUMMARY:none
+X-HE-Tag: scarf31_7b9ed531b7d50
+X-Filterd-Recvd-Size: 3104
+Received: from XPS-9350 (unknown [47.151.132.55])
+	(Authenticated sender: joe@perches.com)
+	by omf07.hostedemail.com (Postfix) with ESMTPA;
+	Sun, 19 Feb 2017 18:27:29 +0000 (UTC)
+Message-ID: <1487528848.2198.34.camel@perches.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: ks7010: There should be no
+ spaces at the start of a line
+From: Joe Perches <joe@perches.com>
+To: Julia Lawall <julia.lawall@lip6.fr>, Arushi Singhal
+	 <arushisinghal19971997@gmail.com>
+Cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org, 
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Date: Sun, 19 Feb 2017 10:27:28 -0800
+In-Reply-To: <alpine.DEB.2.20.1702181758460.3112@hadrien>
+References: <20170218164002.GA7269@arushi-HP-Pavilion-Notebook>
+	 <alpine.DEB.2.20.1702181758460.3112@hadrien>
+Content-Type: text/plain; charset="ISO-8859-1"
+X-Mailer: Evolution 3.22.3-0ubuntu0.1 
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
 
-This patch series Simplify function returns by merging
-assignment and return into one command line.
+On Sat, 2017-02-18 at 18:00 +0100, Julia Lawall wrote:
+> On Sat, 18 Feb 2017, Arushi Singhal wrote:
+> > The following patch the checkpatch.pl warning:
+> > drivers/staging/ks7010/ks_hostif.c warning: please, no spaces at the
+> > start of a line
+[]
+> > diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
+[]
+> > @@ -191,8 +191,8 @@ int get_current_ap(struct ks_wlan_private *priv, struct link_ap_info_t *ap_info)
+> >  	}
+> >  	DPRINTK(4, "\n    Link AP\n");
+> >  	DPRINTK(4, "    bssid=%02X:%02X:%02X:%02X:%02X:%02X\n \
+> > -   essid=%s\n    rate_set=%02X,%02X,%02X,%02X,%02X,%02X,%02X,%02X\n    channel=%d\n \
+> > -   rssi=%d\n    sq=%d\n    capability=%04X\n", ap->bssid
+> > +essid=%s\n    rate_set=%02X,%02X,%02X,%02X,%02X,%02X,%02X,%02X\n    channel=%d\n \
+> > +rssi=%d\n    sq=%d\n    capability=%04X\n", ap->bssid[0], ap->bssid[1], ap->bssid[2], ap->bssid[3], ap->bssid[4], ap->bssid[5], &(ap->ssid.body[0]), ap->rate_set.body[0], ap->rate_set.body[1], ap->rate_set.body[2], ap->rate_set.body[3], ap->rate_set.body[4], ap->rate_set.body[5], ap->rate_set.body[6], ap->rate_set.body[7], ap->channel, ap->rssi, ap->sq, ap->capability);
+> 
+> The code looks like a mess.  How about breaking up the call at the
+> newlines, and then propagating the arguments to the appropriate calls.
+> 
+> There is also a checkpatch error about strings on more than one line, that
+> this also violates.
 
-v2:
-  -Change the subject of cover patch
+There are also vsprintf %p<foo> extensions that would
+simplify the code for this output and for many others.
 
-simran singhal (2):
-  netfilter: ipset: Compress return logic
-  netfilter: ipvs: Compress return logic
+see Documentation/printk-formats.txt
 
- net/netfilter/ipset/ip_set_list_set.c | 5 +----
- net/netfilter/ipvs/ip_vs_ftp.c        | 5 +----
- 2 files changed, 2 insertions(+), 8 deletions(-)
+something like:
 
--- 
-2.7.4
+	DPRINTK(4, "    bssid=%pM\n",�ap->bssid);
+	DPRINTK(4, "    essid=%s\n", ap->ssid.body);
+	DPRINTK(4, "    rate_set=%02X,%02X,%02X,%02X,%02X,%02X,%02X,%02X\n",
+		ap->rate_set.body[0], ap->rate_set.body[1],
+		ap->rate_set.body[2], ap->rate_set.body[3],
+		ap->rate_set.body[4], ap->rate_set.body[5],
+		ap->rate_set.body[6], ap->rate_set.body[7]);	
+	DPRINTK(4, "    channel=%d\n",�ap->channel);
+	DPRINTK(4, "    rssi=%d\n",�ap->rssi);
+	DPRINTK(4, "    sq=%d\n",�ap->sq);
+	DPRINTK(4, "   
+capability=%04X\n",�ap->capability);
 
 
