@@ -1,69 +1,272 @@
 X-GM-THRID: 6388887439725821952
-X-Received: by 10.99.127.5 with SMTP id a5mr6342620pgd.112.1487530397608;
-        Sun, 19 Feb 2017 10:53:17 -0800 (PST)
+X-Received: by 10.157.9.66 with SMTP id 60mr5719783otp.66.1487528774376;
+        Sun, 19 Feb 2017 10:26:14 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.31.77 with SMTP id d74ls1688219itd.19.gmail; Sun, 19 Feb
- 2017 10:53:16 -0800 (PST)
-X-Received: by 10.99.110.139 with SMTP id j133mr6830023pgc.55.1487530396957;
-        Sun, 19 Feb 2017 10:53:16 -0800 (PST)
-Received: by 10.202.79.78 with SMTP id d75msoib;
-        Sun, 19 Feb 2017 10:32:01 -0800 (PST)
-X-Received: by 10.129.70.133 with SMTP id t127mr6465735ywa.146.1487529121647;
-        Sun, 19 Feb 2017 10:32:01 -0800 (PST)
-Return-Path: <joe@perches.com>
-Received: from smtprelay.hostedemail.com (smtprelay0071.hostedemail.com. [216.40.44.71])
-        by gmr-mx.google.com with ESMTPS id b188si1046726ite.3.2017.02.19.10.32.01
+Received: by 10.36.124.6 with SMTP id a6ls599586itd.22.gmail; Sun, 19 Feb 2017
+ 10:26:13 -0800 (PST)
+X-Received: by 10.99.234.5 with SMTP id c5mr5629278pgi.172.1487528773599;
+        Sun, 19 Feb 2017 10:26:13 -0800 (PST)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id 23si1973784pfw.4.2017.02.19.10.26.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 19 Feb 2017 10:32:01 -0800 (PST)
-Received-SPF: neutral (google.com: 216.40.44.71 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.71;
+        Sun, 19 Feb 2017 10:26:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 216.40.44.71 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
-	by smtprelay03.hostedemail.com (Postfix) with ESMTP id 27BCF6AD47;
-	Sun, 19 Feb 2017 18:32:01 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,:::::::::,RULES_HIT:41:355:379:541:599:968:973:988:989:1260:1277:1311:1313:1314:1345:1359:1373:1437:1515:1516:1518:1534:1540:1593:1594:1711:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3871:3872:4321:4605:5007:7903:10004:10400:10848:11026:11232:11658:11914:12043:12740:12760:12895:13069:13095:13163:13229:13311:13357:13439:14181:14659:14721:21060:21080:21433:30012:30054:30091,0,RBL:error,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:fn,MSBL:0,DNSBL:error,Custom_rules:0:0:0,LFtime:2000,LUA_SUMMARY:none
-X-HE-Tag: foot89_1130019d44a05
-X-Filterd-Recvd-Size: 1732
-Received: from XPS-9350 (unknown [47.151.132.55])
-	(Authenticated sender: joe@perches.com)
-	by omf11.hostedemail.com (Postfix) with ESMTPA;
-	Sun, 19 Feb 2017 18:31:57 +0000 (UTC)
-Message-ID: <1487529117.2198.36.camel@perches.com>
-Subject: Re: [PATCH 1/2] staging: ks7010: Unnecessary parentheses are
- removed.
-From: Joe Perches <joe@perches.com>
-To: Arushi Singhal <arushisinghal19971997@gmail.com>, 
-	gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x244.google.com with SMTP id a123so7198810pgc.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 19 Feb 2017 10:26:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=oO+fq50sxHYMKbVUXDrsGIppJ9GDCUNgTJmcHXVlIJA=;
+        b=EwEhzhx0tDPwgcIcwjqmlFOsY4TJrctTvvXn3QhK34maPaHyQq4Vg/3gURUqCuausQ
+         W1Hl9BK5SZteQeFaIR7lHMC/uDJyi851Db+fD6jDa5+mYIpOMBMXUkXIAWuRPoU43kpU
+         SZd/oP/wdJ1vJL1ViqwU5i7ynNNEruELmuWeb4nyqhQ73AnwQKtKO89fFdHA9r2fNOZe
+         crRfEtACYQT1SDOS46s4/nif105cNxkgoDUeGXG0T22Qtq+VQ3JnLobqJpnmL0tSjODZ
+         JU4InoJAR8BXpsrFvWL45FUM3VO2Rhj93kpAarNyQtKBc+M41DCRq6M4I4mjdElFft4m
+         tFGA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=oO+fq50sxHYMKbVUXDrsGIppJ9GDCUNgTJmcHXVlIJA=;
+        b=hzMxoWPInt8VKGOgzFlPDqFhfQFW8TSxSiBZlyzuFbFVdefR4YdccGtO72+CyTQjIN
+         9c92rKCQHrv2cFZqpLyZjjwGEQ6oWEmt+WooRAHsVLlcqlDB14WMuGg82x6vRUYIIovV
+         rNP45hD9ck6LGGYSfMmwvP7ZCA6TTX5aFT8KIdmzvygD+eNd3o6W7+Prbs7DcBI/mmUj
+         mX0DQTp+qYhOE7580YIDaNtb+yMByXsm3N4256E2IbajSIq6ABaSacDj89lBSoJqKlCB
+         t6NWloS7bo5Ll2kTbDdHKsECzKLQ6OSDNPldx0YKCxl0v/P4P1bfRWhKgRGke+SRGaC4
+         1EPw==
+X-Gm-Message-State: AMke39kXl/lOYCjnSguHs+ayu9Re42iY7zGiEbjbA+OeoNPp/ARRSQAiCLuBw8nN3Mq8aA==
+X-Received: by 10.99.8.4 with SMTP id 4mr22452774pgi.204.1487528773316;
+        Sun, 19 Feb 2017 10:26:13 -0800 (PST)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id m6sm30485781pfg.126.2017.02.19.10.26.10
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 19 Feb 2017 10:26:11 -0800 (PST)
+Date: Sun, 19 Feb 2017 23:56:08 +0530
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
-Date: Sun, 19 Feb 2017 10:31:57 -0800
-In-Reply-To: <20170219182607.GA17005@arushi-HP-Pavilion-Notebook>
-References: <20170219182607.GA17005@arushi-HP-Pavilion-Notebook>
-Content-Type: text/plain; charset="ISO-8859-1"
-X-Mailer: Evolution 3.22.3-0ubuntu0.1 
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Subject: [PATCH 1/2] staging: ks7010: Unnecessary parentheses are removed.
+Message-ID: <20170219182607.GA17005@arushi-HP-Pavilion-Notebook>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Sun, 2017-02-19 at 23:56 +0530, Arushi Singhal wrote:
-> Unnecessary parentheses should be avoided as reported by checkpatch.pl.
-> Remove unnecessary parentheses, as reported by checkpatch as are nicer
-> to read.For example:-
-> It's often nicer to read if &(foo[0]) is converted to foo like:
->      memcpy(&(ap->bssid[0]), &(ap_info->bssid[0]), ETH_ALEN);
->      memcpy(ap->bssid, ap_info->bssid, ETH_ALEN);
-[]
-> diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
-[]
-> @@ -212,7 +212,7 @@ int get_ap_information(struct ks_wlan_private *priv, struct ap_info_t *ap_info,
->  	memset(ap, 0, sizeof(struct local_ap_t));
->  
->  	/* bssid */
-> -	memcpy(&(ap->bssid[0]), &(ap_info->bssid[0]), ETH_ALEN);
-> +	memcpy(&ap->bssid[0], &ap_info->bssid[0], ETH_ALEN);
+Unnecessary parentheses should be avoided as reported by checkpatch.pl.
+Remove unnecessary parentheses, as reported by checkpatch as are nicer
+to read.For example:-
+It's often nicer to read if &(foo[0]) is converted to foo like:
+     memcpy(&(ap->bssid[0]), &(ap_info->bssid[0]), ETH_ALEN);
+     memcpy(ap->bssid, ap_info->bssid, ETH_ALEN);
 
-This code doesn't match the suggested style of
-your commit message.
+Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+---
+ drivers/staging/ks7010/ks_hostif.c   | 24 ++++++++++++------------
+ drivers/staging/ks7010/ks_wlan_net.c | 20 ++++++++++----------
+ 2 files changed, 22 insertions(+), 22 deletions(-)
+
+diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
+index 3b2e28749b63..bbc39cbabdc1 100644
+--- a/drivers/staging/ks7010/ks_hostif.c
++++ b/drivers/staging/ks7010/ks_hostif.c
+@@ -212,7 +212,7 @@ int get_ap_information(struct ks_wlan_private *priv, struct ap_info_t *ap_info,
+ 	memset(ap, 0, sizeof(struct local_ap_t));
+ 
+ 	/* bssid */
+-	memcpy(&(ap->bssid[0]), &(ap_info->bssid[0]), ETH_ALEN);
++	memcpy(&ap->bssid[0], &ap_info->bssid[0], ETH_ALEN);
+ 	/* rssi */
+ 	ap->rssi = ap_info->rssi;
+ 	/* sq */
+@@ -224,7 +224,7 @@ int get_ap_information(struct ks_wlan_private *priv, struct ap_info_t *ap_info,
+ 	/* channel */
+ 	ap->channel = ap_info->ch_info;
+ 
+-	bp = &(ap_info->body[0]);
++	bp = &ap_info->body[0];
+ 	bsize = ap_info->body_size;
+ 	offset = 0;
+ 
+@@ -239,19 +239,19 @@ int get_ap_information(struct ks_wlan_private *priv, struct ap_info_t *ap_info,
+ 					*(bp + 1));
+ 				ap->ssid.size = SSID_MAX_SIZE;
+ 			}
+-			memcpy(&(ap->ssid.body[0]), bp + 2, ap->ssid.size);
++			memcpy(&ap->ssid.body[0], bp + 2, ap->ssid.size);
+ 			break;
+ 		case 1:	/* rate */
+ 		case 50:	/* ext rate */
+ 			if ((*(bp + 1) + ap->rate_set.size) <=
+ 			    RATE_SET_MAX_SIZE) {
+-				memcpy(&(ap->rate_set.body[ap->rate_set.size]),
++				memcpy(&ap->rate_set.body[ap->rate_set.size],
+ 				       bp + 2, *(bp + 1));
+ 				ap->rate_set.size += *(bp + 1);
+ 			} else {
+ 				DPRINTK(1, "size over :: rate size=%d\n",
+ 					(*(bp + 1) + ap->rate_set.size));
+-				memcpy(&(ap->rate_set.body[ap->rate_set.size]),
++				memcpy(&ap->rate_set.body[ap->rate_set.size],
+ 				       bp + 2,
+ 				       RATE_SET_MAX_SIZE - ap->rate_set.size);
+ 				ap->rate_set.size +=
+@@ -269,7 +269,7 @@ int get_ap_information(struct ks_wlan_private *priv, struct ap_info_t *ap_info,
+ 					*(bp + 1));
+ 				ap->rsn_ie.size = RSN_IE_BODY_MAX;
+ 			}
+-			memcpy(&(ap->rsn_ie.body[0]), bp + 2, ap->rsn_ie.size);
++			memcpy(&ap->rsn_ie.body[0], bp + 2, ap->rsn_ie.size);
+ 			break;
+ 		case 221:	/* WPA */
+ 			if (!memcmp(bp + 2, "\x00\x50\xf2\x01", 4)) {	/* WPA OUI check */
+@@ -282,7 +282,7 @@ int get_ap_information(struct ks_wlan_private *priv, struct ap_info_t *ap_info,
+ 						*(bp + 1));
+ 					ap->wpa_ie.size = RSN_IE_BODY_MAX;
+ 				}
+-				memcpy(&(ap->wpa_ie.body[0]), bp + 2,
++				memcpy(&ap->wpa_ie.body[0], bp + 2,
+ 				       ap->wpa_ie.size);
+ 			}
+ 			break;
+@@ -832,8 +832,8 @@ void hostif_scan_indication(struct ks_wlan_private *priv)
+ 	if (priv->scan_ind_count != 0) {
+ 		for (i = 0; i < priv->aplist.size; i++) {	/* bssid check */
+ 			if (!memcmp
+-			    (&(ap_info->bssid[0]),
+-			     &(priv->aplist.ap[i].bssid[0]), ETH_ALEN)) {
++			    (&ap_info->bssid[0],
++			     &priv->aplist.ap[i].bssid[0], ETH_ALEN)) {
+ 				if (ap_info->frame_type ==
+ 				    FRAME_TYPE_PROBE_RESP)
+ 					get_ap_information(priv, ap_info,
+@@ -2652,7 +2652,7 @@ int hostif_init(struct ks_wlan_private *priv)
+ 
+ 	priv->aplist.size = 0;
+ 	for (i = 0; i < LOCAL_APLIST_MAX; i++)
+-		memset(&(priv->aplist.ap[i]), 0, sizeof(struct local_ap_t));
++		memset(&priv->aplist.ap[i], 0, sizeof(struct local_ap_t));
+ 	priv->infra_status = 0;
+ 	priv->current_rate = 4;
+ 	priv->connect_status = DISCONNECT_STATUS;
+@@ -2675,12 +2675,12 @@ int hostif_init(struct ks_wlan_private *priv)
+ 	INIT_WORK(&priv->ks_wlan_wakeup_task, ks_wlan_hw_wakeup_task);
+ 
+ 	/* WPA */
+-	memset(&(priv->wpa), 0, sizeof(priv->wpa));
++	memset(&priv->wpa, 0, sizeof(priv->wpa));
+ 	priv->wpa.rsn_enabled = 0;
+ 	priv->wpa.mic_failure.failure = 0;
+ 	priv->wpa.mic_failure.last_failure_time = 0;
+ 	priv->wpa.mic_failure.stop = 0;
+-	memset(&(priv->pmklist), 0, sizeof(priv->pmklist));
++	memset(&priv->pmklist, 0, sizeof(priv->pmklist));
+ 	INIT_LIST_HEAD(&priv->pmklist.head);
+ 	for (i = 0; i < PMK_LIST_MAX; i++)
+ 		INIT_LIST_HEAD(&priv->pmklist.pmk[i].list);
+diff --git a/drivers/staging/ks7010/ks_wlan_net.c b/drivers/staging/ks7010/ks_wlan_net.c
+index 8c55428b71c7..2233c9fa982a 100644
+--- a/drivers/staging/ks7010/ks_wlan_net.c
++++ b/drivers/staging/ks7010/ks_wlan_net.c
+@@ -423,7 +423,7 @@ static int ks_wlan_get_wap(struct net_device *dev, struct iw_request_info *info,
+ 
+ 	/* for SLEEP MODE */
+ 	if ((priv->connect_status & CONNECT_STATUS_MASK) == CONNECT_STATUS)
+-		memcpy(awrq->sa_data, &(priv->current_ap.bssid[0]), ETH_ALEN);
++		memcpy(awrq->sa_data, &priv->current_ap.bssid[0], ETH_ALEN);
+ 	else
+ 		eth_zero_addr(awrq->sa_data);
+ 
+@@ -1364,7 +1364,7 @@ static int ks_wlan_get_aplist(struct net_device *dev,
+ 		return -EPERM;
+ 	/* for SLEEP MODE */
+ 	for (i = 0; i < priv->aplist.size; i++) {
+-		memcpy(address[i].sa_data, &(priv->aplist.ap[i].bssid[0]),
++		memcpy(address[i].sa_data, &priv->aplist.ap[i].bssid[0],
+ 		       ETH_ALEN);
+ 		address[i].sa_family = ARPHRD_ETHER;
+ 		qual[i].level = 256 - priv->aplist.ap[i].rssi;
+@@ -1454,7 +1454,7 @@ static inline char *ks_wlan_translate_scan(struct net_device *dev,
+ 	iwe.u.data.flags = 1;
+ 	current_ev =
+ 	    iwe_stream_add_point(info, current_ev, end_buf, &iwe,
+-				 &(ap->ssid.body[0]));
++				 &ap->ssid.body[0]);
+ 
+ 	/* Add mode */
+ 	iwe.cmd = SIOCGIWMODE;
+@@ -1496,7 +1496,7 @@ static inline char *ks_wlan_translate_scan(struct net_device *dev,
+ 	iwe.u.data.length = 0;
+ 	current_ev =
+ 	    iwe_stream_add_point(info, current_ev, end_buf, &iwe,
+-				 &(ap->ssid.body[0]));
++				 &ap->ssid.body[0]);
+ 
+ 	/* Rate : stuffing multiple values in a single event require a bit
+ 	 * more of magic - Jean II */
+@@ -1612,7 +1612,7 @@ static int ks_wlan_get_scan(struct net_device *dev,
+ 		current_ev = ks_wlan_translate_scan(dev, current_ev,
+ //                                                  extra + IW_SCAN_MAX_DATA,
+ 						    extra + dwrq->length,
+-						    &(priv->current_ap));
++						    &priv->current_ap);
+ 	}
+ #endif
+ 	/* Read and parse all entries */
+@@ -1625,7 +1625,7 @@ static int ks_wlan_get_scan(struct net_device *dev,
+ 		current_ev = ks_wlan_translate_scan(dev, info, current_ev,
+ //                                                  extra + IW_SCAN_MAX_DATA,
+ 						    extra + dwrq->length,
+-						    &(priv->aplist.ap[i]));
++						    &priv->aplist.ap[i]);
+ 	}
+ 	/* Length of data */
+ 	dwrq->length = (current_ev - extra);
+@@ -2080,7 +2080,7 @@ static int ks_wlan_set_pmksa(struct net_device *dev,
+ 		}
+ 		break;
+ 	case IW_PMKSA_FLUSH:
+-		memset(&(priv->pmklist), 0, sizeof(priv->pmklist));
++		memset(&priv->pmklist, 0, sizeof(priv->pmklist));
+ 		INIT_LIST_HEAD(&priv->pmklist.head);
+ 		for (i = 0; i < PMK_LIST_MAX; i++)
+ 			INIT_LIST_HEAD(&priv->pmklist.pmk[i].list);
+@@ -2178,7 +2178,7 @@ static int ks_wlan_get_firmware_version(struct net_device *dev,
+ {
+ 	struct ks_wlan_private *priv =
+ 	    (struct ks_wlan_private *)netdev_priv(dev);
+-	strcpy(extra, &(priv->firmware_version[0]));
++	strcpy(extra, &priv->firmware_version[0]);
+ 	dwrq->length = priv->version_size + 1;
+ 	return 0;
+ }
+@@ -2433,7 +2433,7 @@ static int ks_wlan_data_read(struct net_device *dev,
+ 		read_length = priv->dev_size[priv->dev_count];
+ 
+ 	/* Copy data */
+-	memcpy(extra, &(priv->dev_data[priv->dev_count][0]), read_length);
++	memcpy(extra, &priv->dev_data[priv->dev_count][0], read_length);
+ 
+ 	spin_unlock(&priv->dev_read_lock);	/* release spin lock */
+ 
+@@ -3254,7 +3254,7 @@ static int ks_wlan_netdev_ioctl(struct net_device *dev, struct ifreq *rq,
+ 
+ 	switch (cmd) {
+ 	case SIOCIWFIRSTPRIV + 20:	/* KS_WLAN_SET_STOP_REQ */
+-		rc = ks_wlan_set_stop_request(dev, NULL, &(wrq->u.mode), NULL);
++		rc = ks_wlan_set_stop_request(dev, NULL, &wrq->u.mode, NULL);
+ 		break;
+ 		// All other calls are currently unsupported
+ 	default:
+-- 
+2.11.0
 
 
