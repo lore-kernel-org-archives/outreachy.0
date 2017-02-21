@@ -1,25 +1,25 @@
 X-GM-THRID: 6389549071972958208
-X-Received: by 10.46.20.72 with SMTP id 8mr2931797lju.19.1487683309205;
-        Tue, 21 Feb 2017 05:21:49 -0800 (PST)
+X-Received: by 10.28.47.67 with SMTP id v64mr1223901wmv.3.1487683258284;
+        Tue, 21 Feb 2017 05:20:58 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.184.129 with SMTP id i123ls1660754wmf.6.canary-gmail; Tue,
- 21 Feb 2017 05:21:48 -0800 (PST)
-X-Received: by 10.28.31.4 with SMTP id f4mr1187219wmf.17.1487683308300;
-        Tue, 21 Feb 2017 05:21:48 -0800 (PST)
+Received: by 10.46.19.9 with SMTP id 9ls705036ljt.33.gmail; Tue, 21 Feb 2017
+ 05:20:57 -0800 (PST)
+X-Received: by 10.25.67.70 with SMTP id m6mr2855008lfj.21.1487683257326;
+        Tue, 21 Feb 2017 05:20:57 -0800 (PST)
 Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id h198si979598wmg.1.2017.02.21.05.21.48
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 14si1077867wmn.2.2017.02.21.05.20.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 21 Feb 2017 05:21:48 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Tue, 21 Feb 2017 05:20:57 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.35,189,1484002800"; 
-   d="scan'208";a="261460222"
+   d="scan'208";a="214211790"
 Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 21 Feb 2017 14:21:22 +0100
-Date: Tue, 21 Feb 2017 14:21:16 +0100 (CET)
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 21 Feb 2017 14:20:56 +0100
+Date: Tue, 21 Feb 2017 14:20:50 +0100 (CET)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: simran singhal <singhalsimran0@gmail.com>
@@ -29,7 +29,7 @@ cc: johan@kernel.org, elder@kernel.org, gregkh@linuxfoundation.org,
 Subject: Re: [Outreachy kernel] [PATCH v2 3/6] staging: greybus: Remove
  unnecessary braces
 In-Reply-To: <20170221131535.GA3718@singhal-Inspiron-5558>
-Message-ID: <alpine.DEB.2.20.1702211420530.3121@hadrien>
+Message-ID: <alpine.DEB.2.20.1702211420300.3121@hadrien>
 References: <20170221131535.GA3718@singhal-Inspiron-5558>
 User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
@@ -52,6 +52,9 @@ On Tue, 21 Feb 2017, simran singhal wrote:
 > - }
 >
 > Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
 > ---
 >
 >  v2:
@@ -80,11 +83,6 @@ On Tue, 21 Feb 2017, simran singhal wrote:
 > +	if (err)
 >  		pr_warn("creating the sysfs entry for %s failed: %d\n",
 >  			kattr->attr.name, err);
-
-Maybe there is an opportunity for using a dev_... function here.
-
-julia
-
 > -	}
 >  }
 >
