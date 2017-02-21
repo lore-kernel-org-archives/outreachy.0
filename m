@@ -1,103 +1,109 @@
 X-GM-THRID: 6389638055287848960
-X-Received: by 10.28.153.75 with SMTP id b72mr1426938wme.14.1487706876516;
-        Tue, 21 Feb 2017 11:54:36 -0800 (PST)
+X-Received: by 10.13.237.196 with SMTP id w187mr9531586ywe.27.1487703541719;
+        Tue, 21 Feb 2017 10:59:01 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.1.153 with SMTP id f25ls833735lji.31.gmail; Tue, 21 Feb
- 2017 11:54:35 -0800 (PST)
-X-Received: by 10.46.21.91 with SMTP id 27mr2968183ljv.0.1487706875817;
-        Tue, 21 Feb 2017 11:54:35 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id v70si1201158wmf.0.2017.02.21.11.54.35
+Received: by 10.36.82.215 with SMTP id d206ls1852273itb.17.canary-gmail; Tue,
+ 21 Feb 2017 10:59:00 -0800 (PST)
+X-Received: by 10.107.178.3 with SMTP id b3mr9582007iof.93.1487703540913;
+        Tue, 21 Feb 2017 10:59:00 -0800 (PST)
+Return-Path: <gs051095@gmail.com>
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id u12si3407227pfd.3.2017.02.21.10.59.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 21 Feb 2017 11:54:35 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Tue, 21 Feb 2017 10:59:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.35,190,1484002800"; 
-   d="scan'208";a="214261442"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 21 Feb 2017 20:54:31 +0100
-Date: Tue, 21 Feb 2017 20:54:31 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Gargi Sharma <gs051095@gmail.com>
-cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
-Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8192e: Remove useless
- parentheses
-In-Reply-To: <1487703410-18483-1-git-send-email-gs051095@gmail.com>
-Message-ID: <alpine.DEB.2.20.1702212054110.2117@hadrien>
-References: <1487703410-18483-1-git-send-email-gs051095@gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x243.google.com with SMTP id s67so9003359pgb.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 21 Feb 2017 10:59:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=0rxDwHcYcDmSKoKOO2CFKd3/w7mx31UrC6wa46rfqkw=;
+        b=JzEAClx/zIXS2g9jR2iD3hi/RCXJADwxLefK/C60OG+K84+jWLKnWDWc602c832AqQ
+         rLZkGmlW7ve1aEmWICHfpb3734VcJAHZ1h6ZL/ePjUy6uO5zk/Ok0i0+GAcQ7PHLJCLc
+         uaMC7Wa91Qb6Gae3CdskWHwh/NE4WGGtrq9y6enf3T5aoIH8HO4Ya/wMIJRstfaB6bHV
+         oNhiuYWMufNJ1OBYIlMx4Yo7REMBt4JsrHE6Rah5pmHlgVSK0m3VPNtDHBInNRP8YlhG
+         /IwYuhTRaetOWSzn8y7I+H7PUmCeqYnB0NQHIsYzbqKRM+ESVFuqXQdSrpVm/SJQLCRP
+         mKdA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=0rxDwHcYcDmSKoKOO2CFKd3/w7mx31UrC6wa46rfqkw=;
+        b=cCgfbj2Tjx7GBVUV6qNPiuF+9zw/8l/lP5S8PsymBg3z6WdHBmYrIkbfzl0Ya5xILi
+         a6+B1tNIBKZUeO27kUIgsWB762rbg58MN/slpM0uUayV0ObY+57o2jZfq/2YkgoKfFA/
+         a9FwFaixTDJ8qoqHbALiKkbGBeX7WHAMxiqUiU56F+WBvcQT5MVoHboA8knFEeAHehr2
+         mAFOpq1yj052w9qjZd7BoVZXVJAbR6DwJMBk4EWvUxmSzC+Wnf7VpRC+HJZsVBeTH4w6
+         pyqmmQ2xqBCAGDlQvvehpkW2nBDpNQIhlPlLdWvkd0MCvzqxVA0uiwjV5G4vJ5+HK2tR
+         6cLA==
+X-Gm-Message-State: AMke39ld1/AkYJ7UBegAuFFQ/QX15mf+v9jHdbH5VwI/YhMN2YgXwxjbrIqL/+u+0NNrUA==
+X-Received: by 10.99.43.74 with SMTP id r71mr16967050pgr.83.1487703540691;
+        Tue, 21 Feb 2017 10:59:00 -0800 (PST)
+Return-Path: <gs051095@gmail.com>
+Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
+        by smtp.googlemail.com with ESMTPSA id h14sm42842752pgn.41.2017.02.21.10.58.58
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 21 Feb 2017 10:59:00 -0800 (PST)
+From: Gargi Sharma <gs051095@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org,
+	Gargi Sharma <gs051095@gmail.com>
+Subject: [PATCH] staging: rtl8192e: Remove useless parentheses
+Date: Wed, 22 Feb 2017 00:26:50 +0530
+Message-Id: <1487703410-18483-1-git-send-email-gs051095@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
+Parentheses are not needed on the right side of assignment.
+Additionally added space around '+' to remove checkpatch issue,
+space required around '+'.
 
+Parentheses Removed using the coccinelle script:
+@@
+binary operator bop = {+,-,>>,<<};
+expression e, e1, e2;
+@@
 
-On Wed, 22 Feb 2017, Gargi Sharma wrote:
+e =
+-(
+        e1 bop e2
+-)
 
-> Parentheses are not needed on the right side of assignment.
-> Additionally added space around '+' to remove checkpatch issue,
-> space required around '+'.
->
-> Parentheses Removed using the coccinelle script:
-> @@
-> binary operator bop = {+,-,>>,<<};
-> expression e, e1, e2;
-> @@
->
-> e =
-> -(
->         e1 bop e2
-> -)
->
-> Signed-off-by: Gargi Sharma <gs051095@gmail.com>
-> ---
->  drivers/staging/rtl8192e/rtl8192e/rtl_dm.c | 2 +-
->  drivers/staging/rtl8192e/rtl819x_HTProc.c  | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c b/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-> index 9bc2848..b61e90b 100644
-> --- a/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-> +++ b/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-> @@ -886,7 +886,7 @@ static void _rtl92e_dm_tx_power_tracking_cb_thermal(struct net_device *dev)
->  		if (tmpCCK40Mindex >= CCK_Table_length)
->  			tmpCCK40Mindex = CCK_Table_length-1;
->  	} else {
-> -		tmpval = ((u8)tmpRegA - priv->ThermalMeter[0]);
-> +		tmpval = (u8)tmpRegA - priv->ThermalMeter[0];
->  		if (tmpval >= 6)
->  			tmpOFDMindex = tmpCCK20Mindex = 0;
->  		else
-> diff --git a/drivers/staging/rtl8192e/rtl819x_HTProc.c b/drivers/staging/rtl8192e/rtl819x_HTProc.c
-> index cded0f4..a59fcd4 100644
-> --- a/drivers/staging/rtl8192e/rtl819x_HTProc.c
-> +++ b/drivers/staging/rtl8192e/rtl819x_HTProc.c
-> @@ -489,7 +489,7 @@ u8 HTGetHighestMCSRate(struct rtllib_device *ieee, u8 *pMCSRateSet,
->  				if ((bitMap%2) != 0) {
->  					if (HTMcsToDataRate(ieee, (8*i+j)) >
->  					    HTMcsToDataRate(ieee, mcsRate))
-> -						mcsRate = (8*i+j);
-> +						mcsRate = 8*i + j;
+Signed-off-by: Gargi Sharma <gs051095@gmail.com>
+---
+ drivers/staging/rtl8192e/rtl8192e/rtl_dm.c | 2 +-
+ drivers/staging/rtl8192e/rtl819x_HTProc.c  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-Since you put spaces around the +, you may as well put spaces around the *
-too.
+diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c b/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
+index 9bc2848..b61e90b 100644
+--- a/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
++++ b/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
+@@ -886,7 +886,7 @@ static void _rtl92e_dm_tx_power_tracking_cb_thermal(struct net_device *dev)
+ 		if (tmpCCK40Mindex >= CCK_Table_length)
+ 			tmpCCK40Mindex = CCK_Table_length-1;
+ 	} else {
+-		tmpval = ((u8)tmpRegA - priv->ThermalMeter[0]);
++		tmpval = (u8)tmpRegA - priv->ThermalMeter[0];
+ 		if (tmpval >= 6)
+ 			tmpOFDMindex = tmpCCK20Mindex = 0;
+ 		else
+diff --git a/drivers/staging/rtl8192e/rtl819x_HTProc.c b/drivers/staging/rtl8192e/rtl819x_HTProc.c
+index cded0f4..a59fcd4 100644
+--- a/drivers/staging/rtl8192e/rtl819x_HTProc.c
++++ b/drivers/staging/rtl8192e/rtl819x_HTProc.c
+@@ -489,7 +489,7 @@ u8 HTGetHighestMCSRate(struct rtllib_device *ieee, u8 *pMCSRateSet,
+ 				if ((bitMap%2) != 0) {
+ 					if (HTMcsToDataRate(ieee, (8*i+j)) >
+ 					    HTMcsToDataRate(ieee, mcsRate))
+-						mcsRate = (8*i+j);
++						mcsRate = 8*i + j;
+ 				}
+ 				bitMap >>= 1;
+ 			}
+-- 
+2.7.4
 
-julia
-
->  				}
->  				bitMap >>= 1;
->  			}
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1487703410-18483-1-git-send-email-gs051095%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
