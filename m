@@ -1,84 +1,50 @@
-X-GM-THRID: 6394528999032225792
-X-Received: by 10.25.104.21 with SMTP id d21mr2359856lfc.31.1488842302154;
-        Mon, 06 Mar 2017 15:18:22 -0800 (PST)
+X-GM-THRID: 6388438478115307520
+X-Received: by 10.176.83.151 with SMTP id k23mr9184760uaa.20.1487784869623;
+        Wed, 22 Feb 2017 09:34:29 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.15.1 with SMTP id 1ls1542163ljp.36.gmail; Mon, 06 Mar 2017
- 15:18:21 -0800 (PST)
-X-Received: by 10.46.83.76 with SMTP id t12mr3123392ljd.26.1488842301255;
-        Mon, 06 Mar 2017 15:18:21 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wr0-x243.google.com (mail-wr0-x243.google.com. [2a00:1450:400c:c0c::243])
-        by gmr-mx.google.com with ESMTPS id t131si3733wmf.1.2017.03.06.15.18.21
+Received: by 10.107.130.202 with SMTP id m71ls501053ioi.17.gmail; Wed, 22 Feb
+ 2017 09:34:28 -0800 (PST)
+X-Received: by 10.107.149.16 with SMTP id x16mr11416963iod.72.1487784868878;
+        Wed, 22 Feb 2017 09:34:28 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id d63si361202pfe.2.2017.02.22.09.34.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 06 Mar 2017 15:18:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) client-ip=2a00:1450:400c:c0c::243;
+        Wed, 22 Feb 2017 09:34:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x243.google.com with SMTP id u108so19615939wrb.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 06 Mar 2017 15:18:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=7xyv395WtLDWjFAPhC3HHuHeRvZO/vXhJl4hi7vdHkw=;
-        b=mPmaDQKXc+K4I9oSnW3KOXtINaqJDoqwBVC07EOQjLg90mUUK6gXjoF3DQNxXYCmRF
-         XpOyxp05H8K/0SFIsEjOPhF1SITNzdr2e5RvTHcCVe9V2yz7OuHrAO1FpGdc6nEanhru
-         oA7OFj6InzSXSXlFXyZ9aWFg8MQHSZoZNUab3Le+PyEWz4i9BUFZPESH4kfkndUDTVr4
-         txOK2nYCqZWFxfxXE/bikjtAwmfSoZJziwnGDbu6eWAbLHptTvLi+wWScLC1e7kiK5e2
-         zfZ7Ac3+feD0jBJyHQP6v9H9RNDsygBuBudgv5xRc2cAlB47s6WNHfQmERdfN3l8kqVV
-         mpWg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=7xyv395WtLDWjFAPhC3HHuHeRvZO/vXhJl4hi7vdHkw=;
-        b=lzduHaZ6g68gD6PqZQbLFGJlGkncimYqez0Ob0YX+w9DYitiBmW7ntv8IHEAzc+pXz
-         xVN0JNnL/pBjMtmoEwEFaISviHfwz0E2oKMiDnNw6cPS+AyQBUYF8KOqjHcxqQPaxqw6
-         Ivcel4heZnxXJUG7FiUFtMi/r5uvt3q7uywjl87FPFOjQYOGLsHHyoMg//2ifgI304Rn
-         QEp69P52GXjkffoee5X6cE37r+hvy3dlpBiYpvIjygodnCHIs7LvtOsnf0LdqnySuo97
-         CjShTZx51ehcUzojTq9jaiTHsqBylOSwOPESfX5lpURRhemUsQBEKX8RLfoArP7Dy+Ia
-         7k7A==
-X-Gm-Message-State: AMke39nzB0NtvJ/FEmih4u5dg0706BWzvvLsDiFvV5plpbXiVr3mfRltsYmoi7iUg3D6YA==
-X-Received: by 10.223.172.77 with SMTP id v71mr19111558wrc.131.1488842301037;
-        Mon, 06 Mar 2017 15:18:21 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([2a02:2f0b:8130:11ea:2cf7:7888:829a:4984])
-        by smtp.gmail.com with ESMTPSA id o31sm2642975wrc.27.2017.03.06.15.18.19
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 06 Mar 2017 15:18:20 -0800 (PST)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: w.d.hubbs@gmail.com,
-	chris@the-brannons.com,
-	kirk@reisers.ca,
-	samuel.thibault@ens-lyon.org,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH v3 0/2] Improve code readability 
-Date: Tue,  7 Mar 2017 01:18:17 +0200
-Message-Id: <20170306231817.7076-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [78.192.101.3])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 38198B2B;
+	Wed, 22 Feb 2017 17:34:28 +0000 (UTC)
+Date: Wed, 22 Feb 2017 18:34:25 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Arushi Singhal <arushisinghal19971997@gmail.com>
+Cc: arnaud.patard@rtp-net.org, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v2] staging: xgifb: function definition argument should
+ also have an identifier name'
+Message-ID: <20170222173425.GC28125@kroah.com>
+References: <20170218134611.GA5240@arushi-HP-Pavilion-Notebook>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170218134611.GA5240@arushi-HP-Pavilion-Notebook>
+User-Agent: Mutt/1.7.2 (2016-11-26)
 
-Fix multiple checkpath.pl issues to improve code readability in speakup driver.
+On Sat, Feb 18, 2017 at 07:16:11PM +0530, Arushi Singhal wrote:
+> function definition argument 'struct vb_device_info *' and 'unsigned
+> long' should also have an identifier name.
+> 
+> Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+> ---
+>  drivers/staging/xgifb/vb_init.h | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 
-Tamara Diaconita (2):
-  staging: speakup: keyhelp: Add spaces to align
-  staging: speakup: keyhelp: Fix 'if' continuation
+What changed from v1?  Please always list it.  Please fix up and resend.
 
-Changes since v2:
-*Replaced the subject of the patches.
+thanks,
 
-Changes since v1:
-*Deleted the patch: 'staging:speakup:keyhelp.c: Remove unnecessary else' from the set and remake the original file.
-*Deleted the '.c' in the subject of the patches.
-*Added a space after ':' in the subject of the patches.
-
- drivers/staging/speakup/keyhelp.c | 12 +++++-------
- 1 file changed, 5 insertions(+), 7 deletions(-)
-
--- 
-2.9.3
-
+greg k-h
 
