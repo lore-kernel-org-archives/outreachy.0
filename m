@@ -1,93 +1,253 @@
-X-GM-THRID: 6340627534791573504
-X-Received: by 10.36.65.95 with SMTP id x92mr999445ita.39.1476292390233;
-        Wed, 12 Oct 2016 10:13:10 -0700 (PDT)
+X-GM-THRID: 6389612389434654720
+X-Received: by 10.36.13.211 with SMTP id 202mr147802itx.3.1487738023267;
+        Tue, 21 Feb 2017 20:33:43 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.103.72 with SMTP id u69ls1688176itc.6.gmail; Wed, 12 Oct
- 2016 10:13:09 -0700 (PDT)
-X-Received: by 10.66.102.65 with SMTP id fm1mr510478pab.55.1476292389731;
-        Wed, 12 Oct 2016 10:13:09 -0700 (PDT)
-Return-Path: <elise.lennion@gmail.com>
-Received: from mail-vk0-x244.google.com (mail-vk0-x244.google.com. [2607:f8b0:400c:c05::244])
-        by gmr-mx.google.com with ESMTPS id p70si997375vkd.0.2016.10.12.10.13.09
+Received: by 10.107.164.100 with SMTP id n97ls80586ioe.16.gmail; Tue, 21 Feb
+ 2017 20:33:41 -0800 (PST)
+X-Received: by 10.99.184.17 with SMTP id p17mr10966806pge.126.1487738021581;
+        Tue, 21 Feb 2017 20:33:41 -0800 (PST)
+Return-Path: <joe@perches.com>
+Received: from smtprelay.hostedemail.com (smtprelay0207.hostedemail.com. [216.40.44.207])
+        by gmr-mx.google.com with ESMTPS id g205si147622ita.2.2017.02.21.20.33.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 12 Oct 2016 10:13:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::244 as permitted sender) client-ip=2607:f8b0:400c:c05::244;
+        Tue, 21 Feb 2017 20:33:41 -0800 (PST)
+Received-SPF: neutral (google.com: 216.40.44.207 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.207;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::244 as permitted sender) smtp.mailfrom=elise.lennion@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-vk0-x244.google.com with SMTP id 83so1322157vkd.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 12 Oct 2016 10:13:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=J3g/rSGJ6/P/vN4GE6JMqEs4ahVkKsaellNsgqM7GWc=;
-        b=KA9cDFkaLCpNAvIVAIpcJKPD++rPuvjkSMEEP/YqpDOB8CYFcCLHaAKkAX1WgqM4Gp
-         8y2B/tao8UbQN3ve0QZUW0clLAfSWw3Pk7ClNJgJx3QcEko+yajmxherMZSfT+RYY+Nu
-         ZzmLEN16d70HokysQmpyyWPtZYRqD01otyGGoh7YqJdzYt0cZVM4gxmPyKdtRiy7i0Ac
-         P8AkOoRa672bgPeh+Qag6VJDjxSlaqRbBOPcImPH/H7VoIT+GgzZ+urxH4r3kEsEQxfX
-         d6JgQfcPy9brThHrRsrsXHUYmIvvRnKwrB9zpjwEAXWiaD+ZZ1XZVGJgz91Ibfqs8Dr1
-         q3Jg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=J3g/rSGJ6/P/vN4GE6JMqEs4ahVkKsaellNsgqM7GWc=;
-        b=LO/iIoNUUpqLCLDbif1VQHyF+IJvwo4ZJMag5oPSQOq+3M8TfO7RYDsHBX/Jzc6XMu
-         Gb7NajcJFV4wJAoJiotbTRqD+l5LTmlX8LS4cG72he8HGLKneDiz3Wm+4xlChHAbyACC
-         kbm9AWebbby2XUTwkwkr3IBxN8DplXnwBdqHa1Oz3kSn1ipji8uuNggAwZltD+rYudzL
-         cKs9QMsWq5DrOj9E/zCZVidAxH6vOXHsyWDuUdBaqLYEHEgrSoUFrHP6mvhmyMBqFcyK
-         BUQJM99jPA1ccQw3QrypyKSk41uXXfdt++mPWdD7O8vn0nJJYOFLm6si1rJBe+KpxXVi
-         TxNQ==
-X-Gm-Message-State: AA6/9RlSc5QcBCp+eCLUJjg01AjbFn++d3ketIz20cxX4f9zoqfe7Qi/bUPdNnGj+CoDkw==
-X-Received: by 10.31.174.147 with SMTP id x141mr1299067vke.73.1476292389524;
-        Wed, 12 Oct 2016 10:13:09 -0700 (PDT)
-Return-Path: <elise.lennion@gmail.com>
-Received: from lennorien.com ([187.64.224.84])
-        by smtp.gmail.com with ESMTPSA id n73sm3433180vkf.24.2016.10.12.10.13.06
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 12 Oct 2016 10:13:08 -0700 (PDT)
-Date: Wed, 12 Oct 2016 14:13:01 -0300
-From: Elise Lennion <elise.lennion@gmail.com>
-To: johan@kernel.org, elder@kernel.org, gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH v3 2/4] staging: greybus: camera: Replace blank spaces with
- tabstops.
-Message-ID: <20161012171301.GA29178@lennorien.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+       spf=neutral (google.com: 216.40.44.207 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
+	by smtprelay02.hostedemail.com (Postfix) with ESMTP id 08AA812BA15;
+	Wed, 22 Feb 2017 04:33:41 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,:::::::::::::,RULES_HIT:1:41:355:379:541:599:800:871:960:973:988:989:1000:1260:1313:1314:1345:1359:1373:1437:1516:1518:1541:1575:1594:1711:1730:1747:1764:1777:1792:2393:2553:2559:2562:3138:3139:3140:3141:3142:3354:3622:3865:3866:3867:3868:3870:3871:3872:3873:3874:4184:4321:4605:5007:6506:6747:6748:7281:7903:10004:10400:10471:10848:11026:11232:11473:11604:11658:11914:12050:12663:12740:12895:13255:13439:14180:14181:14659:14721:21060:21080:21433:30012:30022:30054:30056:30070:30090:30091,0,RBL:none,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:fn,MSBL:0,DNSBL:none,Custom_rules:0:0:0,LFtime:1,LUA_SUMMARY:none
+X-HE-Tag: flesh62_2d4652a2f950
+X-Filterd-Recvd-Size: 13390
+Received: from XPS-9350 (unknown [47.151.132.55])
+	(Authenticated sender: joe@perches.com)
+	by omf02.hostedemail.com (Postfix) with ESMTPA;
+	Wed, 22 Feb 2017 04:33:39 +0000 (UTC)
+Message-ID: <1487738018.14159.1.camel@perches.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: xgifb: correct the multiple
+ line dereference to fix coding stye errors
+From: Joe Perches <joe@perches.com>
+To: Arushi Singhal <arushisinghal19971997@gmail.com>
+Cc: Julia Lawall <julia.lawall@lip6.fr>, arnaud.patard@rtp-net.org, Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org,  outreachy-kernel@googlegroups.com
+Date: Tue, 21 Feb 2017 20:33:38 -0800
+In-Reply-To: <CA+XqjF-bsKnXFkFN_SGToYTvMdWHX_CCas_BvdtT9UOb04hkCQ@mail.gmail.com>
+References: <20170221171920.GA18917@arushi-HP-Pavilion-Notebook>
+	 <alpine.DEB.2.20.1702211840010.3448@hadrien>
+	 <1487702533.2853.23.camel@perches.com>
+	 <CA+XqjF-bsKnXFkFN_SGToYTvMdWHX_CCas_BvdtT9UOb04hkCQ@mail.gmail.com>
+Content-Type: multipart/mixed; boundary="=-kFYqIMhmdimJEcnE/WBy"
+X-Mailer: Evolution 3.22.3-0ubuntu0.1 
+Mime-Version: 1.0
 
-Fix checkpatch warning:
 
-WARNING: Statements should start on a tabstop
+--=-kFYqIMhmdimJEcnE/WBy
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
 
-Signed-off-by: Elise Lennion <elise.lennion@gmail.com>
----
+On Wed, 2017-02-22 at 09:46 +0530, Arushi Singhal wrote:
+> On Wed, Feb 22, 2017 at 12:12 AM, Joe Perches <joe@perches.com> wrote:
+> 
+> > On Tue, 2017-02-21 at 18:40 +0100, Julia Lawall wrote:
+> > > 
+> > > On Tue, 21 Feb 2017, Arushi Singhal wrote:
+> > > 
+> > > > Error was reported by checkpatch.pl as
+> > > > WARNING: Avoid multiple line dereference...
+> > > > if there is boolean operator then it is fixed by Splitting line at
+> > > > boolean operator.
+> > > 
+> > > This is massively execeeding the 80 character boundary, and not for
+> > > something trivial like a string.  Maybe the code can be reorganized in
+> > > some other way.
+> > 
+> > The easiest way to do that is to change the test above it
+> > to reduce indentation from
+> > 
+> >         if (xgifb_info->display2 == XGIFB_DISP_TV &&
+> >             xgifb_info->hasVB == HASVB_301) {
+> >                 [code...];
+> >         }
+> > }
+> > 
+> > to
+> > 
+> >         if (xgifb_info->display2 != XGIFB_DISP_TV ||
+> >             xgifb_in
+> > fo->hasVB != HASVB_301)
+> >                 return;
+> > 
+> >         [code...];
+> > }
+> > 
+> > 
+> 
+> Hi
+> So basically you are saying that cut one word and put the other part of the
+> word in the next line.
 
- v2: Changed subject of the patch.
- v3: Added versions information.
+No, evolution is a horrible email client
+that wraps lines oddly sometimes and sends
+out different content than it displays in
+its on-screen editor.
 
- drivers/staging/greybus/camera.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+What I am saying is the block after the test
+can be unindented one level by inverting the
+test and using return.
 
-diff --git a/drivers/staging/greybus/camera.c b/drivers/staging/greybus/camera.c
-index d89a329..0c73445 100644
---- a/drivers/staging/greybus/camera.c
-+++ b/drivers/staging/greybus/camera.c
-@@ -1119,7 +1119,7 @@ static ssize_t gb_camera_debugfs_write(struct file *file,
- 	char *kbuf;
- 
- 	if (len > 1024)
--	       return -EINVAL;
-+		return -EINVAL;
- 
- 	kbuf = kmalloc(len + 1, GFP_KERNEL);
- 	if (!kbuf)
--- 
-2.7.4
+It should be:
+
+	if (xgifb_info->display2 != XGIFB_DISP_TV ||
+	    xgifb_in> > fo->hasVB != HASVB_301)
+		return;
+
+	[code...];
+
+I sent you a separate attachment privately a
+few hours ago but I'll attach it here too.
+
+--=-kFYqIMhmdimJEcnE/WBy
+Content-Disposition: attachment; filename="foo.diff"
+Content-Transfer-Encoding: base64
+Content-Type: text/x-patch; name="foo.diff"; charset="ISO-8859-1"
+
+IGRyaXZlcnMvc3RhZ2luZy94Z2lmYi9YR0lfbWFpbl8yNi5jIHwgMjU2ICsrKysrKysrKysrKyst
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLQogMSBmaWxlIGNoYW5nZWQsIDkyIGluc2VydGlvbnMoKyks
+IDE2NCBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcveGdpZmIvWEdJ
+X21haW5fMjYuYyBiL2RyaXZlcnMvc3RhZ2luZy94Z2lmYi9YR0lfbWFpbl8yNi5jCmluZGV4IDY5
+MzBmN2ViNzQxYi4uMGRmN2ZiMmI4ODkyIDEwMDY0NAotLS0gYS9kcml2ZXJzL3N0YWdpbmcveGdp
+ZmIvWEdJX21haW5fMjYuYworKysgYi9kcml2ZXJzL3N0YWdpbmcveGdpZmIvWEdJX21haW5fMjYu
+YwpAQCAtNzMxLDE3OSArNzMxLDEwNyBAQCBzdGF0aWMgdm9pZCBYR0lmYl9wb3N0X3NldG1vZGUo
+c3RydWN0IHhnaWZiX3ZpZGVvX2luZm8gKnhnaWZiX2luZm8pCiAKIAl4Z2lmYl9yZWdfYW5kKFhH
+SVNSLCBJTkRfU0lTX1JBTURBQ19DT05UUk9MLCB+MHgwNCk7CiAKLQlpZiAoeGdpZmJfaW5mby0+
+ZGlzcGxheTIgPT0gWEdJRkJfRElTUF9UViAmJgotCSAgICB4Z2lmYl9pbmZvLT5oYXNWQiA9PSBI
+QVNWQl8zMDEpIHsKLQkJcmVnID0geGdpZmJfcmVnX2dldChYR0lQQVJUNCwgMHgwMSk7CisJaWYg
+KHhnaWZiX2luZm8tPmRpc3BsYXkyICE9IFhHSUZCX0RJU1BfVFYgfHwKKwkgICAgeGdpZmJfaW5m
+by0+aGFzVkIgIT0gSEFTVkJfMzAxKQorCQlyZXR1cm47CiAKLQkJaWYgKHJlZyA8IDB4QjApIHsg
+LyogU2V0IGZpbHRlciBmb3IgWEdJMzAxICovCi0JCQlpbnQgZmlsdGVyX3RiOworCXJlZyA9IHhn
+aWZiX3JlZ19nZXQoWEdJUEFSVDQsIDB4MDEpOworCWlmIChyZWcgPCAweEIwKSB7IC8qIFNldCBm
+aWx0ZXIgZm9yIFhHSTMwMSAqLworCQlpbnQgZmlsdGVyX3RiOwogCi0JCQlzd2l0Y2ggKHhnaWZi
+X2luZm8tPnZpZGVvX3dpZHRoKSB7Ci0JCQljYXNlIDMyMDoKLQkJCQlmaWx0ZXJfdGIgPSAoeGdp
+ZmJfaW5mby0+VFZfdHlwZSA9PQotCQkJCQkgICAgIFRWTU9ERV9OVFNDKSA/IDQgOiAxMjsKLQkJ
+CQlicmVhazsKLQkJCWNhc2UgNjQwOgotCQkJCWZpbHRlcl90YiA9ICh4Z2lmYl9pbmZvLT5UVl90
+eXBlID09Ci0JCQkJCSAgICAgVFZNT0RFX05UU0MpID8gNSA6IDEzOwotCQkJCWJyZWFrOwotCQkJ
+Y2FzZSA3MjA6Ci0JCQkJZmlsdGVyX3RiID0gKHhnaWZiX2luZm8tPlRWX3R5cGUgPT0KLQkJCQkJ
+ICAgICBUVk1PREVfTlRTQykgPyA2IDogMTQ7Ci0JCQkJYnJlYWs7Ci0JCQljYXNlIDgwMDoKLQkJ
+CQlmaWx0ZXJfdGIgPSAoeGdpZmJfaW5mby0+VFZfdHlwZSA9PQotCQkJCQkgICAgIFRWTU9ERV9O
+VFNDKSA/IDcgOiAxNTsKLQkJCQlicmVhazsKLQkJCWRlZmF1bHQ6Ci0JCQkJZmlsdGVyX3RiID0g
+MDsKLQkJCQlmaWx0ZXIgPSAtMTsKLQkJCQlicmVhazsKLQkJCX0KLQkJCXhnaWZiX3JlZ19vcihY
+R0lQQVJUMSwKLQkJCQkgICAgIFNJU19DUlQyX1dFTkFCTEVfMzE1LAotCQkJCSAgICAgMHgwMSk7
+CisJCXN3aXRjaCAoeGdpZmJfaW5mby0+dmlkZW9fd2lkdGgpIHsKKwkJY2FzZSAzMjA6CisJCQlm
+aWx0ZXJfdGIgPSB4Z2lmYl9pbmZvLT5UVl90eXBlID09IFRWTU9ERV9OVFNDID8gNCA6IDEyOwor
+CQkJYnJlYWs7CisJCWNhc2UgNjQwOgorCQkJZmlsdGVyX3RiID0geGdpZmJfaW5mby0+VFZfdHlw
+ZSA9PSBUVk1PREVfTlRTQyA/IDUgOiAxMzsKKwkJCWJyZWFrOworCQljYXNlIDcyMDoKKwkJCWZp
+bHRlcl90YiA9IHhnaWZiX2luZm8tPlRWX3R5cGUgPT0gVFZNT0RFX05UU0MgPyA2IDogMTQ7CisJ
+CQlicmVhazsKKwkJY2FzZSA4MDA6CisJCQlmaWx0ZXJfdGIgPSB4Z2lmYl9pbmZvLT5UVl90eXBl
+ID09IFRWTU9ERV9OVFNDID8gNyA6IDE1OworCQkJYnJlYWs7CisJCWRlZmF1bHQ6CisJCQlmaWx0
+ZXJfdGIgPSAwOworCQkJZmlsdGVyID0gLTE7CisJCQlicmVhazsKKwkJfQorCQl4Z2lmYl9yZWdf
+b3IoWEdJUEFSVDEsIFNJU19DUlQyX1dFTkFCTEVfMzE1LCAweDAxKTsKIAotCQkJaWYgKHhnaWZi
+X2luZm8tPlRWX3R5cGUgPT0gVFZNT0RFX05UU0MpIHsKLQkJCQl4Z2lmYl9yZWdfYW5kKFhHSVBB
+UlQyLCAweDNhLCAweDFmKTsKLQotCQkJCWlmICh4Z2lmYl9pbmZvLT5UVl9wbHVnID09IFRWUExV
+R19TVklERU8pIHsKLQkJCQkJeGdpZmJfcmVnX2FuZChYR0lQQVJUMiwgMHgzMCwgMHhkZik7Ci0K
+LQkJCQl9IGVsc2UgaWYgKHhnaWZiX2luZm8tPlRWX3BsdWcKLQkJCQkJCT09IFRWUExVR19DT01Q
+T1NJVEUpIHsKLQkJCQkJeGdpZmJfcmVnX29yKFhHSVBBUlQyLCAweDMwLCAweDIwKTsKLQotCQkJ
+CQlzd2l0Y2ggKHhnaWZiX2luZm8tPnZpZGVvX3dpZHRoKSB7Ci0JCQkJCWNhc2UgNjQwOgotCQkJ
+CQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM1LAotCQkJCQkJCSAg
+ICAgIDB4RUIpOwotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAw
+eDM2LAotCQkJCQkJCSAgICAgIDB4MDQpOwotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwK
+LQkJCQkJCQkgICAgICAweDM3LAotCQkJCQkJCSAgICAgIDB4MjUpOwotCQkJCQkJeGdpZmJfcmVn
+X3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM4LAotCQkJCQkJCSAgICAgIDB4MTgpOwot
+CQkJCQkJYnJlYWs7Ci0JCQkJCWNhc2UgNzIwOgotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJU
+MiwKLQkJCQkJCQkgICAgICAweDM1LAotCQkJCQkJCSAgICAgIDB4RUUpOwotCQkJCQkJeGdpZmJf
+cmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM2LAotCQkJCQkJCSAgICAgIDB4MEMp
+OwotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM3LAotCQkJ
+CQkJCSAgICAgIDB4MjIpOwotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkg
+ICAgICAweDM4LAotCQkJCQkJCSAgICAgIDB4MDgpOwotCQkJCQkJYnJlYWs7Ci0JCQkJCWNhc2Ug
+ODAwOgotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM1LAot
+CQkJCQkJCSAgICAgIDB4RUIpOwotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJ
+CQkgICAgICAweDM2LAotCQkJCQkJCSAgICAgIDB4MTUpOwotCQkJCQkJeGdpZmJfcmVnX3NldChY
+R0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM3LAotCQkJCQkJCSAgICAgIDB4MjUpOwotCQkJCQkJ
+eGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM4LAotCQkJCQkJCSAgICAg
+IDB4RjYpOwotCQkJCQkJYnJlYWs7Ci0JCQkJCX0KLQkJCQl9CisJCWlmICh4Z2lmYl9pbmZvLT5U
+Vl90eXBlID09IFRWTU9ERV9OVFNDKSB7CisJCQl4Z2lmYl9yZWdfYW5kKFhHSVBBUlQyLCAweDNh
+LCAweDFmKTsKIAotCQkJfSBlbHNlIGlmICh4Z2lmYl9pbmZvLT5UVl90eXBlID09IFRWTU9ERV9Q
+QUwpIHsKLQkJCQl4Z2lmYl9yZWdfYW5kKFhHSVBBUlQyLCAweDNBLCAweDFGKTsKLQotCQkJCWlm
+ICh4Z2lmYl9pbmZvLT5UVl9wbHVnID09IFRWUExVR19TVklERU8pIHsKLQkJCQkJeGdpZmJfcmVn
+X2FuZChYR0lQQVJUMiwgMHgzMCwgMHhERik7Ci0KLQkJCQl9IGVsc2UgaWYgKHhnaWZiX2luZm8t
+PlRWX3BsdWcKLQkJCQkJCT09IFRWUExVR19DT01QT1NJVEUpIHsKLQkJCQkJeGdpZmJfcmVnX29y
+KFhHSVBBUlQyLCAweDMwLCAweDIwKTsKLQotCQkJCQlzd2l0Y2ggKHhnaWZiX2luZm8tPnZpZGVv
+X3dpZHRoKSB7Ci0JCQkJCWNhc2UgNjQwOgotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwK
+LQkJCQkJCQkgICAgICAweDM1LAotCQkJCQkJCSAgICAgIDB4RjEpOwotCQkJCQkJeGdpZmJfcmVn
+X3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM2LAotCQkJCQkJCSAgICAgIDB4RjcpOwot
+CQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM3LAotCQkJCQkJ
+CSAgICAgIDB4MUYpOwotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAg
+ICAweDM4LAotCQkJCQkJCSAgICAgIDB4MzIpOwotCQkJCQkJYnJlYWs7Ci0JCQkJCWNhc2UgNzIw
+OgotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM1LAotCQkJ
+CQkJCSAgICAgIDB4RjMpOwotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkg
+ICAgICAweDM2LAotCQkJCQkJCSAgICAgIDB4MDApOwotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQ
+QVJUMiwKLQkJCQkJCQkgICAgICAweDM3LAotCQkJCQkJCSAgICAgIDB4MUQpOwotCQkJCQkJeGdp
+ZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM4LAotCQkJCQkJCSAgICAgIDB4
+MjApOwotCQkJCQkJYnJlYWs7Ci0JCQkJCWNhc2UgODAwOgotCQkJCQkJeGdpZmJfcmVnX3NldChY
+R0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM1LAotCQkJCQkJCSAgICAgIDB4RkMpOwotCQkJCQkJ
+eGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM2LAotCQkJCQkJCSAgICAg
+IDB4RkIpOwotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM3
+LAotCQkJCQkJCSAgICAgIDB4MTQpOwotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJ
+CQkJCQkgICAgICAweDM4LAotCQkJCQkJCSAgICAgIDB4MkEpOwotCQkJCQkJYnJlYWs7Ci0JCQkJ
+CX0KKwkJCWlmICh4Z2lmYl9pbmZvLT5UVl9wbHVnID09IFRWUExVR19TVklERU8pIHsKKwkJCQl4
+Z2lmYl9yZWdfYW5kKFhHSVBBUlQyLCAweDMwLCAweGRmKTsKKworCQkJfSBlbHNlIGlmICh4Z2lm
+Yl9pbmZvLT5UVl9wbHVnID09IFRWUExVR19DT01QT1NJVEUpIHsKKwkJCQl4Z2lmYl9yZWdfb3Io
+WEdJUEFSVDIsIDB4MzAsIDB4MjApOworCisJCQkJc3dpdGNoICh4Z2lmYl9pbmZvLT52aWRlb193
+aWR0aCkgeworCQkJCWNhc2UgNjQwOgorCQkJCQl4Z2lmYl9yZWdfc2V0KFhHSVBBUlQyLCAweDM1
+LCAweEVCKTsKKwkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwgMHgzNiwgMHgwNCk7CisJCQkJ
+CXhnaWZiX3JlZ19zZXQoWEdJUEFSVDIsIDB4MzcsIDB4MjUpOworCQkJCQl4Z2lmYl9yZWdfc2V0
+KFhHSVBBUlQyLCAweDM4LCAweDE4KTsKKwkJCQkJYnJlYWs7CisJCQkJY2FzZSA3MjA6CisJCQkJ
+CXhnaWZiX3JlZ19zZXQoWEdJUEFSVDIsIDB4MzUsIDB4RUUpOworCQkJCQl4Z2lmYl9yZWdfc2V0
+KFhHSVBBUlQyLCAweDM2LCAweDBDKTsKKwkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwgMHgz
+NywgMHgyMik7CisJCQkJCXhnaWZiX3JlZ19zZXQoWEdJUEFSVDIsIDB4MzgsIDB4MDgpOworCQkJ
+CQlicmVhazsKKwkJCQljYXNlIDgwMDoKKwkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwgMHgz
+NSwgMHhFQik7CisJCQkJCXhnaWZiX3JlZ19zZXQoWEdJUEFSVDIsIDB4MzYsIDB4MTUpOworCQkJ
+CQl4Z2lmYl9yZWdfc2V0KFhHSVBBUlQyLCAweDM3LCAweDI1KTsKKwkJCQkJeGdpZmJfcmVnX3Nl
+dChYR0lQQVJUMiwgMHgzOCwgMHhGNik7CisJCQkJCWJyZWFrOwogCQkJCX0KIAkJCX0KIAotCQkJ
+aWYgKChmaWx0ZXIgPj0gMCkgJiYgKGZpbHRlciA8PSA3KSkgewotCQkJCXByX2RlYnVnKCJGaWx0
+ZXJUYWJsZVslZF0tJWQ6ICUqcGhcbiIsCi0JCQkJCSBmaWx0ZXJfdGIsIGZpbHRlciwKLQkJCQkJ
+IDQsIFhHSV9UVl9maWx0ZXJbZmlsdGVyX3RiXS4KLQkJCQkJCSAgIGZpbHRlcltmaWx0ZXJdKTsK
+LQkJCQl4Z2lmYl9yZWdfc2V0KAotCQkJCQlYR0lQQVJUMiwKLQkJCQkJMHgzNSwKLQkJCQkJKFhH
+SV9UVl9maWx0ZXJbZmlsdGVyX3RiXS4KLQkJCQkJCWZpbHRlcltmaWx0ZXJdWzBdKSk7Ci0JCQkJ
+eGdpZmJfcmVnX3NldCgKLQkJCQkJWEdJUEFSVDIsCi0JCQkJCTB4MzYsCi0JCQkJCShYR0lfVFZf
+ZmlsdGVyW2ZpbHRlcl90Yl0uCi0JCQkJCQlmaWx0ZXJbZmlsdGVyXVsxXSkpOwotCQkJCXhnaWZi
+X3JlZ19zZXQoCi0JCQkJCVhHSVBBUlQyLAotCQkJCQkweDM3LAotCQkJCQkoWEdJX1RWX2ZpbHRl
+cltmaWx0ZXJfdGJdLgotCQkJCQkJZmlsdGVyW2ZpbHRlcl1bMl0pKTsKLQkJCQl4Z2lmYl9yZWdf
+c2V0KAotCQkJCQlYR0lQQVJUMiwKLQkJCQkJMHgzOCwKLQkJCQkJKFhHSV9UVl9maWx0ZXJbZmls
+dGVyX3RiXS4KLQkJCQkJCWZpbHRlcltmaWx0ZXJdWzNdKSk7CisJCX0gZWxzZSBpZiAoeGdpZmJf
+aW5mby0+VFZfdHlwZSA9PSBUVk1PREVfUEFMKSB7CisJCQl4Z2lmYl9yZWdfYW5kKFhHSVBBUlQy
+LCAweDNBLCAweDFGKTsKKworCQkJaWYgKHhnaWZiX2luZm8tPlRWX3BsdWcgPT0gVFZQTFVHX1NW
+SURFTykgeworCQkJCXhnaWZiX3JlZ19hbmQoWEdJUEFSVDIsIDB4MzAsIDB4REYpOworCisJCQl9
+IGVsc2UgaWYgKHhnaWZiX2luZm8tPlRWX3BsdWcgPT0gVFZQTFVHX0NPTVBPU0lURSkgeworCQkJ
+CXhnaWZiX3JlZ19vcihYR0lQQVJUMiwgMHgzMCwgMHgyMCk7CisKKwkJCQlzd2l0Y2ggKHhnaWZi
+X2luZm8tPnZpZGVvX3dpZHRoKSB7CisJCQkJY2FzZSA2NDA6CisJCQkJCXhnaWZiX3JlZ19zZXQo
+WEdJUEFSVDIsIDB4MzUsIDB4RjEpOworCQkJCQl4Z2lmYl9yZWdfc2V0KFhHSVBBUlQyLCAweDM2
+LCAweEY3KTsKKwkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwgMHgzNywgMHgxRik7CisJCQkJ
+CXhnaWZiX3JlZ19zZXQoWEdJUEFSVDIsIDB4MzgsIDB4MzIpOworCQkJCQlicmVhazsKKwkJCQlj
+YXNlIDcyMDoKKwkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwgMHgzNSwgMHhGMyk7CisJCQkJ
+CXhnaWZiX3JlZ19zZXQoWEdJUEFSVDIsIDB4MzYsIDB4MDApOworCQkJCQl4Z2lmYl9yZWdfc2V0
+KFhHSVBBUlQyLCAweDM3LCAweDFEKTsKKwkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwgMHgz
+OCwgMHgyMCk7CisJCQkJCWJyZWFrOworCQkJCWNhc2UgODAwOgorCQkJCQl4Z2lmYl9yZWdfc2V0
+KFhHSVBBUlQyLCAweDM1LCAweEZDKTsKKwkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwgMHgz
+NiwgMHhGQik7CisJCQkJCXhnaWZiX3JlZ19zZXQoWEdJUEFSVDIsIDB4MzcsIDB4MTQpOworCQkJ
+CQl4Z2lmYl9yZWdfc2V0KFhHSVBBUlQyLCAweDM4LCAweDJBKTsKKwkJCQkJYnJlYWs7CisJCQkJ
+fQogCQkJfQogCQl9CisKKwkJaWYgKGZpbHRlciA+PSAwICYmIGZpbHRlciA8PSA3KSB7CisJCQlj
+b25zdCB1OCAqZiA9IFhHSV9UVl9maWx0ZXJbZmlsdGVyX3RiXS5maWx0ZXJbZmlsdGVyXTsKKwor
+CQkJcHJfZGVidWcoIkZpbHRlclRhYmxlWyVkXS0lZDogJSpwaFxuIiwKKwkJCQkgZmlsdGVyX3Ri
+LCBmaWx0ZXIsIDQsIGYpOworCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwgMHgzNSwgZlswXSk7
+CisJCQl4Z2lmYl9yZWdfc2V0KFhHSVBBUlQyLCAweDM2LCBmWzFdKTsKKwkJCXhnaWZiX3JlZ19z
+ZXQoWEdJUEFSVDIsIDB4MzcsIGZbMl0pOworCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwgMHgz
+OCwgZlszXSk7CisJCX0KIAl9CiB9CiAK
+
+
+--=-kFYqIMhmdimJEcnE/WBy--
 
 
