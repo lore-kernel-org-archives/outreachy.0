@@ -1,113 +1,107 @@
-X-GM-THRID: 6807521221589073920
-X-Received: by 2002:adf:f14a:: with SMTP id y10mr10815850wro.43.1584999547173;
-        Mon, 23 Mar 2020 14:39:07 -0700 (PDT)
+X-GM-THRID: 6389989213457088512
+X-Received: by 10.157.17.39 with SMTP id g36mr8583695ote.86.1487785301004;
+        Wed, 22 Feb 2017 09:41:41 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:f5cc:: with SMTP id k12ls2627154wrp.6.gmail; Mon, 23 Mar
- 2020 14:39:05 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsu/FNlU9Q+42BdZp8c6sOI4czkFzH7qDYjCWyuKIohcws0XxQaIf0tP6DaCa1+SyTZOZoT
-X-Received: by 2002:a5d:4ecf:: with SMTP id s15mr21564843wrv.302.1584999545865;
-        Mon, 23 Mar 2020 14:39:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584999545; cv=none;
-        d=google.com; s=arc-20160816;
-        b=qXW7t8eeRcgHwjnHGaXwsN6VZScVISSyIjuXohQECt/Y50KWhcKeiT13DodV3tiS7R
-         7ImMSZ1altOlVYXOWxkFj9Vfg4KE98dt3uTexW554n5OKTmRRfrfiEhRX6CSJcuzXOLd
-         219NcGCZumXFQWlH7XqjE8CTusGkfJw0U95s7tRPPc0/CMoO/ikMZi3bKHeKZI9VETdS
-         Wx5UZ8/NaTm2qvNryPyDfYsMd3V1L9k1lm5pUviJZXBRJe5+zXQTY0+YRWorJYwz+Y1h
-         YbUzd64GospwBIaJfy0Dd4oegBndPjq1yab+p5fkpiQGhGKco8O8aMFGDmNuAbVhC5js
-         nSyA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=xYSExYQZyUE+75TTsYFHBfddATY7/N4pAWCofNa9rcc=;
-        b=j/+Mpl01tFEvrzYr45VAPaLdRgl5xDAHKTpT6wq2dUz8p02plU3JfRhWXXXRIi/ZDN
-         OcwQv3HWDjTune2Wvu8R3+16fj0Hcw33OK5lwlkBVCwkU1lPPLhLDw2XJlsXRuFcl/m7
-         ikbOgrnmV29jLgy+w1AHQwLi31ifJIf7l27OhZMlnHMSEKb2b8N5YaxfDD62bMZjq9r8
-         GMw+StQocmD75TcasFxxzHMJTWtgujymFwFwS6qAc6MPwyALBrKdKT9lfiEzsGe8eDVh
-         f70ptn2URYCHgrM64h5DgWRE52NSLKR/cSaXGj/t5w3q7faJTIvZA0/YCA2vtSWbVz6c
-         7biQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HnWcfPb6;
-       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::42c as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jane.pnx9@gmail.com>
-Received: from mail-wr1-x42c.google.com (mail-wr1-x42c.google.com. [2a00:1450:4864:20::42c])
-        by gmr-mx.google.com with ESMTPS id l8si133133wrr.1.2020.03.23.14.39.05
+Received: by 10.157.30.168 with SMTP id n37ls1640816otn.25.gmail; Wed, 22 Feb
+ 2017 09:41:40 -0800 (PST)
+X-Received: by 10.13.253.6 with SMTP id n6mr11520300ywf.84.1487785300594;
+        Wed, 22 Feb 2017 09:41:40 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
+        by gmr-mx.google.com with ESMTPS id g205si458629ita.2.2017.02.22.09.41.40
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 23 Mar 2020 14:39:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::42c as permitted sender) client-ip=2a00:1450:4864:20::42c;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 22 Feb 2017 09:41:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HnWcfPb6;
-       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::42c as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x42c.google.com with SMTP id b2so18990447wrj.10
-        for <outreachy-kernel@googlegroups.com>; Mon, 23 Mar 2020 14:39:05 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x241.google.com with SMTP id z128so1343624pgb.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 22 Feb 2017 09:41:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=xYSExYQZyUE+75TTsYFHBfddATY7/N4pAWCofNa9rcc=;
-        b=HnWcfPb6JFnpKkJRm9mp/BLUBg/vOP97ucmNE3wRmWwYJXA31TN4HijPTSdnycJiZW
-         qxMKb58gvGoq/mpEk8+YrSqpqK5DHp7BDti9qUIPDVqA5nSMByGcNXMTfVUssyIzCwBW
-         zL1d18bkNBfadPmOGk+NzSym1COltyimsSdbIEgcat0ohLEX7CRWvL5RxhdNoNhRWmIu
-         TKG8oaDiSOS0u94lD/v53FRg4qeCsMGjwm/bcA7v1OUYCY7cuKlCzknOBGE7DYVvSrha
-         i5PKfM6+2ISo/gSL50X/qLS0vh44xsYwq5cLPeA6syCGfRdZLPaAryAtrTAOq2hSgJz8
-         1pCQ==
+        h=message-id:date:from:to:cc:subject:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=nDnNuc0tjGXN3NAb+vTsXqabLrnY/iMbZ7VHOgf7UmA=;
+        b=HNhlbMjxFh3/jlQfwIDhMfnBMsDmUhyQJn0VBb+kNs4k6nsx/UqPGP63rRBjquj0wA
+         uq2EQLCIRR/1RduerelOyDaSFNg6k5Cy5sOF2G+FdhcjSIPMkbjyuh0CfWDJ4FSFQk9p
+         43LXup3O6VDz+RL/P+qrc0fx30dAWBbaVgroqjlEfZwaczwdG7KefKOmWbvI5FFQXouI
+         H8SD1bm6LCWpO//lh9+nEBAG06TFli0KXG8cXga9IGcMztL+4SvupjBWLKw1gTJMsoF/
+         WKcglNVMCXwd+73XPYNwRldBzPpRJN73uo4Dzk5HU2HpR8zvpvi2hlZCb9JoJoNlwYoD
+         ScNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=xYSExYQZyUE+75TTsYFHBfddATY7/N4pAWCofNa9rcc=;
-        b=QvF5PhEEpk2lWjpWLsMkZ7KHlsCtGR5cDXqa/Qt+YYOduMbm4r3ugd9tHGmQGM2qHa
-         nH3ja1HKL8Ol/BRcpMWlVdCLttTu8/JuPdVR5ekDNpHzbA18+ioX8KvF1+JFrg/9aDzF
-         YLGWdGdRg02ndtPr6v8qEBCNDO5LPFELY6dzXaUNShfnQiBtv8JtDzjnHSK0RbQka1fM
-         XQwgw2TriEPkchrRUJjwTezLuIkni4D1WjahVVvGbVnF4ZANfjTLzfUiCXJhtsK4ddi4
-         stUntCllc0LKBVBhtCXRTCALqNnjxFF8CuJs62+UXd5XmSjB1asLUfljoSdGDmagXvvg
-         KujA==
-X-Gm-Message-State: ANhLgQ2J/0AjzKyXd64QhzjLWm6X/k2F3CQ5S6iacPHVyutmiRwFZVaz
-	NjEQhozz8fHqwSkktOmdYgE=
-X-Received: by 2002:adf:ff82:: with SMTP id j2mr25255211wrr.48.1584999545675;
-        Mon, 23 Mar 2020 14:39:05 -0700 (PDT)
-Return-Path: <jane.pnx9@gmail.com>
-Received: from localhost.localdomain ([197.34.98.222])
-        by smtp.gmail.com with ESMTPSA id w9sm2844816wrk.18.2020.03.23.14.39.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Mar 2020 14:39:05 -0700 (PDT)
-From: Sam Muhammed <jane.pnx9@gmail.com>
+        h=x-gm-message-state:message-id:date:from:to:cc:subject:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=nDnNuc0tjGXN3NAb+vTsXqabLrnY/iMbZ7VHOgf7UmA=;
+        b=lb59CRCI1RndwgDJL582TwAsSVr3iFPSGfkz3tosnM0fTVM+yG+ACDk/JUoLudAMFP
+         cC0Od6gky3UIfj+/K0ElgUcCd2eNY2BAmLuKhsPPvx6uZNdWVLrruaoFYps+gY7B8IBN
+         Afpdaia4IwHzbkPkN6KPcmDMMMZZI0m00CYmk8Ot2PdQ3M6t8mOTowHrVIB/bz+fzr2Q
+         Le1F5SztZt4lBJ17jijWy3IFikv7ie7l9y4OOAJcaUTKXOfrfw8thKwC8xsd2kWvfEMN
+         ITqSYGeSOOwRgGqkp8J1ZStSgK1uqnFfrtszYJy7Em7l2yhiVNyN0UgfDV5ejmPjhzOj
+         QKKQ==
+X-Gm-Message-State: AMke39lXIO2mMgnKDlf+OGsslL5aXZmmq4nx28Yuimml//x+Bs1b49ktHTvEPU0dDWIbmQ==
+X-Received: by 10.99.104.199 with SMTP id d190mr33994978pgc.59.1487785300151;
+        Wed, 22 Feb 2017 09:41:40 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from euri ([2405:204:5189:4d06:6cf8:d067:30d5:ddb2])
+        by smtp.gmail.com with ESMTPSA id x10sm4850670pfi.117.2017.02.22.09.41.38
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 22 Feb 2017 09:41:39 -0800 (PST)
+Message-ID: <58adcd53.0a0f620a.21b74.7937@mx.google.com>
+X-Google-Original-Message-ID: <20170222174133.GA16650@<rvarsha016@gmail.com>>
+Date: Wed, 22 Feb 2017 23:11:33 +0530
+From: Varsha Rao <rvarsha016@gmail.com>
 To: William Hubbs <w.d.hubbs@gmail.com>,
 	Chris Brannon <chris@the-brannons.com>,
 	Kirk Reiser <kirk@reisers.ca>,
 	Samuel Thibault <samuel.thibault@ens-lyon.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	outreachy-kernel@googlegroups.com
-Cc: Sam Muhammed <jane.pnx9@gmail.com>
-Subject: [PATCH 0/3] Staging: speakup: Misc cleanups and code reformatting.
-Date: Mon, 23 Mar 2020 17:38:42 -0400
-Message-Id: <cover.1584997290.git.jane.pnx9@gmail.com>
-X-Mailer: git-send-email 2.20.1
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH 1/2] staging: speakup: Removed blank line after open braces.
+References: <cover.1487784838.git.varshar186@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1487784838.git.varshar186@gmail.com>
+User-Agent: Mutt/1.7.1 (2016-10-04)
 
-Changes to clear multiple Checkpatch.pl CHECKs of
-reformatting multiple assignments, proper use of
-kmalloc(), and adding identifier names to function
-declaration arguments.
+Remove blank line after open braces, to fix the following checkpatch issue:
 
-All modifications made to match coding style and
-to improve readability.
+CHECK: Blank lines aren't necessary after an open brace '{'
 
-Sam Muhammed (3):
-  Staging: speakup: Avoid multiple assignments.
-  Staging: speakup: Use sizeof(*var) in kmalloc().
-  Staging: speakup: Add identifier name to function declaration
-    arguments.
-
- drivers/staging/speakup/main.c      | 18 ++++++++++++------
- drivers/staging/speakup/spk_ttyio.c |  2 +-
- drivers/staging/speakup/spk_types.h |  2 +-
- 3 files changed, 14 insertions(+), 8 deletions(-)
-
+Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
 ---
-2.20.1
+ drivers/staging/speakup/kobjects.c | 1 -
+ drivers/staging/speakup/serialio.c | 1 -
+ 2 files changed, 2 deletions(-)
+
+diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
+index 4e7ebc3..77e6dee 100644
+--- a/drivers/staging/speakup/kobjects.c
++++ b/drivers/staging/speakup/kobjects.c
+@@ -129,7 +129,6 @@ static ssize_t chars_chartab_store(struct kobject *kobj,
+ 
+ 	spin_lock_irqsave(&speakup_info.spinlock, flags);
+ 	while (cp < end) {
+-
+ 		while ((cp < end) && (*cp == ' ' || *cp == '\t'))
+ 			cp++;
+ 
+diff --git a/drivers/staging/speakup/serialio.c b/drivers/staging/speakup/serialio.c
+index ef89dc1..87d3318 100644
+--- a/drivers/staging/speakup/serialio.c
++++ b/drivers/staging/speakup/serialio.c
+@@ -97,7 +97,6 @@ static irqreturn_t synth_readbuf_handler(int irq, void *dev_id)
+ 
+ 	spin_lock_irqsave(&speakup_info.spinlock, flags);
+ 	while (inb_p(speakup_info.port_tts + UART_LSR) & UART_LSR_DR) {
+-
+ 		c = inb_p(speakup_info.port_tts+UART_RX);
+ 		synth->read_buff_add((u_char)c);
+ 	}
+-- 
+2.9.3
 
 
