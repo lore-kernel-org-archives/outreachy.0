@@ -1,108 +1,97 @@
-X-GM-THRID: 6390415872559677440
-X-Received: by 10.237.58.5 with SMTP id n5mr11346773qte.84.1487884640357;
-        Thu, 23 Feb 2017 13:17:20 -0800 (PST)
+X-GM-THRID: 6389954613563359232
+X-Received: by 10.25.162.77 with SMTP id l74mr1740868lfe.31.1487777779063;
+        Wed, 22 Feb 2017 07:36:19 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.11.133 with SMTP id 5ls4491497oth.45.gmail; Thu, 23 Feb
- 2017 13:17:19 -0800 (PST)
-X-Received: by 10.157.17.235 with SMTP id y40mr10604330oty.21.1487884639978;
-        Thu, 23 Feb 2017 13:17:19 -0800 (PST)
-Return-Path: <sreyamittal5@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id c123si906253pfa.4.2017.02.23.13.17.19
+Received: by 10.25.207.80 with SMTP id f77ls108067lfg.8.gmail; Wed, 22 Feb
+ 2017 07:36:18 -0800 (PST)
+X-Received: by 10.25.79.23 with SMTP id d23mr3322019lfb.27.1487777778097;
+        Wed, 22 Feb 2017 07:36:18 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id f7si206649wmg.3.2017.02.22.07.36.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 23 Feb 2017 13:17:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Wed, 22 Feb 2017 07:36:18 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=sreyamittal5@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id 1so353057pgz.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 23 Feb 2017 13:17:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=txvYr8YRPozyELLNLxfXmTQKlt0dTIblFlvHYCD+LEE=;
-        b=idft1CxDGF4BJpc4Ad+I5WDZ51Ch9AA30R0uBlrtjFbIbmsIekmVnMSVJCMQHZdS58
-         fuLRbxfmuArA/LBDiHhVav4uoN4bF7J8ctzQrHcu/2+GooQq8A/kow8WVWaPhjD1eZdT
-         ZxWMmVG0NG0nt64MhvhAT9GX0jo31aksaSXiLhWRgVLdV6SYVdWjbhmLzykZCmkVPsxp
-         TVvEBNhMMo7Oa2ebkg0VGctybsFLFHqoyX/mU3x0kF6VtCcXpVtioy3U06al2twIJrA+
-         aDSgitLx9vnstZ6tSkJZeuYlQHlyneBkHU6Czm7eQGXvMcj1OkHunlUkeh+QEsSQig8G
-         YKNg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=txvYr8YRPozyELLNLxfXmTQKlt0dTIblFlvHYCD+LEE=;
-        b=NAzD8qCOPEcJDgz2wo4PAVk7rsrsLkGAWFNYYdDdfJw/gXDTE9xNBsy0cU0kwIgVkC
-         aOEZZfI0B5i6GZNLoBxRb5Of8QeKJX5jQfz5QR5q3gPlfYy21F5zkjLrQVb1YBeHuMy4
-         nMIupCTPdR8YaIFyVqCvfpZ+6rZ8fov9waY+LRkREzh7ZDYSczBGOQ45B+ge84jQCJvJ
-         xclfkxahMfNYlKluEl1/UZxsXv18NXvtMZEIWkkCW3Ip55kNCGW8g7YcKIlzBrTgSfJC
-         8D6H8/jgIYmpcKK9ZvKzbFHQZJwddnh49gVdtmC014/nFJwdXQ7C2KzrLmoepKg9mzKA
-         KQAA==
-X-Gm-Message-State: AMke39lNnNYuk+3FTt4DhJada9r+cW1epuf9GYWn6EhVw/S3Qj76i06RifV5S1+yQuXdiA==
-X-Received: by 10.99.36.7 with SMTP id k7mr50749336pgk.199.1487884639719;
-        Thu, 23 Feb 2017 13:17:19 -0800 (PST)
-Return-Path: <sreyamittal5@gmail.com>
-Received: from stayawesome ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id x15sm11471340pgo.56.2017.02.23.13.17.18
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 23 Feb 2017 13:17:19 -0800 (PST)
-Date: Fri, 24 Feb 2017 02:47:11 +0530
-From: Sreya Mittal <sreyamittal5@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: William Hubbs <w.d.hubbs@gmail.com>,
-	Chris Brannon <chris@the-brannons.com>,
-	Kirk Reiser <kirk@reisers.ca>,
-	Samuel Thibault <samuel.thibault@ens-lyon.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v3] staging: speakup: Clean up if tests
-Message-ID: <20170223211711.zyivrz6ymrsixbfc@stayawesome>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,194,1484002800"; 
+   d="scan'208";a="214371118"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 22 Feb 2017 16:36:17 +0100
+Date: Wed, 22 Feb 2017 16:36:10 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Gargi Sharma <gs051095@gmail.com>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
+    johan@kernel.org, elder@kernel.org
+Subject: Re: [Outreachy kernel] [PATCH v3] staging: greybus: loopback_test:
+ fix device-name lea
+In-Reply-To: <1487777111-7267-1-git-send-email-gs051095@gmail.com>
+Message-ID: <alpine.DEB.2.20.1702221635120.3145@hadrien>
+References: <1487777111-7267-1-git-send-email-gs051095@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.6.2-neo (2016-08-21)
+Content-Type: text/plain; charset=US-ASCII
 
-Put logical continuations on the next line and remove useless parentheses. 
-Found by checkpatch.pl
+lea -> leak in the subject line.
 
-Signed-off-by: Sreya Mittal <sreyamittal5@gmail.com>
----
- drivers/staging/speakup/i18n.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+Actually, Johan said that you could add his Reviewed-by tage if you
+resend.  You could put that under your Signed-off-by.  Name and email,
+just like for your name.
 
-diff --git a/drivers/staging/speakup/i18n.c b/drivers/staging/speakup/i18n.c
-index 2f9b3df..aae3361 100644
---- a/drivers/staging/speakup/i18n.c
-+++ b/drivers/staging/speakup/i18n.c
-@@ -411,8 +411,8 @@ static char *next_specifier(char *input)
- 		next_percent = strchr(next_percent, '%');
- 		if (next_percent != NULL) {
- 			/* skip over doubled percent signs */
--			while ((next_percent[0] == '%')
--			       && (next_percent[1] == '%'))
-+			while (next_percent[0] == '%' &&
-+				  next_percent[1] == '%')
- 				next_percent += 2;
- 			if (*next_percent == '%')
- 				found = 1;
-@@ -549,10 +549,10 @@ ssize_t spk_msg_set(enum msg_index_t index, char *text, size_t length)
- 		if (newstr) {
- 			memcpy(newstr, text, length);
- 			newstr[length] = '\0';
--			if ((index >= MSG_FORMATTED_START
--			&& index <= MSG_FORMATTED_END)
--				&& !fmt_validate(speakup_default_msgs[index],
--				newstr)) {
-+			if (index >= MSG_FORMATTED_START &&
-+				  index <= MSG_FORMATTED_END &&
-+				  !fmt_validate(speakup_default_msgs[index],
-+				  newstr)) {
- 				kfree(newstr);
- 				return -EINVAL;
- 			}
--- 
-2.9.3
+julia
 
+On Wed, 22 Feb 2017, Gargi Sharma wrote:
+
+> All the device names were being always leaked. Also,
+> illegal free was being called upon namelist[n] which
+> was coincidentally NULL. The pointer to dirent structures
+> must be individually freed before freeing the pointer array.
+>
+> Coccinelle Script:
+> @@
+> expression arr,ex1,ex2;
+> @@
+>
+> for(ex1 = 0; ex1 < ex2; ex1++) { <...
+>   arr[
+> - ex2
+> + ex1
+>   ]
+>   ...> }
+>
+> Signed-off-by: Gargi Sharma <gs051095@gmail.com>
+> ---
+> Changes in v3:
+> 	-Edited the commit message.
+> Changes in v2:
+> 	-Made the commit message clearer.
+> ---
+>  drivers/staging/greybus/tools/loopback_test.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/greybus/tools/loopback_test.c b/drivers/staging/greybus/tools/loopback_test.c
+> index 18d7a3d..1c01833 100644
+> --- a/drivers/staging/greybus/tools/loopback_test.c
+> +++ b/drivers/staging/greybus/tools/loopback_test.c
+> @@ -636,7 +636,7 @@ int find_loopback_devices(struct loopback_test *t)
+>  	ret = 0;
+>  done:
+>  	for (i = 0; i < n; i++)
+> -		free(namelist[n]);
+> +		free(namelist[i]);
+>  	free(namelist);
+>  baddir:
+>  	return ret;
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1487777111-7267-1-git-send-email-gs051095%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
