@@ -1,253 +1,163 @@
 X-GM-THRID: 6389612389434654720
-X-Received: by 10.36.13.211 with SMTP id 202mr147802itx.3.1487738023267;
-        Tue, 21 Feb 2017 20:33:43 -0800 (PST)
+X-Received: by 10.25.18.219 with SMTP id 88mr138158lfs.11.1487736995304;
+        Tue, 21 Feb 2017 20:16:35 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.164.100 with SMTP id n97ls80586ioe.16.gmail; Tue, 21 Feb
- 2017 20:33:41 -0800 (PST)
-X-Received: by 10.99.184.17 with SMTP id p17mr10966806pge.126.1487738021581;
-        Tue, 21 Feb 2017 20:33:41 -0800 (PST)
-Return-Path: <joe@perches.com>
-Received: from smtprelay.hostedemail.com (smtprelay0207.hostedemail.com. [216.40.44.207])
-        by gmr-mx.google.com with ESMTPS id g205si147622ita.2.2017.02.21.20.33.41
+Received: by 10.25.56.76 with SMTP id d12ls955lfj.49.gmail; Tue, 21 Feb 2017
+ 20:16:34 -0800 (PST)
+X-Received: by 10.46.9.81 with SMTP id 78mr3237322ljj.30.1487736994262;
+        Tue, 21 Feb 2017 20:16:34 -0800 (PST)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from mail-lf0-x244.google.com (mail-lf0-x244.google.com. [2a00:1450:4010:c07::244])
+        by gmr-mx.google.com with ESMTPS id p185si56051wme.1.2017.02.21.20.16.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 21 Feb 2017 20:33:41 -0800 (PST)
-Received-SPF: neutral (google.com: 216.40.44.207 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.207;
+        Tue, 21 Feb 2017 20:16:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2a00:1450:4010:c07::244 as permitted sender) client-ip=2a00:1450:4010:c07::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 216.40.44.207 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
-	by smtprelay02.hostedemail.com (Postfix) with ESMTP id 08AA812BA15;
-	Wed, 22 Feb 2017 04:33:41 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,:::::::::::::,RULES_HIT:1:41:355:379:541:599:800:871:960:973:988:989:1000:1260:1313:1314:1345:1359:1373:1437:1516:1518:1541:1575:1594:1711:1730:1747:1764:1777:1792:2393:2553:2559:2562:3138:3139:3140:3141:3142:3354:3622:3865:3866:3867:3868:3870:3871:3872:3873:3874:4184:4321:4605:5007:6506:6747:6748:7281:7903:10004:10400:10471:10848:11026:11232:11473:11604:11658:11914:12050:12663:12740:12895:13255:13439:14180:14181:14659:14721:21060:21080:21433:30012:30022:30054:30056:30070:30090:30091,0,RBL:none,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:fn,MSBL:0,DNSBL:none,Custom_rules:0:0:0,LFtime:1,LUA_SUMMARY:none
-X-HE-Tag: flesh62_2d4652a2f950
-X-Filterd-Recvd-Size: 13390
-Received: from XPS-9350 (unknown [47.151.132.55])
-	(Authenticated sender: joe@perches.com)
-	by omf02.hostedemail.com (Postfix) with ESMTPA;
-	Wed, 22 Feb 2017 04:33:39 +0000 (UTC)
-Message-ID: <1487738018.14159.1.camel@perches.com>
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2a00:1450:4010:c07::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-lf0-x244.google.com with SMTP id p197so229854lfp.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 21 Feb 2017 20:16:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=nQU4/xTwQ3nSRF7wgTK9pMZSiKh1lttwc4FWZA8hrQU=;
+        b=CZog2woorfJhkik4PEvIapqxMEP0Dlv1eXWUOQvrRJvrWW3ILCwlAbWh8F+LgfFWBK
+         gCqhgx0H06nWIyjlojw1Fww9Lwn5+5AU23sxFY378ahRy2zbtdNn+ibUuRqCz1gV1cfs
+         IUJ89fs0+RHZRCQr69X1cnzEVJkdbD//8F2VoPFPQ/eJnxi/qoqW5ejeGzhQKIzVADaf
+         5Gn9gUTfXufv4GYxtyQ5CvmBUhd8jPIdhJ55M0YTjMSy/PV/eddrsT4/F+RUvWiq5QF6
+         Lx8LGFs+VBHN6eN00pOPTd2LebjfgLi4tChygrRhGQpd8dyPoZ3+VI88+8IVZNB1JdxF
+         TEQA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=nQU4/xTwQ3nSRF7wgTK9pMZSiKh1lttwc4FWZA8hrQU=;
+        b=pTkO7e8k1l/jqc5aNpvA1ql/6NHuZZ9o6a2lOxbpXC5q/ZrT+J+UkDfXpIdCytZ8PP
+         RxkcjplQ0bQfta7a5yt4Q6M4XdVKZOIcSNXP5bOqy6jxguxrrzv963m4cAx+6SqpJ1of
+         OFifvOHnzDNRP0brHQFWwfKdXv13kS0jLmO+U6+2o5bFh/fhItREPDq1rBw+Ll7XNXn5
+         OWuqsyooKfqTk4GivU/rqsJv3301zeY3LYwK7M4B5iCCI/bXLagEUEBNkGkXIOsl5HkE
+         emsSm/6n6TOqXrYwkxUVXXhnkZP4jhW+Efyd3Tyj/f6HheTJ1k0enk5nmIqh7qkcsk8p
+         v/RQ==
+X-Gm-Message-State: AMke39nf8SwDo3qDOBQih5r9Ha0HPV4+mB4WUaha+m2tSooYEqPbJWE66zVKIBNX0MeuKHS6gqx6B5hKzJRtsw==
+X-Received: by 10.46.87.70 with SMTP id r6mr94417ljd.108.1487736993961; Tue,
+ 21 Feb 2017 20:16:33 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.25.151.142 with HTTP; Tue, 21 Feb 2017 20:16:33 -0800 (PST)
+In-Reply-To: <1487702533.2853.23.camel@perches.com>
+References: <20170221171920.GA18917@arushi-HP-Pavilion-Notebook>
+ <alpine.DEB.2.20.1702211840010.3448@hadrien> <1487702533.2853.23.camel@perches.com>
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+Date: Wed, 22 Feb 2017 09:46:33 +0530
+Message-ID: <CA+XqjF-bsKnXFkFN_SGToYTvMdWHX_CCas_BvdtT9UOb04hkCQ@mail.gmail.com>
 Subject: Re: [Outreachy kernel] [PATCH] staging: xgifb: correct the multiple
  line dereference to fix coding stye errors
-From: Joe Perches <joe@perches.com>
-To: Arushi Singhal <arushisinghal19971997@gmail.com>
-Cc: Julia Lawall <julia.lawall@lip6.fr>, arnaud.patard@rtp-net.org, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org,  outreachy-kernel@googlegroups.com
-Date: Tue, 21 Feb 2017 20:33:38 -0800
-In-Reply-To: <CA+XqjF-bsKnXFkFN_SGToYTvMdWHX_CCas_BvdtT9UOb04hkCQ@mail.gmail.com>
-References: <20170221171920.GA18917@arushi-HP-Pavilion-Notebook>
-	 <alpine.DEB.2.20.1702211840010.3448@hadrien>
-	 <1487702533.2853.23.camel@perches.com>
-	 <CA+XqjF-bsKnXFkFN_SGToYTvMdWHX_CCas_BvdtT9UOb04hkCQ@mail.gmail.com>
-Content-Type: multipart/mixed; boundary="=-kFYqIMhmdimJEcnE/WBy"
-X-Mailer: Evolution 3.22.3-0ubuntu0.1 
-Mime-Version: 1.0
+To: Joe Perches <joe@perches.com>
+Cc: Julia Lawall <julia.lawall@lip6.fr>, arnaud.patard@rtp-net.org, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org, 
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary=f403045f89100b644e054916c317
 
+--f403045f89100b644e054916c317
+Content-Type: text/plain; charset=UTF-8
 
---=-kFYqIMhmdimJEcnE/WBy
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
+On Wed, Feb 22, 2017 at 12:12 AM, Joe Perches <joe@perches.com> wrote:
 
-On Wed, 2017-02-22 at 09:46 +0530, Arushi Singhal wrote:
-> On Wed, Feb 22, 2017 at 12:12 AM, Joe Perches <joe@perches.com> wrote:
-> 
-> > On Tue, 2017-02-21 at 18:40 +0100, Julia Lawall wrote:
-> > > 
-> > > On Tue, 21 Feb 2017, Arushi Singhal wrote:
-> > > 
-> > > > Error was reported by checkpatch.pl as
-> > > > WARNING: Avoid multiple line dereference...
-> > > > if there is boolean operator then it is fixed by Splitting line at
-> > > > boolean operator.
-> > > 
-> > > This is massively execeeding the 80 character boundary, and not for
-> > > something trivial like a string.  Maybe the code can be reorganized in
-> > > some other way.
-> > 
-> > The easiest way to do that is to change the test above it
-> > to reduce indentation from
-> > 
-> >         if (xgifb_info->display2 == XGIFB_DISP_TV &&
-> >             xgifb_info->hasVB == HASVB_301) {
-> >                 [code...];
-> >         }
-> > }
-> > 
-> > to
-> > 
-> >         if (xgifb_info->display2 != XGIFB_DISP_TV ||
-> >             xgifb_in
-> > fo->hasVB != HASVB_301)
-> >                 return;
-> > 
-> >         [code...];
-> > }
-> > 
-> > 
-> 
-> Hi
-> So basically you are saying that cut one word and put the other part of the
-> word in the next line.
+> On Tue, 2017-02-21 at 18:40 +0100, Julia Lawall wrote:
+> >
+> > On Tue, 21 Feb 2017, Arushi Singhal wrote:
+> >
+> > > Error was reported by checkpatch.pl as
+> > > WARNING: Avoid multiple line dereference...
+> > > if there is boolean operator then it is fixed by Splitting line at
+> > > boolean operator.
+> >
+> > This is massively execeeding the 80 character boundary, and not for
+> > something trivial like a string.  Maybe the code can be reorganized in
+> > some other way.
+>
+> The easiest way to do that is to change the test above it
+> to reduce indentation from
+>
+>         if (xgifb_info->display2 == XGIFB_DISP_TV &&
+>             xgifb_info->hasVB == HASVB_301) {
+>                 [code...];
+>         }
+> }
+>
+> to
+>
+>         if (xgifb_info->display2 != XGIFB_DISP_TV ||
+>             xgifb_in
+> fo->hasVB != HASVB_301)
+>                 return;
+>
+>         [code...];
+> }
+>
+>
+Hi
+So basically you are saying that cut one word and put the other part of the
+word in the next line.
 
-No, evolution is a horrible email client
-that wraps lines oddly sometimes and sends
-out different content than it displays in
-its on-screen editor.
+Thanks
+Arushi
 
-What I am saying is the block after the test
-can be unindented one level by inverting the
-test and using return.
+--f403045f89100b644e054916c317
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-It should be:
+<div dir=3D"ltr"><br><div class=3D"gmail_extra"><br><div class=3D"gmail_quo=
+te">On Wed, Feb 22, 2017 at 12:12 AM, Joe Perches <span dir=3D"ltr">&lt;<a =
+href=3D"mailto:joe@perches.com" target=3D"_blank">joe@perches.com</a>&gt;</=
+span> wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8e=
+x;border-left:1px #ccc solid;padding-left:1ex"><span class=3D"">On Tue, 201=
+7-02-21 at 18:40 +0100, Julia Lawall wrote:<br>
+&gt;<br>
+&gt; On Tue, 21 Feb 2017, Arushi Singhal wrote:<br>
+&gt;<br>
+&gt; &gt; Error was reported by <a href=3D"http://checkpatch.pl" rel=3D"nor=
+eferrer" target=3D"_blank">checkpatch.pl</a> as<br>
+&gt; &gt; WARNING: Avoid multiple line dereference...<br>
+&gt; &gt; if there is boolean operator then it is fixed by Splitting line a=
+t<br>
+&gt; &gt; boolean operator.<br>
+&gt;<br>
+&gt; This is massively execeeding the 80 character boundary, and not for<br=
+>
+&gt; something trivial like a string.=C2=A0 Maybe the code can be reorganiz=
+ed in<br>
+&gt; some other way.<br>
+<br>
+</span>The easiest way to do that is to change the test above it<br>
+to reduce indentation from<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (xgifb_info-&gt;display2 =3D=3D XGIFB_DISP_T=
+V &amp;&amp;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0xgifb_info-&gt;hasVB =
+=3D=3D HASVB_301) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 [code...];<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+}<br>
+<br>
+to<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (xgifb_info-&gt;display2 !=3D XGIFB_DISP_TV =
+||<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0xgifb_in<br>
+fo-&gt;hasVB !=3D HASVB_301)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 [code...];<br>
+}<br>
+<br>
+</blockquote></div><br></div><div class=3D"gmail_extra">Hi<br></div><div cl=
+ass=3D"gmail_extra">So basically you are saying that cut one word and put t=
+he other part of the word in the next line.<br><br></div><div class=3D"gmai=
+l_extra">Thanks <br></div><div class=3D"gmail_extra">Arushi <br></div><div =
+class=3D"gmail_extra"><br><br></div></div>
 
-	if (xgifb_info->display2 != XGIFB_DISP_TV ||
-	    xgifb_in> > fo->hasVB != HASVB_301)
-		return;
-
-	[code...];
-
-I sent you a separate attachment privately a
-few hours ago but I'll attach it here too.
-
---=-kFYqIMhmdimJEcnE/WBy
-Content-Disposition: attachment; filename="foo.diff"
-Content-Transfer-Encoding: base64
-Content-Type: text/x-patch; name="foo.diff"; charset="ISO-8859-1"
-
-IGRyaXZlcnMvc3RhZ2luZy94Z2lmYi9YR0lfbWFpbl8yNi5jIHwgMjU2ICsrKysrKysrKysrKyst
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLQogMSBmaWxlIGNoYW5nZWQsIDkyIGluc2VydGlvbnMoKyks
-IDE2NCBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcveGdpZmIvWEdJ
-X21haW5fMjYuYyBiL2RyaXZlcnMvc3RhZ2luZy94Z2lmYi9YR0lfbWFpbl8yNi5jCmluZGV4IDY5
-MzBmN2ViNzQxYi4uMGRmN2ZiMmI4ODkyIDEwMDY0NAotLS0gYS9kcml2ZXJzL3N0YWdpbmcveGdp
-ZmIvWEdJX21haW5fMjYuYworKysgYi9kcml2ZXJzL3N0YWdpbmcveGdpZmIvWEdJX21haW5fMjYu
-YwpAQCAtNzMxLDE3OSArNzMxLDEwNyBAQCBzdGF0aWMgdm9pZCBYR0lmYl9wb3N0X3NldG1vZGUo
-c3RydWN0IHhnaWZiX3ZpZGVvX2luZm8gKnhnaWZiX2luZm8pCiAKIAl4Z2lmYl9yZWdfYW5kKFhH
-SVNSLCBJTkRfU0lTX1JBTURBQ19DT05UUk9MLCB+MHgwNCk7CiAKLQlpZiAoeGdpZmJfaW5mby0+
-ZGlzcGxheTIgPT0gWEdJRkJfRElTUF9UViAmJgotCSAgICB4Z2lmYl9pbmZvLT5oYXNWQiA9PSBI
-QVNWQl8zMDEpIHsKLQkJcmVnID0geGdpZmJfcmVnX2dldChYR0lQQVJUNCwgMHgwMSk7CisJaWYg
-KHhnaWZiX2luZm8tPmRpc3BsYXkyICE9IFhHSUZCX0RJU1BfVFYgfHwKKwkgICAgeGdpZmJfaW5m
-by0+aGFzVkIgIT0gSEFTVkJfMzAxKQorCQlyZXR1cm47CiAKLQkJaWYgKHJlZyA8IDB4QjApIHsg
-LyogU2V0IGZpbHRlciBmb3IgWEdJMzAxICovCi0JCQlpbnQgZmlsdGVyX3RiOworCXJlZyA9IHhn
-aWZiX3JlZ19nZXQoWEdJUEFSVDQsIDB4MDEpOworCWlmIChyZWcgPCAweEIwKSB7IC8qIFNldCBm
-aWx0ZXIgZm9yIFhHSTMwMSAqLworCQlpbnQgZmlsdGVyX3RiOwogCi0JCQlzd2l0Y2ggKHhnaWZi
-X2luZm8tPnZpZGVvX3dpZHRoKSB7Ci0JCQljYXNlIDMyMDoKLQkJCQlmaWx0ZXJfdGIgPSAoeGdp
-ZmJfaW5mby0+VFZfdHlwZSA9PQotCQkJCQkgICAgIFRWTU9ERV9OVFNDKSA/IDQgOiAxMjsKLQkJ
-CQlicmVhazsKLQkJCWNhc2UgNjQwOgotCQkJCWZpbHRlcl90YiA9ICh4Z2lmYl9pbmZvLT5UVl90
-eXBlID09Ci0JCQkJCSAgICAgVFZNT0RFX05UU0MpID8gNSA6IDEzOwotCQkJCWJyZWFrOwotCQkJ
-Y2FzZSA3MjA6Ci0JCQkJZmlsdGVyX3RiID0gKHhnaWZiX2luZm8tPlRWX3R5cGUgPT0KLQkJCQkJ
-ICAgICBUVk1PREVfTlRTQykgPyA2IDogMTQ7Ci0JCQkJYnJlYWs7Ci0JCQljYXNlIDgwMDoKLQkJ
-CQlmaWx0ZXJfdGIgPSAoeGdpZmJfaW5mby0+VFZfdHlwZSA9PQotCQkJCQkgICAgIFRWTU9ERV9O
-VFNDKSA/IDcgOiAxNTsKLQkJCQlicmVhazsKLQkJCWRlZmF1bHQ6Ci0JCQkJZmlsdGVyX3RiID0g
-MDsKLQkJCQlmaWx0ZXIgPSAtMTsKLQkJCQlicmVhazsKLQkJCX0KLQkJCXhnaWZiX3JlZ19vcihY
-R0lQQVJUMSwKLQkJCQkgICAgIFNJU19DUlQyX1dFTkFCTEVfMzE1LAotCQkJCSAgICAgMHgwMSk7
-CisJCXN3aXRjaCAoeGdpZmJfaW5mby0+dmlkZW9fd2lkdGgpIHsKKwkJY2FzZSAzMjA6CisJCQlm
-aWx0ZXJfdGIgPSB4Z2lmYl9pbmZvLT5UVl90eXBlID09IFRWTU9ERV9OVFNDID8gNCA6IDEyOwor
-CQkJYnJlYWs7CisJCWNhc2UgNjQwOgorCQkJZmlsdGVyX3RiID0geGdpZmJfaW5mby0+VFZfdHlw
-ZSA9PSBUVk1PREVfTlRTQyA/IDUgOiAxMzsKKwkJCWJyZWFrOworCQljYXNlIDcyMDoKKwkJCWZp
-bHRlcl90YiA9IHhnaWZiX2luZm8tPlRWX3R5cGUgPT0gVFZNT0RFX05UU0MgPyA2IDogMTQ7CisJ
-CQlicmVhazsKKwkJY2FzZSA4MDA6CisJCQlmaWx0ZXJfdGIgPSB4Z2lmYl9pbmZvLT5UVl90eXBl
-ID09IFRWTU9ERV9OVFNDID8gNyA6IDE1OworCQkJYnJlYWs7CisJCWRlZmF1bHQ6CisJCQlmaWx0
-ZXJfdGIgPSAwOworCQkJZmlsdGVyID0gLTE7CisJCQlicmVhazsKKwkJfQorCQl4Z2lmYl9yZWdf
-b3IoWEdJUEFSVDEsIFNJU19DUlQyX1dFTkFCTEVfMzE1LCAweDAxKTsKIAotCQkJaWYgKHhnaWZi
-X2luZm8tPlRWX3R5cGUgPT0gVFZNT0RFX05UU0MpIHsKLQkJCQl4Z2lmYl9yZWdfYW5kKFhHSVBB
-UlQyLCAweDNhLCAweDFmKTsKLQotCQkJCWlmICh4Z2lmYl9pbmZvLT5UVl9wbHVnID09IFRWUExV
-R19TVklERU8pIHsKLQkJCQkJeGdpZmJfcmVnX2FuZChYR0lQQVJUMiwgMHgzMCwgMHhkZik7Ci0K
-LQkJCQl9IGVsc2UgaWYgKHhnaWZiX2luZm8tPlRWX3BsdWcKLQkJCQkJCT09IFRWUExVR19DT01Q
-T1NJVEUpIHsKLQkJCQkJeGdpZmJfcmVnX29yKFhHSVBBUlQyLCAweDMwLCAweDIwKTsKLQotCQkJ
-CQlzd2l0Y2ggKHhnaWZiX2luZm8tPnZpZGVvX3dpZHRoKSB7Ci0JCQkJCWNhc2UgNjQwOgotCQkJ
-CQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM1LAotCQkJCQkJCSAg
-ICAgIDB4RUIpOwotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAw
-eDM2LAotCQkJCQkJCSAgICAgIDB4MDQpOwotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwK
-LQkJCQkJCQkgICAgICAweDM3LAotCQkJCQkJCSAgICAgIDB4MjUpOwotCQkJCQkJeGdpZmJfcmVn
-X3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM4LAotCQkJCQkJCSAgICAgIDB4MTgpOwot
-CQkJCQkJYnJlYWs7Ci0JCQkJCWNhc2UgNzIwOgotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJU
-MiwKLQkJCQkJCQkgICAgICAweDM1LAotCQkJCQkJCSAgICAgIDB4RUUpOwotCQkJCQkJeGdpZmJf
-cmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM2LAotCQkJCQkJCSAgICAgIDB4MEMp
-OwotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM3LAotCQkJ
-CQkJCSAgICAgIDB4MjIpOwotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkg
-ICAgICAweDM4LAotCQkJCQkJCSAgICAgIDB4MDgpOwotCQkJCQkJYnJlYWs7Ci0JCQkJCWNhc2Ug
-ODAwOgotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM1LAot
-CQkJCQkJCSAgICAgIDB4RUIpOwotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJ
-CQkgICAgICAweDM2LAotCQkJCQkJCSAgICAgIDB4MTUpOwotCQkJCQkJeGdpZmJfcmVnX3NldChY
-R0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM3LAotCQkJCQkJCSAgICAgIDB4MjUpOwotCQkJCQkJ
-eGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM4LAotCQkJCQkJCSAgICAg
-IDB4RjYpOwotCQkJCQkJYnJlYWs7Ci0JCQkJCX0KLQkJCQl9CisJCWlmICh4Z2lmYl9pbmZvLT5U
-Vl90eXBlID09IFRWTU9ERV9OVFNDKSB7CisJCQl4Z2lmYl9yZWdfYW5kKFhHSVBBUlQyLCAweDNh
-LCAweDFmKTsKIAotCQkJfSBlbHNlIGlmICh4Z2lmYl9pbmZvLT5UVl90eXBlID09IFRWTU9ERV9Q
-QUwpIHsKLQkJCQl4Z2lmYl9yZWdfYW5kKFhHSVBBUlQyLCAweDNBLCAweDFGKTsKLQotCQkJCWlm
-ICh4Z2lmYl9pbmZvLT5UVl9wbHVnID09IFRWUExVR19TVklERU8pIHsKLQkJCQkJeGdpZmJfcmVn
-X2FuZChYR0lQQVJUMiwgMHgzMCwgMHhERik7Ci0KLQkJCQl9IGVsc2UgaWYgKHhnaWZiX2luZm8t
-PlRWX3BsdWcKLQkJCQkJCT09IFRWUExVR19DT01QT1NJVEUpIHsKLQkJCQkJeGdpZmJfcmVnX29y
-KFhHSVBBUlQyLCAweDMwLCAweDIwKTsKLQotCQkJCQlzd2l0Y2ggKHhnaWZiX2luZm8tPnZpZGVv
-X3dpZHRoKSB7Ci0JCQkJCWNhc2UgNjQwOgotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwK
-LQkJCQkJCQkgICAgICAweDM1LAotCQkJCQkJCSAgICAgIDB4RjEpOwotCQkJCQkJeGdpZmJfcmVn
-X3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM2LAotCQkJCQkJCSAgICAgIDB4RjcpOwot
-CQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM3LAotCQkJCQkJ
-CSAgICAgIDB4MUYpOwotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAg
-ICAweDM4LAotCQkJCQkJCSAgICAgIDB4MzIpOwotCQkJCQkJYnJlYWs7Ci0JCQkJCWNhc2UgNzIw
-OgotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM1LAotCQkJ
-CQkJCSAgICAgIDB4RjMpOwotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkg
-ICAgICAweDM2LAotCQkJCQkJCSAgICAgIDB4MDApOwotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQ
-QVJUMiwKLQkJCQkJCQkgICAgICAweDM3LAotCQkJCQkJCSAgICAgIDB4MUQpOwotCQkJCQkJeGdp
-ZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM4LAotCQkJCQkJCSAgICAgIDB4
-MjApOwotCQkJCQkJYnJlYWs7Ci0JCQkJCWNhc2UgODAwOgotCQkJCQkJeGdpZmJfcmVnX3NldChY
-R0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM1LAotCQkJCQkJCSAgICAgIDB4RkMpOwotCQkJCQkJ
-eGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM2LAotCQkJCQkJCSAgICAg
-IDB4RkIpOwotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJCQkJCQkgICAgICAweDM3
-LAotCQkJCQkJCSAgICAgIDB4MTQpOwotCQkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwKLQkJ
-CQkJCQkgICAgICAweDM4LAotCQkJCQkJCSAgICAgIDB4MkEpOwotCQkJCQkJYnJlYWs7Ci0JCQkJ
-CX0KKwkJCWlmICh4Z2lmYl9pbmZvLT5UVl9wbHVnID09IFRWUExVR19TVklERU8pIHsKKwkJCQl4
-Z2lmYl9yZWdfYW5kKFhHSVBBUlQyLCAweDMwLCAweGRmKTsKKworCQkJfSBlbHNlIGlmICh4Z2lm
-Yl9pbmZvLT5UVl9wbHVnID09IFRWUExVR19DT01QT1NJVEUpIHsKKwkJCQl4Z2lmYl9yZWdfb3Io
-WEdJUEFSVDIsIDB4MzAsIDB4MjApOworCisJCQkJc3dpdGNoICh4Z2lmYl9pbmZvLT52aWRlb193
-aWR0aCkgeworCQkJCWNhc2UgNjQwOgorCQkJCQl4Z2lmYl9yZWdfc2V0KFhHSVBBUlQyLCAweDM1
-LCAweEVCKTsKKwkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwgMHgzNiwgMHgwNCk7CisJCQkJ
-CXhnaWZiX3JlZ19zZXQoWEdJUEFSVDIsIDB4MzcsIDB4MjUpOworCQkJCQl4Z2lmYl9yZWdfc2V0
-KFhHSVBBUlQyLCAweDM4LCAweDE4KTsKKwkJCQkJYnJlYWs7CisJCQkJY2FzZSA3MjA6CisJCQkJ
-CXhnaWZiX3JlZ19zZXQoWEdJUEFSVDIsIDB4MzUsIDB4RUUpOworCQkJCQl4Z2lmYl9yZWdfc2V0
-KFhHSVBBUlQyLCAweDM2LCAweDBDKTsKKwkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwgMHgz
-NywgMHgyMik7CisJCQkJCXhnaWZiX3JlZ19zZXQoWEdJUEFSVDIsIDB4MzgsIDB4MDgpOworCQkJ
-CQlicmVhazsKKwkJCQljYXNlIDgwMDoKKwkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwgMHgz
-NSwgMHhFQik7CisJCQkJCXhnaWZiX3JlZ19zZXQoWEdJUEFSVDIsIDB4MzYsIDB4MTUpOworCQkJ
-CQl4Z2lmYl9yZWdfc2V0KFhHSVBBUlQyLCAweDM3LCAweDI1KTsKKwkJCQkJeGdpZmJfcmVnX3Nl
-dChYR0lQQVJUMiwgMHgzOCwgMHhGNik7CisJCQkJCWJyZWFrOwogCQkJCX0KIAkJCX0KIAotCQkJ
-aWYgKChmaWx0ZXIgPj0gMCkgJiYgKGZpbHRlciA8PSA3KSkgewotCQkJCXByX2RlYnVnKCJGaWx0
-ZXJUYWJsZVslZF0tJWQ6ICUqcGhcbiIsCi0JCQkJCSBmaWx0ZXJfdGIsIGZpbHRlciwKLQkJCQkJ
-IDQsIFhHSV9UVl9maWx0ZXJbZmlsdGVyX3RiXS4KLQkJCQkJCSAgIGZpbHRlcltmaWx0ZXJdKTsK
-LQkJCQl4Z2lmYl9yZWdfc2V0KAotCQkJCQlYR0lQQVJUMiwKLQkJCQkJMHgzNSwKLQkJCQkJKFhH
-SV9UVl9maWx0ZXJbZmlsdGVyX3RiXS4KLQkJCQkJCWZpbHRlcltmaWx0ZXJdWzBdKSk7Ci0JCQkJ
-eGdpZmJfcmVnX3NldCgKLQkJCQkJWEdJUEFSVDIsCi0JCQkJCTB4MzYsCi0JCQkJCShYR0lfVFZf
-ZmlsdGVyW2ZpbHRlcl90Yl0uCi0JCQkJCQlmaWx0ZXJbZmlsdGVyXVsxXSkpOwotCQkJCXhnaWZi
-X3JlZ19zZXQoCi0JCQkJCVhHSVBBUlQyLAotCQkJCQkweDM3LAotCQkJCQkoWEdJX1RWX2ZpbHRl
-cltmaWx0ZXJfdGJdLgotCQkJCQkJZmlsdGVyW2ZpbHRlcl1bMl0pKTsKLQkJCQl4Z2lmYl9yZWdf
-c2V0KAotCQkJCQlYR0lQQVJUMiwKLQkJCQkJMHgzOCwKLQkJCQkJKFhHSV9UVl9maWx0ZXJbZmls
-dGVyX3RiXS4KLQkJCQkJCWZpbHRlcltmaWx0ZXJdWzNdKSk7CisJCX0gZWxzZSBpZiAoeGdpZmJf
-aW5mby0+VFZfdHlwZSA9PSBUVk1PREVfUEFMKSB7CisJCQl4Z2lmYl9yZWdfYW5kKFhHSVBBUlQy
-LCAweDNBLCAweDFGKTsKKworCQkJaWYgKHhnaWZiX2luZm8tPlRWX3BsdWcgPT0gVFZQTFVHX1NW
-SURFTykgeworCQkJCXhnaWZiX3JlZ19hbmQoWEdJUEFSVDIsIDB4MzAsIDB4REYpOworCisJCQl9
-IGVsc2UgaWYgKHhnaWZiX2luZm8tPlRWX3BsdWcgPT0gVFZQTFVHX0NPTVBPU0lURSkgeworCQkJ
-CXhnaWZiX3JlZ19vcihYR0lQQVJUMiwgMHgzMCwgMHgyMCk7CisKKwkJCQlzd2l0Y2ggKHhnaWZi
-X2luZm8tPnZpZGVvX3dpZHRoKSB7CisJCQkJY2FzZSA2NDA6CisJCQkJCXhnaWZiX3JlZ19zZXQo
-WEdJUEFSVDIsIDB4MzUsIDB4RjEpOworCQkJCQl4Z2lmYl9yZWdfc2V0KFhHSVBBUlQyLCAweDM2
-LCAweEY3KTsKKwkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwgMHgzNywgMHgxRik7CisJCQkJ
-CXhnaWZiX3JlZ19zZXQoWEdJUEFSVDIsIDB4MzgsIDB4MzIpOworCQkJCQlicmVhazsKKwkJCQlj
-YXNlIDcyMDoKKwkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwgMHgzNSwgMHhGMyk7CisJCQkJ
-CXhnaWZiX3JlZ19zZXQoWEdJUEFSVDIsIDB4MzYsIDB4MDApOworCQkJCQl4Z2lmYl9yZWdfc2V0
-KFhHSVBBUlQyLCAweDM3LCAweDFEKTsKKwkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwgMHgz
-OCwgMHgyMCk7CisJCQkJCWJyZWFrOworCQkJCWNhc2UgODAwOgorCQkJCQl4Z2lmYl9yZWdfc2V0
-KFhHSVBBUlQyLCAweDM1LCAweEZDKTsKKwkJCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwgMHgz
-NiwgMHhGQik7CisJCQkJCXhnaWZiX3JlZ19zZXQoWEdJUEFSVDIsIDB4MzcsIDB4MTQpOworCQkJ
-CQl4Z2lmYl9yZWdfc2V0KFhHSVBBUlQyLCAweDM4LCAweDJBKTsKKwkJCQkJYnJlYWs7CisJCQkJ
-fQogCQkJfQogCQl9CisKKwkJaWYgKGZpbHRlciA+PSAwICYmIGZpbHRlciA8PSA3KSB7CisJCQlj
-b25zdCB1OCAqZiA9IFhHSV9UVl9maWx0ZXJbZmlsdGVyX3RiXS5maWx0ZXJbZmlsdGVyXTsKKwor
-CQkJcHJfZGVidWcoIkZpbHRlclRhYmxlWyVkXS0lZDogJSpwaFxuIiwKKwkJCQkgZmlsdGVyX3Ri
-LCBmaWx0ZXIsIDQsIGYpOworCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwgMHgzNSwgZlswXSk7
-CisJCQl4Z2lmYl9yZWdfc2V0KFhHSVBBUlQyLCAweDM2LCBmWzFdKTsKKwkJCXhnaWZiX3JlZ19z
-ZXQoWEdJUEFSVDIsIDB4MzcsIGZbMl0pOworCQkJeGdpZmJfcmVnX3NldChYR0lQQVJUMiwgMHgz
-OCwgZlszXSk7CisJCX0KIAl9CiB9CiAK
-
-
---=-kFYqIMhmdimJEcnE/WBy--
-
+--f403045f89100b644e054916c317--
 
