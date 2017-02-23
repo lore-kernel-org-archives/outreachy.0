@@ -1,104 +1,112 @@
-X-GM-THRID: 6390634706454446080
-X-Received: by 10.129.4.80 with SMTP id 77mr626725ywe.161.1487935592940;
-        Fri, 24 Feb 2017 03:26:32 -0800 (PST)
+X-GM-THRID: 6390400830187503616
+X-Received: by 10.129.107.134 with SMTP id g128mr6727005ywc.139.1487881138404;
+        Thu, 23 Feb 2017 12:18:58 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.15.68 with SMTP id x65ls1811216ioi.33.gmail; Fri, 24 Feb
- 2017 03:26:32 -0800 (PST)
-X-Received: by 10.107.20.22 with SMTP id 22mr924825iou.21.1487935592212;
-        Fri, 24 Feb 2017 03:26:32 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id s64si1518270pfk.0.2017.02.24.03.26.32
+Received: by 10.36.103.2 with SMTP id u2ls57476itc.10.gmail; Thu, 23 Feb 2017
+ 12:18:57 -0800 (PST)
+X-Received: by 10.36.83.14 with SMTP id n14mr1354753itb.30.1487881137713;
+        Thu, 23 Feb 2017 12:18:57 -0800 (PST)
+Return-Path: <gs051095@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id c123si871841pfa.4.2017.02.23.12.18.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 24 Feb 2017 03:26:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Thu, 23 Feb 2017 12:18:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id s67so2813928pgb.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 24 Feb 2017 03:26:32 -0800 (PST)
+Received: by mail-pg0-x244.google.com with SMTP id 1so205650pgz.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 23 Feb 2017 12:18:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:mime-version:content-disposition
-         :user-agent;
-        bh=bSbfM8a4H0jNbcljV8KJALAL6hOoRoRko9lm58pZca4=;
-        b=I9qYYttA1+BgFtshMMGFptoj5JN9idIRGE0kiIv0GmBadIg1HCg7FMSV/WQstBz6Zs
-         HvdFXu3UwyyvP9zXMawvzx2JZ+0ur/8/kNEH9CoJVSq5Xgo6l06Cq/UWmOhX+SNqKNJc
-         XnlU0ExaY4SvDT/eaqNkqTLeZvFEi7J9LCafklvAf27ivmUZ+hcxuGv3NS/RX0iCSdKa
-         EMhIzNvLDsML8USqwU5bhTYPEZ1x7/RfEptxKVkBUbWqjgOn01nkRbbqoswAlsLhJbR/
-         38opspHGorQvKRO74bDg7dWqc2Ba6g8VumnAZc+miKsU5QyWtyRiAJg8xOtkzTdx+2mE
-         TF2g==
+        h=from:to:cc:subject:date:message-id;
+        bh=Po2xHNr8ChY6ulJ6LfXQ9pBdNfNZj8nnpwkmAD4ii8Q=;
+        b=C5pLH9/jtBaajA3ITb8vHug5am30gKOjaLawUrr1ihdCYGr5g9n3ZdDTt1ICr4w3vF
+         7W8TPeRpAX+qdAsLKRwL4PnTsiO6PqhEReIVmAXf39FAgeUlcUd1tB5EvUWa2eqJdgrZ
+         Z/ZXyeNKoCByCMU8jy7H86p8xDVZkCK4SpPL6k8a5wL7n8C64DkfFHl7xU2WCLYzXNOi
+         QTTwD7oISpj9YzjpbiMUZB6aGpmZnMpuWoFUFR2opacYDR+03Nr7HxkYMWMleBVrejA0
+         XwOrdFFtotQAHR6DH8bFoPiqoNXG1dqE7RYlRP1/nr49j5pP5xSvRGfP+MCaWEnzn9yV
+         Aw6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
-         :content-disposition:user-agent;
-        bh=bSbfM8a4H0jNbcljV8KJALAL6hOoRoRko9lm58pZca4=;
-        b=Z/QMkSOLyRqqnMZpt7A9HOGat8hPJJrrbVJSQMIvPpwkDw1ppnxWsriAVzZ3GIiZ9M
-         /ITue20FJ3PTgL/RKk/RnvnvtDNwaQQNKPVsEOekSGk2BHZpugagIv23OeaI4//qWcpC
-         IPuHFLVx+Nw14uU0nWgpfu2qNobK2E3TzeY9X9uc1mgDDBJPVIbiKVGkWtX+D3tzWmFc
-         UGMCfBumCTN7JUCVgs+Liiai4C6drtuau8ds8RRheSy4wLM5pGnpSnjq+1y26am/EGIE
-         nkEb+QxfBV6Itu/nbzKhmpHlP2PotOpwUkxoRCnBXRsxCWEwr2Z/fsf8wyUl3rnawmdl
-         Zvuw==
-X-Gm-Message-State: AMke39mAu/c2FaE4tr08Qd6RFB9SQqKzZluEBmV4l/25rQCuiAqqgo2hIK0HhNCr6OybVw==
-X-Received: by 10.84.178.131 with SMTP id z3mr3206991plb.176.1487935591987;
-        Fri, 24 Feb 2017 03:26:31 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([2405:204:5187:dc90:40c6:44ba:560a:4a16])
-        by smtp.gmail.com with ESMTPSA id h68sm14665137pfj.124.2017.02.24.03.26.30
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 24 Feb 2017 03:26:31 -0800 (PST)
-Message-ID: <58b01867.c756620a.e6490.ed1f@mx.google.com>
-X-Google-Original-Message-ID: <20170224112625.GA18346@<rvarsha016@gmail.com>>
-Date: Fri, 24 Feb 2017 16:56:25 +0530
-From: Varsha Rao <rvarsha016@gmail.com>
-To: William Hubbs <w.d.hubbs@gmail.com>,
-	Chris Brannon <chris@the-brannons.com>,
-	Kirk Reiser <kirk@reisers.ca>,
-	Samuel Thibault <samuel.thibault@ens-lyon.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: speakup: Replace BUG_ON() with WARN_ON().
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.7.1 (2016-10-04)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=Po2xHNr8ChY6ulJ6LfXQ9pBdNfNZj8nnpwkmAD4ii8Q=;
+        b=okH9l+nkDlR71wPAyNYyuhFj+WSSgFVh2mneVAAxYJVLkgjzS2VN8cojNr7N/j/U07
+         fsUCa3adT1O4JP0utPtzKehnlQAAwsDkSCvxqf8sDGYMZ2KpsuL5PUsqNtTfEIqtgrVh
+         CQpp+j8t6U/tjsfML3OR3jynAZb/LXhBI/BDimmmCEFqMaalFXvNFFJhAlvkIAlG3D+q
+         +AHo3h1p1IiVnqNSfOE0CEaksT3+c26u3LvS1sabVKRmW9dg/vN87sJ49k3lpexQmEcz
+         76W+1ux68gm9Lrjj+JK7/gkiB4BGj5bncEpQXVACckXTS3YKcsmYUGWAHO72Tywp+zwS
+         Dz3A==
+X-Gm-Message-State: AMke39lIBY+JXXcnGaZIgx+JwiZsEIfY2b6tJT+LvMsAqTSrZE8nAYm/kwdg/Pe3sJ5bqQ==
+X-Received: by 10.98.42.151 with SMTP id q145mr47866789pfq.175.1487881137473;
+        Thu, 23 Feb 2017 12:18:57 -0800 (PST)
+Return-Path: <gs051095@gmail.com>
+Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
+        by smtp.googlemail.com with ESMTPSA id d68sm11318643pfj.92.2017.02.23.12.18.55
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 23 Feb 2017 12:18:57 -0800 (PST)
+From: Gargi Sharma <gs051095@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org,
+	Gargi Sharma <gs051095@gmail.com>
+Subject: [PATCH] staging: rtl8192u: Replace explicit NULL comparison
+Date: Fri, 24 Feb 2017 01:46:46 +0530
+Message-Id: <1487881006-29871-1-git-send-email-gs051095@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-BUG_ON() is replaced with WARN_ON() to fix the following checkpatch
-issue:
+Replace explicit NULL comparison with ! operator to
+simplify code.
 
-Avoid crashing the kernel - try using WARN_ON & recovery code rather
-than BUG() or BUG_ON().
+Found with Coccinelle script:
+@@
+expression ptr;
+position p;
+statement s0, s1;
+@@
 
-Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
+ptr@p =
+\(kmalloc\|devm_kzalloc\|kmalloc_array\|devm_ioremap\|usb_alloc_urb\|
+alloc_netdev\|dev_alloc_skb\)(...)
+... when != ptr
+
+if (
+(
++ !
+ptr
+- == NULL
+)
+) s0 else s1
+
+Signed-off-by: Gargi Sharma <gs051095@gmail.com>
 ---
- drivers/staging/speakup/kobjects.c | 4 ++--
+ drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
-index ca075fe..8ea3a57 100644
---- a/drivers/staging/speakup/kobjects.c
-+++ b/drivers/staging/speakup/kobjects.c
-@@ -833,7 +833,7 @@ static ssize_t message_show(struct kobject *kobj,
- 	struct msg_group_t *group = spk_find_msg_group(attr->attr.name);
- 	unsigned long flags;
+diff --git a/drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c b/drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c
+index 51503ee..9f1ac96 100644
+--- a/drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c
++++ b/drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c
+@@ -117,7 +117,7 @@ static struct sk_buff *ieee80211_ADDBA(struct ieee80211_device *ieee, u8 *Dst, P
+ 		return NULL;
+ 	}
+ 	skb = dev_alloc_skb(len + sizeof( struct rtl_80211_hdr_3addr)); //need to add something others? FIXME
+-	if (skb == NULL) {
++	if (!skb) {
+ 		IEEE80211_DEBUG(IEEE80211_DL_ERR, "can't alloc skb for ADDBA_REQ\n");
+ 		return NULL;
+ 	}
+@@ -202,7 +202,7 @@ static struct sk_buff *ieee80211_DELBA(
+ 	DelbaParamSet.field.TID	= pBA->BaParamSet.field.TID;
  
--	BUG_ON(!group);
-+	WARN_ON(!group);
- 	spin_lock_irqsave(&speakup_info.spinlock, flags);
- 	retval = message_show_helper(buf, group->start, group->end);
- 	spin_unlock_irqrestore(&speakup_info.spinlock, flags);
-@@ -845,7 +845,7 @@ static ssize_t message_store(struct kobject *kobj, struct kobj_attribute *attr,
- {
- 	struct msg_group_t *group = spk_find_msg_group(attr->attr.name);
- 
--	BUG_ON(!group);
-+	WARN_ON(!group);
- 	return message_store_helper(buf, count, group);
- }
- 
+ 	skb = dev_alloc_skb(len + sizeof( struct rtl_80211_hdr_3addr)); //need to add something others? FIXME
+-	if (skb == NULL) {
++	if (!skb) {
+ 		IEEE80211_DEBUG(IEEE80211_DL_ERR, "can't alloc skb for ADDBA_REQ\n");
+ 		return NULL;
+ 	}
 -- 
-2.9.3
+2.7.4
 
 
