@@ -1,119 +1,91 @@
-X-GM-THRID: 6402799563919327232
-X-Received: by 10.36.36.71 with SMTP id f68mr1298081ita.5.1490767943790;
-        Tue, 28 Mar 2017 23:12:23 -0700 (PDT)
+X-GM-THRID: 6389791832562204672
+X-Received: by 10.25.204.15 with SMTP id c15mr2602716lfg.5.1487857101094;
+        Thu, 23 Feb 2017 05:38:21 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.33.39 with SMTP id i36ls2150911otb.35.gmail; Tue, 28 Mar
- 2017 23:12:23 -0700 (PDT)
-X-Received: by 10.200.49.238 with SMTP id i43mr10139030qte.21.1490767943439;
-        Tue, 28 Mar 2017 23:12:23 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id 2si961529pfz.1.2017.03.28.23.12.23
+Received: by 10.28.196.15 with SMTP id u15ls2555677wmf.1.canary-gmail; Thu, 23
+ Feb 2017 05:38:20 -0800 (PST)
+X-Received: by 10.223.135.199 with SMTP id c7mr1012822wrc.18.1487857100219;
+        Thu, 23 Feb 2017 05:38:20 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id f7si471568wmg.3.2017.02.23.05.38.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Mar 2017 23:12:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Thu, 23 Feb 2017 05:38:20 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id 79so1376985pgf.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 28 Mar 2017 23:12:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=+OvmMHjNLOsVc5obYGfl1HRt9uLMFD445MrxOQl2tO8=;
-        b=aPP+sAI28NR4nba9xyjL2DbKPZDA45ORoShIG8GrHI3SaoKauwvA2HAelH6Y4bGiGC
-         W53fzykgM86UEBmvLyB1Ox0sDs3uzql89/sdDKpcJRaVVEFZIUIQQkwfKj93sy/WkB+h
-         r+NOqmb34eyPIibjo31kf9e5/ohWoLu6X/CMPzgj6MeTv9buKTGvhFP2UQNbqVgXOPH6
-         HpVNFQgEyRYlz8sRKqm7nbDz7AHae1QYy//+Du8U2drr2hxembIxP34S6G11rcUUHBn0
-         g1rF97jubOklBCyCdu+HbX3wdDD4C6QM14EriGsvv/84sJt+H7lVQFLMuEC7QH5bFtRV
-         Zxdw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=+OvmMHjNLOsVc5obYGfl1HRt9uLMFD445MrxOQl2tO8=;
-        b=WMfJNgzKHaleF+cqqh5CCHixQB40iS4XDWgjGYhhs+Krz9RKDqoW4MGJAIA+GDFLE+
-         VAgCWOpzV27xqWJdQVqP3HHoQz29NTGTA5eZmVX566SCtBik0AfhHectDk9tConSZZtj
-         htXoZD11/Qdp7FuSmz9zTRepvLsYp+7gYyusKhCx5m/hLvwOS2eI1awCrX1LlueFHNZ9
-         Jo5MqC/RNiZVlQ4GJzT188pO6QFB98AsN7EIjU4TIPQqMYGMWOco1znhY6jUnOUtCA1Y
-         Shvhfljz3iwlv/gi523zAw52OpuXB/ba6rJ3rvEpjRC6FZbAUzkzaT3xEotic6mVq9G/
-         S1Hw==
-X-Gm-Message-State: AFeK/H2dDL0VFcSxnsuUy2MydTKf46svyE7xACg0nrUwK1M1pWf1+OQUJjYLOy5hpHZhow==
-X-Received: by 10.98.90.66 with SMTP id o63mr13906431pfb.54.1490767943020;
-        Tue, 28 Mar 2017 23:12:23 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id z19sm10843907pfd.81.2017.03.28.23.12.21
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 28 Mar 2017 23:12:22 -0700 (PDT)
-Date: Wed, 29 Mar 2017 11:42:19 +0530
-From: simran singhal <singhalsimran0@gmail.com>
-To: netfilter-devel@vger.kernel.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] iptables: libiptc: Use list_{next/prev}_entry instead of
- list_entry
-Message-ID: <20170329061219.GA6036@singhal-Inspiron-5558>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,197,1484002800"; 
+   d="scan'208";a="261800105"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 23 Feb 2017 14:38:19 +0100
+Date: Thu, 23 Feb 2017 14:38:13 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Arend Van Spriel <arend.vanspriel@broadcom.com>
+cc: Julia Lawall <julia.lawall@lip6.fr>, Tahia Khan <tahia.khan@gmail.com>, 
+    outreachy-kernel@googlegroups.com, aditya.shankar@microchip.com, 
+    ganesh.krishna@microchip.com, gregkh@linuxfoundation.org, 
+    linux-wireless@vger.kernel.org, devel@driverdev.osusl.org, 
+    linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] Re: [PATCH v2] staging: wilc1000: renames
+ struct tstrRSSI and its members u8Index, u8Full
+In-Reply-To: <1ffdd756-aaa4-5e1e-b72f-3e5d1f2daeb2@broadcom.com>
+Message-ID: <alpine.DEB.2.20.1702231437150.3073@hadrien>
+References: <20170222171403.GA20626@coolbox> <838d3e67-646d-b2d3-ef7d-5812675db6db@broadcom.com> <20170223035400.GA9378@coolbox> <alpine.DEB.2.20.1702230804410.2203@hadrien> <1ffdd756-aaa4-5e1e-b72f-3e5d1f2daeb2@broadcom.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-This patch replace list_entry with list_{next/prev}_entry as it makes
-the code more clear to read.
 
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
----
- libiptc/libiptc.c | 12 +++++-------
- 1 file changed, 5 insertions(+), 7 deletions(-)
 
-diff --git a/libiptc/libiptc.c b/libiptc/libiptc.c
-index a6e7057..5590cb8 100644
---- a/libiptc/libiptc.c
-+++ b/libiptc/libiptc.c
-@@ -1452,7 +1452,7 @@ static void iptcc_chain_iterator_advance(struct xtc_handle *handle)
- 		handle->chain_iterator_cur = NULL;
- 	else
- 		handle->chain_iterator_cur =
--			list_entry(c->list.next, struct chain_head, list);
-+			list_next_entry(c, list);
- }
- 
- /* Iterator functions to run through the chains. */
-@@ -1540,8 +1540,7 @@ TC_NEXT_RULE(const STRUCT_ENTRY *prev, struct xtc_handle *handle)
- 		return NULL;
- 	}
- 
--	r = list_entry(handle->rule_iterator_cur->list.next,
--			struct rule_head, list);
-+	r = list_next_entry(handle->rule_iterator_cur, list);
- 
- 	iptc_fn = TC_NEXT_RULE;
- 
-@@ -2013,8 +2012,8 @@ static int delete_entry(const IPT_CHAINLABEL chain, const STRUCT_ENTRY *origfw,
- 		 * pointer will then point to real next node */
- 		if (i == handle->rule_iterator_cur) {
- 			handle->rule_iterator_cur =
--				list_entry(handle->rule_iterator_cur->list.prev,
--					   struct rule_head, list);
-+				list_prev_entry(handle->rule_iterator_cur,
-+						list);
- 		}
- 
- 		c->num_rules--;
-@@ -2078,8 +2077,7 @@ TC_DELETE_NUM_ENTRY(const IPT_CHAINLABEL chain,
- 	 * point to real next node */
- 	if (r == handle->rule_iterator_cur) {
- 		handle->rule_iterator_cur =
--			list_entry(handle->rule_iterator_cur->list.prev,
--				   struct rule_head, list);
-+			list_prev_entry(handle->rule_iterator_cur, list);
- 	}
- 
- 	c->num_rules--;
--- 
-2.7.4
+On Thu, 23 Feb 2017, 'Arend Van Spriel' via outreachy-kernel wrote:
 
+> On 23-2-2017 8:08, Julia Lawall wrote:
+> >> Thanks for the feedback Arend, I really appreciate it. I've decided to go with
+> >> these changes in my follow-up patch request:
+> >>
+> >> - rename tstrRSSI to 'rssi_history_buffer' as Aren suggested since it makes the
+> >> purpose of the struct clear
+> >> - remove Hungarian notation from all tstrRSSI members' names
+> >> - change type of u8Full to bool since it's only ever 1 or 0
+> >> - change name of as8RSSI to 'samples' since this buffer is only ever used to
+> >> compute an average, and the "rssi" prefix is implied by the struct's name
+> >> - rename str_rssi to rssi_history in the network_info struct for clarity
+> >>
+> >> Since my reasoning for these changes deviates from just "renaming to
+> >> avoid camel casing" (as in the original checkpatch.pl warning), would it still
+> >> make sense to submit all this in a single patch? I know my commit message
+> >> needs to change but I wonder if this is too much detail.
+> >
+> > I would strongly suggest not to do it all in a single patch.  Even if these
+> > changes are not very complicated conceptually, there is always a chance of
+> > doing things wrong.  Taking the problems one by one will improve the chance
+> > that the result is correct.  Also, the results will be easier for you and
+> > others to review if each patch only does one thing.  And easier to revert
+> > if needed later if something goes wrong.
+>
+> It is all related to cleaning up stuff in a single struct which I
+> consider "one thing" here. To me it looks a bit silly if you rename one
+> struct member when it is obvious that the other two need to be renamed
+> as well. The only somewhat sensible split I see here is: 1) rename the
+> struct itself, 2) rename the struct members, and 3) rename str_rssi
+> member in struct network_info.
+
+OK.  I guess I mainly saw the change of type as being different.
+
+julia
+
+
+>
+> Regards,
+> Arend
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1ffdd756-aaa4-5e1e-b72f-3e5d1f2daeb2%40broadcom.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
