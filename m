@@ -1,82 +1,109 @@
-X-GM-THRID: 6392226115163783168
-X-Received: by 10.46.88.70 with SMTP id x6mr449795ljd.22.1488306120159;
-        Tue, 28 Feb 2017 10:22:00 -0800 (PST)
+X-GM-THRID: 6390410842112786432
+X-Received: by 10.223.146.230 with SMTP id 93mr862214wrn.16.1487883870513;
+        Thu, 23 Feb 2017 13:04:30 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.77.17 with SMTP id a17ls197144ljb.42.gmail; Tue, 28 Feb
- 2017 10:21:59 -0800 (PST)
-X-Received: by 10.25.157.14 with SMTP id g14mr439115lfe.28.1488306119721;
-        Tue, 28 Feb 2017 10:21:59 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
-        by gmr-mx.google.com with ESMTPS id h198si269703wmg.1.2017.02.28.10.21.59
+Received: by 10.25.20.223 with SMTP id 92ls295128lfu.33.gmail; Thu, 23 Feb
+ 2017 13:04:29 -0800 (PST)
+X-Received: by 10.46.20.72 with SMTP id 8mr4311370lju.19.1487883869583;
+        Thu, 23 Feb 2017 13:04:29 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id f7si585206wmg.3.2017.02.23.13.04.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Feb 2017 10:21:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
+        Thu, 23 Feb 2017 13:04:29 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x241.google.com with SMTP id r18so3670360wmd.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 28 Feb 2017 10:21:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=ABFkXtPmSY8HnGczugBvFIzBWh4uYkj+GLnKqC7bz8U=;
-        b=tV2g7XJkPxZI5u1Yu8LoIPPzNl7sSvGXZyxZx4jKcoVzUnxqSMaKgDkGcISaxKXXRD
-         2R/miC364qG7cCOOI3NxnixcKIO+MH57cMdl6+Y5cbAAIE2sjrZMRQ65Eh1KEZAJYQLG
-         Ha+gkwyv3JeRT+wbYem35VRmqL/VD0wJ3Lxq4Za8JaYF72X+/KrJX4w13eJ6K1kcte8F
-         4YrEsWfcjzWkJh1LgtYU7MHvfwlLJqsYnMnr2M0ZNX+i7VqMnc7A2Dh8oxvi/6U4As7r
-         OH1Cf4wFgSCfTVqtWiGe4EYh23zRuGYqxKn0pDcTEBY+fziSb4AsSUnANjyqwxPOz1KE
-         P3FA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=ABFkXtPmSY8HnGczugBvFIzBWh4uYkj+GLnKqC7bz8U=;
-        b=gyObIwzLr6Htc2aWkKEUuPYJdUey4xl5UYCbchIwNPliAzrLkuztN0v2sGAAWnlvxn
-         gtPJFLGxQtP0zhbBkafCNkvucM+8ZMxTOSv5lFTcnOhGsjjkC/Q6VGcfbTw2xLrJEwn9
-         Qay7EDzO3znoRXk8LBwxmm8yUGE2SkZ+xpp6nPhEV4OBaZfidwnRwiTDc16R2m05dw7r
-         Oc4wqgsDhhH082S/IBXVqpP32KgPrk4kZwpydWSJ54vhh6SO2lcsLBk8M/JEvimLb6pd
-         tilD15uPTmCTbwgJaC6oabcLyIDZqKBIeYoFXpvQv3TISs/99rpOrIMRdOuZfIB9Opw9
-         irCQ==
-X-Gm-Message-State: AMke39mmJdEK0OqQYlBvWBQ7QubOSyKQZa2k5eHFhYgJ4/VEt2ivEYHclEcir77XkCzWbQ==
-X-Received: by 10.28.23.140 with SMTP id 134mr9267wmx.23.1488306119513;
-        Tue, 28 Feb 2017 10:21:59 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([2a02:2f0b:8170:1398:1411:993d:3104:6e7f])
-        by smtp.gmail.com with ESMTPSA id d42sm3351730wrd.7.2017.02.28.10.21.58
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 28 Feb 2017 10:21:58 -0800 (PST)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: mchehab@kernel.org,
-	outreachy-kernel@googlegroups.com,
-	gregkh@linuxfoundation.org
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH 1/5] Add comment for struct mutex definition.
-Date: Tue, 28 Feb 2017 20:21:54 +0200
-Message-Id: <20170228182154.25401-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,198,1484002800"; 
+   d="scan'208";a="214529755"
+Received: from 198.67.28.109.rev.sfr.net (HELO [192.168.1.69]) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 23 Feb 2017 22:04:28 +0100
+Date: Thu, 23 Feb 2017 22:04:28 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Sreya Mittal <sreyamittal5@gmail.com>
+cc: outreachy-kernel@googlegroups.com, w.d.hubbs@gmail.com, 
+    chris@the-brannons.com, kirk@reisers.ca, samuel.thibault@ens-lyon.org, 
+    gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: speakup: Put logical
+ continuations on the next line and remove useless parentheses
+In-Reply-To: <20170223205739.bogznf7diy26ew2t@stayawesome>
+Message-ID: <alpine.DEB.2.20.1702232200230.2103@hadrien>
+References: <20170223205739.bogznf7diy26ew2t@stayawesome>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
----
- drivers/staging/media/cxd2099/cxd2099.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/media/cxd2099/cxd2099.c b/drivers/staging/media/cxd2099/cxd2099.c
-index c72c3f0..f88690b 100644
---- a/drivers/staging/media/cxd2099/cxd2099.c
-+++ b/drivers/staging/media/cxd2099/cxd2099.c
-@@ -54,7 +54,7 @@ struct cxd {
- 	int    amem_read;
- 
- 	int    cammode;
--	struct mutex lock;
-+	struct mutex lock;/*lock for digital devices*/
- };
- 
- static int i2c_write_reg(struct i2c_adapter *adapter, u8 adr,
--- 
-2.9.3
 
+On Fri, 24 Feb 2017, Sreya Mittal wrote:
+
+> Put logical continuations on the next line and remove useless parentheses.
+> Found by checkpatch.pl
+
+You have the same comment in the subject line and the commit message.
+For the subject line, it is better to be shorter - you want to give the
+idea quickly.  I'm actually going to make yet another suggestion on this
+code, so the subject line could be just "clean up if tests".  The in the
+log message you can put the details about the cleanups you did.
+
+>
+> Signed-off-by: Sreya Mittal <sreyamittal5@gmail.com>
+> ---
+>  drivers/staging/speakup/i18n.c | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
+>
+> diff --git a/drivers/staging/speakup/i18n.c b/drivers/staging/speakup/i18n.c
+> index 2f9b3df..b9698bf 100644
+> --- a/drivers/staging/speakup/i18n.c
+> +++ b/drivers/staging/speakup/i18n.c
+> @@ -411,8 +411,8 @@ static char *next_specifier(char *input)
+>  		next_percent = strchr(next_percent, '%');
+>  		if (next_percent != NULL) {
+>  			/* skip over doubled percent signs */
+> -			while ((next_percent[0] == '%')
+> -			       && (next_percent[1] == '%'))
+> +			while (next_percent[0] == '%' &&
+> +				next_percent[1] == '%')
+
+It would be good to line up the second line of the while with the right
+side of the ( in the first line.  Then there would be a small difference
+between the while test and the code in the loop body.
+
+>  				next_percent += 2;
+>  			if (*next_percent == '%')
+>  				found = 1;
+> @@ -549,9 +549,9 @@ ssize_t spk_msg_set(enum msg_index_t index, char *text, size_t length)
+>  		if (newstr) {
+>  			memcpy(newstr, text, length);
+>  			newstr[length] = '\0';
+> -			if ((index >= MSG_FORMATTED_START
+> -			&& index <= MSG_FORMATTED_END)
+> -				&& !fmt_validate(speakup_default_msgs[index],
+> +			if (index >= MSG_FORMATTED_START &&
+> +				index <= MSG_FORMATTED_END &&
+> +				!fmt_validate(speakup_default_msgs[index],
+>  				newstr)) {
+
+You can make the same alignment change here.  It is very useful to be
+ableto quicky see the difference between the if test and the then branch.
+Currently they are indented the same, so they all run together.  And if
+you move the continuation lines of the if test to the left, then maybe you
+can get the whole fmt_validate callon one line.
+
+julia
+
+>  				kfree(newstr);
+>  				return -EINVAL;
+> --
+> 2.9.3
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170223205739.bogznf7diy26ew2t%40stayawesome.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
