@@ -1,87 +1,57 @@
-X-GM-THRID: 6341813521235312640
-X-Received: by 10.28.45.4 with SMTP id t4mr232417wmt.15.1476568524849;
-        Sat, 15 Oct 2016 14:55:24 -0700 (PDT)
+X-GM-THRID: 6389561220722065408
+X-Received: by 10.157.43.47 with SMTP id o44mr1273395otb.1.1487956351346;
+        Fri, 24 Feb 2017 09:12:31 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.46.6 with SMTP id u6ls513280wmu.3.gmail; Sat, 15 Oct 2016
- 14:55:24 -0700 (PDT)
-X-Received: by 10.28.26.10 with SMTP id a10mr226192wma.20.1476568524208;
-        Sat, 15 Oct 2016 14:55:24 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
-        by gmr-mx.google.com with ESMTPS id f1si332619wmf.2.2016.10.15.14.55.24
+Received: by 10.107.10.78 with SMTP id u75ls1958084ioi.50.gmail; Fri, 24 Feb
+ 2017 09:12:30 -0800 (PST)
+X-Received: by 10.99.109.14 with SMTP id i14mr1223197pgc.152.1487956350511;
+        Fri, 24 Feb 2017 09:12:30 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id d63si1545976pfe.2.2017.02.24.09.12.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 15 Oct 2016 14:55:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
+        Fri, 24 Feb 2017 09:12:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x241.google.com with SMTP id b80so3889608wme.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 15 Oct 2016 14:55:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=j5EgK5velWyyZHmx0SiJ7n6KywKwby54gCY2q5lWuEw=;
-        b=PU9701oys03Xf7pZX+nNHgsF7KtNT/Hek1t0r6ganzWD0rGLOJN3ESoURtxqeUFyag
-         D87KsfZOPypESXqzZCm6LSs+GPdTiWAm+nOvwfIHfRW+6rLGInwl1KAWJ5XNKoenTjzn
-         wATCk17U8auMShjAjzGHWT+mQ7NrB/B3VBvAPZ88dPt4zrPtUL5JYmQTibk9QDiUdVQc
-         enCWyZXyNuQm9wkrXdwHQuFPThbXWkkOt+ZoxgAcfnENsQcrL3Acms3o3kbIeQw+JywJ
-         wd7ttPhvbkNmoGbKhhB5dzQHz8ATdIL89NUzY5LhQYt72msuzV00WdPDYaHcFtmfKKg2
-         yjrA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=j5EgK5velWyyZHmx0SiJ7n6KywKwby54gCY2q5lWuEw=;
-        b=Ki9JnUmXi83Qlh5ZS/9B8a692tno4vjJD39obJOQ6XyW0VHa6CWk1ZRXPNYAYaHiWC
-         zwOuKxHFVFluLnYTg3QLzPPDlA5iABGhnTjCLrhm2ClpVzbl/k28Xf4ksC2Ut6Bc7bxM
-         6I7hYeQb9hQBWrtWDjudcggy51oXOQ8qtGJ3JihPmjb2W+99RgWHSOl/u54tPtJahGYz
-         zJPDRv1ml0Rosje1UTsKbyGJ8kDVCz9MNy43j9qzxa8jcEJNXIIDvbIZ8KgB5jOQwc+B
-         cya53RhXRvJjRayXissu8/d1De1JJfDsWP3c+XNiD3xeSeO79x0K0OIcSlfmEdjcGgG9
-         GMTw==
-X-Gm-Message-State: AA6/9Rl2en+/UCuNOwmqMGi1sWarN+PMxWaM8FQkP6/QYqm1F9rBCl/t+X7pCTaQlhOO5Q==
-X-Received: by 10.28.156.73 with SMTP id f70mr2849987wme.45.1476568523772;
-        Sat, 15 Oct 2016 14:55:23 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from domino-MS-16Y1 ([92.81.89.162])
-        by smtp.gmail.com with ESMTPSA id l10sm5292361wmf.4.2016.10.15.14.55.23
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 15 Oct 2016 14:55:23 -0700 (PDT)
-Date: Sun, 16 Oct 2016 00:55:22 +0300
-From: Mihaela Muraru <mihaela.muraru21@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: vt6656: Make a read-only structure
-Message-ID: <20161015215522.GA7583@domino-MS-16Y1>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [78.192.101.3])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id E5E6E259;
+	Fri, 24 Feb 2017 17:12:29 +0000 (UTC)
+Date: Fri, 24 Feb 2017 18:12:23 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Arushi Singhal <arushisinghal19971997@gmail.com>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v3 2/2] staging: ks7010: Unnecessary parentheses are
+ removed and also improved coding style.
+Message-ID: <20170224171223.GB14009@kroah.com>
+References: <20170222130111.GA28363@arushi-HP-Pavilion-Notebook>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20170222130111.GA28363@arushi-HP-Pavilion-Notebook>
+User-Agent: Mutt/1.7.2 (2016-11-26)
 
-This patch add const qualifier at the declaration of the structure.
-The structure become a read-only data, this increase the security.
+On Wed, Feb 22, 2017 at 06:31:12PM +0530, Arushi Singhal wrote:
+> Unnecessary parentheses are removed as reported by checkpatch.pl
+> to make coder nicer and to improve readability.
+> Also coding style is improved.For example:-
+> It's often nicer to read if &(foo[0]) is converted to foo like:
+>      memcpy(&(ap->bssid[0]), &(ap_info->bssid[0]), ETH_ALEN);
+>      memcpy(ap->bssid, ap_info->bssid, ETH_ALEN);
+> 
+> Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+> ---
+> Changes in v3:
+>   - Commit message made more accurate and as per the changes.
+>   - previously versions were not marked.
 
-Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
----
- drivers/staging/vt6656/main_usb.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Where is patch 1/2?  And why does this have the same subject as another
+patch you sent that was listed as patch 1/1?  Please fix up and send an
+updated patch.
 
-diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
-index 0594828..fe84da3 100644
---- a/drivers/staging/vt6656/main_usb.c
-+++ b/drivers/staging/vt6656/main_usb.c
-@@ -85,7 +85,7 @@ MODULE_PARM_DESC(tx_buffers, "Number of receive usb tx buffers");
-  * Static vars definitions
-  */
- 
--static struct usb_device_id vt6656_table[] = {
-+static const struct usb_device_id vt6656_table[] = {
- 	{USB_DEVICE(VNT_USB_VENDOR_ID, VNT_USB_PRODUCT_ID)},
- 	{}
- };
--- 
-2.7.4
+thanks,
 
+greg k-h
 
