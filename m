@@ -1,100 +1,111 @@
 X-GM-THRID: 6390415872559677440
-X-Received: by 10.25.17.102 with SMTP id g99mr449298lfi.6.1487951634818;
-        Fri, 24 Feb 2017 07:53:54 -0800 (PST)
+X-Received: by 10.107.38.193 with SMTP id m184mr781637iom.28.1487926061909;
+        Fri, 24 Feb 2017 00:47:41 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.80.83 with SMTP id v19ls223081ljd.15.gmail; Fri, 24 Feb
- 2017 07:53:53 -0800 (PST)
-X-Received: by 10.46.87.80 with SMTP id r16mr403398ljd.16.1487951633352;
-        Fri, 24 Feb 2017 07:53:53 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id f7si172672wmg.3.2017.02.24.07.53.53
+Received: by 10.157.54.152 with SMTP id h24ls6635911otc.30.gmail; Fri, 24 Feb
+ 2017 00:47:41 -0800 (PST)
+X-Received: by 10.13.247.4 with SMTP id h4mr528615ywf.4.1487926061599;
+        Fri, 24 Feb 2017 00:47:41 -0800 (PST)
+Return-Path: <sreyamittal5@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id f7si1408161pfk.5.2017.02.24.00.47.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 24 Feb 2017 07:53:53 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Fri, 24 Feb 2017 00:47:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.35,201,1484002800"; 
-   d="scan'208";a="261972853"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 24 Feb 2017 16:53:52 +0100
-Date: Fri, 24 Feb 2017 16:53:46 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Sreya Mittal <sreyamittal5@gmail.com>
-cc: outreachy-kernel@googlegroups.com, William Hubbs <w.d.hubbs@gmail.com>, 
-    Chris Brannon <chris@the-brannons.com>, Kirk Reiser <kirk@reisers.ca>, 
-    Samuel Thibault <samuel.thibault@ens-lyon.org>, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [Outreachy kernel] [PATCH v5] staging: speakup: Clean up if
- tests
-In-Reply-To: <20170224084732.5pinudmiwbnye4kt@stayawesome>
-Message-ID: <alpine.DEB.2.20.1702241653030.3089@hadrien>
-References: <20170224084732.5pinudmiwbnye4kt@stayawesome>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=sreyamittal5@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x244.google.com with SMTP id 1so2368744pgz.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 24 Feb 2017 00:47:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=p86Yeg6z2OM5ZL6CqWrS5N/oihL9Yuvnogzwanoaa58=;
+        b=FAlqoJoseoM5e2eeO7o8nNtKrRsSygV4U0Ah/dK1wEdHm8h+1WQFYrFzNpACwRVbrF
+         mQZcJmu1JbhQHMGU8WGn4+x2wYG2vLSG9NeDaxjVT58EFo8pxSs9VggFgZy/DCXmCx8D
+         WZAUFGNg40htm9rtQP/fEqasyQ+s2RW2GdQoULzDJUoE0xcEQP9OydVISanR8+OSp1O6
+         AVaOVWGdFugPDmxubuXLBS208MksVottZXQK5eIruf27ud58ynRqvIPwKDa49Qn41JOM
+         mRtJS5nSNRVGAFGhEam6bCLyml0ZWJIQHfrsvXg2jmA0iGDh2R2Io496u3R9PEEhh8r6
+         XvcA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=p86Yeg6z2OM5ZL6CqWrS5N/oihL9Yuvnogzwanoaa58=;
+        b=VE0Qz2hYPz/vhmnT9Am/N071uChthxdwnfx9KLROKQjWERUqdf2ZHJmn8Fy1V3b1BM
+         dvLOitGmkE9dT+hbC++ZyZRyIOQk3Q8lOyOZv8wM9g/zc2+W412DrEyA8SfkRmEieW7K
+         yOj12pGQb/6mo53KR1UE8XjFvOGeLO10cRZnBDaQ3gN1wZSlqr/LqP5Yo3asM+Wvt8pD
+         yx7dHcc4Iikd9h/ywBpU51ZjPgoc3SSBZ9Il4ZWvc8JVF1mfKZ/FRAR+zO7Y8lJHYcmB
+         +qIatmclOpOBcDZ5+tlW/5o01UEbBFMtP6VbAHobU0+k7KDwCZSgy0x1FrDGQKz0i+kL
+         9RbQ==
+X-Gm-Message-State: AMke39lDYAMi6lKX1la7SW9EOodkBzlxB2mJFLCaxVap3rDIrWKlOXb+66FHVN4joEzwwA==
+X-Received: by 10.98.204.25 with SMTP id a25mr2050302pfg.6.1487926061365;
+        Fri, 24 Feb 2017 00:47:41 -0800 (PST)
+Return-Path: <sreyamittal5@gmail.com>
+Received: from stayawesome ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id e13sm13872458pgf.48.2017.02.24.00.47.40
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 24 Feb 2017 00:47:40 -0800 (PST)
+Date: Fri, 24 Feb 2017 14:17:32 +0530
+From: Sreya Mittal <sreyamittal5@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: William Hubbs <w.d.hubbs@gmail.com>,
+	Chris Brannon <chris@the-brannons.com>,
+	Kirk Reiser <kirk@reisers.ca>,
+	Samuel Thibault <samuel.thibault@ens-lyon.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH v5] staging: speakup: Clean up if tests
+Message-ID: <20170224084732.5pinudmiwbnye4kt@stayawesome>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.6.2-neo (2016-08-21)
 
+Put logical continuations on the next line, remove useless parentheses and line up the tests
 
+Signed-off-by: Sreya Mittal <sreyamittal5@gmail.com>
+---
 
-On Fri, 24 Feb 2017, Sreya Mittal wrote:
+Changes since v4 : 
+* Line up the argument newstr 
 
-> Put logical continuations on the next line, remove useless parentheses and line up the tests
+ drivers/staging/speakup/i18n.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-The code looks good now, but the commit log message line is too long.  YOu
-should put a newline at around 70 characters.
+diff --git a/drivers/staging/speakup/i18n.c b/drivers/staging/speakup/i18n.c
+index 2f9b3df..4514776 100644
+--- a/drivers/staging/speakup/i18n.c
++++ b/drivers/staging/speakup/i18n.c
+@@ -411,8 +411,8 @@ static char *next_specifier(char *input)
+ 		next_percent = strchr(next_percent, '%');
+ 		if (next_percent != NULL) {
+ 			/* skip over doubled percent signs */
+-			while ((next_percent[0] == '%')
+-			       && (next_percent[1] == '%'))
++			while (next_percent[0] == '%' &&
++			       next_percent[1] == '%')
+ 				next_percent += 2;
+ 			if (*next_percent == '%')
+ 				found = 1;
+@@ -549,10 +549,10 @@ ssize_t spk_msg_set(enum msg_index_t index, char *text, size_t length)
+ 		if (newstr) {
+ 			memcpy(newstr, text, length);
+ 			newstr[length] = '\0';
+-			if ((index >= MSG_FORMATTED_START
+-			&& index <= MSG_FORMATTED_END)
+-				&& !fmt_validate(speakup_default_msgs[index],
+-				newstr)) {
++			if (index >= MSG_FORMATTED_START &&
++			    index <= MSG_FORMATTED_END &&
++			    !fmt_validate(speakup_default_msgs[index],
++			                  newstr)) {
+ 				kfree(newstr);
+ 				return -EINVAL;
+ 			}
+-- 
+2.9.3
 
-julia
-
->
-> Signed-off-by: Sreya Mittal <sreyamittal5@gmail.com>
-> ---
->
-> Changes since v4 :
-> * Line up the argument newstr
->
->  drivers/staging/speakup/i18n.c | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/staging/speakup/i18n.c b/drivers/staging/speakup/i18n.c
-> index 2f9b3df..4514776 100644
-> --- a/drivers/staging/speakup/i18n.c
-> +++ b/drivers/staging/speakup/i18n.c
-> @@ -411,8 +411,8 @@ static char *next_specifier(char *input)
->  		next_percent = strchr(next_percent, '%');
->  		if (next_percent != NULL) {
->  			/* skip over doubled percent signs */
-> -			while ((next_percent[0] == '%')
-> -			       && (next_percent[1] == '%'))
-> +			while (next_percent[0] == '%' &&
-> +			       next_percent[1] == '%')
->  				next_percent += 2;
->  			if (*next_percent == '%')
->  				found = 1;
-> @@ -549,10 +549,10 @@ ssize_t spk_msg_set(enum msg_index_t index, char *text, size_t length)
->  		if (newstr) {
->  			memcpy(newstr, text, length);
->  			newstr[length] = '\0';
-> -			if ((index >= MSG_FORMATTED_START
-> -			&& index <= MSG_FORMATTED_END)
-> -				&& !fmt_validate(speakup_default_msgs[index],
-> -				newstr)) {
-> +			if (index >= MSG_FORMATTED_START &&
-> +			    index <= MSG_FORMATTED_END &&
-> +			    !fmt_validate(speakup_default_msgs[index],
-> +			                  newstr)) {
->  				kfree(newstr);
->  				return -EINVAL;
->  			}
-> --
-> 2.9.3
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170224084732.5pinudmiwbnye4kt%40stayawesome.
-> For more options, visit https://groups.google.com/d/optout.
->
 
