@@ -1,102 +1,106 @@
 X-GM-THRID: 6390634706454446080
-X-Received: by 10.157.14.7 with SMTP id c7mr1240673otc.149.1487956753278;
-        Fri, 24 Feb 2017 09:19:13 -0800 (PST)
+X-Received: by 10.237.34.35 with SMTP id n32mr1036532qtc.65.1487955930684;
+        Fri, 24 Feb 2017 09:05:30 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.154.77 with SMTP id c74ls2132989ioe.29.gmail; Fri, 24 Feb
- 2017 09:19:12 -0800 (PST)
-X-Received: by 10.99.251.83 with SMTP id w19mr1415225pgj.24.1487956752409;
-        Fri, 24 Feb 2017 09:19:12 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id m190si594731vkf.5.2017.02.24.09.19.10
+Received: by 10.107.142.3 with SMTP id q3ls2046427iod.2.gmail; Fri, 24 Feb
+ 2017 09:05:29 -0800 (PST)
+X-Received: by 10.36.98.69 with SMTP id d66mr999662itc.7.1487955929897;
+        Fri, 24 Feb 2017 09:05:29 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id s64si1695641pfk.0.2017.02.24.09.05.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 24 Feb 2017 09:19:12 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Fri, 24 Feb 2017 09:05:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.35,201,1484002800"; 
-   d="scan'208";a="214631674"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 24 Feb 2017 18:19:06 +0100
-Date: Fri, 24 Feb 2017 18:18:59 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Varsha Rao <rvarsha016@gmail.com>
-cc: William Hubbs <w.d.hubbs@gmail.com>, 
-    Chris Brannon <chris@the-brannons.com>, Kirk Reiser <kirk@reisers.ca>, 
-    Samuel Thibault <samuel.thibault@ens-lyon.org>, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-    outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2] staging: speakup: Replace BUG_ON()
- with WARN_ON().
-In-Reply-To: <58b067d9.4d8d620a.8af7e.1ae6@mx.google.com>
-Message-ID: <alpine.DEB.2.20.1702241814330.3089@hadrien>
-References: <58b067d9.4d8d620a.8af7e.1ae6@mx.google.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x243.google.com with SMTP id 68so1236583pfx.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 24 Feb 2017 09:05:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=message-id:date:from:to:cc:subject:mime-version:content-disposition
+         :user-agent;
+        bh=FYj5vddLCqmm6VGlTBeZlJDEi1/78VbaepOuNqUfmm0=;
+        b=HrYsoNzUfegV6TCsi1yzDjJYDfEuuozO89N5/wEdFxjXrEsHNtA2PvRp4KVgfyoJwD
+         jTsKq07Vj+2ZNZEH5gdo82T+Usukl7bZOPelJqVizM0qTAmnp2vMCO4oigIcXiFNfGv2
+         Dk5ftlIQ9F1UCByzcXD6f53BGmxZVw4MVlSE8Wp8kV7LCrN5PezVcCFzMQCnXLCq4z1t
+         G1NFG16jZRiuJ+Oo6fhykIVDrNj7MtZLHgFylDPqFY+PS8Y3bnnMEluZmi8xYUSGdOnz
+         jvyvaI6vTdsmAiYDxG5P4sjcyTVoN/XLuVX7ZPyOkpiohsEXVd3lbqbK2Hsfa38fs0Gt
+         bpWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
+         :content-disposition:user-agent;
+        bh=FYj5vddLCqmm6VGlTBeZlJDEi1/78VbaepOuNqUfmm0=;
+        b=E7qPjmM+2kW7TyIuBp2V6r3w3UvQ7pxrJCRlxbasqtuyK7UyyhvrTLBb3ZDdPYtNth
+         uLKTEUsvgonwnxvXEQ5cl9XMgYKot1+CmX+KoRtyMPhxm6FwEvwWZsGnx3ChFiaf2h+g
+         goD3iiW9vh9ArUMA6lmAQH13JiWVq8hswrjPRwK6oOivObaDUlFkGvF7Fsso1ZEwB8bs
+         DXrdwG/QXXIzf1N8hw8eanpFObuDr5APwvO6zsz0qjqJPtk8gAmCfe0XRs8PoatA/fTd
+         HJlkMTb1+PMA4HN+L+zhDFLiUY8JtogI3vB/HvGubBMfB2VRiNLa0A3nwk3JrzF0V5d9
+         MsGA==
+X-Gm-Message-State: AMke39kRF2v0rm4mHScXOnnNqtQzFBkgZwY+tHDsU5ItBeL5FsY8gr4BpKGledAb2Lb4Rg==
+X-Received: by 10.99.253.5 with SMTP id d5mr4666262pgh.47.1487955929674;
+        Fri, 24 Feb 2017 09:05:29 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from euri ([117.192.133.132])
+        by smtp.gmail.com with ESMTPSA id z74sm16112714pfd.70.2017.02.24.09.05.28
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 24 Feb 2017 09:05:29 -0800 (PST)
+Message-ID: <58b067d9.4d8d620a.8af7e.1ae6@mx.google.com>
+X-Google-Original-Message-ID: <20170224170521.GA28962@<rvarsha016@gmail.com>>
+Date: Fri, 24 Feb 2017 22:35:21 +0530
+From: Varsha Rao <rvarsha016@gmail.com>
+To: William Hubbs <w.d.hubbs@gmail.com>,
+	Chris Brannon <chris@the-brannons.com>,
+	Kirk Reiser <kirk@reisers.ca>,
+	Samuel Thibault <samuel.thibault@ens-lyon.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH v2] staging: speakup: Replace BUG_ON() with WARN_ON().
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.7.1 (2016-10-04)
 
+BUG_ON() is replaced with WARN_ON() to fix the following checkpatch
+issue:
 
+Avoid crashing the kernel - try using WARN_ON & recovery code rather
+than BUG() or BUG_ON().
 
-On Fri, 24 Feb 2017, Varsha Rao wrote:
+Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
+---
+Changes in v2:
+- Added if condition to avoid dereferencing a NULL pointer.
 
-> BUG_ON() is replaced with WARN_ON() to fix the following checkpatch
-> issue:
->
-> Avoid crashing the kernel - try using WARN_ON & recovery code rather
-> than BUG() or BUG_ON().
->
-> Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
-> ---
-> Changes in v2:
-> - Added if condition to avoid dereferencing a NULL pointer.
->
->  drivers/staging/speakup/kobjects.c | 10 ++++++----
->  1 file changed, 6 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
-> index ca075fe..68a4cc8 100644
-> --- a/drivers/staging/speakup/kobjects.c
-> +++ b/drivers/staging/speakup/kobjects.c
-> @@ -833,10 +833,12 @@ static ssize_t message_show(struct kobject *kobj,
->  	struct msg_group_t *group = spk_find_msg_group(attr->attr.name);
->  	unsigned long flags;
->
-> -	BUG_ON(!group);
-> -	spin_lock_irqsave(&speakup_info.spinlock, flags);
-> -	retval = message_show_helper(buf, group->start, group->end);
-> -	spin_unlock_irqrestore(&speakup_info.spinlock, flags);
-> +	if (WARN_ON(!group)) {
-> +		spin_lock_irqsave(&speakup_info.spinlock, flags);
-> +		retval = message_show_helper(buf, group->start, group->end);
-> +		spin_unlock_irqrestore(&speakup_info.spinlock, flags);
-> +	}
-> +
->  	return retval;
+ drivers/staging/speakup/kobjects.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-I think you should go back and think much harder about what this code
-does.  Does WARN_ON return true if the condition is true or if it is
-false?  If WARN_ON returns true, then should the code that you have put in
-the then branch be executed?  What code do you consider to be the recovery
-code?  BUG_ON always crashed the kernel, so there was no recovery code
-before.  What new code have you added to perform the recovery?  What is
-the value of retval if the branch is or is not taken?  Is this the
-meaningful value in each case?
+diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
+index ca075fe..68a4cc8 100644
+--- a/drivers/staging/speakup/kobjects.c
++++ b/drivers/staging/speakup/kobjects.c
+@@ -833,10 +833,12 @@ static ssize_t message_show(struct kobject *kobj,
+ 	struct msg_group_t *group = spk_find_msg_group(attr->attr.name);
+ 	unsigned long flags;
+ 
+-	BUG_ON(!group);
+-	spin_lock_irqsave(&speakup_info.spinlock, flags);
+-	retval = message_show_helper(buf, group->start, group->end);
+-	spin_unlock_irqrestore(&speakup_info.spinlock, flags);
++	if (WARN_ON(!group)) {
++		spin_lock_irqsave(&speakup_info.spinlock, flags);
++		retval = message_show_helper(buf, group->start, group->end);
++		spin_unlock_irqrestore(&speakup_info.spinlock, flags);
++	}
++
+ 	return retval;
+ }
+ 
+-- 
+2.9.3
 
-julia
-
-
->  }
->
-> --
-> 2.9.3
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/58b067d9.4d8d620a.8af7e.1ae6%40mx.google.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
