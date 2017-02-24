@@ -1,99 +1,91 @@
 X-GM-THRID: 6390544093665034240
-X-Received: by 10.129.128.67 with SMTP id q64mr323412ywf.88.1487914502319;
-        Thu, 23 Feb 2017 21:35:02 -0800 (PST)
+X-Received: by 10.98.252.205 with SMTP id e196mr189106pfh.26.1487914494748;
+        Thu, 23 Feb 2017 21:34:54 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.62.180 with SMTP id b49ls6536776otc.36.gmail; Thu, 23 Feb
- 2017 21:35:02 -0800 (PST)
-X-Received: by 10.200.50.241 with SMTP id a46mr255354qtb.13.1487914501992;
-        Thu, 23 Feb 2017 21:35:01 -0800 (PST)
+Received: by 10.157.41.33 with SMTP id d30ls6175405otb.17.gmail; Thu, 23 Feb
+ 2017 21:34:54 -0800 (PST)
+X-Received: by 10.129.72.200 with SMTP id v191mr311882ywa.150.1487914494273;
+        Thu, 23 Feb 2017 21:34:54 -0800 (PST)
 Return-Path: <tahia.khan@gmail.com>
-Received: from mail-it0-x243.google.com (mail-it0-x243.google.com. [2607:f8b0:4001:c0b::243])
-        by gmr-mx.google.com with ESMTPS id d20si93779itc.1.2017.02.23.21.35.01
+Received: from mail-it0-x22f.google.com (mail-it0-x22f.google.com. [2607:f8b0:4001:c0b::22f])
+        by gmr-mx.google.com with ESMTPS id d20si93335itc.1.2017.02.23.21.34.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 23 Feb 2017 21:35:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of tahia.khan@gmail.com designates 2607:f8b0:4001:c0b::243 as permitted sender) client-ip=2607:f8b0:4001:c0b::243;
+        Thu, 23 Feb 2017 21:34:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of tahia.khan@gmail.com designates 2607:f8b0:4001:c0b::22f as permitted sender) client-ip=2607:f8b0:4001:c0b::22f;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of tahia.khan@gmail.com designates 2607:f8b0:4001:c0b::243 as permitted sender) smtp.mailfrom=tahia.khan@gmail.com;
+       spf=pass (google.com: domain of tahia.khan@gmail.com designates 2607:f8b0:4001:c0b::22f as permitted sender) smtp.mailfrom=tahia.khan@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-it0-x243.google.com with SMTP id 203so1730911ith.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 23 Feb 2017 21:35:01 -0800 (PST)
+Received: by mail-it0-x22f.google.com with SMTP id 203so9938338ith.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 23 Feb 2017 21:34:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=0GJS2xtNfQzOtG+ftgCQfW8fMDF67iJ7ixN7cFexKn8=;
-        b=vfxnCt5MMi5MzLOjkeRtA5sWx8FK0xqKWbpMe1HSsewjZCk+dmMiG+BKw557xiJ1T0
-         SoLvKjk7hB6DyHLtuxM6QDkY7kw1e6/X6lnoneSgBaKyonh/HeC4dcPgrcknPq9jUBr8
-         81//3qaUijduu0ipSEmztZm9EFxuouh5gZ6Vt59aeTl94WOc5auSm/8Fv/8Jer1i9kr1
-         7nS1STagzfjw5r6CiUCMrivH/L54/VuxaAb0pryt3jQk4uk6tPlbDeNcfjvBoYnSVZgS
-         E6Orck/PctqtyfRH9vjq232KmXgxKAY4HdeCLXXh5cn9O0+5DBkxcpX/HDjTCDrSNoiV
-         t1JQ==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :content-transfer-encoding:user-agent;
+        bh=UW7y04f2ejV4aHagYkEiHttBiIwZAG3ceobq0GeliEg=;
+        b=JckiZkpa950btRvAjME+c3bmxgfdS92R/cztbPXFHdqN5y7YckNnBWSlpuA1D51iok
+         aOKI4hl79Tv3SNgQXdtvTWXD0St0EQLTN+92BBiJCZMMnRZQZ61TB5XlT2RRMN8AR+No
+         vZNz4ELQgd+nTzWHbgXjHHPyPU+Jq2uHfxyMIGxXT+0fB1DvGFM/tdOruJkmQrRnHzYi
+         9ZXIiLk3EQI0/yZa5wS394kzEca5x2dyG7nMh3dp3wH+VuJF2Coip42HbLvUmtOLlgbZ
+         PwGaqiv/B145OKYjFcoYx9LWq+QILy2uTraRtXrapXZOjel4LHTGSRgHL12bSjZTy1oq
+         RZIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=0GJS2xtNfQzOtG+ftgCQfW8fMDF67iJ7ixN7cFexKn8=;
-        b=dQ7kNSeP9Lbh/KEgETIN7HCz7/KCUpYgsghK4d3xFeL4vZYSTHpc5A9tCcNLaspKd/
-         2tH5oRMwwApR6sU6m1ptvga1bKn/2G5jNkRSttkjkvxYqFha1qibe+3Nhf5iEluvDv1v
-         s6u1UA3FmF1tzupi2fjClnhIemtaQ9hocgKrfA7V9SrpzrUJAQ84fgVMSULkiVyLYEv6
-         h3U5R8LmiSuYCvypXYyqskUrNw39QMjMxELbTcmzHXjOigWZHeUKypd+feb/0LRkTdf+
-         ycD4jAJTxpnN10IGAA5/ttJrTemSBBRmoFeIhm1j8ZYlV37ScR6a0/MaT6qG7cEVeOso
-         RfmA==
-X-Gm-Message-State: AMke39nMgIYR4n1pabW38VVs7TMhnLaYny+SwJBAoox+ZTeQi2YE0DyRnxXKi5HCJUuF3A==
-X-Received: by 10.107.185.65 with SMTP id j62mr1059126iof.3.1487914501730;
-        Thu, 23 Feb 2017 21:35:01 -0800 (PST)
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:content-transfer-encoding:user-agent;
+        bh=UW7y04f2ejV4aHagYkEiHttBiIwZAG3ceobq0GeliEg=;
+        b=h2Ct690rKiekIAd/qKNgmqF/d4gXJRd4iwzUJI+XDQGh0sQRFr348mp3s4levlZom4
+         qAjsF1Ba5hYOBCL8x2Wvyr4WQJLtLndTznqm/LfgH3wXHo2Tif/V5YRNEaN1hZRibFUp
+         k0na4BVFxbIdSKrck2ssnK+PZZI7g0ANByB2DfSzDHAjaN9RpAFwou+ur7+Uts78AF54
+         vJtm3DO8AX95J5C3kDZoEwwIm7TPJDD5R92i6AU9z8FNAbB78EvAELPRNOB2NjZ7GdTI
+         xBOW9WZTOt8EDZHZZojYcsutkJdvCw7Z7tlTDqGO/6nT9S1/jGMUedbrmFhu4moGBaFO
+         rHWw==
+X-Gm-Message-State: AMke39m1v3dbU19AUaWgm32NQoGs7bravABbXHCdMZrMgGO4fvZvfZK9ygqgbsZ8Dw7NIA==
+X-Received: by 10.36.86.83 with SMTP id o80mr1034898itb.101.1487914493807;
+        Thu, 23 Feb 2017 21:34:53 -0800 (PST)
 Return-Path: <tahia.khan@gmail.com>
 Received: from coolbox (24-212-136-169.cable.teksavvy.com. [24.212.136.169])
-        by smtp.gmail.com with ESMTPSA id k79sm2747999iod.13.2017.02.23.21.35.01
+        by smtp.gmail.com with ESMTPSA id o191sm2754470iod.11.2017.02.23.21.34.52
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 23 Feb 2017 21:35:01 -0800 (PST)
-Date: Fri, 24 Feb 2017 00:35:00 -0500
+        Thu, 23 Feb 2017 21:34:53 -0800 (PST)
+Date: Fri, 24 Feb 2017 00:34:52 -0500
 From: Tahia Khan <tahia.khan@gmail.com>
 To: outreachy-kernel@googlegroups.com, aditya.shankar@microchip.com,
 	ganesh.krishna@microchip.com, gregkh@linuxfoundation.org,
 	linux-wireless@vger.kernel.org, devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 1/3] staging: wilc1000: Rename struct tstrRSSI to
- rssi_history_buffer
-Message-ID: <da73d1aef379243ba94a5c1a4e1d6663160451fd.1487912400.git.tahia.khan@gmail.com>
-References: <cover.1487912400.git.tahia.khan@gmail.com>
+Subject: [PATCH v3 0/3] staging: wilc1000: multiple coding style changes to
+ struct tstrRSSI
+Message-ID: <cover.1487912400.git.tahia.khan@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <cover.1487912400.git.tahia.khan@gmail.com>
+Content-Transfer-Encoding: 8bit
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Rename struct tstrRSSI to rssi_history_buffer for clarity and to remove camel casing.
+Multiple coding style changes to struct tstrRSSI. Initially reported by checkpath.pl:
 
-Signed-off-by: Tahia Khan <tahia.khan@gmail.com>
----
- drivers/staging/wilc1000/coreconfigurator.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Avoid CamelCase: <tstrRSSI>
+Avoid CamelCase: <u8Full>
+Avoid CamelCase: <u8Index>
 
-diff --git a/drivers/staging/wilc1000/coreconfigurator.h b/drivers/staging/wilc1000/coreconfigurator.h
-index cff1698..1c77529 100644
---- a/drivers/staging/wilc1000/coreconfigurator.h
-+++ b/drivers/staging/wilc1000/coreconfigurator.h
-@@ -70,7 +70,7 @@ enum connect_status {
- 	CONNECT_STS_FORCE_16_BIT = 0xFFFF
- };
- 
--struct tstrRSSI {
-+struct rssi_history_buffer {
- 	u8 u8Full;
- 	u8 u8Index;
- 	s8 as8RSSI[NUM_RSSI];
-@@ -93,7 +93,7 @@ struct network_info {
- 	u8 *ies;
- 	u16 ies_len;
- 	void *join_params;
--	struct tstrRSSI str_rssi;
-+	struct rssi_history_buffer str_rssi;
- 	u64 tsf_hi;
- };
- 
+Changes since v2: Renaming tstrRSSI and members with more descriptive names, 
+    as suggested by Arend Van Spriel <arend.vanspriel@broadcom.com>
+
+Tahia Khan (3):
+  staging: wilc1000: Rename struct tstrRSSI to rssi_history_buffer for
+    clarity and to remove camel casing.
+  staging: wilc1000: Remove Hungarian notation and camel casing from all
+    tstrRSSI members’ names. Additionally, change type of u8Full to bool
+    since it only takes values 1 or 0.
+  staging: wilc1000: Change name of str_rssi to rssi_history within the
+    network_info struct for clarity.
+
+ drivers/staging/wilc1000/coreconfigurator.h       | 10 +++++-----
+ drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 14 +++++++-------
+ 2 files changed, 12 insertions(+), 12 deletions(-)
+
 -- 
 2.7.4
 
