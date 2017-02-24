@@ -1,81 +1,104 @@
 X-GM-THRID: 6390634706454446080
-X-Received: by 10.159.40.163 with SMTP id d32mr597755uad.15.1487941444953;
-        Fri, 24 Feb 2017 05:04:04 -0800 (PST)
+X-Received: by 10.129.4.80 with SMTP id 77mr626725ywe.161.1487935592940;
+        Fri, 24 Feb 2017 03:26:32 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.66.83 with SMTP id i80ls558598itb.6.gmail; Fri, 24 Feb 2017
- 05:04:04 -0800 (PST)
-X-Received: by 10.99.143.21 with SMTP id n21mr845501pgd.132.1487941444075;
-        Fri, 24 Feb 2017 05:04:04 -0800 (PST)
-Return-Path: <arndbergmann@gmail.com>
-Received: from mail-oi0-x244.google.com (mail-oi0-x244.google.com. [2607:f8b0:4003:c06::244])
-        by gmr-mx.google.com with ESMTPS id b188si199481ite.3.2017.02.24.05.04.03
+Received: by 10.107.15.68 with SMTP id x65ls1811216ioi.33.gmail; Fri, 24 Feb
+ 2017 03:26:32 -0800 (PST)
+X-Received: by 10.107.20.22 with SMTP id 22mr924825iou.21.1487935592212;
+        Fri, 24 Feb 2017 03:26:32 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id s64si1518270pfk.0.2017.02.24.03.26.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 24 Feb 2017 05:04:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of arndbergmann@gmail.com designates 2607:f8b0:4003:c06::244 as permitted sender) client-ip=2607:f8b0:4003:c06::244;
+        Fri, 24 Feb 2017 03:26:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arndbergmann@gmail.com designates 2607:f8b0:4003:c06::244 as permitted sender) smtp.mailfrom=arndbergmann@gmail.com
-Received: by mail-oi0-x244.google.com with SMTP id f204so1446936oia.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 24 Feb 2017 05:04:03 -0800 (PST)
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x243.google.com with SMTP id s67so2813928pgb.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 24 Feb 2017 03:26:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:sender:in-reply-to:references:from:date:message-id
-         :subject:to:cc;
-        bh=lq/DkDaPPdx/NX8121LMePqfsH+kqUNXGkoPh2V/2I8=;
-        b=Zyjf38s+mSH++cOAXAfs02YiZLGVF4USa9KTEgqO09SLZ3ce/+7PB7QZDtBkn1wcDz
-         471asx1s9jA5eyNdCV+q+Jr8uEi2ENYpBfaTsJN+2q0URAH2e+g5rEN+z3ky+d3v50U7
-         9MZMv7Ho7YRQj9zJikEDWD+8ea/kqKEnMZL3V4A91JPSL5hIwnHowTqc1KzV8EYWauG3
-         2bf5DjWBplJvroTZ28Xa2D72/Jk6rIfXUKxZP8xIZj8L5sLK6K7bLGfkLthvmJw/3fOq
-         qUMdAdoGJYhHb+Zgh8C53GFm1KchvD5fDh6ToRfe7NC6ZheWRvw1n9OywRbOquCKai69
-         IA9g==
+        h=message-id:date:from:to:cc:subject:mime-version:content-disposition
+         :user-agent;
+        bh=bSbfM8a4H0jNbcljV8KJALAL6hOoRoRko9lm58pZca4=;
+        b=I9qYYttA1+BgFtshMMGFptoj5JN9idIRGE0kiIv0GmBadIg1HCg7FMSV/WQstBz6Zs
+         HvdFXu3UwyyvP9zXMawvzx2JZ+0ur/8/kNEH9CoJVSq5Xgo6l06Cq/UWmOhX+SNqKNJc
+         XnlU0ExaY4SvDT/eaqNkqTLeZvFEi7J9LCafklvAf27ivmUZ+hcxuGv3NS/RX0iCSdKa
+         EMhIzNvLDsML8USqwU5bhTYPEZ1x7/RfEptxKVkBUbWqjgOn01nkRbbqoswAlsLhJbR/
+         38opspHGorQvKRO74bDg7dWqc2Ba6g8VumnAZc+miKsU5QyWtyRiAJg8xOtkzTdx+2mE
+         TF2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-         :date:message-id:subject:to:cc;
-        bh=lq/DkDaPPdx/NX8121LMePqfsH+kqUNXGkoPh2V/2I8=;
-        b=VrJkUWMnBnywmXk2zY7xxzsTyTi9MZpn2hiREmiEHRzkwOWw0TS/5adbKzkV3GEOsh
-         g5Wneo5mSYF5rkl1G0JaDiXcJZdjBM3GcbwX62ukVrUxhA/u1ytELgm24LJIYsCyKt7v
-         DK7DYbeNJNGh9w3AnHO/hDZidD8TL4T0jTxyTJu6toieq5s0EGY3wbZ65wAsuZV+/Kdm
-         yK6pQd++ZR8+5QLkkcrYZ2RwjQ7hbYxMl6S9cN9XoD+Z5RjVv7gibdlK24KnkxR7Ze/5
-         ZmZjfUe2IhkvZYjR8G+QZvtJmPIvXPlwhmRH++Idn/qW22XQHGbpeBkHuNmZbQA7AqCH
-         wVQA==
-X-Gm-Message-State: AMke39kgin5+YFU/EYHJsBMoShiNWsJt8EQSkWvP4YkChj5j1CThdt/WAczo7rNGHV0ZySD5fJtYyQX3YYN/kg==
-X-Received: by 10.202.204.138 with SMTP id c132mr1530192oig.155.1487941443672;
- Fri, 24 Feb 2017 05:04:03 -0800 (PST)
+        h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
+         :content-disposition:user-agent;
+        bh=bSbfM8a4H0jNbcljV8KJALAL6hOoRoRko9lm58pZca4=;
+        b=Z/QMkSOLyRqqnMZpt7A9HOGat8hPJJrrbVJSQMIvPpwkDw1ppnxWsriAVzZ3GIiZ9M
+         /ITue20FJ3PTgL/RKk/RnvnvtDNwaQQNKPVsEOekSGk2BHZpugagIv23OeaI4//qWcpC
+         IPuHFLVx+Nw14uU0nWgpfu2qNobK2E3TzeY9X9uc1mgDDBJPVIbiKVGkWtX+D3tzWmFc
+         UGMCfBumCTN7JUCVgs+Liiai4C6drtuau8ds8RRheSy4wLM5pGnpSnjq+1y26am/EGIE
+         nkEb+QxfBV6Itu/nbzKhmpHlP2PotOpwUkxoRCnBXRsxCWEwr2Z/fsf8wyUl3rnawmdl
+         Zvuw==
+X-Gm-Message-State: AMke39mAu/c2FaE4tr08Qd6RFB9SQqKzZluEBmV4l/25rQCuiAqqgo2hIK0HhNCr6OybVw==
+X-Received: by 10.84.178.131 with SMTP id z3mr3206991plb.176.1487935591987;
+        Fri, 24 Feb 2017 03:26:31 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from euri ([2405:204:5187:dc90:40c6:44ba:560a:4a16])
+        by smtp.gmail.com with ESMTPSA id h68sm14665137pfj.124.2017.02.24.03.26.30
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 24 Feb 2017 03:26:31 -0800 (PST)
+Message-ID: <58b01867.c756620a.e6490.ed1f@mx.google.com>
+X-Google-Original-Message-ID: <20170224112625.GA18346@<rvarsha016@gmail.com>>
+Date: Fri, 24 Feb 2017 16:56:25 +0530
+From: Varsha Rao <rvarsha016@gmail.com>
+To: William Hubbs <w.d.hubbs@gmail.com>,
+	Chris Brannon <chris@the-brannons.com>,
+	Kirk Reiser <kirk@reisers.ca>,
+	Samuel Thibault <samuel.thibault@ens-lyon.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: speakup: Replace BUG_ON() with WARN_ON().
 MIME-Version: 1.0
-Sender: arndbergmann@gmail.com
-Received: by 10.157.6.42 with HTTP; Fri, 24 Feb 2017 05:04:03 -0800 (PST)
-In-Reply-To: <58b01867.c756620a.e6490.ed1f@mx.google.com>
-References: <58b01867.c756620a.e6490.ed1f@mx.google.com>
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Fri, 24 Feb 2017 14:04:03 +0100
-X-Google-Sender-Auth: xWhULtLFpoZ3ED1s4M4Rko3DRpQ
-Message-ID: <CAK8P3a3-Xx_TsY50ZxunNiaTcUct1SkNLAE2VFpqwCbRWL7ZTQ@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: speakup: Replace BUG_ON()
- with WARN_ON().
-To: Varsha Rao <rvarsha016@gmail.com>
-Cc: William Hubbs <w.d.hubbs@gmail.com>, Chris Brannon <chris@the-brannons.com>, 
-	Kirk Reiser <kirk@reisers.ca>, Samuel Thibault <samuel.thibault@ens-lyon.org>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.7.1 (2016-10-04)
 
-On Fri, Feb 24, 2017 at 12:26 PM, Varsha Rao <rvarsha016@gmail.com> wrote:
-> BUG_ON() is replaced with WARN_ON() to fix the following checkpatch
-> issue:
->
-> Avoid crashing the kernel - try using WARN_ON & recovery code rather
-> than BUG() or BUG_ON().
+BUG_ON() is replaced with WARN_ON() to fix the following checkpatch
+issue:
 
-> -       BUG_ON(!group);
-> +       WARN_ON(!group);
->         spin_lock_irqsave(&speakup_info.spinlock, flags);
->         retval = message_show_helper(buf, group->start, group->end);
+Avoid crashing the kernel - try using WARN_ON & recovery code rather
+than BUG() or BUG_ON().
 
-You are still crashing the kernel by dereferencing a NULL pointer here.
+Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
+---
+ drivers/staging/speakup/kobjects.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-When you use WARN_ON, the kernel must have some way of continuing
-without crashing immediately.
+diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
+index ca075fe..8ea3a57 100644
+--- a/drivers/staging/speakup/kobjects.c
++++ b/drivers/staging/speakup/kobjects.c
+@@ -833,7 +833,7 @@ static ssize_t message_show(struct kobject *kobj,
+ 	struct msg_group_t *group = spk_find_msg_group(attr->attr.name);
+ 	unsigned long flags;
+ 
+-	BUG_ON(!group);
++	WARN_ON(!group);
+ 	spin_lock_irqsave(&speakup_info.spinlock, flags);
+ 	retval = message_show_helper(buf, group->start, group->end);
+ 	spin_unlock_irqrestore(&speakup_info.spinlock, flags);
+@@ -845,7 +845,7 @@ static ssize_t message_store(struct kobject *kobj, struct kobj_attribute *attr,
+ {
+ 	struct msg_group_t *group = spk_find_msg_group(attr->attr.name);
+ 
+-	BUG_ON(!group);
++	WARN_ON(!group);
+ 	return message_store_helper(buf, count, group);
+ }
+ 
+-- 
+2.9.3
 
-    Arnd
 
