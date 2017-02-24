@@ -1,67 +1,71 @@
 X-GM-THRID: 6390780050561564672
-X-Received: by 10.159.55.145 with SMTP id q17mr4322202uaq.18.1488208298729;
-        Mon, 27 Feb 2017 07:11:38 -0800 (PST)
+X-Received: by 10.200.51.164 with SMTP id c33mr817257qtb.85.1487969432847;
+        Fri, 24 Feb 2017 12:50:32 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.18.240 with SMTP id g103ls12568858otg.39.gmail; Mon, 27
- Feb 2017 07:11:38 -0800 (PST)
-X-Received: by 10.200.50.105 with SMTP id y38mr5456499qta.67.1488208298308;
-        Mon, 27 Feb 2017 07:11:38 -0800 (PST)
+Received: by 10.157.54.4 with SMTP id w4ls7461720otb.8.gmail; Fri, 24 Feb 2017
+ 12:50:32 -0800 (PST)
+X-Received: by 10.237.52.130 with SMTP id x2mr1401756qtd.73.1487969432344;
+        Fri, 24 Feb 2017 12:50:32 -0800 (PST)
 Return-Path: <sreyamittal5@gmail.com>
 Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id s64si3224478pfk.0.2017.02.27.07.11.38
+        by gmr-mx.google.com with ESMTPS id h130si1774354pfe.1.2017.02.24.12.50.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 27 Feb 2017 07:11:38 -0800 (PST)
+        Fri, 24 Feb 2017 12:50:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
        spf=pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=sreyamittal5@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id p185so623161pfb.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 27 Feb 2017 07:11:38 -0800 (PST)
+Received: by mail-pf0-x243.google.com with SMTP id o64so1405592pfb.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 24 Feb 2017 12:50:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=6/ujqynbsdm3bh0KTqmp/2yRSN7fA9tsTfbxD9dJWr4=;
-        b=sg3zl+aMuSkXPnoJRWklX1u4+48qYkTcVpw4gBjKSaBd1/vkbKhSaH8j9JoyVIPAtI
-         lfdBkycZ3A/vCBZi/MHSk1MoECuTW1qz1pUrpO+4gwK4kgMT5l7DbuH4Q8LZMB4DhJfK
-         CHeh77dTN/o6/T6TJjB7qLZ8wrp0Hou5Jkw8kpjPSoM+8y33fRztiz0SPiXkkwJ9xZAW
-         klh/UMDHKBeXKYCV7BWDuYLDoDGme1VPUmXluMI9PGE29buaeYTiK3ItPfrmSeQ2v3NG
-         wPuG6v1g/IXQOfQXk41lBqRySv+txXBbe73PnR0SPGreVwaNxruiZyXzh/xWS9ygIsqv
-         koBw==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=jSi/lk9fymHNNItlHomPYXD2lLGXB310e7r2bZuTPfY=;
+        b=U4Zac8IpSeD/760h/omvGoxIDQb/YKPY68++H4U6z/oqR15Xl0xaYO/E/NSO7HS36F
+         aR3G4T5eun5XCjPORRbK+9QaAy4H+CUmnEs3p5Ccg60J1/UhA+T39kRen+VRyVXz5g5z
+         rzgT9Q03y202orYuo7Mz31RcwSswuafT80WLRSDN21JJ/ztXuIdd1qzXIu3C6dpKRf99
+         1FBkfAFLy3DOnH1I64/xFXyg9ggHEu+vlZZpJpGy/YysdckB8zjTSgNEmRsCNCPkgl3n
+         epO8mNfPqIa4dRk0wcb2hqy5S9WS6I4JTxRh0PzlfQPlmknhhknpCSrS3jvJqHkUpcfe
+         G22A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=6/ujqynbsdm3bh0KTqmp/2yRSN7fA9tsTfbxD9dJWr4=;
-        b=fMwkjM2zFOwTFuMKN+NLT3Jl+T7PzpkDXm6u1H2ls2AjbbkqI+CzNkw5VQyPUp20Qo
-         y5oaqNhWqAuRrKaRcBR45rnt+HDLBZnUPYK0upjUrZCJ7fUmxpMu3VW7nZ3eE4fDEBF9
-         x8m3uRQygeD5nk690jBDfXU/YeWebAJqFJtzkXnvV+Af8P4zv+IhDEem9ncx5SIZmhNe
-         BOQxCj2HDyn5bjPTYQWx/xcME6vdj80kuLNT9f4C7rs48b+wpgan58aFWpwKhWk4t23w
-         jclgdgSWlsxgRA+YUm3LSntM68LwCZvY9bAmgsRaORHreg6s/AjgGjWK5HwER30yTVGC
-         VpgQ==
-X-Gm-Message-State: AMke39nYMP/+sUzxvsCIfljINdnAMCMPeF3UP63yLcJHsCy+haLzZ1EW4T2+9ySAvp8HBA==
-X-Received: by 10.84.217.14 with SMTP id o14mr420211pli.51.1488208296646;
-        Mon, 27 Feb 2017 07:11:36 -0800 (PST)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=jSi/lk9fymHNNItlHomPYXD2lLGXB310e7r2bZuTPfY=;
+        b=NaZZQ9Z9qVOK6DG7wMNGkqY4lRg8lYLZtEj/Tr0bC1aEPYYBSD8C8OdH5RAlsf6YDz
+         kDG6AIQM12kS7sx5VMeueSBtpVO99ZemvIuqrZHqZ4f1dUzy5v8V2w8si8Df3n9KtT/R
+         cPzy2cGFqIAXECEoR8qCz6uE07lVQWzEZ4fB0hEIejh94hHHmXkYkW/98RruRZU53nCz
+         LL5S7ws03Wi3i+4nn5Rt9thb1EzPxzwQayqB6nzBbZL8d+OnUnFZUizUu4Y/iuh6Fulh
+         fWlLXii+Dq9AjD3aYAPRORjNk3ilgiujoLvgGL/NygG/EVuT9FuYpXWBcuJfV0wcKQvD
+         UDdA==
+X-Gm-Message-State: AMke39mGRrBkCoPxaBXaE78xzCA3k5L/K/R2wh9aMQXQYrxTR1vd1MNXkh6XhTeGyKtcOg==
+X-Received: by 10.84.205.70 with SMTP id o6mr6507822plh.56.1487969432103;
+        Fri, 24 Feb 2017 12:50:32 -0800 (PST)
 Return-Path: <sreyamittal5@gmail.com>
 Received: from stayawesome ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id x15sm31511889pgo.56.2017.02.27.07.11.35
+        by smtp.gmail.com with ESMTPSA id o24sm16671531pfj.78.2017.02.24.12.50.30
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 27 Feb 2017 07:11:36 -0800 (PST)
+        Fri, 24 Feb 2017 12:50:31 -0800 (PST)
+Date: Sat, 25 Feb 2017 02:20:21 +0530
 From: Sreya Mittal <sreyamittal5@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Sreya Mittal <sreyamittal5@gmail.com>,
-	William Hubbs <w.d.hubbs@gmail.com>,
+Cc: William Hubbs <w.d.hubbs@gmail.com>,
 	Chris Brannon <chris@the-brannons.com>,
 	Kirk Reiser <kirk@reisers.ca>,
 	Samuel Thibault <samuel.thibault@ens-lyon.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Subject: [PATCH 1/2] staging: speakup: Align with open parentheses
-Date: Mon, 27 Feb 2017 20:41:24 +0530
-Message-Id: <20170227151124.18063-1-sreyamittal5@gmail.com>
-X-Mailer: git-send-email 2.9.3
+Message-ID: <20170224205021.fjs7e4ih2c4ntxfu@stayawesome>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.6.2-neo (2016-08-21)
 
 Align next line of print statements
-to the right of open parentheses.
+to the right of open parentheses
 
 Signed-off-by: Sreya Mittal <sreyamittal5@gmail.com>
 ---
