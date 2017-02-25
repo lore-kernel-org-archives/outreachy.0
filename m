@@ -1,77 +1,87 @@
-X-GM-THRID: 7026056890720190464
-X-Received: by 2002:a5d:64e7:: with SMTP id g7mr3734941wri.350.1635881348955;
-        Tue, 02 Nov 2021 12:29:08 -0700 (PDT)
+X-GM-THRID: 6390544093665034240
+X-Received: by 10.46.22.16 with SMTP id w16mr654911ljd.8.1488004678725;
+        Fri, 24 Feb 2017 22:37:58 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:4092:: with SMTP id o18ls6469017wrp.1.gmail; Tue, 02 Nov
- 2021 12:29:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwmJof+XNZuSIJms2yHMx294bGIUDeG9m4HrWGx8xjHm+Ed29vWOf/W6Bg3/HzNcHM6MtIK
-X-Received: by 2002:a5d:6e04:: with SMTP id h4mr25367661wrz.127.1635881347635;
-        Tue, 02 Nov 2021 12:29:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635881347; cv=none;
-        d=google.com; s=arc-20160816;
-        b=KvSP/q6uZGF30pw2oOVPZnhBvEtRn/qQmG0BFPEylYMqGo4K81+4t6V3fMlGN63sJ7
-         lFGVYmoHNHI5qN2t0sXdh/hry2S+UOda8jWDPrjtLRkxWhFy37SkQvEY9jic5+cD2Hpu
-         7o0DudOFB96DyupJ3kM+/nNu7E/CjFmNwmAsYc9Tp6BPIl8e7rWbsHJAM807I+3p41dK
-         4UXo/PQ1dRS8lw+u71bdtOt/nujudBwp7PUpLUpS5iEGt1ia7mO6I46pU/tSkd3v5ce0
-         EwqJjRqnSE7naRJZmGy5u2buBBX/fiIgyh59LFE/7DwS1P0Di3v3yLfNjJTfGhDMAGCs
-         +/Lw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:to:from:date;
-        bh=YNVPWa4MUb6dQ/rEVKGQ5zhxWNJrGdm41C793znetDQ=;
-        b=KCk43QZDyTOHyjzSVVx+XIlZ9flueqhjJhNA9FIWd2SMBnss+EUkVb4gFWHJcyPP8l
-         3kblaQe+/z2qUiqxGVCHXgw3iejbeLEeUv09nPWYvADgC1B+IfUqVlUSQhm55BLC+cq0
-         0aLMdG7jazOcjBuOyqueoWY2g8xU5LEFy5SKmt14Ymwf131wHe3K60cP+jW0/m7gNSyx
-         ACGvQzSikAsgdEdvJsFZlrgOh1fS693apz+rujLnYPC5UmELiHmvpbB/5yZ9eTd6+jde
-         gxzm0uJZx2Ck3oHgVCCx0pj5BzLGQrCvTbN8Z7ik9aeHPLVkPuDs1Iv5AMU2DByCrTRz
-         9mFA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of alison.schofield@intel.com designates 192.55.52.151 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <alison.schofield@intel.com>
-Received: from mga17.intel.com (mga17.intel.com. [192.55.52.151])
-        by gmr-mx.google.com with ESMTPS id a10si421623wmb.0.2021.11.02.12.29.06
+Received: by 10.25.155.194 with SMTP id d185ls568757lfe.2.gmail; Fri, 24 Feb
+ 2017 22:37:58 -0800 (PST)
+X-Received: by 10.25.167.5 with SMTP id q5mr821083lfe.18.1488004678214;
+        Fri, 24 Feb 2017 22:37:58 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id c188si253434wmd.0.2017.02.24.22.37.58
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 02 Nov 2021 12:29:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alison.schofield@intel.com designates 192.55.52.151 as permitted sender) client-ip=192.55.52.151;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 24 Feb 2017 22:37:58 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of alison.schofield@intel.com designates 192.55.52.151 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-X-IronPort-AV: E=McAfee;i="6200,9189,10156"; a="212104288"
-X-IronPort-AV: E=Sophos;i="5.87,203,1631602800"; 
-   d="scan'208";a="212104288"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Nov 2021 12:28:44 -0700
-X-IronPort-AV: E=Sophos;i="5.87,203,1631602800"; 
-   d="scan'208";a="531667072"
-Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
-  by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Nov 2021 12:28:44 -0700
-Date: Tue, 2 Nov 2021 12:36:08 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Outreachy Linux Kernel <outreachy-kernel@googlegroups.com>
-Subject: Application Deadline: Nov. 5, 2021 at 4pm UTC
-Message-ID: <20211102193608.GA518229@alison-desk>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,202,1484002800"; 
+   d="scan'208";a="214667459"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 25 Feb 2017 07:37:57 +0100
+Date: Sat, 25 Feb 2017 07:37:56 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Tahia Khan <tahia.khan@gmail.com>
+cc: outreachy-kernel@googlegroups.com, aditya.shankar@microchip.com, 
+    ganesh.krishna@microchip.com, gregkh@linuxfoundation.org, 
+    linux-wireless@vger.kernel.org, devel@driverdev.osuosl.org, 
+    linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH v4 1/3] staging: wilc1000: Rename
+ struct tstrRSSI to rssi_history_buffer
+In-Reply-To: <da73d1aef379243ba94a5c1a4e1d6663160451fd.1487947616.git.tahia.khan@gmail.com>
+Message-ID: <alpine.DEB.2.20.1702250737410.2088@hadrien>
+References: <cover.1487947616.git.tahia.khan@gmail.com> <da73d1aef379243ba94a5c1a4e1d6663160451fd.1487947616.git.tahia.khan@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: text/plain; charset=US-ASCII
 
-Hi applicants.
 
-This is a reminder to submit your final application on the Outreachy
-Website by Nov 5, 2021 at 4pm UTC.
 
-Better yet - just do it today!
+On Fri, 24 Feb 2017, Tahia Khan wrote:
 
-You can always edit it thru the deadline, however if you miss the
-deadline, for any reason, there is no recourse. Outreachy needs to
-be strict on these deadlines because of the sheer volume of
-applicants they are dealing with.
+> Rename struct tstrRSSI to rssi_history_buffer for clarity
+> and to remove camel casing.
+>
+> Signed-off-by: Tahia Khan <tahia.khan@gmail.com>
 
-See https://www.outreachy.org/docs/applicant/ Final Application.
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 
-Thank you for all the contributions. Please reach out to me, or
-this rounds project mentors for any questions.
 
-Alison
-
+> ---
+>  drivers/staging/wilc1000/coreconfigurator.h | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/wilc1000/coreconfigurator.h b/drivers/staging/wilc1000/coreconfigurator.h
+> index cff1698..1c77529 100644
+> --- a/drivers/staging/wilc1000/coreconfigurator.h
+> +++ b/drivers/staging/wilc1000/coreconfigurator.h
+> @@ -70,7 +70,7 @@ enum connect_status {
+>  	CONNECT_STS_FORCE_16_BIT = 0xFFFF
+>  };
+>
+> -struct tstrRSSI {
+> +struct rssi_history_buffer {
+>  	u8 u8Full;
+>  	u8 u8Index;
+>  	s8 as8RSSI[NUM_RSSI];
+> @@ -93,7 +93,7 @@ struct network_info {
+>  	u8 *ies;
+>  	u16 ies_len;
+>  	void *join_params;
+> -	struct tstrRSSI str_rssi;
+> +	struct rssi_history_buffer str_rssi;
+>  	u64 tsf_hi;
+>  };
+>
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/da73d1aef379243ba94a5c1a4e1d6663160451fd.1487947616.git.tahia.khan%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
