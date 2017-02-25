@@ -1,90 +1,94 @@
-X-GM-THRID: 6387794741064368128
-X-Received: by 10.99.109.138 with SMTP id i132mr1225259pgc.117.1487274361997;
-        Thu, 16 Feb 2017 11:46:01 -0800 (PST)
+X-GM-THRID: 6388169805845757952
+X-Received: by 10.129.49.211 with SMTP id x202mr2529338ywx.25.1488016534752;
+        Sat, 25 Feb 2017 01:55:34 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.5.194 with SMTP id 185ls773483iof.19.gmail; Thu, 16 Feb
- 2017 11:46:01 -0800 (PST)
-X-Received: by 10.107.170.221 with SMTP id g90mr1440247ioj.20.1487274361268;
-        Thu, 16 Feb 2017 11:46:01 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id h130si258190pfe.1.2017.02.16.11.46.01
+Received: by 10.157.22.129 with SMTP id c1ls9429376ote.14.gmail; Sat, 25 Feb
+ 2017 01:55:34 -0800 (PST)
+X-Received: by 10.129.155.201 with SMTP id s192mr2370317ywg.159.1488016534436;
+        Sat, 25 Feb 2017 01:55:34 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id c123si1822480pfa.4.2017.02.25.01.55.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 16 Feb 2017 11:46:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Sat, 25 Feb 2017 01:55:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id 19so2261611pfo.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 16 Feb 2017 11:46:01 -0800 (PST)
+Received: by mail-pf0-x241.google.com with SMTP id p185so1941765pfb.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 25 Feb 2017 01:55:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=FF6pzsVDxM7PiCakRp7582iAUVMNUgE7lV601OGnIto=;
-        b=eabBliF8hFzAerzTVm0JJ7Ekkdeo4eqF2ZozB8nI9Y8iqoGtS3VRYqCOn5DrqhLFmk
-         WmTBp0jMhnpxLWo83MWbzCqZJ+uL0tn8zmBLmpfiQrcEzjClaxWXogLA67Sz7GqjgU0f
-         KV32OfLn70x7cvL6Vxocn8cru89BRwi8YHj3EXf93T40guGtzxzONjbhMI0Qjz2BGDqv
-         WtNWF9NxxF/0dJ/26BfiUMQR3Z7O9TcoO2ssGIrIsdDMYu2sxXpAnGorsw99wlc6mFmO
-         D7UIhjzkpBmizEGPZvweXxgeEOMS2RV4srDDwNQZ+bYmDLK5PcGoRqUZDYxfkVt3yuDI
-         +7Mg==
+        h=message-id:date:from:to:cc:subject:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=EQvZHkvILIGPbFCcwDtHFn3/gc5zFBCDmY9Ma8FY5Is=;
+        b=IjwxNot6w5+wFtCxrk4Lb7pemNzwSjnvXtvMWAzCc4h3dFBwn9/q1c+zm8txkrv88d
+         BNgBo1frClv+HNhNwhhJV0DFRd9dVM4BKsDtw2D0rkY5EU83umIVCpaYiijozyZK95Qw
+         fh2WWPk53DfqFjP8AsspQ71kZ3nT4OQuKycM/jkEeT7GzVQJHMvEIh6KGkNOT5fue8MQ
+         AFMo/pjSHWLM4K5I3qFvIez7exyeHG28F2CLm9CytHf3DeRxtrdt0IEkpzXf8ApTRgjB
+         f4ax3ED0ypugNdY96DjiL/egysnsxdCUDMq5ubyrjM/OG3xlx03DQRYlhvqbHlSrEYZk
+         x3uQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=FF6pzsVDxM7PiCakRp7582iAUVMNUgE7lV601OGnIto=;
-        b=OexT8+rgIlx7z+Wh5bjAexa18dSr3dNmIxrm0q5X9PG282RsGIYK3k+msa0QUK7vMm
-         JXFM+yjAt/9JI6cUh/dF1E41mJfZswAK9uo1WPSb81+Vc8C/5Waw8YW5PNEMFu5ygyPG
-         Zcc8iPcg/E+lpkHQlYlV6VpJw+k6qRVez4oiDrUehyksT5H8XVC4XWCgoRz9XSUlNUL0
-         Ju+WCDude12yeHgZ6IewA0BiVEUppCjz7JsdnVlL5X59zFGh1DOvJMMLfuTmCowgsyc+
-         R20vQpEtdGWKfwGGPhavWApO4vcrQX8/k9QI8U+koks5U8bqF3/xiSMVldoJuSwa5i6j
-         55ew==
-X-Gm-Message-State: AMke39mB+hoa7sK3OhAQ2GMlasuD4R/ogMvtpixCQtD/xPlR+qH2rlpsCWFGWofvUqw7gg==
-X-Received: by 10.98.86.203 with SMTP id h72mr4671197pfj.108.1487274360790;
-        Thu, 16 Feb 2017 11:46:00 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id g28sm15308755pgn.3.2017.02.16.11.45.59
+        h=x-gm-message-state:message-id:date:from:to:cc:subject:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=EQvZHkvILIGPbFCcwDtHFn3/gc5zFBCDmY9Ma8FY5Is=;
+        b=L6QxXTACjOsbuArJTH9X7pFzMnMLm3Oi+r3Ic+fTqg1PYtdvqLDNJdTBYHJsLqRqkt
+         o2+533r9pAV6QGBEXW/iS9PPmDonCi2RhB75lLR2jI1ICtqejlYFPSc+9CUhLEybZ8ux
+         CbNKD08DNwpQS7BDcBvWNOb5H0LtzoyHUnd1S0ef8WggEraOz6zJgaqKWcly7t5SZ/w+
+         451y3ljCAm/bpXcZsK3YFz9WQ+soFJXDEOuTdiZJkWjmnQFXhnlk0YBaeHHX3mV9NvNp
+         dt+MfpgNF6ZQ1r+oayyEIDRk2aBBh4n9HpeZj9kVEslyf6XFoJEtEUQsMltAI8NtD44w
+         5h/Q==
+X-Gm-Message-State: AMke39kTESIGx+BSc/DSFCjJFv30RUUE13W9QHCJj1KtY/Ix6ODAfH7CExx+iUFRjz0f6Q==
+X-Received: by 10.99.102.134 with SMTP id a128mr8921056pgc.215.1488016534206;
+        Sat, 25 Feb 2017 01:55:34 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from euri ([117.192.154.88])
+        by smtp.gmail.com with ESMTPSA id 202sm14353940pfw.63.2017.02.25.01.55.33
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 16 Feb 2017 11:45:59 -0800 (PST)
-Date: Fri, 17 Feb 2017 01:15:57 +0530
-From: simran singhal <singhalsimran0@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/3] staging: rtl8192u: Replace symbolic permissions with
- octal permissions
-Message-ID: <20170216194556.GA30632@singhal-Inspiron-5558>
+        Sat, 25 Feb 2017 01:55:33 -0800 (PST)
+Message-ID: <58b15495.d316620a.79234.0c93@mx.google.com>
+X-Google-Original-Message-ID: <20170225095530.GA4316@<rvarsha016@gmail.com>>
+Date: Sat, 25 Feb 2017 15:25:30 +0530
+From: Varsha Rao <rvarsha016@gmail.com>
+To: Larry Finger <Larry.Finger@lwfinger.net>,
+	Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH 2/2] staging: rtl8712: Remove space after a cast.
+References: <cover.1488015591.git.varshar186@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <cover.1488015591.git.varshar186@gmail.com>
+User-Agent: Mutt/1.7.1 (2016-10-04)
 
-WARNING: Symbolic permissions 'S_IRUGO | S_IWUSR' are not preferred.
-Consider using octal permissions '0644'.
-This warning is detected by checkpatch.pl
+This patch fixes the following checkpatch issue:
 
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+CHECK: No space is necessary after a cast
+
+Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 ---
- drivers/staging/rtl8192u/ieee80211/ieee80211_module.c | 2 +-
+ drivers/staging/rtl8712/os_intfs.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c
-index a9a92d8..2ebc320 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c
-@@ -283,7 +283,7 @@ int __init ieee80211_debug_init(void)
- 				" proc directory\n");
- 		return -EIO;
- 	}
--	e = proc_create("debug_level", S_IRUGO | S_IWUSR,
-+	e = proc_create("debug_level", 0644,
- 			      ieee80211_proc, &fops);
- 	if (!e) {
- 		remove_proc_entry(DRV_NAME, init_net.proc_net);
+diff --git a/drivers/staging/rtl8712/os_intfs.c b/drivers/staging/rtl8712/os_intfs.c
+index 5f43a1a..8836b31 100644
+--- a/drivers/staging/rtl8712/os_intfs.c
++++ b/drivers/staging/rtl8712/os_intfs.c
+@@ -164,7 +164,7 @@ static void loadparam(struct _adapter *padapter, struct  net_device *pnetdev)
+ 	registry_par->ampdu_enable = (u8)ampdu_enable;
+ 	registry_par->rf_config = (u8)rf_config;
+ 	registry_par->low_power = (u8)low_power;
+-	registry_par->wifi_test = (u8) wifi_test;
++	registry_par->wifi_test = (u8)wifi_test;
+ 	r8712_initmac = initmac;
+ }
+ 
 -- 
-2.7.4
+2.9.3
 
 
