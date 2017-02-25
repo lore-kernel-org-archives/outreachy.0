@@ -1,64 +1,79 @@
 X-GM-THRID: 6391116266457792512
-Date: Sat, 25 Feb 2017 21:25:22 -0800 (PST)
-From: Varsha Rao <rvarsha016@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Cc: rvarsha016@gmail.com, sudipm.mukherjee@gmail.com,
-	teddy.wang@siliconmotion.com, gregkh@linuxfoundation.org
-Message-Id: <3910855f-4359-4013-8faf-df751d5367cd@googlegroups.com>
-In-Reply-To: <alpine.DEB.2.20.1702252152590.2179@hadrien>
-References: <cover.1488045682.git.varshar186@gmail.com> <58b1cd6d.c525620a.a8728.d746@mx.google.com>
- <alpine.DEB.2.20.1702252152590.2179@hadrien>
+X-Received: by 10.46.92.131 with SMTP id q125mr983301ljb.15.1488055998584;
+        Sat, 25 Feb 2017 12:53:18 -0800 (PST)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.46.7.9 with SMTP id 9ls288842ljh.30.gmail; Sat, 25 Feb 2017
+ 12:53:17 -0800 (PST)
+X-Received: by 10.25.213.11 with SMTP id m11mr1194383lfg.19.1488055997957;
+        Sat, 25 Feb 2017 12:53:17 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id v201si418236wmv.3.2017.02.25.12.53.17
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 25 Feb 2017 12:53:17 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,204,1484002800"; 
+   d="scan'208";a="214713192"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 25 Feb 2017 21:53:16 +0100
+Date: Sat, 25 Feb 2017 21:53:16 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Varsha Rao <rvarsha016@gmail.com>
+cc: Sudip Mukherjee <sudipm.mukherjee@gmail.com>, 
+    Teddy Wang <teddy.wang@siliconmotion.com>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH 6/7] staging: sm750fb: Replace NULL
  comparison.
+In-Reply-To: <58b1cd6d.c525620a.a8728.d746@mx.google.com>
+Message-ID: <alpine.DEB.2.20.1702252152590.2179@hadrien>
+References: <cover.1488045682.git.varshar186@gmail.com> <58b1cd6d.c525620a.a8728.d746@mx.google.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_3696_1868839041.1488086722540"
-X-Google-Token: EMLNycUFRgwbYWaW_Zg0
-X-Google-IP: 117.192.144.60
+Content-Type: text/plain; charset=US-ASCII
 
-------=_Part_3696_1868839041.1488086722540
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_3697_527959324.1488086722540"
+On Sun, 26 Feb 2017, Varsha Rao wrote:
 
-------=_Part_3697_527959324.1488086722540
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+> Replaced NULL comparison with pCurrentDviCtrl->pfnInit. This patch fixes
+> the following checkpatch issue:
 
+This patch appears to have been sent twice?
 
+julia
 
-On Sunday, February 26, 2017 at 2:23:18 AM UTC+5:30, Julia Lawall wrote:
 >
-> On Sun, 26 Feb 2017, Varsha Rao wrote: 
+> CHECK: Comparison to NULL could be written "pCurrentDviCtrl->pfnInit"
 >
-> > Replaced NULL comparison with pCurrentDviCtrl->pfnInit. This patch fixes 
-> > the following checkpatch issue: 
+> Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
+> ---
+>  drivers/staging/sm750fb/ddk750_dvi.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> This patch appears to have been sent twice? 
+> diff --git a/drivers/staging/sm750fb/ddk750_dvi.c b/drivers/staging/sm750fb/ddk750_dvi.c
+> index 42c753f..171ae06 100644
+> --- a/drivers/staging/sm750fb/ddk750_dvi.c
+> +++ b/drivers/staging/sm750fb/ddk750_dvi.c
+> @@ -45,7 +45,7 @@ int dviInit(
+>  	dvi_ctrl_device_t *pCurrentDviCtrl;
 >
->     It was out of order, hence I deleted the previous one and sent it 
-again.
-
-    varsha 
-
-------=_Part_3697_527959324.1488086722540
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><br><br>On Sunday, February 26, 2017 at 2:23:18 AM UTC+5:3=
-0, Julia Lawall wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;=
-margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">On Sun, =
-26 Feb 2017, Varsha Rao wrote:
-<br>
-<br>&gt; Replaced NULL comparison with pCurrentDviCtrl-&gt;pfnInit. This pa=
-tch fixes
-<br>&gt; the following checkpatch issue:
-<br>
-<br>This patch appears to have been sent twice?
-<br>
-<br></blockquote><div>=C2=A0=C2=A0=C2=A0 It was out of order, hence I delet=
-ed the previous one and sent it again.<br><br>=C2=A0=C2=A0=C2=A0 varsha <br=
-></div></div>
-------=_Part_3697_527959324.1488086722540--
-
-------=_Part_3696_1868839041.1488086722540--
+>  	pCurrentDviCtrl = g_dcftSupportedDviController;
+> -	if (pCurrentDviCtrl->pfnInit != NULL) {
+> +	if (pCurrentDviCtrl->pfnInit) {
+>  		return pCurrentDviCtrl->pfnInit(edgeSelect, busSelect, dualEdgeClkSelect, hsyncEnable,
+>  						vsyncEnable, deskewEnable, deskewSetting, continuousSyncEnable,
+>  						pllFilterEnable, pllFilterValue);
+> --
+> 2.9.3
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/58b1cd6d.c525620a.a8728.d746%40mx.google.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
