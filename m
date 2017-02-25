@@ -1,68 +1,68 @@
 X-GM-THRID: 6391112880745349120
-X-Received: by 10.157.15.137 with SMTP id d9mr4166265otd.71.1488113123483;
-        Sun, 26 Feb 2017 04:45:23 -0800 (PST)
+X-Received: by 10.157.8.246 with SMTP id 109mr3080034otf.48.1488046925206;
+        Sat, 25 Feb 2017 10:22:05 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.63.218 with SMTP id i26ls120899ote.48.gmail; Sun, 26 Feb
- 2017 04:45:23 -0800 (PST)
-X-Received: by 10.13.203.131 with SMTP id n125mr4540197ywd.42.1488113123112;
-        Sun, 26 Feb 2017 04:45:23 -0800 (PST)
+Received: by 10.157.8.69 with SMTP id 63ls9960378oty.0.gmail; Sat, 25 Feb 2017
+ 10:22:04 -0800 (PST)
+X-Received: by 10.129.115.197 with SMTP id o188mr3315631ywc.114.1488046924394;
+        Sat, 25 Feb 2017 10:22:04 -0800 (PST)
 Return-Path: <rvarsha016@gmail.com>
 Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id c123si2331782pfa.4.2017.02.26.04.45.23
+        by gmr-mx.google.com with ESMTPS id h130si2238489pfe.1.2017.02.25.10.22.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 26 Feb 2017 04:45:23 -0800 (PST)
+        Sat, 25 Feb 2017 10:22:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
        spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id 25so780824pgy.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 26 Feb 2017 04:45:23 -0800 (PST)
+Received: by mail-pg0-x244.google.com with SMTP id s67so7341087pgb.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 25 Feb 2017 10:22:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=message-id:date:from:to:cc:subject:references:mime-version
          :content-disposition:in-reply-to:user-agent;
         bh=jGuwnSDi2SbPG+3ihNjRS35/QQLI/Iztir3vpcJaHv0=;
-        b=RHqrCV2i0Rq4y8A/pjjCD5HesNt1I5SsDPLbJgVXAGHUJZWQYxc1x8Nnca7ZSMmUS4
-         v55jl9BKS6wpZJA0jiea5Bb67tWNm6opb17gh+R53BsP3Ca4WIfe4SNQAKqoYWwsH8pJ
-         Fp5aGvDtxftWTUdVRkLaA6x99Z+mhwgwoJtd/aAS3Zrlyz7ReFsmgOWspTTGe7+bixBX
-         k9x5/7ZBNyrGJ1PhL4s21DnsLWNxvxwavEFDpn03rfP1HwurMa0lvceOmD2SykkAGUmA
-         yttIwhlBeiczEib4OlaJCTHrT2hOE+Q84v6FnglyHOhK/J0yYVVecLabxDOHclXh4Mf2
-         TmNg==
+        b=ce6ayVQlSTzzz3dgm5w9TryFIKNXlpeLcZivONzdGHtuyobXk0DzMxhGtzo/aR10hI
+         I7nlMScYNr7p9hzfw7u2OQwLz7Rtc4QyZIDLvhTG9Am0RDZBosSKsN6srehYgg4F3mpD
+         qlTMx44qCKYFnav0XoAhIFkAMdPy5rmGe9qLc/mOvy+Rodd9Td6eMjblr34SJiJYMAlz
+         ZRSpFyA3U8yIvsrpWXOyy3lYmefRQUdClzanFqqyEHxaWjMPrnQCJOYDEHvszfWf8B0G
+         sV2d+P2Unbc7V95lXweuVX6JR6I0ARBeqpDeAGZXPviAONivwqkSuUAz6V7ikUGD1MUc
+         npwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:message-id:date:from:to:cc:subject:references
          :mime-version:content-disposition:in-reply-to:user-agent;
         bh=jGuwnSDi2SbPG+3ihNjRS35/QQLI/Iztir3vpcJaHv0=;
-        b=QkZSxGj1gyDQMQX+cW4IaAxtcTQNYUQNhuXLk7bCnoyrgUQu6b+enQvn7GQqhOz8EU
-         W+D/3t7wzQufAtENIRHKeaqY8Dai0Ps4dS9D+Aoz4FNJs+nLmv04IS132OpOZQqCNdmM
-         whLW2NwAEVOftdjsco658KnNo4ZH8SXascqOJYoOpePF5K5Tg/h+6FRe2LrEhWXE5yGz
-         i06XO573FMkkISg5wIgKZADqbxHTyu7k2huYoCU1ultbPySBx/GuZ/I27eUy4ZQImfRW
-         7Cg34Vy/jQm4hrd6K6fscnyYdJAjd1vPuxrSjx6Puf1wARCUQ9EPY7alz3wKyyrrPa9e
-         RxOA==
-X-Gm-Message-State: AMke39lh9wynI9MbMdyTXvZG4sBxcTo7OVcJMzdUi44pidvACzWw6YBbriYWGioeqoOykg==
-X-Received: by 10.98.74.154 with SMTP id c26mr15059676pfj.73.1488113122882;
-        Sun, 26 Feb 2017 04:45:22 -0800 (PST)
+        b=Ap2sYJptvYyaJNwqtNDjjYbeE5F4LeR02aDlRTtKuA6gdbtTEtEi33D0a04BJMgISR
+         1iCNYuVFs0MJpTEbWlCIm7+8vrJugkkca8S0gycTZwGTwtjwP+re8kFdKe233lsnySf1
+         ReTOqli317IH9c5yFxssZaleca5cnvznHdoXoJnqh5IHEpE4+9Ncyz/pGYdSBFPxqgpK
+         PNFuDLJZnnq7QWNUcrHeUvW8Ac1T5NLeC328bYWG4gx6EHn+QRGdTBULmWhurBb8Ywp3
+         QW8sm4T4tI1w9IVhBUF59MwIh+uJnPUv4zICFlU28IJLwmJosUEzYR2q3M0dIVbHKHJR
+         x/0w==
+X-Gm-Message-State: AMke39kJ7o0UZFnL/4n+rnJwP6Y6zaUExM3cjO0uG7jbITKa3Tb6H4uIEpEY4c5YWjH3cQ==
+X-Received: by 10.84.238.199 with SMTP id l7mr12632581pln.90.1488046924178;
+        Sat, 25 Feb 2017 10:22:04 -0800 (PST)
 Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([117.192.145.221])
-        by smtp.gmail.com with ESMTPSA id z27sm24771429pfg.38.2017.02.26.04.45.21
+Received: from euri ([117.192.154.88])
+        by smtp.gmail.com with ESMTPSA id y21sm21812445pgh.52.2017.02.25.10.22.02
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 26 Feb 2017 04:45:22 -0800 (PST)
-Message-ID: <58b2cde2.1bd1620a.a0538.5031@mx.google.com>
-X-Google-Original-Message-ID: <20170226124518.GA17744@<rvarsha016@gmail.com>>
-Date: Sun, 26 Feb 2017 18:15:19 +0530
+        Sat, 25 Feb 2017 10:22:03 -0800 (PST)
+Message-ID: <58b1cb4b.15fa630a.89d24.ce28@mx.google.com>
+X-Google-Original-Message-ID: <20170225182159.GA6995@<rvarsha016@gmail.com>>
+Date: Sat, 25 Feb 2017 23:51:59 +0530
 From: Varsha Rao <rvarsha016@gmail.com>
 To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
 	Teddy Wang <teddy.wang@siliconmotion.com>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: outreachy-kernel@googlegroups.com
 Subject: [PATCH 1/7] staging: sm750fb: Add braces around if statement.
-References: <cover.1488112339.git.varshar186@gmail.com>
+References: <cover.1488045682.git.varshar186@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1488112339.git.varshar186@gmail.com>
+In-Reply-To: <cover.1488045682.git.varshar186@gmail.com>
 User-Agent: Mutt/1.7.1 (2016-10-04)
 
 Added braces around if statement. This patch fixes the following
