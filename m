@@ -1,101 +1,135 @@
-X-GM-THRID: 6339102117474598912
-X-Received: by 10.13.193.132 with SMTP id c126mr5748717ywd.145.1475937226904;
-        Sat, 08 Oct 2016 07:33:46 -0700 (PDT)
+X-GM-THRID: 6389890697918414848
+X-Received: by 10.28.17.11 with SMTP id 11mr218132wmr.9.1488004443894;
+        Fri, 24 Feb 2017 22:34:03 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.2.1 with SMTP id 1ls7438358otb.4.gmail; Sat, 08 Oct 2016
- 07:33:46 -0700 (PDT)
-X-Received: by 10.129.179.130 with SMTP id r124mr5964633ywh.27.1475937226621;
-        Sat, 08 Oct 2016 07:33:46 -0700 (PDT)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
-        by gmr-mx.google.com with ESMTPS id 7si6725780par.0.2016.10.08.07.33.46
+Received: by 10.46.5.67 with SMTP id 64ls34223ljf.43.gmail; Fri, 24 Feb 2017
+ 22:34:03 -0800 (PST)
+X-Received: by 10.46.0.147 with SMTP id e19mr744127lji.6.1488004443344;
+        Fri, 24 Feb 2017 22:34:03 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id v70si297545wmf.0.2017.02.24.22.34.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 08 Oct 2016 07:33:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
+        Fri, 24 Feb 2017 22:34:03 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x243.google.com with SMTP id cd13so4226859pac.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 08 Oct 2016 07:33:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=1UXpCWnzZ6k6/82tJkiz4vG4Bq2SUmkzTASbNNgrKjg=;
-        b=JUUdOJ8jkvOSb0Y6pF6lp6tuSlzfKmMY+zNPZirtR3dGZYjP40LWBmgn2ipXADtMog
-         /aIXSPJnVJfhwzzOzFcEQi/5rKbpibX9ezOVlRbVTSn+vsD3PomtyVOB9w//CrTxxfVW
-         ykZe4MfGtMSpRzOPWccoZU0Ifq94DOHtkemoVo75aocLmwgdUXs8rAvZg9OfymMsrM8d
-         cbEiMtlTKNsSx0kfBdGTgmIiIYnX02+Ex68sWWrjdhrN8EVKOIMsr/fR4x9jWuFnG08b
-         nmVKfE5Artnb5uG3VFhejQYiwDL/P0UF6aYLSJUbklc6KJVN29wLPVOnuodcs+cE2jnh
-         KX0Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=1UXpCWnzZ6k6/82tJkiz4vG4Bq2SUmkzTASbNNgrKjg=;
-        b=Kz3NoWIHUnRcB8Ja17wIBNde8hCeSQ80ZEHFjxZdHSv7vvu3J1z0AsMe2DWgY3Cm9D
-         4WTP9ZjOXNxLHdudWUOFe5goDs4OhX/uyyE1tl+Ch3dSBevfGleWvRlBjv3/hy2ACufU
-         npuQAMQtGm6aicVej50nuNKEVymgFt1RWP6YfPA2gbUd8a0SaWL+jldAwElr1n84UtxT
-         ngR5SjwknMl7AVw+rVjg7c+zysUVG12tQ+3V5PgiTN+CyW72SNB/0zL3vzXUsV64QVLr
-         tSZ/GH0v2Jlj07fVpe7rat37DfLjAMnrg8l1n8Ulj0ppmG72JD9+Nf3DQiqesjV0oH9V
-         9+Aw==
-X-Gm-Message-State: AA6/9RlwyqEw6Zv5rgQU7FsI8uP5UJyKLfuh4E5mpsCg1NNZWKTHp7+U6D8KlOALMG10eg==
-X-Received: by 10.66.21.137 with SMTP id v9mr17190735pae.100.1475937226441;
-        Sat, 08 Oct 2016 07:33:46 -0700 (PDT)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([103.62.68.129])
-        by smtp.gmail.com with ESMTPSA id id6sm38880528pad.28.2016.10.08.07.33.45
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 08 Oct 2016 07:33:46 -0700 (PDT)
-Date: Sat, 8 Oct 2016 20:03:43 +0530
-From: Varsha Rao <rvarsha016@gmail.com>
-To: outreachy-kernel@googlegroups.com, forest@alittletooquiet.net,
-	gregkh@linuxfoundation.org
-Cc: rvarsha016@gmail.com
-Subject: [PATCH] Staging: vt6655: Replace byVT3253InitTab_RFMD with
- BYVT3253INITTAB_RFMD
-Message-ID: <20161008143343.GA12126@euri>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,202,1484002800"; 
+   d="scan'208";a="262024841"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 25 Feb 2017 07:34:02 +0100
+Date: Sat, 25 Feb 2017 07:34:02 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Arushi Singhal <arushisinghal19971997@gmail.com>
+cc: Julia Lawall <julia.lawall@lip6.fr>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, arnaud.patard@rtp-net.org, 
+    devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] Re: [PATCH] staging: xgifb: function prototype
+ argument should have an identifier name
+In-Reply-To: <CA+XqjF91bd_er+idvUBPZCTYFHaxF6Mgf1oQ6vTz9gmk6ggC6Q@mail.gmail.com>
+Message-ID: <alpine.DEB.2.20.1702250733180.2088@hadrien>
+References: <20170222111918.GA25063@arushi-HP-Pavilion-Notebook> <20170224163130.GA29645@kroah.com> <CA+XqjF_sihk6_UhgLzUH6FVSFMu02Vadp1tjatQft-UJ14SJeA@mail.gmail.com> <alpine.DEB.2.20.1702241748000.3089@hadrien>
+ <CA+XqjF91bd_er+idvUBPZCTYFHaxF6Mgf1oQ6vTz9gmk6ggC6Q@mail.gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.7.0 (2016-08-17)
+Content-Type: multipart/mixed; BOUNDARY="8323329-2084284952-1488004443=:2088"
 
-This patch fixes the checkpatch issue of CamelCase by replacing byVT3253InitTab_RFMD with BYVT3253INITTAB_RFMD.
+--8323329-2084284952-1488004443=:2088
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-Avoid CamelCase: <byVT3253InitTab_RFMD>
 
-Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
----
- drivers/staging/vt6655/baseband.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/vt6655/baseband.c b/drivers/staging/vt6655/baseband.c
-index aa57cfa..b66b854 100644
---- a/drivers/staging/vt6655/baseband.c
-+++ b/drivers/staging/vt6655/baseband.c
-@@ -68,7 +68,7 @@
- /*---------------------  Static Variables  --------------------------*/
- 
- #define CB_VT3253_INIT_FOR_RFMD 446
--static const unsigned char byVT3253InitTab_RFMD[CB_VT3253_INIT_FOR_RFMD][2] = {
-+static const unsigned char BYVT3253INITTAB_RFMD[CB_VT3253_INIT_FOR_RFMD][2] = {
- 	{0x00, 0x30},
- 	{0x01, 0x00},
- 	{0x02, 0x00},
-@@ -2022,8 +2022,8 @@ bool BBbVT3253Init(struct vnt_private *priv)
- 		if (byLocalID <= REV_ID_VT3253_A1) {
- 			for (ii = 0; ii < CB_VT3253_INIT_FOR_RFMD; ii++)
- 				bResult &= BBbWriteEmbedded(priv,
--					byVT3253InitTab_RFMD[ii][0],
--					byVT3253InitTab_RFMD[ii][1]);
-+					BYVT3253INITTAB_RFMD[ii][0],
-+					BYVT3253INITTAB_RFMD[ii][1]);
- 
- 		} else {
- 			for (ii = 0; ii < CB_VT3253B0_INIT_FOR_RFMD; ii++)
--- 
-2.7.4
+On Sat, 25 Feb 2017, Arushi Singhal wrote:
 
+>
+>
+> On Fri, Feb 24, 2017 at 10:18 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+>       On Fri, 24 Feb 2017, Arushi Singhal wrote:
+>
+>       >
+>       >
+>       > On Fri, Feb 24, 2017 at 10:01 PM, Greg Kroah-Hartman
+>       > <gregkh@linuxfoundation.org> wrote:
+>       >       On Wed, Feb 22, 2017 at 04:49:19PM +0530, Arushi Singhal
+>       wrote:
+>       >       > function prototype arguments like 'struct
+>       vb_device_info
+>       >       *','unsigned
+>       >       > long' etc. should have an identifier name.
+>       >       >
+>       >       > Signed-off-by: Arushi Singhal
+>       >       <arushisinghal19971997@gmail.com>
+>       >       > ---
+>       >       > Changes in v3:
+>       >       >   - By mistake one irrelevant line was added which is
+>       removed
+>       >       in this
+>       >       >     patch.
+>       >       >   - write the changes done in previous version in
+>       correct
+>       >       format.
+>       >       >   - make the commit subject more relevant and
+>       accurate.
+>       >
+>       >       This patch doesn't apply to my tree at all :(
+>       >
+>       > Why this is so?
+>
+>       Maybe someone else made a change on the same lines as yours. 
+>       Check that
+>       your tree is up to date.
+>
+> Is all the changes being done by someone before?
+
+I don't know.  Just update your tree and try to apply your patch again.
+Or look at the code that your patch should apply to.  It should be easy to
+see what is wrong.
+
+julia
+
+>
+>       julia
+>
+>       > thanks
+>       > Arushi
+>       >       sorry,
+>       >
+>       >       greg k-h
+>       >
+>       >
+> > --
+> > You received this message because you are subscribed to the Google
+> Groups
+> > "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it,
+> send an
+> > email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to
+> outreachy-kernel@googlegroups.com.
+> > To view this discussion on the webvisithttps://groups.google.com/d/msgid/outreachy-kernel/CA%2BXqjF_sihk6_Uhg
+> LzUH6
+> > FVSFMu02Vadp1tjatQft-UJ14SJeA%40mail.gmail.com.
+> > For more options, visit https://groups.google.com/d/optout.
+> >
+> >
+>
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CA%2BXqjF91bd_er%2BidvUB
+> PZCTYFHaxF6Mgf1oQ6vTz9gmk6ggC6Q%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-2084284952-1488004443=:2088--
 
