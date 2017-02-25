@@ -1,113 +1,60 @@
 X-GM-THRID: 6390634706454446080
-X-Received: by 10.107.140.22 with SMTP id o22mr2699569iod.54.1488025447298;
-        Sat, 25 Feb 2017 04:24:07 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.29.200 with SMTP id w8ls9005599otw.23.gmail; Sat, 25 Feb
- 2017 04:24:06 -0800 (PST)
-X-Received: by 10.157.18.204 with SMTP id g70mr468786otg.9.1488025446970;
-        Sat, 25 Feb 2017 04:24:06 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id u12si2259961pfd.3.2017.02.25.04.24.06
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 25 Feb 2017 04:24:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id 5so6600447pgj.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 25 Feb 2017 04:24:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:mime-version:content-disposition
-         :user-agent;
-        bh=F4i1Y7MVTwBpu6sWSb/+Jfaa+Os/BapeRt8yz+XBqNI=;
-        b=KJlhMjlEynwgk4qOjfmQHQcBND3B5MWq31n6Vp3BlgbbL1CqV4ybCI0EYp4vXwk+nJ
-         0aCA6jvVIcrAGQpK48mWfAby4ZSQr6X6WTpModfr8LpTIHqA1kG6eSNPAjKld/2z3e57
-         GeU4Kep+VETgxpqgBQeCYaPC9uQo6tSgvgzq6JNf2oY5o5Ni54oLVELIzYSEKl2Bkfnj
-         542mP13F3qlPGGdG6Mqn9Up9QOdCdHsZFNguIWasP2QE01boiVPlxH1AT5mUOj/KeR/c
-         WEL0s6/qQBXwIrrVFC5ywDUgOaZBEnt5dBZJzwawQZvbxzDoY8QiU1DGtUZCoYfh6MaP
-         J9Ag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
-         :content-disposition:user-agent;
-        bh=F4i1Y7MVTwBpu6sWSb/+Jfaa+Os/BapeRt8yz+XBqNI=;
-        b=oqECIETC8IgOQx76+HztmV1hvJvn1RrqYNOzBIphPzETQ4c5PbvG9phG2duLRBU+BS
-         NkMX7vdfIEaQTg0y9ou5Ps1LFV1GOIL936G7w6BTVjVpSeRFvIG6geefhmenYcfp5aOi
-         gy34sGXqv3wMKmP8BCkV37H9IGk/BzNrqsMTF1H1cggnDzISfjHBdgohqqNt+s3yQVPV
-         7pNsoFQV9I/z9ZOC/iQQWIStYHoSrdt6vqsDa/j+urTN1r7hgIm5i9IVgwNTPLGpxUon
-         3xyBeEjmJfETUT/PEf8DXgXjnRyYLFV67jp8BOSLzmUq9QsNDaDJnK8VeeNPdyPqnqAu
-         aTuQ==
-X-Gm-Message-State: AMke39mmbeIkP3K1uBa2QZEyYHfH5k/ybWlqXvJFemzhK2Z3ihh4Mwa1E8X6KVIIT+mCeg==
-X-Received: by 10.99.129.200 with SMTP id t191mr9639449pgd.129.1488025446743;
-        Sat, 25 Feb 2017 04:24:06 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([117.192.154.88])
-        by smtp.gmail.com with ESMTPSA id 129sm20465824pgj.59.2017.02.25.04.24.05
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 25 Feb 2017 04:24:06 -0800 (PST)
-Message-ID: <58b17766.8709630a.800a5.a95c@mx.google.com>
-X-Google-Original-Message-ID: <20170225122358.GA28083@<rvarsha016@gmail.com>>
-Date: Sat, 25 Feb 2017 17:53:58 +0530
+Date: Sat, 25 Feb 2017 03:53:29 -0800 (PST)
 From: Varsha Rao <rvarsha016@gmail.com>
-To: William Hubbs <w.d.hubbs@gmail.com>,
-	Chris Brannon <chris@the-brannons.com>,
-	Kirk Reiser <kirk@reisers.ca>,
-	Samuel Thibault <samuel.thibault@ens-lyon.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3] staging: speakup: Replace BUG_ON() with WARN_ON().
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: rvarsha016@gmail.com, w.d.hubbs@gmail.com, chris@the-brannons.com,
+	kirk@reisers.ca, gregkh@linuxfoundation.org,
+	samuel.thibault@ens-lyon.org
+Message-Id: <4c317e55-1fa9-40cd-af99-b7689a8f618f@googlegroups.com>
+In-Reply-To: <20170225114536.sazkaxnrxbymvml6@var.youpi.perso.aquilenet.fr>
+References: <58b067d9.4d8d620a.8af7e.1ae6@mx.google.com>
+ <alpine.DEB.2.20.1702241814330.3089@hadrien>
+ <3607bae1-f325-4a95-bbe8-d94fcf492009@googlegroups.com>
+ <20170225094123.ssback7e4kmw2ett@var.youpi.perso.aquilenet.fr>
+ <a3261158-0050-4599-935e-2ad2a13b8a00@googlegroups.com>
+ <20170225114536.sazkaxnrxbymvml6@var.youpi.perso.aquilenet.fr>
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: speakup: Replace
+ BUG_ON() with WARN_ON().
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.7.1 (2016-10-04)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_2173_1221927399.1488023609322"
+X-Google-Token: ELngxcUFDCUW7R_dzJI0
+X-Google-IP: 117.192.154.88
 
-BUG_ON() is replaced with WARN_ON() and EINVAL is returned, when
-WARN_ON() is true. This fixes the following checkpatch issue:
+------=_Part_2173_1221927399.1488023609322
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2174_1528849342.1488023609323"
 
-Avoid crashing the kernel - try using WARN_ON & recovery code rather
-than BUG() or BUG_ON().
+------=_Part_2174_1528849342.1488023609323
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
----
-Changes in v3:
-- Modified commit message.
-- Added if condition to avoid dereferencing a NULL pointer.
-- Added return statement, which returns EINVAL.
 
- drivers/staging/speakup/kobjects.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
-index 4ea441d..5d871ec 100644
---- a/drivers/staging/speakup/kobjects.c
-+++ b/drivers/staging/speakup/kobjects.c
-@@ -833,7 +833,9 @@ static ssize_t message_show(struct kobject *kobj,
- 	struct msg_group_t *group = spk_find_msg_group(attr->attr.name);
- 	unsigned long flags;
+>
+> You don't necessarily need to look what __ATTR does (it's a long way up 
+> to getting something useful), but just check how other users of __ATTR 
+> behave, or see its documentation, which can be found by simply grepping 
+> for __ATTR in linux/Documentation/ 
+>
+>    Okay, thanks I'll look into it in the documentation. 
  
--	BUG_ON(!group);
-+	if (WARN_ON(!group))
-+		return -EINVAL;
-+
- 	spin_lock_irqsave(&speakup_info.spinlock, flags);
- 	retval = message_show_helper(buf, group->start, group->end);
- 	spin_unlock_irqrestore(&speakup_info.spinlock, flags);
-@@ -845,7 +847,9 @@ static ssize_t message_store(struct kobject *kobj, struct kobj_attribute *attr,
- {
- 	struct msg_group_t *group = spk_find_msg_group(attr->attr.name);
- 
--	BUG_ON(!group);
-+	if (WARN_ON(!group))
-+		return -EINVAL;
-+
- 	return message_store_helper(buf, count, group);
- }
- 
--- 
-2.9.3
 
+------=_Part_2174_1528849342.1488023609323
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><blockquote class=3D"gmail_quote" style=3D"margin: 0;m=
+argin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
+<br>You don&#39;t necessarily need to look what __ATTR does (it&#39;s a lon=
+g way up
+<br>to getting something useful), but just check how other users of __ATTR
+<br>behave, or see its documentation, which can be found by simply grepping
+<br>for __ATTR in linux/Documentation/
+<br>
+<br></blockquote><div>=C2=A0=C2=A0 Okay, thanks I&#39;ll look into it in th=
+e documentation. <br>=C2=A0</div></div>
+------=_Part_2174_1528849342.1488023609323--
+
+------=_Part_2173_1221927399.1488023609322--
 
