@@ -1,75 +1,97 @@
-X-GM-THRID: 6332712433108385792
-X-Received: by 10.107.6.208 with SMTP id f77mr14165050ioi.32.1474449511247;
-        Wed, 21 Sep 2016 02:18:31 -0700 (PDT)
+X-GM-THRID: 6388169342040670208
+X-Received: by 10.129.34.130 with SMTP id i124mr2525053ywi.37.1488016532418;
+        Sat, 25 Feb 2017 01:55:32 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.18.201 with SMTP id g67ls1434108otg.26.gmail; Wed, 21 Sep
- 2016 02:18:30 -0700 (PDT)
-X-Received: by 10.200.50.100 with SMTP id y33mr6829774qta.36.1474449510780;
-        Wed, 21 Sep 2016 02:18:30 -0700 (PDT)
-Return-Path: <eraretuya@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id e66si3650954pfk.2.2016.09.21.02.18.30
+Received: by 10.107.30.3 with SMTP id e3ls2429848ioe.45.gmail; Sat, 25 Feb
+ 2017 01:55:31 -0800 (PST)
+X-Received: by 10.99.100.6 with SMTP id y6mr2532625pgb.81.1488016531921;
+        Sat, 25 Feb 2017 01:55:31 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id u12si2208475pfd.3.2017.02.25.01.55.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Sep 2016 02:18:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Sat, 25 Feb 2017 01:55:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id 21so2151048pfy.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 21 Sep 2016 02:18:30 -0700 (PDT)
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x241.google.com with SMTP id o78so486918pfj.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 25 Feb 2017 01:55:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=BlT/pcIzUc4/Ab0d1/2t4Cl53N4hMFoMUi2dO93vah8=;
-        b=JoXGQaJVe+r3jfk/vDHXPV6Q/FYkpMq3ZznQIP8ySqyhIQVhixGoaCBzSG0NrbFYpo
-         164kQpxIyGzjTZUA/VrJn576SOpbJedBibDi4B2D4/6SrVf9pvXiP1hbsuzX3JyK1F4O
-         KxloosTZyjdL0QJR7nhp9Ag4QceZXGD6vV91p2U0wo4iYAE+IN91OThEQZ/0+05EJpNY
-         3cCr4ZBSu8+/HxAxV8B46adWGDNBy1XwwqNGMJZVtz7aADPb9Heepot7vlFMDYIN7o3c
-         wB8YdRwcibUzSocjyw2BZ9lDw/AHLeQwT1O38mqWLlBmbcOJdgAezIfDZKYxVnomCVVO
-         cXpg==
+        d=gmail.com; s=20161025;
+        h=message-id:date:from:to:cc:subject:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=pzfE41oVasikMJFR3QhqZ07Ijft/TiK7y4ZPTZlBcgU=;
+        b=lLKc6D+AuM4psc6bYXJYD3Fg2IPGD186mTmMTdPYUZM4dldZhrVy0CLLWMuwQPhcSS
+         pFqK4S67CifaUguM9uBqBG/4shWby9a3radVoLrdnKCVjwc62FJQNeR0O9xa2tVFnsXJ
+         3Bb/0xWSaVn6e32TYQGaE9aOEJrsb/iGJrZ5vw793xtk2cpnVnQHMBCjvQ1WzuZPcRwS
+         D8lisTt0OQOGiK6TvTf0z82/V2HFaTrUxsq7T8g8ZQQSwkScqX/RPzcXpwCQ1lYfvMJU
+         P6Shgg5UJKIL1/Nkg8eVIy64BBFQrCbpPxjdR+UDtHgB3GgJ018aV+B8d0FJ5bhzhQMN
+         K4tQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=BlT/pcIzUc4/Ab0d1/2t4Cl53N4hMFoMUi2dO93vah8=;
-        b=Omh5XP8oU2Zq5ewkF/qxCuxPWpmzKDDSyBHdAqIpcr7oHEqXLNKHnMwwB6z5gTgkaM
-         wne5M461Zfr38YsfCFM5+an8P3VWUPw0owlErb2uj7Mc9xrVwhaB/VW7Kpcr75n166/s
-         2gqvD8JosDAqFGnwIjK5aZjPPAo2G1/Sli35vKH+7gaKoSNdFnu6ZIQu3Rhlz6gnoXiV
-         kV+zJlfAcO9Bd5+pLneirYT+efeIMCsvxzwMTE7GfIaTzxtDYLA0++yYoarxQ/eMVhwD
-         gRXrLxbjLQo8w6PSWM5NEIQZJzp9HSV1n/w2vJNMyMjMYOd3WRAtSBl80UFhEbZspdv+
-         CQlw==
-X-Gm-Message-State: AE9vXwPD8gAs15HYt8fjObMVzXLk8a9maHJmbGlXcOGRXLpw4yZrS7vk+SfR+Kj8/vX6eg==
-X-Received: by 10.98.223.22 with SMTP id u22mr63694806pfg.128.1474449510576;
-        Wed, 21 Sep 2016 02:18:30 -0700 (PDT)
-Return-Path: <eraretuya@gmail.com>
-Received: from Socrates-DK ([203.215.121.62])
-        by smtp.gmail.com with ESMTPSA id d5sm84932965pfa.44.2016.09.21.02.18.29
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:message-id:date:from:to:cc:subject:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=pzfE41oVasikMJFR3QhqZ07Ijft/TiK7y4ZPTZlBcgU=;
+        b=IPB7O+m72x7S6JQSAWKjZFu27SLsqudqEqXxeCEo9+zGbFWPWLy8qayCIKP3mMxf8E
+         d4QnvSNS0wF0acMm3IDKYG2jJm/cB0CGgIG9plzv6HQNyOQf4B97NX3HQ3T4y5CQyiCp
+         FwhP7ktfbBjh6COo1pMgIKkZnTLBnmuSb7hEe06jFfY5OXxKVP5u/h4dnm1VmLXXK1od
+         8W7ifdNeIlT0UaeH547/emVn+Wh2lIUd+gNfkDVQkldhTVdOha6COXBCInjaq8A50+/Z
+         V+AU6WtoMLLYWCE7cw5IIOT3DRH31Wruc7cM4eTGKYIt72XQJuYre5DXvXRdFiv3f28i
+         Glfg==
+X-Gm-Message-State: AMke39nGQFQdz0JtbpJkWgcZj8yP6gRLmEO4UB42gtXVSfMW+FnMwPJe0rwYiKyLhrkTFA==
+X-Received: by 10.84.231.134 with SMTP id g6mr10201116plk.110.1488016531736;
+        Sat, 25 Feb 2017 01:55:31 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from euri ([117.192.154.88])
+        by smtp.gmail.com with ESMTPSA id 129sm19606525pgj.59.2017.02.25.01.55.30
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 21 Sep 2016 02:18:30 -0700 (PDT)
-From: Eva Rachel Retuya <eraretuya@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: johan@kernel.org,
-	elder@kernel.org,
-	gregkh@linuxfoundation.org,
-	Eva Rachel Retuya <eraretuya@gmail.com>
-Subject: [PATCH 0/2] staging: greybus: declare struct of_device_id as const
-Date: Wed, 21 Sep 2016 17:18:05 +0800
-Message-Id: <1474449487-9524-1-git-send-email-eraretuya@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        Sat, 25 Feb 2017 01:55:31 -0800 (PST)
+Message-ID: <58b15493.8709630a.800a5.9707@mx.google.com>
+X-Google-Original-Message-ID: <20170225095526.GA4317@<rvarsha016@gmail.com>>
+Date: Sat, 25 Feb 2017 15:25:26 +0530
+From: Varsha Rao <rvarsha016@gmail.com>
+To: Larry Finger <Larry.Finger@lwfinger.net>,
+	Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH 1/2] staging: rtl8712: Removes the FSF mailing address.
+References: <cover.1488015591.git.varshar186@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1488015591.git.varshar186@gmail.com>
+User-Agent: Mutt/1.7.1 (2016-10-04)
 
-Address the following checkpatch warning:
-WARNING: struct of_device_id should be normally const
+This patch fixes the checkpatch issue by removing the Free Software
+Foundation's mailing address from the sample GPL notice. Because the FSF
+has changed address in the past, and may change again. Linux already
+includes a copy of the GPL.
 
-Eva Rachel Retuya (2):
-  staging: greybus: arche-apb-ctrl: declare struct of_device_id as const
-  staging: greybus: arche-platform: declare struct of_device_id as const
+Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+---
+ drivers/staging/rtl8712/os_intfs.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
- drivers/staging/greybus/arche-apb-ctrl.c | 2 +-
- drivers/staging/greybus/arche-platform.c | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
-
+diff --git a/drivers/staging/rtl8712/os_intfs.c b/drivers/staging/rtl8712/os_intfs.c
+index 1d4f507..5f43a1a 100644
+--- a/drivers/staging/rtl8712/os_intfs.c
++++ b/drivers/staging/rtl8712/os_intfs.c
+@@ -13,10 +13,6 @@
+  * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+  * more details.
+  *
+- * You should have received a copy of the GNU General Public License along with
+- * this program; if not, write to the Free Software Foundation, Inc.,
+- * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
+- *
+  * Modifications for inclusion into the Linux staging tree are
+  * Copyright(c) 2010 Larry Finger. All rights reserved.
+  *
 -- 
-2.7.4
+2.9.3
 
 
