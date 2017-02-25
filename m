@@ -1,78 +1,110 @@
 X-GM-THRID: 6388168209387749376
-X-Received: by 10.99.43.139 with SMTP id r133mr2250468pgr.136.1488016529139;
-        Sat, 25 Feb 2017 01:55:29 -0800 (PST)
+X-Received: by 10.46.87.27 with SMTP id l27mr728883ljb.28.1488006529238;
+        Fri, 24 Feb 2017 23:08:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.31.6 with SMTP id x6ls8158099otd.46.gmail; Sat, 25 Feb
- 2017 01:55:28 -0800 (PST)
-X-Received: by 10.13.196.129 with SMTP id g123mr2568827ywd.140.1488016528754;
-        Sat, 25 Feb 2017 01:55:28 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id s64si2111415pfk.0.2017.02.25.01.55.28
+Received: by 10.28.99.86 with SMTP id x83ls552546wmb.27.gmail; Fri, 24 Feb
+ 2017 23:08:48 -0800 (PST)
+X-Received: by 10.28.17.11 with SMTP id 11mr220350wmr.9.1488006528441;
+        Fri, 24 Feb 2017 23:08:48 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 14si330828wmn.2.2017.02.24.23.08.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 25 Feb 2017 01:55:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Fri, 24 Feb 2017 23:08:48 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id z128so6253947pgb.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 25 Feb 2017 01:55:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:mime-version:content-disposition
-         :user-agent;
-        bh=H/OxETIGxxuuZeR4G0dpWDFtdJExmH+Gd83tcZwcHDw=;
-        b=KS/C5VklHdE7uzScbnEnEoQxo6jmdr90DG0g4hebMgm/uAffIfhUMH6nq0pHySWjxr
-         vPwPdMyB/GI3FzfUj8Ma8QMHP6HirMFPxhPUpKygpmwK+eMioij+bpV9viMpL/wqSweL
-         Ig/umIMcXKN8HJPI/PmgZ+pc7KQFrP7nDcOmGXTXIOEH8CidawMcRVuOO/Pu09YMMrD/
-         SxPWkljV0RZugLl/jV4a+FWHLDstHaO4FFWaiLH4LuAQGIiviwpKr3nKQrYontUILakk
-         07ACTe0lUoRbMbWQc5dyWvxIIfbgf1ZXf2edzSk97i4+vPo7NwOyAQJOjfy/qTjILKY1
-         Zojw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
-         :content-disposition:user-agent;
-        bh=H/OxETIGxxuuZeR4G0dpWDFtdJExmH+Gd83tcZwcHDw=;
-        b=Qh9KpwzN+P/4rEOwQpaxGaMcRs9UaZ7PiGUBFPQG19eXfaBDcSWfSEgcXaE6s/20y0
-         hqScb4fs/6CStzQLAppevPA4qJc+VjGjx3ZmZUD1492LzGb1LXhaXH4bhC14ZhBVpNFI
-         qcS+KTGlKvouQvcszBHvbDg4A7roOV9D6jYeO5DLDN6oeBYHYP3W17WfdpiHhIjy5fOK
-         He+6x8vSjDFZ6E+HlQ4Vx78R9bOWcBZA2kcyfMbLDl04jDKFOtUJKBaX1wg2Pb6Voj6h
-         zVsAHsz0I3Hx3mPCgEAtx2o5Tf6MzoL7+RJDRsogz3lPH4w6vH4Lk0yuJam8QNB5+USY
-         YLuA==
-X-Gm-Message-State: AMke39nZP8DI5Re9TYHJZ9iuOPsPc4LIx/GNOXLdTsnwn7YPe6VujWJtU47qXjwJT63QjQ==
-X-Received: by 10.84.229.151 with SMTP id c23mr10149118plk.27.1488016528568;
-        Sat, 25 Feb 2017 01:55:28 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([117.192.154.88])
-        by smtp.gmail.com with ESMTPSA id 73sm19575845pfh.56.2017.02.25.01.55.27
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 25 Feb 2017 01:55:27 -0800 (PST)
-Message-ID: <58b1548f.cc07620a.ce8e4.9a97@mx.google.com>
-X-Google-Original-Message-ID: <20170225095521.GA4318@<rvarsha016@gmail.com>>
-Date: Sat, 25 Feb 2017 15:25:21 +0530
-From: Varsha Rao <rvarsha016@gmail.com>
-To: Larry Finger <Larry.Finger@lwfinger.net>,
-	Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] staging: rtl8712: Fix multiple checkpatch issues.
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,202,1484002800"; 
+   d="scan'208";a="214669343"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 25 Feb 2017 08:08:37 +0100
+Date: Sat, 25 Feb 2017 08:08:36 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Varsha Rao <rvarsha016@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, 
+    Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com
+Subject: Re: [Outreachy kernel] Re: [PATCH 0/4] staging: rtl8712: Fix multiple
+ checkpatch issues.
+In-Reply-To: <9b276508-b8aa-4484-970f-82303cb3d8b4@googlegroups.com>
+Message-ID: <alpine.DEB.2.20.1702250805390.2088@hadrien>
+References: <58a75522.07cf620a.9c799.fc53@mx.google.com> <20170224172824.GA395@kroah.com> <9b276508-b8aa-4484-970f-82303cb3d8b4@googlegroups.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.7.1 (2016-10-04)
+Content-Type: multipart/mixed; BOUNDARY="8323329-2059954426-1488006517=:2088"
 
-Fixes multiple checkpatch issues in rtl8712 driver. 
+--8323329-2059954426-1488006517=:2088
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-Varsha Rao (2):
-  staging: rtl8712: Removes the FSF mailing address.
-  staging: rtl8712: Remove space after a cast.
 
- drivers/staging/rtl8712/os_intfs.c | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
 
--- 
-2.9.3
+On Fri, 24 Feb 2017, Varsha Rao wrote:
 
+>
+>
+> On Friday, February 24, 2017 at 10:58:31 PM UTC+5:30, gregkh wrote:
+>       On Sat, Feb 18, 2017 at 01:25:04AM +0530, Varsha Rao wrote:
+>       > Fixes multiple checkpatch issues in rtl8712 driver.
+>       >
+>       > Varsha Rao (4):
+>       >   staging: rtl8712: Remove unnecessary parentheses.
+>       >   staging: rtl8712: Removes the FSF mailing address.
+>       >   staging: rtl8712: Remove space after a cast.
+>       >   staging: rtl8712: Match alignment with open parenthesis.
+>       >
+>       >  drivers/staging/rtl8712/os_intfs.c | 14 +++++---------
+>       >  1 file changed, 5 insertions(+), 9 deletions(-)
+>
+>       Can you resend a whole version 2 (or is it 3) of this patch
+>       series?
+>       I've dropped your previous patches as they seemed to need more
+>       work
+>       based on the reviews.
+>
+>     I don't know but two patches from the patchset, are already applied.
+>     Those are the following:
+>      1] https://groups.google.com/forum/#!topic/outreachy-kernel/73QR9IxiLnY
+>      2] https://groups.google.com/forum/#!topic/outreachy-kernel/GQMhL7pqSvk
+>    
+>    The following are the patches which have not been applied but they are
+> acknowledged by Julia:
+>      1] https://groups.google.com/forum/#!topic/outreachy-kernel/pnbl9sz45ao
+>      2]
+> https://groups.google.com/forum/#!topic/outreachy-kernel/aCvHU5BguH0      
+>   
+>      
+>     So do I have to resend them?
+
+Yes.  My ack just means that I looked at it an it looks OK.  It doesn't
+mean that it is integrated into the Linux kernel code in any way.  Patches
+get out of date after a while, due to changes on the same or nearby lines
+of code.  So after some time, it is better to update your kernel, redo the
+changes, and resend the patches.
+
+You can keep my ack in the new version.
+
+julia
+
+
+
+
+>  
+>       thanks,
+>
+>       greg k-h
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/9b276508-b8aa-4484-970f-
+> 82303cb3d8b4%40googlegroups.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-2059954426-1488006517=:2088--
 
