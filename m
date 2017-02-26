@@ -1,99 +1,78 @@
-X-GM-THRID: 6253643257988775936
-X-Received: by 10.66.141.36 with SMTP id rl4mr21783973pab.3.1456039784762;
-        Sat, 20 Feb 2016 23:29:44 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.82.233 with SMTP id h96ls1162351qgd.80.gmail; Sat, 20 Feb
- 2016 23:29:43 -0800 (PST)
-X-Received: by 10.140.156.139 with SMTP id c133mr21126528qhc.4.1456039783962;
-        Sat, 20 Feb 2016 23:29:43 -0800 (PST)
-Return-Path: <eraretuya@gmail.com>
-Received: from mail-pf0-x235.google.com (mail-pf0-x235.google.com. [2607:f8b0:400e:c00::235])
-        by gmr-mx.google.com with ESMTPS id ui7si2538803pab.0.2016.02.20.23.29.43
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 20 Feb 2016 23:29:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) client-ip=2607:f8b0:400e:c00::235;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x235.google.com with SMTP id c10so77432539pfc.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 20 Feb 2016 23:29:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=cEM+/CqZHBw0MQUuvZLS3jVelZ/UEv73L/ku+EtdVjE=;
-        b=pHm/B4s8iLoqggoLko+SAkm78TsZLPPfsY+Q+3thpvyydfMXNfSjavNyDSHkxBfA1V
-         X3K/5rdrt5yPO3T9URtIeNZliIUaJgGDoxY7xr/Pr/qiLG6DLPliHJ6OPqBHT8XzWBP5
-         93EmsGS5cGa7EChgUZrGwuICaM0uF3XechT/W1Zd5q4TTVITGz+x6ylKOJ5sjCjwmPVm
-         mu3Iz+sCY2T/EUNQLdYJnnQ8aBdISFHh5V8PgOrk/1s5l248LQBpDVUMgX1OjjxeAasY
-         YoGcnWL+WrpRE4HElaGI3oGoUul7Tct6bjPIEKhjIhel8h5WoFGWNtYHzJCbQ9knLThT
-         wjZw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=cEM+/CqZHBw0MQUuvZLS3jVelZ/UEv73L/ku+EtdVjE=;
-        b=G5mQloQbQeLg0yz24F0aW5WX+9VgOV9TXtipUhVWP9iZOKBc8eFHEum/570SxsV3Oc
-         ACAz8/W0XKJ/1GbpPOCC7+bsP3cF8dD2phTADxevC3zVC02z2QFHjz1NbDLsXPX0TpD3
-         zdtvBZMobppes7wOtUvGrSDy2Kycejp/wM2O0j4zhRse59xZiSKB0MiCwot0wKru/nEy
-         2Qve1lwrWe6hzLKI0XDN6rXmeETMjYdhAmV/ZxyBTISPVO7S3E8pkdFOHpOb0UQd8JVO
-         lr2myOegnro+rc3uB6u5ddXoi2AcOlHONs3A+reYtgpVrVFgCF+94F8OaBDzZw+VGq+S
-         iuDQ==
-X-Gm-Message-State: AG10YOTapF2bHVs0wn+hN8XXm//UadbV5jwy3EE0S50Igaj9QXIRDfs5HcS7kKN9Y19mfQ==
-X-Received: by 10.98.0.148 with SMTP id 142mr29698250pfa.84.1456039783816;
-        Sat, 20 Feb 2016 23:29:43 -0800 (PST)
-Return-Path: <eraretuya@gmail.com>
-Received: from Socrates-Mint ([203.215.121.9])
-        by smtp.gmail.com with ESMTPSA id v29sm28434807pfa.31.2016.02.20.23.29.42
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 20 Feb 2016 23:29:43 -0800 (PST)
-From: Eva Rachel Retuya <eraretuya@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Eva Rachel Retuya <eraretuya@gmail.com>
-Subject: [PATCH] staging: most: compress return logic into one line
-Date: Sun, 21 Feb 2016 15:29:38 +0800
-Message-Id: <1456039778-23535-1-git-send-email-eraretuya@gmail.com>
-X-Mailer: git-send-email 1.9.1
+X-GM-THRID: 6391452736831881216
+X-Gmail-Labels: Topic type: DISCUSSION
+Date: Sun, 26 Feb 2017 08:32:55 -0800 (PST)
+From: Aishwarya Pant <aishpant@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: aishpant@gmail.com
+Message-Id: <1e3c8373-8cfc-44bd-b3f8-4f304b3483ee@googlegroups.com>
+In-Reply-To: <alpine.DEB.2.20.1702261727580.2056@hadrien>
+References: <5ab18577-9b91-4173-a82a-fdfd9882c9a0@googlegroups.com>
+ <alpine.DEB.2.20.1702261727580.2056@hadrien>
+Subject: Re: [Outreachy kernel] [Task] Find a driver to cleanup
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_4463_1054901294.1488126775961"
+X-Google-Token: ELeGzMUFrTisoNFBSyI0
+X-Google-IP: 106.51.241.134
 
-Eliminate local variable 'ret' and modify return statement to contain
-the value being returned directly instead of assigning it first to 'ret'
-and returning this variable.
+------=_Part_4463_1054901294.1488126775961
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_4464_1757718440.1488126775961"
 
-Coccinelle semantic patch used:
-@@ expression e, ret; @@
--ret =
-+return
-	e;
--return ret;
+------=_Part_4464_1757718440.1488126775961
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
----
- drivers/staging/most/hdm-dim2/dim2_sysfs.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+Okay. Thanks!
 
-diff --git a/drivers/staging/most/hdm-dim2/dim2_sysfs.c b/drivers/staging/most/hdm-dim2/dim2_sysfs.c
-index c5b10c7..2b28e4a 100644
---- a/drivers/staging/most/hdm-dim2/dim2_sysfs.c
-+++ b/drivers/staging/most/hdm-dim2/dim2_sysfs.c
-@@ -63,7 +63,6 @@ static ssize_t bus_kobj_attr_show(struct kobject *kobj, struct attribute *attr,
- static ssize_t bus_kobj_attr_store(struct kobject *kobj, struct attribute *attr,
- 				   const char *buf, size_t count)
- {
--	ssize_t ret;
- 	struct medialb_bus *bus =
- 		container_of(kobj, struct medialb_bus, kobj_group);
- 	struct bus_attr *xattr = container_of(attr, struct bus_attr, attr);
-@@ -71,8 +70,7 @@ static ssize_t bus_kobj_attr_store(struct kobject *kobj, struct attribute *attr,
- 	if (!xattr->store)
- 		return -EIO;
- 
--	ret = xattr->store(bus, buf, count);
--	return ret;
-+	return xattr->store(bus, buf, count);
- }
- 
- static struct sysfs_ops const bus_kobj_sysfs_ops = {
--- 
-1.9.1
+On Sunday, 26 February 2017 21:59:23 UTC+5:30, Julia Lawall wrote:
+>
+>
+>
+> On Sun, 26 Feb 2017, Aishwarya Pant wrote: 
+>
+> > Hi 
+> > I am going through the first patch setup and would now like to pick up a 
+> > staging driver to cleanup. I cannot see which tasks are unclaimed since 
+> this 
+> > page https://kernelnewbies.org/OutreachyTasks seems to be out of date.  
+>
+> Cleanups aren't claimed.  Just be sure that your kernel is up to date and 
+> pick any staging driver or which you find checkpatch complaints. 
+>
+> julia
 
+
+------=_Part_4464_1757718440.1488126775961
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Okay. Thanks!<br><br>On Sunday, 26 February 2017 21:59:23 =
+UTC+5:30, Julia Lawall  wrote:<blockquote class=3D"gmail_quote" style=3D"ma=
+rgin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
+<br>
+<br>On Sun, 26 Feb 2017, Aishwarya Pant wrote:
+<br>
+<br>&gt; Hi
+<br>&gt; I am going through the first patch setup and would now like to pic=
+k up a
+<br>&gt; staging driver to cleanup. I cannot see which tasks are unclaimed =
+since this
+<br>&gt; page=C2=A0<a href=3D"https://kernelnewbies.org/OutreachyTasks" tar=
+get=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;https://www=
+.google.com/url?q\x3dhttps%3A%2F%2Fkernelnewbies.org%2FOutreachyTasks\x26sa=
+\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNH1pgIBYcLjCf1_K3QLovJQ5YZ0QA&#39;;return=
+ true;" onclick=3D"this.href=3D&#39;https://www.google.com/url?q\x3dhttps%3=
+A%2F%2Fkernelnewbies.org%2FOutreachyTasks\x26sa\x3dD\x26sntz\x3d1\x26usg\x3=
+dAFQjCNH1pgIBYcLjCf1_K3QLovJQ5YZ0QA&#39;;return true;">https://kernelnewbie=
+s.<wbr>org/OutreachyTasks</a> seems to be out of date.=C2=A0
+<br>
+<br>Cleanups aren&#39;t claimed. =C2=A0Just be sure that your kernel is up =
+to date and
+<br>pick any staging driver or which you find checkpatch complaints.
+<br>
+<br>julia</blockquote></div>
+------=_Part_4464_1757718440.1488126775961--
+
+------=_Part_4463_1054901294.1488126775961--
 
