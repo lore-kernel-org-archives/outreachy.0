@@ -1,68 +1,69 @@
 X-GM-THRID: 6391116518625640448
-X-Received: by 10.157.60.52 with SMTP id q49mr2469890otc.108.1488124898738;
-        Sun, 26 Feb 2017 08:01:38 -0800 (PST)
+X-Received: by 10.31.160.131 with SMTP id j125mr2579916vke.13.1488113861170;
+        Sun, 26 Feb 2017 04:57:41 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.80.146 with SMTP id b18ls10064620oth.10.gmail; Sun, 26 Feb
- 2017 08:01:38 -0800 (PST)
-X-Received: by 10.13.250.197 with SMTP id k188mr4313870ywf.167.1488124898412;
-        Sun, 26 Feb 2017 08:01:38 -0800 (PST)
+Received: by 10.157.35.28 with SMTP id j28ls11375144otb.40.gmail; Sun, 26 Feb
+ 2017 04:57:40 -0800 (PST)
+X-Received: by 10.157.32.138 with SMTP id x10mr4331994ota.51.1488113860880;
+        Sun, 26 Feb 2017 04:57:40 -0800 (PST)
 Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id u12si2818376pfd.3.2017.02.26.08.01.38
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id h130si2559581pfe.1.2017.02.26.04.57.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 26 Feb 2017 08:01:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Sun, 26 Feb 2017 04:57:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id p185so2963594pfb.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 26 Feb 2017 08:01:38 -0800 (PST)
+Received: by mail-pf0-x241.google.com with SMTP id y23so402906pfk.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 26 Feb 2017 04:57:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=message-id:date:from:to:cc:subject:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=D7gorr65GqEWLqIpQP4zfsd0zc2MAw5T7uZrKnY7+uo=;
-        b=eIUDGb+Et7XWlYxQJVAdSAAhmG7NqbB19czwkckU0qFyO/XIYbK37f4SPbYJfUPV/x
-         ZCuVhiJFNiXIoCkhZMKlSN8iT8hOSFydjOLQmFv7mvgG2u05szIWKaGupyq44qFIY1kr
-         3GRw+bvraKsb8/QYQU7mAzw2Ae+1fERJTSLC6JCtpVsqXi0HoBzY8LMSZ3KDbPbvGWfS
-         u6DioXORLBBhCod4L7NS1h45bSS7tMakNf0cWVuVSro7Y0zdk0a9dmwJnJCKErI1j/e3
-         3m30JdxfPtujRs3lupOLGfLC4i66iH5+lXeFcdzMEJYXC7/YNejxByBmfk1IFt7c+nEp
-         Fn+w==
+        bh=mE+vbhTBnDEaek7ZJ5c9CDzLiSL6TD054xG0g1AHUZo=;
+        b=aRBDfsLOpDzP8ND+z0FiXIyQoSh57WReodjbneB1jrSIYGPUXuBmeFyouZBJ8E9Tv9
+         mjCWt1gov10znuyz5siRzyaDJ+7fAqPn5j5fktdJ4zmqyICn3dJRobEh3m1j1aFGoJZ7
+         Zq0CPpGKgxHiO3gkh58sSXDazH8Cmqj6scd5j+4C+7QWSUQn6woRVWYMjKg2MUVzlByb
+         3S4zowBnk1twMl9Xo97E9iCDutHOZV//CMsiTEB4MyGznwsSu0gYjDQz0BUHSneSvxxb
+         OLwvsCYpXzl9qFGRoqKzdh5rLen5KLGJcD6N9T5P+7b+NZ+7aDMNhoOykOr66kQ0i+6v
+         g4rw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:message-id:date:from:to:cc:subject:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=D7gorr65GqEWLqIpQP4zfsd0zc2MAw5T7uZrKnY7+uo=;
-        b=RDnnK0WYQXBz5unS5Djw4/QEr4LbQBPh3fhQPYADEgnIOtq42mPxq6Mqgewv8yEUM4
-         ND8RSS4mqUxxPUzjUqawGZklKBLF0eAvng9BqaoBv6+2lCcwtD0HclpUxGuIL6r2E0rK
-         v03Yv926fe+ykgS/5DeKv1+6Tyfu9TsBMaTmIW+JooIcGYYxXAfls3XUAC3UvO4BQAFQ
-         VLK8pr2QwICB0vyONQi6hny7cgAySgS7MObHBqyOLcTuuq9NqW11Oj4fLq0bJWqspAF+
-         YsJjF23lNl6cO5AuxOtVPs4t/QCRBghFyXsfjX3JHnr4MQOK/Zj6JurTTUYAzMQtCINi
-         KSCg==
-X-Gm-Message-State: AMke39mxkrcfdIKhlHS5y3iAWhzWQojuEHN15tY16Csp/sDsggbhq1rChR+dSNiZVGLmTw==
-X-Received: by 10.84.172.1 with SMTP id m1mr18104614plb.5.1488124898089;
-        Sun, 26 Feb 2017 08:01:38 -0800 (PST)
+        bh=mE+vbhTBnDEaek7ZJ5c9CDzLiSL6TD054xG0g1AHUZo=;
+        b=Ni5GXmaKHa0MbMXMVmmzxy9+okVHaEvXZouDsIngRMNgDDE2clldEEVTMQsQs6jIuH
+         CAv/bU4fhHJRIwW5u4Oj6cJBxqFc4fcnG/vr/p1Cg1q7HpzRH/QDiQ8z92K1rzv2ew5r
+         e+NAakF3dEB3GVL8sw0xZsnqL92xyOk7JEz4vZsNWCyQMeuH1NhLlNPaKPRACTjL8zIw
+         hRZRLE4zie2Y6tqDd54lKdhx0X9pSJ0aCOoV1Mon+cuqwewdMh/o3OLDsE9F8uhdpf3A
+         +OcMcW2Klrns9/a4+37+DNM6/4BBxlP9Mh0MQyrtlmu42dS//bJ1bfXwhnysnSD1V1tz
+         5JpQ==
+X-Gm-Message-State: AMke39nInsQyX6B/NCm3PY87QGRy012jdl7N2fovEVtLB+dpfhGTca/3xiOU3gev3USh7Q==
+X-Received: by 10.98.13.197 with SMTP id 66mr5371426pfn.91.1488113860680;
+        Sun, 26 Feb 2017 04:57:40 -0800 (PST)
 Return-Path: <rvarsha016@gmail.com>
 Received: from euri ([117.192.145.221])
-        by smtp.gmail.com with ESMTPSA id s64sm25493715pfe.27.2017.02.26.08.01.37
+        by smtp.gmail.com with ESMTPSA id o189sm24935983pga.12.2017.02.26.04.57.39
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 26 Feb 2017 08:01:37 -0800 (PST)
-Message-ID: <58b2fbe1.43a3620a.b7aff.5a80@mx.google.com>
-X-Google-Original-Message-ID: <20170226160134.GA29085@<rvarsha016@gmail.com>>
-Date: Sun, 26 Feb 2017 21:31:34 +0530
+        Sun, 26 Feb 2017 04:57:40 -0800 (PST)
+Message-ID: <58b2d0c4.c641630a.25cf1.4a43@mx.google.com>
+X-Google-Original-Message-ID: <20170226125734.GA17853@<rvarsha016@gmail.com>>
+Date: Sun, 26 Feb 2017 18:27:34 +0530
 From: Varsha Rao <rvarsha016@gmail.com>
-To: sudipm.mukherjee@gmail.com, teddy.wang@siliconmotion.com,
-	gregkh@linuxfoundation.org
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH v4 7/7] staging: sm750fb: Remove blank lines after { and
+To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
+	Teddy Wang <teddy.wang@siliconmotion.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH v3 7/7] staging: sm750fb: Remove blank lines after { and
  before } braces.
-References: <cover.1488122987.git.varshar186@gmail.com>
+References: <cover.1488112339.git.varshar186@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1488122987.git.varshar186@gmail.com>
+In-Reply-To: <cover.1488112339.git.varshar186@gmail.com>
 User-Agent: Mutt/1.7.1 (2016-10-04)
 
 Removed unnecessary blank lines after open brace and before closed
@@ -70,8 +71,8 @@ braces, to fix the check patch issue.
 
 Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
 ---
-Changes in v4
--Added proper version number to patch.
+Changes in v3:
+- Removed braces which are not required in sm750_accel.c
 
  drivers/staging/sm750fb/sm750.c        | 1 -
  drivers/staging/sm750fb/sm750_accel.c  | 4 ----
