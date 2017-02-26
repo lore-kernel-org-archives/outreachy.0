@@ -1,54 +1,305 @@
 X-GM-THRID: 6391540020415561728
-X-Received: by 10.129.115.197 with SMTP id o188mr6108033ywc.114.1488187305846;
-        Mon, 27 Feb 2017 01:21:45 -0800 (PST)
+X-Received: by 10.223.178.212 with SMTP id g78mr335115wrd.15.1488146376539;
+        Sun, 26 Feb 2017 13:59:36 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.62.180 with SMTP id b49ls13854364otc.36.gmail; Mon, 27 Feb
- 2017 01:21:45 -0800 (PST)
-X-Received: by 10.200.50.174 with SMTP id z43mr4561623qta.32.1488187305513;
-        Mon, 27 Feb 2017 01:21:45 -0800 (PST)
-Return-Path: <lars@metafoo.de>
-Received: from www381.your-server.de (www381.your-server.de. [78.46.137.84])
-        by gmr-mx.google.com with ESMTPS id y63si1584447ywe.5.2017.02.27.01.21.45
+Received: by 10.46.1.93 with SMTP id 90ls366907ljb.13.gmail; Sun, 26 Feb 2017
+ 13:59:36 -0800 (PST)
+X-Received: by 10.25.18.219 with SMTP id 88mr1567509lfs.29.1488146376059;
+        Sun, 26 Feb 2017 13:59:36 -0800 (PST)
+Return-Path: <narcisaanamaria12@gmail.com>
+Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
+        by gmr-mx.google.com with ESMTPS id v70si688249wmf.0.2017.02.26.13.59.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 27 Feb 2017 01:21:45 -0800 (PST)
-Received-SPF: neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) client-ip=78.46.137.84;
+        Sun, 26 Feb 2017 13:59:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) smtp.mailfrom=lars@metafoo.de
-Received: from [88.198.220.132] (helo=sslproxy03.your-server.de)
-	by www381.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
-	(Exim 4.85_2)
-	(envelope-from <lars@metafoo.de>)
-	id 1ciHUx-0005Qk-Hh; Mon, 27 Feb 2017 10:21:39 +0100
-Received: from [93.104.175.213] (helo=[192.168.178.44])
-	by sslproxy03.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-SHA:256)
-	(Exim 4.84_2)
-	(envelope-from <lars@metafoo.de>)
-	id 1ciHUx-0000i3-14; Mon, 27 Feb 2017 10:21:39 +0100
-Subject: Re: [PATCH] staging: iio: ad9834: Moved contents of header file to
- source file
-To: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>,
- Michael.Hennerich@analog.com, jic23@kernel.org, knaack.h@gmx.de,
- pmeerw@pmeerw.net, gregkh@linuxfoundation.org
-References: <1488146361-14383-1-git-send-email-narcisaanamaria12@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, linux-iio@vger.kernel.org
-From: Lars-Peter Clausen <lars@metafoo.de>
-Message-ID: <b587366e-dec9-c550-3617-2a6d76200423@metafoo.de>
-Date: Mon, 27 Feb 2017 10:21:38 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
- Icedove/45.6.0
-MIME-Version: 1.0
-In-Reply-To: <1488146361-14383-1-git-send-email-narcisaanamaria12@gmail.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Authenticated-Sender: lars@metafoo.de
-X-Virus-Scanned: Clear (ClamAV 0.99.2/23137/Mon Feb 27 05:53:15 2017)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=narcisaanamaria12@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x244.google.com with SMTP id v77so10823207wmv.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 26 Feb 2017 13:59:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=E9wRooDU7XHuDK6wqXe5FDxX+3JRd6nu6sOVyIcirfY=;
+        b=I169WU+oL7/vDARUY1ZUYeXgOKpzCwmAGNAEk3rY1Q9U686tR0zY5igTZpWRZeBdTi
+         obO4Cnpv0X/oQ0kDkcpNY112hZP1dVBJGm/MoueBJliiACqpkSJzbcrNz5MtBEt9GRDr
+         PC2mPwMjn+bhS3WSWZGYyPbFKwe53XNTi41eVUEwam/qa2H38tLnkro3RvdtaDX3cK18
+         /tDicYID//JoqwY+mtl8jUyMNRO/+7K5oGyENiPGDptNtM7Mpq4gmBJY3X1ioSiSzoGr
+         BJhCBZxM7jFIq30AaMooPIvUyHK0i9AER0D3G+gT3bVKHTjW7jfOfaxucQuBj/1QcJUo
+         8RDw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=E9wRooDU7XHuDK6wqXe5FDxX+3JRd6nu6sOVyIcirfY=;
+        b=HvEiIWH+Q43hREz3GzOENKHmmpG9Y2+coRUiSdnFaBQNtV/e4ag7jwhNV5Tc7M6ugE
+         qhElQfKIOz4Gk7lpxXYcOcBMd4CFtNpiiMEgloU59D5Xxx9yXZYI7QxFOhoBwrj+iO8E
+         zw716dbb5p1pwzrglcOfYGCgt5KHXsdiQulWIlZxaXiZ2ZpiS5Dtdf7G3sfQTW3e/Eft
+         ej/phRMyppehjW1158p/EqSwqteIGmuwQna2/Hw3rEbDt/rCO5rnuAmnC1LcRTWna+xK
+         3MMEz9AyfcnMnyjVIesuvUEVoUG6UF9vNZjs2qK7N/QRscNPkmzYXDluQQLXlQxAKF2S
+         j5Pw==
+X-Gm-Message-State: AMke39nesPG7NcEJCEJTt653Jp6PqNcNzYtkFYEhk9W5NH3Jgi+2sAgOaEZCn148hlOPoQ==
+X-Received: by 10.28.96.194 with SMTP id u185mr10420522wmb.82.1488146375732;
+        Sun, 26 Feb 2017 13:59:35 -0800 (PST)
+Return-Path: <narcisaanamaria12@gmail.com>
+Received: from localhost.localdomain ([109.166.128.3])
+        by smtp.gmail.com with ESMTPSA id n13sm19605161wrn.40.2017.02.26.13.59.34
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 26 Feb 2017 13:59:35 -0800 (PST)
+From: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+To: lars@metafoo.de,
+	Michael.Hennerich@analog.com,
+	jic23@kernel.org,
+	knaack.h@gmx.de,
+	pmeerw@pmeerw.net,
+	gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com,
+	linux-iio@vger.kernel.org,
+	Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+Subject: [PATCH] staging: iio: ad9834: Moved contents of header file to source file
+Date: Sun, 26 Feb 2017 23:59:21 +0200
+Message-Id: <1488146361-14383-1-git-send-email-narcisaanamaria12@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-On 02/26/2017 10:59 PM, Narcisa Ana Maria Vasile wrote:
-> The contents of the header file are used only by this single source file
+The contents of the header file are used only by this single source file
 
-Same here, platform data should stay in its the header file, everything else
-can and should be moved.
+Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+---
+ drivers/staging/iio/frequency/ad9834.c | 100 ++++++++++++++++++++++++++++-
+ drivers/staging/iio/frequency/ad9834.h | 111 ---------------------------------
+ 2 files changed, 99 insertions(+), 112 deletions(-)
+ delete mode 100644 drivers/staging/iio/frequency/ad9834.h
 
+diff --git a/drivers/staging/iio/frequency/ad9834.c b/drivers/staging/iio/frequency/ad9834.c
+index 19216af..931feb2 100644
+--- a/drivers/staging/iio/frequency/ad9834.c
++++ b/drivers/staging/iio/frequency/ad9834.c
+@@ -23,7 +23,105 @@
+ #include <linux/iio/sysfs.h>
+ #include "dds.h"
+ 
+-#include "ad9834.h"
++/* Registers */
++
++#define AD9834_REG_CMD		0
++#define AD9834_REG_FREQ0	BIT(14)
++#define AD9834_REG_FREQ1	BIT(15)
++#define AD9834_REG_PHASE0	(BIT(15) | BIT(14))
++#define AD9834_REG_PHASE1	(BIT(15) | BIT(14) | BIT(13))
++
++/* Command Control Bits */
++
++#define AD9834_B28		BIT(13)
++#define AD9834_HLB		BIT(12)
++#define AD9834_FSEL		BIT(11)
++#define AD9834_PSEL		BIT(10)
++#define AD9834_PIN_SW		BIT(9)
++#define AD9834_RESET		BIT(8)
++#define AD9834_SLEEP1		BIT(7)
++#define AD9834_SLEEP12		BIT(6)
++#define AD9834_OPBITEN		BIT(5)
++#define AD9834_SIGN_PIB		BIT(4)
++#define AD9834_DIV2		BIT(3)
++#define AD9834_MODE		BIT(1)
++
++#define AD9834_FREQ_BITS	28
++#define AD9834_PHASE_BITS	12
++
++#define RES_MASK(bits)	(BIT(bits) - 1)
++
++/**
++ * struct ad9834_state - driver instance specific data
++ * @spi:		spi_device
++ * @reg:		supply regulator
++ * @mclk:		external master clock
++ * @control:		cached control word
++ * @xfer:		default spi transfer
++ * @msg:		default spi message
++ * @freq_xfer:		tuning word spi transfer
++ * @freq_msg:		tuning word spi message
++ * @data:		spi transmit buffer
++ * @freq_data:		tuning word spi transmit buffer
++ */
++
++struct ad9834_state {
++	struct spi_device		*spi;
++	struct regulator		*reg;
++	unsigned int			mclk;
++	unsigned short			control;
++	unsigned short			devid;
++	struct spi_transfer		xfer;
++	struct spi_message		msg;
++	struct spi_transfer		freq_xfer[2];
++	struct spi_message		freq_msg;
++
++	/*
++	 * DMA (thus cache coherency maintenance) requires the
++	 * transfer buffers to live in their own cache lines.
++	 */
++	__be16				data ____cacheline_aligned;
++	__be16				freq_data[2];
++};
++
++/*
++ * TODO: struct ad7887_platform_data needs to go into include/linux/iio
++ */
++
++/**
++ * struct ad9834_platform_data - platform specific information
++ * @mclk:		master clock in Hz
++ * @freq0:		power up freq0 tuning word in Hz
++ * @freq1:		power up freq1 tuning word in Hz
++ * @phase0:		power up phase0 value [0..4095] correlates with 0..2PI
++ * @phase1:		power up phase1 value [0..4095] correlates with 0..2PI
++ * @en_div2:		digital output/2 is passed to the SIGN BIT OUT pin
++ * @en_signbit_msb_out:	the MSB (or MSB/2) of the DAC data is connected to the
++ *			SIGN BIT OUT pin. en_div2 controls whether it is the MSB
++ *			or MSB/2 that is output. if en_signbit_msb_out=false,
++ *			the on-board comparator is connected to SIGN BIT OUT
++ */
++
++struct ad9834_platform_data {
++	unsigned int		mclk;
++	unsigned int		freq0;
++	unsigned int		freq1;
++	unsigned short		phase0;
++	unsigned short		phase1;
++	bool			en_div2;
++	bool			en_signbit_msb_out;
++};
++
++/**
++ * ad9834_supported_device_ids:
++ */
++
++enum ad9834_supported_device_ids {
++	ID_AD9833,
++	ID_AD9834,
++	ID_AD9837,
++	ID_AD9838,
++};
+ 
+ static unsigned int ad9834_calc_freqreg(unsigned long mclk, unsigned long fout)
+ {
+diff --git a/drivers/staging/iio/frequency/ad9834.h b/drivers/staging/iio/frequency/ad9834.h
+deleted file mode 100644
+index 40fdd5d..0000000
+--- a/drivers/staging/iio/frequency/ad9834.h
++++ /dev/null
+@@ -1,111 +0,0 @@
+-/*
+- * AD9833/AD9834/AD9837/AD9838 SPI DDS driver
+- *
+- * Copyright 2010-2011 Analog Devices Inc.
+- *
+- * Licensed under the GPL-2.
+- */
+-#ifndef IIO_DDS_AD9834_H_
+-#define IIO_DDS_AD9834_H_
+-
+-/* Registers */
+-
+-#define AD9834_REG_CMD		0
+-#define AD9834_REG_FREQ0	BIT(14)
+-#define AD9834_REG_FREQ1	BIT(15)
+-#define AD9834_REG_PHASE0	(BIT(15) | BIT(14))
+-#define AD9834_REG_PHASE1	(BIT(15) | BIT(14) | BIT(13))
+-
+-/* Command Control Bits */
+-
+-#define AD9834_B28		BIT(13)
+-#define AD9834_HLB		BIT(12)
+-#define AD9834_FSEL		BIT(11)
+-#define AD9834_PSEL		BIT(10)
+-#define AD9834_PIN_SW		BIT(9)
+-#define AD9834_RESET		BIT(8)
+-#define AD9834_SLEEP1		BIT(7)
+-#define AD9834_SLEEP12		BIT(6)
+-#define AD9834_OPBITEN		BIT(5)
+-#define AD9834_SIGN_PIB		BIT(4)
+-#define AD9834_DIV2		BIT(3)
+-#define AD9834_MODE		BIT(1)
+-
+-#define AD9834_FREQ_BITS	28
+-#define AD9834_PHASE_BITS	12
+-
+-#define RES_MASK(bits)	(BIT(bits) - 1)
+-
+-/**
+- * struct ad9834_state - driver instance specific data
+- * @spi:		spi_device
+- * @reg:		supply regulator
+- * @mclk:		external master clock
+- * @control:		cached control word
+- * @xfer:		default spi transfer
+- * @msg:		default spi message
+- * @freq_xfer:		tuning word spi transfer
+- * @freq_msg:		tuning word spi message
+- * @data:		spi transmit buffer
+- * @freq_data:		tuning word spi transmit buffer
+- */
+-
+-struct ad9834_state {
+-	struct spi_device		*spi;
+-	struct regulator		*reg;
+-	unsigned int			mclk;
+-	unsigned short			control;
+-	unsigned short			devid;
+-	struct spi_transfer		xfer;
+-	struct spi_message		msg;
+-	struct spi_transfer		freq_xfer[2];
+-	struct spi_message		freq_msg;
+-
+-	/*
+-	 * DMA (thus cache coherency maintenance) requires the
+-	 * transfer buffers to live in their own cache lines.
+-	 */
+-	__be16				data ____cacheline_aligned;
+-	__be16				freq_data[2];
+-};
+-
+-/*
+- * TODO: struct ad7887_platform_data needs to go into include/linux/iio
+- */
+-
+-/**
+- * struct ad9834_platform_data - platform specific information
+- * @mclk:		master clock in Hz
+- * @freq0:		power up freq0 tuning word in Hz
+- * @freq1:		power up freq1 tuning word in Hz
+- * @phase0:		power up phase0 value [0..4095] correlates with 0..2PI
+- * @phase1:		power up phase1 value [0..4095] correlates with 0..2PI
+- * @en_div2:		digital output/2 is passed to the SIGN BIT OUT pin
+- * @en_signbit_msb_out:	the MSB (or MSB/2) of the DAC data is connected to the
+- *			SIGN BIT OUT pin. en_div2 controls whether it is the MSB
+- *			or MSB/2 that is output. if en_signbit_msb_out=false,
+- *			the on-board comparator is connected to SIGN BIT OUT
+- */
+-
+-struct ad9834_platform_data {
+-	unsigned int		mclk;
+-	unsigned int		freq0;
+-	unsigned int		freq1;
+-	unsigned short		phase0;
+-	unsigned short		phase1;
+-	bool			en_div2;
+-	bool			en_signbit_msb_out;
+-};
+-
+-/**
+- * ad9834_supported_device_ids:
+- */
+-
+-enum ad9834_supported_device_ids {
+-	ID_AD9833,
+-	ID_AD9834,
+-	ID_AD9837,
+-	ID_AD9838,
+-};
+-
+-#endif /* IIO_DDS_AD9834_H_ */
+-- 
+1.9.1
 
 
