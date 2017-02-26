@@ -1,57 +1,57 @@
 X-GM-THRID: 6391402747969667072
-X-Received: by 10.13.233.70 with SMTP id s67mr1379744ywe.24.1488306833929;
-        Tue, 28 Feb 2017 10:33:53 -0800 (PST)
+X-Received: by 10.129.160.83 with SMTP id x80mr4297328ywg.90.1488114415508;
+        Sun, 26 Feb 2017 05:06:55 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.26.214 with SMTP id 205ls612319iti.12.gmail; Tue, 28 Feb
- 2017 10:33:52 -0800 (PST)
-X-Received: by 10.107.164.151 with SMTP id d23mr1320111ioj.39.1488306832466;
-        Tue, 28 Feb 2017 10:33:52 -0800 (PST)
+Received: by 10.157.35.28 with SMTP id j28ls11383304otb.40.gmail; Sun, 26 Feb
+ 2017 05:06:54 -0800 (PST)
+X-Received: by 10.129.4.80 with SMTP id 77mr3991871ywe.161.1488114414938;
+        Sun, 26 Feb 2017 05:06:54 -0800 (PST)
 Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id s64si136910pfk.0.2017.02.28.10.33.52
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id f7si2593748pfk.5.2017.02.26.05.06.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Feb 2017 10:33:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Sun, 26 Feb 2017 05:06:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id p185so1695759pfb.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 28 Feb 2017 10:33:52 -0800 (PST)
+Received: by mail-pf0-x242.google.com with SMTP id p185so2821621pfb.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 26 Feb 2017 05:06:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=message-id:date:from:to:cc:subject:mime-version:content-disposition
          :user-agent;
-        bh=OhgmKTjOEjhm6us86so2zhGqxoVkM1W5UIULU5EyViU=;
-        b=RdeGSCC9o7kY/gpw6pKSk1ZICOpCV4dcjx5qCKpWRAYt67AFpt8ghCTzz6JqkeV8HJ
-         ZwBVR1nB5BZrS9TZ7cHV3HEuCBQyBKx3IqvlB4AANsVkJg7fEEiksjq3ZKSKfZW8FAp0
-         b0JrAH4ar2a4LBixg4T4NBigdGdh+bMYPgOzrJYxwT16nJA1+JJV1gIOV/0b5UU0psxQ
-         sru6DnUl3xvXon3Ef1daa2Jgo4YD9+Nxp0/ktHSFz8Ly73c1bKzRXLVVDobFcv/6dY6C
-         dHLGFRzgwRlgn7TwnUe9F95xC+ou2LCYIh3i9bF8VAEMVqun1jzSTnca2Lha4upVpLFA
-         OtfA==
+        bh=Vl8sRInGCrE1Hn2377rU+tJSZldii6uQhmpkQgvAUts=;
+        b=KNoX0qI4sFZ3MDxQWIyT0QPX6xvx89u5dywxxJQNKniOgs61Nhz5oi/pSLYaMtJV9k
+         MFU0nd67EL7EUxHabezooRsHtu8hKKW41hZ1+WzP51yxDKv9npgA5utLGa76VRcjUJz7
+         u75nkXAxAF+1LZJ8RngJeuf5S5JkUTP+8oQ91omsfnIV2S0Tnx3Pxu6KHOENMV0rCWoR
+         ujB4/9YWcWSinGPVsEdYVSZ5L79tK15xuJB2B3bqdgNn7+lATV7EisR9ylyF0ECHW360
+         1X50tvlRZlXXlVl4GxM6EVE5C8qks2z+JyZ11vpO/9GD0vgpSeCWE6ga+/pCf64ODov4
+         M/Dw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
          :content-disposition:user-agent;
-        bh=OhgmKTjOEjhm6us86so2zhGqxoVkM1W5UIULU5EyViU=;
-        b=RxgxgjaczDQBXPk1SGvav95d5K5+dnhLA5hP/E7zXcfhRHkk405CdgukvE/GHWFPDF
-         tvlC9axqF+ES66GrffzWwg/cyALFGMBFf6AwbXZDg1YVASvC6udh8SptA9KTRIHFGQ4o
-         IOyewdQauw2UF+CgeR5sE1B5P1EJyjLuf4oyn6O8tpd9E/d/IwB02JQTOkJXp40en77Z
-         JlN2pxOImvg3xFgn/8fsLMpotOaiQuxeArDDV8q2yhdiAQYAAViFjHVj3nCH9sydZ9ys
-         D9sbB5wMp0U5xGnn+pOtbGXotHrbeIugZUA6ROJbF1gqTu1ZYRodLeHYnV0Ad8vntXq2
-         6OMQ==
-X-Gm-Message-State: AMke39l/X/4JPilDErsT7RbIpF/E1kpYnFbFuGz8UYdaz9Ku9Vj669kJmclIiIi1H4sYUg==
-X-Received: by 10.84.216.15 with SMTP id m15mr4886523pli.22.1488306832183;
-        Tue, 28 Feb 2017 10:33:52 -0800 (PST)
+        bh=Vl8sRInGCrE1Hn2377rU+tJSZldii6uQhmpkQgvAUts=;
+        b=LyoK/dfdQPg6Is4BKiPiZzfUtlXt7fX0d5VxQ/QlekzGmlLEWBxx6Phjina21SoHPQ
+         ZQp/OMIvWeR3NQmtTanwzMJYqFRHIc0FDe1Ec7kbKN1/M5j6uKllOm5Xt3rsfioA7+Ao
+         RhReZClMXsXsyH2ILz3plCfrWMyXXGZVIPsX9kOkVYBkSBsimOer1jOY7HeXgyhArY4R
+         EfncDugVtH03UclVcDlN+3bijFx5hMiNGyDaJfXroWU4RkJVqK4Yt4yc9t+Fevidt4Gz
+         lQU1if+dwSC22KAUkd+y8JegfbxMoNam29vKsz0e3A88yJzx9Y8hka+1mfLEnwP66v2x
+         CE4g==
+X-Gm-Message-State: AMke39nwTsD6YxFLaK7st5l29pvKkwJOZtbFmGxPBVFBhBwHjd3/qm3LvKv1L+9aqLS5qg==
+X-Received: by 10.84.173.228 with SMTP id p91mr15255434plb.121.1488114414612;
+        Sun, 26 Feb 2017 05:06:54 -0800 (PST)
 Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([2405:204:540b:daa3:20ed:35b8:482:1b22])
-        by smtp.gmail.com with ESMTPSA id r71sm5612064pfa.104.2017.02.28.10.33.49
+Received: from euri ([117.192.145.221])
+        by smtp.gmail.com with ESMTPSA id u129sm24730527pfb.130.2017.02.26.05.06.53
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 28 Feb 2017 10:33:51 -0800 (PST)
-Message-ID: <58b5c28f.4a44620a.8f50f.a6b6@mx.google.com>
-X-Google-Original-Message-ID: <20170228183342.GA6167@<rvarsha016@gmail.com>>
-Date: Wed, 1 Mar 2017 00:03:42 +0530
+        Sun, 26 Feb 2017 05:06:54 -0800 (PST)
+Message-ID: <58b2d2ee.8760620a.7d454.4bf4@mx.google.com>
+X-Google-Original-Message-ID: <20170226130642.GA18067@<rvarsha016@gmail.com>>
+Date: Sun, 26 Feb 2017 18:36:42 +0530
 From: Varsha Rao <rvarsha016@gmail.com>
 To: Lars-Peter Clausen <lars@metafoo.de>,
 	Michael Hennerich <Michael.Hennerich@analog.com>,
@@ -60,26 +60,21 @@ To: Lars-Peter Clausen <lars@metafoo.de>,
 	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: iio: adis16203: Move header file content to
- source file.
+Subject: [PATCH] staging: iio: adis16203: Move header file content to source
+ file.
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.7.1 (2016-10-04)
 
-The contents of the header file are used only by this single source
-file. Moved content into adis16203_core.c file and removed adis16203.h
-file. Arranged #include files in alphabetical order.
+The contents of the header file are used only by this single
+source file. Moved content into .c and removed .h
 
 Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
 ---
-Changes in v2:
-- Modified commit message.
-- #include files ordered alphabetically.
-
- drivers/staging/iio/accel/adis16203.h      | 125 --------------------------
- drivers/staging/iio/accel/adis16203_core.c | 136 +++++++++++++++++++++++++++--
- 2 files changed, 128 insertions(+), 133 deletions(-)
+ drivers/staging/iio/accel/adis16203.h      | 125 -----------------------------
+ drivers/staging/iio/accel/adis16203_core.c | 121 +++++++++++++++++++++++++++-
+ 2 files changed, 120 insertions(+), 126 deletions(-)
  delete mode 100644 drivers/staging/iio/accel/adis16203.h
 
 diff --git a/drivers/staging/iio/accel/adis16203.h b/drivers/staging/iio/accel/adis16203.h
@@ -214,34 +209,14 @@ index b483e4e..0000000
 -
 -#endif /* SPI_ADIS16203_H_ */
 diff --git a/drivers/staging/iio/accel/adis16203_core.c b/drivers/staging/iio/accel/adis16203_core.c
-index bd8119a..68189ad 100644
+index bd8119a..e51cf1a 100644
 --- a/drivers/staging/iio/accel/adis16203_core.c
 +++ b/drivers/staging/iio/accel/adis16203_core.c
-@@ -7,20 +7,140 @@
-  */
+@@ -20,7 +20,126 @@
+ #include <linux/iio/buffer.h>
+ #include <linux/iio/imu/adis.h>
  
- #include <linux/delay.h>
--#include <linux/mutex.h>
- #include <linux/device.h>
-+
-+#include <linux/iio/buffer.h>
-+#include <linux/iio/iio.h>
-+#include <linux/iio/imu/adis.h>
-+#include <linux/iio/sysfs.h>
-+
- #include <linux/kernel.h>
--#include <linux/spi/spi.h>
-+#include <linux/module.h>
-+#include <linux/mutex.h>
- #include <linux/slab.h>
-+#include <linux/spi/spi.h>
- #include <linux/sysfs.h>
--#include <linux/module.h>
- 
--#include <linux/iio/iio.h>
--#include <linux/iio/sysfs.h>
--#include <linux/iio/buffer.h>
--#include <linux/iio/imu/adis.h>
+-#include "adis16203.h"
 +#define ADIS16203_STARTUP_DELAY 220 /* ms */
 +
 +/* Flash memory write count */
@@ -279,8 +254,7 @@ index bd8119a..68189ad 100644
 +
 +/* Alarm control */
 +#define ADIS16203_ALM_CTRL       0x28
- 
--#include "adis16203.h"
++
 +/* Auxiliary DAC data */
 +#define ADIS16203_AUX_DAC        0x30
 +
