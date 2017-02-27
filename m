@@ -1,120 +1,122 @@
-X-GM-THRID: 6393902542586118144
-X-Received: by 10.36.121.2 with SMTP id z2mr2161077itc.18.1488696444628;
-        Sat, 04 Mar 2017 22:47:24 -0800 (PST)
+X-GM-THRID: 6390855341335117824
+X-Received: by 10.157.45.11 with SMTP id v11mr6367749ota.105.1488218176441;
+        Mon, 27 Feb 2017 09:56:16 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.6.194 with SMTP id 60ls11994760otx.21.gmail; Sat, 04 Mar
- 2017 22:47:24 -0800 (PST)
-X-Received: by 10.176.1.103 with SMTP id 94mr2666374uak.35.1488696444258;
-        Sat, 04 Mar 2017 22:47:24 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id r66si789261pfb.7.2017.03.04.22.47.24
+Received: by 10.157.63.11 with SMTP id m11ls2949759otc.18.gmail; Mon, 27 Feb
+ 2017 09:56:16 -0800 (PST)
+X-Received: by 10.157.7.193 with SMTP id 59mr6676187oto.148.1488218176102;
+        Mon, 27 Feb 2017 09:56:16 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pf0-x232.google.com (mail-pf0-x232.google.com. [2607:f8b0:400e:c00::232])
+        by gmr-mx.google.com with ESMTPS id s64si3331731pfk.0.2017.02.27.09.56.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 04 Mar 2017 22:47:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Mon, 27 Feb 2017 09:56:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) client-ip=2607:f8b0:400e:c00::232;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id 187so3029236pgb.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 04 Mar 2017 22:47:24 -0800 (PST)
+Received: by mail-pf0-x232.google.com with SMTP id 89so5588170pfi.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 27 Feb 2017 09:56:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=YqmiVwDICLKRnUAodb/y99dcJcJ3aPdFEutrC+fMuUM=;
-        b=K9824HoHuHQQ1+YlTQjqS8khC1s0PueoJQFqfDcgRE6cGDWUmGFKNGy+SnIC7FbeEq
-         NVYycDCwjXmrRyYsNh53nZPemgBd7Y5E56KGeOtqNe8I2+rrrB1yrXi6XhqMo46imVdQ
-         sFYFfoJjCBvF46Q2Vcca/DSv0/CnJ/uMBrKCQTIZU62m5zl3laO8R9sVKFB8BsejlWDa
-         DjKEIX5JBWM72dvx4btDvdcdGP1FSYEOxfhlvJl5ruIWdrFBng9XsOvwS6gZVHSkxeN1
-         ToSQ7cDWQX7spuy2gWNaoDhPaSi3QWQqzzVWJb8u9/G68ySwxMaHzXa04pFqrxLSoGqi
-         OvLQ==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=Kc1SEqLODsfJSHEkIKGVDWlws//j4oZLDiUipGVkUAw=;
+        b=AI7xy7MbCtWGlcGZw8rJQcyA8DwXaTf6/IE+Z9rwJCKan9BNsLynfsouTgp0EDMBbF
+         EhR4fDmfHkXpLGqHF3p6xIMcG7jRTgoCYNRf0/gqeZE5l5v9gd3zCjRUW47EAUOZOKqn
+         X0xF03fV3BuZKBbs4KpDiNCY/WkhD9YibGJ2qCvElVrYKYpOpHr7SkgeaLzNKi7k4A4U
+         8wILEnWTWhtvUwzz7AlQzyb9ygX0IeVFYglPidX1XvxcZ0HTh9tvTZQLOgkPPzRfKIWT
+         PaZQ+H5jU9Ms+HkSE4QMe14OGwDzmn9RWufKJQRtdyKIz+uR1a/6tqesxqd20hVL52Z6
+         4Rng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=YqmiVwDICLKRnUAodb/y99dcJcJ3aPdFEutrC+fMuUM=;
-        b=t0viMpBVAZCpiG5fPPF7PEJH/GTnPYBA27axafmC9mkvGezQqjXBP5pNBb80mFElcz
-         /8YqSRO4UuEchOMMV9xi6RTgMoH2/CXMwsVQWr30Szxbeq8Ahg8dNsEFtnbM9IaXWAx3
-         fscUaYkdehVMQmEcHc4Zex0tOJwNZugpZCZqIcVm84FfvukBdPSEMdsJ7zFIf47hHQlg
-         H3UlaRu8R4cl321yo3uvD4BjzMsQhsoPWVQFVAfnOUGEzgQDgbEmRQfrLwCRHDkTqmEe
-         IwUThwh/By6CK7Dae8hzyKGt3PRHKMA9tkrSE1IbWcBbJxyBnWFN4oOvw1Uo2dI5q9bz
-         1RIQ==
-X-Gm-Message-State: AMke39kRXedObotTqPMjnkHc4kMv84djmlfvqemo5FOXIlQzInT1P2rfT8V8a3lI8p0uiA==
-X-Received: by 10.99.62.202 with SMTP id l193mr13149957pga.172.1488696444028;
-        Sat, 04 Mar 2017 22:47:24 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id w131sm30984002pfd.34.2017.03.04.22.47.21
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=Kc1SEqLODsfJSHEkIKGVDWlws//j4oZLDiUipGVkUAw=;
+        b=MiB9jeC/bUvEo0MpnaFSRX/lI2Pf+DuhbK/AHPy/VOBtsKdZUtKXQwQLMYmPbqFhUv
+         zQIzEoIxvrLw52mtzZsSLCuxNrRpPLX+Wfd8Z5hX4YRUVafBRdVNEPpsFMq7mURrW6P6
+         i1t9w2EGxMET9GsXZ/LZLQbVpOv8h2yNeVtN3jg/rtdWipz6jGfF0MqeochtRI8bfS7J
+         WMEwfs7VdydFOoB6K8C0Y1ftr0EeazmikW3HvXE5iLu5a59kSV8+DXn4+YQMB8iq5+Vx
+         XOzyQA+KhNEkkk8Zc6Fc/M1LTSxUKaaSMmlmUOEgcHgBjF4iudY64h0nvIOJpnCW/CLo
+         xs1w==
+X-Gm-Message-State: AMke39lJvw/Emrm6DsVj4CpcFxa4JznDL/Vbny7AdbdZaORWPmF9At2V0jVDX/dmcuELyg==
+X-Received: by 10.84.129.3 with SMTP id 3mr25980369plb.150.1488218175848;
+        Mon, 27 Feb 2017 09:56:15 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
+        by smtp.gmail.com with ESMTPSA id u82sm31934448pfd.7.2017.02.27.09.56.15
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 04 Mar 2017 22:47:22 -0800 (PST)
-Date: Sun, 5 Mar 2017 12:17:21 +0530
-From: simran singhal <singhalsimran0@gmail.com>
-To: mchehab@kernel.org
-Cc: gregkh@linuxfoundation.org, linux-media@vger.kernel.org,
-	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: media: Remove unnecessary function and its call
-Message-ID: <20170305064721.GA22548@singhal-Inspiron-5558>
+        Mon, 27 Feb 2017 09:56:15 -0800 (PST)
+Date: Mon, 27 Feb 2017 09:56:14 -0800
+From: Alison Schofield <amsfield22@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: lars@metafoo.de
+Subject: Re: Clean-up idea: IIO Headers
+Message-ID: <20170227175613.GC1549@d830.WORKGROUP>
+References: <20170225014231.GA3395@d830.WORKGROUP>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20170225014231.GA3395@d830.WORKGROUP>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-The function atomisp_set_stop_timeout on being called, simply returns
-back. The function hasn't been mentioned in the TODO and doesn't have
-FIXME code around. Hence, atomisp_set_stop_timeout and its calls have been
-removed.
+On Fri, Feb 24, 2017 at 05:42:40PM -0800, Alison Schofield wrote:
+> Hi Outreachy Applicants,
+> 
+> Here is a clean-up task for staging/iio you might like to try.
+> 
+> Staging IIO Header file (re-)organization:
+> 
+> Guidelines to follow:
+> 
+> (Reference  https://kernelnewbies.org/KernelHeaders)
+> 
+> Three cases you may find:
+> 1) If it's a single source file, its header info should be in that source file.
+>    *** Do this!
 
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
----
- drivers/staging/media/atomisp/pci/atomisp2/atomisp_cmd.c          | 1 -
- drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat.h       | 1 -
- drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat_css20.c | 5 -----
- 3 files changed, 7 deletions(-)
+Update - (thanks Lars)
 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_cmd.c b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_cmd.c
-index e99f7b8..66299dd 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_cmd.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_cmd.c
-@@ -1700,7 +1700,6 @@ void atomisp_wdt_work(struct work_struct *work)
- 		}
- 	}
- #endif
--	atomisp_set_stop_timeout(ATOMISP_CSS_STOP_TIMEOUT_US);
- 	dev_err(isp->dev, "timeout recovery handling done\n");
- 	atomic_set(&isp->wdt_work_queued, 0);
- 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat.h b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat.h
-index 5a404e4..0b9ced5 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat.h
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat.h
-@@ -660,7 +660,6 @@ int atomisp_css_set_acc_parameters(struct atomisp_acc_fw *acc_fw);
- int atomisp_css_isr_thread(struct atomisp_device *isp,
- 			   bool *frame_done_found,
- 			   bool *css_pipe_done);
--void atomisp_set_stop_timeout(unsigned int timeout);
- 
- bool atomisp_css_valid_sof(struct atomisp_device *isp);
- 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat_css20.c b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat_css20.c
-index 6697d72..cfa0ad4 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat_css20.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat_css20.c
-@@ -4699,11 +4699,6 @@ int atomisp_css_isr_thread(struct atomisp_device *isp,
- 	return 0;
- }
- 
--void atomisp_set_stop_timeout(unsigned int timeout)
--{
--	return;
--}
--
- bool atomisp_css_valid_sof(struct atomisp_device *isp)
- {
- 	unsigned int i, j;
--- 
-2.7.4
+The platform data struct needs to stay in the separate header file until
+the driver is moved out of staging.  If this is your case, you can move
+the other contents but will need to leave the platform data in the .h
+file. When the driver is moved out of staging the header will go into
+the global include/linux/platform_data/ folder.
 
+You can see examples of this in the outreachy mailing list already.
+
+> 
+> 2) Interfaces between source files in a single module can have a header file
+>    in same dir as the source files.
+>    *** Leave this alone.
+> 
+> 3) Interfaces shared between modules go in a header file in include/linux/iio
+>    *** Leave this alone. We will do this when the driver is moving out of
+> 	staging 
+> 
+> Here's an example patchset:
+> https://groups.google.com/forum/#!searchin/outreachy-kernel/header$20file$20ad5933%7Csort:relevance/outreachy-kernel/THYpgGyOgsI/iz8lrqwfDAAJ
+> 
+> Note that when you pull the header file in, there's a customary order to it
+> that the drivers in staging may not be following.  In the example one above,
+> I moved the #defines to be before the chip structure definitions.  So, you'll
+> do best if you look at similar drivers in the same directory upstream, to
+> see how they order their header information.  Always good to look at a few,
+> because one may not be the perfect role model.  
+> 
+> It is customary to alphabetize the #includes, and to separate the kernel
+> and IIO subsystem #includes with a blank line.  So, although we wouldn't
+> send in a patch just to alphabetize #includes, while you are moving them
+> to the .c file, and while you are checking that they are actually needed,
+> sure - go ahead and alphabetize them.  (Example patch didn't alphabetize,
+> you'll do better ;)
+>  
+> To verify the patch(set), I'd suggest applying it to a clean tree and
+> rebuilding.  
+> 
+> Questions?  Just ask on this thread.
+> 
+> alisons
 
