@@ -1,55 +1,385 @@
 X-GM-THRID: 6391874178049376256
-X-Received: by 10.25.217.24 with SMTP id q24mr2209159lfg.26.1488230598796;
-        Mon, 27 Feb 2017 13:23:18 -0800 (PST)
+X-Received: by 10.99.112.77 with SMTP id a13mr252370pgn.168.1488224179443;
+        Mon, 27 Feb 2017 11:36:19 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.80.83 with SMTP id v19ls515789ljd.15.gmail; Mon, 27 Feb
- 2017 13:23:17 -0800 (PST)
-X-Received: by 10.46.22.68 with SMTP id 4mr2317405ljw.14.1488230597525;
-        Mon, 27 Feb 2017 13:23:17 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id b186si9034wme.1.2017.02.27.13.23.17
+Received: by 10.36.3.1 with SMTP id e1ls2386985ite.16.gmail; Mon, 27 Feb 2017
+ 11:36:18 -0800 (PST)
+X-Received: by 10.107.137.27 with SMTP id l27mr6153866iod.76.1488224178652;
+        Mon, 27 Feb 2017 11:36:18 -0800 (PST)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id s64si3403550pfk.0.2017.02.27.11.36.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 27 Feb 2017 13:23:17 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Mon, 27 Feb 2017 11:36:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.35,215,1484002800"; 
-   d="scan'208";a="262318056"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 27 Feb 2017 22:23:16 +0100
-Date: Mon, 27 Feb 2017 22:23:16 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: simran singhal <singhalsimran0@gmail.com>
-cc: lars@metafoo.de, Michael.Hennerich@analog.com, jic23@kernel.org, 
-    knaack.h@gmx.de, pmeerw@pmeerw.net, gregkh@linuxfoundation.org, 
-    linux-kernel@vger.kernel.org, linux-iio@vger.kernel.org, 
-    devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: iio: accel: Move header file
- content to source file
-In-Reply-To: <20170227193815.GA32728@singhal-Inspiron-5558>
-Message-ID: <alpine.DEB.2.20.1702272221550.2127@hadrien>
-References: <20170227193815.GA32728@singhal-Inspiron-5558>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x243.google.com with SMTP id 25so1950730pgy.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 27 Feb 2017 11:36:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=eNcx7YSF+JPYcZNHNJ5r+AUqR3Gv6i8YcKZa+K+wwiQ=;
+        b=jBBCD4AGhWvll48rqCjdZ04orS6Q97DWBIJd6wCxs4gC7nyluqWmmMuBnjasebzxW5
+         EPYovYCr/FIKwJKD1zywUuEnbVlCfyT95O1w+I2m64YGkAjPK5KnChakQlPVRB6KLzp1
+         AxDY77Nbdlv3PMhPgElS5R7ZG/PgeY+tMWJriczooJxW/peTM56ByqhyTD2MzOTjgQlC
+         24vgmXPMe3IvnvVxlRe4wYSLARUjb+HRxqiUrMbWmfLMgZVaR4zIQCuD2fF3R2Dowqr5
+         p3IpDXVWiqAK7kQSjqwVHROQZbgS6G2yq9u3163ZpV9z9+VFojDZO34iB3sh5oydUoRY
+         2Qog==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=eNcx7YSF+JPYcZNHNJ5r+AUqR3Gv6i8YcKZa+K+wwiQ=;
+        b=ncohkNcSDGkHsYU1bgrTnbB89f2cTJoAwulRHUnB8pe9B/PblcmK1SM0INocnwHj0V
+         ga+LNmRWKyo87PDRqMHEn5763qKtpwpCOWprcTDFW+6FOBZW9t6NGMEZd1g86TwrGL5D
+         FSTjJdqxaUnP+g0v3HZhN3KQrZGJEL00p6XZCSd6QVdAKs+E+LIaa9aPgEPxF+FZBgKT
+         iybOlEHDu+QeN8wigbdVsDkOYT6rAeKk04QG+SxKld99TKVOZxnr6hqnitb5EeuIehoG
+         yysIJqbqKAIKdvR/qcEwp9Z3EHRT3pqWwDYeP1kHsPwS0zutvMT8AWa7XqFbIklPkQR3
+         bUqQ==
+X-Gm-Message-State: AMke39mZe9FcOSsQX4Ztkh95qR+4860hDtlbV0BoG2nDvsIvR3RYkli5GHqKSgmPln+iaQ==
+X-Received: by 10.99.36.71 with SMTP id k68mr23121469pgk.68.1488224178321;
+        Mon, 27 Feb 2017 11:36:18 -0800 (PST)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from singhal-Inspiron-5558 ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id s65sm32250021pgb.64.2017.02.27.11.36.16
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 27 Feb 2017 11:36:17 -0800 (PST)
+Date: Tue, 28 Feb 2017 01:08:16 +0530
+From: simran singhal <singhalsimran0@gmail.com>
+To: lars@metafoo.de
+Cc: Michael.Hennerich@analog.com, jic23@kernel.org, knaack.h@gmx.de,
+	pmeerw@pmeerw.net, gregkh@linuxfoundation.org,
+	linux-kernel@vger.kernel.org, linux-iio@vger.kernel.org,
+	devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: iio: accel: Move header file content to source file
+Message-ID: <20170227193815.GA32728@singhal-Inspiron-5558>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-> diff --git a/drivers/staging/iio/accel/adis16201_core.c b/drivers/staging/iio/accel/adis16201_core.c
-> index 7963d4a..210699e 100644
-> --- a/drivers/staging/iio/accel/adis16201_core.c
-> +++ b/drivers/staging/iio/accel/adis16201_core.c
-> @@ -20,7 +20,150 @@
->  #include <linux/iio/buffer.h>
->  #include <linux/iio/imu/adis.h>
->
-> -#include "adis16201.h"
-> +#ifndef SPI_ADIS16201_H_
-> +#define SPI_ADIS16201_H_
+The contents of the header file are used only by this single
+source file. Move content into .c and remove .h.
 
-I guess you wouldn't need the ifndef and define in the C file?  This is
-usually used to guard against including a header file more than once.
+Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+---
+ drivers/staging/iio/accel/adis16201.h      | 144 ----------------------------
+ drivers/staging/iio/accel/adis16201_core.c | 145 ++++++++++++++++++++++++++++-
+ 2 files changed, 144 insertions(+), 145 deletions(-)
+ delete mode 100644 drivers/staging/iio/accel/adis16201.h
 
-julia
+diff --git a/drivers/staging/iio/accel/adis16201.h b/drivers/staging/iio/accel/adis16201.h
+deleted file mode 100644
+index 64844ad..0000000
+--- a/drivers/staging/iio/accel/adis16201.h
++++ /dev/null
+@@ -1,144 +0,0 @@
+-#ifndef SPI_ADIS16201_H_
+-#define SPI_ADIS16201_H_
+-
+-#define ADIS16201_STARTUP_DELAY	220 /* ms */
+-
+-/* Flash memory write count */
+-#define ADIS16201_FLASH_CNT      0x00
+-
+-/* Output, power supply */
+-#define ADIS16201_SUPPLY_OUT     0x02
+-
+-/* Output, x-axis accelerometer */
+-#define ADIS16201_XACCL_OUT      0x04
+-
+-/* Output, y-axis accelerometer */
+-#define ADIS16201_YACCL_OUT      0x06
+-
+-/* Output, auxiliary ADC input */
+-#define ADIS16201_AUX_ADC        0x08
+-
+-/* Output, temperature */
+-#define ADIS16201_TEMP_OUT       0x0A
+-
+-/* Output, x-axis inclination */
+-#define ADIS16201_XINCL_OUT      0x0C
+-
+-/* Output, y-axis inclination */
+-#define ADIS16201_YINCL_OUT      0x0E
+-
+-/* Calibration, x-axis acceleration offset */
+-#define ADIS16201_XACCL_OFFS     0x10
+-
+-/* Calibration, y-axis acceleration offset */
+-#define ADIS16201_YACCL_OFFS     0x12
+-
+-/* x-axis acceleration scale factor */
+-#define ADIS16201_XACCL_SCALE    0x14
+-
+-/* y-axis acceleration scale factor */
+-#define ADIS16201_YACCL_SCALE    0x16
+-
+-/* Calibration, x-axis inclination offset */
+-#define ADIS16201_XINCL_OFFS     0x18
+-
+-/* Calibration, y-axis inclination offset */
+-#define ADIS16201_YINCL_OFFS     0x1A
+-
+-/* x-axis inclination scale factor */
+-#define ADIS16201_XINCL_SCALE    0x1C
+-
+-/* y-axis inclination scale factor */
+-#define ADIS16201_YINCL_SCALE    0x1E
+-
+-/* Alarm 1 amplitude threshold */
+-#define ADIS16201_ALM_MAG1       0x20
+-
+-/* Alarm 2 amplitude threshold */
+-#define ADIS16201_ALM_MAG2       0x22
+-
+-/* Alarm 1, sample period */
+-#define ADIS16201_ALM_SMPL1      0x24
+-
+-/* Alarm 2, sample period */
+-#define ADIS16201_ALM_SMPL2      0x26
+-
+-/* Alarm control */
+-#define ADIS16201_ALM_CTRL       0x28
+-
+-/* Auxiliary DAC data */
+-#define ADIS16201_AUX_DAC        0x30
+-
+-/* General-purpose digital input/output control */
+-#define ADIS16201_GPIO_CTRL      0x32
+-
+-/* Miscellaneous control */
+-#define ADIS16201_MSC_CTRL       0x34
+-
+-/* Internal sample period (rate) control */
+-#define ADIS16201_SMPL_PRD       0x36
+-
+-/* Operation, filter configuration */
+-#define ADIS16201_AVG_CNT        0x38
+-
+-/* Operation, sleep mode control */
+-#define ADIS16201_SLP_CNT        0x3A
+-
+-/* Diagnostics, system status register */
+-#define ADIS16201_DIAG_STAT      0x3C
+-
+-/* Operation, system command register */
+-#define ADIS16201_GLOB_CMD       0x3E
+-
+-/* MSC_CTRL */
+-
+-/* Self-test enable */
+-#define ADIS16201_MSC_CTRL_SELF_TEST_EN	        BIT(8)
+-
+-/* Data-ready enable: 1 = enabled, 0 = disabled */
+-#define ADIS16201_MSC_CTRL_DATA_RDY_EN	        BIT(2)
+-
+-/* Data-ready polarity: 1 = active high, 0 = active low */
+-#define ADIS16201_MSC_CTRL_ACTIVE_HIGH	        BIT(1)
+-
+-/* Data-ready line selection: 1 = DIO1, 0 = DIO0 */
+-#define ADIS16201_MSC_CTRL_DATA_RDY_DIO1	BIT(0)
+-
+-/* DIAG_STAT */
+-
+-/* Alarm 2 status: 1 = alarm active, 0 = alarm inactive */
+-#define ADIS16201_DIAG_STAT_ALARM2        BIT(9)
+-
+-/* Alarm 1 status: 1 = alarm active, 0 = alarm inactive */
+-#define ADIS16201_DIAG_STAT_ALARM1        BIT(8)
+-
+-/* SPI communications failure */
+-#define ADIS16201_DIAG_STAT_SPI_FAIL_BIT   3
+-
+-/* Flash update failure */
+-#define ADIS16201_DIAG_STAT_FLASH_UPT_BIT  2
+-
+-/* Power supply above 3.625 V */
+-#define ADIS16201_DIAG_STAT_POWER_HIGH_BIT 1
+-
+-/* Power supply below 3.15 V */
+-#define ADIS16201_DIAG_STAT_POWER_LOW_BIT  0
+-
+-/* GLOB_CMD */
+-
+-#define ADIS16201_GLOB_CMD_SW_RESET	BIT(7)
+-#define ADIS16201_GLOB_CMD_FACTORY_CAL	BIT(1)
+-
+-#define ADIS16201_ERROR_ACTIVE          BIT(14)
+-
+-enum adis16201_scan {
+-	ADIS16201_SCAN_ACC_X,
+-	ADIS16201_SCAN_ACC_Y,
+-	ADIS16201_SCAN_INCLI_X,
+-	ADIS16201_SCAN_INCLI_Y,
+-	ADIS16201_SCAN_SUPPLY,
+-	ADIS16201_SCAN_AUX_ADC,
+-	ADIS16201_SCAN_TEMP,
+-};
+-
+-#endif /* SPI_ADIS16201_H_ */
+diff --git a/drivers/staging/iio/accel/adis16201_core.c b/drivers/staging/iio/accel/adis16201_core.c
+index 7963d4a..210699e 100644
+--- a/drivers/staging/iio/accel/adis16201_core.c
++++ b/drivers/staging/iio/accel/adis16201_core.c
+@@ -20,7 +20,150 @@
+ #include <linux/iio/buffer.h>
+ #include <linux/iio/imu/adis.h>
+ 
+-#include "adis16201.h"
++#ifndef SPI_ADIS16201_H_
++#define SPI_ADIS16201_H_
++
++#define ADIS16201_STARTUP_DELAY	220 /* ms */
++
++/* Flash memory write count */
++#define ADIS16201_FLASH_CNT      0x00
++
++/* Output, power supply */
++#define ADIS16201_SUPPLY_OUT     0x02
++
++/* Output, x-axis accelerometer */
++#define ADIS16201_XACCL_OUT      0x04
++
++/* Output, y-axis accelerometer */
++#define ADIS16201_YACCL_OUT      0x06
++
++/* Output, auxiliary ADC input */
++#define ADIS16201_AUX_ADC        0x08
++
++/* Output, temperature */
++#define ADIS16201_TEMP_OUT       0x0A
++
++/* Output, x-axis inclination */
++#define ADIS16201_XINCL_OUT      0x0C
++
++/* Output, y-axis inclination */
++#define ADIS16201_YINCL_OUT      0x0E
++
++/* Calibration, x-axis acceleration offset */
++#define ADIS16201_XACCL_OFFS     0x10
++
++/* Calibration, y-axis acceleration offset */
++#define ADIS16201_YACCL_OFFS     0x12
++
++/* x-axis acceleration scale factor */
++#define ADIS16201_XACCL_SCALE    0x14
++
++/* y-axis acceleration scale factor */
++#define ADIS16201_YACCL_SCALE    0x16
++
++/* Calibration, x-axis inclination offset */
++#define ADIS16201_XINCL_OFFS     0x18
++
++/* Calibration, y-axis inclination offset */
++#define ADIS16201_YINCL_OFFS     0x1A
++
++/* x-axis inclination scale factor */
++#define ADIS16201_XINCL_SCALE    0x1C
++
++/* y-axis inclination scale factor */
++#define ADIS16201_YINCL_SCALE    0x1E
++
++/* Alarm 1 amplitude threshold */
++#define ADIS16201_ALM_MAG1       0x20
++
++/* Alarm 2 amplitude threshold */
++#define ADIS16201_ALM_MAG2       0x22
++
++/* Alarm 1, sample period */
++#define ADIS16201_ALM_SMPL1      0x24
++
++/* Alarm 2, sample period */
++#define ADIS16201_ALM_SMPL2      0x26
++
++/* Alarm control */
++#define ADIS16201_ALM_CTRL       0x28
++
++/* Auxiliary DAC data */
++#define ADIS16201_AUX_DAC        0x30
++
++/* General-purpose digital input/output control */
++#define ADIS16201_GPIO_CTRL      0x32
++
++/* Miscellaneous control */
++#define ADIS16201_MSC_CTRL       0x34
++
++/* Internal sample period (rate) control */
++#define ADIS16201_SMPL_PRD       0x36
++
++/* Operation, filter configuration */
++#define ADIS16201_AVG_CNT        0x38
++
++/* Operation, sleep mode control */
++#define ADIS16201_SLP_CNT        0x3A
++
++/* Diagnostics, system status register */
++#define ADIS16201_DIAG_STAT      0x3C
++
++/* Operation, system command register */
++#define ADIS16201_GLOB_CMD       0x3E
++
++/* MSC_CTRL */
++
++/* Self-test enable */
++#define ADIS16201_MSC_CTRL_SELF_TEST_EN	        BIT(8)
++
++/* Data-ready enable: 1 = enabled, 0 = disabled */
++#define ADIS16201_MSC_CTRL_DATA_RDY_EN	        BIT(2)
++
++/* Data-ready polarity: 1 = active high, 0 = active low */
++#define ADIS16201_MSC_CTRL_ACTIVE_HIGH	        BIT(1)
++
++/* Data-ready line selection: 1 = DIO1, 0 = DIO0 */
++#define ADIS16201_MSC_CTRL_DATA_RDY_DIO1	BIT(0)
++
++/* DIAG_STAT */
++
++/* Alarm 2 status: 1 = alarm active, 0 = alarm inactive */
++#define ADIS16201_DIAG_STAT_ALARM2        BIT(9)
++
++/* Alarm 1 status: 1 = alarm active, 0 = alarm inactive */
++#define ADIS16201_DIAG_STAT_ALARM1        BIT(8)
++
++/* SPI communications failure */
++#define ADIS16201_DIAG_STAT_SPI_FAIL_BIT   3
++
++/* Flash update failure */
++#define ADIS16201_DIAG_STAT_FLASH_UPT_BIT  2
++
++/* Power supply above 3.625 V */
++#define ADIS16201_DIAG_STAT_POWER_HIGH_BIT 1
++
++/* Power supply below 3.15 V */
++#define ADIS16201_DIAG_STAT_POWER_LOW_BIT  0
++
++/* GLOB_CMD */
++
++#define ADIS16201_GLOB_CMD_SW_RESET	BIT(7)
++#define ADIS16201_GLOB_CMD_FACTORY_CAL	BIT(1)
++
++#define ADIS16201_ERROR_ACTIVE          BIT(14)
++
++enum adis16201_scan {
++	ADIS16201_SCAN_ACC_X,
++	ADIS16201_SCAN_ACC_Y,
++	ADIS16201_SCAN_INCLI_X,
++	ADIS16201_SCAN_INCLI_Y,
++	ADIS16201_SCAN_SUPPLY,
++	ADIS16201_SCAN_AUX_ADC,
++	ADIS16201_SCAN_TEMP,
++};
++
++#endif /* SPI_ADIS16201_H_ */
+ 
+ static const u8 adis16201_addresses[] = {
+ 	[ADIS16201_SCAN_ACC_X] = ADIS16201_XACCL_OFFS,
+-- 
+2.7.4
+
 
