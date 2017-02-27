@@ -1,98 +1,124 @@
 X-GM-THRID: 6391852583766458368
-X-Received: by 10.46.69.7 with SMTP id s7mr2027032lja.18.1488223571046;
-        Mon, 27 Feb 2017 11:26:11 -0800 (PST)
+X-Received: by 10.157.32.105 with SMTP id n96mr7048330ota.8.1488219167039;
+        Mon, 27 Feb 2017 10:12:47 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.69.7 with SMTP id s7ls506598lja.48.gmail; Mon, 27 Feb 2017
- 11:26:09 -0800 (PST)
-X-Received: by 10.46.76.17 with SMTP id z17mr1991868lja.13.1488223569573;
-        Mon, 27 Feb 2017 11:26:09 -0800 (PST)
-Return-Path: <joe@perches.com>
-Received: from smtprelay.hostedemail.com (smtprelay0078.hostedemail.com. [216.40.44.78])
-        by gmr-mx.google.com with ESMTPS id f7si879151wmg.3.2017.02.27.11.26.07
+Received: by 10.157.11.133 with SMTP id 5ls12078540oth.45.gmail; Mon, 27 Feb
+ 2017 10:12:46 -0800 (PST)
+X-Received: by 10.157.80.148 with SMTP id b20mr6675796oth.31.1488219165994;
+        Mon, 27 Feb 2017 10:12:45 -0800 (PST)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id h130si3263194pfe.1.2017.02.27.10.12.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 27 Feb 2017 11:26:07 -0800 (PST)
-Received-SPF: neutral (google.com: 216.40.44.78 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.78;
+        Mon, 27 Feb 2017 10:12:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 216.40.44.78 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
-	by smtprelay05.hostedemail.com (Postfix) with ESMTP id B35802693A1;
-	Mon, 27 Feb 2017 19:25:33 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,:::::::::::::,RULES_HIT:41:355:379:541:599:800:960:973:988:989:1260:1277:1311:1313:1314:1345:1359:1373:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3353:3622:3865:3871:3874:4321:4605:5007:7514:10004:10400:10848:11026:11232:11473:11657:11658:11914:12043:12296:12438:12555:12740:12760:12895:13069:13311:13357:13439:14096:14097:14181:14659:14721:14877:21080:21451:30054:30080:30091,0,RBL:none,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:fn,MSBL:0,DNSBL:none,Custom_rules:0:0:0,LFtime:4,LUA_SUMMARY:none
-X-HE-Tag: dad80_4d5df765b7a05
-X-Filterd-Recvd-Size: 2657
-Received: from XPS-9350 (unknown [47.151.132.55])
-	(Authenticated sender: joe@perches.com)
-	by omf05.hostedemail.com (Postfix) with ESMTPA;
-	Mon, 27 Feb 2017 19:25:31 +0000 (UTC)
-Message-ID: <1488223529.25838.8.camel@perches.com>
-Subject: Re: [PATCH 1/5] staging: lustre: Remove unnecessary else after
- return
-From: Joe Perches <joe@perches.com>
-To: simran singhal <singhalsimran0@gmail.com>, gregkh@linuxfoundation.org
-Cc: lustre-devel@lists.lustre.org, devel@driverdev.osuosl.org, 
-	linux-kernel@vger.kernel.org, linux-fbdev@vger.kernel.org, 
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x242.google.com with SMTP id o64so4744969pfb.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 27 Feb 2017 10:12:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=wx6bHQpmQFtE0dCgqA4sgIhd/wbk75lNMGZ8nPdw62M=;
+        b=DSJX7o7+sU2h7YGJkJ/YVr8T6p6sQP8tV0U6fDTjdrWWaXvB7VgdLMSLEg3eEZUymI
+         0ZPeD/fKqonD+enm1XwgSl2jS3Df20bdmfbVektYdj7aXjlj/B52X5d6MxANcx7cyIF0
+         AvRG19CEGLxYjypPPfQC/r6qs/OuCh/UL1MZha5AUz/Xlsh/5+SyLRZtFi9rXjJozxYT
+         jaQ0w1ahJ/gPibW242P92huhP3LeNVjC1tN4zi61GBxaSMghiHMuoxtjVvZZwHNUH0i2
+         C3z7X0ISPc0USWEMsN0gfaTelSlYOwCWZVl3E5HDUp4xON6OPVFAb+COwn578BCE6pfd
+         7paw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=wx6bHQpmQFtE0dCgqA4sgIhd/wbk75lNMGZ8nPdw62M=;
+        b=L8GzkweMW5/Ipq4e5yfZtp7u18JTZoVTn89yWvm6N+kNfbSm+zsRGwjNhaXbB/UGAM
+         dGOKXgIjJRRFiMqAEFD61EPkCSjqasFNCp5sRYmVSuJ/pH8RQczohJWm4WfdMqbmESdk
+         O5jYAMusfcEqfIoAnq4rER2fldWhsPIAn4l72FnXSQEy4RZ6QkWxpAelB/uSDyzZAWuB
+         ANacLuGTG2+JSCUr0CaEfm/GwlGHXtS8SKpPInYsgWM0FuVB8GjlClVD1C222+ApZ5ya
+         iQOTxfN7XSLHgEefKA9zfnK9utK2OUN8f5ihG+4E6eyTbHFHCh9+DKPl2ndc0fKDVg/b
+         jhqQ==
+X-Gm-Message-State: AMke39nXyvVLmAo1BpZthQCfRissWSwP2gotb16TuxqoFCJOG6Iy4SMc97pp/n0SYSf8zw==
+X-Received: by 10.99.101.131 with SMTP id z125mr22173728pgb.218.1488219165783;
+        Mon, 27 Feb 2017 10:12:45 -0800 (PST)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from singhal-Inspiron-5558 ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id p66sm31927359pfb.88.2017.02.27.10.12.44
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 27 Feb 2017 10:12:44 -0800 (PST)
+From: simran singhal <singhalsimran0@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: lustre-devel@lists.lustre.org,
+	devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	linux-fbdev@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
-Date: Mon, 27 Feb 2017 11:25:29 -0800
+Subject: [PATCH 5/5] staging: gdm724x: Remove unnecessary else after return
+Date: Mon, 27 Feb 2017 23:44:28 +0530
+Message-Id: <1488219268-3006-5-git-send-email-singhalsimran0@gmail.com>
+X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1488219268-3006-1-git-send-email-singhalsimran0@gmail.com>
 References: <1488219268-3006-1-git-send-email-singhalsimran0@gmail.com>
-Content-Type: text/plain; charset="ISO-8859-1"
-X-Mailer: Evolution 3.22.3-0ubuntu0.1 
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 
-On Mon, 2017-02-27 at 23:44 +0530, simran singhal wrote:
-> This patch fixes the checkpatch warning that else is not generally
-> useful after a break or return.
+This patch fixes the checkpatch warning that else is not generally
+useful after a break or return.
 
-checkpatch doesn't actually warn for this style
+This was done using Coccinelle:
+@@
+expression e2;
+statement s1;
+@@
+if(e2) { ... return ...; }
+-else
+         s1
 
-	if (foo)
-		return bar;
-	else
-		return baz;
+Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+---
+ drivers/staging/gdm724x/gdm_endian.c | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
 
-> @@
-> expression e2;
-> statement s1;
-> @@
-> if(e2) { ... return ...; }
-> -else
->          s1
-> 
-> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
-> ---
->  drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c | 3 +--
->  drivers/staging/lustre/lustre/ldlm/ldlm_pool.c      | 3 +--
->  2 files changed, 2 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
-> index fbbd8a5..02d49b7 100644
-> --- a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
-> +++ b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
-> @@ -1806,8 +1806,7 @@ ksocknal_close_matching_conns(struct lnet_process_id id, __u32 ipaddr)
->  
->  	if (!count)
->  		return -ENOENT;
-> -	else
-> -		return 0;
-> +	return 0;
->  }
->  
->  void
-> diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_pool.c b/drivers/staging/lustre/lustre/ldlm/ldlm_pool.c
-> index cf3fc57..ac32c82 100644
-> --- a/drivers/staging/lustre/lustre/ldlm/ldlm_pool.c
-> +++ b/drivers/staging/lustre/lustre/ldlm/ldlm_pool.c
-> @@ -338,8 +338,7 @@ static int ldlm_cli_pool_shrink(struct ldlm_pool *pl,
->  
->  	if (nr == 0)
->  		return (unused / 100) * sysctl_vfs_cache_pressure;
-> -	else
-> -		return ldlm_cancel_lru(ns, nr, LCF_ASYNC, LDLM_LRU_FLAG_SHRINK);
-> +	return ldlm_cancel_lru(ns, nr, LCF_ASYNC, LDLM_LRU_FLAG_SHRINK);
->  }
->  
->  static const struct ldlm_pool_ops ldlm_cli_pool_ops = {
+diff --git a/drivers/staging/gdm724x/gdm_endian.c b/drivers/staging/gdm724x/gdm_endian.c
+index d0b43e2..4ef728f 100644
+--- a/drivers/staging/gdm724x/gdm_endian.c
++++ b/drivers/staging/gdm724x/gdm_endian.c
+@@ -26,30 +26,26 @@ __dev16 gdm_cpu_to_dev16(struct gdm_endian *ed, u16 x)
+ {
+ 	if (ed->dev_ed == ENDIANNESS_LITTLE)
+ 		return (__force __dev16)cpu_to_le16(x);
+-	else
+-		return (__force __dev16)cpu_to_be16(x);
++	return (__force __dev16)cpu_to_be16(x);
+ }
+ 
+ u16 gdm_dev16_to_cpu(struct gdm_endian *ed, __dev16 x)
+ {
+ 	if (ed->dev_ed == ENDIANNESS_LITTLE)
+ 		return le16_to_cpu((__force __le16)x);
+-	else
+-		return be16_to_cpu((__force __be16)x);
++	return be16_to_cpu((__force __be16)x);
+ }
+ 
+ __dev32 gdm_cpu_to_dev32(struct gdm_endian *ed, u32 x)
+ {
+ 	if (ed->dev_ed == ENDIANNESS_LITTLE)
+ 		return (__force __dev32)cpu_to_le32(x);
+-	else
+-		return (__force __dev32)cpu_to_be32(x);
++	return (__force __dev32)cpu_to_be32(x);
+ }
+ 
+ u32 gdm_dev32_to_cpu(struct gdm_endian *ed, __dev32 x)
+ {
+ 	if (ed->dev_ed == ENDIANNESS_LITTLE)
+ 		return le32_to_cpu((__force __le32)x);
+-	else
+-		return be32_to_cpu((__force __be32)x);
++	return be32_to_cpu((__force __be32)x);
+ }
+-- 
+2.7.4
+
 
