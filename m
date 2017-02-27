@@ -1,167 +1,114 @@
 X-GM-THRID: 6391488130164195328
-X-Received: by 10.223.162.155 with SMTP id s27mr423820wra.7.1488203734238;
-        Mon, 27 Feb 2017 05:55:34 -0800 (PST)
+X-Received: by 10.99.105.5 with SMTP id e5mr6104775pgc.0.1488199909193;
+        Mon, 27 Feb 2017 04:51:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.80.22 with SMTP id e22ls442206ljb.12.gmail; Mon, 27 Feb
- 2017 05:55:32 -0800 (PST)
-X-Received: by 10.25.145.17 with SMTP id t17mr1714571lfd.23.1488203732952;
-        Mon, 27 Feb 2017 05:55:32 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id f7si812309wmg.3.2017.02.27.05.55.32
+Received: by 10.36.57.9 with SMTP id l9ls2130717ita.1.gmail; Mon, 27 Feb 2017
+ 04:51:48 -0800 (PST)
+X-Received: by 10.107.171.196 with SMTP id u187mr5889764ioe.30.1488199908343;
+        Mon, 27 Feb 2017 04:51:48 -0800 (PST)
+Return-Path: <aishpant@gmail.com>
+Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
+        by gmr-mx.google.com with ESMTPS id u12si3299123pfd.3.2017.02.27.04.51.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 27 Feb 2017 05:55:32 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Mon, 27 Feb 2017 04:51:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.35,214,1484002800"; 
-   d="scan'208";a="214869502"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 27 Feb 2017 14:55:32 +0100
-Date: Mon, 27 Feb 2017 14:55:23 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Aishwarya Pant <aishpant@gmail.com>
-cc: Lidza Louina <lidza.louina@gmail.com>, Mark Hounschell <markh@compro.net>, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-    outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: dgnc: replace udelay with
- usleep_range
-In-Reply-To: <20170227114637.GA2158@aishwarya>
-Message-ID: <alpine.DEB.2.20.1702271453490.3032@hadrien>
-References: <20170226183806.GA3498@aishwarya> <alpine.DEB.2.20.1702262000560.2056@hadrien> <20170227114637.GA2158@aishwarya>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x241.google.com with SMTP id x17so949557pgi.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 27 Feb 2017 04:51:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=QKvNRJeINedwux0GFxSJ+EITwAftdFdcwJfFwkxjYdQ=;
+        b=BBC65lGTzlukPLSXdxUjkcwx4H9TDNqEE+sotHfcSFODtzfuzzt8uxDnRfrQ5Jut3l
+         hAssLoELULDwsVMOnMDT5XItjaoF6Nad2Lghd+T4CbMA8ipMsQa5RljjmJbHSYLDR/22
+         4ByxEoXEOWTNX7iz4pBbdOu95kIVmdNXORs4FKUncP6ZhT/uGeE8CwENin/XQ08PAl6m
+         L8CSnQ27DBxqczxaDHMksmA/mLGi+aN2NtBBwoztUNq0VghOxwk+G0Rdp5Ku0c6ghnzi
+         cSD5d44aN5sN0QTvFDQpeJU2mzdvr8es2pYu6cGnTxb7CATJQj85F5RCux1SLAZlBaPD
+         TaRA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=QKvNRJeINedwux0GFxSJ+EITwAftdFdcwJfFwkxjYdQ=;
+        b=d7Gj5aUZTCHMTw8WoSkWsu05rg3f2SVOBqKMmMkZF2kOCoDpbgwsGLNydPH25GIp9r
+         pKdBDDpOLZvdCVBq6SsNf8UShpJk9wPJP7yve5vrxxTf44MJBhEZYL4PmNYpoH0GCqXD
+         hwiXqObs9Q1jv2v8yJjUfXQQirF1taJ+RjBpofELimy7tM+3tv2lBCryF52dJZm42OCj
+         dJQ0z0iFFw+fE97780EgfK6I9xYazuJSXdp2i29LB66suqcubl35rXJB/1fgLEd/TQuu
+         r8Hx+j0C4AC+VZtdeRIqlgTRlGKugoFgtl6nCpUhLu6txqkXTzAc3oDMV0wt8U0PnqGn
+         ugyQ==
+X-Gm-Message-State: AMke39mc65ck5YMSLPyX/rl+O4fr3GSu5E73uFnAbavE5jjJGXxYq304fME0JHUBduACRw==
+X-Received: by 10.98.9.14 with SMTP id e14mr20455344pfd.117.1488199908112;
+        Mon, 27 Feb 2017 04:51:48 -0800 (PST)
+Return-Path: <aishpant@gmail.com>
+Received: from aishwarya ([121.244.155.9])
+        by smtp.gmail.com with ESMTPSA id b77sm19088790pfl.2.2017.02.27.04.51.46
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 27 Feb 2017 04:51:47 -0800 (PST)
+Date: Mon, 27 Feb 2017 18:16:33 +0530
+From: Aishwarya Pant <aishpant@gmail.com>
+To: Lidza Louina <lidza.louina@gmail.com>,
+	Mark Hounschell <markh@compro.net>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH v2] staging: dgnc: replace udelay with usleep_range
+Message-ID: <20170227124633.GA3008@aishwarya>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
+Fix checkpatch warning on dgnc_cls.c : CHECK usleep_range
+is preferred over udelay. There are two ocurrences of udelay
+in non-atomic context that can be safely replaced by
+usleep_range(t, t + delta). Pick delta as t (as t is between
+10 and 20 microseconds).
 
+Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
+---
+Changes in v2:
+	- Revert usage of usleep_range in atomic context
+	- Clean-up the commit message
+---
+ drivers/staging/dgnc/dgnc_cls.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-On Mon, 27 Feb 2017, Aishwarya Pant wrote:
+diff --git a/drivers/staging/dgnc/dgnc_cls.c b/drivers/staging/dgnc/dgnc_cls.c
+index 2cf146e..368c6ba 100644
+--- a/drivers/staging/dgnc/dgnc_cls.c
++++ b/drivers/staging/dgnc/dgnc_cls.c
+@@ -16,7 +16,7 @@
+ #include <linux/kernel.h>
+ #include <linux/sched.h>	/* For jiffies, task states */
+ #include <linux/interrupt.h>	/* For tasklet and interrupt structs/defines */
+-#include <linux/delay.h>	/* For usleep_range */
++#include <linux/delay.h>	/* For udelay and usleep_range */
+ #include <linux/io.h>		/* For read[bwl]/write[bwl] */
+ #include <linux/serial.h>	/* For struct async_serial */
+ #include <linux/serial_reg.h>	/* For the various UART offsets */
+@@ -609,7 +609,7 @@ static void cls_flush_uart_write(struct channel_t *ch)
+ 
+ 	writeb((UART_FCR_ENABLE_FIFO | UART_FCR_CLEAR_XMIT),
+ 	       &ch->ch_cls_uart->isr_fcr);
+-	usleep_range(10, 20);
++	udelay(10);
+ 
+ 	ch->ch_flags |= (CH_TX_FIFO_EMPTY | CH_TX_FIFO_LWM);
+ }
+@@ -631,7 +631,7 @@ static void cls_flush_uart_read(struct channel_t *ch)
+ 	 * Presumably, this is a bug in this UART.
+ 	 */
+ 
+-	usleep_range(10, 20);
++	udelay(10);
+ }
+ 
+ /*
+-- 
+2.7.4
 
-> On Sun, Feb 26, 2017 at 08:02:56PM +0100, Julia Lawall wrote:
-> >
-> >
-> > On Mon, 27 Feb 2017, Aishwarya Pant wrote:
-> >
-> > > Adding first patch for checkpatch warning on dgnc_cls.c -
-> >
-> > What do you mean by "Adding first patch"?
-> >
-> > Actually, commit messages should be written in the imperative (as you have
-> > for the subject line), and should describe what you do and why.
-> >
-> > > CHECK: usleep_range is preferred over udelay; see Documentation/timers/timers-howto.txt
-> >
-> > Also commit messages should be limited to around 70 characters or so per
-> > line.
-> >
-> > How did you choose 20 as the upper bound?
-> >
-> > julia
-> >
->
-> From what I've read of `udelay` and `usleep_range` from the
-> documentation, this is what I understand:
->
-> udelay(t) initiates a busy-wait loop. This means it's taking up CPU
-> execution cycles to do work. Useful for atomic transactions as we'd like
-> to prevent other processes from doing work. Because it depends on CPU
-> frequency, the delay is sometimes more than t microseconds.
->
-> To sleep for precisely t microseconds without depending on CPU
-> frequency, we utilise hrtimers (high resolution timers), which are
-> implemented as callbacks. No CPU cycles are spent, a notification
-> (interrupt) is received when delay period is over.
-> It is possible to use usleep_range(t, t) for precision, but if we use
-> this pattern throughout too many interrupts will be triggered - a big
-> overhead. If the range is sufficiently large, one optimisation the
-> kernel can make is to coalesce wakeups for efficiency. We should use
-> usleep_range as usleep_range(t, t + delta). A safe choice for delta is t
-> , so we have - usleep_range(t, 2*t)
-> (Another recommendation is that t lie between 10 and 20 microseconds, so
-> the choice of delta seems safe).
->
-> In the end, usleep_range is precise within a defined window of
-> (LOWER_LIMIT, UPPER_LIMIT)
->
-> I have a couple of questions about usleep_range  -
->
-> -- What are the other wake-ups that we can coalesce (any example)?
->
-> -- "The larger a range you supply, the greater a chance that you will
-> not trigger an interrupt." Our goal is to trigger an interrupt, so that
-> we can end delay. How is end delay handled then?
-
-Thanks for the very nice explanation.  You could add to your commit
-message that you chose the upper limit based on the suggestions in XXX.
-
-I don't know the answer to the other questions, but maybe someone else can
-help out.
-
-julia
-
-
->
-> --
-> Cheers
-> Aishwarya Pant
->
-> > >
-> > > Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
-> > > ---
-> > >  drivers/staging/dgnc/dgnc_cls.c | 8 ++++----
-> > >  1 file changed, 4 insertions(+), 4 deletions(-)
-> > >
-> > > diff --git a/drivers/staging/dgnc/dgnc_cls.c b/drivers/staging/dgnc/dgnc_cls.c
-> > > index c20ffdd..2cf146e 100644
-> > > --- a/drivers/staging/dgnc/dgnc_cls.c
-> > > +++ b/drivers/staging/dgnc/dgnc_cls.c
-> > > @@ -16,7 +16,7 @@
-> > >  #include <linux/kernel.h>
-> > >  #include <linux/sched.h>	/* For jiffies, task states */
-> > >  #include <linux/interrupt.h>	/* For tasklet and interrupt structs/defines */
-> > > -#include <linux/delay.h>	/* For udelay */
-> > > +#include <linux/delay.h>	/* For usleep_range */
-> > >  #include <linux/io.h>		/* For read[bwl]/write[bwl] */
-> > >  #include <linux/serial.h>	/* For struct async_serial */
-> > >  #include <linux/serial_reg.h>	/* For the various UART offsets */
-> > > @@ -409,7 +409,7 @@ static void cls_assert_modem_signals(struct channel_t *ch)
-> > >  	writeb(out, &ch->ch_cls_uart->mcr);
-> > >
-> > >  	/* Give time for the UART to actually drop the signals */
-> > > -	udelay(10);
-> > > +	usleep_range(10, 20);
-> > >  }
-> > >
-> > >  static void cls_copy_data_from_queue_to_uart(struct channel_t *ch)
-> > > @@ -631,7 +631,7 @@ static void cls_flush_uart_read(struct channel_t *ch)
-> > >  	 * Presumably, this is a bug in this UART.
-> > >  	 */
-> > >
-> > > -	udelay(10);
-> > > +	usleep_range(10, 20);
-> > >  }
-> > >
-> > >  /*
-> > > @@ -1096,7 +1096,7 @@ static void cls_uart_init(struct channel_t *ch)
-> > >
-> > >  	writeb(UART_FCR_ENABLE_FIFO | UART_FCR_CLEAR_RCVR | UART_FCR_CLEAR_XMIT,
-> > >  	       &ch->ch_cls_uart->isr_fcr);
-> > > -	udelay(10);
-> > > +	usleep_range(10, 20);
-> > >
-> > >  	ch->ch_flags |= (CH_FIFO_ENABLED | CH_TX_FIFO_EMPTY | CH_TX_FIFO_LWM);
-> > >
-> > > --
-> > > 2.7.4
-> > >
-> > > --
-> > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170226183806.GA3498%40aishwarya.
-> > > For more options, visit https://groups.google.com/d/optout.
-> > >
->
 
