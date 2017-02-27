@@ -1,107 +1,59 @@
-X-GM-THRID: 6329487812602101760
-X-Received: by 10.157.46.36 with SMTP id q33mr16690037otb.40.1473698721129;
-        Mon, 12 Sep 2016 09:45:21 -0700 (PDT)
+X-GM-THRID: 6391667528691613696
+X-Received: by 10.157.10.165 with SMTP id 34mr5647263otq.76.1488187364672;
+        Mon, 27 Feb 2017 01:22:44 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.10.23 with SMTP id 23ls11331389otg.44.gmail; Mon, 12 Sep
- 2016 09:45:20 -0700 (PDT)
-X-Received: by 10.13.203.69 with SMTP id n66mr4266302ywd.42.1473698720723;
-        Mon, 12 Sep 2016 09:45:20 -0700 (PDT)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id 142si2608999pfx.2.2016.09.12.09.45.20
+Received: by 10.107.6.194 with SMTP id f63ls3284892ioi.26.gmail; Mon, 27 Feb
+ 2017 01:22:43 -0800 (PST)
+X-Received: by 10.36.33.66 with SMTP id e63mr3967582ita.38.1488187363936;
+        Mon, 27 Feb 2017 01:22:43 -0800 (PST)
+Return-Path: <lars@metafoo.de>
+Received: from www381.your-server.de (www381.your-server.de. [78.46.137.84])
+        by gmr-mx.google.com with ESMTPS id r6si1371031ywb.6.2017.02.27.01.22.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Sep 2016 09:45:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Mon, 27 Feb 2017 01:22:43 -0800 (PST)
+Received-SPF: neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) client-ip=78.46.137.84;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id 128so8330694pfb.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Sep 2016 09:45:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=3RDSgFWlriIh9A3mZ29pV9UBf/BTdgM9Zha+tbqmQAQ=;
-        b=JZEotzzJpT11+GKsCim3xbuB16qHqCVmjA4UY+R4lV0Vtr7KA1FBfnfvrypNWK/mOk
-         /7ns1yEs/vEaF1DDR8AES6n5MePHrE4jnyMXiDfyhCWw/iKWyMv1NTymzCCzynVAnzXv
-         JJ6emC8PGq3qUr4xLwdRgv/EkKFy8ta335WV3+rO4W3pIybvLDE8Evdva+7KyifZlkwd
-         d9LHDIWAn6FL1HbufPAockJMvFtyMlYNH2X2WXdziK5pxcsbQVBXSjbfTXD8m5r/jZHX
-         9zuQH8/VGXm5tIYI4JzMg04ThZ9i7SnvQ12TFvMm7/SrlnS3yDW/TM6B3Fkk4jraO1Pq
-         VK3Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=3RDSgFWlriIh9A3mZ29pV9UBf/BTdgM9Zha+tbqmQAQ=;
-        b=J2aBGJNSkA4AWNDy56kOGBXM8JiMZbvHD89tvRmz4JhWuFmrkoOUJzZN6hBneLDEkf
-         TZbHXFXlJYy2nqDzQVXvNui1vHraKoRAeu48WQ9sKKiK/P4sR7qMqQgRAuWgmI+3fx+O
-         NlZDjAHtpndAmGVJ1OIix0vBq/gVPP0eMeBVeYUA0JGRZSh3f3J+kUwg3Bwy7yJfu/zI
-         330qQZFnlpaC4hzhgGRrq01RKzhcv38nEFBVA2JzzHp6CIx/PNlFBfuFDjwdbRXA6ChO
-         vTwS6VJUUYbUxk3tlteSydQruTDQV5pIw74vfs3Pq3e4H76zZdBR0eJ73ytuD6DGis4R
-         ZWhQ==
-X-Gm-Message-State: AE9vXwNx48VKDYJ64O22keeVheiQIxMR018cDgQR8vP41oxyFGbg+l230xUWDMpTUqIPMw==
-X-Received: by 10.98.96.193 with SMTP id u184mr35080848pfb.85.1473698720330;
-        Mon, 12 Sep 2016 09:45:20 -0700 (PDT)
-Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id d5sm25787234pfc.4.2016.09.12.09.45.17
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 12 Sep 2016 09:45:19 -0700 (PDT)
-From: gs0510 <gs051095@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	wsa+renesas@sang-engineering.com,
-	gs0510 <gs051095@gmail.com>
-Subject: [PATCH] Moved the trailing comment end quote to next line.
-Date: Mon, 12 Sep 2016 22:14:40 +0530
-Message-Id: <20160912164440.9174-1-gs051095@gmail.com>
-X-Mailer: git-send-email 2.9.2
+       spf=neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) smtp.mailfrom=lars@metafoo.de
+Received: from [88.198.220.132] (helo=sslproxy03.your-server.de)
+	by www381.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
+	(Exim 4.85_2)
+	(envelope-from <lars@metafoo.de>)
+	id 1ciHVy-0005Wu-Og; Mon, 27 Feb 2017 10:22:42 +0100
+Received: from [93.104.175.213] (helo=[192.168.178.44])
+	by sslproxy03.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-SHA:256)
+	(Exim 4.84_2)
+	(envelope-from <lars@metafoo.de>)
+	id 1ciHVy-0007ty-3E; Mon, 27 Feb 2017 10:22:42 +0100
+Subject: Re: [PATCH] staging: iio: ad5933: move contents of header file to
+ source file
+To: Gargi Sharma <gs051095@gmail.com>, outreachy-kernel@googlegroups.com
+References: <1488175928-15013-1-git-send-email-gs051095@gmail.com>
+Cc: gregkh@linuxfoundation.org, Michael.Hennerich@analog.com,
+ jic23@kernel.org, pmeerw@pmeerw.net, knaack.h@gmx.de,
+ linux-iio@vger.kernel.org
+From: Lars-Peter Clausen <lars@metafoo.de>
+Message-ID: <bd8f137a-b23d-f7a7-936e-78e7e9f25611@metafoo.de>
+Date: Mon, 27 Feb 2017 10:22:41 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+ Icedove/45.6.0
+MIME-Version: 1.0
+In-Reply-To: <1488175928-15013-1-git-send-email-gs051095@gmail.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Authenticated-Sender: lars@metafoo.de
+X-Virus-Scanned: Clear (ClamAV 0.99.2/23137/Mon Feb 27 05:53:15 2017)
 
-Checkpatch displays error that the comment endings should be in separate
-line, should not end in the same line as the comment.
+On 02/27/2017 07:12 AM, Gargi Sharma wrote:
+> The contents of the header file are used only by this single
+> source file.  Move content into .c and remove .h.
+> 
+> Signed-off-by: Gargi Sharma <gs051095@gmail.com>
 
-Signed-off-by: Gargi Sharma <gs051095@gmail.com>
----
- drivers/staging/ks7010/eap_packet.h | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+Hi,
 
-diff --git a/drivers/staging/ks7010/eap_packet.h b/drivers/staging/ks7010/eap_packet.h
-index 16a392a..0a9ab097 100644
---- a/drivers/staging/ks7010/eap_packet.h
-+++ b/drivers/staging/ks7010/eap_packet.h
-@@ -52,15 +52,18 @@ struct ieee802_1x_eapol_key {
- 	unsigned char type;
- 	unsigned short key_length;
- 	/* does not repeat within the life of the keying material used to
--	 * encrypt the Key field; 64-bit NTP timestamp MAY be used here */
-+	 * encrypt the Key field; 64-bit NTP timestamp MAY be used here
-+	*/
- 	unsigned char replay_counter[IEEE8021X_REPLAY_COUNTER_LEN];
- 	unsigned char key_iv[IEEE8021X_KEY_IV_LEN];	/* cryptographically random number */
- 	unsigned char key_index;	/* key flag in the most significant bit:
- 					 * 0 = broadcast (default key),
- 					 * 1 = unicast (key mapping key); key index is in the
--					 * 7 least significant bits */
-+					 * 7 least significant bits
-+					 */
- 	/* HMAC-MD5 message integrity check computed with MS-MPPE-Send-Key as
--	 * the key */
-+	 * the key
-+	*/
- 	unsigned char key_signature[IEEE8021X_KEY_SIGN_LEN];
- 
- 	/* followed by key: if packet body length = 44 + key length, then the
-@@ -68,7 +71,8 @@ struct ieee802_1x_eapol_key {
- 	 * if packet body length = 44, key field is absent and key_length
- 	 * represents the number of least significant octets from
- 	 * MS-MPPE-Send-Key attribute to be used as the keying material;
--	 * RC4 key used in encryption = Key-IV + MS-MPPE-Recv-Key */
-+	 * RC4 key used in encryption = Key-IV + MS-MPPE-Recv-Key
-+	*/
- } __attribute__ ((packed));
- 
- #define WPA_NONCE_LEN 32
--- 
-2.9.2
+The subject of the patch doesn't quite match th content. Anyway the platform
+data should stay in the header file since it is supposed to be used outside
+of the driver.
 
 
