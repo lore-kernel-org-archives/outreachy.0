@@ -1,104 +1,112 @@
-X-GM-THRID: 6532867526079021056
-X-Received: by 10.55.74.70 with SMTP id x67mr3516509qka.7.1521051751850;
-        Wed, 14 Mar 2018 11:22:31 -0700 (PDT)
+X-GM-THRID: 6391449518367309824
+X-Received: by 10.13.192.1 with SMTP id b1mr6882077ywd.54.1488229891691;
+        Mon, 27 Feb 2017 13:11:31 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.200.16.131 with SMTP id a3ls1398984qtj.4.gmail; Wed, 14 Mar
- 2018 11:22:30 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELtfcDD6wUw55HSVN8aAqoO8fqU3YyDWT5CQdRmlTg5+iKzBbGpvrScN6mIcc6jLFfH9IADI
-X-Received: by 10.237.38.225 with SMTP id q88mr3695266qtd.5.1521051750926;
-        Wed, 14 Mar 2018 11:22:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521051750; cv=none;
-        d=google.com; s=arc-20160816;
-        b=wBoJ0qFg2FxVrZNH32B3QUhxuwtAk9GkDUW1xBkaYhue/XxOWBaSIUTiFV5VEF0cso
-         1XCbl8XdmyT4oh9EeqfGmkPfUIAzcT9CieruS3g/aUah7adXAz/Kcd21Dm0pqUCwLr/k
-         cPClgXGNHmVeB8YRqfdkOXV1+03ikdlQUa438Am65OYdK6FPxTpxiWoikTV0EgzjFmJI
-         Rt9JX9EitwGz5klPAFhFzQBDQzbDdaKpQkTzZ4RN+PL77+iIXS7O9M2nBUC3R4l5NiSf
-         ibxqNUVfHfmuN5QdWpI7IaDeL4gTMfNHt6I32w0FGKmZWkqY+I9ynrr5iF0JYlxa1evq
-         08VQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=NE8x0+rDCa7RpGcddJ8BpVYqcU+c36mRpNbi86M/rQU=;
-        b=J4wePNxxS4OCCCdcwF5jmv7cmANfhS00onb0WT+yz9GH0gmMJudmDWHfHkd1iNtM79
-         xocj9H50RYIQ+P/qvDvxA+cnC75YTKCYe6jZ/eX2QwbAndfXjEeia4YvB7icNodtZ+tS
-         cv5J/yBaPbQ8I0l5ZMSowC4es4fHKaLqDsgtiQh82z9LVCC/sBhEyI+HAVbJeg806bqG
-         PfvHZFmd20tgMA5zuTpSu7EwtfzjhVFOUPn7FekRRCclUq2a6PwfxbOsLmv3oD3vMo0m
-         xw4MMjaS/mn/bgTXc95V6YBDmkoEaM0+bYJaGNP/pfGEeRiZz09z7O5YglMJYXrrkXnm
-         +VNw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=L39rLlgZ;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id f40si208112qta.5.2018.03.14.11.22.30
+Received: by 10.157.32.196 with SMTP id x62ls14526543ota.32.gmail; Mon, 27 Feb
+ 2017 13:11:31 -0800 (PST)
+X-Received: by 10.159.32.79 with SMTP id 73mr4887883uam.32.1488229891356;
+        Mon, 27 Feb 2017 13:11:31 -0800 (PST)
+Received: by 10.202.59.84 with SMTP id i81msoia;
+        Mon, 27 Feb 2017 12:29:20 -0800 (PST)
+X-Received: by 10.36.38.203 with SMTP id v194mr4622853itv.33.1488227360134;
+        Mon, 27 Feb 2017 12:29:20 -0800 (PST)
+Return-Path: <me@tobin.cc>
+Received: from out4-smtp.messagingengine.com (out4-smtp.messagingengine.com. [66.111.4.28])
+        by gmr-mx.google.com with ESMTPS id r198si1661031ywe.4.2017.02.27.12.29.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Mar 2018 11:22:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Mon, 27 Feb 2017 12:29:20 -0800 (PST)
+Received-SPF: neutral (google.com: 66.111.4.28 is neither permitted nor denied by best guess record for domain of me@tobin.cc) client-ip=66.111.4.28;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=L39rLlgZ;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Received: by mail-pf0-x242.google.com with SMTP id a16so1761699pfn.9
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Mar 2018 11:22:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ashoka.edu.in; s=google;
-        h=from:to:cc:subject:date:message-id;
-        bh=NE8x0+rDCa7RpGcddJ8BpVYqcU+c36mRpNbi86M/rQU=;
-        b=L39rLlgZr3PaOPshe7Hv22/UY8HdSjE3dr5eWzMLyHXaBC5YYqqqbs59z4wVo0eAjz
-         yCm/TtLaQlf5VeNEmMu6Xh3k7VCZnLnz1JSxbbXwxxHTsVZoMW8Ws8erLqBFgD8EQiMT
-         o5FMjfnwtkEixylRsQIeIC02LS/ABzu/9vVrY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=NE8x0+rDCa7RpGcddJ8BpVYqcU+c36mRpNbi86M/rQU=;
-        b=BsZ0PomgGPj2QRdYq6SmYIPxbpL7m58yZBv0xRunZD4EydxQz6mH9EmO/mx46ZD9sO
-         /GNtt55LHWQaOVYr6yavuMrB3gA5k7VZ6XO8X9d02BhFwLtJBXjPwgNXVxcQqqPwBZ8I
-         GaBB8s3/dbNWmbYl7DEcUCprDpx2oPSpJegAuUn3irsf/uzKCn40ctH1GgMq/6ot8VLn
-         nupeQ5qFXHJ9FfQvRNGqaiseTyPL4pDYBRrx0KIJ5aAt0eo2bObmRmkq/omtk0jOkuAO
-         yVkKei/Q/4qov6TQtDsbdlVgRYyLhcLOrG4AGaKaVKWI3R34gtvi96OJnZsBc4uLV8O3
-         YmCg==
-X-Gm-Message-State: AElRT7Ek6X+FpXlJQzXPPyEFbTihj+JPmgwF30hoUP7NmjjPSn4TF5Y7
-	dUokjiZVaeUvJ30rMg8PiWSTIQ==
-X-Received: by 10.98.172.18 with SMTP id v18mr5128768pfe.175.1521051749657;
-        Wed, 14 Mar 2018 11:22:29 -0700 (PDT)
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from localhost.localdomain ([139.59.85.247])
-        by smtp.gmail.com with ESMTPSA id k66sm6585065pfb.123.2018.03.14.11.22.24
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 14 Mar 2018 11:22:27 -0700 (PDT)
-From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-To: w.d.hubbs@gmail.com,
-	chris@the-brannons.com,
-	kirk@reisers.ca,
-	samuel.thibault@ens-lyon.org,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-Subject: [PATCH] staging: speakup: Add blank line after declaration
-Date: Wed, 14 Mar 2018 18:22:10 +0000
-Message-Id: <1521051730-25736-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-X-Mailer: git-send-email 2.7.4
+       dkim=pass header.i=@tobin.cc;
+       dkim=pass header.i=@messagingengine.com;
+       spf=neutral (google.com: 66.111.4.28 is neither permitted nor denied by best guess record for domain of me@tobin.cc) smtp.mailfrom=me@tobin.cc
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+	by mailout.nyi.internal (Postfix) with ESMTP id B4584208A0;
+	Mon, 27 Feb 2017 15:29:19 -0500 (EST)
+Received: from frontend1 ([10.202.2.160])
+  by compute5.internal (MEProxy); Mon, 27 Feb 2017 15:29:19 -0500
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=tobin.cc; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-sender
+	:x-me-sender:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=4dCDhAowa/UDpfp
+	jRUFpyoFjoeI=; b=lUNjXcBDMy5P/1N5eJvSK8eaCMCsiwBHuYQecdR7OG5cxxP
+	TNAqRSxOEx4dCZ1rHf4b2GyA6AAH/SHxuZW3bljjKwXjKE264jGdXO7RGhJ66HK4
+	RmSwjUTh+5pXdxQttMnnFUzoc1o5cIfqurvnkXMzO53e1VCN4UxlZx3QFNJQ=
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-transfer-encoding:content-type
+	:date:from:in-reply-to:message-id:mime-version:references
+	:subject:to:x-me-sender:x-me-sender:x-sasl-enc:x-sasl-enc; s=
+	smtpout; bh=4dCDhAowa/UDpfpjRUFpyoFjoeI=; b=L/yyHBP3T2hZ1f8he7b9
+	dkNn3wuglL/sBfpG9IQD1wpfhJDlcLI8l1XQbNiV+UG5ZeVTP68PCA8vnx/dgFVy
+	dxiEGTlBMNgo4TyFzin3Z2J2ZknYUPl4NcgO6P/+T0CWMcFO8QjU9SHvy0YyTgnT
+	pqMTTnDyBHYWwBYe83xyxPw=
+X-ME-Sender: <xms:H4y0WGAj1wjsCmA27O9N_on5cU7IKYHZMe69qNNKq-CKmNxMTL0Nyg>
+X-Sasl-enc: CzP6aCnz/qsro6WvZwsE1bG6m+Z7XE7vgKhvfMAQt7nn 1488227359
+Received: from eros (ppp121-44-89-147.bras1.syd7.internode.on.net [121.44.89.147])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 988B47E15C;
+	Mon, 27 Feb 2017 15:29:17 -0500 (EST)
+Date: Tue, 28 Feb 2017 07:29:15 +1100
+From: "Tobin C. Harding" <me@tobin.cc>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Arushi Singhal <arushisinghal19971997@gmail.com>,
+	devel@driverdev.osuosl.org, Greg KH <gregkh@linuxfoundation.org>,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] Re: [PATCH v2] staging: ks7010: remove code
+ in comments.
+Message-ID: <20170227202915.GA10862@eros>
+References: <20170226160820.GA20046@arushi-HP-Pavilion-Notebook>
+ <20170227144852.GA24465@kroah.com>
+ <CA+XqjF-7SfgGkcHGhraz2R=8qV4Vgqiky+u+qSJNTMGr__JnTg@mail.gmail.com>
+ <alpine.DEB.2.20.1702271606420.3032@hadrien>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <alpine.DEB.2.20.1702271606420.3032@hadrien>
+X-Mailer: Mutt 1.5.24 (2015-08-30)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Add blank line after declaration. Issue found with checkpatch.
+On Mon, Feb 27, 2017 at 04:07:27PM +0100, Julia Lawall wrote:
+> 
+> 
+> On Mon, 27 Feb 2017, Arushi Singhal wrote:
+> 
+> >
+> >
+> > On Mon, Feb 27, 2017 at 8:18 PM, Greg KH <gregkh@linuxfoundation.org> wrote:
+> >       On Sun, Feb 26, 2017 at 09:38:20PM +0530, Arushi Singhal wrote:
+> >       > Commenting Code Is a Bad Idea.
+> >       > Comments are their to explain the code and how the code
+> >       achieves its
+> >       > goal and as codes in the comments� does not explain what the
+> >       code is
+> >       > doing so there is no use of commenting them.
+> >       > So in this patch codes in the comments are removed.
+> >       >
+> >       > Signed-off-by: Arushi Singhal
+> >       <arushisinghal19971997@gmail.com>
+> >       > ---
+> >       >� changes in v2
+> >       >� - subject lines is made short.
+> >       >
+> >       >� drivers/staging/ks7010/ks7010_sdio.c | 4 ----
+> >       >� 1 file changed, 4 deletions(-)
+> >
+> >       This patch does not apply against my staging-testing branch :(
+> >
+> >
+> > why?
+> 
+> You should figure this out yourself.  Pull Greg's tree again, and try to
+> apply your patch.  It's deterministic, so you should have the same
+> information that he has.
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
----
- drivers/staging/speakup/spk_ttyio.c | 1 +
- 1 file changed, 1 insertion(+)
+I have only just worked this out Arushi so I thought I'd share. You
+may want to read up on remote tracking branches in git and set up a
+branch tracking Greg's staging-testing branch. Then create (checkout
+-b) your development branches from that branch.
 
-diff --git a/drivers/staging/speakup/spk_ttyio.c b/drivers/staging/speakup/spk_ttyio.c
-index ade03b0..eac63aa 100644
---- a/drivers/staging/speakup/spk_ttyio.c
-+++ b/drivers/staging/speakup/spk_ttyio.c
-@@ -226,6 +226,7 @@ static int spk_ttyio_out(struct spk_synth *in_synth, const char ch)
- static int spk_ttyio_out_unicode(struct spk_synth *in_synth, u16 ch)
- {
- 	int ret;
-+
- 	if (ch < 0x80)
- 		ret = spk_ttyio_out(in_synth, ch);
- 	else if (ch < 0x800) {
--- 
-2.7.4
-
+Good luck,
+Tobin.
 
