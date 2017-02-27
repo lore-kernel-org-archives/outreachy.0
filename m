@@ -1,52 +1,52 @@
 X-GM-THRID: 6390781740145704960
-X-Received: by 10.157.53.26 with SMTP id o26mr6088328otc.25.1488211421225;
-        Mon, 27 Feb 2017 08:03:41 -0800 (PST)
+X-Received: by 10.36.53.212 with SMTP id k203mr4395664ita.30.1488210230879;
+        Mon, 27 Feb 2017 07:43:50 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.89.216 with SMTP id u24ls58100otg.40.gmail; Mon, 27 Feb
- 2017 08:03:40 -0800 (PST)
-X-Received: by 10.31.168.145 with SMTP id r139mr1891326vke.12.1488211420831;
-        Mon, 27 Feb 2017 08:03:40 -0800 (PST)
+Received: by 10.157.54.4 with SMTP id w4ls12423695otb.8.gmail; Mon, 27 Feb
+ 2017 07:43:50 -0800 (PST)
+X-Received: by 10.13.250.197 with SMTP id k188mr5946757ywf.167.1488210230502;
+        Mon, 27 Feb 2017 07:43:50 -0800 (PST)
 Return-Path: <sreyamittal5@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id c123si2979120pfa.4.2017.02.27.08.03.40
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id u12si3400527pfd.3.2017.02.27.07.43.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 27 Feb 2017 08:03:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Mon, 27 Feb 2017 07:43:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=sreyamittal5@gmail.com;
+       spf=pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=sreyamittal5@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id j5so2133641pfb.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 27 Feb 2017 08:03:40 -0800 (PST)
+Received: by mail-pg0-x244.google.com with SMTP id 25so1420774pgy.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 27 Feb 2017 07:43:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
         bh=GezZ95BzTLpcj6dLFumzFM6aJp2iXh0WP9xRIA8XgCU=;
-        b=oKXc/ex220VD3DH+N/xzLPlIMMev/JFBewGgVilNdvLadFWaPyHqYdAlqk5XrwxB5s
-         1Wdvt8QxmQpxnMERaKBUgXNFL+g9c4rBLJ5LSa4xKnuTpCSRqjHoQjmztgmNfKTmhmwn
-         YFh+nvKXfGkDK5LDDypSUSUBSf8ptGo+DzlAnNg+JZ0ce0MVGGeTJ8L6LGTU50brRJLQ
-         /DxdMCIr0HLhiFqxrICbch0oqd1YzPife7YqPW85j6ni3+7J/SDUEcMSATV4YRYKASrA
-         sO45g2sIeNqYsrEbrVYpBdOjnx3i4MJg2qkmXc2IRUPk3te06huczaD0tyNws233AttL
-         mNzA==
+        b=XbT1Yyrd+IlK1d5mMKx3nla17dbq0bUo8Xawc3DHpsIV9+HIAuWbYmKHczSl8eESG1
+         oIE8YVQnWHhyyUHaXbf9fKN4CO8I7FKdek7GDNRyTaW04yN2lYRhNakjablxqbtWY4l1
+         6rZo7DiXSRezH4NYTtweQvWb1cngMVtjmQK1sRTkWNV7hbeHg1+4h/L7J4lvmQOoJ38E
+         FCSIVjdpVQQImOx2NsY5Q5KN/ZiRgzIaVPoygdaXiOT06GOwT5lVVGlxrZxRRcO4W/Sn
+         t87+3enOCcPhOx+ULv9ASD3zNOJamyhnet9xymhHfMYv23fdHbLLGyj6awt/PfzLU72x
+         Edug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
         bh=GezZ95BzTLpcj6dLFumzFM6aJp2iXh0WP9xRIA8XgCU=;
-        b=oIiZ141plIBetyK+RtRHNo5sWeekLM6PUpkO6OgRTjPwWSfCpaT3uiOAWYqHShnz9Y
-         wOKNmEU+mMLpArs2YZFIZTnflJepPtnzAjctZEoMgcqMLYXzZ7QT5+dNITtBQAHPm6N+
-         rNv7HoRpI2sjWQy8I5cjUZJTWR9Q3bBgHgi3FRNfp6Q84MCGoLXYLQPKR87gc1drbYrH
-         qG9h2r8UB0ksvKqo039V9ZA8CsHK2+xdMiDXS/ySTtXdZAOcq2VkYIK2GBtc5qBbn4e4
-         9Rj+HlSB5GLSOfLZwz29ohUytVJrBZHcLum78yBVDUGUbjYQBGhKC7meeWzOvrsrg4Am
-         nb5Q==
-X-Gm-Message-State: AMke39m+UYn2oN6Q6+CP1PAqlyHwG8mGY4iG+A+b4Zbi1QJOgAK7gHfwJFMjBg0DMA693Q==
-X-Received: by 10.98.34.86 with SMTP id i83mr15940409pfi.89.1488211420565;
-        Mon, 27 Feb 2017 08:03:40 -0800 (PST)
+        b=kh+8HSulNplYU5mnokTYT6/7CK8yjq30i1uZ7glnWwP++cKCqzzNNqLLFN0zOZ0DwZ
+         PkSZmS0HEoAVhsSMlKOTbfomjfIv/QtL6Btnt9Hlqyy7GF9rGsBdVMyx2JWgwvJrChUw
+         3LRW7k/HfE2bEFw1O9J/lIxrcvXGgdoRsEE5Q2AMukhWLcu5YR4yfCAdQqzz9SEcZ1y0
+         dNVEmKgb3J53xH4n20FPP+8owlRuzMzjvdgcBA7uzyfz7GF5MDz3H5OcY2ggXtNOSIma
+         Rcd/e1p6Q07/DdHg9m2goE+a61mH1Ua95TRHS7YolJySvU09SdSFWGWt1W8AwqUP8EnF
+         3NaQ==
+X-Gm-Message-State: AMke39m15I6StI+eI27ae9HPOXL0EjisN3DAFmOO2xGKNYlFACbS4bkWbeMYtqnnWXCUcA==
+X-Received: by 10.98.220.200 with SMTP id c69mr21491882pfl.60.1488210230296;
+        Mon, 27 Feb 2017 07:43:50 -0800 (PST)
 Return-Path: <sreyamittal5@gmail.com>
 Received: from stayawesome ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id e7sm31655926pgp.2.2017.02.27.08.03.39
+        by smtp.gmail.com with ESMTPSA id c2sm31475573pfl.61.2017.02.27.07.43.49
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 27 Feb 2017 08:03:40 -0800 (PST)
+        Mon, 27 Feb 2017 07:43:49 -0800 (PST)
 From: Sreya Mittal <sreyamittal5@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Sreya Mittal <sreyamittal5@gmail.com>,
@@ -56,8 +56,8 @@ Cc: Sreya Mittal <sreyamittal5@gmail.com>,
 	Samuel Thibault <samuel.thibault@ens-lyon.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Subject: [PATCH 2/2 v3] staging: speakup: Clean up if conditions
-Date: Mon, 27 Feb 2017 21:33:29 +0530
-Message-Id: <20170227160329.23328-1-sreyamittal5@gmail.com>
+Date: Mon, 27 Feb 2017 21:13:38 +0530
+Message-Id: <20170227154338.21940-1-sreyamittal5@gmail.com>
 X-Mailer: git-send-email 2.9.3
 
 Found by checkpatch.pl
@@ -66,7 +66,7 @@ Clean up the if tests by
 
 * Put logical conditions on the previous line
 * Remove useless parentheses
-* Line up the tests 
+* Line up the tests
 
 Signed-off-by: Sreya Mittal <sreyamittal5@gmail.com>
 
