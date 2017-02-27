@@ -1,107 +1,119 @@
-X-GM-THRID: 6329809349955813376
-X-Received: by 10.107.153.196 with SMTP id b187mr644788ioe.34.1473773585692;
-        Tue, 13 Sep 2016 06:33:05 -0700 (PDT)
+X-GM-THRID: 6388897294904721408
+X-Received: by 10.25.203.151 with SMTP id b145mr233552lfg.17.1488176935282;
+        Sun, 26 Feb 2017 22:28:55 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.174.140 with SMTP id n12ls134603ioo.14.gmail; Tue, 13 Sep
- 2016 06:33:04 -0700 (PDT)
-X-Received: by 10.107.169.66 with SMTP id s63mr660978ioe.16.1473773584940;
-        Tue, 13 Sep 2016 06:33:04 -0700 (PDT)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id um12si3310744pab.2.2016.09.13.06.33.04
+Received: by 10.28.47.141 with SMTP id v135ls1027934wmv.0.canary-gmail; Sun,
+ 26 Feb 2017 22:28:54 -0800 (PST)
+X-Received: by 10.223.142.196 with SMTP id q62mr184764wrb.8.1488176934491;
+        Sun, 26 Feb 2017 22:28:54 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id p185si698389wme.1.2017.02.26.22.28.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Sep 2016 06:33:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Sun, 26 Feb 2017 22:28:54 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id 128so9618321pfb.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 13 Sep 2016 06:33:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=yz2fNcN44hXb4062m4d3ztI4ozeHLClI8A/S6Ov9jl8=;
-        b=lGnuJ89gsZot1HYO/1qiaH8tkPzorSjY2WvV8jMy38zQC1svJwLVZ7EjtIvY2V6Tvj
-         hvqJJY10j/lv7ut5KJcS8UICT9uYGR5c7J7eyvaCcKNA3/ifriV093Cxw5cynd/4ptOR
-         qLNqBL1021Rbc1iaii8LBu6DxtAeR7WvIXRcdg8dF22kGM627N0RjD+kHt8r5jD3TtU3
-         GF0bcI/xwRoCgCuOPcQE9PyIgzwEqjrKM9VYIZHAQcyVccFPo1V7hAaz/E7RK5vBIE9e
-         egtOzQkKn+7sRjV239bmZGIVZ+pr1O1wD93zMOps30wYT/QRnHEZI/nnLaVuA7ECDwur
-         yaOw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=yz2fNcN44hXb4062m4d3ztI4ozeHLClI8A/S6Ov9jl8=;
-        b=Oi9uHHnkzHNcsLgls0zJvZe9u4PV1oFt8eppGGdA6FIpaukkdnoqw7N7ZDaSoFWGe+
-         RmDpnjUMxPoNBZXKmJUjuiVPWc/NtgLUvbXuKrkDNt9EOOYnKfyMyxLlUsF0WQYbVz5A
-         guYjrJjWnss25l4JMfZVHLOh2izOjWhgeS95KN4MBfUm8isY39/Zx6DFohIT0MaAyimf
-         hrYl7uA/pYmW0zbMHeTNUtLPvvxAMNkrDfRHAgdkk+LhU1Fw+3BceHp41IO9YakeLkSd
-         RiDDZ3YxUK0JFWy1m2r8kiRLx4vyfthBU+HjaQVYVOMeSz/GY/1okkl9N8eTZ5IQwOZN
-         sjmw==
-X-Gm-Message-State: AE9vXwNi+q47fSfQ3kFaaQ4yln5JqHmiVaePvHnDd1wAy7zezBk3NBwaWCRwwS9q+MpEOg==
-X-Received: by 10.98.157.199 with SMTP id a68mr1369672pfk.75.1473773584771;
-        Tue, 13 Sep 2016 06:33:04 -0700 (PDT)
-Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id wp4sm31463342pab.15.2016.09.13.06.33.01
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 13 Sep 2016 06:33:04 -0700 (PDT)
-From: Gargi Sharma <gs051095@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: w.d.hubbs@gmail.com,
-	chris@the-brannons.com,
-	kirk@reisers.ca,
-	samuel.thibault@ens-lyon.org,
-	gregkh@linuxfoundation.org,
-	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH v2] staging: speakup: replace simple_strtoul by kstrtoul
-Date: Tue, 13 Sep 2016 19:02:12 +0530
-Message-Id: <20160913133212.7830-1-gs051095@gmail.com>
-X-Mailer: git-send-email 2.9.2
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,212,1484002800"; 
+   d="scan'208";a="262173526"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 27 Feb 2017 07:28:54 +0100
+Date: Mon, 27 Feb 2017 07:28:53 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Gargi Sharma <gs051095@gmail.com>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH v5] staging: rtl8192u: Remove ternary
+ operator
+In-Reply-To: <1488173270-12445-1-git-send-email-gs051095@gmail.com>
+Message-ID: <alpine.DEB.2.20.1702270728410.2187@hadrien>
+References: <1488173270-12445-1-git-send-email-gs051095@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Making changes to add a check to the value returned by kstrtoul. Also,
-updating temp since it is being used afterwards.
 
-Signed-off-by: Gargi Sharma <gs051095@gmail.com>
----
- drivers/staging/speakup/kobjects.c | 15 +++++++++++++--
- 1 file changed, 13 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
-index 884b2eb..e42be0f 100644
---- a/drivers/staging/speakup/kobjects.c
-+++ b/drivers/staging/speakup/kobjects.c
-@@ -154,7 +154,13 @@ static ssize_t chars_chartab_store(struct kobject *kobj,
- 			continue;
- 		}
- 
--		err = kstrtoul(cp, 10, &index);
-+		temp = cp;
-+		err = kstrtoul(temp, 10, &index);
-+		if (err < 0) {
-+			retval = err;
-+			break;
-+		}
-+
- 		if (index > 255) {
- 			rejected++;
- 			cp = linefeed + 1;
-@@ -785,7 +791,12 @@ static ssize_t message_store_helper(const char *buf, size_t count,
- 			continue;
- 		}
- 
--		err = kstrtoul(cp, 10, &index);
-+		temp = cp;
-+		err = kstrtoul(temp, 10, &index);
-+		if (err < 0) {
-+			retval = err;
-+			break;
-+		}
- 
- 		while ((temp < linefeed) && (*temp == ' ' || *temp == '\t'))
- 			temp++;
--- 
-2.9.2
+On Mon, 27 Feb 2017, Gargi Sharma wrote:
 
+> Relational and logical operators evaluate to either true or false.
+> Lines with ternary operators were found using coccinelle script. In a
+> few cases using logical && operator would suffice. Hence those were
+> changed to improve readability.
+>
+> Coccinelle Script:
+> @r@
+> expression A,B;
+> symbol true,false;
+> binary operator b = {==,!=,&&,||,>=,<=,>,<};
+> @@
+> - (A b B) ? true : false
+> + A b B
+>
+> Signed-off-by: Gargi Sharma <gs051095@gmail.com>
+
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+> ---
+> Changes in v5:
+> 	- Removed if statement under comments.
+> Changes in v4:
+>         - Aligned operands for && and added a newline.
+> Changes in v3:
+>         - Converted ? operator to &&.
+> Changes in v2:
+>         - Converted ? operator to if else statements.
+> ---
+>  drivers/staging/rtl8192u/ieee80211/rtl819x_HTProc.c | 15 +++++++--------
+>  1 file changed, 7 insertions(+), 8 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8192u/ieee80211/rtl819x_HTProc.c b/drivers/staging/rtl8192u/ieee80211/rtl819x_HTProc.c
+> index c27397b..6072099 100644
+> --- a/drivers/staging/rtl8192u/ieee80211/rtl819x_HTProc.c
+> +++ b/drivers/staging/rtl8192u/ieee80211/rtl819x_HTProc.c
+> @@ -976,17 +976,16 @@ void HTOnAssocRsp(struct ieee80211_device *ieee)
+>  	//
+>  	HTSetConnectBwMode(ieee, (HT_CHANNEL_WIDTH)(pPeerHTCap->ChlWidth), (HT_EXTCHNL_OFFSET)(pPeerHTInfo->ExtChlOffset));
+>
+> -//	if (pHTInfo->bCurBW40MHz)
+> -		pHTInfo->bCurTxBW40MHz = ((pPeerHTInfo->RecommemdedTxWidth == 1)?true:false);
+> +	pHTInfo->bCurTxBW40MHz = (pPeerHTInfo->RecommemdedTxWidth == 1);
+>
+>  	//
+>  	// Update short GI/ long GI setting
+>  	//
+>  	// TODO:
+> -	pHTInfo->bCurShortGI20MHz=
+> -		((pHTInfo->bRegShortGI20MHz)?((pPeerHTCap->ShortGI20Mhz==1)?true:false):false);
+> -	pHTInfo->bCurShortGI40MHz=
+> -		((pHTInfo->bRegShortGI40MHz)?((pPeerHTCap->ShortGI40Mhz==1)?true:false):false);
+> +	pHTInfo->bCurShortGI20MHz = pHTInfo->bRegShortGI20MHz &&
+> +				    (pPeerHTCap->ShortGI20Mhz == 1);
+> +	pHTInfo->bCurShortGI40MHz = pHTInfo->bRegShortGI40MHz &&
+> +				   (pPeerHTCap->ShortGI40Mhz == 1);
+>
+>  	//
+>  	// Config TX STBC setting
+> @@ -997,8 +996,8 @@ void HTOnAssocRsp(struct ieee80211_device *ieee)
+>  	// Config DSSS/CCK  mode in 40MHz mode
+>  	//
+>  	// TODO:
+> -	pHTInfo->bCurSuppCCK =
+> -		((pHTInfo->bRegSuppCCK)?((pPeerHTCap->DssCCk==1)?true:false):false);
+> +	pHTInfo->bCurSuppCCK = pHTInfo->bRegSuppCCK &&
+> +			       (pPeerHTCap->DssCCk == 1);
+>
+>
+>  	//
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1488173270-12445-1-git-send-email-gs051095%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
