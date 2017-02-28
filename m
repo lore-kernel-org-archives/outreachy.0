@@ -1,76 +1,123 @@
-X-GM-THRID: 983245520896
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,e95d31bf9b9e189f,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.101.101 with SMTP id ff5mr1293846wib.5.1424379969746;
-        Thu, 19 Feb 2015 13:06:09 -0800 (PST)
+X-GM-THRID: 6392227374862172160
+X-Received: by 10.99.66.6 with SMTP id p6mr1220796pga.20.1488306771414;
+        Tue, 28 Feb 2017 10:32:51 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.178.229 with SMTP id db5ls35138lac.49.gmail; Thu, 19 Feb
- 2015 13:06:09 -0800 (PST)
-X-Received: by 10.112.25.7 with SMTP id y7mr833825lbf.21.1424379969435;
-        Thu, 19 Feb 2015 13:06:09 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-wg0-x232.google.com (mail-wg0-x232.google.com. [2a00:1450:400c:c00::232])
-        by gmr-mx.google.com with ESMTPS id o3si4243151wib.2.2015.02.19.13.06.09
+Received: by 10.107.141.19 with SMTP id p19ls612455iod.9.gmail; Tue, 28 Feb
+ 2017 10:32:50 -0800 (PST)
+X-Received: by 10.99.120.193 with SMTP id t184mr1255691pgc.26.1488306770241;
+        Tue, 28 Feb 2017 10:32:50 -0800 (PST)
+Return-Path: <lars@metafoo.de>
+Received: from www381.your-server.de (www381.your-server.de. [78.46.137.84])
+        by gmr-mx.google.com with ESMTPS id y63si244085ywe.5.2017.02.28.10.32.49
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Feb 2015 13:06:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c00::232 as permitted sender) client-ip=2a00:1450:400c:c00::232;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 28 Feb 2017 10:32:49 -0800 (PST)
+Received-SPF: neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) client-ip=78.46.137.84;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c00::232 as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x232.google.com with SMTP id l2so9570025wgh.9
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 13:06:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=UiUTrqwrxQVvq7lUxjOD7ZyfhNbKBrrs6NOrrigz/tg=;
-        b=treLq6j/XESWFkKMAXwaI1UrYGWUyoAPwaLwzbZq5ccn8lzJZ7Z9bBfySX8AFdsT2A
-         k99jsmk0+YWyWLiCGiCbDbjP/I9DYN8tksNdwltzYFwIuKiC9uQTpaurWrFpRBh2yvgr
-         T5B/E37cOUlr3iFovq6m45Gn5Y/GM56EsektXOkhwQZOb5A1rBDZ1WCxR6yq+vrrKH/D
-         ax4TGHlu3ZOZqFgk0117mERgPpsCxCeOCU2Ln3kFkb6pYxlSwfUXUDVnuFvgBrBY4DV8
-         CFfcapkA3vmUb4IJemXbeOtLr7g6SOZ0K2YgqxXvhrJ8YVAVdULcC0/SJIxHMxPa603Y
-         xvDw==
-X-Received: by 10.180.84.98 with SMTP id x2mr10048074wiy.14.1424379969324;
-        Thu, 19 Feb 2015 13:06:09 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by mx.google.com with ESMTPSA id v5sm23092416wiw.24.2015.02.19.13.06.08
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 19 Feb 2015 13:06:08 -0800 (PST)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH v3] Staging: media: vino: Add blank line
-Date: Thu, 19 Feb 2015 22:05:52 +0100
-Message-Id: <1424379952-21236-1-git-send-email-ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) smtp.mailfrom=lars@metafoo.de
+Received: from [88.198.220.132] (helo=sslproxy03.your-server.de)
+	by www381.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
+	(Exim 4.85_2)
+	(envelope-from <lars@metafoo.de>)
+	id 1cimZp-0002ko-Ee; Tue, 28 Feb 2017 19:32:45 +0100
+Received: from [2003:86:2c11:ad00:8200:bff:fe9b:6612]
+	by sslproxy03.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-SHA:256)
+	(Exim 4.84_2)
+	(envelope-from <lars@metafoo.de>)
+	id 1cimZp-0003Mf-6m; Tue, 28 Feb 2017 19:32:45 +0100
+Subject: Re: [PATCH] staging: iio: ad7280a: Move contents of header file to
+ source file
+To: sayli karnik <karniksayli1995@gmail.com>,
+ outreachy-kernel@googlegroups.com
+References: <20170228182630.GA10423@sayli-HP-15-Notebook-PC>
+Cc: Michael Hennerich <Michael.Hennerich@analog.com>,
+ Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>,
+ Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-iio@vger.kernel.org
+From: Lars-Peter Clausen <lars@metafoo.de>
+Message-ID: <7a8ae020-2c89-933a-4e3a-ff7771626a57@metafoo.de>
+Date: Tue, 28 Feb 2017 19:32:44 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+ Icedove/45.6.0
+MIME-Version: 1.0
+In-Reply-To: <20170228182630.GA10423@sayli-HP-15-Notebook-PC>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Authenticated-Sender: lars@metafoo.de
+X-Virus-Scanned: Clear (ClamAV 0.99.2/23145/Tue Feb 28 17:56:05 2017)
 
-This patch fixes the checkpatch.pl warning:
-WARNING: "Missing a blank line after declarations"
+On 02/28/2017 07:26 PM, sayli karnik wrote:
+> The contents of the header file are used only by this single
+> source file.  Move content into .c and remove .h.
 
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
----
-v3: Use of imperative language(add instead of added).
-v2: Fixed e-mail address.
- drivers/staging/media/vino/saa7191.c | 1 +
- 1 file changed, 1 insertion(+)
+Hi,
 
-diff --git a/drivers/staging/media/vino/saa7191.c b/drivers/staging/media/vino/saa7191.c
-index 29e3296..f223e47 100644
---- a/drivers/staging/media/vino/saa7191.c
-+++ b/drivers/staging/media/vino/saa7191.c
-@@ -521,6 +521,7 @@ static int saa7191_s_ctrl(struct v4l2_subdev *sd, struct v4l2_control *ctrl)
- 		break;
- 	case SAA7191_CONTROL_LUMA_DELAY: {
- 		s32 value = ctrl->value;
-+
- 		if (value < 0)
- 			value += 8;
- 		reg = saa7191_read_reg(sd, SAA7191_REG_CTL3);
--- 
-1.9.1
+Thanks for the patch. I'm afraid that these are values that are supposed to
+be used to initialize the fields in the platform data struct. So they have
+to stay in the header as well.
+
+If you want to clean this up, convert at least the enumerations to a enum
+data type, so that it is clear what their function is.
+
+> 
+> Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
+> ---
+>  drivers/staging/iio/adc/ad7280a.c | 15 +++++++++++++++
+>  drivers/staging/iio/adc/ad7280a.h | 15 ---------------
+>  2 files changed, 15 insertions(+), 15 deletions(-)
+> 
+> diff --git a/drivers/staging/iio/adc/ad7280a.c b/drivers/staging/iio/adc/ad7280a.c
+> index ee679ac..44d13dc 100644
+> --- a/drivers/staging/iio/adc/ad7280a.c
+> +++ b/drivers/staging/iio/adc/ad7280a.c
+> @@ -22,6 +22,21 @@
+>  
+>  #include "ad7280a.h"
+>  
+> +#define AD7280A_ACQ_TIME_400ns			0
+> +#define AD7280A_ACQ_TIME_800ns			1
+> +#define AD7280A_ACQ_TIME_1200ns			2
+> +#define AD7280A_ACQ_TIME_1600ns			3
+> +
+> +#define AD7280A_CONV_AVG_DIS			0
+> +#define AD7280A_CONV_AVG_2			1
+> +#define AD7280A_CONV_AVG_4			2
+> +#define AD7280A_CONV_AVG_8			3
+> +
+> +#define AD7280A_ALERT_REMOVE_VIN5		BIT(2)
+> +#define AD7280A_ALERT_REMOVE_VIN4_VIN5		BIT(3)
+> +#define AD7280A_ALERT_REMOVE_AUX5		BIT(0)
+> +#define AD7280A_ALERT_REMOVE_AUX4_AUX5		BIT(1)
+> +
+>  /* Registers */
+>  #define AD7280A_CELL_VOLTAGE_1		0x0  /* D11 to D0, Read only */
+>  #define AD7280A_CELL_VOLTAGE_2		0x1  /* D11 to D0, Read only */
+> diff --git a/drivers/staging/iio/adc/ad7280a.h b/drivers/staging/iio/adc/ad7280a.h
+> index ccfb90d..1b50dd8 100644
+> --- a/drivers/staging/iio/adc/ad7280a.h
+> +++ b/drivers/staging/iio/adc/ad7280a.h
+> @@ -13,21 +13,6 @@
+>   * TODO: struct ad7280_platform_data needs to go into include/linux/iio
+>   */
+>  
+> -#define AD7280A_ACQ_TIME_400ns			0
+> -#define AD7280A_ACQ_TIME_800ns			1
+> -#define AD7280A_ACQ_TIME_1200ns			2
+> -#define AD7280A_ACQ_TIME_1600ns			3
+> -
+> -#define AD7280A_CONV_AVG_DIS			0
+> -#define AD7280A_CONV_AVG_2			1
+> -#define AD7280A_CONV_AVG_4			2
+> -#define AD7280A_CONV_AVG_8			3
+> -
+> -#define AD7280A_ALERT_REMOVE_VIN5		BIT(2)
+> -#define AD7280A_ALERT_REMOVE_VIN4_VIN5		BIT(3)
+> -#define AD7280A_ALERT_REMOVE_AUX5		BIT(0)
+> -#define AD7280A_ALERT_REMOVE_AUX4_AUX5		BIT(1)
+> -
+>  struct ad7280_platform_data {
+>  	unsigned int		acquisition_time;
+>  	unsigned int		conversion_averaging;
+> 
 
 
