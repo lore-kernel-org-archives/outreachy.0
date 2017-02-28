@@ -1,108 +1,90 @@
 X-GM-THRID: 6392198468546330624
-X-Received: by 10.237.53.2 with SMTP id a2mr952220qte.16.1488300570994;
-        Tue, 28 Feb 2017 08:49:30 -0800 (PST)
+X-Received: by 10.25.193.213 with SMTP id r204mr395404lff.24.1488299683125;
+        Tue, 28 Feb 2017 08:34:43 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.47.2 with SMTP id j2ls537018itj.3.gmail; Tue, 28 Feb 2017
- 08:49:28 -0800 (PST)
-X-Received: by 10.99.117.10 with SMTP id q10mr1102849pgc.59.1488300568275;
-        Tue, 28 Feb 2017 08:49:28 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id u12si54865pfd.3.2017.02.28.08.49.28
+Received: by 10.46.19.9 with SMTP id 9ls161437ljt.33.gmail; Tue, 28 Feb 2017
+ 08:34:42 -0800 (PST)
+X-Received: by 10.25.72.216 with SMTP id v207mr369300lfa.7.1488299682122;
+        Tue, 28 Feb 2017 08:34:42 -0800 (PST)
+Return-Path: <narcisaanamaria12@gmail.com>
+Received: from mail-wr0-x244.google.com (mail-wr0-x244.google.com. [2a00:1450:400c:c0c::244])
+        by gmr-mx.google.com with ESMTPS id 14si215932wmn.2.2017.02.28.08.34.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Feb 2017 08:49:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Tue, 28 Feb 2017 08:34:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) client-ip=2a00:1450:400c:c0c::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       spf=pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) smtp.mailfrom=narcisaanamaria12@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id s67so2198503pgb.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 28 Feb 2017 08:49:28 -0800 (PST)
+Received: by mail-wr0-x244.google.com with SMTP id u48so2292682wrc.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 28 Feb 2017 08:34:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=U2YoivH8S7YEdfcujGpaQZLcWLwsjCiNOoulJ3EXxGg=;
-        b=oM4IqHYfcXMkkagHc/r6o45kn77Cba4XPZfBNfjdx4YpWFfXt0JOp2NIisVQgBkPZP
-         eAF5nHncR2biQcdn9kNzJCe5LnQB9oRXn64HhnHsgPJQ9dL8/A+luigHe7O5QhvouKWE
-         /QsoID1F/56X4PA8ildZgsHFmrTxxNEhcFgZQxRnLextShXMXW4bko6GfD1TosmQGT2E
-         REMA27/CyWp5X7/TnCOOfI2h9kERPbcOFHjkaEajz66egTBIwUkKJeXhghLSacNL2Ecc
-         UfMtRl6CF7uhDVpmGkKBXpLaRXDFdn2Li894Lp7Yq6P2uEGhySoSPeNAcJOrsDHGL/5n
-         +gqA==
+        h=from:to:cc:subject:date:message-id;
+        bh=PpVAki3MRW8HfOatS//licnVFFVAvxkG5Ha13Rdb0Kk=;
+        b=UwMGJ/ugJTrK9Uj/0+I6zaum0nLBvZf9+gu1oOvn70znDAcHwyLOOrosJqq4FfXQa9
+         rPwv//Vs+iF1O9G90u6lO4rW/VI2qVXKZhiosuY26MsNnNvzwRlMedCn42aRmCyffJQe
+         iGNm87M1b2oV47p8byu4SXW8zmKd/H8SIPypa8Z3bReH87Eu3DfEaLekcFLNjgBQZh5g
+         2pKCPNH8KA9N/TdeP22J6eNtsQuBmWGdeOQuC6mdEXD7J9FWbA9ASkLq1cfybJPuPuff
+         eJwnA4vWpAoi/4lN7SkbGeq+l+T0ohXPgFZiN+1AAjC/ZW1fd132DAe6zA95kVAZwTpO
+         RMCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=U2YoivH8S7YEdfcujGpaQZLcWLwsjCiNOoulJ3EXxGg=;
-        b=bQyc2kZCaMk/57qdXZIZVtQ8/cQLZ8exEHDycv53EsYzluot9RhtsyCcquzUvTEZMU
-         z/LSuGP+3XGl8MbxIA2z1n7c7QZcR2lsxuf2T2m7LthSxrfEy+AOlDsI3Gh4bmumvrVz
-         Ps97VMHbEXkQ/NORtd2h80+j1pk6koFQB4vO9pZ6ovLbbAQoIuzCu3WFxJoRla+2EBTb
-         mN+PmOpns47flk7jRLhMlIAPsllrgVWHk0g1qJsABbyIDx+vAd8/VpZZrxHzFPWZpH23
-         hZp7y1UcKA6EZioccRt1HpaJwVyHtUzXLGJcHmmnNXN1viVBJpw18fx7/XNzypOL47Bh
-         t5mw==
-X-Gm-Message-State: AMke39kB/eFpaBx+43J2JlNa5zjPe49zlSLQqEAxdA7fzVZJa0/tny2nw13ZN3toRKJHJQ==
-X-Received: by 10.84.232.198 with SMTP id x6mr4187874plm.74.1488300568038;
-        Tue, 28 Feb 2017 08:49:28 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
-        by smtp.gmail.com with ESMTPSA id s64sm5336015pfe.27.2017.02.28.08.49.27
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 28 Feb 2017 08:49:27 -0800 (PST)
-Date: Tue, 28 Feb 2017 08:49:26 -0800
-From: Alison Schofield <amsfield22@gmail.com>
-To: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
-Cc: jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net,
-	gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com,
-	linux-iio@vger.kernel.org
-Subject: Re: [Outreachy kernel] [PATCH] staging: iio: Deleted TODO file which
- contained redundant information
-Message-ID: <20170228164926.GA15033@d830.WORKGROUP>
-References: <1488299669-22372-1-git-send-email-narcisaanamaria12@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1488299669-22372-1-git-send-email-narcisaanamaria12@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=PpVAki3MRW8HfOatS//licnVFFVAvxkG5Ha13Rdb0Kk=;
+        b=iNatnQsivHus6WXsLduu69HUrceh9/hdgQYwPQtUjB1zjAA4F4ajcNYrzeIhlbDE/S
+         5s2X+pKtsEGpvmW4jVj7ScQEbyyIultUbHfTR5Hsjc6eM4g0EpBM7X1q+ywhL75NfxLL
+         A53WZkDErdXHNdjzGszZXmCEDV2UMm13NgwepGykpnFKo08/XA5sM50hKU+p49y4ttFK
+         R1eLAnlycmxqicYbCiv+RPK5bG//gxjLVJ5A9zNR2Yomq/Eo5rM19/UeFkeew7xOQ1rv
+         R1aA2XHp+gxjCAyG/PESQ+ITrd1o+OfTvQWuq0oy+BSnux+gZDe+273VrKXhm+59gZz+
+         pNGw==
+X-Gm-Message-State: AMke39mAiy2z9WuOEpaBjeH4pq9Y/YGKqp9jCvYQBq8GriTYu3uBiHeeK59+qFeSyqg6Kw==
+X-Received: by 10.223.144.65 with SMTP id h59mr3545093wrh.30.1488299681915;
+        Tue, 28 Feb 2017 08:34:41 -0800 (PST)
+Return-Path: <narcisaanamaria12@gmail.com>
+Received: from localhost.localdomain (p22.eregie.pub.ro. [141.85.0.122])
+        by smtp.gmail.com with ESMTPSA id e72sm19260569wma.16.2017.02.28.08.34.40
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 28 Feb 2017 08:34:41 -0800 (PST)
+From: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+To: jic23@kernel.org,
+	knaack.h@gmx.de,
+	lars@metafoo.de,
+	pmeerw@pmeerw.net,
+	gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com,
+	linux-iio@vger.kernel.org,
+	Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+Subject: [PATCH] staging: iio: Deleted TODO file which contained redundant information
+Date: Tue, 28 Feb 2017 18:34:29 +0200
+Message-Id: <1488299669-22372-1-git-send-email-narcisaanamaria12@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-On Tue, Feb 28, 2017 at 06:34:29PM +0200, Narcisa Ana Maria Vasile wrote:
-> The TODO file contained redundant information which can be obtained
-> using ./scripts/get_maintainer.pl.
+The TODO file contained redundant information which can be obtained
+using ./scripts/get_maintainer.pl.
 
-Hi Narcisa,
-I think we want to leave the TODO file even though it is fairly sparse
-at this time.  It's content will grow & shrink with actual todo items,
-and of course, it's nice to have the git log for reference.
-alisons
+Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+---
+ drivers/staging/iio/TODO | 8 --------
+ 1 file changed, 8 deletions(-)
+ delete mode 100644 drivers/staging/iio/TODO
 
-> 
-> Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
-> ---
->  drivers/staging/iio/TODO | 8 --------
->  1 file changed, 8 deletions(-)
->  delete mode 100644 drivers/staging/iio/TODO
-> 
-> diff --git a/drivers/staging/iio/TODO b/drivers/staging/iio/TODO
-> deleted file mode 100644
-> index 4922402..0000000
-> --- a/drivers/staging/iio/TODO
-> +++ /dev/null
-> @@ -1,8 +0,0 @@
-> -2016 10/09
-> -
-> -ADI Drivers:
-> -CC the device-drivers-devel@blackfin.uclinux.org mailing list when
-> -e-mailing the normal IIO list (see below).
-> -
-> -Contact: Jonathan Cameron <jic23@kernel.org>.
-> -Mailing list: linux-iio@vger.kernel.org
-> -- 
-> 1.9.1
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1488299669-22372-1-git-send-email-narcisaanamaria12%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
+diff --git a/drivers/staging/iio/TODO b/drivers/staging/iio/TODO
+deleted file mode 100644
+index 4922402..0000000
+--- a/drivers/staging/iio/TODO
++++ /dev/null
+@@ -1,8 +0,0 @@
+-2016 10/09
+-
+-ADI Drivers:
+-CC the device-drivers-devel@blackfin.uclinux.org mailing list when
+-e-mailing the normal IIO list (see below).
+-
+-Contact: Jonathan Cameron <jic23@kernel.org>.
+-Mailing list: linux-iio@vger.kernel.org
+-- 
+1.9.1
+
 
