@@ -1,78 +1,82 @@
 X-GM-THRID: 6392226115163783168
-X-Received: by 10.46.9.206 with SMTP id 197mr478254ljj.12.1488306497165;
-        Tue, 28 Feb 2017 10:28:17 -0800 (PST)
+X-Received: by 10.46.88.70 with SMTP id x6mr449795ljd.22.1488306120159;
+        Tue, 28 Feb 2017 10:22:00 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.190.83 with SMTP id o80ls40037lff.53.gmail; Tue, 28 Feb
- 2017 10:28:16 -0800 (PST)
-X-Received: by 10.25.0.141 with SMTP id 135mr432994lfa.5.1488306496582;
-        Tue, 28 Feb 2017 10:28:16 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id h198si270948wmg.1.2017.02.28.10.28.16
+Received: by 10.46.77.17 with SMTP id a17ls197144ljb.42.gmail; Tue, 28 Feb
+ 2017 10:21:59 -0800 (PST)
+X-Received: by 10.25.157.14 with SMTP id g14mr439115lfe.28.1488306119721;
+        Tue, 28 Feb 2017 10:21:59 -0800 (PST)
+Return-Path: <diaconitatamara@gmail.com>
+Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
+        by gmr-mx.google.com with ESMTPS id h198si269703wmg.1.2017.02.28.10.21.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Feb 2017 10:28:16 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Tue, 28 Feb 2017 10:21:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.35,220,1484002800"; 
-   d="scan'208";a="215057722"
-Received: from 198.67.28.109.rev.sfr.net (HELO [192.168.1.69]) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 28 Feb 2017 19:27:58 +0100
-Date: Tue, 28 Feb 2017 19:27:58 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Tamara Diaconita <diaconitatamara@gmail.com>
-cc: mchehab@kernel.org, outreachy-kernel@googlegroups.com, 
-    gregkh@linuxfoundation.org, Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 1/5] Add comment for struct mutex
- definition.
-In-Reply-To: <20170228182154.25401-1-diaconita.tamara@gmail.com>
-Message-ID: <alpine.DEB.2.20.1702281926420.2171@hadrien>
-References: <20170228182154.25401-1-diaconita.tamara@gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x241.google.com with SMTP id r18so3670360wmd.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 28 Feb 2017 10:21:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=ABFkXtPmSY8HnGczugBvFIzBWh4uYkj+GLnKqC7bz8U=;
+        b=tV2g7XJkPxZI5u1Yu8LoIPPzNl7sSvGXZyxZx4jKcoVzUnxqSMaKgDkGcISaxKXXRD
+         2R/miC364qG7cCOOI3NxnixcKIO+MH57cMdl6+Y5cbAAIE2sjrZMRQ65Eh1KEZAJYQLG
+         Ha+gkwyv3JeRT+wbYem35VRmqL/VD0wJ3Lxq4Za8JaYF72X+/KrJX4w13eJ6K1kcte8F
+         4YrEsWfcjzWkJh1LgtYU7MHvfwlLJqsYnMnr2M0ZNX+i7VqMnc7A2Dh8oxvi/6U4As7r
+         OH1Cf4wFgSCfTVqtWiGe4EYh23zRuGYqxKn0pDcTEBY+fziSb4AsSUnANjyqwxPOz1KE
+         P3FA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=ABFkXtPmSY8HnGczugBvFIzBWh4uYkj+GLnKqC7bz8U=;
+        b=gyObIwzLr6Htc2aWkKEUuPYJdUey4xl5UYCbchIwNPliAzrLkuztN0v2sGAAWnlvxn
+         gtPJFLGxQtP0zhbBkafCNkvucM+8ZMxTOSv5lFTcnOhGsjjkC/Q6VGcfbTw2xLrJEwn9
+         Qay7EDzO3znoRXk8LBwxmm8yUGE2SkZ+xpp6nPhEV4OBaZfidwnRwiTDc16R2m05dw7r
+         Oc4wqgsDhhH082S/IBXVqpP32KgPrk4kZwpydWSJ54vhh6SO2lcsLBk8M/JEvimLb6pd
+         tilD15uPTmCTbwgJaC6oabcLyIDZqKBIeYoFXpvQv3TISs/99rpOrIMRdOuZfIB9Opw9
+         irCQ==
+X-Gm-Message-State: AMke39mmJdEK0OqQYlBvWBQ7QubOSyKQZa2k5eHFhYgJ4/VEt2ivEYHclEcir77XkCzWbQ==
+X-Received: by 10.28.23.140 with SMTP id 134mr9267wmx.23.1488306119513;
+        Tue, 28 Feb 2017 10:21:59 -0800 (PST)
+Return-Path: <diaconitatamara@gmail.com>
+Received: from tamara ([2a02:2f0b:8170:1398:1411:993d:3104:6e7f])
+        by smtp.gmail.com with ESMTPSA id d42sm3351730wrd.7.2017.02.28.10.21.58
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 28 Feb 2017 10:21:58 -0800 (PST)
+From: Tamara Diaconita <diaconitatamara@gmail.com>
+X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
+To: mchehab@kernel.org,
+	outreachy-kernel@googlegroups.com,
+	gregkh@linuxfoundation.org
+Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: [PATCH 1/5] Add comment for struct mutex definition.
+Date: Tue, 28 Feb 2017 20:21:54 +0200
+Message-Id: <20170228182154.25401-1-diaconita.tamara@gmail.com>
+X-Mailer: git-send-email 2.9.3
 
+Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
+---
+ drivers/staging/media/cxd2099/cxd2099.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/drivers/staging/media/cxd2099/cxd2099.c b/drivers/staging/media/cxd2099/cxd2099.c
+index c72c3f0..f88690b 100644
+--- a/drivers/staging/media/cxd2099/cxd2099.c
++++ b/drivers/staging/media/cxd2099/cxd2099.c
+@@ -54,7 +54,7 @@ struct cxd {
+ 	int    amem_read;
+ 
+ 	int    cammode;
+-	struct mutex lock;
++	struct mutex lock;/*lock for digital devices*/
+ };
+ 
+ static int i2c_write_reg(struct i2c_adapter *adapter, u8 adr,
+-- 
+2.9.3
 
-On Tue, 28 Feb 2017, Tamara Diaconita wrote:
-
-> Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
-> ---
->  drivers/staging/media/cxd2099/cxd2099.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/media/cxd2099/cxd2099.c b/drivers/staging/media/cxd2099/cxd2099.c
-> index c72c3f0..f88690b 100644
-> --- a/drivers/staging/media/cxd2099/cxd2099.c
-> +++ b/drivers/staging/media/cxd2099/cxd2099.c
-> @@ -54,7 +54,7 @@ struct cxd {
->  	int    amem_read;
->
->  	int    cammode;
-> -	struct mutex lock;
-> +	struct mutex lock;/*lock for digital devices*/
-
-Comments should have at least one space before, a space after the /* and a
-space before the */.
-
-More importantly, it would be good to justify the choice of text for the
-comment in some way.  Digital devices does not seem very specific.
-
-julia
-
->  };
->
->  static int i2c_write_reg(struct i2c_adapter *adapter, u8 adr,
-> --
-> 2.9.3
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170228182154.25401-1-diaconita.tamara%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
