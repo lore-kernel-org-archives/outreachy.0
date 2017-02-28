@@ -1,121 +1,106 @@
 X-GM-THRID: 6391488728330665984
-X-Received: by 10.25.40.17 with SMTP id o17mr72450lfo.25.1488264427903;
-        Mon, 27 Feb 2017 22:47:07 -0800 (PST)
+X-Received: by 10.200.51.164 with SMTP id c33mr18427qtb.85.1488252220359;
+        Mon, 27 Feb 2017 19:23:40 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.21.19 with SMTP id s19ls31184ljd.52.gmail; Mon, 27 Feb 2017
- 22:47:06 -0800 (PST)
-X-Received: by 10.25.193.213 with SMTP id r204mr73278lff.24.1488264426897;
-        Mon, 27 Feb 2017 22:47:06 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id h198si87086wmg.1.2017.02.27.22.47.06
+Received: by 10.107.150.68 with SMTP id y65ls103256iod.0.gmail; Mon, 27 Feb
+ 2017 19:23:39 -0800 (PST)
+X-Received: by 10.99.111.143 with SMTP id k137mr41691pgc.1.1488252219662;
+        Mon, 27 Feb 2017 19:23:39 -0800 (PST)
+Return-Path: <kdunne@mail.ccsf.edu>
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id f7si70321pfk.5.2017.02.27.19.23.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 27 Feb 2017 22:47:06 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Mon, 27 Feb 2017 19:23:39 -0800 (PST)
+Received-SPF: neutral (google.com: 2607:f8b0:400e:c00::243 is neither permitted nor denied by best guess record for domain of kdunne@mail.ccsf.edu) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.35,218,1484002800"; 
-   d="scan'208";a="262347401"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 28 Feb 2017 07:47:05 +0100
-Date: Tue, 28 Feb 2017 07:47:05 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Katie Dunne <kdunne@mail.ccsf.edu>
-cc: outreachy-kernel@googlegroups.com, jic23@kernel.org, knaack.h@gmx.de, 
-    lars@metafoo.de, pmeerw@pmeerw.net, gregkh@linuxfoundation.org, 
-    linux-iio@vger.kernel.org
-Subject: Re: [Outreachy kernel] [PATCH 1/3] staging: iio: meter: Remove unused
- definitions
-In-Reply-To: <972438f1c7bc46153df933c5861fac91f6793e92.1488250885.git.kdunne@mail.ccsf.edu>
-Message-ID: <alpine.DEB.2.20.1702280746000.2078@hadrien>
-References: <cover.1488250884.git.kdunne@mail.ccsf.edu> <972438f1c7bc46153df933c5861fac91f6793e92.1488250885.git.kdunne@mail.ccsf.edu>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@mail-ccsf-edu.20150623.gappssmtp.com;
+       spf=neutral (google.com: 2607:f8b0:400e:c00::243 is neither permitted nor denied by best guess record for domain of kdunne@mail.ccsf.edu) smtp.mailfrom=kdunne@mail.ccsf.edu
+Received: by mail-pf0-x243.google.com with SMTP id y23so1759565pfk.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 27 Feb 2017 19:23:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=mail-ccsf-edu.20150623.gappssmtp.com; s=20150623;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=V7KXv5qKeTQNn9Fs8mNaqsBfUONEdIh5gMASvb8Nb8w=;
+        b=uXtvCryciZwn9UVl7pYu3mN92p4vA/uOOLNTbvy8ixYlDjH6ELdTHSWaJFvfZvBcU+
+         yD0DtMg83rnz/wk3aEsJ8QsZLXndLZ1QgR7jTbNyv4w+mE1CpFJ3WtmuQslhhw4hllks
+         mKcNTDi0m/Jb+KwYXHpIzMH0AyqbyqjvEFlnlBbLW3AXBB/H8xSOBg0GRmFBYhVS6NNh
+         xu9ZqBkrpcqU2V5ORAmjrcUdTf2NWeI9Bz/FSTlJCwCp6TyXo9uJwKIy8GhC3WI7+CBx
+         Rc4hh8nPj3Al3D6qEhMi8qkVM9EqWdBYpkU1QMMAceBJVJ9d2RLSkOLT3fbt9y0hItd7
+         EE2Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=V7KXv5qKeTQNn9Fs8mNaqsBfUONEdIh5gMASvb8Nb8w=;
+        b=TAr1diS/qmRGVyWc+jvhnqLiQ+gJd+8P+j7P0zyU7aLKK1aQGY7AysKVBH7dgkb68X
+         6ePoO0srnZoDlV2R2O5c7KGrXxrc40va3rG4x+hxjdBhFA+sh9QlFwD4uHZJFZ3EpodF
+         sLbeZtp5ncWqLyyAiCD05Kgd7e5FHT1vIylYeMMI87E4xL3Wa/88gyJBEPfGjoFkYxu7
+         maIOosyDJA6IXamVgXS3PjCIfI/7RTs0ipdx7ZACDjS0Ic4KTc8r8OTVNHwq61EM39IB
+         JEUxBi9AjHdWT8PiCd83yDLpoi3kaH0B7bDmlBDuXxpPSPVjw3sVnvA0S5x6SDuH0sVY
+         VKyw==
+X-Gm-Message-State: AMke39kQlgpP4AcxlzpvXxRMNaX7m7XVn28dcenqtyKTMDOM4FG448b8Cn6ATxFscUbepAyU
+X-Received: by 10.84.209.194 with SMTP id y60mr133229plh.115.1488252219471;
+        Mon, 27 Feb 2017 19:23:39 -0800 (PST)
+Return-Path: <kdunne@mail.ccsf.edu>
+Received: from katie-Inspiron-5748 (c-67-188-119-183.hsd1.ca.comcast.net. [67.188.119.183])
+        by smtp.gmail.com with ESMTPSA id y5sm438813pgy.28.2017.02.27.19.23.38
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 27 Feb 2017 19:23:38 -0800 (PST)
+Date: Mon, 27 Feb 2017 19:21:28 -0800
+From: Katie Dunne <kdunne@mail.ccsf.edu>
+To: outreachy-kernel@googlegroups.com
+Cc: jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net,
+	gregkh@linuxfoundation.org, linux-iio@vger.kernel.org
+Subject: [PATCH 3/3] staging: iio: meter: Clean up #includes
+Message-ID: <e3ddd60060761d6b581e4a9d54ff2a3b7daf8add.1488250885.git.kdunne@mail.ccsf.edu>
+References: <cover.1488250884.git.kdunne@mail.ccsf.edu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1488250884.git.kdunne@mail.ccsf.edu>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
+Alphabetize and separate kernel and subsystem headers.
 
+Signed-off-by: Katie Dunne <kdunne@mail.ccsf.edu>
+---
+ drivers/staging/iio/meter/ade7753.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
 
-On Mon, 27 Feb 2017, Katie Dunne wrote:
+diff --git a/drivers/staging/iio/meter/ade7753.c b/drivers/staging/iio/meter/ade7753.c
+index f855c60..5ea3ea2 100644
+--- a/drivers/staging/iio/meter/ade7753.c
++++ b/drivers/staging/iio/meter/ade7753.c
+@@ -6,20 +6,21 @@
+  * Licensed under the GPL-2 or later.
+  */
+ 
+-#include <linux/interrupt.h>
+-#include <linux/irq.h>
+ #include <linux/delay.h>
+-#include <linux/mutex.h>
+ #include <linux/device.h>
++#include <linux/interrupt.h>
++#include <linux/irq.h>
+ #include <linux/kernel.h>
++#include <linux/list.h>
++#include <linux/module.h>
++#include <linux/mutex.h>
+ #include <linux/spi/spi.h>
+ #include <linux/slab.h>
+ #include <linux/sysfs.h>
+-#include <linux/list.h>
+-#include <linux/module.h>
+ 
+ #include <linux/iio/iio.h>
+ #include <linux/iio/sysfs.h>
++
+ #include "meter.h"
+ 
+ #define ADE7753_READ_REG(a)    a
+-- 
+2.7.4
 
-> Remove definitions not used in kernel code.
-
-Did Alison ask for this?  Normally these kinds of constant definitions are
-kept, because they describe the device in some way.  If you see macros
-that perform more complex computations that are not used, you can get rid
-of those.
-
-julia
-
->
-> Signed-off-by: Katie Dunne <kdunne@mail.ccsf.edu>
-> ---
->  drivers/staging/iio/meter/ade7753.h | 14 --------------
->  1 file changed, 14 deletions(-)
->
-> diff --git a/drivers/staging/iio/meter/ade7753.h b/drivers/staging/iio/meter/ade7753.h
-> index bfe7491..ea9284a 100644
-> --- a/drivers/staging/iio/meter/ade7753.h
-> +++ b/drivers/staging/iio/meter/ade7753.h
-> @@ -1,18 +1,12 @@
->  #ifndef _ADE7753_H
->  #define _ADE7753_H
->
-> -#define ADE7753_WAVEFORM   0x01
->  #define ADE7753_AENERGY    0x02
-> -#define ADE7753_RAENERGY   0x03
->  #define ADE7753_LAENERGY   0x04
->  #define ADE7753_VAENERGY   0x05
-> -#define ADE7753_RVAENERGY  0x06
->  #define ADE7753_LVAENERGY  0x07
-> -#define ADE7753_LVARENERGY 0x08
->  #define ADE7753_MODE       0x09
->  #define ADE7753_IRQEN      0x0A
-> -#define ADE7753_STATUS     0x0B
-> -#define ADE7753_RSTSTATUS  0x0C
->  #define ADE7753_CH1OS      0x0D
->  #define ADE7753_CH2OS      0x0E
->  #define ADE7753_GAIN       0x0F
-> @@ -27,22 +21,15 @@
->  #define ADE7753_IRMSOS     0x18
->  #define ADE7753_VRMSOS     0x19
->  #define ADE7753_VAGAIN     0x1A
-> -#define ADE7753_VADIV      0x1B
->  #define ADE7753_LINECYC    0x1C
-> -#define ADE7753_ZXTOUT     0x1D
->  #define ADE7753_SAGCYC     0x1E
->  #define ADE7753_SAGLVL     0x1F
->  #define ADE7753_IPKLVL     0x20
->  #define ADE7753_VPKLVL     0x21
->  #define ADE7753_IPEAK      0x22
-> -#define ADE7753_RSTIPEAK   0x23
->  #define ADE7753_VPEAK      0x24
-> -#define ADE7753_RSTVPEAK   0x25
-> -#define ADE7753_TEMP       0x26
->  #define ADE7753_PERIOD     0x27
-> -#define ADE7753_TMODE      0x3D
->  #define ADE7753_CHKSUM     0x3E
-> -#define ADE7753_DIEREV     0x3F
->
->  #define ADE7753_READ_REG(a)    a
->  #define ADE7753_WRITE_REG(a) ((a) | 0x80)
-> @@ -52,7 +39,6 @@
->  #define ADE7753_STARTUP_DELAY 1000
->
->  #define ADE7753_SPI_SLOW	(u32)(300 * 1000)
-> -#define ADE7753_SPI_BURST	(u32)(1000 * 1000)
->  #define ADE7753_SPI_FAST	(u32)(2000 * 1000)
->
->  /**
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/972438f1c7bc46153df933c5861fac91f6793e92.1488250885.git.kdunne%40mail.ccsf.edu.
-> For more options, visit https://groups.google.com/d/optout.
->
 
