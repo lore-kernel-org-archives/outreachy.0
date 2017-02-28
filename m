@@ -1,115 +1,111 @@
-X-GM-THRID: 6752241350359384064
-X-Received: by 2002:a92:ce03:: with SMTP id b3mr8805607ilo.301.1572128699784;
-        Sat, 26 Oct 2019 15:24:59 -0700 (PDT)
+X-GM-THRID: 6392269007149334528
+X-Received: by 10.13.226.145 with SMTP id l139mr1448675ywe.95.1488316119295;
+        Tue, 28 Feb 2017 13:08:39 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a92:d7ca:: with SMTP id g10ls147406ilq.2.gmail; Sat, 26 Oct
- 2019 15:24:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyYbrZDBEbBG2Ojg8+w6QxHkceqxQJwKl8FpAXssM1YDuyCO063qQ+sdOty4mUxdZYgnw65
-X-Received: by 2002:a92:83d5:: with SMTP id p82mr12783924ilk.87.1572128698841;
-        Sat, 26 Oct 2019 15:24:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572128698; cv=none;
-        d=google.com; s=arc-20160816;
-        b=scnbKQAYSVQYb5NBgJ3hJgUNZrpOLsMTNFSLU2NNdg/G4oVDYPdFC0Bh/ZHAa8o5We
-         y65CG0ZBurWNFhfXEV2EAkW9QROBQBIj19ULzC7t1/j8wO9d1MaGFRoNfKFrnuM8voJH
-         /1et7FCJJv3adwFoX5vBbueCX+BMlogImDAP5KMylhlSL2MYGyOquoMrQAZA33uVnLh7
-         L1u+N2VzzPJWmnWdT7Z0wJXi1Q9eYvm1ZmGRjeSRUGxUgOnPjCgD0AT6cCR62ULdOt7F
-         2sr0i/W+7yeJJWcHVw6uorsnNZo4Bnwg0fN77zGEsitx3Ucl2czWSOh73yU7s0PR6W0a
-         UT0w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=ckFFNPjTqoIV9NtKmwbFlYYqSItNgTJwWUgtTUGHSxk=;
-        b=L8etygyPht8AKKpY5/vkuI1YZSGej/ICig3SGJ0dOLErdiTCSNcb8IQoZ/Hsjo6ZZ6
-         MckhSaUJX5afjFxG4SNFSowz3xfoqwZB6aOb+rVNCQnuWw+N8O16h1lXkluejD+T0/mm
-         KuH3jrcyTqVmkmlPxFkIh2aRBsW4ZblwrIwpz2xtzEYDtMDY29txrM+OYP84FVKPuzEN
-         zzKR+NHtyyVmfOYokdqjk8OIXGoqV9HPNioFwzVV38byr8aaK2xtYxK2Z+UrXoYIXikq
-         Ws2cgyaWysrMdFsTyokb4CbJ/aMFQoSUV1cXkkTknAJNad+PyZJfV0uKB2ZyYC1M5liv
-         /9Jg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=AjxPHJRs;
-       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <cristianenavescardoso09@gmail.com>
-Received: from mail-qt1-x841.google.com (mail-qt1-x841.google.com. [2607:f8b0:4864:20::841])
-        by gmr-mx.google.com with ESMTPS id f5si511170iof.4.2019.10.26.15.24.58
+Received: by 10.157.27.71 with SMTP id l65ls2008900otl.41.gmail; Tue, 28 Feb
+ 2017 13:08:38 -0800 (PST)
+X-Received: by 10.129.90.215 with SMTP id o206mr1487647ywb.101.1488316118947;
+        Tue, 28 Feb 2017 13:08:38 -0800 (PST)
+Return-Path: <sreyamittal5@gmail.com>
+Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
+        by gmr-mx.google.com with ESMTPS id f7si219990pfk.5.2017.02.28.13.08.38
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 26 Oct 2019 15:24:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) client-ip=2607:f8b0:4864:20::841;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 28 Feb 2017 13:08:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=AjxPHJRs;
-       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x841.google.com with SMTP id o49so8890465qta.7
-        for <outreachy-kernel@googlegroups.com>; Sat, 26 Oct 2019 15:24:58 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=sreyamittal5@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x242.google.com with SMTP id x17so2980661pgi.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 28 Feb 2017 13:08:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=ckFFNPjTqoIV9NtKmwbFlYYqSItNgTJwWUgtTUGHSxk=;
-        b=AjxPHJRsbcMH2/yFR06YkVU6csiJTZ6l9KnCXkdhc+NmED9nLh+t3MhvGP+hwKwVbc
-         xIcwTJUTNncG2HowAbSXiRokyvVtAfBpd3d1gh+xXC0zLTkNf/hjYkr52j9q6xgS09rW
-         6JaeZKEbbFx8mNpGP9Um3Le1q7vTAIvRXyXWa43GOy6tIFG2TxX/gKndQ6nLhu8qOrQq
-         C//IEr0XuQOSWEFPapyQDI2ViWzTPTiFWyIpvbApmtgnSVPSM6+LIdgTjdCrMbmzAYup
-         /oDLF35L1hzW9FFtEABWmUreWI7aXs7JaF4Dn5Bi83v0UB/PYB5snwGyQeFeQ4Fh+cfu
-         W4Fw==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=FXTEAmRPDRJXO8zFdRsU8xvHwpA0TRmRWVgi7jZZhnA=;
+        b=Wv8xfK9z29YYh1QGPNpdfgut02uqYqqiwC6CrJYfyqaED+GnZegAAd5U8t9c3h+Vuh
+         OZToTMUUbE3pUIbSUyfo9esk6X3zCfAvAS06PgpHUqgGqpQOlhe5kt2sKhlTac/Mxz4w
+         qELKm/3DZ10NoWrMgF5uX+iVlulx/SjcPFTiNQcsBFfAb+TTPtOt3PdG2LS1Gi7Od95U
+         fvZxeSN4+wLwO5Fcm0L7Ia0qrkhD9GriF7T2TNAfWdtgPl6hryMPr2P0432wAQBm+GIJ
+         HwCowDQLG50ohk6WQ8vCj3QpkFSLJMkBTQtoL/q1uXWLW7Y2uQ3WtOH3O9ZsJS55TxtV
+         yXGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=ckFFNPjTqoIV9NtKmwbFlYYqSItNgTJwWUgtTUGHSxk=;
-        b=prgMcDL1MPD1n6EFAGpWJcT9T5ET0V5OSr9ETPpHgu2A/GevLHkK+vY/8bTSN6BReI
-         BSgHk1d/flu4SzPZyu8en2UuEKd3AoKco6zDtHtx5bY0T4Wb/t8EDe0SXkn0NnzffzX5
-         UuVlaTXqVAQvyCCPp1TXELQeUUyIbDAoQYBEq/3674oe8N5vHLfWZO/hHIXXlbMvJSfT
-         xjLysoWgcDy6riX/jhR9orkZ2OYvno1GK3TTA2KdKlaCqhYoBWcjg/UrmgnQsqFD2LsN
-         s0EBWyyP3xfHI1xgJwerOy5NehuepZ+pe0NqPfNHq1qV0IT21GH/z0/mSiBMKU/UVeF+
-         AB/g==
-X-Gm-Message-State: APjAAAWWJmu3w/OJ7PPWD3VBCuQGqmMW02uED9sFzodFrsH57MZVzNPj
-	NApqiYJEPjCkkXNPk7fXowRdDXIW95xWLw==
-X-Received: by 2002:ac8:d6:: with SMTP id d22mr10473557qtg.290.1572128698141;
-        Sat, 26 Oct 2019 15:24:58 -0700 (PDT)
-Return-Path: <cristianenavescardoso09@gmail.com>
-Received: from cristiane-Inspiron-5420 ([131.100.148.220])
-        by smtp.gmail.com with ESMTPSA id c204sm2606120qkb.90.2019.10.26.15.24.56
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 26 Oct 2019 15:24:57 -0700 (PDT)
-Date: Sat, 26 Oct 2019 19:24:53 -0300
-From: Cristiane Naves <cristianenavescardoso09@gmail.com>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=FXTEAmRPDRJXO8zFdRsU8xvHwpA0TRmRWVgi7jZZhnA=;
+        b=MZGjFLK1c5u8a/2erUcTmhKBVPfrPcGrvPmsP/gMIQTUmMFF7owqAteLdiwYJrVFJ+
+         1lfc+f5Ncpspho1hz0Pv0uGLmtUz9fC9/9EcZDBHo+VsHAYEbTIJMFNZCIDrLgZRT4o4
+         s6xHaCOvBDq2FICCGGmmutix00T8csUK6XBKnZIEl4mqRh7C8YJMUqHc3akl56Ouelaq
+         vNX8tHxTQz+LPHabiiUw4I0BXOfSfKajrgqgj0pIaYvnhUAABFXvLDGVf26VUkonSnoh
+         tNIOroCZi07oiv7622sCjmJQBgI+wipVaovTsK49sYESIu3rB73jdtUo7P/JUcTdzjs7
+         XRxQ==
+X-Gm-Message-State: AMke39m8eta+kJQ8JxAv1sY8cCc31wy8WCQSMPhfzrQDB2Ug+b7R1KQtQ1X+Id1p0wNB3g==
+X-Received: by 10.98.27.204 with SMTP id b195mr4659821pfb.154.1488316118721;
+        Tue, 28 Feb 2017 13:08:38 -0800 (PST)
+Return-Path: <sreyamittal5@gmail.com>
+Received: from stayawesome ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id r17sm5998000pgg.19.2017.02.28.13.08.37
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 28 Feb 2017 13:08:38 -0800 (PST)
+From: Sreya Mittal <sreyamittal5@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Julia Lawall <julia.lawall@lip6.fr>, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: octeon: Remove unneeded variable
-Message-ID: <20191026222453.GA14562@cristiane-Inspiron-5420>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Cc: Sreya Mittal <sreyamittal5@gmail.com>,
+	William Hubbs <w.d.hubbs@gmail.com>,
+	Chris Brannon <chris@the-brannons.com>,
+	Kirk Reiser <kirk@reisers.ca>,
+	Samuel Thibault <samuel.thibault@ens-lyon.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH 2/2 v5] staging: speakup: Clean up if conditions
+Date: Wed,  1 Mar 2017 02:38:13 +0530
+Message-Id: <20170228210813.9110-3-sreyamittal5@gmail.com>
+X-Mailer: git-send-email 2.9.3
+In-Reply-To: <20170228210813.9110-1-sreyamittal5@gmail.com>
+References: <20170228210813.9110-1-sreyamittal5@gmail.com>
 
-Remove unneeded variable used to store return value. Issue found by
-coccicheck.
+Found by checkpatch.pl
+Logical conditions are on the next line, useless parentheses present
+Clean up the if tests by
 
-Signed-off-by: Cristiane Naves <cristianenavescardoso09@gmail.com>
+* Put logical conditions on the previous line
+* Line up the tests
+
+Signed-off-by: Sreya Mittal <sreyamittal5@gmail.com>
 ---
- drivers/staging/octeon/octeon-stubs.h | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/staging/octeon/octeon-stubs.h b/drivers/staging/octeon/octeon-stubs.h
-index b07f5e2..d53bd801 100644
---- a/drivers/staging/octeon/octeon-stubs.h
-+++ b/drivers/staging/octeon/octeon-stubs.h
-@@ -1387,9 +1387,7 @@ static inline cvmx_pko_status_t cvmx_pko_send_packet_finish(uint64_t port,
- 		uint64_t queue, union cvmx_pko_command_word0 pko_command,
- 		union cvmx_buf_ptr packet, cvmx_pko_lock_t use_locking)
- {
--	cvmx_pko_status_t ret = 0;
--
--	return ret;
-+	return 0;
- }
- 
- static inline void cvmx_wqe_set_port(struct cvmx_wqe *work, int port)
+Changes in v5:
+No change in this patch.
+
+ drivers/staging/speakup/keyhelp.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/staging/speakup/keyhelp.c b/drivers/staging/speakup/keyhelp.c
+index f5156bb..4e6e5da 100644
+--- a/drivers/staging/speakup/keyhelp.c
++++ b/drivers/staging/speakup/keyhelp.c
+@@ -163,17 +163,15 @@ int spk_handle_help(struct vc_data *vc, u_char type, u_char ch, u_short key)
+ 		}
+ 		cur_item = letter_offsets[ch - 'a'];
+ 	} else if (type == KT_CUR) {
+-		if (ch == 0
+-		    && (MSG_FUNCNAMES_START + cur_item + 1) <=
+-		    MSG_FUNCNAMES_END)
++		if (ch == 0 &&
++		    (MSG_FUNCNAMES_START + cur_item + 1) <= MSG_FUNCNAMES_END)
+ 			cur_item++;
+ 		else if (ch == 3 && cur_item > 0)
+ 			cur_item--;
+ 		else
+ 			return -1;
+-	} else if (type == KT_SPKUP
+-			&& ch == SPEAKUP_HELP
+-			&& !spk_special_handler) {
++	} else if (type == KT_SPKUP && ch == SPEAKUP_HELP &&
++		   !spk_special_handler) {
+ 		spk_special_handler = spk_handle_help;
+ 		synth_printf("%s\n", spk_msg_get(MSG_HELP_INFO));
+ 		build_key_data(); /* rebuild each time in case new mapping */
 -- 
-2.7.4
+2.9.3
 
 
