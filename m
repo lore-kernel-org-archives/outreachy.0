@@ -1,332 +1,127 @@
-X-GM-THRID: 6339107944060157952
-X-Received: by 10.31.120.78 with SMTP id t75mr6420702vkc.43.1475938582293;
-        Sat, 08 Oct 2016 07:56:22 -0700 (PDT)
+X-GM-THRID: 6392226705840275456
+X-Received: by 10.157.6.233 with SMTP id 96mr119838otx.111.1488314409766;
+        Tue, 28 Feb 2017 12:40:09 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.164.30 with SMTP id n30ls2539837ioe.35.gmail; Sat, 08 Oct
- 2016 07:56:18 -0700 (PDT)
-X-Received: by 10.107.169.163 with SMTP id f35mr6246347ioj.62.1475938578906;
-        Sat, 08 Oct 2016 07:56:18 -0700 (PDT)
-Return-Path: <eraretuya@gmail.com>
-Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id z73si2931725pfa.1.2016.10.08.07.56.18
+Received: by 10.157.26.78 with SMTP id u14ls2318839otu.27.gmail; Tue, 28 Feb
+ 2017 12:40:09 -0800 (PST)
+X-Received: by 10.129.179.136 with SMTP id r130mr1499586ywh.162.1488314409387;
+        Tue, 28 Feb 2017 12:40:09 -0800 (PST)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-io0-x244.google.com (mail-io0-x244.google.com. [2607:f8b0:4001:c06::244])
+        by gmr-mx.google.com with ESMTPS id z191si567843itc.0.2017.02.28.12.40.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 08 Oct 2016 07:56:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
+        Tue, 28 Feb 2017 12:40:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2607:f8b0:4001:c06::244 as permitted sender) client-ip=2607:f8b0:4001:c06::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x241.google.com with SMTP id qn10so4236878pac.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 08 Oct 2016 07:56:18 -0700 (PDT)
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2607:f8b0:4001:c06::244 as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-io0-x244.google.com with SMTP id v13so2649549iov.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 28 Feb 2017 12:40:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=2iRj0IEfdWbzsEip1DCLfWG4mvMnw7+merAp6iUMNVw=;
-        b=nWtjdub9mNMR/RsfDUnJDR/0G9wyRyaHN3S/cXvNWWKJtG1y7hEUOR5nxKMy35XIfO
-         0gb1745MeD0dbMx6zKIw9psFlcZUCdzGtnBLFoT6Ue7nrj+fyGvvez7ao/Hz7Yys+LnF
-         qviHjzfGF7X1g9kvww/dxZ/GlQJVdBcmtD7CqOz6iTw19gwypVFFxzVZlP9mKZnckhnB
-         OsWLjt7+RIQHOXqEoRZIbNuqfbgU8bVzuuDxVSoJA8VKGeP+9Q4WGsVG5QWwrDZMI9lS
-         0oY3jPbHytVOKuFETQ9jRHMMzreX5gTAzz3/7SdrfSMG+j30QzQFLX6R5KkKq6toek4M
-         2liw==
+        d=gmail.com; s=20161025;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=ioTca2RHyVnTj8DVk207W5qK+iW1w+VBMY5YHdCd+mE=;
+        b=gCmL/vW63NCc6HUxhUSKS5XqSfFncUwYpAMRyHo/0BCDdu/gqIxyQLs15N+C5C5jGA
+         ZAEU4OK67k96CC0TReGVQH185DQ1MFe5YKA5V91TM4NbNuU/Rg2Pq7+RbxkKqNpiI4g2
+         UD6gqlKwzR/KvFVhOVdq4nt1ZhzcvrTNzg+bH+20jRp+zSXkd6WeAxsS8KXJI1Ghq4LU
+         7TbNFsx4QmORbxbnncGyvSUrjPcwoTucXHArSLscX+Df201ydX1sQOA6d0FoAkI64XWU
+         nvtbUr8hs01O6m1+ft8hAFFxlriE1T/CjzElskh7XVCDIsvHzFPwetUKJLjhyscXJa1Z
+         uZ4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=2iRj0IEfdWbzsEip1DCLfWG4mvMnw7+merAp6iUMNVw=;
-        b=QEC3t9juAVeEp9GY3hff5AyO15qErse5/qn6yr6znL8DsUHvd9iuF7rzmZpTNwwoxO
-         kKeAojQLB3YQY1LAnOwPm6Siv+jUu9qvmMlJ5UoRF/QhRARgP4x599zPZM+E35Oyltaw
-         pxvNgpa9N0TFzRyyzjIryq0Rpfyqp2iEnDMIQLkjUe1pBJBGmcttP4xx/sdM9QDGsSHL
-         cPKupn0/Kpj8wG3jeay6Fb+aZ6WLBk12Tb/GwgGE4DGXZ2M/fFofPyWDIkXozqJVNv/D
-         COrL2Eh57NvDvcMq4IJi1PRcYiyVxdTHNm32RUuIJK00TExnAiJaiF60IFNoK1TqkpcO
-         6klg==
-X-Gm-Message-State: AA6/9RlZJhCG3gMTGN16tqbNLQqCwwsLq91RSuO9KGNfcGvdOwFvXUSAA7jwVu0PUEhA8Q==
-X-Received: by 10.66.95.7 with SMTP id dg7mr24452605pab.107.1475938578656;
-        Sat, 08 Oct 2016 07:56:18 -0700 (PDT)
-Return-Path: <eraretuya@gmail.com>
-Received: from Socrates-DK ([203.215.121.105])
-        by smtp.gmail.com with ESMTPSA id u10sm21902801pau.32.2016.10.08.07.56.16
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 08 Oct 2016 07:56:17 -0700 (PDT)
-From: Eva Rachel Retuya <eraretuya@gmail.com>
-To: linux-iio@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Cc: lars@metafoo.de,
-	Michael.Hennerich@analog.com,
-	jic23@kernel.org,
-	knaack.h@gmx.de,
-	pmeerw@pmeerw.net,
-	gregkh@linuxfoundation.org,
-	Eva Rachel Retuya <eraretuya@gmail.com>
-Subject: [PATCH] staging: iio: cdc: ad7746: implement IIO_CHAN_INFO_SAMP_FREQ
-Date: Sat,  8 Oct 2016 22:56:00 +0800
-Message-Id: <1475938560-11700-1-git-send-email-eraretuya@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=ioTca2RHyVnTj8DVk207W5qK+iW1w+VBMY5YHdCd+mE=;
+        b=bSXOWea3dLcHz31/HzpwOVmrT7EbaBvRGqdb2ZvfAib9RXztK7HHHDZF1oouenmeu+
+         4v9o2NjMnC0Cg+76n/NoIX/nTuq4giGKympJkQgUenYonpPAymoMrPrZk5fFB3Y+ln6K
+         psDZqSt8fF5Sx7lRH767Bu6SMyrFKpYqtlk4BvyGKgKC7l9VCFh1RIAhjOVuwC9wbsp3
+         isf6cSCu7BhW1FElE6lsw0U7lMkGR7SCryxe6fHDHXA9V3Qo9g1G6Kn3cKVbP6JmU3tK
+         4poQvRY9ZpWKMeDI8JsObN5B9Ew6raK8Y+kdQxGM9B9H78dpMxs9LvCIAwwXNLxXhmfh
+         zYvA==
+X-Gm-Message-State: AMke39l1hrib8QRUGMpP8KWh9BmIoPh+cZjSme99cpzff+cA6Q6+5HVR+P1FaLJ921rwIRi4eVAQRA0gqja43A==
+X-Received: by 10.107.149.194 with SMTP id x185mr4603936iod.167.1488314409106;
+ Tue, 28 Feb 2017 12:40:09 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.107.138.230 with HTTP; Tue, 28 Feb 2017 12:40:08 -0800 (PST)
+In-Reply-To: <20170228182413.26063-1-diaconita.tamara@gmail.com>
+References: <20170228182413.26063-1-diaconita.tamara@gmail.com>
+From: Daniel Baluta <daniel.baluta@gmail.com>
+Date: Tue, 28 Feb 2017 22:40:08 +0200
+Message-ID: <CAEnQRZBvxfeQqg82S0U5L2KZsYZe0Mcz=-=BmuBjWbjnXmGDNw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 3/5] Removed unnecessary blank lines.
+To: Tamara Diaconita <diaconitatamara@gmail.com>
+Cc: mchehab@kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>, 
+	Tamara Diaconita <diaconita.tamara@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 
-This driver predates the availability of IIO_CHAN_INFO_SAMP_FREQ
-attribute wherein usage has some advantages like it can be accessed by
-in-kernel consumers as well as reduces the code size.
+On Tue, Feb 28, 2017 at 8:24 PM, Tamara Diaconita
+<diaconitatamara@gmail.com> wrote:
+> Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
+> ---
+>  drivers/staging/media/cxd2099/cxd2099.c | 5 -----
+>  1 file changed, 5 deletions(-)
+>
+> diff --git a/drivers/staging/media/cxd2099/cxd2099.c b/drivers/staging/media/cxd2099/cxd2099.c
+> index 0da9294..bcf1c75 100644
+> --- a/drivers/staging/media/cxd2099/cxd2099.c
+> +++ b/drivers/staging/media/cxd2099/cxd2099.c
+> @@ -131,7 +131,6 @@ static int read_reg(struct cxd *ci, u8 reg, u8 *val)
+>         return read_block(ci, reg, val, 1);
+>  }
+>
+> -
+>  static int read_pccard(struct cxd *ci, u16 address, u8 *data, u8 n)
+>  {
+>         int status;
+> @@ -292,8 +291,6 @@ static void cam_mode(struct cxd *ci, int mode)
+>         ci->cammode = mode;
+>  }
+>
+> -
+> -
+>  static int init(struct cxd *ci)
+>  {
+>         int status;
+> @@ -572,7 +569,6 @@ static int slot_ts_enable(struct dvb_ca_en50221 *ca, int slot)
+>         return 0;
+>  }
+>
+> -
+>  static int campoll(struct cxd *ci)
+>  {
+>         u8 istat;
+> @@ -616,7 +612,6 @@ static int campoll(struct cxd *ci)
+>         return 0;
+>  }
+>
+> -
+>  static int poll_slot_status(struct dvb_ca_en50221 *ca, int slot, int open)
+>  {
+>         struct cxd *ci = ca->data;
 
-Therefore, use IIO_CHAN_INFO_SAMP_FREQ to implement the
-sampling_frequency attribute instead of using IIO_DEVICE_ATTR() macro.
+Hi Tamara,
 
-Move code from the functions associated with IIO_DEVICE_ATTR() into
-respective read and write hooks with the mask set to
-IIO_CHAN_INFO_SAMP_FREQ.
+The patch looks good to me. Anyhow, you can improve the commit message
+by specifying a tag.
 
-Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
----
- drivers/staging/iio/cdc/ad7746.c | 169 ++++++++++++++++-----------------------
- 1 file changed, 71 insertions(+), 98 deletions(-)
+e.g     staging: media: cxd2099:
 
-diff --git a/drivers/staging/iio/cdc/ad7746.c b/drivers/staging/iio/cdc/ad7746.c
-index 5771d4ee..52c84a3 100644
---- a/drivers/staging/iio/cdc/ad7746.c
-+++ b/drivers/staging/iio/cdc/ad7746.c
-@@ -122,7 +122,8 @@ static const struct iio_chan_spec ad7746_channels[] = {
- 		.indexed = 1,
- 		.channel = 0,
- 		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW),
--		.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_SCALE),
-+		.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_SCALE) |
-+			BIT(IIO_CHAN_INFO_SAMP_FREQ),
- 		.address = AD7746_REG_VT_DATA_HIGH << 8 |
- 			AD7746_VTSETUP_VTMD_EXT_VIN,
- 	},
-@@ -132,7 +133,8 @@ static const struct iio_chan_spec ad7746_channels[] = {
- 		.channel = 1,
- 		.extend_name = "supply",
- 		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW),
--		.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_SCALE),
-+		.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_SCALE) |
-+			BIT(IIO_CHAN_INFO_SAMP_FREQ),
- 		.address = AD7746_REG_VT_DATA_HIGH << 8 |
- 			AD7746_VTSETUP_VTMD_VDD_MON,
- 	},
-@@ -159,7 +161,7 @@ static const struct iio_chan_spec ad7746_channels[] = {
- 		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW) |
- 		BIT(IIO_CHAN_INFO_CALIBSCALE) | BIT(IIO_CHAN_INFO_OFFSET),
- 		.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_CALIBBIAS) |
--		BIT(IIO_CHAN_INFO_SCALE),
-+		BIT(IIO_CHAN_INFO_SCALE) | BIT(IIO_CHAN_INFO_SAMP_FREQ),
- 		.address = AD7746_REG_CAP_DATA_HIGH << 8,
- 	},
- 	[CIN1_DIFF] = {
-@@ -171,7 +173,7 @@ static const struct iio_chan_spec ad7746_channels[] = {
- 		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW) |
- 		BIT(IIO_CHAN_INFO_CALIBSCALE) | BIT(IIO_CHAN_INFO_OFFSET),
- 		.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_CALIBBIAS) |
--		BIT(IIO_CHAN_INFO_SCALE),
-+		BIT(IIO_CHAN_INFO_SCALE) | BIT(IIO_CHAN_INFO_SAMP_FREQ),
- 		.address = AD7746_REG_CAP_DATA_HIGH << 8 |
- 			AD7746_CAPSETUP_CAPDIFF
- 	},
-@@ -182,7 +184,7 @@ static const struct iio_chan_spec ad7746_channels[] = {
- 		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW) |
- 		BIT(IIO_CHAN_INFO_CALIBSCALE) | BIT(IIO_CHAN_INFO_OFFSET),
- 		.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_CALIBBIAS) |
--		BIT(IIO_CHAN_INFO_SCALE),
-+		BIT(IIO_CHAN_INFO_SCALE) | BIT(IIO_CHAN_INFO_SAMP_FREQ),
- 		.address = AD7746_REG_CAP_DATA_HIGH << 8 |
- 			AD7746_CAPSETUP_CIN2,
- 	},
-@@ -195,7 +197,7 @@ static const struct iio_chan_spec ad7746_channels[] = {
- 		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW) |
- 		BIT(IIO_CHAN_INFO_CALIBSCALE) | BIT(IIO_CHAN_INFO_OFFSET),
- 		.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_CALIBBIAS) |
--		BIT(IIO_CHAN_INFO_SCALE),
-+		BIT(IIO_CHAN_INFO_SCALE) | BIT(IIO_CHAN_INFO_SAMP_FREQ),
- 		.address = AD7746_REG_CAP_DATA_HIGH << 8 |
- 			AD7746_CAPSETUP_CAPDIFF | AD7746_CAPSETUP_CIN2,
- 	}
-@@ -354,102 +356,11 @@ static IIO_DEVICE_ATTR(in_capacitance1_calibscale_calibration,
- 		       S_IWUSR, NULL, ad7746_start_gain_calib, CIN2);
- static IIO_DEVICE_ATTR(in_voltage0_calibscale_calibration,
- 		       S_IWUSR, NULL, ad7746_start_gain_calib, VIN);
--
--static ssize_t ad7746_show_cap_filter_rate_setup(struct device *dev,
--		struct device_attribute *attr,
--		char *buf)
--{
--	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
--	struct ad7746_chip_info *chip = iio_priv(indio_dev);
--
--	return sprintf(buf, "%d\n", ad7746_cap_filter_rate_table[
--			(chip->config >> 3) & 0x7][0]);
--}
--
--static ssize_t ad7746_store_cap_filter_rate_setup(struct device *dev,
--		struct device_attribute *attr,
--		const char *buf,
--		size_t len)
--{
--	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
--	struct ad7746_chip_info *chip = iio_priv(indio_dev);
--	u8 data;
--	int ret, i;
--
--	ret = kstrtou8(buf, 10, &data);
--	if (ret < 0)
--		return ret;
--
--	for (i = 0; i < ARRAY_SIZE(ad7746_cap_filter_rate_table); i++)
--		if (data >= ad7746_cap_filter_rate_table[i][0])
--			break;
--
--	if (i >= ARRAY_SIZE(ad7746_cap_filter_rate_table))
--		i = ARRAY_SIZE(ad7746_cap_filter_rate_table) - 1;
--
--	mutex_lock(&indio_dev->mlock);
--	chip->config &= ~AD7746_CONF_CAPFS(0x7);
--	chip->config |= AD7746_CONF_CAPFS(i);
--	mutex_unlock(&indio_dev->mlock);
--
--	return len;
--}
--
--static ssize_t ad7746_show_vt_filter_rate_setup(struct device *dev,
--		struct device_attribute *attr,
--		char *buf)
--{
--	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
--	struct ad7746_chip_info *chip = iio_priv(indio_dev);
--
--	return sprintf(buf, "%d\n", ad7746_vt_filter_rate_table[
--			(chip->config >> 6) & 0x3][0]);
--}
--
--static ssize_t ad7746_store_vt_filter_rate_setup(struct device *dev,
--		struct device_attribute *attr,
--		const char *buf,
--		size_t len)
--{
--	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
--	struct ad7746_chip_info *chip = iio_priv(indio_dev);
--	u8 data;
--	int ret, i;
--
--	ret = kstrtou8(buf, 10, &data);
--	if (ret < 0)
--		return ret;
--
--	for (i = 0; i < ARRAY_SIZE(ad7746_vt_filter_rate_table); i++)
--		if (data >= ad7746_vt_filter_rate_table[i][0])
--			break;
--
--	if (i >= ARRAY_SIZE(ad7746_vt_filter_rate_table))
--		i = ARRAY_SIZE(ad7746_vt_filter_rate_table) - 1;
--
--	mutex_lock(&indio_dev->mlock);
--	chip->config &= ~AD7746_CONF_VTFS(0x3);
--	chip->config |= AD7746_CONF_VTFS(i);
--	mutex_unlock(&indio_dev->mlock);
--
--	return len;
--}
--
--static IIO_DEVICE_ATTR(in_capacitance_sampling_frequency,
--		       S_IRUGO | S_IWUSR, ad7746_show_cap_filter_rate_setup,
--			ad7746_store_cap_filter_rate_setup, 0);
--
--static IIO_DEVICE_ATTR(in_voltage_sampling_frequency,
--		       S_IRUGO | S_IWUSR, ad7746_show_vt_filter_rate_setup,
--		       ad7746_store_vt_filter_rate_setup, 0);
--
- static IIO_CONST_ATTR(in_voltage_sampling_frequency_available, "50 31 16 8");
- static IIO_CONST_ATTR(in_capacitance_sampling_frequency_available,
- 		       "91 84 50 26 16 13 11 9");
- 
- static struct attribute *ad7746_attributes[] = {
--	&iio_dev_attr_in_capacitance_sampling_frequency.dev_attr.attr,
--	&iio_dev_attr_in_voltage_sampling_frequency.dev_attr.attr,
- 	&iio_dev_attr_in_capacitance0_calibbias_calibration.dev_attr.attr,
- 	&iio_dev_attr_in_capacitance0_calibscale_calibration.dev_attr.attr,
- 	&iio_dev_attr_in_capacitance1_calibscale_calibration.dev_attr.attr,
-@@ -472,7 +383,7 @@ static int ad7746_write_raw(struct iio_dev *indio_dev,
- 			    long mask)
- {
- 	struct ad7746_chip_info *chip = iio_priv(indio_dev);
--	int ret, reg;
-+	int ret, reg, i;
- 
- 	mutex_lock(&indio_dev->mlock);
- 
-@@ -547,6 +458,51 @@ static int ad7746_write_raw(struct iio_dev *indio_dev,
- 
- 		ret = 0;
- 		break;
-+	case IIO_CHAN_INFO_SAMP_FREQ:
-+		switch (chan->type) {
-+		case IIO_CAPACITANCE:
-+			if (val2) {
-+				ret = -EINVAL;
-+				goto out;
-+			}
-+
-+			for (i = 0; i <
-+			     ARRAY_SIZE(ad7746_cap_filter_rate_table); i++)
-+				if (val >= ad7746_cap_filter_rate_table[i][0])
-+					break;
-+
-+			if (i >= ARRAY_SIZE(ad7746_cap_filter_rate_table))
-+				i = ARRAY_SIZE(ad7746_cap_filter_rate_table) -
-+					1;
-+
-+			chip->config &= ~AD7746_CONF_CAPFS(0x7);
-+			chip->config |= AD7746_CONF_CAPFS(i);
-+
-+			break;
-+		case IIO_VOLTAGE:
-+			if (val2) {
-+				ret = -EINVAL;
-+				goto out;
-+			}
-+
-+			for (i = 0; i <
-+			     ARRAY_SIZE(ad7746_vt_filter_rate_table); i++)
-+				if (val >= ad7746_vt_filter_rate_table[i][0])
-+					break;
-+
-+			if (i >= ARRAY_SIZE(ad7746_vt_filter_rate_table))
-+				i = ARRAY_SIZE(ad7746_vt_filter_rate_table) -
-+					1;
-+
-+			chip->config &= ~AD7746_CONF_VTFS(0x3);
-+			chip->config |= AD7746_CONF_VTFS(i);
-+
-+			break;
-+		default:
-+			ret = -EINVAL;
-+			break;
-+		}
-+		break;
- 	default:
- 		ret = -EINVAL;
- 	}
-@@ -667,6 +623,23 @@ static int ad7746_read_raw(struct iio_dev *indio_dev,
- 		}
- 
- 		break;
-+	case IIO_CHAN_INFO_SAMP_FREQ:
-+		switch (chan->type) {
-+		case IIO_CAPACITANCE:
-+			*val = ad7746_cap_filter_rate_table[
-+					(chip->config >> 3) & 0x7][0];
-+			ret = IIO_VAL_INT;
-+			break;
-+		case IIO_VOLTAGE:
-+			*val = ad7746_vt_filter_rate_table[
-+					(chip->config >> 6) & 0x3][0];
-+			ret = IIO_VAL_INT;
-+			break;
-+		default:
-+			ret = -EINVAL;
-+			break;
-+		}
-+		break;
- 	default:
- 		ret = -EINVAL;
- 	}
--- 
-2.7.4
+so the commit subject will look like this:
 
+staging: media: cxd2099: Remove unnecessary blank lines
+
+Also, notice that I used imperative mood (Remove not Removed) and also
+there is no full stop (.) at the end of the subject.
+
+You can read more here about how to write a good commit message
+
+https://chris.beams.io/posts/git-commit/
+
+
+thanks,
+Daniel.
 
