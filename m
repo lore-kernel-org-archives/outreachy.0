@@ -1,382 +1,102 @@
 X-GM-THRID: 6391874178049376256
-X-Received: by 10.107.176.142 with SMTP id z136mr3108689ioe.62.1488398051573;
-        Wed, 01 Mar 2017 11:54:11 -0800 (PST)
+X-Received: by 10.25.17.102 with SMTP id g99mr461519lfi.6.1488310639855;
+        Tue, 28 Feb 2017 11:37:19 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.3.54 with SMTP id 51ls3300742otv.20.gmail; Wed, 01 Mar
- 2017 11:54:11 -0800 (PST)
-X-Received: by 10.157.8.246 with SMTP id 109mr3221085otf.48.1488398051208;
-        Wed, 01 Mar 2017 11:54:11 -0800 (PST)
-Received: by 10.55.128.199 with SMTP id b190msqkd;
-        Tue, 28 Feb 2017 11:23:06 -0800 (PST)
-X-Received: by 10.25.156.74 with SMTP id f71mr238971lfe.26.1488309786418;
-        Tue, 28 Feb 2017 11:23:06 -0800 (PST)
-Return-Path: <jic23@kernel.org>
-Received: from saturn.retrosnub.co.uk (saturn.retrosnub.co.uk. [2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466])
-        by gmr-mx.google.com with ESMTPS id 14si252648wmn.2.2017.02.28.11.23.06
+Received: by 10.46.87.92 with SMTP id r28ls215736ljd.11.gmail; Tue, 28 Feb
+ 2017 11:37:19 -0800 (PST)
+X-Received: by 10.46.87.80 with SMTP id r16mr539415ljd.16.1488310639277;
+        Tue, 28 Feb 2017 11:37:19 -0800 (PST)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from mail-lf0-x22e.google.com (mail-lf0-x22e.google.com. [2a00:1450:4010:c07::22e])
+        by gmr-mx.google.com with ESMTPS id v201si170250wmv.3.2017.02.28.11.37.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Feb 2017 11:23:06 -0800 (PST)
-Received-SPF: neutral (google.com: 2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466 is neither permitted nor denied by best guess record for domain of jic23@kernel.org) client-ip=2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466;
+        Tue, 28 Feb 2017 11:37:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2a00:1450:4010:c07::22e as permitted sender) client-ip=2a00:1450:4010:c07::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466 is neither permitted nor denied by best guess record for domain of jic23@kernel.org) smtp.mailfrom=jic23@kernel.org
-Received: from localhost.localdomain (cpc91196-cmbg18-2-0-cust659.5-4.cable.virginm.net [81.96.234.148])
-	by saturn.retrosnub.co.uk (Postfix; Retrosnub mail submission) with ESMTPSA id 99CF64066D;
-	Tue, 28 Feb 2017 19:23:05 +0000 (GMT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2a00:1450:4010:c07::22e as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-lf0-x22e.google.com with SMTP id k202so10059578lfe.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 28 Feb 2017 11:37:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=GgUHWpbbsFj98uQRL5CI/olTu3uurannE0XeL1+kcj8=;
+        b=GQBcEgC8Cq1TH6xqawNhI8JP8uBeBGSpZhOPL8Zi7xqwT6YQkGyp4AGkO6Wz0Mzb4p
+         MyKgjixrCdg+dGm9dPVscM9niIGA31G/zaTQ+HJXd1lebjpE9e68l3qf8fd5TRNeByy7
+         0570VP/4KaOOWNtqoSnT2A7IHd1spA4ev/TKQwb1M4a0oR3sSYF73VH6MjS/CsXlDN0V
+         lJQSoS+PGd/UpAvKlwe26+zzZjN+gegue64QBcduK7jPAHK+8MD1gxNNtrSe3O3oNZL8
+         IeWhnAt4PcrWvjlPLR1Ta0WDe7cyEoOmuMb8UJG9jCoGzdSJOnYKNwBYeT0fZa0isGDG
+         TGOg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=GgUHWpbbsFj98uQRL5CI/olTu3uurannE0XeL1+kcj8=;
+        b=CCxFPBkhEVPd92hx0aRKyfyMwO5HGqQUDqdCnQSzwQs7QblulOYdXAAly0svrp0YUG
+         1tHit0nRRldlgu7chwoc0zBX1aO4PUemlIC8/Te/ZL+UKf8EcuD9FJk4usSxfSxMizmn
+         zKwF0cgU/Y65ztyZoyRwdKBJWNGas7ZicuzWvhPFuP8npM2RMIvVYcZVAK4SVMuojc2O
+         bucEsWu6I8y/DtJV4ILRcSh6VmH5AEVtbreijfN+gmhxUUasjFIQcljkiYm77P9JoOZb
+         1AFMwGCBykMmvPjK8oEqqK+KP7rdhtcztVPAIv7WKu6vw5ar0hSlJbymp3oD085Kp5mu
+         4eHA==
+X-Gm-Message-State: AMke39nGT0e43Y10lIyZkLhYycuZOufA+qacofXnC0npFAaOcULvTZe9lwq/iIDNauqc31UNQAcLesI32oWxFQ==
+X-Received: by 10.46.21.89 with SMTP id 25mr1432178ljv.19.1488310639048; Tue,
+ 28 Feb 2017 11:37:19 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.25.15.39 with HTTP; Tue, 28 Feb 2017 11:37:18 -0800 (PST)
+In-Reply-To: <6780baa6-178a-111a-b6fb-30917beaa9dc@metafoo.de>
+References: <20170228185117.GA10378@singhal-Inspiron-5558> <885c0c37-3709-7b56-a9cf-69a34c735bae@kernel.org>
+ <a7be45a3-12e3-2074-b58f-d30494ba5955@kernel.org> <CALrZqyNWFtPzorYN--eQHyhvaZqgR51xgqcwpio+ZM_vB+ccRw@mail.gmail.com>
+ <6780baa6-178a-111a-b6fb-30917beaa9dc@metafoo.de>
+From: SIMRAN SINGHAL <singhalsimran0@gmail.com>
+Date: Wed, 1 Mar 2017 01:07:18 +0530
+Message-ID: <CALrZqyMXWEgR6seOHBgVL+cS7jPmPAGvyiWjFSrTmR5t9yhwtA@mail.gmail.com>
 Subject: Re: [PATCH v2] staging: iio: accel: Move header file content to
  source file
-To: simran singhal <singhalsimran0@gmail.com>, lars@metafoo.de
-References: <20170228185117.GA10378@singhal-Inspiron-5558>
- <885c0c37-3709-7b56-a9cf-69a34c735bae@kernel.org>
-Cc: Michael.Hennerich@analog.com, knaack.h@gmx.de, pmeerw@pmeerw.net,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
- linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
- outreachy-kernel@googlegroups.com
-From: Jonathan Cameron <jic23@kernel.org>
-Message-ID: <a7be45a3-12e3-2074-b58f-d30494ba5955@kernel.org>
-Date: Tue, 28 Feb 2017 19:23:07 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
- Thunderbird/45.7.0
-MIME-Version: 1.0
-In-Reply-To: <885c0c37-3709-7b56-a9cf-69a34c735bae@kernel.org>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+To: Lars-Peter Clausen <lars@metafoo.de>
+Cc: Jonathan Cameron <jic23@kernel.org>, Michael.Hennerich@analog.com, knaack.h@gmx.de, 
+	Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Greg KH <gregkh@linuxfoundation.org>, 
+	linux-kernel@vger.kernel.org, linux-iio@vger.kernel.org, 
+	devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-On 28/02/17 19:17, Jonathan Cameron wrote:
-> On 28/02/17 18:51, simran singhal wrote:
->> The contents of the header file are used only by this single
->> source file. Move content into .c and remove .h.
+On Wed, Mar 1, 2017 at 1:04 AM, Lars-Peter Clausen <lars@metafoo.de> wrote:
+> On 02/28/2017 08:32 PM, SIMRAN SINGHAL wrote:
+>> On Wed, Mar 1, 2017 at 12:53 AM, Jonathan Cameron <jic23@kernel.org> wrote:
+>>> On 28/02/17 19:17, Jonathan Cameron wrote:
+>>>> On 28/02/17 18:51, simran singhal wrote:
+>>>>> The contents of the header file are used only by this single
+>>>>> source file. Move content into .c and remove .h.
+>>>>>
+>>>>> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+>>>> Applied to the togreg branch of iio.git and pushed out as testing
+>>>> for the autobuilders to play with it.
+>>>>
+>>>> Thanks,
+>>>>
+>>>> Jonathan
+>>>
+>>> One quick note:
+>>>
+>>> The title should include the name of the driver being modified
+>>> as this is probably the bit interested people are most likely
+>>> to pick up on in a long list of patches.
+>>>
+>>> I fixed this up.  Thanks,
+>>>
+>>> Jonathan
 >>
->> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
-> Applied to the togreg branch of iio.git and pushed out as testing
-> for the autobuilders to play with it.
-> 
-> Thanks,
-> 
-> Jonathan
+>> I have included the name of driver being modified.
+>> Due to want me to include the name of file i.e adis16201_core.c
+>
+> Not the full filename, but the partnumber. E.g.
+>
+>         'staging: iio: adis16201: ...'
+>
 
-One quick note:
+Lars-Peter, I got it.
 
-The title should include the name of the driver being modified
-as this is probably the bit interested people are most likely
-to pick up on in a long list of patches.
-
-I fixed this up.  Thanks,
-
-Jonathan
->> ---
->>
->>  v2:
->>    -Removing ifndef and define
->>
->>  drivers/staging/iio/accel/adis16201.h      | 144 -----------------------------
->>  drivers/staging/iio/accel/adis16201_core.c | 142 +++++++++++++++++++++++++++-
->>  2 files changed, 141 insertions(+), 145 deletions(-)
->>  delete mode 100644 drivers/staging/iio/accel/adis16201.h
->>
->> diff --git a/drivers/staging/iio/accel/adis16201.h b/drivers/staging/iio/accel/adis16201.h
->> deleted file mode 100644
->> index 64844ad..0000000
->> --- a/drivers/staging/iio/accel/adis16201.h
->> +++ /dev/null
->> @@ -1,144 +0,0 @@
->> -#ifndef SPI_ADIS16201_H_
->> -#define SPI_ADIS16201_H_
->> -
->> -#define ADIS16201_STARTUP_DELAY	220 /* ms */
->> -
->> -/* Flash memory write count */
->> -#define ADIS16201_FLASH_CNT      0x00
->> -
->> -/* Output, power supply */
->> -#define ADIS16201_SUPPLY_OUT     0x02
->> -
->> -/* Output, x-axis accelerometer */
->> -#define ADIS16201_XACCL_OUT      0x04
->> -
->> -/* Output, y-axis accelerometer */
->> -#define ADIS16201_YACCL_OUT      0x06
->> -
->> -/* Output, auxiliary ADC input */
->> -#define ADIS16201_AUX_ADC        0x08
->> -
->> -/* Output, temperature */
->> -#define ADIS16201_TEMP_OUT       0x0A
->> -
->> -/* Output, x-axis inclination */
->> -#define ADIS16201_XINCL_OUT      0x0C
->> -
->> -/* Output, y-axis inclination */
->> -#define ADIS16201_YINCL_OUT      0x0E
->> -
->> -/* Calibration, x-axis acceleration offset */
->> -#define ADIS16201_XACCL_OFFS     0x10
->> -
->> -/* Calibration, y-axis acceleration offset */
->> -#define ADIS16201_YACCL_OFFS     0x12
->> -
->> -/* x-axis acceleration scale factor */
->> -#define ADIS16201_XACCL_SCALE    0x14
->> -
->> -/* y-axis acceleration scale factor */
->> -#define ADIS16201_YACCL_SCALE    0x16
->> -
->> -/* Calibration, x-axis inclination offset */
->> -#define ADIS16201_XINCL_OFFS     0x18
->> -
->> -/* Calibration, y-axis inclination offset */
->> -#define ADIS16201_YINCL_OFFS     0x1A
->> -
->> -/* x-axis inclination scale factor */
->> -#define ADIS16201_XINCL_SCALE    0x1C
->> -
->> -/* y-axis inclination scale factor */
->> -#define ADIS16201_YINCL_SCALE    0x1E
->> -
->> -/* Alarm 1 amplitude threshold */
->> -#define ADIS16201_ALM_MAG1       0x20
->> -
->> -/* Alarm 2 amplitude threshold */
->> -#define ADIS16201_ALM_MAG2       0x22
->> -
->> -/* Alarm 1, sample period */
->> -#define ADIS16201_ALM_SMPL1      0x24
->> -
->> -/* Alarm 2, sample period */
->> -#define ADIS16201_ALM_SMPL2      0x26
->> -
->> -/* Alarm control */
->> -#define ADIS16201_ALM_CTRL       0x28
->> -
->> -/* Auxiliary DAC data */
->> -#define ADIS16201_AUX_DAC        0x30
->> -
->> -/* General-purpose digital input/output control */
->> -#define ADIS16201_GPIO_CTRL      0x32
->> -
->> -/* Miscellaneous control */
->> -#define ADIS16201_MSC_CTRL       0x34
->> -
->> -/* Internal sample period (rate) control */
->> -#define ADIS16201_SMPL_PRD       0x36
->> -
->> -/* Operation, filter configuration */
->> -#define ADIS16201_AVG_CNT        0x38
->> -
->> -/* Operation, sleep mode control */
->> -#define ADIS16201_SLP_CNT        0x3A
->> -
->> -/* Diagnostics, system status register */
->> -#define ADIS16201_DIAG_STAT      0x3C
->> -
->> -/* Operation, system command register */
->> -#define ADIS16201_GLOB_CMD       0x3E
->> -
->> -/* MSC_CTRL */
->> -
->> -/* Self-test enable */
->> -#define ADIS16201_MSC_CTRL_SELF_TEST_EN	        BIT(8)
->> -
->> -/* Data-ready enable: 1 = enabled, 0 = disabled */
->> -#define ADIS16201_MSC_CTRL_DATA_RDY_EN	        BIT(2)
->> -
->> -/* Data-ready polarity: 1 = active high, 0 = active low */
->> -#define ADIS16201_MSC_CTRL_ACTIVE_HIGH	        BIT(1)
->> -
->> -/* Data-ready line selection: 1 = DIO1, 0 = DIO0 */
->> -#define ADIS16201_MSC_CTRL_DATA_RDY_DIO1	BIT(0)
->> -
->> -/* DIAG_STAT */
->> -
->> -/* Alarm 2 status: 1 = alarm active, 0 = alarm inactive */
->> -#define ADIS16201_DIAG_STAT_ALARM2        BIT(9)
->> -
->> -/* Alarm 1 status: 1 = alarm active, 0 = alarm inactive */
->> -#define ADIS16201_DIAG_STAT_ALARM1        BIT(8)
->> -
->> -/* SPI communications failure */
->> -#define ADIS16201_DIAG_STAT_SPI_FAIL_BIT   3
->> -
->> -/* Flash update failure */
->> -#define ADIS16201_DIAG_STAT_FLASH_UPT_BIT  2
->> -
->> -/* Power supply above 3.625 V */
->> -#define ADIS16201_DIAG_STAT_POWER_HIGH_BIT 1
->> -
->> -/* Power supply below 3.15 V */
->> -#define ADIS16201_DIAG_STAT_POWER_LOW_BIT  0
->> -
->> -/* GLOB_CMD */
->> -
->> -#define ADIS16201_GLOB_CMD_SW_RESET	BIT(7)
->> -#define ADIS16201_GLOB_CMD_FACTORY_CAL	BIT(1)
->> -
->> -#define ADIS16201_ERROR_ACTIVE          BIT(14)
->> -
->> -enum adis16201_scan {
->> -	ADIS16201_SCAN_ACC_X,
->> -	ADIS16201_SCAN_ACC_Y,
->> -	ADIS16201_SCAN_INCLI_X,
->> -	ADIS16201_SCAN_INCLI_Y,
->> -	ADIS16201_SCAN_SUPPLY,
->> -	ADIS16201_SCAN_AUX_ADC,
->> -	ADIS16201_SCAN_TEMP,
->> -};
->> -
->> -#endif /* SPI_ADIS16201_H_ */
->> diff --git a/drivers/staging/iio/accel/adis16201_core.c b/drivers/staging/iio/accel/adis16201_core.c
->> index 7963d4a..dcf8463 100644
->> --- a/drivers/staging/iio/accel/adis16201_core.c
->> +++ b/drivers/staging/iio/accel/adis16201_core.c
->> @@ -20,7 +20,147 @@
->>  #include <linux/iio/buffer.h>
->>  #include <linux/iio/imu/adis.h>
->>  
->> -#include "adis16201.h"
->> +#define ADIS16201_STARTUP_DELAY	220 /* ms */
->> +
->> +/* Flash memory write count */
->> +#define ADIS16201_FLASH_CNT      0x00
->> +
->> +/* Output, power supply */
->> +#define ADIS16201_SUPPLY_OUT     0x02
->> +
->> +/* Output, x-axis accelerometer */
->> +#define ADIS16201_XACCL_OUT      0x04
->> +
->> +/* Output, y-axis accelerometer */
->> +#define ADIS16201_YACCL_OUT      0x06
->> +
->> +/* Output, auxiliary ADC input */
->> +#define ADIS16201_AUX_ADC        0x08
->> +
->> +/* Output, temperature */
->> +#define ADIS16201_TEMP_OUT       0x0A
->> +
->> +/* Output, x-axis inclination */
->> +#define ADIS16201_XINCL_OUT      0x0C
->> +
->> +/* Output, y-axis inclination */
->> +#define ADIS16201_YINCL_OUT      0x0E
->> +
->> +/* Calibration, x-axis acceleration offset */
->> +#define ADIS16201_XACCL_OFFS     0x10
->> +
->> +/* Calibration, y-axis acceleration offset */
->> +#define ADIS16201_YACCL_OFFS     0x12
->> +
->> +/* x-axis acceleration scale factor */
->> +#define ADIS16201_XACCL_SCALE    0x14
->> +
->> +/* y-axis acceleration scale factor */
->> +#define ADIS16201_YACCL_SCALE    0x16
->> +
->> +/* Calibration, x-axis inclination offset */
->> +#define ADIS16201_XINCL_OFFS     0x18
->> +
->> +/* Calibration, y-axis inclination offset */
->> +#define ADIS16201_YINCL_OFFS     0x1A
->> +
->> +/* x-axis inclination scale factor */
->> +#define ADIS16201_XINCL_SCALE    0x1C
->> +
->> +/* y-axis inclination scale factor */
->> +#define ADIS16201_YINCL_SCALE    0x1E
->> +
->> +/* Alarm 1 amplitude threshold */
->> +#define ADIS16201_ALM_MAG1       0x20
->> +
->> +/* Alarm 2 amplitude threshold */
->> +#define ADIS16201_ALM_MAG2       0x22
->> +
->> +/* Alarm 1, sample period */
->> +#define ADIS16201_ALM_SMPL1      0x24
->> +
->> +/* Alarm 2, sample period */
->> +#define ADIS16201_ALM_SMPL2      0x26
->> +
->> +/* Alarm control */
->> +#define ADIS16201_ALM_CTRL       0x28
->> +
->> +/* Auxiliary DAC data */
->> +#define ADIS16201_AUX_DAC        0x30
->> +
->> +/* General-purpose digital input/output control */
->> +#define ADIS16201_GPIO_CTRL      0x32
->> +
->> +/* Miscellaneous control */
->> +#define ADIS16201_MSC_CTRL       0x34
->> +
->> +/* Internal sample period (rate) control */
->> +#define ADIS16201_SMPL_PRD       0x36
->> +
->> +/* Operation, filter configuration */
->> +#define ADIS16201_AVG_CNT        0x38
->> +
->> +/* Operation, sleep mode control */
->> +#define ADIS16201_SLP_CNT        0x3A
->> +
->> +/* Diagnostics, system status register */
->> +#define ADIS16201_DIAG_STAT      0x3C
->> +
->> +/* Operation, system command register */
->> +#define ADIS16201_GLOB_CMD       0x3E
->> +
->> +/* MSC_CTRL */
->> +
->> +/* Self-test enable */
->> +#define ADIS16201_MSC_CTRL_SELF_TEST_EN	        BIT(8)
->> +
->> +/* Data-ready enable: 1 = enabled, 0 = disabled */
->> +#define ADIS16201_MSC_CTRL_DATA_RDY_EN	        BIT(2)
->> +
->> +/* Data-ready polarity: 1 = active high, 0 = active low */
->> +#define ADIS16201_MSC_CTRL_ACTIVE_HIGH	        BIT(1)
->> +
->> +/* Data-ready line selection: 1 = DIO1, 0 = DIO0 */
->> +#define ADIS16201_MSC_CTRL_DATA_RDY_DIO1	BIT(0)
->> +
->> +/* DIAG_STAT */
->> +
->> +/* Alarm 2 status: 1 = alarm active, 0 = alarm inactive */
->> +#define ADIS16201_DIAG_STAT_ALARM2        BIT(9)
->> +
->> +/* Alarm 1 status: 1 = alarm active, 0 = alarm inactive */
->> +#define ADIS16201_DIAG_STAT_ALARM1        BIT(8)
->> +
->> +/* SPI communications failure */
->> +#define ADIS16201_DIAG_STAT_SPI_FAIL_BIT   3
->> +
->> +/* Flash update failure */
->> +#define ADIS16201_DIAG_STAT_FLASH_UPT_BIT  2
->> +
->> +/* Power supply above 3.625 V */
->> +#define ADIS16201_DIAG_STAT_POWER_HIGH_BIT 1
->> +
->> +/* Power supply below 3.15 V */
->> +#define ADIS16201_DIAG_STAT_POWER_LOW_BIT  0
->> +
->> +/* GLOB_CMD */
->> +
->> +#define ADIS16201_GLOB_CMD_SW_RESET	BIT(7)
->> +#define ADIS16201_GLOB_CMD_FACTORY_CAL	BIT(1)
->> +
->> +#define ADIS16201_ERROR_ACTIVE          BIT(14)
->> +
->> +enum adis16201_scan {
->> +	ADIS16201_SCAN_ACC_X,
->> +	ADIS16201_SCAN_ACC_Y,
->> +	ADIS16201_SCAN_INCLI_X,
->> +	ADIS16201_SCAN_INCLI_Y,
->> +	ADIS16201_SCAN_SUPPLY,
->> +	ADIS16201_SCAN_AUX_ADC,
->> +	ADIS16201_SCAN_TEMP,
->> +};
->> +
->> +#endif /* SPI_ADIS16201_H_ */
->>  
->>  static const u8 adis16201_addresses[] = {
->>  	[ADIS16201_SCAN_ACC_X] = ADIS16201_XACCL_OFFS,
->>
-> 
-
+Jonathan, I got my mistake should I send v3.
 
