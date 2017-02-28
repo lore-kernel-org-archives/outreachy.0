@@ -1,132 +1,100 @@
-X-GM-THRID: 6465930684409053184
-X-Received: by 10.31.141.202 with SMTP id p193mr13638955vkd.54.1505466803727;
-        Fri, 15 Sep 2017 02:13:23 -0700 (PDT)
+X-GM-THRID: 6392225228462751744
+X-Received: by 10.36.124.71 with SMTP id a68mr121716itd.13.1488312708836;
+        Tue, 28 Feb 2017 12:11:48 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.233.1 with SMTP id f1ls719868ith.11.gmail; Fri, 15 Sep 2017
- 02:13:22 -0700 (PDT)
-X-Received: by 10.31.130.71 with SMTP id e68mr13121259vkd.73.1505466802751;
-        Fri, 15 Sep 2017 02:13:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505466802; cv=none;
-        d=google.com; s=arc-20160816;
-        b=OBCodv8VWg9OPQF7jayoO1ML/VNKgKXOJCipIcEosHPRZRzgAM4/DaPIndPSzO9Vak
-         DGUazWkXhsz+8toXrCWc9SUJMXggBVXwq4iltihQ8K1P49hZbKrkSGn4BV8uUAZ51/0n
-         USwzE/lUKiFCQNKdRFHw5W8lcFYn4J68S9Es7QIxGMsdCfeyObgPFVg2x57lgm7ibE0O
-         Y+VlWQjLkmQo1DUCJpgS9UG59Bv1Q0tdpqfxSorNCsWlr4jphPLCl9xVzU+83fEuZQol
-         AhBe22TYCFIkAca7sb9cdZeDh28P+Cd2nWvC5Ch9i1XAE+uvRjoniQ+Yn0R4cE9oKTV+
-         IYsA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature:arc-authentication-results;
-        bh=Y77VRs7PWdMP3OVie02P+sV1T/1hnhwzkpHtmF3lBKc=;
-        b=JgN7ycRXkyBRPx+QUU56JTT68WLGNRHKE4aPmwKA2uomivgvKOgsDIV5TxtsoBWLjf
-         xzw9ipmtgIfzqWSlSmORHVOqREUskc576KI2kWHOPB4Up4V9YLJforg6YUPeJyeWS0pw
-         YUEbvCOSJjiaGyx5oI7AwHHGEFN4G9hhu1YRvg0AqiF2FGaz8hoAitHlLVgiUkq69Wfv
-         4Xw8WWKEb/vq5MRnVJUz78pRVUHEsV4JWJdBrrwpgIvIOWtFq8PBpR0jJUsXrYCPpqLk
-         Ql0P8QX8ELd1QNWo+Z2IqiDQ5N0/JmMp7CcaEKXp0eQf4MHDF+iwrqyKXZJIqF/x2zPf
-         4Q8g==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NUTZAt/l;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <meghana.madhyastha@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id q65si43561pfj.8.2017.09.15.02.13.22
+Received: by 10.157.56.105 with SMTP id r38ls2191693otd.15.gmail; Tue, 28 Feb
+ 2017 12:11:48 -0800 (PST)
+X-Received: by 10.176.4.67 with SMTP id 61mr1091040uav.30.1488312708406;
+        Tue, 28 Feb 2017 12:11:48 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id f7si187210pfk.5.2017.02.28.12.11.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 15 Sep 2017 02:13:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Tue, 28 Feb 2017 12:11:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NUTZAt/l;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id v82so1051383pgb.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 15 Sep 2017 02:13:22 -0700 (PDT)
+Received: by mail-pf0-x242.google.com with SMTP id x66so1732587pfb.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 28 Feb 2017 12:11:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=Y77VRs7PWdMP3OVie02P+sV1T/1hnhwzkpHtmF3lBKc=;
-        b=NUTZAt/l50MCWTZW4wfP+YsLlkW5rskBSJZLSgs89fYVz5wdtEt+yQN1tX6974wyXZ
-         eBVj9TYWg9Ydf2jpw+tVqOlpJ57wLj5snUxX+rZXbH0rNm+ckdb6OAaUsYzCyP/gKQ9I
-         i8pmkwKL12fTNT0ipNlW37tNPDfWrelr2cho1O9j3DeGrPfRLNI8GlaQ+sAn2ktKAeWJ
-         6z1frxhIi9rVOhWLIDUjCr8EYB6pohmwvoZ7mOuWy+7IjuP/oYSraBtPYTSoTeE+RNJP
-         q+mrNiu/ULxkO8eReiys7B3Vdz1gGF/2/F5GZPbEkHJSxco3E/AVGpoRMdyLqfutErLM
-         Ww8w==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=3bFUs5DCnqsmdMXfc4lLK6i1R2FcHuCRTnnJymbhHRs=;
+        b=PEfie2X78a1UCksrEG8+1l3C64N08Gei0sYhkCZRw5gyWnBV7NrzAwfo5IjIitfU1P
+         UOtOy67HEWjK3qIUvJfc+/pN4C2QPL6qDN9BWH/hJCGxQZ9g9ia5OgtvCLl4VbhzAuOH
+         TrQ7+l9G4ue0C31OGiE8yTFewp/I+7LeAf7G8NIf+hMf8Hh4rc48qna8Koh6lXZaZpEG
+         9H88/q1GMZ9CqPYIZyUaLjumMNAM/nChp10haug1pcb9FRzIKbF69HQ2XCFsPlYtyjMY
+         HBZkIbI4nEnoIqDPxnFfz3Ul5NFPOM61L+5xLM1OCnYm3l4H+/jZSHMB41u5f5DW4yvX
+         3HGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=Y77VRs7PWdMP3OVie02P+sV1T/1hnhwzkpHtmF3lBKc=;
-        b=WRyG5ABhXoJICLtbleX7ZlVX0qAXvVV69IUX9+wxJiCGaEYSYElMVLF7eQNIC0UI8T
-         TjJTZb7RoodzLZMZyQVOGuaNY4MafeA58SFxU7dckiwbwpKdvr4dSYp6THhNmdwv9l7U
-         9Eo0fcigUDwjAYuk17b75XdhA9MuVcRTmQait2AbPmjCYon9UaF6oX3WWQW2hlDTGay4
-         We+Y/RHZ/OEVpHoS3vEcqNTu7mj0jUKwGST14wqRxlog+TPkVMEvjSPyDaxggbKufe3/
-         Ux48OOyvWwNgz/PzHSs6jQnsy8TEPUZdPIJDe/dsuakisMZ1UWEAshtyccPf4ctX5LuA
-         0hAg==
-X-Gm-Message-State: AHPjjUiM+Qlc4o3IjntNHfLVHS3FvFpOVfhOOS7/W2Whe73KoFYJ/Zp5
-	Aea5/EE7aREXDFX7
-X-Google-Smtp-Source: ADKCNb4y5/gunb2Fu0yhXR58muWYzCAwVa7+Et1bXz7JxHUKyFhOlEjOkg1LGUiUFsIQsWRlhWOFCw==
-X-Received: by 10.98.252.216 with SMTP id e207mr23920906pfh.306.1505466802000;
-        Fri, 15 Sep 2017 02:13:22 -0700 (PDT)
-Return-Path: <meghana.madhyastha@gmail.com>
-Received: from meghana-HP-Pavilion-Notebook ([14.139.155.24])
-        by smtp.gmail.com with ESMTPSA id r66sm1618288pfl.15.2017.09.15.02.13.19
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 15 Sep 2017 02:13:21 -0700 (PDT)
-Date: Fri, 15 Sep 2017 14:43:15 +0530
-From: Meghana Madhyastha <meghana.madhyastha@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: irda: drivers: Replace (skb == NULL) with (!skb)
-Message-ID: <20170915091310.GA21039@meghana-HP-Pavilion-Notebook>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=3bFUs5DCnqsmdMXfc4lLK6i1R2FcHuCRTnnJymbhHRs=;
+        b=gemee+VWl1jL/MxR/O1+6N918rFgqOJ2bdUWh8ptzfbCm8PjLPzH6Z15Yi55dkRUIs
+         7qOry3JCbIqKljrEsHgjsi8m7phcho+/QQAoJCBsjlaXTXE5w1aTEAW9G4eHBGOpL32p
+         GmmfCUsgz1dfZuQN6zZdD8Qn1bWCb0pup7f3zQh3C82KA7vppnvp2ze5vEVFFsf4C6Ez
+         urOLC10H2TVEm2mX7Vh9Rdyx6fufCWA9UgQNYQY8vEm96j5rVjfgbjZxKn0UmF3Wn+1a
+         Ut0q3p6YCQBk0vCg6OnRJSp5pGJx2+ZKOzuV3qpHdhqpe1VeGNOnkQT7uqHmR8OliYMd
+         73Dw==
+X-Gm-Message-State: AMke39lLQZC0vlf7W2NnW2AxIG+WFfo5lyyfzkbKirbxDXCAJHBrXly+gaTj4+i0bUVcYA==
+X-Received: by 10.99.42.78 with SMTP id q75mr4495355pgq.144.1488312708147;
+        Tue, 28 Feb 2017 12:11:48 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
+        by smtp.gmail.com with ESMTPSA id t12sm5865756pfg.14.2017.02.28.12.11.47
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 28 Feb 2017 12:11:47 -0800 (PST)
+Date: Tue, 28 Feb 2017 12:11:46 -0800
+From: Alison Schofield <amsfield22@gmail.com>
+To: Tamara Diaconita <diaconitatamara@gmail.com>
+Cc: mchehab@kernel.org, gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com,
+	Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 0/5] Fixing multiple checkpath issues
+Message-ID: <20170228201145.GA19234@d830.WORKGROUP>
+References: <20170228181756.22863-1-diaconita.tamara@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20170228181756.22863-1-diaconita.tamara@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Some functions return NULL as an indication of failure.
-The style (!skb) is more common than (skb == NULL) for these
-functions.
+On Tue, Feb 28, 2017 at 08:17:56PM +0200, Tamara Diaconita wrote:
+> Made cxd2099.c file from cxd2099 driver more readable by fixing multiple checkpath issues.
+> 
+> Tamara Diaconita (5):
+>   Add comment for struct mutex definition.
+>   Added spaces around arithmetical operators.
+>   Removed unnecessary blank lines.
+>   Change a kzalloc parameter.
+>   emoved redundant code.
+> 
+>  drivers/staging/media/cxd2099/cxd2099.c | 96 +++++----------------------------
+>  1 file changed, 13 insertions(+), 83 deletions(-)
 
-Found by the following Coccinelle script.
+Hi Tamra -
+I can see you have the suggestions on how to improve this patchset from
+gregkh and julia, but let me offer one more thing:  This looks like your
+first patch?  We try to encourage applicants to start with a single
+patch to workout the mechanical details of patching and after they have
+that working well, move onto doing small patchsets.
+Perhaps you can pull one of these out, correct it, and get it accepted
+as a single patch as a first step.
+alisons
 
-@@
-identifier i;
-statement S;
-@@
-
-i = (\(kmalloc\|devm_kzalloc\|kmalloc_array\|devm_ioremap\|usb_alloc_urb\|
-alloc_netdev\|dev_alloc_skb\)(...));
-
-(
--if (i == NULL)
-+if (!i)
-S
-|
--if (NULL == i)
-+if (!i)
-S
-)
-
-Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
----
- drivers/staging/irda/drivers/ali-ircc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/irda/drivers/ali-ircc.c b/drivers/staging/irda/drivers/ali-ircc.c
-index 35f198d..756ae53 100644
---- a/drivers/staging/irda/drivers/ali-ircc.c
-+++ b/drivers/staging/irda/drivers/ali-ircc.c
-@@ -1876,7 +1876,7 @@ static int  ali_ircc_dma_receive_complete(struct ali_ircc_cb *self)
- 			self->stamp = ktime_get();
- 
- 			skb = dev_alloc_skb(len+1);
--			if (skb == NULL)  
-+			if (!skb)
- 			{
- 				self->netdev->stats.rx_dropped++;
- 
--- 
-2.7.4
-
+> 
+> -- 
+> 2.9.3
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170228181756.22863-1-diaconita.tamara%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
 
