@@ -1,100 +1,388 @@
-X-GM-THRID: 6394738986789634048
-X-Received: by 10.13.234.5 with SMTP id t5mr34749ywe.166.1488891194087;
-        Tue, 07 Mar 2017 04:53:14 -0800 (PST)
+X-GM-THRID: 6391402747969667072
+X-Received: by 10.46.82.157 with SMTP id n29mr1386730lje.29.1488398619825;
+        Wed, 01 Mar 2017 12:03:39 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.7.23 with SMTP id 23ls163487ioh.50.gmail; Tue, 07 Mar 2017
- 04:53:13 -0800 (PST)
-X-Received: by 10.99.56.30 with SMTP id f30mr31374pga.121.1488891193070;
-        Tue, 07 Mar 2017 04:53:13 -0800 (PST)
-Return-Path: <sreyamittal5@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id g82si617377pfb.5.2017.03.07.04.53.13
+Received: by 10.46.84.73 with SMTP id y9ls514165ljd.8.gmail; Wed, 01 Mar 2017
+ 12:03:39 -0800 (PST)
+X-Received: by 10.46.87.27 with SMTP id l27mr1310613ljb.28.1488398619211;
+        Wed, 01 Mar 2017 12:03:39 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id k5si245191wmd.0.2017.03.01.12.03.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 07 Mar 2017 04:53:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Wed, 01 Mar 2017 12:03:39 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=sreyamittal5@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id o126so79677pfb.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 07 Mar 2017 04:53:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=bjRlM3hWS6Cwqz++3m6FJFpqRm+t8Ufxyjgd7MZp8Ec=;
-        b=isuFOCvDKufwOf6UKqgTQ0HxsDNTqckfCW/uzfYDG8KIUK213L31FskwMYIYqjgrT3
-         /0bGyct5/uVTHSjgDDi4+7/IAwZfgcvrzEnTeW8p2rKLAqK5q9Jt2RiqAnG1PYGiy03q
-         PerzaAJ3hUTaTgNIVwaGFNu9NiiogdB+mMdIadNcvyE1ER4DeZcOFEwCFuQ1HvZ6s8V7
-         WPpoWOeAOxzAcE+PpTV7QYkTMqYmJtWa2B7+XcFGH8P8PLnIF7ArtNbFTZDrN0Zbjub2
-         DwZYnz5do+mLUiTSFpS2onjbooIE3zYX1XycZ+JUS2dGwMNojwUZcp2DR1GKN5khZbZQ
-         MHNw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=bjRlM3hWS6Cwqz++3m6FJFpqRm+t8Ufxyjgd7MZp8Ec=;
-        b=ewEtwMZBMxpluUKo5+CkgAwqQjqBEgztFTfPpsQ6KcHVkc5UvwwVMAQYCzxiL81VNl
-         Qi82y8aABm+6awMsIgYWH336eX4D1D7I7OWUTw+U7vtFcJlndUKz3RVGwKTYMk6j8KgI
-         jPR4yuCjHuy7s5nUN5zps+QKfOH/eVAai0n+6YwrsEEdxNO7/4MuYjNDOM3OWQOmiWHM
-         sBNkCjxdygduOXfo68blMfUuQM4AamfMQLnwEPCTq/fPBFq0Up3wQH6Sm0vMuypMmgX9
-         dyqhBuDQga1/zIW45OUWJkDnwI6wRu2WZ3griWbdLETD3VdR70TiHNwfm3PbZ19a1fWR
-         faTA==
-X-Gm-Message-State: AMke39kcAAj0AQaDwB8Oa3cBouBvuIMf1mW+ugbZfzVRWMOIYdktA/aImT9ff7elX3//lQ==
-X-Received: by 10.84.231.200 with SMTP id g8mr178095pln.100.1488891192866;
-        Tue, 07 Mar 2017 04:53:12 -0800 (PST)
-Return-Path: <sreyamittal5@gmail.com>
-Received: from stayawesome ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 23sm21867545pfz.127.2017.03.07.04.53.11
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 07 Mar 2017 04:53:12 -0800 (PST)
-From: Sreya Mittal <sreyamittal5@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Sreya Mittal <sreyamittal5@gmail.com>,
-	Marc Dietrich <marvin24@gmx.de>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: nvec: Replace udelay by usleep_range
-Date: Tue,  7 Mar 2017 18:22:56 +0530
-Message-Id: <20170307125256.3998-1-sreyamittal5@gmail.com>
-X-Mailer: git-send-email 2.9.3
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,227,1484002800"; 
+   d="scan'208";a="262698941"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 01 Mar 2017 21:03:38 +0100
+Date: Wed, 1 Mar 2017 21:03:37 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Jonathan Cameron <jic23@kernel.org>
+cc: Varsha Rao <rvarsha016@gmail.com>, Lars-Peter Clausen <lars@metafoo.de>, 
+    Michael Hennerich <Michael.Hennerich@analog.com>, 
+    Hartmut Knaack <knaack.h@gmx.de>, 
+    Peter Meerwald-Stadler <pmeerw@pmeerw.net>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    outreachy-kernel@googlegroups.com, 
+    "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: iio: adis16203: Move
+ header file content to source file.
+In-Reply-To: <94389eae-1bde-de58-0f92-fb004a155fe4@kernel.org>
+Message-ID: <alpine.DEB.2.20.1703012103170.2401@hadrien>
+References: <58b5c28f.4a44620a.8f50f.a6b6@mx.google.com> <alpine.DEB.2.20.1702281937470.2171@hadrien> <94389eae-1bde-de58-0f92-fb004a155fe4@kernel.org>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Replace udelay by usleep_range.
-Fixes the checkpatch issue:
-usleep_range is preferred over udelay
 
-In Documentation/timers/timers-howto.txt,
-it is mentioned that udelay should be used
-for a few microseconds(less than 10), and
-usleep_range should be preferred for 10
-microseconds to 20 milliseconds.
 
-Signed-off-by: Sreya Mittal <sreyamittal5@gmail.com>
----
- drivers/staging/nvec/nvec.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+On Tue, 28 Feb 2017, Jonathan Cameron wrote:
 
-diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
-index c1feccf..5fab241 100644
---- a/drivers/staging/nvec/nvec.c
-+++ b/drivers/staging/nvec/nvec.c
-@@ -631,7 +631,7 @@ static irqreturn_t nvec_interrupt(int irq, void *dev)
- 		break;
- 	case 2:		/* first byte after command */
- 		if (status == (I2C_SL_IRQ | RNW | RCVD)) {
--			udelay(33);
-+			usleep_range(33, 43);
- 			if (nvec->rx->data[0] != 0x01) {
- 				dev_err(nvec->dev,
- 					"Read without prior read command\n");
-@@ -718,7 +718,7 @@ static irqreturn_t nvec_interrupt(int irq, void *dev)
- 	 * We experience less incomplete messages with this delay than without
- 	 * it, but we don't know why. Help is appreciated.
- 	 */
--	udelay(100);
-+	usleep_range(100,200);
- 
- 	return IRQ_HANDLED;
- }
--- 
-2.9.3
+> On 28/02/17 18:38, Julia Lawall wrote:
+> > On Wed, 1 Mar 2017, Varsha Rao wrote:
+> >
+> >> The contents of the header file are used only by this single source
+> >> file. Moved content into adis16203_core.c file and removed adis16203.h
+> >> file. Arranged #include files in alphabetical order.
+> >
+> > I don't remember the previous commit message, but this one seems quite
+> > nice.  Concise, to the point, and gives a good overview of what is done.
+> Indeed. Very nice.
+>
+> Applied to the togreg branch of iio.git and pushed out as testing for
+> the autobuilders to play with it.
+>
+> One note though, please cc linux-iio@vger.kernel.org for IIO patches
+> including those effecting drivers in staging.
 
+I've added this information at a few more places in the tutorial...
+
+julia
+
+>
+> Thanks,
+>
+> Jonathan
+> >
+> > julia
+> >
+> >>
+> >> Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
+> >> ---
+> >> Changes in v2:
+> >> - Modified commit message.
+> >> - #include files ordered alphabetically.
+> >>
+> >>  drivers/staging/iio/accel/adis16203.h      | 125 --------------------------
+> >>  drivers/staging/iio/accel/adis16203_core.c | 136 +++++++++++++++++++++++++++--
+> >>  2 files changed, 128 insertions(+), 133 deletions(-)
+> >>  delete mode 100644 drivers/staging/iio/accel/adis16203.h
+> >>
+> >> diff --git a/drivers/staging/iio/accel/adis16203.h b/drivers/staging/iio/accel/adis16203.h
+> >> deleted file mode 100644
+> >> index b483e4e..0000000
+> >> --- a/drivers/staging/iio/accel/adis16203.h
+> >> +++ /dev/null
+> >> @@ -1,125 +0,0 @@
+> >> -#ifndef SPI_ADIS16203_H_
+> >> -#define SPI_ADIS16203_H_
+> >> -
+> >> -#define ADIS16203_STARTUP_DELAY	220 /* ms */
+> >> -
+> >> -/* Flash memory write count */
+> >> -#define ADIS16203_FLASH_CNT      0x00
+> >> -
+> >> -/* Output, power supply */
+> >> -#define ADIS16203_SUPPLY_OUT     0x02
+> >> -
+> >> -/* Output, auxiliary ADC input */
+> >> -#define ADIS16203_AUX_ADC        0x08
+> >> -
+> >> -/* Output, temperature */
+> >> -#define ADIS16203_TEMP_OUT       0x0A
+> >> -
+> >> -/* Output, x-axis inclination */
+> >> -#define ADIS16203_XINCL_OUT      0x0C
+> >> -
+> >> -/* Output, y-axis inclination */
+> >> -#define ADIS16203_YINCL_OUT      0x0E
+> >> -
+> >> -/* Incline null calibration */
+> >> -#define ADIS16203_INCL_NULL      0x18
+> >> -
+> >> -/* Alarm 1 amplitude threshold */
+> >> -#define ADIS16203_ALM_MAG1       0x20
+> >> -
+> >> -/* Alarm 2 amplitude threshold */
+> >> -#define ADIS16203_ALM_MAG2       0x22
+> >> -
+> >> -/* Alarm 1, sample period */
+> >> -#define ADIS16203_ALM_SMPL1      0x24
+> >> -
+> >> -/* Alarm 2, sample period */
+> >> -#define ADIS16203_ALM_SMPL2      0x26
+> >> -
+> >> -/* Alarm control */
+> >> -#define ADIS16203_ALM_CTRL       0x28
+> >> -
+> >> -/* Auxiliary DAC data */
+> >> -#define ADIS16203_AUX_DAC        0x30
+> >> -
+> >> -/* General-purpose digital input/output control */
+> >> -#define ADIS16203_GPIO_CTRL      0x32
+> >> -
+> >> -/* Miscellaneous control */
+> >> -#define ADIS16203_MSC_CTRL       0x34
+> >> -
+> >> -/* Internal sample period (rate) control */
+> >> -#define ADIS16203_SMPL_PRD       0x36
+> >> -
+> >> -/* Operation, filter configuration */
+> >> -#define ADIS16203_AVG_CNT        0x38
+> >> -
+> >> -/* Operation, sleep mode control */
+> >> -#define ADIS16203_SLP_CNT        0x3A
+> >> -
+> >> -/* Diagnostics, system status register */
+> >> -#define ADIS16203_DIAG_STAT      0x3C
+> >> -
+> >> -/* Operation, system command register */
+> >> -#define ADIS16203_GLOB_CMD       0x3E
+> >> -
+> >> -/* MSC_CTRL */
+> >> -
+> >> -/* Self-test at power-on: 1 = disabled, 0 = enabled */
+> >> -#define ADIS16203_MSC_CTRL_PWRUP_SELF_TEST	BIT(10)
+> >> -
+> >> -/* Reverses rotation of both inclination outputs */
+> >> -#define ADIS16203_MSC_CTRL_REVERSE_ROT_EN	BIT(9)
+> >> -
+> >> -/* Self-test enable */
+> >> -#define ADIS16203_MSC_CTRL_SELF_TEST_EN	        BIT(8)
+> >> -
+> >> -/* Data-ready enable: 1 = enabled, 0 = disabled */
+> >> -#define ADIS16203_MSC_CTRL_DATA_RDY_EN	        BIT(2)
+> >> -
+> >> -/* Data-ready polarity: 1 = active high, 0 = active low */
+> >> -#define ADIS16203_MSC_CTRL_ACTIVE_HIGH	        BIT(1)
+> >> -
+> >> -/* Data-ready line selection: 1 = DIO1, 0 = DIO0 */
+> >> -#define ADIS16203_MSC_CTRL_DATA_RDY_DIO1	BIT(0)
+> >> -
+> >> -/* DIAG_STAT */
+> >> -
+> >> -/* Alarm 2 status: 1 = alarm active, 0 = alarm inactive */
+> >> -#define ADIS16203_DIAG_STAT_ALARM2        BIT(9)
+> >> -
+> >> -/* Alarm 1 status: 1 = alarm active, 0 = alarm inactive */
+> >> -#define ADIS16203_DIAG_STAT_ALARM1        BIT(8)
+> >> -
+> >> -/* Self-test diagnostic error flag */
+> >> -#define ADIS16203_DIAG_STAT_SELFTEST_FAIL_BIT 5
+> >> -
+> >> -/* SPI communications failure */
+> >> -#define ADIS16203_DIAG_STAT_SPI_FAIL_BIT      3
+> >> -
+> >> -/* Flash update failure */
+> >> -#define ADIS16203_DIAG_STAT_FLASH_UPT_BIT     2
+> >> -
+> >> -/* Power supply above 3.625 V */
+> >> -#define ADIS16203_DIAG_STAT_POWER_HIGH_BIT    1
+> >> -
+> >> -/* Power supply below 3.15 V */
+> >> -#define ADIS16203_DIAG_STAT_POWER_LOW_BIT     0
+> >> -
+> >> -/* GLOB_CMD */
+> >> -
+> >> -#define ADIS16203_GLOB_CMD_SW_RESET	BIT(7)
+> >> -#define ADIS16203_GLOB_CMD_CLEAR_STAT	BIT(4)
+> >> -#define ADIS16203_GLOB_CMD_FACTORY_CAL	BIT(1)
+> >> -
+> >> -#define ADIS16203_ERROR_ACTIVE          BIT(14)
+> >> -
+> >> -enum adis16203_scan {
+> >> -	ADIS16203_SCAN_INCLI_X,
+> >> -	ADIS16203_SCAN_INCLI_Y,
+> >> -	ADIS16203_SCAN_SUPPLY,
+> >> -	ADIS16203_SCAN_AUX_ADC,
+> >> -	ADIS16203_SCAN_TEMP,
+> >> -};
+> >> -
+> >> -#endif /* SPI_ADIS16203_H_ */
+> >> diff --git a/drivers/staging/iio/accel/adis16203_core.c b/drivers/staging/iio/accel/adis16203_core.c
+> >> index bd8119a..68189ad 100644
+> >> --- a/drivers/staging/iio/accel/adis16203_core.c
+> >> +++ b/drivers/staging/iio/accel/adis16203_core.c
+> >> @@ -7,20 +7,140 @@
+> >>   */
+> >>
+> >>  #include <linux/delay.h>
+> >> -#include <linux/mutex.h>
+> >>  #include <linux/device.h>
+> >> +
+> >> +#include <linux/iio/buffer.h>
+> >> +#include <linux/iio/iio.h>
+> >> +#include <linux/iio/imu/adis.h>
+> >> +#include <linux/iio/sysfs.h>
+> >> +
+> >>  #include <linux/kernel.h>
+> >> -#include <linux/spi/spi.h>
+> >> +#include <linux/module.h>
+> >> +#include <linux/mutex.h>
+> >>  #include <linux/slab.h>
+> >> +#include <linux/spi/spi.h>
+> >>  #include <linux/sysfs.h>
+> >> -#include <linux/module.h>
+> >>
+> >> -#include <linux/iio/iio.h>
+> >> -#include <linux/iio/sysfs.h>
+> >> -#include <linux/iio/buffer.h>
+> >> -#include <linux/iio/imu/adis.h>
+> >> +#define ADIS16203_STARTUP_DELAY 220 /* ms */
+> >> +
+> >> +/* Flash memory write count */
+> >> +#define ADIS16203_FLASH_CNT      0x00
+> >> +
+> >> +/* Output, power supply */
+> >> +#define ADIS16203_SUPPLY_OUT     0x02
+> >> +
+> >> +/* Output, auxiliary ADC input */
+> >> +#define ADIS16203_AUX_ADC        0x08
+> >> +
+> >> +/* Output, temperature */
+> >> +#define ADIS16203_TEMP_OUT       0x0A
+> >> +
+> >> +/* Output, x-axis inclination */
+> >> +#define ADIS16203_XINCL_OUT      0x0C
+> >> +
+> >> +/* Output, y-axis inclination */
+> >> +#define ADIS16203_YINCL_OUT      0x0E
+> >> +
+> >> +/* Incline null calibration */
+> >> +#define ADIS16203_INCL_NULL      0x18
+> >> +
+> >> +/* Alarm 1 amplitude threshold */
+> >> +#define ADIS16203_ALM_MAG1       0x20
+> >> +
+> >> +/* Alarm 2 amplitude threshold */
+> >> +#define ADIS16203_ALM_MAG2       0x22
+> >> +
+> >> +/* Alarm 1, sample period */
+> >> +#define ADIS16203_ALM_SMPL1      0x24
+> >> +
+> >> +/* Alarm 2, sample period */
+> >> +#define ADIS16203_ALM_SMPL2      0x26
+> >> +
+> >> +/* Alarm control */
+> >> +#define ADIS16203_ALM_CTRL       0x28
+> >>
+> >> -#include "adis16203.h"
+> >> +/* Auxiliary DAC data */
+> >> +#define ADIS16203_AUX_DAC        0x30
+> >> +
+> >> +/* General-purpose digital input/output control */
+> >> +#define ADIS16203_GPIO_CTRL      0x32
+> >> +
+> >> +/* Miscellaneous control */
+> >> +#define ADIS16203_MSC_CTRL       0x34
+> >> +
+> >> +/* Internal sample period (rate) control */
+> >> +#define ADIS16203_SMPL_PRD       0x36
+> >> +
+> >> +/* Operation, filter configuration */
+> >> +#define ADIS16203_AVG_CNT        0x38
+> >> +
+> >> +/* Operation, sleep mode control */
+> >> +#define ADIS16203_SLP_CNT        0x3A
+> >> +
+> >> +/* Diagnostics, system status register */
+> >> +#define ADIS16203_DIAG_STAT      0x3C
+> >> +
+> >> +/* Operation, system command register */
+> >> +#define ADIS16203_GLOB_CMD       0x3E
+> >> +
+> >> +/* MSC_CTRL */
+> >> +
+> >> +/* Self-test at power-on: 1 = disabled, 0 = enabled */
+> >> +#define ADIS16203_MSC_CTRL_PWRUP_SELF_TEST      BIT(10)
+> >> +
+> >> +/* Reverses rotation of both inclination outputs */
+> >> +#define ADIS16203_MSC_CTRL_REVERSE_ROT_EN       BIT(9)
+> >> +
+> >> +/* Self-test enable */
+> >> +#define ADIS16203_MSC_CTRL_SELF_TEST_EN         BIT(8)
+> >> +
+> >> +/* Data-ready enable: 1 = enabled, 0 = disabled */
+> >> +#define ADIS16203_MSC_CTRL_DATA_RDY_EN          BIT(2)
+> >> +
+> >> +/* Data-ready polarity: 1 = active high, 0 = active low */
+> >> +#define ADIS16203_MSC_CTRL_ACTIVE_HIGH          BIT(1)
+> >> +
+> >> +/* Data-ready line selection: 1 = DIO1, 0 = DIO0 */
+> >> +#define ADIS16203_MSC_CTRL_DATA_RDY_DIO1        BIT(0)
+> >> +
+> >> +/* DIAG_STAT */
+> >> +
+> >> +/* Alarm 2 status: 1 = alarm active, 0 = alarm inactive */
+> >> +#define ADIS16203_DIAG_STAT_ALARM2        BIT(9)
+> >> +
+> >> +/* Alarm 1 status: 1 = alarm active, 0 = alarm inactive */
+> >> +#define ADIS16203_DIAG_STAT_ALARM1        BIT(8)
+> >> +
+> >> +/* Self-test diagnostic error flag */
+> >> +#define ADIS16203_DIAG_STAT_SELFTEST_FAIL_BIT 5
+> >> +
+> >> +/* SPI communications failure */
+> >> +#define ADIS16203_DIAG_STAT_SPI_FAIL_BIT      3
+> >> +
+> >> +/* Flash update failure */
+> >> +#define ADIS16203_DIAG_STAT_FLASH_UPT_BIT     2
+> >> +
+> >> +/* Power supply above 3.625 V */
+> >> +#define ADIS16203_DIAG_STAT_POWER_HIGH_BIT    1
+> >> +
+> >> +/* Power supply below 3.15 V */
+> >> +#define ADIS16203_DIAG_STAT_POWER_LOW_BIT     0
+> >> +
+> >> +/* GLOB_CMD */
+> >> +
+> >> +#define ADIS16203_GLOB_CMD_SW_RESET     BIT(7)
+> >> +#define ADIS16203_GLOB_CMD_CLEAR_STAT   BIT(4)
+> >> +#define ADIS16203_GLOB_CMD_FACTORY_CAL  BIT(1)
+> >> +
+> >> +#define ADIS16203_ERROR_ACTIVE          BIT(14)
+> >> +
+> >> +enum adis16203_scan {
+> >> +	 ADIS16203_SCAN_INCLI_X,
+> >> +	 ADIS16203_SCAN_INCLI_Y,
+> >> +	 ADIS16203_SCAN_SUPPLY,
+> >> +	 ADIS16203_SCAN_AUX_ADC,
+> >> +	 ADIS16203_SCAN_TEMP,
+> >> +};
+> >>
+> >>  #define DRIVER_NAME		"adis16203"
+> >>
+> >> --
+> >> 2.9.3
+> >>
+> >> --
+> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/58b5c28f.4a44620a.8f50f.a6b6%40mx.google.com.
+> >> For more options, visit https://groups.google.com/d/optout.
+> >>
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/94389eae-1bde-de58-0f92-fb004a155fe4%40kernel.org.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
