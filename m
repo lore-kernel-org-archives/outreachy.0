@@ -1,82 +1,88 @@
 X-GM-THRID: 6392323962132496384
-X-Received: by 10.25.156.74 with SMTP id f71mr507859lfe.26.1488352044329;
-        Tue, 28 Feb 2017 23:07:24 -0800 (PST)
+X-Received: by 10.46.9.206 with SMTP id 197mr654750ljj.12.1488328902350;
+        Tue, 28 Feb 2017 16:41:42 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.8.133 with SMTP id 127ls535736wmi.1.gmail; Tue, 28 Feb 2017
- 23:07:23 -0800 (PST)
-X-Received: by 10.28.166.144 with SMTP id p138mr55738wme.1.1488352043524;
-        Tue, 28 Feb 2017 23:07:23 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id b186si227586wme.1.2017.02.28.23.07.23
+Received: by 10.46.80.22 with SMTP id e22ls278758ljb.12.gmail; Tue, 28 Feb
+ 2017 16:41:41 -0800 (PST)
+X-Received: by 10.46.87.80 with SMTP id r16mr707551ljd.16.1488328901755;
+        Tue, 28 Feb 2017 16:41:41 -0800 (PST)
+Return-Path: <narcisaanamaria12@gmail.com>
+Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
+        by gmr-mx.google.com with ESMTPS id y19si1384434wmd.0.2017.02.28.16.41.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Feb 2017 23:07:23 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Tue, 28 Feb 2017 16:41:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.35,224,1484002800"; 
-   d="scan'208";a="262554604"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 01 Mar 2017 08:07:22 +0100
-Date: Wed, 1 Mar 2017 08:07:22 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
-cc: swarren@wwwdotorg.org, lee@kernel.org, eric@anholt.net, 
-    gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: vc04_services: Removed
- unnecessary variable
-In-Reply-To: <1488328859-6925-1-git-send-email-narcisaanamaria12@gmail.com>
-Message-ID: <alpine.DEB.2.20.1703010806240.2079@hadrien>
-References: <1488328859-6925-1-git-send-email-narcisaanamaria12@gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=narcisaanamaria12@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x241.google.com with SMTP id m70so4857484wma.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 28 Feb 2017 16:41:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=uxzlT8mIJwqNBw6CqFc9YY2OEuFoAhAlIxlg/It6fGY=;
+        b=gInOhePJYl3d7frRpId0wdZ4racguNcFunFOcx9XOktxTbeRI7ua2ZEtLCGKYMLqoK
+         YSve+c256eKsPqqJGxN+mSDfPl3LU706cVr7YHfMuTzgyA3h2yrjlxsdvowon/pCOVJP
+         aLD7prbQWkVxyRcVV0K5BT90YuJ0e3CijhogEJdWKMqkGMZ7mzvKxKXioteGcxfrkrXU
+         uUgY2ho+oIhgaOpdlMlx7pdHzRfpwIkGnCsx07w37O8+orYp7zowF8BYJ6qyGib8XpsK
+         iExfbsqacmBHdWuFVYGCweS4GkW0jn0ikvgzrEK56fgMzOOLULbUHWxgrJiI39PeSFo5
+         pIAQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=uxzlT8mIJwqNBw6CqFc9YY2OEuFoAhAlIxlg/It6fGY=;
+        b=JUohlQeGHdiDNXyzC6iQLSOqJSEcUqnPtrifYnD3q6KXvu0gWtjgqvkSmhnKf1uTs0
+         NAc2KrwsLHinRyLHruvdf/eD1LlW7XMpZ1hp/skXPjyJomLQBxe5xkQE0tx5S3mFnJMR
+         rmBUN5VjPPLoTIwH9m1fdWCk2UBeA6aMFIE4bjyXZykKWPI2CFjRm+b8ye0h3EAg4GIw
+         9dKpfhne/J5xtomont26Y6VF/z4lzviZMKugjhjoHqTp9iy0f/3Yjale2HeGmuLIAiUl
+         lP2yx1Sp6mUK/L4Bi6CQPHzE0X3rnOmhnhqtthk3s/j0V+RoGd4yBWexpdGEDwzGU98s
+         qfzA==
+X-Gm-Message-State: AMke39neXMRsL1hqhZUCo6b0XBMGzrunePDT6imkL+rz8DA4mcGyxrMqLuNQjsWKsfwwEg==
+X-Received: by 10.28.134.67 with SMTP id i64mr874343wmd.5.1488328901531;
+        Tue, 28 Feb 2017 16:41:41 -0800 (PST)
+Return-Path: <narcisaanamaria12@gmail.com>
+Received: from localhost.localdomain (p22.eregie.pub.ro. [141.85.0.122])
+        by smtp.gmail.com with ESMTPSA id 61sm4337169wrs.29.2017.02.28.16.41.40
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 28 Feb 2017 16:41:40 -0800 (PST)
+From: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+To: swarren@wwwdotorg.org,
+	lee@kernel.org,
+	eric@anholt.net,
+	gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com,
+	Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+Subject: [PATCH] staging: vc04_services: Removed unnecessary variable
+Date: Wed,  1 Mar 2017 02:40:59 +0200
+Message-Id: <1488328859-6925-1-git-send-email-narcisaanamaria12@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
+Removed unnecessary variable and used instead the parameter
+that was already defined
 
+Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+---
+ drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-On Wed, 1 Mar 2017, Narcisa Ana Maria Vasile wrote:
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+index 2815387..ff0a1ff 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+@@ -755,9 +755,7 @@ static const char *msg_type_str(unsigned int msg_type)
+ 	void *context, void *dest,
+ 	size_t offset, size_t maxsize)
+ {
+-	void *src = context;
+-
+-	memcpy(dest + offset, src + offset, maxsize);
++	memcpy(dest + offset, context + offset, maxsize);
+ 	return maxsize;
+ }
+ 
+-- 
+1.9.1
 
-> Removed unnecessary variable and used instead the parameter
-> that was already defined
->
-> Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
-> ---
->  drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
->
-> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-> index 2815387..ff0a1ff 100644
-> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-> @@ -755,9 +755,7 @@ static const char *msg_type_str(unsigned int msg_type)
->  	void *context, void *dest,
->  	size_t offset, size_t maxsize)
->  {
-> -	void *src = context;
-> -
-> -	memcpy(dest + offset, src + offset, maxsize);
-> +	memcpy(dest + offset, context + offset, maxsize);
-
-You have to watch for this, because the type could change, which could
-change the result of the pointer arithmetic.  But that doens't happen here
-- it's void * both times.
-
-Acked-by: Julia Lawall <julia.lawall@lip6.fr>
-
-
->  	return maxsize;
->  }
->
-> --
-> 1.9.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1488328859-6925-1-git-send-email-narcisaanamaria12%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
