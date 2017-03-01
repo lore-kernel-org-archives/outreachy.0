@@ -1,87 +1,97 @@
-X-GM-THRID: 6332848920515837952
-X-Received: by 10.129.135.195 with SMTP id x186mr7442541ywf.138.1474481290788;
-        Wed, 21 Sep 2016 11:08:10 -0700 (PDT)
+X-GM-THRID: 6392575837302947840
+X-Received: by 10.25.141.85 with SMTP id p82mr988983lfd.8.1488387575074;
+        Wed, 01 Mar 2017 08:59:35 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.41.71 with SMTP id d65ls4972909otb.16.gmail; Wed, 21 Sep
- 2016 11:08:10 -0700 (PDT)
-X-Received: by 10.129.89.213 with SMTP id n204mr8533036ywb.23.1474481290383;
-        Wed, 21 Sep 2016 11:08:10 -0700 (PDT)
-Return-Path: <aquannie@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id 7si7996630pfw.1.2016.09.21.11.08.10
+Received: by 10.46.21.65 with SMTP id 1ls474456ljv.35.gmail; Wed, 01 Mar 2017
+ 08:59:34 -0800 (PST)
+X-Received: by 10.25.167.5 with SMTP id q5mr1050452lfe.18.1488387574311;
+        Wed, 01 Mar 2017 08:59:34 -0800 (PST)
+Return-Path: <narcisaanamaria12@gmail.com>
+Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
+        by gmr-mx.google.com with ESMTPS id h198si552682wmg.1.2017.03.01.08.59.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Sep 2016 11:08:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Wed, 01 Mar 2017 08:59:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=aquannie@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id n24so2672994pfb.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 21 Sep 2016 11:08:10 -0700 (PDT)
+       spf=pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=narcisaanamaria12@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x243.google.com with SMTP id n11so856015wma.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 01 Mar 2017 08:59:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=MiMxk+yV9T0z5lwPxL7oCuoLNki7QB6mOertfHmhyiM=;
-        b=jR7ami/3+DacjKIiKhh+7mSYY98AGxc7fuf/r8oYDGQ4JXc4m/CkIP55yO9h81JTkJ
-         3h1I9svlagJV2KEO7gMd9J/lT4BP9FIpBNKg82eqx23gbFh5TNpTaU92H4V2bYPF33Lp
-         pw/GzU0k6HLUvPbwIklvkMB7Ukm5aPTS5KO3OjpD0UEHrVGBHk0U9mpxXsQ/Wg1Yb8Xm
-         DZtChIZxVbAOiPEdfmdt6cqA7enK7STuqrHASPMzT+SVE14iT4PtGYGu9NVjR/gCYHJI
-         wtF13kJ6JgYY3ub8QI/svGN3ZyAYIhgU657W9VCTlT/TRxynMDOUCIvWCSa/wdK7hUEA
-         lv2g==
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=kS8z+e4jHXEh78b4G6UzoOtjf3HHCsVgk2nw2I8oe8E=;
+        b=BeZiDTs1cVyVPNtHCXD+ObhjgG4Edb2Fuy1p5kIS8tr0kLSRIoWeLZBICyPMCruXAQ
+         m+VZ2vaopFl5aOqFZgmeW6GVuzSKmgyVMJyjXg5Sc/i96a66Z/soAgy0RfPAx8K+X/gY
+         h6YCbC6NV7EKiL+ny8Pwhj8ci21jLhSA3OTp+uZmpok8pnuI6egAZZXj4oavSQ0/EiIu
+         e2gGpcRv6zrTfN53D4dAzZ25VuuaPfnQmL/J7w5v8yJkRonGjc1+U5r87rp4OfEH3Sjk
+         4D/8jJx8A4/9M8iWWYYNmO9H1Ps7Bz/waxKBEXkANSWIejhUoKQq+9YhmcMjbo8sjg6f
+         2gew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=MiMxk+yV9T0z5lwPxL7oCuoLNki7QB6mOertfHmhyiM=;
-        b=ALiyp6mfWFHsefPQN4PLTk4tX5YRc1rSk2q6BUW8jUgMDDMYfEwOu7C5cvxCqocX/r
-         YlDky0Q87NyWjxcxKB9nPF50Uv7guwaC+BkVgChE2PYX/ED5P0a6QqhDMt51gQJzOXRD
-         Zufk1jdfRLQgAbLYBIgK3gcp0ZuJzXdKC2ftT8scUeuva51uRmHKdPxKpviw33wUTOA2
-         ybbOEIDf92CBQ9sHn9bIlJ+bpkV9chcjVy/14KizruIzvucLy//SxU1sXaQp+ITbg03d
-         PZt2V7ww244R8fLihc7W9LrOWCQ+dS27Pnoe7ytAyKCiiRy+ja1PAKPkwE00kZT1Yp3T
-         28OA==
-X-Gm-Message-State: AE9vXwO9pRAezx3V9Z+flhZz+dRjQWI7b4Ev8w9Jw8v13oJlMQyyc+nUFQoyO6I88UQkqg==
-X-Received: by 10.98.67.139 with SMTP id l11mr50555592pfi.16.1474481289905;
-        Wed, 21 Sep 2016 11:08:09 -0700 (PDT)
-Return-Path: <aquannie@gmail.com>
-Received: from toblerone ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id tw2sm48213970pac.41.2016.09.21.11.08.07
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Sep 2016 11:08:09 -0700 (PDT)
-Date: Wed, 21 Sep 2016 23:38:00 +0530
-From: Rehas Sachdeva <aquannie@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: octeon-usb: Remove unnecessary assignment
-Message-ID: <20160921180800.GA26789@toblerone>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=kS8z+e4jHXEh78b4G6UzoOtjf3HHCsVgk2nw2I8oe8E=;
+        b=MebqtVMm+7mgafUx6Zx3bPWIM3V4jTt/63caJVGIafy45GdhGALBD8OntzMmcofVg7
+         Ww6sL7qbR0YxsoNDmUw1iUUOUKSBu7Io8BsYyY5dyvFkSzNIsfrI8vS38lgLfP0kXxsD
+         Z9CyCaUePRdFlqOHESWOolzGA8qbB1qXA+o+cuG/mBhuIX1sw44qG+YR9zj+RHwUDkLn
+         tPkXNkK55Fjs/CV4NJK6UuW6iZHGF+gDafRRAkEP56T5TPeTT+k+4sjzOcj4LC1Umgct
+         XT2KNfVk0O3gnD7vmuHAu8BRh98f9bLUc57sosFdzT98tWcBS4YR2EqO+U/pCvj/V9zE
+         uCoQ==
+X-Gm-Message-State: AMke39nd6DasuAqxi/H9sQNaOuY6pY/Kxt7y3dxzipA3EuRLqNzcYbg5F2tLlUhD79WZBA==
+X-Received: by 10.28.21.15 with SMTP id 15mr4163056wmv.11.1488387574143;
+        Wed, 01 Mar 2017 08:59:34 -0800 (PST)
+Return-Path: <narcisaanamaria12@gmail.com>
+Received: from localhost.localdomain (p22.eregie.pub.ro. [141.85.0.122])
+        by smtp.gmail.com with ESMTPSA id x1sm7302250wrd.63.2017.03.01.08.59.32
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 01 Mar 2017 08:59:33 -0800 (PST)
+From: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+To: swarren@wwwdotorg.org,
+	lee@kernel.org,
+	eric@anholt.net,
+	gregkh@linuxfoundation.org,
+	f.fainelli@gmail.com,
+	rjui@broadcom.com,
+	sbranden@broadcom.com
+Cc: outreachy-kernel@googlegroups.com,
+	Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+Subject: [PATCH 2/2] staging: bcm2835-camera: Add spaces around '<<'
+Date: Wed,  1 Mar 2017 18:59:29 +0200
+Message-Id: <5e3cadef88edc08495f8bdd4497aa05bb1fd1262.1488387254.git.narcisaanamaria12@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <cover.1488387254.git.narcisaanamaria12@gmail.com>
+References: <cover.1488387254.git.narcisaanamaria12@gmail.com>
 
-Remove 'x=a;' from a consecutive double assignment of the form 'x=a; x=b;'.
-Issue detected by the semantic patch found here:
-https://github.com/coccinelle/coccinellery/blob/master/write2/write2.cocci
+This patch fixes the checkpatch.pl issue:
+CHECK: spaces preferred around that '<<' (ctx:VxV)
 
-Signed-off-by: Rehas Sachdeva <aquannie@gmail.com>
+Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
 ---
- drivers/staging/octeon-usb/octeon-hcd.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/staging/vc04_services/bcm2835-camera/controls.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/octeon-usb/octeon-hcd.c b/drivers/staging/octeon-usb/octeon-hcd.c
-index 17442b3..9a7858a 100644
---- a/drivers/staging/octeon-usb/octeon-hcd.c
-+++ b/drivers/staging/octeon-usb/octeon-hcd.c
-@@ -3292,7 +3292,6 @@ static int octeon_usb_hub_status_data(struct usb_hcd *hcd, char *buf)
- 	spin_lock_irqsave(&usb->lock, flags);
- 	port_status = cvmx_usb_get_status(usb);
- 	spin_unlock_irqrestore(&usb->lock, flags);
--	buf[0] = 0;
- 	buf[0] = port_status.connect_change << 1;
- 
- 	return buf[0] != 0;
+diff --git a/drivers/staging/vc04_services/bcm2835-camera/controls.c b/drivers/staging/vc04_services/bcm2835-camera/controls.c
+index 9c0667e..341a072 100644
+--- a/drivers/staging/vc04_services/bcm2835-camera/controls.c
++++ b/drivers/staging/vc04_services/bcm2835-camera/controls.c
+@@ -1271,11 +1271,11 @@ int bm2835_mmal_init_controls(struct bm2835_mmal_dev *dev,
+ 				 * mismatches.
+ 				 */
+ 				int i;
+-				mask = 1<<V4L2_SCENE_MODE_NONE;
++				mask = 1 << V4L2_SCENE_MODE_NONE;
+ 				for (i = 0;
+ 				     i < ARRAY_SIZE(scene_configs);
+ 				     i++) {
+-					mask |= 1<<scene_configs[i].v4l2_scene;
++					mask |= 1 << scene_configs[i].v4l2_scene;
+ 				}
+ 				mask = ~mask;
+ 			}
 -- 
-2.7.4
+1.9.1
 
 
