@@ -1,133 +1,226 @@
 X-GM-THRID: 6392252135167229952
-Date: Wed, 1 Mar 2017 13:32:50 -0800 (PST)
-From: Georgiana Chelu <georgiana.chelu93@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+X-Received: by 10.46.83.7 with SMTP id h7mr1486277ljb.24.1488403803104;
+        Wed, 01 Mar 2017 13:30:03 -0800 (PST)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.46.1.132 with SMTP id f4ls556977lji.41.gmail; Wed, 01 Mar 2017
+ 13:30:02 -0800 (PST)
+X-Received: by 10.46.69.7 with SMTP id s7mr1374782lja.18.1488403802190;
+        Wed, 01 Mar 2017 13:30:02 -0800 (PST)
+Return-Path: <georgiana.chelu93@gmail.com>
+Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
+        by gmr-mx.google.com with ESMTPS id h198si615547wmg.1.2017.03.01.13.30.02
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 01 Mar 2017 13:30:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
+Authentication-Results: gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x243.google.com with SMTP id n11so1921205wma.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 01 Mar 2017 13:30:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=caM8jp6J6q/QoGa4sneHcvWFPr/Ak6OYGV/COcFiSqU=;
+        b=RX9yAg/OGLWggOuJ4KaNGXSPH9Kv7zbmOoOeDQP/Rdl0gkKHyDzP1LGSY3b4N4oGni
+         FGNdi7sUuX8HVUewdQJ/rzXqNOrA4OwkCv9m8/sG+S7lRfhJFmPRMndR1imWuX2i4Sy3
+         uHf6snTsPeJfU+8L5TWSByw/bXW9s53yUTUfZV6BddV4BcD4DCy/+kHgz3bzQnxgNeQt
+         YRpUqfe/4j6stLrRZcSJE9f5zfx8C4I+EdtqGYQt6V14wye9uHNDIFmvfhB13bJ+uyQD
+         uDyYrzlVEGBfb1jY3rQfSe7+WJTZ2J5Ck93cntR9Dc593ZUH2PjGLFYYus3GsOmSZYR3
+         kyfg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=caM8jp6J6q/QoGa4sneHcvWFPr/Ak6OYGV/COcFiSqU=;
+        b=erjFamW6aL5LzlmVZX+fHWv8s+rlPrZZ44MkE6jUrirUFSl3ccExXpTggwcfVe0XVM
+         vFNRc6pq3LSgx9L6AzSFBWMzZf5hFzVvzOn7fndTxNX/g2BjeTmAag9y6zzFJ45OAf4O
+         kNvRnFH4NQVtDYZY+B1GDU+2iVBY4TI6Ri/GlW6YV5c22dhnkmLqbhQaI1h8KeU34vNz
+         FCKZZLa4VFKKzqeAKTc5vslNXOUJ4xoBhnsuaJ4/ezClEyih3LrsIkvXLG3Gkovbnf7v
+         +rf28QRk95oo/Xuili3jrcnQJ01fIoajSwa+NofqrJI1DjDnylPnvUKoa3Nc2EHM9GgT
+         fF4w==
+X-Gm-Message-State: AMke39kPpWAle/uJ4LWAt5QsIzfH5yRv37uuzpeINwCWnpYoF6ZxBqE5RGFOUZaTUjQInQ==
+X-Received: by 10.28.28.69 with SMTP id c66mr5487767wmc.28.1488403801939;
+        Wed, 01 Mar 2017 13:30:01 -0800 (PST)
+Return-Path: <georgiana.chelu93@gmail.com>
+Received: from fireworks ([84.117.92.113])
+        by smtp.gmail.com with ESMTPSA id 128sm6928392wmp.11.2017.03.01.13.30.00
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 01 Mar 2017 13:30:00 -0800 (PST)
+Date: Wed, 1 Mar 2017 23:30:00 +0200
+From: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
+To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org
-Message-Id: <3b25b19d-132d-44b4-b9dd-418cf3a1dbf8@googlegroups.com>
-In-Reply-To: <20170228200257.GA14816@fireworks>
-References: <20170228200257.GA14816@fireworks>
-Subject: Re: [PATCH] staging:rtl8192u: Check memory allocation
+Subject: [PATCH v2] staging:rtl8192u: Check memory allocation
+Message-ID: <20170301213000.GA14437@fireworks>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_1751_2005472279.1488403970172"
-X-Google-Token: EIL83MUFyWStNDqVadk0
-X-Google-IP: 84.117.92.113
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-------=_Part_1751_2005472279.1488403970172
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_1752_1437706910.1488403970172"
+Check if the allocation is not successful and
+return the error code -ENOMEM.
 
-------=_Part_1752_1437706910.1488403970172
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Signed-off-by: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
+---
 
-Hi Julia,
+Changes in v2:
+        - use a goto pattern to handle the allocation fails
+	- use exiting a function to free the memory in case of fail
+	- move the free function above the initialization
 
-Thank you for your time spent to explain me what is the better approach. I 
-tried to
-take into account your advice and to make use of the existing code. Please, 
-let me
-know if am I on the right path.
+ drivers/staging/rtl8192u/r8192U_core.c | 109 ++++++++++++++++++---------------
+ 1 file changed, 60 insertions(+), 49 deletions(-)
 
+diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
+index b631990..08d7e70 100644
+--- a/drivers/staging/rtl8192u/r8192U_core.c
++++ b/drivers/staging/rtl8192u/r8192U_core.c
+@@ -1677,6 +1677,56 @@ short rtl8192_tx(struct net_device *dev, struct sk_buff *skb)
+ 	return -1;
+ }
+ 
++#ifdef THOMAS_BEACON
++static void rtl8192_usb_deleteendpoints(struct net_device *dev)
++{
++	int i;
++	struct r8192_priv *priv = ieee80211_priv(dev);
++
++	if (priv->rx_urb) {
++		for (i = 0; i < (MAX_RX_URB + 1); i++) {
++			usb_kill_urb(priv->rx_urb[i]);
++			usb_free_urb(priv->rx_urb[i]);
++		}
++		kfree(priv->rx_urb);
++		priv->rx_urb = NULL;
++	}
++	kfree(priv->oldaddr);
++	priv->oldaddr = NULL;
++
++	kfree(priv->pp_rxskb);
++	priv->pp_rxskb = NULL;
++}
++#else
++void rtl8192_usb_deleteendpoints(struct net_device *dev)
++{
++	int i;
++	struct r8192_priv *priv = ieee80211_priv(dev);
++
++#ifndef JACKSON_NEW_RX
++
++	if (priv->rx_urb) {
++		for (i = 0; i < (MAX_RX_URB + 1); i++) {
++			usb_kill_urb(priv->rx_urb[i]);
++			kfree(priv->rx_urb[i]->transfer_buffer);
++			usb_free_urb(priv->rx_urb[i]);
++		}
++		kfree(priv->rx_urb);
++		priv->rx_urb = NULL;
++	}
++#else
++	kfree(priv->rx_urb);
++	priv->rx_urb = NULL;
++	kfree(priv->oldaddr);
++	priv->oldaddr = NULL;
++
++	kfree(priv->pp_rxskb);
++	priv->pp_rxskb = 0;
++
++#endif
++}
++#endif
++
+ static short rtl8192_usb_initendpoints(struct net_device *dev)
+ {
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
+@@ -1689,9 +1739,13 @@ static short rtl8192_usb_initendpoints(struct net_device *dev)
+ #ifndef JACKSON_NEW_RX
+ 	for (i = 0; i < (MAX_RX_URB + 1); i++) {
+ 		priv->rx_urb[i] = usb_alloc_urb(0, GFP_KERNEL);
++		if(!priv->rx_urb[i])
++			goto exit;
+ 
+ 		priv->rx_urb[i]->transfer_buffer =
+ 			kmalloc(RX_URB_SIZE, GFP_KERNEL);
++		if(!priv->rx_urb[i]->transfer_buffer)
++			goto exit;
+ 
+ 		priv->rx_urb[i]->transfer_buffer_length = RX_URB_SIZE;
+ 	}
+@@ -1704,6 +1758,9 @@ static short rtl8192_usb_initendpoints(struct net_device *dev)
+ 
+ 		priv->rx_urb[16] = usb_alloc_urb(0, GFP_KERNEL);
+ 		priv->oldaddr = kmalloc(16, GFP_KERNEL);
++		if(!priv->oldaddr)
++			goto exit;
++
+ 		oldaddr = priv->oldaddr;
+ 		align = ((long)oldaddr) & 3;
+ 		if (align) {
+@@ -1732,57 +1789,11 @@ static short rtl8192_usb_initendpoints(struct net_device *dev)
+ 
+ 	netdev_dbg(dev, "End of initendpoints\n");
+ 	return 0;
+-}
+-
+-#ifdef THOMAS_BEACON
+-static void rtl8192_usb_deleteendpoints(struct net_device *dev)
+-{
+-	int i;
+-	struct r8192_priv *priv = ieee80211_priv(dev);
+-
+-	if (priv->rx_urb) {
+-		for (i = 0; i < (MAX_RX_URB + 1); i++) {
+-			usb_kill_urb(priv->rx_urb[i]);
+-			usb_free_urb(priv->rx_urb[i]);
+-		}
+-		kfree(priv->rx_urb);
+-		priv->rx_urb = NULL;
+-	}
+-	kfree(priv->oldaddr);
+-	priv->oldaddr = NULL;
+-
+-	kfree(priv->pp_rxskb);
+-	priv->pp_rxskb = NULL;
+-}
+-#else
+-void rtl8192_usb_deleteendpoints(struct net_device *dev)
+-{
+-	int i;
+-	struct r8192_priv *priv = ieee80211_priv(dev);
+-
+-#ifndef JACKSON_NEW_RX
+ 
+-	if (priv->rx_urb) {
+-		for (i = 0; i < (MAX_RX_URB + 1); i++) {
+-			usb_kill_urb(priv->rx_urb[i]);
+-			kfree(priv->rx_urb[i]->transfer_buffer);
+-			usb_free_urb(priv->rx_urb[i]);
+-		}
+-		kfree(priv->rx_urb);
+-		priv->rx_urb = NULL;
+-	}
+-#else
+-	kfree(priv->rx_urb);
+-	priv->rx_urb = NULL;
+-	kfree(priv->oldaddr);
+-	priv->oldaddr = NULL;
+-
+-	kfree(priv->pp_rxskb);
+-	priv->pp_rxskb = 0;
+-
+-#endif
++exit:
++	rtl8192_usb_deleteendpoints(dev);
++	return -ENOMEM;
+ }
+-#endif
+ 
+ static void rtl8192_update_ratr_table(struct net_device *dev);
+ static void rtl8192_link_change(struct net_device *dev)
+-- 
+2.7.4
 
-
-On Tuesday, 28 February 2017 22:02:59 UTC+2, Georgiana Chelu wrote:
->
-> Check if the allocation is not successful and 
-> return the error code -ENOMEM. 
->
-> Signed-off-by: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com> 
-> --- 
->  drivers/staging/rtl8192u/r8192U_core.c | 4 ++++ 
->  1 file changed, 4 insertions(+) 
->
-> diff --git a/drivers/staging/rtl8192u/r8192U_core.c 
-> b/drivers/staging/rtl8192u/r8192U_core.c 
-> index b631990..04025b6 100644 
-> --- a/drivers/staging/rtl8192u/r8192U_core.c 
-> +++ b/drivers/staging/rtl8192u/r8192U_core.c 
-> @@ -1689,9 +1689,13 @@ static short rtl8192_usb_initendpoints(struct 
-> net_device *dev) 
->  #ifndef JACKSON_NEW_RX 
->          for (i = 0; i < (MAX_RX_URB + 1); i++) { 
->                  priv->rx_urb[i] = usb_alloc_urb(0, GFP_KERNEL); 
-> +                if (!priv->rx_urb[i]) 
-> +                        return -ENOMEM; 
->   
->                  priv->rx_urb[i]->transfer_buffer = 
->                          kmalloc(RX_URB_SIZE, GFP_KERNEL); 
-> +                if (!priv->rx_urb[i]->transfer_buffer) 
-> +                        return -ENOMEM; 
->   
->                  priv->rx_urb[i]->transfer_buffer_length = RX_URB_SIZE; 
->          } 
-> -- 
-> 2.7.4 
->
->
-------=_Part_1752_1437706910.1488403970172
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi Julia,<br><br>Thank you for your time spent to explain =
-me what is the better approach. I tried to<br>take into account your advice=
- and to make use of the existing code. Please, let me<br>know if am I on th=
-e right path.<br><br><br><br>On Tuesday, 28 February 2017 22:02:59 UTC+2, G=
-eorgiana Chelu  wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;=
-margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Check if=
- the allocation is not successful and
-<br>return the error code -ENOMEM.
-<br>
-<br>Signed-off-by: Georgiana Rodica Chelu &lt;<a href=3D"mailto:georgiana.c=
-helu93@gmail.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.hr=
-ef=3D&#39;mailto:georgiana.chelu93@gmail.com&#39;;return true;" onclick=3D"=
-this.href=3D&#39;mailto:georgiana.chelu93@gmail.com&#39;;return true;">geor=
-giana.chelu93@gmail.com</a>&gt;
-<br>---
-<br>=C2=A0drivers/staging/rtl8192u/<wbr>r8192U_core.c | 4 ++++
-<br>=C2=A01 file changed, 4 insertions(+)
-<br>
-<br>diff --git a/drivers/staging/rtl8192u/<wbr>r8192U_core.c b/drivers/stag=
-ing/rtl8192u/<wbr>r8192U_core.c
-<br>index b631990..04025b6 100644
-<br>--- a/drivers/staging/rtl8192u/<wbr>r8192U_core.c
-<br>+++ b/drivers/staging/rtl8192u/<wbr>r8192U_core.c
-<br>@@ -1689,9 +1689,13 @@ static short rtl8192_usb_initendpoints(<wbr>stru=
-ct net_device *dev)
-<br>=C2=A0#ifndef JACKSON_NEW_RX
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0for (i =3D 0; i &=
-lt; (MAX_RX_URB + 1); i++) {
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0priv-&gt;rx_urb[<wbr>i] =3D usb_alloc_urb(=
-0, GFP_KERNEL);
-<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0if (!priv-&gt;rx_urb[i])
-<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-<wbr>return -ENOMEM;
-<br>=C2=A0
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0priv-&gt;rx_urb[<wbr>i]-&gt;transfer_buffe=
-r =3D
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0<wbr>kmalloc(RX_URB_SIZE, GFP_KERNEL);
-<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0if (!priv-&gt;rx_urb[i]-&gt;transfer_<wbr>buffer=
-)
-<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-<wbr>return -ENOMEM;
-<br>=C2=A0
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0priv-&gt;rx_urb[<wbr>i]-&gt;transfer_buffe=
-r_length =3D RX_URB_SIZE;
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
-<br>--=20
-<br>2.7.4
-<br>
-<br></blockquote></div>
-------=_Part_1752_1437706910.1488403970172--
-
-------=_Part_1751_2005472279.1488403970172--
 
