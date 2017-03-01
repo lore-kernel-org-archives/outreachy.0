@@ -1,53 +1,53 @@
 X-GM-THRID: 6392494565268389888
-X-Received: by 10.46.71.15 with SMTP id u15mr1041114lja.9.1488368740908;
-        Wed, 01 Mar 2017 03:45:40 -0800 (PST)
+X-Received: by 10.46.76.17 with SMTP id z17mr938957lja.13.1488368694491;
+        Wed, 01 Mar 2017 03:44:54 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.1.93 with SMTP id 90ls398010ljb.13.gmail; Wed, 01 Mar 2017
- 03:45:40 -0800 (PST)
-X-Received: by 10.46.80.82 with SMTP id v18mr953362ljd.27.1488368740441;
-        Wed, 01 Mar 2017 03:45:40 -0800 (PST)
+Received: by 10.25.227.79 with SMTP id c15ls70657lfk.49.gmail; Wed, 01 Mar
+ 2017 03:44:53 -0800 (PST)
+X-Received: by 10.25.196.68 with SMTP id u65mr913230lff.0.1488368693823;
+        Wed, 01 Mar 2017 03:44:53 -0800 (PST)
 Return-Path: <narcisaanamaria12@gmail.com>
-Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
-        by gmr-mx.google.com with ESMTPS id k5si122870wmd.0.2017.03.01.03.45.40
+Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
+        by gmr-mx.google.com with ESMTPS id h62si946074wme.2.2017.03.01.03.44.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 01 Mar 2017 03:45:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
+        Wed, 01 Mar 2017 03:44:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=narcisaanamaria12@gmail.com;
+       spf=pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=narcisaanamaria12@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x243.google.com with SMTP id v190so860881wme.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 01 Mar 2017 03:45:40 -0800 (PST)
+Received: by mail-wm0-x244.google.com with SMTP id u63so6896603wmu.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 01 Mar 2017 03:44:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=Z3UzyQ5R22wplqnfUiDlanz3erqYB7OzHzRIUL+2JZg=;
-        b=KiH8ItrVwTaeYUDdKPXtSwuzzVK7iBMPASjExKy9a5u+tXJjcL/VfqedFBvzlGZ4sV
-         EtycwlNy8cAd4YlEU9jYgVWIFGcbKYdOOwCEli3anRVtd4gRZiCXag1LBjQ+l+i8SO35
-         6tHMeXafHyhugCQ9RKyGz18aSfZKUV4psZ+e1WRQK96OxYX3Sg5lrUPsW6qtp373ZvXS
-         5qU0OCi5+KCdTo5jp7Z1MbuZEagDKcfjB9rDHduNELGrXEwXiDsqzWZyRT2jEEf4IGUV
-         q6y68aB4SaXaXOkSvx4pBVBSP9iK65pdn3V0PJj7aooz89SfIHErJlHBFg1OIOTANrBs
-         3E7Q==
+        bh=tbfQfD7rlkERCK1s+ygY2VGg4FKzYWVbey7mdqy1jng=;
+        b=bDQdrLJk7zeW5129qID05kN18Tj57Q8IfJdBBqMh+AjPnH9tV0WBSo30PQTqCsED1z
+         Pa5p1WygzTDD4cjTuF4aedW+X4VJUO0ILqjM1suT3n99UbtNYZecrZGBIDrLsBuiX0vg
+         Iy3A12LuOFqm5zXYkpXZ3r2+B7ymTdGTHsoKW6Ac6qXm6eGWhOilZARAfDMkc4waRTTx
+         PJj5mO9h+evioK0kIodGnRaNhF3xnKnDgTVC5UnMuMew9xAvnPbndZ34DsoJr9Shq2nB
+         NVwcSXKEwI5aP3UEApUTmroebnSgk9Ae6MJeTPqRFTFfeyegC87wAFKLJ4OUPI8/brmh
+         5vtA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=Z3UzyQ5R22wplqnfUiDlanz3erqYB7OzHzRIUL+2JZg=;
-        b=I81m4pl8snJXTFL8+E1DQQT7sYnZ6RauXwyp7xX3kQIc4cwAne781IBMNPJDfi4dPU
-         TRGZseySvPnhGENZ+IifHHESo8gDirYfQyvu9qRjubFttG1Tj1E7Oqd+wmRY/zM8BL9T
-         utHJjKBla2QN+4EQDFAQpA3PjkJhrgtfx9TH/ygQK2TXjjdm5TGRn89UQHvv/Rr48QRy
-         XAclPlU9Djasi0FHcKYdSDM44qUdD0CfqRH86So6nlfehzMMy/wq72EDvuEmIUAJ5gb7
-         MsFIGCHxxXxl9P9NNOhyNT/R1sB5sJUJ+S4BpwbpFX9uyi6PJ+sVwM9ux3IVDCfG5ArK
-         Qxzw==
-X-Gm-Message-State: AMke39lr8Vp5R0PmNKfFr9DUX0dLwrudi0m7D8tSGDZBWq7yGKtSenjNWTW71SJVmiRibQ==
-X-Received: by 10.28.74.28 with SMTP id x28mr3014663wma.131.1488368740275;
-        Wed, 01 Mar 2017 03:45:40 -0800 (PST)
+        bh=tbfQfD7rlkERCK1s+ygY2VGg4FKzYWVbey7mdqy1jng=;
+        b=uOOHbrn7rY/UeFbUSgFO4SPOJLMyTkeQdw1KKVVRyFl1DXnQ8CkQOrT7545cEf+vQ6
+         6yYi1nufolGNmnlPXAxtYtHZ3pPnCg6w0KDt/Z2Y/sR2S2VcMOwCx72ehhjVPZmOnwya
+         po/0jzeY6oIPDFbBO55/RHNnhhSQNMt6gH2ik3dU6/ZiRIILNtoaAl8rpgUvhK717t/N
+         BBqZR1jn6z0jdQoPi6yLn+JpaLVI0lLHxO2yt6k2k3LwPtRxJsNWBwjbkaEaVa8VwVkS
+         idj4gxrZeLE6eee/wV3SMLZQcMor+0Qm4tosZjawIOnSQrwQV7seu5ZG/GFMWZmmqLh9
+         nZjA==
+X-Gm-Message-State: AMke39naMvzpfEGx1wyS6HUckk+uRPX2jT0VX9t+i2w9HwAvDexHufCZSRNQwHauJ2cO6A==
+X-Received: by 10.28.156.151 with SMTP id f145mr3149917wme.8.1488368693594;
+        Wed, 01 Mar 2017 03:44:53 -0800 (PST)
 Return-Path: <narcisaanamaria12@gmail.com>
 Received: from localhost.localdomain (p22.eregie.pub.ro. [141.85.0.122])
-        by smtp.gmail.com with ESMTPSA id g5sm2491380wrb.48.2017.03.01.03.45.39
+        by smtp.gmail.com with ESMTPSA id r6sm6593306wmd.4.2017.03.01.03.44.52
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 01 Mar 2017 03:45:39 -0800 (PST)
+        Wed, 01 Mar 2017 03:44:53 -0800 (PST)
 From: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
 To: swarren@wwwdotorg.org,
 	lee@kernel.org,
@@ -58,45 +58,49 @@ To: swarren@wwwdotorg.org,
 	sbranden@broadcom.com
 Cc: outreachy-kernel@googlegroups.com,
 	Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
-Subject: [PATCH 2/2] staging: vc04_services: bcm2835-camera: Removed unnecessary variable
-Date: Wed,  1 Mar 2017 13:45:31 +0200
-Message-Id: <daabcf56391dbfadac95ab36f36afd3bdaeaf423.1488367580.git.narcisaanamaria12@gmail.com>
+Subject: [PATCH 1/2] staging: vc04_services: bcm2835-camera: Moved condition outside the for statement
+Date: Wed,  1 Mar 2017 13:44:43 +0200
+Message-Id: <04783e886f993597ef3b14f2602864884e0ac7b7.1488367580.git.narcisaanamaria12@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <cover.1488367580.git.narcisaanamaria12@gmail.com>
 References: <cover.1488367580.git.narcisaanamaria12@gmail.com>
 
-Instead of storing the result, now the function returns directly
+Instead of computing the minimum value in the for loop, I store it in
+a variable.
 
 Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
 ---
- drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+ drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-index 347d8fff..d00e00b 100644
+index 53e275e..347d8fff 100644
 --- a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
 +++ b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-@@ -671,7 +671,6 @@ static void bm2835_mmal_unlock(struct vb2_queue *vq)
- static int set_overlay_params(struct bm2835_mmal_dev *dev,
- 			      struct vchiq_mmal_port *port)
- {
--	int ret;
- 	struct mmal_parameter_displayregion prev_config = {
- 	.set = MMAL_DISPLAY_SET_LAYER | MMAL_DISPLAY_SET_ALPHA |
- 	    MMAL_DISPLAY_SET_DEST_RECT | MMAL_DISPLAY_SET_FULLSCREEN,
-@@ -685,11 +684,9 @@ static int set_overlay_params(struct bm2835_mmal_dev *dev,
- 		      .height = dev->overlay.w.height,
- 		      },
- 	};
--	ret = vchiq_mmal_port_parameter_set(dev->instance, port,
-+	return vchiq_mmal_port_parameter_set(dev->instance, port,
- 					    MMAL_PARAMETER_DISPLAYREGION,
- 					    &prev_config, sizeof(prev_config));
--
--	return ret;
- }
+@@ -1526,6 +1526,7 @@ static int get_num_cameras(struct vchiq_mmal_instance *instance,
+ 	struct mmal_parameter_camera_info_t cam_info = {0};
+ 	int param_size = sizeof(cam_info);
+ 	int i;
++	int min_size;
  
- /* overlay ioctl */
+ 	/* create a camera_info component */
+ 	ret = vchiq_mmal_component_init(instance, "camera_info",
+@@ -1541,11 +1542,10 @@ static int get_num_cameras(struct vchiq_mmal_instance *instance,
+ 					  &param_size)) {
+ 		pr_info("Failed to get camera info\n");
+ 	}
+-	for (i = 0;
+-	     i < (cam_info.num_cameras > num_resolutions ?
+-			num_resolutions :
+-			cam_info.num_cameras);
+-	     i++) {
++
++	min_size = cam_info.num_cameras > num_resolutions ?
++			num_resolutions : cam_info.num_cameras;
++	for (i = 0; i < min_size; i++) {
+ 		resolutions[i][0] = cam_info.cameras[i].max_width;
+ 		resolutions[i][1] = cam_info.cameras[i].max_height;
+ 	}
 -- 
 1.9.1
 
