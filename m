@@ -1,126 +1,103 @@
 X-GM-THRID: 6392494565268389888
-X-Received: by 10.28.59.66 with SMTP id i63mr110397wma.21.1488375194879;
-        Wed, 01 Mar 2017 05:33:14 -0800 (PST)
+X-Received: by 10.25.168.20 with SMTP id r20mr917453lfe.10.1488374445342;
+        Wed, 01 Mar 2017 05:20:45 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.67.14 with SMTP id q14ls80866lfa.15.gmail; Wed, 01 Mar 2017
- 05:33:14 -0800 (PST)
-X-Received: by 10.46.20.72 with SMTP id 8mr1119047lju.19.1488375194263;
-        Wed, 01 Mar 2017 05:33:14 -0800 (PST)
+Received: by 10.46.84.65 with SMTP id y1ls395153ljd.17.gmail; Wed, 01 Mar 2017
+ 05:20:44 -0800 (PST)
+X-Received: by 10.25.17.102 with SMTP id g99mr886206lfi.6.1488374444735;
+        Wed, 01 Mar 2017 05:20:44 -0800 (PST)
 Return-Path: <narcisaanamaria12@gmail.com>
-Received: from mail-wm0-x242.google.com (mail-wm0-x242.google.com. [2a00:1450:400c:c09::242])
-        by gmr-mx.google.com with ESMTPS id h62si961719wme.2.2017.03.01.05.33.14
+Received: from mail-wr0-x243.google.com (mail-wr0-x243.google.com. [2a00:1450:400c:c0c::243])
+        by gmr-mx.google.com with ESMTPS id k5si145172wmd.0.2017.03.01.05.20.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 01 Mar 2017 05:33:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) client-ip=2a00:1450:400c:c09::242;
+        Wed, 01 Mar 2017 05:20:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) client-ip=2a00:1450:400c:c0c::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) smtp.mailfrom=narcisaanamaria12@gmail.com;
+       spf=pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) smtp.mailfrom=narcisaanamaria12@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x242.google.com with SMTP id v190so1354492wme.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 01 Mar 2017 05:33:14 -0800 (PST)
+Received: by mail-wr0-x243.google.com with SMTP id g10so5493744wrg.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 01 Mar 2017 05:20:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=xTmVBhdvWkX5mk/Cg4fW/VtRwLMt90gjKr99/Rjz1Os=;
-        b=E5nOKyZeGsfqu43OMcmtD2cz2ZK+YTSLfOfVs7iv7xR6xuQ1Hy9Ll90K04ivuIdHBe
-         IEWpd41SYKaVVcQwdzB1Jgn1zYZhlwwhX3gv+Xj0apVTE70NKQJWreqj6ssfT6/wIxlZ
-         IZj64YiBtZO7XntZmMPLVbwzqN/foYmEX67r9B+eb+MIvfulB0jRG4SBZgrJVazSFwxm
-         wT1Qndmom5niipdoA6AX0LClJBrEIMi9jEHJAVqNSpVnq2HarterqzKT+r4/msr92Kci
-         sVCPzlSv3T/LKMPgDj3JxvVs1H2M4u+WKazsp55sMCbtCvoGSBvu3xl/Z9V/VXuGh1gd
-         CvEw==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=eGmpPlEPJLO+eo11+tBH7Ocq9ZEioWzfgma1MmRW56E=;
+        b=as9SfiDmXA8Pxzp4KQuGjJ0dmzXszdGszjVcTFQsQu4enkXhI0VYrJCtF/8mJcICZo
+         tKUAVM03wDiVARn4k++4q+nvRR9cKx08UEZM5qXu0MteFOzIXJ5jPR1xHUee764GyHou
+         dHOCItLDfkfPVaG+/jfCzuw7dUhQyQb9An+zzJTy7Wt6fzA/3brC9THv83FUJffITCos
+         PCFK0a8cwCP6yj+P8J7ni0STipLlRJ+5q8zsXRG3G9fZmM24MrvHOxDB+YuTB1mZ8Nrz
+         8vA71L/kP6Pzdr/hCapBAxk34TcuMM04lIhzdoxtJEEjwr9Mn1vxx+6H6n29rLZm+NEY
+         IUBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=xTmVBhdvWkX5mk/Cg4fW/VtRwLMt90gjKr99/Rjz1Os=;
-        b=Mp7vhsKt7DDlQLBHp81jV7c/l6JFoC0yV+rMpixNwM5FcBPWwwqqvIhwI7UYmxmbv+
-         Ng64FGDylj9rN5PabyBamvXn3T+XR3W3kgzDot6lX9c31HLM1LUgXifcCZjZ7BjA9I+P
-         R7txhSrCyx33RrPim5eZF1katvdh45OavFgNmCOLY0WceXHWJZEtoWddW+F2cwHTc6tV
-         IIyFLJxfBZMr0zMKoe18l48h2qjh4RnxqIuTzqtXbvfQdJyMyTOqWebsdceYQnGkZGd/
-         CTD73oohVApKI0jWfQnK1/OTrPPGjMzx0JYn7yQLwukP9wu6nzSAO/nEKSSXHonXA5gw
-         i+hg==
-X-Gm-Message-State: AMke39kfxRi2UyZ2ubdj/hC2LwqSemg2jZD46oBkEDQ9K0Q7OgSKf/4UF9i8pik0n0HdDw==
-X-Received: by 10.28.105.68 with SMTP id e65mr3388772wmc.44.1488375193909;
-        Wed, 01 Mar 2017 05:33:13 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=eGmpPlEPJLO+eo11+tBH7Ocq9ZEioWzfgma1MmRW56E=;
+        b=VLfPdVGG+tIGXClxQMAe+NEzq7gZ7IjzDla1J4HnG4QGPGpJuzG6qMQBXiyoDkTtnq
+         7pd9rXm42p6IhFA3P9IBpQOwQyXcPiegq2ZgmMv8gt10lnZVZRIw31yHF3m59Wr/9dwr
+         CQCjrkPFnH463iKNP5TQy3TsnGVBZsntNOoj6ubK3rkBOclqkq8gz7VMLJ5/kPcOJMCO
+         oTPGZ8IbN2W37nqjmTnIHMGfdik/pRmlkJedMHbAIBDCH8dmTyFKTKayrXCiVKKCO/7W
+         ksRpo0T//Qf5NvGrtozrDSEvW1WtZTnlxcWru1v9hPgheyz5ukThsOOh14loiROxdrnZ
+         bj3g==
+X-Gm-Message-State: AMke39lfjI3DhAeKpCCX/Mk3FCYK/ul/y6UiC0ArMkl8RBAT4zMMX+9z/PN8HAhoSMOflg==
+X-Received: by 10.223.155.193 with SMTP id e1mr6943480wrc.86.1488374444391;
+        Wed, 01 Mar 2017 05:20:44 -0800 (PST)
 Return-Path: <narcisaanamaria12@gmail.com>
-Received: from nati-X550JK (p22.eregie.pub.ro. [141.85.0.122])
-        by smtp.gmail.com with ESMTPSA id w207sm22841725wmw.29.2017.03.01.05.33.13
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 01 Mar 2017 05:33:13 -0800 (PST)
-Date: Wed, 1 Mar 2017 15:33:12 +0200
+Received: from localhost.localdomain (p22.eregie.pub.ro. [141.85.0.122])
+        by smtp.gmail.com with ESMTPSA id k8sm6583460wre.19.2017.03.01.05.20.43
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 01 Mar 2017 05:20:43 -0800 (PST)
 From: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: swarren@wwwdotorg.org, lee@kernel.org, eric@anholt.net,
-	gregkh@linuxfoundation.org, f.fainelli@gmail.com, rjui@broadcom.com,
-	sbranden@broadcom.com, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 2/2] staging: vc04_services:
- bcm2835-camera: Removed unnecessary variable
-Message-ID: <20170301133311.GA14951@nati-X550JK>
-References: <cover.1488367580.git.narcisaanamaria12@gmail.com>
- <daabcf56391dbfadac95ab36f36afd3bdaeaf423.1488367580.git.narcisaanamaria12@gmail.com>
- <alpine.DEB.2.20.1703011404280.3941@hadrien>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.20.1703011404280.3941@hadrien>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+To: swarren@wwwdotorg.org,
+	lee@kernel.org,
+	eric@anholt.net,
+	gregkh@linuxfoundation.org,
+	f.fainelli@gmail.com,
+	rjui@broadcom.com,
+	sbranden@broadcom.com
+Cc: outreachy-kernel@googlegroups.com,
+	Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+Subject: [PATCH v2 2/2] staging: vc04_services: bcm2835-camera: Remove unnecessary variable
+Date: Wed,  1 Mar 2017 15:20:40 +0200
+Message-Id: <f65f4c89e9d1e054d65a13a35f8f32e9139f1ae5.1488373678.git.narcisaanamaria12@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <cover.1488373678.git.narcisaanamaria12@gmail.com>
+References: <cover.1488373678.git.narcisaanamaria12@gmail.com>
 
-On Wed, Mar 01, 2017 at 02:05:09PM +0100, Julia Lawall wrote:
-> 
-> 
-> On Wed, 1 Mar 2017, Narcisa Ana Maria Vasile wrote:
-> 
-> > Instead of storing the result, now the function returns directly
-> >
-> > Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
-> > ---
-> >  drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c | 5 +----
-> >  1 file changed, 1 insertion(+), 4 deletions(-)
-> >
-> > diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-> > index 347d8fff..d00e00b 100644
-> > --- a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-> > +++ b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-> > @@ -671,7 +671,6 @@ static void bm2835_mmal_unlock(struct vb2_queue *vq)
-> >  static int set_overlay_params(struct bm2835_mmal_dev *dev,
-> >  			      struct vchiq_mmal_port *port)
-> >  {
-> > -	int ret;
-> >  	struct mmal_parameter_displayregion prev_config = {
-> >  	.set = MMAL_DISPLAY_SET_LAYER | MMAL_DISPLAY_SET_ALPHA |
-> >  	    MMAL_DISPLAY_SET_DEST_RECT | MMAL_DISPLAY_SET_FULLSCREEN,
-> > @@ -685,11 +684,9 @@ static int set_overlay_params(struct bm2835_mmal_dev *dev,
-> >  		      .height = dev->overlay.w.height,
-> >  		      },
-> >  	};
-> > -	ret = vchiq_mmal_port_parameter_set(dev->instance, port,
-> > +	return vchiq_mmal_port_parameter_set(dev->instance, port,
-> >  					    MMAL_PARAMETER_DISPLAYREGION,
-> >  					    &prev_config, sizeof(prev_config));
-> 
-> The arguments needed to be moved one space over.
-> 
-> julia
->
-  Oh, ok.
-  I'll resend another version.
-  
-  Narcisa
-> > -
-> > -	return ret;
-> >  }
-> >
-> >  /* overlay ioctl */
-> > --
-> > 1.9.1
-> >
-> > --
-> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/daabcf56391dbfadac95ab36f36afd3bdaeaf423.1488367580.git.narcisaanamaria12%40gmail.com.
-> > For more options, visit https://groups.google.com/d/optout.
-> >
+Instead of storing the result, make the function return directly
+
+Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+---
+ drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
+index 347d8fff..d00e00b 100644
+--- a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
++++ b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
+@@ -671,7 +671,6 @@ static void bm2835_mmal_unlock(struct vb2_queue *vq)
+ static int set_overlay_params(struct bm2835_mmal_dev *dev,
+ 			      struct vchiq_mmal_port *port)
+ {
+-	int ret;
+ 	struct mmal_parameter_displayregion prev_config = {
+ 	.set = MMAL_DISPLAY_SET_LAYER | MMAL_DISPLAY_SET_ALPHA |
+ 	    MMAL_DISPLAY_SET_DEST_RECT | MMAL_DISPLAY_SET_FULLSCREEN,
+@@ -685,11 +684,9 @@ static int set_overlay_params(struct bm2835_mmal_dev *dev,
+ 		      .height = dev->overlay.w.height,
+ 		      },
+ 	};
+-	ret = vchiq_mmal_port_parameter_set(dev->instance, port,
++	return vchiq_mmal_port_parameter_set(dev->instance, port,
+ 					    MMAL_PARAMETER_DISPLAYREGION,
+ 					    &prev_config, sizeof(prev_config));
+-
+-	return ret;
+ }
+ 
+ /* overlay ioctl */
+-- 
+1.9.1
+
 
