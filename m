@@ -1,126 +1,97 @@
-X-GM-THRID: 6659981177442533376
-X-Received: by 2002:a17:902:e50f:: with SMTP id ck15mr10155841plb.27.1550647704180;
-        Tue, 19 Feb 2019 23:28:24 -0800 (PST)
+X-GM-THRID: 6392178223572058112
+X-Received: by 10.200.4.16 with SMTP id v16mr2829819qtg.88.1488398051494;
+        Wed, 01 Mar 2017 11:54:11 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:d241:: with SMTP id t1ls7875412pgi.11.gmail; Tue, 19 Feb
- 2019 23:28:23 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IZbH1z6En25oWuJN7Eu/M2mggid4tAT69HxsdK7O47pEu6kiN0t6+9ejddZzXI+Wb9D5Dkj
-X-Received: by 2002:a62:111a:: with SMTP id z26mr3836102pfi.97.1550647703552;
-        Tue, 19 Feb 2019 23:28:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550647703; cv=none;
-        d=google.com; s=arc-20160816;
-        b=gi33Bnwmvrwg1BUlzm8Hr16sJsICiFEV5702a3vhc8bQow8V4ywqDOqICvtnCgbAKv
-         JA5Ol/vVvzlfL+ylG/tNkcLk54yCW9+H0saUW/Y8u+Wc0bshbWBbcjgUIjHcoy/cf2xL
-         8SFDI5xWhdeQSqzmdZFLUXAzDWPdGcVQlKLzEh6JhnGiH9RYfujqFXhmGHqkdIa2SN48
-         zdwi/zxpr8HYjiBiYvAU2NedUTSHPZPGBrwcLyaIKMfMO9I4ig11isFKYX3JFIw7wSSX
-         SjtdkfhhmoR/KIETLP5x+9K0OZEVT1psa8KFueK1i6PmuEg35fikdVXfPGN7lRA9qroA
-         kzxQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=HxibILbJEhD00IPWn1pKe7wGi7oOLNK4WQH5+UokoWI=;
-        b=J8ydSY4ZPxtuOizhkeouJeKy6A4cZUTEZ67UarFERkGoTwjvVW2hNp3Phx/coprY/8
-         588WQo+gkG18TGrpOkW1OzABgrX23qPxrpbHbxOxyblB1YfIgXrflmbFyZhIwUBAl8Xr
-         JH79XpyOtkg9gN9US9qeuUAdmS7LYl9z5ixj94Zf668OEkM6JucXbeVrBaQOnfunJm5d
-         W3g1ht0YCIA9/6hau0dmotCbxiKNue5y1oOyoOV47LZH91j2400/NPjlDw1MeY7jwhic
-         TJSosiNyYCj5es7J9MsTnVBpOl/KnDKicDJQgQPslOdvyjhJMQzSdc8OXL+WrXI9wVP2
-         6Iow==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=f7AaYOXx;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
-        by gmr-mx.google.com with ESMTPS id u20si877894pfj.3.2019.02.19.23.28.23
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Feb 2019 23:28:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
+Received: by 10.157.8.69 with SMTP id 63ls5386640oty.0.gmail; Wed, 01 Mar 2017
+ 11:54:11 -0800 (PST)
+X-Received: by 10.13.254.2 with SMTP id o2mr3350186ywf.50.1488398051092;
+        Wed, 01 Mar 2017 11:54:11 -0800 (PST)
+Received: by 10.202.71.200 with SMTP id u191msoia;
+        Wed, 1 Mar 2017 10:43:24 -0800 (PST)
+X-Received: by 10.13.252.194 with SMTP id m185mr3021381ywf.145.1488393804443;
+        Wed, 01 Mar 2017 10:43:24 -0800 (PST)
+Return-Path: <mark.rutland@arm.com>
+Received: from foss.arm.com (foss.arm.com. [217.140.101.70])
+        by gmr-mx.google.com with ESMTP id c123si912997pfa.4.2017.03.01.10.43.24
+        for <outreachy-kernel@googlegroups.com>;
+        Wed, 01 Mar 2017 10:43:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of mark.rutland@arm.com designates 217.140.101.70 as permitted sender) client-ip=217.140.101.70;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=f7AaYOXx;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x643.google.com with SMTP id s1so11756007plp.9
-        for <outreachy-kernel@googlegroups.com>; Tue, 19 Feb 2019 23:28:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=HxibILbJEhD00IPWn1pKe7wGi7oOLNK4WQH5+UokoWI=;
-        b=f7AaYOXxfPlEZSJIMQHLKhlkbXYz/Dnp0ePh4aBOUcnYEsmRA5MGWOxnSkybuLppf9
-         Aq+Wa/WpiEBsjzE1psRNivTfIKx77DDatnUkDtG0pfvThc/vJiwGx0yjjaFRicsavBIn
-         5tA8mL7DPRr4udvFOIA8i8Ujmn/93+Gzr2aHjXyGhW+uHKAnzgc6nk6HT9vY4E3sunu+
-         A709jT8FmMWIgOQ/iOdujQFwaStq5NdR8icUHUxoihdLqg0/FuG7DY6bLdpwRwOOenf/
-         eBZRP4OSLOpZvHqHrQPi8PVFj6AI3Z1cgHh1iB2W/R9psbHlUmjrBAF5ATI2HnSfDGQ2
-         3jsw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=HxibILbJEhD00IPWn1pKe7wGi7oOLNK4WQH5+UokoWI=;
-        b=PdAQp67ySD4QIj8zAUlbPmjmbVt2cJcoaAbQKOKwCM9QDPUH8EMdy60aXKR+x+C6zj
-         7e576RYu5jlA5Y1zCQ8VaG0TcoHrNBERNtksp4Zb7g7pVKoZz2wu43/34q+k5kHZSX5M
-         cbesYbmgSwNr44ud0TYRRZks0fQhKB0Bnrc9N2ZhXDC8pSgkhlTZVIaeLPWIcmHEcBQt
-         1cKbigcy0XCK5ScvXWt6b/5NqctdQTNmKrAuZgvoapN199/610lMkiNs5skoxDSE6Njz
-         zGYhfDXcd6Ltj5H33OLCKqZ57YksNkmfQKAO4TmT6K9ZcL1zo4Z9TPy/Wb0yx2Wkcult
-         AZBA==
-X-Gm-Message-State: AHQUAuY/N0Kn5UOgfwvGY6E++P+Lc7D0sVc7LZUec9GsmUIUuq1B5Ti4
-	32v5nNcjj3yQuJiTlD+xv46xQNP5CeM=
-X-Received: by 2002:a17:902:e789:: with SMTP id cp9mr23926956plb.127.1550647703214;
-        Tue, 19 Feb 2019 23:28:23 -0800 (PST)
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from bhanusree-MacBookAir ([183.83.84.116])
-        by smtp.gmail.com with ESMTPSA id 23sm19149094pft.187.2019.02.19.23.28.22
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Feb 2019 23:28:22 -0800 (PST)
-Date: Wed, 20 Feb 2019 12:58:20 +0530
-From: Bhanusree Pola <bhanusreemahesh@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 1/2] Staging: rtl8192e: Replace license text with SPDX
- identifier
-Message-ID: <20190220072820.GA21168@bhanusree-MacBookAir>
+       spf=pass (google.com: domain of mark.rutland@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=mark.rutland@arm.com
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id ED8A9C28;
+	Wed,  1 Mar 2017 10:43:23 -0800 (PST)
+Received: from leverpostej (usa-sjc-imap-foss1.foss.arm.com [10.72.51.249])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id DF6CB3F575;
+	Wed,  1 Mar 2017 10:43:21 -0800 (PST)
+Date: Wed, 1 Mar 2017 18:43:13 +0000
+From: Mark Rutland <mark.rutland@arm.com>
+To: Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>
+Cc: Arnd Bergmann <arnd@arndb.de>, arm@kernel.org,
+	linux-arm-kernel@lists.infradead.org, mp-cs@actions-semi.com,
+	96boards@ucrobotics.com, support@lemaker.org,
+	linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+	Russell King <linux@armlinux.org.uk>, devicetree@vger.kernel.org,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v3 11/25] ARM: dts: Add Actions Semi S500 and LeMaker
+ Guitar
+Message-ID: <20170301184313.GO28874@leverpostej>
+References: <20170228063535.32069-1-afaerber@suse.de>
+ <20170228063535.32069-12-afaerber@suse.de>
+ <20170228123245.GF3691@leverpostej>
+ <11053e03-8e28-e93d-f1f6-2589a9f7800c@suse.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <11053e03-8e28-e93d-f1f6-2589a9f7800c@suse.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-- adds the SPDX GPL-2.0 license identifier which solves the checkpatch.pl warning
-- Removed license boilerplate text
-- Issue found with checkpatch.pl warning:
-  "WARNING: Missing or malformed SPDX-License-Identifier tag in line 1"
+On Tue, Feb 28, 2017 at 04:13:00PM +0100, Andreas Färber wrote:
+> Am 28.02.2017 um 13:32 schrieb Mark Rutland:
+> > On Tue, Feb 28, 2017 at 07:35:21AM +0100, Andreas Färber wrote:
 
-Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
----
- drivers/staging/rtl8192e/dot11d.h | 17 +++--------------
- 1 file changed, 3 insertions(+), 14 deletions(-)
+> >> +#include "skeleton.dtsi"
+> > 
+> > Please don't include skeleton.dtsi.
+> 
+> Wasn't aware that was permissible. I now see it has been updated with a
+> textual comment, which predates my past uses of skeleton.dtsi - for
+> other pending work such as FM4 and XMC4500 I only noticed it was moved
+> out of armv7m.dtsi so that dtc started spewing scary messages. ;)
+> 
+> A #warning might be a more effective way to make people aware of its
+> deprecation - but sadly we have users that predate #include:
+> 
+> $ git grep /include/ -- arch/arm/boot/dts/ | grep skeleton.dtsi | wc --lines
+> 32
+> $ git grep /include/ -- arch/arm/boot/dts/ | grep skeleton64.dtsi | wc
+> --lines
+> 0
+> $ git grep skeleton -- arch/arm/boot/dts/ | wc --lines
+> 117
 
-diff --git a/drivers/staging/rtl8192e/dot11d.h b/drivers/staging/rtl8192e/dot11d.h
-index 0637de1cca47..44f11f629922 100644
---- a/drivers/staging/rtl8192e/dot11d.h
-+++ b/drivers/staging/rtl8192e/dot11d.h
-@@ -1,17 +1,6 @@
--/******************************************************************************
-- * Copyright(c) 2008 - 2010 Realtek Corporation. All rights reserved.
-- *
-- * This program is distributed in the hope that it will be useful, but WITHOUT
-- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-- * more details.
-- *
-- * The full GNU General Public License is included in this distribution in the
-- * file called LICENSE.
-- *
-- * Contact Information:
-- * wlanfae <wlanfae@realtek.com>
-- ******************************************************************************/
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/* Copyright(c) 2008 - 2010 Realtek Corporation. All rights reserved. */
-+
- #ifndef __INC_DOT11D_H
- #define __INC_DOT11D_H
- 
--- 
-2.17.1
+I deliberately didn't go that route, since people would blindly fix up
+the warning and mess it up (e.g. forgetting to add the required nodes).
 
+While it should be avoided for new dts, it's largely not problematic for
+old dts, and we can fix those up at our leisure.
+
+> > Please add the relevant nodes and
+> > properties explciitly to your dts{i,} files.
+> 
+> Great, will do.
+> 
+> But this series has grown too large to resend just for such nits. Is
+> there a chance we can get initial patches queued on some arm-soc
+> for-next branch soonish? It seems -rc1 pulls were merged 5 days ago?
+
+There seem to be other comments on this series, and I was under the
+impression that arm-soc generally pulled branches.
+
+Even if you're not going to repost, surely you can fold in the fixup
+before sending the pull request?
+
+Thanks,
+Mark.
 
