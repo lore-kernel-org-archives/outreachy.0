@@ -1,53 +1,53 @@
 X-GM-THRID: 6392511932367110144
-X-Received: by 10.46.33.82 with SMTP id h79mr1042100ljh.7.1488372747347;
-        Wed, 01 Mar 2017 04:52:27 -0800 (PST)
+X-Received: by 10.25.223.67 with SMTP id q3mr883111lfj.1.1488372706614;
+        Wed, 01 Mar 2017 04:51:46 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.76.9 with SMTP id z9ls416529lja.26.gmail; Wed, 01 Mar 2017
- 04:52:26 -0800 (PST)
-X-Received: by 10.25.79.23 with SMTP id d23mr887865lfb.27.1488372746890;
-        Wed, 01 Mar 2017 04:52:26 -0800 (PST)
+Received: by 10.46.69.198 with SMTP id s189ls419909lja.6.gmail; Wed, 01 Mar
+ 2017 04:51:46 -0800 (PST)
+X-Received: by 10.25.157.14 with SMTP id g14mr880089lfe.28.1488372705890;
+        Wed, 01 Mar 2017 04:51:45 -0800 (PST)
 Return-Path: <narcisaanamaria12@gmail.com>
-Received: from mail-wr0-x243.google.com (mail-wr0-x243.google.com. [2a00:1450:400c:c0c::243])
-        by gmr-mx.google.com with ESMTPS id h198si484709wmg.1.2017.03.01.04.52.26
+Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
+        by gmr-mx.google.com with ESMTPS id h198si484557wmg.1.2017.03.01.04.51.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 01 Mar 2017 04:52:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) client-ip=2a00:1450:400c:c0c::243;
+        Wed, 01 Mar 2017 04:51:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) smtp.mailfrom=narcisaanamaria12@gmail.com;
+       spf=pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=narcisaanamaria12@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x243.google.com with SMTP id u108so1448953wrb.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 01 Mar 2017 04:52:26 -0800 (PST)
+Received: by mail-wm0-x243.google.com with SMTP id m70so7178270wma.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 01 Mar 2017 04:51:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=QyvADLPMpaGlWtBmz6zItueiDJV1SbZWTaX7T0MxqJ4=;
-        b=tOtXwkF68QLJmHKFzKg2xEgjd6eVuC8ecvQVAXcRM9yAdU2tsnBCikd9VckP6F/r/u
-         LknEsAbW5KMYxAD85ZY8RLFs64hs1u6afqcxNAv0h4to6fFOyWtvQyfEumCRi1kKWTTL
-         XTTn7nnEL6DB82RU0sDShbCq1no0zsyGc2D2pK+gtE7IqOHgzpjJtmfUdPg/WzH+QmnQ
-         2wcaZOOBMV0s6eUqbo2aEs8Nsq5eBNPo/TCoCwCZWHhlbWyKIlmN5CkTFqmhztOpkNPK
-         LhZsFQklQb6oAeJSkLQNwwcTb4Sh3/rU4ZanyySI1Xpud/P3yqMD9dMl8i4UYDxQRGrj
-         FRAg==
+        bh=3oU4Bq8qAjEwXjnvH8kQB3ZCIrEgNLBi6J/jQKrIUiM=;
+        b=ORKzFGKGgk91ShM198Fh4ySRE6vOg6MQgWaMkECgPX4TiyAajK5HwE30fkysQoxGUT
+         Fyh6MtgPHupLS4MeAJLnsrl7zC/JC5NyV3jx1GH+431ZT3l/SnEW1hjmZuipzurv6aGF
+         W4kpf4Nb12Ljj1fK6bru/iTCBf4UN+7h9YtaZJUGG7pLPai3Qdw7vG/WuJ43nPk1oTP2
+         GtMoaMNznC7eCYrU7JWKYDGOTLQl+o6pzS04IuJE7oMK/18NbgvkY1wlYqXssUmAyNG7
+         PS7m0zJzgVK2j73yV/KerNj0qvlx/CRgiuFxb0MPFwm/4PzIhguy+f7j8y+NOqHUy4dU
+         qelQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=QyvADLPMpaGlWtBmz6zItueiDJV1SbZWTaX7T0MxqJ4=;
-        b=VU9EmLKLQp1p1yLMqQyNWTGglQSQ9T//gcCPUbilZk161ZjEY0Nb7fd23vwrBiCFst
-         QtCSSqIAcuV5etFRegdGys8xqg2Xg6hq6jvgywlTVN+Ah0T8/Jcv6BS1eE+4dT150o1B
-         oT5rofJ5v/lZtvO9t7k4GAwYbustJCTYviJIATC3Y2aiTsjwMeJ+Rv8TI+iEran3Ocqm
-         w6YCQjEz1Cv3gnVmVYju6C7Zppuq8igI2Q3HoEYbm4dHzFbpvZ8ZwG68loZOBc3phakr
-         OhZd4soMrakTVp0w74ddq3LDJf/ohvQ2RwhIyRI0LCNd+IRbTG7gOxZha3ucpk/eTYdx
-         TrEg==
-X-Gm-Message-State: AMke39l/f8fsrjaOWBZ5J2JeY9OvI0FflBCF/GrSxRZAnleWj3MHyueiOVV83OdcisK04Q==
-X-Received: by 10.223.166.5 with SMTP id k5mr6721706wrc.134.1488372746660;
-        Wed, 01 Mar 2017 04:52:26 -0800 (PST)
+        bh=3oU4Bq8qAjEwXjnvH8kQB3ZCIrEgNLBi6J/jQKrIUiM=;
+        b=gNeJmS9niO8JNEpORpLBIXwdbSJnX0Y1Ktyn+wJut1zvX7lYx3PAEuL9YY2IYuRv1j
+         NDQbTzLB6tagzk+xyjMBJxGoyEkTgORH5DewR2JSD0OPW4h+j3qsR6GQIM7RjLeDVzB1
+         DL639BbCBcEoc5aheX1R3G8VAukyHQbjLQAmm3tQEB5tvjPjQvwzDTi5K1NL6RvWh4pQ
+         BS/3fY2WjWXggcokDGjfZ6Optz6DK6OS3IMgeU4brMf7NwEA3sDrpBLgbfx2i20ng8x2
+         0Gg3f5FbIRBni+QgFnocDuUwreVgDrvZp0y5Fp4YWqKSevyOxY7zdublyrdibFpor030
+         +9LA==
+X-Gm-Message-State: AMke39lPQ73D8rvRqTS5tlwD/kyu6ZZLT0bDLZTI8KF9Vsdo6PF8KEYm8wyvwU6iK9WhbQ==
+X-Received: by 10.28.137.203 with SMTP id l194mr3270431wmd.63.1488372705675;
+        Wed, 01 Mar 2017 04:51:45 -0800 (PST)
 Return-Path: <narcisaanamaria12@gmail.com>
 Received: from localhost.localdomain (p22.eregie.pub.ro. [141.85.0.122])
-        by smtp.gmail.com with ESMTPSA id w30sm6505001wrb.5.2017.03.01.04.52.25
+        by smtp.gmail.com with ESMTPSA id y65sm22705630wmb.5.2017.03.01.04.51.44
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 01 Mar 2017 04:52:26 -0800 (PST)
+        Wed, 01 Mar 2017 04:51:45 -0800 (PST)
 From: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
 To: swarren@wwwdotorg.org,
 	lee@kernel.org,
@@ -58,53 +58,58 @@ To: swarren@wwwdotorg.org,
 	sbranden@broadcom.com
 Cc: outreachy-kernel@googlegroups.com,
 	Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
-Subject: [PATCH 2/2] staging: vc04_services: bcm2835-camera: Remove unnecessary variable
-Date: Wed,  1 Mar 2017 14:52:15 +0200
-Message-Id: <c49c187ff219c61323b25f01ab3f051950ae507a.1488371940.git.narcisaanamaria12@gmail.com>
+Subject: [PATCH 1/2] staging: vc04_services: bcm2835-camera: Remove unnecessary else instruction
+Date: Wed,  1 Mar 2017 14:51:37 +0200
+Message-Id: <ff2d51e7327a03defd26b7d3561eb2c154a2fa0c.1488371940.git.narcisaanamaria12@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <cover.1488371940.git.narcisaanamaria12@gmail.com>
 References: <cover.1488371940.git.narcisaanamaria12@gmail.com>
 
-Instead of using the ret variable, return 0 directly
+Initialize the variable shutter_speed to avoid unnecessary else branch
 
 Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
 ---
- drivers/staging/vc04_services/bcm2835-camera/controls.c | 12 +++++-------
- 1 file changed, 5 insertions(+), 7 deletions(-)
+ drivers/staging/vc04_services/bcm2835-camera/controls.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/staging/vc04_services/bcm2835-camera/controls.c b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-index dcd5bec..e25f1c9 100644
+index 9c0667e..dcd5bec 100644
 --- a/drivers/staging/vc04_services/bcm2835-camera/controls.c
 +++ b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-@@ -609,18 +609,16 @@ static int ctrl_set_bitrate(struct bm2835_mmal_dev *dev,
- 			    struct v4l2_ctrl *ctrl,
- 			    const struct bm2835_mmal_v4l2_ctrl *mmal_ctrl)
+@@ -798,7 +798,7 @@ static int ctrl_set_scene_mode(struct bm2835_mmal_dev *dev,
+ 			       const struct bm2835_mmal_v4l2_ctrl *mmal_ctrl)
  {
--	int ret;
- 	struct vchiq_mmal_port *encoder_out;
+ 	int ret = 0;
+-	int shutter_speed;
++	int shutter_speed = 0;
+ 	struct vchiq_mmal_port *control;
  
- 	dev->capture.encode_bitrate = ctrl->val;
+ 	v4l2_dbg(0, bcm2835_v4l2_debug, &dev->v4l2_dev,
+@@ -815,8 +815,6 @@ static int ctrl_set_scene_mode(struct bm2835_mmal_dev *dev,
  
- 	encoder_out = &dev->component[MMAL_COMPONENT_VIDEO_ENCODE]->output[0];
+ 		if (dev->exposure_mode_user == MMAL_PARAM_EXPOSUREMODE_OFF)
+ 			shutter_speed = dev->manual_shutter_speed;
+-		else
+-			shutter_speed = 0;
  
--	ret = vchiq_mmal_port_parameter_set(dev->instance, encoder_out,
--					    mmal_ctrl->mmal_id,
--					    &ctrl->val, sizeof(ctrl->val));
--	ret = 0;
--	return ret;
-+	vchiq_mmal_port_parameter_set(dev->instance, encoder_out,
-+				      mmal_ctrl->mmal_id,
-+				      &ctrl->val, sizeof(ctrl->val));
-+	return 0;
- }
+ 		v4l2_dbg(0, bcm2835_v4l2_debug, &dev->v4l2_dev,
+ 			 "%s: scene mode none: shut_speed %d, exp_mode %d, metering %d\n",
+@@ -843,7 +841,7 @@ static int ctrl_set_scene_mode(struct bm2835_mmal_dev *dev,
+ 		/* Set up scene mode */
+ 		int i;
+ 		const struct v4l2_mmal_scene_config *scene = NULL;
+-		int shutter_speed;
++		int shutter_speed = 0;
+ 		enum mmal_parameter_exposuremode exposure_mode;
+ 		enum mmal_parameter_exposuremeteringmode metering_mode;
  
- static int ctrl_set_bitrate_mode(struct bm2835_mmal_dev *dev,
-@@ -862,7 +860,7 @@ static int ctrl_set_scene_mode(struct bm2835_mmal_dev *dev,
+@@ -864,8 +862,7 @@ static int ctrl_set_scene_mode(struct bm2835_mmal_dev *dev,
  
  		if (scene->exposure_mode == MMAL_PARAM_EXPOSUREMODE_OFF)
  			shutter_speed = dev->manual_shutter_speed;
--		
-+
+-		else
+-			shutter_speed = 0;
++		
  		exposure_mode = scene->exposure_mode;
  		metering_mode = scene->metering_mode;
  
