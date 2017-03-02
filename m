@@ -1,84 +1,138 @@
 X-GM-THRID: 6392997475785900032
-X-Received: by 10.107.139.139 with SMTP id n133mr5523008iod.100.1488491011027;
-        Thu, 02 Mar 2017 13:43:31 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.54.152 with SMTP id h24ls8637412otc.30.gmail; Thu, 02 Mar
- 2017 13:43:30 -0800 (PST)
-X-Received: by 10.200.33.233 with SMTP id 38mr4705240qtz.87.1488491010356;
-        Thu, 02 Mar 2017 13:43:30 -0800 (PST)
-Return-Path: <joe@perches.com>
-Received: from smtprelay.hostedemail.com (smtprelay0023.hostedemail.com. [216.40.44.23])
-        by gmr-mx.google.com with ESMTPS id f73si80096ita.1.2017.03.02.13.43.30
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 13:43:30 -0800 (PST)
-Received-SPF: neutral (google.com: 216.40.44.23 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.23;
-Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 216.40.44.23 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
-	by smtprelay04.hostedemail.com (Postfix) with ESMTP id C14E53520A6;
-	Thu,  2 Mar 2017 21:43:29 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,:::::::::::::::::,RULES_HIT:41:355:379:541:599:973:982:988:989:1260:1277:1311:1313:1314:1345:1359:1373:1437:1515:1516:1518:1534:1539:1593:1594:1711:1730:1747:1777:1792:2393:2559:2562:2828:2915:3138:3139:3140:3141:3142:3352:3622:3865:3867:3873:4321:4605:5007:6119:10004:10400:10848:11026:11232:11657:11658:11914:12043:12296:12438:12740:12760:12895:13069:13255:13311:13357:13439:14659:14721:21080:21434:30054:30091,0,RBL:none,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:fn,MSBL:0,DNSBL:none,Custom_rules:0:0:0,LFtime:2,LUA_SUMMARY:none
-X-HE-Tag: pets14_1219ce699659
-X-Filterd-Recvd-Size: 1839
-Received: from XPS-9350 (unknown [47.151.132.55])
-	(Authenticated sender: joe@perches.com)
-	by omf10.hostedemail.com (Postfix) with ESMTPA;
-	Thu,  2 Mar 2017 21:43:27 +0000 (UTC)
-Message-ID: <1488491006.2179.14.camel@perches.com>
-Subject: Re: [PATCH 3/5] staging: lustre: lustre: Remove unnecessary cast on
- void pointer
-From: Joe Perches <joe@perches.com>
-To: simran singhal <singhalsimran0@gmail.com>, Larry.Finger@lwfinger.net
-Cc: florian.c.schilhabel@googlemail.com, gregkh@linuxfoundation.org, 
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- oleg.drokin@intel.com,  marvin24@gmx.de, outreachy-kernel@googlegroups.com
-Date: Thu, 02 Mar 2017 13:43:26 -0800
-In-Reply-To: <1488489544-25941-3-git-send-email-singhalsimran0@gmail.com>
-References: <1488489544-25941-1-git-send-email-singhalsimran0@gmail.com>
-	 <1488489544-25941-3-git-send-email-singhalsimran0@gmail.com>
-Content-Type: text/plain; charset="ISO-8859-1"
-X-Mailer: Evolution 3.22.3-0ubuntu0.1 
-Mime-Version: 1.0
+Date: Thu, 2 Mar 2017 13:21:18 -0800 (PST)
+From: SIMRAN SINGHAL <singhalsimran0@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: marvin24@gmx.de, gregkh@linuxfoundation.org, ac100@lists.launchpad.net,
+	linux-tegra@vger.kernel.org, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org
+Message-Id: <49976d5d-eecd-48c0-bae9-36f14ca8a298@googlegroups.com>
+In-Reply-To: <20170302201511.GA5080@singhal-Inspiron-5558>
+References: <20170302201511.GA5080@singhal-Inspiron-5558>
+Subject: Re: [PATCH] staging: nvec: Remove unnecessary cast on void pointer
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_1595_357217965.1488489678597"
+X-Google-Token: EM6Z4sUFM-REjc71QeU0
+X-Google-IP: 14.139.82.6
+
+------=_Part_1595_357217965.1488489678597
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1596_314395313.1488489678597"
+
+------=_Part_1596_314395313.1488489678597
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 
-On Fri, 2017-03-03 at 02:49 +0530, simran singhal wrote:
-> The following Coccinelle script was used to detect this:
-> @r@
-> expression x;
-> void* e;
-> type T;
-> identifier f;
-> @@
-> (
->   *((T *)e)
-> > 
-> 
->   ((T *)x)[...]
-> > 
-> 
->   ((T*)x)->f
-> > 
-> 
-> - (T*)
->   e
-> )
+Please ignore this patch.
+I have send this again as a part of patch series.
 
-NAK.
+On Friday, March 3, 2017 at 1:45:17 AM UTC+5:30, SIMRAN SINGHAL wrote:
+>
+> The following Coccinelle script was used to detect this: 
+>
+> @r@ 
+> expression x; 
+> void* e; 
+> type T; 
+> identifier f; 
+> @@ 
+> ( 
+>   *((T *)e) 
+> | 
+>   ((T *)x)[...] 
+> | 
+>   ((T*)x)->f 
+> | 
+> - (T*) 
+>   e 
+> ) 
+>
+> Signed-off-by: simran singhal <singhalsimran0@gmail.com> 
+> --- 
+>  drivers/staging/nvec/nvec_kbd.c | 2 +- 
+>  1 file changed, 1 insertion(+), 1 deletion(-) 
+>
+> diff --git a/drivers/staging/nvec/nvec_kbd.c 
+> b/drivers/staging/nvec/nvec_kbd.c 
+> index e881e6b..a01f486 100644 
+> --- a/drivers/staging/nvec/nvec_kbd.c 
+> +++ b/drivers/staging/nvec/nvec_kbd.c 
+> @@ -58,7 +58,7 @@ static int nvec_keys_notifier(struct notifier_block *nb, 
+>                                unsigned long event_type, void *data) 
+>  { 
+>          int code, state; 
+> -        unsigned char *msg = (unsigned char *)data; 
+> +        unsigned char *msg = data; 
+>   
+>          if (event_type == NVEC_KB_EVT) { 
+>                  int _size = (msg[0] & (3 << 5)) >> 5; 
+> -- 
+> 2.7.4 
+>
+>
+------=_Part_1596_314395313.1488489678597
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-Nice, but you still have to verify correctness
-before submitting these patches.
+<div dir=3D"ltr">Please ignore this patch.<div>I have send this again as a =
+part of patch series.<br><br>On Friday, March 3, 2017 at 1:45:17 AM UTC+5:3=
+0, SIMRAN SINGHAL wrote:<blockquote class=3D"gmail_quote" style=3D"margin: =
+0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">The fo=
+llowing Coccinelle script was used to detect this:
+<br>
+<br>@r@
+<br>expression x;
+<br>void* e;
+<br>type T;
+<br>identifier f;
+<br>@@
+<br>(
+<br>=C2=A0 *((T *)e)
+<br>|
+<br>=C2=A0 ((T *)x)[...]
+<br>|
+<br>=C2=A0 ((T*)x)-&gt;f
+<br>|
+<br>- (T*)
+<br>=C2=A0 e
+<br>)
+<br>
+<br>Signed-off-by: simran singhal &lt;<a href=3D"mailto:singhalsimran0@gmai=
+l.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;m=
+ailto:singhalsimran0@gmail.com&#39;;return true;" onclick=3D"this.href=3D&#=
+39;mailto:singhalsimran0@gmail.com&#39;;return true;">singhalsimran0@gmail.=
+com</a>&gt;
+<br>---
+<br>=C2=A0drivers/staging/nvec/nvec_<wbr>kbd.c | 2 +-
+<br>=C2=A01 file changed, 1 insertion(+), 1 deletion(-)
+<br>
+<br>diff --git a/drivers/staging/nvec/nvec_<wbr>kbd.c b/drivers/staging/nve=
+c/nvec_<wbr>kbd.c
+<br>index e881e6b..a01f486 100644
+<br>--- a/drivers/staging/nvec/nvec_<wbr>kbd.c
+<br>+++ b/drivers/staging/nvec/nvec_<wbr>kbd.c
+<br>@@ -58,7 +58,7 @@ static int nvec_keys_notifier(struct notifier_block *=
+nb,
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 =C2=A0 =C2=A0 =C2=A0unsigned long event_type, void *data)
+<br>=C2=A0{
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0int code, state;
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0unsigned char *msg =3D=
+ (unsigned char *)data;
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0unsigned char *msg =3D=
+ data;
+<br>=C2=A0
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (event_type =
+=3D=3D NVEC_KB_EVT) {
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0int _size =3D (msg[0] &amp; (3 &lt;&lt; 5)=
+) &gt;&gt; 5;
+<br>--=20
+<br>2.7.4
+<br>
+<br></blockquote></div></div>
+------=_Part_1596_314395313.1488489678597--
 
-> diff --git a/drivers/staging/lustre/lustre/mgc/mgc_request.c b/drivers/staging/lustre/lustre/mgc/mgc_request.c
-[]
-> @@ -1034,7 +1034,7 @@ static int mgc_set_info_async(const struct lu_env *env, struct obd_export *exp,
->  		rc = sptlrpc_parse_flavor(val, &flvr);
->  		if (rc) {
->  			CERROR("invalid sptlrpc flavor %s to MGS\n",
-> -			       (char *)val);
-> +			       val);
-
-Try compiling this.
-
+------=_Part_1595_357217965.1488489678597--
 
