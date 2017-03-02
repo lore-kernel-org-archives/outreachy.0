@@ -1,94 +1,89 @@
 X-GM-THRID: 6392947471116402688
-X-Received: by 10.36.70.212 with SMTP id j203mr2187386itb.16.1488477338160;
-        Thu, 02 Mar 2017 09:55:38 -0800 (PST)
+X-Received: by 10.46.87.27 with SMTP id l27mr2108562ljb.28.1488474900439;
+        Thu, 02 Mar 2017 09:15:00 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.63.218 with SMTP id i26ls7528490ote.48.gmail; Thu, 02 Mar
- 2017 09:55:37 -0800 (PST)
-X-Received: by 10.157.12.36 with SMTP id 33mr5389651otr.68.1488477337753;
-        Thu, 02 Mar 2017 09:55:37 -0800 (PST)
-Return-Path: <aishpant@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id 2si919261pfz.1.2017.03.02.09.55.37
+Received: by 10.46.0.221 with SMTP id e90ls426815lji.30.gmail; Thu, 02 Mar
+ 2017 09:14:58 -0800 (PST)
+X-Received: by 10.25.204.21 with SMTP id c21mr1826312lfg.19.1488474898943;
+        Thu, 02 Mar 2017 09:14:58 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 14si836274wmn.2.2017.03.02.09.14.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 09:55:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Thu, 02 Mar 2017 09:14:58 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id x66so7361466pfb.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 09:55:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=DDNdcAto3ULz1EFwlRgSem/KgzIS/4MwZBrF3FjI3ew=;
-        b=ozqdo2HlRamskGvyA7w3skcspiZev3qXrY9i5rZl7mN2IyhwA8sB4YRneVjxLjmqcy
-         q9dJUc9hpbIqVUcQd3iGbgMFkqfsU7evAr6eNTQZHA47jTLe83f/t5wytlYW/WaItPbX
-         Id+kdfTd/BGIzDQ9t62bTs2ZBozD70p5BdLhv5rj0FyJjzsbiFyq5G1LsdTwEUlPxJyA
-         ZXgV+8ai/gnDhE5wUQ0T5wdT/W4Mx3CcTBdzceHSwSKMH90KpuAy1iGtuZabme2BnKTU
-         eWPIrjX2392jNJY7qfiQtsjbU8S2/aEY+S8swQ7TITxEYe4cpimlQc0bP3OVYxNOseGc
-         OR5Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=DDNdcAto3ULz1EFwlRgSem/KgzIS/4MwZBrF3FjI3ew=;
-        b=fLQ1elpuzy3wsT9Z9jEMOnbwmz2CFf/ybNgq79U3vXdylHbaBMbI4VeM+DfyZvQ11C
-         VHEvTsD4+HZWjpX14SMxDiiev2pssUNOCihPFRhE7L3G1VRfKQe761odXRSHIPLZ42Hw
-         ABgFYcYQ9mZkLxAkjq2E4BYn9KRmBAy+h7T1EFjoDrwcaaSNTGKUuFjzkgGqszIzXPKo
-         bUWCq9o4A6Gyl73tfAee1/W4TlRF1aayjmgXDT/LjCXsKeNw/muo3OCEIIVlYxnTBq31
-         9sB/Ef1Zd8eWDIxfmKMajoJhZ527rpF/iw/dSe2jT1zWRZAIii3vO9h9x9nce8eyKCgv
-         wnkQ==
-X-Gm-Message-State: AMke39m9CzLA2BoL0R4oyr1THwVzYXHCcFCyuCxzll0mienX/DJD0GQxcbeLqOYDlQIY2w==
-X-Received: by 10.84.199.170 with SMTP id r39mr15395342pld.144.1488477337501;
-        Thu, 02 Mar 2017 09:55:37 -0800 (PST)
-Return-Path: <aishpant@gmail.com>
-Received: from aishwarya ([49.248.235.76])
-        by smtp.gmail.com with ESMTPSA id e70sm5445331pfh.84.2017.03.02.09.55.33
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 09:55:36 -0800 (PST)
-Date: Thu, 2 Mar 2017 23:25:31 +0530
-From: Aishwarya Pant <aishpant@gmail.com>
-To: Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>,
-	Eric Anholt <eric@anholt.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	bcm-kernel-feedback-list@broadcom.com
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3 0/5] staging: bcm2835-audio: fix multiple checkpatch
- warnings
-Message-ID: <cover.1488477174.git.aishpant@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,232,1484002800"; 
+   d="scan'208";a="215355110"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 02 Mar 2017 18:14:58 +0100
+Date: Thu, 2 Mar 2017 18:14:48 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Aishwarya Pant <aishpant@gmail.com>
+cc: Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>, 
+    Eric Anholt <eric@anholt.net>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, 
+    Scott Branden <sbranden@broadcom.com>, 
+    bcm-kernel-feedback-list@broadcom.com, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2 5/5] staging: bcm2835-camera:
+ replace printk(KERN_ERR) with pr_err
+In-Reply-To: <2bc758017cfeb61511404784716e44f3fe689101.1488473946.git.aishpant@gmail.com>
+Message-ID: <alpine.DEB.2.20.1703021809120.3414@hadrien>
+References: <cover.1488473946.git.aishpant@gmail.com> <2bc758017cfeb61511404784716e44f3fe689101.1488473946.git.aishpant@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-Fix multiple code styling warnings issued by checkpatch on file 
-bcm2835-ctl.c in bcm2835-audio driver 
+On Thu, 2 Mar 2017, Aishwarya Pant wrote:
 
-Changes in v3:
-	-Merge two if conditions
-	-Fix subject of patch replace printk(... by dev_err(...
-Changes in v2: 
-        -Replace pr_err with dev_err 
+> Fix checkpatch warning: pr_err(...  to printk(KERN_ERR ...
+> For newer drivers, the convention for printing kernel messages is to use
+> dev_* (if device information is available) or pr_* family of macros
 
-Aishwarya Pant (5):
-*** HERE ***
-  staging: bcm2835-camera: fix no space is necessary after a cast
-    warning
-  staging: bcm2835-camera: Logical continuations should be on the
-    previous     line
-  staging: bcm2835-camera: fix block comment formatting
-  staging: bcm2835-camera: remove extra blank line
-  staging: bcm2835-camera: replace printk(KERN_ERR) with dev_err
+This could be more concise as "Use dev_err(... rather than printk(KERN_ERR
+... Problem found by checkpatch.".
 
- .../vc04_services/bcm2835-audio/bcm2835-ctl.c      | 23 ++++++++++------------
- 1 file changed, 10 insertions(+), 13 deletions(-)
+The subject line is no longer correct.
 
--- 
-2.7.4
+>
+> Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
+> ---
+> Changes in v2:
+> 	-Prefer dev_err to pr_err where device information is available
+>
+>  drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
+> index 46814fd..8cf7a02 100644
+> --- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
+> +++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
+> @@ -141,7 +141,7 @@ static int snd_bcm2835_ctl_put(struct snd_kcontrol *kcontrol,
+>
+>  	if (changed) {
+>  		if (bcm2835_audio_set_ctls(chip))
+> -			printk(KERN_ERR "Failed to set ALSA controls..\n");
+> +			dev_err(chip->card->dev, "Failed to set ALSA controls..\n");
+>  	}
 
+If you merge the conditional tests using &&, then you can get rid of the
+braces and the whole dev_err call will fit within 80 characters.
+
+julia
+
+>  unlock:
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/2bc758017cfeb61511404784716e44f3fe689101.1488473946.git.aishpant%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
