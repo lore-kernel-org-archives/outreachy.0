@@ -1,82 +1,104 @@
 X-GM-THRID: 6392991510876389376
-X-Received: by 10.25.79.23 with SMTP id d23mr613463lfb.27.1488565435625;
-        Fri, 03 Mar 2017 10:23:55 -0800 (PST)
+X-Received: by 10.129.159.11 with SMTP id w11mr5521732ywg.130.1488484352187;
+        Thu, 02 Mar 2017 11:52:32 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.14.1 with SMTP id 1ls1111698ljo.45.gmail; Fri, 03 Mar 2017
- 10:23:54 -0800 (PST)
-X-Received: by 10.25.160.141 with SMTP id j135mr271534lfe.18.1488565434521;
-        Fri, 03 Mar 2017 10:23:54 -0800 (PST)
+Received: by 10.157.22.129 with SMTP id c1ls8841197ote.14.gmail; Thu, 02 Mar
+ 2017 11:52:31 -0800 (PST)
+X-Received: by 10.157.9.238 with SMTP id 43mr5267002otz.140.1488484351773;
+        Thu, 02 Mar 2017 11:52:31 -0800 (PST)
 Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-lf0-x235.google.com (mail-lf0-x235.google.com. [2a00:1450:4010:c07::235])
-        by gmr-mx.google.com with ESMTPS id v201si233405wmv.3.2017.03.03.10.23.54
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id f7si1699120pfk.5.2017.03.02.11.52.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Mar 2017 10:23:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2a00:1450:4010:c07::235 as permitted sender) client-ip=2a00:1450:4010:c07::235;
+        Thu, 02 Mar 2017 11:52:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2a00:1450:4010:c07::235 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-lf0-x235.google.com with SMTP id k202so50940788lfe.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 03 Mar 2017 10:23:54 -0800 (PST)
+Received: by mail-pf0-x241.google.com with SMTP id e66so1971571pfe.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 11:52:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=0larVr3GiqXoJj4D9RvOPPF2oH7J0LARaQu8XoUqWKY=;
-        b=OwWakjorBKSP5he41orLtGlu2ZweGPuOmyuUadMXhcKvfj7IbOs5vu5f4qbXz96/8c
-         i8M2TzzT96g+7fj8UtGkWi2LJNCt+nEFUwEkmdtDzceHIbpxkIzzn4dqO8QOztBnvXvb
-         X99HLbEc7Cmb6kdbYJmdBywbVHV2FW43ww522+JdpJcivqXl24WXzbk3f+GGafWjBVe2
-         Y8EQ5dc/rPy2dzRbaGM5s5heDqq8HrRLnRUimActtIekcZAAObpZW/M41mNcOqoZwKHn
-         3PCvp8/cf72+71/8zfajOo8mHM8GS9hwtNERg0Yd2qsTGWSku4+B5aTfVD76+QrpnHv0
-         qwYQ==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=Eney41u3fkMQhejFlmKkB6CB1A2/nQ3gT5UrNoyrcHA=;
+        b=JPcYEnZXbOOz/X+bz5JXeJ2oEN5FFv5+d0n2pUKN/hPPovugw1nLkiGgAjg0MbgZQ5
+         FcmyKw044hNS/gOitzjR8SV5YitVsdrWLfWsq30SDI49UESTdnv8kQFNZAVpyCMEOnU/
+         X4AQGZ3mvOaLXnUi3cXL47OOE7wSaMlh5OGZGLoSs5EfCwVzNzqFLoertBWy2awLKZog
+         WBVMzfkG+44RP6s39qFDDa4JqxDO4guqHrrfzG8hEfRCkLHopIxWITCh5ntgGH6qvWxd
+         TPmfD05fFs5w+oyLj9UofYRW8cPMmEeJ9Mnv3ZN6GH1tTGcg+m7Cguku9UU4O+qUiPS+
+         +leg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=0larVr3GiqXoJj4D9RvOPPF2oH7J0LARaQu8XoUqWKY=;
-        b=qKbN0gwBSNlnJF+nx4YDfbk2iP3n9govpVoVGoCXPLC02xF8/ZAxOFxW3uppTcjeSi
-         Vmu0Xh2zS6fOKkDSlVZQ9u+Pl2zkSmnYhTRHC+rD/R5eCsQZNVUdKIGdXiHhn9i6CnHM
-         HKQu1jOpGYwqf8r9pRtGFn1BR5UhnRW5rDfqcHMDClDCyOjAt2Uk3Dz2SZCYzwV8wyDP
-         iEcajjD4q2XqRYXQzlbLNOHMiFQtOnfDFy5PmrkraMp8Y9lVME2MH3RWK/HMEi5wm9vR
-         wpQf9BRpiRb9x8TCRNvuossN9w32fapAxVRiUSP+3/f62KvppVPrTfOxxDJLm7eUQWuY
-         Qoqg==
-X-Gm-Message-State: AMke39m3UJTqRDoYB7hSICKmA+DU6NHcc4UhxPus2Lm171B5S9rDVc6AgKTLos1/qEgzDZUqMFw7aov2XsTWtg==
-X-Received: by 10.25.233.201 with SMTP id j70mr1261481lfk.20.1488565434233;
- Fri, 03 Mar 2017 10:23:54 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.25.15.39 with HTTP; Fri, 3 Mar 2017 10:23:53 -0800 (PST)
-In-Reply-To: <20170303174552.GP3220@valkosipuli.retiisi.org.uk>
-References: <1488484322-5928-1-git-send-email-singhalsimran0@gmail.com> <20170303174552.GP3220@valkosipuli.retiisi.org.uk>
-From: SIMRAN SINGHAL <singhalsimran0@gmail.com>
-Date: Fri, 3 Mar 2017 23:53:53 +0530
-Message-ID: <CALrZqyOeOK2k1K8Z2Yt3SmvJQ8A+vigNBsd39-paPwkRAY6CVQ@mail.gmail.com>
-Subject: Re: [PATCH 1/7] staging: media: Remove unnecessary typecast of c90
- int constant
-To: Sakari Ailus <sakari.ailus@iki.fi>
-Cc: mchehab@kernel.org, Greg KH <gregkh@linuxfoundation.org>, 
-	linux-media@vger.kernel.org, devel@driverdev.osuosl.org, 
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Content-Type: text/plain; charset=UTF-8
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=Eney41u3fkMQhejFlmKkB6CB1A2/nQ3gT5UrNoyrcHA=;
+        b=OdWwlX/GaSJacXryMURM4vmpVqeu6S+n6uC3YAIpGINZOUsCZyidVAJySVk2U3wJ4c
+         0NtbBN5zqNoojB3Uyzf/xKAB1o1gxW9DOHYnVZQsTLpPXuNe6Eof7BHdE1uL+ww/sG7c
+         6RXtI6IK5gbXs95GsOCa9mm/hbo+OK6XFgJ0B4l5tQ+w8upvAl0+LQme2P9iR8OuV/kJ
+         WbBawRJthBIE156d7Cih0/djvuNyYHIA1xe1RGDFcykpi8mqc5Aez93XS0XwyyVnMpUw
+         JAmaFiDw1tNpoLhTJVuK5RVlWMQHKFBoyYd7DJyNi3mFlAnXXTrU5XB9MK739v2zZj+v
+         6muQ==
+X-Gm-Message-State: AMke39mU9wjzTYGYbzj9JT0y3QOGjABR8WNI2S3eU91Yc8WfA803RTNYfGpzasbn04xc/A==
+X-Received: by 10.84.173.4 with SMTP id o4mr21501576plb.106.1488484351275;
+        Thu, 02 Mar 2017 11:52:31 -0800 (PST)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from singhal-Inspiron-5558 ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id d3sm18671840pfc.51.2017.03.02.11.52.29
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 02 Mar 2017 11:52:30 -0800 (PST)
+From: simran singhal <singhalsimran0@gmail.com>
+To: mchehab@kernel.org
+Cc: gregkh@linuxfoundation.org,
+	linux-media@vger.kernel.org,
+	devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH 7/7] staging: media: Do not use multiple blank lines
+Date: Fri,  3 Mar 2017 01:22:02 +0530
+Message-Id: <1488484322-5928-7-git-send-email-singhalsimran0@gmail.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1488484322-5928-1-git-send-email-singhalsimran0@gmail.com>
+References: <1488484322-5928-1-git-send-email-singhalsimran0@gmail.com>
 
-On Fri, Mar 3, 2017 at 11:15 PM, Sakari Ailus <sakari.ailus@iki.fi> wrote:
-> Hi Simran,
->
-> On Fri, Mar 03, 2017 at 01:21:56AM +0530, simran singhal wrote:
->> This patch removes unnecessary typecast of c90 int constant.
->>
->> WARNING: Unnecessary typecast of c90 int constant
->>
->> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
->
-> Which tree are these patches based on?
-Can you please explain what's the problem with this patch. And
-please elaborate your question.
+Remove multiple blank lines. Problem found using checkpatch.pl
+"CHECK: Please don't use multiple blank lines".
 
->
-> --
-> Regards,
->
-> Sakari Ailus
-> e-mail: sakari.ailus@iki.fi     XMPP: sailus@retiisi.org.uk
+Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+---
+ drivers/staging/media/atomisp/i2c/gc2235.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/drivers/staging/media/atomisp/i2c/gc2235.c b/drivers/staging/media/atomisp/i2c/gc2235.c
+index 40a5a2f..b97a74b 100644
+--- a/drivers/staging/media/atomisp/i2c/gc2235.c
++++ b/drivers/staging/media/atomisp/i2c/gc2235.c
+@@ -244,7 +244,6 @@ static int gc2235_g_fnumber_range(struct v4l2_subdev *sd, s32 *val)
+ 	return 0;
+ }
+ 
+-
+ static int gc2235_get_intg_factor(struct i2c_client *client,
+ 				struct camera_mipi_info *info,
+ 				const struct gc2235_resolution *res)
+@@ -388,7 +387,6 @@ static long __gc2235_set_exposure(struct v4l2_subdev *sd, int coarse_itg,
+ 	return ret;
+ }
+ 
+-
+ static int gc2235_set_exposure(struct v4l2_subdev *sd, int exposure,
+ 	int gain, int digitgain)
+ {
+@@ -909,7 +907,6 @@ static int gc2235_s_stream(struct v4l2_subdev *sd, int enable)
+ 	return ret;
+ }
+ 
+-
+ static int gc2235_s_config(struct v4l2_subdev *sd,
+ 			   int irq, void *platform_data)
+ {
+-- 
+2.7.4
+
 
