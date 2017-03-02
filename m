@@ -1,55 +1,55 @@
 X-GM-THRID: 6392947471116402688
-X-Received: by 10.13.228.196 with SMTP id n187mr5121614ywe.109.1488474140818;
-        Thu, 02 Mar 2017 09:02:20 -0800 (PST)
+X-Received: by 10.107.50.198 with SMTP id y189mr2043814ioy.81.1488474123575;
+        Thu, 02 Mar 2017 09:02:03 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.52.248 with SMTP id t53ls7818467otd.42.gmail; Thu, 02 Mar
- 2017 09:02:20 -0800 (PST)
-X-Received: by 10.157.39.22 with SMTP id r22mr5379853ota.151.1488474140405;
-        Thu, 02 Mar 2017 09:02:20 -0800 (PST)
+Received: by 10.157.27.71 with SMTP id l65ls6960303otl.41.gmail; Thu, 02 Mar
+ 2017 09:02:03 -0800 (PST)
+X-Received: by 10.13.236.204 with SMTP id v195mr5719128ywe.62.1488474123186;
+        Thu, 02 Mar 2017 09:02:03 -0800 (PST)
 Return-Path: <aishpant@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id 2si874230pfz.1.2017.03.02.09.02.20
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id f7si1596928pfk.5.2017.03.02.09.02.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 09:02:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Thu, 02 Mar 2017 09:02:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
+       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id 67so2877184pfg.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 09:02:20 -0800 (PST)
+Received: by mail-pg0-x244.google.com with SMTP id 1so9883969pgz.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 09:02:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=JvSvrJ9W7PMgqOyNSjFUvzycrMQhbH3g6bfdNh1vBZg=;
-        b=DkPojmD59HJmEoehU+hrYxjV2WKXEGf84/PJbWNCLYzKhpVHMoQlgKH6owdSL052cj
-         rbJBXozwh12WivCfdjColQ1bo+uCIrRPGR/krueemozHjMUgsX3Q6vydpUW4ibUZGuIS
-         fNa541L0bMVuFY1InEwkUyxS0ZV3EoQKXRVm4233i6vz4AKkRJ3j4GBzY7pG+ZOlF5yQ
-         AjXbjuHYarM5KL3k2TfY8ZRl3X9WTl9VKkRl63hoM1SKdmip42Wi7ROZDqcIXGiacbgV
-         IDR8plo5ii3DD8TG4v1Jk+6aUqgJuiH5b/dwa0q2lhhxkgLRHAFmQOBJCO/XHxU9RAz4
-         lCJQ==
+        bh=FGPT8evajgkRaAlIdYBQ895Evazb0K+o2K6tQLIYnhg=;
+        b=bnzL8cmTUEJ9U+NwVYw9LNzwtPBE1LCh7OenPKdB9BLew/6+6FGe1APKY8VpX1ie/j
+         qGyy8DsaczpUd0xYccAvzbu/Vm06Jr+3rat2TGTQIYsb4wMLQi7tvfElB8sYmxiOn7bs
+         croJSquNBKMUYtm/h/n9p3O33S1KoVFoNqujrXh/Ey+wxrMW9/0rXpbJNccOf1+Es/XG
+         lF9rdfWSPQ+4J0gkpGhbo1H+ggwkjN/T8Kei1c01izWu+xIozLYbOnocbMpF7hIoESNk
+         U4Dxsoan1a6VinddazDKkb5+icWZ3Ujars/7xpMwcgh9uwq7wDtb6NjAnjG5XgI/909P
+         8nAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=JvSvrJ9W7PMgqOyNSjFUvzycrMQhbH3g6bfdNh1vBZg=;
-        b=QP4K5r9irEHn9di9ctXpYA33hYCm9aLZCa6FPB7SIqYe58UcGV7Elb9cvDNyXe9cFk
-         pIKNd/2sfkyslbEfT5UIiiWAlHXqruBToneGay07ZJGsx1ZHHzHDOyr3VeFQD5pgxFrP
-         iaYUmZrAeaNEaKFk/Zo1QjyNNlBgxzOkf/4fbPhcRZDv7qvvpW1LukrlG+4wzrElvdl9
-         gmHUWuo8FuY1+xXll+l87Cjr1r+CMWgixooBXXPat2P7uMxMtS3jKrZR42Bg5ohbflue
-         LIkkBOsf66U06sDzYb+ecJWje3Ly8CWNEF1kCkxm4aK4ep6uyT+1wLMUNOL07T21P2MW
-         2bug==
-X-Gm-Message-State: AMke39n8Uix6sj5z02pJSVOMIx8PHr+MBsOgNwK7t/E7kwGeXtjeCLHC+fx8s8fWfLa+UA==
-X-Received: by 10.99.132.198 with SMTP id k189mr16676798pgd.112.1488474139949;
-        Thu, 02 Mar 2017 09:02:19 -0800 (PST)
+        bh=FGPT8evajgkRaAlIdYBQ895Evazb0K+o2K6tQLIYnhg=;
+        b=TZ5+kRW0Zw6wU99Y/6xSmwWBNFCWYrInd5r9cFZhoxIlv2PU7p69rlnILWhhGFcbJs
+         g8KT7bsy0f5LScp7jvyKQeMIGOKjJHBih9cmKJpF+IC9uPIlDP9Nyu2DDWPwdMPVl7vS
+         AYmcUrcQXyzPx1d4WoSYIuE3HdgE4VJ3zvPB7/1D/vj4fKjmGnGO7C6ZmDqPbo0HJ7ff
+         +Na97aIbD00+iF+RJcx+fNLpAFWSpYtQ/F1rQBl7eKqrVoP2mUmKDfo/i8KKk/x20/NO
+         y0C/+yw6ZSIvGRWmusdijrht25B6igNq1P7zoX3fpzr6M9h5SES5L6F/iQNPVOi5WFbc
+         EFRA==
+X-Gm-Message-State: AMke39mWPVEheXKLq6YkKm5R9BqDRC3msPq9cWiHI0PPRA9atOlZR3OZC5A288BGGGKRnA==
+X-Received: by 10.84.205.70 with SMTP id o6mr20349455plh.176.1488474122934;
+        Thu, 02 Mar 2017 09:02:02 -0800 (PST)
 Return-Path: <aishpant@gmail.com>
 Received: from aishwarya ([49.248.235.76])
-        by smtp.gmail.com with ESMTPSA id m67sm18218873pfj.32.2017.03.02.09.02.14
+        by smtp.gmail.com with ESMTPSA id t22sm18180706pfa.114.2017.03.02.09.01.58
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 09:02:19 -0800 (PST)
-Date: Thu, 2 Mar 2017 22:32:11 +0530
+        Thu, 02 Mar 2017 09:02:02 -0800 (PST)
+Date: Thu, 2 Mar 2017 22:31:51 +0530
 From: Aishwarya Pant <aishpant@gmail.com>
 To: Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>,
 	Eric Anholt <eric@anholt.net>,
@@ -58,8 +58,8 @@ To: Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>,
 	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
 	bcm-kernel-feedback-list@broadcom.com
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 4/5] staging: bcm2835-camera: remove extra blank line
-Message-ID: <fb39b13393c7f9ed193e5d9af84886b58eab1aed.1488473946.git.aishpant@gmail.com>
+Subject: [PATCH v2 3/5] staging: bcm2835-camera: fix block comment formatting
+Message-ID: <eba770200e9f379dfb4a31dbbd1a0b02fc0637a1.1488473946.git.aishpant@gmail.com>
 References: <cover.1488473946.git.aishpant@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -67,26 +67,32 @@ Content-Disposition: inline
 In-Reply-To: <cover.1488473946.git.aishpant@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Fix the warning: Blank lines aren't necessary after an open brace
-'{' issued by checkpatch on bcm2835-ctl.c
+Fix block comment formatting to suppress the following warning thrown by
+checkpatch: Block comments use a trailing */ on a separate line
 
 Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
 ---
- drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
-index 80b2062..46814fd 100644
+index 17d34c0..80b2062 100644
 --- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
 +++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
-@@ -123,7 +123,6 @@ static int snd_bcm2835_ctl_put(struct snd_kcontrol *kcontrol,
- 			goto unlock;
- 		}
- 		if (changed || (ucontrol->value.integer.value[0] != chip2alsa(chip->volume))) {
--
- 			chip->volume = alsa2chip(ucontrol->value.integer.value[0]);
- 			changed = 1;
- 		}
+@@ -245,9 +245,10 @@ static int snd_bcm2835_spdif_mask_info(struct snd_kcontrol *kcontrol,
+ static int snd_bcm2835_spdif_mask_get(struct snd_kcontrol *kcontrol,
+ 	struct snd_ctl_elem_value *ucontrol)
+ {
+-	/* bcm2835 supports only consumer mode and sets all other format flags
+-	 * automatically. So the only thing left is signalling non-audio
+-	 * content */
++	/*
++	 * bcm2835 supports only consumer mode and sets all other format flags
++	 * automatically. So the only thing left is signalling non-audio content
++	 */
+ 	ucontrol->value.iec958.status[0] = IEC958_AES0_NONAUDIO;
+ 	return 0;
+ }
 -- 
 2.7.4
 
