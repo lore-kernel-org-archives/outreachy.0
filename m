@@ -1,118 +1,271 @@
-X-GM-THRID: 6950041383671431168
-X-Received: by 2002:ab0:6710:: with SMTP id q16mr1661382uam.73.1618182608875;
-        Sun, 11 Apr 2021 16:10:08 -0700 (PDT)
+X-GM-THRID: 6391536108233031680
+X-Received: by 10.46.81.66 with SMTP id b2mr2213399lje.3.1488481803650;
+        Thu, 02 Mar 2017 11:10:03 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:f251:: with SMTP id y17ls157554vsm.0.gmail; Sun, 11 Apr
- 2021 16:10:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw5bAdO1otxY3rtHhKH4iwlsjS9HZreBEbCABqBiGEtUeNzAXkP7x9jcMhcBLDCXqz6Xd+c
-X-Received: by 2002:a67:e258:: with SMTP id w24mr17649796vse.41.1618182607995;
-        Sun, 11 Apr 2021 16:10:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618182607; cv=none;
-        d=google.com; s=arc-20160816;
-        b=0QAJZZhBEQkOoQ9wTk/k9F5TWPDyBm4+czQWTi99y3SMLD+SOMHnBiFHSuPv7oKHbw
-         9ZVE/sL/VVxBPJM8+9eQScNqP1SHyy2LkKMZF3uFVSOL1Zuy7OQWSz/CXqTVrQMfBGXG
-         HFknLt0PJMEqoBSG3fsJMVcsuyMot37OidDOR4SRhXMX9vi1aphv0QH4l5WbZk+XtAOY
-         z0eLyiEc2HGWh7fjF0DNtY5zgZgwNxxPkBQrFq3eXHt6ZLEOE7IuG135qc2ScKBLPIcF
-         p7i1zQDJ8wTO3YVrI7YP0wAnBQyPctIS5zD/q5oksDlh+ouYlmnz9kFHvNFjSJ4dldu+
-         P5dg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=uNZYWgEVoAuUntavroH02XS3fbZ6zaZUx6Qay4mZmPA=;
-        b=a/AYnlogExC4mpmlnKxMcGHokPampFj12z1ziC8sJE/7Lv0lRDCDzKq4c5vJx5LQ+Q
-         skRt04kdHZT4u8WbrZ+MNoSqYjuS9QR0mPMuaJ0K97v8OTYggtyaWanlbbhRRPjTJ79U
-         XTxv6Ccn1TKtht5cyXKtY54OVRpduPeEfXa0bHyWlN+Pzz/qx69dWuw3yNuzhKKe3JMj
-         7OvLXWMTUhCiLGhoFvSOZfC+fw0ua7iv5U8w4rgqxoUwg1jPR2A9O5ndDpjuv8EltE+3
-         JKJHr5GGOMBAvwEDFJ6MpGon3exo02kV9anc3GeHwzO+9H1+MJH/r1oy9iDm7iVVDjnm
-         zFPQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="bm075u2/";
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from mail-pf1-x435.google.com (mail-pf1-x435.google.com. [2607:f8b0:4864:20::435])
-        by gmr-mx.google.com with ESMTPS id r8si822308uat.1.2021.04.11.16.10.07
+Received: by 10.46.71.207 with SMTP id u198ls820719lja.18.gmail; Thu, 02 Mar
+ 2017 11:10:03 -0800 (PST)
+X-Received: by 10.25.195.206 with SMTP id t197mr2018607lff.11.1488481803166;
+        Thu, 02 Mar 2017 11:10:03 -0800 (PST)
+Return-Path: <jic23@kernel.org>
+Received: from saturn.retrosnub.co.uk (saturn.retrosnub.co.uk. [2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466])
+        by gmr-mx.google.com with ESMTPS id y19si270665wmd.0.2017.03.02.11.10.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 11 Apr 2021 16:10:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) client-ip=2607:f8b0:4864:20::435;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 02 Mar 2017 11:10:03 -0800 (PST)
+Received-SPF: neutral (google.com: 2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466 is neither permitted nor denied by best guess record for domain of jic23@kernel.org) client-ip=2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="bm075u2/";
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x435.google.com with SMTP id b26so2850376pfr.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 11 Apr 2021 16:10:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=uNZYWgEVoAuUntavroH02XS3fbZ6zaZUx6Qay4mZmPA=;
-        b=bm075u2/6bp5bVTyE82skZrkF1AOKjM+JqwEDKDedP5L33qOMv0ZLYxIGzTQoBjblx
-         pF2Ps7cEWAsuWuambPeMut8Ntx8AoPeqMNLZB57bTQibajGanlXSchky9OuZOecRHFv+
-         bWRl/aT5qhXk72bOVNoPvO421tr/Nxo+4qRkTInOZEUQX4tTceaNXnrmMJdKruFBTEVv
-         mUjeIoN7zFBLDgKNq7danLE0aD1rRSONXNieWzjTh4bzyeLrpQCD14YOKQC4jwN1q43F
-         4/Z8zy15zokhw+SSrgIIbO3wh7LS2XKkP2p4Fqf/lm7d007K7CBmrVT88GxSlNfQcV+x
-         wfAw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=uNZYWgEVoAuUntavroH02XS3fbZ6zaZUx6Qay4mZmPA=;
-        b=GytvQx4lDFO9tp8ut5Xgnd9skJGhrqJaL1b/ES8ZAn9JYBn72LxP8SS+7DYkdeEVzm
-         VIv98W8NROg2nmF4bA7yDkc4IHG5GN2aPInhwWz7bUXKhVwi0/otH/Li34HKYbpEGG8I
-         t+ydSf2Rvia5A8nJu0UrmG520WBgqPGVE2L9+CjXDoHQx7dDLhzSyhKGDfLRWjVWQY3r
-         DDC6enwCJLcMiYArL1a6HY6tskFpV0ZmvMEYbpNDQ6xP7GSQ0EtjWZa+AQO+b6EYT/Ya
-         BF5f4k2QM8KFktYkHuskQT3ySA8rBBb+bdbqIRO13SWEXLi5ZwbWGtrce1NDwPnqEf4A
-         2iAA==
-X-Gm-Message-State: AOAM531gVIg/6kTni0ACNUf/VJgNwHfzsZM4KwmwT0iWC+oPiEQ1Z8i4
-	CoAdLwHHYS1/ErQm8Y5Nacc=
-X-Received: by 2002:a63:5004:: with SMTP id e4mr23507889pgb.61.1618182607156;
-        Sun, 11 Apr 2021 16:10:07 -0700 (PDT)
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from kali ([103.141.87.253])
-        by smtp.gmail.com with ESMTPSA id q5sm7696619pfj.131.2021.04.11.16.10.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 11 Apr 2021 16:10:06 -0700 (PDT)
-Date: Mon, 12 Apr 2021 04:39:58 +0530
-From: Mitali Borkar <mitaliborkar810@gmail.com>
-To: sakari.ailus@linux.intel.com, bingbu.cao@intel.com,
-	tian.shu.qiu@intel.com, mchehab@kernel.org,
-	gregkh@linuxfoundation.org
-Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
-	mitali_s@me.iitr.ac.in
-Subject: [PATCH 5/6] staging: media: intel-ipu3: line should not end with '['
-Message-ID: <7514b0a9f6b0ce736de3c9d13ae2629d9e67f04c.1618180660.git.mitaliborkar810@gmail.com>
-References: <cover.1618180659.git.mitaliborkar810@gmail.com>
+       spf=neutral (google.com: 2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466 is neither permitted nor denied by best guess record for domain of jic23@kernel.org) smtp.mailfrom=jic23@kernel.org
+Received: from localhost.localdomain (cpc91196-cmbg18-2-0-cust659.5-4.cable.virginm.net [81.96.234.148])
+	by saturn.retrosnub.co.uk (Postfix; Retrosnub mail submission) with ESMTPSA id 83DE540661;
+	Thu,  2 Mar 2017 19:10:02 +0000 (GMT)
+Subject: Re: [PATCH v3] staging: iio: ad9832: Moved contents of the header to
+ the source file
+To: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>, lars@metafoo.de,
+ Michael.Hennerich@analog.com, knaack.h@gmx.de, pmeerw@pmeerw.net,
+ gregkh@linuxfoundation.org
+References: <1488145439-32728-1-git-send-email-narcisaanamaria12@gmail.com>
+ <1488216496-16969-1-git-send-email-narcisaanamaria12@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, linux-iio@vger.kernel.org
+From: Jonathan Cameron <jic23@kernel.org>
+Message-ID: <79f41ac6-fd53-6320-7e30-3e5c79b92068@kernel.org>
+Date: Thu, 2 Mar 2017 19:10:02 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1618180659.git.mitaliborkar810@gmail.com>
+In-Reply-To: <1488216496-16969-1-git-send-email-narcisaanamaria12@gmail.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 
-Fixed the issue of line should not end with '[' by moving arguments
-from next line to line ending with '['
-Reported by checkpatch.
+On 27/02/17 17:28, Narcisa Ana Maria Vasile wrote:
+> Moved the contents of the header(ad9832.h) into the corresponding source file
+> with the exception of the platform data struct which is supposed to be
+> used from somewhere else other than the driver.
+> 
+> Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+Applied to the togreg branch of iio.git and pushed out as testing for
+the autobuilders to check we haven't missed anything!
 
-Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
----
- drivers/staging/media/ipu3/include/intel-ipu3.h | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+Thanks,
 
-diff --git a/drivers/staging/media/ipu3/include/intel-ipu3.h b/drivers/staging/media/ipu3/include/intel-ipu3.h
-index 53f8e5dec8f5..0451f8b7ba4f 100644
---- a/drivers/staging/media/ipu3/include/intel-ipu3.h
-+++ b/drivers/staging/media/ipu3/include/intel-ipu3.h
-@@ -246,8 +246,7 @@ struct ipu3_uapi_ae_ccm {
-  */
- struct ipu3_uapi_ae_config {
- 	struct ipu3_uapi_ae_grid_config grid_cfg __aligned(32);
--	struct ipu3_uapi_ae_weight_elem weights[
--			IPU3_UAPI_AE_WEIGHTS] __aligned(32);
-+	struct ipu3_uapi_ae_weight_elem weights[IPU3_UAPI_AE_WEIGHTS] __aligned(32);
- 	struct ipu3_uapi_ae_ccm ae_ccm __aligned(32);
- } __packed;
- 
--- 
-2.30.2
+Jonathan
+> ---
+> Changes in v3:
+>    -The changes are now made against the original code
+> ---
+>  drivers/staging/iio/frequency/ad9832.c | 92 ++++++++++++++++++++++++++++++++++
+>  drivers/staging/iio/frequency/ad9832.h | 92 ----------------------------------
+>  2 files changed, 92 insertions(+), 92 deletions(-)
+> 
+> diff --git a/drivers/staging/iio/frequency/ad9832.c b/drivers/staging/iio/frequency/ad9832.c
+> index a5b2f06..8d40c8e 100644
+> --- a/drivers/staging/iio/frequency/ad9832.c
+> +++ b/drivers/staging/iio/frequency/ad9832.c
+> @@ -22,6 +22,98 @@
+>  
+>  #include "ad9832.h"
+>  
+> +/* Registers */
+> +
+> +#define AD9832_FREQ0LL		0x0
+> +#define AD9832_FREQ0HL		0x1
+> +#define AD9832_FREQ0LM		0x2
+> +#define AD9832_FREQ0HM		0x3
+> +#define AD9832_FREQ1LL		0x4
+> +#define AD9832_FREQ1HL		0x5
+> +#define AD9832_FREQ1LM		0x6
+> +#define AD9832_FREQ1HM		0x7
+> +#define AD9832_PHASE0L		0x8
+> +#define AD9832_PHASE0H		0x9
+> +#define AD9832_PHASE1L		0xA
+> +#define AD9832_PHASE1H		0xB
+> +#define AD9832_PHASE2L		0xC
+> +#define AD9832_PHASE2H		0xD
+> +#define AD9832_PHASE3L		0xE
+> +#define AD9832_PHASE3H		0xF
+> +
+> +#define AD9832_PHASE_SYM	0x10
+> +#define AD9832_FREQ_SYM		0x11
+> +#define AD9832_PINCTRL_EN	0x12
+> +#define AD9832_OUTPUT_EN	0x13
+> +
+> +/* Command Control Bits */
+> +
+> +#define AD9832_CMD_PHA8BITSW	0x1
+> +#define AD9832_CMD_PHA16BITSW	0x0
+> +#define AD9832_CMD_FRE8BITSW	0x3
+> +#define AD9832_CMD_FRE16BITSW	0x2
+> +#define AD9832_CMD_FPSELECT	0x6
+> +#define AD9832_CMD_SYNCSELSRC	0x8
+> +#define AD9832_CMD_SLEEPRESCLR	0xC
+> +
+> +#define AD9832_FREQ		BIT(11)
+> +#define AD9832_PHASE(x)		(((x) & 3) << 9)
+> +#define AD9832_SYNC		BIT(13)
+> +#define AD9832_SELSRC		BIT(12)
+> +#define AD9832_SLEEP		BIT(13)
+> +#define AD9832_RESET		BIT(12)
+> +#define AD9832_CLR		BIT(11)
+> +#define CMD_SHIFT		12
+> +#define ADD_SHIFT		8
+> +#define AD9832_FREQ_BITS	32
+> +#define AD9832_PHASE_BITS	12
+> +#define RES_MASK(bits)		((1 << (bits)) - 1)
+> +
+> +/**
+> + * struct ad9832_state - driver instance specific data
+> + * @spi:		spi_device
+> + * @avdd:		supply regulator for the analog section
+> + * @dvdd:		supply regulator for the digital section
+> + * @mclk:		external master clock
+> + * @ctrl_fp:		cached frequency/phase control word
+> + * @ctrl_ss:		cached sync/selsrc control word
+> + * @ctrl_src:		cached sleep/reset/clr word
+> + * @xfer:		default spi transfer
+> + * @msg:		default spi message
+> + * @freq_xfer:		tuning word spi transfer
+> + * @freq_msg:		tuning word spi message
+> + * @phase_xfer:		tuning word spi transfer
+> + * @phase_msg:		tuning word spi message
+> + * @data:		spi transmit buffer
+> + * @phase_data:		tuning word spi transmit buffer
+> + * @freq_data:		tuning word spi transmit buffer
+> + */
+> +
+> +struct ad9832_state {
+> +	struct spi_device		*spi;
+> +	struct regulator		*avdd;
+> +	struct regulator		*dvdd;
+> +	unsigned long			mclk;
+> +	unsigned short			ctrl_fp;
+> +	unsigned short			ctrl_ss;
+> +	unsigned short			ctrl_src;
+> +	struct spi_transfer		xfer;
+> +	struct spi_message		msg;
+> +	struct spi_transfer		freq_xfer[4];
+> +	struct spi_message		freq_msg;
+> +	struct spi_transfer		phase_xfer[2];
+> +	struct spi_message		phase_msg;
+> +	/*
+> +	 * DMA (thus cache coherency maintenance) requires the
+> +	 * transfer buffers to live in their own cache lines.
+> +	 */
+> +	union {
+> +		__be16			freq_data[4]____cacheline_aligned;
+> +		__be16			phase_data[2];
+> +		__be16			data;
+> +	};
+> +};
+> +
+>  static unsigned long ad9832_calc_freqreg(unsigned long mclk, unsigned long fout)
+>  {
+>  	unsigned long long freqreg = (u64)fout *
+> diff --git a/drivers/staging/iio/frequency/ad9832.h b/drivers/staging/iio/frequency/ad9832.h
+> index 1b08b04..39d326c 100644
+> --- a/drivers/staging/iio/frequency/ad9832.h
+> +++ b/drivers/staging/iio/frequency/ad9832.h
+> @@ -8,98 +8,6 @@
+>  #ifndef IIO_DDS_AD9832_H_
+>  #define IIO_DDS_AD9832_H_
+>  
+> -/* Registers */
+> -
+> -#define AD9832_FREQ0LL		0x0
+> -#define AD9832_FREQ0HL		0x1
+> -#define AD9832_FREQ0LM		0x2
+> -#define AD9832_FREQ0HM		0x3
+> -#define AD9832_FREQ1LL		0x4
+> -#define AD9832_FREQ1HL		0x5
+> -#define AD9832_FREQ1LM		0x6
+> -#define AD9832_FREQ1HM		0x7
+> -#define AD9832_PHASE0L		0x8
+> -#define AD9832_PHASE0H		0x9
+> -#define AD9832_PHASE1L		0xA
+> -#define AD9832_PHASE1H		0xB
+> -#define AD9832_PHASE2L		0xC
+> -#define AD9832_PHASE2H		0xD
+> -#define AD9832_PHASE3L		0xE
+> -#define AD9832_PHASE3H		0xF
+> -
+> -#define AD9832_PHASE_SYM	0x10
+> -#define AD9832_FREQ_SYM		0x11
+> -#define AD9832_PINCTRL_EN	0x12
+> -#define AD9832_OUTPUT_EN	0x13
+> -
+> -/* Command Control Bits */
+> -
+> -#define AD9832_CMD_PHA8BITSW	0x1
+> -#define AD9832_CMD_PHA16BITSW	0x0
+> -#define AD9832_CMD_FRE8BITSW	0x3
+> -#define AD9832_CMD_FRE16BITSW	0x2
+> -#define AD9832_CMD_FPSELECT	0x6
+> -#define AD9832_CMD_SYNCSELSRC	0x8
+> -#define AD9832_CMD_SLEEPRESCLR	0xC
+> -
+> -#define AD9832_FREQ		BIT(11)
+> -#define AD9832_PHASE(x)		(((x) & 3) << 9)
+> -#define AD9832_SYNC		BIT(13)
+> -#define AD9832_SELSRC		BIT(12)
+> -#define AD9832_SLEEP		BIT(13)
+> -#define AD9832_RESET		BIT(12)
+> -#define AD9832_CLR		BIT(11)
+> -#define CMD_SHIFT		12
+> -#define ADD_SHIFT		8
+> -#define AD9832_FREQ_BITS	32
+> -#define AD9832_PHASE_BITS	12
+> -#define RES_MASK(bits)		((1 << (bits)) - 1)
+> -
+> -/**
+> - * struct ad9832_state - driver instance specific data
+> - * @spi:		spi_device
+> - * @avdd:		supply regulator for the analog section
+> - * @dvdd:		supply regulator for the digital section
+> - * @mclk:		external master clock
+> - * @ctrl_fp:		cached frequency/phase control word
+> - * @ctrl_ss:		cached sync/selsrc control word
+> - * @ctrl_src:		cached sleep/reset/clr word
+> - * @xfer:		default spi transfer
+> - * @msg:		default spi message
+> - * @freq_xfer:		tuning word spi transfer
+> - * @freq_msg:		tuning word spi message
+> - * @phase_xfer:		tuning word spi transfer
+> - * @phase_msg:		tuning word spi message
+> - * @data:		spi transmit buffer
+> - * @phase_data:		tuning word spi transmit buffer
+> - * @freq_data:		tuning word spi transmit buffer
+> - */
+> -
+> -struct ad9832_state {
+> -	struct spi_device		*spi;
+> -	struct regulator		*avdd;
+> -	struct regulator		*dvdd;
+> -	unsigned long			mclk;
+> -	unsigned short			ctrl_fp;
+> -	unsigned short			ctrl_ss;
+> -	unsigned short			ctrl_src;
+> -	struct spi_transfer		xfer;
+> -	struct spi_message		msg;
+> -	struct spi_transfer		freq_xfer[4];
+> -	struct spi_message		freq_msg;
+> -	struct spi_transfer		phase_xfer[2];
+> -	struct spi_message		phase_msg;
+> -	/*
+> -	 * DMA (thus cache coherency maintenance) requires the
+> -	 * transfer buffers to live in their own cache lines.
+> -	 */
+> -	union {
+> -		__be16			freq_data[4]____cacheline_aligned;
+> -		__be16			phase_data[2];
+> -		__be16			data;
+> -	};
+> -};
+> -
+>  /*
+>   * TODO: struct ad9832_platform_data needs to go into include/linux/iio
+This comment is wrong now. Obviously not relevant to this patch, but updating
+it would be useful!
+
+Jonathan
+>   */
+> 
 
 
