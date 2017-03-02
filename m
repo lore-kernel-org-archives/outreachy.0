@@ -1,124 +1,106 @@
 X-GM-THRID: 6392947471116402688
-X-Received: by 10.99.123.24 with SMTP id w24mr5378498pgc.108.1488478187990;
-        Thu, 02 Mar 2017 10:09:47 -0800 (PST)
+X-Received: by 10.107.53.15 with SMTP id c15mr4794398ioa.83.1488477451498;
+        Thu, 02 Mar 2017 09:57:31 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.191.134 with SMTP id p128ls2245504iof.31.gmail; Thu, 02
- Mar 2017 10:09:47 -0800 (PST)
-X-Received: by 10.99.49.77 with SMTP id x74mr5905629pgx.2.1488478187111;
-        Thu, 02 Mar 2017 10:09:47 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id r66si13989pfb.7.2017.03.02.10.09.47
+Received: by 10.107.161.14 with SMTP id k14ls2185256ioe.35.gmail; Thu, 02 Mar
+ 2017 09:57:30 -0800 (PST)
+X-Received: by 10.99.168.71 with SMTP id i7mr5612885pgp.116.1488477450901;
+        Thu, 02 Mar 2017 09:57:30 -0800 (PST)
+Return-Path: <aishpant@gmail.com>
+Received: from mail-pf0-f193.google.com (mail-pf0-f193.google.com. [209.85.192.193])
+        by gmr-mx.google.com with ESMTPS id 2si919986pfz.1.2017.03.02.09.57.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 10:09:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Thu, 02 Mar 2017 09:57:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 209.85.192.193 as permitted sender) client-ip=209.85.192.193;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       spf=pass (google.com: domain of aishpant@gmail.com designates 209.85.192.193 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id s67so10050171pgb.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 10:09:47 -0800 (PST)
+Received: by mail-pf0-f193.google.com with SMTP id 67so2998287pfg.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 09:57:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=O7kb2C4nVUNOf94JaxglEyk6kgVX8ppg4WEnjzGkX/g=;
-        b=j8xeCyu+pzn/MzYttI5lloEAi4GtsXt7NoYte7PTO7sfE8ItRMeXDNnmKjvoma6sB4
-         JRmVMSO/mwwQg/3jC/dmEfKFe5O2yGRfJWtLyM1bPB7DUOfCIttItSM/nVuIRIrFl6uL
-         B0p3BLyCmm19w2rFjx8kSzBNZJWrEpuxd9bgpDvGhqdBl0SxTEI00yUjSsB+Nj1ZcZ4J
-         BA6sN298VwXkWMk7t1ua/vIVF+k3aFl1AEJUGzolq3C7isRN4S3kMZuiWESAkJrhMX7d
-         TVqTfFKhFzOewUikFWrKdmR4TnN/CEaK4yj63BMCGBv6WBNlN5ku86eF6/IfSKfUTQVF
-         flAQ==
+        bh=Vnqni+E8ieZBdU9qM8oA463+4oSSz5a9YT5KA7xXnZc=;
+        b=a6HAgJ9ccJQHBhlSccTxcI2af3PoIkLr2pbSvte2udsf4+7FPJsZzcqRcfXiJxCY9C
+         ArF/kKQw4svycXEOfAnUEXhRkAsnHL/xH5hvZTCTjZCChhGrBqLnFsjmM1bUcVSgtBiG
+         EgINYbmef81f+UhlvAfISWszkI6W5DRWEWhrwCydufUEFj9z37zJf4fDN85jN+JzvDSp
+         I67G6n6sxD5JSnVIq2DXMWdB3Bul9t2Njlqa0Fwim3b6vFaSfagdElrAP56JuAyrfxQ4
+         x5mGqSHhJ8w0IIap7PkeihS1nKITSqIATBA7zh7b6PHP1eUxw+Y6z3lye7db3TSzKHQL
+         3xCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=O7kb2C4nVUNOf94JaxglEyk6kgVX8ppg4WEnjzGkX/g=;
-        b=Q3ytgqhi5Yst/GGPmTQnwonw6NW4AcggoLS3el84RzH5tMso0X4Rju/GDl9XSnaXyh
-         UjzdmoV2+UxIK21Gpmz1ya7FOmt9vIZu/Thv7NFN9KEXV3Gmbp51ag+rsQXVScvN2kEj
-         DQcusoMKw3MaCHjE+RKrP3ew1oycHGw4Jyqrwg+L6B4KPMzjPh6kARslhTZb/SzJ9JjR
-         TChaYfiEcwsZZTlF3f9qk0RkM2zgKfJgGfB8iKhitbCpiC839MuAOxXtDZH77poACsKp
-         XAeIOGIl87La+btdjxTOrwKmFvgNEbL5Ba/WNcP5pKhtifJeNwi5ooE/7g+jB7k7mxH/
-         To3g==
-X-Gm-Message-State: AMke39lEwWFrhvoBK0Trbl2s7WsbbWxQykKrJbyuaIVQlB4d229eji3fvvYZBaRSLMywHA==
-X-Received: by 10.84.195.1 with SMTP id i1mr20408445pld.77.1488478186890;
-        Thu, 02 Mar 2017 10:09:46 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
-        by smtp.gmail.com with ESMTPSA id e70sm13715275pfl.105.2017.03.02.10.09.46
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 02 Mar 2017 10:09:46 -0800 (PST)
-Date: Thu, 2 Mar 2017 10:09:45 -0800
-From: Alison Schofield <amsfield22@gmail.com>
-To: Aishwarya Pant <aishpant@gmail.com>
-Cc: Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>,
+        bh=Vnqni+E8ieZBdU9qM8oA463+4oSSz5a9YT5KA7xXnZc=;
+        b=YNMTnUncIwkx/aFRAe0xRaac6yJMs3CvdHALpleW/uD9Xq11F6Rq7wTQurx+vgYxaw
+         8ZGzmawrBdDD+uAWaVHayED0czGWVxW2vlYG8eFQRPE7jzjYRycchDZITV7uZX/ZoX23
+         +1PsHG+fWLRQlpLP09jQPTv7x9zuHQytmljRA+49z09pHZ6hejdV/AGoHtxX8hXjaVLo
+         0kfASCydQzuYQn9vPuCUO5a9/TZY5MfeI1umfCq+u9G+Bsn19tj2oLj53LpcQ4O101PA
+         KGSZ2qpcxRZNxZz6PAXcf/+vYX5xIdzpsThKpixVm+30unf7/Eib1GRg9vZWigyxJCbT
+         d/9Q==
+X-Gm-Message-State: AMke39lCqA9q/uairnDVyHj+YejhY5wP9fOdJaouiiU17xq7rnoRGfU6bx0nh9bA7dSohA==
+X-Received: by 10.99.213.81 with SMTP id v17mr16870004pgi.130.1488477446189;
+        Thu, 02 Mar 2017 09:57:26 -0800 (PST)
+Return-Path: <aishpant@gmail.com>
+Received: from aishwarya ([49.248.235.76])
+        by smtp.gmail.com with ESMTPSA id n123sm18498519pga.9.2017.03.02.09.57.22
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 02 Mar 2017 09:57:25 -0800 (PST)
+Date: Thu, 2 Mar 2017 23:27:19 +0530
+From: Aishwarya Pant <aishpant@gmail.com>
+To: Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>,
 	Eric Anholt <eric@anholt.net>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	Florian Fainelli <f.fainelli@gmail.com>,
 	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	bcm-kernel-feedback-list@broadcom.com,
-	outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v3 0/5] staging: bcm2835-audio: fix
- multiple checkpatch warnings
-Message-ID: <20170302180944.GA4286@d830.WORKGROUP>
+	bcm-kernel-feedback-list@broadcom.com
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH v3 5/5] staging: bcm2835-camera: replace printk(KERN_ERR)
+ with dev_err
+Message-ID: <9c5b6857fe9d2fd5076d099cdc950468615175c5.1488477174.git.aishpant@gmail.com>
 References: <cover.1488477174.git.aishpant@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1488477174.git.aishpant@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Thu, Mar 02, 2017 at 11:25:31PM +0530, Aishwarya Pant wrote:
-> Fix multiple code styling warnings issued by checkpatch on file 
-> bcm2835-ctl.c in bcm2835-audio driver 
-> 
-> Changes in v3:
-> 	-Merge two if conditions
-> 	-Fix subject of patch replace printk(... by dev_err(...
-> Changes in v2: 
->         -Replace pr_err with dev_err 
-> 
+Use dev_err(... in place of printk(KERN_ERR ...
+Problem found by checkpatch
 
-Hi Aishwarya - See suggestions for the Subject Line commit messages below...
-alisons
+Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
 
-> Aishwarya Pant (5):
-> *** HERE ***
->   staging: bcm2835-camera: fix no space is necessary after a cast
->     warning
+---
+Changes in v3:
+	-Merge two if conditions
+	-Edit subject and commit message
+Changes in v2:
+	-Prefer dev_err to pr_err where device information is available
 
-remove space after cast
+ drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
->   staging: bcm2835-camera: Logical continuations should be on the
->     previous     line
+diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
+index 46814fd..659c3d1 100644
+--- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
++++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
+@@ -139,10 +139,8 @@ static int snd_bcm2835_ctl_put(struct snd_kcontrol *kcontrol,
+ 		}
+ 	}
+ 
+-	if (changed) {
+-		if (bcm2835_audio_set_ctls(chip))
+-			printk(KERN_ERR "Failed to set ALSA controls..\n");
+-	}
++	if (changed && bcm2835_audio_set_ctls(chip))
++		dev_err(chip->card->dev, "Failed to set ALSA controls..\n");
+ 
+ unlock:
+ 	mutex_unlock(&chip->audio_mutex);
+-- 
+2.7.4
 
-move logical continuation to same line
-
->   staging: bcm2835-camera: fix block comment formatting
-
-use kernel preferred block commenting style
-(so this one's more generic. Main point is it says use, instead of fix(
-
->   staging: bcm2835-camera: remove extra blank line
-
-looks good
-
->   staging: bcm2835-camera: replace printk(KERN_ERR) with dev_err
-
-looks good
-
-> 
->  .../vc04_services/bcm2835-audio/bcm2835-ctl.c      | 23 ++++++++++------------
->  1 file changed, 10 insertions(+), 13 deletions(-)
-> 
-> -- 
-> 2.7.4
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/cover.1488477174.git.aishpant%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
 
