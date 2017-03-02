@@ -1,83 +1,107 @@
-X-GM-THRID: 6388545566354178048
-X-Received: by 10.99.112.1 with SMTP id l1mr4494126pgc.142.1487449176783;
-        Sat, 18 Feb 2017 12:19:36 -0800 (PST)
+X-GM-THRID: 6391489857245413376
+X-Received: by 10.99.174.9 with SMTP id q9mr3514416pgf.80.1488477443572;
+        Thu, 02 Mar 2017 09:57:23 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.38.42 with SMTP id a39ls7231835otb.26.gmail; Sat, 18 Feb
- 2017 12:19:36 -0800 (PST)
-X-Received: by 10.13.196.129 with SMTP id g123mr4961635ywd.140.1487449176224;
-        Sat, 18 Feb 2017 12:19:36 -0800 (PST)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id s64si794999pfk.0.2017.02.18.12.19.36
+Received: by 10.107.13.8 with SMTP id 8ls2138051ion.43.gmail; Thu, 02 Mar 2017
+ 09:57:22 -0800 (PST)
+X-Received: by 10.36.94.204 with SMTP id h195mr2068571itb.35.1488477442927;
+        Thu, 02 Mar 2017 09:57:22 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from mail-pf0-f195.google.com (mail-pf0-f195.google.com. [209.85.192.195])
+        by gmr-mx.google.com with ESMTPS id 2si919788pfz.1.2017.03.02.09.57.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 18 Feb 2017 12:19:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Thu, 02 Mar 2017 09:57:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 209.85.192.195 as permitted sender) client-ip=209.85.192.195;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 209.85.192.195 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id c193so1937789pfb.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 18 Feb 2017 12:19:36 -0800 (PST)
+Received: by mail-pf0-f195.google.com with SMTP id j5so7405926pfb.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 09:57:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+        h=message-id:date:from:to:subject:mime-version:content-disposition
          :user-agent;
-        bh=e/LSukys+HMXS8N+avhKMkPqv53W6abGHAWcZFpc2HY=;
-        b=qmZUigMI2PIFAoAoYsuiGL5OcfSfXhNDWIN27ofzwdEsMyIyM/sCPSuKWSFZDXqrAR
-         +Xu2JU0mUVodI/jTb23A5YP3gAGoyOuXpfnoUBM+VhOISlewoCD/axSwuQz0eFLbu+E8
-         y+jH9T0hV33+SC0SKJ3nYPaGiU6nX/Mw8iUYkrUxdsITNtWZx7JWhfyAIXhq4Wdx2QU0
-         VYDKxadILgjkvLZBDGEhtSjvNYlv991mCmj9qs0CI7ifRrXIeCNimN3qBbSq4hOzQk5X
-         O97JJiHv3cVO62ldgHuiY3z6+AMdzx3xemDx1N/pTRAxhJKaWeQXiU5u6WYoa2SjETM/
-         CmDg==
+        bh=uxTeshrr+jUgq/WDOKDiOHTS00FQc/TET/YlwaDdIVk=;
+        b=ty7poW58g8UOcdLE0RzPugLb7yvHh+2f/7Oz3ZJUSUiaYM2FRKtH4p3zZdwYvetmEK
+         LJ/rwcueC6spvWdjfD1VNIlr1vOaiW2F2YvpyhNOmJyP8r0zCT0yvjtOU7uVwQQq3kWN
+         A2IHv9W6oHkGdt4Mdm1RP5zZeToWby1ljZOKBAXnoy171D7DjuNULwMSNWFeAXaKv95S
+         H+cxDnokURSVWdL58kWDZxqOTAfmsiB6Di702a9ho7b58fnu/myWMSoEsTLm++LiDu9y
+         lQiNlJC14S1CstmDar/6ab6otHSyboMdsFqmuKH7JvHh4TnPTyTzLQWt+4cO12k+Dg9x
+         w1dw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+        h=x-gm-message-state:message-id:date:from:to:subject:mime-version
          :content-disposition:user-agent;
-        bh=e/LSukys+HMXS8N+avhKMkPqv53W6abGHAWcZFpc2HY=;
-        b=DEIPY3wtb1EPGmEw4Jn4xuMpEmA9bSVnSmY9Hm148zKtF5GEKjzlemSSeXYoifc9hL
-         4Cja36VN7vk6Rjr6iaW+r55tI3oo2a7rCAcxmls2uRhwnIaaUMU5Ybe8Bu73LT86qxMS
-         nEa6Wok1Ey1eIXTVE9sCTvJm+nB2Q1qzYk3Yyph5OHSblRCfqNsHUS9Mwe5T/0nDauLY
-         3RUwnUClklEijP+MbVx32/s2Bw+bcYe81NAl8DHJUsrYoCX0732iQ2kgGbRpDYYxlnho
-         4zKbKWn3exJ7LW41hdZ3amcQNYUlgV1jxgUFMH/5FItC6O/vf9mEXRp4e7MZ1GOG3lxB
-         DGIQ==
-X-Gm-Message-State: AMke39lkiTB+TzXXJ9olq2sE/AqYiqKA1+XRTwINTo9Vnt8RwfTc/9+huSceLpQ5cuc7OA==
-X-Received: by 10.98.3.3 with SMTP id 3mr16791813pfd.95.1487449175785;
-        Sat, 18 Feb 2017 12:19:35 -0800 (PST)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from sayli-HP-15-Notebook-PC ([182.58.167.219])
-        by smtp.gmail.com with ESMTPSA id m20sm26899851pgd.17.2017.02.18.12.19.31
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 18 Feb 2017 12:19:35 -0800 (PST)
-Date: Sun, 19 Feb 2017 01:49:23 +0530
-From: sayli karnik <karniksayli1995@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Lars-Peter Clausen <lars@metafoo.de>,
-	Michael Hennerich <Michael.Hennerich@analog.com>,
-	Jonathan Cameron <jic23@kernel.org>,
-	Hartmut Knaack <knaack.h@gmx.de>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-iio@vger.kernel.org
-Subject: [PATCH 0/3] Use macros BIT() and GENMASK()
-Message-ID: <cover.1487448326.git.karniksayli1995@gmail.com>
+        bh=uxTeshrr+jUgq/WDOKDiOHTS00FQc/TET/YlwaDdIVk=;
+        b=DkKW3L0HCc3qkQ7uVcU2ymvAlFdOCBhQARtvEAVWD7E6WVHQxhnBWyMkcSDmTjlYaX
+         kZeweX+PfW4CVS+2b/uSGw1f3vt6NWESvKNX6FhHU3MJu4gXgxn2qPan190A4ztsIX8g
+         /C2BN8qsleFKRUxUHamyzunSRc2cg1qMxBNnKTPY0Tfy2SScvachfJRXTlOGhc601leT
+         ZagMXNNT0eQpwboYy5fIb3H3AxbX+jS2rtmJskKiBzCFHDwUEJX9XcKASKyGMLoeKU7U
+         +N+lKpsd/7k7rXE7tKrBAkb+0weMt2ERxqHbaB/PN5vDodbIbL5417rpH6+G16UQ+TOx
+         G3Fw==
+X-Gm-Message-State: AMke39m0oG5cIdhpYC3xklUG4mx+YijtEtzDsNBVoD9sIXcGaEl/KKCF0rbxpeZkig+Cew==
+X-Received: by 10.84.135.34 with SMTP id 31mr20272216pli.50.1488477442571;
+        Thu, 02 Mar 2017 09:57:22 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from euri ([118.151.209.30])
+        by smtp.gmail.com with ESMTPSA id z7sm18336748pfz.128.2017.03.02.09.57.21
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 02 Mar 2017 09:57:22 -0800 (PST)
+Message-ID: <58b85d02.0733620a.afe74.4ce0@mx.google.com>
+X-Google-Original-Message-ID: <20170302175711.GA3652@<rvarsha016@gmail.com>>
+Date: Thu, 2 Mar 2017 23:27:11 +0530
+From: Varsha Rao <rvarsha016@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com
+Subject: [PATCH v5] staging: emxx_udc: Add comment for spinlock_t definition.
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+User-Agent: Mutt/1.7.1 (2016-10-04)
 
-Use BIT() and GENMASK() macros for left shifts. Also add a blank line after a
-function declaration.
+Members of nbu2ss_udc structure can change device state, maintain
+completion state and control driver. Also provide access to read and
+write to register. Hence, exclusive access to nbu2ss_udc is required.
+The lock variable of type spinlock_t guarantees the exclusive access
+and protects it.
 
-sayli karnik (3):
-  staging: iio: ad7152: Use BIT() macro for left shifting 1
-  staging: iio: ad7152: Use GENMASK() macro for left shifts
-  staging: iio: ad7152: Add a blank line after a function
+In this patch, comment is added for spinlock_t definition, to fix the
+following checkpatch issue:
 
- drivers/staging/iio/cdc/ad7152.c | 37 +++++++++++++++++++------------------
- 1 file changed, 19 insertions(+), 18 deletions(-)
+CHECK: spinlock_t definition without comment
 
+Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
+---
+Changes in v2:
+-Modified commit message.
+
+Changes in v3:
+-Modified commit message.
+
+Changes in v4:
+-Added proper version number.
+
+Changes in v5:
+-Modified commit message.
+
+ drivers/staging/emxx_udc/emxx_udc.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/emxx_udc/emxx_udc.h b/drivers/staging/emxx_udc/emxx_udc.h
+index 789bfb9..78c08e1 100644
+--- a/drivers/staging/emxx_udc/emxx_udc.h
++++ b/drivers/staging/emxx_udc/emxx_udc.h
+@@ -567,7 +567,7 @@ struct nbu2ss_udc {
+ 	struct usb_gadget_driver *driver;
+ 	struct platform_device *pdev;
+ 	struct device *dev;
+-	spinlock_t lock;
++	spinlock_t lock; /* Protects nbu2ss_udc structure fields */
+ 	struct completion		*pdone;
+ 
+ 	enum ep0_state			ep0state;
 -- 
-2.7.4
+2.9.3
 
 
