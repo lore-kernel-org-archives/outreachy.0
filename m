@@ -1,61 +1,61 @@
 X-GM-THRID: 6391489857245413376
-X-Received: by 10.157.23.232 with SMTP id j95mr3871751otj.132.1488419899500;
-        Wed, 01 Mar 2017 17:58:19 -0800 (PST)
+X-Received: by 10.129.167.72 with SMTP id e69mr3845205ywh.89.1488419295011;
+        Wed, 01 Mar 2017 17:48:15 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.46.151 with SMTP id u23ls1624272iou.27.gmail; Wed, 01 Mar
- 2017 17:58:18 -0800 (PST)
-X-Received: by 10.107.57.198 with SMTP id g189mr262550ioa.24.1488419898737;
-        Wed, 01 Mar 2017 17:58:18 -0800 (PST)
+Received: by 10.157.1.212 with SMTP id e78ls626251ote.9.gmail; Wed, 01 Mar
+ 2017 17:48:14 -0800 (PST)
+X-Received: by 10.157.17.228 with SMTP id y33mr3745398oty.102.1488419294582;
+        Wed, 01 Mar 2017 17:48:14 -0800 (PST)
 Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id u12si1190073pfd.3.2017.03.01.17.58.18
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id c123si1158026pfa.4.2017.03.01.17.48.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 01 Mar 2017 17:58:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Wed, 01 Mar 2017 17:48:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id 67so733526pfg.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 01 Mar 2017 17:58:18 -0800 (PST)
+Received: by mail-pf0-x243.google.com with SMTP id b5so2704807pfa.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 01 Mar 2017 17:48:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=message-id:date:from:to:subject:mime-version:content-disposition
          :user-agent;
-        bh=2YUYlFHbdwF6DtiYtMj7EhMcH9FWQDixnngRGGb2xEQ=;
-        b=tbu7fkT6S2+b8PO8ZAfJHBQBaVMWER2VX3I0eKKnHvco3jlQndMdgAl+3uM3IoeBGN
-         hsIQRf4GEJs0X4LX2w9qWnZOPZZqiD0evI+ofyBnKZ3EPEIPGycyl3rSzOaxr6O0sDvV
-         K9Fwn0/+p8HZE71M+AWBGAibduWbPp6qIKOw//WHQ+wOxOLCnrWeCbyYzVT193ivF3Eu
-         xOMxZFVW4mkWM6ofzOm1bkls5xPck24ICt0vzX7OTka/LJ4koac5g+4JzUvlxzCmf4VD
-         7W782IgCK0JOeeUfYvAP0r2htzgsNjnOydjaLIHYTcwwKT0s4Yosa5DaiMq7DVMBSvs7
-         bpDw==
+        bh=QARJp4kW+Nz7DBAzVIIoNAYYC8rCXDjvGJk1iMVgAJ0=;
+        b=ChabZZuJmy1PIoZttHTiACiBWSYoq+iJl3XQ9/kbSK91MRYwznjneDLuihZCqdeyzR
+         R6T2+st/+Yt53OfGJnQEK1PFTrduG3WJz/W3QVv8+H9e+oQDfF5Xv3cfUGsbXbliA+Ns
+         j1T07kdBomLzscr2NdyF7jk3b4gR7mxdf4vGUdNx6PtWjdGU0aObbl1cXEGKjL+REQci
+         HZsPH0L6ehSsHXV2epJ2lDU66xepIl0paEiVzatQN+U2EoQK++VExCWgqGGmisgtSFUv
+         2i5++bBfh3lbXAYMWCQC7qf0ZUVxvxOT6tJAbt6i4DIGgNQZGclFfL4Ghf8yTU5HeMyT
+         vq+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:message-id:date:from:to:subject:mime-version
          :content-disposition:user-agent;
-        bh=2YUYlFHbdwF6DtiYtMj7EhMcH9FWQDixnngRGGb2xEQ=;
-        b=bGMgTr/ujUOvkSHF6HXl8bPS2A790HhW1qytCgOb8EUI/LspIo3LdmSQCQv3FnhGyy
-         FG1N9mQET3+OfJdajyMM0R3RyeDAL/br6nqMOJ6SHzJcw9gPoj0LSALERt51k+plubf1
-         qwBmUt+qBYdPeKdRB9uTfKr7ILPoP6Q5fT9dDmG9DV06kFyJpuU4p/ltaqDVEg4aJOCP
-         4vtR6qKtSbGNQokgIpb2Za1rUC5YpoNiLB/PgMHAoV3l8VD/akMnCi0x890aMUeWy0C5
-         2ZKU+DO70R4N6zQuyC3wdEgNHXSdYxQiXgPXOsiROu+VyjGo6lVjrfNt3QTacvLlKa8L
-         DJ/Q==
-X-Gm-Message-State: AMke39mVVwQy+C8n+u32gVRYalTzYRU5HB+aHFlquc6fnFBxPkG+pAo12oM1DsxchKQC0A==
-X-Received: by 10.98.55.66 with SMTP id e63mr12637541pfa.156.1488419898548;
-        Wed, 01 Mar 2017 17:58:18 -0800 (PST)
+        bh=QARJp4kW+Nz7DBAzVIIoNAYYC8rCXDjvGJk1iMVgAJ0=;
+        b=SUkLT02S9YfxAVGEaXmVetTvDC+d+XfuQSczjopisvZqNpwZmk7FMWAedLkKO3tpH9
+         GNe0pQgl6SVrTK/Umb9sTgayy3cMqww+fAbLUyjik/R+ZibY+KDQX85I68+odqJ1Oy/D
+         wJn0V5E56ilVyh8UCPz0SQK3RwGkeCLXQrB6H1CjsFoHKT96urgoIPsr0lPHxZ+HF/jN
+         J2sic9wtOBdL7tDxsR3X0SaXJbRHf3UGEpW4BAL2cekAU9h7gH0bou4Z6abPHxACk3Bl
+         bYEQhUCN/DdJiMZKNLKYFazmOoZidxemXj0B83oMbIvywr0JYJ9Z2z7E47cM3ivu8j1M
+         Y1rw==
+X-Gm-Message-State: AMke39luVs46ejjNJahKizsnCm8jz87TBjtqbOeqMXKilnQ61BE3SYCoK1KZewpiBUr6nw==
+X-Received: by 10.99.94.195 with SMTP id s186mr12602333pgb.197.1488419294362;
+        Wed, 01 Mar 2017 17:48:14 -0800 (PST)
 Return-Path: <rvarsha016@gmail.com>
 Received: from euri ([117.211.102.29])
-        by smtp.gmail.com with ESMTPSA id y5sm13004866pgy.28.2017.03.01.17.58.17
+        by smtp.gmail.com with ESMTPSA id a24sm12917493pfh.33.2017.03.01.17.48.12
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 01 Mar 2017 17:58:17 -0800 (PST)
-Message-ID: <58b77c39.0532630a.33e60.bc40@mx.google.com>
-X-Google-Original-Message-ID: <20170302015814.GA6338@<rvarsha016@gmail.com>>
-Date: Thu, 2 Mar 2017 07:28:14 +0530
+        Wed, 01 Mar 2017 17:48:13 -0800 (PST)
+Message-ID: <58b779dd.18d4620a.2224e.baf1@mx.google.com>
+X-Google-Original-Message-ID: <20170302014810.GA6103@<rvarsha016@gmail.com>>
+Date: Thu, 2 Mar 2017 07:18:10 +0530
 From: Varsha Rao <rvarsha016@gmail.com>
 To: outreachy-kernel <outreachy-kernel@googlegroups.com>,
 	gregkh@linuxfoundation.org
-Subject: [PATCH v4] staging: emxx_udc: Add comment for spinlock_t definition.
+Subject: [PATCH v2] staging: emxx_udc: Add comment for spinlock_t definition.
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -74,13 +74,7 @@ CHECK: spinlock_t definition without comment
 Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
 ---
 Changes in v2:
--Modified commit message.
-
-Changes in v3:
--Modified commit message.
-
-Changes in v4:
--Added proper version number.
+-Modified commit message
 
  drivers/staging/emxx_udc/emxx_udc.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
