@@ -1,55 +1,55 @@
 X-GM-THRID: 6392947471116402688
-X-Received: by 10.129.99.195 with SMTP id x186mr4554739ywb.41.1488474093518;
-        Thu, 02 Mar 2017 09:01:33 -0800 (PST)
+X-Received: by 10.99.54.15 with SMTP id d15mr5469324pga.148.1488474074591;
+        Thu, 02 Mar 2017 09:01:14 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.117.138 with SMTP id y132ls2342036itc.9.gmail; Thu, 02 Mar
- 2017 09:01:32 -0800 (PST)
-X-Received: by 10.99.185.1 with SMTP id z1mr5274076pge.51.1488474092036;
-        Thu, 02 Mar 2017 09:01:32 -0800 (PST)
+Received: by 10.157.6.194 with SMTP id 60ls6716428otx.21.gmail; Thu, 02 Mar
+ 2017 09:01:14 -0800 (PST)
+X-Received: by 10.13.233.70 with SMTP id s67mr5753660ywe.24.1488474074137;
+        Thu, 02 Mar 2017 09:01:14 -0800 (PST)
 Return-Path: <aishpant@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id f7si1596928pfk.5.2017.03.02.09.01.32
+Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
+        by gmr-mx.google.com with ESMTPS id h79si1587587pfh.2.2017.03.02.09.01.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 09:01:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Thu, 02 Mar 2017 09:01:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
+       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id 1so9883969pgz.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 09:01:32 -0800 (PST)
+Received: by mail-pg0-x242.google.com with SMTP id s67so9875449pgb.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 09:01:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=OCIMcfR1rDyeARr/F2cOz8yChBwuJWHs6jYxDje4TA4=;
-        b=TQVwF4pnOtL+lYuN8u1ZeHP+88R6LQBx4gdDCM/xsJA84/WYkRS/nRxIq9LjbnnZK6
-         3pcWWNAMo9rEUntgYscGz4DwSrixx0w35UW2gxbFV+2uqUYUr2Vw8oimEf6+mxQP8oOE
-         20ACwtHnOyPXMKgk5UW201CTtJaMpHShVijjZhXqkmy9OnKeUFtJqZtW79vBWk/5Xk1h
-         9q2+5hXskMYb56xEEt0ETJip1elg74LCRzJRhfVG4yzO7Rs9VAz7RZ22ubRHAqZ3L94P
-         SSMn4h86DXMigTvDKjVm7jcw1HmPOvqj0tpHpl0hV+OOjrTnrjfVf/UyCDHp5brSTbh+
-         jDNQ==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=86uCpKmZaDyp3NjDNurNfnWZnuvFPEOj1KvUMvUQ5Sc=;
+        b=M4obh/hi72tfuj9uEG2s7PdSbrktRGGoELytPODNw9ukffnueCw+8o6dY5vTsVOcF6
+         HvSPy+79igR4VpKbi42OEzlhfzYx5xP860XoBfshNIJPZwtCTpsgm+90+Tgd0wA0xk25
+         Vuk+pFo7pPPW2DVlQwuROZKspBIQ6XSUH0BG+W2Or3podqJHlQz7JbeT3OM/DnkBOlBQ
+         BQK/gLvYjAJb/XDeS5Pv28MajI3KJAgGgPwLh2w8zieW5vydlZp45PP12F1WZWkGYfPj
+         ziGmMhmkhXCBrREZBTUIm7EU6zK40Juz57B2O1CTCRsaRY4b2IAA2pgbu2mF+JLt/6kQ
+         pIZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=OCIMcfR1rDyeARr/F2cOz8yChBwuJWHs6jYxDje4TA4=;
-        b=fYtu31/1sLXl+9iBENGLtrQHixQ9dj9D04kXoXjU8U76k+is4nPi9SLxnYO7VtGRpo
-         oAnsSdXsbFqGn3gDAwUz7yJUrEWv4noAUSH0PVyPNXQgeHwetTd61Ly6FienmkOT5HTa
-         uz8TViZ+iDdv1rx4kZHythMlphBeP00Kb0ebdTcnpd6UXFK8JWOSJnly3UZgzGeIxddB
-         Ei+uhcHgVLm4flb53vICvwcO31aEdOfYiugZJWyyT1dgJxgzfnM5Bq4NjrqTnAOv9a/u
-         A8jpzOQQXuKIz6q+rw+haK9XPULN2H8Zw+gdT+zoHTKrPGSnB9dJxcdKYghibe+S9UtC
-         N/3Q==
-X-Gm-Message-State: AMke39nw6RgMEXZf4Ws6Ae482QrUeTwNGSNSs3O/Xg3MR/kcuQTIjEuitS1Wpbz0uyrMbQ==
-X-Received: by 10.98.216.202 with SMTP id e193mr16927608pfg.80.1488474091784;
-        Thu, 02 Mar 2017 09:01:31 -0800 (PST)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=86uCpKmZaDyp3NjDNurNfnWZnuvFPEOj1KvUMvUQ5Sc=;
+        b=AShBj82FwQ0FHNir/stkJAxROJiD/UhYMJqeLH45rw1HpvlIv0gNQsLBsX8tJXkTyR
+         5xjB8NR6KNeibEADSo1E5g6PRvRZ7+pzn0n5Gn5+SRrXjpP0V5nPHEnY1H/QU+LQ1YZr
+         bijPS1OZBMARwBFsN2hvf4v2Jtlb1AD93WZ1tAE2/R9eA6ZeWU0q/+WUbG8v940P1LKI
+         K/2M2RZdPY0nBqKjNi99lBCRgHySVl9NGnwF64jbtIp8VZeIk3f44wwny0YIx7N9oumO
+         kAKjSxRVYZVODV5IROtWCoIOKXDN8InjLhrz7zqIHU3L+NEOl++SSjdYPIq/cbAvyeTI
+         C1EQ==
+X-Gm-Message-State: AMke39mDgSw/h67ZwMma0gIi5YNzD8/5Gu+Gw4EY5C85r62AqrJ424wAqJiESlq4wzMlSQ==
+X-Received: by 10.98.29.216 with SMTP id d207mr817857pfd.144.1488474073910;
+        Thu, 02 Mar 2017 09:01:13 -0800 (PST)
 Return-Path: <aishpant@gmail.com>
 Received: from aishwarya ([49.248.235.76])
-        by smtp.gmail.com with ESMTPSA id v86sm18217900pfa.58.2017.03.02.09.01.28
+        by smtp.gmail.com with ESMTPSA id 197sm18186226pfv.19.2017.03.02.09.01.10
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 09:01:31 -0800 (PST)
-Date: Thu, 2 Mar 2017 22:31:25 +0530
+        Thu, 02 Mar 2017 09:01:13 -0800 (PST)
+Date: Thu, 2 Mar 2017 22:31:05 +0530
 From: Aishwarya Pant <aishpant@gmail.com>
 To: Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>,
 	Eric Anholt <eric@anholt.net>,
@@ -58,54 +58,33 @@ To: Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>,
 	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
 	bcm-kernel-feedback-list@broadcom.com
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 1/5] staging: bcm2835-camera: fix no space is necessary
- after a cast warning
-Message-ID: <845a46f44fdc14bf896d03a9edd388716329cb47.1488473946.git.aishpant@gmail.com>
-References: <cover.1488473946.git.aishpant@gmail.com>
+Subject: [PATCH v2 0/5] staging: bcm2835-audio: fix multiple checkpatch
+ warnings
+Message-ID: <cover.1488473946.git.aishpant@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1488473946.git.aishpant@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Remove instances of unnecessary blank space after cast in bcm2835-ctl.c
+Fix multiple code styling warnings issued by checkpatch on file
+bcm2835-ctl.c in bcm2835-audio driver
 
-Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
----
- drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Changes in v2:
+	- Replace pr_err with dev_err 
 
-diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
-index a4ffa1b..99e9ca3 100644
---- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
-+++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
-@@ -116,7 +116,7 @@ static int snd_bcm2835_ctl_put(struct snd_kcontrol *kcontrol,
- 		return -EINTR;
- 
- 	if (kcontrol->private_value == PCM_PLAYBACK_VOLUME) {
--		audio_info("Volume change attempted.. volume = %d new_volume = %d\n", chip->volume, (int) ucontrol->value.integer.value[0]);
-+		audio_info("Volume change attempted.. volume = %d new_volume = %d\n", chip->volume, (int)ucontrol->value.integer.value[0]);
- 		if (chip->mute == CTRL_VOL_MUTE) {
- 			/* changed = toggle_mute(chip, CTRL_VOL_UNMUTE); */
- 			changed = 1; /* should return 0 to signify no change but the mixer takes this as the opposite sign (no idea why) */
-@@ -226,7 +226,7 @@ static int snd_bcm2835_spdif_default_put(struct snd_kcontrol *kcontrol,
- 		return -EINTR;
- 
- 	for (i = 0; i < 4; i++)
--		val |= (unsigned int) ucontrol->value.iec958.status[i] << (i * 8);
-+		val |= (unsigned int)ucontrol->value.iec958.status[i] << (i * 8);
- 
- 	change = val != chip->spdif_status;
- 	chip->spdif_status = val;
-@@ -289,7 +289,7 @@ static int snd_bcm2835_spdif_stream_put(struct snd_kcontrol *kcontrol,
- 		return -EINTR;
- 
- 	for (i = 0; i < 4; i++)
--		val |= (unsigned int) ucontrol->value.iec958.status[i] << (i * 8);
-+		val |= (unsigned int)ucontrol->value.iec958.status[i] << (i * 8);
- 	change = val != chip->spdif_status;
- 	chip->spdif_status = val;
- 
+Aishwarya Pant (5):
+*** HERE ***
+  staging: bcm2835-camera: fix no space is necessary after a cast
+    warning
+  staging: bcm2835-camera: Logical continuations should be on the
+    previous     line
+  staging: bcm2835-camera: fix block comment formatting
+  staging: bcm2835-camera: remove extra blank line
+  staging: bcm2835-camera: replace printk(KERN_ERR) with pr_err
+
+ .../staging/vc04_services/bcm2835-audio/bcm2835-ctl.c | 19 +++++++++----------
+ 1 file changed, 9 insertions(+), 10 deletions(-)
+
 -- 
 2.7.4
 
