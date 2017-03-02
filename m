@@ -1,53 +1,53 @@
 X-GM-THRID: 6392991510876389376
-X-Received: by 10.99.45.194 with SMTP id t185mr5776634pgt.114.1488484348242;
-        Thu, 02 Mar 2017 11:52:28 -0800 (PST)
+X-Received: by 10.157.40.138 with SMTP id s10mr5399099ota.97.1488484344188;
+        Thu, 02 Mar 2017 11:52:24 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.88.40 with SMTP id r40ls5837402oth.13.gmail; Thu, 02 Mar
- 2017 11:52:27 -0800 (PST)
-X-Received: by 10.200.52.65 with SMTP id v1mr1306013qtb.70.1488484347849;
-        Thu, 02 Mar 2017 11:52:27 -0800 (PST)
+Received: by 10.107.11.222 with SMTP id 91ls2284283iol.41.gmail; Thu, 02 Mar
+ 2017 11:52:23 -0800 (PST)
+X-Received: by 10.99.163.92 with SMTP id v28mr5953774pgn.147.1488484343637;
+        Thu, 02 Mar 2017 11:52:23 -0800 (PST)
 Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id 2si977022pfz.1.2017.03.02.11.52.27
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id f7si1699120pfk.5.2017.03.02.11.52.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 11:52:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Thu, 02 Mar 2017 11:52:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id s67so10264878pgb.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 11:52:27 -0800 (PST)
+Received: by mail-pf0-x241.google.com with SMTP id e66so1971571pfe.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 11:52:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=4yFLE+lvAxwak77dt9wjPLFa9U//YsByRu1Q/KDjaho=;
-        b=rML16GitmclK3fvIbUpCRrOIZlvWeQ8vNGhjqAHqZpIeHzosRWwYsUWTKFAahP0KzK
-         c8kxPBCJE1nX0BglnDCaJwS6ztrLQgsYr3Z98TfhqrA0slsnUE+ClSuvb6NloW+mwr6D
-         /cvC7etreK0zQaDkjyiPjzQO1AU31EM7Pu0bM8jRVGH2U67LMmv3DRcZDa+OzLE35KXm
-         92aCFS8hPqF/Fxm5fF209Prsz0UQAbx7Y8rEwi2KiA6SAhuVKdcIQ0FN1tvbkFzY09ne
-         JttDfnnwwIqstZI+0MY9ASkA4mcapcXCk5h6vooFbspDH4uvJ772UqGC+S+UfRY0Uvs+
-         8CcQ==
+        bh=aEOtZBgzYnYMV4flwV+G+4vMv5BRlV769u68jq9w6FA=;
+        b=OEIIT/4VR84aOAX5irLdYxHyVH/K2YOMVzxi+uRZYG28HUuDBwqL3ne7YPeEwqa4XX
+         Zvmz0dSVs7dr0vGi3yttOQ+DefbP8aCJsE+LuNDyk05WTaXJ+q6k/yO1HH//oEfPCpsv
+         HCbYKhbjT4cciqdOMV4Cx4jh2fYLHIHPRbPCZ1h48fhz6MDbQV50XdmS6EdwvoEf6UsM
+         +lmpUE9exS3ESzlGaPsfC+TZ7c9nfJNKRgLKzUo0LiE9lXI+7lI4gHYp59gQXebXGb0s
+         g9Trg4RRufnspa8FQzFdRWvTdNZIjOSC8LfmDxM2F51T2Kksgf5UULgOucXKtXnmHlHl
+         pW5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=4yFLE+lvAxwak77dt9wjPLFa9U//YsByRu1Q/KDjaho=;
-        b=OUkva8B68NPEINRbP2RJqMiMwzMdtXL0SSA/scagHdira30AaZ3D8ERwJWYKXWYw4N
-         f5FzDf06uon/MD5zB/yAkJMCva4r2+2TwOJW3/pZjtKi6aLHYMlRttPrdHSj19a2C91K
-         cy0DtGxsekRAXHw/9fjbSXHrEX2o/ktyYMSVCuqvy6RF2S1DEYE6EnQrUryn5k/FrOTY
-         zaHalDRo3ROYykXl1XpD2gpTMGasVrz1mVfzqEQAEAqAi2SYrFNWv4yLg1KWQGKb0qZ4
-         Ip63npHHuBkbepupTs3Bnt5zXdEasqvglR7XZ0GrNNA7MP6RhLY2jkTQflJvleYJ50ik
-         Rj4Q==
-X-Gm-Message-State: AMke39n3B2SCN1AIJ4KDowl3Ups5ySAMliucwJ4u+7EbP5wMYd2rTO8CgFpy2LLswUpOdQ==
-X-Received: by 10.99.146.70 with SMTP id s6mr17155936pgn.109.1488484347557;
-        Thu, 02 Mar 2017 11:52:27 -0800 (PST)
+        bh=aEOtZBgzYnYMV4flwV+G+4vMv5BRlV769u68jq9w6FA=;
+        b=KhauiNvJ37tnzQafM+DGWFbxxjgvOpb2YF9SCLJL8DPXWnk8C0YrUmLqJXqo5/d69E
+         pDES89AstlmRu1OgPEE3O42WACCRNGp+hwT9oJ4RhOU5PYYXZg5d3dvScDvPfn/g3lME
+         S8JsDBFGILeleYtLbIytyB8vYcuL1PJqLWd8FMQhDV5hJihJj4Q0UK5rQBCvMmvu0rV5
+         Jw97lb7mOJyqwE0fnT93mnOrgQU9/TlUl4TcbQbKq5znyi/g48jXUrk7tQ1YHYRDGNu3
+         GTp307cQLVGgh6F83iFO5plvDfI188T5TwZtDeExoXn1s3SiHSUgPzLLzwzSxPmD3jH3
+         1u3A==
+X-Gm-Message-State: AMke39nPB4NirFh4ngPNSNEwFojiMzrFU8J+2hYTUEycoXxVP2YwHMxM0C2Kv708E+CX+g==
+X-Received: by 10.99.124.88 with SMTP id l24mr9924493pgn.37.1488484343496;
+        Thu, 02 Mar 2017 11:52:23 -0800 (PST)
 Return-Path: <singhalsimran0@gmail.com>
 Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id e68sm18638704pfa.85.2017.03.02.11.52.25
+        by smtp.gmail.com with ESMTPSA id g27sm18657950pfk.95.2017.03.02.11.52.21
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 02 Mar 2017 11:52:26 -0800 (PST)
+        Thu, 02 Mar 2017 11:52:22 -0800 (PST)
 From: simran singhal <singhalsimran0@gmail.com>
 To: mchehab@kernel.org
 Cc: gregkh@linuxfoundation.org,
@@ -55,53 +55,37 @@ Cc: gregkh@linuxfoundation.org,
 	devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCH 6/7] staging: media: Use x instead of x != NULL
-Date: Fri,  3 Mar 2017 01:22:01 +0530
-Message-Id: <1488484322-5928-6-git-send-email-singhalsimran0@gmail.com>
+Subject: [PATCH 5/7] staging: media: Remove multiple assignments
+Date: Fri,  3 Mar 2017 01:22:00 +0530
+Message-Id: <1488484322-5928-5-git-send-email-singhalsimran0@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1488484322-5928-1-git-send-email-singhalsimran0@gmail.com>
 References: <1488484322-5928-1-git-send-email-singhalsimran0@gmail.com>
 
-Use x instead of x != NULL .
-This patch removes the explicit NULL comparisons.This issue is found by
-checkpatch.pl script.
+Remove multiple assignments by factorizing them. Problem found using
+checkpatch.pl
+
+CHECK: multiple assignments should be avoided
 
 Signed-off-by: simran singhal <singhalsimran0@gmail.com>
 ---
- drivers/staging/media/atomisp/i2c/gc2235.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/media/atomisp/i2c/gc2235.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/staging/media/atomisp/i2c/gc2235.c b/drivers/staging/media/atomisp/i2c/gc2235.c
-index 165dcb3..40a5a2f 100644
+index 198df22..165dcb3 100644
 --- a/drivers/staging/media/atomisp/i2c/gc2235.c
 +++ b/drivers/staging/media/atomisp/i2c/gc2235.c
-@@ -255,7 +255,7 @@ static int gc2235_get_intg_factor(struct i2c_client *client,
- 	u16 reg_val, reg_val_h, dummy;
- 	int ret;
- 
--	if (info == NULL)
-+	if (!info)
+@@ -259,7 +259,8 @@ static int gc2235_get_intg_factor(struct i2c_client *client,
  		return -EINVAL;
  
  	/* pixel clock calculattion */
-@@ -797,7 +797,7 @@ static int gc2235_set_fmt(struct v4l2_subdev *sd,
- 	int idx;
+-	buf->vt_pix_clk_freq_mhz = dev->vt_pix_clk_freq_mhz = 30000000;
++	buf->vt_pix_clk_freq_mhz = 30000000;
++	dev->vt_pix_clk_freq_mhz = 30000000;
  
- 	gc2235_info = v4l2_get_subdev_hostdata(sd);
--	if (gc2235_info == NULL)
-+	if (!gc2235_info)
- 		return -EINVAL;
- 	if (format->pad)
- 		return -EINVAL;
-@@ -917,7 +917,7 @@ static int gc2235_s_config(struct v4l2_subdev *sd,
- 	struct i2c_client *client = v4l2_get_subdevdata(sd);
- 	int ret = 0;
- 
--	if (platform_data == NULL)
-+	if (!platform_data)
- 		return -ENODEV;
- 
- 	dev->platform_data =
+ 	/* get integration time */
+ 	buf->coarse_integration_time_min = GC2235_COARSE_INTG_TIME_MIN;
 -- 
 2.7.4
 
