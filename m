@@ -1,80 +1,84 @@
-X-GM-THRID: 6338894673462951936
-X-Received: by 10.66.22.100 with SMTP id c4mr561418paf.110.1475888926018;
-        Fri, 07 Oct 2016 18:08:46 -0700 (PDT)
+X-GM-THRID: 6392863906268708864
+X-Received: by 10.25.223.67 with SMTP id q3mr1588489lfj.1.1488456570868;
+        Thu, 02 Mar 2017 04:09:30 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.29.220 with SMTP id w28ls6287658otw.27.gmail; Fri, 07 Oct
- 2016 18:08:45 -0700 (PDT)
-X-Received: by 10.31.108.92 with SMTP id h89mr5672106vkc.18.1475888925671;
-        Fri, 07 Oct 2016 18:08:45 -0700 (PDT)
-Return-Path: <ruchandani.tina@gmail.com>
-Received: from mail-oi0-x230.google.com (mail-oi0-x230.google.com. [2607:f8b0:4003:c06::230])
-        by gmr-mx.google.com with ESMTPS id f196si394079ita.1.2016.10.07.18.08.45
+Received: by 10.46.15.1 with SMTP id 1ls690571ljp.36.gmail; Thu, 02 Mar 2017
+ 04:09:30 -0800 (PST)
+X-Received: by 10.25.212.76 with SMTP id l73mr1587130lfg.13.1488456570403;
+        Thu, 02 Mar 2017 04:09:30 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id f7si1697660wmg.3.2017.03.02.04.09.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 07 Oct 2016 18:08:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ruchandani.tina@gmail.com designates 2607:f8b0:4003:c06::230 as permitted sender) client-ip=2607:f8b0:4003:c06::230;
+        Thu, 02 Mar 2017 04:09:30 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of ruchandani.tina@gmail.com designates 2607:f8b0:4003:c06::230 as permitted sender) smtp.mailfrom=ruchandani.tina@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-oi0-x230.google.com with SMTP id m72so74797893oik.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 07 Oct 2016 18:08:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:from:date:message-id:subject:to;
-        bh=6a+vDjNgy7metmCUkBiQkpp6gWsRk0/wIRxdIV2OWoU=;
-        b=AvuUupbM0wYAiVq9wAQbBff79oLIIjaV33jN6TQ/fiqhzphtoKm8WoFExdXafXETF0
-         Ptc4dIrnei7bZD8oktJTY/hShHePpSKSUO4GKY2DmPD9zUMLL9Wq+s3s+s/AUjVpUjdi
-         D8Kt0nBK13PBANE1G8TTYo0TIw5BV0NfvUqZaHnXJxuEFZownInsYn8Ol4bKyZ1rCl99
-         uSGaORuo0QKol4oEO1/73Hg3F5X4IMEZ1+k0krzxhQiNtDb8rkHrI5eqhbjT6FAjNUa0
-         kwT/KYqnigziE+TLVRYdGxLoA2ynYYMSyJNVor3Jg6LIpCn/DZiF8PB3GgP3OiqFHr2/
-         WkjA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-        bh=6a+vDjNgy7metmCUkBiQkpp6gWsRk0/wIRxdIV2OWoU=;
-        b=BSG4niGOeZAtbpIGouUrjQOHgPk9YsHyAZN2cL6CAylWvV5lRsB+VftlKYAl6GjWkZ
-         Q4IaSXUCHOD0a8k6KsGFetKNxYGJwsMXp5kKh2RQoSlOBl8XaY7N1Kehpm0hubJe0FqW
-         pc6IP6s90F1dodYE2ZpAX47icuq+peTuscPnaQugiAafLiG//CxV6Umk7M7GlD6RxFrQ
-         cfC/njLt0lZu2xQqJ8qazdljbS3U6rhr+FltpNBIqgxkQ8lCM1BppPiNcA7Ryzl+0m1+
-         9ul0RplOj3cYuvI0r3YsDSH0U5yPXeIjFJNn0F4yHsdiXace+Xae+InGPZySWYymiPt9
-         U2hg==
-X-Gm-Message-State: AA6/9Rn5O8QZqYouk+kXAe2i/gTx2Lp48d9e1DInN7Cpbe5jISS9bFYV5waJ1DH92F4V8mhxHVhsD95f81pXVw==
-X-Received: by 10.202.82.7 with SMTP id g7mr18443612oib.112.1475888925476;
- Fri, 07 Oct 2016 18:08:45 -0700 (PDT)
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,231,1484002800"; 
+   d="scan'208";a="262809555"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 02 Mar 2017 13:09:29 +0100
+Date: Thu, 2 Mar 2017 13:09:20 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Aishwarya Pant <aishpant@gmail.com>
+cc: Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>, 
+    Eric Anholt <eric@anholt.net>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, 
+    Scott Branden <sbranden@broadcom.com>, 
+    bcm-kernel-feedback-list@broadcom.com, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 2/5] staging: bcm2835-camera: Logical
+ continuations should be on the previous line
+In-Reply-To: <3ef2134adc43bc842339c2e81db48c97a31e43fd.1488453518.git.aishpant@gmail.com>
+Message-ID: <alpine.DEB.2.20.1703021307330.3414@hadrien>
+References: <cover.1488453518.git.aishpant@gmail.com> <3ef2134adc43bc842339c2e81db48c97a31e43fd.1488453518.git.aishpant@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Received: by 10.182.158.167 with HTTP; Fri, 7 Oct 2016 18:08:45 -0700 (PDT)
-From: Tina Ruchandani <ruchandani.tina@gmail.com>
-Date: Fri, 7 Oct 2016 18:08:45 -0700
-Message-ID: <CAB__kkmMzZRg=p1zyKpUquS30cfQ7bwJUn5vo==nDqTUadyZFA@mail.gmail.com>
-Subject: 'Hobbyist' pass available for Linux Plumbers Conference, 2016
-To: outreachy-alums@gnome.org, outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary=001a113d7a1a2190b5053e502b3f
+Content-Type: text/plain; charset=US-ASCII
 
---001a113d7a1a2190b5053e502b3f
-Content-Type: text/plain; charset=UTF-8
 
-Hello fellow Outreachy folks,
-I have a hobbyist registration pass for Linux Plumbers Conference in Santa
-Fe, New Mexico, this year (Nov 1st-4th). Unfortunately, I am not able to
-make it there due to visa issues. If any of you fellow OPW folks are
-interested in attending, I will be happy to transfer my registration. The
-requirement for the hobbyist pass is that you cannot be employed in a
-Linux-based role in industry.
-Thanks,
-Tina
 
---001a113d7a1a2190b5053e502b3f
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+On Thu, 2 Mar 2017, Aishwarya Pant wrote:
 
-<div dir=3D"ltr">Hello fellow Outreachy folks,<div>I have a hobbyist regist=
-ration pass for Linux Plumbers Conference in Santa Fe, New Mexico, this yea=
-r (Nov 1st-4th). Unfortunately, I am not able to make it there due to visa =
-issues. If any of you fellow OPW folks are interested in attending, I will =
-be happy to transfer my registration. The requirement for the hobbyist pass=
- is that you cannot be employed in a Linux-based role in industry.=C2=A0</d=
-iv><div>Thanks,</div><div>Tina</div></div>
+> Keep logical continuations on the same line to improve code readability
+>
+> Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
+> ---
+>  drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
+> index 99e9ca3..17d34c0 100644
+> --- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
+> +++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
+> @@ -122,8 +122,7 @@ static int snd_bcm2835_ctl_put(struct snd_kcontrol *kcontrol,
+>  			changed = 1; /* should return 0 to signify no change but the mixer takes this as the opposite sign (no idea why) */
+>  			goto unlock;
+>  		}
+> -		if (changed
+> -			|| (ucontrol->value.integer.value[0] != chip2alsa(chip->volume))) {
+> +		if (changed || (ucontrol->value.integer.value[0] != chip2alsa(chip->volume))) {
 
---001a113d7a1a2190b5053e502b3f--
+A better solution would be to put the || on the same line as changed, line
+ucontrol up with the right side of the ( on the if, and drop the unneeded
+()s around the != test.  Then the code would come closer to fitting withn
+80 chars.
+
+julia
+
+>
+>  			chip->volume = alsa2chip(ucontrol->value.integer.value[0]);
+>  			changed = 1;
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/3ef2134adc43bc842339c2e81db48c97a31e43fd.1488453518.git.aishpant%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
