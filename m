@@ -1,53 +1,53 @@
 X-GM-THRID: 6392997475785900032
-X-Received: by 10.157.67.145 with SMTP id t17mr5480433ote.35.1488489565489;
-        Thu, 02 Mar 2017 13:19:25 -0800 (PST)
+X-Received: by 10.36.16.81 with SMTP id 78mr62955ity.5.1488489561724;
+        Thu, 02 Mar 2017 13:19:21 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.3.235 with SMTP id f98ls5730311otf.16.gmail; Thu, 02 Mar
- 2017 13:19:25 -0800 (PST)
-X-Received: by 10.157.49.110 with SMTP id v43mr5752989otd.44.1488489565164;
-        Thu, 02 Mar 2017 13:19:25 -0800 (PST)
+Received: by 10.107.162.197 with SMTP id l188ls589250ioe.23.gmail; Thu, 02 Mar
+ 2017 13:19:21 -0800 (PST)
+X-Received: by 10.99.7.137 with SMTP id 131mr5955297pgh.49.1488489561182;
+        Thu, 02 Mar 2017 13:19:21 -0800 (PST)
 Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id h79si1737983pfh.2.2017.03.02.13.19.25
+Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
+        by gmr-mx.google.com with ESMTPS id y90si109968pfa.6.2017.03.02.13.19.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 13:19:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Thu, 02 Mar 2017 13:19:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id s67so10455187pgb.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 13:19:25 -0800 (PST)
+Received: by mail-pg0-x241.google.com with SMTP id 16so1966035pga.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 13:19:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=byHa2zFKSWjs4Bv0JQ6TKd8M3WpSRJi+N6oTGTipXaY=;
-        b=Fhx2R6dcI9l5xW8ocMyHFobKqDFrOjXO1tjVJH9kooSROpRw6tJfHPzu9FUWlhGoiN
-         D1SA2vAFFYWm4jWdQmSy/oz+z2WTnNOvX43zWmNq9KKzyevpPvRd7I1bACY73Z5sRD83
-         Av+xn3UBH2yP1ygXv+ADpHAUZHoiXuRVjJac6ksN0cH13mgqeRpVXQgsXZ58dKl2toCW
-         17diKPYcYvhe1s4GGSXcRTh7hNzz5g1NJn3vhk9fuMgXvPBtW1ohV+6rhiYk7cTqtA9Y
-         F6E913MLuxjy793IS/vNL0alRE6vO1pEqfhDx1EB4Lc5BGwfR0C0h7bLP5JEbWtwJKDp
-         sVdA==
+        bh=eb6efTKyY4svCNWvcvo+5FOeS3mY+fTEJ87fSbKkQEE=;
+        b=ZKerhy1ikKfyAsTpgqyTSe0J39IZ4ENOQ5xyrtUpXn0OvUgTM9x5dZsdh2HbrxAoYa
+         elUJUOtL0wedSVFtaXOwVFHXIgVtd0BYgb+hcWAuZ94+E/zuqmPMZSG7cZRkHmF786HE
+         F7MAKQQMiJKKPEFy08lbScS2OuDNIl4nwjNLBmXbDGSvWSCaim0pBu6PZlcakkvyyKXa
+         fTEXD5JGk4U0VMxg6D+XrUTIvh1f4phTxr3WnUq59Z77zJ4Z6pM6syx6Wmtb1DLWc1Qw
+         jO3NM6+CU2atQ5uHFFPWl3k1MQ1cwFnje1NvAvUv6bo4H8LMWgSTtUrQ8EzDd3FsHFzh
+         7v0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=byHa2zFKSWjs4Bv0JQ6TKd8M3WpSRJi+N6oTGTipXaY=;
-        b=RxTQsK2Y8VNe1WPxeNjgwaX9mFLPGP339Ap0vBVrmMqZyMh8KH2n1JkHmKdKvOVszC
-         X6fsd05CNszR8ArYotbVnDP7xfRO3jVs2HDf2LYFhQi+QfgBxgoBZTRrmf3sWCUQUtCO
-         5lvxuNE/4MzrRI4RUfXD0Y9iVkkl9ldor1Qc7Csl9verxMtRF4OtJlsu7DSDhjA5SYwo
-         638uH1cFRUd9pffvmgUKU8NLuOmCFGAUOBVuocwn6HUBKuODIDa2rGawkGVHEGMw4kr7
-         l8LnDe2yNZJQPh0h5R/exD5/DdjSESLFf4rvZcII2F53qcFbysQ/RE+jrsCSs2ZA6oGk
-         Jm8A==
-X-Gm-Message-State: AMke39nCDpRLXVbEM3+XSR3sEtMwAqxe+uARdNTpm4LMtjyYVjpk9m6ekwZgH1UByFF2Vw==
-X-Received: by 10.84.193.101 with SMTP id e92mr21780737pld.4.1488489564634;
-        Thu, 02 Mar 2017 13:19:24 -0800 (PST)
+        bh=eb6efTKyY4svCNWvcvo+5FOeS3mY+fTEJ87fSbKkQEE=;
+        b=Uis7MFy8rBzLzfK0Mtg85VENYWjovFwu0XdhSBI+iR1i036z9sR4oSuCVT/JD/2EV9
+         u3F4JlqZFWjA4R+kHiw+T4ZQkOym39WG+MlBrW74qA9VCloTHp9mp2MYQdqZFl2dt0cV
+         bceUVjbCLO4sBy6c4uVmSX5jgULYfdopIgPhhyd3VAM4jajd7bm3uUv1B6AI1QA7pCwB
+         fEwtwBTLEwHceVxB1iue9S/oG+v9m7f7otVzms0zN53h86GKmWcPw0B6OROB0N7M0Xv6
+         lChWDqx4RfTURec0AZTjp0Omy1UnN3Xq5H9GyAJ8QM+6eiXqH1wkWYgxCnuy1yDhs7Mf
+         vjYQ==
+X-Gm-Message-State: AMke39lylq4hjgBrdKXZh76LXm0btEph1fD+8GIGx1lbm5b9YuuE1ZpncWfgI3yt+P+ofA==
+X-Received: by 10.98.201.212 with SMTP id l81mr9831969pfk.13.1488489560977;
+        Thu, 02 Mar 2017 13:19:20 -0800 (PST)
 Return-Path: <singhalsimran0@gmail.com>
 Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id s64sm12832139pfe.10.2017.03.02.13.19.23
+        by smtp.gmail.com with ESMTPSA id n8sm18986550pgc.16.2017.03.02.13.19.19
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 02 Mar 2017 13:19:23 -0800 (PST)
+        Thu, 02 Mar 2017 13:19:19 -0800 (PST)
 From: simran singhal <singhalsimran0@gmail.com>
 To: Larry.Finger@lwfinger.net
 Cc: florian.c.schilhabel@googlemail.com,
@@ -57,9 +57,9 @@ Cc: florian.c.schilhabel@googlemail.com,
 	oleg.drokin@intel.com,
 	marvin24@gmx.de,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCH 5/5] staging: rtl8712: Remove unnecessary cast on void pointer
-Date: Fri,  3 Mar 2017 02:49:04 +0530
-Message-Id: <1488489544-25941-5-git-send-email-singhalsimran0@gmail.com>
+Subject: [PATCH 4/5] staging: rts5208: Remove unnecessary cast on void pointer
+Date: Fri,  3 Mar 2017 02:49:03 +0530
+Message-Id: <1488489544-25941-4-git-send-email-singhalsimran0@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1488489544-25941-1-git-send-email-singhalsimran0@gmail.com>
 References: <1488489544-25941-1-git-send-email-singhalsimran0@gmail.com>
@@ -84,52 +84,22 @@ identifier f;
 
 Signed-off-by: simran singhal <singhalsimran0@gmail.com>
 ---
- drivers/staging/rtl8712/rtl8712_recv.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/rts5208/rtsx_transport.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
-index 20fe45a..4367c68 100644
---- a/drivers/staging/rtl8712/rtl8712_recv.c
-+++ b/drivers/staging/rtl8712/rtl8712_recv.c
-@@ -444,9 +444,9 @@ void r8712_rxcmd_event_hdl(struct _adapter *padapter, void *prxcmdbuf)
- 	u16 cmd_len, drvinfo_sz;
- 	struct recv_stat *prxstat;
+diff --git a/drivers/staging/rts5208/rtsx_transport.c b/drivers/staging/rts5208/rtsx_transport.c
+index 2379901..d745b93 100644
+--- a/drivers/staging/rts5208/rtsx_transport.c
++++ b/drivers/staging/rts5208/rtsx_transport.c
+@@ -767,7 +767,7 @@ int rtsx_transfer_data(struct rtsx_chip *chip, u8 card, void *buf, size_t len,
  
--	poffset = (u8 *)prxcmdbuf;
-+	poffset = prxcmdbuf;
- 	voffset = *(__le32 *)poffset;
--	prxstat = (struct recv_stat *)prxcmdbuf;
-+	prxstat = prxcmdbuf;
- 	drvinfo_sz = (le32_to_cpu(prxstat->rxdw0) & 0x000f0000) >> 16;
- 	drvinfo_sz <<= 3;
- 	poffset += RXDESC_SIZE + drvinfo_sz;
-@@ -635,7 +635,7 @@ void r8712_reordering_ctrl_timeout_handler(void *pcontext)
- {
- 	unsigned long irql;
- 	struct recv_reorder_ctrl *preorder_ctrl =
--				 (struct recv_reorder_ctrl *)pcontext;
-+				 pcontext;
- 	struct _adapter *padapter = preorder_ctrl->padapter;
- 	struct  __queue *ppending_recvframe_queue =
- 				 &preorder_ctrl->pending_recvframe_queue;
-@@ -976,7 +976,7 @@ int recv_func(struct _adapter *padapter, void *pcontext)
- 	struct  __queue *pfree_recv_queue = &padapter->recvpriv.free_recv_queue;
- 	struct	mlme_priv	*pmlmepriv = &padapter->mlmepriv;
- 
--	prframe = (union recv_frame *)pcontext;
-+	prframe = pcontext;
- 	orig_prframe = prframe;
- 	pattrib = &prframe->u.hdr.attrib;
- 	if (check_fwstate(pmlmepriv, WIFI_MP_STATE)) {
-@@ -1124,7 +1124,7 @@ static int recvbuf2recvframe(struct _adapter *padapter, struct sk_buff *pskb)
- static void recv_tasklet(void *priv)
- {
- 	struct sk_buff *pskb;
--	struct _adapter *padapter = (struct _adapter *)priv;
-+	struct _adapter *padapter = priv;
- 	struct recv_priv *precvpriv = &padapter->recvpriv;
- 
- 	while (NULL != (pskb = skb_dequeue(&precvpriv->rx_skb_queue))) {
+ 	if (use_sg) {
+ 		err = rtsx_transfer_sglist_adma(chip, card,
+-						(struct scatterlist *)buf,
++						buf,
+ 						use_sg, dma_dir, timeout);
+ 	} else {
+ 		err = rtsx_transfer_buf(chip, card, buf, len, dma_dir, timeout);
 -- 
 2.7.4
 
