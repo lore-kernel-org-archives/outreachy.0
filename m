@@ -1,23 +1,23 @@
 X-GM-THRID: 6392601277801431040
-X-Received: by 10.46.22.16 with SMTP id w16mr2105591ljd.8.1488481660486;
-        Thu, 02 Mar 2017 11:07:40 -0800 (PST)
+X-Received: by 10.46.77.69 with SMTP id a66mr2349170ljb.11.1488481599504;
+        Thu, 02 Mar 2017 11:06:39 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.5.71 with SMTP id 68ls763047ljf.34.gmail; Thu, 02 Mar 2017
- 11:07:39 -0800 (PST)
-X-Received: by 10.25.156.74 with SMTP id f71mr1775602lfe.26.1488481659667;
-        Thu, 02 Mar 2017 11:07:39 -0800 (PST)
+Received: by 10.28.48.213 with SMTP id w204ls34155wmw.14.canary-gmail; Thu, 02
+ Mar 2017 11:06:38 -0800 (PST)
+X-Received: by 10.223.177.213 with SMTP id r21mr518487wra.11.1488481598498;
+        Thu, 02 Mar 2017 11:06:38 -0800 (PST)
 Return-Path: <jic23@kernel.org>
-Received: from saturn.retrosnub.co.uk (saturn.retrosnub.co.uk. [178.18.118.26])
-        by gmr-mx.google.com with ESMTPS id b186si181361wme.1.2017.03.02.11.07.39
+Received: from saturn.retrosnub.co.uk (saturn.retrosnub.co.uk. [2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466])
+        by gmr-mx.google.com with ESMTPS id v70si963026wmf.0.2017.03.02.11.06.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 11:07:39 -0800 (PST)
-Received-SPF: neutral (google.com: 178.18.118.26 is neither permitted nor denied by best guess record for domain of jic23@kernel.org) client-ip=178.18.118.26;
+        Thu, 02 Mar 2017 11:06:38 -0800 (PST)
+Received-SPF: neutral (google.com: 2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466 is neither permitted nor denied by best guess record for domain of jic23@kernel.org) client-ip=2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 178.18.118.26 is neither permitted nor denied by best guess record for domain of jic23@kernel.org) smtp.mailfrom=jic23@kernel.org
+       spf=neutral (google.com: 2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466 is neither permitted nor denied by best guess record for domain of jic23@kernel.org) smtp.mailfrom=jic23@kernel.org
 Received: from localhost.localdomain (cpc91196-cmbg18-2-0-cust659.5-4.cable.virginm.net [81.96.234.148])
-	by saturn.retrosnub.co.uk (Postfix; Retrosnub mail submission) with ESMTPSA id E9C4D4062E;
-	Thu,  2 Mar 2017 19:07:38 +0000 (GMT)
+	by saturn.retrosnub.co.uk (Postfix; Retrosnub mail submission) with ESMTPSA id 141424061E;
+	Thu,  2 Mar 2017 19:06:36 +0000 (GMT)
 Subject: Re: [PATCH] staging: iio: ad9832: Move header file content to source
  file
 To: Arushi Singhal <arushisinghal19971997@gmail.com>, lars@metafoo.de
@@ -28,8 +28,8 @@ Cc: Michael Hennerich <Michael.Hennerich@analog.com>,
  linux-kernel@vger.kernel.org, linux-iio@vger.kernel.org,
  devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com
 From: Jonathan Cameron <jic23@kernel.org>
-Message-ID: <dc04507b-adc8-73b6-a124-c4078a7cba8c@kernel.org>
-Date: Thu, 2 Mar 2017 19:07:38 +0000
+Message-ID: <bf37bb74-c41a-251b-b5df-30dece6962f2@kernel.org>
+Date: Thu, 2 Mar 2017 19:06:36 +0000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
  Thunderbird/45.7.0
 MIME-Version: 1.0
@@ -42,13 +42,6 @@ On 01/03/17 18:37, Arushi Singhal wrote:
 > source file. Move content into .c and remove .h.
 > 
 > Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
-Just noticed that I have another series doing this change waiting for
-review so probably going to have already been fixed before you can post
-a V2.
-
-Thanks,
-
-Jonathan
 > ---
 >  drivers/staging/iio/frequency/ad9832.c | 100 +++++++++++++++++++++++++-
 >  drivers/staging/iio/frequency/ad9832.h | 128 ---------------------------------
@@ -154,6 +147,23 @@ Jonathan
 > +	};
 > +};
 > +
+This has come up a few times whilst people have been doing these patches.
+
+Just because the stuff isn't used anywhere else doesn't necessarily mean it
+isn't intended to be used elsewhere.  In this particular case, platform data
+would be provided by a board file (pre device tree method of providing
+info to a driver when device is being instantiated).  Thus when this driver
+moves out of staging, this element will need to go in include/linux/platform_data/*
+
+Superficially it looks like all the above register definitions are suitable for moving
+into the C file, but I haven't absolutely checked they aren't used in as values in
+this structure (naming makes it unlikely though!)
+
+So, lets have a V2 with just those moved.
+
+Otherwise, a nice little cleanup.
+
+Jonathan
 > +struct ad9832_platform_data {
 > +	unsigned long		mclk;
 > +	unsigned long		freq0;
