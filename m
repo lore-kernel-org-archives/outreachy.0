@@ -1,55 +1,55 @@
 X-GM-THRID: 6392947471116402688
-X-Received: by 10.176.74.12 with SMTP id q12mr3419060uae.41.1488481104335;
-        Thu, 02 Mar 2017 10:58:24 -0800 (PST)
+X-Received: by 10.107.134.1 with SMTP id i1mr4871430iod.10.1488481037450;
+        Thu, 02 Mar 2017 10:57:17 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.19.71 with SMTP id b68ls2253497ioj.22.gmail; Thu, 02 Mar
- 2017 10:58:23 -0800 (PST)
-X-Received: by 10.107.22.4 with SMTP id 4mr4994071iow.61.1488481103578;
-        Thu, 02 Mar 2017 10:58:23 -0800 (PST)
+Received: by 10.107.20.73 with SMTP id 70ls2168460iou.37.gmail; Thu, 02 Mar
+ 2017 10:57:16 -0800 (PST)
+X-Received: by 10.98.211.137 with SMTP id z9mr3107459pfk.34.1488481036807;
+        Thu, 02 Mar 2017 10:57:16 -0800 (PST)
 Return-Path: <aishpant@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id c123si1684739pfa.4.2017.03.02.10.58.23
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id r66si34430pfb.7.2017.03.02.10.57.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 10:58:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Thu, 02 Mar 2017 10:57:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
+       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id x66so7490375pfb.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 10:58:23 -0800 (PST)
+Received: by mail-pg0-x243.google.com with SMTP id 16so1658507pga.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 10:57:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=Vnqni+E8ieZBdU9qM8oA463+4oSSz5a9YT5KA7xXnZc=;
-        b=uZwi6cb+udt2DDhfrmog0L2BvNPRk5uGmb2kLYxysA+OH3Z5Pd3koY5LdhJpMVwrsi
-         7b91J+WORIfyQEROZNrazGfbkGiGiqlG5jFu5+RUMeBVuhuEeKjCioWqHepmMwhyLCg4
-         IOABPjtuhV6l4pIeLk87THqfrDA4l8iEAOEg5H6s35DPLamwN0Dad+acnao6h2xPzo0N
-         Sw4AGa7wGAxAwxmP7+caD9xTFnyryhrBM0VWMlmT96n/h71smjd6AeRIt7/+0+gtORbh
-         WLTVzMlKdOakI03B7X0Dco52DqGQeVNxa0nxSseqg+5+dQA7b6AHtpUh0xNZxNEAKJfv
-         FaUQ==
+        bh=JvSvrJ9W7PMgqOyNSjFUvzycrMQhbH3g6bfdNh1vBZg=;
+        b=R2+hYPn1yKoq18N66LKcKaad5lpC4CBnmMYNCW6VLk1eXpYp9dcFTWfO9bU+JiQg3j
+         17rF6X/4CvqR+JDRqMWd7nVRRcHDih5V3y58UyUbRYRuJyx1UlMINUrQssZe4KhqAz7v
+         3R8VdQDvm5VfS4igeEITOZIyh6sc/vbF4gIBEaYOr2P7wpYg5hBf8XppUBdqzoEL5oQu
+         Yw6KOMZ9nhb+G4yyT+mPI5IVtvOvvUXIcrOC7Z7EkqXi6DaLGwUYo2g84LUoNJAnu93R
+         w2hvCBlXhk1EyOnnQ1dB6R1+1L2bJJkMHqZh96hBDdtGNst41HrV2/fr1jF0aiEjM8rt
+         g8ew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=Vnqni+E8ieZBdU9qM8oA463+4oSSz5a9YT5KA7xXnZc=;
-        b=rIhYsPA3O38MGqr3lcYJAzoqF0WGO5OWkktKvjFPSS8c2GQNwDiuWccujMeXdO3L5x
-         F8qmQU/cG0u76dQPzOOLfVuQ5zyHSDi6/aOrohKZggkctBz7HROrK2jc5CXSXUIKZzqA
-         WoPDaFp29hCeAx0/B3hqA9aq50H8fZ9MqHN3a9JmfG94hdWiRy4sBmoegQJh7TU9vLal
-         3l1fXn6+W5dJYHHTAmzFPyvhSswwWJc2DLLztAilv5chvKIuMbJkZmFVN4SwfSDpjEbt
-         V3Lzy1FI8YLUybk8vvT5Kqme/3B02+csC+NWdDc8oMLfx4MGJ1CGLvYBMsDT2Kld6ZJT
-         9jeA==
-X-Gm-Message-State: AMke39l6VhcE6N4XHvvay9hB3NBCBitwR1cUTWgbe8fFAm3pAj3Pe6Fid+BSfQ3pxsUwBg==
-X-Received: by 10.99.147.68 with SMTP id w4mr17335127pgm.32.1488481103266;
-        Thu, 02 Mar 2017 10:58:23 -0800 (PST)
+        bh=JvSvrJ9W7PMgqOyNSjFUvzycrMQhbH3g6bfdNh1vBZg=;
+        b=I7BTprlFJ0TK/g9LVGpsJUE7CN8AV4/m8oRYn6Eb4iJk4fFcqvTqz1dluj6Vl9qbaj
+         IA2cNC2Hk7rfWi0VDjY+zjojGEGYh676Nt9wcp6EMWAPnf6HVgSodz0H77eHd8+8YvNC
+         K8mNDzbJ4QMyK7agSeqgb2kmehXCcQiuxlpunuWVFfQQCqUNTuR2nhNMEqIp0oqk0mDH
+         LE4eTHIxwH/ZtJGYYutg2lZwNlEG4rhQF/ToFfZ3+2jBwE0X2nXoYCg91VmlCJZ6FbZK
+         jBHn4LUewT2rgsLFhxvFt8sBYNqerKsdM2rzFNKfP61Y66jtGVYlLlEr27YvUzxXVXUQ
+         PjRw==
+X-Gm-Message-State: AMke39llNNIYFJvf8JSdIx7K45vrzgykFtU+MlurubvAUQxkhTxVzLURS7P9e0ZIngEvOQ==
+X-Received: by 10.84.197.131 with SMTP id n3mr20702569pld.43.1488481036627;
+        Thu, 02 Mar 2017 10:57:16 -0800 (PST)
 Return-Path: <aishpant@gmail.com>
 Received: from aishwarya ([106.51.241.134])
-        by smtp.gmail.com with ESMTPSA id w29sm18513376pfi.131.2017.03.02.10.58.18
+        by smtp.gmail.com with ESMTPSA id m6sm18622976pgn.58.2017.03.02.10.57.13
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 10:58:22 -0800 (PST)
-Date: Fri, 3 Mar 2017 00:28:16 +0530
+        Thu, 02 Mar 2017 10:57:16 -0800 (PST)
+Date: Fri, 3 Mar 2017 00:27:11 +0530
 From: Aishwarya Pant <aishpant@gmail.com>
 To: Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>,
 	Eric Anholt <eric@anholt.net>,
@@ -58,9 +58,8 @@ To: Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>,
 	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
 	bcm-kernel-feedback-list@broadcom.com
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v5 5/5] staging: bcm2835-audio: replace printk(KERN_ERR...)
- with dev_err(...)
-Message-ID: <9c5b6857fe9d2fd5076d099cdc950468615175c5.1488480443.git.aishpant@gmail.com>
+Subject: [PATCH v5 4/5] staging: bcm2835-audio: remove extra blank line
+Message-ID: <fb39b13393c7f9ed193e5d9af84886b58eab1aed.1488480443.git.aishpant@gmail.com>
 References: <cover.1488480443.git.aishpant@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -68,38 +67,26 @@ Content-Disposition: inline
 In-Reply-To: <cover.1488480443.git.aishpant@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Use dev_err(... in place of printk(KERN_ERR ...
-Problem found by checkpatch
+Fix the warning: Blank lines aren't necessary after an open brace
+'{' issued by checkpatch on bcm2835-ctl.c
 
 Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
-
 ---
-Changes in v3:
-	-Merge two if conditions
-	-Edit subject and commit message
-Changes in v2:
-	-Prefer dev_err to pr_err where device information is available
-
- drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
-index 46814fd..659c3d1 100644
+index 80b2062..46814fd 100644
 --- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
 +++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
-@@ -139,10 +139,8 @@ static int snd_bcm2835_ctl_put(struct snd_kcontrol *kcontrol,
+@@ -123,7 +123,6 @@ static int snd_bcm2835_ctl_put(struct snd_kcontrol *kcontrol,
+ 			goto unlock;
  		}
- 	}
- 
--	if (changed) {
--		if (bcm2835_audio_set_ctls(chip))
--			printk(KERN_ERR "Failed to set ALSA controls..\n");
--	}
-+	if (changed && bcm2835_audio_set_ctls(chip))
-+		dev_err(chip->card->dev, "Failed to set ALSA controls..\n");
- 
- unlock:
- 	mutex_unlock(&chip->audio_mutex);
+ 		if (changed || (ucontrol->value.integer.value[0] != chip2alsa(chip->volume))) {
+-
+ 			chip->volume = alsa2chip(ucontrol->value.integer.value[0]);
+ 			changed = 1;
+ 		}
 -- 
 2.7.4
 
