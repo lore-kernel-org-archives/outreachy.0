@@ -1,377 +1,183 @@
 X-GM-THRID: 6392907056098050048
-Date: Thu, 2 Mar 2017 07:17:07 -0800 (PST)
-From: SIMRAN SINGHAL <singhalsimran0@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Cc: singhalsimran0@gmail.com, marvin24@gmx.de, gregkh@linuxfoundation.org,
-	ac100@lists.launchpad.net, linux-tegra@vger.kernel.org,
-	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Message-Id: <4958c8a8-4b50-4567-91d8-9554e9bdf7f6@googlegroups.com>
-In-Reply-To: <alpine.DEB.2.20.1703021557230.3414@hadrien>
+X-Received: by 10.99.6.212 with SMTP id 203mr1649908pgg.166.1488466913118;
+        Thu, 02 Mar 2017 07:01:53 -0800 (PST)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.36.82.215 with SMTP id d206ls4678686itb.17.canary-gmail; Thu,
+ 02 Mar 2017 07:01:52 -0800 (PST)
+X-Received: by 10.99.103.71 with SMTP id b68mr5172617pgc.28.1488466912069;
+        Thu, 02 Mar 2017 07:01:52 -0800 (PST)
+Received: by 10.55.163.6 with SMTP id m6msqke;
+        Thu, 2 Mar 2017 06:57:08 -0800 (PST)
+X-Received: by 10.46.80.1 with SMTP id e1mr2012683ljb.10.1488466627758;
+        Thu, 02 Mar 2017 06:57:07 -0800 (PST)
+Return-Path: <marvin24@gmx.de>
+Received: from mout.gmx.net (mout.gmx.net. [212.227.15.18])
+        by gmr-mx.google.com with ESMTPS id 14si796365wmn.2.2017.03.02.06.57.07
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 02 Mar 2017 06:57:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of marvin24@gmx.de designates 212.227.15.18 as permitted sender) client-ip=212.227.15.18;
+Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of marvin24@gmx.de designates 212.227.15.18 as permitted sender) smtp.mailfrom=marvin24@gmx.de
+Received: from fb07-iapwap2.physik.uni-giessen.de ([134.176.19.122]) by
+ mail.gmx.com (mrgmx002 [212.227.17.190]) with ESMTPSA (Nemesis) id
+ 0MIu7d-1chXQH49X7-002WLW; Thu, 02 Mar 2017 15:57:05 +0100
+From: Marc Dietrich <marvin24@gmx.de>
+To: SIMRAN SINGHAL <singhalsimran0@gmail.com>, linux-tegra@vger.kernel.org
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, gregkh@linuxfoundation.org, devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH] staging: nvec: cleanup USLEEP_RANGEcheckpatch checks
+Date: Thu, 02 Mar 2017 15:57:01 +0100
+Message-ID: <1935856.5rv8sDmiv7@fb07-iapwap2>
+In-Reply-To: <b90bc602-cf06-4abb-bea2-6386d4976864@googlegroups.com>
 References: <20170302142418.GA16773@singhal-Inspiron-5558> <alpine.DEB.2.20.1703021535500.3414@hadrien> <b90bc602-cf06-4abb-bea2-6386d4976864@googlegroups.com>
- <alpine.DEB.2.20.1703021557230.3414@hadrien>
-Subject: Re: [Outreachy kernel] [PATCH] staging: nvec: cleanup USLEEP_RANGE
- checkpatch checks
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_970_585911967.1488467827387"
-X-Google-Token: EPPu4MUFh-n8rPTgdAw0
-X-Google-IP: 14.139.82.6
+Content-Type: multipart/signed; boundary="nextPart1664136.sEJSSsdfrg"; micalg="pgp-sha256"; protocol="application/pgp-signature"
+X-Provags-ID: V03:K0:t4SHEWFuxhcNZi6bLptzX/3UonSccUksLaWp0jYYvOBn5q6b4Z+
+ BwY02GSVfPxTeVSfMhaKeFaNmZxHDEpiFmdYzcJPwfohRmVQSPY5ZNCHSx2Yq1BZsTsdJbu
+ Vzkx4WH+nkcIYfZg4YMUtFUBCfGc40au+dJYYIgjUYxffh2OOFN0Lt8u3O/+NopPCXZCueN
+ AXtVmJ+rOGmU5QlBDWmTw==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:kLap+CnAtig=:pdAnJCXClQa2mAxI5RwlRO
+ KBCgZijS28jdo+WseStuyFRpLPhW9YfMUZSDtxVWK/hnxJIAZmnvRzQ3ImxfvRLknUtkWYUi3
+ mKUDbuM7Y2Bn5+mlwUPM4i+ULUQZ2X70BdiTd6IU8/MROyQgHvTyhKLMToh/Q/bo7wXTgiaDe
+ v4HbsroojEc1S0nbYpCUY+l4ZS4TvKBD5dj6D37cI7taMyQJorKMtnX0zshpv+hrpGMnFmd5Z
+ Xna3LoksG1ycjzYmSVzFHu6M8IJjXzcIUyjOS22gtBVcVSGP59+7rTGed7KWLF8m+xnOPFRlF
+ MlMj/OMJzfaxu0AKqieF0DKfd0hWsaMgo/QbGILvAgCxP4xwZ1RKzKsofWw/+2OAFCH+g6MkY
+ BOk5AnKJb+G0XKGxrbr+E7UK7i4PEpNYbQ5xYMMcDJ94PAkkKKpAfv14sgaNN7rWEWiCpYLxm
+ lfL5qujofVUdME4uyIVu8f4oLgYE4VYUyH/12+SSIevDamX7zl9BrppCpPECqd1386tHxj4mp
+ nbIgDsUMcm4QlHzfxVxPF1RdEjblBBBCfmkrQeTm1/oqLoc0tyedtkmT+zoLA41qw1EyCA739
+ faCDLlg7WZiYRpU3T+fwwItRgbBP9BoW7aeE/7xM3ii0rZ0+LrzTJqUY7ZEkBsw5962F3W5gY
+ Vg0PQWd4msDVhPnrbadl1Oeg+c//Zn+C0txk/VkCSmm5Wd07K/i5bDqZ3XlJF/NitKBQN1PuI
+ +E6RZjOx7jHNwsPtZwzEi1Pp2qnm1Mvg/rnqGQMCUxDiFmTB1NhfaSG7X+Y=
 
-------=_Part_970_585911967.1488467827387
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_971_825758182.1488467827387"
-
-------=_Part_971_825758182.1488467827387
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-
-
-
-On Thursday, March 2, 2017 at 8:31:23 PM UTC+5:30, Julia Lawall wrote:
->
->
->
-> On Thu, 2 Mar 2017, SIMRAN SINGHAL wrote: 
->
-> > 
-> > 
-> > On Thursday, March 2, 2017 at 8:06:40 PM UTC+5:30, Julia Lawall wrote: 
-> > 
-> > 
-> >       On Thu, 2 Mar 2017, simran singhal wrote: 
-> > 
-> >       > Resolve strict checkpatch USLEEP_RANGE checks by converting 
-> >       delays and 
-> >       > sleeps as described in 
-> >       ./Documentation/timers/timers-howto.txt. 
-> >       > 
-> >       > CHECK: usleep_range is preferred over udelay; see 
-> >       Documentation/ 
-> >       > timers/timers-howto.txt 
-> >       > 
-> >       > Signed-off-by: simran singhal <singhal...@gmail.com> 
-> >       > --- 
-> >       >  drivers/staging/nvec/nvec.c | 4 ++-- 
-> >       >  1 file changed, 2 insertions(+), 2 deletions(-) 
-> >       > 
-> >       > diff --git a/drivers/staging/nvec/nvec.c 
-> >       b/drivers/staging/nvec/nvec.c 
-> >       > index c1feccf..cd35e64 100644 
-> >       > --- a/drivers/staging/nvec/nvec.c 
-> >       > +++ b/drivers/staging/nvec/nvec.c 
-> >       > @@ -631,7 +631,7 @@ static irqreturn_t nvec_interrupt(int irq, 
-> >       void *dev) 
-> >       >                  break; 
-> >       >          case 2:                /* first byte after command */ 
-> >       >                  if (status == (I2C_SL_IRQ | RNW | RCVD)) { 
-> >       > -                        udelay(33); 
-> >       > +                        usleep_range(33, 100); 
-> > 
-> >       How did you choose the upper limit. 
-> > 
-> >       I believe that Greg previously suggested not to make these 
-> >       changes if you 
-> >       have no way to test them. 
-> > 
-> > Julia, After going through the reply given by Nicholas Mc Guire  
-> > 
-> https://www.mail-archive.com/kernelnewbies@kernelnewbies.org/msg16464.html 
-> > in this reply he has mentioned that even the range of 10 microsecond is 
-> > enough, 
-> > so I prefer to take 100 as upper limit.   
->
-> Than you for the link. 
->
-> It looks like he suggests to change 33 to 30-40, not to 33-100.  In any 
-> case, you have three choices for this kind of issue: 
-> 1. Don't make the change, because you can't test the result 
-> 2. Make the change, and explain the commit log what your rationale is 
-> 3. Make the change, and explain below the --- that you have no idea what 
-> you are doing, and you are just proposing the patch as something concrete 
-> to start a discussion. 
->
-> But your preference is not a suitable justification.  The hardware does 
-> something, and the choice can only really be made by the person who knows 
-> what it does. 
->
->  
-Thanks, 
-Julia I'll keep this in mind from next time.
-
-I choose the range from 33 to 100 for being on more safer side.
-Should I make it 30-40 and send v2.
-
-julia 
->
-> >   
-> > Simran 
-> > 
-> >       julia 
-> > 
-> > 
-> >       >                          if (nvec->rx->data[0] != 0x01) { 
-> >       >                                  dev_err(nvec->dev, 
-> >       >                                          "Read without prior 
-> >       read command\n"); 
-> >       > @@ -718,7 +718,7 @@ static irqreturn_t nvec_interrupt(int irq, 
-> >       void *dev) 
-> >       >           * We experience less incomplete messages with this 
-> >       delay than without 
-> >       >           * it, but we don't know why. Help is appreciated. 
-> >       >           */ 
-> >       > -        udelay(100); 
-> >       > +        usleep_range(100, 200); 
-> >       > 
-> >       >          return IRQ_HANDLED; 
-> >       >  } 
-> >       > -- 
-> >       > 2.7.4 
-> >       > 
-> >       > -- 
-> >       > You received this message because you are subscribed to the 
-> >       Google Groups "outreachy-kernel" group. 
-> >       > To unsubscribe from this group and stop receiving emails from 
-> >       it, send an email to outreachy-kern...@googlegroups.com. 
-> >       > To post to this group, send email to 
-> >       outreach...@googlegroups.com. 
-> >       > To view this discussion on the web visithttps://
-> groups.google.com/d/msgid/outreachy-kernel/20170302142418.GA16773%4 
-> >       0singhal-Inspiron-5558. 
-> >       > For more options, visit https://groups.google.com/d/optout. 
-> >       > 
-> > 
-> > -- 
-> > You received this message because you are subscribed to the Google 
-> Groups 
-> > "outreachy-kernel" group. 
-> > To unsubscribe from this group and stop receiving emails from it, send 
-> an 
-> > email to outreachy-kern...@googlegroups.com <javascript:>. 
-> > To post to this group, send email to outreach...@googlegroups.com 
-> <javascript:>. 
-> > To view this discussion on the web visithttps://
-> groups.google.com/d/msgid/outreachy-kernel/b90bc602-cf06-4abb-bea2- 
-> > 6386d4976864%40googlegroups.com. 
-> > For more options, visit https://groups.google.com/d/optout. 
-> > 
-> >
-
-
-------=_Part_971_825758182.1488467827387
-Content-Type: text/html; charset=utf-8
+--nextPart1664136.sEJSSsdfrg
 Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="ISO-8859-1"
 
-<div dir=3D"ltr"><br><br>On Thursday, March 2, 2017 at 8:31:23 PM UTC+5:30,=
- Julia Lawall wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;ma=
-rgin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
-<br>
-<br>On Thu, 2 Mar 2017, SIMRAN SINGHAL wrote:
-<br>
-<br>&gt;
-<br>&gt;
-<br>&gt; On Thursday, March 2, 2017 at 8:06:40 PM UTC+5:30, Julia Lawall wr=
-ote:
-<br>&gt;
-<br>&gt;
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 On Thu, 2 Mar 2017, simran singhal wrote:
-<br>&gt;
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; Resolve strict checkpatch USLEEP_RANGE c=
-hecks by converting
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 delays and
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; sleeps as described in
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 ./Documentation/timers/timers-<wbr>howto.txt.
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; CHECK: usleep_range is preferred over ud=
-elay; see
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 Documentation/
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; timers/timers-howto.txt
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; Signed-off-by: simran singhal &lt;<a>sin=
-ghal...@gmail.com</a>&gt;
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; ---
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0drivers/staging/nvec/nvec.c | 4 ++=
---
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A01 file changed, 2 insertions(+), 2=
- deletions(-)
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; diff --git a/drivers/staging/nvec/nvec.c
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 b/drivers/staging/nvec/nvec.c
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; index c1feccf..cd35e64 100644
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; --- a/drivers/staging/nvec/nvec.c
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; +++ b/drivers/staging/nvec/nvec.c
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; @@ -631,7 +631,7 @@ static irqreturn_t n=
-vec_interrupt(int irq,
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 void *dev)
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0case 2:=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0/* first byte after command */
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (status =
-=3D=3D (I2C_SL_IRQ | RNW | RCVD)) {
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>udelay(33);
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>usleep_range(33, 100);
-<br>&gt;
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 How did you choose the upper limit.
-<br>&gt;
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 I believe that Greg previously suggested not =
-to make these
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 changes if you
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 have no way to test them.
-<br>&gt;
-<br>&gt; Julia, After going through the reply given by=C2=A0Nicholas Mc Gui=
-re=C2=A0
-<br>&gt; <a href=3D"https://www.mail-archive.com/kernelnewbies@kernelnewbie=
-s.org/msg16464.html" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this=
-.href=3D&#39;https://www.google.com/url?q\x3dhttps%3A%2F%2Fwww.mail-archive=
-.com%2Fkernelnewbies%40kernelnewbies.org%2Fmsg16464.html\x26sa\x3dD\x26sntz=
-\x3d1\x26usg\x3dAFQjCNG9H-EMtN_1PfHelUYGcbw5YglPBw&#39;;return true;" oncli=
-ck=3D"this.href=3D&#39;https://www.google.com/url?q\x3dhttps%3A%2F%2Fwww.ma=
-il-archive.com%2Fkernelnewbies%40kernelnewbies.org%2Fmsg16464.html\x26sa\x3=
-dD\x26sntz\x3d1\x26usg\x3dAFQjCNG9H-EMtN_1PfHelUYGcbw5YglPBw&#39;;return tr=
-ue;">https://www.mail-archive.com/<wbr>kernelnewbies@kernelnewbies.<wbr>org=
-/msg16464.html</a>
-<br>&gt; in this reply he has mentioned that even the range of 10 microseco=
-nd is
-<br>&gt; enough,
-<br>&gt; so I prefer to take 100 as upper limit. =C2=A0
-<br>
-<br>Than you for the link.
-<br>
-<br>It looks like he suggests to change 33 to 30-40, not to 33-100. =C2=A0I=
-n any
-<br>case, you have three choices for this kind of issue:
-<br>1. Don&#39;t make the change, because you can&#39;t test the result
-<br>2. Make the change, and explain the commit log what your rationale is
-<br>3. Make the change, and explain below the --- that you have no idea wha=
-t
-<br>you are doing, and you are just proposing the patch as something concre=
-te
-<br>to start a discussion.
-<br>
-<br>But your preference is not a suitable justification. =C2=A0The hardware=
- does
-<br>something, and the choice can only really be made by the person who kno=
-ws
-<br>what it does.
-<br>
-<br></blockquote><div>=C2=A0</div><div>Thanks,=C2=A0</div><div>Julia I&#39;=
-ll keep this in mind from next time.</div><div><br></div><div>I choose the =
-range from 33 to 100 for being on more safer side.</div><div>Should I make =
-it 30-40 and send v2.</div><div><br></div><blockquote class=3D"gmail_quote"=
- style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-=
-left: 1ex;">julia
-<br>
-<br>&gt; =C2=A0
-<br>&gt; Simran
-<br>&gt;
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 julia
-<br>&gt;
-<br>&gt;
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (nvec-&gt;rx-&gt;data[0] !=3D 0x01) =
-{
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=
-=A0=C2=A0=C2=A0dev_err(nvec-&gt;dev,
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0&quot;Read w=
-ithout prior
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 read command\n&quot;);
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; @@ -718,7 +718,7 @@ static irqreturn_t n=
-vec_interrupt(int irq,
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 void *dev)
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 * We experience less incomplete messages with this
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 delay than without
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 * it, but we don&#39;t know why. Help is appreciated.
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 */
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0udelay(100);
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0usleep_range(100, 200);
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0return IRQ_HANDLED;
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0}
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; --
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; 2.7.4
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; --
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; You received this message because you ar=
-e subscribed to the
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 Google Groups &quot;outreachy-kernel&quot; gr=
-oup.
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; To unsubscribe from this group and stop =
-receiving emails from
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 it, send an email to <a>outreachy-kern...@<wb=
-r>googlegroups.com</a>.
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; To post to this group, send email to
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 <a>outreach...@googlegroups.com</a>.
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; To view this discussion on the web visit=
-https://<a href=3D"http://groups.google.com/d/msgid/outreachy-kernel/201703=
-02142418.GA16773%4" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.=
-href=3D&#39;http://groups.google.com/d/msgid/outreachy-kernel/2017030214241=
-8.GA16773%4&#39;;return true;" onclick=3D"this.href=3D&#39;http://groups.go=
-ogle.com/d/msgid/outreachy-kernel/20170302142418.GA16773%4&#39;;return true=
-;">groups.google.<wbr>com/d/msgid/outreachy-kernel/<wbr>20170302142418.GA16=
-773%4</a>
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 0singhal-Inspiron-5558.
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; For more options, visit <a href=3D"https=
-://groups.google.com/d/optout" target=3D"_blank" rel=3D"nofollow" onmousedo=
-wn=3D"this.href=3D&#39;https://groups.google.com/d/optout&#39;;return true;=
-" onclick=3D"this.href=3D&#39;https://groups.google.com/d/optout&#39;;retur=
-n true;">https://groups.google.com/d/<wbr>optout</a>.
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
-<br>&gt;
-<br>&gt; --
-<br>&gt; You received this message because you are subscribed to the Google=
- Groups
-<br>&gt; &quot;outreachy-kernel&quot; group.
-<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
-send an
-<br>&gt; email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-=
-mailto=3D"xh2uubLSAwAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;ja=
-vascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;r=
-eturn true;">outreachy-kern...@<wbr>googlegroups.com</a>.
-<br>&gt; To post to this group, send email to <a href=3D"javascript:" targe=
-t=3D"_blank" gdf-obfuscated-mailto=3D"xh2uubLSAwAJ" rel=3D"nofollow" onmous=
-edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
-ef=3D&#39;javascript:&#39;;return true;">outreach...@googlegroups.<wbr>com<=
-/a>.
-<br>&gt; To view this discussion on the web visithttps://<a href=3D"http://=
-groups.google.com/d/msgid/outreachy-kernel/b90bc602-cf06-4abb-bea2-" target=
-=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://groups.=
-google.com/d/msgid/outreachy-kernel/b90bc602-cf06-4abb-bea2-&#39;;return tr=
-ue;" onclick=3D"this.href=3D&#39;http://groups.google.com/d/msgid/outreachy=
--kernel/b90bc602-cf06-4abb-bea2-&#39;;return true;">groups.google.<wbr>com/=
-d/msgid/outreachy-kernel/<wbr>b90bc602-cf06-4abb-bea2-</a>
-<br>&gt; 6386d4976864%<a href=3D"http://40googlegroups.com" target=3D"_blan=
-k" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://www.google.com/u=
-rl?q\x3dhttp%3A%2F%2F40googlegroups.com\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dA=
-FQjCNEjt8k9OhR10y0jYLX0ZgJix1hnBQ&#39;;return true;" onclick=3D"this.href=
-=3D&#39;http://www.google.com/url?q\x3dhttp%3A%2F%2F40googlegroups.com\x26s=
-a\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNEjt8k9OhR10y0jYLX0ZgJix1hnBQ&#39;;retur=
-n true;">40googlegroups.<wbr>com</a>.
-<br>&gt; For more options, visit <a href=3D"https://groups.google.com/d/opt=
-out" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;htt=
-ps://groups.google.com/d/optout&#39;;return true;" onclick=3D"this.href=3D&=
-#39;https://groups.google.com/d/optout&#39;;return true;">https://groups.go=
-ogle.com/d/<wbr>optout</a>.
-<br>&gt;
-<br>&gt;</blockquote></div>
-------=_Part_971_825758182.1488467827387--
+Hi Simran,
 
-------=_Part_970_585911967.1488467827387--
+Am Donnerstag, 2. M=E4rz 2017, 15:48:13 CET schrieb SIMRAN SINGHAL:
+> On Thursday, March 2, 2017 at 8:06:40 PM UTC+5:30, Julia Lawall wrote:
+> > On Thu, 2 Mar 2017, simran singhal wrote:
+> > > Resolve strict checkpatch USLEEP_RANGE checks by converting delays and
+> > > sleeps as described in ./Documentation/timers/timers-howto.txt.
+> > >=20
+> > > CHECK: usleep_range is preferred over udelay; see Documentation/
+> > > timers/timers-howto.txt
+> > >=20
+> > > Signed-off-by: simran singhal <singhal...@gmail.com <javascript:>>
+
+I prefer not to change this. The whole interrupt routine is very wonky, and=
+=20
+changing some delays might break the communication with the i2c master. Als=
+o=20
+this is in interrupt context, so a change to usleep_range may not by=20
+justified.
+
+Marc
+
+
+
+> > > ---
+> > >=20
+> > >  drivers/staging/nvec/nvec.c | 4 ++--
+> > >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > >=20
+> > > diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
+> > > index c1feccf..cd35e64 100644
+> > > --- a/drivers/staging/nvec/nvec.c
+> > > +++ b/drivers/staging/nvec/nvec.c
+> > > @@ -631,7 +631,7 @@ static irqreturn_t nvec_interrupt(int irq, void
+> >=20
+> > *dev)
+> >=20
+> > >                  break;
+> > >         =20
+> > >          case 2:                /* first byte after command */
+> > >         =20
+> > >                  if (status =3D=3D (I2C_SL_IRQ | RNW | RCVD)) {
+> > >=20
+> > > -                        udelay(33);
+> > > +                        usleep_range(33, 100);
+> >=20
+> > How did you choose the upper limit.
+> >=20
+> > I believe that Greg previously suggested not to make these changes if y=
+ou
+> > have no way to test them.
+> >=20
+> > Julia, After going through the reply given by Nicholas Mc Guire
+>=20
+> https://www.mail-archive.com/kernelnewbies@kernelnewbies.org/msg16464.html
+> in this reply he has mentioned that even the range of 10 microsecond is
+> enough,
+> so I prefer to take 100 as upper limit.
+>=20
+> Simran
+>=20
+> julia
+>=20
+> > >                          if (nvec->rx->data[0] !=3D 0x01) {
+> > >                         =20
+> > >                                  dev_err(nvec->dev,
+> > >                                 =20
+> > >                                          "Read without prior read
+> >=20
+> > command\n");
+> >=20
+> > > @@ -718,7 +718,7 @@ static irqreturn_t nvec_interrupt(int irq, void
+> >=20
+> > *dev)
+> >=20
+> > >           * We experience less incomplete messages with this delay th=
+an
+> >=20
+> > without
+> >=20
+> > >           * it, but we don't know why. Help is appreciated.
+> > >           */
+> > >=20
+> > > -        udelay(100);
+> > > +        usleep_range(100, 200);
+> > >=20
+> > >          return IRQ_HANDLED;
+> > > =20
+> > >  }
+> >=20
+> > Groups "outreachy-kernel" group.
+> >=20
+> > > To unsubscribe from this group and stop receiving emails from it, send
+> >=20
+> > an email to outreachy-kern...@googlegroups.com <javascript:>.
+> >=20
+> > > To post to this group, send email to outreach...@googlegroups.com
+> >=20
+> > <javascript:>.
+> >=20
+> > > To view this discussion on the web visit
+> >=20
+> > https://groups.google.com/d/msgid/outreachy-kernel/20170302142418.GA167=
+73%
+> > 40singhal-Inspiron-5558.>=20
+> > > For more options, visit https://groups.google.com/d/optout.
+
+
+--nextPart1664136.sEJSSsdfrg
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEEySF+t0C8+8jyqfBvrJ5Hf0cUG2gFAli4Mr0ACgkQrJ5Hf0cU
+G2jSzQf/e5s+HPVWQ4IK/5hwmAmr3vqiJeLCq8yyP7LWgwlA0yZas9DYeLiqM/EC
+qbJQmpmNBVcB+SQSOD7VUblb/VuoovWryI605lx09osNnIzNbpMscbxTDU3jRFEF
+POhAKLKayJ86jVr85He2lwAhZ2Eb18AVAqqTeh65g9xHoit2FYNlAQeRpmDOaFOW
+ulDs0HNekHDY37LV2gqBOnE8OfmhrulTD8K1Ra9m7CTEugEelqGnCoFponS/MsPL
+KBJZN7cOUpK75jSxb+zeV3znRC1gdplpK3AgrNLZMN1KnyUJsjuTZM8fkzaDxNRU
+UssuSiA9F6iarcj+RiiE9F2zq8c9pw==
+=WFMG
+-----END PGP SIGNATURE-----
+
+--nextPart1664136.sEJSSsdfrg--
+
 
