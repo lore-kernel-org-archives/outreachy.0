@@ -1,53 +1,53 @@
 X-GM-THRID: 6392997475785900032
-X-Received: by 10.36.16.81 with SMTP id 78mr62955ity.5.1488489561724;
-        Thu, 02 Mar 2017 13:19:21 -0800 (PST)
+X-Received: by 10.157.41.66 with SMTP id d60mr5623775otb.113.1488489557712;
+        Thu, 02 Mar 2017 13:19:17 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.162.197 with SMTP id l188ls589250ioe.23.gmail; Thu, 02 Mar
- 2017 13:19:21 -0800 (PST)
-X-Received: by 10.99.7.137 with SMTP id 131mr5955297pgh.49.1488489561182;
-        Thu, 02 Mar 2017 13:19:21 -0800 (PST)
+Received: by 10.36.20.13 with SMTP id 13ls141864itg.18.canary-gmail; Thu, 02
+ Mar 2017 13:19:17 -0800 (PST)
+X-Received: by 10.99.55.4 with SMTP id e4mr6226996pga.156.1488489557238;
+        Thu, 02 Mar 2017 13:19:17 -0800 (PST)
 Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id y90si109968pfa.6.2017.03.02.13.19.21
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id s64si1784089pfk.0.2017.03.02.13.19.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 13:19:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Thu, 02 Mar 2017 13:19:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id 16so1966035pga.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 13:19:21 -0800 (PST)
+Received: by mail-pf0-x241.google.com with SMTP id x66so7776656pfb.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 13:19:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=eb6efTKyY4svCNWvcvo+5FOeS3mY+fTEJ87fSbKkQEE=;
-        b=ZKerhy1ikKfyAsTpgqyTSe0J39IZ4ENOQ5xyrtUpXn0OvUgTM9x5dZsdh2HbrxAoYa
-         elUJUOtL0wedSVFtaXOwVFHXIgVtd0BYgb+hcWAuZ94+E/zuqmPMZSG7cZRkHmF786HE
-         F7MAKQQMiJKKPEFy08lbScS2OuDNIl4nwjNLBmXbDGSvWSCaim0pBu6PZlcakkvyyKXa
-         fTEXD5JGk4U0VMxg6D+XrUTIvh1f4phTxr3WnUq59Z77zJ4Z6pM6syx6Wmtb1DLWc1Qw
-         jO3NM6+CU2atQ5uHFFPWl3k1MQ1cwFnje1NvAvUv6bo4H8LMWgSTtUrQ8EzDd3FsHFzh
-         7v0w==
+        bh=e5mqRgYaFToFY3ao1hh7/avZxyYnw/8AM/5EOyz1smo=;
+        b=Szu+KmdENgRuMfPi6LlR9Zf+wgGkdJehBiC12Um1XfVTcrdB96yT6cFByxzLmbknyK
+         0Oe+dPhIm3MXwotc28BlZIYXdMl9kXNkaOO0gekCBg9gU/BxIbCcLDNaPAxTQ67SgVqs
+         NoAibzd6BmCGzG58W6IUTfxp3D6OtHifxekUrOrCgMpblZ82m9r9iqbujeArE2zMBOGA
+         j8ic3OLgc4O7O03OehMZA6Gt9Uj1E4L2dV2fKlnTI84ZEq/dqepndAEc1HxEoB3El5CS
+         LVLFOyCiHXCmHwHzim5E9NBaST7ffHeiNL0bY/rw8uKIsH1i8HhCgnhuZ55i8EzhcfNL
+         fECA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=eb6efTKyY4svCNWvcvo+5FOeS3mY+fTEJ87fSbKkQEE=;
-        b=Uis7MFy8rBzLzfK0Mtg85VENYWjovFwu0XdhSBI+iR1i036z9sR4oSuCVT/JD/2EV9
-         u3F4JlqZFWjA4R+kHiw+T4ZQkOym39WG+MlBrW74qA9VCloTHp9mp2MYQdqZFl2dt0cV
-         bceUVjbCLO4sBy6c4uVmSX5jgULYfdopIgPhhyd3VAM4jajd7bm3uUv1B6AI1QA7pCwB
-         fEwtwBTLEwHceVxB1iue9S/oG+v9m7f7otVzms0zN53h86GKmWcPw0B6OROB0N7M0Xv6
-         lChWDqx4RfTURec0AZTjp0Omy1UnN3Xq5H9GyAJ8QM+6eiXqH1wkWYgxCnuy1yDhs7Mf
-         vjYQ==
-X-Gm-Message-State: AMke39lylq4hjgBrdKXZh76LXm0btEph1fD+8GIGx1lbm5b9YuuE1ZpncWfgI3yt+P+ofA==
-X-Received: by 10.98.201.212 with SMTP id l81mr9831969pfk.13.1488489560977;
-        Thu, 02 Mar 2017 13:19:20 -0800 (PST)
+        bh=e5mqRgYaFToFY3ao1hh7/avZxyYnw/8AM/5EOyz1smo=;
+        b=rxrk0qC1c/15Uyu/M0tDwQZZ5sjBmbwSFks+o86FIcswf8jOlVV4d/FhMAd0PXpKh/
+         /yWPl4yp+TCqdlhmTak0KDqcDuVA8Ptijc6Yp0SzOygK0nzdrsGkRXBQiBJQryZsP1QB
+         UPHNJusAAYOu8OHL5dG0AR0BAx5oKYf4HOVbhkPzDYyzrPEEtT9lKDQJKA4hK3aFXQsm
+         ZoCoyZpw17lHjd+p5TUKQtxBmbCOlrD/1djn27RBXkCKPZekM3yUEDPfrd/jSk8JsU86
+         ITmcqlS0ZYLBumbkJkGX+oexp2vfIcVRF4fDYIjzR31NFeaIFhfUdGr2/3OhsE1y2sbd
+         uGZg==
+X-Gm-Message-State: AMke39kurobXa5wA4ZN1mcTe4+3hJ0TJYNBTLdTecq6Bo4BEXjcWsANPLLnjz5EaeMJu9w==
+X-Received: by 10.98.42.151 with SMTP id q145mr17755640pfq.175.1488489557028;
+        Thu, 02 Mar 2017 13:19:17 -0800 (PST)
 Return-Path: <singhalsimran0@gmail.com>
 Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id n8sm18986550pgc.16.2017.03.02.13.19.19
+        by smtp.gmail.com with ESMTPSA id v4sm18865960pfb.36.2017.03.02.13.19.15
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 02 Mar 2017 13:19:19 -0800 (PST)
+        Thu, 02 Mar 2017 13:19:16 -0800 (PST)
 From: simran singhal <singhalsimran0@gmail.com>
 To: Larry.Finger@lwfinger.net
 Cc: florian.c.schilhabel@googlemail.com,
@@ -57,9 +57,9 @@ Cc: florian.c.schilhabel@googlemail.com,
 	oleg.drokin@intel.com,
 	marvin24@gmx.de,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCH 4/5] staging: rts5208: Remove unnecessary cast on void pointer
-Date: Fri,  3 Mar 2017 02:49:03 +0530
-Message-Id: <1488489544-25941-4-git-send-email-singhalsimran0@gmail.com>
+Subject: [PATCH 3/5] staging: lustre: lustre: Remove unnecessary cast on void pointer
+Date: Fri,  3 Mar 2017 02:49:02 +0530
+Message-Id: <1488489544-25941-3-git-send-email-singhalsimran0@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1488489544-25941-1-git-send-email-singhalsimran0@gmail.com>
 References: <1488489544-25941-1-git-send-email-singhalsimran0@gmail.com>
@@ -84,22 +84,45 @@ identifier f;
 
 Signed-off-by: simran singhal <singhalsimran0@gmail.com>
 ---
- drivers/staging/rts5208/rtsx_transport.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/lustre/lustre/llite/range_lock.c | 2 +-
+ drivers/staging/lustre/lustre/mgc/mgc_request.c  | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/rts5208/rtsx_transport.c b/drivers/staging/rts5208/rtsx_transport.c
-index 2379901..d745b93 100644
---- a/drivers/staging/rts5208/rtsx_transport.c
-+++ b/drivers/staging/rts5208/rtsx_transport.c
-@@ -767,7 +767,7 @@ int rtsx_transfer_data(struct rtsx_chip *chip, u8 card, void *buf, size_t len,
+diff --git a/drivers/staging/lustre/lustre/llite/range_lock.c b/drivers/staging/lustre/lustre/llite/range_lock.c
+index 14148a0..161391b 100644
+--- a/drivers/staging/lustre/lustre/llite/range_lock.c
++++ b/drivers/staging/lustre/lustre/llite/range_lock.c
+@@ -174,7 +174,7 @@ void range_unlock(struct range_lock_tree *tree, struct range_lock *lock)
+  */
+ static enum interval_iter range_lock_cb(struct interval_node *node, void *arg)
+ {
+-	struct range_lock *lock = (struct range_lock *)arg;
++	struct range_lock *lock = arg;
+ 	struct range_lock *overlap = node2rangelock(node);
  
- 	if (use_sg) {
- 		err = rtsx_transfer_sglist_adma(chip, card,
--						(struct scatterlist *)buf,
-+						buf,
- 						use_sg, dma_dir, timeout);
- 	} else {
- 		err = rtsx_transfer_buf(chip, card, buf, len, dma_dir, timeout);
+ 	lock->rl_blocking_ranges += overlap->rl_lock_count + 1;
+diff --git a/drivers/staging/lustre/lustre/mgc/mgc_request.c b/drivers/staging/lustre/lustre/mgc/mgc_request.c
+index 6a76605..b13961a 100644
+--- a/drivers/staging/lustre/lustre/mgc/mgc_request.c
++++ b/drivers/staging/lustre/lustre/mgc/mgc_request.c
+@@ -1034,7 +1034,7 @@ static int mgc_set_info_async(const struct lu_env *env, struct obd_export *exp,
+ 		rc = sptlrpc_parse_flavor(val, &flvr);
+ 		if (rc) {
+ 			CERROR("invalid sptlrpc flavor %s to MGS\n",
+-			       (char *)val);
++			       val);
+ 			return rc;
+ 		}
+ 
+@@ -1050,7 +1050,7 @@ static int mgc_set_info_async(const struct lu_env *env, struct obd_export *exp,
+ 			sptlrpc_flavor2name(&cli->cl_flvr_mgc,
+ 					    str, sizeof(str));
+ 			LCONSOLE_ERROR("asking sptlrpc flavor %s to MGS but currently %s is in use\n",
+-				       (char *)val, str);
++				       val, str);
+ 			rc = -EPERM;
+ 		}
+ 		return rc;
 -- 
 2.7.4
 
