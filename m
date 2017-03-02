@@ -1,53 +1,52 @@
 X-GM-THRID: 6392997475785900032
-X-Received: by 10.107.146.215 with SMTP id u206mr4205955iod.29.1488489554689;
-        Thu, 02 Mar 2017 13:19:14 -0800 (PST)
+X-Received: by 10.107.24.67 with SMTP id 64mr5002593ioy.52.1488489549991;
+        Thu, 02 Mar 2017 13:19:09 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.167.6 with SMTP id q6ls1920430ioe.4.gmail; Thu, 02 Mar
- 2017 13:19:13 -0800 (PST)
-X-Received: by 10.99.110.1 with SMTP id j1mr5780963pgc.52.1488489553659;
-        Thu, 02 Mar 2017 13:19:13 -0800 (PST)
+Received: by 10.157.9.185 with SMTP id q54ls4151660otd.11.gmail; Thu, 02 Mar
+ 2017 13:19:09 -0800 (PST)
+X-Received: by 10.129.106.70 with SMTP id f67mr5703220ywc.108.1488489549604;
+        Thu, 02 Mar 2017 13:19:09 -0800 (PST)
 Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id s64si1783937pfk.0.2017.03.02.13.19.13
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id h79si1737983pfh.2.2017.03.02.13.19.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 13:19:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Thu, 02 Mar 2017 13:19:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id j5so7816861pfb.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 13:19:13 -0800 (PST)
+Received: by mail-pg0-x243.google.com with SMTP id s67so10455187pgb.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 13:19:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=hRDcKLqcQlGruaCoetldLID6JaNigB9rqxeQfkV3xps=;
-        b=uYdUr+taZ2L5VUFEs7VBxZMJN52FAF73v8gjBqDcARkwMaFiqQwb5gJmpZ0j671JRe
-         3iIbMuSZi/N+WI2vRgYx+0aHXj8S8DSLjK4tts+DPbuHnNDH8LmA6ImUvdFCX4ijVBWW
-         KwZcy9JMgFIP6Ktd1UyoUZVYOoW+c99S7azMCYf7hVdjtXY+akSAKMwTdoO34GjWL1u0
-         oRovO3d30rCTt5iYaWxqvwEPaZM1fJ7VkANP3aM02PL0VPXpvsMaxsJua1VJSM0ommzd
-         H6U8deocwimhxKwcGaYXGc8XV+MDbJJlTJogPWclzMsb9IYuDZJdRYA5nz6QavFUQAZX
-         5yWg==
+        h=from:to:cc:subject:date:message-id;
+        bh=KtIwk4uq3SEICXanWiMKAGDXPoSN78M1q78Os+Z/V5A=;
+        b=psOWCkw3U/raC7d6TxCvRl9BZP7sd4Zpsj+heLcAPq0O5ra4KH4qhmmcrlDvC9GIjT
+         frV0kIQJcZjCfeB2Yflkd2Lwy26el0qyvJN/e6aqc5VPtub+c7rBzfB5muTzdrawMwZb
+         U3FsxiW9FxR7N7gYWWLErC5vauskY+1H71BhGfjzpA0axwQOVtgsYxrVfTpNGAg2jSuK
+         QUd42equQdGj4EZpnZRb/23KGMg4XDXfoluO8ox+RhcMdsZoC7HCN6bFrcqKQlu0i9QD
+         Kz8iS/6HflUyo6JgQ2aWr0aKts90ntZgswf2frwWiv/q3aODqOcYCfGUMJXqM/+wUEy3
+         mpbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=hRDcKLqcQlGruaCoetldLID6JaNigB9rqxeQfkV3xps=;
-        b=LE+lHaSVdb3QmR82O9nEJ9UyOK+E4Rg7z3gveXDtTOIdPZBLYxnDn6dRbEszzeHDKm
-         2hiwSiYnJnuHBIdL6wcyT31Wsfd/5Xv3pO6L6XT3qNxFvvIUbd4zRD/ybdeEJRV3fgmF
-         1vPXaad6bPZGNqvb2ElYzaGFYWscGNT124JceOzEH2LeNalZioAKbrVcfcQI/bXDnvDJ
-         ZJVitfX0SfM8W8YVtItRo8zfX68MNPuNOyOI9irpJfgaksM6dWmNhZ3Jx1PHoq93+EUk
-         ABJ6Jpo7SjON7QP4weudc22NDFicO/V9B9oj3Uz2oT0T5KdrPrFXEPJm0QNAHn6Q/ukQ
-         HHvg==
-X-Gm-Message-State: AMke39n3HYK+xHBRi4M4bHwYfo7VFbTBh9gvKxo658pfFoLeCCHPzY5mGrU65WpLJfLJmQ==
-X-Received: by 10.99.167.9 with SMTP id d9mr8798303pgf.19.1488489553452;
-        Thu, 02 Mar 2017 13:19:13 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=KtIwk4uq3SEICXanWiMKAGDXPoSN78M1q78Os+Z/V5A=;
+        b=hMQQkT787R5G7i7rwOUMZMcaxYq9Ud4wqoct6YoOKzu1SBk8qbugxmcBdNCiZ4t5uM
+         7eQDLET98a8nUMlSbie7cdefom4g7q2BZPfxcRJDAh6vPNG5tYnLWcb8DKew+MmCWaYg
+         mvn/oUGMM/BcOiYlE5vemkZ+ymgESNDkZQLYKz1zqBU/wTVjJw6+3RNqwRZdUIGqM9bs
+         5GmbazQvfjhrYzOSNTEnu0ZT4vUYoGDdg3o/UahWB0SAq3ymdN0AfAv7tELYG7Prj+gN
+         4xutZSFYG06sVRpBLDfaPrRMIh92HpmEPv3vkYUNIrIUKNG16E/6XmeX+oQRAJZHON+4
+         /7Gg==
+X-Gm-Message-State: AMke39mvVABCysX50l+GVTEjE9gIn3mCoZGyHdBkCjqgpqqRfoo8lAgRRWC0eqhu+/dOoA==
+X-Received: by 10.99.6.76 with SMTP id 73mr6196483pgg.83.1488489549370;
+        Thu, 02 Mar 2017 13:19:09 -0800 (PST)
 Return-Path: <singhalsimran0@gmail.com>
 Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id o26sm18960223pgd.25.2017.03.02.13.19.11
+        by smtp.gmail.com with ESMTPSA id k74sm12995726pfj.27.2017.03.02.13.19.07
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 02 Mar 2017 13:19:12 -0800 (PST)
+        Thu, 02 Mar 2017 13:19:08 -0800 (PST)
 From: simran singhal <singhalsimran0@gmail.com>
 To: Larry.Finger@lwfinger.net
 Cc: florian.c.schilhabel@googlemail.com,
@@ -57,14 +56,13 @@ Cc: florian.c.schilhabel@googlemail.com,
 	oleg.drokin@intel.com,
 	marvin24@gmx.de,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/5] staging: lustre: Remove unnecessary cast on void pointer
-Date: Fri,  3 Mar 2017 02:49:01 +0530
-Message-Id: <1488489544-25941-2-git-send-email-singhalsimran0@gmail.com>
+Subject: [PATCH 1/5] staging: nvec: Remove unnecessary cast on void pointer
+Date: Fri,  3 Mar 2017 02:49:00 +0530
+Message-Id: <1488489544-25941-1-git-send-email-singhalsimran0@gmail.com>
 X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1488489544-25941-1-git-send-email-singhalsimran0@gmail.com>
-References: <1488489544-25941-1-git-send-email-singhalsimran0@gmail.com>
 
 The following Coccinelle script was used to detect this:
+
 @r@
 expression x;
 void* e;
@@ -84,31 +82,22 @@ identifier f;
 
 Signed-off-by: simran singhal <singhalsimran0@gmail.com>
 ---
- drivers/staging/lustre/lustre/lmv/lmv_obd.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/nvec/nvec_kbd.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/lustre/lustre/lmv/lmv_obd.c b/drivers/staging/lustre/lustre/lmv/lmv_obd.c
-index 271e189..09b46924 100644
---- a/drivers/staging/lustre/lustre/lmv/lmv_obd.c
-+++ b/drivers/staging/lustre/lustre/lmv/lmv_obd.c
-@@ -640,7 +640,7 @@ static int lmv_fid2path(struct obd_export *exp, int len, void *karg,
- 	int			remote_gf_size = 0;
- 	int			rc;
+diff --git a/drivers/staging/nvec/nvec_kbd.c b/drivers/staging/nvec/nvec_kbd.c
+index e881e6b..a01f486 100644
+--- a/drivers/staging/nvec/nvec_kbd.c
++++ b/drivers/staging/nvec/nvec_kbd.c
+@@ -58,7 +58,7 @@ static int nvec_keys_notifier(struct notifier_block *nb,
+ 			      unsigned long event_type, void *data)
+ {
+ 	int code, state;
+-	unsigned char *msg = (unsigned char *)data;
++	unsigned char *msg = data;
  
--	gf = (struct getinfo_fid2path *)karg;
-+	gf = karg;
- 	tgt = lmv_find_target(lmv, &gf->gf_fid);
- 	if (IS_ERR(tgt))
- 		return PTR_ERR(tgt);
-@@ -657,7 +657,7 @@ static int lmv_fid2path(struct obd_export *exp, int len, void *karg,
- 		struct getinfo_fid2path *ori_gf;
- 		char *ptr;
- 
--		ori_gf = (struct getinfo_fid2path *)karg;
-+		ori_gf = karg;
- 		if (strlen(ori_gf->gf_path) +
- 		    strlen(gf->gf_path) > ori_gf->gf_pathlen) {
- 			rc = -EOVERFLOW;
+ 	if (event_type == NVEC_KB_EVT) {
+ 		int _size = (msg[0] & (3 << 5)) >> 5;
 -- 
 2.7.4
 
