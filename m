@@ -1,101 +1,94 @@
 X-GM-THRID: 6392997475785900032
-X-Received: by 10.13.216.20 with SMTP id a20mr5895728ywe.10.1488491961838;
-        Thu, 02 Mar 2017 13:59:21 -0800 (PST)
+X-Received: by 10.25.41.85 with SMTP id p82mr2128487lfp.16.1488491883186;
+        Thu, 02 Mar 2017 13:58:03 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.36.169 with SMTP id z38ls1343958ota.27.gmail; Thu, 02 Mar
- 2017 13:59:21 -0800 (PST)
-X-Received: by 10.13.213.142 with SMTP id x136mr5585364ywd.113.1488491961332;
-        Thu, 02 Mar 2017 13:59:21 -0800 (PST)
-Return-Path: <joe@perches.com>
-Received: from smtprelay.hostedemail.com (smtprelay0207.hostedemail.com. [216.40.44.207])
-        by gmr-mx.google.com with ESMTPS id b188si78641ite.3.2017.03.02.13.59.21
+Received: by 10.46.13.9 with SMTP id 9ls820279ljn.46.gmail; Thu, 02 Mar 2017
+ 13:58:02 -0800 (PST)
+X-Received: by 10.46.22.16 with SMTP id w16mr2205825ljd.8.1488491882766;
+        Thu, 02 Mar 2017 13:58:02 -0800 (PST)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from mail-lf0-x243.google.com (mail-lf0-x243.google.com. [2a00:1450:4010:c07::243])
+        by gmr-mx.google.com with ESMTPS id h62si15434wme.2.2017.03.02.13.58.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 13:59:21 -0800 (PST)
-Received-SPF: neutral (google.com: 216.40.44.207 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.207;
+        Thu, 02 Mar 2017 13:58:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2a00:1450:4010:c07::243 as permitted sender) client-ip=2a00:1450:4010:c07::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 216.40.44.207 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
-	by smtprelay04.hostedemail.com (Postfix) with ESMTP id 882483520B2;
-	Thu,  2 Mar 2017 21:59:20 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,:::::::::::::::::,RULES_HIT:41:152:355:379:541:599:800:960:973:982:988:989:1260:1277:1311:1313:1314:1345:1359:1373:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:1801:2393:2553:2559:2562:2689:2915:3138:3139:3140:3141:3142:3353:3622:3865:3866:3867:3870:3872:3873:4321:4605:5007:6119:7903:10004:10400:10848:11026:11232:11657:11658:11783:11914:12043:12296:12438:12740:12895:13069:13255:13311:13357:13894:14181:14659:14721:21080:21434:21451:30054:30090:30091,0,RBL:none,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:fn,MSBL:0,DNSBL:none,Custom_rules:0:0:0,LFtime:1,LUA_SUMMARY:none
-X-HE-Tag: fifth85_8b85ad913e35e
-X-Filterd-Recvd-Size: 2805
-Received: from XPS-9350 (unknown [47.151.132.55])
-	(Authenticated sender: joe@perches.com)
-	by omf04.hostedemail.com (Postfix) with ESMTPA;
-	Thu,  2 Mar 2017 21:59:18 +0000 (UTC)
-Message-ID: <1488491957.2179.18.camel@perches.com>
-Subject: Re: [PATCH 3/5] staging: lustre: lustre: Remove unnecessary cast on
- void pointer
-From: Joe Perches <joe@perches.com>
-To: SIMRAN SINGHAL <singhalsimran0@gmail.com>
-Cc: Larry.Finger@lwfinger.net, Florian Schilhabel
- <florian.c.schilhabel@googlemail.com>, Greg KH
- <gregkh@linuxfoundation.org>,  devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, oleg.drokin@intel.com,  marvin24@gmx.de,
- outreachy-kernel@googlegroups.com
-Date: Thu, 02 Mar 2017 13:59:17 -0800
-In-Reply-To: <CALrZqyN3si-5v5PLWc9ppQ7CjqZGXAXU02GrnyspsioStKTWng@mail.gmail.com>
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2a00:1450:4010:c07::243 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-lf0-x243.google.com with SMTP id y193so5442043lfd.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 13:58:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=/k9uAr49UkGLp4COBul2QsuwA6lGlBgzJBCisCMIRdc=;
+        b=XCJEpYZIwGZKUQR/ES64jV83CoeSLnEoKHlC4ePmKX6dM8ci/lmxMLrEInCkpt/YrW
+         D3gmReLKOqIqlmy35YfF9+u32XyR2GJr7NG+LiM4yRqoD5GRmN1hqsrVLIgA3Vzhs5+t
+         ONaHLEq4mkSxsHBmYe9tBILMPCrRN/IGEQBRwnHkn7TF2JKH1/Q37aiO4lDq15Afq2C9
+         ZJb8Z9LoqmPzyer3irLZPsSvj0AJI8qZ/xISleltcQBSUiE3W1S1jogO3sg2BDXIuVID
+         dW8HcqStvwr++uTzmJAaeqNXrHnDnWmPdRiSdbm/zn2ONHWuN48gIqKMTofGy4Y+qF99
+         k1gQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=/k9uAr49UkGLp4COBul2QsuwA6lGlBgzJBCisCMIRdc=;
+        b=gbJAAWKTDg1c0klK8hSFvctsqhrjWxlCbMXfN8ZvidsF/Z2mQTBqicdi78zRHy/jyx
+         v7JPr19fepAoXIakOzCrHx1jBHv/ynctkKDKRNN767zR6kCt00jJp9d59XmzFuO9dTjI
+         IpJ48v3FEBTQN/0iLi1MeBVlsZGR6EZtIr2l55lD4aUUPjE58pTpbgJ8F+nYOUomM/qB
+         Ex9PLvHFZ4QmUhWJppubdH9vI9OzK+hGlnSXqTydNelXc0WpapWSdUOI4EzBBg3hJwYc
+         d/ranjygXsYphjEk9QOeYZlQcB/MY6XBGOjHvsT0nnJ3wWJY31c8+gxtWQkHgfl9OWes
+         mdWg==
+X-Gm-Message-State: AMke39mO8mT7XUhz3O7PZB8g0G1wC0vmfoNglrS8ttJOQ5t1ueqnIVFeDYPY7jGPEOxqQpSpbSxzB44AmZIVsg==
+X-Received: by 10.46.33.75 with SMTP id h72mr5648593ljh.37.1488491882181; Thu,
+ 02 Mar 2017 13:58:02 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.25.15.39 with HTTP; Thu, 2 Mar 2017 13:58:01 -0800 (PST)
+In-Reply-To: <alpine.DEB.2.20.1703022256190.2175@hadrien>
 References: <1488489544-25941-1-git-send-email-singhalsimran0@gmail.com>
-	 <1488489544-25941-3-git-send-email-singhalsimran0@gmail.com>
-	 <1488491006.2179.14.camel@perches.com>
-	 <CALrZqyN3si-5v5PLWc9ppQ7CjqZGXAXU02GrnyspsioStKTWng@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.22.3-0ubuntu0.1 
-Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+ <1488489544-25941-4-git-send-email-singhalsimran0@gmail.com> <alpine.DEB.2.20.1703022256190.2175@hadrien>
+From: SIMRAN SINGHAL <singhalsimran0@gmail.com>
+Date: Fri, 3 Mar 2017 03:28:01 +0530
+Message-ID: <CALrZqyMKEyZHZeOeCr10qRaqz8VL5W-D0G0ygzSCpV5j7oX90A@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 4/5] staging: rts5208: Remove
+ unnecessary cast on void pointer
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Larry.Finger@lwfinger.net, 
+	Florian Schilhabel <florian.c.schilhabel@googlemail.com>, Greg KH <gregkh@linuxfoundation.org>, 
+	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
+	oleg.drokin@intel.com, marvin24@gmx.de, outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
-On Fri, 2017-03-03 at 03:25 +0530, SIMRAN SINGHAL wrote:
-> On Fri, Mar 3, 2017 at 3:13 AM, Joe Perches <joe@perches.com> wrote:
-> > On Fri, 2017-03-03 at 02:49 +0530, simran singhal wrote:
-> > > The following Coccinelle script was used to detect this:
-> > > @r@
-> > > expression x;
-> > > void* e;
-> > > type T;
-> > > identifier f;
-> > > @@
-> > > (
-> > >   *((T *)e)
-> > > > 
-> > > 
-> > >   ((T *)x)[...]
-> > > > 
-> > > 
-> > >   ((T*)x)->f
-> > > > 
-> > > 
-> > > - (T*)
-> > >   e
-> > > )
-> > 
-> > NAK.
-> > 
-> > Nice, but you still have to verify correctness
-> > before submitting these patches.
-> > 
-> > > diff --git a/drivers/staging/lustre/lustre/mgc/mgc_request.c b/drivers/staging/lustre/lustre/mgc/mgc_request.c
-> > 
-> > []
-> > > @@ -1034,7 +1034,7 @@ static int mgc_set_info_async(const struct lu_env *env, struct obd_export *exp,
-> > >               rc = sptlrpc_parse_flavor(val, &flvr);
-> > >               if (rc) {
-> > >                       CERROR("invalid sptlrpc flavor %s to MGS\n",
-> > > -                            (char *)val);
-> > > +                            val);
-> > 
-> > Try compiling this.
-> > 
-> 
-> I compiled it before sending.
-
-Did you look at the warnings?
-
-  CC [M]  drivers/staging/lustre/lustre/mgc/mgc_request.o
-drivers/staging/lustre/lustre/mgc/mgc_request.c: In function ‘mgc_set_info_async’:
-drivers/staging/lustre/lustre/mgc/mgc_request.c:1036:115: warning: format ‘%s’ expects argument of type ‘char *’, but argument 3 has type ‘void *’ [-Wformat=]
-    CERROR("invalid sptlrpc flavor %s to MGS\n",
-
+On Fri, Mar 3, 2017 at 3:26 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>> diff --git a/drivers/staging/rts5208/rtsx_transport.c b/drivers/staging/rts5208/rtsx_transport.c
+>> index 2379901..d745b93 100644
+>> --- a/drivers/staging/rts5208/rtsx_transport.c
+>> +++ b/drivers/staging/rts5208/rtsx_transport.c
+>> @@ -767,7 +767,7 @@ int rtsx_transfer_data(struct rtsx_chip *chip, u8 card, void *buf, size_t len,
+>>
+>>       if (use_sg) {
+>>               err = rtsx_transfer_sglist_adma(chip, card,
+>> -                                             (struct scatterlist *)buf,
+>> +                                             buf,
+>
+> Here too, buf doesn't need its own line.
+>
+I will send v2.
+> julia
+>
+>>                                               use_sg, dma_dir, timeout);
+>>       } else {
+>>               err = rtsx_transfer_buf(chip, card, buf, len, dma_dir, timeout);
+>> --
+>> 2.7.4
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1488489544-25941-4-git-send-email-singhalsimran0%40gmail.com.
+>> For more options, visit https://groups.google.com/d/optout.
+>>
 
