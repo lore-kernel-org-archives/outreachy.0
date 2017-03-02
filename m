@@ -1,97 +1,80 @@
 X-GM-THRID: 6392971677786963968
-X-Received: by 10.36.36.84 with SMTP id f81mr375698ita.8.1488551205968;
-        Fri, 03 Mar 2017 06:26:45 -0800 (PST)
+X-Received: by 10.46.22.68 with SMTP id 4mr2343040ljw.14.1488479710535;
+        Thu, 02 Mar 2017 10:35:10 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.18.240 with SMTP id g103ls9752776otg.39.gmail; Fri, 03 Mar
- 2017 06:26:45 -0800 (PST)
-X-Received: by 10.13.238.134 with SMTP id x128mr1219106ywe.59.1488551205556;
-        Fri, 03 Mar 2017 06:26:45 -0800 (PST)
-Return-Path: <daniel.baluta@gmail.com>
-Received: from mail-io0-x242.google.com (mail-io0-x242.google.com. [2607:f8b0:4001:c06::242])
-        by gmr-mx.google.com with ESMTPS id n127si343498ita.3.2017.03.03.06.26.45
+Received: by 10.46.80.23 with SMTP id e23ls802799ljb.28.gmail; Thu, 02 Mar
+ 2017 10:35:09 -0800 (PST)
+X-Received: by 10.25.167.5 with SMTP id q5mr1872470lfe.18.1488479709073;
+        Thu, 02 Mar 2017 10:35:09 -0800 (PST)
+Return-Path: <diaconitatamara@gmail.com>
+Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
+        by gmr-mx.google.com with ESMTPS id 14si858557wmn.2.2017.03.02.10.35.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Mar 2017 06:26:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2607:f8b0:4001:c06::242 as permitted sender) client-ip=2607:f8b0:4001:c06::242;
+        Thu, 02 Mar 2017 10:35:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2607:f8b0:4001:c06::242 as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
+       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-io0-x242.google.com with SMTP id f103so6878336ioi.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 03 Mar 2017 06:26:45 -0800 (PST)
+Received: by mail-wm0-x243.google.com with SMTP id n11so6389414wma.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 10:35:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=96LBpV0icxa8drNB3k6gj6FzwBnhYR+48yWZ+h8rzD0=;
-        b=GWP420UIEPw4p5e/diASmg2XmJ9Xgu2e0l3duxAhJnEjTlbjaMQX5mfeLU5rEVJzNA
-         Uw4HjmLWCIy9u4ToNKm35Z0fgGMcAUM4JHx9YXs/8tntdu3hipnqV85VmVraIgjy8J9J
-         DnSqjJvyy2ulHMlteO5bvuMNMa8pi0+sMwBE9zAorkcNj0ymcU8D6GdCu7CMrp5ZAJg/
-         7xFtOFHVQRNGm4e06SAYTXiNfegL9rrCMCrIIA+8KGBYfSazpNiFSqV9VKrrFd5iO08G
-         7i0pbNHCeiNmyucW1LxUNHk3f9bPQV1TFwv5RRVOx8F+65rw1Olzz2GcGT9DBE3y80js
-         Dd2w==
+        h=from:to:cc:subject:date:message-id;
+        bh=m59W3ENy9Z4zTLob7I9tCVCY4SuDPFCJ8zi0YB3MeGc=;
+        b=fWLhXTDERGq/rMIOh1rZyS6/KvUYZDipfjBehmutXVRYWRLbS5Lj02T1JpMg2IvZhh
+         8DvE7KY1ZMkz39Or4xSuFO2zTXznvAsQmjURG3go1UwBSLUCkW+zZJuhDgxK8T0rUY9n
+         7y7vULFtv7oRqiIVIbsN4bux5R4qhRkR48oGe5edGvyLN7zzKIiGgcNQrsThNQ/43I7P
+         pQtEl576d2APrQUNcCDUvnF3IkI5xe4DZRyO6nBhpbjkZfdypACrWcqLAHBN2xctL5A9
+         XdQFBzBRzrfP3yv70iKUgRgBdRPEf1VPwQkWTtFz20XxbZ+MJ9OKDlnt/FNscY04pwvl
+         hevA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=96LBpV0icxa8drNB3k6gj6FzwBnhYR+48yWZ+h8rzD0=;
-        b=R50swlAYi/JzFmnci3Neay0LTgfaXZDTnw5IFDNAJI6J+hOmWsWxOWrqrYD3OBim0D
-         LTkZHKtM6j9d3OrSHYL/0snGPRSy/Co1cHgq/63+O/9WhvOtt3QDpBk9GbzCKkKiDkfx
-         XQdN9Nmfom5zsXLPyVy/k/28bILelRqPgwyMBIIFDnNJEmIBa2fb8aVeZm9vmkOY3D5V
-         X9AKyhKki8pgtDwbIML3O9p5GaYbPFSvLqZFzgsACjD0ueOQyo6/nTV+khyz22aguhDm
-         IQkFR5GZl+xA4CvHRPDci4wCPNGyiFXp3e7WV54lxaN1EePiRHZYtaOJOrtSHAYLA2dZ
-         ctNQ==
-X-Gm-Message-State: AMke39mSwPmGT+zfBjU/liJWn4peLf9IYuSFoqKfDNpt5z/b8JHPj0IeWiAuY/oBWaUW0bnP1EZenkbgT32KJg==
-X-Received: by 10.107.9.33 with SMTP id j33mr3189799ioi.211.1488551205329;
- Fri, 03 Mar 2017 06:26:45 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.107.26.201 with HTTP; Fri, 3 Mar 2017 06:26:44 -0800 (PST)
-In-Reply-To: <20170302183501.3087-1-diaconita.tamara@gmail.com>
-References: <20170302183501.3087-1-diaconita.tamara@gmail.com>
-From: Daniel Baluta <daniel.baluta@gmail.com>
-Date: Fri, 3 Mar 2017 16:26:44 +0200
-Message-ID: <CAEnQRZCi6XDVkupMR6myUctFEMH5ByaOORAy7KAAw55-=LnEew@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 0/5] Resend the first patch set
-To: Tamara Diaconita <diaconitatamara@gmail.com>
-Cc: mchebab@kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	outreachy-kernel <outreachy-kernel@googlegroups.com>, 
-	Tamara Diaconita <diaconita.tamara@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=m59W3ENy9Z4zTLob7I9tCVCY4SuDPFCJ8zi0YB3MeGc=;
+        b=Qfjmb4c+L7ziGeiZvxYJlIu7Ngh9gnkOGmy4SZ3o1PXU9kKan7rq7p+pmuJZpgr7/I
+         4AySg+ZMc4F+NNx8Pc42yq0metoK1FKEW0/Eo3SqgdVYA3dzRK53u8BjlS4UilDS0383
+         tmPSsjFXQAblNsJUykdH4K9ceSIVlfmkm5+ETBZ0jlpkGZAUsCzhT8CsXa1jmTsn9PWK
+         xqcqkA2qOhYaZWzY6iBTZdWKzxUgqnUIUhdOxyDD/XyklTKeB7CL4/jjK6UgmqPGL3gS
+         hkzsMiqnt6rBnl4AfTM/Q8hwiAauShsht+6zZIbrrQ/t6+ZXYYORWrCMZg4hKsUx28Kt
+         ib/A==
+X-Gm-Message-State: AMke39ng7EkKKufdAePqn+zyfiBJOcvY/kr2zUqG4Y7JivJqmiJU2WTut6deiw/30fZt4Q==
+X-Received: by 10.28.172.68 with SMTP id v65mr8742575wme.49.1488479708874;
+        Thu, 02 Mar 2017 10:35:08 -0800 (PST)
+Return-Path: <diaconitatamara@gmail.com>
+Received: from tamara ([141.85.228.72])
+        by smtp.gmail.com with ESMTPSA id v1sm11931853wra.65.2017.03.02.10.35.07
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 02 Mar 2017 10:35:07 -0800 (PST)
+From: Tamara Diaconita <diaconitatamara@gmail.com>
+X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
+To: mchebab@kernel.org,
+	gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: [PATCH 0/5] Resend the first patch set
+Date: Thu,  2 Mar 2017 20:35:01 +0200
+Message-Id: <20170302183501.3087-1-diaconita.tamara@gmail.com>
+X-Mailer: git-send-email 2.9.3
 
-On Thu, Mar 2, 2017 at 8:35 PM, Tamara Diaconita
-<diaconitatamara@gmail.com> wrote:
-> Resend the first patch set: 'Fixing multiple checkpath issues to improve code readability'.
+Resend the first patch set: 'Fixing multiple checkpath issues to improve code readability'.
+Added the name of the driver in the patches titles.
+Changed the verbs tenses with imperative.
+Added a short description for the patches.
+Changed the comment in 'Add struct mutex definition' patch.
 
-The subject of the cover letter should be the same as the first version.
+Tamara Diaconita (5):
+  staging:cxd2099: Add spaces around arithmetical operators
+  staging:cxd2099: Remove multiple blank lines
+  staging:cxd2099: Add struct mutex definition
+  staging:cxd2099: Change kzalloc parameter
+  staging:cxd2099: Remove redundant code
 
-[PATCH v2] Fix multiple checkpath issues to improve code readability
+ drivers/staging/media/cxd2099/cxd2099.c | 102 ++++----------------------------
+ 1 file changed, 13 insertions(+), 89 deletions(-)
 
-notice the v2 and changed verb mood.
+-- 
+2.9.3
 
-Should not matter now, but is to be kept in mind for the next patches.
-
-> Added the name of the driver in the patches titles.
-> Changed the verbs tenses with imperative.
-> Added a short description for the patches.
-> Changed the comment in 'Add struct mutex definition' patch.
->
-> Tamara Diaconita (5):
->   staging:cxd2099: Add spaces around arithmetical operators
->   staging:cxd2099: Remove multiple blank lines
->   staging:cxd2099: Add struct mutex definition
->   staging:cxd2099: Change kzalloc parameter
->   staging:cxd2099: Remove redundant code
->
->  drivers/staging/media/cxd2099/cxd2099.c | 102 ++++----------------------------
->  1 file changed, 13 insertions(+), 89 deletions(-)
->
-> --
-> 2.9.3
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170302183501.3087-1-diaconita.tamara%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
 
