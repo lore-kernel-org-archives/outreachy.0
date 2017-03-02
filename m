@@ -1,53 +1,53 @@
 X-GM-THRID: 6392925539112321024
-X-Received: by 10.36.70.212 with SMTP id j203mr2068776itb.16.1488468988633;
-        Thu, 02 Mar 2017 07:36:28 -0800 (PST)
+X-Received: by 10.157.12.189 with SMTP id b58mr4928832otb.41.1488468983698;
+        Thu, 02 Mar 2017 07:36:23 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.162.197 with SMTP id l188ls377793ioe.23.gmail; Thu, 02 Mar
- 2017 07:36:28 -0800 (PST)
-X-Received: by 10.99.206.81 with SMTP id r17mr5162877pgi.79.1488468988015;
-        Thu, 02 Mar 2017 07:36:28 -0800 (PST)
+Received: by 10.157.3.235 with SMTP id f98ls4779988otf.16.gmail; Thu, 02 Mar
+ 2017 07:36:23 -0800 (PST)
+X-Received: by 10.157.7.78 with SMTP id 72mr3380604ote.55.1488468982982;
+        Thu, 02 Mar 2017 07:36:22 -0800 (PST)
 Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id h79si1526438pfh.2.2017.03.02.07.36.27
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id c123si1544857pfa.4.2017.03.02.07.36.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 07:36:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Thu, 02 Mar 2017 07:36:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id s67so9655563pgb.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 07:36:27 -0800 (PST)
+Received: by mail-pf0-x243.google.com with SMTP id x66so7041816pfb.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 07:36:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=mI/JDWE4x1/pnn4nivX102dtuoh2pHHiB2aM2/covZM=;
-        b=TAwNt/W74Gqw7YqMrKA1wAXbwyUlura14Dn5o1yis9jsgp2hI32inLhBdzmEvtdt5t
-         Yxj1K8xJQGlyEdMe5i0sPY2qlqxkWFR6uca8hGgUQW8B80eik/NUIORFRj4UZDcJZqa9
-         UaNgy5OJS/Mn1pGI+h0MqQa7q4Ao7LeR6CfjJbFOnGbijcZqUmhIiUbCQw0RYhG0JSYB
-         8OecNsbTKTF9fQMp+bASJOZ9aEhXo3S5PRFxFXK0iQu4I/ObsgoEilIir2rUQpRcb9uI
-         exmj1U7gmVVbLeGPfEIV7JGcQ1lp8YT6Djw62DRWsoteYFeJZFJ/kbzdg0NJ4+8eBjVO
-         zp9Q==
+        bh=8Di0VQcgBvNTjpJMAogTR7AbLaGHApYcVI+kHKG3d/w=;
+        b=qnivrY0mQ3iFKS5363UA+LO0UgU3aahbDOW31boaXmq+EHZn2AWwWWVT4JNK4D9U/m
+         5dW2QWZL5TdNviKfd55GF3FvdcS21si4W43N+VwQOxGU3kZsfPrOMiIeyo1GP7dGBm6j
+         dildvuHUVosBJa5389v75IpzO2GkIob6ytQr+jYvDNbAE/EI1XuikDAditcvy3fnlMJk
+         yU6F7USj5cPpXggJ7r4Dw0yfWRyjV1lYUoH/mrCPtqrq3IHcewX56++Azq6d4ZY7XtKL
+         QliXIS8VVU+3GfTlTwbf49CBJJy1tnhCseXTY8HUGLkXilrDt6F3GgtXyNqZQuHz8w5C
+         5eyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=mI/JDWE4x1/pnn4nivX102dtuoh2pHHiB2aM2/covZM=;
-        b=X45IbYWExs2NcbLBsi1wFKz/nkBxfaR0/8YRVrrm31PyN0l3ptgwqtrgLGW2rT7Bmv
-         OErWqBxFI3YJpwS/25n39QxWN4IKeFPLUk/8d1TlbAP+YT9gQsqyyuszuMTP/t/3Qmwo
-         7PW7D0luWJUrEOT3BuE4UQvfzPd6DjXYOsk58FnmigWHBhQsD1K8SscslwWwukVaOVrw
-         2ZCBljfRTGpI/1tdIDv4tc59iortyehSUAh3qghL3aG7Qiys8W6thLefqCmDK132TaEh
-         FHuWNgYrTEX8NYztWA9fobNlBTsVOhpMWbWMNDc6FurrOTzyCA1HyukUxfJOlzrsilh0
-         O3Zw==
-X-Gm-Message-State: AMke39lwB7mBlfRpzxU/l7QoILq4kA4IB0spFLI6e1f+K79q3Kzfhw3tYwQzWFYGw0RkAA==
-X-Received: by 10.98.149.80 with SMTP id p77mr16330967pfd.56.1488468987716;
-        Thu, 02 Mar 2017 07:36:27 -0800 (PST)
+        bh=8Di0VQcgBvNTjpJMAogTR7AbLaGHApYcVI+kHKG3d/w=;
+        b=GdxC5i7TnzVVeqZblkeiWuqyT0hNMjmD2krZnL/TWRlkNTEsvC8oB0yfbpJ3evJLQj
+         CCDqgak54O3h8mJqCZNHfppNnt+fbcL8Civ7B3bcYW+ap7PtATp0b2GhCmuPBWCR9d+d
+         ZQ8MqlOD+pc8OC3VZNir3IqR4gtdhXvgg1weL+p1cSuc4rK5MMoZHdyWjictn2N69BID
+         FkOYRYc+NCzuSDX90Z5b4C0bBrUMQ1w5z84Hxpv43dSjbg6WtT/HJTIZORI5PywRBVWd
+         mu4ZDBtn2NY27rNvV1J1ECgM5cbHGyu4C0j8GoRGF949vgc2UUJa4gCUosrbnnn+fF7r
+         VfFA==
+X-Gm-Message-State: AMke39kHlS3KPxXPu/ftWmZ2WTgBHHn9p7RhBY2WdIRLLkPSIaKhW14h1Kv4AOn0uqnsEg==
+X-Received: by 10.84.254.75 with SMTP id a11mr2456162pln.57.1488468982751;
+        Thu, 02 Mar 2017 07:36:22 -0800 (PST)
 Return-Path: <arushisinghal19971997@gmail.com>
 Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id m136sm17996780pga.22.2017.03.02.07.36.25
+        by smtp.gmail.com with ESMTPSA id a62sm17940188pgc.60.2017.03.02.07.36.20
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 02 Mar 2017 07:36:26 -0800 (PST)
+        Thu, 02 Mar 2017 07:36:21 -0800 (PST)
 From: Arushi Singhal <arushisinghal19971997@gmail.com>
 To: w.d.hubbs@gmail.com
 Cc: chris@the-brannons.com,
@@ -59,191 +59,41 @@ Cc: chris@the-brannons.com,
 	devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org,
 	Arushi Singhal <arushisinghal19971997@gmail.com>
-Subject: [PATCH 4/4] staging: speakup: Alignment should match open parenthesis
-Date: Thu,  2 Mar 2017 21:06:00 +0530
-Message-Id: <20170302153600.13803-4-arushisinghal19971997@gmail.com>
+Subject: [PATCH 3/4] staging: speakup: identation should use tabs
+Date: Thu,  2 Mar 2017 21:05:59 +0530
+Message-Id: <20170302153600.13803-3-arushisinghal19971997@gmail.com>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20170302153600.13803-1-arushisinghal19971997@gmail.com>
 References: <20170302153600.13803-1-arushisinghal19971997@gmail.com>
 
-Fix checkpatch issues: "CHECK: Alignment should match open parenthesis".
+Indentation should always use tabs and never spaces.
 
 Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
 ---
- drivers/staging/speakup/kobjects.c       | 16 ++++++++--------
- drivers/staging/speakup/main.c           |  2 +-
- drivers/staging/speakup/selection.c      |  2 +-
- drivers/staging/speakup/serialio.c       |  2 +-
- drivers/staging/speakup/speakup_acntpc.c |  6 +++---
- drivers/staging/speakup/speakup_apollo.c |  2 +-
- drivers/staging/speakup/speakup_decext.c |  4 ++--
- 7 files changed, 17 insertions(+), 17 deletions(-)
+ drivers/staging/speakup/speakup_dtlk.h | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
-index 8c93188b832c..edde9e68779e 100644
---- a/drivers/staging/speakup/kobjects.c
-+++ b/drivers/staging/speakup/kobjects.c
-@@ -662,9 +662,9 @@ ssize_t spk_var_store(struct kobject *kobj, struct kobj_attribute *attr,
- 			var_data = param->data;
- 			value = var_data->u.n.value;
- 			spk_reset_default_value("pitch", synth->default_pitch,
--				value);
-+						value);
- 			spk_reset_default_value("vol", synth->default_vol,
--				value);
-+						value);
- 		}
- 		break;
- 	case VAR_STRING:
-@@ -679,7 +679,7 @@ ssize_t spk_var_store(struct kobject *kobj, struct kobj_attribute *attr,
- 		ret = spk_set_string_var(cp, param, len);
- 		if (ret == -E2BIG)
- 			pr_warn("value too long for %s\n",
--					param->name);
-+				param->name);
- 		break;
- 	default:
- 		pr_warn("%s unknown type %d\n",
-@@ -699,7 +699,7 @@ EXPORT_SYMBOL_GPL(spk_var_store);
-  */
- 
- static ssize_t message_show_helper(char *buf, enum msg_index_t first,
--	enum msg_index_t last)
-+				    enum msg_index_t last)
- {
- 	size_t bufsize = PAGE_SIZE;
- 	char *buf_pointer = buf;
-@@ -712,7 +712,7 @@ static ssize_t message_show_helper(char *buf, enum msg_index_t first,
- 		if (bufsize <= 1)
- 			break;
- 		printed = scnprintf(buf_pointer, bufsize, "%d\t%s\n",
--			index, spk_msg_get(cursor));
-+				    index, spk_msg_get(cursor));
- 		buf_pointer += printed;
- 		bufsize -= printed;
- 	}
-@@ -721,7 +721,7 @@ static ssize_t message_show_helper(char *buf, enum msg_index_t first,
- }
- 
- static void report_msg_status(int reset, int received, int used,
--	int rejected, char *groupname)
-+			       int rejected, char *groupname)
- {
- 	int len;
- 	char buf[160];
-@@ -742,7 +742,7 @@ static void report_msg_status(int reset, int received, int used,
- }
- 
- static ssize_t message_store_helper(const char *buf, size_t count,
--	struct msg_group_t *group)
-+				     struct msg_group_t *group)
- {
- 	char *cp = (char *) buf;
- 	char *end = cp + count;
-@@ -843,7 +843,7 @@ static ssize_t message_show(struct kobject *kobj,
- }
- 
- static ssize_t message_store(struct kobject *kobj, struct kobj_attribute *attr,
--	const char *buf, size_t count)
-+			      const char *buf, size_t count)
- {
- 	struct msg_group_t *group = spk_find_msg_group(attr->attr.name);
- 
-diff --git a/drivers/staging/speakup/main.c b/drivers/staging/speakup/main.c
-index 25acebb9311f..01eabc19039c 100644
---- a/drivers/staging/speakup/main.c
-+++ b/drivers/staging/speakup/main.c
-@@ -1140,7 +1140,7 @@ static void spkup_write(const char *in_buf, int count)
- 		if (last_type & CH_RPT) {
- 			synth_printf(" ");
- 			synth_printf(spk_msg_get(MSG_REPEAT_DESC2),
--					++rep_count);
-+				     ++rep_count);
- 			synth_printf(" ");
- 		}
- 		rep_count = 0;
-diff --git a/drivers/staging/speakup/selection.c b/drivers/staging/speakup/selection.c
-index afd9a446a06f..3d15eec37163 100644
---- a/drivers/staging/speakup/selection.c
-+++ b/drivers/staging/speakup/selection.c
-@@ -75,7 +75,7 @@ int speakup_set_selection(struct tty_struct *tty)
- 		speakup_clear_selection();
- 		spk_sel_cons = vc_cons[fg_console].d;
- 		dev_warn(tty->dev,
--			"Selection: mark console not the same as cut\n");
-+			 "Selection: mark console not the same as cut\n");
- 		return -EINVAL;
- 	}
- 
-diff --git a/drivers/staging/speakup/serialio.c b/drivers/staging/speakup/serialio.c
-index aade52ee15a0..7e6bc3b05da3 100644
---- a/drivers/staging/speakup/serialio.c
-+++ b/drivers/staging/speakup/serialio.c
-@@ -118,7 +118,7 @@ static void start_serial_interrupt(int irq)
- 		pr_err("Unable to request Speakup serial I R Q\n");
- 	/* Set MCR */
- 	outb(UART_MCR_DTR | UART_MCR_RTS | UART_MCR_OUT2,
--			speakup_info.port_tts + UART_MCR);
-+	     speakup_info.port_tts + UART_MCR);
- 	/* Turn on Interrupts */
- 	outb(UART_IER_MSI | UART_IER_RLSI | UART_IER_RDI,
- 	     speakup_info.port_tts + UART_IER);
-diff --git a/drivers/staging/speakup/speakup_acntpc.c b/drivers/staging/speakup/speakup_acntpc.c
-index bca386d9fbd1..0165b0f2452e 100644
---- a/drivers/staging/speakup/speakup_acntpc.c
-+++ b/drivers/staging/speakup/speakup_acntpc.c
-@@ -259,9 +259,9 @@ static int synth_probe(struct spk_synth *synth)
- 	if (port_forced) {
- 		speakup_info.port_tts = port_forced;
- 		pr_info("probe forced to %x by kernel command line\n",
--				speakup_info.port_tts);
-+			speakup_info.port_tts);
- 		if (synth_request_region(speakup_info.port_tts - 1,
--					SYNTH_IO_EXTENT)) {
-+		    SYNTH_IO_EXTENT)) {
- 			pr_warn("sorry, port already reserved\n");
- 			return -EBUSY;
- 		}
-@@ -270,7 +270,7 @@ static int synth_probe(struct spk_synth *synth)
- 	} else {
- 		for (i = 0; synth_portlist[i]; i++) {
- 			if (synth_request_region(synth_portlist[i],
--						SYNTH_IO_EXTENT)) {
-+			    SYNTH_IO_EXTENT)) {
- 				pr_warn
- 				    ("request_region: failed with 0x%x, %d\n",
- 				     synth_portlist[i], SYNTH_IO_EXTENT);
-diff --git a/drivers/staging/speakup/speakup_apollo.c b/drivers/staging/speakup/speakup_apollo.c
-index 3f43f8105bc0..89cb7604c3b6 100644
---- a/drivers/staging/speakup/speakup_apollo.c
-+++ b/drivers/staging/speakup/speakup_apollo.c
-@@ -171,7 +171,7 @@ static void do_catch_up(struct spk_synth *synth)
- 		if (!spk_serial_out(ch)) {
- 			outb(UART_MCR_DTR, speakup_info.port_tts + UART_MCR);
- 			outb(UART_MCR_DTR | UART_MCR_RTS,
--					speakup_info.port_tts + UART_MCR);
-+			     speakup_info.port_tts + UART_MCR);
- 			schedule_timeout(msecs_to_jiffies(full_time_val));
- 			continue;
- 		}
-diff --git a/drivers/staging/speakup/speakup_decext.c b/drivers/staging/speakup/speakup_decext.c
-index 6b74a97385da..5f9f3a7543db 100644
---- a/drivers/staging/speakup/speakup_decext.c
-+++ b/drivers/staging/speakup/speakup_decext.c
-@@ -204,11 +204,11 @@ static void do_catch_up(struct spk_synth *synth)
- 				if (!in_escape)
- 					spk_serial_out(PROCSPEECH);
- 				spin_lock_irqsave(&speakup_info.spinlock,
--							flags);
-+						  flags);
- 				jiffy_delta_val = jiffy_delta->u.n.value;
- 				delay_time_val = delay_time->u.n.value;
- 				spin_unlock_irqrestore(&speakup_info.spinlock,
--							flags);
-+						       flags);
- 				schedule_timeout(msecs_to_jiffies
- 						 (delay_time_val));
- 				jiff_max = jiffies + jiffy_delta_val;
+diff --git a/drivers/staging/speakup/speakup_dtlk.h b/drivers/staging/speakup/speakup_dtlk.h
+index b3b3cfc3db07..46d885fcfb20 100644
+--- a/drivers/staging/speakup/speakup_dtlk.h
++++ b/drivers/staging/speakup/speakup_dtlk.h
+@@ -24,11 +24,11 @@
+ 				 * usec later.
+ 				 */
+ #define TTS_ALMOST_FULL	0x08	/* mask for AF bit: When set to 1,
+-				         * indicates that less than 300 bytes
+-				         * are available in the TTS input
+-				         * buffer. AF is always 0 in the PCM,
+-				         * TGN and CVSD modes.
+-				         */
++					 * indicates that less than 300 bytes
++					 * are available in the TTS input
++					 * buffer. AF is always 0 in the PCM,
++					 * TGN and CVSD modes.
++					 */
+ #define TTS_ALMOST_EMPTY 0x04	/* mask for AE bit: When set to 1,
+ 				 * indicates that less than 300 bytes
+ 				 * are remaining in DoubleTalk's input
 -- 
 2.11.0
 
