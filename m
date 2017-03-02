@@ -1,83 +1,82 @@
-X-GM-THRID: 6202220318097932288
-X-Received: by 10.181.29.103 with SMTP id jv7mr2445806wid.0.1444066948160;
-        Mon, 05 Oct 2015 10:42:28 -0700 (PDT)
+X-GM-THRID: 6392973595050508288
+X-Received: by 10.46.69.7 with SMTP id s7mr2187755lja.18.1488480656221;
+        Thu, 02 Mar 2017 10:50:56 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.109.167 with SMTP id ht7ls28925wib.7.canary; Mon, 05 Oct
- 2015 10:42:27 -0700 (PDT)
-X-Received: by 10.194.6.170 with SMTP id c10mr5541070wja.7.1444066947687;
-        Mon, 05 Oct 2015 10:42:27 -0700 (PDT)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from mail-wi0-x230.google.com (mail-wi0-x230.google.com. [2a00:1450:400c:c05::230])
-        by gmr-mx.google.com with ESMTPS id bj4si418329wib.1.2015.10.05.10.42.27
+Received: by 10.46.80.83 with SMTP id v19ls819715ljd.15.gmail; Thu, 02 Mar
+ 2017 10:50:55 -0800 (PST)
+X-Received: by 10.46.77.69 with SMTP id a66mr2331596ljb.11.1488480655491;
+        Thu, 02 Mar 2017 10:50:55 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 14si862276wmn.2.2017.03.02.10.50.55
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 05 Oct 2015 10:42:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) client-ip=2a00:1450:400c:c05::230;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 02 Mar 2017 10:50:55 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::230 as permitted sender) smtp.mailfrom=haticeerturk27@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x230.google.com with SMTP id lk2so125238055wic.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 05 Oct 2015 10:42:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id:mime-version:content-type
-         :content-transfer-encoding;
-        bh=zz0nTm6lHi3/jTLhYFktgtEwA6+ZdjsQFAequKi5LI4=;
-        b=zCtF8qysvviHLTFJoREm+Do0h8D1fcU+T06Hu7de3O9/vEU/UgtnJksH5NyfAzc99/
-         v+vU99f58i4N2tm7btyJ1BUplvTapeIJQ0rlNRNMA3GHrqTR1F0sZVA0Q95z1Hw9GWaN
-         nwSjroB9SGgxbxmM6De73Im7LEZNFy757dvwn7Ufadq8aU6CWMwIL2gTZUfDA4Chseen
-         +K+khpDWHYRgJovVBhBmhKXruVGlcD5n6pvpXLDuL6nMDnvyV4tyJDGLt95wkH3+XoQO
-         wcNh4/o3Q4zwd3RdQxrGTB/JItpYfb2bWY3aJ4EzmDpgwESMVwci/37SKPS0Dw2KVl+U
-         HWZA==
-X-Received: by 10.180.106.70 with SMTP id gs6mr13182629wib.19.1444066947586;
-        Mon, 05 Oct 2015 10:42:27 -0700 (PDT)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from localhost.localdomain ([88.242.105.163])
-        by smtp.googlemail.com with ESMTPSA id c2sm15752731wiy.11.2015.10.05.10.42.26
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 05 Oct 2015 10:42:26 -0700 (PDT)
-From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: lustre: lnet: klnds: socklnd: Missing a blank line after declarations
-Date: Mon,  5 Oct 2015 20:42:20 +0300
-Message-Id: <1444066940-6921-1-git-send-email-haticeerturk27@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,232,1484002800"; 
+   d="scan'208";a="215364611"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 02 Mar 2017 19:50:54 +0100
+Date: Thu, 2 Mar 2017 19:50:44 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Tamara Diaconita <diaconitatamara@gmail.com>
+cc: mchehab@kernel.org, gregkh@linuxfoundation.org, 
+    outreachy-kernel@googlegroups.com, 
+    Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2 3/5] staging:cxd2099:Add struct
+ mutex definition
+In-Reply-To: <20170302184231.3428-1-diaconita.tamara@gmail.com>
+Message-ID: <alpine.DEB.2.20.1703021949100.3414@hadrien>
+References: <20170302184231.3428-1-diaconita.tamara@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
 
-This patch fixes these warning messages found by checkpatch.pl:
-WARNING : Missing a blank line after declarations.
 
-Signed-off-by: Hatice ERTÜRK <haticeerturk27@gmail.com>
----
- drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c | 2 ++
- 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
-index 904d158..1b472f4 100644
---- a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
-+++ b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
-@@ -2440,6 +2440,7 @@ ksocknal_base_startup(void)
- 
- 	for (i = 0; i < *ksocknal_tunables.ksnd_nconnds; i++) {
- 		char name[16];
-+
- 		spin_lock_bh(&ksocknal_data.ksnd_connd_lock);
- 		ksocknal_data.ksnd_connd_starting++;
- 		spin_unlock_bh(&ksocknal_data.ksnd_connd_lock);
-@@ -2705,6 +2706,7 @@ ksocknal_start_schedulers(struct ksock_sched_info *info)
- 		long id;
- 		char name[20];
- 		ksock_sched_t *sched;
-+
- 		id = KSOCK_THREAD_ID(info->ksi_cpt, info->ksi_nthreads + i);
- 		sched = &info->ksi_scheds[KSOCK_THREAD_SID(id)];
- 		snprintf(name, sizeof(name), "socknal_sd%02d_%02d",
--- 
-1.9.1
+On Thu, 2 Mar 2017, Tamara Diaconita wrote:
 
+> Added the struct mutex definition (A mutex is a mutual exclusion lock
+> used to protect data from concurrent access) to fix the following
+> checkpath.pl issue: CHECK: struct mutex definition without comment.
+>
+> Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
+> ---
+>  drivers/staging/media/cxd2099/cxd2099.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/drivers/staging/media/cxd2099/cxd2099.c b/drivers/staging/media/cxd2099/cxd2099.c
+> index b26f28d..001bffe 100644
+> --- a/drivers/staging/media/cxd2099/cxd2099.c
+> +++ b/drivers/staging/media/cxd2099/cxd2099.c
+> @@ -54,6 +54,7 @@ struct cxd {
+>  	int    amem_read;
+>
+>  	int    cammode;
+> +	/* use a mutex to protect data from concurrent access */
+
+This is the definition of what a mutex does.  What data in particular
+needs to be protected?  The comment could be just protect XXX.  It should
+be possible to put the comment to the right of the declaration.  You can
+see other examples of such comments by searching for spinlock_t or mutex
+in the kernel.
+
+julia
+
+>  	struct mutex lock;
+>  };
+>
+> --
+> 2.9.3
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170302184231.3428-1-diaconita.tamara%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
