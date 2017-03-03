@@ -1,69 +1,68 @@
 X-GM-THRID: 6393354564445143040
-X-Received: by 10.99.39.6 with SMTP id n6mr2894093pgn.98.1488638035098;
-        Sat, 04 Mar 2017 06:33:55 -0800 (PST)
+X-Received: by 10.200.49.136 with SMTP id h8mr1267440qte.29.1488568858989;
+        Fri, 03 Mar 2017 11:20:58 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.197.1 with SMTP id v1ls1101429iof.13.gmail; Sat, 04 Mar
- 2017 06:33:54 -0800 (PST)
-X-Received: by 10.107.141.137 with SMTP id p131mr2939675iod.65.1488638034282;
-        Sat, 04 Mar 2017 06:33:54 -0800 (PST)
+Received: by 10.107.133.9 with SMTP id h9ls3142161iod.49.gmail; Fri, 03 Mar
+ 2017 11:20:58 -0800 (PST)
+X-Received: by 10.99.174.9 with SMTP id q9mr1888095pgf.80.1488568858079;
+        Fri, 03 Mar 2017 11:20:58 -0800 (PST)
 Return-Path: <rvarsha016@gmail.com>
 Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id y90si538183pfa.6.2017.03.04.06.33.54
+        by gmr-mx.google.com with ESMTPS id y90si216061pfa.6.2017.03.03.11.20.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 04 Mar 2017 06:33:54 -0800 (PST)
+        Fri, 03 Mar 2017 11:20:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
        spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id 25so15454985pgy.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 04 Mar 2017 06:33:54 -0800 (PST)
+Received: by mail-pg0-x241.google.com with SMTP id 1so13502077pgz.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 03 Mar 2017 11:20:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=message-id:date:from:to:cc:subject:mime-version:content-disposition
          :user-agent;
-        bh=nji666lXogga4Nthf5vGuC+IqTCs5TmoM4olxuGeGDI=;
-        b=QV2jdEvkCPi9v81u4uUkssO2NBRqedcCfD3YC1lKa86FzPEyq6EzQx09LdnrXEopmk
-         5lQhvDqxdxO12jDnn5eswKM/KbpxvBIiks2xtoRt5uRMJ3X7ceR/2uS2KmJ1desIETOU
-         JX/PTEYeHSuIVbXx6lSZdIQUy0ZcKLP5yida6KFU9givr2KonH4ko9z7YcrWtY6fYa8J
-         7mRJL9WIMeRer7Obxzjj4yWUoBLt/OER4de/g1E4L3G9hMp5coo7pryNnJ/698SRiy/L
-         KzF5vZzpREPRd0nluo4dYCLZ3/SShOq+sJS8WdDKVbYWmYez2tsl3e3ucdQodJGiZ8rv
-         n75g==
+        bh=nrm+Umw867quqOfmTcfXmfzLZxAKbsCk3EF3KxkAeGE=;
+        b=KlA5FmrNGOlN5hsoMmGhlPoB2QcUqGln9ePxfujde7U4eZI1TmR2BJMDAhcSMMDEDu
+         mZxAx3ASTIdG5Xd2Fo4LlyqQy40ENRrZZvp+hAEvV3oMwTEc2aODQUpZQUjTsSLNCJGH
+         90Vv4SNIRxFH5TKcvfNL/fs8AyZWFbC+pzkYEyqmhddoblbqWt6bTSvziT6k38ehH8TT
+         z0P5PfEc9QqZaveg89XoaY9ZHBWH9E7TCSg7A/w7rJ0RJDgCYGnPWmFqnyaNrjLGNv02
+         7OKaORMhOMavSOJoV1q+V4A39DfPDMIlu8GusrgmK8/aiHz5MZBOX5umka1h93wauOW3
+         Y7sA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
          :content-disposition:user-agent;
-        bh=nji666lXogga4Nthf5vGuC+IqTCs5TmoM4olxuGeGDI=;
-        b=JSumAwgY3lIz5SSF31aLjC35456xczndOOCgOyp65vKuai9sd8jrdhFQq3TAXlzi15
-         3wQX9XaDvOFbe2BsZ2yl+rjQKPE9XovaYARnZvTHuanDbTD3ov6t/IjIT4YcTi/JCUuP
-         ZHVuhdmTRxMVjvKAz1t468A1N/aId0Fu77W4VW4sALvbUFhHU8o/Gm8/V5SbsDMCETIR
-         hd4YRWwubQGKn1coowiGY3JwwgBTxORh/EGOhiHLvQAp1JO7xaDnLo8G3PtdN9+leu4O
-         efaELonvcTDgXQSaDcRN7skXdV6gxoc9AwfoVkd5vnItvXM0RE1+3B+mWfuW8hCvUjkX
-         ZCeA==
-X-Gm-Message-State: AMke39nGSEG5dHnzYN+TS1tT4lMKKbvuxOBZqzRmb9hDFles0rMICs/5lL6OLzmH+pBYQA==
-X-Received: by 10.99.127.14 with SMTP id a14mr9875370pgd.64.1488638034086;
-        Sat, 04 Mar 2017 06:33:54 -0800 (PST)
+        bh=nrm+Umw867quqOfmTcfXmfzLZxAKbsCk3EF3KxkAeGE=;
+        b=IPM/xQJDy0V6Tsh/k0Fv/X3afQRrRhYnaov9TM/JVcK+f8HjpQTfqmcD3DeWs5sWNf
+         cjCNqTgDo6ZHY1bIKx8R902tFCJ84IozHO8HPqL05NioEEXIHYxKfK2MQPpxdiKjZkOy
+         meRjXxdxv1BlHT0cIvvEqduhwM+vgmOP/g44XX8Cr1vldXk4aepwxHAhusb73zdgAGBv
+         HljAeIXOnjDbplOITGXnOe1VAkxLqqxLrC49W1Ic2laSSEF9kJo9P4lEisR18oXEHexn
+         2UNyzLwGL26npQ89OdK/e4hj3rTR9zACq2tPiSKr91UcHNebhpUYR1PNrAcQJfG4puSE
+         J64g==
+X-Gm-Message-State: AMke39lNh0QNF57wmYutqjKJqZr9b2v9VTXO1SNDUlGDBPvd43xDssqNBaasXM0SnhG0kg==
+X-Received: by 10.98.153.198 with SMTP id t67mr5441972pfk.1.1488568857704;
+        Fri, 03 Mar 2017 11:20:57 -0800 (PST)
 Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([117.211.102.27])
-        by smtp.gmail.com with ESMTPSA id y184sm29875719pgd.45.2017.03.04.06.33.52
+Received: from euri ([2405:204:5508:2b2:841b:c6f4:fb42:37b7])
+        by smtp.gmail.com with ESMTPSA id d1sm24877993pfk.20.2017.03.03.11.20.55
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 04 Mar 2017 06:33:53 -0800 (PST)
-Message-ID: <58bad051.c18a630a.70a47.c246@mx.google.com>
-X-Google-Original-Message-ID: <20170304143343.GA4320@<rvarsha016@gmail.com>>
-Date: Sat, 4 Mar 2017 20:03:44 +0530
+        Fri, 03 Mar 2017 11:20:57 -0800 (PST)
+Message-ID: <58b9c219.8198620a.a53aa.2375@mx.google.com>
+X-Google-Original-Message-ID: <20170303192050.GA19903@<rvarsha016@gmail.com>>
+Date: Sat, 4 Mar 2017 00:50:51 +0530
 From: Varsha Rao <rvarsha016@gmail.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH v2 0/9] staging: media: atomisp: Fix multiple checkpatch
- issues.
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH 0/9] staging: media: atomisp: Fix multiple checkpatch issues.
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.7.1 (2016-10-04)
 
-Fixes multiple checkpatch issues in media driver. 
+Fixes multiple checkpatch issues in media driver.
 
 Varsha Rao (9):
   staging: media: atomisp: Removed unnecessary parentheses.
@@ -73,7 +72,7 @@ Varsha Rao (9):
   staging: media: atomisp: Replace 'uint32_t' with kernel type u32.
   staging: media: atomisp: Fix block comments warning.
   staging: media: atomisp: Removes the FSF mailing address.
-  staging: media: atomisp: Use unsigned int instead of unsigned.
+  staging: media: atomisp: Use unsigned int instead of unisigned.
   staging: media: atomisp: Fixed typo.
   staging: media: atomisp: Replace NULL comparison.
 
