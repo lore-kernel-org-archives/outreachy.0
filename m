@@ -1,77 +1,118 @@
 X-GM-THRID: 6393343309495926784
-X-Received: by 10.157.12.97 with SMTP id 88mr1717547otr.122.1488572203769;
-        Fri, 03 Mar 2017 12:16:43 -0800 (PST)
+X-Received: by 10.46.21.11 with SMTP id s11mr748576ljd.23.1488566719420;
+        Fri, 03 Mar 2017 10:45:19 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.68.202 with SMTP id p10ls7303662otg.18.gmail; Fri, 03 Mar
- 2017 12:16:43 -0800 (PST)
-X-Received: by 10.157.56.155 with SMTP id p27mr1906605otc.124.1488572203389;
-        Fri, 03 Mar 2017 12:16:43 -0800 (PST)
-Return-Path: <joe@perches.com>
-Received: from smtprelay.hostedemail.com (smtprelay0100.hostedemail.com. [216.40.44.100])
-        by gmr-mx.google.com with ESMTPS id 13si1223589iti.0.2017.03.03.12.16.43
+Received: by 10.46.69.198 with SMTP id s189ls1123182lja.6.gmail; Fri, 03 Mar
+ 2017 10:45:18 -0800 (PST)
+X-Received: by 10.25.145.17 with SMTP id t17mr663796lfd.23.1488566718952;
+        Fri, 03 Mar 2017 10:45:18 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id h62si210478wme.2.2017.03.03.10.45.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Mar 2017 12:16:43 -0800 (PST)
-Received-SPF: neutral (google.com: 216.40.44.100 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.100;
+        Fri, 03 Mar 2017 10:45:18 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 216.40.44.100 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
-	by smtprelay07.hostedemail.com (Postfix) with ESMTP id D44DFC211F;
-	Fri,  3 Mar 2017 20:16:42 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,:::::::::::::::::::::,RULES_HIT:41:69:355:379:541:599:800:960:973:988:989:1260:1277:1311:1313:1314:1345:1359:1373:1431:1437:1515:1516:1518:1534:1540:1593:1594:1711:1730:1747:1777:1792:2393:2553:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3868:3872:3873:3874:4277:4321:5007:7514:7903:10004:10400:10471:10848:11026:11232:11658:11914:12043:12296:12438:12555:12740:12760:12895:12986:13069:13255:13311:13357:13439:14096:14097:14181:14659:14721:21060:21080:21451:30054:30090:30091,0,RBL:none,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:fn,MSBL:0,DNSBL:none,Custom_rules:0:0:0,LFtime:2,LUA_SUMMARY:none
-X-HE-Tag: use54_1cc0e182afb0e
-X-Filterd-Recvd-Size: 2142
-Received: from XPS-9350 (193.sub-70-197-78.myvzw.com [70.197.78.193])
-	(Authenticated sender: joe@perches.com)
-	by omf06.hostedemail.com (Postfix) with ESMTPA;
-	Fri,  3 Mar 2017 20:16:36 +0000 (UTC)
-Message-ID: <1488572194.2179.36.camel@perches.com>
-Subject: Re: [Outreachy kernel] [PATCH 6/6] staging: speakup: fixes braces
- {} should be used on all arms of this statement
-From: Joe Perches <joe@perches.com>
-To: Julia Lawall <julia.lawall@lip6.fr>, Arushi Singhal
-	 <arushisinghal19971997@gmail.com>
-Cc: w.d.hubbs@gmail.com, chris@the-brannons.com, 
- outreachy-kernel@googlegroups.com, kirk@reisers.ca,
- samuel.thibault@ens-lyon.org,  gregkh@linuxfoundation.org,
- speakup@linux-speakup.org,  devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Date: Fri, 03 Mar 2017 12:16:34 -0800
-In-Reply-To: <alpine.DEB.2.20.1703031940410.2133@hadrien>
-References: <20170303183707.14830-1-arushisinghal19971997@gmail.com>
-	 <20170303183707.14830-7-arushisinghal19971997@gmail.com>
-	 <alpine.DEB.2.20.1703031940410.2133@hadrien>
-Content-Type: text/plain; charset="ISO-8859-1"
-X-Mailer: Evolution 3.22.3-0ubuntu0.1 
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-
-On Fri, 2017-03-03 at 19:40 +0100, Julia Lawall wrote:
-> On Sat, 4 Mar 2017, Arushi Singhal wrote:
-> > This patch fixes the checks reported by checkpatch.pl
-> > for braces {} should be used on all arms of this statement.
-> > 
-> > Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
-> > ---
-> >  drivers/staging/speakup/main.c | 29 +++++++++++++++++++----------
-> >  1 file changed, 19 insertions(+), 10 deletions(-)
-> > 
-> > diff --git a/drivers/staging/speakup/main.c b/drivers/staging/speakup/main.c
-> > index 7915e75664f4..6179e0aafa25 100644
-> > --- a/drivers/staging/speakup/main.c
-> > +++ b/drivers/staging/speakup/main.c
-> > @@ -640,8 +640,9 @@ static void say_prev_word(struct vc_data *vc)
-> >  				break;
-> >  			spk_y--;
-> >  			spk_x = vc->vc_cols - 1;
-> > -		} else
-> > +		} else{
-> 
-> else needs a space after it.
-
-And if you had scanned this suggested patch with
-checkpatch, you would have known that.
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,238,1484002800"; 
+   d="scan'208";a="215504461"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 03 Mar 2017 19:45:17 +0100
+Date: Fri, 3 Mar 2017 19:45:17 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Arushi Singhal <arushisinghal19971997@gmail.com>
+cc: w.d.hubbs@gmail.com, chris@the-brannons.com, 
+    outreachy-kernel@googlegroups.com, kirk@reisers.ca, 
+    samuel.thibault@ens-lyon.org, gregkh@linuxfoundation.org, 
+    speakup@linux-speakup.org, devel@driverdev.osuosl.org, 
+    linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH 2/6] staging: speakup: simple_strtoul
+ is replaced with kstrtoul
+In-Reply-To: <20170303183707.14830-3-arushisinghal19971997@gmail.com>
+Message-ID: <alpine.DEB.2.20.1703031944310.2133@hadrien>
+References: <20170303183707.14830-1-arushisinghal19971997@gmail.com> <20170303183707.14830-3-arushisinghal19971997@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
 
+
+On Sat, 4 Mar 2017, Arushi Singhal wrote:
+
+> This patch fixes "simple_strtoul is obsolete, use kstrtoul instead"
+> warning.
+>
+> Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+> ---
+>  drivers/staging/speakup/kobjects.c    | 4 ++--
+>  drivers/staging/speakup/main.c        | 2 +-
+>  drivers/staging/speakup/varhandlers.c | 2 +-
+>  3 files changed, 4 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
+> index edde9e68779e..a82698c66568 100644
+> --- a/drivers/staging/speakup/kobjects.c
+> +++ b/drivers/staging/speakup/kobjects.c
+> @@ -152,7 +152,7 @@ static ssize_t chars_chartab_store(struct kobject *kobj,
+>  			continue;
+>  		}
+>
+> -		index = simple_strtoul(cp, &temp, 10);
+> +		index = kstrtoul(cp, &temp, 10);
+
+It seems unlikely that you actually compiled this code.  The argument list
+for kstrtoul has a completely different set of types.
+
+julia
+
+>  		if (index > 255) {
+>  			rejected++;
+>  			cp = linefeed + 1;
+> @@ -785,7 +785,7 @@ static ssize_t message_store_helper(const char *buf, size_t count,
+>  			continue;
+>  		}
+>
+> -		index = simple_strtoul(cp, &temp, 10);
+> +		index = kstrtoul(cp, &temp, 10);
+>
+>  		while ((temp < linefeed) && (*temp == ' ' || *temp == '\t'))
+>  			temp++;
+> diff --git a/drivers/staging/speakup/main.c b/drivers/staging/speakup/main.c
+> index 17df20ec94be..b43e2e156602 100644
+> --- a/drivers/staging/speakup/main.c
+> +++ b/drivers/staging/speakup/main.c
+> @@ -1945,7 +1945,7 @@ static int handle_goto(struct vc_data *vc, u_char type, u_char ch, u_short key)
+>  		return 1;
+>  	}
+>
+> -	goto_pos = simple_strtoul(goto_buf, &cp, 10);
+> +	goto_pos = kstrtoul(goto_buf, &cp, 10);
+>
+>  	if (*cp == 'x') {
+>  		if (*goto_buf < '0')
+> diff --git a/drivers/staging/speakup/varhandlers.c b/drivers/staging/speakup/varhandlers.c
+> index cc984196020f..5107533bb45a 100644
+> --- a/drivers/staging/speakup/varhandlers.c
+> +++ b/drivers/staging/speakup/varhandlers.c
+> @@ -325,7 +325,7 @@ char *spk_s2uchar(char *start, char *dest)
+>  {
+>  	int val;
+>
+> -	val = simple_strtoul(skip_spaces(start), &start, 10);
+> +	val = kstrtoul(skip_spaces(start), &start, 10);
+>  	if (*start == ',')
+>  		start++;
+>  	*dest = (u_char)val;
+> --
+> 2.11.0
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170303183707.14830-3-arushisinghal19971997%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
