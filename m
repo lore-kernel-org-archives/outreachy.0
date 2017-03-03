@@ -1,12 +1,12 @@
 X-GM-THRID: 6393296356207755264
-Date: Fri, 3 Mar 2017 07:47:06 -0800 (PST)
+Date: Fri, 3 Mar 2017 07:43:25 -0800 (PST)
 From: SIMRAN SINGHAL <singhalsimran0@gmail.com>
 To: outreachy-kernel <outreachy-kernel@googlegroups.com>
 Cc: singhalsimran0@gmail.com, gregkh@linuxfoundation.org,
 	david.kershner@unisys.com, sparmaintainer@unisys.com,
 	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
 	Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com
-Message-Id: <79126ec0-d6a5-47ea-8b94-fcc168386722@googlegroups.com>
+Message-Id: <3526d179-46a2-4d9b-928b-f70dbd588736@googlegroups.com>
 In-Reply-To: <alpine.DEB.2.20.1703031638170.3490@hadrien>
 References: <1488555300-9140-1-git-send-email-singhalsimran0@gmail.com> <cd698db9-81f1-482c-90e7-f31bac89df7f@googlegroups.com> <1c412adb-4f88-47e2-aa29-016e62fc882a@googlegroups.com>
  <alpine.DEB.2.20.1703031638170.3490@hadrien>
@@ -14,19 +14,19 @@ Subject: Re: [Outreachy kernel] Re: [PATCH v2 0/3] Replace "the the " with
  "the"
 MIME-Version: 1.0
 Content-Type: multipart/mixed; 
-	boundary="----=_Part_708_510791298.1488556026531"
-X-Google-Token: EPqf5sUFcH8SnFT9NyY0
+	boundary="----=_Part_3144_480962862.1488555805794"
+X-Google-Token: EJ2e5sUFk0oy6b6xRj80
 X-Google-IP: 14.139.82.6
 
-------=_Part_708_510791298.1488556026531
+------=_Part_3144_480962862.1488555805794
 Content-Type: multipart/alternative; 
-	boundary="----=_Part_709_34993319.1488556026531"
+	boundary="----=_Part_3145_171478317.1488555805795"
 
-------=_Part_709_34993319.1488556026531
+------=_Part_3145_171478317.1488555805795
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 
-I have sent the v1.
+
 
 On Friday, March 3, 2017 at 9:08:49 PM UTC+5:30, Julia Lawall wrote:
 >
@@ -38,6 +38,11 @@ On Friday, March 3, 2017 at 9:08:49 PM UTC+5:30, Julia Lawall wrote:
 >
 > What is wrong? 
 >
+> Actually this version is supposed to be v1 but by mistake I wrote v2 in 
+subject of
+all the patches of this series.
+ 
+
 > julia 
 >
 > > 
@@ -85,14 +90,13 @@ On Friday, March 3, 2017 at 9:08:49 PM UTC+5:30, Julia Lawall wrote:
 > >
 
 
-------=_Part_709_34993319.1488556026531
+------=_Part_3145_171478317.1488555805795
 Content-Type: text/html; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr">I have sent the v1.<br><br>On Friday, March 3, 2017 at 9:0=
-8:49 PM UTC+5:30, Julia Lawall wrote:<blockquote class=3D"gmail_quote" styl=
-e=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left:=
- 1ex;">
+<div dir=3D"ltr"><br><br>On Friday, March 3, 2017 at 9:08:49 PM UTC+5:30, J=
+ulia Lawall wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;marg=
+in-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
 <br>
 <br>On Fri, 3 Mar 2017, SIMRAN SINGHAL wrote:
 <br>
@@ -100,7 +104,10 @@ e=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left:=
 <br>
 <br>What is wrong?
 <br>
-<br>julia
+<br></blockquote><div>Actually this version is supposed to be v1 but by mis=
+take I wrote v2 in subject of</div><div>all the patches of this series.</di=
+v><div>=C2=A0<br></div><blockquote class=3D"gmail_quote" style=3D"margin: 0=
+;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">julia
 <br>
 <br>&gt;
 <br>&gt; On Friday, March 3, 2017 at 9:06:52 PM UTC+5:30, SIMRAN SINGHAL wr=
@@ -178,7 +185,7 @@ ps://groups.google.com/d/optout&#39;;return true;" onclick=3D"this.href=3D&=
 ogle.com/d/<wbr>optout</a>.
 <br>&gt;
 <br>&gt;</blockquote></div>
-------=_Part_709_34993319.1488556026531--
+------=_Part_3145_171478317.1488555805795--
 
-------=_Part_708_510791298.1488556026531--
+------=_Part_3144_480962862.1488555805794--
 
