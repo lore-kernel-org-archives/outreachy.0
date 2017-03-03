@@ -1,53 +1,52 @@
 X-GM-THRID: 6393330913423392768
-X-Received: by 10.157.43.121 with SMTP id f54mr1539526otd.134.1488563356301;
-        Fri, 03 Mar 2017 09:49:16 -0800 (PST)
+X-Received: by 10.157.12.97 with SMTP id 88mr1452053otr.122.1488563351479;
+        Fri, 03 Mar 2017 09:49:11 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.12.146 with SMTP id 18ls3010736iom.11.gmail; Fri, 03 Mar
- 2017 09:49:15 -0800 (PST)
-X-Received: by 10.107.9.19 with SMTP id j19mr1556706ioi.5.1488563355552;
-        Fri, 03 Mar 2017 09:49:15 -0800 (PST)
+Received: by 10.107.162.197 with SMTP id l188ls1240690ioe.23.gmail; Fri, 03
+ Mar 2017 09:49:10 -0800 (PST)
+X-Received: by 10.99.108.71 with SMTP id h68mr1573374pgc.130.1488563350548;
+        Fri, 03 Mar 2017 09:49:10 -0800 (PST)
 Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id c123si169172pfa.4.2017.03.03.09.49.15
+Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
+        by gmr-mx.google.com with ESMTPS id r66si164284pfb.7.2017.03.03.09.49.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Mar 2017 09:49:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Fri, 03 Mar 2017 09:49:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id e66so4815958pfe.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 03 Mar 2017 09:49:15 -0800 (PST)
+Received: by mail-pg0-x241.google.com with SMTP id s67so13285616pgb.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 03 Mar 2017 09:49:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=KtIwk4uq3SEICXanWiMKAGDXPoSN78M1q78Os+Z/V5A=;
-        b=EBwBmrGoMPCUYfA3Uk8kL+2nuffCfBDNdhF0R6RM6eaWrZqe9Tnql5oNByPCt76wZx
-         yAcEPmNYwliNi8pFpBdaq4I7rNtxSi34jLLkxnBvtAHEULHO7zqSk5XZfcFD3TN6+YYM
-         twMlA+Q8WhZPiA5274VaJJKd+mDU6Oin5M7bk+ptjFbJS6cAEQamuJg0N0ShmfnzQLvW
-         m5vAI2hAnwR0kOaFgT/4avhU9vehQxhTC3KCcXR0oNxi3gX3VCjSQVdr5NrWq0LAW3l1
-         4cOVBtYJlqbkVjgx3oyq8PZkBv79rFvGqg7fKJTtAS+cu3q3gS2PHIdzeV3KTApxuvMY
-         iJLw==
+        h=from:to:cc:subject:date:message-id;
+        bh=lXVVy0s0V9HdpKIuY2/Yuv64s2AZ7WtVHzoGqX5SIgQ=;
+        b=tHOscT1qYZPpehk4jlwQ6mZHoGFP5D2E8t7U6HEYF4v5oS3SyMvN+AndAzkb1kgSwn
+         DFHG4QAZbHUy9P2VhRc0JbYcb7BpnWaLu+svl/30mI6jPgXXoPJVR7q9gU4163xc7tyR
+         BJNAVMjnAVoogEOXpbhALIROywbG5fJCl4IBk4jyFUPySqCaCITAiW2PrJ1gaYiM1oas
+         FTm3BuZq7LzETKdAUiTLG5uJpN/zPKV2sUbCmVssVu3QhQeNgP172NXFYcQ6JC1i5IYa
+         mPW34vPuRW72vFpMLaaB1j8MtgDYAUMOFSuUpKJzMfIbMPPet1Qn3xShRJIw2HpdENuy
+         mPNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=KtIwk4uq3SEICXanWiMKAGDXPoSN78M1q78Os+Z/V5A=;
-        b=MZC9ThBz4xflPz4EmuhOvZmqh+JVM2km1VQYvrLxjokniVNuR0nSFZmOaZeaGG1Fib
-         fLQ36DxDlwl8ozVdIv88bLqK46KPc0ZxldH2B9pNVChBsFixGNNwboC5jtCk6KSJDx68
-         KSd0vxK0ZivVmkg03sYjB6MZPII+4PIMPFR3TfZL8l18cwGjyJKtqjmKyCIMf3reoEod
-         Iy+Qpk/l4vFBzHDXvM8FW9Bj2aUnc/HJGM/SXIODSZK+cDucWssiqPn9rmKKDImVoWzZ
-         +fQaeI510oFkpVEOeZMQcUr8zVTsFeemIn9zscikuEodSB9EZ8Q6gAUc+5BwrO3e76y7
-         n4AQ==
-X-Gm-Message-State: AMke39m8AeKMzcFn6topVQBlT9dNN801jVTy7w+IqT00ZMTV6C3NqM0wdl0m442ArQRQ4Q==
-X-Received: by 10.99.137.66 with SMTP id v63mr4733085pgd.207.1488563355345;
-        Fri, 03 Mar 2017 09:49:15 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=lXVVy0s0V9HdpKIuY2/Yuv64s2AZ7WtVHzoGqX5SIgQ=;
+        b=U2j05SLpihsVQuAI0AdyJdASUUymIzfgSV/LGxTJybgQeJwhs5VMwG0EtaXaLIZO6U
+         TiiqTxLFdlKtxeFMzh/Xi7FOcaVIlG+fLCMy0mixbc4Chh1i1K653hIKoGyuI1Q12rAe
+         fZNGOPDdGhCBMhBO/0QTm5t48wmaXLXRJ89krZ7r4I2ZRQM/tQAW6Zcd6sqM3HMDWa4E
+         7jNTjp4O0D4PTdUWIh/W38XQakTZYeSnJx/05BCXNvqTxozmLrtF2ZIwQT0CHO4WUrrZ
+         UzQx7jyfYOu+sWZ45OmLLef/tBtfEqDZqIYbYbDk/qE5sLNL15xOZfI8vdhz0Ed51c2x
+         8PjQ==
+X-Gm-Message-State: AMke39nsarqKMjr4a/eZMC9S+On85qh4aavNxpcDGGXsWgxk+QEi8sGD4stotRTSKhD/5Q==
+X-Received: by 10.98.16.14 with SMTP id y14mr4896092pfi.63.1488563350027;
+        Fri, 03 Mar 2017 09:49:10 -0800 (PST)
 Return-Path: <singhalsimran0@gmail.com>
 Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id w14sm11838616pgo.37.2017.03.03.09.49.13
+        by smtp.gmail.com with ESMTPSA id q23sm24654321pfg.63.2017.03.03.09.49.08
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 03 Mar 2017 09:49:14 -0800 (PST)
+        Fri, 03 Mar 2017 09:49:09 -0800 (PST)
 From: simran singhal <singhalsimran0@gmail.com>
 To: Larry.Finger@lwfinger.net
 Cc: florian.c.schilhabel@googlemail.com,
@@ -57,50 +56,34 @@ Cc: florian.c.schilhabel@googlemail.com,
 	oleg.drokin@intel.com,
 	marvin24@gmx.de,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCH v4 1/5] staging: nvec: Remove unnecessary cast on void pointer
-Date: Fri,  3 Mar 2017 23:19:00 +0530
-Message-Id: <1488563344-31032-2-git-send-email-singhalsimran0@gmail.com>
+Subject: [PATCH v4 0/5] Remove unnecessary cast on void pointer
+Date: Fri,  3 Mar 2017 23:18:59 +0530
+Message-Id: <1488563344-31032-1-git-send-email-singhalsimran0@gmail.com>
 X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1488563344-31032-1-git-send-email-singhalsimran0@gmail.com>
-References: <1488563344-31032-1-git-send-email-singhalsimran0@gmail.com>
 
-The following Coccinelle script was used to detect this:
+This patch-series removes unnecessary cast on void pointer in various 
+drivers.
 
-@r@
-expression x;
-void* e;
-type T;
-identifier f;
-@@
-(
-  *((T *)e)
-|
-  ((T *)x)[...]
-|
-  ((T*)x)->f
-|
-- (T*)
-  e
-)
+v4:
+  -change the cover-letter subject
+v3:
+  -Fixed compilation warning in lustre/lustre/llite/range_lock.c
 
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
----
- drivers/staging/nvec/nvec_kbd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+simran singhal (5):
+  staging: nvec: Remove unnecessary cast on void pointer
+  staging: lustre: Remove unnecessary cast on void pointer
+  staging: lustre: lustre: Remove unnecessary cast on void pointer
+  staging: rts5208: Remove unnecessary cast on void pointer
+  staging: rtl8712: Remove unnecessary cast on void pointer
 
-diff --git a/drivers/staging/nvec/nvec_kbd.c b/drivers/staging/nvec/nvec_kbd.c
-index e881e6b..a01f486 100644
---- a/drivers/staging/nvec/nvec_kbd.c
-+++ b/drivers/staging/nvec/nvec_kbd.c
-@@ -58,7 +58,7 @@ static int nvec_keys_notifier(struct notifier_block *nb,
- 			      unsigned long event_type, void *data)
- {
- 	int code, state;
--	unsigned char *msg = (unsigned char *)data;
-+	unsigned char *msg = data;
- 
- 	if (event_type == NVEC_KB_EVT) {
- 		int _size = (msg[0] & (3 << 5)) >> 5;
+ drivers/staging/lustre/lustre/llite/range_lock.c |  2 +-
+ drivers/staging/lustre/lustre/lmv/lmv_obd.c      |  4 ++--
+ drivers/staging/lustre/lustre/mgc/mgc_request.c  |  2 +-
+ drivers/staging/nvec/nvec_kbd.c                  |  2 +-
+ drivers/staging/rtl8712/rtl8712_recv.c           | 11 +++++------
+ drivers/staging/rts5208/rtsx_transport.c         |  3 +--
+ 6 files changed, 11 insertions(+), 13 deletions(-)
+
 -- 
 2.7.4
 
