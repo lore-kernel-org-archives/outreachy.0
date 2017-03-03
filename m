@@ -1,85 +1,80 @@
 X-GM-THRID: 6392958806119153664
-X-Received: by 10.157.11.14 with SMTP id a14mr4198257ota.51.1488694532566;
-        Sat, 04 Mar 2017 22:15:32 -0800 (PST)
+X-Received: by 10.129.158.213 with SMTP id v204mr783954ywg.70.1488536398046;
+        Fri, 03 Mar 2017 02:19:58 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.59.194 with SMTP id k60ls11171739otc.22.gmail; Sat, 04 Mar
- 2017 22:15:32 -0800 (PST)
-X-Received: by 10.157.43.184 with SMTP id u53mr4462332ota.33.1488694532272;
-        Sat, 04 Mar 2017 22:15:32 -0800 (PST)
-Received: by 10.55.73.143 with SMTP id w137msqka;
-        Sat, 4 Mar 2017 17:21:49 -0800 (PST)
-X-Received: by 10.28.104.2 with SMTP id d2mr252535wmc.12.1488676909246;
-        Sat, 04 Mar 2017 17:21:49 -0800 (PST)
-Return-Path: <jsimmons@infradead.org>
-Received: from casper.infradead.org (casper.infradead.org. [2001:770:15f::2])
-        by gmr-mx.google.com with ESMTPS id e72si444444wma.0.2017.03.04.17.21.46
+Received: by 10.157.53.6 with SMTP id o6ls9949284otc.47.gmail; Fri, 03 Mar
+ 2017 02:19:57 -0800 (PST)
+X-Received: by 10.129.70.84 with SMTP id t81mr794276ywa.146.1488536397605;
+        Fri, 03 Mar 2017 02:19:57 -0800 (PST)
+Return-Path: <andreas.dilger@intel.com>
+Received: from mga09.intel.com (mga09.intel.com. [134.134.136.24])
+        by gmr-mx.google.com with ESMTPS id y90si370332pfa.6.2017.03.03.02.19.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 04 Mar 2017 17:21:46 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of jsimmons@infradead.org designates 2001:770:15f::2 as permitted sender) client-ip=2001:770:15f::2;
+        Fri, 03 Mar 2017 02:19:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of andreas.dilger@intel.com designates 134.134.136.24 as permitted sender) client-ip=134.134.136.24;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@infradead.org;
-       spf=pass (google.com: best guess record for domain of jsimmons@infradead.org designates 2001:770:15f::2 as permitted sender) smtp.mailfrom=jsimmons@infradead.org
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Type:MIME-Version:References:
-	Message-ID:In-Reply-To:Subject:cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	 bh=hFoQwirnFQjRfX/0RUT0DdEOJnb/z5sZHYY91jiz2Aw=; b=dC8ImoVp81hKncR/oMQEbjkXS
-	pf/dG0xXjkya3BvYKR7IlDw6D3/fNnWZ6XCCCVhjLWPX1QBpDmSJE0bUS/1x8I6+hVxgMNJ6WBQIa
-	/eGaBdzcvTwA+GZXDu1XCc6Vry77VFOw/0ErRZDeBmU1bfj8HsthjfwbAw9T+051ZmeCNF7dXKRA5
-	Oj3U6+3oZBNpkwUB2RUNiWpJjzqoCM3/YWc1yUntPGmJOf5BOl1xsXPHOCW1XJnYXWkK9Bpa+OfJX
-	f+mHJuNL67W9m5GGoshOaPlerU5uEoke7kfSY8UJSu0cEQf8eVKcB5kfEC4S72lfOfe6Rdt8NiGLF
-	/8fLh8xTA==;
-Received: from jsimmons (helo=localhost)
-	by casper.infradead.org with local-esmtp (Exim 4.87 #1 (Red Hat Linux))
-	id 1ckKrm-0003lJ-2x; Sun, 05 Mar 2017 01:21:44 +0000
-Date: Sun, 5 Mar 2017 01:21:42 +0000 (GMT)
-From: James Simmons <jsimmons@infradead.org>
+       spf=pass (google.com: domain of andreas.dilger@intel.com designates 134.134.136.24 as permitted sender) smtp.mailfrom=andreas.dilger@intel.com
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+  by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 03 Mar 2017 02:19:57 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.35,236,1484035200"; 
+   d="scan'208";a="940179570"
+Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
+  by orsmga003.jf.intel.com with ESMTP; 03 Mar 2017 02:19:56 -0800
+Received: from fmsmsx118.amr.corp.intel.com (10.18.116.18) by
+ FMSMSX106.amr.corp.intel.com (10.18.124.204) with Microsoft SMTP Server (TLS)
+ id 14.3.248.2; Fri, 3 Mar 2017 02:19:56 -0800
+Received: from FMSMSX109.amr.corp.intel.com ([169.254.15.88]) by
+ fmsmsx118.amr.corp.intel.com ([169.254.1.242]) with mapi id 14.03.0248.002;
+ Fri, 3 Mar 2017 02:19:56 -0800
+From: "Dilger, Andreas" <andreas.dilger@intel.com>
 To: Gargi Sharma <gs051095@gmail.com>
-cc: outreachy-kernel@googlegroups.com, oleg.drokin@intel.com, 
-    andreas.dilger@intel.com, gregkh@linuxfoundation.org
+CC: "outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>,
+	"Drokin, Oleg" <oleg.drokin@intel.com>, "jsimmons@infradead.org"
+	<jsimmons@infradead.org>, "gregkh@linuxfoundation.org"
+	<gregkh@linuxfoundation.org>
 Subject: Re: [PATCH] staging: lustre: Remove lustre_eacl.h
-In-Reply-To: <1488476575-16322-1-git-send-email-gs051095@gmail.com>
-Message-ID: <alpine.LFD.2.20.1703050121310.10898@casper.infradead.org>
+Thread-Topic: [PATCH] staging: lustre: Remove lustre_eacl.h
+Thread-Index: AQHSk3zIAs4dp7CBHUqKzGfEUXS4K6GDboqA
+Date: Fri, 3 Mar 2017 10:19:56 +0000
+Message-ID: <FF23859C-EF52-4667-A6A2-E68668078E42@intel.com>
 References: <1488476575-16322-1-git-send-email-gs051095@gmail.com>
-User-Agent: Alpine 2.20 (LFD 67 2015-01-07)
+In-Reply-To: <1488476575-16322-1-git-send-email-gs051095@gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [10.254.124.201]
+Content-Type: text/plain; charset="us-ascii"
+Content-ID: <EA6901662E8CF644843E882C4E3C47C9@intel.com>
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20170305_012142_122262_DFBE7845 
-X-CRM114-Status: GOOD (  19.21  )
-X-Spam-Score: -1.9 (-)
-X-Spam-Report: SpamAssassin version 3.4.1 on casper.infradead.org summary:
- Content analysis details:   (-1.9 points, 5.0 required)
- 
-  pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -0.0 NO_RELAYS              Informational: message was not relayed via SMTP
- -1.9 BAYES_00               BODY: Bayes spam probability is 0 to 1%
-                             [score: 0.0000]
+Return-Path: andreas.dilger@intel.com
 
-
+On Mar 2, 2017, at 10:42, Gargi Sharma <gs051095@gmail.com> wrote:
+>=20
 > The structures and the macros in the header file are not used
 > anywhere inside the kernel (verified by using grep). The structures
 > and macros were leftover from the patch
 > 341f1f0affed1c24712f37c95bb654b3b33ab2c6 "staging: lustre: remove
 > remote client support". Also, removed the include statements for
 > lustre_eacl.h.
-> 
+>=20
 > Signed-off-by: Gargi Sharma <gs051095@gmail.com>
 
-Reviewed-by: James Simmons <jsimmons@infradead.org>
+Reviewed-by: Andreas Dilger <andreas.dilger@intel.com>
 
 > ---
->  .../staging/lustre/lustre/include/lustre_eacl.h    | 74 ----------------------
->  .../staging/lustre/lustre/llite/llite_internal.h   |  1 -
->  drivers/staging/lustre/lustre/llite/xattr.c        |  1 -
->  3 files changed, 76 deletions(-)
->  delete mode 100644 drivers/staging/lustre/lustre/include/lustre_eacl.h
-> 
-> diff --git a/drivers/staging/lustre/lustre/include/lustre_eacl.h b/drivers/staging/lustre/lustre/include/lustre_eacl.h
+> .../staging/lustre/lustre/include/lustre_eacl.h    | 74 -----------------=
+-----
+> .../staging/lustre/lustre/llite/llite_internal.h   |  1 -
+> drivers/staging/lustre/lustre/llite/xattr.c        |  1 -
+> 3 files changed, 76 deletions(-)
+> delete mode 100644 drivers/staging/lustre/lustre/include/lustre_eacl.h
+>=20
+> diff --git a/drivers/staging/lustre/lustre/include/lustre_eacl.h b/driver=
+s/staging/lustre/lustre/include/lustre_eacl.h
 > deleted file mode 100644
 > index c198eda..0000000
 > --- a/drivers/staging/lustre/lustre/include/lustre_eacl.h
@@ -107,7 +102,8 @@ Reviewed-by: James Simmons <jsimmons@infradead.org>
 > - * GPL HEADER END
 > - */
 > -/*
-> - * Copyright (c) 2008, 2010, Oracle and/or its affiliates. All rights reserved.
+> - * Copyright (c) 2008, 2010, Oracle and/or its affiliates. All rights re=
+served.
 > - * Use is subject to license terms.
 > - */
 > -/*
@@ -159,32 +155,46 @@ Reviewed-by: James Simmons <jsimmons@infradead.org>
 > -/** @} eacl */
 > -
 > -#endif
-> diff --git a/drivers/staging/lustre/lustre/llite/llite_internal.h b/drivers/staging/lustre/lustre/llite/llite_internal.h
+> diff --git a/drivers/staging/lustre/lustre/llite/llite_internal.h b/drive=
+rs/staging/lustre/lustre/llite/llite_internal.h
 > index ecdfd0c..15bd75f 100644
 > --- a/drivers/staging/lustre/lustre/llite/llite_internal.h
 > +++ b/drivers/staging/lustre/lustre/llite/llite_internal.h
 > @@ -35,7 +35,6 @@
->  #include "../include/lustre_debug.h"
->  #include "../include/lustre_ver.h"
->  #include "../include/lustre_disk.h"	/* for s2sbi */
+> #include "../include/lustre_debug.h"
+> #include "../include/lustre_ver.h"
+> #include "../include/lustre_disk.h"	/* for s2sbi */
 > -#include "../include/lustre_eacl.h"
->  #include "../include/lustre_linkea.h"
->  
->  /* for struct cl_lock_descr and struct cl_io */
-> diff --git a/drivers/staging/lustre/lustre/llite/xattr.c b/drivers/staging/lustre/lustre/llite/xattr.c
+> #include "../include/lustre_linkea.h"
+>=20
+> /* for struct cl_lock_descr and struct cl_io */
+> diff --git a/drivers/staging/lustre/lustre/llite/xattr.c b/drivers/stagin=
+g/lustre/lustre/llite/xattr.c
 > index 421cc04..bcbc77e 100644
 > --- a/drivers/staging/lustre/lustre/llite/xattr.c
 > +++ b/drivers/staging/lustre/lustre/llite/xattr.c
 > @@ -40,7 +40,6 @@
->  #include "../include/obd_support.h"
->  #include "../include/lustre_dlm.h"
->  #include "../include/lustre_ver.h"
+> #include "../include/obd_support.h"
+> #include "../include/lustre_dlm.h"
+> #include "../include/lustre_ver.h"
 > -#include "../include/lustre_eacl.h"
->  
->  #include "llite_internal.h"
->  
-> -- 
+>=20
+> #include "llite_internal.h"
+>=20
+> --=20
 > 2.7.4
-> 
-> 
+>=20
+
+Cheers, Andreas
+--
+Andreas Dilger
+Lustre Principal Architect
+Intel Corporation
+
+
+
+
+
+
+
 
