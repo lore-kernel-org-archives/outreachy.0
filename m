@@ -1,98 +1,124 @@
-X-GM-THRID: 6254907703797219328
-X-Received: by 10.66.139.138 with SMTP id qy10mr37707910pab.46.1456334186245;
-        Wed, 24 Feb 2016 09:16:26 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.79.195 with SMTP id l3ls160095igx.6.gmail; Wed, 24 Feb 2016
- 09:16:25 -0800 (PST)
-X-Received: by 10.66.150.68 with SMTP id ug4mr36966132pab.33.1456334185391;
-        Wed, 24 Feb 2016 09:16:25 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
-        by gmr-mx.google.com with ESMTPS id ui7si551559pab.0.2016.02.24.09.16.25
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 24 Feb 2016 09:16:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x230.google.com with SMTP id fl4so15815452pad.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 24 Feb 2016 09:16:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=jwQorfJ1hodDtbVKZCvQwwK9TCKDTalXRaRyH4QR5bI=;
-        b=t165buYyBLEci1gigrRBXM0w80NBTvOChLGNpQI3OuRBzEsBf0xFsPBEdypq3hC79b
-         vs5WQW2J+VSmMfAi7Mhyt1X3vH/LYJ6OzOQj+7omVSYp4BUIwRk+I8+LNXy9EI12o4F+
-         nHin0BJX6G5uRXrobHYZu9Xeu/8H07oAdEN9iDPdizKUK3dftjBGo4H6n9Xu+dS/KFWy
-         HxFk867EoVRdBCQiMmX8g8tsBhlm+3ObLFEOStGv/slNvhKT+hWZaPSzOPbnBIlLG6vL
-         yF3VSgpnaeyDipU4zijes2zakY6XADegoI8972nFuAm5Kcr8nY6SNC/ExFkG5T0GD2IV
-         iGzg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=jwQorfJ1hodDtbVKZCvQwwK9TCKDTalXRaRyH4QR5bI=;
-        b=RKAlrD2pMfXBuTHUh5bZ1iATmqNW7D8ljNYDz9a6gTsYY1hu8plF1Hyvv3dKQu04Tb
-         2sKrKxHbjx8uNN5PxZFHaooowp0IOBZA9ezKNVwFNWmP5DbyYPYSJlpQM7TjTeap6Bk4
-         Q+zRqWRtJ2osIqDN+S41Er8dB+Wb3cDU2kVWRZ3c//LSUJDFc0PVUxrk5tvCMDWJMCCo
-         LDHOnpPhwQCDzMye/8mdMP6Y2i2QeeO7IEo4Jc70BrdBRcg158gq1keRDpt/kdb4265s
-         TB9ubkyIzVfmZYSSLAnAjpOfasQ8skaaiVad+IeYlrdqmaUhtknLD27mIW8VsB+55u0B
-         RuKw==
-X-Gm-Message-State: AG10YOTwgevnf2xQyRVte1TUeLg8Jqxqr9KvnG+1b9sfc6Ep0c0ghg9WQU7uRTosLXsW7A==
-X-Received: by 10.66.62.132 with SMTP id y4mr54998704par.55.1456334185211;
-        Wed, 24 Feb 2016 09:16:25 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from bhumirks@gmail.com ([223.176.129.85])
-        by smtp.gmail.com with ESMTPSA id fa3sm6350950pab.45.2016.02.24.09.16.19
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 24 Feb 2016 09:16:24 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Wed, 24 Feb 2016 22:46:12 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: rtl8192u: Remove debug messages
-Date: Wed, 24 Feb 2016 22:46:00 +0530
-Message-Id: <1456334160-6675-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+X-GM-THRID: 6393394520206082048
+Date: Fri, 3 Mar 2017 14:08:46 -0800 (PST)
+From: Tamara Diaconita <diaconitatamara@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: chris@the-brannons.com, kirk@reisers.ca, samuel.thibault@ens-lyon.org,
+	gregkh@linuxfoundation.org, diaconita.tamara@gmail.com
+Message-Id: <103cbc92-2362-4dd6-a855-b8f580c75b23@googlegroups.com>
+In-Reply-To: <20170303215557.10077-1-diaconita.tamara@gmail.com>
+References: <20170303215557.10077-1-diaconita.tamara@gmail.com>
+Subject: Re: [PATCH] Delete tab to indent
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_808_1813714543.1488578926648"
+X-Google-Token: EO7S58UF7-CsKYBSFIw0
+X-Google-IP: 79.115.211.217
 
-As kmalloc generates a backtrace on failure so there is no need of
-these debug messages when kmalloc fails. Also remove unwanted {} around if
-block after removal of these messages.
+------=_Part_808_1813714543.1488578926648
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_809_2017740016.1488578926648"
 
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
- drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c | 7 +------
- 1 file changed, 1 insertion(+), 6 deletions(-)
+------=_Part_809_2017740016.1488578926648
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-index 879c413..b38ab3a 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-@@ -460,10 +460,8 @@ static int is_duplicate_packet(struct ieee80211_device *ieee,
- 	//	if (memcmp(entry->mac, mac, ETH_ALEN)){
- 		if (p == &ieee->ibss_mac_hash[index]) {
- 			entry = kmalloc(sizeof(struct ieee_ibss_seq), GFP_ATOMIC);
--			if (!entry) {
--				printk(KERN_WARNING "Cannot malloc new mac entry\n");
-+			if (!entry)
- 				return 0;
--			}
- 			memcpy(entry->mac, mac, ETH_ALEN);
- 			entry->seq_num[tid] = seq;
- 			entry->frag_num[tid] = frag;
-@@ -1290,10 +1288,7 @@ int ieee80211_rx(struct ieee80211_device *ieee, struct sk_buff *skb,
- 	//ethertype = (payload[6] << 8) | payload[7];
- 	rxb = kmalloc(sizeof(struct ieee80211_rxb), GFP_ATOMIC);
- 	if (!rxb)
--	{
--		IEEE80211_DEBUG(IEEE80211_DL_ERR,"%s(): kmalloc rxb error\n",__func__);
- 		goto rx_dropped;
--	}
- 	/* to parse amsdu packets */
- 	/* qos data packets & reserved bit is 1 */
- 	if (parse_subframe(skb, rx_stats, rxb, src, dst) == 0) {
--- 
-1.9.1
+I will resend the patch, thank you!
 
+vineri, 3 martie 2017, 23:56:01 UTC+2, Tamara Diaconita a scris:
+>
+> Deleted a tab to fix the checkpath.pl issue: 
+> CHECK: indent should use tabs where possible. 
+>
+> Deleted an extra tab to indent the code. 
+>
+> Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com> 
+> --- 
+>  drivers/staging/speakup/i18n.c | 2 +- 
+>  1 file changed, 1 insertion(+), 1 deletion(-) 
+>
+> diff --git a/drivers/staging/speakup/i18n.c 
+> b/drivers/staging/speakup/i18n.c 
+> index 1a3e348..3e5f012 100644 
+> --- a/drivers/staging/speakup/i18n.c 
+> +++ b/drivers/staging/speakup/i18n.c 
+> @@ -552,7 +552,7 @@ ssize_t spk_msg_set(enum msg_index_t index, char 
+> *text, size_t length) 
+>                          if (index >= MSG_FORMATTED_START && 
+>                              index <= MSG_FORMATTED_END && 
+>                              !fmt_validate(speakup_default_msgs[index], 
+> -                                          newstr)) { 
+> +                                    newstr)) { 
+>                                  kfree(newstr); 
+>                                  return -EINVAL; 
+>                          } 
+> -- 
+> 2.9.3 
+>
+>
+------=_Part_809_2017740016.1488578926648
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">I will resend the patch, thank you!<br><br>vineri, 3 marti=
+e 2017, 23:56:01 UTC+2, Tamara Diaconita a scris:<blockquote class=3D"gmail=
+_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;p=
+adding-left: 1ex;">Deleted a tab to fix the <a href=3D"http://checkpath.pl"=
+ target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://=
+www.google.com/url?q\x3dhttp%3A%2F%2Fcheckpath.pl\x26sa\x3dD\x26sntz\x3d1\x=
+26usg\x3dAFQjCNHJG89P3V6thKDFaYlxk26bhheSug&#39;;return true;" onclick=3D"t=
+his.href=3D&#39;http://www.google.com/url?q\x3dhttp%3A%2F%2Fcheckpath.pl\x2=
+6sa\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNHJG89P3V6thKDFaYlxk26bhheSug&#39;;ret=
+urn true;">checkpath.pl</a> issue:
+<br>CHECK: indent should use tabs where possible.
+<br>
+<br>Deleted an extra tab to indent the code.
+<br>
+<br>Signed-off-by: Tamara Diaconita &lt;<a href=3D"mailto:diaconita.tamara@=
+gmail.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#=
+39;mailto:diaconita.tamara@gmail.com&#39;;return true;" onclick=3D"this.hre=
+f=3D&#39;mailto:diaconita.tamara@gmail.com&#39;;return true;">diaconita.tam=
+ara@gmail.com</a>&gt;
+<br>---
+<br>=C2=A0drivers/staging/speakup/i18n.<wbr>c | 2 +-
+<br>=C2=A01 file changed, 1 insertion(+), 1 deletion(-)
+<br>
+<br>diff --git a/drivers/staging/speakup/<wbr>i18n.c b/drivers/staging/spea=
+kup/<wbr>i18n.c
+<br>index 1a3e348..3e5f012 100644
+<br>--- a/drivers/staging/speakup/<wbr>i18n.c
+<br>+++ b/drivers/staging/speakup/<wbr>i18n.c
+<br>@@ -552,7 +552,7 @@ ssize_t spk_msg_set(enum msg_index_t index, char *t=
+ext, size_t length)
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0if (index &gt;=3D MSG_FORMATTED_START &amp;&amp;
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 =C2=A0 =C2=A0index &lt;=3D MSG_FORMATTED_END &amp;&amp;
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 =C2=A0 =C2=A0!fmt_validate(speakup_<wbr>default_msgs[index],
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0newstr)) {
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0newstr))=
+ {
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0kfree(newstr);
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0return -EINVAL;
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0}
+<br>--=20
+<br>2.9.3
+<br>
+<br></blockquote></div>
+------=_Part_809_2017740016.1488578926648--
+
+------=_Part_808_1813714543.1488578926648--
 
