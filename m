@@ -1,124 +1,82 @@
 X-GM-THRID: 6393394520206082048
-Date: Fri, 3 Mar 2017 14:08:46 -0800 (PST)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Cc: chris@the-brannons.com, kirk@reisers.ca, samuel.thibault@ens-lyon.org,
-	gregkh@linuxfoundation.org, diaconita.tamara@gmail.com
-Message-Id: <103cbc92-2362-4dd6-a855-b8f580c75b23@googlegroups.com>
+X-Received: by 10.25.204.21 with SMTP id c21mr787896lfg.19.1488578543064;
+        Fri, 03 Mar 2017 14:02:23 -0800 (PST)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.46.5.71 with SMTP id 68ls1072031ljf.34.gmail; Fri, 03 Mar 2017
+ 14:02:22 -0800 (PST)
+X-Received: by 10.25.193.213 with SMTP id r204mr796454lff.24.1488578542531;
+        Fri, 03 Mar 2017 14:02:22 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id e72si181106wma.0.2017.03.03.14.02.22
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 03 Mar 2017 14:02:22 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,238,1484002800"; 
+   d="scan'208";a="263060464"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 03 Mar 2017 23:02:21 +0100
+Date: Fri, 3 Mar 2017 23:02:21 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Tamara Diaconita <diaconitatamara@gmail.com>
+cc: chris@the-brannons.com, kirk@reisers.ca, samuel.thibault@ens-lyon.org, 
+    gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com, 
+    Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Delete tab to indent
 In-Reply-To: <20170303215557.10077-1-diaconita.tamara@gmail.com>
+Message-ID: <alpine.DEB.2.20.1703032301210.2133@hadrien>
 References: <20170303215557.10077-1-diaconita.tamara@gmail.com>
-Subject: Re: [PATCH] Delete tab to indent
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_808_1813714543.1488578926648"
-X-Google-Token: EO7S58UF7-CsKYBSFIw0
-X-Google-IP: 79.115.211.217
+Content-Type: text/plain; charset=US-ASCII
 
-------=_Part_808_1813714543.1488578926648
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_809_2017740016.1488578926648"
 
-------=_Part_809_2017740016.1488578926648
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
 
-I will resend the patch, thank you!
+On Fri, 3 Mar 2017, Tamara Diaconita wrote:
 
-vineri, 3 martie 2017, 23:56:01 UTC+2, Tamara Diaconita a scris:
+> Deleted a tab to fix the checkpath.pl issue:
+> CHECK: indent should use tabs where possible.
 >
-> Deleted a tab to fix the checkpath.pl issue: 
-> CHECK: indent should use tabs where possible. 
+> Deleted an extra tab to indent the code.
 >
-> Deleted an extra tab to indent the code. 
+> Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
+> ---
+>  drivers/staging/speakup/i18n.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com> 
-> --- 
->  drivers/staging/speakup/i18n.c | 2 +- 
->  1 file changed, 1 insertion(+), 1 deletion(-) 
->
-> diff --git a/drivers/staging/speakup/i18n.c 
-> b/drivers/staging/speakup/i18n.c 
-> index 1a3e348..3e5f012 100644 
-> --- a/drivers/staging/speakup/i18n.c 
-> +++ b/drivers/staging/speakup/i18n.c 
-> @@ -552,7 +552,7 @@ ssize_t spk_msg_set(enum msg_index_t index, char 
-> *text, size_t length) 
->                          if (index >= MSG_FORMATTED_START && 
->                              index <= MSG_FORMATTED_END && 
->                              !fmt_validate(speakup_default_msgs[index], 
-> -                                          newstr)) { 
-> +                                    newstr)) { 
->                                  kfree(newstr); 
->                                  return -EINVAL; 
->                          } 
-> -- 
-> 2.9.3 
->
->
-------=_Part_809_2017740016.1488578926648
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+> diff --git a/drivers/staging/speakup/i18n.c b/drivers/staging/speakup/i18n.c
+> index 1a3e348..3e5f012 100644
+> --- a/drivers/staging/speakup/i18n.c
+> +++ b/drivers/staging/speakup/i18n.c
+> @@ -552,7 +552,7 @@ ssize_t spk_msg_set(enum msg_index_t index, char *text, size_t length)
+>  			if (index >= MSG_FORMATTED_START &&
+>  			    index <= MSG_FORMATTED_END &&
+>  			    !fmt_validate(speakup_default_msgs[index],
+> -			                  newstr)) {
+> +				    newstr)) {
 
-<div dir=3D"ltr">I will resend the patch, thank you!<br><br>vineri, 3 marti=
-e 2017, 23:56:01 UTC+2, Tamara Diaconita a scris:<blockquote class=3D"gmail=
-_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;p=
-adding-left: 1ex;">Deleted a tab to fix the <a href=3D"http://checkpath.pl"=
- target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://=
-www.google.com/url?q\x3dhttp%3A%2F%2Fcheckpath.pl\x26sa\x3dD\x26sntz\x3d1\x=
-26usg\x3dAFQjCNHJG89P3V6thKDFaYlxk26bhheSug&#39;;return true;" onclick=3D"t=
-his.href=3D&#39;http://www.google.com/url?q\x3dhttp%3A%2F%2Fcheckpath.pl\x2=
-6sa\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNHJG89P3V6thKDFaYlxk26bhheSug&#39;;ret=
-urn true;">checkpath.pl</a> issue:
-<br>CHECK: indent should use tabs where possible.
-<br>
-<br>Deleted an extra tab to indent the code.
-<br>
-<br>Signed-off-by: Tamara Diaconita &lt;<a href=3D"mailto:diaconita.tamara@=
-gmail.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#=
-39;mailto:diaconita.tamara@gmail.com&#39;;return true;" onclick=3D"this.hre=
-f=3D&#39;mailto:diaconita.tamara@gmail.com&#39;;return true;">diaconita.tam=
-ara@gmail.com</a>&gt;
-<br>---
-<br>=C2=A0drivers/staging/speakup/i18n.<wbr>c | 2 +-
-<br>=C2=A01 file changed, 1 insertion(+), 1 deletion(-)
-<br>
-<br>diff --git a/drivers/staging/speakup/<wbr>i18n.c b/drivers/staging/spea=
-kup/<wbr>i18n.c
-<br>index 1a3e348..3e5f012 100644
-<br>--- a/drivers/staging/speakup/<wbr>i18n.c
-<br>+++ b/drivers/staging/speakup/<wbr>i18n.c
-<br>@@ -552,7 +552,7 @@ ssize_t spk_msg_set(enum msg_index_t index, char *t=
-ext, size_t length)
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0if (index &gt;=3D MSG_FORMATTED_START &amp;&amp;
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 =C2=A0 =C2=A0index &lt;=3D MSG_FORMATTED_END &amp;&amp;
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 =C2=A0 =C2=A0!fmt_validate(speakup_<wbr>default_msgs[index],
-<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0newstr)) {
-<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0newstr))=
- {
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0kfree(newstr);
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0return -EINVAL;
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0}
-<br>--=20
-<br>2.9.3
-<br>
-<br></blockquote></div>
-------=_Part_809_2017740016.1488578926648--
+Actually, checkpatch was complaining about the number of spaces in front
+of newstr, and not the number of tabs.  newstr is in the right position in
+the original code.  It just needs to be put into that position using tabs
+as much as possible.
 
-------=_Part_808_1813714543.1488578926648--
+julia
+
+>  				kfree(newstr);
+>  				return -EINVAL;
+>  			}
+> --
+> 2.9.3
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170303215557.10077-1-diaconita.tamara%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
