@@ -1,136 +1,145 @@
 X-GM-THRID: 6393222666299375616
-X-Received: by 10.223.153.33 with SMTP id x30mr19580wrb.10.1488538758013;
-        Fri, 03 Mar 2017 02:59:18 -0800 (PST)
+X-Received: by 10.176.3.148 with SMTP id 20mr211795uau.9.1488538148076;
+        Fri, 03 Mar 2017 02:49:08 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.5.71 with SMTP id 68ls904630ljf.34.gmail; Fri, 03 Mar 2017
- 02:59:17 -0800 (PST)
-X-Received: by 10.25.193.213 with SMTP id r204mr275512lff.24.1488538757333;
-        Fri, 03 Mar 2017 02:59:17 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id f7si154869wmg.3.2017.03.03.02.59.17
+Received: by 10.157.18.240 with SMTP id g103ls9302259otg.39.gmail; Fri, 03 Mar
+ 2017 02:49:07 -0800 (PST)
+X-Received: by 10.13.212.195 with SMTP id w186mr862906ywd.105.1488538147740;
+        Fri, 03 Mar 2017 02:49:07 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id h79si2006019pfh.2.2017.03.03.02.49.07
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Mar 2017 02:59:17 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Fri, 03 Mar 2017 02:49:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.35,236,1484002800"; 
-   d="scan'208";a="215438255"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 03 Mar 2017 11:59:16 +0100
-Date: Fri, 3 Mar 2017 11:59:05 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Varsha Rao <rvarsha016@gmail.com>
-cc: Sudip Mukherjee <sudipm.mukherjee@gmail.com>, 
-    Teddy Wang <teddy.wang@siliconmotion.com>, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-    outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: sm750fb: Removed unnecessary
- parentheses.
-In-Reply-To: <58b94a22.0910620a.79513.e66a@mx.google.com>
-Message-ID: <alpine.DEB.2.20.1703031158000.3490@hadrien>
-References: <58b94a22.0910620a.79513.e66a@mx.google.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x243.google.com with SMTP id 67so5208988pfg.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 03 Mar 2017 02:49:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=message-id:date:from:to:cc:subject:mime-version:content-disposition
+         :user-agent;
+        bh=KkmRbwzEdJdLv+gcay6Oy7qxgHUyb4Rtsij81DsbsKc=;
+        b=X/bRVhaxdsSH9g8BotO+bBAss6ymWmyWmgO1GJ9yUSGTmdcuClbhoLYt0lpirQeWmt
+         SS/N3OjoRiQO7sYPRnUQoLQOgZI0aNERmTM5ChsU7Rt/mKJz71+g6GVDXW6pcY3ucx+Q
+         IGzLCEZJwIAugOoFZ0Qdg6a1wriXCem3ueMAe0HSFma3BpZFLvw6n5jtm982g8maXMQJ
+         hnc3SbeeFW+uFL7UBgSMnMqUlkg2aOCN8bfy3NxmNf2gS5qe6vN8VrmZ0TGSNRMTt6h+
+         jbaYVbSFY+PdIyyqPzrYiors74gbgnHNpm5wqXFh4QK0lzQFhXr9+JdMQgJB1gg8O3J5
+         jh8Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
+         :content-disposition:user-agent;
+        bh=KkmRbwzEdJdLv+gcay6Oy7qxgHUyb4Rtsij81DsbsKc=;
+        b=K65uFsl7xXfSdinkB+kpHyeGgLxT9L3P6HPHJlEKPj2jWQQcF3qNOZrmZqQIR0Z8Vb
+         rVoE6wmLbPwt5DUD11IdyxDkfIlrVGPhJFx92PUuNtFnbNqDcwwocLmjj3Rs5Yf3Ja9h
+         KESaoTfh3QL5M3fYW4cZslKAD2oN+H1Zu5kbTByhLdEKrcY38GAQexqgsa2fWvF8+Y/m
+         HRtZ61HVRJS1fOwMKaqz6RU+/jShkI8uoRjOJeJTOxXmHrOgOVJlPAciQa+87eKuNKJQ
+         sJXw5QiPn/pfXxUjQUpQNNVrWkRu30xf97D5JqVv38aFe2ULxEvCU26tKbX5Y/z9Bme5
+         aRMg==
+X-Gm-Message-State: AMke39nBOkqcdz2U5cU2zzVV7aIJtUmxAYlbMTd0dMaAJ7PcuygeCFrdSrwxXM2nGOkmlw==
+X-Received: by 10.98.87.142 with SMTP id i14mr2590248pfj.85.1488538147469;
+        Fri, 03 Mar 2017 02:49:07 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from euri ([117.211.102.55])
+        by smtp.gmail.com with ESMTPSA id y9sm22622986pfi.39.2017.03.03.02.49.06
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 03 Mar 2017 02:49:06 -0800 (PST)
+Message-ID: <58b94a22.0910620a.79513.e66a@mx.google.com>
+X-Google-Original-Message-ID: <20170303104903.GA4154@<rvarsha016@gmail.com>>
+Date: Fri, 3 Mar 2017 16:19:03 +0530
+From: Varsha Rao <rvarsha016@gmail.com>
+To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
+	Teddy Wang <teddy.wang@siliconmotion.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: sm750fb: Removed unnecessary parentheses.
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.7.1 (2016-10-04)
 
+Removed parentheses on the right hand side of assignment, as they are
+not required. The following coccinelle script was used to fix this
+issue:
 
+@@
+local idexpression id;
+expression e;
+@@
 
-On Fri, 3 Mar 2017, Varsha Rao wrote:
+id =
+-(
+e
+-)
 
-> Removed parentheses on the right hand side of assignment, as they are
-> not required. The following coccinelle script was used to fix this
-> issue:
->
-> @@
-> local idexpression id;
-> expression e;
-> @@
->
-> id =
-> -(
-> e
-> -)
->
-> Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
-> ---
->  drivers/staging/sm750fb/ddk750_chip.c  | 2 +-
->  drivers/staging/sm750fb/ddk750_hwi2c.c | 2 +-
->  drivers/staging/sm750fb/sm750_accel.c  | 2 +-
->  drivers/staging/sm750fb/sm750_cursor.c | 4 ++--
->  4 files changed, 5 insertions(+), 5 deletions(-)
->
-> diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-> index 9e49298..5e4bfb6 100644
-> --- a/drivers/staging/sm750fb/ddk750_chip.c
-> +++ b/drivers/staging/sm750fb/ddk750_chip.c
-> @@ -352,7 +352,7 @@ unsigned int sm750_calc_pll_value(unsigned int request_orig, struct pll_value *p
->  		RN = N * request;
->  		quo = RN / input;
->  		rem = RN % input;/* rem always small than 14318181 */
-> -		fl_quo = (rem * 10000 / input);
-> +		fl_quo = rem * 10000 / input;
->
->  		for (d = max_d; d >= 0; d--) {
->  			X = BIT(d);
-> diff --git a/drivers/staging/sm750fb/ddk750_hwi2c.c b/drivers/staging/sm750fb/ddk750_hwi2c.c
-> index 68716ef..fe814e4 100644
-> --- a/drivers/staging/sm750fb/ddk750_hwi2c.c
-> +++ b/drivers/staging/sm750fb/ddk750_hwi2c.c
-> @@ -217,7 +217,7 @@ unsigned char sm750_hw_i2c_read_reg(
->  	unsigned char reg
->  )
->  {
-> -	unsigned char value = (0xFF);
-> +	unsigned char value = 0xFF;
->
->  	if (hw_i2c_write_data(addr, 1, &reg) == 1)
->  		hw_i2c_read_data(addr, 1, &value);
-> diff --git a/drivers/staging/sm750fb/sm750_accel.c b/drivers/staging/sm750fb/sm750_accel.c
-> index 9548863..6db9b90 100644
-> --- a/drivers/staging/sm750fb/sm750_accel.c
-> +++ b/drivers/staging/sm750fb/sm750_accel.c
-> @@ -212,7 +212,7 @@ unsigned int rop2)   /* ROP value */
->  		sy += height - 1;
->  		dx += width - 1;
->  		dy += height - 1;
-> -		opSign = (-1);
-> +		opSign = -1;
->  	}
->
->  	/*
-> diff --git a/drivers/staging/sm750fb/sm750_cursor.c b/drivers/staging/sm750fb/sm750_cursor.c
-> index aa232c3..401b916 100644
-> --- a/drivers/staging/sm750fb/sm750_cursor.c
-> +++ b/drivers/staging/sm750fb/sm750_cursor.c
-> @@ -70,8 +70,8 @@ void sm750_hw_cursor_setPos(struct lynx_cursor *cursor,
->  {
->  	u32 reg;
->
-> -	reg = (((y << HWC_LOCATION_Y_SHIFT) & HWC_LOCATION_Y_MASK) |
-> -		(x & HWC_LOCATION_X_MASK));
-> +	reg = ((y << HWC_LOCATION_Y_SHIFT) & HWC_LOCATION_Y_MASK) |
-> +		(x & HWC_LOCATION_X_MASK);
+Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
+---
+ drivers/staging/sm750fb/ddk750_chip.c  | 2 +-
+ drivers/staging/sm750fb/ddk750_hwi2c.c | 2 +-
+ drivers/staging/sm750fb/sm750_accel.c  | 2 +-
+ drivers/staging/sm750fb/sm750_cursor.c | 4 ++--
+ 4 files changed, 5 insertions(+), 5 deletions(-)
 
-There should be one less space in front of the last line, to line the
-parnthesis to the left of x with the parenthesis immediately to the left
-of y.  Otherwise,
+diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
+index 9e49298..5e4bfb6 100644
+--- a/drivers/staging/sm750fb/ddk750_chip.c
++++ b/drivers/staging/sm750fb/ddk750_chip.c
+@@ -352,7 +352,7 @@ unsigned int sm750_calc_pll_value(unsigned int request_orig, struct pll_value *p
+ 		RN = N * request;
+ 		quo = RN / input;
+ 		rem = RN % input;/* rem always small than 14318181 */
+-		fl_quo = (rem * 10000 / input);
++		fl_quo = rem * 10000 / input;
+ 
+ 		for (d = max_d; d >= 0; d--) {
+ 			X = BIT(d);
+diff --git a/drivers/staging/sm750fb/ddk750_hwi2c.c b/drivers/staging/sm750fb/ddk750_hwi2c.c
+index 68716ef..fe814e4 100644
+--- a/drivers/staging/sm750fb/ddk750_hwi2c.c
++++ b/drivers/staging/sm750fb/ddk750_hwi2c.c
+@@ -217,7 +217,7 @@ unsigned char sm750_hw_i2c_read_reg(
+ 	unsigned char reg
+ )
+ {
+-	unsigned char value = (0xFF);
++	unsigned char value = 0xFF;
+ 
+ 	if (hw_i2c_write_data(addr, 1, &reg) == 1)
+ 		hw_i2c_read_data(addr, 1, &value);
+diff --git a/drivers/staging/sm750fb/sm750_accel.c b/drivers/staging/sm750fb/sm750_accel.c
+index 9548863..6db9b90 100644
+--- a/drivers/staging/sm750fb/sm750_accel.c
++++ b/drivers/staging/sm750fb/sm750_accel.c
+@@ -212,7 +212,7 @@ unsigned int rop2)   /* ROP value */
+ 		sy += height - 1;
+ 		dx += width - 1;
+ 		dy += height - 1;
+-		opSign = (-1);
++		opSign = -1;
+ 	}
+ 
+ 	/*
+diff --git a/drivers/staging/sm750fb/sm750_cursor.c b/drivers/staging/sm750fb/sm750_cursor.c
+index aa232c3..401b916 100644
+--- a/drivers/staging/sm750fb/sm750_cursor.c
++++ b/drivers/staging/sm750fb/sm750_cursor.c
+@@ -70,8 +70,8 @@ void sm750_hw_cursor_setPos(struct lynx_cursor *cursor,
+ {
+ 	u32 reg;
+ 
+-	reg = (((y << HWC_LOCATION_Y_SHIFT) & HWC_LOCATION_Y_MASK) |
+-		(x & HWC_LOCATION_X_MASK));
++	reg = ((y << HWC_LOCATION_Y_SHIFT) & HWC_LOCATION_Y_MASK) |
++		(x & HWC_LOCATION_X_MASK);
+ 	poke32(HWC_LOCATION, reg);
+ }
+ void sm750_hw_cursor_setColor(struct lynx_cursor *cursor,
+-- 
+2.9.3
 
-Acked-by: Julia Lawall <julia.lawall@lip6.fr>
-
->  	poke32(HWC_LOCATION, reg);
->  }
->  void sm750_hw_cursor_setColor(struct lynx_cursor *cursor,
-> --
-> 2.9.3
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/58b94a22.0910620a.79513.e66a%40mx.google.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
