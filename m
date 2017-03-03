@@ -1,158 +1,131 @@
-X-GM-THRID: 6391035517840916480
-X-Received: by 10.13.225.140 with SMTP id k134mr2418313ywe.7.1488028913310;
-        Sat, 25 Feb 2017 05:21:53 -0800 (PST)
+X-GM-THRID: 6392511932367110144
+X-Received: by 10.25.150.212 with SMTP id y203mr261136lfd.30.1488537864526;
+        Fri, 03 Mar 2017 02:44:24 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.165.130 with SMTP id o124ls2484735ioe.53.gmail; Sat, 25
- Feb 2017 05:21:52 -0800 (PST)
-X-Received: by 10.99.171.12 with SMTP id p12mr2694387pgf.95.1488028912420;
-        Sat, 25 Feb 2017 05:21:52 -0800 (PST)
-Return-Path: <sreyamittal5@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id u12si2281694pfd.3.2017.02.25.05.21.52
+Received: by 10.46.0.22 with SMTP id 22ls563847lja.32.gmail; Fri, 03 Mar 2017
+ 02:44:23 -0800 (PST)
+X-Received: by 10.25.199.212 with SMTP id x203mr263617lff.9.1488537863616;
+        Fri, 03 Mar 2017 02:44:23 -0800 (PST)
+Return-Path: <narcisaanamaria12@gmail.com>
+Received: from mail-wr0-x242.google.com (mail-wr0-x242.google.com. [2a00:1450:400c:c0c::242])
+        by gmr-mx.google.com with ESMTPS id f7si150969wmg.3.2017.03.03.02.44.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 25 Feb 2017 05:21:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Fri, 03 Mar 2017 02:44:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c0c::242 as permitted sender) client-ip=2a00:1450:400c:c0c::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=sreyamittal5@gmail.com;
+       spf=pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c0c::242 as permitted sender) smtp.mailfrom=narcisaanamaria12@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id p185so2083775pfb.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 25 Feb 2017 05:21:52 -0800 (PST)
+Received: by mail-wr0-x242.google.com with SMTP id l37so12786615wrc.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 03 Mar 2017 02:44:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=XFMW4SWZ+Sh9lgQKnLHGRAmj1zrmnQyMtMupf9Ldzdk=;
-        b=byB65ObtEE4jhUHX0z19xsNc/lgsY0q+EGpzVQh4zWD51utVt1r9zqzGh82uRWWGVW
-         QHoijCw3oW8F7lQxaVMHIPmj5fJNlSBVb6xwQiZIgtAtk1v/1Ds2T77OHKcNJvBrQSck
-         fsZl01HH3s6N9kQe//kkiS5fB1qxi5GWZ+JKJXqefCkXJUDZXHXSXFa9S4Svl5xF9+2P
-         RP3uPOwcN4mMIMyoLsnI5rQjC5TvDO36h+2WMrR3snNMpw1sspmDUnF33HCzeqm+dLCN
-         bvSfcbRPPS9hza8aWPkNMFLyO5KPgPv4FsHOccHjfJ+Jq4XH2ud04fdORJHIeBDwoS5q
-         XhMQ==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=qD/6cfB2IrbuoLFAKccWHHM/Q1CVcMnx20Gn24jWxZw=;
+        b=Uhk+VmpD71kW7N/DZcdrr1MXZF7Oc7nRv1KgPcRdZBRf9G7nmTWIeTAaul+eKxJHlD
+         xWdFWNP4an7zj78b3Pf8/fQexSJYA3Wwc4Xz6BsHojJJicaMXpaYH9om9glz2b3B63ya
+         s6pkVfTQoq0k4YO6Xhi60m0MfUcPhj7G1Dz6SMwM3e6ppW5ooYAty5c+ws1FurxrCl6T
+         QX6eT2EXRHot9aACpVqpIHVO1WnJkI4UxThYh/66BVvlfq0XSLYQPOtINpHOFYt62Bcy
+         av3l6Izr7CtxTnYOk6oacsBDb7cIXTWa3xRRy3qK3sTgC/uSaVpDKbiEq1n4pIckVPbQ
+         q50A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=XFMW4SWZ+Sh9lgQKnLHGRAmj1zrmnQyMtMupf9Ldzdk=;
-        b=becYRmMoAb58cbSKO+YMWgH89c7zLHRaZoPlaxlqL48HgDeo1w3vGeEarq5Hct6hoj
-         BwXxGTpql9ziQmiNlHdoEl6Ksqq7B0Wj+VKH20Tnhc/XBnAskyKGFhNeTAPKdvV9P2B1
-         UljTYbYQi94nD83ecV6UUHYDBBjDOihJvJpLQaiOvph/LmExQ9dAxRGhYEL/+aMYMWEO
-         869IGMRLA1x/ysEzWn4y3P/pQBpc42C7g3r9mnXJojngd5/fn5c5SL7EGsSyMh1xvKpK
-         5lIPLg0tjRFEu4gmSIhM0ElWZcx43RJyomnZ+uxoIFnkACYSaisz1lKY7s5fH1DqpUgs
-         Tfgw==
-X-Gm-Message-State: AMke39nF1VujFDuGxemvyIHsCJDnHsA2+uHEzpvMm2mJMYmE9sBOBHRcniEiCFc+fkX5EA==
-X-Received: by 10.99.237.17 with SMTP id d17mr9887160pgi.82.1488028912149;
-        Sat, 25 Feb 2017 05:21:52 -0800 (PST)
-Return-Path: <sreyamittal5@gmail.com>
-Received: from stayawesome ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 129sm20748099pgj.59.2017.02.25.05.21.50
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=qD/6cfB2IrbuoLFAKccWHHM/Q1CVcMnx20Gn24jWxZw=;
+        b=FA83KYBto+mliIS9gzi7oBg2wGWl/aBwkM6ZYXMQKT0NsutZnbv8RPloNeWsxz+NQp
+         gs4jnTgCMbjObsEmi4PiATATqcGaKGsdoFZH2XMzsVpWzxLzUDpz1G9CVc0A+Z6Xg4IU
+         4ZcWg2hLYUqryr8St0cUppFixsg4MdAwYvsaBfCHBIo0Bs2lmgA9AWPwm3tHKqJxR22x
+         X99YHDp9/KQU2ai0HDUCy0zJSUT5LIXFfNqq9DcUgsCRDCa3LlloGSNmr/KklHPRjenL
+         4Ol2wyP00c0vsho91t+VHoHnFpyxbY2XaYeMtpQaBBk+1I9cxxPLBd/5p+BnRVZCdMkk
+         KJJw==
+X-Gm-Message-State: AMke39kNhuMlkNCH73leYr6X+K1cSUHPk/S4seZ2fIHRqyq7zlgiu94JLLEn3TFCSHMxjw==
+X-Received: by 10.223.173.53 with SMTP id p50mr2091793wrc.112.1488537863360;
+        Fri, 03 Mar 2017 02:44:23 -0800 (PST)
+Return-Path: <narcisaanamaria12@gmail.com>
+Received: from nati-X550JK (p22.eregie.pub.ro. [141.85.0.122])
+        by smtp.gmail.com with ESMTPSA id v18sm14698457wrc.41.2017.03.03.02.44.22
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 25 Feb 2017 05:21:51 -0800 (PST)
-From: Sreya Mittal <sreyamittal5@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Sreya Mittal <sreyamittal5@gmail.com>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Michael Hennerich <Michael.Hennerich@analog.com>,
-	Jonathan Cameron <jic23@kernel.org>,
-	Hartmut Knaack <knaack.h@gmx.de>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: iio: Single source header file reorganization
-Date: Sat, 25 Feb 2017 18:51:40 +0530
-Message-Id: <20170225132140.20181-1-sreyamittal5@gmail.com>
-X-Mailer: git-send-email 2.9.3
+        Fri, 03 Mar 2017 02:44:22 -0800 (PST)
+Date: Fri, 3 Mar 2017 12:44:21 +0200
+From: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: swarren@wwwdotorg.org, lee@kernel.org, eric@anholt.net,
+	gregkh@linuxfoundation.org, f.fainelli@gmail.com, rjui@broadcom.com,
+	sbranden@broadcom.com, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: vc04_services:
+ bcm2835-camera: Remove unnecessary variable
+Message-ID: <20170303104420.GA9983@nati-X550JK>
+References: <1488467703-15980-1-git-send-email-narcisaanamaria12@gmail.com>
+ <alpine.DEB.2.20.1703021617050.3414@hadrien>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.20.1703021617050.3414@hadrien>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-The contents of the header file are used only by this single
-source file. Move content into .c and remove .h.
+On Thu, Mar 02, 2017 at 04:17:59PM +0100, Julia Lawall wrote:
+> On Thu, 2 Mar 2017, Narcisa Ana Maria Vasile wrote:
+> 
+> > Instead of using the ret variable, return 0 directly
+> 
+> I think you should say a little more, because you are also removing an
+> assignment where the assigned variable is not used.  You could also take a
+> look at vchiq_mmal_port_parameter_set to see why the return value is not
+> important.
+> 
+> julia
+>
+  I looked at the code, but I can't say for sure why the return value is
+  0. It seems to me that it should return the value 
+  returned by vchiq_mmal_port_parameter_set. As I'm not sure that this
+  is correct, I didn't want to modify it this way. Perhaps someone who
+  worked on the code can tell for sure? 
 
-Signed-off-by: Sreya Mittal <sreyamittal5@gmail.com>
----
- drivers/staging/iio/trigger/iio-trig-bfin-timer.c | 33 +++++++++++++++++------
- drivers/staging/iio/trigger/iio-trig-bfin-timer.h | 24 -----------------
- 2 files changed, 25 insertions(+), 32 deletions(-)
- delete mode 100644 drivers/staging/iio/trigger/iio-trig-bfin-timer.h
-
-diff --git a/drivers/staging/iio/trigger/iio-trig-bfin-timer.c b/drivers/staging/iio/trigger/iio-trig-bfin-timer.c
-index 4e0b4ee..f01462b 100644
---- a/drivers/staging/iio/trigger/iio-trig-bfin-timer.c
-+++ b/drivers/staging/iio/trigger/iio-trig-bfin-timer.c
-@@ -5,21 +5,38 @@
-  *
-  */
- 
-+#include <asm/gptimers.h>
-+#include <asm/portmux.h>
-+#include <linux/delay.h>
-+#include <linux/interrupt.h>
-+#include <linux/irq.h>
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/platform_device.h>
- #include <linux/slab.h>
--#include <linux/interrupt.h>
--#include <linux/irq.h>
--#include <linux/delay.h>
--
--#include <asm/gptimers.h>
--#include <asm/portmux.h>
--
- #include <linux/iio/iio.h>
- #include <linux/iio/trigger.h>
- 
--#include "iio-trig-bfin-timer.h"
-+/**
-+ *  * struct iio_bfin_timer_trigger_pdata - timer trigger platform data
-+ *   * @output_enable: Enable external trigger pulse generation.
-+ *    * @active_low: Whether the trigger pulse is active low.
-+ *     * @duty_ns: Length of the trigger pulse in nanoseconds.
-+ *      *
-+ *       * This struct is used to configure the output pulse generation of the blackfin
-+ *        * timer trigger. If output_enable is set to true an external trigger signal
-+ *         * will generated on the pin corresponding to the timer. This is useful for
-+ *          * converters which needs an external signal to start conversion. active_low and
-+ *           * duty_ns are used to configure the type of the trigger pulse. If output_enable
-+ *            * is set to false no external trigger pulse will be generated and active_low
-+ *             * and duty_ns are ignored.
-+ *              **/
-+
-+struct iio_bfin_timer_trigger_pdata {
-+		bool output_enable;
-+			bool active_low;
-+				unsigned int duty_ns;
-+};
- 
- struct bfin_timer {
- 	unsigned short id, bit;
-diff --git a/drivers/staging/iio/trigger/iio-trig-bfin-timer.h b/drivers/staging/iio/trigger/iio-trig-bfin-timer.h
-deleted file mode 100644
-index c07321f..0000000
---- a/drivers/staging/iio/trigger/iio-trig-bfin-timer.h
-+++ /dev/null
-@@ -1,24 +0,0 @@
--#ifndef __IIO_BFIN_TIMER_TRIGGER_H__
--#define __IIO_BFIN_TIMER_TRIGGER_H__
--
--/**
-- * struct iio_bfin_timer_trigger_pdata - timer trigger platform data
-- * @output_enable: Enable external trigger pulse generation.
-- * @active_low: Whether the trigger pulse is active low.
-- * @duty_ns: Length of the trigger pulse in nanoseconds.
-- *
-- * This struct is used to configure the output pulse generation of the blackfin
-- * timer trigger. If output_enable is set to true an external trigger signal
-- * will generated on the pin corresponding to the timer. This is useful for
-- * converters which needs an external signal to start conversion. active_low and
-- * duty_ns are used to configure the type of the trigger pulse. If output_enable
-- * is set to false no external trigger pulse will be generated and active_low
-- * and duty_ns are ignored.
-- **/
--struct iio_bfin_timer_trigger_pdata {
--	bool output_enable;
--	bool active_low;
--	unsigned int duty_ns;
--};
--
--#endif
--- 
-2.9.3
-
+  Narcisa
+> >
+> > Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+> > ---
+> >  drivers/staging/vc04_services/bcm2835-camera/controls.c | 10 ++++------
+> >  1 file changed, 4 insertions(+), 6 deletions(-)
+> >
+> > diff --git a/drivers/staging/vc04_services/bcm2835-camera/controls.c b/drivers/staging/vc04_services/bcm2835-camera/controls.c
+> > index 9c0667e..7bdde87 100644
+> > --- a/drivers/staging/vc04_services/bcm2835-camera/controls.c
+> > +++ b/drivers/staging/vc04_services/bcm2835-camera/controls.c
+> > @@ -609,18 +609,16 @@ static int ctrl_set_bitrate(struct bm2835_mmal_dev *dev,
+> >  			    struct v4l2_ctrl *ctrl,
+> >  			    const struct bm2835_mmal_v4l2_ctrl *mmal_ctrl)
+> >  {
+> > -	int ret;
+> >  	struct vchiq_mmal_port *encoder_out;
+> >
+> >  	dev->capture.encode_bitrate = ctrl->val;
+> >
+> >  	encoder_out = &dev->component[MMAL_COMPONENT_VIDEO_ENCODE]->output[0];
+> >
+> > -	ret = vchiq_mmal_port_parameter_set(dev->instance, encoder_out,
+> > -					    mmal_ctrl->mmal_id,
+> > -					    &ctrl->val, sizeof(ctrl->val));
+> > -	ret = 0;
+> > -	return ret;
+> > +	vchiq_mmal_port_parameter_set(dev->instance, encoder_out,
+> > +				      mmal_ctrl->mmal_id,
+> > +				      &ctrl->val, sizeof(ctrl->val));
+> > +	return 0;
+> >  }
+> >
+> >  static int ctrl_set_bitrate_mode(struct bm2835_mmal_dev *dev,
+> > --
+> > 1.9.1
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1488467703-15980-1-git-send-email-narcisaanamaria12%40gmail.com.
+> > For more options, visit https://groups.google.com/d/optout.
+> >
 
