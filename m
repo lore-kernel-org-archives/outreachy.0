@@ -1,86 +1,83 @@
-X-GM-THRID: 6392973673048834048
-X-Received: by 10.46.9.206 with SMTP id 197mr2198710ljj.12.1488480175748;
-        Thu, 02 Mar 2017 10:42:55 -0800 (PST)
+X-GM-THRID: 6393296331713019904
+X-Received: by 10.99.99.71 with SMTP id x68mr1410685pgb.138.1488555299883;
+        Fri, 03 Mar 2017 07:34:59 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.20.89 with SMTP id 25ls823973lju.4.gmail; Thu, 02 Mar 2017
- 10:42:55 -0800 (PST)
-X-Received: by 10.25.56.6 with SMTP id f6mr2030088lfa.4.1488480175184;
-        Thu, 02 Mar 2017 10:42:55 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wm0-x242.google.com (mail-wm0-x242.google.com. [2a00:1450:400c:c09::242])
-        by gmr-mx.google.com with ESMTPS id f7si1809270wmg.3.2017.03.02.10.42.55
+Received: by 10.157.5.176 with SMTP id 45ls320833otd.49.gmail; Fri, 03 Mar
+ 2017 07:34:59 -0800 (PST)
+X-Received: by 10.157.60.248 with SMTP id t53mr1240035otf.117.1488555299425;
+        Fri, 03 Mar 2017 07:34:59 -0800 (PST)
+Return-Path: <kdunne@mail.ccsf.edu>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id 207si87860pfu.8.2017.03.03.07.34.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 10:42:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) client-ip=2a00:1450:400c:c09::242;
+        Fri, 03 Mar 2017 07:34:59 -0800 (PST)
+Received-SPF: neutral (google.com: 2607:f8b0:400e:c00::242 is neither permitted nor denied by best guess record for domain of kdunne@mail.ccsf.edu) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x242.google.com with SMTP id u63so13929832wmu.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 10:42:55 -0800 (PST)
+       dkim=pass header.i=@mail-ccsf-edu.20150623.gappssmtp.com;
+       spf=neutral (google.com: 2607:f8b0:400e:c00::242 is neither permitted nor denied by best guess record for domain of kdunne@mail.ccsf.edu) smtp.mailfrom=kdunne@mail.ccsf.edu
+Received: by mail-pf0-x242.google.com with SMTP id j5so10208271pfb.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 03 Mar 2017 07:34:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=SVolgkM2b4G6/qpgM28YTKa98dSzICdeH5BM7BWB3zM=;
-        b=Y+PdB2PBgoVMYAXqTQ0UMQ0rkfLXMtlTFqeVT8vi2v67a+Hnx9enPKpgRxTu5te9b5
-         +p7JH+Vw8jdhh7GExQvVqVDtCht+vREV5qcyAA4O8xxuqnh4nZKdFPIChBCCkMPaUyxK
-         9s7IGE+cCS7AujHA7Mo6CXyFDCusI8YvY1NEQNQwAxSdjbBlw9icOn8DGilGUQj9QPa8
-         aNb8ZLB8MkaJv3DAyqv8FrXeorsH3Pu3w/m4zDjGjoyDVz2KJbsNH0wS7gS0MoGV5grL
-         r94xtP5Cv46CLyrWJ1XzIrG4nJ6nSEXCRj+i4283vJhaxax1wBg9j0fU7PMjZt11sfen
-         mLxw==
+        d=mail-ccsf-edu.20150623.gappssmtp.com; s=20150623;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=GbkHKes9OLdPbTdGpVwF4wlOJMI6oalB9AJYRfZZofg=;
+        b=Hz6OJfAuYSTB52yH4/N2HK9jxYJkI2vzDp55tHR8ihTDRKbwYcE2+onfiszRDpx4Er
+         dXdXTseFaaYCY78DvhAEdIhgpa9Gfxf1Rozbj0am8kgQVSwVthX9p70Hk0sjgHw0ir/T
+         zOyZ4yFejdSN1gA1XV/i1FKeDtGm02j/2mqXFMwWGKCPQwho5H+eCMauhn91yRI7fJUr
+         N9WJx5Y7+z/kyXh8Sp5wftAuh4Fzeo6pHRnTg062C8uOHX8uwcS6lsMItrsJD1AE2xfw
+         sYBSK09xatZ8liNjAF1U33nkTesT3rUfyBC5TKhuhunzZppOQ3Y7nyc8maeNfwMa3LPP
+         Q2Lg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=SVolgkM2b4G6/qpgM28YTKa98dSzICdeH5BM7BWB3zM=;
-        b=F/hHY+werZmMIMQEKJPG6jbs9OS+oXcWERAbUsY+HBtkWJAJPh4iE2DB9TMFEn0zOW
-         Cb/n56VUbExtUEppdZ0+pb/BSFapW0AV6/75+LCokhCymByQ9FhEebHQSL/4VjtG7Oxm
-         ZEgLw1HViYu1Cbl5gcXTnTcirvcLD0hfxEtFGhwvU10bSF1HzmfwCCp/L8BtpXfrHm0H
-         KsJn5CG+x4Tbp7ltOlbxRc5+NGW+ynOPKcQWExWRPCWTwXm1OrWOjqi7PzwO8lwYT0GQ
-         v++U3t04cwxDi/WN7PuBofVawxKfXszEfohIofXpyi2hzPCfiWVh/vXZlLYvG0OH+n7F
-         TDwA==
-X-Gm-Message-State: AMke39lH8z4EPghmod9Pa8+D/H3x8KhCvblYZgOQnOU2VyfNdJgi+O6KBBwJ5CpIUTYbjg==
-X-Received: by 10.28.55.199 with SMTP id e190mr9055992wma.92.1488480175006;
-        Thu, 02 Mar 2017 10:42:55 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([141.85.228.72])
-        by smtp.gmail.com with ESMTPSA id 32sm11845253wre.15.2017.03.02.10.42.54
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=GbkHKes9OLdPbTdGpVwF4wlOJMI6oalB9AJYRfZZofg=;
+        b=hk//kjoA2vRHGO8jL4rd5YBIyTpmrMFR6SbAyXkzmZwC1PRHiMzZPWQ3G9prtGoEez
+         q3WdACrtr27WolX97FvRoG6CUOMWblsiIuXP1jlyAoaH29n23P3CNZgLPdPlEa5DSBXu
+         fopyKDImhJSvp2FWQW8ZQXHD/1VJ2IVBfgDPb6/eNy/Ah42D3jTLTZpXOMJH9x/7pC//
+         eucJxVU0XFU2sSory3kCCc8DV5MOY8SJ3JonEjKWwRgjyizYxHsaMDOzmtzQKLlAe2vn
+         29kPdymB0pOSrQNm2Ln8su2TFDV+MnyFTSixAf+neFFabUQDlgR1tdPIylZ09eajzMnt
+         p3Sw==
+X-Gm-Message-State: AMke39mMVziX+UWIHtbKWY74Oni0g394+tIpqGu8Y2QgDFVjFNzuyvEePDLPE1mKmG6/D6Ew
+X-Received: by 10.84.141.129 with SMTP id 1mr5145183plv.166.1488555299125;
+        Fri, 03 Mar 2017 07:34:59 -0800 (PST)
+Return-Path: <kdunne@mail.ccsf.edu>
+Received: from katie-Inspiron-5748 (c-67-188-119-183.hsd1.ca.comcast.net. [67.188.119.183])
+        by smtp.gmail.com with ESMTPSA id s13sm17632410pfd.46.2017.03.03.07.34.58
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 02 Mar 2017 10:42:54 -0800 (PST)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: mchehab@kernel.org,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH v2 4/5] staging:cxd2099:Change kzalloc parameter
-Date: Thu,  2 Mar 2017 20:42:52 +0200
-Message-Id: <20170302184252.3477-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+        Fri, 03 Mar 2017 07:34:58 -0800 (PST)
+Date: Fri, 3 Mar 2017 07:32:47 -0800
+From: Katie Dunne <kdunne@mail.ccsf.edu>
+To: outreachy-kernel@googlegroups.com
+Cc: jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net,
+	gregkh@linuxfoundation.org, linux-iio@vger.kernel.org
+Subject: [PATCH v2 0/2] staging: iio: meter: ade7753: Header file maintenance
+Message-ID: <20170303153247.GA29234@katie-Inspiron-5748>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Changed the structure tag 'struct cxd' with the variable '*ci' to fix the
-following checkpath.pl issue: CHECK: Prefer kzalloc(sizeof(*ci)...) over
-kzalloc(sizeof(struct cxd)).
+Collapse header file into source and clean up includes. 
 
-Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
----
- drivers/staging/media/cxd2099/cxd2099.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes in v2:
+Removed patch deleting unused definitions
+Placed all register definitions at the top of the file for easy access
+Included driver name in patch titles
 
-diff --git a/drivers/staging/media/cxd2099/cxd2099.c b/drivers/staging/media/cxd2099/cxd2099.c
-index 001bffe..d0e012c 100644
---- a/drivers/staging/media/cxd2099/cxd2099.c
-+++ b/drivers/staging/media/cxd2099/cxd2099.c
-@@ -694,7 +694,7 @@ struct dvb_ca_en50221 *cxd2099_attach(struct cxd2099_cfg *cfg,
- 		return NULL;
- 	}
- 
--	ci = kzalloc(sizeof(struct cxd), GFP_KERNEL);
-+	ci = kzalloc(sizeof(*ci), GFP_KERNEL);
- 	if (!ci)
- 		return NULL;
- 
+Katie Dunne (2):
+  staging: iio: meter: ade7753: Move header content to implementation
+    file
+  staging: iio: meter: ade7753: Clean up includes
+
+ drivers/staging/iio/meter/ade7753.c | 82 +++++++++++++++++++++++++++++++++----
+ drivers/staging/iio/meter/ade7753.h | 72 --------------------------------
+ 2 files changed, 74 insertions(+), 80 deletions(-)
+ delete mode 100644 drivers/staging/iio/meter/ade7753.h
+
 -- 
-2.9.3
+2.7.4
 
 
