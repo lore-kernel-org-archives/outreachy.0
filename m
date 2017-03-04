@@ -1,126 +1,99 @@
-X-GM-THRID: 6389289622943301632
-X-Received: by 10.129.91.214 with SMTP id p205mr8398941ywb.163.1487622415114;
-        Mon, 20 Feb 2017 12:26:55 -0800 (PST)
+X-GM-THRID: 6393354642699321344
+X-Received: by 10.129.86.138 with SMTP id k132mr3721804ywb.23.1488647068594;
+        Sat, 04 Mar 2017 09:04:28 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.143.210 with SMTP id r201ls254067iod.30.gmail; Mon, 20 Feb
- 2017 12:26:54 -0800 (PST)
-X-Received: by 10.36.94.204 with SMTP id h195mr8346873itb.35.1487622414250;
-        Mon, 20 Feb 2017 12:26:54 -0800 (PST)
-Return-Path: <kdunne@mail.ccsf.edu>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id u12si2718575pfd.3.2017.02.20.12.26.54
+Received: by 10.36.2.76 with SMTP id 73ls1455384itu.13.gmail; Sat, 04 Mar 2017
+ 09:04:27 -0800 (PST)
+X-Received: by 10.98.252.205 with SMTP id e196mr1683366pfh.26.1488647067710;
+        Sat, 04 Mar 2017 09:04:27 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
+        by gmr-mx.google.com with ESMTPS id u12si591686pfd.3.2017.03.04.09.04.27
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 20 Feb 2017 12:26:54 -0800 (PST)
-Received-SPF: neutral (google.com: 2607:f8b0:400e:c05::243 is neither permitted nor denied by best guess record for domain of kdunne@mail.ccsf.edu) client-ip=2607:f8b0:400e:c05::243;
+        Sat, 04 Mar 2017 09:04:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@mail-ccsf-edu.20150623.gappssmtp.com;
-       spf=neutral (google.com: 2607:f8b0:400e:c05::243 is neither permitted nor denied by best guess record for domain of kdunne@mail.ccsf.edu) smtp.mailfrom=kdunne@mail.ccsf.edu
-Received: by mail-pg0-x243.google.com with SMTP id a123so11561446pgc.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 20 Feb 2017 12:26:54 -0800 (PST)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x241.google.com with SMTP id 77so2943546pgc.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 04 Mar 2017 09:04:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=mail-ccsf-edu.20150623.gappssmtp.com; s=20150623;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=5j5gkVVJHX5NHRnjcNO6jLttdgJuAXh3fbyBkfJdkwQ=;
-        b=0Qm3rlmn2u35WEjJalbxc8XZXbpKwi4KVeGMhSREyMnZdSkhYMqD2qfkqLw98WSAnY
-         LCavYJEEp/tdIQEEuxecixDn1qQnytMQ+aYdRW2TTPR03B+Zx5MQoAEtwqda3dOkZ6Jp
-         qK1W1eMog87Dk4cVH8+7gS51Is+HJgD9645hwOKT4Px/Igtv2XExJM69hqMXHrxO9Uks
-         IRVF2jpVApOkklO2j+iyHBKggElJ3yAJFbSEdDxZUfOmk4z+iUU1xVNxd9PSUof2H8NZ
-         VbyUXDG4ONh+ErbVKaVSx20SYTVtWFFGxWzBmBTrYzt+wJj1pVENx4nBNs8gGT55F0fD
-         LclA==
+        d=gmail.com; s=20161025;
+        h=message-id:date:from:to:cc:subject:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=HoBa3etIz+kf+tIrpUXWljDhX+h1VpEdabU+/iG7Srg=;
+        b=sC84Hq+vtX28nEp569zeo17S970+dxADcDPc9OUfWCKgoUvaQV0mzdTvTbvYWPRwSA
+         dWzBYfeSsv+WSHRcKhHX6asC8fwco/EOCurqTwyePLRRjqKXYMEIkvbzzhDaxvKrQHb8
+         12lnKgBmXRSJNSPcPuR1kMkH33f+o5vgqOEGAzkn9oGd13/zHnLWIzr2pF6mi1ASll+z
+         2T67Rfq5wKyQs/nMg1H3Iez7GaKqppQtKZUcpolASLzRrvnwELNx50Lver9te6dKay/q
+         lSfW9Tl1nNs7hjH1ZjbQCXOtWM2dcYR300FZmaZ7DdzZVbFuFNO3vhSTMe+w413iKxKr
+         IHBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=5j5gkVVJHX5NHRnjcNO6jLttdgJuAXh3fbyBkfJdkwQ=;
-        b=IREEuubmhk0j8dh1u6oQ8g13XKKdjCJo6AW9dmEiSVOMPNLYPRzF/+Gnrna6g7rDNv
-         hvJplLI8/rgneOSzvueIb/Cy41x7AfAk1rKvdDymj9FrhuWcmy2HEXhG77UIWQ/3o9AT
-         Vzf3rIlf0yqOkBN/3X8y8WXmDEyFAWpy0DsLh0kMowC7o+QKvPRaTr1ULAWoKJKfI+2I
-         DQeK5ZPahF6XdIzL96LrMdl47uCTAH7pQ35gGJT+zu9ymm2gikpTvYbbw+iCQmxIpB6G
-         pFcBN6cna94Bw1/DxNUoqJ3tm59X3KDQDszvYdMTejX4WAmBRDDLvR3t1zvlht4FGP+x
-         GgsA==
-X-Gm-Message-State: AMke39kHVRvaInFNdp5QKSYnJ+SCB4IW9LTYLOnMl8jYn/Yw6EI6Gl+KYobGGYR/ie4eN7wO
-X-Received: by 10.99.94.71 with SMTP id s68mr29437744pgb.181.1487622413981;
-        Mon, 20 Feb 2017 12:26:53 -0800 (PST)
-Return-Path: <kdunne@mail.ccsf.edu>
-Received: from katie-Inspiron-5748 (c-67-188-119-183.hsd1.ca.comcast.net. [67.188.119.183])
-        by smtp.gmail.com with ESMTPSA id f3sm36738139pfd.10.2017.02.20.12.26.52
+        h=x-gm-message-state:message-id:date:from:to:cc:subject:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=HoBa3etIz+kf+tIrpUXWljDhX+h1VpEdabU+/iG7Srg=;
+        b=OIZuIr7n4SPoWhBd8NjE8gJb/azB+IWVXcufDeyPvXnP7FXuTNIVN3mWnkd73J6imU
+         JDJ/ZSgIymPE5IjxJ2HVioeoMhFUVlu+mtfU3EN1Bk2P1QGK08p/oAimO/GxJvnpK3Ef
+         yVTe2yO6D5WYmgrBiBI8Ls+QdBUDHTw65mognELpz3vmzRi58xyrzS9TNRWPy2l0jkB+
+         nreWHTPI9qsCJONizVz1RsKfyZmpzR8O99SFJ9ZesGJP9Npxt3EsdSBvDZV+Ee1QvRza
+         ZpSK/rK3yeABgB0tlULZGXDQHCq5v+apv3mIdBhNJsSBzKGvFppvtaGnGbTii1ciSUxi
+         X2Lw==
+X-Gm-Message-State: AMke39nEdJKBZX6fQBbNPv26lszFndjIB+HvnJybo1aTek33OGYodfwIHtCapLfT76Ob5A==
+X-Received: by 10.98.138.132 with SMTP id o4mr10520546pfk.70.1488647067484;
+        Sat, 04 Mar 2017 09:04:27 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from euri ([117.211.102.19])
+        by smtp.gmail.com with ESMTPSA id 19sm30223520pfo.50.2017.03.04.09.04.26
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 20 Feb 2017 12:26:53 -0800 (PST)
-Date: Mon, 20 Feb 2017 12:24:40 -0800
-From: Katie Dunne <kdunne@mail.ccsf.edu>
-To: outreachy-kernel@googlegroups.com
-Cc: arnaud.patard@rtp-net.org, gregkh@linuxfoundation.org
-Subject: [PATCH] staging: xgifb: add braces around if-statements
-Message-ID: <20170220202440.GA8928@katie-Inspiron-5748>
+        Sat, 04 Mar 2017 09:04:27 -0800 (PST)
+Message-ID: <58baf39b.930e620a.3fcd0.d512@mx.google.com>
+X-Google-Original-Message-ID: <20170304170413.GA5497@<rvarsha016@gmail.com>>
+Date: Sat, 4 Mar 2017 22:34:13 +0530
+From: Varsha Rao <rvarsha016@gmail.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: [PATCH v3 2/9] staging: media: atomisp: Fix line over 80 characters.
+References: <cover.1488642821.git.varshar186@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <cover.1488642821.git.varshar186@gmail.com>
+User-Agent: Mutt/1.7.1 (2016-10-04)
 
-Add braces to instances of if-statements found by checkpatch.pl
-to conform to kernel style.
+Line over 80 characters are split to fix the following checkpatch issue:
 
-Signed-off-by: Katie Dunne <kdunne@mail.ccsf.edu>
+WARNING: line over 80 characters
+
+Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
 ---
- drivers/staging/xgifb/XGI_main_26.c | 19 ++++++++++---------
- 1 file changed, 10 insertions(+), 9 deletions(-)
+Changes in v2:
+- No Changes.
 
-diff --git a/drivers/staging/xgifb/XGI_main_26.c b/drivers/staging/xgifb/XGI_main_26.c
-index 6930f7e..69ed137 100644
---- a/drivers/staging/xgifb/XGI_main_26.c
-+++ b/drivers/staging/xgifb/XGI_main_26.c
-@@ -178,9 +178,9 @@ static int XGIfb_mode_rate_to_ddata(struct vb_device_info *XGI_Pr,
- 		*sync |= FB_SYNC_HOR_HIGH_ACT;
+Changes in v3:
+- Added change log message for previous version.
+
+ drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c
+index ee91f83..b251ba4 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c
++++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c
+@@ -210,7 +210,8 @@ ia_css_mipi_frame_calculate_size(const unsigned int width,
+ 	*/
  
- 	*vmode = FB_VMODE_NONINTERLACED;
--	if (XGI330_RefIndex[RefreshRateTableIndex].Ext_InfoFlag & 0x0080)
-+	if (XGI330_RefIndex[RefreshRateTableIndex].Ext_InfoFlag & 0x0080) {
- 		*vmode = FB_VMODE_INTERLACED;
--	else {
-+	} else {
- 		j = 0;
- 		while (XGI330_EModeIDTable[j].Ext_ModeID != 0xff) {
- 			if (XGI330_EModeIDTable[j].Ext_ModeID ==
-@@ -1480,9 +1480,9 @@ static void XGIfb_detect_VB(struct xgifb_video_info *xgifb_info)
  
- 	cr32 = xgifb_reg_get(XGICR, IND_XGI_SCRATCH_REG_CR32);
- 
--	if ((cr32 & SIS_CRT1) && !XGIfb_crt1off)
-+	if ((cr32 & SIS_CRT1) && !XGIfb_crt1off) {
- 		XGIfb_crt1off = 0;
--	else {
-+	} else {
- 		if (cr32 & 0x5F)
- 			XGIfb_crt1off = 1;
- 		else
-@@ -1500,18 +1500,19 @@ static void XGIfb_detect_VB(struct xgifb_video_info *xgifb_info)
- 			xgifb_info->display2 = XGIFB_DISP_NONE;
- 	}
- 
--	if (XGIfb_tvplug != -1)
-+	if (XGIfb_tvplug != -1) {
- 		/* Override with option */
- 		xgifb_info->TV_plug = XGIfb_tvplug;
--	else if (cr32 & SIS_VB_HIVISION) {
-+	} else if (cr32 & SIS_VB_HIVISION) {
- 		xgifb_info->TV_type = TVMODE_HIVISION;
- 		xgifb_info->TV_plug = TVPLUG_SVIDEO;
--	} else if (cr32 & SIS_VB_SVIDEO)
-+	} else if (cr32 & SIS_VB_SVIDEO) {
- 		xgifb_info->TV_plug = TVPLUG_SVIDEO;
--	else if (cr32 & SIS_VB_COMPOSITE)
-+	} else if (cr32 & SIS_VB_COMPOSITE) {
- 		xgifb_info->TV_plug = TVPLUG_COMPOSITE;
--	else if (cr32 & SIS_VB_SCART)
-+	} else if (cr32 & SIS_VB_SCART) {
- 		xgifb_info->TV_plug = TVPLUG_SCART;
-+	}
- 
- 	if (xgifb_info->TV_type == 0) {
- 		temp = xgifb_reg_get(XGICR, 0x38);
+-	words_per_odd_line	 = (odd_line_bytes   + 3) >> 2;	/* ceil(odd_line_bytes/4); word = 4 bytes */
++	words_per_odd_line = (odd_line_bytes + 3) >> 2;
++		/* ceil(odd_line_bytes/4); word = 4 bytes */
+ 	words_per_even_line  = (even_line_bytes  + 3) >> 2;
+ 	words_for_first_line = words_per_odd_line + 2 + (hasSOLandEOL ? 1 : 0);
+ 		/* + SOF +packet header + optionally (SOL), but (EOL) is not in the first line */
 -- 
-2.7.4
+2.9.3
 
 
