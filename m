@@ -1,68 +1,68 @@
 X-GM-THRID: 6393356071819280384
-X-Received: by 10.200.35.170 with SMTP id q39mr2726231qtq.57.1488647536320;
-        Sat, 04 Mar 2017 09:12:16 -0800 (PST)
+X-Received: by 10.176.90.150 with SMTP id w22mr1695298uae.39.1488638425167;
+        Sat, 04 Mar 2017 06:40:25 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.117.143 with SMTP id y137ls1473616itc.9.canary-gmail; Sat,
- 04 Mar 2017 09:12:15 -0800 (PST)
-X-Received: by 10.99.114.70 with SMTP id c6mr3427349pgn.17.1488647535529;
-        Sat, 04 Mar 2017 09:12:15 -0800 (PST)
+Received: by 10.107.141.19 with SMTP id p19ls3666517iod.9.gmail; Sat, 04 Mar
+ 2017 06:40:24 -0800 (PST)
+X-Received: by 10.99.106.131 with SMTP id f125mr3213782pgc.140.1488638424492;
+        Sat, 04 Mar 2017 06:40:24 -0800 (PST)
 Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id g82si585271pfb.5.2017.03.04.09.12.15
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id s64si538848pfk.0.2017.03.04.06.40.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 04 Mar 2017 09:12:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Sat, 04 Mar 2017 06:40:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id v190so2091160pfb.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 04 Mar 2017 09:12:15 -0800 (PST)
+Received: by mail-pg0-x244.google.com with SMTP id 187so1771904pgb.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 04 Mar 2017 06:40:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=message-id:date:from:to:cc:subject:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=Oiu3iJheZubHkL6K7IA+fArV+slUfswd8YH41nUNOAI=;
-        b=ejOv4x1yehxTTNllhK+QJSdxdWeSnUBcvEw24g/dGXFMaO90g5SKmrVQiNK11bII7n
-         61TGYP6KDB09qww7NnoLfxGUa78ZoI94lZf7tCLo+vmzn6TmpJ9P+9uS+eZw08DtqWBZ
-         k0LpRH2A4hG1NZrfgQVC28cyYy23hSlDTPEM8Fga2KGv++VIz0sfYYTA4sha7i+SVtxq
-         4rX0M5olOoNT1/Mn04Wv57ZjQIXNDRvhRFLaXokvrgWxK8Oc4s+Q8yW5QY0U+oKEPOcS
-         4hAcbDgFmrEo5VBxQDOI6f1LqoJcDtSu4g/3qwmGbBzSiVquckXBKW8TiYYrjm9Cnndj
-         pqMw==
+        bh=AFrC4pldQ55MSPvo0zOw8n2rjLUNlzQmXT6/ANDs5sQ=;
+        b=BDhTeVAubFmVxc2UztUMJ+uNs1Ru5cUPYtVmwMToSfpVrTMBDnTxyoN2NQXqRm/Hx8
+         6eq5j/x+RzPkt5zY6nLpq7IyOqs7XrQj7fQs6T+WruigjTyOA+YOuMuGKc0lfGh9q6Lv
+         yTMqnoFmlKgGfuaJfDMYnXnDeyP2pbfhwxJGzgMSuq63nk+nvmlE3as5R7ylAaj4fkmz
+         qStFlTFx+ZDrMoEEtKC+dVd3s7nBYiF2a/AkZAZFqq3qlx1XUylOxyZCLWefe3Zy5JKG
+         ZCF/ctGd36OLSIoJrzHekej/dRXLe2qxYWei687Kh2j8kvlvrVltThR/yWigAPOY1rp5
+         lVPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:message-id:date:from:to:cc:subject:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=Oiu3iJheZubHkL6K7IA+fArV+slUfswd8YH41nUNOAI=;
-        b=E+elN0CCZpuD47g4A8H7VJ1hUswFeD7BxtMZlhn97QswFgEZMjjhFxLa3oOLbSFUmu
-         BX8NDabGi8lPo2Mh40LjMmvbX7S2bYhHWPfV7nLNcTWokwINdeabo8+1hBJRuiOMTPrU
-         5hLsOg01XcCYDhF6CuMwSDl/+zdSImESbfD1Dqk+EL8QFUmc1gC49Bg3WUI6iEFJDDri
-         smWPTyDrLGgfpUr2xjZdNr4MoqGI3CnqnvmY9lWROYW36rQTsLmoRPCkqO6BOMf/jJYB
-         CNOc024ZSUi0kteH/jODwaQyUQAESPpk/oKrv4UeV4A+xG9VOB7lBMCJDTUU1wKl7D2z
-         Xw2g==
-X-Gm-Message-State: AMke39nSDea+IbV1k4TogMgkccgPbdb7qghAHH23PdGHl3KvuWVAsrQEUnydZ9C/3w50mw==
-X-Received: by 10.99.181.86 with SMTP id u22mr10345623pgo.120.1488647535207;
-        Sat, 04 Mar 2017 09:12:15 -0800 (PST)
+        bh=AFrC4pldQ55MSPvo0zOw8n2rjLUNlzQmXT6/ANDs5sQ=;
+        b=HvOabiNejg4skcup4Z0Q4T7oFi4ZXeC1cjirivlMgasNnMzcaxctpNFsloJbCaVngf
+         29JcsHiqyM4w3r1EgAh5tqZTY3DebRywNKtAksWqBOxmWn1vMQcQrRmabHTACBVAKSS5
+         YiPVlPG11znoJ0hymTJKqG6v8dNBNG67spx3GkRy6NwoUMW/0/Djc22CkcOiPLrqVpY8
+         T36QzHti42U0758BkQWSqrYbMXqWHhDk/N8iALV0AdKUFgxy8HWxvkbku9Qre9DjP+Yh
+         C10qgNJP1YcZ63oGNKAi5EMath9ddhsTuhH3W059ujx6Hjlp77mWhTlrzXppYnCNbbu2
+         4MJw==
+X-Gm-Message-State: AMke39nl2KNZDaK5Iwt7elu6RI4isIywAQaZxUelNnLefLNMjUv0FY/QQzO38EDiT7LNLQ==
+X-Received: by 10.84.216.93 with SMTP id f29mr12310051plj.10.1488638424145;
+        Sat, 04 Mar 2017 06:40:24 -0800 (PST)
 Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([117.211.102.75])
-        by smtp.gmail.com with ESMTPSA id s20sm30277477pfg.11.2017.03.04.09.12.14
+Received: from euri ([117.211.102.6])
+        by smtp.gmail.com with ESMTPSA id 73sm29744681pfh.56.2017.03.04.06.40.23
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 04 Mar 2017 09:12:14 -0800 (PST)
-Message-ID: <58baf56e.14d9620a.49f2e.c48b@mx.google.com>
-X-Google-Original-Message-ID: <20170304171200.GA5589@<rvarsha016@gmail.com>>
-Date: Sat, 4 Mar 2017 22:42:00 +0530
+        Sat, 04 Mar 2017 06:40:23 -0800 (PST)
+Message-ID: <58bad1d7.cc07620a.f30c7.bbff@mx.google.com>
+X-Google-Original-Message-ID: <20170304144020.GA4470@<rvarsha016@gmail.com>>
+Date: Sat, 4 Mar 2017 20:10:20 +0530
 From: Varsha Rao <rvarsha016@gmail.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH v3 4/9] staging: media: atomisp: Replace 'uint32_t' with
+Subject: [PATCH v2 4/9] staging: media: atomisp: Replace 'uint32_t' with
  kernel type u32.
-References: <cover.1488642821.git.varshar186@gmail.com>
+References: <cover.1488636852.git.varshar186@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1488642821.git.varshar186@gmail.com>
+In-Reply-To: <cover.1488636852.git.varshar186@gmail.com>
 User-Agent: Mutt/1.7.1 (2016-10-04)
 
 Replaced 'uint32_t' with kernel type u32, to fix the checkpatch issue.
@@ -70,9 +70,6 @@ Replaced 'uint32_t' with kernel type u32, to fix the checkpatch issue.
 Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
 ---
 Changes in v2:
-- No changes.
-
-Changes in v3:
 - No changes.
 
  .../pci/atomisp2/css2400/isp/kernels/bnlm/ia_css_bnlm.host.c      | 8 ++++----
