@@ -1,74 +1,91 @@
 X-GM-THRID: 6393429839339061248
-X-Received: by 10.157.5.168 with SMTP id 37mr2324754otd.0.1488590150650;
-        Fri, 03 Mar 2017 17:15:50 -0800 (PST)
+X-Received: by 10.157.54.142 with SMTP id h14mr2250024otc.38.1488586384931;
+        Fri, 03 Mar 2017 16:13:04 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.3.54 with SMTP id 51ls9336400otv.20.gmail; Fri, 03 Mar
- 2017 17:15:50 -0800 (PST)
-X-Received: by 10.129.146.139 with SMTP id j133mr2331652ywg.173.1488590150205;
-        Fri, 03 Mar 2017 17:15:50 -0800 (PST)
-Return-Path: <joe@perches.com>
-Received: from smtprelay.hostedemail.com (smtprelay0049.hostedemail.com. [216.40.44.49])
-        by gmr-mx.google.com with ESMTPS id e196si759056itc.2.2017.03.03.17.15.50
+Received: by 10.157.52.248 with SMTP id t53ls11888916otd.42.gmail; Fri, 03 Mar
+ 2017 16:13:04 -0800 (PST)
+X-Received: by 10.237.56.106 with SMTP id j97mr1723996qte.48.1488586384583;
+        Fri, 03 Mar 2017 16:13:04 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
+        by gmr-mx.google.com with ESMTPS id s64si334222pfk.0.2017.03.03.16.13.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Mar 2017 17:15:50 -0800 (PST)
-Received-SPF: neutral (google.com: 216.40.44.49 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.49;
+        Fri, 03 Mar 2017 16:13:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 216.40.44.49 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
-	by smtprelay07.hostedemail.com (Postfix) with ESMTP id B0673C1F71;
-	Sat,  4 Mar 2017 01:15:49 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,:::,RULES_HIT:41:334:355:368:369:379:541:599:973:982:988:989:1260:1277:1311:1313:1314:1345:1359:1373:1381:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2393:2553:2559:2562:2693:2828:2915:3138:3139:3140:3141:3142:3353:3622:3653:3865:3866:3867:3868:3870:3872:3873:3874:4250:4321:5007:7903:9040:10004:10400:10848:11232:11658:11914:12663:12740:12760:12895:13069:13095:13311:13357:13439:14096:14097:14181:14659:14721:14777:21080:21433:21451:30022:30054:30069:30089:30090:30091,0,RBL:none,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:fn,MSBL:0,DNSBL:none,Custom_rules:0:0:0,LFtime:2,LUA_SUMMARY:none
-X-HE-Tag: quiet50_15b2cf2c57308
-X-Filterd-Recvd-Size: 1865
-Received: from XPS-9350 (unknown [47.151.132.55])
-	(Authenticated sender: joe@perches.com)
-	by omf06.hostedemail.com (Postfix) with ESMTPA;
-	Sat,  4 Mar 2017 01:15:48 +0000 (UTC)
-Message-ID: <1488590146.2179.39.camel@perches.com>
-Subject: Re: checkpatch post-commit hook
-From: Joe Perches <joe@perches.com>
-To: Alison Schofield <amsfield22@gmail.com>, 
-	outreachy-kernel@googlegroups.com
-Date: Fri, 03 Mar 2017 17:15:46 -0800
-In-Reply-To: <20170304001259.GA4417@d830.WORKGROUP>
-References: <20170304001259.GA4417@d830.WORKGROUP>
-Content-Type: text/plain; charset="ISO-8859-1"
-X-Mailer: Evolution 3.22.3-0ubuntu0.1 
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-
-On Fri, 2017-03-03 at 16:13 -0800, Alison Schofield wrote:
-> I'm thinking of adding a git post-commit hook to our First Patch Tutorial.
-> 
-> Recently, Joe Perches (checkpatch author) showed us a spelling error
-> in a log message found by checkpatch and it made me realize we may be
-> under-utilizing checkpatch in the workflow as defined in the first patch
-> tutorial.
-> 
-> If you use it pre-commit (and while working a file) it shows you
-> issues in your files.  But, if you use it on the built patch, you
-> can also see WARNINGS like:
-> 
-> WARNING: Do not use whitespace before Signed-off-by:
-> WARNING: please write a paragraph that describes the config symbol fully
-> WARNING: added, moved or deleted file(s), does MAINTAINERS need updating?
-> 
-> Here's a post commit hook: 
-> 
-> .git/hooks$ cat post-commit
-> #!/bin/sh
-> exec git show HEAD | scripts/checkpatch.pl --nosummary
-
-exec git show --format=email HEAD | ./scripts/checkpatch.pl --strict
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x242.google.com with SMTP id 77so1298249pgc.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 03 Mar 2017 16:13:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=FuaLj8qc04ELAECk30MnfLiAV88CVNhQAlReVYuboG8=;
+        b=I+wdPoSNlPPPYXNPLILUQsIAI18YcNCpJST016hTOrLafmMLwZYEcGToH9CPnoK6ZT
+         R1EyMmgJTn8+kpPcX7qeewpXQdfVQ5F9i/M8jyxY5KnEOAwEIGTTCFC0gP0jJjejc2GH
+         9Lt+1Uwx4Yth4pFD4vDS6nVSnk3h37zR1NTeVHJUpwLcE/snUjX1Vfwo1RD3NeibhoxT
+         RL9rSedgTLaGS+pqWOgrroGCUHh+i4pB51JI42zs3BBm3WFx4vVK9nShMX+oxklukQVv
+         aUbWpD+C95aMN+Iic7sw17XRw5dpeYU2QdrzjcAwGhuwcpcAHRGW/Zdcw21FZhlv4yf4
+         rEqg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=FuaLj8qc04ELAECk30MnfLiAV88CVNhQAlReVYuboG8=;
+        b=tCCNqH2iwgipOS78lJorjuo7nwbDWTWR4nRKksSbgA39btENmBj47eTX67toZtRasa
+         HG++PmCClchYhbQ6L5KNPhyF0onPPpnOZZq5wGKB7PTTwMcdIurZ+coiOa8diKk00rhU
+         frOsov8hJoprRe/8q946Hun9TyYl9pZ1/D8DS1Ufc3fLk+T6K9UFU/oIiisIOofhRDwD
+         Fa0Ynjjxzw5W2aor8d2kCWDJFJQ329ByNUHFUBQvW0Jz0J2wBTe8PaChppeqcbEM7ygN
+         AdHWEWMuRraQ0Sw2SNu04VU5uueqC+uoCSTfZTDh3HYFjQd4SCCPcIUY3bc1ldxEewT3
+         TBbg==
+X-Gm-Message-State: AMke39l/V+gcb7j9QWlbBQP8uFjvsVw6z4FlKBFFvJivGLytmR5AROJ2z3e8osDU4fgyTQ==
+X-Received: by 10.84.132.33 with SMTP id 30mr8028924ple.44.1488586384379;
+        Fri, 03 Mar 2017 16:13:04 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
+        by smtp.gmail.com with ESMTPSA id t22sm25422338pfa.114.2017.03.03.16.13.03
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 03 Mar 2017 16:13:03 -0800 (PST)
+Date: Fri, 3 Mar 2017 16:13:01 -0800
+From: Alison Schofield <amsfield22@gmail.com>
+To: outreachy-kernel@googlegroups.com, joe@perches.com
+Subject: checkpatch post-commit hook
+Message-ID: <20170304001259.GA4417@d830.WORKGROUP>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
 
-> If someone will verify this and agree we should add it - I'll add it to
-> the first patch tutorial.
-> 
-> And, of course, you'll let me know if there's another/better way
-> to do it!
-> 
-> alisons
+I'm thinking of adding a git post-commit hook to our First Patch Tutorial.
+
+Recently, Joe Perches (checkpatch author) showed us a spelling error
+in a log message found by checkpatch and it made me realize we may be
+under-utilizing checkpatch in the workflow as defined in the first patch
+tutorial.
+
+If you use it pre-commit (and while working a file) it shows you
+issues in your files.  But, if you use it on the built patch, you
+can also see WARNINGS like:
+
+WARNING: Do not use whitespace before Signed-off-by:
+WARNING: please write a paragraph that describes the config symbol fully
+WARNING: added, moved or deleted file(s), does MAINTAINERS need updating?
+
+Here's a post commit hook: 
+
+.git/hooks$ cat post-commit
+#!/bin/sh
+exec git show HEAD | scripts/checkpatch.pl --nosummary
+
+If someone will verify this and agree we should add it - I'll add it to
+the first patch tutorial.
+
+And, of course, you'll let me know if there's another/better way
+to do it!
+
+alisons
 
