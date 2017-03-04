@@ -1,68 +1,69 @@
 X-GM-THRID: 6393356023703273472
-X-Received: by 10.129.48.147 with SMTP id w141mr3345654yww.47.1488647528115;
-        Sat, 04 Mar 2017 09:12:08 -0800 (PST)
+X-Received: by 10.99.166.2 with SMTP id t2mr3129686pge.127.1488638271461;
+        Sat, 04 Mar 2017 06:37:51 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.56.105 with SMTP id r38ls13728760otd.15.gmail; Sat, 04 Mar
- 2017 09:12:07 -0800 (PST)
-X-Received: by 10.157.41.240 with SMTP id g45mr2688997otd.94.1488647527733;
-        Sat, 04 Mar 2017 09:12:07 -0800 (PST)
+Received: by 10.157.9.185 with SMTP id q54ls8164938otd.11.gmail; Sat, 04 Mar
+ 2017 06:37:51 -0800 (PST)
+X-Received: by 10.159.33.131 with SMTP id 3mr1106285uac.22.1488638271054;
+        Sat, 04 Mar 2017 06:37:51 -0800 (PST)
 Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id g82si585559pfb.5.2017.03.04.09.12.07
+Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
+        by gmr-mx.google.com with ESMTPS id c123si536319pfa.4.2017.03.04.06.37.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 04 Mar 2017 09:12:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Sat, 04 Mar 2017 06:37:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id 77so2960614pgc.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 04 Mar 2017 09:12:07 -0800 (PST)
+Received: by mail-pg0-x241.google.com with SMTP id 77so2722892pgc.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 04 Mar 2017 06:37:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:references:mime-version
+        h=message-id:from:date:to:cc:subject:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=hU70NI5eL9BGH/Ue6ElB/dp5QXPcAFVGq4bpz2AMdNM=;
-        b=I2qV3kjKTigcAqBJ5TJmFlLPWjpXE788xKGbN44y06wb+YMUS0A9X0ZNuZsM7ZJHTW
-         +Vpkzid+jNlvc/r/hPbRHJ7T4zFohTcunP/GeafT/AECfTqn0I/QnFvDDSujxmOKdOmt
-         Oxyp3n9KVKlLDHSGues2/R8OMRdWHp7yTIiJi/To0lZCL2GpI5LeVff0KklFxVriqUMw
-         tSSZfF+ppBxPvH1uKsxP5RHYgEMbdGjgLBYKdplzNcykCNDR0I1a6/0rw5LPLgxvkiwF
-         B2Z+DimyO9oAEjdQ9uq7zmNDYle8z5gTkGIaAzC0AydyVwaQV/y7ZxtXJ+no9rnFQXI7
-         7G2A==
+        bh=PCYd4iVZHjoh2DpO7thQ9+c0TulgDxr2+hUi3LeDNck=;
+        b=Udr4KhpsFXaAHCfZTQzVse29+r+Tfpko52KhNhK3QFUKbgeMys+mC//LfVUtrsRGHj
+         +5ECUYPT43rZ14/tdoOxUndgw9Df61ePRwzFaAEB1XjR924kJyG7HDgqWe/f268dbBeb
+         vcb/XlkUkrwi9tMYKp6U0hhGnMjrDN0eIObMQi1PgwqZ3K1w+aklC2wJr1fSZqeUn2ic
+         fkMBHTYG7nJd50lYUInFnIDVLybgfDK+0pohJYSmDHqK31CSuzLb6+0rKGhR9dUIngW+
+         MruvBSdBeOjcVT7mbfXykKnC3XWnVNwUOytDtNOlrCETZrOu7BJEqQ2oIlBgvjWN2brm
+         hjqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:references
+        h=x-gm-message-state:message-id:from:date:to:cc:subject:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=hU70NI5eL9BGH/Ue6ElB/dp5QXPcAFVGq4bpz2AMdNM=;
-        b=cUjYCwEBo2cU8g/unV/qIyLUc1+mK0gXx6pa6VFTNSe+gX5kz0foxY20MREo4i5f0m
-         OtsJdcYhZu7Q6sd4+KYGRgNz+cD8c3i4gFeqyUGrN5HVD5L+FbGmTtvDoF0jr/uCH72z
-         GMCzdJ3KkVin+2UeaaYB0rUchckp6cotHIYeAyqEsq+foTnoK6Q+Lm9qFEDdcp3dBJO/
-         gRgA/5MZdlScvjNKA87gwX2N6o4Ah/llk7IM59Hm4e6Dv2DtZqdh9V1oI+Y+AAFYEmGS
-         aLV85m7eoqJvj49eQj5LtYJqIzdq711ZjtHwAeBsEDNs7zhLSaQQ1bunS64l3IHz7Lv6
-         pTfg==
-X-Gm-Message-State: AMke39n2bmjKiTUZseevqSV1Vm5C4QyvGuWcEkNvHfuB5rUEpjguPafRVVeOP/ZoHGhMoA==
-X-Received: by 10.84.231.200 with SMTP id g8mr13357085pln.100.1488647527457;
-        Sat, 04 Mar 2017 09:12:07 -0800 (PST)
+        bh=PCYd4iVZHjoh2DpO7thQ9+c0TulgDxr2+hUi3LeDNck=;
+        b=It6RR0q8eSwrKBzx+cMTV43Fi5doxwZTAr4wfVNb1EwpREfv6u7IMgETt0Nb7VEE1S
+         ZTdcyzM5ZJ6bFrYU+WpdHZffFRE5b0o4NntPgkwuFSoEAILmcYihhPVAgN6GlSgnS+0Z
+         iPVwxD+2rbEhF9phOo8LNf8pbf0yKFfC3Ew4NhjuG5nuQOiMYmA4QoxKM3urQMsZSZ7m
+         17vzhljiS2OdMZszEARfAtdqMHDrkcB7WyuHqYzjHjbr3wwKzV5htCxoXwhBjr8/+iFv
+         uCFawlnj9K/eGZWA1NvFuFJVScAkuNB7tFMghfJOeUGdbZlEgmCe7O5EnXqPi8sULBXf
+         HcLA==
+X-Gm-Message-State: AMke39mjOz6isEsjUtQlowbWcLsOJ96fhIaIhme7GbzHTcnKRhIGlFwR4zIGyRzNq657LA==
+X-Received: by 10.98.87.216 with SMTP id i85mr404413pfj.151.1488638270736;
+        Sat, 04 Mar 2017 06:37:50 -0800 (PST)
 Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([117.211.102.75])
-        by smtp.gmail.com with ESMTPSA id x2sm30247701pfb.49.2017.03.04.09.12.06
+Received: from euri ([117.211.102.27])
+        by smtp.gmail.com with ESMTPSA id h3sm29702315pfc.82.2017.03.04.06.37.49
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 04 Mar 2017 09:12:06 -0800 (PST)
-Message-ID: <58baf566.0263620a.f811a.c6fb@mx.google.com>
-X-Google-Original-Message-ID: <20170304171158.GA5548@<rvarsha016@gmail.com>>
-Date: Sat, 4 Mar 2017 22:41:58 +0530
+        Sat, 04 Mar 2017 06:37:50 -0800 (PST)
+Message-ID: <58bad13e.036c620a.f861b.c346@mx.google.com>
+X-Google-Original-Message-ID: <20170304143747.GA4469@<rvarsha016@gmail.com>>
 From: Varsha Rao <rvarsha016@gmail.com>
+X-Google-Original-From: Varsha Rao <varshar186@gmail.com>
+Date: Sat, 4 Mar 2017 20:07:47 +0530
 To: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH v3 3/9] staging: media: atomisp: Added spaces around
+Subject: [PATCH v2 3/9] staging: media: atomisp: Added spaces around
  arithmetic and bitwise operators.
-References: <cover.1488642821.git.varshar186@gmail.com>
+References: <cover.1488636852.git.varshar186@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1488642821.git.varshar186@gmail.com>
+In-Reply-To: <cover.1488636852.git.varshar186@gmail.com>
 User-Agent: Mutt/1.7.1 (2016-10-04)
 
 Added spaces around arithmetic operators (/, *, +) and bitwise operators
@@ -70,12 +71,6 @@ Added spaces around arithmetic operators (/, *, +) and bitwise operators
 
 Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
 ---
-Changes in v2:
-- No changes.
-
-Changes in v3:
-- Added change log message for previous version.
-
  drivers/staging/media/atomisp/i2c/gc0310.c                     |  2 +-
  drivers/staging/media/atomisp/i2c/gc2235.c                     |  4 ++--
  drivers/staging/media/atomisp/i2c/ov2680.c                     |  6 +++---
