@@ -1,123 +1,109 @@
 X-GM-THRID: 6393330913423392768
-X-Received: by 10.129.69.37 with SMTP id s37mr4583526ywa.147.1488694532456;
-        Sat, 04 Mar 2017 22:15:32 -0800 (PST)
+X-Received: by 10.25.234.202 with SMTP id y71mr1062112lfi.2.1488643404237;
+        Sat, 04 Mar 2017 08:03:24 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.7.18 with SMTP id 18ls1599707ote.1.gmail; Sat, 04 Mar 2017
- 22:15:32 -0800 (PST)
-X-Received: by 10.200.48.218 with SMTP id w26mr3691670qta.42.1488694532130;
-        Sat, 04 Mar 2017 22:15:32 -0800 (PST)
-Received: by 10.55.9.18 with SMTP id 18msqkj;
-        Sat, 4 Mar 2017 16:52:09 -0800 (PST)
-X-Received: by 10.46.83.7 with SMTP id h7mr1602005ljb.24.1488675128716;
-        Sat, 04 Mar 2017 16:52:08 -0800 (PST)
-Return-Path: <jsimmons@infradead.org>
-Received: from casper.infradead.org (casper.infradead.org. [2001:770:15f::2])
-        by gmr-mx.google.com with ESMTPS id y19si935277wmd.0.2017.03.04.16.52.08
+Received: by 10.46.92.129 with SMTP id q123ls1150993ljb.23.gmail; Sat, 04 Mar
+ 2017 08:03:23 -0800 (PST)
+X-Received: by 10.25.17.102 with SMTP id g99mr1024916lfi.6.1488643403238;
+        Sat, 04 Mar 2017 08:03:23 -0800 (PST)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from mail-lf0-x232.google.com (mail-lf0-x232.google.com. [2a00:1450:4010:c07::232])
+        by gmr-mx.google.com with ESMTPS id b186si615722wme.1.2017.03.04.08.03.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 04 Mar 2017 16:52:08 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of jsimmons@infradead.org designates 2001:770:15f::2 as permitted sender) client-ip=2001:770:15f::2;
+        Sat, 04 Mar 2017 08:03:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2a00:1450:4010:c07::232 as permitted sender) client-ip=2a00:1450:4010:c07::232;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@infradead.org;
-       spf=pass (google.com: best guess record for domain of jsimmons@infradead.org designates 2001:770:15f::2 as permitted sender) smtp.mailfrom=jsimmons@infradead.org
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Type:MIME-Version:References:
-	Message-ID:In-Reply-To:Subject:cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	 bh=mkPa8aqrs2+XekemzApG5cxEmwlf7pQJ+8CiOp3+lNA=; b=myW5PzJZnacCTVHcusAJdk6o0
-	TWmsX218dWC+kiEV6kUArasv/Pw7GnLD29D6U0rS0bzloUSGwTaf1m/s2/mh2qb85OLV6BhI1w4NH
-	6RCQUfdW/zGuTIkiG+OMhLzmU9iLxpZ4tLiY0GGdn51aYxQw/xUj885p0O6l/dx5WYaCCiqDClWOO
-	ic6K6QOu0+5LpApyPY9jaciXLJHc5qlG4G353A+CL5nOSwZSSUh5xDFshakcLYdMuauDOCTrXiviM
-	Ho7LF3U/IYHG7MgdiSHnRBqFVOCgO1fDiO0O+EeK7u5ZOkk6YXKgG4jigRBsJF+nms8cKviyd8FEf
-	volMBYH3Q==;
-Received: from jsimmons (helo=localhost)
-	by casper.infradead.org with local-esmtp (Exim 4.87 #1 (Red Hat Linux))
-	id 1ckKP1-0002ze-Bw; Sun, 05 Mar 2017 00:52:01 +0000
-Date: Sun, 5 Mar 2017 00:51:59 +0000 (GMT)
-From: James Simmons <jsimmons@infradead.org>
-To: simran singhal <singhalsimran0@gmail.com>
-cc: Larry.Finger@lwfinger.net, devel@driverdev.osuosl.org, 
-    florian.c.schilhabel@googlemail.com, gregkh@linuxfoundation.org, 
-    linux-kernel@vger.kernel.org, oleg.drokin@intel.com, 
-    outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH v5 2/5] staging: lustre: Remove unnecessary cast on void
- pointer
-In-Reply-To: <1488641453-22575-3-git-send-email-singhalsimran0@gmail.com>
-Message-ID: <alpine.LFD.2.20.1703050051480.10898@casper.infradead.org>
-References: <1488641453-22575-1-git-send-email-singhalsimran0@gmail.com> <1488641453-22575-3-git-send-email-singhalsimran0@gmail.com>
-User-Agent: Alpine 2.20 (LFD 67 2015-01-07)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2a00:1450:4010:c07::232 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-lf0-x232.google.com with SMTP id j90so21191607lfk.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 04 Mar 2017 08:03:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=qK6k/gZKLCX/7NKbINpeE3cdXgfwQJmOfg2VZbCZGeQ=;
+        b=SdnrTMnFeDrchoK2mau0qqSEqRsvsLZCD6HXgm1/MlyOzJl5aF7BuFGtCJU8xMfYid
+         BCH9AQPXrAPhffRooXg5aEscIdFUWQs1kHOySS++eetVTRhWmz7mNiAMZfXQoUXNmFV6
+         Zd0sei4J/5CbZkgGgpIDUfsYancm6Qd0nfysbcG8nA5wH3Eh6YFi872Li7qznhb08Pim
+         Pob4cear0pA5ViHRXl+69TzRtBbvci4pcomi4fdLf2osGFeGKJGmVD7iDdZ2Kfy0JsDj
+         frooxD+Xndt94SUrnDe5NIQZYLF4TJcTeU7ANmEqwbL6fr+GXClW/olPEOxMdjqjn7qz
+         62Lg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=qK6k/gZKLCX/7NKbINpeE3cdXgfwQJmOfg2VZbCZGeQ=;
+        b=TMTAl6zo2oV9RffamyNcWR7xXd6sqmqe12isqUtLghZ562x+j+kv4GQIfXwnsHOQJu
+         X3m+NLIi4vxI0P+fcDtofBEpbGHYJJR1lxuHvARaxiXlq8iROJMoxLJF5lMGLYk9lwsQ
+         SKse62mkh5jKcFZRZnwt5wRmLhzeUbe1v0Uo80nPmKX6I79DrrHIatEDRmoSW88Czjkn
+         ETlb6uthoREY8/earMGP1ejh/+5J7RvwXR16ZETfP8RA/7GmajHbVvfVW4F2SXhJIv+a
+         wf7HWNT4kOZ5B32Jt+thg4p70FE2TmOCXtVhonA5TW9+45gdzgYlBvb62LDZxEKny3We
+         JaCw==
+X-Gm-Message-State: AMke39ljrqLX/Gx3d0MJnqZ449xiy7YMs2OXhCVKaPcmtRN5Pm6cqcua/YGUMX/3cXfQOar/vGxVLnc15UT2mw==
+X-Received: by 10.25.233.201 with SMTP id j70mr79040lfk.20.1488643402953; Sat,
+ 04 Mar 2017 08:03:22 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20170305_005159_437271_41FBE69B 
-X-CRM114-Status: GOOD (  11.64  )
-X-Spam-Score: -1.9 (-)
-X-Spam-Report: SpamAssassin version 3.4.1 on casper.infradead.org summary:
- Content analysis details:   (-1.9 points, 5.0 required)
- 
-  pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -0.0 NO_RELAYS              Informational: message was not relayed via SMTP
- -1.9 BAYES_00               BODY: Bayes spam probability is 0 to 1%
-                             [score: 0.0000]
+Received: by 10.25.15.39 with HTTP; Sat, 4 Mar 2017 08:03:22 -0800 (PST)
+In-Reply-To: <1488642734.2179.51.camel@perches.com>
+References: <1488641453-22575-1-git-send-email-singhalsimran0@gmail.com> <1488642734.2179.51.camel@perches.com>
+From: SIMRAN SINGHAL <singhalsimran0@gmail.com>
+Date: Sat, 4 Mar 2017 21:33:22 +0530
+Message-ID: <CALrZqyN=tfHk5g=6cf9O6xHdbhVzbAEA3b5+YczeCYf0A-WbTw@mail.gmail.com>
+Subject: Re: [PATCH v5 0/5] Remove unnecessary cast on void pointer
+To: Joe Perches <joe@perches.com>
+Cc: Larry.Finger@lwfinger.net, 
+	Florian Schilhabel <florian.c.schilhabel@googlemail.com>, Greg KH <gregkh@linuxfoundation.org>, 
+	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
+	oleg.drokin@intel.com, marvin24@gmx.de, outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
 
+On Sat, Mar 4, 2017 at 9:22 PM, Joe Perches <joe@perches.com> wrote:
+> On Sat, 2017-03-04 at 21:00 +0530, simran singhal wrote:
+>> This patch-series removes unnecessary cast on void pointer in various
+>> drivers.
+>
+> Much better, thanks.
+>
+> Trivia: (and it's probably not necessary to resend)
+>
+> The cover letter should describe the subsystem being
+> changed or ideally something like "treewide" if the
+> series touches files throughout the kernel sources.
+>
+> So this cover letter ideally would have a subject like:
+>
+> Subject: [PATCH v5 0/5] staging: Remove unnecessary casts of void pointer
+>
+>> v5:
+>>   -Fixed compliation warning in lustre/lustre/llite/range_lock.c
+>>    which remain unfixed in v3.
+>> v4:
+>>   -change the cover-letter subject
+>> v3:
+>>   -Fixed compilation warning in lustre/lustre/llite/range_lock.c
+>>
+>> simran singhal (5):
+>>   staging: nvec: Remove unnecessary cast on void pointer
+>>   staging: lustre: Remove unnecessary cast on void pointer
+>>   staging: lustre: lustre: Remove unnecessary cast on void pointer
+>>   staging: rts5208: Remove unnecessary cast on void pointer
+>>   staging: rtl8712: Remove unnecessary cast on void pointer
+>
+> Some of these are acting on multiple instances.
+>
+> Please try to use plural and singular descriptions
+> where appropriate.
+>
+Thanks Joe,
+Will keep this in mind from next time.
 
-> The following Coccinelle script was used to detect this:
-> @r@
-> expression x;
-> void* e;
-> type T;
-> identifier f;
-> @@
-> (
->   *((T *)e)
-> |
->   ((T *)x)[...]
-> |
->   ((T*)x)->f
-> |
-> - (T*)
->   e
-> )
-> 
-> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
-
-Reviewed-by: James Simmons <jsimmons@infradead.org>
-
-> ---
->  drivers/staging/lustre/lustre/lmv/lmv_obd.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/lustre/lustre/lmv/lmv_obd.c b/drivers/staging/lustre/lustre/lmv/lmv_obd.c
-> index 271e189..09b46924 100644
-> --- a/drivers/staging/lustre/lustre/lmv/lmv_obd.c
-> +++ b/drivers/staging/lustre/lustre/lmv/lmv_obd.c
-> @@ -640,7 +640,7 @@ static int lmv_fid2path(struct obd_export *exp, int len, void *karg,
->  	int			remote_gf_size = 0;
->  	int			rc;
->  
-> -	gf = (struct getinfo_fid2path *)karg;
-> +	gf = karg;
->  	tgt = lmv_find_target(lmv, &gf->gf_fid);
->  	if (IS_ERR(tgt))
->  		return PTR_ERR(tgt);
-> @@ -657,7 +657,7 @@ static int lmv_fid2path(struct obd_export *exp, int len, void *karg,
->  		struct getinfo_fid2path *ori_gf;
->  		char *ptr;
->  
-> -		ori_gf = (struct getinfo_fid2path *)karg;
-> +		ori_gf = karg;
->  		if (strlen(ori_gf->gf_path) +
->  		    strlen(gf->gf_path) > ori_gf->gf_pathlen) {
->  			rc = -EOVERFLOW;
-> -- 
-> 2.7.4
-> 
-> _______________________________________________
-> devel mailing list
-> devel@linuxdriverproject.org
-> http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-> 
+>>  drivers/staging/lustre/lustre/llite/range_lock.c |  2 +-
+>>  drivers/staging/lustre/lustre/lmv/lmv_obd.c      |  4 ++--
+>>  drivers/staging/nvec/nvec_kbd.c                  |  2 +-
+>>  drivers/staging/rtl8712/rtl8712_recv.c           | 11 +++++------
+>>  drivers/staging/rts5208/rtsx_transport.c         |  3 +--
+>>  5 files changed, 10 insertions(+), 12 deletions(-)
+>
 
