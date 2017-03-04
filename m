@@ -1,67 +1,67 @@
 X-GM-THRID: 6393356170344529920
-X-Received: by 10.99.53.12 with SMTP id c12mr3254000pga.11.1488647746252;
-        Sat, 04 Mar 2017 09:15:46 -0800 (PST)
+X-Received: by 10.99.152.9 with SMTP id q9mr3219055pgd.84.1488638508991;
+        Sat, 04 Mar 2017 06:41:48 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.3.1 with SMTP id e1ls1470125ite.16.gmail; Sat, 04 Mar 2017
- 09:15:45 -0800 (PST)
-X-Received: by 10.107.202.69 with SMTP id a66mr3256745iog.80.1488647745637;
-        Sat, 04 Mar 2017 09:15:45 -0800 (PST)
+Received: by 10.157.18.240 with SMTP id g103ls12251489otg.39.gmail; Sat, 04
+ Mar 2017 06:41:48 -0800 (PST)
+X-Received: by 10.176.7.194 with SMTP id d2mr1634250uaf.17.1488638508627;
+        Sat, 04 Mar 2017 06:41:48 -0800 (PST)
 Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id h79si606057pfh.2.2017.03.04.09.15.45
+Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
+        by gmr-mx.google.com with ESMTPS id 207si523999pfu.8.2017.03.04.06.41.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 04 Mar 2017 09:15:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Sat, 04 Mar 2017 06:41:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id s67so15692555pgb.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 04 Mar 2017 09:15:45 -0800 (PST)
+Received: by mail-pg0-x242.google.com with SMTP id 25so15466307pgy.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 04 Mar 2017 06:41:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=message-id:date:from:to:cc:subject:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=pe4YhPI9NWbOeLUm3ch4I9pAhiFbzFxDW7QEmM21df0=;
-        b=SI4BC5qsaIScqC2LDazIhSlZD8QND+uc81zmUW8587U3WirmJfgaVPjH+WY1REDWe4
-         2z48fNeK9r2JoADxNyDjsRlxDDcHLNADT9uC/UHkEuzGf8J7Yk6DFJafgJzj4hwpos39
-         j9lXL6d0rD8pEBC6acCZB3IO4TY8dGJ/lFRwcx396f1Urk/P161VSILmPmjTkk6Cy+W4
-         nzKUzUFQQ/yDAzjQzKTflFh696qGlJWV88j1PruNRjeUCf5vzHufKWwMyejRtFSmCb/p
-         vp4krGxKuZJt+GH2zAxXWUywbGpGdukiLR2hGHZzVbu7E06hSVE/EA1W7eK1rLRlUX+S
-         CWpg==
+        bh=Ix7XA4MKvAwU/ytj/i4k0G6qx0s1jS9el/V7hBP6XcU=;
+        b=nPYoG+ZekcJar3lsoBqRX3jHL9JXDns2NcWaUEWuOB7Q7mQEY7HPVI0K9mOVLXSad0
+         dbMX/SJaYlNfxDetV329GliYnDICkSaU12Wk7QuW3IrcsgrWY3xwncNim0H4W0I8hBft
+         rGwNYSqvdfvuvTmHGC7m4mhBHEM1NqCjc202MtdlMlQe3CoFYjRE9nrFTyIn82JqoL2d
+         8+Puo3mlOOwdBgRlB7AEGKv02OTWtQRTDGcuOKdGrlYhidhIFXvEDbb6Aq6uGOGatx0U
+         IHiW/sFxDVenmnVskP6moAWU35YeLaTO8jMIYGr23aDOtzm953JsB1QIiZZiEiz4kSuM
+         11FQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:message-id:date:from:to:cc:subject:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=pe4YhPI9NWbOeLUm3ch4I9pAhiFbzFxDW7QEmM21df0=;
-        b=lKb5lJG/DwJySqm9XYUD/09BAIM/lIdNyf+D0K2lK5qaPoK2YjovbriDU5AXCx1OVg
-         VpuwJlzC3aRZvDyFCVMhnZUsMyzymhTsvaeEtozT0LXnVxseXI1YNgF3KOWCc2nOP6pu
-         7Ss+uKkFB0nPoMQNgSeHr7qaAPGPdjlgZFxuOhiR6tvduAbaF0e1A1UcNXDUDh3lNfyH
-         yTPsAoqjixHL+ue43jlJI2X57JbEJXLsH+rjms0DtbFT2BN9tgivRxfptCnXpPxbRvdW
-         4u6WjJabaHt36z3lO9DH1bn1G1Yfhnc2eRih+jhhP9QxJsEZLuiQKtoewgAZ5Cl++P7n
-         hxDg==
-X-Gm-Message-State: AMke39kAcJz9oKIBtDjIPhBqouKAjOUA5NgmB3oWK9UcA5Uue9n+jBMPtSwxoBhco/9NYQ==
-X-Received: by 10.84.131.33 with SMTP id 30mr13121184pld.45.1488647745211;
-        Sat, 04 Mar 2017 09:15:45 -0800 (PST)
+        bh=Ix7XA4MKvAwU/ytj/i4k0G6qx0s1jS9el/V7hBP6XcU=;
+        b=SByUb34xUIutpD0GzkB7lt3agttE2O/h91YHggBYkZcJZDbLHv3Xm3ueDrIXHAxyF9
+         Zywl4NhPz0FMhLXtmoflsx+N/kTUbR/N2N9pqwBitAvS5JdatgVb0dH88RIDs5A14Ir7
+         gkA9NIxlzM73ITUZNgv/ePVJELl7lfYhyrGwvK3jxxKCDK1ehI7kQxPXbAfj8oLKzWOk
+         +Lxyoe0PYsERJOvafHaWQEx2r4Ib13WksE3aKTJtlqhRPujpEWwwhY8zya+hIbv0xLvS
+         ZkNHMq2Ts9FBcQnxXF1paGV1Zz3SR7NdMUW+DwamdFCu/YQh6mydZ6s84T2hQwsfw3be
+         24xQ==
+X-Gm-Message-State: AMke39lI3UA/C28Hqh85iLP1hzMjjGPcj1WmKGtxLLQLyhkOFLJxvHZd58YSHLRrWhIE4g==
+X-Received: by 10.98.79.150 with SMTP id f22mr9972938pfj.55.1488638508148;
+        Sat, 04 Mar 2017 06:41:48 -0800 (PST)
 Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([117.211.102.75])
-        by smtp.gmail.com with ESMTPSA id x16sm30235406pfk.79.2017.03.04.09.15.44
+Received: from euri ([117.211.102.6])
+        by smtp.gmail.com with ESMTPSA id w14sm16982422pgo.37.2017.03.04.06.41.47
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 04 Mar 2017 09:15:44 -0800 (PST)
-Message-ID: <58baf640.90c6620a.83643.cd33@mx.google.com>
-X-Google-Original-Message-ID: <20170304171535.GA5591@<rvarsha016@gmail.com>>
-Date: Sat, 4 Mar 2017 22:45:35 +0530
+        Sat, 04 Mar 2017 06:41:47 -0800 (PST)
+Message-ID: <58bad22b.4ea7630a.6e3a5.0643@mx.google.com>
+X-Google-Original-Message-ID: <20170304144144.GA4473@<rvarsha016@gmail.com>>
+Date: Sat, 4 Mar 2017 20:11:44 +0530
 From: Varsha Rao <rvarsha016@gmail.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH v3 5/9] staging: media: atomisp: Fix block comments warning.
-References: <cover.1488642821.git.varshar186@gmail.com>
+Subject: [PATCH v2 5/9] staging : media: atomisp: Fix block comments warning.
+References: <cover.1488636852.git.varshar186@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1488642821.git.varshar186@gmail.com>
+In-Reply-To: <cover.1488636852.git.varshar186@gmail.com>
 User-Agent: Mutt/1.7.1 (2016-10-04)
 
 Used kernel preferred block commenting style, to fix the following
@@ -72,9 +72,6 @@ WARNING: Block comments use a trailing */ on a separate line
 Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
 ---
 Changes in v2:
-- No changes.
-
-Changes in v3:
 - No changes.
 
  drivers/staging/media/atomisp/i2c/gc0310.c                         | 3 ++-
