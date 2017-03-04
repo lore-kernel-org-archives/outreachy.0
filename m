@@ -1,363 +1,452 @@
 X-GM-THRID: 6393639502105018368
-X-Received: by 10.25.150.212 with SMTP id y203mr1137505lfd.30.1488644487579;
-        Sat, 04 Mar 2017 08:21:27 -0800 (PST)
+X-Received: by 10.223.153.33 with SMTP id x30mr186871wrb.10.1488635245900;
+        Sat, 04 Mar 2017 05:47:25 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.14.1 with SMTP id 1ls1263483ljo.45.gmail; Sat, 04 Mar 2017
- 08:21:26 -0800 (PST)
-X-Received: by 10.46.22.68 with SMTP id 4mr1296533ljw.14.1488644486760;
-        Sat, 04 Mar 2017 08:21:26 -0800 (PST)
-Return-Path: <jic23@kernel.org>
-Received: from saturn.retrosnub.co.uk (saturn.retrosnub.co.uk. [2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466])
-        by gmr-mx.google.com with ESMTPS id h198si548600wmg.1.2017.03.04.08.21.26
+Received: by 10.46.80.83 with SMTP id v19ls1242218ljd.25.gmail; Sat, 04 Mar
+ 2017 05:47:25 -0800 (PST)
+X-Received: by 10.46.21.91 with SMTP id 27mr1166767ljv.0.1488635245262;
+        Sat, 04 Mar 2017 05:47:25 -0800 (PST)
+Return-Path: <narcisaanamaria12@gmail.com>
+Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
+        by gmr-mx.google.com with ESMTPS id h62si341686wme.2.2017.03.04.05.47.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 04 Mar 2017 08:21:26 -0800 (PST)
-Received-SPF: neutral (google.com: 2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466 is neither permitted nor denied by best guess record for domain of jic23@kernel.org) client-ip=2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466;
+        Sat, 04 Mar 2017 05:47:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466 is neither permitted nor denied by best guess record for domain of jic23@kernel.org) smtp.mailfrom=jic23@kernel.org
-Received: from localhost.localdomain (cpc91196-cmbg18-2-0-cust659.5-4.cable.virginm.net [81.96.234.148])
-	by saturn.retrosnub.co.uk (Postfix; Retrosnub mail submission) with ESMTPSA id 9EFDA40605;
-	Sat,  4 Mar 2017 16:21:25 +0000 (GMT)
-Subject: Re: [PATCH 1/4] staging: iio: adis16201: Move contents of the header
- to the source file
-To: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>, lars@metafoo.de,
- Michael.Hennerich@analog.com, knaack.h@gmx.de, pmeerw@pmeerw.net,
- gregkh@linuxfoundation.org
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=narcisaanamaria12@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x241.google.com with SMTP id m70so6997379wma.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 04 Mar 2017 05:47:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=/bI8QLhxLHd7YGpNg3nO8D9VFfo/HYApe9oWvBdcNCI=;
+        b=BuzFxiJ15j7++3lncUJuA6oOcae5kH+f3moc3VHjh+Dr0QalY2Bzn1DRZx94s2lOfV
+         /NhiWiTFz+vDFVMSzQyApwFdxqyxPpmLCFWfbwmnr5qq67/RyxvACrqgNSu7nRD2hBpc
+         UENOJqvARXvwOkMg6/99L6MHmZ8c6IZXMNbA9bINE3OfZ+TdBSNrn35zxJk1T09OWX3B
+         Hs037AEuZXfkDG5utSzJDFSb5rGFxbZQ+f8map0HUA0J7fw5Ep+JYPS80/136S/j/grw
+         P3SOIhoeFCk+qxasNE/pzPEiKdRNSg0JIPZmQSr6XRqPbLuCWFKMbw+WNgm9V3N9epvk
+         ObfQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=/bI8QLhxLHd7YGpNg3nO8D9VFfo/HYApe9oWvBdcNCI=;
+        b=EqCjr9NjoG7fKaKo+A7CBp0U0JvL6+0P7hyElQdK3OrE6+LT8jQVJXcLYJA6+ScMYx
+         nQRu/HR+EoGisNeu3cc9puwFKnd5kzwXwl03R4eqnKRj4U4HyUeVktHipRtOGYnz0hcO
+         c4WMOy4Xtxc/ptqAccHnWOKrR2hNuN3lud6YjUeOBS8wCxGMX/Y/ziVeb60L78RY8iHK
+         4CUrfcEMUDR9KXIiG3c51CLjOgeMxB0wLkspOTwN9paJ2cHmWgdlMctDCjATSYQNICkn
+         lSUU78X09WWs8G1rTOWPK4wmnGRDv7JcsfpBhc3mH4RjbnxpxPht7skTccSNQNepjG6p
+         WRLA==
+X-Gm-Message-State: AMke39nsGzZtXrHYbof+8RIiIj03x1qR6dPzxPntO3Dwa3xSVUXQqxm1gN4aWx2aeto6Qg==
+X-Received: by 10.28.236.209 with SMTP id h78mr7353666wmi.97.1488635244930;
+        Sat, 04 Mar 2017 05:47:24 -0800 (PST)
+Return-Path: <narcisaanamaria12@gmail.com>
+Received: from localhost.localdomain ([89.165.243.139])
+        by smtp.gmail.com with ESMTPSA id c2sm2814343wre.55.2017.03.04.05.47.23
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 04 Mar 2017 05:47:24 -0800 (PST)
+From: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+To: lars@metafoo.de,
+	Michael.Hennerich@analog.com,
+	jic23@kernel.org,
+	knaack.h@gmx.de,
+	pmeerw@pmeerw.net,
+	gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com,
+	linux-iio@vger.kernel.org,
+	Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+Subject: [PATCH 4/4] staging: iio: adis16240: Move contents of the header to the source file
+Date: Sat,  4 Mar 2017 15:47:19 +0200
+Message-Id: <9eccea6d8e170545a40e4c1a106049477dabed38.1488634510.git.narcisaanamaria12@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <cover.1488634510.git.narcisaanamaria12@gmail.com>
 References: <cover.1488634510.git.narcisaanamaria12@gmail.com>
- <04e6dba812cdcd06691187426aa6580952f09177.1488634510.git.narcisaanamaria12@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, linux-iio@vger.kernel.org
-From: Jonathan Cameron <jic23@kernel.org>
-Message-ID: <4b70f221-8e32-3378-7255-c478f0087110@kernel.org>
-Date: Sat, 4 Mar 2017 16:21:24 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
- Thunderbird/45.7.0
-MIME-Version: 1.0
-In-Reply-To: <04e6dba812cdcd06691187426aa6580952f09177.1488634510.git.narcisaanamaria12@gmail.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
 
-On 04/03/17 13:46, Narcisa Ana Maria Vasile wrote:
-> The contents of the header file are used only by this single
-> source file. Move content into .c file and remove header.
-> 
-> Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
-Hi Narcisa,
+The contents of the header file are used only by this single
+source file. Move content into .c file and remove header.
 
-I'm afraid this one has already been done in a patch from Simran Singhal.
+Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+---
+ drivers/staging/iio/accel/adis16240.h      | 179 -----------------------------
+ drivers/staging/iio/accel/adis16240_core.c | 175 +++++++++++++++++++++++++++-
+ 2 files changed, 174 insertions(+), 180 deletions(-)
+ delete mode 100644 drivers/staging/iio/accel/adis16240.h
 
-That patch was in the testing branch of iio.git (now in the togreg branch).
-It's always worth checking the mailing list to see if there are any existing
-patches for the driver you are working on that might cause merge issues
-(or as here, already deal with the code you are looking at).
-
-Jonathan
-> ---
->  drivers/staging/iio/accel/adis16201.h      | 144 -----------------------------
->  drivers/staging/iio/accel/adis16201_core.c | 140 +++++++++++++++++++++++++++-
->  2 files changed, 139 insertions(+), 145 deletions(-)
->  delete mode 100644 drivers/staging/iio/accel/adis16201.h
-> 
-> diff --git a/drivers/staging/iio/accel/adis16201.h b/drivers/staging/iio/accel/adis16201.h
-> deleted file mode 100644
-> index 64844ad..0000000
-> --- a/drivers/staging/iio/accel/adis16201.h
-> +++ /dev/null
-> @@ -1,144 +0,0 @@
-> -#ifndef SPI_ADIS16201_H_
-> -#define SPI_ADIS16201_H_
-> -
-> -#define ADIS16201_STARTUP_DELAY	220 /* ms */
-> -
-> -/* Flash memory write count */
-> -#define ADIS16201_FLASH_CNT      0x00
-> -
-> -/* Output, power supply */
-> -#define ADIS16201_SUPPLY_OUT     0x02
-> -
-> -/* Output, x-axis accelerometer */
-> -#define ADIS16201_XACCL_OUT      0x04
-> -
-> -/* Output, y-axis accelerometer */
-> -#define ADIS16201_YACCL_OUT      0x06
-> -
-> -/* Output, auxiliary ADC input */
-> -#define ADIS16201_AUX_ADC        0x08
-> -
-> -/* Output, temperature */
-> -#define ADIS16201_TEMP_OUT       0x0A
-> -
-> -/* Output, x-axis inclination */
-> -#define ADIS16201_XINCL_OUT      0x0C
-> -
-> -/* Output, y-axis inclination */
-> -#define ADIS16201_YINCL_OUT      0x0E
-> -
-> -/* Calibration, x-axis acceleration offset */
-> -#define ADIS16201_XACCL_OFFS     0x10
-> -
-> -/* Calibration, y-axis acceleration offset */
-> -#define ADIS16201_YACCL_OFFS     0x12
-> -
-> -/* x-axis acceleration scale factor */
-> -#define ADIS16201_XACCL_SCALE    0x14
-> -
-> -/* y-axis acceleration scale factor */
-> -#define ADIS16201_YACCL_SCALE    0x16
-> -
-> -/* Calibration, x-axis inclination offset */
-> -#define ADIS16201_XINCL_OFFS     0x18
-> -
-> -/* Calibration, y-axis inclination offset */
-> -#define ADIS16201_YINCL_OFFS     0x1A
-> -
-> -/* x-axis inclination scale factor */
-> -#define ADIS16201_XINCL_SCALE    0x1C
-> -
-> -/* y-axis inclination scale factor */
-> -#define ADIS16201_YINCL_SCALE    0x1E
-> -
-> -/* Alarm 1 amplitude threshold */
-> -#define ADIS16201_ALM_MAG1       0x20
-> -
-> -/* Alarm 2 amplitude threshold */
-> -#define ADIS16201_ALM_MAG2       0x22
-> -
-> -/* Alarm 1, sample period */
-> -#define ADIS16201_ALM_SMPL1      0x24
-> -
-> -/* Alarm 2, sample period */
-> -#define ADIS16201_ALM_SMPL2      0x26
-> -
-> -/* Alarm control */
-> -#define ADIS16201_ALM_CTRL       0x28
-> -
-> -/* Auxiliary DAC data */
-> -#define ADIS16201_AUX_DAC        0x30
-> -
-> -/* General-purpose digital input/output control */
-> -#define ADIS16201_GPIO_CTRL      0x32
-> -
-> -/* Miscellaneous control */
-> -#define ADIS16201_MSC_CTRL       0x34
-> -
-> -/* Internal sample period (rate) control */
-> -#define ADIS16201_SMPL_PRD       0x36
-> -
-> -/* Operation, filter configuration */
-> -#define ADIS16201_AVG_CNT        0x38
-> -
-> -/* Operation, sleep mode control */
-> -#define ADIS16201_SLP_CNT        0x3A
-> -
-> -/* Diagnostics, system status register */
-> -#define ADIS16201_DIAG_STAT      0x3C
-> -
-> -/* Operation, system command register */
-> -#define ADIS16201_GLOB_CMD       0x3E
-> -
-> -/* MSC_CTRL */
-> -
-> -/* Self-test enable */
-> -#define ADIS16201_MSC_CTRL_SELF_TEST_EN	        BIT(8)
-> -
-> -/* Data-ready enable: 1 = enabled, 0 = disabled */
-> -#define ADIS16201_MSC_CTRL_DATA_RDY_EN	        BIT(2)
-> -
-> -/* Data-ready polarity: 1 = active high, 0 = active low */
-> -#define ADIS16201_MSC_CTRL_ACTIVE_HIGH	        BIT(1)
-> -
-> -/* Data-ready line selection: 1 = DIO1, 0 = DIO0 */
-> -#define ADIS16201_MSC_CTRL_DATA_RDY_DIO1	BIT(0)
-> -
-> -/* DIAG_STAT */
-> -
-> -/* Alarm 2 status: 1 = alarm active, 0 = alarm inactive */
-> -#define ADIS16201_DIAG_STAT_ALARM2        BIT(9)
-> -
-> -/* Alarm 1 status: 1 = alarm active, 0 = alarm inactive */
-> -#define ADIS16201_DIAG_STAT_ALARM1        BIT(8)
-> -
-> -/* SPI communications failure */
-> -#define ADIS16201_DIAG_STAT_SPI_FAIL_BIT   3
-> -
-> -/* Flash update failure */
-> -#define ADIS16201_DIAG_STAT_FLASH_UPT_BIT  2
-> -
-> -/* Power supply above 3.625 V */
-> -#define ADIS16201_DIAG_STAT_POWER_HIGH_BIT 1
-> -
-> -/* Power supply below 3.15 V */
-> -#define ADIS16201_DIAG_STAT_POWER_LOW_BIT  0
-> -
-> -/* GLOB_CMD */
-> -
-> -#define ADIS16201_GLOB_CMD_SW_RESET	BIT(7)
-> -#define ADIS16201_GLOB_CMD_FACTORY_CAL	BIT(1)
-> -
-> -#define ADIS16201_ERROR_ACTIVE          BIT(14)
-> -
-> -enum adis16201_scan {
-> -	ADIS16201_SCAN_ACC_X,
-> -	ADIS16201_SCAN_ACC_Y,
-> -	ADIS16201_SCAN_INCLI_X,
-> -	ADIS16201_SCAN_INCLI_Y,
-> -	ADIS16201_SCAN_SUPPLY,
-> -	ADIS16201_SCAN_AUX_ADC,
-> -	ADIS16201_SCAN_TEMP,
-> -};
-> -
-> -#endif /* SPI_ADIS16201_H_ */
-> diff --git a/drivers/staging/iio/accel/adis16201_core.c b/drivers/staging/iio/accel/adis16201_core.c
-> index 7963d4a..d6c8658 100644
-> --- a/drivers/staging/iio/accel/adis16201_core.c
-> +++ b/drivers/staging/iio/accel/adis16201_core.c
-> @@ -20,7 +20,145 @@
->  #include <linux/iio/buffer.h>
->  #include <linux/iio/imu/adis.h>
->  
-> -#include "adis16201.h"
-> +#define ADIS16201_STARTUP_DELAY	220 /* ms */
-> +
-> +/* Flash memory write count */
-> +#define ADIS16201_FLASH_CNT      0x00
-> +
-> +/* Output, power supply */
-> +#define ADIS16201_SUPPLY_OUT     0x02
-> +
-> +/* Output, x-axis accelerometer */
-> +#define ADIS16201_XACCL_OUT      0x04
-> +
-> +/* Output, y-axis accelerometer */
-> +#define ADIS16201_YACCL_OUT      0x06
-> +
-> +/* Output, auxiliary ADC input */
-> +#define ADIS16201_AUX_ADC        0x08
-> +
-> +/* Output, temperature */
-> +#define ADIS16201_TEMP_OUT       0x0A
-> +
-> +/* Output, x-axis inclination */
-> +#define ADIS16201_XINCL_OUT      0x0C
-> +
-> +/* Output, y-axis inclination */
-> +#define ADIS16201_YINCL_OUT      0x0E
-> +
-> +/* Calibration, x-axis acceleration offset */
-> +#define ADIS16201_XACCL_OFFS     0x10
-> +
-> +/* Calibration, y-axis acceleration offset */
-> +#define ADIS16201_YACCL_OFFS     0x12
-> +
-> +/* x-axis acceleration scale factor */
-> +#define ADIS16201_XACCL_SCALE    0x14
-> +
-> +/* y-axis acceleration scale factor */
-> +#define ADIS16201_YACCL_SCALE    0x16
-> +
-> +/* Calibration, x-axis inclination offset */
-> +#define ADIS16201_XINCL_OFFS     0x18
-> +
-> +/* Calibration, y-axis inclination offset */
-> +#define ADIS16201_YINCL_OFFS     0x1A
-> +
-> +/* x-axis inclination scale factor */
-> +#define ADIS16201_XINCL_SCALE    0x1C
-> +
-> +/* y-axis inclination scale factor */
-> +#define ADIS16201_YINCL_SCALE    0x1E
-> +
-> +/* Alarm 1 amplitude threshold */
-> +#define ADIS16201_ALM_MAG1       0x20
-> +
-> +/* Alarm 2 amplitude threshold */
-> +#define ADIS16201_ALM_MAG2       0x22
-> +
-> +/* Alarm 1, sample period */
-> +#define ADIS16201_ALM_SMPL1      0x24
-> +
-> +/* Alarm 2, sample period */
-> +#define ADIS16201_ALM_SMPL2      0x26
-> +
-> +/* Alarm control */
-> +#define ADIS16201_ALM_CTRL       0x28
-> +
-> +/* Auxiliary DAC data */
-> +#define ADIS16201_AUX_DAC        0x30
-> +
-> +/* General-purpose digital input/output control */
-> +#define ADIS16201_GPIO_CTRL      0x32
-> +
-> +/* Miscellaneous control */
-> +#define ADIS16201_MSC_CTRL       0x34
-> +
-> +/* Internal sample period (rate) control */
-> +#define ADIS16201_SMPL_PRD       0x36
-> +
-> +/* Operation, filter configuration */
-> +#define ADIS16201_AVG_CNT        0x38
-> +
-> +/* Operation, sleep mode control */
-> +#define ADIS16201_SLP_CNT        0x3A
-> +
-> +/* Diagnostics, system status register */
-> +#define ADIS16201_DIAG_STAT      0x3C
-> +
-> +/* Operation, system command register */
-> +#define ADIS16201_GLOB_CMD       0x3E
-> +
-> +/* MSC_CTRL */
-> +
-> +/* Self-test enable */
-> +#define ADIS16201_MSC_CTRL_SELF_TEST_EN	        BIT(8)
-> +
-> +/* Data-ready enable: 1 = enabled, 0 = disabled */
-> +#define ADIS16201_MSC_CTRL_DATA_RDY_EN	        BIT(2)
-> +
-> +/* Data-ready polarity: 1 = active high, 0 = active low */
-> +#define ADIS16201_MSC_CTRL_ACTIVE_HIGH	        BIT(1)
-> +
-> +/* Data-ready line selection: 1 = DIO1, 0 = DIO0 */
-> +#define ADIS16201_MSC_CTRL_DATA_RDY_DIO1	BIT(0)
-> +
-> +/* DIAG_STAT */
-> +
-> +/* Alarm 2 status: 1 = alarm active, 0 = alarm inactive */
-> +#define ADIS16201_DIAG_STAT_ALARM2        BIT(9)
-> +
-> +/* Alarm 1 status: 1 = alarm active, 0 = alarm inactive */
-> +#define ADIS16201_DIAG_STAT_ALARM1        BIT(8)
-> +
-> +/* SPI communications failure */
-> +#define ADIS16201_DIAG_STAT_SPI_FAIL_BIT   3
-> +
-> +/* Flash update failure */
-> +#define ADIS16201_DIAG_STAT_FLASH_UPT_BIT  2
-> +
-> +/* Power supply above 3.625 V */
-> +#define ADIS16201_DIAG_STAT_POWER_HIGH_BIT 1
-> +
-> +/* Power supply below 3.15 V */
-> +#define ADIS16201_DIAG_STAT_POWER_LOW_BIT  0
-> +
-> +/* GLOB_CMD */
-> +
-> +#define ADIS16201_GLOB_CMD_SW_RESET	BIT(7)
-> +#define ADIS16201_GLOB_CMD_FACTORY_CAL	BIT(1)
-> +
-> +#define ADIS16201_ERROR_ACTIVE          BIT(14)
-> +
-> +enum adis16201_scan {
-> +	ADIS16201_SCAN_ACC_X,
-> +	ADIS16201_SCAN_ACC_Y,
-> +	ADIS16201_SCAN_INCLI_X,
-> +	ADIS16201_SCAN_INCLI_Y,
-> +	ADIS16201_SCAN_SUPPLY,
-> +	ADIS16201_SCAN_AUX_ADC,
-> +	ADIS16201_SCAN_TEMP,
-> +};
->  
->  static const u8 adis16201_addresses[] = {
->  	[ADIS16201_SCAN_ACC_X] = ADIS16201_XACCL_OFFS,
-> 
+diff --git a/drivers/staging/iio/accel/adis16240.h b/drivers/staging/iio/accel/adis16240.h
+deleted file mode 100644
+index b2cb37b..0000000
+--- a/drivers/staging/iio/accel/adis16240.h
++++ /dev/null
+@@ -1,179 +0,0 @@
+-#ifndef SPI_ADIS16240_H_
+-#define SPI_ADIS16240_H_
+-
+-#define ADIS16240_STARTUP_DELAY	220 /* ms */
+-
+-/* Flash memory write count */
+-#define ADIS16240_FLASH_CNT      0x00
+-
+-/* Output, power supply */
+-#define ADIS16240_SUPPLY_OUT     0x02
+-
+-/* Output, x-axis accelerometer */
+-#define ADIS16240_XACCL_OUT      0x04
+-
+-/* Output, y-axis accelerometer */
+-#define ADIS16240_YACCL_OUT      0x06
+-
+-/* Output, z-axis accelerometer */
+-#define ADIS16240_ZACCL_OUT      0x08
+-
+-/* Output, auxiliary ADC input */
+-#define ADIS16240_AUX_ADC        0x0A
+-
+-/* Output, temperature */
+-#define ADIS16240_TEMP_OUT       0x0C
+-
+-/* Output, x-axis acceleration peak */
+-#define ADIS16240_XPEAK_OUT      0x0E
+-
+-/* Output, y-axis acceleration peak */
+-#define ADIS16240_YPEAK_OUT      0x10
+-
+-/* Output, z-axis acceleration peak */
+-#define ADIS16240_ZPEAK_OUT      0x12
+-
+-/* Output, sum-of-squares acceleration peak */
+-#define ADIS16240_XYZPEAK_OUT    0x14
+-
+-/* Output, Capture Buffer 1, X and Y acceleration */
+-#define ADIS16240_CAPT_BUF1      0x16
+-
+-/* Output, Capture Buffer 2, Z acceleration */
+-#define ADIS16240_CAPT_BUF2      0x18
+-
+-/* Diagnostic, error flags */
+-#define ADIS16240_DIAG_STAT      0x1A
+-
+-/* Diagnostic, event counter */
+-#define ADIS16240_EVNT_CNTR      0x1C
+-
+-/* Diagnostic, check sum value from firmware test */
+-#define ADIS16240_CHK_SUM        0x1E
+-
+-/* Calibration, x-axis acceleration offset adjustment */
+-#define ADIS16240_XACCL_OFF      0x20
+-
+-/* Calibration, y-axis acceleration offset adjustment */
+-#define ADIS16240_YACCL_OFF      0x22
+-
+-/* Calibration, z-axis acceleration offset adjustment */
+-#define ADIS16240_ZACCL_OFF      0x24
+-
+-/* Clock, hour and minute */
+-#define ADIS16240_CLK_TIME       0x2E
+-
+-/* Clock, month and day */
+-#define ADIS16240_CLK_DATE       0x30
+-
+-/* Clock, year */
+-#define ADIS16240_CLK_YEAR       0x32
+-
+-/* Wake-up setting, hour and minute */
+-#define ADIS16240_WAKE_TIME      0x34
+-
+-/* Wake-up setting, month and day */
+-#define ADIS16240_WAKE_DATE      0x36
+-
+-/* Alarm 1 amplitude threshold */
+-#define ADIS16240_ALM_MAG1       0x38
+-
+-/* Alarm 2 amplitude threshold */
+-#define ADIS16240_ALM_MAG2       0x3A
+-
+-/* Alarm control */
+-#define ADIS16240_ALM_CTRL       0x3C
+-
+-/* Capture, external trigger control */
+-#define ADIS16240_XTRIG_CTRL     0x3E
+-
+-/* Capture, address pointer */
+-#define ADIS16240_CAPT_PNTR      0x40
+-
+-/* Capture, configuration and control */
+-#define ADIS16240_CAPT_CTRL      0x42
+-
+-/* General-purpose digital input/output control */
+-#define ADIS16240_GPIO_CTRL      0x44
+-
+-/* Miscellaneous control */
+-#define ADIS16240_MSC_CTRL       0x46
+-
+-/* Internal sample period (rate) control */
+-#define ADIS16240_SMPL_PRD       0x48
+-
+-/* System command */
+-#define ADIS16240_GLOB_CMD       0x4A
+-
+-/* MSC_CTRL */
+-
+-/* Enables sum-of-squares output (XYZPEAK_OUT) */
+-#define ADIS16240_MSC_CTRL_XYZPEAK_OUT_EN	BIT(15)
+-
+-/* Enables peak tracking output (XPEAK_OUT, YPEAK_OUT, and ZPEAK_OUT) */
+-#define ADIS16240_MSC_CTRL_X_Y_ZPEAK_OUT_EN	BIT(14)
+-
+-/* Self-test enable: 1 = apply electrostatic force, 0 = disabled */
+-#define ADIS16240_MSC_CTRL_SELF_TEST_EN	        BIT(8)
+-
+-/* Data-ready enable: 1 = enabled, 0 = disabled */
+-#define ADIS16240_MSC_CTRL_DATA_RDY_EN	        BIT(2)
+-
+-/* Data-ready polarity: 1 = active high, 0 = active low */
+-#define ADIS16240_MSC_CTRL_ACTIVE_HIGH	        BIT(1)
+-
+-/* Data-ready line selection: 1 = DIO2, 0 = DIO1 */
+-#define ADIS16240_MSC_CTRL_DATA_RDY_DIO2	BIT(0)
+-
+-/* DIAG_STAT */
+-
+-/* Alarm 2 status: 1 = alarm active, 0 = alarm inactive */
+-#define ADIS16240_DIAG_STAT_ALARM2      BIT(9)
+-
+-/* Alarm 1 status: 1 = alarm active, 0 = alarm inactive */
+-#define ADIS16240_DIAG_STAT_ALARM1      BIT(8)
+-
+-/* Capture buffer full: 1 = capture buffer is full */
+-#define ADIS16240_DIAG_STAT_CPT_BUF_FUL BIT(7)
+-
+-/* Flash test, checksum flag: 1 = mismatch, 0 = match */
+-#define ADIS16240_DIAG_STAT_CHKSUM      BIT(6)
+-
+-/* Power-on, self-test flag: 1 = failure, 0 = pass */
+-#define ADIS16240_DIAG_STAT_PWRON_FAIL_BIT  5
+-
+-/* Power-on self-test: 1 = in-progress, 0 = complete */
+-#define ADIS16240_DIAG_STAT_PWRON_BUSY  BIT(4)
+-
+-/* SPI communications failure */
+-#define ADIS16240_DIAG_STAT_SPI_FAIL_BIT	3
+-
+-/* Flash update failure */
+-#define ADIS16240_DIAG_STAT_FLASH_UPT_BIT	2
+-
+-/* Power supply above 3.625 V */
+-#define ADIS16240_DIAG_STAT_POWER_HIGH_BIT	1
+-
+- /* Power supply below 3.15 V */
+-#define ADIS16240_DIAG_STAT_POWER_LOW_BIT	0
+-
+-/* GLOB_CMD */
+-
+-#define ADIS16240_GLOB_CMD_RESUME	BIT(8)
+-#define ADIS16240_GLOB_CMD_SW_RESET	BIT(7)
+-#define ADIS16240_GLOB_CMD_STANDBY	BIT(2)
+-
+-#define ADIS16240_ERROR_ACTIVE          BIT(14)
+-
+-/* At the moment triggers are only used for ring buffer
+- * filling. This may change!
+- */
+-
+-#define ADIS16240_SCAN_ACC_X	0
+-#define ADIS16240_SCAN_ACC_Y	1
+-#define ADIS16240_SCAN_ACC_Z	2
+-#define ADIS16240_SCAN_SUPPLY	3
+-#define ADIS16240_SCAN_AUX_ADC	4
+-#define ADIS16240_SCAN_TEMP	5
+-
+-#endif /* SPI_ADIS16240_H_ */
+diff --git a/drivers/staging/iio/accel/adis16240_core.c b/drivers/staging/iio/accel/adis16240_core.c
+index d5b99e6..9690e46 100644
+--- a/drivers/staging/iio/accel/adis16240_core.c
++++ b/drivers/staging/iio/accel/adis16240_core.c
+@@ -24,7 +24,180 @@
+ #include <linux/iio/buffer.h>
+ #include <linux/iio/imu/adis.h>
+ 
+-#include "adis16240.h"
++#define ADIS16240_STARTUP_DELAY	220 /* ms */
++
++/* Flash memory write count */
++#define ADIS16240_FLASH_CNT      0x00
++
++/* Output, power supply */
++#define ADIS16240_SUPPLY_OUT     0x02
++
++/* Output, x-axis accelerometer */
++#define ADIS16240_XACCL_OUT      0x04
++
++/* Output, y-axis accelerometer */
++#define ADIS16240_YACCL_OUT      0x06
++
++/* Output, z-axis accelerometer */
++#define ADIS16240_ZACCL_OUT      0x08
++
++/* Output, auxiliary ADC input */
++#define ADIS16240_AUX_ADC        0x0A
++
++/* Output, temperature */
++#define ADIS16240_TEMP_OUT       0x0C
++
++/* Output, x-axis acceleration peak */
++#define ADIS16240_XPEAK_OUT      0x0E
++
++/* Output, y-axis acceleration peak */
++#define ADIS16240_YPEAK_OUT      0x10
++
++/* Output, z-axis acceleration peak */
++#define ADIS16240_ZPEAK_OUT      0x12
++
++/* Output, sum-of-squares acceleration peak */
++#define ADIS16240_XYZPEAK_OUT    0x14
++
++/* Output, Capture Buffer 1, X and Y acceleration */
++#define ADIS16240_CAPT_BUF1      0x16
++
++/* Output, Capture Buffer 2, Z acceleration */
++#define ADIS16240_CAPT_BUF2      0x18
++
++/* Diagnostic, error flags */
++#define ADIS16240_DIAG_STAT      0x1A
++
++/* Diagnostic, event counter */
++#define ADIS16240_EVNT_CNTR      0x1C
++
++/* Diagnostic, check sum value from firmware test */
++#define ADIS16240_CHK_SUM        0x1E
++
++/* Calibration, x-axis acceleration offset adjustment */
++#define ADIS16240_XACCL_OFF      0x20
++
++/* Calibration, y-axis acceleration offset adjustment */
++#define ADIS16240_YACCL_OFF      0x22
++
++/* Calibration, z-axis acceleration offset adjustment */
++#define ADIS16240_ZACCL_OFF      0x24
++
++/* Clock, hour and minute */
++#define ADIS16240_CLK_TIME       0x2E
++
++/* Clock, month and day */
++#define ADIS16240_CLK_DATE       0x30
++
++/* Clock, year */
++#define ADIS16240_CLK_YEAR       0x32
++
++/* Wake-up setting, hour and minute */
++#define ADIS16240_WAKE_TIME      0x34
++
++/* Wake-up setting, month and day */
++#define ADIS16240_WAKE_DATE      0x36
++
++/* Alarm 1 amplitude threshold */
++#define ADIS16240_ALM_MAG1       0x38
++
++/* Alarm 2 amplitude threshold */
++#define ADIS16240_ALM_MAG2       0x3A
++
++/* Alarm control */
++#define ADIS16240_ALM_CTRL       0x3C
++
++/* Capture, external trigger control */
++#define ADIS16240_XTRIG_CTRL     0x3E
++
++/* Capture, address pointer */
++#define ADIS16240_CAPT_PNTR      0x40
++
++/* Capture, configuration and control */
++#define ADIS16240_CAPT_CTRL      0x42
++
++/* General-purpose digital input/output control */
++#define ADIS16240_GPIO_CTRL      0x44
++
++/* Miscellaneous control */
++#define ADIS16240_MSC_CTRL       0x46
++
++/* Internal sample period (rate) control */
++#define ADIS16240_SMPL_PRD       0x48
++
++/* System command */
++#define ADIS16240_GLOB_CMD       0x4A
++
++/* MSC_CTRL */
++
++/* Enables sum-of-squares output (XYZPEAK_OUT) */
++#define ADIS16240_MSC_CTRL_XYZPEAK_OUT_EN	BIT(15)
++
++/* Enables peak tracking output (XPEAK_OUT, YPEAK_OUT, and ZPEAK_OUT) */
++#define ADIS16240_MSC_CTRL_X_Y_ZPEAK_OUT_EN	BIT(14)
++
++/* Self-test enable: 1 = apply electrostatic force, 0 = disabled */
++#define ADIS16240_MSC_CTRL_SELF_TEST_EN	        BIT(8)
++
++/* Data-ready enable: 1 = enabled, 0 = disabled */
++#define ADIS16240_MSC_CTRL_DATA_RDY_EN	        BIT(2)
++
++/* Data-ready polarity: 1 = active high, 0 = active low */
++#define ADIS16240_MSC_CTRL_ACTIVE_HIGH	        BIT(1)
++
++/* Data-ready line selection: 1 = DIO2, 0 = DIO1 */
++#define ADIS16240_MSC_CTRL_DATA_RDY_DIO2	BIT(0)
++
++/* DIAG_STAT */
++
++/* Alarm 2 status: 1 = alarm active, 0 = alarm inactive */
++#define ADIS16240_DIAG_STAT_ALARM2      BIT(9)
++
++/* Alarm 1 status: 1 = alarm active, 0 = alarm inactive */
++#define ADIS16240_DIAG_STAT_ALARM1      BIT(8)
++
++/* Capture buffer full: 1 = capture buffer is full */
++#define ADIS16240_DIAG_STAT_CPT_BUF_FUL BIT(7)
++
++/* Flash test, checksum flag: 1 = mismatch, 0 = match */
++#define ADIS16240_DIAG_STAT_CHKSUM      BIT(6)
++
++/* Power-on, self-test flag: 1 = failure, 0 = pass */
++#define ADIS16240_DIAG_STAT_PWRON_FAIL_BIT  5
++
++/* Power-on self-test: 1 = in-progress, 0 = complete */
++#define ADIS16240_DIAG_STAT_PWRON_BUSY  BIT(4)
++
++/* SPI communications failure */
++#define ADIS16240_DIAG_STAT_SPI_FAIL_BIT	3
++
++/* Flash update failure */
++#define ADIS16240_DIAG_STAT_FLASH_UPT_BIT	2
++
++/* Power supply above 3.625 V */
++#define ADIS16240_DIAG_STAT_POWER_HIGH_BIT	1
++
++ /* Power supply below 3.15 V */
++#define ADIS16240_DIAG_STAT_POWER_LOW_BIT	0
++
++/* GLOB_CMD */
++
++#define ADIS16240_GLOB_CMD_RESUME	BIT(8)
++#define ADIS16240_GLOB_CMD_SW_RESET	BIT(7)
++#define ADIS16240_GLOB_CMD_STANDBY	BIT(2)
++
++#define ADIS16240_ERROR_ACTIVE          BIT(14)
++
++/* At the moment triggers are only used for ring buffer
++ * filling. This may change!
++ */
++
++#define ADIS16240_SCAN_ACC_X	0
++#define ADIS16240_SCAN_ACC_Y	1
++#define ADIS16240_SCAN_ACC_Z	2
++#define ADIS16240_SCAN_SUPPLY	3
++#define ADIS16240_SCAN_AUX_ADC	4
++#define ADIS16240_SCAN_TEMP	5
+ 
+ static ssize_t adis16240_spi_read_signed(struct device *dev,
+ 					 struct device_attribute *attr,
+-- 
+1.9.1
 
 
