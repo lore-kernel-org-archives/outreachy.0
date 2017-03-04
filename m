@@ -1,68 +1,68 @@
 X-GM-THRID: 6393354577148641280
-X-Received: by 10.99.56.67 with SMTP id h3mr3100201pgn.73.1488647052321;
-        Sat, 04 Mar 2017 09:04:12 -0800 (PST)
+X-Received: by 10.13.199.132 with SMTP id j126mr3302474ywd.120.1488638056823;
+        Sat, 04 Mar 2017 06:34:16 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.11.133 with SMTP id 5ls8193018oth.45.gmail; Sat, 04 Mar
- 2017 09:04:11 -0800 (PST)
-X-Received: by 10.157.51.38 with SMTP id f35mr3294551otc.84.1488647051960;
-        Sat, 04 Mar 2017 09:04:11 -0800 (PST)
+Received: by 10.157.5.176 with SMTP id 45ls2606639otd.49.gmail; Sat, 04 Mar
+ 2017 06:34:16 -0800 (PST)
+X-Received: by 10.157.11.109 with SMTP id p42mr3199847otd.14.1488638056392;
+        Sat, 04 Mar 2017 06:34:16 -0800 (PST)
 Return-Path: <rvarsha016@gmail.com>
 Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id 207si573101pfu.8.2017.03.04.09.04.11
+        by gmr-mx.google.com with ESMTPS id c123si535476pfa.4.2017.03.04.06.34.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 04 Mar 2017 09:04:11 -0800 (PST)
+        Sat, 04 Mar 2017 06:34:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
        spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id 187so1989070pgb.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 04 Mar 2017 09:04:11 -0800 (PST)
+Received: by mail-pg0-x242.google.com with SMTP id 77so2717677pgc.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 04 Mar 2017 06:34:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=message-id:date:from:to:cc:subject:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=6Z5yNuQIulaRtV1FzR2NrKFDvexFgqHqNB/nMw75ULo=;
-        b=bmQ/RqIOU/X9RtfBeleGWVbZjEzzNe81RAhXq/EaNebUi8679a0xKxXJ/WCkD4p+QR
-         555E3BOMJHGrbCMuDZnQEKQdDiZIDuy/f37M1qPNCVZkThAVAcWLym6M4zOjYNlFkFFi
-         lNgzmdAeIE3og11iZi6bkcUPHumfuvZmWW1VZhJjn+va8MXmZGQ9FW9JBUqDRZ+1QE7h
-         dtAmB2DhOt3XOyGcCL+821dh3FerOGQu0DG3YPerOLfPC8J1D2MHFhGJA56awioHCAse
-         Tm3kwuMO6jpEU3XE8T5LyuB38MksLktmH671kA7KwCmjddnEwqCQ3qgYMin8UoHBnzRd
-         PVPA==
+        bh=iBUfVSo12l6jHM6bav8IRAX4W0B8+/KeLL68/jBZkK0=;
+        b=gBwt5ugTuV1DzEk6DVHS0Wzx4KZHVUhznB97ijMBAL8ZolQs2J+45f6Qydjzr6iPhC
+         yGIJbidvlwAWzUuUkN+e+Q9aJ0VpvLXMiWAgBWzS2oTZ/FZqyMPhSNHpsRHzFj3TzO3Y
+         aHCNik37H8h2HtNgZZcIqNCcrDk2ndPgBvSPTVVCo+6Fc5HsFt3lEozeYa2yoviRT2G7
+         8uo8zX6nXKfn8rurRbzhJz0YWCM63OtaW5UQuTsvTl0AMDN9q6T3OEVH1lszzlIeNO9O
+         EojurcXONHfgvca+9ID24lVcBZj9AyhoJo3vWoT8eUGoBgostBQIFnI28hArjTFF6JBt
+         vyOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:message-id:date:from:to:cc:subject:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=6Z5yNuQIulaRtV1FzR2NrKFDvexFgqHqNB/nMw75ULo=;
-        b=YIhW3XxgI2z5v9NylWQr7P+pzZ4sn4wLtcJ/K85ekHTJJNXz9RtDpD1/QRs96JKxvU
-         naHC2RwStvkWlIlg4el9g2Y2b+15TzE/FAq40wSzxvqXLcR0ElmWBxYiC1FJbS7eQ4bj
-         i+ghK1td8GHYIR3HPXjZUxhyeJEPh0soTPF3f9ndVIIfeQ8z4h5Xmp1sWTbxCKZslwxx
-         O1s5dfWMyYnZR+6IQzoOLbg1M+Yj6dSV8Pb0tZZYeTT6dDsqN/s+KeT51CHjBB+33K4w
-         QIwo6HuNQBf6VwP/wTBQ0YfeX0hU5lvyoJVVd4lt+4w7gCpA8Ouo7QUO0MM3chtNwGjk
-         5J4A==
-X-Gm-Message-State: AMke39k0tsbcVU3hU6nbije6rduxPNPEj4pcpRbDHKZdlcEuu/Ds+9q4di0EsfNfGxAUDg==
-X-Received: by 10.98.59.8 with SMTP id i8mr10784970pfa.132.1488647051449;
-        Sat, 04 Mar 2017 09:04:11 -0800 (PST)
+        bh=iBUfVSo12l6jHM6bav8IRAX4W0B8+/KeLL68/jBZkK0=;
+        b=gq/+1tb/26kB5p9g/0MS4uZH9K3pD1gxoeHRvYTKwz6/Y6adb8aeasQEgX7wGFwdrK
+         PZ2a5kLrepGH4A0W6F/94b+dkBFvH52OP82FQ42R3Utz9NWa33xV0YqljjOiV6V2syih
+         MMoFQOEJwJPzY2xTogVwEYm/sVw6ClGZOikAv/Q4B6juRasWFuyRFjNn67vK1kCWAHci
+         iewcIqyEf7SWOdV7veN56iE0jLdP4rzY3xYpIMt4s/9IymeItiN2DzF6xhOlZFz3UuM0
+         6Q1SwM5sgfUJyUT1m8dJ+tNhGrfi0dytgKkYaYwRiwY/SoiGen6CR5x1ohKGXrj5X16O
+         r3Rw==
+X-Gm-Message-State: AMke39kG7ceNHr66+69pTCLLLJ9TV1PUMNE/ZEPc9xEt2X0vmsWink0SKYnwHAk5R5NA7Q==
+X-Received: by 10.99.36.7 with SMTP id k7mr9626624pgk.201.1488638055930;
+        Sat, 04 Mar 2017 06:34:15 -0800 (PST)
 Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([117.211.102.19])
-        by smtp.gmail.com with ESMTPSA id 19sm30222714pfo.50.2017.03.04.09.04.10
+Received: from euri ([117.211.102.27])
+        by smtp.gmail.com with ESMTPSA id d3sm29722062pfc.51.2017.03.04.06.34.14
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 04 Mar 2017 09:04:10 -0800 (PST)
-Message-ID: <58baf38a.930e620a.3fcd0.d50c@mx.google.com>
-X-Google-Original-Message-ID: <20170304170402.GA5456@<rvarsha016@gmail.com>>
-Date: Sat, 4 Mar 2017 22:34:02 +0530
+        Sat, 04 Mar 2017 06:34:15 -0800 (PST)
+Message-ID: <58bad067.0368620a.151e3.b6c9@mx.google.com>
+X-Google-Original-Message-ID: <20170304143411.GA4328@<rvarsha016@gmail.com>>
+Date: Sat, 4 Mar 2017 20:04:11 +0530
 From: Varsha Rao <rvarsha016@gmail.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH v3 1/9] staging: media: atomisp: Removed unnecessary
+Subject: [PATCH v2 1/9] staging: media: atomisp: Removed unnecessary
  parentheses.
-References: <cover.1488642821.git.varshar186@gmail.com>
+References: <cover.1488636852.git.varshar186@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1488642821.git.varshar186@gmail.com>
+In-Reply-To: <cover.1488636852.git.varshar186@gmail.com>
 User-Agent: Mutt/1.7.1 (2016-10-04)
 
 Removed parentheses on the right hand side of assignment, as they are
@@ -81,12 +81,6 @@ e1 op e2
 
 Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
 ---
-Changes in v2:
-- No Changes.
-
-Changes in v3:
-- Added change log message for previous version.
- 
  drivers/staging/media/atomisp/i2c/gc0310.c             |  4 ++--
  drivers/staging/media/atomisp/i2c/gc2235.c             |  4 ++--
  drivers/staging/media/atomisp/i2c/ov2680.c             |  4 ++--
