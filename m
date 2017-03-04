@@ -1,53 +1,52 @@
 X-GM-THRID: 6393699904957448192
-X-Received: by 10.99.112.77 with SMTP id a13mr3339084pgn.168.1488649268931;
-        Sat, 04 Mar 2017 09:41:08 -0800 (PST)
+X-Received: by 10.176.80.106 with SMTP id z39mr2010296uaz.6.1488649264784;
+        Sat, 04 Mar 2017 09:41:04 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.3.235 with SMTP id f98ls10020149otf.16.gmail; Sat, 04 Mar
- 2017 09:41:08 -0800 (PST)
-X-Received: by 10.13.221.140 with SMTP id g134mr3842047ywe.55.1488649268620;
-        Sat, 04 Mar 2017 09:41:08 -0800 (PST)
+Received: by 10.157.0.1 with SMTP id 1ls13732031ota.5.gmail; Sat, 04 Mar 2017
+ 09:41:04 -0800 (PST)
+X-Received: by 10.129.174.1 with SMTP id m1mr1935115ywh.64.1488649264448;
+        Sat, 04 Mar 2017 09:41:04 -0800 (PST)
 Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id s64si600285pfk.0.2017.03.04.09.41.08
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id c123si599206pfa.4.2017.03.04.09.41.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 04 Mar 2017 09:41:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Sat, 04 Mar 2017 09:41:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id 77so3001800pgc.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 04 Mar 2017 09:41:08 -0800 (PST)
+Received: by mail-pf0-x242.google.com with SMTP id v190so2137877pfb.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 04 Mar 2017 09:41:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=sHr5Vot/C45txfl6CFuVOP5q57MxSQRbi+mysGzo9Lk=;
-        b=aLO2pBaIVVkG9XHANOR3jh5vOh0aYuvt+/IiLBMUG+Fg9zvKTvcFqj8dIp+A6LAKQe
-         HPjt/o2KxzgQS2LF2ZD5nA9kCytfazm2lOnxC2R7rBdPlZnF9nODSeKNvHz1PWeGwMaB
-         FgOJCq2tw2mrzWPQZhd3rY+O2qtpwbHib0O4zGdFmKgFWySghWBLDW0U0Jyh2yYaWdxJ
-         Qs78QhEkqIHT6j+OG9utKrpa/nxMaIW0ukVo+LqqC7lq7smbmzRydbZxp2xF7FAFNzsg
-         4l/qWlnYcpp4OYRe6pXFszzYJk4otImc1Ji900kugTolv06x1k0eMO9+InZfZFKsI5Z0
-         dNIA==
+        h=from:to:cc:subject:date:message-id;
+        bh=h64oiZYmgIaESLqPN5I8apa97v/+Amxltd/sqNh0yMw=;
+        b=kE3nj7KpLNyN9N9BULjfH3GCJ5rK1+bYtDd6NPHtIsm8VD+mylsn85VvzQrg/xu9jd
+         ikyD3phDcY4SkAUgRmdFTFVUpjTTsGvPTd39rVQw8rynQZveQNJB5Fym5rd/mVe8FgMc
+         GK+icWY84zA+sF8GA3obdAl6x0ToxDWSV5x85qtnoe96fWE0deb8fUOkF7gEycwGen92
+         TFM9nWM5fDIMkgjK3Pt412ydt98v2JSzKakiAPNeH4uvKYeWEiX5THKLaLyXXoFAVnhd
+         wuXPaDzyTstH97MpVcJsZvOwH1jqGzTTwomU5gMpmjvbPcLlzADDsrRLNtz2VutxmMhE
+         KaXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=sHr5Vot/C45txfl6CFuVOP5q57MxSQRbi+mysGzo9Lk=;
-        b=Z/hnTDganvtJ3VcxXWfGXCSXcaOMuum6vvCqT/t3pE3PRt/aNWqBrOMmIPdvfrEHGP
-         cCmgUqVEiRoT/6GnsBhJrNjL/0aHx22t5Yl/Aft2Y7M+DUqqToi/LlxdNePVJc7aeO6i
-         FK50P2co+ND2NOmsay0ZjBZ1oiVCLQh/JxPxN1F4k8QyqLHchXoLuNX2OinfYr0UVBPV
-         qtpG77usBO5oXvqyIpwmGaJZu6HsJhWce2UoKmYCQUByH26sIULYx4cAwcbRqZufj3cE
-         QswL7nIn6TiDucetgRd7sAhDC+VslXEkCxSbogGaF75cLsKo9mgw17RYkLn77f+oMQuI
-         heGw==
-X-Gm-Message-State: AMke39ni9CCxiBw+zRAZXAv/e0q85IowIKFHTiVZH39A0zguivl+X7BJAbNRyMmtRu7Ldg==
-X-Received: by 10.84.164.106 with SMTP id m39mr13502613plg.9.1488649268411;
-        Sat, 04 Mar 2017 09:41:08 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=h64oiZYmgIaESLqPN5I8apa97v/+Amxltd/sqNh0yMw=;
+        b=d+bBuCAyoD1ur/3Y206YcJy7jOByKYcAMUalZ7jcdLOPb7MNXhvD2KSev1QD3DFYEk
+         kmIG2FsxOAWCuV/d2DbNhQ1mOWmzUL/N1Nyy1vgk5lh7DD5cvZkZfcWhVc6aPHXevhWc
+         csv/IvbFgTWLcGgSozVo/1V1Z4QPpcTCT1+F5emg2yJFE7BNotiWg5y4IcXcOMJ2rNvr
+         XBNbZm/UHbtuVe1FZ0vgUbuZuWewoZ5ZDSfMoMw7bPrukfatdSsxMnl9l1joet9060I9
+         CVqGQvmCV0wTtLpfdu50f7CW+tz/8zpD/OSu9zUxI5qAIj3BTpAZJ7wWSpte5qpD3kNL
+         48FA==
+X-Gm-Message-State: AMke39kRcsJyt3ABDRV/rZEUsTRzrqFtJKYPPvLq8/jT6MWPPaIp2keyYY37jgg0gVCCxg==
+X-Received: by 10.98.214.4 with SMTP id r4mr10912049pfg.185.1488649264235;
+        Sat, 04 Mar 2017 09:41:04 -0800 (PST)
 Return-Path: <singhalsimran0@gmail.com>
 Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 23sm30306710pfw.94.2017.03.04.09.41.06
+        by smtp.gmail.com with ESMTPSA id z4sm30504578pge.49.2017.03.04.09.41.02
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 04 Mar 2017 09:41:07 -0800 (PST)
+        Sat, 04 Mar 2017 09:41:03 -0800 (PST)
 From: simran singhal <singhalsimran0@gmail.com>
 To: abbotti@mev.co.uk
 Cc: hsweeten@visionengravers.com,
@@ -58,39 +57,28 @@ Cc: hsweeten@visionengravers.com,
 	dtwlin@gmail.com,
 	outreachy-kernel@googlegroups.com,
 	greybus-dev@lists.linaro.org
-Subject: [PATCH v1 1/3] staging: rtl8192u: Replace "is is" with "is"
-Date: Sat,  4 Mar 2017 23:10:59 +0530
-Message-Id: <1488649261-10261-2-git-send-email-singhalsimran0@gmail.com>
+Subject: [PATCH v1 0/3] staging: Replace "is is " with "is"
+Date: Sat,  4 Mar 2017 23:10:58 +0530
+Message-Id: <1488649261-10261-1-git-send-email-singhalsimran0@gmail.com>
 X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1488649261-10261-1-git-send-email-singhalsimran0@gmail.com>
-References: <1488649261-10261-1-git-send-email-singhalsimran0@gmail.com>
 
-This patch replace "is is " with "is". The replacement couldn't be
-automated because sometimes the first "is" was meant to be another
-word.
+This patch series replace "is is " with "is" in various drivers.
 
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
----
+v1:
+  -change the subject
+  -Changed "If is a command..." to "It is a command..." in
+   rtl8192u/r819xU_cmdpkt.c
 
- v1:
-   -Changed "If is a command..." to "It is a command..."
+simran singhal (3):
+  staging: rtl8192u: Replace "is is" with "is"
+  staging: greybus: Replace "is is" with "is"
+  staging: comedi: Replace "is is" with "is"
 
- drivers/staging/rtl8192u/r819xU_cmdpkt.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/comedi/drivers/ni_usb6501.c | 2 +-
+ drivers/staging/greybus/uart.c              | 2 +-
+ drivers/staging/rtl8192u/r819xU_cmdpkt.c    | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/r819xU_cmdpkt.c b/drivers/staging/rtl8192u/r819xU_cmdpkt.c
-index 3e0731b..bb6d8bd 100644
---- a/drivers/staging/rtl8192u/r819xU_cmdpkt.c
-+++ b/drivers/staging/rtl8192u/r819xU_cmdpkt.c
-@@ -495,7 +495,7 @@ u32 cmpk_message_handle_rx(struct net_device *dev,
- 	u8			element_id;
- 	u8			*pcmd_buff;
- 
--	/* 0. Check inpt arguments. If is is a command queue message or
-+	/* 0. Check inpt arguments. It is a command queue message or
- 	 * pointer is null.
- 	 */
- 	if (pstats == NULL)
 -- 
 2.7.4
 
