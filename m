@@ -1,117 +1,79 @@
 X-GM-THRID: 6393400648864366592
-Date: Sat, 4 Mar 2017 13:14:48 -0800 (PST)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Cc: w.d.hubbs@gmail.com, chris@the-brannons.com, kirk@reisers.ca,
-	samuel.thibault@ens-lyon.org, gregkh@linuxfoundation.org,
-	diaconita.tamara@gmail.com
-Message-Id: <e1877054-d9f5-4389-9dbb-f158d0a8b7df@googlegroups.com>
-In-Reply-To: <20170303221944.10488-1-diaconita.tamara@gmail.com>
-References: <20170303221944.10488-1-diaconita.tamara@gmail.com>
-Subject: Re: [PATCH] staging:speakup:i18n.c: Delete tab to indent
+X-Received: by 10.46.69.7 with SMTP id s7mr1304124lja.18.1488653886984;
+        Sat, 04 Mar 2017 10:58:06 -0800 (PST)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.46.20.89 with SMTP id 25ls1254327lju.4.gmail; Sat, 04 Mar 2017
+ 10:58:06 -0800 (PST)
+X-Received: by 10.46.87.27 with SMTP id l27mr1314211ljb.28.1488653886350;
+        Sat, 04 Mar 2017 10:58:06 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id e72si386909wma.0.2017.03.04.10.58.06
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 04 Mar 2017 10:58:06 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,243,1484002800"; 
+   d="scan'208";a="263129825"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 04 Mar 2017 19:58:05 +0100
+Date: Sat, 4 Mar 2017 19:58:05 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Tamara Diaconita <diaconitatamara@gmail.com>
+cc: w.d.hubbs@gmail.com, chris@the-brannons.com, kirk@reisers.ca, 
+    samuel.thibault@ens-lyon.org, gregkh@linuxfoundation.org, 
+    outreachy-kernel@googlegroups.com, 
+    Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v4] staging:speakup:i18n.c: Delete
+ tab to indent
+In-Reply-To: <20170304185525.13038-1-diaconita.tamara@gmail.com>
+Message-ID: <alpine.DEB.2.20.1703041957210.2072@hadrien>
+References: <20170304185525.13038-1-diaconita.tamara@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_977_939410784.1488662088484"
-X-Google-Token: EMjc7MUFjFWJsuM6Vng0
-X-Google-IP: 141.85.250.134
+Content-Type: text/plain; charset=US-ASCII
 
-------=_Part_977_939410784.1488662088484
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_978_1981617353.1488662088484"
 
-------=_Part_978_1981617353.1488662088484
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 
-Should I change the description and write it as I did in the previous=20
-patches?
+On Sat, 4 Mar 2017, Tamara Diaconita wrote:
 
-s=C3=A2mb=C4=83t=C4=83, 4 martie 2017, 00:19:48 UTC+2, Tamara Diaconita a s=
-cris:
+> Modified the original file.
+
+Sorry, but this commit message is not appropriate.  This information
+should go under the ---, with the label v4.
+
+julia
+
 >
-> Fixed the issue by using tabs over spaces to indent the code.=20
+> Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
+> ---
+>  drivers/staging/speakup/i18n.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>=20
-> ---=20
->  drivers/staging/speakup/i18n.c | 2 +-=20
->  1 file changed, 1 insertion(+), 1 deletion(-)=20
+> diff --git a/drivers/staging/speakup/i18n.c b/drivers/staging/speakup/i18n.c
+> index 1a3e348..11f1418 100644
+> --- a/drivers/staging/speakup/i18n.c
+> +++ b/drivers/staging/speakup/i18n.c
+> @@ -552,7 +552,7 @@ ssize_t spk_msg_set(enum msg_index_t index, char *text, size_t length)
+>  			if (index >= MSG_FORMATTED_START &&
+>  			    index <= MSG_FORMATTED_END &&
+>  			    !fmt_validate(speakup_default_msgs[index],
+> -			                  newstr)) {
+> +					  newstr)) {
+>  				kfree(newstr);
+>  				return -EINVAL;
+>  			}
+> --
+> 2.9.3
 >
-> diff --git a/drivers/staging/speakup/i18n.c=20
-> b/drivers/staging/speakup/i18n.c=20
-> index 1a3e348..3e5f012 100644=20
-> --- a/drivers/staging/speakup/i18n.c=20
-> +++ b/drivers/staging/speakup/i18n.c=20
-> @@ -552,7 +552,7 @@ ssize_t spk_msg_set(enum msg_index_t index, char=20
-> *text, size_t length)=20
->                          if (index >=3D MSG_FORMATTED_START &&=20
->                              index <=3D MSG_FORMATTED_END &&=20
->                              !fmt_validate(speakup_default_msgs[index],=
-=20
-> -                                          newstr)) {=20
-> +                                    newstr)) {=20
->                                  kfree(newstr);=20
->                                  return -EINVAL;=20
->                          }=20
-> --=20
-> 2.9.3=20
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170304185525.13038-1-diaconita.tamara%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
 >
->
-------=_Part_978_1981617353.1488662088484
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Should I change the description and write it as I did in t=
-he previous patches?<br><br>s=C3=A2mb=C4=83t=C4=83, 4 martie 2017, 00:19:48=
- UTC+2, Tamara Diaconita a scris:<blockquote class=3D"gmail_quote" style=3D=
-"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex=
-;">Fixed the issue by using tabs over spaces to indent the code.
-<br>
-<br>Signed-off-by: Tamara Diaconita &lt;<a href=3D"mailto:diaconita.tamara@=
-gmail.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#=
-39;mailto:diaconita.tamara@gmail.com&#39;;return true;" onclick=3D"this.hre=
-f=3D&#39;mailto:diaconita.tamara@gmail.com&#39;;return true;">diaconita.tam=
-ara@gmail.com</a>&gt;
-<br>---
-<br>=C2=A0drivers/staging/speakup/i18n.<wbr>c | 2 +-
-<br>=C2=A01 file changed, 1 insertion(+), 1 deletion(-)
-<br>
-<br>diff --git a/drivers/staging/speakup/<wbr>i18n.c b/drivers/staging/spea=
-kup/<wbr>i18n.c
-<br>index 1a3e348..3e5f012 100644
-<br>--- a/drivers/staging/speakup/<wbr>i18n.c
-<br>+++ b/drivers/staging/speakup/<wbr>i18n.c
-<br>@@ -552,7 +552,7 @@ ssize_t spk_msg_set(enum msg_index_t index, char *t=
-ext, size_t length)
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0if (index &gt;=3D MSG_FORMATTED_START &amp;&amp;
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 =C2=A0 =C2=A0index &lt;=3D MSG_FORMATTED_END &amp;&amp;
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 =C2=A0 =C2=A0!fmt_validate(speakup_<wbr>default_msgs[index],
-<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0newstr)) {
-<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0newstr))=
- {
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0kfree(newstr);
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0return -EINVAL;
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0}
-<br>--=20
-<br>2.9.3
-<br>
-<br></blockquote></div>
-------=_Part_978_1981617353.1488662088484--
-
-------=_Part_977_939410784.1488662088484--
 
