@@ -1,426 +1,408 @@
 X-GM-THRID: 6393639502105018368
-X-Received: by 10.99.125.68 with SMTP id m4mr3312526pgn.35.1488667316745;
-        Sat, 04 Mar 2017 14:41:56 -0800 (PST)
+X-Received: by 10.46.15.2 with SMTP id 2mr1307752ljp.31.1488651916115;
+        Sat, 04 Mar 2017 10:25:16 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.53.6 with SMTP id o6ls13924809otc.47.gmail; Sat, 04 Mar
- 2017 14:41:56 -0800 (PST)
-X-Received: by 10.157.53.26 with SMTP id o26mr3658979otc.25.1488667316380;
-        Sat, 04 Mar 2017 14:41:56 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id c123si688951pfa.4.2017.03.04.14.41.56
+Received: by 10.25.29.83 with SMTP id d80ls134072lfd.37.gmail; Sat, 04 Mar
+ 2017 10:25:15 -0800 (PST)
+X-Received: by 10.46.77.69 with SMTP id a66mr1385817ljb.11.1488651915254;
+        Sat, 04 Mar 2017 10:25:15 -0800 (PST)
+Return-Path: <narcisaanamaria12@gmail.com>
+Received: from mail-wr0-x242.google.com (mail-wr0-x242.google.com. [2a00:1450:400c:c0c::242])
+        by gmr-mx.google.com with ESMTPS id b186si646022wme.1.2017.03.04.10.25.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 04 Mar 2017 14:41:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Sat, 04 Mar 2017 10:25:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c0c::242 as permitted sender) client-ip=2a00:1450:400c:c0c::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       spf=pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c0c::242 as permitted sender) smtp.mailfrom=narcisaanamaria12@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id x66so13431735pfb.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 04 Mar 2017 14:41:56 -0800 (PST)
+Received: by mail-wr0-x242.google.com with SMTP id g10so16914094wrg.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 04 Mar 2017 10:25:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=AQ3dgloJf5c7ljekOdOYijLW7D0ydc/EFtMJJMNdxkA=;
-        b=ScTWnVAoTeYxLvRjmYYM1L0Kps+Tw6qv0PVIVEaLgGgjNWFekWmL75Bhu6feuWRKBo
-         4rlF8LtHXcY+U4aG4RbU1jUeLgwPBw6bHOnPXFmYv8MNkP9BKkLFpBvmJMWfVEOzy3lK
-         uHGjcwxltSZZpLxm2FS5UZpuXw4Sf+AaHTW+3ryL92QJrRTzsuhUDsDT52uvk4VJkRsn
-         a3Z1cnd9z2s0mGQV/fIl72F2A4iiKTYdzz0Tfn17Wl9yBdUvZgfAk13mBcFqGAc0rVp5
-         vv1xM2Hm38xRGnWyd8kP7cq07KHDwdIxbxavDxYZPxoWXkafhpKtjHnNg/z/zy/lsaNO
-         W3rA==
+        bh=vfg10VQ2DO69z+NrwzUfsDSKoI2hOeJVCFOFXAdNKgE=;
+        b=KZfp3/CCqG6NENeiu6po/GJginCYxYnG1Qi3UXPh2myZS6AKyvZ9EmTTKRomy9o4UM
+         27i4/+mLHvTrGpwaTUZbaGHPjJAOP2cPXdKrSE9d1CYn4P6jjc3DwiqdvXdq/oFkXbrd
+         bJ2XhYuw3i8Wh9EETsN7iy0JRZf1rYhXwNnSzDktT0dq06bm+iTGFI54AFz/kVWTT07x
+         EzE1slfcf1nJD5WsrJ8hLHWAiFLbJ50nioMOkPJcxecSr+2ftK/wntUSHdcuy2jWnt37
+         3lYjyNMX4lZHLBA/42I0/SxSOmoaKm6TC1msMvtI/ZlsSVAuLo5NrzAEqsOIeoGCnYOG
+         5kCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=AQ3dgloJf5c7ljekOdOYijLW7D0ydc/EFtMJJMNdxkA=;
-        b=pp9w3OYU6OwoT7Ib7UzN2oWFvRTBp9dcDzQpK5Cow7JO+oqb4Y7sN9B46snoVR8xgr
-         3zXJb6A1o8X2lnvMxj978HjDFO5Q7nwfUDjn8poFALvtlM8k6D333J7knEIT8OYebOEf
-         ygywQPWDqP+xu7Mnqt/48oPdoZdWVjYRtdtY/4tMvtoH/Rx0HPykY4lHjpKkppdCRsgr
-         pj94P3M6PAiBZBT7HkVyANL5TInFCqiILLLKdwqY9EZqehAr95ss9nlPIobANhBxxolb
-         gHFBpoYjOqcG74QzSPN+cIKlRPmOeZzJyfyFvQAAl5kjyNHz/NVfwKymYLj6RAzZ1M4D
-         9poQ==
-X-Gm-Message-State: AMke39mb7HgypIQE1ZL3ffwUNX63gy0F46ib2e/O4hasqC9wLA3QhzQic52OAVDgs+WV+Q==
-X-Received: by 10.99.152.65 with SMTP id l1mr11830598pgo.28.1488667315990;
-        Sat, 04 Mar 2017 14:41:55 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
-        by smtp.gmail.com with ESMTPSA id a77sm30935147pfl.91.2017.03.04.14.41.55
+        bh=vfg10VQ2DO69z+NrwzUfsDSKoI2hOeJVCFOFXAdNKgE=;
+        b=HAej/lHyKRJ1wKgH6hISqRljvUoILn0OYaPPtojCH18f5Sjxs6SuwQtXTlajArUyOA
+         G/YKvt4kvVOCFnZ4wNXB+WA1hbRVgX0aacYQLuZlsfb1VnYBIf2V/bsxOOpZEW+m6dC2
+         MjaNoPrsKsF9sUhpivxpzQOJsHXB0XGx0isBYMUUvXRXD+IFf9R1V2jQaj7NW1wmIzlt
+         ++8RWYtHwj1yWRO6+NsekQhq3DfZoReIVc4ampso2zAF2fdmwSCE3sxYmJ9tA/udQ6cv
+         1Qp9E1xtKaxWY/UdO7GysOSmc03X+gyFNyHC1c4+7Ws5MCKmfmCBNbrIFADSf7pTekel
+         4vHA==
+X-Gm-Message-State: AMke39lpOEgKBCTLxDFQm0bs4ea043nvDviUb1LaVx4KogrdUNrCdLVYvGSYPZv7q/+ulQ==
+X-Received: by 10.223.144.65 with SMTP id h59mr8851833wrh.30.1488651914913;
+        Sat, 04 Mar 2017 10:25:14 -0800 (PST)
+Return-Path: <narcisaanamaria12@gmail.com>
+Received: from nati-X550JK ([89.165.243.139])
+        by smtp.gmail.com with ESMTPSA id 17sm20076430wru.16.2017.03.04.10.25.14
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 04 Mar 2017 14:41:55 -0800 (PST)
-Date: Sat, 4 Mar 2017 14:41:54 -0800
-From: Alison Schofield <amsfield22@gmail.com>
-To: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
-Cc: Jonathan Cameron <jic23@kernel.org>, lars@metafoo.de,
-	Michael.Hennerich@analog.com, knaack.h@gmx.de, pmeerw@pmeerw.net,
-	gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com,
-	linux-iio@vger.kernel.org
-Subject: Re: [Outreachy kernel] Re: [PATCH 3/4] staging: iio: adis16209: Move
- contents of the header to the source file
-Message-ID: <20170304224153.GB3857@d830.WORKGROUP>
+        Sat, 04 Mar 2017 10:25:14 -0800 (PST)
+Date: Sat, 4 Mar 2017 20:25:13 +0200
+From: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+To: Jonathan Cameron <jic23@kernel.org>
+Cc: lars@metafoo.de, Michael.Hennerich@analog.com, knaack.h@gmx.de,
+	pmeerw@pmeerw.net, gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com, linux-iio@vger.kernel.org
+Subject: Re: [PATCH 3/4] staging: iio: adis16209: Move contents of the header
+ to the source file
+Message-ID: <20170304182512.GA15201@nati-X550JK>
 References: <cover.1488634510.git.narcisaanamaria12@gmail.com>
  <c9cf8beb40cc1cdb4ac084ffe24b36c321497564.1488634510.git.narcisaanamaria12@gmail.com>
  <1797fe0d-b9f7-385b-f56e-76d4f25fa72d@kernel.org>
- <20170304182512.GA15201@nati-X550JK>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20170304182512.GA15201@nati-X550JK>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <1797fe0d-b9f7-385b-f56e-76d4f25fa72d@kernel.org>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Sat, Mar 04, 2017 at 08:25:13PM +0200, Narcisa Ana Maria Vasile wrote:
-> On Sat, Mar 04, 2017 at 04:32:36PM +0000, Jonathan Cameron wrote:
-> > On 04/03/17 13:47, Narcisa Ana Maria Vasile wrote:
-> > > The contents of the header file are used only by this single
-> > > source file. Move content into .c file and remove header.
-> > > 
-> > > Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
-> > Nice patch.
+On Sat, Mar 04, 2017 at 04:32:36PM +0000, Jonathan Cameron wrote:
+> On 04/03/17 13:47, Narcisa Ana Maria Vasile wrote:
+> > The contents of the header file are used only by this single
+> > source file. Move content into .c file and remove header.
 > > 
-> > Applied to the togreg branch of iio.git and pushed out as staging.
-> > 
-> > As a follow up if you are tempted, the naming of these .c files as core
-> > makes little sense if there aren't any other .c files for the chips in question.
-> > So perhaps rename them to (for example) adis16209.c including updating the make
-> > file.
-> > 
-> > It's a small but worthwhile tidy up.
-> > 
-> > Another one would be to look at how some of these drivers use an enum for
-> > the channel indexes.  To my mind that is more elegant than the set of defines
-> > here as it implicitly groups them as all being about the same thing.
-> > So if you want to improve that it would be great as well.
-> > 
-> > Jonathan
+> > Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+> Nice patch.
 > 
->   Thank you for your suggestions!
->   I renamed the files and now I'm looking at the defines and how to
->   group them.
+> Applied to the togreg branch of iio.git and pushed out as staging.
 > 
->   Narcisa
+> As a follow up if you are tempted, the naming of these .c files as core
+> makes little sense if there aren't any other .c files for the chips in question.
+> So perhaps rename them to (for example) adis16209.c including updating the make
+> file.
+> 
+> It's a small but worthwhile tidy up.
+> 
+> Another one would be to look at how some of these drivers use an enum for
+> the channel indexes.  To my mind that is more elegant than the set of defines
+> here as it implicitly groups them as all being about the same thing.
+> So if you want to improve that it would be great as well.
+> 
+> Jonathan
 
-Narcisa, Reminded me of this one...great minds think alike ;)
-Don't know this one is done yet, but you may find it helpful.
+  Thank you for your suggestions!
+  I renamed the files and now I'm looking at the defines and how to
+  group them.
 
-http://marc.info/?l=linux-iio&m=148838608716084&w=2
-
-
-
-> > > ---
-> > >  drivers/staging/iio/accel/adis16209.h      | 144 -----------------------------
-> > >  drivers/staging/iio/accel/adis16209_core.c | 140 +++++++++++++++++++++++++++-
-> > >  2 files changed, 139 insertions(+), 145 deletions(-)
-> > >  delete mode 100644 drivers/staging/iio/accel/adis16209.h
-> > > 
-> > > diff --git a/drivers/staging/iio/accel/adis16209.h b/drivers/staging/iio/accel/adis16209.h
-> > > deleted file mode 100644
-> > > index 315f1c0..0000000
-> > > --- a/drivers/staging/iio/accel/adis16209.h
-> > > +++ /dev/null
-> > > @@ -1,144 +0,0 @@
-> > > -#ifndef SPI_ADIS16209_H_
-> > > -#define SPI_ADIS16209_H_
-> > > -
-> > > -#define ADIS16209_STARTUP_DELAY	220 /* ms */
-> > > -
-> > > -/* Flash memory write count */
-> > > -#define ADIS16209_FLASH_CNT      0x00
-> > > -
-> > > -/* Output, power supply */
-> > > -#define ADIS16209_SUPPLY_OUT     0x02
-> > > -
-> > > -/* Output, x-axis accelerometer */
-> > > -#define ADIS16209_XACCL_OUT      0x04
-> > > -
-> > > -/* Output, y-axis accelerometer */
-> > > -#define ADIS16209_YACCL_OUT      0x06
-> > > -
-> > > -/* Output, auxiliary ADC input */
-> > > -#define ADIS16209_AUX_ADC        0x08
-> > > -
-> > > -/* Output, temperature */
-> > > -#define ADIS16209_TEMP_OUT       0x0A
-> > > -
-> > > -/* Output, x-axis inclination */
-> > > -#define ADIS16209_XINCL_OUT      0x0C
-> > > -
-> > > -/* Output, y-axis inclination */
-> > > -#define ADIS16209_YINCL_OUT      0x0E
-> > > -
-> > > -/* Output, +/-180 vertical rotational position */
-> > > -#define ADIS16209_ROT_OUT        0x10
-> > > -
-> > > -/* Calibration, x-axis acceleration offset null */
-> > > -#define ADIS16209_XACCL_NULL     0x12
-> > > -
-> > > -/* Calibration, y-axis acceleration offset null */
-> > > -#define ADIS16209_YACCL_NULL     0x14
-> > > -
-> > > -/* Calibration, x-axis inclination offset null */
-> > > -#define ADIS16209_XINCL_NULL     0x16
-> > > -
-> > > -/* Calibration, y-axis inclination offset null */
-> > > -#define ADIS16209_YINCL_NULL     0x18
-> > > -
-> > > -/* Calibration, vertical rotation offset null */
-> > > -#define ADIS16209_ROT_NULL       0x1A
-> > > -
-> > > -/* Alarm 1 amplitude threshold */
-> > > -#define ADIS16209_ALM_MAG1       0x20
-> > > -
-> > > -/* Alarm 2 amplitude threshold */
-> > > -#define ADIS16209_ALM_MAG2       0x22
-> > > -
-> > > -/* Alarm 1, sample period */
-> > > -#define ADIS16209_ALM_SMPL1      0x24
-> > > -
-> > > -/* Alarm 2, sample period */
-> > > -#define ADIS16209_ALM_SMPL2      0x26
-> > > -
-> > > -/* Alarm control */
-> > > -#define ADIS16209_ALM_CTRL       0x28
-> > > -
-> > > -/* Auxiliary DAC data */
-> > > -#define ADIS16209_AUX_DAC        0x30
-> > > -
-> > > -/* General-purpose digital input/output control */
-> > > -#define ADIS16209_GPIO_CTRL      0x32
-> > > -
-> > > -/* Miscellaneous control */
-> > > -#define ADIS16209_MSC_CTRL       0x34
-> > > -
-> > > -/* Internal sample period (rate) control */
-> > > -#define ADIS16209_SMPL_PRD       0x36
-> > > -
-> > > -/* Operation, filter configuration */
-> > > -#define ADIS16209_AVG_CNT        0x38
-> > > -
-> > > -/* Operation, sleep mode control */
-> > > -#define ADIS16209_SLP_CNT        0x3A
-> > > -
-> > > -/* Diagnostics, system status register */
-> > > -#define ADIS16209_DIAG_STAT      0x3C
-> > > -
-> > > -/* Operation, system command register */
-> > > -#define ADIS16209_GLOB_CMD       0x3E
-> > > -
-> > > -/* MSC_CTRL */
-> > > -
-> > > -/* Self-test at power-on: 1 = disabled, 0 = enabled */
-> > > -#define ADIS16209_MSC_CTRL_PWRUP_SELF_TEST	BIT(10)
-> > > -
-> > > -/* Self-test enable */
-> > > -#define ADIS16209_MSC_CTRL_SELF_TEST_EN	        BIT(8)
-> > > -
-> > > -/* Data-ready enable: 1 = enabled, 0 = disabled */
-> > > -#define ADIS16209_MSC_CTRL_DATA_RDY_EN	        BIT(2)
-> > > -
-> > > -/* Data-ready polarity: 1 = active high, 0 = active low */
-> > > -#define ADIS16209_MSC_CTRL_ACTIVE_HIGH	        BIT(1)
-> > > -
-> > > -/* Data-ready line selection: 1 = DIO2, 0 = DIO1 */
-> > > -#define ADIS16209_MSC_CTRL_DATA_RDY_DIO2	BIT(0)
-> > > -
-> > > -/* DIAG_STAT */
-> > > -
-> > > -/* Alarm 2 status: 1 = alarm active, 0 = alarm inactive */
-> > > -#define ADIS16209_DIAG_STAT_ALARM2        BIT(9)
-> > > -
-> > > -/* Alarm 1 status: 1 = alarm active, 0 = alarm inactive */
-> > > -#define ADIS16209_DIAG_STAT_ALARM1        BIT(8)
-> > > -
-> > > -/* Self-test diagnostic error flag: 1 = error condition, 0 = normal operation */
-> > > -#define ADIS16209_DIAG_STAT_SELFTEST_FAIL_BIT	5
-> > > -
-> > > -/* SPI communications failure */
-> > > -#define ADIS16209_DIAG_STAT_SPI_FAIL_BIT	3
-> > > -
-> > > -/* Flash update failure */
-> > > -#define ADIS16209_DIAG_STAT_FLASH_UPT_BIT	2
-> > > -
-> > > -/* Power supply above 3.625 V */
-> > > -#define ADIS16209_DIAG_STAT_POWER_HIGH_BIT	1
-> > > -
-> > > -/* Power supply below 3.15 V */
-> > > -#define ADIS16209_DIAG_STAT_POWER_LOW_BIT	0
-> > > -
-> > > -/* GLOB_CMD */
-> > > -
-> > > -#define ADIS16209_GLOB_CMD_SW_RESET	BIT(7)
-> > > -#define ADIS16209_GLOB_CMD_CLEAR_STAT	BIT(4)
-> > > -#define ADIS16209_GLOB_CMD_FACTORY_CAL	BIT(1)
-> > > -
-> > > -#define ADIS16209_ERROR_ACTIVE          BIT(14)
-> > > -
-> > > -#define ADIS16209_SCAN_SUPPLY	0
-> > > -#define ADIS16209_SCAN_ACC_X	1
-> > > -#define ADIS16209_SCAN_ACC_Y	2
-> > > -#define ADIS16209_SCAN_AUX_ADC	3
-> > > -#define ADIS16209_SCAN_TEMP	4
-> > > -#define ADIS16209_SCAN_INCLI_X	5
-> > > -#define ADIS16209_SCAN_INCLI_Y	6
-> > > -#define ADIS16209_SCAN_ROT	7
-> > > -
-> > > -#endif /* SPI_ADIS16209_H_ */
-> > > diff --git a/drivers/staging/iio/accel/adis16209_core.c b/drivers/staging/iio/accel/adis16209_core.c
-> > > index a599e19..8ff537f 100644
-> > > --- a/drivers/staging/iio/accel/adis16209_core.c
-> > > +++ b/drivers/staging/iio/accel/adis16209_core.c
-> > > @@ -21,7 +21,145 @@
-> > >  #include <linux/iio/buffer.h>
-> > >  #include <linux/iio/imu/adis.h>
-> > >  
-> > > -#include "adis16209.h"
-> > > +#define ADIS16209_STARTUP_DELAY	220 /* ms */
-> > > +
-> > > +/* Flash memory write count */
-> > > +#define ADIS16209_FLASH_CNT      0x00
-> > > +
-> > > +/* Output, power supply */
-> > > +#define ADIS16209_SUPPLY_OUT     0x02
-> > > +
-> > > +/* Output, x-axis accelerometer */
-> > > +#define ADIS16209_XACCL_OUT      0x04
-> > > +
-> > > +/* Output, y-axis accelerometer */
-> > > +#define ADIS16209_YACCL_OUT      0x06
-> > > +
-> > > +/* Output, auxiliary ADC input */
-> > > +#define ADIS16209_AUX_ADC        0x08
-> > > +
-> > > +/* Output, temperature */
-> > > +#define ADIS16209_TEMP_OUT       0x0A
-> > > +
-> > > +/* Output, x-axis inclination */
-> > > +#define ADIS16209_XINCL_OUT      0x0C
-> > > +
-> > > +/* Output, y-axis inclination */
-> > > +#define ADIS16209_YINCL_OUT      0x0E
-> > > +
-> > > +/* Output, +/-180 vertical rotational position */
-> > > +#define ADIS16209_ROT_OUT        0x10
-> > > +
-> > > +/* Calibration, x-axis acceleration offset null */
-> > > +#define ADIS16209_XACCL_NULL     0x12
-> > > +
-> > > +/* Calibration, y-axis acceleration offset null */
-> > > +#define ADIS16209_YACCL_NULL     0x14
-> > > +
-> > > +/* Calibration, x-axis inclination offset null */
-> > > +#define ADIS16209_XINCL_NULL     0x16
-> > > +
-> > > +/* Calibration, y-axis inclination offset null */
-> > > +#define ADIS16209_YINCL_NULL     0x18
-> > > +
-> > > +/* Calibration, vertical rotation offset null */
-> > > +#define ADIS16209_ROT_NULL       0x1A
-> > > +
-> > > +/* Alarm 1 amplitude threshold */
-> > > +#define ADIS16209_ALM_MAG1       0x20
-> > > +
-> > > +/* Alarm 2 amplitude threshold */
-> > > +#define ADIS16209_ALM_MAG2       0x22
-> > > +
-> > > +/* Alarm 1, sample period */
-> > > +#define ADIS16209_ALM_SMPL1      0x24
-> > > +
-> > > +/* Alarm 2, sample period */
-> > > +#define ADIS16209_ALM_SMPL2      0x26
-> > > +
-> > > +/* Alarm control */
-> > > +#define ADIS16209_ALM_CTRL       0x28
-> > > +
-> > > +/* Auxiliary DAC data */
-> > > +#define ADIS16209_AUX_DAC        0x30
-> > > +
-> > > +/* General-purpose digital input/output control */
-> > > +#define ADIS16209_GPIO_CTRL      0x32
-> > > +
-> > > +/* Miscellaneous control */
-> > > +#define ADIS16209_MSC_CTRL       0x34
-> > > +
-> > > +/* Internal sample period (rate) control */
-> > > +#define ADIS16209_SMPL_PRD       0x36
-> > > +
-> > > +/* Operation, filter configuration */
-> > > +#define ADIS16209_AVG_CNT        0x38
-> > > +
-> > > +/* Operation, sleep mode control */
-> > > +#define ADIS16209_SLP_CNT        0x3A
-> > > +
-> > > +/* Diagnostics, system status register */
-> > > +#define ADIS16209_DIAG_STAT      0x3C
-> > > +
-> > > +/* Operation, system command register */
-> > > +#define ADIS16209_GLOB_CMD       0x3E
-> > > +
-> > > +/* MSC_CTRL */
-> > > +
-> > > +/* Self-test at power-on: 1 = disabled, 0 = enabled */
-> > > +#define ADIS16209_MSC_CTRL_PWRUP_SELF_TEST	BIT(10)
-> > > +
-> > > +/* Self-test enable */
-> > > +#define ADIS16209_MSC_CTRL_SELF_TEST_EN	        BIT(8)
-> > > +
-> > > +/* Data-ready enable: 1 = enabled, 0 = disabled */
-> > > +#define ADIS16209_MSC_CTRL_DATA_RDY_EN	        BIT(2)
-> > > +
-> > > +/* Data-ready polarity: 1 = active high, 0 = active low */
-> > > +#define ADIS16209_MSC_CTRL_ACTIVE_HIGH	        BIT(1)
-> > > +
-> > > +/* Data-ready line selection: 1 = DIO2, 0 = DIO1 */
-> > > +#define ADIS16209_MSC_CTRL_DATA_RDY_DIO2	BIT(0)
-> > > +
-> > > +/* DIAG_STAT */
-> > > +
-> > > +/* Alarm 2 status: 1 = alarm active, 0 = alarm inactive */
-> > > +#define ADIS16209_DIAG_STAT_ALARM2        BIT(9)
-> > > +
-> > > +/* Alarm 1 status: 1 = alarm active, 0 = alarm inactive */
-> > > +#define ADIS16209_DIAG_STAT_ALARM1        BIT(8)
-> > > +
-> > > +/* Self-test diagnostic error flag: 1 = error condition, 0 = normal operation */
-> > > +#define ADIS16209_DIAG_STAT_SELFTEST_FAIL_BIT	5
-> > > +
-> > > +/* SPI communications failure */
-> > > +#define ADIS16209_DIAG_STAT_SPI_FAIL_BIT	3
-> > > +
-> > > +/* Flash update failure */
-> > > +#define ADIS16209_DIAG_STAT_FLASH_UPT_BIT	2
-> > > +
-> > > +/* Power supply above 3.625 V */
-> > > +#define ADIS16209_DIAG_STAT_POWER_HIGH_BIT	1
-> > > +
-> > > +/* Power supply below 3.15 V */
-> > > +#define ADIS16209_DIAG_STAT_POWER_LOW_BIT	0
-> > > +
-> > > +/* GLOB_CMD */
-> > > +
-> > > +#define ADIS16209_GLOB_CMD_SW_RESET	BIT(7)
-> > > +#define ADIS16209_GLOB_CMD_CLEAR_STAT	BIT(4)
-> > > +#define ADIS16209_GLOB_CMD_FACTORY_CAL	BIT(1)
-> > > +
-> > > +#define ADIS16209_ERROR_ACTIVE          BIT(14)
-> > > +
-> > > +#define ADIS16209_SCAN_SUPPLY	0
-> > > +#define ADIS16209_SCAN_ACC_X	1
-> > > +#define ADIS16209_SCAN_ACC_Y	2
-> > > +#define ADIS16209_SCAN_AUX_ADC	3
-> > > +#define ADIS16209_SCAN_TEMP	4
-> > > +#define ADIS16209_SCAN_INCLI_X	5
-> > > +#define ADIS16209_SCAN_INCLI_Y	6
-> > > +#define ADIS16209_SCAN_ROT	7
-> > >  
-> > >  static const u8 adis16209_addresses[8][1] = {
-> > >  	[ADIS16209_SCAN_SUPPLY] = { },
-> > > 
+  Narcisa
+> > ---
+> >  drivers/staging/iio/accel/adis16209.h      | 144 -----------------------------
+> >  drivers/staging/iio/accel/adis16209_core.c | 140 +++++++++++++++++++++++++++-
+> >  2 files changed, 139 insertions(+), 145 deletions(-)
+> >  delete mode 100644 drivers/staging/iio/accel/adis16209.h
+> > 
+> > diff --git a/drivers/staging/iio/accel/adis16209.h b/drivers/staging/iio/accel/adis16209.h
+> > deleted file mode 100644
+> > index 315f1c0..0000000
+> > --- a/drivers/staging/iio/accel/adis16209.h
+> > +++ /dev/null
+> > @@ -1,144 +0,0 @@
+> > -#ifndef SPI_ADIS16209_H_
+> > -#define SPI_ADIS16209_H_
+> > -
+> > -#define ADIS16209_STARTUP_DELAY	220 /* ms */
+> > -
+> > -/* Flash memory write count */
+> > -#define ADIS16209_FLASH_CNT      0x00
+> > -
+> > -/* Output, power supply */
+> > -#define ADIS16209_SUPPLY_OUT     0x02
+> > -
+> > -/* Output, x-axis accelerometer */
+> > -#define ADIS16209_XACCL_OUT      0x04
+> > -
+> > -/* Output, y-axis accelerometer */
+> > -#define ADIS16209_YACCL_OUT      0x06
+> > -
+> > -/* Output, auxiliary ADC input */
+> > -#define ADIS16209_AUX_ADC        0x08
+> > -
+> > -/* Output, temperature */
+> > -#define ADIS16209_TEMP_OUT       0x0A
+> > -
+> > -/* Output, x-axis inclination */
+> > -#define ADIS16209_XINCL_OUT      0x0C
+> > -
+> > -/* Output, y-axis inclination */
+> > -#define ADIS16209_YINCL_OUT      0x0E
+> > -
+> > -/* Output, +/-180 vertical rotational position */
+> > -#define ADIS16209_ROT_OUT        0x10
+> > -
+> > -/* Calibration, x-axis acceleration offset null */
+> > -#define ADIS16209_XACCL_NULL     0x12
+> > -
+> > -/* Calibration, y-axis acceleration offset null */
+> > -#define ADIS16209_YACCL_NULL     0x14
+> > -
+> > -/* Calibration, x-axis inclination offset null */
+> > -#define ADIS16209_XINCL_NULL     0x16
+> > -
+> > -/* Calibration, y-axis inclination offset null */
+> > -#define ADIS16209_YINCL_NULL     0x18
+> > -
+> > -/* Calibration, vertical rotation offset null */
+> > -#define ADIS16209_ROT_NULL       0x1A
+> > -
+> > -/* Alarm 1 amplitude threshold */
+> > -#define ADIS16209_ALM_MAG1       0x20
+> > -
+> > -/* Alarm 2 amplitude threshold */
+> > -#define ADIS16209_ALM_MAG2       0x22
+> > -
+> > -/* Alarm 1, sample period */
+> > -#define ADIS16209_ALM_SMPL1      0x24
+> > -
+> > -/* Alarm 2, sample period */
+> > -#define ADIS16209_ALM_SMPL2      0x26
+> > -
+> > -/* Alarm control */
+> > -#define ADIS16209_ALM_CTRL       0x28
+> > -
+> > -/* Auxiliary DAC data */
+> > -#define ADIS16209_AUX_DAC        0x30
+> > -
+> > -/* General-purpose digital input/output control */
+> > -#define ADIS16209_GPIO_CTRL      0x32
+> > -
+> > -/* Miscellaneous control */
+> > -#define ADIS16209_MSC_CTRL       0x34
+> > -
+> > -/* Internal sample period (rate) control */
+> > -#define ADIS16209_SMPL_PRD       0x36
+> > -
+> > -/* Operation, filter configuration */
+> > -#define ADIS16209_AVG_CNT        0x38
+> > -
+> > -/* Operation, sleep mode control */
+> > -#define ADIS16209_SLP_CNT        0x3A
+> > -
+> > -/* Diagnostics, system status register */
+> > -#define ADIS16209_DIAG_STAT      0x3C
+> > -
+> > -/* Operation, system command register */
+> > -#define ADIS16209_GLOB_CMD       0x3E
+> > -
+> > -/* MSC_CTRL */
+> > -
+> > -/* Self-test at power-on: 1 = disabled, 0 = enabled */
+> > -#define ADIS16209_MSC_CTRL_PWRUP_SELF_TEST	BIT(10)
+> > -
+> > -/* Self-test enable */
+> > -#define ADIS16209_MSC_CTRL_SELF_TEST_EN	        BIT(8)
+> > -
+> > -/* Data-ready enable: 1 = enabled, 0 = disabled */
+> > -#define ADIS16209_MSC_CTRL_DATA_RDY_EN	        BIT(2)
+> > -
+> > -/* Data-ready polarity: 1 = active high, 0 = active low */
+> > -#define ADIS16209_MSC_CTRL_ACTIVE_HIGH	        BIT(1)
+> > -
+> > -/* Data-ready line selection: 1 = DIO2, 0 = DIO1 */
+> > -#define ADIS16209_MSC_CTRL_DATA_RDY_DIO2	BIT(0)
+> > -
+> > -/* DIAG_STAT */
+> > -
+> > -/* Alarm 2 status: 1 = alarm active, 0 = alarm inactive */
+> > -#define ADIS16209_DIAG_STAT_ALARM2        BIT(9)
+> > -
+> > -/* Alarm 1 status: 1 = alarm active, 0 = alarm inactive */
+> > -#define ADIS16209_DIAG_STAT_ALARM1        BIT(8)
+> > -
+> > -/* Self-test diagnostic error flag: 1 = error condition, 0 = normal operation */
+> > -#define ADIS16209_DIAG_STAT_SELFTEST_FAIL_BIT	5
+> > -
+> > -/* SPI communications failure */
+> > -#define ADIS16209_DIAG_STAT_SPI_FAIL_BIT	3
+> > -
+> > -/* Flash update failure */
+> > -#define ADIS16209_DIAG_STAT_FLASH_UPT_BIT	2
+> > -
+> > -/* Power supply above 3.625 V */
+> > -#define ADIS16209_DIAG_STAT_POWER_HIGH_BIT	1
+> > -
+> > -/* Power supply below 3.15 V */
+> > -#define ADIS16209_DIAG_STAT_POWER_LOW_BIT	0
+> > -
+> > -/* GLOB_CMD */
+> > -
+> > -#define ADIS16209_GLOB_CMD_SW_RESET	BIT(7)
+> > -#define ADIS16209_GLOB_CMD_CLEAR_STAT	BIT(4)
+> > -#define ADIS16209_GLOB_CMD_FACTORY_CAL	BIT(1)
+> > -
+> > -#define ADIS16209_ERROR_ACTIVE          BIT(14)
+> > -
+> > -#define ADIS16209_SCAN_SUPPLY	0
+> > -#define ADIS16209_SCAN_ACC_X	1
+> > -#define ADIS16209_SCAN_ACC_Y	2
+> > -#define ADIS16209_SCAN_AUX_ADC	3
+> > -#define ADIS16209_SCAN_TEMP	4
+> > -#define ADIS16209_SCAN_INCLI_X	5
+> > -#define ADIS16209_SCAN_INCLI_Y	6
+> > -#define ADIS16209_SCAN_ROT	7
+> > -
+> > -#endif /* SPI_ADIS16209_H_ */
+> > diff --git a/drivers/staging/iio/accel/adis16209_core.c b/drivers/staging/iio/accel/adis16209_core.c
+> > index a599e19..8ff537f 100644
+> > --- a/drivers/staging/iio/accel/adis16209_core.c
+> > +++ b/drivers/staging/iio/accel/adis16209_core.c
+> > @@ -21,7 +21,145 @@
+> >  #include <linux/iio/buffer.h>
+> >  #include <linux/iio/imu/adis.h>
+> >  
+> > -#include "adis16209.h"
+> > +#define ADIS16209_STARTUP_DELAY	220 /* ms */
+> > +
+> > +/* Flash memory write count */
+> > +#define ADIS16209_FLASH_CNT      0x00
+> > +
+> > +/* Output, power supply */
+> > +#define ADIS16209_SUPPLY_OUT     0x02
+> > +
+> > +/* Output, x-axis accelerometer */
+> > +#define ADIS16209_XACCL_OUT      0x04
+> > +
+> > +/* Output, y-axis accelerometer */
+> > +#define ADIS16209_YACCL_OUT      0x06
+> > +
+> > +/* Output, auxiliary ADC input */
+> > +#define ADIS16209_AUX_ADC        0x08
+> > +
+> > +/* Output, temperature */
+> > +#define ADIS16209_TEMP_OUT       0x0A
+> > +
+> > +/* Output, x-axis inclination */
+> > +#define ADIS16209_XINCL_OUT      0x0C
+> > +
+> > +/* Output, y-axis inclination */
+> > +#define ADIS16209_YINCL_OUT      0x0E
+> > +
+> > +/* Output, +/-180 vertical rotational position */
+> > +#define ADIS16209_ROT_OUT        0x10
+> > +
+> > +/* Calibration, x-axis acceleration offset null */
+> > +#define ADIS16209_XACCL_NULL     0x12
+> > +
+> > +/* Calibration, y-axis acceleration offset null */
+> > +#define ADIS16209_YACCL_NULL     0x14
+> > +
+> > +/* Calibration, x-axis inclination offset null */
+> > +#define ADIS16209_XINCL_NULL     0x16
+> > +
+> > +/* Calibration, y-axis inclination offset null */
+> > +#define ADIS16209_YINCL_NULL     0x18
+> > +
+> > +/* Calibration, vertical rotation offset null */
+> > +#define ADIS16209_ROT_NULL       0x1A
+> > +
+> > +/* Alarm 1 amplitude threshold */
+> > +#define ADIS16209_ALM_MAG1       0x20
+> > +
+> > +/* Alarm 2 amplitude threshold */
+> > +#define ADIS16209_ALM_MAG2       0x22
+> > +
+> > +/* Alarm 1, sample period */
+> > +#define ADIS16209_ALM_SMPL1      0x24
+> > +
+> > +/* Alarm 2, sample period */
+> > +#define ADIS16209_ALM_SMPL2      0x26
+> > +
+> > +/* Alarm control */
+> > +#define ADIS16209_ALM_CTRL       0x28
+> > +
+> > +/* Auxiliary DAC data */
+> > +#define ADIS16209_AUX_DAC        0x30
+> > +
+> > +/* General-purpose digital input/output control */
+> > +#define ADIS16209_GPIO_CTRL      0x32
+> > +
+> > +/* Miscellaneous control */
+> > +#define ADIS16209_MSC_CTRL       0x34
+> > +
+> > +/* Internal sample period (rate) control */
+> > +#define ADIS16209_SMPL_PRD       0x36
+> > +
+> > +/* Operation, filter configuration */
+> > +#define ADIS16209_AVG_CNT        0x38
+> > +
+> > +/* Operation, sleep mode control */
+> > +#define ADIS16209_SLP_CNT        0x3A
+> > +
+> > +/* Diagnostics, system status register */
+> > +#define ADIS16209_DIAG_STAT      0x3C
+> > +
+> > +/* Operation, system command register */
+> > +#define ADIS16209_GLOB_CMD       0x3E
+> > +
+> > +/* MSC_CTRL */
+> > +
+> > +/* Self-test at power-on: 1 = disabled, 0 = enabled */
+> > +#define ADIS16209_MSC_CTRL_PWRUP_SELF_TEST	BIT(10)
+> > +
+> > +/* Self-test enable */
+> > +#define ADIS16209_MSC_CTRL_SELF_TEST_EN	        BIT(8)
+> > +
+> > +/* Data-ready enable: 1 = enabled, 0 = disabled */
+> > +#define ADIS16209_MSC_CTRL_DATA_RDY_EN	        BIT(2)
+> > +
+> > +/* Data-ready polarity: 1 = active high, 0 = active low */
+> > +#define ADIS16209_MSC_CTRL_ACTIVE_HIGH	        BIT(1)
+> > +
+> > +/* Data-ready line selection: 1 = DIO2, 0 = DIO1 */
+> > +#define ADIS16209_MSC_CTRL_DATA_RDY_DIO2	BIT(0)
+> > +
+> > +/* DIAG_STAT */
+> > +
+> > +/* Alarm 2 status: 1 = alarm active, 0 = alarm inactive */
+> > +#define ADIS16209_DIAG_STAT_ALARM2        BIT(9)
+> > +
+> > +/* Alarm 1 status: 1 = alarm active, 0 = alarm inactive */
+> > +#define ADIS16209_DIAG_STAT_ALARM1        BIT(8)
+> > +
+> > +/* Self-test diagnostic error flag: 1 = error condition, 0 = normal operation */
+> > +#define ADIS16209_DIAG_STAT_SELFTEST_FAIL_BIT	5
+> > +
+> > +/* SPI communications failure */
+> > +#define ADIS16209_DIAG_STAT_SPI_FAIL_BIT	3
+> > +
+> > +/* Flash update failure */
+> > +#define ADIS16209_DIAG_STAT_FLASH_UPT_BIT	2
+> > +
+> > +/* Power supply above 3.625 V */
+> > +#define ADIS16209_DIAG_STAT_POWER_HIGH_BIT	1
+> > +
+> > +/* Power supply below 3.15 V */
+> > +#define ADIS16209_DIAG_STAT_POWER_LOW_BIT	0
+> > +
+> > +/* GLOB_CMD */
+> > +
+> > +#define ADIS16209_GLOB_CMD_SW_RESET	BIT(7)
+> > +#define ADIS16209_GLOB_CMD_CLEAR_STAT	BIT(4)
+> > +#define ADIS16209_GLOB_CMD_FACTORY_CAL	BIT(1)
+> > +
+> > +#define ADIS16209_ERROR_ACTIVE          BIT(14)
+> > +
+> > +#define ADIS16209_SCAN_SUPPLY	0
+> > +#define ADIS16209_SCAN_ACC_X	1
+> > +#define ADIS16209_SCAN_ACC_Y	2
+> > +#define ADIS16209_SCAN_AUX_ADC	3
+> > +#define ADIS16209_SCAN_TEMP	4
+> > +#define ADIS16209_SCAN_INCLI_X	5
+> > +#define ADIS16209_SCAN_INCLI_Y	6
+> > +#define ADIS16209_SCAN_ROT	7
+> >  
+> >  static const u8 adis16209_addresses[8][1] = {
+> >  	[ADIS16209_SCAN_SUPPLY] = { },
 > > 
 > 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170304182512.GA15201%40nati-X550JK.
-> For more options, visit https://groups.google.com/d/optout.
 
