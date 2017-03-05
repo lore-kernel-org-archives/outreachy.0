@@ -1,53 +1,53 @@
 X-GM-THRID: 6394061646033059840
-X-Received: by 10.129.181.75 with SMTP id c11mr5017716ywk.57.1488733505227;
-        Sun, 05 Mar 2017 09:05:05 -0800 (PST)
+X-Received: by 10.98.72.205 with SMTP id q74mr2739150pfi.36.1488733500402;
+        Sun, 05 Mar 2017 09:05:00 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.50.71 with SMTP id j68ls1866372ita.12.canary-gmail; Sun, 05
- Mar 2017 09:05:04 -0800 (PST)
-X-Received: by 10.99.52.12 with SMTP id b12mr5037169pga.118.1488733504638;
-        Sun, 05 Mar 2017 09:05:04 -0800 (PST)
+Received: by 10.157.62.180 with SMTP id b49ls14991698otc.36.gmail; Sun, 05 Mar
+ 2017 09:05:00 -0800 (PST)
+X-Received: by 10.157.56.251 with SMTP id k56mr4826796ote.28.1488733500090;
+        Sun, 05 Mar 2017 09:05:00 -0800 (PST)
 Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id r66si937583pfb.7.2017.03.05.09.05.04
+Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
+        by gmr-mx.google.com with ESMTPS id y90si952042pfa.6.2017.03.05.09.05.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 05 Mar 2017 09:05:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Sun, 05 Mar 2017 09:05:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id 67so10669938pfg.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 05 Mar 2017 09:05:04 -0800 (PST)
+Received: by mail-pg0-x241.google.com with SMTP id 187so3807661pgb.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 05 Mar 2017 09:05:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=2e+Do+m6eUO1XMqiGeZHRq1CCEoIPHu6RH2hlr3RJWg=;
-        b=MVxndA6YDqS/hkUl/h4paDpH2ShCYJho9m5t6UkGpGn14a4Y5DNzAUsFmOzp8qdv/l
-         n+6frnk38ORn/IlxlDN5IA5uRi7Y6Jb39WXNbFvcP04I9x3Cz+YmJgHpdUvuJMA+rAQ0
-         xiJoy1vV79AJ2GA5Z9p9A1saxewhaz/PSrnD9u5ODgw57XRVYTyQFusgzmDl7aVTyxCN
-         HlBL+0ddBCs8na272QDtoqkfHCjxgz6PxW6r2pjmnkEMPsY21g3CVRbxH6wCdWkJRaQ9
-         Y8DTAHwOjFmxIOjdkfqxaswALYe8Onssner+s+sOkFzcx8UrFKBuFjhE5xw9ZF9vCfEH
-         i9IQ==
+        bh=KoApKPPrl9KGJJM7hjPcnrtRCUP2Vr6K8OdCID1APMc=;
+        b=RXyW6+tzGJxkAu6HKwqx8oaDuTXlhnIySCgdrQsSqFXpQnqPouq4J0KiTQ1ghOC5jQ
+         H9NSXwbivAAGZp4XBdepm2aEl9tRZsoSsybAKTGAopInfGE9sTZGsvBZJd7ZYLtSlbtq
+         RaEbRwdB9Had/YvhjMw9zbt7yVz5l8ORETRlDdaCD68aYELzRnFyyBLWrlWzFzp0+tYQ
+         JzoQ6GT/A8t6XDTHzNzWbiC4IAMLTxl4Z90En3xWL69k+4uBImpVOKJXc6TXms6OUwI5
+         jCNO32xL6JyS+WuaRWjxZ675L13fDI0T4OvWQORce7PzV/wo9Q3SjMWnAqnAhe41TMxx
+         IhDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=2e+Do+m6eUO1XMqiGeZHRq1CCEoIPHu6RH2hlr3RJWg=;
-        b=IYFymn1ATe/ep21xMWtKw+o2maAt+zowy1YC0IxMxFoCk/dMxKNh9kbixib1vWwaro
-         mCOJJQzFi9jQihqWiVdIcvQoKR10JYQDa5sX07b1ArQTd1HhmIpdpWq4vZfa/x0BCnZf
-         AVj8WjMwexIO7WgeF4puxnDmuaMAbYjbk/LINT1WDE8ju7PTsTnBUVLrPgFUqeA4hBSP
-         EcxGFjfAmBUuOP8GFiXv0OL4cZ8Yh5dnpSFpAbWoLqH81YF4QdRVjMV38YNDvLb0qpn9
-         NbTbRfftFYl4YMLtoAQE9FLtWB/PpMxtTGwcaHHPZTH+otHF36BY0Cwdn3RNnK5Yau/5
-         TK3w==
-X-Gm-Message-State: AMke39n/x6cNnQMYRLbfAWmXebeH7s3Se2wZ9V/QE/N1bhKnPkjYhZQyGiF0TjJAT/q/4g==
-X-Received: by 10.99.117.8 with SMTP id q8mr15691379pgc.9.1488733504118;
-        Sun, 05 Mar 2017 09:05:04 -0800 (PST)
+        bh=KoApKPPrl9KGJJM7hjPcnrtRCUP2Vr6K8OdCID1APMc=;
+        b=seV77tibqoFfbMmkvZlSn7eWux5bL3FJRByYqCqqKUN8MbR6hhnVmxepYkM5nMeKW0
+         IgPd95jn/tDqs1gQ2a4+h4kT48nQ9VatilwvrxaSGVNgRvyiUGRujVMJ4n6wLOK732Qx
+         WH862TZzBkTPoY8hnEiDrAnvEjgcjY/JpIzvhOA6OlLGupYMNVnvOShLvvY95vF4vtoZ
+         wM27LyGFm9YV2qZTSR6tlWz24yOVb5TuhtWjpP0cOnuGEGFFAmNa5NGwGrDHR9I7D3DU
+         sIe9C/5bDNY8tRGJ9nE+DBihmkJHFfSL+41BJ5BhEVYEh6cu4EIdnNif1fklHhc7XqBO
+         2bBg==
+X-Gm-Message-State: AMke39k20hHTovJdkMSoiyfiaLHArtcLAcbl/s4+837mT+uO/eXLuDx/loYd+t3xfGjfRQ==
+X-Received: by 10.99.38.196 with SMTP id m187mr12155188pgm.195.1488733499832;
+        Sun, 05 Mar 2017 09:04:59 -0800 (PST)
 Return-Path: <singhalsimran0@gmail.com>
 Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 197sm34473108pfv.19.2017.03.05.09.05.02
+        by smtp.gmail.com with ESMTPSA id t133sm34802010pgc.24.2017.03.05.09.04.58
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 05 Mar 2017 09:05:03 -0800 (PST)
+        Sun, 05 Mar 2017 09:04:58 -0800 (PST)
 From: simran singhal <singhalsimran0@gmail.com>
 To: oleg.drokin@intel.com
 Cc: andreas.dilger@intel.com,
@@ -57,9 +57,9 @@ Cc: andreas.dilger@intel.com,
 	devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCH 4/5] staging: lustre: llite: Use list_for_each_entry_safe
-Date: Sun,  5 Mar 2017 22:36:49 +0530
-Message-Id: <1488733610-22289-5-git-send-email-singhalsimran0@gmail.com>
+Subject: [PATCH 3/5] staging: lustre: osc: Use list_for_each_entry_safe
+Date: Sun,  5 Mar 2017 22:36:48 +0530
+Message-Id: <1488733610-22289-4-git-send-email-singhalsimran0@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1488733610-22289-1-git-send-email-singhalsimran0@gmail.com>
 References: <1488733610-22289-1-git-send-email-singhalsimran0@gmail.com>
@@ -94,32 +94,32 @@ T *I1;
 
 Signed-off-by: simran singhal <singhalsimran0@gmail.com>
 ---
- drivers/staging/lustre/lustre/llite/statahead.c | 5 ++---
+ drivers/staging/lustre/lustre/osc/osc_cache.c | 5 ++---
  1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/lustre/lustre/llite/statahead.c b/drivers/staging/lustre/lustre/llite/statahead.c
-index fb7c315..d1287b2 100644
---- a/drivers/staging/lustre/lustre/llite/statahead.c
-+++ b/drivers/staging/lustre/lustre/llite/statahead.c
-@@ -860,6 +860,7 @@ static int ll_agl_thread(void *arg)
- 	struct inode	     *dir    = d_inode(parent);
- 	struct ll_inode_info     *plli   = ll_i2info(dir);
- 	struct ll_inode_info     *clli;
-+	struct ll_inode_info *tmp;
- 	struct ll_sb_info	*sbi    = ll_i2sbi(dir);
- 	struct ll_statahead_info *sai;
- 	struct ptlrpc_thread *thread;
-@@ -909,9 +910,7 @@ static int ll_agl_thread(void *arg)
+diff --git a/drivers/staging/lustre/lustre/osc/osc_cache.c b/drivers/staging/lustre/lustre/osc/osc_cache.c
+index f8c5fc0..caa5fec 100644
+--- a/drivers/staging/lustre/lustre/osc/osc_cache.c
++++ b/drivers/staging/lustre/lustre/osc/osc_cache.c
+@@ -1996,6 +1996,7 @@ static unsigned int get_write_extents(struct osc_object *obj,
+ {
+ 	struct client_obd *cli = osc_cli(obj);
+ 	struct osc_extent *ext;
++	struct osc_extent *tmp;
+ 	struct osc_extent *temp;
+ 	struct extent_rpc_data data = {
+ 		.erd_rpc_list = rpclist,
+@@ -2014,9 +2015,7 @@ static unsigned int get_write_extents(struct osc_object *obj,
+ 	if (data.erd_page_count == data.erd_max_pages)
+ 		return data.erd_page_count;
  
- 	spin_lock(&plli->lli_agl_lock);
- 	sai->sai_agl_valid = 0;
--	while (!list_empty(&sai->sai_agls)) {
--		clli = list_entry(sai->sai_agls.next,
--				  struct ll_inode_info, lli_agl_list);
-+	list_for_each_entry_safe(clli, tmp, &sai->sai_agls, lli_agl_list) {
- 		list_del_init(&clli->lli_agl_list);
- 		spin_unlock(&plli->lli_agl_lock);
- 		clli->lli_agl_index = 0;
+-	while (!list_empty(&obj->oo_urgent_exts)) {
+-		ext = list_entry(obj->oo_urgent_exts.next,
+-				 struct osc_extent, oe_link);
++	list_for_each_entry_safe(ext, tmp, &obj->oo_urgent_exts, oe_link) {
+ 		if (!try_to_add_extent_for_io(cli, ext, &data))
+ 			return data.erd_page_count;
+ 
 -- 
 2.7.4
 
