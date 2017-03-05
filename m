@@ -1,100 +1,142 @@
-X-GM-THRID: 7168610795520
-X-Received: by 10.152.6.232 with SMTP id e8mr3547346laa.2.1425860913665;
-        Sun, 08 Mar 2015 17:28:33 -0700 (PDT)
+X-GM-THRID: 6392835608825298944
+X-Received: by 10.200.5.152 with SMTP id a24mr1685490qth.14.1488692188912;
+        Sat, 04 Mar 2017 21:36:28 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.181.27.198 with SMTP id ji6ls431949wid.25.gmail; Sun, 08 Mar
- 2015 17:28:33 -0700 (PDT)
-X-Received: by 10.194.95.67 with SMTP id di3mr3556699wjb.0.1425860913254;
-        Sun, 08 Mar 2015 17:28:33 -0700 (PDT)
-Return-Path: <cristina.opriceana@gmail.com>
-Received: from mail-wi0-x22b.google.com (mail-wi0-x22b.google.com. [2a00:1450:400c:c05::22b])
-        by gmr-mx.google.com with ESMTPS id gj20si678816wic.1.2015.03.08.17.28.33
+Received: by 10.157.68.202 with SMTP id p10ls9482611otg.18.gmail; Sat, 04 Mar
+ 2017 21:36:28 -0800 (PST)
+X-Received: by 10.129.1.197 with SMTP id 188mr4138745ywb.3.1488692188560;
+        Sat, 04 Mar 2017 21:36:28 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id s64si782039pfk.0.2017.03.04.21.36.28
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 08 Mar 2015 17:28:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) client-ip=2a00:1450:400c:c05::22b;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 04 Mar 2017 21:36:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
        dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by widex7 with SMTP id ex7so15386695wid.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 08 Mar 2015 17:28:33 -0700 (PDT)
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x244.google.com with SMTP id 187so2934113pgb.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 04 Mar 2017 21:36:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=3VwtglxDk+2w9KrT5ii7nHrdbR/3HlpxAp+Dqtc/Xys=;
-        b=y9Bxy/XcMgLtedONwAbKIQLH9ADZS1UYT8qk0ZO27Rbe8BEkxJLyd7X9U0fJERXA0Q
-         tXPeB6F6b9rAvsJWK5v9sYXPpNANEGH+RrF6xnAcEdzAYc6xejFV3fcHC0oWXbN6/+Mh
-         P64lMUNUCHo7zKQpdE0gI13t5aoDI5/KyeHDc39y9SRQXnhBc1A8xyYylaaXTnn+3d57
-         +e379Flw3SIAO2JAAhY3ypybNRunrtiT/le3DufO+dz5oTT/YOY/f51NSI081MEKSP4M
-         28g+P5qsQvBx6u3Y+B6Xk5aQmEw4jlmhPdEWyuNm8VjL/7PeFjgau2PBNxc6q02ogUzD
-         OUfQ==
-X-Received: by 10.194.8.99 with SMTP id q3mr53715595wja.88.1425860913152;
-        Sun, 08 Mar 2015 17:28:33 -0700 (PDT)
-Return-Path: <cristina.opriceana@gmail.com>
-Received: from Inspiron (p3.eregie.pub.ro. [141.85.0.103])
-        by mx.google.com with ESMTPSA id n1sm13126178wib.11.2015.03.08.17.28.32
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 08 Mar 2015 17:28:32 -0700 (PDT)
-Date: Mon, 9 Mar 2015 02:27:43 +0200
-From: Cristina Opriceana <cristina.opriceana@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8192u: Remove unnecessary macro definition
-Message-ID: <20150309002743.GA22793@Inspiron>
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=K7nhxvnKZc2xiNogetDx3M9EyIlZKlfa4+wu0rrGktI=;
+        b=AXEPyI0abV7p1jSqQb9IFgGhO4GJsrRqFdQ05w5VK1sptpbk6B6g4n/WRuxtVBFGQ3
+         K8AD57Z2zShHm3WpyB61MSfR0O75f5JUXCJL0hiUv5Yx0SHYE0LG7EAtoT65fePKAhXo
+         1/5gubd7yNY4qs4cw2yjEoZxIxr4T29c6+py7ekngpgQ1OGqJO5iCRYy7A5hJeB3Bg3O
+         T1ZdG3/LRXbSpDazZ+lsbS5iQriPCytjbEyOXFLsmxD6JncsIRmRLiasuzWGgbx8Co7g
+         ovMKXhSSfmTrIhdMXPxC3CGI3D8FLrQfyq9eZ1jKsGxE8UUsw9WTRvVOgel2BIFAMs57
+         Xbsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=K7nhxvnKZc2xiNogetDx3M9EyIlZKlfa4+wu0rrGktI=;
+        b=dvKfumDoIsL1lMJ8QgzQ6o4H23MXO9wabnMpG3zzL8qTLZfZ+zSNPg4HJHQ9RsUce3
+         t9r3K8vPe5oOdL8Tp9+/xsWYG0ZXxiIJFlGBKOQnsHe0q1TxUOQ/mTgG12Qh2JyzGgp8
+         y9tziycO4MugQG1ooea5XD3vv8LxZqF/+AMp2Yctk/OOLOWWFNQs086wE0ygd1rLu5z9
+         UNaGSSMyYPEg6RnNyEK1gjv9ONxPc7Z4l4LBXD8xRv377WHKtRN5DJOgeQFt/ssdTRE7
+         Y9A6zeGCy+TG8IB4tgXAgy5UrV969knqq9dRfCJz0Whr8q2lRm3AImeiuTzuwDE9Jv7q
+         ygyg==
+X-Gm-Message-State: AMke39nbtM+eBOzUJYynGL688QpANvlFRIHZ+FFyqQ8wDOKywDVVBiuJyAIv99zoxFQSAA==
+X-Received: by 10.99.237.17 with SMTP id d17mr12636786pgi.82.1488692188269;
+        Sat, 04 Mar 2017 21:36:28 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
+        by smtp.gmail.com with ESMTPSA id o26sm32047851pgd.25.2017.03.04.21.36.27
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 04 Mar 2017 21:36:27 -0800 (PST)
+Date: Sat, 4 Mar 2017 21:36:25 -0800
+From: Alison Schofield <amsfield22@gmail.com>
+To: simran singhal <singhalsimran0@gmail.com>
+Cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org, sergio.paracuellos@gmail.com,
+	juliana.orod@gmail.com, thomas.petazzoni@free-electrons.com,
+	noralf@tronnes.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v3 4/6] staging: fbtft: Fix sparse
+ warnings of incorrect type in assignment
+Message-ID: <20170305053624.GA8079@d830.WORKGROUP>
+References: <20170305050533.GA10169@singhal-Inspiron-5558>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20170305050533.GA10169@singhal-Inspiron-5558>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch removes the IEEE80211_PRINT_STR macro definition because it appears
-only in the header file and it doesn't serve any purpose in this context.
+On Sun, Mar 05, 2017 at 10:35:33AM +0530, simran singhal wrote:
+> This patch fixes the following sparse warnings:
+> 
+> drivers/staging/fbtft/fbtft-io.c:74:29: warning: incorrect type in assignment (different base types)
+> drivers/staging/fbtft/fbtft-io.c:74:29:    expected unsigned long long [unsigned] [long] [long long] [usertype] <noident>
+> drivers/staging/fbtft/fbtft-io.c:74:29:    got restricted __be64 [usertype] <noident>
+> 
+> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+> ---
+>  
+>  v3:
+>    -Change commit message
+>    -Drop the changes did in fbtft-bus.c
 
-Signed-off-by: Cristina Opriceana <cristina.opriceana@gmail.com>
----
- drivers/staging/rtl8192u/ieee80211/ieee80211.h | 27 --------------------------
- 1 file changed, 27 deletions(-)
+Hi Simran, 
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211.h b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-index b44aa17..7e81ae1 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-@@ -606,33 +606,6 @@ do { if (ieee80211_debug_level & (level)) \
- #define IEEE80211_DEBUG_RX(f, a...)  IEEE80211_DEBUG(IEEE80211_DL_RX, f, ## a)
- #define IEEE80211_DEBUG_QOS(f, a...)  IEEE80211_DEBUG(IEEE80211_DL_QOS, f, ## a)
- 
--#ifdef CONFIG_IEEE80211_DEBUG
--/* Added by Annie, 2005-11-22. */
--#define MAX_STR_LEN     64
--/* I want to see ASCII 33 to 126 only. Otherwise, I print '?'. Annie, 2005-11-22.*/
--#define PRINTABLE(_ch)  (_ch>'!' && _ch<'~')
--#define IEEE80211_PRINT_STR(_Comp, _TitleString, _Ptr, _Len)					\
--			if((_Comp) & level)							\
--			{                                                                       \
--				int             __i;                                            \
--				u8  buffer[MAX_STR_LEN];					\
--				int length = (_Len<MAX_STR_LEN)? _Len : (MAX_STR_LEN-1) ;	\
--				memset(buffer, 0, MAX_STR_LEN);					\
--				memcpy(buffer, (u8 *)_Ptr, length );				\
--				for( __i=0; __i<MAX_STR_LEN; __i++ )                            \
--				{                                                               \
--				     if( !PRINTABLE(buffer[__i]) )   buffer[__i] = '?';		\
--				}                                                               \
--				buffer[length] = '\0';                                          \
--				printk("Rtl819x: ");						\
--				printk(_TitleString);                                         \
--				printk(": %d, <%s>\n", _Len, buffer);                         \
--			}
--#else
--#define IEEE80211_PRINT_STR(_Comp, _TitleString, _Ptr, _Len)  do {} while (0)
--#endif
--
--#include <linux/netdevice.h>
- #include <linux/if_arp.h> /* ARPHRD_ETHER */
- 
- #ifndef WIRELESS_SPY
--- 
-1.9.1
+Sorry, I didn't mean to drop the broken part of fbtft, but rather to fix it.
 
+Let's tidy up a few things:
+- we can't send out one patch labelled as part of a patchset without
+  resending the entire set.  That's why I was suggesting just abandoning
+  the patchset, and beginning to rework this anew with only the fbtft
+  driver in a single patch.
+- I suggest keeping the -bus and -io file changes together.
+- Look to correct what is wrong with fbtft-bus.c before sending a new
+  patch.
+- Patch Subject would be something like: use __be64 types for endian
+  correctness (if this is what you end up doing - hint)
+
+So, next step,
+1) read up on endianess and propose how to change -bus.c.
+   OK to check that idea/code snippet here without re-rolling the patch.
+
+   https://kernelnewbies.org/EndianIssues
+   and Vaishali also gave a good link to lwn.net article
+   and to see some example fixes (in iio subsystem) do this:
+	git log --pretty=oneline --abbrev-commit | grep iio | grep endian
+
+
+2) build the patch.  At this point I say make it a first version and
+   start totally fresh.  However, below the line --- where you usually
+   put the version comments, you can add a comment stating that this
+   was previously part of a patchset, but is now a single patch.
+  
+alisons
+
+
+>   
+>  drivers/staging/fbtft/fbtft-io.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/fbtft/fbtft-io.c b/drivers/staging/fbtft/fbtft-io.c
+> index d868405..ffb9a3b 100644
+> --- a/drivers/staging/fbtft/fbtft-io.c
+> +++ b/drivers/staging/fbtft/fbtft-io.c
+> @@ -71,7 +71,7 @@ int fbtft_write_spi_emulate_9(struct fbtft_par *par, void *buf, size_t len)
+>  			src++;
+>  		}
+>  		tmp |= ((*src & 0x0100) ? 1 : 0);
+> -		*(u64 *)dst = cpu_to_be64(tmp);
+> +		*(__be64 *)dst = cpu_to_be64(tmp);
+>  		dst += 8;
+>  		*dst++ = (u8)(*src++ & 0x00FF);
+>  		added++;
+> -- 
+> 2.7.4
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170305050533.GA10169%40singhal-Inspiron-5558.
+> For more options, visit https://groups.google.com/d/optout.
 
