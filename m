@@ -1,127 +1,211 @@
-X-GM-THRID: 6670961947938127872
-X-Received: by 2002:a05:6830:104b:: with SMTP id b11mr4127354otp.118.1553204364877;
-        Thu, 21 Mar 2019 14:39:24 -0700 (PDT)
+X-GM-THRID: 6394051769917243392
+X-Received: by 10.200.43.146 with SMTP id m18mr4645927qtm.58.1488751028652;
+        Sun, 05 Mar 2017 13:57:08 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:7591:: with SMTP id s17ls805866otk.9.gmail; Thu, 21 Mar
- 2019 14:39:23 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw57PMlusX2ILHBcJFXG2SQvH4vye3I4RiF1o1akBk+6LYH4z1kJo+1Q6nn5wf52TLe/30u
-X-Received: by 2002:a9d:490d:: with SMTP id e13mr4469771otf.206.1553204363928;
-        Thu, 21 Mar 2019 14:39:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553204363; cv=none;
-        d=google.com; s=arc-20160816;
-        b=SMRwI7a6SA4bBzwDLsfksiasA/wD5J9FVpW75RPYfBREmpIITditx8TwNsUDcHO4Ug
-         BWJOZ7CinZe+bQknK+I10nq8P2k984nrX4zKVevPFclpPwnRJt1RE9nAXRGD0bDcpSqf
-         uSjnF82aDdVLJczHPf7bM4dkXzdI1MV+JtS+8aUdJkfsEQty93uzNNJ09zgcffkQBdab
-         KdQ3XP9K+S7kPPwdAJauOksmwAmRPrWynTeiIksCOo+IdYNkEB7QCF2jzw3fmErtkR4t
-         q5NIazjFWmQFvcWXRp9edgAHv1UabnsQHloV9YjTAm7KYi8xdarEN6GZRkVeELBJWm0U
-         ld1w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Kukmxiu5BR/zbDFXxImeM0tPCNbZEXdjQGP02qNe26U=;
-        b=PL7CVbKGKL4qDWSY9vL1+kZGMJxPr2ES8Y8h6Y/PknQGQEr7nt7DAQ5NofIawnRmzT
-         XqsQDCopR2wNyyL8+aGjCWsNkrfh/Dj6LjMhKoIQkaV0BwUhwyU9BIAGW2PWuyLT1771
-         dtme8PbqHXfjmkG++cWTUmcO/q3l27EO9g5KjW6aID8444EHG1dPNvjScs16ZnfxFBc5
-         Ayeo71+kEl7z06bwuDeXohufI0Lwz6P568zdJANBvJWyd6aB/4TW0Kuy5huXgIbFFsv8
-         JcVTnWclHBQpf0RUefm+Viy5ymDPG9OCOjxTlbbngt3iFNDEMaPHvpB3O9E1k9aErVK+
-         BmBQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="X0/pHfJg";
-       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <vatsalanarang@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id x31si366713otb.1.2019.03.21.14.39.23
+Received: by 10.107.142.3 with SMTP id q3ls4103026iod.2.gmail; Sun, 05 Mar
+ 2017 13:57:07 -0800 (PST)
+X-Received: by 10.107.175.217 with SMTP id p86mr5298438ioo.101.1488751027832;
+        Sun, 05 Mar 2017 13:57:07 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id c123si1027826pfa.4.2017.03.05.13.57.07
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 14:39:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        Sun, 05 Mar 2017 13:57:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="X0/pHfJg";
-       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id y3so5070643pgk.12
-        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 14:39:23 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x241.google.com with SMTP id j5so15516504pfb.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 05 Mar 2017 13:57:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Kukmxiu5BR/zbDFXxImeM0tPCNbZEXdjQGP02qNe26U=;
-        b=X0/pHfJg/HspKVPOvT1h8WGI/iPvv3+5oXkeR8Gedeufw35rZWBODM9uPcbhD6yhOy
-         heq7M+wTKzVAXVWUyIA1Cb5ur4ITJpnTaPWIgs7VVqw/ty4ae7P259dkmTvn9D/bUoRc
-         Sgc5Slowb94/jF4jnGH2nUqrzONHy7oL8yOrhNFfoZqv4dZ07o8FjUgr0bStq92c7FNq
-         NxCD3TcozdOsDdYbGwAwpOXUu146LoMWjD3bQJm63djCLWyiNsTs+N0SevA/d3Cq9bLK
-         gIG7YX+M7LlHKnhMi3tHEK5Js2A2dJdf+EhCafjZJCbojrDLjel69Oy5d2wIhIAT6rhI
-         226w==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=3BS9/hRe5dE3bhKvdv6nHVuIS0xoamldRHtE2hAryQ0=;
+        b=QHjHoI8p+4QZHUjEE9niFvK1Y1wE0AzeVGJl8c94As4fByEN6uDLjvRcDGYPeWyGCy
+         hWXKYmiVt55DtUgSv5wQAC+gfULenJAVy39eBFNGZ4oi5SvJNwQA9S9s2tGxye/3yPW5
+         tfjwfu0beGZNJoiJeSPYzmY0ndVLEZ7C9vtY7pUOW91PnNZmDBGD5Zv4ZMZSX2CZJ+qq
+         A9b3Z3YAon4FaInOJSWAS5A/cFKfh88rXe5evB7nKr4XTyfm9cVzQ5skb4Twd/6ENORw
+         zkzvjX1sMYzyllty6rEdgtKQdp7TZZC99lASUdKJ17Jm4VSpkbh9EEiTsU61qredf57+
+         atDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Kukmxiu5BR/zbDFXxImeM0tPCNbZEXdjQGP02qNe26U=;
-        b=HbNMFHX435fwhQPpruxrSLGQLGLzlWJvOvJA1sxoTxAfCk3qgwyEQEL35RfR2vB2De
-         UjXq/z1do2tLLgqpvX3XudQv6996tm6u+gvLexujQoo2zHPj56iuaqr+WGTExp67y1Wn
-         zy4NSpLTZ7wlsT0b2xQP7u7k+lFDxV9Z3f5FSwZcZnbkvK1gd8PDy3RAGnvUdgtKMu3T
-         Z6VdvQYJgX9jK85MXPpdNBusVWMGdi+t+qr9AJuLpFdIJAmM3M025tbP2Fw/X0/1odKY
-         WV4ZkuF9KYgxdL8p5615XEuwFvQ0NqcZ6NqinBupj3se2vVvlo/a0gx0PluvJTCtfMef
-         XWgw==
-X-Gm-Message-State: APjAAAVP9dgOVD9TaH9RLGQ1yxrPDPHhje0+Mwh8cz8pV5c0XUyrz6Hr
-	dJZxCCC4zDC4M0p9IzitKsyWzqzCvfg=
-X-Received: by 2002:a65:6559:: with SMTP id a25mr4973130pgw.99.1553204362988;
-        Thu, 21 Mar 2019 14:39:22 -0700 (PDT)
-Return-Path: <vatsalanarang@gmail.com>
-Received: from localhost.localdomain ([103.87.57.5])
-        by smtp.gmail.com with ESMTPSA id k72sm14413242pfb.122.2019.03.21.14.39.20
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 14:39:22 -0700 (PDT)
-From: Vatsala Narang <vatsalanarang@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	Vatsala Narang <vatsalanarang@gmail.com>
-Subject: [PATCH 1/3] staging: vt6655: line over 80 characters
-Date: Fri, 22 Mar 2019 03:09:06 +0530
-Message-Id: <20190321213906.15851-1-vatsalanarang@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=3BS9/hRe5dE3bhKvdv6nHVuIS0xoamldRHtE2hAryQ0=;
+        b=XtkKY6uriQKk1BV2vfhuntcDN2CTkcZ7eHXjkjReRzWo+bSXjBNk2U0w0w12yUzhvu
+         GvU91Rn2GJ5g0Otqge4GVq6EUSeo/afCJdPcmas/m13Om9uyTwk4v0oq2gfhBcetoAk9
+         wQVm+ZPg7C+fDxzPr+cndIvGN81nsSUhs3j0MIXIWjRMp5OHnfPoPIyiO/X5f2EFCB45
+         CmTdeWeqQ+ATrlNQmRBhpJPSJ+eiE1xoMvi38KO8gqVjG/ovnhPVtX6U0s8MFpSPSI1k
+         ddBWliRPodlmdYbnEp1U4Nq0+ja9rHUd33BqJn9SIJvbboQAu341aNjFT+/zcLSs7GJd
+         u4SQ==
+X-Gm-Message-State: AMke39klnyqV6i5pjdTL0ekbHoaZDCV1scbDsm+JKghnAgnNETNUOLX81LcotKWWMrqUQw==
+X-Received: by 10.99.226.83 with SMTP id y19mr16422057pgj.34.1488751027535;
+        Sun, 05 Mar 2017 13:57:07 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
+        by smtp.gmail.com with ESMTPSA id c1sm35077409pfk.112.2017.03.05.13.57.06
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 05 Mar 2017 13:57:06 -0800 (PST)
+Date: Sun, 5 Mar 2017 13:57:04 -0800
+From: Alison Schofield <amsfield22@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>, lars@metafoo.de,
+	Michael.Hennerich@analog.com, jic23@kernel.org, knaack.h@gmx.de,
+	pmeerw@pmeerw.net, gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com, linux-iio@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH 0/2] staging: iio: accel: Group
+ similar macros into enums
+Message-ID: <20170305215703.GA4910@d830.WORKGROUP>
+References: <cover.1488730643.git.narcisaanamaria12@gmail.com>
+ <20170305185828.GA3380@d830.WORKGROUP>
+ <20170305191459.GA20822@nati-X550JK>
+ <alpine.DEB.2.20.1703052017040.3052@hadrien>
+ <20170305192840.GA12508@nati-X550JK>
+ <alpine.DEB.2.20.1703052031200.3052@hadrien>
+ <20170305194845.GA27902@nati-X550JK>
+ <alpine.DEB.2.20.1703052154590.2074@hadrien>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.20.1703052154590.2074@hadrien>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Move function arguments thet go over 80 characters a line limit to a new
-line to get rid of checkpatch warning.
+On Sun, Mar 05, 2017 at 09:56:22PM +0100, Julia Lawall wrote:
+> 
+> 
+> On Sun, 5 Mar 2017, Narcisa Ana Maria Vasile wrote:
+> 
+> > On Sun, Mar 05, 2017 at 08:31:42PM +0100, Julia Lawall wrote:
+> > >
+> > >
+> > > On Sun, 5 Mar 2017, Narcisa Ana Maria Vasile wrote:
+> > >
+> > > > On Sun, Mar 05, 2017 at 08:17:45PM +0100, Julia Lawall wrote:
+> > > > >
+> > > > >
+> > > > > On Sun, 5 Mar 2017, Narcisa Ana Maria Vasile wrote:
+> > > > >
+> > > > > > On Sun, Mar 05, 2017 at 10:58:29AM -0800, Alison Schofield wrote:
+> > > > > > > On Sun, Mar 05, 2017 at 06:26:03PM +0200, Narcisa Ana Maria Vasile wrote:
+> > > > > > > > Group related macros into enums, for clarity.
+> > > > > > >
+> > > > > > > Hi Narcisa,
+> > > > > > >
+> > > > > > > Is this enum then used in a type declaration?
+> > > > > > >
+> > > > > > > BTW - I can see Jonathan is following right along and sweeping these up,
+> > > > > > > but for future reference, this patch depended on a previous patch sent hours
+> > > > > > > earlier, that was not yet in staging-testing.  When this happens, one option
+> > > > > > > is to give a note below the --- (as you would for version comments) stating the
+> > > > > > > dependency.  This way someone reviewing the patch doesn't simply reject
+> > > > > > > it as not applying to my tree.
+> > > > > > >
+> > > > > > > alisons
+> > > > > > >
+> > > > > >   Hi,
+> > > > > >
+> > > > > >   Do you mean whether there are any type declarations where I could
+> > > > > >   now replace the type with the enum type ? If so, I searched for
+> > > > > >   these type of situations, but didn't find any. If I missed one of
+> > > > > >   these cases, please let me know and I'll send a new patch.
+> > > > >
+> > > > > Typically the constant would be stored in something, compared to
+> > > > > something, etc.  Are these constants not used at all?
+> > > > >
+> > > > > julia
+> > > > >
+> > > > >
+> > > >   Yes, they are used, they are stored. I thought she was asking
+> > > >   if I encountered any situations like in adc/ad7280a.h file
+> > > >   where you could define an enum for conversion averaging
+> > > >   macros and replace the 'unsigned int' field in the
+> > > >   ad7280_platform_data with the enum type.
+> > >
+> > > If they are stored in something, I guess you could change the type of that
+> > > thing?
+> > >
+> > > julia
+> > >
+> >   The scan indexes(si) are given to macros such as:
+> >
+> >   #define ADIS_ACCEL_CHAN(mod, addr, si, info_sep, info_all, bits) \
+> >     ADIS_MOD_CHAN(IIO_ACCEL, mod, addr, si, info_sep, info_all, bits)
+> >
+> >   (defined in the linux/iio/imu/adis.h header).
+> >   which are used to initialize the adis162xx_channels[].
+> 
+> OK, if the values are going in the si argument, then they end up in the
+> scan_index field of the iio_chan_spec structure.  That structure is much
+> more general then your driver, so indeed, there seems to be no types that
+> can be improved.
+> 
+> julia
 
-Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
----
- drivers/staging/vt6655/rf.c | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/staging/vt6655/rf.c b/drivers/staging/vt6655/rf.c
-index fd09b9771cf5..8d1caa4b19e8 100644
---- a/drivers/staging/vt6655/rf.c
-+++ b/drivers/staging/vt6655/rf.c
-@@ -737,7 +737,8 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char byRFType,
- 		return false;
- 	}
- 
--	MACvSetMISCFifo(priv, MISCFIFO_SYNINFO_IDX, (unsigned long)MAKEWORD(bySleepCount, byInitCount));
-+	MACvSetMISCFifo(priv, MISCFIFO_SYNINFO_IDX, (unsigned long)MAKEWORD
-+			(bySleepCount, byInitCount));
- 
- 	return true;
- }
-@@ -933,7 +934,8 @@ bool RFbAL7230SelectChannelPostProcess(struct vnt_private *priv,
- 	 * register
- 	 * Channel Index 1~14
- 	 */
--	if ((byOldChannel <= CB_MAX_CHANNEL_24G) && (byNewChannel > CB_MAX_CHANNEL_24G)) {
-+	if ((byOldChannel <= CB_MAX_CHANNEL_24G) &&
-+	    (byNewChannel > CB_MAX_CHANNEL_24G)) {
- 		/* Change from 2.4G to 5G [Reg] */
- 		ret &= IFRFbWriteEmbedded(priv, dwAL7230InitTableAMode[2]);
- 		ret &= IFRFbWriteEmbedded(priv, dwAL7230InitTableAMode[3]);
-@@ -942,7 +944,8 @@ bool RFbAL7230SelectChannelPostProcess(struct vnt_private *priv,
- 		ret &= IFRFbWriteEmbedded(priv, dwAL7230InitTableAMode[10]);
- 		ret &= IFRFbWriteEmbedded(priv, dwAL7230InitTableAMode[12]);
- 		ret &= IFRFbWriteEmbedded(priv, dwAL7230InitTableAMode[15]);
--	} else if ((byOldChannel > CB_MAX_CHANNEL_24G) && (byNewChannel <= CB_MAX_CHANNEL_24G)) {
-+	} else if ((byOldChannel > CB_MAX_CHANNEL_24G) &&
-+			(byNewChannel <= CB_MAX_CHANNEL_24G)) {
- 		/* Change from 5G to 2.4G [Reg] */
- 		ret &= IFRFbWriteEmbedded(priv, dwAL7230InitTable[2]);
- 		ret &= IFRFbWriteEmbedded(priv, dwAL7230InitTable[3]);
--- 
-2.17.1
-
+Hey Narcisa,
+Great to see you traced it all the way through!
+alisons
+> 
+> >
+> >   Since they are used like this, I don't see anything I can
+> >   replace/improve here.
+> >   Am I missing something?
+> >
+> >   Narcisa.
+> >
+> >
+> >
+> >
+> > > >
+> > > >   Narcisa
+> > > > > >
+> > > > > >   Thank you for the note about the patch dependencies. I was just about
+> > > > > >   to ask about this, cause I realized there might be a problem.
+> > > > > >   I'll keep in mind to make a note next time.
+> > > > > >
+> > > > > >   Narcisa
+> > > > > >
+> > > > > > > > Narcisa Ana Maria Vasile (2):
+> > > > > > > >   staging: iio: adis16209: Group similar macros into enums
+> > > > > > > >   staging: iio: adis16240: Group similar macros into enums
+> > > > > > > >
+> > > > > > > >  drivers/staging/iio/accel/adis16209.c | 18 ++++++++++--------
+> > > > > > > >  drivers/staging/iio/accel/adis16240.c | 14 ++++++++------
+> > > > > > > >  2 files changed, 18 insertions(+), 14 deletions(-)
+> > > > > > > >
+> > > > > > > > --
+> > > > > > > > 1.9.1
+> > > > > > > >
+> > > > > > > > --
+> > > > > > > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > > > > > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > > > > > > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > > > > > > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/cover.1488730643.git.narcisaanamaria12%40gmail.com.
+> > > > > > > > For more options, visit https://groups.google.com/d/optout.
+> > > > > >
+> > > > > > --
+> > > > > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > > > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > > > > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > > > > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170305191459.GA20822%40nati-X550JK.
+> > > > > > For more options, visit https://groups.google.com/d/optout.
+> > > > > >
+> > > >
+> > > > --
+> > > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170305192840.GA12508%40nati-X550JK.
+> > > > For more options, visit https://groups.google.com/d/optout.
+> > > >
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170305194845.GA27902%40nati-X550JK.
+> > For more options, visit https://groups.google.com/d/optout.
+> >
 
