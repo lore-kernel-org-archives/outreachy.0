@@ -1,83 +1,220 @@
-X-GM-THRID: 6391488728330665984
-X-Received: by 10.157.7.193 with SMTP id 59mr4898970oto.148.1488134434704;
-        Sun, 26 Feb 2017 10:40:34 -0800 (PST)
+X-GM-THRID: 6393985212157526016
+X-Received: by 10.25.204.21 with SMTP id c21mr1473299lfg.19.1488730037014;
+        Sun, 05 Mar 2017 08:07:17 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.50.71 with SMTP id j68ls1656654ita.12.canary-gmail; Sun, 26
- Feb 2017 10:40:34 -0800 (PST)
-X-Received: by 10.107.22.4 with SMTP id 4mr4559282iow.61.1488134434049;
-        Sun, 26 Feb 2017 10:40:34 -0800 (PST)
-Return-Path: <kdunne@mail.ccsf.edu>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id h79si2499pfh.2.2017.02.26.10.40.33
+Received: by 10.25.154.205 with SMTP id c196ls291208lfe.28.gmail; Sun, 05 Mar
+ 2017 08:07:15 -0800 (PST)
+X-Received: by 10.25.160.141 with SMTP id j135mr1030206lfe.18.1488730035769;
+        Sun, 05 Mar 2017 08:07:15 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id v201si615763wmv.3.2017.03.05.08.07.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 26 Feb 2017 10:40:33 -0800 (PST)
-Received-SPF: neutral (google.com: 2607:f8b0:400e:c05::243 is neither permitted nor denied by best guess record for domain of kdunne@mail.ccsf.edu) client-ip=2607:f8b0:400e:c05::243;
+        Sun, 05 Mar 2017 08:07:15 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@mail-ccsf-edu.20150623.gappssmtp.com;
-       spf=neutral (google.com: 2607:f8b0:400e:c05::243 is neither permitted nor denied by best guess record for domain of kdunne@mail.ccsf.edu) smtp.mailfrom=kdunne@mail.ccsf.edu
-Received: by mail-pg0-x243.google.com with SMTP id s67so10127699pgb.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 26 Feb 2017 10:40:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=mail-ccsf-edu.20150623.gappssmtp.com; s=20150623;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=HrEbieqMV2aS4CCh/5pAN2V4knrBPgqqGueDrhCpU5E=;
-        b=ssMrGGq27ZZgFZQpYUPL+F8wb7YVB/9NGmmIwjwqAsWn4ssChkXgq3qrxWtBWWWrog
-         Xe0G7CjIcHjsqJAA3xV3UQk/kAqOJhuZRqvOMYjEl8aEz4uQ1uP5zrwnmJyzdFuTQJ/r
-         0bhhevTaEOvQN5/5Hxd26Byf/+emwnoryxSgUJIYuJ5Co6ss5FpBt85h99b5TvE2TVbf
-         Jwk1kZDjms7Ne57w3vChILaezeDINNHoPual6AY7t1PWIVrasBNaxXRIyoHjCU8e7Sq2
-         C6G+1Z8Ur1SAdu6U304dDAZxGN1DRzp+MG31p01ls4KDjc2SlbNdkNOXyIAJgSJgrFvI
-         3ixw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=HrEbieqMV2aS4CCh/5pAN2V4knrBPgqqGueDrhCpU5E=;
-        b=BOjdg9js58kOVMLE8MW356ZNHC98Lg3GUdgUQwdUrLezLbPUCj/jGh2doG79Fv5ONk
-         RtpThStFLO975KJU/Dzlge7p1ipKxffFXImAXQHADqh+owTiRMdHItE6yZAaR4TNUqLC
-         ts5ryic5hsJ39NEBQIVKwaAA1KJSuSkBxUimxbwL7gBoMyg9WgJMQ4rHoG1H2CsgVhzV
-         nWG47jPl3zfwvzq2UNFx9eEiKuj6iqMATlwJsLnShaJIE646/2RuHlmAF6HKVUwxby5X
-         dduZkyD6iicy8mnWL3feOTAlycKRqbvv6R+BpdetlIsEMN/yqDCA/nTCCmNBDngHwIFz
-         I3IQ==
-X-Gm-Message-State: AMke39nkLJdcQz7bBB5R3jKyFW2F6s7X/zBq6Q9GmK3AIi9A4yEYbTpKu0jkSkNnD9SnRovk
-X-Received: by 10.84.231.205 with SMTP id g13mr19047778pln.30.1488134433804;
-        Sun, 26 Feb 2017 10:40:33 -0800 (PST)
-Return-Path: <kdunne@mail.ccsf.edu>
-Received: from katie-Inspiron-5748 (c-67-188-119-183.hsd1.ca.comcast.net. [67.188.119.183])
-        by smtp.gmail.com with ESMTPSA id 19sm25884810pft.46.2017.02.26.10.40.33
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 26 Feb 2017 10:40:33 -0800 (PST)
-Date: Sun, 26 Feb 2017 10:38:21 -0800
-From: Katie Dunne <kdunne@mail.ccsf.edu>
-To: outreachy-kernel@googlegroups.com
-Cc: jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net,
-	gregkh@linuxfoundation.org, linux-iio@vger.kernel.org
-Subject: [RFC 0/3] staging: iio: meter: Header file maintenance
-Message-ID: <cover.1488133199.git.kdunne@mail.ccsf.edu>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,248,1484002800"; 
+   d="scan'208";a="215628548"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 05 Mar 2017 17:07:14 +0100
+Date: Sun, 5 Mar 2017 17:07:04 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+cc: lars@metafoo.de, Michael.Hennerich@analog.com, jic23@kernel.org, 
+    knaack.h@gmx.de, pmeerw@pmeerw.net, gregkh@linuxfoundation.org, 
+    outreachy-kernel@googlegroups.com, linux-iio@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH] staging: iio: adis16209: Group similar
+ macros into enums
+In-Reply-To: <1488715674-22836-1-git-send-email-narcisaanamaria12@gmail.com>
+Message-ID: <alpine.DEB.2.20.1703051657050.3052@hadrien>
+References: <1488715674-22836-1-git-send-email-narcisaanamaria12@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-Remove unnecessary definitons, collapse header file into source,
-and clean up includes in implemenation.
 
-This is an RFC because the placement of the definitions is somewhat
-subjective, and I've attempted to follow examples in upstream subsystems
-by placing them near their implementation.
 
-Katie Dunne (3):
-  staging: iio: meter: Remove unused definitions
-  staging: iio: meter: Move header content to implementation file
-  staging: iio: meter: Clean up #includes
+On Sun, 5 Mar 2017, Narcisa Ana Maria Vasile wrote:
 
- drivers/staging/iio/meter/ade7753.c | 70 ++++++++++++++++++++++++++++++++----
- drivers/staging/iio/meter/ade7753.h | 72 -------------------------------------
- 2 files changed, 63 insertions(+), 79 deletions(-)
- delete mode 100644 drivers/staging/iio/meter/ade7753.h
+> If the macros are related, they should be grouped into an enum
+> for clarity.
 
--- 
-2.7.4
+You can probably find more opportunities with this using Coccinelle:
 
+@@
+identifier i,j;
+constant int c;
+@@
+
+(
+  #define i c@j
+|
+* #define i c
+)
+
+This says to highlight all #defines where the named value is an integer
+constant, and where that constant doesn't have the form of an identifier
+(c@j).  The latter is needed because Coccinelle considers anything in all
+upper case to be an integer constant too.
+
+This will give a lot of false positives, but they are easy to ignore.
+
+Some of the false positive could be gotten rid of by defining c as
+follows:
+
+constant int c : script:python { ok(c) };
+
+The at the beginning of your semantic patch, you can define the ok
+function:
+
+@initialize:python@
+@@
+
+... definition f ok ...
+
+ok should take one argument which is a string and should return a boolean.
+You can for example return false when the string begins with 0x or when it
+is a number bigger than say 10.
+
+Really what you would want to do is detect the case where a bunchof such
+#defines are next to each other.  Unfortunately that is not very easy,
+because Coccinelle looks at each top level thing, ie each define, one at a
+time.
+
+julia
+
+
+>
+> Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+> ---
+>  drivers/staging/iio/accel/adis16209.c | 84 ++++++++++++++++++++---------------
+>  1 file changed, 47 insertions(+), 37 deletions(-)
+>
+> diff --git a/drivers/staging/iio/accel/adis16209.c b/drivers/staging/iio/accel/adis16209.c
+> index 8ff537f..706e119 100644
+> --- a/drivers/staging/iio/accel/adis16209.c
+> +++ b/drivers/staging/iio/accel/adis16209.c
+> @@ -104,62 +104,72 @@
+>  /* Operation, system command register */
+>  #define ADIS16209_GLOB_CMD       0x3E
+>
+> +#define ADIS16209_ERROR_ACTIVE          BIT(14)
+> +
+>  /* MSC_CTRL */
+>
+> -/* Self-test at power-on: 1 = disabled, 0 = enabled */
+> -#define ADIS16209_MSC_CTRL_PWRUP_SELF_TEST	BIT(10)
+> +enum adis16209_msc_ctrl {
+> +	/* Self-test at power-on: 1 = disabled, 0 = enabled */
+> +	ADIS16209_MSC_CTRL_PWRUP_SELF_TEST = BIT(10),
+>
+> -/* Self-test enable */
+> -#define ADIS16209_MSC_CTRL_SELF_TEST_EN	        BIT(8)
+> +	/* Self-test enable */
+> +	ADIS16209_MSC_CTRL_SELF_TEST_EN = BIT(8),
+>
+> -/* Data-ready enable: 1 = enabled, 0 = disabled */
+> -#define ADIS16209_MSC_CTRL_DATA_RDY_EN	        BIT(2)
+> +	/* Data-ready enable: 1 = enabled, 0 = disabled */
+> +	ADIS16209_MSC_CTRL_DATA_RDY_EN = BIT(2),
+>
+> -/* Data-ready polarity: 1 = active high, 0 = active low */
+> -#define ADIS16209_MSC_CTRL_ACTIVE_HIGH	        BIT(1)
+> +	/* Data-ready polarity: 1 = active high, 0 = active low */
+> +	ADIS16209_MSC_CTRL_ACTIVE_HIGH = BIT(1),
+>
+> -/* Data-ready line selection: 1 = DIO2, 0 = DIO1 */
+> -#define ADIS16209_MSC_CTRL_DATA_RDY_DIO2	BIT(0)
+> +	/* Data-ready line selection: 1 = DIO2, 0 = DIO1 */
+> +	ADIS16209_MSC_CTRL_DATA_RDY_DIO2 = BIT(0),
+> +};
+>
+>  /* DIAG_STAT */
+>
+> -/* Alarm 2 status: 1 = alarm active, 0 = alarm inactive */
+> -#define ADIS16209_DIAG_STAT_ALARM2        BIT(9)
+> +enum adis16209_diag_stat {
+> +	/* Alarm 2 status: 1 = alarm active, 0 = alarm inactive */
+> +	ADIS16209_DIAG_STAT_ALARM2 = BIT(9),
+>
+> -/* Alarm 1 status: 1 = alarm active, 0 = alarm inactive */
+> -#define ADIS16209_DIAG_STAT_ALARM1        BIT(8)
+> +	/* Alarm 1 status: 1 = alarm active, 0 = alarm inactive */
+> +	ADIS16209_DIAG_STAT_ALARM1 = BIT(8),
+>
+> -/* Self-test diagnostic error flag: 1 = error condition, 0 = normal operation */
+> -#define ADIS16209_DIAG_STAT_SELFTEST_FAIL_BIT	5
+> +	/* Self-test diagnostic error flag:
+> +	 * 1 = error condition, 0 = normal operation
+> +	 */
+> +	ADIS16209_DIAG_STAT_SELFTEST_FAIL_BIT = 5,
+>
+> -/* SPI communications failure */
+> -#define ADIS16209_DIAG_STAT_SPI_FAIL_BIT	3
+> +	/* SPI communications failure */
+> +	ADIS16209_DIAG_STAT_SPI_FAIL_BIT = 3,
+>
+> -/* Flash update failure */
+> -#define ADIS16209_DIAG_STAT_FLASH_UPT_BIT	2
+> +	/* Flash update failure */
+> +	ADIS16209_DIAG_STAT_FLASH_UPT_BIT = 2,
+>
+> -/* Power supply above 3.625 V */
+> -#define ADIS16209_DIAG_STAT_POWER_HIGH_BIT	1
+> +	/* Power supply above 3.625 V */
+> +	ADIS16209_DIAG_STAT_POWER_HIGH_BIT = 1,
+>
+> -/* Power supply below 3.15 V */
+> -#define ADIS16209_DIAG_STAT_POWER_LOW_BIT	0
+> +	/* Power supply below 3.15 V */
+> +	ADIS16209_DIAG_STAT_POWER_LOW_BIT = 0,
+> +};
+>
+>  /* GLOB_CMD */
+>
+> -#define ADIS16209_GLOB_CMD_SW_RESET	BIT(7)
+> -#define ADIS16209_GLOB_CMD_CLEAR_STAT	BIT(4)
+> -#define ADIS16209_GLOB_CMD_FACTORY_CAL	BIT(1)
+> -
+> -#define ADIS16209_ERROR_ACTIVE          BIT(14)
+> +enum adis16209_glob_cmd {
+> +	ADIS16209_GLOB_CMD_SW_RESET = BIT(7),
+> +	ADIS16209_GLOB_CMD_CLEAR_STAT = BIT(4),
+> +	ADIS16209_GLOB_CMD_FACTORY_CAL = BIT(1),
+> +};
+>
+> -#define ADIS16209_SCAN_SUPPLY	0
+> -#define ADIS16209_SCAN_ACC_X	1
+> -#define ADIS16209_SCAN_ACC_Y	2
+> -#define ADIS16209_SCAN_AUX_ADC	3
+> -#define ADIS16209_SCAN_TEMP	4
+> -#define ADIS16209_SCAN_INCLI_X	5
+> -#define ADIS16209_SCAN_INCLI_Y	6
+> -#define ADIS16209_SCAN_ROT	7
+> +enum adis16209_scan {
+> +	ADIS16209_SCAN_SUPPLY,
+> +	ADIS16209_SCAN_ACC_X,
+> +	ADIS16209_SCAN_ACC_Y,
+> +	ADIS16209_SCAN_AUX_ADC,
+> +	ADIS16209_SCAN_TEMP,
+> +	ADIS16209_SCAN_INCLI_X,
+> +	ADIS16209_SCAN_INCLI_Y,
+> +	ADIS16209_SCAN_ROT,
+> +};
+>
+>  static const u8 adis16209_addresses[8][1] = {
+>  	[ADIS16209_SCAN_SUPPLY] = { },
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1488715674-22836-1-git-send-email-narcisaanamaria12%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
