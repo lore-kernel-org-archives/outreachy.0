@@ -1,80 +1,151 @@
 X-GM-THRID: 6393902542586118144
-X-Received: by 10.129.181.75 with SMTP id c11mr5162800ywk.57.1488739364413;
-        Sun, 05 Mar 2017 10:42:44 -0800 (PST)
+X-Received: by 10.129.87.3 with SMTP id l3mr5192886ywb.0.1488737687954;
+        Sun, 05 Mar 2017 10:14:47 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.63.218 with SMTP id i26ls14145836ote.48.gmail; Sun, 05 Mar
- 2017 10:42:44 -0800 (PST)
-X-Received: by 10.129.105.130 with SMTP id e124mr5818872ywc.2.1488739364011;
-        Sun, 05 Mar 2017 10:42:44 -0800 (PST)
-Return-Path: <joe@perches.com>
-Received: from smtprelay.hostedemail.com (smtprelay0018.hostedemail.com. [216.40.44.18])
-        by gmr-mx.google.com with ESMTPS id d20si1412917itc.1.2017.03.05.10.42.43
+Received: by 10.107.35.193 with SMTP id j184ls1384780ioj.1.gmail; Sun, 05 Mar
+ 2017 10:14:47 -0800 (PST)
+X-Received: by 10.107.169.103 with SMTP id s100mr4358280ioe.84.1488737687204;
+        Sun, 05 Mar 2017 10:14:47 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id a3si157952pfb.2.2017.03.05.10.14.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 05 Mar 2017 10:42:43 -0800 (PST)
-Received-SPF: neutral (google.com: 216.40.44.18 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.18;
+        Sun, 05 Mar 2017 10:14:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 216.40.44.18 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
-	by smtprelay06.hostedemail.com (Postfix) with ESMTP id 7A4B69EA14;
-	Sun,  5 Mar 2017 18:42:43 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,:::::::::::::::,RULES_HIT:41:355:379:541:599:800:960:968:973:988:989:1260:1277:1311:1313:1314:1345:1359:1373:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2393:2553:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3867:3868:3870:3871:3872:3873:3874:4250:4321:4605:5007:6119:7514:7522:7903:10004:10400:10848:11026:11232:11658:11914:12294:12295:12438:12555:12740:12760:12895:13069:13095:13181:13229:13255:13311:13357:13439:14096:14097:14180:14181:14659:14721:21060:21080:21212:21222:21433:21451:30012:30045:30054:30090:30091,0,RBL:none,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:fn,MSBL:0,DNSBL:none,Custom_rules:0:0:0,LFtime:2,LUA_SUMMARY:none
-X-HE-Tag: cough28_34aef1fa1ff5f
-X-Filterd-Recvd-Size: 2214
-Received: from XPS-9350 (unknown [47.151.132.55])
-	(Authenticated sender: joe@perches.com)
-	by omf13.hostedemail.com (Postfix) with ESMTPA;
-	Sun,  5 Mar 2017 18:42:41 +0000 (UTC)
-Message-ID: <1488739360.2210.1.camel@perches.com>
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x242.google.com with SMTP id o126so1046200pfb.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 05 Mar 2017 10:14:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=PAX1iqizW+dm/Mdie0wQu9vg8P1yhhSThOB83pNAce8=;
+        b=WNGHNERIIl6eRshKm7HByF3JUXcMEAuUTyyw29afnYH73n6OYzYerMNZ0xAH4C7WMD
+         So/MFEsdSjeRtx8FyZfvnGhJ7fRSwGDwVEw5yn+RpsZ2bm5dWV8HbUzXU3LhtXRlPkrG
+         XKczmjrEsL+1bE5apr9IljkPMfkms5FZ0C5hBT2N0xKBOwomro8sjWi+fbXhBglcYDP1
+         Fo4ioniE/C6FMiyGM2BCF94KmooJy16NBxjHLaN5OMNsJxaoTZc9nU3Ns8ZeLp/Lsbj6
+         v9IWTM4TchogkYtefPd/co8DsANT9N46X4zUVWVQnJnQMd6SQlYy4FVCqUxbvNbreVv4
+         Echg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=PAX1iqizW+dm/Mdie0wQu9vg8P1yhhSThOB83pNAce8=;
+        b=JD8j/+nvkpZUupWuNSxWH2YWqjhIwnR3OhEnah5O9tI5W4Ni7IOBkmBYaKxq4zb753
+         61bOLxM7sYnkjX0SLq1OD80m9SRaJNfl9FIbQK9WG2wzPDdYFrxDEcYOzgAxSpl2Q1vG
+         Va87Vygi+LI7t/zQ1xQc4LxnXeo8gfX7THOQ6UEf9pUsLndyVOOjQfU1bE9ZB2kHGG4A
+         4x6fbH4oIkVnEkC3I2hiqV1I9ICVxnugEg8zyYizvHOaOiG0yhbjL4qDpgb6KAUOsJB0
+         kxNeDm709WTdQ/Ok/ooLl1C4LWpLTAGyuAlE029Qo12DkU9/F5J7llprggtPTBUmxi8Y
+         geOw==
+X-Gm-Message-State: AMke39nTx6xWyNHzM2gmk3VZeepva7dpILQHZajqvU9bP7Re2F8EVahmEmEmmaQH7O9pGQ==
+X-Received: by 10.84.213.16 with SMTP id f16mr20410071pli.156.1488737686974;
+        Sun, 05 Mar 2017 10:14:46 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
+        by smtp.gmail.com with ESMTPSA id 197sm34665429pfv.19.2017.03.05.10.14.46
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 05 Mar 2017 10:14:46 -0800 (PST)
+Date: Sun, 5 Mar 2017 10:14:45 -0800
+From: Alison Schofield <amsfield22@gmail.com>
+To: simran singhal <singhalsimran0@gmail.com>
+Cc: mchehab@kernel.org, gregkh@linuxfoundation.org,
+	linux-media@vger.kernel.org, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH] staging: media: Remove unnecessary
  function and its call
-From: Joe Perches <joe@perches.com>
-To: Alison Schofield <amsfield22@gmail.com>, simran singhal
-	 <singhalsimran0@gmail.com>
-Cc: mchehab@kernel.org, gregkh@linuxfoundation.org,
- linux-media@vger.kernel.org,  devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org,  outreachy-kernel@googlegroups.com
-Date: Sun, 05 Mar 2017 10:42:40 -0800
-In-Reply-To: <20170305181444.GA2094@d830.WORKGROUP>
+Message-ID: <20170305181444.GA2094@d830.WORKGROUP>
 References: <20170305064721.GA22548@singhal-Inspiron-5558>
-	 <20170305181444.GA2094@d830.WORKGROUP>
-Content-Type: text/plain; charset="ISO-8859-1"
-X-Mailer: Evolution 3.22.3-0ubuntu0.1 
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170305064721.GA22548@singhal-Inspiron-5558>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-On Sun, 2017-03-05 at 10:14 -0800, Alison Schofield wrote:
-> On Sun, Mar 05, 2017 at 12:17:21PM +0530, simran singhal wrote:
-> > The function atomisp_set_stop_timeout on being called, simply returns
-> > back. The function hasn't been mentioned in the TODO and doesn't have
-> > FIXME code around. Hence, atomisp_set_stop_timeout and its calls have been
-> > removed.
-> > 
-> > Signed-off-by: simran singhal <singhalsimran0@gmail.com>
-> > ---
+On Sun, Mar 05, 2017 at 12:17:21PM +0530, simran singhal wrote:
+> The function atomisp_set_stop_timeout on being called, simply returns
+> back. The function hasn't been mentioned in the TODO and doesn't have
+> FIXME code around. Hence, atomisp_set_stop_timeout and its calls have been
+> removed.
 > 
-> Hi Simran,
-> 
-> It's helpful to state right in the subject line what you removed.
-> ie.  remove unused function atomisp_set_stop_timeout()
-> 
-> If you do that, scan's or grep'ing the git log pretty oneline's can 
-> easily see this without having to dig into the log.
-> 
-> (gitpretty='git log --pretty=oneline --abbrev-commit')
-> 
-> Can you share to Outreachy group how you found this?  By inspection
-> or otherwise??
+> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+> ---
 
-At least for the rtl8192u patch submitted:
+Hi Simran,
 
-It's also helpful to read the comment you remove
-and determine if what you are doing is the correct
-thing to do and explain why it's OK in the commit
-message. (fractured english below notwithstanding)
+It's helpful to state right in the subject line what you removed.
+ie.  remove unused function atomisp_set_stop_timeout()
 
- /* These function were added to load crypte module autoly */
--       ieee80211_tkip_null();
- 
+If you do that, scan's or grep'ing the git log pretty oneline's can 
+easily see this without having to dig into the log.
+
+(gitpretty='git log --pretty=oneline --abbrev-commit')
+
+Can you share to Outreachy group how you found this?  By inspection
+or otherwise??
+
+Thanks,
+alisons
+
+
+alisons
+
+
+>  drivers/staging/media/atomisp/pci/atomisp2/atomisp_cmd.c          | 1 -
+>  drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat.h       | 1 -
+>  drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat_css20.c | 5 -----
+>  3 files changed, 7 deletions(-)
+> 
+> diff --git a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_cmd.c b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_cmd.c
+> index e99f7b8..66299dd 100644
+> --- a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_cmd.c
+> +++ b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_cmd.c
+> @@ -1700,7 +1700,6 @@ void atomisp_wdt_work(struct work_struct *work)
+>  		}
+>  	}
+>  #endif
+> -	atomisp_set_stop_timeout(ATOMISP_CSS_STOP_TIMEOUT_US);
+>  	dev_err(isp->dev, "timeout recovery handling done\n");
+>  	atomic_set(&isp->wdt_work_queued, 0);
+>  
+> diff --git a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat.h b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat.h
+> index 5a404e4..0b9ced5 100644
+> --- a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat.h
+> +++ b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat.h
+> @@ -660,7 +660,6 @@ int atomisp_css_set_acc_parameters(struct atomisp_acc_fw *acc_fw);
+>  int atomisp_css_isr_thread(struct atomisp_device *isp,
+>  			   bool *frame_done_found,
+>  			   bool *css_pipe_done);
+> -void atomisp_set_stop_timeout(unsigned int timeout);
+>  
+>  bool atomisp_css_valid_sof(struct atomisp_device *isp);
+>  
+> diff --git a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat_css20.c b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat_css20.c
+> index 6697d72..cfa0ad4 100644
+> --- a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat_css20.c
+> +++ b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat_css20.c
+> @@ -4699,11 +4699,6 @@ int atomisp_css_isr_thread(struct atomisp_device *isp,
+>  	return 0;
+>  }
+>  
+> -void atomisp_set_stop_timeout(unsigned int timeout)
+> -{
+> -	return;
+> -}
+> -
+>  bool atomisp_css_valid_sof(struct atomisp_device *isp)
+>  {
+>  	unsigned int i, j;
+> -- 
+> 2.7.4
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170305064721.GA22548%40singhal-Inspiron-5558.
+> For more options, visit https://groups.google.com/d/optout.
 
