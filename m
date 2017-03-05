@@ -1,170 +1,128 @@
 X-GM-THRID: 6394061646033059840
-X-Received: by 10.25.193.213 with SMTP id r204mr1536100lff.24.1488735844454;
-        Sun, 05 Mar 2017 09:44:04 -0800 (PST)
+X-Received: by 10.46.33.163 with SMTP id h35mr2023508lji.17.1488735824407;
+        Sun, 05 Mar 2017 09:43:44 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.92.129 with SMTP id q123ls1247750ljb.23.gmail; Sun, 05 Mar
- 2017 09:44:03 -0800 (PST)
-X-Received: by 10.25.18.219 with SMTP id 88mr1531586lfs.29.1488735843833;
-        Sun, 05 Mar 2017 09:44:03 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-lf0-x241.google.com (mail-lf0-x241.google.com. [2a00:1450:4010:c07::241])
-        by gmr-mx.google.com with ESMTPS id 82si677wmg.3.2017.03.05.09.44.03
+Received: by 10.46.84.65 with SMTP id y1ls1245667ljd.17.gmail; Sun, 05 Mar
+ 2017 09:43:43 -0800 (PST)
+X-Received: by 10.46.84.13 with SMTP id i13mr1774797ljb.2.1488735823840;
+        Sun, 05 Mar 2017 09:43:43 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id e72si597031wma.0.2017.03.05.09.43.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 05 Mar 2017 09:44:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2a00:1450:4010:c07::241 as permitted sender) client-ip=2a00:1450:4010:c07::241;
+        Sun, 05 Mar 2017 09:43:43 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2a00:1450:4010:c07::241 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-lf0-x241.google.com with SMTP id y193so10070306lfd.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 05 Mar 2017 09:44:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=G3uEtfBUKMJgWSQhxhvWrVjLE1QmhVvl7PXLnpKAlXQ=;
-        b=HpX4k1gZhIRHtds8FprJnHuuBgr2bshlBBPMXVIxQB8L01zObBD0cYTvnxCfani/YI
-         SQcmYmePT6+JCgjFQflT5ANtTE8MgibTbz3XmbUUjgO5uQ7A/98/u/q05KSnu/f5i5XZ
-         F8tMk1LTrF8yQEV1M9GbivqiFiMWgo28krpfRKBG/d8UX8iYo1sDWPwLaGmzH2zHh9J3
-         a+K7i/zCImG/vEHHouWQ5/yGnTIegZjVA2vYsNn45J7iOOVkYxou2KFVBQQJPRMBWGCk
-         QIGwe3PosMBDn057I087a2sp1wN8g/3BS/81nCwNuItqu5WrUxsad9jau0SiiZD/95v8
-         LciA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=G3uEtfBUKMJgWSQhxhvWrVjLE1QmhVvl7PXLnpKAlXQ=;
-        b=dTkq0mxrts3OVZMMH3hoQBYuUWz+WJyE1mibik8GyDNJcMhMNF14+N5cuPaNBykHXB
-         Oum41K5SjKjWhdCzVKvo6bvr+Of+TfgBpnka0t9s/Jhh+Vna98SJPWMm3i33cTV4o9tc
-         4vaCNwvuqn5RXSf6pcEIJmS2Lpt4ClCVupJgva6iv7sDBUCewtHlZKLZsPuM9soDDGB9
-         in/cWz57A3zr36VtCq7MASA8dcOg6J8ENUuV6OjSwrMhKKudxAwzr7VaHfg+dKv26iMH
-         E9JqPjQrdZWD6FGQNyug8mGlrzu1Ot2AVT3yoeE8iYgAwL7AGVexzJ0wVEq9lpotgYI1
-         SEfQ==
-X-Gm-Message-State: AMke39nJCe4DmzTbP9ZGdamqIfIB34qfPw+KXDkyQgu1zzupfZr/KstAJa7GEPyJ3zphQSRY1NYjACIQ3q/hnA==
-X-Received: by 10.46.33.75 with SMTP id h72mr4043284ljh.37.1488735843234; Sun,
- 05 Mar 2017 09:44:03 -0800 (PST)
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,249,1484002800"; 
+   d="scan'208";a="263196545"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 05 Mar 2017 18:43:43 +0100
+Date: Sun, 5 Mar 2017 18:43:32 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: SIMRAN SINGHAL <singhalsimran0@gmail.com>
+cc: Julia Lawall <julia.lawall@lip6.fr>, oleg.drokin@intel.com, 
+    andreas.dilger@intel.com, jsimmons@infradead.org, 
+    Greg KH <gregkh@linuxfoundation.org>, lustre-devel@lists.lustre.org, 
+    devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 2/5] staging: lustre: ptlrpc: Use
+ list_for_each_entry_safe
+In-Reply-To: <CALrZqyO2XF80KZoYQiM_zCJe42c_W_AyhJQ7-JBQZsoeYBkK1w@mail.gmail.com>
+Message-ID: <alpine.DEB.2.20.1703051843060.3052@hadrien>
+References: <1488733610-22289-1-git-send-email-singhalsimran0@gmail.com> <1488733610-22289-3-git-send-email-singhalsimran0@gmail.com> <alpine.DEB.2.20.1703051838110.3052@hadrien> <CALrZqyO2XF80KZoYQiM_zCJe42c_W_AyhJQ7-JBQZsoeYBkK1w@mail.gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Received: by 10.25.15.39 with HTTP; Sun, 5 Mar 2017 09:44:02 -0800 (PST)
-In-Reply-To: <alpine.DEB.2.20.1703051816120.3052@hadrien>
-References: <1488733610-22289-1-git-send-email-singhalsimran0@gmail.com>
- <1488733610-22289-6-git-send-email-singhalsimran0@gmail.com> <alpine.DEB.2.20.1703051816120.3052@hadrien>
-From: SIMRAN SINGHAL <singhalsimran0@gmail.com>
-Date: Sun, 5 Mar 2017 23:14:02 +0530
-Message-ID: <CALrZqyPnQMLJn3yz3c07osksRD9oOp1qt=1Wd-3SO9LLPz14dQ@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 5/5] staging: lustre: osc_page.c: Use list_for_each_entry_safe
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: oleg.drokin@intel.com, andreas.dilger@intel.com, jsimmons@infradead.org, 
-	Greg KH <gregkh@linuxfoundation.org>, lustre-devel@lists.lustre.org, 
-	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
-	outreachy-kernel@googlegroups.com
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=US-ASCII
 
-On Sun, Mar 5, 2017 at 10:47 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
-> By the way, the above subject line is not correct.  Normally one does not
-> put .c/.h in the subject line.  Indeed, there is not really any
-> deterministic algorithm for choosing the subject line.  You need to run
-> git log --oneline filename to see what others have done.
 
-So this would be fine Subject:-
-staging: lustre: osc_page: Use list_for_each_entry_safe
+
+On Sun, 5 Mar 2017, SIMRAN SINGHAL wrote:
+
+> On Sun, Mar 5, 2017 at 11:09 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> >
+> >
+> > On Sun, 5 Mar 2017, simran singhal wrote:
+> >
+> >> Doubly linked lists which are  iterated  using list_empty
+> >> and list_entry macros have been replaced with list_for_each_entry_safe
+> >> macro.
+> >> This makes the iteration simpler and more readable.
+> >>
+> >> This patch replaces the while loop containing list_empty and list_entry
+> >> with list_for_each_entry_safe.
+> >>
+> >> This was done with Coccinelle.
+> >>
+> >> @@
+> >> expression E1;
+> >> identifier I1, I2;
+> >> type T;
+> >> iterator name list_for_each_entry_safe;
+> >> @@
+> >>
+> >> T *I1;
+> >> + T *tmp;
+> >> ...
+> >> - while (list_empty(&E1) == 0)
+> >> + list_for_each_entry_safe (I1, tmp, &E1, I2)
+> >> {
+> >> ...when != T *I1;
+> >> - I1 = list_entry(E1.next, T, I2);
+> >> ...
+> >> }
+> >>
+> >> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+> >> ---
+> >>  drivers/staging/lustre/lustre/ptlrpc/sec_gc.c | 5 ++---
+> >>  1 file changed, 2 insertions(+), 3 deletions(-)
+> >>
+> >> diff --git a/drivers/staging/lustre/lustre/ptlrpc/sec_gc.c b/drivers/staging/lustre/lustre/ptlrpc/sec_gc.c
+> >> index 8ffd000..fe1c0af 100644
+> >> --- a/drivers/staging/lustre/lustre/ptlrpc/sec_gc.c
+> >> +++ b/drivers/staging/lustre/lustre/ptlrpc/sec_gc.c
+> >> @@ -98,12 +98,11 @@ void sptlrpc_gc_del_sec(struct ptlrpc_sec *sec)
+> >>  static void sec_process_ctx_list(void)
+> >>  {
+> >>       struct ptlrpc_cli_ctx *ctx;
+> >> +     struct ptlrpc_cli_ctx *tmp;
+> >
+> > Another improvement would be to define both variables at once:
+> >
+> > T *I1
+> > + , *tmp
+> >   ;
+> >
+> This is particulary for this patch or for all the patches of this patch-series.
+
+All, I would guess.  Unless the line gets too long.
+
+julia
 
 >
-> julia
+> > julia
+> >
+> >>
+> >>       spin_lock(&sec_gc_ctx_list_lock);
+> >>
+> >> -     while (!list_empty(&sec_gc_ctx_list)) {
+> >> -             ctx = list_entry(sec_gc_ctx_list.next,
+> >> -                              struct ptlrpc_cli_ctx, cc_gc_chain);
+> >> +     list_for_each_entry_safe(ctx, tmp, &sec_gc_ctx_list, cc_gc_chain) {
+> >>               list_del_init(&ctx->cc_gc_chain);
+> >>               spin_unlock(&sec_gc_ctx_list_lock);
+> >>
+> >> --
+> >> 2.7.4
+> >>
+> >> --
+> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1488733610-22289-3-git-send-email-singhalsimran0%40gmail.com.
+> >> For more options, visit https://groups.google.com/d/optout.
+> >>
 >
-> On Sun, 5 Mar 2017, simran singhal wrote:
->
->> Doubly linked lists which are  iterated  using list_empty
->> and list_entry macros have been replaced with list_for_each_entry_safe
->> macro.
->> This makes the iteration simpler and more readable.
->>
->> This patch replaces the while loop containing list_empty and list_entry
->> with list_for_each_entry_safe.
->>
->> This was done with Coccinelle.
->>
->> @@
->> expression E1;
->> identifier I1, I2;
->> type T;
->> iterator name list_for_each_entry_safe;
->> @@
->>
->> T *I1;
->> + T *tmp;
->> ...
->> - while (list_empty(&E1) == 0)
->> + list_for_each_entry_safe (I1, tmp, &E1, I2)
->> {
->> ...when != T *I1;
->> - I1 = list_entry(E1.next, T, I2);
->> ...
->> }
->>
->> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
->> ---
->>  drivers/staging/lustre/lustre/osc/osc_page.c | 11 ++++-------
->>  1 file changed, 4 insertions(+), 7 deletions(-)
->>
->> diff --git a/drivers/staging/lustre/lustre/osc/osc_page.c b/drivers/staging/lustre/lustre/osc/osc_page.c
->> index ed8a0dc..e8b974f 100644
->> --- a/drivers/staging/lustre/lustre/osc/osc_page.c
->> +++ b/drivers/staging/lustre/lustre/osc/osc_page.c
->> @@ -542,6 +542,7 @@ long osc_lru_shrink(const struct lu_env *env, struct client_obd *cli,
->>       struct cl_object *clobj = NULL;
->>       struct cl_page **pvec;
->>       struct osc_page *opg;
->> +     struct osc_page *tmp;
->>       int maxscan = 0;
->>       long count = 0;
->>       int index = 0;
->> @@ -572,7 +573,7 @@ long osc_lru_shrink(const struct lu_env *env, struct client_obd *cli,
->>       if (force)
->>               cli->cl_lru_reclaim++;
->>       maxscan = min(target << 1, atomic_long_read(&cli->cl_lru_in_list));
->> -     while (!list_empty(&cli->cl_lru_list)) {
->> +     list_for_each_entry_safe(opg, tmp, &cli->cl_lru_list, ops_lru) {
->>               struct cl_page *page;
->>               bool will_free = false;
->>
->> @@ -582,8 +583,6 @@ long osc_lru_shrink(const struct lu_env *env, struct client_obd *cli,
->>               if (--maxscan < 0)
->>                       break;
->>
->> -             opg = list_entry(cli->cl_lru_list.next, struct osc_page,
->> -                              ops_lru);
->>               page = opg->ops_cl.cpl_page;
->>               if (lru_page_busy(cli, page)) {
->>                       list_move_tail(&opg->ops_lru, &cli->cl_lru_list);
->> @@ -1043,6 +1042,7 @@ unsigned long osc_cache_shrink_scan(struct shrinker *sk,
->>  {
->>       struct client_obd *stop_anchor = NULL;
->>       struct client_obd *cli;
->> +     struct client_obd *tmp;
->>       struct lu_env *env;
->>       long shrank = 0;
->>       u16 refcheck;
->> @@ -1059,10 +1059,7 @@ unsigned long osc_cache_shrink_scan(struct shrinker *sk,
->>               return SHRINK_STOP;
->>
->>       spin_lock(&osc_shrink_lock);
->> -     while (!list_empty(&osc_shrink_list)) {
->> -             cli = list_entry(osc_shrink_list.next, struct client_obd,
->> -                              cl_shrink_list);
->> -
->> +     list_for_each_entry_safe(cli, tmp, &osc_shrink_list, cl_shrink_list) {
->>               if (!stop_anchor)
->>                       stop_anchor = cli;
->>               else if (cli == stop_anchor)
->> --
->> 2.7.4
->>
->> --
->> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
->> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
->> To post to this group, send email to outreachy-kernel@googlegroups.com.
->> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1488733610-22289-6-git-send-email-singhalsimran0%40gmail.com.
->> For more options, visit https://groups.google.com/d/optout.
->>
 
