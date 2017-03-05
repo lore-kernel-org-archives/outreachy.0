@@ -1,156 +1,137 @@
-X-GM-THRID: 6258678911053332480
-X-Received: by 10.182.75.196 with SMTP id e4mr11350887obw.36.1457212239813;
-        Sat, 05 Mar 2016 13:10:39 -0800 (PST)
+X-GM-THRID: 6394004878761394176
+X-Received: by 10.98.50.5 with SMTP id y5mr2501205pfy.4.1488720271178;
+        Sun, 05 Mar 2017 05:24:31 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.10.68 with SMTP id u65ls564486ioi.22.gmail; Sat, 05 Mar
- 2016 13:10:39 -0800 (PST)
-X-Received: by 10.107.12.213 with SMTP id 82mr11421222iom.18.1457212239005;
-        Sat, 05 Mar 2016 13:10:39 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x230.google.com (mail-pf0-x230.google.com. [2607:f8b0:400e:c00::230])
-        by gmr-mx.google.com with ESMTPS id y20si2204857pfa.2.2016.03.05.13.10.38
+Received: by 10.36.19.69 with SMTP id 66ls1854409itz.0.gmail; Sun, 05 Mar 2017
+ 05:24:30 -0800 (PST)
+X-Received: by 10.99.119.78 with SMTP id s75mr5148436pgc.124.1488720270252;
+        Sun, 05 Mar 2017 05:24:30 -0800 (PST)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id y90si896834pfa.6.2017.03.05.05.24.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 05 Mar 2016 13:10:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) client-ip=2607:f8b0:400e:c00::230;
+        Sun, 05 Mar 2017 05:24:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
        dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x230.google.com with SMTP id 124so56237328pfg.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 05 Mar 2016 13:10:38 -0800 (PST)
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x242.google.com with SMTP id 67so10344187pfg.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 05 Mar 2017 05:24:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=3L5xRKE3bAiQmhairYt3ceb3zvQ1w5EKIQB05Ljr0qE=;
-        b=qK+/IZG0gZYJigQ8eAXC3OAupzGK0GfmRqdNuP/Bml495ZF7nvqyz24Fn1IFbOAf5j
-         TkyFXC7ybK7a6O1SBz6rxMsRA/fSRW244SEj1teOlE4qHFAFQCeFpWHQ8GNH01hsvQ0P
-         LhcxLz3DBWmSFjrCbPqOun9hZu81Es8+r53lQd4Hu1aqIfYs2+1+96OqYbvfXdkEqp+I
-         NdJr1Yrc6UGdkBZuTyATnNaUxFZ1skaMTNxDMrIOK91ZDfwDV8QbynvpK8OWAG4lUNA/
-         wOD3Qs1y930vlznVnPsNayNTGMX/dbosXVcEysPwlZ04/Lbd5izm37gu4kM90BCNKojU
-         TCyQ==
+        bh=oYggp1+3EDdhSpky9/R36sf04a/FmX+S4G+jxa8g7Gg=;
+        b=ePXmZa8DWrc7kKA5Cq35WjDAoAazXW6+LW931bxA8xZELiIdHuC7iX1SqvQITgMnpI
+         VyGltr+35D7MCMRDxGYJs4tGtylPSKUfBHUAInUD4piQYd+c+mKHMXdB/AmbfscTM9t1
+         Q8r2YCjg35ZQ6TS01jIDwoDEDh6UwYAfGzFOJ0PatBuB7ud0/Dym0KnI/WkSpkQwkrGR
+         FgnVJAX2WjGYUt4vbCUuPZnwPesBKEST4iMArkjD/rPoc2/wWlKvYgaobBdtvP/O9rPP
+         R72N65dfG7zATQwaM7wmpwI4p5MYszo0mlW3Ic065UO89VrTfTCymHj7jYEDQo5bPb/9
+         gJOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=3L5xRKE3bAiQmhairYt3ceb3zvQ1w5EKIQB05Ljr0qE=;
-        b=FDKvBhCB05e/vcLDgtt8mIzKMOjXpHjRh3/DMBimDKefQyWwUZL/hVfEPaa6k1+J87
-         JVg06qGwsi8sj6vx/PQGTjY1/mY2O/k+bMy6fKuMw6OJJCxvi/dx2jqVmSLlB6y/LtEl
-         1NOr1gNX27gmAc7W8vSF6IYPW2hiEYn7CEs80PlTOkdVRdj/t4Q/411niSAkcQ+p2Kp3
-         hVfL3ZSSKTIVu3Z+DId8bhxF9L0wBms4mh7zWvxiPL9RBumni7u1fhxGjqeC6VfefbGA
-         tYhXteiSozymN8bivvhfh2b+bVVj/xQPw2F73cN3RsfuVcb6h+D/Kzn3UQzOC3C7SjkI
-         pOFA==
-X-Gm-Message-State: AD7BkJIZhKrkc39jXombNZhCSysUj0rQLORuPPVfxASw31zTupyePR9FyEjy+uA74EG46w==
-X-Received: by 10.98.13.216 with SMTP id 85mr22106539pfn.143.1457212238848;
-        Sat, 05 Mar 2016 13:10:38 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id yx4sm14325599pac.5.2016.03.05.13.10.37
-        for <outreachy-kernel@googlegroups.com>
+        bh=oYggp1+3EDdhSpky9/R36sf04a/FmX+S4G+jxa8g7Gg=;
+        b=nHjmTnJ7ZBEiqfGOXtXEpPPdU5vzzy615xUiJMRsjxdhXAL148rEl8z4MDBM0X8WKx
+         zeCirK6f+EW6Lw8p0/1jMVyCmLnbHHT7M14k5v70FynUHJZ/MJqvcocZuee1SwuqQF51
+         se1/FuDzdwfi/L/5MyBY/unqSF7yHIJPNP/vAjme6m8C0KZQP5hrmv6AR1eK/WHpt6Tl
+         TiCgcpIBP7ttImTZfnVaFvtN1yoE6pK+Pe8eyhqJ+/sgxREbUoOP4hPxA8BXsYi5LFGr
+         VLkPJfsK8OXD1XLyKtwZEMzgkK8YMscja6Qv4Io/b+F5ExqqGFIPJUA4IW1jNIvaNbP4
+         CFnQ==
+X-Gm-Message-State: AMke39l8Oe7jba0Xy/zUu92n6lVWTZ8dsydWeLnjHM5ZWyP4Taytr8LggEFWjys2BVNLrg==
+X-Received: by 10.98.94.2 with SMTP id s2mr14921696pfb.133.1488720270041;
+        Sun, 05 Mar 2017 05:24:30 -0800 (PST)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from singhal-Inspiron-5558 ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id e70sm29030227pfl.105.2017.03.05.05.24.27
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 05 Mar 2016 13:10:38 -0800 (PST)
-Date: Sun, 6 Mar 2016 02:28:19 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: speakup: Remove multiple assignments
-Message-ID: <20160305205819.GA22644@Karyakshetra>
+        Sun, 05 Mar 2017 05:24:28 -0800 (PST)
+Date: Sun, 5 Mar 2017 18:54:27 +0530
+From: simran singhal <singhalsimran0@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: rtl8192u: Remove unnecessary function and its call
+Message-ID: <20170305132426.GA19802@singhal-Inspiron-5558>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-This patch removes multiple assignments by factorizing them.
+The function ieee80211_tkip_null on being called, simply returns
+back. The function hasn't been mentioned in the TODO and doesn't have
+FIXME code around. Hence, ieee80211_tkip_null and its calls have
+been removed.
 
-This was done with Coccinelle.
+This was done using Coccinelle.
 
-@ identifier i1,i2; constant c; @@
-- i1=i2=c;
-+ i1=c;
-+ i2=c;
+@@
+identifier f;
+@@
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+void f(...) {
+
+-return;
+
+}
+
+Signed-off-by: simran singhal <singhalsimran0@gmail.com>
 ---
- drivers/staging/speakup/main.c | 30 ++++++++++++++++++++----------
- 1 file changed, 20 insertions(+), 10 deletions(-)
+ drivers/staging/rtl8192u/ieee80211/ieee80211.h            | 3 ---
+ drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_tkip.c | 5 -----
+ drivers/staging/rtl8192u/ieee80211/ieee80211_module.c     | 1 -
+ 3 files changed, 9 deletions(-)
 
-diff --git a/drivers/staging/speakup/main.c b/drivers/staging/speakup/main.c
-index eb8d65a..201a968 100644
---- a/drivers/staging/speakup/main.c
-+++ b/drivers/staging/speakup/main.c
-@@ -1188,7 +1188,8 @@ static void do_handle_latin(struct vc_data *vc, u_char value, char up_flag)
-
- 	spin_lock_irqsave(&speakup_info.spinlock, flags);
- 	if (up_flag) {
--		spk_lastkey = spk_keydown = 0;
-+		spk_lastkey = 0;
-+		spk_keydown = 0;
- 		spin_unlock_irqrestore(&speakup_info.spinlock, flags);
- 		return;
- 	}
-@@ -1662,7 +1663,8 @@ static void cursor_done(u_long data)
- 	if (win_enabled) {
- 		if (vc->vc_x >= win_left && vc->vc_x <= win_right &&
- 		    vc->vc_y >= win_top && vc->vc_y <= win_bottom) {
--			spk_keydown = is_cursor = 0;
-+			spk_keydown = 0;
-+			is_cursor = 0;
- 			goto out;
- 		}
- 	}
-@@ -1672,7 +1674,8 @@ static void cursor_done(u_long data)
- 	}
- 	if (cursor_track == CT_Highlight) {
- 		if (speak_highlight(vc)) {
--			spk_keydown = is_cursor = 0;
-+			spk_keydown = 0;
-+			is_cursor = 0;
- 			goto out;
- 		}
- 	}
-@@ -1682,7 +1685,8 @@ static void cursor_done(u_long data)
- 		say_line_from_to(vc, 0, vc->vc_cols, 0);
- 	else
- 		say_char(vc);
--	spk_keydown = is_cursor = 0;
-+	spk_keydown = 0;
-+	is_cursor = 0;
- out:
- 	spin_unlock_irqrestore(&speakup_info.spinlock, flags);
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211.h b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
+index 176083e..1babc37 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211.h
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
+@@ -236,8 +236,6 @@ struct cb_desc {
+ 
+ #define ieee80211_ccmp_null		ieee80211_ccmp_null_rsl
+ 
+-#define ieee80211_tkip_null		ieee80211_tkip_null_rsl
+-
+ #define free_ieee80211			free_ieee80211_rsl
+ #define alloc_ieee80211			alloc_ieee80211_rsl
+ 
+@@ -2266,7 +2264,6 @@ void ieee80211_ps_tx_ack(struct ieee80211_device *ieee, short success);
+ void softmac_mgmt_xmit(struct sk_buff *skb, struct ieee80211_device *ieee);
+ 
+ /* ieee80211_crypt_ccmp&tkip&wep.c */
+-void ieee80211_tkip_null(void);
+ 
+ int ieee80211_crypto_init(void);
+ void ieee80211_crypto_deinit(void);
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_tkip.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_tkip.c
+index df94021..54ca69e 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_tkip.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_tkip.c
+@@ -785,8 +785,3 @@ void __exit ieee80211_crypto_tkip_exit(void)
+ 	ieee80211_unregister_crypto_ops(&ieee80211_crypt_tkip);
  }
-@@ -1862,8 +1866,10 @@ static void speakup_win_set(struct vc_data *vc)
-
- static void speakup_win_clear(struct vc_data *vc)
- {
--	win_top = win_bottom = 0;
--	win_left = win_right = 0;
-+	win_top = 0;
-+	win_bottom = 0;
-+	win_left = 0;
-+	win_right = 0;
- 	win_start = 0;
- 	synth_printf("%s\n", spk_msg_get(MSG_WINDOW_CLEARED));
- }
-@@ -1998,10 +2004,14 @@ static u_char key_speakup, spk_key_locked;
-
- static void speakup_lock(struct vc_data *vc)
- {
--	if (!spk_key_locked)
--		spk_key_locked = key_speakup = 16;
--	else
--		spk_key_locked = key_speakup = 0;
-+	if (!spk_key_locked) {
-+		spk_key_locked = 16;
-+		key_speakup = 16;
-+	}
-+	else {
-+		spk_key_locked = 0;
-+		key_speakup = 0;
-+	}
- }
-
- typedef void (*spkup_hand) (struct vc_data *);
---
-2.1.4
+ 
+-void ieee80211_tkip_null(void)
+-{
+-//    printk("============>%s()\n", __func__);
+-	return;
+-}
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c
+index a791175..bb52eee 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_module.c
+@@ -176,7 +176,6 @@ struct net_device *alloc_ieee80211(int sizeof_priv)
+ 	}
+ 
+ /* These function were added to load crypte module autoly */
+-	ieee80211_tkip_null();
+ 
+ 	return dev;
+ 
+-- 
+2.7.4
 
 
