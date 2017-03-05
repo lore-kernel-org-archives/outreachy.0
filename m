@@ -1,21 +1,21 @@
 X-GM-THRID: 6392958806119153664
-X-Received: by 10.99.61.207 with SMTP id k198mr4119334pga.3.1488694532594;
+X-Received: by 10.157.11.14 with SMTP id a14mr4198257ota.51.1488694532566;
         Sat, 04 Mar 2017 22:15:32 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.61.119 with SMTP id a110ls594828otc.29.gmail; Sat, 04 Mar
+Received: by 10.157.59.194 with SMTP id k60ls11171739otc.22.gmail; Sat, 04 Mar
  2017 22:15:32 -0800 (PST)
-X-Received: by 10.157.11.109 with SMTP id p42mr4405953otd.14.1488694532271;
+X-Received: by 10.157.43.184 with SMTP id u53mr4462332ota.33.1488694532272;
         Sat, 04 Mar 2017 22:15:32 -0800 (PST)
 Received: by 10.55.73.143 with SMTP id w137msqka;
-        Sat, 4 Mar 2017 16:52:35 -0800 (PST)
-X-Received: by 10.46.88.9 with SMTP id m9mr1435920ljb.25.1488675154517;
-        Sat, 04 Mar 2017 16:52:34 -0800 (PST)
+        Sat, 4 Mar 2017 17:21:49 -0800 (PST)
+X-Received: by 10.28.104.2 with SMTP id d2mr252535wmc.12.1488676909246;
+        Sat, 04 Mar 2017 17:21:49 -0800 (PST)
 Return-Path: <jsimmons@infradead.org>
 Received: from casper.infradead.org (casper.infradead.org. [2001:770:15f::2])
-        by gmr-mx.google.com with ESMTPS id v201si500153wmv.3.2017.03.04.16.52.34
+        by gmr-mx.google.com with ESMTPS id e72si444444wma.0.2017.03.04.17.21.46
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 04 Mar 2017 16:52:34 -0800 (PST)
+        Sat, 04 Mar 2017 17:21:46 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of jsimmons@infradead.org designates 2001:770:15f::2 as permitted sender) client-ip=2001:770:15f::2;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@infradead.org;
@@ -26,29 +26,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
 	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	 bh=hFoQwirnFQjRfX/0RUT0DdEOJnb/z5sZHYY91jiz2Aw=; b=HhrdIW1XV7JU40ZE5vi4c0aOp
-	eovpk6tGMvn5aInzRg+tf1fTUSyw2I/PwmMf9FndyXqXpkOlYtTo0iDeLsrOtZfE5h1NaSmuaNSxZ
-	uE5Untf1HQeKxMT6hVokJcLyCShgx6mJhAtURdqp2JOpJnLbcfdzmqGf1RB7+yOaHlcVhk1QjE053
-	u0A0VE/wTY8lqRI6XP4S8QVU5FFuOgSar1JX+fLsMUrqRmeAljFHmFKU+LSLU1nd+RBlhaOlatmhj
-	Q6qca3GAaC7nsgGaF2sezR3gmB044A8WjyHZ12RE2ol3LqzWBTwCcgq/zC4oASNLu/xO48oPUlS8d
-	m6wEFPaRg==;
+	 bh=hFoQwirnFQjRfX/0RUT0DdEOJnb/z5sZHYY91jiz2Aw=; b=dC8ImoVp81hKncR/oMQEbjkXS
+	pf/dG0xXjkya3BvYKR7IlDw6D3/fNnWZ6XCCCVhjLWPX1QBpDmSJE0bUS/1x8I6+hVxgMNJ6WBQIa
+	/eGaBdzcvTwA+GZXDu1XCc6Vry77VFOw/0ErRZDeBmU1bfj8HsthjfwbAw9T+051ZmeCNF7dXKRA5
+	Oj3U6+3oZBNpkwUB2RUNiWpJjzqoCM3/YWc1yUntPGmJOf5BOl1xsXPHOCW1XJnYXWkK9Bpa+OfJX
+	f+mHJuNL67W9m5GGoshOaPlerU5uEoke7kfSY8UJSu0cEQf8eVKcB5kfEC4S72lfOfe6Rdt8NiGLF
+	/8fLh8xTA==;
 Received: from jsimmons (helo=localhost)
 	by casper.infradead.org with local-esmtp (Exim 4.87 #1 (Red Hat Linux))
-	id 1ckKPX-00031A-DO; Sun, 05 Mar 2017 00:52:33 +0000
-Date: Sun, 5 Mar 2017 00:52:31 +0000 (GMT)
+	id 1ckKrm-0003lJ-2x; Sun, 05 Mar 2017 01:21:44 +0000
+Date: Sun, 5 Mar 2017 01:21:42 +0000 (GMT)
 From: James Simmons <jsimmons@infradead.org>
 To: Gargi Sharma <gs051095@gmail.com>
 cc: outreachy-kernel@googlegroups.com, oleg.drokin@intel.com, 
     andreas.dilger@intel.com, gregkh@linuxfoundation.org
 Subject: Re: [PATCH] staging: lustre: Remove lustre_eacl.h
 In-Reply-To: <1488476575-16322-1-git-send-email-gs051095@gmail.com>
-Message-ID: <alpine.LFD.2.20.1703050052210.10898@casper.infradead.org>
+Message-ID: <alpine.LFD.2.20.1703050121310.10898@casper.infradead.org>
 References: <1488476575-16322-1-git-send-email-gs051095@gmail.com>
 User-Agent: Alpine 2.20 (LFD 67 2015-01-07)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20170305_005231_477191_A5272DB1 
+X-CRM114-CacheID: sfid-20170305_012142_122262_DFBE7845 
 X-CRM114-Status: GOOD (  19.21  )
 X-Spam-Score: -1.9 (-)
 X-Spam-Report: SpamAssassin version 3.4.1 on casper.infradead.org summary:
