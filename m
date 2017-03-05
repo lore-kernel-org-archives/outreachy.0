@@ -1,25 +1,25 @@
 X-GM-THRID: 6394061646033059840
-X-Received: by 10.46.33.163 with SMTP id h35mr2009785lji.17.1488734251794;
-        Sun, 05 Mar 2017 09:17:31 -0800 (PST)
+X-Received: by 10.25.104.21 with SMTP id d21mr1499694lfc.31.1488734135817;
+        Sun, 05 Mar 2017 09:15:35 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.84.73 with SMTP id y9ls1268398ljd.8.gmail; Sun, 05 Mar 2017
- 09:17:31 -0800 (PST)
-X-Received: by 10.46.81.66 with SMTP id b2mr1750048lje.3.1488734251353;
-        Sun, 05 Mar 2017 09:17:31 -0800 (PST)
+Received: by 10.46.69.66 with SMTP id s63ls1283182lja.0.gmail; Sun, 05 Mar
+ 2017 09:15:35 -0800 (PST)
+X-Received: by 10.25.201.198 with SMTP id z189mr562770lff.15.1488734135421;
+        Sun, 05 Mar 2017 09:15:35 -0800 (PST)
 Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id y19si1091896wmd.0.2017.03.05.09.17.31
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id y19si1091585wmd.0.2017.03.05.09.15.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 05 Mar 2017 09:17:31 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sun, 05 Mar 2017 09:15:35 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.35,249,1484002800"; 
-   d="scan'208";a="263195260"
+   d="scan'208";a="215631892"
 Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 05 Mar 2017 18:17:30 +0100
-Date: Sun, 5 Mar 2017 18:17:20 +0100 (CET)
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 05 Mar 2017 18:15:34 +0100
+Date: Sun, 5 Mar 2017 18:15:23 +0100 (CET)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: simran singhal <singhalsimran0@gmail.com>
@@ -30,18 +30,13 @@ cc: oleg.drokin@intel.com, andreas.dilger@intel.com, jsimmons@infradead.org,
 Subject: Re: [Outreachy kernel] [PATCH 5/5] staging: lustre: osc_page.c: Use
  list_for_each_entry_safe
 In-Reply-To: <1488733610-22289-6-git-send-email-singhalsimran0@gmail.com>
-Message-ID: <alpine.DEB.2.20.1703051816120.3052@hadrien>
+Message-ID: <alpine.DEB.2.20.1703051814170.3052@hadrien>
 References: <1488733610-22289-1-git-send-email-singhalsimran0@gmail.com> <1488733610-22289-6-git-send-email-singhalsimran0@gmail.com>
 User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 
-By the way, the above subject line is not correct.  Normally one does not
-put .c/.h in the subject line.  Indeed, there is not really any
-deterministic algorithm for choosing the subject line.  You need to run
-git log --oneline filename to see what others have done.
 
-julia
 
 On Sun, 5 Mar 2017, simran singhal wrote:
 
@@ -52,6 +47,14 @@ On Sun, 5 Mar 2017, simran singhal wrote:
 >
 > This patch replaces the while loop containing list_empty and list_entry
 > with list_for_each_entry_safe.
+
+list_for_each_entry_safe is only needed when the current element is
+removed from the list within the loop body.  If that is not the case, you
+can just use list_for_each_entry.
+
+julia
+
+
 >
 > This was done with Coccinelle.
 >
