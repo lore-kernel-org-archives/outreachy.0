@@ -1,53 +1,53 @@
 X-GM-THRID: 6394061646033059840
-X-Received: by 10.237.36.165 with SMTP id t34mr4222501qtc.50.1488733497432;
-        Sun, 05 Mar 2017 09:04:57 -0800 (PST)
+X-Received: by 10.129.117.193 with SMTP id q184mr5436311ywc.63.1488733492339;
+        Sun, 05 Mar 2017 09:04:52 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.191.134 with SMTP id p128ls4070217iof.31.gmail; Sun, 05
- Mar 2017 09:04:56 -0800 (PST)
-X-Received: by 10.36.40.195 with SMTP id h186mr2766669ith.27.1488733496358;
-        Sun, 05 Mar 2017 09:04:56 -0800 (PST)
+Received: by 10.157.41.33 with SMTP id d30ls13385131otb.17.gmail; Sun, 05 Mar
+ 2017 09:04:52 -0800 (PST)
+X-Received: by 10.31.140.19 with SMTP id o19mr2423543vkd.33.1488733492028;
+        Sun, 05 Mar 2017 09:04:52 -0800 (PST)
 Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id u12si950751pfd.3.2017.03.05.09.04.56
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id y90si951472pfa.6.2017.03.05.09.04.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 05 Mar 2017 09:04:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Sun, 05 Mar 2017 09:04:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id 25so17501377pgy.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 05 Mar 2017 09:04:56 -0800 (PST)
+Received: by mail-pf0-x242.google.com with SMTP id v190so4193131pfb.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 05 Mar 2017 09:04:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=bGfVvcPlu5dgCn8pG7Vf0upEH7qnedc11ZZzYpAqT4U=;
-        b=VpxUL+FJsbgS9Q2/ig6Zsyv8MHP1SVn0kFiSSZrWBHeuXgZBRTRj3aTR1A7rHeM/M4
-         r/md2wFuxOQBe7G9nzH4YZbruDsyCigfXsPnn+wCfSOpTl6AJ1m7EIPDh25Di/sA48et
-         B7B3KUeulfEdLia+BciEuo9d6G7t+ydF822rb0VXtwUSMa7sz4IQbmWdirBebixTuucZ
-         7OUCwhNR5yJIYrAu9MXqcQ7zn4z2T0N85IJV+/V7uCGPGYlIv2XE/f8LMjCZTvox49PV
-         BiigR6I5eyePdiNlA+g7OIY2pTkzBa2eWw4qe98tH+8YRcRj7FsEHUgANpencFeanwN5
-         c6mA==
+        bh=ABJ+cZeUto2sdrQ82sLqwh/b1LLvZm2yFhSpbqUFI/Y=;
+        b=DxrTCZTL0OZBBZ+VB3A2mHwdpl4MRv3EvjF+xE/vSgEOSatCIMP0IXdrscCRvrdOQ8
+         LBULnCJG0XEqEeu0P6k+OXD/cAQZ1NnjoMHSmttXWyb3s5KAUqYxNim0PeKvbRafA+Zn
+         Yi1INtdSbM3PJBgKpYIFVP+v8EshSEU1m2clmtYO1B4ucDJCkSZeMYn5HFWQ2Faxya8m
+         r6i2EQ/DwgLEPkUmj2O6H291hJ0gXkWx0mAzZaZX7wvD7XEhwpGvLkbgu97vIJ1tt9R4
+         4BhM3OwMANz0xLQXEK/zVFAYMGSUlvlDNW8EOcfRHS2BZNVtM3BhdFKv2OHZlvaZxz1h
+         FluQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=bGfVvcPlu5dgCn8pG7Vf0upEH7qnedc11ZZzYpAqT4U=;
-        b=aiSdSaXgUu5IuyuC9RACvnhVcs3KU2HS1mqB748bIZMBqwoEKTZfaDoxuRnIGuYofZ
-         bX3/oD7ZjZ8nyL+vncByMrsEoxGLdOG0gaJedvmulhFStB34AQOwtlELXCFWwVicG3Yu
-         lB5xqJea3XCRGOqXYE0I0e+kSYoo9UnJtoQDBXvc7NiSlyo9mazP8vHQ5VWaS+nzTDyD
-         G4BqMWIJz/Qb1C0MtXvw1z34DiU7GDt7NzgQfbasAMF7VlkrCNoxzYDDNMchnE6HQ+al
-         6+IPx8hyLp9AD3uTZGtcr+pW/FDe3LElH29ncR+Spt6mxpPyye7ULjns+AJTC+a/Huzz
-         qG0Q==
-X-Gm-Message-State: AMke39l034jJFbU8swYF20fid1eQsJsl809qn9Tpj5j8BwCfOsXtT2ToHmSwrUx4EPZbWQ==
-X-Received: by 10.99.137.66 with SMTP id v63mr14906812pgd.207.1488733495777;
-        Sun, 05 Mar 2017 09:04:55 -0800 (PST)
+        bh=ABJ+cZeUto2sdrQ82sLqwh/b1LLvZm2yFhSpbqUFI/Y=;
+        b=VFK/PTWxnazw2JWT/ASai5rVg0PPZz1Q9mJtP8enkHX8SG3gSk/naxjaDYo/VKpqI6
+         JozmS9PUiGZ0FrqngvtV9wtY5VzeEJ0idXhuFi8Uo5vv0owu7HJ0Z8e5cOiqsXySNXf9
+         E1Gue5EyedCbvdCca7Qfc3oVidpMxdpMUZDq5Vf7dBhF4Ci6uS+LHNLicEERjqNsIB2z
+         fuGxw7vQtQG0+zJ5Mivw8eA6jbhju1msENlqtfZIvNQTTrX3y/bo27zyJjRrxKVHPHk3
+         gFPYasgXYGAuf/bre8QqYxJMSUMStfRGQueuZ5pJcHpCoeyd4ZXoGWluCXzP27rPC4K8
+         rOtg==
+X-Gm-Message-State: AMke39n7hKtpgIfUz7FaT9+QUuPG6vGPpPJ1JNgo6zcbs3vT0vIs5CoJa0lQlnolEp4EuA==
+X-Received: by 10.84.129.3 with SMTP id 3mr19800011plb.150.1488733491785;
+        Sun, 05 Mar 2017 09:04:51 -0800 (PST)
 Return-Path: <singhalsimran0@gmail.com>
 Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id p129sm34470976pfp.118.2017.03.05.09.04.54
+        by smtp.gmail.com with ESMTPSA id a77sm34505010pfl.91.2017.03.05.09.04.50
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 05 Mar 2017 09:04:54 -0800 (PST)
+        Sun, 05 Mar 2017 09:04:50 -0800 (PST)
 From: simran singhal <singhalsimran0@gmail.com>
 To: oleg.drokin@intel.com
 Cc: andreas.dilger@intel.com,
@@ -57,9 +57,9 @@ Cc: andreas.dilger@intel.com,
 	devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/5] staging: lustre: ptlrpc: Use list_for_each_entry_safe
-Date: Sun,  5 Mar 2017 22:36:47 +0530
-Message-Id: <1488733610-22289-3-git-send-email-singhalsimran0@gmail.com>
+Subject: [PATCH 1/5] staging: lustre: Use list_for_each_entry_safe
+Date: Sun,  5 Mar 2017 22:36:46 +0530
+Message-Id: <1488733610-22289-2-git-send-email-singhalsimran0@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1488733610-22289-1-git-send-email-singhalsimran0@gmail.com>
 References: <1488733610-22289-1-git-send-email-singhalsimran0@gmail.com>
@@ -94,28 +94,32 @@ T *I1;
 
 Signed-off-by: simran singhal <singhalsimran0@gmail.com>
 ---
- drivers/staging/lustre/lustre/ptlrpc/sec_gc.c | 5 ++---
+ drivers/staging/lustre/lustre/ptlrpc/service.c | 5 ++---
  1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/lustre/lustre/ptlrpc/sec_gc.c b/drivers/staging/lustre/lustre/ptlrpc/sec_gc.c
-index 8ffd000..fe1c0af 100644
---- a/drivers/staging/lustre/lustre/ptlrpc/sec_gc.c
-+++ b/drivers/staging/lustre/lustre/ptlrpc/sec_gc.c
-@@ -98,12 +98,11 @@ void sptlrpc_gc_del_sec(struct ptlrpc_sec *sec)
- static void sec_process_ctx_list(void)
+diff --git a/drivers/staging/lustre/lustre/ptlrpc/service.c b/drivers/staging/lustre/lustre/ptlrpc/service.c
+index b8091c1..4e7dc1d 100644
+--- a/drivers/staging/lustre/lustre/ptlrpc/service.c
++++ b/drivers/staging/lustre/lustre/ptlrpc/service.c
+@@ -2314,6 +2314,7 @@ static void ptlrpc_svcpt_stop_threads(struct ptlrpc_service_part *svcpt)
  {
- 	struct ptlrpc_cli_ctx *ctx;
-+	struct ptlrpc_cli_ctx *tmp;
+ 	struct l_wait_info lwi = { 0 };
+ 	struct ptlrpc_thread *thread;
++	struct ptlrpc_thread *tmp;
+ 	LIST_HEAD(zombie);
  
- 	spin_lock(&sec_gc_ctx_list_lock);
+ 	CDEBUG(D_INFO, "Stopping threads for service %s\n",
+@@ -2329,9 +2330,7 @@ static void ptlrpc_svcpt_stop_threads(struct ptlrpc_service_part *svcpt)
  
--	while (!list_empty(&sec_gc_ctx_list)) {
--		ctx = list_entry(sec_gc_ctx_list.next,
--				 struct ptlrpc_cli_ctx, cc_gc_chain);
-+	list_for_each_entry_safe(ctx, tmp, &sec_gc_ctx_list, cc_gc_chain) {
- 		list_del_init(&ctx->cc_gc_chain);
- 		spin_unlock(&sec_gc_ctx_list_lock);
+ 	wake_up_all(&svcpt->scp_waitq);
  
+-	while (!list_empty(&svcpt->scp_threads)) {
+-		thread = list_entry(svcpt->scp_threads.next,
+-				    struct ptlrpc_thread, t_link);
++	list_for_each_entry_safe(thread, tmp, &svcpt->scp_threads, t_link) {
+ 		if (thread_is_stopped(thread)) {
+ 			list_del(&thread->t_link);
+ 			list_add(&thread->t_link, &zombie);
 -- 
 2.7.4
 
