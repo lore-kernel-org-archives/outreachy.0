@@ -1,24 +1,24 @@
 X-GM-THRID: 6392494565268389888
-X-Received: by 10.107.157.6 with SMTP id g6mr6007587ioe.79.1488804946232;
-        Mon, 06 Mar 2017 04:55:46 -0800 (PST)
+X-Received: by 10.176.91.8 with SMTP id u8mr4368325uae.33.1488804600354;
+        Mon, 06 Mar 2017 04:50:00 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.237.77 with SMTP id r74ls2399452ith.11.gmail; Mon, 06 Mar
- 2017 04:55:45 -0800 (PST)
-X-Received: by 10.99.23.95 with SMTP id 31mr6582222pgx.122.1488804945446;
-        Mon, 06 Mar 2017 04:55:45 -0800 (PST)
+Received: by 10.157.9.185 with SMTP id q54ls11221749otd.11.gmail; Mon, 06 Mar
+ 2017 04:49:59 -0800 (PST)
+X-Received: by 10.157.51.165 with SMTP id u37mr6828590otc.77.1488804599906;
+        Mon, 06 Mar 2017 04:49:59 -0800 (PST)
 Return-Path: <gregkh@linuxfoundation.org>
 Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id s64si18254pfk.0.2017.03.06.04.55.45
+        by gmr-mx.google.com with ESMTPS id y90si8563pfa.6.2017.03.06.04.49.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 06 Mar 2017 04:55:45 -0800 (PST)
+        Mon, 06 Mar 2017 04:49:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
 Received: from localhost (unknown [37.168.44.83])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 20925949;
-	Mon,  6 Mar 2017 12:55:43 +0000 (UTC)
-Date: Mon, 6 Mar 2017 13:55:37 +0100
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id C2DF1412;
+	Mon,  6 Mar 2017 12:49:58 +0000 (UTC)
+Date: Mon, 6 Mar 2017 13:49:52 +0100
 From: Greg KH <gregkh@linuxfoundation.org>
 To: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
 Cc: swarren@wwwdotorg.org, lee@kernel.org, eric@anholt.net,
@@ -26,7 +26,7 @@ Cc: swarren@wwwdotorg.org, lee@kernel.org, eric@anholt.net,
 	outreachy-kernel@googlegroups.com
 Subject: Re: [PATCH v3 1/2] staging: vc04_services: bcm2835-camera: Move min
  calculation outside the loop
-Message-ID: <20170306125537.GA26535@kroah.com>
+Message-ID: <20170306124952.GA25968@kroah.com>
 References: <cover.1488381635.git.narcisaanamaria12@gmail.com>
  <e56b661d6e62e48626989f052a5e1603fb1e6913.1488381635.git.narcisaanamaria12@gmail.com>
 MIME-Version: 1.0
@@ -68,7 +68,7 @@ On Wed, Mar 01, 2017 at 05:37:13PM +0200, Narcisa Ana Maria Vasile wrote:
 > +	min_size = cam_info.num_cameras > num_resolutions ?
 > +		   num_resolutions : cam_info.num_cameras;
 
-Again, just use min().
+We have a min() macro, why not just use that instead?
 
 thanks,
 
