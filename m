@@ -1,120 +1,213 @@
-X-GM-THRID: 6526261510442844160
-X-Received: by 10.176.80.248 with SMTP id d53mr3206803uaa.43.1519513668889;
-        Sat, 24 Feb 2018 15:07:48 -0800 (PST)
+X-GM-THRID: 6394100888766513152
+X-Received: by 10.25.24.65 with SMTP id o62mr1777631lfi.8.1488808224972;
+        Mon, 06 Mar 2017 05:50:24 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.159.38.99 with SMTP id 90ls110358uag.7.gmail; Sat, 24 Feb 2018
- 15:07:47 -0800 (PST)
-X-Google-Smtp-Source: AG47ELtNnFqE2jEoUFfjrsyu3vn9VjT/9bQuvnzMKEGYHy110T4obR17+7cSXsyVdG9S470qnHbp
-X-Received: by 10.176.8.92 with SMTP id b28mr3253495uaf.53.1519513667330;
-        Sat, 24 Feb 2018 15:07:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519513667; cv=none;
-        d=google.com; s=arc-20160816;
-        b=DsetkbPbNzZtKq8grf7AMOJgLhmldl3DvYa/sGSY3cNJOG6AgGfJdUkj4eo3YuL6zs
-         7SGDjdgBzJHQz/YwMqMOgTJdattmfQM72vqBIYyfFZRbCX0VPuO7JJNPGX3sTgLxv24i
-         OQwtfmmkcD1jla5uMIOzwcPjdT9Umg3AUw8TvTbi7PmRR73UAUVhJqLNLbltZA/kCj0w
-         sCyxvzaL5xqnPpcpCQW6tYQBsw/jfNr6Q70zOu6WdwvmKOnrqzyGex9XeSjB7r9DFfJn
-         YVSMjeuXvt5SktGUNcjb6Jp2GsiARnUJa3sHV2uw/GNR7+kvUDwiJ54xSyviWBaqWIKs
-         INog==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=kPMc2QAdV3kn5nOLs+iwVVdknTGWbL8NXUV9+yAHkI4=;
-        b=BOFffBATfKnV5Lju0FhPS9e2d9eE1uQnW4VJD8gp+cToL4ubPOPlj75JxCJpgpBukF
-         KDuHk1sBhMydBbr+flBtACHHJ4rU0YD4/J9t1QILqnWUHan0JKqpq2K7xWeN3gE9qrXc
-         cDBEGO9lEHngngsjl18U+qL7f0GQkuzhe4ocWOUKU4N/KwfQuybFozbXOVOPfF5xnDx8
-         49tdDR8YIXcS5K22Pak/C2TjodeuMsn5JdJmqvj6Bw6zMr4zqupmx6Fl05Lvb8H0UkNV
-         G8GDvPMLF4ydjJuRJCEQ8webM01JKEs3eYsRGKo9QOLbUZ5d5Js/M/mosDHLJJxhTD0D
-         1QvA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UQqiwFhc;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::241 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <santhameena13@gmail.com>
-Received: from mail-pl0-x241.google.com (mail-pl0-x241.google.com. [2607:f8b0:400e:c01::241])
-        by gmr-mx.google.com with ESMTPS id c184si378433vkf.5.2018.02.24.15.07.47
+Received: by 10.46.84.73 with SMTP id y9ls1411086ljd.8.gmail; Mon, 06 Mar 2017
+ 05:50:24 -0800 (PST)
+X-Received: by 10.25.79.23 with SMTP id d23mr1824338lfb.27.1488808224514;
+        Mon, 06 Mar 2017 05:50:24 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id e72si15682wma.0.2017.03.06.05.50.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Feb 2018 15:07:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::241 as permitted sender) client-ip=2607:f8b0:400e:c01::241;
+        Mon, 06 Mar 2017 05:50:24 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UQqiwFhc;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::241 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl0-x241.google.com with SMTP id u13so7078843plq.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 24 Feb 2018 15:07:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=kPMc2QAdV3kn5nOLs+iwVVdknTGWbL8NXUV9+yAHkI4=;
-        b=UQqiwFhcN31+PlasGfCpDnJ+yIBnfU5YqlOiZ3PruKaO893/+vW5nLs0YG41hNIQmR
-         Cu+ofvHWy1Spm2Qd51D1oxDy1W1MPxpW6V4K6evlwl1pY0j0bcEKRPOFu1AG8efAw2Kc
-         wACyk85Ghy/JtSpodpiZUkmSZ+sHfwAWiquUlTRaFU9Ob57UBABUmQ3tGdsU08XSAr8N
-         fV/1X/lQKsWANbdWXKbtGflFY2eL9Gunxs6SjSpeV9bjtH17OIrU5VLXdXtZ9ERaTf4v
-         JG5s4UcH6dsn1kUOY0u13nh+Z1M/KCRijbz+Qkuv8Xz/n6mn5+H6sZQNlnXs7SIhM3kX
-         wPIg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=kPMc2QAdV3kn5nOLs+iwVVdknTGWbL8NXUV9+yAHkI4=;
-        b=tcfXhXsDdvOFkknQqwCrm5ijdJJTIbaeEyIWDKtLAVIlc2yxv3sNe2IAApOaia7NKk
-         oPYC1DG8dkAx7JIj+PLOMmEQlF7dtlWgpGgyiv+3EUefOgNHiZ6o4p/DeFsUWzG1suGv
-         tyXPYU9hkmLekIj0s35mgmLjjoO+jMweqaLdGGUwhBnebFMhB75L1gcaX5UYYmOzUQ8o
-         d4oNJZ4+ypQtB+rPvM8dDGUn2tZdPSnEWN1o9c5mq6G1lwJ4R1O6KaKIM3mDl5oO6f5u
-         TmDVaBb8DDioxZ5Ppi2azfNQcNNY5KuNbS2mu+MF4GzvJp2RrQOCO2Vu7EZElqqdUepM
-         a/qw==
-X-Gm-Message-State: APf1xPB0xDSBhZZFZcHuP2VSGf/bYLH0O0ZVafIVh5Met1iGzaeXdQXZ
-	D/HjLizgxKnLW29m1Osnlhs=
-X-Received: by 2002:a17:902:64d7:: with SMTP id y23-v6mr6001205pli.258.1519513666393;
-        Sat, 24 Feb 2018 15:07:46 -0800 (PST)
-Return-Path: <santhameena13@gmail.com>
-Received: from localhost.localdomain (ResNet-23-0.resnet.ucsb.edu. [169.231.23.0])
-        by smtp.gmail.com with ESMTPSA id y84sm11060516pff.81.2018.02.24.15.07.44
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 24 Feb 2018 15:07:45 -0800 (PST)
-From: Santha Meena Ramamoorthy <santhameena13@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: oleg.drokin@intel.com,
-	andreas.dilger@intel.com,
-	jsimmons@infradead.org,
-	outreachy-kernel@googlegroups.com,
-	Santha Meena Ramamoorthy <santhameena13@gmail.com>
-Subject: [PATCH] staging: lustre: remove else after return statement
-Date: Sat, 24 Feb 2018 15:07:39 -0800
-Message-Id: <1519513659-12304-1-git-send-email-santhameena13@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,253,1484002800"; 
+   d="scan'208";a="215736684"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 06 Mar 2017 14:50:23 +0100
+Date: Mon, 6 Mar 2017 14:50:11 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Tamara Diaconita <diaconitatamara@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, w.d.hubbs@gmail.com, 
+    chris@the-brannons.com, kirk@reisers.ca, samuel.thibault@ens-lyon.org, 
+    gregkh@linuxfoundation.org, diaconita.tamara@gmail.com
+Subject: Re: [Outreachy kernel] Re: [PATCH 3/3] staging:speakup:keyhelp.c:
+ Remove unnecessary else
+In-Reply-To: <4efe0441-12da-4574-bd58-0a5a95af2977@googlegroups.com>
+Message-ID: <alpine.DEB.2.20.1703061449490.3078@hadrien>
+References: <20170305193701.20390-1-diaconita.tamara@gmail.com> <ae948b29-c3d0-40d3-94a0-31df90500e76@googlegroups.com> <alpine.DEB.2.20.1703061237370.3078@hadrien> <4efe0441-12da-4574-bd58-0a5a95af2977@googlegroups.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: multipart/mixed; BOUNDARY="8323329-2120630640-1488808212=:3078"
 
-Remove else after a return statement as it is not useful. Issue found
-using checkpatch.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Signed-off-by: Santha Meena Ramamoorthy <santhameena13@gmail.com>
----
- drivers/staging/lustre/lustre/llite/llite_lib.c | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
+--8323329-2120630640-1488808212=:3078
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-diff --git a/drivers/staging/lustre/lustre/llite/llite_lib.c b/drivers/staging/lustre/lustre/llite/llite_lib.c
-index 9e96a8e..93707e5 100644
---- a/drivers/staging/lustre/lustre/llite/llite_lib.c
-+++ b/drivers/staging/lustre/lustre/llite/llite_lib.c
-@@ -1193,13 +1193,12 @@ static int ll_update_lsm_md(struct inode *inode, struct lustre_md *md)
- 			lmv_free_memmd(lli->lli_lsm_md);
- 			lli->lli_lsm_md = NULL;
- 			return 0;
--		} else {
--			/*
--			 * The lustre_md from req does not include stripeEA,
--			 * see ll_md_setattr
--			 */
--			return 0;
- 		}
-+		/*
-+		 * The lustre_md from req does not include stripeEA,
-+		 * see ll_md_setattr
-+		 */
-+		return 0;
- 	}
- 
- 	/* set the directory layout */
--- 
-2.7.4
 
+
+On Mon, 6 Mar 2017, Tamara Diaconita wrote:
+
+> Thank you for your explanations!
+> Should I resend the patch set without this patch?
+
+OK
+
+julia
+
+>
+> luni, 6 martie 2017, 13:41:29 UTC+2, Julia Lawall a scris:
+>
+>
+>       On Mon, 6 Mar 2017, Tamara Diaconita wrote:
+>
+>       > Did I do something wrong? In this case I see that the if
+>       statement finish
+>       > with a return.
+>
+>       The structure is complex is this case.  For a simpler example,
+>       suppose you
+>       have
+>
+>       if (x)
+>         print "hello"
+>       else if (y)
+>         return;
+>       else print "goodbye"
+>
+>       The original program prints hello or goodbye (or nothing), but
+>       not both.
+>       If you remove the final else, it may print hello goodbye.  The
+>       structure
+>       of your code is like this.  The KT_LATIN and KT_CUR cases might
+>       not
+>       return.
+>
+>       Chckpatch just looks at very local structure.  It doesn't follow
+>       the
+>       entire control flow, so it can have false positives like this.
+>
+>       julia
+>
+>       >
+>       > duminică, 5 martie 2017, 21:37:05 UTC+2, Tamara Diaconita a
+>       scris:
+>       >       Fixed the checkpath.pl WARNING:
+>       >       Else is not generally useful after a break return.
+>       >
+>       >       Deleted the 'else' structure.
+>       >       Deleted extra tabs which remained after the 'else'
+>       structure was
+>       >       removed.
+>       >
+>       >       Signed-off-by: Tamara Diaconita <diaconit...@gmail.com>
+>       >       ---
+>       >        drivers/staging/speakup/keyhelp.c | 44
+>       >       +++++++++++++++++++--------------------
+>       >        1 file changed, 22 insertions(+), 22 deletions(-)
+>       >
+>       >       diff --git a/drivers/staging/speakup/keyhelp.c
+>       >       b/drivers/staging/speakup/keyhelp.c
+>       >       index 2ef7370..0e0efc46 100644
+>       >       --- a/drivers/staging/speakup/keyhelp.c
+>       >       +++ b/drivers/staging/speakup/keyhelp.c
+>       >       @@ -176,30 +176,30 @@ int spk_handle_help(struct vc_data
+>       *vc,
+>       >       u_char type, u_char ch, u_short key)
+>       >                        synth_printf("%s\n",
+>       >       spk_msg_get(MSG_HELP_INFO));
+>       >                        build_key_data(); /* rebuild each time
+>       in case
+>       >       new mapping */
+>       >                        return 1;
+>       >       -        } else {
+>       >       -                name = NULL;
+>       >       -                if ((type != KT_SPKUP) && (key > 0) &&
+>       (key <=
+>       >       num_key_names)) {
+>       >       -                        synth_printf("%s\n",
+>       >       -                                    
+>       >       spk_msg_get(MSG_KEYNAMES_START + key - 1));
+>       >       -                        return 1;
+>       >       -                }
+>       >       -                for (i = 0; funcvals[i] != 0 && !name;
+>       i++) {
+>       >       -                        if (ch == funcvals[i])
+>       >       -                                name =
+>       >       spk_msg_get(MSG_FUNCNAMES_START + i);
+>       >       -                }
+>       >       -                if (!name)
+>       >       -                        return -1;
+>       >       -                kp = spk_our_keys[key] + 1;
+>       >       -                for (i = 0; i < nstates; i++) {
+>       >       -                        if (ch == kp[i])
+>       >       -                                break;
+>       >       -                }
+>       >       -                key += (state_tbl[i] << 8);
+>       >       -                say_key(key);
+>       >       -                synth_printf(spk_msg_get(MSG_KEYDESC),
+>       name);
+>       >       -                synth_printf("\n");
+>       >       +        }
+>       >       +        name = NULL;
+>       >       +        if ((type != KT_SPKUP) && (key > 0) && (key <=
+>       >       num_key_names)) {
+>       >       +                synth_printf("%s\n",
+>       >       +                            
+>       spk_msg_get(MSG_KEYNAMES_START +
+>       >       key - 1));
+>       >                        return 1;
+>       >                }
+>       >       +        for (i = 0; funcvals[i] != 0 && !name; i++) {
+>       >       +                if (ch == funcvals[i])
+>       >       +                        name =
+>       spk_msg_get(MSG_FUNCNAMES_START
+>       >       + i);
+>       >       +        }
+>       >       +        if (!name)
+>       >       +                return -1;
+>       >       +        kp = spk_our_keys[key] + 1;
+>       >       +        for (i = 0; i < nstates; i++) {
+>       >       +                if (ch == kp[i])
+>       >       +                        break;
+>       >       +                }
+>       >       +        key += (state_tbl[i] << 8);
+>       >       +        say_key(key);
+>       >       +        synth_printf(spk_msg_get(MSG_KEYDESC), name);
+>       >       +        synth_printf("\n");
+>       >       +        return 1;
+>       >       +
+>       >                name = spk_msg_get(MSG_FUNCNAMES_START +
+>       cur_item);
+>       >                func = funcvals[cur_item];
+>       >                synth_printf("%s", name);
+>       >       --
+>       >       2.9.3
+>       >
+>       > --
+>       > You received this message because you are subscribed to the
+>       Google Groups
+>       > "outreachy-kernel" group.
+>       > To unsubscribe from this group and stop receiving emails from
+>       it, send an
+>       > email to outreachy-kern...@googlegroups.com.
+>       > To post to this group, send email to
+>       outreach...@googlegroups.com.
+>       > To view this discussion on the webvisithttps://groups.google.com/d/msgid/outreachy-kernel/ae948b29-c3d0-40d3-
+>       94a0-
+>       > 31df90500e76%40googlegroups.com.
+>       > For more options, visit https://groups.google.com/d/optout.
+>       >
+>       >
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/4efe0441-12da-4574-bd58-
+> 0a5a95af2977%40googlegroups.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-2120630640-1488808212=:3078--
 
