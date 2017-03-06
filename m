@@ -1,40 +1,54 @@
-X-GM-THRID: 6399855401858236416
-X-Received: by 10.157.3.14 with SMTP id 14mr10583970otv.100.1490082452368;
-        Tue, 21 Mar 2017 00:47:32 -0700 (PDT)
+X-GM-THRID: 6393338025823174656
+X-Received: by 10.129.57.66 with SMTP id g63mr6602618ywa.77.1488807481229;
+        Mon, 06 Mar 2017 05:38:01 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.54.152 with SMTP id h24ls1322047otc.30.gmail; Tue, 21 Mar
- 2017 00:47:31 -0700 (PDT)
-X-Received: by 10.129.53.133 with SMTP id c127mr17387195ywa.15.1490082451823;
-        Tue, 21 Mar 2017 00:47:31 -0700 (PDT)
+Received: by 10.157.60.6 with SMTP id q6ls2248359otc.10.gmail; Mon, 06 Mar
+ 2017 05:38:00 -0800 (PST)
+X-Received: by 10.157.24.90 with SMTP id t26mr6416632ott.91.1488807480840;
+        Mon, 06 Mar 2017 05:38:00 -0800 (PST)
 Return-Path: <gregkh@linuxfoundation.org>
 Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id a3si3261364pfb.2.2017.03.21.00.47.31
+        by gmr-mx.google.com with ESMTPS id 2si33720pfz.1.2017.03.06.05.38.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 21 Mar 2017 00:47:31 -0700 (PDT)
+        Mon, 06 Mar 2017 05:38:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (LFbn-1-12060-104.w90-92.abo.wanadoo.fr [90.92.122.104])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id DC2995A7;
-	Tue, 21 Mar 2017 07:47:30 +0000 (UTC)
-Date: Tue, 21 Mar 2017 08:47:18 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: outreachy-kernel@googlegroups.com
-Subject: Outreachy patches caught up on.
-Message-ID: <20170321074718.GA14910@kroah.com>
+Received: from localhost (unknown [37.168.212.159])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 116748CC;
+	Mon,  6 Mar 2017 13:37:59 +0000 (UTC)
+Date: Mon, 6 Mar 2017 14:37:53 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Aishwarya Pant <aishpant@gmail.com>
+Cc: Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>,
+	Eric Anholt <eric@anholt.net>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	bcm-kernel-feedback-list@broadcom.com,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH 0/2] staging: bcm2835-audio: match alignment with open
+ parenthesis
+Message-ID: <20170306133753.GA31737@kroah.com>
+References: <cover.1488716526.git.aishpant@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <cover.1488716526.git.aishpant@gmail.com>
 User-Agent: Mutt/1.8.0 (2017-02-23)
 
-Hi all,
+On Sun, Mar 05, 2017 at 05:53:35PM +0530, Aishwarya Pant wrote:
+> Patch fixes the following checkpatch warning issued on bcm2835-ctl.c and
+> bcm2835-pcm.c- CHECK: Alignment should match open parenthesis
+> 
+> Aishwarya Pant (2):
+>   staging: bcm2835-audio: match alignment with open parenthesis
+>   staging: bcm2835-audio: match alignment with open parenthesis
 
-I'm now caught up on all non-IIO or documentation outreachy patches
-(those go through a different maintainer).
+These both have identical subject lines, which means they must do the
+exact same thing :(
 
-If you have not gotten an email from my patch system saying that your
-patch was applied, consider it lost, and please rebase and resend it.
+Please fix up.
 
 thanks,
 
