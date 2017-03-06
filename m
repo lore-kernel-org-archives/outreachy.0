@@ -1,87 +1,82 @@
 X-GM-THRID: 6394409513300000768
-X-Received: by 10.99.123.68 with SMTP id k4mr6899295pgn.110.1488830223252;
-        Mon, 06 Mar 2017 11:57:03 -0800 (PST)
+X-Received: by 10.28.139.211 with SMTP id n202mr497609wmd.5.1488818486126;
+        Mon, 06 Mar 2017 08:41:26 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.11.156 with SMTP id 28ls57250iol.20.gmail; Mon, 06 Mar
- 2017 11:57:02 -0800 (PST)
-X-Received: by 10.99.1.78 with SMTP id 75mr7394950pgb.151.1488830222356;
-        Mon, 06 Mar 2017 11:57:02 -0800 (PST)
-Return-Path: <aishpant@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id r66si211782pfb.7.2017.03.06.11.57.02
+Received: by 10.46.71.143 with SMTP id u137ls196844lja.51.gmail; Mon, 06 Mar
+ 2017 08:41:25 -0800 (PST)
+X-Received: by 10.46.21.11 with SMTP id s11mr2637576ljd.23.1488818485530;
+        Mon, 06 Mar 2017 08:41:25 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id i76si57211wmh.1.2017.03.06.08.41.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 06 Mar 2017 11:57:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Mon, 06 Mar 2017 08:41:25 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id v190so7670478pfb.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 06 Mar 2017 11:57:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=Hzun23dwVPfLKmZsN6ot2PVvdtpXSzJefkU1/7zDsZw=;
-        b=nXScqUFq+eRC3RHKy2vz3no7iA9k+KUD9MVtTjXxmUJ5GHvvX77AyPvMC3IGO/T4xj
-         IRYUZXhAIhPELoMCnPTcawtFYHvuWHmXTr20+UAFDCYdRQ6A1hdZTI/RmcMv2tFd35Ii
-         LSG9XsHN3XGMbQcSgUGYSS7+4A3UqmWVtpI1LCp0Rz/bchcAmReVq+2dyFdeuGNbZRXP
-         cze4tItzWCsd3ag98SKwVLrRARUXY6+fwXlu4NzP6qOW17OvtsaSTvging4Z/WTaPAhP
-         lM7D4YB9Kwoynmz6eN8v7ELH5tu6sV3FD/DupqSKlZ8Azr1UqyuGR79P6biPNxyJq27w
-         EdmQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=Hzun23dwVPfLKmZsN6ot2PVvdtpXSzJefkU1/7zDsZw=;
-        b=PVdpBhhcClNtl5n3uhBoPJS2w8HYQ169DJAkoALNSGk2GhhmTiZuJSH8eS21JyL2Uf
-         8nNQrFHdc9j3T6HwvebjxRILBT1QfVVis5ot7jB2qPc/EdBgCXVXWjp0YLPtXafVytoA
-         BkMsiM+czWD0uqYyiktGt5PIHQTeG6QDYEercb9KDfPqSKq83pxR620q8NTdGaw+ijk0
-         GgMLLm8AiGAcAeOLpTGWr5y1NokIH58LE6V9Cg9Jl5raUaL/SW9iMvvdzJ3fDzKDLURp
-         iYl5E5+ZUL1QKIF0pw62mBau0m0xJ60TbxUrZFvmZzRPrmppi8VKeVW7LIw7Aza8Cpq2
-         78QQ==
-X-Gm-Message-State: AMke39n2dOoTA944RklVofmtn01y5eYdiL5O3Bx/i0fh619j2tLusiwwo+Oi76RgLMYjcQ==
-X-Received: by 10.84.209.204 with SMTP id y70mr28861336plh.69.1488830222164;
-        Mon, 06 Mar 2017 11:57:02 -0800 (PST)
-Return-Path: <aishpant@gmail.com>
-Received: from aishwarya ([106.51.133.119])
-        by smtp.gmail.com with ESMTPSA id t12sm41195823pfg.14.2017.03.06.11.56.56
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 06 Mar 2017 11:57:01 -0800 (PST)
-Date: Tue, 7 Mar 2017 01:26:55 +0530
-From: Aishwarya Pant <aishpant@gmail.com>
-To: Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>,
-	Eric Anholt <eric@anholt.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	bcm-kernel-feedback-list@broadcom.com
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 0/2] staging: bcm2835-audio: refactor code for compaction
-Message-ID: <cover.1488830058.git.aishpant@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,254,1484002800"; 
+   d="scan'208";a="215765488"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 06 Mar 2017 17:41:24 +0100
+Date: Mon, 6 Mar 2017 17:41:12 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Aishwarya Pant <aishpant@gmail.com>
+cc: Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>, 
+    Eric Anholt <eric@anholt.net>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, 
+    Scott Branden <sbranden@broadcom.com>, 
+    bcm-kernel-feedback-list@broadcom.com, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 2/2] staging: bcm2835-audio: remove
+ unused semaphores
+In-Reply-To: <3751b0b72869975ee0e829f6aaedf3b6f044452d.1488814329.git.aishpant@gmail.com>
+Message-ID: <alpine.DEB.2.20.1703061740530.3052@hadrien>
+References: <cover.1488814329.git.aishpant@gmail.com> <3751b0b72869975ee0e829f6aaedf3b6f044452d.1488814329.git.aishpant@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-This patch fixes two code style issues:
-        - Merge two if condiitonals doing the same work
-	- Removes initialisation of unused semaphores
 
-Changes in v2:
-	- Removed the semaphores from struct bcm2835_alsa_stream and 
-	  not just their initialisation
 
-Aishwarya Pant (2):
-  staging: bcm2835-audio: merge two if conditions into one
-  staging: bcm2835-audio: remove unused semaphores
+On Mon, 6 Mar 2017, Aishwarya Pant wrote:
 
- drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c | 8 ++------
- drivers/staging/vc04_services/bcm2835-audio/bcm2835.h     | 2 --
- 2 files changed, 2 insertions(+), 8 deletions(-)
+> This patch removes initialisation of unused semaphores
+> alsa_stream->buffers_update_sem and alsa_stream->control_sem
+>
+> Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
+> ---
+>  drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c | 2 --
+>  1 file changed, 2 deletions(-)
+>
+> diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c
+> index f4ce4801dc..c0a511e 100644
+> --- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c
+> +++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c
+> @@ -154,8 +154,6 @@ static int snd_bcm2835_playback_open_generic(
+>  	alsa_stream->substream = substream;
+>  	alsa_stream->idx = idx;
+>
+> -	sema_init(&alsa_stream->buffers_update_sem, 0);
+> -	sema_init(&alsa_stream->control_sem, 0);
 
--- 
-2.7.4
+If they are not used, maybe they should be dropped from the structure as
+well?
 
+julia
+
+>  	spin_lock_init(&alsa_stream->lock);
+>
+>  	err = bcm2835_audio_open(alsa_stream);
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/3751b0b72869975ee0e829f6aaedf3b6f044452d.1488814329.git.aishpant%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
