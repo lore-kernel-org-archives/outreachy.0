@@ -1,112 +1,151 @@
-X-GM-THRID: 6747948827110539264
-X-Received: by 2002:a37:f90e:: with SMTP id l14mr35289344qkj.40.1571129268198;
-        Tue, 15 Oct 2019 01:47:48 -0700 (PDT)
+X-GM-THRID: 6394469036665602048
+X-Received: by 10.46.84.69 with SMTP id y5mr2891986ljd.21.1488836700910;
+        Mon, 06 Mar 2017 13:45:00 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:4852:: with SMTP id v79ls5220229qka.2.gmail; Tue, 15 Oct
- 2019 01:47:47 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw6DZQH4NTDTbkbFVhKiENxdHXKeQa3iZK7v2c3o/T4isHXrWHYxkFsj0XLIbOdyqARd7pf
-X-Received: by 2002:a05:620a:4e4:: with SMTP id b4mr34795290qkh.454.1571129267321;
-        Tue, 15 Oct 2019 01:47:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571129267; cv=none;
-        d=google.com; s=arc-20160816;
-        b=IckeYre+fuuhAOQZusJNqdLE5bkiiQ/Q/uHIUatoYuoD3pzqqDik1qe8Y1qIdIglOb
-         YLkvGPkfNCBxrFoHbxO3bS25H4q0zXBrt7Vm6DJwSGE1CL642TnF0HTdB4Zuxrb24z3i
-         SMhLbLuFpRAnUJ+/sQ7O92b5VYqSqklrRyL6m9yjnj/ojXZ3xq1djeemU6rmGF/KzEIL
-         6qsJHP+TI2qfwnwOxLSBCuJRyw4P5jiajnw9JV+Tc05VxhH7fCjkqwtjBZzZSBCijeFK
-         Lve1Twv1iFpzd0tZf0cpgn+0eNNwtBeJ8AmbBsj68wma0sxLXVynBOeRpSv1hF5KMrmK
-         0fDQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=foXBwHD68GqDpUhv12UgOg8h2hieUZu0Au1qNClUQfg=;
-        b=ne+thvmk8wHlwt+eib6ySuLy2ZuMoys/NwdUhBWS3LFKnaoX625WAIh4ogqVO1Gsdb
-         Zak+mFnVDKkD3dncKDrOZXgxeF30D/f3RPRJM1gahL2KhsVLhhMKg82BX3H5Wmejzag1
-         mvruwJPuwhD8al0iw6BbRaaGZpoSNBY8/hrK+1c+CUTSgAafE4sASdjmOYlXLXIbmEe/
-         vEBe/fkt+ur+aqDmfD57JV48zi7OlUazMNbDFVQ/bpaZElo1516hnP/Zy4iMf7oLaajm
-         b/aZTg6DDCN8pYCVhPfQq2Mqs9SgDWF7tF4Uk0/lKbgnwqQFiPmWDi2LzafpM1p8BkMS
-         s6UQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=itYb0Pr5;
-       spf=pass (google.com: domain of wambui.karugax@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=wambui.karugax@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <wambui.karugax@gmail.com>
-Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id c78si1718249qkb.7.2019.10.15.01.47.47
+Received: by 10.46.80.83 with SMTP id v19ls1592957ljd.25.gmail; Mon, 06 Mar
+ 2017 13:45:00 -0800 (PST)
+X-Received: by 10.25.17.102 with SMTP id g99mr2112598lfi.6.1488836700457;
+        Mon, 06 Mar 2017 13:45:00 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id i76si126395wmh.1.2017.03.06.13.45.00
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 15 Oct 2019 01:47:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of wambui.karugax@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 06 Mar 2017 13:45:00 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=itYb0Pr5;
-       spf=pass (google.com: domain of wambui.karugax@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=wambui.karugax@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x441.google.com with SMTP id 205so12036078pfw.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 15 Oct 2019 01:47:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=foXBwHD68GqDpUhv12UgOg8h2hieUZu0Au1qNClUQfg=;
-        b=itYb0Pr55NgMcqQx6PCxeFCUijsujjxt4Xa9C+B6w/WQu/k70+T2xEw6xvOrC77P6c
-         cJSKaWJB7Bbh9MLylt84yJrtMZZttJpAp/oWTMLhILPTTNSuJLP046BDtp+bPUMObFSx
-         B849ISYsz31Ka2/bvu2IBiMmcfKpIoRE3BGz/dL7Mw4Hmd8siEg28dlMjQ6RLolrNk/Q
-         qbX5lI8eBrfWQG+6tXr4jNKZYdVINbF/hAtMiZmwdGQcLUmPeent50/Pr9NSyThz0kSG
-         ny95g9M3SfyDLkoOSnVJACzPCqjK+CU2A95XN3DPF2QipNGU3sDjcqlLZDEb/llCBxKg
-         WUOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=foXBwHD68GqDpUhv12UgOg8h2hieUZu0Au1qNClUQfg=;
-        b=W+4BzLqw4Iij+MPxQQjuZBgBE761r/Ab2t7pNFY2rq4sYEf/CS5t73XXm3yvCfYZdy
-         JgYeFvK3QXAOj6fn/sCOtHuLAL5lWsE0LUx0O5eh3ZKOHANadoNvc914PWa+q46Szszm
-         5ZG7PM91OunVBADJxDsS/xaPOn742Pmw+t9hKTYcOmFpdeT2860g6HhJGqsLJ+d+9nJb
-         yRE+A6zXz+dXim3a/q5ViIaoqy6DRQR1MIQpG20VkuDoJ2bRMNsppNoiWAKK7ghi6LDb
-         PGsPCUnTHSYJPkXHgnKsO+EzpAtdgGaDorFCV59Vh4cOWnxI9bf46B4PRIobv0lEA5mq
-         0X4w==
-X-Gm-Message-State: APjAAAXK+G74tllv9VWT7Mtl5/OmG4ZaV/KThDmLfyA+FsVLmBWcmEeT
-	cufGtODWtUa7Ge0vNE9JqySaEHyY7oY=
-X-Received: by 2002:a63:1242:: with SMTP id 2mr14383081pgs.288.1571129266064;
-        Tue, 15 Oct 2019 01:47:46 -0700 (PDT)
-Return-Path: <wambui.karugax@gmail.com>
-Received: from wambui.brck.local ([197.254.95.158])
-        by smtp.googlemail.com with ESMTPSA id h68sm25239210pfb.149.2019.10.15.01.47.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Oct 2019 01:47:45 -0700 (PDT)
-From: Wambui Karuga <wambui.karugax@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: octeon: fix restricted __be16 degrades to integer
-Date: Tue, 15 Oct 2019 11:47:31 +0300
-Message-Id: <20191015084731.8514-1-wambui.karugax@gmail.com>
-X-Mailer: git-send-email 2.23.0
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,255,1484002800"; 
+   d="scan'208";a="215790667"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 06 Mar 2017 22:44:59 +0100
+Date: Mon, 6 Mar 2017 22:44:58 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
+cc: outreachy-kernel@googlegroups.com, mchehab@kernel.org, 
+    gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH] media:atomisp:pci Remove unnecessary
+ variable
+In-Reply-To: <20170306192538.GA5241@fireworks>
+Message-ID: <alpine.DEB.2.20.1703062243430.2172@hadrien>
+References: <20170306192538.GA5241@fireworks>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
 
-Add cast to fix the following sparse warning:
-warning: restricted __be16 degrades to integer
+The subject one doesn't seem standard.  Normally there are at least spaces
+after the :s.  In general, use got long --oneline on each file to see what
+others have done, and try to come up with something that covers the
+affected files.
 
-Signed-off-by: Wambui Karuga <wambui.karugax@gmail.com>
----
- drivers/staging/octeon/ethernet-tx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+julia
 
-diff --git a/drivers/staging/octeon/ethernet-tx.c b/drivers/staging/octeon/ethernet-tx.c
-index 5114273826ec..b334cf89794e 100644
---- a/drivers/staging/octeon/ethernet-tx.c
-+++ b/drivers/staging/octeon/ethernet-tx.c
-@@ -598,7 +598,7 @@ int cvm_oct_xmit_pow(struct sk_buff *skb, struct net_device *dev)
- #endif
- 		work->word2.s.is_frag = !((ip_hdr(skb)->frag_off == 0) ||
- 					  (ip_hdr(skb)->frag_off ==
--					      1 << 14));
-+					      cpu_to_be16(1 << 14)));
- #if 0
- 		/* Assume Linux is sending a good packet */
- 		work->word2.s.IP_exc = 0;
--- 
-2.23.0
+On Mon, 6 Mar 2017, Georgiana Rodica Chelu wrote:
 
+> Remove the local variable "ret" because its initial
+> value does not change during the function execution.
+>
+> Signed-off-by: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
+> ---
+>  drivers/staging/media/atomisp/pci/atomisp2/atomisp_ioctl.c           | 5 ++---
+>  .../media/atomisp/pci/atomisp2/css2400/runtime/isys/src/isys_init.c  | 4 +---
+>  drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c     | 4 +---
+>  drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_sp.c       | 3 +--
+>  4 files changed, 5 insertions(+), 11 deletions(-)
+>
+> diff --git a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_ioctl.c b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_ioctl.c
+> index 0a0652a..bc09914 100644
+> --- a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_ioctl.c
+> +++ b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_ioctl.c
+> @@ -557,8 +557,6 @@ const struct atomisp_format_bridge *atomisp_get_format_bridge_from_mbus(u32
+>  static int atomisp_querycap(struct file *file, void *fh,
+>  			    struct v4l2_capability *cap)
+>  {
+> -	int ret = 0;
+> -
+>  	memset(cap, 0, sizeof(struct v4l2_capability));
+>
+>  	WARN_ON(sizeof(DRIVER) > sizeof(cap->driver) ||
+> @@ -574,7 +572,8 @@ static int atomisp_querycap(struct file *file, void *fh,
+>  	cap->device_caps = V4L2_CAP_VIDEO_CAPTURE |
+>  	    V4L2_CAP_STREAMING | V4L2_CAP_VIDEO_OUTPUT;
+>  	cap->capabilities = cap->device_caps | V4L2_CAP_DEVICE_CAPS;
+> -	return ret;
+> +
+> +	return 0;
+>  }
+>
+>  /*
+> diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/isys/src/isys_init.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/isys/src/isys_init.c
+> index 239ef31..2ed5162 100644
+> --- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/isys/src/isys_init.c
+> +++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/isys/src/isys_init.c
+> @@ -105,8 +105,6 @@ input_system_error_t ia_css_isys_init(void)
+>  #elif defined(USE_INPUT_SYSTEM_VERSION_2401)
+>  input_system_error_t ia_css_isys_init(void)
+>  {
+> -	input_system_error_t error = INPUT_SYSTEM_ERR_NO_ERROR;
+> -
+>  	ia_css_isys_csi_rx_lut_rmgr_init();
+>  	ia_css_isys_ibuf_rmgr_init();
+>  	ia_css_isys_dma_channel_rmgr_init();
+> @@ -120,7 +118,7 @@ input_system_error_t ia_css_isys_init(void)
+>  	isys_irqc_status_enable(ISYS_IRQ1_ID);
+>  	isys_irqc_status_enable(ISYS_IRQ2_ID);
+>
+> -	return error;
+> +	return INPUT_SYSTEM_ERR_NO_ERROR;
+>  }
+>  #endif
+>
+> diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c
+> index 1210c21..bc4b623 100644
+> --- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c
+> +++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c
+> @@ -37,12 +37,10 @@ enum ia_css_err
+>  ia_css_mipi_frame_specify(const unsigned int size_mem_words,
+>  				const bool contiguous)
+>  {
+> -	enum ia_css_err err = IA_CSS_SUCCESS;
+> -
+>  	my_css.size_mem_words = size_mem_words;
+>  	(void)contiguous;
+>
+> -	return err;
+> +	return IA_CSS_SUCCESS;
+>  }
+>
+>  #ifdef ISP2401
+> diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_sp.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_sp.c
+> index 00b2d16..9caf0b6 100644
+> --- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_sp.c
+> +++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_sp.c
+> @@ -825,7 +825,6 @@ configure_isp_from_args(
+>  	bool two_ppc,
+>  	bool deinterleaved)
+>  {
+> -	enum ia_css_err err = IA_CSS_SUCCESS;
+>  #ifdef ISP2401
+>  	struct ia_css_pipe *pipe = find_pipe_by_num(pipeline->pipe_num);
+>  	const struct ia_css_resolution *res;
+> @@ -853,7 +852,7 @@ configure_isp_from_args(
+>  	/* Remove support for TNR2 once TNR3 fully integrated */
+>  	ia_css_tnr3_configure(binary, (const struct ia_css_frame **)args->tnr_frames);
+>  #endif
+> -	return err;
+> +	return IA_CSS_SUCCESS;
+>  }
+>
+>  static void
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170306192538.GA5241%40fireworks.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
