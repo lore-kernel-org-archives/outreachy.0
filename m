@@ -1,97 +1,148 @@
 X-GM-THRID: 6394401254530875392
-X-Received: by 10.129.175.31 with SMTP id n31mr7480893ywh.30.1488829595997;
-        Mon, 06 Mar 2017 11:46:35 -0800 (PST)
+X-Received: by 10.28.148.83 with SMTP id w80mr226956wmd.1.1488818216339;
+        Mon, 06 Mar 2017 08:36:56 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.43.103 with SMTP id f36ls1532642otd.0.gmail; Mon, 06 Mar
- 2017 11:46:35 -0800 (PST)
-X-Received: by 10.129.153.65 with SMTP id q62mr941296ywg.23.1488829595609;
-        Mon, 06 Mar 2017 11:46:35 -0800 (PST)
-Return-Path: <aishpant@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id 2si220192pfz.1.2017.03.06.11.46.35
+Received: by 10.25.211.201 with SMTP id k192ls79570lfg.18.gmail; Mon, 06 Mar
+ 2017 08:36:55 -0800 (PST)
+X-Received: by 10.46.71.15 with SMTP id u15mr2734689lja.9.1488818215266;
+        Mon, 06 Mar 2017 08:36:55 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id e72si60264wma.0.2017.03.06.08.36.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 06 Mar 2017 11:46:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Mon, 06 Mar 2017 08:36:55 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id v190so7649505pfb.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 06 Mar 2017 11:46:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=/kuCqRvmu5KqF8W9ILjJ6CuUbJ+UTLcb75fsjoAXcFk=;
-        b=VZ0YHcHlP38/qJblILzjE6Gu+tNgCFDNkn3Y75BReA5ykuuom8WLaxePMyD+tZ9lQo
-         qgKCQ7wuPADk44r/A9JsX3vDl+4qo0TdPjchnPD0VUMls+W8n5Mx7sEWEjdwrp00jDx7
-         saFcXBUwqn54RAQrkvopBiajJ1y1t45iocxWjRY9js+SrZPIFTRr/ofL8PPeOK62BSLB
-         lQqxRVC2dsrtyTvJrHb9+Od5y45L5fFTMyHczSwX2+V8Zbwm194x9PXFMWDzWEWm5NZV
-         AOYozn3r3dT7tWQyWrx27XqcdtNiNO+1i7g/6mCA96sK2606jND8JfouT1xdd9RVS/VF
-         TBNw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=/kuCqRvmu5KqF8W9ILjJ6CuUbJ+UTLcb75fsjoAXcFk=;
-        b=HeWh6Go9l0+5f7BVfTJPCVBfd838O3uIZndEtGlK9RHbhqkqCKQwFGpNQ8UxO4Q2fM
-         +C0WwjBcreO3R+ERAbBPzBdoemYcVHWvsbLw6zzvn+nhYYbC6kyHKAhYPMgAD7Sgksrr
-         Wrl5MKVdqXdWdSRJn9tqkpn7NqRogCQdB7xTegT/EKGWOOm+yGWwUR+KYjXdUz9K7fDU
-         sCrc7FXz7bKRZ3c74DBVTquqkVKDwfrAm3gluqx0cVuLGcFwONowUDcIc5zbSRuOVn4y
-         4CBATeV8fq/+aTzy07MK2jJXd4ikQL0INiYj0Jx60rkfeCfu5iEKg0h4WWhlvEkVRrSV
-         BBEg==
-X-Gm-Message-State: AMke39kOrk5Ad6tH7c7BMgnJse6B/pZ9SpnfozECA5CBelMNfM9E1jkIC8iOhknDt+vFzA==
-X-Received: by 10.84.253.15 with SMTP id z15mr29459064pll.142.1488829589351;
-        Mon, 06 Mar 2017 11:46:29 -0800 (PST)
-Return-Path: <aishpant@gmail.com>
-Received: from aishwarya ([106.51.133.119])
-        by smtp.gmail.com with ESMTPSA id d10sm41166340pfl.59.2017.03.06.11.46.26
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 06 Mar 2017 11:46:28 -0800 (PST)
-Date: Tue, 7 Mar 2017 01:16:25 +0530
-From: Aishwarya Pant <aishpant@gmail.com>
-To: Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>,
-	Eric Anholt <eric@anholt.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	bcm-kernel-feedback-list@broadcom.com
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 1/4] staging: bcm2835-audio: Replace kmalloc with kzalloc
-Message-ID: <f92aa17557abb2764c31fba1d3bc4a89d291d885.1488829304.git.aishpant@gmail.com>
-References: <cover.1488829304.git.aishpant@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.35,254,1484002800"; 
+   d="scan'208";a="215764736"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 06 Mar 2017 17:36:54 +0100
+Date: Mon, 6 Mar 2017 17:36:42 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Aishwarya Pant <aishpant@gmail.com>
+cc: Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>, 
+    Eric Anholt <eric@anholt.net>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, 
+    Scott Branden <sbranden@broadcom.com>, 
+    bcm-kernel-feedback-list@broadcom.com, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 4/4] staging: bcm2835-audio: use
+ conditional only for error case
+In-Reply-To: <1e7304c424c82b9f5a03d32aa9dab343b4b70dc4.1488811728.git.aishpant@gmail.com>
+Message-ID: <alpine.DEB.2.20.1703061735550.3052@hadrien>
+References: <cover.1488811728.git.aishpant@gmail.com> <1e7304c424c82b9f5a03d32aa9dab343b4b70dc4.1488811728.git.aishpant@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1488829304.git.aishpant@gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-Replace kmalloc and memset with kzalloc.
 
-Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
----
- drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
-index c54bef3..005e287 100644
---- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
-+++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
-@@ -290,11 +290,10 @@ vc_vchi_audio_init(VCHI_INSTANCE_T vchi_instance,
- 		return NULL;
- 	}
- 	/* Allocate memory for this instance */
--	instance = kmalloc(sizeof(*instance), GFP_KERNEL);
-+	instance = kzalloc(sizeof(*instance), GFP_KERNEL);
- 	if (!instance)
- 		return NULL;
- 
--	memset(instance, 0, sizeof(*instance));
- 	instance->num_connections = num_connections;
- 
- 	/* Create a lock for exclusive, serialized VCHI connection access */
--- 
-2.7.4
+On Mon, 6 Mar 2017, Aishwarya Pant wrote:
 
+> This patch refactors conditional to check if memory allocation has
+> failed and immediately returns (-ENOMEM); the redundant if block for
+> success case is removed.
+>
+> Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
+> ---
+>  .../vc04_services/bcm2835-audio/bcm2835-vchiq.c    | 46 +++++++++++-----------
+>  1 file changed, 23 insertions(+), 23 deletions(-)
+>
+> diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
+> index c5f3be8..75a43a5 100644
+> --- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
+> +++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
+> @@ -139,15 +139,15 @@ int bcm2835_audio_start(struct bcm2835_alsa_stream *alsa_stream)
+>
+>  		work = kmalloc(sizeof(*work), GFP_ATOMIC);
+>  		/*--- Queue some work (item 1) ---*/
+> -		if (work) {
+> -			INIT_WORK(&work->my_work, my_wq_function);
+> -			work->alsa_stream = alsa_stream;
+> -			work->cmd = BCM2835_AUDIO_START;
+> -			if (queue_work(alsa_stream->my_wq, &work->my_work))
+> -				ret = 0;
+> -		} else {
+> +		if (!work) {
+>  			LOG_ERR(" .. Error: NULL work kmalloc\n");
+> +			return -ENOMEM;
+>  		}
+> +		INIT_WORK(&work->my_work, my_wq_function);
+> +		work->alsa_stream = alsa_stream;
+> +		work->cmd = BCM2835_AUDIO_START;
+> +		if (queue_work(alsa_stream->my_wq, &work->my_work))
+> +			ret = 0;
+
+These functions are returning -1 if queue_work fails.  Maybe you can find
+a more appropriate value by looking at the defintion.
+
+julia
+
+
+>  	}
+>  	LOG_DBG(" .. OUT %d\n", ret);
+>  	return ret;
+> @@ -163,15 +163,15 @@ int bcm2835_audio_stop(struct bcm2835_alsa_stream *alsa_stream)
+>
+>  		work = kmalloc(sizeof(*work), GFP_ATOMIC);
+>  		/*--- Queue some work (item 1) ---*/
+> -		if (work) {
+> -			INIT_WORK(&work->my_work, my_wq_function);
+> -			work->alsa_stream = alsa_stream;
+> -			work->cmd = BCM2835_AUDIO_STOP;
+> -			if (queue_work(alsa_stream->my_wq, &work->my_work))
+> -				ret = 0;
+> -		} else {
+> +		if (!work) {
+>  			LOG_ERR(" .. Error: NULL work kmalloc\n");
+> +			return -ENOMEM;
+>  		}
+> +		INIT_WORK(&work->my_work, my_wq_function);
+> +		work->alsa_stream = alsa_stream;
+> +		work->cmd = BCM2835_AUDIO_STOP;
+> +		if (queue_work(alsa_stream->my_wq, &work->my_work))
+> +			ret = 0;
+>  	}
+>  	LOG_DBG(" .. OUT %d\n", ret);
+>  	return ret;
+> @@ -188,17 +188,17 @@ int bcm2835_audio_write(struct bcm2835_alsa_stream *alsa_stream,
+>
+>  		work = kmalloc(sizeof(*work), GFP_ATOMIC);
+>  		/*--- Queue some work (item 1) ---*/
+> -		if (work) {
+> -			INIT_WORK(&work->my_work, my_wq_function);
+> -			work->alsa_stream = alsa_stream;
+> -			work->cmd = BCM2835_AUDIO_WRITE;
+> -			work->src = src;
+> -			work->count = count;
+> -			if (queue_work(alsa_stream->my_wq, &work->my_work))
+> -				ret = 0;
+> -		} else {
+> +		if (!work) {
+>  			LOG_ERR(" .. Error: NULL work kmalloc\n");
+> +			return -ENOMEM;
+>  		}
+> +		INIT_WORK(&work->my_work, my_wq_function);
+> +		work->alsa_stream = alsa_stream;
+> +		work->cmd = BCM2835_AUDIO_WRITE;
+> +		work->src = src;
+> +		work->count = count;
+> +		if (queue_work(alsa_stream->my_wq, &work->my_work))
+> +			ret = 0;
+>  	}
+>  	LOG_DBG(" .. OUT %d\n", ret);
+>  	return ret;
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1e7304c424c82b9f5a03d32aa9dab343b4b70dc4.1488811728.git.aishpant%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
