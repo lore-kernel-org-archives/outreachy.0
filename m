@@ -1,55 +1,55 @@
 X-GM-THRID: 6394401254530875392
-X-Received: by 10.129.32.68 with SMTP id g65mr1619121ywg.154.1488829605073;
-        Mon, 06 Mar 2017 11:46:45 -0800 (PST)
+X-Received: by 10.107.19.231 with SMTP id 100mr6745292iot.46.1488829601267;
+        Mon, 06 Mar 2017 11:46:41 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.11.133 with SMTP id 5ls12299385oth.45.gmail; Mon, 06 Mar
- 2017 11:46:44 -0800 (PST)
-X-Received: by 10.157.56.155 with SMTP id p27mr7625823otc.124.1488829604765;
-        Mon, 06 Mar 2017 11:46:44 -0800 (PST)
+Received: by 10.36.170.68 with SMTP id y4ls2750881iti.0.canary-gmail; Mon, 06
+ Mar 2017 11:46:40 -0800 (PST)
+X-Received: by 10.107.168.80 with SMTP id r77mr1702332ioe.22.1488829600387;
+        Mon, 06 Mar 2017 11:46:40 -0800 (PST)
 Return-Path: <aishpant@gmail.com>
-Received: from mail-pg0-f65.google.com (mail-pg0-f65.google.com. [74.125.83.65])
-        by gmr-mx.google.com with ESMTPS id y90si208979pfa.6.2017.03.06.11.46.44
+Received: from mail-pf0-f193.google.com (mail-pf0-f193.google.com. [209.85.192.193])
+        by gmr-mx.google.com with ESMTPS id c123si213723pfa.4.2017.03.06.11.46.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 06 Mar 2017 11:46:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 74.125.83.65 as permitted sender) client-ip=74.125.83.65;
+        Mon, 06 Mar 2017 11:46:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 209.85.192.193 as permitted sender) client-ip=209.85.192.193;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aishpant@gmail.com designates 74.125.83.65 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
+       spf=pass (google.com: domain of aishpant@gmail.com designates 209.85.192.193 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-f65.google.com with SMTP id 25so20627798pgy.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 06 Mar 2017 11:46:44 -0800 (PST)
+Received: by mail-pf0-f193.google.com with SMTP id v190so7649090pfb.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 06 Mar 2017 11:46:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=41C8GJvVhsnFe/bC/sDyOY1NoZHjd0ajWlQzK40hYWw=;
-        b=u+iaX3iNkbuLLmfy620SSwjjHxnwLKbUEtTcde69SeRbroiXwsgF/mTjiKhpS48mfv
-         oDkSsec30oYbIUcJ1T8JHj+qb7ibhGEHgQa6zTtAVw7w1KHxFka0bmt+ZXcwjS0uC1Xx
-         Y9NvqPKAjFZFksWtItBdRV2DUuxamUKIFYNLTjfCx/1jaGCiZmrQJY+W++nwxM92yswr
-         ffrXgXIrA3ccHvKrDbI2kwo5iYi4tKwKBz5VW6HNI8q2Aqp3AAG3lilfmb2WDV8mZO7d
-         TMiy9QEGgiNuzB7ifaEc054vlJB8luODPL4v/oVYCu899xEu028eP85HP+d8TvXJfRxO
-         4L+w==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=K24vic81nR1koNrgguyKmEpxjXeHbnD72Q+x0XIy2nI=;
+        b=PJEb/5Yias5HR+idcErV7eHNeeEqIWGZJ0XqEv/AHgXE+INzbGI3o22JuHKwsRaZXa
+         Ujra0C7kIDo954jVfd5mjl+e7Smz7h6u/UjxXikEZ6DDjitTGwHzDrWSj8QBaYB6sgvr
+         fyLZXqrTbhwdJ6RaK6y4NkHR67msNT3MHsITYQYdRKs8hQjFrOOGY7P7/BmySWx/0Vj+
+         CrYtAJ5koUD5ay/m+J3ygXMD3YINwJB71ArTGDOpWLv0bbW2f1hBlHcuDZrO0f5DtA6y
+         4dzheLGYNl7weXTbUjb2iHPgUmzb4eGCfBlHiqEgDZfs/hHIzfLjcT2h2STctjwGXHhi
+         W41g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=41C8GJvVhsnFe/bC/sDyOY1NoZHjd0ajWlQzK40hYWw=;
-        b=gTWu2J+wpy4d5awM8aYUsJo8hpsE1AGyOxXwIpu5y4AwoK3R03U9RNcCput+U3hdRz
-         23gg8fMVkFF5HfpGW7O2E0NaIXUPQQJZ9R5U6CcypGs1OOY5UlkhHWFK2pzbvNEkBL3z
-         fzjy9Z1vxGVJS5NQfRzCq4t8xqC3bArVp/ibIhpOYzXvMjBsFCJkSc39Tq+L9JbHsO7Y
-         aBxa26mEk9lDJB/tP5+BBfQclwnEg+NG1u0zkYSkC2L+0VXXZ1N0t8icHYt1Y21RqqWP
-         K6Vv/Lipirt11k60J7eO6qDyIEfpqtUl2e7kRw6UQXJ1GvCYKQcjT03zsz0qslI6ki3p
-         KEHA==
-X-Gm-Message-State: AMke39loRN9uLRPIRIpTe8HtGZTgAb113wHgJJJNfutTToGtC70D5SZevXVSMVoDaOnS1Q==
-X-Received: by 10.84.233.206 with SMTP id m14mr29218349pln.153.1488829604491;
-        Mon, 06 Mar 2017 11:46:44 -0800 (PST)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=K24vic81nR1koNrgguyKmEpxjXeHbnD72Q+x0XIy2nI=;
+        b=s/MphhTCk/9fKvYeq0OO2RFAiUGhE2jUYKH8AZyoLtr7RE3N2zNVYzeFSWlhhu4yyy
+         +iWHB6TsHSs3WDogbjoob6KRDiZRgmPxcAZO6I1pbqUSHBNVNCwwUM7Cy7OTxS3Pbolx
+         QFV6tlCG3OxaXuGC6if/mXskPvu9zT1wlVfsrB6Rc8h12i6ie0Q8xD+zNq2cjjkHf8H8
+         vdwVUHXqdLn0M66wt0fNEDolsMEw78F4Ws4BPNsvE+sxTqzNAjw47V7HUw2dUQM+FuJ/
+         aRZ6enfpw+0qnco69QEjEvm2hI8kJ0pfLn6hWFpLlccSDxPg/cWDQRARagT6HwC6PgVd
+         zZmQ==
+X-Gm-Message-State: AMke39mweEeDNblPFKTri+irF6tTFAf2pIr/N0K+kadRBayUAFXjv3dXdbFM52TqdTT17w==
+X-Received: by 10.99.107.73 with SMTP id g70mr22664277pgc.129.1488829575528;
+        Mon, 06 Mar 2017 11:46:15 -0800 (PST)
 Return-Path: <aishpant@gmail.com>
 Received: from aishwarya ([106.51.133.119])
-        by smtp.gmail.com with ESMTPSA id h71sm41168702pfj.65.2017.03.06.11.46.41
+        by smtp.gmail.com with ESMTPSA id f62sm41164107pfg.48.2017.03.06.11.46.12
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 06 Mar 2017 11:46:44 -0800 (PST)
-Date: Tue, 7 Mar 2017 01:16:40 +0530
+        Mon, 06 Mar 2017 11:46:14 -0800 (PST)
+Date: Tue, 7 Mar 2017 01:16:10 +0530
 From: Aishwarya Pant <aishpant@gmail.com>
 To: Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>,
 	Eric Anholt <eric@anholt.net>,
@@ -58,68 +58,34 @@ To: Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>,
 	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
 	bcm-kernel-feedback-list@broadcom.com
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 2/4] staging: bcm2835-audio: replace null with error
- pointer value
-Message-ID: <268cb7b0ba699ecf52cca746a1194b9e037fa795.1488829304.git.aishpant@gmail.com>
-References: <cover.1488829304.git.aishpant@gmail.com>
+Subject: [PATCH v2 0/4] staging: bcm2835-audio: fix coding style issues
+Message-ID: <cover.1488829304.git.aishpant@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1488829304.git.aishpant@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-This patch replaces NULL values returned by vc_vchi_audio_init(...) with
-error pointer values:
-	- Return ERR_PTR(-EINVAL) when too many instances of audio
-	  service are initialised
-	- Return ERR_PTR(-ENOMEM) when kzalloc fails
-	- RETURN ERR_PTR(-EPERM) when vchi connections fail to open
+This patchset makes the following changes:
+        - Replace kmalloc and memset with kzalloc
+	- Replace null return value with PTR_ERR values
+        - Propagate the PTR_ERR values forward instead of a hardcoded
+	  value for easier debugging
+	- Replace if (success) else { } after kmalloc with if (error) to
+          fail fast.
 
-Similarly, a NULL check where vc_vchi_audio_init(...) is called is
-replaced by IS_ERR(..)
 
-Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
----
- drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+Changes in v2:
+	- Return error value -EBUSY instead of -1 when queue_work() fails
 
-diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
-index 005e287..d2686b4 100644
---- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
-+++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
-@@ -287,12 +287,12 @@ vc_vchi_audio_init(VCHI_INSTANCE_T vchi_instance,
- 		LOG_ERR("%s: unsupported number of connections %u (max=%u)\n",
- 			__func__, num_connections, VCHI_MAX_NUM_CONNECTIONS);
- 
--		return NULL;
-+		return ERR_PTR(-EINVAL);
- 	}
- 	/* Allocate memory for this instance */
- 	instance = kzalloc(sizeof(*instance), GFP_KERNEL);
- 	if (!instance)
--		return NULL;
-+		return ERR_PTR(-ENOMEM);
- 
- 	instance->num_connections = num_connections;
- 
-@@ -341,7 +341,7 @@ vc_vchi_audio_init(VCHI_INSTANCE_T vchi_instance,
- 	kfree(instance);
- 	LOG_ERR("%s: error\n", __func__);
- 
--	return NULL;
-+	return ERR_PTR(-EPERM);
- }
- 
- static int vc_vchi_audio_deinit(struct bcm2835_audio_instance *instance)
-@@ -432,7 +432,7 @@ static int bcm2835_audio_open_connection(struct bcm2835_alsa_stream *alsa_stream
- 	/* Initialize an instance of the audio service */
- 	instance = vc_vchi_audio_init(vchi_instance, &vchi_connection, 1);
- 
--	if (!instance) {
-+	if (IS_ERR(instance)) {
- 		LOG_ERR("%s: failed to initialize audio service\n", __func__);
- 
- 		ret = -EPERM;
+Aishwarya Pant (4):
+  staging: bcm2835-audio: Replace kmalloc with kzalloc
+  staging: bcm2835-audio: replace null with error pointer value
+  staging: bcm2835-audio: propagate PTR_ERR value instead of -EPERM
+  staging: bcm2835-audio: use conditional only for error case
+
+ .../vc04_services/bcm2835-audio/bcm2835-vchiq.c    | 83 +++++++++++-----------
+ 1 file changed, 41 insertions(+), 42 deletions(-)
+
 -- 
 2.7.4
 
