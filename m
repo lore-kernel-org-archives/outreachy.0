@@ -1,168 +1,115 @@
 X-GM-THRID: 6394100888766513152
-X-Received: by 10.46.7.10 with SMTP id 10mr2197672ljh.1.1488800489826;
-        Mon, 06 Mar 2017 03:41:29 -0800 (PST)
+X-Received: by 10.107.47.193 with SMTP id v62mr1642508iov.90.1488800483042;
+        Mon, 06 Mar 2017 03:41:23 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.72.196 with SMTP id v187ls321823lfa.52.gmail; Mon, 06 Mar
- 2017 03:41:28 -0800 (PST)
-X-Received: by 10.46.78.9 with SMTP id c9mr2253009ljb.20.1488800488593;
-        Mon, 06 Mar 2017 03:41:28 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id h198si1039246wmg.1.2017.03.06.03.41.28
+Received: by 10.157.27.71 with SMTP id l65ls14301069otl.41.gmail; Mon, 06 Mar
+ 2017 03:41:22 -0800 (PST)
+X-Received: by 10.129.69.37 with SMTP id s37mr6797776ywa.147.1488800482610;
+        Mon, 06 Mar 2017 03:41:22 -0800 (PST)
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-it0-x22d.google.com (mail-it0-x22d.google.com. [2607:f8b0:4001:c0b::22d])
+        by gmr-mx.google.com with ESMTPS id d20si1679200itc.1.2017.03.06.03.41.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 06 Mar 2017 03:41:28 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Mon, 06 Mar 2017 03:41:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2607:f8b0:4001:c0b::22d as permitted sender) client-ip=2607:f8b0:4001:c0b::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.35,253,1484002800"; 
-   d="scan'208";a="215716987"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 06 Mar 2017 12:41:27 +0100
-Date: Mon, 6 Mar 2017 12:41:15 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Tamara Diaconita <diaconitatamara@gmail.com>
-cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, w.d.hubbs@gmail.com, 
-    chris@the-brannons.com, kirk@reisers.ca, samuel.thibault@ens-lyon.org, 
-    gregkh@linuxfoundation.org, diaconita.tamara@gmail.com
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2607:f8b0:4001:c0b::22d as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-it0-x22d.google.com with SMTP id 203so47162708ith.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 06 Mar 2017 03:41:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=HPdPCvAomkT/gzU113zWrSyb0EyOhgZ5EGau1GKovmw=;
+        b=LHcQaJ7hYADZivhD5s/6HHHftaUdJwlByxfE85vMTXwsrhkCrEuxfaxDZyeRo7X0Us
+         7FSKLvZJJkWYd/vCRREjhjGkqFnG/ZEePKDcGQjNbCn4BjANKMY4SGJyby1M2PktJpcZ
+         nVqrmNY092UiLQ7AfTjrRDN1WhsKr/9uvDeusjkGznrmV1RjkG3oJUhIfV94XOqoqHF5
+         hkPOz8wzR0tBwSjdCc50jYDav0XmQztOL3/AlbuOGh/yjJVWTFtAwKblit/wYsNtX47n
+         1Cp0ICVzslzpq15cUNOclY5c7DjzVu1wp8+FMgIPhOCdC9lJ3cH5EVLdb+AOwpVRgUb4
+         tXoA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=HPdPCvAomkT/gzU113zWrSyb0EyOhgZ5EGau1GKovmw=;
+        b=cFQtyULZ4ZkufwZ2rXTTZJztay2Wq63Fj/sg9pmPZKgBkmtdIUFdo3fpRykTCtbF5x
+         RNn99UCelCpQHeQToV1/EJeUKgUwCG4tNq/eo8EopyoMuVwSACSM5cqH/LVD/DY3Rpno
+         eHEla0VE9EG7BxrRLLeqdYpuwQR5Fo4mRuiWslg/dV0mnMAGn2LQf9H2q2M9q5FOlnp5
+         VGBVOcYt+byn9OR0aIDDFOdRn4JCD91W5RZnwybp8n/zwn5f9WvvfgDUIqgtgljkrEx9
+         KBcsAP3ZG7rMvpHwi8k3kXCtKlUjRFSR1fk6HQmFiuuWNF6izSoi/6cxlw92cr8loiqd
+         b7kg==
+X-Gm-Message-State: AMke39ky8AQsDrfltGAdCMWpAdBXOXF6eJ1OAM9v+D/d1wNiOWc6o28Ym2iYW8mGx9Ck5/Vm6lCkQHs56CiowA==
+X-Received: by 10.36.146.134 with SMTP id l128mr13690395itd.19.1488800482379;
+ Mon, 06 Mar 2017 03:41:22 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.107.26.201 with HTTP; Mon, 6 Mar 2017 03:41:21 -0800 (PST)
+In-Reply-To: <ae948b29-c3d0-40d3-94a0-31df90500e76@googlegroups.com>
+References: <20170305193701.20390-1-diaconita.tamara@gmail.com> <ae948b29-c3d0-40d3-94a0-31df90500e76@googlegroups.com>
+From: Daniel Baluta <daniel.baluta@gmail.com>
+Date: Mon, 6 Mar 2017 13:41:21 +0200
+Message-ID: <CAEnQRZA65EgX8BM50bLHs4nmhpweQ2g-kCbEmmsjR2ott1FZFA@mail.gmail.com>
 Subject: Re: [Outreachy kernel] Re: [PATCH 3/3] staging:speakup:keyhelp.c:
  Remove unnecessary else
-In-Reply-To: <ae948b29-c3d0-40d3-94a0-31df90500e76@googlegroups.com>
-Message-ID: <alpine.DEB.2.20.1703061237370.3078@hadrien>
-References: <20170305193701.20390-1-diaconita.tamara@gmail.com> <ae948b29-c3d0-40d3-94a0-31df90500e76@googlegroups.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: multipart/mixed; BOUNDARY="8323329-634729139-1488800476=:3078"
-
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
-
---8323329-634729139-1488800476=:3078
+To: Tamara Diaconita <diaconitatamara@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, w.d.hubbs@gmail.com, 
+	chris@the-brannons.com, kirk@reisers.ca, samuel.thibault@ens-lyon.org, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Tamara Diaconita <diaconita.tamara@gmail.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: quoted-printable
 
-
-
-On Mon, 6 Mar 2017, Tamara Diaconita wrote:
-
+On Mon, Mar 6, 2017 at 1:29 PM, Tamara Diaconita
+<diaconitatamara@gmail.com> wrote:
 > Did I do something wrong? In this case I see that the if statement finish
 > with a return.
 
-The structure is complex is this case.  For a simpler example, suppose you
-have
+Hi Tamara,
 
-if (x)
-  print "hello"
-else if (y)
-  return;
-else print "goodbye"
+Firstly, use bottom posting. Meaning that your reply should be under the te=
+xt
+you are replying to. Like this one.
 
-The original program prints hello or goodbye (or nothing), but not both.
-If you remove the final else, it may print hello goodbye.  The structure
-of your code is like this.  The KT_LATIN and KT_CUR cases might not
-return.
+Secondly, after cosmetic patches the logic of the code shouldn't be changed=
+.
+In your case it is changed.
 
-Chckpatch just looks at very local structure.  It doesn't follow the
-entire control flow, so it can have false positives like this.
+The code looks like this:
 
-julia
+if (cond1) {
+/* code1 */
+} else if (cond2) {
+/* code2 */
+} else if(cond3) {
+/*code3 */
+} else {
+/* code4 */
+}
 
->
-> duminică, 5 martie 2017, 21:37:05 UTC+2, Tamara Diaconita a scris:
->       Fixed the checkpath.pl WARNING:
->       Else is not generally useful after a break return.
->
->       Deleted the 'else' structure.
->       Deleted extra tabs which remained after the 'else' structure was
->       removed.
->
->       Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
->       ---
->        drivers/staging/speakup/keyhelp.c | 44
->       +++++++++++++++++++--------------------
->        1 file changed, 22 insertions(+), 22 deletions(-)
->
->       diff --git a/drivers/staging/speakup/keyhelp.c
->       b/drivers/staging/speakup/keyhelp.c
->       index 2ef7370..0e0efc46 100644
->       --- a/drivers/staging/speakup/keyhelp.c
->       +++ b/drivers/staging/speakup/keyhelp.c
->       @@ -176,30 +176,30 @@ int spk_handle_help(struct vc_data *vc,
->       u_char type, u_char ch, u_short key)
->                        synth_printf("%s\n",
->       spk_msg_get(MSG_HELP_INFO));
->                        build_key_data(); /* rebuild each time in case
->       new mapping */
->                        return 1;
->       -        } else {
->       -                name = NULL;
->       -                if ((type != KT_SPKUP) && (key > 0) && (key <=
->       num_key_names)) {
->       -                        synth_printf("%s\n",
->       -                                    
->       spk_msg_get(MSG_KEYNAMES_START + key - 1));
->       -                        return 1;
->       -                }
->       -                for (i = 0; funcvals[i] != 0 && !name; i++) {
->       -                        if (ch == funcvals[i])
->       -                                name =
->       spk_msg_get(MSG_FUNCNAMES_START + i);
->       -                }
->       -                if (!name)
->       -                        return -1;
->       -                kp = spk_our_keys[key] + 1;
->       -                for (i = 0; i < nstates; i++) {
->       -                        if (ch == kp[i])
->       -                                break;
->       -                }
->       -                key += (state_tbl[i] << 8);
->       -                say_key(key);
->       -                synth_printf(spk_msg_get(MSG_KEYDESC), name);
->       -                synth_printf("\n");
->       +        }
->       +        name = NULL;
->       +        if ((type != KT_SPKUP) && (key > 0) && (key <=
->       num_key_names)) {
->       +                synth_printf("%s\n",
->       +                             spk_msg_get(MSG_KEYNAMES_START +
->       key - 1));
->                        return 1;
->                }
->       +        for (i = 0; funcvals[i] != 0 && !name; i++) {
->       +                if (ch == funcvals[i])
->       +                        name = spk_msg_get(MSG_FUNCNAMES_START
->       + i);
->       +        }
->       +        if (!name)
->       +                return -1;
->       +        kp = spk_our_keys[key] + 1;
->       +        for (i = 0; i < nstates; i++) {
->       +                if (ch == kp[i])
->       +                        break;
->       +                }
->       +        key += (state_tbl[i] << 8);
->       +        say_key(key);
->       +        synth_printf(spk_msg_get(MSG_KEYDESC), name);
->       +        synth_printf("\n");
->       +        return 1;
->       +
->                name = spk_msg_get(MSG_FUNCNAMES_START + cur_item);
->                func = funcvals[cur_item];
->                synth_printf("%s", name);
->       --
->       2.9.3
->
-> --
-> You received this message because you are subscribed to the Google Groups
-> "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an
-> email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/ae948b29-c3d0-40d3-94a0-
-> 31df90500e76%40googlegroups.com.
-> For more options, visit https://groups.google.com/d/optout.
->
->
---8323329-634729139-1488800476=:3078--
+/* code 5 */
+Your code removes the last "else" which would be fine if all other
+code path would end with a return.
+
+But if you look into the code there is a path that doesn't end with a retur=
+n [1]
+and thus you break the initial logic.
+
+The path that could end up without a return is this:
+
+=C2=BB       } else if (type =3D=3D KT_CUR) {
+=C2=BB       =C2=BB       if (ch =3D=3D 0
+=C2=BB       =C2=BB           && (MSG_FUNCNAMES_START + cur_item + 1) <=3D
+=C2=BB       =C2=BB           MSG_FUNCNAMES_END)
+=C2=BB       =C2=BB       =C2=BB       cur_item++;
+=C2=BB       =C2=BB       else if (ch =3D=3D 3 && cur_item > 0)
+=C2=BB       =C2=BB       =C2=BB       cur_item--;
+=C2=BB       =C2=BB       else
+=C2=BB       =C2=BB       =C2=BB       return -1;
+
+
+Hope this helps.
+
+thanks,
+Daniel.
 
