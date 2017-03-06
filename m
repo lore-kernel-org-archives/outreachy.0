@@ -1,115 +1,277 @@
 X-GM-THRID: 6394100888766513152
-X-Received: by 10.107.47.193 with SMTP id v62mr1642508iov.90.1488800483042;
-        Mon, 06 Mar 2017 03:41:23 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.27.71 with SMTP id l65ls14301069otl.41.gmail; Mon, 06 Mar
- 2017 03:41:22 -0800 (PST)
-X-Received: by 10.129.69.37 with SMTP id s37mr6797776ywa.147.1488800482610;
-        Mon, 06 Mar 2017 03:41:22 -0800 (PST)
-Return-Path: <daniel.baluta@gmail.com>
-Received: from mail-it0-x22d.google.com (mail-it0-x22d.google.com. [2607:f8b0:4001:c0b::22d])
-        by gmr-mx.google.com with ESMTPS id d20si1679200itc.1.2017.03.06.03.41.22
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 06 Mar 2017 03:41:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2607:f8b0:4001:c0b::22d as permitted sender) client-ip=2607:f8b0:4001:c0b::22d;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2607:f8b0:4001:c0b::22d as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-it0-x22d.google.com with SMTP id 203so47162708ith.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 06 Mar 2017 03:41:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=HPdPCvAomkT/gzU113zWrSyb0EyOhgZ5EGau1GKovmw=;
-        b=LHcQaJ7hYADZivhD5s/6HHHftaUdJwlByxfE85vMTXwsrhkCrEuxfaxDZyeRo7X0Us
-         7FSKLvZJJkWYd/vCRREjhjGkqFnG/ZEePKDcGQjNbCn4BjANKMY4SGJyby1M2PktJpcZ
-         nVqrmNY092UiLQ7AfTjrRDN1WhsKr/9uvDeusjkGznrmV1RjkG3oJUhIfV94XOqoqHF5
-         hkPOz8wzR0tBwSjdCc50jYDav0XmQztOL3/AlbuOGh/yjJVWTFtAwKblit/wYsNtX47n
-         1Cp0ICVzslzpq15cUNOclY5c7DjzVu1wp8+FMgIPhOCdC9lJ3cH5EVLdb+AOwpVRgUb4
-         tXoA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=HPdPCvAomkT/gzU113zWrSyb0EyOhgZ5EGau1GKovmw=;
-        b=cFQtyULZ4ZkufwZ2rXTTZJztay2Wq63Fj/sg9pmPZKgBkmtdIUFdo3fpRykTCtbF5x
-         RNn99UCelCpQHeQToV1/EJeUKgUwCG4tNq/eo8EopyoMuVwSACSM5cqH/LVD/DY3Rpno
-         eHEla0VE9EG7BxrRLLeqdYpuwQR5Fo4mRuiWslg/dV0mnMAGn2LQf9H2q2M9q5FOlnp5
-         VGBVOcYt+byn9OR0aIDDFOdRn4JCD91W5RZnwybp8n/zwn5f9WvvfgDUIqgtgljkrEx9
-         KBcsAP3ZG7rMvpHwi8k3kXCtKlUjRFSR1fk6HQmFiuuWNF6izSoi/6cxlw92cr8loiqd
-         b7kg==
-X-Gm-Message-State: AMke39ky8AQsDrfltGAdCMWpAdBXOXF6eJ1OAM9v+D/d1wNiOWc6o28Ym2iYW8mGx9Ck5/Vm6lCkQHs56CiowA==
-X-Received: by 10.36.146.134 with SMTP id l128mr13690395itd.19.1488800482379;
- Mon, 06 Mar 2017 03:41:22 -0800 (PST)
+Date: Mon, 6 Mar 2017 03:29:46 -0800 (PST)
+From: Tamara Diaconita <diaconitatamara@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: w.d.hubbs@gmail.com, chris@the-brannons.com, kirk@reisers.ca,
+	samuel.thibault@ens-lyon.org, gregkh@linuxfoundation.org,
+	diaconita.tamara@gmail.com
+Message-Id: <ae948b29-c3d0-40d3-94a0-31df90500e76@googlegroups.com>
+In-Reply-To: <20170305193701.20390-1-diaconita.tamara@gmail.com>
+References: <20170305193701.20390-1-diaconita.tamara@gmail.com>
+Subject: Re: [PATCH 3/3] staging:speakup:keyhelp.c: Remove unnecessary else
 MIME-Version: 1.0
-Received: by 10.107.26.201 with HTTP; Mon, 6 Mar 2017 03:41:21 -0800 (PST)
-In-Reply-To: <ae948b29-c3d0-40d3-94a0-31df90500e76@googlegroups.com>
-References: <20170305193701.20390-1-diaconita.tamara@gmail.com> <ae948b29-c3d0-40d3-94a0-31df90500e76@googlegroups.com>
-From: Daniel Baluta <daniel.baluta@gmail.com>
-Date: Mon, 6 Mar 2017 13:41:21 +0200
-Message-ID: <CAEnQRZA65EgX8BM50bLHs4nmhpweQ2g-kCbEmmsjR2ott1FZFA@mail.gmail.com>
-Subject: Re: [Outreachy kernel] Re: [PATCH 3/3] staging:speakup:keyhelp.c:
- Remove unnecessary else
-To: Tamara Diaconita <diaconitatamara@gmail.com>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, w.d.hubbs@gmail.com, 
-	chris@the-brannons.com, kirk@reisers.ca, samuel.thibault@ens-lyon.org, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Tamara Diaconita <diaconita.tamara@gmail.com>
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_1364_187246547.1488799786515"
+X-Google-Token: EKqQ9cUFyondZrB25kI0
+X-Google-IP: 141.85.228.66
+
+------=_Part_1364_187246547.1488799786515
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1365_630511791.1488799786516"
+
+------=_Part_1365_630511791.1488799786516
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, Mar 6, 2017 at 1:29 PM, Tamara Diaconita
-<diaconitatamara@gmail.com> wrote:
-> Did I do something wrong? In this case I see that the if statement finish
-> with a return.
+Did I do something wrong? In this case I see that the if statement finish=
+=20
+with a return.
 
-Hi Tamara,
+duminic=C4=83, 5 martie 2017, 21:37:05 UTC+2, Tamara Diaconita a scris:
+>
+> Fixed the checkpath.pl WARNING:=20
+> Else is not generally useful after a break return.=20
+>
+> Deleted the 'else' structure.=20
+> Deleted extra tabs which remained after the 'else' structure was=20
+> removed.=20
+>
+> Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>=20
+> ---=20
+>  drivers/staging/speakup/keyhelp.c | 44=20
+> +++++++++++++++++++--------------------=20
+>  1 file changed, 22 insertions(+), 22 deletions(-)=20
+>
+> diff --git a/drivers/staging/speakup/keyhelp.c=20
+> b/drivers/staging/speakup/keyhelp.c=20
+> index 2ef7370..0e0efc46 100644=20
+> --- a/drivers/staging/speakup/keyhelp.c=20
+> +++ b/drivers/staging/speakup/keyhelp.c=20
+> @@ -176,30 +176,30 @@ int spk_handle_help(struct vc_data *vc, u_char type=
+,=20
+> u_char ch, u_short key)=20
+>                  synth_printf("%s\n", spk_msg_get(MSG_HELP_INFO));=20
+>                  build_key_data(); /* rebuild each time in case new=20
+> mapping */=20
+>                  return 1;=20
+> -        } else {=20
+> -                name =3D NULL;=20
+> -                if ((type !=3D KT_SPKUP) && (key > 0) && (key <=3D=20
+> num_key_names)) {=20
+> -                        synth_printf("%s\n",=20
+> -                                     spk_msg_get(MSG_KEYNAMES_START + ke=
+y=20
+> - 1));=20
+> -                        return 1;=20
+> -                }=20
+> -                for (i =3D 0; funcvals[i] !=3D 0 && !name; i++) {=20
+> -                        if (ch =3D=3D funcvals[i])=20
+> -                                name =3D spk_msg_get(MSG_FUNCNAMES_START=
+ +=20
+> i);=20
+> -                }=20
+> -                if (!name)=20
+> -                        return -1;=20
+> -                kp =3D spk_our_keys[key] + 1;=20
+> -                for (i =3D 0; i < nstates; i++) {=20
+> -                        if (ch =3D=3D kp[i])=20
+> -                                break;=20
+> -                }=20
+> -                key +=3D (state_tbl[i] << 8);=20
+> -                say_key(key);=20
+> -                synth_printf(spk_msg_get(MSG_KEYDESC), name);=20
+> -                synth_printf("\n");=20
+> +        }=20
+> +        name =3D NULL;=20
+> +        if ((type !=3D KT_SPKUP) && (key > 0) && (key <=3D num_key_names=
+)) {=20
+> +                synth_printf("%s\n",=20
+> +                             spk_msg_get(MSG_KEYNAMES_START + key - 1));=
+=20
+>                  return 1;=20
+>          }=20
+> +        for (i =3D 0; funcvals[i] !=3D 0 && !name; i++) {=20
+> +                if (ch =3D=3D funcvals[i])=20
+> +                        name =3D spk_msg_get(MSG_FUNCNAMES_START + i);=
+=20
+> +        }=20
+> +        if (!name)=20
+> +                return -1;=20
+> +        kp =3D spk_our_keys[key] + 1;=20
+> +        for (i =3D 0; i < nstates; i++) {=20
+> +                if (ch =3D=3D kp[i])=20
+> +                        break;=20
+> +                }=20
+> +        key +=3D (state_tbl[i] << 8);=20
+> +        say_key(key);=20
+> +        synth_printf(spk_msg_get(MSG_KEYDESC), name);=20
+> +        synth_printf("\n");=20
+> +        return 1;=20
+> +=20
+>          name =3D spk_msg_get(MSG_FUNCNAMES_START + cur_item);=20
+>          func =3D funcvals[cur_item];=20
+>          synth_printf("%s", name);=20
+> --=20
+> 2.9.3=20
+>
+>
+------=_Part_1365_630511791.1488799786516
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-Firstly, use bottom posting. Meaning that your reply should be under the te=
-xt
-you are replying to. Like this one.
+<div dir=3D"ltr">Did I do something wrong? In this case I see that the if s=
+tatement finish with a return.<br><br>duminic=C4=83, 5 martie 2017, 21:37:0=
+5 UTC+2, Tamara Diaconita a scris:<blockquote class=3D"gmail_quote" style=
+=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: =
+1ex;">Fixed the <a href=3D"http://checkpath.pl" target=3D"_blank" rel=3D"no=
+follow" onmousedown=3D"this.href=3D&#39;http://www.google.com/url?q\x3dhttp=
+%3A%2F%2Fcheckpath.pl\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNHJG89P3V6thKD=
+FaYlxk26bhheSug&#39;;return true;" onclick=3D"this.href=3D&#39;http://www.g=
+oogle.com/url?q\x3dhttp%3A%2F%2Fcheckpath.pl\x26sa\x3dD\x26sntz\x3d1\x26usg=
+\x3dAFQjCNHJG89P3V6thKDFaYlxk26bhheSug&#39;;return true;">checkpath.pl</a> =
+WARNING:
+<br>Else is not generally useful after a break return.
+<br>
+<br>Deleted the &#39;else&#39; structure.
+<br>Deleted extra tabs which remained after the &#39;else&#39; structure wa=
+s
+<br>removed.
+<br>
+<br>Signed-off-by: Tamara Diaconita &lt;<a href=3D"mailto:diaconita.tamara@=
+gmail.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#=
+39;mailto:diaconita.tamara@gmail.com&#39;;return true;" onclick=3D"this.hre=
+f=3D&#39;mailto:diaconita.tamara@gmail.com&#39;;return true;">diaconita.tam=
+ara@gmail.com</a>&gt;
+<br>---
+<br>=C2=A0drivers/staging/speakup/<wbr>keyhelp.c | 44 +++++++++++++++++++--=
+---------<wbr>---------
+<br>=C2=A01 file changed, 22 insertions(+), 22 deletions(-)
+<br>
+<br>diff --git a/drivers/staging/speakup/<wbr>keyhelp.c b/drivers/staging/s=
+peakup/<wbr>keyhelp.c
+<br>index 2ef7370..0e0efc46 100644
+<br>--- a/drivers/staging/speakup/<wbr>keyhelp.c
+<br>+++ b/drivers/staging/speakup/<wbr>keyhelp.c
+<br>@@ -176,30 +176,30 @@ int spk_handle_help(struct vc_data *vc, u_char ty=
+pe, u_char ch, u_short key)
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0synth_printf(<wbr>&quot;%s\n&quot;, spk_ms=
+g_get(MSG_HELP_INFO));
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0build_key_<wbr>data(); /* rebuild each tim=
+e in case new mapping */
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return 1;
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0} else {
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0name =3D NULL;
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0if ((type !=3D KT_SPKUP) &amp;&amp; (key &gt; 0)=
+ &amp;&amp; (key &lt;=3D num_key_names)) {
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+<wbr>synth_printf(&quot;%s\n&quot;,
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0 spk_msg=
+_get(MSG_KEYNAMES_START + key - 1));
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+<wbr>return 1;
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0for (i =3D 0; funcvals[i] !=3D 0 &amp;&amp; !nam=
+e; i++) {
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+if (ch =3D=3D funcvals[i])
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0name =3D spk_msg_get(M=
+SG_FUNCNAMES_<wbr>START + i);
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0if (!name)
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+<wbr>return -1;
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0kp =3D spk_our_keys[key] + 1;
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0for (i =3D 0; i &lt; nstates; i++) {
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+if (ch =3D=3D kp[i])
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0break;
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0key +=3D (state_tbl[i] &lt;&lt; 8);
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0say_key(key);
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0synth_printf(<wbr>spk_msg_get(MSG_KEYDESC), name=
+);
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0synth_printf(<wbr>&quot;\n&quot;);
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0name =3D NULL;
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if ((type !=3D KT_SPKU=
+P) &amp;&amp; (key &gt; 0) &amp;&amp; (key &lt;=3D num_key_names)) {
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0synth_printf(<wbr>&quot;%s\n&quot;,
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ =C2=A0 =C2=A0 spk_msg_get(MSG_KEYNAMES_START + key - 1));
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return 1;
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0for (i =3D 0; funcvals=
+[i] !=3D 0 &amp;&amp; !name; i++) {
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0if (ch =3D=3D funcvals[i])
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+name =3D spk_msg_get(MSG_FUNCNAMES_<wbr>START + i);
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (!name)
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0return -1;
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0kp =3D spk_our_keys[ke=
+y] + 1;
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0for (i =3D 0; i &lt; n=
+states; i++) {
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0if (ch =3D=3D kp[i])
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+<wbr>break;
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0key +=3D (state_tbl[i]=
+ &lt;&lt; 8);
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0say_key(key);
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0synth_printf(spk_msg_<=
+wbr>get(MSG_KEYDESC), name);
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0synth_printf(&quot;\n&=
+quot;);
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return 1;
+<br>+
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0name =3D spk_msg_=
+get(MSG_FUNCNAMES_<wbr>START + cur_item);
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0func =3D funcvals=
+[cur_item];
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0synth_printf(&quo=
+t;%s&quot;, name);
+<br>--=20
+<br>2.9.3
+<br>
+<br></blockquote></div>
+------=_Part_1365_630511791.1488799786516--
 
-Secondly, after cosmetic patches the logic of the code shouldn't be changed=
-.
-In your case it is changed.
-
-The code looks like this:
-
-if (cond1) {
-/* code1 */
-} else if (cond2) {
-/* code2 */
-} else if(cond3) {
-/*code3 */
-} else {
-/* code4 */
-}
-
-/* code 5 */
-Your code removes the last "else" which would be fine if all other
-code path would end with a return.
-
-But if you look into the code there is a path that doesn't end with a retur=
-n [1]
-and thus you break the initial logic.
-
-The path that could end up without a return is this:
-
-=C2=BB       } else if (type =3D=3D KT_CUR) {
-=C2=BB       =C2=BB       if (ch =3D=3D 0
-=C2=BB       =C2=BB           && (MSG_FUNCNAMES_START + cur_item + 1) <=3D
-=C2=BB       =C2=BB           MSG_FUNCNAMES_END)
-=C2=BB       =C2=BB       =C2=BB       cur_item++;
-=C2=BB       =C2=BB       else if (ch =3D=3D 3 && cur_item > 0)
-=C2=BB       =C2=BB       =C2=BB       cur_item--;
-=C2=BB       =C2=BB       else
-=C2=BB       =C2=BB       =C2=BB       return -1;
-
-
-Hope this helps.
-
-thanks,
-Daniel.
+------=_Part_1364_187246547.1488799786515--
 
