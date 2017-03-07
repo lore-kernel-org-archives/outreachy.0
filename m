@@ -1,85 +1,98 @@
 X-GM-THRID: 6394745147099185152
-X-Received: by 10.46.88.70 with SMTP id x6mr184871ljd.22.1488901872346;
-        Tue, 07 Mar 2017 07:51:12 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.84.73 with SMTP id y9ls90918ljd.8.gmail; Tue, 07 Mar 2017
- 07:51:11 -0800 (PST)
-X-Received: by 10.46.9.141 with SMTP id 135mr194137ljj.19.1488901871804;
-        Tue, 07 Mar 2017 07:51:11 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id p144si81327wme.2.2017.03.07.07.51.11
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 07 Mar 2017 07:51:11 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
-Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.35,258,1484002800"; 
-   d="scan'208";a="263548327"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 07 Mar 2017 16:51:11 +0100
-Date: Tue, 7 Mar 2017 16:50:59 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Sreya Mittal <sreyamittal5@gmail.com>
-cc: outreachy-kernel@googlegroups.com, 
-    Sudip Mukherjee <sudipm.mukherjee@gmail.com>, 
-    Teddy Wang <teddy.wang@siliconmotion.com>, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [Outreachy kernel] [PATCH] Add braces around if condition
-In-Reply-To: <20170307131650.4318-1-sreyamittal5@gmail.com>
-Message-ID: <alpine.DEB.2.20.1703071649491.3150@hadrien>
+Date: Tue, 7 Mar 2017 06:14:16 -0800 (PST)
+From: Sreya Mittal <sreyamittal5@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: sreyamittal5@gmail.com, sudipm.mukherjee@gmail.com,
+	teddy.wang@siliconmotion.com, gregkh@linuxfoundation.org
+Message-Id: <9ed2b717-0782-4ef8-b149-72b9791ed115@googlegroups.com>
+In-Reply-To: <CAEnQRZBX_cZ9gxbxS+rh+o43_O-yWy4_XLcx8vV+CmntZYYRLg@mail.gmail.com>
 References: <20170307131650.4318-1-sreyamittal5@gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+ <CAEnQRZBX_cZ9gxbxS+rh+o43_O-yWy4_XLcx8vV+CmntZYYRLg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Add braces around if condition
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_7523_1502904775.1488896056743"
+X-Google-Token: ELiA-8UFImK9p_dflyM0
+X-Google-IP: 14.139.82.6
+
+------=_Part_7523_1502904775.1488896056743
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_7524_895525263.1488896056743"
+
+------=_Part_7524_895525263.1488896056743
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
 
 
-On Tue, 7 Mar 2017, Sreya Mittal wrote:
+On Tuesday, March 7, 2017 at 7:30:36 PM UTC+5:30, Daniel Baluta wrote:
+>
+> On Tue, Mar 7, 2017 at 3:16 PM, Sreya Mittal <sreyam...@gmail.com 
+> <javascript:>> wrote: 
+> > Fix the checkpatch issue: 
+> > braces {} should be used on all arms 
+> > of if-else statement. 
+> > 
+> > Signed-off-by: Sreya Mittal <sreyam...@gmail.com <javascript:>> 
+>
+> Please add tags to your commit subject. In order to find 
+> which tags to use for a certain file you can use git log <file.c> 
+> and see what tags were used for previous commits. 
+>
+> E.g for this patch the tag used by previous patches is "staging: sm750fb:" 
+> so the commit subject should be: 
+>
+> staging: sm750fb: Add braces around if condition 
+>
 
-> Fix the checkpatch issue:
-> braces {} should be used on all arms
-> of if-else statement.
+Sorry, my bad. I have corrected it in the next version.
 
-It's not a reason to resend, but it would be better to figure out how to
-be informed that you are exceeding 70 or so characters in the commit
-message rather than making very tiny lines.  Tiny lines are a bit hard to
-read, because one has to switch lines frequently.
-
-julia
+Thanks,
+Sreya
+ 
 
 >
-> Signed-off-by: Sreya Mittal <sreyamittal5@gmail.com>
-> ---
->  drivers/staging/sm750fb/ddk750_chip.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+> thanks, 
+> Daniel. 
 >
-> diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-> index 10cf729..7948ca9 100644
-> --- a/drivers/staging/sm750fb/ddk750_chip.c
-> +++ b/drivers/staging/sm750fb/ddk750_chip.c
-> @@ -16,9 +16,9 @@ logical_chip_type_t sm750_get_chip_type(void)
->
->  void sm750_set_chip_type(unsigned short devId, u8 revId)
->  {
-> -	if (devId == 0x718)
-> +	if (devId == 0x718) {
->  		chip = SM718;
-> -	else if (devId == 0x750) {
-> +	} else if (devId == 0x750) {
->  		chip = SM750;
->  		/* SM750 and SM750LE are different in their revision ID only. */
->  		if (revId == SM750LE_REVISION_ID) {
-> --
-> 2.9.3
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170307131650.4318-1-sreyamittal5%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
+
+------=_Part_7524_895525263.1488896056743
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Tuesday, March 7, 2017 at 7:30:36 PM UTC+5:30, =
+Daniel Baluta wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;ma=
+rgin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">On Tue, Ma=
+r 7, 2017 at 3:16 PM, Sreya Mittal &lt;<a href=3D"javascript:" target=3D"_b=
+lank" gdf-obfuscated-mailto=3D"vWnSdjKnAQAJ" rel=3D"nofollow" onmousedown=
+=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.href=3D=
+&#39;javascript:&#39;;return true;">sreyam...@gmail.com</a>&gt; wrote:
+<br>&gt; Fix the checkpatch issue:
+<br>&gt; braces {} should be used on all arms
+<br>&gt; of if-else statement.
+<br>&gt;
+<br>&gt; Signed-off-by: Sreya Mittal &lt;<a href=3D"javascript:" target=3D"=
+_blank" gdf-obfuscated-mailto=3D"vWnSdjKnAQAJ" rel=3D"nofollow" onmousedown=
+=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.href=3D=
+&#39;javascript:&#39;;return true;">sreyam...@gmail.com</a>&gt;
+<br>
+<br>Please add tags to your commit subject. In order to find
+<br>which tags to use for a certain file you can use git log &lt;file.c&gt;
+<br>and see what tags were used for previous commits.
+<br>
+<br>E.g for this patch the tag used by previous patches is &quot;staging: s=
+m750fb:&quot;
+<br>so the commit subject should be:
+<br>
+<br>staging: sm750fb: Add braces around if condition
+<br></blockquote><div><br>Sorry, my bad. I have corrected it in the next ve=
+rsion.<br><br>Thanks,<br>Sreya<br>=C2=A0<br></div><blockquote class=3D"gmai=
+l_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;=
+padding-left: 1ex;">
+<br>thanks,
+<br>Daniel.
+<br></blockquote></div>
+------=_Part_7524_895525263.1488896056743--
+
+------=_Part_7523_1502904775.1488896056743--
 
