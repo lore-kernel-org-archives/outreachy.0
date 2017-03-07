@@ -1,52 +1,52 @@
 X-GM-THRID: 6394685280980303872
-X-Received: by 10.46.76.17 with SMTP id z17mr242353lja.13.1488904707550;
-        Tue, 07 Mar 2017 08:38:27 -0800 (PST)
+X-Received: by 10.46.92.131 with SMTP id q125mr3122529ljb.15.1488880830017;
+        Tue, 07 Mar 2017 02:00:30 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.84.65 with SMTP id y1ls107291ljd.17.gmail; Tue, 07 Mar 2017
- 08:38:26 -0800 (PST)
-X-Received: by 10.25.234.202 with SMTP id y71mr201012lfi.2.1488904706950;
-        Tue, 07 Mar 2017 08:38:26 -0800 (PST)
+Received: by 10.46.33.66 with SMTP id h63ls1568ljh.5.gmail; Tue, 07 Mar 2017
+ 02:00:29 -0800 (PST)
+X-Received: by 10.46.83.76 with SMTP id t12mr3463665ljd.26.1488880829131;
+        Tue, 07 Mar 2017 02:00:29 -0800 (PST)
 Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wm0-x242.google.com (mail-wm0-x242.google.com. [2a00:1450:400c:c09::242])
-        by gmr-mx.google.com with ESMTPS id e72si405566wma.0.2017.03.07.08.38.26
+Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
+        by gmr-mx.google.com with ESMTPS id n128si277599wmf.2.2017.03.07.02.00.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 07 Mar 2017 08:38:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) client-ip=2a00:1450:400c:c09::242;
+        Tue, 07 Mar 2017 02:00:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
+       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x242.google.com with SMTP id u132so1903861wmg.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 07 Mar 2017 08:38:26 -0800 (PST)
+Received: by mail-wm0-x241.google.com with SMTP id v190so857wme.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 07 Mar 2017 02:00:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=KL9kUlrByeFFG1N7AOvsW0KVBMU8S/W55isf5LLMgP0=;
-        b=BaPsWuLgr0KE0looZmZmDBsXh+ipQaV12CnwDJDm7L2Hcqf2bhL5erS7s14W2VXk0f
-         lt79lao1DcPuzofh+6NH0+VpSZQCQDGwJWlQNSBrDogrI1P25tIH00ckYy2zzBpqFlQW
-         q1U5ocFMvntCBvk1ujuXaFDIIIUd2jMaMRgjDqgy5qrI9XRI7OoFYBvWcLirjpGm+75F
-         ky91/8Z0FUUwGDjF7r52LnVFhNvN1EjR+EqZgHThcBQEPxawZW3c2fBVQO2GKzkskK6r
-         c8mMXJaB5lfvGGcZHKDKMArzVfms+X35u4Hf0mTCl/mlxjoQzVUr9LHf9ZlVh5bcJQ0U
-         cCUQ==
+        bh=TFBAfVBkViFhFf9W1apAg4avtiXtWtgX/Ss3MIy+c/U=;
+        b=Ymz+TFtP6jLCsDBne9lkGZ7UgMf0bmMrzAL38PAPMiVo8nYx8/5E38EbwvFRgUoQJD
+         VcoI+UfW0SCQXkjSR8CYLIxPz7Zb1qg2jz9ftaOwQ7ct/LDIE5vV0wta3yXX07XAj5pg
+         2XUv+Je8k6M4M+OtvvX+J55pEIcSuxH3UUjsrwKkW2RQA3lVclEBSP5DnBJNOOTeRT3V
+         5cPHMjI+IBlHaeSRXSBNK6HxnUoq7+tD5agYe6zRXvSwH+oxcERBo1fYUghJd5DobdOR
+         NpeRJTinY4ImCmFptWcwczWAffQF4sAodbBkpG1brD1RVloyWHGc2/YzEc/cr898LU8E
+         WgeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=KL9kUlrByeFFG1N7AOvsW0KVBMU8S/W55isf5LLMgP0=;
-        b=RM0uS3PiEcHRy2qIUfslwb6HLfMNaGmn9z5rNj5B/2Wk/DOzqU2mpDJ+0ktLz4SUn/
-         /l46ZJsTWe2FAZNdfBnqV7toa6XaCKuaimxZEepXbNiUOwVBXj/qckNGGgy/ybs0yyfT
-         2dMQ5ZQzv3NqwvJf427JcbWxsLMhtULZ9YIkjYQCHBZZUOBdV/vNoHWZ42B1xGrjyVYe
-         D3E7QI7LDQ7M833lQrfcq9OXtu52pFOkV/pyZ7ZhdV8RQTJ7gVtkBW2zRmEq+QqcPCuw
-         GPVdvDgo/O9nDGHZGFXq7Vl06o2rVIrPBv6D/ozYBR7s7kNhbH0PajJ9GYVKl7aGaoAl
-         VlDA==
-X-Gm-Message-State: AMke39lwtn0y9MmKDhfZVITXqt8Oz7I7ni9qJoKrO3Sd98xPwQHEvR9U2IQ9rMi3CmlVrw==
-X-Received: by 10.28.52.137 with SMTP id b131mr1556916wma.30.1488904706534;
-        Tue, 07 Mar 2017 08:38:26 -0800 (PST)
+        bh=TFBAfVBkViFhFf9W1apAg4avtiXtWtgX/Ss3MIy+c/U=;
+        b=mgUMunb+nV/mBGwesjw7A+POsyIVq9QrA/lpnM8VvXZAcaJyMfhPwnyiLh/X4rEvPl
+         3P+KFVUE1uEhkYL9oPjpU4/4oITn9U5vzKsa/tNxW1wPECkCHNDxLV9uaKc5RSAgZWqU
+         9V3VaTPu/N5gCto9G9pG0eZC3ZSYfT5ADFk1VxbdFYNX76orb0N5EdfEw7ReqQC3mbWh
+         /ZThLenS1ipQ1CS2uWa9QRLcvMI8T8pwe27oBAP9XUHkCqx1vRLMUpT32ugAWEwYYIRs
+         hhr44ZPyQanvaQsmwuO8CiDWHrUmWjy/AjBY2FWeIBJZqiJGFXNGxbdJD+He91blfdSe
+         AiGA==
+X-Gm-Message-State: AMke39lwpfzdrbB3pMK3LSaTmyQCWVfUm2qJw5hrnkfHtBa4K7NJoMjNjob5B7DGXpveNw==
+X-Received: by 10.28.73.196 with SMTP id w187mr15959831wma.5.1488880828715;
+        Tue, 07 Mar 2017 02:00:28 -0800 (PST)
 Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([141.85.228.69])
-        by smtp.gmail.com with ESMTPSA id o15sm619463wra.61.2017.03.07.08.38.25
+Received: from tamara ([2a02:2f0b:8130:11ea:d457:4c45:37be:7df3])
+        by smtp.gmail.com with ESMTPSA id r8sm7976359wrb.33.2017.03.07.02.00.27
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 07 Mar 2017 08:38:25 -0800 (PST)
+        Tue, 07 Mar 2017 02:00:27 -0800 (PST)
 From: Tamara Diaconita <diaconitatamara@gmail.com>
 X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
 To: w.d.hubbs@gmail.com,
@@ -56,9 +56,9 @@ To: w.d.hubbs@gmail.com,
 	gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
 Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH 3/5] staging: speakup: kobjects: Align the code
-Date: Tue,  7 Mar 2017 18:38:20 +0200
-Message-Id: <20170307163820.9317-1-diaconita.tamara@gmail.com>
+Subject: [PATCH] staging: speakup: kobjects: Align the code
+Date: Tue,  7 Mar 2017 12:00:25 +0200
+Message-Id: <20170307100025.21648-1-diaconita.tamara@gmail.com>
 X-Mailer: git-send-email 2.9.3
 
 Fixed the checkpath.pl issue:
@@ -72,7 +72,7 @@ Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
  1 file changed, 32 insertions(+), 32 deletions(-)
 
 diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
-index 5d8ec05..9aff045 100644
+index 5396b7d..cd8eb12 100644
 --- a/drivers/staging/speakup/kobjects.c
 +++ b/drivers/staging/speakup/kobjects.c
 @@ -26,7 +26,7 @@
