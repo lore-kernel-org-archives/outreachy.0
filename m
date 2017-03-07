@@ -1,86 +1,95 @@
 X-GM-THRID: 6394898863849734144
-X-Received: by 10.129.119.84 with SMTP id s81mr1405159ywc.6.1488928428269;
-        Tue, 07 Mar 2017 15:13:48 -0800 (PST)
+X-Received: by 10.129.163.208 with SMTP id a199mr1449728ywh.135.1488928423680;
+        Tue, 07 Mar 2017 15:13:43 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.32.34 with SMTP id n31ls1996836ota.4.gmail; Tue, 07 Mar
- 2017 15:13:47 -0800 (PST)
-X-Received: by 10.129.165.201 with SMTP id c192mr1552197ywh.74.1488928427942;
-        Tue, 07 Mar 2017 15:13:47 -0800 (PST)
+Received: by 10.157.11.133 with SMTP id 5ls1821937oth.45.gmail; Tue, 07 Mar
+ 2017 15:13:43 -0800 (PST)
+X-Received: by 10.200.43.252 with SMTP id n57mr794758qtn.53.1488928423367;
+        Tue, 07 Mar 2017 15:13:43 -0800 (PST)
 Return-Path: <sreyamittal5@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id 2si285368pfx.8.2017.03.07.15.13.47
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id u12si292901pfd.3.2017.03.07.15.13.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 07 Mar 2017 15:13:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Tue, 07 Mar 2017 15:13:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=sreyamittal5@gmail.com;
+       spf=pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=sreyamittal5@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id b5so1428265pgg.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 07 Mar 2017 15:13:47 -0800 (PST)
+Received: by mail-pf0-x242.google.com with SMTP id 67so1545832pfg.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 07 Mar 2017 15:13:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=2c1MZ2lNIa08GTzTir6Oh4575VkEA4/GkTTVG+OWChI=;
-        b=UGsLbU481lYym+v0oYIfkOgSt/R3tGnli4Fkx/wpCxtfZGLkS8NWHmSKNjxn4TL34w
-         oki38DAYf0nUGouh1KtaxO3s6LC2mrwca0RA91BTVW8jvGaX+yWJeBemWoL8Hc/aiSpO
-         1c+PgpahtAUf1cNt/cB2fim5dskgYZpeqYF8ws6rw/oP4Olv3LajC8z6zA9BkktNKi75
-         b3csQ0vSTUusM5Fr2qBpg1q0ReJmDy0OKbj8bnQCaqlG+dahxT5Gy1b0+2zpjBW6o9pV
-         G3BNB+8bSan9ygCXOUvIAbQis0Biuaf62W6UyhLVzDWGVQViAvz6Uw21ms7iJt1/5LZ2
-         XTvA==
+        bh=yjLod3baVE+ScYdsUywcGQ1stxUCKjvY8O4R7mmqhQQ=;
+        b=OHDem/hr407RAo7ws2nTmHbaIsmMZKawkmeETaqredGYxzBG5MPefH9idEugzHxOhL
+         oFuPVhejARH0rmUTSfTXTAGMN456Q0E1+WUIBMeLw/NTCISQX2jsX9D4igvZHc+qadw9
+         +3fV7YSSBd+i3ycCRQmacOIwF7JQBxUmfiJZpr5tSziXrhIA15rRQoGzAPOTyscwGpfk
+         NI2WUI2dLz/zLly383eKbbiSaWMo5pCO/EUQF9Y0IizaJi6KfqWSnskfBhiuGd2bn6Q1
+         1SFqCrbg42iPRmUrDj6cC1Tj1Sd/AGDiOBbiAhgjFts2YOTut2fnufM8QMxOUIPqaK9T
+         Amxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=2c1MZ2lNIa08GTzTir6Oh4575VkEA4/GkTTVG+OWChI=;
-        b=n1E4SN6i9XPLjaMAfEyw///NQFBpLGGi0d9GCi09zNrrw/rW0/YRToUfBkzwgjFtb4
-         Jwda0BPI0dxf3M7LwgH6xARrZAfQuMOZICPr/YjeDdP96LqBcRrCwlQmid0gCly6tPdt
-         m738boUUmqtFbSOMR2U/7Rwfgc5Qqd0Rpx7DMPzyf8IsNteLXBjCaE2Q4TORP780/nAS
-         DMDOKay0EJ+DcWewaAFPd1MO+UMo5IGIyP80as35O8nqELbe62n9Uq6pgjf/uAre7nwg
-         HbPlCsMXjLv4e9798GZnX1SuvjkLywPQFP6TQCoJVBDmvl3NFa7vvbkJWvq8H5J6OWqI
-         eI/A==
-X-Gm-Message-State: AMke39kdFB9BP63Lqg5rzLJj28LBg3ftohEfdq6bd4h+2t2Prq6CIaKW9iTriMlLrLFm1w==
-X-Received: by 10.99.175.67 with SMTP id s3mr3249221pgo.185.1488928427714;
-        Tue, 07 Mar 2017 15:13:47 -0800 (PST)
+        bh=yjLod3baVE+ScYdsUywcGQ1stxUCKjvY8O4R7mmqhQQ=;
+        b=eH++m+4VqxvlzrRyuirjnafLJKnqM0hMiWCUdv6PVpHV3/B1beFUrbUTZ3ngJf/hPX
+         M9Cn9H+gy78Yh1u6FX7M/oY8L8VuMcxguNcWTLk40syF3bxiDAcmFdU9LIUWLq5RnlSA
+         +P0oK/PdkZKPY+HfeuELjMc3kqicbfpbTSkn6qmBqEhHA15PKNB+dbgsgaa0mhXS8vx4
+         3iU/PqffX7S+5Cb8ODH8vizkXhFmLLhyzqJt/Iuhnv+0Z3JJ58pAl0RFVIl8bNOEP/XZ
+         CqM41Pi3FWuO5L1G1ENdnuUVVoM7uO86+yHcMsJrzdJ30tfl3N5T5AJh6Mju/0J7mFke
+         pgpg==
+X-Gm-Message-State: AMke39mrlUA/6ehQ5kf031D4jdnC7nzrAjBInsOQX7Zar6jHeAZ2uckm1BkxelgP+lKcGw==
+X-Received: by 10.84.218.78 with SMTP id f14mr4009023plm.146.1488928423155;
+        Tue, 07 Mar 2017 15:13:43 -0800 (PST)
 Return-Path: <sreyamittal5@gmail.com>
 Received: from stayawesome ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id u75sm1818346pfk.3.2017.03.07.15.13.46
+        by smtp.gmail.com with ESMTPSA id o5sm1733588pgj.66.2017.03.07.15.13.42
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 07 Mar 2017 15:13:47 -0800 (PST)
+        Tue, 07 Mar 2017 15:13:42 -0800 (PST)
 From: Sreya Mittal <sreyamittal5@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Sreya Mittal <sreyamittal5@gmail.com>,
 	Aditya Shankar <aditya.shankar@microchip.com>,
 	Ganesh Krishna <ganesh.krishna@microchip.com>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 2/2] staging: wilc1000: Add blank line after a function
-Date: Wed,  8 Mar 2017 04:43:20 +0530
-Message-Id: <20170307231320.9716-3-sreyamittal5@gmail.com>
+Subject: [PATCH 1/2] staging: wilc1000: Fix spelling error
+Date: Wed,  8 Mar 2017 04:43:19 +0530
+Message-Id: <20170307231320.9716-2-sreyamittal5@gmail.com>
 X-Mailer: git-send-email 2.9.3
 In-Reply-To: <20170307231320.9716-1-sreyamittal5@gmail.com>
 References: <20170307231320.9716-1-sreyamittal5@gmail.com>
 
 Fix the checkpatch issue:
-Please use a blank line after function/struct/union/enum declarations
+'unkmown' may be misspelled - perhaps 'unknown'?
 
 Signed-off-by: Sreya Mittal <sreyamittal5@gmail.com>
 ---
- drivers/staging/wilc1000/wilc_spi.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/staging/wilc1000/wilc_spi.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/staging/wilc1000/wilc_spi.c b/drivers/staging/wilc1000/wilc_spi.c
-index 34661bb..9b55a06 100644
+index 5e28adc..34661bb 100644
 --- a/drivers/staging/wilc1000/wilc_spi.c
 +++ b/drivers/staging/wilc1000/wilc_spi.c
-@@ -1130,6 +1130,7 @@ static int wilc_spi_sync_ext(struct wilc *wilc, int nint)
+@@ -965,12 +965,12 @@ static int wilc_spi_read_int(struct wilc *wilc, u32 *int_status)
+ 				}
  
- 	return 1;
- }
-+
- /********************************************
-  *
-  *      Global spi HIF function table
+ 				{
+-					u32 unkmown_mask;
++					u32 unknown_mask;
+ 
+-					unkmown_mask = ~((1ul << g_spi.nint) - 1);
++					unknown_mask = ~((1ul << g_spi.nint) - 1);
+ 
+-					if ((tmp >> IRG_FLAGS_OFFSET) & unkmown_mask) {
+-						dev_err(&spi->dev, "Unexpected interrupt (2): j=%d, tmp=%x, mask=%x\n", j, tmp, unkmown_mask);
++					if ((tmp >> IRG_FLAGS_OFFSET) & unknown_mask) {
++						dev_err(&spi->dev, "Unexpected interrupt (2): j=%d, tmp=%x, mask=%x\n", j, tmp, unknown_mask);
+ 						happended = 1;
+ 					}
+ 				}
 -- 
 2.9.3
 
