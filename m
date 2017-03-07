@@ -1,99 +1,114 @@
 X-GM-THRID: 6394807331810443264
-X-Received: by 10.46.77.69 with SMTP id a66mr328638ljb.11.1488908508377;
-        Tue, 07 Mar 2017 09:41:48 -0800 (PST)
+X-Received: by 10.157.17.228 with SMTP id y33mr624987oty.102.1488908381128;
+        Tue, 07 Mar 2017 09:39:41 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.76.17 with SMTP id z17ls123505lja.50.gmail; Tue, 07 Mar
- 2017 09:41:47 -0800 (PST)
-X-Received: by 10.46.69.7 with SMTP id s7mr306204lja.18.1488908507702;
-        Tue, 07 Mar 2017 09:41:47 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id f7si380240wmg.3.2017.03.07.09.41.47
+Received: by 10.157.14.170 with SMTP id 39ls1208564otj.6.gmail; Tue, 07 Mar
+ 2017 09:39:40 -0800 (PST)
+X-Received: by 10.157.33.117 with SMTP id l50mr650846otd.57.1488908380707;
+        Tue, 07 Mar 2017 09:39:40 -0800 (PST)
+Received: by 10.202.59.84 with SMTP id i81msoia;
+        Tue, 7 Mar 2017 09:38:35 -0800 (PST)
+X-Received: by 10.99.44.131 with SMTP id s125mr749667pgs.150.1488908315538;
+        Tue, 07 Mar 2017 09:38:35 -0800 (PST)
+Return-Path: <HartleyS@visionengravers.com>
+Received: from NAM03-DM3-obe.outbound.protection.outlook.com (mail-dm3nam03on0731.outbound.protection.outlook.com. [2a01:111:f400:fe49::731])
+        by gmr-mx.google.com with ESMTPS id g82si126345pfb.5.2017.03.07.09.38.35
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 07 Mar 2017 09:41:47 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 07 Mar 2017 09:38:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of hartleys@visionengravers.com designates 2a01:111:f400:fe49::731 as permitted sender) client-ip=2a01:111:f400:fe49::731;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.36,258,1486422000"; 
-   d="scan'208";a="263566133"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 07 Mar 2017 18:41:47 +0100
-Date: Tue, 7 Mar 2017 18:41:35 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Hartley Sweeten <HartleyS@visionengravers.com>
-cc: Gargi Sharma <gs051095@gmail.com>, 
-    "outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>, 
-    "abbotti@mev.co.uk" <abbotti@mev.co.uk>, 
-    "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>
-Subject: Re: [Outreachy kernel] RE: [PATCH] staging: comedi: Replace ternary
- operator with min macro
-In-Reply-To: <SN1PR0101MB15652DA28CB022F0A3A8ED02D02F0@SN1PR0101MB1565.prod.exchangelabs.com>
-Message-ID: <alpine.DEB.2.20.1703071840580.3150@hadrien>
-References: <1488906954-25933-1-git-send-email-gs051095@gmail.com> <SN1PR0101MB15652DA28CB022F0A3A8ED02D02F0@SN1PR0101MB1565.prod.exchangelabs.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       spf=pass (google.com: domain of hartleys@visionengravers.com designates 2a01:111:f400:fe49::731 as permitted sender) smtp.mailfrom=HartleyS@visionengravers.com
+Received: from SN1PR0101MB1565.prod.exchangelabs.com (10.163.128.23) by
+ SN1PR0101MB1568.prod.exchangelabs.com (10.163.128.26) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id
+ 15.1.947.12; Tue, 7 Mar 2017 17:38:33 +0000
+Received: from SN1PR0101MB1565.prod.exchangelabs.com ([10.163.128.23]) by
+ SN1PR0101MB1565.prod.exchangelabs.com ([10.163.128.23]) with mapi id
+ 15.01.0947.020; Tue, 7 Mar 2017 17:38:33 +0000
+From: Hartley Sweeten <HartleyS@visionengravers.com>
+To: Gargi Sharma <gs051095@gmail.com>, "outreachy-kernel@googlegroups.com"
+	<outreachy-kernel@googlegroups.com>
+CC: "abbotti@mev.co.uk" <abbotti@mev.co.uk>, "gregkh@linuxfoundation.org"
+	<gregkh@linuxfoundation.org>
+Subject: RE: [PATCH] staging: comedi: Replace ternary operator with min macro
+Thread-Topic: [PATCH] staging: comedi: Replace ternary operator with min macro
+Thread-Index: AQHSl2bWvn1tfoigAEyiE4LiTZOu26GJo6GQ
+Date: Tue, 7 Mar 2017 17:38:33 +0000
+Message-ID: <SN1PR0101MB15652DA28CB022F0A3A8ED02D02F0@SN1PR0101MB1565.prod.exchangelabs.com>
+References: <1488906954-25933-1-git-send-email-gs051095@gmail.com>
+In-Reply-To: <1488906954-25933-1-git-send-email-gs051095@gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+authentication-results: gmail.com; dkim=none (message not signed)
+ header.d=none;gmail.com; dmarc=none action=none
+ header.from=visionengravers.com;
+x-originating-ip: [184.183.19.121]
+x-ms-office365-filtering-correlation-id: 3a072761-3cf5-4b7e-ff4f-08d46580c706
+x-microsoft-antispam: UriScan:;BCL:0;PCL:0;RULEID:(22001);SRVR:SN1PR0101MB1568;
+x-microsoft-exchange-diagnostics: 1;SN1PR0101MB1568;7:KVnN6UIBKaT7IdPWnXzlWtA5TLJBApta0LECziI4wBqnMEsSMlHlwKJCWP51uMT5SGXKynHpH2HZ2MigAlUVllZ9hcnfj7TRshEQ1FAEjuwQYqBSgzFm6AsEnPU/qSefpddIOd/gU7xBLy+qUvRNf6vPsoW5L8UXqQ/PZ/eOpaT84GbD43t+bQRWVMl2bEUUXU3LREPDWvvthL7e3rfhuMy1H/acB2Z1ReKbjUpfkt/yHljlF/7cxoRyUDP0ufW2OCw0Tdfh3HC1JuzG5bS3VL5SQvc9CTwIEd9eZr15blTvxkwOJ4NW+LFGAKKm7jc0chjO3p5TiLgbfUKNOZ/6Tg==
+x-microsoft-antispam-prvs: <SN1PR0101MB1568B407068A4C19ACCA2E14D02F0@SN1PR0101MB1568.prod.exchangelabs.com>
+x-exchange-antispam-report-test: UriScan:(788757137089);
+x-exchange-antispam-report-cfa-test: BCL:0;PCL:0;RULEID:(6040375)(2401047)(8121501046)(5005006)(3002001)(10201501046)(6041248)(20161123558025)(20161123555025)(20161123564025)(20161123560025)(20161123562025)(2016111802025)(6043046)(6072148);SRVR:SN1PR0101MB1568;BCL:0;PCL:0;RULEID:;SRVR:SN1PR0101MB1568;
+x-forefront-prvs: 0239D46DB6
+x-forefront-antispam-report: SFV:NSPM;SFS:(10019020)(6009001)(7916002)(39410400002)(39840400002)(39450400003)(377454003)(24454002)(55016002)(6506006)(9686003)(8936002)(6436002)(77096006)(99286003)(54906002)(4326008)(81166006)(53546006)(80792005)(2950100002)(305945005)(6246003)(8676002)(189998001)(74316002)(2900100001)(122556002)(25786008)(66066001)(86362001)(229853002)(3280700002)(106116001)(53936002)(3660700001)(102836003)(38730400002)(2906002)(50986999)(39060400002)(2501003)(6116002)(3846002)(54356999)(76176999)(5660300001)(7736002)(7696004)(33656002);DIR:OUT;SFP:1102;SCL:1;SRVR:SN1PR0101MB1568;H:SN1PR0101MB1565.prod.exchangelabs.com;FPR:;SPF:None;MLV:ovrnspm;PTR:InfoNoRecords;LANG:en;
+spamdiagnosticoutput: 1:99
+spamdiagnosticmetadata: NSPM
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+X-OriginatorOrg: visionengravers.com
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Mar 2017 17:38:33.4488
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: d698601f-af92-4269-8099-fd6f11636477
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN1PR0101MB1568
 
-
-
-On Tue, 7 Mar 2017, Hartley Sweeten wrote:
-
-> On Tuesday, March 07, 2017 10:16 AM, Gargi Sharma wrote:
-> >
-> > Use macro min() to get the minimum of two values for
-> > brevity and readability.
-> >
-> > Found using Coccinelle:
-> > @@ type T; T x; T y; @@
-> > (
-> > - x < y ? x : y
-> > + min(x,y)
-> > |
-> > - x > y ? x : y
-> > + max(x,y)
-> > )
-> >
-> > Signed-off-by: Gargi Sharma <gs051095@gmail.com>
-> > ---
-> >  drivers/staging/comedi/drivers.c | 2 +-
-> > 1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/staging/comedi/drivers.c b/drivers/staging/comedi/drivers.c
-> > index a5bf2cc..6a413c7 100644
-> > --- a/drivers/staging/comedi/drivers.c
-> > +++ b/drivers/staging/comedi/drivers.c
-> > @@ -815,7 +815,7 @@ int comedi_load_firmware(struct comedi_device *dev,
-> > 		release_firmware(fw);
-> >  	}
-> >
-> > -	return ret < 0 ? ret : 0;
-> > +	return min(ret, 0);
-> >  }
-> >  EXPORT_SYMBOL_GPL(comedi_load_firmware);
+On Tuesday, March 07, 2017 10:16 AM, Gargi Sharma wrote:
 >
-> Technically this patch is correct. But, logically it might be confusing.
+> Use macro min() to get the minimum of two values for
+> brevity and readability.
 >
-> This function either returns an error code (ret < 0) or success (0). The min() macro
-> makes it look like this function returns a minimum value.
+> Found using Coccinelle:
+> @@ type T; T x; T y; @@
+> (
+> - x < y ? x : y
+> + min(x,y)
+> |
+> - x > y ? x : y
+> + max(x,y)
+> )
+>=20
+> Signed-off-by: Gargi Sharma <gs051095@gmail.com>
+> ---
+>  drivers/staging/comedi/drivers.c | 2 +-
+> 1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/staging/comedi/drivers.c b/drivers/staging/comedi/dr=
+ivers.c
+> index a5bf2cc..6a413c7 100644
+> --- a/drivers/staging/comedi/drivers.c
+> +++ b/drivers/staging/comedi/drivers.c
+> @@ -815,7 +815,7 @@ int comedi_load_firmware(struct comedi_device *dev,
+> 		release_firmware(fw);
+>  	}
+>=20
+> -	return ret < 0 ? ret : 0;
+> +	return min(ret, 0);
+>  }
+>  EXPORT_SYMBOL_GPL(comedi_load_firmware);
 
-Agreed.  The ? is a bit ugly, but the min does not seem like the normal
-way of returning an error code.
+Technically this patch is correct. But, logically it might be confusing.
 
-julia
+This function either returns an error code (ret < 0) or success (0). The mi=
+n() macro
+makes it look like this function returns a minimum value.
 
->
-> Just my two cents...
->
-> Regards,
-> Hartley
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/SN1PR0101MB15652DA28CB022F0A3A8ED02D02F0%40SN1PR0101MB1565.prod.exchangelabs.com.
-> For more options, visit https://groups.google.com/d/optout.
->
+Just my two cents...
+
+Regards,
+Hartley
+
 
