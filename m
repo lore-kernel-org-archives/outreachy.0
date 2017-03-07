@@ -1,128 +1,97 @@
-X-GM-THRID: 6889249751270686720
-X-Received: by 2002:a17:90a:fa93:: with SMTP id cu19mr336787pjb.117.1604028453148;
-        Thu, 29 Oct 2020 20:27:33 -0700 (PDT)
+X-GM-THRID: 6394886856673067008
+X-Received: by 10.25.196.68 with SMTP id u65mr486855lff.0.1488925622157;
+        Tue, 07 Mar 2017 14:27:02 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90a:bd82:: with SMTP id z2ls1040491pjr.3.canary-gmail;
- Thu, 29 Oct 2020 20:27:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwdL8Oyt+hwCnfRjT712etpZxfEiJGMDeQUV0gfO/jlJMeU9o1a6dqMnwj/rY7Be+FRqDvU
-X-Received: by 2002:a17:90a:d584:: with SMTP id v4mr358961pju.194.1604028451560;
-        Thu, 29 Oct 2020 20:27:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1604028451; cv=none;
-        d=google.com; s=arc-20160816;
-        b=pmNeDTOF0an4LlrkmxLSVumlGXeLnWUPNqJr3byHNdQcOyWDehhGEuejorqc4W00bq
-         bzt7WjaN6TXhpEgZd7yKg6pjhW8dAxzg6LWPfkJI2dM6cFlZn+4nDXS96aVl2jJbLRQV
-         vlHqMW5J1bmBFCz64QNLJVR7nGfo2TQbarTNGtdAZY5Q8NGvDh1H2F12d1Di88qda+Lc
-         76b6da9wdll9VuchRNVvvO+tGDUdViiN3A3GlfW6hWFou2Eq780u37QbNzeub/l9NAEw
-         uK2vwZoEb6RHeYrTGp3/hXFoRlDcvEzs3ccPUhjNtClp5TzuJWM4KfWEQV6h4QklXaAw
-         lalA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=bnHvCuE87pUUeamFRrdRkC3/PfrKdLRFG6Yr9LjsnHU=;
-        b=cW87ILKrYKKjo7Am4gE4CasO9bY8IvK9JlUCAl9gH5tBu5P+rNBjnIbTTYnGdO/T6l
-         b6N/9O7xLzC5Z2DhI326iJJglSck0Gfp9o+7K9X0NI4ovI+M44LE46VIbEs1EoH0bSp8
-         uwOGTS1McNeeeVqwt/qGqOWZSo1mhOU0qebZNK3nu8/Ui/IAIMKHxTlvolRcjqNoE2H3
-         e9R0NeX3HZTduqhkD7IhK/DvtS3hRJ5AqilsodN5I1SJfMo48mu0LnU1xP6ln9vAdTvG
-         tj0d3eUDIhIUu00HXWuUZ1nN/5l0RigOmOxGSf8wC1b6pwb/Nlipvqbnz/IEjUqJ/+Fw
-         jBrA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nRD8AmlO;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id a6si299025pjw.3.2020.10.29.20.27.31
+Received: by 10.46.9.129 with SMTP id 123ls193452ljj.16.gmail; Tue, 07 Mar
+ 2017 14:27:01 -0800 (PST)
+X-Received: by 10.25.212.76 with SMTP id l73mr442825lfg.13.1488925621653;
+        Tue, 07 Mar 2017 14:27:01 -0800 (PST)
+Return-Path: <diaconitatamara@gmail.com>
+Received: from mail-wm0-x242.google.com (mail-wm0-x242.google.com. [2a00:1450:400c:c09::242])
+        by gmr-mx.google.com with ESMTPS id p144si185041wme.2.2017.03.07.14.27.01
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 29 Oct 2020 20:27:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 07 Mar 2017 14:27:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) client-ip=2a00:1450:400c:c09::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nRD8AmlO;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id i7so2102320pgh.6
-        for <outreachy-kernel@googlegroups.com>; Thu, 29 Oct 2020 20:27:31 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x242.google.com with SMTP id z63so3285830wmg.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 07 Mar 2017 14:27:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=bnHvCuE87pUUeamFRrdRkC3/PfrKdLRFG6Yr9LjsnHU=;
-        b=nRD8AmlOqJ8JayRjEopJ5gsIvdMeLsA6FdS+XJv2WFxcMo/+k7r9F5ErGu6fOFW8AQ
-         RTdDljKeM5HQDBummdsxSpQUh3IjjRVzi87ByrvD2MkiJrhTmGRT35F+7aLPWD7+sidl
-         Kv9plJtGdW2FL9gT2gv5Ri69CUQrpxWgieYZM2uZXZmUt431/qypzu54jCsKUAFsG7nQ
-         f07ABRL0UayrZZsHvk1NfDvTzhRtiL4uBs/K5SGIIB+6Q6gbcI+mcfKw7kTPV7Owsq+X
-         3bI33+X8zHRUpqf0Ehk6Q9xJQkjcVMbWirQ45OILc08QA7/bdbhZjg8RTuOpUyERvQDE
-         7dWw==
+        h=from:to:cc:subject:date:message-id;
+        bh=S5iO5K7WJaBoQLfCGmspHLQ/0RABKqp1L8KLu6XGqRo=;
+        b=PCbHf0/4FwYgG6gOaersKcd0Ki0s3I1VMyLKbuzgLkP74FlnWB3qRMqDYUulkT1X9Y
+         leHhZEeSiyYjKtFDQhizDz4vVGlxZuTcps6LcO0h12OvNslvw+SoNnG8H4DExyknj19t
+         JSmKHZpkTjN/7GpdH3lx3Zycf+WS7rLHPwHeQVE+QdT7iXkXZr6fOPl0spumuaRfY4Yb
+         TFucRdZue7JP9VFXDO3n5P0xfgRufZiblP9qEsEN2bR37mMsl5dMFM3VrMwpzN5DfACI
+         vOsO6CTa64hdWbxFx65brj4xHJ2X7YlahjC15IHRqv9b8jA+3DZG9Eyr6g0pCWoHNiS2
+         +BsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=bnHvCuE87pUUeamFRrdRkC3/PfrKdLRFG6Yr9LjsnHU=;
-        b=FpqHxR5146H5K4bPThbQB4w1jXG94gYFdYrrRCtvcbxew1MIFf3JeR1cgH1htY4qrC
-         C/X1yEnfFi9XxwJ9xS+Ozex0BOdoLX0iheboV5lNZIfirnd6SiOQOe5qTjQ63dmCerWQ
-         /47oYgXzD3nm+Gt2UJoHo7yvbJyqvJOufT3PAWF3Fw6iX1Inz1kyMVhxR3n+FiBJ0vFM
-         HdTqZd5TgS5ft9s4rIE+9KzIqxSl8b5VrEiqc2ZS4vcXZCgwmcLGQa95STZcgyL7WMSr
-         KrbZWfTccD6zcGC3Y4s30TiN47duV7HUJEjIAyEOb6VY9j3QUKBwr1zIk6rnIGaaoMq4
-         uz5Q==
-X-Gm-Message-State: AOAM530I/XZzC/wNQzQ9fP3dsmnKfUp2On0crTu9DHZN1u72MaCqcvh3
-	7BxKVXTXdvO2T6u+QZofzW7YOEKOz1w=
-X-Received: by 2002:a17:90b:3658:: with SMTP id nh24mr310667pjb.177.1604028451119;
-        Thu, 29 Oct 2020 20:27:31 -0700 (PDT)
-Return-Path: <mh12gx2825@gmail.com>
-Received: from my--box ([103.98.79.70])
-        by smtp.gmail.com with ESMTPSA id z66sm4274336pfb.109.2020.10.29.20.27.27
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 29 Oct 2020 20:27:30 -0700 (PDT)
-Date: Fri, 30 Oct 2020 08:57:25 +0530
-From: Deepak R Varma <mh12gx2825@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	Alex Deucher <alexander.deucher@amd.com>,
-	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
-	David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
-	amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org
-Cc: mh12gx2825@gmail.com, melissa.srw@gmail.com, daniel.vetter@ffwll.ch
-Subject: [PATCH] drm/amd/pm: use DEFINE_DEBUGFS_ATTRIBUTE with
- debugfs_create_file_unsafe()
-Message-ID: <20201030032725.GA274689@my--box>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=S5iO5K7WJaBoQLfCGmspHLQ/0RABKqp1L8KLu6XGqRo=;
+        b=WJbb90ajPzJ4gGh2HYMyo1ehsFYJ/Ylipby9d9CAI+H9noAnce9uXj57BXfid6Xy+8
+         zXm24tERWVdcJ9KsgFMo5BAa1l3SYrocaMI2tLZUKINcUMsdpnc3++zMeSCvPvKinoeT
+         uZgHxlmhiGgs4kWaoEams4sKlWbdrWAIDjGsanng8P1C61fDNjOosrt4JR3RREMIbXJF
+         6ETFTzCYo6kGXnWE95niQpOCy7fPD4NUWXTH1Na3NIbSp8dDuL4sOPx27lN1D1YRCIZV
+         tca70NlCQJdMhp5w7OSFF9blhjI85S2R8YSEsJ09UCwQEfb392kYBS8pfHYdplgc4mFv
+         SdRg==
+X-Gm-Message-State: AMke39kIGtd2qPyGBrNE9ju92BUZqar+22/lk8WKXYYA3gfVCeBwmBfLiNIfdrb4SrqyfA==
+X-Received: by 10.28.226.215 with SMTP id z206mr2709872wmg.92.1488925621439;
+        Tue, 07 Mar 2017 14:27:01 -0800 (PST)
+Return-Path: <diaconitatamara@gmail.com>
+Received: from tamara ([2a02:2f0b:8130:11ea:8168:a9b6:7cd0:c4cf])
+        by smtp.gmail.com with ESMTPSA id q4sm2204052wme.17.2017.03.07.14.27.00
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 07 Mar 2017 14:27:00 -0800 (PST)
+From: Tamara Diaconita <diaconitatamara@gmail.com>
+X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
+To: aditya.shankar@microchip.com,
+	ganesh.krishna@microchip.com,
+	gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: [PATCH v2] staging: wilc1000: coreconfigurator: Remove camel case
+Date: Wed,  8 Mar 2017 00:26:58 +0200
+Message-Id: <20170307222658.6248-1-diaconita.tamara@gmail.com>
+X-Mailer: git-send-email 2.9.3
 
-Using DEFINE_DEBUGFS_ATTRIBUTE macro with debugfs_create_file_unsafe()
-function in place of the debugfs_create_file() function will make the
-file operation struct "reset" aware of the file's lifetime. Additional
-details here: https://lists.archive.carbon60.com/linux/kernel/2369498
+Change the name of the variables to remove the CamelCase.
+Move the occurences of the 'lenght' in the previous line.
 
-Issue reported by Coccinelle script:
-scripts/coccinelle/api/debugfs/debugfs_simple_attr.cocci
+Fixed the checkpath.pl issue:
+CHECK: Avoid CamelCase.
 
-Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
 ---
-Please Note: This is a Outreachy project task patch.
+Changes since v1:
+*Change the name of the variables to remove the CamelCase.
 
- .../gpu/drm/amd/pm/powerplay/hwmgr/vega12_processpptables.c  | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ drivers/staging/wilc1000/coreconfigurator.h | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/gpu/drm/amd/pm/powerplay/hwmgr/vega12_processpptables.c b/drivers/gpu/drm/amd/pm/powerplay/hwmgr/vega12_processpptables.c
-index 740e2fc7a034..1e79baab753e 100644
---- a/drivers/gpu/drm/amd/pm/powerplay/hwmgr/vega12_processpptables.c
-+++ b/drivers/gpu/drm/amd/pm/powerplay/hwmgr/vega12_processpptables.c
-@@ -252,12 +252,11 @@ static int init_powerplay_table_information(
- 	phm_copy_clock_limits_array(hwmgr, &pptable_information->power_saving_clock_max, powerplay_table->PowerSavingClockMax, ATOM_VEGA12_PPCLOCK_COUNT);
- 	phm_copy_clock_limits_array(hwmgr, &pptable_information->power_saving_clock_min, powerplay_table->PowerSavingClockMin, ATOM_VEGA12_PPCLOCK_COUNT);
- 
--	pptable_information->smc_pptable = kmalloc(sizeof(PPTable_t), GFP_KERNEL);
-+	pptable_information->smc_pptable = kmemdup(&(powerplay_table->smcPPTable),
-+						   sizeof(PPTable_t), GFP_KERNEL);
- 	if (pptable_information->smc_pptable == NULL)
- 		return -ENOMEM;
- 
--	memcpy(pptable_information->smc_pptable, &(powerplay_table->smcPPTable), sizeof(PPTable_t));
--
- 	result = append_vbios_pptable(hwmgr, (pptable_information->smc_pptable));
- 
- 	return result;
+diff --git a/drivers/staging/wilc1000/coreconfigurator.h b/drivers/staging/wilc1000/coreconfigurator.h
+index 10101f8..5256f40 100644
+--- a/drivers/staging/wilc1000/coreconfigurator.h
++++ b/drivers/staging/wilc1000/coreconfigurator.h
+@@ -124,10 +124,7 @@ s32 wilc_parse_network_info(u8 *msg_buffer,
+ 			    struct network_info **ret_network_info);
+ s32 wilc_parse_assoc_resp_info(u8 *buffer, u32 buffer_len,
+ 			       struct connect_resp_info **ret_connect_resp_info);
+-void wilc_scan_complete_received(struct wilc *wilc, u8 *pu8Buffer,
+-				 u32 u32Length);
+-void wilc_network_info_received(struct wilc *wilc, u8 *pu8Buffer,
+-				u32 u32Length);
+-void wilc_gnrl_async_info_received(struct wilc *wilc, u8 *pu8Buffer,
+-				   u32 u32Length);
++void wilc_scan_complete_received(struct wilc *wilc, u8 *buffer, u32 length);
++void wilc_network_info_received(struct wilc *wilc, u8 *buffer, u32 length);
++void wilc_gnrl_async_info_received(struct wilc *wilc, u8 *buffer, u32 length);
+ #endif
 -- 
-2.25.1
+2.9.3
 
 
