@@ -1,75 +1,99 @@
-X-GM-THRID: 4704101728256
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,9f5cf49a175017bf,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.13.98 with SMTP id g2mr663828wic.3.1425059839584;
-        Fri, 27 Feb 2015 09:57:19 -0800 (PST)
+X-GM-THRID: 6394809093953945600
+X-Received: by 10.99.126.27 with SMTP id z27mr907981pgc.111.1488910976959;
+        Tue, 07 Mar 2017 10:22:56 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.27.40 with SMTP id q8ls214543lag.29.gmail; Fri, 27 Feb
- 2015 09:57:19 -0800 (PST)
-X-Received: by 10.112.131.106 with SMTP id ol10mr2293148lbb.20.1425059839055;
-        Fri, 27 Feb 2015 09:57:19 -0800 (PST)
-Return-Path: <aysemelikeyurtoglu@gmail.com>
-Received: from mail-wi0-x22b.google.com (mail-wi0-x22b.google.com. [2a00:1450:400c:c05::22b])
-        by gmr-mx.google.com with ESMTPS id i7si166166wif.0.2015.02.27.09.57.19
+Received: by 10.107.19.131 with SMTP id 3ls407010iot.36.gmail; Tue, 07 Mar
+ 2017 10:22:56 -0800 (PST)
+X-Received: by 10.99.167.73 with SMTP id w9mr825736pgo.102.1488910976108;
+        Tue, 07 Mar 2017 10:22:56 -0800 (PST)
+Return-Path: <gs051095@gmail.com>
+Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
+        by gmr-mx.google.com with ESMTPS id s64si163399pfk.0.2017.03.07.10.22.56
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 09:57:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) client-ip=2a00:1450:400c:c05::22b;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 07 Mar 2017 10:22:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aysemelikeyurtoglu@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) smtp.mail=aysemelikeyurtoglu@gmail.com;
        dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x22b.google.com with SMTP id ex7so1881060wid.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 09:57:19 -0800 (PST)
+       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x242.google.com with SMTP id b5so835539pgg.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 07 Mar 2017 10:22:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
+        d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=55Zj10e6iGmb5GT/CR8TDWY3uMR3cFDs9niu3YC6ymA=;
-        b=Y52ttMkvInIfbnCWg5P4/82jJMBdEzdrWjKjLTTpVlKA5/7KneO3PtTVZv2Y8ALHGd
-         nVIKhWkdkr5HI3eSaurnaWP569IZwDgt7AGCedisdcZXwaVDxdxcNq1Vw9rNZsB4+5KI
-         67Kw5dFnZz945yGzIPyUAhVRutAoYKhe9IsoLkNr4E5gsdhdZBgG3U05Ae+b0wYhftCx
-         KUHRLX02J9txqzSGojOo8KxYp89hAEpyGbmAXMKs4lVXKvAwiinCuODJhmPlKJP5/5uy
-         rF4VUG03kKcFOwLPcfdD0vrAK9aEiGwrLS/KIUCFkY1HsHbGW/8ir4H0jgqk0AFTOcvw
-         kx6g==
-X-Received: by 10.181.13.42 with SMTP id ev10mr8738498wid.69.1425059838953;
-        Fri, 27 Feb 2015 09:57:18 -0800 (PST)
-Return-Path: <aysemelikeyurtoglu@gmail.com>
-Received: from localhost.localdomain ([151.250.87.133])
-        by mx.google.com with ESMTPSA id v9sm3088153wib.0.2015.02.27.09.57.15
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 27 Feb 2015 09:57:17 -0800 (PST)
-From: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
+        bh=aZghDN4eUwSTWk0lid0FjKE/iWm1cAd5RxQpjk8zDHw=;
+        b=vGeLuHrZXDcH+g7U9dHROuexhl3tIBubfkcKRTw5TeXc46NTopzP50lWvypBXzfrL3
+         puvhDuIyjfvvo7c6lbpeQPxL0aC7ORFSgvtxU9mInCBqs0Ci9G/K7lO1z9kc0D2UhL23
+         u2/1EKLpd2dVX3AUAMY+ea5C4HNWy7pQqhPHv1148dqyOSmMJXLer9hpuxJH8x6paXPB
+         NgWi/J7S6uB1nJLmGgCUi8lCH4p7xu0nsfFM+rgbdPIApv48sdbXTRvGTCmm98EGpYFM
+         I1XUxDjw+fJnsDSSiCtQXOsEUqT/1RxxVFKEcw3CPvQzaeGiAyznD0OyNbiMFRTuqItg
+         acZA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=aZghDN4eUwSTWk0lid0FjKE/iWm1cAd5RxQpjk8zDHw=;
+        b=T1HJoSEBSxONfbZpp2g2glA0uIP4hdDr8VJ/K+F86I8a5B/4H735vToWWFFfaI9dBA
+         sVGq9us1++CePgGDOPvhilIRp4UnCg1rGhnUFYmAUAu3mpreXO2zj8BFhgW25Hf4vnrW
+         3ywCYpZ78goXUs9/KhksEYms0NegBdOtpVGuqEVMkQuojYzXX+GAQk3O2548pQHTHwOF
+         aE5g+i45R+i2U+os5ZaMAPlSLOlOUkHA1hdgECamKMtBpYl8S65bhU3zsaTzEL7O4cU9
+         Ipp9tgfv/S2OV5oYx8PCdGZ3yLNsWvZx9nT3CPaCc7AvEjnAMw7iTK8v6i2sRzzOX6e5
+         kAWg==
+X-Gm-Message-State: AMke39mXnqTzlgjDzVzaG5njgdAK3s1jgDKPzC1kDFqhN2L8cnP9trgElX5A6RMxx0jcxw==
+X-Received: by 10.98.147.10 with SMTP id b10mr1859972pfe.177.1488910975769;
+        Tue, 07 Mar 2017 10:22:55 -0800 (PST)
+Return-Path: <gs051095@gmail.com>
+Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
+        by smtp.googlemail.com with ESMTPSA id s65sm1144825pgb.64.2017.03.07.10.22.52
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 07 Mar 2017 10:22:55 -0800 (PST)
+From: Gargi Sharma <gs051095@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
-Subject: [PATCH] Staging: wlan-ng: Removed Use of volatile is usually wrong
-Date: Fri, 27 Feb 2015 19:56:09 +0200
-Message-Id: <1425059769-20058-1-git-send-email-aysemelikeyurtoglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+Cc: gregkh@linuxfoundation.org,
+	Gargi Sharma <gs051095@gmail.com>
+Subject: [PATCH v2] staging: gdm724x: Replace ternary operator with min macro
+Date: Tue,  7 Mar 2017 23:50:27 +0530
+Message-Id: <1488910827-9032-1-git-send-email-gs051095@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-WARNING: Use of volatile is usually wrong.
-That was found by running checkpatch.
+Use macro min() to get the minimum of two values for
+brevity and readability. The macro MUX_TX_MAX_SIZE
+has a value of 2048 which is well within the integer
+limits. This check was done manually.
 
-Signed-off-by: Melike Yurtoglu <aysemelikeyurtoglu@gmail.com>
+Found using Coccinelle:
+@@ type T; T x; T y; @@
+(
+- x < y ? x : y
++ min(x,y)
+|
+- x > y ? x : y
++ max(x,y)
+)
+
+Signed-off-by: Gargi Sharma <gs051095@gmail.com>
 ---
- drivers/staging/wlan-ng/hfa384x.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes in v2:
+	- Made the commit message clearer.
+---
+ drivers/staging/gdm724x/gdm_tty.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/staging/wlan-ng/hfa384x.h b/drivers/staging/wlan-ng/hfa384x.h
-index 8f20910..47f65c3 100644
---- a/drivers/staging/wlan-ng/hfa384x.h
-+++ b/drivers/staging/wlan-ng/hfa384x.h
-@@ -1166,7 +1166,7 @@ typedef struct hfa384x_usbctlx {
- 	CTLX_STATE state;	/* Tracks running state */
+diff --git a/drivers/staging/gdm724x/gdm_tty.c b/drivers/staging/gdm724x/gdm_tty.c
+index ae39663..fc7682c 100644
+--- a/drivers/staging/gdm724x/gdm_tty.c
++++ b/drivers/staging/gdm724x/gdm_tty.c
+@@ -190,8 +190,7 @@ static int gdm_tty_write(struct tty_struct *tty, const unsigned char *buf,
+ 		return 0;
  
- 	struct completion done;
--	volatile int reapable;	/* Food for the reaper task */
-+	int reapable;	/* Food for the reaper task */
- 
- 	ctlx_cmdcb_t cmdcb;	/* Async command callback */
- 	ctlx_usercb_t usercb;	/* Async user callback, */
+ 	while (1) {
+-		sending_len = remain > MUX_TX_MAX_SIZE ? MUX_TX_MAX_SIZE :
+-							 remain;
++		sending_len = min(MUX_TX_MAX_SIZE, remain);
+ 		gdm_tty_send(gdm,
+ 			     (void *)(buf + sent_len),
+ 			     sending_len,
 -- 
-1.8.3.2
+2.7.4
 
 
