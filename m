@@ -1,89 +1,90 @@
-X-GM-THRID: 6393291379359875072
-X-Received: by 10.157.66.1 with SMTP id q1mr1256372ote.47.1488554146052;
-        Fri, 03 Mar 2017 07:15:46 -0800 (PST)
+X-GM-THRID: 6394852201114632192
+X-Received: by 10.129.137.3 with SMTP id z3mr1018021ywf.20.1488917554932;
+        Tue, 07 Mar 2017 12:12:34 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.81.210 with SMTP id s201ls733386ita.18.gmail; Fri, 03 Mar
- 2017 07:15:45 -0800 (PST)
-X-Received: by 10.99.1.78 with SMTP id 75mr1308261pgb.151.1488554145013;
-        Fri, 03 Mar 2017 07:15:45 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id s64si94749pfk.0.2017.03.03.07.15.44
+Received: by 10.157.73.132 with SMTP id g4ls1421082otf.39.gmail; Tue, 07 Mar
+ 2017 12:12:34 -0800 (PST)
+X-Received: by 10.157.82.35 with SMTP id e35mr913731oth.127.1488917554529;
+        Tue, 07 Mar 2017 12:12:34 -0800 (PST)
+Return-Path: <sreyamittal5@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id 2si202950pfx.8.2017.03.07.12.12.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Mar 2017 07:15:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Tue, 07 Mar 2017 12:12:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       spf=pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=sreyamittal5@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id x66so10125045pfb.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 03 Mar 2017 07:15:44 -0800 (PST)
+Received: by mail-pf0-x244.google.com with SMTP id v190so1161635pfb.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 07 Mar 2017 12:12:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=caa4crWwTQK3iU6DDvbb6HlHGxlJff3/JaTTqqY0/Rs=;
-        b=Sw+ZwxzH4nPW/Klvz/lcHSj33FvOr7OYl4Miua4d1/xu2R/2sRvp3N3ipbvze3hwcD
-         w2pslZMKxb57N9gW+W0FF/2mzI+IJi3p+uWJ7UuLEEOKqG7lQ3e9+GRDY6JCWOj+NdBp
-         gONozLG7GxtK0offtLg/AeSC3R1Jz6zlQE3RKfxxF6DGAr25lkxx3U3r5hwt1TL5yYyT
-         FUp+mJ80Csg98tLA3YrVa1xAa1UuqrywIArFYxCTRDrFB+NG3JXS9dzZWYEQMCOnFU6W
-         Lx3rGcmQAgi2pFfNIlZo1lSlCpOVtixdi0dpW13+ScUlC5R30nEhEir8kUa5+mpQQqjc
-         jO/A==
+        bh=VlXIQ9Tun0cKdxVsP4U8dLEj4lPmUbuUKNBgRGSl83M=;
+        b=FbA1PynTDop6a3t8PrqacwuqhNip0hIm1VqjojfDc4S4hkNlSt/25NchYCkE1boDrm
+         BTAJcgI5dQAlzRmbSLEsA7Fb+17k/S4LnsxlSIiNY9CR4h/7dYrOPGeVOPqPuJfhZk4Q
+         /+MjYcaVNrtK89nqVfthWdDlMSNnAw8RnCDLG8eFxZpS1I70rkgUB+1gn1Cj2RCwU0u8
+         PCvrmYYd++3qPK0r+ap/nEDNsRKL2AiYf8JuoyC86mC/gXwczzEyQD0IfBszzVN2h4K5
+         cz89eD4vO1PPan/Hb06nVHp8UX+8RHcIzY9CQf1BQIeE6IJ5GnOWi/dRUiHWx/ag+2OF
+         kY7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=caa4crWwTQK3iU6DDvbb6HlHGxlJff3/JaTTqqY0/Rs=;
-        b=DLjHjEURnfxNDHgorEXeFU2hXeEXtlHmFLim6bcw+H6xpKcAAFoNMh8tOZ6hOwID8d
-         E5DWvALdhLSPMQtsyjyeklemjonf0b4Wr4QBZiWm+06cShu8YmXgroQhtsNDWi1JNxBY
-         /h3r8NY59Vxnb31ICuI2KM4LlKcvbB3y3HbuqWl2Kpe1umu8Jq9rxF7M/BwYeUKOL255
-         fxBcCEciDCmdTiHpWaQCGoXTlJwBFjZY1Yhxu5SBYrC9dqf2g94DwQDx3KdjDW9imu51
-         pmhrqzkLePI8bplb32iUvMZShwpe7Ks+wwN2pp9Yu612C5Ztn8oZq5Z2yrfB4n+YUa2W
-         Q7eQ==
-X-Gm-Message-State: AMke39mf+XgSbDEHVzQYcYQ4L+DtIsx9eS54uXX+X9doM8rMhKHfPuvsNg1Nx5vJToAYGQ==
-X-Received: by 10.98.50.66 with SMTP id y63mr4091593pfy.21.1488554144820;
-        Fri, 03 Mar 2017 07:15:44 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id s13sm24113248pfk.26.2017.03.03.07.15.42
+        bh=VlXIQ9Tun0cKdxVsP4U8dLEj4lPmUbuUKNBgRGSl83M=;
+        b=ixmckY0tSTozjk9t8QzISAyCV+wmREZuCI2Y6gCtUl9nBwlQgndoAtUUAGA81UhSsb
+         HjLbVWkpbz+W7Uhni9Z1VPrSRsmUTXawS5nOLFaN3ybdd1IkDTYpvxMdRe/l2riOeApx
+         SpKhbYOBo6t6P++Rvl3Cw06iRujsDrcphTeQFZDDF6D2kPxtBfP3A6Tm9VJEZ3Mk4w1n
+         k6uI0GkHF2QJBEbg4pHcyYQ+qjce4t4sIYmMSA1KDRryYOrMvble//KdPwnQkeb2VdCW
+         ECVVwJOPW4HxlXS7c/m9JfEkEMqbXTOd0uSLA5yaUCeXEwYu8T519SdAD8X5WB5n+AUd
+         DlMg==
+X-Gm-Message-State: AMke39lbFG6eooQvlRQwGr6UsDou3/rE/9gBx3xGIvUQ2Xcx17Dv0aHyC7Xqx9LyOuzk9g==
+X-Received: by 10.98.147.10 with SMTP id b10mr2390036pfe.177.1488917554310;
+        Tue, 07 Mar 2017 12:12:34 -0800 (PST)
+Return-Path: <sreyamittal5@gmail.com>
+Received: from stayawesome ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id 74sm1476070pge.14.2017.03.07.12.12.32
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 03 Mar 2017 07:15:43 -0800 (PST)
-From: simran singhal <singhalsimran0@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: david.kershner@unisys.com,
-	sparmaintainer@unisys.com,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	Larry.Finger@lwfinger.net,
-	florian.c.schilhabel@googlemail.com,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/3] staging: wlan-ng: Replace "the the " with "the"
-Date: Fri,  3 Mar 2017 20:45:38 +0530
-Message-Id: <1488554140-28805-1-git-send-email-singhalsimran0@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        Tue, 07 Mar 2017 12:12:33 -0800 (PST)
+From: Sreya Mittal <sreyamittal5@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Sreya Mittal <sreyamittal5@gmail.com>,
+	Stephen Warren <swarren@wwwdotorg.org>,
+	Lee Jones <lee@kernel.org>,
+	Eric Anholt <eric@anholt.net>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Ray Jui <rjui@broadcom.com>,
+	Scott Branden <sbranden@broadcom.com>,
+	bcm-kernel-feedback-list@broadcom.com
+Subject: [PATCH] staging: vc04_services: bcm2835-audio: Align with parenthesis
+Date: Wed,  8 Mar 2017 01:42:16 +0530
+Message-Id: <20170307201216.5104-1-sreyamittal5@gmail.com>
+X-Mailer: git-send-email 2.9.3
 
-This patch replace "the the " with "the". The replacement couldn't be
-automated because sometimes the first "the" was meant to be another
-word.
+Fix the checkpatch issue:
+Alignment should match open parenthesis
 
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+Signed-off-by: Sreya Mittal <sreyamittal5@gmail.com>
 ---
- drivers/staging/wlan-ng/prism2sta.c | 2 +-
+ drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/wlan-ng/prism2sta.c b/drivers/staging/wlan-ng/prism2sta.c
-index 82d3a70..3ef85ac 100644
---- a/drivers/staging/wlan-ng/prism2sta.c
-+++ b/drivers/staging/wlan-ng/prism2sta.c
-@@ -1310,7 +1310,7 @@ void prism2sta_processing_defer(struct work_struct *data)
- 		/* This one indicates that the MAC has decided to and
- 		 * successfully completed a change to another AP.  We
- 		 * should probably implement a reassociation indication
--		 * in response to this one.  I'm thinking that the the
-+		 * in response to this one.  I'm thinking that the
- 		 * p80211 layer needs to be notified in case of
- 		 * buffering/queueing issues.  User mode also needs to be
- 		 * notified so that any BSS dependent elements can be
+diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
+index 659c3d1..5b03102 100644
+--- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
++++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
+@@ -107,7 +107,7 @@ static int snd_bcm2835_ctl_get(struct snd_kcontrol *kcontrol,
+ }
+ 
+ static int snd_bcm2835_ctl_put(struct snd_kcontrol *kcontrol,
+-	struct snd_ctl_elem_value *ucontrol)
++				struct snd_ctl_elem_value *ucontrol)
+ {
+ 	struct bcm2835_chip *chip = snd_kcontrol_chip(kcontrol);
+ 	int changed = 0;
 -- 
-2.7.4
+2.9.3
 
 
