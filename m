@@ -1,161 +1,87 @@
-X-GM-THRID: 6339039016385511424
-X-Received: by 10.98.56.74 with SMTP id f71mr4652286pfa.3.1475922534746;
-        Sat, 08 Oct 2016 03:28:54 -0700 (PDT)
+X-GM-THRID: 6394683804598927360
+X-Received: by 10.46.78.9 with SMTP id c9mr237420ljb.20.1488904685899;
+        Tue, 07 Mar 2017 08:38:05 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.15.174 with SMTP id d43ls6502103otd.11.gmail; Sat, 08 Oct
- 2016 03:28:54 -0700 (PDT)
-X-Received: by 10.157.45.200 with SMTP id g66mr5837815otb.84.1475922534463;
-        Sat, 08 Oct 2016 03:28:54 -0700 (PDT)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
-        by gmr-mx.google.com with ESMTPS id 7si6607523par.0.2016.10.08.03.28.54
+Received: by 10.46.75.1 with SMTP id y1ls118726lja.1.gmail; Tue, 07 Mar 2017
+ 08:38:05 -0800 (PST)
+X-Received: by 10.25.104.21 with SMTP id d21mr200197lfc.31.1488904685425;
+        Tue, 07 Mar 2017 08:38:05 -0800 (PST)
+Return-Path: <diaconitatamara@gmail.com>
+Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
+        by gmr-mx.google.com with ESMTPS id i76si383509wmh.1.2017.03.07.08.38.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 08 Oct 2016 03:28:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
+        Tue, 07 Mar 2017 08:38:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x242.google.com with SMTP id cd13so3989222pac.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 08 Oct 2016 03:28:54 -0700 (PDT)
+       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x244.google.com with SMTP id n11so1906141wma.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 07 Mar 2017 08:38:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
+        d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=Mo8M0GtQPmScLOPEr6Pz/J3ReiW9zjB+taxNoBT9IXY=;
-        b=oOSOrzGJY97snka85aFwwz4ZbkkmC+g9TGXh82GXb8McwH87EDSEfZx9hoGrUw1eQR
-         aY/HXz51wX5c7KBirJVba94ZX78MMx9u20LiBuS9TWWIDXdWS41GZhJIOKIanCRvzeFx
-         UX2vgp1ROkeVs+ArQluUn1mwDB27dEPsGp9cnO9jjPaJMbqHziCT81HJ+33C1d8ijzOU
-         o4BFdqr21NAO4j1ijEdNM1OYa9JyGGoUZku13xfCEEQpVIps5pODkkg7uDgmujIH3k0M
-         GvSG7Qp9nBZChb6LBn8ik2zP73lUUmqwfRh5WBYXuW93ZAUuGvpdoSPoLf50+5UR9p9A
-         neSA==
+        bh=3/UrLtymNMyoPQx/qLsYyHvEH4Go7giH795n2i3ZNHw=;
+        b=hb8YQ4aJDhkOQ2hiDZsiPZFaqZ1bPtRxLgM2PTlGM4Zu5VMmwPx6A1Utqunv6KEawa
+         S2znQLEJ1HdY1hcvI3Q29jo992S+LeeqObidtMAfxDAN8i0Im5LjoxurmROx8DaA1rgn
+         7sWmOFRtTYEPrxiNZXY7AAxkortgel/UuofubhyIv2j8jfa4fADcNKVpJ7sZxPxLccco
+         VmCktUiC1s/ujEWozwCogx777h5Mw7pCsWkezaI/0ZlEVSJL2tVaigMXbSfnCZSObhEI
+         3iRbmkp4jodxhupvTfdhqGte2bdjyRqdcMCeXlIc1e5p9QbbBgfqqBC1tFU2NYBevZp7
+         ygsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
+        d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Mo8M0GtQPmScLOPEr6Pz/J3ReiW9zjB+taxNoBT9IXY=;
-        b=Yqbw45hoJeb6/rnfGYKol5pzqBL7yLPc6ABZtpK8DoKmML0ZH3tcgqr1EXuyFUhDPu
-         A92FvhzGDxj1XV8sfkiRvP2iNBajSaAAYQtEoJzdmxAP4RCIiaK9DGjA4HxhQHF3Zoik
-         rP4iIHqzfbbF1SLD6+S5oFMx1jYmNb9bwTBvFLId+EUcnfEJam36AkiMBwjg2KR/HROu
-         sZa8fo4hyj3+EE2ACjgEAVv8vN8eoVlREMWiCXDgQypXctPRkaYl0Pn7Ext0l1+f5rkt
-         /XM4V7IzhH5WpqpMLxGZwB3chnjL1Od+5J+Dt2oSFqmBamqAEA1E6IbSHMCMHNWR++3w
-         20yA==
-X-Gm-Message-State: AA6/9RngGGSBGLlFRG4zxGRazw6Nv1kdTwKLQsDlQByf4JGKI3Hc+mTEMGUAopKcB9KSzg==
-X-Received: by 10.66.253.133 with SMTP id aa5mr36753979pad.161.1475922534245;
-        Sat, 08 Oct 2016 03:28:54 -0700 (PDT)
-Return-Path: <bhumirks@gmail.com>
-Received: from gmail.com ([106.215.171.86])
-        by smtp.gmail.com with ESMTPSA id n8sm37342963pan.17.2016.10.08.03.28.22
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 08 Oct 2016 03:28:52 -0700 (PDT)
-Received: by gmail.com (sSMTP sendmail emulation); Sat, 08 Oct 2016 15:58:05 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	gregkh@linuxfoundation.org
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: skein: skein_api: Remove useless type conversion
-Date: Sat,  8 Oct 2016 15:58:04 +0530
-Message-Id: <1475922484-25280-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        bh=3/UrLtymNMyoPQx/qLsYyHvEH4Go7giH795n2i3ZNHw=;
+        b=tlfxf7IAZcXZIbdDNuvAR/bfQbNSR5DSKMCh1CnHOpsag9ujq2nuE39cRO/anDZepT
+         O5sjmCsEFC9GyQIOpuXZ+sjNzMS6NkLpHwXVDMmoXdZOkQvcGAnfK4z92gfD+SzOgbt7
+         nLvuLWcZKEScwAiZI67mHFrwiVo40IXWPJr+17h3TL+nEYCtQkIeRmu2gDQIJer0PQib
+         l+9/Wk168VfByiGm9/OnI6rqoIW46O2M0YKBx4G7lfqzD7kzZ1ph+j13V850yQ5CfElm
+         2RqUleDG6JRasjeqA0ggZ6x282BR/5uikBmQb35cRnrik6of57E8V45mV5cSH+od/1vw
+         vBjw==
+X-Gm-Message-State: AMke39mFoehlkag9hUPjATnRZOgOAGA/Pfm6ZRUCLD+HoKnmowyAeK+Cou6evCCi2dhNtg==
+X-Received: by 10.28.234.206 with SMTP id g75mr1656695wmi.54.1488904685255;
+        Tue, 07 Mar 2017 08:38:05 -0800 (PST)
+Return-Path: <diaconitatamara@gmail.com>
+Received: from tamara ([141.85.228.69])
+        by smtp.gmail.com with ESMTPSA id l21sm621470wrl.59.2017.03.07.08.38.04
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 07 Mar 2017 08:38:04 -0800 (PST)
+From: Tamara Diaconita <diaconitatamara@gmail.com>
+X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
+To: w.d.hubbs@gmail.com,
+	chris@the-brannons.com,
+	kirk@reisers.ca,
+	samuel.thibault@ens-lyon.org,
+	gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: [PATCH 2/5] staging: speakup: kobjects: Delete blank line
+Date: Tue,  7 Mar 2017 18:38:01 +0200
+Message-Id: <20170307163801.9228-1-diaconita.tamara@gmail.com>
+X-Mailer: git-send-email 2.9.3
 
-Some type conversions like casting a pointer to a pointer of same type,
-casting to the original type using addressof(&) operator etc. are not
-needed. Therefore, remove them. Done using coccinelle:
+Delet the blank line after an open brace '{' to fix the checkpath.pl issue:
+CHECK: Blank lines aren't necessary after an open brace '{'.
 
-@@
-type t;
-t *p;
-t a;
-@@
-(
-- (t)(a)
-+ a
-|
-- (t *)(p)
-+ p
-|
-- (t *)(&a)
-+ &a
-)
-
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
 ---
- drivers/staging/skein/skein_api.c | 26 ++++++++++----------------
- 1 file changed, 10 insertions(+), 16 deletions(-)
+ drivers/staging/speakup/kobjects.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/skein/skein_api.c b/drivers/staging/skein/skein_api.c
-index cab26e7..c6526b6 100644
---- a/drivers/staging/skein/skein_api.c
-+++ b/drivers/staging/skein/skein_api.c
-@@ -98,19 +98,16 @@ int skein_mac_init(struct skein_ctx *ctx, const u8 *key, size_t key_len,
- 	switch (ctx->skein_size) {
- 	case SKEIN_256:
- 		ret = skein_256_init_ext(&ctx->m.s256, hash_bit_len,
--					 tree_info,
--					 (const u8 *)key, key_len);
-+					 tree_info, key, key_len);
+diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
+index 9d44133..5d8ec05 100644
+--- a/drivers/staging/speakup/kobjects.c
++++ b/drivers/staging/speakup/kobjects.c
+@@ -761,7 +761,6 @@ static ssize_t message_store_helper(const char *buf, size_t count,
+ 	enum msg_index_t curmessage;
  
- 		break;
- 	case SKEIN_512:
- 		ret = skein_512_init_ext(&ctx->m.s512, hash_bit_len,
--					 tree_info,
--					 (const u8 *)key, key_len);
-+					 tree_info, key, key_len);
- 		break;
- 	case SKEIN_1024:
- 		ret = skein_1024_init_ext(&ctx->m.s1024, hash_bit_len,
--					  tree_info,
--					  (const u8 *)key, key_len);
-+					  tree_info, key, key_len);
+ 	while (cp < end) {
+-
+ 		while ((cp < end) && (*cp == ' ' || *cp == '\t'))
+ 			cp++;
  
- 		break;
- 	}
-@@ -152,16 +149,13 @@ int skein_update(struct skein_ctx *ctx, const u8 *msg,
- 
- 	switch (ctx->skein_size) {
- 	case SKEIN_256:
--		ret = skein_256_update(&ctx->m.s256, (const u8 *)msg,
--				       msg_byte_cnt);
-+		ret = skein_256_update(&ctx->m.s256, msg, msg_byte_cnt);
- 		break;
- 	case SKEIN_512:
--		ret = skein_512_update(&ctx->m.s512, (const u8 *)msg,
--				       msg_byte_cnt);
-+		ret = skein_512_update(&ctx->m.s512, msg, msg_byte_cnt);
- 		break;
- 	case SKEIN_1024:
--		ret = skein_1024_update(&ctx->m.s1024, (const u8 *)msg,
--					msg_byte_cnt);
-+		ret = skein_1024_update(&ctx->m.s1024, msg, msg_byte_cnt);
- 		break;
- 	}
- 	return ret;
-@@ -211,7 +205,7 @@ int skein_update_bits(struct skein_ctx *ctx, const u8 *msg,
- 	/* partial byte bit mask */
- 	mask = (u8)(1u << (7 - (msg_bit_cnt & 7)));
- 	/* apply bit padding on final byte (in the buffer) */
--	up[length - 1]  = (u8)((up[length - 1] & (0 - mask)) | mask);
-+	up[length - 1]  = (up[length - 1] & (0 - mask)) | mask;
- 
- 	return SKEIN_SUCCESS;
- }
-@@ -224,13 +218,13 @@ int skein_final(struct skein_ctx *ctx, u8 *hash)
- 
- 	switch (ctx->skein_size) {
- 	case SKEIN_256:
--		ret = skein_256_final(&ctx->m.s256, (u8 *)hash);
-+		ret = skein_256_final(&ctx->m.s256, hash);
- 		break;
- 	case SKEIN_512:
--		ret = skein_512_final(&ctx->m.s512, (u8 *)hash);
-+		ret = skein_512_final(&ctx->m.s512, hash);
- 		break;
- 	case SKEIN_1024:
--		ret = skein_1024_final(&ctx->m.s1024, (u8 *)hash);
-+		ret = skein_1024_final(&ctx->m.s1024, hash);
- 		break;
- 	}
- 	return ret;
 -- 
-1.9.1
+2.9.3
 
 
