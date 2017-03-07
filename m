@@ -1,92 +1,92 @@
-X-GM-THRID: 6392991510876389376
-X-Received: by 10.157.43.184 with SMTP id u53mr5680383ota.33.1488484328800;
-        Thu, 02 Mar 2017 11:52:08 -0800 (PST)
+X-GM-THRID: 6394759600755703808
+X-Received: by 10.129.48.147 with SMTP id w141mr209159yww.47.1488895993171;
+        Tue, 07 Mar 2017 06:13:13 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.80.146 with SMTP id b18ls6484836oth.10.gmail; Thu, 02 Mar
- 2017 11:52:08 -0800 (PST)
-X-Received: by 10.157.6.80 with SMTP id 74mr5807344otn.5.1488484328437;
-        Thu, 02 Mar 2017 11:52:08 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id s64si1733599pfk.0.2017.03.02.11.52.08
+Received: by 10.157.44.99 with SMTP id f90ls449907otb.24.gmail; Tue, 07 Mar
+ 2017 06:13:12 -0800 (PST)
+X-Received: by 10.13.219.76 with SMTP id d73mr239821ywe.126.1488895992735;
+        Tue, 07 Mar 2017 06:13:12 -0800 (PST)
+Return-Path: <sreyamittal5@gmail.com>
+Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
+        by gmr-mx.google.com with ESMTPS id a3si25773pfb.2.2017.03.07.06.13.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 11:52:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Tue, 07 Mar 2017 06:13:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       spf=pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=sreyamittal5@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id 16so1775270pga.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 11:52:08 -0800 (PST)
+Received: by mail-pg0-x242.google.com with SMTP id 25so252611pgy.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 07 Mar 2017 06:13:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=Xcng26hwis4gxcF72hmJMYanOjmvXJ8+5Fjb2YECZzI=;
-        b=g1MWrAZRw5PDSof8v+IPT0ino8nspS2lRiyVlwI/zmT0cjeC8D+CMIr/sNv9zU51Sa
-         hYF4BbBilYrF7IVsZ6A0GzseIUg38//58mj2Jd5ebsrRNPrRBVwnQgicP2suPvwLtos5
-         1DG9kJJw4HkaQzUl7eloaUcKJEZBTmPvYlydj/LoQIL6mcemQ3rrMSLYcIZZUrIlzR1y
-         VurUIqZGFnt0a0R58dh4qtQnctJIYAXkXyAAmY56GGtV3XqgoRphHV2yGfz0LCznKIi1
-         5Eacye7XOql5+ENbBHZyQR+TZ8fU4VW+twObDgDhSBXOH1fyC04RgkhOJ6fU9FDPno5F
-         Iecg==
+        bh=htoTuJ5YBVYTsImPYGv1o0A0Ern6WixGSGEiWeVckp4=;
+        b=Kzk8MIjK1FLnMqjjv6exUxGqVsWcaNZKtKdd6UQjDRfrrhqxkuOb31VR6NL2CRIer7
+         ZkiaBSANhIRcqfXOTUwWDLJi1ypa8AmubmuWSWAVHJdc05HnN7DiD0SXaRI9W0Mrny3l
+         /ea+j3Siu7D2ZxCwXgb+g4YtO1kd3exHnL2itLxSSRJkc0ocGXiK1pzKqsTSJqkmsKCV
+         X7abnPmPGQoe9W5TD/YXd5y4Mfzddi63L3ebVB2ajxvarZaJ43EUESLDcn0tgu1ZK7sy
+         e1VsuaDCsqcl4qTg1qTBGuTmrTegrNt1OdR99eNjQvcJnFaGfrqptmwXFcskrTzm48Qy
+         w+4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Xcng26hwis4gxcF72hmJMYanOjmvXJ8+5Fjb2YECZzI=;
-        b=CJ/hc3Hz6vXJpkzB1WzsC+u5MZqJZsDvs9hejJmKVG2FZ6r4+F3nCS3KVm5Q8F4Qzi
-         pBFva2tXdx4VeVcJxQygYHiIMz8R/GhIBDBmkKSN9yhvuwhkJ+44v/qS/+m8r9peuzlg
-         hztArut9OpyqvtFbFGKL2hD0n0fRBjwLD1JcI/aAtPYx2nVJ0sKPWJhmUhx7Y6mZg5L3
-         1Yx/NloDlJGmFnWla70FxblPJf+Ra4EawhbCdnaxS4mUFlrqsR64MRRTJvgZi3YVqEjY
-         ED5TXWv+d/okFWElisFAMrXvn6LBsB5ADzpdrbloAni9I9KpAGhnMRMzQiyhW80Y7agQ
-         i/Bg==
-X-Gm-Message-State: AMke39mbmia9jnoBDrq4uItaaWr1cbdS9eJRKk/6gorueNHm4HwioiQd+T+shz5kvwHN6Q==
-X-Received: by 10.98.155.149 with SMTP id e21mr17785498pfk.24.1488484328107;
-        Thu, 02 Mar 2017 11:52:08 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id e70sm13965977pfl.105.2017.03.02.11.52.05
+        bh=htoTuJ5YBVYTsImPYGv1o0A0Ern6WixGSGEiWeVckp4=;
+        b=EwQy8k6ckfkxZGK0dLe1ydSrbyaH36KaF5dhEfA6HUYCfGK56uuVwDwzhaO7dCzQvn
+         7LbXFf77riVJ7Xb+j286O2WgLH/JL4jNK+pi8WKsMVk5s2EWk4IIE2XDHMsBfrmydQvC
+         /ZTR6cQxgkj1B9I4BEOgv8PPD5cJk7nbF4nB7eGtbnE8W/SQbxd7AZ81xc2DoLCggGX9
+         upVtMTZv50cx4RfpWL1yQgkkEX0kBI+uI2F4ikXutuXJsryb9pNHFwxnLCG0l24ZwMFp
+         2YGHi7MyxuZH+j4MdoaZ2zSMu4fwOlPhOAEV7sQ1FiZd7t2CZDs/BGCe/HmXj655l2C9
+         IEbw==
+X-Gm-Message-State: AMke39ka/3fIX2JzNuiMQMzr+U7Fzf8vM7Mjl+3NWWE6sM+bVd8bBuvVmHo4C1Av7QSvfg==
+X-Received: by 10.99.175.7 with SMTP id w7mr583696pge.170.1488895992498;
+        Tue, 07 Mar 2017 06:13:12 -0800 (PST)
+Return-Path: <sreyamittal5@gmail.com>
+Received: from stayawesome ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id e2sm224188pga.61.2017.03.07.06.13.11
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 02 Mar 2017 11:52:06 -0800 (PST)
-From: simran singhal <singhalsimran0@gmail.com>
-To: mchehab@kernel.org
-Cc: gregkh@linuxfoundation.org,
-	linux-media@vger.kernel.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/7] staging: media: Remove unnecessary typecast of c90 int constant
-Date: Fri,  3 Mar 2017 01:21:56 +0530
-Message-Id: <1488484322-5928-1-git-send-email-singhalsimran0@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        Tue, 07 Mar 2017 06:13:11 -0800 (PST)
+From: Sreya Mittal <sreyamittal5@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Sreya Mittal <sreyamittal5@gmail.com>,
+	Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
+	Teddy Wang <teddy.wang@siliconmotion.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH v2] staging: sm750fb: Add braces around if condition
+Date: Tue,  7 Mar 2017 19:42:56 +0530
+Message-Id: <20170307141256.2745-1-sreyamittal5@gmail.com>
+X-Mailer: git-send-email 2.9.3
 
-This patch removes unnecessary typecast of c90 int constant.
+Fix the checkpatch issue:
+braces {} should be used on all arms
+of if-else statement.
 
-WARNING: Unnecessary typecast of c90 int constant
-
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+Signed-off-by: Sreya Mittal <sreyamittal5@gmail.com>
 ---
- drivers/staging/media/atomisp/i2c/gc2235.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Changes in v2:
+*Add tag to the commit message
 
-diff --git a/drivers/staging/media/atomisp/i2c/gc2235.c b/drivers/staging/media/atomisp/i2c/gc2235.c
-index 3dd5e7f..3f2b11ec 100644
---- a/drivers/staging/media/atomisp/i2c/gc2235.c
-+++ b/drivers/staging/media/atomisp/i2c/gc2235.c
-@@ -706,10 +706,10 @@ static int distance(struct gc2235_resolution *res, u32 w, u32 h)
- 	h_ratio = ((res->height << 13) / h);
- 	if (h_ratio == 0)
- 		return -1;
--	match   = abs(((w_ratio << 13) / h_ratio) - ((int)8192));
-+	match   = abs(((w_ratio << 13) / h_ratio) - 8192);
+ drivers/staging/sm750fb/ddk750_chip.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
+index 10cf729..7948ca9 100644
+--- a/drivers/staging/sm750fb/ddk750_chip.c
++++ b/drivers/staging/sm750fb/ddk750_chip.c
+@@ -16,9 +16,9 @@ logical_chip_type_t sm750_get_chip_type(void)
  
--	if ((w_ratio < (int)8192) || (h_ratio < (int)8192)  ||
--		(match > LARGEST_ALLOWED_RATIO_MISMATCH))
-+	if ((w_ratio < 8192) || (h_ratio < 8192)  ||
-+	    (match > LARGEST_ALLOWED_RATIO_MISMATCH))
- 		return -1;
- 
- 	return w_ratio + h_ratio;
+ void sm750_set_chip_type(unsigned short devId, u8 revId)
+ {
+-	if (devId == 0x718)
++	if (devId == 0x718) {
+ 		chip = SM718;
+-	else if (devId == 0x750) {
++	} else if (devId == 0x750) {
+ 		chip = SM750;
+ 		/* SM750 and SM750LE are different in their revision ID only. */
+ 		if (revId == SM750LE_REVISION_ID) {
 -- 
-2.7.4
+2.9.3
 
 
