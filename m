@@ -1,364 +1,88 @@
-X-GM-THRID: 6340772039843905536
-X-Received: by 10.98.194.74 with SMTP id l71mr1091449pfg.11.1476326035953;
-        Wed, 12 Oct 2016 19:33:55 -0700 (PDT)
+X-GM-THRID: 6394882267556085760
+X-Received: by 10.25.216.154 with SMTP id r26mr465107lfi.7.1488924931165;
+        Tue, 07 Mar 2017 14:15:31 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.62.131 with SMTP id b3ls2275198otc.1.gmail; Wed, 12 Oct
- 2016 19:33:55 -0700 (PDT)
-X-Received: by 10.237.60.92 with SMTP id u28mr1122931qte.50.1476326035291;
-        Wed, 12 Oct 2016 19:33:55 -0700 (PDT)
-Return-Path: <elise.lennion@gmail.com>
-Received: from mail-vk0-x243.google.com (mail-vk0-x243.google.com. [2607:f8b0:400c:c05::243])
-        by gmr-mx.google.com with ESMTPS id p131si1803645vkf.1.2016.10.12.19.33.55
+Received: by 10.46.22.67 with SMTP id 3ls192836ljw.43.gmail; Tue, 07 Mar 2017
+ 14:15:30 -0800 (PST)
+X-Received: by 10.46.77.69 with SMTP id a66mr594580ljb.11.1488924930583;
+        Tue, 07 Mar 2017 14:15:30 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 82si191617wmg.3.2017.03.07.14.15.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 12 Oct 2016 19:33:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::243 as permitted sender) client-ip=2607:f8b0:400c:c05::243;
+        Tue, 07 Mar 2017 14:15:30 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::243 as permitted sender) smtp.mailfrom=elise.lennion@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-vk0-x243.google.com with SMTP id b186so2894734vkb.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 12 Oct 2016 19:33:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=zU+0PrXOO2v7TtULjgEOXe1jquZNdTJIdglJQoId+Mw=;
-        b=cjCxkqwcxZDBOKOsRKIK9YJ+wLyFUBM8xOwSOQamDncfVP73OnTOKl3DSfyD2SEZeM
-         kY7KZwiW8/GZA1N0G7+CkAGAIULWsGDenfPasF2kDbxlxdU4ro02AkkDIDfFztg/Eqm9
-         e5xLQ87NYNQiqbNQGRgzpi/csxGO5WQXXToKwljnHSGrB1QYaYcoehJkNvYakuUsdtQi
-         JgwbS87sPoDtzDHENYgj8CA6ctPHQI1mxAjDdqVLLp/8a8CrZmk3s6JRMufY5GYhUwfG
-         Yyv/7IfhXhaLk7a1SgjqNXLBooj5FUuuVP6tEtffrpQWDqq+tn5tr1zXFG13zc7H/wR1
-         Pmvg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=zU+0PrXOO2v7TtULjgEOXe1jquZNdTJIdglJQoId+Mw=;
-        b=bZrPVCcxJY6wReLF3abhHzCp6Jhcyu+/biS3hoTp5EqFuoVXw6d/ReCGaN5mcjP/fz
-         JJlVMo9WJD/2xOwvrMTLgFDJbQF5pHFgk0jQ4fuDb1u6qWP1dRLggBy7CvZJUvrU+C70
-         WugzVvIXqRAQBC1/Jw943PhXrA/1z7/CMNBhN2gaeEc6jcZYUIrV0KrZFPmxIKOJ3f2i
-         Cy38Om9LnfCeln4qjmhByF9HqBYRCECSGzEBNs5ZKTyQjVaulU0foL0djr+UPqnPWEEM
-         rVnOOv0HNQMloZ70/1XrXpTKNSuxIKkHbIjk5P167NM+m9kAinQeXuXT8s+ZbCRJVp2C
-         tw+w==
-X-Gm-Message-State: AA6/9Rk5XU57VKUmVqVu4qEYMGsjieox6VitaT2f74EobSwdKTCUfznH4NLsayLhANQAmQ==
-X-Received: by 10.31.98.131 with SMTP id w125mr2894421vkb.20.1476326035047;
-        Wed, 12 Oct 2016 19:33:55 -0700 (PDT)
-Return-Path: <elise.lennion@gmail.com>
-Received: from lennorien.com ([187.64.224.84])
-        by smtp.gmail.com with ESMTPSA id n71sm4343718vke.23.2016.10.12.19.33.53
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 12 Oct 2016 19:33:54 -0700 (PDT)
-Date: Wed, 12 Oct 2016 23:33:47 -0300
-From: Elise Lennion <elise.lennion@gmail.com>
-To: sudipm.mukherjee@gmail.com, teddy.wang@siliconmotion.com,
-	gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/2] staging: sm750fb: Replace functions CamelCase naming
- with underscores.
-Message-ID: <20161013023347.GA23305@lennorien.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.36,260,1486422000"; 
+   d="scan'208";a="215940200"
+Received: from 198.67.28.109.rev.sfr.net (HELO [192.168.1.69]) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 07 Mar 2017 23:15:29 +0100
+Date: Tue, 7 Mar 2017 23:15:29 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Tamara Diaconita <diaconitatamara@gmail.com>
+cc: aditya.shankar@microchip.com, ganesh.krishna@microchip.com, 
+    gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com, 
+    Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: wilc1000: coreconfiguration
+ Removed camel case
+In-Reply-To: <20170307220910.5225-1-diaconita.tamara@gmail.com>
+Message-ID: <alpine.DEB.2.20.1703072314320.2292@hadrien>
+References: <20170307220910.5225-1-diaconita.tamara@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-Fix checkpatch warning:
 
-CHECK: Avoid CamelCase
 
-The functions declarations in the driver sm750fb is mixed between
-CamelCase and underscores naming conventions. It's visually better
-to keep naming consistency in the code, and the kernel coding style
-favors underscores, so the CamelCases namings should be replaced.
+On Wed, 8 Mar 2017, Tamara Diaconita wrote:
 
-Signed-off-by: Elise Lennion <elise.lennion@gmail.com>
----
- drivers/staging/sm750fb/ddk750_chip.c  | 36 +++++++++++++++++-----------------
- drivers/staging/sm750fb/ddk750_chip.h  |  8 ++++----
- drivers/staging/sm750fb/ddk750_mode.c  |  6 +++---
- drivers/staging/sm750fb/ddk750_power.c | 12 ++++++------
- drivers/staging/sm750fb/ddk750_power.h |  4 ++--
- drivers/staging/sm750fb/sm750_hw.c     |  6 +++---
- 6 files changed, 36 insertions(+), 36 deletions(-)
+> Change the name of some variables to fix the checkpath.pl issue:
+> CHECK: Avoid CamelCase
+>
+> Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
+> ---
+>  drivers/staging/wilc1000/coreconfigurator.h | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/staging/wilc1000/coreconfigurator.h b/drivers/staging/wilc1000/coreconfigurator.h
+> index 10101f8..a2df5c7 100644
+> --- a/drivers/staging/wilc1000/coreconfigurator.h
+> +++ b/drivers/staging/wilc1000/coreconfigurator.h
+> @@ -124,10 +124,10 @@ s32 wilc_parse_network_info(u8 *msg_buffer,
+>  			    struct network_info **ret_network_info);
+>  s32 wilc_parse_assoc_resp_info(u8 *buffer, u32 buffer_len,
+>  			       struct connect_resp_info **ret_connect_resp_info);
+> -void wilc_scan_complete_received(struct wilc *wilc, u8 *pu8Buffer,
+> -				 u32 u32Length);
+> -void wilc_network_info_received(struct wilc *wilc, u8 *pu8Buffer,
+> -				u32 u32Length);
+> -void wilc_gnrl_async_info_received(struct wilc *wilc, u8 *pu8Buffer,
+> -				   u32 u32Length);
+> +void wilc_scan_complete_received(struct wilc *wilc, u8 *buffer,
+> +				 u32 length);
+> +void wilc_network_info_received(struct wilc *wilc, u8 *buffer,
+> +				u32 length);
+> +void wilc_gnrl_async_info_received(struct wilc *wilc, u8 *buffer,
+> +				   u32 length);
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index 2b231c2..a127eb2 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -51,7 +51,7 @@ static unsigned int get_mxclk_freq(void)
-  *
-  * Input: Frequency to be set.
-  */
--static void setChipClock(unsigned int frequency)
-+static void set_chip_clock(unsigned int frequency)
- {
- 	struct pll_value pll;
- 	unsigned int ulActualMxClk;
-@@ -68,19 +68,19 @@ static void setChipClock(unsigned int frequency)
- 		pll.clockType = MXCLK_PLL;
- 
- 		/*
--		* Call calcPllValue() to fill the other fields of PLL structure.
-+		* Call calc_pll_value() to fill the other fields of PLL structure.
- 		* Sometime, the chip cannot set up the exact clock
- 		* required by the User.
--		* Return value of calcPllValue gives the actual possible clock.
-+		* Return value of calc_pll_value gives the actual possible clock.
- 		*/
--		ulActualMxClk = calcPllValue(frequency, &pll);
-+		ulActualMxClk = calc_pll_value(frequency, &pll);
- 
- 		/* Master Clock Control: MXCLK_PLL */
--		POKE32(MXCLK_PLL_CTRL, formatPllReg(&pll));
-+		POKE32(MXCLK_PLL_CTRL, format_pll_reg(&pll));
- 	}
- }
- 
--static void setMemoryClock(unsigned int frequency)
-+static void set_memory_clock(unsigned int frequency)
- {
- 	unsigned int reg, divisor;
- 
-@@ -119,7 +119,7 @@ static void setMemoryClock(unsigned int frequency)
- 			break;
- 		}
- 
--		setCurrentGate(reg);
-+		set_current_gate(reg);
- 	}
- }
- 
-@@ -131,7 +131,7 @@ static void setMemoryClock(unsigned int frequency)
-  * NOTE:
-  *      The maximum frequency the engine can run is 168MHz.
-  */
--static void setMasterClock(unsigned int frequency)
-+static void set_master_clock(unsigned int frequency)
- {
- 	unsigned int reg, divisor;
- 
-@@ -169,11 +169,11 @@ static void setMasterClock(unsigned int frequency)
- 			break;
- 		}
- 
--		setCurrentGate(reg);
-+		set_current_gate(reg);
- 		}
- }
- 
--unsigned int ddk750_getVMSize(void)
-+unsigned int ddk750_get_vm_size(void)
- {
- 	unsigned int reg;
- 	unsigned int data;
-@@ -205,18 +205,18 @@ unsigned int ddk750_getVMSize(void)
- 	return data;
- }
- 
--int ddk750_initHw(struct initchip_param *pInitParam)
-+int ddk750_init_hw(struct initchip_param *pInitParam)
- {
- 	unsigned int reg;
- 
- 	if (pInitParam->powerMode != 0)
- 		pInitParam->powerMode = 0;
--	setPowerMode(pInitParam->powerMode);
-+	set_power_mode(pInitParam->powerMode);
- 
- 	/* Enable display power gate & LOCALMEM power gate*/
- 	reg = PEEK32(CURRENT_GATE);
- 	reg |= (CURRENT_GATE_DISPLAY | CURRENT_GATE_LOCALMEM);
--	setCurrentGate(reg);
-+	set_current_gate(reg);
- 
- 	if (sm750_get_chip_type() != SM750LE) {
- 		/*	set panel pll and graphic mode via mmio_88 */
-@@ -232,13 +232,13 @@ int ddk750_initHw(struct initchip_param *pInitParam)
- 	}
- 
- 	/* Set the Main Chip Clock */
--	setChipClock(MHz((unsigned int)pInitParam->chipClock));
-+	set_chip_clock(MHz((unsigned int)pInitParam->chipClock));
- 
- 	/* Set up memory clock. */
--	setMemoryClock(MHz(pInitParam->memClock));
-+	set_memory_clock(MHz(pInitParam->memClock));
- 
- 	/* Set up master clock */
--	setMasterClock(MHz(pInitParam->masterClock));
-+	set_master_clock(MHz(pInitParam->masterClock));
- 
- 
- 	/* Reset the memory controller.
-@@ -304,7 +304,7 @@ int ddk750_initHw(struct initchip_param *pInitParam)
-  * M = {1,...,255}
-  * N = {2,...,15}
-  */
--unsigned int calcPllValue(unsigned int request_orig, struct pll_value *pll)
-+unsigned int calc_pll_value(unsigned int request_orig, struct pll_value *pll)
- {
- 	/* as sm750 register definition,
- 	 * N located in 2,15 and M located in 1,255
-@@ -372,7 +372,7 @@ unsigned int calcPllValue(unsigned int request_orig, struct pll_value *pll)
- 	return ret;
- }
- 
--unsigned int formatPllReg(struct pll_value *pPLL)
-+unsigned int format_pll_reg(struct pll_value *pPLL)
- {
- #ifndef VALIDATION_CHIP
- 	unsigned int POD = pPLL->POD;
-diff --git a/drivers/staging/sm750fb/ddk750_chip.h b/drivers/staging/sm750fb/ddk750_chip.h
-index 755aab1..3b731b4 100644
---- a/drivers/staging/sm750fb/ddk750_chip.h
-+++ b/drivers/staging/sm750fb/ddk750_chip.h
-@@ -77,9 +77,9 @@ struct initchip_param {
- 
- logical_chip_type_t sm750_get_chip_type(void);
- void sm750_set_chip_type(unsigned short devId, char revId);
--unsigned int calcPllValue(unsigned int request, struct  pll_value *pll);
--unsigned int formatPllReg(struct pll_value *pPLL);
--unsigned int ddk750_getVMSize(void);
--int ddk750_initHw(struct initchip_param *);
-+unsigned int calc_pll_value(unsigned int request, struct  pll_value *pll);
-+unsigned int format_pll_reg(struct pll_value *pPLL);
-+unsigned int ddk750_get_vm_size(void);
-+int ddk750_init_hw(struct initchip_param *);
- 
- #endif
-diff --git a/drivers/staging/sm750fb/ddk750_mode.c b/drivers/staging/sm750fb/ddk750_mode.c
-index 4964918..b6af6f3 100644
---- a/drivers/staging/sm750fb/ddk750_mode.c
-+++ b/drivers/staging/sm750fb/ddk750_mode.c
-@@ -80,7 +80,7 @@ static int programModeRegisters(mode_parameter_t *pModeParam,
- 
- 	if (pll->clockType == SECONDARY_PLL) {
- 		/* programe secondary pixel clock */
--		POKE32(CRT_PLL_CTRL, formatPllReg(pll));
-+		POKE32(CRT_PLL_CTRL, format_pll_reg(pll));
- 		POKE32(CRT_HORIZONTAL_TOTAL,
- 			(((pModeParam->horizontal_total - 1) <<
- 				CRT_HORIZONTAL_TOTAL_TOTAL_SHIFT) &
-@@ -130,7 +130,7 @@ static int programModeRegisters(mode_parameter_t *pModeParam,
- 	} else if (pll->clockType == PRIMARY_PLL) {
- 		unsigned int reserved;
- 
--		POKE32(PANEL_PLL_CTRL, formatPllReg(pll));
-+		POKE32(PANEL_PLL_CTRL, format_pll_reg(pll));
- 
- 		reg = ((pModeParam->horizontal_total - 1) <<
- 			PANEL_HORIZONTAL_TOTAL_TOTAL_SHIFT) &
-@@ -207,7 +207,7 @@ int ddk750_setModeTiming(mode_parameter_t *parm, clock_type_t clock)
- 	pll.inputFreq = DEFAULT_INPUT_CLOCK;
- 	pll.clockType = clock;
- 
--	uiActualPixelClk = calcPllValue(parm->pixel_clock, &pll);
-+	uiActualPixelClk = calc_pll_value(parm->pixel_clock, &pll);
- 	if (sm750_get_chip_type() == SM750LE) {
- 		/* set graphic mode via IO method */
- 		outb_p(0x88, 0x3d4);
-diff --git a/drivers/staging/sm750fb/ddk750_power.c b/drivers/staging/sm750fb/ddk750_power.c
-index 710106e..c9ea464 100644
---- a/drivers/staging/sm750fb/ddk750_power.c
-+++ b/drivers/staging/sm750fb/ddk750_power.c
-@@ -29,7 +29,7 @@ static unsigned int getPowerMode(void)
-  * SM50x can operate in one of three modes: 0, 1 or Sleep.
-  * On hardware reset, power mode 0 is default.
-  */
--void setPowerMode(unsigned int powerMode)
-+void set_power_mode(unsigned int powerMode)
- {
- 	unsigned int control_value = 0;
- 
-@@ -72,7 +72,7 @@ void setPowerMode(unsigned int powerMode)
- 	POKE32(POWER_MODE_CTRL, control_value);
- }
- 
--void setCurrentGate(unsigned int gate)
-+void set_current_gate(unsigned int gate)
- {
- 	unsigned int gate_reg;
- 	unsigned int mode;
-@@ -111,7 +111,7 @@ void enable2DEngine(unsigned int enable)
- 	else
- 		gate &= ~(CURRENT_GATE_DE | CURRENT_GATE_CSC);
- 
--	setCurrentGate(gate);
-+	set_current_gate(gate);
- }
- 
- void enableDMA(unsigned int enable)
-@@ -125,7 +125,7 @@ void enableDMA(unsigned int enable)
- 	else
- 		gate &= ~CURRENT_GATE_DMA;
- 
--	setCurrentGate(gate);
-+	set_current_gate(gate);
- }
- 
- /*
-@@ -142,7 +142,7 @@ void enableGPIO(unsigned int enable)
- 	else
- 		gate &= ~CURRENT_GATE_GPIO;
- 
--	setCurrentGate(gate);
-+	set_current_gate(gate);
- }
- 
- /*
-@@ -159,7 +159,7 @@ void enableI2C(unsigned int enable)
- 	else
- 		gate &= ~CURRENT_GATE_I2C;
- 
--	setCurrentGate(gate);
-+	set_current_gate(gate);
- }
- 
- 
-diff --git a/drivers/staging/sm750fb/ddk750_power.h b/drivers/staging/sm750fb/ddk750_power.h
-index 5963691..ba0b3f5 100644
---- a/drivers/staging/sm750fb/ddk750_power.h
-+++ b/drivers/staging/sm750fb/ddk750_power.h
-@@ -19,12 +19,12 @@ void ddk750_setDPMS(DPMS_t);
- /*
-  * This function sets the current power mode
-  */
--void setPowerMode(unsigned int powerMode);
-+void set_power_mode(unsigned int powerMode);
- 
- /*
-  * This function sets current gate
-  */
--void setCurrentGate(unsigned int gate);
-+void set_current_gate(unsigned int gate);
- 
- /*
-  * This function enable/disable the 2D engine.
-diff --git a/drivers/staging/sm750fb/sm750_hw.c b/drivers/staging/sm750fb/sm750_hw.c
-index 61d2fdc..d5508ba 100644
---- a/drivers/staging/sm750fb/sm750_hw.c
-+++ b/drivers/staging/sm750fb/sm750_hw.c
-@@ -68,9 +68,9 @@ int hw_sm750_map(struct sm750_dev *sm750_dev, struct pci_dev *pdev)
- 	/* don't use pdev_resource[x].end - resource[x].start to
- 	 * calculate the resource size, it's only the maximum available
- 	 * size but not the actual size, using
--	 * @ddk750_getVMSize function can be safe.
-+	 * @ddk750_get_vm_size function can be safe.
- 	 */
--	sm750_dev->vidmem_size = ddk750_getVMSize();
-+	sm750_dev->vidmem_size = ddk750_get_vm_size();
- 	pr_info("video memory phyAddr = %lx, size = %u bytes\n",
- 		sm750_dev->vidmem_start, sm750_dev->vidmem_size);
- 
-@@ -103,7 +103,7 @@ int hw_sm750_inithw(struct sm750_dev *sm750_dev, struct pci_dev *pdev)
- 	if (parm->master_clk == 0)
- 		parm->master_clk = parm->chip_clk / 3;
- 
--	ddk750_initHw((struct initchip_param *)&sm750_dev->initParm);
-+	ddk750_init_hw((struct initchip_param *)&sm750_dev->initParm);
- 	/* for sm718, open pci burst */
- 	if (sm750_dev->devid == 0x718) {
- 		POKE32(SYSTEM_CTRL,
--- 
-2.7.4
+I think that someome already proposed this change, but Greg didn't take it
+because he wanted the occurrences of length to be moved up to the previous
+line.
 
+julia
+
+>  #endif
+> --
+> 2.9.3
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170307220910.5225-1-diaconita.tamara%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
