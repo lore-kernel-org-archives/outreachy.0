@@ -1,106 +1,118 @@
-X-GM-THRID: 6388359593872850944
-X-Received: by 10.200.39.228 with SMTP id x33mr3511847qtx.71.1487405876693;
-        Sat, 18 Feb 2017 00:17:56 -0800 (PST)
+X-GM-THRID: 6394467446448717824
+X-Received: by 10.46.87.27 with SMTP id l27mr551763ljb.28.1488925154245;
+        Tue, 07 Mar 2017 14:19:14 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.87.199 with SMTP id u190ls1060655ita.8.canary-gmail; Sat,
- 18 Feb 2017 00:17:55 -0800 (PST)
-X-Received: by 10.99.111.6 with SMTP id k6mr3936254pgc.131.1487405875886;
-        Sat, 18 Feb 2017 00:17:55 -0800 (PST)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id z73si1230725pfa.2.2017.02.18.00.17.55
+Received: by 10.46.88.70 with SMTP id x6ls201367ljd.21.gmail; Tue, 07 Mar 2017
+ 14:19:13 -0800 (PST)
+X-Received: by 10.46.15.2 with SMTP id 2mr560622ljp.31.1488925153847;
+        Tue, 07 Mar 2017 14:19:13 -0800 (PST)
+Return-Path: <georgiana.chelu93@gmail.com>
+Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
+        by gmr-mx.google.com with ESMTPS id e72si498725wma.0.2017.03.07.14.19.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 18 Feb 2017 00:17:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Tue, 07 Mar 2017 14:19:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
+       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id a123so4116286pgc.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 18 Feb 2017 00:17:55 -0800 (PST)
+Received: by mail-wm0-x244.google.com with SMTP id u132so3269852wmg.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 07 Mar 2017 14:19:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=vcvWxrIfVOQ8pGg2sihIrOlO95n9PSDNCjdDXtK6ht8=;
-        b=Y9zJqzTeBsGJyosyJWnRFXirAS4R43ovx5W2yK0FNcLlZFptN+90EwANWWJ8HjHGHJ
-         lWTk4nktV7Kt8ntyaX15FMuxTorhwHJWw/a+lSj3EtWmPTw9/78QgnzYbUK7y+Wgl6xQ
-         zBKJpk3tK3gMigPc8phpyRWeF+SD3fJF+M68x2vCO/ERbWBQ5+jZWAI1R9Yzs1rwsLri
-         z8oCfGvoKWVUkNrGgS1oKbSGet+qnveFQIflbhFxKbIRj1hock0FMbdNyuJsBy61NVWo
-         qEphHmGVS/49GCuw6AnjBNQ8qZ0T4Iln5hRRNU0eBZC/reTU7YI8B7z0vSCSufr/H8aA
-         BAnw==
+        bh=8K8082pUaMn7Tqu/SpvPcnL7ok3IZK2wBB+D066fZeo=;
+        b=gep5G2Bqe4Fl86uHZUCazNYGdx2mPIv850ABtOiGQWlON28l/QJpOa+BDFC83OU7OS
+         JzWgu5VwHb0nWlIpzWoBwdqWr1OxWYMvlhyfZvbcPpoDL04qxe+PxEiwQ87/2Kmto7UE
+         r4rImIrK0C54VId0J68pg/smM/sAvBFxY5sApmgpOQUax6Om9YWIkX2pm/BT+2qRMmk6
+         TWKIXKdq5ZXxLyc1WhNJHsEAeHHRfFUJPRiPvElW4IoP7huC4OgIuce1f5SJR/N9aqW7
+         8p5DEEOjZUiNsVI9uursaZpmhPaqr1fVkGcBF9u6mi6Kwd819SQNRswusUEl0jQRiggi
+         7esg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=vcvWxrIfVOQ8pGg2sihIrOlO95n9PSDNCjdDXtK6ht8=;
-        b=lp4YqdpL2gpMMXmIEQ1AfLqRj/ga00O/Z2oXQT902wrJC6WLXeAmtpP4twOCd4uzJq
-         Uo7LqvY2DFjoOJzg6MzBs1qJvJt4UbgE4Aqty1V2cVg8BpiqBQUFjzDYVKVnY2qmygCq
-         WUPmu6U0nltCJy4qtIVooZA/XM+K58vicUc7BwIHuQGFfkMiBAOIMbyI94BWV/u+MKxC
-         ihH7AsrpCk+n7Z8S1cEzl5jECaF0lHqJ0janJ2PGHhJgzJZtx/YPKq1VdwVPfiHSJK3A
-         dPCBStxsaF04k9shZvHylKky3J+kUf5r62+/brr3J+3P7ZMbzDMabEawHAzM4Ng5CRuk
-         V4Lw==
-X-Gm-Message-State: AMke39lDpCCH5/2OkCU/juM+TzV4b9VVTtdmcwxqq9rOFXARipLzLEuV2uoXF1Ns3NineA==
-X-Received: by 10.84.241.138 with SMTP id b10mr17024078pll.32.1487405875496;
-        Sat, 18 Feb 2017 00:17:55 -0800 (PST)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from sayli-HP-15-Notebook-PC ([182.58.167.219])
-        by smtp.gmail.com with ESMTPSA id o1sm23777841pgf.63.2017.02.18.00.17.47
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 18 Feb 2017 00:17:54 -0800 (PST)
-Date: Sat, 18 Feb 2017 13:47:38 +0530
-From: sayli karnik <karniksayli1995@gmail.com>
+        bh=8K8082pUaMn7Tqu/SpvPcnL7ok3IZK2wBB+D066fZeo=;
+        b=mimcSn+1d7jGKBwdbZi5AK5uGsdZXRrD6g7lDxdBLWamgU7S+ZcjomN4slmIJVckRV
+         uHqHFM8ADlEYk7RR111W2WFwH+jR7i4rcNwO5J69cXVUPbc1cksnlnnd6Fd/qdmLp8gB
+         EwCbWv9ejpUBfBmLcybqWn7RwDCfFJMxjo8gJWH4G48QQR5jrnzeuXx/o6Lqn32Lb4J0
+         yWVlCH3V1fNh0PAj9x2WqONsvkUsjASGimMIMMNfdQs/l9we859vafKsWuZvWEuAFOCh
+         7IsGwWj2FnzpGm2LBoQL3HWnW2GQTU3uTPjd4PksMHyfypPhRLVt/L8lUnafeTrGTxoF
+         69gA==
+X-Gm-Message-State: AMke39kpdOysZWsPZaL5W0+uy2hOYR6V3mqWPHtblWO0CruYpBUvQYI0C1nHXT6RjQ6glQ==
+X-Received: by 10.28.144.209 with SMTP id s200mr21052670wmd.134.1488925153650;
+        Tue, 07 Mar 2017 14:19:13 -0800 (PST)
+Return-Path: <georgiana.chelu93@gmail.com>
+Received: from fireworks ([84.117.92.113])
+        by smtp.gmail.com with ESMTPSA id x193sm2147372wme.23.2017.03.07.14.19.12
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 07 Mar 2017 14:19:12 -0800 (PST)
+Date: Wed, 8 Mar 2017 00:19:11 +0200
+From: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: greybus: loopback_test: Change array index from
- loop bound to loop index
-Message-ID: <20170218081738.GA28504@sayli-HP-15-Notebook-PC>
+Cc: gregkh@linuxfoundation.org
+Subject: [PATCH v2] staging: rtl8192e: Indent the code
+Message-ID: <20170307221911.GA13565@fireworks>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Change array index from the loop bound variable to loop index.
-The open_poll_files() functions attempts to open poll files of devices
-numbered from 0 to device_count. If the open() function inside it is
-unsuccessful for any intermediate device, all files with fds of devices from 0
-upto that device must be closed and open_poll_files() should return -1.
-The current code only closes the poll file with the most recent fd allocated,
-and in most cases tries to close the same file multiple times.
+Indent the code in order to follow the rules and to
+increase the readability of the code.
 
-Detected by coccinelle:
-
-@@
-expression arr,ex1,ex2;
-@@
-
-for(ex1 = 0; ex1 < ex2; ex1++) { <...
-  arr[
-- ex2
-+ ex1
-  ]
-  ...> }
-
-Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
+Signed-off-by: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
 ---
- drivers/staging/greybus/tools/loopback_test.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes in v2:
+	- remove extra indentation
+	- add a space after each ":" in subject line
 
-diff --git a/drivers/staging/greybus/tools/loopback_test.c b/drivers/staging/greybus/tools/loopback_test.c
-index 18d7a3d..2ee9a22 100644
---- a/drivers/staging/greybus/tools/loopback_test.c
-+++ b/drivers/staging/greybus/tools/loopback_test.c
-@@ -674,7 +674,7 @@ static int open_poll_files(struct loopback_test *t)
+ drivers/staging/rtl8192e/rtllib_wx.c                   | 2 +-
+ drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c      | 2 +-
+ drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/rtl8192e/rtllib_wx.c b/drivers/staging/rtl8192e/rtllib_wx.c
+index b1500ee..1102135 100644
+--- a/drivers/staging/rtl8192e/rtllib_wx.c
++++ b/drivers/staging/rtl8192e/rtllib_wx.c
+@@ -668,7 +668,7 @@ int rtllib_wx_set_encode_ext(struct rtllib_device *ieee,
+ 	if (ieee->set_security)
+ 		ieee->set_security(ieee->dev, &sec);
  
- err:
- 	for (i = 0; i < fds_idx; i++)
--		close(t->fds[fds_idx].fd);
-+		close(t->fds[i].fd);
+-	 if (ieee->reset_on_keychange &&
++	if (ieee->reset_on_keychange &&
+ 	    ieee->iw_mode != IW_MODE_INFRA &&
+ 	    ieee->reset_port && ieee->reset_port(dev)) {
+ 		netdev_dbg(ieee->dev, "Port reset failed\n");
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+index f0fba81..10ab2bf0 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+@@ -939,7 +939,7 @@ int ieee80211_rx(struct ieee80211_device *ieee, struct sk_buff *skb,
+ 	if (HTCCheck(ieee, skb->data))
+ 	{
+ 		if(net_ratelimit())
+-		printk("find HTCControl\n");
++			printk("find HTCControl\n");
+ 		hdrlen += 4;
+ 		rx_stats->bContainHTC = true;
+ 	}
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
+index 0ea90aa..ccb1221 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
+@@ -466,7 +466,7 @@ void ieee80211_softmac_scan_syncro(struct ieee80211_device *ieee)
+ 			goto out;
+ 		ieee->set_chan(ieee->dev, ch);
+ 		if(channel_map[ch] == 1)
+-		ieee80211_send_probe_requests(ieee);
++			ieee80211_send_probe_requests(ieee);
  
- 	return -1;
- }
+ 		/* this prevent excessive time wait when we
+ 		 * need to wait for a syncro scan to end..
 -- 
 2.7.4
 
