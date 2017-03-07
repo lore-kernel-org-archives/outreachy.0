@@ -1,94 +1,120 @@
-X-GM-THRID: 6340628437450883072
-X-Received: by 10.66.37.70 with SMTP id w6mr471063paj.114.1476292600079;
-        Wed, 12 Oct 2016 10:16:40 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.142.17 with SMTP id q17ls1564001iod.1.gmail; Wed, 12 Oct
- 2016 10:16:39 -0700 (PDT)
-X-Received: by 10.66.232.71 with SMTP id tm7mr472325pac.28.1476292599654;
-        Wed, 12 Oct 2016 10:16:39 -0700 (PDT)
-Return-Path: <elise.lennion@gmail.com>
-Received: from mail-vk0-x242.google.com (mail-vk0-x242.google.com. [2607:f8b0:400c:c05::242])
-        by gmr-mx.google.com with ESMTPS id p70si999778vkd.0.2016.10.12.10.16.39
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 12 Oct 2016 10:16:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::242 as permitted sender) client-ip=2607:f8b0:400c:c05::242;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::242 as permitted sender) smtp.mailfrom=elise.lennion@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-vk0-x242.google.com with SMTP id 83so1325345vkd.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 12 Oct 2016 10:16:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=/gd/viZx4NwYA3PzEtOXhaWkOCEOlpG9BCqKM9dPwfc=;
-        b=y3EIbNkDaTDSxG1eNvc1j/ulkeknR7REPczPw2UYEfuVusUm5D5S9LdL2foRhkN5Ra
-         iC6J++fUUoJYRiOCcvzfG0jnPhbF2IW5pWBWkOaqprFySbR8Ntad2NOH2eFEJNetk2pC
-         4FQ9hHfptXvtEuLaVAFupABFygo4SER6mRK9cuQSxGmcvO1rvyy30ER1/5OiQdCrtoAd
-         HPLUj/p/6PxOhaSqPCW0B+7Tbnf6Te8RMbjVCghicevYIlfP2Ijcl/Zudp8F1S6MUEd4
-         4Ic05yXiOHXdv4Sed/79aEtONxI7/96tBCOkX69nkyMIPFUj58x5OCzi6sawSPElLLNe
-         yHwQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=/gd/viZx4NwYA3PzEtOXhaWkOCEOlpG9BCqKM9dPwfc=;
-        b=Q/ABVfmUJass0q62QbL1x19l/1OBwtOYXHPkBEldOaC0gfOfernwkepa/5fk0FBFDB
-         fcIJ5f7Y1yPiYXXvJXotmC/szqUCC2K++lVnC6gdKNU7cxzcZ8slGfKhiXSF0LiOT2K8
-         W/z6vh8LWYZoCeJmiRWbWLd+apcrNzkwWwRkAYkylcBjYEklJCweJ38gh1ozo2xvJYPw
-         yggDHv3gYrQovvCWwnboTKdsDeUNiq1hyAjHPcDLE8fOYcqIxnWEBU+MsKqCVBEaXRHL
-         U+gdCHPCvQpKGWEU9tUnbhsz1OD/pdYbFDI86ElQGt2jxX36HYla/ud8SBRf55JupFOd
-         s27w==
-X-Gm-Message-State: AA6/9Rk0kL7M4AamLTwvyuuALqEoP1sbhKGHEyVDj97XPenoLh5YkHT6SURMKT9dZsXFqg==
-X-Received: by 10.31.61.204 with SMTP id k195mr1335902vka.76.1476292599454;
-        Wed, 12 Oct 2016 10:16:39 -0700 (PDT)
-Return-Path: <elise.lennion@gmail.com>
-Received: from lennorien.com ([187.64.224.84])
-        by smtp.gmail.com with ESMTPSA id i188sm3411439vki.28.2016.10.12.10.16.37
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 12 Oct 2016 10:16:39 -0700 (PDT)
-Date: Wed, 12 Oct 2016 14:16:34 -0300
-From: Elise Lennion <elise.lennion@gmail.com>
-To: vaibhav.sr@gmail.com, johan@kernel.org, elder@kernel.org,
-	gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH v3 4/4] staging: greybus: arche-platform: Format block
- comments.
-Message-ID: <20161012171634.GA31734@lennorien.com>
+X-GM-THRID: 6394764238679703552
+Date: Tue, 7 Mar 2017 12:13:19 -0800 (PST)
+From: Sreya Mittal <sreyamittal5@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: sreyamittal5@gmail.com, julia.lawall@lip6.fr, f.fainelli@gmail.com,
+	rjui@broadcom.com, sbranden@broadcom.com,
+	bcm-kernel-feedback-list@broadcom.com, swarren@wwwdotorg.org,
+	lee@kernel.org, eric@anholt.net
+Message-Id: <c8dcf76f-2134-474a-972f-51a7b948e85a@googlegroups.com>
+In-Reply-To: <20170307195759.GA25999@kroah.com>
+References: <20170307143056.3252-1-sreyamittal5@gmail.com>
+ <alpine.DEB.2.20.1703071653360.3150@hadrien>
+ <20170307190609.GA6914@kroah.com>
+ <43384264-5884-45c4-a386-dc9e2c7846fa@googlegroups.com>
+ <20170307195759.GA25999@kroah.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: bcm2835-audio: Fix
+ alignment with parenthesis
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_2119_1562554871.1488917599430"
+X-Google-Token: EN-o_MUFmxekI7OPFUc0
+X-Google-IP: 14.139.82.6
 
-Fix checkpatch warning:
+------=_Part_2119_1562554871.1488917599430
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2120_2036498653.1488917599430"
 
-WARNING: Block comments use a trailing */ on a separate line
+------=_Part_2120_2036498653.1488917599430
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-Signed-off-by: Elise Lennion <elise.lennion@gmail.com>
----
 
- v2: Changed subject of the patch and fix merging conflict.
- v3: Added versions information.
 
- drivers/staging/greybus/arche-platform.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+On Wednesday, March 8, 2017 at 1:28:05 AM UTC+5:30, Greg Kroah-Hartman 
+wrote:
+>
+> On Tue, Mar 07, 2017 at 11:50:26AM -0800, Sreya Mittal wrote: 
+> > 
+> > 
+> > On Wednesday, March 8, 2017 at 12:36:16 AM UTC+5:30, gregkh wrote: 
+> > 
+> >     On Tue, Mar 07, 2017 at 04:54:07PM +0100, Julia Lawall wrote: 
+> >     > 
+> >     > 
+> >     > On Tue, 7 Mar 2017, Sreya Mittal wrote: 
+> >     > 
+> >     > > Fix the checkpatch issue: 
+> >     > > Alignment should match open parenthesis 
+> >     > > 
+> >     > > Signed-off-by: Sreya Mittal <sreyam...@gmail.com> 
+> >     > > --- 
+> >     > >  drivers/staging/bcm2835-audio/bcm2835-ctl.c | 2 +- 
+> >     > 
+> >     > I don't see this file in staging-testing anymore. 
+> > 
+> >     It moved.  And I think someone else already made this change :( 
+> > 
+> >     Sreya, please rebase your patch and see if it still is needed.  If 
+> so, 
+> >     please resend the updated version. 
+> > 
+> > 
+> > The file exists in drivers/staging/vc04_services/bcm2835-audio without 
+> > the change I had made. Should I redo the patch in this file? 
+>
+> Yes please. 
+>
 
-diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
-index e36ee98..a850f6b 100644
---- a/drivers/staging/greybus/arche-platform.c
-+++ b/drivers/staging/greybus/arche-platform.c
-@@ -455,7 +455,8 @@ static ssize_t state_store(struct device *dev,
- 			goto exit;
- 
- 		/* First we want to make sure we power off everything
--		 * and then activate back again */
-+		 * and then activate back again
-+		 */
- 		device_for_each_child(arche_pdata->dev, NULL, apb_poweroff);
- 		arche_platform_poweroff_seq(arche_pdata);
- 
--- 
-2.7.4
+Done :)
 
+Sreya 
+
+------=_Part_2120_2036498653.1488917599430
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Wednesday, March 8, 2017 at 1:28:05 AM UTC+5:30=
+, Greg Kroah-Hartman wrote:<blockquote class=3D"gmail_quote" style=3D"margi=
+n: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">On =
+Tue, Mar 07, 2017 at 11:50:26AM -0800, Sreya Mittal wrote:
+<br>&gt;=20
+<br>&gt;=20
+<br>&gt; On Wednesday, March 8, 2017 at 12:36:16 AM UTC+5:30, gregkh wrote:
+<br>&gt;=20
+<br>&gt; =C2=A0 =C2=A0 On Tue, Mar 07, 2017 at 04:54:07PM +0100, Julia Lawa=
+ll wrote:
+<br>&gt; =C2=A0 =C2=A0 &gt;
+<br>&gt; =C2=A0 =C2=A0 &gt;
+<br>&gt; =C2=A0 =C2=A0 &gt; On Tue, 7 Mar 2017, Sreya Mittal wrote:
+<br>&gt; =C2=A0 =C2=A0 &gt;
+<br>&gt; =C2=A0 =C2=A0 &gt; &gt; Fix the checkpatch issue:
+<br>&gt; =C2=A0 =C2=A0 &gt; &gt; Alignment should match open parenthesis
+<br>&gt; =C2=A0 =C2=A0 &gt; &gt;
+<br>&gt; =C2=A0 =C2=A0 &gt; &gt; Signed-off-by: Sreya Mittal &lt;<a>sreyam.=
+..@gmail.com</a>&gt;
+<br>&gt; =C2=A0 =C2=A0 &gt; &gt; ---
+<br>&gt; =C2=A0 =C2=A0 &gt; &gt; =C2=A0drivers/staging/bcm2835-<wbr>audio/b=
+cm2835-ctl.c | 2 +-
+<br>&gt; =C2=A0 =C2=A0 &gt;
+<br>&gt; =C2=A0 =C2=A0 &gt; I don&#39;t see this file in staging-testing an=
+ymore.
+<br>&gt;=20
+<br>&gt; =C2=A0 =C2=A0 It moved. =C2=A0And I think someone else already mad=
+e this change :(
+<br>&gt;=20
+<br>&gt; =C2=A0 =C2=A0 Sreya, please rebase your patch and see if it still =
+is needed. =C2=A0If so,
+<br>&gt; =C2=A0 =C2=A0 please resend the updated version.
+<br>&gt;=20
+<br>&gt;=20
+<br>&gt; The file exists in drivers/staging/vc04_services/<wbr>bcm2835-audi=
+o without
+<br>&gt; the change I had made. Should I redo the patch in this file?
+<br>
+<br>Yes please.
+<br></blockquote><div><br>Done :)<br><br>Sreya <br></div></div>
+------=_Part_2120_2036498653.1488917599430--
+
+------=_Part_2119_1562554871.1488917599430--
 
