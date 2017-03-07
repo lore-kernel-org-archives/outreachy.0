@@ -1,264 +1,91 @@
-X-GM-THRID: 10238161846272
-X-Received: by 10.194.95.67 with SMTP id di3mr6170914wjb.0.1427577397177;
-        Sat, 28 Mar 2015 14:16:37 -0700 (PDT)
+X-GM-THRID: 6394684558131855360
+X-Received: by 10.46.87.80 with SMTP id r16mr245683ljd.12.1488904743791;
+        Tue, 07 Mar 2017 08:39:03 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.115.211 with SMTP id jq19ls564456lab.32.gmail; Sat, 28 Mar
- 2015 14:16:36 -0700 (PDT)
-X-Received: by 10.112.35.135 with SMTP id h7mr6061009lbj.23.1427577396434;
-        Sat, 28 Mar 2015 14:16:36 -0700 (PDT)
-Return-Path: <ciorneiioana@gmail.com>
-Received: from mail-wi0-x235.google.com (mail-wi0-x235.google.com. [2a00:1450:400c:c05::235])
-        by gmr-mx.google.com with ESMTPS id c8si539550wiw.1.2015.03.28.14.16.36
+Received: by 10.46.77.72 with SMTP id a69ls112617ljb.42.gmail; Tue, 07 Mar
+ 2017 08:39:03 -0800 (PST)
+X-Received: by 10.46.5.136 with SMTP id 130mr241240ljf.6.1488904743095;
+        Tue, 07 Mar 2017 08:39:03 -0800 (PST)
+Return-Path: <diaconitatamara@gmail.com>
+Received: from mail-wr0-x243.google.com (mail-wr0-x243.google.com. [2a00:1450:400c:c0c::243])
+        by gmr-mx.google.com with ESMTPS id 82si93455wmg.3.2017.03.07.08.39.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 28 Mar 2015 14:16:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) client-ip=2a00:1450:400c:c05::235;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 07 Mar 2017 08:39:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) client-ip=2a00:1450:400c:c0c::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ciorneiioana@gmail.com designates 2a00:1450:400c:c05::235 as permitted sender) smtp.mail=ciorneiioana@gmail.com;
        dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x235.google.com with SMTP id m2so57601406wix.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 28 Mar 2015 14:16:36 -0700 (PDT)
+       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wr0-x243.google.com with SMTP id l37so913186wrc.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 07 Mar 2017 08:39:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
+        d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=rYpCz0/r7ZbEA5Bdt/xOPyOYt/T7DWvVS0ui0l0MHvA=;
-        b=Z0Sj7WjM1IAXbVYLk283mUd+lla87zvDtQ+9rBjaSyMAInHvPN3IqNfWGAeDsFMk0Q
-         nVKheO4nJG7+rHDjfu5ur7OiLZB+XVIIkYGgqQGCbid9x7mLsmCpEBlPNZ1zslMRO6Kd
-         y31YROaZ3+cU8J4sByOG05o2SPi3k4+68mJRjNIstTJHOs+Slv1A1EFNYB9gHs2ZWa39
-         HU58I3900RPLMO6ywyAUYWzrdCqi0Emb7DvvyMPcfegZGjL9DbM8Qgftq0VZwt1lhxOL
-         /L8eUOS0ySj+hcCIj0i+vFjustciVN8HleX+FrQvH6/nocJllvHl+rKoHwkiL1Pp4/hH
-         bR2Q==
-X-Received: by 10.180.75.73 with SMTP id a9mr8662665wiw.45.1427577396365;
-        Sat, 28 Mar 2015 14:16:36 -0700 (PDT)
-Return-Path: <ciorneiioana@gmail.com>
-Received: from localhost.localdomain (p3.eregie.pub.ro. [141.85.0.103])
-        by mx.google.com with ESMTPSA id j9sm8633149wjy.18.2015.03.28.14.16.34
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 28 Mar 2015 14:16:35 -0700 (PDT)
-From: Ioana Ciornei <ciorneiioana@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Ioana Ciornei <ciorneiioana@gmail.com>
-Subject: [PATCH] staging: r8192U_core: Fix switch-case indentation
-Date: Sat, 28 Mar 2015 23:16:29 +0200
-Message-Id: <1427577389-27585-1-git-send-email-ciorneiioana@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        bh=4qGyCHE0jdo0iIBZ3HnDDqdkdbr73YZmbj8dYQczxE8=;
+        b=Xj0TQPMlQlR6ztA3EEHu+2zu4xW5fooSLmjFANsNaSlt+LxzlhcfISTdKi1W2KNb9z
+         WYR03oAdcQu8wW/C41Kbojbl6KuH4R8oZ0WFuZHFeFXq0wkzC56s1RKlGiNsgzwgxlqD
+         eV0n/QwvYTuKzl3x4+AJz7LjADLeQGGR+FKqWG02VagN1ZNYrt9HaiAeNTJ0T6LlIaWS
+         0ah9zJnB1LN2OIiRuJEY1jrQKGPYXY3lbi2MgjN/is0lhx9ynOMdyxiHUtQ78I2FKdej
+         lAuSFzeAfze9S7RogOE22PSto6wl5nrS1RSoD6fAkB6V5OV4tZoFTD0Av7W/6TkgtSVn
+         haLA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=4qGyCHE0jdo0iIBZ3HnDDqdkdbr73YZmbj8dYQczxE8=;
+        b=ijo4upf/4StNC03xzxRzQQoknU6EiVA4Y5EFdv6tvvHddedmsB8qfjvwa7XK8kKns7
+         M7nprMmMoPh0NCtRlBqCnACxYJo2BoYL1msTg8u3LUmJW1Mc5YchRtvJfjjuxODwMUh+
+         vyDfREoU9piODZYhgNUOFw8Ix2O+D29F3+azp3svX4MQmzI4s6UDdQlaNxfgzIbJyx4e
+         6Txf/HnLSqjO78Z4nDSR3aHd32vj1r6gHNlU7ZKvqV1Avc5m9O+gbmZmpcDzvvkFP3uX
+         dEfJWK84EEvaTRiBG4qeMUovOQRVFRV54ikfsvQaL9UsOvMilH3GS4TZJSTH3lBldwmM
+         rwEA==
+X-Gm-Message-State: AMke39lxw4EmJRhjPIBE/bppH+Q2CvJHSu4Wg1SnS1num/MfJN8OuSMHyZccFwSlzc5Dnw==
+X-Received: by 10.223.146.195 with SMTP id 61mr1010579wrn.91.1488904742906;
+        Tue, 07 Mar 2017 08:39:02 -0800 (PST)
+Return-Path: <diaconitatamara@gmail.com>
+Received: from tamara ([141.85.228.69])
+        by smtp.gmail.com with ESMTPSA id p93sm614866wrc.67.2017.03.07.08.39.01
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 07 Mar 2017 08:39:01 -0800 (PST)
+From: Tamara Diaconita <diaconitatamara@gmail.com>
+X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
+To: w.d.hubbs@gmail.com,
+	chris@the-brannons.com,
+	kirk@reisers.ca,
+	samuel.thibault@ens-lyon.org,
+	gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: [PATCH 5/5] staging: speakup: kobjects: Delete comparison
+Date: Tue,  7 Mar 2017 18:38:59 +0200
+Message-Id: <20170307163859.9486-1-diaconita.tamara@gmail.com>
+X-Mailer: git-send-email 2.9.3
 
-Indent switch-case to follow the kernel coding style
+Comparison to NULL is not necessary because 'if' statement tests if
+'synth' is NULL anyway.
 
-Signed-off-by: Ioana Ciornei <ciorneiioana@gmail.com>
+Delete comparison in 'if' structure to fix the checkpath.pl issue :
+CHECK: Comparison to NULL could be written 'synth'.
+
+Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
 ---
- drivers/staging/rtl8192u/r8192U_core.c | 190 ++++++++++++++++-----------------
- 1 file changed, 95 insertions(+), 95 deletions(-)
+ drivers/staging/speakup/kobjects.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
-index bce44ba..d612e4a 100644
---- a/drivers/staging/rtl8192u/r8192U_core.c
-+++ b/drivers/staging/rtl8192u/r8192U_core.c
-@@ -3538,107 +3538,107 @@ static u8 HwRateToMRate90(bool bIsHT, u8 rate)
- 
- 	if (!bIsHT) {
- 		switch (rate) {
--			case DESC90_RATE1M:
--				ret_rate = MGN_1M;
--				break;
--			case DESC90_RATE2M:
--				ret_rate = MGN_2M;
--				break;
--			case DESC90_RATE5_5M:
--				ret_rate = MGN_5_5M;
--				break;
--			case DESC90_RATE11M:
--				ret_rate = MGN_11M;
--				break;
--			case DESC90_RATE6M:
--				ret_rate = MGN_6M;
--				break;
--			case DESC90_RATE9M:
--				ret_rate = MGN_9M;
--				break;
--			case DESC90_RATE12M:
--				ret_rate = MGN_12M;
--				break;
--			case DESC90_RATE18M:
--				ret_rate = MGN_18M;
--				break;
--			case DESC90_RATE24M:
--				ret_rate = MGN_24M;
--				break;
--			case DESC90_RATE36M:
--				ret_rate = MGN_36M;
--				break;
--			case DESC90_RATE48M:
--				ret_rate = MGN_48M;
--				break;
--			case DESC90_RATE54M:
--				ret_rate = MGN_54M;
--				break;
-+		case DESC90_RATE1M:
-+			ret_rate = MGN_1M;
-+			break;
-+		case DESC90_RATE2M:
-+			ret_rate = MGN_2M;
-+			break;
-+		case DESC90_RATE5_5M:
-+			ret_rate = MGN_5_5M;
-+			break;
-+		case DESC90_RATE11M:
-+			ret_rate = MGN_11M;
-+			break;
-+		case DESC90_RATE6M:
-+			ret_rate = MGN_6M;
-+			break;
-+		case DESC90_RATE9M:
-+			ret_rate = MGN_9M;
-+			break;
-+		case DESC90_RATE12M:
-+			ret_rate = MGN_12M;
-+			break;
-+		case DESC90_RATE18M:
-+			ret_rate = MGN_18M;
-+			break;
-+		case DESC90_RATE24M:
-+			ret_rate = MGN_24M;
-+			break;
-+		case DESC90_RATE36M:
-+			ret_rate = MGN_36M;
-+			break;
-+		case DESC90_RATE48M:
-+			ret_rate = MGN_48M;
-+			break;
-+		case DESC90_RATE54M:
-+			ret_rate = MGN_54M;
-+			break;
- 
--			default:
--				ret_rate = 0xff;
--				RT_TRACE(COMP_RECV, "HwRateToMRate90(): Non supported Rate [%x], bIsHT = %d!!!\n", rate, bIsHT);
--				break;
-+		default:
-+			ret_rate = 0xff;
-+			RT_TRACE(COMP_RECV, "HwRateToMRate90(): Non supported Rate [%x], bIsHT = %d!!!\n", rate, bIsHT);
-+			break;
- 		}
- 
- 	} else {
- 		switch (rate) {
--			case DESC90_RATEMCS0:
--				ret_rate = MGN_MCS0;
--				break;
--			case DESC90_RATEMCS1:
--				ret_rate = MGN_MCS1;
--				break;
--			case DESC90_RATEMCS2:
--				ret_rate = MGN_MCS2;
--				break;
--			case DESC90_RATEMCS3:
--				ret_rate = MGN_MCS3;
--				break;
--			case DESC90_RATEMCS4:
--				ret_rate = MGN_MCS4;
--				break;
--			case DESC90_RATEMCS5:
--				ret_rate = MGN_MCS5;
--				break;
--			case DESC90_RATEMCS6:
--				ret_rate = MGN_MCS6;
--				break;
--			case DESC90_RATEMCS7:
--				ret_rate = MGN_MCS7;
--				break;
--			case DESC90_RATEMCS8:
--				ret_rate = MGN_MCS8;
--				break;
--			case DESC90_RATEMCS9:
--				ret_rate = MGN_MCS9;
--				break;
--			case DESC90_RATEMCS10:
--				ret_rate = MGN_MCS10;
--				break;
--			case DESC90_RATEMCS11:
--				ret_rate = MGN_MCS11;
--				break;
--			case DESC90_RATEMCS12:
--				ret_rate = MGN_MCS12;
--				break;
--			case DESC90_RATEMCS13:
--				ret_rate = MGN_MCS13;
--				break;
--			case DESC90_RATEMCS14:
--				ret_rate = MGN_MCS14;
--				break;
--			case DESC90_RATEMCS15:
--				ret_rate = MGN_MCS15;
--				break;
--			case DESC90_RATEMCS32:
--				ret_rate = 0x80|0x20;
--				break;
-+		case DESC90_RATEMCS0:
-+			ret_rate = MGN_MCS0;
-+			break;
-+		case DESC90_RATEMCS1:
-+			ret_rate = MGN_MCS1;
-+			break;
-+		case DESC90_RATEMCS2:
-+			ret_rate = MGN_MCS2;
-+			break;
-+		case DESC90_RATEMCS3:
-+			ret_rate = MGN_MCS3;
-+			break;
-+		case DESC90_RATEMCS4:
-+			ret_rate = MGN_MCS4;
-+			break;
-+		case DESC90_RATEMCS5:
-+			ret_rate = MGN_MCS5;
-+			break;
-+		case DESC90_RATEMCS6:
-+			ret_rate = MGN_MCS6;
-+			break;
-+		case DESC90_RATEMCS7:
-+			ret_rate = MGN_MCS7;
-+			break;
-+		case DESC90_RATEMCS8:
-+			ret_rate = MGN_MCS8;
-+			break;
-+		case DESC90_RATEMCS9:
-+			ret_rate = MGN_MCS9;
-+			break;
-+		case DESC90_RATEMCS10:
-+			ret_rate = MGN_MCS10;
-+			break;
-+		case DESC90_RATEMCS11:
-+			ret_rate = MGN_MCS11;
-+			break;
-+		case DESC90_RATEMCS12:
-+			ret_rate = MGN_MCS12;
-+			break;
-+		case DESC90_RATEMCS13:
-+			ret_rate = MGN_MCS13;
-+			break;
-+		case DESC90_RATEMCS14:
-+			ret_rate = MGN_MCS14;
-+			break;
-+		case DESC90_RATEMCS15:
-+			ret_rate = MGN_MCS15;
-+			break;
-+		case DESC90_RATEMCS32:
-+			ret_rate = 0x80|0x20;
-+			break;
- 
--			default:
--				ret_rate = 0xff;
--				RT_TRACE(COMP_RECV, "HwRateToMRate90(): Non supported Rate [%x], bIsHT = %d!!!\n", rate, bIsHT);
--				break;
-+		default:
-+			ret_rate = 0xff;
-+			RT_TRACE(COMP_RECV, "HwRateToMRate90(): Non supported Rate [%x], bIsHT = %d!!!\n", rate, bIsHT);
-+			break;
- 		}
- 	}
- 
+diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
+index 7337716..b5ffbb2 100644
+--- a/drivers/staging/speakup/kobjects.c
++++ b/drivers/staging/speakup/kobjects.c
+@@ -392,7 +392,7 @@ static ssize_t synth_store(struct kobject *kobj, struct kobj_attribute *attr,
+ 		len--;
+ 	new_synth_name[len] = '\0';
+ 	spk_strlwr(new_synth_name);
+-	if ((synth != NULL) && (!strcmp(new_synth_name, synth->name))) {
++	if (synth && (!strcmp(new_synth_name, synth->name))) {
+ 		pr_warn("%s already in use\n", new_synth_name);
+ 	} else if (synth_init(new_synth_name) != 0) {
+ 		pr_warn("failed to init synth %s\n", new_synth_name);
 -- 
-1.9.1
+2.9.3
 
 
