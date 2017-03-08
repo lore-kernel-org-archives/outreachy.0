@@ -1,118 +1,160 @@
-X-GM-THRID: 6470864213191426048
-X-Received: by 10.28.236.83 with SMTP id k80mr251941wmh.29.1506615479454;
-        Thu, 28 Sep 2017 09:17:59 -0700 (PDT)
+X-GM-THRID: 6395186049294794752
+X-Received: by 10.129.69.37 with SMTP id s37mr3975195ywa.147.1489008670420;
+        Wed, 08 Mar 2017 13:31:10 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.223.155.208 with SMTP id e16ls1281060wrc.11.gmail; Thu, 28 Sep
- 2017 09:17:58 -0700 (PDT)
-X-Received: by 10.28.72.135 with SMTP id v129mr250456wma.14.1506615478257;
-        Thu, 28 Sep 2017 09:17:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506615478; cv=none;
-        d=google.com; s=arc-20160816;
-        b=vhVqRoXVZ2LY+Yj7tXDHWxZwrYCi1Lmsos/y/y6MeVcLy98m+fW/ugtcHiIHPC+520
-         tjI05E71fTiYAaw0fyAwAd2PS0SWTE+CoeC7/0pCBqqsHOrAGLNhv3GWhzUDN34yxKyi
-         BH3fMvHcC8cgpn0vwIB0D4+++6vX7bKYK5mfrPM2qW86ddY+OwP48MjkUaz6xTWjh+yY
-         I2DyYR2f4mS10S941vvj4NZkwe+k9M1RLZ2u+DfS9zTs18Gm8fOi8Zy/5Fjxwq0s1AuA
-         lmNh9bArYZMm05e3TcJTauvb/iCJwlKj6hh/Ub1zmUGha5ILjQEKxu/67ZdOJ4PEwwi0
-         fktQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=7Xlw7/U+UBV8fZtsBTJv3N6RpfB4/zQFdppVFy5Pqz4=;
-        b=wyvH/lEb+HAtOiORzMU96gAeE4BqQa+CaZMjde3o0zphbh2Si0MfyZpdrEql/PzW9p
-         kYsEpIfOD53F4eIa4UI90aas3jq1aUc/s0N2H4RAv/rUCGN29JOuycYtLx620plWOs9+
-         MWvCn0kwIXlByIXAY4GL7jgoYm67ehGS2KjCHfaQrgICrCeT6q1CL9T52AGlLxQnFwAw
-         vBB1MKaAUKwteuNochVYZ84JYjGJh9QjDCfyh6HSiD5HjclGVW5VZCa6EOeHIi2q0fis
-         L+Vbs3KyancgVRf/zsQtrRHWeWBHcZOebJCmFtv4WvQEeHFa8gaXWkh/lBTG/sC54v0K
-         xZRQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RbGS467q;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::236 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from mail-wm0-x236.google.com (mail-wm0-x236.google.com. [2a00:1450:400c:c09::236])
-        by gmr-mx.google.com with ESMTPS id h17si206017wmd.0.2017.09.28.09.17.58
+Received: by 10.157.5.7 with SMTP id 7ls1172610otw.5.gmail; Wed, 08 Mar 2017
+ 13:31:10 -0800 (PST)
+X-Received: by 10.157.47.7 with SMTP id h7mr3108867otb.98.1489008670058;
+        Wed, 08 Mar 2017 13:31:10 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id a3si855147pfb.2.2017.03.08.13.31.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 28 Sep 2017 09:17:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::236 as permitted sender) client-ip=2a00:1450:400c:c09::236;
+        Wed, 08 Mar 2017 13:31:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RbGS467q;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::236 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x236.google.com with SMTP id q132so3329109wmd.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 28 Sep 2017 09:17:58 -0700 (PDT)
+Received: by mail-pf0-x244.google.com with SMTP id j5so4982045pfb.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 08 Mar 2017 13:31:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=7Xlw7/U+UBV8fZtsBTJv3N6RpfB4/zQFdppVFy5Pqz4=;
-        b=RbGS467qpiXQxWpX7j7zkF+ZMSYj8zx4FKSH0qi5ODj+OdVaaPLEr9Ji4J3IoJ4hvQ
-         NfcD8TtvxmBpHxgKC16rvvs+daWTis8Gtyg/inVNXB0NQbznfD62VlbJMY4ZnQHPVc4C
-         WTuQY6zMMIL3jan71ri58dxtWDltM1f7C83Yvz2sG+FY6YmHFaAj/AVk4y8RKGVUxQe0
-         0hP4u8qp4h/rmVEa52mf2U2eS752lVRLMNF42ver+9lWZU041GJFj3dl9Y4D7h3SSbJ9
-         XsMdpVTo0GCtSaSGFm0qto7+2QsU/19elDFpEdpxJhRP+YmndqYLaDGn+zIjul2rqSCI
-         2pVg==
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=+Vx9nTds1szsfkg6k6ckIMQYHtI8DDog1sjm8k/D/Lc=;
+        b=dEFgme/O4fvUztlG6anopfLJ0jDzCJfCLkkTZnqkeq8gSSJptkcBH1zWoSW4Y2T/ps
+         JcbH1zj2rC6Dix9/E2g+xx1zafvWvQbJ7OySVaQO8eqlCJye6TdPFcBCOAtc9SJbN4F/
+         mJyvlph+kEZSXa1ga5+v7aeuJagt4F8rOErrYeBB3PZpimptw2QZ9lN/fWq5Z4LfiI5n
+         72NcEbySclKOQp8VT4Fiia4M9xjk+g9sd4TOtGq5uk4OxkDRNrpJmr66WwkJp0VbNewe
+         UGllpfO0RT/T4RZlknwGyWhGg/hHbXb2OOX+TW3NYVgoEx7q9bjBTowUCRqYSDecEW3Q
+         ZdAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=7Xlw7/U+UBV8fZtsBTJv3N6RpfB4/zQFdppVFy5Pqz4=;
-        b=n/d0g4OcUPIFEDALdKuMG5nbC/JqE+iFT9uRsQLQWEYZNv0Xl2Gn4ufl753KxtU6Y8
-         I4x/61s+YmfQymSMcvykG2FKprYwBlLRx/Lbvrs675UD8/wa2ck9SV0XDQBekmI4XYpS
-         xcsFHc0MBxaH6fLJqIym0WlqLdGa8n0/v+PJgNMVnh/Q13IVEGKQNgV0OIP3xQ3vwH3y
-         Ei1Erku6GoG4HOROlZlE6o5KQQ/7cj0FpOjt3RE4S9T+cNSVfM8TxWysVH/ZLvSnNKmO
-         CzcU2iy9NhmVfjyhUG2SL7kL3a1H2GnGR+p4PL/Tx53RwN505AcsReBffWM74MAkC8FD
-         uZIg==
-X-Gm-Message-State: AHPjjUiyNzKHVFwwLJFzMKAxBMNkGD0hKc8XKMhNKcfnYpfm/a+yb3tV
-	EGAEadFFpGjaOjyn7dTQFUs=
-X-Google-Smtp-Source: AOwi7QDyxNaWkFHNF49fYhakrwjnLYorSdFH6uZ6q/1PsZ2xqKcC4i5fl+AyiS+i9YKYzp0SWK2zUg==
-X-Received: by 10.28.35.142 with SMTP id j136mr1409272wmj.55.1506615477952;
-        Thu, 28 Sep 2017 09:17:57 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from domino-MS-16Y1 ([92.83.158.26])
-        by smtp.gmail.com with ESMTPSA id k52sm4118591wrf.62.2017.09.28.09.17.57
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=+Vx9nTds1szsfkg6k6ckIMQYHtI8DDog1sjm8k/D/Lc=;
+        b=B+C6IDROfKxC83eB/XDoyCvAjTyZwaXhPAXv5QhaooXkM83xHXBTpx/+8c806ZZkaa
+         7aCZLWdZg6pkL6OinGwpl/UruaiFR3XlM8+T7DMRq+UrR8hxAc+9RNGiFEJ5RvZ4l9yd
+         JqjmsDUqslzUvyHQ/REVRthsLX/HG6me1iTBqTZUc5CcDef7sKr6yi8hAk91RrGfBizX
+         03Lw87dbD7b+x/Du4pe4D1D94/+yy7+0NfgG3C4ooh8s5nxK3cOwvFIYUZc/78NxsFiw
+         p800mFQ8WdwOQoZsI7Tnt44ZqIs6kdrhwsG9vpc86JIbNe4Ly9pJOeesSd+yHXw8Zmt8
+         KZaQ==
+X-Gm-Message-State: AMke39kKiufs+HhEDXpQoATuxCqUeuDjGZgPEZxusuq2VImoB2TEzLQtKynAZHpmH4/2Lg==
+X-Received: by 10.98.192.217 with SMTP id g86mr9669000pfk.170.1489008669741;
+        Wed, 08 Mar 2017 13:31:09 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
+        by smtp.gmail.com with ESMTPSA id p129sm7909039pfp.118.2017.03.08.13.31.08
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 28 Sep 2017 09:17:57 -0700 (PDT)
-Date: Thu, 28 Sep 2017 19:17:56 +0300
-From: Mihaela Muraru <mihaela.muraru21@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Stefan Wahren <stefan.wahren@i2se.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v3] staging: vc04_services: Remove extern variable
-Message-ID: <20170928161756.GA3062@domino-MS-16Y1>
+        Wed, 08 Mar 2017 13:31:09 -0800 (PST)
+Date: Wed, 8 Mar 2017 13:31:08 -0800
+From: Alison Schofield <amsfield22@gmail.com>
+To: Tamara Diaconita <diaconitatamara@gmail.com>,
+	gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com,
+	Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: ks7010: eap_packet:
+ Rearrange the code
+Message-ID: <20170308213107.GB13352@d830.WORKGROUP>
+References: <20170308174753.5540-1-diaconita.tamara@gmail.com>
+ <20170308203952.GB3284@d830.WORKGROUP>
+ <alpine.DEB.2.20.1703082146480.2238@hadrien>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <alpine.DEB.2.20.1703082146480.2238@hadrien>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch removes extern variable vchiq_arm_log_level, because it is
-already declared in vchiq_arm.h
+On Wed, Mar 08, 2017 at 09:50:55PM +0100, Julia Lawall wrote:
+> 
+> 
+> On Wed, 8 Mar 2017, Alison Schofield wrote:
+> 
+> > On Wed, Mar 08, 2017 at 07:47:53PM +0200, Tamara Diaconita wrote:
+> > > Split lines to have less than 80 characters.
+> > >
+> > > Fix the checkpath.pl warning:
+> > > WARNING: line over 80 characters.
+> > >
+> > > Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
+> > > ---
+> > >  drivers/staging/ks7010/eap_packet.h | 9 ++++++---
+> >
+> > Tamara, This driver is no longer in staging.  I don't see it upstream
+> > either.  I guess there's another path out of staging, other than
+> > graduation upstream ;)
+> 
+> Some drivers in staging are on the way out, instead of on the way in.
+> 
+> Others get replaced by a more mature driver for the device.
+> 
+> However, I just pulled staging-testing and I still see the file.
+> 
+> julia
+> 
 
-Issue found by checkpatch.pl
+Hi Tamara, 
 
-Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
+Got, compiled it, checkpatched it. So, functionally- great!
+(sorry for the confusion)
 
----
-Change in v3
-	- rewrite the log message
----
- drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c | 2 --
- 1 file changed, 2 deletions(-)
+2 things to tweak:
 
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-index 0159ca4..29702ea 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-@@ -84,8 +84,6 @@ static char *g_free_fragments;
- static struct semaphore g_free_fragments_sema;
- static struct device *g_dev;
- 
--extern int vchiq_arm_log_level;
--
- static DEFINE_SEMAPHORE(g_free_fragments_mutex);
- 
- static irqreturn_t
--- 
-2.7.4
+1) In the Subject, "Rearrange the code" is a bit broad for this change.
+Let's be more specific and say something like: "format comments to fit in
+line"
+2) it's checkpatch, not checkpath
 
+thanks,
+alisons
+
+> > alisons
+> >
+> >
+> >
+> >
+> >
+> > >  1 file changed, 6 insertions(+), 3 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/ks7010/eap_packet.h b/drivers/staging/ks7010/eap_packet.h
+> > > index df7f760..7a3decf 100644
+> > > --- a/drivers/staging/ks7010/eap_packet.h
+> > > +++ b/drivers/staging/ks7010/eap_packet.h
+> > > @@ -58,12 +58,15 @@ struct ieee802_1x_eapol_key {
+> > >  	 * encrypt the Key field; 64-bit NTP timestamp MAY be used here
+> > >  	 */
+> > >  	unsigned char replay_counter[IEEE8021X_REPLAY_COUNTER_LEN];
+> > > -	unsigned char key_iv[IEEE8021X_KEY_IV_LEN];	/* cryptographically random number */
+> > > +	unsigned char key_iv[IEEE8021X_KEY_IV_LEN]; /* cryptographically random
+> > > +						     * number
+> > > +						     */
+> > >  	unsigned char key_index;	/*
+> > >  					 * key flag in the most significant bit:
+> > >  					 * 0 = broadcast (default key),
+> > > -					 * 1 = unicast (key mapping key); key index is in the
+> > > -					 * 7 least significant bits
+> > > +					 * 1 = unicast (key mapping key);
+> > > +					 * key index is in the 7 least
+> > > +					 * significant bits
+> > >  					 */
+> > >  	/*
+> > >  	 * HMAC-MD5 message integrity check computed with MS-MPPE-Send-Key as
+> > > --
+> > > 2.9.3
+> > >
+> > > --
+> > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170308174753.5540-1-diaconita.tamara%40gmail.com.
+> > > For more options, visit https://groups.google.com/d/optout.
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170308203952.GB3284%40d830.WORKGROUP.
+> > For more options, visit https://groups.google.com/d/optout.
+> >
 
