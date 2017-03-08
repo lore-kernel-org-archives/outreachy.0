@@ -1,124 +1,150 @@
-X-GM-THRID: 6615312602732953600
-X-Received: by 2002:a67:f312:: with SMTP id p18mr45651845vsf.22.1540247491866;
-        Mon, 22 Oct 2018 15:31:31 -0700 (PDT)
+X-GM-THRID: 6393222666299375616
+X-Received: by 10.129.153.65 with SMTP id q62mr1813151ywg.23.1488937501351;
+        Tue, 07 Mar 2017 17:45:01 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:d385:: with SMTP id b5ls325978vsj.2.gmail; Mon, 22 Oct
- 2018 15:31:31 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV63GXpFzQgV7zpU9JC5bFGcjiJMIGDcUhn/lq0muYpKVDS2+j61tH/peHma2/0VBbPeVMB7V
-X-Received: by 2002:a67:dd87:: with SMTP id i7mr860493vsk.37.1540247491202;
-        Mon, 22 Oct 2018 15:31:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540247491; cv=none;
-        d=google.com; s=arc-20160816;
-        b=L9UYvApph9+Mx2MU2DIyTfQt1FDniZlh/aFQjVnY7CjtKP1ZN85Zu8ROyJOC83IkPd
-         n/hlI5RYnmrlzCZnXhMcklBrvlc/Q7zOR1mmGd6RORF7gu/oVPQ3nVh+wos4oCXdJPxX
-         yoRa7cdbvPbdkdKKhlBWAeK7+DwvQpganECLST5PnYP7QtivuwuhYgcrVo7Ug2e94NTd
-         frrPupCfpBcbhk06qLPHgZgCEQAot0sl8U409/ldnQ5gTpLubUUf4Imt3/aQtksprDJe
-         hqCmYPn+5alxjIvvlpjKogDNKXLjASrQ2y2oy+2MMIWEd7F98wXDc93NhMZBoET9mOPk
-         rHrg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=IzquyG2hwJ2BGF+7yaRRqHjroYDcegrh0OUSz7w7QvU=;
-        b=zT9wj5dq+KoWPwrjGbRJyGIKJtHzh5EuqRy+M1DfKuxyKNlZnhG+BtQFOBlpMG5I6A
-         QIjiLYdPIML5tVFZ+r4VTrkHpkSqVU7v2A0/Adao+XMPI+zIU96Y5M6KGU9K9CTpLpI5
-         DKvuGHZcEKDqGrh9t/guJ6UHfOrhbFNoEtcfSqqiIFEblRWw+Y0sIVXvfCDTSXYshuNK
-         rMtrg9tPlQUXiFvf8a7KDOFjDovHasAmORwX6sFqQziFmCSKGT7+XkvfQgUNDQ+Kc7bY
-         IHNiSs4aGhEZ7B3BhWDUmhMHbKaS5dkCn+llcYlvIYQC9iM+ptklD4nfKZlBmU7lDM+a
-         CRjQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=F6CUhNFq;
-       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <shayenneluzmoura@gmail.com>
-Received: from mail-qt1-x841.google.com (mail-qt1-x841.google.com. [2607:f8b0:4864:20::841])
-        by gmr-mx.google.com with ESMTPS id c74si1520146vkd.5.2018.10.22.15.31.31
+Received: by 10.107.136.140 with SMTP id s12ls655176ioi.15.gmail; Tue, 07 Mar
+ 2017 17:45:00 -0800 (PST)
+X-Received: by 10.107.57.198 with SMTP id g189mr1414776ioa.24.1488937500613;
+        Tue, 07 Mar 2017 17:45:00 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id u12si345575pfd.3.2017.03.07.17.45.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Oct 2018 15:31:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) client-ip=2607:f8b0:4864:20::841;
+        Tue, 07 Mar 2017 17:45:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=F6CUhNFq;
-       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x841.google.com with SMTP id x24-v6so16777109qtx.11
-        for <outreachy-kernel@googlegroups.com>; Mon, 22 Oct 2018 15:31:31 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x244.google.com with SMTP id o126so1890691pfb.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 07 Mar 2017 17:45:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+        h=message-id:date:from:to:cc:subject:mime-version:content-disposition
          :user-agent;
-        bh=IzquyG2hwJ2BGF+7yaRRqHjroYDcegrh0OUSz7w7QvU=;
-        b=F6CUhNFqBm1dX5PtOJQ3IkG7FPlT2shBGdy0fCT3No6oCv0JSjYR2CpQ4zBGcF90l/
-         Y3WtOvT/UIabzUQtZ0hsk9XioyjK9dUmFhgIQ4TBbUqgzxvqshnbO++sqHkA9QyhfjUf
-         gWi3nZiyPRvtNRjwjuyOw6mdg7e7/PZiJfIpu/bzxBr/l5Vkrv2X01TaVPQ3mcOgAM1b
-         zIed4mShgCZgrekmLIgXPso9grnLjKH2uhZetb7RtFDZ3gJj82P8iDwZxwhy848lSI6F
-         yDXEGnIQCRrUpOF3sqtaTSmec/Rz1nhGW1Yz9yxZObMlKB827+QoJVmtwlDaO++v7UC7
-         rmqw==
+        bh=/ynFHFJu7JBYxOImSs/Qz4tElai8no1GGe/CQXsk5fc=;
+        b=T3qY1KS3prVsIylKHJ8e7/9QaI0GhEU9YUx3Kbz29+fO2Sob47aio3Z8v1DZj+5AoX
+         W4CcZhZ+1m6h7/Iv+GzKBHzqwWJgx5VaIfstYRXQ9lG97BrYmn2NJ3avXaTtOftoVE00
+         lr/V+rJF4rLRBs9IY1RDKX6Wz0lDPSgnJFCvUPThI1cVMkNZaI2i0Jwx88XaN9NtHlfV
+         k/M1hsRdYs+oadq3+30sFbh00RlDF4GHOIcCxOH1AcJPC6R/txp0CYn/jQj4+pPSc/Fk
+         sZ9KKrrhTeI6JdOxGJmxN75aQ+f+dG5OxNruu3OuSe8WwD6LmKMUpoWOnMbf9e8cyar/
+         LOjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+        h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
          :content-disposition:user-agent;
-        bh=IzquyG2hwJ2BGF+7yaRRqHjroYDcegrh0OUSz7w7QvU=;
-        b=pWmey17JXjLFG2RIkFq4LS3UkYTAwUrlyOVrlJduaxwxBqwGMPJp9Y9vvHiuIwLyJu
-         pQoBW/b48VahHZDqQcFsdo/kg1yWzFaQk/Xpmj9RsIwvTBMSZsa+/ZAV+Zssamu3j+DS
-         Vw8cZOPCh7AVM6pAzsCZOtTXFg62hxyDtdMw7XQP6lj1H79J69IEuIzHK9RtPOr8k5L+
-         Fb95AruCQ/qF4vz1so47FJwHVHFgeh/RXnjmnrCwCuxj8irL0vuFBtplddCfC8wraJUj
-         mME4xmo7DrMsBpKaTuopmtKaduivcp1DfF7Z1mKigBsb3Xgq11QeVCLhG+9S70YUCLZ/
-         Iv6w==
-X-Gm-Message-State: AGRZ1gIx/yw5UJev9c14lVqtcVYofWaqMAwOAevC1zvirwHi4jovIiXA
-	h5fHTapU8CVdHPvbz1tmtcY=
-X-Received: by 2002:a0c:d7d1:: with SMTP id g17mr12486170qvj.183.1540247490679;
-        Mon, 22 Oct 2018 15:31:30 -0700 (PDT)
-Return-Path: <shayenneluzmoura@gmail.com>
-Received: from smtp.gmail.com ([143.107.45.1])
-        by smtp.gmail.com with ESMTPSA id 35-v6sm26181662qtr.91.2018.10.22.15.31.28
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Oct 2018 15:31:30 -0700 (PDT)
-Date: Mon, 22 Oct 2018 19:31:26 -0300
-From: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Hans de Goede <hdegoede@redhat.com>,
-	Michael Thayer <michael.thayer@oracle.com>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: vboxvideo: Removed unnecessary parentheses
-Message-ID: <20181022223126.smnsopiu4cavq6zh@smtp.gmail.com>
+        bh=/ynFHFJu7JBYxOImSs/Qz4tElai8no1GGe/CQXsk5fc=;
+        b=jNVUVo0IvsmfW3c4e9lJY7XuUp0YjJQDPXKCpD7DipCoSlWCocy4mFBfOALYPZ9/Gm
+         S9Uuca1gK8Qh4DTC9xTljtQG1h4a926ZLvXXRCphDS4NgBzj822iUQtDBbx0hrTrjQYY
+         /f1NbajWw2wjjn44RaEDNncvEhwhr6nWwuSeLOj1zE9ii8ZJJLnig90W9RR3jWQIu3BI
+         bTIlFgw79uqLDd34T+1QhEwJZ2sWyyefiZXWCqQ/iFb6lCVFvhQP/7KlXm5HqaDGY0lR
+         53VyF1Tgycrv0/ONQE9NE1nZ4CSmj1NGmTW0Urueomm+unNFx8Y2Iz/qGa0ch6NmcX8/
+         H+AQ==
+X-Gm-Message-State: AMke39nFwcYYFtmmFo7T2NQPV+KlWnnBzugPEkqOvO9xkvkU43hiCjxmHp0dwfZHc6eZJg==
+X-Received: by 10.98.10.83 with SMTP id s80mr3903229pfi.27.1488937500094;
+        Tue, 07 Mar 2017 17:45:00 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from euri ([117.211.102.6])
+        by smtp.gmail.com with ESMTPSA id p66sm2049623pfb.88.2017.03.07.17.44.58
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 07 Mar 2017 17:44:59 -0800 (PST)
+Message-ID: <58bf621b.455b620a.e68a5.675f@mx.google.com>
+X-Google-Original-Message-ID: <20170308014455.GA4963@<rvarsha016@gmail.com>>
+Date: Wed, 8 Mar 2017 07:14:55 +0530
+From: Varsha Rao <rvarsha016@gmail.com>
+To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
+	Teddy Wang <teddy.wang@siliconmotion.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Subject: [RESEND PATCH v2] staging: sm750fb: Removed unnecessary parentheses.
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: NeoMutt/20171215
+User-Agent: Mutt/1.7.1 (2016-10-04)
 
-This patch fixes the checkpatch.pl check:
+Removed parentheses on the right hand side of assignment, as they are
+not required. The following coccinelle script was used to fix this
+issue:
 
-vbox_main.c:119: CHECK: Unnecessary parentheses around 'rects[i].x2 <
-crtc->x'
-vbox_main.c:119: CHECK: Unnecessary parentheses around 'rects[i].y2 <
-crtc->y'
+@@
+local idexpression id;
+expression e;
+@@
 
-Signed-off-by: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
+id =
+-(
+e
+-)
+
+Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
+Acked-by: Julia Lawall <julia.lawall@lip6.fr> 
 ---
- drivers/staging/vboxvideo/vbox_main.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+Changes in v2:
+- Maintain alignment of last line to as it was before changes.
+  (sm750_cursor.c) 
 
-diff --git a/drivers/staging/vboxvideo/vbox_main.c b/drivers/staging/vboxvideo/vbox_main.c
-index 429f6a453619..10a862674789 100644
---- a/drivers/staging/vboxvideo/vbox_main.c
-+++ b/drivers/staging/vboxvideo/vbox_main.c
-@@ -116,10 +116,10 @@ void vbox_framebuffer_dirty_rectangles(struct drm_framebuffer *fb,
- 			struct vbva_cmd_hdr cmd_hdr;
- 			unsigned int crtc_id = to_vbox_crtc(crtc)->crtc_id;
+ drivers/staging/sm750fb/ddk750_chip.c  | 2 +-
+ drivers/staging/sm750fb/ddk750_hwi2c.c | 2 +-
+ drivers/staging/sm750fb/sm750_accel.c  | 2 +-
+ drivers/staging/sm750fb/sm750_cursor.c | 4 ++--
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
+index 9e49298..5e4bfb6 100644
+--- a/drivers/staging/sm750fb/ddk750_chip.c
++++ b/drivers/staging/sm750fb/ddk750_chip.c
+@@ -352,7 +352,7 @@ unsigned int sm750_calc_pll_value(unsigned int request_orig, struct pll_value *p
+ 		RN = N * request;
+ 		quo = RN / input;
+ 		rem = RN % input;/* rem always small than 14318181 */
+-		fl_quo = (rem * 10000 / input);
++		fl_quo = rem * 10000 / input;
  
--			if ((rects[i].x1 > crtc->x + crtc->hwmode.hdisplay) ||
--			    (rects[i].y1 > crtc->y + crtc->hwmode.vdisplay) ||
--			    (rects[i].x2 < crtc->x) ||
--			    (rects[i].y2 < crtc->y))
-+			if (rects[i].x1 > crtc->x + crtc->hwmode.hdisplay ||
-+			    rects[i].y1 > crtc->y + crtc->hwmode.vdisplay ||
-+			    rects[i].x2 < crtc->x ||
-+			    rects[i].y2 < crtc->y)
- 				continue;
+ 		for (d = max_d; d >= 0; d--) {
+ 			X = BIT(d);
+diff --git a/drivers/staging/sm750fb/ddk750_hwi2c.c b/drivers/staging/sm750fb/ddk750_hwi2c.c
+index 68716ef..fe814e4 100644
+--- a/drivers/staging/sm750fb/ddk750_hwi2c.c
++++ b/drivers/staging/sm750fb/ddk750_hwi2c.c
+@@ -217,7 +217,7 @@ unsigned char sm750_hw_i2c_read_reg(
+ 	unsigned char reg
+ )
+ {
+-	unsigned char value = (0xFF);
++	unsigned char value = 0xFF;
  
- 			cmd_hdr.x = (s16)rects[i].x1;
+ 	if (hw_i2c_write_data(addr, 1, &reg) == 1)
+ 		hw_i2c_read_data(addr, 1, &value);
+diff --git a/drivers/staging/sm750fb/sm750_accel.c b/drivers/staging/sm750fb/sm750_accel.c
+index 9548863..6db9b90 100644
+--- a/drivers/staging/sm750fb/sm750_accel.c
++++ b/drivers/staging/sm750fb/sm750_accel.c
+@@ -212,7 +212,7 @@ unsigned int rop2)   /* ROP value */
+ 		sy += height - 1;
+ 		dx += width - 1;
+ 		dy += height - 1;
+-		opSign = (-1);
++		opSign = -1;
+ 	}
+ 
+ 	/*
+diff --git a/drivers/staging/sm750fb/sm750_cursor.c b/drivers/staging/sm750fb/sm750_cursor.c
+index aa232c3..401b916 100644
+--- a/drivers/staging/sm750fb/sm750_cursor.c
++++ b/drivers/staging/sm750fb/sm750_cursor.c
+@@ -70,8 +70,8 @@ void sm750_hw_cursor_setPos(struct lynx_cursor *cursor,
+ {
+ 	u32 reg;
+ 
+-	reg = (((y << HWC_LOCATION_Y_SHIFT) & HWC_LOCATION_Y_MASK) |
+-		(x & HWC_LOCATION_X_MASK));
++	reg = ((y << HWC_LOCATION_Y_SHIFT) & HWC_LOCATION_Y_MASK) |
++	       (x & HWC_LOCATION_X_MASK);
+ 	poke32(HWC_LOCATION, reg);
+ }
+ void sm750_hw_cursor_setColor(struct lynx_cursor *cursor,
 -- 
-2.19.1
+2.9.3
 
 
