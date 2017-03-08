@@ -1,108 +1,126 @@
-X-GM-THRID: 6390855341335117824
-X-Received: by 10.157.45.11 with SMTP id v11mr1337416ota.105.1487986962438;
-        Fri, 24 Feb 2017 17:42:42 -0800 (PST)
+X-GM-THRID: 6394514785010974720
+X-Received: by 10.129.106.70 with SMTP id f67mr1500583ywc.108.1488932806425;
+        Tue, 07 Mar 2017 16:26:46 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.34.117 with SMTP id o108ls5273577ota.18.gmail; Fri, 24 Feb
- 2017 17:42:42 -0800 (PST)
-X-Received: by 10.200.45.211 with SMTP id q19mr1772045qta.60.1487986962017;
-        Fri, 24 Feb 2017 17:42:42 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pg0-x235.google.com (mail-pg0-x235.google.com. [2607:f8b0:400e:c05::235])
-        by gmr-mx.google.com with ESMTPS id c123si1654466pfa.4.2017.02.24.17.42.41
+Received: by 10.157.52.248 with SMTP id t53ls2041685otd.42.gmail; Tue, 07 Mar
+ 2017 16:26:46 -0800 (PST)
+X-Received: by 10.157.3.103 with SMTP id 94mr1530839otv.100.1488932806125;
+        Tue, 07 Mar 2017 16:26:46 -0800 (PST)
+Return-Path: <tahia.khan@gmail.com>
+Received: from mail-io0-x244.google.com (mail-io0-x244.google.com. [2607:f8b0:4001:c06::244])
+        by gmr-mx.google.com with ESMTPS id a17si3206502itd.1.2017.03.07.16.26.46
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 24 Feb 2017 17:42:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::235 as permitted sender) client-ip=2607:f8b0:400e:c05::235;
+        Tue, 07 Mar 2017 16:26:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of tahia.khan@gmail.com designates 2607:f8b0:4001:c06::244 as permitted sender) client-ip=2607:f8b0:4001:c06::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::235 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       spf=pass (google.com: domain of tahia.khan@gmail.com designates 2607:f8b0:4001:c06::244 as permitted sender) smtp.mailfrom=tahia.khan@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x235.google.com with SMTP id b129so18194795pgc.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 24 Feb 2017 17:42:41 -0800 (PST)
+Received: by mail-io0-x244.google.com with SMTP id f103so2329757ioi.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 07 Mar 2017 16:26:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=wgbQFI29aE02tXzkObTvLbgFfehfjYJ8shISYhDbrYw=;
-        b=JkN5feJ8w1gAZcR0JzSrMw/3aubRP+3tmQAlV67Ht4cihYjYfeS2wUf5/hVp4Eh5ie
-         MN08c662v1/zIhstQPp/uFt1fnQF+2HwopxqewKj4hRf1tRixMgMz0ICRd6mZTFoPH2N
-         bzsSSQOzfHFni/+nQYDJaCUpxYh8plb/XFYf7zl6mJBRTB0fHAmyrArvMaYzZv80DwJ7
-         glekULzT/0e7u0p6J8Hs1z4S+CU51vuHruSxKIp3UUW1snAKMin1NnyRIi8Hailf4zly
-         Tv1ah3xD0SQAASoSt48X6y8ZZuB5NfIWWoxkzEueO2mWWIgOCAL52nVdDjOM52OOEger
-         XEzA==
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=lZ3VWfFFuGxBKnoucpIOYq8oC3/2NoKiWc9EzXIzn7g=;
+        b=GrbpDhRhrvz2rJNqtYvTMxrPIPb7kSDP+znSB059A7LhAjr0GAdcVJRCgehbm08Fov
+         ZQBInfgPqCphYBJqI+6E5XZTf5E/zA541LrOXBfAHnBjzTGhDNgR8AoGw9Hdi4B+T/vl
+         yyr71hfsn4NWQGt/vxATBmHPphcKxYfBZbqw1uMOaLjaebXW9SHH4BstjSnHb9j5IaT+
+         u5eeBylVge7uJQMT4a7yiD57Km2/XzxnXEctiSaZiTo6FUS9uI3l8oZUIFw92152l7jr
+         WWRdUOKlxsKCawdHU22mdYEOGtXg8O6R5S+QOZVXcJR/tNaNmvk5I/EG2oGSDfB9LQmm
+         AdWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=wgbQFI29aE02tXzkObTvLbgFfehfjYJ8shISYhDbrYw=;
-        b=X8NqoA2hS3aB0B5xjanWBFVZBW2iNm2/ykBkPapeY4gs3Sp34Ndt5BSqqNYS+UHoOm
-         xpv1P/seVq2YuH2L3/qVKnyUzSIbpSK1zPbR0KRB+iNM3EFsZyANF12mHxHYWuzvc2tW
-         FKJHr2eDQ/W2T7FncT6I4zMJPmuA3VLtACnvZ8hTIh+Ge32mAbIGJyqcE97hG6jzoZJ1
-         JxDfQ+zCdHwdS7l9CN7P51wuW/y+VpqRCtptZKcHjIWKflQ9rH+tmClGfrWcmYy5OgBk
-         BgExhXEqLBPiPsi6jyONlQALrOCZ+OBV4SLuxoVfH1aYoMX3k+ldnAxD2dTMnX7pWIXn
-         kGyQ==
-X-Gm-Message-State: AMke39kZs6s3HsZ7e5SlQq1bnzXRBDgVJdxb/Q5qhhOfVV1TKsJWLIVERSP15nfV8Nir/g==
-X-Received: by 10.99.94.195 with SMTP id s186mr7347121pgb.198.1487986961546;
-        Fri, 24 Feb 2017 17:42:41 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
-        by smtp.gmail.com with ESMTPSA id y21sm17227428pgh.52.2017.02.24.17.42.40
-        for <outreachy-kernel@googlegroups.com>
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=lZ3VWfFFuGxBKnoucpIOYq8oC3/2NoKiWc9EzXIzn7g=;
+        b=I0MkWqP8cOx9m8wPQqD5yvpIovrr51DGCaiuDuVnic/0KO23zN3IlGf4u08VSIT/sL
+         KmB/dHrSaZ74WiUV4Eu3NiBxKheT88SjVrTKvkG3U6reqI+YhBKnK4Pyqs1qxFWcOoaT
+         GXEhjbIUuxUxwf0UJb+tySNu+1ksDEV0I965Y9WRKdOhy7DVTHuNoVmk0hl4BXESBfuE
+         RLnA5ZLD4jKzX3grllXQFPX2UJcTFghJUoPxEC6Y5GNm7mFXmQ0tJgQ1BaOSzJrG31Um
+         hcE5+KYJ/kKe0fruyXTbW6/Yg7F+a5NtObon35F1wJ/dDM55uTowDXmF/zdwgxe/EqW5
+         Yn0Q==
+X-Gm-Message-State: AMke39mHHZstz05PEa41KUb9A+V4a9Q1Zc1pN30/bdcwAWBexdycEt0ct7RHgoU9eqhTmw==
+X-Received: by 10.107.143.215 with SMTP id r206mr3563555iod.121.1488932805903;
+        Tue, 07 Mar 2017 16:26:45 -0800 (PST)
+Return-Path: <tahia.khan@gmail.com>
+Received: from coolbox (24-212-136-169.cable.teksavvy.com. [24.212.136.169])
+        by smtp.gmail.com with ESMTPSA id 126sm823599ion.23.2017.03.07.16.26.45
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 24 Feb 2017 17:42:41 -0800 (PST)
-Date: Fri, 24 Feb 2017 17:42:40 -0800
-From: Alison Schofield <amsfield22@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: Clean-up idea: IIO Headers
-Message-ID: <20170225014231.GA3395@d830.WORKGROUP>
+        Tue, 07 Mar 2017 16:26:45 -0800 (PST)
+Date: Tue, 7 Mar 2017 19:26:44 -0500
+From: Tahia Khan <tahia.khan@gmail.com>
+To: outreachy-kernel@googlegroups.com, aditya.shankar@microchip.com,
+	ganesh.krishna@microchip.com, gregkh@linuxfoundation.org
+Subject: [PATCH v2 3/3] staging: wilc1000: Fixes camel-casing in
+ wilc_gnrl_info_received
+Message-ID: <aad48da76ccd6cbc4ed1d05e7636185bbf681b63.1488931933.git.tahia.khan@gmail.com>
+References: <cover.1488931933.git.tahia.khan@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <cover.1488931933.git.tahia.khan@gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Hi Outreachy Applicants,
+Fixes checkpatch warning by renaming pu8Buffer to buffer
+and u32Length to length in wilc_gnrl_info_received.
 
-Here is a clean-up task for staging/iio you might like to try.
+Signed-off-by: Tahia Khan <tahia.khan@gmail.com>
+---
+ drivers/staging/wilc1000/coreconfigurator.h |  3 +--
+ drivers/staging/wilc1000/host_interface.c   | 11 +++++------
+ 2 files changed, 6 insertions(+), 8 deletions(-)
 
-Staging IIO Header file (re-)organization:
-
-Guidelines to follow:
-
-(Reference  https://kernelnewbies.org/KernelHeaders)
-
-Three cases you may find:
-1) If it's a single source file, its header info should be in that source file.
-   *** Do this!
-
-2) Interfaces between source files in a single module can have a header file
-   in same dir as the source files.
-   *** Leave this alone.
-
-3) Interfaces shared between modules go in a header file in include/linux/iio
-   *** Leave this alone. We will do this when the driver is moving out of
-	staging 
-
-Here's an example patchset:
-https://groups.google.com/forum/#!searchin/outreachy-kernel/header$20file$20ad5933%7Csort:relevance/outreachy-kernel/THYpgGyOgsI/iz8lrqwfDAAJ
-
-Note that when you pull the header file in, there's a customary order to it
-that the drivers in staging may not be following.  In the example one above,
-I moved the #defines to be before the chip structure definitions.  So, you'll
-do best if you look at similar drivers in the same directory upstream, to
-see how they order their header information.  Always good to look at a few,
-because one may not be the perfect role model.  
-
-It is customary to alphabetize the #includes, and to separate the kernel
-and IIO subsystem #includes with a blank line.  So, although we wouldn't
-send in a patch just to alphabetize #includes, while you are moving them
-to the .c file, and while you are checking that they are actually needed,
-sure - go ahead and alphabetize them.  (Example patch didn't alphabetize,
-you'll do better ;)
+diff --git a/drivers/staging/wilc1000/coreconfigurator.h b/drivers/staging/wilc1000/coreconfigurator.h
+index 45dce5b..5256f40 100644
+--- a/drivers/staging/wilc1000/coreconfigurator.h
++++ b/drivers/staging/wilc1000/coreconfigurator.h
+@@ -126,6 +126,5 @@ s32 wilc_parse_assoc_resp_info(u8 *buffer, u32 buffer_len,
+ 			       struct connect_resp_info **ret_connect_resp_info);
+ void wilc_scan_complete_received(struct wilc *wilc, u8 *buffer, u32 length);
+ void wilc_network_info_received(struct wilc *wilc, u8 *buffer, u32 length);
+-void wilc_gnrl_async_info_received(struct wilc *wilc, u8 *pu8Buffer,
+-				   u32 u32Length);
++void wilc_gnrl_async_info_received(struct wilc *wilc, u8 *buffer, u32 length);
+ #endif
+diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
+index ca1990f..6aef2b5 100644
+--- a/drivers/staging/wilc1000/host_interface.c
++++ b/drivers/staging/wilc1000/host_interface.c
+@@ -3475,8 +3475,7 @@ void wilc_network_info_received(struct wilc *wilc, u8 *buffer, u32 length)
+ 		netdev_err(vif->ndev, "message parameters (%d)\n", result);
+ }
  
-To verify the patch(set), I'd suggest applying it to a clean tree and
-rebuilding.  
+-void wilc_gnrl_async_info_received(struct wilc *wilc, u8 *pu8Buffer,
+-				   u32 u32Length)
++void wilc_gnrl_async_info_received(struct wilc *wilc, u8 *buffer, u32 length)
+ {
+ 	s32 result = 0;
+ 	struct host_if_msg msg;
+@@ -3486,7 +3485,7 @@ void wilc_gnrl_async_info_received(struct wilc *wilc, u8 *pu8Buffer,
+ 
+ 	mutex_lock(&hif_deinit_lock);
+ 
+-	id = ((pu8Buffer[u32Length - 4]) | (pu8Buffer[u32Length - 3] << 8) | (pu8Buffer[u32Length - 2] << 16) | (pu8Buffer[u32Length - 1] << 24));
++	id = ((buffer[length - 4]) | (buffer[length - 3] << 8) | (buffer[length - 2] << 16) | (buffer[length - 1] << 24));
+ 	vif = wilc_get_vif_from_idx(wilc, id);
+ 	if (!vif) {
+ 		mutex_unlock(&hif_deinit_lock);
+@@ -3511,9 +3510,9 @@ void wilc_gnrl_async_info_received(struct wilc *wilc, u8 *pu8Buffer,
+ 	msg.id = HOST_IF_MSG_RCVD_GNRL_ASYNC_INFO;
+ 	msg.vif = vif;
+ 
+-	msg.body.async_info.len = u32Length;
+-	msg.body.async_info.buffer = kmalloc(u32Length, GFP_KERNEL);
+-	memcpy(msg.body.async_info.buffer, pu8Buffer, u32Length);
++	msg.body.async_info.len = length;
++	msg.body.async_info.buffer = kmalloc(length, GFP_KERNEL);
++	memcpy(msg.body.async_info.buffer, buffer, length);
+ 
+ 	result = wilc_enqueue_cmd(&msg);
+ 	if (result)
+-- 
+2.7.4
 
-Questions?  Just ask on this thread.
-
-alisons
 
