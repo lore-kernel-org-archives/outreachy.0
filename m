@@ -1,138 +1,198 @@
-X-GM-THRID: 6807027945867051008
-X-Received: by 2002:a25:5f06:: with SMTP id t6mr24930009ybb.517.1584884698945;
-        Sun, 22 Mar 2020 06:44:58 -0700 (PDT)
+X-GM-THRID: 6395188144195502080
+X-Received: by 10.99.234.5 with SMTP id c5mr3253446pgi.172.1488998891379;
+        Wed, 08 Mar 2017 10:48:11 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5b:5cd:: with SMTP id w13ls2875729ybp.10.gmail; Sun, 22 Mar
- 2020 06:44:57 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtPjQ9gt92Qjyp1zbWDs2RG99BeKP/xbvBNW00ZK4lm1VAlJmvLpil6YdU1Ras+JnvvWAkI
-X-Received: by 2002:a25:814a:: with SMTP id j10mr28348094ybm.262.1584884697621;
-        Sun, 22 Mar 2020 06:44:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584884697; cv=none;
-        d=google.com; s=arc-20160816;
-        b=gvQ0kyPgaSoL4a1QpV4VtJzPsQavE2fvof4zfT3MplNNxsrWakNOrXZ8iOPG9s6pI0
-         yOKWTtkUZ8gHKn+Yi5T4F6pDcNh10P9pmA0vVbtVCECalcI+oWzcm11snSTuHAO5Y8BP
-         kfR0Els7Jl66GHHdQL2iyTCa0HqavPkTYtZcAmAHQqyM+pdrEfTZshWzbwRYO3VfW2sc
-         rPncsOy+R4X75ulTnEee1PdM8U/OoHCMceghzYsE1LJ/xH7fxBCfMot9vBRGbXknntAu
-         6/tzO+CEXHk04OPvaf7THB2T0fTgqj1aPHQBndS8C2VoGKVuW/YFjkR7VdMhPlSey3rN
-         jV6A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=giD+NiPmEzW9LBEIfXHYcLbtzRU5t7RdrF3Bf+j0pj4=;
-        b=A0uYQ4Ksq5J9OpZhZ66ulsOrXCPBdoxB5eaBceiMcDzVRLmzMvTgHCTuLbb3+3QXd9
-         jMgWB85NjWS48caAXuIMWwxxRDDDw4C6583dzgR9fcQx0BfyyZKtbZ0vbAbrXsZsOzgd
-         cpEzzFIOEXlgARJK76a+oAco//NAwl3dN3iKzxVq8LWK/nSMLi9EPiC7K4Pznrr5qrrO
-         an8g5eiu0sy/Zefuoo9/M7IFf/j5pcp6ZBNtTaTsRnOa4akDwaBcAXERpEuP6Qu+FR29
-         2mpdG8H7dOX24EfsBt40jX7DmAZ4AlAAJkn8tgv9ilCcoffUNX0XYymy5qxVnENJIqEW
-         UAxg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ePzkzDrp;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <debsoumyajit100@gmail.com>
-Received: from mail-pg1-x543.google.com (mail-pg1-x543.google.com. [2607:f8b0:4864:20::543])
-        by gmr-mx.google.com with ESMTPS id 207si589166ybe.5.2020.03.22.06.44.57
+Received: by 10.157.12.97 with SMTP id 88ls4026457otr.34.gmail; Wed, 08 Mar
+ 2017 10:48:11 -0800 (PST)
+X-Received: by 10.200.35.170 with SMTP id q39mr1781562qtq.57.1488998890975;
+        Wed, 08 Mar 2017 10:48:10 -0800 (PST)
+Return-Path: <gs051095@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id g82si753148pfb.5.2017.03.08.10.48.10
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 22 Mar 2020 06:44:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) client-ip=2607:f8b0:4864:20::543;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 08 Mar 2017 10:48:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ePzkzDrp;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x543.google.com with SMTP id b1so5739023pgm.8
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Mar 2020 06:44:57 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x244.google.com with SMTP id b5so4208465pgg.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 08 Mar 2017 10:48:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=giD+NiPmEzW9LBEIfXHYcLbtzRU5t7RdrF3Bf+j0pj4=;
-        b=ePzkzDrpTQscG+5tB8IFHyIXu5PZdrxBjo4CMBNYU6/wGca2GxMuUHjaMLYT+b/yMA
-         0k5Bo5x+I7MOAtWzwMBv2oYuH7a/EUSt17wnwtkg4uXK0cF3kdzFIL3OKhkkmqmngU/V
-         9gqnpsqlyV+k+MGxqnnlOBnNAEcsgWABkybJaW49M9pIcPQPpmCli01gC9qUsarpZTjA
-         MRB6rH/bPru0GtfZlVGu79MYfe4B5Zit0D038fCsi6V6U4jftR6LAHXcxzocAKwNPfpj
-         bj8xOTzahsu5sm3voqIb6LIvJNgr0vYV/mvjkU3tBiGiE2SQKk737v3Ko/SQ5XmdyZ2O
-         YVLA==
+        h=from:to:cc:subject:date:message-id;
+        bh=eEny5rjSBaJnL5LE47rp8o+CaJyYz/+UEoet4aFHb2M=;
+        b=b+MsoDFjqSRElMe5bSqXQ/K0CpKbsNguExEjqyq8fHU98UolS2+oqH3rDjbbmk1Dxi
+         BgpQEjshy9+YMyUm5dcZ3wgq7skrl9dkXS5KlLMr9ip25v4aFAOqnd5MnFk/yzRbIYRE
+         ZT8zhGmdUJAx1cwnm2H1yRE4exuKMoi6XicVC4l9cCUn3GywBzvE9JlKgcK0ZAVRxCoi
+         x18515VP14FbMeiOCUwRiXQpxjUhO/FIrmW/vo6qZQ7DHVCEaD4oA4R/7jlLQGGuyK+n
+         g2zCHd3MWoaDoKdinV7r8U1NoaZn40kJXx7QuqNAM3l8wXrYkE0+NtajE4DvcaWPGsXf
+         b3bA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=giD+NiPmEzW9LBEIfXHYcLbtzRU5t7RdrF3Bf+j0pj4=;
-        b=roFQ+g7Gdcil4aE4U9WX+rDo93+jYCa9i4mbBRMfBY8pxH3roGkrOv4GTkU458lMv5
-         8m7O2Fs1WymWSoLfgALJ6dRG6FakswmDHg22mBT4MSIx+9cMvjA38DbJjxjKyWvB3R66
-         200XfyCqOzwIK5vpxYMnd5PovyLqzHWTWtt+7vByC18N+1RwKtgWPBp7HY66gREWvpbn
-         47/jyTMOFlLT6WG2vygOKBk4qHDE6nIgpPubnNT2PrL6qs60ziIELi7Ejkc5gWytQ+em
-         v4HtstZDQ2zwwcj9Zm7YMz4YQd/4yqy8JDjs+4hkzHlKTHwqwsdlIvkQe0ImLfPB3gCO
-         Mx0A==
-X-Gm-Message-State: ANhLgQ3BJffxl1v1g+/5NSPrDS6LtKEqN+AGrkblPqmz64Kz/+3sQiSt
-	Vfl+iA9eQ6lIJ8ZafFkzmR0=
-X-Received: by 2002:a62:3844:: with SMTP id f65mr20093266pfa.255.1584884696605;
-        Sun, 22 Mar 2020 06:44:56 -0700 (PDT)
-Return-Path: <debsoumyajit100@gmail.com>
-Received: from ubuntu ([47.29.177.68])
-        by smtp.gmail.com with ESMTPSA id v14sm10684030pff.30.2020.03.22.06.44.52
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 22 Mar 2020 06:44:56 -0700 (PDT)
-Date: Sun, 22 Mar 2020 19:14:47 +0530
-From: Soumyajit Deb <debsoumyajit100@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: perex@perex.cz, outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: hp100: Add space around + operator and remove space
- around pointers
-Message-ID: <20200322134439.GA30399@ubuntu>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=eEny5rjSBaJnL5LE47rp8o+CaJyYz/+UEoet4aFHb2M=;
+        b=dGJ4sf9mfVB0ET6u0qXqgIv5wTm93Qe4LD+IIvgCmzdSMkmH/TAKE9ersC364phChT
+         dU+25Id7aU6Xt1/kb0jSngIXeFeE5p9q7Kma5u5bAeoPa/cTVo9cxL21oDnm7NXeHTwu
+         GwSFPzLfD3axGx00tn+Bf7Dl+Plf7CPvDBjfxyMyWY9xEwXMBBPGbrEk/ZRdqagqZHyA
+         HkiVsGFF4J10Iot1Hgdouao50fMve1svFQajxvHK+KyuPjEn6SUAdZW+H9R3dxgUkUok
+         X/QOOAcUDLgGiRVQ3uoWPt0cb896/ihfcpJHF9DsFeFnW/I7YfUroaOIFPFOXMEbAsJY
+         CgJg==
+X-Gm-Message-State: AMke39nBb5/voj5GZLbAQMcQUD1qvKf5aFROylPPVhJAyF+LAt0X850E4in7HS8d9OIDmg==
+X-Received: by 10.84.216.15 with SMTP id m15mr11037332pli.22.1488998890669;
+        Wed, 08 Mar 2017 10:48:10 -0800 (PST)
+Return-Path: <gs051095@gmail.com>
+Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
+        by smtp.googlemail.com with ESMTPSA id z27sm7643440pfg.38.2017.03.08.10.48.08
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 08 Mar 2017 10:48:10 -0800 (PST)
+From: Gargi Sharma <gs051095@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org,
+	Gargi Sharma <gs051095@gmail.com>
+Subject: [PATCH v2] staging: rtl8192e: Remove useless type conversion
+Date: Thu,  9 Mar 2017 00:15:49 +0530
+Message-Id: <1488998749-30535-1-git-send-email-gs051095@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-Add space around + operator and remove space after * in pointer
-declaration to improve code readability
-Reported by checkpatch.pl
+Some type conversions like casting a pointer/non-pointer to a pointer of same type,
+casting to the original type using addressof(&) operator, etc. are not needed.
+Therefore, remove them. Done using coccinelle:
 
-Signed-off-by: Soumyajit Deb <debsoumyajit100@gmail.com>
+@@
+type t;
+t *p;
+t a;
+@@
+(
+- (t)(a)
++ a
+|
+- (t *)(p)
++ p
+|
+- (t *)(&a)
++ &a
+)
+
+Signed-off-by: Gargi Sharma <gs051095@gmail.com>
 ---
- drivers/staging/hp/hp100.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+Changes in v2:
+	- Remove useless parenthesis.
+	- Improve commit message.
+---
+ drivers/staging/rtl8192e/rtl8192e/r8192E_dev.c | 32 +++++++++++---------------
+ 1 file changed, 13 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/staging/hp/hp100.c b/drivers/staging/hp/hp100.c
-index b89c4dcf53f5..2cf1104cd2dd 100644
---- a/drivers/staging/hp/hp100.c
-+++ b/drivers/staging/hp/hp100.c
-@@ -119,7 +119,7 @@
- #define HP100_REGION_SIZE	0x20	/* for ioports */
- #define HP100_SIG_LEN		8	/* same as EISA_SIG_LEN */
+diff --git a/drivers/staging/rtl8192e/rtl8192e/r8192E_dev.c b/drivers/staging/rtl8192e/rtl8192e/r8192E_dev.c
+index 8d6bca6..c3c56e2 100644
+--- a/drivers/staging/rtl8192e/rtl8192e/r8192E_dev.c
++++ b/drivers/staging/rtl8192e/rtl8192e/r8192E_dev.c
+@@ -135,7 +135,7 @@ void rtl92e_set_reg(struct net_device *dev, u8 variable, u8 *val)
+ 	{
+ 		u32	RegRCR, Type;
  
--#define HP100_MAX_PACKET_SIZE	(1536+4)
-+#define HP100_MAX_PACKET_SIZE	(1536 + 4)
- #define HP100_MIN_PACKET_SIZE	60
+-		Type = ((u8 *)(val))[0];
++		Type = val[0];
+ 		RegRCR = rtl92e_readl(dev, RCR);
+ 		priv->ReceiveConfig = RegRCR;
  
- #ifndef HP100_DEFAULT_RX_RATIO
-@@ -246,11 +246,11 @@ static void hp100_BM_shutdown(struct net_device *dev);
- static void hp100_mmuinit(struct net_device *dev);
- static void hp100_init_pdls(struct net_device *dev);
- static int hp100_init_rxpdl(struct net_device *dev,
--			    register hp100_ring_t * ringptr,
--			    register u_int * pdlptr);
-+			    register hp100_ring_t *ringptr,
-+			    register u_int *pdlptr);
- static int hp100_init_txpdl(struct net_device *dev,
--			    register hp100_ring_t * ringptr,
--			    register u_int * pdlptr);
-+			    register hp100_ring_t *ringptr,
-+			    register u_int *pdlptr);
- static void hp100_rxfill(struct net_device *dev);
- static void hp100_hwinit(struct net_device *dev);
- static void hp100_clean_txring(struct net_device *dev);
-@@ -264,7 +264,7 @@ static void hp100_RegisterDump(struct net_device *dev);
-  * because it was properly DMA allocated via pci_alloc_consistent(),
-  * so we just need to "retrieve" the original mapping to bus/phys/dma
-  * address - Jean II */
--static inline dma_addr_t virt_to_whatever(struct net_device *dev, u32 * ptr)
-+static inline dma_addr_t virt_to_whatever(struct net_device *dev, u32 *ptr)
- {
- 	struct hp100_private *lp = netdev_priv(dev);
- 	return ((u_long) ptr) + lp->whatever_offset;
+@@ -161,7 +161,7 @@ void rtl92e_set_reg(struct net_device *dev, u8 variable, u8 *val)
+ 	{
+ 		u32 regTmp;
+ 
+-		priv->short_preamble = (bool)(*(u8 *)val);
++		priv->short_preamble = (bool)*val;
+ 		regTmp = priv->basic_rate;
+ 		if (priv->short_preamble)
+ 			regTmp |= BRSR_AckShortPmb;
+@@ -175,7 +175,7 @@ void rtl92e_set_reg(struct net_device *dev, u8 variable, u8 *val)
+ 
+ 	case HW_VAR_AC_PARAM:
+ 	{
+-		u8	pAcParam = *((u8 *)val);
++		u8	pAcParam = *val;
+ 		u32	eACI = pAcParam;
+ 		u8		u1bAIFS;
+ 		u32		u4bAcParam;
+@@ -221,7 +221,7 @@ void rtl92e_set_reg(struct net_device *dev, u8 variable, u8 *val)
+ 			break;
+ 		}
+ 		priv->rtllib->SetHwRegHandler(dev, HW_VAR_ACM_CTRL,
+-					      (u8 *)(&pAcParam));
++					      &pAcParam);
+ 		break;
+ 	}
+ 
+@@ -229,7 +229,7 @@ void rtl92e_set_reg(struct net_device *dev, u8 variable, u8 *val)
+ 	{
+ 		struct rtllib_qos_parameters *qos_parameters =
+ 			 &priv->rtllib->current_network.qos_data.parameters;
+-		u8 pAcParam = *((u8 *)val);
++		u8 pAcParam = *val;
+ 		u32 eACI = pAcParam;
+ 		union aci_aifsn *pAciAifsn = (union aci_aifsn *) &
+ 					      (qos_parameters->aifs[0]);
+@@ -293,7 +293,7 @@ void rtl92e_set_reg(struct net_device *dev, u8 variable, u8 *val)
+ 
+ 	case HW_VAR_RF_TIMING:
+ 	{
+-		u8 Rf_Timing = *((u8 *)val);
++		u8 Rf_Timing = *val;
+ 
+ 		rtl92e_writeb(dev, rFPGA0_RFTiming1, Rf_Timing);
+ 		break;
+@@ -372,7 +372,7 @@ static void _rtl92e_read_eeprom_info(struct net_device *dev)
+ 	if (!priv->AutoloadFailFlag) {
+ 		for (i = 0; i < 6; i += 2) {
+ 			usValue = rtl92e_eeprom_read(dev,
+-				 (u16)((EEPROM_NODE_ADDRESS_BYTE_0 + i) >> 1));
++				 (EEPROM_NODE_ADDRESS_BYTE_0 + i) >> 1);
+ 			*(u16 *)(&dev->dev_addr[i]) = usValue;
+ 		}
+ 	} else {
+@@ -436,8 +436,7 @@ static void _rtl92e_read_eeprom_info(struct net_device *dev)
+ 			for (i = 0; i < 14; i += 2) {
+ 				if (!priv->AutoloadFailFlag)
+ 					usValue = rtl92e_eeprom_read(dev,
+-						  (u16)((EEPROM_TxPwIndex_CCK +
+-						  i) >> 1));
++						  (EEPROM_TxPwIndex_CCK + i) >> 1);
+ 				else
+ 					usValue = EEPROM_Default_TxPower;
+ 				*((u16 *)(&priv->EEPROMTxPowerLevelCCK[i])) =
+@@ -452,8 +451,7 @@ static void _rtl92e_read_eeprom_info(struct net_device *dev)
+ 			for (i = 0; i < 14; i += 2) {
+ 				if (!priv->AutoloadFailFlag)
+ 					usValue = rtl92e_eeprom_read(dev,
+-						(u16)((EEPROM_TxPwIndex_OFDM_24G
+-						+ i) >> 1));
++						(EEPROM_TxPwIndex_OFDM_24G + i) >> 1);
+ 				else
+ 					usValue = EEPROM_Default_TxPower;
+ 				*((u16 *)(&priv->EEPROMTxPowerLevelOFDM24G[i]))
+@@ -1650,15 +1648,11 @@ static void _rtl92e_query_rxphystatus(
+ 			evm = rtl92e_evm_db_to_percent(rx_evmX);
+ 			if (bpacket_match_bssid) {
+ 				if (i == 0) {
+-					pstats->SignalQuality = (u8)(evm &
+-								 0xff);
+-					precord_stats->SignalQuality = (u8)(evm
+-									& 0xff);
++					pstats->SignalQuality = evm & 0xff;
++					precord_stats->SignalQuality = evm & 0xff;
+ 				}
+-				pstats->RxMIMOSignalQuality[i] = (u8)(evm &
+-								 0xff);
+-				precord_stats->RxMIMOSignalQuality[i] = (u8)(evm
+-									& 0xff);
++				pstats->RxMIMOSignalQuality[i] = evm & 0xff;
++				precord_stats->RxMIMOSignalQuality[i] = evm & 0xff;
+ 			}
+ 		}
+ 
 -- 
-2.17.1
+2.7.4
 
 
