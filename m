@@ -1,84 +1,100 @@
 X-GM-THRID: 6394528999032225792
-X-Received: by 10.157.7.193 with SMTP id 59mr8467333oto.148.1489178522299;
-        Fri, 10 Mar 2017 12:42:02 -0800 (PST)
+X-Received: by 10.107.134.1 with SMTP id i1mr2695475iod.10.1489001301200;
+        Wed, 08 Mar 2017 11:28:21 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.61.119 with SMTP id a110ls10380968otc.29.gmail; Fri, 10
- Mar 2017 12:42:01 -0800 (PST)
-X-Received: by 10.157.48.57 with SMTP id d54mr8957462otc.8.1489178521901;
-        Fri, 10 Mar 2017 12:42:01 -0800 (PST)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id y90si1940389pfa.6.2017.03.10.12.42.01
+Received: by 10.107.145.4 with SMTP id t4ls1226795iod.44.gmail; Wed, 08 Mar
+ 2017 11:28:20 -0800 (PST)
+X-Received: by 10.99.102.197 with SMTP id a188mr3776547pgc.170.1489001299989;
+        Wed, 08 Mar 2017 11:28:19 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pf0-x22e.google.com (mail-pf0-x22e.google.com. [2607:f8b0:400e:c00::22e])
+        by gmr-mx.google.com with ESMTPS id c123si781786pfa.4.2017.03.08.11.28.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 10 Mar 2017 12:42:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Wed, 08 Mar 2017 11:28:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::22e as permitted sender) client-ip=2607:f8b0:400e:c00::22e;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::22e as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id 25so11401350pgy.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 12:42:01 -0800 (PST)
+Received: by mail-pf0-x22e.google.com with SMTP id w189so18483058pfb.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 08 Mar 2017 11:28:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=pq4LH3Br3L2L7taPWOy0/8VcLg9Yrus0BqEpdkYuGJw=;
-        b=hKn6517w69OQY7TRSRNyCXYRewa1wLdvwnnV8fa/uTpiCUdw+GWTfGHx23etDx2sjl
-         o9GPdsLTnMKrh0lYscGzOIgW6au8xX4LX6MYAKiJugxZbfN4wyJbExNcl8IOT8ylQg2b
-         S9sFN73KUjLJCO3jgt9XQG3LdNELHw9OIU+698FPx7G3v/1yI4hfgP50JWsDBcSU+e1Q
-         dPHWugGePVqytrTrW+F1gnAMHaGzswzuvI34tCXgPtLBgJ0g3x0UzsM6T+PJHde72TqO
-         nIOc59AJLgTwVJrp4Cqp9chqmDnPLyvyi1T2jVwbP7wHwkIAt0jpzZ3cJzFHTE7ymFpm
-         rHLQ==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=mVBwfwsiTbdW8YKdYKGVOQHgAAdSWa+fLUY/ImO/ZCU=;
+        b=OsYJ+FJrKj8JZewQ9LP2pzAsSnF+OU2wn+NoHNOw3AvB+cWsPaBd4Fj0IShc1eourK
+         h49pr6yMoyKtdCx00KOi+GJW1z5A9ISpBoKbQz/gxBQ+/q0Ghkh8aG19Qgfp2sshR33m
+         /h6KO7b4Mw0ApgqGsXrfHxuL79vX+IpBOczemFGK1vOtJq8XGmCggI72VABOT8knKAAY
+         r7416DADmRD/qYbmoPcpb3Tu7kw7SDlBbOoRF7EePypuwn9dflnPJ5sa/8ss8tigcfxl
+         kTjjC0wFUmMDZUlfnykR5jEdTGIt+JrAfjlhy9mHbl4C6T9x0cOOMGWa6TdwRIuapjxR
+         xJKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=pq4LH3Br3L2L7taPWOy0/8VcLg9Yrus0BqEpdkYuGJw=;
-        b=GzgWAyUGyozFwrosO2FMDhnkQ+GvyHz3ws8PQA1ouEWGXM3WMk960UrtudApksX+Xb
-         6PF7bzN1+yO0SIlw/XrK7Ae/034TULzWr/p5d6c7jydy3nP0/6T2aFi/scfVVzLYwscj
-         sNX1JYcRcNuP4q3nzE+5BSI24nDpfC7wW8d7S+5wYomsPpsl5Spgx/xSYG3oJ6lg2Shr
-         hjk9lmChTg2eIO9RRO+mefp58e5UdNCgsM+UaoBvRdv4itR5Gs/xSNt8tKJCB8Fnz7O8
-         4V6bG6qXuvnD6uqd9jDeyFYRii1/rO8eWAAfJj61cghdVpO3MBpEYmaWC6ifa0CqrF6u
-         +bMw==
-X-Gm-Message-State: AMke39kQ0X8HiRLt9T7DHrlFHjZ+GQ6WMWVKMET0UMi0yVVi8t1B4Yu+1+1RZLm6tbEd2g==
-X-Received: by 10.99.157.2 with SMTP id i2mr22434924pgd.139.1489178521702;
-        Fri, 10 Mar 2017 12:42:01 -0800 (PST)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id w29sm20192980pfi.131.2017.03.10.12.41.59
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=mVBwfwsiTbdW8YKdYKGVOQHgAAdSWa+fLUY/ImO/ZCU=;
+        b=mp3RM7jGplQ7SikZOrt3jcnA0zz9xY+4eV/vMhCf93E0sy2funWTuouY/1qBd6WisM
+         IbTzxUEPwbbvwJNMCpf98B2gDKbvv5zrMTlaDuxTgp7alN3bQFAxaR85mkWu4zHweXov
+         FTJi9rPDzwpvaPFLPcvbSTQ+6/YEi9g5hl8Kr+vq3Of2aKiU20V1azH0Lo6Wth6kE/h5
+         4+HowhW7e6zaYzZJWSnYmGj2qaeC5o1JTPclMFpdo2gpRjjCWUmxUEshMN6eTqXYlZcE
+         Vdx2wKXNRkZwH2mVHTqgI+6CSxW5tyVbRGgiycnQRptrqag4/qv4VBV+xuv7R97ttGN+
+         KDYA==
+X-Gm-Message-State: AMke39m9VWXvwVATcZiW9EdImZY80q7cG7fNvSXzEo/KSsOGAbd8fNFbWlseWFJceWWhGw==
+X-Received: by 10.84.210.167 with SMTP id a36mr11266910pli.40.1489001299803;
+        Wed, 08 Mar 2017 11:28:19 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
+        by smtp.gmail.com with ESMTPSA id m20sm7714246pgd.67.2017.03.08.11.28.19
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 10 Mar 2017 12:42:00 -0800 (PST)
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: w.d.hubbs@gmail.com
-Cc: chris@the-brannons.com,
-	outreachy-kernel@googlegroups.com,
-	kirk@reisers.ca,
-	samuel.thibault@ens-lyon.org,
-	gregkh@linuxfoundation.org,
-	speakup@linux-speakup.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	Arushi Singhal <arushisinghal19971997@gmail.com>
-Subject: [PATCH 0/2] Improve code readability 
-Date: Sat, 11 Mar 2017 02:11:53 +0530
-Message-Id: <20170310204155.6367-1-arushisinghal19971997@gmail.com>
-X-Mailer: git-send-email 2.11.0
+        Wed, 08 Mar 2017 11:28:19 -0800 (PST)
+Date: Wed, 8 Mar 2017 11:28:18 -0800
+From: Alison Schofield <amsfield22@gmail.com>
+To: Tamara Diaconita <diaconitatamara@gmail.com>
+Cc: aditya.shankar@microchip.com, ganesh.krishna@microchip.com,
+	gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com,
+	Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 0/3] Improve code readability
+Message-ID: <20170308192817.GA2787@d830.WORKGROUP>
+References: <20170308170554.3848-1-diaconita.tamara@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170308170554.3848-1-diaconita.tamara@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Improve readability by fixing multiple checkpatch.pl
-issues.
+On Wed, Mar 08, 2017 at 07:05:54PM +0200, Tamara Diaconita wrote:
+> Fix multiple checkpath.pl issues to improve code readability in wilc1000 driver.
 
-Arushi Singhal (2):
-  staging: speakup: Avoid multiple assignments on same line
-  staging: speakup: fixes braces {} should be used on all arms of this
-    statement
+Hi Tamara,
 
- drivers/staging/speakup/main.c           |  6 ++++--
- drivers/staging/speakup/speakup_decext.c |  6 +++---
- drivers/staging/speakup/speakup_decpc.c  |  6 +++---
- drivers/staging/speakup/speakup_dectlk.c |  6 +++---
- drivers/staging/speakup/varhandlers.c    | 12 +++++++-----
- 5 files changed, 20 insertions(+), 16 deletions(-)
+We'd like to include the driver info in the cover letter subject line.
 
--- 
-2.11.0
+This:		[PATCH 0/3] Improve code readability
+Becomes this:	[PATCH 0/3] staging: wilc1000: Improve code readability
 
+checkpath.pl -> checkpatch.pl
+
+alisons
+
+
+> 
+> Tamara Diaconita (3):
+>   staging: wilc1000: wilc_spi: Rearrange the code
+>   staging: wilc1000: wilc_spi: Correct variable name
+>   staging: wilc1000: wilc_spi: Add blank line
+> 
+>  drivers/staging/wilc1000/wilc_spi.c | 71 +++++++++++++++++++++++--------------
+>  1 file changed, 44 insertions(+), 27 deletions(-)
+> 
+> -- 
+> 2.9.3
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170308170554.3848-1-diaconita.tamara%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
 
