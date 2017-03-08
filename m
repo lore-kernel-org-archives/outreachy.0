@@ -1,61 +1,61 @@
 X-GM-THRID: 6394401254530875392
-X-Received: by 10.129.174.1 with SMTP id m1mr2852751ywh.64.1488984586286;
-        Wed, 08 Mar 2017 06:49:46 -0800 (PST)
+X-Received: by 10.157.82.157 with SMTP id f29mr2787908oth.114.1488984576703;
+        Wed, 08 Mar 2017 06:49:36 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.11.3 with SMTP id a3ls3194876ota.23.gmail; Wed, 08 Mar
- 2017 06:49:45 -0800 (PST)
-X-Received: by 10.13.238.134 with SMTP id x128mr2985073ywe.59.1488984585901;
-        Wed, 08 Mar 2017 06:49:45 -0800 (PST)
+Received: by 10.36.46.136 with SMTP id i130ls1029807ita.19.gmail; Wed, 08 Mar
+ 2017 06:49:35 -0800 (PST)
+X-Received: by 10.107.27.9 with SMTP id b9mr2288484iob.44.1488984575934;
+        Wed, 08 Mar 2017 06:49:35 -0800 (PST)
 Return-Path: <aishpant@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id u12si620315pfd.3.2017.03.08.06.49.45
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id r66si610400pfb.7.2017.03.08.06.49.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 08 Mar 2017 06:49:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Wed, 08 Mar 2017 06:49:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
+       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id 77so3637042pgc.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 08 Mar 2017 06:49:45 -0800 (PST)
+Received: by mail-pf0-x242.google.com with SMTP id 67so4000275pfg.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 08 Mar 2017 06:49:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=lNpTCm0NGryICOP1Il607Mn7+xq581jxn6wStgdJIOs=;
-        b=b+n/8aMqWN8csi36dD+UOypzX460USKoTNfujxPYq67mGO2p+ce0qMIE4loHpKOgy4
-         MZQy1DHclnQMR0sudRR4CQ+We0qt4UtKmsdsc6GCS+Q8bMFoQvV7wKxjXObL+/dvYxpW
-         C6Q+4B/26NprvHADrBn0mXI34JAGOYFJx23+yxUjvtVZk+ogq9JPTmpXA1fQRH9T6h9Z
-         UURY1HV1gyf+YUyJqYMhHPY8Rjgarj6yN/zw2IH+liYGCjRBXetCgAnzzNb2cW5ET8cn
-         XX9GYPHO+OoL6Dw9dmfGFQJHsfMjH73kwe61hoes+DO7VJr7idpGsrRBx6Ql1/zrJzLI
-         9hnw==
+        bh=1rW5Odn5svwmDohUj8tj3q0IK1nTypK56rWcTbt57jg=;
+        b=k0gaOR9ASeify3Hbg+ZbO1XHhWD2hgfLOAp1jxJr5bn3dkNsZDSk7pRdS/8b1z9JVI
+         Z1sb9CYZS3RSim518I/+oWInP+t4rMaDOV88KroSAlxQaac+hpM1rAoBeILmz3H1G4XR
+         ITwQkhCkjS1ptZeLalFuPZMboSnBMFRbOjR1JxEWVqrd6aOMy4lY9b7vWy/YtajWZZp0
+         VtrF+NZg9uDjRGHUurVd/rfUspKE/JHPvxQLituqWNFtdV865oI2VbzIJPJ+NytYSS4b
+         KRlnsXqlOac9ZnJ6caJOZE4bZMlixgr3CG6a5fumMOJ7NDVBZlk77mzYwj6loKKSdYw0
+         ZmPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=lNpTCm0NGryICOP1Il607Mn7+xq581jxn6wStgdJIOs=;
-        b=YonR8Lz3rpR52CssP2/uCCyGwjqUVL2E/dnfSC03CKKE9iZQE68MotiKXwG0Qjehj8
-         tqd49wGVplBS4pCOm3hm9tVvMycEV+lpwD6i6KSVtURq3UE4HPz77UpyI4yPhh8D5sHb
-         dEE4mhh1boyShRckuXjLbDaOat63OPCQhEvJ4Ztwx+KY/do5plPWQJUzqx8Gss8yGJKI
-         zR6OxBRLAp049sr8LIXCStFsXtvu1EGgjLkIdM5A2PmlE4xB07sqJiOD5jVtp4ziA/eL
-         vj3bY2PIuuuloWY+1tSwTf10yE111I8O8y0B8tz1jn2g45NYtdbr3dTP8/0Iqateu3u8
-         1D3w==
-X-Gm-Message-State: AMke39mdWkjNVuZrivTZ0vS3CHi/GcF1CXmYUtYNm3OMG1WNngPgKlc0s2raOeQqTfMkDQ==
-X-Received: by 10.98.51.70 with SMTP id z67mr7488317pfz.68.1488984585525;
-        Wed, 08 Mar 2017 06:49:45 -0800 (PST)
+        bh=1rW5Odn5svwmDohUj8tj3q0IK1nTypK56rWcTbt57jg=;
+        b=bLrwNicDqj+dNXmZ87m+/p2YwxHCaAKiHf0tO6tpmWHDfUEwE9i71Vq7EwEmnkdQRV
+         4s4hAPHEdpanUrrNltLKTq1ZV+3FAjY6FfkKkuT325viMv0VQM3tSCWGi4FB3/aD/l/a
+         aqYiz58f+lRBeHyMJSySumjH3ZKdyBfjFlLvGGi0UeHOdgGPjfz7VdDahXEIVNaogFWq
+         K5BU2mtynNttO2do6B4XgKin2HW5swssi/I6MVMQvucx6mGwF6csLnbDOJchbfaUYr/5
+         7Cl6cslutS0ezJN8ElcHGy3af4JL5L9Po+4E0DKnN8L75yV1ErY/KXCOHucn1My+emjA
+         hUkQ==
+X-Gm-Message-State: AMke39lN0H43UKTnv0EFQ0YPTp1vuvrOz/SAiOyLkbPygevV0GCH3UmbhwtwPgmjdslVdQ==
+X-Received: by 10.98.37.132 with SMTP id l126mr7542816pfl.45.1488984575387;
+        Wed, 08 Mar 2017 06:49:35 -0800 (PST)
 Return-Path: <aishpant@gmail.com>
 Received: from aishwarya ([121.244.155.14])
-        by smtp.gmail.com with ESMTPSA id e13sm6850764pgn.38.2017.03.08.06.49.44
+        by smtp.gmail.com with ESMTPSA id m6sm6841005pfm.22.2017.03.08.06.49.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 08 Mar 2017 06:49:45 -0800 (PST)
-Date: Wed, 8 Mar 2017 20:19:42 +0530
+        Wed, 08 Mar 2017 06:49:34 -0800 (PST)
+Date: Wed, 8 Mar 2017 20:19:31 +0530
 From: Aishwarya Pant <aishpant@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v4 5/8] staging: bcm2835-audio: deallocate work when
- queue_work(...) fails
-Message-ID: <5e78aa18edd1478a9b4c05ac21444be8a5577281.1488984315.git.aishpant@gmail.com>
+Subject: [PATCH v4 4/8] staging: bcm2835-audio: use conditional only for
+ error case
+Message-ID: <678d819ece441115fe4b2733f5224c9b7c526952.1488984315.git.aishpant@gmail.com>
 References: <cover.1488984315.git.aishpant@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -63,42 +63,139 @@ Content-Disposition: inline
 In-Reply-To: <cover.1488984315.git.aishpant@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-This patch de-allocates work when queue_work(..) fails in the
-bcm2835-audio work functions
+* Refactor conditional to check if memory allocation has failed and
+immediately return (-ENOMEM); if block for success case is removed.
+
+* Return the error value -EBUSY when queue_work() fails.
 
 Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
+
 ---
- drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c | 3 +++
- 1 file changed, 3 insertions(+)
+Changes in v4:
+	- Break up the patch into smaller changes
+Changes in v3:
+	- Deallocate work when queue_work fails
+	- Add __func__ to debug logs
+Changes in v2:
+	- Return error value -EBUSY when queue_work fails
+
+ .../vc04_services/bcm2835-audio/bcm2835-vchiq.c    | 67 +++++++++++-----------
+ 1 file changed, 32 insertions(+), 35 deletions(-)
 
 diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
-index 9545d35..026582e 100644
+index c5f3be8..9545d35 100644
 --- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
 +++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
-@@ -145,6 +145,7 @@ int bcm2835_audio_start(struct bcm2835_alsa_stream *alsa_stream)
- 		work->alsa_stream = alsa_stream;
- 		work->cmd = BCM2835_AUDIO_START;
- 		if (!queue_work(alsa_stream->my_wq, &work->my_work)) {
-+			kfree(work);
- 			return -EBUSY;
+@@ -131,77 +131,74 @@ static void my_wq_function(struct work_struct *work)
+ 
+ int bcm2835_audio_start(struct bcm2835_alsa_stream *alsa_stream)
+ {
+-	int ret = -1;
+-
+ 	LOG_DBG(" .. IN\n");
+ 	if (alsa_stream->my_wq) {
+ 		struct bcm2835_audio_work *work;
+ 
+ 		work = kmalloc(sizeof(*work), GFP_ATOMIC);
+ 		/*--- Queue some work (item 1) ---*/
+-		if (work) {
+-			INIT_WORK(&work->my_work, my_wq_function);
+-			work->alsa_stream = alsa_stream;
+-			work->cmd = BCM2835_AUDIO_START;
+-			if (queue_work(alsa_stream->my_wq, &work->my_work))
+-				ret = 0;
+-		} else {
++		if (!work) {
+ 			LOG_ERR(" .. Error: NULL work kmalloc\n");
++			return -ENOMEM;
++		}
++		INIT_WORK(&work->my_work, my_wq_function);
++		work->alsa_stream = alsa_stream;
++		work->cmd = BCM2835_AUDIO_START;
++		if (!queue_work(alsa_stream->my_wq, &work->my_work)) {
++			return -EBUSY;
  		}
  	}
-@@ -168,6 +169,7 @@ int bcm2835_audio_stop(struct bcm2835_alsa_stream *alsa_stream)
- 		work->alsa_stream = alsa_stream;
- 		work->cmd = BCM2835_AUDIO_STOP;
- 		if (!queue_work(alsa_stream->my_wq, &work->my_work)) {
-+			kfree(work);
- 			return -EBUSY;
+-	LOG_DBG(" .. OUT %d\n", ret);
+-	return ret;
++	LOG_DBG(" .. OUT\n");
++	return 0;
+ }
+ 
+ int bcm2835_audio_stop(struct bcm2835_alsa_stream *alsa_stream)
+ {
+-	int ret = -1;
+-
+ 	LOG_DBG(" .. IN\n");
+ 	if (alsa_stream->my_wq) {
+ 		struct bcm2835_audio_work *work;
+ 
+ 		work = kmalloc(sizeof(*work), GFP_ATOMIC);
+ 		/*--- Queue some work (item 1) ---*/
+-		if (work) {
+-			INIT_WORK(&work->my_work, my_wq_function);
+-			work->alsa_stream = alsa_stream;
+-			work->cmd = BCM2835_AUDIO_STOP;
+-			if (queue_work(alsa_stream->my_wq, &work->my_work))
+-				ret = 0;
+-		} else {
++		if (!work) {
+ 			LOG_ERR(" .. Error: NULL work kmalloc\n");
++			return -ENOMEM;
++		}
++		INIT_WORK(&work->my_work, my_wq_function);
++		work->alsa_stream = alsa_stream;
++		work->cmd = BCM2835_AUDIO_STOP;
++		if (!queue_work(alsa_stream->my_wq, &work->my_work)) {
++			return -EBUSY;
  		}
  	}
-@@ -194,6 +196,7 @@ int bcm2835_audio_write(struct bcm2835_alsa_stream *alsa_stream,
- 		work->src = src;
- 		work->count = count;
- 		if (!queue_work(alsa_stream->my_wq, &work->my_work)) {
-+			kfree(work);
- 			return -EBUSY;
+-	LOG_DBG(" .. OUT %d\n", ret);
+-	return ret;
++	LOG_DBG(" .. OUT\n");
++	return 0;
+ }
+ 
+ int bcm2835_audio_write(struct bcm2835_alsa_stream *alsa_stream,
+ 			unsigned int count, void *src)
+ {
+-	int ret = -1;
+-
+ 	LOG_DBG(" .. IN\n");
+ 	if (alsa_stream->my_wq) {
+ 		struct bcm2835_audio_work *work;
+ 
+ 		work = kmalloc(sizeof(*work), GFP_ATOMIC);
+ 		/*--- Queue some work (item 1) ---*/
+-		if (work) {
+-			INIT_WORK(&work->my_work, my_wq_function);
+-			work->alsa_stream = alsa_stream;
+-			work->cmd = BCM2835_AUDIO_WRITE;
+-			work->src = src;
+-			work->count = count;
+-			if (queue_work(alsa_stream->my_wq, &work->my_work))
+-				ret = 0;
+-		} else {
++		if (!work) {
+ 			LOG_ERR(" .. Error: NULL work kmalloc\n");
++			return -ENOMEM;
++		}
++		INIT_WORK(&work->my_work, my_wq_function);
++		work->alsa_stream = alsa_stream;
++		work->cmd = BCM2835_AUDIO_WRITE;
++		work->src = src;
++		work->count = count;
++		if (!queue_work(alsa_stream->my_wq, &work->my_work)) {
++			return -EBUSY;
  		}
  	}
+-	LOG_DBG(" .. OUT %d\n", ret);
+-	return ret;
++	LOG_DBG(" .. OUT\n");
++	return 0;
+ }
+ 
+ static void my_workqueue_init(struct bcm2835_alsa_stream *alsa_stream)
 -- 
 2.7.4
 
