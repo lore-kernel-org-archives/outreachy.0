@@ -1,117 +1,105 @@
-X-GM-THRID: 6469984660854145024
-X-Received: by 10.28.24.207 with SMTP id 198mr262001wmy.12.1506410693888;
-        Tue, 26 Sep 2017 00:24:53 -0700 (PDT)
+X-GM-THRID: 6389629700764860416
+X-Received: by 10.157.80.33 with SMTP id a33mr2454910oth.89.1488977872511;
+        Wed, 08 Mar 2017 04:57:52 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.85.202 with SMTP id g71ls1504028lje.14.gmail; Tue, 26 Sep
- 2017 00:24:52 -0700 (PDT)
-X-Received: by 10.46.86.157 with SMTP id k29mr717018lje.39.1506410692520;
-        Tue, 26 Sep 2017 00:24:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506410692; cv=none;
-        d=google.com; s=arc-20160816;
-        b=dkkt72wC56GhJI2/dI7bnP4xEItIw91wHNraII8ecvQVECYjX8x64Bh8rZ/+D3h7kT
-         U+gbpXn39AD+SHfSjZqow51TulKekjKfmd4iNjM6O3JG0osEH+8UM9yUXO9uVX/+dVWQ
-         YcnNYxCN69ABYKQHuO7jpUsisnEMzHbzGGvPlZF5XRYFEUHFzgGbAgG6gvXRWNa/KUP/
-         9tHS0LakM/E5/I41O5MnOIh6IAnagpxOG8NLuo0OGnFejSxzT92eyn4R9XhncVO9a5Co
-         /iOjVtxhrUu9XYXNpNoJM+bxB2J6Oz0eTMUmR6WowFI6I0/GK+Y+7eKASvR+0yu+Lkw8
-         OiTA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=epycRWLSDk2hywn2oBStjgQfrx4APTuxD6weHlXl27k=;
-        b=SCLFZXFPmEMMD71htp1rRY6hd48HW9gZgK/frgBSbPLitNE2NvHyVBT59o3/Qa7nIe
-         L+DTpZbPFpR/hLlX3LsDtm7Evd4VJr8+vXlnJwtZalBWNjVop+KphfvOgEfqg545EJCv
-         56wTwta8aoAZcslaAtFJElY2D29U6FTfaRaN1IILWCeYxkrD3IeVXXArsoBwINiw6f9i
-         21G0l6uU/JKW+2CMxVkh24BU+4T7beLG1G9FoDqE7Bp7ri3N/bXPWJg0ZnjipAE3dRkQ
-         nuB67tSdrbmJ5DEjN5XtQKhn+/SffpraaDvyM+wAIpshn9J9jC89Ntvfqlm05ty7SGYq
-         gQMw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BDJuR8vK;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::235 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from mail-wm0-x235.google.com (mail-wm0-x235.google.com. [2a00:1450:400c:c09::235])
-        by gmr-mx.google.com with ESMTPS id k18si843686wmd.1.2017.09.26.00.24.52
+Received: by 10.36.64.142 with SMTP id n136ls976397ita.2.gmail; Wed, 08 Mar
+ 2017 04:57:51 -0800 (PST)
+X-Received: by 10.99.111.6 with SMTP id k6mr2822231pgc.131.1488977871527;
+        Wed, 08 Mar 2017 04:57:51 -0800 (PST)
+Return-Path: <abbotti@mev.co.uk>
+Received: from smtprelay.hostedemail.com (smtprelay0055.hostedemail.com. [216.40.44.55])
+        by gmr-mx.google.com with ESMTPS id g205si1258768ita.2.2017.03.08.04.57.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 26 Sep 2017 00:24:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::235 as permitted sender) client-ip=2a00:1450:400c:c09::235;
+        Wed, 08 Mar 2017 04:57:51 -0800 (PST)
+Received-SPF: neutral (google.com: 216.40.44.55 is neither permitted nor denied by best guess record for domain of abbotti@mev.co.uk) client-ip=216.40.44.55;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BDJuR8vK;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::235 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x235.google.com with SMTP id m72so4470630wmc.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 26 Sep 2017 00:24:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=epycRWLSDk2hywn2oBStjgQfrx4APTuxD6weHlXl27k=;
-        b=BDJuR8vKreJO5GatjyXQJKGc1bh/Wf6WVWguKC/3CMtj+z4vdoUJh627QH8YpbDhP3
-         74sJH/7StLfUdsQ5Wbp7zfC+erEa8qCdBfcMryZY2hXisJ1o1XUbiT3ctD5Cdm3QmSYQ
-         M9eMEKTfbXzg6n/SIeElR8v2XTUvUvfytr8W1x7Nm25kUFSYIJ8wDGA8oLK+igxnD+oj
-         gNsij9g22QeFjAZx1TmJPT6FDgqOhRajdSMNEzYVxxbWGdZdICc811fRuWGMGfRkdpWv
-         Ljtcf3MI5iGbW8Chsd6VslMJT1wq0UXtUibqedcQ6S1wxOw4+ArlDRWYzpERI8PVmXt/
-         Jz6g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=epycRWLSDk2hywn2oBStjgQfrx4APTuxD6weHlXl27k=;
-        b=SO8Hugrk9Akvja4gfaAh0c5k/vFd2eKGoz6CJJ3h1WruUqTISFnlEjwacF+k98iS3i
-         cx8k/3YDNUvar3ZBEd6YbdMtCc1hDtQ72Bmw+63tl6ubkw4TOsI0oeMRESaWrPcgytVX
-         Cn92dpDlxHXZKHkS5AlcJHYRJaXO94Ar3aI/LhB9mnjOSE7d0Nd3/FWCJyraSOXeWtnd
-         7+ocgzW0QZ6jQkWVftpMXukMHV1XEeXQ/C2U34i12sHNdhH3lmEq79uB8IQenN8ONIzP
-         WA2A/KA/op5UamKadPUI6EQ7LBwfJV5zK7hc2KgmA1UMTgWiZz78pGFQnxYHRTeU5ZLq
-         lRfA==
-X-Gm-Message-State: AHPjjUg/gIJExmmffmjvnzfgBEvfBvIoIFNap4wbeUnzmAUnDUUru7ZC
-	dgxEKWJp7fGehqgWxHv+2OEuCesC
-X-Google-Smtp-Source: AOwi7QCBCoLtdgn440SuxaTKLJqSxTsaCeyrbD1z2mIUU60/u6jLZLLuVFwMxfA+IKhzhPJtlzFCCA==
-X-Received: by 10.28.165.136 with SMTP id o130mr2453796wme.107.1506410692268;
-        Tue, 26 Sep 2017 00:24:52 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from domino-MS-16Y1 ([93.122.248.7])
-        by smtp.gmail.com with ESMTPSA id m138sm1153151wmd.29.2017.09.26.00.24.51
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 26 Sep 2017 00:24:51 -0700 (PDT)
-Date: Tue, 26 Sep 2017 10:24:50 +0300
-From: Mihaela Muraru <mihaela.muraru21@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v2] staging: rtl8712: Fix indent coding style issue
-Message-ID: <20170926072450.GA10682@domino-MS-16Y1>
+       spf=neutral (google.com: 216.40.44.55 is neither permitted nor denied by best guess record for domain of abbotti@mev.co.uk) smtp.mailfrom=abbotti@mev.co.uk
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
+	by smtprelay06.hostedemail.com (Postfix) with ESMTP id BE4AA9EA16;
+	Wed,  8 Mar 2017 12:57:50 +0000 (UTC)
+X-Session-Marker: 69616E406162626F74742E6F7267
+X-Spam-Summary: 50,0,0,,d41d8cd98f00b204,abbotti@mev.co.uk,:::::::::::,RULES_HIT:41:355:379:599:800:960:967:973:982:988:989:1260:1261:1263:1277:1311:1313:1314:1345:1359:1431:1437:1515:1516:1518:1534:1542:1593:1594:1683:1711:1730:1747:1777:1792:1801:2393:2525:2560:2563:2612:2682:2685:2859:2933:2937:2939:2942:2945:2947:2951:2954:3000:3022:3138:3139:3140:3141:3142:3353:3865:3870:3872:3934:3936:3938:3941:3944:3947:3950:3953:3956:3959:4321:4362:4605:5007:7514:7652:7903:9025:10004:10400:10848:11026:11232:11473:11657:11658:11914:12043:12296:12438:12555:12740:12760:12895:12986:14096:14097:14181:14571:14685:14721:21080:21451:30021:30054,0,RBL:none,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:fn,MSBL:0,DNSBL:none,Custom_rules:0:0:0,LFtime:2,LUA_SUMMARY:none
+X-HE-Tag: pies04_7e8ae9ef6702c
+X-Filterd-Recvd-Size: 3034
+Received: from [10.0.0.53] (unknown [81.133.34.160])
+	(Authenticated sender: ian@abbott.org)
+	by omf09.hostedemail.com (Postfix) with ESMTPA;
+	Wed,  8 Mar 2017 12:57:49 +0000 (UTC)
+Subject: Re: [PATCH 6/6] staging: comedi: Using macro DIV_ROUND_UP
+To: simran singhal <singhalsimran0@gmail.com>
+References: <20170221182826.GA31819@singhal-Inspiron-5558>
+Cc: hsweeten@visionengravers.com, gregkh@linuxfoundation.org,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ outreachy-kernel@googlegroups.com
+From: Ian Abbott <abbotti@mev.co.uk>
+Message-ID: <f49d7b55-a857-763c-4143-c6c5a43fc836@mev.co.uk>
+Date: Wed, 8 Mar 2017 12:57:48 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+ Icedove/45.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20170221182826.GA31819@singhal-Inspiron-5558>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
 
-This patch fixes an indentation coding style issue found by
-checkpatch.pl:
+On 21/02/17 18:28, simran singhal wrote:
+> The macro DIV_ROUND_UP performs the computation (((n) + (d) - 1) /(d)).
+> It clarifies the divisor calculations. This occurence was detected using
+> the coccinelle script:
+>
+> @@
+> expression e1;
+> expression e2;
+> @@
+> (
+> - ((e1) + e2 - 1) / (e2)
+> + DIV_ROUND_UP(e1,e2)
+> |
+> - ((e1) + (e2 - 1)) / (e2)
+> + DIV_ROUND_UP(e1,e2)
+> )
+>
+> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+> ---
+>  drivers/staging/comedi/drivers/addi_apci_3xxx.c | 2 +-
+>  drivers/staging/comedi/drivers/cb_pcidas64.c    | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/comedi/drivers/addi_apci_3xxx.c b/drivers/staging/comedi/drivers/addi_apci_3xxx.c
+> index b6af3eb..82c2211 100644
+> --- a/drivers/staging/comedi/drivers/addi_apci_3xxx.c
+> +++ b/drivers/staging/comedi/drivers/addi_apci_3xxx.c
+> @@ -502,7 +502,7 @@ static int apci3xxx_ai_ns_to_timer(struct comedi_device *dev,
+>  			timer = *ns / base;
+>  			break;
+>  		case CMDF_ROUND_UP:
+> -			timer = (*ns + base - 1) / base;
+> +			timer = DIV_ROUND_UP(*ns, base);
+>  			break;
+>  		}
+>
+> diff --git a/drivers/staging/comedi/drivers/cb_pcidas64.c b/drivers/staging/comedi/drivers/cb_pcidas64.c
+> index efbf277..3b98193 100644
+> --- a/drivers/staging/comedi/drivers/cb_pcidas64.c
+> +++ b/drivers/staging/comedi/drivers/cb_pcidas64.c
+> @@ -2007,7 +2007,7 @@ static unsigned int get_divisor(unsigned int ns, unsigned int flags)
+>
+>  	switch (flags & CMDF_ROUND_MASK) {
+>  	case CMDF_ROUND_UP:
+> -		divisor = (ns + TIMER_BASE - 1) / TIMER_BASE;
+> +		divisor = DIV_ROUND_UP(ns, TIMER_BASE);
+>  		break;
+>  	case CMDF_ROUND_DOWN:
+>  		divisor = ns / TIMER_BASE;
+>
 
-WARNING: suspect code indent for conditional statements (16, 32)
+Thanks.  Ideally, this should be split into two patches, one for each 
+driver module, but I guess we can live with a single patch.  (I don't 
+know about the other 5 patches in this series.)
 
-Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
+Reviewed-by: Ian Abbott <abbotti@mev.co.uk>
 
----
-Changes in v2:
-   - rewrite the commint message.
----
- drivers/staging/rtl8712/rtl8712_recv.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
-index 0978727..8f555e6 100644
---- a/drivers/staging/rtl8712/rtl8712_recv.c
-+++ b/drivers/staging/rtl8712/rtl8712_recv.c
-@@ -149,7 +149,7 @@ int r8712_free_recvframe(union recv_frame *precvframe,
- 	list_add_tail(&(precvframe->u.hdr.list), &pfree_recv_queue->queue);
- 	if (padapter != NULL) {
- 		if (pfree_recv_queue == &precvpriv->free_recv_queue)
--				precvpriv->free_recvframe_cnt++;
-+			precvpriv->free_recvframe_cnt++;
- 	}
- 	spin_unlock_irqrestore(&pfree_recv_queue->lock, irqL);
- 	return _SUCCESS;
 -- 
-2.7.4
-
+-=( Ian Abbott @ MEV Ltd.    E-mail: <abbotti@mev.co.uk> )=-
+-=(                          Web: http://www.mev.co.uk/  )=-
 
