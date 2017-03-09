@@ -1,113 +1,130 @@
-X-GM-THRID: 6395446243166781440
-X-Received: by 10.99.136.194 with SMTP id l185mr5277954pgd.82.1489055865377;
-        Thu, 09 Mar 2017 02:37:45 -0800 (PST)
+X-GM-THRID: 6395514792016084992
+X-Received: by 10.99.202.73 with SMTP id o9mr5391807pgi.154.1489074830457;
+        Thu, 09 Mar 2017 07:53:50 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.68.202 with SMTP id p10ls5536638otg.18.gmail; Thu, 09 Mar
- 2017 02:37:45 -0800 (PST)
-X-Received: by 10.157.52.210 with SMTP id t18mr4666305otd.119.1489055865001;
-        Thu, 09 Mar 2017 02:37:45 -0800 (PST)
-Return-Path: <aishpant@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id r66si1112653pfb.7.2017.03.09.02.37.44
+Received: by 10.157.38.42 with SMTP id a39ls3283815otb.38.gmail; Thu, 09 Mar
+ 2017 07:53:50 -0800 (PST)
+X-Received: by 10.13.252.194 with SMTP id m185mr5297321ywf.145.1489074829977;
+        Thu, 09 Mar 2017 07:53:49 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
+        by gmr-mx.google.com with ESMTPS id c123si1261621pfa.4.2017.03.09.07.53.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 09 Mar 2017 02:37:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Thu, 09 Mar 2017 07:53:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id o126so6902429pfb.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 09 Mar 2017 02:37:44 -0800 (PST)
+Received: by mail-pg0-x242.google.com with SMTP id 77so7200888pgc.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 09 Mar 2017 07:53:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=llb5ZE47ymC81bFO2NWlhWipjsZdVMslLIXZuKgw8qU=;
-        b=X0HAT+La5mTx6lcDx+YwYbzPKAoiKM47xfPPuuz7v7FR943cyPFbZBRsFJNBB9Pv2K
-         0+SS8wM6Qy1+DTwnPHiaMF9ZKbmS4TAv3AP3H8U3lkc+QtvsKyQCgabvEqgHUp21UKfD
-         6eYW7hmFSlj/zGLK+6E1N8pkWL7asTpH1mmvA/PkrM7Ejr4mpZXCs8fK74IjRHsmtRxu
-         wymBhSGNxUqm8oLK2e8hyt/qFyJr8worMQJJTClmIj+UfNHxcnCpE1znxFL0Gc99QNCC
-         EG33DFQTpyX82/jcvUdQNz0lh76jLZ93t9ZRkJLRVf4n4TLbTd0B5yJQdOz+i7d4WKR7
-         /ERg==
+        h=message-id:date:from:to:cc:subject:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=DW1PrpIB2+WfF8K+ndYLYy5Ll5PxI8+gQ3GOJBKv+sY=;
+        b=lHIa0Y/mm2C/8MncZYFMJa/upFTH/+iPFvVa7Rn7IBgd51EADPkwKCMSKfwey8hwY4
+         eJZbgw/HNfLHaTZmLeo53tCdKjMVTXuq1pPU8uB+MI0sjKGKY/MGhgNtEa/p6ygcS0jn
+         N7SJUn4MEL2Ezt5noTeW7yL4F9cULLEjvS4vGWr+El7WdTnivenLr4YHcF+Go/iOhTeE
+         +RQxNgDdJD7m2pKF1FJth+zpE1Q/UW4r9uhvFflD6XF5/CGbIm+L3ICelxUSVwg2vC1a
+         5KC+47Ng805NwXKX2ahT8DgvnPJrv72Xi8+6LZUDBwtWE5ANq+inlPp1dpou/aG0GmPD
+         qmaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=llb5ZE47ymC81bFO2NWlhWipjsZdVMslLIXZuKgw8qU=;
-        b=KBJqwWlvpoCsQLyKZbZHImQLGUNom1MnbGoEdqOZy4Ue0UK58V49xO+QtgDCbR9YF+
-         eGKSLNpSJt38Z4X6ecwRb1gy7zp5wbPDWL1g3WeA8buAzCkpBliNL2MrPg9S0NdMtVXm
-         9jddEtc2s+bzLKTWLzExp5C1686Ag0ZC2CofIl8bvv16xdySsO1WXTIuz2VP3gJaHjGJ
-         sFB28QbL/5UYAJG6zzbVHK6+jEYkSqcBxF9mayvsc7FJGZdKNl9ZK0goREaR7PUOg1M1
-         A8z8TIA+6jeWYxoAZTLJzceANZiXPslJVUsGWVoeSwk18fi3ZsZ1YuxZmQflP6Lz8/kC
-         gD8A==
-X-Gm-Message-State: AMke39n3vt1FYXnmy/PMkIQHxLknC5LQEOtq05UD3CGoWNCWak1ZKpNwhaTQmwABNJ+osQ==
-X-Received: by 10.99.56.85 with SMTP id h21mr12944115pgn.108.1489055864584;
-        Thu, 09 Mar 2017 02:37:44 -0800 (PST)
-Return-Path: <aishpant@gmail.com>
-Received: from aishwarya ([223.186.124.141])
-        by smtp.gmail.com with ESMTPSA id u78sm11577173pfa.101.2017.03.09.02.37.42
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 09 Mar 2017 02:37:43 -0800 (PST)
-Date: Thu, 9 Mar 2017 16:07:38 +0530
-From: Aishwarya Pant <aishpant@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v5 0/7] staging: bcm2835-audio: clean-up coding style issues
-Message-ID: <cover.1489055580.git.aishpant@gmail.com>
+        h=x-gm-message-state:message-id:date:from:to:cc:subject:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=DW1PrpIB2+WfF8K+ndYLYy5Ll5PxI8+gQ3GOJBKv+sY=;
+        b=OtoudZJr0Mq/eMEnFFtFjz3cMSrOQuPjfdFjJD4b7+YqD0rmrgnL6K5mKmgcgFCp5I
+         e3UoryqWOgU2f4oi0+i8XXg1n1En9flkP3CN307uIHHr9X9toAE698fMrm5Qf9Xum0It
+         2rRDHeEV+ejfD03NbhAr7ReQ5cMldbuptyAx+92nV+P70y9PyneKvdCf8qJY6Lr4cDg7
+         z2CkV6riSymws0laQds+NPnuFj/EcQ3ksg/uhE+ZXVO06vu3SFxNW//HacOnB5ZIoUym
+         C1NJx+IqGh0laqlENJm6ZNlgsZyCe5b/IOk3iAaibWF1tfIXWKifbOryBmDtuXANNGcw
+         ZgPw==
+X-Gm-Message-State: AMke39lmINf4PGMifViWNmW50fnJL8KOoOVkTlCka5Id8SzHPq4FRTi+CzG/XrMpQRI+HA==
+X-Received: by 10.98.21.71 with SMTP id 68mr14874585pfv.16.1489074829647;
+        Thu, 09 Mar 2017 07:53:49 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from euri ([45.125.141.33])
+        by smtp.gmail.com with ESMTPSA id i3sm13352360pfk.47.2017.03.09.07.53.48
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 09 Mar 2017 07:53:49 -0800 (PST)
+Message-ID: <58c17a8d.83c8620a.ba256.e6ac@mx.google.com>
+X-Google-Original-Message-ID: <20170309155346.GA16121@<rvarsha016@gmail.com>>
+Date: Thu, 9 Mar 2017 21:23:46 +0530
+From: Varsha Rao <rvarsha016@gmail.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH v2 2/2] staging: media: atomisp: Match alignment with open
+ parenthesis.
+References: <cover.1489074107.git.varshar186@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <cover.1489074107.git.varshar186@gmail.com>
+User-Agent: Mutt/1.7.1 (2016-10-04)
 
-This patchset has the following fixes:
+This patch matches alignment with open parenthesis, removes extra space
+before '||' operators and fixes the checkpatch issue.
 
-[1] Replace kmalloc and memset with kzalloc in vc_vchi_audio_init(..)
-[2] Replace null return value with PTR_ERR(..) values in
-    vc_vchi_audio_init(..)
-[3] Propagate the PTR_ERR values forward instead of a hardcoded
-    value for easier debugging in bcm2835_audio_open_connection(..)
-[4] Replace if (success) else { } after kmalloc with if(error)
-    to fail fast in the work function
-[5] De-allocate 'work' when queue_work(..) fails in the work
-    functions
-[6] De-allocate 'vchi_instance' when VCHI connection fails or VCHI audio
-    instance initialisation fails in bcm2835_audio_open_connection()
-[7] Remove BUG_ON() in bcm2835_audio_open_connection()
-
-
-Changes in v5:
--- Remove patch which added function names to log messages
-
-Changes in v4:
--- Break-up patch 4 into four smaller patches
--- Add a patch proposing removal of BUG_ON()
--- Make the cover letter verbose
-
-Changes in v3:
--- Fix memory leak when queue_work fails
--- Add __func__ to debug logs
-
+Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
+---
 Changes in v2:
--- Return error value -EBUSY instead of -1 when queue_work()
-   fails
+- Removed extra space before '||' operator.
+- Modified commit message.
 
+ drivers/staging/media/atomisp/i2c/gc2235.c  | 4 ++--
+ drivers/staging/media/atomisp/i2c/mt9m114.c | 4 ++--
+ drivers/staging/media/atomisp/i2c/ov2722.c  | 4 ++--
+ 3 files changed, 6 insertions(+), 6 deletions(-)
 
-Aishwarya Pant (7):
-  staging: bcm2835-audio: Replace kmalloc with kzalloc
-  staging: bcm2835-audio: replace null with error pointer value
-  staging: bcm2835-audio: propagate PTR_ERR value instead of -EPERM
-  staging: bcm2835-audio: use conditional only for error case
-  staging: bcm2835-audio: deallocate work when queue_work(...) fails
-  staging: bcm2835-audio: fix memory leak in    
-    bcm2835_audio_open_connection()
-  staging: bcm2835-audio: remove BUG_ON() in
-    bcm2835_audio_open_connection()
-
- .../vc04_services/bcm2835-audio/bcm2835-vchiq.c    | 100 ++++++++++-----------
- 1 file changed, 50 insertions(+), 50 deletions(-)
-
+diff --git a/drivers/staging/media/atomisp/i2c/gc2235.c b/drivers/staging/media/atomisp/i2c/gc2235.c
+index 38f6de1..4d15e20 100644
+--- a/drivers/staging/media/atomisp/i2c/gc2235.c
++++ b/drivers/staging/media/atomisp/i2c/gc2235.c
+@@ -704,8 +704,8 @@ static int distance(struct gc2235_resolution *res, u32 w, u32 h)
+ 		return -1;
+ 	match   = abs(((w_ratio << 13) / h_ratio) - 8192);
+ 
+-	if ((w_ratio < 8192) || (h_ratio < 8192)  ||
+-		(match > LARGEST_ALLOWED_RATIO_MISMATCH))
++	if ((w_ratio < 8192) || (h_ratio < 8192) ||
++	    (match > LARGEST_ALLOWED_RATIO_MISMATCH))
+ 		return -1;
+ 
+ 	return w_ratio + h_ratio;
+diff --git a/drivers/staging/media/atomisp/i2c/mt9m114.c b/drivers/staging/media/atomisp/i2c/mt9m114.c
+index 9742293..1b79cdb 100644
+--- a/drivers/staging/media/atomisp/i2c/mt9m114.c
++++ b/drivers/staging/media/atomisp/i2c/mt9m114.c
+@@ -620,8 +620,8 @@ static int distance(struct mt9m114_res_struct const *res, u32 w, u32 h)
+ 		return -1;
+ 	match   = abs(((w_ratio << 13) / h_ratio) - 8192);
+ 
+-	if ((w_ratio < 8192) || (h_ratio < 8192)  ||
+-		(match > LARGEST_ALLOWED_RATIO_MISMATCH))
++	if ((w_ratio < 8192) || (h_ratio < 8192) ||
++	    (match > LARGEST_ALLOWED_RATIO_MISMATCH))
+ 		return -1;
+ 
+ 	return w_ratio + h_ratio;
+diff --git a/drivers/staging/media/atomisp/i2c/ov2722.c b/drivers/staging/media/atomisp/i2c/ov2722.c
+index adf9766..b7afade 100644
+--- a/drivers/staging/media/atomisp/i2c/ov2722.c
++++ b/drivers/staging/media/atomisp/i2c/ov2722.c
+@@ -809,8 +809,8 @@ static int distance(struct ov2722_resolution *res, u32 w, u32 h)
+ 		return -1;
+ 	match   = abs(((w_ratio << 13) / h_ratio) - 8192);
+ 
+-	if ((w_ratio < 8192) || (h_ratio < 8192)  ||
+-		(match > LARGEST_ALLOWED_RATIO_MISMATCH))
++	if ((w_ratio < 8192) || (h_ratio < 8192) ||
++	    (match > LARGEST_ALLOWED_RATIO_MISMATCH))
+ 		return -1;
+ 
+ 	return w_ratio + h_ratio;
 -- 
-2.7.4
+2.9.3
 
 
