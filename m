@@ -1,90 +1,50 @@
-X-GM-THRID: 6805854420924891136
-X-Received: by 2002:a2e:9852:: with SMTP id e18mr1584581ljj.249.1584611465570;
-        Thu, 19 Mar 2020 02:51:05 -0700 (PDT)
+X-GM-THRID: 6395543096504877056
+X-Received: by 10.99.109.203 with SMTP id i194mr5993203pgc.134.1489084666109;
+        Thu, 09 Mar 2017 10:37:46 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:8189:: with SMTP id e9ls177752ljg.4.gmail; Thu, 19 Mar
- 2020 02:51:04 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsD7ovYw3Q9/lBqkYNLz1XTMdPp58zpjbmyVgxPTH7J0FA1jVi+q6xO96geBVo0+e2l3YEt
-X-Received: by 2002:a2e:b801:: with SMTP id u1mr853524ljo.84.1584611464309;
-        Thu, 19 Mar 2020 02:51:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584611464; cv=none;
-        d=google.com; s=arc-20160816;
-        b=zUi08f3caPTVeMDYNGA8hdAnyzcPQzjhkNuJeYL+fEdBaOsQhg+yHHWdQuMT9dMcKO
-         fSBvfCaAsnONWg3aitGAt+v09Fi5S/HtJQhTUNFfDaTLUtYGiFJzg/jApiKbm0yTdIQj
-         83amfOfajvxHcNbwRWi/374XRaadsIOxjbfYdFTTbLrguMFccoihzjANO9hEiH6RWcO6
-         aXiZMKgq9u86Q+dDI3PyHO/QuzmkgVkMxFyNgZB86+YDk1azwly2RX6weZG1XyLnxrcE
-         n1RPdg1M4/lHunVO+KSAIY6Rz9BK1UWVeMaSHY9qGXJFAwj5XYRo9Oygh4SeEim983tf
-         3daw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date;
-        bh=xGTQdl/hIslRsmaHvn6oxcZLaKuid6Sv8ckL1bYVdOM=;
-        b=Alm4HSSw59yxqXQab1Kdw+w9OCIsKHBDkagArS+NpkPHo76Wxw11uGiyMwmqLvkeSB
-         GA4PRxWDJb5p3l/HEHqIqXsVFkSvxJKUFzo3dNwsMenba7p5BSDo0ZhvbC7gynFjiixk
-         RNCKXsX+HeVrdeEXIx6OKvJFDsM/ok/0LlS1KTOdtyu62egMmT/UkBeA8EiTYWp8USys
-         7Fy9W6XdeuCfTh8DMScBD5N6kH2nng69NrHV+TmBCXYQWl5+D/LnFyPG9kvFG6I1QaLg
-         N4CwxQj2YShMq2R8fR0HBbotqUM+qxNQVVdHxS45keBMJAE3UUe9EDe+hF0njQdUCgoh
-         JSRg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Return-Path: <vkor@vkten.in>
-Received: from vkten.in (vkten.in. [104.244.73.96])
-        by gmr-mx.google.com with ESMTP id w6si67322lfa.1.2020.03.19.02.51.04
-        for <outreachy-kernel@googlegroups.com>;
-        Thu, 19 Mar 2020 02:51:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
+Received: by 10.107.31.133 with SMTP id f127ls1916201iof.27.gmail; Thu, 09 Mar
+ 2017 10:37:45 -0800 (PST)
+X-Received: by 10.99.102.68 with SMTP id a65mr6998705pgc.68.1489084665196;
+        Thu, 09 Mar 2017 10:37:45 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id 2si1323639pfz.1.2017.03.09.10.37.45
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 09 Mar 2017 10:37:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Received: (qmail 26679 invoked from network); 19 Mar 2020 09:51:01 -0000
-Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.202.245.105)
-  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
-  by vkten with ESMTPSA; 19 Mar 2020 09:51:01 -0000
-Date: Thu, 19 Mar 2020 15:20:52 +0530
-From: R Veera Kumar <vkor@vkten.in>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
-	Teddy Wang <teddy.wang@siliconmotion.com>,
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH v5] staging: sm750fb: Fix of long line in makefile variable
-Message-ID: <20200319095024.GA2970@tulip.local>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (LFbn-1-12060-104.w90-92.abo.wanadoo.fr [90.92.122.104])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 9EE50B4C;
+	Thu,  9 Mar 2017 18:37:44 +0000 (UTC)
+Date: Thu, 9 Mar 2017 19:37:36 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Arushi Singhal <arushisinghal19971997@gmail.com>
+Cc: w.d.hubbs@gmail.com, devel@driverdev.osuosl.org,
+	Kirk Reiser <kirk@reisers.ca>, speakup@linux-speakup.org,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
+	Samuel Thibault <samuel.thibault@ens-lyon.org>,
+	Chris Brannon <chris@the-brannons.com>
+Subject: Re: [PATCH] staging: speakup: fix "Alignment match open parenthesis"
+Message-ID: <20170309183736.GA15627@kroah.com>
+References: <20170309165330.GA21513@arushi-HP-Pavilion-Notebook>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20170309165330.GA21513@arushi-HP-Pavilion-Notebook>
+User-Agent: Mutt/1.8.0 (2017-02-23)
 
-A simple fix of long line in makefile variable assignment.
-Found using checkpatch.pl.
+On Thu, Mar 09, 2017 at 10:23:30PM +0530, Arushi Singhal wrote:
+> Fix checkpatch issues: "CHECK: Alignment should match open parenthesis".
+> 
+> Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+> ---
+>  drivers/staging/speakup/i18n.c     |  2 +-
+>  drivers/staging/speakup/kobjects.c | 40 +++++++++++++++++++-------------------
+>  2 files changed, 21 insertions(+), 21 deletions(-)
 
-Signed-off-by: R Veera Kumar <vkor@vkten.in>
----
-Changes in v5:
- - By error sent the previous revision without changes
- - Really changed the subject line
-Changes in v4:
- - Correct subject line to be precise
-Changes in v3:
- - change make variable definition using a clean style
-Changes in v2:
- - Make the subject line imperative one
----
- drivers/staging/sm750fb/Makefile | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+Also does not apply to my tree :(
 
-diff --git a/drivers/staging/sm750fb/Makefile b/drivers/staging/sm750fb/Makefile
-index 1cf3849cef23..b89aa4c12e9d 100644
---- a/drivers/staging/sm750fb/Makefile
-+++ b/drivers/staging/sm750fb/Makefile
-@@ -1,5 +1,7 @@
- # SPDX-License-Identifier: GPL-2.0
- obj-$(CONFIG_FB_SM750)	+= sm750fb.o
- 
--sm750fb-objs		:= sm750.o sm750_hw.o sm750_accel.o sm750_cursor.o ddk750_chip.o ddk750_power.o ddk750_mode.o
--sm750fb-objs		+= ddk750_display.o ddk750_swi2c.o ddk750_sii164.o ddk750_dvi.o ddk750_hwi2c.o
-+sm750fb-objs		:= sm750.o sm750_hw.o sm750_accel.o sm750_cursor.o \
-+			   ddk750_chip.o ddk750_power.o ddk750_mode.o \
-+			   ddk750_display.o ddk750_swi2c.o ddk750_sii164.o \
-+			   ddk750_dvi.o ddk750_hwi2c.o
--- 
-2.20.1
-
+greg k-h
 
