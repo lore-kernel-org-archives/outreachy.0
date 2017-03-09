@@ -1,53 +1,53 @@
 X-GM-THRID: 6395412283312308224
-X-Received: by 10.46.76.17 with SMTP id z17mr2682929lja.13.1489100030926;
-        Thu, 09 Mar 2017 14:53:50 -0800 (PST)
+X-Received: by 10.25.150.2 with SMTP id y2mr2184905lfd.21.1489100012576;
+        Thu, 09 Mar 2017 14:53:32 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.19.10 with SMTP id 10ls829450ljt.24.gmail; Thu, 09 Mar 2017
- 14:53:50 -0800 (PST)
-X-Received: by 10.46.33.163 with SMTP id h35mr2836604lji.17.1489100030702;
-        Thu, 09 Mar 2017 14:53:50 -0800 (PST)
+Received: by 10.46.0.221 with SMTP id e90ls835072lji.30.gmail; Thu, 09 Mar
+ 2017 14:53:32 -0800 (PST)
+X-Received: by 10.46.88.9 with SMTP id m9mr2669597ljb.25.1489100012164;
+        Thu, 09 Mar 2017 14:53:32 -0800 (PST)
 Return-Path: <narcisaanamaria12@gmail.com>
-Received: from mail-wm0-x242.google.com (mail-wm0-x242.google.com. [2a00:1450:400c:c09::242])
-        by gmr-mx.google.com with ESMTPS id n128si26017wmf.2.2017.03.09.14.53.50
+Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
+        by gmr-mx.google.com with ESMTPS id t131si28906wmf.1.2017.03.09.14.53.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 09 Mar 2017 14:53:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) client-ip=2a00:1450:400c:c09::242;
+        Thu, 09 Mar 2017 14:53:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) smtp.mailfrom=narcisaanamaria12@gmail.com;
+       spf=pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=narcisaanamaria12@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x242.google.com with SMTP id u132so13148760wmg.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 09 Mar 2017 14:53:50 -0800 (PST)
+Received: by mail-wm0-x243.google.com with SMTP id v190so13156969wme.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 09 Mar 2017 14:53:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=I7pO0wlOAh6xkjLi2K+u64wnRUkdag0Qec5PDti1sMk=;
-        b=iLskC+V+/ypkYiweL2E9kZGHKKZ/BxncUaDaKn5KfNdx0sUChgAKuhO9VcrQSzOzHy
-         eLwv1NerdA9fAcWscqsXP7NcpqGkiDMWTTS+RB+ELWAmtji6ZDfGIacymoWb1uLy8TWQ
-         a3uFsR0xE2/hjZ90otHseuJKinL/vJicRPMe97muiZ/4SOdWRS81S2lHLzDPEIRO55ri
-         NjYBIpK+V7XlCFNBEhta7EEerrm5MuYsAnMsHphDeV3VJCCVW45VaGMcqnuCZkcKLW+D
-         S7EmF6elo0NpTV6JKB9DxBbmAhsQnGyamWVIsKrQ8wX7VVvsUUH52nG7JZJ6lXWAdLkZ
-         BZ4g==
+        bh=oR4HFJKD4J/IPI+/oC8oyCsw0uGhPrFTleTKqMNOHNo=;
+        b=oULCQfOF0yHvxrBlgvmN7NDylUOSB3KIboXEIZQdQRE+5EzdLIBcxzrHYMZyiQD1Mm
+         XnfjZmOtAycuIVglHEyBU7IS9QJ0dOU/TX+6A3B0tcrt1CKxe84uqY/tjf44X3HaR7/g
+         gDGt0auLPOueqV8hMQO8vt4TrZ/SFrdZgFn3+e6C2YoUJzDlgi5WdU03/g+fVqoPtnwm
+         kNt8+vn4KRS9qFSyW8VAWK4Cr2tZzXpdPYKEht6GvuSiB7FSHxdtpQaOSYMjZCxov+fg
+         nKnX4GRbs4t/0VNaR2RD4VRyVQoBh37yF4QbncVDvOzNz26a4Ps6tCWqy40dVwjisgk4
+         5GeA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=I7pO0wlOAh6xkjLi2K+u64wnRUkdag0Qec5PDti1sMk=;
-        b=RAIdDiZlGGwfL4yElG25Q/FhyXHNmbfPB+gjlJyFJ3S5vgQtXb8VieOPI34KacLe2L
-         +R8UFbTRsgVTbEf54v8EIXVtScJbRJYB/I+OJFmv5w+A6PBSfS7B40rEN++4poDUYZdR
-         lr+1dd4iRe2sdBzLB/2gsmOIYJ6dR2QZyHBppnlod73hIO8HFOCy+8SA7vEZm2zuF/mB
-         5oyBYgWLHmkBH4fZheIDwPacTBWK6wcbwz6PNf3JcnLf/FOUbVEyQzYQrtC/USaIS2jJ
-         N1+50xmWoNepk0WkpGMBv9Olf54C1nulibWgDt2kH3DcnP2p1mU/+3xnNQ8zOi3H1lJT
-         FQ3A==
-X-Gm-Message-State: AMke39lcopZVUEbHM3IC4Qr8sYsIFYw5otSw6s9X+3k9dfq7rUJ9I6sMd4dcZPLDn9uBkw==
-X-Received: by 10.28.15.142 with SMTP id 136mr31705954wmp.66.1489100030511;
-        Thu, 09 Mar 2017 14:53:50 -0800 (PST)
+        bh=oR4HFJKD4J/IPI+/oC8oyCsw0uGhPrFTleTKqMNOHNo=;
+        b=jGiwjSwyDebjcSxcUT9sB9mw4MvVkwbrVbx/LbxXGw74bkDDL5aiA1qaq78sw3vMzZ
+         sIjCu3RbeGrmt8RUkUu5TWBXUVtmOvchTE+RnaI9yu1bVJ9hYGjHSJBQ72x+l8wS3D6x
+         seToGzkwnXwKvVD1ZF2yofHtsArTeeTJOuluLk5iBneJ/gvQPI0z29K4YVIOVhS2QDBD
+         jNjsiQiAYcrvvEuBSgJ7MxMMqThbOvWXwxwgCsZCpnLbFj9CV+JIgGM9I1jsOssSydy1
+         AQ7WrfkLAVFxclmsLV9OBNdxg4tjyjDb0nqjVez+wHZ5g6/1FLJ1N06oNuwFbiK/v6CM
+         emDg==
+X-Gm-Message-State: AMke39ltma+JoruaJSZAek3Js+VrF2Rgf/JuOPlTiZyDMHueo5hgcuv1kHP9thVhYVjBuw==
+X-Received: by 10.28.238.66 with SMTP id m63mr12679695wmh.121.1489100011913;
+        Thu, 09 Mar 2017 14:53:31 -0800 (PST)
 Return-Path: <narcisaanamaria12@gmail.com>
 Received: from localhost.localdomain (p22.eregie.pub.ro. [141.85.0.122])
-        by smtp.gmail.com with ESMTPSA id h3sm10007241wrb.6.2017.03.09.14.53.49
+        by smtp.gmail.com with ESMTPSA id 191sm457749wmo.21.2017.03.09.14.53.30
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 09 Mar 2017 14:53:49 -0800 (PST)
+        Thu, 09 Mar 2017 14:53:31 -0800 (PST)
 From: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
 To: w.d.hubbs@gmail.com,
 	chris@the-brannons.com,
@@ -56,80 +56,88 @@ To: w.d.hubbs@gmail.com,
 	gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com,
 	Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
-Subject: [PATCH v3 2/2] staging: speakup: i18n.c: Refactor conditionals in spk_msg_set
-Date: Fri, 10 Mar 2017 00:53:44 +0200
-Message-Id: <89a7e1067f4868fa5ef02ae94c32b6aff37b529e.1489099212.git.narcisaanamaria12@gmail.com>
+Subject: [PATCH v3 1/2] staging: speakup: i18n.c: Change return type from int to bool
+Date: Fri, 10 Mar 2017 00:53:23 +0200
+Message-Id: <11f0d5b09d3ac4ab4541862cad6f6c9ad05ba3d7.1489099212.git.narcisaanamaria12@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <cover.1489099212.git.narcisaanamaria12@gmail.com>
 References: <cover.1489047172.git.narcisaanamaria12@gmail.com> <cover.1489099212.git.narcisaanamaria12@gmail.com>
 
-Reduce the indentation level in spk_msg_set and remove
-unnecessary return variable.
+The possible return values (0 or 1) for compare_specifiers
+and fmt_validate represent whether a condition holds or not, so
+conceptually, they are booleans.
+
+Update documentation for these two functions.
+
+Change type of variable 'still_comparing' from int to bool too,
+inside fmt_validate, because it is intended to hold truth values
+as well.
 
 Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
 ---
- drivers/staging/speakup/i18n.c | 44 +++++++++++++++++++-----------------------
- 1 file changed, 20 insertions(+), 24 deletions(-)
+ drivers/staging/speakup/i18n.c | 23 ++++++++++++-----------
+ 1 file changed, 12 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/staging/speakup/i18n.c b/drivers/staging/speakup/i18n.c
-index a8326db..7809867 100644
+index ac1ebea..a8326db 100644
 --- a/drivers/staging/speakup/i18n.c
 +++ b/drivers/staging/speakup/i18n.c
-@@ -541,34 +541,30 @@ static bool fmt_validate(char *template, char *user)
-  */
- ssize_t spk_msg_set(enum msg_index_t index, char *text, size_t length)
- {
--	int rc = 0;
- 	char *newstr = NULL;
- 	unsigned long flags;
- 
--	if ((index >= MSG_FIRST_INDEX) && (index < MSG_LAST_INDEX)) {
--		newstr = kmalloc(length + 1, GFP_KERNEL);
--		if (newstr) {
--			memcpy(newstr, text, length);
--			newstr[length] = '\0';
--			if (index >= MSG_FORMATTED_START &&
--			    index <= MSG_FORMATTED_END &&
--			    !fmt_validate(speakup_default_msgs[index],
--					  newstr)) {
--				kfree(newstr);
--				return -EINVAL;
--			}
--			spin_lock_irqsave(&speakup_info.spinlock, flags);
--			if (speakup_msgs[index] != speakup_default_msgs[index])
--				kfree(speakup_msgs[index]);
--			speakup_msgs[index] = newstr;
--			spin_unlock_irqrestore(&speakup_info.spinlock, flags);
--		} else {
--			rc = -ENOMEM;
--		}
--	} else {
--		rc = -EINVAL;
-+	if ((index < MSG_FIRST_INDEX) || (index >= MSG_LAST_INDEX))
-+		return -EINVAL;
-+
-+	newstr = kmalloc(length + 1, GFP_KERNEL);
-+	if (!newstr)
-+		return -ENOMEM;
-+
-+	memcpy(newstr, text, length);
-+	newstr[length] = '\0';
-+	if (index >= MSG_FORMATTED_START &&
-+	    index <= MSG_FORMATTED_END &&
-+	    !fmt_validate(speakup_default_msgs[index], newstr)) {
-+		kfree(newstr);
-+		return -EINVAL;
- 	}
--	return rc;
-+	spin_lock_irqsave(&speakup_info.spinlock, flags);
-+	if (speakup_msgs[index] != speakup_default_msgs[index])
-+		kfree(speakup_msgs[index]);
-+	speakup_msgs[index] = newstr;
-+	spin_unlock_irqrestore(&speakup_info.spinlock, flags);
-+	return 0;
- }
- 
+@@ -476,19 +476,20 @@ static char *find_specifier_end(char *input)
  /*
+  * Function: compare_specifiers
+  * Compare the format specifiers pointed to by *input1 and *input2.
+- * Return 1 if they are the same, 0 otherwise.  Advance *input1 and *input2
+- * so that they point to the character following the end of the specifier.
++ * Return true if they are the same, false otherwise.
++ * Advance *input1 and *input2 so that they point to the character following
++ * the end of the specifier.
+  */
+-static int compare_specifiers(char **input1, char **input2)
++static bool compare_specifiers(char **input1, char **input2)
+ {
+-	int same = 0;
++	bool same = false;
+ 	char *end1 = find_specifier_end(*input1);
+ 	char *end2 = find_specifier_end(*input2);
+ 	size_t length1 = end1 - *input1;
+ 	size_t length2 = end2 - *input2;
+ 
+ 	if ((length1 == length2) && !memcmp(*input1, *input2, length1))
+-		same = 1;
++		same = true;
+ 
+ 	*input1 = end1;
+ 	*input2 = end2;
+@@ -499,12 +500,12 @@ static int compare_specifiers(char **input1, char **input2)
+  * Function: fmt_validate
+  * Check that two format strings contain the same number of format specifiers,
+  * and that the order of specifiers is the same in both strings.
+- * Return 1 if the condition holds, 0 if it doesn't.
++ * Return true if the condition holds, false if it doesn't.
+  */
+-static int fmt_validate(char *template, char *user)
++static bool fmt_validate(char *template, char *user)
+ {
+-	int valid = 1;
+-	int still_comparing = 1;
++	bool valid = true;
++	bool still_comparing = true;
+ 	char *template_ptr = template;
+ 	char *user_ptr = user;
+ 
+@@ -516,10 +517,10 @@ static int fmt_validate(char *template, char *user)
+ 			valid = compare_specifiers(&template_ptr, &user_ptr);
+ 		} else {
+ 			/* No more format specifiers in one or both strings. */
+-			still_comparing = 0;
++			still_comparing = false;
+ 			/* See if one has more specifiers than the other. */
+ 			if (template_ptr || user_ptr)
+-				valid = 0;
++				valid = false;
+ 		}
+ 	}
+ 	return valid;
 -- 
 1.9.1
 
