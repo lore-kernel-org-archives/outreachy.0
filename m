@@ -1,116 +1,167 @@
 X-GM-THRID: 6395446243166781440
-X-Received: by 10.129.165.201 with SMTP id c192mr9378113ywh.74.1489161461179;
-        Fri, 10 Mar 2017 07:57:41 -0800 (PST)
+X-Received: by 10.46.21.28 with SMTP id s28mr435582ljd.14.1489092025607;
+        Thu, 09 Mar 2017 12:40:25 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.22.129 with SMTP id c1ls5950291ote.14.gmail; Fri, 10 Mar
- 2017 07:57:40 -0800 (PST)
-X-Received: by 10.129.50.12 with SMTP id y12mr9356638ywy.111.1489161460660;
-        Fri, 10 Mar 2017 07:57:40 -0800 (PST)
-Return-Path: <aishpant@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id a3si1828925pfb.2.2017.03.10.07.57.40
+Received: by 10.46.19.10 with SMTP id 10ls801530ljt.24.gmail; Thu, 09 Mar 2017
+ 12:40:25 -0800 (PST)
+X-Received: by 10.46.69.7 with SMTP id s7mr2521908lja.18.1489092025105;
+        Thu, 09 Mar 2017 12:40:25 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id t131si4698wmf.1.2017.03.09.12.40.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 10 Mar 2017 07:57:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Thu, 09 Mar 2017 12:40:25 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id v190so11219355pfb.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 07:57:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=rk8awixI0wt+/X1C2q5ok40rOu5mz0FI/OgZEDG+7+g=;
-        b=szH9UPTseOLx3gfm69A0yikFVO7NG37b6U/aAaNKCmTp8OmC2FveSagmgyvuJNHw2f
-         FIWHtaMHj0DK6wb5qCS3Lq7r65A/zYqsOCfDSKlLsHixDlmZOjpVKuAkI42YCY+Va0wa
-         LEbjRlw5dAlei84Clxo3nz2cMiISASj78fu536lMqpO4l6kCPWbckdGTBH+N35UqJ1fO
-         xNu16eElhniePadMcrvlmizZhZ1AGn4/CROtNU4Pl5lCfMsy6ZNBrWnUcjr64xe4OKit
-         hi3F5OTP8XM7NocBGaRyUgVQEtR83hIIaZxDpipyGoxaBMP5KRHWL73cTxXqlDNgRJpy
-         /7YA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=rk8awixI0wt+/X1C2q5ok40rOu5mz0FI/OgZEDG+7+g=;
-        b=JC58yWcABaazgFOQxScok4y+6AXeUxpbge3XGHHJA1cU5GbPgTTNNv/v2qbNfK0Ftz
-         k8XAkqOtQzyEZbWCz1o6lohXfAcNij3fOD/0owqJIRGi8uDlseZklLLcuRzDUIv5C1mt
-         wsha0z57Ce3/ssOLc5l+sebYPpchs8pQrTwwYrj7gd5ldNQIo6KZLqlh6YkSrKw67p7I
-         5PiJiYH7XKk0EojkWOcQPVjjWejQuqgMvGIz4WaOYWq0lFFn9NE27OUyklUoCeE8YioT
-         yG7yn+ZpghJg/Vp6b+AUMgw2CUp1hsYTPWx/i+5NzUK7aXE5pjI+KIaZfB3T37K7IJ5P
-         BIAQ==
-X-Gm-Message-State: AMke39k8tbhDnoGKB04mEkwisrWEy3K76xREl8+lzULShaX7xkIYR39wgeSWeNXvZ5rgsg==
-X-Received: by 10.99.5.82 with SMTP id 79mr21286585pgf.8.1489161460195;
-        Fri, 10 Mar 2017 07:57:40 -0800 (PST)
-Return-Path: <aishpant@gmail.com>
-Received: from aishwarya ([106.51.134.147])
-        by smtp.gmail.com with ESMTPSA id 80sm19492473pfy.67.2017.03.10.07.57.35
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 10 Mar 2017 07:57:39 -0800 (PST)
-Date: Fri, 10 Mar 2017 21:27:30 +0530
-From: Aishwarya Pant <aishpant@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH v6 0/7] staging: bcm2835-audio: clean-up coding style issues
-Message-ID: <cover.1489160830.git.aishpant@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.36,137,1486422000"; 
+   d="scan'208";a="216214465"
+Received: from 198.67.28.109.rev.sfr.net (HELO [192.168.1.69]) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 09 Mar 2017 21:40:24 +0100
+Date: Thu, 9 Mar 2017 21:40:23 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Aishwarya Pant <aishpant@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v5 2/7] staging: bcm2835-audio: replace
+ null with error pointer value
+In-Reply-To: <20170309183432.GA15683@aishwarya>
+Message-ID: <alpine.DEB.2.20.1703092139470.2306@hadrien>
+References: <cover.1489055580.git.aishpant@gmail.com> <cc9cc8c7a3576a9d556815fd9f57ca58338abb01.1489055580.git.aishpant@gmail.com> <alpine.DEB.2.20.1703091418370.3186@hadrien> <20170309183432.GA15683@aishwarya>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
-
-[1] Replace kmalloc and memset with kzalloc in vc_vchi_audio_init(..)
-[2] Replace null return value with PTR_ERR(..) values 
-    in vc_vchi_audio_init(..)
-[3] Propagate the PTR_ERR values forward instead of a hardcoded 
-    value for easier debugging in bcm2835_audio_open_connection(..)
-[4] Replace if (success) else { } after kmalloc with if(error)
-    to fail fast in the work function
-[5] De-allocate 'work' when queue_work(..) fails in the work 
-    functions
-[6] De-allocate 'vchi_instance' when VCHI connection fails or VCHI audio
-    instance initialisation fails in bcm2835_audio_open_connection()
-[7] Remove BUG_ON() in bcm2835_audio_open_connection()
+Content-Type: text/plain; charset=US-ASCII
 
 
-Changes in v6:
--- Add a local variable ret to set error value instead of
-  returning -EPERM when initialisation of vchi_audio_service fails
-  in bcm2835_audio_open_connection()
 
-Changes in v5:
--- Remove patch which added function names to log messages
+On Fri, 10 Mar 2017, Aishwarya Pant wrote:
 
-Changes in v4:
--- Break-up patch 4 into four smaller patches
--- Add a patch proposing removal of BUG_ON()
--- Make the cover letter verbose
+> On Thu, Mar 09, 2017 at 02:24:08PM +0100, Julia Lawall wrote:
+> >
+> >
+> > On Thu, 9 Mar 2017, Aishwarya Pant wrote:
+> >
+> > > This patch replaces NULL values returned by vc_vchi_audio_init(...) with
+> > > error pointer values:
+> > > 	- Return ERR_PTR(-EINVAL) when too many instances of audio
+> > > 	  service are initialised
+> > > 	- Return ERR_PTR(-ENOMEM) when kzalloc fails
+> > > 	- RETURN ERR_PTR(-EPERM) when vchi connections fail to open
+> > >
+> > > Similarly, a NULL check where vc_vchi_audio_init(...) is called is
+> > > replaced by IS_ERR(..)
+> > >
+> > > Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
+> > > ---
+> > >  drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c | 8 ++++----
+> > >  1 file changed, 4 insertions(+), 4 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
+> > > index 005e287..d2686b4 100644
+> > > --- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
+> > > +++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
+> > > @@ -287,12 +287,12 @@ vc_vchi_audio_init(VCHI_INSTANCE_T vchi_instance,
+> > >  		LOG_ERR("%s: unsupported number of connections %u (max=%u)\n",
+> > >  			__func__, num_connections, VCHI_MAX_NUM_CONNECTIONS);
+> > >
+> > > -		return NULL;
+> > > +		return ERR_PTR(-EINVAL);
+> > >  	}
+> > >  	/* Allocate memory for this instance */
+> > >  	instance = kzalloc(sizeof(*instance), GFP_KERNEL);
+> > >  	if (!instance)
+> > > -		return NULL;
+> > > +		return ERR_PTR(-ENOMEM);
+> > >
+> > >  	instance->num_connections = num_connections;
+> > >
+> > > @@ -341,7 +341,7 @@ vc_vchi_audio_init(VCHI_INSTANCE_T vchi_instance,
+> > >  	kfree(instance);
+> > >  	LOG_ERR("%s: error\n", __func__);
+> > >
+> > > -	return NULL;
+> > > +	return ERR_PTR(-EPERM);
+> >
+> > I find it a bit odd to have -EPERM hard coded at the end of the function.
+> > If the function becomes more complicated, this code could end up being
+> > shared.  In that case, different exits would have different codes.  Also,
+> > ultimately the code should come from the result of vchi_service_open,
+> > although that is not suitable now.
+> >
+> > How about adding status = -EPERM just before the goto, and the putting
+> > return ERR_PTR(status) at the end of the function?
+>
+> Yes that sounds fair.
+>
+> >
+> > By the way, I found that having all the LOG_DBG lines made the code really
+> > hard to follow.  Maybe it could be possible to just remove them.
+> >
+>
+> The LOG_DBG / LOG_ERR messages here are a wrapper of pr_err / pr_dbg
+> appended with the current function names and line numbers. So I am
+> taking a guess they are useful as long as the driver is in staging.
+>
+> > Another suggestion on this particular function is to do something about
+> > this declaration:
+> >
+> >                 SERVICE_CREATION_T params = {
+> >                         VCHI_VERSION_EX(VC_AUDIOSERV_VER, VC_AUDIOSERV_MIN_VER),
+> >                         VC_AUDIO_SERVER_NAME, // 4cc service code
+> >                         vchi_connections[i], // passed in fn pointers
+> >                         0, // rx fifo size (unused)
+> >                         0, // tx fifo size (unused)
+> >                         audio_vchi_callback, // service callback
+> >                         instance, // service callback parameter
+> >                         1, //TODO: remove VCOS_FALSE,   // unaligned bulk receives
+> >                         1, //TODO: remove VCOS_FALSE,   // unaligned bulk transmits
+> >                         0 // want crc check on bulk transfers
+> >                 };
+> >
+> > The typedef needs to go, the fields should be initialied using their names
+> > (.x = e) and the comments should be dropped.
+> >
+>
+> All-right I'll give this a go. The vchi_services driver is sprinkled
+> with typedefs.
 
-Changes in v3:
--- Fix memory leak when queue_work fails
--- Add __func__ to debug logs
+Sounds good.  It's the anonymous field declarations that are really error
+prone, but dropping the typdefs would be great as well.
 
-Changes in v2:
--- Return error value -EBUSY instead of -1 when queue_work()
-   fails
+julia
 
-
-Aishwarya Pant (7):
-  staging: bcm2835-audio: Replace kmalloc with kzalloc
-  staging: bcm2835-audio: replace null with error pointer value
-  staging: bcm2835-audio: propagate PTR_ERR value instead of -EPERM
-  staging: bcm2835-audio: use conditional only for error case
-  staging: bcm2835-audio: deallocate work when queue_work(...) fails
-  staging: bcm2835-audio: fix memory leak in    
-    bcm2835_audio_open_connection()
-  staging: bcm2835-audio: remove BUG_ON() in
-    bcm2835_audio_open_connection()
-
- .../vc04_services/bcm2835-audio/bcm2835-vchiq.c    | 103 ++++++++++-----------
- 1 file changed, 49 insertions(+), 54 deletions(-)
-
--- 
-2.7.4
-
+>
+> > julia
+> >
+> > >  }
+> > >
+> > >  static int vc_vchi_audio_deinit(struct bcm2835_audio_instance *instance)
+> > > @@ -432,7 +432,7 @@ static int bcm2835_audio_open_connection(struct bcm2835_alsa_stream *alsa_stream
+> > >  	/* Initialize an instance of the audio service */
+> > >  	instance = vc_vchi_audio_init(vchi_instance, &vchi_connection, 1);
+> > >
+> > > -	if (!instance) {
+> > > +	if (IS_ERR(instance)) {
+> > >  		LOG_ERR("%s: failed to initialize audio service\n", __func__);
+> > >
+> > >  		ret = -EPERM;
+> > > --
+> > > 2.7.4
+> > >
+> > > --
+> > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/cc9cc8c7a3576a9d556815fd9f57ca58338abb01.1489055580.git.aishpant%40gmail.com.
+> > > For more options, visit https://groups.google.com/d/optout.
+> > >
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170309183432.GA15683%40aishwarya.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
