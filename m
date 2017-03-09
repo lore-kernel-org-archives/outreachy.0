@@ -1,109 +1,64 @@
-X-GM-THRID: 6400052199989182464
-X-Received: by 10.157.13.79 with SMTP id 73mr17403646oti.81.1490128273523;
-        Tue, 21 Mar 2017 13:31:13 -0700 (PDT)
+X-GM-THRID: 6394869682861506560
+X-Received: by 10.99.116.18 with SMTP id p18mr6826443pgc.119.1489091398735;
+        Thu, 09 Mar 2017 12:29:58 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.63.218 with SMTP id i26ls222661ote.48.gmail; Tue, 21 Mar
- 2017 13:31:13 -0700 (PDT)
-X-Received: by 10.129.52.17 with SMTP id b17mr18868933ywa.107.1490128273188;
-        Tue, 21 Mar 2017 13:31:13 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pg0-x233.google.com (mail-pg0-x233.google.com. [2607:f8b0:400e:c05::233])
-        by gmr-mx.google.com with ESMTPS id r66si3596655pfb.7.2017.03.21.13.31.13
+Received: by 10.157.59.194 with SMTP id k60ls6962578otc.22.gmail; Thu, 09 Mar
+ 2017 12:29:58 -0800 (PST)
+X-Received: by 10.13.254.2 with SMTP id o2mr6269542ywf.50.1489091398255;
+        Thu, 09 Mar 2017 12:29:58 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id y203si1053647pfb.0.2017.03.09.12.29.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 21 Mar 2017 13:31:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::233 as permitted sender) client-ip=2607:f8b0:400e:c05::233;
+        Thu, 09 Mar 2017 12:29:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::233 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x233.google.com with SMTP id 21so65506459pgg.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 13:31:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=BnXO1SpM20jezbhFalt2ixSf3furQh4VEQMNtQhd7aw=;
-        b=QhbftsrEIXdnadaJIj33vF3rRJrww0/6fvGbp/vm7hnJBRO9tTCEc/l43kRNr29g12
-         +7kQqiN2nR+oxOpmDC/M2Sw+ZiiqrGp2raK4gOUqoN9ezSem9XzYtw+ayK+zCaWyK2o7
-         ALDwlQSkPU1J9xVx26JAUnMtvXq2y0BORxMpQQOKPocNhdAyu4975JncZ/CoScYhgrCD
-         8sEFvjUCb4aHVNI+qfKie/cCjM/MhhuGgLt5JCWrQxrDAhN/y8cjgQCjRfvb69cVnIfh
-         pGxjvJlLZXFe5gOaXssJOGcYvuU8AdU7IxR7OWXxWnOXJr6l8OmcHTYocwenvC7yeYrd
-         vppA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=BnXO1SpM20jezbhFalt2ixSf3furQh4VEQMNtQhd7aw=;
-        b=OaGndP95bVw4y/rIoy7hGUgAi7v9BcLrIyp3tZEI3uZ5LJrpDOQztUWDZbVlPnYrq0
-         7LZXNLcQ3VjNXdK4P2FGsNUV2yC6+wdyNGhMo8ZzKVfzHQLmxgf6evQWHX/pue3E6vVe
-         lTDduD+tfRfqfBG9XuTr9v4CezlSrBCWdckk1AzzxZ6GkdvPJXfsAc8hvLsY6CWzOerJ
-         v7BO0mmXMld1Kgjn0RHnslybPPojk5DR/7ECxJwgUdnZe0gJmMs2fB9qezTejKt7uLda
-         slGV/lqpnRs92nF6llfsNL+D8W4my4j+NT4aoLa5iB1NxZQ0AGhI5CB4PF4GBtX7eayN
-         ATWQ==
-X-Gm-Message-State: AFeK/H0rgDZnc8lc6RM5yvmHtSXMjG9bengQj2vVH1gRUdZgnQ8u5dpzDlM32+LFPupSrQ==
-X-Received: by 10.99.67.6 with SMTP id q6mr39309887pga.156.1490128272766;
-        Tue, 21 Mar 2017 13:31:12 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
-        by smtp.gmail.com with ESMTPSA id g5sm1610039pgn.18.2017.03.21.13.31.11
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 21 Mar 2017 13:31:12 -0700 (PDT)
-Date: Tue, 21 Mar 2017 13:31:11 -0700
-From: Alison Schofield <amsfield22@gmail.com>
-To: arushisinghal19971997@gmail.com, gs051095@gmail.com,
-	singhalsimran0@gmail.com, karniksayli1995@gmail.com
-Cc: outreachy-kernel@googlegroups.com
-Subject: iio meter patches - same!
-Message-ID: <20170321203110.GB12475@d830.WORKGROUP>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (LFbn-1-12060-104.w90-92.abo.wanadoo.fr [90.92.122.104])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 54A35958;
+	Thu,  9 Mar 2017 20:29:57 +0000 (UTC)
+Date: Thu, 9 Mar 2017 21:29:47 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] drivers/staging/vc04_services
+Message-ID: <20170309202947.GA20071@kroah.com>
+References: <alpine.DEB.2.20.1703072219270.2292@hadrien>
+ <20170309164024.GA30703@kroah.com>
+ <alpine.DEB.2.20.1703092120390.2306@hadrien>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <alpine.DEB.2.20.1703092120390.2306@hadrien>
+User-Agent: Mutt/1.8.0 (2017-02-23)
 
-Simran, Gargi, Sayli, Arushi,
+On Thu, Mar 09, 2017 at 09:22:14PM +0100, Julia Lawall wrote:
+> 
+> 
+> On Thu, 9 Mar 2017, Greg KH wrote:
+> 
+> > On Tue, Mar 07, 2017 at 10:20:21PM +0100, Julia Lawall wrote:
+> > > The maintainers of drivers/staging/vc04_services would prefer not to
+> > > be CCd on Outreachy patches.  Just send them to the outreachy mailing
+> > > list, without using get_maintainers.
+> >
+> > Really?  that's not good, their code is in staging they are responsible
+> > for it, I want them to see the cleanup patches.  And at the least, I
+> > want to be cc:ed on them please.
+> 
+> Don't you get everything sent to the outreachy mailing list?
 
-With respect to these...
+Yes, I do, but things that are cc:ed to me stand out "more".  It's not
+that big of a deal, I can live with it.
 
-meter/ade7753.c: simran singhal
-meter/ade7754.c: Gargi Sharma
-meter/ade7758_core.c: Sayli Karnik
-meter/ade7759.c: ArushiSinghal
+> I also regret their point of view.  Some complicated patches have been
+> posted on their code, and it would be good to have their feedback, if
+> anything seems amiss.
 
-They are all near identical and therefore should have near identical
-solutions.  You could work together, or follow one another, but, in
-the end we don't want to see 4 different flavors of the solution.
-That makes it harder to maintain.
-
-Also - if 'we' can get one reviewed/ACK'd/applied, then we make the 
-reviewers and maintainers life easier when we follow it with 3 
-similar patches.
-
-Here's where I think you all dancing around...
-You have Lars' feedback from ade7753:
-> It might make sense to reuse the existing lock which currently
-> protects the
-> read/write functions. You can do this by introducing a variant of
-> ade7753_spi_{read,write}_reg_16() that does not take a lock and use
-> these to
-> implement the read-modify-write cycle in a protected section.
-
-I'll add to that:
-They were all using mlock to try to protect the spi read followed by
-write operation.  I don't think the lock was actually doing that. 
-I don't see a guarantee that another spi write could not intervene,
-So perhaps there was no real protection.
-
-I'm thinking one function that locks the existing transaction lock, does
-the read, does the write, unlocks.  
-
-Can you all coordinate that please.  This way the next patch we see on
-this is agreed upon by all four.  Once that is applauded ;), the others
-can follow easily!
+Yes, that's why I would push back please.  Tell them I said so :)
 
 thanks,
-alison
 
-
-
+greg k-h
 
