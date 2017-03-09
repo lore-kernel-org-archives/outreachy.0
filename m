@@ -1,272 +1,104 @@
 X-GM-THRID: 6394971085965623296
-X-Received: by 10.129.158.213 with SMTP id v204mr5695539ywg.70.1489070774058;
-        Thu, 09 Mar 2017 06:46:14 -0800 (PST)
+X-Received: by 10.46.7.80 with SMTP id i16mr2021368ljd.5.1489063416556;
+        Thu, 09 Mar 2017 04:43:36 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.24.83 with SMTP id t19ls150254ott.28.gmail; Thu, 09 Mar
- 2017 06:46:13 -0800 (PST)
-X-Received: by 10.157.1.21 with SMTP id 21mr4999249otu.90.1489070773725;
-        Thu, 09 Mar 2017 06:46:13 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id y90si1215451pfa.6.2017.03.09.06.46.13
+Received: by 10.46.8.73 with SMTP id g9ls661450ljd.33.gmail; Thu, 09 Mar 2017
+ 04:43:35 -0800 (PST)
+X-Received: by 10.46.9.141 with SMTP id 135mr2233612ljj.19.1489063415496;
+        Thu, 09 Mar 2017 04:43:35 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id i76si950754wmh.1.2017.03.09.04.43.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 09 Mar 2017 06:46:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Thu, 09 Mar 2017 04:43:35 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id 25so7032052pgy.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 09 Mar 2017 06:46:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=z42hRqnDh5WpRUUb85WOv1ngtmtFOITYiNQwW9ZXMfE=;
-        b=NRhDHx1VE5iTGDTwMCQtxsjDstRXeqLjNqGI7TFB5htv1MQcc4ocyJ6Vcnw+rP8C1x
-         OH1qu3QWVYrmn9domBazg6wSDh5q+H6NXKGvJ4AQ/bDEK6UkXomcuMG40ec4GHCmN6Rs
-         HdXaWV3538MGNZUKCuENSN0WOA6+0EhxxmUJ8hTpbMxkJ/jjNs4NIQM9fSaL04wQxB6/
-         9Qz1BcEMmB7Jm3LWNWiggY1p1F5c+U9tXYQUK1WD7NLHvm+utFCObg+4ocVotcoCXv8A
-         3YlKTHa/1AIMnmLIPlDoVAmfsxeShv/ft5CpyBv4pQOknRybaUK6QIgvAUCMr12Jnqy1
-         rQ6g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=z42hRqnDh5WpRUUb85WOv1ngtmtFOITYiNQwW9ZXMfE=;
-        b=lhTyCYwPZ5xkP1udJvfhnY7uNwBiAZAV/pUPIt8TTqY2/OxugC1BIhcq3rYX4X44HO
-         dL59DGh3g96da4a8nfNKIwwjti9qA80vIVP0iqp+809/YU++KiqXybTqZMBFqPqRkI3n
-         UfcowEyRZQMZsZq3xY/xmdYJv5gDUoRNpfk1yEMnh148gRDu8pVnNpjnE6nOUU0h9i+A
-         AYe1f2r9wUwwt8ZBHTa5JabGLYzbWdP5TrzA8RB0VwzLmbgtwQUKQt5AjVyAV16mWfsD
-         zXzxWojAGHO7x9FABg87MuR3NK05IzLHEj0Ydj9/dP+ulZdQrW8XATogXyVkCPcjUgNh
-         UNVg==
-X-Gm-Message-State: AMke39nmNYD3xC9k8wDIG7Bx2/6lslbyqmM3IIuJhAU0udkPUoIOy8+1i03NRpAnoBhp2A==
-X-Received: by 10.84.232.1 with SMTP id h1mr17639681plk.95.1489070773340;
-        Thu, 09 Mar 2017 06:46:13 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([45.125.141.33])
-        by smtp.gmail.com with ESMTPSA id q64sm13047895pfi.69.2017.03.09.06.46.12
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 09 Mar 2017 06:46:12 -0800 (PST)
-Message-ID: <58c16ab4.c348620a.f3c4a.da3e@mx.google.com>
-X-Google-Original-Message-ID: <20170309144609.GA14965@<rvarsha016@gmail.com>>
-Date: Thu, 9 Mar 2017 20:16:09 +0530
-From: Varsha Rao <rvarsha016@gmail.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/2] staging: media: atomisp: Remove useless cast.
-References: <cover.1489069491.git.varshar186@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.36,268,1486422000"; 
+   d="scan'208";a="263844832"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 09 Mar 2017 13:43:35 +0100
+Date: Thu, 9 Mar 2017 13:43:22 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Varsha Rao <rvarsha016@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, mchehab@kernel.org, 
+    gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH 1/2] staging: media: atomisp: Remove
+ useless cast.
+In-Reply-To: <c301a39d-7f44-4c3e-8f6c-2350b5938d1b@googlegroups.com>
+Message-ID: <alpine.DEB.2.20.1703091342440.3186@hadrien>
+References: <cover.1488944614.git.varshar186@gmail.com> <58bf8051.081a620a.e7433.8064@mx.google.com> <alpine.DEB.2.20.1703081016060.3156@hadrien> <53167cf4-2fc5-4178-b963-c616822ae3b1@googlegroups.com> <alpine.DEB.2.20.1703091203100.3186@hadrien>
+ <c301a39d-7f44-4c3e-8f6c-2350b5938d1b@googlegroups.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1489069491.git.varshar186@gmail.com>
-User-Agent: Mutt/1.7.1 (2016-10-04)
+Content-Type: multipart/mixed; BOUNDARY="8323329-1317304817-1489063402=:3186"
 
-Explicit type casting of variable, with same type as that of variable,
-is not required. The following coccinelle script is used to remove it.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-@@
-type T;
-T *ptr;
-T p;
-@@
-(
-- (T *)(&p)
-+ &p
-|
-- (T *)ptr
-+ ptr
-|
-- (T *)(ptr)
-+ ptr
-|
-- (T)(p)
-+ p
-)
+--8323329-1317304817-1489063402=:3186
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
----
- drivers/staging/media/atomisp/i2c/gc2235.c               | 16 ++++++++--------
- drivers/staging/media/atomisp/i2c/mt9m114.c              |  4 ++--
- drivers/staging/media/atomisp/i2c/ov2722.c               |  6 +++---
- .../atomisp2/css2400/runtime/isys/src/isys_dma_rmgr.c    |  2 +-
- .../media/atomisp/pci/atomisp2/css2400/sh_css_firmware.c |  8 ++++----
- drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm.c     |  2 +-
- 6 files changed, 19 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/staging/media/atomisp/i2c/gc2235.c b/drivers/staging/media/atomisp/i2c/gc2235.c
-index 37a83c7..0c3fa70 100644
---- a/drivers/staging/media/atomisp/i2c/gc2235.c
-+++ b/drivers/staging/media/atomisp/i2c/gc2235.c
-@@ -278,7 +278,7 @@ static int gc2235_get_intg_factor(struct i2c_client *client,
- 	if (ret)
- 		return ret;
- 
--	buf->crop_horizontal_start = ((u16)reg_val_h << 8) | (u16)reg_val;
-+	buf->crop_horizontal_start = (reg_val_h << 8) | reg_val;
- 
- 	ret =  gc2235_read_reg(client, GC2235_8BIT,
- 					GC2235_V_CROP_START_H, &reg_val_h);
-@@ -287,7 +287,7 @@ static int gc2235_get_intg_factor(struct i2c_client *client,
- 	if (ret)
- 		return ret;
- 
--	buf->crop_vertical_start = ((u16)reg_val_h << 8) | (u16)reg_val;
-+	buf->crop_vertical_start = (reg_val_h << 8) | reg_val;
- 
- 	ret = gc2235_read_reg(client, GC2235_8BIT,
- 					GC2235_H_OUTSIZE_H, &reg_val_h);
-@@ -295,7 +295,7 @@ static int gc2235_get_intg_factor(struct i2c_client *client,
- 					GC2235_H_OUTSIZE_L, &reg_val);
- 	if (ret)
- 		return ret;
--	buf->output_width = ((u16)reg_val_h << 8) | (u16)reg_val;
-+	buf->output_width = (reg_val_h << 8) | reg_val;
- 
- 	ret = gc2235_read_reg(client, GC2235_8BIT,
- 					GC2235_V_OUTSIZE_H, &reg_val_h);
-@@ -303,7 +303,7 @@ static int gc2235_get_intg_factor(struct i2c_client *client,
- 					GC2235_V_OUTSIZE_L, &reg_val);
- 	if (ret)
- 		return ret;
--	buf->output_height = ((u16)reg_val_h << 8) | (u16)reg_val;
-+	buf->output_height = (reg_val_h << 8) | reg_val;
- 
- 	buf->crop_horizontal_end = buf->crop_horizontal_start +
- 						buf->output_width - 1;
-@@ -317,7 +317,7 @@ static int gc2235_get_intg_factor(struct i2c_client *client,
- 	if (ret)
- 		return ret;
- 
--	dummy = ((u16)reg_val_h << 8) | (u16)reg_val;
-+	dummy = (reg_val_h << 8) | reg_val;
- 
- 	ret = gc2235_read_reg(client, GC2235_8BIT,
- 					GC2235_SH_DELAY_H, &reg_val_h);
-@@ -702,9 +702,9 @@ static int distance(struct gc2235_resolution *res, u32 w, u32 h)
- 	h_ratio = (res->height << 13) / h;
- 	if (h_ratio == 0)
- 		return -1;
--	match   = abs(((w_ratio << 13) / h_ratio) - ((int)8192));
-+	match   = abs(((w_ratio << 13) / h_ratio) - (8192));
- 
--	if ((w_ratio < (int)8192) || (h_ratio < (int)8192)  ||
-+	if ((w_ratio < 8192) || (h_ratio < 8192)  ||
- 		(match > LARGEST_ALLOWED_RATIO_MISMATCH))
- 		return -1;
- 
-@@ -873,7 +873,7 @@ static int gc2235_detect(struct i2c_client *client)
- 	}
- 	ret = gc2235_read_reg(client, GC2235_8BIT,
- 					GC2235_SENSOR_ID_L, &low);
--	id = ((((u16) high) << 8) | (u16) low);
-+	id = (((high) << 8) | low);
- 
- 	if (id != GC2235_ID) {
- 		dev_err(&client->dev, "sensor ID error, 0x%x\n", id);
-diff --git a/drivers/staging/media/atomisp/i2c/mt9m114.c b/drivers/staging/media/atomisp/i2c/mt9m114.c
-index 8762124..514b112 100644
---- a/drivers/staging/media/atomisp/i2c/mt9m114.c
-+++ b/drivers/staging/media/atomisp/i2c/mt9m114.c
-@@ -618,9 +618,9 @@ static int distance(struct mt9m114_res_struct const *res, u32 w, u32 h)
- 	h_ratio = (res->height << 13) / h;
- 	if (h_ratio == 0)
- 		return -1;
--	match   = abs(((w_ratio << 13) / h_ratio) - ((int)8192));
-+	match   = abs(((w_ratio << 13) / h_ratio) - (8192));
- 
--	if ((w_ratio < (int)8192) || (h_ratio < (int)8192)  ||
-+	if ((w_ratio < 8192) || (h_ratio < 8192)  ||
- 		(match > LARGEST_ALLOWED_RATIO_MISMATCH))
- 		return -1;
- 
-diff --git a/drivers/staging/media/atomisp/i2c/ov2722.c b/drivers/staging/media/atomisp/i2c/ov2722.c
-index 43e872a..f615898 100644
---- a/drivers/staging/media/atomisp/i2c/ov2722.c
-+++ b/drivers/staging/media/atomisp/i2c/ov2722.c
-@@ -807,9 +807,9 @@ static int distance(struct ov2722_resolution *res, u32 w, u32 h)
- 	h_ratio = (res->height << 13) / h;
- 	if (h_ratio == 0)
- 		return -1;
--	match   = abs(((w_ratio << 13) / h_ratio) - ((int)8192));
-+	match   = abs(((w_ratio << 13) / h_ratio) - (8192));
- 
--	if ((w_ratio < (int)8192) || (h_ratio < (int)8192)  ||
-+	if ((w_ratio < 8192) || (h_ratio < 8192)  ||
- 		(match > LARGEST_ALLOWED_RATIO_MISMATCH))
- 		return -1;
- 
-@@ -998,7 +998,7 @@ static int ov2722_detect(struct i2c_client *client)
- 	}
- 	ret = ov2722_read_reg(client, OV2722_8BIT,
- 					OV2722_SC_CMMN_CHIP_ID_L, &low);
--	id = ((((u16) high) << 8) | (u16) low);
-+	id = (((high) << 8) | low);
- 
- 	if ((id != OV2722_ID) && (id != OV2720_ID)) {
- 		dev_err(&client->dev, "sensor ID error\n");
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/isys/src/isys_dma_rmgr.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/isys/src/isys_dma_rmgr.c
-index d99150a..5032627 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/isys/src/isys_dma_rmgr.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/isys/src/isys_dma_rmgr.c
-@@ -69,7 +69,7 @@ bool ia_css_isys_dma_channel_rmgr_acquire(
- 		for (i = ISYS2401_DMA_CHANNEL_0; i < N_ISYS2401_DMA_CHANNEL; i++) {
- 			if (bitop_getbit(cur_rsrc->active_table, i) == 0) {
- 				bitop_setbit(cur_rsrc->active_table, i);
--				*channel = (isys2401_dma_channel)i;
-+				*channel = i;
- 				cur_rsrc->num_active++;
- 				retval = true;
- 				break;
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_firmware.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_firmware.c
-index eba96cc..b294e6d 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_firmware.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_firmware.c
-@@ -122,7 +122,7 @@ sh_css_load_blob_info(const char *fw, const struct ia_css_fw_info *bi, struct ia
- 	/* Special case: only one binary in fw */
- 	if (bi == NULL) bi = (const struct ia_css_fw_info *)fw;
- 
--	name = (const char *)fw + bi->blob.prog_name_offset;
-+	name = fw + bi->blob.prog_name_offset;
- 	blob = (const unsigned char *)fw + bi->blob.offset;
- 
- 	/* sanity check */
-@@ -201,7 +201,7 @@ sh_css_check_firmware_version(const char *fw_data)
- 	struct sh_css_fw_bi_file_h *file_header;
- 
- 	firmware_header = (struct firmware_header *)fw_data;
--	file_header = (struct sh_css_fw_bi_file_h *)&firmware_header->file_header;
-+	file_header = &firmware_header->file_header;
- 
- 	if (strcmp(file_header->version, release_version) != 0) {
- 		return false;
-@@ -221,8 +221,8 @@ sh_css_load_firmware(const char *fw_data,
- 	bool valid_firmware = false;
- 
- 	firmware_header = (struct firmware_header *)fw_data;
--	file_header = (struct sh_css_fw_bi_file_h *)&firmware_header->file_header;
--	binaries = (struct ia_css_fw_info *)&firmware_header->binary_header;
-+	file_header = &firmware_header->file_header;
-+	binaries = &firmware_header->binary_header;
- 	strncpy(FW_rel_ver_name, file_header->version, min(sizeof(FW_rel_ver_name), sizeof(file_header->version)) - 1);
- 	valid_firmware = sh_css_check_firmware_version(fw_data);
- 	if (!valid_firmware) {
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm.c b/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm.c
-index 358d340..a32c981 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm.c
-@@ -553,7 +553,7 @@ int hmm_set(ia_css_ptr virt, int c, unsigned int bytes)
- 		vptr = hmm_bo_vmap(bo, true);
- 		if (vptr) {
- 			vptr = vptr + (virt - bo->start);
--			memset((void *)vptr, c, bytes);
-+			memset(vptr, c, bytes);
- 			clflush_cache_range(vptr, bytes);
- 			hmm_bo_vunmap(bo);
- 			return 0;
--- 
-2.9.3
 
+On Thu, 9 Mar 2017, Varsha Rao wrote:
+
+>
+> Hello,
+>
+>       > However, here it does not match void and void * . Also gives
+>       no output for this particular file.
+>       > Why is it not recognizing the difference between ptr and p ?
+>       (with the earlier coccinelle script)
+>
+>       Because there is a bug in the parsing of metavariable
+>       identifiers.  I knew
+>       this, but haven't thought about it recently...  I think that
+>       once it sees
+>       a *, it applies the * to everything that comes after.  Or more
+>       likely, it
+>       is probably parsing the metavariables as T * being the type, and
+>       the list
+>       of names coming after.
+>
+>       I'll make a note to fix it.
+>
+>
+>   Yes, it is indeed a bug and thanks for considering it. I hope the
+> following observation would be of help.
+>
+>   There was one more case, which I ignored as it gave false result. (using
+> the first script)
+>   Such as it could not recognize difference between declaration unsigned int
+> __user *user_chanlist and cast (unsigned int __force *)user_chanlist .
+>   Removed the later casting. The file is comedi/comedi_fops.c
+>
+>   -               cmd.chanlist = (unsigned int __force *)user_chanlist;
+>   +               cmd.chanlist = user_chanlist;
+
+Yeah, Coccinelle is also not good at annotations at the moment - work in
+progress...  It was good thinking to ignore this case.
+
+julia
+
+
+>
+>    Thanks,
+>    Varsha
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/c301a39d-7f44-4c3e-8f6c-
+> 2350b5938d1b%40googlegroups.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-1317304817-1489063402=:3186--
 
