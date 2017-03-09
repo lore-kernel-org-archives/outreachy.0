@@ -1,53 +1,52 @@
 X-GM-THRID: 6395576564216496128
-X-Received: by 10.159.38.77 with SMTP id 71mr125110uag.28.1489086212371;
-        Thu, 09 Mar 2017 11:03:32 -0800 (PST)
+X-Received: by 10.13.214.15 with SMTP id y15mr6242506ywd.100.1489086207115;
+        Thu, 09 Mar 2017 11:03:27 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.47.2 with SMTP id j2ls2003522itj.3.gmail; Thu, 09 Mar 2017
- 11:03:31 -0800 (PST)
-X-Received: by 10.99.104.130 with SMTP id d124mr6211940pgc.13.1489086211518;
-        Thu, 09 Mar 2017 11:03:31 -0800 (PST)
+Received: by 10.157.38.42 with SMTP id a39ls3860285otb.38.gmail; Thu, 09 Mar
+ 2017 11:03:26 -0800 (PST)
+X-Received: by 10.13.252.194 with SMTP id m185mr5706396ywf.145.1489086206703;
+        Thu, 09 Mar 2017 11:03:26 -0800 (PST)
 Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id u12si1373038pfd.3.2017.03.09.11.03.31
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id c123si1367363pfa.4.2017.03.09.11.03.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 09 Mar 2017 11:03:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Thu, 09 Mar 2017 11:03:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id j5so8160888pfb.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 09 Mar 2017 11:03:31 -0800 (PST)
+Received: by mail-pg0-x243.google.com with SMTP id b5so7719949pgg.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 09 Mar 2017 11:03:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=DnA1rdUN/iLyFLh81k+NjQUhGH7ZNPms0/xGFZUz0Do=;
-        b=QeD/I5kCz7yQ3cge/vs0c1mXuB/5pM52kZktXJy0XIzu5o+9jshyHST0KV2GsgYXlU
-         JbqgmdCz1XGwKyiKF62G4aJ9MOX2I3oC/C8h54TA0Mi9sjDNibYKz1cGpP6A5QKLhyIx
-         gy0dG8FuqrIVcampS2gte00du3tyyacFeD4ViUt91MZLTQeKRPDnaPl8DYls12Mswxfg
-         QCliUtT7+Z8iWt/9+phur2xAs6AlDvqobAFCXP6+NTiZ37LyXu3WyU4aEUeVLbmQOAQD
-         ET4Hki2wRajQXqyXMZq+HvpFqze+YQvAuYJfJSzd/7NucBJTN+3fVlOzx7E41nXp0kom
-         OKsQ==
+        h=from:to:cc:subject:date:message-id;
+        bh=pbCIjfO2Ej9zovz8RG9Z0w4yYkZulGLbFSmY43Hivds=;
+        b=WsXSOL+KRl/oHCR7u2zh+e7JLE5Qu5bPjyq7p6FkN7/0fdbfZQ2gK0GNOPrAdR5plr
+         bKy1pYXhFukeTO5a/GkteiUkK9ltS1cbYA85xCyiPEVZfHjeqlDYRbny2e6vFmFCZSMH
+         qyz5twWakPIjUdIOcdaF32S0YrxDKP9GS83s1zMMPsU7f7UNhDq7OdOE373SSzd7pezZ
+         vRplMm98wYEEaEvZetJYyfS7Po0CmwDjzL2tmAZm9sg3H4vOb4ReA+A72SmE1sM/HfS8
+         qofi1J3b4QK9PC50qGlLHXsLWiTSIRccmZsk2ImKeJm4179HpI6fMDfC+7RPwm0fs18t
+         23Hw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=DnA1rdUN/iLyFLh81k+NjQUhGH7ZNPms0/xGFZUz0Do=;
-        b=P35BGOzG4PiK8LXJKA7qbvVrzh+m5t0mtANURRKcHU5c9J7PgkDX4AUaeseqilHV7B
-         S/NPPnWnQlSgzIRicUGBRui1pWf0jRdFcJt5q2y8xAhJw1+qKyn1/z7I6ZHOKW2L6XwD
-         3DOStcKwjo+/d1dkU5ml52YlUV2ww+qR8AkxurD1Hj2P9WD2K4Q/l03xH2blhETFlNhY
-         6W+1G5VTn7slYZGvh6kpndDsNMkbjm3e3MNtgNcBHwDdmby83bMzCo3tI78NwW4YWori
-         5gfZvsCe2goCx7RwTEyNplbWNn6r7oVmDO/+OPRbOhk/YPb4SloaD0WT0276+CtXAG2Y
-         Nuvg==
-X-Gm-Message-State: AMke39nrvvGlM73GqmrCseuUOk7OIien6tErYYdvX8zfHtmwj/XpJ47alqKujMFSPOEmow==
-X-Received: by 10.99.63.71 with SMTP id m68mr15402817pga.115.1489086211109;
-        Thu, 09 Mar 2017 11:03:31 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=pbCIjfO2Ej9zovz8RG9Z0w4yYkZulGLbFSmY43Hivds=;
+        b=TXFIP/sLGFp1P3XnsqMNbJ5NddA38pWx/ryfpeYKRHiCAa4+5Gd1QT6QzbYCROU1gy
+         VkZKWZOnvbnElvnFDrIQBsWgOR3e5OfCuWm7Y45kCSpp7APjCM5vAJr55J7/h1oqMPlb
+         WrXSPUdG8TM0Vw05X7aLLrV1VMda369KCKO7DgWg/42kDjxFd9uhH2yiq2DuBibbFpyE
+         qV5L3afjOc/KEvrHq0F0hC27ZeXThDu3qhhx/Sh4+gjDRxZLptzyL/5UKwbpvRXlB26c
+         RJ2+fQfslIlGIl75wsG3tyOO5rzjYOsqfud+u/LUisdfpH/iVaC8C8LVJ/oovmPSLhzw
+         cdMA==
+X-Gm-Message-State: AMke39lLXux+2wGq8I9DockSQ0+2Ziqc5wDwXIYAWTcWUk0KoU/xRP1rP1fPUuO2PFwHXA==
+X-Received: by 10.84.128.65 with SMTP id 59mr19483639pla.167.1489086206442;
+        Thu, 09 Mar 2017 11:03:26 -0800 (PST)
 Return-Path: <arushisinghal19971997@gmail.com>
 Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id y5sm13969044pfd.33.2017.03.09.11.03.29
+        by smtp.gmail.com with ESMTPSA id 15sm14042280pgh.21.2017.03.09.11.03.24
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 09 Mar 2017 11:03:29 -0800 (PST)
+        Thu, 09 Mar 2017 11:03:24 -0800 (PST)
 From: Arushi Singhal <arushisinghal19971997@gmail.com>
 To: w.d.hubbs@gmail.com
 Cc: chris@the-brannons.com,
@@ -59,205 +58,39 @@ Cc: chris@the-brannons.com,
 	devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org,
 	Arushi Singhal <arushisinghal19971997@gmail.com>
-Subject: [PATCH 1/6] staging: speakup: fix "Alignment match open parenthesis"
-Date: Fri, 10 Mar 2017 00:33:15 +0530
-Message-Id: <20170309190320.25681-2-arushisinghal19971997@gmail.com>
+Subject: [PATCH 0/6] staging: speakup: multiple checkpatch issues
+Date: Fri, 10 Mar 2017 00:33:14 +0530
+Message-Id: <20170309190320.25681-1-arushisinghal19971997@gmail.com>
 X-Mailer: git-send-email 2.11.0
-In-Reply-To: <20170309190320.25681-1-arushisinghal19971997@gmail.com>
-References: <20170309190320.25681-1-arushisinghal19971997@gmail.com>
 
-Fix checkpatch issues: "CHECK: Alignment should match open parenthesis".
+Improve readability by fixing multiple checkpatch.pl
+issues in speakup driver. 
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
- drivers/staging/speakup/i18n.c     |  2 +-
- drivers/staging/speakup/kobjects.c | 40 +++++++++++++++++++-------------------
- 2 files changed, 21 insertions(+), 21 deletions(-)
+Arushi Singhal (6):
+  staging: speakup: fix "Alignment match open parenthesis"
+  staging: speakup: Placed Logical on the previous line
+  staging: speakup: spaces preferred around operator
+  staging: speakup: identation should use tabs
+  staging: speakup: Alignment should match open parenthesis
+  staging: speakup: Add blank line after function/struct/union/enum
+    declarations
 
-diff --git a/drivers/staging/speakup/i18n.c b/drivers/staging/speakup/i18n.c
-index 11f1418b4006..ac1ebead3c3f 100644
---- a/drivers/staging/speakup/i18n.c
-+++ b/drivers/staging/speakup/i18n.c
-@@ -607,7 +607,7 @@ void spk_reset_msg_group(struct msg_group_t *group)
- void spk_initialize_msgs(void)
- {
- 	memcpy(speakup_msgs, speakup_default_msgs,
--		sizeof(speakup_default_msgs));
-+	       sizeof(speakup_default_msgs));
- }
- 
- /* Free user-supplied strings when module is unloaded: */
-diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
-index 2fef55569bfd..8c93188b832c 100644
---- a/drivers/staging/speakup/kobjects.c
-+++ b/drivers/staging/speakup/kobjects.c
-@@ -79,7 +79,7 @@ static ssize_t chars_chartab_show(struct kobject *kobj,
-  * character descriptions or chartab entries.
-  */
- static void report_char_chartab_status(int reset, int received, int used,
--	int rejected, int do_characters)
-+					int rejected, int do_characters)
- {
- 	static char const *object_type[] = {
- 		"character class entries",
-@@ -92,8 +92,8 @@ static void report_char_chartab_status(int reset, int received, int used,
- 		pr_info("%s reset to defaults\n", object_type[do_characters]);
- 	} else if (received) {
- 		len = snprintf(buf, sizeof(buf),
--				" updated %d of %d %s\n",
--				used, received, object_type[do_characters]);
-+			       " updated %d of %d %s\n",
-+			       used, received, object_type[do_characters]);
- 		if (rejected)
- 			snprintf(buf + (len - 1), sizeof(buf) - (len - 1),
- 				 " with %d reject%s\n",
-@@ -213,7 +213,7 @@ static ssize_t chars_chartab_store(struct kobject *kobj,
- 
- 	spin_unlock_irqrestore(&speakup_info.spinlock, flags);
- 	report_char_chartab_status(reset, received, used, rejected,
--		do_characters);
-+				   do_characters);
- 	return retval;
- }
- 
-@@ -221,7 +221,7 @@ static ssize_t chars_chartab_store(struct kobject *kobj,
-  * This is called when a user reads the keymap parameter.
-  */
- static ssize_t keymap_show(struct kobject *kobj, struct kobj_attribute *attr,
--	char *buf)
-+			    char *buf)
- {
- 	char *cp = buf;
- 	int i;
-@@ -257,7 +257,7 @@ static ssize_t keymap_show(struct kobject *kobj, struct kobj_attribute *attr,
-  * This is called when a user changes the keymap parameter.
-  */
- static ssize_t keymap_store(struct kobject *kobj, struct kobj_attribute *attr,
--	const char *buf, size_t count)
-+			     const char *buf, size_t count)
- {
- 	int i;
- 	ssize_t ret = count;
-@@ -291,9 +291,9 @@ static ssize_t keymap_store(struct kobject *kobj, struct kobj_attribute *attr,
- 	i *= (int)cp1[-1] + 1;
- 	i += 2; /* 0 and last map ver */
- 	if (cp1[-3] != KEY_MAP_VER || cp1[-1] > 10 ||
--			i + SHIFT_TBL_SIZE + 4 >= sizeof(spk_key_buf)) {
-+	    i + SHIFT_TBL_SIZE + 4 >= sizeof(spk_key_buf)) {
- 		pr_warn("i %d %d %d %d\n", i,
--				(int)cp1[-3], (int)cp1[-2], (int)cp1[-1]);
-+			(int)cp1[-3], (int)cp1[-2], (int)cp1[-1]);
- 		kfree(in_buff);
- 		spin_unlock_irqrestore(&speakup_info.spinlock, flags);
- 		return -EINVAL;
-@@ -307,7 +307,7 @@ static ssize_t keymap_store(struct kobject *kobj, struct kobj_attribute *attr,
- 	if (i != 0 || cp1[-1] != KEY_MAP_VER || cp1[-2] != 0) {
- 		ret = -EINVAL;
- 		pr_warn("end %d %d %d %d\n", i,
--				(int)cp1[-3], (int)cp1[-2], (int)cp1[-1]);
-+			(int)cp1[-3], (int)cp1[-2], (int)cp1[-1]);
- 	} else {
- 		if (spk_set_key_info(in_buff, spk_key_buf)) {
- 			spk_set_key_info(spk_key_defaults, spk_key_buf);
-@@ -324,7 +324,7 @@ static ssize_t keymap_store(struct kobject *kobj, struct kobj_attribute *attr,
-  * This is called when a user changes the value of the silent parameter.
-  */
- static ssize_t silent_store(struct kobject *kobj, struct kobj_attribute *attr,
--	const char *buf, size_t count)
-+			     const char *buf, size_t count)
- {
- 	int len;
- 	struct vc_data *vc = vc_cons[fg_console].d;
-@@ -363,7 +363,7 @@ static ssize_t silent_store(struct kobject *kobj, struct kobj_attribute *attr,
-  * This is called when a user reads the synth setting.
-  */
- static ssize_t synth_show(struct kobject *kobj, struct kobj_attribute *attr,
--	char *buf)
-+			   char *buf)
- {
- 	int rv;
- 
-@@ -378,7 +378,7 @@ static ssize_t synth_show(struct kobject *kobj, struct kobj_attribute *attr,
-  * This is called when a user requests to change synthesizers.
-  */
- static ssize_t synth_store(struct kobject *kobj, struct kobj_attribute *attr,
--	const char *buf, size_t count)
-+			    const char *buf, size_t count)
- {
- 	int len;
- 	char new_synth_name[10];
-@@ -434,7 +434,7 @@ static ssize_t synth_direct_store(struct kobject *kobj,
-  * This function is called when a user reads the version.
-  */
- static ssize_t version_show(struct kobject *kobj, struct kobj_attribute *attr,
--	char *buf)
-+			     char *buf)
- {
- 	char *cp;
- 
-@@ -450,7 +450,7 @@ static ssize_t version_show(struct kobject *kobj, struct kobj_attribute *attr,
-  * This is called when a user reads the punctuation settings.
-  */
- static ssize_t punc_show(struct kobject *kobj, struct kobj_attribute *attr,
--	char *buf)
-+			  char *buf)
- {
- 	int i;
- 	char *cp = buf;
-@@ -470,7 +470,7 @@ static ssize_t punc_show(struct kobject *kobj, struct kobj_attribute *attr,
- 	var = spk_get_punc_var(p_header->var_id);
- 	if (!var) {
- 		pr_warn("var is null, p_header->var_id is %i\n",
--				p_header->var_id);
-+			p_header->var_id);
- 		return -EINVAL;
- 	}
- 
-@@ -490,7 +490,7 @@ static ssize_t punc_show(struct kobject *kobj, struct kobj_attribute *attr,
-  * This is called when a user changes the punctuation settings.
-  */
- static ssize_t punc_store(struct kobject *kobj, struct kobj_attribute *attr,
--			 const char *buf, size_t count)
-+			   const char *buf, size_t count)
- {
- 	int x;
- 	struct st_var_header *p_header;
-@@ -512,7 +512,7 @@ static ssize_t punc_store(struct kobject *kobj, struct kobj_attribute *attr,
- 	var = spk_get_punc_var(p_header->var_id);
- 	if (!var) {
- 		pr_warn("var is null, p_header->var_id is %i\n",
--				p_header->var_id);
-+			p_header->var_id);
- 		return -EINVAL;
- 	}
- 
-@@ -537,7 +537,7 @@ static ssize_t punc_store(struct kobject *kobj, struct kobj_attribute *attr,
-  * This function is called when a user reads one of the variable parameters.
-  */
- ssize_t spk_var_show(struct kobject *kobj, struct kobj_attribute *attr,
--	char *buf)
-+		      char *buf)
- {
- 	int rv = 0;
- 	struct st_var_header *param;
-@@ -581,7 +581,7 @@ ssize_t spk_var_show(struct kobject *kobj, struct kobj_attribute *attr,
- 		break;
- 	default:
- 		rv = sprintf(buf, "Bad parameter  %s, type %i\n",
--			param->name, param->var_type);
-+			     param->name, param->var_type);
- 		break;
- 	}
- 	spin_unlock_irqrestore(&speakup_info.spinlock, flags);
-@@ -613,7 +613,7 @@ static inline void spk_reset_default_value(char *header_name,
-  * variable parameters.
-  */
- ssize_t spk_var_store(struct kobject *kobj, struct kobj_attribute *attr,
--			 const char *buf, size_t count)
-+		       const char *buf, size_t count)
- {
- 	struct st_var_header *param;
- 	int ret;
+ drivers/staging/speakup/i18n.c           |  2 +-
+ drivers/staging/speakup/kobjects.c       | 56 ++++++++++++++++----------------
+ drivers/staging/speakup/main.c           | 11 ++++---
+ drivers/staging/speakup/selection.c      |  2 +-
+ drivers/staging/speakup/serialio.c       |  7 ++--
+ drivers/staging/speakup/speakup.h        | 12 +++----
+ drivers/staging/speakup/speakup_acntpc.c | 10 +++---
+ drivers/staging/speakup/speakup_apollo.c |  2 +-
+ drivers/staging/speakup/speakup_decext.c |  4 +--
+ drivers/staging/speakup/speakup_decpc.c  | 22 ++++++-------
+ drivers/staging/speakup/speakup_dtlk.c   | 17 +++++-----
+ drivers/staging/speakup/speakup_dtlk.h   | 10 +++---
+ drivers/staging/speakup/speakup_keypc.c  | 12 +++----
+ drivers/staging/speakup/speakup_ltlk.c   |  2 +-
+ 14 files changed, 86 insertions(+), 83 deletions(-)
+
 -- 
 2.11.0
 
