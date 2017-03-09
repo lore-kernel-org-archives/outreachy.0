@@ -1,157 +1,120 @@
-X-GM-THRID: 6261659863526408192
-X-Received: by 10.28.189.130 with SMTP id n124mr1544057wmf.4.1457906296852;
-        Sun, 13 Mar 2016 14:58:16 -0700 (PDT)
+X-GM-THRID: 6395563647379177472
+X-Received: by 10.99.56.30 with SMTP id f30mr5968304pga.121.1489086360263;
+        Thu, 09 Mar 2017 11:06:00 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.109.91 with SMTP id i88ls438931wmc.42.canary; Sun, 13 Mar
- 2016 14:58:16 -0700 (PDT)
-X-Received: by 10.28.47.11 with SMTP id v11mr1525009wmv.0.1457906296355;
-        Sun, 13 Mar 2016 14:58:16 -0700 (PDT)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from mail-wm0-x22e.google.com (mail-wm0-x22e.google.com. [2a00:1450:400c:c09::22e])
-        by gmr-mx.google.com with ESMTPS id 185si492394wml.0.2016.03.13.14.58.16
+Received: by 10.157.59.194 with SMTP id k60ls6799617otc.22.gmail; Thu, 09 Mar
+ 2017 11:05:59 -0800 (PST)
+X-Received: by 10.200.46.171 with SMTP id h40mr2983041qta.12.1489086359896;
+        Thu, 09 Mar 2017 11:05:59 -0800 (PST)
+Return-Path: <aishpant@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id c123si1371035pfa.4.2017.03.09.11.05.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 13 Mar 2016 14:58:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c09::22e as permitted sender) client-ip=2a00:1450:400c:c09::22e;
+        Thu, 09 Mar 2017 11:05:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c09::22e as permitted sender) smtp.mailfrom=dilekuzulmez@gmail.com;
        dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x22e.google.com with SMTP id p65so80042168wmp.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 13 Mar 2016 14:58:16 -0700 (PDT)
+       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x244.google.com with SMTP id g2so3236802pge.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 09 Mar 2017 11:05:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=KHyxQwRslPia/JgyyI3rAeaDuTSG75bRm3ejWydbjug=;
-        b=07NsT4O7wUtMZTIKJgmdgcGBpxQ7R5np2VL183ytRDTbhzybW8NBTG0wWo2t5IgWnC
-         xICKe57bRVjoldoiRoNFci4RYoXVXDNFwPBbLqmPsCixNnnAb7WKhwW4hpNJhy6WFC1w
-         ZQgitA30Hz2C/8vUllWEh0Pr3C61mBveAkC58KsIkIU5VcXGh5eyprrbmzSzVuDp1rnm
-         WJOaMHyMiEzXepDXwkoAJJdnMVy1yuMK2mhN1BY1KsvfH8y+2bc41LWtUty1784gN8D1
-         P2S79OTQbAQmuDlSCTnoM8xwyT+6tK02lLsV9132DWy6vkvgfbnqU7ieEONcm1BCyLLl
-         L/8g==
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=WxRcfjIdPMNXZZGv442lps15/Dtxs5nuKFslYKiucT0=;
+        b=ZDhnN9+qBMGpdCF8QjnY/GR9l1QtFQQ/1Twt8be605qREgBabr/xFF2jQNMn5GcQ5T
+         tlZcN4m4R++HYCh+6XJ9wLkcBO445c9yKdPynXKNPHtwnAqbEbzQ55+OSINyJsLKlr0K
+         Yt8X6oKW8/fOSsLgkEi2UP4CCjUbtrqzEjRVvLeOc7gieKR2vBOEte5t76QSKMqG9ySC
+         0AAEM07q93/NJ6aZLK4+LZepjjVBTlD7M/HTMG+Y6BuogtQiqJ0xju03qcjXdp1Usvha
+         ZUrLwz7Ya7MM5nXZ3fzB2Ht5xoFimfcMq8ptbJfr3O+lsZN8aCvoSx+CIuU2j8p46qjn
+         Rx5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=KHyxQwRslPia/JgyyI3rAeaDuTSG75bRm3ejWydbjug=;
-        b=iuINrbqDVcMVN3Toz0vt8MWFA8zsLbDcFAQUfhvGkaemI0b5gAhlOHPgkGvL344WXt
-         uc3dW5qkIVoPqNrVO1fUmDQfdRMnejxuYbuhZe+mVbxpBUqWYKznBXSz7GOfoKU4/4ip
-         6cbq4RadYpBqrGWqTt6YRrB/iy/yxp4z0P38kefcgB4YAAwa26Lc2eC8UO0jiKgfJYvZ
-         u+nyDnIi6LZFARgs+1Xrb8bi8saN6lC38iuGxVSftykJRsb2GfbWfTkcc2UV35U/wv/d
-         /fxe7E22+5MfriZtb4A7Of/cV2u4Xty7m3jkSAvvSQXU6d85yNlWu/Nc96cCnVPvKe8k
-         HYaw==
-X-Gm-Message-State: AD7BkJInJenMjOKoHMqBmHFpIAW/wD8y9tRuFSku+6GamwUR9SRtiIpdvQ8GYw1zL/61yw==
-X-Received: by 10.28.125.141 with SMTP id y135mr13850887wmc.83.1457906296201;
-        Sun, 13 Mar 2016 14:58:16 -0700 (PDT)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from localhost.localdomain ([95.12.73.44])
-        by smtp.gmail.com with ESMTPSA id v188sm13175356wmv.3.2016.03.13.14.58.15
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 13 Mar 2016 14:58:15 -0700 (PDT)
-From: Dilek Uzulmez <dilekuzulmez@gmail.com>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=WxRcfjIdPMNXZZGv442lps15/Dtxs5nuKFslYKiucT0=;
+        b=umbq3CV3d/qGmlitnRSiiiD1Rkp41Xgxjhl5ooItB8vFW8MpJBWw+Syo4eIltm5PH9
+         ZiXQVfZWaanPTEWTf1nwN8U3DCT29zNOIivfBMMcp/teEzA7rklGW7L+AjIyMhpe33i+
+         9ah7D70ArSfRsOkxBvUx49L8rlDfBcidw1JcDuIP7hhAhJK57S2scphX+fXgjoDjkUKa
+         DX+GLrNleqxwk3w/pyaXlU/hV0OO6Xp4nIf5ay1Kc7CzvodIoUHNWrtrf3+XSTrHOhf/
+         f7NW4QfoSgGZPr6vg3kY3SCD341zVI3Ntp+nMMGM0tWec6XAN7qX0lxyPi0OypQyKVa7
+         UoXw==
+X-Gm-Message-State: AMke39n62bGPLNVVYu0dOFnkJbmNGY86+WpSsuVXiP2NlaSybdsA6Kt5LvsLAJSb0ONxhg==
+X-Received: by 10.99.67.1 with SMTP id q1mr15824432pga.210.1489086359664;
+        Thu, 09 Mar 2017 11:05:59 -0800 (PST)
+Return-Path: <aishpant@gmail.com>
+Received: from aishwarya ([106.51.243.15])
+        by smtp.gmail.com with ESMTPSA id 129sm13990509pgj.59.2017.03.09.11.05.58
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 09 Mar 2017 11:05:59 -0800 (PST)
+Date: Fri, 10 Mar 2017 00:31:36 +0530
+From: Aishwarya Pant <aishpant@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Subject: [PATCH] Staging: emxx_udc: Add space around '-'
-Date: Sun, 13 Mar 2016 23:58:08 +0200
-Message-Id: <1457906288-6349-1-git-send-email-dilekuzulmez@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Cc: gregkh@linuxfoundation.org
+Subject: [PATCH v2 3/3] staging: bcm2835-camera: use kernel preferred style
+ for handling errors
+Message-ID: <b06826a4db80065d93d795fdaa6272d9a072eceb.1489085851.git.aishpant@gmail.com>
+References: <cover.1489085851.git.aishpant@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1489085851.git.aishpant@gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Add space around operator '-'. Problem found using checkpatch.pl
-CHECK: spaces preferred around that '-' (ctx:VxV)
+This patch replaces NULL error values with error pointer values.
 
-Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
+Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
 ---
- drivers/staging/emxx_udc/emxx_udc.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
-index 597b78d..b79439a 100644
---- a/drivers/staging/emxx_udc/emxx_udc.c
-+++ b/drivers/staging/emxx_udc/emxx_udc.c
-@@ -421,9 +421,9 @@ static void _nbu2ss_ep_dma_abort(struct nbu2ss_udc *udc, struct nbu2ss_ep *ep)
- {
- 	struct fc_regs	*preg = udc->p_regs;
+diff --git a/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c b/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c
+index f795137..d87e2df 100644
+--- a/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c
++++ b/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c
+@@ -263,7 +263,7 @@ get_msg_context(struct vchiq_mmal_instance *instance)
+ 	msg_context = kzalloc(sizeof(*msg_context), GFP_KERNEL);
  
--	_nbu2ss_bitclr(&preg->EP_DCR[ep->epnum-1].EP_DCR1, DCR1_EPn_REQEN);
-+	_nbu2ss_bitclr(&preg->EP_DCR[ep->epnum - 1].EP_DCR1, DCR1_EPn_REQEN);
- 	mdelay(DMA_DISABLE_TIME);	/* DCR1_EPn_REQEN Clear */
--	_nbu2ss_bitclr(&preg->EP_REGS[ep->epnum-1].EP_DMA_CTRL, EPn_DMA_EN);
-+	_nbu2ss_bitclr(&preg->EP_REGS[ep->epnum - 1].EP_DMA_CTRL, EPn_DMA_EN);
- }
+ 	if (!msg_context)
+-		return NULL;
++		return ERR_PTR(-ENOMEM);
  
- /*-------------------------------------------------------------------------*/
-@@ -912,7 +912,7 @@ static int _nbu2ss_epn_out_pio(
- 		/* Copy of every four bytes */
- 		for (i = 0; i < iWordLength; i++) {
- 			pBuf32->dw =
--			_nbu2ss_readl(&preg->EP_REGS[ep->epnum-1].EP_READ);
-+			_nbu2ss_readl(&preg->EP_REGS[ep->epnum - 1].EP_READ);
- 			pBuf32++;
- 		}
- 		result = iWordLength * sizeof(u32);
-@@ -922,7 +922,7 @@ static int _nbu2ss_epn_out_pio(
- 	if (data > 0) {
- 		/*---------------------------------------------------------*/
- 		/* Copy of fraction byte */
--		Temp32.dw = _nbu2ss_readl(&preg->EP_REGS[ep->epnum-1].EP_READ);
-+		Temp32.dw = _nbu2ss_readl(&preg->EP_REGS[ep->epnum - 1].EP_READ);
- 		for (i = 0 ; i < data ; i++)
- 			pBuf32->byte.DATA[i] = Temp32.byte.DATA[i];
- 		result += data;
-@@ -1131,7 +1131,7 @@ static int _nbu2ss_epn_in_pio(
- 		if (iWordLength > 0) {
- 			for (i = 0; i < iWordLength; i++) {
- 				_nbu2ss_writel(
--					&preg->EP_REGS[ep->epnum-1].EP_WRITE
-+					&preg->EP_REGS[ep->epnum - 1].EP_WRITE
- 					, pBuf32->dw
- 				);
+ 	msg_context->instance = instance;
+ 	msg_context->handle =
+@@ -273,7 +273,7 @@ get_msg_context(struct vchiq_mmal_instance *instance)
  
-@@ -1297,7 +1297,7 @@ static void _nbu2ss_restert_transfer(struct nbu2ss_ep *ep)
- 
- 	if (ep->epnum > 0) {
- 		length = _nbu2ss_readl(
--			&ep->udc->p_regs->EP_REGS[ep->epnum-1].EP_LEN_DCNT);
-+			&ep->udc->p_regs->EP_REGS[ep->epnum - 1].EP_LEN_DCNT);
- 
- 		length &= EPn_LDATA;
- 		if (length < ep->ep.maxpacket)
-@@ -1470,7 +1470,7 @@ static int _nbu2ss_get_ep_stall(struct nbu2ss_udc *udc, u8 ep_adrs)
- 		bit_data = EP0_STL;
- 
- 	} else {
--		data = _nbu2ss_readl(&preg->EP_REGS[epnum-1].EP_CONTROL);
-+		data = _nbu2ss_readl(&preg->EP_REGS[epnum - 1].EP_CONTROL);
- 		if ((data & EPn_EN) == 0)
- 			return -1;
- 
-@@ -1565,7 +1565,7 @@ static void _nbu2ss_epn_set_stall(
- 			; limit_cnt++) {
- 
- 			regdata = _nbu2ss_readl(
--				&preg->EP_REGS[ep->epnum-1].EP_STATUS);
-+				&preg->EP_REGS[ep->epnum - 1].EP_STATUS);
- 
- 			if ((regdata & EPn_IN_DATA) == 0)
- 				break;
-@@ -2002,7 +2002,7 @@ static inline void _nbu2ss_epn_in_int(
- 		if (req->zero && ((req->req.actual % ep->ep.maxpacket) == 0)) {
- 
- 			status =
--			_nbu2ss_readl(&preg->EP_REGS[ep->epnum-1].EP_STATUS);
-+			_nbu2ss_readl(&preg->EP_REGS[ep->epnum - 1].EP_STATUS);
- 
- 			if ((status & EPn_IN_FULL) == 0) {
- 				/*-----------------------------------------*/
-@@ -2917,7 +2917,7 @@ static int nbu2ss_ep_fifo_status(struct usb_ep *_ep)
- 		data = _nbu2ss_readl(&preg->EP0_LENGTH) & EP0_LDATA;
- 
- 	} else {
--		data = _nbu2ss_readl(&preg->EP_REGS[ep->epnum-1].EP_LEN_DCNT)
-+		data = _nbu2ss_readl(&preg->EP_REGS[ep->epnum - 1].EP_LEN_DCNT)
- 			& EPn_LDATA;
+ 	if (!msg_context->handle) {
+ 		kfree(msg_context);
+-		return NULL;
++		return ERR_PTR(-ENOMEM);
  	}
  
+ 	return msg_context;
+@@ -508,8 +508,8 @@ buffer_from_host(struct vchiq_mmal_instance *instance,
+ 
+ 	/* get context */
+ 	msg_context = get_msg_context(instance);
+-	if (!msg_context) {
+-		ret = -ENOMEM;
++	if (IS_ERR(msg_context)) {
++		ret = PTR_ERR(msg_context);
+ 		goto unlock;
+ 	}
+ 
+@@ -836,8 +836,8 @@ static int send_synchronous_mmal_msg(struct vchiq_mmal_instance *instance,
+ 	}
+ 
+ 	msg_context = get_msg_context(instance);
+-	if (!msg_context)
+-		return -ENOMEM;
++	if (IS_ERR(msg_context))
++		return PTR_ERR(msg_context);
+ 
+ 	init_completion(&msg_context->u.sync.cmplt);
+ 
 -- 
-1.9.1
+2.7.4
 
 
