@@ -1,77 +1,62 @@
-X-GM-THRID: 6394506346185621504
-X-Received: by 10.157.31.42 with SMTP id x39mr7760715otd.111.1488837028511;
-        Mon, 06 Mar 2017 13:50:28 -0800 (PST)
+X-GM-THRID: 6394871652191043584
+X-Received: by 10.99.44.131 with SMTP id s125mr5794637pgs.150.1489067239290;
+        Thu, 09 Mar 2017 05:47:19 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.158.204 with SMTP id h195ls2846822ioe.3.gmail; Mon, 06 Mar
- 2017 13:50:27 -0800 (PST)
-X-Received: by 10.99.152.85 with SMTP id l21mr7818698pgo.66.1488837027559;
-        Mon, 06 Mar 2017 13:50:27 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-io0-x22a.google.com (mail-io0-x22a.google.com. [2607:f8b0:4001:c06::22a])
-        by gmr-mx.google.com with ESMTPS id 13si2641094iti.0.2017.03.06.13.50.27
+Received: by 10.36.103.7 with SMTP id u7ls4827144itc.19.canary-gmail; Thu, 09
+ Mar 2017 05:47:18 -0800 (PST)
+X-Received: by 10.107.139.139 with SMTP id n133mr4073697iod.100.1489067238445;
+        Thu, 09 Mar 2017 05:47:18 -0800 (PST)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id r66si1184052pfb.7.2017.03.09.05.47.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 06 Mar 2017 13:50:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:4001:c06::22a as permitted sender) client-ip=2607:f8b0:4001:c06::22a;
+        Thu, 09 Mar 2017 05:47:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:4001:c06::22a as permitted sender) smtp.mailfrom=gs051095@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-io0-x22a.google.com with SMTP id l7so123394093ioe.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 06 Mar 2017 13:50:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:from:date:message-id:subject:to:cc;
-        bh=TMjd9UN0ngUJDUEFZOHTNr3ZWua34AJAihfA96kaemo=;
-        b=XmP/BIJZsOuRr2S1MeEpyvqLlVW731aQXHJPni5jg9OBUe91wZSeXjNiHkj0ddia8c
-         2YZLTbMDhrZXB0SORVT/yEHJ3iiGIaagmbASYL/T0lmqDI1oRrnyH3BLEGo7EZvfKUGn
-         39/cmXkoj5hVZ3p7exuPRx1phett4OUSY5ndKD2iF1yWT+1J+lkmhMYHuqxMBuTeuWYN
-         0uKbFn6q5mRtb4ohrSZ2mWd1gY4P/8/Fy/4J8ljUXtfuHNyUeRqc8saJonTI0vVVF/dz
-         u+fmoKwWnnQxOtJXBwkNaRAwnhXHb4OgMwLUZL7idpfXxmHzD16qGN00m1V7qs+IkA3Y
-         OhYw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
-        bh=TMjd9UN0ngUJDUEFZOHTNr3ZWua34AJAihfA96kaemo=;
-        b=j1OfjFwlfhFCo8mSE9oO1ruProkbD/Q0D2mXK9iMym5ZvOCXPFfOs9u4KjvwSvVEtW
-         6XV+4qGnjuygRqTShmmnjNyYJ25DDq0dRPKjRNVKe/JleKu9wDseSLv151bs6q7x596y
-         ZGBWq5ugkgQUeItduMcbGKGWcAMEOl9eeLnwxLyJRq5A0zzhOJDjI7mwbs75oScj85Vn
-         fHO/ozHi8WTwguc7hUNMPOCJyrNrFOAhcHlwmmlVnyJOwpxI4p2go86DNUXW2UO0Eneb
-         9eHNV4i0cPd2JUvBAyFXv696fDp9bkfvrViUK0kj19dTAOJEYRkfyOiPTteVtZfZZXVR
-         MCDw==
-X-Gm-Message-State: AMke39n9e8FE0dEpfs5WvnqooS2Os5NDZUJ8SEDcLegJ5/oR7fJQyoyNQ7T094Dv4a/8vMf2p2VZHrY8t/XILw==
-X-Received: by 10.107.8.90 with SMTP id 87mr18677270ioi.111.1488837027002;
- Mon, 06 Mar 2017 13:50:27 -0800 (PST)
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (LFbn-1-12060-104.w90-92.abo.wanadoo.fr [90.92.122.104])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id A3E6B305;
+	Thu,  9 Mar 2017 13:47:17 +0000 (UTC)
+Date: Thu, 9 Mar 2017 14:47:08 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Tamara Diaconita <diaconitatamara@gmail.com>
+Cc: aditya.shankar@microchip.com, ganesh.krishna@microchip.com,
+	outreachy-kernel@googlegroups.com,
+	Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: Re: [PATCH] staging: wilc1000: linux_mon: Rearrange the code
+Message-ID: <20170309134708.GA25303@kroah.com>
+References: <20170307212751.4152-1-diaconita.tamara@gmail.com>
 MIME-Version: 1.0
-Received: by 10.36.103.141 with HTTP; Mon, 6 Mar 2017 13:49:56 -0800 (PST)
-From: Gargi Sharma <gs051095@gmail.com>
-Date: Tue, 7 Mar 2017 03:19:56 +0530
-Message-ID: <CAOCi2DFHxu4d3S=DgsE=MBrhxYoJgQBVLzv2dLbzxaAi59+Hrg@mail.gmail.com>
-Subject: iptables-translate task for Netfilter
-To: outreachy-kernel@googlegroups.com
-Cc: pablo@netfilter.org
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170307212751.4152-1-diaconita.tamara@gmail.com>
+User-Agent: Mutt/1.8.0 (2017-02-23)
 
-Hi,
+On Tue, Mar 07, 2017 at 11:27:51PM +0200, Tamara Diaconita wrote:
+> Put a part of some lines in a new line to have less than 80 characters.
+> 
+> Fixed the checkpath.pl issue:
+> CHECK: Line over 80 characters.
+> 
+> Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
+> ---
+>  drivers/staging/wilc1000/linux_mon.c | 27 ++++++++++++++++++---------
+>  1 file changed, 18 insertions(+), 9 deletions(-)
 
-I was trying to work on the iptables-translate task for nft. Here are
-a few problems I ran into:
-1. How does one find what needs to be translated and isn't already
-supported? A bunch of files
- have the xlate function, and how does one find out what functionality
-isn't supported yet?
-2. If a file does not contain an xlate function, and one wants to add
-it, how to figure what will be
-the translation from the iptables command to the nft command?
-For example, this iptables command:
-iptables-translate -A OUTPUT -m connbytes --connbytes 200 \
-  --connbytes-dir original --connbytes-mode packets
+You have sent a lot of different patches for this driver over the past
+few days, and I now have no idea what is, and what is not, a valid patch
+:(
 
-translates to this:
-  nft add rule ip filter OUTPUT ct original packets ge 200 counter
+Can you please resend all of ythe patches I haven't applied yet, as a
+patch series, properly linked together (i.e. reply-to is set), so that
+they can be reviewed easily?
 
-How does one find out that connbytes translates to ct for nft?
+Remember, I have to deal with hundreds of patches, you want to make the
+maintainers life _very_ easy to figure out what is, and is not, a valid
+patch to apply.
 
-Thanks,
-Gargi
+thanks,
+
+greg k-h
 
