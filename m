@@ -1,106 +1,96 @@
-X-GM-THRID: 6665628449675149312
-X-Received: by 2002:ac8:70c5:: with SMTP id g5mr7337156qtp.13.1551962562249;
-        Thu, 07 Mar 2019 04:42:42 -0800 (PST)
+X-GM-THRID: 6394986223504457728
+X-Received: by 10.99.106.131 with SMTP id f125mr5750702pgc.140.1489069266782;
+        Thu, 09 Mar 2017 06:21:06 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:4889:: with SMTP id v131ls2240370qka.6.gmail; Thu, 07
- Mar 2019 04:42:41 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyOwSvFIt8d7ilEwjBlfyT1MWo5xuCpCXnSq0LJ4UWzASC0ZyIzV9K9BvPtnNpmJs0mgGFt
-X-Received: by 2002:a37:d150:: with SMTP id s77mr7211003qki.35.1551962561667;
-        Thu, 07 Mar 2019 04:42:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551962561; cv=none;
-        d=google.com; s=arc-20160816;
-        b=gS1fysfMA3edpqpr6SF5FSzfy2YqIqhlSnuXgxRpbMz+RBOnQhVwDfbbv//Bghqb7+
-         7TJOs6kVXG9lA6m35SBr7LXyvY87LKdmViUCM7SzlXDjzk+F3Taji1U/HtLNRL+59UDZ
-         tN8zXMnZTVtQbUPK/stiQvoAgMUReJpxl4e4cBSvf12117Inir5KEDXDATtbWxnCyHwK
-         G1nmfkmaTzo6v+pMhHTmG2u6hwaYIXMkkUE4kYe6YFms7HMNpq6q+z7EaOLDngfVT+wu
-         S0xiOvOBqRtMP9Q7F/MBH4uxNMFtLwDL3614m/0rG1g8chJlbDSX4pZogmfWen2J7FG7
-         7nqg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=xxOXfOpwOL6y5Vha5ec2FQCjet/qHUVtRdYUzXR98HI=;
-        b=ypAqcwIyT4LCOz3+Je8lkYZnC0UPrtp7AObq3D96oN9kSPsOCEk4zX24ViEH8Oni+T
-         UvTbFGXAURzqwaWraeUG5x9RZkSZzqfHgIxN25OIwkZ2Gldf+AuWR0q/iyrFbi3uhWC7
-         InB2nkLSAixNcsZY3sF3LlaDTWijBXTAFFWGhqahf37X1Yyq7c1nTZvIUf58dovkIru3
-         MZnZd4e6Fr8u3dK1WjSGBcMVWbH+/tv0lVHTQbplFetnD4UoSkM0VHH0bUDq8K4Rnsbn
-         cpcU0xHcKWUoU2bZTp7J3NfQQnICIxNszrZez3qiZUs4grHl6C4TnrLdwFQ2S8yY5Or/
-         gkfQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kMAO3QpJ;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-ot1-x343.google.com (mail-ot1-x343.google.com. [2607:f8b0:4864:20::343])
-        by gmr-mx.google.com with ESMTPS id p1si310254qkg.3.2019.03.07.04.42.41
+Received: by 10.36.3.1 with SMTP id e1ls1904107ite.16.gmail; Thu, 09 Mar 2017
+ 06:21:05 -0800 (PST)
+X-Received: by 10.99.114.70 with SMTP id c6mr5708941pgn.17.1489069265877;
+        Thu, 09 Mar 2017 06:21:05 -0800 (PST)
+Return-Path: <aishpant@gmail.com>
+Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
+        by gmr-mx.google.com with ESMTPS id g82si1208295pfb.5.2017.03.09.06.21.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 07 Mar 2019 04:42:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) client-ip=2607:f8b0:4864:20::343;
+        Thu, 09 Mar 2017 06:21:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kMAO3QpJ;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ot1-x343.google.com with SMTP id v62so13940678otb.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 07 Mar 2019 04:42:41 -0800 (PST)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x241.google.com with SMTP id g2so2500107pge.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 09 Mar 2017 06:21:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=xxOXfOpwOL6y5Vha5ec2FQCjet/qHUVtRdYUzXR98HI=;
-        b=kMAO3QpJ71O4npR+c6zS2ob3vah9MA/Zq8RD9qXpnXk7yiV33U4sU2snWsqTxZjJq8
-         h0wEX0663usMZj266/mDtJpDchYG1gR/NJGZ4O4mN1kKQMi/H106BfjGnkmCXw8j3q7f
-         w3xZGNvbH0TKDEFX/GT2LS11DKjY7GUf3Jh/RVQ0LZwcFFEKjFPB/bRO69lvU5eYI9Jb
-         nStRfkfmOzdKI3+JDe5GiPNlo6UPkb1G3OVg/rYdKTqTqRvVRFrW0qoG+FX6ONpv44fi
-         zrQQQIuQn9IwDmn2vDbKgwRpo63WuXhm1CADlaTseq/sxCZY2qh+Nfl2iX4IW1uyNOSX
-         XUvQ==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=7uCIkY6GpMe2nXB3g6Bkf96dYFOgZQpttbpnRZjpPpY=;
+        b=kxaEzJwHAK8imlJ0uLjV4M1x7XhEenDkX47h9BM/y6JWqK/AciCiWTqvfdZSCjANfL
+         QFX8UEKXFdo9BHuqv2ZOa8xfmPNJXa7w9x5tdwAWjjMVJenYJdDsvbpuASKd0JJlPVgW
+         5lK4rHOnuxs/2Nuvgl6RQYwm9ybVE+d4MKytDHqwnJmyc7mk0jHYgT+pyN20CqHOpB45
+         W8TAzgYZAa4nIFvgFSA1vlkA0jRBdv737F1xg0PdHnpLH5Ch9gHI2aaOurDLizLgvLkh
+         hnIsFXDK5VHi89frnFc7HbRplp7f668Kw6/DwnqSc4QGDcSGY9qAeEk7GhLhc6cMGVKi
+         tivg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=xxOXfOpwOL6y5Vha5ec2FQCjet/qHUVtRdYUzXR98HI=;
-        b=RuKjiKD1lLloG5TmnBCAfKMDrIbamBEfFSITPLpxOlNojXIAp92O8XMsJHE5+f+Xce
-         kP74+j5gHi95tD8EVMhpOPiLsWebedBlHcW49njguhLyuVFFW1QcL04BqnmM2xAD7i+4
-         IcUk6aCSrL/WKlAo+tP4FW7gpKblxp7Bwv9XsnU5tN4bqTpjQnA10SDR4yewT5rYNxe5
-         S283Z4TnG5SBRK6gNVC/iqK7wFaxZ3aDl0JMhGmDg3HVuzymBFbA7sRdWQDavJoDENnX
-         ghmHCAjO5U+G3u+jvMILyLYU4yCfCN8n3VT812E3vN92Xy0Smm+eA7c4oV9J9itbSgfb
-         jYcQ==
-X-Gm-Message-State: APjAAAXnhEaBvr8pdi77Zp9bJcIM+sCazUaM2fkC1Zq8FbQ26cO+dHiu
-	imPa0jQgivPO2PtGcFCVX0o=
-X-Received: by 2002:a05:6830:14c1:: with SMTP id t1mr8059630otq.48.1551962561171;
-        Thu, 07 Mar 2019 04:42:41 -0800 (PST)
-Return-Path: <madhumithabiw@gmail.com>
-Received: from madhuleo (cpe-173-174-122-182.austin.res.rr.com. [173.174.122.182])
-        by smtp.gmail.com with ESMTPSA id v62sm1750760oie.21.2019.03.07.04.42.39
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Mar 2019 04:42:40 -0800 (PST)
-From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-To: forest@alittletooquiet.net,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Subject: [PATCH] Staging: vt6655: Remove an unused function
-Date: Thu,  7 Mar 2019 06:42:36 -0600
-Message-Id: <20190307124236.20430-1-madhumithabiw@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=7uCIkY6GpMe2nXB3g6Bkf96dYFOgZQpttbpnRZjpPpY=;
+        b=hXK+zvESp+4bkzeYHzlxXyQ8QK+HdPCsmuX1OHl1zVSJUCOk8d+aspXBx1i5FORqU9
+         AH91ug1hZu4jnx3aZvgWP+zufJYam3k5MlK19fZaxmSPDL+ls6z0jPlYcDnRy+mE/yQC
+         kHYPDprI3EmByvy2119feuzX1YspCsNoQfcMlZxW8+J/pOG0+uuI0VWxngyl3Lex6sW3
+         rcrVMfi4fXLXx9MUbJLpE+dbY2UO4HyskZ6a91IQShK5fAK8/uYpOvxf35QcRL36oiZK
+         2LFrq1nBVz7nxOco5n7yO28nwT4q91kJ1Whz+dnNXlnL5jmiS0QHXeLgZIqmAi0Iv8Jh
+         jVMQ==
+X-Gm-Message-State: AMke39mX+XIC2yxio4JbdYraLZiqUGnWIcAnlmikj4c7S7Pt4VykK/+GkiWkzN7Ec1OhKQ==
+X-Received: by 10.99.121.78 with SMTP id u75mr14041821pgc.202.1489069265534;
+        Thu, 09 Mar 2017 06:21:05 -0800 (PST)
+Return-Path: <aishpant@gmail.com>
+Received: from aishwarya ([223.227.22.116])
+        by smtp.gmail.com with ESMTPSA id b7sm12958389pfg.53.2017.03.09.06.21.02
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 09 Mar 2017 06:21:04 -0800 (PST)
+Date: Thu, 9 Mar 2017 19:50:58 +0530
+From: Aishwarya Pant <aishpant@gmail.com>
+To: Greg KH <greg@kroah.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 1/2] staging: bcm2835-camera: replace
+ get_msg_context() with kzalloc
+Message-ID: <20170309142058.GA13334@aishwarya>
+References: <cover.1488948214.git.aishpant@gmail.com>
+ <cde948e8a5e5fcb53544d81018d67d48b7e0d141.1488948214.git.aishpant@gmail.com>
+ <20170309133651.GA7082@kroah.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170309133651.GA7082@kroah.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Remove an unused function to improve codebase.
+On Thu, Mar 09, 2017 at 02:36:51PM +0100, Greg KH wrote:
+> On Wed, Mar 08, 2017 at 10:14:28AM +0530, Aishwarya Pant wrote:
+> > This patch replaces function get_msg_context(..) with a kzalloc at
+> > the caller. This is safe as the only usage found in mmal-vchiq.c has been
+> > refactored.
+> > 
+> > Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
+> > ---
+> >  .../staging/vc04_services/bcm2835-camera/mmal-vchiq.c    | 16 ++--------------
+> >  1 file changed, 2 insertions(+), 14 deletions(-)
+> 
+> This, and the 2/2 patch do not apply at all to my tree :(
+> 
+> Please fix up and resend.
 
-Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
----
- drivers/staging/vt6655/mac.h | 2 --
- 1 file changed, 2 deletions(-)
+Hey
 
-diff --git a/drivers/staging/vt6655/mac.h b/drivers/staging/vt6655/mac.h
-index 99de843b4551..59538ac09fc5 100644
---- a/drivers/staging/vt6655/mac.h
-+++ b/drivers/staging/vt6655/mac.h
-@@ -887,8 +887,6 @@ void MACvSetShortRetryLimit(struct vnt_private *priv,
- 			    unsigned char byRetryLimit);
- 
- void MACvSetLongRetryLimit(struct vnt_private *priv, unsigned char byRetryLimit);
--void MACvGetLongRetryLimit(struct vnt_private *priv,
--			   unsigned char *pbyRetryLimit);
- 
- void MACvSetLoopbackMode(struct vnt_private *priv, unsigned char byLoopbackMode);
- 
--- 
-2.17.1
+I checked this file. The definitions of get_msg_context(..) and
+release_msg_context(..) have changed completely, they do more work than
+a simple alloc and de-alloc. So these patches don't make sense anymore.
 
+There is still scope to replace kmalloc + memset with a kzalloc, so I'll
+do that and send a separate patch.
+
+> 
+> thanks,
+> 
+> greg k-h
 
