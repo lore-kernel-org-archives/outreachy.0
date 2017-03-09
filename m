@@ -1,53 +1,53 @@
 X-GM-THRID: 6395635092352401408
-X-Received: by 10.107.182.195 with SMTP id g186mr4672978iof.62.1489099860844;
-        Thu, 09 Mar 2017 14:51:00 -0800 (PST)
+X-Received: by 10.99.226.3 with SMTP id q3mr7290389pgh.129.1489099857452;
+        Thu, 09 Mar 2017 14:50:57 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.52.248 with SMTP id t53ls7662174otd.42.gmail; Thu, 09 Mar
- 2017 14:51:00 -0800 (PST)
-X-Received: by 10.157.16.114 with SMTP id o47mr6299864oto.50.1489099860523;
-        Thu, 09 Mar 2017 14:51:00 -0800 (PST)
+Received: by 10.36.98.11 with SMTP id d11ls81500itc.1.canary-gmail; Thu, 09
+ Mar 2017 14:50:56 -0800 (PST)
+X-Received: by 10.99.158.9 with SMTP id s9mr6694860pgd.128.1489099856796;
+        Thu, 09 Mar 2017 14:50:56 -0800 (PST)
 Return-Path: <singhalsimran0@gmail.com>
 Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id a3si1493833pfb.2.2017.03.09.14.51.00
+        by gmr-mx.google.com with ESMTPS id y90si1471693pfa.6.2017.03.09.14.50.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 09 Mar 2017 14:51:00 -0800 (PST)
+        Thu, 09 Mar 2017 14:50:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
        spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id j5so8644824pfb.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 09 Mar 2017 14:51:00 -0800 (PST)
+Received: by mail-pf0-x243.google.com with SMTP id 67so8654507pfg.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 09 Mar 2017 14:50:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=Eney41u3fkMQhejFlmKkB6CB1A2/nQ3gT5UrNoyrcHA=;
-        b=AGeNjTWO4NIRqAn6d1BbO6p+unvU8+WecjEd6zAOfzhPhrDyHgSu0fbSrUXv9BRE9c
-         Ymy784IEVnp2nz8ShFxW3uB9M161Cn3Hn/ctqOzzY2Wb1sGBQ7xOyi1YGwPbU48wAd4I
-         ERG/o5F7RMYErgOoOQCeI3wnAzw/CH+AHrvg/bzgopo6XWMYUDeBF8xoecf/Uy0+q9WO
-         HRWgTPa6y4l0XGklDbQcPiPdUnSuVQavH9yZBgrA53MP2IVP+bCpmRg3TJSgdliaBDDP
-         Rqsrqij13BFBgC2wcpHmQhv/uXqnyM07izCxUi59tawsoYGjo3RQRD6qSQWbEyDan3hg
-         2c1g==
+        bh=4yFLE+lvAxwak77dt9wjPLFa9U//YsByRu1Q/KDjaho=;
+        b=fqecmGOm8ej/pIALaFyPldiBWZ3f9KrUckNIhcyX+ynxttww7Bfr7LK57M44hmY4vx
+         +V8NIv+KsJ75GcNvl+VaVWV5goV5lLGp+q36XrZC9gmhsxVgQ46cK3eMdLqsq+HZxqHu
+         hptxt71tySlNDlHbo2+Aor14VDIiVvu7JEf+FAFUWG7IpYbvYFqBxsXH1fPSLqXAz7PU
+         BLaMvoe1qJe/MBWOqxMlrJ2X95Eeb0HRdJIuyZLZgEnk/ItMdIr0KW+1sv61gWchByEM
+         oc9duTHN8sA30ud0YPLfpKANxJsujMDUFIDVL/5WKLeX2m0lNTLCks/2UFXuuvaY/78b
+         RPcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=Eney41u3fkMQhejFlmKkB6CB1A2/nQ3gT5UrNoyrcHA=;
-        b=MbS+NhppWq4u086zMcBPRoQDm+IIWnQbHT/0RjNwxru9jZldJbSb5Q/W+30hJFxmCu
-         1cn6fBOcgoR5qLWY1TKWBokMqk7M3XlbjGdvoQhZWEGb+L3wn1IQjO4VbIIG0SUNXoPw
-         ppYjUloqwJolDxCed59wM8AK/aNTiy3/BdjIgBP1T90M6LQz03VU26usbvluBmP4dUwb
-         zB+RfBsr2XRG2JKovHF1vZU9XdkbOe/zdzJsB8008aOVG8iVBR/CSKkfsFbC6vSuTBK/
-         UX/CQ+whOUdE778oD5Qw7S6w40da4JulcoF1D9i9B7aVD+XGtg0TenoR44D9w75iQKFB
-         4ltQ==
-X-Gm-Message-State: AMke39mUEJnoEp3m/UEbV7q8wIh1k68YruEHpO9geIB0ZIxx3oUEUw1n++dqf7ewna2wvg==
-X-Received: by 10.98.144.151 with SMTP id q23mr17146438pfk.51.1489099860025;
-        Thu, 09 Mar 2017 14:51:00 -0800 (PST)
+        bh=4yFLE+lvAxwak77dt9wjPLFa9U//YsByRu1Q/KDjaho=;
+        b=Pp02EImWu1IdVxUkvi1BJbm4bz37R/3PbonVgrTeJP9qfE0AWXA6vqw2oZL62i+wOX
+         4kSND9swWrYsG+grqjhuKfHGQZljpKKrXmxOPWhFSds+mFWh1mwi42J/dFGnQrWTp4VW
+         XObGXDw/uu78zWBZwZvJSO7UiCab8f1Fk6jt6XrRZQkcR/4xWox4ets6+IGgWlT+FEWr
+         HbLLPjYT7R2aBeoL5+9ZbusYZCPnW4V91D+1G91ntALcIvkaCzEmvO7eA+UYP44m9FWg
+         0Sw34YoW4T4yAbGO8xjqfalQviaJpcZr4ryt/nslTz5nDvAqWDELZ8SxMtsMCzt8SuLK
+         7k6Q==
+X-Gm-Message-State: AMke39ks7ya/7PRcu7pYnlzuONbCgKF2VXMglLhcEC+6TzeP1sDqqVE7iV8yAx4JGTKyPg==
+X-Received: by 10.98.38.5 with SMTP id m5mr16826554pfm.65.1489099856345;
+        Thu, 09 Mar 2017 14:50:56 -0800 (PST)
 Return-Path: <singhalsimran0@gmail.com>
 Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id u80sm14487141pgb.32.2017.03.09.14.50.58
+        by smtp.gmail.com with ESMTPSA id s4sm14377053pfi.74.2017.03.09.14.50.54
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 09 Mar 2017 14:50:59 -0800 (PST)
+        Thu, 09 Mar 2017 14:50:55 -0800 (PST)
 From: simran singhal <singhalsimran0@gmail.com>
 To: mchehab@kernel.org
 Cc: gregkh@linuxfoundation.org,
@@ -55,49 +55,53 @@ Cc: gregkh@linuxfoundation.org,
 	devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCH v1 7/7] staging: gc2235: Do not use multiple blank lines
-Date: Fri, 10 Mar 2017 04:20:29 +0530
-Message-Id: <1489099829-1264-8-git-send-email-singhalsimran0@gmail.com>
+Subject: [PATCH v1 6/7] staging: gc2235: Use x instead of x != NULL
+Date: Fri, 10 Mar 2017 04:20:28 +0530
+Message-Id: <1489099829-1264-7-git-send-email-singhalsimran0@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1489099829-1264-1-git-send-email-singhalsimran0@gmail.com>
 References: <1489099829-1264-1-git-send-email-singhalsimran0@gmail.com>
 
-Remove multiple blank lines. Problem found using checkpatch.pl
-"CHECK: Please don't use multiple blank lines".
+Use x instead of x != NULL .
+This patch removes the explicit NULL comparisons.This issue is found by
+checkpatch.pl script.
 
 Signed-off-by: simran singhal <singhalsimran0@gmail.com>
 ---
- drivers/staging/media/atomisp/i2c/gc2235.c | 3 ---
- 1 file changed, 3 deletions(-)
+ drivers/staging/media/atomisp/i2c/gc2235.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/staging/media/atomisp/i2c/gc2235.c b/drivers/staging/media/atomisp/i2c/gc2235.c
-index 40a5a2f..b97a74b 100644
+index 165dcb3..40a5a2f 100644
 --- a/drivers/staging/media/atomisp/i2c/gc2235.c
 +++ b/drivers/staging/media/atomisp/i2c/gc2235.c
-@@ -244,7 +244,6 @@ static int gc2235_g_fnumber_range(struct v4l2_subdev *sd, s32 *val)
- 	return 0;
- }
+@@ -255,7 +255,7 @@ static int gc2235_get_intg_factor(struct i2c_client *client,
+ 	u16 reg_val, reg_val_h, dummy;
+ 	int ret;
  
--
- static int gc2235_get_intg_factor(struct i2c_client *client,
- 				struct camera_mipi_info *info,
- 				const struct gc2235_resolution *res)
-@@ -388,7 +387,6 @@ static long __gc2235_set_exposure(struct v4l2_subdev *sd, int coarse_itg,
- 	return ret;
- }
+-	if (info == NULL)
++	if (!info)
+ 		return -EINVAL;
  
--
- static int gc2235_set_exposure(struct v4l2_subdev *sd, int exposure,
- 	int gain, int digitgain)
- {
-@@ -909,7 +907,6 @@ static int gc2235_s_stream(struct v4l2_subdev *sd, int enable)
- 	return ret;
- }
+ 	/* pixel clock calculattion */
+@@ -797,7 +797,7 @@ static int gc2235_set_fmt(struct v4l2_subdev *sd,
+ 	int idx;
  
--
- static int gc2235_s_config(struct v4l2_subdev *sd,
- 			   int irq, void *platform_data)
- {
+ 	gc2235_info = v4l2_get_subdev_hostdata(sd);
+-	if (gc2235_info == NULL)
++	if (!gc2235_info)
+ 		return -EINVAL;
+ 	if (format->pad)
+ 		return -EINVAL;
+@@ -917,7 +917,7 @@ static int gc2235_s_config(struct v4l2_subdev *sd,
+ 	struct i2c_client *client = v4l2_get_subdevdata(sd);
+ 	int ret = 0;
+ 
+-	if (platform_data == NULL)
++	if (!platform_data)
+ 		return -ENODEV;
+ 
+ 	dev->platform_data =
 -- 
 2.7.4
 
