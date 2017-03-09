@@ -1,95 +1,83 @@
-X-GM-THRID: 6395186049294794752
-X-Received: by 10.46.7.80 with SMTP id i16mr1314699ljd.5.1488995284698;
-        Wed, 08 Mar 2017 09:48:04 -0800 (PST)
+X-GM-THRID: 6395510258764087296
+X-Received: by 10.99.130.193 with SMTP id w184mr5076979pgd.12.1489074606175;
+        Thu, 09 Mar 2017 07:50:06 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.69.7 with SMTP id s7ls477648lja.48.gmail; Wed, 08 Mar 2017
- 09:48:03 -0800 (PST)
-X-Received: by 10.25.156.74 with SMTP id f71mr1193433lfe.26.1488995283883;
-        Wed, 08 Mar 2017 09:48:03 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
-        by gmr-mx.google.com with ESMTPS id p144si441164wme.2.2017.03.08.09.48.03
+Received: by 10.157.54.4 with SMTP id w4ls6445688otb.8.gmail; Thu, 09 Mar 2017
+ 07:50:05 -0800 (PST)
+X-Received: by 10.13.217.82 with SMTP id b79mr5486281ywe.13.1489074605765;
+        Thu, 09 Mar 2017 07:50:05 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id g82si1255696pfb.5.2017.03.09.07.50.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 08 Mar 2017 09:48:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
+        Thu, 09 Mar 2017 07:50:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x243.google.com with SMTP id v190so7259317wme.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 08 Mar 2017 09:48:03 -0800 (PST)
+Received: by mail-pf0-x242.google.com with SMTP id o126so7690856pfb.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 09 Mar 2017 07:50:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Fl2wckzEjrZj1KS6pWVpn45aRrlE7bnPOpxfz/GmkSQ=;
-        b=W9iABoQUkjWBpLr7QogY0+VEaS9Y0BasEKDmUyTodp0jSwm8PW5x0SdSVrWuNoQ8T0
-         oP9nllotMyzrYqoFheW/AbPOxNYHh+1Tk2MzTfmIQZg8e7zG5PwUFFJf3HlDZzn9D+qt
-         G6rX8nyXZ3/ercYF7SHlF6AMwogEKnjfTacC/Wew4MohfrLOyyt6414csrVjGcA/Hcql
-         EOir5tFgviQbl5qVwc4znEvC+YiruEzGryM/YYVocgnboXI10Xi4v/j+M/48vt01kS1s
-         05jPuBZ5vL8bhcbTkSfWxEAXsRCJwZYSdhnGOpaobk+qcEIB5GUCc3oCoyEvYJLC0JJ2
-         CLRg==
+        h=message-id:date:from:to:cc:subject:mime-version:content-disposition
+         :user-agent;
+        bh=wnIRw4qHhFYXRKFiX/JHdq52xluASTWhx2kJcjoR9n0=;
+        b=ITXESO/KnIgu5DP2bKCv9sEZ5rTM1+OlXMkPP1erNNgBD6GFXEjGuPONCfj5spFlhb
+         Nu9VA4BeupX0ni04GqynNHQhcfFJ+inS3eyKYmfQmK3ktcx136WUaNMPqigrpjVrCGR7
+         OnGjeXyqgCzWd65SywQa1+dhxIN9TtoygcnENXIV4LQm7nmqlZz0rO+9Tzc1SZClPxxq
+         qZgtTqrQpxwv0hIz0GHaWnEfacekmevPIARHoaagStlYSFgksqHqFqtaRcWOwTN1p0yn
+         bGuFL13YHYSUUkMqBdic5qbXrTGRgF/ss73IpU+NN7sao0m0ToT2SqF8PfQPNg35MeT2
+         TEfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Fl2wckzEjrZj1KS6pWVpn45aRrlE7bnPOpxfz/GmkSQ=;
-        b=kzqfsbKED5WRkS+ZFhfPp1k1/r0WbZrwgNILH9JofZyjE+0dUUEtFIU6F2I7senlrb
-         f1lRoN1MLB3ZwucAdAD7YN/1YOpfZyHB24YLr5iT/HyK/euc/rhR3n8+CGGQi2Avvgog
-         iujmXBM93X5iwbLfyVO6NyjfpJR8H3UBvLFhna8uLGsnqhTSS9dBJZv6pHPV4h/4FAM8
-         3y5mY2xdWUx4qXuXm9JHJdBxhkQ6D/w/44ZTgBhGBKpcT42ebWjV3tw9/Fx3ouHhMVzd
-         Y8igDnD3XMZdm9eRSlnWCA7Be2dPtiStaiO7GUBzoTBsSgu5xJ4iVwRFfMQOE9vAVo2I
-         JDyw==
-X-Gm-Message-State: AMke39kFIlLQvHrnmIbw3C+qCYkYlfsBux1e7Pg8lqPV/1RH6xGpl7jQdC6RnVoHfqUAbw==
-X-Received: by 10.28.72.193 with SMTP id v184mr24145333wma.105.1488995283673;
-        Wed, 08 Mar 2017 09:48:03 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([141.85.228.77])
-        by smtp.gmail.com with ESMTPSA id v3sm5072491wrb.39.2017.03.08.09.48.02
+        h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
+         :content-disposition:user-agent;
+        bh=wnIRw4qHhFYXRKFiX/JHdq52xluASTWhx2kJcjoR9n0=;
+        b=YsK4883glu6eMhDfe76ECghMAo9TlPH8WZJLNQWsCXR9Ydd5KlHt69Pc93ueilCi88
+         7S/0g1X6yBO8uCNe+gTugPCFEDuYjkr8QKcrHlgHcNMosDeXd5Lf2oWrOIK9HMHFkbzc
+         MQZmniKZ4SVJd59chxl3n5lf+yoADCuUR9LKlVfhUM61LVhJ8A5pxNnc3I490aKXEg7b
+         JKhnwcVizssVsbcUSty0eNlOYMMRPu+p2q2Iqf1zMNN+JplNwUQhCQg0qrFyFiXGdncv
+         HCx+yGoNheS58UVQqBG6RqFYX66HfrbOuP80NVYa3vVpKAVQcxNrYAH6Z26YbQptO7i/
+         luwg==
+X-Gm-Message-State: AMke39m4XS+XiljRUhzrJol9x4MpLBVSzj1lFj6aBxVhFNVGNHvMdl/602y0B+inAdDHsA==
+X-Received: by 10.98.193.69 with SMTP id i66mr14901652pfg.35.1489074605398;
+        Thu, 09 Mar 2017 07:50:05 -0800 (PST)
+Return-Path: <rvarsha016@gmail.com>
+Received: from euri ([45.125.141.33])
+        by smtp.gmail.com with ESMTPSA id p77sm13300030pfj.99.2017.03.09.07.50.04
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 08 Mar 2017 09:48:02 -0800 (PST)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH] staging: ks7010: eap_packet: Rearrange the code
-Date: Wed,  8 Mar 2017 19:47:53 +0200
-Message-Id: <20170308174753.5540-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+        Thu, 09 Mar 2017 07:50:04 -0800 (PST)
+Message-ID: <58c179ac.d022620a.286d5.e10b@mx.google.com>
+X-Google-Original-Message-ID: <20170309155000.GA16073@<rvarsha016@gmail.com>>
+Date: Thu, 9 Mar 2017 21:20:00 +0530
+From: Varsha Rao <rvarsha016@gmail.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH v2 0/2] staging: media: atomisp: Remove useless cast and
+ match alignment with open parenthesis.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.7.1 (2016-10-04)
 
-Split lines to have less than 80 characters.
+This patchset removes useless cast and  matches alignment with open
+parenthesis in media driver.
 
-Fix the checkpath.pl warning:
-WARNING: line over 80 characters.
+Varsha Rao (2):
+  staging: media: atomisp: Remove useless cast.
+  staging: media: atomisp: Match alignment with open parenthesis.
 
-Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
----
- drivers/staging/ks7010/eap_packet.h | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+ drivers/staging/media/atomisp/i2c/gc2235.c             | 18 +++++++++---------
+ drivers/staging/media/atomisp/i2c/mt9m114.c            |  6 +++---
+ drivers/staging/media/atomisp/i2c/ov2722.c             |  8 ++++----
+ .../atomisp2/css2400/runtime/isys/src/isys_dma_rmgr.c  |  2 +-
+ .../atomisp/pci/atomisp2/css2400/sh_css_firmware.c     |  8 ++++----
+ drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm.c   |  2 +-
+ 6 files changed, 22 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/staging/ks7010/eap_packet.h b/drivers/staging/ks7010/eap_packet.h
-index df7f760..7a3decf 100644
---- a/drivers/staging/ks7010/eap_packet.h
-+++ b/drivers/staging/ks7010/eap_packet.h
-@@ -58,12 +58,15 @@ struct ieee802_1x_eapol_key {
- 	 * encrypt the Key field; 64-bit NTP timestamp MAY be used here
- 	 */
- 	unsigned char replay_counter[IEEE8021X_REPLAY_COUNTER_LEN];
--	unsigned char key_iv[IEEE8021X_KEY_IV_LEN];	/* cryptographically random number */
-+	unsigned char key_iv[IEEE8021X_KEY_IV_LEN]; /* cryptographically random
-+						     * number
-+						     */
- 	unsigned char key_index;	/*
- 					 * key flag in the most significant bit:
- 					 * 0 = broadcast (default key),
--					 * 1 = unicast (key mapping key); key index is in the
--					 * 7 least significant bits
-+					 * 1 = unicast (key mapping key);
-+					 * key index is in the 7 least
-+					 * significant bits
- 					 */
- 	/*
- 	 * HMAC-MD5 message integrity check computed with MS-MPPE-Send-Key as
 -- 
 2.9.3
 
