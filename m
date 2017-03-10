@@ -1,53 +1,52 @@
 X-GM-THRID: 6395896934008094720
-X-Received: by 10.129.71.9 with SMTP id u9mr8078043ywa.142.1489160804571;
-        Fri, 10 Mar 2017 07:46:44 -0800 (PST)
+X-Received: by 10.13.192.193 with SMTP id b184mr8187437ywd.27.1489160799340;
+        Fri, 10 Mar 2017 07:46:39 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.128.74 with SMTP id b71ls2626488iod.32.gmail; Fri, 10 Mar
- 2017 07:46:43 -0800 (PST)
-X-Received: by 10.99.143.24 with SMTP id n24mr8852568pgd.132.1489160803664;
-        Fri, 10 Mar 2017 07:46:43 -0800 (PST)
+Received: by 10.157.11.3 with SMTP id a3ls8574815ota.23.gmail; Fri, 10 Mar
+ 2017 07:46:38 -0800 (PST)
+X-Received: by 10.129.172.96 with SMTP id z32mr9202852ywj.39.1489160798840;
+        Fri, 10 Mar 2017 07:46:38 -0800 (PST)
 Return-Path: <arushisinghal19971997@gmail.com>
 Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id 2si1828634pfx.8.2017.03.10.07.46.43
+        by gmr-mx.google.com with ESMTPS id g82si1804464pfb.5.2017.03.10.07.46.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 10 Mar 2017 07:46:43 -0800 (PST)
+        Fri, 10 Mar 2017 07:46:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
        spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id b5so10685289pgg.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 07:46:43 -0800 (PST)
+Received: by mail-pg0-x244.google.com with SMTP id 77so10644742pgc.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 07:46:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=8Di0VQcgBvNTjpJMAogTR7AbLaGHApYcVI+kHKG3d/w=;
-        b=J7Kfvk1rO//LZt+jlsxWPZ5TkRpRuwEEToCLLmEvdrLg9xVV5oOLQtorrE5CDUfXN0
-         su1/uSkmqz4mNP1I8Raz/l6Zj5xE5egrq2A+kHOEsZdcbd1PpDpBzZ2v7wWAobdeebBQ
-         w2blXmnlPUQmxcaZBPWJFL+zwG28nf4PrZxN+cRgcMHqLFJvJwxZBuYyxHTv4XcfDzsv
-         AG1PiSM576zP26g3DV1Yp5jMfSluEm52Bb0ifnNOUC7vWVuhj6qzpecLJ8lMY6YK/YwM
-         eDwQMt7gNrWVprLEAnBrnZGdMYQKEg9M8/GEAODCt2rDSUFaur8jilJ5EIm6vFjGRDX/
-         LRHw==
+        h=from:to:cc:subject:date:message-id;
+        bh=cBRsr4Ak/aMZRu0TjxwPYL785NWWicNqSKVu/lHXXgc=;
+        b=ZUPKozxZ/fmoKA0F2l/PLIF51kpddI0MLs8A8s7LALAZWflI3huHovT2cPo1YFQHa4
+         VXnC0IAnTmXaNXtpabCLTSm3XE/OsVzQAqYfMzpo7weTbP2cHFHgphTWL8/OKuP9Y3vT
+         0Z06OXl+O1ZMo6r0WB7kWd5lP18mOq1cDEnI8vafoVrUzuL59PGH2VLIdS1ObZ7/a8ii
+         GR9WxLpZyd7uEYgRF3Z8YgpUKb/Bds7t4H8HTX9M/fHDcS2YwURufOQv+fhhcTGw6k/a
+         IYV6LPeg+8dExzjEhMomeT97AvC4PSSZMaMmL5QgmEHiY8TZs0un0PLa1lz7Kj5yZfQk
+         HtEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=8Di0VQcgBvNTjpJMAogTR7AbLaGHApYcVI+kHKG3d/w=;
-        b=chqb9X+xESWqSDuahFW5LoL4oIA1DJPdeyYmV/mFRsTDj7/f2D9YpkOU/hSTy/himF
-         VJ8sQMOeHMl3aYi5IPQ5neIDUss4EN7cWaA+yZIhAexW7GV1dzbwyowLz3QJQqR5ZNvD
-         F/h86mIFSa+XmzMP6qE1Le8CrN8CdvrNrZ61Bt1Bpygif9eiUO7s9+dvJvB3i4zt/MJP
-         DnZhWg8/nEXBT0nd4mOH2O0N0t7fved+4WTz1We9Rm/JISc8VwLDnFurUrmi31NE/h9s
-         grs88NsjKIfGI7IK/m02FCDDhjLT9SSgkAcKCzDOCUZCoK3USXEqJkYzHhwOmqpXDNMu
-         usww==
-X-Gm-Message-State: AMke39nRn/SpzZdEJzRseoqjSw197kitQaKA1SaZpYXAXklK/WA2HmPxOrag8wdU+piKtQ==
-X-Received: by 10.99.229.83 with SMTP id z19mr21213743pgj.55.1489160803488;
-        Fri, 10 Mar 2017 07:46:43 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=cBRsr4Ak/aMZRu0TjxwPYL785NWWicNqSKVu/lHXXgc=;
+        b=F/8a2b66RlIoWfOoxDiMbDw5ozFrntckRRDb8V9iy1UNzuebFqdtj0OYSI4sN3CkCJ
+         +pCMfP9XJ7PK/8WZirSGYrjmXoFQ6l2Ca6ilAf9vYFcJMuvrGwvhzGZFGhrYs7tJomrI
+         U9hj3RUCMHESneGs3BnBEWpniyvPaMBVdwg4HHyC9qkQWXF3bjDn7uRA4DmUKTbZSvwS
+         m2iOqjm1H2YwugZ/11cDpsxazfwbb1Geax5jA8Npv56lA5m2/NcTw/QUGKqhbyRBAb6E
+         5NFff2DcesqKqQBSbvcvlhzJGiDnA37LNA2KzP184nHeAzRyg+PxNgjyVmzGiExTZgUy
+         ysaw==
+X-Gm-Message-State: AMke39l/W11u7W0F+uOnhceiWd8HCGJHRXWpuqn4ysbUXve1nxt4egjnC+pLDCJjV9z8rA==
+X-Received: by 10.99.160.17 with SMTP id r17mr20675466pge.39.1489160798611;
+        Fri, 10 Mar 2017 07:46:38 -0800 (PST)
 Return-Path: <arushisinghal19971997@gmail.com>
 Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id m29sm19473805pfi.54.2017.03.10.07.46.41
+        by smtp.gmail.com with ESMTPSA id d189sm19642905pga.17.2017.03.10.07.46.36
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 10 Mar 2017 07:46:42 -0800 (PST)
+        Fri, 10 Mar 2017 07:46:37 -0800 (PST)
 From: Arushi Singhal <arushisinghal19971997@gmail.com>
 To: w.d.hubbs@gmail.com
 Cc: chris@the-brannons.com,
@@ -59,41 +58,22 @@ Cc: chris@the-brannons.com,
 	devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org,
 	Arushi Singhal <arushisinghal19971997@gmail.com>
-Subject: [PATCH 1/2] staging: speakup: identation should use tabs
-Date: Fri, 10 Mar 2017 21:16:31 +0530
-Message-Id: <20170310154632.4445-2-arushisinghal19971997@gmail.com>
+Subject: [PATCH 0/2] checkpatch cleanups
+Date: Fri, 10 Mar 2017 21:16:30 +0530
+Message-Id: <20170310154632.4445-1-arushisinghal19971997@gmail.com>
 X-Mailer: git-send-email 2.11.0
-In-Reply-To: <20170310154632.4445-1-arushisinghal19971997@gmail.com>
-References: <20170310154632.4445-1-arushisinghal19971997@gmail.com>
 
-Indentation should always use tabs and never spaces.
+Improve readability by fixing multiple checkpatch.pl
+issues in speakup driver.
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
- drivers/staging/speakup/speakup_dtlk.h | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+Arushi Singhal (2):
+  staging: speakup: identation should use tabs
+  staging: dvb-frontends: removed code in comments.
 
-diff --git a/drivers/staging/speakup/speakup_dtlk.h b/drivers/staging/speakup/speakup_dtlk.h
-index b3b3cfc3db07..46d885fcfb20 100644
---- a/drivers/staging/speakup/speakup_dtlk.h
-+++ b/drivers/staging/speakup/speakup_dtlk.h
-@@ -24,11 +24,11 @@
- 				 * usec later.
- 				 */
- #define TTS_ALMOST_FULL	0x08	/* mask for AF bit: When set to 1,
--				         * indicates that less than 300 bytes
--				         * are available in the TTS input
--				         * buffer. AF is always 0 in the PCM,
--				         * TGN and CVSD modes.
--				         */
-+					 * indicates that less than 300 bytes
-+					 * are available in the TTS input
-+					 * buffer. AF is always 0 in the PCM,
-+					 * TGN and CVSD modes.
-+					 */
- #define TTS_ALMOST_EMPTY 0x04	/* mask for AE bit: When set to 1,
- 				 * indicates that less than 300 bytes
- 				 * are remaining in DoubleTalk's input
+ drivers/media/dvb-frontends/drxk_hard.c |  1 -
+ drivers/staging/speakup/speakup_dtlk.h  | 10 +++++-----
+ 2 files changed, 5 insertions(+), 6 deletions(-)
+
 -- 
 2.11.0
 
