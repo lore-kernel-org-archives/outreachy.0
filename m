@@ -1,107 +1,79 @@
 X-GM-THRID: 6395629856318554112
-X-Received: by 10.99.37.5 with SMTP id l5mr9545387pgl.165.1489173659396;
-        Fri, 10 Mar 2017 11:20:59 -0800 (PST)
+X-Received: by 10.46.76.17 with SMTP id z17mr3556449lja.13.1489172771167;
+        Fri, 10 Mar 2017 11:06:11 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.36.169 with SMTP id z38ls3672768ota.27.gmail; Fri, 10 Mar
- 2017 11:20:59 -0800 (PST)
-X-Received: by 10.157.56.39 with SMTP id i36mr7812637otc.71.1489173659075;
-        Fri, 10 Mar 2017 11:20:59 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pg0-x22d.google.com (mail-pg0-x22d.google.com. [2607:f8b0:400e:c05::22d])
-        by gmr-mx.google.com with ESMTPS id 2si1939866pfx.8.2017.03.10.11.20.59
+Received: by 10.46.1.137 with SMTP id f9ls1123443lji.7.gmail; Fri, 10 Mar 2017
+ 11:06:09 -0800 (PST)
+X-Received: by 10.25.151.69 with SMTP id z66mr2841753lfd.12.1489172769976;
+        Fri, 10 Mar 2017 11:06:09 -0800 (PST)
+Return-Path: <diaconitatamara@gmail.com>
+Received: from mail-wr0-x241.google.com (mail-wr0-x241.google.com. [2a00:1450:400c:c0c::241])
+        by gmr-mx.google.com with ESMTPS id 82si27371wmg.3.2017.03.10.11.06.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 10 Mar 2017 11:20:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::22d as permitted sender) client-ip=2607:f8b0:400e:c05::22d;
+        Fri, 10 Mar 2017 11:06:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) client-ip=2a00:1450:400c:c0c::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::22d as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x22d.google.com with SMTP id b129so42138645pgc.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 11:20:59 -0800 (PST)
+Received: by mail-wr0-x241.google.com with SMTP id u48so12721053wrc.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 11:06:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=4jqcCHLQIalT5XnnCyg4JIXjXsqwVyMM6zzoLcY76nw=;
-        b=qUCMkrzecS7ODQPoExSz6uJAenChhuGngLfUHo67v5bMWl669gqDz2swNfbiASSRkr
-         qxzylB2m5hTbZ2C+25H8feua5M49qMt4LQqeVKgN5xMMZ6TyQUWTkwWj0iO+cUYrZ5Wk
-         zH7WyVluq5k4+KpaTmODOawk64qqtNx4Zb0+bsx7+uiof7iqf/LaRkUiKPgrm7ZiTA8F
-         SNjqLG3XiLy1pPeNI25AhdJrdEZ9+HBpX9Hk0lCg/qinpB66MsTV4TENvYvezA53+i25
-         eOGeZSapCA0OPVHfSSNO/WFXM6R35TFt4NPRIoJR4ZJKtEdTh+LSbJ/K4Z67Iwxmex+8
-         /99Q==
+        h=from:to:cc:subject:date:message-id;
+        bh=zDaw9E3EHwT9a46+lzkRLX4OmftNng5UeosskWREwek=;
+        b=Sp3SqdNJ6ZSuMC1xrKYn4PreZbG6IPMOyUWzXu2Ne7kJ0CDHAfCMwS2nnLeJ5TCIRl
+         8Y02m9ircdLViWHxTMnVxWLSN2p1HVySZAwOBjTzYqV6wi/RpR0nTw9wkDNLcoqJ2JzY
+         zIOa4mS1J0mPtoA3bvo70ghCXudiX0M362dDe5ZPU0vOmkHy60HjT4UX5TxbSVzapkM/
+         DqiYtNQSGSK7Rl6e/pxoARpMCJG5rYz8+eR8kPXLHM23cN+KAVYR0kPn0Hgcy6tow3yC
+         006+pMdftMcRaWvNMp0pS4Ejl77BMP5yzeKdnnT8EbF3aYpOvPwK4/yn7ovz+uZzCdo+
+         geyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=4jqcCHLQIalT5XnnCyg4JIXjXsqwVyMM6zzoLcY76nw=;
-        b=o5jTc6mAxst3Dqo8bm6LC9NL7/rxAWypt+Nb+87WKrmM/c67QnIJemlSi2MMq+Bb6X
-         9d2YLaWG8CAJeZ5PObGf0ucyyZ6K1LjLCwL9iDoEFVDJWiqnjHURAxUzDSp3Qznl9+E+
-         Oy9ywyGJy3CnUfzP44h67Li6+mAtA6GsA0R2/YaydjmWA+yBWloGI3OyaZCvs0dReg7j
-         +jSsooJL15cHKsepySOtv0PoIsIJLgFRjf0GauWgAweawg0SkbFtoz83jNio5vtijhfR
-         hMOVmo/ATQJF+1UX/DtcrH2sRnLCc98HmjzvPHGftncZSa8LlvCOaYEKVlV0QBPwjgko
-         Qyyw==
-X-Gm-Message-State: AMke39kKkO+6BwgUfcKP1UYbtWs4UgvArfDS4HZwGEpEPrwZ45xJV91ekKU49hw+bopSOg==
-X-Received: by 10.99.163.110 with SMTP id v46mr21681374pgn.171.1489173658853;
-        Fri, 10 Mar 2017 11:20:58 -0800 (PST)
-Return-Path: <amsfield22@gmail.com>
-Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
-        by smtp.gmail.com with ESMTPSA id d3sm20103836pfc.51.2017.03.10.11.20.58
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=zDaw9E3EHwT9a46+lzkRLX4OmftNng5UeosskWREwek=;
+        b=EAuV4O2UI/54U1Yh3TyaOFF7H3hGqQ7VgZBaYxR2Y5bmNpoo45xS2m+rhqJZe53NJI
+         8NhBnt6oT/N5O+KX4dH1IPos/9ITIJODrvnj7WLxoI5YOex6FU2vA02885tBevtEUZzm
+         dMaI2yyFm4GONFw5RkN2TsqaHLnqkhv5Kh7b5Sw12XXHM2SYqNyaly32M5T8FybJ8QSQ
+         OC3KVggqHQna49rfewK3irLEO+q9pZ0m7cq9gd/O2JWoXrxXqENexxoqxaSGOKhjciS5
+         DYOnQOtWo+52bMHf6lVC93a+gwe3sPY844Pz5eZzYVRV7GeNKZPCxrIo/Ug4sIhS10eh
+         MWcw==
+X-Gm-Message-State: AMke39ncDYluFsRYyjKFYaob3B6kAx2B+3f2WF6quoJsrn1QuEIRkIl8fVZEJmiqG8DoBQ==
+X-Received: by 10.223.155.193 with SMTP id e1mr17515364wrc.86.1489172769779;
+        Fri, 10 Mar 2017 11:06:09 -0800 (PST)
+Return-Path: <diaconitatamara@gmail.com>
+Received: from tamara ([2a02:2f0b:8130:11ea:9935:36c4:c373:a2cc])
+        by smtp.gmail.com with ESMTPSA id u198sm400885wmf.9.2017.03.10.11.06.08
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 10 Mar 2017 11:20:58 -0800 (PST)
-Date: Fri, 10 Mar 2017 11:20:57 -0800
-From: Alison Schofield <amsfield22@gmail.com>
-To: Tamara Diaconita <diaconitatamara@gmail.com>
-Cc: aditya.shankar@microchip.com, ganesh.krishna@microchip.com,
-	gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com,
-	Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 0/7] staging: wilc1000: Improve code
- readability
-Message-ID: <20170310192056.GB23892@d830.WORKGROUP>
-References: <20170310190606.19766-1-diaconita.tamara@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20170310190606.19766-1-diaconita.tamara@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+        Fri, 10 Mar 2017 11:06:08 -0800 (PST)
+From: Tamara Diaconita <diaconitatamara@gmail.com>
+X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
+To: aditya.shankar@microchip.com,
+	ganesh.krishna@microchip.com,
+	gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: [PATCH 0/7] staging: wilc1000: Improve code readability
+Date: Fri, 10 Mar 2017 21:06:06 +0200
+Message-Id: <20170310190606.19766-1-diaconita.tamara@gmail.com>
+X-Mailer: git-send-email 2.9.3
 
-On Fri, Mar 10, 2017 at 09:06:06PM +0200, Tamara Diaconita wrote:
-> Improve code readability in wilc_spi.c file in wilc1000 driver.
+Improve code readability in wilc_spi.c file in wilc1000 driver.
 
-Hi Tamara,
+Tamara Diaconita (7):
+  staging: wilc1000: Remove unnecessary brackets
+  staging: wilc1000: Declare variables at top of function
+  staging: wilc1000: Correct name of variables
+  staging: wilc1000: Add blank line
+  staging: wilc1000: Removing extra tabs
+  staging: wilc1000: Use kernel preferred commenting style
+  staging: wilc1000: Rearrange code
 
-Just realized why my inbox is getting disorganized.  These patchsets
-need to be sent 'threaded' so they stick together.  See how to do
-that in the first patch tutorial.  
+ drivers/staging/wilc1000/wilc_spi.c | 101 +++++++++++++++++++-----------------
+ 1 file changed, 54 insertions(+), 47 deletions(-)
 
-I'm already in the middle of your last patchset, so I will keep
-going with that, but I think I'd like you to do a [PATCH RESEND]
-on this one and send it threaded.  Basically the PATCH RESEND
-says nothing has changed inside it.
+-- 
+2.9.3
 
-Thanks,
-alisons
-
-> 
-> Tamara Diaconita (7):
->   staging: wilc1000: Remove unnecessary brackets
->   staging: wilc1000: Declare variables at top of function
->   staging: wilc1000: Correct name of variables
->   staging: wilc1000: Add blank line
->   staging: wilc1000: Removing extra tabs
->   staging: wilc1000: Use kernel preferred commenting style
->   staging: wilc1000: Rearrange code
-> 
->  drivers/staging/wilc1000/wilc_spi.c | 101 +++++++++++++++++++-----------------
->  1 file changed, 54 insertions(+), 47 deletions(-)
-> 
-> -- 
-> 2.9.3
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170310190606.19766-1-diaconita.tamara%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
 
