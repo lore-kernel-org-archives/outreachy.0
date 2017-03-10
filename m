@@ -1,117 +1,192 @@
-X-GM-THRID: 6748161945131548672
-X-Received: by 2002:a17:906:b7d0:: with SMTP id fy16mr37017480ejb.207.1571178889421;
-        Tue, 15 Oct 2019 15:34:49 -0700 (PDT)
+X-GM-THRID: 6395630061335085056
+X-Received: by 10.129.147.198 with SMTP id k189mr8695320ywg.76.1489171830438;
+        Fri, 10 Mar 2017 10:50:30 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a50:9796:: with SMTP id e22ls4532892edb.14.gmail; Tue, 15
- Oct 2019 15:34:48 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwwRScbhV6wbE9nX+5af06dGjPKRDA2dRNN/L8o60M2n5nzh35ibg0WoJIReHPUyUAX4+OQ
-X-Received: by 2002:a05:6402:2022:: with SMTP id ay2mr35927569edb.219.1571178888501;
-        Tue, 15 Oct 2019 15:34:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571178888; cv=none;
-        d=google.com; s=arc-20160816;
-        b=W8esbHIDVxKV0M7CnkvNRWp/ENLkHWkjnaoGa2U+O/poAjJuE+XxLxNxWX2PMp8QOV
-         QsOzTp592D1cB1Etxa7uc2dRMBT1ygRLVErOHmzgBnpDVrJxSNniEJ9GH+IXFgFsIfbZ
-         3FsCL8LYhL9PyTX9ZXkPb3xMoxon/RwgWj540ZN/1wZduohUPNC74n9wLw1uz7PYMEtW
-         7jj7jB1Ovd05Mx+uyDcX1qhVFCbxhd6p06LElR6RlttNXlNINI3ZutqR4zZUYapXJREs
-         coGzqGFmAdcEkUnb1Xw512Rov+ju3sPp8xVhWeVTlPFBeWpLsO/6WHpyKYVu3MrlZw2i
-         vt4A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=BR/+JcLXGlF7qNlnYNXPVWo3Nql+mobYo3ybFiUKVk4=;
-        b=nRbaRkbnlsNgaPZ3XSy7MYJJKA20pEzKltMzjDWSOs74B+MAbXCPjhHPwHLg9wyQ+2
-         Y7Q7TvJ14y5gZQFm/+YJ7iriFdbI2ScYgURDrz3biDs3vlRc5mlUg3HGrPU4ncz+HHvq
-         Q+DfbPOamnKVIGiknOLy+ANBww1tbSHJycrHqc+WtjpjKRrj2fieY9kIAIgnxUicY936
-         xYPCPERedBU4gQN7GATAyh3jAjj51Mnm5Cq9F2+OCg8EdmepZARLbHw5dKAuSjDnLHCg
-         ByoX3cbjDxMa45WCgubaXeuLb1eoLvXAFyftRW/DuXWgUiGslXqn7ko/ZsipHomC8nwN
-         TU/w==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XE5sn3iX;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wm1-x343.google.com (mail-wm1-x343.google.com. [2a00:1450:4864:20::343])
-        by gmr-mx.google.com with ESMTPS id q8si1249176edn.5.2019.10.15.15.34.48
+Received: by 10.157.68.202 with SMTP id p10ls3208271otg.18.gmail; Fri, 10 Mar
+ 2017 10:50:30 -0800 (PST)
+X-Received: by 10.237.37.80 with SMTP id w16mr3648650qtc.4.1489171830000;
+        Fri, 10 Mar 2017 10:50:30 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id y90si1889947pfa.6.2017.03.10.10.50.29
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 15 Oct 2019 15:34:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) client-ip=2a00:1450:4864:20::343;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 10 Mar 2017 10:50:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XE5sn3iX;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x343.google.com with SMTP id i16so709630wmd.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 15 Oct 2019 15:34:48 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x243.google.com with SMTP id j5so11676147pfb.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 10:50:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=BR/+JcLXGlF7qNlnYNXPVWo3Nql+mobYo3ybFiUKVk4=;
-        b=XE5sn3iXKdNmwXYBgSR/Fm7Fn+i5kb49u8oZLnlZNLAqvDO/yQY3vXi0OryQZUyTyz
-         1Rqv3gw8NiClH2JJsSE6iIGkl/rPMP9B5ndr7PlbXe8b4bwU8b1Lw9LLhUSqPuL1ATdP
-         m0iWdn8fkmAC9HeT8IZWVRJ49WmpPdU44Rb5zGopErJYhidVQlOaOctQ+Fgp9D+kDgHj
-         h0zXwqMNPIbo0tzROn/kplccKVmXownn0VSmLlqB3zlxfB/txeQ0L+MOgjN2C6khacyw
-         YVtmSb86Uh/LpT6tqbeIkHhVzDHH1hjbX5uTnFE9/0A6QibobxjJqtQd9LSGnkSk954Y
-         pRPA==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=h/C/5z7t2MdyhmFe553+XtMhmnKG4TEHPqtJrLmINKs=;
+        b=ShO2xeYQQW5abg5xf4mJZiikhfrw8H+thVpsCc/5CFaeHOMF1BqYTP50fKpw02aa+K
+         YJQTOupL9l+jPFstz6g3zKEPrSjboBztrfSS1QfO91bHHi/teaEZNeTWKNWDJDq2Zlwp
+         RgB9TWgqjOXVzsougl779jen96rV9PMxEIXsjWGmR+2e1ZeGMLtvpoYEsH3qiDNpVNLS
+         0WzbZm1pBJwCitibnKefoJgkGyeKxrQyGKRQl3Y1GZcj73tkPwfrNqyUSYhyo+TLBNrd
+         MRijxOvR7YGMAivCeLe1xUA465wWD3IGPxUSyh1IKA6IlY7BPtkFZ5662K+RCIU/nY98
+         Zt/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=BR/+JcLXGlF7qNlnYNXPVWo3Nql+mobYo3ybFiUKVk4=;
-        b=Q8tE4aUmsuUTvuwpuDzJmd89FCcO5b+R5chlGnjlNe//TcglLgb/vVMRRK190ApC6b
-         r7l1Iu0FW4VBrINjvuxSzp3jWzVYkcFv4merZdAiQbKVLMLZypDzGyljzXJ+ds2k87EA
-         r+fTV2z5ph4hjg/nkd7FK4j9MkfwlyFhtB+6r8oyv35XJReOctm2MwDjuiK8CtqXvYWO
-         LHQSWR3eiR0pfTU1T/1iMdtyjZUB+kO6pshudqxDkkWGILeDK/8KqPFJKkOoJwaaMmTM
-         plXmNCx/KgQunuNbHADcEHLZphCbiTDUFVWCAtNyKH0jqYNKpQrGQuMmI4HiQp2bjcdS
-         Zu5w==
-X-Gm-Message-State: APjAAAUbkwIfJqkvo6L95BFxGYiPGpgZW/uTJVu0RhK65bQ6QYL4APr+
-	L+FdZFqQfjbmGxI+gy71LfSD0JAvxmE1tuY=
-X-Received: by 2002:a1c:7219:: with SMTP id n25mr543117wmc.33.1571178887899;
-        Tue, 15 Oct 2019 15:34:47 -0700 (PDT)
-Return-Path: <jbi.octave@gmail.com>
-Received: from ninjahub.lan (host-2-102-13-201.as13285.net. [2.102.13.201])
-        by smtp.googlemail.com with ESMTPSA id m18sm35667084wrg.97.2019.10.15.15.34.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Oct 2019 15:34:47 -0700 (PDT)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: mjourdan@baylibre.com,
-	gregkh@linuxfoundation.org,
-	mchehab@kernel.org,
-	khilman@baylibre.com,
-	linux-media@vger.kernel.org,
-	linux-amlogic@lists.infradead.org,
-	devel@driverdev.osuosl.org,
-	Jules Irenge <jbi.octave@gmail.com>
-Subject: [PATCH] staging: meson: add space to fix check warning
-Date: Tue, 15 Oct 2019 23:34:33 +0100
-Message-Id: <20191015223433.18784-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.21.0
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=h/C/5z7t2MdyhmFe553+XtMhmnKG4TEHPqtJrLmINKs=;
+        b=BiLHvVMRT0A3OgiME7yJEDGs3FVxtMoVe+6hs1EsICA497Qa+qR1WGDS8NGNfYziuj
+         FUJnEoAxmOU3l78cpxzHNMIoKJGQOOREi3bXm03FeNZX53NTYS5iDQ7YcXtoJmYQjtb6
+         fOeXExd0zjL/E2iwpK/PnnXvg7ArmkpXPJch32lj68BpyrFxaE012Vbgq9bBtJwTat6U
+         S68Tr5qoAs6gOQyji7zCFPFetZC6VmTsayXN3DgtbCMyMGvm7xZurfW49r0soY982mhq
+         K7IEE6PtPsSRXhULL50oy375ffxOhtzrllVhVtW81VjyANn3g9IwvkUvFmlDZtB6bapD
+         lE4w==
+X-Gm-Message-State: AMke39l0wsbBC+rZDkKvENOqrJrjYjm8sOdgAuwVCJmPuqkf4nHjMvGxfnXidFLwGze1Vg==
+X-Received: by 10.99.181.86 with SMTP id u22mr22000559pgo.120.1489171829615;
+        Fri, 10 Mar 2017 10:50:29 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
+        by smtp.gmail.com with ESMTPSA id u78sm19973259pfa.101.2017.03.10.10.50.28
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 10 Mar 2017 10:50:29 -0800 (PST)
+Date: Fri, 10 Mar 2017 10:50:28 -0800
+From: Alison Schofield <amsfield22@gmail.com>
+To: Tamara Diaconita <diaconitatamara@gmail.com>
+Cc: aditya.shankar@microchip.com, ganesh.krishna@microchip.com,
+	gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com,
+	Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 1/4] staging: wilc1000:  Enhance code
+ formatting
+Message-ID: <20170310185026.GA20878@d830.WORKGROUP>
+References: <20170310165833.4033-1-diaconita.tamara@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170310165833.4033-1-diaconita.tamara@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Fix "alignment should mactch open parenthesis" check.
-Issue detected by checkpatch tool
+On Fri, Mar 10, 2017 at 06:58:33PM +0200, Tamara Diaconita wrote:
+> Trims line size at 80 characters wilc_wlan_cfg.c file by moving a part of the lines in a new line.
 
-Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
----
- drivers/staging/media/meson/vdec/codec_mpeg12.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+The line above is too long.  We want the log message line max of 72.
+(git log doesn't handle wrapping so it gets hard to read if lines
+are too long.)
 
-diff --git a/drivers/staging/media/meson/vdec/codec_mpeg12.c b/drivers/staging/media/meson/vdec/codec_mpeg12.c
-index 48869cc3d973..21e93a13356c 100644
---- a/drivers/staging/media/meson/vdec/codec_mpeg12.c
-+++ b/drivers/staging/media/meson/vdec/codec_mpeg12.c
-@@ -81,7 +81,7 @@ static int codec_mpeg12_start(struct amvdec_session *sess)
- 	}
- 
- 	ret = amvdec_set_canvases(sess, (u32[]){ AV_SCRATCH_0, 0 },
--					(u32[]){ 8, 0 });
-+				  (u32[]){ 8, 0 });
- 	if (ret)
- 		goto free_workspace;
- 
--- 
-2.21.0
+> 
+> Fixed the checkpath.pl issue:
+spell->checkpatch.pl
 
+> CHECK: line over 80 characters.
+
+Update subject to say what what you did - wrap lines of code at 80
+chars.
+
+I suggest leaving out the last change....see why below...
+the others since it is comment change.
+
+> 
+> Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
+
+> ---
+>  drivers/staging/wilc1000/wilc_wlan_cfg.c | 23 ++++++++++++++++-------
+>  1 file changed, 16 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/staging/wilc1000/wilc_wlan_cfg.c b/drivers/staging/wilc1000/wilc_wlan_cfg.c
+> index 926fc16..fed66dcd 100644
+> --- a/drivers/staging/wilc1000/wilc_wlan_cfg.c
+> +++ b/drivers/staging/wilc1000/wilc_wlan_cfg.c
+> @@ -217,7 +217,8 @@ static int wilc_wlan_cfg_set_word(u8 *frame, u32 offset, u16 id, u32 val32)
+>  	return 7;
+>  }
+>  
+> -static int wilc_wlan_cfg_set_str(u8 *frame, u32 offset, u16 id, u8 *str, u32 size)
+> +static int wilc_wlan_cfg_set_str(u8 *frame, u32 offset, u16 id, u8 *str,
+> +				 u32 size)
+>  {
+>  	u8 *buf;
+>  
+> @@ -298,7 +299,8 @@ static void wilc_wlan_parse_response_frame(u8 *info, int size)
+>  					break;
+>  
+>  				if (g_cfg_hword[i].id == wid) {
+> -					g_cfg_hword[i].val = cpu_to_le16(info[3] | (info[4] << 8));
+> +					g_cfg_hword[i].val =
+> +					cpu_to_le16(info[3] | (info[4] << 8));
+>  					break;
+>  				}
+>  				i++;
+> @@ -312,7 +314,10 @@ static void wilc_wlan_parse_response_frame(u8 *info, int size)
+>  					break;
+>  
+>  				if (g_cfg_word[i].id == wid) {
+> -					g_cfg_word[i].val = cpu_to_le32(info[3] | (info[4] << 8) | (info[5] << 16) | (info[6] << 24));
+> +					g_cfg_word[i].val = cpu_to_le32(info[3]
+> +						| (info[4] << 8)
+> +						| (info[5] << 16)
+> +						| (info[6] << 24));
+>  					break;
+>  				}
+>  				i++;
+> @@ -332,7 +337,8 @@ static void wilc_wlan_parse_response_frame(u8 *info, int size)
+>  						i += toggle;
+>  						toggle ^= 1;
+>  					}
+> -					memcpy(g_cfg_str[i].str, &info[2], (info[2] + 1));
+> +					memcpy(g_cfg_str[i].str, &info[2],
+> +					       (info[2] + 1));
+>  					break;
+>  				}
+>  				i++;
+> @@ -478,14 +484,16 @@ int wilc_wlan_cfg_get_wid_value(u16 wid, u8 *buffer, u32 buffer_size)
+>  				u32 size =  g_cfg_str[i].str[0];
+>  
+>  				if (buffer_size >= size) {
+> -					if (g_cfg_str[i].id == WID_SITE_SURVEY_RESULTS)	{
+> +					if (g_cfg_str[i].id ==
+> +					    WID_SITE_SURVEY_RESULTS){
+>  						static int toggle;
+>  
+>  						i += toggle;
+>  						toggle ^= 1;
+>  
+>  					}
+> -					memcpy(buffer,  &g_cfg_str[i].str[1], size);
+> +					memcpy(buffer,  &g_cfg_str[i].str[1],
+> +					       size);
+>  					ret = size;
+>  				}
+>  				break;
+> @@ -510,7 +518,8 @@ int wilc_wlan_cfg_indicate_rx(struct wilc *wilc, u8 *frame, int size,
+>  	size -= 4;
+>  
+>  	/**
+> -	 *      The  valid types of response messages are 'R' (Response), 'I' (Information), and 'N' (Network Information)
+> +	 *      The  valid types of response messages are 'R' (Response),
+> +	 *      'I' (Information), and 'N' (Network Information)
+>  	 **/
+>  
+>  	switch (msg_type) {
+
+This last one is in a comment which right away, makes it different.
+It also draws the reviewers eye to the fact that the comment block
+is formatted incorrectly, which may lead to a "why don't you fix
+that too?" and the growth of your patch into a monster patch ;)
+
+This file can use an overhaul of the commenting style.  If, in the
+future, you want to do a clean sweep of the file with respect to
+the comments, that would be a single patch.  For now, I suggest leaving
+this piece out of this patch set.
+
+alisons
+
+
+> -- 
+> 2.9.3
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170310165833.4033-1-diaconita.tamara%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
 
