@@ -1,61 +1,61 @@
 X-GM-THRID: 6395446243166781440
-X-Received: by 10.99.60.15 with SMTP id j15mr8540743pga.19.1489161741549;
-        Fri, 10 Mar 2017 08:02:21 -0800 (PST)
+X-Received: by 10.129.121.216 with SMTP id u207mr8789861ywc.170.1489161648074;
+        Fri, 10 Mar 2017 08:00:48 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.7.195 with SMTP id 61ls7480646oto.31.gmail; Fri, 10 Mar
- 2017 08:02:21 -0800 (PST)
-X-Received: by 10.157.45.11 with SMTP id v11mr8397260ota.105.1489161741089;
-        Fri, 10 Mar 2017 08:02:21 -0800 (PST)
+Received: by 10.107.129.81 with SMTP id c78ls2703319iod.28.gmail; Fri, 10 Mar
+ 2017 08:00:47 -0800 (PST)
+X-Received: by 10.99.245.15 with SMTP id w15mr9318407pgh.63.1489161647137;
+        Fri, 10 Mar 2017 08:00:47 -0800 (PST)
 Return-Path: <aishpant@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id g82si1811385pfb.5.2017.03.10.08.02.21
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id y203si1434515pfb.0.2017.03.10.08.00.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 10 Mar 2017 08:02:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Fri, 10 Mar 2017 08:00:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
+       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id v190so11238010pfb.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 08:02:21 -0800 (PST)
+Received: by mail-pg0-x243.google.com with SMTP id 25so10701627pgy.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 08:00:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=VSuuvPfa7jyoJh5t36DX/kKXYhUuWQi/EKvN5//sYUo=;
-        b=TPSHpj/2SFHEZO+SxkZI19aI7os53HYg0YH64YJNW4izIKgcOiRe8iGN+oy9r/6BDQ
-         PbfqxYJuM/x6rncUHaYAoA3JmjKwMPJsr8hYMGwd1aOFqJaVIpn7el9x6knDHYzJVrFU
-         1NeJ0irjIG4gmPAFWRewVUrZbfQphr7din8q5zr/HWwFCmHaYOLjsLxvIXwffHFyXiPH
-         7rTSuPrkopx0nGF/JPA+spfBFY8DiMs6CaLzeRDBxj3PQ411GwuyfAKU+tq75lMSfecY
-         TE6VsD8spcy5dEPojvJm2p9wn8fRfTetPla7onfjviZJI0Hh0yvLfjP7dAwVjn51Kv3G
-         k7oQ==
+        bh=lN1XpqRHXP3M2WMa6rV3Y9+gbGQI5g0d7fy5qtFCxE0=;
+        b=ITMFJrKwpmlMvArNEeYyIJcSRlEXNXMr25lkiDCmgXI8pX1KULB2qCmrJobct4VHUw
+         gYW/Vhrne+GPyIWyN9FRfcmf1LFisiK6VNQKlczmEnhZqxC77NZLMROXdoBnHEU3bpVC
+         kUntF+lOeGMzn0KYhHGlGbq8K2tkcLJQf/xr4gc1u3yc0JpH1lAWM0vMTb4P/o6jyQuQ
+         IcsHZ3OP0VXaAwOKVsOeENZrJhFNWTJQkdxHmBAphEN2J5uLRS9osZ6/t2Hbglw7gOUE
+         Wef/ahS1zdxfIdX61f1jOvtsm5sAiuvGEDWRWGIgryfUa6RrSX/Hj1lYTpsUpnczLU4H
+         dDyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=VSuuvPfa7jyoJh5t36DX/kKXYhUuWQi/EKvN5//sYUo=;
-        b=QQacby/gLksLwkaR2Olt9TWHxl1BeBC9tcSG6dSSQ+tF500B94d41alxqOv13zNdu8
-         hgYNkidWf/6BaQZ9QlVmbREGz7OAx3DODvb0qt5wyflqNYKLBroBa3TvgKdHLKENUJOD
-         7+mo1q4RDQg1hlHhlEzKfQzIz/BsqCNeuFoBB8yLfB7rwJJuaoxK3v7QDWGzlE+Sm7Mo
-         CWYM8hU4CWiW6/ZVzNfBROWQaVvEZaZBjLymsmMalxBckfG5Sr8hu5WB2VO7sXpIQSG0
-         zkMFSEAz2QybxSfhzgeLwog7nJ8aAFwumYBEx6CNl+WqGZKNMx0T101S+fao+r2th9CS
-         fpXQ==
-X-Gm-Message-State: AMke39nS1HfBHZWK5a6ImheNgHexbKpFMYSd2z3JYCBd3CX5Fc7eaSdMAbO2Zh765baNVQ==
-X-Received: by 10.99.246.83 with SMTP id u19mr21077604pgj.205.1489161740764;
-        Fri, 10 Mar 2017 08:02:20 -0800 (PST)
+        bh=lN1XpqRHXP3M2WMa6rV3Y9+gbGQI5g0d7fy5qtFCxE0=;
+        b=H3bdKgZ59jUPeuAfN56M8K7sR7J7i4a+QNsuc0c2fUdfMeU0MvpLkrR/id48IFM4EO
+         JuVnLcxWXnLOxUKaxH6o0saQnDSnmqWS0O6y8Egmh7NFyjNL9saCFevkBDeyrHY+R4QR
+         7BtHltAMjwzvuhWkNIqY2PhMm2ZnKKmYkgl4KcbEYeRUCiuEJMwWsqFJF1K3isfRG4Z0
+         EpDGVCcBK/Yb7V7gZWSn/rP6P6t8jzCIJC5D2qzGGraZWLkfwgnKoSi+DHx7899WEu8v
+         Vd45C1sICyUYcAE768p2n7D0JsOtcBa9qDzlkiLvXcmJm1E9w5dF36s8M/jpkWELT2C9
+         Ge0A==
+X-Gm-Message-State: AMke39lmXDRDcd9IBx7h3mLBJqvCAe3NS8cwPbktouLy9265yZKBtiPcvj5pvXm7VLb9vw==
+X-Received: by 10.98.80.93 with SMTP id e90mr21671338pfb.7.1489161646890;
+        Fri, 10 Mar 2017 08:00:46 -0800 (PST)
 Return-Path: <aishpant@gmail.com>
 Received: from aishwarya ([106.51.134.147])
-        by smtp.gmail.com with ESMTPSA id m6sm19459947pfg.126.2017.03.10.08.01.18
+        by smtp.gmail.com with ESMTPSA id r134sm19501384pfr.83.2017.03.10.08.00.37
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 10 Mar 2017 08:02:20 -0800 (PST)
-Date: Fri, 10 Mar 2017 21:31:05 +0530
+        Fri, 10 Mar 2017 08:00:46 -0800 (PST)
+Date: Fri, 10 Mar 2017 21:30:32 +0530
 From: Aishwarya Pant <aishpant@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org
-Subject: [PATCH v6 6/7] staging: bcm2835-audio: fix memory leak in
- bcm2835_audio_open_connection()
-Message-ID: <97c79973a44f4695f3d0161b4300fd185363f7f1.1489160830.git.aishpant@gmail.com>
+Subject: [PATCH v6 5/7] staging: bcm2835-audio: deallocate work when
+ queue_work(...) fails
+Message-ID: <8c0f6572332b691f73a4c4eeb3dd59699602511a.1489160830.git.aishpant@gmail.com>
 References: <cover.1489160830.git.aishpant@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -63,82 +63,42 @@ Content-Disposition: inline
 In-Reply-To: <cover.1489160830.git.aishpant@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-In bcm2835_audio_open_connection(), if VCHI connection fails or
-initialisation of VCHI audio instance fails vchi_instance needs to be
-deallocated otherwise it will cause a memory leak.
+This patch de-allocates work when queue_work(..) fails in the
+bcm2835-audio work functions
 
 Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
-
 ---
-Changes in v6:
-	- Remove redundant debug logs
----
- .../staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c  | 16 ++++++----------
- 1 file changed, 6 insertions(+), 10 deletions(-)
+ drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
-index 449799f..fa06bfd 100644
+index 9b10027..449799f 100644
 --- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
 +++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
-@@ -396,8 +396,6 @@ static int bcm2835_audio_open_connection(struct bcm2835_alsa_stream *alsa_stream
- 		(struct bcm2835_audio_instance *)alsa_stream->instance;
- 	int ret;
- 
--	LOG_DBG(" .. IN\n");
--
- 	LOG_INFO("%s: start\n", __func__);
- 	BUG_ON(instance);
- 	if (instance) {
-@@ -405,8 +403,7 @@ static int bcm2835_audio_open_connection(struct bcm2835_alsa_stream *alsa_stream
- 			__func__, instance);
- 		instance->alsa_stream = alsa_stream;
- 		alsa_stream->instance = instance;
--		ret = 0; // xxx todo -1;
--		goto err_free_mem;
-+		return 0; // xxx todo -1;
- 	}
- 
- 	/* Initialize and create a VCHI connection */
-@@ -416,8 +413,7 @@ static int bcm2835_audio_open_connection(struct bcm2835_alsa_stream *alsa_stream
- 			LOG_ERR("%s: failed to initialise VCHI instance (ret=%d)\n",
- 				__func__, ret);
- 
--			ret = -EIO;
--			goto err_free_mem;
-+			return -EIO;
+@@ -145,6 +145,7 @@ int bcm2835_audio_start(struct bcm2835_alsa_stream *alsa_stream)
+ 		work->alsa_stream = alsa_stream;
+ 		work->cmd = BCM2835_AUDIO_START;
+ 		if (!queue_work(alsa_stream->my_wq, &work->my_work)) {
++			kfree(work);
+ 			return -EBUSY;
  		}
- 		ret = vchi_connect(NULL, 0, vchi_instance);
- 		if (ret) {
-@@ -425,7 +421,7 @@ static int bcm2835_audio_open_connection(struct bcm2835_alsa_stream *alsa_stream
- 				__func__, ret);
- 
- 			ret = -EIO;
--			goto err_free_mem;
-+			goto err_free_memory;
+ 	}
+@@ -168,6 +169,7 @@ int bcm2835_audio_stop(struct bcm2835_alsa_stream *alsa_stream)
+ 		work->alsa_stream = alsa_stream;
+ 		work->cmd = BCM2835_AUDIO_STOP;
+ 		if (!queue_work(alsa_stream->my_wq, &work->my_work)) {
++			kfree(work);
+ 			return -EBUSY;
  		}
- 		initted = 1;
  	}
-@@ -437,7 +433,7 @@ static int bcm2835_audio_open_connection(struct bcm2835_alsa_stream *alsa_stream
- 		LOG_ERR("%s: failed to initialize audio service\n", __func__);
- 
- 		ret = PTR_ERR(instance);
--		goto err_free_mem;
-+		goto err_free_memory;
+@@ -194,6 +196,7 @@ int bcm2835_audio_write(struct bcm2835_alsa_stream *alsa_stream,
+ 		work->src = src;
+ 		work->count = count;
+ 		if (!queue_work(alsa_stream->my_wq, &work->my_work)) {
++			kfree(work);
+ 			return -EBUSY;
+ 		}
  	}
- 
- 	instance->alsa_stream = alsa_stream;
-@@ -445,9 +441,9 @@ static int bcm2835_audio_open_connection(struct bcm2835_alsa_stream *alsa_stream
- 
- 	LOG_DBG(" success !\n");
- 	ret = 0;
--err_free_mem:
--	LOG_DBG(" .. OUT\n");
- 
-+err_free_memory:
-+	kfree(vchi_instance);
- 	return ret;
- }
- 
 -- 
 2.7.4
 
