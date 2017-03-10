@@ -1,89 +1,134 @@
 X-GM-THRID: 6395900241087823872
-X-Received: by 10.25.196.68 with SMTP id u65mr2586896lff.0.1489862082770;
-        Sat, 18 Mar 2017 11:34:42 -0700 (PDT)
+X-Received: by 10.46.1.12 with SMTP id 12mr3910284ljb.30.1489178473094;
+        Fri, 10 Mar 2017 12:41:13 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.5.71 with SMTP id 68ls927911ljf.34.gmail; Sat, 18 Mar 2017
- 11:34:41 -0700 (PDT)
-X-Received: by 10.25.56.22 with SMTP id f22mr593754lfa.13.1489862081560;
-        Sat, 18 Mar 2017 11:34:41 -0700 (PDT)
-Return-Path: <narcisaanamaria12@gmail.com>
-Received: from mail-wr0-x243.google.com (mail-wr0-x243.google.com. [2a00:1450:400c:c0c::243])
-        by gmr-mx.google.com with ESMTPS id t131si358429wmf.1.2017.03.18.11.34.41
+Received: by 10.46.77.72 with SMTP id a69ls1164585ljb.42.gmail; Fri, 10 Mar
+ 2017 12:41:12 -0800 (PST)
+X-Received: by 10.46.87.80 with SMTP id r16mr3604861ljd.12.1489178472447;
+        Fri, 10 Mar 2017 12:41:12 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id p144si46474wme.2.2017.03.10.12.41.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 18 Mar 2017 11:34:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) client-ip=2a00:1450:400c:c0c::243;
+        Fri, 10 Mar 2017 12:41:12 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) smtp.mailfrom=narcisaanamaria12@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x243.google.com with SMTP id l37so13176035wrc.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 18 Mar 2017 11:34:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=oa76D5zQy77aYkU++gebOGoVT1S+zwABt8shg4Eoz5E=;
-        b=HnPWtM6ot3GMaxYcovEUJ9rzLNOo/0aqZKeKMKBBzJQeN5SoKae4u5jY8dTRUxmD9z
-         aFq2JuuiIp2JmlzbOzctq9A2jyrxSDBwJLsNsRFJWuCw0sLUvLQtGp0wP9A9VAfu2AGW
-         TfGV6z/rpepMn85sFgKJYaFF0QKvV2MOBHAFgz0WZn1tnh1BgBQD8ikUQEmFWwQXqWjf
-         FQIMgD+qNYPMihIVKgtHfMs3NSkGHZqHRntcfaJ3QcYi7kFvwAv1JRK9RbNV8elku+ft
-         aYWG75Ny37fsnn0gWIgBavXDOTPrIQDHBGDtof4oea4I/xQNdHRF09HYRDw2PCfNpO/Z
-         lcNQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=oa76D5zQy77aYkU++gebOGoVT1S+zwABt8shg4Eoz5E=;
-        b=cKfbaekGbLt1zoC5a7LhTR8hEijCGa2iPwxKQLi4GRUsRvb3TcUJwZKNTRLhGkoNLd
-         YxTYKkWHlUaaUVe3EtjzwQsN/S4ekn5WKnM3xeJex7AUKdsgIM0ryDMYPZUMAzKUrcyk
-         GXVcp/f7/wJ2uWdcYCvkffad2UdMtmyvphKLPR4ePbvVkK7GC9oBZz58nHBngJCnY6eZ
-         SkAJJWsRWjBfE6qr7bWZb6BQ3SEKgBZ8jNKi2OlOlYB1NnS7ypYZXJgdFNUZc4pM6mgY
-         ahqju1YjekAsTCn2YRQbdUXLzQJWojpMyivrIyGei9cP/U8YEjR98ceyp/ZRIhmiMMTS
-         ipSg==
-X-Gm-Message-State: AFeK/H35fZHpkMC6agvBetJw5l5fJQAzeaw/vHM3KQ78YuW4/r28pzFVLUhVIdx4OU3Hiw==
-X-Received: by 10.223.130.144 with SMTP id 16mr19980484wrc.32.1489862081385;
-        Sat, 18 Mar 2017 11:34:41 -0700 (PDT)
-Return-Path: <narcisaanamaria12@gmail.com>
-Received: from localhost.localdomain (p22.eregie.pub.ro. [141.85.0.122])
-        by smtp.gmail.com with ESMTPSA id k8sm14253169wre.19.2017.03.18.11.34.40
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 18 Mar 2017 11:34:40 -0700 (PDT)
-From: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
-To: Larry.Finger@lwfinger.net,
-	florian.c.schilhabel@googlemail.com,
-	gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
-Subject: [PATCH v2 0/4] staging: rtl8712: Invert if statements to reduce indentation level
-Date: Sat, 18 Mar 2017 20:33:58 +0200
-Message-Id: <cover.1489861352.git.narcisaanamaria12@gmail.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <cover.1489161001.git.narcisaanamaria12@gmail.com>
-References: <cover.1489161001.git.narcisaanamaria12@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.36,142,1486422000"; 
+   d="scan'208";a="264088009"
+Received: from 198.67.28.109.rev.sfr.net (HELO [192.168.1.69]) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 10 Mar 2017 21:41:11 +0100
+Date: Fri, 10 Mar 2017 21:41:11 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+cc: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com, 
+    gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 4/4] staging: rtl8712: Refactor
+ conditional in r871x_get_ap_info
+In-Reply-To: <20170310203659.GA4118@nati-X550JK>
+Message-ID: <alpine.DEB.2.20.1703102140440.2191@hadrien>
+References: <cover.1489161001.git.narcisaanamaria12@gmail.com> <51a2ef5e1c0eedf9700b43a83914983a6584ed24.1489161001.git.narcisaanamaria12@gmail.com> <alpine.DEB.2.20.1703101908200.3356@hadrien> <20170310203659.GA4118@nati-X550JK>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-This patchset reduces indentation level by inverting if statements,
-in order to clear out the error handling code immediately, and then
-continue executing the function without the excessive indentation and
-additional else branches.
 
-These pieces of code where indentation was improved
-were found using Coccinelle.
 
----
-Changes in v2:
-  - Make the commit messages more clear
-  - Improve layout of the functions
+On Fri, 10 Mar 2017, Narcisa Ana Maria Vasile wrote:
 
-Narcisa Ana Maria Vasile (4):
-  staging: rtl8712: Invert if statements to reduce indentation level
-  staging: rtl8712: Invert if statement reduce indentation level
-  staging: rtl8712: Invert if statements to reduce indentation level
-  staging: rtl8712: Invert if statement to reduce indentation level
+> On Fri, Mar 10, 2017 at 07:08:59PM +0100, Julia Lawall wrote:
+> >
+> >
+> > On Fri, 10 Mar 2017, Narcisa Ana Maria Vasile wrote:
+> >
+> > > Reduce indentation level in r871x_get_ap_info.
+> > > This was done using the following Coccinelle script:
+> >
+> > Actually, this script doesn't do anything to the code.  It just detects an
+> > opportunity.  Otherwise,
+> >
+> > Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+> >
+>  Yes, what I meant is that the script helped me find this opportunity to
+>  improve a piece of code. I'll resend another version of this patchset
+>  based on the observations you made. Should I still include the
+>  Coccinelle script, but mention I used it to detect, not to change the
+>  code?
 
- drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 135 ++++++++++++--------------
- 1 file changed, 63 insertions(+), 72 deletions(-)
+Yes, I think it would be a good idea to include it.
 
--- 
-1.9.1
+julia
 
+>
+>  Thanks,
+>  Narcisa
+> > >
+> > > @disable neg_if@
+> > > expression e,E;
+> > > statement S;
+> > > @@
+> > >
+> > > *if (e)
+> > > S
+> > > else { return -E; }
+> > >
+> > > @disable neg_if@
+> > > expression e,E;
+> > > statement S;
+> > > identifier l;
+> > > @@
+> > >
+> > > *if (e)
+> > > S
+> > > else { rc = -E; goto l; }
+> > >
+> > > Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+> > > ---
+> > >  drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 12 ++++++------
+> > >  1 file changed, 6 insertions(+), 6 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+> > > index 7ba8cf6..0b73f67 100644
+> > > --- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+> > > +++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+> > > @@ -1971,13 +1971,13 @@ static int r871x_get_ap_info(struct net_device *dev,
+> > >  			break;
+> > >  	}
+> > >  	pdata->flags = 0;
+> > > -	if (pdata->length >= 32) {
+> > > -		if (copy_from_user(data, pdata->pointer, 32))
+> > > -			return -EINVAL;
+> > > -		data[32] = 0;
+> > > -	} else {
+> > > +	if (pdata->length < 32)
+> > >  		return -EINVAL;
+> > > -	}
+> > > +
+> > > +	if (copy_from_user(data, pdata->pointer, 32))
+> > > +		return -EINVAL;
+> > > +	data[32] = 0;
+> > > +
+> > >  	spin_lock_irqsave(&(pmlmepriv->scanned_queue.lock), irqL);
+> > >  	phead = &queue->queue;
+> > >  	plist = phead->next;
+> > > --
+> > > 1.9.1
+> > >
+> > > --
+> > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/51a2ef5e1c0eedf9700b43a83914983a6584ed24.1489161001.git.narcisaanamaria12%40gmail.com.
+> > > For more options, visit https://groups.google.com/d/optout.
+> > >
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170310203659.GA4118%40nati-X550JK.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
