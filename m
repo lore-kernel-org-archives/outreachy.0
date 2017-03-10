@@ -1,52 +1,52 @@
 X-GM-THRID: 6395630061335085056
-X-Received: by 10.25.157.14 with SMTP id g14mr2735231lfe.28.1489165116581;
-        Fri, 10 Mar 2017 08:58:36 -0800 (PST)
+X-Received: by 10.25.72.71 with SMTP id v68mr283398lfa.9.1489141238832;
+        Fri, 10 Mar 2017 02:20:38 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.0.22 with SMTP id 22ls1054493lja.32.gmail; Fri, 10 Mar 2017
- 08:58:36 -0800 (PST)
-X-Received: by 10.46.15.2 with SMTP id 2mr3425504ljp.31.1489165116214;
-        Fri, 10 Mar 2017 08:58:36 -0800 (PST)
+Received: by 10.46.83.87 with SMTP id t23ls948178ljd.19.gmail; Fri, 10 Mar
+ 2017 02:20:38 -0800 (PST)
+X-Received: by 10.25.223.67 with SMTP id q3mr2403634lfj.1.1489141238125;
+        Fri, 10 Mar 2017 02:20:38 -0800 (PST)
 Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wr0-x241.google.com (mail-wr0-x241.google.com. [2a00:1450:400c:c0c::241])
-        by gmr-mx.google.com with ESMTPS id f7si265339wmg.3.2017.03.10.08.58.36
+Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
+        by gmr-mx.google.com with ESMTPS id l138si163673wmg.0.2017.03.10.02.20.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 10 Mar 2017 08:58:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) client-ip=2a00:1450:400c:c0c::241;
+        Fri, 10 Mar 2017 02:20:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
+       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x241.google.com with SMTP id g10so12306998wrg.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 08:58:36 -0800 (PST)
+Received: by mail-wm0-x244.google.com with SMTP id z63so1514878wmg.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 02:20:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=2OoyuGHauTyMLIU4wZSS2s4x8KI9JnRimqvdEMowvDQ=;
-        b=jpFrTP3IrdSayY6ip6psyRKEgbuwYsT5V2oGC45+hiBYuAgG2XDN9RlCskvgwkyPgq
-         TXuMqwJ+oxDrXFMngg0SskSkZKMx+b62vdtqeaK3Vm+fXfHT1ec8MFlDSmfie8iBMcMk
-         nMy+eXru3e8qTwoWYjAru2afgrdUqm/Ms8mFIyLRqi060aGZE8OOYiQ79Fvx5TpF6L6N
-         S8FBqUGqEpJJ6Z9ibBOoFnlMUdKvLc3puHocbGN4DFNGeKZKn/AzVJFKO6k2dvp1npGH
-         r1jgELygPiACM/SaeHTSH+mckax4xFN3mLS2/1GzGKiuEqH6xxrIRVAATT059wSTIEoy
-         05pg==
+        bh=HWDNYzyOgp7vdhtVQfA6dXljAVj8O8/Xxgsvnw1ldow=;
+        b=Qj25DjyeEryv483F7gElySrPssz2BskveU4B/8HrLEpaGvL/gVgUO1W+jObsUzei4C
+         pO5tFfknOFardNMSLm6rz2jQHuXc4374AL/KIgwXQUUcTMrMFSwgVIrYoM17G/CQO5l3
+         xx8vTqPWesUbmkhnjqM+tKAC2WYgjr44WY5VwOmHeXm1PPFgia4C5xKF0DxdgWJlUgkg
+         5Qi64JZNtVZgMEDnUUgkLuKVT92G+kXrnnfer/1C5HAUF6r4BOnQjYsvycfaWGZujSpX
+         ZRPuzub8AAHUHIGDDe6dmzSGU+sRs9NM1mKcuW8pg/keq2By1nqnwUlr3XD3Gbqj5tM0
+         lvNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=2OoyuGHauTyMLIU4wZSS2s4x8KI9JnRimqvdEMowvDQ=;
-        b=hd0tRkFFSxi4SqkE8Z47iCs5D06r7kPc13vi3P6GxOZSVXGLDqMGob776vCAVvEl3H
-         a1YunTGHjbqK7KAPem8QZUVaB2MUyWJOP+X1Bd88rEOSpGmvVls4vCq7CEFW9hOi2Fa8
-         wVFaDraFHKrLfPTSUoBAnkDkVB+S1bsWB1VBHrCs0ro7mhLxK8RzmFpOeImWNapGN5dI
-         SPESm1qdzFbFNp9Mh+PrtcBWqhDOU4BtvdmbfpwFCnFfMVq09+58EIbfkOiFhxKnXbsf
-         T+29I/VAm5MMhQdAuS3xc50tqt8DLGDn2Wu0i+DBAFOzpt4mRPrISFrEB/B4G67XaWv3
-         vACA==
-X-Gm-Message-State: AMke39kIjMmjZVhdkvsz0/yX60+1igxlTDWjY4dC6HO0/jSMC7PinZP3yeWq8k0WdFUZoQ==
-X-Received: by 10.223.166.244 with SMTP id t107mr16395258wrc.80.1489165115972;
-        Fri, 10 Mar 2017 08:58:35 -0800 (PST)
+        bh=HWDNYzyOgp7vdhtVQfA6dXljAVj8O8/Xxgsvnw1ldow=;
+        b=UA4KDDqLWDxDEA23gTT2Mm0jetmqDcN8RKD85jvICryCMkLpSkFOh0nP5ocsJE9QHW
+         ++DPhNQqv7c8EfNq6RIa+ewSQcehEM/iRNgXWc51YfMSU3yFAT8zbnTFHL8vo3q6OJZA
+         7WW4f/v9htfURFOnA7IKN+NL+skcrwVLnVg7DF/u8qugvPS7aL6Chp+f2OCTROxhT/3T
+         Czh2u+HrePaWaSN9lW3C/4dMJKx3sC5v0/tzfwHrnupCmTISjTRCItHM5T91oNcBvuxC
+         JGewcKW5ymZHYXZjfL6NmdaM3FiAvh0bWdpVGHlmbDZ2RtjeOFuO5yDY9VEER8yqGEJW
+         RHNg==
+X-Gm-Message-State: AFeK/H1cvF2ODbLTB/zEq1VX0GYUd/zhY4eZ6xjvp0ky6rnKZROLMEiFeKMhgwUXNVdS2g==
+X-Received: by 10.28.210.212 with SMTP id j203mr1645402wmg.93.1489141237933;
+        Fri, 10 Mar 2017 02:20:37 -0800 (PST)
 Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([2a02:2f0b:8130:11ea:9935:36c4:c373:a2cc])
-        by smtp.gmail.com with ESMTPSA id m188sm4079785wma.27.2017.03.10.08.58.34
+Received: from tamara ([2a02:2f0b:8130:11ea:d515:7bde:c1d1:c737])
+        by smtp.gmail.com with ESMTPSA id x69sm2636673wma.15.2017.03.10.02.20.36
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 10 Mar 2017 08:58:35 -0800 (PST)
+        Fri, 10 Mar 2017 02:20:36 -0800 (PST)
 From: Tamara Diaconita <diaconitatamara@gmail.com>
 X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
 To: aditya.shankar@microchip.com,
@@ -54,96 +54,124 @@ To: aditya.shankar@microchip.com,
 	gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
 Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH 1/4] staging: wilc1000:  Enhance code formatting
-Date: Fri, 10 Mar 2017 18:58:33 +0200
-Message-Id: <20170310165833.4033-1-diaconita.tamara@gmail.com>
+Subject: [PATCH v4] staging: wilc1000: Enhance code formatting
+Date: Fri, 10 Mar 2017 12:20:31 +0200
+Message-Id: <20170310102031.32314-1-diaconita.tamara@gmail.com>
 X-Mailer: git-send-email 2.9.3
 
-Trims line size at 80 characters wilc_wlan_cfg.c file by moving a part of the lines in a new line.
+Trims line size at 80 characters in coreconfigurator.h file by
+shortening the name of variables.
 
-Fixed the checkpath.pl issue:
-CHECK: line over 80 characters.
+Problem found with checkpatch.pl.
 
 Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
 ---
- drivers/staging/wilc1000/wilc_wlan_cfg.c | 23 ++++++++++++++++-------
- 1 file changed, 16 insertions(+), 7 deletions(-)
+Changes since v3:
+*Changed the variables name I modified in coreconfigurator.h in other related files: corecofigurator.c and host_interface.c.
 
-diff --git a/drivers/staging/wilc1000/wilc_wlan_cfg.c b/drivers/staging/wilc1000/wilc_wlan_cfg.c
-index 926fc16..fed66dcd 100644
---- a/drivers/staging/wilc1000/wilc_wlan_cfg.c
-+++ b/drivers/staging/wilc1000/wilc_wlan_cfg.c
-@@ -217,7 +217,8 @@ static int wilc_wlan_cfg_set_word(u8 *frame, u32 offset, u16 id, u32 val32)
- 	return 7;
+Changes since v2:
+*Shorten variables name.
+*Separate the patch from a patch set.
+
+Changes since v1:
+*Put the patch in a patch set.
+
+ drivers/staging/wilc1000/coreconfigurator.c | 26 +++++++++++++-------------
+ drivers/staging/wilc1000/coreconfigurator.h |  4 ++--
+ drivers/staging/wilc1000/host_interface.c   |  2 +-
+ 3 files changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/drivers/staging/wilc1000/coreconfigurator.c b/drivers/staging/wilc1000/coreconfigurator.c
+index 6229947..572a077 100644
+--- a/drivers/staging/wilc1000/coreconfigurator.c
++++ b/drivers/staging/wilc1000/coreconfigurator.c
+@@ -350,38 +350,38 @@ s32 wilc_parse_network_info(u8 *msg_buffer,
  }
  
--static int wilc_wlan_cfg_set_str(u8 *frame, u32 offset, u16 id, u8 *str, u32 size)
-+static int wilc_wlan_cfg_set_str(u8 *frame, u32 offset, u16 id, u8 *str,
-+				 u32 size)
+ s32 wilc_parse_assoc_resp_info(u8 *buffer, u32 buffer_len,
+-			       struct connect_resp_info **ret_connect_resp_info)
++			       struct resp_info **ret_resp_info)
  {
- 	u8 *buf;
+-	struct connect_resp_info *connect_resp_info = NULL;
++	struct resp_info *resp_info = NULL;
+ 	u16 assoc_resp_len = 0;
+ 	u8 *ies = NULL;
+ 	u16 ies_len = 0;
  
-@@ -298,7 +299,8 @@ static void wilc_wlan_parse_response_frame(u8 *info, int size)
- 					break;
+-	connect_resp_info = kzalloc(sizeof(*connect_resp_info), GFP_KERNEL);
+-	if (!connect_resp_info)
++	resp_info = kzalloc(sizeof(*resp_info), GFP_KERNEL);
++	if (!resp_info)
+ 		return -ENOMEM;
  
- 				if (g_cfg_hword[i].id == wid) {
--					g_cfg_hword[i].val = cpu_to_le16(info[3] | (info[4] << 8));
-+					g_cfg_hword[i].val =
-+					cpu_to_le16(info[3] | (info[4] << 8));
- 					break;
- 				}
- 				i++;
-@@ -312,7 +314,10 @@ static void wilc_wlan_parse_response_frame(u8 *info, int size)
- 					break;
+ 	assoc_resp_len = (u16)buffer_len;
  
- 				if (g_cfg_word[i].id == wid) {
--					g_cfg_word[i].val = cpu_to_le32(info[3] | (info[4] << 8) | (info[5] << 16) | (info[6] << 24));
-+					g_cfg_word[i].val = cpu_to_le32(info[3]
-+						| (info[4] << 8)
-+						| (info[5] << 16)
-+						| (info[6] << 24));
- 					break;
- 				}
- 				i++;
-@@ -332,7 +337,8 @@ static void wilc_wlan_parse_response_frame(u8 *info, int size)
- 						i += toggle;
- 						toggle ^= 1;
- 					}
--					memcpy(g_cfg_str[i].str, &info[2], (info[2] + 1));
-+					memcpy(g_cfg_str[i].str, &info[2],
-+					       (info[2] + 1));
- 					break;
- 				}
- 				i++;
-@@ -478,14 +484,16 @@ int wilc_wlan_cfg_get_wid_value(u16 wid, u8 *buffer, u32 buffer_size)
- 				u32 size =  g_cfg_str[i].str[0];
+-	connect_resp_info->status = get_asoc_status(buffer);
+-	if (connect_resp_info->status == SUCCESSFUL_STATUSCODE) {
+-		connect_resp_info->capability = get_assoc_resp_cap_info(buffer);
+-		connect_resp_info->assoc_id = get_asoc_id(buffer);
++	resp_info->status = get_asoc_status(buffer);
++	if (resp_info->status == SUCCESSFUL_STATUSCODE) {
++		resp_info->capability = get_assoc_resp_cap_info(buffer);
++		resp_info->assoc_id = get_asoc_id(buffer);
  
- 				if (buffer_size >= size) {
--					if (g_cfg_str[i].id == WID_SITE_SURVEY_RESULTS)	{
-+					if (g_cfg_str[i].id ==
-+					    WID_SITE_SURVEY_RESULTS){
- 						static int toggle;
+ 		ies = &buffer[CAP_INFO_LEN + STATUS_CODE_LEN + AID_LEN];
+ 		ies_len = assoc_resp_len - (CAP_INFO_LEN + STATUS_CODE_LEN +
+ 					    AID_LEN);
  
- 						i += toggle;
- 						toggle ^= 1;
+-		connect_resp_info->ies = kmemdup(ies, ies_len, GFP_KERNEL);
+-		if (!connect_resp_info->ies) {
+-			kfree(connect_resp_info);
++		resp_info->ies = kmemdup(ies, ies_len, GFP_KERNEL);
++		if (!resp_info->ies) {
++			kfree(resp_info);
+ 			return -ENOMEM;
+ 		}
  
- 					}
--					memcpy(buffer,  &g_cfg_str[i].str[1], size);
-+					memcpy(buffer,  &g_cfg_str[i].str[1],
-+					       size);
- 					ret = size;
- 				}
- 				break;
-@@ -510,7 +518,8 @@ int wilc_wlan_cfg_indicate_rx(struct wilc *wilc, u8 *frame, int size,
- 	size -= 4;
+-		connect_resp_info->ies_len = ies_len;
++		resp_info->ies_len = ies_len;
+ 	}
  
- 	/**
--	 *      The  valid types of response messages are 'R' (Response), 'I' (Information), and 'N' (Network Information)
-+	 *      The  valid types of response messages are 'R' (Response),
-+	 *      'I' (Information), and 'N' (Network Information)
- 	 **/
+-	*ret_connect_resp_info = connect_resp_info;
++	*ret_resp_info = resp_info;
  
- 	switch (msg_type) {
+ 	return 0;
+ }
+diff --git a/drivers/staging/wilc1000/coreconfigurator.h b/drivers/staging/wilc1000/coreconfigurator.h
+index 10101f8..f40d6f2 100644
+--- a/drivers/staging/wilc1000/coreconfigurator.h
++++ b/drivers/staging/wilc1000/coreconfigurator.h
+@@ -97,7 +97,7 @@ struct network_info {
+ 	u64 tsf_hi;
+ };
+ 
+-struct connect_resp_info {
++struct resp_info {
+ 	u16 capability;
+ 	u16 status;
+ 	u16 assoc_id;
+@@ -123,7 +123,7 @@ struct disconnect_info {
+ s32 wilc_parse_network_info(u8 *msg_buffer,
+ 			    struct network_info **ret_network_info);
+ s32 wilc_parse_assoc_resp_info(u8 *buffer, u32 buffer_len,
+-			       struct connect_resp_info **ret_connect_resp_info);
++			       struct resp_info **ret_resp_info);
+ void wilc_scan_complete_received(struct wilc *wilc, u8 *pu8Buffer,
+ 				 u32 u32Length);
+ void wilc_network_info_received(struct wilc *wilc, u8 *pu8Buffer,
+diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
+index 2429c85..baed80d 100644
+--- a/drivers/staging/wilc1000/host_interface.c
++++ b/drivers/staging/wilc1000/host_interface.c
+@@ -1336,7 +1336,7 @@ static s32 Handle_RcvdGnrlAsyncInfo(struct wilc_vif *vif,
+ 		u8MacStatusAdditionalInfo = pstrRcvdGnrlAsyncInfo->buffer[9];
+ 		if (hif_drv->hif_state == HOST_IF_WAITING_CONN_RESP) {
+ 			u32 u32RcvdAssocRespInfoLen = 0;
+-			struct connect_resp_info *pstrConnectRespInfo = NULL;
++			struct resp_info *pstrConnectRespInfo = NULL;
+ 
+ 			memset(&strConnectInfo, 0, sizeof(struct connect_info));
+ 
 -- 
 2.9.3
 
