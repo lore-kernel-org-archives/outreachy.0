@@ -1,137 +1,120 @@
-X-GM-THRID: 6395863057719885824
-X-Received: by 10.129.120.201 with SMTP id t192mr8271825ywc.118.1489152912744;
-        Fri, 10 Mar 2017 05:35:12 -0800 (PST)
+X-GM-THRID: 6395948622508195840
+X-Received: by 10.46.20.74 with SMTP id 10mr2640078lju.0.1489172834870;
+        Fri, 10 Mar 2017 11:07:14 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.26.214 with SMTP id 205ls512784iti.12.gmail; Fri, 10 Mar
- 2017 05:35:11 -0800 (PST)
-X-Received: by 10.99.111.6 with SMTP id k6mr8702141pgc.131.1489152911793;
-        Fri, 10 Mar 2017 05:35:11 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id a3si1761982pfb.2.2017.03.10.05.35.11
+Received: by 10.25.38.143 with SMTP id m137ls147047lfm.51.gmail; Fri, 10 Mar
+ 2017 11:07:14 -0800 (PST)
+X-Received: by 10.46.77.69 with SMTP id a66mr3720416ljb.11.1489172834262;
+        Fri, 10 Mar 2017 11:07:14 -0800 (PST)
+Return-Path: <diaconitatamara@gmail.com>
+Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
+        by gmr-mx.google.com with ESMTPS id t131si29728wmf.1.2017.03.10.11.07.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 10 Mar 2017 05:35:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Fri, 10 Mar 2017 11:07:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id 77so10338173pgc.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 05:35:11 -0800 (PST)
+Received: by mail-wm0-x241.google.com with SMTP id u132so483599wmg.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 11:07:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=A54JGDReGcimIjbhofqKEvctX6j5S+69bVudsvaFFNM=;
-        b=nUFbqVxQ06P91QS7g9R9PxG28CalJ+b2hLIuXr5e9kQOW5e2L3U+1N//MJsaFwpMKV
-         JOlQCV+3XHInkCQGTjIvlk9V82C4R4dAOr0ca3tIMliekmRKjJjl0ue4C3DFb10CuAcu
-         eeI5xQzZaEg125bhViDDUKb4L6vLb3PhxsTQkGdjrQw/gd0XRrBZaAXYiGv5Z8PtsVdn
-         tOj6W8ENWZ7WIoqDL5dYUc0xOoHcl5mnw4/D0eUPG2+LSSct+q5m0tdu4MYhCd3GxCbq
-         s+8kGuciYmIZWFT1Vwv08Ez5nDthhWHb+IXnYfT7RoroIrYA4g/AHkNxHCX/noSKXBhq
-         WcKA==
+        h=from:to:cc:subject:date:message-id;
+        bh=aZU4RuP85dWnrxDJXIQQBirU+2HDJ94B1Od/NJjWKhs=;
+        b=GDKpb5RV0qv1w8osGXSSUR16Ed0x5caYj9Wj1ed+M5VUV1gR7rpkywy+piO6jJw7UW
+         JN7l8JKa3SAz83yGGxZY2vRFpnMXkEewsjZkJw3mLUML6dTMAcS/3nBPfOiqaoar4sQv
+         61Ko3NQXi46fBF4XQgRNZILxmAjXvyRwhxF9nBQd0yyAxprRhChvwnB6C/52SVJRYKDg
+         GMt1Tfxm1uRgf8RD87wMjklM2EhfxAb6CnAq1xn1xp4N24LPaMjhdMDFaTfeKOf3GVrc
+         0fzmUYjMt56WtY3nB8NA0k0U+rvMuU/RAR2NoIPoLmjkQx9p+E8fC+n4biWW+JX9QAHC
+         Fk9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=A54JGDReGcimIjbhofqKEvctX6j5S+69bVudsvaFFNM=;
-        b=kCvAYMxicZVMAmH9IWfaHTQRjHJC3hMUH3KWHSeylNrpIsK8C8NlfM2SvNuRGE4YV8
-         NU/TxfO0jGVYsnxrAiRY9HWXBZUjWjgWirFYqFv7bFDdJyEeYu2MR6fXAddrA903jnLE
-         LfifQdqqQquwBeSPX981WF2RqnoEH2YOmYtBMhj+F09SYulmQRtJ25UsY/vTF0sXGCgU
-         a3VY84Ja3H67r6u8Rq1v7cpP+NMwioudXL110H1C7q07+fB573LDwIecOabKJ+QZVhsR
-         Ul61jGwkJsXC4yGPM14tiZ5CYJy/l2zcvDCPzKXVSPbqAWWwFhS9f0ByTlIXkj2v7BDB
-         E5xA==
-X-Gm-Message-State: AMke39kW1eTZ2pEhdmmZUgGleVD4u9hLuvrH4V0CCBazB1IoVgkBcrP5o7A1mF5ubk7kpA==
-X-Received: by 10.98.193.69 with SMTP id i66mr21004347pfg.35.1489152911559;
-        Fri, 10 Mar 2017 05:35:11 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id w123sm18907819pfb.44.2017.03.10.05.35.07
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=aZU4RuP85dWnrxDJXIQQBirU+2HDJ94B1Od/NJjWKhs=;
+        b=LZJOv3bArWKFNEeLAoVn3mWjtXEPdsBoZ5p7VwFGY9T1pWNcqxw1v34T797TR/fVAM
+         Dtk1KEKMvUQiEILjI3sG+INR3rLBggYVagO8rNyEEmuYgilOwq1IoeF1sO9DVvFaN04h
+         nhyRYfAfwANJxDQreT4HhA82FvGOd8EjaQuP53K2vlBiPN8nJ0tRNG+hGbd2Hu0soIm1
+         jynP4FqYaQvJPJpgQLwW5NxTk+aKLPtilKN6QpA5BVgkDggZPAA6cLcjc7EQMEkXmlvi
+         bKSCVpGqcd418243nzZTorVdpxo0pPDbLtSCBNNkg6X2R553uUV1YS/AzQOD8zO/FePD
+         lvzw==
+X-Gm-Message-State: AFeK/H2eRY95P6L/+Ph5jkM8WMNcX6Nm2X7HjJgnCIham3fj98Eh6SRvOJIacPKgNdqptg==
+X-Received: by 10.28.187.213 with SMTP id l204mr421564wmf.104.1489172834057;
+        Fri, 10 Mar 2017 11:07:14 -0800 (PST)
+Return-Path: <diaconitatamara@gmail.com>
+Received: from tamara ([2a02:2f0b:8130:11ea:9935:36c4:c373:a2cc])
+        by smtp.gmail.com with ESMTPSA id 17sm14115519wru.16.2017.03.10.11.07.12
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 10 Mar 2017 05:35:10 -0800 (PST)
-Date: Fri, 10 Mar 2017 19:05:05 +0530
-From: simran singhal <singhalsimran0@gmail.com>
-To: mchehab@kernel.org
-Cc: gregkh@linuxfoundation.org, linux-media@vger.kernel.org,
-	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+        Fri, 10 Mar 2017 11:07:13 -0800 (PST)
+From: Tamara Diaconita <diaconitatamara@gmail.com>
+X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
+To: aditya.shankar@microchip.com,
+	ganesh.krishna@microchip.com,
+	gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCH v1] staging: media: Remove unused function
- atomisp_set_stop_timeout()
-Message-ID: <20170310133504.GA18916@singhal-Inspiron-5558>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: [PATCH 3/7] staging: wilc1000: Correct name of variables
+Date: Fri, 10 Mar 2017 21:07:11 +0200
+Message-Id: <20170310190711.19915-1-diaconita.tamara@gmail.com>
+X-Mailer: git-send-email 2.9.3
 
-The function atomisp_set_stop_timeout on being called, simply returns
-back. The function hasn't been mentioned in the TODO and doesn't have
-FIXME code around. Hence, atomisp_set_stop_timeout and its calls have been
-removed.
+Correct misspelled variables: unkmown_mask and happended to improve code
+readability.
 
-This was done using Coccinelle.
+Problem found with checkpatch.pl.
 
-@@
-identifier f;
-@@
-
-void f(...) {
-
--return;
-
-}
-
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
 ---
- v1:
-   -Change Subject to include name of function
-   -change commit message to include the coccinelle script
-   
- drivers/staging/media/atomisp/pci/atomisp2/atomisp_cmd.c          | 1 -
- drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat.h       | 1 -
- drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat_css20.c | 5 -----
- 3 files changed, 7 deletions(-)
+ drivers/staging/wilc1000/wilc_spi.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_cmd.c b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_cmd.c
-index d9a5c24..9720756 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_cmd.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_cmd.c
-@@ -1692,7 +1692,6 @@ void atomisp_wdt_work(struct work_struct *work)
- 		}
- 	}
- #endif
--	atomisp_set_stop_timeout(ATOMISP_CSS_STOP_TIMEOUT_US);
- 	dev_err(isp->dev, "timeout recovery handling done\n");
- 	atomic_set(&isp->wdt_work_queued, 0);
- 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat.h b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat.h
-index e6b0cce..fb8b8fa 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat.h
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat.h
-@@ -660,7 +660,6 @@ int atomisp_css_set_acc_parameters(struct atomisp_acc_fw *acc_fw);
- int atomisp_css_isr_thread(struct atomisp_device *isp,
- 			   bool *frame_done_found,
- 			   bool *css_pipe_done);
--void atomisp_set_stop_timeout(unsigned int timeout);
- 
- bool atomisp_css_valid_sof(struct atomisp_device *isp);
- 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat_css20.c b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat_css20.c
-index 6697d72..cfa0ad4 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat_css20.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_compat_css20.c
-@@ -4699,11 +4699,6 @@ int atomisp_css_isr_thread(struct atomisp_device *isp,
- 	return 0;
- }
- 
--void atomisp_set_stop_timeout(unsigned int timeout)
--{
--	return;
--}
--
- bool atomisp_css_valid_sof(struct atomisp_device *isp)
+diff --git a/drivers/staging/wilc1000/wilc_spi.c b/drivers/staging/wilc1000/wilc_spi.c
+index 887f45f..414ef21 100644
+--- a/drivers/staging/wilc1000/wilc_spi.c
++++ b/drivers/staging/wilc1000/wilc_spi.c
+@@ -929,9 +929,9 @@ static int wilc_spi_read_int(struct wilc *wilc, u32 *int_status)
  {
- 	unsigned int i, j;
+ 	struct spi_device *spi = to_spi_device(wilc->dev);
+ 	int ret;
+-	int happended, j;
++	int happened, j;
+ 	u32 irq_flags;
+-	u32 unkmown_mask;
++	u32 unknown_mask;
+ 
+ 	if (g_spi.has_thrpt_enh) {
+ 		ret = spi_internal_read(wilc, 0xe840 - WILC_SPI_REG_BASE,
+@@ -951,7 +951,7 @@ static int wilc_spi_read_int(struct wilc *wilc, u32 *int_status)
+ 
+ 		j = 0;
+ 		do {
+-			happended = 0;
++			happened = 0;
+ 
+ 			wilc_spi_read_reg(wilc, 0x1a90, &irq_flags);
+ 			tmp |= ((irq_flags >> 27) << IRG_FLAGS_OFFSET);
+@@ -962,14 +962,14 @@ static int wilc_spi_read_int(struct wilc *wilc, u32 *int_status)
+ 				tmp |= (((irq_flags >> 0) & 0x7) << (IRG_FLAGS_OFFSET + 5));
+ 			}
+ 
+-			unkmown_mask = ~((1ul << g_spi.nint) - 1);
++			unknown_mask = ~((1ul << g_spi.nint) - 1);
+ 
+-			if ((tmp >> IRG_FLAGS_OFFSET) & unkmown_mask) {
+-				dev_err(&spi->dev, "Unexpected interrupt (2): j=%d, tmp=%x, mask=%x\n", j, tmp, unkmown_mask);
+-				happended = 1;
++			if ((tmp >> IRG_FLAGS_OFFSET) & unknown_mask) {
++				dev_err(&spi->dev, "Unexpected interrupt (2): j=%d, tmp=%x, mask=%x\n", j, tmp, unknown_mask);
++				happened = 1;
+ 			}
+ 			j++;
+-		} while (happended);
++		} while (happened);
+ 
+ 	*int_status = tmp;
+ 	}
 -- 
-2.7.4
+2.9.3
 
 
