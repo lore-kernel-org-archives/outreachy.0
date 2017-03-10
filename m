@@ -1,127 +1,115 @@
-X-GM-THRID: 6606665477713297408
-X-Received: by 2002:a1c:da95:: with SMTP id r143-v6mr924773wmg.6.1538234175815;
-        Sat, 29 Sep 2018 08:16:15 -0700 (PDT)
+X-GM-THRID: 6395915671391174656
+X-Received: by 10.99.227.21 with SMTP id f21mr9654495pgh.43.1489175624684;
+        Fri, 10 Mar 2017 11:53:44 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:4d05:: with SMTP id o5-v6ls4602085wmh.3.canary-gmail;
- Sat, 29 Sep 2018 08:16:14 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV61nqNsY+pZevGmtHVfIjGp4gP4weLkW7k8VEjrg5gw7RKHZWm6EVfVwtdw1fSQ5AeBYt7w+
-X-Received: by 2002:a1c:7ece:: with SMTP id z197-v6mr884786wmc.0.1538234174743;
-        Sat, 29 Sep 2018 08:16:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538234174; cv=none;
-        d=google.com; s=arc-20160816;
-        b=KJfpN0cP7X/wyQwj5xxQU+7u/kCedM95LYnzVWGwbRc5llwZKMhYTfBov87fsPTPX0
-         /uhdLifnmguQ9RcKB9h2Y0AOORVsOSVDcq8eOTFnUVGg27/lKxXgS8w8MB86PyFlUrSl
-         dW4VwWCmPrEmOB8JEFcqmRf6tycXZQa5frVTRAC+/DSNRi0Po9oM/3CMImUmfJ96hQPQ
-         mVsDHJufknf0RlZpb5Hxr78wGaP0w2vaXPsTE5TWkymg4kh1In2BXc2ljWfQ9HVfWRow
-         NVahWI8Crr9e2j7pGPqzzQ4ulhCXwkb/U6n+38382FzJWyHY+wcS8auoEaos9WRANTQ/
-         v7Yg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=wxZF82h0JhnEQL0yEt9MYb5+87N74FzlqIL9rwu0+eg=;
-        b=ZosgLp0mjRCHOfG1SGwJm47RQ4Eg7Vi1AXhTw1eftJz4pUvsJnjNbpF//p0qRC/rbE
-         y9twwIVprK30fRVLQeqEaIEqTOUQs6SAQNLNjA1Wd6Jae2GKh8k0JADGTtMld0heE8p8
-         mP3O824Ogz/KEQtLH3REeHDmozecs9lIxWVA8CaggPap0M0oeSmoCh79r7GA4Kr2fIIX
-         6kyZ/FbdBDThN01v4qbNb8FA1n4n4YwBu42W0PIItVtBdR5HY8bHQmySCvFv+nwztuS0
-         xAxJWLGaSZnM3ZUIfukFwQws2Eo4rrSaEpSSZW9O9zFPm4j3mlblBVn9r8m5UJoiom4a
-         4C9Q==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="F/Bh8X8F";
-       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=dafna3@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <dafna3@gmail.com>
-Received: from mail-wm1-x342.google.com (mail-wm1-x342.google.com. [2a00:1450:4864:20::342])
-        by gmr-mx.google.com with ESMTPS id 196-v6si279733wmx.1.2018.09.29.08.16.14
+Received: by 10.157.51.3 with SMTP id f3ls9371163otc.32.gmail; Fri, 10 Mar
+ 2017 11:53:44 -0800 (PST)
+X-Received: by 10.129.138.129 with SMTP id a123mr9864707ywg.62.1489175624315;
+        Fri, 10 Mar 2017 11:53:44 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id g82si1926059pfb.5.2017.03.10.11.53.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 29 Sep 2018 08:16:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:4864:20::342 as permitted sender) client-ip=2a00:1450:4864:20::342;
+        Fri, 10 Mar 2017 11:53:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="F/Bh8X8F";
-       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=dafna3@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x342.google.com with SMTP id o18-v6so4782966wmc.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 29 Sep 2018 08:16:14 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x242.google.com with SMTP id o126so11836515pfb.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 11:53:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=wxZF82h0JhnEQL0yEt9MYb5+87N74FzlqIL9rwu0+eg=;
-        b=F/Bh8X8F/VD6FFSf72rr+bdwB7cI65GnlVJdsh0JkJ+L+joOpZe2K3W9SYR9hLmPei
-         b/opbz5ADJqY/++prg9LIGMOsc5GOj9mw2DKLxAZkpt6jIUCvSSPLEwPzAo/Am4WjdBE
-         YIwUJvyeJBaagE6kTYlV93EravibiVgU+/CRQjwJkv/tEkxZCh6oH7aKwvxniCcMb+Ah
-         lrkZGbCK0M+1RJ+lWgzxh6uEffObTPtfVFPue7Ejbjao/tTnktPF5NokDxsZL+7pXVl3
-         0t40dpl1kYQmj4ep40ai9W4BHeWcvkEJQGwH3HshKoS3ToD61qAJK1eY8pQSd6k30Rvl
-         yAQQ==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=JT4lyKbjzKgjeox4f/09GH7xsCKTsT3ffnZBhpWGzGQ=;
+        b=s1suZiP5PjHqJ8R6jUuoUCPmR+dokLWibvlF7NNCRvyA4ZogMK/PwikQcuYLS+r7O/
+         1tOcYVxwLo2H8Bv2VSDyEKFRpyakpA3pfv4blHiEj014x3ZDjh2pP/ddEoc5WuXIu+S1
+         x/R/O1Nv/cQyiSDH1uSdWHe72f5R77mApOSIqQXLZBf+rXjANGGQ09u9y3m8OnftK5Yp
+         yXHV1T03rUcelrFlBcyO/8MdvapOmohgV7ePLmA5oMl0dMTT10QpC8LGCCV2s0EWmImI
+         +KkzXCz3z+E2Jm8tmF2DKTWmImLiW5CpDcpFnW2GGKgDPz6v+ovl1nmacndMVieCY/Ty
+         /Ezg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=wxZF82h0JhnEQL0yEt9MYb5+87N74FzlqIL9rwu0+eg=;
-        b=IMy1L5mBm5qkbVKU1KZ68QwN/57m09IPhTlNXzuTKK73o0lMQv4P2iX0+Zk0gxwg3K
-         qMoWY6+I9ENkH1NbDEbpkoxKYtXLlEmoduyr6CsBgcBOCFcZPZ+N22FaX6cgM3tXptFe
-         X20H/AQTRrDbrYynzwk4VIMcT/0nJ3Sqvp7Wl6F6gSZY6EkJEWyCRIWMR5HALbjVZjha
-         67JCj/14V4sTN7D2Jyzkcb2irCIrwGEfdDI70CuwoIbYFod+betit2rc+npr8rtv42r4
-         BmPyuiBs9xvqf1IwHxiOM0OYtFhyQSfAXUc/cwfp17S/N0ztxQWlj6Eg/YASplqc/Nd5
-         XHhw==
-X-Gm-Message-State: ABuFfogIAamNbBhEn3iWr7BraUFlKfhrPC/wqTUDzUrmxpbVgi8YZHbB
-	17Fkgnvcjs3i0EHx+SOzD+0=
-X-Received: by 2002:a1c:f010:: with SMTP id a16-v6mr990455wmb.5.1538234174211;
-        Sat, 29 Sep 2018 08:16:14 -0700 (PDT)
-Return-Path: <dafna3@gmail.com>
-Received: from vdoo.home ([77.127.1.188])
-        by smtp.gmail.com with ESMTPSA id s26-v6sm3971585wmh.11.2018.09.29.08.16.12
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 29 Sep 2018 08:16:13 -0700 (PDT)
-From: Dafna Hirschfeld <dafna3@gmail.com>
-To: Larry.Finger@lwfinger.net,
-	florian.c.schilhabel@googlemail.com,
-	gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	dafna3@gmail.com
-Subject: [PATCH] staging: rtl8712: Remove unnecessary parentheses
-Date: Sat, 29 Sep 2018 18:16:08 +0300
-Message-Id: <20180929151608.25401-1-dafna3@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=JT4lyKbjzKgjeox4f/09GH7xsCKTsT3ffnZBhpWGzGQ=;
+        b=sMfDbEn6yEW0zEGQZdeZoCzCp4MPjFRSSGe25wJ/Y89WChbJYUb1h9ho5OXFhunXk5
+         nRt6kuNONGNUX/XzYLaz/lM679srp0oh21pAmXHkWtWSVWUNabrMjvGVm7WQvOXHFgad
+         EUvG1e/88dPURwEczfKKYnFh9yi8iKYSosKu4HYkQfV6VRnVC85fn9UEqIhr+8AL8ftX
+         k6lcSKP/11mOkN6R4GhKMtXh0asem0o6R52louAtSPkfohlCNDOgivkI+RdUr7JuG5hH
+         Eptiwzxlp0cDNFQpQbrcexD4JnCKMUamda5hVJLvxGHXA8OC7sqz1E+KBUxYuZ2FW9jJ
+         n44g==
+X-Gm-Message-State: AMke39lhmQVwOv0EIisvzNULazIjUGL29myJWk3CfQCYmYku3ygnWcKIVR6yAanqRJwo+w==
+X-Received: by 10.98.137.152 with SMTP id n24mr23181643pfk.43.1489175624053;
+        Fri, 10 Mar 2017 11:53:44 -0800 (PST)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
+        by smtp.gmail.com with ESMTPSA id u78sm20113434pfa.101.2017.03.10.11.53.43
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 10 Mar 2017 11:53:43 -0800 (PST)
+Date: Fri, 10 Mar 2017 11:53:42 -0800
+From: Alison Schofield <amsfield22@gmail.com>
+To: Tamara Diaconita <diaconitatamara@gmail.com>
+Cc: aditya.shankar@microchip.com, ganesh.krishna@microchip.com,
+	gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com,
+	Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 4/4] staging: wilc1000: Delete blank
+ line
+Message-ID: <20170310195341.GE23892@d830.WORKGROUP>
+References: <20170310165919.4186-1-diaconita.tamara@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170310165919.4186-1-diaconita.tamara@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Remove unnecessary parentheses between 'address-of' operators
-and a struct members.
-Issues found with checkpatch.pl
+On Fri, Mar 10, 2017 at 06:59:19PM +0200, Tamara Diaconita wrote:
+> Delete blank line before a '}' to match the kernel coding style and improve code readability in wilc_wlan_cfg.c file.
 
-Signed-off-by: Dafna Hirschfeld <dafna3@gmail.com>
----
- drivers/staging/rtl8712/rtl871x_io.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Hi Tamara,
 
-diff --git a/drivers/staging/rtl8712/rtl871x_io.c b/drivers/staging/rtl8712/rtl871x_io.c
-index 3a10940db9b7..1f55704d55fb 100644
---- a/drivers/staging/rtl8712/rtl871x_io.c
-+++ b/drivers/staging/rtl8712/rtl871x_io.c
-@@ -68,7 +68,7 @@ static uint _init_intf_hdl(struct _adapter *padapter,
- 	set_intf_option(&pintf_hdl->intf_option);
- 	set_intf_funs(pintf_hdl);
- 	set_intf_ops(&pintf_hdl->io_ops);
--	pintf_priv->intf_dev = (u8 *)&(padapter->dvobjpriv);
-+	pintf_priv->intf_dev = (u8 *)&padapter->dvobjpriv;
- 	if (init_intf_priv(pintf_priv) == _FAIL)
- 		goto _init_intf_hdl_fail;
- 	return _SUCCESS;
-@@ -92,7 +92,7 @@ static uint register_intf_hdl(u8 *dev, struct intf_hdl *pintfhdl)
- 
- 	pintfhdl->intf_option = 0;
- 	pintfhdl->adapter = dev;
--	pintfhdl->intf_dev = (u8 *)&(adapter->dvobjpriv);
-+	pintfhdl->intf_dev = (u8 *)&adapter->dvobjpriv;
- 	if (!_init_intf_hdl(adapter, pintfhdl))
- 		goto register_intf_hdl_fail;
- 	return _SUCCESS;
-@@ -135,7 +135,7 @@ uint r8712_alloc_io_queue(struct _adapter *adapter)
- 		list_add_tail(&pio_req->list, &pio_queue->free_ioreqs);
- 		pio_req++;
- 	}
--	if ((register_intf_hdl((u8 *)adapter, &(pio_queue->intf))) == _FAIL)
-+	if ((register_intf_hdl((u8 *)adapter, &pio_queue->intf)) == _FAIL)
- 		goto alloc_io_queue_fail;
- 	adapter->pio_queue = pio_queue;
- 	return _SUCCESS;
--- 
-2.17.1
+wrap log message lines at 72.
 
+>  
+> Fix the checkpath.pl issue:
+spell checkpatch.pl
+
+This is the last one in this set.  Entire set needs to rev.  See the first
+patch tutorial for how to do it.  The version change comments go in the
+cover letter for a patchset, a little different than for single patches.
+Be sure to send it threaded.
+
+Thanks,
+alisons
+
+> CHECK: Blank lines aren't necessary before '}'.
+> 
+> Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
+> ---
+>  drivers/staging/wilc1000/wilc_wlan_cfg.c | 1 -
+>  1 file changed, 1 deletion(-)
+> 
+> diff --git a/drivers/staging/wilc1000/wilc_wlan_cfg.c b/drivers/staging/wilc1000/wilc_wlan_cfg.c
+> index fed66dcd..f442e6f 100644
+> --- a/drivers/staging/wilc1000/wilc_wlan_cfg.c
+> +++ b/drivers/staging/wilc1000/wilc_wlan_cfg.c
+> @@ -490,7 +490,6 @@ int wilc_wlan_cfg_get_wid_value(u16 wid, u8 *buffer, u32 buffer_size)
+>  
+>  						i += toggle;
+>  						toggle ^= 1;
+> -
+>  					}
+>  					memcpy(buffer,  &g_cfg_str[i].str[1],
+>  					       size);
+> -- 
+> 2.9.3
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170310165919.4186-1-diaconita.tamara%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
 
