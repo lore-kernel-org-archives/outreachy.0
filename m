@@ -1,114 +1,119 @@
-X-GM-THRID: 6522852497616273408
-X-Received: by 10.46.89.156 with SMTP id g28mr226746ljf.32.1518719945214;
-        Thu, 15 Feb 2018 10:39:05 -0800 (PST)
+X-GM-THRID: 6395948751434809344
+X-Received: by 10.46.82.157 with SMTP id n29mr3726406lje.29.1489172864810;
+        Fri, 10 Mar 2017 11:07:44 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.0.207 with SMTP id 198ls47598lfa.16.gmail; Thu, 15 Feb 2018
- 10:39:02 -0800 (PST)
-X-Google-Smtp-Source: AH8x224GoBm3XmXxUWduSUWybSYmdzGyJuiyLRyOWQbzXOs19Yy6wJkDmEgl35RZQv0dKa51xWKv
-X-Received: by 10.25.141.211 with SMTP id p202mr205079lfd.23.1518719942888;
-        Thu, 15 Feb 2018 10:39:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518719942; cv=none;
-        d=google.com; s=arc-20160816;
-        b=diLhMdANyySwXbrxwndLt9SQN+wGjjvNvxVd/aYh5ylML6o1p3K3/Csc61WkmRa5uq
-         9hYi6NDSuAjUxGVd6VgiIgQoAkjKM+DIdGry1wyAmXTwUO/giKGSPYJwFTpKLAC3s51N
-         8cURmM/shf71KST54m/vC5+E0PPo79q77ZrG4gV8bS5nmk0uewp2iDb87tUzNelKs5Cq
-         RP+s4SuxBaz9mhjnxnQEmE44m2FCZOx3XP1jrSSwfCXO8nYCrc+goRFetGlCBCzOVRxf
-         7P6ovILrTY2nK0zqgRYgSdfwNnBNYD6emSH8CEFbJFpR/tV5gTbZxbVrTO8OWbr8Eo4d
-         ED8g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature:arc-authentication-results;
-        bh=kT05a1bV/Z8Yurm3Po/ILb+DzHo3+iRMg3WUM4zIWvs=;
-        b=KWL9sIDcUEMu+APV1yvYIa2Aochy/gk1Qtq30Q6AK5kv99oQ5Q8isWe5XMOWHV0WU8
-         1zkTdWyK7K0ddNWjekptWsAW6gc/FAjAEwwKfdXaBhQUWK1v70swyIeep2U/JOplhBVD
-         u/K6QWxGUpTD66fMZhw7EXZ/ZN80j1rwL/SisaO9ZC7+Cw+JJ03lK7yN5G34OqWoSDQ+
-         8cOlijvHz/hM1CUsQTiCTCXk28QGBKIpAISYuuL7lNRw3knOf0NnElioxYT7AHwlb9tu
-         n+BaBDNLOFx+/8P+MZJE8AfVyNk9ds4DMBxH0GwXibWELlx6zjc4TfDCi2FojoGBmTwV
-         vLFQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DKfyXNou;
-       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:400c:c09::22e as permitted sender) smtp.mailfrom=dafna3@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <dafna3@gmail.com>
-Received: from mail-wm0-x22e.google.com (mail-wm0-x22e.google.com. [2a00:1450:400c:c09::22e])
-        by gmr-mx.google.com with ESMTPS id w29si1113688lfc.5.2018.02.15.10.39.02
+Received: by 10.46.87.92 with SMTP id r28ls1129540ljd.11.gmail; Fri, 10 Mar
+ 2017 11:07:44 -0800 (PST)
+X-Received: by 10.46.88.9 with SMTP id m9mr3540760ljb.25.1489172864567;
+        Fri, 10 Mar 2017 11:07:44 -0800 (PST)
+Return-Path: <diaconitatamara@gmail.com>
+Received: from mail-wr0-x242.google.com (mail-wr0-x242.google.com. [2a00:1450:400c:c0c::242])
+        by gmr-mx.google.com with ESMTPS id e72si32859wma.0.2017.03.10.11.07.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Feb 2018 10:39:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:400c:c09::22e as permitted sender) client-ip=2a00:1450:400c:c09::22e;
+        Fri, 10 Mar 2017 11:07:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::242 as permitted sender) client-ip=2a00:1450:400c:c0c::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DKfyXNou;
-       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:400c:c09::22e as permitted sender) smtp.mailfrom=dafna3@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x22e.google.com with SMTP id k87so2654006wmi.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 15 Feb 2018 10:39:02 -0800 (PST)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::242 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wr0-x242.google.com with SMTP id l37so12646497wrc.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 11:07:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=kT05a1bV/Z8Yurm3Po/ILb+DzHo3+iRMg3WUM4zIWvs=;
-        b=DKfyXNou+s72G0GC35i6nJKRAcYYyPBS1hNxTwhiuSkbC9CcZfY0MYwt1OgxmrrGhx
-         ke5oMDcTuAYMJkBLjn4Cwp1uO+CVmMeQFBQzcnj5ASkX3IoGdMHYDWO0fyAK88KEGBxy
-         JxQqs4SGxDPs1Ox+0KH3SI88O4/E2O9UyESprw3Ri5BaXMdHb4qjNqv4OrTEfZS18lsW
-         bJfa6Nhc8ipl95KDqnaeicVMqUgMQcjhQYopoHNSx1m1ZyMTI8HlLsreibEyBKDTQ2Yv
-         I5Vg4/u+79EtaNieucKYopXYJQG/EDtgqn+Yir8dqs57LNRRjj1/z9dw4v7sS//rxUaz
-         7abA==
+        h=from:to:cc:subject:date:message-id;
+        bh=r+UlVu2TZ298SlcR0ws+x0e8hMDj5MjRwr8mvwsi0ao=;
+        b=JASQYIwvAAXGbEhCZjWduIjYIO6hHV2FO9iAmzjUKkmDie5tnSeFkIXe+ijIkqHnWv
+         yowPYuSslm57zYO2Sr/yNu0e6f+fUdbqlVekrOdvxK85pSgwJ6U3n8R26WyllvFA4ICh
+         FRIXk9BdZCf99DbKI2LsNi0IAhZL00AH/0qyJjeJeFX7TtfzIET/HSZwNKMPJPog5amh
+         gh3sRik9QBm6LYOqWi+ZvlyI9yCMUlh3OyZ9Rp3zASvBmPwqx/ac0yXMaGD2GNtXWA4z
+         9zfIj3JvLDtS+6PGuHdXPRZb3DHsWNtChIoacKSIPEK0xmSBP0Kt3PNwJenA/2ILFkoV
+         JCNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=kT05a1bV/Z8Yurm3Po/ILb+DzHo3+iRMg3WUM4zIWvs=;
-        b=neewV7syoBkGf4/HhNDbUtjJd7Mg8RURoHDRGkw+RRs1tehCy6FeT/QjGmNIadso68
-         j5+/Liq7NxcKQDznDkVtFcybALiMeIY1o/1VlWhy99Dzzw1Q6CAKDuSaIo1SnaQCZN9o
-         2kCWQBru00CjIAoauCKscgh0K5RrkUM+OJWYJDBtK79AdyMS8ti3VcRDP+7SgcB9T59B
-         zcmkYSl3JtIYRBIbaKAmgnsknkPRrS2zgbsDnGArY3yOyHjISjm0HptZNgG0pzjWVTBh
-         eu/a0DUHJ3Bz+tU08st/oqXNvgu6fj9VxcTQawZlW5G7BNNGh1aaKsSyfj59F8cNxwqJ
-         srfw==
-X-Gm-Message-State: APf1xPAj/ElD9dMZGvCxrGFKPHS1wR2eytMHXv8P4BSfEMwFcLwRnuvv
-	+ZdCKmGDB3VvhRqywYseShsXcg==
-X-Received: by 10.28.22.201 with SMTP id 192mr2752441wmw.45.1518719942571;
-        Thu, 15 Feb 2018 10:39:02 -0800 (PST)
-Return-Path: <dafna3@gmail.com>
-Received: from guri ([31.154.102.92])
-        by smtp.gmail.com with ESMTPSA id g96sm4845968wrd.73.2018.02.15.10.39.01
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=r+UlVu2TZ298SlcR0ws+x0e8hMDj5MjRwr8mvwsi0ao=;
+        b=AiMC9zKCp1LbjayjnQlh3YCYbTJylS4WWvjOf/O80c06bLbmk58if226xMHW4CIg5s
+         DGUyhBKy1fHcu9YqAjQpWo8PLuko2UTnT+JTOkoKbZQJjyuJhRGvffpNgkNFFxDt05Gr
+         fuPgTibH1dpomuQULmsmo6FCr9YR12QOrdOaDcyreHMyoQ898Z+OECMceU4JG/0wsxL6
+         JOTVycQrgScE2gZyGXBHBQU1pcApfO/T7CD89k/CKXmORws8fOGzsccPBS8ho2f/bGzH
+         gUzD0cNy/m5enNPKSzA+9XcLpwI3fjqoX4IdLPYYQpxtjzqGPiFMXqQm69mUiLdJ0WEX
+         j6hw==
+X-Gm-Message-State: AMke39n6UIxnaF80daCmgufii+Y8vnJ1tt9m8Kd/YitQeQ0exLwYr45FMRDKr+6xeF+Kgw==
+X-Received: by 10.223.173.199 with SMTP id w65mr17300531wrc.125.1489172864375;
+        Fri, 10 Mar 2017 11:07:44 -0800 (PST)
+Return-Path: <diaconitatamara@gmail.com>
+Received: from tamara ([2a02:2f0b:8130:11ea:9935:36c4:c373:a2cc])
+        by smtp.gmail.com with ESMTPSA id l10sm14174056wrb.3.2017.03.10.11.07.43
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 15 Feb 2018 10:39:01 -0800 (PST)
-Date: Thu, 15 Feb 2018 20:39:00 +0200
-From: Dafna Hirschfeld <dafna3@gmail.com>
-To: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8188eu: Fix "Missing a blank line after
- declaration".
-Message-ID: <20180215183900.GA12122@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+        Fri, 10 Mar 2017 11:07:43 -0800 (PST)
+From: Tamara Diaconita <diaconitatamara@gmail.com>
+X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
+To: aditya.shankar@microchip.com,
+	ganesh.krishna@microchip.com,
+	gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: [PATCH 5/7] staging: wilc1000: Removing extra tabs
+Date: Fri, 10 Mar 2017 21:07:41 +0200
+Message-Id: <20170310190741.20020-1-diaconita.tamara@gmail.com>
+X-Mailer: git-send-email 2.9.3
 
-Fix checkpatch.pl "missing a blank line after declaration" warning message from rtl8188eu module.
+Trims line size at 80 characters by removing extra tabs and extra '/'.
 
-Signed-off-by: Dafna Hirschfeld <dafna3@gmail.com>
+Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
 ---
+ drivers/staging/wilc1000/wilc_spi.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-text here is ignored by git tools.
-
- drivers/staging/rtl8188eu/hal/usb_halinit.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/rtl8188eu/hal/usb_halinit.c b/drivers/staging/rtl8188eu/hal/usb_halinit.c
-index 17967c9..c3bb183 100644
---- a/drivers/staging/rtl8188eu/hal/usb_halinit.c
-+++ b/drivers/staging/rtl8188eu/hal/usb_halinit.c
-@@ -1516,8 +1516,8 @@ void rtw_hal_set_hwreg(struct adapter *Adapter, u8 variable, u8 *val)
- 	case HW_VAR_CAM_WRITE:
- 		{
- 			u32 cmd;
--
- 			u32 *cam_val = (u32 *)val;
-+
- 			usb_write32(Adapter, WCAMI, cam_val[0]);
+diff --git a/drivers/staging/wilc1000/wilc_spi.c b/drivers/staging/wilc1000/wilc_spi.c
+index 667164c..5687f9a 100644
+--- a/drivers/staging/wilc1000/wilc_spi.c
++++ b/drivers/staging/wilc1000/wilc_spi.c
+@@ -5,7 +5,7 @@
+ /* Module Name:  wilc_spi.c */
+ /*  */
+ /*  */
+-/* //////////////////////////////////////////////////////////////////////////// */
++/* ////////////////////////////////////////////////////////////////////////// */
+ #include <linux/module.h>
+ #include <linux/init.h>
+ #include <linux/kernel.h>
+@@ -291,7 +291,7 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
  
- 			cmd = CAM_POLLINIG | CAM_WRITE | cam_val[1];
+ 	wb[0] = cmd;
+ 	switch (cmd) {
+-	case CMD_SINGLE_READ:                           /* single word (4 bytes) read */
++	case CMD_SINGLE_READ: /* single word (4 bytes) read */
+ 		wb[1] = (u8)(adr >> 16);
+ 		wb[2] = (u8)(adr >> 8);
+ 		wb[3] = (u8)adr;
+@@ -307,21 +307,21 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
+ 		len = 5;
+ 		break;
+ 
+-	case CMD_TERMINATE:                                     /* termination */
++	case CMD_TERMINATE: /* termination */
+ 		wb[1] = 0x00;
+ 		wb[2] = 0x00;
+ 		wb[3] = 0x00;
+ 		len = 5;
+ 		break;
+ 
+-	case CMD_REPEAT:                                                /* repeat */
++	case CMD_REPEAT: /* repeat */
+ 		wb[1] = 0x00;
+ 		wb[2] = 0x00;
+ 		wb[3] = 0x00;
+ 		len = 5;
+ 		break;
+ 
+-	case CMD_RESET:                                                 /* reset */
++	case CMD_RESET: /* reset */
+ 		wb[1] = 0xff;
+ 		wb[2] = 0xff;
+ 		wb[3] = 0xff;
 -- 
-2.7.4
+2.9.3
 
 
