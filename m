@@ -1,111 +1,116 @@
-X-GM-THRID: 6330196266384883712
-X-Received: by 10.107.130.90 with SMTP id e87mr2597040iod.10.1473863671971;
-        Wed, 14 Sep 2016 07:34:31 -0700 (PDT)
+X-GM-THRID: 6395948877374029824
+X-Received: by 10.25.17.102 with SMTP id g99mr2782971lfi.6.1489172893399;
+        Fri, 10 Mar 2017 11:08:13 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.41.71 with SMTP id d65ls1177456otb.16.gmail; Wed, 14 Sep
- 2016 07:34:31 -0700 (PDT)
-X-Received: by 10.129.145.9 with SMTP id i9mr2229795ywg.55.1473863671523;
-        Wed, 14 Sep 2016 07:34:31 -0700 (PDT)
-Return-Path: <ronladred@gmail.com>
-Received: from mail-qk0-x243.google.com (mail-qk0-x243.google.com. [2607:f8b0:400d:c09::243])
-        by gmr-mx.google.com with ESMTPS id m82si424854ywm.2.2016.09.14.07.34.31
+Received: by 10.46.80.83 with SMTP id v19ls1124958ljd.25.gmail; Fri, 10 Mar
+ 2017 11:08:12 -0800 (PST)
+X-Received: by 10.46.69.7 with SMTP id s7mr3475527lja.18.1489172892950;
+        Fri, 10 Mar 2017 11:08:12 -0800 (PST)
+Return-Path: <diaconitatamara@gmail.com>
+Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
+        by gmr-mx.google.com with ESMTPS id 82si27726wmg.3.2017.03.10.11.08.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Sep 2016 07:34:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ronladred@gmail.com designates 2607:f8b0:400d:c09::243 as permitted sender) client-ip=2607:f8b0:400d:c09::243;
+        Fri, 10 Mar 2017 11:08:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of ronladred@gmail.com designates 2607:f8b0:400d:c09::243 as permitted sender) smtp.mailfrom=ronladred@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qk0-x243.google.com with SMTP id z143so1153592qka.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Sep 2016 07:34:31 -0700 (PDT)
+       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x244.google.com with SMTP id n11so492489wma.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 11:08:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=tVgVEj3YEXrlOVvYbb+KgJEdJn509nmTQR7Uh3oVV14=;
-        b=u4AzKiCU66p1Aegpx+Isd9312W/NpIvC0dLs3eABmfcq7Hx90K1teyxcxgfC2+fiTc
-         Vr5vw+aRIgYT3m6VI7eqnaD1sdpzSI8YisSvDvmSF3LDPbxJe9ZQ4YyWtwrjE366KoZY
-         UBUnueKkqmQf+XsgqTlh0QUVsDBwyqefeaD+PoHNsSPmmaj6cc17gW35NTG2qs3VWXBk
-         0lThNzxz4xaR7yQudkRWb9dO7a/4m231vcfk0YwNbEzBLQ/fZfeM9hQ7yG1+sOuplsgl
-         dLOtcq7eLCHTlFSimFjmGRnZLMrA1sM7pjPDsDBQTXUMdboZTqKsE3hXv2ITlotawHqc
-         lrXQ==
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=T++kHnt9fT9lwGaFRNDqMFDsSbN6TJNtiZv7WV86kNs=;
+        b=TzZQfdQkmADW3YUrHaEXS0cDbJUXxTxsS5uhns3L8LUKa6iGDhlmc9gDsavwGQ/wS3
+         I3QB6JiUeBPlnIH9A4ejg0au+aM2YtbdtSz31pPEfJiQDlD48RqcDKDZ5a9uExbK0U49
+         3hgHdGej/QZKZ50++MVy/5uIt+CwWz0lJUYHt1vEfAk8w0V9R5ULy98tCOYvyqoq+B4U
+         mFdzq+4m+xDjMAK5aoAyspGB+AO18IoFXs34RqBoCvA/BfJ7nrZ3tqpe7P1bpLzkkH6u
+         1oR+99feMDiYUxkA2fztrY5lFr18W2ymYNZndHOCB/1BYLVmglVSk5FqmzPnoh4SEmh/
+         fp3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=tVgVEj3YEXrlOVvYbb+KgJEdJn509nmTQR7Uh3oVV14=;
-        b=Qnf5OdubspkFAW2on7eQ+3gZakag1tMyTqvNFe+3lh35ASVa+E1o60EoR2ivkb2+Ib
-         X+2xay+xRRWb4LhBkxbbhCvtGxL2j4s2f+oyv9oLYYLYwd1TnIZS75GuFqXaHxVk5+w3
-         OmG60Y/tjlxISY2HK1SaYki0VCLMjrmRT1CKEhQkqYrR4JmFqGDIbUwhAHyclikDq5VQ
-         L5tf996BqFaigCTPZaQNFudXruK9x/zJTAEdreX5PsE/HAYsobmoHsvKUhuloRZxI5br
-         TO0EegGaPCFIzRQf+cDIKRhT+JyAL49gVWzjhc7jeaiKHYsS1gmEWe6VxjFKsO1C4KKm
-         dbLw==
-X-Gm-Message-State: AE9vXwOmYEaLwQZ/FVVidvrVp56/Knc+Ide2kJU8gI5bbwvToENy6d1SfeTpSqaq13W9vw==
-X-Received: by 10.55.159.77 with SMTP id i74mr3416601qke.60.1473863671166;
-        Wed, 14 Sep 2016 07:34:31 -0700 (PDT)
-Return-Path: <ronladred@gmail.com>
-Received: from fedora (NYUFWA-WLESSAUTHCLIENTS-20.NATPOOL.NYU.EDU. [216.165.95.9])
-        by smtp.gmail.com with ESMTPSA id y203sm2361872qkb.31.2016.09.14.07.34.30
-        for <outreachy-kernel@googlegroups.com>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=T++kHnt9fT9lwGaFRNDqMFDsSbN6TJNtiZv7WV86kNs=;
+        b=sUdqPorHV24jVrA4utudvz6ezz1FwW5QMoGWMMPdqWw5KCkpJDkqhhp2Nxy8m07SSk
+         YFecjNDE+o5vyV+YM7nqmXcQouuCLa+3SZ6/OrOzyRsFYjWaA95eX0cP3XT7V7jNV6US
+         l5QILypmXG63aeJowbel5TP/c9TVrFpJQjhCcYcI5KcM5huSSoM6CAxqdGVmWf6AGq5o
+         7UMLF4fkqTUgzNJOmN+WXj/GbC3Yr0UraYz3fMSYDswq+GmV3jJopkSX+xxs0qqdmycR
+         4R+plrBfHuBoLfYGk+oLfGlIuEAhEn762nLNMy39iVlDDavwM95lXhC9NBlGogC3TGYA
+         797w==
+X-Gm-Message-State: AFeK/H3XXhBezsJrXyEQGvuGLL+Z03qglxjGoDAUyXACi2E+CQT+AuBK3KWndg8slo1Jfw==
+X-Received: by 10.28.159.73 with SMTP id i70mr437249wme.78.1489172892764;
+        Fri, 10 Mar 2017 11:08:12 -0800 (PST)
+Return-Path: <diaconitatamara@gmail.com>
+Received: from tamara ([2a02:2f0b:8130:11ea:9935:36c4:c373:a2cc])
+        by smtp.gmail.com with ESMTPSA id o15sm14038511wra.61.2017.03.10.11.08.11
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 14 Sep 2016 07:34:30 -0700 (PDT)
-Date: Wed, 14 Sep 2016 10:34:30 -0400
-From: Ronald Rojas <ronladred@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: ethernet: Fixes checkpatch blank lines warnings
-Message-ID: <20160914143430.GA22511@fedora>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.7.0 (2016-08-17)
+        Fri, 10 Mar 2017 11:08:11 -0800 (PST)
+From: Tamara Diaconita <diaconitatamara@gmail.com>
+X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
+To: aditya.shankar@microchip.com,
+	ganesh.krishna@microchip.com,
+	gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: [PATCH 7/7] staging: wilc1000: Rearrange code
+Date: Fri, 10 Mar 2017 21:08:10 +0200
+Message-Id: <20170310190810.20123-1-diaconita.tamara@gmail.com>
+X-Mailer: git-send-email 2.9.3
 
-This patch fixes several of the checkpatch.pl warnings
-in the driver/staging/octeon/ethernet.c file:
+Trims line size at 80 characters by splitting the lines to improve code
+readability.
 
-CHECK: Please don't use multiple blank lines
-89: FILE: drivers/staging/octeon/ethernet.c:89:
+Problem found with checkpatch.pl.
 
-CHECK: Please don't use multiple blank lines
-668: FILE: drivers/staging/octeon/ethernet.c:668:
-
-CHECK: Please don't use multiple blank lines
-881: FILE: drivers/staging/octeon/ethernet.c:881:
-
-Signed-off-by: Ronald Rojas <ronladred@gmail.com>
+Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
 ---
- drivers/staging/octeon/ethernet.c | 3 ---
- 1 file changed, 3 deletions(-)
+ drivers/staging/wilc1000/wilc_spi.c | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/ethernet.c
-index e9cd5f2..79571d6 100644
---- a/drivers/staging/octeon/ethernet.c
-+++ b/drivers/staging/octeon/ethernet.c
-@@ -86,7 +86,6 @@ int rx_napi_weight = 32;
- module_param(rx_napi_weight, int, 0444);
- MODULE_PARM_DESC(rx_napi_weight, "The NAPI WEIGHT parameter.");
- 
--
- /*
-  * cvm_oct_poll_queue_stopping - flag to indicate polling should stop.
-  *
-@@ -665,7 +664,6 @@ static int cvm_oct_probe(struct platform_device *pdev)
- 		return -EINVAL;
- 	}
- 
--
- 	cvm_oct_configure_common_hw();
- 
- 	cvmx_helper_initialize_packet_io_global();
-@@ -878,7 +876,6 @@ static int cvm_oct_remove(struct platform_device *pdev)
+diff --git a/drivers/staging/wilc1000/wilc_spi.c b/drivers/staging/wilc1000/wilc_spi.c
+index a1b0296..298a30d 100644
+--- a/drivers/staging/wilc1000/wilc_spi.c
++++ b/drivers/staging/wilc1000/wilc_spi.c
+@@ -397,11 +397,12 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
+ 		len2 = len + (NUM_SKIP_BYTES + NUM_RSP_BYTES + NUM_DUMMY_BYTES);
+ 	} else if ((cmd == CMD_INTERNAL_READ) || (cmd == CMD_SINGLE_READ)) {
+ 		if (!g_spi.crc_off) {
+-			len2 = len + (NUM_RSP_BYTES + NUM_DATA_HDR_BYTES + NUM_DATA_BYTES
+-				      + NUM_CRC_BYTES + NUM_DUMMY_BYTES);
++			len2 = len + (NUM_RSP_BYTES + NUM_DATA_HDR_BYTES +
++				      NUM_DATA_BYTES + NUM_CRC_BYTES +
++				      NUM_DUMMY_BYTES);
+ 		} else {
+-			len2 = len + (NUM_RSP_BYTES + NUM_DATA_HDR_BYTES + NUM_DATA_BYTES
+-				      + NUM_DUMMY_BYTES);
++			len2 = len + (NUM_RSP_BYTES + NUM_DATA_HDR_BYTES +
++				      NUM_DATA_BYTES + NUM_DUMMY_BYTES);
  		}
- 	}
+ 	} else {
+ 		len2 = len + (NUM_RSP_BYTES + NUM_DUMMY_BYTES);
+@@ -967,7 +968,8 @@ static int wilc_spi_read_int(struct wilc *wilc, u32 *int_status)
+ 			if (g_spi.nint > 5) {
+ 				wilc_spi_read_reg(wilc, 0x1a94,
+ 						  &irq_flags);
+-				tmp |= (((irq_flags >> 0) & 0x7) << (IRG_FLAGS_OFFSET + 5));
++				tmp |= (((irq_flags >> 0) & 0x7) <<
++					  (IRG_FLAGS_OFFSET + 5));
+ 			}
  
--
- 	cvmx_pko_shutdown();
- 
- 	cvmx_ipd_free_ptr();
+ 			unknown_mask = ~((1ul << g_spi.nint) - 1);
+@@ -1007,7 +1009,8 @@ static int wilc_spi_clear_int_ext(struct wilc *wilc, u32 val)
+ 				 * it will clear interrupt.
+ 				 */
+ 				if (flags & 1)
+-					ret = wilc_spi_write_reg(wilc, 0x10c8 + i * 4, 1);
++					ret = wilc_spi_write_reg(wilc, 0x10c8 +
++								 i * 4, 1);
+ 				if (!ret)
+ 					break;
+ 				flags >>= 1;
 -- 
-2.7.4
+2.9.3
 
 
