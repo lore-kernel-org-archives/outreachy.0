@@ -1,53 +1,53 @@
 X-GM-THRID: 6395538220161957888
-X-Received: by 10.107.131.35 with SMTP id f35mr5116066iod.68.1489143047305;
-        Fri, 10 Mar 2017 02:50:47 -0800 (PST)
+X-Received: by 10.157.41.66 with SMTP id d60mr7239840otb.113.1489143042386;
+        Fri, 10 Mar 2017 02:50:42 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.56.232 with SMTP id k37ls2573627ote.15.gmail; Fri, 10 Mar
- 2017 02:50:46 -0800 (PST)
-X-Received: by 10.129.155.148 with SMTP id s142mr428292ywg.30.1489143046911;
-        Fri, 10 Mar 2017 02:50:46 -0800 (PST)
+Received: by 10.107.184.8 with SMTP id i8ls2451285iof.24.gmail; Fri, 10 Mar
+ 2017 02:50:41 -0800 (PST)
+X-Received: by 10.99.161.10 with SMTP id b10mr7579009pgf.159.1489143041544;
+        Fri, 10 Mar 2017 02:50:41 -0800 (PST)
 Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id r66si1676140pfb.7.2017.03.10.02.50.46
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id r66si1675883pfb.7.2017.03.10.02.50.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 10 Mar 2017 02:50:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Fri, 10 Mar 2017 02:50:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id b5so9926211pgg.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 02:50:46 -0800 (PST)
+Received: by mail-pf0-x241.google.com with SMTP id 67so10422536pfg.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 02:50:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=RP9QibqvG0zRDY4pGiZQXf3N+GQVfdFKcR5VFNqX0Ks=;
-        b=P4NXtvSlhsjeFRYgZnK/ze9Acq/LVhOsy2PXcU2OTOHyI9yZvNmE334s46IBTMs3sn
-         DYA+SDwaQisuhhFBts0xfxNAeVd195w14ah0Oy6vA5v0WMy3i0Zb5hUQIC3lo+kQ2URb
-         vGEJFGU8vHI4UFT/kSYj/84/gliOviPu4CQq/8ueyT9rKCpLH6cOinWs2sg+baJ1XOz2
-         Tj3pAgO4S1KaXGkGRc+1Hmv/HL1mX5CjalwnduxGj8nO+SbSGLpGGTOSiR1YdrK53z47
-         EdbXsOOPxGwY/EFFyjW9DZ2Fmy1DNGWR4/PndBvC64kjbQ4iM7PCO5Z51mq5eRFaYGyF
-         2G0A==
+        bh=tyy82Tfd1ykBa9St8rdpszxqJQ0h4USkkiLKsuIsAj0=;
+        b=ovU//6+zy/EpAkFo+FDdIjN91qZZ+okkvr/WjMr3xJmj9UMX+5VYlh8Y86QrZ+vKq0
+         HA4+Rr7FZ5mfU0sLWvklvJsgz1GPJCRduUy2iMEaXys73qHRXIsCj/tMjWCNGUcDWwlu
+         vkie8/He1677RyZkhcmyZgO+XVtWWggz0RSNZNEbmuZyiYBQbtesWuMZLa/1WN12I2dP
+         fgRO+Sq5Oe5eYAAT7UVDwbPNqP53YX1Va9qG6E1lk7O40/nJH7m1rlwPrjD8JzPa7xEu
+         VJf6MCYtKTEeH/FKEbKYRX4QjN58PKjcctn8ghjsHNXCHrkZXdgRzVj9vJK4uvAcmkOM
+         757Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=RP9QibqvG0zRDY4pGiZQXf3N+GQVfdFKcR5VFNqX0Ks=;
-        b=IQYF5mjmY8MIrUOKv4V1kcVPDeFGoZd9xSjkaxEtcQ3AmvM+/KBai8FQ08cb2NW6TU
-         dyfQMbewJPcNwzn8dU2tKFdtV5nAGYRiamyAgXA6A2B8sH7TgPSVqCUMLpwOOJi+r8Gh
-         /kt8SVQSMo19355Q6x9N2nUiiq6oM5Dmh6u4zziN0+An+qoRZ0xAp95+uvmYqgSQx8UL
-         /c8tW84f3H8oxHYut7uyrWkA+yt8ssrAeYNiAHmzwLsOUiXbKNW7T8WfEIBpD9XAYfC4
-         kMpcS16IMnlKL0ZFoSCqJOj7CG1cYzvoTJTXKuDlkrh+MePGWnsZ8Jn93fC+DVSAl4Hl
-         Glvw==
-X-Gm-Message-State: AMke39lbuxyr8SFuvITgERaF1ceXkSYWmfp7WMfpYJKljXXejjFHSwETMFxvd5y7hLrg7g==
-X-Received: by 10.84.148.134 with SMTP id k6mr24723627pla.128.1489143046572;
-        Fri, 10 Mar 2017 02:50:46 -0800 (PST)
+        bh=tyy82Tfd1ykBa9St8rdpszxqJQ0h4USkkiLKsuIsAj0=;
+        b=IQMEUwCcZvMfxomwxoBpa4esKVWLMFkjaXu+0/7iPkbOiD8TZtNrAm53p2Pgk6slmH
+         Df7qTzdIzwkA90ruaj94B+Tkw9j95isODN/yY2iqAfnab9LeTbxV5teBKjvhIKet7gAm
+         zghvqVX7a+k/ozw58rXXO4rjV4BYGUhHhbwBQMbesnbnd4q9rPFhA27qQaXrmKnEqRj3
+         mElZPRPD/zJZrUQ9TDKq/uHKWGwbZ5nj9DRDzLSrVE6FHf7bmN+8woQb6ZRq/R9mhMo3
+         PxFnKfFvY3PEXuO7Sp917bipmNfdFjl7mV2Y7e9SidvT37rHyzqgLJligk7oTFWzb6Yb
+         er/w==
+X-Gm-Message-State: AMke39mQWA4GSveB1TzNWXnyJAX0bGEegJyAG7jCxJz5S9Znp7zc+dJWfl4zvxkC0XdLDg==
+X-Received: by 10.84.194.1 with SMTP id g1mr24297590pld.98.1489143041393;
+        Fri, 10 Mar 2017 02:50:41 -0800 (PST)
 Return-Path: <arushisinghal19971997@gmail.com>
 Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id y5sm17961937pfd.33.2017.03.10.02.50.44
+        by smtp.gmail.com with ESMTPSA id c11sm17940210pfe.68.2017.03.10.02.50.39
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 10 Mar 2017 02:50:45 -0800 (PST)
+        Fri, 10 Mar 2017 02:50:40 -0800 (PST)
 From: Arushi Singhal <arushisinghal19971997@gmail.com>
 To: w.d.hubbs@gmail.com
 Cc: chris@the-brannons.com,
@@ -59,263 +59,40 @@ Cc: chris@the-brannons.com,
 	devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org,
 	Arushi Singhal <arushisinghal19971997@gmail.com>
-Subject: [PATCH v2 2/2] staging: speakup: spaces preferred around operator
-Date: Fri, 10 Mar 2017 16:20:31 +0530
-Message-Id: <20170310105031.2144-3-arushisinghal19971997@gmail.com>
+Subject: [PATCH v2 1/2] staging: speakup: Placed Logical on the previous line
+Date: Fri, 10 Mar 2017 16:20:30 +0530
+Message-Id: <20170310105031.2144-2-arushisinghal19971997@gmail.com>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20170310105031.2144-1-arushisinghal19971997@gmail.com>
 References: <20170310105031.2144-1-arushisinghal19971997@gmail.com>
 
-Fixed the checkpatch.pl issues like:
-CHECK: spaces preferred around that '&' (ctx:VxV)
-CHECK: spaces preferred around that '|' (ctx:VxV)
-CHECK: spaces preferred around that '-' (ctx:VxV)
-CHECK: spaces preferred around that '+' (ctx:VxV)
-etc.
+Placed Logical continuations on the previous line as reported by
+checkpatch.pl.
 
 Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
 ---
- changes in v2
- - add the space where forgot to add
+ drivers/staging/speakup/main.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
- drivers/staging/speakup/serialio.c       |  4 ++--
- drivers/staging/speakup/speakup.h        | 12 ++++++------
- drivers/staging/speakup/speakup_acntpc.c |  4 ++--
- drivers/staging/speakup/speakup_decpc.c  | 14 +++++++-------
- drivers/staging/speakup/speakup_dtlk.c   | 14 +++++++-------
- drivers/staging/speakup/speakup_keypc.c  | 12 ++++++------
- drivers/staging/speakup/speakup_ltlk.c   |  2 +-
- 7 files changed, 31 insertions(+), 31 deletions(-)
-
-diff --git a/drivers/staging/speakup/serialio.c b/drivers/staging/speakup/serialio.c
-index 657a48b6f8d3..aade52ee15a0 100644
---- a/drivers/staging/speakup/serialio.c
-+++ b/drivers/staging/speakup/serialio.c
-@@ -120,8 +120,8 @@ static void start_serial_interrupt(int irq)
- 	outb(UART_MCR_DTR | UART_MCR_RTS | UART_MCR_OUT2,
- 			speakup_info.port_tts + UART_MCR);
- 	/* Turn on Interrupts */
--	outb(UART_IER_MSI|UART_IER_RLSI|UART_IER_RDI,
--			speakup_info.port_tts + UART_IER);
-+	outb(UART_IER_MSI | UART_IER_RLSI | UART_IER_RDI,
-+	     speakup_info.port_tts + UART_IER);
- 	inb(speakup_info.port_tts + UART_LSR);
- 	inb(speakup_info.port_tts + UART_RX);
- 	inb(speakup_info.port_tts + UART_IIR);
-diff --git a/drivers/staging/speakup/speakup.h b/drivers/staging/speakup/speakup.h
-index 0bc8d6afadfa..a654334c98b9 100644
---- a/drivers/staging/speakup/speakup.h
-+++ b/drivers/staging/speakup/speakup.h
-@@ -20,7 +20,7 @@
- #define A_CAP 0x0007
- #define B_NUM 0x0008
- #define NUM 0x0009
--#define ALPHANUM (B_ALPHA|B_NUM)
-+#define ALPHANUM (B_ALPHA | B_NUM)
- #define SOME 0x0010
- #define MOST 0x0020
- #define PUNC 0x0040
-@@ -30,14 +30,14 @@
- #define B_EXNUM 0x0100
- #define CH_RPT 0x0200
- #define B_CTL 0x0400
--#define A_CTL (B_CTL+SYNTH_OK)
-+#define A_CTL (B_CTL + SYNTH_OK)
- #define B_SYM 0x0800
--#define B_CAPSYM (B_CAP|B_SYM)
-+#define B_CAPSYM (B_CAP | B_SYM)
- 
- /* FIXME: u16 */
--#define IS_WDLM(x) (spk_chartab[((u_char)x)]&B_WDLM)
--#define IS_CHAR(x, type) (spk_chartab[((u_char)x)]&type)
--#define IS_TYPE(x, type) ((spk_chartab[((u_char)x)]&type) == type)
-+#define IS_WDLM(x) (spk_chartab[((u_char)x)] & B_WDLM)
-+#define IS_CHAR(x, type) (spk_chartab[((u_char)x)] & type)
-+#define IS_TYPE(x, type) ((spk_chartab[((u_char)x)] & type) == type)
- 
- int speakup_thread(void *data);
- void spk_reset_default_chars(void);
-diff --git a/drivers/staging/speakup/speakup_acntpc.c b/drivers/staging/speakup/speakup_acntpc.c
-index 56ece087ff88..cde77b75d44a 100644
---- a/drivers/staging/speakup/speakup_acntpc.c
-+++ b/drivers/staging/speakup/speakup_acntpc.c
-@@ -281,7 +281,7 @@ static int synth_probe(struct spk_synth *synth)
- 			if (port_val == 0x53fc) {
- 				/* 'S' and out&input bits */
- 				synth_port_control = synth_portlist[i];
--				speakup_info.port_tts = synth_port_control+1;
-+				speakup_info.port_tts = synth_port_control + 1;
- 				break;
- 			}
- 		}
-@@ -304,7 +304,7 @@ static int synth_probe(struct spk_synth *synth)
- static void accent_release(void)
- {
- 	if (speakup_info.port_tts)
--		synth_release_region(speakup_info.port_tts-1, SYNTH_IO_EXTENT);
-+		synth_release_region(speakup_info.port_tts - 1, SYNTH_IO_EXTENT);
- 	speakup_info.port_tts = 0;
- }
- 
-diff --git a/drivers/staging/speakup/speakup_decpc.c b/drivers/staging/speakup/speakup_decpc.c
-index 4cd9730ee03d..afe2da34a3f7 100644
---- a/drivers/staging/speakup/speakup_decpc.c
-+++ b/drivers/staging/speakup/speakup_decpc.c
-@@ -249,7 +249,7 @@ static int dt_getstatus(void)
- static void dt_sendcmd(u_int cmd)
- {
- 	outb_p(cmd & 0xFF, speakup_info.port_tts);
--	outb_p((cmd >> 8) & 0xFF, speakup_info.port_tts+1);
-+	outb_p((cmd >> 8) & 0xFF, speakup_info.port_tts + 1);
- }
- 
- static int dt_waitbit(int bit)
-@@ -271,7 +271,7 @@ static int dt_wait_dma(void)
- 	if (!dt_waitbit(STAT_dma_ready))
- 		return 0;
- 	while (--timeout > 0) {
--		if ((dt_getstatus()&STAT_dma_state) == state)
-+		if ((dt_getstatus() & STAT_dma_state) == state)
- 			return 1;
- 		udelay(50);
- 	}
-@@ -317,8 +317,8 @@ udelay(50);
- 			break;
- udelay(50);
- 	}
--	outb_p(DMA_sync, speakup_info.port_tts+4);
--	outb_p(0, speakup_info.port_tts+4);
-+	outb_p(DMA_sync, speakup_info.port_tts + 4);
-+	outb_p(0, speakup_info.port_tts + 4);
- 	udelay(100);
- 	for (timeout = 0; timeout < 10; timeout++) {
- 		if (!(dt_getstatus() & STAT_flushing))
-@@ -336,8 +336,8 @@ static int dt_sendchar(char ch)
- 		return -1;
- 	if (!(dt_stat & STAT_rr_char))
- 		return -2;
--	outb_p(DMA_single_in, speakup_info.port_tts+4);
--	outb_p(ch, speakup_info.port_tts+4);
-+	outb_p(DMA_single_in, speakup_info.port_tts + 4);
-+	outb_p(ch, speakup_info.port_tts + 4);
- 	dma_state ^= STAT_dma_state;
- 	return 0;
- }
-@@ -353,7 +353,7 @@ static int testkernel(void)
- 	dt_sendcmd(CMD_sync);
- 	if (!dt_waitbit(STAT_cmd_ready))
- 		status = -2;
--	else if (dt_stat&0x8000)
-+	else if (dt_stat & 0x8000)
- 		return 0;
- 	else if (dt_stat == 0x0dec)
- 		pr_warn("dec_pc at 0x%x, software not loaded\n",
-diff --git a/drivers/staging/speakup/speakup_dtlk.c b/drivers/staging/speakup/speakup_dtlk.c
-index de67288beb25..eede2d82183a 100644
---- a/drivers/staging/speakup/speakup_dtlk.c
-+++ b/drivers/staging/speakup/speakup_dtlk.c
-@@ -298,7 +298,7 @@ static struct synth_settings *synth_interrogate(struct spk_synth *synth)
- 	t += 2;
- 	for (i = 0; *t != '\r'; t++) {
- 		status.rom_version[i] = *t;
--		if (i < sizeof(status.rom_version)-1)
-+		if (i < sizeof(status.rom_version) - 1)
- 			i++;
- 	}
- 	status.rom_version[i] = 0;
-@@ -333,13 +333,13 @@ static int synth_probe(struct spk_synth *synth)
- 				speakup_info.port_tts);
- 		if ((port_forced & 0xf) != 0xf)
- 			pr_info("warning: port base should probably end with f\n");
--		if (synth_request_region(speakup_info.port_tts-1,
--					SYNTH_IO_EXTENT)) {
-+		if (synth_request_region(speakup_info.port_tts - 1,
-+					 SYNTH_IO_EXTENT)) {
- 			pr_warn("sorry, port already reserved\n");
- 			return -EBUSY;
- 		}
--		port_val = inw(speakup_info.port_tts-1);
--		synth_lpc = speakup_info.port_tts-1;
-+		port_val = inw(speakup_info.port_tts - 1);
-+		synth_lpc = speakup_info.port_tts - 1;
- 	} else {
- 		for (i = 0; synth_portlist[i]; i++) {
- 			if (synth_request_region(synth_portlist[i],
-@@ -348,7 +348,7 @@ static int synth_probe(struct spk_synth *synth)
- 			port_val = inw(synth_portlist[i]) & 0xfbff;
- 			if (port_val == 0x107f) {
- 				synth_lpc = synth_portlist[i];
--				speakup_info.port_tts = synth_lpc+1;
-+				speakup_info.port_tts = synth_lpc + 1;
- 				break;
- 			}
- 			synth_release_region(synth_portlist[i],
-@@ -375,7 +375,7 @@ static int synth_probe(struct spk_synth *synth)
- static void dtlk_release(void)
- {
- 	if (speakup_info.port_tts)
--		synth_release_region(speakup_info.port_tts-1, SYNTH_IO_EXTENT);
-+		synth_release_region(speakup_info.port_tts - 1, SYNTH_IO_EXTENT);
- 	speakup_info.port_tts = 0;
- }
- 
-diff --git a/drivers/staging/speakup/speakup_keypc.c b/drivers/staging/speakup/speakup_keypc.c
-index 7c24e088549c..b802d6ce3941 100644
---- a/drivers/staging/speakup/speakup_keypc.c
-+++ b/drivers/staging/speakup/speakup_keypc.c
-@@ -141,9 +141,9 @@ static char *oops(void)
- 	int s1, s2, s3, s4;
- 
- 	s1 = inb_p(synth_port);
--	s2 = inb_p(synth_port+1);
--	s3 = inb_p(synth_port+2);
--	s4 = inb_p(synth_port+3);
-+	s2 = inb_p(synth_port + 1);
-+	s3 = inb_p(synth_port + 2);
-+	s4 = inb_p(synth_port + 3);
- 	pr_warn("synth timeout %d %d %d %d\n", s1, s2, s3, s4);
- 	return NULL;
- }
-@@ -241,7 +241,7 @@ spin_lock_irqsave(&speakup_info.spinlock, flags);
- 			delay_time_val = delay_time->u.n.value;
- 			spin_unlock_irqrestore(&speakup_info.spinlock, flags);
- 			schedule_timeout(msecs_to_jiffies(delay_time_val));
--			jiff_max = jiffies+jiffy_delta_val;
-+			jiff_max = jiffies + jiffy_delta_val;
- 		}
- 	}
- 	timeout = 1000;
-@@ -269,7 +269,7 @@ static int synth_probe(struct spk_synth *synth)
- 		synth_port = port_forced;
- 		pr_info("probe forced to %x by kernel command line\n",
- 				synth_port);
--		if (synth_request_region(synth_port-1, SYNTH_IO_EXTENT)) {
-+		if (synth_request_region(synth_port - 1, SYNTH_IO_EXTENT)) {
- 			pr_warn("sorry, port already reserved\n");
- 			return -EBUSY;
- 		}
-@@ -297,7 +297,7 @@ static int synth_probe(struct spk_synth *synth)
- 		return -ENODEV;
- 	}
- 	pr_info("%s: %03x-%03x, driver version %s,\n", synth->long_name,
--		synth_port, synth_port+SYNTH_IO_EXTENT-1,
-+		synth_port, synth_port + SYNTH_IO_EXTENT - 1,
- 		synth->version);
- 	synth->alive = 1;
- 	return 0;
-diff --git a/drivers/staging/speakup/speakup_ltlk.c b/drivers/staging/speakup/speakup_ltlk.c
-index 9d22198a0339..c691382f9694 100644
---- a/drivers/staging/speakup/speakup_ltlk.c
-+++ b/drivers/staging/speakup/speakup_ltlk.c
-@@ -144,7 +144,7 @@ static void synth_interrogate(struct spk_synth *synth)
- 		if (i > 2 && buf[i] == 0x7f)
- 			break;
- 	}
--	t = buf+2;
-+	t = buf + 2;
- 	for (i = 0; *t != '\r'; t++) {
- 		rom_v[i] = *t;
- 		if (++i >= 19)
+diff --git a/drivers/staging/speakup/main.c b/drivers/staging/speakup/main.c
+index 6d9c9c858c75..00335eb2ff20 100644
+--- a/drivers/staging/speakup/main.c
++++ b/drivers/staging/speakup/main.c
+@@ -2159,10 +2159,10 @@ speakup_key(struct vc_data *vc, int shift_state, int keycode, u_short keysym,
+ 	if (up_flag || spk_killed || type == KT_SHIFT)
+ 		goto out;
+ 	spk_shut_up &= 0xfe;
+-	kh = (value == KVAL(K_DOWN))
+-	    || (value == KVAL(K_UP))
+-	    || (value == KVAL(K_LEFT))
+-	    || (value == KVAL(K_RIGHT));
++	kh = ((value == KVAL(K_DOWN)) ||
++	      (value == KVAL(K_UP)) ||
++	      (value == KVAL(K_LEFT)) ||
++	      (value == KVAL(K_RIGHT)));
+ 	if ((cursor_track != read_all_mode) || !kh)
+ 		if (!spk_no_intr)
+ 			spk_do_flush();
 -- 
 2.11.0
 
