@@ -1,90 +1,149 @@
-X-GM-THRID: 6395583387919187968
-X-Received: by 10.157.63.242 with SMTP id i47mr5585155ote.53.1489087796974;
-        Thu, 09 Mar 2017 11:29:56 -0800 (PST)
+X-GM-THRID: 6395948821343371264
+X-Received: by 10.46.21.79 with SMTP id 15mr1280838ljv.8.1489172880059;
+        Fri, 10 Mar 2017 11:08:00 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.8.88 with SMTP id 85ls2021571ioi.39.gmail; Thu, 09 Mar
- 2017 11:29:56 -0800 (PST)
-X-Received: by 10.99.106.131 with SMTP id f125mr6472837pgc.140.1489087796123;
-        Thu, 09 Mar 2017 11:29:56 -0800 (PST)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id y90si1371320pfa.6.2017.03.09.11.29.56
+Received: by 10.46.80.22 with SMTP id e22ls1136256ljb.12.gmail; Fri, 10 Mar
+ 2017 11:07:59 -0800 (PST)
+X-Received: by 10.25.151.69 with SMTP id z66mr2842715lfd.12.1489172879593;
+        Fri, 10 Mar 2017 11:07:59 -0800 (PST)
+Return-Path: <diaconitatamara@gmail.com>
+Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
+        by gmr-mx.google.com with ESMTPS id 82si27726wmg.3.2017.03.10.11.07.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 09 Mar 2017 11:29:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Fri, 10 Mar 2017 11:07:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id g2so3282865pge.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 09 Mar 2017 11:29:56 -0800 (PST)
+Received: by mail-wm0-x244.google.com with SMTP id n11so492489wma.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 11:07:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=UrZYSB9+rdqsJ7cyXG8304vlDe0ey5dxzRdKYSz7dQs=;
-        b=Alzdh1Uz1D/GUg8SKZhQQ/Dep29zXTU8gjFD/wu47fEZqzPsIA+3dIlNWjJ9kWYNSA
-         hX2lEy1qJJTqrMkbpDFJhXDi90sit5FLZRVbIIrKPDsu3oSpyGI4kc6kWwCiWCPaF4do
-         kni4jURKfpm7SDn4nxKmfgRyI0KbOz3ewUPxahrAUuAfjDChfFfS/7Js++6D/K0Zp2bk
-         ZZxe+ssPtHDGx4eT49LZSeDjsY3R5OkCnsTM1LdjTJSQSts7ESY3ve8RVnsARtl0s4hj
-         N4g/K14o2fy3w1iPmI8WkJWC1gMruBBHSvUCryQpmEo4fj8g4RQlvTV1MJO4d4pc81HL
-         H5bQ==
+        h=from:to:cc:subject:date:message-id;
+        bh=mj+5w0x17sPZCKWlkdiwuf4wfnN7fIMvCEE3Zz5UAMQ=;
+        b=R83UNRbcC8b6FfRVrc28QfkNiwOOL+YQGSXWAF6lHERNnNafgOwV2uCQc7/TSFIZao
+         ijV0s4c59se4BVEaI3s3+UtTAO8HL3KGH6HuzMj+uFBIOkLQD8bDe0uyWQE4LYVe17g1
+         uS3t+SpofQ4xdvAp3kGg7plmeog56hCoH4S/Xt+wn0UCN1BRjbj6Y8ilmivSmtNynTgI
+         Frcoc4uDGPFb6q76afwIn7pbZUSWzDxn6Jla/mWrcLdMz7EbPUL1OZ5y374DGmsS95A9
+         7kWEIFVj9PdC2c77cGwivzSPjey2NT7g8Yubm42hGo+CJFU2Z6I0JWe4fR8T90bYP9qH
+         H9sw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=UrZYSB9+rdqsJ7cyXG8304vlDe0ey5dxzRdKYSz7dQs=;
-        b=l4lN3a/wVTbGlk1x+s1jJH1GyYMymvTgnzFjzYMLpHwuOddIVJlNXJAOAU+y3nLlw2
-         Ij9ZabzTyI3aKqf4tAZ3U5+4kGIvc6OtHZQw56KNxLjurHLA2XzPr8VaWTqI4GX8kBxN
-         /746vycN27RNtLjwHaR8GX7cuVPqhmK64m6OcLkTo4yL7oDeIo4j8EOCW68nugJzEMsI
-         bi+wyEvHTZghlRKucjcQ0QJ4dGSvERDod6zQxWjngxwEzNShg9RrYpI66k1nnYF7lEtR
-         9mpIPD+flmUpJ1r8n7237oo197J1fXaradWXOFDMiEM2PQn3loOSzyHF9RmCXSqRq8lN
-         /BcQ==
-X-Gm-Message-State: AMke39lpUUPG9/p0e0mwiYMQtkIuTDpPz6Q4ONAPZyx8ZZkzRDZkPud0cgeePqVMCdwSsQ==
-X-Received: by 10.99.206.5 with SMTP id y5mr15504767pgf.212.1489087795904;
-        Thu, 09 Mar 2017 11:29:55 -0800 (PST)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id r17sm14133146pgg.19.2017.03.09.11.29.53
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=mj+5w0x17sPZCKWlkdiwuf4wfnN7fIMvCEE3Zz5UAMQ=;
+        b=F7Oo4sZxZb9bRdzhlsdJzqYjGiSuuqYHB18TY13YzWq6lbZepm8hX/0h04jgM4f3yP
+         8SbeUmqjLoHVtUWRRA4PWmnvKf8Yi+3Uv8quQxWpc0ZSxRtV5aqyIb4m+irR2GOF3EZe
+         TwcAgn6W5FiV2/EmpDO6qBT8wmK2Toz0iEXlmykPxtr7wnuwG7ZViVvF+nILHpy/Ag4P
+         CQurde+S7VGKaW70hLbJ1ruBI0mYd58dhqAayBnNsBuvSvlS8Z2Vq3t6D4I71taDLiVz
+         Qn5X4cwzeP00ZDsnA7XpZx0iZYtHB1bQd3FEMvliZEG1sNRDUoEWsbu3b9ywkgq3ExHm
+         l3eg==
+X-Gm-Message-State: AFeK/H38axlLB6A34r38kFsxev04UhzRcjDpPgYiqOZ1ghMdnKCAoveVggmPN/q1+bq2Fg==
+X-Received: by 10.28.113.200 with SMTP id d69mr447257wmi.10.1489172879385;
+        Fri, 10 Mar 2017 11:07:59 -0800 (PST)
+Return-Path: <diaconitatamara@gmail.com>
+Received: from tamara ([2a02:2f0b:8130:11ea:9935:36c4:c373:a2cc])
+        by smtp.gmail.com with ESMTPSA id n59sm14112675wrb.54.2017.03.10.11.07.58
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 09 Mar 2017 11:29:54 -0800 (PST)
-Date: Fri, 10 Mar 2017 00:59:50 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: w.d.hubbs@gmail.com
-Cc: Chris Brannon <chris@the-brannons.com>, Kirk Reiser <kirk@reisers.ca>,
-	Samuel Thibault <samuel.thibault@ens-lyon.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	speakup@linux-speakup.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: speakup: Unnecessary parentheses are removed.
-Message-ID: <20170309192949.GA28027@arushi-HP-Pavilion-Notebook>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+        Fri, 10 Mar 2017 11:07:58 -0800 (PST)
+From: Tamara Diaconita <diaconitatamara@gmail.com>
+X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
+To: aditya.shankar@microchip.com,
+	ganesh.krishna@microchip.com,
+	gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: [PATCH 6/7] staging: wilc1000: Use kernel preferred commenting style
+Date: Fri, 10 Mar 2017 21:07:56 +0200
+Message-Id: <20170310190756.20069-1-diaconita.tamara@gmail.com>
+X-Mailer: git-send-email 2.9.3
 
-Unnecessary parentheses are removed to improve readability.
+Trims line size at 80 characters by moving parts of some comments in new
+lines.
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+Problem found with checkpatch.pl
+
+Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
 ---
- drivers/staging/speakup/kobjects.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/wilc1000/wilc_spi.c | 28 +++++++++++++++++++---------
+ 1 file changed, 19 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
-index 9feb97dfd72b..8a586323b728 100644
---- a/drivers/staging/speakup/kobjects.c
-+++ b/drivers/staging/speakup/kobjects.c
-@@ -392,7 +392,7 @@ static ssize_t synth_store(struct kobject *kobj, struct kobj_attribute *attr,
- 		len--;
- 	new_synth_name[len] = '\0';
- 	spk_strlwr(new_synth_name);
--	if (synth && (!strcmp(new_synth_name, synth->name))) {
-+	if (synth && !strcmp(new_synth_name, synth->name)) {
- 		pr_warn("%s already in use\n", new_synth_name);
- 	} else if (synth_init(new_synth_name) != 0) {
- 		pr_warn("failed to init synth %s\n", new_synth_name);
+diff --git a/drivers/staging/wilc1000/wilc_spi.c b/drivers/staging/wilc1000/wilc_spi.c
+index 5687f9a..a1b0296 100644
+--- a/drivers/staging/wilc1000/wilc_spi.c
++++ b/drivers/staging/wilc1000/wilc_spi.c
+@@ -464,7 +464,9 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
+ 		 **/
+ 		retry = 100;
+ 		do {
+-			/* ensure there is room in buffer later to read data and crc */
++			/* ensure there is room in buffer later to
++			 * read data and crc
++			 */
+ 			if (rix < len2) {
+ 				rsp = rb[rix++];
+ 			} else {
+@@ -549,7 +551,9 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
+ 				sz -= nbytes;
+ 			}
+ 
+-			/*  if any data in left unread, then read the rest using normal DMA code.*/
++			/*  if any data in left unread, then read the rest
++			 *  using normal DMA code.
++			 */
+ 			while (sz > 0) {
+ 				int nbytes;
+ 
+@@ -559,9 +563,10 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
+ 					nbytes = DATA_PKT_SZ;
+ 
+ 				/**
+-				 * read data response only on the next DMA cycles not
+-				 * the first DMA since data response header is already
+-				 * handled above for the first DMA.
++				 * read data response only on the next DMA
++				 * cycles not the first DMA since data response
++				 * header is already handled above for the
++				 * first DMA.
+ 				 **/
+ 				/**
+ 				 * Data Respnose header
+@@ -855,8 +860,9 @@ static int wilc_spi_init(struct wilc *wilc, bool resume)
+ 	 **/
+ 	g_spi.crc_off = 0;
+ 
+-	/* TODO: We can remove the CRC trials if there is a definite way to reset */
+-	/* the SPI to it's initial value. */
++	/* TODO: We can remove the CRC trials if there is a definite
++	 * way to reset the SPI to it's initial value.
++	 */
+ 	if (!spi_internal_read(wilc, WILC_SPI_PROTOCOL_OFFSET, &reg)) {
+ 		/* Read failed. Try with CRC off. This might happen when module
+ 		 * is removed but chip isn't reset
+@@ -864,7 +870,9 @@ static int wilc_spi_init(struct wilc *wilc, bool resume)
+ 		g_spi.crc_off = 1;
+ 		dev_err(&spi->dev, "Failed internal read protocol with CRC on, retrying with CRC off...\n");
+ 		if (!spi_internal_read(wilc, WILC_SPI_PROTOCOL_OFFSET, &reg)) {
+-			/* Reaad failed with both CRC on and off, something went bad */
++			/* Reaad failed with both CRC on and off,
++			 * something went bad
++			 */
+ 			dev_err(&spi->dev,
+ 				"Failed internal read protocol...\n");
+ 			return 0;
+@@ -995,7 +1003,9 @@ static int wilc_spi_clear_int_ext(struct wilc *wilc, u32 val)
+ 
+ 			ret = 1;
+ 			for (i = 0; i < g_spi.nint; i++) {
+-				/* No matter what you write 1 or 0, it will clear interrupt. */
++				/* No matter what you write 1 or 0,
++				 * it will clear interrupt.
++				 */
+ 				if (flags & 1)
+ 					ret = wilc_spi_write_reg(wilc, 0x10c8 + i * 4, 1);
+ 				if (!ret)
 -- 
-2.11.0
+2.9.3
 
 
