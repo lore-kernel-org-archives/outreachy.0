@@ -1,154 +1,202 @@
-X-GM-THRID: 2422210560000
-X-Received: by 10.112.77.101 with SMTP id r5mr747642lbw.4.1424611688464;
-        Sun, 22 Feb 2015 05:28:08 -0800 (PST)
+X-GM-THRID: 6395062111177801728
+X-Received: by 10.157.63.153 with SMTP id r25mr7140210otc.112.1489149502199;
+        Fri, 10 Mar 2017 04:38:22 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.4.5 with SMTP id g5ls190609lag.28.gmail; Sun, 22 Feb 2015
- 05:28:06 -0800 (PST)
-X-Received: by 10.112.138.202 with SMTP id qs10mr703629lbb.24.1424611686784;
-        Sun, 22 Feb 2015 05:28:06 -0800 (PST)
-Return-Path: <aybuke.147@gmail.com>
-Received: from mail-wg0-x22e.google.com (mail-wg0-x22e.google.com. [2a00:1450:400c:c00::22e])
-        by gmr-mx.google.com with ESMTPS id ta1si482148wic.1.2015.02.22.05.28.06
+Received: by 10.36.64.142 with SMTP id n136ls492863ita.2.gmail; Fri, 10 Mar
+ 2017 04:38:21 -0800 (PST)
+X-Received: by 10.99.44.66 with SMTP id s63mr8729407pgs.14.1489149501318;
+        Fri, 10 Mar 2017 04:38:21 -0800 (PST)
+Return-Path: <karniksayli1995@gmail.com>
+Received: from mail-yw0-x242.google.com (mail-yw0-x242.google.com. [2607:f8b0:4002:c05::242])
+        by gmr-mx.google.com with ESMTPS id y63si1217908ywe.5.2017.03.10.04.38.21
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Feb 2015 05:28:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) client-ip=2a00:1450:400c:c00::22e;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 10 Mar 2017 04:38:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:4002:c05::242 as permitted sender) client-ip=2607:f8b0:4002:c05::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c00::22e as permitted sender) smtp.mail=aybuke.147@gmail.com;
        dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-f46.google.com with SMTP id a1so21059882wgh.5
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Feb 2015 05:28:06 -0800 (PST)
+       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:4002:c05::242 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-yw0-x242.google.com with SMTP id p77so3265074ywg.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 04:38:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=+heAIxxmXjivmHNpM7g6lf/64KheQ48ylMizOJqh674=;
-        b=Ur2Tfxxv0DA2srydTOR7WZ3TaOzA5HAJQ7S4+fCdyC7KUeadE3GL/EwIsoMKRgc+sq
-         5rvJS150DV3R5NnSZFutdi6n2KY25+8iCg78T9LCZMVRgQUxV3qWOQvsraXAXm16FZON
-         a7xTd+g9dgghjObdP2yRxGFzjHseA9Wde2Z1JrBBqBCXBcRa3Y0QjY3+Z21YDRYroe2i
-         8ckDYRhSzCOR5u4t+O8Yh+8+atP3dLvDFZR5SBpROcS3u+BhSD5IslmTBiGzK2i8mNtN
-         1OEC3DfPZJkca1Ob6GznPqRuquevF5fzitAx78eU6eozOKn/NBJTEc1LXEKeccymgoJ5
-         2tWA==
-X-Received: by 10.181.8.75 with SMTP id di11mr6977676wid.26.1424611686654;
-        Sun, 22 Feb 2015 05:28:06 -0800 (PST)
-Return-Path: <aybuke.147@gmail.com>
-Received: from localhost.localdomain ([95.15.157.229])
-        by mx.google.com with ESMTPSA id hd5sm11447621wib.21.2015.02.22.05.28.05
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 22 Feb 2015 05:28:05 -0800 (PST)
-From: aybuke ozdemir <aybuke.147@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: aybuke ozdemir <aybuke.147@gmail.com>
-Subject: [PATCH] Staging: vt6656: replace memcpy() by ether_addr_copy() using coccinelle and pack variable
-Date: Sun, 22 Feb 2015 15:27:56 +0200
-Message-Id: <1424611676-7451-1-git-send-email-aybuke.147@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        d=gmail.com; s=20161025;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=2z3cGrYIPFeCvqkABrEEIbOWp7lkv8AOraeW2xXbSb4=;
+        b=DWJVsyKcgMu++LQmcNBNRWv43u2PgDVuMp0ZVkiqM5u+xI2zqubcsluPdy9Lan9bAJ
+         MLNR9zNWpApPcYJK6zYQjU8cwGsp8LsJWyOMgvVZQmZymKCSvNXgdk7GBfT+g9dh9abE
+         19d1mBercW4rrV+Txzvt+qrrJjLGyIxXiNumqE3GCLwp/i+UN7QbUt2Gc90qtWtwYsLi
+         tM8Xt9Dq70vtVnL8sIIjDF+IuahVgURBOEu97YsNI2rYYAf4Y3PT8Wg8Pvh3aC01eJy9
+         jjriqfd1iAYKJ5xlagj8klUBZrwt3RRkftCq5mBpBRkZP5eASCLVA1o7Bz4mOjYH6uwn
+         f7YQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=2z3cGrYIPFeCvqkABrEEIbOWp7lkv8AOraeW2xXbSb4=;
+        b=llqLmc0GrULmTD+uVsGW+PNS7UBLQYVnFJC2zyBlagBemW2931mAWGToWN0UBR/nAF
+         942xiSP4akdLT0Aud1kGupnK7PMKtNktw58h2zjh7GLvDxgNwu9lR+f4EQM1efR/t5Jb
+         vQqpyv9iNo9DK8rTGRCurWOvhOMQs68yStoA2dyIlhvkNdhyIfYAAocuZscKurIit0py
+         8oU95KrrQFHhzhXv2CUBwsBk4DzKJU5nhdCFbviOEQmFq6S4VcbVOZdht6nAwKGuwqEN
+         +n6tpPrBWD7M91Vbq67tPPCpLmnz2ftbOXuB9jhSNBmu6Kwks5oHG2+WpxZLNh+uX3dO
+         VK1g==
+X-Gm-Message-State: AMke39nvTBPFEQaok9l9PhEPW369dWdGbBcnpaevRRf/tlHFj2BmoK3mYdCv+bUjRuxpN9ck3LlVUU46aB6qbA==
+X-Received: by 10.37.161.2 with SMTP id z2mr7324154ybh.50.1489149500753; Fri,
+ 10 Mar 2017 04:38:20 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.37.173.10 with HTTP; Fri, 10 Mar 2017 04:37:40 -0800 (PST)
+In-Reply-To: <20170308094321.GA11025@sayli-HP-15-Notebook-PC>
+References: <20170308094321.GA11025@sayli-HP-15-Notebook-PC>
+From: sayli karnik <karniksayli1995@gmail.com>
+Date: Fri, 10 Mar 2017 18:07:40 +0530
+Message-ID: <CAKG5xWgQyJ65gfd3c82CoyQPw74HP=-Cb78OPo7ZpfEOc2BPxw@mail.gmail.com>
+Subject: Re: [PATCH] staging: iio: ade7759: Move contents of header file to
+ source file
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: Lars-Peter Clausen <lars@metafoo.de>, Michael Hennerich <Michael.Hennerich@analog.com>, 
+	Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>, 
+	Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	linux-iio@vger.kernel.org
+Content-Type: text/plain; charset=UTF-8
 
-This patch focuses on fixing the following warning generated
-by checkpatch.pl for the file rxtx.c
+On Wed, Mar 8, 2017 at 3:16 PM, sayli karnik <karniksayli1995@gmail.com> wrote:
+> The contents of ade7759.h are only used in ade7759.c. Move the header
+> contents to the source file and delete the header file.
+>
+> Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
+> ---
+>  drivers/staging/iio/meter/ade7759.c | 50 +++++++++++++++++++++++++++++++++-
+>  drivers/staging/iio/meter/ade7759.h | 53 -------------------------------------
+>  2 files changed, 49 insertions(+), 54 deletions(-)
+>  delete mode 100644 drivers/staging/iio/meter/ade7759.h
+>
+> diff --git a/drivers/staging/iio/meter/ade7759.c b/drivers/staging/iio/meter/ade7759.c
+> index 944ee34..0b65f18 100644
+> --- a/drivers/staging/iio/meter/ade7759.c
+> +++ b/drivers/staging/iio/meter/ade7759.c
+> @@ -21,7 +21,55 @@
+>  #include <linux/iio/iio.h>
+>  #include <linux/iio/sysfs.h>
+>  #include "meter.h"
+> -#include "ade7759.h"
+> +
+> +#define ADE7759_WAVEFORM  0x01
+> +#define ADE7759_AENERGY   0x02
+> +#define ADE7759_RSTENERGY 0x03
+> +#define ADE7759_STATUS    0x04
+> +#define ADE7759_RSTSTATUS 0x05
+> +#define ADE7759_MODE      0x06
+> +#define ADE7759_CFDEN     0x07
+> +#define ADE7759_CH1OS     0x08
+> +#define ADE7759_CH2OS     0x09
+> +#define ADE7759_GAIN      0x0A
+> +#define ADE7759_APGAIN    0x0B
+> +#define ADE7759_PHCAL     0x0C
+> +#define ADE7759_APOS      0x0D
+> +#define ADE7759_ZXTOUT    0x0E
+> +#define ADE7759_SAGCYC    0x0F
+> +#define ADE7759_IRQEN     0x10
+> +#define ADE7759_SAGLVL    0x11
+> +#define ADE7759_TEMP      0x12
+> +#define ADE7759_LINECYC   0x13
+> +#define ADE7759_LENERGY   0x14
+> +#define ADE7759_CFNUM     0x15
+> +#define ADE7759_CHKSUM    0x1E
+> +#define ADE7759_DIEREV    0x1F
+> +
+> +#define ADE7759_READ_REG(a)    a
+> +#define ADE7759_WRITE_REG(a) ((a) | 0x80)
+> +
+> +#define ADE7759_MAX_TX    6
+> +#define ADE7759_MAX_RX    6
+> +#define ADE7759_STARTUP_DELAY 1000
+> +
+> +#define ADE7759_SPI_SLOW       (u32)(300 * 1000)
+> +#define ADE7759_SPI_BURST      (u32)(1000 * 1000)
+> +#define ADE7759_SPI_FAST       (u32)(2000 * 1000)
+> +
+> +/**
+> + * struct ade7759_state - device instance specific data
+> + * @us:                        actual spi_device
+> + * @buf_lock:          mutex to protect tx and rx
+> + * @tx:                        transmit buffer
+> + * @rx:                        receive buffer
+> + **/
+> +struct ade7759_state {
+> +       struct spi_device       *us;
+> +       struct mutex            buf_lock;
+> +       u8                      tx[ADE7759_MAX_TX] ____cacheline_aligned;
+> +       u8                      rx[ADE7759_MAX_RX];
+> +};
+>
+>  static int ade7759_spi_write_reg_8(struct device *dev,
+>                 u8 reg_address,
+> diff --git a/drivers/staging/iio/meter/ade7759.h b/drivers/staging/iio/meter/ade7759.h
+> deleted file mode 100644
+> index f0716d2..0000000
+> --- a/drivers/staging/iio/meter/ade7759.h
+> +++ /dev/null
+> @@ -1,53 +0,0 @@
+> -#ifndef _ADE7759_H
+> -#define _ADE7759_H
+> -
+> -#define ADE7759_WAVEFORM  0x01
+> -#define ADE7759_AENERGY   0x02
+> -#define ADE7759_RSTENERGY 0x03
+> -#define ADE7759_STATUS    0x04
+> -#define ADE7759_RSTSTATUS 0x05
+> -#define ADE7759_MODE      0x06
+> -#define ADE7759_CFDEN     0x07
+> -#define ADE7759_CH1OS     0x08
+> -#define ADE7759_CH2OS     0x09
+> -#define ADE7759_GAIN      0x0A
+> -#define ADE7759_APGAIN    0x0B
+> -#define ADE7759_PHCAL     0x0C
+> -#define ADE7759_APOS      0x0D
+> -#define ADE7759_ZXTOUT    0x0E
+> -#define ADE7759_SAGCYC    0x0F
+> -#define ADE7759_IRQEN     0x10
+> -#define ADE7759_SAGLVL    0x11
+> -#define ADE7759_TEMP      0x12
+> -#define ADE7759_LINECYC   0x13
+> -#define ADE7759_LENERGY   0x14
+> -#define ADE7759_CFNUM     0x15
+> -#define ADE7759_CHKSUM    0x1E
+> -#define ADE7759_DIEREV    0x1F
+> -
+> -#define ADE7759_READ_REG(a)    a
+> -#define ADE7759_WRITE_REG(a) ((a) | 0x80)
+> -
+> -#define ADE7759_MAX_TX    6
+> -#define ADE7759_MAX_RX    6
+> -#define ADE7759_STARTUP_DELAY 1000
+> -
+> -#define ADE7759_SPI_SLOW       (u32)(300 * 1000)
+> -#define ADE7759_SPI_BURST      (u32)(1000 * 1000)
+> -#define ADE7759_SPI_FAST       (u32)(2000 * 1000)
+> -
+> -/**
+> - * struct ade7759_state - device instance specific data
+> - * @us:                        actual spi_device
+> - * @buf_lock:          mutex to protect tx and rx
+> - * @tx:                        transmit buffer
+> - * @rx:                        receive buffer
+> - **/
+> -struct ade7759_state {
+> -       struct spi_device       *us;
+> -       struct mutex            buf_lock;
+> -       u8                      tx[ADE7759_MAX_TX] ____cacheline_aligned;
+> -       u8                      rx[ADE7759_MAX_RX];
+> -};
+> -
+> -#endif
 
-Prefer ether_addr_copy() over memcpy() if the Ethernet addresses
-are __aligned(2)
+Is this a valid change?
 
-@@ expression e1, e2; @@
-
-- memcpy(e1, e2, ETH_ALEN);
-+ ether_addr_copy(e1, e2);
-
-According to ether_addr_copy() description and functionality,
-all Ethernet addresses should align to the u16 datatype.
-The changes were applied using the following coccinelle rule:
-
-Here is the output of pahole for the relevant datastructures:
-struct vnt_usb_send_context {
-        void *                     priv;                 /*     0     8*/
-        struct sk_buff *           skb;                  /*     8     8*/
-        struct urb *               urb;                  /*    16     8*/
-        struct ieee80211_hdr *     hdr;                  /*    24     8*/
-        unsigned int               buf_len;              /*    32     4*/
-        u32                        frame_len;            /*    36     4*/
-        u16                        tx_hdr_size;          /*    40     2*/
-        u16                        tx_rate;              /*    42     2*/
-        u8                         type;                 /*    44     1*/
-        u8                         pkt_no;               /*    45     1*/
-        u8                         pkt_type;             /*    46     1*/
-        u8                         need_ack;             /*    47     1*/
-        u8                         fb_option;            /*    48     1*/
-        bool                       in_use;               /*    49     1*/
-        unsigned char              data[2900];           /*    50  2900*/
-        /* --- cacheline 46 boundary (2944 bytes) was 6 bytes ago --- */
-
-        /* size: 2952, cachelines: 47, members: 15 */
-        /* padding: 2 */
-        /* last cacheline: 8 bytes */
-};
-
-struct ieee80211_key_conf {
-        u32                        cipher;               /*     0     4*/
-        u8                         icv_len;              /*     4     1*/
-        u8                         iv_len;               /*     5     1*/
-        u8                         hw_key_idx;           /*     6     1*/
-        u8                         flags;                /*     7     1*/
-        s8                         keyidx;               /*     8     1*/
-        u8                         keylen;               /*     9     1*/
-        u8                         key[0];               /*    10     0*/
-
-        /* size: 12, cachelines: 1, members: 8 */
-        /* padding: 2 */
-        /* last cacheline: 12 bytes */
-};
-
-struct vnt_mic_hdr {
-        u8                         id;                   /*     0     1*/
-        u8                         tx_priority;          /*     1     1*/
-        u8                         mic_addr2[6];         /*     2     6*/
-        u8                         ccmp_pn[6];           /*     8     6*/
-        __be16                     payload_len;          /*    14     2*/
-        __be16                     hlen;                 /*    16     2*/
-        __le16                     frame_control;        /*    18     2*/
-        u8                         addr1[6];             /*    20     6*/
-        u8                         addr2[6];             /*    26     6*/
-        u8                         addr3[6];             /*    32     6*/
-        __le16                     seq_ctrl;             /*    38     2*/
-        u8                         addr4[6];             /*    40     6*/
-        u16                        packing;              /*    46     2*/
-
-        /* size: 48, cachelines: 1, members: 13 */
-        /* last cacheline: 48 bytes */
-};
-
-Signed-off-by: aybuke ozdemir <aybuke.147@gmail.com>
----
- drivers/staging/vt6656/rxtx.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/staging/vt6656/rxtx.c b/drivers/staging/vt6656/rxtx.c
-index 33baf26..f6c2cf8 100644
---- a/drivers/staging/vt6656/rxtx.c
-+++ b/drivers/staging/vt6656/rxtx.c
-@@ -755,9 +755,9 @@ static void vnt_fill_txkey(struct vnt_usb_send_context *tx_context,
- 		else
- 			mic_hdr->hlen = cpu_to_be16(22);
- 
--		memcpy(mic_hdr->addr1, hdr->addr1, ETH_ALEN);
--		memcpy(mic_hdr->addr2, hdr->addr2, ETH_ALEN);
--		memcpy(mic_hdr->addr3, hdr->addr3, ETH_ALEN);
-+		ether_addr_copy(mic_hdr->addr1, hdr->addr1);
-+		ether_addr_copy(mic_hdr->addr2, hdr->addr2);
-+		ether_addr_copy(mic_hdr->addr3, hdr->addr3);
- 
- 		mic_hdr->frame_control = cpu_to_le16(
- 			le16_to_cpu(hdr->frame_control) & 0xc78f);
-@@ -765,7 +765,7 @@ static void vnt_fill_txkey(struct vnt_usb_send_context *tx_context,
- 				le16_to_cpu(hdr->seq_ctrl) & 0xf);
- 
- 		if (ieee80211_has_a4(hdr->frame_control))
--			memcpy(mic_hdr->addr4, hdr->addr4, ETH_ALEN);
-+			ether_addr_copy(mic_hdr->addr4, hdr->addr4);
- 
- 
- 		memcpy(key_buffer, tx_key->key, WLAN_KEY_LEN_CCMP);
--- 
-1.9.1
-
+thanks,
+sayli
+> --
+> 2.7.4
+>
 
