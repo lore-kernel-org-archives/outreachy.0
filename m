@@ -1,86 +1,94 @@
 X-GM-THRID: 6396343645329424384
-X-Received: by 10.157.17.165 with SMTP id v34mr11278945otf.23.1489299227536;
-        Sat, 11 Mar 2017 22:13:47 -0800 (PST)
+X-Received: by 10.129.82.133 with SMTP id g127mr10618576ywb.161.1489269770783;
+        Sat, 11 Mar 2017 14:02:50 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.30.76 with SMTP id e73ls3514168ioe.46.gmail; Sat, 11 Mar
- 2017 22:13:46 -0800 (PST)
-X-Received: by 10.99.115.26 with SMTP id o26mr12791070pgc.155.1489299226341;
-        Sat, 11 Mar 2017 22:13:46 -0800 (PST)
-Received: by 10.55.154.202 with SMTP id c193msqke;
-        Sat, 11 Mar 2017 16:59:50 -0800 (PST)
-X-Received: by 10.46.88.70 with SMTP id x6mr4090823ljd.22.1489280389621;
-        Sat, 11 Mar 2017 16:59:49 -0800 (PST)
-Return-Path: <viro@ftp.linux.org.uk>
-Received: from ZenIV.linux.org.uk (zeniv.linux.org.uk. [195.92.253.2])
-        by gmr-mx.google.com with ESMTPS id f7si355920wmg.3.2017.03.11.16.59.49
+Received: by 10.157.35.87 with SMTP id k23ls6117838otd.20.gmail; Sat, 11 Mar
+ 2017 14:02:50 -0800 (PST)
+X-Received: by 10.157.36.99 with SMTP id p90mr10738407ota.7.1489269770422;
+        Sat, 11 Mar 2017 14:02:50 -0800 (PST)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id a3si2442413pfb.2.2017.03.11.14.02.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 11 Mar 2017 16:59:49 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of viro@ftp.linux.org.uk designates 195.92.253.2 as permitted sender) client-ip=195.92.253.2;
+        Sat, 11 Mar 2017 14:02:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: best guess record for domain of viro@ftp.linux.org.uk designates 195.92.253.2 as permitted sender) smtp.mailfrom=viro@ftp.linux.org.uk
-Received: from viro by ZenIV.linux.org.uk with local (Exim 4.87 #1 (Red Hat Linux))
-	id 1cmrrM-0000kN-88; Sun, 12 Mar 2017 00:59:44 +0000
-Date: Sun, 12 Mar 2017 00:59:44 +0000
-From: Al Viro <viro@ZenIV.linux.org.uk>
-To: simran singhal <singhalsimran0@gmail.com>
-Cc: gregkh@linuxfoundation.org, arve@android.com, riandrews@android.com,
-	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] staging: android: Replace strcpy with strlcpy
-Message-ID: <20170312005944.GL29622@ZenIV.linux.org.uk>
-References: <20170311204001.GA13301@singhal-Inspiron-5558>
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x244.google.com with SMTP id 25so14099250pgy.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 11 Mar 2017 14:02:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=Io2C6/XTQBChxNh9JblwzviZTRi08Zdu3HyOJzopgXs=;
+        b=FJ1DmSF6YzDnO2wejLHDGCzIYlUfUbRHAp4pINlOOqMBHG/1FHSCtz1lUcAFk+njIe
+         K8Dvjr7LuH407kM3tgux0uxH0MfEpaCxiQNbCd6WTlYGEKp4+wY4vKExa/Jofeq/f+j8
+         g9IeaDhMIG3aku59eWAthn8GMU9yvT3ZGL19BbaVK7Upq31gGB0CJ/ToKzhA8Wz0vtB7
+         EQ3df+JfuEQPAK9C9ma/aWX+NpHMyIi2uldydUH6Wk8PxRkS+59FaJonLXth/V1AQcaV
+         Jr9xiklUmtx+DMoQ4ck/LptDkqKK4+VbgpRxuvbSI5VgXUn90ryZfzxO3RglqVWFSZ9u
+         997w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=Io2C6/XTQBChxNh9JblwzviZTRi08Zdu3HyOJzopgXs=;
+        b=UtkJFt4b2xWxWbHUSgcJPpwXJ4N2sGl+bAkNYXUrAkAKSQYdOXrNtctJW4L6zBk9VB
+         j25pULTSg/8XdjO2C+/WHkP/z4jHJFpQ+E39E9oUvk1eg6DV0aFtaSRvLDmpM15lV33e
+         SAspllCEnEcqPy0TpoiNTJ/NUO9iQLfONQ6AHa5K1hHjwbypjrQ2ZZ48W7l9OqOHL8SN
+         yTmhowMM+uRjEM/sjt6H43QQ6L9NVTiukRrTcKXGlyWoxYhCiLNzfTlNNkUYidEuIx4g
+         EMadRGWDfTTdQkS8CRpa+wmVOM7dfwPAsX7ZgffhmKUDiNO45bJcAJJZFBtSpIaU+T9a
+         /CVw==
+X-Gm-Message-State: AMke39miyrHH1/VcfB+9fvhTnLDNkpP/7v1FhW2cyz1fulLJW0FS+7WZ6d+8EKy2FuScZA==
+X-Received: by 10.84.202.194 with SMTP id q2mr35941202plh.108.1489269769901;
+        Sat, 11 Mar 2017 14:02:49 -0800 (PST)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from singhal-Inspiron-5558 ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id v4sm25774012pfb.36.2017.03.11.14.02.48
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 11 Mar 2017 14:02:49 -0800 (PST)
+Date: Sun, 12 Mar 2017 03:32:44 +0530
+From: simran singhal <singhalsimran0@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: arve@android.com, riandrews@android.com, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: [PATCH v3] staging: android: Replace strcpy with strlcpy
+Message-ID: <20170311220244.GA21700@singhal-Inspiron-5558>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20170311204001.GA13301@singhal-Inspiron-5558>
-User-Agent: Mutt/1.7.1 (2016-10-04)
-Sender: Al Viro <viro@ftp.linux.org.uk>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Sun, Mar 12, 2017 at 02:10:01AM +0530, simran singhal wrote:
-> Replace strcpy with strlcpy as strcpy does not check for buffer
-> overflow.
-> This is found using Flawfinder.
-> 
-> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
-> ---
->  drivers/staging/android/ashmem.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/android/ashmem.c b/drivers/staging/android/ashmem.c
-> index 7cbad0d..eb2f4ef 100644
-> --- a/drivers/staging/android/ashmem.c
-> +++ b/drivers/staging/android/ashmem.c
-> @@ -548,7 +548,8 @@ static int set_name(struct ashmem_area *asma, void __user *name)
->  	if (unlikely(asma->file))
->  		ret = -EINVAL;
->  	else
-> -		strcpy(asma->name + ASHMEM_NAME_PREFIX_LEN, local_name);
-> +		strlcpy(asma->name + ASHMEM_NAME_PREFIX_LEN, local_name,
-> +			sizeof(asma->name + ASHMEM_NAME_PREFIX_LEN));
+Replace strcpy with strlcpy as strcpy does not check for buffer
+overflow.
+This is found using Flawfinder.
 
-Trivial C quiz: given
+Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+---
+ 
+ v3:
+   -Correcting the place of the parenthesis and sign
 
-struct ashmem_area {
-        char name[ASHMEM_FULL_NAME_LEN];
-        struct list_head unpinned_list;
-        struct file *file;
-        size_t size;
-        unsigned long prot_mask;
-};
-static int set_name(struct ashmem_area *asma, void __user *name)
+ drivers/staging/android/ashmem.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-what, in your opinion, would be
-	1) type of asma->name
-	2) type of asma->name + ASHMEM_NAME_PREFIX_LEN
-	3) value of sizeof(asma->name + ASHMEM_NAME_PREFIX_LEN)
-As a bonus question,
-	4) what is the value of this kind of patches?
+diff --git a/drivers/staging/android/ashmem.c b/drivers/staging/android/ashmem.c
+index 7cbad0d..4d9bf48 100644
+--- a/drivers/staging/android/ashmem.c
++++ b/drivers/staging/android/ashmem.c
+@@ -548,7 +548,8 @@ static int set_name(struct ashmem_area *asma, void __user *name)
+ 	if (unlikely(asma->file))
+ 		ret = -EINVAL;
+ 	else
+-		strcpy(asma->name + ASHMEM_NAME_PREFIX_LEN, local_name);
++		strlcpy(asma->name + ASHMEM_NAME_PREFIX_LEN, local_name,
++			sizeof(asma->name) - ASHMEM_NAME_PREFIX_LEN);
+ 
+ 	mutex_unlock(&ashmem_mutex);
+ 	return ret;
+-- 
+2.7.4
 
-<rot13 answers>
-	1) NFUZRZ_SHYY_ANZR_YRA-ryrzrag neenl bs pune
-	2) cbvagre gb pune
-	3) fvmr bs n cbvagre
-	4) fbpvbybtvpny - ernql-znqr vyyhfgengvbaf bs crevyf bs
-pnetb phyg.
 
