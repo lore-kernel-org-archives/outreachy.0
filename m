@@ -1,96 +1,108 @@
-X-GM-THRID: 6396244306305220608
-X-Received: by 10.157.17.123 with SMTP id p56mr10761692otp.116.1489241678194;
-        Sat, 11 Mar 2017 06:14:38 -0800 (PST)
+X-GM-THRID: 6396276836280565760
+X-Received: by 10.46.9.141 with SMTP id 135mr4383730ljj.19.1489253524681;
+        Sat, 11 Mar 2017 09:32:04 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.4.119 with SMTP id 110ls10409054otc.44.gmail; Sat, 11 Mar
- 2017 06:14:37 -0800 (PST)
-X-Received: by 10.129.94.215 with SMTP id s206mr11678931ywb.1.1489241677819;
-        Sat, 11 Mar 2017 06:14:37 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id g82si2244905pfb.5.2017.03.11.06.14.37
+Received: by 10.46.13.9 with SMTP id 9ls1247723ljn.46.gmail; Sat, 11 Mar 2017
+ 09:32:03 -0800 (PST)
+X-Received: by 10.25.79.23 with SMTP id d23mr3305831lfb.27.1489253523531;
+        Sat, 11 Mar 2017 09:32:03 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 82si283170wmg.3.2017.03.11.09.32.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 11 Mar 2017 06:14:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Sat, 11 Mar 2017 09:32:03 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id j5so13893262pfb.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 11 Mar 2017 06:14:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=uhMDcQHVU1ssiG1y1Q6Gyh5th/3+W/vfo9bKoRuemuo=;
-        b=rmikCeyWahpZI4geIK8azxpPud7Yl5A04JVnxepxhCC+NJBjQvVb6kstCR7y3VkL7X
-         qazp871NKV/xkUDBxLAlkX1Y4H+XSaIwFi5Uup6kF2v7CkQ2Ou4ExKz6sSTAbeJOFscw
-         s1bWZFF9KtaQqJD7V1qyHUs9Gs/fGJq3WGig/7yu5Ja3SkM1X+c/1Ag2ZUQcTMV3gVKU
-         ctNldSRjJqVE+o4qYBi8CBTo66nEoBubAMUQDdJa9syfXXWYptfhOoAc/VtPeE/Ftlw0
-         YnMMEBi0U/qxnvnvJnLe58MgUbfLGqnQppMUtLzduAkHM7iWoXYeANuiLoH6QcUSpZAF
-         p+HQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=uhMDcQHVU1ssiG1y1Q6Gyh5th/3+W/vfo9bKoRuemuo=;
-        b=IeTbpHVj+4JJ1GFv9pT4nfoPjWK/CQ8HtVov9X+PRL6ZrtW/itTleKbPRRhADO1P3E
-         T6tf0VTyZwgw1/xRuP76mNZq3FAchfTb4Tohm0DRDRCFWo6LNsQYqUrU2qYLrSG78fc5
-         +5l0EJXO5/61nRMIRHoMe64PTDY58rialQfTKt+CkjO8dxx2ckbF7B6Wk3SCuxxZx7lv
-         4zc4SoLm20iAeRMpIB00vxF5lgM4NzaRGkGZpLoVrjug4xiJfPBdJ5hvqOclMID0BfXG
-         g4v7C3s8lYHWkMRwstNuA4W5FjXPFNwPlCKuEusSwzK5tcHlLNQC+glipjLlfiHFAl9x
-         a+Iw==
-X-Gm-Message-State: AMke39lbg5iMBlJr4D/E4ZJdivj2qATmYBaPXRUiWjOGFdfjMmUe4QiPiIoeCfvBs1+oYQ==
-X-Received: by 10.99.157.143 with SMTP id i137mr26612386pgd.132.1489241677561;
-        Sat, 11 Mar 2017 06:14:37 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id y9sm24543616pfi.39.2017.03.11.06.14.35
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 11 Mar 2017 06:14:37 -0800 (PST)
-From: Gargi Sharma <gs051095@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH] staging: rtl8192u: Remove multiple assignments
-Date: Sat, 11 Mar 2017 19:42:10 +0530
-Message-Id: <1489241530-11540-1-git-send-email-gs051095@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.36,147,1486422000"; 
+   d="scan'208";a="264146592"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 11 Mar 2017 18:32:03 +0100
+Date: Sat, 11 Mar 2017 18:31:49 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: simran singhal <singhalsimran0@gmail.com>
+cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org, 
+    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: rtl8192u: Remove typedef
+ phy_ofdm_rx_status_rxsc_sgien_exintfflag
+In-Reply-To: <20170311172100.GA18682@singhal-Inspiron-5558>
+Message-ID: <alpine.DEB.2.20.1703111831180.3127@hadrien>
+References: <20170311172100.GA18682@singhal-Inspiron-5558>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-This patch removes multiple assignments by factorizing them.
 
-This was done with Coccinelle.
 
-@ r1 @
-identifier i1,i2;
-constant c;
-@@
-- i1=i2=c;
-+ i1=c;
-+ i2=c;
+On Sat, 11 Mar 2017, simran singhal wrote:
 
-Signed-off-by: Gargi Sharma <gs051095@gmail.com>
----
- drivers/staging/rtl8192u/r8192U_dm.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+> Remove typdef phy_ofdm_rx_status_rxsc_sgien_exintfflag and replace its uses
+> in the code.
+>
+> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
 
-diff --git a/drivers/staging/rtl8192u/r8192U_dm.c b/drivers/staging/rtl8192u/r8192U_dm.c
-index 9209aad..ccd19be 100644
---- a/drivers/staging/rtl8192u/r8192U_dm.c
-+++ b/drivers/staging/rtl8192u/r8192U_dm.c
-@@ -725,8 +725,10 @@ static void dm_TXPowerTrackingCallback_ThermalMeter(struct net_device *dev)
- 	} else {
- 		tmpval = (u8)tmpRegA - priv->ThermalMeter[0];
- 
--		if (tmpval >= 6) /* higher temperature */
--			tmpOFDMindex = tmpCCK20Mindex = 0; /* max to +6dB */
-+		if (tmpval >= 6) /* higher temperature */ {
-+			tmpOFDMindex = 0;
-+			tmpCCK20Mindex = 0;
-+		} /* max to +6dB */
- 		else
- 			tmpOFDMindex = tmpCCK20Mindex = 6 - tmpval;
- 		tmpCCK40Mindex = 0;
--- 
-2.7.4
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 
+> ---
+>
+>  v2:
+>    -Drop the "_" at the beginning of the name of the structure
+>
+>  drivers/staging/rtl8192u/r8192U.h      | 4 ++--
+>  drivers/staging/rtl8192u/r8192U_core.c | 4 ++--
+>  2 files changed, 4 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8192u/r8192U.h b/drivers/staging/rtl8192u/r8192U.h
+> index a7ba8f3..524c1c9 100644
+> --- a/drivers/staging/rtl8192u/r8192U.h
+> +++ b/drivers/staging/rtl8192u/r8192U.h
+> @@ -793,12 +793,12 @@ typedef struct _phy_cck_rx_status_report_819xusb {
+>  } phy_sts_cck_819xusb_t;
+>
+>
+> -typedef struct _phy_ofdm_rx_status_rxsc_sgien_exintfflag {
+> +struct phy_ofdm_rx_status_rxsc_sgien_exintfflag {
+>  	u8			reserved:4;
+>  	u8			rxsc:2;
+>  	u8			sgi_en:1;
+>  	u8			ex_intf_flag:1;
+> -} phy_ofdm_rx_status_rxsc_sgien_exintfflag;
+> +};
+>
+>  typedef enum _RT_CUSTOMER_ID {
+>  	RT_CID_DEFAULT = 0,
+> diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
+> index 13239f4..8448e83 100644
+> --- a/drivers/staging/rtl8192u/r8192U_core.c
+> +++ b/drivers/staging/rtl8192u/r8192U_core.c
+> @@ -4242,7 +4242,7 @@ static void rtl8192_query_rxphystatus(struct r8192_priv *priv,
+>  {
+>  	phy_sts_ofdm_819xusb_t *pofdm_buf;
+>  	phy_sts_cck_819xusb_t	*pcck_buf;
+> -	phy_ofdm_rx_status_rxsc_sgien_exintfflag *prxsc;
+> +	struct phy_ofdm_rx_status_rxsc_sgien_exintfflag *prxsc;
+>  	u8	*prxpkt;
+>  	u8	i, max_spatial_stream, tmp_rxsnr, tmp_rxevm, rxsc_sgien_exflg;
+>  	s8	rx_pwr[4], rx_pwr_all = 0;
+> @@ -4432,7 +4432,7 @@ static void rtl8192_query_rxphystatus(struct r8192_priv *priv,
+>
+>  		/* record rx statistics for debug */
+>  		rxsc_sgien_exflg = pofdm_buf->rxsc_sgien_exflg;
+> -		prxsc =	(phy_ofdm_rx_status_rxsc_sgien_exintfflag *)
+> +		prxsc =	(struct phy_ofdm_rx_status_rxsc_sgien_exintfflag *)
+>  			&rxsc_sgien_exflg;
+>  		if (pdrvinfo->BW)	/* 40M channel */
+>  			priv->stats.received_bwtype[1 + prxsc->rxsc]++;
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170311172100.GA18682%40singhal-Inspiron-5558.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
