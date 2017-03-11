@@ -1,98 +1,137 @@
 X-GM-THRID: 6396079372840730624
-X-Received: by 10.99.135.193 with SMTP id i184mr9980702pge.29.1489242409483;
-        Sat, 11 Mar 2017 06:26:49 -0800 (PST)
+X-Received: by 10.46.21.28 with SMTP id s28mr1893987ljd.14.1489232437021;
+        Sat, 11 Mar 2017 03:40:37 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.66.83 with SMTP id i80ls631374itb.6.gmail; Sat, 11 Mar 2017
- 06:26:48 -0800 (PST)
-X-Received: by 10.99.130.73 with SMTP id w70mr11286345pgd.64.1489242408808;
-        Sat, 11 Mar 2017 06:26:48 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id 2si2287433pfx.8.2017.03.11.06.26.48
+Received: by 10.46.83.87 with SMTP id t23ls1230204ljd.19.gmail; Sat, 11 Mar
+ 2017 03:40:36 -0800 (PST)
+X-Received: by 10.25.234.202 with SMTP id y71mr3193447lfi.2.1489232436573;
+        Sat, 11 Mar 2017 03:40:36 -0800 (PST)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id l138si209868wmg.0.2017.03.11.03.40.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 11 Mar 2017 06:26:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Sat, 11 Mar 2017 03:40:36 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id v190so13931581pfb.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 11 Mar 2017 06:26:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=wDH+Gg4+OT7nPINcDBErNpB00V8+5hV7KKUJLyTT+1c=;
-        b=J/Cd9XxVS7OFNUd0+zz943QzLDtWNBJFE6O3S5WE73J1iujP0iuYEabcRDsQoldUAt
-         w/+l+yotVFMuyygoOlLaEuRYuSoHlbOmO8FKeP14JMJwD3vj+GCwUB01emfUMYMJpF/j
-         cpPvbX9N5RDIaFxR6jVNwDnFKcIPewsdl+vniz7luJp+XOUIO2Ce7V/tmF3bTPsHG74T
-         2kWn2vkT8g27fXMgNc+clUpDvG85Oc1eqZ3osvwQ0bW3IHK+hFGOyNCp2fUm/iMQLW7d
-         CqazxxZq2HaEYVdArtJBy6CsgXPO6qmzmutkpyIIvWCDBbQ/9+t8lKM2lZPxXDXUgLBW
-         ZDKA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=wDH+Gg4+OT7nPINcDBErNpB00V8+5hV7KKUJLyTT+1c=;
-        b=DP76U0UxChtTzemgd3uJkCuMkxy9krM39fUu7UdDtCAaYCf1aX6kqlRMUlnPp9PMVp
-         36F6FD2HojkIpY539SpY1NiXtjJfBIF5gz2nXxZRXH2+YHr+WcDFhKCTLBTFDvT5szMe
-         VpwRUeKAgZ33hrwZx9wGcQVUUEyuNGY68lFQiFfwR9Io7vY9a7nWVOrFF02E0nIvXRbC
-         q5nyCjX8PSUPTEEiWw5W792Y2nwGJzmOOKJdYUS/mGKnnm5MPGoC1eX4ebzsYrizsxYr
-         nie+XdaVKvGJnPyBryCxTjtRzf8nwYvBHsuR8V3YVkw52WkM+MFbQctTvCf12t1o2mNb
-         c4XA==
-X-Gm-Message-State: AMke39kKySvSoBa5sDExJQBJL9Nc6ZBTbgZpPETh+qYI+amYYcT5mBOgA07i6Ish5lexyQ==
-X-Received: by 10.98.201.212 with SMTP id l81mr27266315pfk.13.1489242408615;
-        Sat, 11 Mar 2017 06:26:48 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id s13sm24574883pfd.46.2017.03.11.06.26.47
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 11 Mar 2017 06:26:47 -0800 (PST)
-From: simran singhal <singhalsimran0@gmail.com>
-To: lars@metafoo.de
-Cc: Michael.Hennerich@analog.com,
-	jic23@kernel.org,
-	knaack.h@gmx.de,
-	gregkh@linuxfoundation.org,
-	linux-iio@vger.kernel.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH v1 00/10] staging: iio: Remove exceptional & on functions name
-Date: Sat, 11 Mar 2017 19:56:34 +0530
-Message-Id: <1489242404-12352-1-git-send-email-singhalsimran0@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.36,146,1486422000"; 
+   d="scan'208";a="216384125"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 11 Mar 2017 12:40:35 +0100
+Date: Sat, 11 Mar 2017 12:40:34 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: SIMRAN SINGHAL <singhalsimran0@gmail.com>
+cc: Julia Lawall <julia.lawall@lip6.fr>, Lars-Peter Clausen <lars@metafoo.de>, 
+    Michael.Hennerich@analog.com, Jonathan Cameron <jic23@kernel.org>, 
+    knaack.h@gmx.de, Greg KH <gregkh@linuxfoundation.org>, 
+    linux-iio@vger.kernel.org, devel@driverdev.osuosl.org, 
+    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 00/10] staging: iio: Remove exceptional
+ & on functions name
+In-Reply-To: <CALrZqyMcYgzH27n4gnRH5ydMajNJNs2n_n86hvQspeOMk0WoNg@mail.gmail.com>
+Message-ID: <alpine.DEB.2.20.1703111237320.2202@hadrien>
+References: <1489203401-17518-1-git-send-email-singhalsimran0@gmail.com> <alpine.DEB.2.20.1703110741530.2202@hadrien> <CALrZqyODTiF+gdwwYnmL1W1oi-R0u2rM4c40jb5iWXFxJpfdJw@mail.gmail.com> <alpine.DEB.2.20.1703111025390.2202@hadrien>
+ <CALrZqyMcYgzH27n4gnRH5ydMajNJNs2n_n86hvQspeOMk0WoNg@mail.gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-This patch-series removes exceptional & on functions name.
 
-v1:
-  -Change the commit message of all the patches of the patch-series
 
-simran singhal (10):
-  staging: iio: ad7192: Remove exceptional & on function name
-  staging: iio: ad7780: Remove exceptional & on function name
-  staging: iio: cdc: ad7746: Remove exceptional & on function name
-  staging: iio: cdc: ad7152: Remove exceptional & on function name
-  staging: iio: adis16240: Remove exceptional & on function name
-  staging: iio: adis16201: Remove exceptional & on function name
-  staging: iio: adis16209: Remove exceptional & on function name
-  staging: iio: adis16203: Remove exceptional & on function name
-  staging: iio: resolver: Remove exceptional & on function name
-  staging: iio: gyro: Remove exceptional & on function name
+On Sat, 11 Mar 2017, SIMRAN SINGHAL wrote:
 
- drivers/staging/iio/accel/adis16201.c     |  4 ++--
- drivers/staging/iio/accel/adis16203.c     |  4 ++--
- drivers/staging/iio/accel/adis16209.c     |  4 ++--
- drivers/staging/iio/accel/adis16240.c     |  4 ++--
- drivers/staging/iio/adc/ad7192.c          | 12 ++++++------
- drivers/staging/iio/adc/ad7780.c          |  2 +-
- drivers/staging/iio/cdc/ad7152.c          |  6 +++---
- drivers/staging/iio/cdc/ad7746.c          |  4 ++--
- drivers/staging/iio/gyro/adis16060_core.c |  2 +-
- drivers/staging/iio/resolver/ad2s1200.c   |  2 +-
- drivers/staging/iio/resolver/ad2s90.c     |  2 +-
- 11 files changed, 23 insertions(+), 23 deletions(-)
+> On Sat, Mar 11, 2017 at 2:57 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> >
+> >
+> > On Sat, 11 Mar 2017, SIMRAN SINGHAL wrote:
+> >
+> >> On Sat, Mar 11, 2017 at 12:12 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> >> >
+> >> >
+> >> > On Sat, 11 Mar 2017, simran singhal wrote:
+> >> >
+> >> >> This patch-series removes exceptional & on functions name.
+> >> >
+> >> > The semantic patch shown does nothing to check that the use of & is
+> >> > exception in the given file.  It just removes all the & on function names.
+> >> >
+> >> yes, I used this semantic patch only for only finding the functions with &
+> >> and then I find out this drivers and use semantic patch for removing &.
+> >
+> > The commit message should be written with respect to what was actually
+> > done, and not copied from a patch that actually did something else.  The
+> > original semantic patch, that was probably only put in the cover letter,
+> > actually checked if the file mostly used function pointers in a particular
+> > way.
+> >
+> Julia, so what should I do?
+> I should not include this semantic patch as it does not check that that the use
+> of & is exception in the given file.
+> OR
+> As I did it manually so I should mention this.
 
--- 
-2.7.4
+If you checked it manually, just mention that.  I don't have the actual
+patches handy any more, but you could also say something like:
 
+Remove & from function pointers to conform to the style found elsewhere in
+the file.  Done using the following semantic patch.
+
+This would be ok if the included semantic patch makes the change.  It
+doesn't suggest that the semantic patch checkked for the excpeptionality.
+
+julia
+
+>
+> > julia
+> >
+> >>
+> >> > julia
+> >> >
+> >> >>
+> >> >> simran singhal (10):
+> >> >>   staging: iio: ad7192: Remove exceptional & on function name
+> >> >>   staging: iio: ad7780: Remove exceptional & on function name
+> >> >>   staging: iio: cdc: ad7746: Remove exceptional & on function name
+> >> >>   staging: iio: cdc: ad7152: Remove exceptional & on function name
+> >> >>   staging: iio: adis16240: Remove exceptional & on function name
+> >> >>   staging: iio: adis16201: Remove exceptional & on function name
+> >> >>   staging: iio: adis16209: Remove exceptional & on function name
+> >> >>   staging: iio: adis16203: Remove exceptional & on function name
+> >> >>   staging: iio: resolver: Remove exceptional & on function name
+> >> >>   staging: iio: gyro: Remove exceptional & on function name
+> >> >>
+> >> >>  drivers/staging/iio/accel/adis16201.c     |  4 ++--
+> >> >>  drivers/staging/iio/accel/adis16203.c     |  4 ++--
+> >> >>  drivers/staging/iio/accel/adis16209.c     |  4 ++--
+> >> >>  drivers/staging/iio/accel/adis16240.c     |  4 ++--
+> >> >>  drivers/staging/iio/adc/ad7192.c          | 12 ++++++------
+> >> >>  drivers/staging/iio/adc/ad7780.c          |  2 +-
+> >> >>  drivers/staging/iio/cdc/ad7152.c          |  6 +++---
+> >> >>  drivers/staging/iio/cdc/ad7746.c          |  4 ++--
+> >> >>  drivers/staging/iio/gyro/adis16060_core.c |  2 +-
+> >> >>  drivers/staging/iio/resolver/ad2s1200.c   |  2 +-
+> >> >>  drivers/staging/iio/resolver/ad2s90.c     |  2 +-
+> >> >>  11 files changed, 23 insertions(+), 23 deletions(-)
+> >> >>
+> >> >> --
+> >> >> 2.7.4
+> >> >>
+> >> >> --
+> >> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> >> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> >> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> >> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1489203401-17518-1-git-send-email-singhalsimran0%40gmail.com.
+> >> >> For more options, visit https://groups.google.com/d/optout.
+> >> >>
+> >>
+> >> --
+> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CALrZqyODTiF%2BgdwwYnmL1W1oi-R0u2rM4c40jb5iWXFxJpfdJw%40mail.gmail.com.
+> >> For more options, visit https://groups.google.com/d/optout.
+> >>
+>
 
