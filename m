@@ -1,90 +1,137 @@
 X-GM-THRID: 6396076706969419776
-X-Received: by 10.129.92.197 with SMTP id q188mr10841476ywb.148.1489228282201;
-        Sat, 11 Mar 2017 02:31:22 -0800 (PST)
+X-Received: by 10.129.103.134 with SMTP id b128mr10929659ywc.14.1489225988479;
+        Sat, 11 Mar 2017 01:53:08 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.41.5 with SMTP id p5ls3137726iop.34.gmail; Sat, 11 Mar
- 2017 02:31:21 -0800 (PST)
-X-Received: by 10.107.34.212 with SMTP id i203mr6934317ioi.13.1489228281400;
-        Sat, 11 Mar 2017 02:31:21 -0800 (PST)
-Return-Path: <geert.uytterhoeven@gmail.com>
-Received: from mail-io0-x241.google.com (mail-io0-x241.google.com. [2607:f8b0:4001:c06::241])
-        by gmr-mx.google.com with ESMTPS id z191si336675itc.0.2017.03.11.02.31.21
+Received: by 10.36.57.77 with SMTP id l74ls489492ita.5.canary-gmail; Sat, 11
+ Mar 2017 01:53:07 -0800 (PST)
+X-Received: by 10.99.127.5 with SMTP id a5mr11428245pgd.112.1489225987803;
+        Sat, 11 Mar 2017 01:53:07 -0800 (PST)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id 2si2203414pfx.8.2017.03.11.01.53.07
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 11 Mar 2017 02:31:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of geert.uytterhoeven@gmail.com designates 2607:f8b0:4001:c06::241 as permitted sender) client-ip=2607:f8b0:4001:c06::241;
+        Sat, 11 Mar 2017 01:53:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of geert.uytterhoeven@gmail.com designates 2607:f8b0:4001:c06::241 as permitted sender) smtp.mailfrom=geert.uytterhoeven@gmail.com
-Received: by mail-io0-x241.google.com with SMTP id 68so9158812ioh.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 11 Mar 2017 02:31:21 -0800 (PST)
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x244.google.com with SMTP id o126so13435574pfb.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 11 Mar 2017 01:53:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:sender:in-reply-to:references:from:date:message-id
-         :subject:to:cc;
-        bh=7rtKi5SB4BLGmKdfS4VwpK/7k9HWcL7QBUZdT4ZrJFM=;
-        b=sTU5Uema7FTHIapXFkPCWBXS3iCzKORlVmBREX6UtwPuH5rOigSPk+7b5GVcwhsE+i
-         8xKxoeTfhGTnZp8cYq0LrdKkFaIREE7kRGGgFDBX4JBmZynaIwuLZ/NskzE4oskdvVLK
-         J10eGVKWw+zHdMMzh/LE6aVhHyg2KaR4YN37XkYIrfpCxnveaAU38y6PPS/A5AHqjPIn
-         wy+47tPL4Hg0KsEA85YtnMlKFS/zVnwgSWipIOIdxk8gGjizvVKvX77Q8rXnJxzGe893
-         +EAlkxH9cHO4pvHScsV0nIMsGTGAXV1PDtIgbZFLTdQiMNK21R0PVO4ax/R4vJRI6ami
-         573w==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=sYEXOxvzPsgCCZkyPkCgexU+B50QrbkgP9VwVMl+hag=;
+        b=um549LMk9Yi8HbwOt0mCgdOHMNOqK/DrZoxSe9D1klvowIrKbFyjyJ/LIinkTz62N+
+         vMJl2ZYuvIMQTSDhi/W5vn9okBp7u8ImMFJdBeuC4ctwVUXJJHGuQ2MImxOaXcFf4i45
+         x568VzxWflGr9Al5DVGj4NAUEraJdCU3T8zE46LdVae6y5pXQdn+EOttsJiBpN3maGrV
+         kwxnH1inNpTZUHcdyoTGOEjCIcCLpJGyKIOexY5i/hdTYbAH49lAS/aXSxeGnLouhcIe
+         hyqycDhPMV4jaiIA0W4BnySsN4mkEM7jz+8ZIvzCODGN4VmcLA28iL7+STVGKUuH80ZD
+         twDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-         :date:message-id:subject:to:cc;
-        bh=7rtKi5SB4BLGmKdfS4VwpK/7k9HWcL7QBUZdT4ZrJFM=;
-        b=PfCIvRNh/TMiK6ekmOZBnmJkHrySBBh4yNT6w8Cm5VcXU19CBEAtsBKsFbX4LvMhxG
-         VTK343l44+dxApFZMckDBudzDsANLpzkjFSLGSAXAHd/5Herpok380ZnoB/a6uRR25B0
-         uOqhZXuOVyMpjRN1OLiEDhXFUdqbIT/BZQqG1VV/iJVEMf3BZ6oSdhSl6egrqTN3wehf
-         2iSFQRBQ2N4RnRm4aKtQeLSeDZIVKi6O5D1CbfOBZwe9bZSY5PIVnL7d3fIpO/MqARD4
-         Kh8deRGBjTCTkW8K7aiWCiKp0xXBf4F1oE1i/3PkRnq9uLAAzxSjcWjkQCeRN+w0kN4b
-         kapg==
-X-Gm-Message-State: AMke39l6C0mlAuget6Ucoiessk3cLH8Q/lyuu8DHoKojPCWDY5YUF5AWhF3oFJXH5TU6v65bCP6Q0DLXVB0wqg==
-X-Received: by 10.107.14.69 with SMTP id 66mr22598075ioo.88.1489228281224;
- Sat, 11 Mar 2017 02:31:21 -0800 (PST)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=sYEXOxvzPsgCCZkyPkCgexU+B50QrbkgP9VwVMl+hag=;
+        b=RD3hCpXQG4F1hMBDs8u6wezMfwSoat0HhjZFNe1M10voY6zzchlAh2NvEvvkdoZiIa
+         JAbFlg55a8teGGFtQ6R8MhnVokIhIqakMfgRWwGZVrHF0rWY6JDSWMaBCOlDgqttKpVA
+         Z+bqisXfcVcdahZeI4FSJ/iquIzGQ48lwsW4m56oMlgLC4kD68XO7W90bJPPqUcXeEZF
+         1cvRP+IJP1hcjlCV9DNIYeY7X3XgZyFKqrw/ktKogNmJMBV510PxNMfSsdviel+3saJ0
+         uyeMxlxCPfxHpMJWYfEWmZgrbFIRQTNgHv/MplQuMl87jfqq7hrJI8aIfX7jLT3NMJ+L
+         8epQ==
+X-Gm-Message-State: AMke39m/niNFK9CefyceCzQ0QKRhjN3tYo4NnKgtliPBCHewXqpdFOpsmjdHGMEYoQCHPA==
+X-Received: by 10.98.8.74 with SMTP id c71mr25731775pfd.42.1489225987557;
+        Sat, 11 Mar 2017 01:53:07 -0800 (PST)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id 73sm23235116pfj.31.2017.03.11.01.53.05
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 11 Mar 2017 01:53:05 -0800 (PST)
+Date: Sat, 11 Mar 2017 15:23:03 +0530
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+To: sudipm.mukherjee@gmail.com
+Cc: Teddy Wang <teddy.wang@siliconmotion.com>,
+	outreachy-kernel@googlegroups.com,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-fbdev@vger.kernel.org, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2] staging: sm750fb: function prototype argument should have
+ an identifier name
+Message-ID: <20170311095302.GA4037@arushi-HP-Pavilion-Notebook>
 MIME-Version: 1.0
-Sender: geert.uytterhoeven@gmail.com
-Received: by 10.107.137.65 with HTTP; Sat, 11 Mar 2017 02:31:20 -0800 (PST)
-In-Reply-To: <20170311095302.GA4037@arushi-HP-Pavilion-Notebook>
-References: <20170311095302.GA4037@arushi-HP-Pavilion-Notebook>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Sat, 11 Mar 2017 11:31:20 +0100
-X-Google-Sender-Auth: x8vQRlalk2bh_AeWryB8ImdLrEI
-Message-ID: <CAMuHMdXv4YthJn3Nu6PL4wybRFkQ4-VrzYh68yyh5whKMyWWsQ@mail.gmail.com>
-Subject: Re: [PATCH v2] staging: sm750fb: function prototype argument should
- have an identifier name
-To: Arushi Singhal <arushisinghal19971997@gmail.com>
-Cc: Sudip Mukherjee <sudipm.mukherjee@gmail.com>, Teddy Wang <teddy.wang@siliconmotion.com>, 
-	outreachy-kernel@googlegroups.com, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Linux Fbdev development list <linux-fbdev@vger.kernel.org>, driverdevel <devel@driverdev.osuosl.org>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Sat, Mar 11, 2017 at 10:53 AM, Arushi Singhal
-<arushisinghal19971997@gmail.com> wrote:
-> --- a/drivers/staging/sm750fb/sm750.h
-> +++ b/drivers/staging/sm750fb/sm750.h
-> @@ -184,8 +184,8 @@ static inline unsigned long ps_to_hz(unsigned int psvalue)
->  }
->
->  int hw_sm750_map(struct sm750_dev *sm750_dev, struct pci_dev *pdev);
-> -int hw_sm750_inithw(struct sm750_dev*, struct pci_dev *);
-> -void hw_sm750_initAccel(struct sm750_dev *);
-> +int hw_sm750_inithw(struct sm750_dev *sm750_dev, struct pci_dev *pdev);
-> +void hw_sm750_initAccel(struct sm750_dev *hw_sm750_initAccel);
+function prototype arguments like 'struct vb_device_info *','unsigned
+long' etc. should have an identifier name.
 
-"sm750_dev", like the implementation uses.
+Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+---
+ changes in v2
+ -Add the identifier name of one more function prototype
 
-Gr{oetje,eeting}s,
+ drivers/staging/sm750fb/ddk750_display.h | 2 +-
+ drivers/staging/sm750fb/ddk750_mode.h    | 2 +-
+ drivers/staging/sm750fb/ddk750_power.h   | 2 +-
+ drivers/staging/sm750fb/sm750.h          | 4 ++--
+ 4 files changed, 5 insertions(+), 5 deletions(-)
 
-                        Geert
+diff --git a/drivers/staging/sm750fb/ddk750_display.h b/drivers/staging/sm750fb/ddk750_display.h
+index e2a3f84ca4c5..609bf742efff 100644
+--- a/drivers/staging/sm750fb/ddk750_display.h
++++ b/drivers/staging/sm750fb/ddk750_display.h
+@@ -102,6 +102,6 @@ typedef enum _disp_output_t {
+ }
+ disp_output_t;
+ 
+-void ddk750_setLogicalDispOut(disp_output_t);
++void ddk750_setLogicalDispOut(disp_output_t output);
+ 
+ #endif
+diff --git a/drivers/staging/sm750fb/ddk750_mode.h b/drivers/staging/sm750fb/ddk750_mode.h
+index 2183e664cf4b..6d204b8b4a01 100644
+--- a/drivers/staging/sm750fb/ddk750_mode.h
++++ b/drivers/staging/sm750fb/ddk750_mode.h
+@@ -34,6 +34,6 @@ typedef struct _mode_parameter_t {
+ }
+ mode_parameter_t;
+ 
+-int ddk750_setModeTiming(mode_parameter_t *, clock_type_t);
++int ddk750_setModeTiming(mode_parameter_t *parm, clock_type_t clock);
+ 
+ #endif
+diff --git a/drivers/staging/sm750fb/ddk750_power.h b/drivers/staging/sm750fb/ddk750_power.h
+index ec0b99d6a7ad..44c4fc587e96 100644
+--- a/drivers/staging/sm750fb/ddk750_power.h
++++ b/drivers/staging/sm750fb/ddk750_power.h
+@@ -14,7 +14,7 @@ DPMS_t;
+ 	       (peek32(MISC_CTRL) & ~MISC_CTRL_DAC_POWER_OFF) | (off)); \
+ }
+ 
+-void ddk750_set_dpms(DPMS_t);
++void ddk750_set_dpms(DPMS_t state);
+ void sm750_set_power_mode(unsigned int powerMode);
+ void sm750_set_current_gate(unsigned int gate);
+ 
+diff --git a/drivers/staging/sm750fb/sm750.h b/drivers/staging/sm750fb/sm750.h
+index 306711ed55f9..f60565cae80c 100644
+--- a/drivers/staging/sm750fb/sm750.h
++++ b/drivers/staging/sm750fb/sm750.h
+@@ -184,8 +184,8 @@ static inline unsigned long ps_to_hz(unsigned int psvalue)
+ }
+ 
+ int hw_sm750_map(struct sm750_dev *sm750_dev, struct pci_dev *pdev);
+-int hw_sm750_inithw(struct sm750_dev*, struct pci_dev *);
+-void hw_sm750_initAccel(struct sm750_dev *);
++int hw_sm750_inithw(struct sm750_dev *sm750_dev, struct pci_dev *pdev);
++void hw_sm750_initAccel(struct sm750_dev *hw_sm750_initAccel);
+ int hw_sm750_deWait(void);
+ int hw_sm750le_deWait(void);
+ 
+-- 
+2.11.0
 
---
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
 
