@@ -1,53 +1,53 @@
 X-GM-THRID: 6396079372840730624
-X-Received: by 10.129.75.5 with SMTP id y5mr11321259ywa.28.1489242420956;
-        Sat, 11 Mar 2017 06:27:00 -0800 (PST)
+X-Received: by 10.157.40.36 with SMTP id m33mr10518580otb.49.1489242416928;
+        Sat, 11 Mar 2017 06:26:56 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.43.103 with SMTP id f36ls7885740otd.0.gmail; Sat, 11 Mar
- 2017 06:27:00 -0800 (PST)
-X-Received: by 10.129.155.148 with SMTP id s142mr3657806ywg.30.1489242420685;
-        Sat, 11 Mar 2017 06:27:00 -0800 (PST)
+Received: by 10.157.35.87 with SMTP id k23ls5567560otd.20.gmail; Sat, 11 Mar
+ 2017 06:26:56 -0800 (PST)
+X-Received: by 10.157.45.198 with SMTP id g64mr10392762otb.136.1489242416620;
+        Sat, 11 Mar 2017 06:26:56 -0800 (PST)
 Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id r66si2234054pfb.7.2017.03.11.06.27.00
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id a3si2272873pfb.2.2017.03.11.06.26.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 11 Mar 2017 06:27:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Sat, 11 Mar 2017 06:26:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id g2so8840065pge.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 11 Mar 2017 06:27:00 -0800 (PST)
+Received: by mail-pf0-x241.google.com with SMTP id o126so13935506pfb.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 11 Mar 2017 06:26:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=TR/h/mVupm4dnYNmWih3MJTymbapfCT4cna4gTFSfBk=;
-        b=Ov1HaZEqDqJQLJdDl4t47dTgHNFw12ERovO+7Lh1yx6Butnlem2HHyrPqhXS1QQTU0
-         fCswAs/1LYBKuPBluxPE9s8rKK9a0Oo2e5waCYywm62jG1vi97Q4ePHq5Am9SyJ98FAP
-         mL+gTFIZT3fEzmlqjmjGUKGOpZ+GvgIW7Zl7NgJaW3nohgxl9ABiJThgHYc0q0fuIzUM
-         eQ3Ij92gXVFbT0IbFztRHVX09vnIKJj0ECBGDE1OqbUKajtALOfC7Hq3TF0od0KLCGWx
-         SejOelSFRcOMb4g2+JHxPx5/9lTWvWwDg2H2pXHPVgl0t/VMmmN+l1VHDZTF3O2VJx3U
-         kHQw==
+        bh=cI9qtCslxeuu8LfuHw4iCKzH1eXkGO0WTQq3rM8JKkA=;
+        b=ZKCFN3lEJEy6muzdFiCboc2hx7LhoKfmMLynQW+n6dm3diutfy8CeMDrW2WR60RxSi
+         au9AOiIB08zNyEk4FXh6Nar4B6r5gIBorb0YNehwHE7mlJypSWoIe/gvfZpE0YNRIcGE
+         q4ZN4qFn7/Ac2+6uSZFMt5531PI0U3Eg5rgkHbYfPvMQAkbsM8PNp/kf6i8/p33QvtX5
+         NkkT98xseHSFPQpxkJ995dW949vdKA74XoWBsiI5zZTuOlgMpFmgWy0xE0qj6mthwdHC
+         cUhSvM9T90/wf9ZPR89AnM3bdZmxGQUzEEf2PCR/MfEhps+JChy/ECYqsD0LnzYLnI0d
+         DDPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=TR/h/mVupm4dnYNmWih3MJTymbapfCT4cna4gTFSfBk=;
-        b=tCZfWxqVIdGIYyh84N3Dv7oRuIM21hkcSlJkSrzxv1rRA/kLQAIozE2x19poi1NBS8
-         HnLhuyw/89Fe40bvN3Ex9Fo3SnYp27bcbfATFIfng15GhKyoGq2fiBoklLfcTVfF/p3F
-         GROGuu6EqodE6PYZq6H+JyCN5oSKBT+dKYlrxmZAJkDh3YxdYmpKB2Y4uteNJU0AgQWB
-         aF1JigyuiMdZW+QWNBnJwk3B5vQCF0luw7Fq3vduq4VijK1leBhW9kzm7Uf54ehWnnQT
-         28E+eja2XeUQPybaTk5tMhAi1rJHquwb3nPV6+he3NFbK6UwVDlULL1GakJrxaV94eo2
-         BEvw==
-X-Gm-Message-State: AMke39mMSqXy+eL+FcgtY/pLJTZs90F+xGCJ1zmwshrthB7bV/nvmFdbcjkmx9LeaY478g==
-X-Received: by 10.99.170.70 with SMTP id x6mr26776017pgo.111.1489242420464;
-        Sat, 11 Mar 2017 06:27:00 -0800 (PST)
+        bh=cI9qtCslxeuu8LfuHw4iCKzH1eXkGO0WTQq3rM8JKkA=;
+        b=qbnReIwAJB7tla0N7jaxEHVvmCECSMv7N0R/Am7Mg/XwfuJQSNO70Jj4t0+TB314Aa
+         AehVoF7Xn4k2gQq1kfNWoiGNXRypvT8M3zUFM6dskymcWnF/npYuFNe9kVVeTum2mxM8
+         D2B5b2Gjg5a+QkYIAZMf9y9y3jgypj3AeSLmP4JzRQVrqOpfM5kuVw2rw6/q+uerl+mJ
+         X0lG69gOmbvcaMBy0TkoNRBRCPJPYietoNcznos6/NVH7Kzn+fMiAooZIAeB8HeuPYDY
+         ynQWRGVMriICME5kur4x1LxBP9QSd0nUY1SGfqOyT4nYOb+e3XOOAmXFjx0QZUyXGSv+
+         AcfA==
+X-Gm-Message-State: AMke39lHkFTFwURPe44VOZCjs9jbm/GijeMu2qEnFVYZNJDqX+R3JP9f4okqT/qIa1/IEA==
+X-Received: by 10.84.208.102 with SMTP id f35mr34023717plh.19.1489242416361;
+        Sat, 11 Mar 2017 06:26:56 -0800 (PST)
 Return-Path: <singhalsimran0@gmail.com>
 Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id x10sm24580848pff.72.2017.03.11.06.26.58
+        by smtp.gmail.com with ESMTPSA id e16sm14737637pfb.102.2017.03.11.06.26.54
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 11 Mar 2017 06:26:59 -0800 (PST)
+        Sat, 11 Mar 2017 06:26:55 -0800 (PST)
 From: simran singhal <singhalsimran0@gmail.com>
 To: lars@metafoo.de
 Cc: Michael.Hennerich@analog.com,
@@ -58,9 +58,9 @@ Cc: Michael.Hennerich@analog.com,
 	devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCH v1 03/10] staging: iio: cdc: ad7746: Remove exceptional & on function name
-Date: Sat, 11 Mar 2017 19:56:37 +0530
-Message-Id: <1489242404-12352-4-git-send-email-singhalsimran0@gmail.com>
+Subject: [PATCH v1 02/10] staging: iio: ad7780: Remove exceptional & on function name
+Date: Sat, 11 Mar 2017 19:56:36 +0530
+Message-Id: <1489242404-12352-3-git-send-email-singhalsimran0@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1489242404-12352-1-git-send-email-singhalsimran0@gmail.com>
 References: <1489242404-12352-1-git-send-email-singhalsimran0@gmail.com>
@@ -84,21 +84,19 @@ identifier r.f;
 
 Signed-off-by: simran singhal <singhalsimran0@gmail.com>
 ---
- drivers/staging/iio/cdc/ad7746.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/iio/adc/ad7780.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/iio/cdc/ad7746.c b/drivers/staging/iio/cdc/ad7746.c
-index 81f8b9e..6294de7 100644
---- a/drivers/staging/iio/cdc/ad7746.c
-+++ b/drivers/staging/iio/cdc/ad7746.c
-@@ -664,8 +664,8 @@ static int ad7746_read_raw(struct iio_dev *indio_dev,
+diff --git a/drivers/staging/iio/adc/ad7780.c b/drivers/staging/iio/adc/ad7780.c
+index e149600..dec3ba6 100644
+--- a/drivers/staging/iio/adc/ad7780.c
++++ b/drivers/staging/iio/adc/ad7780.c
+@@ -154,7 +154,7 @@ static const struct ad7780_chip_info ad7780_chip_info_tbl[] = {
+ };
  
- static const struct iio_info ad7746_info = {
- 	.attrs = &ad7746_attribute_group,
--	.read_raw = &ad7746_read_raw,
--	.write_raw = &ad7746_write_raw,
-+	.read_raw = ad7746_read_raw,
-+	.write_raw = ad7746_write_raw,
+ static const struct iio_info ad7780_info = {
+-	.read_raw = &ad7780_read_raw,
++	.read_raw = ad7780_read_raw,
  	.driver_module = THIS_MODULE,
  };
  
