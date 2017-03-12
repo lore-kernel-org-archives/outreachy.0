@@ -1,98 +1,122 @@
 X-GM-THRID: 6395629856318554112
-X-Received: by 10.99.116.72 with SMTP id e8mr13322811pgn.92.1489362100108;
-        Sun, 12 Mar 2017 16:41:40 -0700 (PDT)
+X-Received: by 10.25.196.68 with SMTP id u65mr4151254lff.0.1489353501675;
+        Sun, 12 Mar 2017 14:18:21 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.36.169 with SMTP id z38ls7276436ota.27.gmail; Sun, 12 Mar
- 2017 16:41:39 -0700 (PDT)
-X-Received: by 10.129.50.12 with SMTP id y12mr16168753ywy.111.1489362099667;
-        Sun, 12 Mar 2017 16:41:39 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id a3si2856695pfb.2.2017.03.12.16.41.39
+Received: by 10.46.92.129 with SMTP id q123ls1330408ljb.23.gmail; Sun, 12 Mar
+ 2017 14:18:21 -0700 (PDT)
+X-Received: by 10.25.151.69 with SMTP id z66mr3885925lfd.12.1489353501313;
+        Sun, 12 Mar 2017 14:18:21 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id t131si453149wmf.1.2017.03.12.14.18.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 12 Mar 2017 16:41:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Sun, 12 Mar 2017 14:18:21 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id b5so16292694pgg.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 12 Mar 2017 16:41:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=R07n2X4y0qFXGELInGU1YU509FP/j3LGn28cFojZX8w=;
-        b=sHudy9R8V1uDoek/Kf3EiQQOq0Pqf7lt2YyKVDK3sZvUDfl3sI4tjA4+yag4YHZ684
-         cX6s0QYrzAO8jp6L4Jv9uue8KVb4oEijXcaAzzsN27WhdPWMCh1i69EI4muSFgk3ZwS0
-         c5/qdlImP1NLRqDn2VHA/h32Ew78LVQ0jzvdUpZkB4w9s+zhmNjbO44tZSvgSzMestmh
-         25z271Vs79JCDyIjutqt4edGtrTkJa0p3kMdROluSWKs5PeRszDldxrt9thAxdEBP5m+
-         kdfXFRWVVNYah18hadUmlkmNvYjc3hlK/3C0zOERTVCB0HYXoetGjnshLoynj90sWyev
-         Tc+Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=R07n2X4y0qFXGELInGU1YU509FP/j3LGn28cFojZX8w=;
-        b=Yv7TNqy74YoBwwr4e2TiCBZSvyo8kyc2k32efVSNBUsYYhkmcoAM+HB+ZOFBLfk8nq
-         Xoe2PGfu7EPgxG8yQXrR9sbQ+pfT+8veaA2yUNUDD9m25IgEom2W7uEzqDoODUbSohYO
-         thK/mRbGc/1Qg0EriG8DJjXJlV6V8ERykrx/WCmfORr4SAUN3PoXm19A0qTQnPmjjID+
-         dL4QKwdu8IQRO9tytiYfMY7rZw6363VOtyQQvozPFftD36A4DKTL7vuFhpdRtzbnXlFZ
-         c/IP4sDe9WSrmDQaMYRHgTbmV0cYo2DoetVqt8nqhV/0RIlWguslUgLh3q7IT7OQxe9f
-         tEaw==
-X-Gm-Message-State: AMke39kmnrQgER+JFWX+ptIDdGYjLL09j+8qsf50ffXH3J0xDp+ZKVG5dVdwGjnWueGM2g==
-X-Received: by 10.84.195.1 with SMTP id i1mr42736919pld.77.1489362099419;
-        Sun, 12 Mar 2017 16:41:39 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
-        by smtp.gmail.com with ESMTPSA id t133sm30227725pgc.24.2017.03.12.16.41.38
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 12 Mar 2017 16:41:38 -0700 (PDT)
-Date: Sun, 12 Mar 2017 16:41:37 -0700
-From: Alison Schofield <amsfield22@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.36,154,1486422000"; 
+   d="scan'208";a="216465119"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 12 Mar 2017 22:18:20 +0100
+Date: Sun, 12 Mar 2017 22:18:18 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Tamara Diaconita <diaconitatamara@gmail.com>
-Cc: aditya.shankar@microchip.com, ganesh.krishna@microchip.com,
-	gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com,
-	Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v2 0/3] staging: wilc1000: Improve
- code readability
-Message-ID: <20170312234135.GA14759@d830.WORKGROUP>
-References: <20170312211518.3172-1-diaconita.tamara@gmail.com>
+cc: aditya.shankar@microchip.com, ganesh.krishna@microchip.com, 
+    gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com, 
+    Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2 2/3] staging: wilc1000: Correct
+ name of variables
+In-Reply-To: <20170312211518.3172-3-diaconita.tamara@gmail.com>
+Message-ID: <alpine.DEB.2.20.1703122217500.7649@hadrien>
+References: <20170312211518.3172-1-diaconita.tamara@gmail.com> <20170312211518.3172-3-diaconita.tamara@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20170312211518.3172-1-diaconita.tamara@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: text/plain; charset=US-ASCII
 
-On Sun, Mar 12, 2017 at 11:15:15PM +0200, Tamara Diaconita wrote:
-> Improve code readability in wilc_spi_read_int dunction in wilc_spi.c
 
-spelling dunction ->function, or write it wilc_spi_read_int()
 
-You don't need to say file name. Reviewer sees it a few lines later
-in the diffstat.
+On Sun, 12 Mar 2017, Tamara Diaconita wrote:
 
-> 
-> Tamara Diaconita (3):
->   staging: wilc1000: Declare variables at top of function
->   staging: wilc1000: Correct name of variables
->   staging: wilc1000: Remove unnecessary brackets
-> 
->  drivers/staging/wilc1000/wilc_spi.c | 52 ++++++++++++++++---------------------
->  1 file changed, 22 insertions(+), 30 deletions(-)
-> 
-> -- 
-> I am going to wait to see these patches in the staging tree, then resend additional patches for this driver.
-> 
-> Changes since v1:
-> *Change the patches order.
+> Correct misspelled variables:
+> 'unkmown_mask' to 'unknown_mask' and 'happended' to 'happened'
+> to improve code readability.
+>
+> Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
+> ---
+>  drivers/staging/wilc1000/wilc_spi.c | 21 ++++++++++-----------
+>  1 file changed, 10 insertions(+), 11 deletions(-)
+>
+> diff --git a/drivers/staging/wilc1000/wilc_spi.c b/drivers/staging/wilc1000/wilc_spi.c
+> index e1ead47..9cde575 100644
+> --- a/drivers/staging/wilc1000/wilc_spi.c
+> +++ b/drivers/staging/wilc1000/wilc_spi.c
+> @@ -937,17 +937,16 @@ static int wilc_spi_read_int(struct wilc *wilc, u32 *int_status)
+>  {
+>  	struct spi_device *spi = to_spi_device(wilc->dev);
+>  	int ret;
+> -	int happended, j;
+> +	int happened, j;
+>  	u32 irq_flags;
+> -	u32 unkmown_mask;
+> +	u32 unknown_mask;
+> +	u32 tmp;
+> +	u32 byte_cnt;
+
+This is doing things other than fixing the spelling mistakes.
+
+julia
+
+>
+>  	if (g_spi.has_thrpt_enh) {
+>  		ret = spi_internal_read(wilc, 0xe840 - WILC_SPI_REG_BASE,
+>  					int_status);
+>  	} else {
+> -		u32 tmp;
+> -		u32 byte_cnt;
+> -
+>  		ret = wilc_spi_read_reg(wilc, WILC_VMM_TO_HOST_SIZE,
+>  					&byte_cnt);
+>  		if (!ret) {
+> @@ -960,7 +959,7 @@ static int wilc_spi_read_int(struct wilc *wilc, u32 *int_status)
+>  		{
+>  			j = 0;
+>  			do {
+> -				happended = 0;
+> +				happened = 0;
+>
+>  				wilc_spi_read_reg(wilc, 0x1a90, &irq_flags);
+>  				tmp |= ((irq_flags >> 27) << IRG_FLAGS_OFFSET);
+> @@ -972,15 +971,15 @@ static int wilc_spi_read_int(struct wilc *wilc, u32 *int_status)
+>  				}
+>
+>  				{
+> -					unkmown_mask = ~((1ul << g_spi.nint) - 1);
+> +					unknown_mask = ~((1ul << g_spi.nint) - 1);
+>
+> -					if ((tmp >> IRG_FLAGS_OFFSET) & unkmown_mask) {
+> -						dev_err(&spi->dev, "Unexpected interrupt (2): j=%d, tmp=%x, mask=%x\n", j, tmp, unkmown_mask);
+> -						happended = 1;
+> +					if ((tmp >> IRG_FLAGS_OFFSET) & unknown_mask) {
+> +						dev_err(&spi->dev, "Unexpected interrupt (2): j=%d, tmp=%x, mask=%x\n", j, tmp, unknown_mask);
+> +						happened = 1;
+>  					}
+>  				}
+>  				j++;
+> -			} while (happended);
+> +			} while (happened);
+>  		}
+>
+>  		*int_status = tmp;
+> --
 > 2.9.3
-> 
-> -- 
+>
+> --
 > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
 > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
 > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170312211518.3172-1-diaconita.tamara%40gmail.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170312211518.3172-3-diaconita.tamara%40gmail.com.
 > For more options, visit https://groups.google.com/d/optout.
+>
 
