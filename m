@@ -1,78 +1,82 @@
 X-GM-THRID: 6396343645329424384
-X-Received: by 10.157.37.37 with SMTP id k34mr14137012otb.121.1489408923531;
-        Mon, 13 Mar 2017 05:42:03 -0700 (PDT)
+X-Received: by 10.99.98.193 with SMTP id w184mr13518297pgb.83.1489331082492;
+        Sun, 12 Mar 2017 08:04:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.89.216 with SMTP id u24ls4050746otg.40.gmail; Mon, 13 Mar
- 2017 05:42:02 -0700 (PDT)
-X-Received: by 10.129.91.214 with SMTP id p205mr16558246ywb.163.1489408922764;
-        Mon, 13 Mar 2017 05:42:02 -0700 (PDT)
-Return-Path: <dan.carpenter@oracle.com>
-Received: from userp1040.oracle.com (userp1040.oracle.com. [156.151.31.81])
-        by gmr-mx.google.com with ESMTPS id 2si2992844pfz.1.2017.03.13.05.42.02
+Received: by 10.107.47.218 with SMTP id v87ls3577464iov.10.gmail; Sun, 12 Mar
+ 2017 08:04:41 -0700 (PDT)
+X-Received: by 10.99.228.83 with SMTP id i19mr13596090pgk.57.1489331081268;
+        Sun, 12 Mar 2017 08:04:41 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id y90si2675954pfa.6.2017.03.12.08.04.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 13 Mar 2017 05:42:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.81 as permitted sender) client-ip=156.151.31.81;
+        Sun, 12 Mar 2017 08:04:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.81 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com
-Received: from aserv0022.oracle.com (aserv0022.oracle.com [141.146.126.234])
-	by userp1040.oracle.com (Sentrion-MTA-4.3.2/Sentrion-MTA-4.3.2) with ESMTP id v2DCfwFX011132
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Mon, 13 Mar 2017 12:41:59 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
-	by aserv0022.oracle.com (8.14.4/8.14.4) with ESMTP id v2DCfwel017499
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Mon, 13 Mar 2017 12:41:58 GMT
-Received: from abhmp0004.oracle.com (abhmp0004.oracle.com [141.146.116.10])
-	by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id v2DCfvMZ031911;
-	Mon, 13 Mar 2017 12:41:57 GMT
-Received: from mwanda (/154.0.138.2)
-	by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Mon, 13 Mar 2017 05:41:55 -0700
-Date: Mon, 13 Mar 2017 15:41:44 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: simran singhal <singhalsimran0@gmail.com>
-Cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
-        outreachy-kernel@googlegroups.com, arve@android.com,
-        riandrews@android.com, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: android: Replace strcpy with strlcpy
-Message-ID: <20170313124144.GE4136@mwanda>
-References: <20170311204001.GA13301@singhal-Inspiron-5558>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [88.128.80.189])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 639D8932;
+	Sun, 12 Mar 2017 15:04:39 +0000 (UTC)
+Date: Sun, 12 Mar 2017 16:04:21 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: SIMRAN SINGHAL <singhalsimran0@gmail.com>
+Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com,
+	arve@android.com, riandrews@android.com,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3] staging: android: Replace strcpy with strlcpy
+Message-ID: <20170312150421.GA24990@kroah.com>
+References: <20170311220244.GA21700@singhal-Inspiron-5558>
+ <20170312133457.GA27791@kroah.com>
+ <CALrZqyP=eMdcFQvM+ZvGiyrcSdnYJxiyOkmr5H6GyEG9qo-ggQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20170311204001.GA13301@singhal-Inspiron-5558>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Source-IP: aserv0022.oracle.com [141.146.126.234]
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CALrZqyP=eMdcFQvM+ZvGiyrcSdnYJxiyOkmr5H6GyEG9qo-ggQ@mail.gmail.com>
+User-Agent: Mutt/1.8.0 (2017-02-23)
 
-On Sun, Mar 12, 2017 at 02:10:01AM +0530, simran singhal wrote:
-> Replace strcpy with strlcpy as strcpy does not check for buffer
-> overflow.
-> This is found using Flawfinder.
+On Sun, Mar 12, 2017 at 08:25:28PM +0530, SIMRAN SINGHAL wrote:
+> On Sun, Mar 12, 2017 at 7:04 PM, Greg KH <gregkh@linuxfoundation.org> wrote:
+> > On Sun, Mar 12, 2017 at 03:32:44AM +0530, simran singhal wrote:
+> >> Replace strcpy with strlcpy as strcpy does not check for buffer
+> >> overflow.
+> >
+> > Can there be a buffer overflow here?  If not, then strcpy is just fine
+> > to use.  Do you see a potential code path here that actually is a
+> > problem using this?
+> >
+> >> This is found using Flawfinder.
+> >
+> > You mean 'grep'?  :)
+> >
+> > If not, what exactly does "Flawfinder" point out is wrong with the code
+> > here?  At first glance, I can't find it, but perhaps the tool, and your
+> > audit, provided more information?
+> >
+> > thanks,
+> >
 > 
-> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
-> ---
->  drivers/staging/android/ashmem.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+> Flawfinder reports possible security weaknesses (“flaws”) sorted by risk level.
+> The risk level is shown inside square brackets and varies from 0, very
+> little risk,
+> to 5, great risk.
 > 
-> diff --git a/drivers/staging/android/ashmem.c b/drivers/staging/android/ashmem.c
-> index 7cbad0d..eb2f4ef 100644
-> --- a/drivers/staging/android/ashmem.c
-> +++ b/drivers/staging/android/ashmem.c
-> @@ -548,7 +548,8 @@ static int set_name(struct ashmem_area *asma, void __user *name)
->  	if (unlikely(asma->file))
->  		ret = -EINVAL;
->  	else
-> -		strcpy(asma->name + ASHMEM_NAME_PREFIX_LEN, local_name);
-> +		strlcpy(asma->name + ASHMEM_NAME_PREFIX_LEN, local_name,
-> +			sizeof(asma->name + ASHMEM_NAME_PREFIX_LEN));
-                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This isn't right.
+> So, here in this case I was getting risk of [4].
+> This is what I got:
+> drivers/staging/android/ashmem.c:551:  [4] (buffer) strcpy:
+>   Does not check for buffer overflows when copying to destination (CWE-120).
+>   Consider using strcpy_s, strncpy, or strlcpy (warning, strncpy is easily
+>   misused).
 
-Also please do some analysis to see if it's a real bug or a false
-positive.  It is a false positive in this case.
+Consider looking at the code to see if it actually is incorrect before
+blindly accepting random comments by a random tool :)
 
-regards,
-dan carpenter
+Again, if you can see how this is incorrect, great, let's fix it,
+otherwise please leave it as-is because so far your fixes are actually
+breaking things :(
 
+thanks,
+
+greg k-h
 
