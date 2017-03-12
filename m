@@ -1,163 +1,124 @@
-X-GM-THRID: 6397390793328295936
-X-Received: by 10.157.30.164 with SMTP id n33mr17812635otn.45.1489508616292;
-        Tue, 14 Mar 2017 09:23:36 -0700 (PDT)
+X-GM-THRID: 6395849810528698368
+X-Received: by 10.99.117.70 with SMTP id f6mr13383138pgn.91.1489337748372;
+        Sun, 12 Mar 2017 09:55:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.11.156 with SMTP id 28ls93361iol.20.gmail; Tue, 14 Mar
- 2017 09:23:35 -0700 (PDT)
-X-Received: by 10.107.175.217 with SMTP id p86mr172001ioo.101.1489508615299;
-        Tue, 14 Mar 2017 09:23:35 -0700 (PDT)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id c123si3694053pfa.4.2017.03.14.09.23.35
+Received: by 10.157.10.39 with SMTP id 36ls13094407otg.33.gmail; Sun, 12 Mar
+ 2017 09:55:48 -0700 (PDT)
+X-Received: by 10.157.11.109 with SMTP id p42mr13050184otd.14.1489337748004;
+        Sun, 12 Mar 2017 09:55:48 -0700 (PDT)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id r66si2706093pfb.7.2017.03.12.09.55.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 14 Mar 2017 09:23:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Sun, 12 Mar 2017 09:55:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id 77so25360607pgc.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 14 Mar 2017 09:23:35 -0700 (PDT)
+Received: by mail-pf0-x242.google.com with SMTP id o126so16481345pfb.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 12 Mar 2017 09:55:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:mime-version:content-disposition
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=3pr/3gdvwbo55OX255+ctU2e1UaIp5TRAYtPwzCXAPg=;
-        b=jH4l8PzDol9rZW7MBlQw7KOzpdKwbOaDRGPB+DNpYUd8IS4paojdaYM4E6IMepdAtA
-         I7bbZKyqrnkRrTLL+eGcYbyrFkzGBQu1xKD6Zjh0Mc1QJUVCu41HQOqooDBzOCYNifzh
-         P69FyefR4UZSAejX1iTb3HZkyyUAECkcvOGWHwrQyOLkFxWbRQumUR91eEMJkOIXCHpC
-         OsvT8z8WrOruCh/OsDAbDw3VCIAuar8vXwgMaE1XXHAu3v7lN8nYd6pcogmyKpzyRUNa
-         NoCUZVe3Ux10+3Jg5OzB5AOd7cUUVr+uUnCmVxnSs1xDZ1q6DjheNai58KTtpzZHynvf
-         zVpQ==
+        bh=Q9MBHhZtgZqHTqLKkChnXz+0DxBnQ67ASY9UHeSYkog=;
+        b=JRZwwLHMHtqCConq5USLDdxW4ITP6O7PLds5yGAW4lktaXUQOKOGZYAuczQxWdR6/d
+         BALCriQNOzHUOVG8e5olW5VndQfRe2JCWpumezvuS6jT5D5ywePKnjTgPzEpSLs1Cjed
+         +qrtVDhSUlvyE2FEcVSWESvACd94RTmbw6pIr/HaMJ8Qe0yGzGFK+bxALtrjod3iYu+B
+         WKuDjk7ErZZQC3r4DGLLc6JoqSXmIGr25397CQdKfsJDilc6VaNaUsCxUdHBuya3gt1O
+         pXqZ/BFdBwsJqfPOAOKSBTka/2CN8HmLJFr76XiSWjAfJB+H7Rtp1mMaA+7V/INu51GK
+         yNog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=3pr/3gdvwbo55OX255+ctU2e1UaIp5TRAYtPwzCXAPg=;
-        b=gkBi58XqvB8B98TeqN7cWoSrFLhnDShbnc+eBZu7a85fpuTrCt7rt1Df+LPK8tbkHl
-         rYpqICsNaJ1HZKarPnYnc5NU9KNYNhY4+bxwM2hj6HAuhxx2suOpa7sJinCRhDDRcdF4
-         gF5+gfJ1VnrqM2V6CKZ50Xuaw8H9DzjPU1AacyuSx2Nwd52DNwF9Ac4BPMYL/n78fm2x
-         R+Co+jHZg/BrJeMPJ2KEVu/7ze382Oo0m+OKsx7gTvXr7Mpcyhe4wxf3Vh6l11ZkWiWu
-         2F7U0gJLaxKuk/rqXnT2xaqKfTY8aKphI23GZ3uXzJRNBEIzSvGcGeK2L/y2j4cMd145
-         /NWA==
-X-Gm-Message-State: AMke39kfCxuoP0oiEtHKYNU3Z7LQEFWi3tOItfkXMKLo7HzS8+rcYAHijAqAQizRGK38sA==
-X-Received: by 10.98.70.28 with SMTP id t28mr44372179pfa.176.1489508615039;
-        Tue, 14 Mar 2017 09:23:35 -0700 (PDT)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([2405:204:5184:fa9f:d84d:aa06:3fcb:1eae])
-        by smtp.gmail.com with ESMTPSA id d63sm39490346pfg.132.2017.03.14.09.23.32
+        bh=Q9MBHhZtgZqHTqLKkChnXz+0DxBnQ67ASY9UHeSYkog=;
+        b=IiRsv8vIi1Jk9Gd7AMTW+vnKfKcOdeY7SnqJsBktuYKTo+xiQbRTQ2lo0fa+UDQoaW
+         6/Avz/Ua/knD5Whsxhuxfjw5EOrVSTlCyvxtrn8L/ILIGxL7Tm3yl0jSt5Y3KmqS9nQs
+         fiZDiZljGFPtrZy0GbLNUQ8ry8ta3ZIQvp4Dp4ZVOOxEarMLv7vi/koG2Tl4PG07Axdn
+         FH1enzKWF5eqYQyG0CEpfsoqZio3nsPyuoVhiNah8+hKBkDtBTzNo/5d3NSS1ujXb0Nu
+         3DGxdEXL+Y04N1nhBfBAvDiWJ9KqEPanWuzqv6nVo85VUtbyR3QETzo9zmkZT8Upncix
+         G49A==
+X-Gm-Message-State: AMke39lc+240aaR+b84XH1xMyhI7V49ML99P0NKuc+1yN8w3ueMvfS3C3AqfF0dWFVZtRw==
+X-Received: by 10.84.245.8 with SMTP id i8mr41565457pll.131.1489337747721;
+        Sun, 12 Mar 2017 09:55:47 -0700 (PDT)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from singhal-Inspiron-5558 ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id l17sm29159388pfg.62.2017.03.12.09.55.46
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 14 Mar 2017 09:23:34 -0700 (PDT)
-Message-ID: <58c81906.42d5620a.3e22a.7a2b@mx.google.com>
-X-Google-Original-Message-ID: <20170314162317.GA1153@<rvarsha016@gmail.com>>
-Date: Tue, 14 Mar 2017 21:53:18 +0530
-From: Varsha Rao <rvarsha016@gmail.com>
-To: Lars-Peter Clausen <lars@metafoo.de>,
-	Michael Hennerich <Michael.Hennerich@analog.com>,
-	Jonathan Cameron <jic23@kernel.org>,
-	Hartmut Knaack <knaack.h@gmx.de>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Barry Song <21cnbao@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, linux-iio@vger.kernel.org
-Subject: [PATCH v2] staging: iio: adis16240: Remove mutex_lock() and
- mutex_unlock() function call.
+        Sun, 12 Mar 2017 09:55:46 -0700 (PDT)
+Date: Sun, 12 Mar 2017 22:25:42 +0530
+From: simran singhal <singhalsimran0@gmail.com>
+To: abbotti@mev.co.uk
+Cc: hsweeten@visionengravers.com, gregkh@linuxfoundation.org,
+	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH v3] staging: comedi: amplc_pci224: Convert macro GAT_CONFIG
+ to static inline function
+Message-ID: <20170312165542.GA26858@singhal-Inspiron-5558>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.7.1 (2016-10-04)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Remove mutex_lock() and mutex_unlock() function calls, as the
-adis16240_spi_read_signed() function can be run parallel and safely
-multiple times. Also remove the mutex.h header file and comment, which
-are no longer required.
+Convert macro GAT_CONFIG to static inline function as static inline
+functions are preferred over macros. This change is possible since the
+arguments at all call sites have the same type.
 
-As indio_dev is declared and initialized in adis16240_spi_read_signed(),
-again declaration to same type and initialization to same value is not
-required, remove it from adis16240_read_12bit_signed().
+The uses were updated with Coccinelle:
 
-Simplify the return logic, by merging assignment and return into a single
-line.
+@r1@
+expression dev,reg,chan,src;
+@@
+-GAT_CONFIG(chan, src)
++pci224_gat_config(chan, src)
 
-Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
+Also, the comment describing the macro has been removed.
+
+Signed-off-by: simran singhal <singhalsimran0@gmail.com>
 ---
-Changes in v2:
-
-- mutex_lock() and mutex_unlock() are removed, instead of replacing
-  mlock with driver private lock.
-- Commit message modified.
-- mutex.h header file is removed.
-- Unnecessary comment is removed.
-- Return logic is compressed to single line.
-- Removed indio_dev declaration and initialization from
-  adis16240_read_12bit_signed().
-
- drivers/staging/iio/accel/adis16240.c | 17 +----------------
- 1 file changed, 1 insertion(+), 16 deletions(-)
-
-diff --git a/drivers/staging/iio/accel/adis16240.c b/drivers/staging/iio/accel/adis16240.c
-index 27d7f6a..3a5f6ab 100644
---- a/drivers/staging/iio/accel/adis16240.c
-+++ b/drivers/staging/iio/accel/adis16240.c
-@@ -10,7 +10,6 @@
- #include <linux/irq.h>
- #include <linux/gpio.h>
- #include <linux/delay.h>
--#include <linux/mutex.h>
- #include <linux/device.h>
- #include <linux/kernel.h>
- #include <linux/spi/spi.h>
-@@ -227,15 +226,7 @@ static ssize_t adis16240_read_12bit_signed(struct device *dev,
- 					   struct device_attribute *attr,
- 					   char *buf)
- {
--	ssize_t ret;
--	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
--
--	/* Take the iio_dev status lock */
--	mutex_lock(&indio_dev->mlock);
--	ret =  adis16240_spi_read_signed(dev, attr, buf, 12);
--	mutex_unlock(&indio_dev->mlock);
--
--	return ret;
-+	return adis16240_spi_read_signed(dev, attr, buf, 12);
- }
  
- static IIO_DEVICE_ATTR(in_accel_xyz_squared_peak_raw, 0444,
-@@ -295,31 +286,25 @@ static int adis16240_read_raw(struct iio_dev *indio_dev,
- 		return IIO_VAL_INT;
- 	case IIO_CHAN_INFO_CALIBBIAS:
- 		bits = 10;
--		mutex_lock(&indio_dev->mlock);
- 		addr = adis16240_addresses[chan->scan_index][0];
- 		ret = adis_read_reg_16(st, addr, &val16);
- 		if (ret) {
--			mutex_unlock(&indio_dev->mlock);
- 			return ret;
- 		}
- 		val16 &= (1 << bits) - 1;
- 		val16 = (s16)(val16 << (16 - bits)) >> (16 - bits);
- 		*val = val16;
--		mutex_unlock(&indio_dev->mlock);
- 		return IIO_VAL_INT;
- 	case IIO_CHAN_INFO_PEAK:
- 		bits = 10;
--		mutex_lock(&indio_dev->mlock);
- 		addr = adis16240_addresses[chan->scan_index][1];
- 		ret = adis_read_reg_16(st, addr, &val16);
- 		if (ret) {
--			mutex_unlock(&indio_dev->mlock);
- 			return ret;
- 		}
- 		val16 &= (1 << bits) - 1;
- 		val16 = (s16)(val16 << (16 - bits)) >> (16 - bits);
- 		*val = val16;
--		mutex_unlock(&indio_dev->mlock);
- 		return IIO_VAL_INT;
- 	}
- 	return -EINVAL;
+ v3:
+   -Change the commit message.
+  
+ drivers/staging/comedi/drivers/amplc_pci224.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/staging/comedi/drivers/amplc_pci224.c b/drivers/staging/comedi/drivers/amplc_pci224.c
+index 2e6decf..07555cf 100644
+--- a/drivers/staging/comedi/drivers/amplc_pci224.c
++++ b/drivers/staging/comedi/drivers/amplc_pci224.c
+@@ -216,8 +216,12 @@
+ #define GAT_GND		1	/* GND (i.e. disabled) */
+ #define GAT_EXT		2	/* reserved (external gate input) */
+ #define GAT_NOUTNM2	3	/* inverted output of channel-2 modulo total */
+-/* Macro to construct gate input configuration register value. */
+-#define GAT_CONFIG(chan, src)	((((chan) & 3) << 3) | ((src) & 7))
++
++static inline unsigned int pci224_gat_config(unsigned int chan,
++					     unsigned int src)
++{
++	return ((chan & 3) << 3) | (src & 7);
++}
+ 
+ /*
+  * Summary of CLK_OUTNM1 and GAT_NOUTNM2 connections for PCI224 and PCI234:
+@@ -817,10 +821,10 @@ static void pci224_ao_start_pacer(struct comedi_device *dev,
+ 	 * source.
+ 	 */
+ 	/* Make sure Z2-0 is gated on.  */
+-	outb(GAT_CONFIG(0, GAT_VCC), devpriv->iobase1 + PCI224_ZGAT_SCE);
++	outb(pci224_gat_config(0, GAT_VCC), devpriv->iobase1 + PCI224_ZGAT_SCE);
+ 	/* Cascading with Z2-2. */
+ 	/* Make sure Z2-2 is gated on.  */
+-	outb(GAT_CONFIG(2, GAT_VCC), devpriv->iobase1 + PCI224_ZGAT_SCE);
++	outb(pci224_gat_config(2, GAT_VCC), devpriv->iobase1 + PCI224_ZGAT_SCE);
+ 	/* Z2-2 needs 10 MHz clock. */
+ 	outb(CLK_CONFIG(2, CLK_10MHZ), devpriv->iobase1 + PCI224_ZCLK_SCE);
+ 	/* Z2-0 is clocked from Z2-2's output. */
 -- 
-2.9.3
+2.7.4
 
 
