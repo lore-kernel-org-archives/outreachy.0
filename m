@@ -1,174 +1,127 @@
 X-GM-THRID: 6396247239473233920
-Date: Tue, 14 Mar 2017 19:07:54 -0700 (PDT)
+Date: Sun, 12 Mar 2017 01:28:45 -0800 (PST)
 From: Varsha Rao <rvarsha016@gmail.com>
 To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <e64c8df1-dce6-42e3-b186-1c85380a2734@googlegroups.com>
-In-Reply-To: <1a480897-bdb9-4d3c-8143-d5347f67c2b6@googlegroups.com>
+Cc: rvarsha016@gmail.com
+Message-Id: <ef00617d-c715-4f51-ae09-32670a5423a8@googlegroups.com>
+In-Reply-To: <CAEnQRZBJDh4eQRX9OjpVSJkoj3Wm3qwizfqqAP20ZVMvWL1StA@mail.gmail.com>
 References: <1a480897-bdb9-4d3c-8143-d5347f67c2b6@googlegroups.com>
-Subject: Re: Trouble with IIO dummy build.
+ <CAEnQRZBJDh4eQRX9OjpVSJkoj3Wm3qwizfqqAP20ZVMvWL1StA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] Trouble with IIO dummy build.
 MIME-Version: 1.0
 Content-Type: multipart/mixed; 
-	boundary="----=_Part_4187_955998789.1489543674357"
-X-Google-Token: EPrDosYF2ASTSWGjV1A0
-X-Google-IP: 118.151.209.30
+	boundary="----=_Part_7123_1932842911.1489310925329"
+X-Google-Token: EM2plMYF_ixxkTuPzA40
+X-Google-IP: 117.194.58.130
 
-------=_Part_4187_955998789.1489543674357
+------=_Part_7123_1932842911.1489310925329
 Content-Type: multipart/alternative; 
-	boundary="----=_Part_4188_657236780.1489543674357"
+	boundary="----=_Part_7124_341206627.1489310925330"
 
-------=_Part_4188_657236780.1489543674357
+------=_Part_7124_341206627.1489310925330
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-Hello,
-
-I am again having issues with dummy modules compilation. I am unable to=20
-create sub directory after mounting.
-
- $ sudo mount -t configfs none /config
- $ sudo mkdir /config/iio/devices/dummy/my_dummy_device
-  mkdir: cannot create directory=20
-=E2=80=98/config/iio/devices/dummy/my_dummy_device=E2=80=99: Invalid argume=
-nt
-=20
- I have the following permissions set for the file.
-
- drwxr-xr-x.  3 root root    0 Mar 15 07:06 .
- dr-xr-xr-x. 19 root root 4096 Mar 14 23:55 ..
- drwxr-xr-x.  3 root root    0 Mar 15 07:06 iio
-
- I can create sub directory if the directory is not mounted.
- I  also have iio files created in  /sys/kernel/config, even though I have=
-=20
-not mounted it. =20
- $ ls -al /sys/kernel/config/
-  total 0
- drwxr-xr-x.  3 root root 0 Mar 15 07:06 .
- drwxr-xr-x. 11 root root 0 Mar 15 06:28 ..
- drwxr-xr-x.  3 root root 0 Mar 15 07:06 iio
-=20
- As earlier these commands worked, don't know if this is causing the=20
-problem.
- I tried to mkdir in /config after unmounting  /sys/kernel/config, it did=
-=20
-not work.
- $ cat /etc/mtab | grep "config"
- configfs /sys/kernel/config configfs rw,relatime 0 0
- none /config configfs rw,relatime 0 0
-=20
- I am able to run the following commands successfully.
-  sudo modprobe iio_dummy_evgen
-  sudo modprobe iio_dummy
-  sudo mount -t configfs none /config
-  ls -l /sys/bus/iio/devices/iio_evgen/
-
- I am using fedora 25 x86_64 with kernel version 4.11.0-rc1+.
-=20
- $ cat .config | grep IIO
-# CONFIG_SENSORS_IIO_HWMON is not set
-CONFIG_DVB_USB_FRIIO=3Dm
-# IIO staging drivers
-CONFIG_IIO=3Dm
-CONFIG_IIO_BUFFER=3Dy
-CONFIG_IIO_BUFFER_CB=3Dm
-CONFIG_IIO_KFIFO_BUF=3Dm
-CONFIG_IIO_TRIGGERED_BUFFER=3Dm
-CONFIG_IIO_CONFIGFS=3Dm
-CONFIG_IIO_TRIGGER=3Dy
-CONFIG_IIO_CONSUMERS_PER_TRIGGER=3D2
-CONFIG_IIO_SW_DEVICE=3Dm
-CONFIG_IIO_SW_TRIGGER=3Dm
-CONFIG_IIO_ST_ACCEL_3AXIS=3Dm
-CONFIG_IIO_ST_ACCEL_I2C_3AXIS=3Dm
-CONFIG_IIO_ST_ACCEL_SPI_3AXIS=3Dm
-# Hid Sensor IIO Common
-CONFIG_HID_SENSOR_IIO_COMMON=3Dm
-CONFIG_HID_SENSOR_IIO_TRIGGER=3Dm
-# CONFIG_IIO_SSP_SENSORHUB is not set
-CONFIG_IIO_ST_SENSORS_I2C=3Dm
-CONFIG_IIO_ST_SENSORS_SPI=3Dm
-CONFIG_IIO_ST_SENSORS_CORE=3Dm
-# IIO dummy driver
-CONFIG_IIO_DUMMY_EVGEN=3Dm
-CONFIG_IIO_SIMPLE_DUMMY=3Dm
-CONFIG_IIO_SIMPLE_DUMMY_EVENTS=3Dy
-CONFIG_IIO_SIMPLE_DUMMY_BUFFER=3Dy
-CONFIG_IIO_ST_GYRO_3AXIS=3Dm
-CONFIG_IIO_ST_GYRO_I2C_3AXIS=3Dm
-CONFIG_IIO_ST_GYRO_SPI_3AXIS=3Dm
-# CONFIG_IIO_ST_LSM6DSX is not set
-CONFIG_IIO_ADIS_LIB=3Dm
-CONFIG_IIO_ADIS_LIB_BUFFER=3Dy
-CONFIG_IIO_ST_MAGN_3AXIS=3Dm
-CONFIG_IIO_ST_MAGN_I2C_3AXIS=3Dm
-CONFIG_IIO_ST_MAGN_SPI_3AXIS=3Dm
-# CONFIG_IIO_HRTIMER_TRIGGER is not set
-CONFIG_IIO_INTERRUPT_TRIGGER=3Dm
-CONFIG_IIO_TIGHTLOOP_TRIGGER=3Dm
-# CONFIG_IIO_SYSFS_TRIGGER is not set
-# CONFIG_IIO_ST_PRESS is not set
-
- Any ideas?
-=20
- Thanks,
- Varsha
+Content-Transfer-Encoding: 7bit
 
 
-------=_Part_4188_657236780.1489543674357
+ Hello,
+
+  Thanks Daniel, finally it worked.
+
+Having this should create /config/iio dir after 
+> mounting configfs. 
+>
+> Can you please add a printk in iio_configfs_init function: 
+>
+> http://lxr.linux.no/#linux+v4.10.1/drivers/iio/industrialio-configfs.c#L37 
+> <http://lxr.linux.no/#linux+v4.10.1/drivers/iio/industrialio-configfs.c%23L37> 
+>
+> Then use dmesg to check for the message. 
+>
+ 
+    Printk message is displayed in dmesg when CONFIG_IIO_SW_DEVICE=m.
+   It does not display when CONFIG_IIO_SW_DEVICE=y.
+ 
+
+> Also, please apply this patch: 
+>
+> http://marc.info/?l=linux-iio&m=148907643001389&w=2 
+>
+> if you use CONFIG_IIO_SW_DEVICE=m 
+>
+> You can workaround the patch above if you select CONFIG_IIO_SW_DEVICE=y 
+>
+>   
+   It works with CONFIG_IIO_SW_DEVICE=m and if patch is applied.
+     Both modules got loaded using modprobe.
+
+$ lsmod | grep "iio"
+iio_dummy              16384  0
+industrialio_sw_device    16384  1 iio_dummy
+kfifo_buf              16384  1 iio_dummy
+iio_dummy_evgen        16384  1 iio_dummy
+industrialio           69632  3 iio_dummy,iio_dummy_evgen,kfifo_buf 
+   
+    Thanks,
+    Varsha
+
+------=_Part_7124_341206627.1489310925330
 Content-Type: text/html; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr">Hello,<br><br>I am again having issues with dummy modules =
-compilation. I am unable to create sub directory after mounting.<br><br>=C2=
-=A0$ sudo mount -t configfs none /config<br>=C2=A0$ sudo mkdir /config/iio/=
-devices/dummy/my_dummy_device<br>=C2=A0 mkdir: cannot create directory =E2=
-=80=98/config/iio/devices/dummy/my_dummy_device=E2=80=99: Invalid argument<=
-br>=C2=A0<br>=C2=A0I have the following permissions set for the file.<br><b=
-r>=C2=A0drwxr-xr-x.=C2=A0 3 root root=C2=A0=C2=A0=C2=A0 0 Mar 15 07:06 .<br=
->=C2=A0dr-xr-xr-x. 19 root root 4096 Mar 14 23:55 ..<br>=C2=A0drwxr-xr-x.=
-=C2=A0 3 root root=C2=A0=C2=A0=C2=A0 0 Mar 15 07:06 iio<br><br>=C2=A0I can =
-create sub directory if the directory is not mounted.<br>=C2=A0I=C2=A0 also=
- have iio files created in=C2=A0 /sys/kernel/config, even though I have not=
- mounted it.=C2=A0 <br>=C2=A0$ ls -al /sys/kernel/config/<br>=C2=A0 total 0=
-<br>=C2=A0drwxr-xr-x.=C2=A0 3 root root 0 Mar 15 07:06 .<br>=C2=A0drwxr-xr-=
-x. 11 root root 0 Mar 15 06:28 ..<br>=C2=A0drwxr-xr-x.=C2=A0 3 root root 0 =
-Mar 15 07:06 iio<br>=C2=A0<br>=C2=A0As earlier these commands worked, don&#=
-39;t know if this is causing the problem.<br>=C2=A0I tried to mkdir in /con=
-fig after unmounting=C2=A0 /sys/kernel/config, it did not work.<br>=C2=A0$ =
-cat /etc/mtab | grep &quot;config&quot;<br>=C2=A0configfs /sys/kernel/confi=
-g configfs rw,relatime 0 0<br>=C2=A0none /config configfs rw,relatime 0 0<b=
-r>=C2=A0<br>=C2=A0I am able to run the following commands successfully.<br>=
-=C2=A0 sudo modprobe iio_dummy_evgen<br>=C2=A0 sudo modprobe iio_dummy<br>=
-=C2=A0 sudo mount -t configfs none /config<br>=C2=A0 ls -l /sys/bus/iio/dev=
-ices/iio_evgen/<br><br>=C2=A0I am using fedora 25 x86_64 with kernel versio=
-n 4.11.0-rc1+<tt>.<br>=C2=A0<br>=C2=A0$ cat .config | grep IIO<br></tt><div=
- style=3D"margin-left: 80px;"><tt># CONFIG_SENSORS_IIO_HWMON is not set</tt=
-><br><tt>CONFIG_DVB_USB_FRIIO=3Dm</tt><br><tt># IIO staging drivers</tt><br=
-><tt>CONFIG_IIO=3Dm</tt><br><tt>CONFIG_IIO_BUFFER=3Dy</tt><br><tt>CONFIG_II=
-O_BUFFER_CB=3Dm</tt><br><tt>CONFIG_IIO_KFIFO_BUF=3Dm</tt><br><tt>CONFIG_IIO=
-_TRIGGERED_BUFFER=3Dm</tt><br><tt>CONFIG_IIO_CONFIGFS=3Dm</tt><br><tt>CONFI=
-G_IIO_TRIGGER=3Dy</tt><br><tt>CONFIG_IIO_CONSUMERS_PER_TRIGGER=3D2</tt><br>=
-<tt>CONFIG_IIO_SW_DEVICE=3Dm</tt><br><tt>CONFIG_IIO_SW_TRIGGER=3Dm</tt><br>=
-<tt>CONFIG_IIO_ST_ACCEL_3AXIS=3Dm</tt><br><tt>CONFIG_IIO_ST_ACCEL_I2C_3AXIS=
-=3Dm</tt><br><tt>CONFIG_IIO_ST_ACCEL_SPI_3AXIS=3Dm</tt><br><tt># Hid Sensor=
- IIO Common</tt><br><tt>CONFIG_HID_SENSOR_IIO_COMMON=3Dm</tt><br><tt>CONFIG=
-_HID_SENSOR_IIO_TRIGGER=3Dm</tt><br><tt># CONFIG_IIO_SSP_SENSORHUB is not s=
-et</tt><br><tt>CONFIG_IIO_ST_SENSORS_I2C=3Dm</tt><br><tt>CONFIG_IIO_ST_SENS=
-ORS_SPI=3Dm</tt><br><tt>CONFIG_IIO_ST_SENSORS_CORE=3Dm</tt><br><tt># IIO du=
-mmy driver</tt><br><tt>CONFIG_IIO_DUMMY_EVGEN=3Dm</tt><br><tt>CONFIG_IIO_SI=
-MPLE_DUMMY=3Dm</tt><br><tt>CONFIG_IIO_SIMPLE_DUMMY_EVENTS=3Dy</tt><br><tt>C=
-ONFIG_IIO_SIMPLE_DUMMY_BUFFER=3Dy</tt><br><tt>CONFIG_IIO_ST_GYRO_3AXIS=3Dm<=
-/tt><br><tt>CONFIG_IIO_ST_GYRO_I2C_3AXIS=3Dm</tt><br><tt>CONFIG_IIO_ST_GYRO=
-_SPI_3AXIS=3Dm</tt><br><tt># CONFIG_IIO_ST_LSM6DSX is not set</tt><br><tt>C=
-ONFIG_IIO_ADIS_LIB=3Dm</tt><br><tt>CONFIG_IIO_ADIS_LIB_BUFFER=3Dy</tt><br><=
-tt>CONFIG_IIO_ST_MAGN_3AXIS=3Dm</tt><br><tt>CONFIG_IIO_ST_MAGN_I2C_3AXIS=3D=
-m</tt><br><tt>CONFIG_IIO_ST_MAGN_SPI_3AXIS=3Dm</tt><br><tt># CONFIG_IIO_HRT=
-IMER_TRIGGER is not set</tt><br><tt>CONFIG_IIO_INTERRUPT_TRIGGER=3Dm</tt><b=
-r><tt>CONFIG_IIO_TIGHTLOOP_TRIGGER=3Dm</tt><br><tt># CONFIG_IIO_SYSFS_TRIGG=
-ER is not set</tt><br><tt># CONFIG_IIO_ST_PRESS is not set<br></tt></div><f=
-ont face=3D"monospace"><br>=C2=A0Any ideas?<br>=C2=A0<br>=C2=A0Thanks,<br>=
-=C2=A0Varsha<br></font><div style=3D"margin-left: 40px;"><br></div></div>
-------=_Part_4188_657236780.1489543674357--
+<div dir=3D"ltr"><br>=C2=A0Hello,<br><br>=C2=A0 Thanks Daniel, finally it w=
+orked.<br><br><blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-l=
+eft: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Having this shou=
+ld create /config/iio dir after
+<br>mounting configfs.
+<br>
+<br>Can you please add a printk in iio_configfs_init function:
+<br>
+<br><a href=3D"http://lxr.linux.no/#linux+v4.10.1/drivers/iio/industrialio-=
+configfs.c%23L37" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.hr=
+ef=3D&#39;http://www.google.com/url?q\x3dhttp%3A%2F%2Flxr.linux.no%2F%23lin=
+ux%2Bv4.10.1%2Fdrivers%2Fiio%2Findustrialio-configfs.c%2523L37\x26sa\x3dD\x=
+26sntz\x3d1\x26usg\x3dAFQjCNGq8b8wRqowGP6PpfI3iCN-Sm9xUQ&#39;;return true;"=
+ onclick=3D"this.href=3D&#39;http://www.google.com/url?q\x3dhttp%3A%2F%2Flx=
+r.linux.no%2F%23linux%2Bv4.10.1%2Fdrivers%2Fiio%2Findustrialio-configfs.c%2=
+523L37\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNGq8b8wRqowGP6PpfI3iCN-Sm9xUQ=
+&#39;;return true;">http://lxr.linux.no/#linux+v4.<wbr>10.1/drivers/iio/ind=
+ustrialio-<wbr>configfs.c#L37</a>
+<br>
+<br>Then use dmesg to check for the message.
+<br></blockquote><div>=C2=A0</div><div>=C2=A0 =C2=A0 Printk message is disp=
+layed in dmesg when CONFIG_IIO_SW_DEVICE=3Dm.<br>=C2=A0=C2=A0 It does not d=
+isplay when CONFIG_IIO_SW_DEVICE=3Dy.<br>=C2=A0<br></div><blockquote class=
+=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #cc=
+c solid;padding-left: 1ex;">Also, please apply this patch:
+<br>
+<br><a href=3D"http://marc.info/?l=3Dlinux-iio&amp;m=3D148907643001389&amp;=
+w=3D2" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;h=
+ttp://www.google.com/url?q\x3dhttp%3A%2F%2Fmarc.info%2F%3Fl%3Dlinux-iio%26m=
+%3D148907643001389%26w%3D2\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNFb6YNkiu=
+RSCUfxutOj1GAWAKHc6w&#39;;return true;" onclick=3D"this.href=3D&#39;http://=
+www.google.com/url?q\x3dhttp%3A%2F%2Fmarc.info%2F%3Fl%3Dlinux-iio%26m%3D148=
+907643001389%26w%3D2\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNFb6YNkiuRSCUfx=
+utOj1GAWAKHc6w&#39;;return true;">http://marc.info/?l=3Dlinux-iio&amp;<wbr>=
+m=3D148907643001389&amp;w=3D2</a>
+<br>
+<br>if you use CONFIG_IIO_SW_DEVICE=3Dm
+<br>
+<br>You can workaround the patch above if you select CONFIG_IIO_SW_DEVICE=
+=3Dy
+<br>
+<br></blockquote><div>=C2=A0 <br>=C2=A0=C2=A0 It works with CONFIG_IIO_SW_D=
+EVICE=3Dm and if patch is applied.<br>=C2=A0 =C2=A0=C2=A0 Both modules got =
+loaded using modprobe.<br><br><div style=3D"margin-left: 40px;">$ lsmod | g=
+rep &quot;iio&quot;<br>iio_dummy=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 16384=C2=A0 0<br>industrialio_sw_devic=
+e=C2=A0=C2=A0=C2=A0 16384=C2=A0 1 iio_dummy<br>kfifo_buf=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 16384=C2=A0 1 =
+iio_dummy<br>iio_dummy_evgen=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 1638=
+4=C2=A0 1 iio_dummy<br>industrialio=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 69632=C2=A0 3 iio_dummy,iio_dummy_evgen,kfifo_buf <br=
+></div></div><div>=C2=A0=C2=A0 <br>=C2=A0=C2=A0=C2=A0 Thanks,<br>=C2=A0=C2=
+=A0=C2=A0 Varsha<br></div></div>
+------=_Part_7124_341206627.1489310925330--
 
-------=_Part_4187_955998789.1489543674357--
+------=_Part_7123_1932842911.1489310925329--
 
