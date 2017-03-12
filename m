@@ -1,61 +1,60 @@
 X-GM-THRID: 6395446243166781440
-X-Received: by 10.157.11.211 with SMTP id 77mr12966752oth.142.1489333152367;
-        Sun, 12 Mar 2017 08:39:12 -0700 (PDT)
+X-Received: by 10.129.88.85 with SMTP id m82mr13196599ywb.97.1489333135405;
+        Sun, 12 Mar 2017 08:38:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.31.6 with SMTP id x6ls11473072otd.46.gmail; Sun, 12 Mar
- 2017 08:39:12 -0700 (PDT)
-X-Received: by 10.13.251.70 with SMTP id l67mr14907599ywf.87.1489333152096;
-        Sun, 12 Mar 2017 08:39:12 -0700 (PDT)
+Received: by 10.157.68.202 with SMTP id p10ls6329749otg.18.gmail; Sun, 12 Mar
+ 2017 08:38:55 -0700 (PDT)
+X-Received: by 10.157.9.138 with SMTP id q10mr11695545otd.21.1489333135096;
+        Sun, 12 Mar 2017 08:38:55 -0700 (PDT)
 Return-Path: <aishpant@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id 2si2620484pfz.1.2017.03.12.08.39.12
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id c123si2677237pfa.4.2017.03.12.08.38.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 12 Mar 2017 08:39:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Sun, 12 Mar 2017 08:38:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
+       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id b5so15537520pgg.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 12 Mar 2017 08:39:12 -0700 (PDT)
+Received: by mail-pg0-x244.google.com with SMTP id 77so15483603pgc.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 12 Mar 2017 08:38:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=Ed72DzlYAxQqo3RYtnQ5QGp09rfGg6eHu6WjddDf2yA=;
-        b=eoQYInm/wTlUYx3LUIb315fq+7Uu/BxfagKjABDFysRX2V0mB1zQolVmZWuUBDuqJT
-         Ej6z1PkXQfUCVMiMFGQPbbhbsD+bFEeHiXpuR+oIszfqcYbeCHQUxAYkaoHFcZRludxn
-         9c6SfDDPSqggjZvt/TeEw9GTXeyhzO6pdYA9ylC5zk8Be7vTMzIgzNI9tgDZOFU449DB
-         wHW//HWR2HrtU1JtjQUqWXQ8IaX5qmxyXWx4SXhy8EqflB2UJLtBeXhqgvdy3rLUE+Am
-         jbcyvOk5wPyJR/7xZlr6p0AzbyA661u9kecFtWCofqesfP+APjMN5ZYdUNgmNnl3hFxJ
-         mjNQ==
+        bh=SbQyVQhniHAgOIPH2FKLk1tfc2k7w2JL9CBjtwb5jys=;
+        b=Kw+zUm68dK20rT0F73aI5q4N12+DGAKn3jYi/KbAdncxVN1p63DxZvd2103fyhcEbj
+         6ed+3W8M3KAGoBsgYV6ScuUpz6oTcy4AwQIKvIuVdGo6j/7ZoUhRS5XL1oGXgg5OJxkF
+         /F1SY2p7TJVEcaO/3ENb7esgPBjRPDSnPdT72lCY6xECeRkAnt7qPxt3gdJ6dIxYsm7s
+         HA2aeIcLsmvPHiUj1ZyukAirXl3JxnLto7tFHG8QMyDVQzrgt6niYvxYPhxmZPan5U5A
+         Yabzz5Re1ddLpTYPzimLbRm8ja8H3+nifJoCumlxTDtD1+S4ZSmlGDCNbqjn6SYR5AW3
+         1y/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=Ed72DzlYAxQqo3RYtnQ5QGp09rfGg6eHu6WjddDf2yA=;
-        b=W37cTuiAaKE9w2oWZ/iNrl397BneT+cwrQZ552crX8pDd0hHvzWc1KeRR8zlswwZA1
-         tjRpjc2JOEfVmdgtnaH7Liyf5HeKM4Q+SsJqZ1mT/4wkkTAn67YSAgrF2hjqy3+8HCpx
-         /K1fvV7dFDBHnaVA/Qf+CkCPkNOA4yKFEagngL734xCPRcjOjnKkuo1Dv1Ps5jAA4G41
-         BTvHjL08cMr+lW+VFU6CtpP3hNUc5EOSU7BzFNfV7KPpeSOiV4MJvytGOfMM+240ltKt
-         IP2b+3uHj47af/DcPs6tglDRxTIbVBzMxT9XCp5ly5kpa+K4+313OSJLAWZXKZeV3vK/
-         x3Cw==
-X-Gm-Message-State: AMke39lY3CQox9+d0HsHSh30BeJKP9Rqw/Vt3NkXqg/TPFcRtZ7OS/f/9jlnsDfmIzDnrA==
-X-Received: by 10.99.117.11 with SMTP id q11mr32342812pgc.9.1489333151461;
-        Sun, 12 Mar 2017 08:39:11 -0700 (PDT)
+        bh=SbQyVQhniHAgOIPH2FKLk1tfc2k7w2JL9CBjtwb5jys=;
+        b=ncRQkCzrCCPP/mL3ISTjuNmGlDnhI3nilFc7iuy1WV6ilVQWieU9/bzTtGuL3cv3lO
+         E6pP7iSbVjDOOpmD5uwBkG5SmjKjMsa3/1Lvk0utOmaH72fwGeWqx2fK82FdnAWdhpvx
+         /NJqWBWZ1LomzSvzApzKwdZ5xWm0m1SNwqO54TT19e2sYKLuEDngRT+AfpCCTuSHvFES
+         HjOxl/c4hKkdjkuk9ZBowvJzqjmuLvyjR/xKh8aPSpZiozyX2Wgiy/D+5gcF8gRQJ/Bk
+         zP1tK9ATHhDZogRaQ92GXB6XFJV/VqMO3RddM0nZx6YXF1nnQ9HTQf1ruaq9lvavIIMQ
+         6GOQ==
+X-Gm-Message-State: AMke39mQskz8MEKUVCmBFbfroQvsObxigKntZEY+BGJxvkcy2hNEFW4HgV1txBow2Y6uwQ==
+X-Received: by 10.84.225.146 with SMTP id u18mr41507120plj.157.1489333134692;
+        Sun, 12 Mar 2017 08:38:54 -0700 (PDT)
 Return-Path: <aishpant@gmail.com>
 Received: from aishwarya ([49.35.14.30])
-        by smtp.gmail.com with ESMTPSA id t133sm29179439pgc.24.2017.03.12.08.39.09
+        by smtp.gmail.com with ESMTPSA id a62sm29042692pgc.60.2017.03.12.08.38.52
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 12 Mar 2017 08:39:10 -0700 (PDT)
-Date: Sun, 12 Mar 2017 21:09:00 +0530
+        Sun, 12 Mar 2017 08:38:54 -0700 (PDT)
+Date: Sun, 12 Mar 2017 21:08:43 +0530
 From: Aishwarya Pant <aishpant@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org
-Subject: [PATCH v7 2/6] staging: bcm2835-audio: replace null with error
- pointer value
-Message-ID: <3c2bb619838eb27c24df0289123ee530f4814d3b.1489332734.git.aishpant@gmail.com>
+Subject: [PATCH v7 1/6] staging: bcm2835-audio: Replace kmalloc with kzalloc
+Message-ID: <32f05da9856a627d5ccfc3944c3db23ff653537d.1489332734.git.aishpant@gmail.com>
 References: <cover.1489332734.git.aishpant@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -63,81 +62,30 @@ Content-Disposition: inline
 In-Reply-To: <cover.1489332734.git.aishpant@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-This patch replaces NULL values returned by vc_vchi_audio_init(...) with
-error pointer values:
-	- Return ERR_PTR(-EINVAL) when too many instances of audio
-	  service are initialised
-	- Return ERR_PTR(-ENOMEM) when kzalloc fails
-	- RETURN ERR_PTR(-EPERM) when vchi connections fail to open
-
-Similarly, a NULL check where vc_vchi_audio_init(...) is called is
-replaced by IS_ERR(..)
+Replace kmalloc and memset with kzalloc.
 
 Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
-
 ---
-Changes in v6:
-	- Add a local variable ret to set error value instead of
-	  returning -EPERM when initialisation of vchi_audio_service
-          fails
----
- drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+ drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
-index 66a35ee..d596f43 100644
+index d8a8e91..66a35ee 100644
 --- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
 +++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
-@@ -280,6 +280,7 @@ vc_vchi_audio_init(VCHI_INSTANCE_T vchi_instance,
- 	unsigned int i;
- 	struct bcm2835_audio_instance *instance;
- 	int status;
-+	int ret;
- 
- 	LOG_DBG("%s: start", __func__);
- 
-@@ -287,12 +288,12 @@ vc_vchi_audio_init(VCHI_INSTANCE_T vchi_instance,
- 		LOG_ERR("%s: unsupported number of connections %u (max=%u)\n",
- 			__func__, num_connections, VCHI_MAX_NUM_CONNECTIONS);
- 
--		return NULL;
-+		return ERR_PTR(-EINVAL);
+@@ -290,11 +290,10 @@ vc_vchi_audio_init(VCHI_INSTANCE_T vchi_instance,
+ 		return NULL;
  	}
  	/* Allocate memory for this instance */
- 	instance = kzalloc(sizeof(*instance), GFP_KERNEL);
+-	instance = kmalloc(sizeof(*instance), GFP_KERNEL);
++	instance = kzalloc(sizeof(*instance), GFP_KERNEL);
  	if (!instance)
--		return NULL;
-+		return ERR_PTR(-ENOMEM);
+ 		return NULL;
  
+-	memset(instance, 0, sizeof(*instance));
  	instance->num_connections = num_connections;
  
-@@ -321,7 +322,7 @@ vc_vchi_audio_init(VCHI_INSTANCE_T vchi_instance,
- 		if (status) {
- 			LOG_ERR("%s: failed to open VCHI service connection (status=%d)\n",
- 				__func__, status);
--
-+			ret = -EPERM;
- 			goto err_close_services;
- 		}
- 		/* Finished with the service for now */
-@@ -341,7 +342,7 @@ vc_vchi_audio_init(VCHI_INSTANCE_T vchi_instance,
- 	kfree(instance);
- 	LOG_ERR("%s: error\n", __func__);
- 
--	return NULL;
-+	return ERR_PTR(ret);
- }
- 
- static int vc_vchi_audio_deinit(struct bcm2835_audio_instance *instance)
-@@ -432,7 +433,7 @@ static int bcm2835_audio_open_connection(struct bcm2835_alsa_stream *alsa_stream
- 	/* Initialize an instance of the audio service */
- 	instance = vc_vchi_audio_init(vchi_instance, &vchi_connection, 1);
- 
--	if (!instance) {
-+	if (IS_ERR(instance)) {
- 		LOG_ERR("%s: failed to initialize audio service\n", __func__);
- 
- 		ret = -EPERM;
+ 	/* Create a lock for exclusive, serialized VCHI connection access */
 -- 
 2.7.4
 
