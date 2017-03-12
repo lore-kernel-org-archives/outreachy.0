@@ -1,122 +1,153 @@
-X-GM-THRID: 6256340731045085184
-X-Received: by 10.182.120.129 with SMTP id lc1mr2777054obb.43.1456667839193;
-        Sun, 28 Feb 2016 05:57:19 -0800 (PST)
+X-GM-THRID: 6396578971833597952
+X-Received: by 10.46.83.76 with SMTP id t12mr5286639ljd.26.1489354505863;
+        Sun, 12 Mar 2017 14:35:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.32.104 with SMTP id h8ls298509igi.28.canary; Sun, 28 Feb
- 2016 05:57:18 -0800 (PST)
-X-Received: by 10.107.8.216 with SMTP id h85mr15103545ioi.0.1456667838852;
-        Sun, 28 Feb 2016 05:57:18 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x231.google.com (mail-pf0-x231.google.com. [2607:f8b0:400e:c00::231])
-        by gmr-mx.google.com with ESMTPS id y20si976451pfa.2.2016.02.28.05.57.18
+Received: by 10.46.21.28 with SMTP id s28ls728012ljd.22.gmail; Sun, 12 Mar
+ 2017 14:35:05 -0700 (PDT)
+X-Received: by 10.46.20.16 with SMTP id u16mr4013139ljd.23.1489354505400;
+        Sun, 12 Mar 2017 14:35:05 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id l138si578995wmg.0.2017.03.12.14.35.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 05:57:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) client-ip=2607:f8b0:400e:c00::231;
+        Sun, 12 Mar 2017 14:35:05 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x231.google.com with SMTP id t66so10892427pfb.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 05:57:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=RzeNl5w1HcSVoKmyhzLZ9UzrnGGYDMTMPbeHpxWJAbo=;
-        b=PNLkcVWeJU+wXG6nI0rcOQkPLzeZQnxQYmOVxFW0rhpudNq4iE1+xd46S1Ff1G9XXf
-         /EYlBOdUSZoOcKITjqMswv+7NFPJ2iSKdLQh58ltgx+7XFQ98pkRbo6tkBTJWA7GVLnL
-         oG/bC+IAm0IdToKKv1Tt74QG0NlDP4LEsp9aN8DMt4eFgd2W+7dGIT3pfHd6REoxNmjx
-         WhUr3JNMbth/Ed8rBuiV63QvBYKUCGpLisPdzoF4YghdpUGqT5OlfOfoX5uUabYH6ZIf
-         tuCaFj5ujhqwfIny4w9Rr2NKHXlYcKk4xBbxDHNb/lIeo6cZOSxRdO68d9suUBO8sr3d
-         E9QQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=RzeNl5w1HcSVoKmyhzLZ9UzrnGGYDMTMPbeHpxWJAbo=;
-        b=i+uk81zS5IO7qWpmRoygKkAQPJE5tCPZzJdyhsMMfBN0n0TF/KwnkaG+QGpT4hxPzc
-         FGkzCFJlg0eFPyvoWKXT9wwoydp8Hrv4H1pbhfFPZpD9UYTtsNpufFncFEH3aOfGX5cv
-         mciZUohj4LQtggF1U067mbXybC9agsBCJDTnaQSBylU8UgFMUtVJH1NLudUjcJIhuHpT
-         ByCGw9zbBS3oA+x11PEvJY/dgdomeGcXRqszJz9tMvqIKVP1MJYqiZopNx4Tt3wSmg5L
-         AY3x95PzWaIbzER7fLJI+/4p3x5z7vqFVgoEWldUcPdXgDRoCHMerik3uaocSfs0p5s8
-         3wmg==
-X-Gm-Message-State: AD7BkJKKqvhUg/9QOT5ErbdLvEBX2Fm+/laAOU2LQkF5ER5bJanzGqj16B8DzAyJyklO1A==
-X-Received: by 10.98.80.80 with SMTP id e77mr15588529pfb.126.1456667838672;
-        Sun, 28 Feb 2016 05:57:18 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 144sm31557748pfa.83.2016.02.28.05.57.17
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 28 Feb 2016 05:57:18 -0800 (PST)
-Date: Sun, 28 Feb 2016 19:24:31 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: lustre: obdclass: Use list_for_each_entry_safe
-Message-ID: <20160228135431.GA18987@Karyakshetra>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.36,154,1486422000"; 
+   d="scan'208";a="264221456"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 12 Mar 2017 22:35:04 +0100
+Date: Sun, 12 Mar 2017 22:35:04 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: sayli karnik <karniksayli1995@gmail.com>
+cc: Alison Schofield <amsfield22@gmail.com>, 
+    outreachy-kernel <outreachy-kernel@googlegroups.com>, 
+    Lars-Peter Clausen <lars@metafoo.de>, 
+    Michael Hennerich <Michael.Hennerich@analog.com>, 
+    Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>, 
+    Peter Meerwald-Stadler <pmeerw@pmeerw.net>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-iio@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH] staging: iio: ad9834: Use private
+ driver lock instead of mlock
+In-Reply-To: <CAKG5xWhoYww_U9zNv=9EiAOya3R0C6Aafm3BUAfzdCXSYk4y+A@mail.gmail.com>
+Message-ID: <alpine.DEB.2.20.1703122234310.7649@hadrien>
+References: <20170312115013.GA31878@sayli-HP-15-Notebook-PC> <20170312184841.GA8713@d830.WORKGROUP> <CAKG5xWhoYww_U9zNv=9EiAOya3R0C6Aafm3BUAfzdCXSYk4y+A@mail.gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: text/plain; charset=US-ASCII
 
-Doubly linked lists which are  iterated  using list_empty
-and list_entry macros have been replaced with list_for_each_entry_safe
-macro.
-This makes the iteration simpler and more readable.
 
-This patch replaces the while loop containing list_empty and list_entry
-with list_for_each_entry_safe.
 
-This was done with Coccinelle.
+On Mon, 13 Mar 2017, sayli karnik wrote:
 
-@@
-expression E1;
-identifier I1, I2;
-type T;
-iterator name list_for_each_entry_safe;
-@@
+> On Mon, Mar 13, 2017 at 12:18 AM, Alison Schofield <amsfield22@gmail.com> wrote:
+> > On Sun, Mar 12, 2017 at 05:21:25PM +0530, sayli karnik wrote:
+> >> iio_dev->mlock should be used by the IIO core only for protecting
+> >> device operating mode changes. ie. Changes between INDIO_DIRECT_MODE,
+> >> INDIO_BUFFER_* modes.
+> >> Replace mlock with a lock in the device's global data to protect hardware
+> >> state changes.
+> >
+> > Hi Sayli,
+> > Thanks for the patch!  Find one fix-up and one opportunity for
+> > a follow on patch embedded below.
+> > alisons
+> >
+> >>
+> >> Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
+> >> ---
+> >>  drivers/staging/iio/frequency/ad9834.c | 10 ++++++----
+> >>  1 file changed, 6 insertions(+), 4 deletions(-)
+> >>
+> >> diff --git a/drivers/staging/iio/frequency/ad9834.c b/drivers/staging/iio/frequency/ad9834.c
+> >> index f92ff7f..4259474 100644
+> >> --- a/drivers/staging/iio/frequency/ad9834.c
+> >> +++ b/drivers/staging/iio/frequency/ad9834.c
+> >> @@ -63,6 +63,7 @@
+> >>   * @msg:             default spi message
+> >>   * @freq_xfer:               tuning word spi transfer
+> >>   * @freq_msg:                tuning word spi message
+> >> + * @lock:            protect sensor state
+> >>   * @data:            spi transmit buffer
+> >>   * @freq_data:               tuning word spi transmit buffer
+> >>   */
+> >> @@ -77,6 +78,7 @@ struct ad9834_state {
+> >>       struct spi_message              msg;
+> >>       struct spi_transfer             freq_xfer[2];
+> >>       struct spi_message              freq_msg;
+> >> +     struct mutex                    lock;   /* protect sensor state */
+> >>
+> >>       /*
+> >>        * DMA (thus cache coherency maintenance) requires the
+> >> @@ -149,7 +151,7 @@ static ssize_t ad9834_write(struct device *dev,
+> >>       if (ret)
+> >>               goto error_ret;
+> >
+> > Not related to your patch...the above goto error_ret seems excessived.
+> > When you look down at error_ret, it's not doing any clean up. So,
+> > perhaps we can just return right here and get rid of the goto & label?
+> >
+> Right! This has to be on top of Greg's tree and not this patch I'm assuming?
 
-T *I1;
-+ T *tmp;
-...
-- while (list_empty(&E1) == 0)
-+ list_for_each_entry_safe (I1, tmp, &E1, I2)
-{
-...when != T *I1;
-- I1 = list_entry(E1.next, T, I2);
-...
-}
+You need to make a series if you want to send two patches on the same
+file.
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- drivers/staging/lustre/lustre/obdclass/lustre_peer.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+julia
 
-diff --git a/drivers/staging/lustre/lustre/obdclass/lustre_peer.c b/drivers/staging/lustre/lustre/obdclass/lustre_peer.c
-index b10ea31..5f81246 100644
---- a/drivers/staging/lustre/lustre/obdclass/lustre_peer.c
-+++ b/drivers/staging/lustre/lustre/obdclass/lustre_peer.c
-@@ -150,6 +150,7 @@ int class_del_uuid(const char *uuid)
- {
- 	LIST_HEAD(deathrow);
- 	struct uuid_nid_data *data;
-+	struct uuid_nid_data *temp;
-
- 	spin_lock(&g_uuid_lock);
- 	if (uuid) {
-@@ -171,9 +172,7 @@ int class_del_uuid(const char *uuid)
- 		return -EINVAL;
- 	}
-
--	while (!list_empty(&deathrow)) {
--		data = list_entry(deathrow.next, struct uuid_nid_data,
--				      un_list);
-+	list_for_each_entry_safe(data, temp, &deathrow, un_list) {
- 		list_del(&data->un_list);
-
- 		CDEBUG(D_INFO, "del uuid %s %s/%d\n",
---
-2.1.4
-
+> >>
+> >> -     mutex_lock(&indio_dev->mlock);
+> >> +     mutex_lock(&st->lock);
+> >>       switch ((u32)this_attr->address) {
+> >>       case AD9834_REG_FREQ0:
+> >>       case AD9834_REG_FREQ1:
+> >> @@ -207,7 +209,7 @@ static ssize_t ad9834_write(struct device *dev,
+> >>       default:
+> >>               ret = -ENODEV;
+> >>       }
+> >> -     mutex_unlock(&indio_dev->mlock);
+> >> +     mutex_unlock(&st->lock);
+> >>
+> >>  error_ret:
+> >>       return ret ? ret : len;
+> >> @@ -224,7 +226,7 @@ static ssize_t ad9834_store_wavetype(struct device *dev,
+> >>       int ret = 0;
+> >>       bool is_ad9833_7 = (st->devid == ID_AD9833) || (st->devid == ID_AD9837);
+> >>
+> >> -     mutex_lock(&indio_dev->mlock);
+> >> +     mutex_lock(&st->lock);
+> >>
+> >>       switch ((u32)this_attr->address) {
+> >>       case 0:
+> >> @@ -267,7 +269,7 @@ static ssize_t ad9834_store_wavetype(struct device *dev,
+> >>               st->data = cpu_to_be16(AD9834_REG_CMD | st->control);
+> >>               ret = spi_sync(st->spi, &st->msg);
+> >>       }
+> >> -     mutex_unlock(&indio_dev->mlock);
+> >> +     mutex_lock(&st->lock);
+> >
+> > Needs to be mutex_unlock()
+> >
+> >>
+> >>       return ret ? ret : len;
+> >>  }
+> >> --
+> >> 2.7.4
+> >>
+> >> --
+> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170312115013.GA31878%40sayli-HP-15-Notebook-PC.
+> >> For more options, visit https://groups.google.com/d/optout.
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAKG5xWhoYww_U9zNv%3D9EiAOya3R0C6Aafm3BUAfzdCXSYk4y%2BA%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
