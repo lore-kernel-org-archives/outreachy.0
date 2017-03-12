@@ -1,52 +1,52 @@
 X-GM-THRID: 6396335157434908672
-X-Received: by 10.200.51.164 with SMTP id c33mr4192134qtb.85.1489309376591;
-        Sun, 12 Mar 2017 01:02:56 -0800 (PST)
+X-Received: by 10.13.198.2 with SMTP id i2mr13629163ywd.116.1489308962839;
+        Sun, 12 Mar 2017 00:56:02 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.44.99 with SMTP id f90ls565697otb.24.gmail; Sun, 12 Mar
- 2017 01:02:56 -0800 (PST)
-X-Received: by 10.13.238.134 with SMTP id x128mr13642163ywe.59.1489309376207;
-        Sun, 12 Mar 2017 01:02:56 -0800 (PST)
+Received: by 10.157.5.176 with SMTP id 45ls12251897otd.49.gmail; Sun, 12 Mar
+ 2017 00:56:02 -0800 (PST)
+X-Received: by 10.157.4.39 with SMTP id 36mr12006985otc.107.1489308962470;
+        Sun, 12 Mar 2017 00:56:02 -0800 (PST)
 Return-Path: <gs051095@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id y90si2588230pfa.6.2017.03.12.01.02.56
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id a3si2612512pfb.2.2017.03.12.00.56.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 12 Mar 2017 01:02:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Sun, 12 Mar 2017 00:56:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
+       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id o126so15731744pfb.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 12 Mar 2017 01:02:56 -0800 (PST)
+Received: by mail-pg0-x243.google.com with SMTP id 25so14971437pgy.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 12 Mar 2017 00:56:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=jo/VuU2AyRq7BLAJ6k73P54Ia4Y8ptQo3Vq1jVkNjx8=;
-        b=iJDK5fwAIcRtjF5xd/iXUkG3Xlbdinahh33r2VZB/WuVM4+GAwgiov7sUybAQK9ePA
-         dOal+rVbYzprRlDNfaKUU2v289qQHf+/uUImkpc5ituFKuiFoilViKmzYq2O0K74ufzD
-         tU/uvsvlC++foWk/UDuhZqN4NG03yXcUO42K0+dTmI49h8Hmp7d/QGD4jWK/UV1y1ytD
-         dTzd9zF3Ci2PSxhniMpTKA7TezyOagtR2piATG0leqBiV9cMygcWf/YTEjBjQAptSSJV
-         IU8ngiXua6EiYBbe11GLefJoIbDVrI5jtPVe9H79Kyb0lcfTMPQTnbzx+9Qln4PP5oBT
-         Ewlg==
+        bh=8HIw5RW5rXyQQOdm3/xmf9JIiSmFBs8JNIULC2PtP1I=;
+        b=aAjIaCE5priI8hVwfniu7n4Qwb/f8cQzR5IOtsrcKeEo57EL1UzJlQTxqtm2k1xVnS
+         eVOX3J0CgsyvF9ru+5/R+/1cVwcCJRXYU4kHSahqhQqRAS6yVJmAPkm+T1MMn5shauIi
+         dhlWXgikTkGYZyn2nl4Ie9VZ+WeM9KjFw8HNK9nJzCHdN7PzYvPqKiJ3MD2vtE3vu5g2
+         cR+nrmXYmL2G5KmUf5fchj1xIv9TMzw7f8aBlO73H5CwW7X1qaRoIZ8Vo8Gpdbow4C6b
+         7YjdtOCZ6Q4Ye+ZFnbmDj6kujA6Fl0fkvlHncLBaM2/yyMV16fkzGtDG4wQspjtC6x1f
+         mWDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=jo/VuU2AyRq7BLAJ6k73P54Ia4Y8ptQo3Vq1jVkNjx8=;
-        b=JGCpVkYReKRa5Ej8JR8CW/cEXbGeU+og+JNhv4zVYeDSliGezglkaPG3YL7EprSjTI
-         4M7sRHurKCcZkrnqSxN4Q7hR96W20lUt42zdzz+bCqilvYN+Uxk4lG2B16jxHsotOjtK
-         op9YX+i6PmnULCca7E6pI93J9s7wSeKFQ2WowuuEo0J/FlOKLxVn+k8OlpbNSfA8om2c
-         cBeLm9MoIRJCVYp3V49B+vNd1Gzii2auP4PqsSKdi1bLK10wYkYaJgIPh8B2Gz/1CgU/
-         Olmqdlf/F4x0VfjaYfiGDB7mcrBDC0mZIgUZ13wkL4/CP6ekuVVsXCg1M3MeDRMsWSBJ
-         Vraw==
-X-Gm-Message-State: AMke39lfKB42eVmNM9eP+veflviHx09e/Rd+MAafD0Z56i9gBjO3P/lZdBtzyQ/f55lWdg==
-X-Received: by 10.99.117.85 with SMTP id f21mr29999703pgn.62.1489309375901;
-        Sun, 12 Mar 2017 01:02:55 -0800 (PST)
+        bh=8HIw5RW5rXyQQOdm3/xmf9JIiSmFBs8JNIULC2PtP1I=;
+        b=Jx3PdfglZINPBagAAWiypTsx9C9B9/N4Rao4uov2QCpzeUGBXCkleRcCdRXp9cmA1M
+         HYDLldlWrhLsSfYHBrKbkhgP2CKyf3LvOToVrh6EOw1+xKjFc3s7vDq0WUnogogXOy7b
+         AGOPEFL86glBZby85ccawYp0VY+Av49Zp9+U7qekfpSPHZ8+g7uhJNGCOry2VxLhRbxM
+         cq6mXiK57+BIEIrJjXwKbbAisxTFu/rJ0d6fTXKO2/r1habd2kxsc+lShL6wPQH2IT29
+         UmIiBYtuSSubeHrW2O25yeOy6EycfJ7ZC1vYNRCfUXy7jgLDT2+TFvR8qyG07Xr98HL0
+         UO7g==
+X-Gm-Message-State: AMke39mi7u1ljNnZKFPvhh5s2uHRHvxoJZ22b+5HTt1KdleWcPKmfzP5HanKNkSI7AVCeQ==
+X-Received: by 10.98.202.80 with SMTP id n77mr31172276pfg.167.1489308962181;
+        Sun, 12 Mar 2017 00:56:02 -0800 (PST)
 Return-Path: <gs051095@gmail.com>
 Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id f78sm27528474pfe.116.2017.03.12.01.02.52
+        by smtp.googlemail.com with ESMTPSA id c22sm27729860pgn.43.2017.03.12.00.55.57
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 12 Mar 2017 01:02:55 -0800 (PST)
+        Sun, 12 Mar 2017 00:56:01 -0800 (PST)
 From: Gargi Sharma <gs051095@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: swarren@wwwdotorg.org,
@@ -54,9 +54,9 @@ Cc: swarren@wwwdotorg.org,
 	eric@anholt.net,
 	gregkh@linuxfoundation.org,
 	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH v3] staging: vc04_services: Replace typedef with struct
-Date: Sun, 12 Mar 2017 14:30:11 +0530
-Message-Id: <1489309211-18172-1-git-send-email-gs051095@gmail.com>
+Subject: [PATCH v2] staging: vc04_services: Replace typedef with struct
+Date: Sun, 12 Mar 2017 14:23:27 +0530
+Message-Id: <1489308807-17652-1-git-send-email-gs051095@gmail.com>
 X-Mailer: git-send-email 2.7.4
 
 Using typedef for a structure type and upper case struct names is not
@@ -112,11 +112,6 @@ typedef VCHIQ_ELEMENT_T;
 )
 
 Signed-off-by: Gargi Sharma <gs051095@gmail.com>
----
-Changes in v3:
-	- Add changes to the changelog.
-Changes in v2:
-	- Convert the struct name to lowercase.
 ---
  drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c   | 8 ++++----
  drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h    | 4 ++--
