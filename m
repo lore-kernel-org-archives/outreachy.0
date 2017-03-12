@@ -1,65 +1,125 @@
 X-GM-THRID: 6396335157434908672
-X-Received: by 10.25.216.154 with SMTP id r26mr4628569lfi.7.1489426764058;
-        Mon, 13 Mar 2017 10:39:24 -0700 (PDT)
+X-Received: by 10.129.136.6 with SMTP id y6mr14038219ywf.157.1489328083581;
+        Sun, 12 Mar 2017 07:14:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.21.68 with SMTP id 4ls872448ljv.54.gmail; Mon, 13 Mar 2017
- 10:39:22 -0700 (PDT)
-X-Received: by 10.46.83.76 with SMTP id t12mr5980848ljd.26.1489426762986;
-        Mon, 13 Mar 2017 10:39:22 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id e72si753964wma.0.2017.03.13.10.39.22
+Received: by 10.107.136.140 with SMTP id s12ls3605603ioi.15.gmail; Sun, 12 Mar
+ 2017 07:14:42 -0700 (PDT)
+X-Received: by 10.99.135.193 with SMTP id i184mr12212755pge.29.1489328082873;
+        Sun, 12 Mar 2017 07:14:42 -0700 (PDT)
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id y90si2658282pfa.6.2017.03.12.07.14.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 13 Mar 2017 10:39:22 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Sun, 12 Mar 2017 07:14:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.36,160,1486422000"; 
-   d="scan'208";a="216588787"
-Received: from pd95b94e4.dip0.t-ipconnect.de (HELO hadrien.intern) ([217.91.148.228])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 13 Mar 2017 18:39:00 +0100
-Date: Mon, 13 Mar 2017 18:38:04 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Eric Anholt <eric@anholt.net>
-cc: Gargi Sharma <gs051095@gmail.com>, outreachy-kernel@googlegroups.com, 
-    swarren@wwwdotorg.org, lee@kernel.org, gregkh@linuxfoundation.org
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [88.128.80.189])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 78795902;
+	Sun, 12 Mar 2017 14:14:39 +0000 (UTC)
+Date: Sun, 12 Mar 2017 15:14:20 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Gargi Sharma <gs051095@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, swarren@wwwdotorg.org,
+	lee@kernel.org, eric@anholt.net
 Subject: Re: [Outreachy kernel] [PATCH] staging: vc04_services: Replace
  typedef with struct
-In-Reply-To: <87a88pyup9.fsf@eliezer.anholt.net>
-Message-ID: <alpine.DEB.2.20.1703131837460.3531@hadrien>
-References: <1489310493-22530-1-git-send-email-gs051095@gmail.com> <alpine.DEB.2.20.1703121319180.2174@hadrien> <87a88pyup9.fsf@eliezer.anholt.net>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+Message-ID: <20170312141420.GB29303@kroah.com>
+References: <1489310493-22530-1-git-send-email-gs051095@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1489310493-22530-1-git-send-email-gs051095@gmail.com>
+User-Agent: Mutt/1.8.0 (2017-02-23)
 
+On Sun, Mar 12, 2017 at 02:51:33PM +0530, Gargi Sharma wrote:
+> Using typedef for a structure type and upper case struct names is not
+> suggested in Linux kernel coding style guidelines. Removed occurences
+> of typedefs and converted struct names to lowercase. Used grep to
+> ensure that all occurences have been removed. The module compiles
+> without any warnings or errors.
+> 
+> Script 1:
+> @r1@
+> type T;
+> @@
+> 
+> typedef struct { ... } T;
+> 
+> @script:python c1@
+> T2;
+> T << r1.T;
+> @@
+> if T[-2:] =="_T":
+>   coccinelle.T2 = T[:-2].lower();
+>   print T
+> else:
+>   coccinelle.T2=T.lower();
+> 
+> @r2@
+> type r1.T;
+> identifier c1.T2;
+> @@
+> -typedef
+> struct
+> + T2
+> { ... }
+> -T
+> ;
+> 
+> @r3@
+> type r1.T;
+> identifier c1.T2;
+> @@
+> - T
+> + struct T2
+> 
+> Script 2:
+> @@
+> typedef VCHIQ_SHARED_MEM_INFO_T;
+> @@
+> 
+> (
+> - VCHIQ_SHARED_MEM_INFO_T
+> + struct vchiq_shared_mem_info
+> )
+> Signed-off-by: Gargi Sharma <gs051095@gmail.com>
+> ---
+>  drivers/staging/vc04_services/interface/vchiq_arm/vchiq_memdrv.h | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_memdrv.h b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_memdrv.h
+> index dd43458..2e30a78 100644
+> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_memdrv.h
+> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_memdrv.h
+> @@ -41,7 +41,7 @@
+>  
+>  /* ---- Constants and Types ---------------------------------------------- */
+>  
+> -typedef struct {
+> +struct vchiq_shared_mem_info {
+>  	 void                   *arm_shared_mem_virt;
+>  	 dma_addr_t              arm_shared_mem_phys;
+>  	 size_t                  arm_shared_mem_size;
+> @@ -49,13 +49,13 @@ typedef struct {
+>  	 void                   *vc_shared_mem_virt;
+>  	 dma_addr_t              vc_shared_mem_phys;
+>  	 size_t                  vc_shared_mem_size;
+> -} VCHIQ_SHARED_MEM_INFO_T;
+> +};
+>  
+>  /* ---- Variable Externs ------------------------------------------------- */
+>  
+>  /* ---- Function Prototypes ---------------------------------------------- */
+>  
+> -void vchiq_get_shared_mem_info(VCHIQ_SHARED_MEM_INFO_T *info);
+> +void vchiq_get_shared_mem_info(struct vchiq_shared_mem_info *info);
 
+This is a prototype for a function that is not even in the kernel, it
+should just be removed.
 
-On Mon, 13 Mar 2017, Eric Anholt wrote:
+thanks,
 
-> Julia Lawall <julia.lawall@lip6.fr> writes:
->
-> > On Sun, 12 Mar 2017, Gargi Sharma wrote:
-> >
-> >> Using typedef for a structure type and upper case struct names is not
-> >> suggested in Linux kernel coding style guidelines. Removed occurences
-> >> of typedefs and converted struct names to lowercase. Used grep to
-> >> ensure that all occurences have been removed. The module compiles
-> >> without any warnings or errors.
-> >
-> > Actually, the bcm people have requested not to be CCd on patches.  I'm
-> > leaving them on this one, though, because they might have some useful
-> > input.
-> >
-> > It's always suspicious when you change a type name and it only affects a
-> > header file.  And in this case, it only affects a function prototype.  I
-> > don't see any definition of the function.  Can the whole thing (type and
-> > prototype) go away?
->
-> It's dead even in the downstream tree, so let's kill it.
-
-Thanks for the feedback.
-
-julia
+greg k-h
 
