@@ -1,113 +1,128 @@
-X-GM-THRID: 6659981654376841216
-X-Received: by 2002:a67:ee8e:: with SMTP id n14mr21798526vsp.45.1550647815256;
-        Tue, 19 Feb 2019 23:30:15 -0800 (PST)
+X-GM-THRID: 6395785103347286016
+X-Received: by 10.157.1.33 with SMTP id 30mr13145404otu.101.1489334157935;
+        Sun, 12 Mar 2017 08:55:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ab0:76cd:: with SMTP id w13ls1895427uaq.2.gmail; Tue, 19 Feb
- 2019 23:30:14 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Ibp/3WWottwvlKnhGRjawpt619bfeVWWlx3gmU8z5VXArmihjS9sA0iGwXZfi6HLsRAmgN0
-X-Received: by 2002:a9f:2f17:: with SMTP id x23mr21230785uaj.24.1550647814619;
-        Tue, 19 Feb 2019 23:30:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550647814; cv=none;
-        d=google.com; s=arc-20160816;
-        b=B37gdftV0frQVu+402JGkBGvWmGYf65/56lgq9ZwWN2d13/dr+6ahx1D/TnX4cMevh
-         shNACJdm4gXnrMQsmRMEO6y2Ha713ovi6vMFbqONysLT7BSvMDpt6Z+K6yqrlHmvLAiR
-         +mGsKeR6HUutX8z6fltNbgsdz+oGsbK0vFmEf1qeWe4Xc1jfOANRIRnmol/pSmGgeD38
-         y64Cy7ugwQCpYm5HAlAhu1Ou1GIOlT98uUp1puUZ3UanIv4RJKGRvLIHSkmoZQLmIQou
-         tXgo70xzSc1TqFpRNCdY6IdFKN2FZg6Isy5F3vhIpBZJu/GFlff5YnGEAQkuByYPXkkg
-         MkeQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=HSQLJcFjQwnBej5gQJtLdLmN0pKyMZBACrMvKN4d2Qk=;
-        b=erhEc4cHyq5HYUs/kq6LpehAdW1+9Zp/4rEUB9Yc9ZJAkILlmzVEVLM/qtH/guTohS
-         uFI3F5/8t/01aHRRT+80UYkhJmjA5ekXySMZE7dphVj79etNQFT1cJ2PCTECNJQ39NLU
-         SpL7EeV6dJAUFHkIzJh2D01tGWPjFJjD7tV+RoPrw7uiwIcu8/MOxA0GR+7NUaHBTVFj
-         NDrbrIK8O8mHBeVHlRiacwarB7u3pqvtmUyQIwVMinKU1HWV4YHviXpC0uTsXkpwAOn+
-         77Z9bVRcwssnnGkiw+tqIp0kZ2IFnWnTnUvLeuviVuAHX6kLWV/8i9K8oOzY5orgBzMU
-         0XCg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dnxACSSJ;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::42c as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pf1-x42c.google.com (mail-pf1-x42c.google.com. [2607:f8b0:4864:20::42c])
-        by gmr-mx.google.com with ESMTPS id e64si840487vsd.2.2019.02.19.23.30.14
+Received: by 10.36.122.2 with SMTP id a2ls1090332itc.15.canary-gmail; Sun, 12
+ Mar 2017 08:55:56 -0700 (PDT)
+X-Received: by 10.99.123.7 with SMTP id w7mr13139866pgc.133.1489334156792;
+        Sun, 12 Mar 2017 08:55:56 -0700 (PDT)
+Return-Path: <karniksayli1995@gmail.com>
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id u12si2738573pfd.3.2017.03.12.08.55.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Feb 2019 23:30:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::42c as permitted sender) client-ip=2607:f8b0:4864:20::42c;
+        Sun, 12 Mar 2017 08:55:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dnxACSSJ;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::42c as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x42c.google.com with SMTP id a3so1665962pff.11
-        for <outreachy-kernel@googlegroups.com>; Tue, 19 Feb 2019 23:30:14 -0800 (PST)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x243.google.com with SMTP id g2so11068504pge.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 12 Mar 2017 08:55:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=HSQLJcFjQwnBej5gQJtLdLmN0pKyMZBACrMvKN4d2Qk=;
-        b=dnxACSSJSMOy+v029XIHjg6SF6cWOb0oOKk9mxQeE1he2fstPvsXRRFTkaDcVA+24V
-         bgO+BGV1oiEuTk26UJ2kJO2eCXalS7KpL8fEtjVvTtfy0rnSawkgAZUp8nHTaHafdhXY
-         hSuil2fCmzODKKv8oOG7ESvBZV7F0azuj5KCaO5bJt0eyJweJWvbJ4To6gLcHThMW7zT
-         Wz2qdE3HA90ew6jCgR73th1z+Eu2vzoWcLeY+8wVIcctRXrbPwwO9M0vxmBOp4/ePmKb
-         qHsczDqgnzUaKqwkzMplrzdOmWb0EZ38iyQSHPCvW9sp+0RkZKTxI8/qjCyP1Safaq2+
-         YTlw==
+        bh=W9hYw6uQvwgtUK2JGBAT7ELmrSl/Q3jxFlCQ3lPe3Hs=;
+        b=ONEXyiU8VbZHXtygWclEMl9my1ir6SzfTOtWvYrKJPOsaBHC+JH4HcSLTGLNf01NRj
+         USg+Xvu2l8LLszHKpBKvnABZS1ntLq+LRtL3ffuJYMtDQ4SqKsphijF9gab2GLWmjgKK
+         Ch2rHrr6erSB5elUpkM4DmUKagQR11I3NCcFt5+0WyvPmOyTUmzK4xewv9KltUPerNg0
+         SXXJRu1w0e6e0EjNgA+Jb1wEb/7PfoNF+BABNbF9FQEWELHadyWDJ537Tnz+uVyOMSRh
+         8R5thZYs9SSOMFDXFgSLYhjZtRu2e2zGmgXlomKR5mE2s4Qd1LC6NSfNAuuEJbgUwrkW
+         YSRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=HSQLJcFjQwnBej5gQJtLdLmN0pKyMZBACrMvKN4d2Qk=;
-        b=jAMwou5fYh2oRO+HQNM0FXHu/tm8zWH01OMW/Ps84j4G1QB+0hJHzO/oOFXrgLrZv9
-         sViYmYdrnqIhsmFgR+vVgLJONv81HDYAom1HVPuN9ZkGTzcDMqnWUc0fn+ai3MlPqwDa
-         OK18DOpmHRy5Ks+syot9YTHhKzc3B+5Zirl9Zfz947I6o6cGMi7ZjyQPVboW2Zt87cjZ
-         tlMB05uUm6iZf51tq8tLXT4ohrtQi+/Z9aKvAl3L8iNdBMvRgVs1mZPQVPa5QKwru4ke
-         QF4jS/lDIUzaTgeFYE8HR/Hwvdml4c5IEZhcriQB5Rgtp2/dcATwpXxBd7teF9Hrw4+u
-         MmWg==
-X-Gm-Message-State: AHQUAubqT9+ulAOwMGOQnt2LnFIGGEW9dUdtlpBrR5mf0qZjOoXYWKxv
-	fubjGOv/AW3BxceMBcfh5qE=
-X-Received: by 2002:a63:9402:: with SMTP id m2mr26981559pge.93.1550647814264;
-        Tue, 19 Feb 2019 23:30:14 -0800 (PST)
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from bhanusree-MacBookAir ([183.83.84.116])
-        by smtp.gmail.com with ESMTPSA id s2sm34862947pfa.167.2019.02.19.23.30.13
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Feb 2019 23:30:13 -0800 (PST)
-Date: Wed, 20 Feb 2019 13:00:11 +0530
-From: Bhanusree Pola <bhanusreemahesh@gmail.com>
+        bh=W9hYw6uQvwgtUK2JGBAT7ELmrSl/Q3jxFlCQ3lPe3Hs=;
+        b=q6R5FvEMEAl7lgnYmuJP4BuF2ckYbJayb3k0Zu9YnWUPEENw+TqPoOp1hmhLN2a6/b
+         7CO1PH680Hwv2gHDg0mhf6HODC2mCKb+P35aERAQO3sCt4Zpcv4CA+HtVGcCFxk69CCt
+         UVu/HU3E+6OTnqfw9QKk7qLqIlYVy8uvs3qvtqTziKvX6Gwh3bLoSMpzxRmpK/S4uCAN
+         5T8WfVGQpBsLKJk7XPVvFDImanaaH+DsiBlfpzuMs0U5C0K4mmr+1IlnakXcJHTtYXv8
+         V40ysyUeVDKFxlKA79ZDQ69yYALr35v7iV8kQB1odaNAe5egS01p6SZ77zr49FkV9IhX
+         lJSQ==
+X-Gm-Message-State: AMke39mRJfRol8BmyMSkEVjebn9nYByt1OcGz1iPSQCQjdImcD9O8Ua453DxSJ1/7mlIUg==
+X-Received: by 10.84.233.194 with SMTP id m2mr41584517pln.126.1489334156540;
+        Sun, 12 Mar 2017 08:55:56 -0700 (PDT)
+Return-Path: <karniksayli1995@gmail.com>
+Received: from sayli-HP-15-Notebook-PC ([182.58.206.12])
+        by smtp.gmail.com with ESMTPSA id l188sm28997110pfl.28.2017.03.12.08.55.43
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 12 Mar 2017 08:55:56 -0700 (PDT)
+Date: Sun, 12 Mar 2017 21:25:20 +0530
+From: sayli karnik <karniksayli1995@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 2/2] Staging: rtl8192e: Avoid using bool structure members
-Message-ID: <20190220073011.GA21216@bhanusree-MacBookAir>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH v2] staging: media: mt9m114: Use true/false instead of 1/0
+ for bool initialisations
+Message-ID: <20170312155520.GA2739@sayli-HP-15-Notebook-PC>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Use 'u8' with bitfield instead of 'bool' to avoid alignment
-issues and remove checkpatch.pl check:
-CHECK: Avoid using bool structure members because of possible alignment
-issues
+Bool initializations should use true and false instead of 1 and 0.
+Detected by coccinelle/misc/boolinit.cocci.
 
-Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
 ---
- drivers/staging/rtl8192e/dot11d.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes in v2:
+Merge 2 patches with identical subject into one patch
 
-diff --git a/drivers/staging/rtl8192e/dot11d.h b/drivers/staging/rtl8192e/dot11d.h
-index 44f11f629922..f3e8373b1312 100644
---- a/drivers/staging/rtl8192e/dot11d.h
-+++ b/drivers/staging/rtl8192e/dot11d.h
-@@ -29,7 +29,7 @@ enum dot11d_state {
-  */
+ drivers/staging/media/atomisp/i2c/mt9m114.c | 4 ++--
+ drivers/staging/media/atomisp/i2c/mt9m114.h | 6 +++---
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/staging/media/atomisp/i2c/mt9m114.c b/drivers/staging/media/atomisp/i2c/mt9m114.c
+index 1b79cdb..60ba6f9 100644
+--- a/drivers/staging/media/atomisp/i2c/mt9m114.c
++++ b/drivers/staging/media/atomisp/i2c/mt9m114.c
+@@ -926,10 +926,10 @@ static int mt9m114_set_fmt(struct v4l2_subdev *sd,
+ 		for (index = 0; index < N_RES; index++) {
+ 			if ((width == mt9m114_res[index].width) &&
+ 			    (height == mt9m114_res[index].height)) {
+-				mt9m114_res[index].used = 1;
++				mt9m114_res[index].used = true;
+ 				continue;
+ 			}
+-			mt9m114_res[index].used = 0;
++			mt9m114_res[index].used = false;
+ 		}
+ 	}
+ 	ret = mt9m114_get_intg_factor(c, mt9m114_info,
+diff --git a/drivers/staging/media/atomisp/i2c/mt9m114.h b/drivers/staging/media/atomisp/i2c/mt9m114.h
+index a66cbfd..5e7d79d 100644
+--- a/drivers/staging/media/atomisp/i2c/mt9m114.h
++++ b/drivers/staging/media/atomisp/i2c/mt9m114.h
+@@ -349,7 +349,7 @@ static struct mt9m114_res_struct mt9m114_res[] = {
+ 	.width	= 1296,
+ 	.height = 736,
+ 	.fps	= 30,
+-	.used	= 0,
++	.used	= false,
+ 	.regs	= NULL,
+ 	.skip_frames = 1,
  
- struct rt_dot11d_info {
--	bool enabled;
-+	u8 enabled:1;
+@@ -365,7 +365,7 @@ static struct mt9m114_res_struct mt9m114_res[] = {
+ 	.width	= 1296,
+ 	.height = 864,
+ 	.fps	= 30,
+-	.used	= 0,
++	.used	= false,
+ 	.regs	= NULL,
+ 	.skip_frames = 1,
  
- 	u16 country_len;
- 	u8  country_buffer[MAX_IE_LEN];
+@@ -381,7 +381,7 @@ static struct mt9m114_res_struct mt9m114_res[] = {
+ 	.width	= 1296,
+ 	.height	= 976,
+ 	.fps	= 30,
+-	.used	= 0,
++	.used	= false,
+ 	.regs	= NULL,
+ 	.skip_frames = 1,
+ 
 -- 
-2.17.1
+2.7.4
 
 
