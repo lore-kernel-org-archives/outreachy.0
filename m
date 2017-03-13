@@ -1,80 +1,84 @@
-X-GM-THRID: 6395915397521997824
-X-Received: by 10.25.234.202 with SMTP id y71mr2747133lfi.2.1489165098757;
-        Fri, 10 Mar 2017 08:58:18 -0800 (PST)
+X-GM-THRID: 6396911528982872064
+X-Received: by 10.99.139.202 with SMTP id j193mr12167054pge.151.1489397028231;
+        Mon, 13 Mar 2017 02:23:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.0.22 with SMTP id 22ls1054427lja.32.gmail; Fri, 10 Mar 2017
- 08:58:18 -0800 (PST)
-X-Received: by 10.46.84.13 with SMTP id i13mr3344358ljb.2.1489165098145;
-        Fri, 10 Mar 2017 08:58:18 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
-        by gmr-mx.google.com with ESMTPS id n128si224644wmf.2.2017.03.10.08.58.18
+Received: by 10.157.43.103 with SMTP id f36ls2185182otd.0.gmail; Mon, 13 Mar
+ 2017 02:23:47 -0700 (PDT)
+X-Received: by 10.129.84.136 with SMTP id i130mr15275938ywb.54.1489397027845;
+        Mon, 13 Mar 2017 02:23:47 -0700 (PDT)
+Return-Path: <rvarsha016@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id g82si3019142pfb.5.2017.03.13.02.23.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 10 Mar 2017 08:58:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
+        Mon, 13 Mar 2017 02:23:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x243.google.com with SMTP id n11so3219859wma.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 08:58:18 -0800 (PST)
+Received: by mail-pg0-x244.google.com with SMTP id b5so17535337pgg.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 13 Mar 2017 02:23:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=fKIxx5nWjK5djusFU8apbc8X4S+tgq7BNcVolc71aF4=;
-        b=RCIj40/yaxjQJznKT3VYTZ+frcdEuAiscO4iwkDYjAoQVik/p0MjxJRtti/fjdf0V8
-         l1kuOcPoo7H59h87RKBQZxhndBc1w4YSh596JJ1G1FG/4p+oqVcXcs8TngwY1DhPms7H
-         dbnvaXu5/VckmoyTl/fBUlWwpD04ZvMCpMomWsxsLcrLaLwbT/G+66Pwzn39XjqtTubb
-         yTpUTdGiR70EQeR/i929X2Z1fudhq1kvlGSPM2wbHW+b+iKmKUZZ7HAuY4ULeIgDzYzN
-         HyTKVkNl+En7VF4+erf6dvRDThTM11uQsGE7p83kIp+jEwXJxNSsXgNIKYGQq0guRYuL
-         RTJw==
+        h=message-id:date:from:to:cc:subject:mime-version:content-disposition
+         :user-agent;
+        bh=SvnvavC3I3MLNjuMAslB/nOVInyRXdnv6bIuTp/NjZ4=;
+        b=Jb+rRKy9yP+IxPfc/IL8yMg8eiaUYo/iyzp9o/RlN8uB6YUzSBKYb/uGb9ejL81avM
+         uBntLwRYApmkvDDspyMK5ZKnyEWSq4rzd862hSSBXLAYfMI/TaMHreBrkCKylQrAxnAI
+         UPBczbFw7/c6XYYZij+Rd/SJ2F7nZ6FhDApLr46SOyEycrH9uedyQjjlQmIfXlvu5WR9
+         vCZSNxed+jX4lNUnyLRmFecGtCkDN4noArm5Zv+Kg6OjoZf+aIVTEZu5AMaSNBZpcrhH
+         1sTIu7R+7ZY6kQBiNJ713a+q1lOpV4GfEVXOEAUU37PbkXBw02m6hJkxG2zydSacfZtp
+         2kSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=fKIxx5nWjK5djusFU8apbc8X4S+tgq7BNcVolc71aF4=;
-        b=dsstSu8OlQ48/dFtpTcF7kTLT2iA6Tenxa2ASXOBecLRoPaEk8wYISIwLgaKVAIA1S
-         uKGVzvPnjoTANT3oZekvMfbTtqLZefUYjjSJi+fIjmUC4Qt7F3hiC5q2IDBl5mpGY//L
-         wilJJVhh/KVwq06mmStFGV2ydom24JrRC+f4kjc9QDFVXsEBgaapA2fzW15RLdiVNxzw
-         31Qvl8Oafg6h1mMvI13bHmdQ0SehK4WCzWsebO+TaE3tRYsZ5dDffArapM1RmjxI0ttA
-         CDBr97D420iNQ8O0aYMNxaKKKhCbeO7RVwO2YHz+GCXXITHFWt+/JMkKADsUIVG7L1md
-         alZw==
-X-Gm-Message-State: AFeK/H0Vv2LaIs8nOAiwASv1FdamkJA3tly9DtmCyG7HbZQSyT41vYgaGwB0CLNLFfwAYQ==
-X-Received: by 10.28.156.195 with SMTP id f186mr3158116wme.40.1489165097839;
-        Fri, 10 Mar 2017 08:58:17 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([2a02:2f0b:8130:11ea:9935:36c4:c373:a2cc])
-        by smtp.gmail.com with ESMTPSA id o52sm13669227wrb.51.2017.03.10.08.58.16
+        h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
+         :content-disposition:user-agent;
+        bh=SvnvavC3I3MLNjuMAslB/nOVInyRXdnv6bIuTp/NjZ4=;
+        b=Plppk98GzLA/B8+h6rMosmmfl9uu05uQx/On+0LqTOnZtPjlvxJuNKsrYySteU0Wue
+         q2BQwpFLVAIIlQOXoxvGIp8zwgqUTyLkN3l4MsoatnMLinDSTMrjsa4xBs37oGZyqvkz
+         t6T8SX6mcfiW9fBLXoJ9SoctQY8hIg5LyWi4JkYZ5jlluKe4qIQ7fon2FftSeLTViUe3
+         KZTMBbfBqgFcG8frbm9lkT0EejRdYrs1ngXc9mwynJK7vzoMtcIihx0yBkM6FI1HkvLZ
+         F9iAYWwFsea3m/GlcFhtWsAvrSCQFUbnC305kIR22aeMbzFNA/C386GB35V6hwz64l1J
+         uOmQ==
+X-Gm-Message-State: AMke39kaZxoerotSZaOvGtyZc3BCqbQu+SbLDSQsPXdncNJCpkgQihTmTXEYVJ6Z1lhTnw==
+X-Received: by 10.98.9.29 with SMTP id e29mr37165902pfd.101.1489397027630;
+        Mon, 13 Mar 2017 02:23:47 -0700 (PDT)
+Return-Path: <rvarsha016@gmail.com>
+Received: from euri ([117.192.132.44])
+        by smtp.gmail.com with ESMTPSA id f205sm32023569pfa.35.2017.03.13.02.23.46
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 10 Mar 2017 08:58:16 -0800 (PST)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: aditya.shankar@microchip.com,
-	ganesh.krishna@microchip.com,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH 0/4] Improve code readability in wilc1000 driver
-Date: Fri, 10 Mar 2017 18:58:13 +0200
-Message-Id: <20170310165813.3983-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+        Mon, 13 Mar 2017 02:23:47 -0700 (PDT)
+Message-ID: <58c66523.d638620a.5414c.30b9@mx.google.com>
+X-Google-Original-Message-ID: <20170313092335.GA14358@<rvarsha016@gmail.com>>
+Date: Mon, 13 Mar 2017 14:53:35 +0530
+From: Varsha Rao <rvarsha016@gmail.com>
+To: Lars-Peter Clausen <lars@metafoo.de>,
+	Michael Hennerich <Michael.Hennerich@analog.com>,
+	Jonathan Cameron <jic23@kernel.org>,
+	Hartmut Knaack <knaack.h@gmx.de>,
+	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Barry Song <21cnbao@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, linux-iio@vger.kernel.org
+Subject: [PATCH 0/2] staging: iio: adis16240: Replace mlock with private lock
+ and modify comment.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.7.1 (2016-10-04)
 
-Fix multiple issues found with checkpath.pl to improve code readability.
+This patchset replaces mlock with private lock and modifies existing
+comment in iio driver.
 
-Tamara Diaconita (4):
-  staging: wilc1000: wilc_wlan_cfg: Rearrange lines
-  staging: wilc1000: linux_mon: Rearrange the code
-  staging: wilc1000: Align the code
-  staging: wilc1000: wilc_wlan_cfg: Delete blank line
+Varsha Rao (2):
+  staging: iio: adis16240: Replace mlock with driver private lock.
+  staging: iio: adis16240: Modify existing comment.
 
- drivers/staging/wilc1000/linux_mon.c     | 27 ++++++++++++++++++---------
- drivers/staging/wilc1000/linux_wlan.c    |  8 ++++----
- drivers/staging/wilc1000/wilc_wlan_cfg.c | 24 ++++++++++++++++--------
- 3 files changed, 38 insertions(+), 21 deletions(-)
+ drivers/staging/iio/accel/adis16240.c | 19 ++++++++++---------
+ 1 file changed, 10 insertions(+), 9 deletions(-)
 
 -- 
-Organize the patches that clean up the same driver in a set.
-
 2.9.3
 
 
