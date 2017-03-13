@@ -1,109 +1,112 @@
-X-GM-THRID: 6389638055287848960
-X-Received: by 10.13.237.196 with SMTP id w187mr9531586ywe.27.1487703541719;
-        Tue, 21 Feb 2017 10:59:01 -0800 (PST)
+X-GM-THRID: 6396932116719861760
+X-Received: by 10.99.123.7 with SMTP id w7mr15335241pgc.133.1489414404767;
+        Mon, 13 Mar 2017 07:13:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.82.215 with SMTP id d206ls1852273itb.17.canary-gmail; Tue,
- 21 Feb 2017 10:59:00 -0800 (PST)
-X-Received: by 10.107.178.3 with SMTP id b3mr9582007iof.93.1487703540913;
-        Tue, 21 Feb 2017 10:59:00 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id u12si3407227pfd.3.2017.02.21.10.59.00
+Received: by 10.157.59.194 with SMTP id k60ls14024629otc.22.gmail; Mon, 13 Mar
+ 2017 07:13:24 -0700 (PDT)
+X-Received: by 10.157.14.20 with SMTP id c20mr15011576otc.149.1489414404396;
+        Mon, 13 Mar 2017 07:13:24 -0700 (PDT)
+Return-Path: <karniksayli1995@gmail.com>
+Received: from mail-yw0-x241.google.com (mail-yw0-x241.google.com. [2607:f8b0:4002:c05::241])
+        by gmr-mx.google.com with ESMTPS id f187si2364123ywc.0.2017.03.13.07.13.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 21 Feb 2017 10:59:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Mon, 13 Mar 2017 07:13:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:4002:c05::241 as permitted sender) client-ip=2607:f8b0:4002:c05::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
+       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:4002:c05::241 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id s67so9003359pgb.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 21 Feb 2017 10:59:00 -0800 (PST)
+Received: by mail-yw0-x241.google.com with SMTP id o4so9782783ywd.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 13 Mar 2017 07:13:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=0rxDwHcYcDmSKoKOO2CFKd3/w7mx31UrC6wa46rfqkw=;
-        b=JzEAClx/zIXS2g9jR2iD3hi/RCXJADwxLefK/C60OG+K84+jWLKnWDWc602c832AqQ
-         rLZkGmlW7ve1aEmWICHfpb3734VcJAHZ1h6ZL/ePjUy6uO5zk/Ok0i0+GAcQ7PHLJCLc
-         uaMC7Wa91Qb6Gae3CdskWHwh/NE4WGGtrq9y6enf3T5aoIH8HO4Ya/wMIJRstfaB6bHV
-         oNhiuYWMufNJ1OBYIlMx4Yo7REMBt4JsrHE6Rah5pmHlgVSK0m3VPNtDHBInNRP8YlhG
-         /IwYuhTRaetOWSzn8y7I+H7PUmCeqYnB0NQHIsYzbqKRM+ESVFuqXQdSrpVm/SJQLCRP
-         mKdA==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=HAWnZq8crl5K3Mxw6y18zEnaxBDQIzXf5eW3/DuWjeY=;
+        b=TRia3ZL5aj0XcI7nDJVc/ouDsY9waD+34JISLj/p7kNfdDouMoERf7xOyTNQa5xI/w
+         z+cGzkqhEL4OCasprYAxvtsbBRBOzMb253O+5zLFdtnGOBB1xyw++DheocQ/BtBlwuCG
+         TNH7zrI79JMv22LrUhXtlr6k12Sxz0N9vVUfPdUrt7fbnItIHu59xijTTmtY7iYvyMv1
+         vJedyzmvl7IoCwdV7163mJ3k+Omn4i+Edud4fetbMuZG2U20BEaG5rY2kl/2cniQ22Pm
+         CWUvJk7DpLiVFb876HFn/mWf4xhGz9HwLgvR03tFw2XR32YPwO3xfRvLWsResZmbL6DL
+         2rsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=0rxDwHcYcDmSKoKOO2CFKd3/w7mx31UrC6wa46rfqkw=;
-        b=cCgfbj2Tjx7GBVUV6qNPiuF+9zw/8l/lP5S8PsymBg3z6WdHBmYrIkbfzl0Ya5xILi
-         a6+B1tNIBKZUeO27kUIgsWB762rbg58MN/slpM0uUayV0ObY+57o2jZfq/2YkgoKfFA/
-         a9FwFaixTDJ8qoqHbALiKkbGBeX7WHAMxiqUiU56F+WBvcQT5MVoHboA8knFEeAHehr2
-         mAFOpq1yj052w9qjZd7BoVZXVJAbR6DwJMBk4EWvUxmSzC+Wnf7VpRC+HJZsVBeTH4w6
-         pyqmmQ2xqBCAGDlQvvehpkW2nBDpNQIhlPlLdWvkd0MCvzqxVA0uiwjV5G4vJ5+HK2tR
-         6cLA==
-X-Gm-Message-State: AMke39ld1/AkYJ7UBegAuFFQ/QX15mf+v9jHdbH5VwI/YhMN2YgXwxjbrIqL/+u+0NNrUA==
-X-Received: by 10.99.43.74 with SMTP id r71mr16967050pgr.83.1487703540691;
-        Tue, 21 Feb 2017 10:59:00 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id h14sm42842752pgn.41.2017.02.21.10.58.58
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 21 Feb 2017 10:59:00 -0800 (PST)
-From: Gargi Sharma <gs051095@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH] staging: rtl8192e: Remove useless parentheses
-Date: Wed, 22 Feb 2017 00:26:50 +0530
-Message-Id: <1487703410-18483-1-git-send-email-gs051095@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=HAWnZq8crl5K3Mxw6y18zEnaxBDQIzXf5eW3/DuWjeY=;
+        b=LD515VHRQzV4K0bb0KzBBcl7gtma86aXKQvdeXatU+3Mlf6mPJiKZcIUnOvSNsD/w+
+         mzkmvhNk0yWX4MSsfSBjTYPlcDOoCWs3Ls8ABxSBITHX+xgRa1TifW8BqHy6CeOassiW
+         kGaEsvd9J4Uj1GfZZZ9SbRa+8BuwRTYwqNh+uYpmRudmFdHvv2vNs9hYjNrpkkCeMEnd
+         7kUAFQdiaqahvpMLgKLfV8sX9KIhPVoxsETSkGHN9x96gRKewUgFRNrX8Dgq/zufU9bg
+         FYPZ2zmw6AMV5lp5Bd2BeUQv0zYx8IbwhzJC2bmhoV/KS1m8FI2rxr/BxKuklO3HtG0Z
+         x7fQ==
+X-Gm-Message-State: AMke39laF89voiDkXHM0HG2J9ztwxxdYDuxUk36rHYCuJEI/eEDsMk94BAGc0o8mM/qwQ+DDdHfhTEs4fSTWuA==
+X-Received: by 10.129.123.213 with SMTP id w204mr18042030ywc.267.1489414404050;
+ Mon, 13 Mar 2017 07:13:24 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.37.173.10 with HTTP; Mon, 13 Mar 2017 07:12:43 -0700 (PDT)
+In-Reply-To: <a81ede74-f294-7ccc-5e0d-431eae058128@metafoo.de>
+References: <20170313104307.GA12480@sayli-HP-15-Notebook-PC> <a81ede74-f294-7ccc-5e0d-431eae058128@metafoo.de>
+From: sayli karnik <karniksayli1995@gmail.com>
+Date: Mon, 13 Mar 2017 19:42:43 +0530
+Message-ID: <CAKG5xWg7-wifwSp3j-PmS20puo=BkOYrs0i3J9o2YFSsL2h=_g@mail.gmail.com>
+Subject: Re: [PATCH] staging: iio: ad7192: Replace mlock with private driver lock
+To: Lars-Peter Clausen <lars@metafoo.de>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, 
+	Michael Hennerich <Michael.Hennerich@analog.com>, Jonathan Cameron <jic23@kernel.org>, 
+	Hartmut Knaack <knaack.h@gmx.de>, Peter Meerwald-Stadler <pmeerw@pmeerw.net>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-iio@vger.kernel.org
+Content-Type: text/plain; charset=UTF-8
 
-Parentheses are not needed on the right side of assignment.
-Additionally added space around '+' to remove checkpatch issue,
-space required around '+'.
+On Mon, Mar 13, 2017 at 5:22 PM, Lars-Peter Clausen <lars@metafoo.de> wrote:
+> On 03/13/2017 11:43 AM, sayli karnik wrote:
+>> indio_dev->mlock should be used by the IIO core only for protecting
+>> device operating mode changes. ie. Changes between INDIO_DIRECT_MODE,
+>> INDIO_BUFFER_* modes.
+>> Replace mlock with a lock in the device's global data to protect
+>> hardware state changes.
+>>
+>> Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
+>> ---
+>>  drivers/staging/iio/adc/ad7192.c | 5 +++--
+>>  1 file changed, 3 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/staging/iio/adc/ad7192.c b/drivers/staging/iio/adc/ad7192.c
+>> index 4fc8588..bed48e7 100644
+>> --- a/drivers/staging/iio/adc/ad7192.c
+>> +++ b/drivers/staging/iio/adc/ad7192.c
+>> @@ -162,6 +162,7 @@ struct ad7192_state {
+>>       u32                             scale_avail[8][2];
+>>       u8                              gpocon;
+>>       u8                              devid;
+>> +     struct mutex                    lock;   /* protect sensor state */
+>>
+>>       struct ad_sigma_delta           sd;
+>>  };
+>> @@ -463,10 +464,10 @@ static int ad7192_read_raw(struct iio_dev *indio_dev,
+>>       case IIO_CHAN_INFO_SCALE:
+>>               switch (chan->type) {
+>>               case IIO_VOLTAGE:
+>> -                     mutex_lock(&indio_dev->mlock);
+>> +                     mutex_lock(&st->lock);
+>>                       *val = st->scale_avail[AD7192_CONF_GAIN(st->conf)][0];
+>>                       *val2 = st->scale_avail[AD7192_CONF_GAIN(st->conf)][1];
+>> -                     mutex_unlock(&indio_dev->mlock);
+>> +                     mutex_unlock(&st->lock);
+>
+> Sorry, but this does not make too much sense. If this is the only place
+> where the lock is used there isn't really any mutual exclusion going on
+> since it doesn't prevent any other code from running concurrently.
+>
+> The purpose of taking the lock here is that st->conf is in a consistent
+> state and is not in the process of being changed.
+>
+So you mean indio_dev->mlock is good to go here?
 
-Parentheses Removed using the coccinelle script:
-@@
-binary operator bop = {+,-,>>,<<};
-expression e, e1, e2;
-@@
-
-e =
--(
-        e1 bop e2
--)
-
-Signed-off-by: Gargi Sharma <gs051095@gmail.com>
----
- drivers/staging/rtl8192e/rtl8192e/rtl_dm.c | 2 +-
- drivers/staging/rtl8192e/rtl819x_HTProc.c  | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c b/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-index 9bc2848..b61e90b 100644
---- a/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-+++ b/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-@@ -886,7 +886,7 @@ static void _rtl92e_dm_tx_power_tracking_cb_thermal(struct net_device *dev)
- 		if (tmpCCK40Mindex >= CCK_Table_length)
- 			tmpCCK40Mindex = CCK_Table_length-1;
- 	} else {
--		tmpval = ((u8)tmpRegA - priv->ThermalMeter[0]);
-+		tmpval = (u8)tmpRegA - priv->ThermalMeter[0];
- 		if (tmpval >= 6)
- 			tmpOFDMindex = tmpCCK20Mindex = 0;
- 		else
-diff --git a/drivers/staging/rtl8192e/rtl819x_HTProc.c b/drivers/staging/rtl8192e/rtl819x_HTProc.c
-index cded0f4..a59fcd4 100644
---- a/drivers/staging/rtl8192e/rtl819x_HTProc.c
-+++ b/drivers/staging/rtl8192e/rtl819x_HTProc.c
-@@ -489,7 +489,7 @@ u8 HTGetHighestMCSRate(struct rtllib_device *ieee, u8 *pMCSRateSet,
- 				if ((bitMap%2) != 0) {
- 					if (HTMcsToDataRate(ieee, (8*i+j)) >
- 					    HTMcsToDataRate(ieee, mcsRate))
--						mcsRate = (8*i+j);
-+						mcsRate = 8*i + j;
- 				}
- 				bitMap >>= 1;
- 			}
--- 
-2.7.4
-
+>>                       return IIO_VAL_INT_PLUS_NANO;
+>>               case IIO_TEMP:
+>>                       *val = 0;
+>>
+>
 
