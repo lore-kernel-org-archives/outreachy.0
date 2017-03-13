@@ -1,115 +1,81 @@
-X-GM-THRID: 6952150809139216384
-X-Received: by 2002:a05:6512:3681:: with SMTP id d1mr3495256lfs.495.1618673747078;
-        Sat, 17 Apr 2021 08:35:47 -0700 (PDT)
+X-GM-THRID: 6397037316898029568
+X-Received: by 10.99.23.95 with SMTP id 31mr17532128pgx.122.1489432507854;
+        Mon, 13 Mar 2017 12:15:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6512:c22:: with SMTP id z34ls3729754lfu.2.gmail; Sat, 17
- Apr 2021 08:35:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy2BDqw2Ve0cLFgXFr9uEalwZFv8wW7KdzbPBHMJOAIL7c9gCT4IK1SS8uKjZ8RdqznP+8H
-X-Received: by 2002:a19:7b0e:: with SMTP id w14mr6817605lfc.468.1618673745458;
-        Sat, 17 Apr 2021 08:35:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618673745; cv=none;
-        d=google.com; s=arc-20160816;
-        b=jinx5s7ZccC+Zc6lcUhqY2ELQMUSfL8nuXmk4JODOA2V4yBYTfn7+3USapsZwJk3nk
-         N4w3aSPFn81aKvXCmjivga6cNkCepZ0P7/Jt/3ePbZqudJ4qA7KZhTUYJxwbt86yPpLJ
-         YMhyVGW+yAufQ9fEH/e/elPA9E8aOUgn6il3N/xZGzou+1RCaZ3FBtcVmcAuHaeUVW2r
-         kUHBSVlax3r1VyZH2qc9HTqywJ5iGxOIOs2GITSPErijXC8fj0I3UUae8FZ1TWbHHopF
-         tCuXHyWq14S4p+Pd4Qxa+T/LOdEr0TXtAqKk7EWhM89FLgJZ9Ha/d0Jdz4cdIJdZ0YfQ
-         dz7w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=95k7us3S0EVfXXTef/Cp2MnyUY4IkdXtTZcLiNqfFkw=;
-        b=wft1mvwSS5m/FjEFQlEfMxy7HxpO1OMxlXRHayQMpKq3QChPmGvWOWuo6dg3ZyXZoY
-         iNevmqU2rNk0K1OTXmI6VvzZVd67WvflDrblaa+rS+8KjkgCW1mWyY7HX5pVF0ouo6CX
-         yGRGq6GtwOfl/dWbo/HL7dsO5C0j3MjYnlpb/7hrm+l8IpBl4Lefygggh1F3a8VDJspv
-         svSnxRKsJzPvHGprfDs0BquEwQbGAsN9VAirhzX4rd/eJ3HIYJT9yzsPgWpiH318AesY
-         BF5cHj6pizTfEgiywkKAqameuxyzVwv9zXlHqrYON8c2z2JxTHEPuxDhXbFiYY8rc7On
-         k+3g==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=P90KopaV;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52e as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ed1-x52e.google.com (mail-ed1-x52e.google.com. [2a00:1450:4864:20::52e])
-        by gmr-mx.google.com with ESMTPS id v3si556715lfp.0.2021.04.17.08.35.45
+Received: by 10.157.38.42 with SMTP id a39ls3691334otb.38.gmail; Mon, 13 Mar
+ 2017 12:15:07 -0700 (PDT)
+X-Received: by 10.13.216.20 with SMTP id a20mr16675570ywe.10.1489432507352;
+        Mon, 13 Mar 2017 12:15:07 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pg0-x235.google.com (mail-pg0-x235.google.com. [2607:f8b0:400e:c05::235])
+        by gmr-mx.google.com with ESMTPS id a3si3268886pfb.2.2017.03.13.12.15.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 17 Apr 2021 08:35:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52e as permitted sender) client-ip=2a00:1450:4864:20::52e;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 13 Mar 2017 12:15:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::235 as permitted sender) client-ip=2607:f8b0:400e:c05::235;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=P90KopaV;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52e as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ed1-x52e.google.com with SMTP id d21so15584706edv.9
-        for <outreachy-kernel@googlegroups.com>; Sat, 17 Apr 2021 08:35:45 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::235 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x235.google.com with SMTP id g2so50581336pge.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 13 Mar 2017 12:15:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=95k7us3S0EVfXXTef/Cp2MnyUY4IkdXtTZcLiNqfFkw=;
-        b=P90KopaV22vpZbHNYLrl8cx61pnUeDJXZaqv2xJVGGI9X9sOqH2GwpNVc48J1gbQUo
-         ngTvIDx9hTuGxl06vNYjLTaKVdQojITh1dwEuo+LhVaYFNUciRqAY0N/dkg3jpUTAcBu
-         vrl1jKb1vISr+KVpIOde3BTVDvzZ86iV4ouNew/lpv+dP36PRWrBM1A3S4WA83w+YPA+
-         hJyCd2uvcFwQt6b+Mu3ZctmPNBXuIuIybJMkHwr+zSKUfj5gKbitDM6xt9aX7BBpjLLb
-         7NXf0OM77TGsq8Jzn6dqMBPK1B7w6PTJlQuighiCLSNh+fAkbYi8aa2pMjBeEGULNoyC
-         xR0Q==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=Gm36aAAcAeZbGBwClgvnkzwADcFvFs8RzeqcAnkNdoY=;
+        b=R3zjqSqVmc7uNULsukuR8VJCcIMGDBP2aabJIL3cDW3V62TY7DS+EoWT12qfpDUuTR
+         kgag3WrqrE4XnX05q/mpzy8AY34wxJFCP7S7J3Ow7cj4gxfC+HvXHYg/JQjeyTRIG9F9
+         aVIUOCuzgB0oDa7A/mgwv83QmL8qvSrqjP3kI07HcoKtcWXj0UEB3lOFi+9j8SimMzyK
+         0mm3loS1Zd+LuaGvi+8BStdM8o0JcssMfU/9vATUuV6f0sHrDrf7x/5fYdyZOPoI1dbx
+         aFNlKI3NbQeAkU4Un+z/F4Jauud4is7mp0qFpOQVVAJBTtmBds2BKtVRn7AEvQyIB/Pf
+         tCpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=95k7us3S0EVfXXTef/Cp2MnyUY4IkdXtTZcLiNqfFkw=;
-        b=kutZZJdL+RpF2lUeC7owwTPCZg9/OKko4cv0H+OUxtuk85Ykb5cMgYU+bBtUeCL8lH
-         hsu6YvVHA3ojHRIeGcHusEptmLWxUuh6fh+kf5sF7Sd2+x/0Of0c0BLY3XeRosX11p1P
-         AZfyf7DiPghMNTNb3DFSbrMpQWM6ckFU4dSjowR7vqrSgjdSPhTaaiDWFxlVr1n6oqgy
-         gqEMQddxr/EgEV5ytJAiXd57b7VbF42DjaAyPNbOMWNyUtH9g8J+1cIwqwCcBMB1bbr+
-         +HP/Cf71FpV9xhT2dV1zo5HvI2H/+ZsIKqD/Z7veZnKVnEwsD09LOvD7k94QcuemL+E4
-         r0UQ==
-X-Gm-Message-State: AOAM533YKfF2LpoV/uXvN75uhs3s7F1WJI8Y3ouIsOgH3IL9MqolBPeZ
-	lOLRvV3Wshg2p6zdIDwG8sgAVQSAaI3zuSwS
-X-Received: by 2002:a50:ee88:: with SMTP id f8mr16346181edr.69.1618673744809;
-        Sat, 17 Apr 2021 08:35:44 -0700 (PDT)
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from linux.local (host-95-237-55-30.retail.telecomitalia.it. [95.237.55.30])
-        by smtp.gmail.com with ESMTPSA id x9sm8396491edv.22.2021.04.17.08.35.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 17 Apr 2021 08:35:44 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	dri-devel@lists.freedesktop.org,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@linux.ie>,
-	Daniel Vetter <daniel@ffwll.ch>
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [PATCH Resend] drm/drm_bufs.c: In switch, add break in default case
-Date: Sat, 17 Apr 2021 17:35:40 +0200
-Message-Id: <20210417153540.22017-1-fmdefrancesco@gmail.com>
-X-Mailer: git-send-email 2.31.1
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=Gm36aAAcAeZbGBwClgvnkzwADcFvFs8RzeqcAnkNdoY=;
+        b=DUXbUmiB7Qv7EcY2bt978EOV+Dyw+AapmYXqOUiBAzRWJzdSwtXwtsd8ckxfAJaG/h
+         8xGpjXmhj3Jl5eysvhUBSWn0nn42gk2vjMjCwnqV3rFzVFmXKw5Zeh27M9KhcwT/MUlq
+         1qSEgaPxIBJeZEf9wF7HGN3eGNxIr8217Xvai6oYxgCIw/qHYpAIEfyjgkEfU5MfSKN3
+         jrGK9KdfOXp3uZF+D5cq+A1y3m6S/q9JwBQ3Tv/Mco6oSbw5gDU0eVYfSmI88cV24OVN
+         kFMboJQGckqP8hhh/TKsManpDhbO1wyDeic4SfbB4jFhFz2IhK4Dwwm8kjc9jGmXCdJ+
+         VM7g==
+X-Gm-Message-State: AMke39m8J8ozhUIKiVJ/KpKajmklNNyU9+hRYwn22hXc3WDnB111BK6dlo+Ze9/zMLmIjg==
+X-Received: by 10.99.47.68 with SMTP id v65mr39051915pgv.23.1489432507117;
+        Mon, 13 Mar 2017 12:15:07 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
+        by smtp.gmail.com with ESMTPSA id q64sm34351321pga.0.2017.03.13.12.15.06
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 13 Mar 2017 12:15:06 -0700 (PDT)
+Date: Mon, 13 Mar 2017 12:15:05 -0700
+From: Alison Schofield <amsfield22@gmail.com>
+To: Aishwarya Pant <aishpant@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [KERNEL NEWBIES ACCESS] AishwaryaPant
+Message-ID: <20170313191504.GA5941@d830.WORKGROUP>
+References: <20170313095731.GA3648@aishwarya>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170313095731.GA3648@aishwarya>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Added a 'break' in the default case of a switch selection statement.
-
-Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
----
- drivers/gpu/drm/drm_bufs.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/drm_bufs.c b/drivers/gpu/drm/drm_bufs.c
-index e3d77dfefb0a..fc40aa0adf73 100644
---- a/drivers/gpu/drm/drm_bufs.c
-+++ b/drivers/gpu/drm/drm_bufs.c
-@@ -79,7 +79,7 @@ static struct drm_map_list *drm_find_matching_map(struct drm_device *dev,
- 				return entry;
- 			break;
- 		default: /* Make gcc happy */
--			;
-+			break;
- 		}
- 		if (entry->map->offset == map->offset)
- 			return entry;
--- 
-2.31.1
-
+On Mon, Mar 13, 2017 at 03:27:31PM +0530, Aishwarya Pant wrote:
+> Hello
+> 
+> I would like access to edit privileges on kernerlnewbies to I can
+> start working on tasks.
+done
+> 
+> Thanks
+> Aishwarya
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170313095731.GA3648%40aishwarya.
+> For more options, visit https://groups.google.com/d/optout.
 
