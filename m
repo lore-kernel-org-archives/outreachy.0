@@ -1,118 +1,167 @@
-X-GM-THRID: 6950271792119283712
-X-Received: by 2002:a05:651c:212a:: with SMTP id a42mr18140556ljq.505.1618236254227;
-        Mon, 12 Apr 2021 07:04:14 -0700 (PDT)
+X-GM-THRID: 6397358955566202880
+X-Received: by 10.157.22.211 with SMTP id s19mr17363038ots.37.1489501203730;
+        Tue, 14 Mar 2017 07:20:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a19:48c6:: with SMTP id v189ls1339362lfa.0.gmail; Mon, 12
- Apr 2021 07:04:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxLCKp9MXWS1+PX0zbuQIcwUHhMF+8wwJoBOuY0RVq9TGpleLBSeL/RB0k8mB+6X44FZuEd
-X-Received: by 2002:a05:6512:3614:: with SMTP id f20mr14867206lfs.91.1618236252591;
-        Mon, 12 Apr 2021 07:04:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618236252; cv=none;
-        d=google.com; s=arc-20160816;
-        b=h81Ae6YbqQiq05+L3kRr7/gcsc9p1xA4Cta5agvXJm0QT0JfxYoLRaA55jxtNhLH/P
-         jv8iP2HgFJm663G6MdFezRpAdlFoSEVlbxAbrorvBEi2XOjpdHI1DsXtTMw2wApejSZe
-         DgBBnS79z14MCXFTP6BfvMT7iRMAwr0Kc4Tr7OuS5y2WFGfrPVlMCg2cFXyO3gcMgxQe
-         u3YQr+5/2tyJ6lu2HCQvmaA2l3K81qypb/Tu93YVcSLT0bt19Y+XyXO0WmfyPoaS2WiX
-         B0X3eIqjaizWiJQtIy7sj8cCU7DY1IERIsp0rW5fZHSBsHbESEZK0JbWA13BmvOPb8fx
-         0Hcw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:content-description:mime-version
-         :message-id:to:from:date:dkim-signature;
-        bh=lcGNOYVdXxipPJpBHLMfMmIr5y6kL1zAs6W9LWpICg4=;
-        b=TnOFgW+Q2B5Q92w/cvq1LJL58cqPsB72/LZeFRscpBzKQ0LllgjRCZGfwQStOHLCwF
-         kbb1x4GY4gLrQIvy4XSACPfh0ve8xLfTPGh8BmKNQFCfkhksgUgZhbvfBIddPbUopqtM
-         AHOp9I0wDP1WDzLBG8WvqrET3uyBC6aYr10jSG2yv7NA/xTJLgz5TLxQdMGWOoJehoMe
-         eq9DyVXnQZXJ+1BhTUBya9daObgmTGRRwgckJZ1Mgm4zv4/6g5SrgoGi4K3Z4NFNYYuq
-         mj7RUH9an3bJaK7mo1S0APdecUvio020FWi9Hl34TOm3FBRzaMmWfGIIIftj9hgGDtWZ
-         N5OQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jn8It9pG;
-       spf=pass (google.com: domain of tawahpeggy98@gmail.com designates 2a00:1450:4864:20::431 as permitted sender) smtp.mailfrom=tawahpeggy98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <tawahpeggy98@gmail.com>
-Received: from mail-wr1-x431.google.com (mail-wr1-x431.google.com. [2a00:1450:4864:20::431])
-        by gmr-mx.google.com with ESMTPS id j7si640166lfm.9.2021.04.12.07.04.12
+Received: by 10.157.31.6 with SMTP id x6ls15555692otd.46.gmail; Tue, 14 Mar
+ 2017 07:20:03 -0700 (PDT)
+X-Received: by 10.157.17.123 with SMTP id p56mr18359121otp.116.1489501203426;
+        Tue, 14 Mar 2017 07:20:03 -0700 (PDT)
+Return-Path: <aishpant@gmail.com>
+Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
+        by gmr-mx.google.com with ESMTPS id y90si3670293pfa.6.2017.03.14.07.20.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 12 Apr 2021 07:04:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of tawahpeggy98@gmail.com designates 2a00:1450:4864:20::431 as permitted sender) client-ip=2a00:1450:4864:20::431;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 14 Mar 2017 07:20:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jn8It9pG;
-       spf=pass (google.com: domain of tawahpeggy98@gmail.com designates 2a00:1450:4864:20::431 as permitted sender) smtp.mailfrom=tawahpeggy98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x431.google.com with SMTP id s7so12960055wru.6
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Apr 2021 07:04:12 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x241.google.com with SMTP id m5so440741pgk.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 14 Mar 2017 07:20:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:message-id:mime-version:content-description
-         :content-disposition:user-agent;
-        bh=lcGNOYVdXxipPJpBHLMfMmIr5y6kL1zAs6W9LWpICg4=;
-        b=jn8It9pG/kzIg8JsMYvwO1kgqHgDCKvL78JDKQWXQX1M66Evhgvbh+dXfwb8rO8nax
-         vfqlqbiF9oCLSADl9basfa+9Xa+x7SGmRztAz55Nuqd25W/BL5rcaPKtsuo1GDJUIuMX
-         H9ZJ+RyIzcmoY/GYRNAAJL8VJuEPTw7jwdTqRcbpNtHPHaS4tWtMq9XVs1fFmpeUTtWb
-         ociNc0n7eEkAeawfVLqAimZlKwK81r+DrD7FGD3O14KSF5FDDKBRpY6JYwUr+UqIOnkS
-         txOos9zluSyycBtUlrtTHQGdulDfaTKE6DJfKUSDKyGngUe//KsHc2IHs+k3P9vnJ7Zz
-         Yhvw==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=nzKSWFavKEbxsdaY87Sx5LXzKTLOT5arkxXIfHEb9Hs=;
+        b=R28Rd6MiFam4K9OoruB7M//yw4KZ0uIctpHZcoBwv7U45HjkgPrGRHIW/xiQj9OJY/
+         w+BLi6wcMGE5jNNAeYA2efuBe44DrrHyVc4wgTJTSAuTJMHiL1qqC/WAaFNyEyOy44KE
+         5QN0/40FexHSK0c58Wm1VkO/IXwscryFryMm2kyeXBfocS0+zdVCz3uV0QqSAUV/AGLZ
+         9LskNYXseAVGq+fLHnc0CNglAwTBXgK24PoLrxTati5V2SjhDJb3EY3GHnB+IJFDrPDh
+         UlxZWY5xESqsJI7r14elxVIPfW478nNMnret0Q901DagzcPRBRdeswcrqyR4lCh7k/RV
+         OpLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:message-id:mime-version
-         :content-description:content-disposition:user-agent;
-        bh=lcGNOYVdXxipPJpBHLMfMmIr5y6kL1zAs6W9LWpICg4=;
-        b=b0Ug4thVnUJzKgpSWyLcvCe7OX4rleCLPwwXouvWdophOGkimNGNc4suruBJM5+7La
-         uS8qNMbwbilgUMlxTuXOPyM0Zbnhx9YonLWVcac1ft/fZwMERu5TtrqQ3L5V3mrx5aPQ
-         TtmpUvguug+HhToflbQvMvn7yr9/fn16tCJzhUGfpX21F54Ok/85wbCN4bhRjdrVU8mw
-         Mu00xPXKLD2W6OtIJsUvbbUks4Oe7C6iB4woq13rFPRlM8pTJjDfyBgLp4yBlKkcTFgH
-         UF95P2wAT8StfumyZRRca+IsHzY36U0neR+a0RzRpPLXja1mSKRKdMy9/tjfQdLp4hLy
-         gplw==
-X-Gm-Message-State: AOAM532TK3P+2nOly5KJJiFWLE2sfBqkkR3TXPYhI+bZoXknIe9vZ+oA
-	L0U6m02F/mW4HsjTVR6jY/RyxMHJercw+meR
-X-Received: by 2002:a5d:4402:: with SMTP id z2mr11934955wrq.179.1618236252357;
-        Mon, 12 Apr 2021 07:04:12 -0700 (PDT)
-Return-Path: <tawahpeggy98@gmail.com>
-Received: from peggy-Lenovo-V130-15IKB ([154.72.153.204])
-        by smtp.gmail.com with ESMTPSA id h13sm15015796wmq.29.2021.04.12.07.04.09
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Apr 2021 07:04:12 -0700 (PDT)
-Date: Mon, 12 Apr 2021 10:04:05 -0400
-From: PEGGY TAWAH <tawahpeggy98@gmail.com>
-To: Vaibhav Hiremath <hvaibhav.linux@gmail.com>,
-	Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	outreachy-kernel@googlegroups.com
-Message-ID: <20210412140400.GA31238@peggy-Lenovo-V130-15IKB>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=nzKSWFavKEbxsdaY87Sx5LXzKTLOT5arkxXIfHEb9Hs=;
+        b=So06VBO41LDzEt9xuRJZaVcH1yXrCJ7mMNW5iralEPBLx+yRceffi2LOhyPDdZFHD6
+         vzSxOIlHxR3bZQt88T5cLBPk8SmLvlQtt69Tzw7+rHEDeucJg/cVEwhsgFADhyCnakqy
+         /KGbkX779RTdhlmYa/S0CmZtHPS1OInwaLZytXDbuqsVT/aoFaZJk0NugLPvJKWXKEgA
+         L6qQmu3mHiiL9bsbl17bZ1OXSzePK5tPhB4LCPlDgPyRV+d6psQGprip+e3fgosR2xu0
+         /EjO43dusviuJ6M1U+3DNS5So7DApF7+iEN2RtFbQOr/q28wbND95+44bHtgDghox5Ie
+         Azeg==
+X-Gm-Message-State: AMke39mcOPABOG+pm5ux4rf7vJVzTRUKN6hKBcwfkwMoHH4AJ62HvvqEgDmwIqFDfiOAPA==
+X-Received: by 10.99.120.76 with SMTP id t73mr43833665pgc.149.1489501203159;
+        Tue, 14 Mar 2017 07:20:03 -0700 (PDT)
+Return-Path: <aishpant@gmail.com>
+Received: from aishwarya ([49.35.4.74])
+        by smtp.gmail.com with ESMTPSA id y5sm39098914pfd.33.2017.03.14.07.19.58
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 14 Mar 2017 07:20:02 -0700 (PDT)
+Date: Tue, 14 Mar 2017 03:34:25 +0530
+From: Aishwarya Pant <aishpant@gmail.com>
+To: Lars-Peter Clausen <lars@metafoo.de>,
+	Michael Hennerich <Michael.Hennerich@analog.com>,
+	Jonathan Cameron <jic23@kernel.org>,
+	Hartmut Knaack <knaack.h@gmx.de>,
+	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com, linux-iio@vger.kernel.org
+Subject: [PATCH] staging: iio: cdc: replace mlock with driver private lock
+Message-ID: <20170313220425.GA30482@aishwarya>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Content-Description: checkpatch complained of line too long so i removed some spaces.CHECK: line length of 101 exceeds 100 columns
 Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Cc: 
-Bcc: 
-Subject: [PATCH] Staging: greybus: Remove a space because line is too long
-Reply-To:
+The IIO subsystem is redefining iio_dev mlock to be used by IIO core
+only for protecting device operating mode changes.
 
-checkpatch complained of line 182 too long in greybus driver,so i removed some spaces. CHECK: line length of 101 exceeds 100 colums
+In driver ad7746 wherever mlock was used to protect hardware state
+changes, it has been replaced with a driver private lock.
 
-Signed-off-by: 	PEGGY TAWAH <tawahpeggy98@gmail.com>
-
+Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
 ---
- drivers/staging/greybus/arche-platform.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/iio/cdc/ad7746.c | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
-index e374dfc0c92f..1bfec5fae849 100644
---- a/drivers/staging/greybus/arche-platform.c
-+++ b/drivers/staging/greybus/arche-platform.c
-@@ -179,7 +179,7 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
-                                if (arche_pdata->wake_detect_state !=
-                                                WD_STATE_COLDBOOT_START) {
-                                        arche_platform_set_wake_detect_state(arche_pdata,
--                                                                            WD_STATE_COLDBOOT_TRIG);
-+                                                                 WD_STATE_COLDBOOT_TRIG);
-                                        spin_unlock_irqrestore(&arche_pdata->wake_lock,
-                                                               flags);
-                                        return IRQ_WAKE_THREAD;
+diff --git a/drivers/staging/iio/cdc/ad7746.c b/drivers/staging/iio/cdc/ad7746.c
+index 81f8b9e..6e3f99c 100644
+--- a/drivers/staging/iio/cdc/ad7746.c
++++ b/drivers/staging/iio/cdc/ad7746.c
+@@ -91,6 +91,7 @@
+ 
+ struct ad7746_chip_info {
+ 	struct i2c_client *client;
++	struct mutex lock; /* protect sensor state */
+ 	/*
+ 	 * Capacitive channel digital filter setup;
+ 	 * conversion time/update rate setup per channel
+@@ -298,11 +299,11 @@ static inline ssize_t ad7746_start_calib(struct device *dev,
+ 	if (!doit)
+ 		return 0;
+ 
+-	mutex_lock(&indio_dev->mlock);
++	mutex_lock(&chip->lock);
+ 	regval |= chip->config;
+ 	ret = i2c_smbus_write_byte_data(chip->client, AD7746_REG_CFG, regval);
+ 	if (ret < 0) {
+-		mutex_unlock(&indio_dev->mlock);
++		mutex_unlock(&chip->lock);
+ 		return ret;
+ 	}
+ 
+@@ -310,12 +311,12 @@ static inline ssize_t ad7746_start_calib(struct device *dev,
+ 		msleep(20);
+ 		ret = i2c_smbus_read_byte_data(chip->client, AD7746_REG_CFG);
+ 		if (ret < 0) {
+-			mutex_unlock(&indio_dev->mlock);
++			mutex_unlock(&chip->lock);
+ 			return ret;
+ 		}
+ 	} while ((ret == regval) && timeout--);
+ 
+-	mutex_unlock(&indio_dev->mlock);
++	mutex_unlock(&chip->lock);
+ 
+ 	return len;
+ }
+@@ -426,7 +427,7 @@ static int ad7746_write_raw(struct iio_dev *indio_dev,
+ 	struct ad7746_chip_info *chip = iio_priv(indio_dev);
+ 	int ret, reg;
+ 
+-	mutex_lock(&indio_dev->mlock);
++	mutex_lock(&chip->lock);
+ 
+ 	switch (mask) {
+ 	case IIO_CHAN_INFO_CALIBSCALE:
+@@ -521,7 +522,7 @@ static int ad7746_write_raw(struct iio_dev *indio_dev,
+ 	}
+ 
+ out:
+-	mutex_unlock(&indio_dev->mlock);
++	mutex_unlock(&chip->lock);
+ 	return ret;
+ }
+ 
+@@ -534,7 +535,7 @@ static int ad7746_read_raw(struct iio_dev *indio_dev,
+ 	int ret, delay, idx;
+ 	u8 regval, reg;
+ 
+-	mutex_lock(&indio_dev->mlock);
++	mutex_lock(&chip->lock);
+ 
+ 	switch (mask) {
+ 	case IIO_CHAN_INFO_RAW:
+@@ -658,7 +659,7 @@ static int ad7746_read_raw(struct iio_dev *indio_dev,
+ 		ret = -EINVAL;
+ 	}
+ out:
+-	mutex_unlock(&indio_dev->mlock);
++	mutex_unlock(&chip->lock);
+ 	return ret;
+ }
+ 
+@@ -686,6 +687,7 @@ static int ad7746_probe(struct i2c_client *client,
+ 	if (!indio_dev)
+ 		return -ENOMEM;
+ 	chip = iio_priv(indio_dev);
++	mutex_init(&chip->lock);
+ 	/* this is only used for device removal purposes */
+ 	i2c_set_clientdata(client, indio_dev);
+ 
 -- 
-2.17.1
+2.7.4
 
 
