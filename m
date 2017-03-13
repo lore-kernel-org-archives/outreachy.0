@@ -1,53 +1,53 @@
 X-GM-THRID: 6397088114020450304
-X-Received: by 10.200.45.138 with SMTP id p10mr5484719qta.17.1489438157922;
-        Mon, 13 Mar 2017 13:49:17 -0700 (PDT)
+X-Received: by 10.129.39.142 with SMTP id n136mr16292619ywn.160.1489438152733;
+        Mon, 13 Mar 2017 13:49:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.51.92 with SMTP id u28ls1251059otd.12.gmail; Mon, 13 Mar
- 2017 13:49:17 -0700 (PDT)
-X-Received: by 10.157.80.152 with SMTP id b24mr15544418oth.31.1489438157546;
-        Mon, 13 Mar 2017 13:49:17 -0700 (PDT)
+Received: by 10.157.36.169 with SMTP id z38ls9338846ota.27.gmail; Mon, 13 Mar
+ 2017 13:49:12 -0700 (PDT)
+X-Received: by 10.200.43.146 with SMTP id m18mr5431023qtm.58.1489438152371;
+        Mon, 13 Mar 2017 13:49:12 -0700 (PDT)
 Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id y90si3267107pfa.6.2017.03.13.13.49.17
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id u12si3320097pfd.3.2017.03.13.13.49.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 13 Mar 2017 13:49:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Mon, 13 Mar 2017 13:49:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id g2so15058030pge.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 13 Mar 2017 13:49:17 -0700 (PDT)
+Received: by mail-pg0-x243.google.com with SMTP id 25so19549295pgy.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 13 Mar 2017 13:49:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=KT0IWj+YqYQTZ8KjZgWy32yNB/RKCKD/eq7+hqILGfw=;
-        b=FO95fdf3JL34m36BLXizx0hU0ajUoPIxVjs05k42sLNcKqucCKXYhHY6eZoHmZ2pSZ
-         Rf/2en3i2KT/Ug4qFJkrjFGYHsy3bXiHG49LIxxIRLRaYWN70wS9FbjYUs11CMhFeTEK
-         8fHEYXRL2VJV9Cn7dk4D61x9eARnbDIMUc/gTNLnWg0he6RwYCynaDYwKiLkgDwrpeUZ
-         XkSQPhP4j4gmyKKGU6mKI/ahquaIvjkUt/5t/jRBZaF4CTp2qLJhA+s9oOLS4joeW+07
-         jnE0abPgkxwcgnM2FSxzKvhOOTEUq2dziscqXgHE26BSu6VBetGzEjS7cDct/EACkt5P
-         47tQ==
+        bh=mSZC11db3IWKZlG5vVAdAx49PvFwUXY7i5z2KhTDjO4=;
+        b=PUqm3AwKIwRqKC8G7Pf0q+PmcbsYgXOm94ueNmV+K2WUHokiEwPdDLly4Nl5nj9e9+
+         BlgTVupQa/qjSimySpYifPh757PcWJoyDa/pwsQ3UhFfwZZyf7bc2Q1Ka6xk43VT/PmO
+         dhCewH3rfiEInPAwBqsnHGMewh1j/4ByjYeV0eGapgq0dlO+OF0yNXk13h5XIFfhqFJF
+         oUfQdxKwZ3ZRaZ0huiSoZINaijXPi9AsXxyvAIn0J5S/zFjufn83hqPFBLbKKQnnfj0A
+         4nLk6fNHGK3R7gvvzZtPmWVngwEwoNCXjnOLw5slVLRWTNYoByATauH8mzCLj+Tjzd2M
+         YoCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=KT0IWj+YqYQTZ8KjZgWy32yNB/RKCKD/eq7+hqILGfw=;
-        b=kgr3NFPCM65haGrPIwZ6sFqwefKUq2WWQ2jSw+Cr/+O0u1p/uoYWyzKri1OLm20Vn6
-         rZ7K4S37vwhP6tUxe9v4MRoNUeynZVyyp58xGokVJ2LVDQsbqpaQnwXZxY+sqWQ7Dr7A
-         VqNwFD5BAvFLx6SxXk4vSBEWJQpQsqryVLsAoi/HByqzzVAAL0O36L9XccNn1begrPwS
-         qSdaewhaKOwGac8KZqbZVWoA8dhXNIxp5fHQKAs7xAhGVEASygS7xoj7/octTAO0BI89
-         J3Zcu20uqL8XArHN0p1av4CVKQaDOgyDjlQ2qxZJ/iIKL0rGIiSO/h1+ouzenpv3KPmt
-         5l3g==
-X-Gm-Message-State: AMke39m6B4BAqC+wHgpQKniEMfwOKoghcEvWRHLJvlHHTHdrHpXhtGnqA8r5LYHoxky1OA==
-X-Received: by 10.98.163.17 with SMTP id s17mr39497001pfe.61.1489438157176;
-        Mon, 13 Mar 2017 13:49:17 -0700 (PDT)
+        bh=mSZC11db3IWKZlG5vVAdAx49PvFwUXY7i5z2KhTDjO4=;
+        b=Td5PtI9mRRF4qGwAqp4Slk/0zoEiTzJJqNBGVIszh7NWPh10mPX8gilX0fpHlyVTWE
+         s4wlQda1A69yMBT5sCvWWzjXXPRh+l1OWG3bbSO7HnfcW0sDwQWmOM3Rd0LkOTQge/Uu
+         nZp8svhPtzRAS1FD4rrPNCKQA/8LEjZgMeYF9oTd63jIo8+sG4yhakCxcqx+b+WA+4JL
+         zFgVYJr78p5Rn0w3ItQp9nyIRLJv1MHXilHIxVRA/QXdxH57ByWqxj3EIjvrnw3pRUfT
+         mjSYgV+DamnPgnaVSbiOf6e03sI3M85TaK6no+5LI6fAIw2eRCOssye+QLy8V2qK2UE6
+         5v9w==
+X-Gm-Message-State: AMke39m+2VPuqWMaZofQNcnZMLF/ThLcImqAmRuFTCBw5OH2RgcUPuSOVhgeES1i61Q7yg==
+X-Received: by 10.99.175.7 with SMTP id w7mr38729942pge.170.1489438152141;
+        Mon, 13 Mar 2017 13:49:12 -0700 (PDT)
 Return-Path: <arushisinghal19971997@gmail.com>
 Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id i3sm34305766pfk.47.2017.03.13.13.49.15
+        by smtp.gmail.com with ESMTPSA id x10sm34327699pff.72.2017.03.13.13.49.10
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 13 Mar 2017 13:49:15 -0700 (PDT)
+        Mon, 13 Mar 2017 13:49:10 -0700 (PDT)
 From: Arushi Singhal <arushisinghal19971997@gmail.com>
 To: w.d.hubbs@gmail.com
 Cc: chris@the-brannons.com,
@@ -59,50 +59,79 @@ Cc: chris@the-brannons.com,
 	devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org,
 	Arushi Singhal <arushisinghal19971997@gmail.com>
-Subject: [PATCH v3 2/4] staging: sm750fb: fixes add blank line after function/struct/union/enum declarations
-Date: Tue, 14 Mar 2017 02:18:48 +0530
-Message-Id: <20170313204853.24675-3-arushisinghal19971997@gmail.com>
+Subject: [PATCH v3 1/4] staging: sm750fb: function prototype argument should have an identifier name
+Date: Tue, 14 Mar 2017 02:18:47 +0530
+Message-Id: <20170313204853.24675-2-arushisinghal19971997@gmail.com>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20170313204853.24675-1-arushisinghal19971997@gmail.com>
 References: <20170313204853.24675-1-arushisinghal19971997@gmail.com>
 
-This patch fixes the warnings reported by checkpatch.pl
-for please use a blank line after function/struct/union/enum
-declarations.
+function prototype arguments like 'struct vb_device_info *','unsigned
+long' etc. should have an identifier name.
 
 Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
 ---
- drivers/staging/sm750fb/sm750_cursor.c | 3 +++
- 1 file changed, 3 insertions(+)
+ changes in v3
+ - add the identifier name of one more prototype arguments.
 
-diff --git a/drivers/staging/sm750fb/sm750_cursor.c b/drivers/staging/sm750fb/sm750_cursor.c
-index 612e9ab9d569..b64dc8a4a8fb 100644
---- a/drivers/staging/sm750fb/sm750_cursor.c
-+++ b/drivers/staging/sm750fb/sm750_cursor.c
-@@ -54,6 +54,7 @@ void sm750_hw_cursor_enable(struct lynx_cursor *cursor)
- 	reg = (cursor->offset & HWC_ADDRESS_ADDRESS_MASK) | HWC_ADDRESS_ENABLE;
- 	poke32(HWC_ADDRESS, reg);
+ drivers/staging/sm750fb/ddk750_display.h | 2 +-
+ drivers/staging/sm750fb/ddk750_mode.h    | 2 +-
+ drivers/staging/sm750fb/ddk750_power.h   | 2 +-
+ drivers/staging/sm750fb/sm750.h          | 4 ++--
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/staging/sm750fb/ddk750_display.h b/drivers/staging/sm750fb/ddk750_display.h
+index e2a3f84ca4c5..609bf742efff 100644
+--- a/drivers/staging/sm750fb/ddk750_display.h
++++ b/drivers/staging/sm750fb/ddk750_display.h
+@@ -102,6 +102,6 @@ typedef enum _disp_output_t {
  }
-+
- void sm750_hw_cursor_disable(struct lynx_cursor *cursor)
- {
- 	poke32(HWC_ADDRESS, 0);
-@@ -65,6 +66,7 @@ void sm750_hw_cursor_setSize(struct lynx_cursor *cursor,
- 	cursor->w = w;
- 	cursor->h = h;
+ disp_output_t;
+ 
+-void ddk750_setLogicalDispOut(disp_output_t);
++void ddk750_setLogicalDispOut(disp_output_t output);
+ 
+ #endif
+diff --git a/drivers/staging/sm750fb/ddk750_mode.h b/drivers/staging/sm750fb/ddk750_mode.h
+index 2183e664cf4b..6d204b8b4a01 100644
+--- a/drivers/staging/sm750fb/ddk750_mode.h
++++ b/drivers/staging/sm750fb/ddk750_mode.h
+@@ -34,6 +34,6 @@ typedef struct _mode_parameter_t {
  }
-+
- void sm750_hw_cursor_setPos(struct lynx_cursor *cursor,
- 						int x, int y)
- {
-@@ -74,6 +76,7 @@ void sm750_hw_cursor_setPos(struct lynx_cursor *cursor,
- 	       (x & HWC_LOCATION_X_MASK);
- 	poke32(HWC_LOCATION, reg);
+ mode_parameter_t;
+ 
+-int ddk750_setModeTiming(mode_parameter_t *, clock_type_t);
++int ddk750_setModeTiming(mode_parameter_t *parm, clock_type_t clock);
+ 
+ #endif
+diff --git a/drivers/staging/sm750fb/ddk750_power.h b/drivers/staging/sm750fb/ddk750_power.h
+index ec0b99d6a7ad..44c4fc587e96 100644
+--- a/drivers/staging/sm750fb/ddk750_power.h
++++ b/drivers/staging/sm750fb/ddk750_power.h
+@@ -14,7 +14,7 @@ DPMS_t;
+ 	       (peek32(MISC_CTRL) & ~MISC_CTRL_DAC_POWER_OFF) | (off)); \
  }
-+
- void sm750_hw_cursor_setColor(struct lynx_cursor *cursor,
- 						u32 fg, u32 bg)
- {
+ 
+-void ddk750_set_dpms(DPMS_t);
++void ddk750_set_dpms(DPMS_t state);
+ void sm750_set_power_mode(unsigned int powerMode);
+ void sm750_set_current_gate(unsigned int gate);
+ 
+diff --git a/drivers/staging/sm750fb/sm750.h b/drivers/staging/sm750fb/sm750.h
+index 306711ed55f9..5b186dafedec 100644
+--- a/drivers/staging/sm750fb/sm750.h
++++ b/drivers/staging/sm750fb/sm750.h
+@@ -184,8 +184,8 @@ static inline unsigned long ps_to_hz(unsigned int psvalue)
+ }
+ 
+ int hw_sm750_map(struct sm750_dev *sm750_dev, struct pci_dev *pdev);
+-int hw_sm750_inithw(struct sm750_dev*, struct pci_dev *);
+-void hw_sm750_initAccel(struct sm750_dev *);
++int hw_sm750_inithw(struct sm750_dev *sm750_dev, struct pci_dev *pdev);
++void hw_sm750_initAccel(struct sm750_dev *sm750_dev);
+ int hw_sm750_deWait(void);
+ int hw_sm750le_deWait(void);
+ 
 -- 
 2.11.0
 
