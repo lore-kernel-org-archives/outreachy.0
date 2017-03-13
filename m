@@ -1,104 +1,124 @@
-X-GM-THRID: 6946995103705595904
-X-Received: by 2002:ac2:5e8b:: with SMTP id b11mr12100216lfq.99.1617473341583;
-        Sat, 03 Apr 2021 11:09:01 -0700 (PDT)
+X-GM-THRID: 6397085894366461952
+X-Received: by 10.157.82.35 with SMTP id e35mr15421470oth.127.1489443844103;
+        Mon, 13 Mar 2017 15:24:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a19:e86:: with SMTP id 128ls2781632lfo.0.gmail; Sat, 03 Apr
- 2021 11:08:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwtQ6pN5Fos7H4CS+rW9iF0B+oVwgKSs+pxOd5F4+izMc3vV7VQaeGw20JCI2JH4v9D7fRJ
-X-Received: by 2002:a19:68b:: with SMTP id 133mr12370391lfg.151.1617473339859;
-        Sat, 03 Apr 2021 11:08:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617473339; cv=none;
-        d=google.com; s=arc-20160816;
-        b=HXCepKA8X5Py9C8jsgqVAr8/8+Eswr1rq9AYIFbDhd1pfGEXJ8CJG5duIAw5RIt8Ab
-         uOoeQGuH2TfCFVO7kzit0/BVZMNLYque8Ochtsk8pZ/+qs7x05cTCxPKfAPxDA4+vbL5
-         TBLTuRMlGEczo86pbzu0Wv6yIDwRd11SNRwHEq6nuk+iFzYWyJt2F6kUvVmAJZIwHAwO
-         MPYN1LRinAbJqXQCVcjI2AJE3Ij1FB9IoqYl1k5fzsj1TtEEszIgTZ3jqbJI6UvGvost
-         W5d4B5/4UZZWWwpMU0aG53LTPM6qLR1SkafiFDXRIyUgtpkFKaPKL+NrMVX8z2kGL7cT
-         QFtg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=/DHc77qHzF47tIzabn/XC2E6zkbwQgwze0m6zhIGO0g=;
-        b=du8KG5sK6XGJozjbObWmLBBZqlxnjMmWYvaHIwBn7V2RT6mRd25qRt5tgpWjwS0kGa
-         Gz3tc+LV8jtDNxcCehUyz52N1c+EPtrWigfLUKHeMM1TyBbmGHcfuyKC5DHCBN+W+SGc
-         0vNgz/vuH2TAg1cAXGHqjJfze599XNvYiz+DtQKSu5pHdeay9ISvSq3ReHLvt+20SHwo
-         CstmxAb3P7QicbTzq96Cnd3sgSbfG1bt5b34uiaUQtc+W9yQ6YkKVv+g8ZwYNknQ/H/0
-         iwXFhSQAQ/zqZMoYEGo5PMUhpk9hp7MDnk8nKQUxQkRGKkMEUzHZ5/pRhf7qolxnIAW2
-         Yl3g==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TgArWY+L;
-       spf=pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::135 as permitted sender) smtp.mailfrom=zhansayabagdaulet@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <zhansayabagdaulet@gmail.com>
-Received: from mail-lf1-x135.google.com (mail-lf1-x135.google.com. [2a00:1450:4864:20::135])
-        by gmr-mx.google.com with ESMTPS id v26si1033025lfo.2.2021.04.03.11.08.59
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 03 Apr 2021 11:08:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::135 as permitted sender) client-ip=2a00:1450:4864:20::135;
+Received: by 10.107.31.133 with SMTP id f127ls4246078iof.27.gmail; Mon, 13 Mar
+ 2017 15:24:03 -0700 (PDT)
+X-Received: by 10.107.7.16 with SMTP id 16mr10197543ioh.15.1489443843327;
+        Mon, 13 Mar 2017 15:24:03 -0700 (PDT)
+Received: by 10.55.103.195 with SMTP id b186msqkc;
+        Mon, 13 Mar 2017 14:31:53 -0700 (PDT)
+X-Received: by 10.46.9.141 with SMTP id 135mr5838651ljj.19.1489440712876;
+        Mon, 13 Mar 2017 14:31:52 -0700 (PDT)
+Return-Path: <daniele@grinta.net>
+Received: from zed.grinta.net (zed.grinta.net. [109.74.203.128])
+        by gmr-mx.google.com with ESMTP id l138si850544wmg.0.2017.03.13.14.31.51
+        for <outreachy-kernel@googlegroups.com>;
+        Mon, 13 Mar 2017 14:31:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of daniele@grinta.net designates 109.74.203.128 as permitted sender) client-ip=109.74.203.128;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TgArWY+L;
-       spf=pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::135 as permitted sender) smtp.mailfrom=zhansayabagdaulet@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lf1-x135.google.com with SMTP id o10so11722280lfb.9
-        for <outreachy-kernel@googlegroups.com>; Sat, 03 Apr 2021 11:08:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=/DHc77qHzF47tIzabn/XC2E6zkbwQgwze0m6zhIGO0g=;
-        b=TgArWY+LrUkDahwrOlfzPf1xYluBXZ9jZjo29rEJU2zde5ZhPVsCYLwv0sUuVy83B9
-         2Lu0jZfrS1qKM/crA5xu8y4bBDvyxPxhRWqPRn0U8+RllfBK1zSXL0k/DS2t4s7UeFFL
-         FYtCR0hG6s/UYqVrXsOK1myctGSnCCiXrozP0H32bIS4MgLmx5QETtnFr9J+hpTuAVjR
-         O1cBXn/gr8lgFxIY1bATqyVTva/kVFfzctLeddRBaAZHpTOE+YJ2EDAAYB0QmF8SmCoa
-         wztynjZOaJqRdOHAqce4Oh4IOp3qJtfz25PGwPwYqknvO5TEzoxU9XdQinKE8Zab722m
-         ceLw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=/DHc77qHzF47tIzabn/XC2E6zkbwQgwze0m6zhIGO0g=;
-        b=VXgcizxD++ZXH/EbGSSQp4fgw6m5WfshEIg6032ptyfhIqWUeIZdMkfyaZ8Bsfnl+N
-         73VlfzNs5XX7ga1s96IwPSzrwDMmVNPsAnUPyoqFqkWZryoVtLSMNW7KTPOOKRu3JHqa
-         rZb2ab/eEh2nqwqs7KIh9kL6H1LYV9qkZQffOXL9ImDtAljmWz3k7c5GQZiB3VoXUomw
-         cwGcXNFi76PbVVd7zTWetYKsd9uYGURyR7DMP9dPtchIr3kxMd6CdlM0JCzOSSUpyw2v
-         eXstAiwCYn26MGFbfedDeAdrjTZZCguQdUO0XJeRoU7JhXjaq0/JGUJdLToaE52xzcDO
-         bkVQ==
-X-Gm-Message-State: AOAM532qfoSIoFZKnamtpceAnwDzjT00obWBOhBBYjpXvO4EMiYc5w3Z
-	lO6OB8E0wQEgZ8aGhcSOisD4KXO9V1E8ZAZ2
-X-Received: by 2002:ac2:5312:: with SMTP id c18mr12411768lfh.618.1617473339502;
-        Sat, 03 Apr 2021 11:08:59 -0700 (PDT)
-Return-Path: <zhansayabagdaulet@gmail.com>
-Received: from zhans ([37.151.32.231])
-        by smtp.gmail.com with ESMTPSA id v10sm1202850lfb.238.2021.04.03.11.08.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 03 Apr 2021 11:08:59 -0700 (PDT)
-Date: Sun, 4 Apr 2021 00:08:57 +0600
-From: Zhansaya Bagdauletkyzy <zhansayabagdaulet@gmail.com>
-To: clabbe@baylibre.com, mchehab@kernel.org, gregkh@linuxfoundation.org
-Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/7] staging: media: zoran: Eliminate camelcase
-Message-ID: <cover.1617472411.git.zhansayabagdaulet@gmail.com>
+       dkim=pass (test mode) header.i=@grinta.net;
+       spf=pass (google.com: domain of daniele@grinta.net designates 109.74.203.128 as permitted sender) smtp.mailfrom=daniele@grinta.net
+Received: from 688dnmac.campus.nist.gov (688msmac.bw.nist.gov [132.163.81.39])
+	(Authenticated sender: daniele)
+	by zed.grinta.net (Postfix) with ESMTPSA id 81297E3F14;
+	Mon, 13 Mar 2017 21:31:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=grinta.net; s=mail;
+	t=1489440711; bh=OWhApwlic+/VfcFxGe3HPM1WwP6v8/DW2yXDS6A3yUQ=;
+	h=Subject:To:References:Cc:From:Date:In-Reply-To:From;
+	b=GjSctmTOjVQ7myAiSufXGwF9Hys9cndJSMipDr36EpxeTj+uLFEIN4cyXNLbMDfAv
+	 hFomBSHcpdaRtSm25B2TZeChTTHqrEeZtqY8mVOeYjOy+P01ams4AahdMp4hgDkEkg
+	 nrJffff+jh9KlyYcY7BO5DPO4JjubsaPAjn15ZPM=
+Subject: Re: [PATCH v2 1/2] staging: speakup: Added blank line after
+ function/struct/union/enum declarations
+To: Arushi Singhal <arushisinghal19971997@gmail.com>, w.d.hubbs@gmail.com
+References: <20170313204018.24601-1-arushisinghal19971997@gmail.com>
+ <20170313204018.24601-2-arushisinghal19971997@gmail.com>
+Cc: chris@the-brannons.com, outreachy-kernel@googlegroups.com,
+ kirk@reisers.ca, samuel.thibault@ens-lyon.org, gregkh@linuxfoundation.org,
+ speakup@linux-speakup.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+From: Daniele Nicolodi <daniele@grinta.net>
+Message-ID: <9240fe49-0bb3-c439-188a-5a0b6ca24f02@grinta.net>
+Date: Mon, 13 Mar 2017 15:31:45 -0600
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:45.0)
+ Gecko/20100101 Thunderbird/45.7.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+In-Reply-To: <20170313204018.24601-2-arushisinghal19971997@gmail.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 
-This patchset fixes 'avoid camelcase' warning by converting local variables to lowercase and separating words using '_'.
-Renaming of each variable is implemented in separate patches.
+Hello,
 
-Zhansaya Bagdauletkyzy (7):
-  Rename 'HEnd' to 'h_end'
-  Rename 'VEnd' to 'v_end'
-  Rename 'DispMode' to 'disp_mode'
-  Rename 'VidWinWid' to 'vid_win_wid'
-  Rename 'VidWinHt' to 'vid_win_ht'
-  Rename 'We' to 'we'
-  Rename 'He' to 'he'
+On 3/13/17 2:40 PM, Arushi Singhal wrote:
+> This patch fixes the warnings reported by checkpatch.pl
+> for please use a blank line after function/struct/union/enum
+> declarations.
 
- drivers/staging/media/zoran/zoran_device.c | 48 +++++++++++-----------
- 1 file changed, 24 insertions(+), 24 deletions(-)
+I haven't seen this pointed out by others before: starting a commit
+message with "This patch..." is redundant (it is a commit message, thus
+what it describes is surely a patch) and most times leads to bad style
+commit messages.
 
--- 
-2.25.1
+In this case the commit message can simply be:
+
+Add a blank line after enum and struct declarations.
+
+or
+
+Ensure that enum and struct declarations are followed by a blank line.
+
+Cheers,
+Daniele
+
+
+> 
+> Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+> ---
+>  changes in v2
+>  - change the subject to make it more relevant.
+> 
+>  drivers/staging/speakup/main.c         | 1 +
+>  drivers/staging/speakup/serialio.c     | 1 +
+>  drivers/staging/speakup/speakup_dtlk.c | 1 +
+>  3 files changed, 3 insertions(+)
+> 
+> diff --git a/drivers/staging/speakup/main.c b/drivers/staging/speakup/main.c
+> index 6786cfab7460..4b750ec8cd59 100644
+> --- a/drivers/staging/speakup/main.c
+> +++ b/drivers/staging/speakup/main.c
+> @@ -108,6 +108,7 @@ enum {
+>  	CT_Window,
+>  	CT_Max
+>  };
+> +
+>  #define read_all_mode CT_Max
+>  
+>  static struct tty_struct *tty;
+> diff --git a/drivers/staging/speakup/serialio.c b/drivers/staging/speakup/serialio.c
+> index aade52ee15a0..d51e382cb835 100644
+> --- a/drivers/staging/speakup/serialio.c
+> +++ b/drivers/staging/speakup/serialio.c
+> @@ -21,6 +21,7 @@ static void start_serial_interrupt(int irq);
+>  static const struct old_serial_port rs_table[] = {
+>  	SERIAL_PORT_DFNS
+>  };
+> +
+>  static const struct old_serial_port *serstate;
+>  static int timeouts;
+>  
+> diff --git a/drivers/staging/speakup/speakup_dtlk.c b/drivers/staging/speakup/speakup_dtlk.c
+> index eede2d82183a..c0b2208aa8a7 100644
+> --- a/drivers/staging/speakup/speakup_dtlk.c
+> +++ b/drivers/staging/speakup/speakup_dtlk.c
+> @@ -43,6 +43,7 @@ static int port_forced;
+>  static unsigned int synth_portlist[] = {
+>  		 0x25e, 0x29e, 0x2de, 0x31e, 0x35e, 0x39e, 0
+>  };
+> +
+>  static u_char synth_status;
+>  
+>  static struct var_t vars[] = {
+> 
 
 
