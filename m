@@ -1,182 +1,106 @@
-X-GM-THRID: 6746720218426376192
-X-Received: by 2002:a17:90a:2451:: with SMTP id h75mr21472738pje.131.1570843211552;
-        Fri, 11 Oct 2019 18:20:11 -0700 (PDT)
+X-GM-THRID: 6396883163908407296
+X-Received: by 10.99.140.4 with SMTP id m4mr14882549pgd.72.1489427810045;
+        Mon, 13 Mar 2017 10:56:50 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90a:8a8c:: with SMTP id x12ls2699133pjn.5.gmail; Fri, 11
- Oct 2019 18:20:10 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxQoCLd+QV5L7wPQrlljl6yAJjQOuBQTAW75ML1pbd1iPGdwJHNf/q9YJUbnejqd9sFMHok
-X-Received: by 2002:a17:902:9a88:: with SMTP id w8mr18425944plp.129.1570843210662;
-        Fri, 11 Oct 2019 18:20:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570843210; cv=none;
-        d=google.com; s=arc-20160816;
-        b=EL4iIzbA5So3Ht9SdzdE2o0s/68wprQDB0ZVBTdfMjQSusLlBI/X5teh1YXm5ZRnIT
-         EF7TAgUV96M/hCymEF8a4m7NOm4AU+m0zBx//BWJa9c9tH0g8RVTbdiUv+OTYpi+Zls9
-         e2jZgQJUSLBPLh7xn68Ss6W7HWNPZJfBXc/0w/v1aicmjNpSjIjYWw41uapO7NbHWCym
-         v2Ox4D6xyY0Op1sAg7/m+YhFBgx4h3zgVcmmxFcq08Zf6ZYvtS709u/8xniLDbamP27m
-         gW2lYUlCu1RnDN5scOh0QBOR8dwmwuG5U0Q3yUYEusmI84ilq2+3BWWTAFOd1gAf7UJo
-         t83Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=f59g/RciVZKoxqNX9kC3w6U69tnmtVV5CNkXdY+evAk=;
-        b=w54Sr4j3m/7U8lTUdoKclE4LAMc4tjODaGv/GHbqR06Z81ON+qkwu4U91vAPLiLkl+
-         rdnRKFOKWiI3RHZZ6inJ+QTknLhqa+avahveZCiH3tBPj8qGmdTtVaQyOFYBwaWyqqVU
-         KMFdYjegu0vJLewkJL90a22NuO32+3tVWA3zt0Vl2bcDuRqa+ngEr7ggBafiEQFbBYd9
-         sJdf1eFXUE4rGG9eXnEq/CBborW6yz00hqsevbwDZeczUPfurYT8WYvkYOcg8Qy9NDaF
-         2X+KasdvDGjV9HqUkUo+7B2UJR9F8qGU3TZUV3cIv3t4CTWqcdKwDbi5IN2uE/gnjYTI
-         1BOA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=P11949Mu;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::743 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <gabrielabittencourt00@gmail.com>
-Received: from mail-qk1-x743.google.com (mail-qk1-x743.google.com. [2607:f8b0:4864:20::743])
-        by gmr-mx.google.com with ESMTPS id x197si1095829pgx.5.2019.10.11.18.20.10
+Received: by 10.107.41.5 with SMTP id p5ls4262873iop.34.gmail; Mon, 13 Mar
+ 2017 10:56:48 -0700 (PDT)
+X-Received: by 10.99.125.11 with SMTP id y11mr16949388pgc.10.1489427808854;
+        Mon, 13 Mar 2017 10:56:48 -0700 (PDT)
+Return-Path: <karniksayli1995@gmail.com>
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id a3si3242629pfb.2.2017.03.13.10.56.48
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 11 Oct 2019 18:20:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::743 as permitted sender) client-ip=2607:f8b0:4864:20::743;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 13 Mar 2017 10:56:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=P11949Mu;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::743 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qk1-x743.google.com with SMTP id 4so10619577qki.6
-        for <outreachy-kernel@googlegroups.com>; Fri, 11 Oct 2019 18:20:10 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x243.google.com with SMTP id 77so18751941pgc.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 13 Mar 2017 10:56:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=f59g/RciVZKoxqNX9kC3w6U69tnmtVV5CNkXdY+evAk=;
-        b=P11949MuCzHOh2ktsdskijdbH2ZXJyKxKKUW/6KRGBL6qDtFcdJHhF0jU5hzJmhAWW
-         CoAD6Xa7ht7fUA45ULBTLVL04HSQY7fUJSlj+u6OSBMko7xISTmXSj7yLNbBbUrFetMd
-         Vixjq+gleE4IfUjyh3X/eftr807SM87bd7p1hmxUTKZMcXMITjly2RM5KYJTKezf3IKD
-         bQXve2sj9+3Eb+1Gwsf2snBOWF742XpGGGjlR9+o5+JnZJL58wTAA0yTleClYOf0D6ta
-         7+IeKvw4jfjTi7HcyKZds7krit1/Hm3hCtIx6A1qmkwDIhPZCGHPkgUiS0ZG5zBfXxBv
-         kwFw==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=wfaam6IrCXo0M8MpBd2iC7Ox50UzrVFyRnCsCFjbmUY=;
+        b=YufBf8JUYavydVdplB7gr6QvPO3Gv7g1YtbkXlfm2KvUDNx1xmOMgbxMAo7LESrKib
+         WQuxYPIgEAwZ/6pNtz2RBOqxM1BiQ1ZtvnSF4Z5zkbDiWo5hehcYsrlgMOVGR2zoo6gz
+         fucE1HNu9uGhnMgXvt3+XxB69mXingHEHXr7CWalyJU9kxuJxp6H8rDe6AfTjQM6RNkU
+         El05L6q8vGjmpLvem/BDfgjFxvKiEQaZ/LVvAWgCThuqVsW5n57xuMHo4e9yL9ONqcz1
+         O9dY1U3xY06sZxjdQ4JXJnUHjdvpU6I3qPItQK/qwT6nSsz+6kqlDWAqyvriOVVYQFBw
+         q57w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=f59g/RciVZKoxqNX9kC3w6U69tnmtVV5CNkXdY+evAk=;
-        b=INCz8fB57INkh1gVBvfO0dRoluI5rNUIJyCJu9QZpOBT66qJoKb29idz28HR2c5+5l
-         dxlckWUfJaVMZUDvo3JLXkFwaosGZRCPGvmkzVifYL+zesS7jm6fZ/kOkB2MWC+5U3SB
-         BBQiLyaxX62LuPet8ssYUXYEn0C4IYvnI2Vpl9qz3hyBCUTrj6hxZ/Et+XG0gflgkt4v
-         rsZBT3bwqAH3QgoCjaCQGudX6b05Z1Loc+c//Ob+DGR01jKQn55N2MRzK+kKEG8fSnnw
-         XK3v//khhIcU5Y5RXKNiiMrvqTpTREWcZQFFOIMB7tk8RVroDZ+lv2CFLoDK82SqdZW/
-         gH8A==
-X-Gm-Message-State: APjAAAWKzL75VDeXgHU9ANCuOk1zT6B4/S6NCWWqJxeWH0lpnyhOcfml
-	lPSZc5A36RoVZEIbs7cJt6xynbwCCV4=
-X-Received: by 2002:a37:9d10:: with SMTP id g16mr18836248qke.29.1570843209314;
-        Fri, 11 Oct 2019 18:20:09 -0700 (PDT)
-Return-Path: <gabrielabittencourt00@gmail.com>
-Received: from localhost.localdomain ([187.106.44.83])
-        by smtp.gmail.com with ESMTPSA id s17sm4618393qkg.79.2019.10.11.18.20.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 11 Oct 2019 18:20:08 -0700 (PDT)
-From: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	sudipm.mukherjee@gmail.com,
-	teddy.wang@siliconmotion.com,
-	gregkh@linuxfoundation.org,
-	linux-fbdev@vger.kernel.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	lkcamp@lists.libreplanetbr.org,
-	trivial@kernel.org
-Cc: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-Subject: [PATCH] staging: sm750fb: align arguments with open parenthesis
-Date: Fri, 11 Oct 2019 22:19:56 -0300
-Message-Id: <20191012011956.9452-1-gabrielabittencourt00@gmail.com>
-X-Mailer: git-send-email 2.20.1
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=wfaam6IrCXo0M8MpBd2iC7Ox50UzrVFyRnCsCFjbmUY=;
+        b=nHv4ytx2NGzvVe9IWPmIncVX/6IOn1Grh1CYM/FV4GQ4YOmI4/EHhlYgUsPJN4II+A
+         kJkI7b3+Z0iiSLBnGK9n/JOpqIWqESJNPdp7lZTEVVhYt7H1NYy88KyrJg0WRvAi2kdX
+         5s3QTwwDux8MMbiSpY+hHmu/QZD7mf+wxfxN8wU55aPQ1LL/Vst3BlbfMAaIMRyLGXJ2
+         RnCiMLPCUuQeTPXFeoqQJs7vuU3s8IKyXFqChYiMS+rYIrG8MQ1wemmagiRiqMpedZPS
+         D6OShi8joStFIFurcp+4lp/HO86cVsWQxo1dKKgDbaHIcJGdsOQhWwaA22CvLkT7+MDN
+         hnHA==
+X-Gm-Message-State: AMke39khmh+PFtwa5SJMmP1e1hOVpM8P5RbTPGvTnZ7qKbzZHw5S8bZvdPoCzDOI01edTg==
+X-Received: by 10.84.146.140 with SMTP id g12mr48699508pla.70.1489427808613;
+        Mon, 13 Mar 2017 10:56:48 -0700 (PDT)
+Return-Path: <karniksayli1995@gmail.com>
+Received: from sayli-HP-15-Notebook-PC ([182.58.222.61])
+        by smtp.gmail.com with ESMTPSA id u129sm33876154pfb.130.2017.03.13.10.56.36
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 13 Mar 2017 10:56:48 -0700 (PDT)
+Date: Mon, 13 Mar 2017 23:26:18 +0530
+From: sayli karnik <karniksayli1995@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Lars-Peter Clausen <lars@metafoo.de>,
+	Michael Hennerich <Michael.Hennerich@analog.com>,
+	Jonathan Cameron <jic23@kernel.org>,
+	Hartmut Knaack <knaack.h@gmx.de>,
+	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-iio@vger.kernel.org
+Subject: [PATCH v4 2/2] staging: iio: ad9834: Remove unnecessary goto
+ statement
+Message-ID: <0ed151986770fac23cae759d2092683cced90dc1.1489424208.git.karniksayli1995@gmail.com>
+References: <cover.1489424208.git.karniksayli1995@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1489424208.git.karniksayli1995@gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Cleans up checks of "Alignment should match open parenthesis" in tree sm750fb
+The patch removes unnecessary use of goto statement.
 
-Signed-off-by: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
+Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
 ---
- drivers/staging/sm750fb/ddk750_display.c |  2 +-
- drivers/staging/sm750fb/sm750_accel.c    |  2 +-
- drivers/staging/sm750fb/sm750_accel.h    |  8 ++++----
- drivers/staging/sm750fb/sm750_cursor.h   | 10 +++++-----
- 4 files changed, 11 insertions(+), 11 deletions(-)
+v3:
+Uncompressed return logic to avoid calling the function twice
 
-diff --git a/drivers/staging/sm750fb/ddk750_display.c b/drivers/staging/sm750fb/ddk750_display.c
-index 887ea8aef43f..8be98a1058d6 100644
---- a/drivers/staging/sm750fb/ddk750_display.c
-+++ b/drivers/staging/sm750fb/ddk750_display.c
-@@ -148,7 +148,7 @@ void ddk750_set_logical_disp_out(enum disp_output output)
- 	if (output & PNL_SEQ_USAGE) {
- 		/* set  panel sequence */
- 		sw_panel_power_sequence((output & PNL_SEQ_MASK) >> PNL_SEQ_OFFSET,
--		4);
-+					4);
- 	}
+ drivers/staging/iio/frequency/ad9834.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/drivers/staging/iio/frequency/ad9834.c b/drivers/staging/iio/frequency/ad9834.c
+index 2dffe48..af108e9 100644
+--- a/drivers/staging/iio/frequency/ad9834.c
++++ b/drivers/staging/iio/frequency/ad9834.c
+@@ -149,7 +149,7 @@ static ssize_t ad9834_write(struct device *dev,
  
- 	if (output & DAC_USAGE)
-diff --git a/drivers/staging/sm750fb/sm750_accel.c b/drivers/staging/sm750fb/sm750_accel.c
-index dbcbbd1055da..1a9555bb9edd 100644
---- a/drivers/staging/sm750fb/sm750_accel.c
-+++ b/drivers/staging/sm750fb/sm750_accel.c
-@@ -289,7 +289,7 @@ static unsigned int deGetTransparency(struct lynx_accel *accel)
+ 	ret = kstrtoul(buf, 10, &val);
+ 	if (ret)
+-		goto error_ret;
++		return ret;
+ 
+ 	mutex_lock(&st->lock);
+ 	switch ((u32)this_attr->address) {
+@@ -211,7 +211,6 @@ static ssize_t ad9834_write(struct device *dev,
+ 	}
+ 	mutex_unlock(&st->lock);
+ 
+-error_ret:
+ 	return ret ? ret : len;
  }
  
- int sm750_hw_imageblit(struct lynx_accel *accel,
--		 const char *pSrcbuf, /* pointer to start of source buffer in system memory */
-+		       const char *pSrcbuf, /* pointer to start of source buffer in system memory */
- 		 u32 srcDelta,          /* Pitch value (in bytes) of the source buffer, +ive means top down and -ive mean button up */
- 		 u32 startBit, /* Mono data can start at any bit in a byte, this value should be 0 to 7 */
- 		 u32 dBase,    /* Address of destination: offset in frame buffer */
-diff --git a/drivers/staging/sm750fb/sm750_accel.h b/drivers/staging/sm750fb/sm750_accel.h
-index c4f42002a50f..8fb79b09fdd0 100644
---- a/drivers/staging/sm750fb/sm750_accel.h
-+++ b/drivers/staging/sm750fb/sm750_accel.h
-@@ -190,9 +190,9 @@ void sm750_hw_set2dformat(struct lynx_accel *accel, int fmt);
- void sm750_hw_de_init(struct lynx_accel *accel);
- 
- int sm750_hw_fillrect(struct lynx_accel *accel,
--				u32 base, u32 pitch, u32 Bpp,
--				u32 x, u32 y, u32 width, u32 height,
--				u32 color, u32 rop);
-+		      u32 base, u32 pitch, u32 Bpp,
-+		      u32 x, u32 y, u32 width, u32 height,
-+		      u32 color, u32 rop);
- 
- int sm750_hw_copyarea(
- struct lynx_accel *accel,
-@@ -210,7 +210,7 @@ unsigned int height, /* width and height of rectangle in pixel value */
- unsigned int rop2);
- 
- int sm750_hw_imageblit(struct lynx_accel *accel,
--		 const char *pSrcbuf, /* pointer to start of source buffer in system memory */
-+		       const char *pSrcbuf, /* pointer to start of source buffer in system memory */
- 		 u32 srcDelta,          /* Pitch value (in bytes) of the source buffer, +ive means top down and -ive mean button up */
- 		 u32 startBit, /* Mono data can start at any bit in a byte, this value should be 0 to 7 */
- 		 u32 dBase,    /* Address of destination: offset in frame buffer */
-diff --git a/drivers/staging/sm750fb/sm750_cursor.h b/drivers/staging/sm750fb/sm750_cursor.h
-index 16ac07eb58d6..039ebfdf0bd9 100644
---- a/drivers/staging/sm750fb/sm750_cursor.h
-+++ b/drivers/staging/sm750fb/sm750_cursor.h
-@@ -6,13 +6,13 @@
- void sm750_hw_cursor_enable(struct lynx_cursor *cursor);
- void sm750_hw_cursor_disable(struct lynx_cursor *cursor);
- void sm750_hw_cursor_setSize(struct lynx_cursor *cursor,
--						int w, int h);
-+			     int w, int h);
- void sm750_hw_cursor_setPos(struct lynx_cursor *cursor,
--						int x, int y);
-+			    int x, int y);
- void sm750_hw_cursor_setColor(struct lynx_cursor *cursor,
--						u32 fg, u32 bg);
-+			      u32 fg, u32 bg);
- void sm750_hw_cursor_setData(struct lynx_cursor *cursor,
--			u16 rop, const u8 *data, const u8 *mask);
-+			     u16 rop, const u8 *data, const u8 *mask);
- void sm750_hw_cursor_setData2(struct lynx_cursor *cursor,
--			u16 rop, const u8 *data, const u8 *mask);
-+			      u16 rop, const u8 *data, const u8 *mask);
- #endif
 -- 
-2.20.1
+2.7.4
 
 
