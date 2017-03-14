@@ -1,53 +1,52 @@
 X-GM-THRID: 6397080703466471424
-X-Received: by 10.107.17.163 with SMTP id 35mr10371658ior.98.1489499729494;
-        Tue, 14 Mar 2017 06:55:29 -0700 (PDT)
+X-Received: by 10.157.12.214 with SMTP id o22mr18225483otd.150.1489499719827;
+        Tue, 14 Mar 2017 06:55:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.16.211 with SMTP id 80ls4863517ioq.0.gmail; Tue, 14 Mar
- 2017 06:55:28 -0700 (PDT)
-X-Received: by 10.107.135.91 with SMTP id j88mr10821948iod.82.1489499728636;
-        Tue, 14 Mar 2017 06:55:28 -0700 (PDT)
+Received: by 10.157.6.194 with SMTP id 60ls16082542otx.21.gmail; Tue, 14 Mar
+ 2017 06:55:19 -0700 (PDT)
+X-Received: by 10.129.160.83 with SMTP id x80mr3360325ywg.90.1489499719479;
+        Tue, 14 Mar 2017 06:55:19 -0700 (PDT)
 Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id a3si3674855pfb.2.2017.03.14.06.55.28
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id a3si3675101pfb.2.2017.03.14.06.55.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 14 Mar 2017 06:55:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Tue, 14 Mar 2017 06:55:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id 77so24609723pgc.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 14 Mar 2017 06:55:28 -0700 (PDT)
+Received: by mail-pg0-x244.google.com with SMTP id g2so20186960pge.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 14 Mar 2017 06:55:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=SMwEHaeOOyT5N6d7v77n0SmfjoYQd3WMDfJiht9mJEw=;
-        b=fp0DyE/0sTs7cCybx/+yVI34Ky4UA91s7s+RlaBvxFdeR4Q3WA3pSsDs0LrWK3AkJe
-         s+Saz1pRrq1qeENjfo2gVvjAbKso+uIPpbxQiwAf52s/BhTXvylUMlcUbFnXt1te1BMX
-         zomcSIWW+SEXY9RAKGyqCcKisu0vX/iLHS3a5iYsrMCNveqhApc/85ncPEG5XLKvum1L
-         zTqY788XW2Fa93iaJ/mlMewaRCHdsf9h0WWcBQ/3BQq8zncc9ii5zqefkfpYJAeUygBJ
-         P57l1JzyR2/QbV4+yaZTg2fcuQb6ChoKYFi3bRC8hjixTbcTUNOB/yN5qWKdLLU36KNW
-         Q5Xw==
+        h=from:to:cc:subject:date:message-id;
+        bh=lB7GshdaVIwmnpL4G+I7r0G4/OOMFwb9NBq49+cHhlo=;
+        b=JcgEypYo+L/EtPuEJ+TEMh5tNJxV9gG9ZLokBpw2QETkJeo4IOJriEABtOjsxTQ7O7
+         6cbCv3zyCccEBKy1YzDedjl9jURdLkFLVLE7P8MzPmOldNpHbfUIVUvxNKMeWR+gyxJX
+         JtdvVpAkte68eud2IxfHtRFUXSTSrzGGYPPoZ/Kd2WVXsHzmOoI2gEm7P6BwygrrajV4
+         onc1oZT8gSQrrx7ZV372/7GlQi683B6Mt20jZ1VmKKjnWbaYCRqfElVJegX7fQXp3hWn
+         rZZtS8A9NqriFCXIHn79dlnCcI/FQ6xkDxsrl7bEe6uhTsBTYfe/fB+NYdDNOZnPc5b0
+         ClOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=SMwEHaeOOyT5N6d7v77n0SmfjoYQd3WMDfJiht9mJEw=;
-        b=YjZo/tLE9wdSu86+8D8tz7H2sfT3ZNSRh1VwyQfIKB6uoCiSRfIh0lJ4eq/jH8BBZ6
-         HVuOgRlGWmK3HDmjuALR69CTmtwPW9RQDQoo8CvboHB/SqrACk+SFPKeLN1ZU55+Hiy6
-         qlF7CdBR6+Ej3mcJEip60Yq6BBq8IMXRIl84ERBz2twpUIbcetoZU+BEQanQ5AhYMdhF
-         PFkWP5tGoc6IemQJbd4FifEMRJuNg++0OIFs5MvNIMY32iUcUkng2GE8AIGHALQVpXjC
-         BG3x7Na3EsW+JX9vyvcyjtrgb+dE+QVnkZ+haGxrLAeBZwBbjE2gEO36xJYXEYqa0dJ6
-         qE4Q==
-X-Gm-Message-State: AMke39nSlGepsom4Nn9y03StN9s9EHYdNCpJYJ4+ABeFi/p24gqwqO1pUKaTsr0OQizDPA==
-X-Received: by 10.99.5.82 with SMTP id 79mr43654857pgf.8.1489499728406;
-        Tue, 14 Mar 2017 06:55:28 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=lB7GshdaVIwmnpL4G+I7r0G4/OOMFwb9NBq49+cHhlo=;
+        b=HZtCVSFRk3pwpb7EwI9Q37PPB0amPuHqiJ12PSzOjjo4rq7TEENdth3sXUVoSYe3V9
+         3CoasGlg3nYAuq9cIuGfbk6SzHKHXUShs8mW1KgnDHTM+G45H8sItiC3qVA/iDc9n080
+         kf2bR/SBNkfaA2uBHZiAtk7ned5camRqSFjP6P6pFdJOsK12lTCLnL7Rut+/RduEriOq
+         AePLsxQqghCmfnw4jYsAeCSLRFVx+lVpqaZoeUN4le/RW9EPAzZMftaGpstKAa6/DWue
+         4sAEbsdVnByLlzKraPCDeWeV5751PcIl26UpR9urpbF4nnyqBkqYyLAqNO12f2tYh7vG
+         5yMQ==
+X-Gm-Message-State: AMke39m9O0Qwg5E0YpBEQln20PlhlQGxX+jaZQDC1UI8Csix4W9PX2lTIrU5GOgFHdvXPw==
+X-Received: by 10.98.112.134 with SMTP id l128mr43913533pfc.81.1489499719261;
+        Tue, 14 Mar 2017 06:55:19 -0700 (PDT)
 Return-Path: <arushisinghal19971997@gmail.com>
 Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 67sm38859228pfd.120.2017.03.14.06.55.26
+        by smtp.gmail.com with ESMTPSA id w123sm38954470pfb.44.2017.03.14.06.55.16
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 14 Mar 2017 06:55:26 -0700 (PDT)
+        Tue, 14 Mar 2017 06:55:17 -0700 (PDT)
 From: Arushi Singhal <arushisinghal19971997@gmail.com>
 To: w.d.hubbs@gmail.com
 Cc: chris@the-brannons.com,
@@ -59,45 +58,28 @@ Cc: chris@the-brannons.com,
 	devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org,
 	Arushi Singhal <arushisinghal19971997@gmail.com>
-Subject: [PATCH v4 1/2] staging: speakup: identation should use tabs
-Date: Tue, 14 Mar 2017 19:25:06 +0530
-Message-Id: <20170314135512.11198-2-arushisinghal19971997@gmail.com>
+Subject: [PATCH v4 0/2] staging: checkpatch cleanups
+Date: Tue, 14 Mar 2017 19:25:05 +0530
+Message-Id: <20170314135512.11198-1-arushisinghal19971997@gmail.com>
 X-Mailer: git-send-email 2.11.0
-In-Reply-To: <20170314135512.11198-1-arushisinghal19971997@gmail.com>
-References: <20170314135512.11198-1-arushisinghal19971997@gmail.com>
 
-Indentation should always use tabs and never spaces.
+Improve readability by fixing multiple checkpatch.pl
+issues in drivers. 
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
-Changes since v4
--Added the changes done since v4.
+Arushi Singhal (2):
+  staging: speakup: identation should use tabs
+  staging: dvb-frontends: removed code in comments.
 
- drivers/staging/speakup/speakup_dtlk.h | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/media/dvb-frontends/drxk_hard.c  |   1 -
+ drivers/staging/speakup/speakup_dtlk.h   |  10 +++++-----
+ 2 files changed, 5 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/speakup/speakup_dtlk.h b/drivers/staging/speakup/speakup_dtlk.h
-index b3b3cfc3db07..46d885fcfb20 100644
---- a/drivers/staging/speakup/speakup_dtlk.h
-+++ b/drivers/staging/speakup/speakup_dtlk.h
-@@ -24,11 +24,11 @@
- 				 * usec later.
- 				 */
- #define TTS_ALMOST_FULL	0x08	/* mask for AF bit: When set to 1,
--				         * indicates that less than 300 bytes
--				         * are available in the TTS input
--				         * buffer. AF is always 0 in the PCM,
--				         * TGN and CVSD modes.
--				         */
-+					 * indicates that less than 300 bytes
-+					 * are available in the TTS input
-+					 * buffer. AF is always 0 in the PCM,
-+					 * TGN and CVSD modes.
-+					 */
- #define TTS_ALMOST_EMPTY 0x04	/* mask for AE bit: When set to 1,
- 				 * indicates that less than 300 bytes
- 				 * are remaining in DoubleTalk's input
 -- 
+Changes since v4:
+ -Include the changes done different versions.
+ -Change the subject of cover Letter.
+ -Made the subject of the patches in the patch series more clear.
+
 2.11.0
 
 
