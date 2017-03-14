@@ -1,120 +1,99 @@
 X-GM-THRID: 6397080703466471424
-X-Received: by 10.25.40.17 with SMTP id o17mr984079lfo.25.1489645947228;
-        Wed, 15 Mar 2017 23:32:27 -0700 (PDT)
+X-Received: by 10.107.136.36 with SMTP id k36mr10010294iod.41.1489499736282;
+        Tue, 14 Mar 2017 06:55:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.155.194 with SMTP id d185ls137432lfe.2.gmail; Wed, 15 Mar
- 2017 23:32:26 -0700 (PDT)
-X-Received: by 10.25.145.17 with SMTP id t17mr989802lfd.23.1489645946208;
-        Wed, 15 Mar 2017 23:32:26 -0700 (PDT)
+Received: by 10.36.36.137 with SMTP id f131ls2266256ita.7.gmail; Tue, 14 Mar
+ 2017 06:55:34 -0700 (PDT)
+X-Received: by 10.99.114.70 with SMTP id c6mr18868584pgn.17.1489499734657;
+        Tue, 14 Mar 2017 06:55:34 -0700 (PDT)
 Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-lf0-x22a.google.com (mail-lf0-x22a.google.com. [2a00:1450:4010:c07::22a])
-        by gmr-mx.google.com with ESMTPS id p144si162485wme.2.2017.03.15.23.32.26
+Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
+        by gmr-mx.google.com with ESMTPS id g82si3657195pfb.5.2017.03.14.06.55.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 15 Mar 2017 23:32:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2a00:1450:4010:c07::22a as permitted sender) client-ip=2a00:1450:4010:c07::22a;
+        Tue, 14 Mar 2017 06:55:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2a00:1450:4010:c07::22a as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-lf0-x22a.google.com with SMTP id j90so15892256lfk.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 15 Mar 2017 23:32:26 -0700 (PDT)
+Received: by mail-pg0-x242.google.com with SMTP id m5so312104pgk.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 14 Mar 2017 06:55:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=z3zWr7dEwnpjV8J6SkDmlcFy4kd5OptYogyI2OOOBvA=;
-        b=Db+DEf8psJSsc4hDRGX7ztlCgiH6H2SzbIx8g0TbFl9v0bgdcVmfFt/+n2nAnKxwEv
-         Ra5cyiUzX28j38O4pU0KmF+jd37MtWQ7Ylo73TDRsigHuv1/7O9GW3KV72u1vK78Va03
-         Odgcb/2emFsYCTD/dYdF6Gslis00hmbrKc8Bt0PVk7HdVJ2ffGBtArghr7oCaKy/bq8r
-         Ub8yanlz2paewVMXYJNV5M7lKcAcbD8ElBeq1pdAciPjZu2QNdfJLwGXwxJG2TZ4XgfI
-         SlOsSImUab9NKXKbau2BDRuIXDHd2VvDmeXpSAKwnMSoSEf9uKysodME0RUYBCxlyeAK
-         UavA==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=6OsUeh60fjd8Sk4YcEGBDwgfpQJVjKPok91g6FusZ8E=;
+        b=VOgLI80oImmStbG0SszqSjjE6SWu/vKVvTcrQIg/1wlJv6GI/lKB5jqAfcHjFM4vfG
+         ZZcSv7w3S4Is9rs5/tP8WxypLbRr1okLUfKn4crGgQ4RepMzn0AE4mG6HJYtYJ6+0/K3
+         Ctt0IIqNO5YTzgJO41VT6HAMbrk987H/FIfGt8Du2ER6bdnillnop817Iu3/Tm9LJSNF
+         JdBY8NEyylN/xde4GKoSCN8h4LppTom8gJlc2zAxFXbI6yIVwNw2qHEOrgzYv1LPxQfR
+         MKRlzYM6GVxkCkvkkA27AFUlCF5hQnkn0U15V4jUDnCN7NNZRAonyK4Ji+Lcb12MQyiY
+         eDtA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=z3zWr7dEwnpjV8J6SkDmlcFy4kd5OptYogyI2OOOBvA=;
-        b=Kx0jUb0lJGO71B1SZa58QhQ6/1Y+Mla9aFJTSLAYs1qGKnIsdyeiazAjG6OsNLB2L5
-         Fnbb1XW8dlPpriqF9IMfzOYJK99IUE2EwJgpHOiKhJyLg/bI7zerJd2vkhd4h8CF0bg7
-         WmtvRT0l2WZvgur4uRs/FglzZxYL0THa1TAqGkIPqtvPnHaq1dU+fCBu9Dmexqpq12Az
-         xjl39FyTS8ftiw//6B/8I0uePKl/0aVGlUjZflMkMX6gh6EPSxPAe/WDmyKCG8RGS/tp
-         eopSmnoyfmGdPRLMZ/0NBl8n1XdWo+POFsmLAHRxsduxKoNg39PLmMN1B5F3sXqoZIYP
-         meVg==
-X-Gm-Message-State: AFeK/H2wt16qNXpei0S3vFzaoV/YGlO2lNYmtZxZODaojX1PozNwORv1ZFTFGpaclvDeFBHt2q95zvRLX7MNXQ==
-X-Received: by 10.25.17.153 with SMTP id 25mr2166812lfr.39.1489645945964; Wed,
- 15 Mar 2017 23:32:25 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.25.170.69 with HTTP; Wed, 15 Mar 2017 23:32:25 -0700 (PDT)
-In-Reply-To: <20170313220546.GB14919@kroah.com>
-References: <20170313202004.24382-1-arushisinghal19971997@gmail.com> <20170313220546.GB14919@kroah.com>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=6OsUeh60fjd8Sk4YcEGBDwgfpQJVjKPok91g6FusZ8E=;
+        b=fYZoQdfTr/3NM4UVVQMYr636MhXIR4rk22f6wgb8po9YGmXCixvN0tKxgt3BAZ1coo
+         UlqeYIo9kVAaLDWWPiYCig/Rd+TeGLlb/D170yV6XsXMnTCoykO0jUHHnce7t2XXAfLj
+         +zBpSfecFDQ0S7W+/hz+hJiN7azCRI4SUbx98zcCrTiAnddXFfrb3MGjs3RVoKvLNRJa
+         4MjGMjdr5oFeQzsOdwyy6nGxhus6i/UIDtt6ZG4pmqQwjsCXngufblhVSRFXXxPu2xHc
+         cbBn8MllCteu3ntdQtUG1+r41Lyucl6JTBHt8DFuRrDljvKjR1qu/xP3BnzmbjJt90lk
+         H7Ag==
+X-Gm-Message-State: AMke39mx75vL3uPLscvCbXQg+/aFRGGPoSqWhmBXYzZpEaneS/H9m2Iekalyq9CldBZQQg==
+X-Received: by 10.99.110.138 with SMTP id j132mr42295060pgc.217.1489499734453;
+        Tue, 14 Mar 2017 06:55:34 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id p16sm38944858pfl.97.2017.03.14.06.55.32
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 14 Mar 2017 06:55:33 -0700 (PDT)
 From: Arushi Singhal <arushisinghal19971997@gmail.com>
-Date: Thu, 16 Mar 2017 12:02:25 +0530
-Message-ID: <CA+XqjF9cHvR=VnPmE3mqcKfyPJLL7_sMHWde_aWVG=WbT_rTMA@mail.gmail.com>
-Subject: Re: [PATCH v3 0/2] staging: checkpatch cleanups
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: William Hubbs <w.d.hubbs@gmail.com>, devel@driverdev.osuosl.org, 
-	Kirk Reiser <kirk@reisers.ca>, speakup@linux-speakup.org, linux-kernel@vger.kernel.org, 
-	outreachy-kernel@googlegroups.com, 
-	Samuel Thibault <samuel.thibault@ens-lyon.org>, Chris Brannon <chris@the-brannons.com>
-Content-Type: multipart/alternative; boundary=001a1140379e734f38054ad339db
+To: w.d.hubbs@gmail.com
+Cc: chris@the-brannons.com,
+	outreachy-kernel@googlegroups.com,
+	kirk@reisers.ca,
+	samuel.thibault@ens-lyon.org,
+	gregkh@linuxfoundation.org,
+	speakup@linux-speakup.org,
+	devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	Arushi Singhal <arushisinghal19971997@gmail.com>
+Subject: [PATCH v4 2/2] staging: dvb-frontends: removed code in comments.
+Date: Tue, 14 Mar 2017 19:25:07 +0530
+Message-Id: <20170314135512.11198-3-arushisinghal19971997@gmail.com>
+X-Mailer: git-send-email 2.11.0
+In-Reply-To: <20170314135512.11198-1-arushisinghal19971997@gmail.com>
+References: <20170314135512.11198-1-arushisinghal19971997@gmail.com>
 
---001a1140379e734f38054ad339db
-Content-Type: text/plain; charset=UTF-8
+Commenting out Code is a Bad Idea.
+Comments are their to explain the code and how the code achieves its
+goal and as codes in the comments  does not explain what the code is
+doing so there is no use of commenting them.
+So in this patch codes in the comments are removed.
 
-On Tue, Mar 14, 2017 at 3:35 AM, Greg KH <gregkh@linuxfoundation.org> wrote:
+Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+---
+ changes since v4
+ - Improve the commit message
+ - Added the changes done in v4 in cover-letter.
 
-> On Tue, Mar 14, 2017 at 01:49:52AM +0530, Arushi Singhal wrote:
-> > Improve readability by fixing multiple checkpatch.pl
-> > issues in drivers.
-> >
-> > Arushi Singhal (2):
-> >   staging: speakup: identation should use tabs
-> >   staging: dvb-frontends: removed code in comments.
->
-> What changed from v2?
->
- In this patch nothing is changed from v2 but it is a patch series so have
-to write v2 everywhere.
-Thanks
-Arushi
+ drivers/media/dvb-frontends/drxk_hard.c | 1 -
+ 1 file changed, 1 deletion(-)
 
->
-> thanks,
->
-> greg k-h
->
+diff --git a/drivers/media/dvb-frontends/drxk_hard.c b/drivers/media/dvb-frontends/drxk_hard.c
+index 7e1bbbaad625..2fe493768003 100644
+--- a/drivers/media/dvb-frontends/drxk_hard.c
++++ b/drivers/media/dvb-frontends/drxk_hard.c
+@@ -5283,7 +5283,6 @@ static int qam_set_symbolrate(struct drxk_state *state)
+ 	/* Select & calculate correct IQM rate */
+ 	adc_frequency = (state->m_sys_clock_freq * 1000) / 3;
+ 	ratesel = 0;
+-	/* printk(KERN_DEBUG "drxk: SR %d\n", state->props.symbol_rate); */
+ 	if (state->props.symbol_rate <= 1188750)
+ 		ratesel = 3;
+ 	else if (state->props.symbol_rate <= 2377500)
+-- 
+2.11.0
 
---001a1140379e734f38054ad339db
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><br><div class=3D"gmail_extra"><br><div class=3D"gmail_quo=
-te">On Tue, Mar 14, 2017 at 3:35 AM, Greg KH <span dir=3D"ltr">&lt;<a href=
-=3D"mailto:gregkh@linuxfoundation.org" target=3D"_blank">gregkh@linuxfounda=
-tion.org</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex"><span class=3D"gmail-">On Tue, Mar 14, 2017 at 01:49:52AM +0530,=
- Arushi Singhal wrote:<br>
-&gt; Improve readability by fixing multiple <a href=3D"http://checkpatch.pl=
-" rel=3D"noreferrer" target=3D"_blank">checkpatch.pl</a><br>
-&gt; issues in drivers.<br>
-&gt;<br>
-&gt; Arushi Singhal (2):<br>
-&gt;=C2=A0 =C2=A0staging: speakup: identation should use tabs<br>
-&gt;=C2=A0 =C2=A0staging: dvb-frontends: removed code in comments.<br>
-<br>
-</span>What changed from v2?<br></blockquote><div>=C2=A0<span style=3D"font=
--size:12.8px">In this patch nothing is changed from v2 but it is a patch se=
-ries so have to write v2 everywhere.</span></div><div><span style=3D"font-s=
-ize:12.8px">Thanks=C2=A0</span></div><div><span style=3D"font-size:12.8px">=
-Arushi</span></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0p=
-x 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-thanks,<br>
-<br>
-greg k-h<br>
-</blockquote></div><br></div></div>
-
---001a1140379e734f38054ad339db--
 
