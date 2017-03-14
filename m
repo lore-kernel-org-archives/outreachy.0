@@ -1,125 +1,187 @@
-X-GM-THRID: 6675054082549350400
-X-Received: by 2002:aa7:8185:: with SMTP id g5mr1142533pfi.74.1554157138958;
-        Mon, 01 Apr 2019 15:18:58 -0700 (PDT)
+X-GM-THRID: 6397088114020450304
+X-Received: by 10.25.203.151 with SMTP id b145mr5023050lfg.17.1489470420062;
+        Mon, 13 Mar 2017 22:47:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:282b:: with SMTP id e40ls5287492plb.6.gmail; Mon, 01
- Apr 2019 15:18:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxXSmx3WZMYWZ549UiOfhvhcitHuKRohCFio8I2QSlwIaGiV+J9y0JycTaPhDZj73qI0m6/
-X-Received: by 2002:a17:902:ba86:: with SMTP id k6mr1707046pls.126.1554157138095;
-        Mon, 01 Apr 2019 15:18:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554157138; cv=none;
-        d=google.com; s=arc-20160816;
-        b=ONT0GvDeMsXs4uRPG0Fssmmjmx0fWzArREsrzurTxt6FFG2U66UiZqg49QE+erBBf6
-         dyaODT9aJQE232RyhFrU1+mZz2mPZzWkLOj0/zZ0MxMvhVTGqXaUyyGEd4xMcle1OoGp
-         d6BDFufzsxpoGkNSOKe+2oF1A4vVjXkuxx0F+PLD741GIMveGgppjELaLC9GaWQcIYDL
-         wyTwDfLBpzqpZtxCI/pLDR88T1slmgUfYE/RfbkTKHO0d0NseqJ1YhBogRvose/2JDox
-         zPrThd3KcIBUiLpWo3yAOJAm/p/Fz8UtB6KlXx0VvCsVNFlwq3DZifjjWvlF8MsPXG5j
-         PafA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=SOEQ/FuV/8ZHXACzuSwrElLLJCqvx7JtgV7MZ7joNq4=;
-        b=KgbwKKD120+VDqVOLyXBTt5LAj+OzKz9hwIDZcU94AGn+FjJLVelAKIqiA4qyN7SnH
-         WaerqX9ykrkw1ICjo9KNtEpbDd6zx55T+FW8fBIz/ZA7xnozxYRKHaPIakbXULWfjELe
-         wtTc0Dgx9XTRV70Aliu4+fo+qSKiVE/zxWK4UM0I2/I9JJn5Fr5lbZPOoZecbWNv3d//
-         NruB9jCodyoHl7Lxy8LhEAtt98gjuGah9EAnmapuJuh3Y734pEfGvu10F8bvVlGLTt5J
-         wsEY19cFyyAfByGxNdh5wU845xXHiNR+3dUiLqqIGN2vmHM6pJZqMGR7gguZq99UD/vu
-         aXIw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="fWRLE8z/";
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::243 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-oi1-x243.google.com (mail-oi1-x243.google.com. [2607:f8b0:4864:20::243])
-        by gmr-mx.google.com with ESMTPS id n19si503006pff.3.2019.04.01.15.18.58
+Received: by 10.46.82.213 with SMTP id n82ls639097lje.37.gmail; Mon, 13 Mar
+ 2017 22:46:59 -0700 (PDT)
+X-Received: by 10.46.81.66 with SMTP id b2mr5829576lje.3.1489470419169;
+        Mon, 13 Mar 2017 22:46:59 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id l138si934057wmg.0.2017.03.13.22.46.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 01 Apr 2019 15:18:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::243 as permitted sender) client-ip=2607:f8b0:4864:20::243;
+        Mon, 13 Mar 2017 22:46:59 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="fWRLE8z/";
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::243 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-oi1-x243.google.com with SMTP id t81so8725340oig.10
-        for <outreachy-kernel@googlegroups.com>; Mon, 01 Apr 2019 15:18:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=SOEQ/FuV/8ZHXACzuSwrElLLJCqvx7JtgV7MZ7joNq4=;
-        b=fWRLE8z/HiCt5pRaryB0gTP02yP2mQx6FuYdvHS9Tpo7KnsbvFYgZWo708cD4Ipyrv
-         LXZ24pQsC9V+JpU3eoHLgUf+OzUozP+5GO94AUoCCbbH96TZmcvp3SQPUB5SVVn7rNxk
-         Oz9sI43mhK6kTRgx8jUGzUcHCXxHu7c+HpaIrEdNAXf7/CMkk9K5Sd0nXGg4LcGXtN71
-         pr7Rpg0CaYxBOxZ3L5QsRwI6RvuTqdIcMW8fsjBElMhAgt5TUmowPw/BZJ4iolBHYS03
-         mLxPvguznebcEI6kpHHENQGnlKCpymNOe66cx8udzSNW+iZUSLuxeP24MTsElLjjD2xV
-         Cc/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=SOEQ/FuV/8ZHXACzuSwrElLLJCqvx7JtgV7MZ7joNq4=;
-        b=WAy5Dy5jHCQCFuQQ/EfSAf2/9TK0vboXPMwHoQIA9q8OpZkeagYaRGu/72ZTX2XJqX
-         UvhEAWCUuY5pLk9RP3g9HYN0/bPtf8EJ/OAaHLqT4VOiGvcbyDbwQrRINF+tF4IFnrtG
-         vX27kxpt30+6zVTXUxuP5thLmCYOvl8tiZT01t4EbibaI7L61JBfx5IBwoVdjrP3EMC+
-         erhtW97cBKONss7s1nf3wZ/AIAYrBLiQBGNIjM2PrI/rYcjeMtD6KpOmLNzUIFLajIoW
-         Z03bmdlhgvFVD0S+Xd6L/n4SeMVKyKt2l2f2wr9im46MCKtvVyOiN+DsCs5ElND8XS6b
-         CHKQ==
-X-Gm-Message-State: APjAAAV4N3YuZk4mgeEVzJ0KTXbqy45qY7iypc+5I9FznBMG3kOHu6AS
-	7mmWvDQ4bvBgSBXqKwJqxTzOmPKQDMA=
-X-Received: by 2002:aca:e84c:: with SMTP id f73mr14820605oih.163.1554157137377;
-        Mon, 01 Apr 2019 15:18:57 -0700 (PDT)
-Return-Path: <madhumithabiw@gmail.com>
-Received: from madhuleo ([2605:6000:1023:606d:35a4:8fe3:3a02:b8fd])
-        by smtp.gmail.com with ESMTPSA id q9sm4654061oti.78.2019.04.01.15.18.56
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Apr 2019 15:18:56 -0700 (PDT)
-From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Subject: [PATCH] Staging: rtl8723bs: Remove typedef in struct _Dynamic_Primary_CCA
-Date: Mon,  1 Apr 2019 17:18:54 -0500
-Message-Id: <20190401221854.29465-1-madhumithabiw@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.36,162,1486422000"; 
+   d="scan'208";a="264428130"
+Received: from pd95b94e4.dip0.t-ipconnect.de (HELO hadrien.intern) ([217.91.148.228])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 14 Mar 2017 06:46:58 +0100
+Date: Tue, 14 Mar 2017 06:46:52 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Arushi Singhal <arushisinghal19971997@gmail.com>
+cc: w.d.hubbs@gmail.com, chris@the-brannons.com, 
+    outreachy-kernel@googlegroups.com, kirk@reisers.ca, 
+    samuel.thibault@ens-lyon.org, gregkh@linuxfoundation.org, 
+    speakup@linux-speakup.org, devel@driverdev.osuosl.org, 
+    linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH v3 3/4] staging: sm750fb: Alignment
+ should match open parenthesis
+In-Reply-To: <20170313204853.24675-4-arushisinghal19971997@gmail.com>
+Message-ID: <alpine.DEB.2.20.1703140646220.3516@hadrien>
+References: <20170313204853.24675-1-arushisinghal19971997@gmail.com> <20170313204853.24675-4-arushisinghal19971997@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Remove typedef in struct _Dynamic_Primary_CCA, as a struct that has
-elements that can reasonably be directly accessed should never be a
-typedef.
 
-Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
----
- drivers/staging/rtl8723bs/hal/odm.h | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/odm.h b/drivers/staging/rtl8723bs/hal/odm.h
-index 23ab160ac2c8..af68658233e3 100644
---- a/drivers/staging/rtl8723bs/hal/odm.h
-+++ b/drivers/staging/rtl8723bs/hal/odm.h
-@@ -82,7 +82,7 @@
- 
- /* Remove DIG by yuchen */
- 
--typedef struct _Dynamic_Primary_CCA {
-+struct _Dynamic_Primary_CCA {
- 	u8 PriCCA_flag;
- 	u8 intf_flag;
- 	u8 intf_type;
-@@ -90,7 +90,7 @@ typedef struct _Dynamic_Primary_CCA {
- 	u8 Monitor_flag;
- 	u8 CH_offset;
- 	u8 	MF_state;
--} Pri_CCA_T, *pPri_CCA_T;
-+};
- 
- typedef struct _Rate_Adaptive_Table_ {
- 	u8 firstconnect;
-@@ -1112,7 +1112,7 @@ typedef  struct DM_Out_Source_Dynamic_Mechanism_Structure {
- 	FAT_T DM_FatTable;
- 	DIG_T DM_DigTable;
- 	PS_T DM_PSTable;
--	Pri_CCA_T DM_PriCCA;
-+	struct _Dynamic_Primary_CCA DM_PriCCA;
- 	RXHP_T DM_RXHP_Table;
- 	RA_T DM_RA_Table;
- 	false_ALARM_STATISTICS FalseAlmCnt;
--- 
-2.17.1
+On Tue, 14 Mar 2017, Arushi Singhal wrote:
 
+> Fix checkpatch issues: "CHECK: Alignment should match open parenthesis".
+
+I thought you were going to take another approach to improve this code?
+
+julia
+
+>
+> Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+> ---
+>  drivers/staging/sm750fb/ddk750_mode.c | 79 +++++++++++++++++------------------
+>  1 file changed, 39 insertions(+), 40 deletions(-)
+>
+> diff --git a/drivers/staging/sm750fb/ddk750_mode.c b/drivers/staging/sm750fb/ddk750_mode.c
+> index 45af806c8d55..eea5aef2956f 100644
+> --- a/drivers/staging/sm750fb/ddk750_mode.c
+> +++ b/drivers/staging/sm750fb/ddk750_mode.c
+> @@ -28,9 +28,9 @@ static unsigned long displayControlAdjust_SM750LE(mode_parameter_t *pModeParam,
+>  	poke32(CRT_AUTO_CENTERING_TL, 0);
+>
+>  	poke32(CRT_AUTO_CENTERING_BR,
+> -		(((y - 1) << CRT_AUTO_CENTERING_BR_BOTTOM_SHIFT) &
+> -			CRT_AUTO_CENTERING_BR_BOTTOM_MASK) |
+> -		((x - 1) & CRT_AUTO_CENTERING_BR_RIGHT_MASK));
+> +	       (((y - 1) << CRT_AUTO_CENTERING_BR_BOTTOM_SHIFT) &
+> +		CRT_AUTO_CENTERING_BR_BOTTOM_MASK) |
+> +	       ((x - 1) & CRT_AUTO_CENTERING_BR_RIGHT_MASK));
+>
+>  	/*
+>  	 * Assume common fields in dispControl have been properly set before
+> @@ -72,8 +72,7 @@ static unsigned long displayControlAdjust_SM750LE(mode_parameter_t *pModeParam,
+>  }
+>
+>  /* only timing related registers will be  programed */
+> -static int programModeRegisters(mode_parameter_t *pModeParam,
+> -						struct pll_value *pll)
+> +static int programModeRegisters(mode_parameter_t *pModeParam, struct pll_value *pll)
+>  {
+>  	int ret = 0;
+>  	int cnt = 0;
+> @@ -83,32 +82,32 @@ static int programModeRegisters(mode_parameter_t *pModeParam,
+>  		/* programe secondary pixel clock */
+>  		poke32(CRT_PLL_CTRL, sm750_format_pll_reg(pll));
+>  		poke32(CRT_HORIZONTAL_TOTAL,
+> -			(((pModeParam->horizontal_total - 1) <<
+> -				CRT_HORIZONTAL_TOTAL_TOTAL_SHIFT) &
+> -				CRT_HORIZONTAL_TOTAL_TOTAL_MASK) |
+> -			((pModeParam->horizontal_display_end - 1) &
+> -				CRT_HORIZONTAL_TOTAL_DISPLAY_END_MASK));
+> +		       (((pModeParam->horizontal_total - 1) <<
+> +			 CRT_HORIZONTAL_TOTAL_TOTAL_SHIFT) &
+> +			CRT_HORIZONTAL_TOTAL_TOTAL_MASK) |
+> +		       ((pModeParam->horizontal_display_end - 1) &
+> +			CRT_HORIZONTAL_TOTAL_DISPLAY_END_MASK));
+>
+>  		poke32(CRT_HORIZONTAL_SYNC,
+> -			((pModeParam->horizontal_sync_width <<
+> -				CRT_HORIZONTAL_SYNC_WIDTH_SHIFT) &
+> -				CRT_HORIZONTAL_SYNC_WIDTH_MASK) |
+> -			((pModeParam->horizontal_sync_start - 1) &
+> -				CRT_HORIZONTAL_SYNC_START_MASK));
+> +		       ((pModeParam->horizontal_sync_width <<
+> +			 CRT_HORIZONTAL_SYNC_WIDTH_SHIFT) &
+> +			CRT_HORIZONTAL_SYNC_WIDTH_MASK) |
+> +		       ((pModeParam->horizontal_sync_start - 1) &
+> +			CRT_HORIZONTAL_SYNC_START_MASK));
+>
+>  		poke32(CRT_VERTICAL_TOTAL,
+> -			(((pModeParam->vertical_total - 1) <<
+> -				CRT_VERTICAL_TOTAL_TOTAL_SHIFT) &
+> -				CRT_VERTICAL_TOTAL_TOTAL_MASK) |
+> -			((pModeParam->vertical_display_end - 1) &
+> -				CRT_VERTICAL_TOTAL_DISPLAY_END_MASK));
+> +		       (((pModeParam->vertical_total - 1) <<
+> +			 CRT_VERTICAL_TOTAL_TOTAL_SHIFT) &
+> +			CRT_VERTICAL_TOTAL_TOTAL_MASK) |
+> +		       ((pModeParam->vertical_display_end - 1) &
+> +			CRT_VERTICAL_TOTAL_DISPLAY_END_MASK));
+>
+>  		poke32(CRT_VERTICAL_SYNC,
+> -			((pModeParam->vertical_sync_height <<
+> -				CRT_VERTICAL_SYNC_HEIGHT_SHIFT) &
+> -				CRT_VERTICAL_SYNC_HEIGHT_MASK) |
+> -			((pModeParam->vertical_sync_start - 1) &
+> -				CRT_VERTICAL_SYNC_START_MASK));
+> +		       ((pModeParam->vertical_sync_height <<
+> +			 CRT_VERTICAL_SYNC_HEIGHT_SHIFT) &
+> +			CRT_VERTICAL_SYNC_HEIGHT_MASK) |
+> +		       ((pModeParam->vertical_sync_start - 1) &
+> +			CRT_VERTICAL_SYNC_START_MASK));
+>
+>  		tmp = DISPLAY_CTRL_TIMING | DISPLAY_CTRL_PLANE;
+>  		if (pModeParam->vertical_sync_polarity)
+> @@ -140,25 +139,25 @@ static int programModeRegisters(mode_parameter_t *pModeParam,
+>  		poke32(PANEL_HORIZONTAL_TOTAL, reg);
+>
+>  		poke32(PANEL_HORIZONTAL_SYNC,
+> -			((pModeParam->horizontal_sync_width <<
+> -				PANEL_HORIZONTAL_SYNC_WIDTH_SHIFT) &
+> -				PANEL_HORIZONTAL_SYNC_WIDTH_MASK) |
+> -			((pModeParam->horizontal_sync_start - 1) &
+> -				PANEL_HORIZONTAL_SYNC_START_MASK));
+> +		       ((pModeParam->horizontal_sync_width <<
+> +			 PANEL_HORIZONTAL_SYNC_WIDTH_SHIFT) &
+> +			PANEL_HORIZONTAL_SYNC_WIDTH_MASK) |
+> +		       ((pModeParam->horizontal_sync_start - 1) &
+> +			PANEL_HORIZONTAL_SYNC_START_MASK));
+>
+>  		poke32(PANEL_VERTICAL_TOTAL,
+> -			(((pModeParam->vertical_total - 1) <<
+> -				PANEL_VERTICAL_TOTAL_TOTAL_SHIFT) &
+> -				PANEL_VERTICAL_TOTAL_TOTAL_MASK) |
+> -			((pModeParam->vertical_display_end - 1) &
+> -				PANEL_VERTICAL_TOTAL_DISPLAY_END_MASK));
+> +		       (((pModeParam->vertical_total - 1) <<
+> +			 PANEL_VERTICAL_TOTAL_TOTAL_SHIFT) &
+> +			PANEL_VERTICAL_TOTAL_TOTAL_MASK) |
+> +		       ((pModeParam->vertical_display_end - 1) &
+> +			PANEL_VERTICAL_TOTAL_DISPLAY_END_MASK));
+>
+>  		poke32(PANEL_VERTICAL_SYNC,
+> -			((pModeParam->vertical_sync_height <<
+> -				PANEL_VERTICAL_SYNC_HEIGHT_SHIFT) &
+> -				PANEL_VERTICAL_SYNC_HEIGHT_MASK) |
+> -			((pModeParam->vertical_sync_start - 1) &
+> -				PANEL_VERTICAL_SYNC_START_MASK));
+> +		       ((pModeParam->vertical_sync_height <<
+> +			 PANEL_VERTICAL_SYNC_HEIGHT_SHIFT) &
+> +			PANEL_VERTICAL_SYNC_HEIGHT_MASK) |
+> +		       ((pModeParam->vertical_sync_start - 1) &
+> +			PANEL_VERTICAL_SYNC_START_MASK));
+>
+>  		tmp = DISPLAY_CTRL_TIMING | DISPLAY_CTRL_PLANE;
+>  		if (pModeParam->vertical_sync_polarity)
+> --
+> 2.11.0
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170313204853.24675-4-arushisinghal19971997%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
