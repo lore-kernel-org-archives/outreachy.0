@@ -1,119 +1,207 @@
-X-GM-THRID: 6802850530437627904
-X-Received: by 2002:a05:6638:a0d:: with SMTP id 13mr1894141jan.32.1583912067022;
-        Wed, 11 Mar 2020 00:34:27 -0700 (PDT)
+X-GM-THRID: 6397051506437128192
+X-Received: by 10.25.202.67 with SMTP id h3mr5289409lfj.30.1489482947972;
+        Tue, 14 Mar 2017 02:15:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a02:3084:: with SMTP id q126ls134417jaq.6.gmail; Wed, 11 Mar
- 2020 00:34:25 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuOpCIK2zqlL9s454MbG/523WCMbnoFh4A7iEzedzJk40s01thsPTRQC+HUg0mFzuo3B2Wd
-X-Received: by 2002:a02:9003:: with SMTP id w3mr1838322jaf.18.1583912065624;
-        Wed, 11 Mar 2020 00:34:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583912065; cv=none;
-        d=google.com; s=arc-20160816;
-        b=udCT+VEJMGsI8ELxENisGsWq/skEMoEOD7qydbKblph5UCQRA684F88RufdHJa7ifa
-         ywMpBFaueUpjl63NE06RrbfzCphNk9Fhq13mQkG9Upnxzexlwc4QlizYs5YIzqHrM579
-         gxWsSaXO0vMSVchKrKvF3yMsxtfWknzEI1i+WhtH8ZOz7zV0C5HcKiD8ceKfSkNvfcv6
-         WOnXqVfqukhsBVMrsRfc464P60p47dv5La9XhMVyQeaYQinxE5vYGd8nN8PPAZx+lfB5
-         rIYSGHT/BN91DqTa1HyuQHMr9HgBwWOxDPMNbpE6X4o5qYZ8VJZKE1kGxxybehMdzvF8
-         PiBw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=c34Hbnl+NFIztNvqc2+nXDVAtmAg2nUT/qlpYskjvJ8=;
-        b=oyTWMixYYqMe+Qj360eodJSSVPppoqOLpkY1l+mBTtPvyIsh3DWTkHLI7AUTZ4E7k6
-         1d27hTs8jqDTGAyC1wDjhJjPlKbyu87ygati4mK7FO03FCClz+LsCmKIhamFD4uCJtUw
-         q4600AZ50lsYCjGUr5AVjiv7TuSyx49Bs69Nt1KSlLobg/yj7csV0kaUAgk/bKDNvFCg
-         oRVexHIp4b7hkW4gDzUOSzb28Hxu1d3MUEzoLxE6rcRlqSIwUmjDEF5t6P84yDXQu+CT
-         JiqEdKdWWE9tFhy3BoPnftLPidHbXjTv6dKgPOpieXA4xaWQrjkWXznaH1Gp+plM4coY
-         cqAA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bVCiVgNS;
-       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payalskshirsagar1234@gmail.com>
-Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id k88si44705ilg.1.2020.03.11.00.34.25
+Received: by 10.46.9.129 with SMTP id 123ls1705362ljj.16.gmail; Tue, 14 Mar
+ 2017 02:15:47 -0700 (PDT)
+X-Received: by 10.25.24.65 with SMTP id o62mr4752990lfi.8.1489482947430;
+        Tue, 14 Mar 2017 02:15:47 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id b186si145088wme.1.2017.03.14.02.15.47
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 11 Mar 2020 00:34:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 14 Mar 2017 02:15:47 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bVCiVgNS;
-       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x441.google.com with SMTP id b72so803678pfb.11
-        for <outreachy-kernel@googlegroups.com>; Wed, 11 Mar 2020 00:34:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=c34Hbnl+NFIztNvqc2+nXDVAtmAg2nUT/qlpYskjvJ8=;
-        b=bVCiVgNSGWlFl0ubJ10s+9ZyKZDGsJ24oWLeAfjYmFhrAxtQC4fgyk3tA5/0aj5BSm
-         X+1Qn3P1WEdJXiCIXotC4EXRQBxYUCEtqxTpPUWJopbg2LfsrwLf6WfOaSGQMeJhq9ou
-         YJAJ0jF3Kn/B6xGQUgaE++ZTvxDvxVIr9s9j88AdwfD6jLFodat4KG6tK+RXNCzMYZ3L
-         TNkGILqy7Cn64pMkW+nA5OjcPFM2FCoobccGnKWVOS4RNfhbc6VjJAFCs5QQnTw2imNS
-         VXryXHONGrMuZ7Uoh9QzuElgBduA5fFolPkTXybcCaLm9v1y6+0a7sG43PVcGdcMFm1I
-         xaig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=c34Hbnl+NFIztNvqc2+nXDVAtmAg2nUT/qlpYskjvJ8=;
-        b=GqNESd6uxyoZODKsTodHbLT1p3X4tClJgulz+rrGyHJ8XBlmSMbAXnWAdX8eNAJ+e2
-         zztJ/66i6BNX3XSW/0H+frEV96J2G2aU6lD6YgpXF2TkbRQVLcBO3aeH+/Pyxnth9N/U
-         HCDpfaoB2R2KJRmBSxcdtXNZBM+j9FbF6B/vp7VRNq11wDIR9Int8OYbIuRvRa+KB34d
-         RQsP5a/QK4/tQG40+Ud2w0K3ZOkbWI0HhssBxQiiGsrVH+rC+/ACwjNw9CcRC+C5HZbz
-         AfezgaXd9IQlE5ztxb5HJMm0RoaG8iDl9x2B0eRkyiFjTFfTqv85ZZHmTy2kvJeRYV8d
-         N0LA==
-X-Gm-Message-State: ANhLgQ32lZNrwhtYO67JmrvCKiUQrz85tO2xI4xcG3jNefiFsP+snY+E
-	ZJRXhDR4NHvntBtUwZ97dOA=
-X-Received: by 2002:a63:f60e:: with SMTP id m14mr1580759pgh.342.1583912064817;
-        Wed, 11 Mar 2020 00:34:24 -0700 (PDT)
-Return-Path: <payalskshirsagar1234@gmail.com>
-Received: from payal-desktop ([49.35.84.144])
-        by smtp.gmail.com with ESMTPSA id 26sm21015323pgs.85.2020.03.11.00.34.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Mar 2020 00:34:23 -0700 (PDT)
-From: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-To: Larry.Finger@lwfinger.net,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-Subject: [PATCH v2] [Outreachy kernel] staging: rtl8188eu: hal: remove an unneeded variable
-Date: Wed, 11 Mar 2020 13:04:18 +0530
-Message-Id: <20200311073418.7476-1-payalskshirsagar1234@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.36,162,1486422000"; 
+   d="scan'208";a="264461515"
+Received: from pd95b94e4.dip0.t-ipconnect.de (HELO hadrien.intern) ([217.91.148.228])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 14 Mar 2017 10:15:46 +0100
+Date: Tue, 14 Mar 2017 10:15:36 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Arushi Singhal <arushisinghal19971997@gmail.com>
+cc: w.d.hubbs@gmail.com, chris@the-brannons.com, 
+    outreachy-kernel@googlegroups.com, kirk@reisers.ca, 
+    samuel.thibault@ens-lyon.org, gregkh@linuxfoundation.org, 
+    speakup@linux-speakup.org, devel@driverdev.osuosl.org, 
+    linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH v3] staging: sm750fb: Improved code
+ readability
+In-Reply-To: <20170314090626.9314-1-arushisinghal19971997@gmail.com>
+Message-ID: <alpine.DEB.2.20.1703141012130.6742@hadrien>
+References: <20170314090626.9314-1-arushisinghal19971997@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Remove unneeded temporary local variable, cleanup suggested by coccinelle.
 
-Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
----
-v2: Change in commit message and changelog.
 
- drivers/staging/rtl8188eu/hal/usb_halinit.c | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
+On Tue, 14 Mar 2017, Arushi Singhal wrote:
 
-diff --git a/drivers/staging/rtl8188eu/hal/usb_halinit.c b/drivers/staging/rtl8188eu/hal/usb_halinit.c
-index 16a57b31a439..aa6354b9ffa2 100644
---- a/drivers/staging/rtl8188eu/hal/usb_halinit.c
-+++ b/drivers/staging/rtl8188eu/hal/usb_halinit.c
-@@ -40,8 +40,6 @@ static void _ConfigNormalChipOutEP_8188E(struct adapter *adapt, u8 NumOutPipe)
- 
- static bool HalUsbSetQueuePipeMapping8188EUsb(struct adapter *adapt, u8 NumInPipe, u8 NumOutPipe)
- {
--	bool			result		= false;
--
- 	_ConfigNormalChipOutEP_8188E(adapt, NumOutPipe);
- 
- 	/*  Normal chip with one IN and one OUT doesn't have interrupt IN EP. */
-@@ -52,9 +50,7 @@ static bool HalUsbSetQueuePipeMapping8188EUsb(struct adapter *adapt, u8 NumInPip
- 
- 	/*  All config other than above support one Bulk IN and one Interrupt IN. */
- 
--	result = hal_mapping_out_pipe(adapt, NumOutPipe);
--
--	return result;
-+	return hal_mapping_out_pipe(adapt, NumOutPipe);
- }
- 
- void rtw_hal_chip_configure(struct adapter *adapt)
--- 
-2.17.1
+> New variables are added to make the code more readable.
+>
+> Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+> ---
+>  changes in v3
+>  - improve the patch to make code much more readable.
+>
+>  drivers/staging/sm750fb/ddk750_mode.c | 115 ++++++++++++++++++----------------
+>  1 file changed, 61 insertions(+), 54 deletions(-)
+>
+> diff --git a/drivers/staging/sm750fb/ddk750_mode.c b/drivers/staging/sm750fb/ddk750_mode.c
+> index 25da678179f7..150e5ed0d8ea 100644
+> --- a/drivers/staging/sm750fb/ddk750_mode.c
+> +++ b/drivers/staging/sm750fb/ddk750_mode.c
+> @@ -81,33 +81,34 @@ static int programModeRegisters(struct _mode_parameter_t *pModeParam, struct pll
+>  	if (pll->clockType == SECONDARY_PLL) {
+>  		/* programe secondary pixel clock */
+>  		poke32(CRT_PLL_CTRL, sm750_format_pll_reg(pll));
+> -		poke32(CRT_HORIZONTAL_TOTAL,
+> -		       (((pModeParam->horizontal_total - 1) <<
+> -			 CRT_HORIZONTAL_TOTAL_TOTAL_SHIFT) &
+> -			CRT_HORIZONTAL_TOTAL_TOTAL_MASK) |
+> -		       ((pModeParam->horizontal_display_end - 1) &
+> -			CRT_HORIZONTAL_TOTAL_DISPLAY_END_MASK));
+> -
+> -		poke32(CRT_HORIZONTAL_SYNC,
+> -		       ((pModeParam->horizontal_sync_width <<
+> -			 CRT_HORIZONTAL_SYNC_WIDTH_SHIFT) &
+> -			CRT_HORIZONTAL_SYNC_WIDTH_MASK) |
+> -		       ((pModeParam->horizontal_sync_start - 1) &
+> -			CRT_HORIZONTAL_SYNC_START_MASK));
+> -
+> -		poke32(CRT_VERTICAL_TOTAL,
+> -		       (((pModeParam->vertical_total - 1) <<
+> -			 CRT_VERTICAL_TOTAL_TOTAL_SHIFT) &
+> -			CRT_VERTICAL_TOTAL_TOTAL_MASK) |
+> -		       ((pModeParam->vertical_display_end - 1) &
+> -			CRT_VERTICAL_TOTAL_DISPLAY_END_MASK));
+> -
+> -		poke32(CRT_VERTICAL_SYNC,
+> -		       ((pModeParam->vertical_sync_height <<
+> -			 CRT_VERTICAL_SYNC_HEIGHT_SHIFT) &
+> -			CRT_VERTICAL_SYNC_HEIGHT_MASK) |
+> -		       ((pModeParam->vertical_sync_start - 1) &
+> -			CRT_VERTICAL_SYNC_START_MASK));
+> +
+> +		unsigned int cht = CRT_HORIZONTAL_TOTAL;
+> +		unsigned int chttm = CRT_HORIZONTAL_TOTAL_TOTAL_MASK;
+> +		unsigned int phde = pModeParam->horizontal_display_end - 1;
+> +		unsigned int chtdem = CRT_HORIZONTAL_TOTAL_DISPLAY_END_MASK;
+> +
+> +		poke32(cht, (((pModeParam->horizontal_total - 1) << CRT_HORIZONTAL_TOTAL_TOTAL_SHIFT) & chttm) | (phde & chtdem));
 
+In the kernel, you should not declare new variables on the fly, within a
+block.  My point though was that your mapping of variables to values is
+not ideal.  Give names to larger chunks than just naming constants, as I
+put in the example in my previous mail.  There is no need to have distinct
+names in each case - the names you have are distinct but not memorable
+anyway.  And don't create code that exceeds 80 characters.
+
+julia
+
+> +
+> +		unsigned int chs = CRT_HORIZONTAL_SYNC;
+> +		unsigned int chswm = CRT_HORIZONTAL_SYNC_WIDTH_MASK;
+> +		unsigned int phss = pModeParam->horizontal_sync_start - 1;
+> +		unsigned int chssm = CRT_HORIZONTAL_SYNC_START_MASK;
+> +
+> +		poke32(chs, ((pModeParam->horizontal_sync_width << CRT_HORIZONTAL_SYNC_WIDTH_SHIFT) & chswm) | (phss & chssm));
+> +
+> +		unsigned int cvt = CRT_VERTICAL_TOTAL;
+> +		unsigned int cvttm = CRT_VERTICAL_TOTAL_TOTAL_MASK;
+> +		unsigned int pvde = pModeParam->vertical_display_end - 1;
+> +		unsigned int cvtdem = CRT_VERTICAL_TOTAL_DISPLAY_END_MASK;
+> +
+> +		poke32(cvt, (((pModeParam->vertical_total - 1) << CRT_VERTICAL_TOTAL_TOTAL_SHIFT) & cvttm) | (pvde & cvtdem));
+> +
+> +		unsigned int cvs = CRT_VERTICAL_SYNC;
+> +		unsigned int cvshm = CRT_VERTICAL_SYNC_HEIGHT_MASK;
+> +		unsigned int pvss = pModeParam->vertical_sync_start - 1;
+> +		unsigned int cvssm = CRT_VERTICAL_SYNC_START_MASK;
+> +
+> +		poke32(cvs, ((pModeParam->vertical_sync_height << CRT_VERTICAL_SYNC_HEIGHT_SHIFT) & cvshm) | (pvss & cvssm));
+>
+>  		tmp = DISPLAY_CTRL_TIMING | DISPLAY_CTRL_PLANE;
+>  		if (pModeParam->vertical_sync_polarity)
+> @@ -131,33 +132,39 @@ static int programModeRegisters(struct _mode_parameter_t *pModeParam, struct pll
+>
+>  		poke32(PANEL_PLL_CTRL, sm750_format_pll_reg(pll));
+>
+> -		reg = ((pModeParam->horizontal_total - 1) <<
+> -			PANEL_HORIZONTAL_TOTAL_TOTAL_SHIFT) &
+> -			PANEL_HORIZONTAL_TOTAL_TOTAL_MASK;
+> -		reg |= ((pModeParam->horizontal_display_end - 1) &
+> -			PANEL_HORIZONTAL_TOTAL_DISPLAY_END_MASK);
+> -		poke32(PANEL_HORIZONTAL_TOTAL, reg);
+> -
+> -		poke32(PANEL_HORIZONTAL_SYNC,
+> -		       ((pModeParam->horizontal_sync_width <<
+> -			 PANEL_HORIZONTAL_SYNC_WIDTH_SHIFT) &
+> -			PANEL_HORIZONTAL_SYNC_WIDTH_MASK) |
+> -		       ((pModeParam->horizontal_sync_start - 1) &
+> -			PANEL_HORIZONTAL_SYNC_START_MASK));
+> -
+> -		poke32(PANEL_VERTICAL_TOTAL,
+> -		       (((pModeParam->vertical_total - 1) <<
+> -			 PANEL_VERTICAL_TOTAL_TOTAL_SHIFT) &
+> -			PANEL_VERTICAL_TOTAL_TOTAL_MASK) |
+> -		       ((pModeParam->vertical_display_end - 1) &
+> -			PANEL_VERTICAL_TOTAL_DISPLAY_END_MASK));
+> -
+> -		poke32(PANEL_VERTICAL_SYNC,
+> -		       ((pModeParam->vertical_sync_height <<
+> -			 PANEL_VERTICAL_SYNC_HEIGHT_SHIFT) &
+> -			PANEL_VERTICAL_SYNC_HEIGHT_MASK) |
+> -		       ((pModeParam->vertical_sync_start - 1) &
+> -			PANEL_VERTICAL_SYNC_START_MASK));
+> +		unsigned int phttm = PANEL_HORIZONTAL_TOTAL_TOTAL_MASK;
+> +
+> +		reg = ((pModeParam->horizontal_total - 1) << PANEL_HORIZONTAL_TOTAL_TOTAL_SHIFT) & phttm;
+> +
+> +		unsigned int phde = pModeParam->horizontal_display_end - 1;
+> +		unsigned int phtdem = PANEL_HORIZONTAL_TOTAL_DISPLAY_END_MASK;
+> +
+> +		reg |= (phde & phtdem);
+> +
+> +		unsigned int pht = PANEL_HORIZONTAL_TOTAL;
+> +
+> +		poke32(pht, reg);
+> +
+> +		unsigned int phs = PANEL_HORIZONTAL_SYNC;
+> +		unsigned int phswm = PANEL_HORIZONTAL_SYNC_WIDTH_MASK;
+> +		unsigned int phss = pModeParam->horizontal_sync_start - 1;
+> +		unsigned int phssm = PANEL_HORIZONTAL_SYNC_START_MASK;
+> +
+> +		poke32(phs, ((pModeParam->horizontal_sync_width << PANEL_HORIZONTAL_SYNC_WIDTH_SHIFT) & phswm) | (phss & phssm));
+> +
+> +		unsigned int pvt = PANEL_VERTICAL_TOTAL;
+> +		unsigned int pvttm = PANEL_VERTICAL_TOTAL_TOTAL_MASK;
+> +		unsigned int pvde = pModeParam->vertical_display_end - 1;
+> +		unsigned int pvtdem = PANEL_VERTICAL_TOTAL_DISPLAY_END_MASK;
+> +
+> +		poke32(pvt, (((pModeParam->vertical_total - 1) << PANEL_VERTICAL_TOTAL_TOTAL_SHIFT) & pvttm) | (pvde & pvtdem));
+> +
+> +		unsigned int pvs = PANEL_VERTICAL_SYNC;
+> +		unsigned int pvshm = PANEL_VERTICAL_SYNC_HEIGHT_MASK;
+> +		unsigned int pvss = pModeParam->vertical_sync_start - 1;
+> +		unsigned int pvssm = PANEL_VERTICAL_SYNC_START_MASK;
+> +
+> +		poke32(pvs, ((pModeParam->vertical_sync_height << PANEL_VERTICAL_SYNC_HEIGHT_SHIFT) & pvshm) | (pvss & pvssm));
+>
+>  		tmp = DISPLAY_CTRL_TIMING | DISPLAY_CTRL_PLANE;
+>  		if (pModeParam->vertical_sync_polarity)
+> --
+> 2.11.0
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170314090626.9314-1-arushisinghal19971997%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
