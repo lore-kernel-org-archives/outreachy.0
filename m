@@ -1,53 +1,52 @@
 X-GM-THRID: 6397218994574589952
-X-Received: by 10.157.67.145 with SMTP id t17mr15944438ote.35.1489468622218;
-        Mon, 13 Mar 2017 22:17:02 -0700 (PDT)
+X-Received: by 10.157.52.210 with SMTP id t18mr16298227otd.119.1489468616533;
+        Mon, 13 Mar 2017 22:16:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.143.75 with SMTP id r72ls4563077iod.30.gmail; Mon, 13 Mar
- 2017 22:17:01 -0700 (PDT)
-X-Received: by 10.99.66.6 with SMTP id p6mr17579864pga.20.1489468621359;
-        Mon, 13 Mar 2017 22:17:01 -0700 (PDT)
+Received: by 10.157.44.99 with SMTP id f90ls4338097otb.24.gmail; Mon, 13 Mar
+ 2017 22:16:56 -0700 (PDT)
+X-Received: by 10.129.39.142 with SMTP id n136mr17090040ywn.160.1489468616210;
+        Mon, 13 Mar 2017 22:16:56 -0700 (PDT)
 Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id y203si3036790pfb.0.2017.03.13.22.17.01
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id c123si3411733pfa.4.2017.03.13.22.16.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 13 Mar 2017 22:17:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Mon, 13 Mar 2017 22:16:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id 77so21855481pgc.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 13 Mar 2017 22:17:01 -0700 (PDT)
+Received: by mail-pg0-x244.google.com with SMTP id b5so21931318pgg.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 13 Mar 2017 22:16:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=3A5qZk0zicaWBGeWOy5gw0fuRGasDi3mAmAP1KpZln8=;
-        b=j/+uTBoDQ/3NSqIoizmszccQvvkoKLR8QKS0rCKfCpym32yXy2N7MW/ADRN08zG/GR
-         E3pidz4aGSWMOLrfsjy5EUAK0ae4sTOoPR5cAXAHp4QCoD8iJC2yZuUhVbSucyuuusIv
-         6SFFZ/bXSGGdFD9MqoQEtK/XDfHPhqDQUTQokuhUigsahbV9JrMMgXKDkgZ4a3+3Viv4
-         JzkEdqhLsJX1G7b2l2h6/c/j5/qtpSmUL4YTLH7fd6h9sa7TiYbLlQQkaWpMOc2UYHTR
-         d0FhNs+B+aBHrYon2X4kwNoozkbmgYYJJyA3USBugTJre3trQtrRU1t4AIV01dZbPvfa
-         Bxqg==
+        h=from:to:cc:subject:date:message-id;
+        bh=sD/LkVoKQlJvXTM92TjrzDJF/le3vy7JrhSsIEa4hjQ=;
+        b=AclONpqVZpNeqQ/yhilTJbhK+fAk2IkYGMfCzbWjGQgm22X/x7umbATwSAFv9tC2yd
+         67c/tfqEcvD+VDA49qIkIEY8bcjGJKyrAaUGUcoOfDEBROazP8A5pK2cn4USWDV+q+2Q
+         rUJpMiOrZjw1iAHKAxQmOROKN+89AaeCVmpybQmCbs7KB0iwKEYCjGxScj6mxRs3UMbN
+         kTGr/ff1JGZqIX4mTrs4+liXLHLAobaG6AmeF81YQOvrOHaItJhzzEpnY05J4U4vp8Vp
+         E6GTKkeivdmX1BBog8UfMdEaBDz4sI784un2XwRh5cYBGvfg7EoVv/y5vqUDwFDN8FVY
+         xjPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=3A5qZk0zicaWBGeWOy5gw0fuRGasDi3mAmAP1KpZln8=;
-        b=O9wVSz9ghX3CTvariGChjKjr4f8hPGIgbFOa36K2yvjxEVwQIQsOcK1DHXSBY4q7Ps
-         o6k9csCsrOPkNOUkTs10bWDmSF5qI1DgLQC0pILoZaZsGOt4wcwUc+jzAvqRwixX7qIB
-         BojpazZ6jxYis1Q/Kmu4V1BU40gNkB7hmuwsTtA6CRHNegh1MYEzIwMBW83GsJq/OUUb
-         kOYzs3iyxqjCWE0QjrEoWUIweK+1MTzizAS7vmdbjX54NrFfoc5egliRkgFoX4jV4WI7
-         I0hFocA8YfGaDS5CsF2nW6UhXidCTWPqKIYEdKXJDH1U0PzmjeIzhv0oE2a+Lw6n9lM3
-         uuWw==
-X-Gm-Message-State: AMke39looFhrxQql+89FFYjNu2Wedx+ex0xWhUx4+H7IfmOwRxTCA+2w01dxfhFS6vB+uA==
-X-Received: by 10.99.149.66 with SMTP id t2mr41618945pgn.152.1489468621171;
-        Mon, 13 Mar 2017 22:17:01 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=sD/LkVoKQlJvXTM92TjrzDJF/le3vy7JrhSsIEa4hjQ=;
+        b=fyTwhYGmxjc4DhqDxEe5q/BSYHpy/lkrgt1chqIG2gHonFlQ6v9UzJoWRoHxy54Pij
+         wC/uqJ1VQ8apNdl10ZTP9Pl9/rULbqlGRYN0s9Ow+t9J/dxI67vI3GcjkIWyuWnBhrC1
+         4JX6gHiWilz+LPpvHH6dFgV8CJ2oxTx/22Q1XXxdA3CVKWsLi+a5F8WD5+7Nj+E4uBO2
+         g6lh8L5PjkiKllZSwaYQiqHQm1w3s8hjWRMSux4thAP8+8APmG51CAAH5IVX+H/LekIJ
+         +t1F8750LvGfhXIRGM+9PTyJ5TrLMvtPmZKBWe85tXotx+MnXooI9AxXIsdmz/aw6Cpp
+         QI3g==
+X-Gm-Message-State: AMke39k12xM3gvYZlsS+cvYtrnRA7O5wwr7jGVaN68LqtUONlDb3Q7E6NOOArDt1acJjBQ==
+X-Received: by 10.99.160.89 with SMTP id u25mr41001616pgn.92.1489468615988;
+        Mon, 13 Mar 2017 22:16:55 -0700 (PDT)
 Return-Path: <arushisinghal19971997@gmail.com>
 Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id q64sm35804130pga.0.2017.03.13.22.16.58
+        by smtp.gmail.com with ESMTPSA id f21sm35534219pff.48.2017.03.13.22.16.54
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 13 Mar 2017 22:16:59 -0700 (PDT)
+        Mon, 13 Mar 2017 22:16:54 -0700 (PDT)
 From: Arushi Singhal <arushisinghal19971997@gmail.com>
 To: w.d.hubbs@gmail.com
 Cc: chris@the-brannons.com,
@@ -59,64 +58,24 @@ Cc: chris@the-brannons.com,
 	devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org,
 	Arushi Singhal <arushisinghal19971997@gmail.com>
-Subject: [PATCH v3 1/2] staging: speakup: Add blank line after declarations
-Date: Tue, 14 Mar 2017 10:46:42 +0530
-Message-Id: <20170314051643.28085-2-arushisinghal19971997@gmail.com>
+Subject: [PATCH v3 0/2] staging: speakup: checkpatch guided cleanups.
+Date: Tue, 14 Mar 2017 10:46:41 +0530
+Message-Id: <20170314051643.28085-1-arushisinghal19971997@gmail.com>
 X-Mailer: git-send-email 2.11.0
-In-Reply-To: <20170314051643.28085-1-arushisinghal19971997@gmail.com>
-References: <20170314051643.28085-1-arushisinghal19971997@gmail.com>
 
-Patch fixes the warnings reported by checkpatch.pl
-for please use a blank line after function/struct/union/enum
-declarations.
-Add a blank line after enum and struct declarations.
+Improve readability by fixing multiple checkpatch.pl
+issues in speakup driver.
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
- changes in v3
- - change the subject and commit message to make it more relevant.
+Arushi Singhal (2):
+  staging: speakup: Add blank line after declarations
+  staging: speakup: fix "Alignment match open parenthesis"
 
+ drivers/staging/speakup/kobjects.c     | 2 +-
  drivers/staging/speakup/main.c         | 1 +
  drivers/staging/speakup/serialio.c     | 1 +
  drivers/staging/speakup/speakup_dtlk.c | 1 +
- 3 files changed, 3 insertions(+)
+ 4 files changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/speakup/main.c b/drivers/staging/speakup/main.c
-index 6786cfab7460..4b750ec8cd59 100644
---- a/drivers/staging/speakup/main.c
-+++ b/drivers/staging/speakup/main.c
-@@ -108,6 +108,7 @@ enum {
- 	CT_Window,
- 	CT_Max
- };
-+
- #define read_all_mode CT_Max
- 
- static struct tty_struct *tty;
-diff --git a/drivers/staging/speakup/serialio.c b/drivers/staging/speakup/serialio.c
-index aade52ee15a0..d51e382cb835 100644
---- a/drivers/staging/speakup/serialio.c
-+++ b/drivers/staging/speakup/serialio.c
-@@ -21,6 +21,7 @@ static void start_serial_interrupt(int irq);
- static const struct old_serial_port rs_table[] = {
- 	SERIAL_PORT_DFNS
- };
-+
- static const struct old_serial_port *serstate;
- static int timeouts;
- 
-diff --git a/drivers/staging/speakup/speakup_dtlk.c b/drivers/staging/speakup/speakup_dtlk.c
-index eede2d82183a..c0b2208aa8a7 100644
---- a/drivers/staging/speakup/speakup_dtlk.c
-+++ b/drivers/staging/speakup/speakup_dtlk.c
-@@ -43,6 +43,7 @@ static int port_forced;
- static unsigned int synth_portlist[] = {
- 		 0x25e, 0x29e, 0x2de, 0x31e, 0x35e, 0x39e, 0
- };
-+
- static u_char synth_status;
- 
- static struct var_t vars[] = {
 -- 
 2.11.0
 
