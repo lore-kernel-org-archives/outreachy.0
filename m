@@ -1,81 +1,95 @@
-X-GM-THRID: 6201728963441590272
-X-Received: by 10.66.227.196 with SMTP id sc4mr21204016pac.30.1443952546852;
-        Sun, 04 Oct 2015 02:55:46 -0700 (PDT)
+X-GM-THRID: 6392026082663464960
+X-Received: by 10.13.192.193 with SMTP id b184mr2089223ywd.27.1489594908846;
+        Wed, 15 Mar 2017 09:21:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.129.195 with SMTP id ny3ls1242549obb.31.gmail; Sun, 04 Oct
- 2015 02:55:46 -0700 (PDT)
-X-Received: by 10.182.80.193 with SMTP id t1mr21387790obx.0.1443952546505;
-        Sun, 04 Oct 2015 02:55:46 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
-        by gmr-mx.google.com with ESMTPS id uv4si3153783pac.0.2015.10.04.02.55.46
+Received: by 10.36.76.208 with SMTP id a199ls882424itb.0.gmail; Wed, 15 Mar
+ 2017 09:21:47 -0700 (PDT)
+X-Received: by 10.99.111.143 with SMTP id k137mr2228885pgc.1.1489594907825;
+        Wed, 15 Mar 2017 09:21:47 -0700 (PDT)
+Return-Path: <gs051095@gmail.com>
+Received: from mail-it0-x233.google.com (mail-it0-x233.google.com. [2607:f8b0:4001:c0b::233])
+        by gmr-mx.google.com with ESMTPS id t8si104506ith.0.2017.03.15.09.21.47
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 04 Oct 2015 02:55:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 15 Mar 2017 09:21:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:4001:c0b::233 as permitted sender) client-ip=2607:f8b0:4001:c0b::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by pablk4 with SMTP id lk4so146515529pab.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 04 Oct 2015 02:55:46 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:4001:c0b::233 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-it0-x233.google.com with SMTP id m27so68822537iti.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 15 Mar 2017 09:21:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=E/VqXWmkL7kAm9bsor8GF4KQYkl+sKqhBxqbAOjtkLQ=;
-        b=cb4WLz4ukQqK8s9qa5EdPT7lwoZRJYWZxHBwqvqn3Dy3oddiwiPwOBFL0oJ39sAqaq
-         CzYnkrvIEtkcNKVd8XYqxRYxOyUlcCmY40PTdkvqk3bwiv+J/m3b1uk21fzOsffXMyfe
-         ECPhUXmcStvQFZ9a56KhUNg8R7/JqUEgx5ZlChH+OT0EYERRotvz5fmWVBko5z412IKS
-         r3MT9rlx9d+3NPRltQ4emhHQNYQPpoDubwDyU0RNixv4+EAfOsg8/UlqQJlN2GDnX9yr
-         /8UMzBmtyiRhLql/1hKaILo1Cpbk004g0yYCsVy+NgBXiJOicsBP0d19tJzzAA5+JH95
-         hj+A==
-X-Received: by 10.67.3.167 with SMTP id bx7mr32085795pad.47.1443952546327;
-        Sun, 04 Oct 2015 02:55:46 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.240.135])
-        by smtp.gmail.com with ESMTPSA id te7sm21305395pbc.87.2015.10.04.02.55.45
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sun, 04 Oct 2015 02:55:45 -0700 (PDT)
-Date: Sun, 4 Oct 2015 15:25:42 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: sm750fb: Remove space after paranthesis
-Message-ID: <20151004095542.GA7011@amitoj-Inspiron-3542>
+        d=gmail.com; s=20161025;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=cgGBRjUXCydopmQSApBZdy+igyNtsT0+HDHryFCok+Q=;
+        b=r/xaO/kfi1COs+vBQpsNOcCsbMVcWDqikwTCBOw/yg7CcKGXGbv+8JfanYMdZw5hWh
+         TMM5KzG6lN2YZkBsJZ+uaaZkFLLJjRzWkP8Y7AdZ9jkA2YqO4YItkWWSQTgBSyu3rz8S
+         T3C+cHnJygYLfI+z6b9ZunGGz3uHAWz4c7JS5BCBTGH1OMuL1+Drjzy5ZAr3QFX6qFSP
+         AvKIqPkH8HqiZWjRXmO+6E5wWp90Bww6g1DBfukgKFuKdEYia/lyoaRfaLf8QsdXpzmr
+         KJJT9ipKlU86Iicvip645TDqdwRAuOT+9eqT5TZXUp2rgJMamMBb3naFN0qOZcWT/jTb
+         c7dA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=cgGBRjUXCydopmQSApBZdy+igyNtsT0+HDHryFCok+Q=;
+        b=OGM9S5ors9x182MI6BTOBRvcmZCGhDEw2obF/7sbP+leVgyvJivPd+j4kkhpS0+R/5
+         MhCITH7lst9xegD8XdjCXmVGtnA1OVGQO7S/YiCh0957DtZF9ncroq6zsJl/gk/A0a3D
+         bgL3q5rlYNKoSYhg3B2n/Y2eQluwoo9d00DfTaOYCnRn8mjDo0ZE1asZ2YqIVJ0SN0ow
+         mWjKw+4sj5hEkHhJe7NSLUdm4hO5PHjBk/iTaoAQtYO72wpbBFMjQ/pi3wdZuhzsPbc5
+         uMKqNySsZoXmQFa0D1JeYOdP/Bn3G+wRFCNj/bzV1Zo+GkybJ3mEUNerDVAzSnmTLGCd
+         xiSg==
+X-Gm-Message-State: AFeK/H0jiOaMhHlPrv2du9RmhXHZKxlOys379nNTbq+rh0Q4SLUJkD5gO+NFnMKFk6Vv8L+wFBdz/W5LC+7Tzw==
+X-Received: by 10.36.64.198 with SMTP id n189mr6051112ita.6.1489594907403;
+ Wed, 15 Mar 2017 09:21:47 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Received: by 10.36.103.141 with HTTP; Wed, 15 Mar 2017 09:21:16 -0700 (PDT)
+In-Reply-To: <cover.1489576506.git.gs051095@gmail.com>
+References: <cover.1489576506.git.gs051095@gmail.com>
+From: Gargi Sharma <gs051095@gmail.com>
+Date: Wed, 15 Mar 2017 21:51:16 +0530
+Message-ID: <CAOCi2DFuiO2gMayheHWijqxXcFw71_ykTxhFfWZacYntxugR5g@mail.gmail.com>
+Subject: Re: [PATCH v2 0/6] staging: lustre: Replace typedef with struct
+To: outreachy-kernel@googlegroups.com
+Cc: "Drokin, Oleg" <oleg.drokin@intel.com>, "Dilger, Andreas" <andreas.dilger@intel.com>, 
+	jsimmons@infradead.org, Greg KH <gregkh@linuxfoundation.org>, 
+	Gargi Sharma <gs051095@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 
-Remove space after paranthesis '('. Problem found using
-checkpatch.pl
-ERROR: space prohibited after that open parenthesis '('
+On Wed, Mar 15, 2017 at 4:50 PM, Gargi Sharma <gs051095@gmail.com> wrote:
+> Remove struct typedefs and rename structs accordingly
+> as per kernel coding conventions.
+>
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/sm750fb/ddk750_chip.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Please ignore this patchset since these changes were already done by
+someone else.
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index 665238c..9f0883b 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -600,9 +600,9 @@ unsigned int formatPllReg(pll_value_t *pPLL)
-        On returning a 32 bit number, the value can be applied to any PLL in the calling function.
-     */
- 	ulPllReg =
--	FIELD_SET(  0, PANEL_PLL_CTRL, BYPASS, OFF)
--	| FIELD_SET(  0, PANEL_PLL_CTRL, POWER,  ON)
--	| FIELD_SET(  0, PANEL_PLL_CTRL, INPUT,  OSC)
-+	FIELD_SET(0, PANEL_PLL_CTRL, BYPASS, OFF)
-+	| FIELD_SET(0, PANEL_PLL_CTRL, POWER,  ON)
-+	| FIELD_SET(0, PANEL_PLL_CTRL, INPUT,  OSC)
- #ifndef VALIDATION_CHIP
- 	| FIELD_VALUE(0, PANEL_PLL_CTRL, POD,    pPLL->POD)
- #endif
--- 
-1.9.1
+Thanks,
+Gargi
 
+> ---
+> Changes in v2:
+>         - Split multiple typedef replacements into different patches.
+>
+> Gargi Sharma (6):
+>   staging: lustre: Replace typedef lnet_rc_data_t with struct
+>   staging: lustre: Replace typedef lnet_remotenet_t with struct
+>   staging: lustre: Replace typedef lnet_route_t with struct
+>   staging: lustre: Replace typedef lnet_rtrbuf_t with struct
+>   staging: lustre: Replace typedef lnet_test_peer_t with struct
+>   staging: lustre: Replace typedef lnet_rtrbufpool_t with struct
+>
+>  .../staging/lustre/include/linux/lnet/lib-lnet.h   |   8 +-
+>  .../staging/lustre/include/linux/lnet/lib-types.h  |  32 +++----
+>  drivers/staging/lustre/lnet/lnet/api-ni.c          |   2 +-
+>  drivers/staging/lustre/lnet/lnet/lib-move.c        |  48 +++++-----
+>  drivers/staging/lustre/lnet/lnet/router.c          | 103 +++++++++++----------
+>  drivers/staging/lustre/lnet/lnet/router_proc.c     |  15 +--
+>  6 files changed, 106 insertions(+), 102 deletions(-)
+>
+> --
+> 2.7.4
+>
 
