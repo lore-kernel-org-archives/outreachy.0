@@ -1,86 +1,93 @@
 X-GM-THRID: 6394528999032225792
-X-Received: by 10.46.1.12 with SMTP id 12mr279820ljb.30.1489570413228;
-        Wed, 15 Mar 2017 02:33:33 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.20.67 with SMTP id 3ls147838lju.49.gmail; Wed, 15 Mar 2017
- 02:33:31 -0700 (PDT)
-X-Received: by 10.46.87.27 with SMTP id l27mr280896ljb.28.1489570411845;
-        Wed, 15 Mar 2017 02:33:31 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id y19si583634wmd.0.2017.03.15.02.33.31
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 15 Mar 2017 02:33:31 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
-Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.36,168,1486422000"; 
-   d="scan'208";a="216802723"
-Received: from pd95b94e4.dip0.t-ipconnect.de (HELO hadrien.intern) ([217.91.148.228])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 15 Mar 2017 10:33:30 +0100
-Date: Wed, 15 Mar 2017 10:33:24 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Arushi Singhal <arushisinghal19971997@gmail.com>
-cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, w.d.hubbs@gmail.com, 
-    chris@the-brannons.com, kirk@reisers.ca, samuel.thibault@ens-lyon.org, 
-    gregkh@linuxfoundation.org, speakup@linux-speakup.org, 
-    devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: Re: [Outreachy kernel] Re: [PATCH 0/2] Improve code readability
-In-Reply-To: <e3451e76-4119-4ea9-8bd0-134de6504fd0@googlegroups.com>
-Message-ID: <alpine.DEB.2.20.1703151032540.3212@hadrien>
-References: <20170310204155.6367-1-arushisinghal19971997@gmail.com> <e3451e76-4119-4ea9-8bd0-134de6504fd0@googlegroups.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+Date: Wed, 15 Mar 2017 01:39:19 -0700 (PDT)
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: w.d.hubbs@gmail.com, chris@the-brannons.com, kirk@reisers.ca,
+	samuel.thibault@ens-lyon.org, gregkh@linuxfoundation.org,
+	speakup@linux-speakup.org, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org, arushisinghal19971997@gmail.com
+Message-Id: <e3451e76-4119-4ea9-8bd0-134de6504fd0@googlegroups.com>
+In-Reply-To: <20170310204155.6367-1-arushisinghal19971997@gmail.com>
+References: <20170310204155.6367-1-arushisinghal19971997@gmail.com>
+Subject: Re: [PATCH 0/2] Improve code readability
 MIME-Version: 1.0
-Content-Type: multipart/mixed; BOUNDARY="8323329-1647550423-1489570411=:3212"
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_4448_508457466.1489567159464"
+X-Google-Token: ELf7o8YFeYeMsBMRcJ80
+X-Google-IP: 14.139.82.6
 
---8323329-1647550423-1489570411=:3212
+------=_Part_4448_508457466.1489567159464
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_4449_1597788986.1489567159464"
+
+------=_Part_4449_1597788986.1489567159464
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7bit
 
-On Wed, 15 Mar 2017, Arushi Singhal wrote:
+Hi
+This Patch series is not yet added to the kernel tree.
+Thanks
+Arushi
 
-> HiThis Patch series is not yet added to the kernel tree.
+On Saturday, 11 March 2017 02:12:02 UTC+5:30, Arushi Singhal wrote:
+>
+> Improve readability by fixing multiple checkpatch.pl 
+> issues. 
+>
+> Arushi Singhal (2): 
+>   staging: speakup: Avoid multiple assignments on same line 
+>   staging: speakup: fixes braces {} should be used on all arms of this 
+>     statement 
+>
+>  drivers/staging/speakup/main.c           |  6 ++++-- 
+>  drivers/staging/speakup/speakup_decext.c |  6 +++--- 
+>  drivers/staging/speakup/speakup_decpc.c  |  6 +++--- 
+>  drivers/staging/speakup/speakup_dectlk.c |  6 +++--- 
+>  drivers/staging/speakup/varhandlers.c    | 12 +++++++----- 
+>  5 files changed, 20 insertions(+), 16 deletions(-) 
+>
+> -- 
+> 2.11.0 
+>
+>
+------=_Part_4449_1597788986.1489567159464
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-The normal process is to send it again, with RESEND inside the [PATCH]
-box.
+<div dir=3D"ltr">Hi<div>This Patch series is not yet added to the kernel tr=
+ee.</div><div>Thanks</div><div>Arushi<br><br>On Saturday, 11 March 2017 02:=
+12:02 UTC+5:30, Arushi Singhal  wrote:<blockquote class=3D"gmail_quote" sty=
+le=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left=
+: 1ex;">Improve readability by fixing multiple <a href=3D"http://checkpatch=
+.pl" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;htt=
+p://www.google.com/url?q\x3dhttp%3A%2F%2Fcheckpatch.pl\x26sa\x3dD\x26sntz\x=
+3d1\x26usg\x3dAFQjCNGoRgUgHq29dhmk72L974NI3_mFug&#39;;return true;" onclick=
+=3D"this.href=3D&#39;http://www.google.com/url?q\x3dhttp%3A%2F%2Fcheckpatch=
+.pl\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNGoRgUgHq29dhmk72L974NI3_mFug&#3=
+9;;return true;">checkpatch.pl</a>
+<br>issues.
+<br>
+<br>Arushi Singhal (2):
+<br>=C2=A0 staging: speakup: Avoid multiple assignments on same line
+<br>=C2=A0 staging: speakup: fixes braces {} should be used on all arms of =
+this
+<br>=C2=A0 =C2=A0 statement
+<br>
+<br>=C2=A0drivers/staging/speakup/main.<wbr>c =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 | =C2=A06 ++++--
+<br>=C2=A0drivers/staging/speakup/<wbr>speakup_decext.c | =C2=A06 +++---
+<br>=C2=A0drivers/staging/speakup/<wbr>speakup_decpc.c =C2=A0| =C2=A06 +++-=
+--
+<br>=C2=A0drivers/staging/speakup/<wbr>speakup_dectlk.c | =C2=A06 +++---
+<br>=C2=A0drivers/staging/speakup/<wbr>varhandlers.c =C2=A0 =C2=A0| 12 ++++=
++++-----
+<br>=C2=A05 files changed, 20 insertions(+), 16 deletions(-)
+<br>
+<br>--=20
+<br>2.11.0
+<br>
+<br></blockquote></div></div>
+------=_Part_4449_1597788986.1489567159464--
 
-julia
-
-> Thanks
-> Arushi
->
-> On Saturday, 11 March 2017 02:12:02 UTC+5:30, Arushi Singhal wrote:
->       Improve readability by fixing multiple checkpatch.pl
->       issues.
->
->       Arushi Singhal (2):
->         staging: speakup: Avoid multiple assignments on same line
->         staging: speakup: fixes braces {} should be used on all arms
->       of this
->           statement
->
->        drivers/staging/speakup/main.c           |  6 ++++--
->        drivers/staging/speakup/speakup_decext.c |  6 +++---
->        drivers/staging/speakup/speakup_decpc.c  |  6 +++---
->        drivers/staging/speakup/speakup_dectlk.c |  6 +++---
->        drivers/staging/speakup/varhandlers.c    | 12 +++++++-----
->        5 files changed, 20 insertions(+), 16 deletions(-)
->
->       --
->       2.11.0
->
-> --
-> You received this message because you are subscribed to the Google Groups
-> "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an
-> email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/e3451e76-4119-4ea9-8bd0-
-> 134de6504fd0%40googlegroups.com.
-> For more options, visit https://groups.google.com/d/optout.
->
->
---8323329-1647550423-1489570411=:3212--
+------=_Part_4448_508457466.1489567159464--
 
