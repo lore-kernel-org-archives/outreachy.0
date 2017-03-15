@@ -1,72 +1,108 @@
 X-GM-THRID: 6396247239473233920
-X-Received: by 10.99.125.11 with SMTP id y11mr2004278pgc.10.1489592684043;
-        Wed, 15 Mar 2017 08:44:44 -0700 (PDT)
+X-Received: by 10.237.53.146 with SMTP id c18mr386487qte.64.1489590264502;
+        Wed, 15 Mar 2017 08:04:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.68.202 with SMTP id p10ls2483430otg.18.gmail; Wed, 15 Mar
- 2017 08:44:43 -0700 (PDT)
-X-Received: by 10.129.163.208 with SMTP id a199mr2010778ywh.135.1489592683603;
-        Wed, 15 Mar 2017 08:44:43 -0700 (PDT)
-Return-Path: <rvarsha016@gmail.com>
+Received: by 10.157.73.132 with SMTP id g4ls2406725otf.39.gmail; Wed, 15 Mar
+ 2017 08:04:24 -0700 (PDT)
+X-Received: by 10.157.36.99 with SMTP id p90mr1669916ota.7.1489590264070;
+        Wed, 15 Mar 2017 08:04:24 -0700 (PDT)
+Return-Path: <daniel.baluta@gmail.com>
 Received: from mail-it0-x233.google.com (mail-it0-x233.google.com. [2607:f8b0:4001:c0b::233])
-        by gmr-mx.google.com with ESMTPS id z191si83836itc.0.2017.03.15.08.44.43
+        by gmr-mx.google.com with ESMTPS id g205si68660ita.2.2017.03.15.08.04.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 15 Mar 2017 08:44:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:4001:c0b::233 as permitted sender) client-ip=2607:f8b0:4001:c0b::233;
+        Wed, 15 Mar 2017 08:04:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2607:f8b0:4001:c0b::233 as permitted sender) client-ip=2607:f8b0:4001:c0b::233;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:4001:c0b::233 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2607:f8b0:4001:c0b::233 as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-it0-x233.google.com with SMTP id w124so51764280itb.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 15 Mar 2017 08:44:43 -0700 (PDT)
+Received: by mail-it0-x233.google.com with SMTP id w124so50980614itb.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 15 Mar 2017 08:04:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=T7Mai3pU2smtdhpDTtA1AlAvOq6cUWZT1b8O9yPKLJc=;
-        b=iV/xR9EcR8BtVcft92ri42WF20SlAV+GBOYF4SeOisTdjfj2CjfUJ2uHy4LLYubT+T
-         YaX2CRhIAjqGJMWZqhSt0sR2hrt0jAYfUkYtLxRxHoAGFm+WuWuy/oYTJ+KbpJhwz+bL
-         at4vAZULYl8A3wRrG1NIvtPZH9PrWilPdrdvdz2nKb3pdcorsGqnqKpXVdxe8vwiJz9Y
-         jIjVM6h6UneAF2LDTz6CbTfyd8OaCRAHToQq2GUecmfIytCmcQVhMQquvjfyKetWumbS
-         VUkJJiWw9tDLGc+xMAYudGwlWsBTM4TEm4Y6WgS/jXd6UQaOXguIreYnMvG76Y3F556T
-         8MBQ==
+         :cc:content-transfer-encoding;
+        bh=f9n+JA1wpxOIquE5htyu8kdGd4ADbmeZRGaAE9vsZGA=;
+        b=XMO0cPDBYDNTpseeXTo9dJ69t1c0eKIVS7xndZGpnh0mEJqEs3g17qe9wg/v5RA5c4
+         UKRoOmsIbGZgxe4pTNL3vO6xn0vOWZzqtU4tOEiL6QBt4qYqdn9SF7ZHw41nV0N8K71i
+         8N7nvEYqiyPSecUheDrsOpSS7ElhvSguxkT6je4/UfgKV1JEA6mdilLIZjchyjaDLdGU
+         U+rNc/gHV0USuQ3b0Mnc/Ytc3vLZz2JUq0fmvSFDtrczYAsV24+6nndsPfEUCssqfyks
+         SUEBc4OuJb2tiwn8qAOnQbcjisspx1owS5qlzQqjHvuy02srzFhbyKeu2BCYfaTO38a4
+         M/dw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=T7Mai3pU2smtdhpDTtA1AlAvOq6cUWZT1b8O9yPKLJc=;
-        b=oIcTXwrqDiqCTWyrjAzEKQKEkd5josvZbWDsxyCB/Qhj7Hxn0QQe6+L5DzlZEanma2
-         mOLIqScoc1oHYtp1OoihzG4j58ZUoL+NYxH/odEQ6fvU9VwHQcKCdWVBOIzOF7OQD81S
-         wDtz10bvlQQ7erIWu94fBv24Uk92ad3kaETtIhPo4KqtPGpvaLSCuDYP60wzFIvZcJBl
-         H09EbhSCHdWZv3Z/TnhE6qeBWjrKUjcMrNR+VXpXBEkG48rw8PFgvb5l95w/cSdAreOm
-         EGampvJH4yalsX8mEOI6u4AUkhlCHsysZ5m0CgiCtYfmYqfLpmYbUntXLA9PkeM7L54e
-         YQ0g==
-X-Gm-Message-State: AFeK/H3j5m2x7VzCw8f+uFS14BroI10GctVz4LUpwEJ08L8QLrlENUzbaIEEpoXuZTtZaZGRrjmYPIO+WCrynQ==
-X-Received: by 10.36.47.213 with SMTP id j204mr21465440itj.7.1489592683377;
- Wed, 15 Mar 2017 08:44:43 -0700 (PDT)
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=f9n+JA1wpxOIquE5htyu8kdGd4ADbmeZRGaAE9vsZGA=;
+        b=Ic2kDDxjfK1YqQ9V6zw1GGA1eo4b2BinpDMdAD0J2fdBbMDNjVCGFqIEBVo6jrhvTh
+         /7JQDbT6vnHYxwh8jA86WQeM56uquON8xndgOq1en64Ay+gB9HJ/0VK8lRITOllbJMTP
+         fU+jjZZny7tatnBsyFT6r/swCgH4/bMajdDz6YK5ruer0db2X+HiD4PSyGOFAMO3qLf/
+         ep32xzWG9+nWj4dEqxUAzyIJv/6sWZPq0H4tyFZgJCzHaGV56BWikiUkArARtD/+wpHy
+         DhJXe78VH7icsBoGYtdiQod/UqHKlFCg+B0gyiNcD/n28PTKBds6IPdFc5QhXOt7RNpA
+         A4Fw==
+X-Gm-Message-State: AFeK/H3E7HHTMOsCFlTruW9OaMvCMfPX+eD38f+/2gE0Bdn/4a3FHtSlk8tNTCaghBIIBTEDtCg0dpKF9aZvAA==
+X-Received: by 10.36.146.134 with SMTP id l128mr5331264itd.19.1489590263764;
+ Wed, 15 Mar 2017 08:04:23 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.107.51.74 with HTTP; Wed, 15 Mar 2017 08:44:02 -0700 (PDT)
-In-Reply-To: <CAEnQRZCjGJYSeO2TaeFGuRURMC2CRpinOTaBBiOrTuYXBGVGKQ@mail.gmail.com>
+Received: by 10.107.26.201 with HTTP; Wed, 15 Mar 2017 08:04:23 -0700 (PDT)
+In-Reply-To: <09641868-447c-4cfd-ab88-c33d932846ef@googlegroups.com>
 References: <1a480897-bdb9-4d3c-8143-d5347f67c2b6@googlegroups.com>
  <e64c8df1-dce6-42e3-b186-1c85380a2734@googlegroups.com> <CAEnQRZCyfGZh1AigeYW1UOn-ECvyQX1+HUiVp8OQ_rq2ZFWFFA@mail.gmail.com>
- <09641868-447c-4cfd-ab88-c33d932846ef@googlegroups.com> <CAEnQRZCjGJYSeO2TaeFGuRURMC2CRpinOTaBBiOrTuYXBGVGKQ@mail.gmail.com>
-From: Varsha Rao <rvarsha016@gmail.com>
-Date: Wed, 15 Mar 2017 21:14:02 +0530
-Message-ID: <CAAFX7JSiXo-kLxc4xni0+nGahoCsDtRbWiFgmSQoKBDYUwNoxA@mail.gmail.com>
+ <09641868-447c-4cfd-ab88-c33d932846ef@googlegroups.com>
+From: Daniel Baluta <daniel.baluta@gmail.com>
+Date: Wed, 15 Mar 2017 17:04:23 +0200
+Message-ID: <CAEnQRZCjGJYSeO2TaeFGuRURMC2CRpinOTaBBiOrTuYXBGVGKQ@mail.gmail.com>
 Subject: Re: [Outreachy kernel] Re: Trouble with IIO dummy build.
-To: Daniel Baluta <daniel.baluta@gmail.com>
+To: Varsha Rao <rvarsha016@gmail.com>
 Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
 Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-  Hello,
-
-> It means that mounting of configfs failed silently somehow.
+On Wed, Mar 15, 2017 at 4:58 PM, Varsha Rao <rvarsha016@gmail.com> wrote:
 >
-> Can you tell us the result of mount command? This should list all mounted paths.
+> Hello,
+>>
+>>
+>> My first thought on this is to compile everything related to IIO as Y
+>> not m. Then we can see
+>> if there is some module dependency etc.
+>
+>
+>    I have configured accordingly but few could not be set to Y, as they w=
+ere
+> dependent on some other module.
+>    http://pastebin.com/49AvqiGP
+>
+>    After setting to Y, I am no longer able to load the modules successful=
+ly.
+>    Even though these commands execute with no errors.
 
-  Kindly check the link.
-  http://pastebin.com/pfuP4cgU
+This is fine, because the modules are already in the kernel image.
+>
+>    sudo modprobe iio_dummy_evgen
+>    sudo modprobe iio_dummy
+>    $ lsmod | grep "iio"  does not give any output.
+>
+>     But I can mount the config directory. After mounting, I cannot create
+> sub directory.
+>
+>     $ sudo mount -t configfs none /config
+>     $ sudo mkdir /config/conf1
+>     mkdir: cannot create directory =E2=80=98/config/conf1=E2=80=99: Opera=
+tion not permitted
 
-  Thanks,
-  Varsha
+You shouldn't need to create a directory inside /config. By selecting
+IIO configfs
+in the kernel image, after mounting /config dir an /config/iio
+directory should be
+automatically created.
+
+It means that mounting of configfs failed silently somehow.
+
+Can you tell us the result of mount command? This should list all mounted p=
+aths.
+
+thanks,
+daniel.
 
