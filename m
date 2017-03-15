@@ -1,84 +1,69 @@
 X-GM-THRID: 6397785232436625408
-X-Received: by 10.46.5.136 with SMTP id 130mr713089ljf.6.1489600695604;
-        Wed, 15 Mar 2017 10:58:15 -0700 (PDT)
+X-Received: by 10.157.3.103 with SMTP id 94mr2111979otv.100.1489600673020;
+        Wed, 15 Mar 2017 10:57:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.9.129 with SMTP id 123ls272537ljj.16.gmail; Wed, 15 Mar
- 2017 10:58:15 -0700 (PDT)
-X-Received: by 10.25.104.21 with SMTP id d21mr662409lfc.31.1489600694921;
-        Wed, 15 Mar 2017 10:58:14 -0700 (PDT)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wr0-x242.google.com (mail-wr0-x242.google.com. [2a00:1450:400c:c0c::242])
-        by gmr-mx.google.com with ESMTPS id e72si87643wma.0.2017.03.15.10.58.14
+Received: by 10.157.54.152 with SMTP id h24ls2943301otc.30.gmail; Wed, 15 Mar
+ 2017 10:57:52 -0700 (PDT)
+X-Received: by 10.157.11.211 with SMTP id 77mr2015831oth.142.1489600672143;
+        Wed, 15 Mar 2017 10:57:52 -0700 (PDT)
+Return-Path: <corbet@lwn.net>
+Received: from ms.lwn.net (ms.lwn.net. [2600:3c01::f03c:91ff:fe2c:2b9f])
+        by gmr-mx.google.com with ESMTPS id 2si481045pfx.8.2017.03.15.10.57.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 15 Mar 2017 10:58:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::242 as permitted sender) client-ip=2a00:1450:400c:c0c::242;
+        Wed, 15 Mar 2017 10:57:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of corbet@lwn.net designates 2600:3c01::f03c:91ff:fe2c:2b9f as permitted sender) client-ip=2600:3c01::f03c:91ff:fe2c:2b9f;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::242 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x242.google.com with SMTP id l37so2964310wrc.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 15 Mar 2017 10:58:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=dq9xQy+5HQ5N8sYm9ncCS7Rtm+SI0Xkt3P4q/7q5t8U=;
-        b=eLAVOGqAqPp4P4m30bnCg8/0EqCB5RhY9i3dkpvC+qo0i+hn8UJrhEtYZ6KroHC6h2
-         BB311PREzfyi1hk0hDTTM1RcV24ULR6u05TMv+YOvePeOcao6dspLWvd48zlzH6AGmH2
-         p8RUTGEWSid0+6Gi4bfc10Iws/JkZ/6zhVZ7B37e4Qhlype7x+ugwJXJ6hJ2nmUEpyOs
-         BbP1D2OfCvFmpmHe24wzMs9mOTnpNHGmZEnEfdeqWKpGu+7YIQ3euHZ30O8hK6/lFFxR
-         EMFGhKzAbrDmENtR6yrlgsSmWd+m6tCEJ0z3RxIVbbdXZFl5gd+QPJ+cpeRvR+FZkPS/
-         n6iw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=dq9xQy+5HQ5N8sYm9ncCS7Rtm+SI0Xkt3P4q/7q5t8U=;
-        b=pjhQhi28KKgp+I1UDEIlkmM3emleEx61T2I+Y5R1hvCJLVkp7M7DPG8/pQ6X80nPnb
-         o3Nq2vbQjIYPzZfHHLYcFkzk4kLKtoscjGnS5OX02/pp4ER0tr21BAoyDtRl0GX6FmQz
-         gq3ub/hi8HpOvTrA3N18KQUBS3fN5sPHd/B0LJql0aw89ZHgDX8fJAEWEaMwK8Hj+NCw
-         9UVo/9XXPBwd8CKFDeWoanTV988f6o22TdbBHhPSmKEX0xk2FVMyKePdG5kh74q2Kktx
-         /j3O4BSofrB1kgzJLYR+xibvgs005WK08IU6tZGCCU/FdpfDJUl2R5ksi3qFLsNbQFxx
-         mQfA==
-X-Gm-Message-State: AFeK/H19pVmnUFmizOO/4wTLryEEJD6pDRfWgqQ+C8IkHtJn4pe9juYSE8N0RIiehFU7xA==
-X-Received: by 10.223.139.196 with SMTP id w4mr4362731wra.172.1489600694639;
-        Wed, 15 Mar 2017 10:58:14 -0700 (PDT)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([2a02:2f0b:8130:11ea:3132:88fa:c554:dae8])
-        by smtp.gmail.com with ESMTPSA id p93sm3168950wrc.67.2017.03.15.10.58.13
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 15 Mar 2017 10:58:13 -0700 (PDT)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: corbet@lwn.net,
-	outreachy-kernel@googlegroups.com,
-	linux-doc@vger.kernel.org
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH] Documentation: Fix typos
-Date: Wed, 15 Mar 2017 19:58:11 +0200
-Message-Id: <20170315175811.4187-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+       spf=pass (google.com: domain of corbet@lwn.net designates 2600:3c01::f03c:91ff:fe2c:2b9f as permitted sender) smtp.mailfrom=corbet@lwn.net
+Received: from lwn.net (localhost [127.0.0.1])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ms.lwn.net (Postfix) with ESMTPSA id 6F9882E1;
+	Wed, 15 Mar 2017 17:57:51 +0000 (UTC)
+Date: Wed, 15 Mar 2017 11:57:50 -0600
+From: Jonathan Corbet <corbet@lwn.net>
+To: Tamara Diaconita <diaconitatamara@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, linux-doc@vger.kernel.org, Tamara
+ Diaconita <diaconita.tamara@gmail.com>
+Subject: Re: [PATCH] Documentation: Fix typos
+Message-ID: <20170315115750.1019a427@lwn.net>
+In-Reply-To: <20170315175407.3913-1-diaconita.tamara@gmail.com>
+References: <20170315175407.3913-1-diaconita.tamara@gmail.com>
+Organization: LWN.net
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 8bit
 
-Fix typos in sync_file.txt to make documentation grammatically correct.
+On Wed, 15 Mar 2017 19:54:07 +0200
+Tamara Diaconita <diaconitatamara@gmail.com> wrote:
 
-Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
----
- Documentation/sync_file.txt | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> Fix typos in vfio-mediated-device.txt to make documentation
+> grammatically correct.
 
-diff --git a/Documentation/sync_file.txt b/Documentation/sync_file.txt
-index 269681a..c3d033a 100644
---- a/Documentation/sync_file.txt
-+++ b/Documentation/sync_file.txt
-@@ -37,7 +37,7 @@ dma_fence_signal(), when it has finished using (or processing) that buffer.
- Out-fences are fences that the driver creates.
- 
- On the other hand if the driver receives fence(s) through a sync_file from
--userspace we call these fence(s) 'in-fences'. Receiveing in-fences means that
-+userspace we call these fence(s) 'in-fences'. Receiving in-fences means that
- we need to wait for the fence(s) to signal before using any buffer related to
- the in-fences.
- 
--- 
-2.9.3
+Can you put the file name (or some other indication of what's being
+patched) in the subject line, so the patches can be told apart, please?
 
+> Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
+> ---
+>  Documentation/vfio-mediated-device.txt | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/vfio-mediated-device.txt b/Documentation/vfio-mediated-device.txt
+> index d226c7a..acae6c0 100644
+> --- a/Documentation/vfio-mediated-device.txt
+> +++ b/Documentation/vfio-mediated-device.txt
+> @@ -380,7 +380,7 @@ card.
+>     /dev/ttyS1, UART: 16550A, Port: 0xc150, IRQ: 10
+>     /dev/ttyS2, UART: 16550A, Port: 0xc158, IRQ: 10
+>  
+> -6. Using a minicom or any terminal enulation program, open port /dev/ttyS1 or
+> +6. Using a minicom or any terminal emulation program, open port /dev/ttyS1 or
+
+This is obviously a good change.  But you could also, while you're there,
+make it read "Using minicom" and get rid of another problem at the same
+time.
+
+Thanks,
+
+jon
 
