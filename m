@@ -1,46 +1,88 @@
 X-GM-THRID: 6398121697082343424
-X-Received: by 10.99.0.79 with SMTP id 76mr2232167pga.134.1489777466804;
-        Fri, 17 Mar 2017 12:04:26 -0700 (PDT)
+X-Received: by 10.46.80.18 with SMTP id e18mr465715ljb.10.1489678792334;
+        Thu, 16 Mar 2017 08:39:52 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.28.154 with SMTP id l26ls8922031ota.4.gmail; Fri, 17 Mar
- 2017 12:04:26 -0700 (PDT)
-X-Received: by 10.129.110.2 with SMTP id j2mr8351368ywc.96.1489777466308;
-        Fri, 17 Mar 2017 12:04:26 -0700 (PDT)
-Return-Path: <corbet@lwn.net>
-Received: from ms.lwn.net (ms.lwn.net. [45.79.88.28])
-        by gmr-mx.google.com with ESMTPS id 2si1594078pfx.8.2017.03.17.12.04.26
+Received: by 10.46.19.10 with SMTP id 10ls412406ljt.24.gmail; Thu, 16 Mar 2017
+ 08:39:51 -0700 (PDT)
+X-Received: by 10.25.203.151 with SMTP id b145mr1369491lfg.17.1489678791285;
+        Thu, 16 Mar 2017 08:39:51 -0700 (PDT)
+Return-Path: <diaconitatamara@gmail.com>
+Received: from mail-wm0-x242.google.com (mail-wm0-x242.google.com. [2a00:1450:400c:c09::242])
+        by gmr-mx.google.com with ESMTPS id 82si331167wmg.3.2017.03.16.08.39.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 17 Mar 2017 12:04:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of corbet@lwn.net designates 45.79.88.28 as permitted sender) client-ip=45.79.88.28;
+        Thu, 16 Mar 2017 08:39:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) client-ip=2a00:1450:400c:c09::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of corbet@lwn.net designates 45.79.88.28 as permitted sender) smtp.mailfrom=corbet@lwn.net
-Received: from localhost.localdomain (localhost [127.0.0.1])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ms.lwn.net (Postfix) with ESMTPSA id CDEF72EE;
-	Fri, 17 Mar 2017 19:04:15 +0000 (UTC)
-Date: Fri, 17 Mar 2017 13:03:53 -0600
-From: Jonathan Corbet <corbet@lwn.net>
-To: Tamara Diaconita <diaconitatamara@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, linux-doc@vger.kernel.org, Tamara
- Diaconita <diaconita.tamara@gmail.com>
-Subject: Re: [PATCH v2] Documentation: sync_file.txt: Fix typos
-Message-ID: <20170317130353.7fd6e443@lwn.net>
-In-Reply-To: <20170316153946.18643-1-diaconita.tamara@gmail.com>
-References: <20170316153946.18643-1-diaconita.tamara@gmail.com>
-Organization: LWN.net
-X-Mailer: Claws Mail 3.14.1 (GTK+ 2.24.31; x86_64-redhat-linux-gnu)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 8bit
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x242.google.com with SMTP id x124so4747106wmf.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 16 Mar 2017 08:39:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=Emnerq2EAiKVzaN2Usvt4p4KrDCRjOIpeAcOyAqL3wg=;
+        b=GrdMn8dsymumhyp5OQpkADJwyb9Rwtz+q/wZlgiCSpWQuMsJNnSVHmOU8QP066Iez9
+         AjqEzV1cYPE9b9LperYT7uKqGE9+14LYfrHcEBSKDhnZEaxyKI3/G8q/Ra0hp++vcwZg
+         HfMqn27ICYM2jQXN/BArX+VCXbAA/ZBgtu54hzRxvFf+KJ6i5SJpxWF8KWojYYW6Ot9Y
+         KohwhFKEvNRjG3DcmhPMAfhRNEMzFIeMueDyI/BXrhwKWQxttP0sNLP/v71+wBnkBxf/
+         TMmVKn/BP9FJfwTkvbx4l1f73PiNwsO4vb/TTM/fQr5fRO46A8lcJ/V5fMv64Ny6Ejor
+         BvSg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=Emnerq2EAiKVzaN2Usvt4p4KrDCRjOIpeAcOyAqL3wg=;
+        b=l2esXDq61CEenscYLPASUcGuKc0MVN/XQkvVwweavmEgkXAdtUjqmHfr67UucB9nok
+         B5FZ5rLuDI9UnBKKWF4B824O8WTGW4Y16mPz2xLhKgXbs5xhhfK13OwXXU11Y+hVnVBd
+         UjuSexM/jp01oOxh58SZK1s7I/pJPzayL05F0eKsMAzrJ1t/guCUs7QUMZlUKxuRIWf6
+         j9tSJbPL8Q9go37rv0MmeZlscrsVPCP8Spw2sKZMcsmrn5YroLGQAkeqE+dGvNlQKulQ
+         7JY5vlKg13k9NnYeIFRe+xJP/Aq8PUbe+PV7eXKFpDao+19bXpGfkB4VRETnR3VisBUl
+         NomQ==
+X-Gm-Message-State: AFeK/H0RxBAFjM6tyMion7O9oaRcKVQxBTlszzuIHIcOKOEf5X1nMgqGOq47wxhgiGVdGQ==
+X-Received: by 10.28.111.136 with SMTP id c8mr9672860wmi.128.1489678791039;
+        Thu, 16 Mar 2017 08:39:51 -0700 (PDT)
+Return-Path: <diaconitatamara@gmail.com>
+Received: from tamara ([141.85.225.204])
+        by smtp.gmail.com with ESMTPSA id c58sm6581635wrc.9.2017.03.16.08.39.49
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 16 Mar 2017 08:39:49 -0700 (PDT)
+From: Tamara Diaconita <diaconitatamara@gmail.com>
+X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
+To: corbet@lwn.net,
+	outreachy-kernel@googlegroups.com,
+	linux-doc@vger.kernel.org
+Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: [PATCH v2] Documentation: sync_file.txt: Fix typos
+Date: Thu, 16 Mar 2017 17:39:46 +0200
+Message-Id: <20170316153946.18643-1-diaconita.tamara@gmail.com>
+X-Mailer: git-send-email 2.9.3
 
-On Thu, 16 Mar 2017 17:39:46 +0200
-Tamara Diaconita <diaconitatamara@gmail.com> wrote:
+Fix spelling mistakes in sync_file.txt to make documentation clear. 
 
-> Fix spelling mistakes in sync_file.txt to make documentation clear. 
+Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
+---
+Changes since v1:
+*Add the file name to the subject of the patch.
+*Change the description of the patch.
 
-Applied to the docs tree, thanks.
+ Documentation/sync_file.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-jon
+diff --git a/Documentation/sync_file.txt b/Documentation/sync_file.txt
+index 269681a..c3d033a 100644
+--- a/Documentation/sync_file.txt
++++ b/Documentation/sync_file.txt
+@@ -37,7 +37,7 @@ dma_fence_signal(), when it has finished using (or processing) that buffer.
+ Out-fences are fences that the driver creates.
+ 
+ On the other hand if the driver receives fence(s) through a sync_file from
+-userspace we call these fence(s) 'in-fences'. Receiveing in-fences means that
++userspace we call these fence(s) 'in-fences'. Receiving in-fences means that
+ we need to wait for the fence(s) to signal before using any buffer related to
+ the in-fences.
+ 
+-- 
+2.9.3
+
 
