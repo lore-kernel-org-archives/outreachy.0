@@ -1,142 +1,164 @@
 X-GM-THRID: 6396716918154199040
-X-Received: by 10.157.73.150 with SMTP id g22mr12893396otf.130.1490019131437;
-        Mon, 20 Mar 2017 07:12:11 -0700 (PDT)
+X-Received: by 10.129.163.208 with SMTP id a199mr5202818ywh.135.1489686329839;
+        Thu, 16 Mar 2017 10:45:29 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.82.215 with SMTP id d206ls2054702itb.17.canary-gmail; Mon,
- 20 Mar 2017 07:12:10 -0700 (PDT)
-X-Received: by 10.99.39.6 with SMTP id n6mr14613051pgn.98.1490019130193;
-        Mon, 20 Mar 2017 07:12:10 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id a3si2768498pfb.2.2017.03.20.07.12.10
+Received: by 10.107.160.68 with SMTP id j65ls1634408ioe.35.gmail; Thu, 16 Mar
+ 2017 10:45:28 -0700 (PDT)
+X-Received: by 10.99.174.78 with SMTP id e14mr5754618pgp.74.1489686328954;
+        Thu, 16 Mar 2017 10:45:28 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id 2si1001425pfz.1.2017.03.16.10.45.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 20 Mar 2017 07:12:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Thu, 16 Mar 2017 10:45:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id g2so20229530pge.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 20 Mar 2017 07:12:10 -0700 (PDT)
+Received: by mail-pf0-x242.google.com with SMTP id r137so2666369pfr.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 16 Mar 2017 10:45:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=EpVofC7BzB9knA/dsTOi6ulr9GTOaGb5/4FwhD6WE14=;
-        b=Iql1qQtlb/nQW5RvkZUtAEPnc2hlVzrrbKj6+Xj2zI8zsNnd5GNurgIrlbH5IoCZJu
-         Im4yc9NJHwTV9DZtYFSwHtAuybq9id8XQiEc95a/qNEadnceN/tX6mVlB9JFJO+NJ0EF
-         OA9SRcmAzPe0qysnOTeGOqeW/bdBDRQLU04XwlYT3xCg1cuHFqfPGS05/xylYMavAHCG
-         CL1Cs9UBPPMCrjcFgGtdZfaewhnhsw4q9BZKQeSR1bdSkHtwtHyE9dc8RRPjbADeotyb
-         W0BRzki1YgSmflSRHTCNEFTaEvc/w4cUx+aJTFiNbIa9K+gXYNHxEpLkQi/EPUECghxC
-         Z/Ig==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=bUtp+oyxrWW7DMV5a555vhEDXicCnRC5sghsNJlxVuw=;
+        b=TtBnVpw6b0r+9Az3IF4Y9vYTv90VCDMhik7SPzZLy1aK8DQYbVhmwF39DLT7CC4koY
+         iVU79GJ1l/2rEfaJCKoNF4Wt22HkPWIF20IgMIaV6iMbqEmSTBPDfS13sMhjZL0h3wgD
+         v14TvG3KCeFpDIR9LStgPHwUOw5Y6pd3qkAAteGnv+pqCLmDmcUYJckPifMN6ArbcQ8o
+         4+mMpn0Uv/s+uzveH6G8EfgEFtLpPhiF6zxyBm8L1dPJa/8vxE9wx5xo5NDzlSXWtBtA
+         mEF4NQ8GiKuyK6UCHYzooxy26laFDoW0e1wef0CcxcpESWeXU/SytPz1jk4G1Lg0r5qJ
+         Cybg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=EpVofC7BzB9knA/dsTOi6ulr9GTOaGb5/4FwhD6WE14=;
-        b=mboHzCXpXfKmk9N3Tbn4T0i7Vi+J1ZtVZPDB6w6e0BV3CuIPhMANzKR4N6b3/3hoV5
-         2EHvpKgP3hSCoybao3FDrRAwkwEjxHiX7HR04TBB/69xYPoFqT0tCqOGPudJkv4vK3Rc
-         7nR5HAwyyJsPuRYLs4DKPtxpY0hY+VLBAHJBdtEKktfKW/M7WBhzSzb4ZUFtiS1jnaVa
-         zad6aGn+xHo933GHc2gzgyrDere56OtY5nJYTnZKG3pN1gffx7MnTUbiGcMH2mdokn0B
-         07Fx0eYqFp21slPbw0wGRR0+s8N2stqXJpnX8qj7zoay/yCNr7549eZ3C1KifuvUvjQu
-         3Atg==
-X-Gm-Message-State: AFeK/H13UFTeQPn66+3FI55GDzxskQgRQ8xVn+qkSzYOVpTtMG/f/n04N1OrCS/+9Y9dhA==
-X-Received: by 10.84.224.3 with SMTP id r3mr31008065plj.130.1490019129945;
-        Mon, 20 Mar 2017 07:12:09 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id i127sm33676559pfe.15.2017.03.20.07.12.08
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=bUtp+oyxrWW7DMV5a555vhEDXicCnRC5sghsNJlxVuw=;
+        b=GhHZ+QZnSvwYbY0Iba+/QEGMRuz+eC4KwtIdH0E7ne2EMsfgtel6tfsw/m8Yovp5Kg
+         NGOR6xS/UEgFpdq6qpedOEBueGeEkthph3IGcwNObgLKZYy76sGxH+JAcWndLj1uR0e/
+         HDWC4p55RTO8f36qfnvh1U4gzwM6KPyU6UdfCB18iyeGTqVtocs6OcpQINc9Kd7Jmg4k
+         qzInEklfXpV2c/vjO2d4u4LWjKqKhagztHd8LHHep/cDPRbx9Y7LkFrw6eKtwkLnNL0h
+         9etdd1wZwfDM4b+7FUjIZhcgr2Hlw9JYd2pCu3+7uxpb+2Zw5Rq0ewc0RNAknRr4nu7+
+         Yx3g==
+X-Gm-Message-State: AFeK/H2v5hSkqhYnuLcDNB6o9RnbAMxuaYI44Ki7Kd3BHtsd9R4PXTz9tvV/86ycr7unaw==
+X-Received: by 10.99.130.193 with SMTP id w184mr3942130pgd.157.1489686328691;
+        Thu, 16 Mar 2017 10:45:28 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
+        by smtp.gmail.com with ESMTPSA id s4sm11794281pfi.74.2017.03.16.10.45.27
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 20 Mar 2017 07:12:08 -0700 (PDT)
-Date: Mon, 20 Mar 2017 19:42:07 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: lars@metafoo.de
-Cc: Michael Hennerich <Michael.Hennerich@analog.com>,
+        Thu, 16 Mar 2017 10:45:28 -0700 (PDT)
+Date: Thu, 16 Mar 2017 10:45:27 -0700
+From: Alison Schofield <amsfield22@gmail.com>
+To: Gargi Sharma <gs051095@gmail.com>
+Cc: Jonathan Cameron <jic23@jic23.retrosnub.co.uk>,
+	Lars-Peter Clausen <lars@metafoo.de>,
 	Jonathan Cameron <jic23@kernel.org>,
-	Hartmut Knaack <knaack.h@gmx.de>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
-	lars@metafoo.de
-Subject: [PATCH] staging: iio: adc: Replace mlock with driver private lock
-Message-ID: <20170320141207.GA5908@arushi-HP-Pavilion-Notebook>
+	Julia Lawall <julia.lawall@lip6.fr>,
+	outreachy-kernel@googlegroups.com, Michael.Hennerich@analog.com,
+	knaack.h@gmx.de, Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+	linux-iio@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH] staging: iio: adc: Replace mlock with
+ driver private lock
+Message-ID: <20170316174526.GA3623@d830.WORKGROUP>
+References: <CAOCi2DH9bNChZj4kyt3t1eK7R7uSv77zeVc2PkPYxoRDDHZLsA@mail.gmail.com>
+ <alpine.DEB.2.20.1703122235320.7649@hadrien>
+ <20170312221350.GA14070@d830.WORKGROUP>
+ <CAOCi2DEyu6_bBjsrSFzf0VcXcUnZ3LugLf==R9zsSmj+1JdFKw@mail.gmail.com>
+ <35231dfd-af42-bbd3-3be6-4e03a728a92f@kernel.org>
+ <73d214e0-46d0-0d4a-27e1-7c85cf3c05ed@metafoo.de>
+ <CAOCi2DEecT6tdxmz7_9Q5aWC7_+VZCKD1+Vwe9F5gA9jAuQ2=A@mail.gmail.com>
+ <38289FBC-9E24-4AC0-ADB2-58DB34DD208F@jic23.retrosnub.co.uk>
+ <CAOCi2DFy8ve7dy0WDDqDQkE0fgJs9YWe6Ai2XspO7+dJ20rHfA@mail.gmail.com>
+ <20170316174101.GA3473@d830.WORKGROUP>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20170316174101.GA3473@d830.WORKGROUP>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-The IIO subsystem is redefining iio_dev->mlock to be used by
-the IIO core only for protecting device operating mode changes.
-ie. Changes between INDIO_DIRECT_MODE, INDIO_BUFFER_* modes.
-
-In this driver, mlock was being used to protect hardware state
-changes.  Replace it with a lock in the devices global data.
-
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
- drivers/staging/iio/adc/ad7606.c | 8 ++++----
- drivers/staging/iio/adc/ad7606.h | 2 ++
- 2 files changed, 6 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/staging/iio/adc/ad7606.c b/drivers/staging/iio/adc/ad7606.c
-index 9dbfa64b1e53..9f529b34e018 100644
---- a/drivers/staging/iio/adc/ad7606.c
-+++ b/drivers/staging/iio/adc/ad7606.c
-@@ -208,7 +208,7 @@ static int ad7606_write_raw(struct iio_dev *indio_dev,
- 	switch (mask) {
- 	case IIO_CHAN_INFO_SCALE:
- 		ret = -EINVAL;
--		mutex_lock(&indio_dev->mlock);
-+		mutex_lock(&st->lock);
- 		for (i = 0; i < ARRAY_SIZE(scale_avail); i++)
- 			if (val2 == scale_avail[i][1]) {
- 				gpiod_set_value(st->gpio_range, i);
-@@ -217,7 +217,7 @@ static int ad7606_write_raw(struct iio_dev *indio_dev,
- 				ret = 0;
- 				break;
- 			}
--		mutex_unlock(&indio_dev->mlock);
-+		mutex_unlock(&st->lock);
- 
- 		return ret;
- 	case IIO_CHAN_INFO_OVERSAMPLING_RATIO:
-@@ -231,11 +231,11 @@ static int ad7606_write_raw(struct iio_dev *indio_dev,
- 		values[1] = (ret >> 1) & 1;
- 		values[2] = (ret >> 2) & 1;
- 
--		mutex_lock(&indio_dev->mlock);
-+		mutex_lock(&st->lock);
- 		gpiod_set_array_value(ARRAY_SIZE(values), st->gpio_os->desc,
- 				      values);
- 		st->oversampling = val;
--		mutex_unlock(&indio_dev->mlock);
-+		mutex_unlock(&st->lock);
- 
- 		return 0;
- 	default:
-diff --git a/drivers/staging/iio/adc/ad7606.h b/drivers/staging/iio/adc/ad7606.h
-index 746f9553d2ba..5d59bdd78727 100644
---- a/drivers/staging/iio/adc/ad7606.h
-+++ b/drivers/staging/iio/adc/ad7606.h
-@@ -14,6 +14,7 @@
-  * @name:		identification string for chip
-  * @channels:		channel specification
-  * @num_channels:	number of channels
-+ * @lock		protect sensor state
-  */
- 
- struct ad7606_chip_info {
-@@ -37,6 +38,7 @@ struct ad7606_state {
- 	bool				done;
- 	void __iomem			*base_address;
- 
-+	struct mutex			lock; /* protect sensor state */
- 	struct gpio_desc		*gpio_convst;
- 	struct gpio_desc		*gpio_reset;
- 	struct gpio_desc		*gpio_range;
--- 
-2.11.0
-
+On Thu, Mar 16, 2017 at 10:41:02AM -0700, Alison Schofield wrote:
+> On Wed, Mar 15, 2017 at 11:45:11PM +0530, Gargi Sharma wrote:
+> > On Wed, Mar 15, 2017 at 4:14 AM, Jonathan Cameron
+> > <jic23@jic23.retrosnub.co.uk> wrote:
+> > >
+> > >
+> > > On 14 March 2017 17:36:16 GMT+00:00, Gargi Sharma <gs051095@gmail.com> wrote:
+> > >>On Tue, Mar 14, 2017 at 2:24 AM, Lars-Peter Clausen <lars@metafoo.de>
+> > >>wrote:
+> > >>> On 03/13/2017 09:51 PM, Jonathan Cameron wrote:
+> > >>> [...]
+> > >>>>>> Gargi,
+> > >>>>>>
+> > >>>>>> Please insert the new lock above the __cacheline_aligned struct
+> > >>>>>> member.
+> > >>>>>
+> > >>>>> I will do that, but is there any reason why the lock should be
+> > >>above
+> > >>>>> ____cacheline_aligned struct member?
+> > >>>> Yes.  It's in fact very important that nothing comes after that.
+> > >>>>
+> > >>>> Will leave the why as an exercise for the reader.   I'll give the
+> > >>>> hit of spi drivers that do DMA...
+> > >>>
+> > >>>
+> > >>> One hint though, the answer is somewhere in Documentation/DMA-API.txt
+> > >>
+> > > >From what I have understood is that cacheline is used for keeping most
+> > >>frequently accessed values in adjacent cachelines.
+> > >
+> > > Why? What does cache line actually mean?
+> > >
+> > >> We want the
+> > >>cacheline_aligned at the end in the struct definition so as to avoid
+> > >>any holes after the cacheline boundary.
+> > >
+> > > Nope.  Try
+> > > http://www.pebblebay.com/a-guide-to-using-direct-memory-access-in-embedded-systems-part-two/
+> > >
+> > > (Hint, search for 'shares')
+> > 
+> > Okay, I got two things from the article:
+> > 1. Hardware that uses DMA reads faster if the data is aligned at
+> > 16/32/64B boundaries.
+> > 2. You want to align buffer being accessed for DMa transfers to
+> > prevent cache incoherence.
+> > 
+> > What I still don't understand is why nothing should come after
+> > __cacheline_aligned struct member?
+> > 
+> > Thanks,
+> > Gargi
+> 
+> Hi Gargi,
+> 
+> Short answer to why nothing can come after, is because it could
+> indeed share the cacheline.  ___cacheline_aligned only guarantees
+> alignment at the beginning of the cacheline.
+> 
+> I've been following and reading the posted links.  Here's another
+> link, kind of ancient, but does a nice explanation of the process
+> whereby that extra field, sharing your buffers cacheline, could
+> lead to corruption of that field or the buffer data.
+> https://lwn.net/Articles/2265/
+> 
+> I still haven't bottomed out on this though. I get the need
+> to do this to be safe, but I'd like to understand how it fits
+> in with systems that claim cache coherency.  Is this a case
+> those schemes cannot handle, or, are there MP systems that
+> are just not cache incoherent?
+oops...a bit incoherent there. Meant to say - 
+  are just not cache coherent at all!  ie..totally incoherent! 
+> 
+> alisons
+> > >
+> > >>>
+> > >>--
+> > >>To unsubscribe from this list: send the line "unsubscribe linux-iio" in
+> > >>the body of a message to majordomo@vger.kernel.org
+> > >>More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> > >
+> > > --
+> > > Sent from my Android device with K-9 Mail. Please excuse my brevity.
 
