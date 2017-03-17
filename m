@@ -1,268 +1,119 @@
-X-GM-THRID: 6335783132038430720
-X-Received: by 10.36.208.143 with SMTP id m137mr4195639itg.18.1475164464981;
-        Thu, 29 Sep 2016 08:54:24 -0700 (PDT)
+X-GM-THRID: 6396125246226694144
+X-Received: by 10.129.67.16 with SMTP id q16mr6606635ywa.112.1489721166670;
+        Thu, 16 Mar 2017 20:26:06 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.13.165 with SMTP id 34ls3701245ots.13.gmail; Thu, 29 Sep
- 2016 08:54:24 -0700 (PDT)
-X-Received: by 10.237.36.211 with SMTP id u19mr570068qtc.55.1475164464548;
-        Thu, 29 Sep 2016 08:54:24 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id e66si3476190pfk.2.2016.09.29.08.54.24
+Received: by 10.157.52.248 with SMTP id t53ls6968204otd.42.gmail; Thu, 16 Mar
+ 2017 20:26:06 -0700 (PDT)
+X-Received: by 10.129.87.3 with SMTP id l3mr6565546ywb.0.1489721166312;
+        Thu, 16 Mar 2017 20:26:06 -0700 (PDT)
+Return-Path: <karniksayli1995@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id 2si1203661pfz.1.2017.03.16.20.26.06
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 29 Sep 2016 08:54:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
+        Thu, 16 Mar 2017 20:26:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x241.google.com with SMTP id oz2so3605583pac.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 29 Sep 2016 08:54:24 -0700 (PDT)
+       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x242.google.com with SMTP id o126so7745785pfb.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 16 Mar 2017 20:26:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
+        d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=H5iCf1HiiP5zLMpTQkwqsm1YOIWK3qXdHKJVHCIlKks=;
-        b=e6bJSyTdGFDHF0iS+nZL6CaRkJTyeF0FQGZotwcEgE4SMjG7rA0bikLnnvq9SEQusS
-         hdXfnkzcqzZrAlGB9SoU9hl0GW6sFrql1LeqC68jvY+JEPe1Wx5x5B0o5NIhLckVORpb
-         g5FGbFFOTdUYrBlRImLJE/XTl4IRepHgOvxwhMUY3jBnWWluiunWLdZwmI5G4NaLWSqS
-         1cSXx6TvkU8nYyev1s1hisSJcQnWtkYt9GhtwMo1ysWen8zb3afDleQZ5ZOkfMFwyUVt
-         X7KFuvcfX60/Op/Dj01vg5AhYY0wDTTWvpEgiG3XJSVsTO9IAxbKl2Lc08BUjAD8Z4+w
-         lJNA==
+        bh=Apvm5gSHp1BCZRYWfutXfF0sPAvokMozLbthNLf2G2w=;
+        b=HEX0Y1JtMnzbxJn+rWL1s8gcwyHlyZZJ52LofPJG64IFtQhX9yC95VxuGBtPxi7u0m
+         Yjp4+FNQZvU4zSa55iPONcqLfBZtxNMHtZFNCHIlVnxg41Psx2RHY7g5upR6OR95tZhR
+         dD0Wzjk+y9GAB0T7TBmX3b/LnhLPC+YLMiUfv0WmHkTSBVA3pBYreVZi4xeZUd6UwHtQ
+         w2KU9Rlut8LmpXBo9OrV/ch2OAPEuxdza3mV+9Z7JJPG9Rns88eoJMzIegMQuHwdT3aa
+         1AxixfjNgD2auGmslqufGfnohkRtsRVZPvdKxVXHpXpwDpXFtcvOA+kF/+FMCGV+awHW
+         9akA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
+        d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=H5iCf1HiiP5zLMpTQkwqsm1YOIWK3qXdHKJVHCIlKks=;
-        b=GM5OFyWa0OAKAxS00MJD7wXuJlGre7g+/yRE0IpP/K49FZGmq3/x+BDnr/KNT0Js8X
-         HrTS6+DrYZqRgWE2t/LLekDkiDsFLJWolTUhTmRfom11G94RQfgvME6f7yQiNRRL+DEO
-         SxDXepLqW1OHKBuKzZwHvuPpaTiWbZ3BCfrQtTzIIHAl9a7uT9/32wQhLFc0STNTcTvy
-         Wsi81tcritJC0/V32FiTMNnINylfdvMULUNVwMv2Qxdz/CRBZsK688JkHwJLjB6pFf+f
-         pZisBAuFjKiPwzzWbo1wHtE8woCCS4HNpidn2wnThg5RZVaJFcUVhC7W7Pmeea0W4+1F
-         tUrQ==
-X-Gm-Message-State: AA6/9Rn99lEx5ygAYnmhYCv7P7TxJkG+7yO70jO2fZzj/KcZeeDnP5vEtc2DMdHDcMNW5w==
-X-Received: by 10.66.173.47 with SMTP id bh15mr3593993pac.42.1475164464272;
-        Thu, 29 Sep 2016 08:54:24 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from localhost.localdomain ([182.70.75.136])
-        by smtp.gmail.com with ESMTPSA id sy4sm21318484pac.48.2016.09.29.08.54.21
+        bh=Apvm5gSHp1BCZRYWfutXfF0sPAvokMozLbthNLf2G2w=;
+        b=E3H3CyquvkuLCdz+v+MGJAGqnWcdu1roQjccxYTqBlP18p9bc+Aa6w/drY5jB2nVSW
+         Hoh0L6xrh7qMI8SmRVdMZkdOtnRVxd59ZOIM1Aj98ygD6J+5831JfYMvcaWyKgPmF1bS
+         5Byj3CrdtZ4EdO09Ge8v9pZ9bww3YAdHiw/BEgnz3LMdUvNqh2dnjzQsUiwEGoOf/jZD
+         /Lz9UddoQTxxfNI1rqz9hEw0uAZPPuIM/pTjFD44j39sNhBQDaWyMXngwIu8GGa2VYjW
+         NnWosL6MOR+xwBbmKVCtmTjeUdx9R2g1E+e6oGHgHyGcd2eEGO1dWee1Dx2MXIOuGOY3
+         CM7w==
+X-Gm-Message-State: AFeK/H0Jz5bp/RtoUdDiAohvF+2lThhGZL/l8LoOlRQTbMASBRW69mrDwUNd+QrMfSUTLw==
+X-Received: by 10.84.129.3 with SMTP id 3mr17094205plb.150.1489721166018;
+        Thu, 16 Mar 2017 20:26:06 -0700 (PDT)
+Return-Path: <karniksayli1995@gmail.com>
+Received: from sayli-HP-15-Notebook-PC ([2405:204:2005:cd14:c57b:f0d:39df:5753])
+        by smtp.gmail.com with ESMTPSA id q23sm13099684pfg.63.2017.03.16.20.25.59
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 29 Sep 2016 08:54:23 -0700 (PDT)
-Date: Thu, 29 Sep 2016 21:24:17 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: lars@metafoo.de, Michael.Hennerich@analog.com, jic23@kernel.org,
-	knaack.h@gmx.de, pmeerw@pmeerw.net, gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] drivers: iio: meter: ade7753: Replace IIO_DEV_ATTR_SAMP_FREQ
- attribute with IIO_CHAN_INFO_SAMP_FREQ handlers.
-Message-ID: <20160929155417.GA5224@localhost.localdomain>
+        Thu, 16 Mar 2017 20:26:05 -0700 (PDT)
+Date: Fri, 17 Mar 2017 08:55:51 +0530
+From: sayli karnik <karniksayli1995@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Oleg Drokin <oleg.drokin@intel.com>,
+	Andreas Dilger <andreas.dilger@intel.com>,
+	James Simmons <jsimmons@infradead.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH v2] staging: lustre: llite: rw26: Remove unused function
+ definition
+Message-ID: <20170317032551.GA18296@sayli-HP-15-Notebook-PC>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Moved functionality from IIO_DEV_ATTR_SAMP_FREQ attribute into 
-IIO_CHAN_INFO_SAMP_FREQ handlers. Added ade7753_read_raw() and 
-ade7753_write_raw() to allow reading/writing the element as well.
+The patch removes unused function definition ll_get_user_pages().
+The use of ll_get_user_pages() was replaced with iov_iter_get_pages_alloc()
+in commit 91f79c43d1b54d7154b118860d81b39bad07dfff.
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
 ---
- drivers/staging/iio/meter/ade7753.c | 155 +++++++++++++++++++++---------------
- 1 file changed, 90 insertions(+), 65 deletions(-)
+Changes in v2:
+Updated changelog to include what function replaced use of ll_get_user_pages()
 
-diff --git a/drivers/staging/iio/meter/ade7753.c b/drivers/staging/iio/meter/ade7753.c
-index 4b5f05f..a2b4a18 100644
---- a/drivers/staging/iio/meter/ade7753.c
-+++ b/drivers/staging/iio/meter/ade7753.c
-@@ -98,6 +98,94 @@ static int ade7753_spi_read_reg_16(struct device *dev,
- 	return 0;
- }
+ drivers/staging/lustre/lustre/llite/rw26.c | 26 --------------------------
+ 1 file changed, 26 deletions(-)
+
+diff --git a/drivers/staging/lustre/lustre/llite/rw26.c b/drivers/staging/lustre/lustre/llite/rw26.c
+index d89e795..420f296 100644
+--- a/drivers/staging/lustre/lustre/llite/rw26.c
++++ b/drivers/staging/lustre/lustre/llite/rw26.c
+@@ -156,32 +156,6 @@ static int ll_releasepage(struct page *vmpage, gfp_t gfp_mask)
  
-+static int ade7753_read_raw_samp_freq(struct device *dev, int *val)
-+{
-+	int ret;
-+	u16 t;
-+
-+	ret = ade7753_spi_read_reg_16(dev, ADE7753_MODE, &t);
-+	if (ret)
-+		return ret;
-+	t = (t >> 11) & 0x3;
-+	*val = 27900 / (1 + t);
-+
-+	return 0;
-+}
-+
-+static int ade7753_write_raw_samp_freq(struct device *dev, int val)
-+{
-+	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
-+	struct ade7753_state *st = iio_priv(indio_dev);
-+	int ret;
-+	u16 reg, t;
-+
-+	if (!val)
-+		return -EINVAL;
-+
-+	t = 27900 / val;
-+	if (t > 0)
-+		t--;
-+
-+	if (t > 1)
-+		st->us->max_speed_hz = ADE7753_SPI_SLOW;
-+	else
-+		st->us->max_speed_hz = ADE7753_SPI_FAST;
-+
-+	ret = ade7753_spi_read_reg_16(dev, ADE7753_MODE, &reg);
-+	if (ret)
-+		goto out;
-+
-+	reg &= ~(3 << 11);
-+	reg |= t << 11;
-+
-+	ret = ade7753_spi_write_reg_16(dev, ADE7753_MODE, reg);
-+
-+out:
-+	return ret;
-+}
-+
-+static int ade7753_write_raw(struct iio_dev *indio_dev,
-+			     struct iio_chan_spec const *chan,
-+			     int val, int val2, long mask)
-+{
-+	int ret;
-+
-+	switch (mask) {
-+	case IIO_CHAN_INFO_SAMP_FREQ:
-+		if (val2)
-+			return -EINVAL;
-+		mutex_lock(&indio_dev->mlock);
-+		ret = ade7753_write_raw_samp_freq(&indio_dev->dev, val);
-+		mutex_unlock(&indio_dev->mlock);
-+		return ret;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	return ret;
-+}
-+
-+static int ade7753_read_raw(struct iio_dev *indio_dev,
-+			    struct iio_chan_spec const *chan,
-+			    int *val,
-+		            int *val2,
-+			    long mask)
-+{
-+	int ret;
-+
-+	switch (mask) {
-+	case IIO_CHAN_INFO_SAMP_FREQ:
-+		mutex_lock(&indio_dev->mlock);
-+		ret = ade7753_read_raw_samp_freq(&indio_dev->dev, val);
-+		mutex_unlock(&indio_dev->mlock);
-+		return ret;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	return ret;
-+}
-+
- static int ade7753_spi_read_reg_24(struct device *dev,
- 		u8 reg_address,
- 		u32 *val)
-@@ -383,82 +471,17 @@ err_ret:
- 	return ret;
- }
+ #define MAX_DIRECTIO_SIZE (2 * 1024 * 1024 * 1024UL)
  
--static ssize_t ade7753_read_frequency(struct device *dev,
--		struct device_attribute *attr,
--		char *buf)
+-static inline int ll_get_user_pages(int rw, unsigned long user_addr,
+-				    size_t size, struct page ***pages,
+-				    int *max_pages)
 -{
--	int ret;
--	u16 t;
--	int sps;
+-	int result = -ENOMEM;
 -
--	ret = ade7753_spi_read_reg_16(dev, ADE7753_MODE, &t);
--	if (ret)
--		return ret;
+-	/* set an arbitrary limit to prevent arithmetic overflow */
+-	if (size > MAX_DIRECTIO_SIZE) {
+-		*pages = NULL;
+-		return -EFBIG;
+-	}
 -
--	t = (t >> 11) & 0x3;
--	sps = 27900 / (1 + t);
+-	*max_pages = (user_addr + size + PAGE_SIZE - 1) >> PAGE_SHIFT;
+-	*max_pages -= user_addr >> PAGE_SHIFT;
 -
--	return sprintf(buf, "%d\n", sps);
+-	*pages = libcfs_kvzalloc(*max_pages * sizeof(**pages), GFP_NOFS);
+-	if (*pages) {
+-		result = get_user_pages_fast(user_addr, *max_pages,
+-					     (rw == READ), *pages);
+-		if (unlikely(result <= 0))
+-			kvfree(*pages);
+-	}
+-
+-	return result;
 -}
 -
--static ssize_t ade7753_write_frequency(struct device *dev,
--		struct device_attribute *attr,
--		const char *buf,
--		size_t len)
--{
--	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
--	struct ade7753_state *st = iio_priv(indio_dev);
--	u16 val;
--	int ret;
--	u16 reg, t;
--
--	ret = kstrtou16(buf, 10, &val);
--	if (ret)
--		return ret;
--	if (!val)
--		return -EINVAL;
--
--	mutex_lock(&indio_dev->mlock);
--
--	t = 27900 / val;
--	if (t > 0)
--		t--;
--
--	if (t > 1)
--		st->us->max_speed_hz = ADE7753_SPI_SLOW;
--	else
--		st->us->max_speed_hz = ADE7753_SPI_FAST;
--
--	ret = ade7753_spi_read_reg_16(dev, ADE7753_MODE, &reg);
--	if (ret)
--		goto out;
--
--	reg &= ~(3 << 11);
--	reg |= t << 11;
--
--	ret = ade7753_spi_write_reg_16(dev, ADE7753_MODE, reg);
--
--out:
--	mutex_unlock(&indio_dev->mlock);
--
--	return ret ? ret : len;
--}
- 
- static IIO_DEV_ATTR_TEMP_RAW(ade7753_read_8bit);
- static IIO_CONST_ATTR(in_temp_offset, "-25 C");
- static IIO_CONST_ATTR(in_temp_scale, "0.67 C");
- 
--static IIO_DEV_ATTR_SAMP_FREQ(S_IWUSR | S_IRUGO,
--		ade7753_read_frequency,
--		ade7753_write_frequency);
--
- static IIO_CONST_ATTR_SAMP_FREQ_AVAIL("27900 14000 7000 3500");
- 
- static struct attribute *ade7753_attributes[] = {
- 	&iio_dev_attr_in_temp_raw.dev_attr.attr,
- 	&iio_const_attr_in_temp_offset.dev_attr.attr,
- 	&iio_const_attr_in_temp_scale.dev_attr.attr,
--	&iio_dev_attr_sampling_frequency.dev_attr.attr,
- 	&iio_const_attr_sampling_frequency_available.dev_attr.attr,
- 	&iio_dev_attr_phcal.dev_attr.attr,
- 	&iio_dev_attr_cfden.dev_attr.attr,
-@@ -496,6 +519,8 @@ static const struct attribute_group ade7753_attribute_group = {
- 
- static const struct iio_info ade7753_info = {
- 	.attrs = &ade7753_attribute_group,
-+	.read_raw = &ade7753_read_raw,
-+	.write_raw = &ade7753_write_raw,
- 	.driver_module = THIS_MODULE,
- };
- 
+ /*  ll_free_user_pages - tear down page struct array
+  *  @pages: array of page struct pointers underlying target buffer
+  */
 -- 
-1.8.3.1
+2.7.4
 
 
