@@ -1,52 +1,52 @@
 X-GM-THRID: 6398373939210354688
-X-Received: by 10.99.103.71 with SMTP id b68mr18454464pgc.28.1490112225263;
-        Tue, 21 Mar 2017 09:03:45 -0700 (PDT)
+X-Received: by 10.157.51.10 with SMTP id f10mr6033473otc.84.1489737522943;
+        Fri, 17 Mar 2017 00:58:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.136.140 with SMTP id s12ls4531651ioi.15.gmail; Tue, 21 Mar
- 2017 09:03:44 -0700 (PDT)
-X-Received: by 10.36.107.141 with SMTP id v135mr108868itc.16.1490112223970;
-        Tue, 21 Mar 2017 09:03:43 -0700 (PDT)
+Received: by 10.157.48.22 with SMTP id d22ls6631898otc.43.gmail; Fri, 17 Mar
+ 2017 00:58:42 -0700 (PDT)
+X-Received: by 10.129.79.19 with SMTP id d19mr6940439ywb.19.1489737522559;
+        Fri, 17 Mar 2017 00:58:42 -0700 (PDT)
 Return-Path: <gs051095@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id 2si3552248pfx.8.2017.03.21.09.03.43
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id g82si1279545pfb.5.2017.03.17.00.58.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 21 Mar 2017 09:03:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Fri, 17 Mar 2017 00:58:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
+       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id 81so17888613pgh.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 09:03:43 -0700 (PDT)
+Received: by mail-pf0-x242.google.com with SMTP id o126so8434723pfb.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 17 Mar 2017 00:58:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=podQQBqv065gQ5S/lKy/h14yy9Dr5MnYlYi9HoSmun0=;
-        b=QnxOtBAsZfhM/t/QZ3EQPfwvja/A4slCHO/FA+GWve1SZ7tbLcyBkuDSS7+0pW71UW
-         pURML6rw3A1ybB+o1oO+sLVCCR/XmSiWk7S0gJJJ+IehErhqADAM9iZzP7MOU1tj6Q+5
-         B6y1UOoGzfGgaow7Q64VVuOiQ30EcMSBMoxpqPyENK4yR6IAVvwVAij5dhvXBe4OJO/C
-         O+6/1MemX99l2pJHLOjMvS9ukBhYg1BKVE88ViBYjJ3nA7ye+g+8fbu2AzJBNP7z3TRt
-         06se9lZ8o8IIyfOhjvNbSadMR1lgBbabGBCNTCBu9dZrVXIWAWBQddTOsFtOdrW3ZBbG
-         BpOQ==
+        bh=Cf1INfRxQDGHqE5xdEX0zWMqmZqKSK+eYq2FyifhRsQ=;
+        b=QAllFOmb60RyFp+rE9W2ekcNSL9IM6+SvlQEpe0ss/WHMDk/AicvPGpWY2gr6Ak8it
+         CNQ3c+A7hFUun/ZemCnMH6GJ6SCLdvIcYsbbnsTHg0v2PUsxEorDVOMWX76MmNv7ZR5c
+         jWmx6NPXkUbtNJCSIKorQ7wCOYeOvHUzP2z89jpHL8+bbmrj8iuTXxIeugG7nkI9/DLO
+         7eT0AnUHF1JAnR1AH7cpY34LZF3v5eTfIZdkIal4Ep6oTaHp+zJh4WNB+KVVHE/8I1+d
+         yV/GyrqLrVImIqj4Kwv/iYl6IiXL2UdJuyHM9ZWraG12US3VIno05166wJVsUzhdsg0A
+         qoNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=podQQBqv065gQ5S/lKy/h14yy9Dr5MnYlYi9HoSmun0=;
-        b=nzChNwRwESAlGAGDkchiAp4iEIl5InU3PWEFa4yziZQ6I6CrsjSuGK2BAcrVMTxuol
-         J2My5MIdVAs6d/3TMbrk+wOSfg1vlYb18jRUABZoscI8yt9cNdWv7PJXIVpADv13PLP4
-         rv+EL6fBQHUmG4BM66LUYcvpU3I7GqzUSRF9htSzEvPC5IGeUKMp8E8X9WDXAz1/6wOy
-         zZ+gAqOm9KTitpIdhVaGwvcznZYzJPp7l063Ssj0BhV1+zD+oQnlT+uTissoh9xV1YpC
-         F/kDASiCza84r/vGlz73yFQZ7y8KCd98Oe84js1mNuqSeGOLdYO1nONLGKa1HArNaDcL
-         UVCw==
-X-Gm-Message-State: AFeK/H3ETSqstaPHb/yeqGgRTHIWsu2MDFmHfyPyyiquLQix0X4+pQppzwaUOjZ7iTBrDg==
-X-Received: by 10.99.112.18 with SMTP id l18mr22022027pgc.142.1490112223621;
-        Tue, 21 Mar 2017 09:03:43 -0700 (PDT)
+        bh=Cf1INfRxQDGHqE5xdEX0zWMqmZqKSK+eYq2FyifhRsQ=;
+        b=pzglXyYr32Dl9xxUnTsiQnIO/MAmXu2bc7sFePzmuEPlnp8dNj8Ut4aSSBTTDcNNQv
+         f2e8kBRcNP3iq3iATpBVM9jxWPoj0w2eRZ+ht7RXQn69eb1v6m8nw3H/T3rtTMoK9Njg
+         NnI45j8/0le5vbi2amZb4NTlVVAAzRlL7ALHSEF/hJY52XtFph9DISAT95i8/8vMoA5D
+         EWIon1TZiX5lXy6KtD+rxgctpTb8MNHao1Hi4UvtvAsQU5K0fPPiAsPw4s5rdsqjtlS1
+         8MgOnUaYA36afC8VbS5k4IUCSjmkkPTagfwDa26k3T6vPtJ0sLNXuYZQe2ORBYY7a6gf
+         D/gg==
+X-Gm-Message-State: AFeK/H0YlYh68gPtGHL6yVnH/26aaXiD5kCt6Wap096fkbn7aTfuGJ2g3ejaDq1o4Cs2SQ==
+X-Received: by 10.98.200.19 with SMTP id z19mr15316811pff.223.1489737522208;
+        Fri, 17 Mar 2017 00:58:42 -0700 (PDT)
 Return-Path: <gs051095@gmail.com>
 Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id v17sm30613593pgc.20.2017.03.21.09.03.38
+        by smtp.googlemail.com with ESMTPSA id m67sm14826091pfj.32.2017.03.17.00.58.37
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 21 Mar 2017 09:03:42 -0700 (PDT)
+        Fri, 17 Mar 2017 00:58:41 -0700 (PDT)
 From: Gargi Sharma <gs051095@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: linux-iio@vger.kernel.org,
@@ -57,9 +57,9 @@ Cc: linux-iio@vger.kernel.org,
 	pmeerw@pmeerw.net,
 	gregkh@linuxfoundation.org,
 	Gargi Sharma <gs051095@gmail.com>
-Subject: [RESEND PATCH v3] staging: iio: ad7280: Replace mlock with driver private lock
-Date: Tue, 21 Mar 2017 21:31:09 +0530
-Message-Id: <1490112069-30133-1-git-send-email-gs051095@gmail.com>
+Subject: [PATCH v3] staging: iio: ad7280: Replace mlock with driver private lock
+Date: Fri, 17 Mar 2017 13:29:30 +0530
+Message-Id: <1489737570-2491-1-git-send-email-gs051095@gmail.com>
 X-Mailer: git-send-email 2.7.4
 
 The IIO subsystem is redefining iio_dev->mlock to be used by
@@ -69,7 +69,6 @@ ie. Changes between INDIO_DIRECT_MODE, INDIO_BUFFER_* modes.
 In this driver, mlock was being used to protect hardware state
 changes.  Replace it with a lock in the devices global data.
 
-Acked-by: Jonathan Cameron <jic23@kernel.org>
 Signed-off-by: Gargi Sharma <gs051095@gmail.com>
 ---
 Changes in v3:
