@@ -1,118 +1,82 @@
-X-GM-THRID: 6673948499699040256
-X-Received: by 2002:a25:1607:: with SMTP id 7mr3067653ybw.51.1553899724197;
-        Fri, 29 Mar 2019 15:48:44 -0700 (PDT)
+X-GM-THRID: 6397390793328295936
+X-Received: by 10.107.40.18 with SMTP id o18mr3739013ioo.6.1489741416127;
+        Fri, 17 Mar 2017 02:03:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:2f90:: with SMTP id v138ls1118057ybv.10.gmail; Fri, 29
- Mar 2019 15:48:43 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxlTqk/wLjaPlIdcrJQyEnAZD9yEF2+ovH5X0+8gGPNnN5R0GC4cjfhBasooArmNghywvNT
-X-Received: by 2002:a25:90b:: with SMTP id 11mr4036805ybj.55.1553899723326;
-        Fri, 29 Mar 2019 15:48:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553899723; cv=none;
-        d=google.com; s=arc-20160816;
-        b=lOdDGtj7ly7+KYpPIJKlQDggVVUU2xr1Jx5nDC2b458TY3bC2HwhTP6zzKw8QH4HZ0
-         IlKWAGVabJG95IDejrS+MRCB736nQ8eih0AqRTv+tTBGT8uh90wybKQkHTJ2aIBa1+F8
-         VoRgM8Y+nfqx9jjum/2PB29Rro9OJ//swWLv78kl3xePDgGPf48ySdQ7VTM22CGXNBAO
-         WrHdQFMKA6kcnR2f5finBRDoSUDu2MccXFuCULh89I5xbLKoSQ0Kxazl5G7JYLC5BXCV
-         mOzYgEg/xAz9pycaEotQkTXHgeogGLR8n4oMmGn5I7Kh56vLdr9VgqmIhDQJA7b/9IhQ
-         XhzA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Mc2amG+m4jIVKGC3ycUhjih3SWTpn5j5mV05u6zbufU=;
-        b=exhxeuwQ9ju0e981klziYoKP0FTAXGpmf8mk+tqqtficigTVFOyDEtRNA6X2LJRe5m
-         wMhuWLpGzwCnba7SB0Y320DqKfWjuxhiQLPauDU6q2wBU3mobtfyIDQ6hF3MiANITEY9
-         yWSw9ciQMJ6UiKPuVC7StWBbq8JLBaB+h+wkS4E6wxjhGJszx2Al2ESzfus9XuR1BL/f
-         zHsdLyk+IJwcIGWdzKVJVrTTZPMQK+7hoEtg98v09Xmoo2PQ3remhARA1iJCNd6FdEez
-         veNIrzOSvrZjNd/0+dIaoJz3wFY++WO+RkkWi2U6gvDlp1mmyGALxZzpSEvQHlgqQyMf
-         GNhQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YkgOawAB;
-       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::62c as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <vatsalanarang@gmail.com>
-Received: from mail-pl1-x62c.google.com (mail-pl1-x62c.google.com. [2607:f8b0:4864:20::62c])
-        by gmr-mx.google.com with ESMTPS id s11si208510ywg.3.2019.03.29.15.48.43
+Received: by 10.157.16.46 with SMTP id h43ls6782085ote.9.gmail; Fri, 17 Mar
+ 2017 02:03:35 -0700 (PDT)
+X-Received: by 10.129.40.134 with SMTP id o128mr7217227ywo.82.1489741415449;
+        Fri, 17 Mar 2017 02:03:35 -0700 (PDT)
+Return-Path: <lars@metafoo.de>
+Received: from www381.your-server.de (www381.your-server.de. [78.46.137.84])
+        by gmr-mx.google.com with ESMTPS id y63si1028857ywe.5.2017.03.17.02.03.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Mar 2019 15:48:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::62c as permitted sender) client-ip=2607:f8b0:4864:20::62c;
+        Fri, 17 Mar 2017 02:03:35 -0700 (PDT)
+Received-SPF: neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) client-ip=78.46.137.84;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YkgOawAB;
-       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::62c as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x62c.google.com with SMTP id bg8so1685413plb.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 29 Mar 2019 15:48:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Mc2amG+m4jIVKGC3ycUhjih3SWTpn5j5mV05u6zbufU=;
-        b=YkgOawAB/EWpV2JghuQtVfYXfKN6rKw2h6f03/y0fc6v0RqZbto/ThwoZVgEZCJm7s
-         zxxDT2R4/9V2WsJiKD2ggrbsXVJoQcB24jsuDKoAwi9wMRyOe0vMu58eO54NOIN42ACd
-         +jLoIW9jJZLm8wElkbQonSKmQ8cNnsqwz64p0L3RYyIctn1NMfjugunW4JuHhiDIDWqU
-         sE6oTrX4TIllgdekoNlYSCkDRCn4OSYBKNu+ecN3pj5q7LHAMczI/1kc2/k0T0fKZD9Z
-         s4IFn7GJgalw3J6BQ67YkJcytxNvfzUCseSwoaulzQpNVrGfmvH5VyYQrXynUhk1xW1U
-         DXUQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Mc2amG+m4jIVKGC3ycUhjih3SWTpn5j5mV05u6zbufU=;
-        b=tVoIpq+BwYuouXMOxP5KYposmN8aG+CBgSMlXJtpUNaV9GNihreeDhqMx/MUU5daU0
-         UQJWKky8EGLf7PwxpRLIlLnZojEnDJqA3YAaCaFJYoH+OkcKt0PnGr59xXmQPjsRFsYU
-         j71K+fJwqkxC8ggoV6WTr3VryMsbUv1Qs6KysKqbeBJ+mZ5Tu1W1tvq5j3QHpDS+6W0i
-         3N0YcFh2J2izakkcgdabT0CrtvhHMBTC84Vb9uyWxhjB6l+hvwsyjAYllKepRsD78m+M
-         ylL0HNYwsORv7fP7XDomXXH8dkOuu39WVUkx0j/5ZpJJHMFJrA5koQEogFf1AL8J86Wm
-         M13w==
-X-Gm-Message-State: APjAAAUBODOkV4f9mXunWLNzr4l29Et8v7os2IuqKlf+rlP4S6FN899/
-	8hdNVlvVWbEwOC9SZf/oOqSbvSa4fMc=
-X-Received: by 2002:a17:902:6b8a:: with SMTP id p10mr51846028plk.109.1553899722841;
-        Fri, 29 Mar 2019 15:48:42 -0700 (PDT)
-Return-Path: <vatsalanarang@gmail.com>
-Received: from localhost.localdomain ([103.87.57.82])
-        by smtp.gmail.com with ESMTPSA id e2sm5034175pfa.64.2019.03.29.15.48.40
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Mar 2019 15:48:42 -0700 (PDT)
-From: Vatsala Narang <vatsalanarang@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	Vatsala Narang <vatsalanarang@gmail.com>
-Subject: [PATCH] staging: rtl8723bs: core: Fix a comparison warning.
-Date: Sat, 30 Mar 2019 04:18:25 +0530
-Message-Id: <20190329224826.24954-1-vatsalanarang@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) smtp.mailfrom=lars@metafoo.de
+Received: from [88.198.220.130] (helo=sslproxy01.your-server.de)
+	by www381.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
+	(Exim 4.85_2)
+	(envelope-from <lars@metafoo.de>)
+	id 1connE-0000dq-LM; Fri, 17 Mar 2017 10:03:28 +0100
+Received: from [93.104.170.34] (helo=[192.168.178.40])
+	by sslproxy01.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-SHA:256)
+	(Exim 4.84_2)
+	(envelope-from <lars@metafoo.de>)
+	id 1connE-0002SN-CA; Fri, 17 Mar 2017 10:03:28 +0100
+Subject: Re: [PATCH v2] staging: iio: adis16240: Remove mutex_lock() and
+ mutex_unlock() function call.
+To: Jonathan Cameron <jic23@kernel.org>, Varsha Rao <rvarsha016@gmail.com>,
+ Michael Hennerich <Michael.Hennerich@analog.com>,
+ Hartmut Knaack <knaack.h@gmx.de>, Peter Meerwald-Stadler
+ <pmeerw@pmeerw.net>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Barry Song <21cnbao@gmail.com>
+References: <58c81906.42d5620a.3e22a.7a2b@mx.google.com>
+ <39a0f2ff-5771-b287-60ca-b62ba330f31b@kernel.org>
+Cc: outreachy-kernel@googlegroups.com, linux-iio@vger.kernel.org
+From: Lars-Peter Clausen <lars@metafoo.de>
+X-Enigmail-Draft-Status: N1110
+Message-ID: <08d175a1-af67-40f9-7301-7f7158347e3c@metafoo.de>
+Date: Fri, 17 Mar 2017 10:03:27 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+ Icedove/45.6.0
+MIME-Version: 1.0
+In-Reply-To: <39a0f2ff-5771-b287-60ca-b62ba330f31b@kernel.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 8bit
+X-Authenticated-Sender: lars@metafoo.de
+X-Virus-Scanned: Clear (ClamAV 0.99.2/23211/Fri Mar 17 05:16:44 2017)
 
-Move the constant to the right side of comparison to get rid of
-checkpatch warning.
+On 03/15/2017 11:11 PM, Jonathan Cameron wrote:
+> On 14/03/17 16:23, Varsha Rao wrote:
+>> Remove mutex_lock() and mutex_unlock() function calls, as the
+>> adis16240_spi_read_signed() function can be run parallel and safely
+>> multiple times. Also remove the mutex.h header file and comment, which
+>> are no longer required.
+>>
+>> As indio_dev is declared and initialized in adis16240_spi_read_signed(),
+>> again declaration to same type and initialization to same value is not
+>> required, remove it from adis16240_read_12bit_signed().
+>>
+>> Simplify the return logic, by merging assignment and return into a single
+>> line.
+>>
+>> Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
+> It's a bit obscure, but isn't there the potential to get the check_status
+> call spitting out text for the wrong read, or potentially miss a status
+> value entirely?
+> 
+> (kind of more for Lars really, but feel free to comment Varsha!)
+> 
+> The various faults look like this wouldn't be an issue, but I'm not
+> totally sure about the SPI failure and whether a following good read
+> at exactly the wrong time might result in the error not being reported...
 
-Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
----
- drivers/staging/rtl8723bs/core/rtw_debug.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/staging/rtl8723bs/core/rtw_debug.c b/drivers/staging/rtl8723bs/core/rtw_debug.c
-index a3c8a712bdc2..0de1e12a676e 100644
---- a/drivers/staging/rtl8723bs/core/rtw_debug.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_debug.c
-@@ -1395,16 +1395,16 @@ ssize_t proc_set_btcoex_dbg(struct file *file, const char __user *buffer, size_t
- 	}
- 
- 	num = sscanf(tmp, "%x %x", module, module+1);
--	if (1 == num) {
--		if (0 == module[0])
-+	if (num == 1) {
-+		if (module[0] == 0)
- 			memset(module, 0, sizeof(module));
- 		else
- 			memset(module, 0xFF, sizeof(module));
--	} else if (2 != num) {
-+	} else if (num != 2) {
- 		DBG_871X(FUNC_ADPT_FMT ": input(\"%s\") format incorrect!\n",
- 			FUNC_ADPT_ARG(padapter), tmp);
- 
--		if (0 == num)
-+		if (num == 0)
- 			return -EFAULT;
- 	}
- 
--- 
-2.17.1
+I don't think it matters. The error reporting is asynchronous anyway and the
+bits are read-to-clear. So even if two access see the error flag set in the
+data only one of them will be able to read the bits in the diag_stat
+register (unless the error is persistent, in which case the error flag in
+the data would also be persistent).
 
 
