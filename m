@@ -1,53 +1,53 @@
 X-GM-THRID: 6398937623266590720
-X-Received: by 10.129.145.65 with SMTP id i62mr11319719ywg.151.1489868776650;
-        Sat, 18 Mar 2017 13:26:16 -0700 (PDT)
+X-Received: by 10.129.85.205 with SMTP id j196mr9953008ywb.48.1489868772505;
+        Sat, 18 Mar 2017 13:26:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.43.103 with SMTP id f36ls2648974otd.0.gmail; Sat, 18 Mar
- 2017 13:26:16 -0700 (PDT)
-X-Received: by 10.157.6.76 with SMTP id 70mr9983607otn.5.1489868776291;
-        Sat, 18 Mar 2017 13:26:16 -0700 (PDT)
+Received: by 10.36.23.133 with SMTP id 127ls1294206ith.16.canary-gmail; Sat,
+ 18 Mar 2017 13:26:11 -0700 (PDT)
+X-Received: by 10.99.233.69 with SMTP id q5mr11378092pgj.139.1489868771673;
+        Sat, 18 Mar 2017 13:26:11 -0700 (PDT)
 Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id y203si1988887pfb.0.2017.03.18.13.26.16
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id 2si2010521pfx.8.2017.03.18.13.26.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 18 Mar 2017 13:26:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Sat, 18 Mar 2017 13:26:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id b5so14388712pgg.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 18 Mar 2017 13:26:16 -0700 (PDT)
+Received: by mail-pg0-x244.google.com with SMTP id 79so5619008pgf.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 18 Mar 2017 13:26:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=eI3G6H2nCBO0D8kC4N+Q0UEX43RkgvfJLX+3NCQ5UBM=;
-        b=vLOa8K107paUAe6IyuscXPKWOZE5I1hB1rO1bcbfdvq69uu0BpMbbxUa303aB9WqdH
-         LnkkrvK3Ul+R7dAO6RAheUjBj4NPA0U1Ywqhh0nacfPYHOOH1k7MQ/DJfdHCY2XibWFv
-         iYApWvsmfTvEqO1hf2Grg1cvvThKJMDNBKcEAookTgnpm+QXjjJhc2dneIyMayfv8p/l
-         HPpbLWNcmS0IlhCa+jkwJa+U9Jmr4FsEAXohel+utq9F6qTQLrzZ/trE1Uc6zA5jYJ/I
-         Fj5DmS7WA9tBR/80higRUu/T5pS/+vSfxxxuQ+2/vTg7Oc9eon6TDDym0ATZ8aMXZBMd
-         73pg==
+        bh=fGxIqmy+BywkTLlqsR+wGxnTp2y8facNRKIMIbAW9gk=;
+        b=NXMeJ0T+gKH1+fvLAMltj6jsFyKRjl3FulBs4w+q7LWGZSblrO6AXgTTN2Yh+pYFRK
+         4IEbuLrr84JIGNYlfvxqYj7Msf/JqF07T0iMg2bf1MKKeufiuXiEGvDAm/lv8heWrHEH
+         x3GVlw3+f9a1+9C4F5rT8GvbWrwrnHXy4AYZ5RG98nioEdA2lHfbrc2Sb7rHT0JaZUdy
+         eWOfX8YwjKErY8RAd/19qHl5VaGaSNLfOnVHLzQAw230LHQ35r78FxrP/F7RZ3lakSYs
+         ouxY7mym1pVGcA5r+KqkFzZfj8aKW+i6RuifebqtGve83A9rtr5BA32+WxFV8k32Oq7a
+         pgaA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=eI3G6H2nCBO0D8kC4N+Q0UEX43RkgvfJLX+3NCQ5UBM=;
-        b=rQv/uYK4PdQNpRlBM7hGXtNFvjib6hgkUPp2bU8Pmue20yy0hu0ojXJBn445JCU+b3
-         3hSDeDzYZEr1vV95FEUSCdEkOHtVPVDnwgHmBOlfnEjb+5QkIdKIo+oKPdYU77GeJASv
-         G7uIP28RBF4E4cbZSxHNDOYb3nIm8vMW1kutcgVJCfGdK8MkOAiiRVbXfmrOvDSZgys8
-         usY5kldzFtaaO3qfV02Fo0pOa6Q1he4PqNlrGzNixAVSxb6PllUCKYqhxiE/tS2t+1O+
-         /rg7TZyxdxiqpM+ITK1A+lsfvz3PkyCIWJK8VyRLGBCfQ+allpQrcyEliLKtOrCwOAcU
-         a+kQ==
-X-Gm-Message-State: AFeK/H31EHZZF5VeEj5j09aM+FDRtG6VPqSiBURrxpFmPnFZCkUS44YQdPgcgI/gAz/4hQ==
-X-Received: by 10.98.61.5 with SMTP id k5mr24461233pfa.229.1489868776096;
-        Sat, 18 Mar 2017 13:26:16 -0700 (PDT)
+        bh=fGxIqmy+BywkTLlqsR+wGxnTp2y8facNRKIMIbAW9gk=;
+        b=sbj7EGPFhy+rqYqkuHaDea+OINkiVyPtiRbHORu8RHIK79y6wo4CA6Jes599JJxHyI
+         PJeeonUgvLkmW8ime2klGlwQgWk3R9DZLh3v/hjLmKPeGaYYa2SCN9pTIl7RzzeyFLj1
+         QLbTyxRFi+jFUmAy202RkfH2NGWr8uc5MCInPhQIw8/E+jS+lVrxyYGEGFTTrBCk0koh
+         YIVWXSKZQuqdnIFBUesa23hGHZhBTqxRSyR5fW2tAgkwWeL3MzIoREC/yEnMJFPp+SLp
+         4BetgWqZoozqdn5WV50Xtn/z3uErsJ4VERDdAqXCT7MEqi0J23k/xjs2oOQ0lo32u0l8
+         MUXg==
+X-Gm-Message-State: AFeK/H295VUl6qYDBsctdCtUSySQBJJ6rXuMdc/3B6mcO2PtOBFTe+hBU+wJjf2pqRRv8g==
+X-Received: by 10.99.47.199 with SMTP id v190mr22645109pgv.26.1489868771476;
+        Sat, 18 Mar 2017 13:26:11 -0700 (PDT)
 Return-Path: <arushisinghal19971997@gmail.com>
 Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id n8sm24467892pgd.5.2017.03.18.13.26.14
+        by smtp.gmail.com with ESMTPSA id l1sm5140061pfk.8.2017.03.18.13.26.09
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 18 Mar 2017 13:26:15 -0700 (PDT)
+        Sat, 18 Mar 2017 13:26:10 -0700 (PDT)
 From: Arushi Singhal <arushisinghal19971997@gmail.com>
 To: w.d.hubbs@gmail.com
 Cc: chris@the-brannons.com,
@@ -59,57 +59,60 @@ Cc: chris@the-brannons.com,
 	devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org,
 	Arushi Singhal <arushisinghal19971997@gmail.com>
-Subject: [PATCH 2/3] staging: speakup: Remove multiple assignments
-Date: Sun, 19 Mar 2017 01:55:58 +0530
-Message-Id: <20170318202559.10886-3-arushisinghal19971997@gmail.com>
+Subject: [PATCH 1/3] staging: speakup: Moved logical to previous line.
+Date: Sun, 19 Mar 2017 01:55:57 +0530
+Message-Id: <20170318202559.10886-2-arushisinghal19971997@gmail.com>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20170318202559.10886-1-arushisinghal19971997@gmail.com>
 References: <20170318202559.10886-1-arushisinghal19971997@gmail.com>
 
-This patch fixes the checkpatch.pl warning "multiple assignments
-should be avoided."
+Moved logical OR operator to previous line to fix the following
+checkpatch issue:
+
+CHECK: Logical continuations should be on the previous line.
 
 Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
 ---
- drivers/staging/speakup/main.c | 18 ++++++++++++------
- 1 file changed, 12 insertions(+), 6 deletions(-)
+ drivers/staging/speakup/main.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/staging/speakup/main.c b/drivers/staging/speakup/main.c
-index f71206878363..f8fccc8bf6b2 100644
+index f280e22d7e15..f71206878363 100644
 --- a/drivers/staging/speakup/main.c
 +++ b/drivers/staging/speakup/main.c
-@@ -270,9 +270,12 @@ static unsigned char get_attributes(struct vc_data *vc, u16 *pos)
+@@ -905,8 +905,8 @@ static int get_sentence_buf(struct vc_data *vc, int read_punc)
+ 	while (start < end) {
+ 		sentbuf[bn][i] = get_char(vc, (u_short *)start, &tmp);
+ 		if (i > 0) {
+-			if (sentbuf[bn][i] == SPACE && sentbuf[bn][i - 1] == '.'
+-			    && numsentences[bn] < 9) {
++			if (sentbuf[bn][i] == SPACE && sentbuf[bn][i - 1] == '.' &&
++			    numsentences[bn] < 9) {
+ 				/* Sentence Marker */
+ 				numsentences[bn]++;
+ 				sentmarks[bn][numsentences[bn]] =
+@@ -1292,8 +1292,8 @@ void spk_reset_default_chars(void)
  
- static void speakup_date(struct vc_data *vc)
- {
--	spk_x = spk_cx = vc->vc_x;
--	spk_y = spk_cy = vc->vc_y;
--	spk_pos = spk_cp = vc->vc_pos;
-+	spk_x = vc->vc_x;
-+	spk_cx = spk_x;
-+	spk_y = vc->vc_y;
-+	spk_cy = spk_y;
-+	spk_pos = vc->vc_pos;
-+	spk_cp = spk_pos;
- 	spk_old_attr = spk_attr;
- 	spk_attr = get_attributes(vc, (u_short *)spk_pos);
- }
-@@ -1655,9 +1658,12 @@ static int speak_highlight(struct vc_data *vc)
- 		spk_do_flush();
- 		spkup_write(speakup_console[vc_num]->ht.highbuf[hc],
- 			    speakup_console[vc_num]->ht.highsize[hc]);
--		spk_pos = spk_cp = speakup_console[vc_num]->ht.rpos[hc];
--		spk_x = spk_cx = speakup_console[vc_num]->ht.rx[hc];
--		spk_y = spk_cy = speakup_console[vc_num]->ht.ry[hc];
-+		spk_pos = speakup_console[vc_num]->ht.rpos[hc];
-+		spk_cp = spk_pos;
-+		spk_x = speakup_console[vc_num]->ht.rx[hc];
-+		spk_cx = spk_x;
-+		spk_y = speakup_console[vc_num]->ht.ry[hc];
-+		spk_cy = spk_y;
- 		return 1;
+ 	/* First, free any non-default */
+ 	for (i = 0; i < 256; i++) {
+-		if ((spk_characters[i] != NULL)
+-		    && (spk_characters[i] != spk_default_chars[i]))
++		if (spk_characters[i] &&
++		    (spk_characters[i] != spk_default_chars[i]))
+ 			kfree(spk_characters[i]);
  	}
- 	return 0;
+ 
+@@ -2088,8 +2088,8 @@ speakup_key(struct vc_data *vc, int shift_state, int keycode, u_short keysym,
+ 	tty = vc->port.tty;
+ 	if (type >= 0xf0)
+ 		type -= 0xf0;
+-	if (type == KT_PAD
+-		&& (vt_get_leds(fg_console, VC_NUMLOCK))) {
++	if (type == KT_PAD &&
++	    (vt_get_leds(fg_console, VC_NUMLOCK))) {
+ 		if (up_flag) {
+ 			spk_keydown = 0;
+ 			goto out;
 -- 
 2.11.0
 
