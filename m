@@ -1,92 +1,131 @@
-X-GM-THRID: 6402542021433622528
-X-Received: by 10.157.54.227 with SMTP id s32mr1014288otd.86.1490707979697;
-        Tue, 28 Mar 2017 06:32:59 -0700 (PDT)
+X-GM-THRID: 6398158236087746560
+X-Received: by 10.25.215.37 with SMTP id o37mr2456629lfg.20.1489856170748;
+        Sat, 18 Mar 2017 09:56:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.27.138 with SMTP id b132ls4749787iob.5.gmail; Tue, 28 Mar
- 2017 06:32:58 -0700 (PDT)
-X-Received: by 10.107.192.5 with SMTP id q5mr9275568iof.102.1490707978837;
-        Tue, 28 Mar 2017 06:32:58 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id g82si586237pfb.5.2017.03.28.06.32.58
+Received: by 10.46.0.164 with SMTP id e36ls122276lji.53.gmail; Sat, 18 Mar
+ 2017 09:56:10 -0700 (PDT)
+X-Received: by 10.46.21.28 with SMTP id s28mr2890775ljd.14.1489856170177;
+        Sat, 18 Mar 2017 09:56:10 -0700 (PDT)
+Return-Path: <narcisaanamaria12@gmail.com>
+Received: from mail-wr0-x241.google.com (mail-wr0-x241.google.com. [2a00:1450:400c:c0c::241])
+        by gmr-mx.google.com with ESMTPS id q207si395337wme.3.2017.03.18.09.56.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Mar 2017 06:32:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Sat, 18 Mar 2017 09:56:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) client-ip=2a00:1450:400c:c0c::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       spf=pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) smtp.mailfrom=narcisaanamaria12@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id 81so21392750pgh.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 28 Mar 2017 06:32:58 -0700 (PDT)
+Received: by mail-wr0-x241.google.com with SMTP id u48so13028196wrc.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 18 Mar 2017 09:56:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=Tz8lOn8aeg00Otv3V7fCbIAnn8Ne8HmeV1lzDt5tYDs=;
-        b=RkiTscnGPaVDe2TmcfaplayyK3tLbpFQAg2MbCjdXj1DOrH7ejY77XcEG7bjtbEIY3
-         /f9TXYVxPdGQrqwx3kaw7UfWE8cm5plTF0Su0CeDqJgqsTTndZmTrOTvZ1Eo2qCKFHgC
-         KlG6cFQtyjgYryu9Aat+HEMFbtgZAV1ryExD/9JcAD8QlKUN7xZTmUHXc8ALKA6G6C8n
-         aapNv6RdWTrySGDpxKO6vHd8xlwjvQXKbbawbHL9V1GEFQSnaKYPOufg+bzOFqzqgw56
-         gwh0HYZ+OEloLEEPj2LDorVdH1dA3ZMelySrUrSAPZjZdrlZufvng5kUNi1LGwXowzly
-         qZqA==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=9uK/iBW9cePT2+IdYwzFXV+oXL4SoyVlfADelB0uSDQ=;
+        b=OeKaTKXN0QrMOGW+XbjwAQ+HUaHvxWmmD8k+mg52Knvv5WZmtOXRQvm0K6ZKhwnael
+         u21aLlNs2fzDHRvxBMhSnHTpwR6ndmy4Ve6R7Zb4goP6Ns1RmNNNV9UhMeWf7spcqc3z
+         T3UUrrnKCK32DLcbcN8QW1qldcpVBeghj1X9iP3k49kNafMVRFBCYju5fJZKih2AJW1m
+         Xw7Dj/APUSea5shILZVa9vegL0JD03Trr9rMqhdKVQ/71zgDEtM3PPxvK4HRQhBHozN4
+         d6vs5o2a9TNI8xjqHmoAlF3vzXfs1xreLNHDvBYRbzXv1UlLCK30x313w/ft0iLaUo/Q
+         7jjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=Tz8lOn8aeg00Otv3V7fCbIAnn8Ne8HmeV1lzDt5tYDs=;
-        b=bX9qh/rNqsvZ89UEmL3NbwsEWsg48/nFg13WsJOe1UdPTVP9hNvFZIalnQB6SA7igL
-         3uIR9ZcYHgrLt/v6e3SX8ECG2C1azR708Up5/ZNu7SfFmH5EQFoTlgs/bx4Om764cPwx
-         tE4FtSoSv8IiLz4/LEYBoe3TPya5u7gokeI78Fn+VOxVfA8kR4/Riqp5XHq9ukk/qZCz
-         +M57Pmj88q5CzBdLKDDiouhy/oQmXFhXueuONm1EqbpXAT+8wYlO17M2bpym9q+B0rAN
-         EI70HAp5JFZA12DCySuvTCE/E6sA/4LS1QGRo44kWEU7hxxms82DsxouLevhi9IGIt1e
-         0rMw==
-X-Gm-Message-State: AFeK/H2QPtE7oR52I3NZNqCtWaPDYLaep34FX0UUhqZWh0AU4GpvzwMOlnB/gYq49R130A==
-X-Received: by 10.84.204.8 with SMTP id a8mr36549678ple.4.1490707978544;
-        Tue, 28 Mar 2017 06:32:58 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id b80sm7684530pfe.87.2017.03.28.06.32.57
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 28 Mar 2017 06:32:58 -0700 (PDT)
-Date: Tue, 28 Mar 2017 19:02:56 +0530
-From: simran singhal <singhalsimran0@gmail.com>
-To: pablo@netfilter.org
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=9uK/iBW9cePT2+IdYwzFXV+oXL4SoyVlfADelB0uSDQ=;
+        b=chXYXwVm280ASoLO12s0Tadssk0kVgPYYNnO7xCvBLhpFiL7x7N/hKaHZNOg+IPvfq
+         CMN1f9szZgAAdnWk3CJhmkjqMY7ESxeDpw7b6jYaMu4WZ8a6r3HGbbmhiA1smMNcGFJu
+         YzyuTZIoojPwaJ7DHkBYOteBhG1wj/kAsArKYgj7vRD2w2n5wXwvbeXWmJ9TBVzQ2qn9
+         Vh1TXuDAmoXJVnK2C0uku3jqnBz1R6ccgAMP2UTbitpmhGrkO66oi5L2lbHzJItk5BUT
+         yppl0wL25/DY8z/ZxT9Vl+KZ+8rtz3rlK35dKNhcIvA8pXOTpK1I75YU0lg4EM4H5Nz2
+         75hw==
+X-Gm-Message-State: AFeK/H1XLEb3os1Ancnwn9gOUm9xrEezNQ5S8gSXNvzQknwjF3BoVQveyFkd57L75ZIyRw==
+X-Received: by 10.223.154.149 with SMTP id a21mr17466503wrc.145.1489856169957;
+        Sat, 18 Mar 2017 09:56:09 -0700 (PDT)
+Return-Path: <narcisaanamaria12@gmail.com>
+Received: from localhost.localdomain (p22.eregie.pub.ro. [141.85.0.122])
+        by smtp.gmail.com with ESMTPSA id o22sm13420506wro.13.2017.03.18.09.56.08
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 18 Mar 2017 09:56:09 -0700 (PDT)
+From: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+To: oleg.drokin@intel.com,
+	andreas.dilger@intel.com,
+	jsimmons@infradead.org,
+	gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com,
-	Jozsef Kadlecsik <kadlec@blackhole.kfki.hu>,
-	"David S. Miller" <davem@davemloft.net>,
-	netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] netfilter: ipset: Use max macro instead of ternary operator
-Message-ID: <20170328133256.GA24590@singhal-Inspiron-5558>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+	Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+Subject: [PATCH v2 2/2] staging: lustre: libcfs: Define pr_fmt() to include relevant name
+Date: Sat, 18 Mar 2017 18:56:00 +0200
+Message-Id: <c92158e3e5fc4349ed9970d0fd60e458915375fc.1489855248.git.narcisaanamaria12@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <cover.1489855248.git.narcisaanamaria12@gmail.com>
+References: <cover.1489686964.git.narcisaanamaria12@gmail.com> <cover.1489855248.git.narcisaanamaria12@gmail.com>
 
-This patch replaces ternary operator with macro max as it shorter and
-thus increases code readability. Macro max return the maximum of the two
-compared values.
+Define a pr_fmt() for tracefile.c
+Remove redundant prefix 'Lustre' from pr_*() calls.
 
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
 ---
- net/netfilter/ipset/ip_set_core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/lustre/lnet/libcfs/tracefile.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
 
-diff --git a/net/netfilter/ipset/ip_set_core.c b/net/netfilter/ipset/ip_set_core.c
-index 10a3694..248fef7 100644
---- a/net/netfilter/ipset/ip_set_core.c
-+++ b/net/netfilter/ipset/ip_set_core.c
-@@ -571,7 +571,7 @@ ip_set_test(ip_set_id_t index, const struct sk_buff *skb,
+diff --git a/drivers/staging/lustre/lnet/libcfs/tracefile.c b/drivers/staging/lustre/lnet/libcfs/tracefile.c
+index 5cc67d7..9599b74 100644
+--- a/drivers/staging/lustre/lnet/libcfs/tracefile.c
++++ b/drivers/staging/lustre/lnet/libcfs/tracefile.c
+@@ -37,6 +37,7 @@
+ 
+ #define DEBUG_SUBSYSTEM S_LNET
+ #define LUSTRE_TRACEFILE_PRIVATE
++#define pr_fmt(fmt) "Lustre: " fmt
+ #include "tracefile.h"
+ 
+ #include "../../include/linux/libcfs/libcfs.h"
+@@ -892,7 +893,7 @@ int cfs_trace_daemon_command(char *str)
+ 	} else {
+ 		strcpy(cfs_tracefile, str);
+ 
+-		pr_info("Lustre: debug daemon will attempt to start writing to %s (%lukB max)\n",
++		pr_info("debug daemon will attempt to start writing to %s (%lukB max)\n",
+ 			cfs_tracefile,
+ 			(long)(cfs_tracefile_size >> 10));
+ 
+@@ -930,13 +931,13 @@ int cfs_trace_set_debug_mb(int mb)
+ 	struct cfs_trace_cpu_data *tcd;
+ 
+ 	if (mb < num_possible_cpus()) {
+-		pr_warn("Lustre: %d MB is too small for debug buffer size, setting it to %d MB.\n",
++		pr_warn("%d MB is too small for debug buffer size, setting it to %d MB.\n",
+ 			mb, num_possible_cpus());
+ 		mb = num_possible_cpus();
  	}
  
- 	/* Convert error codes to nomatch */
--	return (ret < 0 ? 0 : ret);
-+	return max(0, ret);
- }
- EXPORT_SYMBOL_GPL(ip_set_test);
+ 	if (mb > limit) {
+-		pr_warn("Lustre: %d MB is too large for debug buffer size, setting it to %d MB.\n",
++		pr_warn("%d MB is too large for debug buffer size, setting it to %d MB.\n",
+ 			mb, limit);
+ 		mb = limit;
+ 	}
+@@ -1048,7 +1049,7 @@ static int tracefiled(void *arg)
+ 		if (!list_empty(&pc.pc_pages)) {
+ 			int i;
  
+-			pr_alert("Lustre: trace pages aren't empty\n");
++			pr_alert("trace pages aren't empty\n");
+ 			pr_err("total cpus(%d): ", num_possible_cpus());
+ 			for (i = 0; i < num_possible_cpus(); i++)
+ 				if (cpu_online(i))
+@@ -1118,7 +1119,7 @@ void cfs_trace_stop_thread(void)
+ 
+ 	mutex_lock(&cfs_trace_thread_mutex);
+ 	if (thread_running) {
+-		pr_info("Lustre: shutting down debug daemon thread...\n");
++		pr_info("shutting down debug daemon thread...\n");
+ 		atomic_set(&tctl->tctl_shutdown, 1);
+ 		wait_for_completion(&tctl->tctl_stop);
+ 		thread_running = 0;
 -- 
-2.7.4
+1.9.1
 
 
