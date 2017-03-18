@@ -1,51 +1,87 @@
 X-GM-THRID: 6398955300096835584
-X-Received: by 10.157.9.138 with SMTP id q10mr10243932otd.21.1489936643765;
-        Sun, 19 Mar 2017 08:17:23 -0700 (PDT)
+X-Received: by 10.157.50.136 with SMTP id u8mr9883624otb.87.1489872881309;
+        Sat, 18 Mar 2017 14:34:41 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.3.111 with SMTP id 102ls2013996otv.42.gmail; Sun, 19 Mar
- 2017 08:17:23 -0700 (PDT)
-X-Received: by 10.157.3.14 with SMTP id 14mr6387786otv.100.1489936643337;
-        Sun, 19 Mar 2017 08:17:23 -0700 (PDT)
-Return-Path: <corbet@lwn.net>
-Received: from ms.lwn.net (ms.lwn.net. [45.79.88.28])
-        by gmr-mx.google.com with ESMTPS id g82si2155826pfb.5.2017.03.19.08.17.23
+Received: by 10.157.11.120 with SMTP id p53ls5579458otd.7.gmail; Sat, 18 Mar
+ 2017 14:34:40 -0700 (PDT)
+X-Received: by 10.129.182.11 with SMTP id u11mr10664729ywh.149.1489872880949;
+        Sat, 18 Mar 2017 14:34:40 -0700 (PDT)
+Return-Path: <karniksayli1995@gmail.com>
+Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
+        by gmr-mx.google.com with ESMTPS id g82si1939617pfb.5.2017.03.18.14.34.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 19 Mar 2017 08:17:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of corbet@lwn.net designates 45.79.88.28 as permitted sender) client-ip=45.79.88.28;
+        Sat, 18 Mar 2017 14:34:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of corbet@lwn.net designates 45.79.88.28 as permitted sender) smtp.mailfrom=corbet@lwn.net
-Received: from localhost.localdomain (localhost [127.0.0.1])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ms.lwn.net (Postfix) with ESMTPSA id 4A70B314;
-	Sun, 19 Mar 2017 15:17:22 +0000 (UTC)
-Date: Sun, 19 Mar 2017 09:17:20 -0600
-From: Jonathan Corbet <corbet@lwn.net>
-To: sayli karnik <karniksayli1995@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, Alasdair Kergon <agk@redhat.com>,
- Mike Snitzer <snitzer@redhat.com>, dm-devel@redhat.com
-Subject: Re: [PATCH] Documentation: device-mapper: cache.txt: Fix typos
-Message-ID: <20170319091720.2b14281e@lwn.net>
-In-Reply-To: <20170318213424.GA21394@sayli-HP-15-Notebook-PC>
-References: <20170318213424.GA21394@sayli-HP-15-Notebook-PC>
-Organization: LWN.net
-X-Mailer: Claws Mail 3.14.1 (GTK+ 2.24.31; x86_64-redhat-linux-gnu)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x241.google.com with SMTP id 79so5735378pgf.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 18 Mar 2017 14:34:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=ZrK12RKJ+fIHQeYnLDC5mWafeuzTl95tc8QgHKb1Q68=;
+        b=VRUH6rsyuP4Y0kP4xY0LejOfNFeXi93wBP8KbHN0OYdUVFy+UDh6fyo6IYWaZXWAON
+         7ZarGZovkh6zNdrNE8F7kkSaps2QqiK3Rg8qnKEXsftceS/GaBGRi8QbrXMK8/kamLlw
+         x+qeKdVkXiakzYZlXkV8J6mitkn2m5/PmHuLbr1k8lZA+kqJw2MgxQF69mCj5QMxfh2q
+         xJdSfHFD5ZgN+5h5q5JH0cLq+8ZtyMqw4ETgSPqgNpXBleXMVym4juaaRHznqQP6dKib
+         wWYD2iMQyCpe2Eo1LtNoCYBGDv2/Nyz3n7P1oWjvrh1UbxIkI7H6R+8A/kbhqYpnj7dK
+         x1fQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=ZrK12RKJ+fIHQeYnLDC5mWafeuzTl95tc8QgHKb1Q68=;
+        b=RFARYBOvkQQ0e1fiCF61iZOwsgdiNVZMM8Hik2wHHTR5uiIaDVmHXMUe+IRdw4l8pv
+         CQW1O15jUu0oVuXLVddylZj/xGQhpAMvT7EKqP0v7HzWwvhfOk9jUsvWd8GD7x1NcLLB
+         cz+N+sD+DXCZxFekosxwyFZBN/G9X64N4v34NsOqCPF1cOgYt3R66JP9wHrfdLA+eKQ0
+         vskyHSdmF3xuuUiQMt7lwM+z/0qJlE/OgIPcOII09x4WfFGEdwB0ClIXX7dwiCE3wJRV
+         vLFntkOt84HvQdvymxkrNUA1NrPoyTU3+y6rr6KMpQzE9xVH6eLe1tZiEDWqdqWcjcUB
+         wS8Q==
+X-Gm-Message-State: AFeK/H1ixrsWqzh19QY027CpxAYDs7zYzPti5koiG2MreGBs7GOEKXRpOjkuI/x8vFurEA==
+X-Received: by 10.84.206.37 with SMTP id f34mr29648780ple.175.1489872880691;
+        Sat, 18 Mar 2017 14:34:40 -0700 (PDT)
+Return-Path: <karniksayli1995@gmail.com>
+Received: from sayli-HP-15-Notebook-PC ([182.58.176.141])
+        by smtp.gmail.com with ESMTPSA id i15sm24401010pfj.0.2017.03.18.14.34.32
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 18 Mar 2017 14:34:39 -0700 (PDT)
+Date: Sun, 19 Mar 2017 03:04:24 +0530
+From: sayli karnik <karniksayli1995@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Alasdair Kergon <agk@redhat.com>, Mike Snitzer <snitzer@redhat.com>,
+	dm-devel@redhat.com, Jonathan Corbet <corbet@lwn.net>
+Subject: [PATCH] Documentation: device-mapper: cache.txt: Fix typos
+Message-ID: <20170318213424.GA21394@sayli-HP-15-Notebook-PC>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Sun, 19 Mar 2017 03:04:24 +0530
-sayli karnik <karniksayli1995@gmail.com> wrote:
+The patch fixes a spelling error (hexidecimal->hexadecimal).
 
-> The patch fixes a spelling error (hexidecimal->hexadecimal).
+Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
+---
+ Documentation/device-mapper/cache.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-FYI, normal changelog style favors an imperative mood and avoiding terms
-like "this patch".  So I changed the above to:
+diff --git a/Documentation/device-mapper/cache.txt b/Documentation/device-mapper/cache.txt
+index f228604..cdfd0fe 100644
+--- a/Documentation/device-mapper/cache.txt
++++ b/Documentation/device-mapper/cache.txt
+@@ -290,7 +290,7 @@ message, which takes an arbitrary number of cblock ranges.  Each cblock
+ range's end value is "one past the end", meaning 5-10 expresses a range
+ of values from 5 to 9.  Each cblock must be expressed as a decimal
+ value, in the future a variant message that takes cblock ranges
+-expressed in hexidecimal may be needed to better support efficient
++expressed in hexadecimal may be needed to better support efficient
+ invalidation of larger caches.  The cache must be in passthrough mode
+ when invalidate_cblocks is used.
+ 
+-- 
+2.7.4
 
-	Fix a spelling error (hexidecimal->hexadecimal)
-
-With that, the patch is applied to the docs tree, thanks.
-
-jon
 
