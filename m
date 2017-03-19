@@ -1,68 +1,68 @@
 X-GM-THRID: 6399179032135467008
-X-Received: by 10.99.143.91 with SMTP id r27mr12483509pgn.132.1489926595270;
-        Sun, 19 Mar 2017 05:29:55 -0700 (PDT)
+X-Received: by 10.200.35.250 with SMTP id r55mr2768882qtr.39.1489924972848;
+        Sun, 19 Mar 2017 05:02:52 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.47.173 with SMTP id r42ls12041017otb.26.gmail; Sun, 19 Mar
- 2017 05:29:54 -0700 (PDT)
-X-Received: by 10.13.226.145 with SMTP id l139mr12444218ywe.95.1489926594804;
-        Sun, 19 Mar 2017 05:29:54 -0700 (PDT)
+Received: by 10.36.36.137 with SMTP id f131ls1528399ita.7.gmail; Sun, 19 Mar
+ 2017 05:02:52 -0700 (PDT)
+X-Received: by 10.99.177.78 with SMTP id g14mr11959285pgp.67.1489924972266;
+        Sun, 19 Mar 2017 05:02:52 -0700 (PDT)
 Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id r66si2144657pfb.7.2017.03.19.05.29.54
+Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
+        by gmr-mx.google.com with ESMTPS id y90si2181501pfa.6.2017.03.19.05.02.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 19 Mar 2017 05:29:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Sun, 19 Mar 2017 05:02:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id 81so7841056pgh.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 19 Mar 2017 05:29:54 -0700 (PDT)
+Received: by mail-pg0-x242.google.com with SMTP id 79so7142441pgf.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 19 Mar 2017 05:02:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=message-id:date:from:to:cc:subject:references:mime-version
          :content-disposition:in-reply-to:user-agent;
         bh=4Pizo0wYooDxPNJUPtx+4v++cYzAr4TWpWZokxonmbE=;
-        b=tUB21BAZ2Jr604shTF2Zf97GWqrMfwIcKnyDnov6XLPzGzSgkndOuth8QSQD3mPqMs
-         0weAn8V0bKxSnbMWQszC0+BQyP5tI8QqX2I4n56dHd7/GMzmvpPWtHdW1j4I1r/3jkYY
-         YmFystMrdYU9/O+abXH9BrWCKic+NBMqH6qvIIsFGiYg/Za4eqAmehQAjJeLUqT+LEIh
-         XNNw850q+XzYlc9o03JtphWw4mfaMEsXHPw/eqt0/pX+LcLUdYhvbA7X7+u07NM+ct+K
-         gmX3u0Et1xbJ/qOmVj2VQhBfA7ssGZ4ae+Cahi0iuv6QeGboeJYTtHd8n3m04FdCB6FO
-         PeLw==
+        b=jzH/7/03ZDa1dmkJptEqo6HPqLt9JlKJrhA8pkjzo17m+GQfx5VTQfSDcQMqS+ohl0
+         Awvw2UV1zrpYBPGIQpMiMbacUGRjBJSY38UBBwnECrwU7A5Bfeip/XWfC+hN4PyGZKhS
+         MBcmGeAPVe0t4GC4DKB4XiQ97m5MGznB3FT1KqnMt3NE0y3XgXLdg89hMYUuXULQ92J1
+         I5yDgYM9D3IU7icdjcOLFCL19GcjNNPYa2/aCTNtm/1zU3U6PqVK3UAiz0cecxiqZP/H
+         s2uoT/3Hk2pmE/mLaTWNl5pCT80GzWHBuE3HJs+5kywn/inJ9JEMlLDZXggHoBItOd4U
+         2cjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:message-id:date:from:to:cc:subject:references
          :mime-version:content-disposition:in-reply-to:user-agent;
         bh=4Pizo0wYooDxPNJUPtx+4v++cYzAr4TWpWZokxonmbE=;
-        b=m46JMl77478F8qK9pmlG+2uhu/ECKjfnJs2sym1WKE3fyOf5RU+9ticILhP4mY8mTn
-         fBX7cKZNiAjv05QIPQTz7/cg2Ixu0LEbdou+Te3GVEl8GwV4Y6mBBfQ4Zr/8nkPieIli
-         CdaEzTH7mr0e3Pf39XfktuPzONOBC6U8r/tduw4ikyAgaNZicJ25pLZ2cewDR1KldFGa
-         R8c9tUA0EFVWeqPI/NMpcldBlYLaH0y1VDlmb0CqoS8kKaTBdWA68KvBZ2L+k1pI0HYn
-         XA/KpHr4OYuNSasd5rDNWAhoX69G00QAiU8A+p6gBh85cdUi+QhVBJKwyel5vls7gORs
-         /DLw==
-X-Gm-Message-State: AFeK/H3+huCw8A5wAJv6AAg7svo8kIpfa5A4WbPDwzzv1jF1+525n+g5hIP0Mu6hKEPQQQ==
-X-Received: by 10.98.34.211 with SMTP id p80mr27717577pfj.174.1489926594479;
-        Sun, 19 Mar 2017 05:29:54 -0700 (PDT)
+        b=ALP/9HPGPF5466UuBdYLxUGT+5lqIl9cXiXbyalvABPLlvbDchEWKDnZPyC0uaacqb
+         zbvzNkQMaOB8r9p4SjU/7FcfqcaGawfeSEaBt1sL6hcCm6h1ld1j1fJRCX6P4LyTMn2s
+         xD/NJxXR6w+ULuR3/D60UNu4tFEbT51BcDRDu81kOUhBj56WdgnPs8BL6OJmMKvUJYPm
+         HdwkkhW8h3jgOTls6WsnO463c77soRFSh8myswBf4CHitTB4SKfn3uumcdzwYmco2owT
+         ZvXC87aL52lReKPjSmZImH6v1rxYiP7+jsT4K1CgTRAM+C58EGe/wgIyer+knjXSPsRY
+         AZZg==
+X-Gm-Message-State: AFeK/H20cbVgCdJshsz6bbpVuVLzUMm7zcsLZpOJ5tPeHLESgdAbZYTq/q9pA7F9LCniiA==
+X-Received: by 10.99.130.193 with SMTP id w184mr18032354pgd.157.1489924971994;
+        Sun, 19 Mar 2017 05:02:51 -0700 (PDT)
 Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([157.49.2.152])
-        by smtp.gmail.com with ESMTPSA id r13sm27198931pfg.55.2017.03.19.05.29.53
+Received: from euri ([117.211.102.38])
+        by smtp.gmail.com with ESMTPSA id d2sm27274447pgf.35.2017.03.19.05.02.50
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 19 Mar 2017 05:29:53 -0700 (PDT)
-Message-ID: <58ce79c1.0dd6620a.57cda.6b16@mx.google.com>
-X-Google-Original-Message-ID: <20170319122721.GA8460@<rvarsha016@gmail.com>>
-Date: Sun, 19 Mar 2017 17:57:21 +0530
+        Sun, 19 Mar 2017 05:02:51 -0700 (PDT)
+Message-ID: <58ce736b.02a7630a.e7f61.6bfb@mx.google.com>
+X-Google-Original-Message-ID: <20170319120227.GA8126@<rvarsha016@gmail.com>>
+Date: Sun, 19 Mar 2017 17:32:27 +0530
 From: Varsha Rao <rvarsha016@gmail.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: outreachy-kernel@googlegroups.com
 Subject: [PATCH 1/4] staging: media: atomisp: Added spaces around arithmetic
  operators.
-References: <cover.1489925957.git.rvarsha016@gmail.com>
+References: <cover.1489924542.git.rvarsha016@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1489925957.git.rvarsha016@gmail.com>
+In-Reply-To: <cover.1489924542.git.rvarsha016@gmail.com>
 User-Agent: Mutt/1.7.1 (2016-10-04)
 
 Add spaces around arithmetic operators (/, +, -), to fix the checkpatch
