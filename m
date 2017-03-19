@@ -1,53 +1,52 @@
 X-GM-THRID: 6399197627083128832
-X-Received: by 10.157.51.111 with SMTP id u44mr10854346otd.129.1489929308486;
-        Sun, 19 Mar 2017 06:15:08 -0700 (PDT)
+X-Received: by 10.157.41.240 with SMTP id g45mr10310309otd.94.1489929302278;
+        Sun, 19 Mar 2017 06:15:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.28.154 with SMTP id l26ls11846480ota.4.gmail; Sun, 19 Mar
- 2017 06:15:08 -0700 (PDT)
-X-Received: by 10.129.76.210 with SMTP id z201mr11845450ywa.172.1489929308136;
-        Sun, 19 Mar 2017 06:15:08 -0700 (PDT)
+Received: by 10.157.60.6 with SMTP id q6ls3898230otc.10.gmail; Sun, 19 Mar
+ 2017 06:15:01 -0700 (PDT)
+X-Received: by 10.13.202.133 with SMTP id m127mr13061036ywd.37.1489929301563;
+        Sun, 19 Mar 2017 06:15:01 -0700 (PDT)
 Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id r66si2158128pfb.7.2017.03.19.06.15.08
+Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
+        by gmr-mx.google.com with ESMTPS id y90si2203786pfa.6.2017.03.19.06.15.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 19 Mar 2017 06:15:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Sun, 19 Mar 2017 06:15:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id n11so2485992pfg.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 19 Mar 2017 06:15:08 -0700 (PDT)
+Received: by mail-pg0-x241.google.com with SMTP id g2so15994504pge.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 19 Mar 2017 06:15:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=rHNhCpKhlgzcXPVPwZMRbhetTcbIf4vojTRttnS1rGk=;
-        b=Tnat8uCSjueG8JUd8NU9W645vqhWh9cqTK5NtYNfmBqZH/jwTFc5O2aho8BroDrwUd
-         bVBOdqMLyhs/3Mr1LbGEr7P8Fvg+wJRAhIF24SW9jn48rk+w6PH/lXxYgxbOoZ+q+mag
-         0VhgZt86j7OgdEGHavzlr33G4SdiXHzaTwuLREuBVUDuMxNyOT87vYOxyfWgE39IUhCx
-         14mo6Rq7O81B7IcloNiu07ZfhNCW6G6RSeOZOVphfuBUPjDsEb1jjUBWCPfua60XaA5J
-         Xd2tsiHzkGkkBsc7BmqihNFkfv6pIj8Ru/SFsG1VuNOTp8yVoY4SwUqpJ7zMunq/Ip6B
-         7tow==
+        h=from:to:cc:subject:date:message-id;
+        bh=eeAjJi7BXgpg+9d8wLZY2CsYVTL6G73fII9lbQwhdfU=;
+        b=BKlnNeQrVQylydDpAmSEiloaQt77k6fSTGIrVbPEFowYfAFuin+Ahiwx+5Xdn0+XAz
+         aUEI1TNFzZhzHBrkgDMdzfIX7fJaUPznLIAr8T2M934Gor7s3itiddq58SRvtE5WWWkv
+         WSEduZRW+NaXg227t+WS2XWdj4tNjDJfYdlkcJjW9rDc7vILKvZ1E55oa8iGh6qncsrz
+         FUgdpgG3dQmDCBe/pxkEIqluSRbyjOiwllpq3A2nl3WmUvcaZ3cWNRXWlgwizdFhtQ4f
+         cgILfqsBB8fcrV6uR4Q3JWpM77XKnsREUu9gcp5rgyPZU5L+NMHy9tTFR3TiBRXVJypP
+         jXtQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=rHNhCpKhlgzcXPVPwZMRbhetTcbIf4vojTRttnS1rGk=;
-        b=mndw/YpNN914oYtZm2mQCb1lBIUFdoomI6RtKlNtMKkORs2PpxzuQkyzrknU2QBp7D
-         aEiYv09xbv86S9kqx9lMnSUTSQPh2wxkQ/aRmGUfgv/jz9RlzjKG+JTxtFkiGN6IaroJ
-         v6yO0FG3mWiMpu/H+8jMkEQ9fvIPmVjafIGwbaMa6MZ7RIq6qk/lsxQ77zC/LKa2mUA5
-         Jp/9c9ZUulL28Vr7zD7eWc8Bu/jCmwrv2VYusThr4rW9PW7h9bo/oJchDUaw+06loH+L
-         pVDdGEFQgHfrGrRXR9GDscpemhMRP8Eah9ydUEfN4r1qWsUhI2UsKSWuMp1iu3IqL8of
-         u+EQ==
-X-Gm-Message-State: AFeK/H3G/IMuYTDtfZt7aIw3gi7UKaEdMy1bkzqtkTZNIVfcowLK46qjvNSNS7/sDSaabg==
-X-Received: by 10.84.241.69 with SMTP id u5mr33249566plm.107.1489929307879;
-        Sun, 19 Mar 2017 06:15:07 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=eeAjJi7BXgpg+9d8wLZY2CsYVTL6G73fII9lbQwhdfU=;
+        b=LepXDIBWQZa7LbzbKvk8lK8k4gHnAz4lg/WHGFthIwBurs2d15bIy5Xn1VzPAb20ap
+         R7u8oZnjAcSdhyUXIrr2zVy2bN76P990JUotHwnSktXi2s1np8qFrFXJnTR0h7jUTfi2
+         Z5QnxloffY0XQO+iYeAhQqiYkY3ZmzePsy8FdjoT4ESOjbEbLn882bqKi1Tmfx2ZcXXy
+         rIFXtvd2f9gEgruEC6pPJsnpWT5XLbSxt8UUm+gP+ZkIBI0JyFhZmZniPe5381c6wgCV
+         F2aalF1JpUomc2aYxF5LtTUo2dd1fMzVu+WReQVkKBNLTqRGEbg3dw8pBY9Z7ZeLsNPs
+         3YDQ==
+X-Gm-Message-State: AFeK/H33P3O3sn/AoGxCTnzJKTCRtrveRTGp7tDZduOMapEOtNILWxv3Egme6zHjg687rQ==
+X-Received: by 10.98.104.4 with SMTP id d4mr27773350pfc.2.1489929301303;
+        Sun, 19 Mar 2017 06:15:01 -0700 (PDT)
 Return-Path: <arushisinghal19971997@gmail.com>
 Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id f125sm27390623pfc.4.2017.03.19.06.15.05
+        by smtp.gmail.com with ESMTPSA id 198sm27476469pgb.51.2017.03.19.06.14.59
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 19 Mar 2017 06:15:06 -0700 (PDT)
+        Sun, 19 Mar 2017 06:15:00 -0700 (PDT)
 From: Arushi Singhal <arushisinghal19971997@gmail.com>
 To: w.d.hubbs@gmail.com
 Cc: chris@the-brannons.com,
@@ -59,46 +58,30 @@ Cc: chris@the-brannons.com,
 	devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org,
 	Arushi Singhal <arushisinghal19971997@gmail.com>
-Subject: [PATCH v2 1/2] staging: speakup: Moved OR operator to previous line.
-Date: Sun, 19 Mar 2017 18:44:54 +0530
-Message-Id: <20170319131455.25007-2-arushisinghal19971997@gmail.com>
+Subject: [PATCH v2 0/2] staging:speakup: Multiple checkpatch issues,
+Date: Sun, 19 Mar 2017 18:44:53 +0530
+Message-Id: <20170319131455.25007-1-arushisinghal19971997@gmail.com>
 X-Mailer: git-send-email 2.11.0
-In-Reply-To: <20170319131455.25007-1-arushisinghal19971997@gmail.com>
-References: <20170319131455.25007-1-arushisinghal19971997@gmail.com>
 
-Moved logical OR operator to previous line to fix the following
-checkpatch issue:
+Improve readability by fixing multiple checkpatch.pl
+issues in speakup driver.
 
-CHECK: Logical continuations should be on the previous line.
+Arushi Singhal (2):
+  staging: speakup: Moved OR operator to previous line.
+  staging: speakup: spaces preferred around operator
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
-changes in v2
-  -change the commit message and subject.
+ drivers/staging/speakup/main.c           |  8 ++++----
+ drivers/staging/speakup/speakup.h        | 12 ++++++------
+ drivers/staging/speakup/speakup_acntpc.c |  2 +-
+ drivers/staging/speakup/speakup_decpc.c  | 20 ++++++++++----------
+ drivers/staging/speakup/speakup_dtlk.c   |  2 +-
+ drivers/staging/speakup/speakup_keypc.c  |  6 +++---
+ drivers/staging/speakup/speakup_ltlk.c   |  2 +-
+ 7 files changed, 26 insertions(+), 26 deletions(-)
 
- drivers/staging/speakup/main.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/staging/speakup/main.c b/drivers/staging/speakup/main.c
-index c10445624e92..def1a36da9dd 100644
---- a/drivers/staging/speakup/main.c
-+++ b/drivers/staging/speakup/main.c
-@@ -2173,10 +2173,10 @@ speakup_key(struct vc_data *vc, int shift_state, int keycode, u_short keysym,
- 	if (up_flag || spk_killed || type == KT_SHIFT)
- 		goto out;
- 	spk_shut_up &= 0xfe;
--	kh = (value == KVAL(K_DOWN))
--	    || (value == KVAL(K_UP))
--	    || (value == KVAL(K_LEFT))
--	    || (value == KVAL(K_RIGHT));
-+	kh = (value == KVAL(K_DOWN)) ||
-+	    (value == KVAL(K_UP)) ||
-+	    (value == KVAL(K_LEFT)) ||
-+	    (value == KVAL(K_RIGHT));
- 	if ((cursor_track != read_all_mode) || !kh)
- 		if (!spk_no_intr)
- 			spk_do_flush();
 -- 
+changes in v2
+ - correct the commit message of [PATCH 1/2]
 2.11.0
 
 
