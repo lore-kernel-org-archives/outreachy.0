@@ -1,125 +1,145 @@
-X-GM-THRID: 6463725672479064064
-X-Received: by 10.129.201.11 with SMTP id o11mr3593590ywi.30.1504953408180;
-        Sat, 09 Sep 2017 03:36:48 -0700 (PDT)
+X-GM-THRID: 6399268904363884544
+X-Received: by 10.129.50.12 with SMTP id y12mr14070384ywy.111.1489947196554;
+        Sun, 19 Mar 2017 11:13:16 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.36.140 with SMTP id f134ls2688226ita.16.canary-gmail; Sat,
- 09 Sep 2017 03:36:47 -0700 (PDT)
-X-Received: by 10.129.105.139 with SMTP id e133mr3539263ywc.4.1504953407332;
-        Sat, 09 Sep 2017 03:36:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504953407; cv=none;
-        d=google.com; s=arc-20160816;
-        b=edgqKLqP8v0zjuvsuLRelei5hvegbj0G9nQLRTj4HmEdnr4mizXVlNIU/KH7Az9ydK
-         gew8PDtvVYyglG8pIhEQ/+2HWKF25YAMUiDFowdoPItdBYkAjKFxiXHtTFazDZNUtCk4
-         LHXXmK7kj9S8f+xGvkNneisXBZVcP8kv8E2UxOzYuXUIZLFvrwnOh2grNvOaK1P/6OAT
-         PWcTP473GYCP1hSeIeW8HM9jSl93BdVbwsphbj7Y+CwTRRn6aErAhJgnUngMGwmw+F21
-         qRIYaUMpQpGTJEvoRDp+EBZKjSB1buCx+czAphzN7pdhngSiCSsko0MrFxgA7RU7aVUF
-         7qbg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=yGLR6xNG+EYYtfDb7lbxKBZj+jJrNHmzm6mpt8yzHcc=;
-        b=cJUc3xD+3ACKh8137Iats8DS8zVmmgzgMZ3uycHlW4YyqbnwY97zwnAInGOwIi5zuV
-         L0GkE1i7gMn4pomTZGss4FpMh6Lo6J9DjmRVSel855wsZk3ZaYfWt8sOwWAqoW0uB9q+
-         zDZDj+x4ci8mMTRBG44sfUX+GjP6F1jMUC65JZebt7CxPrTpebT3A9gEq2uEWrKbLcCe
-         G/9GSgvYUoehQyG5iqv/4sDsPCwIYnbuQ4az2EWTjXICLzepjowcV9qHEd/Uws+8UwXH
-         Z7o05uVTpKaiybzaVJ0B+ESDe/UTmiYWQF4C7G9eSxYhfNOWGUP+5tV4b387QJOXu9xC
-         sXSw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=D0Dhcj4i;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id g19si477198pfd.14.2017.09.09.03.36.47
+Received: by 10.157.11.120 with SMTP id p53ls7066065otd.7.gmail; Sun, 19 Mar
+ 2017 11:13:16 -0700 (PDT)
+X-Received: by 10.157.41.240 with SMTP id g45mr10833763otd.94.1489947196185;
+        Sun, 19 Mar 2017 11:13:16 -0700 (PDT)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from mail-vk0-x243.google.com (mail-vk0-x243.google.com. [2607:f8b0:400c:c05::243])
+        by gmr-mx.google.com with ESMTPS id k191si839611vka.4.2017.03.19.11.13.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 09 Sep 2017 03:36:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Sun, 19 Mar 2017 11:13:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400c:c05::243 as permitted sender) client-ip=2607:f8b0:400c:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=D0Dhcj4i;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400c:c05::243 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id v5so2423703pgn.4
-        for <outreachy-kernel@googlegroups.com>; Sat, 09 Sep 2017 03:36:47 -0700 (PDT)
+Received: by mail-vk0-x243.google.com with SMTP id y16so1581277vky.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 19 Mar 2017 11:13:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=yGLR6xNG+EYYtfDb7lbxKBZj+jJrNHmzm6mpt8yzHcc=;
-        b=D0Dhcj4iq+3R0KDLksFwqTNmMr86Xerb1WcxpLtxvFenwE+VMwercgyMgWtFltvKe7
-         NdKgcZ7k92Iqyf1I7J5xQNdG0En+WMttZsp3yRLB07kNcf5gEHBwJwJ1qpXjO/5Q9l9f
-         2pdxRNANAmosgTXOmN7r6cjv3BrpLhmiQjwE3ZT0BCETkydAdCZMZ3fQe3gddHbl7aR/
-         AneUr6X78GD2VeZBcl7z0POlWamLya3A7B5JCP+wZ7YiO3WLexEou7PSbJDkWU1r+aTg
-         jmF4gAC/WgkAasT5H+hOvgfJ3UICr/CHEyqXuvUd2BHX0/kCKSoSrfnRSBK88tQ9yQe8
-         1OXQ==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=hHRLpxzxwknzgO9qFe1qaaczsLZcpvaiID30i9Yn6BM=;
+        b=cHypqEswRz+GBsZW9cGDkWdOMLbQsprjGrKT9Jm3zNJHFIwJzQR0bh2bXhvNOtIFQo
+         JFPw/8zHYv1CCqFMvPgJzzoKZmMLR9yqQ8+o2YmjYi7YD6tzPTxoGFq0AD6zJoKm1e2k
+         rfHHSBW3H0sbEiZ7DhZi/BOA2v88B5yAgm81FRefZ3zOF05F4G6pgtzEFwrLscO9cUAf
+         FVocNlApADkAIjQkt3xFFSIf5s4MHCC3q9CP2G375qRs+k4YOh+fnljd/9cAN8s8OnQ0
+         QTLSclfO/UrNQEAaDESPVOmtdJWCdOWBqf1Ai1NgLgrcPfWbex86VT+fOnxNIS5EgxVk
+         JK9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=yGLR6xNG+EYYtfDb7lbxKBZj+jJrNHmzm6mpt8yzHcc=;
-        b=uewojiK0ATntspSu3MF7IJkBJZ78WdT09Bp5UWMrojN/FmRVWGKliwKppab2QqPUOI
-         S0hMHmg0qDNHcPe+aVw+0t9r0WzGWCddNxQGW/qWijw7yP+Jy3OQovgngCnnIVEABm49
-         aPAy8Jcli3k306TOPzUb8T80sBF1UX8KL6rsS8n5JjIos775Pv2OKWXgzC0VwUFGDo8l
-         JIX/Z5hDkO3Fig8D2kHujf86vCl+utWsrv+3oLCgD53ntMroPrcgb9boNikjbWkZ1Ibo
-         peVU5kPsZxGpUy5M+kl6+eD15nI52BCCeUKnFlzuBkJ93+m3dZ76YXXDdKZ0CdFuzeKV
-         RwdA==
-X-Gm-Message-State: AHPjjUju/LCfIhJ0eq6dWIywdxc2gBygHvUAq+sgZHIz8bTGGG4yUIks
-	eGTZe85jOv4h+g==
-X-Google-Smtp-Source: ADKCNb7nC/j3OJhrcldiKHQDEhflVO0v8cM9SIoKkkjPA0E5U/cIHpauE6Quw49q1eP0AqbG3baYPw==
-X-Received: by 10.84.247.135 with SMTP id o7mr6578695pll.150.1504953407122;
-        Sat, 09 Sep 2017 03:36:47 -0700 (PDT)
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from harryPotter.iitr.ernet.in ([103.37.201.122])
-        by smtp.gmail.com with ESMTPSA id c2sm7203185pgq.61.2017.09.09.03.36.44
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 09 Sep 2017 03:36:46 -0700 (PDT)
-From: Harsha Sharma <harshasharmaiitr@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	linux-fbdev@vger.kernel.org,
-	Harsha Sharma <harshasharmaiitr@gmail.com>
-Subject: [PATCH] staging: sm750fb: Remove extra blank lines
-Date: Sat,  9 Sep 2017 16:04:47 +0530
-Message-Id: <1504953287-14740-1-git-send-email-harshasharmaiitr@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=hHRLpxzxwknzgO9qFe1qaaczsLZcpvaiID30i9Yn6BM=;
+        b=k5y33/sgvJJmzjyL6/JL2n/H4NI85ShKRcwZ3qx/eUczmlM4zjcPKv+5xnWbbo9X4h
+         YX1+BG3vAkMi2LHAohe+FyhEUM2+rgHFG4eJGAb0T704Jl4uh6tf04+4+BXJk6Cevq2h
+         cgQXV3tEU2gbBUsmmit4osL9mMZCUk/jk6NSpOZRcNZXhw33Z6TUjqGQmp7srE+jP1Fm
+         MPwCi84+eUQIkidbuxBAl9kpTIwdpcLCn1yLtty3a44A/E93qIUWlEuaBQc9Z3xwu6XP
+         EfwwI8FXMoqAHI0ucmvLGhVntn4RHvT+5RxMYBT/YxyMrZvJ2avW8GSzgYMuFPsyw7cP
+         ZZUQ==
+X-Gm-Message-State: AFeK/H0Gv37t17m2xeALZ+gypRzQNHRtvfbUmYOvBs7b+Dni0qn3mFNzu6a6arG1QnHQcPTD1FiWr4gZSDvTBw==
+X-Received: by 10.31.207.65 with SMTP id f62mr9701429vkg.8.1489947195936; Sun,
+ 19 Mar 2017 11:13:15 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.103.75.7 with HTTP; Sun, 19 Mar 2017 11:13:15 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.20.1703191854260.2094@hadrien>
+References: <20170319175133.GA19710@singhal-Inspiron-5558> <alpine.DEB.2.20.1703191854260.2094@hadrien>
+From: SIMRAN SINGHAL <singhalsimran0@gmail.com>
+Date: Sun, 19 Mar 2017 23:43:15 +0530
+Message-ID: <CALrZqyPho34bWsHEuwpXv3FrkZb1knf3w0x-m+8rz6QGxV1O1A@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: impedance-analyzer: ad5933:
+ Remove unnecessary goto
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Lars-Peter Clausen <lars@metafoo.de>, Michael Hennerich <Michael.Hennerich@analog.com>, 
+	Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>, 
+	Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	linux-iio@vger.kernel.org, devel@driverdev.osuosl.org, 
+	linux-kernel@vger.kernel.org, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-This was reported by checkpatch.pl
+On Sun, Mar 19, 2017 at 11:26 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+> On Sun, 19 Mar 2017, simran singhal wrote:
+>
+>> Remove unnecessary goto.
+>>
+>> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+>> ---
+>>  drivers/staging/iio/impedance-analyzer/ad5933.c | 10 ++++------
+>>  1 file changed, 4 insertions(+), 6 deletions(-)
+>>
+>> diff --git a/drivers/staging/iio/impedance-analyzer/ad5933.c b/drivers/staging/iio/impedance-analyzer/ad5933.c
+>> index 297665d..c9ed2ac 100644
+>> --- a/drivers/staging/iio/impedance-analyzer/ad5933.c
+>> +++ b/drivers/staging/iio/impedance-analyzer/ad5933.c
+>> @@ -663,12 +663,12 @@ static void ad5933_work(struct work_struct *work)
+>>               ad5933_cmd(st, AD5933_CTRL_START_SWEEP);
+>>               st->state = AD5933_CTRL_START_SWEEP;
+>>               schedule_delayed_work(&st->work, st->poll_time_jiffies);
+>> -             goto out;
+>> +             mutex_unlock(&indio_dev->mlock);
+>
+> This is not correct.  The code at the end of the function implicitly does
+> a return, which has disappeared in the change.  You could add a return to
+> each place wher you have put a mutex_unlock, but I think that the code was
+> better off as it was.  It's microscopically less error prone to have this
+> cleanup code in only one place.
+>
+OOPS!! This is totally wrong.
+Sorry for this.
 
-Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
----
- drivers/staging/sm750fb/sm750_cursor.c | 4 ----
- 1 file changed, 4 deletions(-)
-
-diff --git a/drivers/staging/sm750fb/sm750_cursor.c b/drivers/staging/sm750fb/sm750_cursor.c
-index aa47a16..6b27b06 100644
---- a/drivers/staging/sm750fb/sm750_cursor.c
-+++ b/drivers/staging/sm750fb/sm750_cursor.c
-@@ -18,8 +18,6 @@
- #include "sm750.h"
- #include "sm750_cursor.h"
- 
--
--
- #define poke32(addr, data) \
- writel((data), cursor->mmio + (addr))
- 
-@@ -45,7 +43,6 @@
- #define HWC_COLOR_3                         0xC
- #define HWC_COLOR_3_RGB565_MASK             0xffff
- 
--
- /* hw_cursor_xxx works for voyager,718 and 750 */
- void sm750_hw_cursor_enable(struct lynx_cursor *cursor)
- {
-@@ -134,7 +131,6 @@ void sm750_hw_cursor_setData(struct lynx_cursor *cursor, u16 rop,
- 	}
- }
- 
--
- void sm750_hw_cursor_setData2(struct lynx_cursor *cursor, u16 rop,
- 			      const u8 *pcol, const u8 *pmsk)
- {
--- 
-1.9.1
-
+> julia
+>
+>>       }
+>>
+>>       ret = ad5933_i2c_read(st->client, AD5933_REG_STATUS, 1, &status);
+>>       if (ret)
+>> -             goto out;
+>> +             mutex_unlock(&indio_dev->mlock);
+>>
+>>       if (status & AD5933_STAT_DATA_VALID) {
+>>               int scan_count = bitmap_weight(indio_dev->active_scan_mask,
+>> @@ -678,7 +678,7 @@ static void ad5933_work(struct work_struct *work)
+>>                               AD5933_REG_REAL_DATA : AD5933_REG_IMAG_DATA,
+>>                               scan_count * 2, (u8 *)buf);
+>>               if (ret)
+>> -                     goto out;
+>> +                     mutex_unlock(&indio_dev->mlock);
+>>
+>>               if (scan_count == 2) {
+>>                       val[0] = be16_to_cpu(buf[0]);
+>> @@ -690,7 +690,7 @@ static void ad5933_work(struct work_struct *work)
+>>       } else {
+>>               /* no data available - try again later */
+>>               schedule_delayed_work(&st->work, st->poll_time_jiffies);
+>> -             goto out;
+>> +             mutex_unlock(&indio_dev->mlock);
+>>       }
+>>
+>>       if (status & AD5933_STAT_SWEEP_DONE) {
+>> @@ -703,8 +703,6 @@ static void ad5933_work(struct work_struct *work)
+>>               ad5933_cmd(st, AD5933_CTRL_INC_FREQ);
+>>               schedule_delayed_work(&st->work, st->poll_time_jiffies);
+>>       }
+>> -out:
+>> -     mutex_unlock(&indio_dev->mlock);
+>>  }
+>>
+>>  static int ad5933_probe(struct i2c_client *client,
+>> --
+>> 2.7.4
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170319175133.GA19710%40singhal-Inspiron-5558.
+>> For more options, visit https://groups.google.com/d/optout.
+>>
 
