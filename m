@@ -1,117 +1,124 @@
 X-GM-THRID: 6399268904363884544
-X-Received: by 10.25.67.80 with SMTP id m16mr2936921lfj.27.1489946168456;
-        Sun, 19 Mar 2017 10:56:08 -0700 (PDT)
+X-Received: by 10.157.21.37 with SMTP id u34mr11492126otf.40.1489945897402;
+        Sun, 19 Mar 2017 10:51:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.87.14 with SMTP id l14ls1080835ljb.38.gmail; Sun, 19 Mar
- 2017 10:56:07 -0700 (PDT)
-X-Received: by 10.25.67.80 with SMTP id m16mr2936917lfj.27.1489946167092;
-        Sun, 19 Mar 2017 10:56:07 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id 82si657877wmg.3.2017.03.19.10.56.06
+Received: by 10.107.162.197 with SMTP id l188ls3133700ioe.23.gmail; Sun, 19
+ Mar 2017 10:51:36 -0700 (PDT)
+X-Received: by 10.107.146.215 with SMTP id u206mr6377370iod.29.1489945896494;
+        Sun, 19 Mar 2017 10:51:36 -0700 (PDT)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id 2si2304568pfx.8.2017.03.19.10.51.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 19 Mar 2017 10:56:07 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Sun, 19 Mar 2017 10:51:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.36,189,1486422000"; 
-   d="scan'208";a="217270056"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 19 Mar 2017 18:56:05 +0100
-Date: Sun, 19 Mar 2017 18:56:05 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: simran singhal <singhalsimran0@gmail.com>
-cc: lars@metafoo.de, Michael.Hennerich@analog.com, jic23@kernel.org, 
-    Hartmut Knaack <knaack.h@gmx.de>, 
-    Peter Meerwald-Stadler <pmeerw@pmeerw.net>, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-iio@vger.kernel.org, 
-    devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
-    outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: impedance-analyzer: ad5933:
- Remove unnecessary goto
-In-Reply-To: <20170319175133.GA19710@singhal-Inspiron-5558>
-Message-ID: <alpine.DEB.2.20.1703191854260.2094@hadrien>
-References: <20170319175133.GA19710@singhal-Inspiron-5558>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x242.google.com with SMTP id p189so8749698pfp.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 19 Mar 2017 10:51:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=g58Vw87JGqcUPNM+50YvbewJMnlR0Yfg9PUE7Rt9kQQ=;
+        b=O9mP//GpqYoX3sCBIb8D0mtwpiz1pZpKunvtIQPjHdl58yTBtrqytcNQcAK7lKkhS2
+         nVDmLu0qoX+k30p+teXWdr4D5UQWiUu3B46GK36pIzE5cuYgJDqTUf5K0zjfLKZI/kT1
+         sJLILQLkli/3i+OCPVQobehZYcxveSiAcOCWyMdzJns1oZ9R8FOxR1YVyyJuR/wvn6YR
+         /0lCa4F6GN2Vak0zPHq/lI0pD3Bh7YCHoDWWqECVZMb6xmxp6jN4c4ypLCHJN27gup/u
+         TDY00iondq7mtxw+461jLACqx0SEcUKJcUCX2KY6xkDNSrbTave66FjgfyGgm1rNhmyq
+         nXRA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=g58Vw87JGqcUPNM+50YvbewJMnlR0Yfg9PUE7Rt9kQQ=;
+        b=BacMzy1F/WZ6YKYCHTyJ3N+OIZVqjY+OZ+doqG3SWdOThhQf6asGWKMIYFMAxrNvxM
+         qtFOjBRpZmV5QqNSOTlgc28SlJ9uGo9ZfQ3IjZpGgTMngXQvb1quPqbL4z6V4VS3C379
+         gmveveZHcg/RIMvSeCXXqJEoetoyFZjlUxGfFzQPui1Fmxly1dAWX1rGIoE9feQIIDXR
+         hhM4OU1h7kPc6TKNS+ccJvQfHKIsPPykiC8qpqCNS3OGRnBfdFSBklobJ9EkvnilNPhJ
+         wwAzjHrPYqJ1RaQWToEeUb+Tpw/SM+J/AzCT1eHNWLSzbpJtMFQo61Itq5ms5nMsVT0f
+         Ng8A==
+X-Gm-Message-State: AFeK/H2tN/G/vWVPjPp0xX8ViGrIa+C/sw8yhlWxsYrtEtM4s7FGdxiRvh12KdyT4IFfHA==
+X-Received: by 10.84.196.164 with SMTP id l33mr34913156pld.0.1489945896268;
+        Sun, 19 Mar 2017 10:51:36 -0700 (PDT)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from singhal-Inspiron-5558 ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id g64sm28303390pfc.57.2017.03.19.10.51.34
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 19 Mar 2017 10:51:35 -0700 (PDT)
+Date: Sun, 19 Mar 2017 23:21:33 +0530
+From: simran singhal <singhalsimran0@gmail.com>
+To: lars@metafoo.de
+Cc: Michael.Hennerich@analog.com, jic23@kernel.org,
+	Hartmut Knaack <knaack.h@gmx.de>,
+	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: impedance-analyzer: ad5933: Remove unnecessary goto
+Message-ID: <20170319175133.GA19710@singhal-Inspiron-5558>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
+Remove unnecessary goto.
 
+Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+---
+ drivers/staging/iio/impedance-analyzer/ad5933.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
 
-On Sun, 19 Mar 2017, simran singhal wrote:
+diff --git a/drivers/staging/iio/impedance-analyzer/ad5933.c b/drivers/staging/iio/impedance-analyzer/ad5933.c
+index 297665d..c9ed2ac 100644
+--- a/drivers/staging/iio/impedance-analyzer/ad5933.c
++++ b/drivers/staging/iio/impedance-analyzer/ad5933.c
+@@ -663,12 +663,12 @@ static void ad5933_work(struct work_struct *work)
+ 		ad5933_cmd(st, AD5933_CTRL_START_SWEEP);
+ 		st->state = AD5933_CTRL_START_SWEEP;
+ 		schedule_delayed_work(&st->work, st->poll_time_jiffies);
+-		goto out;
++		mutex_unlock(&indio_dev->mlock);
+ 	}
+ 
+ 	ret = ad5933_i2c_read(st->client, AD5933_REG_STATUS, 1, &status);
+ 	if (ret)
+-		goto out;
++		mutex_unlock(&indio_dev->mlock);
+ 
+ 	if (status & AD5933_STAT_DATA_VALID) {
+ 		int scan_count = bitmap_weight(indio_dev->active_scan_mask,
+@@ -678,7 +678,7 @@ static void ad5933_work(struct work_struct *work)
+ 				AD5933_REG_REAL_DATA : AD5933_REG_IMAG_DATA,
+ 				scan_count * 2, (u8 *)buf);
+ 		if (ret)
+-			goto out;
++			mutex_unlock(&indio_dev->mlock);
+ 
+ 		if (scan_count == 2) {
+ 			val[0] = be16_to_cpu(buf[0]);
+@@ -690,7 +690,7 @@ static void ad5933_work(struct work_struct *work)
+ 	} else {
+ 		/* no data available - try again later */
+ 		schedule_delayed_work(&st->work, st->poll_time_jiffies);
+-		goto out;
++		mutex_unlock(&indio_dev->mlock);
+ 	}
+ 
+ 	if (status & AD5933_STAT_SWEEP_DONE) {
+@@ -703,8 +703,6 @@ static void ad5933_work(struct work_struct *work)
+ 		ad5933_cmd(st, AD5933_CTRL_INC_FREQ);
+ 		schedule_delayed_work(&st->work, st->poll_time_jiffies);
+ 	}
+-out:
+-	mutex_unlock(&indio_dev->mlock);
+ }
+ 
+ static int ad5933_probe(struct i2c_client *client,
+-- 
+2.7.4
 
-> Remove unnecessary goto.
->
-> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
-> ---
->  drivers/staging/iio/impedance-analyzer/ad5933.c | 10 ++++------
->  1 file changed, 4 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/staging/iio/impedance-analyzer/ad5933.c b/drivers/staging/iio/impedance-analyzer/ad5933.c
-> index 297665d..c9ed2ac 100644
-> --- a/drivers/staging/iio/impedance-analyzer/ad5933.c
-> +++ b/drivers/staging/iio/impedance-analyzer/ad5933.c
-> @@ -663,12 +663,12 @@ static void ad5933_work(struct work_struct *work)
->  		ad5933_cmd(st, AD5933_CTRL_START_SWEEP);
->  		st->state = AD5933_CTRL_START_SWEEP;
->  		schedule_delayed_work(&st->work, st->poll_time_jiffies);
-> -		goto out;
-> +		mutex_unlock(&indio_dev->mlock);
-
-This is not correct.  The code at the end of the function implicitly does
-a return, which has disappeared in the change.  You could add a return to
-each place wher you have put a mutex_unlock, but I think that the code was
-better off as it was.  It's microscopically less error prone to have this
-cleanup code in only one place.
-
-julia
-
->  	}
->
->  	ret = ad5933_i2c_read(st->client, AD5933_REG_STATUS, 1, &status);
->  	if (ret)
-> -		goto out;
-> +		mutex_unlock(&indio_dev->mlock);
->
->  	if (status & AD5933_STAT_DATA_VALID) {
->  		int scan_count = bitmap_weight(indio_dev->active_scan_mask,
-> @@ -678,7 +678,7 @@ static void ad5933_work(struct work_struct *work)
->  				AD5933_REG_REAL_DATA : AD5933_REG_IMAG_DATA,
->  				scan_count * 2, (u8 *)buf);
->  		if (ret)
-> -			goto out;
-> +			mutex_unlock(&indio_dev->mlock);
->
->  		if (scan_count == 2) {
->  			val[0] = be16_to_cpu(buf[0]);
-> @@ -690,7 +690,7 @@ static void ad5933_work(struct work_struct *work)
->  	} else {
->  		/* no data available - try again later */
->  		schedule_delayed_work(&st->work, st->poll_time_jiffies);
-> -		goto out;
-> +		mutex_unlock(&indio_dev->mlock);
->  	}
->
->  	if (status & AD5933_STAT_SWEEP_DONE) {
-> @@ -703,8 +703,6 @@ static void ad5933_work(struct work_struct *work)
->  		ad5933_cmd(st, AD5933_CTRL_INC_FREQ);
->  		schedule_delayed_work(&st->work, st->poll_time_jiffies);
->  	}
-> -out:
-> -	mutex_unlock(&indio_dev->mlock);
->  }
->
->  static int ad5933_probe(struct i2c_client *client,
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170319175133.GA19710%40singhal-Inspiron-5558.
-> For more options, visit https://groups.google.com/d/optout.
->
 
