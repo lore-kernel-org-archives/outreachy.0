@@ -1,90 +1,90 @@
-X-GM-THRID: 6391489857245413376
-X-Received: by 10.99.245.15 with SMTP id w15mr5193443pgh.63.1488134697482;
-        Sun, 26 Feb 2017 10:44:57 -0800 (PST)
+X-GM-THRID: 6399255849068396544
+X-Received: by 10.176.69.197 with SMTP id u63mr303732uau.36.1489942858227;
+        Sun, 19 Mar 2017 10:00:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.21.124 with SMTP id z57ls12083912otz.38.gmail; Sun, 26 Feb
- 2017 10:44:57 -0800 (PST)
-X-Received: by 10.200.48.85 with SMTP id g21mr2525030qte.47.1488134697150;
-        Sun, 26 Feb 2017 10:44:57 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id s64si2737763pfk.0.2017.02.26.10.44.57
+Received: by 10.36.121.200 with SMTP id z191ls1613140itc.5.gmail; Sun, 19 Mar
+ 2017 10:00:57 -0700 (PDT)
+X-Received: by 10.99.161.10 with SMTP id b10mr13146110pgf.159.1489942857343;
+        Sun, 19 Mar 2017 10:00:57 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id r66si2214499pfb.7.2017.03.19.10.00.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 26 Feb 2017 10:44:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Sun, 19 Mar 2017 10:00:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id s67so10136143pgb.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 26 Feb 2017 10:44:57 -0800 (PST)
+Received: by mail-pf0-x241.google.com with SMTP id n11so2860745pfg.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 19 Mar 2017 10:00:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:mime-version:content-disposition
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=H59pBWXIkByNYczJes/KooGsFx9DbgHb+DAOYxmIKTc=;
-        b=B2Oa/WPhEBsd5lP7ONJs8F+xI3EQtZ3kbBzkq3dTWwys3mop0n6rMIZZf0SjBwXX2K
-         lB+cqGuV+zX0O8rfRGiUQsdMndGkvD4H4BiHzPWzYDa0JnZLJ034jQW+UmZoelQTWX2+
-         sEUrc7HgHk7zQvNAc/6ybj9h/thDBPfwksPDJKB8J2Rjl8HvaRf5GmJ1QWRk/rF76Ld7
-         f6QzZeeWfV4axiN1JGR3s89ONgwXZuaB28aoKcSLY12CreCirhpFIDbTKxkLUt3CPc+w
-         U4yCRyj4jMWpGxOqOgU0QUk8WC5ycpE1pcHDgceoV5POKqMyeEY053GOxQsx0Q8yVBuw
-         c0vA==
+        bh=r+y5x5rJrKgzSQgYnwxDrsICJpiQNYPH7aqSuIaJwfs=;
+        b=C46YxHChPaJZPHSypLQPOT9gG5fF7LVzKK2KMmq8IKqwCSNFEGD/9HWp/fbqHX77tx
+         ADcH7Dk2nro3DuzGciwC7wfLmvr7c8tMqp5yq7BocFzyhGBWLp48SqHo2Xt6VlgkC4KW
+         nMFMURNcT3iHR83Iy3oDgUTDnMIDO+TDk38oMm87f/Ui/3z7dqQJrC1jbdZ19gU9NTjO
+         JSejt5vSa/G6f6L7SfX/SLAUYJxuARa5yNJTx0FopREazOh6/8R8ZdHA2xvGAHbaAtvC
+         Gt21rnM1UeffKHQQhY9XZ7N/oQcgfqusnxazh+hSV7MgGrOfTxMCJ5ahdg9a8ipPI4ig
+         kWew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=H59pBWXIkByNYczJes/KooGsFx9DbgHb+DAOYxmIKTc=;
-        b=kfW70QSvKX9v2oS4hA1Y3kEPbtIYrvq2Htgtub1nVh+ixGwh2titjEaFP6Bpiszk7T
-         zVT/9O52Ym5974xwQiaRYmamltrY8oO9JLok04X0BMTOHRNO55BdLTQIxUnb5ZMAJcqK
-         sPl53l8FhecXYHGCJuwdnO10+LXCFDKbeuZjtV31UFf+JARU/+IFbScht+m7HKwv0S+4
-         zP9phSUqMedD0Dramg0a3zoYgkGioa8A4eJ3OuYhz1y5njlcbZXucIyK4nUfT/zaw9iY
-         uNeupvBZxAtgnoZ/MIa/rOWaMcnXPQqLVSe1Q4U45rvhUpvsWMZaoTxRK/wZ/6qbwYQh
-         Yulw==
-X-Gm-Message-State: AMke39nZKZ5ulXYS+KPKJ+q0Bp+htA33EhfmF5cZWKrYlWMDHHUBZ71LUjznIpb757OT4g==
-X-Received: by 10.99.124.75 with SMTP id l11mr16449986pgn.46.1488134696804;
-        Sun, 26 Feb 2017 10:44:56 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([117.192.145.221])
-        by smtp.gmail.com with ESMTPSA id t6sm26115065pgt.8.2017.02.26.10.44.55
+        bh=r+y5x5rJrKgzSQgYnwxDrsICJpiQNYPH7aqSuIaJwfs=;
+        b=a5dAOa0wGSeMYfbE8Go8UYBONqHxLlbnYNiEddb5s8AdoUj/521iwajc07dnEOzZSr
+         eW18bi16Zq8oE5/8SEWXWNoToTOOey9EROQ9O3BMtz13dgZH1+dNUjTWI8m0+zU7qAPY
+         HCAXYCoPprIYGk+rmlMaDk1ppLPc3iJYWVx5cwfXiLJqqLZxn4AtP9IetTC0K8fxzwJL
+         kWwv+Z8AmL4QYyMvkQ2QCETpbvzqEvvEfAiGiXLq0CSOwmkqQPnbghWOXrMDoqMcBk1a
+         AzDlMDA20I6h8r5zK5PBhAHlwPXeAl4E20FwmcZFtXC4TrwU0TbBaIWgNLZ/OfLPFrcr
+         IdNQ==
+X-Gm-Message-State: AFeK/H0DAksoGX8HIRT4VQE7ZReNZOnKxCir1DL3od0bIizDsFfWFtbMXFawczyEVKCOpQ==
+X-Received: by 10.98.69.86 with SMTP id s83mr28687827pfa.232.1489942857128;
+        Sun, 19 Mar 2017 10:00:57 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id 73sm28154686pfh.56.2017.03.19.10.00.54
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 26 Feb 2017 10:44:56 -0800 (PST)
-Message-ID: <58b32228.062d630a.823da.79a9@mx.google.com>
-X-Google-Original-Message-ID: <20170226184452.GA30297@<rvarsha016@gmail.com>>
-Date: Mon, 27 Feb 2017 00:14:52 +0530
-From: Varsha Rao <rvarsha016@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: emxx_udc: Add comment for spinlock_t definition.
+        Sun, 19 Mar 2017 10:00:55 -0700 (PDT)
+Date: Sun, 19 Mar 2017 22:30:51 +0530
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+To: w.d.hubbs@gmail.com
+Cc: Chris Brannon <chris@the-brannons.com>, Kirk Reiser <kirk@reisers.ca>,
+	Samuel Thibault <samuel.thibault@ens-lyon.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	speakup@linux-speakup.org, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: speakup: Removed Unnecessary parentheses.
+Message-ID: <20170319170051.GA20533@arushi-HP-Pavilion-Notebook>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.7.1 (2016-10-04)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Added comment for spinlock_t definition, to fix the following checkpatch
-issue:
+Unnecessary parentheses are removed to improve readability.
 
-CHECK: spinlock_t definition without comment
-
-Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
+Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
 ---
- drivers/staging/emxx_udc/emxx_udc.h | 2 +-
+ drivers/staging/speakup/kobjects.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/emxx_udc/emxx_udc.h b/drivers/staging/emxx_udc/emxx_udc.h
-index 789bfb9..78c08e1 100644
---- a/drivers/staging/emxx_udc/emxx_udc.h
-+++ b/drivers/staging/emxx_udc/emxx_udc.h
-@@ -567,7 +567,7 @@ struct nbu2ss_udc {
- 	struct usb_gadget_driver *driver;
- 	struct platform_device *pdev;
- 	struct device *dev;
--	spinlock_t lock;
-+	spinlock_t lock; /* Protects nbu2ss_udc structure fields */
- 	struct completion		*pdone;
- 
- 	enum ep0_state			ep0state;
+diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
+index afb61e153592..ca85476e3ff7 100644
+--- a/drivers/staging/speakup/kobjects.c
++++ b/drivers/staging/speakup/kobjects.c
+@@ -392,7 +392,7 @@ static ssize_t synth_store(struct kobject *kobj, struct kobj_attribute *attr,
+ 		len--;
+ 	new_synth_name[len] = '\0';
+ 	spk_strlwr(new_synth_name);
+-	if (synth && (!strcmp(new_synth_name, synth->name))) {
++	if (synth && !strcmp(new_synth_name, synth->name)) {
+ 		pr_warn("%s already in use\n", new_synth_name);
+ 	} else if (synth_init(new_synth_name) != 0) {
+ 		pr_warn("failed to init synth %s\n", new_synth_name);
 -- 
-2.9.3
+2.11.0
 
 
