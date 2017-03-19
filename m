@@ -1,149 +1,291 @@
 X-GM-THRID: 6396604644937695232
-X-Received: by 10.157.24.27 with SMTP id b27mr11635047ote.36.1489946594329;
-        Sun, 19 Mar 2017 11:03:14 -0700 (PDT)
+X-Received: by 10.99.185.66 with SMTP id v2mr13281175pgo.94.1489929405916;
+        Sun, 19 Mar 2017 06:16:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.1.17 with SMTP id 17ls11200149otu.16.gmail; Sun, 19 Mar
- 2017 11:03:13 -0700 (PDT)
-X-Received: by 10.129.152.151 with SMTP id p145mr13725727ywg.119.1489946593940;
-        Sun, 19 Mar 2017 11:03:13 -0700 (PDT)
+Received: by 10.107.128.74 with SMTP id b71ls3183144iod.32.gmail; Sun, 19 Mar
+ 2017 06:16:45 -0700 (PDT)
+X-Received: by 10.99.167.73 with SMTP id w9mr12930381pgo.102.1489929404976;
+        Sun, 19 Mar 2017 06:16:44 -0700 (PDT)
 Return-Path: <gs051095@gmail.com>
-Received: from mail-it0-x244.google.com (mail-it0-x244.google.com. [2607:f8b0:4001:c0b::244])
-        by gmr-mx.google.com with ESMTPS id f73si689230ita.1.2017.03.19.11.03.13
+Received: from mail-it0-x242.google.com (mail-it0-x242.google.com. [2607:f8b0:4001:c0b::242])
+        by gmr-mx.google.com with ESMTPS id 125si960856ite.0.2017.03.19.06.16.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 19 Mar 2017 11:03:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:4001:c0b::244 as permitted sender) client-ip=2607:f8b0:4001:c0b::244;
+        Sun, 19 Mar 2017 06:16:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:4001:c0b::242 as permitted sender) client-ip=2607:f8b0:4001:c0b::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:4001:c0b::244 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
+       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:4001:c0b::242 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-it0-x244.google.com with SMTP id 190so2508913itm.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 19 Mar 2017 11:03:13 -0700 (PDT)
+Received: by mail-it0-x242.google.com with SMTP id y18so12224529itc.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 19 Mar 2017 06:16:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=mime-version:in-reply-to:references:from:date:message-id:subject:to
          :cc;
-        bh=mNsBhA1RKgPFcXOTz2gIQRvVMZSs/gdE69rUpq3LUIQ=;
-        b=NWPeuNdL00nvhF1R29EkALypyYEwbqT7YR8hlZ47mIJJ6y4IKoLjMYbqc1UkfWSo+O
-         Iu7SFPVCy3xvVN4TDTbP4uJDOssKypITU+DJf/mxPL7grroKZ3VUR+50e+ZDwNQHyfWy
-         YF0Wxg8gYwcYFFjMn4IShr/EFcx+2SEDBIB5nemXroqB2WxJrOkhaKFPQeHer96EqdDj
-         bAE4nf/8E8ZAluDiPLUJCB/KJOkWBfiPfhF/48+1CTFWYRDZGgAHQbacOWvhYeh7M+pA
-         M0Ibqe3DS0iv03U4YiXBnORtJ/7vPiH0D/0lnEXK4ZAxER6QO0jZTsS8fpja5m1GXXkR
-         FLnQ==
+        bh=63ygDG/MkIVRTWotQt9plFSx5u2nIvze9hq9+PI9BQg=;
+        b=dqV2h3vNPJ4htOqgPQjgG688VxmvBdOSt/+hVSC2k7n+6uImhyYrSOMcvCpvRtGuVF
+         hDiPd1RehPt4FqYV2u+b079ZgBX4fTLFM2fFFtcee4VwYF1LShLTfocJPDBJlGQ91uM+
+         zCGehIZpslT5+bIM4b8pllRCAlaIuyDj+6z/BPccyYLcNqufqcr8H1qR6TXkwIGcae4r
+         qEPui8N699Cq6rdl6PcPWCM5VV+gsZae3Cme4HfJwPItidUZxXzzVeEiij/XoXkz2/1A
+         TCFGCNH/VYehBeLPz+2ZLJgQMBNm7qym5EUA5XBnQ3TSrP2ufFgDe8OJFON0ztfeuxNp
+         hsvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:in-reply-to:references:from:date
          :message-id:subject:to:cc;
-        bh=mNsBhA1RKgPFcXOTz2gIQRvVMZSs/gdE69rUpq3LUIQ=;
-        b=ipmR2kx8xqAifL+RdUNffs8XKhq03OeB6ya9L7s9lAIhS0Go8hmvTOlEj/rPAc3ZMN
-         4ZzAMyO9Pxi7z2gRKStWQmudU5ITFDKl+fXuXf0vj/2bcKA17f4o1jcrBAoa6Aq3FBKB
-         Hqy9Ec7fWBFCY1+uPTfOYvmmeeL1vKBi/Ht8qOY2UYUEIbwxKW2Qzf9cncx2kS6lYyxX
-         7m6YO+IiBRHyInUiVFu85WuBjPHaaqv6Y+c009nacOvSkNUb/08OsmVmyKz9StlFZwfT
-         VW12WrvO7Ppy6w8V4pGIeCAusf4sLpSzCqlKa40pzObjYgfqz3k5AQFYYuSPbyGdmV6s
-         ErZQ==
-X-Gm-Message-State: AFeK/H1pyVfI+MQm7EYFAqPYOXLUPXpiqVnDaJTZ31UdZY9GBrWdfrXfcmrrLDPlte0G9rikSGFVRo0xAxtGIw==
-X-Received: by 10.36.51.212 with SMTP id k203mr6979829itk.6.1489946593631;
- Sun, 19 Mar 2017 11:03:13 -0700 (PDT)
+        bh=63ygDG/MkIVRTWotQt9plFSx5u2nIvze9hq9+PI9BQg=;
+        b=mCJMB0XC10Q9UGoy0QUpHV/1XO1uT9vSbBntgjx5EzDN/ZMsWMs+cqOp6ZggvdSPjV
+         AUq9pOjVF+JuZ2DJGgz3eL/5a5PUdaS+btsiJ8TQI8GIcXctO6Rg70RurdB2IbFRHFVX
+         8dpe6WWnY/CZnMyx8q5DgRwfbMD6Sed5+fW2NUDg4XJkJlH5xqdL/l83ADaM6Ef/q/0I
+         15Ez+QOcCQrOfj4XY0DhseAHGfAsVoA/2peK7QXIpNFXOprPFpGrHK2F/arIl6VHlXaM
+         7z0YzoyNhxDtnbWn4lwAeiaOjBFZJobQTpXQSgzEYTO0WPPmFvKZh6piosQjKi1kKMPM
+         IijA==
+X-Gm-Message-State: AFeK/H3C63bDWB3Yiii3Sxo7cmGsRLbwgQPHUkb97dUjFwbjFVPOWiLg74VVKxZdrz7S2fL8UalArvP3/DcCxw==
+X-Received: by 10.107.8.90 with SMTP id 87mr25869486ioi.111.1489929404556;
+ Sun, 19 Mar 2017 06:16:44 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.36.103.141 with HTTP; Sun, 19 Mar 2017 11:02:43 -0700 (PDT)
-In-Reply-To: <6e55c61d-7587-4191-1fc5-de43e26986d7@metafoo.de>
+Received: by 10.36.103.141 with HTTP; Sun, 19 Mar 2017 06:16:14 -0700 (PDT)
+In-Reply-To: <e2f98c2b-8d75-4595-0634-8581403df2c0@kernel.org>
 References: <20170312133250.GA7772@singhal-Inspiron-5558> <6e55c61d-7587-4191-1fc5-de43e26986d7@metafoo.de>
+ <CAOCi2DH8xVeD8_sZtxg9jqaF_29D9zEQSBR8-pYNRAbnmESNyQ@mail.gmail.com> <e2f98c2b-8d75-4595-0634-8581403df2c0@kernel.org>
 From: Gargi Sharma <gs051095@gmail.com>
-Date: Sun, 19 Mar 2017 23:32:43 +0530
-Message-ID: <CAOCi2DHHUu9hyYtowpciDBTzB8EuGoWKdXxEBbV5i5NjXLRDPQ@mail.gmail.com>
+Date: Sun, 19 Mar 2017 18:46:14 +0530
+Message-ID: <CAOCi2DF=KQ9c4Trd_C_L8DsyeBeJehh-TCpOswgVWwsNoyz+Bg@mail.gmail.com>
 Subject: Re: [Outreachy kernel] Re: [PATCH] staging: iio: ade7753: replace
  mlock with driver private lock
-To: Lars-Peter Clausen <lars@metafoo.de>
-Cc: simran singhal <singhalsimran0@gmail.com>, 
-	Michael Hennerich <Michael.Hennerich@analog.com>, Jonathan Cameron <jic23@kernel.org>, 
-	Hartmut Knaack <knaack.h@gmx.de>, Pete Meerwald-Stadler <pmeerw@pmeerw.net>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-iio@vger.kernel.org, 
-	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
-	outreachy-kernel@googlegroups.com
+To: Jonathan Cameron <jic23@kernel.org>
+Cc: Lars-Peter Clausen <lars@metafoo.de>, simran singhal <singhalsimran0@gmail.com>, 
+	Michael Hennerich <Michael.Hennerich@analog.com>, Hartmut Knaack <knaack.h@gmx.de>, 
+	Pete Meerwald-Stadler <pmeerw@pmeerw.net>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	linux-iio@vger.kernel.org, devel@driverdev.osuosl.org, 
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
 Content-Type: text/plain; charset=UTF-8
 
-On Mon, Mar 13, 2017 at 5:30 PM, Lars-Peter Clausen <lars@metafoo.de> wrote:
-> On 03/12/2017 02:32 PM, simran singhal wrote:
->> The IIO subsystem is redefining iio_dev->mlock to be used by
->> the IIO core only for protecting device operating mode changes.
->> ie. Changes between INDIO_DIRECT_MODE, INDIO_BUFFER_* modes.
+On Sun, Mar 19, 2017 at 4:01 PM, Jonathan Cameron <jic23@kernel.org> wrote:
+> On 17/03/17 09:32, Gargi Sharma wrote:
+>> On Mon, Mar 13, 2017 at 5:30 PM, Lars-Peter Clausen <lars@metafoo.de> wrote:
+>>>
+>>> On 03/12/2017 02:32 PM, simran singhal wrote:
+>>>> The IIO subsystem is redefining iio_dev->mlock to be used by
+>>>> the IIO core only for protecting device operating mode changes.
+>>>> ie. Changes between INDIO_DIRECT_MODE, INDIO_BUFFER_* modes.
+>>>>
+>>>> In this driver, mlock was being used to protect hardware state
+>>>> changes.  Replace it with a lock in the devices global data.
+>>>>
+>>>> Fix some coding style issues related to white space also.
+>>>>
+>>>> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+>>>> ---
+>>>>  drivers/staging/iio/meter/ade7753.c | 14 ++++++++------
+>>>>  1 file changed, 8 insertions(+), 6 deletions(-)
+>>>>
+>>>> diff --git a/drivers/staging/iio/meter/ade7753.c b/drivers/staging/iio/meter/ade7753.c
+>>>> index dfd8b71..ca99d82 100644
+>>>> --- a/drivers/staging/iio/meter/ade7753.c
+>>>> +++ b/drivers/staging/iio/meter/ade7753.c
+>>>> @@ -81,12 +81,14 @@
+>>>>   * @tx:         transmit buffer
+>>>>   * @rx:         receive buffer
+>>>>   * @buf_lock:       mutex to protect tx and rx
+>>>> + * @lock:    protect sensor state
+>>>
+>>> It might make sense to reuse the existing lock which currently protects the
+>>> read/write functions. You can do this by introducing a variant of
+>>> ade7753_spi_{read,write}_reg_16() that does not take a lock and use these to
+>>> implement the read-modify-write cycle in a protected section.
 >>
->> In this driver, mlock was being used to protect hardware state
->> changes.  Replace it with a lock in the devices global data.
->>
->> Fix some coding style issues related to white space also.
->>
->> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
->> ---
->>  drivers/staging/iio/meter/ade7753.c | 14 ++++++++------
->>  1 file changed, 8 insertions(+), 6 deletions(-)
->>
->> diff --git a/drivers/staging/iio/meter/ade7753.c b/drivers/staging/iio/meter/ade7753.c
->> index dfd8b71..ca99d82 100644
->> --- a/drivers/staging/iio/meter/ade7753.c
->> +++ b/drivers/staging/iio/meter/ade7753.c
->> @@ -81,12 +81,14 @@
->>   * @tx:         transmit buffer
->>   * @rx:         receive buffer
->>   * @buf_lock:       mutex to protect tx and rx
->> + * @lock:    protect sensor state
+>> There are other read/write functions for example,
+>> ade7753_spi_{read/write}_reg_8 that use the mutex as well. Should a
+>> variant of these functions be introduced as well? Also, how does one
+>> go about implementing RMW inside a protected section.
+> Hmm. Simran has also been progressing with patches for this.
 >
-> It might make sense to reuse the existing lock which currently protects the
-> read/write functions. You can do this by introducing a variant of
-> ade7753_spi_{read,write}_reg_16() that does not take a lock and use these to
-> implement the read-modify-write cycle in a protected section.
+I was trying to work through a patch for ade7754. So ran into the same
+problem :)
+
+> You raise a good question. There are other read/modify/write sequences in
+> the driver.  They don't have the same issue with potentially deadlocking
+> against the buf lock as they are all using the spi subsystems provisions
+> for small write/read cycles where buffer protection is handled internally.
+>
+> So let us address the cases in turn:
+>
+> static int ade7753_reset(struct device *dev)
+> {
+>         u16 val;
+>         int ret;
+>
+>         ret = ade7753_spi_read_reg_16(dev, ADE7753_MODE, &val);
+>         if (ret)
+>                 return ret;
+>
+>         val |= BIT(6); /* Software Chip Reset */
+>
+>         return ade7753_spi_write_reg_16(dev, ADE7753_MODE, val);
+> }
+> This is only called in the device initialization.  At that point
+> we should be fine in assuming no parallel calls.  Crucial point
+> is it is before the call to iio_device_register which exposes
+> the userspace interfaces.
+>
+> static int ade7753_set_irq(struct device *dev, bool enable)
+> {
+>         int ret;
+>         u8 irqen;
+>
+>         ret = ade7753_spi_read_reg_8(dev, ADE7753_IRQEN, &irqen);
+>         if (ret)
+>                 goto error_ret;
+>
+>         if (enable)
+>                 irqen |= BIT(3); /* Enables an interrupt when a data is
+>                                   * present in the waveform register
+>                                   */
+>         else
+>                 irqen &= ~BIT(3);
+>
+>         ret = ade7753_spi_write_reg_8(dev, ADE7753_IRQEN, irqen);
+>
+> error_ret:
+>         return ret;
+> }
+>
+> This one is actually safe because it is the only function that
+> modifies that particular register.
+>
+> /* Power down the device */
+> static int ade7753_stop_device(struct device *dev)
+> {
+>         u16 val;
+>         int ret;
+>
+>         ret = ade7753_spi_read_reg_16(dev, ADE7753_MODE, &val);
+>         if (ret)
+>                 return ret;
+>
+>         val |= BIT(4);  /* AD converters can be turned off */
+>
+>         return ade7753_spi_write_reg_16(dev, ADE7753_MODE, val);
+> }
+>
+> Only called in remove (after userspace interfaces have been
+> removed by the iio_device_unregister call so also should not
+> be running concurrently with much else.
 >
 
-The only instance I was able to find was drivers/iio/adc/vf610_adc.c
-where read modify write cycles are present on the register
-VF610_REG_ADC_CFG. I believe writel() & readl() is used for this
-purpose.
+The only nested lock here is ade7754_spi_write_reg_16, so as long as
+that is refactored, it'll be fine.
 
-In this case, we want to write to data to a device on the SPI bus. Can
-we use writel() for this purpose?
+> So I think all the other cases are safe.  Perhaps it would have
+> been better to have had a lock around them, purely to make
+> the code more resilient against future changes though.
+> Probably a job to do as part of a larger scale pile of work
+> on that driver rather than as a one off patch.
 
-> Looking through the driver there seem to be other places as well that do
-> read-modify-write that should be protected by a lock, but currently are not.
-> This might be a good task.
+Another question that I have is why are we writing inside a read
+function(ade7754_spi_read_reg_24)?
+
+static int ade7754_spi_read_reg_24(struct device *dev,
+                                   u8 reg_address, u32 *val)
+{
+        struct iio_dev *indio_dev = dev_to_iio_dev(dev);
+        struct ade7754_state *st = iio_priv(indio_dev);
+        int ret;
+        struct spi_transfer xfers[] = {
+                {
+                        .tx_buf = st->tx,
+                        .rx_buf = st->rx,
+                        .bits_per_word = 8,
+                        .len = 4,
+                },
+        };
+
+        mutex_lock(&st->buf_lock);
+        st->tx[0] = ADE7754_READ_REG(reg_address);
+        st->tx[1] = 0;
+        st->tx[2] = 0;
+        st->tx[3] = 0;
+
+        ret = spi_sync_transfer(st->us, xfers, ARRAY_SIZE(xfers));
+        if (ret) {
+                dev_err(&st->us->dev, "problem when reading 24 bit
+register 0x%02X",
+                        reg_address);
+                goto error_ret;
+        }
+        *val = (st->rx[1] << 16) | (st->rx[2] << 8) | st->rx[3];
+
+error_ret:
+        mutex_unlock(&st->buf_lock);
+        return ret;
+}
+
+Thanks!
+Gargi
+
 >
->>   **/
->>  struct ade7753_state {
->> -         struct spi_device   *us;
->> -                 struct mutex        buf_lock;
->> -                         u8          tx[ADE7753_MAX_TX] ____cacheline_aligned;
->> -                                 u8          rx[ADE7753_MAX_RX];
->> +     struct spi_device   *us;
->> +     struct mutex        buf_lock;
->> +     struct mutex        lock;       /* protect sensor state */
->> +     u8          tx[ADE7753_MAX_TX] ____cacheline_aligned;
->> +     u8          rx[ADE7753_MAX_RX];
->>  };
+> Jonathan
+>
+>
+>
+>
+>
+>
+>
 >>
->>  static int ade7753_spi_write_reg_8(struct device *dev,
->> @@ -484,7 +486,7 @@ static ssize_t ade7753_write_frequency(struct device *dev,
->>       if (!val)
->>               return -EINVAL;
 >>
->> -     mutex_lock(&indio_dev->mlock);
->> +     mutex_lock(&st->lock);
+>>>
+>>> Looking through the driver there seem to be other places as well that do
+>>> read-modify-write that should be protected by a lock, but currently are not.
+>>> This might be a good task.
 >>
->>       t = 27900 / val;
->>       if (t > 0)
->> @@ -505,7 +507,7 @@ static ssize_t ade7753_write_frequency(struct device *dev,
->>       ret = ade7753_spi_write_reg_16(dev, ADE7753_MODE, reg);
+>> Am I right in understanding that we want to introduce mutex lock for
+>> writes in other drivers as well?
 >>
->>  out:
->> -     mutex_unlock(&indio_dev->mlock);
->> +     mutex_unlock(&st->lock);
->>
->>       return ret ? ret : len;
->>  }
+>> Thanks,
+>> Gargi
+>>>
+>>>>   **/
+>>>>  struct ade7753_state {
+>>>> -         struct spi_device   *us;
+>>>> -                 struct mutex        buf_lock;
+>>>> -                         u8          tx[ADE7753_MAX_TX] ____cacheline_aligned;
+>>>> -                                 u8          rx[ADE7753_MAX_RX];
+>>>> +     struct spi_device   *us;
+>>>> +     struct mutex        buf_lock;
+>>>> +     struct mutex        lock;       /* protect sensor state */
+>>>> +     u8          tx[ADE7753_MAX_TX] ____cacheline_aligned;
+>>>> +     u8          rx[ADE7753_MAX_RX];
+>>>>  };
+>>>>
+>>>>  static int ade7753_spi_write_reg_8(struct device *dev,
+>>>> @@ -484,7 +486,7 @@ static ssize_t ade7753_write_frequency(struct device *dev,
+>>>>       if (!val)
+>>>>               return -EINVAL;
+>>>>
+>>>> -     mutex_lock(&indio_dev->mlock);
+>>>> +     mutex_lock(&st->lock);
+>>>>
+>>>>       t = 27900 / val;
+>>>>       if (t > 0)
+>>>> @@ -505,7 +507,7 @@ static ssize_t ade7753_write_frequency(struct device *dev,
+>>>>       ret = ade7753_spi_write_reg_16(dev, ADE7753_MODE, reg);
+>>>>
+>>>>  out:
+>>>> -     mutex_unlock(&indio_dev->mlock);
+>>>> +     mutex_unlock(&st->lock);
+>>>>
+>>>>       return ret ? ret : len;
+>>>>  }
+>>>>
+>>>
+>>> --
+>> --
+>> To unsubscribe from this list: send the line "unsubscribe linux-iio" in
+>> the body of a message to majordomo@vger.kernel.org
+>> More majordomo info at  http://vger.kernel.org/majordomo-info.html
 >>
 >
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/6e55c61d-7587-4191-1fc5-de43e26986d7%40metafoo.de.
-> For more options, visit https://groups.google.com/d/optout.
 
