@@ -1,112 +1,150 @@
-X-GM-THRID: 6465881960509079552
-X-Received: by 10.129.172.99 with SMTP id z35mr13124113ywj.171.1505455458727;
-        Thu, 14 Sep 2017 23:04:18 -0700 (PDT)
+X-GM-THRID: 6399180144826646528
+X-Received: by 10.13.212.195 with SMTP id w186mr13185920ywd.105.1489926763462;
+        Sun, 19 Mar 2017 05:32:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.174.201 with SMTP id n70ls6636058ioo.53.gmail; Thu, 14 Sep
- 2017 23:04:17 -0700 (PDT)
-X-Received: by 10.101.82.9 with SMTP id o9mr14994231pgp.14.1505455457882;
-        Thu, 14 Sep 2017 23:04:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505455457; cv=none;
-        d=google.com; s=arc-20160816;
-        b=zStOwFDFEXPTB53f/9y2au1EyTVhLAAXkJQPqwAjIMHZhdzsq0j3tOjDuw0LANfYbN
-         +gTzfxUgTqLeZGpe08N6VcChFALp08r3UmhfDMhbLvYaM8UrVrOO+PKqeQbIuG8AkrmV
-         u3Nbeffj7UzevptJuwHNhPyovfU5eb1iIe2lIeE9VoKnp46ljRe7XaE4jGAJNRu2pcXq
-         CQAadwAWXbfhpLjqNoCC453jzh2bfrvXH2I/pSOqpzaXoz6xsK2h1QfFdKEGM11yR2Ah
-         tNeF5IW8s3QJhYL6yfEoeZAad29fXvFFNR5Y60Vgvnp8nM8G8VEuOjZQ0WmtXF8c3+Sl
-         zL/A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=9RTeACkRvBdJCyhV7XimV+byetSCikeDSSST98i0Ir4=;
-        b=Ot2banuAQ2ILYf6flml2aeyCEOJJmWwgUPnWML3gLCi4Z4sh3LmgsbusfZ4Vj5CL94
-         bxMXdXUwX1rWNjQnfIxNqCPVEnJWS5xTheACwB7qunh9mz4AOLhIs/dMKnn5tFxOLGPl
-         zrJ2dK729fRk//YVIkFOha3OLrURMQUaKLl4PvQ01nJ2nnjH6vLuc6XqxRDLTTN5QRAo
-         +BOfBPZ3LTOT/0J+8XfRkBSYt6U+Dc4HDixEZr9b4ljCEzA63G2NAZHQYJEJuwZ6dtgi
-         SE6bx9PBWkFP5zKcsMKcnA+1UmrRUGJ0W0ByRrJDmUQYl/yOLf1U5z34FzJnvw+wolrJ
-         FaTA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QKnwEwYG;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id q65si17284pfj.8.2017.09.14.23.04.17
+Received: by 10.36.95.9 with SMTP id r9ls1515078itb.14.gmail; Sun, 19 Mar 2017
+ 05:32:42 -0700 (PDT)
+X-Received: by 10.99.139.194 with SMTP id j185mr10655674pge.117.1489926762739;
+        Sun, 19 Mar 2017 05:32:42 -0700 (PDT)
+Return-Path: <rvarsha016@gmail.com>
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id 2si2213005pfx.8.2017.03.19.05.32.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 14 Sep 2017 23:04:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Sun, 19 Mar 2017 05:32:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QKnwEwYG;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id v82so853653pgb.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 14 Sep 2017 23:04:17 -0700 (PDT)
+Received: by mail-pf0-x243.google.com with SMTP id o126so13760810pfb.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 19 Mar 2017 05:32:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=9RTeACkRvBdJCyhV7XimV+byetSCikeDSSST98i0Ir4=;
-        b=QKnwEwYGjZ9R52Jtv5aOSPixoJ5ID6t9zzLUbD+K5k/SQncjV4CS+qCSMGfk1S2hY+
-         DRF/DyrtAtwnkomgklhXBMQzQWMNDo8h3Liqqj/ztrHz/9+Tgy8tBAxocSTiFQh7mXbM
-         coGcLZAEWW+Ljymg4Pka5DXLlSuyLGk2ZMH6VksAu2CC6PuyWFZnVgctnTN/rBnsynMc
-         n3f3Yih6CawQWVL8IYWm90wuB8k9+0TiKRiSIuf+8QNcj2hbfW3QMTjEqbxEo2kkdSqh
-         TwOh4Qkubapqv44V8WgVEXMEih1tF3h6dbt2XZ6SU4W/dVdEltfbLTGJI3hWpaM8kQOf
-         JUVw==
+        h=message-id:date:from:to:cc:subject:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=/UnXuj3e4KZsKTYq9HVo19w8ijo+2pu4vI0zrD+B7J4=;
+        b=SeLig8NCSeTjQ4s8XCwrs4ufjB2zGNFe9dfUGH2iplvEA9LYrTa/9SZsy+jw3HcebM
+         Rcpm1Dahw6SbhUvYf32VOCml9dUEGkis3IKd1vr7c4UcX3s9V57pScn3+VMYwLjzjH98
+         yR1wp+6ROrfBh/puf33vmf5rTgp5nPPeG/ELTOh07Gx0ffN+jKwvFIlXCjenUOUEQkQ0
+         HeGcW1HNeSjQYcDAWfdl0lZaz3GsSPS830QJYOUGlq17PbO272sXNbKHzkg3A4argFoj
+         od5aOCUucfOJgF2l5mS4fVMjFe8BCBzUW3hdSliVNZaYr+BdOWtEUXviCIYpB8SQr3AH
+         Hkog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=9RTeACkRvBdJCyhV7XimV+byetSCikeDSSST98i0Ir4=;
-        b=SIyxXNk1vuFhfM3/4ePDPp2dQPBtQpQKLDjmERLpW0ihdMLDizdzaO/BbG4yvai92Q
-         Ru7TQh5z8s7nVLOeHl+ZRtbEK1wJI/kjz6pnFOiaKfFdR9LJHahYyobwtZ0okGMIzOhz
-         taAtyfsAoyzS78I6Z5p1NQhVJitu38EJhzX7af2dQbFopo5Xzjzv8F+sKhricVa+2fyF
-         EkaS/kGNMs7M5KNkan56Ijl/NCce6YeBvhvlEfUz76fkU2FPsuYSk42H8wJJBW6LaHl4
-         hiLr9SdB555hOn3B7miBB+1zS4tXmuTef+3/i8p1O9IErrZpD6yqgcHlaPwhI3ALC06G
-         7fbg==
-X-Gm-Message-State: AHPjjUiZxxoC3I87XIUWRozBRA6JhXojLDcVSY6oipcbOLpfAsOau2SW
-	jojj+RBg5NOugA==
-X-Google-Smtp-Source: ADKCNb55kEUHLdovpzWmrJbUqi0f+mU0JLOFqe1+x5gccQbgkdPjdlN/vRko73wyXJGcUnzi1MJXgg==
-X-Received: by 10.98.32.86 with SMTP id g83mr23358458pfg.313.1505455457628;
-        Thu, 14 Sep 2017 23:04:17 -0700 (PDT)
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from aastha-HP-Pavilion-15-Notebook-PC ([171.78.243.118])
-        by smtp.gmail.com with ESMTPSA id r22sm559632pfe.78.2017.09.14.23.04.16
+        h=x-gm-message-state:message-id:date:from:to:cc:subject:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=/UnXuj3e4KZsKTYq9HVo19w8ijo+2pu4vI0zrD+B7J4=;
+        b=DaXVLz9M4luEqRySZOkosNbAfcmhWovMapc0u9Tve8C65I3QplHCprrpsgb4hT6JVE
+         xScXeb1bBJWq4SNGHJMPZ8bKHgNHtulPD8eeCUrpMqI1Yl/QG5AkqYmffk/kq2q4h0XV
+         oUMStLznh8wtYNynR5qU0SxZr6Z3VWn36DiikZJ+k/jtddnjAitRGHCnuNH6ImUL9bXg
+         ViIzmWlHpDnkRrP7ZHERfRr5dWhP/z+X/EV1DeQ3otej/eE5hq9DTFBokpTiUdBIQbUl
+         cavoy+/4PHBqdSy+9q49ZWmzC+cWYWWA/sCkz8a20VWAD5ITW0M4IhCZ39RrTFUET/rO
+         54mg==
+X-Gm-Message-State: AFeK/H1lLuaE89JoEuvaP4d77kC/CTG9aPaMlOjeDT3MIkwGG3Vn7exSJ66K14UoEKnqyg==
+X-Received: by 10.84.128.100 with SMTP id 91mr32681392pla.94.1489926762506;
+        Sun, 19 Mar 2017 05:32:42 -0700 (PDT)
+Return-Path: <rvarsha016@gmail.com>
+Received: from euri ([157.49.4.219])
+        by smtp.gmail.com with ESMTPSA id w29sm27160100pfi.131.2017.03.19.05.32.41
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 14 Sep 2017 23:04:17 -0700 (PDT)
-From: Aastha Gupta <aastha.gupta4104@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	Oleg Drokin <oleg.drokin@intel.com>,
-	Andreas Dilger <andreas.dilger@intel.com>,
-	James Simmons <jsimmons@infradead.org>,
+        Sun, 19 Mar 2017 05:32:41 -0700 (PDT)
+Message-ID: <58ce7a69.1d0e620a.4fb5d.6391@mx.google.com>
+X-Google-Original-Message-ID: <20170319123004.GA8507@<rvarsha016@gmail.com>>
+Date: Sun, 19 Mar 2017 18:00:04 +0530
+From: Varsha Rao <rvarsha016@gmail.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH] staging: lustre: fld: fix line over 80 characters
-Date: Fri, 15 Sep 2017 11:34:07 +0530
-Message-Id: <1505455447-14539-1-git-send-email-aastha.gupta4104@gmail.com>
-X-Mailer: git-send-email 2.7.4
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH 2/4] staging: media: atomisp: Fix block comments warning.
+References: <cover.1489925957.git.rvarsha016@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1489925957.git.rvarsha016@gmail.com>
+User-Agent: Mutt/1.7.1 (2016-10-04)
 
-This patch fixes checkpatch.pl warning:
+Use kernel preferred block commenting style, to fix the checkpatch
+issue.
 
-WARNING: line over 80 characters
-
-Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
+Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
 ---
- drivers/staging/lustre/lustre/fld/fld_request.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ .../css2400/isp/kernels/ctc/ctc2/ia_css_ctc2.host.c   | 19 +++++++++----------
+ .../isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c        |  9 ++++++---
+ 2 files changed, 15 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/staging/lustre/lustre/fld/fld_request.c b/drivers/staging/lustre/lustre/fld/fld_request.c
-index 5b18083..081e137 100644
---- a/drivers/staging/lustre/lustre/fld/fld_request.c
-+++ b/drivers/staging/lustre/lustre/fld/fld_request.c
-@@ -425,7 +425,8 @@ int fld_client_lookup(struct lu_client_fld *fld, u64 seq, u32 *mds,
- 	target = fld_client_get_target(fld, seq);
- 	LASSERT(target);
+diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/ctc/ctc2/ia_css_ctc2.host.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/ctc/ctc2/ia_css_ctc2.host.c
+index 992b31e..c96340d 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/ctc/ctc2/ia_css_ctc2.host.c
++++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/ctc/ctc2/ia_css_ctc2.host.c
+@@ -21,8 +21,7 @@
+ #define INEFFECTIVE_VAL 4096
+ #define BASIC_VAL 819
  
--	CDEBUG(D_INFO, "%s: Lookup fld entry (seq: %#llx) on target %s (idx %llu)\n",
-+	CDEBUG(D_INFO,
-+	       "%s: Lookup fld entry (seq: %#llx) on target %s (idx %llu)\n",
- 	       fld->lcf_name, seq, fld_target_name(target), target->ft_idx);
+-/*Default configuration of parameters for Ctc2
+-*/
++/*Default configuration of parameters for Ctc2*/
+ const struct ia_css_ctc2_config default_ctc2_config = {
+ 	INEFFECTIVE_VAL, INEFFECTIVE_VAL, INEFFECTIVE_VAL,
+ 	INEFFECTIVE_VAL, INEFFECTIVE_VAL, INEFFECTIVE_VAL,
+@@ -104,14 +103,14 @@ void ia_css_ctc2_vmem_encode(struct ia_css_isp_ctc2_vmem_params *to,
+ 			    SH_CSS_BAYER_MAXVAL, from->y_x4);
  
- 	res.lsr_start = seq;
+ 	/*Fill 3 arrays with:
+-	* - Luma input gain values y_y0, y_y1, y_y2, y_3, y_y4
+-	* - Luma kneepoints 0, y_x1, y_x2, y_x3, y_x4
+-	* - Calculated slopes dydx0, dyxd1, dydx2, dydx3, dydx4
+-	*
+-	* - Each 64-element array is divided in blocks of 16 elements:
+-	*   the 5 parameters + zeros in the remaining 11 positions
+-	* - All blocks of the same array will contain the same data
+-	*/
++	 * - Luma input gain values y_y0, y_y1, y_y2, y_3, y_y4
++	 * - Luma kneepoints 0, y_x1, y_x2, y_x3, y_x4
++	 * - Calculated slopes dydx0, dyxd1, dydx2, dydx3, dydx4
++	 *
++	 * - Each 64-element array is divided in blocks of 16 elements:
++	 *   the 5 parameters + zeros in the remaining 11 positions
++	 * - All blocks of the same array will contain the same data
++	 */
+ 	for (i = 0; i < shffl_blck; i++) {
+ 		to->y_x[0][(i << shffl_blck)]     = 0;
+ 		to->y_x[0][(i << shffl_blck) + 1] = from->y_x1;
+diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c
+index fa97224..9355b44 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c
++++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c
+@@ -25,7 +25,8 @@
+ #define XNR_MAX_ALPHA  ((1 << (ISP_VEC_ELEMBITS - 1)) - 1)
+ 
+ /* Minimum value for sigma on host interface. Lower values translate to
+- * max_alpha. */
++ * max_alpha.
++ */
+ #define XNR_MIN_SIGMA  (IA_CSS_XNR3_SIGMA_SCALE / 100)
+ 
+ /*
+@@ -118,7 +119,8 @@ compute_coring(int coring)
+ 	int32_t offset = host_scale / 2; /* fixed-point 0.5 */
+ 
+ 	/* Convert from public host-side scale factor to isp-side scale
+-	 * factor. Clip to [0, isp_scale-1). */
++	 * factor. Clip to [0, isp_scale-1).
++	 */
+ 	isp_coring = ((coring * isp_scale) + offset) / host_scale;
+ 	return min(max(isp_coring, 0), isp_scale - 1);
+ }
+@@ -138,7 +140,8 @@ compute_blending(int strength)
+ 	/* Convert from public host-side scale factor to isp-side scale
+ 	 * factor. The blending factor is positive on the host side, but
+ 	 * negative on the ISP side because +1.0 cannot be represented
+-	 * exactly as s0.11 fixed point, but -1.0 can. */
++	 * exactly as s0.11 fixed point, but -1.0 can.
++	 */
+ 	isp_strength = -(((strength * isp_scale) + offset) / host_scale);
+ 	return max(min(isp_strength, 0), -XNR_BLENDING_SCALE_FACTOR);
+ }
 -- 
-2.7.4
+2.9.3
 
 
