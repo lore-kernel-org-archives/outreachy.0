@@ -1,86 +1,118 @@
-X-GM-THRID: 6395508245662793728
-X-Received: by 10.99.105.67 with SMTP id e64mr5949658pgc.169.1489070301231;
-        Thu, 09 Mar 2017 06:38:21 -0800 (PST)
+X-GM-THRID: 6399180589235175424
+X-Received: by 10.46.88.70 with SMTP id x6mr3098419ljd.22.1489927762751;
+        Sun, 19 Mar 2017 05:49:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.41.33 with SMTP id d30ls6538372otb.17.gmail; Thu, 09 Mar
- 2017 06:38:20 -0800 (PST)
-X-Received: by 10.157.13.79 with SMTP id 73mr5508174oti.81.1489070300821;
-        Thu, 09 Mar 2017 06:38:20 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id y203si858601pfb.0.2017.03.09.06.38.20
+Received: by 10.25.206.11 with SMTP id e11ls375827lfg.39.gmail; Sun, 19 Mar
+ 2017 05:49:21 -0700 (PDT)
+X-Received: by 10.46.71.19 with SMTP id u19mr3109314lja.7.1489927761949;
+        Sun, 19 Mar 2017 05:49:21 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id x188si223551wmx.0.2017.03.19.05.49.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 09 Mar 2017 06:38:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Sun, 19 Mar 2017 05:49:21 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id 67so7488365pfg.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 09 Mar 2017 06:38:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:mime-version:content-disposition
-         :user-agent;
-        bh=QGaMxEG7JRvf6PsNb99qPiOK+aDW7LtqQD5D3UZqGMU=;
-        b=F+JngaSp1mp9oXIpoN/mF44H0mGASPLRuVyMLzL7Wxs567TkEGJwVETJdm7s7ZHBW0
-         9fAuv9VgLMHo4w4+JRLlunddBtSqbqSk6Ir1mvNUA+5Js8r/euTDRPfOb7X4ADC+jYT4
-         t6UN2aLPm/dYFm3SxtHiRo0O++kFA+OOVK4phjWG70DwnXtDhH0Pl/hv/LrkMQPvSNic
-         ZGLunXU0/do8kyqrNQmGrDpR8b17LweeLaZytvaxdkYynwwyzdYYCYyIFs2Wwur3BKhb
-         9OY0foW4qyU9dBeW/gyhMxpWoRaZP6DFgfKyGvBVbfq8xbtLwqD4rSvj+p9/uTOZnFJc
-         Ks1A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
-         :content-disposition:user-agent;
-        bh=QGaMxEG7JRvf6PsNb99qPiOK+aDW7LtqQD5D3UZqGMU=;
-        b=DM498qm5YSAJKyLQLyN7JtAUsIRdR+qb0PCRgTodu2jyVyCdZmkCpR9sjGDzXx5SJi
-         jLLDSzE7XbwBDCBXerVGsY5q8azPmB1XfyETrMDvF3YPUWdtdJxxfz/3GRU6VHi+BS3m
-         vzE3izfzxxURdelFghmMPBhD6KYFaOUVZqTeQchStUmjAXMXt1yFqrtRCZGZplrYOblj
-         0qr3R7RHNMbnExmXyJoUX6UGCZeUwjm+gO/xtxzyreoZmaxlXIOHdzjCtUKsGF+vLNJp
-         1BeqKdOffSsMv48dfRHSl/KDn5/YsKz6ifR0LfLq8CdGLe+Lsu7TyyWBSuG75RVyb0Ln
-         RlOw==
-X-Gm-Message-State: AMke39nkoh2Hfc2I8XdZgBsHsXEaXXe50++gCf073C0nBWBr2LtYIe3BSAxIS1GpqZLTPQ==
-X-Received: by 10.84.225.146 with SMTP id u18mr17913337plj.157.1489070300480;
-        Thu, 09 Mar 2017 06:38:20 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([45.125.141.33])
-        by smtp.gmail.com with ESMTPSA id s12sm13081545pfj.9.2017.03.09.06.38.18
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 09 Mar 2017 06:38:19 -0800 (PST)
-Message-ID: <58c168db.8c66620a.d40b5.d940@mx.google.com>
-X-Google-Original-Message-ID: <20170309143814.GA14870@<rvarsha016@gmail.com>>
-Date: Thu, 9 Mar 2017 20:08:14 +0530
-From: Varsha Rao <rvarsha016@gmail.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] staging: media: atomisp: Remove useless cast and
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.36,188,1486422000"; 
+   d="scan'208";a="217253795"
+Received: from 198.67.28.109.rev.sfr.net (HELO [192.168.1.69]) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 19 Mar 2017 13:49:21 +0100
+Date: Sun, 19 Mar 2017 13:49:20 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Varsha Rao <rvarsha016@gmail.com>
+cc: Mauro Carvalho Chehab <mchehab@kernel.org>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 4/4] staging: media: atomisp: Remove
+ unnecessary braces.
+In-Reply-To: <58ce7be8.cc07620a.c3b79.704e@mx.google.com>
+Message-ID: <alpine.DEB.2.20.1703191348330.2108@hadrien>
+References: <cover.1489925957.git.rvarsha016@gmail.com> <58ce7be8.cc07620a.c3b79.704e@mx.google.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.7.1 (2016-10-04)
+Content-Type: text/plain; charset=US-ASCII
 
-match alignment with open parenthesis.
-Reply-To: 
 
-This patchset removes useless cast and  matches alignment with open
-parenthesis in media driver.
 
-Varsha Rao (2):
-  staging: media: atomisp: Remove useless cast.
-  staging: media: atomisp: Match alignment with open parenthesis.
+On Sun, 19 Mar 2017, Varsha Rao wrote:
 
- drivers/staging/media/atomisp/i2c/gc2235.c             | 18 +++++++++---------
- drivers/staging/media/atomisp/i2c/mt9m114.c            |  6 +++---
- drivers/staging/media/atomisp/i2c/ov2722.c             |  8 ++++----
- .../atomisp2/css2400/runtime/isys/src/isys_dma_rmgr.c  |  2 +-
- .../atomisp/pci/atomisp2/css2400/sh_css_firmware.c     |  8 ++++----
- drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm.c   |  2 +-
- 6 files changed, 22 insertions(+), 22 deletions(-)
+> Remove braces which are not required to fix the check patch issue. The
+> following coccinelle script is used to fix this issue.
+>
+> @@
+> expression e,e1;
+> @@
+> if(e)
+> -{
+>  e1;
+> -}
+>
+> Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
 
--- 
-2.9.3
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 
+> ---
+>  .../pci/atomisp2/css2400/isp/kernels/ctc/ctc2/ia_css_ctc2.host.c       | 3 +--
+>  .../pci/atomisp2/css2400/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c    | 3 +--
+>  drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c       | 3 +--
+>  3 files changed, 3 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/ctc/ctc2/ia_css_ctc2.host.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/ctc/ctc2/ia_css_ctc2.host.c
+> index 5d58dc1..07bd24e 100644
+> --- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/ctc/ctc2/ia_css_ctc2.host.c
+> +++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/ctc/ctc2/ia_css_ctc2.host.c
+> @@ -52,9 +52,8 @@ static int ctc2_slope(int y1, int y0, int x1, int x0)
+>  	assert(x1 > 0 && x1 <= max_slope);
+>  	assert(dx > 0);
+>
+> -	if (dy < 0) {
+> +	if (dy < 0)
+>  		rounding = -rounding;
+> -	}
+>  	slope = (int) (dy_shift + rounding) / dx;
+>
+>  	/*the slope must lie within the range
+> diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c
+> index f61bfab..955b6c8 100644
+> --- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c
+> +++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c
+> @@ -97,9 +97,8 @@ compute_alpha(int sigma)
+>  		alpha = ((IA_CSS_XNR3_SIGMA_SCALE * XNR_ALPHA_SCALE_FACTOR) + offset)/ sigma;
+>  #endif
+>
+> -		if (alpha > XNR_MAX_ALPHA) {
+> +		if (alpha > XNR_MAX_ALPHA)
+>  			alpha = XNR_MAX_ALPHA;
+> -		}
+>  	}
+>
+>  	return alpha;
+> diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c
+> index 8bc1ca0..7e3893c 100644
+> --- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c
+> +++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c
+> @@ -79,9 +79,8 @@ static bool ia_css_mipi_is_source_port_valid(struct ia_css_pipe *pipe,
+>  	if (ret) {
+>  		assert(port < max_ports);
+>
+> -		if (port >= max_ports) {
+> +		if (port >= max_ports)
+>  			ret = false;
+> -		}
+>  	}
+>
+>  	*pport = port;
+> --
+> 2.9.3
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/58ce7be8.cc07620a.c3b79.704e%40mx.google.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
