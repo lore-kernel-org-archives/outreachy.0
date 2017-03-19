@@ -1,101 +1,161 @@
-X-GM-THRID: 6206306733630947328
-X-Received: by 10.182.72.166 with SMTP id e6mr14164534obv.47.1445018391993;
-        Fri, 16 Oct 2015 10:59:51 -0700 (PDT)
+X-GM-THRID: 6399179032135467008
+X-Received: by 10.25.195.206 with SMTP id t197mr2841974lff.11.1489928092283;
+        Sun, 19 Mar 2017 05:54:52 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.27.202 with SMTP id 68ls1287240qgx.97.gmail; Fri, 16 Oct
- 2015 10:59:51 -0700 (PDT)
-X-Received: by 10.13.202.13 with SMTP id m13mr4706463ywd.57.1445018391380;
-        Fri, 16 Oct 2015 10:59:51 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
-        by gmr-mx.google.com with ESMTPS id ce6si1599493pad.0.2015.10.16.10.59.51
+Received: by 10.46.92.195 with SMTP id q186ls125060ljb.23.gmail; Sun, 19 Mar
+ 2017 05:54:51 -0700 (PDT)
+X-Received: by 10.25.196.68 with SMTP id u65mr2869050lff.0.1489928091667;
+        Sun, 19 Mar 2017 05:54:51 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id t131si467410wmf.1.2017.03.19.05.54.51
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 16 Oct 2015 10:59:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 19 Mar 2017 05:54:51 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22e.google.com with SMTP id ez2so10814853pac.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 16 Oct 2015 10:59:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=TcDaxTQhNtIYcUjQr/nBkjDSjPtMLtkqozCJyIk1E6g=;
-        b=jOKtjU2NqbgkBzXH2Aja5JmEYY9ykH0/JTYIlXqmH+b/r+9rPWpbuCy7ci9ShPlpeH
-         dM8gWO6SnwAQpACOxeAzbYB3S/k9+3FQwyEzMH/tVmwvGGZmGWzbfbl3oF8j4iTNzQgr
-         BDHQcpQ7ST1n+bKAe3trwr7gLb7am5b6kUlOGcthUbTlS4WtUGXVzsOiSxHAM2VS1i5Q
-         e/uScEcjcE0+ddxvoeFVgAsTKTyVanjCrUna/sGaUlC4UrxZVF20KmUdOMsWgF/9UTVr
-         hIJFDwLqVojyzyBzJJ8Em9tPMzqz4vaA8Iu+vo2+kgVts68cASM1En61tOc1gYKTaskO
-         OlQA==
-X-Received: by 10.68.196.202 with SMTP id io10mr18143416pbc.108.1445018391242;
-        Fri, 16 Oct 2015 10:59:51 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from Ubuntu-D830 (or-67-232-67-97.dhcp.embarqhsd.net. [67.232.67.97])
-        by smtp.gmail.com with ESMTPSA id qy7sm22523864pab.37.2015.10.16.10.59.50
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 16 Oct 2015 10:59:50 -0700 (PDT)
-Date: Fri, 16 Oct 2015 10:59:50 -0700
-From: Alison Schofield <amsfield22@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: r8723au: move * to be adjacent to pointer name
-Message-ID: <20151016175941.GA17049@Ubuntu-D830>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.36,188,1486422000"; 
+   d="scan'208";a="217253992"
+Received: from 198.67.28.109.rev.sfr.net (HELO [192.168.1.69]) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 19 Mar 2017 13:54:50 +0100
+Date: Sun, 19 Mar 2017 13:54:50 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Varsha Rao <rvarsha016@gmail.com>
+cc: Mauro Carvalho Chehab <mchehab@kernel.org>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 1/4] staging: media: atomisp: Added
+ spaces around arithmetic operators.
+In-Reply-To: <58ce79c1.0dd6620a.57cda.6b16@mx.google.com>
+Message-ID: <alpine.DEB.2.20.1703191354360.2108@hadrien>
+References: <cover.1489925957.git.rvarsha016@gmail.com> <58ce79c1.0dd6620a.57cda.6b16@mx.google.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
-
-Move * in pointer types to be adjacent to pointer names per Linux
-coding style.
-
-Addresses checkpatch.pl: ERROR: "foo*    bar" should be "foo *bar"
-
-Signed-off-by: Alison Schofield <amsfield22@gmail.com>
----
-
-Question to reviewers:
-Are checkpatch.pl CHECK errors permitted in a patch?
-        ie. This driver has a lot of pre-existing CamelCase CHECKs that 
-	appear when my pre-commit hook executes.  I'd like to submit other
-	changes without addressing the CamelCase simultaneously.
-
-What is the recommendation in such cases?
+Content-Type: text/plain; charset=US-ASCII
 
 
- drivers/staging/rtl8723au/core/rtw_ieee80211.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/rtl8723au/core/rtw_ieee80211.c b/drivers/staging/rtl8723au/core/rtw_ieee80211.c
-index cdd7bc4..07a6490 100644
---- a/drivers/staging/rtl8723au/core/rtw_ieee80211.c
-+++ b/drivers/staging/rtl8723au/core/rtw_ieee80211.c
-@@ -348,9 +348,9 @@ int rtw_generate_ie23a(struct registry_priv *pregistrypriv)
- {
- 	u8	wireless_mode;
- 	int	sz = 0, rateLen;
--	struct wlan_bssid_ex*	pdev_network = &pregistrypriv->dev_network;
--	u8*	ie = pdev_network->IEs;
--	u16 cap;
-+	struct wlan_bssid_ex *pdev_network = &pregistrypriv->dev_network;
-+	u8	*ie = pdev_network->IEs;
-+	u16	cap;
- 
- 	pdev_network->tsf = 0;
- 
-@@ -444,7 +444,8 @@ static int rtw_get_wpa2_cipher_suite(const u8 *s)
- 	return 0;
- }
- 
--int rtw_parse_wpa_ie23a(const u8* wpa_ie, int wpa_ie_len, int *group_cipher, int *pairwise_cipher, int *is_8021x)
-+int rtw_parse_wpa_ie23a(const u8 *wpa_ie, int wpa_ie_len, int *group_cipher,
-+			int *pairwise_cipher, int *is_8021x)
- {
- 	int i, ret = _SUCCESS;
- 	int left, count;
--- 
-2.1.4
+On Sun, 19 Mar 2017, Varsha Rao wrote:
 
+> Add spaces around arithmetic operators (/, +, -), to fix the checkpatch
+> issue.
+>
+> Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
+
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+> ---
+>  .../css2400/isp/kernels/ctc/ctc2/ia_css_ctc2.host.c        | 14 +++++++-------
+>  .../css2400/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c     |  6 +++---
+>  .../atomisp/platform/intel-mid/atomisp_gmin_platform.c     |  6 +++---
+>  3 files changed, 13 insertions(+), 13 deletions(-)
+>
+> diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/ctc/ctc2/ia_css_ctc2.host.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/ctc/ctc2/ia_css_ctc2.host.c
+> index 1890d59..992b31e 100644
+> --- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/ctc/ctc2/ia_css_ctc2.host.c
+> +++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/ctc/ctc2/ia_css_ctc2.host.c
+> @@ -44,7 +44,7 @@ static int ctc2_slope(int y1, int y0, int x1, int x0)
+>  	const int max_slope = (1 << IA_CSS_CTC_COEF_SHIFT) - 1;
+>  	int dy = y1 - y0;
+>  	int dx = x1 - x0;
+> -	int rounding = (dx+1) >> 1;
+> +	int rounding = (dx + 1) >> 1;
+>  	int dy_shift = dy << shift_val;
+>  	int slope, dydx;
+>
+> @@ -126,14 +126,14 @@ void ia_css_ctc2_vmem_encode(struct ia_css_isp_ctc2_vmem_params *to,
+>  		to->y_y[0][(i << shffl_blck) + 4] = from->y_y4;
+>
+>  		to->e_y_slope[0][(i << shffl_blck)]    = dydx0;
+> -		to->e_y_slope[0][(i << shffl_blck) +1] = dydx1;
+> -		to->e_y_slope[0][(i << shffl_blck) +2] = dydx2;
+> -		to->e_y_slope[0][(i << shffl_blck) +3] = dydx3;
+> -		to->e_y_slope[0][(i << shffl_blck) +4] = dydx4;
+> +		to->e_y_slope[0][(i << shffl_blck) + 1] = dydx1;
+> +		to->e_y_slope[0][(i << shffl_blck) + 2] = dydx2;
+> +		to->e_y_slope[0][(i << shffl_blck) + 3] = dydx3;
+> +		to->e_y_slope[0][(i << shffl_blck) + 4] = dydx4;
+>
+>  		for (j = 0; j < lenght_zeros; j++) {
+> -			to->y_x[0][(i << shffl_blck)+ 5 + j] = 0;
+> -			to->y_y[0][(i << shffl_blck)+ 5 + j] = 0;
+> +			to->y_x[0][(i << shffl_blck) + 5 + j] = 0;
+> +			to->y_y[0][(i << shffl_blck) + 5 + j] = 0;
+>  			to->e_y_slope[0][(i << shffl_blck)+ 5 + j] = 0;
+>  		}
+>  	}
+> diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c
+> index 1a8b852..fa97224 100644
+> --- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c
+> +++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c
+> @@ -22,7 +22,7 @@
+>  #include "ia_css_xnr3.host.h"
+>
+>  /* Maximum value for alpha on ISP interface */
+> -#define XNR_MAX_ALPHA  ((1 << (ISP_VEC_ELEMBITS-1)) - 1)
+> +#define XNR_MAX_ALPHA  ((1 << (ISP_VEC_ELEMBITS - 1)) - 1)
+>
+>  /* Minimum value for sigma on host interface. Lower values translate to
+>   * max_alpha. */
+> @@ -78,7 +78,7 @@ compute_alpha(int sigma)
+>  #if defined(XNR_ATE_ROUNDING_BUG)
+>  	int32_t alpha_unscaled;
+>  #else
+> -	int offset = sigma/2;
+> +	int offset = sigma / 2;
+>  #endif
+>  	if (sigma < XNR_MIN_SIGMA) {
+>  		alpha = XNR_MAX_ALPHA;
+> @@ -230,7 +230,7 @@ ia_css_xnr3_vmem_encode(
+>
+>  	for (j = 1; j < XNR3_LOOK_UP_TABLE_POINTS; j++) {
+>  		assert(x[j] >= 0);
+> -		assert(x[j] > x[j-1]);
+> +		assert(x[j] > x[j - 1]);
+>
+>  	}
+>
+> diff --git a/drivers/staging/media/atomisp/platform/intel-mid/atomisp_gmin_platform.c b/drivers/staging/media/atomisp/platform/intel-mid/atomisp_gmin_platform.c
+> index add0093..8165154 100644
+> --- a/drivers/staging/media/atomisp/platform/intel-mid/atomisp_gmin_platform.c
+> +++ b/drivers/staging/media/atomisp/platform/intel-mid/atomisp_gmin_platform.c
+> @@ -56,7 +56,7 @@ static enum { PMIC_UNSET = 0, PMIC_REGULATOR, PMIC_AXP, PMIC_TI ,
+>  	PMIC_CRYSTALCOVE } pmic_id;
+>
+>  /* The atomisp uses type==0 for the end-of-list marker, so leave space. */
+> -static struct intel_v4l2_subdev_table pdata_subdevs[MAX_SUBDEVS+1];
+> +static struct intel_v4l2_subdev_table pdata_subdevs[MAX_SUBDEVS + 1];
+>
+>  static const struct atomisp_platform_data pdata = {
+>  	.subdevs = pdata_subdevs,
+> @@ -637,7 +637,7 @@ int gmin_get_config_var(struct device *dev, const char *var, char *out, size_t *
+>          else
+>                  ret = snprintf(var8, sizeof(var8), "gmin_%s", var);
+>
+> -	if (ret < 0 || ret >= sizeof(var8)-1)
+> +	if (ret < 0 || ret >= sizeof(var8) - 1)
+>  		return -EINVAL;
+>
+>  	/* First check a hard-coded list of board-specific variables.
+> @@ -654,7 +654,7 @@ int gmin_get_config_var(struct device *dev, const char *var, char *out, size_t *
+>
+>  				if (strcmp(var8, gv->name))
+>  					continue;
+> -				if (vl > *out_len-1)
+> +				if (vl > *out_len - 1)
+>  					return -ENOSPC;
+>
+>  				memcpy(out, gv->val, min(*out_len, vl+1));
+> --
+> 2.9.3
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/58ce79c1.0dd6620a.57cda.6b16%40mx.google.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
