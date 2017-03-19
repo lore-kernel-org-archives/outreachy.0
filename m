@@ -1,77 +1,89 @@
-X-GM-THRID: 6202842590500356096
-X-Received: by 10.66.221.7 with SMTP id qa7mr45014pac.33.1444211832853;
-        Wed, 07 Oct 2015 02:57:12 -0700 (PDT)
+X-GM-THRID: 6399107209686417408
+X-Received: by 10.46.84.13 with SMTP id i13mr3266650ljb.2.1489925643151;
+        Sun, 19 Mar 2017 05:14:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.167.67 with SMTP id q64ls182259ioe.20.gmail; Wed, 07 Oct
- 2015 02:57:12 -0700 (PDT)
-X-Received: by 10.50.79.234 with SMTP id m10mr491496igx.5.1444211832464;
-        Wed, 07 Oct 2015 02:57:12 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
-        by gmr-mx.google.com with ESMTPS id wl2si4759754pab.1.2015.10.07.02.57.12
+Received: by 10.46.76.17 with SMTP id z17ls1027081lja.50.gmail; Sun, 19 Mar
+ 2017 05:14:01 -0700 (PDT)
+X-Received: by 10.46.69.9 with SMTP id s9mr2262744lja.20.1489925641948;
+        Sun, 19 Mar 2017 05:14:01 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id l138si617764wmg.0.2017.03.19.05.14.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 07 Oct 2015 02:57:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
+        Sun, 19 Mar 2017 05:14:01 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x231.google.com with SMTP id lk4so16970732pab.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 07 Oct 2015 02:57:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=75PHqBbNMqCl7jSiBdIUPp3zkFpZPWzHHJGyidMmySk=;
-        b=GTw1gNF7/QrlPwLxJpZ8s+6u5O1Au1Jmxuu0X+M3V/M/Ds9SXF1gCmgjMkeoXUKZyH
-         csjtqbdOjU/Vls1WwmmyFT2a+7ifmvTU/qrSVf0pzOt/SZlFy11AMpXmJpgtJmTE8J/w
-         3JY92j+H3g3bck+kP4GquZjugSHSNo5+ht6yvt5IpR+tFnNbDbINwox0nAYCg0f2pY7W
-         ydDPQevg9UmbbsZh6eUtukn4FydFMZq035wZl5xpW4ciw9g72+7jQj6A3Jo5VbLmd0/e
-         AzRsHrzIsqrG3lsuCeMTzIO1Pl4tLBORCdCAF4a6O0znNfdOT/SHocO96EZiPMg3pBWp
-         YXSg==
-X-Received: by 10.68.131.6 with SMTP id oi6mr129996pbb.3.1444211832344;
-        Wed, 07 Oct 2015 02:57:12 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id iy1sm38403894pbb.85.2015.10.07.02.57.10
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 07 Oct 2015 02:57:11 -0700 (PDT)
-Date: Wed, 7 Oct 2015 15:27:03 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: most: networking: Fixed the warning of using
- integer as NULL
-Message-ID: <20151007095703.GA47324@ubuntu>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.36,188,1486422000"; 
+   d="scan'208";a="265179415"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 19 Mar 2017 13:14:00 +0100
+Date: Sun, 19 Mar 2017 13:13:59 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Arushi Singhal <arushisinghal19971997@gmail.com>
+cc: w.d.hubbs@gmail.com, chris@the-brannons.com, 
+    outreachy-kernel@googlegroups.com, kirk@reisers.ca, 
+    samuel.thibault@ens-lyon.org, gregkh@linuxfoundation.org, 
+    speakup@linux-speakup.org, devel@driverdev.osuosl.org, 
+    linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH 1/2] staging: speakup: Moved AND
+ operator to previous line.
+In-Reply-To: <20170319072403.10354-2-arushisinghal19971997@gmail.com>
+Message-ID: <alpine.DEB.2.20.1703191313290.2108@hadrien>
+References: <20170319072403.10354-1-arushisinghal19971997@gmail.com> <20170319072403.10354-2-arushisinghal19971997@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: text/plain; charset=US-ASCII
 
-Fixed the warning generated by sparse : Using plain integer as NULL
-pointer, by changing the value pointed to by nd->dev from 0 to NULL.
 
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmail.com>
----
- drivers/staging/most/aim-network/networking.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/most/aim-network/networking.c b/drivers/staging/most/aim-network/networking.c
-index c8ab239..a1e1bce 100644
---- a/drivers/staging/most/aim-network/networking.c
-+++ b/drivers/staging/most/aim-network/networking.c
-@@ -295,7 +295,7 @@ static void most_net_rm_netdev_safe(struct net_dev_context *nd)
- 
- 	unregister_netdev(nd->dev);
- 	free_netdev(nd->dev);
--	nd->dev = 0;
-+	nd->dev = NULL;
- }
- 
- static struct net_dev_context *get_net_dev_context(
--- 
-2.1.0
+On Sun, 19 Mar 2017, Arushi Singhal wrote:
 
+> Moved logical AND operator to previous line to fix the following
+> checkpatch issue:
+
+You seem to have AND and OR confused.  AND is &&, OR is ||.  This patch is
+about OR, not AND.
+
+julia
+
+>
+> CHECK: Logical continuations should be on the previous line.
+>
+> Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+> ---
+>  drivers/staging/speakup/main.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/staging/speakup/main.c b/drivers/staging/speakup/main.c
+> index c10445624e92..def1a36da9dd 100644
+> --- a/drivers/staging/speakup/main.c
+> +++ b/drivers/staging/speakup/main.c
+> @@ -2173,10 +2173,10 @@ speakup_key(struct vc_data *vc, int shift_state, int keycode, u_short keysym,
+>  	if (up_flag || spk_killed || type == KT_SHIFT)
+>  		goto out;
+>  	spk_shut_up &= 0xfe;
+> -	kh = (value == KVAL(K_DOWN))
+> -	    || (value == KVAL(K_UP))
+> -	    || (value == KVAL(K_LEFT))
+> -	    || (value == KVAL(K_RIGHT));
+> +	kh = (value == KVAL(K_DOWN)) ||
+> +	    (value == KVAL(K_UP)) ||
+> +	    (value == KVAL(K_LEFT)) ||
+> +	    (value == KVAL(K_RIGHT));
+>  	if ((cursor_track != read_all_mode) || !kh)
+>  		if (!spk_no_intr)
+>  			spk_do_flush();
+> --
+> 2.11.0
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170319072403.10354-2-arushisinghal19971997%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
