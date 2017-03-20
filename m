@@ -1,129 +1,138 @@
-X-GM-THRID: 6396598979256123392
-X-Received: by 10.129.78.73 with SMTP id c70mr13156617ywb.152.1489324257692;
-        Sun, 12 Mar 2017 06:10:57 -0700 (PDT)
+X-GM-THRID: 6398760479278235648
+X-Received: by 10.99.128.72 with SMTP id j69mr8415545pgd.60.1490006081257;
+        Mon, 20 Mar 2017 03:34:41 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.10.39 with SMTP id 36ls12805512otg.33.gmail; Sun, 12 Mar
- 2017 06:10:57 -0700 (PDT)
-X-Received: by 10.129.95.133 with SMTP id t127mr14061752ywb.94.1489324257303;
-        Sun, 12 Mar 2017 06:10:57 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id 2si2708332pfx.8.2017.03.12.06.10.57
+Received: by 10.157.13.232 with SMTP id 95ls12928229ots.19.gmail; Mon, 20 Mar
+ 2017 03:34:40 -0700 (PDT)
+X-Received: by 10.13.207.66 with SMTP id r63mr13966906ywd.21.1490006080816;
+        Mon, 20 Mar 2017 03:34:40 -0700 (PDT)
+Return-Path: <aishpant@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id s67si403860pfs.4.2017.03.20.03.34.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 12 Mar 2017 06:10:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Mon, 20 Mar 2017 03:34:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id j5so16065143pfb.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 12 Mar 2017 06:10:57 -0700 (PDT)
+Received: by mail-pf0-x241.google.com with SMTP id n11so5294286pfg.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 20 Mar 2017 03:34:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=FcLpHWCNSeUIb4WFAbq8IHFh7GKa8ePE9Nh615mKxfU=;
-        b=OmfpCPDFFedDAgOmbVoQfHLJfXGdFNNTXhUsu2GaudtLxy/HHUKGUbJxemH3GV6pq5
-         L6i2pocmTKfYNZtp2JDb7gAMRh8jHO81GzrMB5DKWB/0HjxYhpJ+X6zMkVwxOgdf30fI
-         IH+pV2QYgQzU2t4DLOrugirU0SBHWytFNE2k0sXmiH/gFAbbKYXxaxcQwPs027b5ucuE
-         Gg58OtcMSkY2rOTrITlI9fQGV8qxyG1NJFsfLS7cBrO86DVYUqztXUdb5eYepCwAHGHO
-         Lb8DOmuvaRsvcV/YzXHlo39fEV6GIcwYyOE1n40HCTo5H3TZQZE/X5uPcrW80jdlRD2k
-         VPEg==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=06Goyxdldh/rBMPwub6TtpSnMRziDYaSS0otDWjsy0c=;
+        b=YTnJl4c1Xh5oRxrinK9KERUDL4Fu5z0AFdQ8+WH95wfE90V6daGdeZ77qCI8dNGr+L
+         qDOdHBC6JREUtisbSyky+mTrKKqGvKpCcbditOLRvRAAWWilEx0dpp768ArkKvfskRoj
+         VSptGDqwJgbB72TJc0XRwqP0CBMyhaalEN5+cAW/bmjLKvKSflzAJpsI0I6zOLjrH+rr
+         JYiy6TmyHo719u19Z9y+UvmWX0cz3aZeJIfl+D3zGbLA1j5ZQiDbgskl+3463wRxMlmM
+         JEBa7Lks5OIcxy3N3j9L9Phxx+gFnp9mAFHJAF9Ipx5/eym2546QkjxsZuj1TNpaO4Er
+         iaVQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=FcLpHWCNSeUIb4WFAbq8IHFh7GKa8ePE9Nh615mKxfU=;
-        b=oDSITWMVFEVXy7ho65L/LivlwK+DSXbhzun5avFcJRtNUzkjQWwN2I/yH51DPJTO2P
-         5cdY1kClRd13r0hxVVYc8mu8MQVGwGQjwbJc+LO2oaWn3h9DtQVKDZ7YgIriZC/k9SLM
-         VwcUOkg6eW/x9vrIgYTtrLWAkQ5qCzpVOa+XGHbljdQKF/JdoS5Do/7w/sZ+OCTRhRiY
-         mYsnMVUCV2XBBXhA/BWtc1U8EkYpKnT9TyUdzUzP6npBkZXNjGLhFAddEvU/jUHuZcUb
-         zInUm00nPVuOkBJ4seKCywvvrudXS3OxpBRIohNvNuSjAgxQAIs3T0//y++Pi1wXGN6o
-         vtdw==
-X-Gm-Message-State: AMke39lDkf/io3AeaaJo9RMYDahR5ZMZve7rWQZhQLVSZ4cv+FottGo4BsoL1DVqzpfCxg==
-X-Received: by 10.84.197.1 with SMTP id m1mr40795160pld.123.1489324256643;
-        Sun, 12 Mar 2017 06:10:56 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id m6sm28599801pgn.58.2017.03.12.06.10.55
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 12 Mar 2017 06:10:55 -0700 (PDT)
-Date: Sun, 12 Mar 2017 18:40:52 +0530
-From: simran singhal <singhalsimran0@gmail.com>
-To: lars@metafoo.de
-Cc: Michael.Hennerich@analog.com, jic23@kernel.org,
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=06Goyxdldh/rBMPwub6TtpSnMRziDYaSS0otDWjsy0c=;
+        b=KxpFmKbGhAxnI/9DOJdg8fDeZVZZaTDxEcuajt2Iy2sndIeShMcR1Bw+IkaENrHOlt
+         4x0592o3beiXjRe2mBAzXqA5+4O8pvRXJRvHSafQA60umO0b9CpB6aX7oCMd0Ix1XZN1
+         gURG3yJi1Qtdln5vijor4hpAHrCFRTxOKy3DuXNpJAcNKpSAuXV7kblF+fpHbnK+h1eg
+         cjc76dM1kyBcDKtVNfsWYbQ5h/xdCZSAaO/za5VnqXELB5o9TWWqRqXMawROdRAlFyJR
+         HYDcPcoeR+MtC9qQWMxinE0CwzlkZAhpuoF25YHmyoH1Y/CsFZ1zmQ2d2ovnNiZ5Syhk
+         TrIg==
+X-Gm-Message-State: AFeK/H1KgO+CHBildH0AlJq775VLTMFmsb0lH5r/q+cIdG16os4C+3FVeDPaik4liP34Vg==
+X-Received: by 10.99.158.2 with SMTP id s2mr30771684pgd.116.1490006080484;
+        Mon, 20 Mar 2017 03:34:40 -0700 (PDT)
+Return-Path: <aishpant@gmail.com>
+Received: from aishwarya ([121.244.155.10])
+        by smtp.gmail.com with ESMTPSA id s13sm32376630pfd.46.2017.03.20.03.34.37
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 20 Mar 2017 03:34:40 -0700 (PDT)
+Date: Mon, 20 Mar 2017 16:04:32 +0530
+From: Aishwarya Pant <aishpant@gmail.com>
+To: Jonathan Cameron <jic23@kernel.org>
+Cc: Lars-Peter Clausen <lars@metafoo.de>,
+	Michael Hennerich <Michael.Hennerich@analog.com>,
 	Hartmut Knaack <knaack.h@gmx.de>,
 	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: adis16060_core: Use private driver lock instead of
- mlock
-Message-ID: <20170312131052.GA21816@singhal-Inspiron-5558>
+	Barry Song <21cnbao@gmail.com>, outreachy-kernel@googlegroups.com,
+	linux-iio@vger.kernel.org
+Subject: Re: [PATCH v3] staging: iio: accel: adis16201: remove iio_dev mlock
+Message-ID: <20170320103432.GA8228@aishwarya>
+References: <20170317214356.GA8369@aishwarya>
+ <c4f803ee-8a6a-520e-2be3-bb68a57a8303@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <c4f803ee-8a6a-520e-2be3-bb68a57a8303@kernel.org>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-The IIO subsystem is redefining iio_dev->mlock to be used by
-the IIO core only for protecting device operating mode changes.
-ie. Changes between INDIO_DIRECT_MODE, INDIO_BUFFER_* modes.
+On Sun, Mar 19, 2017 at 10:19:42AM +0000, Jonathan Cameron wrote:
+> On 17/03/17 21:43, Aishwarya Pant wrote:
+> > In the driver adis16201 read raw does not require an iio_dev->mlock for
+> > reads. It can run concurrently as adis_read_reg_16() is protected by a
+> > transaction lock.
+> > 
+> > Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
+> Great, one suggestion for a follow up patch below.
+> 
+> Applied to the togreg branch of iio.git and pushed out as testing for
+> the autobuilders to play with it.
+> 
+> Thanks,
+> 
+> Jonathan
+> > 
+> > ---
+> > Changes in v3:
+> > 	-- Fix change log format
+> > 	-- Send patch to linuc-iio
+> > Changes in v2:
+> > 	-- Remove read lock
+> > 
+> >  drivers/staging/iio/accel/adis16201.c | 6 +-----
+> >  1 file changed, 1 insertion(+), 5 deletions(-)
+> > 
+> > diff --git a/drivers/staging/iio/accel/adis16201.c b/drivers/staging/iio/accel/adis16201.c
+> > index d6c8658..fd2baf2 100644
+> > --- a/drivers/staging/iio/accel/adis16201.c
+> > +++ b/drivers/staging/iio/accel/adis16201.c
+> > @@ -223,17 +223,13 @@ static int adis16201_read_raw(struct iio_dev *indio_dev,
+> >  		default:
+> >  			return -EINVAL;
+> >  		}
+> > -		mutex_lock(&indio_dev->mlock);
+> >  		addr = adis16201_addresses[chan->scan_index];
+> >  		ret = adis_read_reg_16(st, addr, &val16);
+> Not a lot of point in having the local variable addr given it's
+> only used here.  Perhaps you could follow up with a patch getting
+> rid of it?
 
-In this driver, mlock was being used to protect hardware state
-changes.  Replace it with a lock in the devices global data.
+Sure. I will look at clean-up opportunities here. 
 
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
----
- drivers/staging/iio/gyro/adis16060_core.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+But I'm unsure of where I should be rebasing from? 
+greg's staging tree or the togreg branch of the iio tree.
+https://git.kernel.org/pub/scm/linux/kernel/git/jic23/iio.git/
+According to the link, togreg was last updated 2 weeks ago.
 
-diff --git a/drivers/staging/iio/gyro/adis16060_core.c b/drivers/staging/iio/gyro/adis16060_core.c
-index c9d46e7..90a3a18 100644
---- a/drivers/staging/iio/gyro/adis16060_core.c
-+++ b/drivers/staging/iio/gyro/adis16060_core.c
-@@ -29,11 +29,13 @@
-  * @us_r:		actual spi_device to read back data
-  * @buf:		transmit or receive buffer
-  * @buf_lock:		mutex to protect tx and rx
-+ * @lock:		protect sensor state
-  **/
- struct adis16060_state {
- 	struct spi_device		*us_w;
- 	struct spi_device		*us_r;
- 	struct mutex			buf_lock;
-+	struct mutex			lock;	 /* protect sensor state */
- 
- 	u8 buf[3] ____cacheline_aligned;
- };
-@@ -87,7 +89,7 @@ static int adis16060_read_raw(struct iio_dev *indio_dev,
- 	switch (mask) {
- 	case IIO_CHAN_INFO_RAW:
- 		/* Take the iio_dev status lock */
--		mutex_lock(&indio_dev->mlock);
-+		mutex_lock(&st->lock);
- 		ret = adis16060_spi_write(indio_dev, chan->address);
- 		if (ret < 0)
- 			goto out_unlock;
-@@ -96,7 +98,7 @@ static int adis16060_read_raw(struct iio_dev *indio_dev,
- 		if (ret < 0)
- 			goto out_unlock;
- 
--		mutex_unlock(&indio_dev->mlock);
-+		mutex_unlock(&st->lock);
- 		*val = tval;
- 		return IIO_VAL_INT;
- 	case IIO_CHAN_INFO_OFFSET:
-@@ -112,7 +114,7 @@ static int adis16060_read_raw(struct iio_dev *indio_dev,
- 	return -EINVAL;
- 
- out_unlock:
--	mutex_unlock(&indio_dev->mlock);
-+	mutex_unlock(&st->lock);
- 	return ret;
- }
- 
--- 
-2.7.4
+thanks
+Aishwarya
 
+
+> > -		if (ret) {
+> > -			mutex_unlock(&indio_dev->mlock);
+> > +		if (ret)
+> >  			return ret;
+> > -		}
+> >  		val16 &= (1 << bits) - 1;
+> >  		val16 = (s16)(val16 << (16 - bits)) >> (16 - bits);
+> >  		*val = val16;
+> > -		mutex_unlock(&indio_dev->mlock);
+> >  		return IIO_VAL_INT;
+> >  	}
+> >  	return -EINVAL;
+> > 
+> 
 
