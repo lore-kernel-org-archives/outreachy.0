@@ -1,55 +1,55 @@
 X-GM-THRID: 6399601653123645440
-X-Received: by 10.99.110.73 with SMTP id j70mr17028757pgc.143.1490036182752;
-        Mon, 20 Mar 2017 11:56:22 -0700 (PDT)
+X-Received: by 10.13.194.198 with SMTP id e189mr2463808ywd.155.1490035846106;
+        Mon, 20 Mar 2017 11:50:46 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.158.204 with SMTP id h195ls3813300ioe.3.gmail; Mon, 20 Mar
- 2017 11:56:21 -0700 (PDT)
-X-Received: by 10.99.116.72 with SMTP id e8mr15488584pgn.92.1490036181899;
-        Mon, 20 Mar 2017 11:56:21 -0700 (PDT)
+Received: by 10.107.184.8 with SMTP id i8ls3834571iof.24.gmail; Mon, 20 Mar
+ 2017 11:50:45 -0700 (PDT)
+X-Received: by 10.99.158.9 with SMTP id s9mr16135150pgd.128.1490035845057;
+        Mon, 20 Mar 2017 11:50:45 -0700 (PDT)
 Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id g82si2890608pfb.5.2017.03.20.11.56.21
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id y90si3001633pfa.6.2017.03.20.11.50.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 20 Mar 2017 11:56:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Mon, 20 Mar 2017 11:50:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id n11so7274550pfg.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 20 Mar 2017 11:56:21 -0700 (PDT)
+Received: by mail-pf0-x241.google.com with SMTP id p189so13072814pfp.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 20 Mar 2017 11:50:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=yaQP9gvpb4xbqDYdoUuDz61v/jVZugHUHhYcLIjGUNE=;
-        b=dXh6+ztbHx8RN/7F9jxr7kYuWu4eqHBTsukbo9aTaBNEYNz7fSF3qrOzs7gIFO9Jd8
-         9Oi8oBSx3dedh01dO86buh/h+e44stP4z3e/0qYw6IljJKqo43SesTVImaC6mMNDUih4
-         7UP1vgq6EdZR24+LCmKQKk77jduhG5xlzbJCWdKo5mBRpDtVmQcnEl/Pmvu8LBLLloff
-         ADzVNtCkxfDGfTwF7NK1Z45K6DACIEEDcO//lrTRbGNP/30oUjXn09elSicHJUCRqm3D
-         qx5pYbPxUUWTPEQd5U1hx/CeaFwZzdnw8M3DA45k1TNjA8ZFgc4oqXGz3q2xV7RYYaxH
-         C42g==
+        bh=PKeJ3NouCrd01fpXbiUniZCeshpoBrSFqwkL/9934PY=;
+        b=Cu/KwlwOe9SKscZWIQ5ZRg+TRw/2NAN0LJbY0UIQHG6mAQtTi5qqJ2qBeKowSFgtiI
+         HAs3ZbZ/HvtkARH2jaJN0/Xdtpho95AcLNHmvb23Lo2gZvJEYB1yUwr8DCf4SbjrAHkU
+         5P7/2AnirqqPw4bUBuCiphfsape6OtnbPJeyB9Bq0hMIKJfA7Hm3+caMxRRQKRR6mLCj
+         Y6XwqNw2P/12NNGtek4lgLgbooVGNZ7jqb0weBAylB+CYAEIxfbNrOyAvi8hW7KDk81B
+         gjCtijqsIVqbSNqepIzFk8e17jCwTuo1GZ4/ffundoludm+6NM6O8ndS5ex0V5DQi2Xs
+         MGyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=yaQP9gvpb4xbqDYdoUuDz61v/jVZugHUHhYcLIjGUNE=;
-        b=f8lHrW6Nla1DT4SxSQygc9Uo0AZ2vR6EwzGoitOVOcUExh5xXzOTyI5tbpi+deCGbd
-         dUvnRGnHbmngtSgQ0prFK/8Rn7Qg8blnfxuZWwX/8o30oEqHOb8FSzqQ8Phb+3uN7RWA
-         4zi7a8weSDuVgABMiUZBfy51v2F4GxpjWgC8OgKK8i0FB5owC01iattJC1IuS7FXSRNo
-         ZZL9Xb3noIlB9HhzcsHvSLyD/fvhgKo7hcPo0FMEzNioeooxglue3rgO314m/ecYjili
-         bZb4jVf4Hezrp3fmxisGHc1D4lOg78Db4uqmn2eKChrd3IVd33WrcGEd53zzudcQ71i0
-         Qlfg==
-X-Gm-Message-State: AFeK/H0jMTHv7dIwTE3L2negjiPHzkhhc97beqjVGJSKp+6rr8fUGTvF7SJ1oG2rhardJg==
-X-Received: by 10.99.181.25 with SMTP id y25mr2315150pge.214.1490036181237;
-        Mon, 20 Mar 2017 11:56:21 -0700 (PDT)
+        bh=PKeJ3NouCrd01fpXbiUniZCeshpoBrSFqwkL/9934PY=;
+        b=S/J7ydb1h5HnfxbHIY32HJl7rV6uHiJrT3C4UUijuC8HGR2CdXjGgS7Wg2X0cAKJyo
+         8pIJB8BoQJJrw3Cvw9FLwHYN4s4XmENu27DelIhmNWmTzuLOmQKUr/3JKeSgN+Qnr4xY
+         KZZ/J5ptvTUsKuqh1NN2Gr/KhqXndPnllzgVCBmPfX2OGkTA/jvze2/Yw+iKQtMnuVyV
+         FE7CnA0blsi1qiALIrNsMEKfjSCaaDT2yuNYjNSJAt13LZ3DTGrpfH1EqFVmNg6chbGn
+         2TQa8qDCxw2LUSIabIHPI7kcKJTWRXgnW1ZACNtyaBRvzsRtffkeJKDUWbxLvBCLimsC
+         e0iA==
+X-Gm-Message-State: AFeK/H35jxJazoFEueCE/WmOHtl0IRFSRzdljeFXW2UMrp/r0MnHbOCIrIP8FmR1TNe9LQ==
+X-Received: by 10.84.230.129 with SMTP id e1mr42116723plk.66.1490035844368;
+        Mon, 20 Mar 2017 11:50:44 -0700 (PDT)
 Return-Path: <arushisinghal19971997@gmail.com>
 Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id h71sm34692697pfj.65.2017.03.20.11.56.19
+        by smtp.gmail.com with ESMTPSA id q64sm34846912pga.0.2017.03.20.11.50.42
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 20 Mar 2017 11:56:20 -0700 (PDT)
-Date: Tue, 21 Mar 2017 00:26:16 +0530
+        Mon, 20 Mar 2017 11:50:42 -0700 (PDT)
+Date: Tue, 21 Mar 2017 00:20:37 +0530
 From: Arushi Singhal <arushisinghal19971997@gmail.com>
 To: lars@metafoo.de
 Cc: Michael Hennerich <Michael.Hennerich@analog.com>,
@@ -59,8 +59,8 @@ Cc: Michael Hennerich <Michael.Hennerich@analog.com>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH v3] staging: ad7606: Replace mlock with driver private lock
-Message-ID: <20170320185616.GA17444@arushi-HP-Pavilion-Notebook>
+Subject: [PATCH v2] staging: ad7606: Replace mlock with driver private lock
+Message-ID: <20170320185037.GA17345@arushi-HP-Pavilion-Notebook>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -75,15 +75,15 @@ changes.  Replace it with a lock in the devices global data.
 
 Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
 ---
- changes in v3
- - Add mutex_init.
+ changes in v2
+ - add mutex_init.
 
  drivers/staging/iio/adc/ad7606.c | 9 +++++----
  drivers/staging/iio/adc/ad7606.h | 2 ++
  2 files changed, 7 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/staging/iio/adc/ad7606.c b/drivers/staging/iio/adc/ad7606.c
-index 9dbfa64b1e53..18f5f139117e 100644
+index 9dbfa64b1e53..b58641369596 100644
 --- a/drivers/staging/iio/adc/ad7606.c
 +++ b/drivers/staging/iio/adc/ad7606.c
 @@ -208,7 +208,7 @@ static int ad7606_write_raw(struct iio_dev *indio_dev,
@@ -122,7 +122,7 @@ index 9dbfa64b1e53..18f5f139117e 100644
  	st = iio_priv(indio_dev);
  
  	st->dev = dev;
-+	mutex_init(&st->lock);
++	mutex_init(&chip->state_lock);
  	st->bops = bops;
  	st->base_address = base_address;
  	/* tied to logic low, analog input range is +/- 5V */
