@@ -1,179 +1,143 @@
-X-GM-THRID: 6401092541833281536
-X-Received: by 10.99.137.66 with SMTP id v63mr2696972pgd.171.1490370496813;
-        Fri, 24 Mar 2017 08:48:16 -0700 (PDT)
+X-GM-THRID: 6399382286818607104
+X-Received: by 10.157.36.99 with SMTP id p90mr12482342ota.7.1489972296751;
+        Sun, 19 Mar 2017 18:11:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.144.11 with SMTP id s11ls2312322iod.14.gmail; Fri, 24 Mar
- 2017 08:48:15 -0700 (PDT)
-X-Received: by 10.98.141.69 with SMTP id z66mr2233157pfd.16.1490370495850;
-        Fri, 24 Mar 2017 08:48:15 -0700 (PDT)
+Received: by 10.157.33.39 with SMTP id i36ls4794487otb.24.gmail; Sun, 19 Mar
+ 2017 18:11:36 -0700 (PDT)
+X-Received: by 10.157.11.109 with SMTP id p42mr12524413otd.14.1489972296373;
+        Sun, 19 Mar 2017 18:11:36 -0700 (PDT)
 Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id y90si587210pfa.6.2017.03.24.08.48.15
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id s67si195913pfs.4.2017.03.19.18.11.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 24 Mar 2017 08:48:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Sun, 19 Mar 2017 18:11:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id 81so1177173pgh.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 24 Mar 2017 08:48:15 -0700 (PDT)
+Received: by mail-pf0-x244.google.com with SMTP id o126so14964461pfb.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 19 Mar 2017 18:11:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=KyZhknm6IyZKZ2GR/xqseovS9YoRjK0FfyDFROPcRCw=;
-        b=vLIF33nQYpN5DRpdtkj3f8Q8l1OkySf8BHQNmn2jOUXuAeGtNC3/teCceKV8j++2lr
-         o0E8/8Cj7ZhQ0t3Hi/iPpMSzxNQmxbXxaJP93CqUCS++uQWcUK6+pAMRrcdjeFjIw9zJ
-         33KnpdHWpoC2QZkzT48atQnbWSHVgHK327hvk9zbRPx1+KXqzLmbrtogJ3bJt3gVHy+V
-         cf7ZWeVXAMfFvTE2LstZkKR02cHvZ9nTGMHEWteuebVhZ6b09fb4oEb4lciFM3dn5jFt
-         a/fn5EUBU3cethh6ncEbvNDjmLFk53+q0n3bdD1fTmJNwQZlPVWGKrNPFESlzEGit24F
-         yoag==
+        bh=+eBTjyKtrzFKQQbBUs5njc8dF6PsWrOdWdjCUGNxnBk=;
+        b=VsHeQVMmS5Bi6c90IYt13x4DnhAqhJU5hdWHmNoMYJ0U2YMlLW5d2xilIjtN4SYYHs
+         +hVz/RQ1ENNxVl35hXXfwQooaEYbEUmCEFEFwC3WGPa6HOaGG8S/bXKbzI8Vx1XqHn/+
+         tlyQhpVqsuDpnGL2cfG3jZ8XoniAHMTgqOU230hmddViD3Nw1W6sq08ifrOuqG7yCHb3
+         eArX4SV+p9MbQrWFPtG1+oZDU4ZrQJTQ+iAsQXljv/Nf+NW+VbQFFtuejBCBA01QOc0m
+         X8YBIyA4WHar2pBxvLpBI9NpzQfNlzBODNqvNN+QCvKDzA2fjPoLNNQJJQqL8+VgYUOO
+         YZdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=KyZhknm6IyZKZ2GR/xqseovS9YoRjK0FfyDFROPcRCw=;
-        b=HCIs9BFkEi/aD0ra89o/tvAKFhYgn9itEZQJM65ws8lHnKYx2GZU7o+8VUkTmWLD3i
-         ceJySEqnhPVZXVXovFJo5F5qly9iFtyCCd1EKaNwpIoxo+Hco/dgrTyBCj5eXnyUBWZ3
-         8+vgLvP6jOBU69cs/JBeYq+BQZZCb485NX/+hf4Pdk3WpvAXt4ay+fk7B/eqpzY6R+34
-         d7EOWTnTAPgAaADDZ3n8oCDjI4aNQ4rN6w5wnckmDwm6++OEM9G9DUyfgBICfYLn1DpY
-         2uYHnETFUN705NKPjyIXgS4hBQUj7PifkAx8IB0rsqtd8Z0dOtyk1KfUcZhIetYAtFB3
-         534A==
-X-Gm-Message-State: AFeK/H1eOIjXfmaPF8Hk4uP8t+yyBTOYusXD9kQ/VCbINWwCA2r06RRObjUYt9eVDDZ3WA==
-X-Received: by 10.98.30.199 with SMTP id e190mr2069650pfe.205.1490370495599;
-        Fri, 24 Mar 2017 08:48:15 -0700 (PDT)
+        bh=+eBTjyKtrzFKQQbBUs5njc8dF6PsWrOdWdjCUGNxnBk=;
+        b=pPUm+crOJwNROf0UNUQCXfO0feJJbfB6iGQrVOqovB+2E0dg4SuvxpbhXPBbILcTEz
+         Z0Wf2hz51pKnJU8t9svkVLJRYiznSy8hD0OHB255m+/5SdA3qcy1erOTL3EUtI7r9QQl
+         QB4BLQpjTV+L6GFTcqATP/lUrPlV6RczQOuZZ+vu9jI+Rr6GeflIl8DWT8+Ktblt2Gjd
+         z+3A8TAtnEi7nz3TUki5aOpYhPm+OIQHYqvImMPjNUu2EuzF7B5aGSrhcBQVWsBnoAbX
+         NRKdZqo26alzRVZKDeynftNPyVEBPEQdK2ogl/HFBzKvxiodaNNupDDZK5/jPSJ2WiPH
+         5e9g==
+X-Gm-Message-State: AFeK/H1Oh9zF3mBuojjolf+CgsfEusx+lG+I6uGMsSiDpm1QsJHmMlJajACDWbiLfpZxlg==
+X-Received: by 10.84.139.195 with SMTP id 61mr37213677plr.109.1489972295615;
+        Sun, 19 Mar 2017 18:11:35 -0700 (PDT)
 Return-Path: <arushisinghal19971997@gmail.com>
 Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id a5sm5522219pfh.124.2017.03.24.08.48.13
+        by smtp.gmail.com with ESMTPSA id c16sm28880837pfl.7.2017.03.19.18.11.33
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 24 Mar 2017 08:48:14 -0700 (PDT)
-Date: Fri, 24 Mar 2017 21:18:09 +0530
+        Sun, 19 Mar 2017 18:11:34 -0700 (PDT)
+Date: Mon, 20 Mar 2017 06:41:31 +0530
 From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: mchehab@kernel.org
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-media@vger.kernel.org, devel@driverdev.osuosl.org,
+To: w.d.hubbs@gmail.com
+Cc: Chris Brannon <chris@the-brannons.com>, Kirk Reiser <kirk@reisers.ca>,
+	Samuel Thibault <samuel.thibault@ens-lyon.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	speakup@linux-speakup.org, devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: media: atomisp:Replace a bit shift.
-Message-ID: <20170324154809.GA12158@arushi-HP-Pavilion-Notebook>
+Subject: [PATCH] staging: speakup: Match alignment with open parenthesis.
+Message-ID: <20170320011131.GA22169@arushi-HP-Pavilion-Notebook>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-This patch replaces bit shifting on 1 with the BIT(x) macro.
-This was done with coccinelle:
-@@
-constant c;
-@@
-
--1 << c
-+BIT(c)
+Fix checkpatch issues: "CHECK: Alignment should match open parenthesis".
 
 Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
 ---
-changes in v2
- -remove the unnecessary parenthesis.
+ drivers/staging/speakup/main.c           | 2 +-
+ drivers/staging/speakup/selection.c      | 2 +-
+ drivers/staging/speakup/serialio.c       | 2 +-
+ drivers/staging/speakup/speakup_acntpc.c | 6 +++---
+ 4 files changed, 6 insertions(+), 6 deletions(-)
 
- drivers/staging/media/atomisp/pci/atomisp2/atomisp_cmd.c  | 12 ++++++------
- drivers/staging/media/atomisp/pci/atomisp2/atomisp_v4l2.c | 10 +++++-----
- 2 files changed, 11 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_cmd.c b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_cmd.c
-index 94bc7938f533..8edcde282ec9 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_cmd.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_cmd.c
-@@ -194,7 +194,7 @@ static int write_target_freq_to_hw(struct atomisp_device *isp,
- 	if (isp_sspm1 & ISP_FREQ_VALID_MASK) {
- 		dev_dbg(isp->dev, "clearing ISPSSPM1 valid bit.\n");
- 		intel_mid_msgbus_write32(PUNIT_PORT, ISPSSPM1,
--				    isp_sspm1 & ~(1 << ISP_FREQ_VALID_OFFSET));
-+				    isp_sspm1 & ~BIT(ISP_FREQ_VALID_OFFSET));
+diff --git a/drivers/staging/speakup/main.c b/drivers/staging/speakup/main.c
+index 7568e8149613..55bf7af1d6ea 100644
+--- a/drivers/staging/speakup/main.c
++++ b/drivers/staging/speakup/main.c
+@@ -1160,7 +1160,7 @@ static void spkup_write(const u16 *in_buf, int count)
+ 		if (last_type & CH_RPT) {
+ 			synth_printf(" ");
+ 			synth_printf(spk_msg_get(MSG_REPEAT_DESC2),
+-					++rep_count);
++				     ++rep_count);
+ 			synth_printf(" ");
+ 		}
+ 		rep_count = 0;
+diff --git a/drivers/staging/speakup/selection.c b/drivers/staging/speakup/selection.c
+index 4417c00e68a7..08f68fc2864e 100644
+--- a/drivers/staging/speakup/selection.c
++++ b/drivers/staging/speakup/selection.c
+@@ -75,7 +75,7 @@ int speakup_set_selection(struct tty_struct *tty)
+ 		speakup_clear_selection();
+ 		spk_sel_cons = vc_cons[fg_console].d;
+ 		dev_warn(tty->dev,
+-			"Selection: mark console not the same as cut\n");
++			 "Selection: mark console not the same as cut\n");
+ 		return -EINVAL;
  	}
  
- 	ratio = (2 * isp->hpll_freq + new_freq / 2) / new_freq - 1;
-@@ -207,7 +207,7 @@ static int write_target_freq_to_hw(struct atomisp_device *isp,
- 		intel_mid_msgbus_write32(PUNIT_PORT, ISPSSPM1,
- 				   isp_sspm1
- 				   | ratio << ISP_REQ_FREQ_OFFSET
--				   | 1 << ISP_FREQ_VALID_OFFSET
-+				   | BIT(ISP_FREQ_VALID_OFFSET)
- 				   | guar_ratio << ISP_REQ_GUAR_FREQ_OFFSET);
- 
- 		isp_sspm1 = intel_mid_msgbus_read32(PUNIT_PORT, ISPSSPM1);
-@@ -417,10 +417,10 @@ void atomisp_msi_irq_init(struct atomisp_device *isp, struct pci_dev *dev)
- 	u16 msg16;
- 
- 	pci_read_config_dword(dev, PCI_MSI_CAPID, &msg32);
--	msg32 |= 1 << MSI_ENABLE_BIT;
-+	msg32 |= BIT(MSI_ENABLE_BIT);
- 	pci_write_config_dword(dev, PCI_MSI_CAPID, msg32);
- 
--	msg32 = (1 << INTR_IER) | (1 << INTR_IIR);
-+	msg32 = BIT(INTR_IER) | BIT(INTR_IIR);
- 	pci_write_config_dword(dev, PCI_INTERRUPT_CTRL, msg32);
- 
- 	pci_read_config_word(dev, PCI_COMMAND, &msg16);
-@@ -435,7 +435,7 @@ void atomisp_msi_irq_uninit(struct atomisp_device *isp, struct pci_dev *dev)
- 	u16 msg16;
- 
- 	pci_read_config_dword(dev, PCI_MSI_CAPID, &msg32);
--	msg32 &=  ~(1 << MSI_ENABLE_BIT);
-+	msg32 &=  ~BIT(MSI_ENABLE_BIT);
- 	pci_write_config_dword(dev, PCI_MSI_CAPID, msg32);
- 
- 	msg32 = 0x0;
-@@ -536,7 +536,7 @@ static void clear_irq_reg(struct atomisp_device *isp)
- {
- 	u32 msg_ret;
- 	pci_read_config_dword(isp->pdev, PCI_INTERRUPT_CTRL, &msg_ret);
--	msg_ret |= 1 << INTR_IIR;
-+	msg_ret |= BIT(INTR_IIR);
- 	pci_write_config_dword(isp->pdev, PCI_INTERRUPT_CTRL, msg_ret);
- }
- 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_v4l2.c b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_v4l2.c
-index 626d2f114d8d..b1f685a841ba 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_v4l2.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_v4l2.c
-@@ -330,11 +330,11 @@ static int atomisp_mrfld_pre_power_down(struct atomisp_device *isp)
- 	 * IRQ, if so, waiting for it to be served
- 	 */
- 	pci_read_config_dword(dev, PCI_INTERRUPT_CTRL, &irq);
--	irq = irq & 1 << INTR_IIR;
-+	irq = irq & BIT(INTR_IIR);
- 	pci_write_config_dword(dev, PCI_INTERRUPT_CTRL, irq);
- 
- 	pci_read_config_dword(dev, PCI_INTERRUPT_CTRL, &irq);
--	if (!(irq & (1 << INTR_IIR)))
-+	if (!(irq & BIT(INTR_IIR)))
- 		goto done;
- 
- 	atomisp_store_uint32(MRFLD_INTR_CLEAR_REG, 0xFFFFFFFF);
-@@ -347,11 +347,11 @@ static int atomisp_mrfld_pre_power_down(struct atomisp_device *isp)
- 		return -EAGAIN;
- 	} else {
- 		pci_read_config_dword(dev, PCI_INTERRUPT_CTRL, &irq);
--		irq = irq & 1 << INTR_IIR;
-+		irq = irq & BIT(INTR_IIR);
- 		pci_write_config_dword(dev, PCI_INTERRUPT_CTRL, irq);
- 
- 		pci_read_config_dword(dev, PCI_INTERRUPT_CTRL, &irq);
--		if (!(irq & (1 << INTR_IIR))) {
-+		if (!(irq & BIT(INTR_IIR))) {
- 			atomisp_store_uint32(MRFLD_INTR_ENABLE_REG, 0x0);
- 			goto done;
+diff --git a/drivers/staging/speakup/serialio.c b/drivers/staging/speakup/serialio.c
+index e860e48818a4..5e31acac19de 100644
+--- a/drivers/staging/speakup/serialio.c
++++ b/drivers/staging/speakup/serialio.c
+@@ -125,7 +125,7 @@ static void start_serial_interrupt(int irq)
+ 		pr_err("Unable to request Speakup serial I R Q\n");
+ 	/* Set MCR */
+ 	outb(UART_MCR_DTR | UART_MCR_RTS | UART_MCR_OUT2,
+-			speakup_info.port_tts + UART_MCR);
++	     speakup_info.port_tts + UART_MCR);
+ 	/* Turn on Interrupts */
+ 	outb(UART_IER_MSI|UART_IER_RLSI|UART_IER_RDI,
+ 			speakup_info.port_tts + UART_IER);
+diff --git a/drivers/staging/speakup/speakup_acntpc.c b/drivers/staging/speakup/speakup_acntpc.c
+index b4058bd82e42..ad72f8e883fc 100644
+--- a/drivers/staging/speakup/speakup_acntpc.c
++++ b/drivers/staging/speakup/speakup_acntpc.c
+@@ -261,9 +261,9 @@ static int synth_probe(struct spk_synth *synth)
+ 	if (port_forced) {
+ 		speakup_info.port_tts = port_forced;
+ 		pr_info("probe forced to %x by kernel command line\n",
+-				speakup_info.port_tts);
++			speakup_info.port_tts);
+ 		if (synth_request_region(speakup_info.port_tts - 1,
+-					SYNTH_IO_EXTENT)) {
++					 SYNTH_IO_EXTENT)) {
+ 			pr_warn("sorry, port already reserved\n");
+ 			return -EBUSY;
  		}
-@@ -370,7 +370,7 @@ static int atomisp_mrfld_pre_power_down(struct atomisp_device *isp)
- 	* HW sighting:4568410.
- 	*/
- 	pci_read_config_dword(dev, PCI_INTERRUPT_CTRL, &irq);
--	irq &= ~(1 << INTR_IER);
-+	irq &= ~BIT(INTR_IER);
- 	pci_write_config_dword(dev, PCI_INTERRUPT_CTRL, irq);
- 
- 	atomisp_msi_irq_uninit(isp, dev);
+@@ -272,7 +272,7 @@ static int synth_probe(struct spk_synth *synth)
+ 	} else {
+ 		for (i = 0; synth_portlist[i]; i++) {
+ 			if (synth_request_region(synth_portlist[i],
+-						SYNTH_IO_EXTENT)) {
++						 SYNTH_IO_EXTENT)) {
+ 				pr_warn
+ 				    ("request_region: failed with 0x%x, %d\n",
+ 				     synth_portlist[i], SYNTH_IO_EXTENT);
 -- 
 2.11.0
 
