@@ -1,53 +1,52 @@
 X-GM-THRID: 6399553954141700096
-X-Received: by 10.25.24.65 with SMTP id o62mr3177389lfi.8.1490012278758;
-        Mon, 20 Mar 2017 05:17:58 -0700 (PDT)
+X-Received: by 10.46.7.80 with SMTP id i16mr3852256ljd.5.1490012266009;
+        Mon, 20 Mar 2017 05:17:46 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.33.101 with SMTP id h98ls143492ljh.2.gmail; Mon, 20 Mar
- 2017 05:17:58 -0700 (PDT)
-X-Received: by 10.25.77.149 with SMTP id a143mr3388133lfb.26.1490012278029;
-        Mon, 20 Mar 2017 05:17:58 -0700 (PDT)
+Received: by 10.46.69.2 with SMTP id s2ls206648lja.46.gmail; Mon, 20 Mar 2017
+ 05:17:44 -0700 (PDT)
+X-Received: by 10.25.196.68 with SMTP id u65mr3414221lff.0.1490012264800;
+        Mon, 20 Mar 2017 05:17:44 -0700 (PDT)
 Return-Path: <narcisaanamaria12@gmail.com>
-Received: from mail-wr0-x242.google.com (mail-wr0-x242.google.com. [2a00:1450:400c:c0c::242])
-        by gmr-mx.google.com with ESMTPS id b186si1135510wme.1.2017.03.20.05.17.57
+Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
+        by gmr-mx.google.com with ESMTPS id t131si671148wmf.1.2017.03.20.05.17.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 20 Mar 2017 05:17:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c0c::242 as permitted sender) client-ip=2a00:1450:400c:c0c::242;
+        Mon, 20 Mar 2017 05:17:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c0c::242 as permitted sender) smtp.mailfrom=narcisaanamaria12@gmail.com;
+       spf=pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=narcisaanamaria12@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x242.google.com with SMTP id l37so17791605wrc.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 20 Mar 2017 05:17:57 -0700 (PDT)
+Received: by mail-wm0-x241.google.com with SMTP id z133so14159322wmb.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 20 Mar 2017 05:17:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=96ZPEG7wEKMs7XSeAwq3o5JotMCLi1HzqJn1he5FfSk=;
-        b=Y9/ZW5QbniWR6BA61e4IfS/wjQrpEFyq+0LPxSy4S7TBJ5Kw7GmvBvM2JrnxMGNbcR
-         UKhNHTIRRoeffZGFlTM7Kc0CwgwtO3rroHl7gOxuSRGja1Q9M8HXtrc53Z9bsLfH5QnZ
-         ZL6p7vjiaxkUj31FtCAk27LxDBqC5GYS87jqfDtUeyQiaikKcsftclRAhr12KPv+O8yY
-         dayHZKEPDYfw7+rM98OGGGnWs1ph0kKoKX42enxqZ/0BPQSgAs6l6NmEw2IYr2iw5RGf
-         tqhJ3nmfaFsjOQpBAQAN0vodvczIe/CN/ysQO5Cp+dSXnxnb8B0pS1SvU1uKZLTmZ7bk
-         /CUw==
+        h=from:to:cc:subject:date:message-id;
+        bh=sH8NNCD4NzF9em5TmtYaEyQsGQ/YO+Ms8I3kkbRhNFc=;
+        b=Kf6jDtmsihvJvZdCQYRoDEdu0Kl0Sbql949BNMQB7BpLy8nXL4djEHeEB070LIgGYc
+         ZZFiswekzT2GXGwkW/jzsSaZ92vExPdknJuTboKeMn+s/bUFkt4FyguGkYUzjiAwhdU4
+         GRNui+XShzMHJBYMa64hrhAGxFcBtKyiRjt2I1ErKiv+GAjtpQm5X4vNWS0TSAF+7JjB
+         UdjrHp1mPxnn0Lsg2/xU1IdndxFm2JDlo2tLUvvc/cMhn8eykgE1SaSFaSCvpnf4EsVO
+         W/RfWoyRWm0s7TNPheQCUtTa4fayfx1KtJd89rwxb5QKElnk9T5smM52gamNtfLJKcRX
+         oOjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=96ZPEG7wEKMs7XSeAwq3o5JotMCLi1HzqJn1he5FfSk=;
-        b=iNyw+jHyYzHSlPcxIFl5ak8w4qR1biEMamGZPPwQrIzKag+HsMmKJ7YiEopoKy4NC3
-         km5qRZzfx1R812wqforPUb6snnbAucyELn//X0tpMLvdz/kG/yFBYGzVq1PFY7oT83er
-         liXzedPzO8ofLZSWtTDvHC+5nR3if+bljVUkKOvErTT7IuedWInr3Mrrkw6QyRlnlF/z
-         dNn0mK40xiso3Clsd6zi45g1hqenxm/mfKx9SCGGn/xI0P7/iv00JyoxnjzBEWR8dOud
-         z+hJ4oCMgdinoTmxORTY9gvX7NDFFVN4cxSHcjLs6KTNEttIKDAg2nPdfq0NpVhrQ+VM
-         F0Hw==
-X-Gm-Message-State: AFeK/H1vVDojnb2gB3npn0cRXanZVJYJQeLsClD4QHpmNB3sH+SdzsuJYItvFnPGeUsCag==
-X-Received: by 10.223.131.97 with SMTP id 88mr22543668wrd.129.1490012277860;
-        Mon, 20 Mar 2017 05:17:57 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=sH8NNCD4NzF9em5TmtYaEyQsGQ/YO+Ms8I3kkbRhNFc=;
+        b=cRaizACBN/WV6oBAfAfYCEGsftrpP09mgilnSaYfKEn6LNG1Y4ViqF3vTzaeFbDED3
+         PtJAo5x9AqgkKXHRskfHRXCD9MzVwSHsPPhPUCytevdAbXKehIvMChXHL0f/WX0hvv6m
+         ePFH/EmfLTv3/pP/kJp1Nnj8+o02kyg88Zn1wOKNGPWaRS0JB7fcpzWCHfa0UwjxyQcM
+         mTjPjH3gg/nXBMi/LsyfbePeGfzN9gd33IwUYIlGCJEdvzDewAWRDUi31s9TWfwLTq9I
+         CHJIKtMKE+LU2rfZs0m/t3wWKllLaZadLVAHSfIKND7+FaGZ82mnd+VnPH00JN1tBC9j
+         62Kw==
+X-Gm-Message-State: AFeK/H0KyilDvvMm1e4P6xEq11VRMBalaKZl9HHNqlCvA2tnGg/lhfZJ4nH0duK3Gbo/dw==
+X-Received: by 10.28.36.86 with SMTP id k83mr10549429wmk.90.1490012264595;
+        Mon, 20 Mar 2017 05:17:44 -0700 (PDT)
 Return-Path: <narcisaanamaria12@gmail.com>
 Received: from localhost.localdomain (p22.eregie.pub.ro. [141.85.0.122])
-        by smtp.gmail.com with ESMTPSA id o15sm13289323wmd.10.2017.03.20.05.17.56
+        by smtp.gmail.com with ESMTPSA id s17sm20724486wrc.25.2017.03.20.05.17.40
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 20 Mar 2017 05:17:57 -0700 (PDT)
+        Mon, 20 Mar 2017 05:17:44 -0700 (PDT)
 From: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
 To: lars@metafoo.de,
 	Michael.Hennerich@analog.com,
@@ -57,56 +56,24 @@ To: lars@metafoo.de,
 	gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com,
 	Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
-Subject: [PATCH 1/3] staging: iio: adt7136: Remove unnecessary blank lines
-Date: Mon, 20 Mar 2017 14:17:50 +0200
-Message-Id: <3941cd3fba0290bbe6bbd23c3a05e3d195deb0f4.1490011900.git.narcisaanamaria12@gmail.com>
+Subject: [PATCH 0/3] staging: iio: Fix multiple checkpatch issues
+Date: Mon, 20 Mar 2017 14:17:22 +0200
+Message-Id: <cover.1490011900.git.narcisaanamaria12@gmail.com>
 X-Mailer: git-send-email 1.9.1
-In-Reply-To: <cover.1490011900.git.narcisaanamaria12@gmail.com>
-References: <cover.1490011900.git.narcisaanamaria12@gmail.com>
 
-This was reported by checkpatch.pl
+This patchset fixes multiple whitespace and alignment issues
+reported by checkpatch.pl
 
-Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
----
- drivers/staging/iio/addac/adt7316.c | 4 ----
- 1 file changed, 4 deletions(-)
+Narcisa Ana Maria Vasile (3):
+  staging: iio: adt7136: Remove unnecessary blank lines
+  staging: iio: Add blank lines after function declarations
+  staging: iio: cdc: ad7746: Fix alignment with paranthesis
 
-diff --git a/drivers/staging/iio/addac/adt7316.c b/drivers/staging/iio/addac/adt7316.c
-index aa251c2..872fac6 100644
---- a/drivers/staging/iio/addac/adt7316.c
-+++ b/drivers/staging/iio/addac/adt7316.c
-@@ -244,7 +244,6 @@ static ssize_t _adt7316_store_enabled(struct adt7316_chip_info *chip,
- 	chip->config1 = config1;
- 
- 	return ret;
--
- }
- 
- static ssize_t adt7316_store_enabled(struct device *dev,
-@@ -434,7 +433,6 @@ static ssize_t adt7316_store_ad_channel(struct device *dev,
- 		config2 = chip->config2 & (~ADT7316_AD_SINGLE_CH_MASK);
- 	}
- 
--
- 	config2 |= data;
- 
- 	ret = chip->bus.write(chip->bus.client, ADT7316_CONFIG2, config2);
-@@ -725,7 +723,6 @@ static IIO_DEVICE_ATTR(AIN_internal_Vref, 0644,
- 		adt7316_store_AIN_internal_Vref,
- 		0);
- 
--
- static ssize_t adt7316_show_enable_prop_DACA(struct device *dev,
- 		struct device_attribute *attr,
- 		char *buf)
-@@ -925,7 +922,6 @@ static ssize_t adt7316_show_all_DAC_update_modes(struct device *dev,
- static IIO_DEVICE_ATTR(all_DAC_update_modes, 0444,
- 		adt7316_show_all_DAC_update_modes, NULL, 0);
- 
--
- static ssize_t adt7316_store_update_DAC(struct device *dev,
- 		struct device_attribute *attr,
- 		const char *buf,
+ drivers/staging/iio/addac/adt7316.c | 5 +----
+ drivers/staging/iio/cdc/ad7152.c    | 1 +
+ drivers/staging/iio/cdc/ad7746.c    | 2 +-
+ 3 files changed, 3 insertions(+), 5 deletions(-)
+
 -- 
 1.9.1
 
