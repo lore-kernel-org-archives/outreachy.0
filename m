@@ -1,132 +1,114 @@
-X-GM-THRID: 6257139046088179712
-X-Received: by 10.107.18.216 with SMTP id 85mr24144001ios.16.1456853711025;
-        Tue, 01 Mar 2016 09:35:11 -0800 (PST)
+X-GM-THRID: 6399941946737950720
+X-Received: by 10.99.167.73 with SMTP id w9mr18769434pgo.102.1490112986283;
+        Tue, 21 Mar 2017 09:16:26 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.106.9 with SMTP id d9ls3091703qgf.38.gmail; Tue, 01 Mar
- 2016 09:35:10 -0800 (PST)
-X-Received: by 10.140.18.239 with SMTP id 102mr34715363qgf.28.1456853710479;
-        Tue, 01 Mar 2016 09:35:10 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x230.google.com (mail-pf0-x230.google.com. [2607:f8b0:400e:c00::230])
-        by gmr-mx.google.com with ESMTPS id yd9si4506710pab.1.2016.03.01.09.35.10
+Received: by 10.107.19.71 with SMTP id b68ls4540796ioj.22.gmail; Tue, 21 Mar
+ 2017 09:16:25 -0700 (PDT)
+X-Received: by 10.99.119.200 with SMTP id s191mr11747955pgc.97.1490112985655;
+        Tue, 21 Mar 2017 09:16:25 -0700 (PDT)
+Received: by 10.55.103.195 with SMTP id b186msqkc;
+        Tue, 21 Mar 2017 08:50:03 -0700 (PDT)
+X-Received: by 10.46.88.9 with SMTP id m9mr5061906ljb.25.1490111402698;
+        Tue, 21 Mar 2017 08:50:02 -0700 (PDT)
+Return-Path: <sergei.shtylyov@cogentembedded.com>
+Received: from mail-lf0-x230.google.com (mail-lf0-x230.google.com. [2a00:1450:4010:c07::230])
+        by gmr-mx.google.com with ESMTPS id x188si839697wmx.0.2017.03.21.08.50.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 01 Mar 2016 09:35:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) client-ip=2607:f8b0:400e:c00::230;
+        Tue, 21 Mar 2017 08:50:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sergei.shtylyov@cogentembedded.com designates 2a00:1450:4010:c07::230 as permitted sender) client-ip=2a00:1450:4010:c07::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x230.google.com with SMTP id w128so71838964pfb.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 01 Mar 2016 09:35:10 -0800 (PST)
+       dkim=pass header.i=@cogentembedded-com.20150623.gappssmtp.com;
+       spf=pass (google.com: domain of sergei.shtylyov@cogentembedded.com designates 2a00:1450:4010:c07::230 as permitted sender) smtp.mailfrom=sergei.shtylyov@cogentembedded.com
+Received: by mail-lf0-x230.google.com with SMTP id j90so68868414lfk.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 08:50:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=9A/zFt7ycBa1PUmO/H841QLyVhQibDqNM5szYlpu8HI=;
-        b=Tpmfa9c2Zi9ESQwQmNORKsyd2rzR7Hgeu7qWAW74XnAzJ0mpfzahpv6KVfLqsYXfGr
-         Kkxe6xug3vQtRcK9NFgmIdTRybIPe4OtLcsX0Vr+M1pHdD/eW6lCam7qWqA9OJ6kTtI0
-         KAtc1OLFT2K+WLmtnQRvLlju4WdBAhEbyderEyLSNjTkUxgaVBNmNYZYGH5pZCVwmp9h
-         5aCYx+6tYBQXeZAE7Uq1s45SbcSAvfv6TB4V5YdOqBaWTli3EdASuwl4zDbpm4A35lu3
-         2ufDg4hT+sp+OacAlNERqmcTsTdQVFomMlCJiwQbV+QRpbD6SK3itz0uuL1MDB8jjfUP
-         dzVQ==
+        d=cogentembedded-com.20150623.gappssmtp.com; s=20150623;
+        h=subject:to:references:cc:from:organization:message-id:date
+         :user-agent:mime-version:in-reply-to:content-transfer-encoding;
+        bh=6FkWH8jKdXhcoGljPPHLSra20LYoP5VcecrUOjBOb1U=;
+        b=vha+hKxPz7IT/88pBT5fIAvHRTXPF/8UM1tRjrNc4yfUFOiGc8Owih4ZPt4fAhfuXe
+         cQn066v5kz2CN7WvyYQHWk+7htZogDrejkmsGQh4Oy24q1HMtw/IHtXjk1p0lKoCGIsZ
+         hcxybhy/1urBftuvAfaXhXJNwJcB+/CfBmvTN4QbEfMQg4UKCCaoNbqQAsg31vZwu+sT
+         OTjRR/HFjVrLbdUd1R4EE7ZV7ssQcHh2rmNwZep9WmARz/kZn8/f5PP9oN43jrjUEgTm
+         wXizIo8wzP16E2lctaxswp+WzyBpcFyxnLbUctwqD2vYHzTgOhkpioSE4h9KYBdqhdlD
+         1kkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=9A/zFt7ycBa1PUmO/H841QLyVhQibDqNM5szYlpu8HI=;
-        b=De2JnX5w+XxWU5KZq7Js91Sc4Cz+8MyJ0GXCOQZus+1YCCzOz1KFxgzgg3DVHpmB5m
-         2gl98IZ/HJz+f/cJZP+h2c9AN1rFpxoPMkLGnnaPsm6FGgctFEhji7pR8Rg7wu04iM41
-         E+ABEetvYeTStnkzD2MHZq4Ae4AWy/dXj8ZzhHOHSsmLxrV6YhicwIn2UF6J26Iahp3T
-         qC3B3fl+yqbNsm3/6aPFO6AkvFmhpoYj1FMH1c0NS9qZMtgRJ8L+nAqNOE32dqDbXRH4
-         RHtQrZc2UoRMDIhszi8tMETpQfgQCmO+vmj1zYjjonuV+t46tVU8QO4k/Lng2CVbM0Hj
-         Q3hQ==
-X-Gm-Message-State: AD7BkJKlAZBKLXON6tNOSueAE4yYdHLV90hNczQ2le6XNrjO0ksnKR4HJKJIBDGhoWeEqw==
-X-Received: by 10.98.70.67 with SMTP id t64mr28669612pfa.110.1456853710202;
-        Tue, 01 Mar 2016 09:35:10 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id r29sm10875938pfi.9.2016.03.01.09.35.09
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 01 Mar 2016 09:35:09 -0800 (PST)
-Date: Tue, 1 Mar 2016 23:02:24 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: lustre: ptlrpc: Remove unnecessary macros
-Message-ID: <20160301173208.GA21310@Karyakshetra>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:references:cc:from:organization
+         :message-id:date:user-agent:mime-version:in-reply-to
+         :content-transfer-encoding;
+        bh=6FkWH8jKdXhcoGljPPHLSra20LYoP5VcecrUOjBOb1U=;
+        b=oHmFI4/I9Rv/GZ7dWU7Gy0c6Y6o3+iqqPGm/uS6Fr+2oIJQ0yrqgY83kQfi4tqxf6+
+         KpbROO5wa5qogtk6+RTD/DuuVW6yPz2r8tOQXeotu+8A9m8hVcaUS3Pmo+g83IAXgxXG
+         dJ2W+3nzs27BkZWp8AGq+7OT6TgZWwgPYdjhITN9K2OQGq1fARxO8KyK7UaY1+XmOjMw
+         Fi2T2upzeTWT5MmqPnmHtUh2a+4XR3cF+qYOAgtzf2trLepDDYuUnbSpTWPdX5o1l8OO
+         rmokdMncvHZzxqmRTXa15aj8M8pmSSLdAtQpAhoZRBqvnSnmfzSxQcXzeN6wikKYx7u/
+         Q64g==
+X-Gm-Message-State: AFeK/H2HO/Ji9uSeRcy6ecyThN5rEKCnMGEWPqA4z+pNteUJYwR32+U8UQhETLTZATe7CA==
+X-Received: by 10.46.5.148 with SMTP id 142mr12173212ljf.46.1490111402116;
+        Tue, 21 Mar 2017 08:50:02 -0700 (PDT)
+Return-Path: <sergei.shtylyov@cogentembedded.com>
+Received: from wasted.cogentembedded.com ([31.173.83.95])
+        by smtp.gmail.com with ESMTPSA id l2sm3662757lfe.69.2017.03.21.08.50.00
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 21 Mar 2017 08:50:01 -0700 (PDT)
+Subject: Re: [PATCH 2/2] netfilter: ipvs: Compress return logic
+To: simran singhal <singhalsimran0@gmail.com>, pablo@netfilter.org
+References: <1490102599-27579-1-git-send-email-singhalsimran0@gmail.com>
+ <1490102599-27579-3-git-send-email-singhalsimran0@gmail.com>
+Cc: kadlec@blackhole.kfki.hu, davem@davemloft.net,
+ netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com,
+ wensong@linux-vs.org, horms@verge.net.au, ja@ssi.bg
+From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Organization: Cogent Embedded
+Message-ID: <144902e5-76d4-f767-7b86-ba07d57cf5a7@cogentembedded.com>
+Date: Tue, 21 Mar 2017 18:49:59 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+ Thunderbird/45.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <1490102599-27579-3-git-send-email-singhalsimran0@gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 
-The macros REQS_SEC_SHIFT,REQS_USEC_SHIFT declare constants 32 and 16
-and their occurences have been replaced with their respective values.
-Also, occurences of REQS_SEQ_SHIFT have been replaced with
-REQS_CPT_BITS.
+Hello!
 
-This was detected using Coccinelle:
+On 03/21/2017 04:23 PM, simran singhal wrote:
 
-@@
+> Simplify function returns by merging assignment and return into
+> one command line.
 
-identifier f;
-constant c;
-@@
-*#define f(...) c
+    You mean "one statement"?
 
-@@
-identifier a,b;
-@@
+> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+> ---
+>
+>  --This is my contribution to the netfilter project of
+>    Outreachy Round 14.
+>
+>  net/netfilter/ipvs/ip_vs_ftp.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
+>
+> diff --git a/net/netfilter/ipvs/ip_vs_ftp.c b/net/netfilter/ipvs/ip_vs_ftp.c
+> index d30c327..c93c937 100644
+> --- a/net/netfilter/ipvs/ip_vs_ftp.c
+> +++ b/net/netfilter/ipvs/ip_vs_ftp.c
+> @@ -482,11 +482,8 @@ static struct pernet_operations ip_vs_ftp_ops = {
+>
+>  static int __init ip_vs_ftp_init(void)
+>  {
+> -	int rv;
+> -
+> -	rv = register_pernet_subsys(&ip_vs_ftp_ops);
+>  	/* rcu_barrier() is called by netns on error */
+> -	return rv;
+> +	return register_pernet_subsys(&ip_vs_ftp_ops);
+>  }
+>
+>  /*
 
-*#define f(...) b(...)
-
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- drivers/staging/lustre/lustre/ptlrpc/events.c | 10 +++-------
- 1 file changed, 3 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/staging/lustre/lustre/ptlrpc/events.c b/drivers/staging/lustre/lustre/ptlrpc/events.c
-index 47be21a..7b7b8a7 100644
---- a/drivers/staging/lustre/lustre/ptlrpc/events.c
-+++ b/drivers/staging/lustre/lustre/ptlrpc/events.c
-@@ -243,9 +243,6 @@ void client_bulk_callback(lnet_event_t *ev)
-
- #define REQS_CPT_BITS(svcpt)	((svcpt)->scp_service->srv_cpt_bits)
-
--#define REQS_SEC_SHIFT		32
--#define REQS_USEC_SHIFT		16
--#define REQS_SEQ_SHIFT(svcpt)	REQS_CPT_BITS(svcpt)
-
- static void ptlrpc_req_add_history(struct ptlrpc_service_part *svcpt,
- 				   struct ptlrpc_request *req)
-@@ -258,8 +255,7 @@ static void ptlrpc_req_add_history(struct ptlrpc_service_part *svcpt,
- 	 * it must be called with hold svcpt::scp_lock
- 	 */
-
--	new_seq = (sec << REQS_SEC_SHIFT) |
--		  (usec << REQS_USEC_SHIFT) |
-+	new_seq = (sec << 32) | (usec << 16) |
- 		  (svcpt->scp_cpt < 0 ? 0 : svcpt->scp_cpt);
-
- 	if (new_seq > svcpt->scp_hist_seq) {
-@@ -268,14 +264,14 @@ static void ptlrpc_req_add_history(struct ptlrpc_service_part *svcpt,
- 		 */
- 		svcpt->scp_hist_seq = new_seq;
- 	} else {
--		LASSERT(REQS_SEQ_SHIFT(svcpt) < REQS_USEC_SHIFT);
-+		LASSERT(REQS_CPT_BITS(svcpt) < 16);
- 		/* NB: increase sequence number in current usec bucket,
- 		 * however, it's possible that we used up all bits for
- 		 * sequence and jumped into the next usec bucket (future time),
- 		 * then we hope there will be less RPCs per bucket at some
- 		 * point, and sequence will catch up again
- 		 */
--		svcpt->scp_hist_seq += (1U << REQS_SEQ_SHIFT(svcpt));
-+		svcpt->scp_hist_seq += (1U << REQS_CPT_BITS(svcpt));
- 		new_seq = svcpt->scp_hist_seq;
- 	}
-
---
-2.1.4
+MBR, Sergei
 
 
