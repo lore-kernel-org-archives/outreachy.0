@@ -1,126 +1,199 @@
 X-GM-THRID: 6399943776789331968
-X-Received: by 10.46.80.79 with SMTP id v15mr3011954ljd.27.1490114381871;
-        Tue, 21 Mar 2017 09:39:41 -0700 (PDT)
+X-Received: by 10.46.80.79 with SMTP id v15mr3010104ljd.27.1490114197863;
+        Tue, 21 Mar 2017 09:36:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.88.70 with SMTP id x6ls1671969ljd.21.gmail; Tue, 21 Mar
- 2017 09:39:41 -0700 (PDT)
-X-Received: by 10.25.204.21 with SMTP id c21mr4299572lfg.19.1490114381271;
-        Tue, 21 Mar 2017 09:39:41 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id n128si1082630wmf.2.2017.03.21.09.39.41
+Received: by 10.46.14.25 with SMTP id 25ls208234ljo.50.gmail; Tue, 21 Mar 2017
+ 09:36:37 -0700 (PDT)
+X-Received: by 10.25.18.219 with SMTP id 88mr4307714lfs.29.1490114197095;
+        Tue, 21 Mar 2017 09:36:37 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from mail-lf0-x244.google.com (mail-lf0-x244.google.com. [2a00:1450:4010:c07::244])
+        by gmr-mx.google.com with ESMTPS id x188si862502wmx.0.2017.03.21.09.36.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 21 Mar 2017 09:39:41 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Tue, 21 Mar 2017 09:36:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2a00:1450:4010:c07::244 as permitted sender) client-ip=2a00:1450:4010:c07::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.36,200,1486422000"; 
-   d="scan'208";a="217553131"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 21 Mar 2017 17:39:40 +0100
-Date: Tue, 21 Mar 2017 17:39:38 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Arushi Singhal <arushisinghal19971997@gmail.com>
-cc: Alison Schofield <amsfield22@gmail.com>, 
-    Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>, 
-    outreachy-kernel@googlegroups.com, 
-    Michael Hennerich <Michael.Hennerich@analog.com>, lars@metafoo.de, 
-    Greg KH <gregkh@linuxfoundation.org>, speakup@linux-speakup.org, 
-    driverdevel <devel@driverdev.osuosl.org>, linux-kernel@vger.kernel.org, 
-    Peter Meerwald-Stadler <pmeerw@pmeerw.net>, linux-iio@vger.kernel.org
-Subject: Re: [Outreachy kernel] [PATCH 0/2] IIO coding tasks
-In-Reply-To: <CA+XqjF9dVy33Dsv0H2z8xtaNeMOW7SQgr4qa4wLwz6xFNVTsUA@mail.gmail.com>
-Message-ID: <alpine.DEB.2.20.1703211738500.3785@hadrien>
-References: <20170321133021.6737-1-arushisinghal19971997@gmail.com> <20170321160348.GA1859@d830.WORKGROUP> <CA+XqjF9dVy33Dsv0H2z8xtaNeMOW7SQgr4qa4wLwz6xFNVTsUA@mail.gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2a00:1450:4010:c07::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-lf0-x244.google.com with SMTP id y193so13576149lfd.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 09:36:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=tsdurZandDpXfAns0KukgQuUVlYCAM7i8zwnscYLscE=;
+        b=JOsuAcZizjmHWFTcy6hIM6LoeTT4F+q3UyP3R7y6A/Z88MUBs/fvTDwrGZ45Nu4MF+
+         JBh3geQ5NFXO7lEZSVzNyDeqGSe8KnPbn0oecZFe9BfnFyoXe3Vm6a/r4AvUP7+xpNDX
+         X+WLza0MFn6e85eD5qExjDqcfz7b5RchboVqA5eJRV1P7y3WDCn7IChhC7MxmJ/EojWS
+         dMDqePKada0Flrcdk7vMxfp/9z5d6EBcnKFj8j6hN6tqIZs8kpOeDqges5MG3FUBmKh8
+         ufxRwLqsRfgUGfv1Oe3Nb63oKNJ8Ad1bnlU0/FCkj334ewRYu6EkfkrK+M0IDqsviu2w
+         L64A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=tsdurZandDpXfAns0KukgQuUVlYCAM7i8zwnscYLscE=;
+        b=b+lRC3w27meHPlpXKNbYNHnxboaAkBgtC8r/6ACFXo1jLJ32f1fpVYWhTWPHapDX0i
+         WDUDqAjaobbqPTubI47xpGUgeS3h9Ja8iPT9SYRAmuwJRjpaIHt/v8mwjOr3k/jwcLks
+         wd4bNChVZIVJCYqmY7JKj+zgUPyLXpagSzPe1lXSptE/7dxONEcQNM7/gi917vDI5REX
+         tspK9jldrBIAFtQ+r+u9tvtkjRChKV0naxYb859QC1b0knsikqtYfxzZs9py20fvZ8lX
+         L3DICGEHkvEzKs8msyCXXAoNZcJl2JzEsWAX8jxW03df15xzEwguDI0gjqxcrbTvxID9
+         +XFw==
+X-Gm-Message-State: AFeK/H2Ls86f+DhTvJ53x2V1nh+Y97oJmzGzjk6xRnadRmPNswFYfnZzWeDjFcAXTfChhDrlRh2/CvBgdw+7nw==
+X-Received: by 10.25.17.153 with SMTP id 25mr9811852lfr.39.1490114196811; Tue,
+ 21 Mar 2017 09:36:36 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; BOUNDARY="8323329-1348804162-1490114378=:3785"
+Received: by 10.25.170.69 with HTTP; Tue, 21 Mar 2017 09:36:36 -0700 (PDT)
+In-Reply-To: <20170321160348.GA1859@d830.WORKGROUP>
+References: <20170321133021.6737-1-arushisinghal19971997@gmail.com> <20170321160348.GA1859@d830.WORKGROUP>
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+Date: Tue, 21 Mar 2017 22:06:36 +0530
+Message-ID: <CA+XqjF9dVy33Dsv0H2z8xtaNeMOW7SQgr4qa4wLwz6xFNVTsUA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 0/2] IIO coding tasks
+To: Alison Schofield <amsfield22@gmail.com>
+Cc: Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>, outreachy-kernel@googlegroups.com, 
+	Michael Hennerich <Michael.Hennerich@analog.com>, lars@metafoo.de, 
+	Greg KH <gregkh@linuxfoundation.org>, speakup@linux-speakup.org, 
+	driverdevel <devel@driverdev.osuosl.org>, linux-kernel@vger.kernel.org, 
+	Peter Meerwald-Stadler <pmeerw@pmeerw.net>, linux-iio@vger.kernel.org
+Content-Type: multipart/alternative; boundary=001a1140379e6035df054b403f1f
 
---8323329-1348804162-1490114378=:3785
+--001a1140379e6035df054b403f1f
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
 
+On Tue, Mar 21, 2017 at 9:33 PM, Alison Schofield <amsfield22@gmail.com>
+wrote:
 
-
-On Tue, 21 Mar 2017, Arushi Singhal wrote:
-
-> On Tue, Mar 21, 2017 at 9:33 PM, Alison Schofield <amsfield22@gmail.com>
-> wrote:
->       On Tue, Mar 21, 2017 at 07:00:17PM +0530, Arushi Singhal wrote:
->       > Patchseries of IIO coding tasks
+> On Tue, Mar 21, 2017 at 07:00:17PM +0530, Arushi Singhal wrote:
+> > Patchseries of IIO coding tasks
 >
->       This wouldn't be a patchset.  Although they touch the same
->       driver, the changes are unrelated.  See more below...
+> This wouldn't be a patchset.  Although they touch the same
+> driver, the changes are unrelated.  See more below...
 >
-> This I have send as a Patchset because as you have mentioned below that the
-> [PATCH 2/2] was already done before by someone but I think so it is not yet
-> applied in the Greg's tree yet.So I have done both the changes and as they
-> should be applied one after other so that's why I have send them as
-> Patchset.
+This I have send as a Patchset because as you have mentioned below that the
+[PATCH 2/2] was already done before by someone but I think so it is not yet
+applied in the Greg's tree yet.So I have done both the changes and as they
+should be applied one after other so that's why I have send them as
+Patchset.
 
-For the IIO patches, it is better to work on the IIO tree, not Greg's.
-Greg manages staging, not IIO.  The IIO patches should appear in Greg's
-tree eventually.
-
-julia
-
->       >
->       > Arushi Singhal (2):
->       >   staging: ad7759: Replace mlock with driver private lock
+> >
+> > Arushi Singhal (2):
+> >   staging: ad7759: Replace mlock with driver private lock
 >
->       This one is already been submitted.  If you have a v2 for it,
->       then v2
->       the original patch.
+> This one is already been submitted.  If you have a v2 for it, then v2
+> the original patch.
 >
 > Is it submitted by me only before? And this is not the v2.
-> I have just resed it.
->       >   staging: iio: ade7759: Move header content to implementation
->       file
+I have just resed it.
+
+> >   staging: iio: ade7759: Move header content to implementation file
 >
->       This patch is done and applied already.  See the Coding Task #1
->       notes
->       in the IIO Tasks page.
+> This patch is done and applied already.  See the Coding Task #1 notes
+> in the IIO Tasks page.
 >
-> Not at applied I think so.
-> Thanks
-> Arushi
+Not at applied I think so.
+Thanks
+Arushi
+
 >
->       alisons
+> alisons
 >
->       >
->       >  drivers/staging/iio/meter/ade7759.c   | 56
->       +++++++++++++++++++++++++++++++++--
->       >  drivers/staging/iio/meter/ade7759.h   | 53
->       ---------------------------------
->       >  2 files changed, 54 insertions(+), 57 deletions(-)
->       >
->       > --
->       > 2.11.0
->       >
+> >
+> >  drivers/staging/iio/meter/ade7759.c   | 56
+> +++++++++++++++++++++++++++++++++--
+> >  drivers/staging/iio/meter/ade7759.h   | 53
+> ---------------------------------
+> >  2 files changed, 54 insertions(+), 57 deletions(-)
+> >
+> > --
+> > 2.11.0
+> >
 > > --
 > > You received this message because you are subscribed to the Google
 > Groups "outreachy-kernel" group.
-> > To unsubscribe from this group and stop receiving emails from it,
-> send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > To post to this group, send email to
-> outreachy-kernel@googlegroups.com.
-> > To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/20170321133021.6737-1-ar
-> ushisinghal19971997%40gmail.com.
+> > To unsubscribe from this group and stop receiving emails from it, send
+> an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/
+> msgid/outreachy-kernel/20170321133021.6737-1-
+> arushisinghal19971997%40gmail.com.
 > > For more options, visit https://groups.google.com/d/optout.
 >
+
+--001a1140379e6035df054b403f1f
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">On Tue, Mar 21, 2017 at 9:33 PM, Alison Schofield <span di=
+r=3D"ltr">&lt;<a href=3D"mailto:amsfield22@gmail.com" target=3D"_blank">ams=
+field22@gmail.com</a>&gt;</span> wrote:<br><div class=3D"gmail_extra"><div =
+class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0 0=
+ 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><span class=3D"">On Tu=
+e, Mar 21, 2017 at 07:00:17PM +0530, Arushi Singhal wrote:<br>
+&gt; Patchseries of IIO coding tasks<br>
+<br>
+</span>This wouldn&#39;t be a patchset.=C2=A0 Although they touch the same<=
+br>
+driver, the changes are unrelated.=C2=A0 See more below...<br>
+<span class=3D""></span></blockquote><div>This I have send as a Patchset be=
+cause as you have mentioned below that the [PATCH 2/2] was already done bef=
+ore by someone but I think so it is not yet applied in the Greg&#39;s tree =
+yet.So I have done both the changes and as they should be applied one after=
+ other so that&#39;s why I have send them as Patchset. <br></div><blockquot=
+e class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc sol=
+id;padding-left:1ex"><span class=3D"">&gt;<br>
+&gt; Arushi Singhal (2):<br>
+&gt;=C2=A0 =C2=A0staging: ad7759: Replace mlock with driver private lock<br=
 >
-> --
-> You received this message because you are subscribed to the Google Groups
-> "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an
-> email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CA%2BXqjF9dVy33Dsv0H2z8x
-> taNeMOW7SQgr4qa4wLwz6xFNVTsUA%40mail.gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
->
---8323329-1348804162-1490114378=:3785--
+<br>
+</span>This one is already been submitted.=C2=A0 If you have a v2 for it, t=
+hen v2<br>
+the original patch.<br>
+<span class=3D""><br></span></blockquote><div>Is it submitted by me only be=
+fore? And this is not the v2.<br></div><div>I have just resed it.<br></div>=
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex"><span class=3D"">
+&gt;=C2=A0 =C2=A0staging: iio: ade7759: Move header content to implementati=
+on file<br>
+<br>
+</span>This patch is done and applied already.=C2=A0 See the Coding Task #1=
+ notes<br>
+in the IIO Tasks page.<br></blockquote><div>Not at applied I think so.<br><=
+/div><div>Thanks<br></div><div>Arushi<br></div><blockquote class=3D"gmail_q=
+uote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1e=
+x">
+<br>
+alisons<br>
+<div class=3D"HOEnZb"><div class=3D"h5"><br>
+&gt;<br>
+&gt;=C2=A0 drivers/staging/iio/meter/<wbr>ade7759.c=C2=A0 =C2=A0| 56 ++++++=
+++++++++++++++++++++++++<wbr>+++--<br>
+&gt;=C2=A0 drivers/staging/iio/meter/<wbr>ade7759.h=C2=A0 =C2=A0| 53 ------=
+------------------------<wbr>---<br>
+&gt;=C2=A0 2 files changed, 54 insertions(+), 57 deletions(-)<br>
+&gt;<br>
+&gt; --<br>
+&gt; 2.11.0<br>
+&gt;<br>
+</div></div><span class=3D"HOEnZb"><font color=3D"#888888">&gt; --<br>
+&gt; You received this message because you are subscribed to the Google Gro=
+ups &quot;outreachy-kernel&quot; group.<br>
+&gt; To unsubscribe from this group and stop receiving emails from it, send=
+ an email to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.=
+com">outreachy-kernel+unsubscribe@<wbr>googlegroups.com</a>.<br>
+&gt; To post to this group, send email to <a href=3D"mailto:outreachy-kerne=
+l@googlegroups.com">outreachy-kernel@googlegroups.<wbr>com</a>.<br>
+&gt; To view this discussion on the web visit <a href=3D"https://groups.goo=
+gle.com/d/msgid/outreachy-kernel/20170321133021.6737-1-arushisinghal1997199=
+7%40gmail.com" rel=3D"noreferrer" target=3D"_blank">https://groups.google.c=
+om/d/<wbr>msgid/outreachy-kernel/<wbr>20170321133021.6737-1-<wbr>arushising=
+hal19971997%40gmail.<wbr>com</a>.<br>
+&gt; For more options, visit <a href=3D"https://groups.google.com/d/optout"=
+ rel=3D"noreferrer" target=3D"_blank">https://groups.google.com/d/<wbr>opto=
+ut</a>.<br>
+</font></span></blockquote></div><br></div></div>
+
+--001a1140379e6035df054b403f1f--
 
