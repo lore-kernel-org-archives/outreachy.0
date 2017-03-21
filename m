@@ -1,94 +1,113 @@
-X-GM-THRID: 6388900397139886080
-X-Received: by 10.200.33.233 with SMTP id 38mr5381987qtz.87.1487531791425;
-        Sun, 19 Feb 2017 11:16:31 -0800 (PST)
+X-GM-THRID: 6399866946348646400
+X-Received: by 10.129.168.202 with SMTP id f193mr17077524ywh.88.1490085162341;
+        Tue, 21 Mar 2017 01:32:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.17.23 with SMTP id g23ls8744476ote.24.gmail; Sun, 19 Feb
- 2017 11:16:31 -0800 (PST)
-X-Received: by 10.200.46.241 with SMTP id i46mr5496352qta.70.1487531791103;
-        Sun, 19 Feb 2017 11:16:31 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id h130si1815998pfe.1.2017.02.19.11.16.31
+Received: by 10.157.19.61 with SMTP id f58ls1387523ote.36.gmail; Tue, 21 Mar
+ 2017 01:32:42 -0700 (PDT)
+X-Received: by 10.157.58.2 with SMTP id j2mr15595228otc.85.1490085162013;
+        Tue, 21 Mar 2017 01:32:42 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id 2si3333400pfx.8.2017.03.21.01.32.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 19 Feb 2017 11:16:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Tue, 21 Mar 2017 01:32:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id 5so10055540pgj.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 19 Feb 2017 11:16:31 -0800 (PST)
+Received: by mail-pf0-x243.google.com with SMTP id p189so15472829pfp.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 01:32:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Y5UK2aazNErNEDyQ3hVoa7AVyJIV4wWUFszSnP5fZm4=;
-        b=bl1raUDrZ4zeKK6KbDJ2uB+vebwp3kvNlaxNY0sFj0BYwWRjNh/M0/rDpecicmrpBK
-         CLknyD+oS1PkNROtSu4JkkqIqboPUWhDdTkdGrl5CyM0oirQumouwd1bvDwHgeX/RtwL
-         v0AlqUZVW3M3qB2AFyac9fd2ewnSwCZ9v+Vx9OOLjcmdF26YThrnUTOLXKjft/9g/Rht
-         JjAXnQBrMMzOilGjSQqP4PeUSD2BfPImPN0dNGlekZIRZbCjOXX2Wfjd8k6bL8dzf3KL
-         YzkedQMZjQ8bJdpXE7rs7bVKIZe8ChCDvAutwpD2Z2AgMdLaL3TtphLOQeiOPEDuSIQc
-         xdnw==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=wqGd+RXp5B5OV+mrNFnNd6Dufn8bYZ2OKEGXZOoBMzk=;
+        b=hgsYB1OWTA4rihzKHhiKJcCwuCYYhiAsT0D7ri/NyLODxlF0eefuYfGQohgsUjsztW
+         RhqK7TPj5J9G6UJV1erVP9HYTs3/bnAkYawebLehc1Yie7a40HfTqw22llvzMZqUzgjt
+         IIdy+kC2yV+FN4c7jMPeZGUY0Vd4hGF9oSy8zShh/m5LvNRxAkNXe0GBtkm1thXVX9qp
+         Z76V48bmrRIIYzXxY+yBfgzualyhD8eGqyLBjr0ic8v+dEtQqJJB0teS/IvqdesmgJbh
+         ZMgCweEGUO6hNbrDW0fFfo166ISo92XkeTsLzXqwHWK3ps3bA7vzIk4d2FZJhhNBiWFK
+         FBnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Y5UK2aazNErNEDyQ3hVoa7AVyJIV4wWUFszSnP5fZm4=;
-        b=UNzjI4UF0WEBz2kg+jINg/lnM8gGhsz8KUlHnelKOfi9HSAVeXfFV0ZgsNwcVVdOiz
-         /5GFZUbtCIp8wy5j7l7DfDp/VUnfMskd7EyapyEkUpi7mP+a7bpEz1vfx9COcX7ohKNe
-         ZAmC3LlF/7kKFTGZEBidZgbJ2+u29qMkv6MtN1WVitK8ZgDucTo+81p531h7PPINZBaJ
-         T3FxTElzGNLocxlM6AZ44CPwCw7oRmBsPz9G87QY2yqLE970p23HXGld9V4v91H2rd8A
-         gvuXOFtRraFqaamauh0ptXaOWRWE+7CZs7GzffwEwJPPxCsV4WTPXmQcV2i4fF6cNpbB
-         cDGw==
-X-Gm-Message-State: AMke39nsZu/cz6HOWs/+97l56MJZd2puJVxofW0PlYTwyUy29LntVshJIIUQKrab/fxBBQ==
-X-Received: by 10.84.129.67 with SMTP id 61mr26398404plb.103.1487531790881;
-        Sun, 19 Feb 2017 11:16:30 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id x15sm30796960pgo.56.2017.02.19.11.16.28
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 19 Feb 2017 11:16:30 -0800 (PST)
-From: Gargi Sharma <gs051095@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH] staging: media: Remove ternary operator
-Date: Mon, 20 Feb 2017 00:44:18 +0530
-Message-Id: <1487531658-18368-1-git-send-email-gs051095@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=wqGd+RXp5B5OV+mrNFnNd6Dufn8bYZ2OKEGXZOoBMzk=;
+        b=mGukZxT0D7Csn54LFM3gwysmB/d9qamUWBNjSLEb/1x/2wvvKWk5phTGEa2eKxH9zm
+         MjMk3ST1aQP3/qVfmvPqB9/TJK+2UUULUHIWk4OomRWjGxCChbk8oifVe0gvDzV0/TCM
+         2MvTogB2M3CRJYgFW4zD9KBVaIxnJUsO5B3otlp1dE2fFnIEAwM7/XhIugRi2UOiwn84
+         HscQ5i6vLrh9CmIcM2PrXs1CZFTkdtCotjOPBTdmAfhGPe1BixfaFXsnnjiNoVNSzkbJ
+         7y3nX6f2YrKQd/npYwXhUaUXEKmTCKz6Z0znTOnbb8322kVPJYC0pW5YbKVx67a+BTt+
+         gDzQ==
+X-Gm-Message-State: AFeK/H3u2InlK/6tgPki4exiK/ytN++Q2QXrDNGw7tfJpsn/r6VZ7gswv+oFoDkIWnjOEg==
+X-Received: by 10.99.137.66 with SMTP id v63mr15923032pgd.183.1490085161795;
+        Tue, 21 Mar 2017 01:32:41 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id x71sm36838438pfd.58.2017.03.21.01.32.40
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 21 Mar 2017 01:32:40 -0700 (PDT)
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+To: w.d.hubbs@gmail.com
+Cc: chris@the-brannons.com,
+	outreachy-kernel@googlegroups.com,
+	kirk@reisers.ca,
+	samuel.thibault@ens-lyon.org,
+	gregkh@linuxfoundation.org,
+	speakup@linux-speakup.org,
+	devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	Arushi Singhal <arushisinghal19971997@gmail.com>
+Subject: [PATCH 4/4] staging: speakup: Fix alignment with parenthesis.
+Date: Tue, 21 Mar 2017 14:02:15 +0530
+Message-Id: <20170321083215.29209-5-arushisinghal19971997@gmail.com>
+X-Mailer: git-send-email 2.11.0
+In-Reply-To: <20170321083215.29209-1-arushisinghal19971997@gmail.com>
+References: <20170321083215.29209-1-arushisinghal19971997@gmail.com>
 
-Relational and logical operators evaluate to either true or false.
-Explicit conversion is not needed so remove the ternary operator.
-Done using coccinelle:
+This patch fixes the warnings reported by checkpatch.pl
+for please use a blank line after function/struct/union/enum
+declarations.
 
-@r@
-expression A,B;
-symbol true,false;
-binary operator b = {==,!=,&&,||,>=,<=,>,<};
-@@
-- (A b B) ? true : false
-+ A b B
-
-Signed-off-by: Gargi Sharma <gs051095@gmail.com>
+Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
 ---
- drivers/staging/media/platform/bcm2835/controls.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/staging/speakup/speakup_apollo.c | 2 +-
+ drivers/staging/speakup/speakup_decext.c | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/media/platform/bcm2835/controls.c b/drivers/staging/media/platform/bcm2835/controls.c
-index a40987b..4d7e2a2 100644
---- a/drivers/staging/media/platform/bcm2835/controls.c
-+++ b/drivers/staging/media/platform/bcm2835/controls.c
-@@ -218,9 +218,7 @@ static int ctrl_set_iso(struct bm2835_mmal_dev *dev,
- 		dev->iso = iso_values[ctrl->val];
- 	else if (ctrl->id == V4L2_CID_ISO_SENSITIVITY_AUTO)
- 		dev->manual_iso_enabled =
--				(ctrl->val == V4L2_ISO_SENSITIVITY_MANUAL ?
--							true :
--							false);
-+				(ctrl->val == V4L2_ISO_SENSITIVITY_MANUAL);
- 
- 	control = &dev->component[MMAL_COMPONENT_CAMERA]->control;
- 
+diff --git a/drivers/staging/speakup/speakup_apollo.c b/drivers/staging/speakup/speakup_apollo.c
+index 9cfdbbfb9742..6ad83dc642c4 100644
+--- a/drivers/staging/speakup/speakup_apollo.c
++++ b/drivers/staging/speakup/speakup_apollo.c
+@@ -173,7 +173,7 @@ static void do_catch_up(struct spk_synth *synth)
+ 		if (!synth->io_ops->synth_out(synth, ch)) {
+ 			outb(UART_MCR_DTR, speakup_info.port_tts + UART_MCR);
+ 			outb(UART_MCR_DTR | UART_MCR_RTS,
+-					speakup_info.port_tts + UART_MCR);
++			     speakup_info.port_tts + UART_MCR);
+ 			schedule_timeout(msecs_to_jiffies(full_time_val));
+ 			continue;
+ 		}
+diff --git a/drivers/staging/speakup/speakup_decext.c b/drivers/staging/speakup/speakup_decext.c
+index 929a28d618dc..c564bf8e1531 100644
+--- a/drivers/staging/speakup/speakup_decext.c
++++ b/drivers/staging/speakup/speakup_decext.c
+@@ -206,11 +206,11 @@ static void do_catch_up(struct spk_synth *synth)
+ 				if (!in_escape)
+ 					synth->io_ops->synth_out(synth, PROCSPEECH);
+ 				spin_lock_irqsave(&speakup_info.spinlock,
+-							flags);
++						  flags);
+ 				jiffy_delta_val = jiffy_delta->u.n.value;
+ 				delay_time_val = delay_time->u.n.value;
+ 				spin_unlock_irqrestore(&speakup_info.spinlock,
+-							flags);
++						       flags);
+ 				schedule_timeout(msecs_to_jiffies
+ 						 (delay_time_val));
+ 				jiff_max = jiffies + jiffy_delta_val;
 -- 
-2.7.4
+2.11.0
 
 
