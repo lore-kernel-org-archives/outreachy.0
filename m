@@ -1,211 +1,210 @@
 X-GM-THRID: 6398911459091283968
-X-Received: by 10.107.38.17 with SMTP id m17mr9409452iom.5.1490114896198;
-        Tue, 21 Mar 2017 09:48:16 -0700 (PDT)
+X-Received: by 10.129.177.130 with SMTP id p124mr18937973ywh.124.1490108736009;
+        Tue, 21 Mar 2017 08:05:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.57.9 with SMTP id l9ls2991972ita.1.gmail; Tue, 21 Mar 2017
- 09:48:15 -0700 (PDT)
-X-Received: by 10.99.193.17 with SMTP id w17mr17794918pgf.85.1490114895380;
-        Tue, 21 Mar 2017 09:48:15 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id s67si1307620pfs.4.2017.03.21.09.48.15
+Received: by 10.107.11.77 with SMTP id v74ls4500119ioi.41.gmail; Tue, 21 Mar
+ 2017 08:05:35 -0700 (PDT)
+X-Received: by 10.99.95.211 with SMTP id t202mr10882200pgb.155.1490108735030;
+        Tue, 21 Mar 2017 08:05:35 -0700 (PDT)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from mail-vk0-x241.google.com (mail-vk0-x241.google.com. [2607:f8b0:400c:c05::241])
+        by gmr-mx.google.com with ESMTPS id s142si34825vkf.5.2017.03.21.08.05.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 21 Mar 2017 09:48:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Tue, 21 Mar 2017 08:05:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400c:c05::241 as permitted sender) client-ip=2607:f8b0:400c:c05::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400c:c05::241 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id w20so1229305pgc.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 09:48:15 -0700 (PDT)
+Received: by mail-vk0-x241.google.com with SMTP id z204so5521475vkd.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 08:05:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=n8a3d94ve0PB8YZQNvXEpMgb0cmf3gbTfeFi+YVZdqo=;
-        b=YBJBuyTlhmCpUYktPnC+ttRp7rEk42gUBcK939bpJ/d8cbhXtqPIGzqbN70pYpILiO
-         cUGZA1jhKvE5dkd/tTkWimlMJCkPwUN0jfPMabP73OSGufmitYPXtdK4vIzoewVwzgNs
-         YaYlL4jDsNGKcMwj1m38xO/prBObuVvdx07MBsmAPEAwFJdT6H13+EoyHKeG39oaUY5B
-         kPBnug96JNthiL5/VoAoLK85Rf9IZANyuEmIvY4Ugsb8CsGVyZAzW/G3Z+xr2ROmiBpn
-         n95tRKmhFUjxdaKs7BE/wgmURZRFAxItAaonXEIWFikUWjBp/9R7wKg56ceoH5MTQP/Z
-         gwWQ==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=MokhtbtuV20WiRbaJ62UKrYay4rOg6HDuiK4T2HqPU0=;
+        b=Cs7wM7n2jobGUkfKFRuFC08b+WfuqQms+W9enOO5arAhK/qvb/Y8TfdrsMjhUOqTai
+         ii7UQHq0v/6hm74PVIJGwBUm8pHVNuZS52m1JkKuliZx1aAPUAuIG7OD4nq2FwFav8tI
+         ZZyccOUx/2YmirUe1l4KlPhhAXRA4CJmPs2B/bF/2G4m2z4czHfnHfjyZz4DKeP+SVPT
+         f6JVGy3y3WVBjFMFqxgZ5mHzCyU0GUpX4CQGugcyAOvwjq5NwLUG9XhaE9pSsZiGDVns
+         SaeI6+khhecWH3eWkEZLlQk7Un9h7bq+8Pj2RfVASpjTGFM77CaN6aoKtCSuunwS0sbZ
+         UljQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=n8a3d94ve0PB8YZQNvXEpMgb0cmf3gbTfeFi+YVZdqo=;
-        b=cstXJL3186GZHNOefXL4awJiU+kBlw/yOsoK+Vsscl/pSjbo43lXCMmJiwMeR9X7bX
-         hbG3a08bfyIZD7DkYeQhQSzeMduy9kO1TvlelNWIhtkKmRoQtCuJNbNuuR3PEkwDxl+u
-         QFz41qVkjdGhyVzrfKOLbnJngdisiOdqC6N8grBkIbGbZfuIVmRSxgaypH9EOIDm9xCu
-         7HWLXsLr0Vn5iBWcoG9aFcq6xAtHmgl4TSVmOeUzKDiEDg0+RGRUic/SmoBUgu6rHs4F
-         jO1mJxMlx5R2xGAf8sziiwlMRexx8nkl63UUbecE/JslM2XTd/JpZHAieVEAdGQKiXFs
-         QgMA==
-X-Gm-Message-State: AFeK/H2aYc3cJqgRQKDTfUFGkmiNYUUxtKYxl6Ql2eNIDuRvOn5o6UCW7yxklUrmce+0WQ==
-X-Received: by 10.98.201.212 with SMTP id l81mr40144792pfk.13.1490114895083;
-        Tue, 21 Mar 2017 09:48:15 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
-        by smtp.gmail.com with ESMTPSA id z21sm8016436pgc.53.2017.03.21.09.48.14
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 21 Mar 2017 09:48:14 -0700 (PDT)
-Date: Tue, 21 Mar 2017 09:48:13 -0700
-From: Alison Schofield <amsfield22@gmail.com>
-To: simran singhal <singhalsimran0@gmail.com>
-Cc: lars@metafoo.de, Michael.Hennerich@analog.com, jic23@kernel.org,
-	Hartmut Knaack <knaack.h@gmx.de>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v6] staging: Use buf_lock instead of
- mlock and Refactor code
-Message-ID: <20170321164812.GA2793@d830.WORKGROUP>
-References: <20170319200621.GA21295@singhal-Inspiron-5558>
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=MokhtbtuV20WiRbaJ62UKrYay4rOg6HDuiK4T2HqPU0=;
+        b=DcYRLa3GVX5IO3cdg/X4DNnPdsXFKPgsNzgkCLlhRTTZTTUBvNnQcaYuhAKmXetVFX
+         HEtRBN6qeUzTxsDB0jU1dzwErHlRUzgLcTp94XjmimmLWhEPVkzOVf/HB0N3N+MhjmuP
+         rbk9RClCRENVQ7XC/gK+44O6cs1HLAH/Mm9wfoAjNcU4X3osOoYplTh3ZdLiTRZ4sGLi
+         XtdV1u991oG2ISKvQWFy+AxO4vnW4y3l3wDIEsK//fBZqCLwfY7HTOHyqM2kcJIOV9Sg
+         C7dh5F1TX8h3M/qnHAQ5epJoSVnZsAcghb/gXqfZRprkyDH8EVB+VKDrYf3YqGtEGkWJ
+         KqcQ==
+X-Gm-Message-State: AFeK/H0J0zlwZqOWJx5E2yodWqm15Xjkpe9fEw7iSEN5ER8XS5O+vf/LYDkxmD/tkKtUjgtN7hznwNnbI9vODA==
+X-Received: by 10.31.6.71 with SMTP id 68mr5253290vkg.173.1490108734507; Tue,
+ 21 Mar 2017 08:05:34 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20170319200621.GA21295@singhal-Inspiron-5558>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Received: by 10.103.75.7 with HTTP; Tue, 21 Mar 2017 08:05:34 -0700 (PDT)
+In-Reply-To: <201703212205.WEm2baAJ%fengguang.wu@intel.com>
+References: <20170319125039.GA23385@singhal-Inspiron-5558> <201703212205.WEm2baAJ%fengguang.wu@intel.com>
+From: SIMRAN SINGHAL <singhalsimran0@gmail.com>
+Date: Tue, 21 Mar 2017 20:35:34 +0530
+Message-ID: <CALrZqyMGtbOYUnXATQ5zpfgtg26+Ld=Go-5tG-Aneyxe8=cKdw@mail.gmail.com>
+Subject: Re: [PATCH v5] staging: Use buf_lock instead of mlock and Refactor code
+To: kbuild test robot <lkp@intel.com>
+Cc: kbuild-all@01.org, Lars-Peter Clausen <lars@metafoo.de>, 
+	Michael Hennerich <Michael.Hennerich@analog.com>, Jonathan Cameron <jic23@kernel.org>, 
+	Hartmut Knaack <knaack.h@gmx.de>, Peter Meerwald-Stadler <pmeerw@pmeerw.net>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-iio@vger.kernel.org, 
+	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-On Mon, Mar 20, 2017 at 01:36:21AM +0530, simran singhal wrote:
+On Tue, Mar 21, 2017 at 8:01 PM, kbuild test robot <lkp@intel.com> wrote:
+> Hi simran,
+>
+> [auto build test WARNING on iio/togreg]
+> [also build test WARNING on v4.11-rc3 next-20170321]
+> [if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
+>
+> url:    https://github.com/0day-ci/linux/commits/simran-singhal/staging-Use-buf_lock-instead-of-mlock-and-Refactor-code/20170321-213956
+> base:   https://git.kernel.org/pub/scm/linux/kernel/git/jic23/iio.git togreg
+> config: x86_64-randconfig-x016-201712 (attached as .config)
+> compiler: gcc-6 (Debian 6.2.0-3) 6.2.0 20160901
+> reproduce:
+>         # save the attached .config to linux build tree
+>         make ARCH=x86_64
+>
+> All warnings (new ones prefixed by >>):
+>
+I am not getting any error, and I have already sent the v7 of this patch
+please check out that:
+https://groups.google.com/forum/#!topic/outreachy-kernel/5uz6IpcOpMA
 
-Hi Simran,  
 
-I going to ask for a v7 without looking at the code ;)
-Subject line needs subsystem and driver.
-Subject and log message can be improved.
-
-> The IIO subsystem is redefining iio_dev->mlock to be used by
-> the IIO core only for protecting device operating mode changes.
-> ie. Changes between INDIO_DIRECT_MODE, INDIO_BUFFER_* modes.
-> 
-> In this driver, mlock was being used to protect hardware state
-> changes. Replace it with buf_lock in the devices global data.
-           ^^^^^^^^^^^ this was not done
-> 
-> As buf_lock protects both the adis16060_spi_write() and
-> adis16060_spi_read() functions and both are always called in
-> pair. First write, then read. Thus, refactor the code to have
-> one single function adis16060_spi_write_than_read() which is
-> protected by the existing buf_lock.
-This was done.  So, you were able to obsolete the need for mlock
-by creating the paired function.
-
-> 
-> Removed nested locks as the function adis16060_read_raw call
-> a lock on &st->buf_lock and then calls the function
-> adis16060_spi_write which again tries to get hold
-> of the same lock.
-^^^^ this was not done.  Yes, you avoided nested locks through
-proper coding, but we don't want to give the impression in the
-log message that there was a pre-existing nested lock issue.
-
-I did checkpatch & compile it...but looked no further yet.
-
-alisons
-> 
-> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+>    In file included from include/uapi/linux/stddef.h:1:0,
+>                     from include/linux/stddef.h:4,
+>                     from include/uapi/linux/posix_types.h:4,
+>                     from include/uapi/linux/types.h:13,
+>                     from include/linux/types.h:5,
+>                     from include/linux/list.h:4,
+>                     from include/linux/module.h:9,
+>                     from drivers/staging/iio/gyro/adis16060_core.c:9:
+>    drivers/staging/iio/gyro/adis16060_core.c: In function 'adis16060_read_raw':
+>    include/linux/compiler.h:149:2: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+>      if (__builtin_constant_p(!!(cond)) ? !!(cond) :   \
+>      ^
+>    include/linux/compiler.h:147:23: note: in expansion of macro '__trace_if'
+>     #define if(cond, ...) __trace_if( (cond , ## __VA_ARGS__) )
+>                           ^~~~~~~~~~
+>>> drivers/staging/iio/gyro/adis16060_core.c:89:3: note: in expansion of macro 'if'
+>       if (ret < 0)
+>       ^~
+>    drivers/staging/iio/gyro/adis16060_core.c:91:4: note: ...this statement, but the latter is misleadingly indented as if it is guarded by the 'if'
+>        return ret;
+>        ^~~~~~
+>
+> vim +/if +89 drivers/staging/iio/gyro/adis16060_core.c
+>
+> e071f6b8 Barry Song       2010-10-27   3   *
+> e071f6b8 Barry Song       2010-10-27   4   * Copyright 2010 Analog Devices Inc.
+> e071f6b8 Barry Song       2010-10-27   5   *
+> e071f6b8 Barry Song       2010-10-27   6   * Licensed under the GPL-2 or later.
+> e071f6b8 Barry Song       2010-10-27   7   */
+> e071f6b8 Barry Song       2010-10-27   8
+> 45296236 Paul Gortmaker   2011-08-30  @9  #include <linux/module.h>
+> e071f6b8 Barry Song       2010-10-27  10  #include <linux/delay.h>
+> e071f6b8 Barry Song       2010-10-27  11  #include <linux/mutex.h>
+> e071f6b8 Barry Song       2010-10-27  12  #include <linux/device.h>
+> e071f6b8 Barry Song       2010-10-27  13  #include <linux/kernel.h>
+> e071f6b8 Barry Song       2010-10-27  14  #include <linux/spi/spi.h>
+> e071f6b8 Barry Song       2010-10-27  15  #include <linux/slab.h>
+> e071f6b8 Barry Song       2010-10-27  16  #include <linux/sysfs.h>
+> 14f98326 Jonathan Cameron 2011-02-28  17
+> 06458e27 Jonathan Cameron 2012-04-25  18  #include <linux/iio/iio.h>
+> 06458e27 Jonathan Cameron 2012-04-25  19  #include <linux/iio/sysfs.h>
+> e071f6b8 Barry Song       2010-10-27  20
+> 14f98326 Jonathan Cameron 2011-02-28  21  #define ADIS16060_GYRO                0x20 /* Measure Angular Rate (Gyro) */
+> 14f98326 Jonathan Cameron 2011-02-28  22  #define ADIS16060_TEMP_OUT    0x10 /* Measure Temperature */
+> 14f98326 Jonathan Cameron 2011-02-28  23  #define ADIS16060_AIN2                0x80 /* Measure AIN2 */
+> 14f98326 Jonathan Cameron 2011-02-28  24  #define ADIS16060_AIN1                0x40 /* Measure AIN1 */
+> 14f98326 Jonathan Cameron 2011-02-28  25
+> 14f98326 Jonathan Cameron 2011-02-28  26  /**
+> 14f98326 Jonathan Cameron 2011-02-28  27   * struct adis16060_state - device instance specific data
+> 14f98326 Jonathan Cameron 2011-02-28  28   * @us_w:             actual spi_device to write config
+> 14f98326 Jonathan Cameron 2011-02-28  29   * @us_r:             actual spi_device to read back data
+> 25985edc Lucas De Marchi  2011-03-30  30   * @buf:              transmit or receive buffer
+> 14f98326 Jonathan Cameron 2011-02-28  31   * @buf_lock:         mutex to protect tx and rx
+> 14f98326 Jonathan Cameron 2011-02-28  32   **/
+> 14f98326 Jonathan Cameron 2011-02-28  33  struct adis16060_state {
+> 14f98326 Jonathan Cameron 2011-02-28  34        struct spi_device               *us_w;
+> 14f98326 Jonathan Cameron 2011-02-28  35        struct spi_device               *us_r;
+> 14f98326 Jonathan Cameron 2011-02-28  36        struct mutex                    buf_lock;
+> 14f98326 Jonathan Cameron 2011-02-28  37
+> 14f98326 Jonathan Cameron 2011-02-28  38        u8 buf[3] ____cacheline_aligned;
+> 14f98326 Jonathan Cameron 2011-02-28  39  };
+> e071f6b8 Barry Song       2010-10-27  40
+> 3a5952f9 Jonathan Cameron 2011-06-27  41  static struct iio_dev *adis16060_iio_dev;
+> e071f6b8 Barry Song       2010-10-27  42
+> 71db16e5 simran singhal   2017-03-19  43  static int adis16060_spi_write_than_read(struct iio_dev *indio_dev,
+> 71db16e5 simran singhal   2017-03-19  44                                         u8 conf, u16 *val)
+> e071f6b8 Barry Song       2010-10-27  45  {
+> e071f6b8 Barry Song       2010-10-27  46        int ret;
+> 3a5952f9 Jonathan Cameron 2011-06-27  47        struct adis16060_state *st = iio_priv(indio_dev);
+> e071f6b8 Barry Song       2010-10-27  48
+> e071f6b8 Barry Song       2010-10-27  49        mutex_lock(&st->buf_lock);
+> 71db16e5 simran singhal   2017-03-19  50        st->buf[2] = conf; /* The last 8 bits clocked in are latched */
+> 14f98326 Jonathan Cameron 2011-02-28  51        ret = spi_write(st->us_w, st->buf, 3);
+> e071f6b8 Barry Song       2010-10-27  52
+> 71db16e5 simran singhal   2017-03-19  53        if (ret < 0) {
+> 71db16e5 simran singhal   2017-03-19  54                mutex_unlock(&st->buf_lock);
+> e071f6b8 Barry Song       2010-10-27  55                return ret;
+> e071f6b8 Barry Song       2010-10-27  56        }
+> e071f6b8 Barry Song       2010-10-27  57
+> 14f98326 Jonathan Cameron 2011-02-28  58        ret = spi_read(st->us_r, st->buf, 3);
+> e071f6b8 Barry Song       2010-10-27  59
+> d14ae859 Jonathan Cameron 2011-02-11  60        /* The internal successive approximation ADC begins the
+> d14ae859 Jonathan Cameron 2011-02-11  61         * conversion process on the falling edge of MSEL1 and
+> d14ae859 Jonathan Cameron 2011-02-11  62         * starts to place data MSB first on the DOUT line at
+> d14ae859 Jonathan Cameron 2011-02-11  63         * the 6th falling edge of SCLK
+> e071f6b8 Barry Song       2010-10-27  64         */
+> 05824120 Cristina Moraru  2015-10-20  65        if (!ret)
+> 14f98326 Jonathan Cameron 2011-02-28  66                *val = ((st->buf[0] & 0x3) << 12) |
+> 14f98326 Jonathan Cameron 2011-02-28  67                         (st->buf[1] << 4) |
+> 14f98326 Jonathan Cameron 2011-02-28  68                         ((st->buf[2] >> 4) & 0xF);
+> e071f6b8 Barry Song       2010-10-27  69        mutex_unlock(&st->buf_lock);
+> e071f6b8 Barry Song       2010-10-27  70
+> e071f6b8 Barry Song       2010-10-27  71        return ret;
+> e071f6b8 Barry Song       2010-10-27  72  }
+> e071f6b8 Barry Song       2010-10-27  73
+> 4f2ca080 Jonathan Cameron 2011-08-12  74  static int adis16060_read_raw(struct iio_dev *indio_dev,
+> 4f2ca080 Jonathan Cameron 2011-08-12  75                              struct iio_chan_spec const *chan,
+> 4f2ca080 Jonathan Cameron 2011-08-12  76                              int *val, int *val2,
+> 4f2ca080 Jonathan Cameron 2011-08-12  77                              long mask)
+> e071f6b8 Barry Song       2010-10-27  78  {
+> 4f2ca080 Jonathan Cameron 2011-08-12  79        u16 tval = 0;
+> 4f2ca080 Jonathan Cameron 2011-08-12  80        int ret;
+> 71db16e5 simran singhal   2017-03-19  81        struct adis16060_state *st = iio_priv(indio_dev);
+> e071f6b8 Barry Song       2010-10-27  82
+> 4f2ca080 Jonathan Cameron 2011-08-12  83        switch (mask) {
+> fbaff213 Jonathan Cameron 2012-04-15  84        case IIO_CHAN_INFO_RAW:
+> e071f6b8 Barry Song       2010-10-27  85                /* Take the iio_dev status lock */
+> 71db16e5 simran singhal   2017-03-19  86                mutex_lock(&st->buf_lock);
+> 71db16e5 simran singhal   2017-03-19  87                ret = adis16060_spi_write_than_read(indio_dev,
+> 71db16e5 simran singhal   2017-03-19  88                                                    chan->address, &tval);
+> 31a99443 Cristina Moraru  2015-10-25 @89                if (ret < 0)
+> 71db16e5 simran singhal   2017-03-19  90                        mutex_unlock(&st->buf_lock);
+> 71db16e5 simran singhal   2017-03-19  91                        return ret;
+> 31a99443 Cristina Moraru  2015-10-25  92
+>
+> :::::: The code at line 89 was first introduced by commit
+> :::::: 31a99443a53aa65cdaaaaa3bcd5ed685eec87419 staging: iio: adis16060_core: Fix error handling
+>
+> :::::: TO: Cristina Moraru <cristina.moraru09@gmail.com>
+> :::::: CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+>
 > ---
-> 
->  v6:
->    -Change commit message
->    -Remove nested lock
-> 
->  drivers/staging/iio/gyro/adis16060_core.c | 40 ++++++++++---------------------
->  1 file changed, 13 insertions(+), 27 deletions(-)
-> 
-> diff --git a/drivers/staging/iio/gyro/adis16060_core.c b/drivers/staging/iio/gyro/adis16060_core.c
-> index c9d46e7..1c6de46 100644
-> --- a/drivers/staging/iio/gyro/adis16060_core.c
-> +++ b/drivers/staging/iio/gyro/adis16060_core.c
-> @@ -40,25 +40,17 @@ struct adis16060_state {
->  
->  static struct iio_dev *adis16060_iio_dev;
->  
-> -static int adis16060_spi_write(struct iio_dev *indio_dev, u8 val)
-> +static int adis16060_spi_write_than_read(struct iio_dev *indio_dev,
-> +					 u8 conf, u16 *val)
->  {
->  	int ret;
->  	struct adis16060_state *st = iio_priv(indio_dev);
->  
-> -	mutex_lock(&st->buf_lock);
-> -	st->buf[2] = val; /* The last 8 bits clocked in are latched */
-> +	st->buf[2] = conf; /* The last 8 bits clocked in are latched */
->  	ret = spi_write(st->us_w, st->buf, 3);
-> -	mutex_unlock(&st->buf_lock);
-> -
-> -	return ret;
-> -}
-> -
-> -static int adis16060_spi_read(struct iio_dev *indio_dev, u16 *val)
-> -{
-> -	int ret;
-> -	struct adis16060_state *st = iio_priv(indio_dev);
->  
-> -	mutex_lock(&st->buf_lock);
-> +	if (ret < 0)
-> +		return ret;
->  
->  	ret = spi_read(st->us_r, st->buf, 3);
->  
-> @@ -69,8 +61,8 @@ static int adis16060_spi_read(struct iio_dev *indio_dev, u16 *val)
->  	 */
->  	if (!ret)
->  		*val = ((st->buf[0] & 0x3) << 12) |
-> -			(st->buf[1] << 4) |
-> -			((st->buf[2] >> 4) & 0xF);
-> +			 (st->buf[1] << 4) |
-> +			 ((st->buf[2] >> 4) & 0xF);
->  	mutex_unlock(&st->buf_lock);
->  
->  	return ret;
-> @@ -83,20 +75,18 @@ static int adis16060_read_raw(struct iio_dev *indio_dev,
->  {
->  	u16 tval = 0;
->  	int ret;
-> +	struct adis16060_state *st = iio_priv(indio_dev);
->  
->  	switch (mask) {
->  	case IIO_CHAN_INFO_RAW:
->  		/* Take the iio_dev status lock */
-> -		mutex_lock(&indio_dev->mlock);
-> -		ret = adis16060_spi_write(indio_dev, chan->address);
-> +		mutex_lock(&st->buf_lock);
-> +		ret = adis16060_spi_write_than_read(indio_dev,
-> +						    chan->address, &tval);
-> +		mutex_unlock(&st->buf_lock);
->  		if (ret < 0)
-> -			goto out_unlock;
-> +			return ret;
->  
-> -		ret = adis16060_spi_read(indio_dev, &tval);
-> -		if (ret < 0)
-> -			goto out_unlock;
-> -
-> -		mutex_unlock(&indio_dev->mlock);
->  		*val = tval;
->  		return IIO_VAL_INT;
->  	case IIO_CHAN_INFO_OFFSET:
-> @@ -110,10 +100,6 @@ static int adis16060_read_raw(struct iio_dev *indio_dev,
->  	}
->  
->  	return -EINVAL;
-> -
-> -out_unlock:
-> -	mutex_unlock(&indio_dev->mlock);
-> -	return ret;
->  }
->  
->  static const struct iio_info adis16060_info = {
-> -- 
-> 2.7.4
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170319200621.GA21295%40singhal-Inspiron-5558.
-> For more options, visit https://groups.google.com/d/optout.
+> 0-DAY kernel test infrastructure                Open Source Technology Center
+> https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 
