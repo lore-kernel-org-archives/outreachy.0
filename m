@@ -1,53 +1,53 @@
 X-GM-THRID: 6399866946348646400
-X-Received: by 10.129.182.81 with SMTP id h17mr6022314ywk.121.1490085156632;
-        Tue, 21 Mar 2017 01:32:36 -0700 (PDT)
+X-Received: by 10.129.108.20 with SMTP id h20mr17402308ywc.69.1490085151948;
+        Tue, 21 Mar 2017 01:32:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.182.67 with SMTP id g64ls4192880iof.4.gmail; Tue, 21 Mar
- 2017 01:32:36 -0700 (PDT)
-X-Received: by 10.107.37.140 with SMTP id l134mr8452848iol.67.1490085156212;
-        Tue, 21 Mar 2017 01:32:36 -0700 (PDT)
+Received: by 10.36.200.10 with SMTP id w10ls2619312itf.13.canary-gmail; Tue,
+ 21 Mar 2017 01:32:31 -0700 (PDT)
+X-Received: by 10.107.38.17 with SMTP id m17mr8739226iom.5.1490085151143;
+        Tue, 21 Mar 2017 01:32:31 -0700 (PDT)
 Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id 2si3333400pfx.8.2017.03.21.01.32.36
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id 2si3153707pfz.1.2017.03.21.01.32.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 21 Mar 2017 01:32:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Tue, 21 Mar 2017 01:32:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id p189so15472829pfp.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 01:32:36 -0700 (PDT)
+Received: by mail-pg0-x243.google.com with SMTP id g2so24122644pge.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 01:32:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=+eBTjyKtrzFKQQbBUs5njc8dF6PsWrOdWdjCUGNxnBk=;
-        b=nDTDpad5H1rP40ZFAiTuk8hK4iLCeR/uwTU04eVDQ4e1nStwH+nztd/ZPdbsFAfEQv
-         pI48gEk8sy663F5KRp9DND1E5Xy6OFgKHhZU9eJYQb7ajOTIqs5Ho/OGjOL6vxltXIev
-         iDfoiMT0iZtkVQO/KcQGR9KQprLXbRVhWiISRDQluOZvinTMmdL1FkvkgzFJvPt9TlyO
-         8CAwOgxseMKDZv0EHpDX2yesgnc8WGK3+fxJU6KD2Ko4wGreQr39UPhMU2fN4hS4oVV6
-         1nVXL7fqs39XPcPpg4N6+5ZZ2/dJB5O6ikzzuW6qIbROalaOj55pTa1v/g0324Hl3No3
-         Z9kQ==
+        bh=LWYWLZj3SjTkpbBMHRwRN4VL0lUSikq0VyTFGIwYGLU=;
+        b=eFroxHWfcKIXOFIeeJcHBLS2LtFcWTIlprB7IxkxgvrPN7HOAEDbIR4PBqCxdzsHtW
+         SwIHbJa+Hjl+K3atw9SBNR43faXTNvF82j39MRvmjRHCjdici9uwn5wVtIvSvr9i8XFI
+         gvx6ljGCp+cKlsZ/e/jqRxXGbgLsD7ePbX6qdJf9s+EyCnDa2E36cup96KucQvlTrT/j
+         YuQ++KYyZTumIDFg+9gfLPI295VD9uVvXJVVtaq1CNyHb3cZQrdRniK3ZvCj+xHEPFId
+         lTFHCZ9UDbwg8vnQrgaOqpQiBLjFOfTpkmcllRRugj/TQU69kSTvG8v+mmhHFd8rDovF
+         BZww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=+eBTjyKtrzFKQQbBUs5njc8dF6PsWrOdWdjCUGNxnBk=;
-        b=pxbFEkEHZ2ykzp27e/nxHoqvw7fOne+LCP+txsjEmdlMNWv1mf9C0hIDO7Hj1gQPXY
-         sTtaLhsSte3gYIA0EeQdQwrPEoY2aw3fUet5by1MheyaVG336SaoeYJVPRpRVJp87l+m
-         MwXTPNv+BEaO2lqNadn2YuspCutvF8whhLrfFxawLudwuTrbbRhD1KF95WAuTG39kGrV
-         H93z9FndGdy05N8yMZpleCAL1Qn/RXS2GgnWMsclwcL3fyxSVWBq6+X/Pu9qU4nhWj5J
-         r8dPYyiwmtvYj7U7ZSlbkCTFGlN6mc74E6J4PYLhihvVC3mRm0VZAi4tiljQqUjzMSYL
-         eicw==
-X-Gm-Message-State: AFeK/H1tbsmO9Q4fMx580ATadzDYmXmZUXgpXCcCECdvjOt4JvDbcveIjc/HYrJJc8B1zg==
-X-Received: by 10.84.132.97 with SMTP id 88mr6809611ple.61.1490085155947;
-        Tue, 21 Mar 2017 01:32:35 -0700 (PDT)
+        bh=LWYWLZj3SjTkpbBMHRwRN4VL0lUSikq0VyTFGIwYGLU=;
+        b=YqVJI4DdLr8JnyCP6uMZSzvVdgF711KBt3icz62Kr3M2sqtRBgBImbBZdHhxSKAA83
+         ug2wFP/CKHw3oLFzQgPYwW+aybpxMgqh0cKYX4BqRzwfAMmWJUVu8sG6dddgohulEHDN
+         km2qixE4G7tds8gZ7pV1fDJ9rM1t5pyU1tHV8VlLe0dFSJlO0jROhwwPqlgkAoX5a31u
+         Rr0njsFDvbR1yo3JDQgNRAciMO74xGcnkYS8Y8P9YHLU4kbqYxGHPAClPpyNlBNSGkPt
+         Oi6PYfS6nyz9kHK+IidTiqyJimqgDSVZ+X9I5cOWdte4A6suqPoNtWNSp1UuquQD49Wi
+         juyg==
+X-Gm-Message-State: AFeK/H2KYa1hM6epvj9xUoQazzGZc2secy3gBGw2RIuDVa9sCldEaRno7kw1955eyVZ4OQ==
+X-Received: by 10.99.155.17 with SMTP id r17mr1591490pgd.193.1490085150840;
+        Tue, 21 Mar 2017 01:32:30 -0700 (PDT)
 Return-Path: <arushisinghal19971997@gmail.com>
 Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id b128sm13997645pfg.54.2017.03.21.01.32.34
+        by smtp.gmail.com with ESMTPSA id d199sm37783957pfd.107.2017.03.21.01.32.29
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 21 Mar 2017 01:32:34 -0700 (PDT)
+        Tue, 21 Mar 2017 01:32:29 -0700 (PDT)
 From: Arushi Singhal <arushisinghal19971997@gmail.com>
 To: w.d.hubbs@gmail.com
 Cc: chris@the-brannons.com,
@@ -59,87 +59,184 @@ Cc: chris@the-brannons.com,
 	devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org,
 	Arushi Singhal <arushisinghal19971997@gmail.com>
-Subject: [PATCH 3/4] staging: speakup: Match alignment with open parenthesis.
-Date: Tue, 21 Mar 2017 14:02:14 +0530
-Message-Id: <20170321083215.29209-4-arushisinghal19971997@gmail.com>
+Subject: [PATCH 2/4] staging: speakup: Simplify the NULL comparisons
+Date: Tue, 21 Mar 2017 14:02:13 +0530
+Message-Id: <20170321083215.29209-3-arushisinghal19971997@gmail.com>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20170321083215.29209-1-arushisinghal19971997@gmail.com>
 References: <20170321083215.29209-1-arushisinghal19971997@gmail.com>
 
-Fix checkpatch issues: "CHECK: Alignment should match open parenthesis".
+Fixed coding style for null comparisons in speakup driver to be more
+consistant with the rest of the kernel coding style.
+Replaced 'x != NULL' with 'x' and 'x = NULL' with '!x'.
 
 Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
 ---
- drivers/staging/speakup/main.c           | 2 +-
- drivers/staging/speakup/selection.c      | 2 +-
- drivers/staging/speakup/serialio.c       | 2 +-
- drivers/staging/speakup/speakup_acntpc.c | 6 +++---
- 4 files changed, 6 insertions(+), 6 deletions(-)
+ drivers/staging/speakup/fakekey.c |  2 +-
+ drivers/staging/speakup/main.c    | 32 ++++++++++++++++----------------
+ 2 files changed, 17 insertions(+), 17 deletions(-)
 
+diff --git a/drivers/staging/speakup/fakekey.c b/drivers/staging/speakup/fakekey.c
+index d76da0a1382c..294c74b47224 100644
+--- a/drivers/staging/speakup/fakekey.c
++++ b/drivers/staging/speakup/fakekey.c
+@@ -56,7 +56,7 @@ int speakup_add_virtual_keyboard(void)
+ 
+ void speakup_remove_virtual_keyboard(void)
+ {
+-	if (virt_keyboard != NULL) {
++	if (virt_keyboard) {
+ 		input_unregister_device(virt_keyboard);
+ 		virt_keyboard = NULL;
+ 	}
 diff --git a/drivers/staging/speakup/main.c b/drivers/staging/speakup/main.c
-index 7568e8149613..55bf7af1d6ea 100644
+index def1a36da9dd..7568e8149613 100644
 --- a/drivers/staging/speakup/main.c
 +++ b/drivers/staging/speakup/main.c
-@@ -1160,7 +1160,7 @@ static void spkup_write(const u16 *in_buf, int count)
- 		if (last_type & CH_RPT) {
- 			synth_printf(" ");
- 			synth_printf(spk_msg_get(MSG_REPEAT_DESC2),
--					++rep_count);
-+				     ++rep_count);
- 			synth_printf(" ");
- 		}
- 		rep_count = 0;
-diff --git a/drivers/staging/speakup/selection.c b/drivers/staging/speakup/selection.c
-index 4417c00e68a7..08f68fc2864e 100644
---- a/drivers/staging/speakup/selection.c
-+++ b/drivers/staging/speakup/selection.c
-@@ -75,7 +75,7 @@ int speakup_set_selection(struct tty_struct *tty)
- 		speakup_clear_selection();
- 		spk_sel_cons = vc_cons[fg_console].d;
- 		dev_warn(tty->dev,
--			"Selection: mark console not the same as cut\n");
-+			 "Selection: mark console not the same as cut\n");
- 		return -EINVAL;
+@@ -304,7 +304,7 @@ static void speakup_shut_up(struct vc_data *vc)
+ 	spk_shut_up |= 0x01;
+ 	spk_parked &= 0xfe;
+ 	speakup_date(vc);
+-	if (synth != NULL)
++	if (synth)
+ 		spk_do_flush();
+ }
+ 
+@@ -449,7 +449,7 @@ static void speak_char(u16 ch)
  	}
  
-diff --git a/drivers/staging/speakup/serialio.c b/drivers/staging/speakup/serialio.c
-index e860e48818a4..5e31acac19de 100644
---- a/drivers/staging/speakup/serialio.c
-+++ b/drivers/staging/speakup/serialio.c
-@@ -125,7 +125,7 @@ static void start_serial_interrupt(int irq)
- 		pr_err("Unable to request Speakup serial I R Q\n");
- 	/* Set MCR */
- 	outb(UART_MCR_DTR | UART_MCR_RTS | UART_MCR_OUT2,
--			speakup_info.port_tts + UART_MCR);
-+	     speakup_info.port_tts + UART_MCR);
- 	/* Turn on Interrupts */
- 	outb(UART_IER_MSI|UART_IER_RLSI|UART_IER_RDI,
- 			speakup_info.port_tts + UART_IER);
-diff --git a/drivers/staging/speakup/speakup_acntpc.c b/drivers/staging/speakup/speakup_acntpc.c
-index b4058bd82e42..ad72f8e883fc 100644
---- a/drivers/staging/speakup/speakup_acntpc.c
-+++ b/drivers/staging/speakup/speakup_acntpc.c
-@@ -261,9 +261,9 @@ static int synth_probe(struct spk_synth *synth)
- 	if (port_forced) {
- 		speakup_info.port_tts = port_forced;
- 		pr_info("probe forced to %x by kernel command line\n",
--				speakup_info.port_tts);
-+			speakup_info.port_tts);
- 		if (synth_request_region(speakup_info.port_tts - 1,
--					SYNTH_IO_EXTENT)) {
-+					 SYNTH_IO_EXTENT)) {
- 			pr_warn("sorry, port already reserved\n");
- 			return -EBUSY;
+ 	cp = spk_characters[ch];
+-	if (cp == NULL) {
++	if (!cp) {
+ 		pr_info("speak_char: cp == NULL!\n");
+ 		return;
+ 	}
+@@ -1177,7 +1177,7 @@ static void do_handle_shift(struct vc_data *vc, u_char value, char up_flag)
+ {
+ 	unsigned long flags;
+ 
+-	if (synth == NULL || up_flag || spk_killed)
++	if (!synth || up_flag || spk_killed)
+ 		return;
+ 	spin_lock_irqsave(&speakup_info.spinlock, flags);
+ 	if (cursor_track == read_all_mode) {
+@@ -1215,7 +1215,7 @@ static void do_handle_latin(struct vc_data *vc, u_char value, char up_flag)
+ 		spin_unlock_irqrestore(&speakup_info.spinlock, flags);
+ 		return;
+ 	}
+-	if (synth == NULL || spk_killed) {
++	if (!synth || spk_killed) {
+ 		spin_unlock_irqrestore(&speakup_info.spinlock, flags);
+ 		return;
+ 	}
+@@ -1341,7 +1341,7 @@ static int speakup_allocate(struct vc_data *vc)
+ 	int vc_num;
+ 
+ 	vc_num = vc->vc_num;
+-	if (speakup_console[vc_num] == NULL) {
++	if (!speakup_console[vc_num]) {
+ 		speakup_console[vc_num] = kzalloc(sizeof(*speakup_console[0]),
+ 						  GFP_ATOMIC);
+ 		if (!speakup_console[vc_num])
+@@ -1394,7 +1394,7 @@ static void kbd_fakekey2(struct vc_data *vc, int command)
+ 
+ static void read_all_doc(struct vc_data *vc)
+ {
+-	if ((vc->vc_num != fg_console) || synth == NULL || spk_shut_up)
++	if ((vc->vc_num != fg_console) || !synth || spk_shut_up)
+ 		return;
+ 	if (!synth_supports_indexing())
+ 		return;
+@@ -1509,7 +1509,7 @@ static int pre_handle_cursor(struct vc_data *vc, u_char value, char up_flag)
+ 	spin_lock_irqsave(&speakup_info.spinlock, flags);
+ 	if (cursor_track == read_all_mode) {
+ 		spk_parked &= 0xfe;
+-		if (synth == NULL || up_flag || spk_shut_up) {
++		if (!synth || up_flag || spk_shut_up) {
+ 			spin_unlock_irqrestore(&speakup_info.spinlock, flags);
+ 			return NOTIFY_STOP;
  		}
-@@ -272,7 +272,7 @@ static int synth_probe(struct spk_synth *synth)
- 	} else {
- 		for (i = 0; synth_portlist[i]; i++) {
- 			if (synth_request_region(synth_portlist[i],
--						SYNTH_IO_EXTENT)) {
-+						 SYNTH_IO_EXTENT)) {
- 				pr_warn
- 				    ("request_region: failed with 0x%x, %d\n",
- 				     synth_portlist[i], SYNTH_IO_EXTENT);
+@@ -1531,7 +1531,7 @@ static void do_handle_cursor(struct vc_data *vc, u_char value, char up_flag)
+ 
+ 	spin_lock_irqsave(&speakup_info.spinlock, flags);
+ 	spk_parked &= 0xfe;
+-	if (synth == NULL || up_flag || spk_shut_up || cursor_track == CT_Off) {
++	if (!synth || up_flag || spk_shut_up || cursor_track == CT_Off) {
+ 		spin_unlock_irqrestore(&speakup_info.spinlock, flags);
+ 		return;
+ 	}
+@@ -1730,7 +1730,7 @@ static void speakup_bs(struct vc_data *vc)
+ 		return;
+ 	if (!spk_parked)
+ 		speakup_date(vc);
+-	if (spk_shut_up || synth == NULL) {
++	if (spk_shut_up || !synth) {
+ 		spin_unlock_irqrestore(&speakup_info.spinlock, flags);
+ 		return;
+ 	}
+@@ -1747,7 +1747,7 @@ static void speakup_con_write(struct vc_data *vc, u16 *str, int len)
+ {
+ 	unsigned long flags;
+ 
+-	if ((vc->vc_num != fg_console) || spk_shut_up || synth == NULL)
++	if ((vc->vc_num != fg_console) || spk_shut_up || !synth)
+ 		return;
+ 	if (!spin_trylock_irqsave(&speakup_info.spinlock, flags))
+ 		/* Speakup output, discard */
+@@ -1776,7 +1776,7 @@ static void speakup_con_update(struct vc_data *vc)
+ {
+ 	unsigned long flags;
+ 
+-	if (speakup_console[vc->vc_num] == NULL || spk_parked)
++	if (!speakup_console[vc->vc_num] || spk_parked)
+ 		return;
+ 	if (!spin_trylock_irqsave(&speakup_info.spinlock, flags))
+ 		/* Speakup output, discard */
+@@ -1791,7 +1791,7 @@ static void do_handle_spec(struct vc_data *vc, u_char value, char up_flag)
+ 	int on_off = 2;
+ 	char *label;
+ 
+-	if (synth == NULL || up_flag || spk_killed)
++	if (!synth || up_flag || spk_killed)
+ 		return;
+ 	spin_lock_irqsave(&speakup_info.spinlock, flags);
+ 	spk_shut_up &= 0xfe;
+@@ -1835,7 +1835,7 @@ static int inc_dec_var(u_char value)
+ 
+ 	var_id = var_id / 2 + FIRST_SET_VAR;
+ 	p_header = spk_get_var_header(var_id);
+-	if (p_header == NULL)
++	if (!p_header)
+ 		return -1;
+ 	if (p_header->var_type != VAR_NUM)
+ 		return -1;
+@@ -1918,7 +1918,7 @@ static void speakup_bits(struct vc_data *vc)
+ {
+ 	int val = this_speakup_key - (FIRST_EDIT_BITS - 1);
+ 
+-	if (spk_special_handler != NULL || val < 1 || val > 6) {
++	if (spk_special_handler || val < 1 || val > 6) {
+ 		synth_printf("%s\n", spk_msg_get(MSG_ERROR));
+ 		return;
+ 	}
+@@ -2012,7 +2012,7 @@ static int handle_goto(struct vc_data *vc, u_char type, u_char ch, u_short key)
+ 
+ static void speakup_goto(struct vc_data *vc)
+ {
+-	if (spk_special_handler != NULL) {
++	if (spk_special_handler) {
+ 		synth_printf("%s\n", spk_msg_get(MSG_ERROR));
+ 		return;
+ 	}
+@@ -2164,7 +2164,7 @@ speakup_key(struct vc_data *vc, int shift_state, int keycode, u_short keysym,
+ 		}
+ 	}
+ no_map:
+-	if (type == KT_SPKUP && spk_special_handler == NULL) {
++	if (type == KT_SPKUP && !spk_special_handler) {
+ 		do_spkup(vc, new_key);
+ 		spk_close_press = 0;
+ 		ret = 1;
 -- 
 2.11.0
 
