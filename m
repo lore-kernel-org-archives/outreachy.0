@@ -1,53 +1,52 @@
 X-GM-THRID: 6399941946737950720
-X-Received: by 10.157.35.9 with SMTP id j9mr16498186otb.74.1490102606789;
-        Tue, 21 Mar 2017 06:23:26 -0700 (PDT)
+X-Received: by 10.107.201.131 with SMTP id z125mr9066695iof.94.1490102602833;
+        Tue, 21 Mar 2017 06:23:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.151.72 with SMTP id z69ls4377367iod.16.gmail; Tue, 21 Mar
- 2017 06:23:25 -0700 (PDT)
-X-Received: by 10.107.18.78 with SMTP id a75mr9022868ioj.58.1490102605695;
-        Tue, 21 Mar 2017 06:23:25 -0700 (PDT)
+Received: by 10.157.35.87 with SMTP id k23ls1913309otd.20.gmail; Tue, 21 Mar
+ 2017 06:23:22 -0700 (PDT)
+X-Received: by 10.157.51.10 with SMTP id f10mr16113424otc.84.1490102602405;
+        Tue, 21 Mar 2017 06:23:22 -0700 (PDT)
 Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id r66si3304750pfb.7.2017.03.21.06.23.25
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id 2si3432588pfx.8.2017.03.21.06.23.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 21 Mar 2017 06:23:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Tue, 21 Mar 2017 06:23:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id 79so16449202pgf.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 06:23:25 -0700 (PDT)
+Received: by mail-pf0-x241.google.com with SMTP id n11so10581731pfg.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 06:23:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=1zvyKyC86dFeL3A9VsXh99IQYbN8B7Tdhx6gXaxUlNM=;
-        b=EahL0Xtimd6qFpoFyHBXQlzJPNJJfsxb73lNTE0WznLhOqbjC68STLATjSDdTE0UI6
-         fHQhSR/QBQp3Oo+ZjzvFC7ICarvcnGMjA8Hb/2ee26Hb2+PYjNsvVZ6a1dcnWlHW/gYj
-         ny0WEcRZvrf+v2qeggkqdXxc6tJzORKZ7PU24OLqLnb6ajdtkjuCqtseUskr1QNt113q
-         rsx/Mvsncb+zDDFuLtIkhAqo87Xd2jQnIfDez4uULXQNmkSIZjQOKUKJOpYQfGGGimB6
-         uSfwV/Dh/0yDzDUtJQxqNrJHNL0NpgAZJzkd7ZzpFEZmcKzmw63Yo8lWp/q3uOqbKOsc
-         8x1g==
+        h=from:to:cc:subject:date:message-id;
+        bh=+U1Eye1CpHnqB2sCBGJK+pNsjf7675xymZZ75XWlnD4=;
+        b=mSfE85XV6M4789fqoBNTw9+vxdAk2ehqZhT1w9A5zM2xxYmAbDTAHKD67JnKPWe5KY
+         pndnwX9GX4E9tTffG8FhVlEXCTDguih+xjXtHpdtOBsCvQo4HZWjymdHONaFbYN0MlVL
+         3lYMJhgNJSrIyHt9HnHmeiFjryGUIcyWDevciccfT4fLKbEWpIkcmXJD60Pg/ld7nBcd
+         Aa6DS8rJXhiGfJ5yNXaTgo51yUndqYk63z4qJW1PcBS0TIQnSzTxil3koTvRxmgfJEPw
+         AaRnhxo5GRnqjFDzc4S/h8oeb4MgGfpZekBrwq2zfhqbesp4O2vWWdbiX5mclQ6IAgyE
+         n9TQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=1zvyKyC86dFeL3A9VsXh99IQYbN8B7Tdhx6gXaxUlNM=;
-        b=LvXuOLBSEhPi4IZ8Hs7TmX7XcjKn6y4VVw4SRyPkuZTzJ8brhN8/Beab1C5y4YakqC
-         LKJop67DRsal4eg2RJuv1r4R4rNzIdVHoho1yUJWtg4pytF5aR0PbHYUACsoZ+55QH4Y
-         C69PH6ho8moPXNq+WRh6vzuzNr7tU0WcVDjEuafRT7HTJK3nXNpvtG0ImeIiVKZopyTY
-         lmhYF91pQL/UsJXEMG+eL4FoLjb+dnP8hzdwEkcmlNtaRBsmkatmXvIVbVBm9wrsZLlj
-         cIEBJlQPlw9gFjJEvFqhFtYxCFKVEmlJnuAPgDuDXitxmEWYQGLd083IBqq/GHN83E+1
-         KnAA==
-X-Gm-Message-State: AFeK/H39yP/lHl1ui3ZSz76NpCsKStyA/+QfZQ+nlgn08IKLTOoASSZN6mBPdZ1/8tUEBA==
-X-Received: by 10.98.108.1 with SMTP id h1mr24665730pfc.95.1490102605464;
-        Tue, 21 Mar 2017 06:23:25 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=+U1Eye1CpHnqB2sCBGJK+pNsjf7675xymZZ75XWlnD4=;
+        b=juhIYJqh4fdvMY3z2jhMmdYEIANPzCslVm6GXDAReqj9bAn+HjLNDAUlsVwfv6UWJ/
+         VXhQ6rLK0+TyqDUMTp6HMml3F/ox8aMrZDzzvDr39K6G/AoOOOYsXxBy8F/QNIFIB71i
+         OvhlcJ3ehhv49ajAX9CzDPhapjYbqXGLHwNzD7rRrYprfVnmbGf30VTem+LTzsJ6mqKQ
+         FlRIPq0bEVNIkUJ7a1Sj3l+JgxA2zm6lUxLdNgAzSV7ORk3Qpvvy+4lnXqXYOTT74hx5
+         KlVMGojUvamfGLXCKu7WzvymwviD3wikdlRUzktblxoMrrL1BbrZLIwTDsn08kvizJ7K
+         EZew==
+X-Gm-Message-State: AFeK/H0LDCniScrnY8Q2DUMBD1ja9gEPU0h5G0Ys15TQBKR2L7f/BLpfpHa7FTzGAFHwxw==
+X-Received: by 10.99.217.69 with SMTP id e5mr37735140pgj.56.1490102602190;
+        Tue, 21 Mar 2017 06:23:22 -0700 (PDT)
 Return-Path: <singhalsimran0@gmail.com>
 Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id e13sm40078308pgf.48.2017.03.21.06.23.24
+        by smtp.gmail.com with ESMTPSA id q194sm39667395pfq.43.2017.03.21.06.23.21
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 21 Mar 2017 06:23:25 -0700 (PDT)
+        Tue, 21 Mar 2017 06:23:21 -0700 (PDT)
 From: simran singhal <singhalsimran0@gmail.com>
 To: pablo@netfilter.org
 Cc: kadlec@blackhole.kfki.hu,
@@ -61,48 +60,22 @@ Cc: kadlec@blackhole.kfki.hu,
 	wensong@linux-vs.org,
 	horms@verge.net.au,
 	ja@ssi.bg
-Subject: [PATCH 1/2] netfilter: ipset: Compress return logic
-Date: Tue, 21 Mar 2017 18:53:18 +0530
-Message-Id: <1490102599-27579-2-git-send-email-singhalsimran0@gmail.com>
+Subject: [PATCH 0/2] netfilter: ,netdev@vger.kernel.org
+Date: Tue, 21 Mar 2017 18:53:17 +0530
+Message-Id: <1490102599-27579-1-git-send-email-singhalsimran0@gmail.com>
 X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1490102599-27579-1-git-send-email-singhalsimran0@gmail.com>
-References: <1490102599-27579-1-git-send-email-singhalsimran0@gmail.com>
 
-Simplify function returns by merging assignment and return into one
-command line.
+This patch series Simplify function returns by merging 
+assignment and return into one command line.
 
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
----
- 
- --This is my contribution to the netfilter project of
-   Outreachy Round 14.
+simran singhal (2):
+  netfilter: ipset: Compress return logic
+  netfilter: ipvs: Compress return logic
 
  net/netfilter/ipset/ip_set_list_set.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+ net/netfilter/ipvs/ip_vs_ftp.c        | 5 +----
+ 2 files changed, 2 insertions(+), 8 deletions(-)
 
-diff --git a/net/netfilter/ipset/ip_set_list_set.c b/net/netfilter/ipset/ip_set_list_set.c
-index 178d4eb..2fff6b5 100644
---- a/net/netfilter/ipset/ip_set_list_set.c
-+++ b/net/netfilter/ipset/ip_set_list_set.c
-@@ -453,7 +453,6 @@ static size_t
- list_set_memsize(const struct list_set *map, size_t dsize)
- {
- 	struct set_elem *e;
--	size_t memsize;
- 	u32 n = 0;
- 
- 	rcu_read_lock();
-@@ -461,9 +460,7 @@ list_set_memsize(const struct list_set *map, size_t dsize)
- 		n++;
- 	rcu_read_unlock();
- 
--	memsize = sizeof(*map) + n * dsize;
--
--	return memsize;
-+	return (sizeof(*map) + n * dsize);
- }
- 
- static int
 -- 
 2.7.4
 
