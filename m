@@ -1,141 +1,113 @@
 X-GM-THRID: 6399916000486096896
-Date: Wed, 22 Mar 2017 12:20:23 -0700 (PDT)
+X-Received: by 10.99.156.18 with SMTP id f18mr16520581pge.41.1490096617089;
+        Tue, 21 Mar 2017 04:43:37 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.107.129.81 with SMTP id c78ls4392707iod.28.gmail; Tue, 21 Mar
+ 2017 04:43:36 -0700 (PDT)
+X-Received: by 10.107.173.138 with SMTP id m10mr8981857ioo.38.1490096616472;
+        Tue, 21 Mar 2017 04:43:36 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id y203si3392935pfb.0.2017.03.21.04.43.36
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 21 Mar 2017 04:43:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+Authentication-Results: gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x241.google.com with SMTP id o126so21614821pfb.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 04:43:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=wqGd+RXp5B5OV+mrNFnNd6Dufn8bYZ2OKEGXZOoBMzk=;
+        b=ZTQ1eDKcqTd+4d6ZCWRXoevhcwXPe7VK5yVPmteUmkf/zEaycxbA6AzR5M7SRJAu4n
+         C8TeJsWu4zf7VkshkftOvbYy3Ydb0uocYgC/kxGsrNZQsYw+LwZicEqfh+Z0CFIj2p34
+         a4H+bsaGV7RsA21HmJxGNfNhV5I2xltz23OoAcPIHSjRR8qlS5i/zXvEkMgFh1eaCQum
+         qr+TdaUCE1qxbLC8EK0OqxjXLCl0Mp3ROcoBkA3xDEEC3Ph2wX/JCW6UjacFqkahEzdA
+         y7BVHWS6pqS/m5YfQHi4vyWY18dhfWRPPwPlJ95CWcmF1tOdxOYk5ud9YCukV+i6rsL3
+         FnLw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=wqGd+RXp5B5OV+mrNFnNd6Dufn8bYZ2OKEGXZOoBMzk=;
+        b=We3v4pfakrf8hyddwYBWg0+tCmtYkV9HWRWTOFh/q0i2YDLMhuIvGDodWLcdejI0Ph
+         noWuv4LtK0x/NUZ1abnq60OkBjK38wjk2L8cgztKcSSISc8p2jQUv8I/WxIpOVZCQDF/
+         zs/Z7IgjOZUufHXzCteH//kB/GzGkfwlB0EJ+XSvUYLtpU4A3UQdoMZwk7jwfVT+IfMA
+         uUlMsmZSod07H7ZW2R45+hzKB/gs5X4eCc4jlmB0cj94DzqoQXVBYRvtd5HfFHiBQrFP
+         Jy7j+sxSfQ5aLKjzUH8GkFM21vUmCj3JTzG5tm0mcoVa371iicVGKUgbh7YyXQfgXuu8
+         Flaw==
+X-Gm-Message-State: AFeK/H0OHO2NYOL6YdXtVh1xvAwhses6u4GT9vJKXccsyG8JRcCAnMW8HwO8DAGm9EQ25g==
+X-Received: by 10.98.103.146 with SMTP id t18mr39282897pfj.135.1490096616256;
+        Tue, 21 Mar 2017 04:43:36 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id s21sm39452476pgg.65.2017.03.21.04.43.34
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 21 Mar 2017 04:43:35 -0700 (PDT)
 From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Cc: w.d.hubbs@gmail.com, chris@the-brannons.com, kirk@reisers.ca,
-	samuel.thibault@ens-lyon.org, gregkh@linuxfoundation.org,
-	speakup@linux-speakup.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, arushisinghal19971997@gmail.com
-Message-Id: <6e75c652-f348-4592-a79d-4f290de9bea1@googlegroups.com>
+To: w.d.hubbs@gmail.com
+Cc: chris@the-brannons.com,
+	outreachy-kernel@googlegroups.com,
+	kirk@reisers.ca,
+	samuel.thibault@ens-lyon.org,
+	gregkh@linuxfoundation.org,
+	speakup@linux-speakup.org,
+	devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	Arushi Singhal <arushisinghal19971997@gmail.com>
+Subject: [PATCH 11/11] staging: speakup: Fix alignment with parenthesis.
+Date: Tue, 21 Mar 2017 17:12:35 +0530
+Message-Id: <20170321114235.1638-12-arushisinghal19971997@gmail.com>
+X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20170321114235.1638-1-arushisinghal19971997@gmail.com>
 References: <20170321114235.1638-1-arushisinghal19971997@gmail.com>
-Subject: Re: [RESEND PATCH 00/11] staging:speakup: Multiple Checkpatch
- issues.
-MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_4598_1257669745.1490210423347"
-X-Google-Token: EPecy8YFhc5NZOoT05E0
-X-Google-IP: 14.139.82.6
 
-------=_Part_4598_1257669745.1490210423347
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_4599_1516554454.1490210423348"
+This patch fixes the warnings reported by checkpatch.pl
+for please use a blank line after function/struct/union/enum
+declarations.
 
-------=_Part_4599_1516554454.1490210423348
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+---
+ drivers/staging/speakup/speakup_apollo.c | 2 +-
+ drivers/staging/speakup/speakup_decext.c | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-On Tuesday, March 21, 2017 at 5:12:41 PM UTC+5:30, Arushi Singhal wrote:
->
-> Improve readability by fixing multiple checkpatch.pl 
-> issues in speakup driver. 
->
-> Arushi Singhal (11): 
->   staging: speakup: Moved logical to previous line. 
->   staging: speakup: Remove multiple assignments 
->   staging: speakup: Simplify "NULL" comparisons 
->   staging: speakup: fixes braces {} should be used on all arms of this 
->     statement 
->   staging: speakup: Remove multiple assignments 
->   staging: speakup: Moved OR operator to previous line. 
->   staging: speakup: spaces preferred around operator 
->   staging: speakup: Removed Unnecessary parentheses. 
->   staging: speakup: Simplify the NULL comparisons 
->   staging: speakup: Match alignment with open parenthesis. 
->   staging: speakup: Fix alignment with parenthesis. 
->
->  drivers/staging/speakup/fakekey.c        |   2 +- 
->  drivers/staging/speakup/kobjects.c       |   2 +- 
->  drivers/staging/speakup/main.c           | 110 
-> +++++++++++++++++-------------- 
->  drivers/staging/speakup/selection.c      |   4 +- 
->  drivers/staging/speakup/serialio.c       |   2 +- 
->  drivers/staging/speakup/speakup.h        |  12 ++-- 
->  drivers/staging/speakup/speakup_acntpc.c |   8 +-- 
->  drivers/staging/speakup/speakup_apollo.c |   2 +- 
->  drivers/staging/speakup/speakup_decext.c |  10 +-- 
->  drivers/staging/speakup/speakup_decpc.c  |  26 ++++---- 
->  drivers/staging/speakup/speakup_dectlk.c |   6 +- 
->  drivers/staging/speakup/speakup_dtlk.c   |   2 +- 
->  drivers/staging/speakup/speakup_keypc.c  |   6 +- 
->  drivers/staging/speakup/speakup_ltlk.c   |   2 +- 
->  drivers/staging/speakup/varhandlers.c    |  18 ++--- 
->  15 files changed, 114 insertions(+), 98 deletions(-) 
->
-> Hi 
-Any update on these patches?
-If something needs to be change or to improve.
-Thanks
-Arushi 
+diff --git a/drivers/staging/speakup/speakup_apollo.c b/drivers/staging/speakup/speakup_apollo.c
+index 9cfdbbfb9742..6ad83dc642c4 100644
+--- a/drivers/staging/speakup/speakup_apollo.c
++++ b/drivers/staging/speakup/speakup_apollo.c
+@@ -173,7 +173,7 @@ static void do_catch_up(struct spk_synth *synth)
+ 		if (!synth->io_ops->synth_out(synth, ch)) {
+ 			outb(UART_MCR_DTR, speakup_info.port_tts + UART_MCR);
+ 			outb(UART_MCR_DTR | UART_MCR_RTS,
+-					speakup_info.port_tts + UART_MCR);
++			     speakup_info.port_tts + UART_MCR);
+ 			schedule_timeout(msecs_to_jiffies(full_time_val));
+ 			continue;
+ 		}
+diff --git a/drivers/staging/speakup/speakup_decext.c b/drivers/staging/speakup/speakup_decext.c
+index 929a28d618dc..c564bf8e1531 100644
+--- a/drivers/staging/speakup/speakup_decext.c
++++ b/drivers/staging/speakup/speakup_decext.c
+@@ -206,11 +206,11 @@ static void do_catch_up(struct spk_synth *synth)
+ 				if (!in_escape)
+ 					synth->io_ops->synth_out(synth, PROCSPEECH);
+ 				spin_lock_irqsave(&speakup_info.spinlock,
+-							flags);
++						  flags);
+ 				jiffy_delta_val = jiffy_delta->u.n.value;
+ 				delay_time_val = delay_time->u.n.value;
+ 				spin_unlock_irqrestore(&speakup_info.spinlock,
+-							flags);
++						       flags);
+ 				schedule_timeout(msecs_to_jiffies
+ 						 (delay_time_val));
+ 				jiff_max = jiffies + jiffy_delta_val;
+-- 
+2.11.0
 
-> -- 
-> 2.11.0 
->
->
-------=_Part_4599_1516554454.1490210423348
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">On Tuesday, March 21, 2017 at 5:12:41 PM UTC+5:30, Arushi =
-Singhal wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-l=
-eft: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Improve readabil=
-ity by fixing multiple <a href=3D"http://checkpatch.pl" target=3D"_blank" r=
-el=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://www.google.com/url?q=
-\x3dhttp%3A%2F%2Fcheckpatch.pl\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNGoRg=
-UgHq29dhmk72L974NI3_mFug&#39;;return true;" onclick=3D"this.href=3D&#39;htt=
-p://www.google.com/url?q\x3dhttp%3A%2F%2Fcheckpatch.pl\x26sa\x3dD\x26sntz\x=
-3d1\x26usg\x3dAFQjCNGoRgUgHq29dhmk72L974NI3_mFug&#39;;return true;">checkpa=
-tch.pl</a>
-<br>issues in speakup driver.
-<br>
-<br>Arushi Singhal (11):
-<br>=C2=A0 staging: speakup: Moved logical to previous line.
-<br>=C2=A0 staging: speakup: Remove multiple assignments
-<br>=C2=A0 staging: speakup: Simplify &quot;NULL&quot; comparisons
-<br>=C2=A0 staging: speakup: fixes braces {} should be used on all arms of =
-this
-<br>=C2=A0 =C2=A0 statement
-<br>=C2=A0 staging: speakup: Remove multiple assignments
-<br>=C2=A0 staging: speakup: Moved OR operator to previous line.
-<br>=C2=A0 staging: speakup: spaces preferred around operator
-<br>=C2=A0 staging: speakup: Removed Unnecessary parentheses.
-<br>=C2=A0 staging: speakup: Simplify the NULL comparisons
-<br>=C2=A0 staging: speakup: Match alignment with open parenthesis.
-<br>=C2=A0 staging: speakup: Fix alignment with parenthesis.
-<br>
-<br>=C2=A0drivers/staging/speakup/<wbr>fakekey.c =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0| =C2=A0 2 +-
-<br>=C2=A0drivers/staging/speakup/<wbr>kobjects.c =C2=A0 =C2=A0 =C2=A0 | =
-=C2=A0 2 +-
-<br>=C2=A0drivers/staging/speakup/main.<wbr>c =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 | 110 +++++++++++++++++-------------<wbr>-
-<br>=C2=A0drivers/staging/speakup/<wbr>selection.c =C2=A0 =C2=A0 =C2=A0| =
-=C2=A0 4 +-
-<br>=C2=A0drivers/staging/speakup/<wbr>serialio.c =C2=A0 =C2=A0 =C2=A0 | =
-=C2=A0 2 +-
-<br>=C2=A0drivers/staging/speakup/<wbr>speakup.h =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0| =C2=A012 ++--
-<br>=C2=A0drivers/staging/speakup/<wbr>speakup_acntpc.c | =C2=A0 8 +--
-<br>=C2=A0drivers/staging/speakup/<wbr>speakup_apollo.c | =C2=A0 2 +-
-<br>=C2=A0drivers/staging/speakup/<wbr>speakup_decext.c | =C2=A010 +--
-<br>=C2=A0drivers/staging/speakup/<wbr>speakup_decpc.c =C2=A0| =C2=A026 +++=
-+----
-<br>=C2=A0drivers/staging/speakup/<wbr>speakup_dectlk.c | =C2=A0 6 +-
-<br>=C2=A0drivers/staging/speakup/<wbr>speakup_dtlk.c =C2=A0 | =C2=A0 2 +-
-<br>=C2=A0drivers/staging/speakup/<wbr>speakup_keypc.c =C2=A0| =C2=A0 6 +-
-<br>=C2=A0drivers/staging/speakup/<wbr>speakup_ltlk.c =C2=A0 | =C2=A0 2 +-
-<br>=C2=A0drivers/staging/speakup/<wbr>varhandlers.c =C2=A0 =C2=A0| =C2=A01=
-8 ++---
-<br>=C2=A015 files changed, 114 insertions(+), 98 deletions(-)
-<br>
-<br></blockquote><div>Hi <br>Any update on these patches?<br>If something n=
-eeds to be change or to improve.<br>Thanks<br>Arushi <br></div><blockquote =
-class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1p=
-x #ccc solid;padding-left: 1ex;">--=20
-<br>2.11.0
-<br>
-<br></blockquote></div>
-------=_Part_4599_1516554454.1490210423348--
-
-------=_Part_4598_1257669745.1490210423347--
 
