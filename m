@@ -1,53 +1,53 @@
 X-GM-THRID: 6399968600794333184
-X-Received: by 10.129.34.10 with SMTP id i10mr18237503ywi.58.1490108830447;
-        Tue, 21 Mar 2017 08:07:10 -0700 (PDT)
+X-Received: by 10.157.38.235 with SMTP id i40mr15868024otd.54.1490108824693;
+        Tue, 21 Mar 2017 08:07:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.73.132 with SMTP id g4ls8737959otf.39.gmail; Tue, 21 Mar
- 2017 08:07:10 -0700 (PDT)
-X-Received: by 10.13.238.134 with SMTP id x128mr18756275ywe.59.1490108829973;
-        Tue, 21 Mar 2017 08:07:09 -0700 (PDT)
+Received: by 10.107.141.136 with SMTP id p130ls4538338iod.9.gmail; Tue, 21 Mar
+ 2017 08:07:03 -0700 (PDT)
+X-Received: by 10.99.97.8 with SMTP id v8mr15331864pgb.137.1490108823943;
+        Tue, 21 Mar 2017 08:07:03 -0700 (PDT)
 Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id 190si2036971pfv.3.2017.03.21.08.07.09
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id r66si3371441pfb.7.2017.03.21.08.07.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 21 Mar 2017 08:07:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Tue, 21 Mar 2017 08:07:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id w20so698271pgc.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 08:07:09 -0700 (PDT)
+Received: by mail-pg0-x244.google.com with SMTP id g2so25628075pge.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 08:07:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=zGN/U9wHdbgJ+aFD33fa5AVzhBnyyh2OgI14Rlfxy4Y=;
-        b=tyTy4qAXGbKRIrAsoCeRcCoRQEZBpeTfEfcaafMc8foIXbUsFIiBF2up7KMGUJP3y7
-         KCbw5cEKGh009FDxdXVCqR5Rkw7Uqr+rDszrts+6f2tlmbQKNTedGxcbRzZdchtCkqTx
-         zS057/gkpWZd2euhgjQd1eWFPKHGh2rZwCoIocHe3CspoGo5SgJkffhJZ9ICOYhZ74SO
-         my9ZFQ8iiwqZJPmIHr4sgQdXRO43BNHFQCcbLKHeARjMF07ORm1JciFSqYUDBe20dSGZ
-         yS4dzVB7cTL55as1oWwVh2UmDK0rUhkUSUhVwxRHtO90wlNdU1EcuE7HutwaVntH5k6M
-         fGpA==
+        bh=8sDtlCuO+o57zLaYb0xuCJLn3sVuiIMjdKBzq8EZNw0=;
+        b=OxvEK1l0TX25WLR/J1nKbgjBYnspCedDyjOJR1ru4c4miPedNaQ0Y2YRr9AKG2Khyg
+         5qQR/67e/2K4FzMEIRVkNHBaH1mrb60AGamPseMDB7B4xxRRJIpbemtwOPfDBk92FklK
+         PM/MHyBlcu+l7ueADpZ3r7znplrRcQSsEVJPk3qo89aCg2ELQkuBQ/CnkDXqcc3+aTG4
+         Fzufngejp/HzxCuO051dHja/PNsLPGa5qWjqYoWdoHC4goIhhrPQeNe1sEWbxYlOqSHS
+         q9bXpcZoKo4mU/PP0vXbCyOklw+YdpGoh8+pQzWTZxl7Cp/w3dv1Zj9a6wdOxdLMHuaG
+         Dt1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=zGN/U9wHdbgJ+aFD33fa5AVzhBnyyh2OgI14Rlfxy4Y=;
-        b=FVynCOY5mIztUnjZGuZdd8fOczL5OtCK03K6p11JAeaxgSaotFdNwj1uGqLeBIHQXo
-         In6vsCExFWUuoNcPlNS49Ky8nrdWcgsRBCa5kobFZZ0Yin2zKn5D9Qxr0STdE+NuHjEp
-         D9aDGwTtzyS6hBwpN0mpZRBF41aFQmRqniNsSCRiCq494jaC8H0NPpvz4I0LNlbPAMmA
-         wKVXTMV2b0zSkXHup4E8My7TcbyeLHBo3V8xddAHnkyJbTIm4u42T22AWLNJqsNJWBnk
-         DBysw66dIWi9sXCz6uQTZiwgJsGJYzvXmjaHy97NN1yI4A7jK4+B4iiuH4DBsYHp3MA6
-         AWlA==
-X-Gm-Message-State: AFeK/H0hET/jk7zRo8y6Ci8dw1LSWPytCt3EGWfq8SIIUbyOBrFVkUoMSKethvOBUKsBYA==
-X-Received: by 10.99.163.72 with SMTP id v8mr27271334pgn.115.1490108829729;
-        Tue, 21 Mar 2017 08:07:09 -0700 (PDT)
+        bh=8sDtlCuO+o57zLaYb0xuCJLn3sVuiIMjdKBzq8EZNw0=;
+        b=jkOse9GRx8JLgbubAwdnp+Afs37HNqykv7y982P68zFsari/ra59yisclCfyX3/IaH
+         bw7oPLcff/Q1hw6R8kU/LP2e3Z0EBarkWOQLTJl6KmyWWld4oIxJ38/fiLXr99pHLuWc
+         bB3r8GKoziyEaFXVP17UjvhIyZA7DcENa45HcR7Dw/q2ULfMB8NuywS5EdDFGOC/3nqQ
+         4lOg/StTTTFFDkjDFCshD9NgkqZvk2WKEYMO5OsLdtLhCxV1FU1trYe98GNRy6/kFPY5
+         QxRo4BFUMViX5zSDo/iAlHuFJ3yc033a8rboxg99CcihyEZKfv3jktlINCnjr4redIGt
+         VHHA==
+X-Gm-Message-State: AFeK/H0bm0L1/pGnl4uZyJKV4axbZNTISw7MKiSkqgwjaaZbnRaRZ2TRQ72uGYKkQgZWjA==
+X-Received: by 10.84.175.67 with SMTP id s61mr48989380plb.126.1490108823663;
+        Tue, 21 Mar 2017 08:07:03 -0700 (PDT)
 Return-Path: <arushisinghal19971997@gmail.com>
 Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id g29sm40318152pfg.37.2017.03.21.08.07.07
+        by smtp.gmail.com with ESMTPSA id r67sm40260938pfb.125.2017.03.21.08.07.01
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 21 Mar 2017 08:07:08 -0700 (PDT)
+        Tue, 21 Mar 2017 08:07:02 -0700 (PDT)
 From: Arushi Singhal <arushisinghal19971997@gmail.com>
 To: linux-fbdev@vger.kernel.org
 Cc: outreachy-kernel@googlegroups.com,
@@ -60,68 +60,98 @@ Cc: outreachy-kernel@googlegroups.com,
 	sudipm.mukherjee@gmail.com,
 	linux-iio@vger.kernel.org,
 	Arushi Singhal <arushisinghal19971997@gmail.com>
-Subject: [PATCH v2 2/2] staging: sm750fb: Remove typedef from "typedef enum _spolarity_t"
-Date: Tue, 21 Mar 2017 20:36:38 +0530
-Message-Id: <20170321150638.9175-3-arushisinghal19971997@gmail.com>
+Subject: [PATCH v2 1/2] staging: sm750fb: Remove typedef from "typedef struct _mode_parameter_t"
+Date: Tue, 21 Mar 2017 20:36:37 +0530
+Message-Id: <20170321150638.9175-2-arushisinghal19971997@gmail.com>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20170321150638.9175-1-arushisinghal19971997@gmail.com>
 References: <20170321150638.9175-1-arushisinghal19971997@gmail.com>
 
-This patch removes typedefs from enum and renames it from "typedef enum
-_spolarity_t" to "enum spolarity" as per kernel coding standards."
+This patch removes typedefs from struct and renames it from "typedef
+struct _mode_parameter_t" to "struct mode_parameter" as per kernel
+coding standards."
 
 Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
 ---
 changes in v2
  -change the subject and commit message of PATCH.
 
- drivers/staging/sm750fb/ddk750_mode.h | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
+ drivers/staging/sm750fb/ddk750_mode.c | 8 +++++---
+ drivers/staging/sm750fb/ddk750_mode.h | 8 +++-----
+ drivers/staging/sm750fb/sm750_hw.c    | 2 +-
+ 3 files changed, 9 insertions(+), 9 deletions(-)
 
+diff --git a/drivers/staging/sm750fb/ddk750_mode.c b/drivers/staging/sm750fb/ddk750_mode.c
+index eea5aef2956f..9665bb9478dc 100644
+--- a/drivers/staging/sm750fb/ddk750_mode.c
++++ b/drivers/staging/sm750fb/ddk750_mode.c
+@@ -12,7 +12,8 @@
+  * HW only supports 7 predefined pixel clocks, and clock select is
+  * in bit 29:27 of Display Control register.
+  */
+-static unsigned long displayControlAdjust_SM750LE(mode_parameter_t *pModeParam, unsigned long dispControl)
++static unsigned long displayControlAdjust_SM750LE(struct mode_parameter *pModeParam,
++						  unsigned long dispControl)
+ {
+ 	unsigned long x, y;
+ 
+@@ -72,7 +73,8 @@ static unsigned long displayControlAdjust_SM750LE(mode_parameter_t *pModeParam,
+ }
+ 
+ /* only timing related registers will be  programed */
+-static int programModeRegisters(mode_parameter_t *pModeParam, struct pll_value *pll)
++static int programModeRegisters(struct mode_parameter *pModeParam,
++				struct pll_value *pll)
+ {
+ 	int ret = 0;
+ 	int cnt = 0;
+@@ -198,7 +200,7 @@ static int programModeRegisters(mode_parameter_t *pModeParam, struct pll_value *
+ 	return ret;
+ }
+ 
+-int ddk750_setModeTiming(mode_parameter_t *parm, clock_type_t clock)
++int ddk750_setModeTiming(struct mode_parameter *parm, clock_type_t clock)
+ {
+ 	struct pll_value pll;
+ 	unsigned int uiActualPixelClk;
 diff --git a/drivers/staging/sm750fb/ddk750_mode.h b/drivers/staging/sm750fb/ddk750_mode.h
-index 9dc4d6c5a779..d5eae36d85cb 100644
+index 6d204b8b4a01..9dc4d6c5a779 100644
 --- a/drivers/staging/sm750fb/ddk750_mode.h
 +++ b/drivers/staging/sm750fb/ddk750_mode.h
-@@ -3,11 +3,10 @@
+@@ -9,7 +9,7 @@ typedef enum _spolarity_t {
+ }
+ spolarity_t;
  
- #include "ddk750_chip.h"
- 
--typedef enum _spolarity_t {
-+enum spolarity {
- 	POS = 0, /* positive */
- 	NEG, /* negative */
--}
--spolarity_t;
-+};
- 
- struct mode_parameter {
+-typedef struct _mode_parameter_t {
++struct mode_parameter {
  	/* Horizontal timing. */
-@@ -15,14 +14,14 @@ struct mode_parameter {
+ 	unsigned long horizontal_total;
  	unsigned long horizontal_display_end;
- 	unsigned long horizontal_sync_start;
- 	unsigned long horizontal_sync_width;
--	spolarity_t horizontal_sync_polarity;
-+	enum spolarity horizontal_sync_polarity;
- 
- 	/* Vertical timing. */
- 	unsigned long vertical_total;
- 	unsigned long vertical_display_end;
- 	unsigned long vertical_sync_start;
- 	unsigned long vertical_sync_height;
--	spolarity_t vertical_sync_polarity;
-+	enum spolarity vertical_sync_polarity;
- 
- 	/* Refresh timing. */
- 	unsigned long pixel_clock;
-@@ -30,7 +29,7 @@ struct mode_parameter {
- 	unsigned long vertical_frequency;
+@@ -31,9 +31,7 @@ typedef struct _mode_parameter_t {
  
  	/* Clock Phase. This clock phase only applies to Panel. */
--	spolarity_t clock_phase_polarity;
-+	enum spolarity clock_phase_polarity;
- };
+ 	spolarity_t clock_phase_polarity;
+-}
+-mode_parameter_t;
+-
+-int ddk750_setModeTiming(mode_parameter_t *parm, clock_type_t clock);
++};
  
- int ddk750_setModeTiming(struct mode_parameter *parm, clock_type_t clock);
++int ddk750_setModeTiming(struct mode_parameter *parm, clock_type_t clock);
+ #endif
+diff --git a/drivers/staging/sm750fb/sm750_hw.c b/drivers/staging/sm750fb/sm750_hw.c
+index fab3fc9c8330..baf1bbdc92ff 100644
+--- a/drivers/staging/sm750fb/sm750_hw.c
++++ b/drivers/staging/sm750fb/sm750_hw.c
+@@ -252,7 +252,7 @@ int hw_sm750_crtc_setMode(struct lynxfb_crtc *crtc,
+ {
+ 	int ret, fmt;
+ 	u32 reg;
+-	mode_parameter_t modparm;
++	struct mode_parameter modparm;
+ 	clock_type_t clock;
+ 	struct sm750_dev *sm750_dev;
+ 	struct lynxfb_par *par;
 -- 
 2.11.0
 
