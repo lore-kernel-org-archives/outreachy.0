@@ -1,199 +1,102 @@
 X-GM-THRID: 6399943776789331968
-X-Received: by 10.46.80.79 with SMTP id v15mr3010104ljd.27.1490114197863;
-        Tue, 21 Mar 2017 09:36:37 -0700 (PDT)
+X-Received: by 10.99.62.197 with SMTP id l188mr13179518pga.34.1490112231977;
+        Tue, 21 Mar 2017 09:03:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.14.25 with SMTP id 25ls208234ljo.50.gmail; Tue, 21 Mar 2017
- 09:36:37 -0700 (PDT)
-X-Received: by 10.25.18.219 with SMTP id 88mr4307714lfs.29.1490114197095;
-        Tue, 21 Mar 2017 09:36:37 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-lf0-x244.google.com (mail-lf0-x244.google.com. [2a00:1450:4010:c07::244])
-        by gmr-mx.google.com with ESMTPS id x188si862502wmx.0.2017.03.21.09.36.37
+Received: by 10.107.31.133 with SMTP id f127ls4447003iof.27.gmail; Tue, 21 Mar
+ 2017 09:03:51 -0700 (PDT)
+X-Received: by 10.107.160.135 with SMTP id j129mr9359675ioe.20.1490112231181;
+        Tue, 21 Mar 2017 09:03:51 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id r66si3421195pfb.7.2017.03.21.09.03.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 21 Mar 2017 09:36:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2a00:1450:4010:c07::244 as permitted sender) client-ip=2a00:1450:4010:c07::244;
+        Tue, 21 Mar 2017 09:03:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2a00:1450:4010:c07::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-lf0-x244.google.com with SMTP id y193so13576149lfd.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 09:36:37 -0700 (PDT)
+Received: by mail-pf0-x242.google.com with SMTP id r137so18801208pfr.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 09:03:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=tsdurZandDpXfAns0KukgQuUVlYCAM7i8zwnscYLscE=;
-        b=JOsuAcZizjmHWFTcy6hIM6LoeTT4F+q3UyP3R7y6A/Z88MUBs/fvTDwrGZ45Nu4MF+
-         JBh3geQ5NFXO7lEZSVzNyDeqGSe8KnPbn0oecZFe9BfnFyoXe3Vm6a/r4AvUP7+xpNDX
-         X+WLza0MFn6e85eD5qExjDqcfz7b5RchboVqA5eJRV1P7y3WDCn7IChhC7MxmJ/EojWS
-         dMDqePKada0Flrcdk7vMxfp/9z5d6EBcnKFj8j6hN6tqIZs8kpOeDqges5MG3FUBmKh8
-         ufxRwLqsRfgUGfv1Oe3Nb63oKNJ8Ad1bnlU0/FCkj334ewRYu6EkfkrK+M0IDqsviu2w
-         L64A==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=zhfiaHRsaw0vBJQuUys0RVVDVYuNxELFbC9mw3g5soo=;
+        b=hEQ9J7LzzvFeT64a2xOzEBpZ/8o51eGoE2I85E31arGS+U/WhOkqBsqRDDOsY6W15E
+         bTOTV/GFfQNmS7CeOG8vZFXI5OU48o/BILgio9gqq77pZLRnqUzcxJV/441uYpmdX1By
+         uTHs53mOEY4mvHqR2cJyi06oQIJTnBM63COJGJh3bVfW+BC/wqw5CXtYSaY0bvADcDim
+         3xmwqdxAIJUAyXqDAftVMfKkM3oR7q3mFRtNNZ/N5nHixArU/QkOnz6YjM/JBLtpQ5ve
+         a9d6nv1dL1RQlUhs0v6xRhXOkATIASVDBngGkfDkDEjQGP/pVSVBSMun6OCA+fN1faej
+         Clig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=tsdurZandDpXfAns0KukgQuUVlYCAM7i8zwnscYLscE=;
-        b=b+lRC3w27meHPlpXKNbYNHnxboaAkBgtC8r/6ACFXo1jLJ32f1fpVYWhTWPHapDX0i
-         WDUDqAjaobbqPTubI47xpGUgeS3h9Ja8iPT9SYRAmuwJRjpaIHt/v8mwjOr3k/jwcLks
-         wd4bNChVZIVJCYqmY7JKj+zgUPyLXpagSzPe1lXSptE/7dxONEcQNM7/gi917vDI5REX
-         tspK9jldrBIAFtQ+r+u9tvtkjRChKV0naxYb859QC1b0knsikqtYfxzZs9py20fvZ8lX
-         L3DICGEHkvEzKs8msyCXXAoNZcJl2JzEsWAX8jxW03df15xzEwguDI0gjqxcrbTvxID9
-         +XFw==
-X-Gm-Message-State: AFeK/H2Ls86f+DhTvJ53x2V1nh+Y97oJmzGzjk6xRnadRmPNswFYfnZzWeDjFcAXTfChhDrlRh2/CvBgdw+7nw==
-X-Received: by 10.25.17.153 with SMTP id 25mr9811852lfr.39.1490114196811; Tue,
- 21 Mar 2017 09:36:36 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.25.170.69 with HTTP; Tue, 21 Mar 2017 09:36:36 -0700 (PDT)
-In-Reply-To: <20170321160348.GA1859@d830.WORKGROUP>
-References: <20170321133021.6737-1-arushisinghal19971997@gmail.com> <20170321160348.GA1859@d830.WORKGROUP>
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-Date: Tue, 21 Mar 2017 22:06:36 +0530
-Message-ID: <CA+XqjF9dVy33Dsv0H2z8xtaNeMOW7SQgr4qa4wLwz6xFNVTsUA@mail.gmail.com>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=zhfiaHRsaw0vBJQuUys0RVVDVYuNxELFbC9mw3g5soo=;
+        b=fZNHy5PbbEkNx/5GDsGjICkcq93LboLELESzF1MzlR29PAKnHyGzKS1p41o3dozhZr
+         P0unGsvdfOomDTx5igpdUTcaCOoGMMVfwJqM/Xm7Acp/olmAu1InPknqvOt8RuJtGJ7f
+         9e/H1vZMRVFEOZrCB8MJ7olvwY+JG5qQV0+iYseLUW9EtLsjHGFNmio/IHgf93r4Wpcz
+         YkaTJ1mqwdMHP/OLc6x9EFMm3EYHiuAZs4xEKW9jXWBUEanJMCOWWa1SkEdoxNvhKxJs
+         qxEupp8y5MihVqSKWMxQzlNI6JBkV4EsnZ77IfASl2VmUU9qvoroq3ks/qe5GYLffd10
+         LYOA==
+X-Gm-Message-State: AFeK/H33ZDNgWTr4gsAlHviQhBlccGGlPAcGU1i0GPxwv69wMoiX90hOVfDP+6JpNYxNzA==
+X-Received: by 10.99.106.5 with SMTP id f5mr37656100pgc.110.1490112230964;
+        Tue, 21 Mar 2017 09:03:50 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
+        by smtp.gmail.com with ESMTPSA id b10sm6678695pga.39.2017.03.21.09.03.50
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 21 Mar 2017 09:03:50 -0700 (PDT)
+Date: Tue, 21 Mar 2017 09:03:49 -0700
+From: Alison Schofield <amsfield22@gmail.com>
+To: Arushi Singhal <arushisinghal19971997@gmail.com>
+Cc: jic23@kernel.org, knaack.h@gmx.de, outreachy-kernel@googlegroups.com,
+	Michael.Hennerich@analog.com, lars@metafoo.de,
+	gregkh@linuxfoundation.org, speakup@linux-speakup.org,
+	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+	pmeerw@pmeerw.net, linux-iio@vger.kernel.org
 Subject: Re: [Outreachy kernel] [PATCH 0/2] IIO coding tasks
-To: Alison Schofield <amsfield22@gmail.com>
-Cc: Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>, outreachy-kernel@googlegroups.com, 
-	Michael Hennerich <Michael.Hennerich@analog.com>, lars@metafoo.de, 
-	Greg KH <gregkh@linuxfoundation.org>, speakup@linux-speakup.org, 
-	driverdevel <devel@driverdev.osuosl.org>, linux-kernel@vger.kernel.org, 
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>, linux-iio@vger.kernel.org
-Content-Type: multipart/alternative; boundary=001a1140379e6035df054b403f1f
+Message-ID: <20170321160348.GA1859@d830.WORKGROUP>
+References: <20170321133021.6737-1-arushisinghal19971997@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170321133021.6737-1-arushisinghal19971997@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
---001a1140379e6035df054b403f1f
-Content-Type: text/plain; charset=UTF-8
+On Tue, Mar 21, 2017 at 07:00:17PM +0530, Arushi Singhal wrote:
+> Patchseries of IIO coding tasks
 
-On Tue, Mar 21, 2017 at 9:33 PM, Alison Schofield <amsfield22@gmail.com>
-wrote:
+This wouldn't be a patchset.  Although they touch the same
+driver, the changes are unrelated.  See more below...
+> 
+> Arushi Singhal (2):
+>   staging: ad7759: Replace mlock with driver private lock
 
-> On Tue, Mar 21, 2017 at 07:00:17PM +0530, Arushi Singhal wrote:
-> > Patchseries of IIO coding tasks
->
-> This wouldn't be a patchset.  Although they touch the same
-> driver, the changes are unrelated.  See more below...
->
-This I have send as a Patchset because as you have mentioned below that the
-[PATCH 2/2] was already done before by someone but I think so it is not yet
-applied in the Greg's tree yet.So I have done both the changes and as they
-should be applied one after other so that's why I have send them as
-Patchset.
+This one is already been submitted.  If you have a v2 for it, then v2
+the original patch.
 
-> >
-> > Arushi Singhal (2):
-> >   staging: ad7759: Replace mlock with driver private lock
->
-> This one is already been submitted.  If you have a v2 for it, then v2
-> the original patch.
->
-> Is it submitted by me only before? And this is not the v2.
-I have just resed it.
+>   staging: iio: ade7759: Move header content to implementation file
 
-> >   staging: iio: ade7759: Move header content to implementation file
->
-> This patch is done and applied already.  See the Coding Task #1 notes
-> in the IIO Tasks page.
->
-Not at applied I think so.
-Thanks
-Arushi
+This patch is done and applied already.  See the Coding Task #1 notes
+in the IIO Tasks page.
 
->
-> alisons
->
-> >
-> >  drivers/staging/iio/meter/ade7759.c   | 56
-> +++++++++++++++++++++++++++++++++--
-> >  drivers/staging/iio/meter/ade7759.h   | 53
-> ---------------------------------
-> >  2 files changed, 54 insertions(+), 57 deletions(-)
-> >
-> > --
-> > 2.11.0
-> >
-> > --
-> > You received this message because you are subscribed to the Google
-> Groups "outreachy-kernel" group.
-> > To unsubscribe from this group and stop receiving emails from it, send
-> an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> > To view this discussion on the web visit https://groups.google.com/d/
-> msgid/outreachy-kernel/20170321133021.6737-1-
-> arushisinghal19971997%40gmail.com.
-> > For more options, visit https://groups.google.com/d/optout.
->
+alisons
 
---001a1140379e6035df054b403f1f
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">On Tue, Mar 21, 2017 at 9:33 PM, Alison Schofield <span di=
-r=3D"ltr">&lt;<a href=3D"mailto:amsfield22@gmail.com" target=3D"_blank">ams=
-field22@gmail.com</a>&gt;</span> wrote:<br><div class=3D"gmail_extra"><div =
-class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0 0=
- 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><span class=3D"">On Tu=
-e, Mar 21, 2017 at 07:00:17PM +0530, Arushi Singhal wrote:<br>
-&gt; Patchseries of IIO coding tasks<br>
-<br>
-</span>This wouldn&#39;t be a patchset.=C2=A0 Although they touch the same<=
-br>
-driver, the changes are unrelated.=C2=A0 See more below...<br>
-<span class=3D""></span></blockquote><div>This I have send as a Patchset be=
-cause as you have mentioned below that the [PATCH 2/2] was already done bef=
-ore by someone but I think so it is not yet applied in the Greg&#39;s tree =
-yet.So I have done both the changes and as they should be applied one after=
- other so that&#39;s why I have send them as Patchset. <br></div><blockquot=
-e class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc sol=
-id;padding-left:1ex"><span class=3D"">&gt;<br>
-&gt; Arushi Singhal (2):<br>
-&gt;=C2=A0 =C2=A0staging: ad7759: Replace mlock with driver private lock<br=
->
-<br>
-</span>This one is already been submitted.=C2=A0 If you have a v2 for it, t=
-hen v2<br>
-the original patch.<br>
-<span class=3D""><br></span></blockquote><div>Is it submitted by me only be=
-fore? And this is not the v2.<br></div><div>I have just resed it.<br></div>=
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex"><span class=3D"">
-&gt;=C2=A0 =C2=A0staging: iio: ade7759: Move header content to implementati=
-on file<br>
-<br>
-</span>This patch is done and applied already.=C2=A0 See the Coding Task #1=
- notes<br>
-in the IIO Tasks page.<br></blockquote><div>Not at applied I think so.<br><=
-/div><div>Thanks<br></div><div>Arushi<br></div><blockquote class=3D"gmail_q=
-uote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1e=
-x">
-<br>
-alisons<br>
-<div class=3D"HOEnZb"><div class=3D"h5"><br>
-&gt;<br>
-&gt;=C2=A0 drivers/staging/iio/meter/<wbr>ade7759.c=C2=A0 =C2=A0| 56 ++++++=
-++++++++++++++++++++++++<wbr>+++--<br>
-&gt;=C2=A0 drivers/staging/iio/meter/<wbr>ade7759.h=C2=A0 =C2=A0| 53 ------=
-------------------------<wbr>---<br>
-&gt;=C2=A0 2 files changed, 54 insertions(+), 57 deletions(-)<br>
-&gt;<br>
-&gt; --<br>
-&gt; 2.11.0<br>
-&gt;<br>
-</div></div><span class=3D"HOEnZb"><font color=3D"#888888">&gt; --<br>
-&gt; You received this message because you are subscribed to the Google Gro=
-ups &quot;outreachy-kernel&quot; group.<br>
-&gt; To unsubscribe from this group and stop receiving emails from it, send=
- an email to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.=
-com">outreachy-kernel+unsubscribe@<wbr>googlegroups.com</a>.<br>
-&gt; To post to this group, send email to <a href=3D"mailto:outreachy-kerne=
-l@googlegroups.com">outreachy-kernel@googlegroups.<wbr>com</a>.<br>
-&gt; To view this discussion on the web visit <a href=3D"https://groups.goo=
-gle.com/d/msgid/outreachy-kernel/20170321133021.6737-1-arushisinghal1997199=
-7%40gmail.com" rel=3D"noreferrer" target=3D"_blank">https://groups.google.c=
-om/d/<wbr>msgid/outreachy-kernel/<wbr>20170321133021.6737-1-<wbr>arushising=
-hal19971997%40gmail.<wbr>com</a>.<br>
-&gt; For more options, visit <a href=3D"https://groups.google.com/d/optout"=
- rel=3D"noreferrer" target=3D"_blank">https://groups.google.com/d/<wbr>opto=
-ut</a>.<br>
-</font></span></blockquote></div><br></div></div>
-
---001a1140379e6035df054b403f1f--
+> 
+>  drivers/staging/iio/meter/ade7759.c   | 56 +++++++++++++++++++++++++++++++++--
+>  drivers/staging/iio/meter/ade7759.h   | 53 ---------------------------------
+>  2 files changed, 54 insertions(+), 57 deletions(-)
+> 
+> -- 
+> 2.11.0
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170321133021.6737-1-arushisinghal19971997%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
 
