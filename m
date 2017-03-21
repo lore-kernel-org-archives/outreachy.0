@@ -1,112 +1,99 @@
 X-GM-THRID: 6399496110666153984
-X-Received: by 10.107.58.196 with SMTP id h187mr7824391ioa.31.1490112949845;
-        Tue, 21 Mar 2017 09:15:49 -0700 (PDT)
+X-Received: by 10.107.202.195 with SMTP id a186mr3363397iog.26.1490112276318;
+        Tue, 21 Mar 2017 09:04:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.4.119 with SMTP id 110ls320065otc.44.gmail; Tue, 21 Mar
- 2017 09:15:49 -0700 (PDT)
-X-Received: by 10.200.54.91 with SMTP id n27mr4722738qtb.61.1490112949349;
-        Tue, 21 Mar 2017 09:15:49 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id s67si1283444pfs.4.2017.03.21.09.15.49
+Received: by 10.107.133.9 with SMTP id h9ls4606586iod.49.gmail; Tue, 21 Mar
+ 2017 09:04:35 -0700 (PDT)
+X-Received: by 10.98.141.69 with SMTP id z66mr326563pfd.16.1490112275540;
+        Tue, 21 Mar 2017 09:04:35 -0700 (PDT)
+Return-Path: <gs051095@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id 2si3552248pfx.8.2017.03.21.09.04.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 21 Mar 2017 09:15:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Tue, 21 Mar 2017 09:04:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id 81so17940621pgh.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 09:15:49 -0700 (PDT)
+Received: by mail-pg0-x244.google.com with SMTP id 81so17888613pgh.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 09:04:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=ggGkZCG+Veus6mHC8UsHQIn10cHq2koqiAoemMGf8HM=;
-        b=o98ZdumsJ5d+4C+g9FsA3eQ35GwxjZyM8cTVKc6ISpvmNYU3qEstYqXvHYS3nHn2fm
-         KIvSzzI2TA1HIPWVfv5E9j1fpZxL6IwtXYZGS+xA4mWr+4Eteljn7ZUKe0b5Ots1+tfm
-         fCNYOnbo0ybr1/9Fe1IKNMnYVvmux9LwmECRq2g8JGMqel/uYMcOGAIn2NYNSiDwb5Iw
-         VyHUs1HPOgYzTL5a3b1Fcegjm3N2Ug6ElkBjQxYXryJ/ahSZTO/dmZX25G/vjqOMZOSd
-         Qh+7XLm/gkRQ7B6UxvpBuG5BtF1UzClP7//KUba2/MKsK+seZMuEeNdKKuXCeDQrQyEu
-         PWDA==
+        h=from:to:cc:subject:date:message-id;
+        bh=1eKvGLk4IDxH0y+MrezDVuuh/ie2UK+f0s0GdzlWmE4=;
+        b=fuE+fSJQROMHAhMyfJQ8PqHULT1nlK/DMnOPhLKbGAGxNHcFUy22HFZAH/KnTRMn7X
+         FTQBGlMvg1w04qEfOmBqWvlvX8kRZp5L8O8r6UoW555wcEf/Wva0KwEcd8dU/QgmIWNy
+         S30V+WNBjvKpyna1gkREwMeLiW++I/kLXLDEwT8tyrtG8pBppNXEt7zFjRuaDaFUDOzX
+         c7Xg+mErXiQIOt881GiVucPL5UE6Gof/Immj7JdpNzEdYQ0hWHqQojMZHZIDcdH+sABd
+         9ZHDZCby8cNulJEuzMdtQww3SC+ddJBiCVitfJcJRLh22+A5qOXvmyI3OUKYjfQceJo2
+         sEkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=ggGkZCG+Veus6mHC8UsHQIn10cHq2koqiAoemMGf8HM=;
-        b=PAcBqz3LYM87lJrdLdEnBsJgBfkm+kXXCp93XoHJvVfuz9Bkhu+sSOVxJhgDUywiYh
-         d2+bsuJGkk9oW/6U20s77VOQxM9wpNgYgC1nH1Kgp0rE4EttN0FEaYFW4JPYrxwUug6d
-         qEEwW8YkpbWCGu1LqFxHcsAXTbZqOgZFZ1WLnstHJNHecVPm9lRpc1EM8/J6xVXku4w3
-         zWxeeZ8nGUx/xZ8tdddRZusi5crgG1Oiwv+hHrwe1utqDtU0xkuP6Fks7BTFjgT3CwFg
-         XIkIyD6I+G/ei/gKz5ZXN6pwKRNMcEjOoJfeb2d7hgxbYnS1pu7suNOLo7NMFk7oqLPB
-         nj6w==
-X-Gm-Message-State: AFeK/H3S5FntTvc9w+/nvkuDCQXhAkm2sok0psSQv1yakHdAWONPZGiSdM3kT+ORTO5q2A==
-X-Received: by 10.98.204.195 with SMTP id j64mr39836399pfk.213.1490112949088;
-        Tue, 21 Mar 2017 09:15:49 -0700 (PDT)
-Return-Path: <amsfield22@gmail.com>
-Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
-        by smtp.gmail.com with ESMTPSA id e76sm40512232pfk.75.2017.03.21.09.15.48
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 21 Mar 2017 09:15:48 -0700 (PDT)
-Date: Tue, 21 Mar 2017 09:15:47 -0700
-From: Alison Schofield <amsfield22@gmail.com>
-To: Gargi Sharma <gs051095@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, linux-iio@vger.kernel.org,
-	lars@metafoo.de, Michael.Hennerich@analog.com, jic23@kernel.org,
-	knaack.h@gmx.de, pmeerw@pmeerw.net, gregkh@linuxfoundation.org
-Subject: Re: [Outreachy kernel] [RESEND PATCH] staging: adis16203: Remove
- locking on raw reads of IIO_CHAN_INFO_CALIBBIAS
-Message-ID: <20170321161547.GD1859@d830.WORKGROUP>
-References: <1490112126-30265-1-git-send-email-gs051095@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1490112126-30265-1-git-send-email-gs051095@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=1eKvGLk4IDxH0y+MrezDVuuh/ie2UK+f0s0GdzlWmE4=;
+        b=KcnF30501v52eoPT4/WgUQVhPw4FtGXS4DV4fLj8r4xIk1D3CRKI/2fzSyobb3kibZ
+         Q8gBaSowiyE5xQmo5MDGEobdYNhs2SKDDczi+FMHiM66RhOZ0QGCqd1Zho6l0lE419Xx
+         WuSLFb7os6PlF7apZc6k2boiIJmENZkQp0SezogdX/DmiSHw1JYoNZ3FlnWrJgsW7PdA
+         Rb/uj6o4aQs0IL5CrtUCn0/f5dlhMD5dG/PHhx7MH+FJe9XI2FqWEI/oN9sQ/WvSERuB
+         a+A4uTCpOgxUIZUqqulZlN787yUq7AeGgnTIX1gJbtHvmz8NSAwAZYTuExLwDxNsstDd
+         A/cw==
+X-Gm-Message-State: AFeK/H2gF3esshzZOjfVRt2ViNdABHpqp4VAh1CjxgvFuTTxh2GnruONnYWpauVvsGmRYQ==
+X-Received: by 10.99.94.195 with SMTP id s186mr39473438pgb.197.1490112275150;
+        Tue, 21 Mar 2017 09:04:35 -0700 (PDT)
+Return-Path: <gs051095@gmail.com>
+Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
+        by smtp.googlemail.com with ESMTPSA id z189sm40699013pgb.3.2017.03.21.09.04.31
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 21 Mar 2017 09:04:34 -0700 (PDT)
+From: Gargi Sharma <gs051095@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: linux-iio@vger.kernel.org,
+	lars@metafoo.de,
+	Michael.Hennerich@analog.com,
+	jic23@kernel.org,
+	knaack.h@gmx.de,
+	pmeerw@pmeerw.net,
+	gregkh@linuxfoundation.org,
+	Gargi Sharma <gs051095@gmail.com>
+Subject: [RESEND PATCH] staging: adis16203: Remove locking on raw reads of IIO_CHAN_INFO_CALIBBIAS
+Date: Tue, 21 Mar 2017 21:32:06 +0530
+Message-Id: <1490112126-30265-1-git-send-email-gs051095@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-On Tue, Mar 21, 2017 at 09:32:06PM +0530, Gargi Sharma wrote:
-> adis16203_read_raw does not need lock for IIO_CHAN_INFO_CALIBBIAS
-> since adis_read_reg_16 is already atomic and nothing else needs to be
-> protected.
-> 
-> Signed-off-by: Gargi Sharma <gs051095@gmail.com>
+adis16203_read_raw does not need lock for IIO_CHAN_INFO_CALIBBIAS
+since adis_read_reg_16 is already atomic and nothing else needs to be
+protected.
 
-Just sent yesterday too!
+Signed-off-by: Gargi Sharma <gs051095@gmail.com>
+---
+ drivers/staging/iio/accel/adis16203.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-> ---
->  drivers/staging/iio/accel/adis16203.c | 3 ---
->  1 file changed, 3 deletions(-)
-> 
-> diff --git a/drivers/staging/iio/accel/adis16203.c b/drivers/staging/iio/accel/adis16203.c
-> index 68189ad..14fe2d3 100644
-> --- a/drivers/staging/iio/accel/adis16203.c
-> +++ b/drivers/staging/iio/accel/adis16203.c
-> @@ -203,17 +203,14 @@ static int adis16203_read_raw(struct iio_dev *indio_dev,
->  		return IIO_VAL_INT;
->  	case IIO_CHAN_INFO_CALIBBIAS:
->  		bits = 14;
-> -		mutex_lock(&indio_dev->mlock);
->  		addr = adis16203_addresses[chan->scan_index];
->  		ret = adis_read_reg_16(st, addr, &val16);
->  		if (ret) {
-> -			mutex_unlock(&indio_dev->mlock);
->  			return ret;
->  		}
->  		val16 &= (1 << bits) - 1;
->  		val16 = (s16)(val16 << (16 - bits)) >> (16 - bits);
->  		*val = val16;
-> -		mutex_unlock(&indio_dev->mlock);
->  		return IIO_VAL_INT;
->  	default:
->  		return -EINVAL;
-> -- 
-> 2.7.4
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1490112126-30265-1-git-send-email-gs051095%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
+diff --git a/drivers/staging/iio/accel/adis16203.c b/drivers/staging/iio/accel/adis16203.c
+index 68189ad..14fe2d3 100644
+--- a/drivers/staging/iio/accel/adis16203.c
++++ b/drivers/staging/iio/accel/adis16203.c
+@@ -203,17 +203,14 @@ static int adis16203_read_raw(struct iio_dev *indio_dev,
+ 		return IIO_VAL_INT;
+ 	case IIO_CHAN_INFO_CALIBBIAS:
+ 		bits = 14;
+-		mutex_lock(&indio_dev->mlock);
+ 		addr = adis16203_addresses[chan->scan_index];
+ 		ret = adis_read_reg_16(st, addr, &val16);
+ 		if (ret) {
+-			mutex_unlock(&indio_dev->mlock);
+ 			return ret;
+ 		}
+ 		val16 &= (1 << bits) - 1;
+ 		val16 = (s16)(val16 << (16 - bits)) >> (16 - bits);
+ 		*val = val16;
+-		mutex_unlock(&indio_dev->mlock);
+ 		return IIO_VAL_INT;
+ 	default:
+ 		return -EINVAL;
+-- 
+2.7.4
+
 
