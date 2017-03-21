@@ -1,53 +1,53 @@
 X-GM-THRID: 6399916000486096896
-X-Received: by 10.129.50.12 with SMTP id y12mr18840679ywy.111.1490096592004;
-        Tue, 21 Mar 2017 04:43:12 -0700 (PDT)
+X-Received: by 10.129.146.139 with SMTP id j133mr17516424ywg.173.1490096586976;
+        Tue, 21 Mar 2017 04:43:06 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.146.136 with SMTP id u130ls2262243iod.47.gmail; Tue, 21
- Mar 2017 04:43:11 -0700 (PDT)
-X-Received: by 10.107.162.147 with SMTP id l141mr8888297ioe.4.1490096591449;
-        Tue, 21 Mar 2017 04:43:11 -0700 (PDT)
+Received: by 10.36.110.142 with SMTP id w136ls2787623itc.22.canary-gmail; Tue,
+ 21 Mar 2017 04:43:06 -0700 (PDT)
+X-Received: by 10.99.109.2 with SMTP id i2mr8689394pgc.152.1490096586436;
+        Tue, 21 Mar 2017 04:43:06 -0700 (PDT)
 Return-Path: <arushisinghal19971997@gmail.com>
 Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id y203si3392935pfb.0.2017.03.21.04.43.11
+        by gmr-mx.google.com with ESMTPS id a3si3336157pfb.2.2017.03.21.04.43.06
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 21 Mar 2017 04:43:11 -0700 (PDT)
+        Tue, 21 Mar 2017 04:43:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
        spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id o126so21614821pfb.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 04:43:11 -0700 (PDT)
+Received: by mail-pf0-x241.google.com with SMTP id p189so16063419pfp.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 04:43:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=8bYf1+SyJNyXtwSrpYmjORHR9IT82LMJUTKogxcdt3c=;
-        b=i68aeNUDQ9Ja5+wSw71BThVD1MlGczO8cdxJ5UNpg+BSpGI6Re4TyWDUVzdq8RxJbw
-         Q2esN7QBMo+7KyXp01vrZSlVweVeylJEw/o55TS67QqBYRQP5Mkhy16wn0hbz8I9HIsP
-         JqcoQ/OHKvPZWzE/mtw/IGWZE5xjMlJ0XkmzRmEBLBa5zTd8i/I7Aj5jn/j4pddD7dqs
-         XRboyJlO++EycYFNY9S3BxAx7gu1bk9pS0yxq+X9E1hKO2hhJgDZhtZqWUd9To5BTXdX
-         G9JEztLOQz4y1AfakQ5FEqyO+6H+wSuatb4IOaQov0sblFxc1watTQUsf9zDhxeNBe9a
-         Y26w==
+        bh=kC6W4NgMa737J8TBipUuOCNHFwWeh02EOES0W0GUmVc=;
+        b=SemSXh4XkXySQOaqOrfDlrPZIDgGf7rzzRLVRvK2HqOs2j8b92vDtMqcjG323et/z4
+         AJ689NRxB3FDYkK7Kzx36K0fBN9WlwWZVXOYIs3XdRhA8fnwS6l+VvYpK3PvubS1IxTO
+         m1XsvGeiuwVHCh6lRQgZvgiRWrn5eQBdlXCvhCe/DXca4LvatpACUyUzd6PSewUxF6sv
+         V/4Rxh8UJVD0xqSBnlKMCrOwxfwmDOZEo5wyDUx4kl7XC/ceLmrsI7jRN9QcnLG49WIa
+         lpaXLjo0qZCNqpeLa20wFmU9Ig3fXlrVCmyVVjJFxrOgpwhzatRW8zzk8+LBab7OyuXv
+         68QQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=8bYf1+SyJNyXtwSrpYmjORHR9IT82LMJUTKogxcdt3c=;
-        b=HtcLze3g3bgnwLvYOeQ+T2H4UvSnommqc2+wdKjUQxhhONFhr4envYKrpEoLaamI5d
-         3P6fmiGX1HHiGqYZzv+AUaiT3GEZMQ5d3RyvQGg1aPj0FSMTEUE6ZGocMneuBAQLOUff
-         YQDZppoH0eeJxvVKY+zL+uUiDDG3u5voPoNyWgJmVsUuieM2+lKid0BHcqBH33BOLn0t
-         xiW5MHLFZixcgBoxa79fUZ2yP4E9U27OvZYEH2z4Cd7cYknLmXNih40BSeWb4G6VR2lU
-         EcBDO4YIfcRHjTP/rcdNzbtZ4pAeHE1Sc+VJlw8Nm9arI42Lnhyi+IRIBPojo99Btt3/
-         zxEg==
-X-Gm-Message-State: AFeK/H2NW4ZU+zcb65XSf+8O3Oa6m47qmfjuK+MmOdY8F32MIPSwMBlTeaYew1+ZjsZmzw==
-X-Received: by 10.98.8.206 with SMTP id 75mr38695359pfi.198.1490096591237;
-        Tue, 21 Mar 2017 04:43:11 -0700 (PDT)
+        bh=kC6W4NgMa737J8TBipUuOCNHFwWeh02EOES0W0GUmVc=;
+        b=tLGLY7ePrxh2YEyCMEQcmuSnEV9pvh4eE6QZUSTfsaIryh54wEwqNV/NUsIwNWQGt8
+         NfIAHgNFH+tIydERPXsVLvjZvRW1egGucMb0vK2foVnytPni5QbdscjoliEqNuIeXHkP
+         zwRtyDqYl1JS/k46+HZfxKBsh4XQzKn4QOo4BrGzlxYkAAL6uUVhoeIYCdtDiXivk1PL
+         vIT/oQlfGgXCuzesvA3qK7L9hPUqlYH910pB5o5gUdrJbts81H9FJp3ODk8teTerZURq
+         7/ucmITtfSnx9bnG9EngbJ7O+TkiKQnNsuL84at08A9nlJy3PgIVUkT0I5TnvzJFnUxp
+         Ze+g==
+X-Gm-Message-State: AFeK/H31nOWOXoPnEaPXDn9Tk9rYjWZ81qA1tH5a4gzdG+YIpMGWRdLlbzhWjHAvtAArZg==
+X-Received: by 10.99.110.138 with SMTP id j132mr36037722pgc.217.1490096586226;
+        Tue, 21 Mar 2017 04:43:06 -0700 (PDT)
 Return-Path: <arushisinghal19971997@gmail.com>
 Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id g29sm39210602pfg.37.2017.03.21.04.43.09
+        by smtp.gmail.com with ESMTPSA id t6sm39483313pgo.42.2017.03.21.04.43.04
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 21 Mar 2017 04:43:10 -0700 (PDT)
+        Tue, 21 Mar 2017 04:43:05 -0700 (PDT)
 From: Arushi Singhal <arushisinghal19971997@gmail.com>
 To: w.d.hubbs@gmail.com
 Cc: chris@the-brannons.com,
@@ -59,42 +59,35 @@ Cc: chris@the-brannons.com,
 	devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org,
 	Arushi Singhal <arushisinghal19971997@gmail.com>
-Subject: [PATCH 06/11] staging: speakup: Moved OR operator to previous line.
-Date: Tue, 21 Mar 2017 17:12:30 +0530
-Message-Id: <20170321114235.1638-7-arushisinghal19971997@gmail.com>
+Subject: [PATCH 05/11] staging: speakup: Remove multiple assignments
+Date: Tue, 21 Mar 2017 17:12:29 +0530
+Message-Id: <20170321114235.1638-6-arushisinghal19971997@gmail.com>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20170321114235.1638-1-arushisinghal19971997@gmail.com>
 References: <20170321114235.1638-1-arushisinghal19971997@gmail.com>
 
-Moved logical OR operator to previous line to fix the following
-checkpatch issue:
-
-CHECK: Logical continuations should be on the previous line.
+This patch fixes the checkpatch.pl warning "multiple assignments
+should be avoided."
 
 Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
 ---
- drivers/staging/speakup/main.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/staging/speakup/main.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/staging/speakup/main.c b/drivers/staging/speakup/main.c
-index c10445624e92..def1a36da9dd 100644
+index 21e76b031449..c10445624e92 100644
 --- a/drivers/staging/speakup/main.c
 +++ b/drivers/staging/speakup/main.c
-@@ -2173,10 +2173,10 @@ speakup_key(struct vc_data *vc, int shift_state, int keycode, u_short keysym,
- 	if (up_flag || spk_killed || type == KT_SHIFT)
- 		goto out;
- 	spk_shut_up &= 0xfe;
--	kh = (value == KVAL(K_DOWN))
--	    || (value == KVAL(K_UP))
--	    || (value == KVAL(K_LEFT))
--	    || (value == KVAL(K_RIGHT));
-+	kh = (value == KVAL(K_DOWN)) ||
-+	    (value == KVAL(K_UP)) ||
-+	    (value == KVAL(K_LEFT)) ||
-+	    (value == KVAL(K_RIGHT));
- 	if ((cursor_track != read_all_mode) || !kh)
- 		if (!spk_no_intr)
- 			spk_do_flush();
+@@ -2106,7 +2106,8 @@ speakup_key(struct vc_data *vc, int shift_state, int keycode, u_short keysym,
+ 			spk_keydown = 0;
+ 			goto out;
+ 		}
+-		value = spk_lastkey = pad_chars[value];
++		value = pad_chars[value];
++		spk_lastkey = value;
+ 		spk_keydown++;
+ 		spk_parked &= 0xfe;
+ 		goto no_map;
 -- 
 2.11.0
 
