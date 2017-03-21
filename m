@@ -1,53 +1,52 @@
 X-GM-THRID: 6399866946348646400
-X-Received: by 10.129.108.146 with SMTP id h140mr9061816ywc.4.1490085145444;
-        Tue, 21 Mar 2017 01:32:25 -0700 (PDT)
+X-Received: by 10.99.55.4 with SMTP id e4mr18551023pga.156.1490085140706;
+        Tue, 21 Mar 2017 01:32:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.39.226 with SMTP id c89ls1308198otb.2.gmail; Tue, 21 Mar
- 2017 01:32:25 -0700 (PDT)
-X-Received: by 10.157.41.240 with SMTP id g45mr14348138otd.94.1490085145146;
-        Tue, 21 Mar 2017 01:32:25 -0700 (PDT)
+Received: by 10.157.60.6 with SMTP id q6ls1313777otc.10.gmail; Tue, 21 Mar
+ 2017 01:32:20 -0700 (PDT)
+X-Received: by 10.13.198.2 with SMTP id i2mr17390506ywd.116.1490085140254;
+        Tue, 21 Mar 2017 01:32:20 -0700 (PDT)
 Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id g82si3179190pfb.5.2017.03.21.01.32.25
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id 2si3153707pfz.1.2017.03.21.01.32.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 21 Mar 2017 01:32:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Tue, 21 Mar 2017 01:32:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id r137so17190957pfr.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 01:32:25 -0700 (PDT)
+Received: by mail-pg0-x243.google.com with SMTP id g2so24122644pge.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 01:32:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=r+y5x5rJrKgzSQgYnwxDrsICJpiQNYPH7aqSuIaJwfs=;
-        b=eXULdtMI8Gcj6+wTdDQHlO2tL3hPK6hwVvL0ZsANzNtYFGYdVBR0XWhelYVY2L0Sxu
-         D8B+D16uP+uYwuaJGFv6HymfmWLcLt/IlYKRkvr3m24ehUu84bc9oqMLAWqg/q+05IVE
-         YE/N9u+KVKTDXduTC++uE1YkzdYAQpSpd601S9ar/YSoB/+FGkQtAbeNRJrrCOKZu5bU
-         9/d5FZn6GegFTsQa5UpJ+ZVQb6Tm61mTP05Yal6WY+i7UHjkEQgcnkHT7FGjCLFcqfZB
-         6I/5qYw+E9SrTUgnnR3uPUExTljc+qTrhKacTT2V7b+ajJ1xzoHZ8co4bn2MZewsLBF+
-         oSwA==
+        h=from:to:cc:subject:date:message-id;
+        bh=twA8H7cjUjHUVzRO759dRfg6LBd4XhVRbm+9TtrzNs4=;
+        b=WwTNMLgM3yAgh2TniKYDwuihRZgV2eOjiXxfkQSQ503gzz0eDdzcoHIG124SDDbCOm
+         7xgai6d/ZI3SY44mEGi/l3o7c8wGZDAGe+E9pbm3e1DLxGexwrBqLBPxwjbrJE9eqlW3
+         2AXmc9oRNQKtS8oIDVcu0Onbg5Q6BCmhL9RfrqCuhsiozlnadbD2/e9NARWsWLvOynkv
+         0Y0XN+emwyT3DstqqkeUyjyPgD/eVkWiVmKssGfJ5PyrgsByROXbzWrIZHl++R4LK7D7
+         2C9Syr8ygm60iK7Jh/PB249IbrTxw4mQMFFNbMWbD8wqMY2z4eryK18AlbyJWvnVaCIX
+         KhsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=r+y5x5rJrKgzSQgYnwxDrsICJpiQNYPH7aqSuIaJwfs=;
-        b=UU3XMLQ4JNHsCvxDu75dVrNJWiDZrifpaliQVb4y9W2MGfvJupRDELt8j5sUxvVPkU
-         aKm56aoGSWZrx1ChgzMPY8R0m4ZM3/gPxUPjc6owAhNMqEEGaZyolx8pBWFjRyFbnlpI
-         2s+MBOKE//4GIZBcyORGNYCbYC0lYkHhPv8S+62n6ake6CozddmQaMYTqMqcYmPsXepL
-         +P5rR3dfXXBp04vhfCdfkXqt28AhUNVwGuw5b81vmM2FFC0WF5cEewmD3sXe8lxCHnsj
-         /tJghO32SDJ/kr0CergmQzGnXIjzW6nC+6XmwTXgivVFoXuR28n/oL59WtXo6LfZFokx
-         CliA==
-X-Gm-Message-State: AFeK/H1KF4ZbIrtgIG7U21l6++8dqyj3ElFGVFKMkWVh15iVrIqQK9oKbSWKpQaaGCP4TA==
-X-Received: by 10.98.26.199 with SMTP id a190mr38860383pfa.63.1490085144923;
-        Tue, 21 Mar 2017 01:32:24 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=twA8H7cjUjHUVzRO759dRfg6LBd4XhVRbm+9TtrzNs4=;
+        b=R4+Q5AdrD5oXMzoGUoGLVzQ4SJbzKv+gE0OXC4Fave6+hckUfFiwBvP+OhZBXlVG0f
+         jfR3xdveNs3i5zqVWdIkBIcey5GtB/t7YD459LgYWOjrG2FGqlHd8G5P5qF2ZUIPH9n4
+         Yj91jgpyaJ2BlhbbT0VLPCsIpWvZW8E7zF93KyUAi24Mf+8yazjR1r4lCYEpuN6w99Zn
+         P0hTWMDyrUPFOj5Yad93IW2+hx8ffvfnvECBshpmXGgsB7jfNzOt8AWZ+1ItdlBhJIJc
+         K+ectE1CcCldsqhj6pFKcv6DGNswGf78mRdoTM/OAzGIs2lAcyju8yAOSvVJtCdiiqfo
+         1c0Q==
+X-Gm-Message-State: AFeK/H3nr8YKpv0QBzsycgfXwfkLAPt73t/KaJiQEmCTT9mxT50jn+dzaK+iHl3CftgOww==
+X-Received: by 10.84.231.206 with SMTP id g14mr17824265pln.13.1490085140046;
+        Tue, 21 Mar 2017 01:32:20 -0700 (PDT)
 Return-Path: <arushisinghal19971997@gmail.com>
 Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id l1sm18687563pfk.8.2017.03.21.01.32.23
+        by smtp.gmail.com with ESMTPSA id f3sm38152086pga.34.2017.03.21.01.32.18
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 21 Mar 2017 01:32:23 -0700 (PDT)
+        Tue, 21 Mar 2017 01:32:18 -0700 (PDT)
 From: Arushi Singhal <arushisinghal19971997@gmail.com>
 To: w.d.hubbs@gmail.com
 Cc: chris@the-brannons.com,
@@ -59,33 +58,30 @@ Cc: chris@the-brannons.com,
 	devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org,
 	Arushi Singhal <arushisinghal19971997@gmail.com>
-Subject: [PATCH 1/4] staging: speakup: Removed Unnecessary parentheses.
-Date: Tue, 21 Mar 2017 14:02:12 +0530
-Message-Id: <20170321083215.29209-2-arushisinghal19971997@gmail.com>
+Subject: [PATCH 0/4] staging: speakup: Checkpatch issues.
+Date: Tue, 21 Mar 2017 14:02:11 +0530
+Message-Id: <20170321083215.29209-1-arushisinghal19971997@gmail.com>
 X-Mailer: git-send-email 2.11.0
-In-Reply-To: <20170321083215.29209-1-arushisinghal19971997@gmail.com>
-References: <20170321083215.29209-1-arushisinghal19971997@gmail.com>
 
-Unnecessary parentheses are removed to improve readability.
+Improve readability by fixing multiple checkpatch.pl
+issues in speakup driver.
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
- drivers/staging/speakup/kobjects.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Arushi Singhal (4):
+  staging: speakup: Removed Unnecessary parentheses.
+  staging: speakup: Simplify the NULL comparisons
+  staging: speakup: Match alignment with open parenthesis.
+  staging: speakup: Fix alignment with parenthesis.
 
-diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
-index afb61e153592..ca85476e3ff7 100644
---- a/drivers/staging/speakup/kobjects.c
-+++ b/drivers/staging/speakup/kobjects.c
-@@ -392,7 +392,7 @@ static ssize_t synth_store(struct kobject *kobj, struct kobj_attribute *attr,
- 		len--;
- 	new_synth_name[len] = '\0';
- 	spk_strlwr(new_synth_name);
--	if (synth && (!strcmp(new_synth_name, synth->name))) {
-+	if (synth && !strcmp(new_synth_name, synth->name)) {
- 		pr_warn("%s already in use\n", new_synth_name);
- 	} else if (synth_init(new_synth_name) != 0) {
- 		pr_warn("failed to init synth %s\n", new_synth_name);
+ drivers/staging/speakup/fakekey.c        |  2 +-
+ drivers/staging/speakup/kobjects.c       |  2 +-
+ drivers/staging/speakup/main.c           | 34 ++++++++++++++++----------------
+ drivers/staging/speakup/selection.c      |  2 +-
+ drivers/staging/speakup/serialio.c       |  2 +-
+ drivers/staging/speakup/speakup_acntpc.c |  6 +++---
+ drivers/staging/speakup/speakup_apollo.c |  2 +-
+ drivers/staging/speakup/speakup_decext.c |  4 ++--
+ 8 files changed, 27 insertions(+), 27 deletions(-)
+
 -- 
 2.11.0
 
