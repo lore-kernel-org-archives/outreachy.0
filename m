@@ -1,87 +1,96 @@
-X-GM-THRID: 6331265860288643072
-X-Received: by 10.66.123.74 with SMTP id ly10mr1464143pab.104.1474112705603;
-        Sat, 17 Sep 2016 04:45:05 -0700 (PDT)
+X-GM-THRID: 6400147740050849792
+X-Received: by 10.157.8.97 with SMTP id 88mr17423023oty.143.1490150517788;
+        Tue, 21 Mar 2017 19:41:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.23.236 with SMTP id j99ls7232198otj.7.gmail; Sat, 17 Sep
- 2016 04:45:05 -0700 (PDT)
-X-Received: by 10.157.7.7 with SMTP id 7mr11316935ote.50.1474112705314;
-        Sat, 17 Sep 2016 04:45:05 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
-        by gmr-mx.google.com with ESMTPS id um12si3496625pab.2.2016.09.17.04.45.05
+Received: by 10.157.11.120 with SMTP id p53ls785511otd.7.gmail; Tue, 21 Mar
+ 2017 19:41:57 -0700 (PDT)
+X-Received: by 10.13.228.196 with SMTP id n187mr11228872ywe.87.1490150517182;
+        Tue, 21 Mar 2017 19:41:57 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
+        by gmr-mx.google.com with ESMTPS id 2si3961pfz.1.2017.03.21.19.41.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 17 Sep 2016 04:45:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
+        Tue, 21 Mar 2017 19:41:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x243.google.com with SMTP id vz6so4588435pab.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 17 Sep 2016 04:45:05 -0700 (PDT)
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x241.google.com with SMTP id g2so28066931pge.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 19:41:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
+        d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=ze1VTQXTEw6QFz3ffEfLxEfiNw8EF5kMh1OhJMEu02c=;
-        b=SLAX5IVD0kGA0+iw7P/eTIMrFrXJwqaUJvZBbcTXtX4E5xfWTuKeSLPBEgxNWQITyq
-         D3xPkvAYsgKzWFXYsqTZ8vZNeB9fmkSd74/8/zkpk4AKxAGCSBs/3LgmzVUe48w5qwQD
-         GY9qwrGRwMIcU2Hde/AxLKci9leAiu4gjdNhmu1rqofoMeW7BEZ5NRDcCPVlDv6TuU0G
-         ZPfURbrcPXq4ZKnDGo6eUkOWtkEzGonF6TB2LWeecvhRxqkay8ONEhcAfJXy37/Nhalm
-         y9KqNlIh6qjwLRunqgpdWvp+zihfeHMsh7hMfvlCPX+zmClUR0pqEDWIY3rFqFFivfL3
-         qsbA==
+        bh=92QrF/IePiwaZ/3EQS4jCt6WierhfPs1wjzjG8JihfU=;
+        b=rEbOZ3+loO0GUD0yYBHy1G7crsUVMc2aOmUkTZhsg/+S98OdNmqJ2Myz8z1cQ065U4
+         qHXZBsNhnbBouMZDQA7W3877RNmE3rFgqegXCmE5gOu0fZm+/ih5AOsY0MK5aP/TZ6gF
+         48QuDUebcIMsqKgJ6W3ryxarA5eQr9N8DqltMOkxUIEWHjcSpZj9pft1d98SWK8pgOiq
+         LIlxAAgSsWgi/fQYEJsnr+yZ7OhBdq+En7d7LhkaRqPAt3grfsbqXkomhY7s0pY2OmkM
+         Z+ZqfNYRrJGAV+fpeX1Enop0kNmkegWaQUcT9I6gkOG9ePLf7MI1X8QlS/T7egvqr05w
+         FPbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
+        d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=ze1VTQXTEw6QFz3ffEfLxEfiNw8EF5kMh1OhJMEu02c=;
-        b=Agx1rVeZ9fO5Bu/F7j5p7TveFkK50oE1ORkYS+jiW8slAr+oLnltTDj+oPAf2cYAIj
-         z0Eq/7JZej63hAtGAPJE30t9gXsUR+R/0UGB/nrDDzrJ2S0G2rexFcJxShwz6CdKmkLp
-         dQJnRyOQ7v6Ysf7mvuVtCbLXO6ElhnSTCIXa2Y6ktbberTGQCDJOsfWoyGClI/XUbzru
-         dOUB3/dLGZzCFLAC0QbY+WEF6BlFWIhwguUo56jXR10yv2iQxSfNNLamHZn/dc+i5A5U
-         zzlCXZSPdKShz/YCKDjmCgE/W4jSovq8dWnZZA7OUpYkuAyT+u37TV+dF+ZnUGoHqbRg
-         WLWw==
-X-Gm-Message-State: AE9vXwPZlGp3Ji9zzkM3JZKehma1+5/8XTqij7XTlys9HMLXqOu9hCW7fLZypK+7xSZ8WQ==
-X-Received: by 10.66.249.74 with SMTP id ys10mr30817168pac.29.1474112705116;
-        Sat, 17 Sep 2016 04:45:05 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([122.170.172.239])
-        by smtp.gmail.com with ESMTPSA id xw10sm18690400pab.0.2016.09.17.04.45.03
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 17 Sep 2016 04:45:04 -0700 (PDT)
-Date: Sat, 17 Sep 2016 06:14:47 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH] Staging: i4l: Use !x instead of x == NULL.
-Message-ID: <20160917004447.GA14614@sandhya>
+        bh=92QrF/IePiwaZ/3EQS4jCt6WierhfPs1wjzjG8JihfU=;
+        b=oZ4YluJyr1gNwJpIgQy+kz+NgAXb2O8gwWSAVkeMddP45erFQNworodejysPW/CGq3
+         ISx6D+/rpYw5ZCcZNaRoiqIirD2Il0ga588AxES2frTntGhUm4iJUuWTh86dcu2FDP49
+         6aL6FmeE4+M6xgqHdI6HfR0C+AWrs4q0kpOZZX6gb1+890tdIua8tYoms6ng/GaeW5Fm
+         RwOlSdBcXVgPyHZVSql4ciHI6mnQoVwh7TB45cwOHtRNlnOlRb/h6VCpHwsEHXxUkNE7
+         NBpeu09BOdhl/R/PvzzXg0/eC4QM4t44uXeH1iNHgniE/Lu/rQWzQMP2LAQ+oKsrxaAI
+         HfcQ==
+X-Gm-Message-State: AFeK/H3PHIgYHtroOywYIbnUXl0j+lRacnBap9hxv0FaClU0/x7zd2YC+Raz8dcjm7heLg==
+X-Received: by 10.98.99.196 with SMTP id x187mr42828674pfb.168.1490150516949;
+        Tue, 21 Mar 2017 19:41:56 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id q64sm19077pfi.69.2017.03.21.19.41.55
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 21 Mar 2017 19:41:55 -0700 (PDT)
+Date: Wed, 22 Mar 2017 08:11:52 +0530
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+To: sudipm.mukherjee@gmail.com
+Cc: Teddy Wang <teddy.wang@siliconmotion.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-fbdev@vger.kernel.org, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: sm750fb: Replace a bit shift by a use of BIT.
+Message-ID: <20170322024152.GA12064@arushi-HP-Pavilion-Notebook>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Use !x instead of x == NULL.
-This issue was found by checkpatch.
+This patch replaces bit shifting on 1 with the BIT(x) macro.
+This was done with coccinelle:
+@@
+constant c;
+@@
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+-1 << c
++BIT(c)
+
+Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
 ---
- drivers/staging/i4l/act2000/capi.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ drivers/staging/sm750fb/ddk750_chip.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/i4l/act2000/capi.c b/drivers/staging/i4l/act2000/capi.c
-index bf04e6f..62f5629 100755
---- a/drivers/staging/i4l/act2000/capi.c
-+++ b/drivers/staging/i4l/act2000/capi.c
-@@ -618,7 +618,7 @@ handle_ack(act2000_card *card, act2000_chan *chan, __u8 blocknr) {
- 		spin_lock_irqsave(&card->lock, flags);
- 		tmp = skb_peek((struct sk_buff_head *)tmp);
- 		spin_unlock_irqrestore(&card->lock, flags);
--		if ((tmp == skb) || (tmp == NULL)) {
-+		if ((tmp == skb) || !tmp) {
- 			/* reached end of queue */
- 			printk(KERN_WARNING "act2000: handle_ack nothing found!\n");
- 			return 0;
+diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
+index 5e4bfb601cea..112ee4182a0a 100644
+--- a/drivers/staging/sm750fb/ddk750_chip.c
++++ b/drivers/staging/sm750fb/ddk750_chip.c
+@@ -44,7 +44,7 @@ static unsigned int get_mxclk_freq(void)
+ 	OD = (pll_reg & PLL_CTRL_OD_MASK) >> PLL_CTRL_OD_SHIFT;
+ 	POD = (pll_reg & PLL_CTRL_POD_MASK) >> PLL_CTRL_POD_SHIFT;
+ 
+-	return DEFAULT_INPUT_CLOCK * M / N / (1 << OD) / (1 << POD);
++	return DEFAULT_INPUT_CLOCK * M / N / (BIT(OD)) / (BIT(POD));
+ }
+ 
+ /*
 -- 
-1.7.1
+2.11.0
 
 
