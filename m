@@ -1,102 +1,121 @@
-X-GM-THRID: 6675393159366705152
-X-Received: by 2002:a62:13dc:: with SMTP id 89mr1416658pft.140.1554236085947;
-        Tue, 02 Apr 2019 13:14:45 -0700 (PDT)
+X-GM-THRID: 6399553954141700096
+X-Received: by 10.25.203.151 with SMTP id b145mr5522451lfg.17.1490217109636;
+        Wed, 22 Mar 2017 14:11:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:b60a:: with SMTP id j10ls7135pff.6.gmail; Tue, 02 Apr
- 2019 13:14:45 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzTW4aynpOUX2vifSC6P1DDl97PAVv3xhE/QrpXsumFDWQ7QvIb4LqiB1sPB/J0hr0tdL1u
-X-Received: by 2002:a62:184d:: with SMTP id 74mr970558pfy.30.1554236085307;
-        Tue, 02 Apr 2019 13:14:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554236085; cv=none;
-        d=google.com; s=arc-20160816;
-        b=XNJ000GrL1/Z10jyX+qYKB0JI4XoTx0FIzFu86TozXifxSDka4g2QPDPlcOHE6VFRa
-         fL+rGYcDJpD1PVgMglcOXkac5GQEFan9cZ+8FkEYBYEUKGRma/hm+3PH7fynVrjeegPp
-         dDsYTjlBhgPOKSa1swBT3IgKIAH1UXxT5RAUaKLgOX9gWNX0yAbHLd4r30s0ZsVK5RcT
-         6lleUMZYm9GqoPgMitACq6vPsxsrmChqmvio0CEWSbCAonhWUvfSZ2JLIaP22+AsjIUU
-         O5zruV3BLZqz2njUwYlWo7WifiiU6jdOa7oBe7EZBKo5xETcUBqdMu4SpeZ1x2rq+c0C
-         olFg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=8V+5JHdYYftbr3ACdvo9+UYkXxcO9QX2yVByc2b/eO4=;
-        b=vXGL6KoQAdv0L3dfkSdEN9cc1WlmwUvRF1uA2Psb96u513s39MhrJuO63sqq6G3fZQ
-         vWOMQaE6dxMp8xJurYNIbwjABq23JBJ+fL61kBGle+bxPHHlGUiP1PDaYu+qo3neTru8
-         o9WWuH3KTJhw0ESLC26MoxDj1o7LFoUqF8aQa+qjJXNwO6/yaXgACOsIrDyREOaUDeTp
-         b2zo2BwiPN007I0yN832jqhqvv02/xMltCOzm427Y3cat0/qteoAdQiA1vbhgKS62D8T
-         dYFagV0tzFWfc+W+VAbcDkZ8iZe1r1MRnn/9uqA2XgVTmhZW32VOKcpEaLJuJofIFMi+
-         ATLg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=MS1WLGmT;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.240.79 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-Return-Path: <nishka.dasgupta@yahoo.com>
-Received: from sonic313-20.consmr.mail.sg3.yahoo.com (sonic313-20.consmr.mail.sg3.yahoo.com. [106.10.240.79])
-        by gmr-mx.google.com with ESMTPS id i126si658828pfc.4.2019.04.02.13.14.44
+Received: by 10.25.203.201 with SMTP id b192ls287398lfg.28.gmail; Wed, 22 Mar
+ 2017 14:11:48 -0700 (PDT)
+X-Received: by 10.25.32.142 with SMTP id g136mr4734893lfg.12.1490217108477;
+        Wed, 22 Mar 2017 14:11:48 -0700 (PDT)
+Return-Path: <narcisaanamaria12@gmail.com>
+Received: from mail-wr0-x244.google.com (mail-wr0-x244.google.com. [2a00:1450:400c:c0c::244])
+        by gmr-mx.google.com with ESMTPS id b186si2082305wme.1.2017.03.22.14.11.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 02 Apr 2019 13:14:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.240.79 as permitted sender) client-ip=106.10.240.79;
+        Wed, 22 Mar 2017 14:11:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) client-ip=2a00:1450:400c:c0c::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=MS1WLGmT;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.240.79 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1554236083; bh=8V+5JHdYYftbr3ACdvo9+UYkXxcO9QX2yVByc2b/eO4=; h=From:To:Cc:Subject:Date:From:Subject; b=MS1WLGmTVt6PRctQj74wnmxygOR3YUxl/3tJqmJPmg9Xyk9txBUOaJRQb0rgHozEo4MCyXxQpUqqUF20omYgAcKOKAZjbW2IeorA/W89vIin4mAm+STp2RPuKqXvytWyOs2NchwTmnPEbLfo+iz7al4ci+516B7rOY6NJzaEZBwF/f8PxB/MlGpqdX/uidhiCuxRtx4pYfIZmrauhdaMGtqI15uGgk5p2I8bgZNFWultlE/dRL0ZnIIY+Bren9udKUjdPvk0WTszpzd2JYWA2L74OsVx6ZzDLT7ka3eoFUeE946t5FyyyfZlXinTlNWUK0x8EqwzerDGqzE327FNDA==
-X-YMail-OSG: xIu.D64VM1k_iXDzKgo9HO2N3Db5GQYfNjVFkA1uWnhsvBZJBjVjyyuCisMJsQr
- SCbqGgpqw1z4YRZPp0nkjfFPxCBsZ__HFiADLPOH1ROallHAQQOYnPXd3N90IZI.SIH7taovuGb8
- 2ag18NV6fD8xN8IQolRvzoWV2yeQEPQv9Y47J0LEadyJUkfb20lf_Pw5RDSr8zB2dEBouZMNmhH0
- 5FSt_T6HCys3ZX9MpbgrM.ZFeykbgf6Zd_2DB6JJkUrZ.XmdLikx.v1FTUOfh1YxdfO9ok3WNKI7
- N4SqITuXUXm6jY.L3dSkDW9qyV1qTxXjjBA4_4DMjd32SMl_JCNylM9f5Yf1U_bAOZh7AsP39i_s
- RcFXvf63IuOB.rDjeIHdhbUCz5U0bSxrrWzRxJJewng6pMJZOxVswwBYbsfCdnWUhD.afodHd9tm
- FvarB3qHz8mg73CKqW5XJvhnuHioKeijDRnsIGE.H3Y3HyXUqGTsyIZYiG5D5S5pBRBFzk_cT.tV
- TuBZtj6FNWNCsUzvwH1oaxgSbZL1ZZuP.A8QYB8uhWL0iXPLp0UHhfO33neTF4PVJbizeeh91ZwN
- aLfxwUc72y45EAxX.Ze_Fe7hkEjNk0w1pzZLb_EZomzpXK9snTRL6mDY66LQswlMz_eOtV7H8mbP
- smKktYLdLcqSJrLfTtGLfdghSgyuoHlzVedjku3Gz7wgkJOZYDXHbf_NasZT.yvMlZ6SjJjF_qaw
- whTjZZ4xueAcxE9Q3wVJ4sywI61ktGcb6KqbyZ2UjtdgfCmRrL5jaFfqO0nfJ.uxU4zKtYZj6kpB
- 56g1x3kxFkmRSLuQQmJ5ZlaL4RReE7OrPh60AsMO3nu48rB7FVy8MxwfcirDXfvpW_OV9ZSjr_lv
- nJdPPla5tVF1JK9W.MnbtAfXET9LQ9I7eF7T8pZ3PV83XxUAJhCt.f9jPkeknCHGxkJrpGrmXJ63
- QWsJbFQ8zc7tWMrCQS_fRip32WR0MYp3OecXNg7qtbJsmo6haVFRDkvrL3QQgkSN54dnI5Zs.pQS
- pJWt4tDRHxcI8elKbmS2tioaQTEYLdY1H4FJ6aOThus8x_a79_bYhCBjQse6hIFwjCv9upiIOdyq
- vzLoZjQ8LIBtlf1JmBVO6NmAxN6WqdAaeCrWy1w--
-Received: from sonic.gate.mail.ne1.yahoo.com by sonic313.consmr.mail.sg3.yahoo.com with HTTP; Tue, 2 Apr 2019 20:14:43 +0000
-Received: from 103.7.128.210 (EHLO localhost.localdomain) ([103.7.128.210])
-          by smtp420.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID aef7e9bb0d691cd54e16e4e1a162fad3;
-          Tue, 02 Apr 2019 20:14:38 +0000 (UTC)
-From: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-To: gregkh@linuxfoundation.org,
-	mchehab@kernel.org,
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) smtp.mailfrom=narcisaanamaria12@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wr0-x244.google.com with SMTP id u108so28593073wrb.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 22 Mar 2017 14:11:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=q07Zq/0Pl/8D3dZTaV4uk87KCKCyNeYjNqLcoldqxH0=;
+        b=j4iXzJT3Z7dfn43U9OYNK6XAz5PlKhWzgcZMyIL4/3yqL/cXjzxJZ9lQvUaEAYoQ8i
+         Ykwvq29TfBGd/cqbj9eApC/4+AP6QABWPOQuurLqboykIW4Azn/6QE7FyJEswoO93Eki
+         FF5kSReWna23PscPG4GpviHnLc1P3Pc2VGJfgmBTx3B5auxY49/pCkys+UPuuSx6nHNo
+         0XXk2PnIaBOmxD7A9+j1ULJzKDn0Cnw2DByqaK2vrymv+Ie2zEBlIqN7A5zQqfNkYPXI
+         pKiqf6vkbKEGk6gcvSyDXr+HWV6KXNDXRo+FnY48TIx7tinxJK579HKi3WaFc/k6IH7+
+         sCUg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=q07Zq/0Pl/8D3dZTaV4uk87KCKCyNeYjNqLcoldqxH0=;
+        b=l7Ixm/CKfI+4gkQQrt/zgbvNCOoobp/No0k7QaTooeO9dVbIPKgTCuZ6m2yjtQ1Cm4
+         9Ch1LnhSUg4NpTXcqkNfEH/DYZRAD3SE1Om8QZx8FYJ+NG8jdzj0/RaI8GLvCVm9FeXv
+         diFmM1XMUO6CtFD+66gpqqtEs1SHONdgWVNRu4yOa1arML6cymlrseQt42C1SBwvsXVG
+         aG7p1gWIrmPmeX+7Mme4MINqLuBvYI8FFqCkzIHFDWPyEh5T0L0vNYcjJ5mjl651bIII
+         z/FH534n9sQ5J6/wTljrXwTO9aQ8XAGvr//vX+2L53qxapJzrav757S6dbxn9wMbT2yQ
+         T74A==
+X-Gm-Message-State: AFeK/H2KtSF9HDNa2OAMOTv9gtoVKc+9Wy0EZHd4JACLmskr+qTMJ5NjZEGiC/AvD3HIOA==
+X-Received: by 10.223.172.77 with SMTP id v71mr43146467wrc.131.1490217108236;
+        Wed, 22 Mar 2017 14:11:48 -0700 (PDT)
+Return-Path: <narcisaanamaria12@gmail.com>
+Received: from nati-X550JK (p22.eregie.pub.ro. [141.85.0.122])
+        by smtp.gmail.com with ESMTPSA id l138sm1767758wmd.7.2017.03.22.14.11.47
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 22 Mar 2017 14:11:47 -0700 (PDT)
+Date: Wed, 22 Mar 2017 23:11:46 +0200
+From: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+To: Jonathan Cameron <jic23@kernel.org>
+Cc: lars@metafoo.de, Michael.Hennerich@analog.com, knaack.h@gmx.de,
+	pmeerw@pmeerw.net, gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
-Cc: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-Subject: [PATCH] staging: media: zoran: Remove print statement for failed kmalloc
-Date: Wed,  3 Apr 2019 01:44:30 +0530
-Message-Id: <20190402201430.3402-1-nishka.dasgupta@yahoo.com>
-X-Mailer: git-send-email 2.19.1
+Subject: Re: [PATCH 3/3] staging: iio: cdc: ad7746: Fix alignment with
+ paranthesis
+Message-ID: <20170322211145.GA4115@nati-X550JK>
+References: <cover.1490011900.git.narcisaanamaria12@gmail.com>
+ <28e3f73ab1ac503fb32a291b6be7741d23a63444.1490011900.git.narcisaanamaria12@gmail.com>
+ <74943e7b-c68b-fb72-84a1-ccce743eb523@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <74943e7b-c68b-fb72-84a1-ccce743eb523@kernel.org>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Remove print statement indicating failure of kmalloc. Issue found with
-Coccinelle.
+On Wed, Mar 22, 2017 at 08:38:36PM +0000, Jonathan Cameron wrote:
+> On 20/03/17 12:18, Narcisa Ana Maria Vasile wrote:
+> > This was reported by checkpatch.pl:
+> > CHECK: Alignment should match open parenthesis
+> > 
+> > Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+> Applied to the togreg branch of iio.git and pushed out as testing.
+> 
+> Only real comment on this series is that it wasn't really a series.
+> The linking element was check patch warnings.  Not really enough.
+> A series should exist for one of two reasons:
+> 1) Patches to the same driver that need to be applied in order to avoid fuzz
+> or for more fundamental reasons.
+> 2) Grouping patches because they are the same change to lots of drivers.
+> This is useful because it aids review - comments also apply to at least
+> some subset of the patches.
+> 
+> Doesn't matter that much, but these should really just have been 3 separate
+> patches.  The first 2 might just fall under type 1 above I suppose, but
+> not this third one!
+> 
+> Thanks,
+> 
+> Jonathan
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
----
- drivers/staging/media/zoran/zoran_driver.c | 4 ----
- 1 file changed, 4 deletions(-)
+  Ok, I'll keep this in mind. Indeed, I grouped them because they were
+  all fixing checkpatch warnings. It's clear now that I
+  shouldn't have made a patchset.
+  Sorry for the mistake.
 
-diff --git a/drivers/staging/media/zoran/zoran_driver.c b/drivers/staging/media/zoran/zoran_driver.c
-index 4c281d9a0e60..9e39dc549024 100644
---- a/drivers/staging/media/zoran/zoran_driver.c
-+++ b/drivers/staging/media/zoran/zoran_driver.c
-@@ -226,10 +226,6 @@ static int v4l_fbuffer_alloc(struct zoran_fh *fh)
- 		mem = kmalloc(fh->buffers.buffer_size,
- 			      GFP_KERNEL | __GFP_NOWARN);
- 		if (!mem) {
--			dprintk(1,
--				KERN_ERR
--				"%s: %s - kmalloc for V4L buf %d failed\n",
--				ZR_DEVNAME(zr), __func__, i);
- 			v4l_fbuffer_free(fh);
- 			return -ENOBUFS;
- 		}
--- 
-2.19.1
-
+  Thank you,
+  Narcisa
+> > ---
+> >  drivers/staging/iio/cdc/ad7746.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/staging/iio/cdc/ad7746.c b/drivers/staging/iio/cdc/ad7746.c
+> > index 81f8b9e..69845a2 100644
+> > --- a/drivers/staging/iio/cdc/ad7746.c
+> > +++ b/drivers/staging/iio/cdc/ad7746.c
+> > @@ -546,7 +546,7 @@ static int ad7746_read_raw(struct iio_dev *indio_dev,
+> >  
+> >  		regval = chip->config | AD7746_CONF_MODE_SINGLE_CONV;
+> >  		ret = i2c_smbus_write_byte_data(chip->client, AD7746_REG_CFG,
+> > -				regval);
+> > +						regval);
+> >  		if (ret < 0)
+> >  			goto out;
+> >  
+> > 
+> 
 
