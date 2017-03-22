@@ -1,127 +1,302 @@
-X-GM-THRID: 6396604644937695232
-X-Received: by 10.157.61.228 with SMTP id l91mr11717474otc.64.1489325576004;
-        Sun, 12 Mar 2017 06:32:56 -0700 (PDT)
+X-GM-THRID: 6400173146424475648
+X-Received: by 10.157.29.131 with SMTP id y3mr18029571otd.18.1490190809774;
+        Wed, 22 Mar 2017 06:53:29 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.51.3 with SMTP id f3ls12163563otc.32.gmail; Sun, 12 Mar
- 2017 06:32:55 -0700 (PDT)
-X-Received: by 10.129.154.132 with SMTP id r126mr12764470ywg.46.1489325575641;
-        Sun, 12 Mar 2017 06:32:55 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id a3si2674688pfb.2.2017.03.12.06.32.55
+Received: by 10.157.40.193 with SMTP id s59ls1365071ota.39.gmail; Wed, 22 Mar
+ 2017 06:53:29 -0700 (PDT)
+X-Received: by 10.200.48.218 with SMTP id w26mr6089018qta.42.1490190809330;
+        Wed, 22 Mar 2017 06:53:29 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from mail-qt0-x242.google.com (mail-qt0-x242.google.com. [2607:f8b0:400d:c0d::242])
+        by gmr-mx.google.com with ESMTPS id d67si159520ywb.3.2017.03.22.06.53.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 12 Mar 2017 06:32:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Wed, 22 Mar 2017 06:53:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) client-ip=2607:f8b0:400d:c0d::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id o126so16114939pfb.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 12 Mar 2017 06:32:55 -0700 (PDT)
+Received: by mail-qt0-x242.google.com with SMTP id r45so25347391qte.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 22 Mar 2017 06:53:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=4jckLsd1ERL0+dYF27xDSao7Rz+lKRqhHpQQo2JwyPo=;
-        b=qU9JADeCVT2tGHnOTHCrv4U+RZBHLUd5hKNAbUU8j0APryFjnXaezMC7htaMyeNEW2
-         jxu2eI/h3hl+JCuakOjbqbOumEg6A1nd0Kq0t4bWBAl9xZZqM5oG5nUF9EAzX5TvHDzB
-         qKrGjg6e9RcSofroRxjVxuCN/dEv4+0tYS+pDs6hmStRaYOzHDikEYysPR0iiakYdenl
-         AHNVy9fq6ZIYykG+JBVUPiYvUIDzkd2Sn8QRIqP1l75/nlo2YF6EgjWgdft9+P1upzDt
-         0sOz3d5revnCy+69gO6i9EymFqqPGHk0x8OsGU9yrM8jCj21X9BRtwDVVFfJQero+csN
-         Fbeg==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=N/Ha3aw4nvt5a4ZdpY6uE4Ad+qiIV0zPLPtu17Vm+RE=;
+        b=fFX/XhknD4DnhJMs08ATE/vWyw7z1XNQvOvFXGXYCSt3Km/5KKLqS5DzoWLx3N9Csm
+         5wLXkCs+Y8LIEQ3Qipw5+4Q6TopiqoROov3jsblUXLjwdVdfOFjuWy09T1TIzPKigA6T
+         BNqjJloTl3uP3tnKrPXg2iIMFZkyWgoXbijvDeYiZOTLUxtTuTRLVYlD/J5OzG+hD50L
+         1l4CwOMjJfCqmrdg8AHmtr8S0hCIQBTU53ryuucr38wBzDVHzN1KRc05WfMv/ozvhgZH
+         n3ADCL2uV2+8Y8uPGxRt97Fipxu0Beu4V/Yd//xH1DE4LJIyutiVHRpZRuqquulGCqC1
+         BAvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=4jckLsd1ERL0+dYF27xDSao7Rz+lKRqhHpQQo2JwyPo=;
-        b=OKK7DWFsLwe1phaoqBwkafGLztiJz9yMh2/f1ejlo96/CaJnrNGgaPB6ZAxP0ApJj6
-         dWhnV7gQ0IIbW7IdzChVsikgH12UNTZEwa4eZk2rrd/DCEz8W/qkDG0UC/dCfdkojJFM
-         1FSPLeJr1UNNiV/LmEL2VTrJWwx8KnwGgtNVDfaAe6jNRsT68vQqOgIj14t3+48CnSyF
-         WgipCPuOxpVWD91YWxGT4IMKjYIa4nRerJx/WArlMKiX18IiYbXhyj840m2kY20eLW3G
-         vUJuJvJ35BdCIFohnSRbfmVLHwujoxU1UWBz8o36P+IL7uEGJaF5PjZM+fIUrZB6UIIB
-         lhZw==
-X-Gm-Message-State: AMke39lZCP/19wfRy6wIYbP+VNXilCCW/nFxsx/tdfkqr3iP2IQ45BNwzlFGWx1g4G4QXQ==
-X-Received: by 10.84.228.208 with SMTP id y16mr40096047pli.168.1489325575396;
-        Sun, 12 Mar 2017 06:32:55 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id o125sm28465783pfb.109.2017.03.12.06.32.53
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 12 Mar 2017 06:32:54 -0700 (PDT)
-Date: Sun, 12 Mar 2017 19:02:50 +0530
-From: simran singhal <singhalsimran0@gmail.com>
-To: lars@metafoo.de
-Cc: Michael Hennerich <Michael.Hennerich@analog.com>,
-	Jonathan Cameron <jic23@kernel.org>,
-	Hartmut Knaack <knaack.h@gmx.de>,
-	Pete Meerwald-Stadler <pmeerw@pmeerw.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: iio: ade7753: replace mlock with driver private lock
-Message-ID: <20170312133250.GA7772@singhal-Inspiron-5558>
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=N/Ha3aw4nvt5a4ZdpY6uE4Ad+qiIV0zPLPtu17Vm+RE=;
+        b=C2qagHMMKvTpttlqhNE32IxEbZ1p7QNPdoLm76TZw8ePAmRyHjXNRkC4EqD9QPWuDR
+         8CjQBr9q1oxbfjllY5PajJ/fOhfO7XMFnNVD5Lrt95z4Y9QXx7SWStgSnrHQ970CZgO4
+         uzsKOxe7FZi2xoGDsiCPz1gLf9uotpUEtrCPWnF71r8636wl9J9e+nHvFTqDweWoYmLe
+         xsEJFPxB1mRDBl0bB9MtioTiB7JKrJZgXE5ypmKOhV+cR+tKBCAAxUqeBMzyJv8NN9wF
+         fS8bfgyQ3UiKglQ/zknUjQTnP9xpVZW0ZpeiD5j3O+ljenw6A7H1VpYBsbhy7evQtolX
+         waww==
+X-Gm-Message-State: AFeK/H1E3TrkK1F06xSPCPmvpzjs32C0utUFY1EKWt6HSDCWS8vqmWOJ1Fdrv9dHrklbzmOHt+c/WrkigzJA4Q==
+X-Received: by 10.25.128.87 with SMTP id b84mr6423404lfd.86.1490190808983;
+ Wed, 22 Mar 2017 06:53:28 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Received: by 10.25.170.69 with HTTP; Wed, 22 Mar 2017 06:53:28 -0700 (PDT)
+In-Reply-To: <900FF751-5BFD-4B17-855C-6B1C0665B712@intel.com>
+References: <20170322042028.GA22848@arushi-HP-Pavilion-Notebook> <900FF751-5BFD-4B17-855C-6B1C0665B712@intel.com>
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+Date: Wed, 22 Mar 2017 19:23:28 +0530
+Message-ID: <CA+XqjF8TGbb=NZrAcRj6EfCMQ5_gmmUdP+5Wj=CE9BZXzT0Skw@mail.gmail.com>
+Subject: Re: [PATCH] staging: media: Replace a bit shift by a use of BIT.
+To: "Dilger, Andreas" <andreas.dilger@intel.com>
+Cc: "Drokin, Oleg" <oleg.drokin@intel.com>, James Simmons <jsimmons@infradead.org>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	"devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>, LKML <linux-kernel@vger.kernel.org>, 
+	"outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>, 
+	Luuk Paulussen <luuk.paulussen@alliedtelesis.co.nz>, 
+	Hamish Martin <hamish.martin@alliedtelesis.co.nz>
+Content-Type: multipart/alternative; boundary=001a113ebfccd1a74b054b521596
 
-The IIO subsystem is redefining iio_dev->mlock to be used by
-the IIO core only for protecting device operating mode changes.
-ie. Changes between INDIO_DIRECT_MODE, INDIO_BUFFER_* modes.
+--001a113ebfccd1a74b054b521596
+Content-Type: text/plain; charset=UTF-8
 
-In this driver, mlock was being used to protect hardware state
-changes.  Replace it with a lock in the devices global data.
+On Wed, Mar 22, 2017 at 5:41 PM, Dilger, Andreas <andreas.dilger@intel.com>
+wrote:
 
-Fix some coding style issues related to white space also.
+> On Mar 22, 2017, at 00:20, Arushi Singhal <arushisinghal19971997@gmail.com>
+> wrote:
+> >
+> > This patch replaces bit shifting on 1 with the BIT(x) macro.
+> > This was done with coccinelle:
+> > @@
+> > constant c;
+> > @@
+> >
+> > -1 << c
+> > +BIT(c)
+>
+> Hi Arushi,
+> thanks for taking time to contribute to the kernel.  There are a few
+> problems with
+> this patch.
+>
+> Firstly, I'm not sure why you sent this patch to lustre-devel, Oleg,
+> James, and me,
+> since it has nothing to do with Lustre.  Conversely, the actual
+> maintainer(s) of this
+> code would normally be better suited to review the patch.  This isn't
+> totally clear
+> in this case since get_maintainer.pl lists another person submitting
+> minor cleanups,
+> but "git log" does return some more likely candidates:
+> - David Daney <ddaney@caviumnetworks.com> (original author)
+> - Luuk Paulussen <luuk.paulussen@alliedtelesis.co.nz> (recent non-trivial
+> patcher)
+> - Kyeong Yoo <kyeong.yoo@alliedtelesis.co.nz> (recent non-trivial
+> reviewer)
+> - Richard Laing <richard.laing@alliedtelesis.co.nz>  " "
+> - Chris Packham <chris.packham@alliedtelesis.co.nz>
+> - Tim Beale <tim.beale@alliedtelesis.co.nz>
+> - Hamish Martin <hamish.martin@alliedtelesis.co.nz>
+>
+>
+> Secondly, as mentioned with the other patch you submitted, you need to
+> stop and look
+> at whether your changes actually make sense.  In this case, I don't think
+> they do
+> make sense, and this patch should probably just be abandoned.
+>
+>
+> > Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+> > ---
+> > drivers/staging/octeon/ethernet-tx.c | 4 ++--
+> > 1 file changed, 2 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/drivers/staging/octeon/ethernet-tx.c
+> b/drivers/staging/octeon/ethernet-tx.c
+> > index ff4119e8de42..f00186ac4e27 100644
+> > --- a/drivers/staging/octeon/ethernet-tx.c
+> > +++ b/drivers/staging/octeon/ethernet-tx.c
+> > @@ -381,7 +381,7 @@ int cvm_oct_xmit(struct sk_buff *skb, struct
+> net_device *dev)
+> >           (ip_hdr(skb)->version == 4) &&
+> >           (ip_hdr(skb)->ihl == 5) &&
+> >           ((ip_hdr(skb)->frag_off == 0) ||
+> > -          (ip_hdr(skb)->frag_off == htons(1 << 14))) &&
+> > +          (ip_hdr(skb)->frag_off == htons(BIT(14)))) &&
+>
+> In this case, it is checking if the fragment offset in bytes is 16384,
+> rather than doing
+> a bit comparison, so I don't think the use of BIT() is appropriate here.
+>
+> >           ((ip_hdr(skb)->protocol == IPPROTO_TCP) ||
+> >            (ip_hdr(skb)->protocol == IPPROTO_UDP))) {
+> >               /* Use hardware checksum calc */
+> > @@ -613,7 +613,7 @@ int cvm_oct_xmit_pow(struct sk_buff *skb, struct
+> net_device *dev)
+> > #endif
+> >               work->word2.s.is_frag = !((ip_hdr(skb)->frag_off == 0) ||
+> >                                         (ip_hdr(skb)->frag_off ==
+> > -                                           1 << 14));
+> > +                                           BIT(14)));
+>
+> Same.
+>
+Hi Andreas
+Your suggestions are really fruitful.
+I will keep in mind to do sensible changes.
+Thanks
+Arushi Singhal
 
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
----
- drivers/staging/iio/meter/ade7753.c | 14 ++++++++------
- 1 file changed, 8 insertions(+), 6 deletions(-)
+>
+> Cheers, Andreas
+> --
+> Andreas Dilger
+> Lustre Principal Architect
+> Intel Corporation
+>
+>
+>
+>
+>
+>
+>
+>
 
-diff --git a/drivers/staging/iio/meter/ade7753.c b/drivers/staging/iio/meter/ade7753.c
-index dfd8b71..ca99d82 100644
---- a/drivers/staging/iio/meter/ade7753.c
-+++ b/drivers/staging/iio/meter/ade7753.c
-@@ -81,12 +81,14 @@
-  * @tx:         transmit buffer
-  * @rx:         receive buffer
-  * @buf_lock:       mutex to protect tx and rx
-+ * @lock:	protect sensor state
-  **/
- struct ade7753_state {
--	    struct spi_device   *us;
--		    struct mutex        buf_lock;
--			    u8          tx[ADE7753_MAX_TX] ____cacheline_aligned;
--				    u8          rx[ADE7753_MAX_RX];
-+	struct spi_device   *us;
-+	struct mutex        buf_lock;
-+	struct mutex        lock;	/* protect sensor state */
-+	u8          tx[ADE7753_MAX_TX] ____cacheline_aligned;
-+	u8          rx[ADE7753_MAX_RX];
- };
- 
- static int ade7753_spi_write_reg_8(struct device *dev,
-@@ -484,7 +486,7 @@ static ssize_t ade7753_write_frequency(struct device *dev,
- 	if (!val)
- 		return -EINVAL;
- 
--	mutex_lock(&indio_dev->mlock);
-+	mutex_lock(&st->lock);
- 
- 	t = 27900 / val;
- 	if (t > 0)
-@@ -505,7 +507,7 @@ static ssize_t ade7753_write_frequency(struct device *dev,
- 	ret = ade7753_spi_write_reg_16(dev, ADE7753_MODE, reg);
- 
- out:
--	mutex_unlock(&indio_dev->mlock);
-+	mutex_unlock(&st->lock);
- 
- 	return ret ? ret : len;
- }
--- 
-2.7.4
+--001a113ebfccd1a74b054b521596
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
+<div dir=3D"ltr"><br><div class=3D"gmail_extra"><br><div class=3D"gmail_quo=
+te">On Wed, Mar 22, 2017 at 5:41 PM, Dilger, Andreas <span dir=3D"ltr">&lt;=
+<a href=3D"mailto:andreas.dilger@intel.com" target=3D"_blank">andreas.dilge=
+r@intel.com</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" styl=
+e=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><span c=
+lass=3D"">On Mar 22, 2017, at 00:20, Arushi Singhal &lt;<a href=3D"mailto:a=
+rushisinghal19971997@gmail.com">arushisinghal19971997@gmail.<wbr>com</a>&gt=
+; wrote:<br>
+&gt;<br>
+&gt; This patch replaces bit shifting on 1 with the BIT(x) macro.<br>
+&gt; This was done with coccinelle:<br>
+&gt; @@<br>
+&gt; constant c;<br>
+&gt; @@<br>
+&gt;<br>
+&gt; -1 &lt;&lt; c<br>
+&gt; +BIT(c)<br>
+<br>
+</span>Hi Arushi,<br>
+thanks for taking time to contribute to the kernel.=C2=A0 There are a few p=
+roblems with<br>
+this patch.<br>
+<br>
+Firstly, I&#39;m not sure why you sent this patch to lustre-devel, Oleg, Ja=
+mes, and me,<br>
+since it has nothing to do with Lustre.=C2=A0 Conversely, the actual mainta=
+iner(s) of this<br>
+code would normally be better suited to review the patch.=C2=A0 This isn&#3=
+9;t totally clear<br>
+in this case since <a href=3D"http://get_maintainer.pl" rel=3D"noreferrer" =
+target=3D"_blank">get_maintainer.pl</a> lists another person submitting min=
+or cleanups,<br>
+but &quot;git log&quot; does return some more likely candidates:<br>
+- David Daney &lt;<a href=3D"mailto:ddaney@caviumnetworks.com">ddaney@caviu=
+mnetworks.com</a>&gt; (original author)<br>
+- Luuk Paulussen &lt;<a href=3D"mailto:luuk.paulussen@alliedtelesis.co.nz">=
+luuk.paulussen@alliedtelesis.<wbr>co.nz</a>&gt; (recent non-trivial patcher=
+)<br>
+- Kyeong Yoo &lt;<a href=3D"mailto:kyeong.yoo@alliedtelesis.co.nz">kyeong.y=
+oo@alliedtelesis.co.<wbr>nz</a>&gt; (recent non-trivial reviewer)<br>
+- Richard Laing &lt;<a href=3D"mailto:richard.laing@alliedtelesis.co.nz">ri=
+chard.laing@alliedtelesis.<wbr>co.nz</a>&gt;=C2=A0 &quot; &quot;<br>
+- Chris Packham &lt;<a href=3D"mailto:chris.packham@alliedtelesis.co.nz">ch=
+ris.packham@alliedtelesis.<wbr>co.nz</a>&gt;<br>
+- Tim Beale &lt;<a href=3D"mailto:tim.beale@alliedtelesis.co.nz">tim.beale@=
+alliedtelesis.co.nz</a><wbr>&gt;<br>
+- Hamish Martin &lt;<a href=3D"mailto:hamish.martin@alliedtelesis.co.nz">ha=
+mish.martin@alliedtelesis.<wbr>co.nz</a>&gt;<br>
+<br>
+<br>
+Secondly, as mentioned with the other patch you submitted, you need to stop=
+ and look<br>
+at whether your changes actually make sense.=C2=A0 In this case, I don&#39;=
+t think they do<br>
+make sense, and this patch should probably just be abandoned.<br>
+<span class=3D""><br>
+<br>
+&gt; Signed-off-by: Arushi Singhal &lt;<a href=3D"mailto:arushisinghal19971=
+997@gmail.com">arushisinghal19971997@gmail.<wbr>com</a>&gt;<br>
+&gt; ---<br>
+&gt; drivers/staging/octeon/<wbr>ethernet-tx.c | 4 ++--<br>
+&gt; 1 file changed, 2 insertions(+), 2 deletions(-)<br>
+&gt;<br>
+&gt; diff --git a/drivers/staging/octeon/<wbr>ethernet-tx.c b/drivers/stagi=
+ng/octeon/<wbr>ethernet-tx.c<br>
+&gt; index ff4119e8de42..f00186ac4e27 100644<br>
+&gt; --- a/drivers/staging/octeon/<wbr>ethernet-tx.c<br>
+&gt; +++ b/drivers/staging/octeon/<wbr>ethernet-tx.c<br>
+&gt; @@ -381,7 +381,7 @@ int cvm_oct_xmit(struct sk_buff *skb, struct net_d=
+evice *dev)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(ip_hdr(skb)-&gt;version =3D=
+=3D 4) &amp;&amp;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(ip_hdr(skb)-&gt;ihl =3D=3D 5)=
+ &amp;&amp;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0((ip_hdr(skb)-&gt;frag_off =3D=
+=3D 0) ||<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (ip_hdr(skb)-&gt;frag_off =3D=3D h=
+tons(1 &lt;&lt; 14))) &amp;&amp;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (ip_hdr(skb)-&gt;frag_off =3D=3D h=
+tons(BIT(14)))) &amp;&amp;<br>
+<br>
+</span>In this case, it is checking if the fragment offset in bytes is 1638=
+4, rather than doing<br>
+a bit comparison, so I don&#39;t think the use of BIT() is appropriate here=
+.<br>
+<span class=3D""><br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0((ip_hdr(skb)-&gt;protocol =3D=
+=3D IPPROTO_TCP) ||<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (ip_hdr(skb)-&gt;protocol =3D=
+=3D IPPROTO_UDP))) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* Use hardware =
+checksum calc */<br>
+&gt; @@ -613,7 +613,7 @@ int cvm_oct_xmit_pow(struct sk_buff *skb, struct n=
+et_device *dev)<br>
+&gt; #endif<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0work-&gt;word2.s=
+.is_frag =3D !((ip_hdr(skb)-&gt;frag_off =3D=3D 0) ||<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0(ip_hdr(skb)-&gt;frag_off =3D=3D<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A01 &lt;&lt; 14));<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0BIT(14)));<br>
+<br>
+</span>Same.<br></blockquote><div>Hi Andreas<br></div><div>Your suggestions=
+ are really fruitful.<br></div><div>I will keep in mind to do sensible chan=
+ges.<br></div><div>Thanks<br></div><div>Arushi Singhal <br></div><blockquot=
+e class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc sol=
+id;padding-left:1ex">
+<br>
+Cheers, Andreas<br>
+--<br>
+Andreas Dilger<br>
+Lustre Principal Architect<br>
+Intel Corporation<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</blockquote></div><br></div></div>
+
+--001a113ebfccd1a74b054b521596--
 
