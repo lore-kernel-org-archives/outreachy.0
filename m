@@ -1,118 +1,237 @@
-X-GM-THRID: 6949954642104025088
-X-Received: by 2002:a25:eb02:: with SMTP id d2mr30128244ybs.225.1618162412461;
-        Sun, 11 Apr 2021 10:33:32 -0700 (PDT)
+X-GM-THRID: 6400379439189852160
+X-Received: by 10.129.157.75 with SMTP id u72mr1210148ywg.11.1490293647963;
+        Thu, 23 Mar 2017 11:27:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:b9cc:: with SMTP id y12ls6387465ybj.0.gmail; Sun, 11 Apr
- 2021 10:33:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzwKtSSKCmOGTHC7KZVQ6pPrW5fBoSGZ5DffrzSLn4ECc6lUC0pG93hfqkuwO7ahxDuKaHD
-X-Received: by 2002:a25:d113:: with SMTP id i19mr14215258ybg.39.1618162411375;
-        Sun, 11 Apr 2021 10:33:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618162411; cv=none;
-        d=google.com; s=arc-20160816;
-        b=jS2Uk/1WistOPds+IQx25iVMDog0gmy/idtICHB34MUd1l1saKSjjfbFaY0i02Go7T
-         ZygWpkV3m2ScVBWwWu8MAkM4tfFyuL4kQmM2309oEVeSZwud/fWN++F+nN3krYAmlEK4
-         8feoSPgSAS0kwY22Qc/Ey7f0/+ovEvE1+yX4/5e3jxCIFpgZggkS7l+hdByRJ+oMTveS
-         7f+BjHsZ4/ygrb9Rqy3fHtbtVi/v5yZZiXri/evDVbSdMJSqtp3Y33mSjNlb+Z0K1I56
-         ANkdDFihgUi8heMwopXKUu7kKV0+D2pos2ox9ju280wiHHtOPjgXVKLhaUd65Z4VlKl1
-         aZOA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=4iE0QwYtOYUIJkBsUJWv+G7D+vD/AGIYmK25klck3y0=;
-        b=aA84V4ZsYXZSl/YZJ0R6X+sGq69qUzfYgB7W+H2rfiGP0kjcmVVmNEm4zqRNmR6yXf
-         pwvsnM9iRLhS+izmcmvuDxeTqe/TVbuGSys9iSvj4J584Lhrhe1FHUq5xzydaIsH+GFM
-         ts2b+Z+3cFPJVpUBFztKCPqmQpS6KjHJDGN4Vj8hmWqkUIsRrKnReVELjsBKlVkhSQgc
-         5Erbmks+L1Gpe1ltQCsWnZYImJauccW4pkYjeIwAoInGB0XWW7xftpD60Q28SsYATbVG
-         YeOMpDzX3RUA4G/jDJ0rdk2/AYPTW1ZtMSdizrC9i0Oaco3iudIqVQJmL3JQvVDinIGg
-         fPQw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sZSz+Xmu;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::52c as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from mail-pg1-x52c.google.com (mail-pg1-x52c.google.com. [2607:f8b0:4864:20::52c])
-        by gmr-mx.google.com with ESMTPS id i1si599738ybe.2.2021.04.11.10.33.31
+Received: by 10.157.0.36 with SMTP id 33ls2540589ota.46.gmail; Thu, 23 Mar
+ 2017 11:27:27 -0700 (PDT)
+X-Received: by 10.157.43.49 with SMTP id o46mr1138822otb.27.1490293647531;
+        Thu, 23 Mar 2017 11:27:27 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id d20si2033171itc.1.2017.03.23.11.27.27
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 11 Apr 2021 10:33:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::52c as permitted sender) client-ip=2607:f8b0:4864:20::52c;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 23 Mar 2017 11:27:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sZSz+Xmu;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::52c as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x52c.google.com with SMTP id p12so7563342pgj.10
-        for <outreachy-kernel@googlegroups.com>; Sun, 11 Apr 2021 10:33:31 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x244.google.com with SMTP id r137so29389012pfr.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 23 Mar 2017 11:27:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=4iE0QwYtOYUIJkBsUJWv+G7D+vD/AGIYmK25klck3y0=;
-        b=sZSz+Xmu+nEJccFoszRmGiVuedsK1gEd7UgKgIuGaB1/lmB7k2UHKL1yZEuiYlr66a
-         emCDhVLbn4qNOY1+KJcDYc2y6hxNp+bgaI1BIjX8JXc5vBZQLeDQPgBjzQBi9qMzoFv6
-         dNmEW9wpzykAqm/iw509q7eIr2a67kZMgP8my8c7ZO6QGKXPRNQ1xhsGP+ThVASp7MS8
-         mYlkgWko5uc81VJP3S4gbz/XEs35MMv9MuyD4QsD+OpXt07VyyDHxvpCIwgiXFp7RTCn
-         hv6Qyeatfhuvb39sdYhYN64LfbYN80XPmVYOaYecCdfzvFchBycuxOW4S1hm7wUF7ihc
-         xeLQ==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=fXWwDxek81XA0IPuUoFM1HLndtfWL9wQmC23N5vl+GU=;
+        b=uo9TA76XcRWhn9jSsMmnP9L0E8DhePl5oln9+oAO1Zrj7IHOBzyg2HsW+C7m8THO+o
+         yzSqcZDUUGK7uepcQt+cwotgZ9MR1EQaCcsCQSr1by5BWv5Rs1yT5JrzSq+wfrj16KUQ
+         GimhRUpGttqMdyrxm01sdEHOylACi80SUW3geEtKUnJMPoYCLFNxJG50v6YsM8l/vtJA
+         6YXXdiw56D6dizZtSPzQ9618Osc/ubHDY1EMpzhW22sY0dWdyr6TQ36Xihx9VDo062Rk
+         +IPXPG05CPd8C6udxPbGuLWg9CPuKSulaXs5WBQ1UZt+b4MLbKytMkRzoyR+v3FILaRc
+         AFlw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=4iE0QwYtOYUIJkBsUJWv+G7D+vD/AGIYmK25klck3y0=;
-        b=e76nN+hKXKM+lfAJrHoIT9cUjTgxJhtfKeMWGRs1mirGImyFdoVALt7TIehfDQkyJQ
-         ycmwUhlO5PTyGnZSbqj1HdZoJpGxnu5WI6cRCJESZG6LOGNaT7FL1LhlxkJvyb0bSwqn
-         YBFi96sxJHffr3LXJCJYVA/joXAV14DTz4hql2yf3HglBgL0qpsHA4frK7SdSpjQ9+K0
-         oHub3hl/NT9FYs2tDQ5+pBLDkj6vl/6eUo1zAEduLTdWcNF5CQV8yMkMfZbS6mrrEqfD
-         UKJQELvk8z2Fuq4AQpleWiRn8Z/oKLmaHnYAaswcDWcGvzOKI5ryOkQm8uHgFC2yFJje
-         JOVw==
-X-Gm-Message-State: AOAM530JrrSP9KZDzpfvPz+v5J9G8Rsn8KHzAOsB64Jr29IH3/DYCW47
-	yJYcodfAjYFgcEmrkS4PXZg=
-X-Received: by 2002:a63:181c:: with SMTP id y28mr23783254pgl.175.1618162410938;
-        Sun, 11 Apr 2021 10:33:30 -0700 (PDT)
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from kali ([103.141.87.253])
-        by smtp.gmail.com with ESMTPSA id t10sm8403802pjy.16.2021.04.11.10.33.28
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 11 Apr 2021 10:33:30 -0700 (PDT)
-Date: Sun, 11 Apr 2021 23:03:23 +0530
-From: Mitali Borkar <mitaliborkar810@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
-Subject: [PATCH] staging: rts5208: remove unnecessary ftrace-like logging
-Message-ID: <YHMy457UGosfeaC0@kali>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=fXWwDxek81XA0IPuUoFM1HLndtfWL9wQmC23N5vl+GU=;
+        b=hUv6Q3sxL21Jovd9/pg8haG76kc9h17RM7YfYQFbU5SqVt1VFFwvEhdV8p+lBdCqaW
+         qS+FDw/lrDnBWWHadwVZ2sWYqma7rim/nKVDv5gMYCML0j2bjTkaoJkdwiRFhbNJ4km+
+         B4q2T7Tb21jK2BOZRm3QGPOi0rNJXkRmnPjYKwn4lhbX4oojpjM429xhqyBF7wZEZg9X
+         8SFd8MGIBr6LwgAFAj/NJUwNDDhyaUZEdrtMCtRJEA3vH3SnIC6N7OFVJ3nFMIKiSjSp
+         8yoGUxG/Zd3uvy0QPLXL6PRUUa/fGa9qfz7xgivniobGsqVdqy4r1zRIJCTEjFNyBFNa
+         UUhQ==
+X-Gm-Message-State: AFeK/H0ghSROW5w5BjKlfvFs7VQNZBpCpijQ5Aoc0jzMPCKmefm5A+zWVZw2EcqyYQtvJg==
+X-Received: by 10.99.101.67 with SMTP id z64mr4588761pgb.78.1490293646805;
+        Thu, 23 Mar 2017 11:27:26 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
+        by smtp.gmail.com with ESMTPSA id s26sm11776285pge.33.2017.03.23.11.27.26
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 23 Mar 2017 11:27:26 -0700 (PDT)
+Date: Thu, 23 Mar 2017 11:27:25 -0700
+From: Alison Schofield <amsfield22@gmail.com>
+To: gs051095@gmail.com
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] iio meter patches - same!]
+Message-ID: <20170323182724.GA5287@d830.WORKGROUP>
+References: <20170322174101.GA3076@d830.WORKGROUP>
+ <CAEnQRZDYNQ23PvE1gNnRw_g2k0qRjSctabo5TGdx3Nb2oWoZuw@mail.gmail.com>
+ <20170323173233.GB5084@d830.WORKGROUP>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <20170323173233.GB5084@d830.WORKGROUP>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Removed unnecessary ftrace-like logging by simply deleting that statement
-as we have other modes of logging like ftrace.
-Reported by checkpatch.
+On Thu, Mar 23, 2017 at 10:32:34AM -0700, Alison Schofield wrote:
+> On Thu, Mar 23, 2017 at 10:11:47AM +0200, Daniel Baluta wrote:
+> > On Wed, Mar 22, 2017 at 7:41 PM, Alison Schofield <amsfield22@gmail.com> wrote:
+> > > Daniel - Find "Daniel" near end of msg
+> > >
+> > > ----- Forwarded message from Alison Schofield <amsfield22@gmail.com> -----
+> > >
+> > > Date: Tue, 21 Mar 2017 20:48:33 -0700
+> > > From: Alison Schofield <amsfield22@gmail.com>
+> > > To: Gargi Sharma <gs051095@gmail.com>
+> > > Cc: Arushi Singhal <arushisinghal19971997@gmail.com>, simran singhal
+> > >         <singhalsimran0@gmail.com>, sayli karnik <karniksayli1995@gmail.com>,
+> > >         outreachy-kernel@googlegroups.com
+> > > Subject: Re: [Outreachy kernel] iio meter patches - same!
+> > > User-Agent: Mutt/1.5.23 (2014-03-12)
+> > >
+> > > On Wed, Mar 22, 2017 at 04:21:48AM +0530, Gargi Sharma wrote:
+> > >> On Wed, Mar 22, 2017 at 2:01 AM, Alison Schofield <amsfield22@gmail.com> wrote:
+> > >> >
+> > >> > Simran, Gargi, Sayli, Arushi,
+> > >> >
+> > >> > With respect to these...
+> > >> >
+> > >> > meter/ade7753.c: simran singhal
+> > >> > meter/ade7754.c: Gargi Sharma
+> > >> > meter/ade7758_core.c: Sayli Karnik
+> > >> > meter/ade7759.c: ArushiSinghal
+> > >> >
+> > >> > They are all near identical and therefore should have near identical
+> > >> > solutions.  You could work together, or follow one another, but, in
+> > >> > the end we don't want to see 4 different flavors of the solution.
+> > >> > That makes it harder to maintain.
+> > >> >
+> > >> > Also - if 'we' can get one reviewed/ACK'd/applied, then we make the
+> > >> > reviewers and maintainers life easier when we follow it with 3
+> > >> > similar patches.
+> > >> >
+> > >> > Here's where I think you all dancing around...
+> > >> > You have Lars' feedback from ade7753:
+> > >> > > It might make sense to reuse the existing lock which currently
+> > >> > > protects the
+> > >> > > read/write functions. You can do this by introducing a variant of
+> > >> > > ade7753_spi_{read,write}_reg_16() that does not take a lock and use
+> > >> > > these to
+> > >> > > implement the read-modify-write cycle in a protected section.
+> > >> >
+> > >> > I'll add to that:
+> > >> > They were all using mlock to try to protect the spi read followed by
+> > >> > write operation.
+> > >> I have a question here: why do we want to protect the spi read?, I mean
+> > >> usually we want to protect writes since there might be a race condition.
+> > >> Or is it because if two threads are running the same function
+> > >> concurrently we want to give access of the function to the thread
+> > >> number 2 only once thread number 1 has written to the register?
+> > >>
+> > >> >I don't think the lock was actually doing that.
+> > >> > I don't see a guarantee that another spi write could not intervene,
+> > >> > So perhaps there was no real protection.
+> > >> Again, if we have two threads 1 and 2, won't the structure indio_dev
+> > >> be same for the both of them? And only one thread can hold the lock at
+> > >> a time.
+> > >> >
+> > >> > I'm thinking one function that locks the existing transaction lock, does
+> > >> > the read, does the write, unlocks.
+> > >> Simran wrote a function write_then_read in this patch
+> > >> http://marc.info/?l=linux-driver-devel&m=149001635402891&w=2. Do we
+> > >> want to do something similar?
+> > >>
+> > > Good questions Gargi!
+> > >
+> > > Code was doing this - lock mlock, read, write, unlock mlock.
+> > > I actually think that sysfs would handle allowing only one reader/write
+> > > of that frequency at a time.  And, the driver doesn't use mlock anywhere
+> > > else. The vulnerable place was between the read and the write...
+> > >
+> > > If you trace the code down to the spi subsystem calls you'll see that
+> > > the read you are questioning, is actually a write followed by a read.
+> > > Now, most iio developers would just surmise that was needed, but let's
+> > > follow that to the data sheet:
+> > >
+> > > http://www.analog.com/media/en/technical-documentation/data-sheets/ADE7754.pdf
+> > > page 32 tells us "Each register is accessed by first writing to the
+> > > communications register, then transferring the register data."
+> > >
+> > > The driver needs to read the current value of the register,
+> > > change the values and write the register back out to the device.
+> > > That is what you see happening in ade7754_write_frequency()
+> > > We want to protect that set of transactions - the "read_modify_write"
+> > > (Yes - it's like Simran's other patch- but opposite I guess ;))
+> > >
+> > > I think the vulnerability here is that we don't want anyone coming in
+> > > and changing the designated register that we are about to write.
+> > > Another spi_read at this point could reset the register pointer,
+> > > and an spi_write type operation could write trash to the frequency
+> > > register.
+> > >
+> > > The answer won't be to replace mlock with a new lock, because that
+> > > won't prevent other types of spi reads or writes from happening.
+> > > That would only protect this path.
+> > >
+> > > BTW - I don't think you are just migrating away from mlock usage
+> > > anymore.  You are fixing a bug :)
+> > >
+> > > OK- that's all my input for tonite. btw - I'm looking this all up
+> > > alongside you.  I'm not holding back.  I don't have a solution in
+> > > mind.  This needs to simmer in my brain overnite.  I look forward
+> > > to seeing what you all come up with while I'm sleeping.
+> > >
+> > > alisons
+> > >
+> > >
+> > > Hi Daniel,
+> > >
+> > > Can you sanity check this?  Above is what I thought yesterday.
+> > >
+> > > We've been headed down the path of wanting to make the read
+> > > followed by write safe/atomic.  Now, I'm wondering why we are
+> > > even doing the read.  Can we just save the current register
+> > > value in global data, modify and write that out as needed?
+> > > (ade7754: ade7754_write_frequency())
+> > >
+> > > That would be the simplest solution.  Too easy?
+> > 
+> > Hi Alison,
+> > 
+> > Is that a status register? Can it be modified by the hardware?
+> > 
+> > If so, then we need to read it each time.
+> > 
+> > If not, we can cache it and only use write for updates, or switch to regmap.
+> > 
+> > Daniel.
+> 
+> Per ade7754 datasheet, driver uses this register to set the
+> waveform sampling mode.  All bits are used to 'select' or 'enable'
+> something.  
+> 
+> The pattern of read, modify, write is also used on other registers
+> - but they are not grabbing mlock.
+> 
+> Gargi - It seems you have at least 2 choices of how to approach this.
+> It is quite reasonable and acceptable to present one approach in
+> your patch, and mention the alternative approach below the --- for
+> review and consideration.
+> 
+> alisons
 
-Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
----
- drivers/staging/rts5208/xd.c | 2 --
- 1 file changed, 2 deletions(-)
+Gargi,
 
-diff --git a/drivers/staging/rts5208/xd.c b/drivers/staging/rts5208/xd.c
-index 0f369935fb6c..a305e15dfb9c 100644
---- a/drivers/staging/rts5208/xd.c
-+++ b/drivers/staging/rts5208/xd.c
-@@ -1628,7 +1628,6 @@ static int xd_finish_write(struct rtsx_chip *chip,
- 	int retval, zone_no;
- 	u16 log_off;
- 
--	dev_dbg(rtsx_dev(chip), "%s ", __func__);
- 	dev_dbg(rtsx_dev(chip), "old_blk = 0x%x, ", old_blk);
- 	dev_dbg(rtsx_dev(chip),	"new_blk = 0x%x, ", new_blk);
- 	dev_dbg(rtsx_dev(chip), "log_blk = 0x%x\n", log_blk);
-@@ -1806,7 +1805,6 @@ int xd_delay_write(struct rtsx_chip *chip)
- 	int retval;
- 
- 	if (delay_write->delay_write_flag) {
--		dev_dbg(rtsx_dev(chip), "%s\n", __func__);
- 		retval = xd_switch_clock(chip);
- 		if (retval != STATUS_SUCCESS)
- 			return STATUS_FAIL;
--- 
-2.30.2
+Leading you astray....sorry :(
+Got through backlog of emails and found the piece I was missing
+from Jonathan -
 
+>>> mlock here is doing a lot more than protecting the buffer.
+>>> It is ensuring the spi bus frequency and sampling frequency
+>>> of the device are changed in an atomic fashion.
+
+So the segment of code within the mlock, needs to occur 'atomically'.
+My simple idea of just saving the register in global data, not good!
+
+alisons
+
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
 
