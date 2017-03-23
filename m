@@ -1,117 +1,214 @@
-X-GM-THRID: 6335533732188913664
-X-Received: by 10.66.12.168 with SMTP id z8mr10714860pab.29.1475106396817;
-        Wed, 28 Sep 2016 16:46:36 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.42.101 with SMTP id t92ls2130096ota.29.gmail; Wed, 28 Sep
- 2016 16:46:36 -0700 (PDT)
-X-Received: by 10.13.253.197 with SMTP id n188mr7915554ywf.114.1475106396353;
-        Wed, 28 Sep 2016 16:46:36 -0700 (PDT)
-Return-Path: <gnudevliz@gmail.com>
-Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
-        by gmr-mx.google.com with ESMTPS id f196si1996654ita.1.2016.09.28.16.46.36
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Sep 2016 16:46:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=gnudevliz@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x243.google.com with SMTP id oz2so2618903pac.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 28 Sep 2016 16:46:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=B7CidhkRcHFnQMixdEx+BgtUxomjvjqRUCfORlYQ8iE=;
-        b=lNq6SOE9MuG/IpKPcbW01zciCrROm8iF6P7yeZRspgrToLAvpddfDju2aOMHJVsJsq
-         WK2IvDaMhP4NrdjnM5WMVvlFHVSE/XtVjfJi06ml7tX9gNA+fbIxsbxMj2LLWuE79DaG
-         EXrj1FutjLfLWqwYlvwl6h7hFs1URPwPZolvWXX4BrXNykm+enjR8IzceDWqYwhsNFt7
-         uh3in/tIIk3Y8JsIPTkhOc49+atSht+giZXsyMODeOy8yUyhiqCfMZrhxA3NeV/zyDHb
-         ZwFyf1KX88x0IMsLJ1c21IGGVh6Mw4thx4TWLKZ9MZo77YBguQ2RduQq+KexPCXd0Py8
-         nYwA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=B7CidhkRcHFnQMixdEx+BgtUxomjvjqRUCfORlYQ8iE=;
-        b=Oq98bhxLq0k5d7aHGcLnSsvf3QLGByUjZeLJaYhC3m4TrA2O943/yxcSCEapjCjDs2
-         mZPsQ2fEltL3sgmiR+vchEpBjZHVmc2W6ZSHwnO2hR3eoWVq8IcaHF+DOPvpA9CdJtel
-         fp/vlfk4O1VRRyPeCfnDzffMfyhevQgS6dvuTS4++8DK8/XF8EHCMne6WlF6eHQ/wjX5
-         NTEgn8l2PPv3bG5Yr3BeF3OAb2CmaPy3jXORBMOa1J4H0ufN85dXXa3d6R9qTyUytnWU
-         ZpnKYaQSUBnM3ieBP6jI+CgatNTXgdWBaeIgsyN3mV0IcNG/NzzhlOXWGgMxANv06qkI
-         h2aQ==
-X-Gm-Message-State: AE9vXwP12lei+2uQ4hYkXOgnQqNlKLBK5Jpqj6iOBrw5PBRlnXbwXDpR5ZZSENRbrYhFqA==
-X-Received: by 10.66.253.133 with SMTP id aa5mr60676304pad.161.1475106396127;
-        Wed, 28 Sep 2016 16:46:36 -0700 (PDT)
-Return-Path: <gnudevliz@gmail.com>
-Received: from localhost ([2601:644:300:fd6b:4e0f:6eff:fe69:e9ea])
-        by smtp.gmail.com with ESMTPSA id q25sm14980253pfj.48.2016.09.28.16.46.35
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Sep 2016 16:46:35 -0700 (PDT)
-Date: Wed, 28 Sep 2016 16:46:33 -0700
-From: Elizabeth Ferdman <gnudevliz@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org, teddy.wang@siliconmotion.com,
-	sudipm.mukherjee@gmail.com, amsfield22@gmail.com,
-	daniel.baluta@intel.com
-Subject: [PATCH v2] staging: sm750fb: replace macro w builtin fn
-Message-ID: <20160928234631.GA31844@localhost>
+X-GM-THRID: 6336586801480728576
+Date: Thu, 23 Mar 2017 07:50:33 -0700 (PDT)
+From: SIMRAN SINGHAL <singhalsimran0@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: singhalsimran0@gmail.com, gnudevliz@gmail.com, daniel.baluta@intel.com,
+	amsfield22@gmail.com
+Message-Id: <265d1cfd-9036-4412-a5da-31e449ca188a@googlegroups.com>
+In-Reply-To: <CAEnQRZCp95E5cjog6ws8+Jyy3RY35G_OZrXapWaz9wA9PxiGsw@mail.gmail.com>
+References: <20161001195259.GB12284@d830.WORKGROUP> <20161009231959.GA5324@localhost>
+ <4fdf08c2-821a-a6e4-a9be-c2d7e528f2e4@intel.com> <20161011172410.GA6773@localhost>
+ <CAEnQRZDGEeN0h1uJBZTDcnubAAgasfB=k9anFGzubSdJsW92sw@mail.gmail.com>
+ <20161015210748.GA13776@localhost> <20161016020322.GA2406@Socrates-DK>
+ <20161016212357.GA2263@localhost> <20161016234938.GA2809@Socrates-DK> <3ad92cf5-564b-4150-aa8e-89336e617679@googlegroups.com>
+ <CAEnQRZCp95E5cjog6ws8+Jyy3RY35G_OZrXapWaz9wA9PxiGsw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] IIO Experiment #1 Build Dummy Help
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_627_1377917734.1490280633555"
+X-Google-Token: ELnBz8YF5KHMTE4EriU0
+X-Google-IP: 14.139.82.6
 
-Replace the unique arithmetic macro expression with a built-in
-function from linux/kernel.h DIV_ROUND_CLOSEST(x, divisor).
+------=_Part_627_1377917734.1490280633555
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_628_306455375.1490280633555"
 
-Signed-off-by: Elizabeth Ferdman <gnudevliz@gmail.com>
----
-Changes in v2:
- - Change commit message
- - replace arithmetic expression with built in function 
+------=_Part_628_306455375.1490280633555
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
- drivers/staging/sm750fb/ddk750_chip.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index 3a0afe1..0c96a17 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -6,8 +6,6 @@
- #include "ddk750_chip.h"
- #include "ddk750_power.h"
- 
--/* n / d + 1 / 2 = (2n + d) / 2d */
--#define roundedDiv(num, denom)	((2 * (num) + (denom)) / (2 * (denom)))
- #define MHz(x) ((x) * 1000000)
- 
- logical_chip_type_t sm750_get_chip_type(void)
-@@ -102,7 +100,7 @@ static void setMemoryClock(unsigned int frequency)
- 			frequency = MHz(336);
- 
- 		/* Calculate the divisor */
--		divisor = roundedDiv(get_mxclk_freq(), frequency);
-+		divisor = DIV_ROUND_CLOSEST(get_mxclk_freq(), frequency);
- 
- 		/* Set the corresponding divisor in the register. */
- 		reg = PEEK32(CURRENT_GATE) & ~CURRENT_GATE_M2XCLK_MASK;
-@@ -152,7 +150,7 @@ static void setMasterClock(unsigned int frequency)
- 			frequency = MHz(190);
- 
- 		/* Calculate the divisor */
--		divisor = roundedDiv(get_mxclk_freq(), frequency);
-+		divisor = DIV_ROUND_CLOSEST(get_mxclk_freq(), frequency);
- 
- 		/* Set the corresponding divisor in the register. */
- 		reg = PEEK32(CURRENT_GATE) & ~CURRENT_GATE_MCLK_MASK;
-@@ -401,5 +399,3 @@ unsigned int formatPllReg(pll_value_t *pPLL)
- 
- 	return reg;
- }
--
--
--- 
-2.1.4
 
+On Thursday, March 23, 2017 at 8:09:37 PM UTC+5:30, Daniel Baluta wrote:
+>
+> On Thu, Mar 23, 2017 at 4:21 PM, SIMRAN SINGHAL 
+> <singhal...@gmail.com <javascript:>> wrote: 
+> > 
+> > 
+> > On Monday, October 17, 2016 at 5:19:49 AM UTC+5:30, Eva Rachel Retuya 
+> wrote: 
+> >> 
+> >> On Sun, Oct 16, 2016 at 02:23:58PM -0700, Elizabeth Ferdman wrote: 
+> >> > On Sun, Oct 16, 2016 at 10:04:27AM +0800, Eva Rachel Retuya wrote: 
+> >> > > Hi Liz, 
+> >> > > 
+> >> > > On Sat, Oct 15, 2016 at 02:07:49PM -0700, Elizabeth Ferdman wrote: 
+> >> > > ----massive snip---- 
+> >> > > > I think that running $ make -j2 && sudo make modules_install 
+> could 
+> >> > > > solve 
+> >> > > > this problem? If I can't do insmod can I just do modprobe? 
+> >> > > > 
+> >> > > 
+> >> > > modprobe is OK to use. 
+> >> > > 
+> >> > Thanks, I used modprobe and the modules were loaded. 
+> >> > 
+> >> > I'm running into this issue in Task 01 
+> >> > When I do 'ls -l /config/iio/devices/dummy/' the terminal just hangs. 
+> I 
+> >> > closed the terminal and tried it a few more times but it was just 
+> >> > freezing and I had to xkill it. I have been following the tutorial. I 
+> >> > mounted the configfs at /config, made the modules, loaded them, ran 
+> >> > mkdir /config/iio/devices/dummy/my_dummy_device. 
+> >> > 
+> >> 
+> >> Hi, 
+> >> 
+> >> I suggest to do 'make clean' again and start from scratch. 
+> >> Run 'make menuconfig' and make sure the settings look like this: 
+> >> {*} Industrial I/O support ---> (instead of module, make this built-in, 
+> >> use 'y' instead of 'm') 
+> >> <Descend this option where you'll configure configfs, dummy, etc> 
+> >> {*} Enable IIO configuration via configfs (use 'y' instead of 'm') 
+> >> <M> Enable software IIO device support 
+> >> <M> Enable software triggers support 
+> >> 
+> >> Under IIO dummy driver: 
+> >> <M> An example driver with no hardware requirements 
+> >> [*] Event generation support 
+> >> [*] Buffered capture support 
+> >> 
+> >> Compile and install, then boot to that kernel and test if it works. 
+> > 
+> > 
+> > Hi, 
+> > 
+> > I am able to insert module iio_dummy_evgen.ko but when I run 
+> > $ sudo insmod iio_dummy.ko 
+> > 
+> > I got the following error: 
+> > insmod: ERROR: could not insert module iio_dummy.ko: Unknown symbol in 
+> > module 
+> > 
+> > And in dmesg I am getting following error: 
+> > iio_dummy: Unknown symbol iio_register_sw_device_type (err 0) 
+> > 
+> > Any Idea? 
+>
+> Find the .c file which exports this symbol. Then look into the Makefile 
+> from the 
+> same directory where you found the .c file and find the CONFIG_ symbol 
+> which 
+> compiles the .c file. 
+>
+>  Hi,
+
+it worked for me using modprobe.
+
+Daniel. 
+>
+
+------=_Part_628_306455375.1490280633555
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Thursday, March 23, 2017 at 8:09:37 PM UTC+5:30=
+, Daniel Baluta wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;=
+margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">On Thu, =
+Mar 23, 2017 at 4:21 PM, SIMRAN SINGHAL
+<br>&lt;<a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-mailto=3D"=
+q65LXvvHBQAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;javascript:&=
+#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;return true=
+;">singhal...@gmail.com</a>&gt; wrote:
+<br>&gt;
+<br>&gt;
+<br>&gt; On Monday, October 17, 2016 at 5:19:49 AM UTC+5:30, Eva Rachel Ret=
+uya wrote:
+<br>&gt;&gt;
+<br>&gt;&gt; On Sun, Oct 16, 2016 at 02:23:58PM -0700, Elizabeth Ferdman wr=
+ote:
+<br>&gt;&gt; &gt; On Sun, Oct 16, 2016 at 10:04:27AM +0800, Eva Rachel Retu=
+ya wrote:
+<br>&gt;&gt; &gt; &gt; Hi Liz,
+<br>&gt;&gt; &gt; &gt;
+<br>&gt;&gt; &gt; &gt; On Sat, Oct 15, 2016 at 02:07:49PM -0700, Elizabeth =
+Ferdman wrote:
+<br>&gt;&gt; &gt; &gt; ----massive snip----
+<br>&gt;&gt; &gt; &gt; &gt; I think that running $ make -j2 &amp;&amp; sudo=
+ make modules_install could
+<br>&gt;&gt; &gt; &gt; &gt; solve
+<br>&gt;&gt; &gt; &gt; &gt; this problem? If I can&#39;t do insmod can I ju=
+st do modprobe?
+<br>&gt;&gt; &gt; &gt; &gt;
+<br>&gt;&gt; &gt; &gt;
+<br>&gt;&gt; &gt; &gt; modprobe is OK to use.
+<br>&gt;&gt; &gt; &gt;
+<br>&gt;&gt; &gt; Thanks, I used modprobe and the modules were loaded.
+<br>&gt;&gt; &gt;
+<br>&gt;&gt; &gt; I&#39;m running into this issue in Task 01
+<br>&gt;&gt; &gt; When I do &#39;ls -l /config/iio/devices/dummy/&#39; the =
+terminal just hangs. I
+<br>&gt;&gt; &gt; closed the terminal and tried it a few more times but it =
+was just
+<br>&gt;&gt; &gt; freezing and I had to xkill it. I have been following the=
+ tutorial. I
+<br>&gt;&gt; &gt; mounted the configfs at /config, made the modules, loaded=
+ them, ran
+<br>&gt;&gt; &gt; mkdir /config/iio/devices/dummy/my_<wbr>dummy_device.
+<br>&gt;&gt; &gt;
+<br>&gt;&gt;
+<br>&gt;&gt; Hi,
+<br>&gt;&gt;
+<br>&gt;&gt; I suggest to do &#39;make clean&#39; again and start from scra=
+tch.
+<br>&gt;&gt; Run &#39;make menuconfig&#39; and make sure the settings look =
+like this:
+<br>&gt;&gt; {*} Industrial I/O support ---&gt; (instead of module, make th=
+is built-in,
+<br>&gt;&gt; use &#39;y&#39; instead of &#39;m&#39;)
+<br>&gt;&gt; &lt;Descend this option where you&#39;ll configure configfs, d=
+ummy, etc&gt;
+<br>&gt;&gt; {*} Enable IIO configuration via configfs (use &#39;y&#39; ins=
+tead of &#39;m&#39;)
+<br>&gt;&gt; &lt;M&gt; Enable software IIO device support
+<br>&gt;&gt; &lt;M&gt; Enable software triggers support
+<br>&gt;&gt;
+<br>&gt;&gt; Under IIO dummy driver:
+<br>&gt;&gt; &lt;M&gt; An example driver with no hardware requirements
+<br>&gt;&gt; [*] Event generation support
+<br>&gt;&gt; [*] Buffered capture support
+<br>&gt;&gt;
+<br>&gt;&gt; Compile and install, then boot to that kernel and test if it w=
+orks.
+<br>&gt;
+<br>&gt;
+<br>&gt; Hi,
+<br>&gt;
+<br>&gt; I am able to insert module iio_dummy_evgen.ko but when I run
+<br>&gt; $ sudo insmod iio_dummy.ko
+<br>&gt;
+<br>&gt; I got the following error:
+<br>&gt; insmod: ERROR: could not insert module iio_dummy.ko: Unknown symbo=
+l in
+<br>&gt; module
+<br>&gt;
+<br>&gt; And in dmesg I am getting following error:
+<br>&gt; iio_dummy: Unknown symbol iio_register_sw_device_type (err 0)
+<br>&gt;
+<br>&gt; Any Idea?
+<br>
+<br>Find the .c file which exports this symbol. Then look into the Makefile=
+ from the
+<br>same directory where you found the .c file and find the CONFIG_ symbol =
+which
+<br>compiles the .c file.
+<br>
+<br></blockquote><div>=C2=A0Hi,<br><br>it worked for me using modprobe.<br>=
+<br></div><blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left:=
+ 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Daniel.
+<br></blockquote></div>
+------=_Part_628_306455375.1490280633555--
+
+------=_Part_627_1377917734.1490280633555--
 
