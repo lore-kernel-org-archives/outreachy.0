@@ -1,99 +1,115 @@
 X-GM-THRID: 6400656682725146624
-X-Received: by 10.99.112.77 with SMTP id a13mr564993pgn.168.1490269497464;
-        Thu, 23 Mar 2017 04:44:57 -0700 (PDT)
+X-Received: by 10.99.185.66 with SMTP id v2mr618007pgo.94.1490269015728;
+        Thu, 23 Mar 2017 04:36:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.1.17 with SMTP id 17ls2265921otu.16.gmail; Thu, 23 Mar
- 2017 04:44:56 -0700 (PDT)
-X-Received: by 10.129.75.5 with SMTP id y5mr590441ywa.28.1490269496777;
-        Thu, 23 Mar 2017 04:44:56 -0700 (PDT)
-Return-Path: <lars@metafoo.de>
-Received: from www381.your-server.de (www381.your-server.de. [78.46.137.84])
-        by gmr-mx.google.com with ESMTPS id h35si645282ywk.0.2017.03.23.04.44.56
+Received: by 10.157.46.182 with SMTP id w51ls4514479ota.3.gmail; Thu, 23 Mar
+ 2017 04:36:55 -0700 (PDT)
+X-Received: by 10.237.53.146 with SMTP id c18mr545981qte.64.1490269015305;
+        Thu, 23 Mar 2017 04:36:55 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id 2si1071843pfx.8.2017.03.23.04.36.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 23 Mar 2017 04:44:56 -0700 (PDT)
-Received-SPF: neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) client-ip=78.46.137.84;
+        Thu, 23 Mar 2017 04:36:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) smtp.mailfrom=lars@metafoo.de
-Received: from [88.198.220.130] (helo=sslproxy01.your-server.de)
-	by www381.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
-	(Exim 4.85_2)
-	(envelope-from <lars@metafoo.de>)
-	id 1cr1Ae-0000hj-V4; Thu, 23 Mar 2017 12:44:49 +0100
-Received: from [2003:86:2c12:f000:8200:bff:fe9b:6612]
-	by sslproxy01.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-SHA:256)
-	(Exim 4.84_2)
-	(envelope-from <lars@metafoo.de>)
-	id 1cr1Ae-0001u0-Nk; Thu, 23 Mar 2017 12:44:48 +0100
-Subject: Re: [PATCH] staging: ad7746: Moved contents of the header to the
- source file.
-To: Arushi Singhal <arushisinghal19971997@gmail.com>
-References: <20170323113649.GA23947@arushi-HP-Pavilion-Notebook>
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x243.google.com with SMTP id p189so25951968pfp.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 23 Mar 2017 04:36:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=gT/winsMBXsmVp1ALhuJsjoL23ooRfTM0ci7ACbfdvQ=;
+        b=UycmtpfDPoUJhcZ4N8GHTAfIuIMhkBON0eglPeP1s3kPvc95tIoqJ8F9vGWz/uVByh
+         0TS8wyWO0F2vYvoc0nRZP5FpSl/Nf0Tnm2pUdCjeBSJtogNC+a+6QVLK0JTzEN+0lmlc
+         Kk7eQ3Jqg/HKheuGS7D1h3895fLx3QnzPwA2FLDWbt7PewDmuOXhpNwL9gdyxOsuC7L7
+         8UPfVkFPg5pC1SW8dCG+DjIdJOAOghEEOz9Y12pi42lYK5daOiM+odoHgTCBBpLp1QEO
+         2c1C4OviH27aM6SdHxQF6ARgeovow1xj1ehpdr0aqwj82vEif71URrRufJqBH7xIr1ML
+         dXGw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=gT/winsMBXsmVp1ALhuJsjoL23ooRfTM0ci7ACbfdvQ=;
+        b=JFbtob3rWJeDmQYRXAYs2OpdG11NzLOhCyH+Kt5ZEC6VPfCbm8bUWPF9QkLp8P54xI
+         UhaUWCo7FIjVqqXM2wSsehJwCNiNdhnJlAKrEqwax+AeZqzS0uD54dwrearewvrU8vzW
+         kZMLMUoBiZvFVLj1oYiB9kTh+LmJjPMp3oTd1gJULNApqIprZ4J6yv2sI6vA/8LGrO6+
+         SKOeK1MUT4CZvIUjozGTP027Ry2UfYcwHrOGkITZfFKUkygbqmu4EoPTk31M/dG7Msd9
+         oUmT+FU7QbhmpHMyLOLW7P7OG7QVojJEFJCHK6UlsPyzvPkPg5uDpB/EphzK6BhlYyX/
+         yWAA==
+X-Gm-Message-State: AFeK/H1dlBZ4AXdlo4StkocVula4ECn7o/yiwX/zFyqla/b6XeK/695cNPwmVZTKXTBefg==
+X-Received: by 10.98.217.67 with SMTP id s64mr2376222pfg.119.1490269015054;
+        Thu, 23 Mar 2017 04:36:55 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id m21sm9904365pgh.4.2017.03.23.04.36.53
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 23 Mar 2017 04:36:53 -0700 (PDT)
+Date: Thu, 23 Mar 2017 17:06:49 +0530
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+To: lars@metafoo.de
 Cc: Michael Hennerich <Michael.Hennerich@analog.com>,
- Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>,
- Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-iio@vger.kernel.org,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- outreachy-kernel@googlegroups.com
-From: Lars-Peter Clausen <lars@metafoo.de>
-Message-ID: <575e7930-5328-1a06-4b68-04e121e8a7f6@metafoo.de>
-Date: Thu, 23 Mar 2017 12:44:47 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
- Icedove/45.6.0
+	Jonathan Cameron <jic23@kernel.org>,
+	Hartmut Knaack <knaack.h@gmx.de>,
+	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: ad7746: Moved contents of the header to the source
+ file.
+Message-ID: <20170323113649.GA23947@arushi-HP-Pavilion-Notebook>
 MIME-Version: 1.0
-In-Reply-To: <20170323113649.GA23947@arushi-HP-Pavilion-Notebook>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Authenticated-Sender: lars@metafoo.de
-X-Virus-Scanned: Clear (ClamAV 0.99.2/23229/Thu Mar 23 05:27:26 2017)
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On 03/23/2017 12:36 PM, Arushi Singhal wrote:
-> Moved the contents of the header(ad7746.h) into the source file
-> ad7746.c with the exception of the platform data struct which is
-> supposed to be used from somewhere else other than the driver.
-> 
-> Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
-> ---
->  drivers/staging/iio/cdc/ad7746.c | 5 +++++
->  drivers/staging/iio/cdc/ad7746.h | 5 -----
->  2 files changed, 5 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/staging/iio/cdc/ad7746.c b/drivers/staging/iio/cdc/ad7746.c
-> index 2d8397b11b19..033a41fd9bee 100644
-> --- a/drivers/staging/iio/cdc/ad7746.c
-> +++ b/drivers/staging/iio/cdc/ad7746.c
-> @@ -21,6 +21,11 @@
->  
->  #include "ad7746.h"
->  
-> +#define AD7466_EXCLVL_0         0 /* +-VDD/8 */
-> +#define AD7466_EXCLVL_1         1 /* +-VDD/4 */
-> +#define AD7466_EXCLVL_2         2 /* +-VDD * 3/8 */
-> +#define AD7466_EXCLVL_3         3 /* +-VDD/2 */
-> +
->  /*
->   * AD7746 Register Definition
->   */
-> diff --git a/drivers/staging/iio/cdc/ad7746.h b/drivers/staging/iio/cdc/ad7746.h
-> index ea8572d1df02..2fbcee88fda6 100644
-> --- a/drivers/staging/iio/cdc/ad7746.h
-> +++ b/drivers/staging/iio/cdc/ad7746.h
-> @@ -13,11 +13,6 @@
->   * TODO: struct ad7746_platform_data needs to go into include/linux/iio
->   */
->  
-> -#define AD7466_EXCLVL_0		0 /* +-VDD/8 */
-> -#define AD7466_EXCLVL_1		1 /* +-VDD/4 */
-> -#define AD7466_EXCLVL_2		2 /* +-VDD * 3/8 */
-> -#define AD7466_EXCLVL_3		3 /* +-VDD/2 */
-> -
+Moved the contents of the header(ad7746.h) into the source file
+ad7746.c with the exception of the platform data struct which is
+supposed to be used from somewhere else other than the driver.
 
-I believe those are settings for the exclvl field in the platform data
-struct. Hence this has to stay here.
+Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+---
+ drivers/staging/iio/cdc/ad7746.c | 5 +++++
+ drivers/staging/iio/cdc/ad7746.h | 5 -----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
 
->  struct ad7746_platform_data {
->  	unsigned char exclvl;	/*Excitation Voltage Level */
->  	bool exca_en;		/* enables EXCA pin as the excitation output */
-> 
+diff --git a/drivers/staging/iio/cdc/ad7746.c b/drivers/staging/iio/cdc/ad7746.c
+index 2d8397b11b19..033a41fd9bee 100644
+--- a/drivers/staging/iio/cdc/ad7746.c
++++ b/drivers/staging/iio/cdc/ad7746.c
+@@ -21,6 +21,11 @@
+ 
+ #include "ad7746.h"
+ 
++#define AD7466_EXCLVL_0         0 /* +-VDD/8 */
++#define AD7466_EXCLVL_1         1 /* +-VDD/4 */
++#define AD7466_EXCLVL_2         2 /* +-VDD * 3/8 */
++#define AD7466_EXCLVL_3         3 /* +-VDD/2 */
++
+ /*
+  * AD7746 Register Definition
+  */
+diff --git a/drivers/staging/iio/cdc/ad7746.h b/drivers/staging/iio/cdc/ad7746.h
+index ea8572d1df02..2fbcee88fda6 100644
+--- a/drivers/staging/iio/cdc/ad7746.h
++++ b/drivers/staging/iio/cdc/ad7746.h
+@@ -13,11 +13,6 @@
+  * TODO: struct ad7746_platform_data needs to go into include/linux/iio
+  */
+ 
+-#define AD7466_EXCLVL_0		0 /* +-VDD/8 */
+-#define AD7466_EXCLVL_1		1 /* +-VDD/4 */
+-#define AD7466_EXCLVL_2		2 /* +-VDD * 3/8 */
+-#define AD7466_EXCLVL_3		3 /* +-VDD/2 */
+-
+ struct ad7746_platform_data {
+ 	unsigned char exclvl;	/*Excitation Voltage Level */
+ 	bool exca_en;		/* enables EXCA pin as the excitation output */
+-- 
+2.11.0
 
 
