@@ -1,103 +1,99 @@
-X-GM-THRID: 6396647493064458240
-X-Received: by 10.99.124.25 with SMTP id x25mr14080467pgc.50.1489335553289;
-        Sun, 12 Mar 2017 09:19:13 -0700 (PDT)
+X-GM-THRID: 6400656682725146624
+X-Received: by 10.99.112.77 with SMTP id a13mr564993pgn.168.1490269497464;
+        Thu, 23 Mar 2017 04:44:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.11.133 with SMTP id 5ls942949oth.45.gmail; Sun, 12 Mar
- 2017 09:19:12 -0700 (PDT)
-X-Received: by 10.157.82.78 with SMTP id q14mr12403923otg.80.1489335552958;
-        Sun, 12 Mar 2017 09:19:12 -0700 (PDT)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id c123si2690990pfa.4.2017.03.12.09.19.12
+Received: by 10.157.1.17 with SMTP id 17ls2265921otu.16.gmail; Thu, 23 Mar
+ 2017 04:44:56 -0700 (PDT)
+X-Received: by 10.129.75.5 with SMTP id y5mr590441ywa.28.1490269496777;
+        Thu, 23 Mar 2017 04:44:56 -0700 (PDT)
+Return-Path: <lars@metafoo.de>
+Received: from www381.your-server.de (www381.your-server.de. [78.46.137.84])
+        by gmr-mx.google.com with ESMTPS id h35si645282ywk.0.2017.03.23.04.44.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 12 Mar 2017 09:19:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Thu, 23 Mar 2017 04:44:56 -0700 (PDT)
+Received-SPF: neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) client-ip=78.46.137.84;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id 67so16403543pfg.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 12 Mar 2017 09:19:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=kz+UM0LdFYAkaBuR3aL/rvaHv+fGRZ299eEgRxWPed0=;
-        b=CH36bAfk3zY4f2YlmVH2eSnvxI9Z0UMqbyh2O/jBTgKwtwArRvJEU+4FqU+ILADnwq
-         Dn3AoyXpaebgPX3iFtY/+Ihin6NuPu8GwoKfsaEkJgligzWkAQx9+YgjT6+EvuvzKJvl
-         yNmmG2bir6oq/uXfu/zKzL/7AVJV5lpscI80mT7J0k8w/pxMKDKukVhP0qjvIxjhEypD
-         dkMCLO0JHDmI5jgGAFn2UnFlnR8rE6Uys66HjrDDy4lW8Kbco9m4aJFDPrng88VmjMit
-         b35wtE32rCUU1mYXG/cNClEcGKsggCXso0lWHQODumqca0ASKibj9ZCpa0UPUa0MjrIF
-         YlyA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=kz+UM0LdFYAkaBuR3aL/rvaHv+fGRZ299eEgRxWPed0=;
-        b=Su+dDzreDYugUFcDt0tFgQW7bYB0bs72UHYuutbTtevKm1as57HPIc6U2rwnVj14XI
-         xrLl79i1amxK4kaHQTj12Bgyc2fqIrymVIddNtw8zdyBZGt7LqbLeHDkzUq34snqyzjD
-         vJSesJS3pKFcV0h7iw5+ZDiwbsEC4r/RfuO4KHlVt0wnuDFaS9uBkakABuXghSXBXHlf
-         mV2VzKwQM9lCEf7HC9YpJOYxt6RWL73CG11a/XRam3/536ZT29+wnonLqhDTIOJ3pj3r
-         E+VFPYsAWqYgt7bTzQCw+g+S9TOAcIwkYaH47itzKmvoVXj49ipms0WTrfpILSyhEblJ
-         lfFg==
-X-Gm-Message-State: AMke39nUeDZSuhn3OMO2Pbb9kddFVI1SRvZY1BGJbpRdH9l6AKvCAlGxv1Wtb1NER/8+uw==
-X-Received: by 10.98.133.6 with SMTP id u6mr33219433pfd.48.1489335552563;
-        Sun, 12 Mar 2017 09:19:12 -0700 (PDT)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([117.194.58.130])
-        by smtp.gmail.com with ESMTPSA id m136sm29254368pga.22.2017.03.12.09.19.11
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 12 Mar 2017 09:19:12 -0700 (PDT)
-Message-ID: <58c57500.8e3f630a.50cd4.8982@mx.google.com>
-X-Google-Original-Message-ID: <20170312161908.GA17544@<rvarsha016@gmail.com>>
-Date: Sun, 12 Mar 2017 21:49:08 +0530
-From: Varsha Rao <rvarsha016@gmail.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/2] staging: media: atomisp: Remove gc2235_init() function.
-References: <cover.1489334608.git.rvarsha016@gmail.com>
+       spf=neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) smtp.mailfrom=lars@metafoo.de
+Received: from [88.198.220.130] (helo=sslproxy01.your-server.de)
+	by www381.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
+	(Exim 4.85_2)
+	(envelope-from <lars@metafoo.de>)
+	id 1cr1Ae-0000hj-V4; Thu, 23 Mar 2017 12:44:49 +0100
+Received: from [2003:86:2c12:f000:8200:bff:fe9b:6612]
+	by sslproxy01.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-SHA:256)
+	(Exim 4.84_2)
+	(envelope-from <lars@metafoo.de>)
+	id 1cr1Ae-0001u0-Nk; Thu, 23 Mar 2017 12:44:48 +0100
+Subject: Re: [PATCH] staging: ad7746: Moved contents of the header to the
+ source file.
+To: Arushi Singhal <arushisinghal19971997@gmail.com>
+References: <20170323113649.GA23947@arushi-HP-Pavilion-Notebook>
+Cc: Michael Hennerich <Michael.Hennerich@analog.com>,
+ Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>,
+ Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-iio@vger.kernel.org,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ outreachy-kernel@googlegroups.com
+From: Lars-Peter Clausen <lars@metafoo.de>
+Message-ID: <575e7930-5328-1a06-4b68-04e121e8a7f6@metafoo.de>
+Date: Thu, 23 Mar 2017 12:44:47 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+ Icedove/45.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1489334608.git.rvarsha016@gmail.com>
-User-Agent: Mutt/1.7.1 (2016-10-04)
+In-Reply-To: <20170323113649.GA23947@arushi-HP-Pavilion-Notebook>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Authenticated-Sender: lars@metafoo.de
+X-Virus-Scanned: Clear (ClamAV 0.99.2/23229/Thu Mar 23 05:27:26 2017)
 
-Remove gc2235_init() function definition and call, as it is used only
-once in gc2235.c file. Replace the function call with return value,
-__gc2235_init() function call.
+On 03/23/2017 12:36 PM, Arushi Singhal wrote:
+> Moved the contents of the header(ad7746.h) into the source file
+> ad7746.c with the exception of the platform data struct which is
+> supposed to be used from somewhere else other than the driver.
+> 
+> Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+> ---
+>  drivers/staging/iio/cdc/ad7746.c | 5 +++++
+>  drivers/staging/iio/cdc/ad7746.h | 5 -----
+>  2 files changed, 5 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/staging/iio/cdc/ad7746.c b/drivers/staging/iio/cdc/ad7746.c
+> index 2d8397b11b19..033a41fd9bee 100644
+> --- a/drivers/staging/iio/cdc/ad7746.c
+> +++ b/drivers/staging/iio/cdc/ad7746.c
+> @@ -21,6 +21,11 @@
+>  
+>  #include "ad7746.h"
+>  
+> +#define AD7466_EXCLVL_0         0 /* +-VDD/8 */
+> +#define AD7466_EXCLVL_1         1 /* +-VDD/4 */
+> +#define AD7466_EXCLVL_2         2 /* +-VDD * 3/8 */
+> +#define AD7466_EXCLVL_3         3 /* +-VDD/2 */
+> +
+>  /*
+>   * AD7746 Register Definition
+>   */
+> diff --git a/drivers/staging/iio/cdc/ad7746.h b/drivers/staging/iio/cdc/ad7746.h
+> index ea8572d1df02..2fbcee88fda6 100644
+> --- a/drivers/staging/iio/cdc/ad7746.h
+> +++ b/drivers/staging/iio/cdc/ad7746.h
+> @@ -13,11 +13,6 @@
+>   * TODO: struct ad7746_platform_data needs to go into include/linux/iio
+>   */
+>  
+> -#define AD7466_EXCLVL_0		0 /* +-VDD/8 */
+> -#define AD7466_EXCLVL_1		1 /* +-VDD/4 */
+> -#define AD7466_EXCLVL_2		2 /* +-VDD * 3/8 */
+> -#define AD7466_EXCLVL_3		3 /* +-VDD/2 */
+> -
 
-Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
----
- drivers/staging/media/atomisp/i2c/gc2235.c | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
+I believe those are settings for the exclvl field in the platform data
+struct. Hence this has to stay here.
 
-diff --git a/drivers/staging/media/atomisp/i2c/gc2235.c b/drivers/staging/media/atomisp/i2c/gc2235.c
-index 6a5a08e..9b41023 100644
---- a/drivers/staging/media/atomisp/i2c/gc2235.c
-+++ b/drivers/staging/media/atomisp/i2c/gc2235.c
-@@ -539,10 +539,6 @@ static int __gc2235_init(struct v4l2_subdev *sd)
- }
- 
- static int is_init;
--static int gc2235_init(struct v4l2_subdev *sd)
--{
--	return __gc2235_init(sd);
--}
- 
- static int power_ctrl(struct v4l2_subdev *sd, bool flag)
- {
-@@ -669,7 +665,7 @@ static int gc2235_s_power(struct v4l2_subdev *sd, int on)
- 	else {
- 		ret = power_up(sd);
- 		if (!ret)
--			ret = gc2235_init(sd);
-+			ret = __gc2235_init(sd);
- 		is_init = 1;
- 	}
- 	return ret;
--- 
-2.9.3
+>  struct ad7746_platform_data {
+>  	unsigned char exclvl;	/*Excitation Voltage Level */
+>  	bool exca_en;		/* enables EXCA pin as the excitation output */
+> 
 
 
