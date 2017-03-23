@@ -1,9 +1,9 @@
 X-GM-THRID: 6399695110711279616
-Date: Thu, 23 Mar 2017 10:15:24 -0700 (PDT)
-From: SIMRAN SINGHAL <singhalsimran0@gmail.com>
+Date: Thu, 23 Mar 2017 09:15:20 -0700 (PDT)
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
 To: outreachy-kernel <outreachy-kernel@googlegroups.com>
 Cc: alexander@alemayhu.com, karniksayli1995@gmail.com
-Message-Id: <82efbdd1-60c5-43d3-a331-b028acecef49@googlegroups.com>
+Message-Id: <0a879316-5726-4a10-83b1-cc8da65e459e@googlegroups.com>
 In-Reply-To: <ffddf9b3-0b6a-4ba6-9ede-6da1d1dfc7b8@googlegroups.com>
 References: <CAKG5xWj2WBS4MiOdgcdatnHMkgdsBATKtgr_h5=sQPgrnOyBvA@mail.gmail.com> <20170320222623.GB3079@gmail.com>
  <alpine.DEB.2.20.1703210707330.2131@hadrien>
@@ -11,15 +11,15 @@ References: <CAKG5xWj2WBS4MiOdgcdatnHMkgdsBATKtgr_h5=sQPgrnOyBvA@mail.gmail.com>
 Subject: Re: [Outreachy kernel] nftables task question
 MIME-Version: 1.0
 Content-Type: multipart/mixed; 
-	boundary="----=_Part_1001_1447873431.1490289324094"
-X-Google-Token: EKyF0MYFNKxckBU8NaA0
+	boundary="----=_Part_834_538219900.1490285720136"
+X-Google-Token: EJjpz8YFhjTPPCZGX5c0
 X-Google-IP: 14.139.82.6
 
-------=_Part_1001_1447873431.1490289324094
+------=_Part_834_538219900.1490285720136
 Content-Type: multipart/alternative; 
-	boundary="----=_Part_1002_581219802.1490289324094"
+	boundary="----=_Part_835_1417210925.1490285720137"
 
-------=_Part_1002_581219802.1490289324094
+------=_Part_835_1417210925.1490285720137
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 
@@ -53,17 +53,15 @@ e=20
 > <http://www.google.com/url?q=3Dhttp%3A%2F%2Fgit.netfilter.org%2Fiptables&=
 sa=3DD&sntz=3D1&usg=3DAFQjCNGHLP27flkfandJwrBHvtN9Bgzynw>
 > Thanks=20
+> Arushi
 >
+I am getting error message as:-
 
-Hi,
-Arushi use this:
-$ git clone https://git.netfilter.org/iptables
-=20
-Simran
+Cloning into 'iptables'...
+fatal: unable to connect to git.netfilter.org:
+git.netfilter.org[0: 150.214.142.167]: errno=3DConnection refused
 
-Arushi
->
->>
+
 >> > cd iptables=20
 >> > git grep iptables-translate=20
 >> > <make changes>=20
@@ -94,7 +92,7 @@ Arushi
 >> >
 >
 >
-------=_Part_1002_581219802.1490289324094
+------=_Part_835_1417210925.1490285720137
 Content-Type: text/html; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
@@ -132,13 +130,14 @@ A%2F%2Fgit.netfilter.org%2Fiptables\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dAFQjC=
 NGHLP27flkfandJwrBHvtN9Bgzynw&#39;;return true;" onclick=3D"this.href=3D&#3=
 9;http://www.google.com/url?q\x3dhttp%3A%2F%2Fgit.netfilter.org%2Fiptables\=
 x26sa\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNGHLP27flkfandJwrBHvtN9Bgzynw&#39;;r=
-eturn true;">git.netfilter.org/<wbr>iptables</a><br>Thanks <br></div></div>=
-</blockquote><div><br>Hi,<br>Arushi use this:<br>$ git clone https://git.ne=
-tfilter.org/iptables<br>=C2=A0<br>Simran<br><br></div><blockquote class=3D"=
-gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc so=
-lid;padding-left: 1ex;"><div dir=3D"ltr"><div>Arushi<br></div><blockquote c=
-lass=3D"gmail_quote" style=3D"margin:0;margin-left:0.8ex;border-left:1px #c=
-cc solid;padding-left:1ex">
+eturn true;">git.netfilter.org/<wbr>iptables</a><br>Thanks <br>Arushi<br></=
+div></div></blockquote><div>I am getting error message as:-<br><br>Cloning =
+into &#39;iptables&#39;...<br>fatal: unable to connect to git.netfilter.org=
+:<br>git.netfilter.org[0: 150.214.142.167]: errno=3DConnection refused<br><=
+br></div><blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: =
+0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><div dir=3D"ltr"><div=
+></div><blockquote class=3D"gmail_quote" style=3D"margin:0;margin-left:0.8e=
+x;border-left:1px #ccc solid;padding-left:1ex">
 <br>&gt; cd iptables
 <br>&gt; git grep iptables-translate
 <br>&gt; &lt;make changes&gt;
@@ -176,7 +175,7 @@ ps://groups.google.com/d/optout&#39;;return true;" onclick=3D"this.href=3D&=
 #39;https://groups.google.com/d/optout&#39;;return true;">https://groups.go=
 ogle.com/d/<wbr>optout</a>.
 <br>&gt;</blockquote></div></blockquote></div>
-------=_Part_1002_581219802.1490289324094--
+------=_Part_835_1417210925.1490285720137--
 
-------=_Part_1001_1447873431.1490289324094--
+------=_Part_834_538219900.1490285720136--
 
