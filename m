@@ -1,149 +1,124 @@
-X-GM-THRID: 6395948821343371264
-X-Received: by 10.46.21.79 with SMTP id 15mr1280838ljv.8.1489172880059;
-        Fri, 10 Mar 2017 11:08:00 -0800 (PST)
+X-GM-THRID: 6400147141672566784
+X-Received: by 10.36.211.88 with SMTP id n85mr1198932itg.6.1490301873459;
+        Thu, 23 Mar 2017 13:44:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.80.22 with SMTP id e22ls1136256ljb.12.gmail; Fri, 10 Mar
- 2017 11:07:59 -0800 (PST)
-X-Received: by 10.25.151.69 with SMTP id z66mr2842715lfd.12.1489172879593;
-        Fri, 10 Mar 2017 11:07:59 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
-        by gmr-mx.google.com with ESMTPS id 82si27726wmg.3.2017.03.10.11.07.59
+Received: by 10.36.47.2 with SMTP id j2ls4707978itj.20.canary-gmail; Thu, 23
+ Mar 2017 13:44:32 -0700 (PDT)
+X-Received: by 10.99.117.70 with SMTP id f6mr1402481pgn.91.1490301872634;
+        Thu, 23 Mar 2017 13:44:32 -0700 (PDT)
+Return-Path: <andreas.dilger@intel.com>
+Received: from mga11.intel.com (mga11.intel.com. [192.55.52.93])
+        by gmr-mx.google.com with ESMTPS id a3si18199pfb.2.2017.03.23.13.44.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 10 Mar 2017 11:07:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
+        Thu, 23 Mar 2017 13:44:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of andreas.dilger@intel.com designates 192.55.52.93 as permitted sender) client-ip=192.55.52.93;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x244.google.com with SMTP id n11so492489wma.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 11:07:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=mj+5w0x17sPZCKWlkdiwuf4wfnN7fIMvCEE3Zz5UAMQ=;
-        b=R83UNRbcC8b6FfRVrc28QfkNiwOOL+YQGSXWAF6lHERNnNafgOwV2uCQc7/TSFIZao
-         ijV0s4c59se4BVEaI3s3+UtTAO8HL3KGH6HuzMj+uFBIOkLQD8bDe0uyWQE4LYVe17g1
-         uS3t+SpofQ4xdvAp3kGg7plmeog56hCoH4S/Xt+wn0UCN1BRjbj6Y8ilmivSmtNynTgI
-         Frcoc4uDGPFb6q76afwIn7pbZUSWzDxn6Jla/mWrcLdMz7EbPUL1OZ5y374DGmsS95A9
-         7kWEIFVj9PdC2c77cGwivzSPjey2NT7g8Yubm42hGo+CJFU2Z6I0JWe4fR8T90bYP9qH
-         H9sw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=mj+5w0x17sPZCKWlkdiwuf4wfnN7fIMvCEE3Zz5UAMQ=;
-        b=F7Oo4sZxZb9bRdzhlsdJzqYjGiSuuqYHB18TY13YzWq6lbZepm8hX/0h04jgM4f3yP
-         8SbeUmqjLoHVtUWRRA4PWmnvKf8Yi+3Uv8quQxWpc0ZSxRtV5aqyIb4m+irR2GOF3EZe
-         TwcAgn6W5FiV2/EmpDO6qBT8wmK2Toz0iEXlmykPxtr7wnuwG7ZViVvF+nILHpy/Ag4P
-         CQurde+S7VGKaW70hLbJ1ruBI0mYd58dhqAayBnNsBuvSvlS8Z2Vq3t6D4I71taDLiVz
-         Qn5X4cwzeP00ZDsnA7XpZx0iZYtHB1bQd3FEMvliZEG1sNRDUoEWsbu3b9ywkgq3ExHm
-         l3eg==
-X-Gm-Message-State: AFeK/H38axlLB6A34r38kFsxev04UhzRcjDpPgYiqOZ1ghMdnKCAoveVggmPN/q1+bq2Fg==
-X-Received: by 10.28.113.200 with SMTP id d69mr447257wmi.10.1489172879385;
-        Fri, 10 Mar 2017 11:07:59 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([2a02:2f0b:8130:11ea:9935:36c4:c373:a2cc])
-        by smtp.gmail.com with ESMTPSA id n59sm14112675wrb.54.2017.03.10.11.07.58
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 10 Mar 2017 11:07:58 -0800 (PST)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: aditya.shankar@microchip.com,
-	ganesh.krishna@microchip.com,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH 6/7] staging: wilc1000: Use kernel preferred commenting style
-Date: Fri, 10 Mar 2017 21:07:56 +0200
-Message-Id: <20170310190756.20069-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+       dkim=temperror (no key for signature) header.i=@intel.com;
+       spf=pass (google.com: domain of andreas.dilger@intel.com designates 192.55.52.93 as permitted sender) smtp.mailfrom=andreas.dilger@intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=intel;
+  t=1490301872; x=1521837872;
+  h=from:to:cc:subject:date:message-id:references:
+   in-reply-to:content-id:content-transfer-encoding:
+   mime-version;
+  bh=6MlM3pS/h3zSLzMji9zECOgQ/Bt56CvDZc2InQ7U+wU=;
+  b=C4vI0/xQjjszaL0mUODZz5FHcteI9XKhmrcXCTz7RC9kgwwBH5lzfFVB
+   bx7x673u12yPh9C3R1sJb7IhmGEP4Q==;
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+  by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 23 Mar 2017 13:44:25 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.36,211,1486454400"; 
+   d="scan'208";a="70119016"
+Received: from fmsmsx104.amr.corp.intel.com ([10.18.124.202])
+  by orsmga004.jf.intel.com with ESMTP; 23 Mar 2017 13:44:20 -0700
+Received: from fmsmsx153.amr.corp.intel.com (10.18.125.6) by
+ fmsmsx104.amr.corp.intel.com (10.18.124.202) with Microsoft SMTP Server (TLS)
+ id 14.3.319.2; Thu, 23 Mar 2017 13:43:59 -0700
+Received: from FMSMSX109.amr.corp.intel.com ([169.254.15.83]) by
+ FMSMSX153.amr.corp.intel.com ([169.254.9.6]) with mapi id 14.03.0319.002;
+ Thu, 23 Mar 2017 13:43:59 -0700
+From: "Dilger, Andreas" <andreas.dilger@intel.com>
+To: Arushi Singhal <arushisinghal19971997@gmail.com>
+CC: "Drokin, Oleg" <oleg.drokin@intel.com>, James Simmons
+	<jsimmons@infradead.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	"lustre-devel@lists.lustre.org" <lustre-devel@lists.lustre.org>,
+	"devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>
+Subject: Re: [PATCH] staging: lustre: Replace a bit shift by a use of BIT.
+Thread-Topic: [PATCH] staging: lustre: Replace a bit shift by a use of BIT.
+Thread-Index: AQHSorWUJXYM4QRhU0W8UJ3XDL8FaKGhOv0AgAIhUQA=
+Date: Thu, 23 Mar 2017 20:43:59 +0000
+Message-ID: <B070C8EE-1F72-4D6B-A80E-C33DB22151ED@intel.com>
+References: <20170322023933.GA11339@arushi-HP-Pavilion-Notebook>
+ <FE801B69-BCDE-4A58-B61D-B33E46826D5F@intel.com>
+In-Reply-To: <FE801B69-BCDE-4A58-B61D-B33E46826D5F@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [10.255.66.79]
+Content-Type: text/plain; charset="us-ascii"
+Content-ID: <6E6772234CB189468F4F41A343F12FA2@intel.com>
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+Return-Path: andreas.dilger@intel.com
 
-Trims line size at 80 characters by moving parts of some comments in new
-lines.
+On Mar 22, 2017, at 06:12, Dilger, Andreas <andreas.dilger@intel.com> wrote=
+:
+>=20
+> On Mar 21, 2017, at 22:39, Arushi Singhal <arushisinghal19971997@gmail.co=
+m> wrote:
+>>=20
+>> This patch replaces bit shifting on 1 with the BIT(x) macro.
+>> This was done with coccinelle:
+[snip]
+>> diff --git a/drivers/staging/lustre/lnet/lnet/net_fault.c b/drivers/stag=
+ing/lustre/lnet/lnet/net_fault.c
+>> index 18183cbb9859..e83761a77d22 100644
+>> --- a/drivers/staging/lustre/lnet/lnet/net_fault.c
+>> +++ b/drivers/staging/lustre/lnet/lnet/net_fault.c
+>> @@ -997,10 +997,10 @@ lnet_fault_ctl(int opc, struct libcfs_ioctl_data *=
+data)
+>> int
+>> lnet_fault_init(void)
+>> {
+>> -	BUILD_BUG_ON(LNET_PUT_BIT !=3D 1 << LNET_MSG_PUT);
+>> -	BUILD_BUG_ON(LNET_ACK_BIT !=3D 1 << LNET_MSG_ACK);
+>> -	BUILD_BUG_ON(LNET_GET_BIT !=3D 1 << LNET_MSG_GET);
+>> -	BUILD_BUG_ON(LNET_REPLY_BIT !=3D 1 << LNET_MSG_REPLY);
+>> +	BUILD_BUG_ON(LNET_PUT_BIT !=3D BIT(LNET_MSG_PUT));
+>> +	BUILD_BUG_ON(LNET_ACK_BIT !=3D BIT(LNET_MSG_ACK));
+>> +	BUILD_BUG_ON(LNET_GET_BIT !=3D BIT(LNET_MSG_GET));
+>> +	BUILD_BUG_ON(LNET_REPLY_BIT !=3D BIT(LNET_MSG_REPLY));
+>=20
+> This looks reasonable at first glance, though on further thought it seems=
+ kind of
+> pointless since this is really:
+>=20
+> #defined LET_PUT_BIT BIT(LNET_MSG_PUT)
+>=20
+>       BUILD_BUG_ON(BIT(LNET_MSG_PUT) !=3D BIT(LNET_MSG_PUT))
+>=20
+> so it is just checking that the macro's value is the same when called two=
+ times.
+> I'd suggest just getting rid of these BUILD_BUG_ON() checks completely .
 
-Problem found with checkpatch.pl
+Arushi, it would be great if you could submit a patch to remove the above
+BUILD_BUG_ON() lines completely.  I don't think they have any value anymore=
+.
 
-Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
----
- drivers/staging/wilc1000/wilc_spi.c | 28 +++++++++++++++++++---------
- 1 file changed, 19 insertions(+), 9 deletions(-)
+Cheers, Andreas
+--
+Andreas Dilger
+Lustre Principal Architect
+Intel Corporation
 
-diff --git a/drivers/staging/wilc1000/wilc_spi.c b/drivers/staging/wilc1000/wilc_spi.c
-index 5687f9a..a1b0296 100644
---- a/drivers/staging/wilc1000/wilc_spi.c
-+++ b/drivers/staging/wilc1000/wilc_spi.c
-@@ -464,7 +464,9 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
- 		 **/
- 		retry = 100;
- 		do {
--			/* ensure there is room in buffer later to read data and crc */
-+			/* ensure there is room in buffer later to
-+			 * read data and crc
-+			 */
- 			if (rix < len2) {
- 				rsp = rb[rix++];
- 			} else {
-@@ -549,7 +551,9 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
- 				sz -= nbytes;
- 			}
- 
--			/*  if any data in left unread, then read the rest using normal DMA code.*/
-+			/*  if any data in left unread, then read the rest
-+			 *  using normal DMA code.
-+			 */
- 			while (sz > 0) {
- 				int nbytes;
- 
-@@ -559,9 +563,10 @@ static int spi_cmd_complete(struct wilc *wilc, u8 cmd, u32 adr, u8 *b, u32 sz,
- 					nbytes = DATA_PKT_SZ;
- 
- 				/**
--				 * read data response only on the next DMA cycles not
--				 * the first DMA since data response header is already
--				 * handled above for the first DMA.
-+				 * read data response only on the next DMA
-+				 * cycles not the first DMA since data response
-+				 * header is already handled above for the
-+				 * first DMA.
- 				 **/
- 				/**
- 				 * Data Respnose header
-@@ -855,8 +860,9 @@ static int wilc_spi_init(struct wilc *wilc, bool resume)
- 	 **/
- 	g_spi.crc_off = 0;
- 
--	/* TODO: We can remove the CRC trials if there is a definite way to reset */
--	/* the SPI to it's initial value. */
-+	/* TODO: We can remove the CRC trials if there is a definite
-+	 * way to reset the SPI to it's initial value.
-+	 */
- 	if (!spi_internal_read(wilc, WILC_SPI_PROTOCOL_OFFSET, &reg)) {
- 		/* Read failed. Try with CRC off. This might happen when module
- 		 * is removed but chip isn't reset
-@@ -864,7 +870,9 @@ static int wilc_spi_init(struct wilc *wilc, bool resume)
- 		g_spi.crc_off = 1;
- 		dev_err(&spi->dev, "Failed internal read protocol with CRC on, retrying with CRC off...\n");
- 		if (!spi_internal_read(wilc, WILC_SPI_PROTOCOL_OFFSET, &reg)) {
--			/* Reaad failed with both CRC on and off, something went bad */
-+			/* Reaad failed with both CRC on and off,
-+			 * something went bad
-+			 */
- 			dev_err(&spi->dev,
- 				"Failed internal read protocol...\n");
- 			return 0;
-@@ -995,7 +1003,9 @@ static int wilc_spi_clear_int_ext(struct wilc *wilc, u32 val)
- 
- 			ret = 1;
- 			for (i = 0; i < g_spi.nint; i++) {
--				/* No matter what you write 1 or 0, it will clear interrupt. */
-+				/* No matter what you write 1 or 0,
-+				 * it will clear interrupt.
-+				 */
- 				if (flags & 1)
- 					ret = wilc_spi_write_reg(wilc, 0x10c8 + i * 4, 1);
- 				if (!ret)
--- 
-2.9.3
+
+
+
+
+
 
 
