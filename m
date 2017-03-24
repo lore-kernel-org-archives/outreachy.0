@@ -1,94 +1,113 @@
-X-GM-THRID: 6390271091291455488
-X-Received: by 10.99.52.202 with SMTP id b193mr9252194pga.118.1487850931323;
-        Thu, 23 Feb 2017 03:55:31 -0800 (PST)
+X-GM-THRID: 6401022788262428672
+X-Received: by 10.99.50.2 with SMTP id y2mr2415019pgy.173.1490354255007;
+        Fri, 24 Mar 2017 04:17:35 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.35.28 with SMTP id j28ls3725464otb.40.gmail; Thu, 23 Feb
- 2017 03:55:30 -0800 (PST)
-X-Received: by 10.129.79.19 with SMTP id d19mr4794006ywb.19.1487850930886;
-        Thu, 23 Feb 2017 03:55:30 -0800 (PST)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id c123si595645pfa.4.2017.02.23.03.55.30
+Received: by 10.107.160.13 with SMTP id j13ls2128325ioe.10.gmail; Fri, 24 Mar
+ 2017 04:17:34 -0700 (PDT)
+X-Received: by 10.107.17.32 with SMTP id z32mr2357122ioi.84.1490354254181;
+        Fri, 24 Mar 2017 04:17:34 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
+        by gmr-mx.google.com with ESMTPS id y90si394777pfa.6.2017.03.24.04.17.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 23 Feb 2017 03:55:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Fri, 24 Mar 2017 04:17:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id o64so1496953pfb.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 23 Feb 2017 03:55:30 -0800 (PST)
+Received: by mail-pg0-x241.google.com with SMTP id 81so2622673pgh.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 24 Mar 2017 04:17:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=6zuxdJGEMNvB4QbO1qUeEATir5E6ikNLqm/Ir9DlGM4=;
-        b=fhLRJmn8JAqRf1HYatwLiKZNWxkWkKiT8hCA6WkFlYQHChMqMg1RR4kxS5h/nlw2cH
-         lcZp5qnEjROTHriAfmirys1UR0bXVm1lHrPDlQuvAUfFsE9qEKPpmJ5ltrzcKoiPOjJ5
-         ZjlytivxaT2lcQpDn3buQJkN1t5PR015wXbYEJRGj4CNu4wcTbzuLHwTmZcn8dhwNboj
-         bHF6geKK/9e+HBz/3DbIytjHQeexbKU/qhqeWOf/pOWWpj1bGBmUDXv85yvRs5ixDjOo
-         58dua1+ngVoYnjRPFmsgfaToSiJa50939Vxw/5g8JaePmZ52dpsr2h8MGEgPUlrTaGvP
-         FDqQ==
+        bh=dc30KPR8B1fl0U//bPwN4IV03aQgtWiy4CRRMiPgGHs=;
+        b=r6rk4NpKuvXW8pbWuqs9DCj9Svkx/6KEF8OqVz3Q3WERVHzkMNyi/H8uiOVUSnJeIe
+         w12tgK+XJrOnQy+v2z+/QThqZ8vj1Cliok/10NAJ3aojUv7Z1+B28qd6ZX01BgBtsAYX
+         va+ifoINx57x3C/55YPfqZ+uNqVIT8eKK4zY5zgZ9w0h+abUaX+IDQnThCkZeRf+Vqee
+         R4LIpXyKgr+COEwRUirg5DGGMBKCbyBaPagIDWV63NQKKHUiODIp004+u3slVWJxAcV8
+         coDO+RCW/bbovAuBnH+bSnWAc/rtjTaCNf9Ds+FVFxQdKoIQGxmAtEBZcqDkBLPVy5AX
+         UsYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=6zuxdJGEMNvB4QbO1qUeEATir5E6ikNLqm/Ir9DlGM4=;
-        b=YE+gbfItMfUZgIL0LQ5jab9xOGR6wVNnrkT31+LN+gwmxDRlT51rii4fZEL5ZDSTRE
-         5q1ra3PoZ/0na4j+xs7dtQT5FkNGSK75+XyABEOJN7w59SMKr3cZTFUPZAxBwV1mFAGK
-         gO/fzlgxyWOxh5Xi1p/cP/YcAntsiQdzMMnTKxDyy3OAf0BNQr7LCTwvQErVadJDOWit
-         x9Bg06rLJz3PGsWOMo1uqU8BPXyNoQXMz77AHMgfNbB8u+3Vw6oGcMZefbF8y7rer7b5
-         v80wy1DdGCF0fiOSyWyZHqtLgr5kTIIewTdYaAGgz3E0SE2xI54hkfAsvBFyvTzRwSfb
-         svCw==
-X-Gm-Message-State: AMke39mqlEdziHIY4WzWN1kP+G0EbqOURNYh9eVbxmjumKHdseKIKdyZeF//h2Td1DZSbw==
-X-Received: by 10.98.200.5 with SMTP id z5mr46278109pff.0.1487850930636;
-        Thu, 23 Feb 2017 03:55:30 -0800 (PST)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from sayli-HP-15-Notebook-PC ([182.58.161.153])
-        by smtp.gmail.com with ESMTPSA id o12sm9490031pfg.15.2017.02.23.03.55.21
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 23 Feb 2017 03:55:29 -0800 (PST)
-Date: Thu, 23 Feb 2017 17:25:08 +0530
-From: sayli karnik <karniksayli1995@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: William Hubbs <w.d.hubbs@gmail.com>,
-	Chris Brannon <chris@the-brannons.com>,
-	Kirk Reiser <kirk@reisers.ca>,
+        bh=dc30KPR8B1fl0U//bPwN4IV03aQgtWiy4CRRMiPgGHs=;
+        b=n9b86dyE3Tvxa+vaZyrWE3vglVtxB4poxWJdo7YXhy2xmhHGd1O5efKtnfoCkJakcw
+         Pt1ChhHS1q3r5AfB/6XfsIjzCwfm6YADmXiYDdqnONuS88sTwb1SeIyIcKS0rqtr8Y2F
+         7Z9sjWULIvdVkwvLnuGQlqaxokRy5Sj7NTz/5lnNC51YG4imYDVRWC4dTSd4/kCYl9CD
+         WCVjNETvcFzylUczqj+MyCryCYqbNkFM987mMlEuyNaEh8UWu6sRwDffMsFeVKOt55kM
+         Vk2OCbmZtHzyHT1qYbiz87xKssO0SJfE3c96Mq4cs3oW7J11s5+CtTNaI72kDuV2E0Zy
+         zEdQ==
+X-Gm-Message-State: AFeK/H3l7TovRQno3rubw/xABodqJYfIcWNVVF3b0kcqqqUVhr/MyoX61XnODAFE9xA5Sg==
+X-Received: by 10.98.209.73 with SMTP id t9mr8779816pfl.203.1490354253930;
+        Fri, 24 Mar 2017 04:17:33 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id g5sm4129557pgn.18.2017.03.24.04.17.32
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 24 Mar 2017 04:17:32 -0700 (PDT)
+Date: Fri, 24 Mar 2017 16:47:27 +0530
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+To: w.d.hubbs@gmail.com
+Cc: Chris Brannon <chris@the-brannons.com>, Kirk Reiser <kirk@reisers.ca>,
 	Samuel Thibault <samuel.thibault@ens-lyon.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: speakup: i18n: Replace 'x!=NULL' with 'x'
-Message-ID: <20170223115508.GA9245@sayli-HP-15-Notebook-PC>
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	speakup@linux-speakup.org, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: [PATCH v3] staging: speakup: Align the code.
+Message-ID: <20170324111726.GA28563@arushi-HP-Pavilion-Notebook>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-The patch removes the explicit NULL comparison by replacing 'x!=NULL'
-with 'x'. This issue was found by checkpatch.pl
+Delete tabs and add spaces to align the code to fix the
+checkpatch issue: "CHECK: Alignment should match open parenthesis".
 
-Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
+Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
 ---
- drivers/staging/speakup/i18n.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+changes in v3
+ - make the commit message more clear.
 
-diff --git a/drivers/staging/speakup/i18n.c b/drivers/staging/speakup/i18n.c
-index 2f9b3df..b8f5bed 100644
---- a/drivers/staging/speakup/i18n.c
-+++ b/drivers/staging/speakup/i18n.c
-@@ -407,9 +407,9 @@ static char *next_specifier(char *input)
- 	int found = 0;
- 	char *next_percent = input;
- 
--	while ((next_percent != NULL) && !found) {
-+	while (next_percent && !found) {
- 		next_percent = strchr(next_percent, '%');
--		if (next_percent != NULL) {
-+		if (next_percent) {
- 			/* skip over doubled percent signs */
- 			while ((next_percent[0] == '%')
- 			       && (next_percent[1] == '%'))
+ drivers/staging/speakup/speakup_apollo.c | 2 +-
+ drivers/staging/speakup/speakup_decext.c | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/speakup/speakup_apollo.c b/drivers/staging/speakup/speakup_apollo.c
+index 9cfdbbfb9742..6ad83dc642c4 100644
+--- a/drivers/staging/speakup/speakup_apollo.c
++++ b/drivers/staging/speakup/speakup_apollo.c
+@@ -173,7 +173,7 @@ static void do_catch_up(struct spk_synth *synth)
+ 		if (!synth->io_ops->synth_out(synth, ch)) {
+ 			outb(UART_MCR_DTR, speakup_info.port_tts + UART_MCR);
+ 			outb(UART_MCR_DTR | UART_MCR_RTS,
+-					speakup_info.port_tts + UART_MCR);
++			     speakup_info.port_tts + UART_MCR);
+ 			schedule_timeout(msecs_to_jiffies(full_time_val));
+ 			continue;
+ 		}
+diff --git a/drivers/staging/speakup/speakup_decext.c b/drivers/staging/speakup/speakup_decext.c
+index 929a28d618dc..c564bf8e1531 100644
+--- a/drivers/staging/speakup/speakup_decext.c
++++ b/drivers/staging/speakup/speakup_decext.c
+@@ -206,11 +206,11 @@ static void do_catch_up(struct spk_synth *synth)
+ 				if (!in_escape)
+ 					synth->io_ops->synth_out(synth, PROCSPEECH);
+ 				spin_lock_irqsave(&speakup_info.spinlock,
+-							flags);
++						  flags);
+ 				jiffy_delta_val = jiffy_delta->u.n.value;
+ 				delay_time_val = delay_time->u.n.value;
+ 				spin_unlock_irqrestore(&speakup_info.spinlock,
+-							flags);
++						       flags);
+ 				schedule_timeout(msecs_to_jiffies
+ 						 (delay_time_val));
+ 				jiff_max = jiffies + jiffy_delta_val;
 -- 
-2.7.4
+2.11.0
 
 
