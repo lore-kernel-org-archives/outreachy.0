@@ -1,117 +1,122 @@
-X-GM-THRID: 6634615271359250432
-X-Received: by 2002:aca:ed17:: with SMTP id l23mr581318oih.48.1544741744492;
-        Thu, 13 Dec 2018 14:55:44 -0800 (PST)
+X-GM-THRID: 6401339211777048576
+X-Received: by 10.129.146.139 with SMTP id j133mr4706485ywg.173.1490456628790;
+        Sat, 25 Mar 2017 08:43:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:bea:: with SMTP id 97ls2422351oth.8.gmail; Thu, 13 Dec
- 2018 14:55:43 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/XHfns1QXr6wyZyIn/DHIouQw3FPC78ixRWZ14dMQ2aLrAnA4vJ95JyM4COu/O6YykHvX3V
-X-Received: by 2002:a9d:4803:: with SMTP id c3mr601653otf.2.1544741743860;
-        Thu, 13 Dec 2018 14:55:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544741743; cv=none;
-        d=google.com; s=arc-20160816;
-        b=dIUZLvKApHvPz95OGhyEaUPtu7cRfyBogEGMm2ntG6msNL+mHh49koUX2mthJFeryu
-         QCnhio/CtRmfMHsGXL/aAWMj7LRWKe/90OOtAZKS4wI5Mog7RvsrePRiRYopfewJGnst
-         289Swu54XMk7HEa+BW/SvMPGV0iWuO3exmY9r1pxQKO+S/WKtVJAEJoY/wVIFBHu69sN
-         LyppgJNkXGi9UIxBSp0i6h5/W6HjYaH5bNrOB4hFv47k/60HfG7p+zzlwg+9G6/mkgvt
-         NOICAg4HHiUzQWU5XUHAhtKsGjoYKKETRHvO5AZ3KgXkRftFXpcvSkoi36CBOr8Jp3jH
-         t96A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=FlmgjsOljKHoCliMfpygHF2ImS5ElP2rgSghsY1VUG4=;
-        b=XOtrzwiH2XhTayR3KCvxsyd9uuEhqnbguoOd0o6IBLHuXH1F/msZ0pe1d671glK9SM
-         xWC8uYFH2a+Vls8zoV6FbfVCrSymS3pQeIEA+ZJ99rlCqVybrgG3xQXaelyM8JxESwqj
-         8a3UEHopcft9Aa4oBR2CabwMlQlc1fJ5y04zCHoTIZnj8pjYrQ1tlSALkWul/Oio4I3S
-         v48/uYLP3brlFn/GkO5WLZRuP2GAB4Cig1Q9EdCt3fNEMuyEG4L4Telharxwtf+L1XFW
-         85aQBOS/DPtnf2k6pCkS7vnfgv2UmKkB1RgS8H52ChnLRfmsJ0Wjo9FPZJF0ZlwOCqLs
-         Q4cQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WJmU4cXa;
-       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <shayenneluzmoura@gmail.com>
-Received: from mail-qt1-x842.google.com (mail-qt1-x842.google.com. [2607:f8b0:4864:20::842])
-        by gmr-mx.google.com with ESMTPS id 17si92607otj.4.2018.12.13.14.55.43
+Received: by 10.36.103.2 with SMTP id u2ls1019146itc.10.gmail; Sat, 25 Mar
+ 2017 08:43:48 -0700 (PDT)
+X-Received: by 10.107.135.91 with SMTP id j88mr4543207iod.82.1490456627999;
+        Sat, 25 Mar 2017 08:43:47 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id g82si983326pfb.5.2017.03.25.08.43.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 13 Dec 2018 14:55:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) client-ip=2607:f8b0:4864:20::842;
+        Sat, 25 Mar 2017 08:43:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WJmU4cXa;
-       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x842.google.com with SMTP id k12so4182721qtf.7
-        for <outreachy-kernel@googlegroups.com>; Thu, 13 Dec 2018 14:55:43 -0800 (PST)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of amsfield22@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=amsfield22@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x244.google.com with SMTP id 79so3297495pgf.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 25 Mar 2017 08:43:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=FlmgjsOljKHoCliMfpygHF2ImS5ElP2rgSghsY1VUG4=;
-        b=WJmU4cXa0SW769aIk9PD188enT2/HNUcJX2GpnuZiILCQOlhh4g1qR1PqNmjn4vd+b
-         mvxokEgskfZpD7IbSwnBWmmVfjxtu07gyNv4LjVfNDIOEDH4HrUQ4WHRnofcSGmFr5rZ
-         t6P0U3EphYSWspgpBthiTCUX5cPnm6kKZIxLW00O8QlEU5IgKGmGE4Bf+YtwZBfnNyxe
-         ndqjWBZY2e3I2TP4YVMQJtBX1chDyEtSzUt35qDHLPXtvv20YMjop4hyKsHq+JEKjk2F
-         RrVCo7Hq5n6lv/E1q7NbF4wgO/Bo5XoeyIglFgp1Kr8lTYDJ87nOf0hKXA/KHKqGEzBe
-         bNfw==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=ubQOJLqbWINZ/xIhuDMLx90m00myGGg/L5iT7MnEWdU=;
+        b=hoxw5G515yob8rqr+HOOvBDWGTf8D8TmPSHVkXYbY/A/Lz4aRTLdlUh55HhzwjyfLE
+         1pXyx/N3wNqXH/q5FwUy2A3pE6fHdUCDrKXPYyZPlLR3A2np91s0PI+EbKev7aGOV8Tp
+         PCME+RXfmtXhPeG911tfjc6DjnM027jmUA/5ynmm+pHolOUeUUfffwmiyS4OiXAc0FZI
+         LWuV4rTHjAKaKnXi3WY0gITj7niHezde/Nd2JBVUdvR7sls04uGvSm9h6tl+oU3ieD3R
+         6zGYHEQtJkIm3uK0wV48HdTMAcD3r5i+KT050kw9Do7R/lRgpy1NSXfwLD28B/olBMIv
+         THjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=FlmgjsOljKHoCliMfpygHF2ImS5ElP2rgSghsY1VUG4=;
-        b=joDBwt5bqITQne5dEsi+zPTf87iAlSkrae1gp7KGKkMJN0/pxaRxakbmWGEvM83oyW
-         l68wqrra8U0t7zVLGtzHGv1qri+SBwpewOq0n7vepnvwDORVL9mchjRP7OAPGLOtgZeu
-         Ih5jarGhuAjWx7ahA6YWUBEUAes49RayWLQw7BSOLFH1RU2ndKUO+jUSLb1KBfSF2mMD
-         L4Tvui3il470BwQ9F4r28F36JnXftDYmjJyRf166osNmPcUseFbhlKXxPMRCgY0Y/BF0
-         Mjx1pYxm5JhPj0t1Bbgx4S8TDZLddDNE1OCDpq8j2SZ9TEh0QddPMyy7IZIZo5Qoo8i7
-         Rhjg==
-X-Gm-Message-State: AA+aEWZp/szHhpajQHPZ9Kbakh/dtz0uwwIFDc/2wmc87LGtvttFOYfw
-	L2MjITrxtjAZwtBDB0+rzXY=
-X-Received: by 2002:a0c:9144:: with SMTP id q62mr643242qvq.87.1544741743495;
-        Thu, 13 Dec 2018 14:55:43 -0800 (PST)
-Return-Path: <shayenneluzmoura@gmail.com>
-Received: from smtp.gmail.com ([143.107.45.1])
-        by smtp.gmail.com with ESMTPSA id m68sm1723068qte.49.2018.12.13.14.55.40
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Dec 2018 14:55:42 -0800 (PST)
-Date: Thu, 13 Dec 2018 20:55:37 -0200
-From: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <maxime.ripard@bootlin.com>,
-	Sean Paul <sean@poorly.run>, David Airlie <airlied@linux.ie>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] drm: Remove complete task from TODO documentation
-Message-ID: <20181213225537.nq4dwidn6tma33iv@smtp.gmail.com>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=ubQOJLqbWINZ/xIhuDMLx90m00myGGg/L5iT7MnEWdU=;
+        b=UMKDNYe10q5E72STMHFNnCcDmoGBiyGXrmmsmbXfKg2g/wtI5Z6jNtpbtEy8o0f6s0
+         1NPodhnsJgKyhZowcpZvW9HCjJtoV1Ga6JEqdnZY7nvi3fLPbkvzN5X91CzKGxy+vcV7
+         CtjWvTfDGjCuRNGlyZGShAs2p04NfXL8XvIUPc2T6vF0JeCYp/uz+SP6idQhXaJWPz42
+         PUou7qw/Z7FZlnzbory9+jmI5aMxZqXaY5v1y8aiI5HCTmq2WVvJ5goQEBuzmdZkyYSe
+         C6oDR8b6rehW8lJ02ltYAFXrMl3ZcwHyfzYmxkVYO+EB5tvQkPu5rIgQvjRD47f0iVJ2
+         jAUw==
+X-Gm-Message-State: AFeK/H3LcF3XGdHomc5RnuHAd3KbZqujcULwsR7kTsj6RywQDAQhSSsNpdVx0a8STmWC/w==
+X-Received: by 10.84.175.129 with SMTP id t1mr18185839plb.17.1490456627754;
+        Sat, 25 Mar 2017 08:43:47 -0700 (PDT)
+Return-Path: <amsfield22@gmail.com>
+Received: from d830 (or-67-232-66-135.dhcp.embarqhsd.net. [67.232.66.135])
+        by smtp.gmail.com with ESMTPSA id s26sm11354558pge.33.2017.03.25.08.43.47
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 25 Mar 2017 08:43:47 -0700 (PDT)
+Date: Sat, 25 Mar 2017 08:43:46 -0700
+From: Alison Schofield <amsfield22@gmail.com>
+To: Gargi Sharma <gs051095@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, arushisinghal19971997@gmail.com,
+	singhalsimran0@gmail.com, karniksayli1995@gmail.com
+Subject: Re: [PATCH] Proposal for meter ade* patches
+Message-ID: <20170325154345.GA1750@d830.WORKGROUP>
+References: <1490427900-21479-1-git-send-email-gs051095@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: NeoMutt/20171215
+In-Reply-To: <1490427900-21479-1-git-send-email-gs051095@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-This patch remove the follow complete task from TODO documentation:
+On Sat, Mar 25, 2017 at 01:15:00PM +0530, Gargi Sharma wrote:
+> The driver needs to insure atomicity during frequency
+> changes of bus and device. The iiodev->mlock as used
+> was not doing that. Replace it with the drivers existing
+> buffer lock and execute spi_write directly.
+> 
+> Signed-off-by: Gargi Sharma <gs051095@gmail.com>
 
-  drm_mode_config.crtc_idr is misnamed, since it contains all KMS object.
-  Should be renamed to drm_mode_config.object_idr.
+Hi Gargi,
 
-Signed-off-by: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
----
- Documentation/gpu/todo.rst | 3 ---
- 1 file changed, 3 deletions(-)
+It's certainly a clean, simple patch!  It's good that you're 
+running it by Sayli, Simran, and Arushi.  Some consensus that
+this flavor of fix will work in their drivers would be good
+before forwarding it on for 'official' review.
 
-diff --git a/Documentation/gpu/todo.rst b/Documentation/gpu/todo.rst
-index 14191b64446d..41da7b06195c 100644
---- a/Documentation/gpu/todo.rst
-+++ b/Documentation/gpu/todo.rst
-@@ -354,9 +354,6 @@ KMS cleanups
- 
- Some of these date from the very introduction of KMS in 2008 ...
- 
--- drm_mode_config.crtc_idr is misnamed, since it contains all KMS object. Should
--  be renamed to drm_mode_config.object_idr.
--
- - drm_display_mode doesn't need to be derived from drm_mode_object. That's
-   leftovers from older (never merged into upstream) KMS designs where modes
-   where set using their ID, including support to add/remove modes.
--- 
-2.19.2
+An RFC tag might have been appropriate here, but no worries
+now.  It's only in our Outreachy tree.
 
+alisons
+
+> ---
+>  drivers/staging/iio/meter/ade7754.c | 9 ++++++---
+>  1 file changed, 6 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/staging/iio/meter/ade7754.c b/drivers/staging/iio/meter/ade7754.c
+> index c8d2d4c..48339e9a 100644
+> --- a/drivers/staging/iio/meter/ade7754.c
+> +++ b/drivers/staging/iio/meter/ade7754.c
+> @@ -513,7 +513,7 @@ static ssize_t ade7754_write_frequency(struct device *dev,
+>  	if (!val)
+>  		return -EINVAL;
+>  
+> -	mutex_lock(&indio_dev->mlock);
+> +	mutex_lock(&st->buf_lock);
+>  
+>  	t = 26000 / val;
+>  	if (t > 0)
+> @@ -531,10 +531,13 @@ static ssize_t ade7754_write_frequency(struct device *dev,
+>  	reg &= ~(3 << 3);
+>  	reg |= t << 3;
+>  
+> -	ret = ade7754_spi_write_reg_8(dev, ADE7754_WAVMODE, reg);
+> +	st->tx[0] = ADE7754_WRITE_REG(ADE7754_WAVMODE);
+> +	st->tx[1] = reg;
+> +
+> +	ret = spi_write(st->us, st->tx, 2);
+>  
+>  out:
+> -	mutex_unlock(&indio_dev->mlock);
+> +	mutex_unlock(&st->buf_lock);
+>  
+>  	return ret ? ret : len;
+>  }
+> -- 
+> 2.7.4
+> 
 
