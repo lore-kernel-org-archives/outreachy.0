@@ -1,86 +1,95 @@
-X-GM-THRID: 6393386292161282048
-X-Received: by 10.46.21.11 with SMTP id s11mr869401ljd.23.1488576245550;
-        Fri, 03 Mar 2017 13:24:05 -0800 (PST)
+X-GM-THRID: 6401807929545064448
+X-Received: by 10.129.113.10 with SMTP id m10mr6342569ywc.140.1490537060532;
+        Sun, 26 Mar 2017 07:04:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.88.70 with SMTP id x6ls1137237ljd.21.gmail; Fri, 03 Mar
- 2017 13:24:05 -0800 (PST)
-X-Received: by 10.25.39.85 with SMTP id n82mr742695lfn.10.1488576244987;
-        Fri, 03 Mar 2017 13:24:04 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
-        by gmr-mx.google.com with ESMTPS id v70si344930wmf.0.2017.03.03.13.24.04
+Received: by 10.157.7.195 with SMTP id 61ls11301417oto.31.gmail; Sun, 26 Mar
+ 2017 07:04:20 -0700 (PDT)
+X-Received: by 10.176.81.70 with SMTP id f6mr1651300uaa.5.1490537060131;
+        Sun, 26 Mar 2017 07:04:20 -0700 (PDT)
+Return-Path: <gs051095@gmail.com>
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id y90si1440623pfa.6.2017.03.26.07.04.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Mar 2017 13:24:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
+        Sun, 26 Mar 2017 07:04:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
+       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x241.google.com with SMTP id n11so4977449wma.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 03 Mar 2017 13:24:04 -0800 (PST)
+Received: by mail-pf0-x243.google.com with SMTP id p189so5265927pfp.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 26 Mar 2017 07:04:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=J3YPXFptyYENePiREVPVKZhTn5lAQUn2CDHjclnlylY=;
-        b=bGtJHzGnEiyPSXlUP0wPeK48/RCCx2bxB8TYJY3ViaNRB/AKl7CTWLku2z3AtucgiS
-         pLeAUR3lnKq1bljtJcUjf2TN8uvwju0eS1rTJxI+AqeMTsip4Zo/E+m42LpRD2/mIZu8
-         FsLdhSvCIhGvS1H/pwuGQDUEW5tngB6gfofA4AHe0ty9kPACSggskFKqHQZ5RcLUgENQ
-         7YJwlo8pCVayCcm4LlhHjBUn5z4sHvOQ1nyieM8D7sOnm8irDTQZZ83fS1uAf5XMC7sm
-         G2Q2jIwzmm9cWdN6cItMU+JQBAiek+QDF+ftQu3MaMmhAuNBbzyMW/Asb+G5Ef0zZ2AH
-         JxYQ==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=uescfN5511z7mWxrPSc2nfgd+SCRfXmwu8cSCNnqRdo=;
+        b=pCaS8PmEb6XkrdKEbk6LfB9OiPwasde2ySbfGviRHjz++U4WQzJita/Fv8MFD7aCw4
+         EfreaIBJCW4q0Kbs9hN6XFExNpc7QnLJezLd1krMpnomb8v/ELW6YEzrIfRyXvZeDCBi
+         SX8vWzCNGFBfRPhNoS26N3f6lmVJUYiUI3ieHIQUkPq1zRmSS6SLMeWBkRvLhjjAIC5J
+         5ZBJABLBJDymH/w5vWtlc34r16qbj66Lxb00Gq0UpSyciOW0pHGwWCduRdx2iFYhGxag
+         l++hcqLGcfU0kk0dTeKJ8u/VOnxrLJI2f8+X0YGBGFKyJLRmCIfxbqY9QXUMnFbeCYEm
+         IVeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=J3YPXFptyYENePiREVPVKZhTn5lAQUn2CDHjclnlylY=;
-        b=K4Ba3rLvel7KrcAvlxwU0poN4FbFsprtgoTUIUFumCuoMARnYzbgQfaEALeVgeJavv
-         McUzeFNa7Mk6lMrc9lGZoV4QR+BULjPewFGUv+wmKEC6GFd8j6uq9DAfiY2kb9qihRRD
-         FVi45m7N0pNP+WqwpUIYk9wY7swbCRfl9A48xaKLF8ZU6U6usSqOrFy6OfdVKYB1V23s
-         dD0V2Qo0/hqwdW9GhB2Z5Nms6feq7ZNKDajI2UB8keI//m7XWASBw6UVRYLcvVRUuilZ
-         GPGXjc24NipBZt9J0JzOtB9q6rYDct5XKDRQd9s/gzMP+uCPXULU410RPUk+g/KmF06C
-         VJZA==
-X-Gm-Message-State: AMke39kFSrV/Q2MBfl5+Msn0JieoQvqn8rKwiFs70xn0LmFK+FMkZhaYweyFZFDx0ObEbw==
-X-Received: by 10.28.166.133 with SMTP id p127mr4862096wme.62.1488576244771;
-        Fri, 03 Mar 2017 13:24:04 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([2a02:2f0b:8170:1398:ed0e:d7f7:5879:7539])
-        by smtp.gmail.com with ESMTPSA id n9sm12714017wrn.40.2017.03.03.13.24.03
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 03 Mar 2017 13:24:03 -0800 (PST)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH] Delete comparison to NULL
-Date: Fri,  3 Mar 2017 23:24:01 +0200
-Message-Id: <20170303212401.9431-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=uescfN5511z7mWxrPSc2nfgd+SCRfXmwu8cSCNnqRdo=;
+        b=YBJgLnyKO2J0FAB8o+TmuDwYAbnpsaOumbrdzFr64q5zFNsb3FODik5xZ+iYp1WQqZ
+         YfJ0BknS4lTEilhFidkW5M9q5wBswbcKsrOK8SdOzR8KRd5tWNuIcOF9bSmBEUqmYbUU
+         zqBs24mhrqdOJMcGX8zp8aj9smc1S0ZRLmtmrfO+pZE3GUfB4TohvuXZMeBk3DMNi3jA
+         eO4MRaAAqleC8u8Nhe0vZc/X2IEHyidvePlycRTKnEBs/9RgVpeNw16jrBniHdxdUXrv
+         jUyJxRsAk14mrKsamcoAbd0R4asiZxhB9VF/jsAioTrEwN5ge/uoNNfy1dLndfp2ayLc
+         QO9g==
+X-Gm-Message-State: AFeK/H22hYMadvHX+2O4cJMfoMJQq0Ol3tdaE1l+11c3JJl3OnSQgkkXUOtfyc6uaRuN2Q==
+X-Received: by 10.98.91.130 with SMTP id p124mr20287513pfb.165.1490537059842;
+        Sun, 26 Mar 2017 07:04:19 -0700 (PDT)
+Return-Path: <gs051095@gmail.com>
+Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([47.9.132.176])
+        by smtp.googlemail.com with ESMTPSA id h25sm15369760pfk.119.2017.03.26.07.04.13
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 26 Mar 2017 07:04:19 -0700 (PDT)
+From: Gargi Sharma <gs051095@gmail.com>
+To: mawilcox@microsoft.com
+Cc: outreachy-kernel@googlegroups.com,
+	Gargi Sharma <gs051095@gmail.com>
+Subject: [PATCH] kernel: pid: Update Documentation
+Date: Sun, 26 Mar 2017 19:33:44 +0530
+Message-Id: <1490537024-9591-1-git-send-email-gs051095@gmail.com>
+X-Mailer: git-send-email 2.7.4
+MIME-Version: 1.0
+Content-Type: text/plain; charset=y
+Content-Transfer-Encoding: 8bit
 
-Deleted the comparison to NULL to fix the checkpath.pl issue
-CHECK: Comparison to NULL can be written 'virt_keyboard'.
+In the free_pid() function, it is not intuitive why the reaper
+needs to be called if number of pids in the namespace are 2.
+Update the documentation based on the discussion here:
+https://patchwork.kernel.org/patch/2851700/
 
-There was no need to compare the variable to NULL because the if
-structure checks if the variable is NULL anyway.
-
-Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
+Signed-off-by: Gargi Sharma <gs051095@gmail.com>
 ---
- drivers/staging/speakup/fakekey.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ kernel/pid.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/drivers/staging/speakup/fakekey.c b/drivers/staging/speakup/fakekey.c
-index d76da0a..294c74b 100644
---- a/drivers/staging/speakup/fakekey.c
-+++ b/drivers/staging/speakup/fakekey.c
-@@ -56,7 +56,7 @@ int speakup_add_virtual_keyboard(void)
- 
- void speakup_remove_virtual_keyboard(void)
- {
--	if (virt_keyboard != NULL) {
-+	if (virt_keyboard) {
- 		input_unregister_device(virt_keyboard);
- 		virt_keyboard = NULL;
- 	}
+diff --git a/kernel/pid.c b/kernel/pid.c
+index 5822142..8fc5b9e 100644
+--- a/kernel/pid.c
++++ b/kernel/pid.c
+@@ -268,6 +268,13 @@ void free_pid(struct pid *pid)
+ 		hlist_del_rcu(&upid->pid_chain);
+ 		switch (--ns->nr_hashed) {
+ 		case 2:
++			/*
++			 * It’s possible to get into a situation where a
++			 * pid->ns reaper is <defunct>, re-parented to host
++			 * pid 1, but never reaped. Wake up the reaper even
++			 * when nr_hashed hits 2, to prevent running a
++			 * container whose init is Process.exit(0)
++			 */
+ 		case 1:
+ 			/* When all that is left in the pid namespace
+ 			 * is the reaper wake up the reaper.  The reaper
 -- 
-2.9.3
+2.7.4
 
 
