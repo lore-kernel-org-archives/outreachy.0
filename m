@@ -1,61 +1,61 @@
 X-GM-THRID: 6401830709926821888
-X-Received: by 10.99.143.23 with SMTP id n23mr6817169pgd.5.1490582122815;
-        Sun, 26 Mar 2017 19:35:22 -0700 (PDT)
+X-Received: by 10.98.23.71 with SMTP id 68mr4626451pfx.32.1490542364893;
+        Sun, 26 Mar 2017 08:32:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.24.83 with SMTP id t19ls7087633ott.28.gmail; Sun, 26 Mar
- 2017 19:35:22 -0700 (PDT)
-X-Received: by 10.129.81.214 with SMTP id f205mr6745460ywb.110.1490582122296;
-        Sun, 26 Mar 2017 19:35:22 -0700 (PDT)
+Received: by 10.36.50.71 with SMTP id j68ls1318768ita.12.canary-gmail; Sun, 26
+ Mar 2017 08:32:44 -0700 (PDT)
+X-Received: by 10.107.13.20 with SMTP id 20mr5611866ion.1.1490542364154;
+        Sun, 26 Mar 2017 08:32:44 -0700 (PDT)
 Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id r66si1593796pfb.7.2017.03.26.19.35.22
+Received: from mail-pf0-x235.google.com (mail-pf0-x235.google.com. [2607:f8b0:400e:c00::235])
+        by gmr-mx.google.com with ESMTPS id y90si1467778pfa.6.2017.03.26.08.32.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 26 Mar 2017 19:35:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Sun, 26 Mar 2017 08:32:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) client-ip=2607:f8b0:400e:c00::235;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id g2so8766962pge.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 26 Mar 2017 19:35:22 -0700 (PDT)
+Received: by mail-pf0-x235.google.com with SMTP id o126so13886297pfb.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 26 Mar 2017 08:32:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=message-id:date:from:to:cc:subject:mime-version:content-disposition
          :user-agent;
-        bh=6IwQCVUi+GIO7lkcOgYExANyly0qv8qyhcoobnqWjlg=;
-        b=UeujR66Ya+SfoVJaN7efPrVJYrsX1P9wl6F+jgzHDnl6pYMJRqShdQIqsTpSiocFPJ
-         HbfQrSpoL/riiP69WEjnuL648BMywziglCOQypXhHFt6Vis5TMuGGYO8cH5l+FIcHDq3
-         y4s5UxDTQZ1fes2iLFGsZjKYgtR2ipdpE7wwnlMEW1Qz2vOGwXOiP2PCq9Weul93Aoy6
-         WefiO7R/jdQBwuE09v3iIHBb7XMOJit15MMBZ2pyk1b4aCv5BgCzDNsq2TAIPG/3j4IS
-         EUSMrUDRLuip4bIH5zRiy9usrukv5bBovZ7WVvNj9BSneCrVVzK2nAR9A9AeZYlHwiOX
-         XHjg==
+        bh=7gjmrWSEeu0PcowQZEJl6feFpcVEhD5U+hDVdHLyf6g=;
+        b=a/x8ri/nF4rX6H6IGhKI5w0bjI24l9CuGvOX2SF3v3huM8lX5T3q5FG6utKI3+K4IK
+         /BZ3YpMEHdSugawWrVDZ7KPszyQUKwjxD+hqdQe59RCl+ExwJpWpEXDXSoswlnVj2AAA
+         VPUsVHc2HTJ6R+ESH1hXg8TztdjrSNnicEweF9H+2jcKMa8skgan5s8DZI+E7E1W2vB6
+         v27o7L4azABmkLvJHS6BlA1JcogDE9R9BhkR98+dGuWA+vUxZ2KyeS585C659nPZQtVX
+         kLedLkYnOqfV7Pe4LWXBBFNRPTCBJOd3GvRy/JM7q0uFZWOs02AimPwPdA5gzUU34kfA
+         snMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
          :content-disposition:user-agent;
-        bh=6IwQCVUi+GIO7lkcOgYExANyly0qv8qyhcoobnqWjlg=;
-        b=Ke5bgtk4SGQrSfqQS8cq4IdpCjARJZPEEms6ggBvmVhE8n4iI9muipnTBOR5ROXGgB
-         fdw0CAh5cMqEJc4bhcya2y0OO+/DaFV+BX3GU9+n+Q5hRnDro0WzZkitrQqYzN9YPdp/
-         07RRNwQ+LUG43bPH0/mHBMjSGX1oSfYWM/1Dp8WvvnTsbiFjvQxJqmu9ZefX/ANecy7g
-         tBOehDeb+ZaW2VHCHOp8KGtCSZobJ7YN6wLnoJjppvI3fMe6k7Es9F7n/bvj2O7RG22B
-         Wvs2Wi/nRIP/ikLJstZe9UaihXEYu9VyhiWuBHVcoCV5tVjpjHOmAvvYpcNx3k1B8b5B
-         SSZQ==
-X-Gm-Message-State: AFeK/H1NHTlhYKNWnURCjoh0ydI0V3obKs3HPluSsinLoF2QiBgoESR9fnp3ocSDj2bBRg==
-X-Received: by 10.84.232.79 with SMTP id f15mr7263288pln.90.1490582121941;
-        Sun, 26 Mar 2017 19:35:21 -0700 (PDT)
+        bh=7gjmrWSEeu0PcowQZEJl6feFpcVEhD5U+hDVdHLyf6g=;
+        b=Se6JyySs7Kj+5wKdLWrTyurPrEiynBiZ/MydwNa4tCi62H0QKbJSAiMgi2OQvIoUSM
+         Ik9YIIAypQknvmiAi6Km0PQTWncoY+DbvxnaDQoeB0G/msF/I9deNhLgC93O56POPffl
+         5e+wr+vgZ1tKsU4PV+5Tshbp7IZyvT0dZ4qkUmVQMBKXjRhMAaPZ/Tslw12jyV8hM2Dw
+         LSmR9hmylWUl9oPD9oPUPSsGJ1C+s1u4wDsPf5oHKijuBDXmXNd8BaYugRdFEw/R99b7
+         lTeusNWVojg7oYB4qFRRDzoJD3OMGRICguAkQ8UlZyJPejx0GBnP9AFBC+BPGb5WTPpc
+         QceQ==
+X-Gm-Message-State: AFeK/H1zcum2FiSx8iuoe12vQprCwx2cCl1yxUeoHe9DldY9ntp5Hfu4yurXKHxfq60E9g==
+X-Received: by 10.99.115.68 with SMTP id d4mr19570532pgn.146.1490542363884;
+        Sun, 26 Mar 2017 08:32:43 -0700 (PDT)
 Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([2405:204:5181:ce92:a4e3:114c:b305:cb39])
-        by smtp.gmail.com with ESMTPSA id d1sm17163118pfa.5.2017.03.26.19.35.20
+Received: from euri ([117.192.128.197])
+        by smtp.gmail.com with ESMTPSA id i124sm15661631pgd.66.2017.03.26.08.32.42
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 26 Mar 2017 19:35:21 -0700 (PDT)
-Message-ID: <58d87a69.0136620a.1c197.cbdc@mx.google.com>
-X-Google-Original-Message-ID: <20170327023517.GA2535@<rvarsha016@gmail.com>>
-Date: Mon, 27 Mar 2017 08:05:17 +0530
+        Sun, 26 Mar 2017 08:32:43 -0700 (PDT)
+Message-ID: <58d7df1b.829d630a.23aa7.6b64@mx.google.com>
+X-Google-Original-Message-ID: <20170326153240.GA19975@<rvarsha016@gmail.com>>
+Date: Sun, 26 Mar 2017 21:02:40 +0530
 From: Varsha Rao <rvarsha016@gmail.com>
 To: mawilcox@microsoft.com
 Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH v2 0/3] kernel: pid: Update documentation and fix checkpatch
+Subject: [PATCH 0/3] kernel: pid: Update documentation and fix checkpatch
  issues.
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -65,13 +65,14 @@ User-Agent: Mutt/1.7.1 (2016-10-04)
 This patchset fixes multiple checkpatch issues and updates documentation
 of pid.c file.
 
+
 Varsha Rao (3):
   kernel: pid: Update documentation.
-  kernel: pid: Change function return value to bool.
+  kernel: pid: Replace unsigned with unsigned int.
   kernel: pid: Add blank line after declarations.
 
- kernel/pid.c | 27 +++++++++++++++++++++++++--
- 1 file changed, 25 insertions(+), 2 deletions(-)
+ kernel/pid.c | 25 ++++++++++++++++++++++++-
+ 1 file changed, 24 insertions(+), 1 deletion(-)
 
 -- 
 2.9.3
