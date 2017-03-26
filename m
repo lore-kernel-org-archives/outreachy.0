@@ -1,109 +1,240 @@
-X-GM-THRID: 6402862819430105088
-X-Received: by 10.157.14.40 with SMTP id c37mr10749667otc.34.1490782671443;
-        Wed, 29 Mar 2017 03:17:51 -0700 (PDT)
+X-GM-THRID: 6401905982375460864
+X-Received: by 10.25.201.198 with SMTP id z189mr2336302lff.15.1490559890273;
+        Sun, 26 Mar 2017 13:24:50 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.54.152 with SMTP id h24ls2263659otc.30.gmail; Wed, 29 Mar
- 2017 03:17:51 -0700 (PDT)
-X-Received: by 10.157.49.33 with SMTP id e30mr1360607otc.107.1490782671084;
-        Wed, 29 Mar 2017 03:17:51 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id 2si1156944pfx.8.2017.03.29.03.17.51
+Received: by 10.25.35.129 with SMTP id j123ls1026464lfj.50.gmail; Sun, 26 Mar
+ 2017 13:24:49 -0700 (PDT)
+X-Received: by 10.25.215.37 with SMTP id o37mr2301924lfg.20.1490559889672;
+        Sun, 26 Mar 2017 13:24:49 -0700 (PDT)
+Return-Path: <azure@suarez.id.au>
+Received: from mail-wr0-x243.google.com (mail-wr0-x243.google.com. [2a00:1450:400c:c0c::243])
+        by gmr-mx.google.com with ESMTPS id i76si860954wmh.1.2017.03.26.13.24.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 29 Mar 2017 03:17:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Sun, 26 Mar 2017 13:24:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of azure@suarez.id.au designates 2a00:1450:400c:c0c::243 as permitted sender) client-ip=2a00:1450:400c:c0c::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id n11so1345808pfg.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 29 Mar 2017 03:17:51 -0700 (PDT)
+       dkim=pass header.i=@suarez-id-au.20150623.gappssmtp.com;
+       spf=pass (google.com: domain of azure@suarez.id.au designates 2a00:1450:400c:c0c::243 as permitted sender) smtp.mailfrom=azure@suarez.id.au
+Received: by mail-wr0-x243.google.com with SMTP id 20so7376298wrx.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 26 Mar 2017 13:24:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
+        d=suarez-id-au.20150623.gappssmtp.com; s=20150623;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=ubZAlX7Gn84LApXo0fKbyQ/fhB5KXqZlmMtlvvPgVlk=;
-        b=ptJLpNWN7MSUZq0Pq6vh6/c1BoFBq1ivjcq/YFKA/wal9Ce7QzMyie4AVgjJ5Hysy2
-         8mfE4bYUxDoIov93rNGocnIucfogIu6AtG4NUpZ6eA5096yiTvelzJ6sQwKoj1qw4YMT
-         ufOGmFOlHI3p20ArBHpuE+j6+zhiSUo9SSNx2Fe6yHECByS3sS7yFwB9EXsAO0TAMeaP
-         /UVMh8DY9xb+SLO71cEmjcUdY9QNOYvYOIBTyl5kUCK4mkqV51x6XvFJpmlgxsJyvi6e
-         51qfIKBl1BcjO1LyK0O1K1QW9am1eqUiypB3JxgWczPQg0gEBBZou3axD62Hu/80DRuj
-         Jvaw==
+        bh=nLAIQaEo5Sbm+ZQcP3U8GjtAKKoFHe8FMYoXT7PPQq8=;
+        b=o3ddnnmEq+WasiTKaNt39+vjf784QTAQCh2HZ10GXa2urEejY/qiJ17T/7aGLH64Vv
+         K4+qYer8Gft+eO8FaoZzg4axxOTjZ+dXxFpOYFM4n263T7quZgovfri7g+kqP2HyoNko
+         7ibHgo63P5sloA9z6v9NcQ8bSbbvGpTDCBHsxiZmQc3sjQh35l6rYbzx5lzxT0IWp4RU
+         c6sudZoJmgD/Q9x4p5BQ2c8ji55M9PCajLR3fTQcvfCeGgx7ZTrZ/+3J07U2U50Y3nAQ
+         siGfbO2nsJgADgeg3/5Kkf/ZDAr4/E1vI8v6KzSRuv1DKm8a8s9bjQabZs/HXcztkTC/
+         wgfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=ubZAlX7Gn84LApXo0fKbyQ/fhB5KXqZlmMtlvvPgVlk=;
-        b=EC94XOegAmIm37LbL/WF4Shzlhip/Rs/U7fjlJrmB8QBobz0tpjCPoC3F0CQ1wD3A3
-         WcV10MJLHQ8fgD4ut0WE3Cv5tadi34gGwdbdMBtgLqs6GyP2qea1as1P1lsTMZM/bG5l
-         r3p+PG6ryJOe1lYTXOUWC3hvlJKrETEU+RJCCBUhguzcRshRWC6mrEDJrLovwj6tHZt2
-         84n8gPNGRZSknl4RxREtcWs7SjlWAw+/LnxkFFz2MTvsVAN+WqZ9Y9W2S/CPS/4fXv7W
-         PF/Mx2RNd4XpGJD0dxUmi9zF9+Z6SUkIk7sm0UtFCZEdU2TVMbiwT48/jpp/BaZMVIJ7
-         850A==
-X-Gm-Message-State: AFeK/H3vzaD2tbJDxbvHsPvQdmOkz4EcMmQBK+8QzN283RgwVdvBwPGr3WgZF/Xx36WfPQ==
-X-Received: by 10.98.68.199 with SMTP id m68mr36918475pfi.31.1490782670855;
-        Wed, 29 Mar 2017 03:17:50 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 23sm12662820pfw.94.2017.03.29.03.17.49
+        bh=nLAIQaEo5Sbm+ZQcP3U8GjtAKKoFHe8FMYoXT7PPQq8=;
+        b=n+oeWFRsj+Q6uxI9M0aG5cziLd+ZZSTyRPELRcqjAOTCY0Qy6Yv1BHNF6TQcl/HLu0
+         GUJ8S9IV2vl7vU37vnzy4hZ6+VflWfct350Hqz1/iTdpvJuJSWjVtqcRlB3rFfFk7VZH
+         NncZ1A/2ATZ0YxqPzKyzYLk6X3n9lGcdCtZxbXulVBlawHWGai0Tjnvc6TbAfKhZdbRZ
+         XS1/P1Azf418AVl4Pqi1vCyrz/wN4Nb5Q0C4SIzuMtM7oNaePzfGro03kMk5MiFKSeMe
+         zHP9xMwuv7vySXiJrdSMU1hCHYywuS7KbHIeKxQsEGcaAHmwXJlbtMqEv1undkORHhqU
+         5FxQ==
+X-Gm-Message-State: AFeK/H2kHJYwdJGOH45tKF6vGnMLmnMrxb8gPO0kVZ6L+gExttzPQI67bRoBMV87Id3oeQ==
+X-Received: by 10.28.211.9 with SMTP id k9mr6538052wmg.96.1490559889257;
+        Sun, 26 Mar 2017 13:24:49 -0700 (PDT)
+Return-Path: <azure@suarez.id.au>
+Received: from hcs-desktop ([37.228.230.54])
+        by smtp.gmail.com with ESMTPSA id m29sm626119wrm.4.2017.03.26.13.24.48
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 29 Mar 2017 03:17:49 -0700 (PDT)
-Date: Wed, 29 Mar 2017 15:47:46 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
+        Sun, 26 Mar 2017 13:24:48 -0700 (PDT)
+Date: Sun, 26 Mar 2017 21:24:47 +0100
+From: Hannah Suarez <azure@suarez.id.au>
 To: outreachy-kernel@googlegroups.com
-Cc: Pablo Neira Ayuso <pablo@netfilter.org>,
-	Jozsef Kadlecsik <kadlec@blackhole.kfki.hu>,
-	"David S. Miller" <davem@davemloft.net>,
-	Alexey Kuznetsov <kuznet@ms2.inr.ac.ru>,
-	James Morris <jmorris@namei.org>,
-	Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>,
-	Patrick McHardy <kaber@trash.net>, netfilter-devel@vger.kernel.org,
-	coreteam@netfilter.org, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] net: ipv6: Removed unnecessary parenthesis
-Message-ID: <20170329101746.GA30647@arushi-HP-Pavilion-Notebook>
+Cc: gregkh@linuxfoundation.org
+Subject: [PATCH] Patch 4/7. Delete FSF mail address paragraph.
+Message-ID: <20170326202447.GA10878@hcs-desktop>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Removed parentheses on the right hand side of assignment, as they are
-not required. The following coccinelle script was used to fix this
-issue:
+Delete the FSF mailing address paragraph on the event of an address
+change.
 
-@@
-local idexpression id;
-expression e;
-@@
+Linux already includes a copy of the GPL.
 
-id =
--(
-e
--)
-
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+Signed-off-by: Hannah Suarez <azure@suarez.id.au>
 ---
- net/ipv6/netfilter/nf_conntrack_reasm.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/rtl8712/rtl8712_interrupt_bitdef.h  | 5 -----
+ drivers/staging/rtl8712/rtl8712_io.c                | 4 ----
+ drivers/staging/rtl8712/rtl8712_led.c               | 4 ----
+ drivers/staging/rtl8712/rtl8712_macsetting_bitdef.h | 5 -----
+ drivers/staging/rtl8712/rtl8712_macsetting_regdef.h | 5 -----
+ drivers/staging/rtl8712/rtl8712_powersave_bitdef.h  | 5 -----
+ drivers/staging/rtl8712/rtl8712_powersave_regdef.h  | 5 -----
+ drivers/staging/rtl8712/rtl8712_ratectrl_bitdef.h   | 5 -----
+ drivers/staging/rtl8712/rtl8712_ratectrl_regdef.h   | 4 ----
+ drivers/staging/rtl8712/rtl8712_recv.c              | 4 ----
+ 10 files changed, 46 deletions(-)
 
-diff --git a/net/ipv6/netfilter/nf_conntrack_reasm.c b/net/ipv6/netfilter/nf_conntrack_reasm.c
-index fdde76e8a16a..34dfdc2fb2bc 100644
---- a/net/ipv6/netfilter/nf_conntrack_reasm.c
-+++ b/net/ipv6/netfilter/nf_conntrack_reasm.c
-@@ -387,9 +387,9 @@ nf_ct_frag6_reasm(struct frag_queue *fq, struct sk_buff *prev,  struct net_devic
- 		return false;
- 
- 	/* Unfragmented part is taken from the first segment. */
--	payload_len = ((head->data - skb_network_header(head)) -
-+	payload_len = (head->data - skb_network_header(head)) -
- 		       sizeof(struct ipv6hdr) + fq->q.len -
--		       sizeof(struct frag_hdr));
-+		       sizeof(struct frag_hdr);
- 	if (payload_len > IPV6_MAXPLEN) {
- 		net_dbg_ratelimited("nf_ct_frag6_reasm: payload len = %d\n",
- 				    payload_len);
+diff --git a/drivers/staging/rtl8712/rtl8712_interrupt_bitdef.h b/drivers/staging/rtl8712/rtl8712_interrupt_bitdef.h
+index 49598c3..072a719 100644
+--- a/drivers/staging/rtl8712/rtl8712_interrupt_bitdef.h
++++ b/drivers/staging/rtl8712/rtl8712_interrupt_bitdef.h
+@@ -11,11 +11,6 @@
+  * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+  * more details.
+  *
+- * You should have received a copy of the GNU General Public License along with
+- * this program; if not, write to the Free Software Foundation, Inc.,
+- * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
+- *
+- *
+  ******************************************************************************/
+ #ifndef __RTL8712_INTERRUPT_BITDEF_H__
+ #define __RTL8712_INTERRUPT_BITDEF_H__
+diff --git a/drivers/staging/rtl8712/rtl8712_io.c b/drivers/staging/rtl8712/rtl8712_io.c
+index 391eff3..7659afb 100644
+--- a/drivers/staging/rtl8712/rtl8712_io.c
++++ b/drivers/staging/rtl8712/rtl8712_io.c
+@@ -13,10 +13,6 @@
+  * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+  * more details.
+  *
+- * You should have received a copy of the GNU General Public License along with
+- * this program; if not, write to the Free Software Foundation, Inc.,
+- * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
+- *
+  * Modifications for inclusion into the Linux staging tree are
+  * Copyright(c) 2010 Larry Finger. All rights reserved.
+  *
+diff --git a/drivers/staging/rtl8712/rtl8712_led.c b/drivers/staging/rtl8712/rtl8712_led.c
+index da1d4a6..ff55aa6 100644
+--- a/drivers/staging/rtl8712/rtl8712_led.c
++++ b/drivers/staging/rtl8712/rtl8712_led.c
+@@ -13,10 +13,6 @@
+  * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+  * more details.
+  *
+- * You should have received a copy of the GNU General Public License along with
+- * this program; if not, write to the Free Software Foundation, Inc.,
+- * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
+- *
+  * Modifications for inclusion into the Linux staging tree are
+  * Copyright(c) 2010 Larry Finger. All rights reserved.
+  *
+diff --git a/drivers/staging/rtl8712/rtl8712_macsetting_bitdef.h b/drivers/staging/rtl8712/rtl8712_macsetting_bitdef.h
+index 28e0a7e..d7c589b 100644
+--- a/drivers/staging/rtl8712/rtl8712_macsetting_bitdef.h
++++ b/drivers/staging/rtl8712/rtl8712_macsetting_bitdef.h
+@@ -11,11 +11,6 @@
+  * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+  * more details.
+  *
+- * You should have received a copy of the GNU General Public License along with
+- * this program; if not, write to the Free Software Foundation, Inc.,
+- * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
+- *
+- *
+  ******************************************************************************/
+ #ifndef __RTL8712_MACSETTING_BITDEF_H__
+ #define __RTL8712_MACSETTING_BITDEF_H__
+diff --git a/drivers/staging/rtl8712/rtl8712_macsetting_regdef.h b/drivers/staging/rtl8712/rtl8712_macsetting_regdef.h
+index ced0da9..2939c8b 100644
+--- a/drivers/staging/rtl8712/rtl8712_macsetting_regdef.h
++++ b/drivers/staging/rtl8712/rtl8712_macsetting_regdef.h
+@@ -11,11 +11,6 @@
+  * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+  * more details.
+  *
+- * You should have received a copy of the GNU General Public License along with
+- * this program; if not, write to the Free Software Foundation, Inc.,
+- * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
+- *
+- *
+  ******************************************************************************/
+ #ifndef __RTL8712_MACSETTING_REGDEF_H__
+ #define __RTL8712_MACSETTING_REGDEF_H__
+diff --git a/drivers/staging/rtl8712/rtl8712_powersave_bitdef.h b/drivers/staging/rtl8712/rtl8712_powersave_bitdef.h
+index 8fc6894..ef8d6d1 100644
+--- a/drivers/staging/rtl8712/rtl8712_powersave_bitdef.h
++++ b/drivers/staging/rtl8712/rtl8712_powersave_bitdef.h
+@@ -11,11 +11,6 @@
+  * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+  * more details.
+  *
+- * You should have received a copy of the GNU General Public License along with
+- * this program; if not, write to the Free Software Foundation, Inc.,
+- * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
+- *
+- *
+  ******************************************************************************/
+ #ifndef __RTL8712_POWERSAVE_BITDEF_H__
+ #define __RTL8712_POWERSAVE_BITDEF_H__
+diff --git a/drivers/staging/rtl8712/rtl8712_powersave_regdef.h b/drivers/staging/rtl8712/rtl8712_powersave_regdef.h
+index 4632ddd..67b4b4a 100644
+--- a/drivers/staging/rtl8712/rtl8712_powersave_regdef.h
++++ b/drivers/staging/rtl8712/rtl8712_powersave_regdef.h
+@@ -11,11 +11,6 @@
+  * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+  * more details.
+  *
+- * You should have received a copy of the GNU General Public License along with
+- * this program; if not, write to the Free Software Foundation, Inc.,
+- * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
+- *
+- *
+  ******************************************************************************/
+ #ifndef __RTL8712_POWERSAVE_REGDEF_H__
+ #define __RTL8712_POWERSAVE_REGDEF_H__
+diff --git a/drivers/staging/rtl8712/rtl8712_ratectrl_bitdef.h b/drivers/staging/rtl8712/rtl8712_ratectrl_bitdef.h
+index 6d3d6e8..b47ea47a 100644
+--- a/drivers/staging/rtl8712/rtl8712_ratectrl_bitdef.h
++++ b/drivers/staging/rtl8712/rtl8712_ratectrl_bitdef.h
+@@ -11,11 +11,6 @@
+  * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+  * more details.
+  *
+- * You should have received a copy of the GNU General Public License along with
+- * this program; if not, write to the Free Software Foundation, Inc.,
+- * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
+- *
+- *
+  ******************************************************************************/
+ #ifndef __RTL8712_RATECTRL_BITDEF_H__
+ #define __RTL8712_RATECTRL_BITDEF_H__
+diff --git a/drivers/staging/rtl8712/rtl8712_ratectrl_regdef.h b/drivers/staging/rtl8712/rtl8712_ratectrl_regdef.h
+index 73dfc36..88fec48 100644
+--- a/drivers/staging/rtl8712/rtl8712_ratectrl_regdef.h
++++ b/drivers/staging/rtl8712/rtl8712_ratectrl_regdef.h
+@@ -11,10 +11,6 @@
+  * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+  * more details.
+  *
+- * You should have received a copy of the GNU General Public License along with
+- * this program; if not, write to the Free Software Foundation, Inc.,
+- * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
+- *
+  * Modifications for inclusion into the Linux staging tree are
+  * Copyright(c) 2010 Larry Finger. All rights reserved.
+  *
+diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
+index 266ffef..632612c 100644
+--- a/drivers/staging/rtl8712/rtl8712_recv.c
++++ b/drivers/staging/rtl8712/rtl8712_recv.c
+@@ -13,10 +13,6 @@
+  * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+  * more details.
+  *
+- * You should have received a copy of the GNU General Public License along with
+- * this program; if not, write to the Free Software Foundation, Inc.,
+- * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
+- *
+  * Modifications for inclusion into the Linux staging tree are
+  * Copyright(c) 2010 Larry Finger. All rights reserved.
+  *
 -- 
-2.11.0
+2.7.4
 
 
