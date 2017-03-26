@@ -1,89 +1,71 @@
 X-GM-THRID: 6401819323480932352
-X-Received: by 10.157.36.99 with SMTP id p90mr6276039ota.7.1490539730949;
-        Sun, 26 Mar 2017 07:48:50 -0700 (PDT)
+X-Received: by 10.99.115.87 with SMTP id d23mr6510594pgn.112.1490539713921;
+        Sun, 26 Mar 2017 07:48:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.33.39 with SMTP id i36ls8263055otb.24.gmail; Sun, 26 Mar
- 2017 07:48:50 -0700 (PDT)
-X-Received: by 10.200.40.194 with SMTP id j2mr5710834qtj.36.1490539730638;
-        Sun, 26 Mar 2017 07:48:50 -0700 (PDT)
+Received: by 10.157.2.98 with SMTP id 89ls8391436otb.22.gmail; Sun, 26 Mar
+ 2017 07:48:33 -0700 (PDT)
+X-Received: by 10.237.36.21 with SMTP id r21mr5581328qtc.1.1490539713576;
+        Sun, 26 Mar 2017 07:48:33 -0700 (PDT)
 Return-Path: <gs051095@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id g82si1280835pfb.5.2017.03.26.07.48.50
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id 2si1471004pfx.8.2017.03.26.07.48.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 26 Mar 2017 07:48:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Sun, 26 Mar 2017 07:48:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
+       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id g2so6104874pge.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 26 Mar 2017 07:48:50 -0700 (PDT)
+Received: by mail-pf0-x242.google.com with SMTP id n11so5345259pfg.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 26 Mar 2017 07:48:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :in-reply-to:references;
-        bh=wiDgfLA5vhwo3lvqlKVjYKWrFCmUDeRR7sCYc7EyMdg=;
-        b=o/fLrLgC6Xz1v5ZA8VplOC8tR9TXX8mPW/OwfPSwHrW6L/T9P59kyHM7H7uAZKRarT
-         Z3+QGpkk4SKhbCBlGW8Mtjw4cFPT3WqvIQifLkeImcDWDD0l7x4fqtLdXG6zbbIHLW10
-         vFh0RSUdUErg+ovLteP3jiyXmuKz22Q8pZgUgVaV+uOIXukGiSMs50ljd25XNsOGpoQ9
-         YiBPl4IpnX7KZ9muJpV6zMNUpNgqXMqTNcL2rUEQStK7cp37XQN3e8DCjJaxpfimioqA
-         zwsju0t31zS+K4eNltPu2hDRhdUiMz0bHdMBzCQBaJ6xe7cjYWhcxiumqI1uealVg3Ty
-         rftA==
+        h=from:to:cc:subject:date:message-id;
+        bh=TJF/ey8SihwuAioqRL/FqPHbYpKj13tS/kHUG4K/WE0=;
+        b=jMiluBJ1PGiEnDN2Snr6zQZn8NPiBmN7caaKOVbwM4BJQvt5mh15cmjwlRiYzVvL2j
+         E9EHiH3xcWJMsYQZxCgoz5Zogum0nTxHNjL5m/MX61q+er09Q2kMGsu/Ph28dftaDfk6
+         TqUakazkVjIvjG/UX6Qh1uZf/8bxPct3LOv6wG3veoWG4YAB557bmF77hXLKOMKf3Ol4
+         0ZhMO0nKshYWHMNrIfF502AsI6EMJmSolQpF1eI9P6TmA3eb8bkXJXmbpOkApwcz/sHw
+         WIcKmQMPqMPqnfyoZrSzFU6EIiDeS6w40HUyMnXmN08AYdNE8fk+KpZxjNeaoRcUAaty
+         U+bQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:in-reply-to:references;
-        bh=wiDgfLA5vhwo3lvqlKVjYKWrFCmUDeRR7sCYc7EyMdg=;
-        b=mxAXw5ddYSBpdfn55QxbRPEgkLwP2LByO/8b/38dndlP8Ngfd6+kdDDsr2ycanm1HF
-         0naNUZpB4OkpikMT19iEsoa9BdLP64sRQVcmCpaYVag6uPJaMAJJTacXujP1vWyZB4dN
-         ay+qDS7A0YtAC6stNZHfjNvycgI3Mq183vqZFXwB8x70CRnm305exex1v6roE0mMZ+JY
-         cAlxU41EcjOADqc9ICUaKXecrlVaMZxBBoFK9Eygq4oEBxQfVV9SL/PzRm295qC1nbWc
-         jYOvWRkAUbeWdoMUGlCzLVyym5LHo3WVilNG6rH9IEjvDfQFlWEpnkZGA950AF0M6D6o
-         MV2A==
-X-Gm-Message-State: AFeK/H1Xtz5IM72oAQS+NvX6KxmJV+smxeRvpvzPpFprhdpJwwZG4IVAj8qv/6ExoDBe2Q==
-X-Received: by 10.84.231.9 with SMTP id f9mr22830576plk.117.1490539730414;
-        Sun, 26 Mar 2017 07:48:50 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=TJF/ey8SihwuAioqRL/FqPHbYpKj13tS/kHUG4K/WE0=;
+        b=AYPmEb2T1TSUwL5hXdLNAA9CO0YzJFUsseDHgmSLH9L93bCOXY9fmSxPLIJMr8Pn5C
+         zdmhAfCrYdJKyA58L9zpWuRgjxPBghb9NUe/BLnpaXU6mWEkYOt3zw81xC3e/OKq2eAI
+         otcv4+3Eaet72ZCff+Xh2ynWrFI3M1nALvXF2LTUMuOgyjeJHm8rr2be6VkA9rlyOOEv
+         0djbV8S4A3ciUNc+pTb99gQPb3RnMYSc8XhSMipBFp4JF2jesPYelxXpTCeM7+bol08m
+         ocKD3YbsgHm7kCKdoVyrSA7alKz0b9IpfwShNojwfdso9vZ+OKnNPbdjH6OYAHqbIonR
+         ooMA==
+X-Gm-Message-State: AFeK/H0s/Fh38NTj6CaKFILPbWBmeUYg5Yn51Qb/DGDQGzt/RINbHQAadN7Q042pW6Uufg==
+X-Received: by 10.84.172.193 with SMTP id n59mr23373256plb.77.1490539713374;
+        Sun, 26 Mar 2017 07:48:33 -0700 (PDT)
 Return-Path: <gs051095@gmail.com>
 Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([47.9.132.176])
-        by smtp.googlemail.com with ESMTPSA id d4sm15520148pfb.104.2017.03.26.07.48.43
+        by smtp.googlemail.com with ESMTPSA id d4sm15520148pfb.104.2017.03.26.07.48.26
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 26 Mar 2017 07:48:49 -0700 (PDT)
+        Sun, 26 Mar 2017 07:48:32 -0700 (PDT)
 From: Gargi Sharma <gs051095@gmail.com>
 To: mawilcox@microsoft.com
 Cc: outreachy-kernel@googlegroups.com,
 	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH 1/3] kernel: pid_namespace: Remove return statement from void function
-Date: Sun, 26 Mar 2017 20:18:13 +0530
-Message-Id: <4e1f050c2aaf767da474b990afa3b0d49c3442e3.1490539466.git.gs051095@gmail.com>
+Subject: [PATCH 0/3] Fix multiple checkpatch issues
+Date: Sun, 26 Mar 2017 20:18:12 +0530
+Message-Id: <cover.1490539466.git.gs051095@gmail.com>
 X-Mailer: git-send-email 2.7.4
-In-Reply-To: <cover.1490539466.git.gs051095@gmail.com>
-References: <cover.1490539466.git.gs051095@gmail.com>
-In-Reply-To: <cover.1490539466.git.gs051095@gmail.com>
-References: <cover.1490539466.git.gs051095@gmail.com>
 
-zap_pid_ns_processes is a void function and the return
-statement at the end is not useful.
+This file fixes multiple checkpatch issues in pid_namespace.c file.
 
-Found with checkpatch.
+Gargi Sharma (3):
+  kernel: pid_namespace: Remove return statement from void function
+  kernel: pid_namespace: Fix line over 80 characters
+  kernel: pid_namespace: Do not initialise statics to 0
 
-Signed-off-by: Gargi Sharma <gs051095@gmail.com>
----
- kernel/pid_namespace.c | 1 -
- 1 file changed, 1 deletion(-)
+ kernel/pid_namespace.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/kernel/pid_namespace.c b/kernel/pid_namespace.c
-index 5f29687..6ace1e3 100644
---- a/kernel/pid_namespace.c
-+++ b/kernel/pid_namespace.c
-@@ -287,7 +287,6 @@ void zap_pid_ns_processes(struct pid_namespace *pid_ns)
- 		current->signal->group_exit_code = pid_ns->reboot;
- 
- 	acct_exit_ns(pid_ns);
--	return;
- }
- 
- #ifdef CONFIG_CHECKPOINT_RESTORE
 -- 
 2.7.4
 
