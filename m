@@ -1,95 +1,91 @@
 X-GM-THRID: 6402251586842656768
-X-Received: by 10.25.234.202 with SMTP id y71mr3261120lfi.2.1490640589681;
-        Mon, 27 Mar 2017 11:49:49 -0700 (PDT)
+X-Received: by 10.99.149.25 with SMTP id p25mr7842258pgd.77.1490640386187;
+        Mon, 27 Mar 2017 11:46:26 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.151.139 with SMTP id z133ls1233199lfd.6.gmail; Mon, 27 Mar
- 2017 11:49:48 -0700 (PDT)
-X-Received: by 10.25.104.21 with SMTP id d21mr3238392lfc.31.1490640588142;
-        Mon, 27 Mar 2017 11:49:48 -0700 (PDT)
-Return-Path: <pneira@us.es>
-Received: from mail.us.es (mail.us.es. [193.147.175.20])
-        by gmr-mx.google.com with ESMTPS id q207si22909wme.3.2017.03.27.11.49.47
+Received: by 10.157.5.7 with SMTP id 7ls14644342otw.5.gmail; Mon, 27 Mar 2017
+ 11:46:25 -0700 (PDT)
+X-Received: by 10.157.49.68 with SMTP id v4mr2125166otd.95.1490640385719;
+        Mon, 27 Mar 2017 11:46:25 -0700 (PDT)
+Return-Path: <gs051095@gmail.com>
+Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
+        by gmr-mx.google.com with ESMTPS id y203si246833pfb.0.2017.03.27.11.46.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 27 Mar 2017 11:49:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
+        Mon, 27 Mar 2017 11:46:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
-Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
-	by mail.us.es (Postfix) with ESMTP id C80F6392E08
-	for <outreachy-kernel@googlegroups.com>; Mon, 27 Mar 2017 20:49:45 +0200 (CEST)
-Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
-	by antivirus1-rhel7.int (Postfix) with ESMTP id B97BFDA86B
-	for <outreachy-kernel@googlegroups.com>; Mon, 27 Mar 2017 20:49:45 +0200 (CEST)
-Received: by antivirus1-rhel7.int (Postfix, from userid 99)
-	id AE850DA848; Mon, 27 Mar 2017 20:49:45 +0200 (CEST)
-X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
-X-Spam-Level: 
-X-Spam-Status: No, score=-107.2 required=7.5 tests=BAYES_50,
-	HEADER_FROM_DIFFERENT_DOMAINS,SMTPAUTH_US,SPF_HELO_FAIL,USER_IN_WHITELIST
-	autolearn=disabled version=3.4.1
-Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
-	by antivirus1-rhel7.int (Postfix) with ESMTP id 91B79DA86E
-	for <outreachy-kernel@googlegroups.com>; Mon, 27 Mar 2017 20:49:43 +0200 (CEST)
-Received: from 192.168.1.13 (192.168.1.13)
- by antivirus1-rhel7.int (F-Secure/fsigk_smtp/540/antivirus1-rhel7.int);
- Mon, 27 Mar 2017 20:49:43 +0200 (CEST)
-X-Virus-Status: clean(F-Secure/fsigk_smtp/540/antivirus1-rhel7.int)
-Received: (qmail 15567 invoked from network); 27 Mar 2017 20:49:43 +0200
-Received: from 129.166.216.87.static.jazztel.es (HELO us.es) (1984lsi@87.216.166.129)
-  by mail.us.es with AES128-SHA encrypted SMTP; 27 Mar 2017 20:49:43 +0200
-Date: Mon, 27 Mar 2017 20:49:40 +0200
-From: Pablo Neira Ayuso <pablo@netfilter.org>
-To: Gargi Sharma <gs051095@gmail.com>
-Cc: netfilter-devel@vger.kernel.org, pablo@netfilter.orgm,
-	outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 0/4] Constify option structures
-Message-ID: <20170327184940.GA21804@salvia>
-References: <cover.1490640256.git.gs051095@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x241.google.com with SMTP id 79so15062564pgf.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 27 Mar 2017 11:46:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=rAu9XlenxmZ4lAXSJzBq8P+XettlIfMQCdAfE6zfj70=;
+        b=DwcE7D5SnjQAZ+iGgGeXMNKFTcZzsgWLm9n4IlYEwTJFZnHe7f8slADyjHeuJUnamH
+         NP73CQiDMhVd/nK8Ufc7VnKpcdeN6TFGhVPlK2vBQpRxqHwa8+nZBYkm6+Ye3PWbHUzE
+         CcpkzELY0lljaN5KBZNYM0IedSoXxIfcadylYMtcKN8YucFQULBZl8rA8uuvvRNvXdcJ
+         pYZ7JWC+xC9uX5B4FYLjxTKGL7s6WDI78cFn6VXUPfH1Bv8za8aW+8Qi5uDRErkIVv46
+         M28qTOcpS8Lf92FBPWUs3UOI8otoQKC/tvkciI9xBp0YyhBnCdtc8sTEmpJ1MIA7s9bp
+         6QYQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=rAu9XlenxmZ4lAXSJzBq8P+XettlIfMQCdAfE6zfj70=;
+        b=rzrBQJp4Svy/O4mFFmFVenFHC7Mtc/6Gt8CLSrf+zrIgeHtwSVxeRCVcgTzfwM07vE
+         +5ofASUCBS8W27KEuZsfSybQQwf/kMqMRYr1Mh7nlTR2vYQA78M1lsDBcvWtDA5uHA5D
+         MaTOEI2AkQJ+n0hlWE0N+X+pW6aFp3QnLCHQxDtWm8hNum6RiYxyD0nXF6pl+yAzx1m0
+         DXHC+7/+9qjRo+9bFcACZPQbTLX3/uuI2p1b+mDK7UwbdGPFdxh1EidHaSwwvz0AzecO
+         ioi0Wh95CzKB54j1qSQqHf2NB5bP4tmcG2U75700jTkvPi3KCGqGUA9M50tXDSKeUWC/
+         3Niw==
+X-Gm-Message-State: AFeK/H3Q2aN+TiiNZGEBZG44a+zhlb7afD38ZPtqP3vRCux04Bf7e+Mncc8W+EAsa2aEqg==
+X-Received: by 10.98.103.75 with SMTP id b72mr26590472pfc.105.1490640385505;
+        Mon, 27 Mar 2017 11:46:25 -0700 (PDT)
+Return-Path: <gs051095@gmail.com>
+Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([47.9.128.122])
+        by smtp.googlemail.com with ESMTPSA id c195sm2598698pfb.60.2017.03.27.11.46.18
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 27 Mar 2017 11:46:25 -0700 (PDT)
+From: Gargi Sharma <gs051095@gmail.com>
+To: netfilter-devel@vger.kernel.org
+Cc: pablo@netfilter.orgm,
+	outreachy-kernel@googlegroups.com,
+	Gargi Sharma <gs051095@gmail.com>
+Subject: [PATCH 4/4] extensions: libebt_nflog: Constify option struct
+Date: Tue, 28 Mar 2017 00:15:30 +0530
+Message-Id: <2811ba791e2e24bed3a7eabb354f06b9807404d4.1490640256.git.gs051095@gmail.com>
+X-Mailer: git-send-email 2.7.4
 In-Reply-To: <cover.1490640256.git.gs051095@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Virus-Scanned: ClamAV using ClamSMTP
+References: <cover.1490640256.git.gs051095@gmail.com>
+In-Reply-To: <cover.1490640256.git.gs051095@gmail.com>
+References: <cover.1490640256.git.gs051095@gmail.com>
 
-On Tue, Mar 28, 2017 at 12:15:26AM +0530, Gargi Sharma wrote:
-> The struct option is generally used only to initialise
-> fields inside certain structs and is not modified anywhere.
-> Done using Coccinelle:
-> 
-> @r1 disable optional_qualifier@
-> identifier s,i;
-> position p;
-> @@
-> 
-> static struct option i@p[] ={...};
-> 
-> @ok1@
-> identifier r1.i;
-> expression e;
-> position p;
-> @@
-> e = i@p
-> 
-> @bad@
-> position p != {r1.p,ok1.p};
-> identifier r1.i;
-> @@
-> e@i@p
-> 
-> @depends on !bad disable optional_qualifier@
-> identifier r1.i;
-> @@
-> static
-> +const
-> struct option i[] = { ... };
+The struct brnflog_opts of the type options is
+used to initialise extra_opts field inside the
+xtables_target struct and is not modified anywhere.
 
-Please indicate what userspace tree in the subject, I guess this is
-iptables.
+Signed-off-by: Gargi Sharma <gs051095@gmail.com>
+---
+ extensions/libebt_nflog.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-And merge them all into one single patch, they are part of the same
-logical change.
+diff --git a/extensions/libebt_nflog.c b/extensions/libebt_nflog.c
+index fef7196..5f1d13b 100644
+--- a/extensions/libebt_nflog.c
++++ b/extensions/libebt_nflog.c
+@@ -30,7 +30,7 @@ enum {
+ 	NFLOG_NFLOG	= 0x16,
+ };
+ 
+-static struct option brnflog_opts[] = {
++static const struct option brnflog_opts[] = {
+ 	{ .name = "nflog-group",     .has_arg = true,  .val = NFLOG_GROUP},
+ 	{ .name = "nflog-prefix",    .has_arg = true,  .val = NFLOG_PREFIX},
+ 	{ .name = "nflog-range",     .has_arg = true,  .val = NFLOG_RANGE},
+-- 
+2.7.4
 
-Thanks!
 
