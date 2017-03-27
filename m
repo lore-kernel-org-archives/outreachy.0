@@ -1,78 +1,134 @@
 X-GM-THRID: 6401819323480932352
-X-Received: by 10.99.101.65 with SMTP id z62mr8035229pgb.153.1490643966593;
-        Mon, 27 Mar 2017 12:46:06 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.46.149 with SMTP id w21ls3514178ota.16.gmail; Mon, 27 Mar
- 2017 12:46:06 -0700 (PDT)
-X-Received: by 10.237.53.146 with SMTP id c18mr7597491qte.64.1490643966201;
-        Mon, 27 Mar 2017 12:46:06 -0700 (PDT)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id g82si241686pfb.5.2017.03.27.12.46.06
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 27 Mar 2017 12:46:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id 79so15432433pgf.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 27 Mar 2017 12:46:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Q5bd6vf2mMdW2vSFUApkROgXN/pBWJUOiMmJa7F6IzA=;
-        b=eGBRynvATZvm478bssiFb5+lhgnkgo/PUO1LYixTIAaXzuimh8R7pStvVl/VYh89Uf
-         sS6OTPvwFYkzpqo219LzcdCC4hVFbyPd39T+MjhvxjwaZZ0U7EN/ZpFvhwr0Fc6SGddk
-         M8UktXFEib1ua9JTC6dYaLOhKCCCThtgxFf/RAbEXCC6miXKcxabrjnO1zPoCGlKiqxc
-         Gwr8Ek8VI2kNRhsvLyUVU7ocFyMNSOa5ACszPwQK3YxC9Rdou1I3mZoy23TSHVabi5mu
-         UIvn9cbud9xS+3Vyw5Vu6OI/+FxBirSEvr6q2Ofc9BN6yWSRerlx2pN7r4+RPPefLW4G
-         jupQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Q5bd6vf2mMdW2vSFUApkROgXN/pBWJUOiMmJa7F6IzA=;
-        b=FXm8d9CnuqJ18U2UtAIJ7Lce4Xtk83KGFke3r0wTu9oEWTe6/jTNlK0fyvffu29a4N
-         R2gxwt2ElwrZ39O7F1VCRS1wlYrphfqukISfFfn9CGIVScxT+nUXeFWaZLidrY2Z1t5e
-         wf69C/K05u9Vhl/KMX+L0V4pMhaZV3cTL486c8gO+VyMxKNKUy+vS6ob7zea22b1BXFy
-         OAeDsqRoqKJsmNgX5y+84rkB7DhSz2BeuPKFqjf1Ni2ddxrpw0co/PjuNNtp4K3TqaGQ
-         We0UjNMUNrQbfMaNiisamVW0RtMAFglA+0vcXN+UiLZy0bIEr86a8SPzTOfCh0G7tg8e
-         b4PA==
-X-Gm-Message-State: AFeK/H35nUHqznaDO8VMl3BuJI1Ca8qWU6SCR3PRopiILmvmXJa2SDK1ybMsKWPiIGslAA==
-X-Received: by 10.99.55.7 with SMTP id e7mr11727719pga.175.1490643965952;
-        Mon, 27 Mar 2017 12:46:05 -0700 (PDT)
-Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([47.9.128.122])
-        by smtp.googlemail.com with ESMTPSA id x15sm2755339pgc.16.2017.03.27.12.45.58
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 27 Mar 2017 12:46:04 -0700 (PDT)
-From: Gargi Sharma <gs051095@gmail.com>
-To: mawilcox@microsoft.com
-Cc: outreachy-kernel@googlegroups.com,
-	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH v2 0/3] Fix multiple checkpatch issues
-Date: Tue, 28 Mar 2017 01:15:38 +0530
-Message-Id: <cover.1490643620.git.gs051095@gmail.com>
-X-Mailer: git-send-email 2.7.4
+Date: Mon, 27 Mar 2017 12:15:05 -0700 (PDT)
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: mawilcox@microsoft.com, gs051095@gmail.com
+Message-Id: <2eae3108-cb1e-4a6b-adee-c30cfb6cc610@googlegroups.com>
+In-Reply-To: <24c07b87-b37f-44a2-afcb-f6310b6630fb@googlegroups.com>
+References: <cover.1490539466.git.gs051095@gmail.com>
+ <cover.1490539466.git.gs051095@gmail.com>
+ <38ecc07b35b00ee00b4c90f11e1dd17bffe26d36.1490539466.git.gs051095@gmail.com>
+ <24c07b87-b37f-44a2-afcb-f6310b6630fb@googlegroups.com>
+Subject: Re: [PATCH 2/3] kernel: pid_namespace: Fix line over 80 characters
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_4611_1458034178.1490642105257"
+X-Google-Token: ELnJ5cYFnKea4N6i4Yk0
+X-Google-IP: 14.139.82.6
 
-This patchset fixes multiple checkpatch issues
-in pid_namespace.c file.
+------=_Part_4611_1458034178.1490642105257
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_4612_620864661.1490642105257"
 
----
-Changes in v2:
-        Patch 1
-        - Fix splitting of line for better readablilty.
+------=_Part_4612_620864661.1490642105257
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
 
-Gargi Sharma (3):
-  kernel: pid_namespace: Fix line over 80 characters
-  kernel: pid_namespace: Do not initialise statics to 0
-  kernel: pid_namespace: Remove return statement from void function
 
- kernel/pid_namespace.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
--- 
-2.7.4
+On Tuesday, March 28, 2017 at 12:42:53 AM UTC+5:30, Arushi Singhal wrote:
+>
+>
+>
+> On Sunday, March 26, 2017 at 8:18:57 PM UTC+5:30, Gargi Sharma wrote:
+>>
+>> Line over 80 characters are split to fix the following checkpatch 
+>> issue: 
+>> WARNING: line over 80 characters 
+>>
+>> Signed-off-by: Gargi Sharma <gs05...@gmail.com> 
+>> --- 
+>>  kernel/pid_namespace.c | 5 +++-- 
+>>  1 file changed, 3 insertions(+), 2 deletions(-) 
+>>
+>> diff --git a/kernel/pid_namespace.c b/kernel/pid_namespace.c 
+>> index 6ace1e3..18f5385 100644 
+>> --- a/kernel/pid_namespace.c 
+>> +++ b/kernel/pid_namespace.c 
+>> @@ -92,8 +92,9 @@ static void dec_pid_namespaces(struct ucounts *ucounts) 
+>>          dec_ucount(ucounts, UCOUNT_PID_NAMESPACES); 
+>>  } 
+>>   
+>> -static struct pid_namespace *create_pid_namespace(struct user_namespace 
+>> *user_ns, 
+>> -        struct pid_namespace *parent_pid_ns) 
+>>
+> Hi Gargi
+> I think I have already made this change
+>  Thanks
+> Arushi
+>
+Sorry
+My bad I have done the similar patch but not on same.
+Thanks
+Arushi 
 
+> +static struct 
+>> +pid_namespace *create_pid_namespace(struct user_namespace *user_ns, 
+>> +                                    struct pid_namespace *parent_pid_ns) 
+>>  { 
+>>          struct pid_namespace *ns; 
+>>          unsigned int level = parent_pid_ns->level + 1; 
+>> -- 
+>> 2.7.4 
+>>
+>>
+------=_Part_4612_620864661.1490642105257
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Tuesday, March 28, 2017 at 12:42:53 AM UTC+5:30=
+, Arushi Singhal wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0=
+;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><div di=
+r=3D"ltr"><br><br>On Sunday, March 26, 2017 at 8:18:57 PM UTC+5:30, Gargi S=
+harma wrote:<blockquote class=3D"gmail_quote" style=3D"margin:0;margin-left=
+:0.8ex;border-left:1px #ccc solid;padding-left:1ex">Line over 80 characters=
+ are split to fix the following checkpatch
+<br>issue:
+<br>WARNING: line over 80 characters
+<br>
+<br>Signed-off-by: Gargi Sharma &lt;<a rel=3D"nofollow">gs05...@gmail.com</=
+a>&gt;
+<br>---
+<br>=C2=A0kernel/pid_namespace.c | 5 +++--
+<br>=C2=A01 file changed, 3 insertions(+), 2 deletions(-)
+<br>
+<br>diff --git a/kernel/pid_namespace.c b/kernel/pid_namespace.c
+<br>index 6ace1e3..18f5385 100644
+<br>--- a/kernel/pid_namespace.c
+<br>+++ b/kernel/pid_namespace.c
+<br>@@ -92,8 +92,9 @@ static void dec_pid_namespaces(struct ucounts *ucount=
+s)
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0dec_ucount(ucount=
+s, UCOUNT_PID_NAMESPACES);
+<br>=C2=A0}
+<br>=C2=A0
+<br>-static struct pid_namespace *create_pid_namespace(struct user_namespac=
+e *user_ns,
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0struct pid_namespace *=
+parent_pid_ns)
+<br></blockquote><div>Hi Gargi<br>I think I have already made this change<b=
+r>=C2=A0Thanks<br>Arushi<br></div></div></blockquote><div>Sorry<br>My bad I=
+ have done the similar patch but not on same.<br>Thanks<br>Arushi <br></div=
+><blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;bo=
+rder-left: 1px #ccc solid;padding-left: 1ex;"><div dir=3D"ltr"><div></div><=
+blockquote class=3D"gmail_quote" style=3D"margin:0;margin-left:0.8ex;border=
+-left:1px #ccc solid;padding-left:1ex">+static struct
+<br>+pid_namespace *create_pid_namespace(struct user_namespace *user_ns,
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0struct p=
+id_namespace *parent_pid_ns)
+<br>=C2=A0{
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0struct pid_namesp=
+ace *ns;
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0unsigned int leve=
+l =3D parent_pid_ns-&gt;level + 1;
+<br>--=20
+<br>2.7.4
+<br>
+<br></blockquote></div></blockquote></div>
+------=_Part_4612_620864661.1490642105257--
+
+------=_Part_4611_1458034178.1490642105257--
 
