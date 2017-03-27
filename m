@@ -1,102 +1,87 @@
 X-GM-THRID: 6401417655470784512
-X-Received: by 10.107.9.90 with SMTP id j87mr8192823ioi.86.1490654013363;
-        Mon, 27 Mar 2017 15:33:33 -0700 (PDT)
+X-Received: by 10.28.142.134 with SMTP id q128mr512660wmd.7.1490617321806;
+        Mon, 27 Mar 2017 05:22:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.14.170 with SMTP id 39ls15371846otj.6.gmail; Mon, 27 Mar
- 2017 15:33:32 -0700 (PDT)
-X-Received: by 10.157.80.155 with SMTP id b27mr533428oth.8.1490654012851;
-        Mon, 27 Mar 2017 15:33:32 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id y90si335284pfa.6.2017.03.27.15.33.32
+Received: by 10.28.211.83 with SMTP id k80ls1344110wmg.17.gmail; Mon, 27 Mar
+ 2017 05:22:01 -0700 (PDT)
+X-Received: by 10.28.148.1 with SMTP id w1mr502618wmd.5.1490617321168;
+        Mon, 27 Mar 2017 05:22:01 -0700 (PDT)
+Return-Path: <pneira@us.es>
+Received: from mail.us.es (mail.us.es. [193.147.175.20])
+        by gmr-mx.google.com with ESMTPS id x188si58688wmx.0.2017.03.27.05.22.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 27 Mar 2017 15:33:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Mon, 27 Mar 2017 05:22:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id 79so16351808pgf.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 27 Mar 2017 15:33:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=HdhU92JW5iPeTM6/BjnDe/eGxthhy62/MdWPFLCjyzA=;
-        b=V0Q8k7B2C0J/6IjoiS1z4LvIo2f7+2U5KyoMZmMYYk+CtZRNjFdkJpK/j1wjxJIjtG
-         n6ye1eHANK188prQbuNVx19HTCbbPnL/E6OlTODx0lbV3s69+bmsUBb9h2mvOpzpnVyl
-         eHNzz73pv3uM0x4V6KiQbh+3Qqi4GJAvmKKvaXD8ozdA9Z9vgWxhgSrL/qE6n9U66Ilc
-         LvlN/mVgOFeeh3RhA7q2+qbKf1tipmcSbuYv2Adu8hpNraMAWGpyq5RNsoNmFktPTsru
-         xj8x7irJpWKH2dnxhM/IhzXb8pMRXxJOTopapuruRbThStlLzgmwDomf7TX88ZrZgT+j
-         HxRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=HdhU92JW5iPeTM6/BjnDe/eGxthhy62/MdWPFLCjyzA=;
-        b=koC4StXiW6yGnjL779ZPEHey+AIP5/WUulzT9X4VN5lVbGTM41lldV/ipCH+sxvTtz
-         oite0m8K6kAWzmO4mujdI0otzM7nrf0nJd/Jb2JP3VMxN55H624BwxJDL2Y95THV7Ost
-         v0RBWSzvKSdnzFOf9o252VgonDuuMkJ1zyBFw1HYifUpADJf7guBMmglUwkJcxusE7Pf
-         LgkQ/qfMPoYOoPRId0ft83kkjYWpefoBL/rSLGoTo/H73wn53UgyrfDrwGz6GqO90DqK
-         OT0GUGE+lxhb+kAMrJ9+f38heEFE7zmp2gJ5Ud48IsBxTWzAgpT+axoUw9KkUn/y/K1I
-         sAgA==
-X-Gm-Message-State: AFeK/H0BmCcQP91zotExjCkFm1/zSMsqW3ztSpyCjFrvyfeALrQq0pmFXmrDrCq83Y9x3w==
-X-Received: by 10.98.80.1 with SMTP id e1mr27005899pfb.250.1490654012618;
-        Mon, 27 Mar 2017 15:33:32 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id j19sm3118747pfk.4.2017.03.27.15.33.29
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 27 Mar 2017 15:33:31 -0700 (PDT)
-Date: Tue, 28 Mar 2017 04:03:27 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: pablo@netfilter.org
-Cc: Jozsef Kadlecsik <kadlec@blackhole.kfki.hu>, davem@davemloft.net,
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
+	by mail.us.es (Postfix) with ESMTP id DF185EAA75
+	for <outreachy-kernel@googlegroups.com>; Mon, 27 Mar 2017 14:21:58 +0200 (CEST)
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id D1AE1BAC26
+	for <outreachy-kernel@googlegroups.com>; Mon, 27 Mar 2017 14:21:58 +0200 (CEST)
+Received: by antivirus1-rhel7.int (Postfix, from userid 99)
+	id D04F7BAC28; Mon, 27 Mar 2017 14:21:58 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
+X-Spam-Level: 
+X-Spam-Status: No, score=-107.2 required=7.5 tests=BAYES_50,
+	HEADER_FROM_DIFFERENT_DOMAINS,SMTPAUTH_US,SPF_HELO_FAIL,USER_IN_WHITELIST
+	autolearn=disabled version=3.4.1
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 41146BAC26
+	for <outreachy-kernel@googlegroups.com>; Mon, 27 Mar 2017 14:21:53 +0200 (CEST)
+Received: from 192.168.1.13 (192.168.1.13)
+ by antivirus1-rhel7.int (F-Secure/fsigk_smtp/540/antivirus1-rhel7.int);
+ Mon, 27 Mar 2017 14:21:53 +0200 (CEST)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/540/antivirus1-rhel7.int)
+Received: (qmail 1129 invoked from network); 27 Mar 2017 14:21:53 +0200
+Received: from 129.166.216.87.static.jazztel.es (HELO us.es) (1984lsi@87.216.166.129)
+  by mail.us.es with AES128-SHA encrypted SMTP; 27 Mar 2017 14:21:53 +0200
+Date: Mon, 27 Mar 2017 14:21:53 +0200
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Arushi Singhal <arushisinghal19971997@gmail.com>
+Cc: Jozsef Kadlecsik <kadlec@blackhole.kfki.hu>,
+	"David S. Miller" <davem@davemloft.net>,
 	netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] net: netfilter: Remove multiple assignment.
-Message-ID: <20170327223326.GA486@arushi-HP-Pavilion-Notebook>
+Subject: Re: [Outreachy kernel] Re: [PATCH] net: netfilter: Remove multiple
+ assignment.
+Message-ID: <20170327122153.GA25113@salvia>
+References: <20170325124946.GA9109@arushi-HP-Pavilion-Notebook>
+ <20170327120827.GA15676@salvia>
+ <CA+XqjF_4cXL58vnxgKmawuZ4F0ZqvU1KvAtRbJv_r1ArLTpExw@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <CA+XqjF_4cXL58vnxgKmawuZ4F0ZqvU1KvAtRbJv_r1ArLTpExw@mail.gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Virus-Scanned: ClamAV using ClamSMTP
 
-This patch removes multiple assignments to follow the kernel coding
-style as also reported by checkpatch.pl.
-Done using coccinelle.
-@@
-identifier i1,i2;
-constant c;
-@@
-- i1=i2=c;
-+ i1=c;
-+ i2=i1;
+On Mon, Mar 27, 2017 at 05:48:41PM +0530, Arushi Singhal wrote:
+> On Mon, Mar 27, 2017 at 5:38 PM, Pablo Neira Ayuso <pablo@netfilter.org>
+> wrote:
+> 
+> > On Sat, Mar 25, 2017 at 06:19:47PM +0530, Arushi Singhal wrote:
+> > > This patch removes multiple assignments.
+> > > Done using coccinelle.
+> > > @@
+> > > identifier i1,i2;
+> > > constant c;
+> > > @@
+> > > - i1=i2=c;
+> > > + i1=c;
+> > > + i2=c;
+> >
+> > You have to explain why this is bad.
+> >
+> 
+> It is against the kernel coding style and we have to avoid multiple
+> assignments to make the code more readable.
+> This error is found using Checkpatch.pl script.
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
-changes in v2
- -Make the commit message more clear and appropriate.
+Then, please place this information in your patch description.
 
- net/netfilter/nf_conntrack_proto_sctp.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/net/netfilter/nf_conntrack_proto_sctp.c b/net/netfilter/nf_conntrack_proto_sctp.c
-index 33279aab583d..723386bcc2cb 100644
---- a/net/netfilter/nf_conntrack_proto_sctp.c
-+++ b/net/netfilter/nf_conntrack_proto_sctp.c
-@@ -346,7 +346,8 @@ static int sctp_packet(struct nf_conn *ct,
- 		goto out;
- 	}
- 
--	old_state = new_state = SCTP_CONNTRACK_NONE;
-+	old_state = SCTP_CONNTRACK_NONE;
-+	new_state = old_state;
- 	spin_lock_bh(&ct->lock);
- 	for_each_sctp_chunk (skb, sch, _sch, offset, dataoff, count) {
- 		/* Special cases of Verification tag check (Sec 8.5.1) */
--- 
-2.11.0
-
+Thanks!
 
