@@ -1,109 +1,91 @@
 X-GM-THRID: 6402257939123404800
-X-Received: by 10.157.35.69 with SMTP id k5mr3893044otd.32.1490642163494;
-        Mon, 27 Mar 2017 12:16:03 -0700 (PDT)
+X-Received: by 10.223.164.138 with SMTP id g10mr1601886wrb.3.1490641971857;
+        Mon, 27 Mar 2017 12:12:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.38.42 with SMTP id a39ls886751otb.38.gmail; Mon, 27 Mar
- 2017 12:16:03 -0700 (PDT)
-X-Received: by 10.157.18.171 with SMTP id g40mr3209002otg.9.1490642163046;
-        Mon, 27 Mar 2017 12:16:03 -0700 (PDT)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-it0-x241.google.com (mail-it0-x241.google.com. [2607:f8b0:4001:c0b::241])
-        by gmr-mx.google.com with ESMTPS id n127si71471ita.3.2017.03.27.12.16.02
+Received: by 10.25.76.193 with SMTP id z184ls1229716lfa.31.gmail; Mon, 27 Mar
+ 2017 12:12:51 -0700 (PDT)
+X-Received: by 10.46.88.9 with SMTP id m9mr95070ljb.25.1490641971025;
+        Mon, 27 Mar 2017 12:12:51 -0700 (PDT)
+Return-Path: <pneira@us.es>
+Received: from mail.us.es (mail.us.es. [193.147.175.20])
+        by gmr-mx.google.com with ESMTPS id i76si40152wmh.1.2017.03.27.12.12.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 27 Mar 2017 12:16:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:4001:c0b::241 as permitted sender) client-ip=2607:f8b0:4001:c0b::241;
+        Mon, 27 Mar 2017 12:12:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:4001:c0b::241 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-it0-x241.google.com with SMTP id e75so6436601itd.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 27 Mar 2017 12:16:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=ZCaReg2x3bJAXkaccv3HS3KrlS1g6nR8hrcWbBsbPcI=;
-        b=hc9vkv/jCAJCgK4eFMTTDxEuPS3RgYjoPy3IJsXASr7BwuyzbeMR11TwyAkIFg37hg
-         fvpj7JnWVW0p13dKgqIYcAA/LWzyVG/YdpL+mR7oqKlyvtkGO6g6jusD2CU4Zvu1XJqZ
-         b8vqFT6QP2hJUvwYQnswWKP/Ee41QBf6dGxqNcwAnwxWUDbp7jOiytloJytfhK36xbUD
-         dl+MoYWu4YEt/3yaZXv9HXxto/X0mOBHCH8St3CYXVTHV0ajXsQgNdeSf81OugLW+CNM
-         ZkA17LAdk6RTNAbGP0M06a2U1ZXZSYRMeIwE0AOqVmLfxSSiEhy/tntHznKPySdfCY0o
-         5bfg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=ZCaReg2x3bJAXkaccv3HS3KrlS1g6nR8hrcWbBsbPcI=;
-        b=lL5+hY9QQsD/YGv/ajil5QOoeez1D7AHb8FU9pZ4OdlR2c2Oty5Dgstfw7Le2zMN03
-         wuDhBX5zoyoxiDPETs5bcatLDp8qPpDT8++Ug83i5HXN0InAevHDagOQCsPNXOdv5BfG
-         lc30FtJr442jtKoQrN52wRSCqbf8y1OOsYv/YHCKztH6hnHcGrx92H3pabg8A7tw64gR
-         APhclJzERHUUSzF1MlNe0mL5B1tMB4t/yNMzVrLIP0glZK2KuIiKaNccmTv76xNIpK+n
-         DyZl4oogJyxmgTXVhMPvfPyBXEpyigjQxXLuMRR0g3uCzkToUAxZwbJSPfD0T7Pnr0SP
-         TQvw==
-X-Gm-Message-State: AFeK/H2NZZdxJNa//OLVhHjyk7SxcXhdsPOpRKALuXSZUaYxJPsz4SiSv9AR/6ijZZolnwmRP1deT2Pi9t4N7A==
-X-Received: by 10.107.137.226 with SMTP id t95mr22897357ioi.79.1490642162731;
- Mon, 27 Mar 2017 12:16:02 -0700 (PDT)
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
+	by mail.us.es (Postfix) with ESMTP id C39E8392E08
+	for <outreachy-kernel@googlegroups.com>; Mon, 27 Mar 2017 21:12:48 +0200 (CEST)
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id B5CE6DA86B
+	for <outreachy-kernel@googlegroups.com>; Mon, 27 Mar 2017 21:12:48 +0200 (CEST)
+Received: by antivirus1-rhel7.int (Postfix, from userid 99)
+	id AAFA2DA863; Mon, 27 Mar 2017 21:12:48 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
+X-Spam-Level: 
+X-Spam-Status: No, score=-107.2 required=7.5 tests=BAYES_50,
+	HEADER_FROM_DIFFERENT_DOMAINS,SMTPAUTH_US,SPF_HELO_FAIL,USER_IN_WHITELIST
+	autolearn=disabled version=3.4.1
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id A149CDA807
+	for <outreachy-kernel@googlegroups.com>; Mon, 27 Mar 2017 21:12:46 +0200 (CEST)
+Received: from 192.168.1.13 (192.168.1.13)
+ by antivirus1-rhel7.int (F-Secure/fsigk_smtp/540/antivirus1-rhel7.int);
+ Mon, 27 Mar 2017 21:12:46 +0200 (CEST)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/540/antivirus1-rhel7.int)
+Received: (qmail 20656 invoked from network); 27 Mar 2017 21:12:46 +0200
+Received: from 129.166.216.87.static.jazztel.es (HELO us.es) (1984lsi@87.216.166.129)
+  by mail.us.es with AES128-SHA encrypted SMTP; 27 Mar 2017 21:12:46 +0200
+Date: Mon, 27 Mar 2017 21:12:39 +0200
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Gargi Sharma <gs051095@gmail.com>
+Cc: netfilter-devel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] iptables: Constify option struct
+Message-ID: <20170327191239.GA18080@salvia>
+References: <1490641815-12741-1-git-send-email-gs051095@gmail.com>
 MIME-Version: 1.0
-Received: by 10.36.103.141 with HTTP; Mon, 27 Mar 2017 12:15:32 -0700 (PDT)
-In-Reply-To: <20170327191239.GA18080@salvia>
-References: <1490641815-12741-1-git-send-email-gs051095@gmail.com> <20170327191239.GA18080@salvia>
-From: Gargi Sharma <gs051095@gmail.com>
-Date: Tue, 28 Mar 2017 00:45:32 +0530
-Message-ID: <CAOCi2DFt9kYKDE8Cn47Pbh=B4-E_PLSKLxXLmsdjfdyNWwcm7Q@mail.gmail.com>
-Subject: Re: [Outreachy kernel] Re: [PATCH] iptables: Constify option struct
-To: Pablo Neira Ayuso <pablo@netfilter.org>
-Cc: netfilter-devel@vger.kernel.org, 
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1490641815-12741-1-git-send-email-gs051095@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Virus-Scanned: ClamAV using ClamSMTP
 
-On Tue, Mar 28, 2017 at 12:42 AM, Pablo Neira Ayuso <pablo@netfilter.org> wrote:
->
-> On Tue, Mar 28, 2017 at 12:40:15AM +0530, Gargi Sharma wrote:
-> > The struct  of the type option is only used to initialise a field
-> > inside the xtables_match struct and is not modified anywhere.
-> > Done using Coccinelle:
-> >
-> > @r1 disable optional_qualifier@
-> > identifier s,i;
-> > position p;
-> > @@
-> >
-> > static struct option i@p[] ={...};
-> >
-> > @ok1@
-> > identifier r1.i;
-> > expression e;
-> > position p;
-> > @@
-> > e = i@p
-> >
-> > @bad@
-> > position p != {r1.p,ok1.p};
-> > identifier r1.i;
-> > @@
-> > e@i@p
-> >
-> > @depends on !bad disable optional_qualifier@
-> > identifier r1.i;
-> > @@
-> > static
-> > +const
-> > struct option i[] = { ... };
->
-> Applied, thanks.
->
-> You can probably have a look at ebtables.git, probably there are more
-> things to constify there.
->
-Okay, I will. :)
+On Tue, Mar 28, 2017 at 12:40:15AM +0530, Gargi Sharma wrote:
+> The struct  of the type option is only used to initialise a field
+> inside the xtables_match struct and is not modified anywhere.
+> Done using Coccinelle:
+> 
+> @r1 disable optional_qualifier@
+> identifier s,i;
+> position p;
+> @@
+> 
+> static struct option i@p[] ={...};
+> 
+> @ok1@
+> identifier r1.i;
+> expression e;
+> position p;
+> @@
+> e = i@p
+> 
+> @bad@
+> position p != {r1.p,ok1.p};
+> identifier r1.i;
+> @@
+> e@i@p
+> 
+> @depends on !bad disable optional_qualifier@
+> identifier r1.i;
+> @@
+> static
+> +const
+> struct option i[] = { ... };
 
-Thanks!
-Gargi
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170327191239.GA18080%40salvia.
-> For more options, visit https://groups.google.com/d/optout.
+Applied, thanks.
+
+You can probably have a look at ebtables.git, probably there are more
+things to constify there.
 
