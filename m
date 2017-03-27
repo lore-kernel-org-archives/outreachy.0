@@ -1,141 +1,75 @@
-X-GM-THRID: 6258193285963055104
-X-Received: by 10.50.61.100 with SMTP id o4mr3496630igr.10.1457099170524;
-        Fri, 04 Mar 2016 05:46:10 -0800 (PST)
+X-GM-THRID: 6399925601472348160
+X-Received: by 10.28.105.80 with SMTP id e77mr517156wmc.23.1490617627939;
+        Mon, 27 Mar 2017 05:27:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.39.111 with SMTP id u102ls303744qgu.45.gmail; Fri, 04 Mar
- 2016 05:46:09 -0800 (PST)
-X-Received: by 10.31.160.209 with SMTP id j200mr5787819vke.6.1457099169601;
-        Fri, 04 Mar 2016 05:46:09 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pf0-x22b.google.com (mail-pf0-x22b.google.com. [2607:f8b0:400e:c00::22b])
-        by gmr-mx.google.com with ESMTPS id yd9si1292259pab.1.2016.03.04.05.46.09
+Received: by 10.28.126.2 with SMTP id z2ls525844wmc.10.gmail; Mon, 27 Mar 2017
+ 05:27:07 -0700 (PDT)
+X-Received: by 10.28.128.146 with SMTP id b140mr491438wmd.18.1490617627142;
+        Mon, 27 Mar 2017 05:27:07 -0700 (PDT)
+Return-Path: <pneira@us.es>
+Received: from mail.us.es (mail.us.es. [193.147.175.20])
+        by gmr-mx.google.com with ESMTPS id x188si60220wmx.0.2017.03.27.05.27.07
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 04 Mar 2016 05:46:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) client-ip=2607:f8b0:400e:c00::22b;
+        Mon, 27 Mar 2017 05:27:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22b.google.com with SMTP id x188so12105905pfb.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 04 Mar 2016 05:46:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=oqfUtYipQopjZIIdfB2cZn+xU5t+jZWzdxlPgnGNUDU=;
-        b=C1ATdXEra3TIiVs2WzOrrp0XB7uamHp27/pUL5UJd/h6hcIwuG9+PmC61BnEhuf19O
-         Q5O8MFzPJllJIz56mEhjq5S8eWVekBmnNtdITYba5jGy/AKNl74R4bw1o+RZ1uejsj9a
-         6MlMarMi0xszP2aBcABEWBcmrS5SR5wRVDRbHdWv5iK2IHUbgYqg+DNsn89txTQtH1V6
-         blHJxcrAxKUQ6vw1HayENJoPLy6yfdx1uhxXaQabdiZ9sSNbsm1gmkxIH47CLPEVv2e6
-         FsyuqnE2Xd1wQaXRknalJH0skK4+KhDUaGG5Mi8sseBIo3pZ6ZgUf4iCncVqibLL4EFa
-         kjIw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=oqfUtYipQopjZIIdfB2cZn+xU5t+jZWzdxlPgnGNUDU=;
-        b=dALd9YNfd2Gv/x3/lUu3I7piaTdLLZIMJzN0sxVuP+12tFvn8gA/TkbV4eJQsRoFLB
-         WQPbQVtStwqw358o5JI/8oMYeW/orsRbvzJYWm9WcsMq01y/XNE0KtQGP/DxI6dOUGKT
-         ATOq7Q8oI7Jd1gJsmoVu9Y9+6vdIf6pRkG/9BXFhYi9+srw4Is6sDsmkgDLsvVlbn9L1
-         IEtZ/p0bq8BCAp4X/T2UE5oNFuS8biSz+SNBOxM8GvlH4oTBe82a5ERNluMbGMsmD1az
-         8/YcBS+gA0iqd6AaZCShkSbobpUkg44Ysdd+zvUV+8t9nQ0cGV1f9T5HQgX+Ndvg+3Cv
-         zy9A==
-X-Gm-Message-State: AD7BkJJcr4MH+BCL3Tq+tZ5Ae24ILyokh/dYvzH1ymDBYKf4L6VHbDtNtgAWbNEARui+BQ==
-X-Received: by 10.98.93.2 with SMTP id r2mr12253307pfb.64.1457099169423;
-        Fri, 04 Mar 2016 05:46:09 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from bhumirks@gmail.com ([223.176.129.22])
-        by smtp.gmail.com with ESMTPSA id q2sm5803879pfq.88.2016.03.04.05.46.04
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 04 Mar 2016 05:46:08 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Fri, 04 Mar 2016 19:15:58 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: fsl-mc: Replace pr_err with dev_err
-Date: Fri,  4 Mar 2016 19:15:55 +0530
-Message-Id: <1457099155-3208-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
+	by mail.us.es (Postfix) with ESMTP id F0541EAA6F
+	for <outreachy-kernel@googlegroups.com>; Mon, 27 Mar 2017 14:27:04 +0200 (CEST)
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id E1C0DBAC28
+	for <outreachy-kernel@googlegroups.com>; Mon, 27 Mar 2017 14:27:04 +0200 (CEST)
+Received: by antivirus1-rhel7.int (Postfix, from userid 99)
+	id D6E60DA725; Mon, 27 Mar 2017 14:27:04 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
+X-Spam-Level: 
+X-Spam-Status: No, score=-107.2 required=7.5 tests=BAYES_50,
+	HEADER_FROM_DIFFERENT_DOMAINS,SMTPAUTH_US,SPF_HELO_FAIL,USER_IN_WHITELIST
+	autolearn=disabled version=3.4.1
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id C4B62BAC4A
+	for <outreachy-kernel@googlegroups.com>; Mon, 27 Mar 2017 14:27:02 +0200 (CEST)
+Received: from 192.168.1.13 (192.168.1.13)
+ by antivirus1-rhel7.int (F-Secure/fsigk_smtp/540/antivirus1-rhel7.int);
+ Mon, 27 Mar 2017 14:27:02 +0200 (CEST)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/540/antivirus1-rhel7.int)
+Received: (qmail 12767 invoked from network); 27 Mar 2017 14:27:02 +0200
+Received: from 129.166.216.87.static.jazztel.es (HELO us.es) (1984lsi@87.216.166.129)
+  by mail.us.es with AES128-SHA encrypted SMTP; 27 Mar 2017 14:27:02 +0200
+Date: Mon, 27 Mar 2017 14:27:03 +0200
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: simran singhal <singhalsimran0@gmail.com>
+Cc: kadlec@blackhole.kfki.hu, davem@davemloft.net,
+	netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: Re: [PATCH 0/2] netfilter: Remove unnecessary cast on void pointer
+Message-ID: <20170327122703.GA25227@salvia>
+References: <1490098794-22518-1-git-send-email-singhalsimran0@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1490098794-22518-1-git-send-email-singhalsimran0@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Virus-Scanned: ClamAV using ClamSMTP
 
-This patch replaces pr_err calls with dev_err when the device structure
-is available as dev_* prints identifying information about the struct device.
-Done using coccinelle:
+On Tue, Mar 21, 2017 at 05:49:52PM +0530, simran singhal wrote:
+> This patch series remove unnecessary cast on void pointer.
+> 
+> simran singhal (2):
+>   netfilter: ipset: Remove unnecessary cast on void pointer
+>   netfilter: Remove unnecessary cast on void pointer
 
-@r exists@
-identifier f, s;
-identifier x;
-position p;
-@@
-f(...,struct s *x,...) {
-<+...
-when != x == NULL
-\(pr_err@p\|pr_debug@p\|pr_info\)(...);
-...+>
-}
+Please, merge this two patches in one single patch.
 
-@r2@
-identifier fld2;
-identifier r.s;
-@@
+I have to pass up batches to David, and I would like this cleanups are
+grouped into the same logical change.
 
-struct s {
-        ...
-        struct device *fld2;
-        ...
-};
+Is there more occurrences of this in the Netfilter tree? Please have a
+look at net/ipv4/netfilter/ net/ipv6/netfilter/ and
+net/bridge/netfilter, we also have code there.
 
-@@
-identifier r.x,r2.fld2;
-position r.p;
-@@
-
-(
--pr_err@p
-+dev_err
-   (
-+ &x->fld2,
-...)
-|
-- pr_debug@p
-+ dev_dbg
-   (
-+ &x->fld2,
-...)
-|
-- pr_info@p
-+ dev_info
-   (
-+ &x->fld2,
-...)
-)
-
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
- drivers/staging/fsl-mc/bus/mc-bus.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/fsl-mc/bus/mc-bus.c b/drivers/staging/fsl-mc/bus/mc-bus.c
-index 5958e0f..9f77c37b 100644
---- a/drivers/staging/fsl-mc/bus/mc-bus.c
-+++ b/drivers/staging/fsl-mc/bus/mc-bus.c
-@@ -260,14 +260,15 @@ static int get_dprc_icid(struct fsl_mc_io *mc_io,
- 
- 	error = dprc_open(mc_io, 0, container_id, &dprc_handle);
- 	if (error < 0) {
--		pr_err("dprc_open() failed: %d\n", error);
-+		dev_err(&mc_io->dev, "dprc_open() failed: %d\n", error);
- 		return error;
- 	}
- 
- 	memset(&attr, 0, sizeof(attr));
- 	error = dprc_get_attributes(mc_io, 0, dprc_handle, &attr);
- 	if (error < 0) {
--		pr_err("dprc_get_attributes() failed: %d\n", error);
-+		dev_err(&mc_io->dev, "dprc_get_attributes() failed: %d\n",
-+			error);
- 		goto common_cleanup;
- 	}
- 
--- 
-1.9.1
-
+Thanks.
 
