@@ -1,87 +1,115 @@
-X-GM-THRID: 6395175452406710272
-X-Received: by 10.25.190.65 with SMTP id o62mr1131550lff.16.1488992816780;
-        Wed, 08 Mar 2017 09:06:56 -0800 (PST)
+X-GM-THRID: 6402257939123404800
+X-Received: by 10.46.80.79 with SMTP id v15mr151436ljd.27.1490650637758;
+        Mon, 27 Mar 2017 14:37:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.0.22 with SMTP id 22ls434381lja.32.gmail; Wed, 08 Mar 2017
- 09:06:56 -0800 (PST)
-X-Received: by 10.46.83.7 with SMTP id h7mr1457617ljb.24.1488992816208;
-        Wed, 08 Mar 2017 09:06:56 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
-        by gmr-mx.google.com with ESMTPS id 82si454163wmg.3.2017.03.08.09.06.56
+Received: by 10.25.235.203 with SMTP id f72ls1239832lfk.51.gmail; Mon, 27 Mar
+ 2017 14:37:17 -0700 (PDT)
+X-Received: by 10.46.21.28 with SMTP id s28mr152790ljd.14.1490650637218;
+        Mon, 27 Mar 2017 14:37:17 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id x188si208769wmx.0.2017.03.27.14.37.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 08 Mar 2017 09:06:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
+        Mon, 27 Mar 2017 14:37:17 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x243.google.com with SMTP id n11so7087661wma.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 08 Mar 2017 09:06:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=dmvz2EeFf+3n374K/sPK/2pGyeMd4rYTM6GfopFEjI8=;
-        b=WDH+CM/UPz6yb7WM5viMBmNx2uXt2aZCOsm2c0EqTWhf+fA9JRMJ7EDUKN9OOqO4S8
-         fCY7Al5CvNGgi78z2juRCZyhBFIf0dcjb2qed7QSXZiRjOfyPvgAA2jTHUFevNdp859h
-         5QOt3D/mjrWDNZ/7bOlCe2yWwJE0XsdSfw7WdMvVxkmyft/O+QGSp8jI1JFb450etmip
-         Xi/uI3NWbEeoTFS9o+tzWRR7xT6yW66Tq7bs8/YbFJ6MYcbREM/IeAbj+gga07SR5O51
-         S1b4us5MVHlx1e0PUdWE3q+SuPF5V1KKRd1uqqgH4ixJd8pI0HkcS1LskJn0m/EoeARr
-         KWnA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=dmvz2EeFf+3n374K/sPK/2pGyeMd4rYTM6GfopFEjI8=;
-        b=b35rpkA1tM3+yhCZU3cvkfh1VlMlJsa1G/WkQ4ed9V9kLBr5BitRYQfg0KUdsWQl78
-         t26zNLulNjht1Zuy39sZGSlZEUmjbaRkyClboUa8YiMN1nQilGvT31SPFv6NO9lE0OJi
-         VCivNauHDsrAcoYv/xKBHwhS25PwWtHdfxTCm2hAvEr+3skUtUu7cP0tyLuI3ZV1MYpH
-         DSiuMS2PM1MHtnS0OGQ25DDLYfGFxhhj8/+oFVoePYjkYAYcqIattI6Jdp7v94H9BtF2
-         oThrsYPUE5WDAVHtZYz5R4xYMfoJrU94ONOhOAIeBtIp260eVPobkFuoF3hQ0G6TL409
-         wLNQ==
-X-Gm-Message-State: AMke39ngy6DFF0ywcpR3zuLd6STEFwNAsRDyqVrEcQhPWnHVKGxbo01RWGcjbbZQjajHgw==
-X-Received: by 10.28.165.70 with SMTP id o67mr6444519wme.11.1488992815999;
-        Wed, 08 Mar 2017 09:06:55 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([141.85.228.77])
-        by smtp.gmail.com with ESMTPSA id g45sm4918931wrd.11.2017.03.08.09.06.54
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 08 Mar 2017 09:06:55 -0800 (PST)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: aditya.shankar@microchip.com,
-	ganesh.krishna@microchip.com,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH 3/3] staging: wilc1000: wilc_spi: Add blank line
-Date: Wed,  8 Mar 2017 19:06:52 +0200
-Message-Id: <20170308170652.3996-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.36,233,1486422000"; 
+   d="scan'208";a="266448078"
+Received: from 109.236.136.163.wls.msr91gkk3.adsl.fix.edpnet.net (HELO hadrien.local) ([109.236.136.163])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 27 Mar 2017 23:37:16 +0200
+Date: Mon, 27 Mar 2017 23:37:16 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Gargi Sharma <gs051095@gmail.com>
+cc: Pablo Neira Ayuso <pablo@netfilter.org>, netfilter-devel@vger.kernel.org, 
+    outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Re: [PATCH] iptables: Constify option
+ struct
+In-Reply-To: <CAOCi2DFc2aURc5gAuF5q6NLvBwiVSbF6cpoF=ipfVwntz=86Hg@mail.gmail.com>
+Message-ID: <alpine.DEB.2.20.1703272336390.3204@hadrien>
+References: <1490641815-12741-1-git-send-email-gs051095@gmail.com> <20170327191239.GA18080@salvia> <CAOCi2DFt9kYKDE8Cn47Pbh=B4-E_PLSKLxXLmsdjfdyNWwcm7Q@mail.gmail.com> <CAOCi2DFc2aURc5gAuF5q6NLvBwiVSbF6cpoF=ipfVwntz=86Hg@mail.gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Add a blank line after a function.
 
-Fix the checkpath.pl issue:
-CHECK: Please use a blank line after function/struct/union.
 
-Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
----
- drivers/staging/wilc1000/wilc_spi.c | 1 +
- 1 file changed, 1 insertion(+)
+On Tue, 28 Mar 2017, Gargi Sharma wrote:
 
-diff --git a/drivers/staging/wilc1000/wilc_spi.c b/drivers/staging/wilc1000/wilc_spi.c
-index 4a4b8c3..82d162d 100644
---- a/drivers/staging/wilc1000/wilc_spi.c
-+++ b/drivers/staging/wilc1000/wilc_spi.c
-@@ -1146,6 +1146,7 @@ static int wilc_spi_sync_ext(struct wilc *wilc, int nint)
- 
- 	return 1;
- }
-+
- /********************************************
-  *
-  *      Global spi HIF function table
--- 
-2.9.3
+> On Tue, Mar 28, 2017 at 12:45 AM, Gargi Sharma <gs051095@gmail.com> wrote:
+> > On Tue, Mar 28, 2017 at 12:42 AM, Pablo Neira Ayuso <pablo@netfilter.org> wrote:
+> >>
+> >> On Tue, Mar 28, 2017 at 12:40:15AM +0530, Gargi Sharma wrote:
+> >> > The struct  of the type option is only used to initialise a field
+> >> > inside the xtables_match struct and is not modified anywhere.
+> >> > Done using Coccinelle:
+> >> >
+> >> > @r1 disable optional_qualifier@
+> >> > identifier s,i;
+> >> > position p;
+> >> > @@
+> >> >
+> >> > static struct option i@p[] ={...};
+> >> >
+> >> > @ok1@
+> >> > identifier r1.i;
+> >> > expression e;
+> >> > position p;
+> >> > @@
+> >> > e = i@p
+> >> >
+> >> > @bad@
+> >> > position p != {r1.p,ok1.p};
+> >> > identifier r1.i;
+> >> > @@
+> >> > e@i@p
+> >> >
+> >> > @depends on !bad disable optional_qualifier@
+> >> > identifier r1.i;
+> >> > @@
+> >> > static
+> >> > +const
+> >> > struct option i[] = { ... };
+> >>
+> >> Applied, thanks.
+> >>
+> >> You can probably have a look at ebtables.git, probably there are more
+> >> things to constify there.
+>
+> Hi Pablo,
+>
+> There are around 18 files being affected by this semantic patch in
+> ebtables. Should I still send them as a single patch(since it might be
+> difficult to review a large single patch)?
 
+If they are just independent structures, you can cut up the patches if it
+seems best.  If the changes are interdependent, then one patch would be
+better.
+
+julia
+
+>
+> Thanks!
+> Gargi
+> >>
+> > Okay, I will. :)
+> >
+> > Thanks!
+> > Gargi
+> >> --
+> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170327191239.GA18080%40salvia.
+> >> For more options, visit https://groups.google.com/d/optout.
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAOCi2DFc2aURc5gAuF5q6NLvBwiVSbF6cpoF%3DipfVwntz%3D86Hg%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
