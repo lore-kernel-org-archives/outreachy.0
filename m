@@ -1,109 +1,97 @@
-X-GM-THRID: 6397771412658978816
-X-Received: by 10.46.80.82 with SMTP id v18mr674229ljd.27.1489597235614;
-        Wed, 15 Mar 2017 10:00:35 -0700 (PDT)
+X-GM-THRID: 6401746705564303360
+X-Received: by 10.157.23.11 with SMTP id i11mr3251226ota.144.1490695985129;
+        Tue, 28 Mar 2017 03:13:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.167.201 with SMTP id q192ls82913lfe.35.gmail; Wed, 15 Mar
- 2017 10:00:34 -0700 (PDT)
-X-Received: by 10.25.190.65 with SMTP id o62mr629431lff.16.1489597234447;
-        Wed, 15 Mar 2017 10:00:34 -0700 (PDT)
-Return-Path: <narcisaanamaria12@gmail.com>
-Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
-        by gmr-mx.google.com with ESMTPS id b186si417625wme.1.2017.03.15.10.00.34
+Received: by 10.157.89.216 with SMTP id u24ls2457483otg.40.gmail; Tue, 28 Mar
+ 2017 03:13:04 -0700 (PDT)
+X-Received: by 10.157.35.183 with SMTP id t52mr9074328otb.109.1490695984745;
+        Tue, 28 Mar 2017 03:13:04 -0700 (PDT)
+Return-Path: <rvarsha016@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id 2si614859pfx.8.2017.03.28.03.13.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 15 Mar 2017 10:00:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
+        Tue, 28 Mar 2017 03:13:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=narcisaanamaria12@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x244.google.com with SMTP id z63so5668335wmg.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 15 Mar 2017 10:00:34 -0700 (PDT)
+Received: by mail-pg0-x244.google.com with SMTP id o123so17443269pga.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 28 Mar 2017 03:13:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=spNWVRfNhgx5e0c3rU3q/ojg+ez53YvpRalFDkLYAbY=;
-        b=uNf8LLzhQ7z8nfBkkCCpi1TV2BfWWgw7cwpZCHkKsuLfQgRY+kNfWeGCt/UtDZsMit
-         0p+zxTdO1W9lDv1l3+PJajZ4pj2sW52FBTfoErFo9ql1Jjkzz5wyq1YbBrk12+2wlC6q
-         8hh6bD2amaE4uCTMAmZlRBDsR+eGjsC4QUQ9Jdsyjwsk/pYhZ+XompatQ510S39/cYkA
-         3ywIDVl+36hQ/CkVgZQSx9NAcDUOfRWfYip+k4XXMIA+MBQaLQ/GOEQPU4FjDCZCE7xC
-         3uDGKOc7m2xheZcrvwo9CAXWHZJ5PZTnH5RMMMvRAAQ0qRRpZyjWFz6yYmGD+8ze2u8v
-         mxbw==
+        h=message-id:date:from:to:cc:subject:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=EfaqomTFMbF/5C6z2pHZ4+YINBuPG2m2dSlFynaehs4=;
+        b=JrJ4q9xE9G0kQYGXfQuDMzgLjUxmTU4DBZ28IGdp0K9FFhfzuiTpES6gTtQlvsvCoc
+         KqZ5ByCLvmLlTGpIr7t/GJNLEbtqotveygJ9txCJXcUpt7sFIwH5qTL+xMqQdT2f85a0
+         iZoHws9TjRBtQYregYhIErJHSOu5W7TEkggaGN1Qm5AYKs0UctgYhsSoHTh7YL4o25zo
+         DVElPdL7HvDoDHdVYfe9otj0+AmqUEUnUUQjyeBv2ICnnx3exHz9hSYzDCLoVmFWRf/r
+         j2hco33IT9bDEvXxqOAB7rnsZRGmJBgeXh8ZsyEUBcON6OoJXIvjOQgTN7UUsxg5x//b
+         EWEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=spNWVRfNhgx5e0c3rU3q/ojg+ez53YvpRalFDkLYAbY=;
-        b=TL9+l5LFOM5itdizVm2Y+S3h+HA4uy9bgbwYHGGGTksNZZ2IyZnUNA7JNYGMUFnLjc
-         rD3WZRLCn+lJZR8NNBImxLA22dF8cDOF+iPy+ICR9QQ8ja3bAvdCJl16+d0Mc5lY+xeo
-         VVt84jUSi7jwCjwBrVN0oW2tO3g4wKXk5UxH+/BsfkIOExL2NWbcAAGaNpYBVKDHpZtv
-         G5RgZ+tTyb07EnNWMaBPV934W9D2tUENK5mvWgGWwVPwy/pI/7EuKOgETRXBTTQSm3fi
-         mNyBZi1NG2w3n07Dc06ESrAOacw8ybuIGzzAQz89QtlQNwtSQFfM0BPpn0urk29gNH1i
-         8+PQ==
-X-Gm-Message-State: AFeK/H1OHvohIAARb9DZ8bT9ZNyenfb5v2qbPAqG1G9xerby00dgD3okCNKUA+Pdnk2ikw==
-X-Received: by 10.28.105.92 with SMTP id e89mr5012901wmc.93.1489597234205;
-        Wed, 15 Mar 2017 10:00:34 -0700 (PDT)
-Return-Path: <narcisaanamaria12@gmail.com>
-Received: from localhost.localdomain (p22.eregie.pub.ro. [141.85.0.122])
-        by smtp.gmail.com with ESMTPSA id h65sm1435832wrh.32.2017.03.15.10.00.32
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 15 Mar 2017 10:00:33 -0700 (PDT)
-From: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
-To: lars@metafoo.de,
-	Michael.Hennerich@analog.com,
-	jic23@kernel.org,
-	knaack.h@gmx.de,
-	pmeerw@pmeerw.net,
-	gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	linux-iio@vger.kernel.org,
-	Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
-Subject: [PATCH] staging: iio: adis16209: Remove mutex_lock() and mutex_unlock() calls
-Date: Wed, 15 Mar 2017 19:00:14 +0200
-Message-Id: <1489597214-24564-1-git-send-email-narcisaanamaria12@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=x-gm-message-state:message-id:date:from:to:cc:subject:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=EfaqomTFMbF/5C6z2pHZ4+YINBuPG2m2dSlFynaehs4=;
+        b=PIdmz82Ck7ujLLm3x6ckFzPGNr1bgfLDSyHvFZOG4tmEecOayo3weoN2Ywmm1E+nqH
+         321EiSdkZGy/3lX7l1W0Y0NJI1EK3RmmKWSg+EEOGH8mJCqF49cxI0XBenNsEU75Jaj5
+         8ik47p7hENSdRMmtCLZe/PTohtZyYioYxLukuOFU7isHgvrIQ11hZr2DWjQBzlqymWNq
+         W6nnv44+V/xsVrnsegs4lnx+Yk1Z4dL6mBioxd0nyvvUBPMFa/rao0D4cJVFgKz7nT+1
+         mgl4/QgFVx8SyWYTAQM0X8fFCREAf3RfZCisJKARWbI9vf3YIjkKA9htUbyyAnMXHo9Z
+         ja9g==
+X-Gm-Message-State: AFeK/H1BBcCJnG7YNZi8aNknEXZUFPmlaRjusl/CcHFYbVYcbNC4L6BrWXNeOpcTbJ7kJA==
+X-Received: by 10.99.97.12 with SMTP id v12mr29491448pgb.124.1490695984470;
+        Tue, 28 Mar 2017 03:13:04 -0700 (PDT)
+Return-Path: <rvarsha016@gmail.com>
+Received: from euri ([2405:204:5181:ce92:a4e3:114c:b305:cb39])
+        by smtp.gmail.com with ESMTPSA id g29sm6479374pfg.37.2017.03.28.03.13.03
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 28 Mar 2017 03:13:03 -0700 (PDT)
+Message-ID: <58da372f.1d20620a.54a11.091a@mx.google.com>
+X-Google-Original-Message-ID: <20170328101255.GA6999@<rvarsha016@gmail.com>>
+Date: Tue, 28 Mar 2017 15:42:55 +0530
+From: Varsha Rao <rvarsha016@gmail.com>
+To: mawilcox@microsoft.com
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: [PATCH v3 3/5] include: linux: pid: Add identifier to function
+ definition argument.
+References: <cover.1490695255.git.rvarsha016@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1490695255.git.rvarsha016@gmail.com>
+User-Agent: Mutt/1.7.1 (2016-10-04)
 
-The function adis16209_read_raw() is safe to be run in parallel.
-The call to adis_read_reg_16() is safe since adis_read_reg() uses the
-txrx_lock from struct adis to protect simultaneous changes.
+Add ns as the identifier to function definition argument struct
+pid_namespace and this patch fixes the checkpatch issue.
 
-Remove mutex.h inclusion since it is no longer needed.
-
-Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
+Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
 ---
- drivers/staging/iio/accel/adis16209.c | 4 ----
- 1 file changed, 4 deletions(-)
+Changes in v3:
+- No changes.
 
-diff --git a/drivers/staging/iio/accel/adis16209.c b/drivers/staging/iio/accel/adis16209.c
-index 8ff537f..f8c1fb0 100644
---- a/drivers/staging/iio/accel/adis16209.c
-+++ b/drivers/staging/iio/accel/adis16209.c
-@@ -7,7 +7,6 @@
+Changes in v2:
+- No changes.
+
+ include/linux/pid.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/linux/pid.h b/include/linux/pid.h
+index c6d947f..b94c68b 100644
+--- a/include/linux/pid.h
++++ b/include/linux/pid.h
+@@ -132,7 +132,7 @@ extern struct pid *find_vpid(int nr);
+  * Lookup a PID in the hash table, and return with it's count elevated.
   */
+ extern struct pid *find_get_pid(int nr);
+-extern struct pid *find_ge_pid(int nr, struct pid_namespace *);
++extern struct pid *find_ge_pid(int nr, struct pid_namespace *ns);
+ int next_pidmap(struct pid_namespace *pid_ns, unsigned int last);
  
- #include <linux/delay.h>
--#include <linux/mutex.h>
- #include <linux/device.h>
- #include <linux/kernel.h>
- #include <linux/spi/spi.h>
-@@ -252,17 +251,14 @@ static int adis16209_read_raw(struct iio_dev *indio_dev,
- 		default:
- 			return -EINVAL;
- 		}
--		mutex_lock(&indio_dev->mlock);
- 		addr = adis16209_addresses[chan->scan_index][0];
- 		ret = adis_read_reg_16(st, addr, &val16);
- 		if (ret) {
--			mutex_unlock(&indio_dev->mlock);
- 			return ret;
- 		}
- 		val16 &= (1 << bits) - 1;
- 		val16 = (s16)(val16 << (16 - bits)) >> (16 - bits);
- 		*val = val16;
--		mutex_unlock(&indio_dev->mlock);
- 		return IIO_VAL_INT;
- 	}
- 	return -EINVAL;
+ extern struct pid *alloc_pid(struct pid_namespace *ns);
 -- 
-1.9.1
+2.9.3
 
 
