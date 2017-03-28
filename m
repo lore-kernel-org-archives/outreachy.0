@@ -1,124 +1,137 @@
-X-GM-THRID: 6402952524859441152
-X-Received: by 10.129.146.139 with SMTP id j133mr417715ywg.173.1490803557561;
-        Wed, 29 Mar 2017 09:05:57 -0700 (PDT)
+X-GM-THRID: 6401831587283992576
+X-Received: by 10.99.2.9 with SMTP id 9mr1945573pgc.82.1490677193513;
+        Mon, 27 Mar 2017 21:59:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.39.115 with SMTP id r106ls15753990ota.10.gmail; Wed, 29
- Mar 2017 09:05:56 -0700 (PDT)
-X-Received: by 10.157.10.107 with SMTP id 98mr426589otg.120.1490803556639;
-        Wed, 29 Mar 2017 09:05:56 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id r66si1217846pfb.7.2017.03.29.09.05.56
+Received: by 10.157.5.7 with SMTP id 7ls15575025otw.5.gmail; Mon, 27 Mar 2017
+ 21:59:53 -0700 (PDT)
+X-Received: by 10.129.118.14 with SMTP id r14mr4398319ywc.172.1490677193140;
+        Mon, 27 Mar 2017 21:59:53 -0700 (PDT)
+Return-Path: <rvarsha016@gmail.com>
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id r66si462334pfb.7.2017.03.27.21.59.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 29 Mar 2017 09:05:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Mon, 27 Mar 2017 21:59:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id 81so3197795pgh.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 29 Mar 2017 09:05:56 -0700 (PDT)
+Received: by mail-pg0-x243.google.com with SMTP id o123so15580523pga.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 27 Mar 2017 21:59:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=PsGAXaWAxP/6qLycx+wnWZ71BP8yqkvzLCsyBJrgXDA=;
-        b=aZdopOTBg1C60D9v41c/OAPgHH3lLQebWYxA/lr71QX/v6BVlIq9+qp/DEKy2/6Hkn
-         By5jvj4jsPBWRi5YyCY8xS32u2m3hgunnwZdais+TvfHHW0J7lJ16Wnrwv6KKyhp8DwU
-         6n4c95yYUsFv31jwrOF2QXu7fyURrjbCa7bbhr1507mfzHM0O8nmDQniqMNO7IIBFqPv
-         QHNE+QYdlM18AOZ94+NGTs4nBqQUw6h7QxCPAvdwPXcRzahfy0ymQrxd6HN9Bfg50Vog
-         6Cn5SC7ZCZJJEZSrKmmeL4dj65KV1fhZmZJY4/soBK793aU/mXDNMM6HmZ/UO1fvK46U
-         DUIQ==
+        h=message-id:date:from:to:cc:subject:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=gSxBHgk60hpvWyusQSwYldLeyokK5QPwefooEwYb610=;
+        b=Y1x0LISkcBPWdhSVI6yw0yRLKiZ2149fasi6/j6W7UUZ4Wj2JWVBziuUmP9Rv4ePC8
+         YZmuAlPjH8liGQIU4T2Pc7kXys/0G9JpluBI2bPy8x/KeIgNT4Sud2W1/4sU1bTx81zl
+         YdWUtINJnOpCBWu6YKpuLP/aK1+Pn3JMWyN3nDl0snzUuSbnnzMPybAbbnQ7bbbLs1Nv
+         AbKNnMm5buRzhg5bM5653I0Mt6z0t6rSJd4IR4b4m+npLYdo/CthoyNX0GXosT6u0xrT
+         MVAeOeNjVR0sbP4r/X+uo/n6wsOHrUNJDeSfABEomOOaiEev/LpSyZ5KlvJUSHhnhKRq
+         4+Mg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=PsGAXaWAxP/6qLycx+wnWZ71BP8yqkvzLCsyBJrgXDA=;
-        b=CF6hO4C4F2+IH/QrzPFcz+P4867FveJjHIRrQMclkMrThH/JkUfCylMMJtNpsiJEx+
-         +Xq36z0tbQrjFIAvCpiiGtdx5z80T+RrcofrtXHGiJboz6g7yMLaMtaobWLNgN4jYbAI
-         NCf0kIfYBUWj/2OWT86Y7cerSIDZKzG6fCoQID4QUegX+U8HXqtC90htVnNnTpwtnTTK
-         hOtAOTfwcodNdlB83imD9bpSU8S98PBA8yY0T0dlA00jdQ0/U7Y/uhzcpGSIy/w63WyI
-         wd/RYIpr5CFE1XZoCYtG3ajQhLXUK9767xy9a17kdPMsZBUsY2Bcz20TWyiGSUKYqw3K
-         NfnQ==
-X-Gm-Message-State: AFeK/H1/xMA+Uh66/egYm1n8pjLl7DJTCO9+96jZ/lgwLSgl3VH6aLR6DjuJiMHpETfoPA==
-X-Received: by 10.99.160.111 with SMTP id u47mr1259866pgn.161.1490803556258;
-        Wed, 29 Mar 2017 09:05:56 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id s13sm14467787pfd.46.2017.03.29.09.05.53
+        h=x-gm-message-state:message-id:date:from:to:cc:subject:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=gSxBHgk60hpvWyusQSwYldLeyokK5QPwefooEwYb610=;
+        b=eakVlJ5MuOQULK94QqOWfixqEWCAJpmQmvVYtR00DZzVoNkQ6c+elaup1eQRd1dg/3
+         bBm9NanI7Rfp+x4yzbvOqWIYfJRjQUbS3tgLFAiR80R0UjP0NBk9iuk4q4jD+5sZwb0/
+         oQ2l0pycLUJeGHF2sV2onKHCtGnewYgqoV1fVE7z1UVfb5Dzg6vSwu141vxcwiXxNnkP
+         Vms8dOXvi7WhPRYfSqAMuwFD9F7PsHsQo2Ltxw+95FxU9Oda1gthSBj0kmzBQnjXqM4L
+         ZQZ5Z74uTyDzcKt80Uftu2PSY1ETOcAquvcqdQpRYY2xSJ7cdZquylOzOVy/WHKFFmAZ
+         7L0w==
+X-Gm-Message-State: AFeK/H0v6aDR2g2F6cNzNdm0wNVv1v8ckA1ilEULH0+kU1GOpCOpM0vWuyuAlA38nFMfUA==
+X-Received: by 10.84.197.35 with SMTP id m32mr33894290pld.123.1490677192910;
+        Mon, 27 Mar 2017 21:59:52 -0700 (PDT)
+Return-Path: <rvarsha016@gmail.com>
+Received: from euri ([2405:204:5181:ce92:a4e3:114c:b305:cb39])
+        by smtp.gmail.com with ESMTPSA id p6sm4136516pgn.40.2017.03.27.21.59.51
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 29 Mar 2017 09:05:54 -0700 (PDT)
-Date: Wed, 29 Mar 2017 21:35:51 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: lars@metafoo.de
-Cc: outreachy-kernel@googlegroups.com,
-	Michael Hennerich <Michael.Hennerich@analog.com>,
-	Jonathan Cameron <jic23@kernel.org>,
-	Hartmut Knaack <knaack.h@gmx.de>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2] staging: iio: Remove unneeded parentheses.
-Message-ID: <20170329160551.GA7230@arushi-HP-Pavilion-Notebook>
+        Mon, 27 Mar 2017 21:59:52 -0700 (PDT)
+Message-ID: <58d9edc8.467f630a.24d1f.ce41@mx.google.com>
+X-Google-Original-Message-ID: <20170328045949.GA18150@<rvarsha016@gmail.com>>
+Date: Tue, 28 Mar 2017 10:29:49 +0530
+From: Varsha Rao <rvarsha016@gmail.com>
+To: mawilcox@microsoft.com
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: [PATCH v3 3/3] kernel: pid: Add blank line after declarations.
+References: <cover.1490676249.git.rvarsha016@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <cover.1490676249.git.rvarsha016@gmail.com>
+User-Agent: Mutt/1.7.1 (2016-10-04)
 
-Remove the extra parenthesis remove the checkpatch issue.
+Add a blank line after declarations, to fix the checkpatch issue.
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
 ---
-changes in v2
- -done the changes according to the current tree
+Changes in v3:
+- No changes.
 
- drivers/staging/iio/cdc/ad7746.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+Changes in v2:
+- No changes.
 
-diff --git a/drivers/staging/iio/cdc/ad7746.c b/drivers/staging/iio/cdc/ad7746.c
-index c2c8aa5585e4..7fa9913386f5 100644
---- a/drivers/staging/iio/cdc/ad7746.c
-+++ b/drivers/staging/iio/cdc/ad7746.c
-@@ -45,10 +45,10 @@
- #define AD7746_STATUS_RDYCAP		BIT(0)
+ kernel/pid.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/kernel/pid.c b/kernel/pid.c
+index bb0a1c0..fe16058 100644
+--- a/kernel/pid.c
++++ b/kernel/pid.c
+@@ -148,6 +148,7 @@ static void set_last_pid(struct pid_namespace *pid_ns, int base, int pid)
+ {
+ 	int prev;
+ 	int last_write = base;
++
+ 	do {
+ 		prev = last_write;
+ 		last_write = cmpxchg(&pid_ns->last_pid, prev, pid);
+@@ -269,6 +270,7 @@ EXPORT_SYMBOL_GPL(put_pid);
+ static void delayed_put_pid(struct rcu_head *rhp)
+ {
+ 	struct pid *pid = container_of(rhp, struct pid, rcu);
++
+ 	put_pid(pid);
+ }
  
- /* Capacitive Channel Setup Register Bit Designations (AD7746_REG_CAP_SETUP) */
--#define AD7746_CAPSETUP_CAPEN		(1 << 7)
--#define AD7746_CAPSETUP_CIN2		(1 << 6) /* AD7746 only */
--#define AD7746_CAPSETUP_CAPDIFF		(1 << 5)
--#define AD7746_CAPSETUP_CACHOP		(1 << 0)
-+#define AD7746_CAPSETUP_CAPEN		BIT(7)
-+#define AD7746_CAPSETUP_CIN2		BIT(6) /* AD7746 only */
-+#define AD7746_CAPSETUP_CAPDIFF		BIT(5)
-+#define AD7746_CAPSETUP_CACHOP		BIT(0)
+@@ -409,6 +411,7 @@ EXPORT_SYMBOL_GPL(find_vpid);
+ void attach_pid(struct task_struct *task, enum pid_type type)
+ {
+ 	struct pid_link *link = &task->pids[type];
++
+ 	hlist_add_head_rcu(&link->node, &link->pid->tasks[type]);
+ }
  
- /* Voltage/Temperature Setup Register Bit Designations (AD7746_REG_VT_SETUP) */
- #define AD7746_VTSETUP_VTEN		(1 << 7)
-@@ -56,9 +56,9 @@
- #define AD7746_VTSETUP_VTMD_EXT_TEMP	(1 << 5)
- #define AD7746_VTSETUP_VTMD_VDD_MON	(2 << 5)
- #define AD7746_VTSETUP_VTMD_EXT_VIN	(3 << 5)
--#define AD7746_VTSETUP_EXTREF		(1 << 4)
--#define AD7746_VTSETUP_VTSHORT		(1 << 1)
--#define AD7746_VTSETUP_VTCHOP		(1 << 0)
-+#define AD7746_VTSETUP_EXTREF		BIT(4)
-+#define AD7746_VTSETUP_VTSHORT		BIT(1)
-+#define AD7746_VTSETUP_VTCHOP		BIT(0)
- 
- /* Excitation Setup Register Bit Designations (AD7746_REG_EXC_SETUP) */
- #define AD7746_EXCSETUP_CLKCTRL		BIT(7)
-@@ -82,7 +82,7 @@
- #define AD7746_CONF_MODE_GAIN_CAL	(6 << 0)
- 
- /* CAPDAC Register Bit Designations (AD7746_REG_CAPDACx) */
--#define AD7746_CAPDAC_DACEN		(1 << 7)
-+#define AD7746_CAPDAC_DACEN		BIT(7)
- #define AD7746_CAPDAC_DACP(x)		((x) & 0x7F)
- 
- /*
+@@ -455,8 +458,10 @@ void transfer_pid(struct task_struct *old, struct task_struct *new,
+ struct task_struct *pid_task(struct pid *pid, enum pid_type type)
+ {
+ 	struct task_struct *result = NULL;
++
+ 	if (pid) {
+ 		struct hlist_node *first;
++
+ 		first = rcu_dereference_check(hlist_first_rcu(&pid->tasks[type]),
+ 					      lockdep_tasklist_lock_is_held());
+ 		if (first)
+@@ -484,6 +489,7 @@ struct task_struct *find_task_by_vpid(pid_t vnr)
+ struct pid *get_task_pid(struct task_struct *task, enum pid_type type)
+ {
+ 	struct pid *pid;
++
+ 	rcu_read_lock();
+ 	if (type != PIDTYPE_PID)
+ 		task = task->group_leader;
+@@ -496,6 +502,7 @@ EXPORT_SYMBOL_GPL(get_task_pid);
+ struct task_struct *get_pid_task(struct pid *pid, enum pid_type type)
+ {
+ 	struct task_struct *result;
++
+ 	rcu_read_lock();
+ 	result = pid_task(pid, type);
+ 	if (result)
 -- 
-2.11.0
+2.9.3
 
 
