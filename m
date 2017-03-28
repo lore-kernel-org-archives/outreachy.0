@@ -1,63 +1,214 @@
 X-GM-THRID: 6402671483300085760
-X-Received: by 10.200.50.174 with SMTP id z43mr8923160qta.32.1491328795817;
-        Tue, 04 Apr 2017 10:59:55 -0700 (PDT)
+X-Received: by 10.129.101.133 with SMTP id z127mr10458642ywb.148.1490738122690;
+        Tue, 28 Mar 2017 14:55:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.137.197 with SMTP id t66ls9489357ioi.25.gmail; Tue, 04 Apr
- 2017 10:59:54 -0700 (PDT)
-X-Received: by 10.99.134.193 with SMTP id x184mr7067518pgd.150.1491328794890;
-        Tue, 04 Apr 2017 10:59:54 -0700 (PDT)
-Return-Path: <horms@verge.net.au>
-Received: from kirsty.vergenet.net (kirsty.vergenet.net. [202.4.237.240])
-        by gmr-mx.google.com with ESMTP id g82si2614000pfb.5.2017.04.04.10.59.54
-        for <outreachy-kernel@googlegroups.com>;
-        Tue, 04 Apr 2017 10:59:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of horms@verge.net.au designates 202.4.237.240 as permitted sender) client-ip=202.4.237.240;
+Received: by 10.157.68.202 with SMTP id p10ls1366491otg.18.gmail; Tue, 28 Mar
+ 2017 14:55:22 -0700 (PDT)
+X-Received: by 10.237.37.80 with SMTP id w16mr9537003qtc.4.1490738122257;
+        Tue, 28 Mar 2017 14:55:22 -0700 (PDT)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id e196si536369itc.2.2017.03.28.14.55.22
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 28 Mar 2017 14:55:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@verge.net.au;
-       spf=pass (google.com: domain of horms@verge.net.au designates 202.4.237.240 as permitted sender) smtp.mailfrom=horms@verge.net.au
-Received: from penelope.horms.nl (unknown [173.243.43.210])
-	by kirsty.vergenet.net (Postfix) with ESMTPSA id ACFC925BE33;
-	Wed,  5 Apr 2017 03:59:51 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=verge.net.au; s=mail;
-	t=1491328792; bh=41bNXdofg3KvWg9sXtMhnTONfudYGlaUtLLbGy1yWwU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=g/B8BUm+gN5gIiXDwWzjSzftKK0KlZHUak9iXnyUZTvny0qDhSZeWNqGtCO1qR2ft
-	 Ie/f/yOs96P5uKT4+pEbDUymSsQNjPSd20/hN5HQk2IGYJEArD4Jo9vVDn8qaYgwJs
-	 pAaKw6frOAo6kmSnPThdeulS1jgcrGMevuuqjZkU=
-Received: by penelope.horms.nl (Postfix, from userid 7100)
-	id 00C5960774; Tue,  4 Apr 2017 19:59:48 +0200 (CEST)
-Date: Tue, 4 Apr 2017 13:59:48 -0400
-From: Simon Horman <horms@verge.net.au>
-To: simran singhal <singhalsimran0@gmail.com>
-Cc: wensong@linux-vs.org, Julian Anastasov <ja@ssi.bg>,
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x244.google.com with SMTP id 81so24302480pgh.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 28 Mar 2017 14:55:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=x+0dBuMKXOMaVqJ7jfNyAQb+XmtsW1GzCxEd2S9iPuY=;
+        b=GRA7dwSG/DOyLENJiZUD8nimSBX7CbY+ItmTVb0jmE/VEqhyvlQzC8cWPnGoM3GF1u
+         sS1Y9zAK/UURpe9ANvQ01beIqsSp8CeaFmYKvum/cFGn1Anka5bbZWYYlKrH5UzBZmIN
+         j0k7BFpwuedu7Vinvn9QzQZp+f/qEd0ideneM2OQ9Nxk9KMi6kory4iHW0eOkIk/UjlD
+         dONwZQJb919xJBiWezwCm80ztDTpPesxiBlQSUJn5QVh7PwgbgdmdoVMPlF66PEyuodT
+         hJTkgIoT4BQfhBUe/1+kYfhwRnosHi1MwXttQK6SGQmPhB4+9VwOut1hVbhRxsc7jxVo
+         us0Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=x+0dBuMKXOMaVqJ7jfNyAQb+XmtsW1GzCxEd2S9iPuY=;
+        b=SHpxsBeZ2XIFTFqmqyEB2j0g9PLRkLbgZ1zfSb2hzcqcmvo7UJzmPTlVw/5r2E64Lr
+         jmop3MDOnKOcjTWI6d34bclDHcCOsop4ZEqK9dLO0rWqQOhjTmO80jpgWSvLGN+EqgOG
+         81pv7ipvYnvrMPM7KgvM4JEHcKpBtIIWQOR7o8Q8hglBhcCxE6yfFr5Cf6LDmvL2HCCh
+         ACZTEIvw3GO0opQ2+RpuXbE7j5uSFUaL1brrqWppOTn1kuhpyWam2PIoSmt6WDu71V0Z
+         khjAH141w9POdYU2MCK3M1muSK74LbVKKowKBgEkBskVzSM+F9xVRaFvLxi1vGbLHANW
+         PwLw==
+X-Gm-Message-State: AFeK/H0aRMalkkFuDwRzHbaUfzZKpvFIr4zAy1M2d2IqlLLkOXdboy06Pg256om+qqkGOw==
+X-Received: by 10.99.176.5 with SMTP id h5mr2260268pgf.179.1490738121684;
+        Tue, 28 Mar 2017 14:55:21 -0700 (PDT)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from singhal-Inspiron-5558 ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id r8sm9206810pfk.80.2017.03.28.14.55.20
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 28 Mar 2017 14:55:21 -0700 (PDT)
+Date: Wed, 29 Mar 2017 03:25:17 +0530
+From: simran singhal <singhalsimran0@gmail.com>
+To: wensong@linux-vs.org
+Cc: Simon Horman <horms@verge.net.au>, Julian Anastasov <ja@ssi.bg>,
 	Pablo Neira Ayuso <pablo@netfilter.org>,
 	Jozsef Kadlecsik <kadlec@blackhole.kfki.hu>,
 	"David S. Miller" <davem@davemloft.net>, netdev@vger.kernel.org,
 	lvs-devel@vger.kernel.org, netfilter-devel@vger.kernel.org,
 	coreteam@netfilter.org, linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] net: netfilter: Use seq_puts()/seq_putc() where possible
-Message-ID: <20170404175948.GD7257@verge.net.au>
-References: <20170328215517.GA18237@singhal-Inspiron-5558>
+Subject: [PATCH] net: netfilter: Use seq_puts()/seq_putc() where possible
+Message-ID: <20170328215517.GA18237@singhal-Inspiron-5558>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20170328215517.GA18237@singhal-Inspiron-5558>
-Organisation: Horms Solutions BV
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Wed, Mar 29, 2017 at 03:25:17AM +0530, simran singhal wrote:
-> For string without format specifiers, use seq_puts(). For
-> seq_printf("\n"), use seq_putc('\n').
-> 
-> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
-> ---
->  net/netfilter/ipvs/ip_vs_ctl.c          | 8 ++++----
+For string without format specifiers, use seq_puts(). For
+seq_printf("\n"), use seq_putc('\n').
 
-Simran, I would be happy to pick up the IPVS version if it was posted as a
-separate patch.
+Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+---
+ net/netfilter/ipvs/ip_vs_ctl.c          | 8 ++++----
+ net/netfilter/nf_conntrack_expect.c     | 4 ++--
+ net/netfilter/nf_conntrack_standalone.c | 6 +++---
+ net/netfilter/nf_log.c                  | 4 ++--
+ net/netfilter/nf_synproxy_core.c        | 6 +++---
+ net/netfilter/xt_recent.c               | 2 +-
+ 6 files changed, 15 insertions(+), 15 deletions(-)
 
-Alternative, Pablo, if you would like to take this patch feel free to add:
+diff --git a/net/netfilter/ipvs/ip_vs_ctl.c b/net/netfilter/ipvs/ip_vs_ctl.c
+index efe348a..c3423e3 100644
+--- a/net/netfilter/ipvs/ip_vs_ctl.c
++++ b/net/netfilter/ipvs/ip_vs_ctl.c
+@@ -2130,8 +2130,8 @@ static int ip_vs_stats_show(struct seq_file *seq, void *v)
+ /*               01234567 01234567 01234567 0123456701234567 0123456701234567 */
+ 	seq_puts(seq,
+ 		 "   Total Incoming Outgoing         Incoming         Outgoing\n");
+-	seq_printf(seq,
+-		   "   Conns  Packets  Packets            Bytes            Bytes\n");
++	seq_puts(seq,
++		 "   Conns  Packets  Packets            Bytes            Bytes\n");
+ 
+ 	ip_vs_copy_stats(&show, &net_ipvs(net)->tot_stats);
+ 	seq_printf(seq, "%8LX %8LX %8LX %16LX %16LX\n\n",
+@@ -2178,8 +2178,8 @@ static int ip_vs_stats_percpu_show(struct seq_file *seq, void *v)
+ /*               01234567 01234567 01234567 0123456701234567 0123456701234567 */
+ 	seq_puts(seq,
+ 		 "       Total Incoming Outgoing         Incoming         Outgoing\n");
+-	seq_printf(seq,
+-		   "CPU    Conns  Packets  Packets            Bytes            Bytes\n");
++	seq_puts(seq,
++		 "CPU    Conns  Packets  Packets            Bytes            Bytes\n");
+ 
+ 	for_each_possible_cpu(i) {
+ 		struct ip_vs_cpu_stats *u = per_cpu_ptr(cpustats, i);
+diff --git a/net/netfilter/nf_conntrack_expect.c b/net/netfilter/nf_conntrack_expect.c
+index 4b2e1fb..74c384e 100644
+--- a/net/netfilter/nf_conntrack_expect.c
++++ b/net/netfilter/nf_conntrack_expect.c
+@@ -549,7 +549,7 @@ static int exp_seq_show(struct seq_file *s, void *v)
+ 		seq_printf(s, "%ld ", timer_pending(&expect->timeout)
+ 			   ? (long)(expect->timeout.expires - jiffies)/HZ : 0);
+ 	else
+-		seq_printf(s, "- ");
++		seq_puts(s, "- ");
+ 	seq_printf(s, "l3proto = %u proto=%u ",
+ 		   expect->tuple.src.l3num,
+ 		   expect->tuple.dst.protonum);
+@@ -559,7 +559,7 @@ static int exp_seq_show(struct seq_file *s, void *v)
+ 				       expect->tuple.dst.protonum));
+ 
+ 	if (expect->flags & NF_CT_EXPECT_PERMANENT) {
+-		seq_printf(s, "PERMANENT");
++		seq_puts(s, "PERMANENT");
+ 		delim = ",";
+ 	}
+ 	if (expect->flags & NF_CT_EXPECT_INACTIVE) {
+diff --git a/net/netfilter/nf_conntrack_standalone.c b/net/netfilter/nf_conntrack_standalone.c
+index 2256147..ccb5cb9 100644
+--- a/net/netfilter/nf_conntrack_standalone.c
++++ b/net/netfilter/nf_conntrack_standalone.c
+@@ -250,7 +250,7 @@ static int ct_seq_show(struct seq_file *s, void *v)
+ 		goto release;
+ 
+ 	if (!(test_bit(IPS_SEEN_REPLY_BIT, &ct->status)))
+-		seq_printf(s, "[UNREPLIED] ");
++		seq_puts(s, "[UNREPLIED] ");
+ 
+ 	print_tuple(s, &ct->tuplehash[IP_CT_DIR_REPLY].tuple,
+ 		    l3proto, l4proto);
+@@ -261,7 +261,7 @@ static int ct_seq_show(struct seq_file *s, void *v)
+ 		goto release;
+ 
+ 	if (test_bit(IPS_ASSURED_BIT, &ct->status))
+-		seq_printf(s, "[ASSURED] ");
++		seq_puts(s, "[ASSURED] ");
+ 
+ 	if (seq_has_overflowed(s))
+ 		goto release;
+@@ -350,7 +350,7 @@ static int ct_cpu_seq_show(struct seq_file *seq, void *v)
+ 	const struct ip_conntrack_stat *st = v;
+ 
+ 	if (v == SEQ_START_TOKEN) {
+-		seq_printf(seq, "entries  searched found new invalid ignore delete delete_list insert insert_failed drop early_drop icmp_error  expect_new expect_create expect_delete search_restart\n");
++		seq_puts(seq, "entries  searched found new invalid ignore delete delete_list insert insert_failed drop early_drop icmp_error  expect_new expect_create expect_delete search_restart\n");
+ 		return 0;
+ 	}
+ 
+diff --git a/net/netfilter/nf_log.c b/net/netfilter/nf_log.c
+index 8d85a05..cc32727 100644
+--- a/net/netfilter/nf_log.c
++++ b/net/netfilter/nf_log.c
+@@ -376,13 +376,13 @@ static int seq_show(struct seq_file *s, void *v)
+ 		logger = nft_log_dereference(loggers[*pos][i]);
+ 		seq_printf(s, "%s", logger->name);
+ 		if (i == 0 && loggers[*pos][i + 1] != NULL)
+-			seq_printf(s, ",");
++			seq_puts(s, ",");
+ 
+ 		if (seq_has_overflowed(s))
+ 			return -ENOSPC;
+ 	}
+ 
+-	seq_printf(s, ")\n");
++	seq_puts(s, ")\n");
+ 
+ 	if (seq_has_overflowed(s))
+ 		return -ENOSPC;
+diff --git a/net/netfilter/nf_synproxy_core.c b/net/netfilter/nf_synproxy_core.c
+index 7c6d1fb..abe03e8 100644
+--- a/net/netfilter/nf_synproxy_core.c
++++ b/net/netfilter/nf_synproxy_core.c
+@@ -287,9 +287,9 @@ static int synproxy_cpu_seq_show(struct seq_file *seq, void *v)
+ 	struct synproxy_stats *stats = v;
+ 
+ 	if (v == SEQ_START_TOKEN) {
+-		seq_printf(seq, "entries\t\tsyn_received\t"
+-				"cookie_invalid\tcookie_valid\t"
+-				"cookie_retrans\tconn_reopened\n");
++		seq_puts(seq, "entries\t\tsyn_received\t"
++			      "cookie_invalid\tcookie_valid\t"
++			      "cookie_retrans\tconn_reopened\n");
+ 		return 0;
+ 	}
+ 
+diff --git a/net/netfilter/xt_recent.c b/net/netfilter/xt_recent.c
+index 1d89a4e..37d581a 100644
+--- a/net/netfilter/xt_recent.c
++++ b/net/netfilter/xt_recent.c
+@@ -532,7 +532,7 @@ static int recent_seq_show(struct seq_file *seq, void *v)
+ 			   &e->addr.in6, e->ttl, e->stamps[i], e->index);
+ 	for (i = 0; i < e->nstamps; i++)
+ 		seq_printf(seq, "%s %lu", i ? "," : "", e->stamps[i]);
+-	seq_printf(seq, "\n");
++	seq_putc(seq, '\n');
+ 	return 0;
+ }
+ 
+-- 
+2.7.4
 
-Acked-by: Simon Horman <horms+renesas@verge.net.au>
 
