@@ -1,104 +1,163 @@
-X-GM-THRID: 6401339211777048576
-X-Received: by 10.107.155.213 with SMTP id d204mr3784816ioe.56.1490427928082;
-        Sat, 25 Mar 2017 00:45:28 -0700 (PDT)
+X-GM-THRID: 6401831056231628800
+X-Received: by 10.157.27.231 with SMTP id v36mr9127923otv.125.1490676891871;
+        Mon, 27 Mar 2017 21:54:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.42.168 with SMTP id e37ls3516948otb.3.gmail; Sat, 25 Mar
- 2017 00:45:27 -0700 (PDT)
-X-Received: by 10.157.54.9 with SMTP id w9mr3983803otb.122.1490427927443;
-        Sat, 25 Mar 2017 00:45:27 -0700 (PDT)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id s67si887796pfs.4.2017.03.25.00.45.27
+Received: by 10.157.22.218 with SMTP id s26ls15343286ots.17.gmail; Mon, 27 Mar
+ 2017 21:54:51 -0700 (PDT)
+X-Received: by 10.13.226.145 with SMTP id l139mr9099325ywe.95.1490676891413;
+        Mon, 27 Mar 2017 21:54:51 -0700 (PDT)
+Return-Path: <rvarsha016@gmail.com>
+Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
+        by gmr-mx.google.com with ESMTPS id i189si39598pfg.3.2017.03.27.21.54.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 25 Mar 2017 00:45:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Mon, 27 Mar 2017 21:54:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id r137so1744507pfr.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 25 Mar 2017 00:45:27 -0700 (PDT)
+Received: by mail-pg0-x242.google.com with SMTP id o123so15550386pga.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 27 Mar 2017 21:54:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=/yog4XPTdu/k+w3z9F7tnJ4L8A9NXiNu2IoWzmGaaAM=;
-        b=jBGWK2etdIEcCvuX4z/QlnnUA9LJtZydOweffNdqVDPuD+EtHTMPOiH4egETB714qY
-         E9yL+3R9ky8dTzyjf8pjHOQ+8wPvklOtVfb30Uz2Fl4CGORsdlQcrJBn+0tcKIE0S4+w
-         Z2z4Cg7TZjjOFe/wwskcZ2hsUdnTr/5IO2J9aFS6woEVRuM/fMEwAUMOt1AzCr1eMb7I
-         D5aUe3AHpIGZWRjv30J5AaihrDnSsZRsc7kKOAASjOKR0VjJgDzBAYYAN3bRbccAzOrT
-         U/FOTewsf53dcg20KeRr77HWOi/SUbJvC1D1RnQv3Z+7G6VbS/MieUD5WX/2qtlsYDsC
-         A0sg==
+        h=message-id:date:from:to:cc:subject:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=cYEbIOgeGi6lv+5ZmA6m2fcZQh2DTKd+8okIdO5AIAo=;
+        b=gnf+sc157ISlfVuQimoJ0CN+JnAcfv6kbt5EQY5xx6UH7Tcr78/fGuproHi5aJKI7d
+         Ltn3yIqas3iN9bTQn3o9/BjmkxqdMDtBDa1IUmLVrZww7w+Pzh0XgRHu49C8pDo4qjrr
+         382dk6Zdoj7jXLAh+vk4UGDa8qzvVQgxSWXH+ujqbd0U7FfH6ToBfF67mB1Zut7OcsQo
+         pZyyZRzhTlaCx3xNfhr8+EUzE4i/QQAMhwyNaQ0Y38mMgQeWeZ13vUcdhLVIA3PyVHUg
+         vM8oWcbMDjgozyLPmRvyDGerOoDHO7+/ztyQ7u/riiBSt7ePKO3h6jpVG9e3/FwKkc2v
+         6/Cg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=/yog4XPTdu/k+w3z9F7tnJ4L8A9NXiNu2IoWzmGaaAM=;
-        b=TkE/geVzLQlNnZ0RAVo1TMiGqzvttejt+2zf37F/fqULktxoBW5Ij4jL5k1i/uhd1R
-         HxYyxZQUpeeE61w4kRJjSYzbuszM1kPBV3FFDVcAyliqueam125bVH1Fl2vR7B0wiQgs
-         UJYpBahNbTXNU73qlDGc0x3vCPOOXYHDifVrfkS7q9F5Z7c6iMJniKm16JaIz5wLON6B
-         3AVSjQnuv8CL8+DmyV5YXcNSikrXRflVd0a/ihMxpUmzt4JuHkRgkcIibG+zlxL8sP8B
-         beFr+5dhDXrVagvLC78EGJLCXK/RZrXUJmCxlzbDjh66YRmSdzboRmTiKAG3q8csFbTG
-         2F7w==
-X-Gm-Message-State: AFeK/H3YlsJRYM48gHQc5ipRDOPEICpikXxQokPtxa1odKtUc2xg7XuEbXLOGkTdboU6Ew==
-X-Received: by 10.84.217.142 with SMTP id p14mr10462487pli.164.1490427927040;
-        Sat, 25 Mar 2017 00:45:27 -0700 (PDT)
-Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([47.9.132.78])
-        by smtp.googlemail.com with ESMTPSA id x65sm8600009pfb.111.2017.03.25.00.45.19
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 25 Mar 2017 00:45:26 -0700 (PDT)
-From: Gargi Sharma <gs051095@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: amsfield22@gmail.com,
-	arushisinghal19971997@gmail.com,
-	singhalsimran0@gmail.com,
-	karniksayli1995@gmail.com,
-	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH] Proposal for meter ade* patches
-Date: Sat, 25 Mar 2017 13:15:00 +0530
-Message-Id: <1490427900-21479-1-git-send-email-gs051095@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:message-id:date:from:to:cc:subject:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=cYEbIOgeGi6lv+5ZmA6m2fcZQh2DTKd+8okIdO5AIAo=;
+        b=UwMH2UTdhpiG5WS+ux63BZ0g0wtk9ENCbXnERfoUw7eOyz60S2qIW0R5rVmY1Q6BzN
+         muxVbWjciM30vBsKxfdkYfp9bR2XQ1kXM4DbmEs3h7Uk+X/tNJBz1wDVCDCQ1tpYoyU+
+         zKGCo9y+yQ4lQe9oQbothflcevDmqwj0XntC60Sp4ZNN60DehnSGvILq420HMH5ktq/1
+         eq0uYFimbLn63MM51GJi787d2OYyxvcZFCVJKhYF2Krsab4Qpwip5Eeij4J3jawnRil3
+         aYbKR6ANrA7aVefwzUo1we2E2x9V2oChxWgam3V4eMZDMsjbrtfWRlTX5DCGX5hBJFBk
+         PKWg==
+X-Gm-Message-State: AFeK/H1HVSUo2kAaf3enBV7dak2nA+gJoHSyAnLemrQS47U6spErWdrSrlDGaH2lx6KshQ==
+X-Received: by 10.99.224.69 with SMTP id n5mr27780486pgj.113.1490676891021;
+        Mon, 27 Mar 2017 21:54:51 -0700 (PDT)
+Return-Path: <rvarsha016@gmail.com>
+Received: from euri ([45.125.143.164])
+        by smtp.gmail.com with ESMTPSA id b74sm4102457pfd.90.2017.03.27.21.54.49
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 27 Mar 2017 21:54:50 -0700 (PDT)
+Message-ID: <58d9ec9a.4d07620a.3b5b2.c9ed@mx.google.com>
+X-Google-Original-Message-ID: <20170328045447.GA12946@<rvarsha016@gmail.com>>
+Date: Tue, 28 Mar 2017 10:24:47 +0530
+From: Varsha Rao <rvarsha016@gmail.com>
+To: mawilcox@microsoft.com
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: [PATCH v3 1/3] kernel: pid: Update documentation.
+References: <cover.1490676249.git.rvarsha016@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1490676249.git.rvarsha016@gmail.com>
+User-Agent: Mutt/1.7.1 (2016-10-04)
 
-The driver needs to insure atomicity during frequency
-changes of bus and device. The iiodev->mlock as used
-was not doing that. Replace it with the drivers existing
-buffer lock and execute spi_write directly.
+This patch adds comments to update documentation.
 
-Signed-off-by: Gargi Sharma <gs051095@gmail.com>
+Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
 ---
- drivers/staging/iio/meter/ade7754.c | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+Changes in v3:
+- Changed the comment style.
 
-diff --git a/drivers/staging/iio/meter/ade7754.c b/drivers/staging/iio/meter/ade7754.c
-index c8d2d4c..48339e9a 100644
---- a/drivers/staging/iio/meter/ade7754.c
-+++ b/drivers/staging/iio/meter/ade7754.c
-@@ -513,7 +513,7 @@ static ssize_t ade7754_write_frequency(struct device *dev,
- 	if (!val)
- 		return -EINVAL;
+Changes in v2:
+- No change.
+
+ kernel/pid.c | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+
+diff --git a/kernel/pid.c b/kernel/pid.c
+index 0143ac0..01fb660 100644
+--- a/kernel/pid.c
++++ b/kernel/pid.c
+@@ -42,6 +42,8 @@
  
--	mutex_lock(&indio_dev->mlock);
-+	mutex_lock(&st->buf_lock);
- 
- 	t = 26000 / val;
- 	if (t > 0)
-@@ -531,10 +531,13 @@ static ssize_t ade7754_write_frequency(struct device *dev,
- 	reg &= ~(3 << 3);
- 	reg |= t << 3;
- 
--	ret = ade7754_spi_write_reg_8(dev, ADE7754_WAVMODE, reg);
-+	st->tx[0] = ADE7754_WRITE_REG(ADE7754_WAVMODE);
-+	st->tx[1] = reg;
+ #define pid_hashfn(nr, ns)	\
+ 	hash_long((unsigned long)nr + (unsigned long)ns, pidhash_shift)
 +
-+	ret = spi_write(st->us, st->tx, 2);
++/* Doubly linked hash lists to find PID in given namespace. */
+ static struct hlist_head *pid_hash;
+ static unsigned int pidhash_shift = 4;
+ struct pid init_struct_pid = INIT_STRUCT_PID;
+@@ -53,6 +55,7 @@ int pid_max = PID_MAX_DEFAULT;
+ int pid_max_min = RESERVED_PIDS + 1;
+ int pid_max_max = PID_MAX_LIMIT;
  
- out:
--	mutex_unlock(&indio_dev->mlock);
-+	mutex_unlock(&st->buf_lock);
++/* mk_pid() - Return distance between map and offset pidmap. */
+ static inline int mk_pid(struct pid_namespace *pid_ns,
+ 		struct pidmap *map, int off)
+ {
+@@ -101,6 +104,7 @@ EXPORT_SYMBOL_GPL(init_pid_ns);
  
- 	return ret ? ret : len;
+ static  __cacheline_aligned_in_smp DEFINE_SPINLOCK(pidmap_lock);
+ 
++/* free_pidmap() - Free process id. */
+ static void free_pidmap(struct upid *upid)
+ {
+ 	int nr = upid->nr;
+@@ -150,6 +154,10 @@ static void set_last_pid(struct pid_namespace *pid_ns, int base, int pid)
+ 	} while ((prev != last_write) && (pid_before(base, last_write, pid)));
  }
+ 
++/*
++ * alloc_pidmap() - Increment last pid by one and return it if new pid
++ * is valid.
++ */
+ static int alloc_pidmap(struct pid_namespace *pid_ns)
+ {
+ 	int i, offset, max_scan, pid, last = pid_ns->last_pid;
+@@ -212,6 +220,10 @@ static int alloc_pidmap(struct pid_namespace *pid_ns)
+ 	return -EAGAIN;
+ }
+ 
++/*
++ * next_pidmap() - Find the first pid which is greater than previous
++ * last allocated pid.
++ */
+ int next_pidmap(struct pid_namespace *pid_ns, unsigned int last)
+ {
+ 	int offset;
+@@ -233,6 +245,7 @@ int next_pidmap(struct pid_namespace *pid_ns, unsigned int last)
+ 	return -1;
+ }
+ 
++/* put_pid() - Check whether pid can be reallocated. */
+ void put_pid(struct pid *pid)
+ {
+ 	struct pid_namespace *ns;
+@@ -249,6 +262,10 @@ void put_pid(struct pid *pid)
+ }
+ EXPORT_SYMBOL_GPL(put_pid);
+ 
++/*
++ * delayed_put_pid() - Find the real location of struct pid in the
++ * memory and check whether it can be reallocated with put_pid().
++ */
+ static void delayed_put_pid(struct rcu_head *rhp)
+ {
+ 	struct pid *pid = container_of(rhp, struct pid, rcu);
+@@ -293,6 +310,10 @@ void free_pid(struct pid *pid)
+ 	call_rcu(&pid->rcu, delayed_put_pid);
+ }
+ 
++/*
++ * alloc_pid() - Allocate local pid for each multiple namespaces
++ * in which new process created is visible.
++ */
+ struct pid *alloc_pid(struct pid_namespace *ns)
+ {
+ 	struct pid *pid;
 -- 
-2.7.4
+2.9.3
 
 
