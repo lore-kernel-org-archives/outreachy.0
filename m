@@ -1,63 +1,368 @@
 X-GM-THRID: 6399870143121326080
-X-Received: by 10.200.57.65 with SMTP id t1mr8880496qtb.62.1490713214104;
-        Tue, 28 Mar 2017 08:00:14 -0700 (PDT)
+X-Received: by 10.36.17.209 with SMTP id 200mr4082259itf.28.1490706824448;
+        Tue, 28 Mar 2017 06:13:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.15.38 with SMTP id 35ls262519ott.19.gmail; Tue, 28 Mar
- 2017 08:00:13 -0700 (PDT)
-X-Received: by 10.157.42.5 with SMTP id t5mr9305246ota.149.1490713213584;
-        Tue, 28 Mar 2017 08:00:13 -0700 (PDT)
-Received: by 10.202.206.72 with SMTP id e69msoig;
-        Tue, 28 Mar 2017 06:54:42 -0700 (PDT)
-X-Received: by 10.13.249.4 with SMTP id j4mr9959893ywf.17.1490709282025;
-        Tue, 28 Mar 2017 06:54:42 -0700 (PDT)
-Return-Path: <jengelh@inai.de>
-Received: from a3.inai.de (a3.inai.de. [2a01:4f8:162:73ab::58c6:b4a1])
-        by gmr-mx.google.com with ESMTPS id o185si169868ywb.5.2017.03.28.06.54.41
+Received: by 10.107.135.40 with SMTP id j40ls1884225iod.26.gmail; Tue, 28 Mar
+ 2017 06:13:43 -0700 (PDT)
+X-Received: by 10.107.32.66 with SMTP id g63mr9375340iog.45.1490706823366;
+        Tue, 28 Mar 2017 06:13:43 -0700 (PDT)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id a3si565698pfb.2.2017.03.28.06.13.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Mar 2017 06:54:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jengelh@inai.de designates 2a01:4f8:162:73ab::58c6:b4a1 as permitted sender) client-ip=2a01:4f8:162:73ab::58c6:b4a1;
+        Tue, 28 Mar 2017 06:13:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of jengelh@inai.de designates 2a01:4f8:162:73ab::58c6:b4a1 as permitted sender) smtp.mailfrom=jengelh@inai.de
-Received: by a3.inai.de (Postfix, from userid 25121)
-	id DD71C193F387D; Tue, 28 Mar 2017 15:54:40 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by a3.inai.de (Postfix) with ESMTP id CBB041C57EA2;
-	Tue, 28 Mar 2017 15:54:40 +0200 (CEST)
-Date: Tue, 28 Mar 2017 15:54:40 +0200 (CEST)
-From: Jan Engelhardt <jengelh@inai.de>
-To: simran singhal <singhalsimran0@gmail.com>
-cc: wensong@linux-vs.org, Simon Horman <horms@verge.net.au>, 
-    Julian Anastasov <ja@ssi.bg>, Pablo Neira Ayuso <pablo@netfilter.org>, 
-    Jozsef Kadlecsik <kadlec@blackhole.kfki.hu>, 
-    "David S. Miller" <davem@davemloft.net>, netdev@vger.kernel.org, 
-    lvs-devel@vger.kernel.org, netfilter-devel@vger.kernel.org, 
-    coreteam@netfilter.org, linux-kernel@vger.kernel.org, 
-    outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH v2] netfilter: Clean up tests if NULL returned on
- failure
-In-Reply-To: <20170328131340.GA19688@singhal-Inspiron-5558>
-Message-ID: <alpine.LSU.2.20.1703281552040.21255@n3.vanv.qr>
-References: <20170328131340.GA19688@singhal-Inspiron-5558>
-User-Agent: Alpine 2.20 (LSU 67 2015-01-07)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x243.google.com with SMTP id 79so21329258pgf.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 28 Mar 2017 06:13:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=NpBKd5LC3CpDOJo+pD5WNUeIFwyR0hCmGtJZAikp3Jo=;
+        b=Jnc8EtBp37cICRupZcING/TBLf8609aqFVUuf+u+PkENziaRBG0N9CT4S+IxohEgjt
+         sK60cMhrVBzdpn1fUyyM7BChFKIfyE7/+sDAZAJj62QOnENMmgB6t5AntPCNVVuqzj/2
+         Oa16nOJXpa9EJLTqy5ULNeNd7IXRGvJIAGHGaWZXZzAhW+GMRFTvyqI6p4iMKKYVQcIU
+         2uY86vIt695DJRfkjw2wnmEXoDDEXVMDgqrbKQneYqFQOSd6/b0Sha0MlKHBzCFZ4kFM
+         PSgv7Wse4my/D3tCl/a8v/DgSfd/FXMDafNy0qrIPw6HhPwg7DnnKnjUBQ1LsKqTaDnn
+         skmw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=NpBKd5LC3CpDOJo+pD5WNUeIFwyR0hCmGtJZAikp3Jo=;
+        b=LK+IpjTOat4qQOCjnEo/G+oad061yvjRLhRr+1SCR9ogjVCCuqFCnDW/80AhVKVFzF
+         SeQsZ7FmTS0Sf+XLgHS2DccZhfFOviXhNpEeN3I3yBLNqVv+wD5KKDjkwjlJjDSb47mb
+         1t/03LLMwJZXv4QzG/AmzYLq+S+Iai/yZpWEJZgrGP5D9sFGuVPNGAvPfh4iXIMdIjEh
+         QTl5h3RtUfaiS30liHvsVf+8f6v6H45yx88wNy97VjPx3p8K7JV2k5c7GaAT63ZC+Zlc
+         m3GaFH9VYuNASo+eAYTkToGdq6/0n9hWkzKBa52PfqT1beImwJbZt/AnqTskICYQ8yea
+         OHTA==
+X-Gm-Message-State: AFeK/H25PkH7YDumpcGhiJ+CPHszp8vZ2uWXRm+rSCEiAfmEq1C6jrtrTmGikmHIFyoDdg==
+X-Received: by 10.98.113.74 with SMTP id m71mr32013336pfc.231.1490706823030;
+        Tue, 28 Mar 2017 06:13:43 -0700 (PDT)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from singhal-Inspiron-5558 ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id w28sm7608059pge.25.2017.03.28.06.13.41
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 28 Mar 2017 06:13:42 -0700 (PDT)
+Date: Tue, 28 Mar 2017 18:43:40 +0530
+From: simran singhal <singhalsimran0@gmail.com>
+To: wensong@linux-vs.org
+Cc: Simon Horman <horms@verge.net.au>, Julian Anastasov <ja@ssi.bg>,
+	Pablo Neira Ayuso <pablo@netfilter.org>,
+	Jozsef Kadlecsik <kadlec@blackhole.kfki.hu>,
+	"David S. Miller" <davem@davemloft.net>, netdev@vger.kernel.org,
+	lvs-devel@vger.kernel.org, netfilter-devel@vger.kernel.org,
+	coreteam@netfilter.org, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH v2] netfilter: Clean up tests if NULL returned on failure
+Message-ID: <20170328131340.GA19688@singhal-Inspiron-5558>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Tuesday 2017-03-28 15:13, simran singhal wrote:
+Some functions like kmalloc/kzalloc return NULL on failure. When NULL
+represents failure, !x is commonly used.
 
->Some functions like kmalloc/kzalloc return NULL on failure. When NULL
->represents failure, !x is commonly used.
->
->@@ -910,7 +910,7 @@ ip_vs_new_dest(struct ip_vs_service *svc, struct ip_vs_dest_user_kern *udest,
-> 	}
-> 
-> 	dest = kzalloc(sizeof(struct ip_vs_dest), GFP_KERNEL);
->-	if (dest == NULL)
->+	if (!dest)
-> 		return -ENOMEM;
+Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+---
+ 
+ v2:
+   -squash all the patches of the patch-set.
+ 
+ net/netfilter/ipvs/ip_vs_ctl.c       |  4 ++--
+ net/netfilter/ipvs/ip_vs_dh.c        |  2 +-
+ net/netfilter/ipvs/ip_vs_lblc.c      |  2 +-
+ net/netfilter/ipvs/ip_vs_lblcr.c     |  4 ++--
+ net/netfilter/ipvs/ip_vs_sh.c        |  2 +-
+ net/netfilter/ipvs/ip_vs_wrr.c       |  2 +-
+ net/netfilter/nf_conntrack_netlink.c |  2 +-
+ net/netfilter/nf_conntrack_proto.c   |  2 +-
+ net/netfilter/nf_nat_core.c          |  2 +-
+ net/netfilter/nf_tables_api.c        | 24 ++++++++++++------------
+ net/netfilter/nfnetlink.c            |  2 +-
+ net/netfilter/xt_TEE.c               |  2 +-
+ 12 files changed, 25 insertions(+), 25 deletions(-)
 
-This kind of transformation however is not cleanup anymore, it's really 
-bikeshedding and should be avoided. There are pro and cons for both 
-variants, and there is not really an overwhelming number of arguments 
-for either variant to justify the change.
+diff --git a/net/netfilter/ipvs/ip_vs_ctl.c b/net/netfilter/ipvs/ip_vs_ctl.c
+index 5aeb0dd..efe348a 100644
+--- a/net/netfilter/ipvs/ip_vs_ctl.c
++++ b/net/netfilter/ipvs/ip_vs_ctl.c
+@@ -910,7 +910,7 @@ ip_vs_new_dest(struct ip_vs_service *svc, struct ip_vs_dest_user_kern *udest,
+ 	}
+ 
+ 	dest = kzalloc(sizeof(struct ip_vs_dest), GFP_KERNEL);
+-	if (dest == NULL)
++	if (!dest)
+ 		return -ENOMEM;
+ 
+ 	dest->stats.cpustats = alloc_percpu(struct ip_vs_cpu_stats);
+@@ -1228,7 +1228,7 @@ ip_vs_add_service(struct netns_ipvs *ipvs, struct ip_vs_service_user_kern *u,
+ #endif
+ 
+ 	svc = kzalloc(sizeof(struct ip_vs_service), GFP_KERNEL);
+-	if (svc == NULL) {
++	if (!svc) {
+ 		IP_VS_DBG(1, "%s(): no memory\n", __func__);
+ 		ret = -ENOMEM;
+ 		goto out_err;
+diff --git a/net/netfilter/ipvs/ip_vs_dh.c b/net/netfilter/ipvs/ip_vs_dh.c
+index 75f798f..22a2535 100644
+--- a/net/netfilter/ipvs/ip_vs_dh.c
++++ b/net/netfilter/ipvs/ip_vs_dh.c
+@@ -159,7 +159,7 @@ static int ip_vs_dh_init_svc(struct ip_vs_service *svc)
+ 
+ 	/* allocate the DH table for this service */
+ 	s = kzalloc(sizeof(struct ip_vs_dh_state), GFP_KERNEL);
+-	if (s == NULL)
++	if (!s)
+ 		return -ENOMEM;
+ 
+ 	svc->sched_data = s;
+diff --git a/net/netfilter/ipvs/ip_vs_lblc.c b/net/netfilter/ipvs/ip_vs_lblc.c
+index 5824927..d7c6031 100644
+--- a/net/netfilter/ipvs/ip_vs_lblc.c
++++ b/net/netfilter/ipvs/ip_vs_lblc.c
+@@ -352,7 +352,7 @@ static int ip_vs_lblc_init_svc(struct ip_vs_service *svc)
+ 	 *    Allocate the ip_vs_lblc_table for this service
+ 	 */
+ 	tbl = kmalloc(sizeof(*tbl), GFP_KERNEL);
+-	if (tbl == NULL)
++	if (!tbl)
+ 		return -ENOMEM;
+ 
+ 	svc->sched_data = tbl;
+diff --git a/net/netfilter/ipvs/ip_vs_lblcr.c b/net/netfilter/ipvs/ip_vs_lblcr.c
+index 703f118..b0a9e1c 100644
+--- a/net/netfilter/ipvs/ip_vs_lblcr.c
++++ b/net/netfilter/ipvs/ip_vs_lblcr.c
+@@ -113,7 +113,7 @@ static void ip_vs_dest_set_insert(struct ip_vs_dest_set *set,
+ 	}
+ 
+ 	e = kmalloc(sizeof(*e), GFP_ATOMIC);
+-	if (e == NULL)
++	if (!e)
+ 		return;
+ 
+ 	ip_vs_dest_hold(dest);
+@@ -515,7 +515,7 @@ static int ip_vs_lblcr_init_svc(struct ip_vs_service *svc)
+ 	 *    Allocate the ip_vs_lblcr_table for this service
+ 	 */
+ 	tbl = kmalloc(sizeof(*tbl), GFP_KERNEL);
+-	if (tbl == NULL)
++	if (!tbl)
+ 		return -ENOMEM;
+ 
+ 	svc->sched_data = tbl;
+diff --git a/net/netfilter/ipvs/ip_vs_sh.c b/net/netfilter/ipvs/ip_vs_sh.c
+index 16aaac6..99f3c3e 100644
+--- a/net/netfilter/ipvs/ip_vs_sh.c
++++ b/net/netfilter/ipvs/ip_vs_sh.c
+@@ -235,7 +235,7 @@ static int ip_vs_sh_init_svc(struct ip_vs_service *svc)
+ 
+ 	/* allocate the SH table for this service */
+ 	s = kzalloc(sizeof(struct ip_vs_sh_state), GFP_KERNEL);
+-	if (s == NULL)
++	if (!s)
+ 		return -ENOMEM;
+ 
+ 	svc->sched_data = s;
+diff --git a/net/netfilter/ipvs/ip_vs_wrr.c b/net/netfilter/ipvs/ip_vs_wrr.c
+index 17e6d44..0923e6c 100644
+--- a/net/netfilter/ipvs/ip_vs_wrr.c
++++ b/net/netfilter/ipvs/ip_vs_wrr.c
+@@ -116,7 +116,7 @@ static int ip_vs_wrr_init_svc(struct ip_vs_service *svc)
+ 	 *    Allocate the mark variable for WRR scheduling
+ 	 */
+ 	mark = kmalloc(sizeof(struct ip_vs_wrr_mark), GFP_KERNEL);
+-	if (mark == NULL)
++	if (!mark)
+ 		return -ENOMEM;
+ 
+ 	mark->cl = list_entry(&svc->destinations, struct ip_vs_dest, n_list);
+diff --git a/net/netfilter/nf_conntrack_netlink.c b/net/netfilter/nf_conntrack_netlink.c
+index 6806b5e..cdcf4c1 100644
+--- a/net/netfilter/nf_conntrack_netlink.c
++++ b/net/netfilter/nf_conntrack_netlink.c
+@@ -779,7 +779,7 @@ ctnetlink_alloc_filter(const struct nlattr * const cda[])
+ 	struct ctnetlink_filter *filter;
+ 
+ 	filter = kzalloc(sizeof(*filter), GFP_KERNEL);
+-	if (filter == NULL)
++	if (!filter)
+ 		return ERR_PTR(-ENOMEM);
+ 
+ 	filter->mark.val = ntohl(nla_get_be32(cda[CTA_MARK]));
+diff --git a/net/netfilter/nf_conntrack_proto.c b/net/netfilter/nf_conntrack_proto.c
+index 2d6ee18..48d8354 100644
+--- a/net/netfilter/nf_conntrack_proto.c
++++ b/net/netfilter/nf_conntrack_proto.c
+@@ -358,7 +358,7 @@ int nf_ct_l4proto_register_one(struct nf_conntrack_l4proto *l4proto)
+ 		proto_array = kmalloc(MAX_NF_CT_PROTO *
+ 				      sizeof(struct nf_conntrack_l4proto *),
+ 				      GFP_KERNEL);
+-		if (proto_array == NULL) {
++		if (!proto_array) {
+ 			ret = -ENOMEM;
+ 			goto out_unlock;
+ 		}
+diff --git a/net/netfilter/nf_nat_core.c b/net/netfilter/nf_nat_core.c
+index 94b14c5..922bd5b 100644
+--- a/net/netfilter/nf_nat_core.c
++++ b/net/netfilter/nf_nat_core.c
+@@ -626,7 +626,7 @@ int nf_nat_l4proto_register(u8 l3proto, const struct nf_nat_l4proto *l4proto)
+ 	if (nf_nat_l4protos[l3proto] == NULL) {
+ 		l4protos = kmalloc(IPPROTO_MAX * sizeof(struct nf_nat_l4proto *),
+ 				   GFP_KERNEL);
+-		if (l4protos == NULL) {
++		if (!l4protos) {
+ 			ret = -ENOMEM;
+ 			goto out;
+ 		}
+diff --git a/net/netfilter/nf_tables_api.c b/net/netfilter/nf_tables_api.c
+index 434c739..b7645d7 100644
+--- a/net/netfilter/nf_tables_api.c
++++ b/net/netfilter/nf_tables_api.c
+@@ -117,7 +117,7 @@ static struct nft_trans *nft_trans_alloc_gfp(const struct nft_ctx *ctx,
+ 	struct nft_trans *trans;
+ 
+ 	trans = kzalloc(sizeof(struct nft_trans) + size, gfp);
+-	if (trans == NULL)
++	if (!trans)
+ 		return NULL;
+ 
+ 	trans->msg_type = msg_type;
+@@ -720,7 +720,7 @@ static int nf_tables_newtable(struct net *net, struct sock *nlsk,
+ 
+ 	err = -ENOMEM;
+ 	table = kzalloc(sizeof(*table), GFP_KERNEL);
+-	if (table == NULL)
++	if (!table)
+ 		goto err2;
+ 
+ 	nla_strlcpy(table->name, name, NFT_TABLE_MAXNAMELEN);
+@@ -1478,7 +1478,7 @@ static int nf_tables_newchain(struct net *net, struct sock *nlsk,
+ 			return err;
+ 
+ 		basechain = kzalloc(sizeof(*basechain), GFP_KERNEL);
+-		if (basechain == NULL) {
++		if (!basechain) {
+ 			nft_chain_release_hook(&hook);
+ 			return -ENOMEM;
+ 		}
+@@ -1526,7 +1526,7 @@ static int nf_tables_newchain(struct net *net, struct sock *nlsk,
+ 		basechain->policy = policy;
+ 	} else {
+ 		chain = kzalloc(sizeof(*chain), GFP_KERNEL);
+-		if (chain == NULL)
++		if (!chain)
+ 			return -ENOMEM;
+ 	}
+ 
+@@ -1800,7 +1800,7 @@ struct nft_expr *nft_expr_init(const struct nft_ctx *ctx,
+ 
+ 	err = -ENOMEM;
+ 	expr = kzalloc(info.ops->size, GFP_KERNEL);
+-	if (expr == NULL)
++	if (!expr)
+ 		goto err2;
+ 
+ 	err = nf_tables_newexpr(ctx, &info, expr);
+@@ -2214,7 +2214,7 @@ static int nf_tables_newrule(struct net *net, struct sock *nlsk,
+ 
+ 	err = -ENOMEM;
+ 	rule = kzalloc(sizeof(*rule) + size + usize, GFP_KERNEL);
+-	if (rule == NULL)
++	if (!rule)
+ 		goto err1;
+ 
+ 	nft_activate_next(net, rule);
+@@ -2810,7 +2810,7 @@ static int nf_tables_getset(struct net *net, struct sock *nlsk,
+ 		struct nft_ctx *ctx_dump;
+ 
+ 		ctx_dump = kmalloc(sizeof(*ctx_dump), GFP_KERNEL);
+-		if (ctx_dump == NULL)
++		if (!ctx_dump)
+ 			return -ENOMEM;
+ 
+ 		*ctx_dump = ctx;
+@@ -3014,7 +3014,7 @@ static int nf_tables_newset(struct net *net, struct sock *nlsk,
+ 
+ 	err = -ENOMEM;
+ 	set = kzalloc(sizeof(*set) + size + udlen, GFP_KERNEL);
+-	if (set == NULL)
++	if (!set)
+ 		goto err1;
+ 
+ 	nla_strlcpy(name, nla[NFTA_SET_NAME], sizeof(set->name));
+@@ -3541,7 +3541,7 @@ void *nft_set_elem_init(const struct nft_set *set,
+ 	void *elem;
+ 
+ 	elem = kzalloc(set->ops->elemsize + tmpl->len, gfp);
+-	if (elem == NULL)
++	if (!elem)
+ 		return NULL;
+ 
+ 	ext = nft_set_elem_ext(set, elem);
+@@ -3995,7 +3995,7 @@ struct nft_set_gc_batch *nft_set_gc_batch_alloc(const struct nft_set *set,
+ 	struct nft_set_gc_batch *gcb;
+ 
+ 	gcb = kzalloc(sizeof(*gcb), gfp);
+-	if (gcb == NULL)
++	if (!gcb)
+ 		return gcb;
+ 	gcb->head.set = set;
+ 	return gcb;
+@@ -4081,7 +4081,7 @@ static struct nft_object *nft_obj_init(const struct nft_object_type *type,
+ 
+ 	err = -ENOMEM;
+ 	obj = kzalloc(sizeof(struct nft_object) + type->size, GFP_KERNEL);
+-	if (obj == NULL)
++	if (!obj)
+ 		goto err1;
+ 
+ 	err = type->init((const struct nlattr * const *)tb, obj);
+@@ -5563,7 +5563,7 @@ static int __init nf_tables_module_init(void)
+ 
+ 	info = kmalloc(sizeof(struct nft_expr_info) * NFT_RULE_MAXEXPRS,
+ 		       GFP_KERNEL);
+-	if (info == NULL) {
++	if (!info) {
+ 		err = -ENOMEM;
+ 		goto err1;
+ 	}
+diff --git a/net/netfilter/nfnetlink.c b/net/netfilter/nfnetlink.c
+index 68eda920..c39f16c 100644
+--- a/net/netfilter/nfnetlink.c
++++ b/net/netfilter/nfnetlink.c
+@@ -232,7 +232,7 @@ static int nfnl_err_add(struct list_head *list, struct nlmsghdr *nlh, int err)
+ 	struct nfnl_err *nfnl_err;
+ 
+ 	nfnl_err = kmalloc(sizeof(struct nfnl_err), GFP_KERNEL);
+-	if (nfnl_err == NULL)
++	if (!nfnl_err)
+ 		return -ENOMEM;
+ 
+ 	nfnl_err->nlh = nlh;
+diff --git a/net/netfilter/xt_TEE.c b/net/netfilter/xt_TEE.c
+index 86b0580..5df3282 100644
+--- a/net/netfilter/xt_TEE.c
++++ b/net/netfilter/xt_TEE.c
+@@ -95,7 +95,7 @@ static int tee_tg_check(const struct xt_tgchk_param *par)
+ 			return -EINVAL;
+ 
+ 		priv = kzalloc(sizeof(*priv), GFP_KERNEL);
+-		if (priv == NULL)
++		if (!priv)
+ 			return -ENOMEM;
+ 
+ 		priv->tginfo  = info;
+-- 
+2.7.4
+
 
