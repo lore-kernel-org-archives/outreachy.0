@@ -1,111 +1,104 @@
-X-GM-THRID: 6469025072932716544
-X-Received: by 10.13.212.12 with SMTP id w12mr1490773ywd.147.1506187271611;
-        Sat, 23 Sep 2017 10:21:11 -0700 (PDT)
+X-GM-THRID: 6401747273458384896
+X-Received: by 10.129.18.130 with SMTP id 124mr9557856yws.56.1490696148536;
+        Tue, 28 Mar 2017 03:15:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.13.200.130 with SMTP id k124ls270716ywd.41.gmail; Sat, 23 Sep
- 2017 10:21:10 -0700 (PDT)
-X-Received: by 10.129.165.148 with SMTP id c142mr1510501ywh.120.1506187270775;
-        Sat, 23 Sep 2017 10:21:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506187270; cv=none;
-        d=google.com; s=arc-20160816;
-        b=VMWEwTXuG9viAJPkoepkw+8mEDFFOJdhSYROsBIvD0ic5uiZSuiC5K/9Me5vK49QRD
-         tUw3OrgXsYtXD/kNCm3urC6cwzv2HysnYadVuw7fpstVPP6PpOOxXM/e+ZdWf5T+9oTW
-         y3HOqP6gagBIPz4HRSh/iY0C2uhJU5oFonIyh3pzgWqkVoRVUaiAnhdaYMg8gqPOS/q0
-         JG8ewfyevWZI9ps1zkWHzKGKNDc7Kj1Jht1X/RY5N0miX4UWWs9yVkcWPs5l2ehrVLu4
-         rFhX5Tyg32vLblFTrzDTD6khoMPMRITwhPnn7gVe39bIf9ehkuaKPKUbUaaRDQSeQekn
-         6Oww==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature:arc-authentication-results;
-        bh=iiwDyOCflhowXMhc4gescBkOq2N3W1uI1oIezzY5NRM=;
-        b=saA7PXdwaNxx+JcAzcROkIXPk9pdYEyiEkIcwNkl2H9WeZjlLUHAMDllP2ASdR594g
-         w0HXrJZ6mzfyk4f+6u4SD17RcRoYoZZxhH8o7hMM2pEDNSYgRA3ZOpWs7YsRkyS25NaJ
-         2KdfAaaOSSLemMNo89bkcdP1v5vVCLWqdLO0HAmrvhJSDgc1M9lCCudXhueBvQmyvyUN
-         dY5nyQt+FgV9GYZmNMZ0XwjSXVWBKml4OL+bGOZvTjVnEOVhovealSxRQAUf83XxNAEn
-         XA+bOEbFbCdjC6O5tC8XkgewCbBccZyuB05GrJK63xEePweQK7Gvf9qPbbi70Tdu8Qg8
-         7d3g==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DJ5nwa1D;
-       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <keerthigd4990@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id q65si193499pfj.8.2017.09.23.10.21.10
+Received: by 10.107.8.88 with SMTP id 85ls4651809ioi.39.gmail; Tue, 28 Mar
+ 2017 03:15:47 -0700 (PDT)
+X-Received: by 10.99.111.6 with SMTP id k6mr10081498pgc.131.1490696147924;
+        Tue, 28 Mar 2017 03:15:47 -0700 (PDT)
+Return-Path: <rvarsha016@gmail.com>
+Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
+        by gmr-mx.google.com with ESMTPS id 2si615744pfx.8.2017.03.28.03.15.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Sep 2017 10:21:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Tue, 28 Mar 2017 03:15:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DJ5nwa1D;
-       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id d8so2467940pgt.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 23 Sep 2017 10:21:10 -0700 (PDT)
+Received: by mail-pg0-x242.google.com with SMTP id 81so20194910pgh.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 28 Mar 2017 03:15:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=iiwDyOCflhowXMhc4gescBkOq2N3W1uI1oIezzY5NRM=;
-        b=DJ5nwa1DONq5Ww2AgI0V4wUY4tqFN3VkmYh3gpNZ8EapST1NBuz0uWQZCcOv59mh8C
-         6zr+4nEvMhnwGERGufCmq/Uh1dg8G7O3vQzNvPGtZLpm7WZlGEVwBHAbbUn++xc7WxtA
-         rqVKZFpTFmLODb4d5TgTEGLOrwg09Bk3Hquu+7e5NU4S4RWra4T41d4i50GC6E0+fthq
-         JfkkSEJuVQM9J+nrmuGIZiFG0QtsTYJ5NaRx9SvFTePldLUSn/LxkYDip1fRxM5ZFIL1
-         0+jfU2UnEGDCigZBG2glSHprKQAAPBq5e0U2kGTfuOyzqvVlMsdz+CLZnaQ/AxFOd/Np
-         7W2A==
+        h=message-id:date:from:to:cc:subject:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=eD6I4Yg8uUFXvVwo2vVo+l2ahopRp2d1771NejIyigY=;
+        b=uqxtD5KOJf+W10kZoyDC6gpg+tNmbsb4ZNbGAllsN6eYSdvm2NGmYRz222gfrB/V9S
+         E9zUO8MCtpuiSKudSPOGjLXnLkbu/URU6QuvWao7ydubcJCSOQ8j6OH0zjbSEtgcPNYB
+         HSpCcJlA6Grp0Au3Ej6W0Xz053mGu3Wb0Y3QC85tg6cti8oJXvmwCs5IujPaLy4vTWfR
+         l/GX8vyYh1Q/2B2u5H/iYL5zjfWil6v0Oskd8SM7ebQBsHXxr/k+jBEeqKZLZ2+vZdLW
+         JZ4QedR2RZ8jzmlM8x9qjFGrMeCYxRu4O7SswQpTSOg/ggyzG1LI6tzrcOv3p8c39m2h
+         8mfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=iiwDyOCflhowXMhc4gescBkOq2N3W1uI1oIezzY5NRM=;
-        b=ZZ50TrT+SBg4aoVvqxc3UWSrde66JJtdzRRxgK7z1UOLBirRCn7f6J7N0TcuHxoZC1
-         iAEAFU667WXh+P3nhVZS2cmAmvXD6ppOGohKJpBhvUWf3er8gtMMRTnRkAVvo8H87HI1
-         4PtzjY1p5RcICGTb0X+4Q1J3gexfugfWUZCq4z/kh21aMt7oNzfsSEX/P0TqR8ynsGkf
-         taFc3lSzSXGHVTqbNTo0D2SpNPp2zA/uwyRcNr82fJHG8xWzLzI3vddwEkQddx0joAdZ
-         HydiEbSGOxWvLJ5PbBRIVL0xWuuULme0adzfENySF09G00wlp/zMiKv0w7AX8f8XNPOn
-         cZkw==
-X-Gm-Message-State: AHPjjUj3yTQzSkUBd8DjkS6IqYs7XXW3zWBTodW6WFjlwhR81xtF/Gpy
-	9LWLRNCM5cf6uWbxEuHIjtZ0eogG
-X-Google-Smtp-Source: AOwi7QAcVjFIbEFjCfWhkukQOWs1O/xYu6W5Za08Au6XHFcWs0JW7ZiYTCRcUOxN6z1+iXjOXBJYvw==
-X-Received: by 10.84.138.193 with SMTP id 59mr2776803plp.414.1506187270344;
-        Sat, 23 Sep 2017 10:21:10 -0700 (PDT)
-Return-Path: <keerthigd4990@gmail.com>
-Received: from manoharreddy ([14.139.122.139])
-        by smtp.gmail.com with ESMTPSA id d4sm4283181pfb.185.2017.09.23.10.21.08
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Sep 2017 10:21:09 -0700 (PDT)
-Date: Sat, 23 Sep 2017 22:51:08 +0530
-From: Keerthi Reddy <keerthigd4990@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: wilc1000: Blank lines aren't necessary before a
- close brace '}'
-Message-ID: <20170923172108.GA8880@manoharreddy>
+        h=x-gm-message-state:message-id:date:from:to:cc:subject:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=eD6I4Yg8uUFXvVwo2vVo+l2ahopRp2d1771NejIyigY=;
+        b=R85xyF2yHYERXBA91smLiHuWMKMfxGrTfm45SNa8qpD2iIcIzfmBFAhNSev1UVheR2
+         gEnVz8VMYavEo9zZOaLmRzGJczNk+kwUMq0or8PLzYNUJxLzmh2k8cy1UycHHnM61kTm
+         iTQAXz8IVJz94qeOyWTBuNkwdQlkB/K8erIsuQBKPi8zXBPx4ndIuJm5NstFOyJlbhzs
+         XmbClD944Wd+PW7jsU3czaLuSZpg161fCQG8LKQUFQkUPSTjUcLtRK2BV1k3SseVipCM
+         g9L/z5FZMjb2UY0feDshkjb/SmO28q8TQ+9CZC1wSmjMD+Pe/niRjZl4JT3l8Hb5AMTC
+         jGvg==
+X-Gm-Message-State: AFeK/H2T9vsAl0YCmXto3aUStCSB+JgNvLZ4zAjI7IlZ391D4cpgnStN+vrrAGswe5LuRA==
+X-Received: by 10.84.232.131 with SMTP id i3mr35157723plk.172.1490696147579;
+        Tue, 28 Mar 2017 03:15:47 -0700 (PDT)
+Return-Path: <rvarsha016@gmail.com>
+Received: from euri ([2405:204:5181:ce92:a4e3:114c:b305:cb39])
+        by smtp.gmail.com with ESMTPSA id 9sm6438186pfn.108.2017.03.28.03.15.46
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 28 Mar 2017 03:15:47 -0700 (PDT)
+Message-ID: <58da37d3.890d620a.9afe5.0a67@mx.google.com>
+X-Google-Original-Message-ID: <20170328101543.GA8280@<rvarsha016@gmail.com>>
+Date: Tue, 28 Mar 2017 15:45:43 +0530
+From: Varsha Rao <rvarsha016@gmail.com>
+To: mawilcox@microsoft.com
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: [PATCH v3 5/5] include: linux: pid: Remove space before tabs.
+References: <cover.1490695255.git.rvarsha016@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <cover.1490695255.git.rvarsha016@gmail.com>
+User-Agent: Mutt/1.7.1 (2016-10-04)
 
-Before closing the brace, the blank line is not needed. That blank
-line has not meaning here. so remove it.
+Remove space before tabs. This patch fixes the following checkpatch
+issue:
 
-Signed-off-by: Keerthi Reddy <keerthigd4990@gmail.com>
+WARNING: please, no space before tabs
+
+Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
 ---
- drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 1 -
- 1 file changed, 1 deletion(-)
+Changes in v3:
+- No changes.
 
-diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-index 36dc2a0..e7882b2 100644
---- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-+++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-@@ -1111,7 +1111,6 @@ static int del_key(struct wiphy *wiphy, struct net_device *netdev,
- 		g_key_gtk_params.key = NULL;
- 		kfree(g_key_gtk_params.seq);
- 		g_key_gtk_params.seq = NULL;
--
- 	}
- 
- 	if (key_index >= 0 && key_index <= 3) {
+Changes in v2:
+- No changes.
+
+ include/linux/pid.h | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/include/linux/pid.h b/include/linux/pid.h
+index ba4f90f..5feb5c3 100644
+--- a/include/linux/pid.h
++++ b/include/linux/pid.h
+@@ -144,10 +144,10 @@ extern void disable_pid_allocation(struct pid_namespace *ns);
+  * allocated.
+  *
+  * NOTE:
+- * 	ns_of_pid() is expected to be called for a process (task) that has
+- * 	an attached 'struct pid' (see attach_pid(), detach_pid()) i.e @pid
+- * 	is expected to be non-NULL. If @pid is NULL, caller should handle
+- * 	the resulting NULL pid-ns.
++ *	ns_of_pid() is expected to be called for a process (task) that has
++ *	an attached 'struct pid' (see attach_pid(), detach_pid()) i.e @pid
++ *	is expected to be non-NULL. If @pid is NULL, caller should handle
++ *	the resulting NULL pid-ns.
+  */
+ static inline struct pid_namespace *ns_of_pid(struct pid *pid)
+ {
 -- 
-2.7.4
+2.9.3
 
 
