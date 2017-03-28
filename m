@@ -1,134 +1,137 @@
-X-GM-THRID: 6402647377988026368
-X-Received: by 10.129.146.139 with SMTP id j133mr10415863ywg.173.1490732510451;
-        Tue, 28 Mar 2017 13:21:50 -0700 (PDT)
+X-GM-THRID: 6402533781831417856
+X-Received: by 10.46.87.80 with SMTP id r16mr648423ljd.12.1490717455688;
+        Tue, 28 Mar 2017 09:10:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.51.156 with SMTP id u28ls113888otc.49.gmail; Tue, 28 Mar
- 2017 13:21:50 -0700 (PDT)
-X-Received: by 10.157.17.146 with SMTP id v18mr9467564otf.23.1490732510061;
-        Tue, 28 Mar 2017 13:21:50 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id 2si879365pfx.8.2017.03.28.13.21.50
+Received: by 10.25.160.139 with SMTP id j133ls1023992lfe.48.gmail; Tue, 28 Mar
+ 2017 09:10:54 -0700 (PDT)
+X-Received: by 10.25.169.141 with SMTP id s135mr3863494lfe.30.1490717454241;
+        Tue, 28 Mar 2017 09:10:54 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from mail-lf0-x243.google.com (mail-lf0-x243.google.com. [2a00:1450:4010:c07::243])
+        by gmr-mx.google.com with ESMTPS id x188si436671wmx.0.2017.03.28.09.10.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Mar 2017 13:21:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Tue, 28 Mar 2017 09:10:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2a00:1450:4010:c07::243 as permitted sender) client-ip=2a00:1450:4010:c07::243;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2a00:1450:4010:c07::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id 79so23830058pgf.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 28 Mar 2017 13:21:50 -0700 (PDT)
+Received: by mail-lf0-x243.google.com with SMTP id v2so10959871lfi.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 28 Mar 2017 09:10:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=iQdW3s6F3n38cRuF1w2B1lTq7+PgEb+5neagheO7Ymo=;
-        b=MCqWPmHlrrMnnJtHfY0hgYnM7tEy8QtsqGxi7dl7Lyz+xD0Dx9M4hgA9TZbq6NiEQR
-         ueVDq0YaGw1i7mUvb9Wr8d0aK7RZdBZew+k66xvXBanzrojdLy5QgetTNURfCI5lA4oj
-         lGP9arw3PpM44OHd17sPBgdLH73JUuvXtsON0pWZtzyDH0kvwjp+LMyjY2Hf+caOjjlm
-         SLccRCtzEYVKqsVhwIbmDaXOu8+y6pfxA+y55fz3zq9KNZsILsm0RtzyiQfFEjnhPNT3
-         TOZDCTOIPzJhKB/1A0mJgM88hxqgcHSpEeJHO93anYkakexXtz75kCCfW9mrb3Azd9S7
-         SDGw==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=d7y7S+gNY8LDn5DWJS3UXLPih2AUWLDPERlpcdwV5z8=;
+        b=CjVzaeEAKIRt69SMOx4enx+ny5bjbwwBJm8GwzlOg7bS9ezTTTiKMyG/R3kxsUvVbv
+         AsWUB5BjjemeE3GcGLOSsRDZ3WZF+BJZ9Vn5EeJK04CI6CrpPx3opwEt8Yf4bKt3KtYl
+         +wu5qdpshqkfUqhTSNHaTD0tysQ9DEnsUeytSxROVx25u66LrYBee/BXwHspNKOIynPL
+         P9mjXrcIg6AXGY4XIidtmzOjcQSA8d8clawP1nPAk/ZatglywzzD0IJPK2fLKyfLU+9K
+         8jFGH40UXChx84aMeSWk//29Xhh/RD/ALYgIb2ee3pb7hBHU4JswtJTsht3ykXwObl9A
+         ZB1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=iQdW3s6F3n38cRuF1w2B1lTq7+PgEb+5neagheO7Ymo=;
-        b=V6DLRt5xe1BjkfvghQiH/GbEHvM1SaJVpWuu7MTrfzzeaWCK95D0kcdQFL6Ocd1LA2
-         Xf7ySTgNb+7qslOKgoHLprEMz3TeWYtBI8DxVG/h8CacbPGIsthK6D7kcOajDr9LPp2R
-         jRTGwt6pTgHI6/2HqaGdQnzOYgWiwITSHxDImqbqZ0fyCf4hr0+9N1bTd+Hwjn1h0GBi
-         +CJqs7rnRHl1ky2KpwcD3SBI5QMCzfs1xK/32mlScvZF1cqgpOcIvPH3MpeEas6ThjmP
-         gEzFKIFWzV0ziPWKZGPzJU+qPUHfO3+WB9ZJtIrPPNLESeL+F6uQC5rOGrGBSRaRDYx8
-         jiwQ==
-X-Gm-Message-State: AFeK/H0FR95c/29Ew1ZN9lnVfRk1IsoWjm6p7ypCb5V6Dfc7oRS03OHdfHef1fmvBhI45A==
-X-Received: by 10.98.94.132 with SMTP id s126mr33123352pfb.133.1490732509824;
-        Tue, 28 Mar 2017 13:21:49 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id s11sm8994853pgc.61.2017.03.28.13.21.48
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 28 Mar 2017 13:21:49 -0700 (PDT)
-Date: Wed, 29 Mar 2017 01:51:48 +0530
-From: simran singhal <singhalsimran0@gmail.com>
-To: lars@metafoo.de
-Cc: Michael Hennerich <Michael.Hennerich@analog.com>,
-	Jonathan Cameron <jic23@kernel.org>,
-	Hartmut Knaack <knaack.h@gmx.de>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
-	linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] iio: dac: ad5504: constify attribute_group structures
-Message-ID: <20170328202147.GA21830@singhal-Inspiron-5558>
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=d7y7S+gNY8LDn5DWJS3UXLPih2AUWLDPERlpcdwV5z8=;
+        b=B/rg3ddXRNZnRZ12gTPJPUoxkaZ7dcbg3nvJ5lEFiSv0CaDMhkJFOtmhk6EHHSCwXx
+         UbfPNSOzVKO+gzoFa7uSurZ2z4bTniby4ZznBx4UZt1hH15v/6580nAnHXBrp9Fw1Z8k
+         eCmflSvgj5KEtsv3mKuitr1O21PLOjhYF4RGx44uETJ7QGq9X0ESR3VJJhliIXeV72nf
+         Iu2sKK1jOZhcJOlG9bl3nkzdxzT68utdBySstj1JLKHaEH9C0xkZFGacl9qp2BncIaQw
+         Rrmd+VZAlJrzXv2IRn3lrd65swpXs++XBt9K1jnmGPEyYEw0VbCuGssmBHN9CUcOhErp
+         XMtg==
+X-Gm-Message-State: AFeK/H31QQOcy0s0MNNuy3gq+aX/TM9Dfj+xF2IJYbVE8gFhVQWFRjB7+QycdUCVh8e4XWcM+y6J3/bAhbBETg==
+X-Received: by 10.46.33.141 with SMTP id h13mr1993181lji.93.1490717453755;
+ Tue, 28 Mar 2017 09:10:53 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Received: by 10.25.170.69 with HTTP; Tue, 28 Mar 2017 09:10:53 -0700 (PDT)
+In-Reply-To: <20170328152607.GA1735@salvia>
+References: <20170328130032.GA5009@arushi-HP-Pavilion-Notebook> <20170328152607.GA1735@salvia>
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+Date: Tue, 28 Mar 2017 21:40:53 +0530
+Message-ID: <CA+XqjF-vUmrU5Zna6xrtQ-AeQifAD6_uTaq+Hx-YopXtVUAJHQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] net: netfilter: Remove complexity
+To: Pablo Neira Ayuso <pablo@netfilter.org>
+Cc: Jozsef Kadlecsik <kadlec@blackhole.kfki.hu>, "David S. Miller" <davem@davemloft.net>, 
+	netfilter-devel@vger.kernel.org, coreteam@netfilter.org, 
+	LKML <linux-kernel@vger.kernel.org>, netdev@vger.kernel.org, 
+	outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary=001a1142bcf84aac08054bccb422
 
-Check for attribute_group structures that are only stored in the
-event_attrs filed of iio_info structure. As the event_attrs field of
-iio_info structures is constant, so these attribute_group structures can
-also be declared constant. Done using coccinelle:
+--001a1142bcf84aac08054bccb422
+Content-Type: text/plain; charset=UTF-8
 
-@r1 disable optional_qualifier @
-identifier i;
-position p;
-@@
-static struct attribute_group i@p = {...};
+On Tue, Mar 28, 2017 at 8:56 PM, Pablo Neira Ayuso <pablo@netfilter.org>
+wrote:
 
-@ok1@
-identifier r1.i;
-position p;
-struct iio_info x;
-@@
-x.event_attrs=&i@p;
+> On Tue, Mar 28, 2017 at 06:30:56PM +0530, Arushi Singhal wrote:
+> > To remove complexity of code the function is added in nfnetlink.h
+> > to make code more clear and readable.
+>
+> Patch looks good, you can also use this new function from other
+> _fill_info() functions in the netfilter code, eg.
+>
+>         nfnl_cthelper_fill_info()
+>
+> Take the time to make a careful look at the netfilter tree to see if
+> we can have a good bunch of new clients of this function in one go.
+> Most likely many of the nfnetlink_*.c files can use this.
+>
+> BTW, you can also indicate in your patch description that this is
+> opencoded in a way that makes it error prone for future netfilter
+> netlink subsystems.
+>
+> Please search for a better patch title, this one is too generic. I
+> understand selecting a good patch title is something that exercise.
+>
+> I'd suggest this:
+>
+>         netfilter: add nfnl_msg_type() helper function
+>
+> Never give up, revamp and resubmit, thanks!
+>
+Thanks Pablo
+I will try to make it more better and resubmit my patch again
+Arushi
 
-@bad@
-position p!={r1.p,ok1.p};
-identifier r1.i;
-@@
-i@p
+--001a1142bcf84aac08054bccb422
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-@depends on !bad disable optional_qualifier@
-identifier r1.i;
-@@
-static
-+const
-struct attribute_group i={...};
+<div dir=3D"ltr"><br><div class=3D"gmail_extra"><br><div class=3D"gmail_quo=
+te">On Tue, Mar 28, 2017 at 8:56 PM, Pablo Neira Ayuso <span dir=3D"ltr">&l=
+t;<a href=3D"mailto:pablo@netfilter.org" target=3D"_blank">pablo@netfilter.=
+org</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=3D"mar=
+gin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><span class=3D"=
+">On Tue, Mar 28, 2017 at 06:30:56PM +0530, Arushi Singhal wrote:<br>
+&gt; To remove complexity of code the function is added in nfnetlink.h<br>
+&gt; to make code more clear and readable.<br>
+<br>
+</span>Patch looks good, you can also use this new function from other<br>
+_fill_info() functions in the netfilter code, eg.<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 nfnl_cthelper_fill_info()<br>
+<br>
+Take the time to make a careful look at the netfilter tree to see if<br>
+we can have a good bunch of new clients of this function in one go.<br>
+Most likely many of the nfnetlink_*.c files can use this.<br>
+<br>
+BTW, you can also indicate in your patch description that this is<br>
+opencoded in a way that makes it error prone for future netfilter<br>
+netlink subsystems.<br>
+<br>
+Please search for a better patch title, this one is too generic. I<br>
+understand selecting a good patch title is something that exercise.<br>
+<br>
+I&#39;d suggest this:<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 netfilter: add nfnl_msg_type() helper function<=
+br>
+<br>
+Never give up, revamp and resubmit, thanks!<br></blockquote><div>Thanks Pab=
+lo<br></div><div>I will try to make it more better and resubmit my patch ag=
+ain<br></div><div>Arushi <br></div></div><br></div></div>
 
-@depends on !bad disable optional_qualifier@
-identifier r1.i;
-@@
-+const
-struct attribute_group i;
-
-File size before:
-   text    data     bss     dec     hex filename
-   3046     360       0    3406     d4e drivers/iio/dac/ad5504.o
-
-File size after:
-   text	   data	    bss	    dec	    hex	filename
-   3110	    296	      0	   3406	    d4e	drivers/iio/dac/ad5504.o
-
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
----
- drivers/iio/dac/ad5504.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/iio/dac/ad5504.c b/drivers/iio/dac/ad5504.c
-index 788b3d6..22a027d 100644
---- a/drivers/iio/dac/ad5504.c
-+++ b/drivers/iio/dac/ad5504.c
-@@ -212,7 +212,7 @@ static struct attribute *ad5504_ev_attributes[] = {
- 	NULL,
- };
- 
--static struct attribute_group ad5504_ev_attribute_group = {
-+static const struct attribute_group ad5504_ev_attribute_group = {
- 	.attrs = ad5504_ev_attributes,
- };
- 
--- 
-2.7.4
-
+--001a1142bcf84aac08054bccb422--
 
