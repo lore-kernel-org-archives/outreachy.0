@@ -1,58 +1,85 @@
 X-GM-THRID: 6402542021433622528
-X-Received: by 10.99.254.5 with SMTP id p5mr1552904pgh.13.1490713214037;
+X-Received: by 10.13.224.4 with SMTP id j4mr9919344ywe.44.1490713214506;
         Tue, 28 Mar 2017 08:00:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.30.168 with SMTP id n37ls15969737otn.25.gmail; Tue, 28 Mar
+Received: by 10.36.81.210 with SMTP id s201ls2534945ita.18.gmail; Tue, 28 Mar
  2017 08:00:13 -0700 (PDT)
-X-Received: by 10.129.80.11 with SMTP id e11mr9886771ywb.133.1490713213590;
+X-Received: by 10.107.128.169 with SMTP id k41mr9641255ioi.72.1490713213811;
         Tue, 28 Mar 2017 08:00:13 -0700 (PDT)
-Received: by 10.202.44.70 with SMTP id s67msois;
-        Tue, 28 Mar 2017 07:03:11 -0700 (PDT)
-X-Received: by 10.99.98.194 with SMTP id w185mr9878273pgb.108.1490709791223;
-        Tue, 28 Mar 2017 07:03:11 -0700 (PDT)
-Return-Path: <jengelh@inai.de>
-Received: from a3.inai.de (a3.inai.de. [2a01:4f8:162:73ab::58c6:b4a1])
-        by gmr-mx.google.com with ESMTPS id u134si575107ywg.2.2017.03.28.07.03.11
+Received: by 10.55.156.65 with SMTP id f62msqke;
+        Tue, 28 Mar 2017 07:13:11 -0700 (PDT)
+X-Received: by 10.223.145.199 with SMTP id 65mr1820440wri.0.1490710391539;
+        Tue, 28 Mar 2017 07:13:11 -0700 (PDT)
+Return-Path: <David.Laight@aculab.com>
+Received: from smtp-out4.electric.net (smtp-out4.electric.net. [192.162.216.186])
+        by gmr-mx.google.com with ESMTPS id a126si195588wmd.2.2017.03.28.07.13.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Mar 2017 07:03:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jengelh@inai.de designates 2a01:4f8:162:73ab::58c6:b4a1 as permitted sender) client-ip=2a01:4f8:162:73ab::58c6:b4a1;
+        Tue, 28 Mar 2017 07:13:11 -0700 (PDT)
+Received-SPF: softfail (google.com: domain of transitioning david.laight@aculab.com does not designate 192.162.216.186 as permitted sender) client-ip=192.162.216.186;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of jengelh@inai.de designates 2a01:4f8:162:73ab::58c6:b4a1 as permitted sender) smtp.mailfrom=jengelh@inai.de
-Received: by a3.inai.de (Postfix, from userid 25121)
-	id 0EB2E193F387A; Tue, 28 Mar 2017 16:03:10 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by a3.inai.de (Postfix) with ESMTP id 0DE171C57EA3;
-	Tue, 28 Mar 2017 16:03:10 +0200 (CEST)
-Date: Tue, 28 Mar 2017 16:03:09 +0200 (CEST)
-From: Jan Engelhardt <jengelh@inai.de>
-To: simran singhal <singhalsimran0@gmail.com>
-cc: pablo@netfilter.org, outreachy-kernel@googlegroups.com, 
-    Jozsef Kadlecsik <kadlec@blackhole.kfki.hu>, 
-    "David S. Miller" <davem@davemloft.net>, netfilter-devel@vger.kernel.org, 
-    coreteam@netfilter.org, netdev@vger.kernel.org, 
-    linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] netfilter: ipset: Use max macro instead of ternary
+       spf=softfail (google.com: domain of transitioning david.laight@aculab.com does not designate 192.162.216.186 as permitted sender) smtp.mailfrom=David.Laight@aculab.com
+Received: from 1csrrv-00060e-Tb by out4a.electric.net with emc1-ok (Exim 4.87)
+	(envelope-from <David.Laight@ACULAB.COM>)
+	id 1csrrw-00068u-Vr; Tue, 28 Mar 2017 07:13:08 -0700
+Received: by emcmailer; Tue, 28 Mar 2017 07:13:08 -0700
+Received: from [213.249.233.130] (helo=AcuExch.aculab.com)
+	by out4a.electric.net with esmtps (TLSv1:AES128-SHA:128)
+	(Exim 4.87)
+	(envelope-from <David.Laight@ACULAB.COM>)
+	id 1csrrv-00060e-Tb; Tue, 28 Mar 2017 07:13:07 -0700
+Received: from ACUEXCH.Aculab.com ([::1]) by AcuExch.aculab.com ([::1]) with
+ mapi id 14.03.0123.003; Tue, 28 Mar 2017 15:13:04 +0100
+From: David Laight <David.Laight@ACULAB.COM>
+To: 'simran singhal' <singhalsimran0@gmail.com>, "pablo@netfilter.org"
+	<pablo@netfilter.org>
+CC: "outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>,
+	Jozsef Kadlecsik <kadlec@blackhole.kfki.hu>, "David S. Miller"
+	<davem@davemloft.net>, "netfilter-devel@vger.kernel.org"
+	<netfilter-devel@vger.kernel.org>, "coreteam@netfilter.org"
+	<coreteam@netfilter.org>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Subject: RE: [PATCH] netfilter: ipset: Use max macro instead of ternary
  operator
-In-Reply-To: <20170328133256.GA24590@singhal-Inspiron-5558>
-Message-ID: <alpine.LSU.2.20.1703281555450.21255@n3.vanv.qr>
+Thread-Topic: [PATCH] netfilter: ipset: Use max macro instead of ternary
+ operator
+Thread-Index: AQHSp8hVLjkQV5X/tE2PuaUulgoI/6GqSuoQ
+Date: Tue, 28 Mar 2017 14:13:03 +0000
+Message-ID: <063D6719AE5E284EB5DD2968C1650D6DCFFC0145@AcuExch.aculab.com>
 References: <20170328133256.GA24590@singhal-Inspiron-5558>
-User-Agent: Alpine 2.20 (LSU 67 2015-01-07)
+In-Reply-To: <20170328133256.GA24590@singhal-Inspiron-5558>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [10.202.99.200]
+Content-Type: text/plain; charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+X-Outbound-IP: 213.249.233.130
+X-Env-From: David.Laight@ACULAB.COM
+X-Proto: esmtps
+X-Revdns: 
+X-HELO: AcuExch.aculab.com
+X-TLS: TLSv1:AES128-SHA:128
+X-Authenticated_ID: 
+X-PolicySMART: 3396946, 3397078
+X-Virus-Status: Scanned by VirusSMART (c)
+X-Virus-Status: Scanned by VirusSMART (s)
 
-On Tuesday 2017-03-28 15:32, simran singhal wrote:
+From: simran singhal
+> Sent: 28 March 2017 14:33
+> This patch replaces ternary operator with macro max as it shorter and
+> thus increases code readability. Macro max return the maximum of the two
+> compared values.
+...
+>  	/* Convert error codes to nomatch */
+> -	return (ret < 0 ? 0 : ret);
+> +	return max(0, ret);
 
->This patch replaces ternary operator with macro max as it shorter and
->thus increases code readability.
->
->-	return (ret < 0 ? 0 : ret);
->+	return max(0, ret);
+It might be shorter but it isn't more readable.
 
-While the two are functionally equivalent, "max" conveys a meaning of 
-"upper bound" (think ceil(3)), i.e. a _count of something_, but the 
-function still returns a logical "error or bool".
+	David
 
-Such a change may be usable in an IOCCC or a codegolf contest,
-but it destroys rather than improves readability IMHO.
+
 
