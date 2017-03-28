@@ -1,83 +1,146 @@
 X-GM-THRID: 6402533781831417856
-X-Received: by 10.28.193.10 with SMTP id r10mr881583wmf.7.1490714774774;
-        Tue, 28 Mar 2017 08:26:14 -0700 (PDT)
+X-Received: by 10.99.122.65 with SMTP id j1mr9858843pgn.89.1490706061789;
+        Tue, 28 Mar 2017 06:01:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.196.194 with SMTP id u185ls1407676lff.30.gmail; Tue, 28 Mar
- 2017 08:26:13 -0700 (PDT)
-X-Received: by 10.25.56.22 with SMTP id f22mr3821551lfa.13.1490714773478;
-        Tue, 28 Mar 2017 08:26:13 -0700 (PDT)
-Return-Path: <pneira@us.es>
-Received: from mail.us.es (mail.us.es. [193.147.175.20])
-        by gmr-mx.google.com with ESMTPS id x188si425153wmx.0.2017.03.28.08.26.13
+Received: by 10.157.39.226 with SMTP id c89ls12516813otb.2.gmail; Tue, 28 Mar
+ 2017 06:01:01 -0700 (PDT)
+X-Received: by 10.13.202.86 with SMTP id m83mr9564357ywd.120.1490706061212;
+        Tue, 28 Mar 2017 06:01:01 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id 2si607698pfz.1.2017.03.28.06.01.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Mar 2017 08:26:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
+        Tue, 28 Mar 2017 06:01:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
-Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
-	by mail.us.es (Postfix) with ESMTP id 02D5C52438
-	for <outreachy-kernel@googlegroups.com>; Tue, 28 Mar 2017 17:26:10 +0200 (CEST)
-Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
-	by antivirus1-rhel7.int (Postfix) with ESMTP id D6891B7FF3
-	for <outreachy-kernel@googlegroups.com>; Tue, 28 Mar 2017 17:26:10 +0200 (CEST)
-Received: by antivirus1-rhel7.int (Postfix, from userid 99)
-	id C7CADB7FEE; Tue, 28 Mar 2017 17:26:10 +0200 (CEST)
-X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
-X-Spam-Level: 
-X-Spam-Status: No, score=-107.2 required=7.5 tests=BAYES_50,
-	HEADER_FROM_DIFFERENT_DOMAINS,RP_MATCHES_RCVD,SMTPAUTH_US,SPF_HELO_FAIL,
-	USER_IN_WHITELIST autolearn=disabled version=3.4.1
-Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
-	by antivirus1-rhel7.int (Postfix) with ESMTP id 69ACCBAAD3
-	for <outreachy-kernel@googlegroups.com>; Tue, 28 Mar 2017 17:26:07 +0200 (CEST)
-Received: from 192.168.1.13 (192.168.1.13)
- by antivirus1-rhel7.int (F-Secure/fsigk_smtp/540/antivirus1-rhel7.int);
- Tue, 28 Mar 2017 17:26:07 +0200 (CEST)
-X-Virus-Status: clean(F-Secure/fsigk_smtp/540/antivirus1-rhel7.int)
-Received: (qmail 1776 invoked from network); 28 Mar 2017 17:26:07 +0200
-Received: from barqueta.lsi.us.es (HELO us.es) (1984lsi@150.214.188.150)
-  by mail.us.es with AES128-SHA encrypted SMTP; 28 Mar 2017 17:26:07 +0200
-Date: Tue, 28 Mar 2017 17:26:07 +0200
-From: Pablo Neira Ayuso <pablo@netfilter.org>
-To: Arushi Singhal <arushisinghal19971997@gmail.com>
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x244.google.com with SMTP id 81so21189334pgh.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 28 Mar 2017 06:01:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=UNzzqxcogRMiGpsJvis4lXX+DoVod+ih0r/WbSmfbs8=;
+        b=dzPSWMmp7i+rhZ5fTQZO3PPLmK3HuD9z7eWZuMuZmPAaOMLXz5iKUpdN8L1fn0kylm
+         7BuOVUTkNL3IsytF55wovfv0OnVxNNCZtQ0yFCYtZQyhGvJooAd2j8v7/z2uDhydcL2D
+         18yCQTcMbOcUfjwNoQgXgYm5knc+PnUtN1+HizKJtge7fI1x3UMzIza8+E21c5Vk9Ye2
+         HH7JDuOEUx0N3h9Eml6Be4dHXDBOlN30prkhOiTsx4Ko4vusMRXqnCYoxa1gljiDmJDE
+         sRYSYexnUK5I5yUnY0Vy6p4zKAW6Hx9rcM1KJUXhvCVRKpyqM/yLjGWwNt2XiqxbgZ9Q
+         snvw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=UNzzqxcogRMiGpsJvis4lXX+DoVod+ih0r/WbSmfbs8=;
+        b=KIUAXogcW0aWMW6fXtnuavIp9S8eWIpXKH7JVYKktvqirAE4YdctcCMDXd+3XFvQvD
+         SZvoZRJWCLsy74AbIplofHLWEciSrUTbSpaEfMCpHtDIRjG+E+j/it8FimLH7Ax5JTVL
+         8XhUHzth/LYXoHqhQ1pcapRK6Egl+Pj8BJpm8rEWZJMflY6FCkXmXZW2b31Sg7JN9rTl
+         mYRf5XvwTQmI6vZSObw13qDtG5x7coJZAtlINx77Av5rGnlJrcUv7igYjPJESNr9TJG5
+         s9i/bYmV5i9bZpOsUZkK5hwz/NjDTyQLF88HRm9bw2dtN8QAxFH6U57F6FItH6KIwubQ
+         134Q==
+X-Gm-Message-State: AFeK/H37MuLe/jYOwA8CvCRgwQnKtCqHyBGO2S0L39r8y6A+GIbNVfz73I8Z0zsl/NFLOg==
+X-Received: by 10.99.65.1 with SMTP id o1mr30862630pga.93.1490706060463;
+        Tue, 28 Mar 2017 06:01:00 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id a77sm7518024pfl.91.2017.03.28.06.00.58
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 28 Mar 2017 06:00:59 -0700 (PDT)
+Date: Tue, 28 Mar 2017 18:30:56 +0530
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+To: pablo@netfilter.org
 Cc: Jozsef Kadlecsik <kadlec@blackhole.kfki.hu>, davem@davemloft.net,
 	netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
 	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] net: netfilter: Remove complexity
-Message-ID: <20170328152607.GA1735@salvia>
-References: <20170328130032.GA5009@arushi-HP-Pavilion-Notebook>
+Subject: [PATCH] net: netfilter: Remove complexity
+Message-ID: <20170328130032.GA5009@arushi-HP-Pavilion-Notebook>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20170328130032.GA5009@arushi-HP-Pavilion-Notebook>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Virus-Scanned: ClamAV using ClamSMTP
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Tue, Mar 28, 2017 at 06:30:56PM +0530, Arushi Singhal wrote:
-> To remove complexity of code the function is added in nfnetlink.h
-> to make code more clear and readable.
+To remove complexity of code the function is added in nfnetlink.h
+to make code more clear and readable.
 
-Patch looks good, you can also use this new function from other
-_fill_info() functions in the netfilter code, eg.
+Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+---
+ include/linux/netfilter/nfnetlink.h  |  6 ++++++
+ net/netfilter/nf_conntrack_netlink.c | 12 +++++++-----
+ 2 files changed, 13 insertions(+), 5 deletions(-)
 
-        nfnl_cthelper_fill_info()
+diff --git a/include/linux/netfilter/nfnetlink.h b/include/linux/netfilter/nfnetlink.h
+index 1b49209dd5c7..9a36a7c3145d 100644
+--- a/include/linux/netfilter/nfnetlink.h
++++ b/include/linux/netfilter/nfnetlink.h
+@@ -50,6 +50,12 @@ static inline bool lockdep_nfnl_is_held(__u8 subsys_id)
+ {
+ 	return true;
+ }
++
++static inline u16 nfnl_msg_type(u8 subsys, u8 msg_type)
++{
++	return subsys << 8 | msg_type;
++}
++
+ #endif /* CONFIG_PROVE_LOCKING */
+ 
+ /*
+diff --git a/net/netfilter/nf_conntrack_netlink.c b/net/netfilter/nf_conntrack_netlink.c
+index aa344c5868c5..67f6f88a3e92 100644
+--- a/net/netfilter/nf_conntrack_netlink.c
++++ b/net/netfilter/nf_conntrack_netlink.c
+@@ -467,7 +467,7 @@ ctnetlink_fill_info(struct sk_buff *skb, u32 portid, u32 seq, u32 type,
+ 	struct nlattr *nest_parms;
+ 	unsigned int flags = portid ? NLM_F_MULTI : 0, event;
+ 
+-	event = NFNL_SUBSYS_CTNETLINK << 8 | IPCTNL_MSG_CT_NEW;
++	event = nfnl_msg_type(NFNL_SUBSYS_CTNETLINK, IPCTNL_MSG_CT_NEW);
+ 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(*nfmsg), flags);
+ 	if (nlh == NULL)
+ 		goto nlmsg_failure;
+@@ -1983,7 +1983,8 @@ ctnetlink_ct_stat_cpu_fill_info(struct sk_buff *skb, u32 portid, u32 seq,
+ 	struct nfgenmsg *nfmsg;
+ 	unsigned int flags = portid ? NLM_F_MULTI : 0, event;
+ 
+-	event = NFNL_SUBSYS_CTNETLINK << 8 | IPCTNL_MSG_CT_GET_STATS_CPU;
++	event = nfnl_msg_type(NFNL_SUBSYS_CTNETLINK,
++			      IPCTNL_MSG_CT_GET_STATS_CPU);
+ 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(*nfmsg), flags);
+ 	if (nlh == NULL)
+ 		goto nlmsg_failure;
+@@ -2066,7 +2067,7 @@ ctnetlink_stat_ct_fill_info(struct sk_buff *skb, u32 portid, u32 seq, u32 type,
+ 	unsigned int flags = portid ? NLM_F_MULTI : 0, event;
+ 	unsigned int nr_conntracks = atomic_read(&net->ct.count);
+ 
+-	event = NFNL_SUBSYS_CTNETLINK << 8 | IPCTNL_MSG_CT_GET_STATS;
++	event = nfnl_msg_type(NFNL_SUBSYS_CTNETLINK, IPCTNL_MSG_CT_GET_STATS);
+ 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(*nfmsg), flags);
+ 	if (nlh == NULL)
+ 		goto nlmsg_failure;
+@@ -2576,7 +2577,7 @@ ctnetlink_exp_fill_info(struct sk_buff *skb, u32 portid, u32 seq,
+ 	struct nfgenmsg *nfmsg;
+ 	unsigned int flags = portid ? NLM_F_MULTI : 0;
+ 
+-	event |= NFNL_SUBSYS_CTNETLINK_EXP << 8;
++	event = nfnl_msg_type(NFNL_SUBSYS_CTNETLINK_EXP, event);
+ 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(*nfmsg), flags);
+ 	if (nlh == NULL)
+ 		goto nlmsg_failure;
+@@ -3223,7 +3224,8 @@ ctnetlink_exp_stat_fill_info(struct sk_buff *skb, u32 portid, u32 seq, int cpu,
+ 	struct nfgenmsg *nfmsg;
+ 	unsigned int flags = portid ? NLM_F_MULTI : 0, event;
+ 
+-	event = NFNL_SUBSYS_CTNETLINK << 8 | IPCTNL_MSG_EXP_GET_STATS_CPU;
++	event = nfnl_msg_type(NFNL_SUBSYS_CTNETLINK,
++			      IPCTNL_MSG_EXP_GET_STATS_CPU);
+ 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(*nfmsg), flags);
+ 	if (nlh == NULL)
+ 		goto nlmsg_failure;
+-- 
+2.11.0
 
-Take the time to make a careful look at the netfilter tree to see if
-we can have a good bunch of new clients of this function in one go.
-Most likely many of the nfnetlink_*.c files can use this.
-
-BTW, you can also indicate in your patch description that this is
-opencoded in a way that makes it error prone for future netfilter
-netlink subsystems.
-
-Please search for a better patch title, this one is too generic. I
-understand selecting a good patch title is something that exercise.
-
-I'd suggest this:
-
-        netfilter: add nfnl_msg_type() helper function
-
-Never give up, revamp and resubmit, thanks!
 
