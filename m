@@ -1,62 +1,62 @@
 X-GM-THRID: 6402509847805296640
-X-Received: by 10.13.206.67 with SMTP id q64mr9996064ywd.2.1490700494858;
-        Tue, 28 Mar 2017 04:28:14 -0700 (PDT)
+X-Received: by 10.31.242.137 with SMTP id q131mr6777400vkh.38.1490700490398;
+        Tue, 28 Mar 2017 04:28:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.17.215 with SMTP id y23ls15302713oty.7.gmail; Tue, 28 Mar
- 2017 04:28:14 -0700 (PDT)
-X-Received: by 10.237.37.219 with SMTP id y27mr8857443qtc.41.1490700494463;
-        Tue, 28 Mar 2017 04:28:14 -0700 (PDT)
+Received: by 10.157.51.3 with SMTP id f3ls2263558otc.32.gmail; Tue, 28 Mar
+ 2017 04:28:09 -0700 (PDT)
+X-Received: by 10.237.50.229 with SMTP id z92mr8664723qtd.67.1490700489972;
+        Tue, 28 Mar 2017 04:28:09 -0700 (PDT)
 Return-Path: <gs051095@gmail.com>
 Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id a3si527448pfb.2.2017.03.28.04.28.14
+        by gmr-mx.google.com with ESMTPS id y203si638833pfb.0.2017.03.28.04.28.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Mar 2017 04:28:14 -0700 (PDT)
+        Tue, 28 Mar 2017 04:28:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
        spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id 81so20631825pgh.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 28 Mar 2017 04:28:14 -0700 (PDT)
+Received: by mail-pg0-x244.google.com with SMTP id 79so20689432pgf.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 28 Mar 2017 04:28:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=Vuzapx4baP1TnStY7b3g4nv3pJzA9Y4HCyzx9ZPQqao=;
-        b=UtmW4dtMmHgD/hHUOWywdhqSw9Eb/Bznt94H51CeajrNVwXgayav35wGVX3sfmv9EO
-         BOeobiEWFwa677R6Yf/7GGATxb28kvZuOruhwa6ag5Cp238aWVMC2uep/gRLw6PSc5fC
-         zvFpM5kXQmMVPUWuDlVFoQAJXskohaXqvvGM/r6MDNdG7Q/qtfSOiRaujjDk3sPbw8Di
-         sRmHtftmuDa0crMiqXdOhM4FAnEnbxWvN28qZy+nnMv5oAYlfosq7/lW9h9KK2ujlbt8
-         o8xUS4VEH+xqoWBOd4L0NNjocqAQ1vdPKoo1aPd+fF2/WkAZeEXcWk5AgHwn1kuEak9y
-         I2lA==
+        bh=TCM+UtCPaDTjmDhSiULl6LD6OGs/uAlATwAdl05ZAzk=;
+        b=BNTWylEjBukvNqx5rGxleSS/QnVE3xWg7dqsqlWNEaOa8jYVyEubrEziHzqsjHeqc8
+         QNJsFhSysIPX2cWSAgpgIXAyn/3Cg5AvY31ywdV66da8yFrXz+4BivVMY15RJ+4iXvNy
+         7BAFLWv/+8TvOvYmm8vMEHWowkJeTLSyPCbsnTwkTqQ/7nbdpqivh10ltEADKGeIol9J
+         hYJiy5ta45AZGGRaMlRulXuMKNB4G6xczjIakhHrYY1vs7Npyu9zKGumok4oJ9x7WiDA
+         Ushbe21xxtqVm6x5NqtbuSH9N68W9DOtwH1OJeQqlDXsSYMxqEbKIQ36FWDwUcJqJF0T
+         whAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=Vuzapx4baP1TnStY7b3g4nv3pJzA9Y4HCyzx9ZPQqao=;
-        b=BAigpBSF1Hy2LSXrmWIQhr66VkwxNg0ZlIkoJyM0nP1pLuSlckh023CONK5Ngm5qnX
-         9xa9dCU6JUvSfVdvXuvxipuPIlMzgXWcBrUb6MlbTLaN9eQNlfxZmY46QBzkJ8zopIjO
-         /CcbhjS1Y2nGDir2xSXtGGGEaZUgtzwr5rqxXoKf7bOfuoB0TgyR4RRhZqIyCyzDbUEe
-         lB+9mc30luqhy2T8BZmqYyFpegoscMtNEW+a1uBA1zLJA7zAu5TU0ChOCf4bjuqZ6SLa
-         3+FxOFPKZpEZp6XooabyN23icUsdtcpHw+H6mf5YAIp/nhjCyqh2m9DcOXawoBBEBC8G
-         VEqQ==
-X-Gm-Message-State: AFeK/H2AmeG/3cM6myQdiFEUZ6WFhQ19MtLv8ASBssFFXX57JiXEqeX+Z2cfE5F9PeFCxw==
-X-Received: by 10.84.129.195 with SMTP id b61mr35978202plb.83.1490700494197;
-        Tue, 28 Mar 2017 04:28:14 -0700 (PDT)
+        bh=TCM+UtCPaDTjmDhSiULl6LD6OGs/uAlATwAdl05ZAzk=;
+        b=R982tZzMLzYzELW8bGpecIXmPFjn3q+rZIlIuIqqkjMi/JWJF909X5ZYwhb6iTibIo
+         8myaGGXygv1g3G2EIkUp8qMpY4mkoRw9yh2b88NQZFTH+816VdqboDNbcTs6iv6U/r2g
+         n4BVGrqmUwtOAb9mb4tV3YREdozjQZyf0HrbQ5keiLaj+OvPqdqsolFdR5kYWKuWoz2U
+         NDnzeWOye3Av7JvkNq5hgXF2Sk5Vcy8dIo0VPuKSiQG9dE3xIJ7nlzltTcD8Wq9FYm6N
+         n1JFhliGHlEV6+enr+4q91CL//CXGzNM1K8g4+3sQVdsHq+b2PG0/Edo8FNXVk8GO0rk
+         optA==
+X-Gm-Message-State: AFeK/H15yzaL0Pkw6x/FdBdquuMIO1aiDmIWVhrQdW3reisHx9bWkd9cJQE+VzAxFs4Akw==
+X-Received: by 10.99.117.66 with SMTP id f2mr15387283pgn.153.1490700489747;
+        Tue, 28 Mar 2017 04:28:09 -0700 (PDT)
 Return-Path: <gs051095@gmail.com>
 Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([47.9.128.168])
-        by smtp.googlemail.com with ESMTPSA id z21sm6921543pgc.53.2017.03.28.04.28.10
+        by smtp.googlemail.com with ESMTPSA id z21sm6921543pgc.53.2017.03.28.04.28.07
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 28 Mar 2017 04:28:13 -0700 (PDT)
+        Tue, 28 Mar 2017 04:28:09 -0700 (PDT)
 From: Gargi Sharma <gs051095@gmail.com>
 To: netfilter-devel@vger.kernel.org
 Cc: pablo@netfilter.org,
 	outreachy-kernel@googlegroups.com,
 	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH 2/3] ebtables: extensions: Constify option struct
-Date: Tue, 28 Mar 2017 16:57:50 +0530
-Message-Id: <54ae426a3c02ffa3dc6e6e11bacd74f6e1173693.1490699407.git.gs051095@gmail.com>
+Subject: [PATCH 1/3] ebtables: extensions: Constify option struct
+Date: Tue, 28 Mar 2017 16:57:49 +0530
+Message-Id: <b962c022d3f076c8625b076aa31038341c122369.1490699407.git.gs051095@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <cover.1490699407.git.gs051095@gmail.com>
 References: <cover.1490699407.git.gs051095@gmail.com>
@@ -64,114 +64,54 @@ In-Reply-To: <cover.1490699407.git.gs051095@gmail.com>
 References: <cover.1490699407.git.gs051095@gmail.com>
 
 The struct  of the type option is only used to initialise a field
-inside the ebt_u_target struct and is not modified anywhere.
+inside the ebt_u_watcher struct and is not modified anywhere.
 
 Signed-off-by: Gargi Sharma <gs051095@gmail.com>
 ---
- extensions/ebt_arpreply.c | 2 +-
- extensions/ebt_inat.c     | 4 ++--
- extensions/ebt_mark.c     | 2 +-
- extensions/ebt_nat.c      | 4 ++--
- extensions/ebt_redirect.c | 2 +-
- extensions/ebt_standard.c | 2 +-
- 6 files changed, 8 insertions(+), 8 deletions(-)
+ extensions/ebt_log.c   | 2 +-
+ extensions/ebt_nflog.c | 2 +-
+ extensions/ebt_ulog.c  | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/extensions/ebt_arpreply.c b/extensions/ebt_arpreply.c
-index c3757f3..51eda66 100644
---- a/extensions/ebt_arpreply.c
-+++ b/extensions/ebt_arpreply.c
-@@ -19,7 +19,7 @@ static int mac_supplied;
- 
- #define REPLY_MAC '1'
- #define REPLY_TARGET '2'
+diff --git a/extensions/ebt_log.c b/extensions/ebt_log.c
+index 1cf831a..97d5091 100644
+--- a/extensions/ebt_log.c
++++ b/extensions/ebt_log.c
+@@ -61,7 +61,7 @@ static int name_to_loglevel(char* arg)
+ #define LOG_IP     '4'
+ #define LOG_LOG    '5'
+ #define LOG_IP6    '6'
 -static struct option opts[] =
 +static const struct option opts[] =
  {
- 	{ "arpreply-mac" ,    required_argument, 0, REPLY_MAC    },
- 	{ "arpreply-target" , required_argument, 0, REPLY_TARGET },
-diff --git a/extensions/ebt_inat.c b/extensions/ebt_inat.c
-index 1aa9435..681975d 100644
---- a/extensions/ebt_inat.c
-+++ b/extensions/ebt_inat.c
-@@ -23,7 +23,7 @@ static int s_sub_supplied, d_sub_supplied;
- #define NAT_D_SUB '2'
- #define NAT_S_TARGET '3'
- #define NAT_D_TARGET '3'
--static struct option opts_s[] =
-+static const struct option opts_s[] =
- {
- 	{ "isnat-list"     , required_argument, 0, NAT_S },
- 	{ "isnat-sub"      , required_argument, 0, NAT_S_SUB },
-@@ -31,7 +31,7 @@ static struct option opts_s[] =
- 	{ 0 }
+ 	{ "log-prefix", required_argument, 0, LOG_PREFIX },
+ 	{ "log-level" , required_argument, 0, LOG_LEVEL  },
+diff --git a/extensions/ebt_nflog.c b/extensions/ebt_nflog.c
+index 0cd10e0..405673a 100644
+--- a/extensions/ebt_nflog.c
++++ b/extensions/ebt_nflog.c
+@@ -25,7 +25,7 @@ enum {
+ 	NFLOG_NFLOG = 0x16,
  };
  
--static struct option opts_d[] =
-+static const struct option opts_d[] =
- {
- 	{ "idnat-list"     , required_argument, 0, NAT_D },
- 	{ "idnat-sub"      , required_argument, 0, NAT_D_SUB },
-diff --git a/extensions/ebt_mark.c b/extensions/ebt_mark.c
-index 5776b1c..4cf1378 100644
---- a/extensions/ebt_mark.c
-+++ b/extensions/ebt_mark.c
-@@ -20,7 +20,7 @@ static int mark_supplied;
- #define MARK_ORMARK  '3'
- #define MARK_ANDMARK '4'
- #define MARK_XORMARK '5'
+-static struct option nflog_opts[] = {
++static const struct option nflog_opts[] = {
+ 	{"nflog-group", required_argument, NULL, NFLOG_GROUP},
+ 	{"nflog-prefix", required_argument, NULL, NFLOG_PREFIX},
+ 	{"nflog-range", required_argument, NULL, NFLOG_RANGE},
+diff --git a/extensions/ebt_ulog.c b/extensions/ebt_ulog.c
+index 162586d..54eec53 100644
+--- a/extensions/ebt_ulog.c
++++ b/extensions/ebt_ulog.c
+@@ -24,7 +24,7 @@
+ #define ULOG_CPRANGE    '3'
+ #define ULOG_QTHRESHOLD '4'
+ #define ULOG_ULOG       '5'
 -static struct option opts[] =
 +static const struct option opts[] =
  {
- 	{ "mark-target" , required_argument, 0, MARK_TARGET },
- 	/* an oldtime messup, we should have always used the scheme
-diff --git a/extensions/ebt_nat.c b/extensions/ebt_nat.c
-index e6afbf8..00d9cd4 100644
---- a/extensions/ebt_nat.c
-+++ b/extensions/ebt_nat.c
-@@ -21,7 +21,7 @@ static int to_source_supplied, to_dest_supplied;
- #define NAT_S_TARGET '2'
- #define NAT_D_TARGET '2'
- #define NAT_S_ARP '3'
--static struct option opts_s[] =
-+static const struct option opts_s[] =
- {
- 	{ "to-source"     , required_argument, 0, NAT_S },
- 	{ "to-src"        , required_argument, 0, NAT_S },
-@@ -30,7 +30,7 @@ static struct option opts_s[] =
- 	{ 0 }
- };
- 
--static struct option opts_d[] =
-+static const struct option opts_d[] =
- {
- 	{ "to-destination", required_argument, 0, NAT_D },
- 	{ "to-dst"        , required_argument, 0, NAT_D },
-diff --git a/extensions/ebt_redirect.c b/extensions/ebt_redirect.c
-index e470818..3f8227a 100644
---- a/extensions/ebt_redirect.c
-+++ b/extensions/ebt_redirect.c
-@@ -14,7 +14,7 @@
- #include <linux/netfilter_bridge/ebt_redirect.h>
- 
- #define REDIRECT_TARGET '1'
--static struct option opts[] =
-+static const struct option opts[] =
- {
- 	{ "redirect-target", required_argument, 0, REDIRECT_TARGET },
- 	{ 0 }
-diff --git a/extensions/ebt_standard.c b/extensions/ebt_standard.c
-index 67d4d7c..81edead 100644
---- a/extensions/ebt_standard.c
-+++ b/extensions/ebt_standard.c
-@@ -11,7 +11,7 @@
- #include <getopt.h>
- #include "../include/ebtables_u.h"
- 
--static struct option opts[] =
-+static const struct option opts[] =
- {
- 	{0}
- };
+ 	{ "ulog-prefix"    , required_argument, 0, ULOG_PREFIX     },
+ 	{ "ulog-nlgroup"   , required_argument, 0, ULOG_NLGROUP    },
 -- 
 2.7.4
 
