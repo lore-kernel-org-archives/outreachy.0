@@ -1,111 +1,345 @@
-X-GM-THRID: 6390398326038069248
-X-Received: by 10.200.46.123 with SMTP id s56mr11669469qta.63.1487880555916;
-        Thu, 23 Feb 2017 12:09:15 -0800 (PST)
+X-GM-THRID: 6402509847805296640
+X-Received: by 10.99.175.78 with SMTP id s14mr10209795pgo.125.1490710386428;
+        Tue, 28 Mar 2017 07:13:06 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.47.218 with SMTP id v87ls1390971iov.10.gmail; Thu, 23 Feb
- 2017 12:09:15 -0800 (PST)
-X-Received: by 10.99.160.103 with SMTP id u39mr12610247pgn.47.1487880555105;
-        Thu, 23 Feb 2017 12:09:15 -0800 (PST)
+Received: by 10.157.55.180 with SMTP id x49ls768629otb.23.gmail; Tue, 28 Mar
+ 2017 07:13:05 -0700 (PDT)
+X-Received: by 10.129.138.132 with SMTP id a126mr10224474ywg.156.1490710385915;
+        Tue, 28 Mar 2017 07:13:05 -0700 (PDT)
 Return-Path: <gs051095@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id c123si866427pfa.4.2017.02.23.12.09.15
+Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
+        by gmr-mx.google.com with ESMTPS id y90si720149pfa.6.2017.03.28.07.13.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 23 Feb 2017 12:09:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Tue, 28 Mar 2017 07:13:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
+       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id o64so42741pfb.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 23 Feb 2017 12:09:15 -0800 (PST)
+Received: by mail-pg0-x241.google.com with SMTP id g2so21611962pge.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 28 Mar 2017 07:13:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=yDuxVbAljNEWvqp22jWAkcTg0U2lsydLMJ0MCExl2sM=;
-        b=kLRIgcyb5+EO6T1DWt9OtMQn/HHi4w3I4ntc0Jj1rzyp9OrHHx8+Sexbg5HtZbgMPk
-         ljZYXHriDvnEVqAtkRH6LDYjLxPNZ4i0YokQPoP3yZ1ba8gBjSL/2cOl8uh379X+hjBx
-         0ngrUvLU+FalWvaAWSakD8r/t0KXyTR8gTZi74LCfKBsfuwMkrCQQuPc6eYMgDqb1DKI
-         DV5vOds9+blFDtJhN8mIDGet82veYcE9bKxWZ8+Az8fqNkmeuaQzCJxy5EFdLGxKhf3N
-         so08roiamstuEtJVsysPFzQMJzM1+nstvy614n/hguIKyqFj+cENR6qexstqE6XnJIuZ
-         2ySQ==
+        bh=j4UzvEghcRrwvVl2/1SE4o5S/RNZlOLY+4UEjzfpXGA=;
+        b=vPS2sg06zUxRcjzKvvIi22iOnvc+SGfDiclotnU1beOaq5gp58NrMN8R5L28y9RqaW
+         oLnVaWQstO+XRWIXld/u2Hi2i9MXL0O6AMuNc1TKT/w1IOa7MGEKzJOFfAsRd/nuUEJJ
+         eYpeRhdu2o9LZMTQhKYoJTKclBRuMgfphnidk/DQxabOzNK/rv5+J4p61+5xhaaYxAg+
+         arBMDuPlNsKaLEujskWV5ORV87XZguAXX2uZI9nEm6IWt3B1Xws+U6lGyNzYCrw2oXh6
+         zr93sKbcRyfHADcrtGhabKRj2oi4YyyXpmuJGxvlnMSKSuOl5yPyaICOE3BJ7v/XDvTO
+         R59Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=yDuxVbAljNEWvqp22jWAkcTg0U2lsydLMJ0MCExl2sM=;
-        b=IMgHJFohEyyvS/tRFk7nkn+h/MdTb4M0XaEh2pbS/WfaInimbqRSBTO1Bn8bIZBU51
-         Jzs0P41X6/quhOafm3wh+1VZK1gSKkyRNMXZ2y83gMDJhdorgg5M23mokw38LgPtYV7E
-         JB+7kDDTPPsNKTlGCjLobvrsBWkCu4Kvcj7azxEKQbHsEH0MbiOzjf1hiDR/TzE8HUjU
-         H2jICr5UWMQPaL/pp8booAVA44uxWr0KuP29aq4jUdmfmZLFXXNoFAxIJNXvur8ODHVl
-         4ejELP71T8pQ/Wuw6dxFsHltQV5Di2pd59ACVmviYLKE2B3eCljWAftv5Cp6L3GV4NsY
-         bDnw==
-X-Gm-Message-State: AMke39lYaCr1dKl038/vvrTDfFa8KKuityEITvzA890MpXIc3tLmMYuQE1/JzVzUyr3x4A==
-X-Received: by 10.98.43.4 with SMTP id r4mr39857607pfr.96.1487880554881;
-        Thu, 23 Feb 2017 12:09:14 -0800 (PST)
+        bh=j4UzvEghcRrwvVl2/1SE4o5S/RNZlOLY+4UEjzfpXGA=;
+        b=lVksoNbyjD/NC9I2UCjZ1dI+eSHtut5g6P/1bYFvGA1HDejZX0IqwTQ5kVL4hLXUSG
+         RWqBeWg3Fv4rtkk8WfgspL/PoopjWE2UdtmJCn7hC8NJ6VoSETc27y9wCMOwkctV3GYc
+         Kr3lOGtn+l5xe5kwaneS4HKmKwYjYSM7THBtKLhz0fETwTkVSpfAsSSOP1xdB/BACG5L
+         fCTu8IHmoA5KnXNp7UT7Y3uGHgoMgi+Aq16d7rD2cgafz3H8+FhJk8iuW6hmLj8DIVDR
+         ICRxnCQPFcPdnW/K51UKX5Aja/VUBQfVOz+4xhBsHJvT9tIwU0Gj6llhKeCV1QfTcHgc
+         1iKw==
+X-Gm-Message-State: AFeK/H2eHXjKLQqeqYv55q2re7THcQ1pwkMozBGeZ2kN7b5k0VCLjc8Nkmal3N21/xr/lg==
+X-Received: by 10.98.90.66 with SMTP id o63mr10617294pfb.54.1490710385496;
+        Tue, 28 Mar 2017 07:13:05 -0700 (PDT)
 Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id l3sm11396543pgn.10.2017.02.23.12.09.12
+Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([47.9.178.180])
+        by smtp.googlemail.com with ESMTPSA id h14sm7876958pgn.41.2017.03.28.07.12.57
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 23 Feb 2017 12:09:14 -0800 (PST)
+        Tue, 28 Mar 2017 07:13:04 -0700 (PDT)
 From: Gargi Sharma <gs051095@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
+To: netfilter-devel@vger.kernel.org
+Cc: pablo@netfilter.org,
+	outreachy-kernel@googlegroups.com,
 	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH] staging: rtl8192e: replace explicit NULL comparison
-Date: Fri, 24 Feb 2017 01:36:59 +0530
-Message-Id: <1487880419-28962-1-git-send-email-gs051095@gmail.com>
+Subject: [PATCH v3] ebtables: extensions: Constify option struct
+Date: Tue, 28 Mar 2017 19:42:39 +0530
+Message-Id: <1490710359-9207-1-git-send-email-gs051095@gmail.com>
 X-Mailer: git-send-email 2.7.4
 
-Replace explicit NULL comparison with ! operator to
-simplify code.
-
-Found with Coccinelle script:
-@@
-expression ptr;
-position p;
-statement s0, s1;
-@@
-
-ptr@p =
-\(kmalloc\|devm_kzalloc\|kmalloc_array\|devm_ioremap\|usb_alloc_urb\|
-alloc_netdev\|dev_alloc_skb\)(...)
-... when != ptr
-
-if (
-(
-+ !
-ptr
-- == NULL
-)
-) s0 else s1
+The struct  of the type option is only used to initialise a field
+inside the ebt_u_watcher or ebt_u_target or ebt_u_match struct and
+is not modified anywhere.
 
 Signed-off-by: Gargi Sharma <gs051095@gmail.com>
 ---
- drivers/staging/rtl8192e/rtl819x_BAProc.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Changes in v3:
+	- Correct the version number in subject prefix.
+Changes in v2:
+	- Squash patches in the patchset.
+---
+ extensions/ebt_802_3.c    | 2 +-
+ extensions/ebt_among.c    | 2 +-
+ extensions/ebt_arp.c      | 2 +-
+ extensions/ebt_arpreply.c | 2 +-
+ extensions/ebt_inat.c     | 4 ++--
+ extensions/ebt_ip.c       | 2 +-
+ extensions/ebt_limit.c    | 2 +-
+ extensions/ebt_log.c      | 2 +-
+ extensions/ebt_mark.c     | 2 +-
+ extensions/ebt_mark_m.c   | 2 +-
+ extensions/ebt_nat.c      | 4 ++--
+ extensions/ebt_nflog.c    | 2 +-
+ extensions/ebt_pkttype.c  | 2 +-
+ extensions/ebt_redirect.c | 2 +-
+ extensions/ebt_standard.c | 2 +-
+ extensions/ebt_stp.c      | 2 +-
+ extensions/ebt_ulog.c     | 2 +-
+ extensions/ebt_vlan.c     | 2 +-
+ 18 files changed, 20 insertions(+), 20 deletions(-)
 
-diff --git a/drivers/staging/rtl8192e/rtl819x_BAProc.c b/drivers/staging/rtl8192e/rtl819x_BAProc.c
-index 20260af..1d39631 100644
---- a/drivers/staging/rtl8192e/rtl819x_BAProc.c
-+++ b/drivers/staging/rtl8192e/rtl819x_BAProc.c
-@@ -88,7 +88,7 @@ static struct sk_buff *rtllib_ADDBA(struct rtllib_device *ieee, u8 *Dst,
- 		return NULL;
- 	}
- 	skb = dev_alloc_skb(len + sizeof(struct rtllib_hdr_3addr));
--	if (skb == NULL)
-+	if (!skb)
- 		return NULL;
+diff --git a/extensions/ebt_802_3.c b/extensions/ebt_802_3.c
+index dd22eb2..4584849 100644
+--- a/extensions/ebt_802_3.c
++++ b/extensions/ebt_802_3.c
+@@ -17,7 +17,7 @@
+ #define _802_3_SAP '1'
+ #define _802_3_TYPE '2'
  
- 	memset(skb->data, 0, sizeof(struct rtllib_hdr_3addr));
-@@ -154,7 +154,7 @@ static struct sk_buff *rtllib_DELBA(struct rtllib_device *ieee, u8 *dst,
- 	DelbaParamSet.field.TID	= pBA->BaParamSet.field.TID;
+-static struct option opts[] =
++static const struct option opts[] =
+ {
+ 	{ "802_3-sap"   , required_argument, 0, _802_3_SAP },
+ 	{ "802_3-type"  , required_argument, 0, _802_3_TYPE },
+diff --git a/extensions/ebt_among.c b/extensions/ebt_among.c
+index f97d07e..e4fc5ac 100644
+--- a/extensions/ebt_among.c
++++ b/extensions/ebt_among.c
+@@ -26,7 +26,7 @@
+ #define AMONG_DST_F '3'
+ #define AMONG_SRC_F '4'
  
- 	skb = dev_alloc_skb(len + sizeof(struct rtllib_hdr_3addr));
--	if (skb == NULL)
-+	if (!skb)
- 		return NULL;
+-static struct option opts[] = {
++static const struct option opts[] = {
+ 	{"among-dst", required_argument, 0, AMONG_DST},
+ 	{"among-src", required_argument, 0, AMONG_SRC},
+ 	{"among-dst-file", required_argument, 0, AMONG_DST_F},
+diff --git a/extensions/ebt_arp.c b/extensions/ebt_arp.c
+index 64d337d..b281955 100644
+--- a/extensions/ebt_arp.c
++++ b/extensions/ebt_arp.c
+@@ -24,7 +24,7 @@
+ #define ARP_MAC_S  '6'
+ #define ARP_MAC_D  '7'
+ #define ARP_GRAT   '8'
+-static struct option opts[] =
++static const struct option opts[] =
+ {
+ 	{ "arp-opcode"    , required_argument, 0, ARP_OPCODE },
+ 	{ "arp-op"        , required_argument, 0, ARP_OPCODE },
+diff --git a/extensions/ebt_arpreply.c b/extensions/ebt_arpreply.c
+index c3757f3..51eda66 100644
+--- a/extensions/ebt_arpreply.c
++++ b/extensions/ebt_arpreply.c
+@@ -19,7 +19,7 @@ static int mac_supplied;
  
- 	skb_reserve(skb, ieee->tx_headroom);
+ #define REPLY_MAC '1'
+ #define REPLY_TARGET '2'
+-static struct option opts[] =
++static const struct option opts[] =
+ {
+ 	{ "arpreply-mac" ,    required_argument, 0, REPLY_MAC    },
+ 	{ "arpreply-target" , required_argument, 0, REPLY_TARGET },
+diff --git a/extensions/ebt_inat.c b/extensions/ebt_inat.c
+index 1aa9435..681975d 100644
+--- a/extensions/ebt_inat.c
++++ b/extensions/ebt_inat.c
+@@ -23,7 +23,7 @@ static int s_sub_supplied, d_sub_supplied;
+ #define NAT_D_SUB '2'
+ #define NAT_S_TARGET '3'
+ #define NAT_D_TARGET '3'
+-static struct option opts_s[] =
++static const struct option opts_s[] =
+ {
+ 	{ "isnat-list"     , required_argument, 0, NAT_S },
+ 	{ "isnat-sub"      , required_argument, 0, NAT_S_SUB },
+@@ -31,7 +31,7 @@ static struct option opts_s[] =
+ 	{ 0 }
+ };
+ 
+-static struct option opts_d[] =
++static const struct option opts_d[] =
+ {
+ 	{ "idnat-list"     , required_argument, 0, NAT_D },
+ 	{ "idnat-sub"      , required_argument, 0, NAT_D_SUB },
+diff --git a/extensions/ebt_ip.c b/extensions/ebt_ip.c
+index 4e0b7f0..59559fe 100644
+--- a/extensions/ebt_ip.c
++++ b/extensions/ebt_ip.c
+@@ -25,7 +25,7 @@
+ #define IP_SPORT  '5'
+ #define IP_DPORT  '6'
+ 
+-static struct option opts[] =
++static const struct option opts[] =
+ {
+ 	{ "ip-source"           , required_argument, 0, IP_SOURCE },
+ 	{ "ip-src"              , required_argument, 0, IP_SOURCE },
+diff --git a/extensions/ebt_limit.c b/extensions/ebt_limit.c
+index d189a09..2cbf4de 100644
+--- a/extensions/ebt_limit.c
++++ b/extensions/ebt_limit.c
+@@ -41,7 +41,7 @@ static int string_to_number(const char *s, unsigned int min, unsigned int max,
+ #define ARG_LIMIT		'1'
+ #define ARG_LIMIT_BURST		'2'
+ 
+-static struct option opts[] =
++static const struct option opts[] =
+ {
+ 	{ "limit",		required_argument, 0, ARG_LIMIT },
+ 	{ "limit-burst",	required_argument, 0, ARG_LIMIT_BURST },
+diff --git a/extensions/ebt_log.c b/extensions/ebt_log.c
+index 1cf831a..97d5091 100644
+--- a/extensions/ebt_log.c
++++ b/extensions/ebt_log.c
+@@ -61,7 +61,7 @@ static int name_to_loglevel(char* arg)
+ #define LOG_IP     '4'
+ #define LOG_LOG    '5'
+ #define LOG_IP6    '6'
+-static struct option opts[] =
++static const struct option opts[] =
+ {
+ 	{ "log-prefix", required_argument, 0, LOG_PREFIX },
+ 	{ "log-level" , required_argument, 0, LOG_LEVEL  },
+diff --git a/extensions/ebt_mark.c b/extensions/ebt_mark.c
+index 5776b1c..4cf1378 100644
+--- a/extensions/ebt_mark.c
++++ b/extensions/ebt_mark.c
+@@ -20,7 +20,7 @@ static int mark_supplied;
+ #define MARK_ORMARK  '3'
+ #define MARK_ANDMARK '4'
+ #define MARK_XORMARK '5'
+-static struct option opts[] =
++static const struct option opts[] =
+ {
+ 	{ "mark-target" , required_argument, 0, MARK_TARGET },
+ 	/* an oldtime messup, we should have always used the scheme
+diff --git a/extensions/ebt_mark_m.c b/extensions/ebt_mark_m.c
+index 2a259b0..7561f05 100644
+--- a/extensions/ebt_mark_m.c
++++ b/extensions/ebt_mark_m.c
+@@ -15,7 +15,7 @@
+ 
+ #define MARK '1'
+ 
+-static struct option opts[] =
++static const struct option opts[] =
+ {
+ 	{ "mark", required_argument, 0, MARK },
+ 	{ 0 }
+diff --git a/extensions/ebt_nat.c b/extensions/ebt_nat.c
+index e6afbf8..00d9cd4 100644
+--- a/extensions/ebt_nat.c
++++ b/extensions/ebt_nat.c
+@@ -21,7 +21,7 @@ static int to_source_supplied, to_dest_supplied;
+ #define NAT_S_TARGET '2'
+ #define NAT_D_TARGET '2'
+ #define NAT_S_ARP '3'
+-static struct option opts_s[] =
++static const struct option opts_s[] =
+ {
+ 	{ "to-source"     , required_argument, 0, NAT_S },
+ 	{ "to-src"        , required_argument, 0, NAT_S },
+@@ -30,7 +30,7 @@ static struct option opts_s[] =
+ 	{ 0 }
+ };
+ 
+-static struct option opts_d[] =
++static const struct option opts_d[] =
+ {
+ 	{ "to-destination", required_argument, 0, NAT_D },
+ 	{ "to-dst"        , required_argument, 0, NAT_D },
+diff --git a/extensions/ebt_nflog.c b/extensions/ebt_nflog.c
+index 0cd10e0..405673a 100644
+--- a/extensions/ebt_nflog.c
++++ b/extensions/ebt_nflog.c
+@@ -25,7 +25,7 @@ enum {
+ 	NFLOG_NFLOG = 0x16,
+ };
+ 
+-static struct option nflog_opts[] = {
++static const struct option nflog_opts[] = {
+ 	{"nflog-group", required_argument, NULL, NFLOG_GROUP},
+ 	{"nflog-prefix", required_argument, NULL, NFLOG_PREFIX},
+ 	{"nflog-range", required_argument, NULL, NFLOG_RANGE},
+diff --git a/extensions/ebt_pkttype.c b/extensions/ebt_pkttype.c
+index 5b5cb03..486c85c 100644
+--- a/extensions/ebt_pkttype.c
++++ b/extensions/ebt_pkttype.c
+@@ -27,7 +27,7 @@ char *classes[] =
+ 	"\0"
+ };
+ 
+-static struct option opts[] =
++static const struct option opts[] =
+ {
+ 	{ "pkttype-type"        , required_argument, 0, '1' },
+ 	{ 0 }
+diff --git a/extensions/ebt_redirect.c b/extensions/ebt_redirect.c
+index e470818..3f8227a 100644
+--- a/extensions/ebt_redirect.c
++++ b/extensions/ebt_redirect.c
+@@ -14,7 +14,7 @@
+ #include <linux/netfilter_bridge/ebt_redirect.h>
+ 
+ #define REDIRECT_TARGET '1'
+-static struct option opts[] =
++static const struct option opts[] =
+ {
+ 	{ "redirect-target", required_argument, 0, REDIRECT_TARGET },
+ 	{ 0 }
+diff --git a/extensions/ebt_standard.c b/extensions/ebt_standard.c
+index 67d4d7c..81edead 100644
+--- a/extensions/ebt_standard.c
++++ b/extensions/ebt_standard.c
+@@ -11,7 +11,7 @@
+ #include <getopt.h>
+ #include "../include/ebtables_u.h"
+ 
+-static struct option opts[] =
++static const struct option opts[] =
+ {
+ 	{0}
+ };
+diff --git a/extensions/ebt_stp.c b/extensions/ebt_stp.c
+index 2b108a7..5c5fc33 100644
+--- a/extensions/ebt_stp.c
++++ b/extensions/ebt_stp.c
+@@ -27,7 +27,7 @@
+ #define STP_FWDD	'l'
+ #define STP_NUMOPS 12
+ 
+-static struct option opts[] =
++static const struct option opts[] =
+ {
+ 	{ "stp-type"         , required_argument, 0, STP_TYPE},
+ 	{ "stp-flags"        , required_argument, 0, STP_FLAGS},
+diff --git a/extensions/ebt_ulog.c b/extensions/ebt_ulog.c
+index 162586d..54eec53 100644
+--- a/extensions/ebt_ulog.c
++++ b/extensions/ebt_ulog.c
+@@ -24,7 +24,7 @@
+ #define ULOG_CPRANGE    '3'
+ #define ULOG_QTHRESHOLD '4'
+ #define ULOG_ULOG       '5'
+-static struct option opts[] =
++static const struct option opts[] =
+ {
+ 	{ "ulog-prefix"    , required_argument, 0, ULOG_PREFIX     },
+ 	{ "ulog-nlgroup"   , required_argument, 0, ULOG_NLGROUP    },
+diff --git a/extensions/ebt_vlan.c b/extensions/ebt_vlan.c
+index 6714c82..0a37067 100644
+--- a/extensions/ebt_vlan.c
++++ b/extensions/ebt_vlan.c
+@@ -25,7 +25,7 @@
+ #define VLAN_PRIO  '2'
+ #define VLAN_ENCAP '3'
+ 
+-static struct option opts[] = {
++static const struct option opts[] = {
+ 	{"vlan-id"   , required_argument, NULL, VLAN_ID},
+ 	{"vlan-prio" , required_argument, NULL, VLAN_PRIO},
+ 	{"vlan-encap", required_argument, NULL, VLAN_ENCAP},
 -- 
 2.7.4
 
