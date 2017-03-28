@@ -1,84 +1,89 @@
 X-GM-THRID: 6402618675117948928
-X-Received: by 10.99.163.88 with SMTP id v24mr2747630pgn.57.1490784407250;
-        Wed, 29 Mar 2017 03:46:47 -0700 (PDT)
+X-Received: by 10.25.198.86 with SMTP id w83mr3939924lff.28.1490730677911;
+        Tue, 28 Mar 2017 12:51:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.1.241 with SMTP id e104ls815472ote.29.gmail; Wed, 29 Mar
- 2017 03:46:46 -0700 (PDT)
-X-Received: by 10.157.33.123 with SMTP id l56mr9419924otd.89.1490784406760;
-        Wed, 29 Mar 2017 03:46:46 -0700 (PDT)
-Received: by 10.202.44.70 with SMTP id s67msois;
-        Wed, 29 Mar 2017 03:36:19 -0700 (PDT)
-X-Received: by 10.129.153.65 with SMTP id q62mr11870257ywg.23.1490783779069;
-        Wed, 29 Mar 2017 03:36:19 -0700 (PDT)
-Return-Path: <broonie@sirena.org.uk>
-Received: from mezzanine.sirena.org.uk (mezzanine.sirena.org.uk. [2400:8900::f03c:91ff:fedb:4f4])
-        by gmr-mx.google.com with ESMTPS id 2si1162609pfx.8.2017.03.29.03.36.18
+Received: by 10.28.216.200 with SMTP id p191ls1991877wmg.2.canary-gmail; Tue,
+ 28 Mar 2017 12:51:16 -0700 (PDT)
+X-Received: by 10.223.150.16 with SMTP id b16mr623289wra.20.1490730676958;
+        Tue, 28 Mar 2017 12:51:16 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id p144si325308wme.2.2017.03.28.12.51.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 29 Mar 2017 03:36:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of broonie@sirena.org.uk designates 2400:8900::f03c:91ff:fedb:4f4 as permitted sender) client-ip=2400:8900::f03c:91ff:fedb:4f4;
+        Tue, 28 Mar 2017 12:51:16 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of broonie@sirena.org.uk designates 2400:8900::f03c:91ff:fedb:4f4 as permitted sender) smtp.mailfrom=broonie@sirena.org.uk
-Received: from [2001:470:1f1d:6b5::3] (helo=debutante)
-	by mezzanine.sirena.org.uk with esmtpsa (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.84_2)
-	(envelope-from <broonie@sirena.org.uk>)
-	id 1ctAxa-0007NM-6J; Wed, 29 Mar 2017 10:36:16 +0000
-Received: from broonie by debutante with local (Exim 4.88)
-	(envelope-from <broonie@sirena.org.uk>)
-	id 1ctAxX-0006YX-68; Wed, 29 Mar 2017 11:36:11 +0100
-Date: Wed, 29 Mar 2017 11:36:11 +0100
-From: Mark Brown <broonie@kernel.org>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.36,238,1486422000"; 
+   d="scan'208";a="218392092"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 28 Mar 2017 21:51:15 +0200
+Date: Tue, 28 Mar 2017 21:51:15 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Tamara Diaconita <diaconitatamara@gmail.com>
-Cc: lgirdwood@gmail.com, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com, corbet@lwn.net,
-	Tamara Diaconita <diaconita.tamara@gmail.com>
-Message-ID: <20170329103611.266sdjhh75vzozfq@sirena.org.uk>
-References: <20170328183021.2683-1-diaconita.tamara@gmail.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="gffqqkky7ufds7zd"
-Content-Disposition: inline
+cc: lgirdwood@gmail.com, broonie@kernel.org, linux-kernel@vger.kernel.org, 
+    outreachy-kernel@googlegroups.com, corbet@lwn.net, 
+    Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Regulator: core.c: Fix kerneldoc
+ comments
 In-Reply-To: <20170328183021.2683-1-diaconita.tamara@gmail.com>
-X-Cookie: Stay together, drag each other down.
-User-Agent: NeoMutt/20161126 (1.7.1)
-X-SA-Exim-Connect-IP: 2001:470:1f1d:6b5::3
-X-SA-Exim-Mail-From: broonie@sirena.org.uk
-Subject: Re: [PATCH] Regulator: core.c: Fix kerneldoc comments
-X-SA-Exim-Version: 4.2.1 (built Mon, 26 Dec 2011 16:24:06 +0000)
-X-SA-Exim-Scanned: No (on mezzanine.sirena.org.uk); Unknown failure
+Message-ID: <alpine.DEB.2.20.1703282149260.2345@hadrien>
+References: <20170328183021.2683-1-diaconita.tamara@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
 
---gffqqkky7ufds7zd
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 
-On Tue, Mar 28, 2017 at 09:30:21PM +0300, Tamara Diaconita wrote:
+On Tue, 28 Mar 2017, Tamara Diaconita wrote:
+
 > Remove the description for the non-existing 'ret' to fix the build warning:
 > ./drivers/regulator/core.c:1467: warning:
 > Excess function parameter 'ret' description in 'regulator_dev_lookup'.
 > The description found for the return value is: @ret: 0 on success, -ENODEV
 > if lookup fails permanently, -EPROBE_DEFER if lookup could succeed in the future.
 
-Please word wrap your commit messages within paragraphs at something
-substantially less than 80 columns.  Doing this makes your messages much
-easier to read and reply to and ensures that the changelogs display well
-in the git UI.
+Fine for this patch, but if you are finding more of these, I don't think
+you need to quote the removed text in the commit log.  One can see it just
+below in the patch.  Actually,
 
---gffqqkky7ufds7zd
-Content-Type: application/pgp-signature; name="signature.asc"
+"Remove the description for the non-existent parameter ret.  Problem
+detected using the kerneldoc build."
 
------BEGIN PGP SIGNATURE-----
+seems like it would be sufficient.
 
-iQEzBAABCAAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAljbjhoACgkQJNaLcl1U
-h9ANawf+P0xl9CSPb6CHuYQnmoxgDOkKSUez0was0o7Gzt5eXsgIg0iz2BM+qpmO
-E6i5c6tkvGscLVr/7e5SrNkVKWbVJ8G3Z57sZAfDTOOpOB5TTjGFmR/vvQNbX/MM
-mTZV0SyzNtq9WU7QNoIe6cS6bbH4hr+g3B/RQtMtRHHcB6JhFvFFZMjaekCdFrgB
-viJC2r5uJ69YLu84aIMIgeVn0bLQehf+OUc1F6MDzcqFCveinnB5NzWhWUfKTqPj
-x6SYqHpNZnGq+FqkuqkVFLdCx5Wi6AMLATZSqCxFMP8GT5tBJ9xZZvmLEp46fA8L
-1yPmmv7wCZMWL26BsJVVUkfUu4ZMow==
-=sQf5
------END PGP SIGNATURE-----
+julia
 
---gffqqkky7ufds7zd--
+>
+>
+> Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
+> ---
+>  drivers/regulator/core.c | 2 --
+>  1 file changed, 2 deletions(-)
+>
+> diff --git a/drivers/regulator/core.c b/drivers/regulator/core.c
+> index 53d4fc7..219b665 100644
+> --- a/drivers/regulator/core.c
+> +++ b/drivers/regulator/core.c
+> @@ -1451,8 +1451,6 @@ static struct regulator_dev *regulator_lookup_by_name(const char *name)
+>   * regulator_dev_lookup - lookup a regulator device.
+>   * @dev: device for regulator "consumer".
+>   * @supply: Supply name or regulator ID.
+> - * @ret: 0 on success, -ENODEV if lookup fails permanently, -EPROBE_DEFER if
+> - * lookup could succeed in the future.
+>   *
+>   * If successful, returns a struct regulator_dev that corresponds to the name
+>   * @supply and with the embedded struct device refcount incremented by one.
+> --
+> 2.9.3
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170328183021.2683-1-diaconita.tamara%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
