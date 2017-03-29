@@ -1,65 +1,92 @@
 X-GM-THRID: 6402792697450463232
-X-Received: by 10.46.74.2 with SMTP id x2mr4274596lja.2.1491579092183;
-        Fri, 07 Apr 2017 08:31:32 -0700 (PDT)
+X-Received: by 10.157.73.140 with SMTP id g12mr8964108otf.130.1490766344899;
+        Tue, 28 Mar 2017 22:45:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.29.6 with SMTP id d6ls273009wmd.25.canary-gmail; Fri, 07
- Apr 2017 08:31:31 -0700 (PDT)
-X-Received: by 10.28.4.151 with SMTP id 145mr1009782wme.8.1491579090899;
-        Fri, 07 Apr 2017 08:31:30 -0700 (PDT)
-Return-Path: <pneira@us.es>
-Received: from mail.us.es (mail.us.es. [193.147.175.20])
-        by gmr-mx.google.com with ESMTPS id 82si359056wmg.3.2017.04.07.08.31.30
+Received: by 10.157.16.46 with SMTP id h43ls16492164ote.9.gmail; Tue, 28 Mar
+ 2017 22:45:44 -0700 (PDT)
+X-Received: by 10.200.36.226 with SMTP id t31mr10061380qtt.2.1490766344484;
+        Tue, 28 Mar 2017 22:45:44 -0700 (PDT)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id g82si904945pfb.5.2017.03.28.22.45.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 07 Apr 2017 08:31:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
+        Tue, 28 Mar 2017 22:45:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
-Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
-	by mail.us.es (Postfix) with ESMTP id DD4B41324C7
-	for <outreachy-kernel@googlegroups.com>; Fri,  7 Apr 2017 17:31:27 +0200 (CEST)
-Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
-	by antivirus1-rhel7.int (Postfix) with ESMTP id CF224DA862
-	for <outreachy-kernel@googlegroups.com>; Fri,  7 Apr 2017 17:31:27 +0200 (CEST)
-Received: by antivirus1-rhel7.int (Postfix, from userid 99)
-	id C47DCDA7F7; Fri,  7 Apr 2017 17:31:27 +0200 (CEST)
-X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
-X-Spam-Level: 
-X-Spam-Status: No, score=-107.2 required=7.5 tests=BAYES_50,
-	HEADER_FROM_DIFFERENT_DOMAINS,RP_MATCHES_RCVD,SMTPAUTH_US,SPF_HELO_FAIL,
-	USER_IN_WHITELIST autolearn=disabled version=3.4.1
-Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
-	by antivirus1-rhel7.int (Postfix) with ESMTP id B6D3BDA877
-	for <outreachy-kernel@googlegroups.com>; Fri,  7 Apr 2017 17:31:25 +0200 (CEST)
-Received: from 192.168.1.13 (192.168.1.13)
- by antivirus1-rhel7.int (F-Secure/fsigk_smtp/540/antivirus1-rhel7.int);
- Fri, 07 Apr 2017 17:31:25 +0200 (CEST)
-X-Virus-Status: clean(F-Secure/fsigk_smtp/540/antivirus1-rhel7.int)
-Received: (qmail 11160 invoked from network); 7 Apr 2017 17:31:25 +0200
-Received: from 1984.lsi.us.es (HELO us.es) (1984lsi@150.214.188.80)
-  by mail.us.es with AES128-SHA encrypted SMTP; 7 Apr 2017 17:31:25 +0200
-Date: Fri, 7 Apr 2017 17:31:22 +0200
-From: Pablo Neira Ayuso <pablo@netfilter.org>
-To: simran singhal <singhalsimran0@gmail.com>
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x244.google.com with SMTP id g2so1264910pge.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 28 Mar 2017 22:45:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=HmfKKE2HcDP+TGXYU9/svOOmd3L/hPDowH8N5Fen7Qs=;
+        b=eRiGbRrmg8bH0teryF0qXzFCV+COZBhoVdoHfn1aPza3j+fZ5IgV4uenTLqTafvybM
+         EnQEVUK4Dysb3jNFfAkGwT/JsPhvY1On4yyn5a2R64ix8o56AimU6Y+EQC8R3hCJuVkK
+         B5MtePgTczzjd6Zi1LGFEBCyzn6bE8BSzYZKhhEjq+isULlwqUqXTKDCvubYnlV51Xtc
+         47cT5oa4Pw2exghnv6i9X4hfFgTIj5LJ544FM8XQR65oQY8ixeadV/xJ2F7WNxLfCJV+
+         WrMu1x2JDTw0YZUeCErtj7b2Jki6QENic3+QUPSdQAa8Xiy/YEjLirAII7Wj21VcO9h1
+         x84g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=HmfKKE2HcDP+TGXYU9/svOOmd3L/hPDowH8N5Fen7Qs=;
+        b=GZ5jJBWn6fNp/WdXRe3vn3DnOUxonIoMeM1k3PXxWJR+4tivCgYwthpvjXsi7G6++A
+         4/OVg6E7FfBw8Wn/lItI9SJ/pLnxlKgfGCL3vW4V7ee4sIeSszTIt4+7LXX7siJhsJiU
+         h3LM2gDiJ8Y90YLADFkwagD+b1jHrOUGt7BaKBlZTC7b49cwii9pClZbJqM0xxv3tPdl
+         zz4bVUdnAnAKGZPWIwODdtNeG1VVqHs5/Xqxa2iK8Hx+8t9Kh/+5VeHVFe9I6EpbINLb
+         +xFzobmdP5XV1xuqFS0QYU8uvu2UcJmXG2ShW+XExXN6fqsMm34Xa7MHp/wQyTtfnZoo
+         V0cQ==
+X-Gm-Message-State: AFeK/H2Hrc7EfoquYJ00UNfMjYLU8alQHef0hrw8tU17Nlt5mLtbXPjIMUuLALyGU4RR5Q==
+X-Received: by 10.99.137.66 with SMTP id v63mr33856668pgd.183.1490766344304;
+        Tue, 28 Mar 2017 22:45:44 -0700 (PDT)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from singhal-Inspiron-5558 ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id i3sm10668003pfk.47.2017.03.28.22.45.43
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 28 Mar 2017 22:45:43 -0700 (PDT)
+Date: Wed, 29 Mar 2017 11:15:40 +0530
+From: simran singhal <singhalsimran0@gmail.com>
+To: pablo@netfilter.org
 Cc: Jozsef Kadlecsik <kadlec@blackhole.kfki.hu>,
 	"David S. Miller" <davem@davemloft.net>,
 	netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
 	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] net: netfilter: Use list_{next/prev}_entry instead of
+Subject: [PATCH] net: netfilter: Use list_{next/prev}_entry instead of
  list_entry
-Message-ID: <20170407153122.GC1466@salvia>
-References: <20170329054540.GA15593@singhal-Inspiron-5558>
+Message-ID: <20170329054540.GA15593@singhal-Inspiron-5558>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20170329054540.GA15593@singhal-Inspiron-5558>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Virus-Scanned: ClamAV using ClamSMTP
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Wed, Mar 29, 2017 at 11:15:40AM +0530, simran singhal wrote:
-> This patch replace list_entry with list_prev_entry as it makes the
-> code more clear to read.
+This patch replace list_entry with list_prev_entry as it makes the
+code more clear to read.
 
-Also applied, thanks.
+Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+---
+ net/netfilter/nf_tables_api.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/net/netfilter/nf_tables_api.c b/net/netfilter/nf_tables_api.c
+index b7645d7..a341eaf 100644
+--- a/net/netfilter/nf_tables_api.c
++++ b/net/netfilter/nf_tables_api.c
+@@ -1895,7 +1895,7 @@ static int nf_tables_fill_rule_info(struct sk_buff *skb, struct net *net,
+ 		goto nla_put_failure;
+ 
+ 	if ((event != NFT_MSG_DELRULE) && (rule->list.prev != &chain->rules)) {
+-		prule = list_entry(rule->list.prev, struct nft_rule, list);
++		prule = list_prev_entry(rule, list);
+ 		if (nla_put_be64(skb, NFTA_RULE_POSITION,
+ 				 cpu_to_be64(prule->handle),
+ 				 NFTA_RULE_PAD))
+-- 
+2.7.4
+
 
