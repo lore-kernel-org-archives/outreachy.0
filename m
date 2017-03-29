@@ -1,52 +1,44 @@
 X-GM-THRID: 6402886167316922368
-X-Received: by 10.99.133.200 with SMTP id u191mr111070pgd.93.1490792242071;
-        Wed, 29 Mar 2017 05:57:22 -0700 (PDT)
+X-Received: by 10.25.193.213 with SMTP id r204mr8308lff.24.1490788107366;
+        Wed, 29 Mar 2017 04:48:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.52.205 with SMTP id t13ls18418676otd.8.gmail; Wed, 29 Mar
- 2017 05:57:21 -0700 (PDT)
-X-Received: by 10.200.45.138 with SMTP id p10mr90852qta.17.1490792241684;
-        Wed, 29 Mar 2017 05:57:21 -0700 (PDT)
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id s67si1028894pfs.4.2017.03.29.05.57.21
+Received: by 10.28.209.137 with SMTP id i131ls2318832wmg.5.gmail; Wed, 29 Mar
+ 2017 04:48:26 -0700 (PDT)
+X-Received: by 10.28.229.70 with SMTP id c67mr12825wmh.4.1490788106402;
+        Wed, 29 Mar 2017 04:48:26 -0700 (PDT)
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id a126si410024wmd.2.2017.03.29.04.48.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 29 Mar 2017 05:57:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Wed, 29 Mar 2017 04:48:26 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (unknown [81.92.22.186])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id E944DB90;
-	Wed, 29 Mar 2017 12:57:20 +0000 (UTC)
-Date: Wed, 29 Mar 2017 14:57:07 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.36,241,1486422000"; 
+   d="scan'208";a="218470495"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 29 Mar 2017 13:48:25 +0200
+Date: Wed, 29 Mar 2017 13:48:24 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] accepted patches
-Message-ID: <20170329125707.GA5403@kroah.com>
-References: <alpine.DEB.2.20.1703291345300.2989@hadrien>
+Subject: accepted patches
+Message-ID: <alpine.DEB.2.20.1703291345300.2989@hadrien>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.20.1703291345300.2989@hadrien>
-User-Agent: Mutt/1.8.0 (2017-02-23)
+Content-Type: text/plain; charset=US-ASCII
 
-On Wed, Mar 29, 2017 at 01:48:24PM +0200, Julia Lawall wrote:
-> Hello,
-> 
-> If you look for your patches on the web interface to Greg's tree, remember
-> to select that you want the staging-testing branch.  If you look at the
-> master branch, you may see very few or none of your patches.
-> 
-> In your application, please indcate where your patches can be found, if
-> they were accepted by someone other than Greg.  This could be URLs for the
-> IIO and Documentation trees, if those are the small tasks you have worked
-> on.
+Hello,
 
-To follow up on this, all staging patches (that were not for iio
-drivers) have been processed by me, so if I have missed anything, please
-resend it as my queue is empty.
+If you look for your patches on the web interface to Greg's tree, remember
+to select that you want the staging-testing branch.  If you look at the
+master branch, you may see very few or none of your patches.
 
-thanks,
+In your application, please indcate where your patches can be found, if
+they were accepted by someone other than Greg.  This could be URLs for the
+IIO and Documentation trees, if those are the small tasks you have worked
+on.
 
-greg k-h
+julia
 
