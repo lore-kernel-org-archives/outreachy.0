@@ -1,110 +1,181 @@
-X-GM-THRID: 6669194328626167808
-X-Received: by 2002:a50:aa70:: with SMTP id p45mr1259844edc.6.1552792808269;
-        Sat, 16 Mar 2019 20:20:08 -0700 (PDT)
+X-GM-THRID: 6402643767138975744
+X-Received: by 10.157.21.3 with SMTP id u3mr974437otf.15.1490823618929;
+        Wed, 29 Mar 2017 14:40:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:453:: with SMTP id e19ls107373eja.9.gmail; Sat, 16
- Mar 2019 20:20:07 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyo1MZtncIaa8wHLtjPTwjUno5qC4nNF2T8OeLOZsxoiHvHsMs1Bc1G87eYVrz09qI9eEu0
-X-Received: by 2002:a17:906:584c:: with SMTP id h12mr1121913ejs.2.1552792807320;
-        Sat, 16 Mar 2019 20:20:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552792807; cv=none;
-        d=google.com; s=arc-20160816;
-        b=e4nV+jwSw4CgEfbeBvknkb/qc0rsdfluezWYM6M8fUsQ4lbQozrjvfQjs1d7j4EUIJ
-         ru7GatoYV4hdh5Kq/U3muVMu1FF6peURI9bw39+Lp55KpfkULjXHubwyN3xlOVOckJcI
-         PAD6XflMg9uCcsWZSgzWSrPqFuT5MWwQCi2v6qq9V8o19eTR7T/hrOOFj44INXAMTee8
-         m48ZnS1SUv+SjjA0JQYhCcooJf8hmNyMar0ZXAuPk/uZ8sQz9kO1I5gBs/8Za9av5u/B
-         OqrZV/bkgVgIX3aBx/LcdP8UnLmhKaVB9/bG6BUdMUKrjn8K0nuQihGWPq9NK6225z2V
-         3zwA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=802ltgax1LCDj8epAVG2dVurVO3MfstKh1jldLXSlEo=;
-        b=nlgzXDxtn4B8dVC3c5hiFXPoaUPzJIq6zcwCrzBawzfwJL7YFpPWcc8grfMw1JjIU4
-         f9fEkhLm72WsD+vXqpIjAzzTVVThYoEwf7kmUpQKxuyGLAJQEc3kSo3SdHn92cG9PgnV
-         EZpHMNbuy+5wXLEpCdpNqDQOmlp+53k4ThePJRBUmPvaxo2XpXmMAFlmIRF1RtHSjaZg
-         Gohq9JzGyWppObXuZm4o6e3s4lp/84xDjU/uKz3IBHRl33lUYLojVNxZ0TtmTWDTac1L
-         xs3FTPomBTufoOdX7P7c0AcY9RbdVqaDIZcBZPw0x4cchOM1Vfv7SmFQWEfqjREbTYIj
-         EHsg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dxycykI8;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::430 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wr1-x430.google.com (mail-wr1-x430.google.com. [2a00:1450:4864:20::430])
-        by gmr-mx.google.com with ESMTPS id n8si102369eda.3.2019.03.16.20.20.07
+Received: by 10.107.26.142 with SMTP id a136ls5933190ioa.12.gmail; Wed, 29 Mar
+ 2017 14:40:17 -0700 (PDT)
+X-Received: by 10.36.41.203 with SMTP id p194mr215779itp.12.1490823617978;
+        Wed, 29 Mar 2017 14:40:17 -0700 (PDT)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from mail-vk0-x242.google.com (mail-vk0-x242.google.com. [2607:f8b0:400c:c05::242])
+        by gmr-mx.google.com with ESMTPS id c124si20895vkh.2.2017.03.29.14.40.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Mar 2019 20:20:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::430 as permitted sender) client-ip=2a00:1450:4864:20::430;
+        Wed, 29 Mar 2017 14:40:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400c:c05::242 as permitted sender) client-ip=2607:f8b0:400c:c05::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dxycykI8;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::430 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x430.google.com with SMTP id p8so13374372wrq.6
-        for <outreachy-kernel@googlegroups.com>; Sat, 16 Mar 2019 20:20:07 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400c:c05::242 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-vk0-x242.google.com with SMTP id z204so4212598vkd.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 29 Mar 2017 14:40:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=802ltgax1LCDj8epAVG2dVurVO3MfstKh1jldLXSlEo=;
-        b=dxycykI8ysC8LrZbU+qlPzkrPtUy56gWGRcAER3ROlFjTgUlTysTzXp6GLtp9adZRK
-         eijU+yR53GfA7uTqqmP6N+m1wNCsTELmgWrbZmcSGSbiGZ4dJ3Jomwmj+oHYTWsHPHJ3
-         mTONF2Syd5R2k2d5BN1SPff0RHrvkykssiAMjfYOJsm81TCzjq7wMZpY/RbwXcs2JTe/
-         O/Xukf3P6VsGLySY7PiGQA9DGezJP0b+O/Zpx/4731XBHyiPEDg0JrBitw9x79jR1YdN
-         WWRYmRQAuHGDUqOS8s433CyykFtpLQLqq0+CPVNxZB8YxLa3Skn7kqklLPcVTAdZ7o+D
-         8kGA==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=S9HC01dDsOvZ6RvoD3yHIBHrY9S7YUJA2aoZGO2ahPo=;
+        b=eDn5d9gFu/T/u+gzPIp6aluMuDrcNYD/H6P6Zga9bGTQkB8rTn2ppEB6kxc8XJskI8
+         6U5BjsM6xvlEjh4UA0yupk+WEHGyVEUKOfMHS05dG7J4mtBbaSiAYJCKFVxCa9Ttl7I0
+         NnJTEssGFCML9UnSyujHDN11DMeLEtInziPQ08p7NwqW6eSr2av2TBfml/dPQ1+fxMnN
+         ixCcvRGINUx4ISlHqM0aGGfPmJBAqsYZav9f4pnfD/mHaA6VZ2uFKkg04GKDV98+HOKP
+         GmrQ3Z6KPT/rw/jL1+JM+83CkkYM8zSULIwW2d5m6VK6C+2WvEkP+OQvOTBfVVR8tWoV
+         +cZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=802ltgax1LCDj8epAVG2dVurVO3MfstKh1jldLXSlEo=;
-        b=gZhG4iaiIqF+Cf01hkxf9ZeFrCLUrHN48dePSs+MhWW/yl2StCEIZlYW7ElIQSj+mO
-         FlLpmt9FPPymzGdtwIMIDyQKQ82qbUgBo/AfU8U62dCW35Rf3XEPqQ4C8AQbqWgjWQDL
-         ui3Q2Pl9g9MGVVwLT73BnsV2hU3qQxLNEbMgzw7L7gnTSSV5VnCphDsOIfKjkZzHUl6J
-         JuuqWQDczZ/Fj0Ynt8vw0+AeVPrB3JKKSLIzGBlc9Tbl2dSvvuX7762Eh69CbbKn7Z2O
-         SURDLHlqNoR60dMjIoiaQHEq79yLHZTwPjYn+8Ke9iAooOPZ1frg5d3NGa79LEqyOwos
-         3/gw==
-X-Gm-Message-State: APjAAAVQZyrG2JAwdObEGbwXxtvmrSXPRf/qLxGs8eKajUSJ+/qOBe/1
-	hVNezUYW8RsVboOO1BnLG2oSx/A=
-X-Received: by 2002:a5d:4802:: with SMTP id l2mr7294117wrq.148.1552792806921;
-        Sat, 16 Mar 2019 20:20:06 -0700 (PDT)
-Return-Path: <jbi.octave@gmail.com>
-Received: from localhost.localdomain (cpc102034-bagu16-2-0-cust471.1-3.cable.virginm.net. [81.97.71.216])
-        by smtp.gmail.com with ESMTPSA id s187sm9687842wms.7.2019.03.16.20.20.06
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 16 Mar 2019 20:20:06 -0700 (PDT)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: speakup: fix printk KERN_LEVEL facility level warning
-Date: Sun, 17 Mar 2019 03:12:36 +0000
-Message-Id: <20190317031236.9361-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.20.1
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=S9HC01dDsOvZ6RvoD3yHIBHrY9S7YUJA2aoZGO2ahPo=;
+        b=Kcw0T7qQ0mfILSFx/xW1QtTb53RIODasue8jSf519n6GKINYamgSV/Coroc/jrFlGX
+         gDITpiw+Vz7iB9ZaC/VQ7dewQbMlfwcnZe3awP/zU9EzHXXOGfqesDbTAwrA969Gutnq
+         giHkaElZ76WG/K5Cq8Op82FzmJ2ZwRzIY1jW5ZcySoYSxlr5lVWJxrVNbV/4yYXm4JOs
+         rsTELby7ITvzL7GHC5sPQwljd8h/HzFaru4Oylli2EAhJUlMA0KJaZ1VF7+iHhQk7GaJ
+         my6mW2L9kA30luR6cZv3tL7ue9wHMsou/tV6fkkVYQKcGPRZjLy/lL1CEU/DgfgcDq5p
+         Ew1w==
+X-Gm-Message-State: AFeK/H129YLoTQEjDcK0OYyGdEGrcr3Ad2NsrpCdMrYQe+CkVsElQlzB31y+sL++RmFT9IyZbaZU4C8qgmeJ6Q==
+X-Received: by 10.159.35.143 with SMTP id 15mr1476896uao.150.1490823617653;
+ Wed, 29 Mar 2017 14:40:17 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Received: by 10.103.87.212 with HTTP; Wed, 29 Mar 2017 14:40:17 -0700 (PDT)
+In-Reply-To: <e9dd2273-f051-0540-28b5-ac8e9bab6b0b@kernel.org>
+References: <20170328200745.GA8033@singhal-Inspiron-5558> <6eb0038d-ac22-99be-2aee-b29284bdadf3@kernel.org>
+ <CALrZqyPEoNOQvaXmLHfk7bmNAdDyosZsjCnGnXuttsAvQsAm3w@mail.gmail.com> <e9dd2273-f051-0540-28b5-ac8e9bab6b0b@kernel.org>
+From: SIMRAN SINGHAL <singhalsimran0@gmail.com>
+Date: Thu, 30 Mar 2017 03:10:17 +0530
+Message-ID: <CALrZqyOh49Boyu_oGP_ehmeb+ZnwaZ_qyBco0THMihFBw0OuUg@mail.gmail.com>
+Subject: Re: [PATCH] iio: adc: ad799x: constify attribute_group structures
+To: Jonathan Cameron <jic23@kernel.org>
+Cc: Lars-Peter Clausen <lars@metafoo.de>, Michael Hennerich <Michael.Hennerich@analog.com>, 
+	Hartmut Knaack <knaack.h@gmx.de>, Peter Meerwald-Stadler <pmeerw@pmeerw.net>, linux-iio@vger.kernel.org, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
 
-Replace printk with pr_debug to solve checkpatch.pl warning:
- " WARNING: printk() should include  KERN_<LEVEL> facility level"
+On Thu, Mar 30, 2017 at 3:06 AM, Jonathan Cameron <jic23@kernel.org> wrote:
+> On 29/03/17 22:28, SIMRAN SINGHAL wrote:
+>> On Thu, Mar 30, 2017 at 2:43 AM, Jonathan Cameron <jic23@kernel.org> wrote:
+>>> On 28/03/17 21:07, simran singhal wrote:
+>>>> Check for attribute_group structures that are only stored in the
+>>>> event_attrs filed of iio_info structure. As the event_attrs field of
+>>>> iio_info structures is constant, so these attribute_group structures can
+>>>> also be declared constant.
+>>>> Done using coccinelle:
+>>>>
+>>>> @r1 disable optional_qualifier @
+>>>> identifier i;
+>>>> position p;
+>>>> @@
+>>>> static struct attribute_group i@p = {...};
+>>>>
+>>>> @ok1@
+>>>> identifier r1.i;
+>>>> position p;
+>>>> struct iio_info x;
+>>>> @@
+>>>> x.event_attrs=&i@p;
+>>>>
+>>>> @bad@
+>>>> position p!={r1.p,ok1.p};
+>>>> identifier r1.i;
+>>>> @@
+>>>> i@p
+>>>>
+>>>> @depends on !bad disable optional_qualifier@
+>>>> identifier r1.i;
+>>>> @@
+>>>> static
+>>>> +const
+>>>> struct attribute_group i={...};
+>>>>
+>>>> @depends on !bad disable optional_qualifier@
+>>>> identifier r1.i;
+>>>> @@
+>>>> +const
+>>>> struct attribute_group i;
+>>>>
+>>>> File size before:
+>>>>    text    data     bss     dec     hex filename
+>>>>   26051     464       0   26515    6793 drivers/iio/adc/ad799x.o
+>>>>
+>>>> File size after:
+>>>>    text          data     bss     dec     hex filename
+>>>>   26115           400       0   26515    6793 drivers/iio/adc/ad799x.o
+>>>>
+>>>> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
+>>> Applied to the togreg branch of iio.git and pushed out as testing
+>>> for the autobuilders to play with it.
+>>>
+>>
+>> But my tree is up-to-date and I also test it before sending.
+> this is standard practice.  I build as well before pushing out, but
+> I only do one or two configurations of one or two architectures.
+> The autobuilders are a set of large servers that Intel run as a service
+> to the kernel community.
+>
+> Typically they'll run a few hundred builds for dozens of processor architectures
+> + a much more extensive set of static tests than most kernel developers
+> are set up to run.  Here things will almost certainly be fine, but
+> I've been wrong before!
+>
+> The only thing is I tend to push out in the evening then go to bed before
+> the results come in, then might not get to it for a day or so to push out
+> as togreg.  This tree I am happy to rebase - that is I can drop or fixup
+> patches with issues.  The togreg branch is the one that people often
+> base new work on, so if I change the tree under them all sorts of nasty
+> merge issues can occur.
+>
+> This is why most trees that ultimately go upstream are non rebasing -
+> but a lot of people now have a testing branch which is deliberately
+> unofficial - people shouldn't use it to base their trees on as it
+> is temporary for build test purposes.
+>
+> Greg has one as well (I assume this is what it is for), he just tends
+> to be quicker about dealing with whatever comes up than I am so
+> doesn't explicitly mention it when he takes patches.
+>
+> https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/?h=staging-testing
+>
+> So it's nothing to worry about. I just put that note in so people
+> don't wonder why their patch isn't immediately present in the public
+> togreg branch of iio.git.
+>
 
-Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
----
- drivers/staging/speakup/kobjects.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Thanks for the explaination.
 
-diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
-index 11c704b27c3c..2eb5af3debb3 100644
---- a/drivers/staging/speakup/kobjects.c
-+++ b/drivers/staging/speakup/kobjects.c
-@@ -99,7 +99,7 @@ static void report_char_chartab_status(int reset, int received, int used,
- 			snprintf(buf + (len - 1), sizeof(buf) - (len - 1),
- 				 " with %d reject%s\n",
- 				 rejected, rejected > 1 ? "s" : "");
--		printk(buf);
-+		pr_debug(buf);
- 	}
- }
- 
--- 
-2.20.1
+Simran
 
+> Jonathan
+>>
+>>> Thanks,
+>>>
+>>> Jonathan
+>>>> ---
+>>>>  drivers/iio/adc/ad799x.c | 2 +-
+>>>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>>>
+>>>> diff --git a/drivers/iio/adc/ad799x.c b/drivers/iio/adc/ad799x.c
+>>>> index 9704090..22426ae 100644
+>>>> --- a/drivers/iio/adc/ad799x.c
+>>>> +++ b/drivers/iio/adc/ad799x.c
+>>>> @@ -520,7 +520,7 @@ static struct attribute *ad799x_event_attributes[] = {
+>>>>       NULL,
+>>>>  };
+>>>>
+>>>> -static struct attribute_group ad799x_event_attrs_group = {
+>>>> +static const struct attribute_group ad799x_event_attrs_group = {
+>>>>       .attrs = ad799x_event_attributes,
+>>>>  };
+>>>>
+>>>>
+>>>
+>
 
