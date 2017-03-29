@@ -1,91 +1,85 @@
-X-GM-THRID: 6402618675117948928
-X-Received: by 10.25.104.21 with SMTP id d21mr3911791lfc.31.1490725827101;
-        Tue, 28 Mar 2017 11:30:27 -0700 (PDT)
+X-GM-THRID: 6403070948028710912
+X-Received: by 10.157.39.97 with SMTP id r88mr1223116ota.151.1490831130219;
+        Wed, 29 Mar 2017 16:45:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.219.12 with SMTP id s12ls1482099lfg.21.gmail; Tue, 28 Mar
- 2017 11:30:25 -0700 (PDT)
-X-Received: by 10.46.20.16 with SMTP id u16mr728709ljd.23.1490725825628;
-        Tue, 28 Mar 2017 11:30:25 -0700 (PDT)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wr0-x244.google.com (mail-wr0-x244.google.com. [2a00:1450:400c:c0c::244])
-        by gmr-mx.google.com with ESMTPS id x188si467166wmx.0.2017.03.28.11.30.25
+Received: by 10.157.15.38 with SMTP id 35ls3283248ott.19.gmail; Wed, 29 Mar
+ 2017 16:45:29 -0700 (PDT)
+X-Received: by 10.200.48.172 with SMTP id v41mr1126337qta.86.1490831129832;
+        Wed, 29 Mar 2017 16:45:29 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id a17si1203316itd.1.2017.03.29.16.45.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Mar 2017 11:30:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) client-ip=2a00:1450:400c:c0c::244;
+        Wed, 29 Mar 2017 16:45:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x244.google.com with SMTP id p52so21192862wrc.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 28 Mar 2017 11:30:25 -0700 (PDT)
+Received: by mail-pg0-x244.google.com with SMTP id 79so5533568pgf.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 29 Mar 2017 16:45:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=cvSWJS3uMjC4gU9Qs6sI5o22UST5u8UbKfOOFyYLnuU=;
-        b=n+HrPx6DOyIyWWCetmzBdVWNoJ83ktBaUmCfq0clc32nfSVRr1kDNRfWJQQY10WWdZ
-         IaKVOVaX72kWZR1kXKoYHqQMxtwU0otvHv4mter9I1v672na/oFtQ6QOZs6Nfj1Pg4Uj
-         z2jm0zRG8qioGYRJTU05XOhdsiC+NTp2U/TX8XpiAgRuI+DIxEMezhM+nlUyReVKNsZY
-         cebhM1qay9OdxhzlhUXBUVy+Uij0xSnIPLuD3l/7JvY8pDV+Og88eUIqrg7NnRmXNGAG
-         8sKgyeyt70h8/zQG/4qF2e6gGBYlubaHjbtTVPavo1CkFHJZJDvVokQ1nb2wkLuojQJb
-         ctMA==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=cG98rK54QK6TGsriE/wn1aPGsaJcLIAAmAtN+KmRlv8=;
+        b=QvnER3BbCN/76Yfkzf7qWCSj/i9+WIBhHu1eCJyaXbZlRh+vc3NLh5i+x4cte/BD9U
+         9n8In9DA1hLivuwFHO25tQFyv6G4UkxGQeRiGHzFb8hO2OLIGx0DUzLxiuXS6WVyvZQj
+         5zZSj1lBepYZDjEbkaPi3hVpccSM+0VC37oglLFYxyr26VnmYqIYvvguDIrL3+ApZqo+
+         cHJmOghBP40d+OEWVSQAs+KUL/2HNd3GDQtLkSfA+cJE8voT0Wk9+d3gNyxXU/IoRI33
+         cc+2AToQKtSPLDWhKQnVTlz5/qw3QYXVqDyxB9WpxOgK0BULtL3FpolIXXA2klVG7Zhy
+         lxKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=cvSWJS3uMjC4gU9Qs6sI5o22UST5u8UbKfOOFyYLnuU=;
-        b=Ntacc5N3buJbYTM+aA9XS1qQM8Gx8+t6q3LEkcm8318Fzn5/0fe3eUOwkwF7ONRCYN
-         UoPuBb33gvlecknND+ZlhSBjcOZTGHeQfEc+mo/vsVj/y16y4+3KKBLxuu8yVR+ZDjmu
-         qIYG0EaUGRh8SEhtcC0kdBDWu+O7gpzFOijpp3gIfVLf6CXESj67nxFY4Rxz3wDFWhyQ
-         cbgfcYV1q54jxEBLB3Fb3GOmBV9t1efhzN0BO2y5fO2feeTR8acCRheWVMohxcncrnD2
-         DsishyngpKiqIAGDttmFA/ce0qIk2egBLvKVlKtFBrzWaA+IvZhg7ViK0Rc/YqD1/DGV
-         DJnw==
-X-Gm-Message-State: AFeK/H2YJ1wYtwoF4GWacK6d2fegCEpdAK6yq/gS2LxeDQpnSvTtuwvAnXSpdQx9m1/pgQ==
-X-Received: by 10.223.174.164 with SMTP id y33mr26856084wrc.166.1490725825362;
-        Tue, 28 Mar 2017 11:30:25 -0700 (PDT)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([2a02:2f0b:8160:a9a:a95b:ae25:abef:f637])
-        by smtp.gmail.com with ESMTPSA id q188sm4669039wmd.3.2017.03.28.11.30.24
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=cG98rK54QK6TGsriE/wn1aPGsaJcLIAAmAtN+KmRlv8=;
+        b=No5hxBnZ6XydYy0jDhPDPgUE9EIWjWbI69se4gGESa65jT1/lFNYHjh189Y4Uvyqis
+         z+eo9XQh2kJ7vMLlSpK1q9hE3VBRroOYl1xZnoZ5YKLwuiJdyRHjYdJV0py0KoIhQD0Z
+         75MCeJysj5LgJEu0pp7Fx0yrLyzncMNLW0rtjDradhnkkkhkNO0H47etyxVCZG+6Q8kq
+         2kLXGhrzJxFQav0hTS6n1GK+1Cz0NdSEUsJfh4hgnrYgEtWsZ5c75riowXB002lKzrH6
+         KQBjlGqFax8MPC7zHZJf6nJMxzyxalOpd7f2jViEHaFttaWGamQ5GIiAIl3vs4s4lyRo
+         eG9Q==
+X-Gm-Message-State: AFeK/H0m95u1/viEcZGDt7XP/IdDoLHzSn6ITdaVaTldIxiU17HZU8z+k3Xh7JEO1v9FVw==
+X-Received: by 10.98.214.4 with SMTP id r4mr3074195pfg.185.1490831128970;
+        Wed, 29 Mar 2017 16:45:28 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id z189sm367819pgb.3.2017.03.29.16.45.27
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 28 Mar 2017 11:30:24 -0700 (PDT)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: lgirdwood@gmail.com,
-	broonie@kernel.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	corbet@lwn.net
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH] Regulator: core.c: Fix kerneldoc comments
-Date: Tue, 28 Mar 2017 21:30:21 +0300
-Message-Id: <20170328183021.2683-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+        Wed, 29 Mar 2017 16:45:27 -0700 (PDT)
+Date: Thu, 30 Mar 2017 05:15:24 +0530
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+To: netfilter-devel@vger.kernel.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH] iptables: extensions: Add blank line after declarations.
+Message-ID: <20170329234524.GA23875@arushi-HP-Pavilion-Notebook>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Remove the description for the non-existing 'ret' to fix the build warning:
-./drivers/regulator/core.c:1467: warning:
-Excess function parameter 'ret' description in 'regulator_dev_lookup'.
-The description found for the return value is: @ret: 0 on success, -ENODEV
-if lookup fails permanently, -EPROBE_DEFER if lookup could succeed in the future.
+Add blank line after declaration as reported by checkpatch.pl.
 
-
-Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
+Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
 ---
- drivers/regulator/core.c | 2 --
- 1 file changed, 2 deletions(-)
+ extensions/libip6t_mh.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/regulator/core.c b/drivers/regulator/core.c
-index 53d4fc7..219b665 100644
---- a/drivers/regulator/core.c
-+++ b/drivers/regulator/core.c
-@@ -1451,8 +1451,6 @@ static struct regulator_dev *regulator_lookup_by_name(const char *name)
-  * regulator_dev_lookup - lookup a regulator device.
-  * @dev: device for regulator "consumer".
-  * @supply: Supply name or regulator ID.
-- * @ret: 0 on success, -ENODEV if lookup fails permanently, -EPROBE_DEFER if
-- * lookup could succeed in the future.
-  *
-  * If successful, returns a struct regulator_dev that corresponds to the name
-  * @supply and with the embedded struct device refcount incremented by one.
+diff --git a/extensions/libip6t_mh.c b/extensions/libip6t_mh.c
+index f4c0fd9..ee17182 100644
+--- a/extensions/libip6t_mh.c
++++ b/extensions/libip6t_mh.c
+@@ -49,6 +49,7 @@ static const struct mh_name mh_names[] = {
+ static void print_types_all(void)
+ {
+ 	unsigned int i;
++
+ 	printf("Valid MH types:");
+ 
+ 	for (i = 0; i < ARRAY_SIZE(mh_names); ++i) {
 -- 
-2.9.3
+2.11.0
 
 
