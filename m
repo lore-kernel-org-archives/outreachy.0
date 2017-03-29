@@ -1,53 +1,53 @@
 X-GM-THRID: 6402897717905850368
-X-Received: by 10.157.3.9 with SMTP id 9mr82247otv.100.1490790809802;
-        Wed, 29 Mar 2017 05:33:29 -0700 (PDT)
+X-Received: by 10.99.52.78 with SMTP id b75mr87287pga.118.1490790807228;
+        Wed, 29 Mar 2017 05:33:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.127.209 with SMTP id r200ls3152506itc.20.gmail; Wed, 29 Mar
- 2017 05:33:29 -0700 (PDT)
-X-Received: by 10.99.132.66 with SMTP id k63mr89330pgd.10.1490790809219;
-        Wed, 29 Mar 2017 05:33:29 -0700 (PDT)
+Received: by 10.107.47.231 with SMTP id v100ls5688799iov.19.gmail; Wed, 29 Mar
+ 2017 05:33:26 -0700 (PDT)
+X-Received: by 10.99.36.3 with SMTP id k3mr79400pgk.25.1490790806440;
+        Wed, 29 Mar 2017 05:33:26 -0700 (PDT)
 Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id a3si1001184pfb.2.2017.03.29.05.33.29
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id y203si1191652pfb.0.2017.03.29.05.33.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 29 Mar 2017 05:33:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Wed, 29 Mar 2017 05:33:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id o123so2553305pga.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 29 Mar 2017 05:33:29 -0700 (PDT)
+Received: by mail-pf0-x241.google.com with SMTP id p189so1747375pfp.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 29 Mar 2017 05:33:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=d0QfT6x2PoTuiG93ZH5215F/8O8O1B2wmqLVuExX1bM=;
-        b=O/IK6c40M/ROIHUOYZDpsEilkK8H6LG6Hy+GUYjbda8ps7Ne5SfkV4EjrjPKWfMhOE
-         RsvaoPzzCE4oAqXg29iSvhWtDRvNuhJiDi8Ig0GqjYKQV2nzK7lcn66Kq3srmVQjVXSD
-         LtIffcV8BJF/sfz048Jv3C6gq674OkZS74YSFQnB5r6hL9jx+QjZ1eKe9aEWOai5rGtn
-         +D1Zx5XJ/KHXsRQnnHzp49LVoyYcWnbx2AJp1pHCWqjjSeG0CN1WE/NHKNgCDsD5PygS
-         sHy4W9YXaB8aEaZB8mKNkU5MQhtgFczJgKe6sPhnAeBvN6p1x2jM+mV111O0+0IGmMdw
-         1HOw==
+        bh=ElqzClVslQtjfy1XLvn0PsMS1XF5RA73OQMSnsJBU90=;
+        b=OQsuptIRonj9wmmgskGjzjb4lo0gmEvbU5iKVy7xHjNMLbBIKz8bzbgP5YXgQMyWuC
+         Ek146L4nyct3CQgCqbAo2kamfhsrLFQl9xbvWbIexvCs5EJNY6GCEqWyNSiZRaIwRiv0
+         R+hfiBZG6SBN/snuEOLcxqmADfO6crV/M3ZwCAkTadfcEeE35se0oa03W0+cGHQGqWWm
+         HbrPXymahPYZ4Pe2hSofZM7j0Bi9CQgLpufOgMD9iXA4bWtG51bQ6GE+Pzfwtn+x5hJq
+         XWeTmY7H86vCiMU6P0Y+0/mN00dVFB/yXsmYY1oCCob4E7v6RYmOA2i/A7gwgVCgtWit
+         cyIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=d0QfT6x2PoTuiG93ZH5215F/8O8O1B2wmqLVuExX1bM=;
-        b=TvXg4iDPh0PP395VpCOaBNgTtv98zOITNPSYz+FMFNoq/E0mwg9vs+c18kmQORcW6l
-         YbiWsgCZy8EAVVw05gLSp7fj6KkacpMXBT/a5LMzf35vcdX2ssvePTSAr/bwX5GdyeEd
-         RzwKonliLRIChqnopK75ND5X5jRhWtyz1DpQgNSKLcDV8K+xhY5N+/35EjbicFN89StF
-         DR3rDtJKAXZOC/RFUvv5PFN/A/IGCZ9kKYG6lFqWHMln8MAfDZJifoJOpZIz3ihs3xaL
-         fDL9kzgFpMxmSSlWB2jCmOsAOnVeV9pxbeOhuD+Ct3VgXwQtqWoOGVELDtGsQr7eRSUq
-         ni3A==
-X-Gm-Message-State: AFeK/H0fqZC/vDZP9i3Gn7fOdWCo6BjbQ25wLvxBhkIT5DnSvQ6acWLxBrAqcA/kX5ivQg==
-X-Received: by 10.98.142.1 with SMTP id k1mr283967pfe.98.1490790808946;
-        Wed, 29 Mar 2017 05:33:28 -0700 (PDT)
+        bh=ElqzClVslQtjfy1XLvn0PsMS1XF5RA73OQMSnsJBU90=;
+        b=lmg4RsYSOeyZD8UjNtYXH8DDja9FgM8Wk3r+vcFnTRqNjC4Xy2CvuqNcvRzDS8bwLU
+         edHJvEnA4raWY76yZ3+TVhi7fPUzVnXQ/2SS2Bd1VWcp0annTH3xSKyQWHoTqX5S4CMq
+         JeO7YQWB3V0CLBdc4a3gJUx58kI/E1BzGj1C4hnv3CrrG2o9UasTT/g7StCiaqslIgS4
+         oCFqCWhua/hUpIeRltDgB+Xg0TMMVxE4fUSUtXq/nBhEDjLwYibWIHCCFQ/hf33rb3M9
+         L8j3oE53cFm+xAZTktXxkFO73bmSZrYQfsQuFt+Q1MocJoU3Hkp3NC7fCrPtawVON/CJ
+         ul+g==
+X-Gm-Message-State: AFeK/H34ecI8CU8QgHOeyItiUy2f2d2VFsoygIcGdKcaC82+NLm9Q6AdWefJwxQcK7zO1Q==
+X-Received: by 10.84.163.75 with SMTP id n11mr311841plg.186.1490790805979;
+        Wed, 29 Mar 2017 05:33:25 -0700 (PDT)
 Return-Path: <singhalsimran0@gmail.com>
 Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id j62sm13417382pgc.54.2017.03.29.05.33.27
+        by smtp.gmail.com with ESMTPSA id x15sm13504509pfk.68.2017.03.29.05.33.25
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 29 Mar 2017 05:33:28 -0700 (PDT)
+        Wed, 29 Mar 2017 05:33:25 -0700 (PDT)
 From: simran singhal <singhalsimran0@gmail.com>
 To: jic23@kernel.org
 Cc: knaack.h@gmx.de,
@@ -56,9 +56,9 @@ Cc: knaack.h@gmx.de,
 	linux-iio@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCH 4/4] iio: light: si1145: Replace ternary operator with min macro
-Date: Wed, 29 Mar 2017 18:03:11 +0530
-Message-Id: <1490790791-5694-5-git-send-email-singhalsimran0@gmail.com>
+Subject: [PATCH 3/4] iio: imu: st_lsm6dsx: Replace ternary operator with min macro
+Date: Wed, 29 Mar 2017 18:03:10 +0530
+Message-Id: <1490790791-5694-4-git-send-email-singhalsimran0@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1490790791-5694-1-git-send-email-singhalsimran0@gmail.com>
 References: <1490790791-5694-1-git-send-email-singhalsimran0@gmail.com>
@@ -68,22 +68,22 @@ readability.
 
 Signed-off-by: simran singhal <singhalsimran0@gmail.com>
 ---
- drivers/iio/light/si1145.c | 2 +-
+ drivers/iio/imu/st_lsm6dsx/st_lsm6dsx_buffer.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/iio/light/si1145.c b/drivers/iio/light/si1145.c
-index 096034c..e7ad6fb 100644
---- a/drivers/iio/light/si1145.c
-+++ b/drivers/iio/light/si1145.c
-@@ -557,7 +557,7 @@ static int si1145_set_chlist(struct iio_dev *indio_dev, unsigned long scan_mask)
- 	data->scan_mask = scan_mask;
- 	ret = si1145_param_set(data, SI1145_PARAM_CHLIST, reg);
+diff --git a/drivers/iio/imu/st_lsm6dsx/st_lsm6dsx_buffer.c b/drivers/iio/imu/st_lsm6dsx/st_lsm6dsx_buffer.c
+index e959825..e11653d 100644
+--- a/drivers/iio/imu/st_lsm6dsx/st_lsm6dsx_buffer.c
++++ b/drivers/iio/imu/st_lsm6dsx/st_lsm6dsx_buffer.c
+@@ -203,7 +203,7 @@ int st_lsm6dsx_update_watermark(struct st_lsm6dsx_sensor *sensor, u16 watermark)
+ out:
+ 	mutex_unlock(&hw->lock);
  
--	return ret < 0 ? ret : 0;
-+	return min(ret, 0);
+-	return err < 0 ? err : 0;
++	return min(err, 0);
  }
  
- static int si1145_measure(struct iio_dev *indio_dev,
+ /**
 -- 
 2.7.4
 
