@@ -1,121 +1,127 @@
-X-GM-THRID: 6670905589378318336
-X-Received: by 2002:a0c:d849:: with SMTP id i9mr4214471qvj.207.1553191242816;
-        Thu, 21 Mar 2019 11:00:42 -0700 (PDT)
+X-GM-THRID: 6403286908610281472
+X-Received: by 10.107.134.214 with SMTP id q83mr109223ioi.35.1490881412869;
+        Thu, 30 Mar 2017 06:43:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:444:: with SMTP id 65ls2835816qke.1.gmail; Thu, 21 Mar
- 2019 11:00:42 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwebPnbjRvuv3d7VUwSePiEJ9qJntzHE35qDB5shijOPPGV9/O88YOcctU2EspBNKiFb/E8
-X-Received: by 2002:a37:bd81:: with SMTP id n123mr3896938qkf.249.1553191238909;
-        Thu, 21 Mar 2019 11:00:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553191238; cv=none;
-        d=google.com; s=arc-20160816;
-        b=EiEmMfOjB5Aw6mH+d44612JSA64POY/uar+KzURtuY4Ap3fZfp6hLbWYblZWa4WVnM
-         RRHDZoH4eRVtbgbJOh/A3IIPwJzIf85X9ZKQii6i+8OP2Oik2A9XSMlfl9lGwgJeIcMN
-         q9gkYxd/D0v5NnsKXcVIfHF3FOh+3RLkToKRwqDHs9UwUSvgaqiKsB2hxSMzuWJVr0ik
-         RXRXMC1fdOaZz9I7jOX9AMnye1wVH28GibaVtVB9MANW3aIOQmylJ2QZhiKc8Ud8tE8b
-         I6xUh70cq74VvfDDmJsiNEZNxo9BLw/CXxdBBAStuVnXf2t/s58RUzujeTWt0JzekBmJ
-         Ym4g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=dLh9UDNU3XNyGXYt/bYGphSaduiTgcX5Q49Zo91GsOo=;
-        b=kWhX3O9VgBCEpw9ze+KnW0nfNJSLZeursgVNQrDPnlJtTDVcL/3R/JtQOx1U5B8uAM
-         QfoLhxK4ASUuWn+thJQ/3yHHMI5F91KNgIC0NY0Qim7MLP5NM74O3RVHBSiBcDSaMrtw
-         EJDJD5jQ3h1mQdwv45u6UDhdBKw1yiAfSTNyYwcUQUqIYkaG2BlWidZYjP93DTwK8ZSK
-         pz4I2ZSQ1DziOEvoWcshUwOb5kx0nE1BhuoAR6OuA1eGNbjJopAaeasOCiLCkV3Ql2BV
-         EjKPfAh+OY2u6YVen3BofA6n/ab/EU8JnZp4paoGtAAzAnB02Ux0Oyuiu89R2YaqHFVx
-         /4DQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VWKLwjfr;
-       spf=pass (google.com: domain of anushkacharu9@gmail.com designates 2607:f8b0:4864:20::534 as permitted sender) smtp.mailfrom=anushkacharu9@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <anushkacharu9@gmail.com>
-Received: from mail-pg1-x534.google.com (mail-pg1-x534.google.com. [2607:f8b0:4864:20::534])
-        by gmr-mx.google.com with ESMTPS id h186si496933qkc.1.2019.03.21.11.00.38
+Received: by 10.157.13.116 with SMTP id 107ls31507oti.34.gmail; Thu, 30 Mar
+ 2017 06:43:32 -0700 (PDT)
+X-Received: by 10.157.13.169 with SMTP id 38mr2258273ots.69.1490881412509;
+        Thu, 30 Mar 2017 06:43:32 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id y203si334905pfb.0.2017.03.30.06.43.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 11:00:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anushkacharu9@gmail.com designates 2607:f8b0:4864:20::534 as permitted sender) client-ip=2607:f8b0:4864:20::534;
+        Thu, 30 Mar 2017 06:43:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VWKLwjfr;
-       spf=pass (google.com: domain of anushkacharu9@gmail.com designates 2607:f8b0:4864:20::534 as permitted sender) smtp.mailfrom=anushkacharu9@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x534.google.com with SMTP id u9so4705556pgo.7
-        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 11:00:38 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x244.google.com with SMTP id 79so10239777pgf.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 30 Mar 2017 06:43:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=dLh9UDNU3XNyGXYt/bYGphSaduiTgcX5Q49Zo91GsOo=;
-        b=VWKLwjfr+sbckHgOmATRwlrWeTbTElA92pq8rAtdsVDPcQwT9zPNjSApP/SBRXW108
-         u02C+Z3OhUwWm+lTNz4/JIslX0hoUsYAK2aAlnv66+tpUnrL1o75V9OFOH7D6Om7yOLn
-         Yf+alxa75rpkJaGLjNsRkwr/GGgvAiWB3BYDrkHn+RSNAELYHQFjD06PkZ72cAHehOaZ
-         tuAGvidaJ5IiQ8omjA7rPyVnCYPOPX4pFAHDX1PDHzgNs7x72rsAg63oJToV9VhJOwX9
-         C2B3QOeVCiozoDQqvlFowVtG4MG9uiXbMiw7DpjBRbQ2Hb0GvpwxWGPNVQtpSH8xYnfx
-         8ApA==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=HhHI842kOcxmsXXyocEvCxzu7xToIrUpW+4/PUrCuUs=;
+        b=TKaKUuBcwyWNVNUkTx5+XXnjjt+2NNv3lUOBfes0gvGPd3KUWk4+CJs1Ef1C5UKyjm
+         BOmGyH8LRV86sHNbJ5WCpWSJGRPqxIhNUzNepZXVb97tU8ekrCCBLwr/G2N+HAmwnhr4
+         ThloXND9y7u+cLOc92AKo1hHcpdmsKMWg6gzYkB7zZBToM/l+Bl8dT87svNAPOHyw0gr
+         O+11fjVKi/05QodZXmGo2ZUdwB3llz5yfXqSZ2wCxapGcHUC1okyPPwm8e8uDcXotL0Q
+         TX6VtCbT+9qJQzT7yRXrmSORkUNod6+2gDfVYk3vTLr2miJUeMne55aVdx/dmHHH3a28
+         3m9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=dLh9UDNU3XNyGXYt/bYGphSaduiTgcX5Q49Zo91GsOo=;
-        b=oMwSixjewuXz45wAObTXUK0+TLvSrZcitymYD4yvgmPYbQwxlxQjIIFVJFGlYTPC6p
-         036pPgaR6s3d1x05hSr4YY7Udeczn9YgCSzUYF2SpbtxxaLkfMAmW/+53g/fVwCDKoEa
-         8CKeUDC9K5m//66lGV1audnrJCG73O41D6uzL4ggtLPR8lSJkh50SqYeQJwNnKLj++82
-         1VHjACMsKWjgAP3O4XiRBXf9U/uur0PCWBTbzClUyOhs3t4+/pc2phZyAKZ5hj3KaFSp
-         NNHHQLr1WSlIo19JX1gB/45raxTXOnw7Uyoia/YqPerxLDc04HiGgmmqJZxz2u9yhIDf
-         uH6Q==
-X-Gm-Message-State: APjAAAUOFV4D7s+Bex09LEi8AXbma3Gk8SYWQ1FGmGHHWqz1T9rgyokS
-	ourmQ3Qm5Cf7j+UkN37onPA=
-X-Received: by 2002:a17:902:29ca:: with SMTP id h68mr4878129plb.297.1553191238351;
-        Thu, 21 Mar 2019 11:00:38 -0700 (PDT)
-Return-Path: <anushkacharu9@gmail.com>
-Received: from localhost.localdomain ([42.110.161.175])
-        by smtp.gmail.com with ESMTPSA id z128sm8948177pfz.107.2019.03.21.11.00.32
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 11:00:36 -0700 (PDT)
-From: anushkacharu9@gmail.com
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Anushka Shukla <anushkacharu9@gmail.com>
-Subject: [PATCH] staging: rtl8192e: fix line over 80 caharacters
-Date: Thu, 21 Mar 2019 23:29:55 +0530
-Message-Id: <20190321175955.4921-1-anushkacharu9@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <anushkacharu9@gmail.com>
-References: <anushkacharu9@gmail.com>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=HhHI842kOcxmsXXyocEvCxzu7xToIrUpW+4/PUrCuUs=;
+        b=e3ykYTQXUchH17TZc8HhVMiL4aYaHmBEMmGJ/3ep4UmDtjAUyi3K8lIqGjZdZi4hbx
+         XJMMq/dB7tg1U7jQZOf8ld9/V+XErLoABQ74qc8EJu4oKHDVh0yc3CvuERdMO5QvSxy1
+         Ket+ivhTSCqFnnMow5lMnx3joe3zOX0logeVQX+RVdp+yqnq3h66CgCyZ/8THpdxgKyp
+         FeWHxejWJEFXS6AdAoDOmcfbrp9DOJLKltjQxiUHKMJC0G4UlEh3s4XjjqexajirBc/N
+         pR1CPlasgKMD+P8EcSVvfZ5pecxLEduBYCHLCshL1IWpRv/pjV3XApTrrd4ncgVyReuY
+         q0Aw==
+X-Gm-Message-State: AFeK/H0iBPAPp0PmfBQWRUC6BIsW0zQR+e/pizcHhoVKnXlqzHregJZdToSAlMSccyTlWw==
+X-Received: by 10.84.210.228 with SMTP id a91mr7222658pli.120.1490881411837;
+        Thu, 30 Mar 2017 06:43:31 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id r8sm4849398pfk.80.2017.03.30.06.43.30
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 30 Mar 2017 06:43:30 -0700 (PDT)
+Date: Thu, 30 Mar 2017 19:13:27 +0530
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+To: netfilter-devel@vger.kernel.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH v2] iptables: extensions: Remove assignments in if condition.
+Message-ID: <20170330134326.GA30578@arushi-HP-Pavilion-Notebook>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-From: Anushka Shukla <anushkacharu9@gmail.com>
+Remove assignments in if condition as reported by checkpatch.pl.
 
- -Fix line over 80 character issue in dot11d.c file 
- -Define a new variable tri_first_channel of u8  data type. 
- -Assign triple->first_channel as tri_first_channel
-
-Signed-off-by: Anushka Shukla <anushkacharu9@gmail.com>
+Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
 ---
- drivers/staging/rtl8192e/dot11d.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+change in v2
+ *remove the error.
 
-diff --git a/drivers/staging/rtl8192e/dot11d.c b/drivers/staging/rtl8192e/dot11d.c
-index 68f53013cb95..62f34b38be21 100644
---- a/drivers/staging/rtl8192e/dot11d.c
-+++ b/drivers/staging/rtl8192e/dot11d.c
-@@ -140,12 +140,13 @@ void dot11d_update_country(struct rtllib_device *dev, u8 *address,
- 				    __func__);
- 			return;
- 		}
-+		u8 tri_first_channel = triple->first_channel;
+ extensions/libebt_ip.c          | 9 ++++++---
+ extensions/libip6t_ipv6header.c | 5 +++--
+ 2 files changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/extensions/libebt_ip.c b/extensions/libebt_ip.c
+index 4ca63e9..6b301e2 100644
+--- a/extensions/libebt_ip.c
++++ b/extensions/libebt_ip.c
+@@ -70,7 +70,8 @@ parse_port_range(const char *protocol, const char *portstring, uint16_t *ports)
+ 	char *cp;
  
- 		for (j = 0; j < triple->num_channels; j++) {
--			dot11d_info->channel_map[triple->first_channel + j] = 1;
--			dot11d_info->max_tx_power_list[triple->first_channel + j] =
-+			dot11d_info->channel_map[tri_first_channel + j] = 1;
-+			dot11d_info->max_tx_power_list[tri_first_channel + j] =
- 						 triple->max_tx_power;
--			max_channel_number = triple->first_channel + j;
-+			max_channel_number = tri_first_channel + j;
- 		}
+ 	buffer = strdup(portstring);
+-	if ((cp = strchr(buffer, ':')) == NULL)
++	cp = strchr(buffer, ':');
++	if (!cp)
+ 		ports[0] = ports[1] = xtables_parse_port(buffer, NULL);
+ 	else {
+ 		*cp = '\0';
+@@ -98,7 +99,8 @@ static int undot_ip(char *ip, unsigned char *ip2)
  
- 		triple = (struct chnl_txpow_triple *)((u8 *)triple + 3);
+ 	p = buf;
+ 	for (i = 0; i < 3; i++) {
+-		if ((q = strchr(p, '.')) == NULL)
++		q = strchr(p, '.');
++		if (!q)
+ 			return -1;
+ 		*q = '\0';
+ 		onebyte = strtol(p, &end, 10);
+@@ -143,7 +145,8 @@ static void ebt_parse_ip_address(char *address, uint32_t *addr, uint32_t *msk)
+ 	char *p;
+ 
+ 	/* first the mask */
+-	if ((p = strrchr(address, '/')) != NULL) {
++	p = strrchr(address, '/');
++	if (p) {
+ 		*p = '\0';
+ 		if (ip_mask(p + 1, (unsigned char *)msk)) {
+ 			xtables_error(PARAMETER_PROBLEM,
+diff --git a/extensions/libip6t_ipv6header.c b/extensions/libip6t_ipv6header.c
+index 6f03087..887d225 100644
+--- a/extensions/libip6t_ipv6header.c
++++ b/extensions/libip6t_ipv6header.c
+@@ -85,8 +85,9 @@ name_to_proto(const char *s)
+         unsigned int proto=0;
+ 	const struct protoent *pent;
+ 
+-        if ((pent = getprotobyname(s)))
+-        	proto = pent->p_proto;
++	pent = getprotobyname(s);
++        if (pent)
++		proto = pent->p_proto;
+         else {
+         	unsigned int i;
+         	for (i = 0; i < ARRAY_SIZE(chain_protos); ++i)
 -- 
-2.17.1
+2.11.0
 
 
