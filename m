@@ -1,89 +1,250 @@
 X-GM-THRID: 6403272126352064512
-X-Received: by 10.99.151.10 with SMTP id n10mr1429802pge.9.1490944510569;
-        Fri, 31 Mar 2017 00:15:10 -0700 (PDT)
+X-Received: by 10.25.24.65 with SMTP id o62mr125660lfi.8.1490898444741;
+        Thu, 30 Mar 2017 11:27:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.60.150 with SMTP id z22ls9188512otc.20.gmail; Fri, 31 Mar
- 2017 00:15:10 -0700 (PDT)
-X-Received: by 10.31.207.130 with SMTP id f124mr1059151vkg.7.1490944509991;
-        Fri, 31 Mar 2017 00:15:09 -0700 (PDT)
-Received: by 10.55.73.144 with SMTP id w138msqka;
-        Thu, 30 Mar 2017 10:23:23 -0700 (PDT)
-X-Received: by 10.28.186.139 with SMTP id k133mr283747wmf.2.1490894602811;
-        Thu, 30 Mar 2017 10:23:22 -0700 (PDT)
-Return-Path: <alexandre.belloni@free-electrons.com>
-Received: from mail.free-electrons.com (mail.free-electrons.com. [62.4.15.54])
-        by gmr-mx.google.com with ESMTP id k74si160240wmd.1.2017.03.30.10.23.22
-        for <outreachy-kernel@googlegroups.com>;
-        Thu, 30 Mar 2017 10:23:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alexandre.belloni@free-electrons.com designates 62.4.15.54 as permitted sender) client-ip=62.4.15.54;
+Received: by 10.46.71.18 with SMTP id u18ls402823lja.40.gmail; Thu, 30 Mar
+ 2017 11:27:23 -0700 (PDT)
+X-Received: by 10.46.8.90 with SMTP id g26mr145773ljd.16.1490898443435;
+        Thu, 30 Mar 2017 11:27:23 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from mail-lf0-x243.google.com (mail-lf0-x243.google.com. [2a00:1450:4010:c07::243])
+        by gmr-mx.google.com with ESMTPS id x188si284451wmx.0.2017.03.30.11.27.23
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 30 Mar 2017 11:27:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2a00:1450:4010:c07::243 as permitted sender) client-ip=2a00:1450:4010:c07::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of alexandre.belloni@free-electrons.com designates 62.4.15.54 as permitted sender) smtp.mailfrom=alexandre.belloni@free-electrons.com
-Received: by mail.free-electrons.com (Postfix, from userid 110)
-	id 22BA2207DD; Thu, 30 Mar 2017 19:23:22 +0200 (CEST)
-X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
-	mail.free-electrons.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-1.0 required=5.0 tests=ALL_TRUSTED,SHORTCIRCUIT,
-	URIBL_BLOCKED shortcircuit=ham autolearn=disabled version=3.4.0
-Received: from localhost (unknown [88.191.26.124])
-	by mail.free-electrons.com (Postfix) with ESMTPSA id ECD722055F;
-	Thu, 30 Mar 2017 19:23:11 +0200 (CEST)
-Date: Thu, 30 Mar 2017 19:23:12 +0200
-From: Alexandre Belloni <alexandre.belloni@free-electrons.com>
-To: jacopo <jacopo@jmondi.org>
-Cc: Arushi Singhal <arushisinghal19971997@gmail.com>,
-	outreachy-kernel@googlegroups.com,
-	Jonathan Cameron <jic23@kernel.org>,
-	Hartmut Knaack <knaack.h@gmx.de>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
-	linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] iio: adc: replace comma with a semicolon
-Message-ID: <20170330172312.ooxwqmkz6sw7smgd@piout.net>
-References: <20170330124603.GA29301@arushi-HP-Pavilion-Notebook>
- <20170330133046.GA7900@w540>
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2a00:1450:4010:c07::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-lf0-x243.google.com with SMTP id n78so5378128lfi.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 30 Mar 2017 11:27:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=VEeUiAMD9gugIx3v3lV8jDbiQKsuv4oCH7SdSegjDqc=;
+        b=HVAQ3MrozcOR+V0rvt9xQZDQXnyZHjeD2SAFeGTVp/sPUK/ERyrEb3+NPzDPaxqnly
+         38RgDoo7pHupd22znGmNYnDRitGk+dq1OPGl0JfsXV7c7GZ+paezwiMikiPsz3rZH6bi
+         WqvMXVGRIAP1fIp3L2EqPJvdlMsFF+XPmddRrymp34P+hwJMDy+g4jmQhezv+NBdQI6P
+         egcefmu1692qfAIN8Wg5CEqTTpbKTY0Ffbis4q3IbrpIpEt4eA2OnPzi2bbaJCT4V64c
+         yulDIZVG2YuEfPCVLcAN/9SsTtVJKHszdJFcWfRaY0yuI+eooaR77e9ZGnvaHAsPzFw8
+         1f0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=VEeUiAMD9gugIx3v3lV8jDbiQKsuv4oCH7SdSegjDqc=;
+        b=A9aDSqCXqRONHS70fYP9uj0KKJk5RD3RdikyxOuNtvtqqlP/5VmD5zxMYNaGd0g/3g
+         qmg26sUtkQnMLmkstKnd7uEQxezG6GX0x2BYzeVmt5+k5GgM/sw8yZbLry4Rhv15EBiI
+         PIv+SxomLPj8aQIFcfI6+jag338YIo6vzOQu7RGo/xKDxwfa7ypModHP4+heSWEauEt0
+         JYokIXGrItPZPIzjGK73k+rShCb6GVxIVuSOfQv8WER8bC/sEJ4s1JLO2lTgA81l8LLT
+         Cav4iy3D9DvKsViiTJoE4H1feI6ZXLWgCHhsqvJ14FVKt1daLsybmXcSXJ92DJ76t48e
+         AycQ==
+X-Gm-Message-State: AFeK/H0PZf40WvKIzhy/VEu8iZQloyK0h34l5fJ0k9y/M8vaKli69WADOndBUE7d+hrqAJY3QKn1bwPZq12ALQ==
+X-Received: by 10.25.115.19 with SMTP id o19mr370634lfc.162.1490898443172;
+ Thu, 30 Mar 2017 11:27:23 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20170330133046.GA7900@w540>
-User-Agent: NeoMutt/20170113 (1.7.2)
+Received: by 10.25.170.69 with HTTP; Thu, 30 Mar 2017 11:27:22 -0700 (PDT)
+In-Reply-To: <20170330182210.GA6160@d830.WORKGROUP>
+References: <20170330124603.GA29301@arushi-HP-Pavilion-Notebook> <20170330182210.GA6160@d830.WORKGROUP>
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+Date: Thu, 30 Mar 2017 23:57:22 +0530
+Message-ID: <CA+XqjF_vNXqs54=a6Zp_7PB+aYfUwkZDDLcW0iAme3s794gnow@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] iio: adc: replace comma with a semicolon
+To: Alison Schofield <amsfield22@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, Jonathan Cameron <jic23@kernel.org>, 
+	Hartmut Knaack <knaack.h@gmx.de>, Lars-Peter Clausen <lars@metafoo.de>, 
+	Peter Meerwald-Stadler <pmeerw@pmeerw.net>, linux-iio@vger.kernel.org, 
+	LKML <linux-kernel@vger.kernel.org>
+Content-Type: multipart/alternative; boundary=001a113c0ac21a039c054bf6d833
 
-On 30/03/2017 at 15:30:46 +0200, jacopo wrote:
-> Hi Arushi,
->    thanks for your patch
-> 
+--001a113c0ac21a039c054bf6d833
+Content-Type: text/plain; charset=UTF-8
+
+On Thu, Mar 30, 2017 at 11:52 PM, Alison Schofield <amsfield22@gmail.com>
+wrote:
+
 > On Thu, Mar 30, 2017 at 06:16:03PM +0530, Arushi Singhal wrote:
 > > Replace a comma between expression statements by a semicolon. This
 > > changes the semantics of the code, but given the current indentation
 > > appears to be what is intended.
+>
+> Hi Arushi,
+>
+> Well, you've gotten a lot of comments on this one, and I too, couldn't
+> resist ;)  My comment is to test things like this out. Of course, you're
+> not going to go off and test the max11100 driver (BTW - driver name in
+> Subject line please), but you can write a simple C program to verify
+> the behavior of commas vs semi-colons in assignment statements.
+> That'll prove it to yourself, and then you can write the changelog
+> with confidence. (That this is cosmetic ;))
+>
+> It's a useful habit to pick up.  When you see a code segment that
+> makes you wonder, you can often pluck it out of context and try
+> it in a simple c program.
+>
+> Thanks Alison
+I'll write a C-program to explain more better,
+Thanks
+Arushi
+
+
+> alisons
+
+
 > > A simplified version of the Coccinelle semantic patch that performs this
 > > transformation is as follows:
-> > 
+> >
 > > // <smpl>
 > > @r@
 > > expression e1,e2;
 > > @@
-> > 
+> >
 > >  e1
 > > -,
 > > +;
 > >  e2;
 > > // </smpl>
-> > 
-> 
-> You can simply say that this fixes what appears to be a bug to me.
-> I wonder how this does even compile..
-> 
+> >
+> > Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+> > ---
+> >  drivers/iio/adc/max11100.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/drivers/iio/adc/max11100.c b/drivers/iio/adc/max11100.c
+> > index 23c060e1b663..1180bcc22ff1 100644
+> > --- a/drivers/iio/adc/max11100.c
+> > +++ b/drivers/iio/adc/max11100.c
+> > @@ -124,8 +124,8 @@ static int max11100_probe(struct spi_device *spi)
+> >       indio_dev->name = "max11100";
+> >       indio_dev->info = &max11100_info;
+> >       indio_dev->modes = INDIO_DIRECT_MODE;
+> > -     indio_dev->channels = max11100_channels,
+> > -     indio_dev->num_channels = ARRAY_SIZE(max11100_channels),
+> > +     indio_dev->channels = max11100_channels;
+> > +     indio_dev->num_channels = ARRAY_SIZE(max11100_channels);
+> >
+> >       state->vref_reg = devm_regulator_get(&spi->dev, "vref");
+> >       if (IS_ERR(state->vref_reg))
+> > --
+> > 2.11.0
+> >
+> > --
+> > You received this message because you are subscribed to the Google
+> Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send
+> an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/
+> msgid/outreachy-kernel/20170330124603.GA29301%
+> 40arushi-HP-Pavilion-Notebook.
+> > For more options, visit https://groups.google.com/d/optout.
+>
 
-It is not a bug, it is perfectly valid and working as expected/intended.
-This is just a cosmetic change.
+--001a113c0ac21a039c054bf6d833
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-See https://en.wikipedia.org/wiki/Comma_operator if you want to
-understand.
+<div dir=3D"ltr"><br><div class=3D"gmail_extra"><br><div class=3D"gmail_quo=
+te">On Thu, Mar 30, 2017 at 11:52 PM, Alison Schofield <span dir=3D"ltr">&l=
+t;<a href=3D"mailto:amsfield22@gmail.com" target=3D"_blank">amsfield22@gmai=
+l.com</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><span class=
+=3D"">On Thu, Mar 30, 2017 at 06:16:03PM +0530, Arushi Singhal wrote:<br>
+</span><span class=3D"">&gt; Replace a comma between expression statements =
+by a semicolon. This<br>
+&gt; changes the semantics of the code, but given the current indentation<b=
+r>
+&gt; appears to be what is intended.<br>
+<br>
+</span>Hi Arushi,<br>
+<br>
+Well, you&#39;ve gotten a lot of comments on this one, and I too, couldn&#3=
+9;t<br>
+resist ;)=C2=A0 My comment is to test things like this out. Of course, you&=
+#39;re<br>
+not going to go off and test the max11100 driver (BTW - driver name in<br>
+Subject line please), but you can write a simple C program to verify<br>
+the behavior of commas vs semi-colons in assignment statements.<br>
+That&#39;ll prove it to yourself, and then you can write the changelog<br>
+with confidence. (That this is cosmetic ;))<br>
+<br>
+It&#39;s a useful habit to pick up.=C2=A0 When you see a code segment that<=
+br>
+makes you wonder, you can often pluck it out of context and try<br>
+it in a simple c program.<br>
+<br></blockquote><div>Thanks Alison<br></div><div>I&#39;ll write a C-progra=
+m to explain more better,<br></div><div>Thanks<br></div><div>Arushi<br></di=
+v><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 =
+.8ex;border-left:1px #ccc solid;padding-left:1ex">
+alisons=C2=A0</blockquote><blockquote class=3D"gmail_quote" style=3D"margin=
+:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+<div class=3D"HOEnZb"><div class=3D"h5"><br>
+&gt; A simplified version of the Coccinelle semantic patch that performs th=
+is<br>
+&gt; transformation is as follows:<br>
+&gt;<br>
+&gt; // &lt;smpl&gt;<br>
+&gt; @r@<br>
+&gt; expression e1,e2;<br>
+&gt; @@<br>
+&gt;<br>
+&gt;=C2=A0 e1<br>
+&gt; -,<br>
+&gt; +;<br>
+&gt;=C2=A0 e2;<br>
+&gt; // &lt;/smpl&gt;<br>
+&gt;<br>
+&gt; Signed-off-by: Arushi Singhal &lt;<a href=3D"mailto:arushisinghal19971=
+997@gmail.com">arushisinghal19971997@gmail.<wbr>com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 drivers/iio/adc/max11100.c | 4 ++--<br>
+&gt;=C2=A0 1 file changed, 2 insertions(+), 2 deletions(-)<br>
+&gt;<br>
+&gt; diff --git a/drivers/iio/adc/max11100.c b/drivers/iio/adc/max11100.c<b=
+r>
+&gt; index 23c060e1b663..1180bcc22ff1 100644<br>
+&gt; --- a/drivers/iio/adc/max11100.c<br>
+&gt; +++ b/drivers/iio/adc/max11100.c<br>
+&gt; @@ -124,8 +124,8 @@ static int max11100_probe(struct spi_device *spi)<=
+br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0indio_dev-&gt;name =3D &quot;max11100&quot;;=
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0indio_dev-&gt;info =3D &amp;max11100_info;<b=
+r>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0indio_dev-&gt;modes =3D INDIO_DIRECT_MODE;<b=
+r>
+&gt; -=C2=A0 =C2=A0 =C2=A0indio_dev-&gt;channels =3D max11100_channels,<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0indio_dev-&gt;num_channels =3D ARRAY_SIZE(max1110=
+0_channels),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0indio_dev-&gt;channels =3D max11100_channels;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0indio_dev-&gt;num_channels =3D ARRAY_SIZE(max1110=
+0_channels);<br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0state-&gt;vref_reg =3D devm_regulator_get(&a=
+mp;spi-&gt;dev, &quot;vref&quot;);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0if (IS_ERR(state-&gt;vref_reg))<br>
+&gt; --<br>
+&gt; 2.11.0<br>
+&gt;<br>
+</div></div><span class=3D"HOEnZb"><font color=3D"#888888">&gt; --<br>
+&gt; You received this message because you are subscribed to the Google Gro=
+ups &quot;outreachy-kernel&quot; group.<br>
+&gt; To unsubscribe from this group and stop receiving emails from it, send=
+ an email to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.=
+com">outreachy-kernel+unsubscribe@<wbr>googlegroups.com</a>.<br>
+&gt; To post to this group, send email to <a href=3D"mailto:outreachy-kerne=
+l@googlegroups.com">outreachy-kernel@googlegroups.<wbr>com</a>.<br>
+&gt; To view this discussion on the web visit <a href=3D"https://groups.goo=
+gle.com/d/msgid/outreachy-kernel/20170330124603.GA29301%40arushi-HP-Pavilio=
+n-Notebook" rel=3D"noreferrer" target=3D"_blank">https://groups.google.com/=
+d/<wbr>msgid/outreachy-kernel/<wbr>20170330124603.GA29301%<wbr>40arushi-HP-=
+Pavilion-Notebook</a>.<br>
+&gt; For more options, visit <a href=3D"https://groups.google.com/d/optout"=
+ rel=3D"noreferrer" target=3D"_blank">https://groups.google.com/d/<wbr>opto=
+ut</a>.<br>
+</font></span></blockquote></div><br></div></div>
 
-
--- 
-Alexandre Belloni, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
+--001a113c0ac21a039c054bf6d833--
 
