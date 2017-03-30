@@ -1,95 +1,145 @@
-X-GM-THRID: 6675276130832875520
-X-Received: by 2002:a1f:1b82:: with SMTP id b124mr9078333vkb.11.1554208838581;
-        Tue, 02 Apr 2019 05:40:38 -0700 (PDT)
+X-GM-THRID: 6403357585290821632
+X-Received: by 10.99.232.83 with SMTP id a19mr402862pgk.147.1490897868317;
+        Thu, 30 Mar 2017 11:17:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1f:8a42:: with SMTP id m63ls30707vkd.13.gmail; Tue, 02 Apr
- 2019 05:40:38 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxTLne+BuFZpxw5WwxX3MkWVLS9tcK/xhkx1InUVkOQXq2kKEM7RCtNeUrGC6KPja6FBoEj
-X-Received: by 2002:a1f:b749:: with SMTP id h70mr478121vkf.8.1554208838003;
-        Tue, 02 Apr 2019 05:40:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554208837; cv=none;
-        d=google.com; s=arc-20160816;
-        b=UOCxsm+ZQf/2KH45YnUroWGsHRO2W3WrA9y9yEDxjz0xHiFBpC0T8i9FQIbbQOVF0m
-         9uhdzQ01LYaVnmG70acL8rfn03kqvraFH5/dlx9gprLIar9Tto8NQWr/2OILlATFOBiO
-         f56fslCjut5bnLcIq80mePkG+vD0QlNkcUdUJFT9l8Q6OQNMjfHbP1G0P2RPzOL04lhd
-         RZDTs/MJaRFkLt6fu4ZGq0nQ31wx0xv8JxgF3xawxBWSK4SnafHJfef6NFyrIxIWDl3G
-         8gx6zD2oEIGnmKW8eU+kSiZkp7tNqsIM8rkB3qULd+GCFWZo7IqlmQTJgR8wxyyz5qQ7
-         Hwfg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ADUF21sBHO41Pw2u+MZk0LePs2H8/E9PQC24AKUd/14=;
-        b=WDZ8JXuQ/ntpGJb91SoPHk684ITCCeuVXo0nEpRz/HHBFfGC9ZBawg5KPXFr3mz+MS
-         6HWKUZnym+UsHU5VkSZjJmB7nPEjO1KkrLTYz1M0JRbPdzjc8ZPM97FyKHKOKYJDhzpj
-         ciEuWLdacMD3cd3SZned+q9e0sMs7BbMzo3gpoe32ZqaflxgyBAUqB0Vq0WhPQND733N
-         j0j14tktdHPUsGEk2WO1uClMbgAEEjIupdFNA3CPEyqsVjbe1uswko14zlR3/0GG7S2n
-         PgHZeyU3THA2k3EVlBEqCZtkkDay9c7Pi1ioaTvtbjO5HT0q3f+iA5L+rs98QYke+ycq
-         OS3g==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Yuxa29J4;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::433 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pf1-x433.google.com (mail-pf1-x433.google.com. [2607:f8b0:4864:20::433])
-        by gmr-mx.google.com with ESMTPS id q191si718915vkh.0.2019.04.02.05.40.37
+Received: by 10.157.7.18 with SMTP id 18ls700974ote.1.gmail; Thu, 30 Mar 2017
+ 11:17:47 -0700 (PDT)
+X-Received: by 10.13.211.129 with SMTP id v123mr433668ywd.102.1490897867879;
+        Thu, 30 Mar 2017 11:17:47 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id z191si355819itc.0.2017.03.30.11.17.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 02 Apr 2019 05:40:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::433 as permitted sender) client-ip=2607:f8b0:4864:20::433;
+        Thu, 30 Mar 2017 11:17:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Yuxa29J4;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::433 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x433.google.com with SMTP id c8so6320371pfd.10
-        for <outreachy-kernel@googlegroups.com>; Tue, 02 Apr 2019 05:40:37 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x243.google.com with SMTP id g2so11700704pge.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 30 Mar 2017 11:17:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=ADUF21sBHO41Pw2u+MZk0LePs2H8/E9PQC24AKUd/14=;
-        b=Yuxa29J4mDvnve6X7rPfnnfFjOTREPBYFK2UUWQQwJdK3esUjtokcLvgdJMLG6bVIs
-         cHKT9zdIr7y5sjURC6KYC6QiCGcRXuK3y5lHf9teSDAP/CwClQ3u9zBaIG7Vx33Eq8va
-         yKlUGxZNH+9XPp1KRXWCBSf25iEbAzIDdZg3/G6D+8xKcqwVvYQrSTkEgZQsFNhYTzvY
-         DL1bdUUT3zPVmhAQq4nNA0y1tQm6OSqERJIQh9Ih3LMt10pbVJqZWIwWQ4onzu6QmyO8
-         oOG1DyVm85MA0v7cgajYD1Itc/G3Tl4djPSPXCSqySjIL+c842KpO/T1HvCkqzh0EyeK
-         /iAg==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=vx0E/acnxysCm7NkE0W3hYDqHQM7wDv1xikJ2Ww0gls=;
+        b=eyZnbzvXPNylcO3dV38+4hg78wSZ1gc2F1VAKqOLdM4WXbuKiVDyIT1xCeRreAE8s0
+         SHfJpAsf+Ae/jtTajUjgiVzJ4AnR9PWVvhvSLqUioshxF5XpukFpuq5gHzjpYsgAeCrF
+         yGHSwT0CEetIeRbGE2ow7lZuo9sHzvm7QSrsr2wViwFFey+Z9R98Nr5UipjFLd944rFQ
+         Ya+sThcUDRgUk0nvr73q7MSy6iG2QsmleJGuGGB9RimP+dvCLmIN+Uw6W474uvRE61Ec
+         BYecOijOuabSgF7HvtksahponB3kMe0vYB3ItX1Y6kj5hKX4bOX5eN4NfbH3qiX1ooWd
+         bYsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=ADUF21sBHO41Pw2u+MZk0LePs2H8/E9PQC24AKUd/14=;
-        b=PFpgui3AI68i0HCBWCMMGXLJnVyV1Etrk5s4KGdthymWB4Y0w9Wx5Vse9TE2vzPcyW
-         EPumkzcFwWGfbHQK+Yu5bPlWO3Cri2SorlPqvThqwX/eq7IizVJpFgsrEhbYFzn0oZ0P
-         1LNlg5uRDthGBEB94s07iYLFMMBWNrjBYzLoi/1ihx1NU6W/cQpNuOEKXolvlvbMj7Lm
-         fUXNxKBAleIXTV7Kd8b3edQNt8z2SOeXepRQerW3GEQvfqnkAHO08HwIXhY4hwtDwkRI
-         cGLPeyXv6DMvVO9DSi03t2xvg9KC0LbqwsxUm5Jp/4s8lpT2zKIO2S72mM7FM6xD6ZGH
-         /RSg==
-X-Gm-Message-State: APjAAAWJQoleliM8mzXjVY4nvY891FFkRbV1lHrTOsOMsRYQavavflis
-	41O2YIpMdl/BtTEyP9A6Hdy1oYT2
-X-Received: by 2002:a62:bd09:: with SMTP id a9mr67832545pff.61.1554208837320;
-        Tue, 02 Apr 2019 05:40:37 -0700 (PDT)
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from localhost.localdomain ([49.35.213.122])
-        by smtp.gmail.com with ESMTPSA id t190sm22650949pfb.33.2019.04.02.05.40.34
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 02 Apr 2019 05:40:36 -0700 (PDT)
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [Outreachy kernel] [PATCH 0/2] staging: Replace bit shifting with BIT macro
-Date: Tue,  2 Apr 2019 18:10:21 +0530
-Message-Id: <cover.1554208601.git.payal.s.kshirsagar.98@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=vx0E/acnxysCm7NkE0W3hYDqHQM7wDv1xikJ2Ww0gls=;
+        b=RC2vofzThzoqV1lpQTKrw+o6CZ9Sd6jcnWA0ImAL0j7iZyq1rXUO/jdP1HleCOiW5o
+         zdBqG+oHSoRxwexZWKPhwxqFVh5/scV5hobTl2hzI4Lc0y/WijP9qCiZF8ywfFe4u6iI
+         RygpPCEmla/0IswYSiERddPtqDOFHN9bAS5dTx8AcS3EXzu10g4eikVccrcD+lAm5wgp
+         obaCGjJX2pDOvJ6sNLe4MAcG8BAd9L0LWK/0g0SazLLohyklgDCRtA/80f5MBk6gYb38
+         woBrjuzLCd1w1aggSz/i7yg0ZhL1eTklkeJzpTCWaL5QwXssbBuqF0UpKd0qKUQ9XLLg
+         DNdA==
+X-Gm-Message-State: AFeK/H3YLv/E9fhjoTUTISDEgWDYnjspLi3pIWJpoQMZJdIbljL9M3Ckr7MzvYYmdp2M6A==
+X-Received: by 10.98.135.74 with SMTP id i71mr872126pfe.86.1490897866999;
+        Thu, 30 Mar 2017 11:17:46 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id n85sm5834708pfi.101.2017.03.30.11.17.44
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 30 Mar 2017 11:17:45 -0700 (PDT)
+Date: Thu, 30 Mar 2017 23:47:41 +0530
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+To: netfilter-devel@vger.kernel.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH] iptables: extensions: Remove spaces.
+Message-ID: <20170330181741.GA3838@arushi-HP-Pavilion-Notebook>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Challenge suggested by coccinelle.
-Prefer using BIT and replace bit shifting with the BIT(x) macro.
+Solve the checkpatch issue:
+space prohibited before close parenthesis ')'
+space prohibited after open parenthesis '('
 
-Payal Kshirsagar (2):
-  staging: rtl8723bs: core: Replace bit shifting with BIT macro
-  staging: rtlwifi: base.c: Replace bit shifting with BIT macro
+Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+---
+ extensions/libip6t_ah.c  | 4 ++--
+ extensions/libip6t_dst.c | 6 +++---
+ extensions/libip6t_hbh.c | 6 +++---
+ 3 files changed, 8 insertions(+), 8 deletions(-)
 
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 2 +-
- drivers/staging/rtlwifi/base.c                | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
+diff --git a/extensions/libip6t_ah.c b/extensions/libip6t_ah.c
+index 38c71f2..fc3e524 100644
+--- a/extensions/libip6t_ah.c
++++ b/extensions/libip6t_ah.c
+@@ -118,13 +118,13 @@ static void ah_save(const void *ip, const struct xt_entry_match *match)
+ 			       ahinfo->spis[0]);
+ 	}
+ 
+-	if (ahinfo->hdrlen != 0 || (ahinfo->invflags & IP6T_AH_INV_LEN) ) {
++	if (ahinfo->hdrlen != 0 || (ahinfo->invflags & IP6T_AH_INV_LEN)) {
+ 		printf("%s --ahlen %u",
+ 			(ahinfo->invflags & IP6T_AH_INV_LEN) ? " !" : "",
+ 			ahinfo->hdrlen);
+ 	}
+ 
+-	if (ahinfo->hdrres != 0 )
++	if (ahinfo->hdrres != 0)
+ 		printf(" --ahres");
+ }
+ 
+diff --git a/extensions/libip6t_dst.c b/extensions/libip6t_dst.c
+index 321e1f4..83358ab 100644
+--- a/extensions/libip6t_dst.c
++++ b/extensions/libip6t_dst.c
+@@ -36,16 +36,16 @@ parse_opts_num(const char *idstr, const char *typestr)
+ 
+ 	id = strtoul(idstr, &ep, 0);
+ 
+-	if ( idstr == ep ) {
++	if (idstr == ep) {
+ 		xtables_error(PARAMETER_PROBLEM,
+ 		           "dst: no valid digits in %s `%s'", typestr, idstr);
+ 	}
+-	if ( id == ULONG_MAX  && errno == ERANGE ) {
++	if (id == ULONG_MAX  && errno == ERANGE) {
+ 		xtables_error(PARAMETER_PROBLEM,
+ 			   "%s `%s' specified too big: would overflow",
+ 			   typestr, idstr);
+ 	}
+-	if ( *idstr != '\0'  && *ep != '\0' ) {
++	if (*idstr != '\0'  && *ep != '\0') {
+ 		xtables_error(PARAMETER_PROBLEM,
+ 		           "dst: error parsing %s `%s'", typestr, idstr);
+ 	}
+diff --git a/extensions/libip6t_hbh.c b/extensions/libip6t_hbh.c
+index 8e1b0ac..469fecf 100644
+--- a/extensions/libip6t_hbh.c
++++ b/extensions/libip6t_hbh.c
+@@ -38,16 +38,16 @@ parse_opts_num(const char *idstr, const char *typestr)
+ 
+ 	id =  strtoul(idstr,&ep,0) ;
+ 
+-	if ( idstr == ep ) {
++	if (idstr == ep) {
+ 		xtables_error(PARAMETER_PROBLEM,
+ 			   "hbh: no valid digits in %s `%s'", typestr, idstr);
+ 	}
+-	if ( id == ULONG_MAX  && errno == ERANGE ) {
++	if (id == ULONG_MAX  && errno == ERANGE) {
+ 		xtables_error(PARAMETER_PROBLEM,
+ 			   "%s `%s' specified too big: would overflow",
+ 			   typestr, idstr);
+ 	}	
+-	if ( *idstr != '\0'  && *ep != '\0' ) {
++	if (*idstr != '\0'  && *ep != '\0') {
+ 		xtables_error(PARAMETER_PROBLEM,
+ 			   "hbh: error parsing %s `%s'", typestr, idstr);
+ 	}
 -- 
-2.7.4
+2.11.0
 
 
