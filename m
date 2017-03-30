@@ -1,89 +1,106 @@
 X-GM-THRID: 6403272126352064512
-X-Received: by 10.46.1.12 with SMTP id 12mr846820ljb.30.1490881135387;
-        Thu, 30 Mar 2017 06:38:55 -0700 (PDT)
+X-Received: by 10.31.3.99 with SMTP id 96mr1841906vkd.30.1490877970735;
+        Thu, 30 Mar 2017 05:46:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.129.2 with SMTP id c2ls2829386wmd.26.canary-gmail; Thu, 30
- Mar 2017 06:38:54 -0700 (PDT)
-X-Received: by 10.28.14.73 with SMTP id 70mr212545wmo.21.1490881134424;
-        Thu, 30 Mar 2017 06:38:54 -0700 (PDT)
-Return-Path: <pmeerw@pmeerw.net>
-Received: from vps.pmeerw.net (ns.pmeerw.net. [84.19.176.117])
-        by gmr-mx.google.com with ESMTPS id x188si199107wmx.0.2017.03.30.06.38.54
+Received: by 10.107.18.28 with SMTP id a28ls6582712ioj.21.gmail; Thu, 30 Mar
+ 2017 05:46:09 -0700 (PDT)
+X-Received: by 10.99.188.2 with SMTP id q2mr2265082pge.36.1490877969509;
+        Thu, 30 Mar 2017 05:46:09 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id s67si287010pfs.4.2017.03.30.05.46.09
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Mar 2017 06:38:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pmeerw@pmeerw.net designates 84.19.176.117 as permitted sender) client-ip=84.19.176.117;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 30 Mar 2017 05:46:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@pmeerw.net;
-       spf=pass (google.com: domain of pmeerw@pmeerw.net designates 84.19.176.117 as permitted sender) smtp.mailfrom=pmeerw@pmeerw.net;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=pmeerw.net
-Received: by vps.pmeerw.net (Postfix, from userid 1000)
-	id BBDDCE01AF; Thu, 30 Mar 2017 15:38:53 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=pmeerw.net; s=mail;
-	t=1490881133; bh=vVIxZmB/FRqOcwIXYwKspbXz2dx9rjX+s4/9gzT9jZs=;
-	h=Date:From:To:cc:Subject:In-Reply-To:References:From;
-	b=QxnGyEtuuDs2b5s1hwuo2NV/BD9b5oa26swavf8s55+6ZsBvYZIqTClcu3UQl2G+V
-	 CZHzL8yT4VLN1CiDN99k/+YhufMoZldYZKxsEZQbT4c16mpJ611N+6mfqdtzIWcFT9
-	 koxix9y0fE0O6bN4J+c78inQNrBjU4xVYNX6LGC0=
-Received: from localhost (localhost [127.0.0.1])
-	by vps.pmeerw.net (Postfix) with ESMTP id A5949E262A;
-	Thu, 30 Mar 2017 15:38:53 +0200 (CEST)
-Date: Thu, 30 Mar 2017 15:38:53 +0200 (CEST)
-From: Peter Meerwald-Stadler <pmeerw@pmeerw.net>
-To: jacopo <jacopo@jmondi.org>
-cc: Arushi Singhal <arushisinghal19971997@gmail.com>, 
-    outreachy-kernel@googlegroups.com, Jonathan Cameron <jic23@kernel.org>, 
-    Lars-Peter Clausen <lars@metafoo.de>, linux-iio@vger.kernel.org, 
-    linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] iio: adc: replace comma with a semicolon
-In-Reply-To: <20170330133046.GA7900@w540>
-Message-ID: <alpine.DEB.2.20.1703301534380.24907@vps.pmeerw.net>
-References: <20170330124603.GA29301@arushi-HP-Pavilion-Notebook> <20170330133046.GA7900@w540>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x244.google.com with SMTP id 79so9813105pgf.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 30 Mar 2017 05:46:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=xf6XHa5/LBK+WQG0x7ZodNX0jBURwz+w8dyp9/b9tGI=;
+        b=PwUtTldewYKXYY4Y7jxTxzd8A3bwStHi5sX8m+4g5gq4CzomLesaq7bG7+CYqs9FaM
+         tGb2IX3awyOzfHcdv/IlMuOH0ssdr+zHlYRBADjnQrQ4CVuDON0yDD7ykrPk54vRbknc
+         vWd1+mWSji+LpNvyo/MQvy0BMHDtR8msAjXa5GTbXaokqOg3OiHIYXSVPXF6zQtT+iV2
+         3MlRoMsTBDSfYqdFnTDp8LxC9smGkU3/Y3+9QqIfDRDDF7IMtP0ImogBYra1aIsczjYB
+         KYyzNKUIvKywTLGwZJOYK74RQODVGw3iDAKCciRwHhjWuB2RQyoBulCw5FjWBf2CSizW
+         innA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=xf6XHa5/LBK+WQG0x7ZodNX0jBURwz+w8dyp9/b9tGI=;
+        b=NSei04hgd7hMOkM0gLD+or8Sf8Ix5njEYwwNo2ZkSoMRKOac2+5cDY2SAdZj0s8gsv
+         vk/V/0uGyZ7tPMBWdchalJnCwxhZPhSbfcmS9B6tcY2aeEbGdspr9rX+cjVUIqBwYILS
+         +1CHNJv4zXa97ex0B0Wqb6rhtVZLxN5/HbUIJdmSjeXBfLaLBY2jozXmWNSkOacYgD/v
+         ZGTRsrQLlA7pIgefr0CSInsb5v7vpcdpl2qtMGbaStgFPm/lIct4AwQeLB2CnZHAvNdu
+         Bf0uw9YakEezHJ9iTiaGCGaZLEtKNzwa/JMRsK4vZO4r2nQzSeWrjWX92RPNxWKUXJXP
+         RTPQ==
+X-Gm-Message-State: AFeK/H0W40pWkWJEzfTFWsxrUXXF5tZnTP1HNHqytUSBWdX4uIKDQ/6heGYQ4d8PIA7qfg==
+X-Received: by 10.99.206.5 with SMTP id y5mr5971188pgf.212.1490877967872;
+        Thu, 30 Mar 2017 05:46:07 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id 189sm4550370pgd.30.2017.03.30.05.46.06
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 30 Mar 2017 05:46:06 -0700 (PDT)
+Date: Thu, 30 Mar 2017 18:16:03 +0530
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>,
+	Lars-Peter Clausen <lars@metafoo.de>,
+	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+	linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] iio: adc: replace comma with a semicolon
+Message-ID: <20170330124603.GA29301@arushi-HP-Pavilion-Notebook>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
+Replace a comma between expression statements by a semicolon. This
+changes the semantics of the code, but given the current indentation
+appears to be what is intended.
+A simplified version of the Coccinelle semantic patch that performs this
+transformation is as follows:
 
-> On Thu, Mar 30, 2017 at 06:16:03PM +0530, Arushi Singhal wrote:
-> > Replace a comma between expression statements by a semicolon. This
-> > changes the semantics of the code, but given the current indentation
-> > appears to be what is intended.
+// <smpl>
+@r@
+expression e1,e2;
+@@
 
-> You can simply say that this fixes what appears to be a bug to me.
-> I wonder how this does even compile..
+ e1
+-,
++;
+ e2;
+// </smpl>
 
-it's valid C and I think it does the correct thing (i.e. assign those 
-variables); the style is weird obviously
+Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+---
+ drivers/iio/adc/max11100.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-> [1] https://marc.info/?l=linux-iio&m=148475728729617&w=2
-> 
-> > Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
-> > ---
-> >  drivers/iio/adc/max11100.c | 4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/drivers/iio/adc/max11100.c b/drivers/iio/adc/max11100.c
-> > index 23c060e1b663..1180bcc22ff1 100644
-> > --- a/drivers/iio/adc/max11100.c
-> > +++ b/drivers/iio/adc/max11100.c
-> > @@ -124,8 +124,8 @@ static int max11100_probe(struct spi_device *spi)
-> >  	indio_dev->name = "max11100";
-> >  	indio_dev->info = &max11100_info;
-> >  	indio_dev->modes = INDIO_DIRECT_MODE;
-> > -	indio_dev->channels = max11100_channels,
-> > -	indio_dev->num_channels = ARRAY_SIZE(max11100_channels),
-> > +	indio_dev->channels = max11100_channels;
-> > +	indio_dev->num_channels = ARRAY_SIZE(max11100_channels);
-> >  
-> >  	state->vref_reg = devm_regulator_get(&spi->dev, "vref");
-> >  	if (IS_ERR(state->vref_reg))
-> > -- 
-> > 2.11.0
-> > 
-> 
-
+diff --git a/drivers/iio/adc/max11100.c b/drivers/iio/adc/max11100.c
+index 23c060e1b663..1180bcc22ff1 100644
+--- a/drivers/iio/adc/max11100.c
++++ b/drivers/iio/adc/max11100.c
+@@ -124,8 +124,8 @@ static int max11100_probe(struct spi_device *spi)
+ 	indio_dev->name = "max11100";
+ 	indio_dev->info = &max11100_info;
+ 	indio_dev->modes = INDIO_DIRECT_MODE;
+-	indio_dev->channels = max11100_channels,
+-	indio_dev->num_channels = ARRAY_SIZE(max11100_channels),
++	indio_dev->channels = max11100_channels;
++	indio_dev->num_channels = ARRAY_SIZE(max11100_channels);
+ 
+ 	state->vref_reg = devm_regulator_get(&spi->dev, "vref");
+ 	if (IS_ERR(state->vref_reg))
 -- 
+2.11.0
 
-Peter Meerwald-Stadler
-Mobile: +43 664 24 44 418
 
