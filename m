@@ -1,119 +1,73 @@
-X-GM-THRID: 6401842104590401536
-X-Received: by 10.13.214.15 with SMTP id y15mr6213806ywd.100.1490545017161;
-        Sun, 26 Mar 2017 09:16:57 -0700 (PDT)
+X-GM-THRID: 6402914629157126144
+X-Received: by 10.129.138.132 with SMTP id a126mr1509555ywg.156.1490944511100;
+        Fri, 31 Mar 2017 00:15:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.10.10 with SMTP id u10ls3299977ioi.8.gmail; Sun, 26 Mar
- 2017 09:16:56 -0700 (PDT)
-X-Received: by 10.99.160.103 with SMTP id u39mr6791139pgn.14.1490545016325;
-        Sun, 26 Mar 2017 09:16:56 -0700 (PDT)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id y203si1559594pfb.0.2017.03.26.09.16.56
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 26 Mar 2017 09:16:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+Received: by 10.107.184.8 with SMTP id i8ls6947460iof.24.gmail; Fri, 31 Mar
+ 2017 00:15:10 -0700 (PDT)
+X-Received: by 10.36.57.15 with SMTP id l15mr555590ita.9.1490944510023;
+        Fri, 31 Mar 2017 00:15:10 -0700 (PDT)
+Received: by 10.202.107.131 with SMTP id g125msoic;
+        Thu, 30 Mar 2017 05:55:15 -0700 (PDT)
+X-Received: by 10.157.9.175 with SMTP id q44mr1956969otd.21.1490878515580;
+        Thu, 30 Mar 2017 05:55:15 -0700 (PDT)
+Return-Path: <horms@verge.net.au>
+Received: from kirsty.vergenet.net (kirsty.vergenet.net. [202.4.237.240])
+        by gmr-mx.google.com with ESMTP id s67si290452pfs.4.2017.03.30.05.55.15
+        for <outreachy-kernel@googlegroups.com>;
+        Thu, 30 Mar 2017 05:55:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of horms@verge.net.au designates 202.4.237.240 as permitted sender) client-ip=202.4.237.240;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id r137so5528325pfr.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 26 Mar 2017 09:16:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=axhPzedr6iAKldtOWHGiqauZQq6GTBoADzk6xW16YXE=;
-        b=Z/+NCrJST9/6WbQyaIYKsneC9gF9aQYpFpWr4NdYwMGBz3RVsyGw5p5B7jiN6BfGnQ
-         vxxFipqNBElHWTfFBD8hffYyJKzx49czrDSOEJdi+4PHks4wEErJtor0vFQJpkJlBLHH
-         S69N7LwjTBNgTKyrtnnMYkf78RSHeEfZxqjC0c3S3HdP5xhJQ0IC4HLno5yF5i02lF8S
-         ogKSGPIxM4YisewUK1ZOeIUR8SkmjKyR9hrDdyfpfpa09bHpPShP/n2XstSaHzCBWxkC
-         2nS7sc8tvRDNDDxpRGVn2RRvv1tXMyzuB0dMzp4fkTxuTzUdu+kEERldVb9a56X9ME3P
-         b6wQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=axhPzedr6iAKldtOWHGiqauZQq6GTBoADzk6xW16YXE=;
-        b=L9kflhEER0QZyAtEniJXI6tH3cGKTQ46uL19uNCwas38ZWZIeVvA3kF/Sdx9hh11bP
-         +yvMKouZh/H2jZ2/oBJPzcHAQYR/uQfaNcJDnob8WShSO4O7OFenLhhLnquTQ1e6Pml+
-         9CvMIvEe0OE2XkoAyX7Go2pDq1LbqFD+fFZ2dzDxz7cc91RaSzOSAEH/RfAdqBQh3jhh
-         DguoGSeeNwkLnsEp92bpoe2wsO6XzQPB63OCQda34+sAWDPKAarQH7x3zKg9/CkM8mfM
-         FmNWZCqHbPeLBLdXg8hnq0GixTewKyJ1jkSEsBPEJEOZsWSLwofbn2ePWKMnvga2gQs7
-         Vjjw==
-X-Gm-Message-State: AFeK/H1ezrNQjF+kmpPgfgX4qwDDZ1OCl7z2LJ45nLgeesExbXFXWy3WtnqON+vgLMF/SA==
-X-Received: by 10.99.67.3 with SMTP id q3mr2306742pga.221.1490545016072;
-        Sun, 26 Mar 2017 09:16:56 -0700 (PDT)
-Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([47.9.132.176])
-        by smtp.googlemail.com with ESMTPSA id p77sm15819031pfj.99.2017.03.26.09.16.49
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 26 Mar 2017 09:16:55 -0700 (PDT)
-From: Gargi Sharma <gs051095@gmail.com>
-To: mawilcox@microsoft.com
-Cc: outreachy-kernel@googlegroups.com,
-	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH] kernel: pid_namespace: Constify ctl_path structure
-Date: Sun, 26 Mar 2017 21:46:34 +0530
-Message-Id: <1490544994-32649-1-git-send-email-gs051095@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       dkim=pass header.i=@verge.net.au;
+       spf=pass (google.com: domain of horms@verge.net.au designates 202.4.237.240 as permitted sender) smtp.mailfrom=horms@verge.net.au
+Received: from penelope.horms.nl (unknown [217.111.208.18])
+	by kirsty.vergenet.net (Postfix) with ESMTPSA id BE89525B82D;
+	Thu, 30 Mar 2017 23:55:12 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=verge.net.au; s=mail;
+	t=1490878513; bh=sVL3/hu2EPv1rSFNKzCr2TF4U5DMrJHopkrGKknH8C4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Ux7WP1itEw3ziPN77Q5T6GjMCPcgluG8uprezsYCYOMnA2yeBHNo78LK59uDrqVqx
+	 aqgcw1TckgCCbGUGrEHz4oQ1QZDexTz4Kfa1Vy2CFl5lzqYO8okp4JUpsJxicctAMQ
+	 6X3XT3lEKKfMQ7r/Bi7D8YrNQi1hfgkhl85Pa5Yo=
+Received: by penelope.horms.nl (Postfix, from userid 7100)
+	id 4F1F2607A0; Thu, 30 Mar 2017 14:55:09 +0200 (CEST)
+Date: Thu, 30 Mar 2017 14:55:09 +0200
+From: Simon Horman <horms@verge.net.au>
+To: Arushi Singhal <arushisinghal19971997@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, Wensong Zhang <wensong@linux-vs.org>,
+	Julian Anastasov <ja@ssi.bg>,
+	Pablo Neira Ayuso <pablo@netfilter.org>,
+	Jozsef Kadlecsik <kadlec@blackhole.kfki.hu>,
+	"David S. Miller" <davem@davemloft.net>, netdev@vger.kernel.org,
+	lvs-devel@vger.kernel.org, netfilter-devel@vger.kernel.org,
+	coreteam@netfilter.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] net: netfilter: remove unused variable
+Message-ID: <20170330125509.GD2980@verge.net.au>
+References: <20170329145752.GA2756@arushi-HP-Pavilion-Notebook>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170329145752.GA2756@arushi-HP-Pavilion-Notebook>
+Organisation: Horms Solutions BV
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-The struct kern_path of the type ctl_path is used as an input
-to the function register_sysctl_paths which registers a sysctl
-hierarchy. ctl_path is simply the path to the directory the sysctl
-table is in and is not modified anywhere.
+On Wed, Mar 29, 2017 at 08:27:52PM +0530, Arushi Singhal wrote:
+> This patch uses the following coccinelle script to remove
+> a variable that was simply used to store the return
+> value of a function call before returning it:
+> 
+> @@
+> identifier len,f;
+> @@
+> 
+> -int len;
+>  ... when != len
+>      when strict
+> -len =
+> +return
+>         f(...);
+> -return len;
+> 
+> Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
 
-Done using Coccinelle:
-@r1 disable optional_qualifier@
-identifier s,i;
-position p;
-@@
-
-static struct ctl_path i@p[] ={...};
-
-@ok1@
-identifier r1.i;
-expression e;
-position p;
-@@
-e = i@p
-
-@bad@
-position p != {r1.p,ok1.p};
-identifier r1.i;
-@@
-e@i@p
-
-@depends on !bad disable optional_qualifier@
-identifier r1.i;
-@@
-static
-+const
-struct ctl_path i[] = { ... };
-
-text   data    bss    dec    hex filename
-   5462   1698    192   7352   1cb8 kernel/pid_namespace.o
-
-text   data    bss    dec    hex filename
-   5526   1634    192   7352   1cb8 kernel/pid_namespace.o
-
-Signed-off-by: Gargi Sharma <gs051095@gmail.com>
----
- kernel/pid_namespace.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/kernel/pid_namespace.c b/kernel/pid_namespace.c
-index 071ebd3..f8a5a0c 100644
---- a/kernel/pid_namespace.c
-+++ b/kernel/pid_namespace.c
-@@ -323,7 +323,7 @@ static struct ctl_table pid_ns_ctl_table[] = {
- 	},
- 	{ }
- };
--static struct ctl_path kern_path[] = { { .procname = "kernel", }, { } };
-+static const struct ctl_path kern_path[] = { { .procname = "kernel", }, { } };
- #endif	/* CONFIG_CHECKPOINT_RESTORE */
- 
- int reboot_pid_ns(struct pid_namespace *pid_ns, int cmd)
--- 
-2.7.4
-
+Applied with patch prefix updated to "ipvs:".
 
