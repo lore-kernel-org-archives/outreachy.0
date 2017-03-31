@@ -1,202 +1,116 @@
-X-GM-THRID: 6463845646554103808
-X-Received: by 10.129.67.22 with SMTP id q22mr4419654ywa.187.1504981342612;
-        Sat, 09 Sep 2017 11:22:22 -0700 (PDT)
+X-GM-THRID: 6403259174174588928
+X-Received: by 10.129.92.69 with SMTP id q66mr1512260ywb.164.1490944511102;
+        Fri, 31 Mar 2017 00:15:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.3.147 with SMTP id e141ls3069953ite.1.gmail; Sat, 09 Sep
- 2017 11:22:21 -0700 (PDT)
-X-Received: by 10.101.91.131 with SMTP id i3mr4094029pgr.93.1504981341824;
-        Sat, 09 Sep 2017 11:22:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504981341; cv=none;
-        d=google.com; s=arc-20160816;
-        b=pakzanZBzy2VAGvjefqW/sP+gGN4kz6/85iV/Xkw3FD/DxPHGpreSzyw7rCosIVg9i
-         Yy5vMw3OVUXpRU0UWxRNljO2Ukw2hYx9Y8Go1MafGOE3bbnKvCNdKYUBaANMXTfHDct9
-         x9N4Aqf2MoBPXeeWShLkmD7edfMDyj2A9CRVF1yVMNc+p/qvJmH+1OLXd/VZTCzQyGD8
-         u9Xx+OX3wpiw2wR1sNFkWQKCoNRIxYIAPeN0w0gS0apKMMr8CPaQY2Tf07eqkgpb+luP
-         sqNB9UX7r5z6iX9pmHuTtIKIVAoJGkxLxbvmusW7VWcAo051yoovxOuGRUJqEU9Ecwgz
-         AKzQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=4yTPWoITFVvlTtIfbqmdq8Bga/CCC7HH1Xe3yq5BnTY=;
-        b=aIK2C7G8pXTPGkAKgdLwzfvOKMHzZ8WBjdZnVsafYwUpzVEfDO3wBLT6qpbHL4ZBge
-         Qlt1vTru/AM4wZ7DWiAXAVA8AaxHPAaUt7o85OKAWBZcDeMkDg9XnMIECs8zx+l4ht7Q
-         J5KS51oTFxR+g4NaKTRqABJotSvHKWHtZ2FaO+ZIw2BRlnvaaf12CPrRz321he3Q3dH2
-         9RZgKPLRZFS3/B7ZyLKvGPIQjAmB10xEy0UyY9qneaH1XrLS1ARUDAFsnf8saU4aZrTE
-         7wc9C0ZEevXMWC7qHu6xxiDe5+BqCl91C//IEeUlIZuk7AXC9QmqkC+Wnny/N+2hTxWy
-         M0Cg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=S+bA/3Ey;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id a67si505809pfe.17.2017.09.09.11.22.21
+Received: by 10.36.1.7 with SMTP id 7ls4404994itk.11.canary-gmail; Fri, 31 Mar
+ 2017 00:15:10 -0700 (PDT)
+X-Received: by 10.99.66.193 with SMTP id p184mr1343252pga.141.1490944510267;
+        Fri, 31 Mar 2017 00:15:10 -0700 (PDT)
+Received: by 10.55.104.130 with SMTP id d124msqkc;
+        Thu, 30 Mar 2017 23:31:05 -0700 (PDT)
+X-Received: by 10.46.77.69 with SMTP id a66mr435957ljb.11.1490941865315;
+        Thu, 30 Mar 2017 23:31:05 -0700 (PDT)
+Return-Path: <daniel@ffwll.ch>
+Received: from mail-wr0-x241.google.com (mail-wr0-x241.google.com. [2a00:1450:400c:c0c::241])
+        by gmr-mx.google.com with ESMTPS id 82si113857wmg.3.2017.03.30.23.31.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 09 Sep 2017 11:22:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Thu, 30 Mar 2017 23:31:05 -0700 (PDT)
+Received-SPF: neutral (google.com: 2a00:1450:400c:c0c::241 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) client-ip=2a00:1450:400c:c0c::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=S+bA/3Ey;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id q68so2760532pgq.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 09 Sep 2017 11:22:21 -0700 (PDT)
+       dkim=pass header.i=@ffwll.ch;
+       spf=neutral (google.com: 2a00:1450:400c:c0c::241 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
+Received: by mail-wr0-x241.google.com with SMTP id w43so17701551wrb.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 30 Mar 2017 23:31:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=4yTPWoITFVvlTtIfbqmdq8Bga/CCC7HH1Xe3yq5BnTY=;
-        b=S+bA/3Ey+x08fOjQ2KhcefXlrf6BhUSRtg7j2CnG3VLgv05HYeuevR3ccJFK7rrryI
-         DKVAGxnnaJ07+6tSfU/kYXcyR8fXG5bHrpYB0Oag7ZEdkkrQ+WF92OOlgC7Wbjk9FjqI
-         vIIOhOCEseE4JltcsMuBOblP2yEFedYfbrsfM2WdB4UUggbBQ4TZYSKeEh6OkUMs7piO
-         NvJGBWh7CG3pj0bdUMzqJy93ghZY8xFTbZfu+1EXOnSjAQje3kkUSAQQTFlgoLjBLT98
-         9zFRuBJZ/sTpZh2UHhDw/AYzvIc3ry9hLVzLLL0OCk5D/un+q/CxlEsKCNrdVglDb43C
-         5l9Q==
+        d=ffwll.ch; s=google;
+        h=sender:date:from:to:cc:subject:message-id:mail-followup-to
+         :references:mime-version:content-disposition:in-reply-to:user-agent;
+        bh=fpWpqryfltWQ1l0U7aqTdYCgocZVGBEMRF/BTTB68XY=;
+        b=RhWLGXeGfnrmf3f2qU8unuitMXcu1WExGji7UUFky7U8yjUVPYo1XMXlJy+sXl5BQi
+         l+CZUBivmNF/BTKeo49nI7Ho+eKzmBzXmlNrPa4dErfUkPhNHvBMckZilwcveP3fNbRx
+         OXl3G1TQNPufzAQfvwpDu3ruUXeGUGgacHxKg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=4yTPWoITFVvlTtIfbqmdq8Bga/CCC7HH1Xe3yq5BnTY=;
-        b=nDXFDSnb+AKUnL75HlnbrM8tLECqy5VDbZl3UTiYakMUdK8uYHh2WxMCeH1pDtop3d
-         dehWrefJwKO8j1id8aBvY8asYGBSHnlaqmjZ2vmas6wiRsWyzslZXZ8tdscbHjm7/LN2
-         toH9xVQfJK3mi3TXpeWDf8u8YiuVTwFjWyEEdwS7MZrGABsUYVm+nWRPEg/3AiahwipK
-         b1AZc/+l3qX4XdajWxE5fWhneHhxhb9mxm3P0Ft9dcGYo4b+RMQgy2mqIDyD63V9JOH0
-         IHZtL1qi7nfyrvOr6dDsvqf/L3fMwdi6qm6ThqRADlZiL0iDtYxQXW3khc5YANB+3Lyg
-         LR/w==
-X-Gm-Message-State: AHPjjUiOaV3kQosQ0AHH8xA2cZ0PZqbjM2MofX7V6l+MQ0rtp4oor0li
-	/FRSKU2GpyDz+g==
-X-Google-Smtp-Source: ADKCNb6KfOzYVHZ4w+yyxORR1A0YzQzLB2O5gGF5RfMwqsFHvnIOGSb5Ic6G3w8j9+FBivp7cXH38Q==
-X-Received: by 10.84.129.98 with SMTP id 89mr7860686plb.383.1504981341571;
-        Sat, 09 Sep 2017 11:22:21 -0700 (PDT)
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from localhost.localdomain ([103.37.201.27])
-        by smtp.gmail.com with ESMTPSA id 80sm8794666pfq.38.2017.09.09.11.22.19
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 09 Sep 2017 11:22:20 -0700 (PDT)
-From: Harsha Sharma <harshasharmaiitr@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Harsha Sharma <harshasharmaiitr@gmail.com>
-Subject: [PATCH] staging: rtl8723bs: Add spaces around '=', '|', '<<'
-Date: Sat,  9 Sep 2017 23:50:13 +0530
-Message-Id: <1504981213-14584-1-git-send-email-harshasharmaiitr@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+         :mail-followup-to:references:mime-version:content-disposition
+         :in-reply-to:user-agent;
+        bh=fpWpqryfltWQ1l0U7aqTdYCgocZVGBEMRF/BTTB68XY=;
+        b=RtTHoMu8ATf1vRwkWJgLAEdotA4SP8bcHY9Pa7yE9stk6fens9JctZ7B3uloyH9ujN
+         2zhv4//G9voFiHQ2HRG+5aONYxkJMXUw/p+I/K05He6/tQ1Pk7u2YR9M0xHVDXKv+f9E
+         eedLy4EiqqUdM1Mrwx8Tp+8Qm3b5/Z/q6Me4btrzf2cEN9bH1TZs6MrYYGgdv+51glt9
+         HJN8BEJZlnOi0mh7kCAJz9wZe6KuTiuXfaeWntSDqPT4ao40wCxhFYpfTURvI/67Tv1X
+         Uvr8UQDNALdz4BLNxwko4E+L4/M1hMN6420uzf+A4UoJBQ1PFbbXzBAgt5Iq0FF4b7/W
+         5RqA==
+X-Gm-Message-State: AFeK/H32M4gHc9d3LdZeKazJ5bw/SP1lL/7c3gI+WwCTba3rUbYmYVYD/g7cEpT2qPtg8w==
+X-Received: by 10.223.142.23 with SMTP id n23mr1135146wrb.145.1490941865033;
+        Thu, 30 Mar 2017 23:31:05 -0700 (PDT)
+Return-Path: <daniel@ffwll.ch>
+Received: from phenom.ffwll.local ([2a02:168:563a:0:c2b5:dd51:f7b6:65bb])
+        by smtp.gmail.com with ESMTPSA id m29sm5464154wrm.4.2017.03.30.23.31.03
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 30 Mar 2017 23:31:04 -0700 (PDT)
+Sender: Daniel Vetter <daniel.vetter@ffwll.ch>
+Date: Fri, 31 Mar 2017 08:31:01 +0200
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Tamara Diaconita <diaconitatamara@gmail.com>
+Cc: daniel.vetter@intel.com, jani.nikula@linux.intel.com, airlied@linux.ie,
+	intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
+	corbet@lwn.net, Tamara Diaconita <diaconita.tamara@gmail.com>
+Subject: Re: [PATCH] drivers: gpu: drm: i915L intel_lpe_audio: Fix kerneldoc
+ comments
+Message-ID: <20170331063101.zjj5ltjh5gyigsa7@phenom.ffwll.local>
+Mail-Followup-To: Tamara Diaconita <diaconitatamara@gmail.com>,
+	daniel.vetter@intel.com, jani.nikula@linux.intel.com,
+	airlied@linux.ie, intel-gfx@lists.freedesktop.org,
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com, corbet@lwn.net,
+	Tamara Diaconita <diaconita.tamara@gmail.com>
+References: <20170330115510.14054-1-diaconita.tamara@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170330115510.14054-1-diaconita.tamara@gmail.com>
+X-Operating-System: Linux phenom 4.9.0-2-amd64 
+User-Agent: NeoMutt/20170306 (1.8.0)
 
-Use one space around most binary operators
+On Thu, Mar 30, 2017 at 02:55:10PM +0300, Tamara Diaconita wrote:
+> Add description for existing parameter 'pipe' to fix the build
+> warning: ./drivers/gpu/drm/i915/intel_lpe_audio.c:342: warning: No
+> description found for parameter 'pipe'.
+> 
+> Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
 
-Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
----
- drivers/staging/rtl8723bs/os_dep/os_intfs.c | 26 +++++++++++++-------------
- 1 file changed, 13 insertions(+), 13 deletions(-)
+Applied, thanks.
+-Daniel
 
-diff --git a/drivers/staging/rtl8723bs/os_dep/os_intfs.c b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
-index 0215899..0129381 100644
---- a/drivers/staging/rtl8723bs/os_dep/os_intfs.c
-+++ b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
-@@ -121,7 +121,7 @@
- 
- static int rtw_enusbss = 0;/* 0:disable, 1:enable */
- 
--static int rtw_hwpdn_mode =2;/* 0:disable, 1:enable, 2: by EFUSE config */
-+static int rtw_hwpdn_mode = 2;/* 0:disable, 1:enable, 2: by EFUSE config */
- 
- #ifdef CONFIG_HW_PWRP_DETECTION
- static int rtw_hwpwrp_detect = 1;
-@@ -183,7 +183,7 @@
- 
- module_param(rtw_hw_wps_pbc, int, 0644);
- 
--static uint rtw_max_roaming_times =2;
-+static uint rtw_max_roaming_times = 2;
- module_param(rtw_max_roaming_times, uint, 0644);
- MODULE_PARM_DESC(rtw_max_roaming_times,"The max roaming times to try");
- 
-@@ -222,7 +222,7 @@
- /*  BIT4 - RF,					0: non-support, 1: support */
- /*  BIT5 - RF_TXPWR_TRACK,	0: non-support, 1: support */
- /*  BIT6 - RF_TXPWR_LMT,		0: non-support, 1: support */
--static int rtw_load_phy_file = (BIT2|BIT6);
-+static int rtw_load_phy_file = (BIT2 | BIT6);
- module_param(rtw_load_phy_file, int, 0644);
- MODULE_PARM_DESC(rtw_load_phy_file,"PHY File Bit Map");
- static int rtw_decrypt_phy_file = 0;
-@@ -255,8 +255,8 @@ static uint loadparam(struct adapter *padapter, _nic_hdl pnetdev)
- 
- 	registry_par->vrtl_carrier_sense = (u8)rtw_vrtl_carrier_sense ;
- 	registry_par->vcs_type = (u8)rtw_vcs_type;
--	registry_par->rts_thresh =(u16)rtw_rts_thresh;
--	registry_par->frag_thresh =(u16)rtw_frag_thresh;
-+	registry_par->rts_thresh = (u16)rtw_rts_thresh;
-+	registry_par->frag_thresh = (u16)rtw_frag_thresh;
- 	registry_par->preamble = (u8)rtw_preamble;
- 	registry_par->scan_mode = (u8)rtw_scan_mode;
- 	registry_par->adhoc_tx_pwr = (u8)rtw_adhoc_tx_pwr;
-@@ -440,7 +440,7 @@ u16 rtw_recv_select_queue(struct sk_buff *skb)
- 	u32 priority;
- 	u8 *pdata = skb->data;
- 
--	memcpy(&eth_type, pdata+(ETH_ALEN<<1), 2);
-+	memcpy(&eth_type, pdata+(ETH_ALEN << 1), 2);
- 
- 	switch (be16_to_cpu(eth_type)) {
- 		case ETH_P_IP:
-@@ -652,8 +652,8 @@ static u8 rtw_init_default_value(struct adapter *padapter)
- #ifdef CONFIG_GTK_OL
- 	psecuritypriv->binstallKCK_KEK = _FAIL;
- #endif /* CONFIG_GTK_OL */
--	psecuritypriv->sw_encrypt =pregistrypriv->software_encrypt;
--	psecuritypriv->sw_decrypt =pregistrypriv->software_decrypt;
-+	psecuritypriv->sw_encrypt = pregistrypriv->software_encrypt;
-+	psecuritypriv->sw_decrypt = pregistrypriv->software_decrypt;
- 
- 	psecuritypriv->dot11AuthAlgrthm = dot11AuthAlgrthm_Open; /* open system */
- 	psecuritypriv->dot11PrivacyAlgrthm = _NO_PRIVACY_;
-@@ -748,7 +748,7 @@ u8 rtw_reset_drv_sw(struct adapter *padapter)
- 	pmlmepriv->LinkDetectInfo.TrafficTransitionCount = 0;
- 	pmlmepriv->LinkDetectInfo.LowPowerTransitionCount = 0;
- 
--	_clr_fwstate_(pmlmepriv, _FW_UNDER_SURVEY |_FW_UNDER_LINKING);
-+	_clr_fwstate_(pmlmepriv, _FW_UNDER_SURVEY | _FW_UNDER_LINKING);
- 
- 	pwrctrlpriv->pwr_state_check_cnts = 0;
- 
-@@ -777,7 +777,7 @@ u8 rtw_init_drv_sw(struct adapter *padapter)
- 		goto exit;
- 	}
- 
--	padapter->cmdpriv.padapter =padapter;
-+	padapter->cmdpriv.padapter = padapter;
- 
- 	if ((rtw_init_evt_priv(&padapter->evtpriv)) == _FAIL) {
- 		RT_TRACE(_module_os_intfs_c_, _drv_err_, ("\n Can't init evt_priv\n"));
-@@ -986,7 +986,7 @@ int _netdev_open(struct net_device *pnetdev)
- 
- 		DBG_871X("MAC Address = "MAC_FMT"\n", MAC_ARG(pnetdev->dev_addr));
- 
--		status =rtw_start_drv_threads(padapter);
-+		status = rtw_start_drv_threads(padapter);
- 		if (status == _FAIL) {
- 			DBG_871X("Initialize driver software resource Failed!\n");
- 			goto netdev_open_error;
-@@ -1641,7 +1641,7 @@ int rtw_resume_process_wow(struct adapter *padapter)
- 		}
- 
- 		/* Disable WOW, set H2C command */
--		poidparam.subcode =WOWLAN_DISABLE;
-+		poidparam.subcode = WOWLAN_DISABLE;
- 		padapter->HalFunc.SetHwRegHandler(padapter, HW_VAR_WOWLAN, (u8 *)&poidparam);
- 
- 		psta = rtw_get_stainfo(&padapter->stapriv, get_bssid(&padapter->mlmepriv));
-@@ -1705,7 +1705,7 @@ int rtw_resume_process_wow(struct adapter *padapter)
- 		DBG_871X_LEVEL(_drv_always_, "do not reset timer\n");
- 	}
- 
--	pwrpriv->wowlan_mode =false;
-+	pwrpriv->wowlan_mode = false;
- 
- 	/* clean driver side wake up reason. */
- 	pwrpriv->wowlan_wake_reason = 0;
+> ---
+>  drivers/gpu/drm/i915/intel_lpe_audio.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/gpu/drm/i915/intel_lpe_audio.c b/drivers/gpu/drm/i915/intel_lpe_audio.c
+> index 7a5b41b..d8ca187 100644
+> --- a/drivers/gpu/drm/i915/intel_lpe_audio.c
+> +++ b/drivers/gpu/drm/i915/intel_lpe_audio.c
+> @@ -331,6 +331,7 @@ void intel_lpe_audio_teardown(struct drm_i915_private *dev_priv)
+>   * audio driver and i915
+>   * @dev_priv: the i915 drm device private data
+>   * @eld : ELD data
+> + * @pipe: pipe id
+>   * @port: port id
+>   * @tmds_clk_speed: tmds clock frequency in Hz
+>   *
+> -- 
+> 2.9.3
+> 
+> _______________________________________________
+> dri-devel mailing list
+> dri-devel@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+
 -- 
-1.9.1
-
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
 
