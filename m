@@ -1,79 +1,152 @@
-X-GM-THRID: 6394514785010974720
-X-Received: by 10.99.98.193 with SMTP id w184mr5546784pgb.83.1488838993009;
-        Mon, 06 Mar 2017 14:23:13 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.154.77 with SMTP id c74ls4967403ioe.29.gmail; Mon, 06 Mar
- 2017 14:23:12 -0800 (PST)
-X-Received: by 10.107.50.198 with SMTP id y189mr7013712ioy.81.1488838992179;
-        Mon, 06 Mar 2017 14:23:12 -0800 (PST)
-Return-Path: <tahia.khan@gmail.com>
-Received: from mail-io0-x243.google.com (mail-io0-x243.google.com. [2607:f8b0:4001:c06::243])
-        by gmr-mx.google.com with ESMTPS id f73si333318ita.1.2017.03.06.14.23.12
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 06 Mar 2017 14:23:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of tahia.khan@gmail.com designates 2607:f8b0:4001:c06::243 as permitted sender) client-ip=2607:f8b0:4001:c06::243;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of tahia.khan@gmail.com designates 2607:f8b0:4001:c06::243 as permitted sender) smtp.mailfrom=tahia.khan@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-io0-x243.google.com with SMTP id 68so16501726ioh.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 06 Mar 2017 14:23:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=Gzc5qIRGil5scbV7OZiWEP56CqpE9L2KprbpshK/xPM=;
-        b=HkCPPk1dNOEwIzBkAQzvZIhi5am54cv6Gx/wRhr6u2T2B0LcSxSeP/gaRQ1ZHf0Oyd
-         seI7Lfmog9AFcyr/zRn9aoKKFJI8ftvpV/nPfZr7e8beNPqaj2JUdjQrV1pJIW3FLxzq
-         V8c3qZyMHPnG9bnsg+F4R+majJrg/WyxolE0lVyY3OJ4eIGyA2fV9hqt087YwUaoaR4O
-         RlSd6J5HF2WwMq3VCmNx6CapX1Ij7bp5jxXxd9iUNqIZvuhy3MntqqgYk0NJuf5KVcZs
-         TQdEAbV9HknLaAKTASwSRXQHrCIiJ9RL77625xXFT6ebZtAlteDZ9wAQfMpN2ReVewwW
-         yfqw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=Gzc5qIRGil5scbV7OZiWEP56CqpE9L2KprbpshK/xPM=;
-        b=sz71NBVFwikorqnYG6e3NILeoGmePagXkk34s5m+p8NVjBbcVWRhGdvSOjq0UWXUR3
-         GR9w2ySrsk4GlcYR4FhPT4quJoKFb1XsMjsicv2wENq2uwK+rryGjMuOFhQ3G/9589cD
-         66L5Nxe8gErn+1dacL8T3r7ttn/ez29lLP83alRfHQMlsEfbNPt5YKlFmFdc4aUdCLXo
-         pXRioJ7MXNNQGEuuTBZFSqA4uqC2IhrhdSncCUFY0RsKtx1q2HGLx+BlrooPMQUkibtW
-         PocUGcf9hTYpkj0rLd3S/g2b1YFuuwVRNMNzuTXTQDvIqbUxHZDnRxyabdH0O2fb5ioI
-         E1wg==
-X-Gm-Message-State: AMke39nIxOOjC+CkTpB4IpvFHemg+P6zwynnXXpe3qbLlgGYMsPWhK9T4KcOhXYJd8aaiQ==
-X-Received: by 10.107.30.213 with SMTP id e204mr3772505ioe.203.1488838992041;
-        Mon, 06 Mar 2017 14:23:12 -0800 (PST)
-Return-Path: <tahia.khan@gmail.com>
-Received: from coolbox (24-212-136-169.cable.teksavvy.com. [24.212.136.169])
-        by smtp.gmail.com with ESMTPSA id l79sm5484239itb.24.2017.03.06.14.23.11
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 06 Mar 2017 14:23:11 -0800 (PST)
-Date: Mon, 6 Mar 2017 17:23:10 -0500
-From: Tahia Khan <tahia.khan@gmail.com>
-To: outreachy-kernel@googlegroups.com, aditya.shankar@microchip.com,
-	ganesh.krishna@microchip.com, gregkh@linuxfoundation.org
-Subject: [PATCH 0/3] staging: wilc1000: renames multiple camel-cased
- parameters in wilc methods
-Message-ID: <cover.1488838177.git.tahia.khan@gmail.com>
+X-GM-THRID: 6403001709178650624
+Date: Thu, 30 Mar 2017 18:43:06 -0700 (PDT)
+From: Varsha Rao <rvarsha016@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: rvarsha016@gmail.com, davem@davemloft.net, kuznet@ms2.inr.ac.ru,
+	jmorris@namei.org, yoshfuji@linux-ipv6.org, kaber@trash.net,
+	netdev@vger.kernel.org
+Message-Id: <9b1310d4-cc8b-4082-916b-26687307f146@googlegroups.com>
+In-Reply-To: <1490818609.24891.49.camel@edumazet-glaptop3.roam.corp.google.com>
+References: <cover.1490813977.git.rvarsha016@gmail.com>
+ <58dc0820.8943620a.67760.546e@mx.google.com>
+ <1490818609.24891.49.camel@edumazet-glaptop3.roam.corp.google.com>
+Subject: Re: [PATCH 2/2] net: ipv4: Use BIT macro.
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_116_717928862.1490924586822"
+X-Google-Token: EKro9sYFfFdDyvATAzg0
+X-Google-IP: 117.211.102.68
 
-Multiple camel-cased parameters renamed in wilc RX buffer 
-manipulation methods. Originally reported by checkpatch.pl.
+------=_Part_116_717928862.1490924586822
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_117_1046123384.1490924586822"
 
-Tahia Khan (3):
-  staging: wilc1000: Fixes camel-casing in wilc_scan_complete_received
-  staging: wilc1000: Fixes camel-casing in wilc_network_info_received
-  staging: wilc1000: Fixes camel-casing in wilc_gnrl_info_received
+------=_Part_117_1046123384.1490924586822
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
- drivers/staging/wilc1000/coreconfigurator.h | 12 ++++++------
- drivers/staging/wilc1000/host_interface.c   | 30 ++++++++++++++---------------
- 2 files changed, 21 insertions(+), 21 deletions(-)
 
--- 
-2.7.4
 
+On Thursday, March 30, 2017 at 2:20:27 AM UTC+5:30, Eric Dumazet wrote:
+>
+> On Thu, 2017-03-30 at 00:46 +0530, Varsha Rao wrote: 
+> > Replace bitwise left shift by one operations with BIT() macro. This 
+> patch 
+> > fixes the checkpatch issue. 
+> > 
+> > Signed-off-by: Varsha Rao <rvars...@gmail.com <javascript:>> 
+> > --- 
+> >  net/ipv4/tcp_bbr.c | 4 ++-- 
+> >  1 file changed, 2 insertions(+), 2 deletions(-) 
+> > 
+> > diff --git a/net/ipv4/tcp_bbr.c b/net/ipv4/tcp_bbr.c 
+> > index 4da4bc1..9f2c869 100644 
+> > --- a/net/ipv4/tcp_bbr.c 
+> > +++ b/net/ipv4/tcp_bbr.c 
+> > @@ -71,10 +71,10 @@ 
+> >   * an issue. The upper bound isn't an issue with existing technologies. 
+> >   */ 
+> >  #define BW_SCALE 24 
+> > -#define BW_UNIT (1 << BW_SCALE) 
+> > +#define BW_UNIT BIT(BW_SCALE) 
+> >   
+> >  #define BBR_SCALE 8        /* scaling factor for fractions in BBR (e.g. 
+> gains) */ 
+> > -#define BBR_UNIT (1 << BBR_SCALE) 
+> > +#define BBR_UNIT BIT(BBR_SCALE) 
+> >   
+> >  /* BBR has the following modes for deciding how fast to send: */ 
+> >  enum bbr_mode { 
+>
+> Well, no.  BIT() is using unsigned long. 
+>
+> #define BIT(nr)    (1UL << (nr)) 
+
+This change might have unintended effects. 
+>
+> Maybe checkpatch should be fixed. 
+>
+
+
+Okay, I will revert these changes. When I grep fot definition, I get the 
+following.   
+
+arch/arm/mach-davinci/sleep.S:#define BIT(nr)                   (1 << (nr))
+include/linux/bitops.h:#define BIT(nr)                  (1UL << (nr))
+tools/perf/bench/numa.c:#define BIT(x) (1ul << x)
+tools/perf/util/intel-pt-decoder/intel-pt-pkt-decoder.c:#define 
+BIT(n)          (1 << (n))
+tools/vm/page-types.c:#define BIT(name)         (1ULL << KPF_##name)
+ 
+But why is the definition not uniform if it causes problem in some files on 
+usage?
+
+Thanks,
+Varsha Rao     
+
+------=_Part_117_1046123384.1490924586822
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Thursday, March 30, 2017 at 2:20:27 AM UTC+5:30=
+, Eric Dumazet wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;m=
+argin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">On Thu, 2=
+017-03-30 at 00:46 +0530, Varsha Rao wrote:
+<br>&gt; Replace bitwise left shift by one operations with BIT() macro. Thi=
+s patch
+<br>&gt; fixes the checkpatch issue.
+<br>&gt;=20
+<br>&gt; Signed-off-by: Varsha Rao &lt;<a href=3D"javascript:" target=3D"_b=
+lank" gdf-obfuscated-mailto=3D"HZ7eNrOzBwAJ" rel=3D"nofollow" onmousedown=
+=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.href=3D=
+&#39;javascript:&#39;;return true;">rvars...@gmail.com</a>&gt;
+<br>&gt; ---
+<br>&gt; =C2=A0net/ipv4/tcp_bbr.c | 4 ++--
+<br>&gt; =C2=A01 file changed, 2 insertions(+), 2 deletions(-)
+<br>&gt;=20
+<br>&gt; diff --git a/net/ipv4/tcp_bbr.c b/net/ipv4/tcp_bbr.c
+<br>&gt; index 4da4bc1..9f2c869 100644
+<br>&gt; --- a/net/ipv4/tcp_bbr.c
+<br>&gt; +++ b/net/ipv4/tcp_bbr.c
+<br>&gt; @@ -71,10 +71,10 @@
+<br>&gt; =C2=A0 * an issue. The upper bound isn&#39;t an issue with existin=
+g technologies.
+<br>&gt; =C2=A0 */
+<br>&gt; =C2=A0#define BW_SCALE 24
+<br>&gt; -#define BW_UNIT (1 &lt;&lt; BW_SCALE)
+<br>&gt; +#define BW_UNIT BIT(BW_SCALE)
+<br>&gt; =C2=A0
+<br>&gt; =C2=A0#define BBR_SCALE 8=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0/* scaling factor for fractions in BBR (e.g. gains) */
+<br>&gt; -#define BBR_UNIT (1 &lt;&lt; BBR_SCALE)
+<br>&gt; +#define BBR_UNIT BIT(BBR_SCALE)
+<br>&gt; =C2=A0
+<br>&gt; =C2=A0/* BBR has the following modes for deciding how fast to send=
+: */
+<br>&gt; =C2=A0enum bbr_mode {
+<br>
+<br>Well, no. =C2=A0BIT() is using unsigned long.
+<br>
+<br>#define BIT(nr) =C2=A0 =C2=A0(1UL &lt;&lt; (nr))
+</blockquote><blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-le=
+ft: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">This change might=
+ have unintended effects.
+<br>
+<br>Maybe checkpatch should be fixed.
+<br></blockquote><div><br><br><div>Okay, I will revert these changes. When =
+I grep fot definition, I get the following. =C2=A0 <br><br>arch/arm/mach-da=
+vinci/sleep.S:#define BIT(nr)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 &lt;&lt;=
+ (nr))<br>include/linux/bitops.h:#define BIT(nr)=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ (1UL &lt;&lt; (nr))<br>tools/perf/bench/numa.c:#define BIT(x) (1ul &lt;&lt=
+; x)<br>tools/perf/util/intel-pt-decoder/intel-pt-pkt-decoder.c:#define BIT=
+(n)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (1 &lt;&lt; (n))<=
+br>tools/vm/page-types.c:#define BIT(name)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 (1ULL &lt;&lt; KPF_##name)<br>=C2=A0<br></div>But why is th=
+e definition not uniform if it causes problem in some files on usage?<br><b=
+r>Thanks,<br>Varsha Rao=C2=A0 =C2=A0=C2=A0 <br></div></div>
+------=_Part_117_1046123384.1490924586822--
+
+------=_Part_116_717928862.1490924586822--
 
