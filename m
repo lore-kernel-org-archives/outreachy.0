@@ -1,67 +1,78 @@
 X-GM-THRID: 6402531164952723456
-X-Received: by 10.25.145.17 with SMTP id t17mr5438394lfd.25.1491578844914;
-        Fri, 07 Apr 2017 08:27:24 -0700 (PDT)
+X-Received: by 10.107.192.5 with SMTP id q5mr4937183iof.102.1491110431551;
+        Sat, 01 Apr 2017 22:20:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.71.79 with SMTP id u76ls965049lja.51.gmail; Fri, 07 Apr
- 2017 08:27:23 -0700 (PDT)
-X-Received: by 10.46.20.16 with SMTP id u16mr4336973ljd.23.1491578843453;
-        Fri, 07 Apr 2017 08:27:23 -0700 (PDT)
-Return-Path: <pneira@us.es>
-Received: from mail.us.es (mail.us.es. [193.147.175.20])
-        by gmr-mx.google.com with ESMTPS id d184si285397wmc.0.2017.04.07.08.27.23
+Received: by 10.157.17.215 with SMTP id y23ls913921oty.7.gmail; Sat, 01 Apr
+ 2017 22:20:31 -0700 (PDT)
+X-Received: by 10.129.182.11 with SMTP id u11mr4855567ywh.149.1491110431152;
+        Sat, 01 Apr 2017 22:20:31 -0700 (PDT)
+Received: by 10.202.94.136 with SMTP id s130msoib;
+        Sat, 1 Apr 2017 16:48:26 -0700 (PDT)
+X-Received: by 10.107.136.36 with SMTP id k36mr4226782iod.41.1491090506412;
+        Sat, 01 Apr 2017 16:48:26 -0700 (PDT)
+Return-Path: <stephen@networkplumber.org>
+Received: from mail-pg0-x22f.google.com (mail-pg0-x22f.google.com. [2607:f8b0:400e:c05::22f])
+        by gmr-mx.google.com with ESMTPS id s67si1333880pfs.4.2017.04.01.16.48.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 07 Apr 2017 08:27:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
+        Sat, 01 Apr 2017 16:48:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of stephen@networkplumber.org designates 2607:f8b0:400e:c05::22f as permitted sender) client-ip=2607:f8b0:400e:c05::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
-Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
-	by mail.us.es (Postfix) with ESMTP id 1A10B1324C3
-	for <outreachy-kernel@googlegroups.com>; Fri,  7 Apr 2017 17:27:19 +0200 (CEST)
-Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
-	by antivirus1-rhel7.int (Postfix) with ESMTP id 0B9F5DA38B
-	for <outreachy-kernel@googlegroups.com>; Fri,  7 Apr 2017 17:27:19 +0200 (CEST)
-Received: by antivirus1-rhel7.int (Postfix, from userid 99)
-	id F3793DA388; Fri,  7 Apr 2017 17:27:18 +0200 (CEST)
-X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
-X-Spam-Level: 
-X-Spam-Status: No, score=-107.2 required=7.5 tests=BAYES_50,
-	HEADER_FROM_DIFFERENT_DOMAINS,RP_MATCHES_RCVD,SMTPAUTH_US,SPF_HELO_FAIL,
-	USER_IN_WHITELIST autolearn=disabled version=3.4.1
-Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
-	by antivirus1-rhel7.int (Postfix) with ESMTP id 18DD8DA4E3
-	for <outreachy-kernel@googlegroups.com>; Fri,  7 Apr 2017 17:27:16 +0200 (CEST)
-Received: from 192.168.1.13 (192.168.1.13)
- by antivirus1-rhel7.int (F-Secure/fsigk_smtp/540/antivirus1-rhel7.int);
- Fri, 07 Apr 2017 17:27:16 +0200 (CEST)
-X-Virus-Status: clean(F-Secure/fsigk_smtp/540/antivirus1-rhel7.int)
-Received: (qmail 3380 invoked from network); 7 Apr 2017 17:27:15 +0200
-Received: from 1984.lsi.us.es (HELO us.es) (1984lsi@150.214.188.80)
-  by mail.us.es with AES128-SHA encrypted SMTP; 7 Apr 2017 17:27:15 +0200
-Date: Fri, 7 Apr 2017 17:27:12 +0200
-From: Pablo Neira Ayuso <pablo@netfilter.org>
+       dkim=pass header.i=@networkplumber-org.20150623.gappssmtp.com;
+       spf=pass (google.com: domain of stephen@networkplumber.org designates 2607:f8b0:400e:c05::22f as permitted sender) smtp.mailfrom=stephen@networkplumber.org
+Received: by mail-pg0-x22f.google.com with SMTP id x125so93640944pgb.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 01 Apr 2017 16:48:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=networkplumber-org.20150623.gappssmtp.com; s=20150623;
+        h=date:from:to:cc:subject:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=GglY3ElDZIlvARrS7AlrZyPRQ6fXQeEjuxsHxyO3ZT0=;
+        b=QIW7Hly05MRe7T3LUtUhI0V6qMAh+D3gHYmhNEdTUJvLr1cN4ikttzzcIEezankFto
+         jPSyFKssb7NA7VcbJWUAiJ5xPe+Zk5KVW3pLRL4e0aSiun9SKy0YZ9jPiTJs0uR+4l7u
+         6ORy+zGZNtZJfu+zqc2+hCaDVTYN0m1roklqgmc924Xo02F/gHRzGpsm4gP2DJqhnYEO
+         svq+aGgspqj+8dINMiLHinc8JI7feMnrWbNbW4c4qiqnNGlgw3ISel12KWbSXB3e/d+T
+         6ti2MDlAjDs//uiGC2a0WqkefpI/1hxjxtc/vKbziJVQvZeezYZBlRCcM+XuO8VAJGhg
+         jilg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=GglY3ElDZIlvARrS7AlrZyPRQ6fXQeEjuxsHxyO3ZT0=;
+        b=sfRVg7Pt3XvY0i5n9r5zM+J5hzwF5B8UUaOz9Uyf7yDmmLSv5do169LouVDAoOKQR3
+         enXp3RG1vZmH1rrUMhmLIgorOaRfZJkf9hj8UPtUE7HGnsvsGf4m3/7C2lgHcOtbSUtT
+         SJOU8sx6ZaqK3Ozi5UzF1aqkBn2E4ylwjF/IuMqHLK+rYSIMLUUNuwaCvvKLAYMcXOZe
+         sUx+PhD9Hkt+eHNpJPCGcHaj77d7PEn3G9MV7GnqIXeKB8homw2lYoTebcfTNxT7t5s5
+         iFLFaw0Ryac6zDkEgfLIRnGdzeZ3faSK+Gp1K4tNfRVlpV044jeAtUZgJ8AHYLjrUFnn
+         3V1A==
+X-Gm-Message-State: AFeK/H2A3LuLI74ymkkDOegvH+PNAGT/yjFPq4+aYGiTnOZ6WUSPhoWL9ypkv5d7y3hJYw==
+X-Received: by 10.84.149.102 with SMTP id b35mr12063589plh.3.1491090506215;
+        Sat, 01 Apr 2017 16:48:26 -0700 (PDT)
+Return-Path: <stephen@networkplumber.org>
+Received: from plumbers-lap.home.lan (cpe-98-155-35-236.hawaii.res.rr.com. [98.155.35.236])
+        by smtp.gmail.com with ESMTPSA id i124sm17848157pgd.66.2017.04.01.16.48.24
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 01 Apr 2017 16:48:26 -0700 (PDT)
+Date: Sat, 1 Apr 2017 16:48:21 -0700
+From: Stephen Hemminger <stephen@networkplumber.org>
 To: simran singhal <singhalsimran0@gmail.com>
-Cc: kadlec@blackhole.kfki.hu, davem@davemloft.net,
-	netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
-	Stephen Hemminger <stephen@networkplumber.org>,
-	Alexey Kuznetsov <kuznet@ms2.inr.ac.ru>,
-	James Morris <jmorris@namei.org>,
-	Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>,
-	Patrick McHardy <kaber@trash.net>,
-	bridge@lists.linux-foundation.org
+Cc: pablo@netfilter.org, kadlec@blackhole.kfki.hu, davem@davemloft.net,
+ netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, Alexey
+ Kuznetsov <kuznet@ms2.inr.ac.ru>, James Morris <jmorris@namei.org>, Hideaki
+ YOSHIFUJI <yoshfuji@linux-ipv6.org>, Patrick McHardy <kaber@trash.net>,
+ bridge@lists.linux-foundation.org
 Subject: Re: [PATCH v2] net: Remove unnecessary cast on void pointer
-Message-ID: <20170407152712.GA1466@salvia>
+Message-ID: <20170401164821.036f1b41@plumbers-lap.home.lan>
+In-Reply-To: <20170328190516.GA19531@singhal-Inspiron-5558>
 References: <20170328190516.GA19531@singhal-Inspiron-5558>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20170328190516.GA19531@singhal-Inspiron-5558>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Virus-Scanned: ClamAV using ClamSMTP
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-On Wed, Mar 29, 2017 at 12:35:16AM +0530, simran singhal wrote:
+On Wed, 29 Mar 2017 00:35:16 +0530
+simran singhal <singhalsimran0@gmail.com> wrote:
+
 > The following Coccinelle script was used to detect this:
 > @r@
 > expression x;
@@ -82,6 +93,10 @@ On Wed, Mar 29, 2017 at 12:35:16AM +0530, simran singhal wrote:
 > )
 > 
 > Unnecessary parantheses are also remove.
+> 
+> Signed-off-by: simran singhal <singhalsimran0@gmail.com>
 
-Applied, thanks.
+Looks good
+
+Reviewed-by: Stephen Hemminger <stephen@networkplumber.org>
 
