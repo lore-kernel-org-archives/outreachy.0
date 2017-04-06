@@ -1,106 +1,84 @@
-X-GM-THRID: 6755870157835337728
-X-Received: by 2002:a63:1b44:: with SMTP id b4mr38266033pgm.421.1572973597693;
-        Tue, 05 Nov 2019 09:06:37 -0800 (PST)
+X-GM-THRID: 6403004360189542400
+X-Received: by 10.28.9.203 with SMTP id 194mr30602wmj.21.1491495756057;
+        Thu, 06 Apr 2017 09:22:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90a:1ae6:: with SMTP id p93ls1016556pjp.2.canary-gmail;
- Tue, 05 Nov 2019 09:06:36 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyS5H8szZuipsr1JI7gDRQTVrdJRSBHuiX27SDTIwmRSuQYcAGDTlX49EidMsd9AiTh5G2t
-X-Received: by 2002:a17:902:d215:: with SMTP id t21mr22764030ply.125.1572973596159;
-        Tue, 05 Nov 2019 09:06:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572973596; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Ta585yaWK9kNL73wvAOtTuMlPpSyKvvC/Q8eQgkqYHK+2pHomY1l69CrDb/V0JgvLi
-         uMCZW+nktS3g7k6csD97d+z4dP4hp0njuAjX1KSThs45mYqoPBTqYvL+nT044dStZNbI
-         s6UOPzFHUxaSZW7p6qf8zYe07DoxU3PvWpNs0aQmrLv11w5iv29/kHZHyH/hzWZmsWf8
-         cK0vmr5dv8cYdziFc5XlYMOL4Y8VmFGCsDFjORKEEMM2bNvBQv8oLSL1xIaPqV+jQ9WP
-         7AbP+RwG8upCgZt8c1mDqVY+QBvI1933s3TblDnLMOnGqvTtOXqaQQeRdSVe2f+Uc6fn
-         QkFg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=eNGZaa0yBRbno6pqmKeh7B94YL+TFwbqemYs16kySaw=;
-        b=lRgqNgAocGninBhENHo8mgb6C9bStYkJlnb96e9sdJ/5lYzPHIAyLfrC227eAn3aXF
-         uOsvQOwdF4jfcP2RbR9ubgbQI6oYtqPNU9v0CYuKMqspyl3RWj0UDMXcCFn8Y7egQc48
-         RfAkoLgv1gwIsIyeq2z/GAkYi3goSQlGV8X8YOGXfuNFOGdPoRiMO3hR9263wqf6pN+f
-         Xnw/0GwOKiMJhfG41qndks0iteiwCxy/uc83DBbjrvmsFbNpxU+44IvaOXhxVI8ZnFey
-         UQ6GlcT0D1jP8jH62LqYyYqfzyWXQqN6mjCgKh5JCa20pql6By3NnYNyJC5q57J6l9mU
-         JEcQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DGchO4N6;
-       spf=pass (google.com: domain of nachukannan@gmail.com designates 2607:f8b0:4864:20::f44 as permitted sender) smtp.mailfrom=nachukannan@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <nachukannan@gmail.com>
-Received: from mail-qv1-xf44.google.com (mail-qv1-xf44.google.com. [2607:f8b0:4864:20::f44])
-        by gmr-mx.google.com with ESMTPS id s144si713272pfc.5.2019.11.05.09.06.36
+Received: by 10.28.196.15 with SMTP id u15ls2669686wmf.14.gmail; Thu, 06 Apr
+ 2017 09:22:34 -0700 (PDT)
+X-Received: by 10.28.21.1 with SMTP id 1mr1168055wmv.3.1491495754910;
+        Thu, 06 Apr 2017 09:22:34 -0700 (PDT)
+Return-Path: <pneira@us.es>
+Received: from mail.us.es (mail.us.es. [193.147.175.20])
+        by gmr-mx.google.com with ESMTPS id 82si80475wmg.3.2017.04.06.09.22.34
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 05 Nov 2019 09:06:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of nachukannan@gmail.com designates 2607:f8b0:4864:20::f44 as permitted sender) client-ip=2607:f8b0:4864:20::f44;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 06 Apr 2017 09:22:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DGchO4N6;
-       spf=pass (google.com: domain of nachukannan@gmail.com designates 2607:f8b0:4864:20::f44 as permitted sender) smtp.mailfrom=nachukannan@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qv1-xf44.google.com with SMTP id g18so236172qvp.8
-        for <outreachy-kernel@googlegroups.com>; Tue, 05 Nov 2019 09:06:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=eNGZaa0yBRbno6pqmKeh7B94YL+TFwbqemYs16kySaw=;
-        b=DGchO4N6+m8iBhD4z1Wk93pMNTF2QARosaLyvq0W+bY+5k07WAXaFiUl4O8WZdgiYG
-         hWIhtmE60lv9PWP8DOuOSUtz8H8Vl3RxLJVq7+xqlU0ZvomDxnHoGDBoFtRriXL+g/64
-         sJ5AanviCa+AZxNA39PHUpzed1yHSMnAtT3gCag4V29qxPy71DpOJhZcrJlTvWgkZUvV
-         NNlAWefdIcVrMuyLe7kMuUMaX9GUbX0eN/2ITod0lPLMg+VwU8Z239uNAcpuOlhrYW+h
-         fe6Yr11DqL/WqkYmZ+/xb//eWqdXpOpoDu7CBdzDQfapao3Zvl+FXZsO1gMCZX+xKdks
-         R3Bg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=eNGZaa0yBRbno6pqmKeh7B94YL+TFwbqemYs16kySaw=;
-        b=QbuTqIpckWugmLNaGo5+G3DkkFjaRcp6YKpBbNFbGI6MbAa4n3xTxxeY6bbxnr/uVv
-         D7HKiLOfb3aHLpRuDjgr37U31qNz40jHeFze7lCxh5Wnn/m7RxryrBEyHToFq4Xom9tx
-         ZcnAdwJWE/NxZnJsVMs6+wE3mCuwIRvFuyZn8PsqG/hAG7wyYy1MgVBcyftGnRjTtwWF
-         Jr+zzsMD/T+ExGzwTDRGm1vyVeoxjs8tjmlrv4tO82WAe/sqzUPcBdWsk1DXwLj/ETHZ
-         KK1vWAzJYQzipzg3vaTw2t7yxDi3efhtCvZs6eKexa0lrixkjEfP/b+Wp1OIxr+N+/v7
-         LyJA==
-X-Gm-Message-State: APjAAAV+A7TUTLxTdKYZ4p4i8MjsR7E77gL3DuI91/RfVGTxeGQrnkaS
-	+f/cN3QzHROTkXwyOq5w7BtQvxSsivY=
-X-Received: by 2002:ad4:5183:: with SMTP id b3mr2006327qvp.144.1572973595217;
-        Tue, 05 Nov 2019 09:06:35 -0800 (PST)
-Return-Path: <nachukannan@gmail.com>
-Received: from ubuntu ([107.15.113.108])
-        by smtp.gmail.com with ESMTPSA id n49sm6145652qtk.94.2019.11.05.09.06.34
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 05 Nov 2019 09:06:34 -0800 (PST)
-From: Nachammai Karuppiah <nachukannan@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com,
-	Nachammai Karuppiah <nachukannan@gmail.com>
-Subject: [PATCH] staging: rtl8723bs: hal: Remove unnecessary typecast in kfree.
-Date: Tue,  5 Nov 2019 09:06:31 -0800
-Message-Id: <1572973591-12892-1-git-send-email-nachukannan@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
+	by mail.us.es (Postfix) with ESMTP id C7B7711ADC6
+	for <outreachy-kernel@googlegroups.com>; Thu,  6 Apr 2017 18:22:31 +0200 (CEST)
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id B75C4DA870
+	for <outreachy-kernel@googlegroups.com>; Thu,  6 Apr 2017 18:22:31 +0200 (CEST)
+Received: by antivirus1-rhel7.int (Postfix, from userid 99)
+	id AC83ADA865; Thu,  6 Apr 2017 18:22:31 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
+X-Spam-Level: 
+X-Spam-Status: No, score=-107.2 required=7.5 tests=BAYES_50,
+	HEADER_FROM_DIFFERENT_DOMAINS,RP_MATCHES_RCVD,SMTPAUTH_US,SPF_HELO_FAIL,
+	USER_IN_WHITELIST autolearn=disabled version=3.4.1
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id B603ADA873
+	for <outreachy-kernel@googlegroups.com>; Thu,  6 Apr 2017 18:22:29 +0200 (CEST)
+Received: from 192.168.1.13 (192.168.1.13)
+ by antivirus1-rhel7.int (F-Secure/fsigk_smtp/540/antivirus1-rhel7.int);
+ Thu, 06 Apr 2017 18:22:29 +0200 (CEST)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/540/antivirus1-rhel7.int)
+Received: (qmail 26553 invoked from network); 6 Apr 2017 18:22:29 +0200
+Received: from 1984.lsi.us.es (HELO us.es) (1984lsi@150.214.188.80)
+  by mail.us.es with AES128-SHA encrypted SMTP; 6 Apr 2017 18:22:29 +0200
+Date: Thu, 6 Apr 2017 18:22:14 +0200
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Varsha Rao <rvarsha016@gmail.com>
+Cc: netfilter-devel@vger.kernel.org,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [PATCH 1/2] iptables: Remove explicit static variables
+ initalization.
+Message-ID: <20170406162214.GA5655@salvia>
+References: <cover.1490815157.git.rvarsha016@gmail.com>
+ <58dc0a89.549c620a.6eb0a.5c33@mx.google.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <58dc0a89.549c620a.6eb0a.5c33@mx.google.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Virus-Scanned: ClamAV using ClamSMTP
 
-Remove typecast in the call to kfree as it is not needed.
-Issue fixed using Coccinelle.
+On Thu, Mar 30, 2017 at 12:57:02AM +0530, Varsha Rao wrote:
+> Static variables are initialized to zero by default, so remove explicit
+> initalization. This patch fixes the checkpatch issue.
 
-Signed-off-by: Nachammai Karuppiah <nachukannan@gmail.com>
----
- drivers/staging/rtl8723bs/hal/sdio_ops.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Applied.
 
-diff --git a/drivers/staging/rtl8723bs/hal/sdio_ops.c b/drivers/staging/rtl8723bs/hal/sdio_ops.c
-index 5ecd1c8..b6b4adb 100644
---- a/drivers/staging/rtl8723bs/hal/sdio_ops.c
-+++ b/drivers/staging/rtl8723bs/hal/sdio_ops.c
-@@ -986,7 +986,7 @@ void sd_int_dpc(struct adapter *adapter)
- 				if (c2h_id_filter_ccx_8723b((u8 *)c2h_evt)) {
- 					/* Handle CCX report here */
- 					rtw_hal_c2h_handler(adapter, (u8 *)c2h_evt);
--					kfree((u8 *)c2h_evt);
-+					kfree(c2h_evt);
- 				} else {
- 					rtw_c2h_wk_cmd(adapter, (u8 *)c2h_evt);
- 				}
--- 
-2.7.4
+But I had to add this chunk:
 
+diff --git a/iptables/xtables-restore.c b/iptables/xtables-restore.c
+index a551c8c19f7f..6afa0d0ec5b1 100644
+--- a/iptables/xtables-restore.c
++++ b/iptables/xtables-restore.c
+@@ -24,7 +24,7 @@
+ #define DEBUGP(x, args...)
+ #endif
+ 
+-static int counters = 0, verbose = 0, noflush = 0;
++static int counters, verbose, noflush;
+ 
+ /* Keeping track of external matches and targets.  */
+ static const struct option options[] = {
+
+You have to be more careful. It's good if you just fix all spots in
+one single go.
+
+Thanks!
 
