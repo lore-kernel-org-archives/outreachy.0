@@ -1,188 +1,438 @@
-X-GM-THRID: 6805856323251470336
-X-Received: by 2002:aa7:d318:: with SMTP id p24mr1878914edq.386.1584611908381;
-        Thu, 19 Mar 2020 02:58:28 -0700 (PDT)
+X-GM-THRID: 6402594757348950016
+X-Received: by 10.28.20.136 with SMTP id 130mr1090484wmu.11.1491516405873;
+        Thu, 06 Apr 2017 15:06:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:358b:: with SMTP id o11ls827300ejb.3.gmail; Thu, 19
- Mar 2020 02:58:27 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvJY+KitMnPew+WsMdvzfGjrye60re2vagSMVlzMTCjp+wOhgPTiOYsWobdeppK5S0Pc9lD
-X-Received: by 2002:a17:906:939a:: with SMTP id l26mr2439802ejx.276.1584611907142;
-        Thu, 19 Mar 2020 02:58:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584611907; cv=none;
-        d=google.com; s=arc-20160816;
-        b=qMGM3d5U3CCzG91w30TAaBSAnSiTKhKtddDh+e2WMiwBM7AR/PI8qZnE2duM0Mbyiw
-         BgAxYg+vxffNbsdczvlBwgl1BdcXdXyeRDg7OljD60Jv/3edou9qeBn9V9plRvnn3jCw
-         +CFge97eiKIoqHhhuE09b1AvWmcm5jvJi5EBfojAxtzdVF0o31qV/W/5uAL4wYO+rySF
-         SGcBbACVmlkIMl+Yl4Q+1tqX4b5h2/S7Xyax4dWf285rqO8FRu99dlKve9q6GCKELuJX
-         wiB8K3F6rFUmUa8iY5CFdCYW+zw5w5LiSBl0i9x9xGfE40meAVBNyKSUMjNnS3Zhppzs
-         Kueg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date;
-        bh=wDXvgexGRKQ7fGBA23f8xKPsKBQYwDPjnmBJ+pvTvrs=;
-        b=y4/biMTLksTfv6h1iQUejB897j3/qVjadLEIbO8z7MuysIf3lHimdeIwV+aOLnWh3l
-         tXb7HWwCnBaDRJ/568QBtLjEQM13lzhR9O5TLjLdrZPalVBYAy24XWtkN45p9fgaQFfG
-         pMAqbndq61IrfyNLsGa3FyzpmLKdRK2gaK4K2YTxpHZ0yGXqHTLlt6JJhERvb291bizd
-         iNy0BiRkr3JiYttZzexhYsop47bSuqLe63UkEQw/49eqvGzdatLQhDjcr9gqHPIn9mwP
-         /rhGErccmg0eApiAqyNT6mPOBgC/4zSoxrTNtqAT1jkGl4WUFkxomo4pbT5E4mNh9LP5
-         mvcA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Return-Path: <vkor@vkten.in>
-Received: from vkten.in (vkten.in. [104.244.73.96])
-        by gmr-mx.google.com with ESMTP id x7si80089ejw.0.2020.03.19.02.58.27
-        for <outreachy-kernel@googlegroups.com>;
-        Thu, 19 Mar 2020 02:58:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
+Received: by 10.25.168.207 with SMTP id r198ls2801189lfe.14.gmail; Thu, 06 Apr
+ 2017 15:06:44 -0700 (PDT)
+X-Received: by 10.25.169.141 with SMTP id s135mr4844009lfe.30.1491516404313;
+        Thu, 06 Apr 2017 15:06:44 -0700 (PDT)
+Return-Path: <pneira@us.es>
+Received: from mail.us.es (mail.us.es. [193.147.175.20])
+        by gmr-mx.google.com with ESMTPS id d184si119542wmc.0.2017.04.06.15.06.44
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 06 Apr 2017 15:06:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Received: (qmail 26735 invoked from network); 19 Mar 2020 09:58:25 -0000
-Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.202.245.105)
-  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
-  by vkten with ESMTPSA; 19 Mar 2020 09:58:25 -0000
-Date: Thu, 19 Mar 2020 15:28:15 +0530
-From: R Veera Kumar <vkor@vkten.in>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Hans de Goede <hdegoede@redhat.com>,
-	Larry Finger <Larry.Finger@lwfinger.net>,
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [RESEND PATCH] staging: rtl8723bs: hal: Correct typos and long line
- comments
-Message-ID: <20200319095807.GA3243@tulip.local>
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
+	by mail.us.es (Postfix) with ESMTP id 237F7137B8A
+	for <outreachy-kernel@googlegroups.com>; Fri,  7 Apr 2017 00:06:41 +0200 (CEST)
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 410E8DA871
+	for <outreachy-kernel@googlegroups.com>; Fri,  7 Apr 2017 00:06:45 +0200 (CEST)
+Received: by antivirus1-rhel7.int (Postfix, from userid 99)
+	id 35605DA862; Fri,  7 Apr 2017 00:06:45 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
+X-Spam-Level: 
+X-Spam-Status: No, score=-107.2 required=7.5 tests=BAYES_50,
+	HEADER_FROM_DIFFERENT_DOMAINS,RP_MATCHES_RCVD,SMTPAUTH_US,SPF_HELO_FAIL,
+	USER_IN_WHITELIST autolearn=disabled version=3.4.1
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 900FDDA7F7
+	for <outreachy-kernel@googlegroups.com>; Fri,  7 Apr 2017 00:06:42 +0200 (CEST)
+Received: from 192.168.1.13 (192.168.1.13)
+ by antivirus1-rhel7.int (F-Secure/fsigk_smtp/540/antivirus1-rhel7.int);
+ Fri, 07 Apr 2017 00:06:42 +0200 (CEST)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/540/antivirus1-rhel7.int)
+Received: (qmail 9663 invoked from network); 7 Apr 2017 00:06:38 +0200
+Received: from 1984.lsi.us.es (HELO us.es) (1984lsi@150.214.188.80)
+  by mail.us.es with AES128-SHA encrypted SMTP; 7 Apr 2017 00:06:38 +0200
+Date: Fri, 7 Apr 2017 00:06:33 +0200
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Arushi Singhal <arushisinghal19971997@gmail.com>
+Cc: outreachy-kernel@googlegroups.com,
+	Jozsef Kadlecsik <kadlec@blackhole.kfki.hu>, davem@davemloft.net,
+	netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
+	linux-kernel@vger.kernel.org, netdev@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH v3] net: netfilter: Add
+ nfnl_msg_type() helper function
+Message-ID: <20170406220633.GA1762@salvia>
+References: <20170328165732.GA11602@arushi-HP-Pavilion-Notebook>
 MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="6TrnltStXW4iwmi0"
+Content-Disposition: inline
+In-Reply-To: <20170328165732.GA11602@arushi-HP-Pavilion-Notebook>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Virus-Scanned: ClamAV using ClamSMTP
+
+
+--6TrnltStXW4iwmi0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
 
-Correct long line comments to respect 80 character line limit.
-Correct comment lines as per kernel-doc coding style.
-Correct typos in the comments.
-Misspelling found using checkpatch.pl.
+Hi,
 
-Signed-off-by: R Veera Kumar <vkor@vkten.in>
+On Tue, Mar 28, 2017 at 10:27:32PM +0530, Arushi Singhal wrote:
+> To remove complexity of code the function is added in nfnetlink.h
+> to make code more clear and readable.
+> This is opencoded in a way that makes it error prone for future
+> netfilter netlink subsystems.
+> 
+> Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+> ---
+> changes in v3
+>  -make the subject more clear.
+> 
+>  include/linux/netfilter/nfnetlink.h  |  6 ++++++
+>  net/netfilter/nf_conntrack_netlink.c | 12 +++++++-----
+>  net/netfilter/nfnetlink_acct.c       |  2 +-
+>  net/netfilter/nfnetlink_cthelper.c   |  2 +-
+>  net/netfilter/nfnetlink_cttimeout.c  |  4 ++--
+>  5 files changed, 17 insertions(+), 9 deletions(-)
+> 
+> diff --git a/include/linux/netfilter/nfnetlink.h b/include/linux/netfilter/nfnetlink.h
+> index 1b49209dd5c7..9a36a7c3145d 100644
+> --- a/include/linux/netfilter/nfnetlink.h
+> +++ b/include/linux/netfilter/nfnetlink.h
+> @@ -50,6 +50,12 @@ static inline bool lockdep_nfnl_is_held(__u8 subsys_id)
+>  {
+>  	return true;
+>  }
+> +
+> +static inline u16 nfnl_msg_type(u8 subsys, u8 msg_type)
+> +{
+> +	return subsys << 8 | msg_type;
+> +}
+
+This is not right. You have placed this new function definition inside
+the CONFIG_PROVE_LOCKING.
+
+So this is only defined iff CONFIG_PROVE_LOCKING is set on.
+
+>  #endif /* CONFIG_PROVE_LOCKING */
+>  
+>  /*
+> diff --git a/net/netfilter/nf_conntrack_netlink.c b/net/netfilter/nf_conntrack_netlink.c
+> index aa344c5868c5..67f6f88a3e92 100644
+> --- a/net/netfilter/nf_conntrack_netlink.c
+> +++ b/net/netfilter/nf_conntrack_netlink.c
+> @@ -467,7 +467,7 @@ ctnetlink_fill_info(struct sk_buff *skb, u32 portid, u32 seq, u32 type,
+>  	struct nlattr *nest_parms;
+>  	unsigned int flags = portid ? NLM_F_MULTI : 0, event;
+>  
+> -	event = NFNL_SUBSYS_CTNETLINK << 8 | IPCTNL_MSG_CT_NEW;
+
+I can find many more spots to be replaced via:
+
+git grep NFNL_SUBSYS_ net/netfilter/
+
+Patch attached.
+
+--6TrnltStXW4iwmi0
+Content-Type: text/x-diff; charset=us-ascii
+Content-Disposition: attachment; filename="0001-netfilter-Add-nfnl_msg_type-helper-function.patch"
+
+From 1f03a770eb030480968c9cb29be85e3d1cbadf3e Mon Sep 17 00:00:00 2001
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+Date: Tue, 28 Mar 2017 22:27:32 +0530
+Subject: [PATCH] netfilter: Add nfnl_msg_type() helper function
+
+Add and use nfnl_msg_type() function to replace opencoded nfnetlink
+message type. I suggested this change, Arushi Singhal made an initial
+patch to address this but was missing several spots.
+
+Signed-off-by: Pablo Neira Ayuso <pablo@netfilter.org>
 ---
- drivers/staging/rtl8723bs/hal/Hal8723BReg.h  | 14 ++---
- drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c | 61 ++++++++++++--------
- 2 files changed, 44 insertions(+), 31 deletions(-)
+ include/linux/netfilter/nfnetlink.h  |  5 +++++
+ net/netfilter/ipset/ip_set_core.c    |  2 +-
+ net/netfilter/nf_conntrack_netlink.c | 16 +++++++++-------
+ net/netfilter/nf_tables_api.c        | 17 ++++++++---------
+ net/netfilter/nf_tables_trace.c      |  3 ++-
+ net/netfilter/nfnetlink_acct.c       |  2 +-
+ net/netfilter/nfnetlink_cthelper.c   |  2 +-
+ net/netfilter/nfnetlink_cttimeout.c  |  4 ++--
+ net/netfilter/nfnetlink_log.c        |  2 +-
+ net/netfilter/nfnetlink_queue.c      |  2 +-
+ net/netfilter/nft_compat.c           |  2 +-
+ 11 files changed, 32 insertions(+), 25 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/Hal8723BReg.h b/drivers/staging/rtl8723bs/hal/Hal8723BReg.h
-index ce02457922b7..b9aca99478db 100644
---- a/drivers/staging/rtl8723bs/hal/Hal8723BReg.h
-+++ b/drivers/staging/rtl8723bs/hal/Hal8723BReg.h
-@@ -415,13 +415,13 @@
- #define	IMR_BCNDMAINT3_8723B		BIT23	/*  Beacon DMA Interrupt 3 */
- #define	IMR_BCNDMAINT2_8723B		BIT22	/*  Beacon DMA Interrupt 2 */
- #define	IMR_BCNDMAINT1_8723B		BIT21	/*  Beacon DMA Interrupt 1 */
--#define	IMR_BCNDOK7_8723B		BIT20	/*  Beacon Queue DMA OK Interrup 7 */
--#define	IMR_BCNDOK6_8723B		BIT19	/*  Beacon Queue DMA OK Interrup 6 */
--#define	IMR_BCNDOK5_8723B		BIT18	/*  Beacon Queue DMA OK Interrup 5 */
--#define	IMR_BCNDOK4_8723B		BIT17	/*  Beacon Queue DMA OK Interrup 4 */
--#define	IMR_BCNDOK3_8723B		BIT16	/*  Beacon Queue DMA OK Interrup 3 */
--#define	IMR_BCNDOK2_8723B		BIT15	/*  Beacon Queue DMA OK Interrup 2 */
--#define	IMR_BCNDOK1_8723B		BIT14	/*  Beacon Queue DMA OK Interrup 1 */
-+#define	IMR_BCNDOK7_8723B		BIT20	/*  Beacon Queue DMA OK Interrupt 7 */
-+#define	IMR_BCNDOK6_8723B		BIT19	/*  Beacon Queue DMA OK Interrupt 6 */
-+#define	IMR_BCNDOK5_8723B		BIT18	/*  Beacon Queue DMA OK Interrupt 5 */
-+#define	IMR_BCNDOK4_8723B		BIT17	/*  Beacon Queue DMA OK Interrupt 4 */
-+#define	IMR_BCNDOK3_8723B		BIT16	/*  Beacon Queue DMA OK Interrupt 3 */
-+#define	IMR_BCNDOK2_8723B		BIT15	/*  Beacon Queue DMA OK Interrupt 2 */
-+#define	IMR_BCNDOK1_8723B		BIT14	/*  Beacon Queue DMA OK Interrupt 1 */
- #define	IMR_ATIMEND_E_8723B		BIT13	/*  ATIM Window End Extension for Win7 */
- #define	IMR_TXERR_8723B			BIT11	/*  Tx Error Flag Interrupt Status, write 1 clear. */
- #define	IMR_RXERR_8723B			BIT10	/*  Rx Error Flag INT Status, Write 1 clear */
-diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c b/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
-index a69e8ae16565..f85cbcaf2c2b 100644
---- a/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
-+++ b/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
-@@ -823,7 +823,11 @@ static void ConstructProbeRsp(struct adapter *padapter, u8 *pframe, u32 *pLength
- }
- #endif /*  CONFIG_AP_WOWLAN */
+diff --git a/include/linux/netfilter/nfnetlink.h b/include/linux/netfilter/nfnetlink.h
+index 1b49209dd5c7..996711d8a7b4 100644
+--- a/include/linux/netfilter/nfnetlink.h
++++ b/include/linux/netfilter/nfnetlink.h
+@@ -41,6 +41,11 @@ int nfnetlink_set_err(struct net *net, u32 portid, u32 group, int error);
+ int nfnetlink_unicast(struct sk_buff *skb, struct net *net, u32 portid,
+ 		      int flags);
  
--/*  To check if reserved page content is destroyed by beacon beacuse beacon is too large. */
-+/*
-+ * To check if reserved page content is destroyed by beacon because
-+ * beacon is too large.
-+ */
++static inline u16 nfnl_msg_type(u8 subsys, u8 msg_type)
++{
++	return subsys << 8 | msg_type;
++}
 +
- /*  2010.06.23. Added by tynli. */
- void CheckFwRsvdPageContent(struct adapter *Adapter)
+ void nfnl_lock(__u8 subsys_id);
+ void nfnl_unlock(__u8 subsys_id);
+ #ifdef CONFIG_PROVE_LOCKING
+diff --git a/net/netfilter/ipset/ip_set_core.c b/net/netfilter/ipset/ip_set_core.c
+index c296f9b606d4..731ba9c0cf9b 100644
+--- a/net/netfilter/ipset/ip_set_core.c
++++ b/net/netfilter/ipset/ip_set_core.c
+@@ -769,7 +769,7 @@ start_msg(struct sk_buff *skb, u32 portid, u32 seq, unsigned int flags,
+ 	struct nlmsghdr *nlh;
+ 	struct nfgenmsg *nfmsg;
+ 
+-	nlh = nlmsg_put(skb, portid, seq, cmd | (NFNL_SUBSYS_IPSET << 8),
++	nlh = nlmsg_put(skb, portid, seq, nfnl_msg_type(NFNL_SUBSYS_IPSET, cmd),
+ 			sizeof(*nfmsg), flags);
+ 	if (!nlh)
+ 		return NULL;
+diff --git a/net/netfilter/nf_conntrack_netlink.c b/net/netfilter/nf_conntrack_netlink.c
+index cd0a6d270ebe..773d2187a5ea 100644
+--- a/net/netfilter/nf_conntrack_netlink.c
++++ b/net/netfilter/nf_conntrack_netlink.c
+@@ -467,7 +467,7 @@ ctnetlink_fill_info(struct sk_buff *skb, u32 portid, u32 seq, u32 type,
+ 	struct nlattr *nest_parms;
+ 	unsigned int flags = portid ? NLM_F_MULTI : 0, event;
+ 
+-	event = (NFNL_SUBSYS_CTNETLINK << 8 | IPCTNL_MSG_CT_NEW);
++	event = nfnl_msg_type(NFNL_SUBSYS_CTNETLINK, IPCTNL_MSG_CT_NEW);
+ 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(*nfmsg), flags);
+ 	if (nlh == NULL)
+ 		goto nlmsg_failure;
+@@ -652,7 +652,7 @@ ctnetlink_conntrack_event(unsigned int events, struct nf_ct_event *item)
+ 	if (skb == NULL)
+ 		goto errout;
+ 
+-	type |= NFNL_SUBSYS_CTNETLINK << 8;
++	type = nfnl_msg_type(NFNL_SUBSYS_CTNETLINK, type);
+ 	nlh = nlmsg_put(skb, item->portid, 0, type, sizeof(*nfmsg), flags);
+ 	if (nlh == NULL)
+ 		goto nlmsg_failure;
+@@ -1983,7 +1983,8 @@ ctnetlink_ct_stat_cpu_fill_info(struct sk_buff *skb, u32 portid, u32 seq,
+ 	struct nfgenmsg *nfmsg;
+ 	unsigned int flags = portid ? NLM_F_MULTI : 0, event;
+ 
+-	event = (NFNL_SUBSYS_CTNETLINK << 8 | IPCTNL_MSG_CT_GET_STATS_CPU);
++	event = nfnl_msg_type(NFNL_SUBSYS_CTNETLINK,
++			      IPCTNL_MSG_CT_GET_STATS_CPU);
+ 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(*nfmsg), flags);
+ 	if (nlh == NULL)
+ 		goto nlmsg_failure;
+@@ -2066,7 +2067,7 @@ ctnetlink_stat_ct_fill_info(struct sk_buff *skb, u32 portid, u32 seq, u32 type,
+ 	unsigned int flags = portid ? NLM_F_MULTI : 0, event;
+ 	unsigned int nr_conntracks = atomic_read(&net->ct.count);
+ 
+-	event = (NFNL_SUBSYS_CTNETLINK << 8 | IPCTNL_MSG_CT_GET_STATS);
++	event = nfnl_msg_type(NFNL_SUBSYS_CTNETLINK, IPCTNL_MSG_CT_GET_STATS);
+ 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(*nfmsg), flags);
+ 	if (nlh == NULL)
+ 		goto nlmsg_failure;
+@@ -2576,7 +2577,7 @@ ctnetlink_exp_fill_info(struct sk_buff *skb, u32 portid, u32 seq,
+ 	struct nfgenmsg *nfmsg;
+ 	unsigned int flags = portid ? NLM_F_MULTI : 0;
+ 
+-	event |= NFNL_SUBSYS_CTNETLINK_EXP << 8;
++	event = nfnl_msg_type(NFNL_SUBSYS_CTNETLINK_EXP, event);
+ 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(*nfmsg), flags);
+ 	if (nlh == NULL)
+ 		goto nlmsg_failure;
+@@ -2627,7 +2628,7 @@ ctnetlink_expect_event(unsigned int events, struct nf_exp_event *item)
+ 	if (skb == NULL)
+ 		goto errout;
+ 
+-	type |= NFNL_SUBSYS_CTNETLINK_EXP << 8;
++	type = nfnl_msg_type(NFNL_SUBSYS_CTNETLINK_EXP, type);
+ 	nlh = nlmsg_put(skb, item->portid, 0, type, sizeof(*nfmsg), flags);
+ 	if (nlh == NULL)
+ 		goto nlmsg_failure;
+@@ -3212,7 +3213,8 @@ ctnetlink_exp_stat_fill_info(struct sk_buff *skb, u32 portid, u32 seq, int cpu,
+ 	struct nfgenmsg *nfmsg;
+ 	unsigned int flags = portid ? NLM_F_MULTI : 0, event;
+ 
+-	event = (NFNL_SUBSYS_CTNETLINK << 8 | IPCTNL_MSG_EXP_GET_STATS_CPU);
++	event = nfnl_msg_type(NFNL_SUBSYS_CTNETLINK,
++			      IPCTNL_MSG_EXP_GET_STATS_CPU);
+ 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(*nfmsg), flags);
+ 	if (nlh == NULL)
+ 		goto nlmsg_failure;
+diff --git a/net/netfilter/nf_tables_api.c b/net/netfilter/nf_tables_api.c
+index bf52acfe4eff..b23f52a40b93 100644
+--- a/net/netfilter/nf_tables_api.c
++++ b/net/netfilter/nf_tables_api.c
+@@ -438,7 +438,7 @@ static int nf_tables_fill_table_info(struct sk_buff *skb, struct net *net,
+ 	struct nlmsghdr *nlh;
+ 	struct nfgenmsg *nfmsg;
+ 
+-	event |= NFNL_SUBSYS_NFTABLES << 8;
++	event = nfnl_msg_type(NFNL_SUBSYS_NFTABLES, event);
+ 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(struct nfgenmsg), flags);
+ 	if (nlh == NULL)
+ 		goto nla_put_failure;
+@@ -989,7 +989,7 @@ static int nf_tables_fill_chain_info(struct sk_buff *skb, struct net *net,
+ 	struct nlmsghdr *nlh;
+ 	struct nfgenmsg *nfmsg;
+ 
+-	event |= NFNL_SUBSYS_NFTABLES << 8;
++	event = nfnl_msg_type(NFNL_SUBSYS_NFTABLES, event);
+ 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(struct nfgenmsg), flags);
+ 	if (nlh == NULL)
+ 		goto nla_put_failure;
+@@ -1885,7 +1885,7 @@ static int nf_tables_fill_rule_info(struct sk_buff *skb, struct net *net,
+ 	const struct nft_expr *expr, *next;
+ 	struct nlattr *list;
+ 	const struct nft_rule *prule;
+-	int type = event | NFNL_SUBSYS_NFTABLES << 8;
++	int type = nfnl_msg_type(NFNL_SUBSYS_NFTABLES, event);
+ 
+ 	nlh = nlmsg_put(skb, portid, seq, type, sizeof(struct nfgenmsg),
+ 			flags);
+@@ -2645,7 +2645,7 @@ static int nf_tables_fill_set(struct sk_buff *skb, const struct nft_ctx *ctx,
+ 	u32 portid = ctx->portid;
+ 	u32 seq = ctx->seq;
+ 
+-	event |= NFNL_SUBSYS_NFTABLES << 8;
++	event = nfnl_msg_type(NFNL_SUBSYS_NFTABLES, event);
+ 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(struct nfgenmsg),
+ 			flags);
+ 	if (nlh == NULL)
+@@ -3395,8 +3395,7 @@ static int nf_tables_dump_set(struct sk_buff *skb, struct netlink_callback *cb)
+ 	if (IS_ERR(set))
+ 		return PTR_ERR(set);
+ 
+-	event  = NFT_MSG_NEWSETELEM;
+-	event |= NFNL_SUBSYS_NFTABLES << 8;
++	event  = nfnl_msg_type(NFNL_SUBSYS_NFTABLES, NFT_MSG_NEWSETELEM);
+ 	portid = NETLINK_CB(cb->skb).portid;
+ 	seq    = cb->nlh->nlmsg_seq;
+ 
+@@ -3481,7 +3480,7 @@ static int nf_tables_fill_setelem_info(struct sk_buff *skb,
+ 	struct nlattr *nest;
+ 	int err;
+ 
+-	event |= NFNL_SUBSYS_NFTABLES << 8;
++	event = nfnl_msg_type(NFNL_SUBSYS_NFTABLES, event);
+ 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(struct nfgenmsg),
+ 			flags);
+ 	if (nlh == NULL)
+@@ -4253,7 +4252,7 @@ static int nf_tables_fill_obj_info(struct sk_buff *skb, struct net *net,
+ 	struct nfgenmsg *nfmsg;
+ 	struct nlmsghdr *nlh;
+ 
+-	event |= NFNL_SUBSYS_NFTABLES << 8;
++	event = nfnl_msg_type(NFNL_SUBSYS_NFTABLES, event);
+ 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(struct nfgenmsg), flags);
+ 	if (nlh == NULL)
+ 		goto nla_put_failure;
+@@ -4526,7 +4525,7 @@ static int nf_tables_fill_gen_info(struct sk_buff *skb, struct net *net,
  {
-@@ -1409,16 +1413,22 @@ void rtl8723b_set_ap_wowlan_cmd(struct adapter *padapter, u8 enable)
- }
- #endif /* CONFIG_AP_WOWLAN */
+ 	struct nlmsghdr *nlh;
+ 	struct nfgenmsg *nfmsg;
+-	int event = (NFNL_SUBSYS_NFTABLES << 8) | NFT_MSG_NEWGEN;
++	int event = nfnl_msg_type(NFNL_SUBSYS_NFTABLES, NFT_MSG_NEWGEN);
  
--/*  */
--/*  Description: Fill the reserved packets that FW will use to RSVD page. */
--/* 			Now we just send 4 types packet to rsvd page. */
--/* 			(1)Beacon, (2)Ps-poll, (3)Null data, (4)ProbeRsp. */
--/* 	Input: */
--/* 	    bDLFinished - false: At the first time we will send all the packets as a large packet to Hw, */
--/* 						so we need to set the packet length to total lengh. */
--/* 			      true: At the second time, we should send the first packet (default:beacon) */
--/* 						to Hw again and set the lengh in descriptor to the real beacon lengh. */
--/*  2009.10.15 by tynli. */
-+/*
-+ * Description: Fill the reserved packets that FW will use to RSVD page.
-+ *
-+ * Now we just send 4 types packet to rsvd page.
-+ * (1)Beacon, (2)Ps-poll, (3)Null data, (4)ProbeRsp.
-+ *
-+ * Input:
-+ *
-+ * bDLFinished - false: At the first time we will send all the packets as a
-+ * large packet to Hw, so we need to set the packet length to total length.
-+ *
-+ * true: At the second time, we should send the first packet (default:beacon)
-+ * to Hw again and set the length in descriptor to the real beacon length.
-+ */
-+
-+/* 2009.10.15 by tynli. */
- static void rtl8723b_set_FwRsvdPagePkt(
- 	struct adapter *padapter, bool bDLFinished
- )
-@@ -1599,7 +1609,7 @@ static void rtl8723b_set_FwRsvdPagePkt(
- #ifdef CONFIG_GTK_OL
- 	BufIndex += (CurtPktPageNum*PageSize);
+ 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(struct nfgenmsg), 0);
+ 	if (nlh == NULL)
+diff --git a/net/netfilter/nf_tables_trace.c b/net/netfilter/nf_tables_trace.c
+index 12eb9041dca2..d0d226ab64cd 100644
+--- a/net/netfilter/nf_tables_trace.c
++++ b/net/netfilter/nf_tables_trace.c
+@@ -169,7 +169,7 @@ void nft_trace_notify(struct nft_traceinfo *info)
+ 	struct nlmsghdr *nlh;
+ 	struct sk_buff *skb;
+ 	unsigned int size;
+-	int event = (NFNL_SUBSYS_NFTABLES << 8) | NFT_MSG_TRACE;
++	int event;
  
--	/* if the ap staion info. exists, get the kek, kck from staion info. */
-+	/* if the ap station info. exists, get the kek,kck from station info. */
- 	psta = rtw_get_stainfo(pstapriv, get_bssid(pmlmepriv));
- 	if (!psta) {
- 		memset(kek, 0, RTW_KEK_LEN);
-@@ -1791,18 +1801,21 @@ static void rtl8723b_set_FwRsvdPagePkt(
- }
+ 	if (!nfnetlink_has_listeners(nft_net(pkt), NFNLGRP_NFTRACE))
+ 		return;
+@@ -198,6 +198,7 @@ void nft_trace_notify(struct nft_traceinfo *info)
+ 	if (!skb)
+ 		return;
  
- #ifdef CONFIG_AP_WOWLAN
--/*  */
--/* Description: Fill the reserved packets that FW will use to RSVD page. */
--/* Now we just send 2 types packet to rsvd page. (1)Beacon, (2)ProbeRsp. */
--/*  */
--/* Input: bDLFinished */
--/*  */
--/* false: At the first time we will send all the packets as a large packet to Hw, */
--/* 	 so we need to set the packet length to total lengh. */
--/*  */
--/* true: At the second time, we should send the first packet (default:beacon) */
--/* 	to Hw again and set the lengh in descriptor to the real beacon lengh. */
--/*  2009.10.15 by tynli. */
-+/*
-+ * Description: Fill the reserved packets that FW will use to RSVD page.
-+ *
-+ * Now we just send 2 types packet to rsvd page. (1)Beacon, (2)ProbeRsp.
-+ *
-+ * Input: bDLFinished
-+ *
-+ * false: At the first time we will send all the packets as a large packet to
-+ * Hw, so we need to set the packet length to total length.
-+ *
-+ * true: At the second time, we should send the first packet (default:beacon)
-+ * to Hw again and set the length in descriptor to the real beacon length.
-+ */
-+
-+/* 2009.10.15 by tynli. */
- static void rtl8723b_set_AP_FwRsvdPagePkt(
- 	struct adapter *padapter, bool bDLFinished
- )
++	event = nfnl_msg_type(NFNL_SUBSYS_NFTABLES, NFT_MSG_TRACE);
+ 	nlh = nlmsg_put(skb, 0, 0, event, sizeof(struct nfgenmsg), 0);
+ 	if (!nlh)
+ 		goto nla_put_failure;
+diff --git a/net/netfilter/nfnetlink_acct.c b/net/netfilter/nfnetlink_acct.c
+index c86da174a5fc..1b9a5d6099dc 100644
+--- a/net/netfilter/nfnetlink_acct.c
++++ b/net/netfilter/nfnetlink_acct.c
+@@ -139,7 +139,7 @@ nfnl_acct_fill_info(struct sk_buff *skb, u32 portid, u32 seq, u32 type,
+ 	u64 pkts, bytes;
+ 	u32 old_flags;
+ 
+-	event |= NFNL_SUBSYS_ACCT << 8;
++	event = nfnl_msg_type(NFNL_SUBSYS_ACCT, event);
+ 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(*nfmsg), flags);
+ 	if (nlh == NULL)
+ 		goto nlmsg_failure;
+diff --git a/net/netfilter/nfnetlink_cthelper.c b/net/netfilter/nfnetlink_cthelper.c
+index d5025cc25df3..9a50bf93dd16 100644
+--- a/net/netfilter/nfnetlink_cthelper.c
++++ b/net/netfilter/nfnetlink_cthelper.c
+@@ -507,7 +507,7 @@ nfnl_cthelper_fill_info(struct sk_buff *skb, u32 portid, u32 seq, u32 type,
+ 	unsigned int flags = portid ? NLM_F_MULTI : 0;
+ 	int status;
+ 
+-	event |= NFNL_SUBSYS_CTHELPER << 8;
++	event = nfnl_msg_type(NFNL_SUBSYS_CTHELPER, event);
+ 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(*nfmsg), flags);
+ 	if (nlh == NULL)
+ 		goto nlmsg_failure;
+diff --git a/net/netfilter/nfnetlink_cttimeout.c b/net/netfilter/nfnetlink_cttimeout.c
+index 57c2cdf7b691..0927a6ae6177 100644
+--- a/net/netfilter/nfnetlink_cttimeout.c
++++ b/net/netfilter/nfnetlink_cttimeout.c
+@@ -158,7 +158,7 @@ ctnl_timeout_fill_info(struct sk_buff *skb, u32 portid, u32 seq, u32 type,
+ 	unsigned int flags = portid ? NLM_F_MULTI : 0;
+ 	struct nf_conntrack_l4proto *l4proto = timeout->l4proto;
+ 
+-	event |= NFNL_SUBSYS_CTNETLINK_TIMEOUT << 8;
++	event = nfnl_msg_type(NFNL_SUBSYS_CTNETLINK_TIMEOUT, event);
+ 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(*nfmsg), flags);
+ 	if (nlh == NULL)
+ 		goto nlmsg_failure;
+@@ -431,7 +431,7 @@ cttimeout_default_fill_info(struct net *net, struct sk_buff *skb, u32 portid,
+ 	struct nfgenmsg *nfmsg;
+ 	unsigned int flags = portid ? NLM_F_MULTI : 0;
+ 
+-	event |= NFNL_SUBSYS_CTNETLINK_TIMEOUT << 8;
++	event = nfnl_msg_type(NFNL_SUBSYS_CTNETLINK_TIMEOUT, event);
+ 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(*nfmsg), flags);
+ 	if (nlh == NULL)
+ 		goto nlmsg_failure;
+diff --git a/net/netfilter/nfnetlink_log.c b/net/netfilter/nfnetlink_log.c
+index ecd857b75ffe..e7648e90d162 100644
+--- a/net/netfilter/nfnetlink_log.c
++++ b/net/netfilter/nfnetlink_log.c
+@@ -411,7 +411,7 @@ __build_packet_message(struct nfnl_log_net *log,
+ 	const unsigned char *hwhdrp;
+ 
+ 	nlh = nlmsg_put(inst->skb, 0, 0,
+-			NFNL_SUBSYS_ULOG << 8 | NFULNL_MSG_PACKET,
++			nfnl_msg_type(NFNL_SUBSYS_ULOG, NFULNL_MSG_PACKET),
+ 			sizeof(struct nfgenmsg), 0);
+ 	if (!nlh)
+ 		return -1;
+diff --git a/net/netfilter/nfnetlink_queue.c b/net/netfilter/nfnetlink_queue.c
+index 933509ebf3d3..05e82004ab62 100644
+--- a/net/netfilter/nfnetlink_queue.c
++++ b/net/netfilter/nfnetlink_queue.c
+@@ -447,7 +447,7 @@ nfqnl_build_packet_message(struct net *net, struct nfqnl_instance *queue,
+ 	}
+ 
+ 	nlh = nlmsg_put(skb, 0, 0,
+-			NFNL_SUBSYS_QUEUE << 8 | NFQNL_MSG_PACKET,
++			nfnl_msg_type(NFNL_SUBSYS_QUEUE, NFQNL_MSG_PACKET),
+ 			sizeof(struct nfgenmsg), 0);
+ 	if (!nlh) {
+ 		skb_tx_error(entskb);
+diff --git a/net/netfilter/nft_compat.c b/net/netfilter/nft_compat.c
+index f443f9d22faf..ed969caf01be 100644
+--- a/net/netfilter/nft_compat.c
++++ b/net/netfilter/nft_compat.c
+@@ -504,7 +504,7 @@ nfnl_compat_fill_info(struct sk_buff *skb, u32 portid, u32 seq, u32 type,
+ 	struct nfgenmsg *nfmsg;
+ 	unsigned int flags = portid ? NLM_F_MULTI : 0;
+ 
+-	event |= NFNL_SUBSYS_NFT_COMPAT << 8;
++	event = nfnl_msg_type(NFNL_SUBSYS_NFT_COMPAT, event);
+ 	nlh = nlmsg_put(skb, portid, seq, event, sizeof(*nfmsg), flags);
+ 	if (nlh == NULL)
+ 		goto nlmsg_failure;
 -- 
-2.20.1
+2.1.4
 
+
+--6TrnltStXW4iwmi0--
 
