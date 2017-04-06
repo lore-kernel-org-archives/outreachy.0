@@ -1,109 +1,83 @@
-X-GM-THRID: 6402837556844560384
-X-Received: by 10.200.57.65 with SMTP id t1mr10093016qtb.62.1490776789205;
-        Wed, 29 Mar 2017 01:39:49 -0700 (PDT)
+X-GM-THRID: 6401412042878615552
+X-Received: by 10.28.207.7 with SMTP id f7mr32043wmg.15.1491496024207;
+        Thu, 06 Apr 2017 09:27:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.9.151 with SMTP id q23ls8415082otd.42.gmail; Wed, 29 Mar
- 2017 01:39:48 -0700 (PDT)
-X-Received: by 10.13.245.67 with SMTP id e64mr11380026ywf.127.1490776788755;
-        Wed, 29 Mar 2017 01:39:48 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id y203si1110559pfb.0.2017.03.29.01.39.48
+Received: by 10.28.28.10 with SMTP id c10ls2700872wmc.9.gmail; Thu, 06 Apr
+ 2017 09:27:03 -0700 (PDT)
+X-Received: by 10.223.164.151 with SMTP id g23mr929710wrb.17.1491496023233;
+        Thu, 06 Apr 2017 09:27:03 -0700 (PDT)
+Return-Path: <pneira@us.es>
+Received: from mail.us.es (mail.us.es. [193.147.175.20])
+        by gmr-mx.google.com with ESMTPS id p10si108977wmg.1.2017.04.06.09.27.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 29 Mar 2017 01:39:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Thu, 06 Apr 2017 09:27:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id g2so1795202pge.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 29 Mar 2017 01:39:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=JpvjsB1hWEXW5p+mJiCcYoeBZXQO5v6hp98PbPyPZP0=;
-        b=tBOS6yAHmWn0SKMp0sXdZ5vd3muO3O38l6Ihm2XfpE1dGK4Flkw0QHbmHlWGJVH9gs
-         +hRRCGXgYgrpmz1zsr3oOP//0DlKXI9EukQQGfFZizVB6uS3eDfttY9nQ5hHUBQZ3nYy
-         NeBcCXnu33gRsj4KXqojN+sFR9pL/JcOJs1wQRtKPSNfwI4FsvMKPzNXXQcb4oyUUM91
-         xB/n90O54aHsaRCprW6aqm7e15GFtSvj6p9ECzt83J63tne1sb9KirsQOZZGpfcGBWtL
-         hsPkAfGTcdQAZuIdonRs8p77u5XUqFWESZ4EZdWOu3treDSblYuMG+4V4686fLRVkurG
-         XmOA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=JpvjsB1hWEXW5p+mJiCcYoeBZXQO5v6hp98PbPyPZP0=;
-        b=prBcHagpe7PsD/F2lWUBwVAQgFIq7+jXIXa60lENFG69T+H85WrJrO33ngtMmzOEHq
-         bZ9POMFYPezDfv53vNeVVtNig8CtFfYJ/BFAitIOFGye6AJo4vfTn5yWnNdgpTRQ0Gam
-         /0XGFE0TxYZPWprsS+g8rULJXVZdvmgVeAaX3BrgCkxe5WwyBrV/2Ujh1/GFv2HNzo5I
-         ps3fO2Guj17H0udnguCoeLJCGvHjL5ddgHha4P4MGmLmpe7VGDBX5KolthVfaTiUCYgI
-         VMlJI1QG3R17zVNvegUUWzDfPl7OQKl1mO8WK55Qn6NuTbvr9HGx2oqG+JdHKP7//j1F
-         ShsA==
-X-Gm-Message-State: AFeK/H1lsw5d0cwIe67e8ICRorqpEwFsa7l5lqM18tTnne5LHRFYriL1yFPGuB26lRyWMg==
-X-Received: by 10.84.216.17 with SMTP id m17mr41062159pli.158.1490776788264;
-        Wed, 29 Mar 2017 01:39:48 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id s21sm11913919pgg.65.2017.03.29.01.39.46
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 29 Mar 2017 01:39:46 -0700 (PDT)
-Date: Wed, 29 Mar 2017 14:09:43 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: pablo@netfilter.org
-Cc: Jozsef Kadlecsik <kadlec@blackhole.kfki.hu>,
-	"David S. Miller" <davem@davemloft.net>,
-	Alexey Kuznetsov <kuznet@ms2.inr.ac.ru>,
-	James Morris <jmorris@namei.org>,
-	Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>,
-	Patrick McHardy <kaber@trash.net>, netfilter-devel@vger.kernel.org,
-	coreteam@netfilter.org, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH] net: ipv6: netfilter: Format block comments.
-Message-ID: <20170329083943.GA23844@arushi-HP-Pavilion-Notebook>
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
+	by mail.us.es (Postfix) with ESMTP id 4B92811ADCE
+	for <outreachy-kernel@googlegroups.com>; Thu,  6 Apr 2017 18:27:00 +0200 (CEST)
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 3D268BAC2E
+	for <outreachy-kernel@googlegroups.com>; Thu,  6 Apr 2017 18:27:00 +0200 (CEST)
+Received: by antivirus1-rhel7.int (Postfix, from userid 99)
+	id 3C421BAC38; Thu,  6 Apr 2017 18:27:00 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
+X-Spam-Level: 
+X-Spam-Status: No, score=-107.2 required=7.5 tests=BAYES_50,
+	HEADER_FROM_DIFFERENT_DOMAINS,RP_MATCHES_RCVD,SMTPAUTH_US,SPF_HELO_FAIL,
+	USER_IN_WHITELIST autolearn=disabled version=3.4.1
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 1D64CBAC48
+	for <outreachy-kernel@googlegroups.com>; Thu,  6 Apr 2017 18:26:58 +0200 (CEST)
+Received: from 192.168.1.13 (192.168.1.13)
+ by antivirus1-rhel7.int (F-Secure/fsigk_smtp/540/antivirus1-rhel7.int);
+ Thu, 06 Apr 2017 18:26:58 +0200 (CEST)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/540/antivirus1-rhel7.int)
+Received: (qmail 2507 invoked from network); 6 Apr 2017 18:26:57 +0200
+Received: from 1984.lsi.us.es (HELO us.es) (1984lsi@150.214.188.80)
+  by mail.us.es with AES128-SHA encrypted SMTP; 6 Apr 2017 18:26:57 +0200
+Date: Thu, 6 Apr 2017 18:26:54 +0200
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Arushi Singhal <arushisinghal19971997@gmail.com>
+Cc: kadlec@blackhole.kfki.hu, davem@davemloft.net,
+	outreachy-kernel@googlegroups.com, netfilter-devel@vger.kernel.org,
+	coreteam@netfilter.org, gregkh@linuxfoundation.org,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/2] net: netfilter: Remove typedef from "typedef struct
+ field_t"
+Message-ID: <20170406162654.GA5777@salvia>
+References: <20170325122756.8743-1-arushisinghal19971997@gmail.com>
+ <20170325122756.8743-2-arushisinghal19971997@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20170325122756.8743-2-arushisinghal19971997@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Virus-Scanned: ClamAV using ClamSMTP
 
-Fix checkpatch warnings:
-WARNING: Block comments use a trailing */ on a separate line
-WARNING: Block comments use * on subsequent lines
+On Sat, Mar 25, 2017 at 05:57:55PM +0530, Arushi Singhal wrote:
+> This patch removes typedefs from struct and renames it from "typedef struct
+> field_t" to "struct field" as per kernel coding standards."
+> 
+> Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+> ---
+>  net/netfilter/nf_conntrack_h323_asn1.c | 68 +++++++++++++++++-----------------
+>  1 file changed, 34 insertions(+), 34 deletions(-)
+> 
+> diff --git a/net/netfilter/nf_conntrack_h323_asn1.c b/net/netfilter/nf_conntrack_h323_asn1.c
+> index 89b2e46925c4..fb8cf238a76f 100644
+> --- a/net/netfilter/nf_conntrack_h323_asn1.c
+> +++ b/net/netfilter/nf_conntrack_h323_asn1.c
+> @@ -77,7 +77,7 @@
+>  
+>  
+>  /* ASN.1 Field Structure */
+> -typedef struct field_t {
+> +struct field {
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
- net/ipv6/netfilter/ip6_tables.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
-
-diff --git a/net/ipv6/netfilter/ip6_tables.c b/net/ipv6/netfilter/ip6_tables.c
-index b8cb61c27aa1..ac69ce3bfa1e 100644
---- a/net/ipv6/netfilter/ip6_tables.c
-+++ b/net/ipv6/netfilter/ip6_tables.c
-@@ -51,14 +51,14 @@ void *ip6t_alloc_initial_table(const struct xt_table *info)
- }
- EXPORT_SYMBOL_GPL(ip6t_alloc_initial_table);
- 
--/*
--   We keep a set of rules for each CPU, so we can avoid write-locking
--   them in the softirq when updating the counters and therefore
--   only need to read-lock in the softirq; doing a write_lock_bh() in user
--   context stops packets coming through and allows user context to read
--   the counters or update the rules.
--
--   Hence the start of any table is given by get_table() below.  */
-+/* We keep a set of rules for each CPU, so we can avoid write-locking
-+ * them in the softirq when updating the counters and therefore
-+ * only need to read-lock in the softirq; doing a write_lock_bh() in user
-+ * context stops packets coming through and allows user context to read
-+ * the counters or update the rules.
-+ *
-+ * Hence the start of any table is given by get_table() below.
-+ */
- 
- /* Returns whether matches rule or not. */
- /* Performance critical - called for every packet */
--- 
-2.11.0
-
+Probably better if you rename this to 'struct h323_field' to make sure
+compilation doesn't break due to structure name pollution. And we also
+got a report from kbuild robot that would be good to investigate.
 
