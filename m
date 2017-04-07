@@ -1,77 +1,87 @@
-X-GM-THRID: 6205958961152131072
-X-Received: by 10.182.104.137 with SMTP id ge9mr9381301obb.49.1444937419524;
-        Thu, 15 Oct 2015 12:30:19 -0700 (PDT)
+X-GM-THRID: 6402531164952723456
+X-Received: by 10.25.145.17 with SMTP id t17mr5438394lfd.25.1491578844914;
+        Fri, 07 Apr 2017 08:27:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.59.211 with SMTP id b19ls2162325igr.37.canary; Thu, 15 Oct
- 2015 12:30:19 -0700 (PDT)
-X-Received: by 10.68.176.132 with SMTP id ci4mr8994769pbc.13.1444937418996;
-        Thu, 15 Oct 2015 12:30:18 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
-        by gmr-mx.google.com with ESMTPS id wl2si1604175pab.1.2015.10.15.12.30.18
+Received: by 10.46.71.79 with SMTP id u76ls965049lja.51.gmail; Fri, 07 Apr
+ 2017 08:27:23 -0700 (PDT)
+X-Received: by 10.46.20.16 with SMTP id u16mr4336973ljd.23.1491578843453;
+        Fri, 07 Apr 2017 08:27:23 -0700 (PDT)
+Return-Path: <pneira@us.es>
+Received: from mail.us.es (mail.us.es. [193.147.175.20])
+        by gmr-mx.google.com with ESMTPS id d184si285397wmc.0.2017.04.07.08.27.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Oct 2015 12:30:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
+        Fri, 07 Apr 2017 08:27:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22e.google.com with SMTP id ur7so13538737pab.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 15 Oct 2015 12:30:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id;
-        bh=RcztAI+YvZLxQnDPr8uOJkhanYcIofarQLFro41cdx4=;
-        b=VBx2ylbX7HAt6XChff8EePVqjV9h3RjY5+Z/3uGgjTg0wQnY1QshaejcT4PvOw9Kvh
-         cPLN8h+DnY2WB485AJDELXPw4Z/7bHTFZ2C2agmD9UdxZkozuVbrxZ9tKgg52YRkL3JH
-         CWGfyeURbHmRCAWyhort9ld61TSJGnojF+ID2S8Fukh3/YMqUmt1jfo6XTCUqSZtRHCr
-         dpvOUdYZJBS1O3UvHXb2RmYQMu3rZUIRntaeryCKOuaXWl4ELLFiFaRbZlLTfmaVE4it
-         UgFEDT1UmVjNadgnTuNopf1+g4v3FLvEwgO+bX0zAz5K3HBvVi5eQfE9nDz1UT7PsV4j
-         5kfg==
-X-Received: by 10.68.107.133 with SMTP id hc5mr11713536pbb.5.1444937418892;
-        Thu, 15 Oct 2015 12:30:18 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id k10sm16824791pbq.78.2015.10.15.12.30.16
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 15 Oct 2015 12:30:18 -0700 (PDT)
-From: Shraddha Barke <shraddha.6596@gmail.com>
-To: <outreachy-kernel@googlegroups.com>,
-	Oleg Drokin <oleg.drokin@intel.com>,
-	<lustre-devel@lists.lustre.org>,
-	driverdev-devel@linuxdriverproject.org
-Subject: [PATCH] Staging: lustre: obd_support.h: Remove unused OBD_SLAB_FREE_RTN0
-Date: Fri, 16 Oct 2015 01:00:10 +0530
-Message-Id: <1444937410-4796-1-git-send-email-shraddha.6596@gmail.com>
-X-Mailer: git-send-email 2.1.4
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
+	by mail.us.es (Postfix) with ESMTP id 1A10B1324C3
+	for <outreachy-kernel@googlegroups.com>; Fri,  7 Apr 2017 17:27:19 +0200 (CEST)
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 0B9F5DA38B
+	for <outreachy-kernel@googlegroups.com>; Fri,  7 Apr 2017 17:27:19 +0200 (CEST)
+Received: by antivirus1-rhel7.int (Postfix, from userid 99)
+	id F3793DA388; Fri,  7 Apr 2017 17:27:18 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
+X-Spam-Level: 
+X-Spam-Status: No, score=-107.2 required=7.5 tests=BAYES_50,
+	HEADER_FROM_DIFFERENT_DOMAINS,RP_MATCHES_RCVD,SMTPAUTH_US,SPF_HELO_FAIL,
+	USER_IN_WHITELIST autolearn=disabled version=3.4.1
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 18DD8DA4E3
+	for <outreachy-kernel@googlegroups.com>; Fri,  7 Apr 2017 17:27:16 +0200 (CEST)
+Received: from 192.168.1.13 (192.168.1.13)
+ by antivirus1-rhel7.int (F-Secure/fsigk_smtp/540/antivirus1-rhel7.int);
+ Fri, 07 Apr 2017 17:27:16 +0200 (CEST)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/540/antivirus1-rhel7.int)
+Received: (qmail 3380 invoked from network); 7 Apr 2017 17:27:15 +0200
+Received: from 1984.lsi.us.es (HELO us.es) (1984lsi@150.214.188.80)
+  by mail.us.es with AES128-SHA encrypted SMTP; 7 Apr 2017 17:27:15 +0200
+Date: Fri, 7 Apr 2017 17:27:12 +0200
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: simran singhal <singhalsimran0@gmail.com>
+Cc: kadlec@blackhole.kfki.hu, davem@davemloft.net,
+	netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
+	Stephen Hemminger <stephen@networkplumber.org>,
+	Alexey Kuznetsov <kuznet@ms2.inr.ac.ru>,
+	James Morris <jmorris@namei.org>,
+	Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>,
+	Patrick McHardy <kaber@trash.net>,
+	bridge@lists.linux-foundation.org
+Subject: Re: [PATCH v2] net: Remove unnecessary cast on void pointer
+Message-ID: <20170407152712.GA1466@salvia>
+References: <20170328190516.GA19531@singhal-Inspiron-5558>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170328190516.GA19531@singhal-Inspiron-5558>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Virus-Scanned: ClamAV using ClamSMTP
 
-Remove macro OBD_SLAB_FREE_RTN0 since it is defined but not used
+On Wed, Mar 29, 2017 at 12:35:16AM +0530, simran singhal wrote:
+> The following Coccinelle script was used to detect this:
+> @r@
+> expression x;
+> void* e;
+> type T;
+> identifier f;
+> @@
+> (
+>   *((T *)e)
+> |
+>   ((T *)x)[...]
+> |
+>   ((T*)x)->f
+> |
+> 
+> - (T*)
+>   e
+> )
+> 
+> Unnecessary parantheses are also remove.
 
-Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
----
- drivers/staging/lustre/lustre/include/obd_support.h | 6 ------
- 1 file changed, 6 deletions(-)
-
-diff --git a/drivers/staging/lustre/lustre/include/obd_support.h b/drivers/staging/lustre/lustre/include/obd_support.h
-index ec14b72c..abc53f1 100644
---- a/drivers/staging/lustre/lustre/include/obd_support.h
-+++ b/drivers/staging/lustre/lustre/include/obd_support.h
-@@ -517,12 +517,6 @@ do {									      \
- /* we memset() the slab object to 0 when allocation succeeds, so DO NOT
-  * HAVE A CTOR THAT DOES ANYTHING.  its work will be cleared here.  we'd
-  * love to assert on that, but slab.c keeps kmem_cache_s all to itself. */
--#define OBD_SLAB_FREE_RTN0(ptr, slab)					 \
--({									    \
--	kmem_cache_free((slab), (ptr));				    \
--	(ptr) = NULL;							 \
--	0;								    \
--})
- 
- #define __OBD_SLAB_ALLOC_VERBOSE(ptr, slab, cptab, cpt, size, type)	      \
- do {									      \
--- 
-2.1.4
-
+Applied, thanks.
 
