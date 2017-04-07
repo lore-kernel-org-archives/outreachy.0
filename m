@@ -1,182 +1,101 @@
 X-GM-THRID: 6402837556844560384
-X-Received: by 10.28.20.205 with SMTP id 196mr157033wmu.7.1491664422370;
-        Sat, 08 Apr 2017 08:13:42 -0700 (PDT)
+X-Received: by 10.46.80.79 with SMTP id v15mr4280714ljd.27.1491581723396;
+        Fri, 07 Apr 2017 09:15:23 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.84.70 with SMTP id y6ls979867ljd.8.gmail; Sat, 08 Apr 2017
- 08:13:40 -0700 (PDT)
-X-Received: by 10.25.195.206 with SMTP id t197mr5993506lff.11.1491664420683;
-        Sat, 08 Apr 2017 08:13:40 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-lf0-x242.google.com (mail-lf0-x242.google.com. [2a00:1450:4010:c07::242])
-        by gmr-mx.google.com with ESMTPS id p144si253738wme.2.2017.04.08.08.13.40
+Received: by 10.25.38.147 with SMTP id m141ls2896339lfm.8.gmail; Fri, 07 Apr
+ 2017 09:15:21 -0700 (PDT)
+X-Received: by 10.25.215.220 with SMTP id q89mr717029lfi.28.1491581721022;
+        Fri, 07 Apr 2017 09:15:21 -0700 (PDT)
+Return-Path: <pneira@us.es>
+Received: from mail.us.es (mail.us.es. [193.147.175.20])
+        by gmr-mx.google.com with ESMTPS id w130si387730wmf.0.2017.04.07.09.15.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 08 Apr 2017 08:13:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2a00:1450:4010:c07::242 as permitted sender) client-ip=2a00:1450:4010:c07::242;
+        Fri, 07 Apr 2017 09:15:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2a00:1450:4010:c07::242 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-lf0-x242.google.com with SMTP id i3so1560487lfh.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 08 Apr 2017 08:13:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=LE3bKazpVGEqvlsmt/o//3t+8527eobJ8GvH+GbTitc=;
-        b=cfpKoAsG4ijd92zZkTAzQXsH9tGH7nmTTJVz2Px7N0LbG995qlxQPEw9a3D7HM43jb
-         ttv9/nDn04OkX6l0EzjWCe6MRpfn2Zin5/xIgYV0xDuaPBTtXqbsSQ+O44XI+aSBUPbQ
-         HxWzoKE+oy04QndK7GugJ4wYprMpM/oATnuABvHMvTICNld7GxcOkAXmwUwEvy6WCK/0
-         SH9+01bm8iMaNkWMqtVe20Yh/BTYRtSMzEYcQ7tFhmuOpJ8bgWtcPfy3fvZCDQOrEUPZ
-         FpRyEIWI4puwbc7JFlW6A+CnW26qUIPlYR8J7RugfJ9WWpBNTlLTXNMBzlI06fTE/v9V
-         N4CQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=LE3bKazpVGEqvlsmt/o//3t+8527eobJ8GvH+GbTitc=;
-        b=NIA0CHZ4pTI7TTJ4RgDHWbJJoLH7+mCzDL6mps6U7XWTU/tNwryEcxTQMY1cCpEtFk
-         slZeaxLY2PdG1cCikE7xPPKTtKlGbkLf6kROMDZ7JsUPkfOjQTHhXf5i5Ma2gs4Uogd7
-         dUQOMMUeHvDJza/ns9JDT8ALWbxAkLHVH+qEFBRKB+Q7CepSEvuzq26WuyQiY6vLCQIg
-         dqwgZF87jApvuU5jP6jn5w0541Xiqy7Pooo8yrs8OQxpO2OtfAUHeYOm4PQscuqWSsjt
-         LVh5qrLjxsqGklR7xCWYQ6sO2SXzSzong3WOgf7QB+DzcDAGQeOyfpT9E2rAm/xvM3BJ
-         m8aA==
-X-Gm-Message-State: AFeK/H2fX+x0COng6+oG5kSBv1A0hnnhXwY4KN8O5P7b4TtFU9LHSmDuEWHheiPTd4/w20xWn58IbsGJts+YWQ==
-X-Received: by 10.46.15.9 with SMTP id 9mr13317783ljp.108.1491664420132; Sat,
- 08 Apr 2017 08:13:40 -0700 (PDT)
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
+	by mail.us.es (Postfix) with ESMTP id A6BB91373AF
+	for <outreachy-kernel@googlegroups.com>; Fri,  7 Apr 2017 18:15:17 +0200 (CEST)
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 8E8D6DA398
+	for <outreachy-kernel@googlegroups.com>; Fri,  7 Apr 2017 18:15:17 +0200 (CEST)
+Received: by antivirus1-rhel7.int (Postfix, from userid 99)
+	id 7A1D7DA39A; Fri,  7 Apr 2017 18:15:17 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
+X-Spam-Level: 
+X-Spam-Status: No, score=-107.2 required=7.5 tests=BAYES_50,
+	HEADER_FROM_DIFFERENT_DOMAINS,RP_MATCHES_RCVD,SMTPAUTH_US,SPF_HELO_FAIL,
+	USER_IN_WHITELIST autolearn=disabled version=3.4.1
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 48BBADA874
+	for <outreachy-kernel@googlegroups.com>; Fri,  7 Apr 2017 18:15:15 +0200 (CEST)
+Received: from 192.168.1.13 (192.168.1.13)
+ by antivirus1-rhel7.int (F-Secure/fsigk_smtp/540/antivirus1-rhel7.int);
+ Fri, 07 Apr 2017 18:15:15 +0200 (CEST)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/540/antivirus1-rhel7.int)
+Received: (qmail 24381 invoked from network); 7 Apr 2017 18:15:14 +0200
+Received: from 1984.lsi.us.es (HELO us.es) (1984lsi@150.214.188.80)
+  by mail.us.es with AES128-SHA encrypted SMTP; 7 Apr 2017 18:15:14 +0200
+Date: Fri, 7 Apr 2017 18:15:07 +0200
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Arushi Singhal <arushisinghal19971997@gmail.com>
+Cc: Jozsef Kadlecsik <kadlec@blackhole.kfki.hu>,
+	"David S. Miller" <davem@davemloft.net>,
+	Alexey Kuznetsov <kuznet@ms2.inr.ac.ru>,
+	James Morris <jmorris@namei.org>,
+	Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>,
+	Patrick McHardy <kaber@trash.net>, netfilter-devel@vger.kernel.org,
+	coreteam@netfilter.org, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] net: ipv6: netfilter: Format block
+ comments.
+Message-ID: <20170407161507.GA9367@salvia>
+References: <20170329083943.GA23844@arushi-HP-Pavilion-Notebook>
 MIME-Version: 1.0
-Received: by 10.25.170.69 with HTTP; Sat, 8 Apr 2017 08:13:39 -0700 (PDT)
-In-Reply-To: <20170407161507.GA9367@salvia>
-References: <20170329083943.GA23844@arushi-HP-Pavilion-Notebook> <20170407161507.GA9367@salvia>
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-Date: Sat, 8 Apr 2017 20:43:39 +0530
-Message-ID: <CA+XqjF-Uy45xHj94Ck2DCnPJ-ikVWih3darG83Dr_aBydqi+4w@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] net: ipv6: netfilter: Format block comments.
-To: Pablo Neira Ayuso <pablo@netfilter.org>
-Cc: Jozsef Kadlecsik <kadlec@blackhole.kfki.hu>, "David S. Miller" <davem@davemloft.net>, 
-	Alexey Kuznetsov <kuznet@ms2.inr.ac.ru>, James Morris <jmorris@namei.org>, 
-	Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>, Patrick McHardy <kaber@trash.net>, 
-	netfilter-devel@vger.kernel.org, coreteam@netfilter.org, 
-	netdev@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, 
-	outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary=f4030436012ce2dee7054ca92fd6
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170329083943.GA23844@arushi-HP-Pavilion-Notebook>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Virus-Scanned: ClamAV using ClamSMTP
 
---f4030436012ce2dee7054ca92fd6
-Content-Type: text/plain; charset=UTF-8
+On Wed, Mar 29, 2017 at 02:09:43PM +0530, Arushi Singhal wrote:
+> Fix checkpatch warnings:
+> WARNING: Block comments use a trailing */ on a separate line
+> WARNING: Block comments use * on subsequent lines
+> 
+> Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+> ---
+>  net/ipv6/netfilter/ip6_tables.c | 16 ++++++++--------
+>  1 file changed, 8 insertions(+), 8 deletions(-)
+> 
+> diff --git a/net/ipv6/netfilter/ip6_tables.c b/net/ipv6/netfilter/ip6_tables.c
+> index b8cb61c27aa1..ac69ce3bfa1e 100644
+> --- a/net/ipv6/netfilter/ip6_tables.c
+> +++ b/net/ipv6/netfilter/ip6_tables.c
+> @@ -51,14 +51,14 @@ void *ip6t_alloc_initial_table(const struct xt_table *info)
+>  }
+>  EXPORT_SYMBOL_GPL(ip6t_alloc_initial_table);
+>  
+> -/*
+> -   We keep a set of rules for each CPU, so we can avoid write-locking
+> -   them in the softirq when updating the counters and therefore
+> -   only need to read-lock in the softirq; doing a write_lock_bh() in user
+> -   context stops packets coming through and allows user context to read
+> -   the counters or update the rules.
+> -
+> -   Hence the start of any table is given by get_table() below.  */
+> +/* We keep a set of rules for each CPU, so we can avoid write-locking
+> + * them in the softirq when updating the counters and therefore
+> + * only need to read-lock in the softirq; doing a write_lock_bh() in user
+> + * context stops packets coming through and allows user context to read
+> + * the counters or update the rules.
+> + *
+> + * Hence the start of any table is given by get_table() below.
+> + */
 
-On Fri, Apr 7, 2017 at 9:45 PM, Pablo Neira Ayuso <pablo@netfilter.org>
-wrote:
+This comment is obsolete and should go.
 
-> On Wed, Mar 29, 2017 at 02:09:43PM +0530, Arushi Singhal wrote:
-> > Fix checkpatch warnings:
-> > WARNING: Block comments use a trailing */ on a separate line
-> > WARNING: Block comments use * on subsequent lines
-> >
-> > Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
-> > ---
-> >  net/ipv6/netfilter/ip6_tables.c | 16 ++++++++--------
-> >  1 file changed, 8 insertions(+), 8 deletions(-)
-> >
-> > diff --git a/net/ipv6/netfilter/ip6_tables.c b/net/ipv6/netfilter/ip6_
-> tables.c
-> > index b8cb61c27aa1..ac69ce3bfa1e 100644
-> > --- a/net/ipv6/netfilter/ip6_tables.c
-> > +++ b/net/ipv6/netfilter/ip6_tables.c
-> > @@ -51,14 +51,14 @@ void *ip6t_alloc_initial_table(const struct
-> xt_table *info)
-> >  }
-> >  EXPORT_SYMBOL_GPL(ip6t_alloc_initial_table);
-> >
-> > -/*
-> > -   We keep a set of rules for each CPU, so we can avoid write-locking
-> > -   them in the softirq when updating the counters and therefore
-> > -   only need to read-lock in the softirq; doing a write_lock_bh() in
-> user
-> > -   context stops packets coming through and allows user context to read
-> > -   the counters or update the rules.
-> > -
-> > -   Hence the start of any table is given by get_table() below.  */
-> > +/* We keep a set of rules for each CPU, so we can avoid write-locking
-> > + * them in the softirq when updating the counters and therefore
-> > + * only need to read-lock in the softirq; doing a write_lock_bh() in
-> user
-> > + * context stops packets coming through and allows user context to read
-> > + * the counters or update the rules.
-> > + *
-> > + * Hence the start of any table is given by get_table() below.
-> > + */
->
-> This comment is obsolete and should go.
->
-> We have no set of rules per CPU anymore.
->
-Hi Pablo
-So should I fix this by removing these comments.
-
-Thanks
-Arushi
-
---f4030436012ce2dee7054ca92fd6
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><br><div class=3D"gmail_extra"><br><div class=3D"gmail_quo=
-te">On Fri, Apr 7, 2017 at 9:45 PM, Pablo Neira Ayuso <span dir=3D"ltr">&lt=
-;<a href=3D"mailto:pablo@netfilter.org" target=3D"_blank">pablo@netfilter.o=
-rg</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=3D"marg=
-in:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><div class=3D"HO=
-EnZb"><div class=3D"h5">On Wed, Mar 29, 2017 at 02:09:43PM +0530, Arushi Si=
-nghal wrote:<br>
-&gt; Fix checkpatch warnings:<br>
-&gt; WARNING: Block comments use a trailing */ on a separate line<br>
-&gt; WARNING: Block comments use * on subsequent lines<br>
-&gt;<br>
-&gt; Signed-off-by: Arushi Singhal &lt;<a href=3D"mailto:arushisinghal19971=
-997@gmail.com">arushisinghal19971997@gmail.<wbr>com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 net/ipv6/netfilter/ip6_tables.<wbr>c | 16 ++++++++--------<br>
-&gt;=C2=A0 1 file changed, 8 insertions(+), 8 deletions(-)<br>
-&gt;<br>
-&gt; diff --git a/net/ipv6/netfilter/ip6_<wbr>tables.c b/net/ipv6/netfilter=
-/ip6_<wbr>tables.c<br>
-&gt; index b8cb61c27aa1..ac69ce3bfa1e 100644<br>
-&gt; --- a/net/ipv6/netfilter/ip6_<wbr>tables.c<br>
-&gt; +++ b/net/ipv6/netfilter/ip6_<wbr>tables.c<br>
-&gt; @@ -51,14 +51,14 @@ void *ip6t_alloc_initial_table(<wbr>const struct x=
-t_table *info)<br>
-&gt;=C2=A0 }<br>
-&gt;=C2=A0 EXPORT_SYMBOL_GPL(ip6t_alloc_<wbr>initial_table);<br>
-&gt;<br>
-&gt; -/*<br>
-&gt; -=C2=A0 =C2=A0We keep a set of rules for each CPU, so we can avoid wri=
-te-locking<br>
-&gt; -=C2=A0 =C2=A0them in the softirq when updating the counters and there=
-fore<br>
-&gt; -=C2=A0 =C2=A0only need to read-lock in the softirq; doing a write_loc=
-k_bh() in user<br>
-&gt; -=C2=A0 =C2=A0context stops packets coming through and allows user con=
-text to read<br>
-&gt; -=C2=A0 =C2=A0the counters or update the rules.<br>
-&gt; -<br>
-&gt; -=C2=A0 =C2=A0Hence the start of any table is given by get_table() bel=
-ow.=C2=A0 */<br>
-&gt; +/* We keep a set of rules for each CPU, so we can avoid write-locking=
-<br>
-&gt; + * them in the softirq when updating the counters and therefore<br>
-&gt; + * only need to read-lock in the softirq; doing a write_lock_bh() in =
-user<br>
-&gt; + * context stops packets coming through and allows user context to re=
-ad<br>
-&gt; + * the counters or update the rules.<br>
-&gt; + *<br>
-&gt; + * Hence the start of any table is given by get_table() below.<br>
-&gt; + */<br>
-<br>
-</div></div>This comment is obsolete and should go.<br>
-<br>
-We have no set of rules per CPU anymore.<br></blockquote><div>Hi Pablo<br><=
-/div><div>So should I fix this by removing these comments.<br><br></div><di=
-v>Thanks<br></div><div>Arushi <br></div></div><br></div></div>
-
---f4030436012ce2dee7054ca92fd6--
+We have no set of rules per CPU anymore.
 
