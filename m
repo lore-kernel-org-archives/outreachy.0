@@ -1,112 +1,92 @@
-X-GM-THRID: 6402783293345890304
-X-Received: by 10.99.116.88 with SMTP id e24mr11188448pgn.130.1490764155519;
-        Tue, 28 Mar 2017 22:09:15 -0700 (PDT)
+X-GM-THRID: 6440502427589279744
+X-Received: by 10.46.80.18 with SMTP id e18mr1750755ljb.10.1499582034068;
+        Sat, 08 Jul 2017 23:33:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.18.163 with SMTP id 35ls5136501ios.37.gmail; Tue, 28 Mar
- 2017 22:09:14 -0700 (PDT)
-X-Received: by 10.98.211.137 with SMTP id z9mr7955190pfk.34.1490764154606;
-        Tue, 28 Mar 2017 22:09:14 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id 2si937077pfz.1.2017.03.28.22.09.14
+Received: by 10.28.199.69 with SMTP id x66ls765460wmf.18.canary-gmail; Sat, 08
+ Jul 2017 23:33:53 -0700 (PDT)
+X-Received: by 10.223.134.181 with SMTP id 50mr804545wrx.1.1499582033170;
+        Sat, 08 Jul 2017 23:33:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1499582033; cv=none;
+        d=google.com; s=arc-20160816;
+        b=nn5L3LqtF2r8PiY9gePI/dJ3+qHtzqkofXT4go+HYE9LClIAbP4cDGH6hpQofzVa8o
+         N2VJlsWaHhowK8SsPPlZyUfbPEEJWnnP2XllNIdILK1SB4MUqhjYIPxcf4xmq0GiYJZt
+         Wfh/zWqXN+GiLtLsyyyT+buP1PVSgDYjeb5yBa6B0W/GkAdmIyAYunXoRX2oHqxzGhUq
+         /weORFTR6RcRzlo055N+7Bc3Q3FpxDPrHLPi1sCWQfWgg+2vpf8DonJU+FCugDAFfUU9
+         nFKZhEY7BUmWDWRmKeKOe+Fa3MO0G2EK030fT/pphWn4BF4MXQChr98E9kv0FcnpaOY0
+         D51Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=NUl6bkpZFT39Yb2dyXzZ8EGpxm+gyMPcQHr5zkqeZ6c=;
+        b=JMsoy+dlZQYQzQWx9PlzjEiDfZw++CUJZZxnSJ3ettev2PyqoWkCZq9EV5hZlwibbq
+         simKi4RptVJTF6lNKu7OcKYEUh2+NZkLtvDVxfhv1dvD0tYkKOfb2YT0thxkM3daSqSK
+         wyLO8So7+Ca3/rWvf1fca7RPC99z3lf1KdpEIFwAt/90w8cydJBJXAEU8SDm7nCnkm8G
+         dC1LZYUozXKGy/SngwOzItFizUiQ81qZqfBn+rsFoTRkWH5BvOVh+rPxBTVGxV9TOMOt
+         ooOpSLPPP8zmKpJToY5tiUpHvnihZ50PiRixjR3RL4S2sTkOl5m5G8rZZP3oTfxNBpAT
+         m8oQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id j203si950452wmg.1.2017.07.08.23.33.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Mar 2017 22:09:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Sat, 08 Jul 2017 23:33:53 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id o123so1189813pga.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 28 Mar 2017 22:09:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=/qXcmhHONkllkX8hkDvPZHhSOm1LrrP6vHftwB8xQVE=;
-        b=ozusHqQH3JXlwlhxyvMBWj7AO43JM57+P1oVUiGemWG1F8fxTmNtPPJPKBQ3HOo8xv
-         PBt4jt7a8rb5cSOVv6f/LBks1LKjmloCu+AirFsHlsgXc2Ey111FooV1Y+hg566xcFHx
-         AkAjhpktc4zUV7jprA7U1s6+3Z91K4DxX8tncFfHU4CgZRqwvITPEUSYlyPSLajA69Dp
-         k4Yiqpi8sGxZ7Zo3FeBnAKeVFNb481OoAYkgO0HhPfFd4wPUkSYngYQr1hnpFvMbQNOS
-         nTqz/gND+UzmRknNFwt0uzMVGtuibec1pY4sPjW+oSwX7Bd20kp+3pRZx/fMEgrFHX0R
-         /WOA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=/qXcmhHONkllkX8hkDvPZHhSOm1LrrP6vHftwB8xQVE=;
-        b=sn6pwLs0Yjet8XmZxqF5oA/MrKKsXGpOC5YcoenQXduJ7dpU9MmUNEOPyRAewlPhvR
-         nO7WvlnfwtO5LZFQgY+oHY5uuTMmYQLL02OXjuQqG0CADT2J8VU+dYOmcKyxjXYWC0oH
-         A+tLhgR7CFohk9kIdM9KPEVHNU/Zo3zVyA9Q5crEiWzdtnkVS5UQVQfdgfrQtub/ng3k
-         mLqdwKsz1ZyCddrn38qUnxA2B0nSiPLqdF2MxjEMmzryLaouOl+7aPmdjVL+ZcNDNGbo
-         hMRDam/CFTuSlnm+SQR6y0087fCwaF+en0S94dfI8tgRHbl0L3pSGsH57M9ZkB4wddD9
-         1ouQ==
-X-Gm-Message-State: AFeK/H0hqh1sjBrUWzPwfHKrXnwqxpFpgjoz78JfnWjjRRjajv1+CwX43JGNxPnjqcTqBA==
-X-Received: by 10.99.167.1 with SMTP id d1mr34506904pgf.129.1490764154369;
-        Tue, 28 Mar 2017 22:09:14 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id x21sm10369661pgf.15.2017.03.28.22.09.12
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 28 Mar 2017 22:09:12 -0700 (PDT)
-Date: Wed, 29 Mar 2017 10:39:09 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: lars@metafoo.de
-Cc: Michael Hennerich <Michael.Hennerich@analog.com>,
-	Jonathan Cameron <jic23@kernel.org>,
-	Hartmut Knaack <knaack.h@gmx.de>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: iio: Use devm functions
-Message-ID: <20170329050909.GA18738@arushi-HP-Pavilion-Notebook>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.40,333,1496095200"; 
+   d="scan'208";a="230957761"
+Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 09 Jul 2017 08:33:52 +0200
+Date: Sun, 9 Jul 2017 08:33:51 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Greg KH <gregkh@linuxfoundation.org>
+cc: Shreeya Patel <shreeya.patel23498@gmail.com>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: Place constant
+ at the right.
+In-Reply-To: <20170709062002.GC8739@kroah.com>
+Message-ID: <alpine.DEB.2.20.1707090833330.2229@hadrien>
+References: <1499546306-4085-1-git-send-email-shreeya.patel23498@gmail.com> <20170709062002.GC8739@kroah.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: text/plain; charset=US-ASCII
 
-Use managed resource functions devm_request_irq instead of request_irq.
-Remove corresponding calls to free_irq in the probe.
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
- drivers/staging/iio/trigger/iio-trig-bfin-timer.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/iio/trigger/iio-trig-bfin-timer.c b/drivers/staging/iio/trigger/iio-trig-bfin-timer.c
-index 4e0b4eedb53d..42473d095911 100644
---- a/drivers/staging/iio/trigger/iio-trig-bfin-timer.c
-+++ b/drivers/staging/iio/trigger/iio-trig-bfin-timer.c
-@@ -211,8 +211,9 @@ static int iio_bfin_tmr_trigger_probe(struct platform_device *pdev)
- 	if (ret)
- 		goto out;
- 
--	ret = request_irq(st->irq, iio_bfin_tmr_trigger_isr,
--			  0, st->trig->name, st);
-+	ret = devm_request_irq(&pdev->dev,
-+			       st->irq, iio_bfin_tmr_trigger_isr,
-+			       0, st->trig->name, st);
- 	if (ret) {
- 		dev_err(&pdev->dev,
- 			"request IRQ-%d failed", st->irq);
-@@ -256,7 +257,6 @@ static int iio_bfin_tmr_trigger_probe(struct platform_device *pdev)
- 
- 	return 0;
- out_free_irq:
--	free_irq(st->irq, st);
- out1:
- 	iio_trigger_unregister(st->trig);
- out:
-@@ -271,7 +271,6 @@ static int iio_bfin_tmr_trigger_remove(struct platform_device *pdev)
- 	disable_gptimers(st->t->bit);
- 	if (st->output_enable)
- 		peripheral_free(st->t->pin);
--	free_irq(st->irq, st);
- 	iio_trigger_unregister(st->trig);
- 	iio_trigger_free(st->trig);
- 
--- 
-2.11.0
+On Sun, 9 Jul 2017, Greg KH wrote:
 
+> On Sun, Jul 09, 2017 at 02:08:26AM +0530, Shreeya Patel wrote:
+> > Move constant to the right of a relational operator.
+> > This coding style is more common for the kernel code.
+> >
+> > Problem found by checkpatch.
+> >
+> > Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
+> > ---
+> >  drivers/staging/rtl8723bs/core/rtw_btcoex.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> Is the outreachy application process happening right now?  If not,
+> please send this to the proper mailing lists, this one isn't to be used
+> for normal patch submissions.
+
+Not until September.
+
+julia
+
+>
+> thanks,
+>
+> greg k-h
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170709062002.GC8739%40kroah.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
