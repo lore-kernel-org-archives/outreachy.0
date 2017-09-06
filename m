@@ -1,26 +1,26 @@
 X-GM-THRID: 6462748484201086976
-Date: Wed, 6 Sep 2017 13:34:15 -0700 (PDT)
+Date: Wed, 6 Sep 2017 12:48:36 -0700 (PDT)
 From: Srishti Sharma <srishtishar@gmail.com>
 To: outreachy-kernel <outreachy-kernel@googlegroups.com>
 Cc: gregkh@linuxfoundation.org, gilad@benyossef.com,
 	linux-crypto@vger.kernel.org, driverdev-devel@linuxdriverproject.org,
 	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
 	srishtishar@gmail.com
-Message-Id: <2b8bde9c-6e84-48c5-ab93-76127f314429@googlegroups.com>
+Message-Id: <0c67de4b-ba9d-4bec-8bc2-8ac462c29a5b@googlegroups.com>
 In-Reply-To: <1504725863-8495-1-git-send-email-srishtishar@gmail.com>
 References: <1504725863-8495-1-git-send-email-srishtishar@gmail.com>
 Subject: Re: [PATCH] Staging: ccree: ssi_cipher.c: Correct spelling mistake.
 MIME-Version: 1.0
 Content-Type: multipart/mixed; 
-	boundary="----=_Part_3338_599812279.1504730055951"
-X-Google-Token: EMe3wc0FQlUA7keqbig0
+	boundary="----=_Part_3218_2056331717.1504727316260"
+X-Google-Token: EJSiwc0FZZc-P5oeoDs0
 X-Google-IP: 171.61.60.94
 
-------=_Part_3338_599812279.1504730055951
+------=_Part_3218_2056331717.1504727316260
 Content-Type: multipart/alternative; 
-	boundary="----=_Part_3339_282266994.1504730055951"
+	boundary="----=_Part_3219_10484202.1504727316261"
 
-------=_Part_3339_282266994.1504730055951
+------=_Part_3219_10484202.1504727316261
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 
@@ -56,16 +56,13 @@ wrote:
 > 2.7.4 
 >
 
-  Hey,
 
-  Can I say , /* store the value of inflight_counter variable from  driver 
-private data context to a local variable */  , to make it more 
-comprehensible ? 
+Thanks for the feedback :) , I'll work on it ! 
 
 Regards,
 Srishti 
 
-------=_Part_3339_282266994.1504730055951
+------=_Part_3219_10484202.1504727316261
 Content-Type: text/html; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
@@ -106,12 +103,10 @@ w_mode =3D=3D BYPASS &amp;&amp; ctx_p-&gt;drvdata-&gt;inflight_<wbr>counter=
  &gt; 0)
 <br>--
 <br>2.7.4
-<br></blockquote><div><br></div><div>=C2=A0 Hey,</div><div><br></div><div>=
-=C2=A0 Can I say , /* store the value of inflight_counter variable from =C2=
-=A0driver private data context to a local variable */ =C2=A0, to make it mo=
-re comprehensible ?=C2=A0</div><div><br></div><div>Regards,</div><div>Srish=
-ti=C2=A0</div></div>
-------=_Part_3339_282266994.1504730055951--
+<br></blockquote><div><br></div><div><br></div><div>Thanks for the feedback=
+ :) , I&#39;ll work on it !=C2=A0</div><div><br></div><div>Regards,</div><d=
+iv>Srishti=C2=A0</div></div>
+------=_Part_3219_10484202.1504727316261--
 
-------=_Part_3338_599812279.1504730055951--
+------=_Part_3218_2056331717.1504727316260--
 
