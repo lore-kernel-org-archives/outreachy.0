@@ -1,181 +1,118 @@
-X-GM-THRID: 6474484890958036992
-X-Received: by 10.98.182.17 with SMTP id j17mr448503pff.45.1507458484999;
-        Sun, 08 Oct 2017 03:28:04 -0700 (PDT)
+X-GM-THRID: 6462748484201086976
+X-Received: by 10.84.245.1 with SMTP id i1mr311568pll.13.1504731776155;
+        Wed, 06 Sep 2017 14:02:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.159.211.11 with SMTP id bc11ls124985plb.11.gmail; Sun, 08 Oct
- 2017 03:28:04 -0700 (PDT)
-X-Received: by 10.98.89.143 with SMTP id k15mr459147pfj.44.1507458484082;
-        Sun, 08 Oct 2017 03:28:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507458484; cv=none;
+Received: by 10.107.114.14 with SMTP id n14ls42245ioc.12.gmail; Wed, 06 Sep
+ 2017 14:02:55 -0700 (PDT)
+X-Received: by 10.107.148.209 with SMTP id w200mr321165iod.96.1504731775527;
+        Wed, 06 Sep 2017 14:02:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504731775; cv=none;
         d=google.com; s=arc-20160816;
-        b=hqg+Iv+LSBKiBdDpRoX5dwZ2qT9+UZhFyd9nLalprHlP+gWkqYLoZVkMS6eLCiqSGY
-         y7XImZBzca/bw89jznmZ5cokxBiIVQDF7azME8/NbmB+k11V04b/nIq+Fw6WvwNTHezV
-         9VfDUfi6uMX9LQsL/Rm7uNXghVy6+oKZij3DWMhwPblVzWxWi/sxvuNVKVLl7o8vP6Gn
-         HUTRjVPFrm8yHBwnLg5p+E69cnGevc4v+96F0VOeyKFgFKfd7MyU6kv8v/sCfe+Cj1Ct
-         +ZBG9f/5IESGh3Hy+qdM326AbgMJe7ximK4z9Ru43zwxTiKyFe+pPRQra6IjUJY1oapo
-         RDFw==
+        b=ssvlnvuFv/SR2CpZRDCDFp1sZ7Mz6cEw7AvGDxhoJjijF+S+2H3TlaUeoZClnpmIGl
+         3/qCKlrcQG2UpfUQqVNm2o9bJ5QoL890WawKCKHQfTzVEjYps1qGti0tNrlZrRiSCDjD
+         pUyBH7IsyaspeVyj8uea0b8Ruv7f/2HzmU0uHdOEb85N38So80Z4tRo27pcuRHj6rlMz
+         NEGw15lDuRJ72mwI5Sa1AursWhXUgnggdv/keNuDDXimsSb3uxbR7WD6CJlIXv41LD2A
+         MWO6OcyeC1qZtQMri4IiIrBc3L+I0wGCl7v4XJ//qsNivl3o5+Fn4fKsPV26B7z7HuqN
+         Fvqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=+Z0SAXAsJ+fBgX+hqrRN0JBX54jvpzURVrzGDT85GEU=;
-        b=V3MD/I349k5qMxpD0rAG6Pg1XEenivbGigFHShjqFnXXljkAM3WSS07P6OngGjsNv7
-         5ZanIMQ0Xv1yMXyw5hHUMKAKOG2xiqVXZVb9GJCTAysY4U/T4KHpxuFxL3fSrKBYy2co
-         BuG47RnNwJb+bxvxJztAnDarMFZIytugxY4FbQpmMKswHb269IV47b4nflKNj+1qQ36w
-         i4kOtxKNwSLHFkeWf6xnMacg17PCFgYV9A1zMYQO5OkJLfrs+AEW/5BHGfS1bwDlTZBo
-         npqRqzz8j6Cr4i1L9r/419nKTY3Q/5TasTEs7i3lep49JIkJ2+JimpB7joK6X3tuhh5N
-         MVlg==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=KQXnH8TWbOw5jNGiU0HciT7WEgOIXfHro1rXwyUsRQY=;
+        b=a/Jw7AWFPe3coHmyRW51jrmgXhT/6wmuphN3f/BZQblHaw6ClJwvDcz1zABSnspowH
+         xUvEexX/6jjpf9gCSbOKfUEjA7CnhzYoMocOaO95SyOAme8FjyN4e84Jux3QYx4dhQdN
+         VoWnYRL4qu1aEyBY1s4BzJc3RAsC9GIg70l3lru8wtlCg7RB72tWFjVT8eHVhugYl+Xf
+         s7cWhBxbY8iBzt8ZB8sbnuFW4WbJiV6te+MdNg/EIxBtFvIi6kqnLNGysN8P0GYxbML1
+         QntFXnt2OBb7NmFxqoN9k8E+cQwycbqhwv61ZIPl6R1aHWFBHh+jGuVB5t+a7zFievhc
+         tJfg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZELLWA51;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=L8FQSZrL;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id a17si680274pfk.15.2017.10.08.03.28.04
+Return-Path: <srishtishar@gmail.com>
+Received: from mail-qt0-x241.google.com (mail-qt0-x241.google.com. [2607:f8b0:400d:c0d::241])
+        by gmr-mx.google.com with ESMTPS id v23si57931ywg.5.2017.09.06.14.02.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 08 Oct 2017 03:28:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Wed, 06 Sep 2017 14:02:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) client-ip=2607:f8b0:400d:c0d::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZELLWA51;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=L8FQSZrL;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id b85so985026pfj.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 08 Oct 2017 03:28:04 -0700 (PDT)
+Received: by mail-qt0-x241.google.com with SMTP id h21so4629976qth.4
+        for <outreachy-kernel@googlegroups.com>; Wed, 06 Sep 2017 14:02:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=+Z0SAXAsJ+fBgX+hqrRN0JBX54jvpzURVrzGDT85GEU=;
-        b=ZELLWA51Umg6f6BaL+S89HYZvuT0WCiu7ZCMO3uBv0yeAN4xT1EoLIcOVjsYW1Llze
-         GBjF/ucP0sMP62kCWA1mlAfoMqJdhhj6FKDdxsyH3vZO5eF5uE+HK5Zz0NWaNxzZesE3
-         G89MHJpLn/LBVrPaC7iF8sXVuyv5EhJarapyVwYclpSxjQbSr7r+gMz11cSXWt7WWcWI
-         17KvW1a/611tOAkIVBAhQMcJk5f/uBdavPP/iyahvg/nHufDkcEKilO/HYJolt5Gbspg
-         gzilToDoQznBlKN3S27nsdQSlQ5oI/Sb8vEObwDcJ2DGN+2+hnwI3PTs1xlx410s9jJI
-         JiiA==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=KQXnH8TWbOw5jNGiU0HciT7WEgOIXfHro1rXwyUsRQY=;
+        b=L8FQSZrLj3s/UMlqm6ftvAJ73gc6btg/cqLuKyg9xVXumTB1Dv+jcFqhYS4pD5+Awt
+         fFJ9MhF03Qqqmjqp85en34xtJ/fpK7I95kBXPfnJnZY5EdGBwFWT92TXD8grAlHb7H1h
+         jDMX1jWEMxh0UgQxLuzlw006nM5W+fndldqUD9XfPpW3Sjelpd33MGgytE1ojuUthmlb
+         KNpRaT8RNTdSoBrVtWOw3t7yogPp+EL6izIcZUAGlUm/P3iHbKwJrsktkafcullqQScW
+         01V30dyIWasCm7ihgjAJC+TCNxORhnnFsLKZYSlHRT1juB6/hPb+1eMsSHrA28CpSS0X
+         n8gA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=+Z0SAXAsJ+fBgX+hqrRN0JBX54jvpzURVrzGDT85GEU=;
-        b=huJQQ4EUec4B7xTRGpIfPm8Cf/ZzA14An7NWG5vCb1O1JS4TBwo1muhBOW9jZZ6Isd
-         ezITnEdBB2ULZFwmL0978oaE42ISsrAL3vOphCvm2tEgdWZoB1WIKTGqbx7csTw4KdSL
-         152LSr7T+Jj4kQ0ASpisoTdYvJ6hhxE21fc34jFmiaQalW46wxgSh4NGHO2mZevRxTNG
-         v94gJTPfosQliMIwexX7JGm3qnHFXJ7e8rCsZNQgzKIt0rEIvR5sJaUouIrF3ysdah2Z
-         7ARXHIOg2NHj/V/SI7XRZIU1hFykwbKQ8HsiCaqo41IKxI7Kk7u7OKYSz3vyR8si/Gsq
-         KlaQ==
-X-Gm-Message-State: AMCzsaXno5xG9447efGc8P8zddyvzPJfuKHIegpXZgwsVg72MuvMbOLZ
-	qkt+2izbzVUCA2IHZdePQCs=
-X-Google-Smtp-Source: AOwi7QBJW1+k0HIY3N/l3j7AtHUqjkFfsHtMTMJGanC8dXqqghMzBk3KPr5wdq7n7WV1n1DJ429wNg==
-X-Received: by 10.99.169.25 with SMTP id u25mr6464540pge.363.1507458483823;
-        Sun, 08 Oct 2017 03:28:03 -0700 (PDT)
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from localhost.localdomain ([103.37.201.122])
-        by smtp.gmail.com with ESMTPSA id z126sm10877755pfz.70.2017.10.08.03.28.01
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 08 Oct 2017 03:28:03 -0700 (PDT)
-From: Harsha Sharma <harshasharmaiitr@gmail.com>
-To: pablo@netfilter.org
-Cc: netfilter-devel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Harsha Sharma <harshasharmaiitr@gmail.com>
-Subject: [PATCH] src: Remove unnecessary spaces
-Date: Sun,  8 Oct 2017 15:55:51 +0530
-Message-Id: <20171008102551.16175-1-harshasharmaiitr@gmail.com>
-X-Mailer: git-send-email 2.11.0
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=KQXnH8TWbOw5jNGiU0HciT7WEgOIXfHro1rXwyUsRQY=;
+        b=gXjgrrEQlYlOVZKiR5pogiQTgKtPjbF/4dnhE1OE9aJJHb2jV/mQp3balOMfPYdSI7
+         uyLYacxhr86+7Ax/5NG5yyDOxc1WdiCSq4F5Z5h8DKhcoC2xewUgfPexh5yq6dKCVNDC
+         kfC+L1btAREx/rfc4sj18nMzSLGn3HfU+KIFtG0vGLfwRVRVztYhckFeQ8g7KJPB6JzD
+         Le4mRreFMGsnXIFJ3qFTGOeKnyAhHjuNcs4hYDXDXDWMisStUrqfzsh69Z8li7CzjfpI
+         uQw7OXX8+Xxs2zwAl7pgwmwQMfiHF/Irod9VYjDIfl74uFzSMB8tikgiCcxDn5iH9mtZ
+         lDVA==
+X-Gm-Message-State: AHPjjUh9OOOhBlZh3pjnVgZ78FsU6NDUEkMr3ZUAFcGm5zXWtuj0T7bd
+	QrZ8XKuRDTfPP8OezATUozg1c7tZkw==
+X-Google-Smtp-Source: ADKCNb7ASA1L8F0PPYfXaHyDFN3TSQJXSRq82qftC0X+i6h4n7Q7ZLa3K1joHI3uRtbb7y96s04Ft9WOoyA3BUrTzHg=
+X-Received: by 10.237.35.175 with SMTP id j44mr746638qtc.140.1504731775255;
+ Wed, 06 Sep 2017 14:02:55 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.200.55.118 with HTTP; Wed, 6 Sep 2017 14:02:54 -0700 (PDT)
+In-Reply-To: <20170906205955.s22ssdslev3o4yiq@mwanda>
+References: <1504725863-8495-1-git-send-email-srishtishar@gmail.com> <20170906205955.s22ssdslev3o4yiq@mwanda>
+From: Srishti Sharma <srishtishar@gmail.com>
+Date: Thu, 7 Sep 2017 02:32:54 +0530
+Message-ID: <CAB3L5oz_5hnLPLAMCB46AirDR5XEm6nhhc+PoS-rfDx9tf97KA@mail.gmail.com>
+Subject: Re: [PATCH] Staging: ccree: ssi_cipher.c: Correct spelling mistake.
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: Greg KH <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org, 
+	outreachy-kernel@googlegroups.com, driverdev-devel@linuxdriverproject.org, 
+	linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 
-Remove spaces before tab and at the start of a line
+On Thu, Sep 7, 2017 at 2:29 AM, Dan Carpenter <dan.carpenter@oracle.com> wrote:
+> On Thu, Sep 07, 2017 at 12:54:23AM +0530, Srishti Sharma wrote:
+>> Correct spelling of counter in comment .
+>>
+>> Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+>> ---
+>>  drivers/staging/ccree/ssi_cipher.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/staging/ccree/ssi_cipher.c b/drivers/staging/ccree/ssi_cipher.c
+>> index 8d31a93..99232b2 100644
+>> --- a/drivers/staging/ccree/ssi_cipher.c
+>> +++ b/drivers/staging/ccree/ssi_cipher.c
+>> @@ -702,7 +702,7 @@ static int ssi_blkcipher_complete(struct device *dev,
+>>
+>>       ssi_buffer_mgr_unmap_blkcipher_request(dev, req_ctx, ivsize, src, dst);
+>>
+>> -     /*Set the inflight couter value to local variable*/
+>> +     /*Set the inflight counter value to local variable*/
+>>       inflight_counter =  ctx_p->drvdata->inflight_counter;
+>
+> Sure, but it would be better to just delete the comment.  It's obvious.
+> But really just delete the local inflight_counter variable as well
+> because that's never used.
 
-Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
----
-There are other such files but I am breaking it down to make review 
-easy.
- src/datatype.c | 4 ++--
- src/evaluate.c | 2 +-
- src/gmputil.c  | 4 ++--
- src/main.c     | 2 +-
- src/meta.c     | 4 ++--
- 5 files changed, 8 insertions(+), 8 deletions(-)
+  Okay, I'll delete it .
+>
+> regards,
+> dan carpenter
+>
 
-diff --git a/src/datatype.c b/src/datatype.c
-index 94b1224..efbba47 100644
---- a/src/datatype.c
-+++ b/src/datatype.c
-@@ -370,7 +370,7 @@ static void string_type_print(const struct expr *expr, struct output_ctx *octx)
- }
- 
- static struct error_record *string_type_parse(const struct expr *sym,
--	      				      struct expr **res)
-+					      struct expr **res)
- {
- 	*res = constant_expr_alloc(&sym->location, &string_type,
- 				   BYTEORDER_HOST_ENDIAN,
-@@ -849,7 +849,7 @@ void time_print(uint64_t seconds, struct output_ctx *octx)
- enum {
- 	DAY	= (1 << 0),
- 	HOUR	= (1 << 1),
--	MIN 	= (1 << 2),
-+	MIN	= (1 << 2),
- 	SECS	= (1 << 3),
- };
- 
-diff --git a/src/evaluate.c b/src/evaluate.c
-index 193ea1c..3ad2219 100644
---- a/src/evaluate.c
-+++ b/src/evaluate.c
-@@ -132,7 +132,7 @@ static int byteorder_conversion(struct eval_ctx *ctx, struct expr **expr,
- 		return 0;
- 	if (expr_basetype(*expr)->type != TYPE_INTEGER)
- 		return expr_error(ctx->msgs, *expr,
--			 	  "Byteorder mismatch: expected %s, got %s",
-+				  "Byteorder mismatch: expected %s, got %s",
- 				  byteorder_names[byteorder],
- 				  byteorder_names[(*expr)->byteorder]);
- 
-diff --git a/src/gmputil.c b/src/gmputil.c
-index 3cc4e61..a817bb8 100644
---- a/src/gmputil.c
-+++ b/src/gmputil.c
-@@ -50,11 +50,11 @@ void mpz_rshift_ui(mpz_t rop, unsigned int n)
- 
- #define mpz_get_type(type, endian, op)					\
- ({									\
-- 	type ret = 0;							\
-+	type ret = 0;							\
- 	size_t cnt;							\
- 	mpz_export(&ret, &cnt, MPZ_LSWF, sizeof(ret), endian, 0, op);	\
- 	assert(cnt <= 1);						\
-- 	ret;								\
-+	ret;								\
-  })
- 
- uint64_t mpz_get_uint64(const mpz_t op)
-diff --git a/src/main.c b/src/main.c
-index b59c932..406e3b0 100644
---- a/src/main.c
-+++ b/src/main.c
-@@ -119,7 +119,7 @@ static void show_help(const char *name)
- "  -i, --interactive		Read input from interactive CLI\n"
- "\n"
- "  -n, --numeric			When specified once, show network addresses numerically (default behaviour).\n"
--"  				Specify twice to also show Internet services (port numbers) numerically.\n"
-+"				Specify twice to also show Internet services (port numbers) numerically.\n"
- "				Specify three times to also show protocols, user IDs, and group IDs numerically.\n"
- "  -s, --stateless		Omit stateful information of ruleset.\n"
- "  -N				Translate IP addresses to names.\n"
-diff --git a/src/meta.c b/src/meta.c
-index 56b9e29..e387028 100644
---- a/src/meta.c
-+++ b/src/meta.c
-@@ -625,8 +625,8 @@ struct stmt *meta_stmt_meta_iiftype(const struct location *loc, uint16_t type)
- }
- 
- struct error_record *meta_key_parse(const struct location *loc,
--                                    const char *str,
--                                    unsigned int *value)
-+				    const char *str,
-+				    unsigned int *value)
- {
- 	int ret, len, offset = 0;
- 	const char *sep = "";
--- 
-2.11.0
-
+Regards,
+Srishti
 
