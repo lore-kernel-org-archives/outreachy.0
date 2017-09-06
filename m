@@ -1,88 +1,120 @@
 X-GM-THRID: 6462776611954491392
-X-Received: by 10.129.118.79 with SMTP id j15mr185580ywk.117.1504765016626;
-        Wed, 06 Sep 2017 23:16:56 -0700 (PDT)
+X-Received: by 10.200.46.99 with SMTP id s32mr406369qta.50.1504735562484;
+        Wed, 06 Sep 2017 15:06:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.131.214 with SMTP id n83ls718792ioi.34.gmail; Wed, 06 Sep
- 2017 23:16:55 -0700 (PDT)
-X-Google-Smtp-Source: ADKCNb5XOWSidfuYw6ZpALQ6VWGUpu3kDM6CCSph0vz0hIP70fR70eu7EDfZ6Io+q9oxPrLC9Ph7
-X-Received: by 10.129.152.11 with SMTP id p11mr1030632ywg.136.1504765015849;
-        Wed, 06 Sep 2017 23:16:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504765015; cv=none;
+Received: by 10.36.246.135 with SMTP id u129ls144325ith.13.gmail; Wed, 06 Sep
+ 2017 15:06:01 -0700 (PDT)
+X-Received: by 10.129.197.13 with SMTP id k13mr433846ywi.51.1504735561663;
+        Wed, 06 Sep 2017 15:06:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504735561; cv=none;
         d=google.com; s=arc-20160816;
-        b=m7uiV36xRA9FBpF0N1M9EKvUU8Ym+4RKLpp0zqIO3X43GkIPAIbsMCH6PwY59cw9Ya
-         V7t7nYDjSuZWI7s4fqXRtRepagptG5sco975oQUUkdOOAURvZFhnk2BBMcIrscu0wVit
-         Szkt65y4CP4T9kX/p8hy21gPD9VJ6WUNQNVFAT7OxC3jv/RFKeDaJOHwYexknrx5mFZv
-         +Q/0RfuVYn5gWpxlLRlfpwVYzMTK1xjRJfGEfFrAvKluLWnUvLyzYxX3nwVFDeFOgmm4
-         E+uaPL66/pkjutoUYmXBrFk9futWewXSRnnD42oFFkUkO1tRYb6hbM+bUC2eEx1mzvHR
-         NoLA==
+        b=OOLt7V+va0ELKNQ18W0ra5AVKbRYWgWNHEK6Hsg8oFHozypZYjtNVCZjdnr5IaEzuL
+         pvhzoalu4XgKJ2ah3F0h5HCo5RWHkCNwrcFsHuUJu/XmwBn1bJNP/1ejMo0xKsDYSqEc
+         4CFAhuxU0/zFeG1ZWJukC4n3rKHhKPcsdv/qgYVkFopuMGy5O9gXxB8nHPaP0l1KObpe
+         oi4hha5MKn+B6b3RIFbEBMQvu9VQaa9DG15Z0FSqwad7tVxYkTdeFSASrEAihFBQ5bic
+         AAgkIvi/Vqk57VB32NI/CAxRKxz9UKHVKkpv3z5x4m6koqgZLzDdUvh1ftJiwYniOZ9K
+         O1lA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to:date
-         :cc:to:from:subject:message-id:arc-authentication-results;
-        bh=//ojvz9sMy5awl7RtLmkkoeQ3A4YitkHETYL5KpjDK0=;
-        b=0JzPSVHiFsotfdw/6Z7j4AHEv87DpxV2eOnJc49nMn5dMeyrxMU3uahzyX6PPcjQx1
-         cbLFiczE6WCw7RZurbzDbmRzBvolDHuM3CQbApujh08i9eTdiHQArZxRFYNpML9IPSu3
-         FiWv7o1Sejumu7mUrNh0CAba4wn8rQRYp+7NK6kAjpX9JPL4tvNdkvWLSe4gniGc+GkB
-         jB7tx0bCZxOrbM8veSo5KIuyp3kOVSPPWaGTvvBovgdCf6XTstOzbMdV9FmPtvqK7C6R
-         INMbPtscyTb7f/NFkr4RB+bpeMMVvOgh6vRNOb0OwiQpImNAkPKy9ByubxqchIXvR2DH
-         RYOQ==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=XeLgW+9jb6VdEkrnrKhuqHz9WrU5KYbAx2oanrDcmVA=;
+        b=DVuVdq5Fu772fgsBwHoIlxJOzM3IAVRNqaZlCc5KmwsL7S9eHm9akXrklCpEcU8TiU
+         lalr8JY3qAz49P4P7lZf/MyIQ9DUP1fAkG0HwIj+vlpuo/PzMUfZ4CDS30t6I10nRcuN
+         Cydl8k/eR5xXiEmL+udhb2v6GMT8jfqFKo/1mdkaV7pffOmgmNDB+Y3l+x/JPdzrmcKZ
+         uyWZmUOoJM7eVebcq6Cnm7MljwNDkzRQU7VCZRrIIXY9V1SoTYf0pRTkaRv88ZrSyIfh
+         fDaYjEd6uZQCGHlEvawXk5GTyNmpOawi+zA2VQZdW/9XzDSw0iRoXoyUcs2QYFjGamWZ
+         Gt2A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 216.40.44.53 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
-Return-Path: <joe@perches.com>
-Received: from smtprelay.hostedemail.com (smtprelay0053.hostedemail.com. [216.40.44.53])
-        by gmr-mx.google.com with ESMTPS id 143si26405itf.7.2017.09.06.23.16.55
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gcfaEfd/;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <srishtishar@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id q65si131809pfj.8.2017.09.06.15.06.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 06 Sep 2017 23:16:55 -0700 (PDT)
-Received-SPF: neutral (google.com: 216.40.44.53 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.53;
+        Wed, 06 Sep 2017 15:06:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 216.40.44.53 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
-	by smtprelay08.hostedemail.com (Postfix) with ESMTP id 47BCE182CED28;
-	Thu,  7 Sep 2017 06:16:55 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,:::::::::::::::,RULES_HIT:41:152:355:379:541:599:973:988:989:1260:1277:1311:1313:1314:1345:1359:1373:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2393:2559:2562:2902:2987:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:3870:3872:3873:3874:4321:4387:4605:5007:7903:10004:10400:10848:11026:11232:11658:11914:12043:12438:12740:12895:13069:13161:13229:13311:13357:13894:14659:14721:21080:21434:21451:21627:30054:30083:30091,0,RBL:none,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:,MSBL:0,DNSBL:none,Custom_rules:0:0:0,LFtime:1,LUA_SUMMARY:none
-X-HE-Tag: judge36_20baeedfd438
-X-Filterd-Recvd-Size: 2038
-Received: from XPS-9350 (unknown [47.151.132.55])
-	(Authenticated sender: joe@perches.com)
-	by omf13.hostedemail.com (Postfix) with ESMTPA;
-	Thu,  7 Sep 2017 06:16:53 +0000 (UTC)
-Message-ID: <1504765012.7546.12.camel@perches.com>
-Subject: Re: [PATCH v3] Staging: ccree: ssi_cipher.c: Remove unused variable.
-From: Joe Perches <joe@perches.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>, Srishti Sharma
-	 <srishtishar@gmail.com>
-Cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org, 
-	outreachy-kernel@googlegroups.com, driverdev-devel@linuxdriverproject.org, 
-	linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org
-Date: Wed, 06 Sep 2017 23:16:52 -0700
-In-Reply-To: <20170906213243.gyttos3s64ckoswp@mwanda>
-References: <1504732426-9765-1-git-send-email-srishtishar@gmail.com>
-	 <20170906213243.gyttos3s64ckoswp@mwanda>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.22.6-1ubuntu1 
-Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gcfaEfd/;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x244.google.com with SMTP id g13so3281495pfm.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 06 Sep 2017 15:06:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=XeLgW+9jb6VdEkrnrKhuqHz9WrU5KYbAx2oanrDcmVA=;
+        b=gcfaEfd/ov4ZlcICTneg6Wl0/cqq27ha7rrt++Pdo6FJyKG1j98lt8zjurXsOwvkSO
+         x1svF6bD0+gkh85QB5e0O4bRQbFkmnrrsw5/GlAHF5/rmy9jKGtQPT9jvLecMP7EIs5q
+         AVGCma+avS+JRvOJ/OI9k5Ax6uUi+w0D+416iDa6khnCDdKmg6yC9QeLfa5gYsg2GaX9
+         dgWrEHZMMLZMzNf6KkgJXvFsqGErLtrPjCvoIUiD2IWT70rlGhUj/P2byAA3WTz4POwb
+         RusRX+1r74pkV6AFtmNdiJurMu/Yxf7BaCmHaMhaSfaDSg8keknj+fGQMZt7zKSjmM/Q
+         vhNA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=XeLgW+9jb6VdEkrnrKhuqHz9WrU5KYbAx2oanrDcmVA=;
+        b=J8PAt2hZNsk945v50YkKgOuNHNFFADLFlAm1MKm1ZA9r16t/4/LouZ+NKoKOnMVZ8g
+         8RHhioa3VzlO6iOdGSh/3k7Klm6+mVQ5HSu7eLPzY9agqph+sexLEBEtLwDgcZfeXEtk
+         5beoqfDXD27KIjJ4GjCjQuqk+aC4QHwNDCuTRWbm8KLkPE/GK5qqNmbnSXl4KrDcSk9e
+         0rC0a+tiGsG6ZSSPSlU49T1oP+qo7CjaQcQL4pklxvxdaUK/OrAw3YT3RgFEjB7pqYB6
+         ZNHihNR3o2JlZBWr9EBcSgy7FSKd+StlodY4ZhM8O3Gt3dh7krvJZPswxOTpVAV51jqM
+         Xxrw==
+X-Gm-Message-State: AHPjjUgpHgK4vqwMpMLrvpOvhE+I8DPJwHpSz5gSquVOTIoxeszZ7X5b
+	Ko5oi1nmniBthLaR
+X-Google-Smtp-Source: ADKCNb67kpljwOTetiJi4MUSz7UmNAAuDjQQUVo2dEIQaLj8OOeO87OFfAoCISmKCNpWcB6wM3Jeyw==
+X-Received: by 10.84.209.236 with SMTP id y99mr666587plh.158.1504735561381;
+        Wed, 06 Sep 2017 15:06:01 -0700 (PDT)
+Return-Path: <srishtishar@gmail.com>
+Received: from srishti-PRODiiGY-945G ([171.61.60.94])
+        by smtp.gmail.com with ESMTPSA id p68sm13895pfj.56.2017.09.06.15.05.59
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 06 Sep 2017 15:06:00 -0700 (PDT)
+From: Srishti Sharma <srishtishar@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: gilad@benyossef.com,
+	linux-crypto@vger.kernel.org,
+	driverdev-devel@linuxdriverproject.org,
+	devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com,
+	Srishti Sharma <srishtishar@gmail.com>
+Subject: [PATCH v4] Staging: ccree: ssi_cipher.c: Remove unused variable.
+Date: Thu,  7 Sep 2017 03:35:53 +0530
+Message-Id: <1504735553-13753-1-git-send-email-srishtishar@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-On Thu, 2017-09-07 at 00:32 +0300, Dan Carpenter wrote:
-> Always compile your patches.
-> 
->   CC [M]  drivers/staging/ccree/ssi_cipher.o
-> drivers/staging/ccree/ssi_cipher.c: In function ‘ssi_blkcipher_complete’:
-> drivers/staging/ccree/ssi_cipher.c:700:6: warning: unused variable ‘inflight_counter’ [-Wunused-variable]
->   u32 inflight_counter;
->       ^~~~~~~~~~~~~~~~
-> 
-> You need to delete the declaration as well.
-> 
-> Don't be in a rush to resend patches.  I normally write them then let
-> them sit in my outbox overnight and send them in the morning.  The extra
-> delay helps me to calm down a bit and focus better.  Even though I've
-> sent thousands of patches, it sometimes still stresses me out.  It's
-> like you're disagreeing with the original author and the reviewers are
-> disagreeing with you and everyone's trying to be nice about it but
-> patches are fundamentally points of disagreement and that's stress.
+Remove local variable inflight_counter, as it is never used.
 
-True, and you shouldn't add a blank link either.
-there's already one above the block you deleted.
+Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+---
+Change in v4:
+ -There is no longer a need to make the comment more comprehensible, as I
+  have deleted the variable associated with it. The v3 of this patch was
+  not based on the original patch, hence v4.
+ drivers/staging/ccree/ssi_cipher.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/drivers/staging/ccree/ssi_cipher.c b/drivers/staging/ccree/ssi_cipher.c
+index 8d31a93..1ff3c8a 100644
+--- a/drivers/staging/ccree/ssi_cipher.c
++++ b/drivers/staging/ccree/ssi_cipher.c
+@@ -697,13 +697,10 @@ static int ssi_blkcipher_complete(struct device *dev,
+ 				  void __iomem *cc_base)
+ {
+ 	int completion_error = 0;
+-	u32 inflight_counter;
+ 	struct ablkcipher_request *req = (struct ablkcipher_request *)areq;
+
+ 	ssi_buffer_mgr_unmap_blkcipher_request(dev, req_ctx, ivsize, src, dst);
+
+-	/*Set the inflight couter value to local variable*/
+-	inflight_counter =  ctx_p->drvdata->inflight_counter;
+ 	/*Decrease the inflight counter*/
+ 	if (ctx_p->flow_mode == BYPASS && ctx_p->drvdata->inflight_counter > 0)
+ 		ctx_p->drvdata->inflight_counter--;
+--
+2.7.4
+
 
