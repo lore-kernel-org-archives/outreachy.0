@@ -1,49 +1,50 @@
 X-GM-THRID: 6463164323927687168
-Date: Thu, 7 Sep 2017 22:42:27 -0700 (PDT)
+Date: Thu, 7 Sep 2017 22:20:27 -0700 (PDT)
 From: Neetu Yadav <yadavneet7@gmail.com>
 To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <e1ce502a-6e96-4289-90d1-942daed9266c@googlegroups.com>
-In-Reply-To: <20170908051133.GA22581@kroah.com>
+Message-Id: <71c11117-131d-42fb-85d2-cdb4591cfae7@googlegroups.com>
+In-Reply-To: <718ac6ad-7567-457e-8fa6-ef66cf6592b3@googlegroups.com>
 References: <405d02a3-830c-4edf-94f8-26a22db5d71b@googlegroups.com>
- <CAOCi2DEA4wbfkpouWZsZ=3BGX_sju9um2mAd0XADn9t_mFZjJA@mail.gmail.com>
- <978eb67d-8c0f-4089-83d0-eb93a5a9bcdd@googlegroups.com>
- <20170908051133.GA22581@kroah.com>
-Subject: Re: [Outreachy kernel] Not able to send mail to the mailing list
+ <718ac6ad-7567-457e-8fa6-ef66cf6592b3@googlegroups.com>
+Subject: Re: Not able to send mail to the mailing list
 MIME-Version: 1.0
 Content-Type: multipart/mixed; 
-	boundary="----=_Part_3935_1403593692.1504849347732"
-X-Google-Token: EMPbyM0Fd2I1GuKY_jw0
-X-Google-IP: 61.12.75.209
+	boundary="----=_Part_3763_2035239644.1504848027578"
+X-Google-Token: EJvRyM0FQfjt7dXOftI0
+X-Google-IP: 182.75.45.225
 
-------=_Part_3935_1403593692.1504849347732
+------=_Part_3763_2035239644.1504848027578
 Content-Type: multipart/alternative; 
-	boundary="----=_Part_3936_1768812582.1504849347732"
+	boundary="----=_Part_3764_2004816288.1504848027578"
 
-------=_Part_3936_1768812582.1504849347732
+------=_Part_3764_2004816288.1504848027578
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 
-Hello sir,
+Hey Bhumika,
 
-In case of git-send email,when I send a mail to myself,it shows "Result : 
-OK", but I don't get a mail in my inbox.
-In case of mutt: it shows:
-connecting to smtp.gmail.com...
-Could not connect to smtp.gmail.com (Network is unreachable).
+Yes, I am using a university network and thank you for pointing that out. 
+It probably saved me hours of struggling to find a solution.
+I did not realize that this might be the case.
+I will get a data connection and try again.
 
-I don't know what the issue might be.
+Thanks again,
 
-Thank you,
 Neetu
+ 
 
 
 
-------=_Part_3936_1768812582.1504849347732
+------=_Part_3764_2004816288.1504848027578
 Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
-<div dir="ltr">Hello sir,<br><br>In case of git-send email,when I send a mail to myself,it shows &quot;Result : OK&quot;, but I don&#39;t get a mail in my inbox.<br>In case of mutt: it shows:<br>connecting to smtp.gmail.com...<br>Could not connect to smtp.gmail.com (Network is unreachable).<br><br>I don&#39;t know what the issue might be.<br><br>Thank you,<br>Neetu<br><br><br></div>
-------=_Part_3936_1768812582.1504849347732--
+<div dir=3D"ltr">Hey Bhumika,<br><br>Yes, I am using a university network a=
+nd thank you for pointing that out. It probably saved me hours of strugglin=
+g to find a solution.<br>I did not realize that this might be the case.<br>=
+I will get a data connection and try again.<br><br>Thanks again,<br><br>Nee=
+tu<br>=C2=A0<br><br><br></div>
+------=_Part_3764_2004816288.1504848027578--
 
-------=_Part_3935_1403593692.1504849347732--
+------=_Part_3763_2035239644.1504848027578--
 
