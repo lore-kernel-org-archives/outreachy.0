@@ -1,88 +1,118 @@
-X-GM-THRID: 6200081911391453184
-X-Received: by 10.107.131.73 with SMTP id f70mr1296703iod.18.1443569062321;
-        Tue, 29 Sep 2015 16:24:22 -0700 (PDT)
+X-GM-THRID: 6463409376999768064
+X-Received: by 10.107.176.8 with SMTP id z8mr1866591ioe.66.1504882774871;
+        Fri, 08 Sep 2017 07:59:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.29.226 with SMTP id b89ls67590qgb.60.gmail; Tue, 29 Sep
- 2015 16:24:21 -0700 (PDT)
-X-Received: by 10.129.57.9 with SMTP id g9mr562647ywa.19.1443569061607;
-        Tue, 29 Sep 2015 16:24:21 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x22d.google.com (mail-pa0-x22d.google.com. [2607:f8b0:400e:c03::22d])
-        by gmr-mx.google.com with ESMTPS id uv4si4069107pac.0.2015.09.29.16.24.21
+Received: by 10.107.192.71 with SMTP id q68ls211696iof.54.gmail; Fri, 08 Sep
+ 2017 07:59:34 -0700 (PDT)
+X-Received: by 10.55.161.23 with SMTP id k23mr1631638qke.40.1504882774050;
+        Fri, 08 Sep 2017 07:59:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504882774; cv=none;
+        d=google.com; s=arc-20160816;
+        b=GdzGvx9vZr7RSndjiJulcvgRQUAVvl/UmpCr+o0s17PY7QZ5ZzXABQ/dOHtwTpZ4Kj
+         AGmK/mpuIQngdFLNPvqXl0VTRGQHEONqH3OLZddVbAHY5gAeyhzR4OW3+MQteXuKe56Z
+         4b6dn9RWSmqjeu0//1uhfmPCKfDPvoYlzTVLGo0c7KRYnLRGFgwvfB5GBkVDhSfyNbyn
+         XJYcIFqTFprym27OfhP4ipAe5lB7xlRuxrecVgpyotA0BSyklB4H9WH+2AyQaAQFIh4Y
+         Z6nzS64ah5eEPguYpCBhUpAOkT1HrWHd/b5tjsuRc5fXqpsIr7azSjjrN+TBazS9KvWC
+         jHCA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=O1sapGXnDjZzDJ2sSQNnLJ82ku05Jg1Yi09ejSFJqvY=;
+        b=YMa7lDqvA6MvY9ehfzhZDcRJy05vBpkhs9TUeYj0PcyziTAdtcrsXHlWxy0x2DEwZs
+         kjr078A1rd0ZRK7BdmBhXAj0XYtVZFR9bs60e4nOtWOAeTZkg0SP96vhIiUsmbWgaXsg
+         AYcX4ks4jDYZGd3v0lLQeMlPxH+5+vp6Tpeu0+wBCaWG+YI2Uc+kx55xqp/pePJBOqRu
+         UUjXEuhWowldEYXdGNpv3vx1tszyo2yk3VoFdyNXS4snCHWDnwoCD0xC8h1IFGwDK0MX
+         qH5jD4wUvImqpEWL52w6HiBwljzk7EyzsI/aqVWdGx3niqOXbGKmLi0WICkYkW0shOzP
+         13IA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ztlbqa0N;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c0d::243 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <srishtishar@gmail.com>
+Received: from mail-qt0-x243.google.com (mail-qt0-x243.google.com. [2607:f8b0:400d:c0d::243])
+        by gmr-mx.google.com with ESMTPS id t131si159650ywe.15.2017.09.08.07.59.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 29 Sep 2015 16:24:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) client-ip=2607:f8b0:400e:c03::22d;
+        Fri, 08 Sep 2017 07:59:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c0d::243 as permitted sender) client-ip=2607:f8b0:400d:c0d::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::22d as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x22d.google.com with SMTP id ex6so19435471pac.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 29 Sep 2015 16:24:21 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ztlbqa0N;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c0d::243 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qt0-x243.google.com with SMTP id q8so1701537qtb.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 08 Sep 2017 07:59:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=NrrO61yXhENxYCY44Z4KueUXup/gqIWtRrKko2Wwpg8=;
-        b=odMmgBQzaVzlqiM5IsmrEt767dFYSPA7vp3BZXaKBI/KUpyxCY1dgOFm+RajwXf74C
-         OaNE+g93QZyi70dlZ7RWcO+1dRvmFywUMiY7LNoC6ay98LAV+0ubK/T3xvYG6uHk/tly
-         LCwzq6NerTERDpwDND1wxJMceEs4z2p8jm6LBP7pPES1Uo5/wIbI9SvfouTdqq9NVhd1
-         QIsmmvHFDtBu9IBAfEM2zKyolfS++ES5usk5gu2siAYwAFRuoqagyHVtyBmtVrGXFFNN
-         1gYjtkxa8IMV1PKqaVMDLtrxb1vIGhGAfsIQf4mcgck2brZ1pwKJql4cMiiyN/I1hWkK
-         dJ1Q==
-X-Received: by 10.68.168.97 with SMTP id zv1mr798130pbb.86.1443569061464;
-        Tue, 29 Sep 2015 16:24:21 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id zk9sm27767649pac.7.2015.09.29.16.24.19
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 29 Sep 2015 16:24:20 -0700 (PDT)
-Date: Wed, 30 Sep 2015 04:54:13 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: unisys: visorbus: visorchipset: Converted arrays to
- static const
-Message-ID: <20150929232413.GA16457@ubuntu>
+        d=gmail.com; s=20161025;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=O1sapGXnDjZzDJ2sSQNnLJ82ku05Jg1Yi09ejSFJqvY=;
+        b=Ztlbqa0NaoA+ETfPRbK6j1uA8H0htIwVEYA7RffSAWLZCnGI8MashcB3jw5SKF5gp/
+         75pxZuCoMZ9QQUHAy/ZeaBCyHI4G5ymPiaBZLeGHRVV4xNEi2wXiqN25ucZOWLCjF3m7
+         T9EP/NmKM3n8m81tkdGVt7W48ps3Vvir+7wmwGtAhM9pbndvlXbb2clLcFJjlothSbus
+         8qJNLbToLw7iChze6uaHAaLo4CIPHJlRUBlENVWJdrgDzX+pwurqSSJqUA2qhFu+k8T8
+         Zr4QJGanWpWU8+t/ywwPABaIiUYP3uIGMyJfqgggBoxG3px6h6HTEH2Yzy6AdtuUOLIJ
+         +jAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=O1sapGXnDjZzDJ2sSQNnLJ82ku05Jg1Yi09ejSFJqvY=;
+        b=tbo8884KUq+s0XsmeiyuHfQJTtWHctIXc2wR5je/6K8eKZnQrLbVx+WWb95aTkZlNt
+         hGnOdMkn7yaWj9ShwdRaYCqtXox618Vz3i9aLxtvuCuReVf3hIvYNDe4DB+bSmTyqo4y
+         Cl8qx/zzmU752WLRPqjT/tXAsmDvDTAycbJWbHqdPBgjpbbRe0l+THEl9ycOWwGzwm4s
+         qMHSqJhbbBTHo/xIo51OLUvUbIK2cJ+nieHJ6ZkiI0m1kZJja525wxoROhfEFlXyA32G
+         obBtgbipqCqVtzmdeWOGGi9jgKf8ps9Lre6V+p7JtGRxyzsmimnfEqYmYosHD5/b9AY9
+         j++A==
+X-Gm-Message-State: AHPjjUhexkIj1uk/rSTtHzyj/Je8dxl1pW6sm3MtIbAJFrN2I3ZSFY+L
+	wIrLvsZDaMvbDWVUKMqkvBKHADRV+Q==
+X-Google-Smtp-Source: AOwi7QCcHg12A2hPwIS9N+0YZHrrkAHd+/W/4cyVJEGC/c51RPGN03aqMdzb945hc89YVHM6nPRuU6Y1xjaLsATmzHk=
+X-Received: by 10.237.53.23 with SMTP id a23mr4755550qte.125.1504882773799;
+ Fri, 08 Sep 2017 07:59:33 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Received: by 10.200.55.118 with HTTP; Fri, 8 Sep 2017 07:59:33 -0700 (PDT)
+In-Reply-To: <20170908143833.yisoj3t2yp5httle@mwanda>
+References: <1504879698-5855-1-git-send-email-srishtishar@gmail.com> <20170908143833.yisoj3t2yp5httle@mwanda>
+From: Srishti Sharma <srishtishar@gmail.com>
+Date: Fri, 8 Sep 2017 20:29:33 +0530
+Message-ID: <CAB3L5owMjYyFcLQP7p_+R2DzZz3KpUhCxaVrB0qJeJh08UzM1w@mail.gmail.com>
+Subject: Re: [PATCH] Staging: media: omap4iss: Use WARN_ON() instead of BUG_ON().
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: Greg KH <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org, 
+	Linux kernel mailing list <linux-kernel@vger.kernel.org>, outreachy-kernel@googlegroups.com, 
+	laurent.pinchart@ideasonboard.com, mchehab@kernel.org, 
+	linux-media@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 
-Replaced the declaration of character array from char * to
-static const char * const as the array is not intended to be used
-anywhere outside the function plus the values in array and the pointer
-to it don't have to be changed.
+On Fri, Sep 8, 2017 at 8:08 PM, Dan Carpenter <dan.carpenter@oracle.com> wrote:
+> On Fri, Sep 08, 2017 at 07:38:18PM +0530, Srishti Sharma wrote:
+>> Use WARN_ON() instead of BUG_ON() to avoid crashing the kernel.
+>>
+>> Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+>> ---
+>>  drivers/staging/media/omap4iss/iss.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/staging/media/omap4iss/iss.c b/drivers/staging/media/omap4iss/iss.c
+>> index c26c99fd..b1036ba 100644
+>> --- a/drivers/staging/media/omap4iss/iss.c
+>> +++ b/drivers/staging/media/omap4iss/iss.c
+>> @@ -893,7 +893,7 @@ void omap4iss_put(struct iss_device *iss)
+>>               return;
+>>
+>>       mutex_lock(&iss->iss_mutex);
+>> -     BUG_ON(iss->ref_count == 0);
+>> +     WARN_ON(iss->ref_count == 0);
+>
+> ref_counting bugs often have a security aspect.  BUG_ON() is probably
+> safer here.  Better to crash than to lose all your bitcoin.
 
-Signed-off-by: Shivani Bhardwaj <shivanib134@gmaail.com>
----
- drivers/staging/unisys/visorbus/visorchipset.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Okay, Thanks for this.
 
-diff --git a/drivers/staging/unisys/visorbus/visorchipset.c b/drivers/staging/unisys/visorbus/visorchipset.c
-index 4b76cb4..073b45b 100644
---- a/drivers/staging/unisys/visorbus/visorchipset.c
-+++ b/drivers/staging/unisys/visorbus/visorchipset.c
-@@ -1411,7 +1411,7 @@ static int
- visorchipset_chipset_selftest(void)
- {
- 	char env_selftest[20];
--	char *envp[] = { env_selftest, NULL };
-+	static const char * const envp[] = { env_selftest, NULL };
- 
- 	sprintf(env_selftest, "SPARSP_SELFTEST=%d", 1);
- 	kobject_uevent_env(&visorchipset_platform_device.dev.kobj, KOBJ_CHANGE,
-@@ -1561,7 +1561,7 @@ parahotplug_request_kickoff(struct parahotplug_request *req)
- 	struct controlvm_message_packet *cmd = &req->msg.cmd;
- 	char env_cmd[40], env_id[40], env_state[40], env_bus[40], env_dev[40],
- 	    env_func[40];
--	char *envp[] = {
-+	static const char * const envp[] = {
- 		env_cmd, env_id, env_state, env_bus, env_dev, env_func, NULL
- 	};
- 
--- 
-2.1.0
+Regards,
+Srishti
 
+>
+> regards,
+> dan carpenter
+>
 
