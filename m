@@ -1,164 +1,198 @@
 X-GM-THRID: 6463500175393423360
-X-Received: by 10.84.240.12 with SMTP id y12mr2667357plk.12.1504907679718;
-        Fri, 08 Sep 2017 14:54:39 -0700 (PDT)
+X-Received: by 10.129.229.8 with SMTP id s8mr816101ywl.73.1504905355216;
+        Fri, 08 Sep 2017 14:15:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.41.197 with SMTP id p188ls887730iop.51.gmail; Fri, 08 Sep
- 2017 14:54:38 -0700 (PDT)
-X-Received: by 10.36.105.82 with SMTP id e79mr2317972itc.44.1504907678923;
-        Fri, 08 Sep 2017 14:54:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504907678; cv=none;
+Received: by 10.107.88.24 with SMTP id m24ls902900iob.14.gmail; Fri, 08 Sep
+ 2017 14:15:54 -0700 (PDT)
+X-Received: by 10.202.240.68 with SMTP id o65mr2380561oih.85.1504905354402;
+        Fri, 08 Sep 2017 14:15:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504905354; cv=none;
         d=google.com; s=arc-20160816;
-        b=TM9IS0Ulm1Oih+dm14Q2ih+Qf+HaYQRpY/LHuYBGfyUZ0thXAfUpmrjfmRIxB7m5Ic
-         hjbRbOcegD4O1VdG+rJD82q2VvwAQU7VYoJJ6AVdlsnDY4ZIdyya2nsRt5pb3LdEUyxw
-         Y+caqzn4w8OeMk018GHkOG13WzEKWi1Ws9GPuB7X88VshX2vfep8OdSrvqBrI52/IcZP
-         Jx99GA/d4B3Zx+EQhUpLayAVkNJR/8pgK9tAf+96LNMo5SkXLXOP8/of6nNTw+N/JCgH
-         AWKdOVao53Pgv0tCIkBo35WHXGwG/+DP68pC4qtncqXPi5T5c/bH+fXQLsnuWeDtJonN
-         vn+g==
+        b=RmHP5kpyE9XgbppCYGuU8BVoV/TVEBmQV91jntwvs23aYKa24CC3xxpOH4InQjELQH
+         g02fr+bcm+7lWOWzNaqY8fVLTBsQDoGi2avzaQSEStkwzGxQUsDdmoeXVFG2QroQU86p
+         LHDLtZdsZ7p5EdGlSUIasacqSAyhx4meLOrwTLtAOtazuRmHO8CdQ8wzY1aPdkYEf9BK
+         hL8ZoJ2vdivMvi4fJxZgCfYuOdZi5vwcxNccXONPQImEln2Aks7fHLdMw/01tog2HnqA
+         q0RKylLpjPIpNn5Llfxzp08kesInk2NE1Q/mCNNezbNNFMBpFvqv+sLJKCpff1ncejpW
+         /InA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=5hDROTMnWGk7N9W/S5OvxE/Hjv47OD5el0C+5pAFuoo=;
-        b=hxH7m1DGRtuS5j8Ah61M6M1ZcIxc0kOPbCVKbL6UNDHb+uvvMGJEoRNMbwJTUA3+uy
-         yno0dek0Vljxt9i8Gkv+PD7bUNVn4OHXsjCEtfWN+ZpMQgE4oDEtnaJ8gMQiOyFMOY8Z
-         Q5lvR1cOenaPR1xBGj72+ZeRN+D8imIb2CXn6XgqI8ORbvZSE0U4z8T1g5Thz/VOuY9z
-         TkRDug/untDXJ8NSwLRoh5kKMbztVnBFIx5GpdvcxRk905LkKYoYSZHwujVGUc0Wdj9Y
-         V5u7jrH7fbXUApXiLyWSMdy10Q3eX8u9MiGeyOXAkZo8rueqZ+GA2GLwpLxWmaduo9WQ
-         M1Iw==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=Ho2DY3hkK6OuU3Yi8lPRV4X0i4UdEB8i1XbDyPgjnSU=;
+        b=HOs7HYOcCAA6kAiRneUDwL4zI47BXdZPGHFybsktyfHlDhtVp6VGD34zyyuIC5lRJv
+         /QV891rihAxzNnt3qLzLHcZZueR89EbjgjExrKiWIj+jlnedmiKGk9JGFU7G9r6jiHWj
+         7miAFLF1FEWU7ktGYKQ2B0xbMFHEyu2Shr9pPA2M0xxEduELKjywO1iy9lgeqHw5I0ms
+         06AULgbyZFVbXOXVzfVpjvWFLKfpVNR/BIuRqsrOiM64a9DT8ESAz1odRaJYItt88Hyt
+         B9O/J356HE0r4Rf2Y+oGw1jB5KGidEpqtvlIkYqhpnqpQkB2+3SMQwGZf8T97xLNSAAD
+         Q8gQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hRM6Ts5s;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WKqQR262;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c09::241 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <srishtishar@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id a12si351613pfd.2.2017.09.08.14.54.38
+Received: from mail-qk0-x241.google.com (mail-qk0-x241.google.com. [2607:f8b0:400d:c09::241])
+        by gmr-mx.google.com with ESMTPS id t131si224349ywe.15.2017.09.08.14.15.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 08 Sep 2017 14:54:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Fri, 08 Sep 2017 14:15:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c09::241 as permitted sender) client-ip=2607:f8b0:400d:c09::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hRM6Ts5s;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WKqQR262;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c09::241 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id e69so190907pfg.4
-        for <outreachy-kernel@googlegroups.com>; Fri, 08 Sep 2017 14:54:38 -0700 (PDT)
+Received: by mail-qk0-x241.google.com with SMTP id r66so2058342qke.4
+        for <outreachy-kernel@googlegroups.com>; Fri, 08 Sep 2017 14:15:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=5hDROTMnWGk7N9W/S5OvxE/Hjv47OD5el0C+5pAFuoo=;
-        b=hRM6Ts5sZkFXod+csC3Np4r4ldOv/vHFhHCLmlZL6TOgiVcrm6VchvFBAPsGAiRlrP
-         Xt8nIepRaNPeQXgTL/src+zHMlZ9SvMdYhLtAZXyWfn5K1YMBnsWTA2FqVzxDtPS4t7y
-         SltxVQov7pnGlw3Ti5iWlo8y2SHhLepNTAPN49JaUKJ71rnqQ8KhFX8SmUQDHoPIdJSa
-         JjmHuMbocon2TuQ02v2ykR2I3qMJ4vkouc+/MwHUFiV9ObJ5Opq37QaqsBjgHWmyNBDw
-         +br8f94TyOe7GKZC20yDrPhuzsBN4feEtUt5pmglCnU1k5vONKmCdQZkduS/0ZRMst0M
-         tydg==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=Ho2DY3hkK6OuU3Yi8lPRV4X0i4UdEB8i1XbDyPgjnSU=;
+        b=WKqQR2620ZJKlAt0zly+gbyryWaARKrNAP/QMnuoq94gTZf6VPpqbb3UdG5F2bEgvD
+         B3LZVNqAu0GoX/IHo9i0svVk5SSdySL8mfyZCVFOHrIGEFQq31F4AJG5N4rGA52NPIWq
+         rYQRb7W5EfDqdtOYkqV2bvv4erQj6TbCffM20PEMgb2KU3phgGBAEfmlUPNlXw/DOw4X
+         r3bHpACpi6ZaRnIkY4hTqcbKGDjonnO9U/fpwW6Q56NYb7JQWjkccywj496SHkaFXr0o
+         +4zkM3SRknNvlyltS/s+/Mz3pzocgbcgO8zxYprSETqxkGbk7LKE3AqzNkUFblKVaHuC
+         rw5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=5hDROTMnWGk7N9W/S5OvxE/Hjv47OD5el0C+5pAFuoo=;
-        b=VXFI+gSfZvNffCq/lNyU5ObdchMtqUMDCJqfjQC8i9DmdN5fOafwVEyIGnr7o2nnQt
-         0B1rDfrGODipjydChfU5ei8Prqn/7M8C51fB6dxlbn18bgXmQVa0+3oUeRPqn14PDIMg
-         qlKY7q5O+dk3NfJkmXLxyDY/icBE0zGvZJ3wi5NB7GqX4TFQAYhecPImTiXU22Iiivpk
-         DooMGWvfqMVEA27DMbjyw9dnoXp823VqIggtCeo8G1CFLqAafKm2I/iUroSFa9O/i9fM
-         ATaRkWxgliWUpLZtAeqzt7yGmP9kZNa6KfQ4Rga64wKaLs/dW0dJb4u/yi4ca3IeGeR9
-         wrRQ==
-X-Gm-Message-State: AHPjjUgahZYthgVm39qiCPdfZvE0HtiolJA8SyI5iZVJb0owF8aZHqwV
-	RovaR5NWwdk0+g==
-X-Google-Smtp-Source: ADKCNb5L39gQC+pZ1kYCbpqr4MqoPjhCHrbak9cCFcivKPs7PLyYEukoQPN0CsepdQ8CexGCKV1bmg==
-X-Received: by 10.98.217.75 with SMTP id s72mr4463330pfg.158.1504907678699;
-        Fri, 08 Sep 2017 14:54:38 -0700 (PDT)
-Return-Path: <srishtishar@gmail.com>
-Received: from srishti-PRODiiGY-945G ([171.61.9.172])
-        by smtp.gmail.com with ESMTPSA id j14sm4449013pgs.15.2017.09.08.14.54.37
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 08 Sep 2017 14:54:37 -0700 (PDT)
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=Ho2DY3hkK6OuU3Yi8lPRV4X0i4UdEB8i1XbDyPgjnSU=;
+        b=bUgpUSZg1YYoDnnjsEbOtUIaPVJ9P5qi3F9I+jGcnTRInw6oI3diEVXyb4hl1ojq8o
+         x6aHIztw/WkfVaJ1oojgmaQ2A3XfpsMUeLxtoXTG02nsJO39IOIoQVWeybcCC+4Bk9lz
+         YKLooZX69BqGpBOQxlCZA7TyRiiZjLU3+mevSZEggN6YG8aENBUWxkZiWukHFrFHXr9Y
+         jQRwsBEntbyab9gowFLT2W5jrds+pUYGV8ZLDbDEkOKexyL7oxK2DRqdZXskU+TOfUGt
+         bFpkJ1mi7vlyS1UmjK8GqlMNLlWY62yO6poNfoCsmiF5x5VqB2XxTdNLMYd5qXMo9PeQ
+         ooaw==
+X-Gm-Message-State: AHPjjUhXohvhT1uhjJfEYpe6pFaJh1J4KNtqdR2aIKHUcps0guFAsLL+
+	lu315uRpormm9pDl4Qa0yfUwjkwX5Q==
+X-Google-Smtp-Source: AOwi7QBl9uLDyMj0ShkCtiKDr/mAtRiUIoJNWQ8feKpQVbsN6tWV2LTFnu4yzp5Rjb0ZERTBD5+EIIXvpnHQbs5L44Q=
+X-Received: by 10.55.176.132 with SMTP id z126mr5902470qke.209.1504905354073;
+ Fri, 08 Sep 2017 14:15:54 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.200.55.118 with HTTP; Fri, 8 Sep 2017 14:15:53 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.20.1709082257480.2510@hadrien>
+References: <1504904135-3973-1-git-send-email-srishtishar@gmail.com> <alpine.DEB.2.20.1709082257480.2510@hadrien>
 From: Srishti Sharma <srishtishar@gmail.com>
-To: gilad@benyossef.com
-Cc: gregkh@linuxfoundation.org,
-	linux-crypto@vger.kernel.org,
-	driverdev-devel@linuxdriverproject.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Srishti Sharma <srishtishar@gmail.com>
-Subject: [PATCH v3] Staging: ccree: Merge assignment with return
-Date: Sat,  9 Sep 2017 03:24:14 +0530
-Message-Id: <1504907654-4914-1-git-send-email-srishtishar@gmail.com>
-X-Mailer: git-send-email 2.7.4
+Date: Sat, 9 Sep 2017 02:45:53 +0530
+Message-ID: <CAB3L5oy7pxuTNyQmdnWd6M4_UOJ2mdp7uEOAH9sCMZPt-Suekg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: ccree: Merge assignment
+ with return
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Gilad Ben-Yossef <gilad@benyossef.com>, Greg KH <gregkh@linuxfoundation.org>, 
+	Linux Crypto Mailing List <linux-crypto@vger.kernel.org>, driverdev-devel@linuxdriverproject.org, 
+	devel@driverdev.osuosl.org, 
+	Linux kernel mailing list <linux-kernel@vger.kernel.org>, outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset="UTF-8"
 
-Merge the assignment and return statements to return the value
-directly. Done using coccinelle.
+On Sat, Sep 9, 2017 at 2:28 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+> On Sat, 9 Sep 2017, Srishti Sharma wrote:
+>
+>> Merge the assignment and return statements to return the value
+>> directly. Done using coccinelle.
+>>
+>> @@
+>> local idexpression ret;
+>> expression e;
+>> @@
+>>
+>> -ret =
+>> +return
+>>      e;
+>> -return ret;
+>>
+>> Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+>> ---
+>> Changes in v2:
+>>  - Edit commit message so that it respects the 80 character limit.
+>>
+>>  drivers/staging/ccree/ssi_aead.c | 18 ++++++------------
+>>  1 file changed, 6 insertions(+), 12 deletions(-)
+>>
+>> diff --git a/drivers/staging/ccree/ssi_aead.c b/drivers/staging/ccree/ssi_aead.c
+>> index 5abe6b2..f4532ea 100644
+>> --- a/drivers/staging/ccree/ssi_aead.c
+>> +++ b/drivers/staging/ccree/ssi_aead.c
+>> @@ -651,7 +651,7 @@ ssi_aead_setkey(struct crypto_aead *tfm, const u8 *key, unsigned int keylen)
+>>  static int ssi_rfc4309_ccm_setkey(struct crypto_aead *tfm, const u8 *key, unsigned int keylen)
+>>  {
+>>       struct ssi_aead_ctx *ctx = crypto_aead_ctx(tfm);
+>> -     int rc = 0;
+>> +
+>>
+>
+> There is still a problem here.  You don't need two blank lines under a
+> variable declaration.
 
-@@
-local idexpression ret;
-expression e;
-@@
+When I try to remove that extra blank line it looks like I deleted one
+blank line and added another one .
 
--ret =
-+return
-     e;
--return ret;
+Regards,
+Srishti
 
-Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
----
-Changes in v3:
- -Edit commit message so that it respects 80 character limit.
- -Remove unneeded blank lines, that were added by mistake.
-
- drivers/staging/ccree/ssi_aead.c | 14 +++-----------
- 1 file changed, 3 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/staging/ccree/ssi_aead.c b/drivers/staging/ccree/ssi_aead.c
-index 5abe6b2..1d3b580 100644
---- a/drivers/staging/ccree/ssi_aead.c
-+++ b/drivers/staging/ccree/ssi_aead.c
-@@ -651,7 +651,6 @@ ssi_aead_setkey(struct crypto_aead *tfm, const u8 *key, unsigned int keylen)
- static int ssi_rfc4309_ccm_setkey(struct crypto_aead *tfm, const u8 *key, unsigned int keylen)
- {
- 	struct ssi_aead_ctx *ctx = crypto_aead_ctx(tfm);
--	int rc = 0;
-
- 	if (keylen < 3)
- 		return -EINVAL;
-@@ -659,9 +658,7 @@ static int ssi_rfc4309_ccm_setkey(struct crypto_aead *tfm, const u8 *key, unsign
- 	keylen -= 3;
- 	memcpy(ctx->ctr_nonce, key + keylen, 3);
-
--	rc = ssi_aead_setkey(tfm, key, keylen);
--
--	return rc;
-+	return ssi_aead_setkey(tfm, key, keylen);
- }
- #endif /*SSI_CC_HAS_AES_CCM*/
-
-@@ -2224,15 +2221,12 @@ static int ssi_rfc4106_gcm_setkey(struct crypto_aead *tfm, const u8 *key, unsign
- 	keylen -= 4;
- 	memcpy(ctx->ctr_nonce, key + keylen, 4);
-
--	rc = ssi_aead_setkey(tfm, key, keylen);
--
--	return rc;
-+	return ssi_aead_setkey(tfm, key, keylen);
- }
-
- static int ssi_rfc4543_gcm_setkey(struct crypto_aead *tfm, const u8 *key, unsigned int keylen)
- {
- 	struct ssi_aead_ctx *ctx = crypto_aead_ctx(tfm);
--	int rc = 0;
-
- 	SSI_LOG_DEBUG("%s()  keylen %d, key %p\n", __func__, keylen, key);
-
-@@ -2242,9 +2236,7 @@ static int ssi_rfc4543_gcm_setkey(struct crypto_aead *tfm, const u8 *key, unsign
- 	keylen -= 4;
- 	memcpy(ctx->ctr_nonce, key + keylen, 4);
-
--	rc = ssi_aead_setkey(tfm, key, keylen);
--
--	return rc;
-+	return ssi_aead_setkey(tfm, key, keylen);
- }
-
- static int ssi_gcm_setauthsize(struct crypto_aead *authenc,
---
-2.7.4
-
+>
+> julia
+>
+>>       if (keylen < 3)
+>>               return -EINVAL;
+>> @@ -659,9 +659,7 @@ static int ssi_rfc4309_ccm_setkey(struct crypto_aead *tfm, const u8 *key, unsign
+>>       keylen -= 3;
+>>       memcpy(ctx->ctr_nonce, key + keylen, 3);
+>>
+>> -     rc = ssi_aead_setkey(tfm, key, keylen);
+>> -
+>> -     return rc;
+>> +     return ssi_aead_setkey(tfm, key, keylen);
+>>  }
+>>  #endif /*SSI_CC_HAS_AES_CCM*/
+>>
+>> @@ -2214,7 +2212,7 @@ static int ssi_rfc4309_ccm_decrypt(struct aead_request *req)
+>>  static int ssi_rfc4106_gcm_setkey(struct crypto_aead *tfm, const u8 *key, unsigned int keylen)
+>>  {
+>>       struct ssi_aead_ctx *ctx = crypto_aead_ctx(tfm);
+>> -     int rc = 0;
+>> +
+>>
+>>       SSI_LOG_DEBUG("%s()  keylen %d, key %p\n", __func__, keylen, key);
+>>
+>> @@ -2224,15 +2222,13 @@ static int ssi_rfc4106_gcm_setkey(struct crypto_aead *tfm, const u8 *key, unsign
+>>       keylen -= 4;
+>>       memcpy(ctx->ctr_nonce, key + keylen, 4);
+>>
+>> -     rc = ssi_aead_setkey(tfm, key, keylen);
+>> -
+>> -     return rc;
+>> +     return ssi_aead_setkey(tfm, key, keylen);
+>>  }
+>>
+>>  static int ssi_rfc4543_gcm_setkey(struct crypto_aead *tfm, const u8 *key, unsigned int keylen)
+>>  {
+>>       struct ssi_aead_ctx *ctx = crypto_aead_ctx(tfm);
+>> -     int rc = 0;
+>> +
+>>
+>>       SSI_LOG_DEBUG("%s()  keylen %d, key %p\n", __func__, keylen, key);
+>>
+>> @@ -2242,9 +2238,7 @@ static int ssi_rfc4543_gcm_setkey(struct crypto_aead *tfm, const u8 *key, unsign
+>>       keylen -= 4;
+>>       memcpy(ctx->ctr_nonce, key + keylen, 4);
+>>
+>> -     rc = ssi_aead_setkey(tfm, key, keylen);
+>> -
+>> -     return rc;
+>> +     return ssi_aead_setkey(tfm, key, keylen);
+>>  }
+>>
+>>  static int ssi_gcm_setauthsize(struct crypto_aead *authenc,
+>> --
+>> 2.7.4
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1504904135-3973-1-git-send-email-srishtishar%40gmail.com.
+>> For more options, visit https://groups.google.com/d/optout.
+>>
 
