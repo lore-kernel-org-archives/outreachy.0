@@ -1,99 +1,111 @@
 X-GM-THRID: 6463409376999768064
-X-Received: by 10.46.32.39 with SMTP id g39mr249138ljg.17.1504879840522;
-        Fri, 08 Sep 2017 07:10:40 -0700 (PDT)
+X-Received: by 10.13.229.133 with SMTP id o127mr1852486ywe.15.1504879765519;
+        Fri, 08 Sep 2017 07:09:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.19.201 with SMTP id 70ls3163lft.13.gmail; Fri, 08 Sep 2017
- 07:10:39 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QA4Db8dY+TZ0SmVfSiaFhZ8vX5rt1OiKg2cUL9/Y/NEF8nEeY9WDF3ZhUY6HpY1lIPEYDlK
-X-Received: by 10.46.85.7 with SMTP id j7mr238242ljb.7.1504879838991;
-        Fri, 08 Sep 2017 07:10:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504879838; cv=none;
+Received: by 10.36.6.207 with SMTP id 198ls1537967itv.8.canary-gmail; Fri, 08
+ Sep 2017 07:09:24 -0700 (PDT)
+X-Received: by 10.129.189.16 with SMTP id b16mr1946303ywi.74.1504879764695;
+        Fri, 08 Sep 2017 07:09:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504879764; cv=none;
         d=google.com; s=arc-20160816;
-        b=0/kXrVMv7OuWH8E0T4ULyFsLUIi/zPzGvRVFB27tJ10qnDIY8hAZJ7BY0WSpBNlaYD
-         kYUdkbXc5lvv58Kc54kVupoPbb6IJf9gCm9ytt0l7drWoJf28TpIiRlY78L1d6crAFct
-         gUmaM8vEd8jAMwYzn2RDJj5ekIo55ZRCo5W6YsFFPCmh7v9w9LQ08/CPuqq/Xf8LkXHo
-         bjre+QDQgHlTuE/VcJv5YQyIY9uDibNCKTbR74/buOhgoCx1iP5wR/lSN/ZUP7ZLiWXE
-         eEe9MlGgbtaMvn5rqrLsXCsmz/NTrHEulTzUv/m5SnAom9MJNLxeiJPV2P5WVxwSB58N
-         XJBA==
+        b=qIXkpnrnRUe3E0by/Jv8UJyw+p/n4HrJ1hxfhDri24MUFdyLgt3ElsnkIIKGRgcGD0
+         vP9clU0AxmuSvboD0ezNm0v7u6j6dSdPkGayD2Wa0Fk1IH2srAPDy4au3i/+up2Abyw7
+         QvTlG586bMd5Q28gIBbbexynm4NyWW0HrRIVAPtpUVbz9KdOtoJ7w6Ub6hGBsQPQP6SJ
+         Uu6kWJflA2FhUpRDQPTXltwSHsjlLkLyNWT9oVAo7c70RUi1V69CIVlbLEUVVERMWFf/
+         oN6Ctu0SHqK9Q2yBVyW9y5RH3385XXl/7RojsW9xsAz7WSQvLRut8z8Xrw3MVDtJndac
+         CCBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=x8+kzwCpiyiKO+9Y4fFm+gYIPPuwWjC7dsRaWkCSw40=;
-        b=B49MLqhLmznjFv/njEw5ArfRMDAivFZqEWhhpakrPzSTKGhL9KYmQLZ6n/0u5Yi85r
-         l5zCYJ+m2K6+OSmGTpPBv+CU+bZ0BqHwepwg5tuHHrL/CrGnLpFD/BfTkq7AWrTi72DD
-         EuqL0sx9Zh46Snw1KX6wlaeGRLibP8R8VRwbAZiKxzNcYBLwY+ebFdSmGiaO1NMHPtxX
-         GfGwXJUrhCMY3oWu44jNPBi312/1Jn4ienPFTgd8PY/8RxKlMywJUFJ7Xj5Tv80rjVtk
-         T+L4QzbKE2af+zWIjkyDMb7C0w2fs1B4wi68878l3VW/Px4CZivVsIGtVa8SFZvNPlZA
-         aekA==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=U8JQKQXSZRX87ZXIR8a9CqKaaqxh06zfvTNQ5xmfJ0g=;
+        b=hY9WPqS/4duDu9JlWqi8xFBMer9SBv/T8Og5K5hrM3S74q056MGi/PnoHb0T3OZEz3
+         Z2XbklcAXVqZVjnZYdxDjSZVi7IL0C39aqNTsQHdDNRh9y6blU0jajtP1F34ihN+pPGB
+         ilXq8DoQNIhjOsHZSdas+N9c9EBBYZ9m2r2BGeJnZKXSP8QHX+JzXqu7jrX6BH/sMuCM
+         DSnqA3/0c8ikv3WReqaCumMYsIS+vCtQPovX3w0w0smgvN6T351gHVm+T5lMAveRXlUo
+         SzQ+0oe3hpPWaEp/Nk8tGcC/vp7cKMsprLelh3nl0U6/rX+XEeJ2LoNsbM9LYS1hHltf
+         Mdow==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id e135si117076wmg.6.2017.09.08.07.10.38
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=s1YrHXvw;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <srishtishar@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id j20si253514pfa.18.2017.09.08.07.09.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 08 Sep 2017 07:10:38 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Fri, 08 Sep 2017 07:09:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.42,361,1500933600"; 
-   d="scan'208";a="290192654"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 08 Sep 2017 16:10:38 +0200
-Date: Fri, 8 Sep 2017 16:10:09 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Srishti Sharma <srishtishar@gmail.com>
-cc: gregkh@linuxfoundation.org, laurent.pinchart@ideasonboard.com, 
-    mchehab@kernel.org, linux-media@vger.kernel.org, 
-    devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
-    outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: media: omap4iss: Use WARN_ON()
- instead of BUG_ON().
-In-Reply-To: <1504879698-5855-1-git-send-email-srishtishar@gmail.com>
-Message-ID: <alpine.DEB.2.20.1709081609440.3165@hadrien>
-References: <1504879698-5855-1-git-send-email-srishtishar@gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=s1YrHXvw;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x241.google.com with SMTP id h4so1485783pfk.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 08 Sep 2017 07:09:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=U8JQKQXSZRX87ZXIR8a9CqKaaqxh06zfvTNQ5xmfJ0g=;
+        b=s1YrHXvwGZ8/oVB1ot74ZXedA+RjSIb5o3xlYbRb7x3P63Q3asOpTTuEgDu4d8D0rd
+         0MoJaazilS2ZarjxD8iY447XQvFOVlWhVGxXoFQCDDJCVGhu9u4M9zybIqea68eNNq/f
+         3PpN7uzIDkttPdufctG+lJenleQj5j0y9ez5jnhBbGrkmE5duuUoT4dx/Eo5BxgVn6r6
+         mr4op8HwgwF7BbRK1FK03zzV6m7k0QhS3NjEoJwewmiZ5KzeAsOChcRkEZHqlnTz3Ddi
+         Ylw/q612V+hNJTmEOJ+Vl41W5XS5z67wQ98ECTH3hC5Zcse582ww0eg7xWzpfsN3R5Td
+         G2Eg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=U8JQKQXSZRX87ZXIR8a9CqKaaqxh06zfvTNQ5xmfJ0g=;
+        b=P9sHvk7Fi9Cl1C642DsSzfv0MDOMLMS5/tekEZzgO0sU/qqlUfYRFwEd6uHOYBrhK8
+         41fjQkJVe33Oys6ukEVF22flCvHW8zxnCs1KajsFXfkW4oEcm0DhFLZiS/3SrdOJckuH
+         LsBgl2PdEFKNbc9jkJb0Km+ejRJMh6hL1fVOk0vitipPgv96M1uDsPDNYASOHb4TLir7
+         Y5W2psE3H4WZZfj8uhCkfsauYSj72w+LvrQ5JybZ71GXb2Q7Fb+vwN4BxvcBF1gUjY7r
+         wXjKITKs6DyQejc4s5y+PhE64hoO7Q72jJHnTzkxFF+ey2fvT2GXZPR/x+V9KSFMo0oQ
+         tZEA==
+X-Gm-Message-State: AHPjjUj1q6AsU2pDrV481hpA7da4/inH9i10yuRIXZRfMyXy1M8rxOPH
+	yjUcq0qAZadFtQ==
+X-Google-Smtp-Source: ADKCNb5OncmRUvSkUd61xawACcNymHJj//BaFfRTlsOLo1PJ3CHyIzjH0aL+F9Mz1JjadduIj9/Zgg==
+X-Received: by 10.99.115.92 with SMTP id d28mr3306628pgn.280.1504879764366;
+        Fri, 08 Sep 2017 07:09:24 -0700 (PDT)
+Return-Path: <srishtishar@gmail.com>
+Received: from srishti-PRODiiGY-945G ([171.61.9.172])
+        by smtp.gmail.com with ESMTPSA id w134sm5054497pfd.186.2017.09.08.07.09.23
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 08 Sep 2017 07:09:23 -0700 (PDT)
+From: Srishti Sharma <srishtishar@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: laurent.pinchart@ideasonboard.com,
+	mchehab@kernel.org,
+	linux-media@vger.kernel.org,
+	devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com,
+	Srishti Sharma <srishtishar@gmail.com>
+Subject: [PATCH] Staging: media: omap4iss: Use WARN_ON() instead of BUG_ON().
+Date: Fri,  8 Sep 2017 19:38:18 +0530
+Message-Id: <1504879698-5855-1-git-send-email-srishtishar@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
+Use WARN_ON() instead of BUG_ON() to avoid crashing the kernel.
 
+Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+---
+ drivers/staging/media/omap4iss/iss.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On Fri, 8 Sep 2017, Srishti Sharma wrote:
+diff --git a/drivers/staging/media/omap4iss/iss.c b/drivers/staging/media/omap4iss/iss.c
+index c26c99fd..b1036ba 100644
+--- a/drivers/staging/media/omap4iss/iss.c
++++ b/drivers/staging/media/omap4iss/iss.c
+@@ -893,7 +893,7 @@ void omap4iss_put(struct iss_device *iss)
+ 		return;
 
-> Use WARN_ON() instead of BUG_ON() to avoid crashing the kernel.
->
-> Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
-> ---
->  drivers/staging/media/omap4iss/iss.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/media/omap4iss/iss.c b/drivers/staging/media/omap4iss/iss.c
-> index c26c99fd..b1036ba 100644
-> --- a/drivers/staging/media/omap4iss/iss.c
-> +++ b/drivers/staging/media/omap4iss/iss.c
-> @@ -893,7 +893,7 @@ void omap4iss_put(struct iss_device *iss)
->  		return;
->
->  	mutex_lock(&iss->iss_mutex);
-> -	BUG_ON(iss->ref_count == 0);
-> +	WARN_ON(iss->ref_count == 0);
->  	if (--iss->ref_count == 0) {
+ 	mutex_lock(&iss->iss_mutex);
+-	BUG_ON(iss->ref_count == 0);
++	WARN_ON(iss->ref_count == 0);
+ 	if (--iss->ref_count == 0) {
+ 		iss_disable_interrupts(iss);
+ 		/* Reset the ISS if an entity has failed to stop. This is the
+--
+2.7.4
 
-Won't this then infinite loop?
-
-julia
-
->  		iss_disable_interrupts(iss);
->  		/* Reset the ISS if an entity has failed to stop. This is the
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1504879698-5855-1-git-send-email-srishtishar%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
