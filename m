@@ -1,108 +1,117 @@
 X-GM-THRID: 6463317881648054272
-X-Received: by 10.46.31.2 with SMTP id f2mr155286ljf.31.1504860352730;
-        Fri, 08 Sep 2017 01:45:52 -0700 (PDT)
+X-Received: by 10.36.109.205 with SMTP id m196mr965778itc.2.1504858462047;
+        Fri, 08 Sep 2017 01:14:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.72.138 with SMTP id v132ls110116lfa.5.gmail; Fri, 08 Sep
- 2017 01:45:51 -0700 (PDT)
-X-Google-Smtp-Source: ADKCNb6/ts3U8/mN7EYUTZ/iQjocfO+rEdEYt8R32bVdX4b249O5GM2BjqNvpdAHPxmvNepDi3je
-X-Received: by 10.46.7.26 with SMTP id 26mr146427ljh.5.1504860351327;
-        Fri, 08 Sep 2017 01:45:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504860351; cv=none;
+Received: by 10.36.77.78 with SMTP id l75ls946754itb.9.canary-gmail; Fri, 08
+ Sep 2017 01:14:21 -0700 (PDT)
+X-Received: by 10.176.64.131 with SMTP id i3mr1290603uad.17.1504858461250;
+        Fri, 08 Sep 2017 01:14:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504858461; cv=none;
         d=google.com; s=arc-20160816;
-        b=mCccOO94dp+yvCRfccu2CaIeU6bn6SveRxu4L9vVGeyyokwo4IKBdSPsakYG7aiHbU
-         mq7XYSV7xiCcy578xSfvpWWZQ/v7RkGAerx/qkSrJgmrujLr7qcBoM0bQYWaOZ0r9e6H
-         ib5rblowDuxXZOc7hrYUa0Cpd+DUl0DypSIu8NmGL6PVb9fy/QgtOBwTWZ4FpXy/BM4/
-         sWXoxHQVJ/AdtvHrA9F3kbAQV0fQ+XifLQn+Sm98zRiO8fWReOD6ZCu+YgpWZqk2hqSF
-         YC7Hq2epMIdK1hLwWA47nmsr/bsBRN4ulXWenYp0gn1/R8quwSq7yWGq4AsudspB5rl1
-         HFLg==
+        b=PglvqUNRJiAy+GLfmk5jXXMcp7+AN919IbHAxFYHHCDZy5PlA/J3IetckdsCNCMEYY
+         qdOKWcdM9oqQ66cFekRkwWRMN+q763Sxbbe1uY82GcLJ+qtIXtJx9B0zMas+ZlxJV+qx
+         MRTFPr7GeyQXt/jlV6GBomwgNUkuPiDjDwWbqpjfptGeMRKLoMoWvpVDnQ5pBMMuxKh6
+         3di6YAjL/7UFWmyjnpTAC6ucH/ZJ/oVgp457F3XChv4t2kAKGsOr7sMI0pO9F7ImB65g
+         VzfZ3JhePo3fa7KvmThNdd5q5gKaP5hQcrOwBNqu2Ape3ABL/Ad+ijKa9t/Su9Zcyy9t
+         8HbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=6NPT//9/5Cqa3nvHfeHOjA1p58FYaYYDkeJZr8im3tE=;
-        b=MrcjghQ80vRb5j2uRsDiVYAUl6UbO0JHwDUjKb/RNeWKM/h+Cx3Mz1G6RJur6s5rd8
-         jJpa0OW22our5sWrbF+oWQnofahVE+IRG7y6t8AyO3RXDNj1SkgFuYaWjjTyFK2DBGjX
-         kaHNO5O0y2xPNoUsXyg8TNDmrbo0uXiqouqNlC0m0QlX6BgWUnMjDxT5fuD+9wTLq2PH
-         ZlIriOOJzCVeasukKEdx35gmgZ9DPKahYFGZpqRAcEeYEF8BOsPJgaMC2ezK3x2hn/5W
-         h2Z4QKJjxVueOpfBRhFh+GMjXv5DxycD6T249hk3Sh6F1WPujVD1Zf4WpzWmrFR0IU97
-         Ajeg==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=Pa9mrbdQHZhFWRiEsua1bLiYJPEpvPOAPg8Pg09UiBs=;
+        b=NUGxqtUU+Dy0aAkMDcSgoBkAfagoM42R86mtRONHfrE1aETI5yM1CS2528Hh6rM34L
+         RNe/QL4pUjMH1uYWt1vhG3Md92hwsByDPnNOOFz1QvmsDZ07BrffrIPKcWSe0BHjC2te
+         SsOzBAxwjMhh09e4PtatbzVKxLerMdZeiP7cuy81oPLn25aLYYvNwNOfECXsmtL1tTWI
+         qfcVgulOC9iDGC2adyjvGhLhLfcpSYpnwX7SB1eBUm3Sqsx36jbnBKaTvATG2OcHUHzR
+         bA75EgnvFSG44c0yFZIRTrx4U3Od7UctXBNtHSCERbHPKiLsDVwHwaLOUnmAf78K29O5
+         JAHQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id 74si91794wmf.8.2017.09.08.01.45.51
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XT/brccC;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <harshasharmaiitr@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id t77si191409pfi.13.2017.09.08.01.14.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 08 Sep 2017 01:45:51 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Fri, 08 Sep 2017 01:14:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.42,360,1500933600"; 
-   d="scan'208";a="236756218"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 08 Sep 2017 10:45:50 +0200
-Date: Fri, 8 Sep 2017 10:45:21 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: harsha <harshasharmaiitr@gmail.com>
-cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org, 
-    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: pi433: pi433_if: Fixes minor
- typo errors
-In-Reply-To: <1504858343-11850-1-git-send-email-harshasharmaiitr@gmail.com>
-Message-ID: <alpine.DEB.2.20.1709081044110.3165@hadrien>
-References: <1504858343-11850-1-git-send-email-harshasharmaiitr@gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XT/brccC;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x241.google.com with SMTP id q76so1085031pfq.5
+        for <outreachy-kernel@googlegroups.com>; Fri, 08 Sep 2017 01:14:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=Pa9mrbdQHZhFWRiEsua1bLiYJPEpvPOAPg8Pg09UiBs=;
+        b=XT/brccCCBSWP3UN2VMATNt8h4T9y4MaB+SYn5BzQfXBCIQayPvgdkPAQMg7JA7LOI
+         I0Sr1UpbLSF6IFrZBcDEy3emPINxcPK9T2P5tkj2YRGQZmlTHtDjDOdHM+eEk0pNnuKl
+         AkDCp8mN9O8z7MDm3cAoPD9k97N1w1H8y4Ks120UXuuTMVczeY9DtDdeBq6CUZh91HUA
+         KV57u1weI0das1Dqnx2Z6/D2Xh5iX1RDnha1itzNUj+1H3J5+Z3FZD7J/Ngro3fU8EQZ
+         JA1eEm3DE2i3oOdQ+nZ2neHEFP3TkrdyT45YtEn9bI9+DqjZyqUi95xXGlKCxpNVevUO
+         /IBQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=Pa9mrbdQHZhFWRiEsua1bLiYJPEpvPOAPg8Pg09UiBs=;
+        b=J3h9eCKI5l9ov6xXDWBb4Lb/1isgRbVEfhdbKsPr3IUVQYqGNWbeX7PyYCRW5slqMO
+         12iS/K67DvXX40Dz6xi5youLC/jKAp/YzL0ZE+Awq6ii+ZyB6/tC6dgb8d8B3t5+cH+F
+         B8RNAHenqEUHrtyQc9LJ6WV32w6nKu49KstXHfflB+TqvYEoD2gAT4k4UxkSPaQX8mJL
+         m1IkeGRbG6cE6wOFMSCOT+C1VZlUF6gaF4rbpc+zWOUANU5dvqbre6AjZUcGmdt9PRvD
+         d6+mfZtX7pAPOTbP3vKG5TXQU23L6QojtEfj3vi5lZdwV3uqNOUm4ngFeCvi1QF9w6ht
+         Z2xA==
+X-Gm-Message-State: AHPjjUgLpQ4lYVZWSboesfudBYAWPFbpSxbiYugNsQJYOX6XPMfVxapO
+	PNpBV8YqMgMQYg==
+X-Google-Smtp-Source: ADKCNb7crw+qAlk452t/gFjbuPftL5RZtm4yKA3zHM2MFKDZaQZSHXiLAcCOtqrNnX7XdGWR75Nd2w==
+X-Received: by 10.98.35.209 with SMTP id q78mr2361827pfj.36.1504858460975;
+        Fri, 08 Sep 2017 01:14:20 -0700 (PDT)
+Return-Path: <harshasharmaiitr@gmail.com>
+Received: from harryPotter.iitr.ernet.in ([103.37.201.122])
+        by smtp.gmail.com with ESMTPSA id d25sm2750933pfb.1.2017.09.08.01.14.18
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 08 Sep 2017 01:14:20 -0700 (PDT)
+From: harsha <harshasharmaiitr@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com,
+	harsha <harshasharmaiitr@gmail.com>
+Subject: [PATCH] staging: pi433: pi433_if: Fixes minor typo errors
+Date: Fri,  8 Sep 2017 13:42:23 +0530
+Message-Id: <1504858343-11850-1-git-send-email-harshasharmaiitr@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-The subject line above is still not what is shown with git log --oneline
-for this file.  Also, this patch fixes a previous submission so it should
-be v2.
+Fixes checkpatch warning -- "occured" and "succesfully" are misspelled
 
-I suggest to read through the tutorial carefully again to get these small
-details.
+Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
+---
+ drivers/staging/pi433/pi433_if.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-julia
+diff --git a/drivers/staging/pi433/pi433_if.c b/drivers/staging/pi433/pi433_if.c
+index 6b9b7df..6a10478 100644
+--- a/drivers/staging/pi433/pi433_if.c
++++ b/drivers/staging/pi433/pi433_if.c
+@@ -473,7 +473,7 @@ struct pi433_instance {
+ 	}
+ 
+ 
+-	/* rx done, wait was interrupted or error occured */
++	/* rx done, wait was interrupted or error occurred */
+ abort:
+ 	dev->interrupt_rx_allowed = true;
+ 	SET_CHECKED(rf69_set_mode(dev->spi, standby));
+@@ -1033,7 +1033,7 @@ static int setup_GPIOs(struct pi433_device *device)
+ 		if (retval)
+ 			return retval;
+ 
+-		dev_dbg(&device->spi->dev, "%s succesfully configured", name);
++		dev_dbg(&device->spi->dev, "%s successfully configured", name);
+ 	}
+ 
+ 	return 0;
+-- 
+1.9.1
 
-On Fri, 8 Sep 2017, harsha wrote:
-
-> Fixes checkpatch warning -- "occured" and "succesfully" are misspelled
->
-> Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
-> ---
->  drivers/staging/pi433/pi433_if.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/staging/pi433/pi433_if.c b/drivers/staging/pi433/pi433_if.c
-> index 6b9b7df..6a10478 100644
-> --- a/drivers/staging/pi433/pi433_if.c
-> +++ b/drivers/staging/pi433/pi433_if.c
-> @@ -473,7 +473,7 @@ struct pi433_instance {
->  	}
->
->
-> -	/* rx done, wait was interrupted or error occured */
-> +	/* rx done, wait was interrupted or error occurred */
->  abort:
->  	dev->interrupt_rx_allowed = true;
->  	SET_CHECKED(rf69_set_mode(dev->spi, standby));
-> @@ -1033,7 +1033,7 @@ static int setup_GPIOs(struct pi433_device *device)
->  		if (retval)
->  			return retval;
->
-> -		dev_dbg(&device->spi->dev, "%s succesfully configured", name);
-> +		dev_dbg(&device->spi->dev, "%s successfully configured", name);
->  	}
->
->  	return 0;
-> --
-> 1.9.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1504858343-11850-1-git-send-email-harshasharmaiitr%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
