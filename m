@@ -1,128 +1,143 @@
-X-GM-THRID: 6671194147463888896
-X-Received: by 2002:a9d:73c2:: with SMTP id m2mr6381134otk.338.1553258427874;
-        Fri, 22 Mar 2019 05:40:27 -0700 (PDT)
+X-GM-THRID: 6463324440693309440
+X-Received: by 10.25.205.75 with SMTP id d72mr159906lfg.19.1504862517445;
+        Fri, 08 Sep 2017 02:21:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:6417:: with SMTP id h23ls1309093otl.3.gmail; Fri, 22 Mar
- 2019 05:40:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxfcjHcms9Gn7fy2Wnlp1vfwbluosXm/96AMt92xbTqnIYEE6EG1WwYZrq0P4sxGeYX56zE
-X-Received: by 2002:a9d:224a:: with SMTP id o68mr6869055ota.214.1553258426877;
-        Fri, 22 Mar 2019 05:40:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553258426; cv=none;
+Received: by 10.28.152.75 with SMTP id a72ls249539wme.23.canary-gmail; Fri, 08
+ Sep 2017 02:21:56 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QDkMI34bifzF4k9uadVm87f4QSZyaQD6lVwEIslJfAylLPs+y63PxamKofo8TGgUq7Q1ETj
+X-Received: by 10.28.87.132 with SMTP id l126mr145078wmb.23.1504862516519;
+        Fri, 08 Sep 2017 02:21:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504862516; cv=none;
         d=google.com; s=arc-20160816;
-        b=M8PTURUIiZfPM+i1X2gGmKv/+C1rlg/upHcFLd/Rbg/m6axiokaKzSLGGqzPrE7EaT
-         iBSUEX/Y74jqVB8NwcCs0C76UnCyoi6lViDowkJuNE+sxWbSeC23DQzmrC/plKJJLYUK
-         7SfXGlSpytCJlMX3D3ks3rFQ7kEf3XPlfLIJENiZ6d8YHN93S0CJy5gyK8pxVe+/2m77
-         QSordgC6xEU6OMe2qdzUD4K50S5Bu6mjFM/hfOoUJ0Hog2ApVE2bNTCvEiENRw/JBzMN
-         tMPziorx4KrpuHt3C1IVcSnVkp8bXb440diWgeEZQuVkwpDUC2qR8uKJgwUnVD4PLZXx
-         Bp9Q==
+        b=ug1UOzW4jNwMoEQEIcj3GgKJQjwWgCu6fiAQ2N5Amr0+d3aBulKfRs/NrjH7NnP/kt
+         8520d9O7sC0Gh6REHBROjleJ8muYAQaBMFii0kpUDg6ZFbSSshXZZ61+cYdNW5O5bHso
+         1WgASlVLjeP1BM6b2800Nte74aY8PTuNnhTzNXkPPp6K0ne4S+bH2bOnTHAjXVeNfAfi
+         xfweJbMO8o8i6tVZQPlcSPbUluUpS2TvWoWEJxEjYRJ9rD4enOIRP14ZM+IgXiJHBcCu
+         oyX3eDFmjkaV1RcXnYhB/fcV9w8d8v+McBYgL4vxNT7S2esq6ui3g6+EI+rc6NeXBoY6
+         mGrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=FHRcAln/gi4OksnXCj2S1uBN8NZzaJdHWR62gJ4Y9D4=;
-        b=fnFVCtOceVnNV50qoyiW0bJAj4gBaaku4uRqqPYztqUr2v53bXeoh+5OZaXgtmAuQj
-         cf3XkoqZ++Av8cHD3Uu9byzaKuTAM8RWUo05kvP8EWQo89Up4gOhWz7MTDSeTYuq4w7x
-         zqsdeBVttu4GVycIGoRIrULkMU3l1oW8e1b3Hu4KUErkZ/h8Eo1uIynzCaq5kfmYdYai
-         Qhh7WQ8/7tI0/dxkT5c95wrQi8seDqkkEOBaKt1W8vupIIcu25gH7dAPhyx+3hfr3i7s
-         h18xOPCY6XApb9jcI6tWHBDlpFcuEecwo6f1LMMjiqJvoMdj6Gr4RxmSVznO37kPsOk+
-         d5lA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=lvnS3PRAgFTrcvOadScfFpzTzWt+iHg1uY5tLAasQJo=;
+        b=uXKity55RM6SHByzigNXgXFGmfh1Gwo2BqlTDCDcX/wGVTCFp4+n5TfPiC5PF4z4im
+         hnC8jzamUxaqJ/9PbOE3tQnb/r/2x8bdnLVP+enmNmyzBwovSRrnD0x/7rqEtIUKrjOy
+         ovhb7UcP3fZebO4SomjF7tfDa6b2REDpwsTPg0RnkS5ezlpO66zFoIbjN/ckTZ7raO2q
+         0f2isPkcjQJ3JYzjJa7kEbrgkq5JDDJOpe1Lt93/TBAptZ3U4jzw+zFpVqWIvXhT4gDo
+         n/uRoOR4VzEzcFKKXV4w1LSw7Cn2dHM/Tvlm0So0nsR9j+Dot238R75Wx7ffEiEm1vT7
+         VbsA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uAShUc0t;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id t14si200615oth.0.2019.03.22.05.40.26
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id z129si61926wmc.5.2017.09.08.02.21.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Mar 2019 05:40:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
+        Fri, 08 Sep 2017 02:21:56 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uAShUc0t;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x544.google.com with SMTP id i2so1439591pgj.11
-        for <outreachy-kernel@googlegroups.com>; Fri, 22 Mar 2019 05:40:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=FHRcAln/gi4OksnXCj2S1uBN8NZzaJdHWR62gJ4Y9D4=;
-        b=uAShUc0txWN9M9mB0n+r6Lub90mCQGntEGnoBEAG6CHr2JovXfX9CIO05XRevdzqUR
-         dJG6XYp7hAnCZeTtr9hK7vRPP9GKjmn+83ushCjRKDFh7Yl8z4uNT8u735pdtyIAIUdo
-         fh4vkO1iSSmyCu4I6+a8qe84KAU+ZfPkqmpGNOiVVXRzQ443OgJ42aJgyLCOYXXztiSL
-         UrWnv9XLrlFodMeg9iU5lyOKxe91r82Oedr/vO3WsVZykYq7vjuA+VhcdXwCpFUT+xhu
-         EDSXYsJ+W/SQyxNkpsjLaNH6r/LPAjDd1Z7GN5CE95jCE9Rktd4v3j3TiK0hxcmGgwer
-         mvOQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=FHRcAln/gi4OksnXCj2S1uBN8NZzaJdHWR62gJ4Y9D4=;
-        b=Bh1G9H7JKwx06jnZp3qA3VFR9s/tuQnXMNyEQh4Dig92R7bq7hQS41h0eVGOEozFbW
-         SCYI08HIk0JQRyxfdK1UL1mYcnnOdMIbC+L36WgIXVI87sx6YGqmdf9+O2g/Cx22f84I
-         TPUOC5lVTiFZHR8S5/Gyi/F0BOBL5g5o/YLXWntl/qrWyr5qeRdYj4mW4HkcwFZdMC/u
-         9AMhyTkOLllNPRyzrtgHBrMDbT2Hrpk9goGJ0UD7E5w0IBMdfGu4ed0QktfCo0yz6Ft1
-         L4nhoxrtvQEdC0zEI0ZsHf8tBPAwwhkRM7LGppxPKaKr1jasaR95vtOm+IVtkM3pv1Uq
-         K4WA==
-X-Gm-Message-State: APjAAAXk/kANHMebRazMRYVjEf3r5F5f9dOnOOKAkS2Ylx5TadJM+aCg
-	peKrivUyEqcOfi9zTV62O4Ez2txfLgI=
-X-Received: by 2002:a65:654d:: with SMTP id a13mr8971183pgw.181.1553258425989;
-        Fri, 22 Mar 2019 05:40:25 -0700 (PDT)
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from localhost.localdomain ([183.83.84.116])
-        by smtp.googlemail.com with ESMTPSA id p20sm11145984pgi.3.2019.03.22.05.40.23
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Mar 2019 05:40:24 -0700 (PDT)
-From: Bhanusree Pola <bhanusreemahesh@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] Staging: gdm724x: Remove unnecessary print statements
-Date: Fri, 22 Mar 2019 18:10:10 +0530
-Message-Id: <20190322124010.7192-1-bhanusreemahesh@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,360,1500933600"; 
+   d="scan'208";a="290138658"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 08 Sep 2017 11:21:55 +0200
+Date: Fri, 8 Sep 2017 11:21:26 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Harsha Sharma <harshasharmaiitr@gmail.com>
+cc: Julia Lawall <julia.lawall@lip6.fr>, Greg KH <gregkh@linuxfoundation.org>, 
+    devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
+    outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rt8712: xmit_linux: Avoid
+ multiple assignments in a single line
+In-Reply-To: <CANMOCy3eKKvgv_r=cWV-+sL1ZwHqMJYe2ipYioxidUQ+T1cH2A@mail.gmail.com>
+Message-ID: <alpine.DEB.2.20.1709081116210.3165@hadrien>
+References: <1504859870-13153-1-git-send-email-harshasharmaiitr@gmail.com> <alpine.DEB.2.20.1709081045330.3165@hadrien> <CANMOCy3eKKvgv_r=cWV-+sL1ZwHqMJYe2ipYioxidUQ+T1cH2A@mail.gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: multipart/mixed; BOUNDARY="8323329-74892800-1504862487=:3165"
 
-Remove print statements that provide information about error messages
-when memory allocation is failed.
-Issue found using coccinelle
-The following semantic patch is used to solve this:
+--8323329-74892800-1504862487=:3165
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: 8BIT
 
-<smpl>
-@@
-expression x;
-constant char[] C;
-identifier f;
-@@
 
-x = (\(kmalloc\|devm_kzalloc\|kmalloc_array\|devm_ioremap\|
-usb_alloc_urb\|alloc_netdev\|dev_alloc_skb\)(...));
 
-if(x==NULL)
-{
-...
-(
--f(C,...);
-|
--f(...,C);
-)
-...
-}
-</smpl>
+On Fri, 8 Sep 2017, Harsha Sharma wrote:
 
-Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
----
- drivers/staging/gdm724x/gdm_lte.c | 1 -
- 1 file changed, 1 deletion(-)
+> Hi,Thanks for your feedback.
+> I will take care about readability from next time.
 
-diff --git a/drivers/staging/gdm724x/gdm_lte.c b/drivers/staging/gdm724x/gdm_lte.c
-index 3c2aab7a921e..db11498f6fc7 100644
---- a/drivers/staging/gdm724x/gdm_lte.c
-+++ b/drivers/staging/gdm724x/gdm_lte.c
-@@ -871,7 +871,6 @@ int register_lte_device(struct phy_dev *phy_dev,
- 		net = alloc_netdev(sizeof(struct nic), pdn_dev_name,
- 				   NET_NAME_UNKNOWN, ether_setup);
- 		if (!net) {
--			pr_err("alloc_netdev failed\n");
- 			ret = -ENOMEM;
- 			goto err;
- 		}
--- 
-2.17.1
+Don't top post.  You should respond to comments underneath the comment you
+are responding to.  The person will have to go find that anyway, to
+understand what your comment is about.  Please read the tutorial again, in
+particular the following:
 
+https://kernelnewbies.org/PatchPhilosophy
+https://kernelnewbies.org/CheckpatchTips
+and everything starting from Responding to emails on
+https://kernelnewbies.org/Outreachyfirstpatch
+
+thanks,
+julia
+
+>
+> With regards,
+> Harsha Sharma
+>
+> On Fri, Sep 8, 2017 at 2:16 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+>       On Fri, 8 Sep 2017, harsha wrote:
+>
+>       > Fixed coding style issue
+>       >
+>       > Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
+>       > ---
+>       >� drivers/staging/rtl8712/xmit_linux.c | 6 ++++--
+>       >� 1 file changed, 4 insertions(+), 2 deletions(-)
+>       >
+>       > diff --git a/drivers/staging/rtl8712/xmit_linux.c
+>       b/drivers/staging/rtl8712/xmit_linux.c
+>       > index d13fd15..03c6b0c 100644
+>       > --- a/drivers/staging/rtl8712/xmit_linux.c
+>       > +++ b/drivers/staging/rtl8712/xmit_linux.c
+>       > @@ -49,8 +49,10 @@ static uint remainder_len(struct pkt_file
+>       *pfile)
+>       >� void _r8712_open_pktfile(_pkt *pktptr, struct pkt_file
+>       *pfile)
+>       >� {
+>       >� � � �pfile->pkt = pktptr;
+>       > -� � �pfile->cur_addr = pfile->buf_start = pktptr->data;
+>       > -� � �pfile->pkt_len = pfile->buf_len = pktptr->len;
+>
+>       I think this may be considered to be more readable as is.
+>
+>       julia
+>
+>       > +� � �pfile->cur_addr = pktptr->data;
+>       > +� � �pfile->buf_start = pfile->cur_addr;
+>       > +� � �pfile->pkt_len = pktptr->len;
+>       > +� � �pfile->buf_len = pfile->pkt_len;
+>       >� � � �pfile->cur_buffer = pfile->buf_start;
+>       >� }
+>       >
+>       > --
+>       > 1.9.1
+>       >
+> > --
+> > You received this message because you are subscribed to the Google
+> Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it,
+> send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to
+> outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/1504859870-13153-1-git-s
+> end-email-harshasharmaiitr%40gmail.com.
+> > For more options, visit https://groups.google.com/d/optout.
+> >
+>
+>
+>
+>
+--8323329-74892800-1504862487=:3165--
 
