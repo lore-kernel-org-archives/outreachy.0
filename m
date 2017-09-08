@@ -1,139 +1,129 @@
 X-GM-THRID: 6463264709450661888
-X-Received: by 10.25.201.15 with SMTP id z15mr174674lff.40.1504864805975;
-        Fri, 08 Sep 2017 03:00:05 -0700 (PDT)
+X-Received: by 10.84.210.68 with SMTP id z62mr1457039plh.2.1504863997975;
+        Fri, 08 Sep 2017 02:46:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.18.219 with SMTP id 88ls121530lfs.16.gmail; Fri, 08 Sep
- 2017 03:00:04 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QC0KfEgLl6exEy6O4NFejZvwo7WAzMIL+67U7EaFbjABqyjmjv9eURtYw1vfU0yzM2MaQmb
-X-Received: by 10.46.85.22 with SMTP id j22mr179156ljb.29.1504864804534;
-        Fri, 08 Sep 2017 03:00:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504864804; cv=none;
+Received: by 10.107.146.214 with SMTP id u205ls2938053iod.10.gmail; Fri, 08
+ Sep 2017 02:46:37 -0700 (PDT)
+X-Received: by 10.202.169.211 with SMTP id s202mr1237258oie.3.1504863997407;
+        Fri, 08 Sep 2017 02:46:37 -0700 (PDT)
+Received: by 10.202.84.148 with SMTP id i142msoib;
+        Fri, 8 Sep 2017 02:40:02 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QDGLlxuAJ4+EEholGs7VOuWrfQNDHx2DHU+iHwAHcZuX8hT7CwI9XqcjV5yhXZsl/QUvOoE
+X-Received: by 10.55.159.86 with SMTP id i83mr1187701qke.41.1504863602098;
+        Fri, 08 Sep 2017 02:40:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504863602; cv=none;
         d=google.com; s=arc-20160816;
-        b=jJjTfej/F8TTVx4o+K3MZxeUR43N7ak67ZzDXok3kNE3MNNiJvZ41l+It8yxWQw1dO
-         rZv/b0O2KU9cFaXZfuQIuLVav7cB6/OjNr2XLNfGni7PtcoJmsfiWs6+DuaIC/YT1C4v
-         iy964MksZ6H/NWhyiUA5Jo4/a3OG0mI9dTYH2l7OD1C0lupdGRZcK8mI/LEA3xxDGC2l
-         bsY57IWhR/rqKJL5ftpcFO+VuEbi5rDlKIA2HWpuaAj/vFk4NpKfDNC8C98ft9MwB9ZM
-         8kcAZ1UiUbwJuQhMkd5rQxdMYbyU2258ZAEqkoKRkySOSizeOxLzErIx7eP8b+VgKdPI
-         Q7fg==
+        b=jRoSey6kQzBOGsQLQ8O0FIHDIvDRE2hBdX3mh/x12na7RKWSFJdP09oqb0Fw16z5eW
+         eJQaKnUr3s1IQlBgV0EpsHF4eTRozWJq8y+ImDd7SV82ObuHcQGSOkhCTOZzzIobPyds
+         TtojRQlT9VNAiVlacBM8ue9AZ3aLL4y6E7fg6NBvVrBqOzZRUmRJoCIAIXHpfHqJsBxr
+         +nLvbiz0CDTuWdjtnA6n5aXeDwsYn1f9TR2qCvfiWgbiSzvF6ff1Of3YMAGYahEaoSGN
+         +aXX0pHtUGS/U2ZhHTJQanymdEVxwhy0pyzrMtBhCQ9ZNoDeV/yTUPCufd311j3yveub
+         dYXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=A7tE2qK1KO6uCH/Thn+Cusbe7kRQ4XpkwH7l1X8ZosU=;
-        b=LIufnzYzvtxHhiRjKGpJo9+Sd78KE2eOgaS8Q5KXhJYqpHNvirpgbayVrPYREjtWd9
-         kc0zHBPSxvqB1DrvsdgjcI1jZbTBgxaD25Mh+/bBvO//3uzVUr00PZmKkiCLFcKerTHP
-         49M37ztRopatBBPF5ue30JQ1Wb0GOolTdUQ600a1bqWQtMatSZZKWPWiScBss2pvSQcQ
-         SlzRNytL89jfPtQWAM/GaUloQ4eo45e0y3tgtis+JGRWn4bgU+M2EftYCU6ojWLK7XHc
-         KtkbCRCXK2nu/Uv6ohOYYYjuEUcUPR4pOFuovYrIBF8vNYu5xhvsm+h7bqAZ9yjgeifT
-         murw==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date
+         :arc-authentication-results;
+        bh=9f8iM/G50M0gFKnQ1Tf0QRSCJdsqwfcHWhlUx7C4muM=;
+        b=TjMMdNMUxqP5lKMSCHHpTfzEeaZOgkxym3GHT1+SZrHG3mqYudWz7TvIFphius0v4c
+         HnN3jPH1NrrGnST2MtNfCr1BnUaC09kWUNFb/dt7BxgjZdx9Kgzm8bK/Cz59b69GdHxB
+         2kokO6ZcYInOwLKSqkicVO+2TMAWkf+hm9jwU7vvf7dMO9KCXkYdrIPiSiGKRnFHw4sa
+         lJXjfHqt97SjjLhhk5YtQgZBLCxKiYs5EViGlO5PMdhFqJFbjIE8uWUMRC7LSTLB+596
+         VayZ8JmJ6kog06pSlAFSPo7IcezB/mcF5pmDTy3t6H3F9znBj0CkCH7idcZNfC6Pgric
+         lpiw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id i90si102742wmh.5.2017.09.08.03.00.04
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 45.249.212.190 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com
+Return-Path: <jonathan.cameron@huawei.com>
+Received: from szxga04-in.huawei.com (szxga04-in.huawei.com. [45.249.212.190])
+        by gmr-mx.google.com with ESMTPS id g19si210056pfd.14.2017.09.08.02.40.01
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 08 Sep 2017 03:00:04 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 08 Sep 2017 02:40:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 45.249.212.190 as permitted sender) client-ip=45.249.212.190;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.42,360,1500933600"; 
-   d="scan'208";a="290147720"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 08 Sep 2017 12:00:03 +0200
-Date: Fri, 8 Sep 2017 11:59:34 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Lars-Peter Clausen <lars@metafoo.de>
-cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, 
-    Jonathan Cameron <jic23@jic23.retrosnub.co.uk>, 
-    Himanshi Jain <himshijain.hj@gmail.com>, outreachy-kernel@googlegroups.com, 
-    Michael.Hennerich@analog.com, jic23@kernel.org, knaack.h@gmx.de, 
-    pmeerw@pmeerw.net, gregkh@linuxfoundation.org, linux-iio@vger.kernel.org, 
-    devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: Re: [Outreachy kernel] Re: [PATCH] Staging: iio: adc: Added Space
- around binary op.
-In-Reply-To: <2e3476f0-9e7e-2701-220a-5fb178d68d2e@metafoo.de>
-Message-ID: <alpine.DEB.2.20.1709081157590.3165@hadrien>
-References: <20170908044752.GA6199@himanshi-Inspiron-5558> <DEB4AC67-43D5-40F9-9495-DB4966A07661@jic23.retrosnub.co.uk> <20170908103257.00002165@huawei.com> <2e3476f0-9e7e-2701-220a-5fb178d68d2e@metafoo.de>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 45.249.212.190 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com
+Received: from 172.30.72.60 (EHLO DGGEMS410-HUB.china.huawei.com) ([172.30.72.60])
+	by dggrg04-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
+	with ESMTP id DGV54838;
+	Fri, 08 Sep 2017 17:33:15 +0800 (CST)
+Received: from localhost (10.206.48.115) by DGGEMS410-HUB.china.huawei.com
+ (10.3.19.210) with Microsoft SMTP Server (TLS) id 14.3.301.0; Fri, 8 Sep 2017
+ 17:33:08 +0800
+Date: Fri, 8 Sep 2017 10:32:57 +0100
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+To: Jonathan Cameron <jic23@jic23.retrosnub.co.uk>
+CC: Himanshi Jain <himshijain.hj@gmail.com>,
+        <outreachy-kernel@googlegroups.com>, <lars@metafoo.de>,
+        <Michael.Hennerich@analog.com>, <jic23@kernel.org>, <knaack.h@gmx.de>,
+        <pmeerw@pmeerw.net>, <gregkh@linuxfoundation.org>,
+        <linux-iio@vger.kernel.org>, <devel@driverdev.osuosl.org>,
+        <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH] Staging: iio: adc: Added Space around binary op.
+Message-ID: <20170908103257.00002165@huawei.com>
+In-Reply-To: <DEB4AC67-43D5-40F9-9495-DB4966A07661@jic23.retrosnub.co.uk>
+References: <20170908044752.GA6199@himanshi-Inspiron-5558>
+	<DEB4AC67-43D5-40F9-9495-DB4966A07661@jic23.retrosnub.co.uk>
+Organization: Huawei
+X-Mailer: Claws Mail 3.15.0 (GTK+ 2.24.31; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.206.48.115]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A090205.59B263DC.000A,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0,
+	ip=0.0.0.0,
+	so=2014-11-16 11:51:01,
+	dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: baec6dda5f4ba42d4436880dff1d48e7
 
+On Fri, 8 Sep 2017 07:29:06 +0100
+Jonathan Cameron <jic23@jic23.retrosnub.co.uk> wrote:
 
-
-On Fri, 8 Sep 2017, Lars-Peter Clausen wrote:
-
-> On 09/08/2017 11:32 AM, Jonathan Cameron wrote:
-> > On Fri, 8 Sep 2017 07:29:06 +0100
-> > Jonathan Cameron <jic23@jic23.retrosnub.co.uk> wrote:
+> On 8 September 2017 05:47:52 BST, Himanshi Jain <himshijain.hj@gmail.com> wrote:
+> >Added space around(one on each side of) binary
+> >operator(-) as preferred according to kernel
+> >coding style.
 > >
-> >> On 8 September 2017 05:47:52 BST, Himanshi Jain <himshijain.hj@gmail.com> wrote:
-> >>> Added space around(one on each side of) binary
-> >>> operator(-) as preferred according to kernel
-> >>> coding style.
-> >>>
-> >>> Signed-off-by: Himanshi Jain <himshijain.hj@gmail.com>
-> >>
-> >> Take a closer look at that macro. It isn't doing what you think...
-> >> To give a hint, changing this breaks userspace.
-> >
-> > Ok, I'm bored of this particular one coming up. When you have
-> > worked out what is going on Himanshi, would you mind putting
-> > together a patch adding a comment describing why it is a bad
-> > idea to 'fix' this?  That would be a very useful patch as
-> > far as I'm concerned :)
-> >
-> > There aren't that many cases of this in IIO so adding a comment
-> > on each of them is probably reasonable just to avoid wasting
-> > people's time on fixing them! (I think we have had more than
-> > 5 such goes this year so far...)
-> >
->
-> I'd much rather fix this API so that you have to put "" around the name so
-> that it is clear that it is a string, rather than doing the implicit
-> conversion to string using preprocessor magic. Better to have a
-> self-documenting API then having to add a comment to each user of the API.
+> >Signed-off-by: Himanshi Jain <himshijain.hj@gmail.com>  
+> 
+> Take a closer look at that macro. It isn't doing what you think...  
+> To give a hint, changing this breaks userspace.
 
-All the DEVICE_ATTR macros use the same strategy.  And the non-IIO ones,
-eg DEVICE_ATTR_RW, also use the provided name to construct the names of
-the show and store functions, so I don't think a string would be
-appropriate.
+Ok, I'm bored of this particular one coming up. When you have
+worked out what is going on Himanshi, would you mind putting
+together a patch adding a comment describing why it is a bad
+idea to 'fix' this?  That would be a very useful patch as
+far as I'm concerned :)
 
-julia
+There aren't that many cases of this in IIO so adding a comment
+on each of them is probably reasonable just to avoid wasting
+people's time on fixing them! (I think we have had more than
+5 such goes this year so far...)
 
->
-> > Jonathan
+Jonathan
+
+> 
+> Jonathan
+> 
+> 
+> >---
+> > drivers/staging/iio/adc/ad7192.c | 2 +-
+> > 1 file changed, 1 insertion(+), 1 deletion(-)
 > >
-> >>
-> >> Jonathan
-> >>
-> >>
-> >>> ---
-> >>> drivers/staging/iio/adc/ad7192.c | 2 +-
-> >>> 1 file changed, 1 insertion(+), 1 deletion(-)
-> >>>
-> >>> diff --git a/drivers/staging/iio/adc/ad7192.c
-> >>> b/drivers/staging/iio/adc/ad7192.c
-> >>> index d11c6de..1aee662 100644
-> >>> --- a/drivers/staging/iio/adc/ad7192.c
-> >>> +++ b/drivers/staging/iio/adc/ad7192.c
-> >>> @@ -341,7 +341,7 @@ static int ad7192_setup(struct ad7192_state *st,
-> >>> }
-> >>>
-> >>> static IIO_DEVICE_ATTR_NAMED(in_v_m_v_scale_available,
-> >>> -			     in_voltage-voltage_scale_available,
-> >>> +			     in_voltage - voltage_scale_available,
-> >>> 			     0444, ad7192_show_scale_available, NULL, 0);
-> >>>
-> >>> static IIO_DEVICE_ATTR(in_voltage_scale_available, 0444,
-> >>
-> >
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/2e3476f0-9e7e-2701-220a-5fb178d68d2e%40metafoo.de.
-> For more options, visit https://groups.google.com/d/optout.
->
+> >diff --git a/drivers/staging/iio/adc/ad7192.c
+> >b/drivers/staging/iio/adc/ad7192.c
+> >index d11c6de..1aee662 100644
+> >--- a/drivers/staging/iio/adc/ad7192.c
+> >+++ b/drivers/staging/iio/adc/ad7192.c
+> >@@ -341,7 +341,7 @@ static int ad7192_setup(struct ad7192_state *st,
+> > }
+> > 
+> > static IIO_DEVICE_ATTR_NAMED(in_v_m_v_scale_available,
+> >-			     in_voltage-voltage_scale_available,
+> >+			     in_voltage - voltage_scale_available,
+> > 			     0444, ad7192_show_scale_available, NULL, 0);
+> > 
+> > static IIO_DEVICE_ATTR(in_voltage_scale_available, 0444,  
+> 
+
 
