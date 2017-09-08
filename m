@@ -1,107 +1,108 @@
-X-GM-THRID: 6746031998697996288
-X-Received: by 2002:a54:4419:: with SMTP id k25mr5489531oiw.0.1570682972726;
-        Wed, 09 Oct 2019 21:49:32 -0700 (PDT)
+X-GM-THRID: 6463317881648054272
+X-Received: by 10.46.31.2 with SMTP id f2mr155286ljf.31.1504860352730;
+        Fri, 08 Sep 2017 01:45:52 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:4dcb:: with SMTP id a194ls468056oib.7.gmail; Wed, 09 Oct
- 2019 21:49:31 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyWjRJKHt4KNACMklSrPrcxamCfywj3NR/aLwEm9v3VGJlVOeNGrGEO4YIvKLJFdOVnXjZf
-X-Received: by 2002:aca:e0d6:: with SMTP id x205mr5859774oig.3.1570682971928;
-        Wed, 09 Oct 2019 21:49:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570682971; cv=none;
+Received: by 10.25.72.138 with SMTP id v132ls110116lfa.5.gmail; Fri, 08 Sep
+ 2017 01:45:51 -0700 (PDT)
+X-Google-Smtp-Source: ADKCNb6/ts3U8/mN7EYUTZ/iQjocfO+rEdEYt8R32bVdX4b249O5GM2BjqNvpdAHPxmvNepDi3je
+X-Received: by 10.46.7.26 with SMTP id 26mr146427ljh.5.1504860351327;
+        Fri, 08 Sep 2017 01:45:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504860351; cv=none;
         d=google.com; s=arc-20160816;
-        b=gK25Dqt0hf8OtfREQUpDu4R68C1AqOoSaXlK0alskQ07YNF/GTPG/7b08Kfk1gdU9f
-         AIVYnGq/B08loXrGCpqmd6F1f8uXC1Az/Yyhk2GTMFAZgNPFaAa3TvGbDwAB4m1Twxru
-         D2csEobwCvg5XfRi5svKLubYLNBhyNcMfiBnbo3ipZ9vPUXo4IH1tIBy5YRhNRfXjDAs
-         +cH4XQxu/qCX3SfIpHBgnzU+0ZnbSsA8TC+fduKP9R571CZrI2SplLl9uJOy94s8L1RF
-         aFxyfnwjx8YM/pJSauZSjhNHLow3rl4RDYAIWISTlu/YCPGAmr+8jjTeP0cbxI/DjEbb
-         2L/A==
+        b=mCccOO94dp+yvCRfccu2CaIeU6bn6SveRxu4L9vVGeyyokwo4IKBdSPsakYG7aiHbU
+         mq7XYSV7xiCcy578xSfvpWWZQ/v7RkGAerx/qkSrJgmrujLr7qcBoM0bQYWaOZ0r9e6H
+         ib5rblowDuxXZOc7hrYUa0Cpd+DUl0DypSIu8NmGL6PVb9fy/QgtOBwTWZ4FpXy/BM4/
+         sWXoxHQVJ/AdtvHrA9F3kbAQV0fQ+XifLQn+Sm98zRiO8fWReOD6ZCu+YgpWZqk2hqSF
+         YC7Hq2epMIdK1hLwWA47nmsr/bsBRN4ulXWenYp0gn1/R8quwSq7yWGq4AsudspB5rl1
+         HFLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=EW2+5LFnHdMStT1dkkpA3jxVK45XROxzbrFNtkIJRsk=;
-        b=zJ/KjOvXbgl54LBHw4PKK0fbEOe/dKhDDmh5OVfkePw7uH1ZX67ByFy+pHM+dvEsvY
-         gWG5zywAkX4y+7xW4rdFCpf/tGGcYIfQLa+HpPrlSBEsoObMPWZPo5tw4c41jSWzV60k
-         v7k81Q0kBkr+nEiXUg9O+LAJ3EdybnUp4/VLOIpDVR52CJFUsIM6q5rLBM75NRNBFaO7
-         R9XHnNIldk+bIKfgkngUj3FFvYwsEJus14DVWluIMbHQk4PFC1BhjyE3B3ccq8pl3Iq2
-         fUJSDPfLrB1yap91CJi5th/lAjbN6cYRIPMAQw7h+JW6gP1QGf28ufo7u/W1dZ5BIB9i
-         5evQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=6NPT//9/5Cqa3nvHfeHOjA1p58FYaYYDkeJZr8im3tE=;
+        b=MrcjghQ80vRb5j2uRsDiVYAUl6UbO0JHwDUjKb/RNeWKM/h+Cx3Mz1G6RJur6s5rd8
+         jJpa0OW22our5sWrbF+oWQnofahVE+IRG7y6t8AyO3RXDNj1SkgFuYaWjjTyFK2DBGjX
+         kaHNO5O0y2xPNoUsXyg8TNDmrbo0uXiqouqNlC0m0QlX6BgWUnMjDxT5fuD+9wTLq2PH
+         ZlIriOOJzCVeasukKEdx35gmgZ9DPKahYFGZpqRAcEeYEF8BOsPJgaMC2ezK3x2hn/5W
+         h2Z4QKJjxVueOpfBRhFh+GMjXv5DxycD6T249hk3Sh6F1WPujVD1Zf4WpzWmrFR0IU97
+         Ajeg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="FH/TRfN2";
-       spf=pass (google.com: domain of wambui.karugax@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=wambui.karugax@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <wambui.karugax@gmail.com>
-Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
-        by gmr-mx.google.com with ESMTPS id i19si83826otk.0.2019.10.09.21.49.31
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 74si91794wmf.8.2017.09.08.01.45.51
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 09 Oct 2019 21:49:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of wambui.karugax@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) client-ip=2607:f8b0:4864:20::444;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 08 Sep 2017 01:45:51 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="FH/TRfN2";
-       spf=pass (google.com: domain of wambui.karugax@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=wambui.karugax@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x444.google.com with SMTP id y72so3050909pfb.12
-        for <outreachy-kernel@googlegroups.com>; Wed, 09 Oct 2019 21:49:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=EW2+5LFnHdMStT1dkkpA3jxVK45XROxzbrFNtkIJRsk=;
-        b=FH/TRfN2aF35YrrTZyPN8RZZb7vzilxg7Zd3Jh83FAqN0WRCTvQrfY+HWd7wDUY1kk
-         urVszhsRNOMkI6oOsBw/X3KGgW29MSONMet5cp/MVnP4XDuhS9WbQ2QAtOztoLqKKGJr
-         opwJ8XeVqfCzE3kcneWuHLtFFW2UUqvwFFuZhGUOLjzhIXGp3zmlLouR+GH+lybtYX7O
-         CRoKRRk+R13nKYRuLpgEsbsizt4r86FjnE6zuYhvlQCudx/pqnm8klejnEDD1Ejwhl1z
-         6tuZZ5wuHtkIeHnoIp1W8Y1MNa6wJ4qqjymHYyRvFJPcUb3HtAqDczZ/0ospqZvkyF23
-         bfFA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=EW2+5LFnHdMStT1dkkpA3jxVK45XROxzbrFNtkIJRsk=;
-        b=PcfxAF+EUDYzXZZkryhDLTX9vEqBHh0iW8ehVteiFoochVwX6JY5fMreaLsLHnIdti
-         sRXs+1JznF6v8oKGc/jK97wDIU+0SulaNqikc96+JNPmadbL8pTE+VVdVb0+ZCK8Dk4y
-         9ufDO8y1miamSIS1NRaYCa2dttU1I4NzaPdvLVADuROBQZfFanslUn3+z9vw5D+jZEcc
-         4PQHmMUTjecZ+PqgbcAbuk8r4MG0xZ0xinudbrAsJab/b8wTcUQIwK4OP1QmwvHya1YR
-         mYtcDody5oRdjyNyTnPYjCKjUTd97ckGNPTYx1c1gp/ewJrXDIVj3gjAM+VZa27agzw1
-         bpog==
-X-Gm-Message-State: APjAAAUJXG35eqgohkpF+QCTw0uBivf1dD659BUZCKRIOa4wWf1KAXYA
-	Y48xa3eWYfFDyft5xYeOgHmJASzpUegHkg==
-X-Received: by 2002:aa7:9907:: with SMTP id z7mr8102923pff.133.1570682970937;
-        Wed, 09 Oct 2019 21:49:30 -0700 (PDT)
-Return-Path: <wambui.karugax@gmail.com>
-Received: from wambui.zuku.co.ke ([197.237.61.225])
-        by smtp.googlemail.com with ESMTPSA id q20sm4520090pfl.79.2019.10.09.21.49.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Oct 2019 21:49:30 -0700 (PDT)
-From: Wambui Karuga <wambui.karugax@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	Wambui Karuga <wambui.karugax@gmail.com>
-Subject: [PATCH v2 0/4] staging: rtl8723bs: Style clean-up in rtw_mlme.c
-Date: Thu, 10 Oct 2019 07:49:04 +0300
-Message-Id: <cover.1570682635.git.wambui.karugax@gmail.com>
-X-Mailer: git-send-email 2.23.0
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,360,1500933600"; 
+   d="scan'208";a="236756218"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 08 Sep 2017 10:45:50 +0200
+Date: Fri, 8 Sep 2017 10:45:21 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: harsha <harshasharmaiitr@gmail.com>
+cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org, 
+    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: pi433: pi433_if: Fixes minor
+ typo errors
+In-Reply-To: <1504858343-11850-1-git-send-email-harshasharmaiitr@gmail.com>
+Message-ID: <alpine.DEB.2.20.1709081044110.3165@hadrien>
+References: <1504858343-11850-1-git-send-email-harshasharmaiitr@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
 
-This patchset addresses multiple style and formatting issues reported by
-checkpatch.pl in drivers/staging/rtl8723bs/core/rtw_mlme.c
+The subject line above is still not what is shown with git log --oneline
+for this file.  Also, this patch fixes a previous submission so it should
+be v2.
 
-PATCH v2 of the series corrects the "patchest" mispelling in the
-original cover letter and provides a clearer subject line.
+I suggest to read through the tutorial carefully again to get these small
+details.
 
-Wambui Karuga (4):
-  staging: rtl8723bs: Remove comparisons to NULL in conditionals
-  staging: rtl8723bs: Remove unnecessary braces for single statements
-  staging: rtl8723bs: Remove comparisons to booleans in conditionals.
-  staging: rtl8723bs: Remove unnecessary blank lines
+julia
 
- drivers/staging/rtl8723bs/core/rtw_mlme.c | 157 +++++++---------------
- 1 file changed, 48 insertions(+), 109 deletions(-)
+On Fri, 8 Sep 2017, harsha wrote:
 
--- 
-2.23.0
-
+> Fixes checkpatch warning -- "occured" and "succesfully" are misspelled
+>
+> Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
+> ---
+>  drivers/staging/pi433/pi433_if.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/pi433/pi433_if.c b/drivers/staging/pi433/pi433_if.c
+> index 6b9b7df..6a10478 100644
+> --- a/drivers/staging/pi433/pi433_if.c
+> +++ b/drivers/staging/pi433/pi433_if.c
+> @@ -473,7 +473,7 @@ struct pi433_instance {
+>  	}
+>
+>
+> -	/* rx done, wait was interrupted or error occured */
+> +	/* rx done, wait was interrupted or error occurred */
+>  abort:
+>  	dev->interrupt_rx_allowed = true;
+>  	SET_CHECKED(rf69_set_mode(dev->spi, standby));
+> @@ -1033,7 +1033,7 @@ static int setup_GPIOs(struct pi433_device *device)
+>  		if (retval)
+>  			return retval;
+>
+> -		dev_dbg(&device->spi->dev, "%s succesfully configured", name);
+> +		dev_dbg(&device->spi->dev, "%s successfully configured", name);
+>  	}
+>
+>  	return 0;
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1504858343-11850-1-git-send-email-harshasharmaiitr%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
