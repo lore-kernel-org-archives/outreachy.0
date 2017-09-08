@@ -1,164 +1,149 @@
-X-GM-THRID: 6388941835575754752
-X-Received: by 10.157.17.149 with SMTP id v21mr4434909otf.23.1487541439827;
-        Sun, 19 Feb 2017 13:57:19 -0800 (PST)
+X-GM-THRID: 6463425318244843520
+X-Received: by 10.31.173.202 with SMTP id w193mr1749513vke.40.1504886522419;
+        Fri, 08 Sep 2017 09:02:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.87.199 with SMTP id u190ls1785817ita.8.canary-gmail; Sun,
- 19 Feb 2017 13:57:19 -0800 (PST)
-X-Received: by 10.107.149.16 with SMTP id x16mr6494725iod.72.1487541439177;
-        Sun, 19 Feb 2017 13:57:19 -0800 (PST)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id z73si2008008pfa.2.2017.02.19.13.57.19
+Received: by 10.36.36.140 with SMTP id f134ls1521211ita.16.canary-gmail; Fri,
+ 08 Sep 2017 09:02:00 -0700 (PDT)
+X-Received: by 10.31.69.216 with SMTP id s207mr685362vka.86.1504886520154;
+        Fri, 08 Sep 2017 09:02:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504886520; cv=none;
+        d=google.com; s=arc-20160816;
+        b=p6bjpmsszGVx2/uPmjpNvHGpNtVyChHdolLnEzVK2H4ZwLg42JZola5g38CJmrGda9
+         T0Dlm0AI4UmtXqsxFsCKSKXYnFRywWqk8Z+eYeL2C6c5g35fe4KXdvgfwecp8Or0dNii
+         AZlIfwBgUuSHkXY0xxPIme4n4h3kqVgJgcYO6oSX7s/2jNjKi7571XIri/rj96x8crDO
+         OXN2MH61Lc+seccZ/4WLnY4PfQkXGDNEDAJpD4P4fkmHUrczwK3tf4OVPDoRqXpSjngV
+         ec+At1jKeA7gOj0Ksg0XFQd/2DP+xxyB8ANaAC0mD7vaQyA4MWL7+Sldvv/uQY5WU4x3
+         7yYw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=Zttm6w2KPi7fsnMnLvcOjfydKlWqTGvqz5ubq6R9Ouw=;
+        b=AJ42DHQUxDRbLgBLkaIMZCQ4ldv7eWBYqppFrFh5X42+tff12x752gdftWOd+XmDYV
+         BLs+WtLRlm+LyMghqFr0ZuKCWdWs0meuVR7fkT9NNvLTaWZQ2dNlPTJDsudKl1AocJOB
+         lJxJUtiDBW4qGyHENQqe81+55FV5RZmmUc5NcFB2nmchYgQUFSj0gMN9MSMX0+P9w33X
+         6t61DOA3ulve5BzvJlpXSO7EyUCN7OhUqkoVh1PfRduCmxjFN9byvF4unD/NXrCO8atQ
+         Vnl+iIBHqaPnvjUpL3s5bG+NDgstYe/yLpivPqajRiz+wfLLn4gsSBVdXbORk4bSwKfu
+         kyXQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=r6vtkLQD;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c09::243 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <srishtishar@gmail.com>
+Received: from mail-qk0-x243.google.com (mail-qk0-x243.google.com. [2607:f8b0:400d:c09::243])
+        by gmr-mx.google.com with ESMTPS id e5si90548vkb.2.2017.09.08.09.02.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 19 Feb 2017 13:57:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Fri, 08 Sep 2017 09:02:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c09::243 as permitted sender) client-ip=2607:f8b0:400d:c09::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=r6vtkLQD;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c09::243 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id 1so3106408pgz.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 19 Feb 2017 13:57:19 -0800 (PST)
+Received: by mail-qk0-x243.google.com with SMTP id d70so1777505qkc.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 08 Sep 2017 09:02:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=+KKhsqdzjKkoNjjhEU3M5ghe5vBDFfE1DfIkbwooNpY=;
-        b=WTfJHFDsZeNq1GtEUNjpSEC8HGQqODd+0vFPdOvGwTYoQRZNnIy01KNgbfVLLKwgxa
-         UEBXrBucdc0NW9hs3/VqTUmfftNdE9U2OTjtUoN/JjVRHEjz9Hfrv0OpHOIUR5ec1GhD
-         17y1BzF/pjvoPRYdc6dw96ZMLw3qSuH5r1lFn07HUn8GLchSVUbJL21F1cuXjBatQkMb
-         NgKnUrjQ+SJVhFurHES3oEsmObvg83XPKPyWp5SU2hE+JdjYuuTp7YgqPbLOkAWEgkEF
-         b3zFTQQOgruY0/nMixCgZ5AWoAj5woWvMJIaBB9nPLNfiuohGys4tbeI/lsAnTI/6go2
-         aS7Q==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=Zttm6w2KPi7fsnMnLvcOjfydKlWqTGvqz5ubq6R9Ouw=;
+        b=r6vtkLQDAM5k6HfivJg7NxQ98bQvC2/AM9/yrjO2w0MQ4T34Qxl/YiDauoTQnYOIOL
+         r2Zj3P7ACAGQ/T08b9fWjIyeFHhSQhqQXu5uvoxIasTJBgUtzYfrjBT2PgmraQyS7XSx
+         OM8Eekkl7ddJwIGzlV7l7mVFWyNlvZaHnCKLYGrXso9Q7l/URp7b8NNDT3rmx9oPgq2r
+         QdrZMGP3/nxdzI7kd+GSttEzMs+xOqvJqMn5OQnzBxp9jb7z0k8kkeToSHmNTgLTKFoW
+         Qpoi5zszhKGcLLsQgg0P/GGBuLfMWriX9UoPaSDI3E7DQaaYW6YAWyTwb1o3OoB2AZLa
+         CdDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=+KKhsqdzjKkoNjjhEU3M5ghe5vBDFfE1DfIkbwooNpY=;
-        b=QdsW/kc8CNeC2gOhaEf49iYFEcymy1Wx68YKX1Qtwu4pqn5Ed7L9uVA5OVc91tknL/
-         kjBLrqtGk4FjvPqgvSWPWYbgWNlWCqxCKhJwAxO1XfmquRoBD3uP9laZQAATQojQHuBA
-         2PVwPRJA4UEesR9zAdBfO8J1mbBnkbpoJmIG9+bhlF45UvuAx3nVIqhkO2WPpa2WgTns
-         hYf22c80wjpU56EhQg16osKLLybQZjLqLBy/WNNl/4+7VuBkMAVPvN3D43NM6sogdP0K
-         KBAPKnc9wnywg89i26IYI4IOz425TlJfeVX/811p2gf17M9GTd/Pj4APWe3RyPCtgYS0
-         syFA==
-X-Gm-Message-State: AMke39nUd3XDzBqNBdQdJrShTpSrs9E3jT7k2vOvc9NAjNraVprjeFTW82itPGw8trCv8g==
-X-Received: by 10.98.157.12 with SMTP id i12mr9226412pfd.166.1487541438525;
-        Sun, 19 Feb 2017 13:57:18 -0800 (PST)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 73sm3029138pfh.56.2017.02.19.13.57.15
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 19 Feb 2017 13:57:16 -0800 (PST)
-Date: Mon, 20 Feb 2017 03:27:13 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/2] staging: ks7010: Unnecessary parentheses are removed to
- make coder nicer.
-Message-ID: <20170219215713.GA19354@arushi-HP-Pavilion-Notebook>
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=Zttm6w2KPi7fsnMnLvcOjfydKlWqTGvqz5ubq6R9Ouw=;
+        b=foeMln6r1ZtNxexWPFusmCwW/fFMUAtpAik/KNXixdQvMvZAQDT7PIZC15NdHKXMF3
+         pwKNxdLCkss/wT6l051cGxJYxgGNoetBE0qQPfjd94u8WLZDgTACusX7MwP56mzNLPtY
+         Cu+QBfqmKLqz0gqdE93/9ktq0X9Dp3CAU6n0cShg4M1mbHC0w2mTx2ca2N22RuznOe+d
+         v9/pbSWrEv1DSzYwNvGn9E2t3di++RVDNUbONUwheBbM96WDT4RU7ny83hpLywOxEjRR
+         y3F0wnk0/op4W4UikaUW9XYImhzPQOrJhtBUJmVuAXKBZFOnQOs7akZZtns6vzShnGYd
+         SGxg==
+X-Gm-Message-State: AHPjjUgoDBeS28sNr5Y4sYh0o5h2zEGAZ0Bkvhf+Cp0DJPETc2maUZE/
+	fg0qMYrmnPg2mc6YB2ggRZq2HsCqpQ==
+X-Google-Smtp-Source: AOwi7QBDwAcmK4SRKxPKMcX8657343PJ2OsLGYdUQpygjLXzuEHrEAm0939FI3rVSZhI9zhAczQ1stnRwbKDdFmaWX8=
+X-Received: by 10.55.52.19 with SMTP id b19mr4347832qka.77.1504886519798; Fri,
+ 08 Sep 2017 09:01:59 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Received: by 10.200.55.118 with HTTP; Fri, 8 Sep 2017 09:01:59 -0700 (PDT)
+In-Reply-To: <CAOw6vbLPfzZ5WzY0Qd9sXp40SGTZAxqVB7x+cTkNuHX79uazzw@mail.gmail.com>
+References: <1504883469-8127-1-git-send-email-srishtishar@gmail.com> <CAOw6vbLPfzZ5WzY0Qd9sXp40SGTZAxqVB7x+cTkNuHX79uazzw@mail.gmail.com>
+From: Srishti Sharma <srishtishar@gmail.com>
+Date: Fri, 8 Sep 2017 21:31:59 +0530
+Message-ID: <CAB3L5oywbZLHop9i+D7GsXg0=uete4Z2Y+PmzN_kdB3-6W6u+g@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: media: imx: Prefer using BIT macro
+To: Sean Paul <seanpaul@chromium.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Steve Longerbeam <slongerbeam@gmail.com>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, mchehab@kernel.org, linux-media@vger.kernel.org, 
+	devel@driverdev.osuosl.org, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset="UTF-8"
 
-Unnecessary parentheses should be avoided as reported by checkpatch.pl.
-Remove unnecessary parentheses, as reported by checkpatch as are nicer
-to read.For example:-
-It's often nicer to read if &(foo[0]) is converted to foo like:
-     memcpy(&(ap->bssid[0]), &(ap_info->bssid[0]), ETH_ALEN);
-     memcpy(ap->bssid, ap_info->bssid, ETH_ALEN);
+On Fri, Sep 8, 2017 at 8:59 PM, Sean Paul <seanpaul@chromium.org> wrote:
+> On Fri, Sep 8, 2017 at 11:11 AM, Srishti Sharma <srishtishar@gmail.com> wrote:
+>> Use BIT(x) instead of (1<<x).
+>>
+>> Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+>> ---
+>>  drivers/staging/media/imx/imx-media.h | 16 ++++++++--------
+>>  1 file changed, 8 insertions(+), 8 deletions(-)
+>>
+>> diff --git a/drivers/staging/media/imx/imx-media.h b/drivers/staging/media/imx/imx-media.h
+>> index d409170..e5b8d29 100644
+>> --- a/drivers/staging/media/imx/imx-media.h
+>> +++ b/drivers/staging/media/imx/imx-media.h
+>> @@ -310,16 +310,16 @@ void imx_media_capture_device_set_format(struct imx_media_video_dev *vdev,
+>>  void imx_media_capture_device_error(struct imx_media_video_dev *vdev);
+>>
+>>  /* subdev group ids */
+>> -#define IMX_MEDIA_GRP_ID_SENSOR    (1 << 8)
+>> -#define IMX_MEDIA_GRP_ID_VIDMUX    (1 << 9)
+>> -#define IMX_MEDIA_GRP_ID_CSI2      (1 << 10)
+>> +#define IMX_MEDIA_GRP_ID_SENSOR    BIT(8)
+>> +#define IMX_MEDIA_GRP_ID_VIDMUX    BIT(9)
+>> +#define IMX_MEDIA_GRP_ID_CSI2      BIT(10)
+>>  #define IMX_MEDIA_GRP_ID_CSI_BIT   11
+>>  #define IMX_MEDIA_GRP_ID_CSI       (0x3 << IMX_MEDIA_GRP_ID_CSI_BIT)
+>> -#define IMX_MEDIA_GRP_ID_CSI0      (1 << IMX_MEDIA_GRP_ID_CSI_BIT)
+>> +#define IMX_MEDIA_GRP_ID_CSI0      BIT(IMX_MEDIA_GRP_ID_CSI_BIT)
+>>  #define IMX_MEDIA_GRP_ID_CSI1      (2 << IMX_MEDIA_GRP_ID_CSI_BIT)
+>> -#define IMX_MEDIA_GRP_ID_VDIC      (1 << 13)
+>> -#define IMX_MEDIA_GRP_ID_IC_PRP    (1 << 14)
+>> -#define IMX_MEDIA_GRP_ID_IC_PRPENC (1 << 15)
+>> -#define IMX_MEDIA_GRP_ID_IC_PRPVF  (1 << 16)
+>> +#define IMX_MEDIA_GRP_ID_VDIC      BIT(13)
+>> +#define IMX_MEDIA_GRP_ID_IC_PRP    BIT(14)
+>> +#define IMX_MEDIA_GRP_ID_IC_PRPENC BIT(15)
+>> +#define IMX_MEDIA_GRP_ID_IC_PRPVF  BIT(16)
+>
+> Hi Srishti,
+> Thanks for your patch.
+>
+> Perhaps this is just personal preference, but I find the previous
+> version more readable. Since IMX_MEDIA_GRP_ID_CSI and
+> IMX_MEDIA_GRP_ID_CSI1 are multi-bit fields, you can't fully eliminate
+> the bit shift operations, so you end up with a mix, which is kind of
+> ugly.
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
- drivers/staging/ks7010/ks_hostif.c | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
-
-diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
-index 1fbd495e5e63..ba283ab741a7 100644
---- a/drivers/staging/ks7010/ks_hostif.c
-+++ b/drivers/staging/ks7010/ks_hostif.c
-@@ -113,7 +113,7 @@ int get_current_ap(struct ks_wlan_private *priv, struct link_ap_info_t *ap_info)
- 	int rc = 0;
- 
- 	DPRINTK(3, "\n");
--	ap = &(priv->current_ap);
-+	ap = priv->current_ap;
- 
- 	if ((priv->connect_status & CONNECT_STATUS_MASK) == DISCONNECT_STATUS) {
- 		memset(ap, 0, sizeof(struct local_ap_t));
-@@ -121,19 +121,19 @@ int get_current_ap(struct ks_wlan_private *priv, struct link_ap_info_t *ap_info)
- 	}
- 
- 	/* bssid */
--	memcpy(&(ap->bssid[0]), &(ap_info->bssid[0]), ETH_ALEN);
-+	memcpy(ap->bssid, ap_info->bssid, ETH_ALEN);
- 	/* essid */
--	memcpy(&(ap->ssid.body[0]), &(priv->reg.ssid.body[0]),
-+	memcpy(ap->ssid.body, priv->reg.ssid.body,
- 	       priv->reg.ssid.size);
- 	ap->ssid.size = priv->reg.ssid.size;
- 	/* rate_set */
--	memcpy(&(ap->rate_set.body[0]), &(ap_info->rate_set.body[0]),
-+	memcpy(ap->rate_set.body, ap_info->rate_set.body,
- 	       ap_info->rate_set.size);
- 	ap->rate_set.size = ap_info->rate_set.size;
- 	if (ap_info->ext_rate_set.size) {
- 		/* rate_set */
--		memcpy(&(ap->rate_set.body[ap->rate_set.size]),
--		       &(ap_info->ext_rate_set.body[0]),
-+		memcpy(&ap->rate_set.body[ap->rate_set.size],
-+		       ap_info->ext_rate_set.body,
- 		       ap_info->ext_rate_set.size);
- 		ap->rate_set.size += ap_info->ext_rate_set.size;
- 	}
-@@ -153,11 +153,11 @@ int get_current_ap(struct ks_wlan_private *priv, struct link_ap_info_t *ap_info)
- 		ap->rsn_ie.id = 0x30;
- 		if (ap_info->rsn.size <= RSN_IE_BODY_MAX) {
- 			ap->rsn_ie.size = ap_info->rsn.size;
--			memcpy(&(ap->rsn_ie.body[0]), &(ap_info->rsn.body[0]),
-+			memcpy(ap->rsn_ie.body, ap_info->rsn.body,
- 			       ap_info->rsn.size);
- 		} else {
- 			ap->rsn_ie.size = RSN_IE_BODY_MAX;
--			memcpy(&(ap->rsn_ie.body[0]), &(ap_info->rsn.body[0]),
-+			memcpy(ap->rsn_ie.body, ap_info->rsn.body,
- 			       RSN_IE_BODY_MAX);
- 		}
- 	} else if ((ap_info->rsn_mode & RSN_MODE_WPA)
-@@ -165,11 +165,11 @@ int get_current_ap(struct ks_wlan_private *priv, struct link_ap_info_t *ap_info)
- 		ap->wpa_ie.id = 0xdd;
- 		if (ap_info->rsn.size <= RSN_IE_BODY_MAX) {
- 			ap->wpa_ie.size = ap_info->rsn.size;
--			memcpy(&(ap->wpa_ie.body[0]), &(ap_info->rsn.body[0]),
-+			memcpy(ap->wpa_ie.body, ap_info->rsn.body,
- 			       ap_info->rsn.size);
- 		} else {
- 			ap->wpa_ie.size = RSN_IE_BODY_MAX;
--			memcpy(&(ap->wpa_ie.body[0]), &(ap_info->rsn.body[0]),
-+			memcpy(ap->wpa_ie.body, ap_info->rsn.body,
- 			       RSN_IE_BODY_MAX);
- 		}
- 	} else {
-@@ -212,7 +212,7 @@ int get_ap_information(struct ks_wlan_private *priv, struct ap_info_t *ap_info,
- 	memset(ap, 0, sizeof(struct local_ap_t));
- 
- 	/* bssid */
--	memcpy(&(ap->bssid[0]), &(ap_info->bssid[0]), ETH_ALEN);
-+	memcpy(ap->bssid, ap_info->bssid, ETH_ALEN);
- 	/* rssi */
- 	ap->rssi = ap_info->rssi;
- 	/* sq */
-@@ -224,7 +224,7 @@ int get_ap_information(struct ks_wlan_private *priv, struct ap_info_t *ap_info,
- 	/* channel */
- 	ap->channel = ap_info->ch_info;
- 
--	bp = &(ap_info->body[0]);
-+	bp = ap_info->body;
- 	bsize = ap_info->body_size;
- 	offset = 0;
- 
--- 
-2.11.0
-
+ Thanks, for pointing that out .
+ Regards,
+ Srishti
+>
+> Sean
+>
+>>
+>>  #endif
+>> --
+>> 2.7.4
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1504883469-8127-1-git-send-email-srishtishar%40gmail.com.
+>> For more options, visit https://groups.google.com/d/optout.
 
