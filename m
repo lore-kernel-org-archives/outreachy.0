@@ -1,95 +1,101 @@
-X-GM-THRID: 6396079372840730624
-X-Received: by 10.99.110.1 with SMTP id j1mr10257739pgc.52.1489203277142;
-        Fri, 10 Mar 2017 19:34:37 -0800 (PST)
+X-GM-THRID: 6463464119976591360
+X-Received: by 10.25.209.74 with SMTP id i71mr303031lfg.15.1504892606430;
+        Fri, 08 Sep 2017 10:43:26 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.38.42 with SMTP id a39ls7814142otb.38.gmail; Fri, 10 Mar
- 2017 19:34:36 -0800 (PST)
-X-Received: by 10.13.238.134 with SMTP id x128mr10424208ywe.59.1489203276709;
-        Fri, 10 Mar 2017 19:34:36 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id u12si2102747pfd.3.2017.03.10.19.34.36
+Received: by 10.28.9.137 with SMTP id 131ls132366wmj.18.gmail; Fri, 08 Sep
+ 2017 10:43:25 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QDIr7XcZgigmTWZYefN7BPPU9uabPkApqoySNFrun/LjwkGZb/znc/4XNBxAlgllcBXHLad
+X-Received: by 10.28.21.65 with SMTP id 62mr286092wmv.22.1504892605359;
+        Fri, 08 Sep 2017 10:43:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504892605; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Piwovw/yxgEXmhd6nNQkpRdslEZ2yvJkLfASDDAWV93U2o9eBo1uruHOksT0NXk790
+         yG84N8Iu2zrQtO8GQQvcMHcr6E9zjg2yAGRFGXHjFWbxAx7q0JTAki3rc8ug4Ds6OlLE
+         z5PuWg+gntce4LQcZHAEgj6ntUT+YpddO5ttCJajijuNrlh3meMAQMCspGE6EKeHpErR
+         BDA5zw8jSJ8bHKWO/1ji+wM7IKHUBszKWhy2mKcrPzaLG/UQZRp0AlkTFwUPiRYYmqRI
+         T+aX+QBaOD1+LcsOxvePKZYHnZsteXGDHvcWpLo7JMRMDMeoABh90gnPaFLu4WVfhe7X
+         Abiw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=aBDUyFkMDQJpjgAuL777o9i2tEHPqkfpS7nKeygWCcc=;
+        b=LmLeGEtvluzgtLI1qAwhinYyBNOgB0d9zD30oCmpWh8XamaqXuPG8Z0RWwq95myjP0
+         hkAokHgI3x8o5KP3S0xKXHChgPR4UWJHfx0dsXXrdeXEzbzk/NYYTQqkaqbUIQFuvGQe
+         2wmYUUR1ml9D4wQeikN2Zew3kZEpBFGkoUeSw6LD+AiFZnW0oVufVafxVwHliItunPSv
+         9VNPeOvuvWTu+3wzQuAST/RplAPFB4r3uXI8mtW0ulRueLeG9V0afbKSmcHOa96ewfDa
+         MfaedIKTbalyfycF/HRIIhrHYUZehWTq6zsfWsaZEkaRtU2HW7IIBS+3sW6N+sQm5RiF
+         c7eg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 74si166537wmf.8.2017.09.08.10.43.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 10 Mar 2017 19:34:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Fri, 08 Sep 2017 10:43:25 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id o126so12714974pfb.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 19:34:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=mQH+Gxtw1uHugJ1vThNHhXhFxL+GSJuD1PlHonGiYaU=;
-        b=pgAGz78W1KCtKIngSQ7ZZ0HehvbAEa17ULCtO1215wHt2H08HjnKCPnlWCr9Uo1y5u
-         atkU8/h7yQRUesxrcnTvzRu4911oUemjRtUuGjOgwmUluIJzyPJy9jfI/9N5L/gft9/t
-         F4X/A7SXYbLMo2acc2fthwLmFXUGom4GzPjweWK8ap8/rL6gWZsKZ1jkxMY2KPyiIXHK
-         ljP5GhH9R/ArmjitkLIZzqT2v5RD7oHe9IsQz81q4NsqZ+0VffGd6h653n566OrkYxAY
-         IMaNlSgf5SrxTYk1QpbatO/v2RAw+/ioM9fSFakIuyxUkUCDZCH7HVpn/HcMnrVPi0x6
-         V3cg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=mQH+Gxtw1uHugJ1vThNHhXhFxL+GSJuD1PlHonGiYaU=;
-        b=oxYpDBGrCOw/Y767GCliHlMaS7d+vqhOFyENMu7hMlsFqvlAEnIBkXTwMOxgKONvPb
-         k3xOPYSMuLr9w/3Bko5K+pWSMgCr5ffYVYh1phanZyxZXZaWkbpZEoIiNQe8wVRUVMkL
-         JlPZAmywwDXr0UpXFq94Zqi6mlzmtj3/tANJhcPVzBxDbyRl/oZF4Dgc7rJ1t3duig+H
-         5+toHq2kE0WDL46kqFPafuWD5ZPg1v4VcE3vdURkX7wwJCETmLlBtMgm6VEX4zfUyL+o
-         WxNlN/IIeNER8h9zpLPRQGp05u8UAyO7QMANX9SHLwZv1L2q3Rs60lkPTgbTs5HmdeaC
-         YwbQ==
-X-Gm-Message-State: AMke39nfoI7H82peSx+4s7/lNYxvptiHWpk8BPdGVNMQMsxZYWRoAbXahIYk8+wAr5Px/A==
-X-Received: by 10.99.137.66 with SMTP id v63mr23434771pgd.207.1489203276481;
-        Fri, 10 Mar 2017 19:34:36 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id p129sm21038917pfp.118.2017.03.10.19.34.32
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 10 Mar 2017 19:34:35 -0800 (PST)
-From: simran singhal <singhalsimran0@gmail.com>
-To: lars@metafoo.de
-Cc: Michael.Hennerich@analog.com,
-	jic23@kernel.org,
-	knaack.h@gmx.de,
-	gregkh@linuxfoundation.org,
-	linux-iio@vger.kernel.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH 00/10] staging: iio: Remove exceptional & on functions name
-Date: Sat, 11 Mar 2017 09:06:31 +0530
-Message-Id: <1489203401-17518-1-git-send-email-singhalsimran0@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,362,1500933600"; 
+   d="scan'208";a="236829113"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 08 Sep 2017 19:43:24 +0200
+Date: Fri, 8 Sep 2017 19:42:55 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Harsha Sharma <harshasharmaiitr@gmail.com>
+cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org, 
+    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: typec: tcpm: Comparison
+ to NULL pointer
+In-Reply-To: <1504892391-5607-1-git-send-email-harshasharmaiitr@gmail.com>
+Message-ID: <alpine.DEB.2.20.1709081941430.22293@hadrien>
+References: <1504892391-5607-1-git-send-email-harshasharmaiitr@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-This patch-series removes exceptional & on functions name.
+Maybe "Rewrite comparison to NULL pointer" in the subject to include what
+was done, not just code was touched.
 
-simran singhal (10):
-  staging: iio: ad7192: Remove exceptional & on function name
-  staging: iio: ad7780: Remove exceptional & on function name
-  staging: iio: cdc: ad7746: Remove exceptional & on function name
-  staging: iio: cdc: ad7152: Remove exceptional & on function name
-  staging: iio: adis16240: Remove exceptional & on function name
-  staging: iio: adis16201: Remove exceptional & on function name
-  staging: iio: adis16209: Remove exceptional & on function name
-  staging: iio: adis16203: Remove exceptional & on function name
-  staging: iio: resolver: Remove exceptional & on function name
-  staging: iio: gyro: Remove exceptional & on function name
+On Fri, 8 Sep 2017, Harsha Sharma wrote:
 
- drivers/staging/iio/accel/adis16201.c     |  4 ++--
- drivers/staging/iio/accel/adis16203.c     |  4 ++--
- drivers/staging/iio/accel/adis16209.c     |  4 ++--
- drivers/staging/iio/accel/adis16240.c     |  4 ++--
- drivers/staging/iio/adc/ad7192.c          | 12 ++++++------
- drivers/staging/iio/adc/ad7780.c          |  2 +-
- drivers/staging/iio/cdc/ad7152.c          |  6 +++---
- drivers/staging/iio/cdc/ad7746.c          |  4 ++--
- drivers/staging/iio/gyro/adis16060_core.c |  2 +-
- drivers/staging/iio/resolver/ad2s1200.c   |  2 +-
- drivers/staging/iio/resolver/ad2s90.c     |  2 +-
- 11 files changed, 23 insertions(+), 23 deletions(-)
+> Makes code more concise and readable
 
--- 
-2.7.4
+Makes -> Make.  Commit logs should be written in the imperative, like you
+are telling someone what to do.
 
+julia
+
+> Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
+> ---
+> Change in v2:
+>  -Change in subject
+>  -Change in log message
+>  drivers/staging/typec/tcpm.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/typec/tcpm.c b/drivers/staging/typec/tcpm.c
+> index 630fe75..9f4a5a5 100644
+> --- a/drivers/staging/typec/tcpm.c
+> +++ b/drivers/staging/typec/tcpm.c
+> @@ -982,7 +982,7 @@ static void svdm_consume_modes(struct tcpm_port *port, const __le32 *payload,
+>  	}
+>  	port->partner_altmode[pmdata->altmodes] =
+>  		typec_partner_register_altmode(port->partner, paltmode);
+> -	if (port->partner_altmode[pmdata->altmodes] == NULL) {
+> +	if (!port->partner_altmode[pmdata->altmodes]) {
+>  		tcpm_log(port,
+>  			 "Failed to register alternate modes for SVID 0x%04x",
+>  			 paltmode->svid);
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1504892391-5607-1-git-send-email-harshasharmaiitr%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
