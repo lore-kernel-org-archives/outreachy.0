@@ -1,122 +1,112 @@
 X-GM-THRID: 6463658667322376192
-X-Received: by 10.28.138.195 with SMTP id m186mr129827wmd.9.1504939930131;
-        Fri, 08 Sep 2017 23:52:10 -0700 (PDT)
+X-Received: by 10.99.54.136 with SMTP id d130mr3122247pga.19.1504937807689;
+        Fri, 08 Sep 2017 23:16:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.152.136 with SMTP id a130ls328955wme.19.gmail; Fri, 08 Sep
- 2017 23:52:09 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QBrUVsqwbOE4miGksxVMbi73e/4GU6P+1xSNxNDixNnQr8aDn0n86IuvXVuzEunqgzTXMxA
-X-Received: by 10.28.4.84 with SMTP id 81mr338798wme.28.1504939929068;
-        Fri, 08 Sep 2017 23:52:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504939929; cv=none;
+Received: by 10.107.169.139 with SMTP id f11ls1365534ioj.36.gmail; Fri, 08 Sep
+ 2017 23:16:47 -0700 (PDT)
+X-Received: by 10.129.50.18 with SMTP id y18mr3205775ywy.229.1504937806987;
+        Fri, 08 Sep 2017 23:16:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504937806; cv=none;
         d=google.com; s=arc-20160816;
-        b=PUQz0yyEwjl1oxqTr4Lgqc2CF56vaRhWkOOG7UDARE9xvQ007CkrMBRHTHFTyZ62M3
-         GmJLjjBhKIadRYqTMgvghhZFCSn8V3n3c5UmZ5JrALKgDA8tHq6yX7eC09wR4VAc7D7e
-         ihm0ME0GioxFZ/nj5l/OxYtKTUw5q9C1flpYvXwgD4P8egafzoCoSjJVML5E7bjCzrqQ
-         sBobmA54z9FbZjAk+R5qOlBf3Mb5i+8K9B98dmf6gvC2Fm4qZgGxsz3YyhuCrM+D5yWf
-         uBY6Hv4fVsfCv0KoclTFyoy4+SlhDteC8tJa/aL8YX+vkaVuBvH6STNMEJouylLzla6r
-         hWgQ==
+        b=bpDs9wNsKgiXG5Ut9QZ7yXrRueshDcKzf0TBC9XR/JYT4AVxTtkFYJGNDB51Ny/qnP
+         ef0RrHLA4UAUZfIWs8PRvN1+tDyxDcR9wENloRR6r+R9fsWesNZiROEV+XF8ZhmvVjgY
+         1SLXCK0zpdQcaVUZsGHeVJbxm5UTyo41IA8m/Iq8Se9EvorB7/mrnD1MXZib1vQNC1xz
+         fjwzGxQMRj0H0sdVYuN8wU8isC6SF+C4dvswnpjWOqMRZk+MnewoeVdz2JBxSoZrT0nH
+         yIOo/v4R9AssCOPlP2Bu3fNsLvfAXNRE/sjquVsoT8oSyKowzHNbZkXsgRnH6IxY8I+C
+         PzxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=rEauovETkpXW6swOZHgmCvniI1rPJhoQzLYTUzCXPd8=;
-        b=s0ntcg92T3LvMi0kanydEMJ0dTjLC7t4vaw35GKSZDVHpJH1MwNMWIbNRq/+xCtE6M
-         yh33/USs3ceR9Sr3dO5FB6930IPSXyzW/3b2EGRtdEGSGhbj+vl7gVdq0rJ4UfyQM3UP
-         jcTN/HUpeRkU/u60858KsGrCq+PTCfi6Di0isa/B/VGQ/QDBufVYV4chYr6Fvsw5zGUk
-         TSmVx5+0PrHZPZRg3iE+dM/WBuJtt9JoBHTvS+/lppi8XjjbMS8aacvRKLxKU7ae5uSC
-         wUJjT5w/W9lVPzJe2kUi0k3dS29tMDEx29CwEd5PpIsWitEOE0hPf4ktOncf9J9Hw/nM
-         qBow==
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature:arc-authentication-results;
+        bh=ES/aKmCW2+LHISBnx7s7OXF/aBIM0xV53tL/3+i/9gw=;
+        b=o7hR9h3z8vMmFqjvqeJAPb6TSDKW6aUB3aNYfoUpQqjCRH+bdUgUAtoX4bzAMg7dwL
+         uAz/BNHy8hUr34Bi0UbTN2Ne4gTiUeHhZn6uQr+vvyvwacYB4J1nTrJhh4zkPWdOz0Le
+         mLb+GvxOO8IW3+VEEZtLA8wBOr1DAR8B2EJTEBjPRHo2kQjEUZeEAk915XGuoGb8KvNc
+         8cmhi4DmXj2hhrxmTeuUppPxoYZjSCVYv6rXcR8Sfl1iIIowv84vW9zlyOZ2aCeV3Bh1
+         cBTzSDDK7knHqjmq5MJtEpdcKE/cSfqi6Yrmth7yxq6+6gRsLnuoAy7gXPyGIc8TaEvD
+         cd/Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id s127si198750wme.8.2017.09.08.23.52.08
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Nd1/PQNo;
+       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:4002:c05::242 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <meghana.madhyastha@gmail.com>
+Received: from mail-yw0-x242.google.com (mail-yw0-x242.google.com. [2607:f8b0:4002:c05::242])
+        by gmr-mx.google.com with ESMTPS id n19si272813ywd.3.2017.09.08.23.16.46
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 08 Sep 2017 23:52:08 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Fri, 08 Sep 2017 23:16:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:4002:c05::242 as permitted sender) client-ip=2607:f8b0:4002:c05::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.42,365,1500933600"; 
-   d="scan'208";a="236858350"
-Received: from 85-171-60-79.rev.numericable.fr (HELO [192.168.0.15]) ([85.171.60.79])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 09 Sep 2017 08:52:08 +0200
-Date: Sat, 9 Sep 2017 08:52:07 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Meghana Madhyastha <meghana.madhyastha@gmail.com>
-cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
-    w.d.hubbs@gmail.com, chris@the-brannons.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: speakup: Change symbolic
- permission from 'S_IRUGO' to '0444'
-In-Reply-To: <20170909061641.GA19737@meghana-HP-Pavilion-Notebook>
-Message-ID: <alpine.DEB.2.20.1709090844130.2044@hadrien>
-References: <20170909061641.GA19737@meghana-HP-Pavilion-Notebook>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Nd1/PQNo;
+       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:4002:c05::242 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-yw0-x242.google.com with SMTP id r85so4788ywg.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 08 Sep 2017 23:16:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=ES/aKmCW2+LHISBnx7s7OXF/aBIM0xV53tL/3+i/9gw=;
+        b=Nd1/PQNoR9jyZsCCiX5MqcurpJE9n8iwE129K5WGjMe9j6fUbZocV11ifWtjW+O8NK
+         hus4+TyL3xrluLfnI3Dgh82wgMzmchfZ+rvjPlW4Q4dOxdaMnFMnizRMoQ2jMyEUrIfo
+         ecqotWStQoXspUoc/atdIpY4SUGpBEhvaB0o6gHTZnzMTE/9sbyJEeE8qbXUA6glon3b
+         07JzkV8Gf2/C1gOzdmQKcalSNGtltXJUYqhtQ5OzCiSCYFR72Dhab7ZAmL2xB+VryXA/
+         hAIrNigR6mEJKoUo91c36hMvJM9SgMvLVKvMmcKHIp9mFyYtX+EqZX5jHRzoOZB2AV8f
+         1t2w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=ES/aKmCW2+LHISBnx7s7OXF/aBIM0xV53tL/3+i/9gw=;
+        b=OM1IvCKF8hfEHlQCCgJSB/ylbvkyGXOim0MYf0d6NS1jlqJ6xVYvExA0GNHouvmHJs
+         FkqVGadr7s2ygcw34OxqtclVBAmUsgQdebgIV9FJmF3HB0q4fim2l78q7FDUS3Tbve5I
+         9QMvqxXK9NFRjgy4chOqDhIXvRugyvPcxQAgoAbL1CiOhIePH2Wnjodl1AVFr1I+PRU/
+         1yWa0GtjC2saC2HvrlYeBqKtvvbqKeRYvnn4iGY99q3hkmQG2FKbllHJYWjsAMHXEXXD
+         zhWtz0KXXQpaBqPsy2qSLn6U86Jq//4OF3LAYGd2tGx/aCtM6bvD3uyr0CjFuzfd4wb6
+         K5+Q==
+X-Gm-Message-State: AHPjjUiyGgARQFoRuZa2soOoOTZGMk2MkxpWzrfwBx61Uj/Sz4uT5U0t
+	rYVU2Ypw5bPOOA==
+X-Google-Smtp-Source: ADKCNb5YZ2GgT6mCPNmMoua7mB4tAucsiZkE1iolM5fcM7zMbIOnbOFr32vUK7LR96VQLN8mYm0Btw==
+X-Received: by 10.13.196.130 with SMTP id g124mr4321650ywd.474.1504937806762;
+        Fri, 08 Sep 2017 23:16:46 -0700 (PDT)
+Return-Path: <meghana.madhyastha@gmail.com>
+Received: from meghana-HP-Pavilion-Notebook ([103.231.132.5])
+        by smtp.gmail.com with ESMTPSA id x8sm1346175ywi.107.2017.09.08.23.16.44
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 08 Sep 2017 23:16:45 -0700 (PDT)
+Date: Sat, 9 Sep 2017 11:46:41 +0530
+From: Meghana Madhyastha <meghana.madhyastha@gmail.com>
+To: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
+	w.d.hubbs@gmail.com, chris@the-brannons.com
+Subject: [PATCH] Staging: speakup: Change symbolic permission from 'S_IRUGO'
+ to '0444'
+Message-ID: <20170909061641.GA19737@meghana-HP-Pavilion-Notebook>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
+This fixes the following warning reported by checkpath.pl.
+WARNING: Symbolic permissions 'S_IRUGO' are not preferred. Consider using octal permissions '0444'.
 
+Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
+---
+ drivers/staging/speakup/speakup_acntsa.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On Sat, 9 Sep 2017, Meghana Madhyastha wrote:
+diff --git a/drivers/staging/speakup/speakup_acntsa.c b/drivers/staging/speakup/speakup_acntsa.c
+index 0e10404..4331584 100644
+--- a/drivers/staging/speakup/speakup_acntsa.c
++++ b/drivers/staging/speakup/speakup_acntsa.c
+@@ -136,7 +136,7 @@ static int synth_probe(struct spk_synth *synth)
+ }
+ 
+ module_param_named(ser, synth_acntsa.ser, int, 0444);
+-module_param_named(dev, synth_acntsa.dev_name, charp, S_IRUGO);
++module_param_named(dev, synth_acntsa.dev_name, charp, 0444);
+ module_param_named(start, synth_acntsa.startup, short, 0444);
+ 
+ MODULE_PARM_DESC(ser, "Set the serial port for the synthesizer (0-based).");
+-- 
+2.7.4
 
-> This fixes the following warning reported by checkpath.pl.
-> WARNING: Symbolic permissions 'S_IRUGO' are not preferred. Consider using octal permissions '0444'.
-
-It could be good to change the distribution of information between the
-subject line and the commit log.  The subject line should be concise and
-give a quick idea of what the patch is about.  It doesn't need to have all
-the details.  So it could be eg "Replace symbolic permission".  Now one
-has the idea, and if one is interested in more details one can look at the
-commit log.
-
-Then the commit log should say what you did and why you did it.  "Fix"
-doesn't really say anything about what you did, and just following a tool
-is not the best reason why (although in some simple cases it can be hard
-to think of anything else).  Still it is nice to give credit to the tool
-that helped you find the issue.
-
-So you could say:
-
-Replace S_IRUGO by 0444 in module parameter declaration.  0444 is more
-readable and matches the style used in other declarations nearby.
-
-Problem found using checkpatch.
-
-
-The actual checkpatch message is not so important.  In this case it also
-goes past 80 characters, so if you really want to include it, you should
-add a newline somewhere.
-
-julia
-
-
->
-> Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
-> ---
->  drivers/staging/speakup/speakup_acntsa.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/speakup/speakup_acntsa.c b/drivers/staging/speakup/speakup_acntsa.c
-> index 0e10404..4331584 100644
-> --- a/drivers/staging/speakup/speakup_acntsa.c
-> +++ b/drivers/staging/speakup/speakup_acntsa.c
-> @@ -136,7 +136,7 @@ static int synth_probe(struct spk_synth *synth)
->  }
->
->  module_param_named(ser, synth_acntsa.ser, int, 0444);
-> -module_param_named(dev, synth_acntsa.dev_name, charp, S_IRUGO);
-> +module_param_named(dev, synth_acntsa.dev_name, charp, 0444);
->  module_param_named(start, synth_acntsa.startup, short, 0444);
->
->  MODULE_PARM_DESC(ser, "Set the serial port for the synthesizer (0-based).");
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170909061641.GA19737%40meghana-HP-Pavilion-Notebook.
-> For more options, visit https://groups.google.com/d/optout.
->
 
