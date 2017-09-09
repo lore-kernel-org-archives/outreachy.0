@@ -1,126 +1,85 @@
-X-GM-THRID: 6535331829048672256
-X-Received: by 10.176.73.67 with SMTP id a3mr8241828uad.41.1521625516959;
-        Wed, 21 Mar 2018 02:45:16 -0700 (PDT)
+X-GM-THRID: 6463673488893804544
+X-Gmail-Labels: Topic type: DISCUSSION
+X-Received: by 10.36.34.85 with SMTP id o82mr2908030ito.49.1504942074488;
+        Sat, 09 Sep 2017 00:27:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.31.153.87 with SMTP id b84ls1735812vke.11.gmail; Wed, 21 Mar
- 2018 02:45:15 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELtV7zrp2nUDdYwDzRX+9utDSsR8mBu8EOJkgmuXTA5EWc0elMZo/Y3Gck2y5CdPfdOSfIje
-X-Received: by 10.31.83.1 with SMTP id h1mr8494660vkb.60.1521625515881;
-        Wed, 21 Mar 2018 02:45:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521625515; cv=none;
+Received: by 10.107.195.15 with SMTP id t15ls1414754iof.46.gmail; Sat, 09 Sep
+ 2017 00:27:53 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QDh90dZlOJAUMERVgvLiqLG5jWBh+foJcmw8siWzi0TTtm1H2iT8OsAuwCRcDmHOTrtNvdV
+X-Received: by 10.202.195.130 with SMTP id t124mr3076533oif.28.1504942073724;
+        Sat, 09 Sep 2017 00:27:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504942073; cv=none;
         d=google.com; s=arc-20160816;
-        b=GwNL8UmCkSMeGf4kuMY66Qe5e0yTle6zapIc6i4LGu+FrxqTPK9+3HiKMGr0T/6bg8
-         1NZ57VHS8CGX4KbqZWyZbuVzdRYo2XouYXz6ASSL7zYK8eaX03ZGWwKeBaw+r40SU+Dx
-         SV+ik2et65L3YgZkTpwJThfr573LhMBeYiURKH4ffzAN6pxDdrG9xqpVFkrhS2qBhcIX
-         LdgoF7Ea20tx/HDqyDmHsZNwjqQtaI8rkq+/SeON4fLWJfIlBlExx87/E4PAtjfQl9+D
-         oSaiAFP3wA59sRb0JBc6z1hj7y21bqkCQlulGhCPJNzxCtxZoCDRbMzY8WYXf0RKd6oy
-         jspQ==
+        b=p/GKVhLfy45nXhsh0sUAdaZcG1Pb9uThpd9pnCWvVlOuHq1opcwM1WiMFZTnUf73R+
+         4H1SZVtL1u7aibKWXz1sNjY4uSSn545AHPOMQS4BozasRNMGqIFmXC2x011rcTjJjKa9
+         uvD184avjGoo93gV7ADSYi7V/AB3cHaCGr3GHvjSUKRCXPk/JaXGoNbZ4T5qtCqfWfiK
+         wmjmj5KODTfi/LlBZU+NtJ6/hcLyntyZfiyZMPx4hmcRgA2nBPVx2zp4C34Zt1kiRW3n
+         N7ughq+yBHnPPORU1Too05PegZE8XdciylaLMhQcylect7QA+7vplXoJy2ZrQLQm8qMv
+         8BSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=M3FI9IwfvQzFnMqktgxJDPCCw77LAqR39xsjgILllYM=;
-        b=LCWeuTCMuOutbecWM6JIyPq1fQirFYnY7pIg74aWiQ0Rf+m/5SnmDCKVf2guYVsU5j
-         izTAP0BC8iIqie77+G2Q9B8j/FayuM3TKyqyXroiDz2Q5RdUZHbcHhPosScZJAh91vQJ
-         ioF7c8qaGG15iXJfMt5I53Rof+vL8GgZijlD09gqWJ1ftDIDKFoj5VC/UoS7nYrGnwJX
-         FBUTXXMlOy/+7yn2zfwDJq0prYOOJvzrCz5KzV/s+XyU17k49LUElCG1VfGH2xNhKzAN
-         99hn3CNCaKtizuFm+8dw9aNf3B4thCBNNfchhoBWL4GdIlwsR+9uOIa6xCBGezscHE/X
-         m16g==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature
+         :arc-authentication-results;
+        bh=eRMVkZlnaGaYOa216/K2YjpqXzrfV++iy8U9GtnZrII=;
+        b=cYr3XrqInONDiCx8AZ/ZOk6XFAoAw9PoFuxNDIP4wvFBnkjtqbbw7QrWDYeqbzW9sI
+         6+eUzYwj5VQ1Wo7qmSIq7DjrmeAUUmC57ve8xo+ii8popAV3Y09ECC0PzTQRoRXolvDf
+         J2p1gse46ZMugDhaVBAN67jbHpyzLdbW69g4aSoMI4tGEncKgq4D4MKI3vrWy+9GZbVC
+         M9zwaszE4Db5jbJKj1K6Nphe6Iur1ExTaOdPM2vjnpr5iKfN/nyUoy2OprkimC3wdZZr
+         VsNbiaHx/s39SkJFifC3XFyIeh/hB6JrX4n9COAKeiIKw64hjIdhJfks8gp/avtbmO9n
+         UVCw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qRBZhJ5Q;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id b32si252052uad.5.2018.03.21.02.45.15
+       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=MhgpQZRE;
+       spf=neutral (google.com: 66.111.4.25 is neither permitted nor denied by best guess record for domain of greg@kroah.com) smtp.mailfrom=greg@kroah.com
+Return-Path: <greg@kroah.com>
+Received: from out1-smtp.messagingengine.com (out1-smtp.messagingengine.com. [66.111.4.25])
+        by gmr-mx.google.com with ESMTPS id m186si151512itd.9.2017.09.09.00.27.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Mar 2018 02:45:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Sat, 09 Sep 2017 00:27:53 -0700 (PDT)
+Received-SPF: neutral (google.com: 66.111.4.25 is neither permitted nor denied by best guess record for domain of greg@kroah.com) client-ip=66.111.4.25;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qRBZhJ5Q;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id m24so1737908pgv.8
-        for <outreachy-kernel@googlegroups.com>; Wed, 21 Mar 2018 02:45:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=M3FI9IwfvQzFnMqktgxJDPCCw77LAqR39xsjgILllYM=;
-        b=qRBZhJ5QNdojvN5Cf5xprlnQYc5WNVCu8v6/2Yc0c0jBF32Vc20PuPKBMNFMa/Stur
-         NbFKGpxSdRtAxrNFSz+YprLcoLzgDwzXCrS/ESwGXdCe18v+G0UZRAboMbuJTDSdl2Ou
-         eblp4QG9MCdJ2QkWQbaJFdvk5HeDJxmNVLrFYFUxcd/H1qbNlwYr7sKvB6Ta4FxtFQBS
-         fnCy6AF5FNqGq1j93fiFwvvaiTPL1T1llqGk/w1IB1Ptfg+x/rRhGGY2mAjXgfzR9sP1
-         96A8wubSrDENo2mgZzOjpdn7w1f8qdkXVEv7tKsuswezhwelh4wxe1MdCeVOwgksA6vm
-         ogPA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=M3FI9IwfvQzFnMqktgxJDPCCw77LAqR39xsjgILllYM=;
-        b=YIiucQ1KJP0ZGCeSaMHuXpMuBLrnhoYJ4mK/d2JI2YmGdlyAurwA6vFrdvmLSmfKIs
-         XyWrh8ffOPLq0nH0kodGgl2oXX2ntfpnjh2w1vAY5HCydzX3b4vklf0ejWN2pulHK1TP
-         8M//+AS8HZ9qZV++iimp+F7afGI2d3HNMRvBWX3RhFzN+mZWtLWGSyx9mH6t9cLP6Ybh
-         32968ybshSyaWK8EVgz9ldHleO9zp+CCuAxZyBlPv9bdb66b8F/1/66XBc7dr+vWKBIc
-         mmbRFS1gQafuQW4pTILc1M2ZNkswe3weaGn2Z2bUNiRtD2EC+/3AmWF+EBXiTtDh9pIk
-         UY0w==
-X-Gm-Message-State: AElRT7GamUiTUYksY6D/yB3misOZ8cr9OofvgcvlG+KbpPYMdjkPIxYe
-	eIb/uCJbY3/Q8SZ0xhOX2At9Pw==
-X-Received: by 10.99.183.15 with SMTP id t15mr14789363pgf.416.1521625513661;
-        Wed, 21 Mar 2018 02:45:13 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from seema-Inspiron-15-3567 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id r9sm5747436pfg.128.2018.03.21.02.45.11
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 21 Mar 2018 02:45:12 -0700 (PDT)
-Date: Wed, 21 Mar 2018 15:14:22 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: netfilter-devel@vger.kernel.org
-Cc: pablo@netfilter.org, kadlec@blackhole.kfki.hu, fw@strlen.de,
-	davem@davemloft.net, outreachy-kernel@googlegroups.com
-Subject: [PATCH] iptables: extension: Constify option struct
-Message-ID: <20180321094422.GA18335@seema-Inspiron-15-3567>
+       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=MhgpQZRE;
+       spf=neutral (google.com: 66.111.4.25 is neither permitted nor denied by best guess record for domain of greg@kroah.com) smtp.mailfrom=greg@kroah.com
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
+	by mailout.nyi.internal (Postfix) with ESMTP id 393DB21AB8;
+	Sat,  9 Sep 2017 03:27:53 -0400 (EDT)
+Received: from frontend1 ([10.202.2.160])
+  by compute6.internal (MEProxy); Sat, 09 Sep 2017 03:27:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-sender
+	:x-me-sender:x-sasl-enc:x-sasl-enc; s=fm1; bh=eRMVkZlnaGaYOa216/
+	K2YjpqXzrfV++iy8U9GtnZrII=; b=MhgpQZREdRj92NtBo74Sd4mKAmyqg+byPA
+	nw4zS4i07UJCH9oJjuUCV4o/w0+tI1FecJXkIx/lglMW6tF9PnDv+6Mt83jnAscf
+	oBvamUtA/KrjEpHgiqZtTNg/ooc0Eqqgim+H9OAffz0XYDcdE/Xmcc6brNuUvSMf
+	6a2acZDnIG0ViG0qPw2k1RwJrSEbtE0Y3rGsO+m3c9zOQnz+RvJ4xOFI8YCGidxk
+	zdlgqAAFVwA5hxvU5bMgI2rJNPMSiM/gEPZ5jiSkeN4Xx+qCr4kOPnt+143rcpIZ
+	IRCRmYEA5I/eqzRHeS8VD4TIpz6CJ1Lw25pweNoAHtlQ4ErXdx/g==
+X-ME-Sender: <xms:-ZezWb12iV9dyD59zkggkcE8ELiF3Jdjs3DHCJafUM3CMcSJdlUEMQ>
+X-Sasl-enc: d2Xx+zwLlUSladTVA+jLsWA/T/Ct1cht1LLem5ciU5w2 1504942072
+Received: from localhost (lfbn-1-12253-150.w90-92.abo.wanadoo.fr [90.92.67.150])
+	by mail.messagingengine.com (Postfix) with ESMTPA id BE8457E6DB;
+	Sat,  9 Sep 2017 03:27:52 -0400 (EDT)
+Date: Sat, 9 Sep 2017 09:27:51 +0200
+From: Greg KH <greg@kroah.com>
+To: Shreya Singal <shreyashivam20@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Unable to setup esmtp email client
+Message-ID: <20170909072751.GA29033@kroah.com>
+References: <6cf3cc61-1b62-4ef9-abb2-4d5e5720a2c3@googlegroups.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <6cf3cc61-1b62-4ef9-abb2-4d5e5720a2c3@googlegroups.com>
+User-Agent: Mutt/1.9.0 (2017-09-02)
 
-The struct of type option is only used to initialise a field and
-is not modified anywhere.
+On Sat, Sep 09, 2017 at 12:14:18AM -0700, Shreya Singal wrote:
+> Hi,
+> I am unable to configure my .esmtprc file. I am unable to setup my email cliet. Some help would be useful
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
- extensions/libarpt_mangle.c | 2 +-
- iptables/iptables-xml.c     | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+Exactly what did you try to do, and what is the errors that you have?
 
-diff --git a/extensions/libarpt_mangle.c b/extensions/libarpt_mangle.c
-index ec9b543..0d1f140 100644
---- a/extensions/libarpt_mangle.c
-+++ b/extensions/libarpt_mangle.c
-@@ -32,7 +32,7 @@ static void arpmangle_print_help(void)
- #define MANGLE_DEVT   '4'
- #define MANGLE_TARGET '5'
- 
--static struct option arpmangle_opts[] = {
-+static const struct option arpmangle_opts[] = {
- 	{ .name = "mangle-ip-s",	.has_arg = true, .val = MANGLE_IPS },
- 	{ .name = "mangle-ip-d",	.has_arg = true, .val = MANGLE_IPT },
- 	{ .name = "mangle-mac-s",	.has_arg = true, .val = MANGLE_DEVS },
-diff --git a/iptables/iptables-xml.c b/iptables/iptables-xml.c
-index 49674ec..69c19a6 100644
---- a/iptables/iptables-xml.c
-+++ b/iptables/iptables-xml.c
-@@ -38,7 +38,7 @@ static int verbose;
- /* Whether to combine actions of sequential rules with identical conditions */
- static int combine;
- /* Keeping track of external matches and targets.  */
--static struct option options[] = {
-+static const struct option options[] = {
- 	{"verbose", 0, NULL, 'v'},
- 	{"combine", 0, NULL, 'c'},
- 	{"help", 0, NULL, 'h'},
--- 
-2.7.4
+thanks,
 
+greg k-h
 
