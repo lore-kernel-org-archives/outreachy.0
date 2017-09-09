@@ -1,140 +1,159 @@
 X-GM-THRID: 6463500175393423360
-X-Received: by 10.202.170.87 with SMTP id t84mr4555717oie.51.1505021743617;
-        Sat, 09 Sep 2017 22:35:43 -0700 (PDT)
+X-Received: by 10.28.54.30 with SMTP id d30mr446820wma.6.1504977281909;
+        Sat, 09 Sep 2017 10:14:41 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.110.141 with SMTP id w135ls3628056itc.18.gmail; Sat, 09 Sep
- 2017 22:35:42 -0700 (PDT)
-X-Received: by 10.107.152.208 with SMTP id a199mr4421026ioe.104.1505021742905;
-        Sat, 09 Sep 2017 22:35:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505021742; cv=none;
+Received: by 10.28.174.129 with SMTP id x123ls481848wme.3.gmail; Sat, 09 Sep
+ 2017 10:14:41 -0700 (PDT)
+X-Google-Smtp-Source: ADKCNb41hvboflyD0WaK2voJt8KyLL9xtJAGkzhH2uuC7u8SznQKuvBmSgHVMJvEAWrn07/wkqD7
+X-Received: by 10.223.185.55 with SMTP id k52mr340384wrf.23.1504977281056;
+        Sat, 09 Sep 2017 10:14:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504977281; cv=none;
         d=google.com; s=arc-20160816;
-        b=dc8T5Dut5hqA5MnBM62+UULL7NaNF7BBSHiyGA5VByzidGqMAbaL/6eHja/+kHtkrR
-         U6nfkz6NG8xcB/EdfDv4BBD6ygiKE+/uh4pwhEco5ZoPk7ERVjjYGLbkRFcpc2h6d4iH
-         ub2KFJLs56O5PwQOhJG5gLXSZ+MnnDn36mByWcI4QWcqEmckNgACxWrpIOyZar91xO0r
-         WaFrBDIWnkhfavAP71afWTRmI1SXCKTnwx446lYipEmRR/hPaZuMZBTwUReXDcJQUfJa
-         f7hJF3PsZsnxyv66xIBhOP8q63KIQiMuZ1Eb3UjWWsp1Cs/NFVxTXSCR9WqoiF/R8IrN
-         ovxg==
+        b=LFuf3gATLqzCmq/pd2GOnpT+kehCV+3vYuS6Hd5zpWQavn3wNZXfinWxw6jO5oglHu
+         Jj7lxSdPlb62StDs8UouqUD3hZwcvZR83F2ZzEej+RPjWLsaxSMk/EAtzImH9Smb/f14
+         H2FXILaM+A0Wqwg0MdSX325Vrlsg6tNs2586QftVieoK+hP3c17Npu/I1RCNIdHSUSvl
+         Qd5edafSliMB0IJ2nwlEO4izjF3toXcjuf31hNHoe1q2LeD9daaeml63F0p3CydKG59c
+         w17d0KyAZe08ElkTusegBh3pOqdN1TJx2F/mK2fOr7fVEbbIyBJf6140BIWbVGzB9etT
+         /Jug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=eLVLL9M2oQYDgCcBry/9dTMxw+UIHC0NKJvRwPrU6to=;
-        b=vEo+Wj4mMo9NxfdqLGGhQFeUWu12+SPo16PuvIDsG0ikLdXFnJBMadBOwJCeiOmHnN
-         kK6rlhdxVtOgyuOKmahPQ9CuHIkUkhgdeoxuq+aCT8SenBMh2fyPIn6+Zra/EFMbaM65
-         ClDN18jcekCuHDn0GGEtA7y0STBfmqOhJT7bii3maaWj+C5+PTIY3rNvDY7CSZaOJpoj
-         J6toAd/ho4NeToJ2+QWojrlsbxt118T7St4JjyynSLCc63dXvkWVbFqZv0qTOfBXkMub
-         KHhBkBhY+EqTbyylzo8oOfEAdmjUNLfs13lXZqpzov/jX31rVPo9zuWffrmeQZc/GUDc
-         VioA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=ljkx3Sk+PuKQh894TE6s3OWIcTFdCRznhcTtnDj5nmI=;
+        b=m5W5ZT+ktW4o8GRNTYOqczYZNcBwSgbc3kJg1VquZxr79BccO5DIlrIMtZew87CuEb
+         3SFHSsCsH+pUCmZnO1bKnRDVlDMML/4EcpZznX3mcNsg6+BGc7uPyeprIgBNP3AjzQHI
+         2JFB5eLN8f+pNj3lmihC31427j5wcufzq39ufGu56xshZmk8latWeLNIuIORxrF1SnFx
+         cFU7U3DTD5/wr72NiBdNRUWY6Ln1dz9nxoiAxA5ACdyTwWgeFvMsu6zbxAJepywzVKvV
+         Wj2uaR4zufJzNDtzIdJuNhPu4+6AdpMrYUwGJV8pS62jkWxTuZv9M1F0GOvgLqxle/8Y
+         bsug==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=m/HyOQnd;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <srishtishar@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id t77si617006pfi.13.2017.09.09.22.35.42
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 200si467849wmj.0.2017.09.09.10.14.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 09 Sep 2017 22:35:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Sat, 09 Sep 2017 10:14:40 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=m/HyOQnd;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id j16so62918pga.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 09 Sep 2017 22:35:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=eLVLL9M2oQYDgCcBry/9dTMxw+UIHC0NKJvRwPrU6to=;
-        b=m/HyOQnddTWbqisZs94LT5nKXmv1UF3d5MlTN9/auUiaLm8z55yLKMOTs8yT3NTOwm
-         DcqqVL/raPPc6oHDa+ygchLTEmeFXVQf5Qhs9cP6JRB8SEhgCP13ptoWdhGfaPemSer7
-         Qj6bO+jWwFIuZm/f61K5G0U0lCbN2JWJYsytz1WBz2hoDwGJI1D37Rac9NLj18hNddcz
-         iW4YI8Rlpj4OeYJraZWaDFsoavAtfd+E7eY7llhwFRRK2BjAvuFvlI40y8XWQXuy18lf
-         4OD6x9l+v3QqnWsNWTIDL2vuQmWmR/Sow4sv4qogkDLu00+klo/XXw8Lbu65xYyOf8G3
-         CJEA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=eLVLL9M2oQYDgCcBry/9dTMxw+UIHC0NKJvRwPrU6to=;
-        b=RtJWquPWD3sM+v/9sGcHZ1FOf6dcPTLbIdvKlSHEtvfPMGlQ3Isx/Mf0z1yWS6cViV
-         c1biVM//3U+y+IFUUpMK70lQIFjyi4gkgSpu+6MThMXR+0fuW52buFoS6pXcE23R48O0
-         Q29fDHO/efg6g3IdVss6usDo7wd+OUXGESEtkfAxNwL6yoHCG4cFAMM/0TRBzTCJBvjy
-         pILZ9wCW6bh8u2SxYf+ntPvbtvtRl84guPPw3YJ7C2p6n6/OWWePFez4174Mm+o45ZDg
-         DqwYokTgYySbfK3/re2O/IxbMr0I6UmHSRoKNG4JAQ6sLRV0WubDVB6QJPEz8qnlhW6B
-         IWUw==
-X-Gm-Message-State: AHPjjUgtGzS5xgpIGtTMYKlASptbjj6nFlBMxasFT6LWhe6KSawuJMkX
-	rNCJVLjee5zkz4gp
-X-Google-Smtp-Source: ADKCNb76dH0iX/in7iaB8eOiBqVyRazTqQo/+JRWFH8hxsSOL3vyRf3oYDUJyOPhSTKbdSL8WnGBPA==
-X-Received: by 10.98.100.69 with SMTP id y66mr6153644pfb.337.1505021742603;
-        Sat, 09 Sep 2017 22:35:42 -0700 (PDT)
-Return-Path: <srishtishar@gmail.com>
-Received: from srishti-PRODiiGY-945G ([122.170.207.153])
-        by smtp.gmail.com with ESMTPSA id r3sm8602138pgf.48.2017.09.09.22.35.41
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 09 Sep 2017 22:35:42 -0700 (PDT)
-From: Srishti Sharma <srishtishar@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: gilad@benyossef.com,
-	linux-crypto@vger.kernel.org,
-	driverdev-devel@linuxdriverproject.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Srishti Sharma <srishtishar@gmail.com>
-Subject: [PATCH v2] Staging: ccree: Merge assignment with return
-Date: Sun, 10 Sep 2017 11:05:37 +0530
-Message-Id: <1505021737-4674-1-git-send-email-srishtishar@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,367,1500933600"; 
+   d="scan'208";a="236892910"
+Received: from 85-171-60-79.rev.numericable.fr (HELO [192.168.0.15]) ([85.171.60.79])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 09 Sep 2017 19:14:40 +0200
+Date: Sat, 9 Sep 2017 19:14:39 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Srishti Sharma <srishtishar@gmail.com>
+cc: gilad@benyossef.com, gregkh@linuxfoundation.org, 
+    linux-crypto@vger.kernel.org, driverdev-devel@linuxdriverproject.org, 
+    devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v4] Staging: ccree: Merge assignment
+ with return
+In-Reply-To: <1504943331-4636-1-git-send-email-srishtishar@gmail.com>
+Message-ID: <alpine.DEB.2.20.1709091914250.2149@hadrien>
+References: <1504943331-4636-1-git-send-email-srishtishar@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Merge the assignment and return statements to return the value
-directly. Done using the following semantic patch by
-coccinelle.
 
-@@
-local idexpression ret;
-expression e;
-@@
 
--ret =
-+return
-     e;
--return ret;
+On Sat, 9 Sep 2017, Srishti Sharma wrote:
 
-Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
----
-Changes in v2:
- -Correct coding style problems
+> Merge the assignment and the return statements to return the value
+> directly. Done using coccinelle.
+>
+> @@
+> local idexpression ret;
+> expression e;
+> @@
+>
+> -ret =
+> +return
+>      e;
+> -return ret;
+>
+> Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
 
- drivers/staging/ccree/ssi_sysfs.c | 9 +++------
- 1 file changed, 3 insertions(+), 6 deletions(-)
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 
-diff --git a/drivers/staging/ccree/ssi_sysfs.c b/drivers/staging/ccree/ssi_sysfs.c
-index 0655658..ed662cb 100644
---- a/drivers/staging/ccree/ssi_sysfs.c
-+++ b/drivers/staging/ccree/ssi_sysfs.c
-@@ -412,8 +412,6 @@ static void sys_free_dir(struct sys_dir *sys_dir)
-
- int ssi_sysfs_init(struct kobject *sys_dev_obj, struct ssi_drvdata *drvdata)
- {
--	int retval;
--
- #if defined CC_CYCLE_COUNT
- 	/* Init. statistics */
- 	init_db(stat_host_db);
-@@ -423,10 +421,9 @@ int ssi_sysfs_init(struct kobject *sys_dev_obj, struct ssi_drvdata *drvdata)
- 	SSI_LOG_ERR("setup sysfs under %s\n", sys_dev_obj->name);
-
- 	/* Initialize top directory */
--	retval = sys_init_dir(&sys_top_dir, drvdata, sys_dev_obj, "cc_info",
--			      ssi_sys_top_level_attrs,
--			      ARRAY_SIZE(ssi_sys_top_level_attrs));
--	return retval;
-+	return sys_init_dir(&sys_top_dir, drvdata, sys_dev_obj, "cc_info",
-+			    ssi_sys_top_level_attrs,
-+			    ARRAY_SIZE(ssi_sys_top_level_attrs));
- }
-
- void ssi_sysfs_fini(void)
---
-2.7.4
-
+> ---
+> Changes in v4:
+>  -Edit commit message so that it respects 80 character limit
+>  -Remove unneeded blank lines
+>  -Remove declarations of variables that are not used
+>
+>  drivers/staging/ccree/ssi_aead.c | 15 +++------------
+>  1 file changed, 3 insertions(+), 12 deletions(-)
+>
+> diff --git a/drivers/staging/ccree/ssi_aead.c b/drivers/staging/ccree/ssi_aead.c
+> index 5abe6b2..84fcb75 100644
+> --- a/drivers/staging/ccree/ssi_aead.c
+> +++ b/drivers/staging/ccree/ssi_aead.c
+> @@ -651,7 +651,6 @@ ssi_aead_setkey(struct crypto_aead *tfm, const u8 *key, unsigned int keylen)
+>  static int ssi_rfc4309_ccm_setkey(struct crypto_aead *tfm, const u8 *key, unsigned int keylen)
+>  {
+>  	struct ssi_aead_ctx *ctx = crypto_aead_ctx(tfm);
+> -	int rc = 0;
+>
+>  	if (keylen < 3)
+>  		return -EINVAL;
+> @@ -659,9 +658,7 @@ static int ssi_rfc4309_ccm_setkey(struct crypto_aead *tfm, const u8 *key, unsign
+>  	keylen -= 3;
+>  	memcpy(ctx->ctr_nonce, key + keylen, 3);
+>
+> -	rc = ssi_aead_setkey(tfm, key, keylen);
+> -
+> -	return rc;
+> +	return ssi_aead_setkey(tfm, key, keylen);
+>  }
+>  #endif /*SSI_CC_HAS_AES_CCM*/
+>
+> @@ -2214,7 +2211,6 @@ static int ssi_rfc4309_ccm_decrypt(struct aead_request *req)
+>  static int ssi_rfc4106_gcm_setkey(struct crypto_aead *tfm, const u8 *key, unsigned int keylen)
+>  {
+>  	struct ssi_aead_ctx *ctx = crypto_aead_ctx(tfm);
+> -	int rc = 0;
+>
+>  	SSI_LOG_DEBUG("%s()  keylen %d, key %p\n", __func__, keylen, key);
+>
+> @@ -2224,15 +2220,12 @@ static int ssi_rfc4106_gcm_setkey(struct crypto_aead *tfm, const u8 *key, unsign
+>  	keylen -= 4;
+>  	memcpy(ctx->ctr_nonce, key + keylen, 4);
+>
+> -	rc = ssi_aead_setkey(tfm, key, keylen);
+> -
+> -	return rc;
+> +	return ssi_aead_setkey(tfm, key, keylen);
+>  }
+>
+>  static int ssi_rfc4543_gcm_setkey(struct crypto_aead *tfm, const u8 *key, unsigned int keylen)
+>  {
+>  	struct ssi_aead_ctx *ctx = crypto_aead_ctx(tfm);
+> -	int rc = 0;
+>
+>  	SSI_LOG_DEBUG("%s()  keylen %d, key %p\n", __func__, keylen, key);
+>
+> @@ -2242,9 +2235,7 @@ static int ssi_rfc4543_gcm_setkey(struct crypto_aead *tfm, const u8 *key, unsign
+>  	keylen -= 4;
+>  	memcpy(ctx->ctr_nonce, key + keylen, 4);
+>
+> -	rc = ssi_aead_setkey(tfm, key, keylen);
+> -
+> -	return rc;
+> +	return ssi_aead_setkey(tfm, key, keylen);
+>  }
+>
+>  static int ssi_gcm_setauthsize(struct crypto_aead *authenc,
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1504943331-4636-1-git-send-email-srishtishar%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
