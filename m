@@ -1,85 +1,117 @@
 X-GM-THRID: 6463670591377375232
-X-Received: by 10.46.0.222 with SMTP id e91mr370091lji.21.1504941296361;
-        Sat, 09 Sep 2017 00:14:56 -0700 (PDT)
+X-Received: by 10.202.82.150 with SMTP id g144mr2852320oib.1.1504940584964;
+        Sat, 09 Sep 2017 00:03:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.130.138 with SMTP id e132ls327136wmd.22.canary-gmail; Sat,
- 09 Sep 2017 00:14:55 -0700 (PDT)
-X-Google-Smtp-Source: ADKCNb4wGH2oYpWOsbS24hQmLby7awaZFybin64RoESy8i0XYNOvTn2g4gk5zEs4gYslakU2Sg0F
-X-Received: by 10.223.136.141 with SMTP id f13mr302574wrf.0.1504941295524;
-        Sat, 09 Sep 2017 00:14:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504941295; cv=none;
+Received: by 10.107.82.10 with SMTP id g10ls1333796iob.18.gmail; Sat, 09 Sep
+ 2017 00:03:04 -0700 (PDT)
+X-Received: by 10.31.47.198 with SMTP id v189mr1835614vkv.107.1504940584041;
+        Sat, 09 Sep 2017 00:03:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504940583; cv=none;
         d=google.com; s=arc-20160816;
-        b=PldlOvPsFGwX8p4Mf8TmE+wMt9FBfsDC2fkLR2BQNp/xKeiqT5rTErqcErSSLx2EkC
-         qGoeH2r0Ef85LGL386vUEDzoydAktF6GT5UKXOi84OM1cac1FXv1649KN2t2jtMbdb46
-         BChrQqzZDTMFEVPBr6/KvjLvAOlyZ6BawriEAxdP923ikIes7gJQHwBiFy7o8A5SsVLU
-         halx+EIiLU0imt9bAPsOT7zBpT+1SR7WZu3Ca8wsC+ctTbi1ZILrtBWZ1IzMLAAz1yBU
-         6JOeEZ9iuE/jdbjmEXzwwITbbp4+KHcvye5uJLl0tau8PVjcSg7BB7VL8QkxlOKvcnHv
-         NeTw==
+        b=gb5xDtRxRol7nVgf3ayQhJnU73UZLi7qJKR7NTX/Itiyj2AcfJflAq7cMFZdHQKNzR
+         r3GJiC+IDHBjRoZsMd9PPXEakOes6aL1xtXioD31VD97qQdxUHcYS7aqZpjbFARBnduN
+         jPhG29EJC2ZzMoJ9XPV2fu3u2LiWsNY02MGWW7l130Wbf1029DZN5D0V4vchRlAibdUj
+         gTweCP52It+dwn2Xe2uuuO5twElka/wpgVHJh4dC+XK3wJ+wOVmXGze3G9Yis5l2hM7d
+         +vjoihS177e0h/3tTx0dm4qwNjzko3LpBe3k2ueTJhirJUaepzZEiSuomZmM2QKda8Jr
+         l4rQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=YUvAwuzWtGKXk1XZiToEcuMdXW14endbqhShz0QW+Rg=;
-        b=ZWgRxOsHmkpTlm7RSuEmA/Vj2QwXUEXLVNl27VNEipv31RVaMwgCQ0wTVW9NQkVVDg
-         Pj0ong12b6Qb1ud36vDVsfXXXUNixD4nTyPwNzj97gvmbT0CWIYF012uYR3AxcFbtlU7
-         qIz9hqE9w/Hxit0sqEigsfpOSh/zJG9FV2hEBrwKCW+F9tSdp2lEXdxUnlH6KF4u1kRC
-         JDHlpg3vDsdhS/FhBgz1Mnj5sKd1RQDGmSwkGVKgWbqo2OU/flj6NcNk8MaXyVWANlhc
-         aXNqJQeOeIhUejcahr78TfaP3geETX2yqXuuU5mXj724Fl1hl7Ohq/LImsAXwC2D9o/G
-         +7Pw==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=Nc0d/gNAeJ+5LxbbknNm4MbL/ZFkF8GIj8g7aXjNpMM=;
+        b=lW2ItrkSK5joh+38ber4ZVtRdW0vR7Dy+FZ/8d51K11EKUULtcTfR/iR4LCL8Uq2ed
+         jqtp1CYbOpkm3QPazYjNYLwrs5NouX2Bb7S2tyFzsXRw+aJCM7GSWEQJ5sZDF5gPURs9
+         671DeiGojpbxID1iZY5SXyeDTsS4l6lvn4N1qyAOT2tgYZxQe/nFHtq29mQ5wwBlNbwR
+         YBGzK6p5FMOCpY39ptJGHxbWv3IfLGvcOfPe4q/Tk7y/hnLM+Dwc5nJWOwYRXBenaIMN
+         /45mQEkdSto8IQRrK22bCykTO9wRekK5ePf8OdBxVgNyunuUuNbFQ9kBERn/6wt4CpC7
+         ltng==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id a21si162714wme.2.2017.09.09.00.14.55
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LtYEhGhy;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <harshasharmaiitr@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id j20si433755pfa.18.2017.09.09.00.03.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 09 Sep 2017 00:14:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Sat, 09 Sep 2017 00:03:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (LFbn-1-12253-150.w90-92.abo.wanadoo.fr [90.92.67.150])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id CA62C7A8;
-	Sat,  9 Sep 2017 07:14:53 +0000 (UTC)
-Date: Sat, 9 Sep 2017 09:14:51 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Harsha Sharma <harshasharmaiitr@gmail.com>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] staging: unisys: visorbus: Declared char * array as
- static const
-Message-ID: <20170909071451.GA27010@kroah.com>
-References: <1504940442-27511-1-git-send-email-harshasharmaiitr@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1504940442-27511-1-git-send-email-harshasharmaiitr@gmail.com>
-User-Agent: Mutt/1.9.0 (2017-09-02)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LtYEhGhy;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x242.google.com with SMTP id q76so2461776pfq.5
+        for <outreachy-kernel@googlegroups.com>; Sat, 09 Sep 2017 00:03:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=Nc0d/gNAeJ+5LxbbknNm4MbL/ZFkF8GIj8g7aXjNpMM=;
+        b=LtYEhGhyN1DwcnTuazacadpSMwCOk/K7j/tiBfvA1//+7jgd2xcsjqx/uAMvLfDVf4
+         LrE9JNcuG9S8DsO7A41cBqSEGrA+CnFbh5Y6bQRm0Qr43NcBlSHMBOfqFskT0an4PtKI
+         s7Q5Ug8a9JZZeUVon3Sicqn5VM9wN6YhJ41r439QD0SmQDNVy4BdeUCQtxmb0H3Ms0OR
+         51ZgNgjW0mAd8DlWbi7UQ3buT1+MPBCIp71+sf/wDe6j1oXXqTcGdks1LBqHNUy3SEGR
+         tutAIEpiXRoCwEkSBySE0jHO0X5SFcR06Mlzqi2eb5XAfaDzM+OvIwomDXmPk3UPOPWk
+         xGsg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=Nc0d/gNAeJ+5LxbbknNm4MbL/ZFkF8GIj8g7aXjNpMM=;
+        b=arr5OQTHdV7yD0IOc6eezWn5jxMvOEwY9yooy9vrFDpX43v+w0yxbevNwm/E0w3gxl
+         Mq8tSPfDb/C7IdEZt3WxnMixlb3lc4QoeCHJE4I5DZIoX0ICG2Z+q0Zuuccdob1EGeaA
+         I3cTc2JbBXYUuM7Q7Ptc6Y/4g9gYXk3YTJ1pm97Q9z7T689z4wqlUN9aENrB/naDlMSV
+         M8A6H0vuMBZQTuN3IPGrc0gvX33AJJc76Ec+eTpKgOoniaXGnccNEnTAfoSQhf9ilNVp
+         ADVcDpkthaAnLmtA08vwuDB0RNeEIPLI4FhRev8YGrLbqN1pW8qcImvHkEF46uvFaKKh
+         ARaw==
+X-Gm-Message-State: AHPjjUg1HF94Oiz9n1e3d0sFY8AdNAf59U5peT+WHPVFu3uLS1y8tYle
+	zZtH4qSvHYkIYA==
+X-Google-Smtp-Source: ADKCNb6tVHnI0NSckED0FOCCQ4WK321wuQUPuc/PM/dnLkmEmX/6qaz7LrdKsMt/3Pahd9HE9QGRoA==
+X-Received: by 10.98.79.23 with SMTP id d23mr5621908pfb.105.1504940583798;
+        Sat, 09 Sep 2017 00:03:03 -0700 (PDT)
+Return-Path: <harshasharmaiitr@gmail.com>
+Received: from harryPotter.iitr.ernet.in ([103.37.201.122])
+        by smtp.gmail.com with ESMTPSA id f70sm6976663pfd.74.2017.09.09.00.03.01
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 09 Sep 2017 00:03:03 -0700 (PDT)
+From: Harsha Sharma <harshasharmaiitr@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com,
+	Harsha Sharma <harshasharmaiitr@gmail.com>
+Subject: [PATCH] staging: unisys: visorbus: Declared char * array as static const
+Date: Sat,  9 Sep 2017 12:30:42 +0530
+Message-Id: <1504940442-27511-1-git-send-email-harshasharmaiitr@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
-On Sat, Sep 09, 2017 at 12:30:42PM +0530, Harsha Sharma wrote:
-> State explicitly that individual entries in array will not change.
-> 
-> Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
-> ---
->  drivers/staging/unisys/visorbus/visorchipset.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/unisys/visorbus/visorchipset.c b/drivers/staging/unisys/visorbus/visorchipset.c
-> index 6d4498f..6f2a010 100644
-> --- a/drivers/staging/unisys/visorbus/visorchipset.c
-> +++ b/drivers/staging/unisys/visorbus/visorchipset.c
-> @@ -1162,7 +1162,7 @@ static ssize_t deviceenabled_store(struct device *dev,
->  	struct controlvm_message_packet *cmd = &req->msg.cmd;
->  	char env_cmd[40], env_id[40], env_state[40], env_bus[40], env_dev[40],
->  	    env_func[40];
-> -	char *envp[] = {
-> +	static const char * const envp[] = {
+State explicitly that individual entries in array will not change.
 
-Are you _sure_ about this?  Why make it static?  That seems a bit "odd",
-don't you think?  You need a lot more changelog text to get everyone to
-agree that this is ok to do...
+Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
+---
+ drivers/staging/unisys/visorbus/visorchipset.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Also, you forgot to cc: the actual maintainers of this code...
+diff --git a/drivers/staging/unisys/visorbus/visorchipset.c b/drivers/staging/unisys/visorbus/visorchipset.c
+index 6d4498f..6f2a010 100644
+--- a/drivers/staging/unisys/visorbus/visorchipset.c
++++ b/drivers/staging/unisys/visorbus/visorchipset.c
+@@ -1162,7 +1162,7 @@ static ssize_t deviceenabled_store(struct device *dev,
+ 	struct controlvm_message_packet *cmd = &req->msg.cmd;
+ 	char env_cmd[40], env_id[40], env_state[40], env_bus[40], env_dev[40],
+ 	    env_func[40];
+-	char *envp[] = {
++	static const char * const envp[] = {
+ 		env_cmd, env_id, env_state, env_bus, env_dev, env_func, NULL
+ 	};
+ 
+@@ -1263,7 +1263,7 @@ static ssize_t deviceenabled_store(struct device *dev,
+ chipset_selftest_uevent(struct controlvm_message_header *msg_hdr)
+ {
+ 	char env_selftest[20];
+-	char *envp[] = { env_selftest, NULL };
++	static const char * const envp[] = { env_selftest, NULL };
+ 	int res;
+ 
+ 	sprintf(env_selftest, "SPARSP_SELFTEST=%d", 1);
+-- 
+1.9.1
 
-thanks,
-
-greg k-h
 
