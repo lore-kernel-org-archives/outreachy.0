@@ -1,130 +1,133 @@
 X-GM-THRID: 6463500175393423360
-X-Received: by 10.223.160.199 with SMTP id n7mr331467wrn.15.1504976386353;
-        Sat, 09 Sep 2017 09:59:46 -0700 (PDT)
+X-Received: by 10.36.117.71 with SMTP id y68mr3201229itc.26.1504953868420;
+        Sat, 09 Sep 2017 03:44:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.175.78 with SMTP id y75ls469551wme.15.gmail; Sat, 09 Sep
- 2017 09:59:45 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QBOgIO7FcNojs/jAtRS+eD0MaGgQbapPX1P/Xt9YPM75OrfZF10QNUqmgZepsjCdrpfj+Uw
-X-Received: by 10.28.35.142 with SMTP id j136mr475477wmj.1.1504976385628;
-        Sat, 09 Sep 2017 09:59:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504976385; cv=none;
+Received: by 10.107.51.138 with SMTP id z132ls1479057ioz.52.gmail; Sat, 09 Sep
+ 2017 03:44:27 -0700 (PDT)
+X-Received: by 10.13.254.68 with SMTP id o65mr3447018ywf.86.1504953867721;
+        Sat, 09 Sep 2017 03:44:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1504953867; cv=none;
         d=google.com; s=arc-20160816;
-        b=ajNW/8ULBGh6zFnInPasIMrjxXa/LzqTfanbtTiQuZIPMWOh6BAi2QQThOc9iJuP77
-         Os9+n7ca4DqFGECTMF6PWRy/zmlqSddYJJ3hMIuMlIXjVwD4UJxfGkXLIyOyfztDBcOq
-         3FpjziuJBijJrdRUkSPEvxBu4HYqW9Ox9UkSz7J5FYMgXktf1blEOEEUc37Ioy+do2HX
-         KOa4KKixmZghhU/nIrf+j6mundVS7/cnCzE8X3MI1qzSE1ZmsJAenpcPlfKTyE/DDwz1
-         jGkJP+FlCJYErKt0qsiSuw3zhJ0Za3eYGoL9F8smCoSULsDDut1Q83pdBZWxG5T1RaBr
-         2O/g==
+        b=tgUhjwdj5AcGTCslxHB/0CXATxClPJgII02b/fasK0JwFd0GxTihRYZIlupyr/SL/G
+         C69mjRDy9qb2JiQsd5ASaixZs/XJdCXIdmtjBdk2eQHlGvAu1QVfjUwC4hPmG3wBWlcs
+         XKRpL5RLl2FOnk0/P/MzR0jNKVQNZXnK4qhFNd4INz0vF7decMSkVrt5kROKIV+UgIAF
+         R6zr2+zO5X52cpaFdFs3bE+Jq6OwfZKuZGZc0xnJpJNUaUBSJagghIfMbw3FKGZW2yee
+         8/2hVr8foaTZoFbLIqjqDWpsYL+kysbiw3Cc9k/yG7xlOrWSDlDNx421ZYic9YiC5Crx
+         ge/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=ghD+dwvxzBIGeKMI8pJIyMtiZIQ1wEpxu32WD9cV6+o=;
-        b=SituUZ98xiVA2jFFkhd8tsFPzogvA16EbuEsdtpGxyjwfY1yiheV+F64s0YLFHA6uq
-         tYvdvlavRidlq+8J1lEp4NK8FdnEbv2YkXBXx1kD54cJll6DvSzJ8qK4rrQuZqaTimsw
-         JSdVAkaNAQ0dmWuPKH6p7nNCCxWGSkiwIAVUBgPA0EKiOkI0zxTwrlWT4AjerUoqrWHe
-         0eWCDbwqXlFB8GNp/AUxDsT+y3mBtnwQlHXlUZilcTamlJOqOrUL02PIDPAGYD+97zJp
-         jF+OCmDzPjcpsiVbvOoJ3SKNAyP0cZJUKXf/qniYYbsoXSzD5C2hpVGtFXofezZDHpZV
-         GBqg==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=K3a4mMvg4VdbK41UsUa9D1dKn38+H3GSza3yUBkL1BE=;
+        b=re+q//rP5L3XeKmpG+wcV5Wc0Uk6tFPJ2DyEBHdvGmX/5s6SnUlJ9t4arDohAoJYnk
+         sJpcrm2kGEq/IQZFBC7cosObUp8sk5iwZoH+Or1nYBhWISpGo0m2ODRme2bTFkoWycv+
+         WosRwVOblpqoga8ez+PIPCTul9Cjq/vpPNDGzCfCWdnOf1M8j4E9saGkssvARpOO8hFU
+         xZbg7JgmXrVzMLD+vASEOEWKF4aehK88txrgOtLnXT+9XkdSBJvhiBJEFN2lEsLb2A1r
+         lBRA1AWAe8HzDaoe1cARsijQnqF/+GNROM3Jnd2m7rugg5aAwAohA3VaHSHu3002bOV2
+         NWdA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id o7si160556wme.1.2017.09.09.09.59.45
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=d8JVlZ85;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <srishtishar@gmail.com>
+Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
+        by gmr-mx.google.com with ESMTPS id a17si473526pfk.15.2017.09.09.03.44.27
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 09 Sep 2017 09:59:45 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sat, 09 Sep 2017 03:44:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.42,367,1500933600"; 
-   d="scan'208";a="290298371"
-Received: from 85-171-60-79.rev.numericable.fr (HELO [192.168.0.15]) ([85.171.60.79])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 09 Sep 2017 18:59:45 +0200
-Date: Sat, 9 Sep 2017 18:59:44 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Srishti Sharma <srishtishar@gmail.com>
-cc: gilad@benyossef.com, gregkh@linuxfoundation.org, 
-    linux-crypto@vger.kernel.org, driverdev-devel@linuxdriverproject.org, 
-    devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
-    outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: ccree: Merge assignment with
- return
-In-Reply-To: <1504953861-3221-1-git-send-email-srishtishar@gmail.com>
-Message-ID: <alpine.DEB.2.20.1709091858060.2149@hadrien>
-References: <1504953861-3221-1-git-send-email-srishtishar@gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=d8JVlZ85;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x242.google.com with SMTP id v5so2429068pgn.4
+        for <outreachy-kernel@googlegroups.com>; Sat, 09 Sep 2017 03:44:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=K3a4mMvg4VdbK41UsUa9D1dKn38+H3GSza3yUBkL1BE=;
+        b=d8JVlZ85Fynj1IdPKdL5K9RU0kTr8WZXpnWkoZLTe1Bx+5gE4T0jBLHvcZ5i52vp0M
+         6Woa/VIusEurz0Qu9DKP5KGq7gPglMBN0Rx8pbqvy+rkZEmdiPM3LZ5DeA/Is9x1i22z
+         RS0vySVghKCU51wp+CHAoTiQ5HJwdcXUDPGwQ/oJ9XyyrSArBmpeRNJdGLNwfan2rny0
+         UAEXMBiwG2arFi/V9Jlrafh9wcbx/4jBZ3qI4fBMz8/qFANNsZlcV1RtmtINw3AIWYvg
+         OZpdEidhpRiw9t/mogkyR4rvCxzLDaHMdwM+4dPuhuvnVwEObXZGP6ZwuNjEBedYDvcZ
+         cIjQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=K3a4mMvg4VdbK41UsUa9D1dKn38+H3GSza3yUBkL1BE=;
+        b=pI6mBVvs0rgHBN9ZSAYYMy8oTFGiValX1NLvlv0kfSXMR/moHXGID6Ws4QIEnUgNt7
+         oDDHjYioN2zVOHH0xVo2hTyB73wdYl2jPxYif82DZ1406t7jMMsnJmA7EiSeO2PpBjX1
+         iA0OcHcPn6vlUiOEgHE5kEbDSLFrTycUkRuQWr4qI9Ps9FliRSKgNLWfdUds/6NV1Tm+
+         YtJdgBlG/MLFIjjk9aKONHQ8nW1hGu1Mw1fqHt4rRAbtSZgV3f9MGhGW6W55Q/pNHGXW
+         lgowwwTHBEaFIeWqg10eOxIQTDLrj0CpspnLC0mMzXWmYbH3NAVMF+9ScYvZRAboLveL
+         Yo7Q==
+X-Gm-Message-State: AHPjjUgzXnv1Jhq2kDpOyTG9YMFKmYWUqUT/QuWm3R3VTicsDW2SP1P7
+	5xdeEEDJKU/M+Q==
+X-Google-Smtp-Source: ADKCNb7gdEYIc1ItctazjUA44t4nrHPyuPxqAD6zCkQk1Xj9quYdBPgfSnlcZ69PUJHobdagxN9S1w==
+X-Received: by 10.84.234.136 with SMTP id n8mr6650117plk.328.1504953867486;
+        Sat, 09 Sep 2017 03:44:27 -0700 (PDT)
+Return-Path: <srishtishar@gmail.com>
+Received: from srishti-PRODiiGY-945G ([171.61.9.172])
+        by smtp.gmail.com with ESMTPSA id o67sm7518601pfa.89.2017.09.09.03.44.26
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 09 Sep 2017 03:44:26 -0700 (PDT)
+From: Srishti Sharma <srishtishar@gmail.com>
+To: gilad@benyossef.com
+Cc: gregkh@linuxfoundation.org,
+	linux-crypto@vger.kernel.org,
+	driverdev-devel@linuxdriverproject.org,
+	devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com,
+	Srishti Sharma <srishtishar@gmail.com>
+Subject: [PATCH] Staging: ccree: Merge assignment with return
+Date: Sat,  9 Sep 2017 16:14:21 +0530
+Message-Id: <1504953861-3221-1-git-send-email-srishtishar@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
+Merge the assignment and return statements to return the value
+directly. Done using coccinelle.
 
+@@
+local idexpression ret;
+expression e;
+@@
 
-On Sat, 9 Sep 2017, Srishti Sharma wrote:
+-ret =
++return
+     e;
+-return ret;
 
-> Merge the assignment and return statements to return the value
-> directly. Done using coccinelle.
+Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+---
+ drivers/staging/ccree/ssi_sysfs.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-Coccinelle is not always perfect about pretty printing, so you have to
-watch out for it.
+diff --git a/drivers/staging/ccree/ssi_sysfs.c b/drivers/staging/ccree/ssi_sysfs.c
+index 0655658..9fa7be0 100644
+--- a/drivers/staging/ccree/ssi_sysfs.c
++++ b/drivers/staging/ccree/ssi_sysfs.c
+@@ -412,7 +412,6 @@ static void sys_free_dir(struct sys_dir *sys_dir)
 
->
-> @@
-> local idexpression ret;
-> expression e;
-> @@
->
-> -ret =
-> +return
->      e;
-> -return ret;
->
-> Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
-> ---
->  drivers/staging/ccree/ssi_sysfs.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
->
-> diff --git a/drivers/staging/ccree/ssi_sysfs.c b/drivers/staging/ccree/ssi_sysfs.c
-> index 0655658..9fa7be0 100644
-> --- a/drivers/staging/ccree/ssi_sysfs.c
-> +++ b/drivers/staging/ccree/ssi_sysfs.c
-> @@ -412,7 +412,6 @@ static void sys_free_dir(struct sys_dir *sys_dir)
->
->  int ssi_sysfs_init(struct kobject *sys_dev_obj, struct ssi_drvdata *drvdata)
->  {
-> -	int retval;
->
+ int ssi_sysfs_init(struct kobject *sys_dev_obj, struct ssi_drvdata *drvdata)
+ {
+-	int retval;
 
-This is going to leave a single empty line at the top of the function.
-That is not needed.
+ #if defined CC_CYCLE_COUNT
+ 	/* Init. statistics */
+@@ -423,10 +422,9 @@ int ssi_sysfs_init(struct kobject *sys_dev_obj, struct ssi_drvdata *drvdata)
+ 	SSI_LOG_ERR("setup sysfs under %s\n", sys_dev_obj->name);
 
->  #if defined CC_CYCLE_COUNT
->  	/* Init. statistics */
-> @@ -423,10 +422,9 @@ int ssi_sysfs_init(struct kobject *sys_dev_obj, struct ssi_drvdata *drvdata)
->  	SSI_LOG_ERR("setup sysfs under %s\n", sys_dev_obj->name);
->
->  	/* Initialize top directory */
-> -	retval = sys_init_dir(&sys_top_dir, drvdata, sys_dev_obj, "cc_info",
-> +	return sys_init_dir(&sys_top_dir, drvdata, sys_dev_obj, "cc_info",
->  			      ssi_sys_top_level_attrs,
->  			      ARRAY_SIZE(ssi_sys_top_level_attrs));
+ 	/* Initialize top directory */
+-	retval = sys_init_dir(&sys_top_dir, drvdata, sys_dev_obj, "cc_info",
++	return sys_init_dir(&sys_top_dir, drvdata, sys_dev_obj, "cc_info",
+ 			      ssi_sys_top_level_attrs,
+ 			      ARRAY_SIZE(ssi_sys_top_level_attrs));
+-	return retval;
+ }
 
-Previously the arguments were lined up with the right side of the ( but
-now they are not.  So move the above two lines to the left by 2 spaces.
+ void ssi_sysfs_fini(void)
+--
+2.7.4
 
-julia
-
-> -	return retval;
->  }
->
->  void ssi_sysfs_fini(void)
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1504953861-3221-1-git-send-email-srishtishar%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
