@@ -1,99 +1,115 @@
 X-GM-THRID: 6464001620790214656
-X-Received: by 10.28.207.5 with SMTP id f5mr570399wmg.32.1505022165212;
-        Sat, 09 Sep 2017 22:42:45 -0700 (PDT)
+X-Received: by 10.31.50.85 with SMTP id y82mr1772088vky.125.1505017657983;
+        Sat, 09 Sep 2017 21:27:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.81.65 with SMTP id b1ls126225lje.25.gmail; Sat, 09 Sep 2017
- 22:42:44 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QAWdO2wVIEkyg1oxMC/qq37/7nh4WUi+y4coN6s4YPRBNx0Q53iOYkBHN+VJg/m9mF8tybg
-X-Received: by 10.46.32.39 with SMTP id g39mr552920ljg.17.1505022164261;
-        Sat, 09 Sep 2017 22:42:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505022164; cv=none;
+Received: by 10.107.154.71 with SMTP id c68ls2471790ioe.22.gmail; Sat, 09 Sep
+ 2017 21:27:37 -0700 (PDT)
+X-Received: by 10.129.98.132 with SMTP id w126mr5123002ywb.160.1505017657170;
+        Sat, 09 Sep 2017 21:27:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505017657; cv=none;
         d=google.com; s=arc-20160816;
-        b=LCK+aK3dXlj/qzdSrGerzoUri6NqGG2ZtoBUvC1ghmqXS7XxHrgDWQS/Zk+EEDvKu5
-         +y6sdByya7IeYZcBYzK77mgouy2P6TM1LBQUkHJDefUQSHQVEvARNbQql+fto3+OrLez
-         RkISYXUiLo8BA5F5jQKmFrhkKmF7uQTU4b3rHvrc0WRz24E7FD9YQAXVjTIojbuksEP/
-         waJBBYN0q/Woq3z91C6Zgen5io2+KXVFAtLEtC5TuyuJa08hdf3+CwZD0aDDRlr3CLoP
-         fUvJ0dfn+xaGmNygvliYT8+ryH/cZxxBhXK++XRHfZpl3iH96+1vRV397eZz+1lOe0cJ
-         lNKA==
+        b=ocgNdoYPSQ40FgnTnRWWDLcUHqixRygzJykdVbDt/ITe+M/+ZNaDozNM404eVBxlxg
+         Qt5nlZ9QyryAz/B0GnjDUP8JiHqzBx6aX9nM70RGBA95bBCHj1MO0FPVX7lY5lUGAzAA
+         TPe+K9kFRM8+sOHXSYCRA6XDz1F52nDiBNDPQuTfnWyQCiiA5RlSG1cwFiSxEUZyp3GN
+         r8SOS+M3jnz1iBJN85WQjUMF6SnEkBxcLfYyTQ4ONcgPcnOwgiy5Tch2+z/4c0WTHIiO
+         LfjLAN0FTrpGD61fnVko9bTSA/BwfFn3MIJSD4b6nsucJg8Y+TgBsADTo0KvbkWUxOBL
+         lIBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=HdL8eq24fJwoexC9Sd3iFN+9cpnjA+1BQ+J+ugjS6WU=;
-        b=Pje6vMjHx7SehLjZ6BtT54xMGsJ/WQhnX0MMfR4k11Zg6Hib7ecMch8IFfg6fCSpwq
-         vYP9TYKdgJa8lMV9HTwVSu8dMHG7a+CgHA9CqymnV17qDlG333hl41QT1VxxIwUHtf5R
-         xJuXSVjMWOWFzzdkmNkXQp2UbCIKf6u+rdkXD34PXLiqQoNbb5f+7CQVu7uxkVzqTC8G
-         BtVBHL5r9l2zVGGyj9y9xbL+NzKiPD6Yc0/5tDPRZ3EtX0lklPmtBUzrlv8Z662FEyeW
-         io+kT9QO7fYUs2vwC9JzH5Zpw5r2qLHUdwD1GjlM72/o4i7POQxnFA/U6Gkhl2LVw5Vq
-         gTxA==
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature:arc-authentication-results;
+        bh=zpfe2qBpj0zY1x9iGKCo/nM2bbdbp9sT7b4LfEqp6O4=;
+        b=0HmOQNfzxGHXvdFZga5HE2GH0lD3y+5mM5+LJRQbCk2KJnE7epE3AMCYFGxVW/YxYr
+         WG+r6xanRC5vXyBlfeRhULWaUkTGmwbta6ujTJPnSqBa/+esteatvxq9qIVi/fPMj3Lj
+         k6Q6Vlpe1/xcBe7BKBONDSF4YavrkMyr69v6n7HDMGsZxw9jKimyv7vayaS3ukaz8IXp
+         NPxO3OI4AVta/10yzRTND2Js/UUXyfye1WbUegY4lwSbCef3qNod+x9AZwoaGUcABE3G
+         YLLhXNqXciP3Hqcoo/0dWEwP5HfGjOTWCcaz2jH29TF1cnLQIdXAdtVOuc7LjBSVsni9
+         +LEA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id p200si275304wmg.4.2017.09.09.22.42.44
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HB3Foqz1;
+       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <meghana.madhyastha@gmail.com>
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id o12si566284pfg.19.2017.09.09.21.27.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 09 Sep 2017 22:42:44 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sat, 09 Sep 2017 21:27:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.42,371,1500933600"; 
-   d="scan'208";a="290331942"
-Received: from 85-171-60-79.rev.numericable.fr (HELO [192.168.0.15]) ([85.171.60.79])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 10 Sep 2017 07:42:43 +0200
-Date: Sun, 10 Sep 2017 07:42:43 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Meghana Madhyastha <meghana.madhyastha@gmail.com>
-cc: Eric Anholt <eric@anholt.net>, Stefan Wahren <stefan.wahren@i2se.com>, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-    Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, 
-    Scott Branden <sbranden@broadcom.com>, 
-    bcm-kernel-feedback-list@broadcom.com, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: vc04_services: bcm2835-camera:
- Fix spelling mistake
-In-Reply-To: <20170910042732.GA27064@meghana-HP-Pavilion-Notebook>
-Message-ID: <alpine.DEB.2.20.1709100742300.2063@hadrien>
-References: <20170910042732.GA27064@meghana-HP-Pavilion-Notebook>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HB3Foqz1;
+       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x243.google.com with SMTP id v82so3122898pgb.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 09 Sep 2017 21:27:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=zpfe2qBpj0zY1x9iGKCo/nM2bbdbp9sT7b4LfEqp6O4=;
+        b=HB3Foqz1iUDhkvXBIcnpf6dR6yRPBNgvGXOJhjR39ByCUk6yxFV8RJMT05xvXMvWJp
+         u1g9Q/e9CTOza5HV65LsdWxBmjSSF+B8zm5lIJJ59IuuyjodskxgOeUYl2w9wxySu2+q
+         YXoXnxddbYepiwWjxlpfQTLjtbr8jwm/6B0piHKaYpNElphMTnstzQGMwWfbOjrCUgl1
+         eK5HgPGZ4k1BtwbOhpkA6IjGFSuU77e5mwAT2fLCuuTQ+B+kEZL2N97z3c04izi1lYGR
+         pIaIeb85pbdrWWt5ONihw8su/QBAwRz6uAshE7jq+Ru7gu58H/4WB8u2E1y+b24lnoLo
+         Eimw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=zpfe2qBpj0zY1x9iGKCo/nM2bbdbp9sT7b4LfEqp6O4=;
+        b=en6qO/J9ykrQUHOkE0MOWp8WRKoKenTEavPxTU7PRxJ4HufM4uftKdxdwB/qo56GAm
+         4skDJXwUd3lOC6zQSG2ZoVFQQnczD7e+b7M/UX7JTW3+HvsdZnzXawcG4cR/99+k7Ih9
+         p32hKHake6xuVNtxjSm/AUSetdVJ91IzROmyfh36tdBZnfMvLL4zgKZ5BdU/eBYIfkIG
+         18c6zKM4vmO8L3W7pIRSj0zVGRfeG+5xT/eURI1UW6wUzoDTjTZ7MZJh/wm4TgRzw2kw
+         usTDSdcAELaRrGMHI9+c0KEW6ap5inz8+YqUNwW5QovqHO9vh4ssv5CLSiGoqxJpehvv
+         qXPg==
+X-Gm-Message-State: AHPjjUifh/ZCDXTsnOkdPPN5UzpFaSI/no8FHUqjt1R1h0oWhXUzpnmY
+	VXg0OAjxRzutaNkgNo8=
+X-Google-Smtp-Source: ADKCNb69+5HKD0SdqsvTiiThQk0RanOi35jgQVP7Ov54Yza+cNdkTFFngjMzEQEzYQFNa58GpXImCw==
+X-Received: by 10.98.9.84 with SMTP id e81mr7917449pfd.133.1505017656563;
+        Sat, 09 Sep 2017 21:27:36 -0700 (PDT)
+Return-Path: <meghana.madhyastha@gmail.com>
+Received: from meghana-HP-Pavilion-Notebook ([122.172.87.17])
+        by smtp.gmail.com with ESMTPSA id 77sm10085321pfz.47.2017.09.09.21.27.34
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 09 Sep 2017 21:27:35 -0700 (PDT)
+Date: Sun, 10 Sep 2017 09:57:32 +0530
+From: Meghana Madhyastha <meghana.madhyastha@gmail.com>
+To: Eric Anholt <eric@anholt.net>, Stefan Wahren <stefan.wahren@i2se.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	bcm-kernel-feedback-list@broadcom.com,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: vc04_services: bcm2835-camera: Fix spelling mistake
+Message-ID: <20170910042732.GA27064@meghana-HP-Pavilion-Notebook>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
+Fixes a spelling mistake in the comments.
+Problem found using checkpatch.
 
+Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
+---
+ drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On Sun, 10 Sep 2017, Meghana Madhyastha wrote:
+diff --git a/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.h b/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.h
+index 63db053..db39900 100644
+--- a/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.h
++++ b/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.h
+@@ -130,7 +130,7 @@ int vchiq_mmal_component_disable(
+ /* enable a mmal port
+  *
+  * enables a port and if a buffer callback provided enque buffer
+- * headers as apropriate for the port.
++ * headers as appropriate for the port.
+  */
+ int vchiq_mmal_port_enable(
+ 		struct vchiq_mmal_instance *instance,
+-- 
+2.7.4
 
-> Fixes a spelling mistake in the comments.
-> Problem found using checkpatch.
->
-> Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
-
-Acked-by: Julia Lawall <julia.lawall@lip6.fr>
-
-> ---
->  drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.h b/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.h
-> index 63db053..db39900 100644
-> --- a/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.h
-> +++ b/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.h
-> @@ -130,7 +130,7 @@ int vchiq_mmal_component_disable(
->  /* enable a mmal port
->   *
->   * enables a port and if a buffer callback provided enque buffer
-> - * headers as apropriate for the port.
-> + * headers as appropriate for the port.
->   */
->  int vchiq_mmal_port_enable(
->  		struct vchiq_mmal_instance *instance,
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170910042732.GA27064%40meghana-HP-Pavilion-Notebook.
-> For more options, visit https://groups.google.com/d/optout.
->
 
