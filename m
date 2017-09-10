@@ -1,72 +1,76 @@
 X-GM-THRID: 6463987902323884032
-X-Received: by 10.28.31.5 with SMTP id f5mr412618wmf.4.1505147335744;
-        Mon, 11 Sep 2017 09:28:55 -0700 (PDT)
+X-Received: by 10.25.229.18 with SMTP id c18mr531877lfh.1.1505021912099;
+        Sat, 09 Sep 2017 22:38:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.197.138 with SMTP id v132ls1283566wmf.25.gmail; Mon, 11 Sep
- 2017 09:28:50 -0700 (PDT)
-X-Google-Smtp-Source: ADKCNb4rFpbcUO2qDKsaMfkLm8rLdubgAZQdqdzPT6mShMfas4rhA7OIPL8E/RA/1EHGd8/Nkv99
-X-Received: by 10.28.68.135 with SMTP id r129mr956667wma.19.1505147329990;
-        Mon, 11 Sep 2017 09:28:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505147329; cv=none;
+Received: by 10.46.75.1 with SMTP id y1ls130848lja.28.gmail; Sat, 09 Sep 2017
+ 22:38:30 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QA284Oab7yVUasBJKNmPcSI9q1wCAaJ79Pkn1eBoc3r9/ZgpflrErscQnPAtBsOD5fTYGks
+X-Received: by 10.25.195.206 with SMTP id t197mr40147lff.40.1505021910735;
+        Sat, 09 Sep 2017 22:38:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505021910; cv=none;
         d=google.com; s=arc-20160816;
-        b=v4H7y9mUrfktu6MWQSB4pNnheN+zGyUwdsYudCbL1VDbpmAtWnjYEiPzf4FE3mXFBs
-         IKdiiUWnJCESQ6RfHT1VzIUchnJYYpFRwzdh/dqFvboGmbWcNu5HYfmVYXFN4t2ZAR7N
-         /6CMF5ARgxct2bk7mtGPdF0XHcSqvsTmMx+cE4JIa2lrCS8pM7A+4MeR/D/iwMo7bfod
-         YnFz0IlD2AhYIobD/amw0gLVDT5XLzZOttqFesK1Fe8+wN51o/0763cNvEZoBhUQ8QhQ
-         X4A2/iz8HzFzStwmW0pFv28xFSrwxMVW2b7pEPXPXBW7pQwYfmleQ246MqYUlJZ4AXSK
-         EvCA==
+        b=Cfq5F4UTTSyjKto8OHuPVtPvYuqmiKe3wVUIVuO6guQcbf4M+0iQ2L/q7qS53tEAri
+         5h0QbmFL574SAQa0S0e040CEu+XK0orVwoR66UWRQMAA12cr0s795bqbTnLRneoPth2X
+         /jTbvlftqeq6OMs641hmdD4jPvqPaL1vm59T54geTvXDK0keGAORJ5u5RJpEkM2bAL+Z
+         j4Dg8/JuRjVWJwbFvVVT0rPWqtYY5jbNA/g3TwcVxYk6Tr3cqPp2Wth4yDihITpmoLAs
+         x3gSRbMAGaV727TGqLRWaJbOj/ef09qGVUmSt1C9jspFRH4KtyoE1iKzfFWDPMPvqUSJ
+         tprg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=B4KbT9fVCFfZQp6G1uR5sGBlzXGgAfbaiVA3S6D4if0=;
-        b=lNS5u5JitHVictf+cu9JtNmbiCcn7GkLkhoZQzzb39Mb7vRUfNbjMC5PZO/tcqUATU
-         eAPZ7eBxuUKKpSA47/LoqswU0wD8KNIH16SiS3eMLFA8AbdvT12y7m7RFCDSA16tKRpz
-         hmlJscx430OK7Chd7UUWd36wNL7is9dWAZpYth9C78BCN2EEOS+jOgblIa/E8YzQ2frh
-         F74d1uWjK0/C3djp5ymBa1xdn5UKo4sm7RfFk6r9HvXoWEgSbfCtRgXU9AS+6Jxv9MeJ
-         Jp5g9Y3xqUWqPaafvsp3DVfoJ3tQnLJhhAOXwQOlTh/X13sytXjxIgmbR4gKmaRzj4fL
-         ivvw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=KpeDeimygscUatRVDNeKC9P9+I+22ceHBFpPQNI6dnM=;
+        b=NTCesD8Z48y/Wi/ceVIuRDU7Jrkew0HpPYUsirge78uz6+gUgaFKdVJdvQPLl+OjL5
+         PMKAMNDmK2+4VSi6mdsFlk6ks+PtRd5n6twXLFz5g4JToj2BXDgP9fdzY8Cyyy3yRiLH
+         u1AoJevy9pAF6fm+LaMei1Ts4dOo6ZVWvgl12Yv1019yGCSS18iQjbhl6JjARy9m55cm
+         dFpdaaGrVtofBuPFNuixeC23WKOdlkSfo+xua+zvvNBn5vKODZWrCtpjTGRAL8oivBcm
+         8+7U71UGiTYly3RPeDwIr3DD8wtyGNu0OpfG9hPeWSFBV+DRAdeEWtiXPeNKbHj2KmwH
+         VApQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id e135si530337wmg.6.2017.09.11.09.28.49
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id i90si356126wmh.5.2017.09.09.22.38.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 11 Sep 2017 09:28:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Sat, 09 Sep 2017 22:38:30 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (unknown [12.145.98.253])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 9235589E;
-	Mon, 11 Sep 2017 16:28:48 +0000 (UTC)
-Date: Mon, 11 Sep 2017 09:28:47 -0700
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,371,1500933600"; 
+   d="scan'208";a="290331719"
+Received: from 85-171-60-79.rev.numericable.fr (HELO [192.168.0.15]) ([85.171.60.79])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 10 Sep 2017 07:38:30 +0200
+Date: Sun, 10 Sep 2017 07:38:30 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Meghana Madhyastha <meghana.madhyastha@gmail.com>
-Cc: Eric Anholt <eric@anholt.net>, Stefan Wahren <stefan.wahren@i2se.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	bcm-kernel-feedback-list@broadcom.com,
-	outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] Staging: vc04_services: bcm2835-camera: Add blank line
- after declarations
-Message-ID: <20170911162847.GA26750@kroah.com>
-References: <20170910033412.GA26296@meghana-HP-Pavilion-Notebook>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+cc: Eric Anholt <eric@anholt.net>, Stefan Wahren <stefan.wahren@i2se.com>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, 
+    Scott Branden <sbranden@broadcom.com>, 
+    bcm-kernel-feedback-list@broadcom.com, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: vc04_services: bcm2835-camera:
+ Add blank line after declarations
 In-Reply-To: <20170910033412.GA26296@meghana-HP-Pavilion-Notebook>
-User-Agent: Mutt/1.9.0 (2017-09-02)
+Message-ID: <alpine.DEB.2.20.1709100733030.2063@hadrien>
+References: <20170910033412.GA26296@meghana-HP-Pavilion-Notebook>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-On Sun, Sep 10, 2017 at 09:04:12AM +0530, Meghana Madhyastha wrote:
+
+
+On Sun, 10 Sep 2017, Meghana Madhyastha wrote:
+
 > This patch adds a blank line after declarations. This enhances readability.
-> 
+>
 > Problem found using checkpatch.
-> 
+>
 > Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
 > ---
 >  drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c | 1 +
 >  1 file changed, 1 insertion(+)
-> 
+>
 > diff --git a/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c b/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c
 > index 4360db6..7a7b00e 100644
 > --- a/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c
@@ -80,5 +84,23 @@ On Sun, Sep 10, 2017 at 09:04:12AM +0530, Meghana Madhyastha wrote:
 >  		.version		= VCHI_VERSION_EX(VC_MMAL_VER, VC_MMAL_MIN_VER),
 >  		.service_id		= VC_MMAL_SERVER_NAME,
 
-checkpatch is wrong here :(
+This looks like a declaration too.  I guess the typedef makes it so that
+checkpatch doesn't recognize it as such.  Perhaps you can remove the
+typedefs instead.  It could be good to start with just one, because
+removing a typedef requires changes in many files, and it is better to do
+one thing correctly than to do many things and risk introducing a mistake.
+
+julia
+
+
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170910033412.GA26296%40meghana-HP-Pavilion-Notebook.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
