@@ -1,174 +1,121 @@
-X-GM-THRID: 6468793537189117952
-X-Received: by 10.107.53.87 with SMTP id c84mr294860ioa.134.1506133362875;
-        Fri, 22 Sep 2017 19:22:42 -0700 (PDT)
+X-GM-THRID: 6463802191249408000
+X-Received: by 10.176.73.169 with SMTP id e38mr4521253uad.96.1505057543462;
+        Sun, 10 Sep 2017 08:32:23 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.55.198.140 with SMTP id s12ls193027qkl.0.gmail; Fri, 22 Sep
- 2017 19:22:42 -0700 (PDT)
-X-Received: by 10.200.27.65 with SMTP id p1mr252576qtk.36.1506133362426;
-        Fri, 22 Sep 2017 19:22:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506133362; cv=none;
+Received: by 10.107.13.132 with SMTP id 126ls2667575ion.45.gmail; Sun, 10 Sep
+ 2017 08:32:22 -0700 (PDT)
+X-Received: by 10.84.128.15 with SMTP id 15mr5658768pla.36.1505057542711;
+        Sun, 10 Sep 2017 08:32:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505057542; cv=none;
         d=google.com; s=arc-20160816;
-        b=El7GgB4r1LCVY4xusBnbEineP8RfcLY/rgnfvLuOZERCyvvF/aWfIaOikWBnfabCv6
-         d/i1s7jZ+jZ1K+iqfvAdossjapBVffG4Vid7vF8y/XKKKu96CR3cfp4pKHuPtkGnpSIX
-         cY6OHy95co2oXY8jwEaIOMunhShnw3KxDP+JstujNQZaCdADD+KQsZUkR5bnEr0WOElR
-         K13MoxlR40OkDQuoZRMHJwnKpX+VJ2cpU3TpJ0PtqFNBLPkZGIT8aj9HfATt5rOVoo1V
-         eTxyXzKHkrVsxwlsUXcNvBwxSMxWMpGefC8XbLEvort2upXE+LqYHmX41E4YHlWwgzxG
-         8+JQ==
+        b=SGS4r669eF2y2OGTUU0ek5bua0gEV6RhiNWsDkorxmmP/LCraXkRVN5ymKnozvkHCv
+         8tOdaQub8WZ7qAh2MjDHY72ykeN3pBDd1++ADf0j9VmhFQJXhmLE4ou8QJmDgpmydIUY
+         isHlwUhEBrICL3PGSqHFYmuPpUf5H173cnnN5bGKW63/jo8rlWZ0RM2sv99M0QoFexed
+         FY3VXb1KfXGaHA5MWqRW1+eXOSbJ8iec3iaAub8LAlx7h3KNeyIf4qCYAamCt1oRsrBc
+         nXmIj4+eAG1LX2Mwrn2Yq1h1MopRQ9bLcy9XAGeSMk2gFj7dvMPMSHbVSoDwIbDdBLWY
+         q59w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=P1ahtFmNzgw9Dhi7WKgYmEzux51GVmIYXYWF/L2Gwbw=;
-        b=ma2P4XeH7OjMGa/8gmPbFR1o/Nurn7fJNdZWAmEXOSzcRRQZ1T9qA1fju5gZ8gU31n
-         g8UtzSLKzpZ83xAaBANggerlOtWSqnz283dVUmA0VCYWHMFC57cP9OeTZ4YCFkIcp+sB
-         Hcn8B0gqJ5VpkVEpUyzNqLYD0H28UjUoDPxxjZ+yenULdVXxotrDdY7/v3MxW8imNpYg
-         jyIMp9wJJwJDn/h4JE1sxM0sXUpXiGy48SY4BqMVrV0ROAYGcIF23qty34jmOzyYsrvk
-         8s/H4OnhdAdU7itTU5Ybn1+4raZfgfCiGZSSMHKNV/F5Q6pZ8cRYTl5SdSqHH5cP64s6
-         4MpA==
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature:arc-authentication-results;
+        bh=f2O0/ylMQjQSN1UYLkDR5/IlOL/pA2lhkijMms2Wf7w=;
+        b=VFQU+pbnQ3vAavh0+v2f3nZsSYgA3ZMRdcT934vFrXmEtQ2hmsW4PZq4H45UU1COcb
+         xbNhze76p8N4XiwHSRunY44uuculLHUg/yfK7IxxqpHv0eZREPE9ApLr7zh+MmheRzky
+         V+pRxNKlOA76GHoLGOVwc75SHcNFEqREDC+1BS5Xnp3Fpy6HrxBPVK64uxERxjai6cmj
+         Y9+yLnXfh4TlYSNo/5EOw3xmvjYT1dePeqeWUOv0jiTXYKLRqrSw9acAWVgIiLtgyPKW
+         BilOnGTldbIUHeeoKXNmtErSDcLzuXLRmTcI2QuE+UD4J+UI1GeR7ap9Ng/oc/7H1pvU
+         sLSQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qsQGctGI;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Dgi253Yp;
+       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id f189si97546pfa.1.2017.09.22.19.22.42
+Return-Path: <meghana.madhyastha@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id k76si696681pfa.10.2017.09.10.08.32.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Sep 2017 19:22:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Sun, 10 Sep 2017 08:32:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qsQGctGI;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Dgi253Yp;
+       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id v5so1591730pgn.4
-        for <outreachy-kernel@googlegroups.com>; Fri, 22 Sep 2017 19:22:42 -0700 (PDT)
+Received: by mail-pf0-x241.google.com with SMTP id e69so2060930pfg.4
+        for <outreachy-kernel@googlegroups.com>; Sun, 10 Sep 2017 08:32:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+        h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=P1ahtFmNzgw9Dhi7WKgYmEzux51GVmIYXYWF/L2Gwbw=;
-        b=qsQGctGIlY+1bWK+mkWEMTUCjhE58vqLEQOBqWLmMnwJKgjPteG+tNxqP9d/UMjq5j
-         6uC7f1JUya8iOTIWaYEz3RbWTqte2erPxSJ8Cbly7Cjm5nnpSMW5rsqplw+OPyvZjXFk
-         aRPwgdS1u6VRqlIHauuQeyJmcpSIwEL3dboJnjl2wUlJW8Zi3Q0j5T4Ir+Bfw9fpL99c
-         I+iH/QAlRXXWGg1PQw2hA/917E8P0yyyJxdB2MU+FtpRZAZiMNdeEuxEZIO5+kuhcsno
-         Sh+sAJrU3bzWaCFRWhRc0qgj+JwIbLFwlaifyjKxPZmdbWzaiedhv91FcLjPRHgz6mij
-         6PgA==
+        bh=f2O0/ylMQjQSN1UYLkDR5/IlOL/pA2lhkijMms2Wf7w=;
+        b=Dgi253Ypa9R45ziJ0PnuC5gGK0fUViatnxxSQ3D3duqftIfQTZLWvSBhzwh28sWeRT
+         gsnFBv30eyKidv0BV/b1hpMC3b2eoLPE6aqbKPZFnOqjJobpZTshBlmUxdA4z+KfcKbZ
+         p24irUtxSUMgA5K1g8bjxuCdCTC2f8fH72fFsL6oidnGL1YN/ebKB0HUEO2JLEKFx6KO
+         68AC9KFgMWlVFcz4ufNge94M4BvkYXtsYnr9vL8WtustSHcSoPrF8Mc1cCMO2HZskE9m
+         ubhbuepO+n9ZqLovZl+R4LTVQQ97rJAPSpNAVJFT+7kynfQlMcAZzUUniDVYI1wnRVoX
+         IQOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=P1ahtFmNzgw9Dhi7WKgYmEzux51GVmIYXYWF/L2Gwbw=;
-        b=PDCh+nlaWJnubAqoWBakVrdDRWFR5Qk3MfKn8L939X6o1+gkmSoZDTaArF80O+bFSj
-         Oce1FpwvJgXU0BYmB0HQn7Bnc+AarB7TIzo+6s7+n+pi1ZFJc2E7i96vFx0YC13FnlT9
-         Qci6S4pZbBW+fFUGRjEj5YdLwda4lk2KUgBugbcRFedbevRfD6IEf4yGvqSwo97wCWQt
-         q8CedjCS07IfnWrJdhoNUE6cVEGphQCgDzJLOGL2vS7IxTTvtzqv+ibmesEVWaM80hkU
-         GPSjM65LqcfOCZpADNgTSOkaGARL9B8YQMVNz62DO4qVx8jDrwvLOAnHkCvbFJiWZH+H
-         yr4A==
-X-Gm-Message-State: AHPjjUhBRv5T0ydU8ahZL+K4uTM27AO1vRY1bQxvIAmTI90In9yYCRTa
-	RdLl2hBzuMcgN/mk/HU2bodXRvHR
-X-Google-Smtp-Source: AOwi7QBgzi9uvn2xpezpoN7bHj1LZg+EqX8GAEH29cHlGEStExVso5CSG14zDQ0Cd4xwjcRW09e21A==
-X-Received: by 10.84.224.206 with SMTP id k14mr875461pln.317.1506133362009;
-        Fri, 22 Sep 2017 19:22:42 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from Haneen ([64.77.242.50])
-        by smtp.gmail.com with ESMTPSA id r12sm1150349pgp.81.2017.09.22.19.22.41
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Sep 2017 19:22:41 -0700 (PDT)
-Date: Fri, 22 Sep 2017 20:22:39 -0600
-From: Haneen Mohammed <hamohammed.sa@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Cc: Oleg Drokin <oleg.drokin@intel.com>,
-	Andreas Dilger <andreas.dilger@intel.com>,
-	James Simmons <jsimmons@infradead.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: lustre: lnet: replace list_for_each with
- list_for_each_entry
-Message-ID: <20170923022239.GA10771@Haneen>
+        bh=f2O0/ylMQjQSN1UYLkDR5/IlOL/pA2lhkijMms2Wf7w=;
+        b=raBr1oj9OnEFHgDJh+7kKc7J/HE+UNDxSdprTNjyzAwXic+gMd9iuM8Dr/Ue21dPIq
+         Ze8kuAbfn6pg9S5E75P2h04yFu2z1B8Nhtgl1HD3Z+AOm/oixshBP7TH/RqpWq9Ip3ey
+         pWbY8WvgbapWVkc7EW4F4Jnx/vxbCfc5jc618OWWj6cpCERB16sEvwGvbK/7Ou15mBmj
+         UxyfWcWUeIwx4qxN7bC94EAlXnQ7E55gePxpSu+QzmSDgjDQP8k1lWvJaFAnvLI+yhkk
+         8RukDRp5XN6Y54biCXwPKn0LcI6aruzWGQ575KUi1iJr1TBja5LLqVQnHnHoM1qphcCQ
+         hxAw==
+X-Gm-Message-State: AHPjjUhgCBoL+WdwPCPixLx0GasFLzx4pLroF6vz6NcGzoQsqDKEQQ2n
+	jeNsN9CuN+0QdQ==
+X-Google-Smtp-Source: ADKCNb6XGsr4EkJ8vvBFjbEB/O/wxpIEhBxw9FrE2d8sDEjvueUVydFe5ww5XEOz2/PgPw8hj883lg==
+X-Received: by 10.101.67.200 with SMTP id n8mr9287352pgp.313.1505057542431;
+        Sun, 10 Sep 2017 08:32:22 -0700 (PDT)
+Return-Path: <meghana.madhyastha@gmail.com>
+Received: from meghana-HP-Pavilion-Notebook ([122.172.87.17])
+        by smtp.gmail.com with ESMTPSA id a6sm10253624pgq.17.2017.09.10.08.32.20
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 10 Sep 2017 08:32:21 -0700 (PDT)
+Date: Sun, 10 Sep 2017 21:02:17 +0530
+From: Meghana Madhyastha <meghana.madhyastha@gmail.com>
+To: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
+	w.d.hubbs@gmail.com, chris@the-brannons.com
+Subject: [PATCH v4] Staging: speakup: Replace symbolic permission
+Message-ID: <20170910153216.GA9133@meghana-HP-Pavilion-Notebook>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Replace use of the combination of list_for_each() and list_entry() with
-list_for_each_entry() to simplify the code and remove variables that are
-used only in list_for_each().
-Issue found and corrected using Coccinelle script:
+Replace S_IRUGO by 0444 in module parameter declaration. 0444 is more
+readable and matches the style used in other declarations nearby.
 
-@r@
-expression head, member, e;
-type T1, T2, T3;
-iterator name list_for_each, list_for_each_entry;
-identifier pos, var;
-@@
+Problem found using checkpatch.
 
--T1 *pos;
-...when!=pos
-
--list_for_each(pos, head)
-+list_for_each_entry(var, head, member)
-{
-...when!=pos
-   when!=T3 *var;
--var = list_entry(pos, T2, member);
-...when!=pos
-}
-...when!=pos
-
-Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
 ---
- drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c | 14 +++-----------
- 1 file changed, 3 insertions(+), 11 deletions(-)
+Changes in v2:
+   - Make the commit message more clearer and the title more concise
 
-diff --git a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
-index fbbd8a5..d0ee58d 100644
---- a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
-+++ b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c
-@@ -176,12 +176,9 @@ struct ksock_peer *
- ksocknal_find_peer_locked(struct lnet_ni *ni, struct lnet_process_id id)
- {
- 	struct list_head *peer_list = ksocknal_nid2peerlist(id.nid);
--	struct list_head *tmp;
- 	struct ksock_peer *peer;
+Changes in v3:
+   -Mention the changes below --- 
+
+Changes in v4:
+   -Resolve confusion over two v3 patches
+
+ drivers/staging/speakup/speakup_acntsa.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/speakup/speakup_acntsa.c b/drivers/staging/speakup/speakup_acntsa.c
+index 0e10404..4331584 100644
+--- a/drivers/staging/speakup/speakup_acntsa.c
++++ b/drivers/staging/speakup/speakup_acntsa.c
+@@ -136,7 +136,7 @@ static int synth_probe(struct spk_synth *synth)
+ }
  
--	list_for_each(tmp, peer_list) {
--		peer = list_entry(tmp, struct ksock_peer, ksnp_list);
--
-+	list_for_each_entry(peer, peer_list, ksnp_list) {
- 		LASSERT(!peer->ksnp_closing);
+ module_param_named(ser, synth_acntsa.ser, int, 0444);
+-module_param_named(dev, synth_acntsa.dev_name, charp, S_IRUGO);
++module_param_named(dev, synth_acntsa.dev_name, charp, 0444);
+ module_param_named(start, synth_acntsa.startup, short, 0444);
  
- 		if (peer->ksnp_ni != ni)
-@@ -453,7 +450,6 @@ int
- ksocknal_add_peer(struct lnet_ni *ni, struct lnet_process_id id, __u32 ipaddr,
- 		  int port)
- {
--	struct list_head *tmp;
- 	struct ksock_peer *peer;
- 	struct ksock_peer *peer2;
- 	struct ksock_route *route;
-@@ -491,9 +487,7 @@ ksocknal_add_peer(struct lnet_ni *ni, struct lnet_process_id id, __u32 ipaddr,
- 	}
- 
- 	route2 = NULL;
--	list_for_each(tmp, &peer->ksnp_routes) {
--		route2 = list_entry(tmp, struct ksock_route, ksnr_list);
--
-+	list_for_each_entry(route2, &peer->ksnp_routes, ksnr_list) {
- 		if (route2->ksnr_ipaddr == ipaddr)
- 			break;
- 
-@@ -1854,12 +1848,10 @@ ksocknal_query(struct lnet_ni *ni, lnet_nid_t nid, unsigned long *when)
- 
- 	peer = ksocknal_find_peer_locked(ni, id);
- 	if (peer) {
--		struct list_head *tmp;
- 		struct ksock_conn *conn;
- 		int bufnob;
- 
--		list_for_each(tmp, &peer->ksnp_conns) {
--			conn = list_entry(tmp, struct ksock_conn, ksnc_list);
-+		list_for_each_entry(conn, &peer->ksnp_conns, ksnc_list) {
- 			bufnob = conn->ksnc_sock->sk->sk_wmem_queued;
- 
- 			if (bufnob < conn->ksnc_tx_bufnob) {
+ MODULE_PARM_DESC(ser, "Set the serial port for the synthesizer (0-based).");
 -- 
 2.7.4
 
