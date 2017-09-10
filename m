@@ -1,122 +1,80 @@
 X-GM-THRID: 6463802191249408000
-X-Received: by 10.176.73.169 with SMTP id e38mr4521253uad.96.1505057543462;
-        Sun, 10 Sep 2017 08:32:23 -0700 (PDT)
+X-Received: by 10.28.133.68 with SMTP id h65mr644177wmd.1.1505056934675;
+        Sun, 10 Sep 2017 08:22:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.13.132 with SMTP id 126ls2667575ion.45.gmail; Sun, 10 Sep
- 2017 08:32:22 -0700 (PDT)
-X-Received: by 10.84.128.15 with SMTP id 15mr5658768pla.36.1505057542711;
-        Sun, 10 Sep 2017 08:32:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505057542; cv=none;
+Received: by 10.28.21.66 with SMTP id 63ls759940wmv.12.gmail; Sun, 10 Sep 2017
+ 08:22:13 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBlC2G0q2lFmu/1NbIgtIQaL//8vjmPnYoJRwD/O4yFxpjXF/+A+LmbO34OWPhr8qmryWCb
+X-Received: by 10.28.9.12 with SMTP id 12mr584745wmj.7.1505056933759;
+        Sun, 10 Sep 2017 08:22:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505056933; cv=none;
         d=google.com; s=arc-20160816;
-        b=SGS4r669eF2y2OGTUU0ek5bua0gEV6RhiNWsDkorxmmP/LCraXkRVN5ymKnozvkHCv
-         8tOdaQub8WZ7qAh2MjDHY72ykeN3pBDd1++ADf0j9VmhFQJXhmLE4ou8QJmDgpmydIUY
-         isHlwUhEBrICL3PGSqHFYmuPpUf5H173cnnN5bGKW63/jo8rlWZ0RM2sv99M0QoFexed
-         FY3VXb1KfXGaHA5MWqRW1+eXOSbJ8iec3iaAub8LAlx7h3KNeyIf4qCYAamCt1oRsrBc
-         nXmIj4+eAG1LX2Mwrn2Yq1h1MopRQ9bLcy9XAGeSMk2gFj7dvMPMSHbVSoDwIbDdBLWY
-         q59w==
+        b=XvtkkPRO4U2bugs0JXH+fhygdQ+e2dsT4PAZxIFPeubN2o+YPbCCUtucw4Ca3x3u0n
+         30nXo5JjiM0E8HoJG8ob8Q3cyX8tuHZYZFmrohmTi200LpGBfAHVBce6WaoSfzExLvhi
+         L2MN0FQaWz22a3ML9ymf1ailxSNejG3RVzUKo4VELqaogVLgvpE2Ga11N+rEt/tmFNF+
+         aBFhW1pSeZVEE9o3aaQSP2Wl1tyi/FYsCi40R/B/USK2a0RgbFVZ/FPT9bn0Av5Z1iXX
+         YnxOlgohfSWoSbnVrSaCirhs3jbe1EIXLVxvxq6opmfzFPUGHpl+XkMDuPYj6oKX31IA
+         PKTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature:arc-authentication-results;
-        bh=f2O0/ylMQjQSN1UYLkDR5/IlOL/pA2lhkijMms2Wf7w=;
-        b=VFQU+pbnQ3vAavh0+v2f3nZsSYgA3ZMRdcT934vFrXmEtQ2hmsW4PZq4H45UU1COcb
-         xbNhze76p8N4XiwHSRunY44uuculLHUg/yfK7IxxqpHv0eZREPE9ApLr7zh+MmheRzky
-         V+pRxNKlOA76GHoLGOVwc75SHcNFEqREDC+1BS5Xnp3Fpy6HrxBPVK64uxERxjai6cmj
-         Y9+yLnXfh4TlYSNo/5EOw3xmvjYT1dePeqeWUOv0jiTXYKLRqrSw9acAWVgIiLtgyPKW
-         BilOnGTldbIUHeeoKXNmtErSDcLzuXLRmTcI2QuE+UD4J+UI1GeR7ap9Ng/oc/7H1pvU
-         sLSQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=VjINslrPeeq6B0N0d+9dcYvUFUbzVvCdTEvr+a4ocSc=;
+        b=SgTtycDvAuuueK0Ugh5Mnyh31AyJapjTdy91hp9liyczIYeHPfyC/ROHLsq+TLXrnO
+         61ql1/zn47qD1fElZXZ2NlsoJWIcU8xicqOgMTfhH2ytxlmj4aoUxPE696TgMyeQyGIt
+         nWu1KkOrhwcrLyZlrYIz8XnidVcbn07kgxbfrX/oAin1g2C/8uzxpsU+Rqk0Cd9FZAoS
+         1HjlfUZUzK0LCa/F008FTvwfe5axcvH4e5eVE4wAC0Jrlm6IF2mwkzgmsir8dBgmoX/D
+         uBUfCUukqWzi0JBmCrSxElk7KogXczckkY+LzpaqMWoCToRUfAE719j+dyQmyahTqyKE
+         Ry2A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Dgi253Yp;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <meghana.madhyastha@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id k76si696681pfa.10.2017.09.10.08.32.22
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id e135si384971wmg.6.2017.09.10.08.22.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 10 Sep 2017 08:32:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Sun, 10 Sep 2017 08:22:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Dgi253Yp;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id e69so2060930pfg.4
-        for <outreachy-kernel@googlegroups.com>; Sun, 10 Sep 2017 08:32:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=f2O0/ylMQjQSN1UYLkDR5/IlOL/pA2lhkijMms2Wf7w=;
-        b=Dgi253Ypa9R45ziJ0PnuC5gGK0fUViatnxxSQ3D3duqftIfQTZLWvSBhzwh28sWeRT
-         gsnFBv30eyKidv0BV/b1hpMC3b2eoLPE6aqbKPZFnOqjJobpZTshBlmUxdA4z+KfcKbZ
-         p24irUtxSUMgA5K1g8bjxuCdCTC2f8fH72fFsL6oidnGL1YN/ebKB0HUEO2JLEKFx6KO
-         68AC9KFgMWlVFcz4ufNge94M4BvkYXtsYnr9vL8WtustSHcSoPrF8Mc1cCMO2HZskE9m
-         ubhbuepO+n9ZqLovZl+R4LTVQQ97rJAPSpNAVJFT+7kynfQlMcAZzUUniDVYI1wnRVoX
-         IQOQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=f2O0/ylMQjQSN1UYLkDR5/IlOL/pA2lhkijMms2Wf7w=;
-        b=raBr1oj9OnEFHgDJh+7kKc7J/HE+UNDxSdprTNjyzAwXic+gMd9iuM8Dr/Ue21dPIq
-         Ze8kuAbfn6pg9S5E75P2h04yFu2z1B8Nhtgl1HD3Z+AOm/oixshBP7TH/RqpWq9Ip3ey
-         pWbY8WvgbapWVkc7EW4F4Jnx/vxbCfc5jc618OWWj6cpCERB16sEvwGvbK/7Ou15mBmj
-         UxyfWcWUeIwx4qxN7bC94EAlXnQ7E55gePxpSu+QzmSDgjDQP8k1lWvJaFAnvLI+yhkk
-         8RukDRp5XN6Y54biCXwPKn0LcI6aruzWGQ575KUi1iJr1TBja5LLqVQnHnHoM1qphcCQ
-         hxAw==
-X-Gm-Message-State: AHPjjUhgCBoL+WdwPCPixLx0GasFLzx4pLroF6vz6NcGzoQsqDKEQQ2n
-	jeNsN9CuN+0QdQ==
-X-Google-Smtp-Source: ADKCNb6XGsr4EkJ8vvBFjbEB/O/wxpIEhBxw9FrE2d8sDEjvueUVydFe5ww5XEOz2/PgPw8hj883lg==
-X-Received: by 10.101.67.200 with SMTP id n8mr9287352pgp.313.1505057542431;
-        Sun, 10 Sep 2017 08:32:22 -0700 (PDT)
-Return-Path: <meghana.madhyastha@gmail.com>
-Received: from meghana-HP-Pavilion-Notebook ([122.172.87.17])
-        by smtp.gmail.com with ESMTPSA id a6sm10253624pgq.17.2017.09.10.08.32.20
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 10 Sep 2017 08:32:21 -0700 (PDT)
-Date: Sun, 10 Sep 2017 21:02:17 +0530
-From: Meghana Madhyastha <meghana.madhyastha@gmail.com>
-To: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
-	w.d.hubbs@gmail.com, chris@the-brannons.com
-Subject: [PATCH v4] Staging: speakup: Replace symbolic permission
-Message-ID: <20170910153216.GA9133@meghana-HP-Pavilion-Notebook>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [104.153.224.169])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 7E332978;
+	Sun, 10 Sep 2017 15:22:08 +0000 (UTC)
+Date: Sun, 10 Sep 2017 15:58:55 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Meghana Madhyastha <meghana.madhyastha@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, w.d.hubbs@gmail.com,
+	chris@the-brannons.com
+Subject: Re: [PATCH V3] Staging: speakup: Replace symbolic permission
+Message-ID: <20170910135855.GC10121@kroah.com>
+References: <20170910023435.GA24707@meghana-HP-Pavilion-Notebook>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20170910023435.GA24707@meghana-HP-Pavilion-Notebook>
+User-Agent: Mutt/1.9.0 (2017-09-02)
 
-Replace S_IRUGO by 0444 in module parameter declaration. 0444 is more
-readable and matches the style used in other declarations nearby.
+On Sun, Sep 10, 2017 at 08:04:35AM +0530, Meghana Madhyastha wrote:
+> Replace S_IRUGO by 0444 in module parameter declaration. 0444 is more
+> readable and matches the style used in other declarations nearby.
+> 
+> Problem found using checkpatch.
+> 
+> Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
+> ---
+> 
+> Changes in v2:
+>   - Make the commit message more clearer and the title more concise
+> 
+> Changes in v3:
+>   -Mention the changes below --- 
 
-Problem found using checkpatch.
+I have two different v3 patches from you that both do the same thing,
+yet they have two different subjects?
 
-Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
----
-Changes in v2:
-   - Make the commit message more clearer and the title more concise
+totally confused, please send a v4 with the "correct" one you wish to
+submit.
 
-Changes in v3:
-   -Mention the changes below --- 
+thanks,
 
-Changes in v4:
-   -Resolve confusion over two v3 patches
-
- drivers/staging/speakup/speakup_acntsa.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/speakup/speakup_acntsa.c b/drivers/staging/speakup/speakup_acntsa.c
-index 0e10404..4331584 100644
---- a/drivers/staging/speakup/speakup_acntsa.c
-+++ b/drivers/staging/speakup/speakup_acntsa.c
-@@ -136,7 +136,7 @@ static int synth_probe(struct spk_synth *synth)
- }
- 
- module_param_named(ser, synth_acntsa.ser, int, 0444);
--module_param_named(dev, synth_acntsa.dev_name, charp, S_IRUGO);
-+module_param_named(dev, synth_acntsa.dev_name, charp, 0444);
- module_param_named(start, synth_acntsa.startup, short, 0444);
- 
- MODULE_PARM_DESC(ser, "Set the serial port for the synthesizer (0-based).");
--- 
-2.7.4
-
+greg k-h
 
