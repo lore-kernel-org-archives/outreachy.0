@@ -1,100 +1,173 @@
 X-GM-THRID: 6463854288984604672
-X-Received: by 10.99.99.197 with SMTP id x188mr4983600pgb.118.1505033464339;
-        Sun, 10 Sep 2017 01:51:04 -0700 (PDT)
+X-Received: by 10.202.93.213 with SMTP id r204mr4658774oib.61.1505028787041;
+        Sun, 10 Sep 2017 00:33:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.213.130 with SMTP id a124ls1424268itg.3.gmail; Sun, 10 Sep
- 2017 01:51:03 -0700 (PDT)
-X-Received: by 10.129.216.77 with SMTP id n13mr5336633ywl.159.1505033463363;
-        Sun, 10 Sep 2017 01:51:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505033463; cv=none;
+Received: by 10.36.36.140 with SMTP id f134ls3629726ita.16.canary-gmail; Sun,
+ 10 Sep 2017 00:33:06 -0700 (PDT)
+X-Received: by 10.129.97.132 with SMTP id v126mr5120942ywb.114.1505028786338;
+        Sun, 10 Sep 2017 00:33:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505028786; cv=none;
         d=google.com; s=arc-20160816;
-        b=e/Umrex63KfosZP1bKoiY/RKSk2idtaQxOvkKuOjBEQs1yAtSYcUFn9mplWS+wb+b/
-         xebaWKzvszGgVyx1NmhzT3HjQKHlG/rQRJHJ2V/0XMNyS3Tzz48ip0ZlcFjULBwirhhn
-         W6iubGY9ET74sunG3ka4YOovBCzhN27BXuDJYuZyGev5W02jgFfU0lVo800HgtW9RNFh
-         eVSj87SBxWaOZt3Dt034yUPdBuwSAcy0CJd4ovygGEAiHWd1s7E1mdDQUJXlF4Kj0Bmm
-         tqZuCUTTq0OVMVyM+50JK6C24Nc9QyMe3al7godreAaVnLNkEAaR+XPcoUTGXNhSEf0X
-         mnUg==
+        b=wqxVKb9tYMxOSvQTB++bVbu+u2xcnz0/9qSIjI4CsUf6tx6zwcFzDslwiLZ5Pyrtxj
+         Ztiuo3E9GHYHnCAPhVAnnlnl6zJ3IKt0woaGkcki19Bsfj2JBg/7hB0ng7U9jLmnBkfR
+         ycednvVSHr5wBg//NIfA9DeJqLhA7GnVykDsLmyNvAHcTVtlKZ4tSIaniHEso+wwZ2qW
+         ratqnWXy6y/4bgQkzlMgvAoj1uPKmC/I++6qRfA0RydifY/C/xsLf5jylcjGh/DIPmCy
+         4e3MYpn/FguS9KVbFJvIMl6o4DKpSmCrAcL1fdo2yfiBrzLnzY8P5n6Z9Yp6ssJy2eIF
+         R1cA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
+        h=content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature
          :arc-authentication-results;
-        bh=x7Y79EHk3KWqK0VuDMz0A5T2mdGZaiD+mWYmue9n+8o=;
-        b=0ycC8/KtJGBV3rHdgotqKojNHBuJvWb6WfqhBaYPvI2MFSQUVUSZRQBDGOvU6UJm6g
-         8tYQVG54TlHuS6ll7tzTc3TzHYb6O6AtgmOdBhujr2HIuTDer1Z02+SJQsCXwfcJF/on
-         Zr2fKRdI7mOM/2bdRqHvK3bd4FnR8BuqgKDIGRZ8p3bMbL4f/jKdDmq6QWfJaULV9pLj
-         MN/zIJcsKvqUmSjL1XTQ8ZtVi0L5BVS+/svM9mPR/mrqSajzSTt3nJWVXwmjNnW8yPBv
-         0ahfECm1Qwri+U4UCxOw3CX1GfDzwtz7VHnSAxyYKz4Mq2Ek7QECXeq9i/mwJOwKvTna
-         z+wg==
+        bh=qD/RNfYaUImejtZHMx3CtonNZGo/XfYJ8Uz6/kmXnCg=;
+        b=uqmRi82b1nL7gs6l1wUo+NWyg2/ibUlAA0g183ZN7dEaBED8fDo6y6aiVTzhEIO0m9
+         H5mYj0dB1DptbjKhvXCJeGSCrmIAs5Fej1Uhl3im70+ipK7H2yukZ+sv0Y5BLQXjtXPQ
+         1ItsO3oCsoEhT8/S2nYon+fL6M19UDYhJ1/5np22g3JIJFYoaGpyMm532Dog02F6W/q2
+         Op76A8939VonaoKoMRpPJkyze/AF8GZ+dYkHz8aRPRoqKXn8atgBDP9+LxGFQZJdQvVo
+         ABCK9aXcDInw3rget7LQQo8W6D5PHtHHl0UJzHfE63vCZRulOdyhkCbuKWTqfXFFbBTH
+         ARGw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mDFi83ia;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lVlfJmKC;
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <shreeya.patel23498@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id a12si601573pfd.2.2017.09.10.01.51.03
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id g19si643755pfd.14.2017.09.10.00.33.06
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 10 Sep 2017 01:51:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Sun, 10 Sep 2017 00:33:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mDFi83ia;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lVlfJmKC;
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id t3so3264506pgt.5
-        for <outreachy-kernel@googlegroups.com>; Sun, 10 Sep 2017 01:51:03 -0700 (PDT)
+Received: by mail-pf0-x243.google.com with SMTP id g13so3539712pfm.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 10 Sep 2017 00:33:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=x7Y79EHk3KWqK0VuDMz0A5T2mdGZaiD+mWYmue9n+8o=;
-        b=mDFi83iapEwAZUIj/9kEVDlam2f+fGiokjM5blvZrXZ1O1b2FYtmFRHzhUaQMW1l78
-         eAjwbVorCWOEd+flRWZLoezd5+eawBgMEPzo+RIzvHtOoiY8sGOlQ+QFqKlA/qMpovL7
-         9zgfxi7bkDR3gQ7rgXpSThtVTmShsk7BVjQzXQN6yPClvvCFbuqLHzuOp4BmVU5+mmsm
-         BzKQ1+L7XxO2/jRhrxkr9xvmGxXX+maknL2TI8U5gYDS7i7gspxSKmnoQTCAvusw//Qu
-         a6P0Uox8wUw3L4WtQ5oM8X/yJy/xq3SE+RQDMYYQuGG+gn9W5HZisGuywAZv+siyuOAE
-         p6mA==
+        h=subject:to:references:from:message-id:date:user-agent:mime-version
+         :in-reply-to:content-language;
+        bh=qD/RNfYaUImejtZHMx3CtonNZGo/XfYJ8Uz6/kmXnCg=;
+        b=lVlfJmKCJsU7VK6o+LK3fCCP3h3aUH7BPmYC0Fh6EdhkhCjt8ud/m/bM2JqXCGrVUh
+         xAH1QO1LLe3WLitf+GGrVOWr5od+g3gcNH+CeBetD34oo4GyIyVf0lizJJBl6ZfCe54S
+         ta8Df9whK29bxHpgg+FsHfHVrpjanis4p5HUC1ErSuszs1vIPFkFhjTlrUPXPmNx0UNJ
+         duM/RMYjGe6/5O4t7yKWjG7lf6h+whPkTLwBInHRqRsq5oedXEl/Yn1nxT7KWU4D0ahu
+         Xg9YqLt/RFtR8OcgWDr1gwehZnw6geG92gTGGC/0qi9wb7CW1qUg92ef2lMidC8aiESP
+         uAnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=x7Y79EHk3KWqK0VuDMz0A5T2mdGZaiD+mWYmue9n+8o=;
-        b=k7OYVvoeQrnmdELU4zPh3i0E4QnVPAC0NKE3hnEMbuIRDUYK4mdTQ5+BMbpOmAoXnv
-         fbPgTjhQZWG+8orIB2dNAkr+vlzmctTkx6WSxATGw9zEeuTwRitAx13UnCJgTARxVFgl
-         MS6YqARFcHLNg63Ou6TxmNs+BcMqIDF6HZiiR1ZiNhGYNwgMZq/whG0wOlvndGThotMd
-         uy7zwAF1opMGI1zdBf0pn8BWUH8wMLizhoVALizxO6sSjp5ZqxkI0/IZsEvWZafnU1Ow
-         rjwkvaA/wHT1P3Dc89y48Ei05VouuXvielC0h1/7SrxKUGNWqcYm9eq23sjPR3DfsBEM
-         QEJA==
-X-Gm-Message-State: AHPjjUjjQ52LHZAFwaPADsjM0zJ5m9HfmZ1Ui93KGQHlSZROzEfVcrcL
-	cBcykoAyvIpzNhzKKt8=
-X-Google-Smtp-Source: ADKCNb6ez8HjBKpQhUB5vH18fbc1Zba1X+tBwu2eeQ0De3n1rnRWeiRnWUVCmevVL4YBgc28aJDIow==
-X-Received: by 10.98.67.134 with SMTP id l6mr8304229pfi.165.1505033463100;
-        Sun, 10 Sep 2017 01:51:03 -0700 (PDT)
+        h=x-gm-message-state:subject:to:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language;
+        bh=qD/RNfYaUImejtZHMx3CtonNZGo/XfYJ8Uz6/kmXnCg=;
+        b=JyC9QVEvgtVqeviBE7y5Ah5FESFRIJF1RDkb59mHtr5NmdRThobJS5I0r4dB+zJ3LN
+         hHlSSKuMF2YGcr8PmMSdU6QsAW6/O5crJ+wJDipjyr2ICz1j05LEt8QVpKpUr21XmRgW
+         KPvu/vSI6KH4Bm6UM0ZvrA9BS+pHgT9flB8uYzPueHhaMB38Li8M3avWvn8SmpMKcwxC
+         gU17FXwSdwHbDB+unkuP7gzzOeejXkhFuW1FAZ/1JVuwYzwoAfOhqnMGoyaNnF7Lc86B
+         hqAlGdPDphc6mCOGl8j9KRaBvczCVZiggqUlaxgC1vpVffJPT4wDINewcodtQaHKtpNp
+         ZeeQ==
+X-Gm-Message-State: AHPjjUgTaioOsKlEB23IwGEfJrKeFVgYPD0b/b79K+jocgdmDBKvcMXk
+	wTSnR9eDBPYA73NvoQg=
+X-Google-Smtp-Source: ADKCNb5s3N56oj4278358ExxkykOVL+yE9sOibLcfiFQCGo2GpcWYFiYnj8fxw+AtGvOA0fsvdgnqg==
+X-Received: by 10.98.67.209 with SMTP id l78mr8241740pfi.3.1505028785752;
+        Sun, 10 Sep 2017 00:33:05 -0700 (PDT)
 Return-Path: <shreeya.patel23498@gmail.com>
-Received: from shreeya-VirtualBox ([45.113.152.93])
-        by smtp.gmail.com with ESMTPSA id 5sm10963424pfr.151.2017.09.10.01.51.01
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 10 Sep 2017 01:51:02 -0700 (PDT)
+Received: from [10.0.2.15] ([45.113.152.93])
+        by smtp.gmail.com with ESMTPSA id t16sm10695131pfj.117.2017.09.10.00.33.03
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 10 Sep 2017 00:33:05 -0700 (PDT)
+Subject: Re: [PATCH v2] Staging: rtlwifi: Remove unnecessary 'out of memory'
+ message.
+To: gregkh@linuxfoundation.org, julia.lawall@lip6.fr,
+ outreachy-kernel@googlegroups.com
+References: <1504983347-2957-1-git-send-email-shreeya.patel23498@gmail.com>
 From: Shreeya Patel <shreeya.patel23498@gmail.com>
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Shreeya Patel <shreeya.patel23498@gmail.com>
-Subject: [PATCH v3] Staging: rtlwifi: Remove unnecessary 'out of memory' message.
-Date: Sun, 10 Sep 2017 14:20:56 +0530
-Message-Id: <1505033456-3365-1-git-send-email-shreeya.patel23498@gmail.com>
-X-Mailer: git-send-email 2.7.4
+Message-ID: <f2b8805b-50f6-8c78-ab32-734aac8ddbea@gmail.com>
+Date: Sun, 10 Sep 2017 13:03:01 +0530
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.2.1
+MIME-Version: 1.0
+In-Reply-To: <1504983347-2957-1-git-send-email-shreeya.patel23498@gmail.com>
+Content-Type: multipart/alternative;
+ boundary="------------FC752A8ECDA93DD05BA3A487"
+Content-Language: en-US
 
-Logging messages that show some type of "out of memory" error
-are generally unnecessary as there is a generic message and
-a stack dump done by the memory subsystem.
+This is a multi-part message in MIME format.
+--------------FC752A8ECDA93DD05BA3A487
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 
-These messages generally increase kernel size without much
-added value.
+
+I would like to notify that I had sent the first version of this patch 
+to my mentor Julia lawall.
+Also this patch is showing me some false positive errors of whitespace.
+There are no errors in the file which i have modified and also in the 
+commit message.
+
+On Sunday 10 September 2017 12:25 AM, Shreeya Patel wrote:
+
+> This patch removes unnecessary 'out of memory' message to make
+> the code more efficient.
+>
+> Problem found by checkpatch.
+>
+> Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
+> ---
+>
+> Changes in v2:
+>    -Add a tab before the return statement.
+>
+>   drivers/staging/rtlwifi/rc.c | 4 +---
+>   1 file changed, 1 insertion(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/rtlwifi/rc.c b/drivers/staging/rtlwifi/rc.c
+> index 65de0c7..779a5c6 100644
+> --- a/drivers/staging/rtlwifi/rc.c
+> +++ b/drivers/staging/rtlwifi/rc.c
+> @@ -281,10 +281,8 @@ static void *rtl_rate_alloc_sta(void *ppriv,
+>   	struct rtl_rate_priv *rate_priv;
+>   
+>   	rate_priv = kzalloc(sizeof(*rate_priv), gfp);
+> -	if (!rate_priv) {
+> -		pr_err("Unable to allocate private rc structure\n");
+> +	if (!rate_priv)
+>   		return NULL;
+> -	}
+>   
+>   	rtlpriv->rate_priv = rate_priv;
+>   
+
+
+--------------FC752A8ECDA93DD05BA3A487
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  </head>
+  <body text="#000000" bgcolor="#FFFFFF">
+    <div class="moz-cite-prefix"><br>
+      <font size="-1">I would like to notify that I had sent the first
+        version of this patch to my mentor Julia lawall.<br>
+        Also this patch is showing me some false positive errors of
+        whitespace.<br>
+        There are no errors in the file which i have modified and also
+        in the commit message.<br>
+      </font>
+      <p>On Sunday 10 September 2017 12:25 AM, Shreeya Patel wrote:</p>
+    </div>
+    <blockquote type="cite"
+      cite="mid:1504983347-2957-1-git-send-email-shreeya.patel23498@gmail.com">
+      <pre wrap="">This patch removes unnecessary 'out of memory' message to make
+the code more efficient.
 
 Problem found by checkpatch.
 
-Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
-
-Changes in v3:
-  -Make the commit message more appropriate.
-
+Signed-off-by: Shreeya Patel <a class="moz-txt-link-rfc2396E" href="mailto:shreeya.patel23498@gmail.com">&lt;shreeya.patel23498@gmail.com&gt;</a>
 ---
+
+Changes in v2:
+  -Add a tab before the return statement.
+
  drivers/staging/rtlwifi/rc.c | 4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
@@ -103,18 +176,22 @@ index 65de0c7..779a5c6 100644
 --- a/drivers/staging/rtlwifi/rc.c
 +++ b/drivers/staging/rtlwifi/rc.c
 @@ -281,10 +281,8 @@ static void *rtl_rate_alloc_sta(void *ppriv,
-	struct rtl_rate_priv *rate_priv;
-
-	rate_priv = kzalloc(sizeof(*rate_priv), gfp);
+ 	struct rtl_rate_priv *rate_priv;
+ 
+ 	rate_priv = kzalloc(sizeof(*rate_priv), gfp);
 -	if (!rate_priv) {
 -		pr_err("Unable to allocate private rc structure\n");
 +	if (!rate_priv)
-		return NULL;
+ 		return NULL;
 -	}
+ 
+ 	rtlpriv-&gt;rate_priv = rate_priv;
+ 
+</pre>
+    </blockquote>
+    <br>
+  </body>
+</html>
 
-	rtlpriv->rate_priv = rate_priv;
-
---
-2.7.4
-
+--------------FC752A8ECDA93DD05BA3A487--
 
