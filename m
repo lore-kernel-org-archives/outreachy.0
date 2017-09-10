@@ -1,177 +1,111 @@
 X-GM-THRID: 6464167912849539072
-X-Received: by 10.31.219.66 with SMTP id s63mr4520047vkg.30.1505056653576;
-        Sun, 10 Sep 2017 08:17:33 -0700 (PDT)
+X-Received: by 10.98.155.146 with SMTP id e18mr4131634pfk.41.1505056375149;
+        Sun, 10 Sep 2017 08:12:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.56.137 with SMTP id f131ls2849427ioa.23.gmail; Sun, 10 Sep
- 2017 08:17:32 -0700 (PDT)
-X-Received: by 10.99.56.81 with SMTP id h17mr5422076pgn.29.1505056652747;
-        Sun, 10 Sep 2017 08:17:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505056652; cv=none;
+Received: by 10.107.82.10 with SMTP id g10ls2833100iob.18.gmail; Sun, 10 Sep
+ 2017 08:12:54 -0700 (PDT)
+X-Received: by 10.107.133.138 with SMTP id p10mr5055512ioi.133.1505056374133;
+        Sun, 10 Sep 2017 08:12:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505056374; cv=none;
         d=google.com; s=arc-20160816;
-        b=kRR3ZV5lNKjll3dVOrukEIgzPpKJ/sv3XqvlY9pCNMh1FVk5YbNj31qOo2vE6P7sC5
-         kj57WtleZLA+Fh6tUdSRBXVPMTGYS48p3sSaN0/KMYqaSAoRTiybXtT/G33PsVZNIRYk
-         wN1MvyQ4kERKe5LYX4/W7KetLY6h4/u1dMsfkUSXI+0jiw4CbI92srQOS6vurSNNG7vt
-         BEI2ESW80nfw5XrK7H5pSNq3b1B88JBxeOMBEfviKHGfdRlFlZ1fuGFrM8YpK61IEqA0
-         /qdV9s5DbIQgQpsDYxMFCaE3s3vjilvL5bX76U4lKtYl+lcH5ksUN7iGmkYQf57mKBsS
-         rTfA==
+        b=YOBFJcYsiXK4AzLs7WdEji3qdnGeeZP/tH1zqD9oiFHfmDPT91bjGZvIS5qByimSuX
+         H4cMCRgUggzAGG+tZFYeux0s0iJ10ZHjkXfHb7ar+vE6WQaV2wjHUcN7CtR5KJ8hNMRX
+         woN/QmpR66Lc41L6hBpCv71pZ+fH6wFnxoMzoBhpTwr9/eHqBlyhv6aDGSiw0UFnJvlv
+         qC6WEryD9AA32P16QTnc4+o81aXSrBboXcUTIGPLmETkm0PLBR5MBQetpfIiYJxYAkG2
+         IwsCocJERHbMh6VexYlfG85dfpz3h37Fzd42oHhfAWfU9cj10EG1EbYn2ErlayJGfW1A
+         BFNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=lVc26Tpipix1Zeil9G6AM51N6LnfoocJh199HAQnIM4=;
-        b=QNnBLxC3iug2fpCk+EBwFtcW731T///mL2/J21wOxxEGN8ev/rsr6KaGLWVjolxo3U
-         UBCb9ySYK4sRDweSTrvNAI3gU5BeCprg8bi8ctQyTPaGaR/p7fQy2ZKq0jesH9aqc9WG
-         YcQ4lmCnULvcOtfpDQdcttq+S0MraQ19Jh+cBu5jWlQYxhzv8MbgMptaNKNWhwhYDpeB
-         o3mM4JVaRImG4rS03pKYjYIqXy2pMMzf/4EVRebduyxh/DReBQweOfDkHNbgOU4h/T1G
-         jnhOojMzgVas9IbogqazL/HsSWlAfewiKk0gE/d1md9QmnNO5x5t9h0NUzvQnu8SqKTG
-         YCWQ==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=44mu6rC5OLA+MFytNKqEIljdQEChAHBuykhvz9L+AfY=;
+        b=0HbQshKuqUV/48LS7XTlY0xWtfkRSc9URY6fDNRf2QzhCVghzU00qJTw+dnCmwKW+8
+         RPO1BVrVC7qijZFzR4+kydR/EDyvs/1gp0Mh1bNYSb6nYl6No/6TZLjRGe3jKYz7WiWI
+         pIhzd52oii+NzenfmmHX2eGILtL5sgejiEG/F1XIJmrZuq1921KH2KqdgNdFLqES+yZ8
+         X9OY7dUOCzgPher4bdRNYHd0DVUl7SAhMBlazXUK9oyxP1L9GoJZgIi3eoPGm0omQ0hv
+         Ze3jHxlKonCnxrmcv/GlujbqvAyPKCt3gEiMriNjeE/oSUB7LoDTyfUCq7jSVIb/TM12
+         kInA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oMHLWdp/;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=EIx+k5NS;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <harshasharmaiitr@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id v25si665723pfg.11.2017.09.10.08.17.32
+Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
+        by gmr-mx.google.com with ESMTPS id a17si697618pfk.15.2017.09.10.08.12.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 10 Sep 2017 08:17:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Sun, 10 Sep 2017 08:12:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oMHLWdp/;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=EIx+k5NS;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id i130so1522644pgc.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 10 Sep 2017 08:17:32 -0700 (PDT)
+Received: by mail-pg0-x241.google.com with SMTP id v5so3515591pgn.4
+        for <outreachy-kernel@googlegroups.com>; Sun, 10 Sep 2017 08:12:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=lVc26Tpipix1Zeil9G6AM51N6LnfoocJh199HAQnIM4=;
-        b=oMHLWdp/W0bBM22s0Vw8vHwhe4RMxFEjMGzlYb4fikYH3pci6Pk0A3Oaac51FT+rp5
-         eYiWv2K1yWNgb9rrRUYf+ACVQwC7AmoTDaCH7BDRSdcz5i9I5t2hCzcZUm3KZ5sop3Oj
-         Wh2/ESH35YdqnSyYz9J9HTP6wDvE7n4UUZPsRuYvJHqxTiO/Pu88rRbPv2SzGB/qIf3m
-         /mtNeJCFI1vGD5fEitWJwBtGKibFGQQEf90c8hD6az/2EIil0F+N5sYIBFw/nXx70zTJ
-         jsoJWiVjEn5qKefkQrSNAFFxhOL1Ln+GL+m+lN/c69P7Xy866Seipnj1uSP1MZ1Q0oNK
-         d7bg==
+        h=from:to:cc:subject:date:message-id;
+        bh=44mu6rC5OLA+MFytNKqEIljdQEChAHBuykhvz9L+AfY=;
+        b=EIx+k5NSS7XIWFtAzLdH3IsoYrJKV2mZvyLSn06RodXvaCiBTKJR4YXlH+DtAci1q+
+         LBF8qO+kjzK2acnZCXqYqEywL/D/xXWKWjDhDkjKjJHkXldSOv6gOnxjzm+JrEyDHd4z
+         RvuYSfnKpi1uilLGpMvCMGC69xy4j7WmBx4F+FiRUw4xBcShOl0kAeHyMWFwWpuXrPM7
+         jWhUOsLygvNFelyyvU3FeJoPg8C6hWraoPnS+5NgR0nW7XUv/hvxG8lMcSQCvdn1Qtlh
+         ZZNq9HwjD1w+i4OnfG75o0YmVwv83fNRPe6TGnet7JalsBjkivJrbrSo4RL9HomJeDl5
+         ikcg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=lVc26Tpipix1Zeil9G6AM51N6LnfoocJh199HAQnIM4=;
-        b=hxH/32Tfkq7xh6//YDWBC2iPokShdTa6FzRQsqubi9o4nfAYOhaj3vfUpavw60QPC+
-         AnfxpJl9AZydH7q8c6jp61/DAz5c1gfS8BUTToSCwRT7ADl0PwRSd9f+OYXS7uIDB7cD
-         Guu9hz1B958OkmVknM6FFIMsNYrt0MKmqsgfFTpVDfRvhd+i9MJyz6gEu4xW9Mfk/g5I
-         P74pU1fAch9kc8bzneVzT3KUoMhjOHmOfqaSZtSOEvwW8h6JBexh+9qGPDyjxfvHFgz3
-         FBVbdEZY/RloOngBlUpTmceY42VjeAre+6YwmcJUPqF8mmjyzIMDva/LIzGMDnwKo4Lq
-         mZ2w==
-X-Gm-Message-State: AHPjjUi+J1SON6XsDmt1G30N4tY0IIxQmlND9ZTN+P1df2eCKnqKwRN5
-	zBQ9mSPdWa4tkUNm
-X-Google-Smtp-Source: ADKCNb4nPN8KCWV8JPrFapxK7CUeLezuiCBSEjFZGhNrRk+aoBpx0N2sDFl/Bmb0MCuTkrlzapurlQ==
-X-Received: by 10.98.57.18 with SMTP id g18mr9144224pfa.271.1505056652489;
-        Sun, 10 Sep 2017 08:17:32 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=44mu6rC5OLA+MFytNKqEIljdQEChAHBuykhvz9L+AfY=;
+        b=TicKJyVMiwNMTQNAPCszW0VDXPJQryhIfu5jipAHhRRsNMBT2w5qumDQ+nYkgh1FVF
+         i+2gebGVWnwil+bV7D+ODXEqvox8LkaFuw7l87CuOvAf+AKV2NlLY3sDpYPNDjFQ3otQ
+         9xMtjzmu4jzDXAMHwKnt1p4Mz7XShixRQ9dVSuoNTvoROF3afXuoFCPSIqSC4L2513Nn
+         DRMGmNw8kUDo0aJvu2Jozt1Mb2fOQ5hZjaEUch2Vebm41bJksWJLXK0+Hnh/Zh+DyZif
+         k4jLZICuEgVnwitZQseMAAh6LBKyUXS0mBM40ekJ4OJ4n9mmcArlGtPKShuzmw8Ez9/r
+         eGAg==
+X-Gm-Message-State: AHPjjUhAp6/Is8aT88TsnPzG+PtNqJx/XWw+VNJmHlUI8+YR7GyEJWi7
+	kAzJjbRIQ6meBg==
+X-Google-Smtp-Source: ADKCNb7Rjfbf36BcPs5Qzwsr5gQCi+cB0dIt2G7ifVKmLwKiBY4HYcok0xrOyk9N9hkQdoPI+k8Agg==
+X-Received: by 10.98.50.5 with SMTP id y5mr9220378pfy.203.1505056373913;
+        Sun, 10 Sep 2017 08:12:53 -0700 (PDT)
 Return-Path: <harshasharmaiitr@gmail.com>
 Received: from localhost.localdomain ([103.37.201.27])
-        by smtp.gmail.com with ESMTPSA id c7sm11555869pfg.165.2017.09.10.08.17.30
+        by smtp.gmail.com with ESMTPSA id w134sm13823584pfd.186.2017.09.10.08.12.51
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 10 Sep 2017 08:17:32 -0700 (PDT)
+        Sun, 10 Sep 2017 08:12:53 -0700 (PDT)
 From: Harsha Sharma <harshasharmaiitr@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com,
 	Harsha Sharma <harshasharmaiitr@gmail.com>
-Subject: [PATCH 01/10] staging: rtl8723bs: Add spaces around '='
-Date: Sun, 10 Sep 2017 20:45:28 +0530
-Message-Id: <7b2a57c6f3eb01142a73e92124fdf06a7504e68e.1505052882.git.harshasharmaiitr@gmail.com>
+Subject: [PATCH 00/10] staging: rtl8723bs: Follow linux-kernel coding style
+Date: Sun, 10 Sep 2017 20:40:44 +0530
+Message-Id: <cover.1505052882.git.harshasharmaiitr@gmail.com>
 X-Mailer: git-send-email 1.9.1
-In-Reply-To: <cover.1505052882.git.harshasharmaiitr@gmail.com>
-References: <cover.1505052882.git.harshasharmaiitr@gmail.com>
 
-Use one space around (on each side of) '=' operator
+Linux kernel coding style uses one space around most binary and ternary
+operators and spaces are prohibited at the start of a line. Concatenated
+strings should have space between elements and space is required after ','.
+In conditional statements, do not use unnecessary braces where a single
+statement will do and put the opening brace last on the line, and put
+the closing brace first. Unnecessary spaces and blank lines should be
+avoided. 
 
-Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
----
- drivers/staging/rtl8723bs/os_dep/os_intfs.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+Harsha Sharma (10):
+  staging: rtl8723bs: Add spaces around '='
+  staging: rtl8723bs: Add spaces around '+', '|', '*'
+  staging: rtl8723bs: Add spaces around '?', '==', '||', '!='
+  staging: rtl8723bs: Remove unnecessary spaces at the start of line
+  staging: rtl8723bs: Add space between concatenated strings
+  staging: rtl8723bs: Add space after ','
+  staging: rtl8723bs: Removed unneccesary space
+  staging: rtl8723bs: Remove unnecessary space
+  staging: rtl8723bs: Remove unneccesary braces and change position of
+    open brace
+  staging: rtl8723bs: Remove unnecessary blank lines
 
-diff --git a/drivers/staging/rtl8723bs/os_dep/os_intfs.c b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
-index 0215899..7f22ca9 100644
---- a/drivers/staging/rtl8723bs/os_dep/os_intfs.c
-+++ b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
-@@ -121,7 +121,7 @@
- 
- static int rtw_enusbss = 0;/* 0:disable, 1:enable */
- 
--static int rtw_hwpdn_mode =2;/* 0:disable, 1:enable, 2: by EFUSE config */
-+static int rtw_hwpdn_mode = 2;/* 0:disable, 1:enable, 2: by EFUSE config */
- 
- #ifdef CONFIG_HW_PWRP_DETECTION
- static int rtw_hwpwrp_detect = 1;
-@@ -183,7 +183,7 @@
- 
- module_param(rtw_hw_wps_pbc, int, 0644);
- 
--static uint rtw_max_roaming_times =2;
-+static uint rtw_max_roaming_times = 2;
- module_param(rtw_max_roaming_times, uint, 0644);
- MODULE_PARM_DESC(rtw_max_roaming_times,"The max roaming times to try");
- 
-@@ -255,8 +255,8 @@ static uint loadparam(struct adapter *padapter, _nic_hdl pnetdev)
- 
- 	registry_par->vrtl_carrier_sense = (u8)rtw_vrtl_carrier_sense ;
- 	registry_par->vcs_type = (u8)rtw_vcs_type;
--	registry_par->rts_thresh =(u16)rtw_rts_thresh;
--	registry_par->frag_thresh =(u16)rtw_frag_thresh;
-+	registry_par->rts_thresh = (u16)rtw_rts_thresh;
-+	registry_par->frag_thresh = (u16)rtw_frag_thresh;
- 	registry_par->preamble = (u8)rtw_preamble;
- 	registry_par->scan_mode = (u8)rtw_scan_mode;
- 	registry_par->adhoc_tx_pwr = (u8)rtw_adhoc_tx_pwr;
-@@ -652,8 +652,8 @@ static u8 rtw_init_default_value(struct adapter *padapter)
- #ifdef CONFIG_GTK_OL
- 	psecuritypriv->binstallKCK_KEK = _FAIL;
- #endif /* CONFIG_GTK_OL */
--	psecuritypriv->sw_encrypt =pregistrypriv->software_encrypt;
--	psecuritypriv->sw_decrypt =pregistrypriv->software_decrypt;
-+	psecuritypriv->sw_encrypt = pregistrypriv->software_encrypt;
-+	psecuritypriv->sw_decrypt = pregistrypriv->software_decrypt;
- 
- 	psecuritypriv->dot11AuthAlgrthm = dot11AuthAlgrthm_Open; /* open system */
- 	psecuritypriv->dot11PrivacyAlgrthm = _NO_PRIVACY_;
-@@ -777,7 +777,7 @@ u8 rtw_init_drv_sw(struct adapter *padapter)
- 		goto exit;
- 	}
- 
--	padapter->cmdpriv.padapter =padapter;
-+	padapter->cmdpriv.padapter = padapter;
- 
- 	if ((rtw_init_evt_priv(&padapter->evtpriv)) == _FAIL) {
- 		RT_TRACE(_module_os_intfs_c_, _drv_err_, ("\n Can't init evt_priv\n"));
-@@ -986,7 +986,7 @@ int _netdev_open(struct net_device *pnetdev)
- 
- 		DBG_871X("MAC Address = "MAC_FMT"\n", MAC_ARG(pnetdev->dev_addr));
- 
--		status =rtw_start_drv_threads(padapter);
-+		status = rtw_start_drv_threads(padapter);
- 		if (status == _FAIL) {
- 			DBG_871X("Initialize driver software resource Failed!\n");
- 			goto netdev_open_error;
-@@ -1641,7 +1641,7 @@ int rtw_resume_process_wow(struct adapter *padapter)
- 		}
- 
- 		/* Disable WOW, set H2C command */
--		poidparam.subcode =WOWLAN_DISABLE;
-+		poidparam.subcode = WOWLAN_DISABLE;
- 		padapter->HalFunc.SetHwRegHandler(padapter, HW_VAR_WOWLAN, (u8 *)&poidparam);
- 
- 		psta = rtw_get_stainfo(&padapter->stapriv, get_bssid(&padapter->mlmepriv));
-@@ -1705,7 +1705,7 @@ int rtw_resume_process_wow(struct adapter *padapter)
- 		DBG_871X_LEVEL(_drv_always_, "do not reset timer\n");
- 	}
- 
--	pwrpriv->wowlan_mode =false;
-+	pwrpriv->wowlan_mode = false;
- 
- 	/* clean driver side wake up reason. */
- 	pwrpriv->wowlan_wake_reason = 0;
+ drivers/staging/rtl8723bs/os_dep/os_intfs.c | 190 ++++++++++++----------------
+ 1 file changed, 78 insertions(+), 112 deletions(-)
+
 -- 
 1.9.1
 
