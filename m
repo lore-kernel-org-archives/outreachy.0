@@ -1,67 +1,95 @@
-X-GM-THRID: 6805826308521590784
-X-Received: by 2002:a7b:c770:: with SMTP id x16mr2059273wmk.159.1584604920294;
-        Thu, 19 Mar 2020 01:02:00 -0700 (PDT)
+X-GM-THRID: 6464507171401891840
+X-Received: by 10.46.29.11 with SMTP id d11mr647271ljd.8.1505135714183;
+        Mon, 11 Sep 2017 06:15:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:f3ca:: with SMTP id g10ls548049wrp.11.gmail; Thu, 19 Mar
- 2020 01:01:59 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuCOfBg5AlzbpM1uCjNIuu1XYZ2q0ZnTfIj2ie9TOKE8Zdpx7emL4jVqgofrIFF6CoxV2gD
-X-Received: by 2002:a5d:4cc2:: with SMTP id c2mr2578576wrt.398.1584604919084;
-        Thu, 19 Mar 2020 01:01:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584604919; cv=none;
+Received: by 10.46.75.1 with SMTP id y1ls288040lja.28.gmail; Mon, 11 Sep 2017
+ 06:15:12 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QCwP7te5CAJvqP2qKUYZX/deN73SiaepGqxli2eIPcIpHu5mDaVjFewAXUwomSxxONjUcSh
+X-Received: by 10.25.190.75 with SMTP id o72mr591526lff.18.1505135712202;
+        Mon, 11 Sep 2017 06:15:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505135712; cv=none;
         d=google.com; s=arc-20160816;
-        b=RoBGtaSnTFW47Y0IWyYxMWmFSrSL+gVis4tRHjlCBDUc8ISEFAkFeV8aygZ9KwmzAA
-         1759gclg2wE0ZZe8lfWnNSrPCSF6kMFTch47LNVtNdeoZNVJV/K1UmQ1pl0TwHtsHJs+
-         O6BY5rj4RVxTnF7n5P0TmRj02X1bes7yHNBItWUOxSdBNdc37za41WXJajnlBNApj689
-         0jvUG2eT9slDBhciIl8dANL6S/Aorw+luPD0WLNm9n95RPYA7IIqnmykOy08vUv0hAwz
-         vnAlFHyLjIGcul//3LVPQNrKp2ObwhHG+yvuVDSV4A3LIm72PVvkz/PqspKXllTG0niq
-         E6Yw==
+        b=iCkVWmClIyh653G6M7VrBIV6jJ4nHjyOuy7CtCOD0YgTf+U43FdQOhNZS7zmQ9rG0h
+         xvahEbi/oUe30OUtSB/ba5NDR/cUPnEjTD1Iv2QY1+XUY7n3zPYonWTHPNfk3N67y6fe
+         DbylWeVkNMbI83pgTsurEb3ayFsG6aCook/xocIKtQeMVH3IdbrH+5032GEbWpj9A/Lt
+         MtuMTe9I+vVZrtB/A09HEamXPD+mL6AGnw6yqdveiyL2hzfbDMyz9lQD1Wp0W6zD7iWf
+         BjVGsfMiPso2UVQEXxY6H3/fMTYZ7LGECq3/3rwre5/tatVFWTCoDsZGwfPGS2eAiF1v
+         MBPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date;
-        bh=XDyH6H10L71yaWtVOJGzILcKYb9bBeBc+rUXiz9B7P0=;
-        b=nWZBiEfJgEafXVCz+q+uRoIPAEH6UUIGV9ueZjqid9J1/jIusb64gH3wSB4mFi5/g3
-         raYfjojx1rgTN3c6vY3Rs4yJocMhpz2xPe1meecMDfrB+zTt+zR00CbXJSDlEmJYg5zv
-         HqPOMWeuyKE75+apmrJTSbxNaUdQ0nHeYDmBQiPf97mgFTQVD+w+siFbMaNekxUWCaZx
-         MwPRQa7okDvmLnVbpUgFweOeT9k0jPfP62CHlC5NfHWT7kZevcDDchzYkqFW5lvazfhq
-         NYeDXgrN2QIhaDYsS746Lg3A3bzgK54lZzseuLXgdE+QmLc5DUv5lDrG4T5XxWF1xj++
-         i8mw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=YbaEiv4yIEfKxmMMS7rV+Q5mqe3REqLrp9luAK8P90A=;
+        b=B/1VYAe8dSYx58Oiv3n+NPH5+mWcEbSIK1MnNVu6eLt20cv7kDA9ifFlKLAvGl7oyD
+         57a+OZSp8sEMhxltsx+QS++ASctXGnCo9lirkYWDbmp63WTm+OwD0PBDHqzThXV7go41
+         hZ9gozgWoaeAWL5KLt9A+oa2pT35R00P3Xn5n384djTyDUOK7/pERbD9MxHtxJD0mgZ8
+         HRiNIgoFcNvKvdPcL2zdYyddR9K00SZD5k4yTfAxlBL9/zdkF+rU/mJlNwaoSfb37muT
+         M61g68339U+5Vft2F4F3Fb8HQVgN7t4HbqL1DIcdI0yEMysnWMjQISn3pn+nbPiNzHrO
+         weYQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Return-Path: <vkor@vkten.in>
-Received: from vkten.in (vkten.in. [104.244.73.96])
-        by gmr-mx.google.com with ESMTP id d16si55447wrv.4.2020.03.19.01.01.58
-        for <outreachy-kernel@googlegroups.com>;
-        Thu, 19 Mar 2020 01:01:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id l133si548573wmb.3.2017.09.11.06.15.12
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 11 Sep 2017 06:15:12 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Received: (qmail 25896 invoked from network); 19 Mar 2020 08:01:57 -0000
-Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.202.245.105)
-  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
-  by vkten with ESMTPSA; 19 Mar 2020 08:01:57 -0000
-Date: Thu, 19 Mar 2020 13:31:52 +0530
-From: R Veera Kumar <vkor@vkten.in>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: I need feedback on my posted patches
-Message-ID: <20200319080144.GA1723@tulip.local>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,377,1500933600"; 
+   d="scan'208";a="237053036"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 11 Sep 2017 15:15:11 +0200
+Date: Mon, 11 Sep 2017 15:14:40 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Srishti Sharma <srishtishar@gmail.com>
+cc: gregkh@linuxfoundation.org, florian.c.schilhabel@googlemail.com, 
+    Larry.Finger@lwfinger.net, devel@driverdev.osuosl.org, 
+    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8712: Remove multiple
+ blank lines
+In-Reply-To: <1505135358-4408-1-git-send-email-srishtishar@gmail.com>
+Message-ID: <alpine.DEB.2.20.1709111514200.28604@hadrien>
+References: <1505135358-4408-1-git-send-email-srishtishar@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Type: text/plain; charset=US-ASCII
 
-Hi,
 
-I posted patches on Saturday. But I did not got a msg from Greg
-about they being accepted. Yesterday Greg posted that he has
-seen all outreachy patches upto now. And if we do not get reply's
-for the patches we should resend. So I resent it yesterday.
 
-Please I need a feedback about my patches. I do not know what to
-do otherwise. Also the Outreachy contribution time is only 1 month.
-And we have to do this 10 patches and 2 patchsets before project
-specific task. I need time for that also. Please consider.
+On Mon, 11 Sep 2017, Srishti Sharma wrote:
 
-Regards,
-Veera
+> Remove extra blank line.
+>
+> Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+> ---
+>  drivers/staging/rtl8712/rtl8712_event.h | 1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/drivers/staging/rtl8712/rtl8712_event.h b/drivers/staging/rtl8712/rtl8712_event.h
+> index b383740..cad7085 100644
+> --- a/drivers/staging/rtl8712/rtl8712_event.h
+> +++ b/drivers/staging/rtl8712/rtl8712_event.h
+> @@ -60,7 +60,6 @@ enum rtl8712_c2h_event {
+>  	MAX_C2HEVT
+>  };
+>
+> -
+>  #ifdef _RTL8712_CMD_C_
+>
+>  static struct fwevent wlanevents[] = {
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1505135358-4408-1-git-send-email-srishtishar%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
