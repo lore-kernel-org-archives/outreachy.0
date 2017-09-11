@@ -1,131 +1,114 @@
 X-GM-THRID: 6464558532911955968
-X-Received: by 10.99.7.132 with SMTP id 126mr7483336pgh.163.1505147840144;
-        Mon, 11 Sep 2017 09:37:20 -0700 (PDT)
+X-Received: by 10.176.1.142 with SMTP id 14mr6456622ual.63.1505147324378;
+        Mon, 11 Sep 2017 09:28:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.174.201 with SMTP id n70ls4487081ioo.53.gmail; Mon, 11 Sep
- 2017 09:37:19 -0700 (PDT)
-X-Received: by 10.159.55.39 with SMTP id z36mr8084311uad.35.1505147839447;
-        Mon, 11 Sep 2017 09:37:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505147839; cv=none;
+Received: by 10.107.133.73 with SMTP id h70ls4585036iod.49.gmail; Mon, 11 Sep
+ 2017 09:28:43 -0700 (PDT)
+X-Received: by 10.176.71.238 with SMTP id w46mr8221606uac.30.1505147323555;
+        Mon, 11 Sep 2017 09:28:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505147323; cv=none;
         d=google.com; s=arc-20160816;
-        b=mMZaWsRiQzI3Le2xakks6K6jePFlTJokrGB/UHyyegOqg5rrL6aAnejkWb7zoIvwr+
-         d/Mxtp3a/Vuu2CGzRkroTl8rEDT5b+gSx28NNY00jHcX9sNyXDnp+YyCe+7lKb8HhxD7
-         j5BTi23wugJRfOqZB9Apyl/P7Khy+EcnSo3QyFcCuzP03+BGvvvmYU9kMeLQ1k6N7T8g
-         3o6b3OUGvIYHlFkcwkyABbu5CggWx2ZF2tbZn4K1SzqE0IZ92crgypY8q/plV2Ir02+L
-         JWmLSN9Y7P2wcJ81KnqN8QGfANoQ51fksmQVTnP6gthcHSrbYl5hX3EVddGxFUpU4d18
-         fQFQ==
+        b=D0NluGQMydxhAF2QnxtrGOWv41Xyny41kxNMFTzouVKbXmOISS81fdweP5wMb5k4B7
+         M+/UzONfWkIvtDk+j8bQZe+NJu6OqMNC5PT6zyApo//GxNnEIY3KoQXbSsc0Qqz8GnaO
+         BNhTcadirfJlp8aeqzy/8BeVBhzNYXtw4bhV3dAkDSzwES2gJ0n+Wir8UGrkMvHOc3nE
+         cE2DHs/pM+XYNPFEo3puISjOyOTXuGWgZGeU5vRcQ6ZIJmt3cD7coN9UGqIhTOipxxMt
+         zflhexOu1LvxKtkJaIrjPiZKVkx6Jl1JJXpVy/Sedirr93ZFGSW6bl0AfFg3mfxQXPWn
+         m4Ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=Ou+R24v+HAjCMl4WIOM4PNCJ81RZsKCWM1KflUGTbfU=;
-        b=UBOcadQEd/nzpSFCT/StEbHstZG1nkBupnmLh/9877usGKNHQlWF6hxLA9iLxSsslX
-         ejLSg6CtiiD+CiSp6dlDZoPZ00rmOp4ScTVYeASRU2ECGhsFb1J2ltUjyjT5IZswe9mq
-         EmzWA3qb37G2U7ck3fcz9tphMI2UF7zgI/+BXtmyanMsiLnl4HtS1NCINPa6MJPDb0Ys
-         61oEQ/RXdhINnkqvJlWx9Pl7bWgFHjaB7eQw2FZ2zZScTLcJu1IX9nwXJp2FbS0ZYCpM
-         Mh+/mNR+Wx/kF8pR2xPK5OsJUT6kf6HOknpLX8oFGdhvNzLE/vB2NeSjGRCrezr/HgCa
-         7Hgw==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=DRHu00pc60rnjyqOU06jhHtlAVUZKZV4CHiYU6pARwI=;
+        b=N4SwMtjGYyd972pj+I6I7HRa9xfTbq/7y/NJUB7BE0cAgYB69kSg3dxEM1+pa0YZEX
+         vbn5vDqR+hrX0cmZ8MVnYWnep7sn1GwcXOX0yq3eYT79WRiGZE7Te3eEqt4w/naC4JXB
+         bsGl9oPgdb9Hn6kq8tTivNLA+5W/GwUck0o0mcLwOOVRXLQJJFPqmntlXSIvBkFn7c9f
+         9RrsJ9A+Dtf/cPJfpU7n5zZsh3l/AnBjLKFMiCO/+rhv88azsk9BGmrjOvTJAavQyQVH
+         Cc33/AOYZ1kOBMLjVlL7l0hCcJLNbL+BjNgl7SHeZlgSlRUXuLzSqY0E/vZqq+6tGcTq
+         fyRg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@chromium.org header.s=google header.b=H4MRMpJj;
-       spf=pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:4002:c05::231 as permitted sender) smtp.mailfrom=seanpaul@chromium.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org
-Return-Path: <seanpaul@chromium.org>
-Received: from mail-yw0-x231.google.com (mail-yw0-x231.google.com. [2607:f8b0:4002:c05::231])
-        by gmr-mx.google.com with ESMTPS id l77si683269ywc.16.2017.09.11.09.37.19
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MWYrjNcN;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <srishtishar@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id c200si61513pfb.14.2017.09.11.09.28.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 11 Sep 2017 09:37:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:4002:c05::231 as permitted sender) client-ip=2607:f8b0:4002:c05::231;
+        Mon, 11 Sep 2017 09:28:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@chromium.org header.s=google header.b=H4MRMpJj;
-       spf=pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:4002:c05::231 as permitted sender) smtp.mailfrom=seanpaul@chromium.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org
-Received: by mail-yw0-x231.google.com with SMTP id r85so22738706ywg.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 11 Sep 2017 09:37:19 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MWYrjNcN;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x241.google.com with SMTP id i23so309920pfi.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 11 Sep 2017 09:28:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=Ou+R24v+HAjCMl4WIOM4PNCJ81RZsKCWM1KflUGTbfU=;
-        b=H4MRMpJjGpRM+38xqMhOH1BYfLzeWOMGw0i7xeyMqKpdJzYpfOstQNUHmcAxjMgkyA
-         vMJ1m8+7HyxbkGDLBYsee50Z1cXP39cyVXxLE3nfphtrsM/dlMEU94p1EYgB6JKsq0At
-         jlKxTfcH1YO+5rTBi+7SfTpm3GKQ+S0FS/N2A=
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=DRHu00pc60rnjyqOU06jhHtlAVUZKZV4CHiYU6pARwI=;
+        b=MWYrjNcNtVW5FNtyKIVrYnoe07Bk1m/7JWne1Cj4BzuNDWObyQysJPXJKyKn2f5UoX
+         4jcfaK9mLYZ+YPaQnFb139GKRQh4NLCbkZY1aQmkw9ujjR/iov9zCZVKsN04hjsS3bMV
+         JtPHcDhDZR0eo3FWDp3i1Qp5NPR90wyzhBQXGrV0auIqtMHlxPL/kB1KMR89ffEMqS/R
+         PrOAs9a1ATpMuWPk2amSf2//tKe+Gs72Fr0XC4mi47dDj/rI+HQ/GHN2Hh6G7FkZ6atR
+         x77DHZEf1FPwwu4hCyHA1iYJ0jYkCXvn6BKV3d+bnVP4S4S575ZJvZcYMvr6JkT6Ydkm
+         0dNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=Ou+R24v+HAjCMl4WIOM4PNCJ81RZsKCWM1KflUGTbfU=;
-        b=hlaEvksS6GMunoAy9QvKd4VgSyThqO8VD7FWwZGo5ZiNq+WswMZVRTpvLtgm9eSPuR
-         Hp3m2Tnf5bPwJ+3KdCORjVvR2ElyRhvIJVKd05HqYa1pjGUQfsFA6AwWj8lJ6P73RZAe
-         +hXoVHsjjlqNfb5peXzJfMMorzawGKybFoJeQ7c692Tll1qvy5a7SkRh0yZQaC2zJjTY
-         P/2LpTHSSHx8cP8nXL0PuLXqpeVp9lF7HPl5zPdB8JYiCX7ajWnkGtrq5FHZEyuj5BHD
-         W1cOQHmjbZ0G/oPuMlQzrjQzqXN6ufLaRF3fjdeuM+9v7som0zyy0n6fEm6ZxghrrQ1m
-         VNsg==
-X-Gm-Message-State: AHPjjUhVZuxD+u5X62r+ZHDuiH9H74Pex7hquDmlBJVkql3O+uniVkg/
-	2UaAC52NPA3tmGkXXENTfA==
-X-Received: by 10.37.178.26 with SMTP id i26mr9400515ybj.3.1505147839088;
-        Mon, 11 Sep 2017 09:37:19 -0700 (PDT)
-Return-Path: <seanpaul@chromium.org>
-Received: from mail-it0-f47.google.com (mail-it0-f47.google.com. [209.85.214.47])
-        by smtp.gmail.com with ESMTPSA id i5sm3222498ywe.56.2017.09.11.09.37.18
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 11 Sep 2017 09:37:18 -0700 (PDT)
-Received: by mail-it0-f47.google.com with SMTP id c195so20447735itb.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 11 Sep 2017 09:37:18 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QANxD6z75f6tnjfB+M9tU3nnbI3zatn81Lx6dpj1dz32LeMbj8SpJeQhnLbYbYeUezc8VJc5vLvyOkVm1Q7DFw=
-X-Received: by 10.36.165.8 with SMTP id k8mr5857297itf.83.1505147837834; Mon,
- 11 Sep 2017 09:37:17 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.107.156.195 with HTTP; Mon, 11 Sep 2017 09:36:57 -0700 (PDT)
-In-Reply-To: <1505147317-13411-1-git-send-email-srishtishar@gmail.com>
-References: <1505147317-13411-1-git-send-email-srishtishar@gmail.com>
-From: Sean Paul <seanpaul@chromium.org>
-Date: Mon, 11 Sep 2017 12:36:57 -0400
-X-Gmail-Original-Message-ID: <CAOw6vb+CZWz39-6_dtPzwi4=mxJkp_fQ=saUrLG8TfFORZkSkA@mail.gmail.com>
-Message-ID: <CAOw6vb+CZWz39-6_dtPzwi4=mxJkp_fQ=saUrLG8TfFORZkSkA@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v2] Staging: ccree: Remove unused
- variable monitor_lock
-To: Srishti Sharma <srishtishar@gmail.com>
-Cc: Gilad Ben-Yossef <gilad@benyossef.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Linux Crypto Mailing List <linux-crypto@vger.kernel.org>, driverdev-devel@linuxdriverproject.org, 
-	devel@driverdev.osuosl.org, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, outreachy-kernel@googlegroups.com
-Content-Type: text/plain; charset="UTF-8"
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=DRHu00pc60rnjyqOU06jhHtlAVUZKZV4CHiYU6pARwI=;
+        b=HS4IPI0SW21Jswoyyobzh6lQZ6WpubeW4nwKhE75qv/Mua4vF3rXW9owSEgv8uKI1q
+         xHXIGGhADyNfLAtjeacoKtqOfXLJs4gV2khOC0j25swFtcQD/+XeQRRmlM50Pjl9zVfW
+         JyOBCxClDVf2lqfOsi5n3HSm/sGPhXZpfgJUYdNJWX4mDroXhNuyhaG7F8qwt07qxEVG
+         4mJc90buqlDjgADH7M9WZPwA2b4PgSdDGTaWas/vXY5kc2YOKe0KRA83frIKWJJd1ZFR
+         3cTfxG483D8InibvdmJ37+Yb3nlBOonL0v0OOriJFfoDH9jBK4HvcY6hPOriexsO4O7r
+         VyTw==
+X-Gm-Message-State: AHPjjUj1OAKRYZcTcLfOo2DTh1cikl4YQTUYEPg/u3Vkeme6TzhRjqHq
+	xhRqrGbS75eQIg==
+X-Google-Smtp-Source: ADKCNb6QeG4dlKVGBzvj+JGKkh6/YDOcZQpx1CD4OCpGLVeL23x12ISBnPTl59/Ky3CIqj386nXUHQ==
+X-Received: by 10.84.175.195 with SMTP id t61mr14005471plb.206.1505147323239;
+        Mon, 11 Sep 2017 09:28:43 -0700 (PDT)
+Return-Path: <srishtishar@gmail.com>
+Received: from srishti-PRODiiGY-945G ([122.168.5.9])
+        by smtp.gmail.com with ESMTPSA id e78sm15159260pfh.76.2017.09.11.09.28.42
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 11 Sep 2017 09:28:42 -0700 (PDT)
+From: Srishti Sharma <srishtishar@gmail.com>
+To: gilad@benyossef.com
+Cc: gregkh@linuxfoundation.org,
+	linux-crypto@vger.kernel.org,
+	driverdev-devel@linuxdriverproject.org,
+	devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com,
+	Srishti Sharma <srishtishar@gmail.com>
+Subject: [PATCH v2] Staging: ccree: Remove unused variable monitor_lock
+Date: Mon, 11 Sep 2017 21:58:37 +0530
+Message-Id: <1505147317-13411-1-git-send-email-srishtishar@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-On Mon, Sep 11, 2017 at 12:28 PM, Srishti Sharma <srishtishar@gmail.com> wrote:
-> Remove the variable monitor_lock as it is not used anywhere.
->
-> Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+Remove the variable monitor_lock as it is not used anywhere.
 
-Reviewed-by: Sean Paul <seanpaul@chromium.org>
+Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+---
+Changes in v2:
+ -The variable that was not to be declared as volatile can be
+  eliminated as it is not being used anywhere.
 
-> ---
-> Changes in v2:
->  -The variable that was not to be declared as volatile can be
->   eliminated as it is not being used anywhere.
->
->  drivers/staging/ccree/ssi_request_mgr.c | 1 -
->  1 file changed, 1 deletion(-)
->
-> diff --git a/drivers/staging/ccree/ssi_request_mgr.c b/drivers/staging/ccree/ssi_request_mgr.c
-> index e5c2f92..b94a91f 100644
-> --- a/drivers/staging/ccree/ssi_request_mgr.c
-> +++ b/drivers/staging/ccree/ssi_request_mgr.c
-> @@ -49,7 +49,6 @@ struct ssi_request_mgr_handle {
->         dma_addr_t dummy_comp_buff_dma;
->         struct cc_hw_desc monitor_desc;
->
-> -       volatile unsigned long monitor_lock;
->  #ifdef COMP_IN_WQ
->         struct workqueue_struct *workq;
->         struct delayed_work compwork;
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1505147317-13411-1-git-send-email-srishtishar%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
+ drivers/staging/ccree/ssi_request_mgr.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/drivers/staging/ccree/ssi_request_mgr.c b/drivers/staging/ccree/ssi_request_mgr.c
+index e5c2f92..b94a91f 100644
+--- a/drivers/staging/ccree/ssi_request_mgr.c
++++ b/drivers/staging/ccree/ssi_request_mgr.c
+@@ -49,7 +49,6 @@ struct ssi_request_mgr_handle {
+ 	dma_addr_t dummy_comp_buff_dma;
+ 	struct cc_hw_desc monitor_desc;
+
+-	volatile unsigned long monitor_lock;
+ #ifdef COMP_IN_WQ
+ 	struct workqueue_struct *workq;
+ 	struct delayed_work compwork;
+--
+2.7.4
+
 
