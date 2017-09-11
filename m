@@ -1,96 +1,140 @@
 X-GM-THRID: 6464551056446586880
-X-Received: by 10.99.113.93 with SMTP id b29mr8634057pgn.171.1505208018599;
-        Tue, 12 Sep 2017 02:20:18 -0700 (PDT)
+X-Received: by 10.36.50.204 with SMTP id j195mr76349ita.56.1505147787067;
+        Mon, 11 Sep 2017 09:36:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.200.85 with SMTP id w82ls842319itf.22.gmail; Tue, 12 Sep
- 2017 02:20:17 -0700 (PDT)
-X-Google-Smtp-Source: ADKCNb5S1rXZJfGlDBPpsA29hCjiMm9H9EMlvSyzaKTsz/HqWNbERAZudamlajEtnTPu/+qwPlAk
-X-Received: by 10.99.104.67 with SMTP id d64mr8699252pgc.106.1505208017753;
-        Tue, 12 Sep 2017 02:20:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505208017; cv=none;
+Received: by 10.107.69.1 with SMTP id s1ls4300580ioa.32.gmail; Mon, 11 Sep
+ 2017 09:34:39 -0700 (PDT)
+X-Received: by 10.13.212.12 with SMTP id w12mr7976352ywd.147.1505147679327;
+        Mon, 11 Sep 2017 09:34:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505147679; cv=none;
         d=google.com; s=arc-20160816;
-        b=ck3Omu0DMLWalFcMhBdmA8HmEzkN97xZs1WHLTzx7bCViVozoILaC7G2ifaBsl5HD/
-         IGZ9clI/cCq1/bCg5y/0+hRvi6oOJNigDOwFA5dn1aBwAyTp1MXWq1Vb3q+kc68SQ5i7
-         NFjM7VpC9e4M1rFOw0UFgPfkR50plK7U8ww+uXgxURTpNh6JaB6lnVdI2WIzPe/BT0UY
-         V2GI0xkmkNTf/JIvAtcLFVQxHlfL+mM/8BI3X8/V/ic7fyYxw2Omb3EBw4P+CUQchV5P
-         QCmkJ/WdE0HtjDWZWhmPreOfLbo7J4jiW64s/yim2E2GSUHgoXEffetdJ6uc8hw/lTsc
-         cYdA==
+        b=wa1vxDp4gom6IEdu6XddTGOEVRVg6N31Y76F339yBVnaB4b5RbFcACUdoSv//dQsNy
+         9SujtfiHMxAnHzBTG0x0PXEcT5/g/xxulqCCZkzJi07NV4I9nuya1+VvP45yZFMTV0Z5
+         fw+qvyCYpeqwzgLjjSWAg58RNNlb0wdp0KYbBg/SB61hC538GnvxNS5CtD8YIp5n0TdC
+         rgBMepKdtZgAjPvpqqsR+Ro1DRF7V+Tcpk9BXO/J7kCS6rMaCX4nGNrssr94JrpLL7YP
+         QhTkulpi/ox9g/fLAD7g9h93n9FtfoOjgFWYlIpii6aZrTnt9lxV3fs4xR7bFgL4Z0lK
+         gMYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=zKoxXnbB/obHWBM/2uXNzJoyLTUbmFskg56TZGi3MQQ=;
-        b=G1aiSH90v+OLe4zuO5ICy57S3TCFyMXCCDd7x9+mLaLBK2yO+BaZSq+oYBhRPC6xlo
-         3jf03PZYVYPSo9jJoA6dUkbzFvUfpbP8tnjQzW0NFG2qWLd1RVLnimjs9uwyEQu4Ao6H
-         hBOKZUwvtHz7jZ2O4yZ1hCpoL1JMNgRM11sy3+asKGrPDToov3tkFiVIm+xZDRV0EgAM
-         XnVbKLQ+dYcohlj/9459auECGjGRGjHJ6WqfWbcmwbaXtaAZyGc1LBFq/ghiCmBaJVg1
-         AaSOMqIpvblDWBWPP3kecfOM300EkxiL3FziZCRRjiUrLUtwlVXlJ17Oj8kfrRpmGtF4
-         0Kbg==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=oyuHxakj77acBr57WO/0N0i4TgYrMdQ6Wk1wF2wFrBA=;
+        b=SE7lv0NzXwHfMPJHBJplB8cLAOyE71+mQpnq7qsJDrs3iz3u8rF06WFpUCNTB2hXQN
+         ruJDzdvjJRI+JSQSfhTM3QtlMQscxp2jOi4KOjkIn8Z/wWOHQn9ip4fD6kpqtsVLK34M
+         0Srmsy0NNdZMr/sLO/vRYzlyLuhgZ2sy3amTY4sKrx5WcSuGSmjMTz1BYQENPXQoSghf
+         Atwgska8SX8mXU4r4kwP+5+UA3mROmDz6/B1SMyWuSg9IRQji8g9xB6scQcCA9iOajR2
+         PtOb42FYVCSQqWi9A8y7usPO05760iQKVEjKGrBIK9Cs0LfvFFimOXwwiw973lqHB/C9
+         MruQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.69 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <dan.carpenter@oracle.com>
-Received: from aserp1040.oracle.com (aserp1040.oracle.com. [141.146.126.69])
-        by gmr-mx.google.com with ESMTPS id p144si426547itc.0.2017.09.12.02.20.17
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=O+qmo4tt;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <srishtishar@gmail.com>
+Received: from mail-qt0-x241.google.com (mail-qt0-x241.google.com. [2607:f8b0:400d:c0d::241])
+        by gmr-mx.google.com with ESMTPS id v85si187747ywc.0.2017.09.11.09.34.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 12 Sep 2017 02:20:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.69 as permitted sender) client-ip=141.146.126.69;
+        Mon, 11 Sep 2017 09:34:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) client-ip=2607:f8b0:400d:c0d::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.69 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from userv0022.oracle.com (userv0022.oracle.com [156.151.31.74])
-	by aserp1040.oracle.com (Sentrion-MTA-4.3.2/Sentrion-MTA-4.3.2) with ESMTP id v8C9KA6H027684
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 12 Sep 2017 09:20:11 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
-	by userv0022.oracle.com (8.14.4/8.14.4) with ESMTP id v8C9KApU019994
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 12 Sep 2017 09:20:10 GMT
-Received: from ubhmp0018.oracle.com (ubhmp0018.oracle.com [156.151.24.71])
-	by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id v8C9K9bO030641;
-	Tue, 12 Sep 2017 09:20:10 GMT
-Received: from mwanda (/41.202.241.43)
-	by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Tue, 12 Sep 2017 09:20:08 +0000
-Date: Tue, 12 Sep 2017 12:19:51 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Srishti Sharma <srishtishar@gmail.com>
-Cc: gilad@benyossef.com, devel@driverdev.osuosl.org,
-        gregkh@linuxfoundation.org, driverdev-devel@linuxdriverproject.org,
-        linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
-        linux-crypto@vger.kernel.org
-Subject: Re: [PATCH] Staging: ccree: Don't use volatile for monitor_lock
-Message-ID: <20170912091951.noslc3dlncyxonyg@mwanda>
-References: <1505145571-11248-1-git-send-email-srishtishar@gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=O+qmo4tt;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qt0-x241.google.com with SMTP id u48so2995272qtc.4
+        for <outreachy-kernel@googlegroups.com>; Mon, 11 Sep 2017 09:34:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=oyuHxakj77acBr57WO/0N0i4TgYrMdQ6Wk1wF2wFrBA=;
+        b=O+qmo4tt9sHPAF4rwGnbQ7+7i+jWDpucTgrLFipTY/DPq+862WsX9GMo8U/afID7w6
+         C6d3leg3QoFXsXYcz5A4mi0HrrLYhsSPzDXQwjorlnFmcNdCu1wYjpU+A1ZR8+63YdKe
+         QVGdb/hYL8Tl1+YNv1UPEHy3IwM9padRq/Xy0RjJCITXZKa9o/R3F9K5E5SQc8oHebHV
+         2ZYi7fF89NboaPytT8M/RDBn4qiXP9aZQmHblH5/+X0m2B63Otx/oxRH8t3wpT1v6sRD
+         /nfZQObBK+BYRTwqXjNn/02u+eF9ax6qTkPE6hHlZUNuMHVQBRKm+LUlZaxHOHn1KTlm
+         9wmg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=oyuHxakj77acBr57WO/0N0i4TgYrMdQ6Wk1wF2wFrBA=;
+        b=nlDHZU6BcLC9bNdBrll+fdUdp19+FUP/45vp+rXzSGY/3M7ZoYiwQhJOjCsPpXzzXe
+         pnz039WUJ25EEZEXOzGZmMaxkp+JsccikTtjGF6nwxQfLs6/cRyx6G6SKlURuq6S61yN
+         OCXEwvC4oyQvw8bbU2dsOuqcXcNAQjeiz1woggYDjsFLYWGxJVs8Q4x2YXpRMnhnRLIx
+         2s79KV7A5Ic2iyqWQeCsE8XGyAuU6RAQxQnKnwrJkDkJeRgOwlAisTDuQydXpfJlfxs9
+         HjT9Tggy26u3Rh5cj5D7H9JNEQycy6WjI76/XVaQ5j5YzY4PLDq1k64UpohKJP+9RHRT
+         X3QQ==
+X-Gm-Message-State: AHPjjUgrcZdR7ijA3QO8DUKy1dmpEtc/Z8TpaRxgfinTkSLjzWj1aJWB
+	yS8vJwx1IShYLXSGECpszZq0Q/lwIg==
+X-Google-Smtp-Source: AOwi7QDPZncH82R3kC0Sg+9Lj+6Al2oX7fq8/JC1biachEx1fxCw19AVdXEGDmXGEiF52QkJc9dhRDlhAvXgjWkGrXg=
+X-Received: by 10.237.63.15 with SMTP id p15mr16681792qtf.117.1505147678919;
+ Mon, 11 Sep 2017 09:34:38 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1505145571-11248-1-git-send-email-srishtishar@gmail.com>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-Source-IP: userv0022.oracle.com [156.151.31.74]
+Received: by 10.200.55.118 with HTTP; Mon, 11 Sep 2017 09:34:38 -0700 (PDT)
+In-Reply-To: <CAB3L5oxwadCBOwir99x=D4Rmby6ZWPfDtFrMNwtFOpv8zhO4iQ@mail.gmail.com>
+References: <1505145571-11248-1-git-send-email-srishtishar@gmail.com>
+ <20170911160449.GA11886@kroah.com> <CAB3L5oxcyhgyy8EuGuPo9QtJQd-W7JTgQQE1PfopZFmSx58P9g@mail.gmail.com>
+ <alpine.DEB.2.20.1709111809180.13726@hadrien> <CAB3L5oxwadCBOwir99x=D4Rmby6ZWPfDtFrMNwtFOpv8zhO4iQ@mail.gmail.com>
+From: Srishti Sharma <srishtishar@gmail.com>
+Date: Mon, 11 Sep 2017 22:04:38 +0530
+Message-ID: <CAB3L5ozXiJLwwjqKVLOTyv6aQoaR9J8gF7u3Z-dyFipcbMr=Cg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] Re: [PATCH] Staging: ccree: Don't use volatile
+ for monitor_lock
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Greg KH <gregkh@linuxfoundation.org>, Gilad Ben-Yossef <gilad@benyossef.com>, 
+	Linux Crypto Mailing List <linux-crypto@vger.kernel.org>, driverdev-devel@linuxdriverproject.org, 
+	devel@driverdev.osuosl.org, 
+	Linux kernel mailing list <linux-kernel@vger.kernel.org>, outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset="UTF-8"
 
-On Mon, Sep 11, 2017 at 09:29:31PM +0530, Srishti Sharma wrote:
-> The use of volatile for the variable monitor_lock is unnecessary.
-> 
-> Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
-> ---
->  drivers/staging/ccree/ssi_request_mgr.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/ccree/ssi_request_mgr.c b/drivers/staging/ccree/ssi_request_mgr.c
-> index e5c2f92..7d77941 100644
-> --- a/drivers/staging/ccree/ssi_request_mgr.c
-> +++ b/drivers/staging/ccree/ssi_request_mgr.c
-> @@ -49,7 +49,7 @@ struct ssi_request_mgr_handle {
->  	dma_addr_t dummy_comp_buff_dma;
->  	struct cc_hw_desc monitor_desc;
-> 
-> -	volatile unsigned long monitor_lock;
-> +	unsigned long monitor_lock;
+On Mon, Sep 11, 2017 at 9:45 PM, Srishti Sharma <srishtishar@gmail.com> wrote:
+> On Mon, Sep 11, 2017 at 9:41 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>>
+>>
+>> On Mon, 11 Sep 2017, Srishti Sharma wrote:
+>>
+>>> On Mon, Sep 11, 2017 at 9:34 PM, Greg KH <gregkh@linuxfoundation.org> wrote:
+>>> > On Mon, Sep 11, 2017 at 09:29:31PM +0530, Srishti Sharma wrote:
+>>> >> The use of volatile for the variable monitor_lock is unnecessary.
+>>> >>
+>>> >> Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+>>> >> ---
+>>> >>  drivers/staging/ccree/ssi_request_mgr.c | 2 +-
+>>> >>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>> >>
+>>> >> diff --git a/drivers/staging/ccree/ssi_request_mgr.c b/drivers/staging/ccree/ssi_request_mgr.c
+>>> >> index e5c2f92..7d77941 100644
+>>> >> --- a/drivers/staging/ccree/ssi_request_mgr.c
+>>> >> +++ b/drivers/staging/ccree/ssi_request_mgr.c
+>>> >> @@ -49,7 +49,7 @@ struct ssi_request_mgr_handle {
+>>> >>       dma_addr_t dummy_comp_buff_dma;
+>>> >>       struct cc_hw_desc monitor_desc;
+>>> >>
+>>> >> -     volatile unsigned long monitor_lock;
+>>> >> +     unsigned long monitor_lock;
+>>> >
+>>> > While volatile is not right, odds are, this is still totally wrong as
+>>> > well.  How about using a "real" lock instead?
+>>>
+>>> I tried to find where is this variable being used in the code, but I
+>>> didn't find any usage of it . It might be an important attribute of
+>>> this structure definition but, I don't see it's value being set to
+>>> anything or being used somewhere .
+>>
+>> Try removing it and see if the code still compiles.  There is always a
+>> danger that a use of something could be constructed using ## in a macro,
+>> although given the uses of ## for this driver, it doesn't seem likely
+>> here.
 
-The variable seems unused.  Try deleting it instead.
+It compiles, so I have removed the variable and sent another patch
 
-regards,
-dan carpenter
+Thanks,
+Srishti
 
+>
+> Yes, I'll do that.
+>
+> Regards,
+> Srishti
+>>
+>> julia
 
