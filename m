@@ -1,122 +1,135 @@
-X-GM-THRID: 6950478192224239616
-X-Received: by 2002:a37:9bcf:: with SMTP id d198mr8150430qke.401.1618284311123;
-        Mon, 12 Apr 2021 20:25:11 -0700 (PDT)
+X-GM-THRID: 6464969864933015552
+X-Received: by 10.176.21.242 with SMTP id j47mr8965552uae.77.1505243094357;
+        Tue, 12 Sep 2017 12:04:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:620a:12c4:: with SMTP id e4ls10391636qkl.4.gmail; Mon,
- 12 Apr 2021 20:25:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwgyeEVARxSWRhK6w+NyqYrtchE/OKtIDyYtmk4xAUbG8ZuRCSQdKlmMGSXtDp3L5nGjdyw
-X-Received: by 2002:a05:620a:1477:: with SMTP id j23mr28869201qkl.416.1618284310377;
-        Mon, 12 Apr 2021 20:25:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618284310; cv=none;
+Received: by 10.36.25.78 with SMTP id b75ls1734448itb.4.canary-gmail; Tue, 12
+ Sep 2017 12:04:53 -0700 (PDT)
+X-Received: by 10.13.241.198 with SMTP id a189mr10212923ywf.128.1505243093440;
+        Tue, 12 Sep 2017 12:04:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505243093; cv=none;
         d=google.com; s=arc-20160816;
-        b=SAj8WZcV7aG1f8gx/2qHZFKScELiSM4M8yF2UXdWaSpYNaEtObKQTM7iq06DK4BxiQ
-         6d7patxXHtzG4LgAYTbg/52ERK2fylCdHSR893XW5TRR05sxa/D/GXELlis7PVN3hZ1l
-         LAXKYEBeZO5R57ws0Zwf7gfGcRd0Pt9IL8SUL5EaOKAJwTkfI57LJ6SVwRaMw73GpFpH
-         8wWud9D/Ww4Du5klWuQFHA/EVjF4HlDdASdeEhLiL2Omt93uZ879RtNhRsKPRJ/UzTLm
-         2pAo7t05nm5ME7vXELNIvW0JQu0YpMdNRpx0zGh9GICfF7rqCqIwD5EVMVqn4AQ5vmvV
-         +OtA==
+        b=NIuaep4eiS6E9vgwxZoWZ81S6Jz2pIp2XusBrENNqaoOYrKCxbMSTj/aMKL9DjrQJH
+         ZvYc0Qbic40WoqDsQKUi4r7iblxRww03W0SZO/iIE2MtUDQWgH5gPeArAR2b0bHpHanL
+         M5sQp49NcYiyvZS2F6YOl4bPjjPUBt3H8noGAn/0TPvH6Zq1jtpWjkphxivLum6jKi9c
+         eHAbOwFjUe0HjzBvBWz7sAPHSzMvI4OrQ8AxAzRIAz6hp+d9d2Dj0KGlM39/r/qzJc+X
+         cWmeRYO2DP3x96NjpEF2bnhaYCmHWZ2UUKHSi7CYMqomfhvBlg4rPWE3WBOA/8B8QUyj
+         kCMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=SRXvRUJitDAL3LVBcxgMSN2+Nyo+g/E1R/YUuhMK3zY=;
-        b=ZvSc5jzBdrojJgZs+8M/oLZbPOyWJPRutKCsNbfVIGraZ8Li1EXqgEdoBZDHetzDZo
-         Fly1x6ZIsFyRhLSg3RODFQQIjwTcXK9ytPGEkN9sh2XBwg0AGXHzkuaSSNzFIY0UryVd
-         VpqicZE9VQt/9KPMXHpe7PsW0krZ4hkCQS93MqGDtNG3Z9u8HkOqjfx1k6HIM4rzirys
-         TL/YEOESNCeArV+5QYDyN/e8ma8f95SUbaFubLHQjg2La6mWCBKiooD8UxZkjyTAXDIL
-         YxVGvjY4BKHUJMsvGnzHOR56Go2ROAbOVMrDSzdMhrYI0bNJ+HMc5BMD8u9WOdtTfLWH
-         xx0A==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature:arc-authentication-results;
+        bh=IOHcIeUUskaO/Q5PaN1ym2PYoDBxBpq2BgiOdPZlOk0=;
+        b=uwyqXcwdgKvnU3FkIHMswK+VcM57fsuata9Gx+krWjjpFdRpSRRYcfyyFK9vAlFhbh
+         1L7oZ23xkDqB6f6Cy2Z5+Jm7v3Np2j22hHsQW1Aawb9uLR8R322rrGrIqB5NCs0Wfqpc
+         LpdJ4hneA/PIO/PYAZHHAMpJ0cizSQbmyQWl+pJzdP3PWSCGgCHH9gkw3TNe2yU4h5lK
+         W8avEm8Pt810gkY/TGxcsPr0QYhLD7zlwYGQ1+e17kO91Xl4AW4bn/u6462UKEXw5NeR
+         e4+MalMngtupw+c2Ggr1GJEfTKAsROW1yfOke86r+cip/JmHEguO71wgD0tbLdl9wcXP
+         zuSA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NT5wxcrM;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::62e as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from mail-pl1-x62e.google.com (mail-pl1-x62e.google.com. [2607:f8b0:4864:20::62e])
-        by gmr-mx.google.com with ESMTPS id z143si212291qkb.6.2021.04.12.20.25.10
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JXrvbffN;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id u15si439447ite.2.2017.09.12.12.04.53
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 12 Apr 2021 20:25:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::62e as permitted sender) client-ip=2607:f8b0:4864:20::62e;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 12 Sep 2017 12:04:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NT5wxcrM;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::62e as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x62e.google.com with SMTP id t22so7128688ply.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Apr 2021 20:25:10 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JXrvbffN;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x244.google.com with SMTP id m30so1617049pgn.5
+        for <outreachy-kernel@googlegroups.com>; Tue, 12 Sep 2017 12:04:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=SRXvRUJitDAL3LVBcxgMSN2+Nyo+g/E1R/YUuhMK3zY=;
-        b=NT5wxcrMIElDPZAIwOHzPA+cCkYYmfN0PcrXjLMovuafkLeOokhyvZDn2+qKo1JRMw
-         yfifmdoDp0w2m5Lq8veWu5rKtEumpKNmqr5PHwjWEM9M+FvcakfBMLmH5HMQ5mVP+Y+m
-         Xc6qu+v5+bA4mn4ApziWUp4d9NSZ7y7kojwd/lKea4W7FW4qdJbG6GwkCemLFG241fRU
-         2LOd1mtDMhFJdW6M88KvI8PSK+ZpgeDOPmQ60KIxOUuea6gtP7WojxZbAjsV4dUTCPa9
-         WGSxnkmoixLKk4UHZqJul0iqUf0VQNm+Cuv3hxFjsj0qN9e8/NrkHF/Ve38cU4JU80PD
-         0Xmg==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=IOHcIeUUskaO/Q5PaN1ym2PYoDBxBpq2BgiOdPZlOk0=;
+        b=JXrvbffNy/9Cy/XZIdRXjWx+Kvne0xgQPaE+5sNWtmJxFcBvBoyiOiGHnLHgxcDl6I
+         YG9fCybGc5GC71A0SLrdUtmb+Pxqz9YbkDj8W1u4KN6eNiHQj9CJPEAmfbfNvlheluzV
+         iWkk6fCSpMxwgh2awhCYcd46KoCawaUNHtgvurptD5xmQUXK5UkMHv5f7MJRGh7MuSHK
+         wz45loAzNpAsFM+eGlfK/G0ouFRVb5fFuTGVs3GF/Zcpg3/jwCrxtTnGX5WQkAZMrCeE
+         sFqiyo5z5OkRE79odIa3oSfmN4T2j4Rv2j7S1b610q7WXfGyltH31yhqV8+/0e6aBLP3
+         +WOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=SRXvRUJitDAL3LVBcxgMSN2+Nyo+g/E1R/YUuhMK3zY=;
-        b=Ia53AijW3gHRQxXcY6qY03G4WrZJmVb+FA3BsvebxSI4S2eRJTjbty42skogoVjb7B
-         VgHphakjEHsxQ/J1qWuUYzNXGt6bvQhtFpAfpupy+9pY+qSrf1lHantGy/FJNjSLQxbj
-         IyjSUuAwOzZhCw9DOcPMsU6tyN6B7/aym1YGBL1eYXCZrIQuF2H1mlfSMGXQx0sG1vzs
-         FKNztTlolxZyuI2mNbG2j7m2b5E4FJW0HfGnqT6PQAZ3/NcryP1gCjeUc78zQgnYoisf
-         +Ahrne48mnLzT3fEWvNSMRMfIuCJ0j6wd7ww88EkzSnhAuGAY8ticbdYvnQmVsi6p3Gj
-         5XiQ==
-X-Gm-Message-State: AOAM530+Ar9fiz1PIB46tppaq3e1OsssaXV1F78vfZVq65PmLHnu1ggx
-	kxiSIGTgofugXlzGaUk193E=
-X-Received: by 2002:a17:902:aa8a:b029:e6:64bd:e29d with SMTP id d10-20020a170902aa8ab02900e664bde29dmr30083774plr.24.1618284309436;
-        Mon, 12 Apr 2021 20:25:09 -0700 (PDT)
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from kali ([103.141.87.254])
-        by smtp.gmail.com with ESMTPSA id s20sm8993891pfh.144.2021.04.12.20.25.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Apr 2021 20:25:09 -0700 (PDT)
-Date: Tue, 13 Apr 2021 08:55:03 +0530
-From: Mitali Borkar <mitaliborkar810@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
-Subject: [PATCH v5 0/3] staging: rtl8192e: Cleanup patchset for style issues
- in rtl819x_HTProc.c
-Message-ID: <cover.1618283232.git.mitaliborkar810@gmail.com>
+         :content-disposition:user-agent;
+        bh=IOHcIeUUskaO/Q5PaN1ym2PYoDBxBpq2BgiOdPZlOk0=;
+        b=ENyhUYJM0mb8JAQQQ8/BkJJ6a8ZwM/0Pb0UwmXg46hXnOqrRphNoHfcgBbHhd6xEKc
+         RM/Zx3oehkeVTOyOg1D55dPcpRKJyLw8Q5BIfKRp4R9y/H/ynrMPEPePWy5K5ZsDA3Ob
+         kfRWWfBH7XHLFWC0ESYfLoVpXRnxqzTKSw79eaupeuoSWP7fB1/6oJNtNr02apVF+zAr
+         +22BRUwUl4zB9W5UYOC/IYgYHD2tHUCRpzdkY+tAlHCWnohv9pnS4a0H8GgMbttw3kBc
+         La+G63QxygbFO0geeg8d08GKQIEX2tE0AR0Bdlh5RwYDYzJJE/ZgXH9cIhhfPSN0TOyK
+         TFRw==
+X-Gm-Message-State: AHPjjUiZo9ByD5Mmk+lAvvnqLrdsjdVLUIn3/hlmZS14r361NQ8FnRuJ
+	e+3zOxhyL/bQ9GGX
+X-Google-Smtp-Source: ADKCNb7oawV0xBIHJiNr75FWmP3ogvpXFvvM+cSEzA3ZjAWR1Vf/bdCAmhSHzgyqyl34UJrEusin0A==
+X-Received: by 10.84.131.109 with SMTP id 100mr18097352pld.122.1505243092730;
+        Tue, 12 Sep 2017 12:04:52 -0700 (PDT)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from Haneen ([64.77.242.50])
+        by smtp.gmail.com with ESMTPSA id t65sm20998188pfk.59.2017.09.12.12.04.51
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 12 Sep 2017 12:04:52 -0700 (PDT)
+Date: Tue, 12 Sep 2017 13:04:50 -0600
+From: Haneen Mohammed <hamohammed.sa@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] staging: pi433: Replace printk() with dev_dbg()
+Message-ID: <20170912190450.GA14202@Haneen>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Changes from v4:-
-[PATCH v4 1/3]:- No changes.
-[PATCH v4 2/3]:- No changes.
-[PATCH V4 3/3]:- Removed casts and parentheses.
+This patch convert printk() to the preferred variant dev_dbg() and
+remove unnecessary comment line.
+Issue detected with checkpatch.pl.
 
-Changes from v3:- Changed subject line to match prefix on the patches.
-[PATCH v3 1/3]:- No changes.
-[PATCH v3 2/3]:- No changes.
-[PATCH V3 3/3]:- No changes.
+Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+---
+ drivers/staging/pi433/pi433_if.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-Changes from v2:-
-[PATCH v2 1/3]:- Modified subject description. Changes has been made in
-v3.
-[PATCH v2 2/3]:- No changes.
-[PATCH v2 3/3]:- Rectified spelling mistake in subject description.
-Changes has been made in v3.
-
-Changes from v1:-
-[PATCH 1/3]:- Removed unnecessary parentheses around boolean expression.
-Changes has been made in v2.
-[PATCH 2/3]:- No changes.
-[PATCH 3/3]:- No changes.
-
-Mitali Borkar (3):
-  staging: rtl8192e: remove parentheses around boolean expression
-  staging: rtl8192e: remove unnecessary ftrace-like logging
-  staging: rtl8192e: remove casts and parentheses
-
- drivers/staging/rtl8192e/rtl819x_HTProc.c     |  18 ++--
- 1 file changed, 5 insertions(+), 13 deletions(-)
-
-
+diff --git a/drivers/staging/pi433/pi433_if.c b/drivers/staging/pi433/pi433_if.c
+index 73aa469..d82c74d 100644
+--- a/drivers/staging/pi433/pi433_if.c
++++ b/drivers/staging/pi433/pi433_if.c
+@@ -136,17 +136,17 @@ static irqreturn_t DIO0_irq_handler(int irq, void *dev_id)
+ 	if      (device->irq_state[DIO0] == DIO_PacketSent)
+ 	{
+ 		device->free_in_fifo = FIFO_SIZE;
+-		printk("DIO0 irq: Packet sent\n"); // TODO: printk() should include KERN_ facility level
++		dev_dbg(device->dev, "DIO0 irq: Packet sent\n");
+ 		wake_up_interruptible(&device->fifo_wait_queue);
+ 	}
+ 	else if (device->irq_state[DIO0] == DIO_Rssi_DIO0)
+ 	{
+-		printk("DIO0 irq: RSSI level over threshold\n");
++		dev_dbg(device->dev, "DIO0 irq: RSSI level over threshold\n");
+ 		wake_up_interruptible(&device->rx_wait_queue);
+ 	}
+ 	else if (device->irq_state[DIO0] == DIO_PayloadReady)
+ 	{
+-		printk("DIO0 irq: PayloadReady\n");
++		dev_dbg(device->dev, "DIO0 irq: PayloadReady\n");
+ 		device->free_in_fifo = 0;
+ 		wake_up_interruptible(&device->fifo_wait_queue);
+ 	}
+@@ -167,7 +167,8 @@ static irqreturn_t DIO1_irq_handler(int irq, void *dev_id)
+ 		if (device->rx_active)	device->free_in_fifo = FIFO_THRESHOLD - 1;
+ 		else			device->free_in_fifo = FIFO_SIZE - FIFO_THRESHOLD - 1;
+ 	}
+-	printk("DIO1 irq: %d bytes free in fifo\n", device->free_in_fifo); // TODO: printk() should include KERN_ facility level
++	dev_dbg(device->dev,
++		"DIO1 irq: %d bytes free in fifo\n", device->free_in_fifo);
+ 	wake_up_interruptible(&device->fifo_wait_queue);
+ 
+ 	return IRQ_HANDLED;
 -- 
-2.30.2
+2.7.4
 
 
