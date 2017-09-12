@@ -1,39 +1,39 @@
 X-GM-THRID: 6464655213388103680
-X-Received: by 10.31.59.10 with SMTP id i10mr8949288vka.20.1505240062214;
-        Tue, 12 Sep 2017 11:14:22 -0700 (PDT)
+X-Received: by 10.107.33.149 with SMTP id h143mr9145053ioh.50.1505239974336;
+        Tue, 12 Sep 2017 11:12:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.29.11 with SMTP id 11ls1635939itj.13.canary-gmail; Tue, 12
- Sep 2017 11:14:21 -0700 (PDT)
-X-Google-Smtp-Source: ADKCNb7RJEbzwlPazznvkdXRiHTmjzf9TRVtLji2Jaiis20EjO6/gMIU54aGAlBrk6FRm8UIg5cS
-X-Received: by 10.98.60.215 with SMTP id b84mr8486415pfk.17.1505240061470;
-        Tue, 12 Sep 2017 11:14:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505240061; cv=none;
+Received: by 10.107.81.11 with SMTP id f11ls1142429iob.45.gmail; Tue, 12 Sep
+ 2017 11:12:53 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBzk/57PG6Xe8I/BPeB9Yovcg2YHlfX5oBsnVLfj/FIR1z0y79Ua+2hThfcy6cb3SLI9Yti
+X-Received: by 10.176.27.133 with SMTP id k5mr10785799uai.0.1505239973494;
+        Tue, 12 Sep 2017 11:12:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505239973; cv=none;
         d=google.com; s=arc-20160816;
-        b=mgHbidI7V0UmgH0cs5dyN9duuF6n6AXIIEPW39D+TuinXuKkoHXz08mOIVkurbF4te
-         WlTcOzJC5+HwHVQ35voMo46qsVgHKCqKs6hQo+BA5C4vWrJCzbeRq64Pkst8ZuGyDX5t
-         nxUzKnMFUZONnyr0ev4btwsjebcO4JsMxa1TTcjloI2vja3E8jOo76McgznBKvtIUhgJ
-         vf718ZmXApoQs+F63T5Nq80EHt58pA9CVT30bqpvBp05sv8RW7FMJO37uk/myFGnQ0+w
-         nQeGj86OSExJNhE1XpJB7EnrgXQODe7C1A09fa3s87gLbtE3BD5Cl0kC9Qdq+gTVb+A1
-         Mp2Q==
+        b=oqMAOH9VUAmWtvFXlJmcw1ttcwWrBsFvrsMCDBsMQnoNDJxAob5DCMWalUukMKPcgY
+         Zlh/3c5GE2tyGqnbNr1W+qWiRCgb6LJzZlKjAZdOAFKHpJAXznTw4kp+tCBTB5NvMYP9
+         pniQHYl9k8QdcnW3Vxml0KHYGNZ9nUMIqTETmicURS80Xh842Tf36P/+OT3hA608BMMi
+         eoov5CQvxwDNIZlo6uMsXHZhhDA6OLJbnRYpLK9TU6PLd5XfJ48egBuMFkCg3z4Lzy2n
+         AE/n026kNXmcKoN39EMJcw64MloROu/uAPxylLiyFLwK5dTRLgl3laXv5lvoXec2UirJ
+         2kjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :arc-authentication-results;
-        bh=lBFUCF+dFyIwanTTwpqttbv9kDG0D62EH3whchzDkCk=;
-        b=kldslkPdBWX+hynFxOYysrPVt/q4uu4/jKsoi7wx48TDf2HqSrzDtfWKdvLSBP7/Cx
-         toQSQ8c8gNdveUH3nqSQQ+lB6/VLPNvsZ2XYbSuas8awhSKFYNXp6CX0yWx6L75/nkhT
-         aPXYUuRoKs2OJGoBnzT83lT2dm2mbVQ8pOGEFwSa/cyUPUsHk/CQNfSGfHkZy7uXRr3z
-         LjQbacgwpYL4RKwIbg3O9S7vI5GpLY6WDsvh0hlwphvzMT2HinEYRXgtRupMAvQIRsm0
-         Jv8teRnrOvfx/t46yWtIC6n/kjwpeSqmGtg67mERojPiPdqlgQ7aYWKAhRD+5kbEI5rz
-         IiGw==
+        bh=X9taz1fL5GvtHt1E9VWGOS2fpqqQ3CVPc4VHlthFesY=;
+        b=J+oHnKX7z0splfqt8QPbAPCiI89UToTqCdw0nb1nqiUh8xGFPiJK9C0I/xlQGOORKS
+         Bz0xRf5FvXwc2KhXhMGUmZDmAcSAvMT71u9kbTRnnKNkrbSPJYpuzqVm87x606P5GVKy
+         ba3n8FqBfKSqQhdcUpGsNJnnkesKCNZxbgMDDGxP3+LQn82zNjG3BLBMwVv/4KUkIhlm
+         AxhBdpSnOgDUc6Hlb+siQvdb/57maNa5zdEJIgs3FPo861po8VoaATmf2Su2AdBwhUUi
+         4fhGgsBwZgSrXk0ZHU7a94VtIvXRZwm1MFiLiR+1bt0hV4bqzYkdmC9la0re5O6DeqVa
+         2ANQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) smtp.mailfrom=lars@metafoo.de
 Return-Path: <lars@metafoo.de>
 Received: from www381.your-server.de (www381.your-server.de. [78.46.137.84])
-        by gmr-mx.google.com with ESMTPS id d140si445692itd.6.2017.09.12.11.14.21
+        by gmr-mx.google.com with ESMTPS id o71si484651itb.4.2017.09.12.11.12.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 12 Sep 2017 11:14:21 -0700 (PDT)
+        Tue, 12 Sep 2017 11:12:53 -0700 (PDT)
 Received-SPF: neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) client-ip=78.46.137.84;
 Authentication-Results: gmr-mx.google.com;
        spf=neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) smtp.mailfrom=lars@metafoo.de
@@ -41,17 +41,17 @@ Received: from [78.47.166.52] (helo=sslproxy04.your-server.de)
 	by www381.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
 	(Exim 4.85_2)
 	(envelope-from <lars@metafoo.de>)
-	id 1drphT-0003Ty-96; Tue, 12 Sep 2017 20:14:19 +0200
+	id 1drpg0-0003PI-Kz; Tue, 12 Sep 2017 20:12:48 +0200
 Received: from [93.104.182.173] (helo=[192.168.178.44])
 	by sslproxy04.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-SHA:256)
 	(Exim 4.84_2)
 	(envelope-from <lars@metafoo.de>)
-	id 1drphS-00042Y-Vl; Tue, 12 Sep 2017 20:14:19 +0200
+	id 1drpg0-0007Re-CG; Tue, 12 Sep 2017 20:12:48 +0200
 Subject: Re: [Outreachy kernel] [PATCH] Fixed IIO_DEVICE_ATTR_NAMED API to
  take name as a string and added "" around names
-To: Julia Lawall <julia.lawall@lip6.fr>, himanshi <himshijain.hj@gmail.com>
-Cc: Daniel Baluta <daniel.baluta@gmail.com>,
- outreachy-kernel <outreachy-kernel@googlegroups.com>,
+To: Daniel Baluta <daniel.baluta@gmail.com>,
+ Himanshi Jain <himshijain.hj@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>,
  "Hennerich, Michael" <Michael.Hennerich@analog.com>,
  Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>,
  Peter Meerwald <pmeerw@pmeerw.net>,
@@ -62,44 +62,41 @@ Cc: Daniel Baluta <daniel.baluta@gmail.com>,
  nick.desaulniers@gmail.com
 References: <20170911224348.GA13259@himanshi-Inspiron-5558>
  <CAEnQRZDgXj85OTQAoEpij_3bSUnmcx1owNyeg10WCmiBGURURg@mail.gmail.com>
- <20170912180132.GB4607@himanshi-Inspiron-5558>
- <alpine.DEB.2.20.1709122004550.3149@hadrien>
 From: Lars-Peter Clausen <lars@metafoo.de>
-Message-ID: <629315d5-6de4-4531-7f25-e1764b9a0513@metafoo.de>
-Date: Tue, 12 Sep 2017 20:14:18 +0200
+Message-ID: <130cbd01-265e-dafe-02d1-96de4d62ff12@metafoo.de>
+Date: Tue, 12 Sep 2017 20:12:47 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
  Thunderbird/52.2.1
 MIME-Version: 1.0
-In-Reply-To: <alpine.DEB.2.20.1709122004550.3149@hadrien>
+In-Reply-To: <CAEnQRZDgXj85OTQAoEpij_3bSUnmcx1owNyeg10WCmiBGURURg@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-Authenticated-Sender: lars@metafoo.de
 X-Virus-Scanned: Clear (ClamAV 0.99.2/23818/Tue Sep 12 18:33:57 2017)
 
-On 09/12/2017 08:06 PM, Julia Lawall wrote:
+On 09/12/2017 09:53 AM, Daniel Baluta wrote:
+> Hi Himanshi,
 > 
+> On Tue, Sep 12, 2017 at 1:43 AM, Himanshi Jain <himshijain.hj@gmail.com> wrote:
+>> Fixed IIO_DEVICE_ATTR_NAMED API to take name as a
+>> string instead of implicit conversion to string using
+>> preprocessors. Added double quotes around names in
+>> existing usage of IIO_DEVICE_ATTR_NAMED.
 > 
-> On Tue, 12 Sep 2017, himanshi wrote:
+> Always use imperative mood in commit subject (Fix instead of Fixed).
 > 
->> Thanks for the review Daniel! I will change the imperative mood for the commit
->> message once the other changes are finalised too and as suggested by Julia,
->> would try to make the description specific than general.
->>
->> I tried to think of adding subsystem to the commit subject but could not
->> conclude any because of the files involved.
->> I like the idea of splitting the patch into 2 as you suggested but I
->> have a doubt that adding the new MACROS to different sysfs files can be put into 1
->> patch with the subsystem you mentioned but changing the existing
->> IIO_DEVICE_ATTR_NAMED to use IIO_ATTR_NAMED (sysfs file again) would be included
->> in the second patch if I am not wrong. So would it be fine to keep the
->> subsystem as iio for the second patch?
+> The subject should contain a tag, which describes the subsytem/files affected.
 > 
-> Indeed, the kernel has to compile after every commit.  Unless you change
-> the name of the macro, to allow the old and new versions to co-exist, it
-> seems hard to break up such a patch.
+> I would split this patch into:
+> 
+> 1) sysfs: iio: Introduce *_ATTR_NAMED
+> 
+> and explain here why do we need  __ATTR_NAMED and IIO_ATTR_NAMED
+> 
+> 2) iio: Use new IIO_DEVICE_ATTR_NAMED API
+> 
+> But of course, lets wait to see Lars and Jonathan's opinions.
 
-We can still split things into two parts. One patch introducing __ATTR_NAMED
-in the device driver core and then another patch making use of that macro in
-the IIO subsystem.
+Fully agreed with what you wrote.
 
