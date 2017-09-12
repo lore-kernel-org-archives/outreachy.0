@@ -1,91 +1,116 @@
-X-GM-THRID: 6403243531754799104
-X-Received: by 10.46.15.10 with SMTP id 10mr712470ljp.31.1490871312743;
-        Thu, 30 Mar 2017 03:55:12 -0700 (PDT)
+X-GM-THRID: 6464551056446586880
+X-Received: by 10.98.211.86 with SMTP id q83mr7843799pfg.22.1505217922748;
+        Tue, 12 Sep 2017 05:05:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.1.156 with SMTP id f28ls318574lji.30.gmail; Thu, 30 Mar
- 2017 03:55:11 -0700 (PDT)
-X-Received: by 10.25.216.154 with SMTP id r26mr700411lfi.7.1490871311501;
-        Thu, 30 Mar 2017 03:55:11 -0700 (PDT)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wr0-x244.google.com (mail-wr0-x244.google.com. [2a00:1450:400c:c0c::244])
-        by gmr-mx.google.com with ESMTPS id x188si152562wmx.0.2017.03.30.03.55.11
+Received: by 10.107.46.142 with SMTP id u14ls1062796iou.25.gmail; Tue, 12 Sep
+ 2017 05:05:21 -0700 (PDT)
+X-Received: by 10.159.35.207 with SMTP id 73mr8485643uao.105.1505217921866;
+        Tue, 12 Sep 2017 05:05:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505217921; cv=none;
+        d=google.com; s=arc-20160816;
+        b=arFG1e8cVmPiZAuq3FtffJGf/Ur8d/LScLJxAoZwU+/9lA65d2QmM9UTxmMvRXYrVS
+         32GiA+cuPNN/lIMPDQqbpCxUZYFxXyM6XiOfDsoiHVslmC4KCBi1paMIt1JUGtNtrzw7
+         iLQFU0qlEmCS+3MxW9pvFzt7xCVdmSO4p64RhNporZ6G8Yllg0BzAuuNCwuwFn3j4HSY
+         Lf/7YwIcQuEwLP9D/QY83UJ1XMkB0CKqVlFNtPY/XxmbtYTeZUrD8QmAtdP3ps7dDr0y
+         jWizmkU3m49q4VL0tPejsUpjPNVU5XLJMXZkLrJg+H9tgzX23A5ZHss1BD4xKa+OV9uB
+         TvoA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=ZPHP2rlM0JIQw38MKSETvUoPsoGwIjLuiFezB8XBiYg=;
+        b=r3nGsjB2wMcyewbS+kMqsGbLJrNyIkG5dOGLc43dXj7ckJ6nOzzgJSbDXqKNxVBjk/
+         46kMpSJB+gQ0nuCQYuCXR3I+sgjQD6l0B6dz60u4qNhDAUoCvNMspdlXW3V1LgVyVykF
+         B0HO6a9t8GtG1TIMbF/FewFWFfStv4f5FcqnJk67l5P3jnRbMfU1Y5h0dARnBGh5dGr1
+         3338HV2Wm4jgCAofH99vGS9t+A1Zkpa5FaYV5LrQdLSGExaiS8amXDXcqNs0RAbNGxUY
+         jQwQ/1q0Yd3tGf138YZnZB3pcZAlbxS5UmJW3fMGLt/6fueLqL6jzoWTu/GBiAo4ZcfH
+         As4w==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XtkVZPhz;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <srishtishar@gmail.com>
+Received: from mail-qt0-x242.google.com (mail-qt0-x242.google.com. [2607:f8b0:400d:c0d::242])
+        by gmr-mx.google.com with ESMTPS id v124si882307ywe.5.2017.09.12.05.05.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 30 Mar 2017 03:55:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) client-ip=2a00:1450:400c:c0c::244;
+        Tue, 12 Sep 2017 05:05:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) client-ip=2607:f8b0:400d:c0d::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XtkVZPhz;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x244.google.com with SMTP id k6so9683930wre.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 30 Mar 2017 03:55:11 -0700 (PDT)
+Received: by mail-qt0-x242.google.com with SMTP id q8so7207920qtb.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 12 Sep 2017 05:05:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=z9JLI9yjrTiD00jZEdUwq8X08LN1DeS7LxAfBT8WDD8=;
-        b=l2Lak8AiG1Z6huug015acab4BM80QR7a78Py+efv6wO4GPtc/IIA0xP7m+4/yDab0y
-         f4XWkQQzexx4+FUzNKGvFMxXgIXQ8FC+vlvcb3tpS7SvKQTlbszQ90sX+TTzfxdT6fC4
-         q7/8LpW2ti1rsucHZb+inblXz4guy5mu9sG4hdtom7/83rRLLSQt0YF+rcx0UI/XvyWV
-         3rT22x2XTMWGoiZXOaihSAxJlWy+jOgNnDgf8lYZFnVdqMaCS0MCtXBnsasA6ugcDK+Y
-         nYd8M9NvFoCOjhOx/t4ksrMFVpR9MypvuZkcjPVwf8RLeeg0FlbKQpAG3lrTVqhJgB1X
-         2GrQ==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=ZPHP2rlM0JIQw38MKSETvUoPsoGwIjLuiFezB8XBiYg=;
+        b=XtkVZPhzFwh/XsEpzdrNT4PoUpKIhcPnZ7YaXoLLOZgjkXPoN1yT6/RtjSIQMAPCIg
+         ldGXv4nwClDxZ9qY9W39Thx4OsJ8y/UulpyEZhHeSiZD8KcBi0+snsiey09m+KwfwnnM
+         bDIV4vyMnSHhg9cRQI1JlEzithCfElYtC/6AhWaIv6+WyiLfckLAGbwgIe9bgtpJkRtx
+         2Kw19PthUu/RRrUFPpgUXwXcZlRElIzz1V9l3+J0Ih9SJj0GcU7yEKWycPF6nHKuRJdo
+         V7UOgWLFZjGhtFJV1RfT29H2kN0T+iVxnMO3Ys5WvVhBgKh83nFu9HxkRz96siwprZ14
+         yAtQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=z9JLI9yjrTiD00jZEdUwq8X08LN1DeS7LxAfBT8WDD8=;
-        b=tx5PusLUW8IkZ/mmuJK13rJQjbAbBriwHTnsUFmrydm7NU/c6X8ddwZY8jXZg3Ku1F
-         m/TrBJByesiu7Hb6obYcyFrXF2SZx2ai2nLA0ZU154Lv76tCfTKw7WaZ6udUh9u5qb6/
-         QI4ilrQHxf0gz7oQrdx9AuqOj0+WuQXVHQhxMurjp+cs9LK6iSAijKmAKhEh/vDzXY09
-         TcPKwP/TF1x6iMHN5uYOig6I5iJcdaz0dEvS+q8MrhcDAMVOAMCykeNf+7NBExpgnyv9
-         EpZT/gnxxbegetLNMKIBxintr9ac2+T4SYQTOHbuec1sAPRMrC8OH2J1h5RdU6w2E1u5
-         ta4A==
-X-Gm-Message-State: AFeK/H0N8M/7ZaqZZ5YcVY93qPL+vVmsKqiK8ukeVBQtt345BKLEgtKtgID9YdMlmngMvA==
-X-Received: by 10.223.180.86 with SMTP id v22mr5082340wrd.169.1490871311228;
-        Thu, 30 Mar 2017 03:55:11 -0700 (PDT)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([2a02:2f0b:8160:a9a:c8b7:dd2d:d45b:b444])
-        by smtp.gmail.com with ESMTPSA id 127sm2772722wmt.20.2017.03.30.03.55.09
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 30 Mar 2017 03:55:10 -0700 (PDT)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: daniel.vetter@intel.com,
-	jani.nikula@linux.intel.com,
-	seanpaul@chromium.org,
-	airlied@linux.ie,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	corbet@lwn.net
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH] drivers: gpu: drm: dr_fb_cma_helper: Fix kerneldoc comments
-Date: Thu, 30 Mar 2017 13:55:07 +0300
-Message-Id: <20170330105507.6090-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=ZPHP2rlM0JIQw38MKSETvUoPsoGwIjLuiFezB8XBiYg=;
+        b=f/ovGSR/7WvaMxXi6SNDhZaLXOJEmE1WbuoHDL6UgJMxTZBSw2wdu+6xSmDkuLbc5N
+         qV3uaL4CAczckyuNL9PIEEbDkazPY8NYsvhQrd0eA+bZAirOUAPcUczWiTQOqg958kzh
+         uxX+5ewTmgXBy0Vsn2nRgGidfkpsKdnwkFhzDgNKnT9pg/F/4jMOu2exIm0cjbeNtQvo
+         Yf/lfZgq4TFG3T49Brm3QbYnpSRpPXSsDEuGPD7Lg4NZX476Tu7vtnLljvT0Qpe652lV
+         pz7GjtkvcB0EyBHPMW4mc2DKIBN0ffjvN0Ion6abL8Y9+Sljv19L0IrA3Ad7mdRBi5Lz
+         eGKg==
+X-Gm-Message-State: AHPjjUgv69cTuYt5zTkgi/PJsj6RgUmMMuxYXqM20aFhkTwERCAA/USB
+	twyxlFKcDE+1fpgsFHurDjVKlzBsMg==
+X-Google-Smtp-Source: AOwi7QDL8WPC1iaWNl5B9sYmGfxf8r/yjgMujWo3nT28INKaQfimu2g+ytOCbk/hmSEG685rQ3ez7PQKBW75xOGV+XE=
+X-Received: by 10.237.63.15 with SMTP id p15mr20158374qtf.117.1505217921553;
+ Tue, 12 Sep 2017 05:05:21 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.200.55.118 with HTTP; Tue, 12 Sep 2017 05:05:21 -0700 (PDT)
+In-Reply-To: <20170912091951.noslc3dlncyxonyg@mwanda>
+References: <1505145571-11248-1-git-send-email-srishtishar@gmail.com> <20170912091951.noslc3dlncyxonyg@mwanda>
+From: Srishti Sharma <srishtishar@gmail.com>
+Date: Tue, 12 Sep 2017 17:35:21 +0530
+Message-ID: <CAB3L5oy17gOjA7_HCZZXPqXO9yYh4283+ehruaDUz0pJNDu+EQ@mail.gmail.com>
+Subject: Re: [PATCH] Staging: ccree: Don't use volatile for monitor_lock
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: Gilad Ben-Yossef <gilad@benyossef.com>, devel@driverdev.osuosl.org, 
+	Greg KH <gregkh@linuxfoundation.org>, driverdev-devel@linuxdriverproject.org, 
+	Linux kernel mailing list <linux-kernel@vger.kernel.org>, outreachy-kernel@googlegroups.com, 
+	Linux Crypto Mailing List <linux-crypto@vger.kernel.org>
+Content-Type: text/plain; charset="UTF-8"
 
-Remove the description for the non-existing 'num_crtc' to fix the
-build warning: ./drivers/gpu/drm/drm_fb_cma_helper.c:557: warning:
-Excess function parameter 'num_crtc' description in
-'drm_fbdev_cma_init'.
+On Tue, Sep 12, 2017 at 2:49 PM, Dan Carpenter <dan.carpenter@oracle.com> wrote:
+> On Mon, Sep 11, 2017 at 09:29:31PM +0530, Srishti Sharma wrote:
+>> The use of volatile for the variable monitor_lock is unnecessary.
+>>
+>> Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+>> ---
+>>  drivers/staging/ccree/ssi_request_mgr.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/staging/ccree/ssi_request_mgr.c b/drivers/staging/ccree/ssi_request_mgr.c
+>> index e5c2f92..7d77941 100644
+>> --- a/drivers/staging/ccree/ssi_request_mgr.c
+>> +++ b/drivers/staging/ccree/ssi_request_mgr.c
+>> @@ -49,7 +49,7 @@ struct ssi_request_mgr_handle {
+>>       dma_addr_t dummy_comp_buff_dma;
+>>       struct cc_hw_desc monitor_desc;
+>>
+>> -     volatile unsigned long monitor_lock;
+>> +     unsigned long monitor_lock;
+>
+> The variable seems unused.  Try deleting it instead.
 
-Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
----
- drivers/gpu/drm/drm_fb_cma_helper.c | 1 -
- 1 file changed, 1 deletion(-)
+Had already sent a patch for that as v2.
 
-diff --git a/drivers/gpu/drm/drm_fb_cma_helper.c b/drivers/gpu/drm/drm_fb_cma_helper.c
-index 596fabf..72aa32b 100644
---- a/drivers/gpu/drm/drm_fb_cma_helper.c
-+++ b/drivers/gpu/drm/drm_fb_cma_helper.c
-@@ -547,7 +547,6 @@ EXPORT_SYMBOL_GPL(drm_fbdev_cma_init_with_funcs);
-  * drm_fbdev_cma_init() - Allocate and initializes a drm_fbdev_cma struct
-  * @dev: DRM device
-  * @preferred_bpp: Preferred bits per pixel for the device
-- * @num_crtc: Number of CRTCs
-  * @max_conn_count: Maximum number of connectors
-  *
-  * Returns a newly allocated drm_fbdev_cma struct or a ERR_PTR.
--- 
-2.9.3
+Thanks
+Srishti
 
+> regards,
+> dan carpenter
+>
 
