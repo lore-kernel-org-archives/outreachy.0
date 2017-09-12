@@ -1,104 +1,171 @@
-X-GM-THRID: 6889706616955863040
-X-Received: by 2002:a17:90a:4e83:: with SMTP id o3mr7289509pjh.164.1604134826797;
-        Sat, 31 Oct 2020 02:00:26 -0700 (PDT)
+X-GM-THRID: 6464879882982653952
+X-Received: by 10.223.151.69 with SMTP id r63mr857735wrb.3.1505222739456;
+        Tue, 12 Sep 2017 06:25:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:ec06:: with SMTP id l6ls2782893pld.8.gmail; Sat, 31
- Oct 2020 02:00:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxiIEPS8+JaWPYsDPpaKK4j9Slg+993kOkWC09S7RZrC12Jh4blB/8TEICfkk2a6VlfPn+z
-X-Received: by 2002:a17:90a:488c:: with SMTP id b12mr7344120pjh.204.1604134825040;
-        Sat, 31 Oct 2020 02:00:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1604134825; cv=none;
+Received: by 10.28.229.14 with SMTP id c14ls361494wmh.3.canary-gmail; Tue, 12
+ Sep 2017 06:25:38 -0700 (PDT)
+X-Google-Smtp-Source: ADKCNb7KZtpgwg0rpsFSIGdZ18/LLBL2knG+h0957kWl+K9ah5jQc/9eLZf8PJ3pkIxRkk9Eiq9A
+X-Received: by 10.223.175.99 with SMTP id z90mr875336wrc.9.1505222738312;
+        Tue, 12 Sep 2017 06:25:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505222738; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ztnp3HrN6maELxW45TtdTnW8Jp+tN4igFy5Sa9U/ZiD9dJ1wUIO354EYXmuBgoMT1d
-         eU+LGQWBcZKgiz0JY33ZHfUjBnL6413DvtE67TBhzwpOwSfm6moaNwkrkZZF6NHujeJN
-         u3tnLZCJN9YeNyrthI4D+rcsrZzD5e07y2zpRI6Tcb/RJN+RIWXjtsV5CDRqpUm5h5xx
-         3BWhWTwuWIW5y20tWKdUJ/XNuawGMbwHmOm3njbJt0H3dhr5+RTYhCpiwiW5Qb0p8YZe
-         AMuZBX+NicZXHgN684kV5r72ONY9bIDWNWDaMZUeQCdkFhWvjmCMhG8u0UoxGpBWWMjh
-         bbWg==
+        b=Hwrhp33h+37yT2LkbUYIGY2AAqD8kv58WkFlPQnTX5TyVbvDbaQjOoZ+0zUiAG/t+m
+         IlB8M0G32CR5y4T5+rRlpvSXM0lvJSM1alyPwDw7ExruHHo5M/vdMGW/uDCHHtH8Gz3V
+         cWXq5/ZmXJrL3pQedAzibikFwxTiQ0FZPL+kVaohZo+Oo3maKvlzU02XSA4DiwZJ/pvu
+         DilFGBxusvXzQ0iQJtmPiRtdDL9OBpjiOrAHZPpUDtK8EXKi2rH5+xuXey9MF/ZU6Bph
+         xyRSX6qHIrvxalbQKaI5ZGPio0dz0uzVoZKrsfk6s4UI03P4sSTOEkgwK8uxZGkk7Vqy
+         EMbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=fMAfHC/R9BzNfzpyhFNmsTD/I34dhh24IhzJE8iWc3Y=;
-        b=Fi1fwmb9Xy4DTvDs1PLpregiQRjYG99jSj7wMbt5PMjEHwHEW6Fh37htqZU8ksri5Y
-         UuEq0bMq4vo+1OCQ4TbYjHMp2DDCFKLPX7bBFDXrelJ4VfVYRMGN0l15GDgfMmcqaX1t
-         Vo8EpUPSq5+P7+0BwSQjk5W9HQI3KvzIZzKEbTVN3LFAo3ipE8Rfvh5A+96lAVSE0AkS
-         nCId2XlZRIuw75K8Rt69WUQ90JAvb0O8Ty1fUoBFjzMvi4FoaMYKRX5lPE6yBQXxuzDs
-         GLKBX7C4CDKpaPWa31u0qvAR0Q2r0hGmy9lF7/ZRBq7HkNjesLLupdcZYzxtTMfpEHmH
-         8yPQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=bYAY81A3nkv1qtZ3BM9yb8OF8gxp146S4YlK/PPOQZE=;
+        b=COBTmoQKzo4V7qRw2PvJPVVDx1A+k/xy75Wy7vfzG9Q+gdbGWhzS84Aubg3tg9mQLV
+         H9ewvK+p12DZkap4iu7XS1jCy3XTbKO+YgbpNJg7eaCoNGQn96PrIDdxwJY16KD+9TcW
+         77ZnrfUlC5T1NwCjV53m7es0BKJG9boKeFpyEmzvgbb+mqPZy8wGvx9H8ctFJoYGdzTR
+         KwJd/+KXZqkmx/QQ17etpVFiz70Q7ORdmOyuWqnoeekl6kwg2GzWVQT1fb4vPITd5tc8
+         Uj4nj9U/BAFJ5aJhBweLAQ34HLu8cRbWaXYLuw6yPdIW6Y8GJZ313L3oBulBVs9E9Hje
+         +whA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rtb0wtgC;
-       spf=pass (google.com: domain of mdejesusfilho@gmail.com designates 2607:f8b0:4864:20::62f as permitted sender) smtp.mailfrom=mdejesusfilho@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mdejesusfilho@gmail.com>
-Received: from mail-pl1-x62f.google.com (mail-pl1-x62f.google.com. [2607:f8b0:4864:20::62f])
-        by gmr-mx.google.com with ESMTPS id p4si479215pjo.1.2020.10.31.02.00.25
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 191si328409wmn.2.2017.09.12.06.25.38
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 31 Oct 2020 02:00:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mdejesusfilho@gmail.com designates 2607:f8b0:4864:20::62f as permitted sender) client-ip=2607:f8b0:4864:20::62f;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 12 Sep 2017 06:25:38 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rtb0wtgC;
-       spf=pass (google.com: domain of mdejesusfilho@gmail.com designates 2607:f8b0:4864:20::62f as permitted sender) smtp.mailfrom=mdejesusfilho@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x62f.google.com with SMTP id j5so4198562plk.7
-        for <outreachy-kernel@googlegroups.com>; Sat, 31 Oct 2020 02:00:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition;
-        bh=fMAfHC/R9BzNfzpyhFNmsTD/I34dhh24IhzJE8iWc3Y=;
-        b=rtb0wtgCL1d3NSYUfoVVPUgrZALfZWiq91D1n3Cy3nvbLqvRscrXEovikAyfV1G0CD
-         C4rgXxFIPkEUgS4rS1Cizcnv+MNRoCtJ/BkSXvsBZAyrLZt3JXypaR7mU9PVSchdUy5s
-         maiD6MUQQ/JMVi5x8wig8XvloKc7VYNaJP9ShjVbjdH5a//WQGs6fOdrrLsNovlUWkR5
-         BbqPVY5JaCHoN6ZHLk1ZypVZO67cHbZDwFsSzIyBOjoVSl70GJK56ETfRvI8XkU2iLjY
-         /0aid+9W5+K0F/kySv9AbwmE1FpATSGJCbqj9YKfBpryUGpz7iGH1e+UydeYpsD6jAE4
-         b2Zw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition;
-        bh=fMAfHC/R9BzNfzpyhFNmsTD/I34dhh24IhzJE8iWc3Y=;
-        b=HX0JqAZxafGfcRwVx3bm//sk0VOQfUwQMxcOknx1dNLYenFq7cvKzD/4JKfpx4ION8
-         LCrjV6Kgyme5U7BExpKElit0x8vHnYlQUWWniMWhgaU52zl7ijB8LsLamR+GpyTk22Jm
-         mzadt5OGEPrKFSrgSJsnIirEiJ1rDTHkBNKZor2vnevVLQzdvNw19PL33yvRTdXYH38Q
-         mYP+/1Sv8JZNnI5Nk44Ie5QbyzwVTkOzvBtrhRC6kfbLEXLYXadTF05mOQv1o3V7bLNh
-         tceGFpmG6j92vcGrQhxqb8atfyAkXnRC9O2TcjGdNWHcpmm32PAVPokMEgZS5JtqikAz
-         njGA==
-X-Gm-Message-State: AOAM530FU2CNlqZELxRz8ONE4Mk600DK667xe8xpfyIF9lJdQigQfbat
-	A/lGjEpDynK/YrRjsUkH5sB0cdMECK2UWRE8
-X-Received: by 2002:a17:90a:5217:: with SMTP id v23mr7268647pjh.160.1604134824713;
-        Sat, 31 Oct 2020 02:00:24 -0700 (PDT)
-Return-Path: <mdejesusfilho@gmail.com>
-Received: from localhost ([2601:643:282:4810:aed1:b8ff:fe8c:bd73])
-        by smtp.gmail.com with ESMTPSA id mp13sm5681568pjb.36.2020.10.31.02.00.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 31 Oct 2020 02:00:24 -0700 (PDT)
-Date: Sat, 31 Oct 2020 02:00:06 -0700
-From: Marcos Antonio de Jesus Filho <mdejesusfilho@gmail.com>
-To: Forest Bond <forest@alittletooquiet.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/3] staging: vt6655: Remove else after return
-Message-ID: <cover.1604133727.git.mdejesusfilho@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,383,1500933600"; 
+   d="scan'208";a="237200039"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 12 Sep 2017 15:25:37 +0200
+Date: Tue, 12 Sep 2017 15:25:06 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Harsha Sharma <harshasharmaiitr@gmail.com>
+cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org, 
+    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: Remove unnecessary
+ spaces
+In-Reply-To: <1505221926-2865-1-git-send-email-harshasharmaiitr@gmail.com>
+Message-ID: <alpine.DEB.2.20.1709121524370.3149@hadrien>
+References: <1505221926-2865-1-git-send-email-harshasharmaiitr@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: text/plain; charset=US-ASCII
 
-This patchset removes multiples useless else statements after return statements. Reported by check patch.
 
-Observation
------------
 
-After cleaning up the code I noticed that the code from 530 to 548 repeats at 551,569 and that it can be removed and one of the conditional statements can be simplified. 
+On Tue, 12 Sep 2017, Harsha Sharma wrote:
 
-Marcos Antonio de Jesus Filho (3):
-  staging: vt6655: Remove useless else
-  staging: vt6655: Remove useless else
-  staging: vt6655: Remove useless else
+> Space between function name and open parentheses '(' is prohibited.
+> Space is required around most binary operators '=', '==', '+=',
+> '<', ':', '+', '-'
+> Space required before '&', '*'
+> Space is required after ',', ';'
+>
+> Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
 
- drivers/staging/vt6655/rxtx.c | 99 ++++++++++++++++++-----------------
- 1 file changed, 51 insertions(+), 48 deletions(-)
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 
--- 
-2.28.0
-
+> ---
+>  drivers/staging/rtl8723bs/os_dep/mlme_linux.c | 30 +++++++++++++--------------
+>  1 file changed, 15 insertions(+), 15 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8723bs/os_dep/mlme_linux.c b/drivers/staging/rtl8723bs/os_dep/mlme_linux.c
+> index 80ca2d7..49cb701 100644
+> --- a/drivers/staging/rtl8723bs/os_dep/mlme_linux.c
+> +++ b/drivers/staging/rtl8723bs/os_dep/mlme_linux.c
+> @@ -19,7 +19,7 @@
+>  #include <drv_types.h>
+>  #include <rtw_debug.h>
+>
+> -static void _dynamic_check_timer_handlder (void *FunctionContext)
+> +static void _dynamic_check_timer_handlder(void *FunctionContext)
+>  {
+>  	struct adapter *adapter = FunctionContext;
+>
+> @@ -51,8 +51,8 @@ void rtw_os_indicate_connect(struct adapter *adapter)
+>  {
+>  	struct mlme_priv *pmlmepriv = &(adapter->mlmepriv);
+>
+> -	if ((check_fwstate(pmlmepriv, WIFI_ADHOC_MASTER_STATE) ==true) ||
+> -		(check_fwstate(pmlmepriv, WIFI_ADHOC_STATE) ==true))
+> +	if ((check_fwstate(pmlmepriv, WIFI_ADHOC_MASTER_STATE) == true) ||
+> +		(check_fwstate(pmlmepriv, WIFI_ADHOC_STATE) == true))
+>  	{
+>  		rtw_cfg80211_ibss_indicate_connect(adapter);
+>  	}
+> @@ -99,7 +99,7 @@ void rtw_reset_securitypriv(struct adapter *adapter)
+>  		/* reset RX BIP packet number */
+>  		pmlmeext->mgnt_80211w_IPN_rx = 0;
+>
+> -		memset((unsigned char *)&adapter->securitypriv, 0, sizeof (struct security_priv));
+> +		memset((unsigned char *)&adapter->securitypriv, 0, sizeof(struct security_priv));
+>
+>  		/*  Added by Albert 2009/02/18 */
+>  		/*  Restore the PMK information to securitypriv structure for the following connection. */
+> @@ -116,9 +116,9 @@ void rtw_reset_securitypriv(struct adapter *adapter)
+>  	{
+>  		/* if (adapter->mlmepriv.fw_state & WIFI_STATION_STATE) */
+>  		/*  */
+> -		struct security_priv *psec_priv =&adapter->securitypriv;
+> +		struct security_priv *psec_priv = &adapter->securitypriv;
+>
+> -		psec_priv->dot11AuthAlgrthm =dot11AuthAlgrthm_Open;  /* open system */
+> +		psec_priv->dot11AuthAlgrthm = dot11AuthAlgrthm_Open;  /* open system */
+>  		psec_priv->dot11PrivacyAlgrthm = _NO_PRIVACY_;
+>  		psec_priv->dot11PrivacyKeyIndex = 0;
+>
+> @@ -150,7 +150,7 @@ void rtw_os_indicate_disconnect(struct adapter *adapter)
+>  void rtw_report_sec_ie(struct adapter *adapter, u8 authmode, u8 *sec_ie)
+>  {
+>  	uint	len;
+> -	u8 *buff,*p, i;
+> +	u8 *buff, *p, i;
+>  	union iwreq_data wrqu;
+>
+>  	RT_TRACE(_module_mlme_osdep_c_, _drv_info_, ("+rtw_report_sec_ie, authmode =%d\n", authmode));
+> @@ -168,22 +168,22 @@ void rtw_report_sec_ie(struct adapter *adapter, u8 authmode, u8 *sec_ie)
+>  		}
+>  		p = buff;
+>
+> -		p+=sprintf(p,"ASSOCINFO(ReqIEs =");
+> +		p += sprintf(p, "ASSOCINFO(ReqIEs =");
+>
+> -		len = sec_ie[1]+2;
+> -		len = (len < IW_CUSTOM_MAX) ? len:IW_CUSTOM_MAX;
+> +		len = sec_ie[1] + 2;
+> +		len = (len < IW_CUSTOM_MAX) ? len : IW_CUSTOM_MAX;
+>
+> -		for (i = 0;i<len;i++) {
+> -			p+=sprintf(p,"%02x", sec_ie[i]);
+> +		for (i = 0; i < len; i++) {
+> +			p += sprintf(p, "%02x", sec_ie[i]);
+>  		}
+>
+> -		p+=sprintf(p,")");
+> +		p += sprintf(p, ")");
+>
+>  		memset(&wrqu, 0, sizeof(wrqu));
+>
+> -		wrqu.data.length =p-buff;
+> +		wrqu.data.length = p - buff;
+>
+> -		wrqu.data.length = (wrqu.data.length<IW_CUSTOM_MAX) ? wrqu.data.length:IW_CUSTOM_MAX;
+> +		wrqu.data.length = (wrqu.data.length < IW_CUSTOM_MAX) ? wrqu.data.length : IW_CUSTOM_MAX;
+>
+>  		kfree(buff);
+>  	}
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1505221926-2865-1-git-send-email-harshasharmaiitr%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
