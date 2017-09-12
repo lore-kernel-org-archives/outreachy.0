@@ -1,85 +1,77 @@
-X-GM-THRID: 2693844172800
-X-Received: by 10.50.72.98 with SMTP id c2mr10550174igv.0.1424680191917;
-        Mon, 23 Feb 2015 00:29:51 -0800 (PST)
+X-GM-THRID: 6463467119656828928
+X-Received: by 10.28.55.209 with SMTP id e200mr73730wma.0.1505248998382;
+        Tue, 12 Sep 2017 13:43:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.18.136 with SMTP id 8ls1522577ios.51.gmail; Mon, 23 Feb
- 2015 00:29:51 -0800 (PST)
-X-Received: by 10.66.224.238 with SMTP id rf14mr11156031pac.11.1424680191741;
-        Mon, 23 Feb 2015 00:29:51 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pd0-x22f.google.com (mail-pd0-x22f.google.com. [2607:f8b0:400e:c02::22f])
-        by gmr-mx.google.com with ESMTPS id ks4si4120302pbc.1.2015.02.23.00.29.51
+Received: by 10.28.161.4 with SMTP id k4ls555902wme.7.gmail; Tue, 12 Sep 2017
+ 13:43:17 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QAW3uzgvua2AO2q+iEPwyPpv4HdLuz7mf3evlbAojbcVn+YjReOvlCh1wqZfRpKkumvquei
+X-Received: by 10.28.230.79 with SMTP id d76mr74136wmh.12.1505248997151;
+        Tue, 12 Sep 2017 13:43:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505248997; cv=none;
+        d=google.com; s=arc-20160816;
+        b=B6UzrSTBKPsiRRtC48dJER9EDZI0jKH73eG/Ll/t8VJt/KvcvuL6D2QNz/rEPvAsMZ
+         q+Vh81Nwd0w/aO4FAegNR3r1sIivA+5kgeWifRsaGAxfg7w8FY/4n2jXaysqrsN6xLXy
+         egWkq3WZWr34uduGl81vi3zvw27/ITz/4qRDN0sfic0bu2TRfQd8LxnD/XucnyDjh+Gc
+         JZL0wlcelFFFvvD3WHVJ5Txv+WaobcsYnRuMfTliw+j5hWzLv4Kghk7dKhPgeyXJ+ULH
+         Rhe/P1qiu6KTLNbkJ6V63G1QIb/pPSGDURDCDUIqkcpZa1fymRuHAgEZqbQ+4+4Z0Djj
+         sGuQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=Qu6lg9l81TnpC6PlHP8S57RXEoJzhHgkcHM3tZDgNxQ=;
+        b=BbvZMeyvVRZ7WFuqE4oLzbb6Qw40pA2/WE1RE5AiiCrB9SorAXwgpAZNbXBgg57wXk
+         02hUABtyjlEgb2SMCO74Yt6eLPdg+X/PlgoVSxy32YVNgAwsXS4SYMqOl4SjpAIOaykn
+         CxBTJI2dsg42fzJWsJbAhK+rpteYbbwI7NW+yRmhs0sMHJwHmXz5Vr26z5sErpex9A+U
+         d6yeiC7sEZTzYJ90TAbZfDWBbnqhXtfbXa4tL2qHKN19YuwuzeWDDDjX0Uvb84gkS+TH
+         Z9klPU5yd+Eqr2bd34NHjKSFlDXESR1uy19MKfmhYh4i6UA8DmH3hYBFH5rwTIhcPsfF
+         yiBw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id b203si830529wmh.4.2017.09.12.13.43.16
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Feb 2015 00:29:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::22f as permitted sender) client-ip=2607:f8b0:400e:c02::22f;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 12 Sep 2017 13:43:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::22f as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x22f.google.com with SMTP id nh10so23752067pdb.11
-        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 00:29:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=Tb9hntwTvuWWkRp1LYKjs/vznttib87CLe0eR0wUJwM=;
-        b=CJyQYgKpaQkfX2m7rvq2BPN9SrWKxtxcSE9/wk4FYKEcAoe3NX+G+kNP6fiwX7F9oN
-         eu02CzgezHJmWjc9CJFvWUu0rVpwThdG5Ldws31JqSJKpZt7mzoZiuALLCy9POeuV2Ln
-         bIhzU6jGch7b+vCyi7DF+u+2Z2eDjesONIjvrblu56KK1LSHY1l2wU7MkEnI21N5KxYf
-         cTTE/kTJkM6B0rkMy8Wo9/d2kgNZrNBo6n4C94V6nJvht1Hdy8aEj0YYGrzVNQu9IEDZ
-         xOBtVtVd5wGrHtYPV09BFGanU7dGAioenYjppagaOglV/0T+Bkjo5Wn/LlFa5p0Tp9YN
-         Tv6Q==
-X-Received: by 10.68.191.233 with SMTP id hb9mr17078291pbc.111.1424680191646;
-        Mon, 23 Feb 2015 00:29:51 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from batra ([14.139.82.6])
-        by mx.google.com with ESMTPSA id bc4sm35106161pac.4.2015.02.23.00.29.49
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Mon, 23 Feb 2015 00:29:50 -0800 (PST)
-Date: Mon, 23 Feb 2015 13:59:32 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8188eu: Reindented code to reduce line size
-Message-ID: <20150223082932.GA30012@gmail.com>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [12.145.98.253])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id BABB2B08;
+	Tue, 12 Sep 2017 20:43:15 +0000 (UTC)
+Date: Tue, 12 Sep 2017 13:43:14 -0700
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Harsha Sharma <harshasharmaiitr@gmail.com>
+Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3] staging: typec: tcpm: Rewrite comparison to NULL
+ pointer
+Message-ID: <20170912204314.GB20215@kroah.com>
+References: <1504893085-6113-1-git-send-email-harshasharmaiitr@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <1504893085-6113-1-git-send-email-harshasharmaiitr@gmail.com>
+User-Agent: Mutt/1.9.0 (2017-09-02)
 
-Reidented code to reduce line size and increase readability.
+On Fri, Sep 08, 2017 at 11:21:25PM +0530, Harsha Sharma wrote:
+> Make code more concise and readable 
+> 
+> Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
+> ---
+> Change in v3:
+>  -Change in subject and log message
+> Change in v2:
+>  -Change in subject 
+>  -Change in log message
+>  drivers/staging/typec/tcpm.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
----
- drivers/staging/rtl8188eu/hal/bb_cfg.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+Due to other things happening in this driver, I have to wait until after
+4.14-rc1 is out before I can apply it.  Don't worry, it's not lost, I
+just have to postpone it for another week...
 
-diff --git a/drivers/staging/rtl8188eu/hal/bb_cfg.c b/drivers/staging/rtl8188eu/hal/bb_cfg.c
-index 262da88..2d6db42 100644
---- a/drivers/staging/rtl8188eu/hal/bb_cfg.c
-+++ b/drivers/staging/rtl8188eu/hal/bb_cfg.c
-@@ -508,7 +508,8 @@ static u32 array_phy_reg_pg_8188e[] = {
- 
- };
- 
--static void store_pwrindex_offset(struct adapter *Adapter, u32 regaddr, u32 bitmask, u32 data)
-+static void store_pwrindex_offset(struct adapter *Adapter,
-+			u32 regaddr, u32 bitmask, u32 data)
- {
- 	struct hal_data_8188e *hal_data = GET_HAL_DATA(Adapter);
- 	 u8 pwrGrpCnt = hal_data->pwrGroupCnt;
-@@ -553,7 +554,8 @@ static void store_pwrindex_offset(struct adapter *Adapter, u32 regaddr, u32 bitm
- 	}
- }
- 
--static void rtl_addr_delay(struct adapter *adapt, u32 addr, u32 bit_mask, u32 data)
-+static void rtl_addr_delay(struct adapter *adapt,
-+			u32 addr, u32 bit_mask, u32 data)
- {
- 	if (addr == 0xfe) {
- 		msleep(50);
--- 
-1.9.1
+thanks,
 
+greg k-h
 
