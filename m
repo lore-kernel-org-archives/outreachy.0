@@ -1,114 +1,127 @@
 X-GM-THRID: 6464894536375074816
-X-Received: by 10.46.71.198 with SMTP id u189mr1226828lja.14.1505226527747;
-        Tue, 12 Sep 2017 07:28:47 -0700 (PDT)
+X-Received: by 10.13.196.6 with SMTP id g6mr9611952ywd.137.1505226314764;
+        Tue, 12 Sep 2017 07:25:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.81.65 with SMTP id b1ls122475lje.25.gmail; Tue, 12 Sep 2017
- 07:28:46 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QAXqfzyr5ib5mBr5/+okVDiF9T9KoGfbVaysgJrENIWRbtpEZTaIIoUNk82heMOMdseCBd8
-X-Received: by 10.25.202.17 with SMTP id a17mr845866lfg.6.1505226526382;
-        Tue, 12 Sep 2017 07:28:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505226526; cv=none;
+Received: by 10.36.246.135 with SMTP id u129ls1293788ith.13.gmail; Tue, 12 Sep
+ 2017 07:25:14 -0700 (PDT)
+X-Received: by 10.176.93.200 with SMTP id l8mr8897045uag.119.1505226314039;
+        Tue, 12 Sep 2017 07:25:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505226313; cv=none;
         d=google.com; s=arc-20160816;
-        b=bW48Po3hKAnYU1SkcYXX+j98TmrMHU5rGD1GAIxW4pCqY2rTli7I1bbiELjEPacgt5
-         xaxUnWh1bjRi0+Rrmt0qhtfruYuz+Cyk3q5R7BnnXDULtGYvQYi33m2R92OGcAOK0/6t
-         kIjagvteNAc0zkrw1bcsLoDSaBrsrwTGSrXWSnZjg5iMpabKShGKOCTI+wWmIVFEvfRf
-         wX1YoGs01g2SBHV5uCwfDIKNHdeO/cw7fWGDUhe4HUDUJQU8Wd4sQ5Q3EItffdyIoHOS
-         G5myKflQiNeTVYG71iVYxz0wJsp3MdQUAdHLtG+0GklQ54F6lrK5shusv+Ee6PdlU5ip
-         PNew==
+        b=VqrOeVm4JhyhUHCfz4aSE4hD1ncRu/90dHyJY+dX9eb/OqmwBxDtlzTCMHV/SPL3Tb
+         mEByv4p3nIfcGvmef/V9ioMeUKBYmCaWJF6dvXZoeGLPmBHh4yg9rEMfvtU5Of1VXmzK
+         EkTEv8/yIz6jj6LxAktFpDIeV83O6FKro8tX0vBc0tcNKo9zxmSj8z3h0mgVoZjGq/H1
+         kWS78KEpBHDeONYuoxeL8LGERWB2N7sn8aNAe9Bsifa/3+a/uwwW+8H619IJLYXcLxPU
+         p4Y9+2FL4pmQ2XEcUQUI7RFEgHJK1lIagfUpOR+PP36Aw5ykf+UWpIQgIUw7/21vQMvx
+         gqrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=IFqC8WVK9AVnsnYXpV5rvQ91twzdRf9YTejoVWoWqgw=;
-        b=XspmFPqBWyc/GrhfiJjO7LchUY0Hm/js9p7tiYyR4PlVEeuHEG2ojgRcTpnj459Asw
-         P5N7HkT3NxEJWX9ozfHZasiMWbSineqiG1mBBmC2NNJbk5uQohuX2HiPC/wtpn09dmz1
-         Y8QN8vHlhEy+jxHHjdlSAnyN6S3PXiXtbIYGnVVWmNuKofavVQ6o8PLPUydY8uiQd83o
-         3kdJclYQvZNU4VwrUGvgZTb1XQhkIWD4l3SQdJOhMYYKYgt+YkjqxSg35N+15JObSl2t
-         YNbCcGVKxw9uOUcMYsL0cuZ8CvC5qipRW7IPcn/XBlxJPPwb1OU0EIVFvQm49fAUpl2l
-         lWGw==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=Se3FXjWxXBUDLX4rjGtfGPO/JP19ERr45KzBoLhf0Cg=;
+        b=Pj6tUlj6KGnQ7Q2OqPBxEEkxtUNN4GgnAkvDVncakIzO0G6CO9Z3PzSS0fQFR0pgoU
+         XEErQj5ELbOpOjiY0drV90ouotPAFsWTr3hu+Fqw9fTvEkMGVJoujTnR/dQzH8L295Gs
+         2kFKdET6C4lmLS9AeJnxn0tIh0j0sItLSUlEU4iauTUAv5ChYX0KIa/aXKbldxdRvUYE
+         z6MkqvLlKi3iVX5uuDQtDs48Ut+E78QG2UKsvH13SisZ7QZq/4KsuDTnsnS0QPkguone
+         6M1Y94cN4foTJpXeBIc5DcDOUQYv9QHQ+WzkbC4I0vRBUXFmTkpv2seGNANMXNDUk8pB
+         Iqrg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id p200si625844wmg.4.2017.09.12.07.28.46
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vcC0rNKC;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <srishtishar@gmail.com>
+Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
+        by gmr-mx.google.com with ESMTPS id q65si1168801pfj.8.2017.09.12.07.25.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 12 Sep 2017 07:28:46 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Tue, 12 Sep 2017 07:25:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.42,383,1500933600"; 
-   d="scan'208";a="290704469"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 12 Sep 2017 16:28:26 +0200
-Date: Tue, 12 Sep 2017 16:27:55 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Srishti Sharma <srishtishar@gmail.com>
-cc: mchehab@kernel.org, gregkh@linuxfoundation.org, 
-    linux-media@vger.kernel.org, devel@driverdev.osuosl.org, 
-    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: media: atomisp: Merge
- assignment with return
-In-Reply-To: <1505226307-5119-1-git-send-email-srishtishar@gmail.com>
-Message-ID: <alpine.DEB.2.20.1709121627340.3149@hadrien>
-References: <1505226307-5119-1-git-send-email-srishtishar@gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vcC0rNKC;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x242.google.com with SMTP id i130so4237717pgc.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 12 Sep 2017 07:25:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=Se3FXjWxXBUDLX4rjGtfGPO/JP19ERr45KzBoLhf0Cg=;
+        b=vcC0rNKCwCFEfyh2rxpaoux89DUvfwgbrmYpgCqXRXoZuq96FYNVRsSo737bevIpsP
+         X/QDqs+kJ+EMW1Eyk82/4EBJKZgyCHsf2k1ib7nY/SiTdzkWXLqy35Wmd54cVTACmCcU
+         igHdvmUZqtujmcOK+CHOl5L4tDe3lMgXRLXP0jbn4w5Gxr4gvkcnkxVMV4HlHYQrlgMK
+         4fcxEHi8VGO9fheL+SzblZTiWRzi9fdni35uRMvnHRgDWysEidtST2afJLGtlO4eVuYk
+         9pCC9uFB9ZI0P39G4QrLfyrxsZBbCqRrRBnKdRbIJu66jrqB6uYhiB0gy3j2UIn5GpQ6
+         eAAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=Se3FXjWxXBUDLX4rjGtfGPO/JP19ERr45KzBoLhf0Cg=;
+        b=pj0aWZRMdi4wLvxLCW0IIK/e25Vn0xcxYFJPRQKIcyMXyfM1r0FK6DdPlTcNpj+8Ik
+         NIQA5i3Rg+XLb3KotnS3B2L662pR2GzRhfd81vChebE86oV23X62O4AMz7P6sBBkCkuq
+         FkLryPIpwiXf5NA5u2iVNoqFaLyxH8q0hVsqfXro8FLSWDd5dk2R+Spcxwp4pMszCrAy
+         eukUI3mBVCTyjVBoYgdo7cd8CC+vLp86xn1C4jjh5BRF4NJ4We7l1+3W+Hm+/l+3Qd15
+         8Fy7Xj71o5SHh8qNgKxJKg4O9DvVzXQLjRnvqZrMacdkDppR51n2Z0ESrxIvsfxpv3E7
+         EHmQ==
+X-Gm-Message-State: AHPjjUhwLcXAly19vyC2zSQoaMW6sIeLB9a3sR/Aqh6Gx9gt0cZ2zsLT
+	SwHAXExELAdjFQ==
+X-Google-Smtp-Source: ADKCNb4yCfjno5ZAA4lD07gTBUTH6k/rh0+qQ7nesIBBr23KCo+qk8mJRhwFyFXmXDvxNOJ94niNAw==
+X-Received: by 10.99.114.76 with SMTP id c12mr14546757pgn.296.1505226313729;
+        Tue, 12 Sep 2017 07:25:13 -0700 (PDT)
+Return-Path: <srishtishar@gmail.com>
+Received: from srishti-PRODiiGY-945G ([122.175.183.249])
+        by smtp.gmail.com with ESMTPSA id l131sm23534838pga.24.2017.09.12.07.25.12
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 12 Sep 2017 07:25:13 -0700 (PDT)
+From: Srishti Sharma <srishtishar@gmail.com>
+To: mchehab@kernel.org
+Cc: gregkh@linuxfoundation.org,
+	linux-media@vger.kernel.org,
+	devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com,
+	Srishti Sharma <srishtishar@gmail.com>
+Subject: [PATCH] Staging: media: atomisp: Merge assignment with return
+Date: Tue, 12 Sep 2017 19:55:07 +0530
+Message-Id: <1505226307-5119-1-git-send-email-srishtishar@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
+Merge the assignment and the return statements to return the value
+directly. Done using the following semantic patch by coccinelle.
 
+@@
+local idexpression ret;
+expression e;
+@@
 
-On Tue, 12 Sep 2017, Srishti Sharma wrote:
+-ret =
++return
+     e;
+-return ret;
 
-> Merge the assignment and the return statements to return the value
-> directly. Done using the following semantic patch by coccinelle.
->
-> @@
-> local idexpression ret;
-> expression e;
-> @@
->
-> -ret =
-> +return
->      e;
-> -return ret;
->
-> Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+---
+ drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
-Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+diff --git a/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c b/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c
+index 11162f5..e6ddfbf 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c
++++ b/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c
+@@ -1168,13 +1168,9 @@ void hmm_bo_free_pages(struct hmm_buffer_object *bo)
+ 
+ int hmm_bo_page_allocated(struct hmm_buffer_object *bo)
+ {
+-	int ret;
+-
+ 	check_bo_null_return(bo, 0);
+ 
+-	ret = bo->status & HMM_BO_PAGE_ALLOCED;
+-
+-	return ret;
++	return bo->status & HMM_BO_PAGE_ALLOCED;
+ }
+ 
+ /*
+-- 
+2.7.4
 
-
-> ---
->  drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c | 6 +-----
->  1 file changed, 1 insertion(+), 5 deletions(-)
->
-> diff --git a/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c b/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c
-> index 11162f5..e6ddfbf 100644
-> --- a/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c
-> +++ b/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c
-> @@ -1168,13 +1168,9 @@ void hmm_bo_free_pages(struct hmm_buffer_object *bo)
->
->  int hmm_bo_page_allocated(struct hmm_buffer_object *bo)
->  {
-> -	int ret;
-> -
->  	check_bo_null_return(bo, 0);
->
-> -	ret = bo->status & HMM_BO_PAGE_ALLOCED;
-> -
-> -	return ret;
-> +	return bo->status & HMM_BO_PAGE_ALLOCED;
->  }
->
->  /*
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1505226307-5119-1-git-send-email-srishtishar%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
