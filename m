@@ -1,39 +1,43 @@
 X-GM-THRID: 6465198588662120448
-X-Received: by 10.46.92.193 with SMTP id q184mr1938343ljb.34.1505409228978;
-        Thu, 14 Sep 2017 10:13:48 -0700 (PDT)
+X-Received: by 10.129.43.68 with SMTP id r65mr11785721ywr.210.1505303319708;
+        Wed, 13 Sep 2017 04:48:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.29.10 with SMTP id d10ls369098ljd.42.gmail; Thu, 14 Sep
- 2017 10:13:47 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QC6qLLLGfNxgifZgG16hxfWitKd8cubWVgQXQwdollfvkYj+06iv9VjY+FxVln/ELiR/IiA
-X-Received: by 10.46.89.153 with SMTP id g25mr1614985ljf.20.1505409227920;
-        Thu, 14 Sep 2017 10:13:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505409227; cv=none;
+Received: by 10.107.35.13 with SMTP id j13ls2868165ioj.39.gmail; Wed, 13 Sep
+ 2017 04:48:39 -0700 (PDT)
+X-Received: by 10.98.32.81 with SMTP id g78mr9479886pfg.53.1505303319200;
+        Wed, 13 Sep 2017 04:48:39 -0700 (PDT)
+Received: by 10.55.25.10 with SMTP id k10msqkh;
+        Wed, 13 Sep 2017 03:05:41 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QCjcDJld2ouGhHoDVMa3urJVIEs1hdO/1JAh/1/KrgDRVFsj/ejMttW9gmQ85DX5rUFcvAE
+X-Received: by 10.28.153.6 with SMTP id b6mr234146wme.20.1505297140750;
+        Wed, 13 Sep 2017 03:05:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505297140; cv=none;
         d=google.com; s=arc-20160816;
-        b=S/JhuJq0lUI7O5EuxiCHRiKFEqmrU1aEpKuq1rlVNS5NWKutiMtPsB9Rcz7rAeRSC8
-         IgXQphz8gECkWSOSX+FXZROALX+hJ+jNMZnvA2gLKRo14ZIFYYHqR6PhXcvHU+OoT9Lg
-         y2T46lulgqzxqH9HWRJLstqfgRgVKkTO51SUHW9I2ZMLSB/cpZMuxIHoNKZyYfj0dHVi
-         44pfvdKspNv6dhjrkip2vN4QyiWEfXA2iD5CPFoQSbn/JJUtYkXatLv3+uDqovBa5bDG
-         u1ccVzBUdl9qtnc3A7a5YPAlhwEZvHtfl26UgshEa/hrLnIRoUS8qW0pYkYjGy4MzIxJ
-         rkuA==
+        b=vpVFcery+mvbZVq5R/zCo783zzrawG1kX0Uo3S3cgPNhJfU/NbD6TQuGHls/CBmkdb
+         4DSAC/4ZcU5ynj+Jjezpo+8VgYLUUBDuNck8hvf80ParQ86sRehrcJZrQbqPOgsnR8+M
+         a+qE7hCbMIvSS/HOiBypsVFVZgmbJezTnp7+j+BJFr3xVa3d2/2tRWC2d0XxrjYeqVBb
+         YmVZ95zdZmx7ortMncQqwQ5OWWr7kSi9fucx9EEPiTvcnNsTvBRoBJ7CBJpaSU6RnOX8
+         dKcOoR9LC46MELh749KSVlq3KmxyvAxiFHiOyUKIZdx79htYL6hSgH7LlQosNw2anW4D
+         f3bQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:from:cc:references:to:subject:arc-authentication-results;
-        bh=f2iKFsnsQgWKhTzhG14W8OuATs1KsHMp0I6p374oxLw=;
-        b=geSYHYJmnC1kV84bCQf3W35BBXU56l5aA8CTM0jgAhUF3hYnqHYDnsx5PLU2ybJG8t
-         nX2joUrWANsNWxJBGasJ6ELf5ksYk64WI/PJQxrHi/wPRWXHzBQMpQnjW6gM5xtICtxd
-         kYyyKcnDIFY2v8SbGOaB5PW2TVULGfzLcApLUwa4DzXdquUtGC0FXK7MxqTONWMK+nJO
-         Lnp5sR3601DlZYOdQVGGQo7Lg0IeG4ey2PSW4Z3HN+bd9yd/tCCJ0IjWYVaK0HMB03S7
-         4cA58d8PlfjHdXeIqNqVCXkmCYO1fgB1S/fwyVPoCF6N8OvBZH8iQRu+vAKU10Za5VEL
-         T4HA==
+        bh=6cHJMMhDUt9IGnD6NAd1WjLKuXpgaixoePVlNKTyBrM=;
+        b=ETvt7IBPcqnKWRMHAijvqdrihXzRTYQCbFxtwYFlN4XFLimsF648cT7QeSPe9zvm1T
+         xe7BvoZl+m/8ge1dRrryeJOHsUwvR98CnY6ng2oZZQya2vLx359mbnyliz1v89uoCKju
+         BFMS6twfwvh4HaVPeu+ZtdMaLHisJj4KCMpSgr1vXVR1W/yeVSy3o1rz2PWLrScrUX+s
+         Jpugcv+NjrVLzISZuyhIw0TC2DiEsLfYmXJbeRAE9LXcFT2G6wmYHxj17Q7DgzCsIjgP
+         M9ZIVe81OWj2HZI3ZSzeZxl3z89+7tcN5to2EgZdcF/Awgx/pNADUMyBx2a67ChzScLs
+         ak2g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=pass (google.com: best guess record for domain of colin.king@canonical.com designates 91.189.89.112 as permitted sender) smtp.mailfrom=colin.king@canonical.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=canonical.com
 Return-Path: <colin.king@canonical.com>
 Received: from youngberry.canonical.com (youngberry.canonical.com. [91.189.89.112])
-        by gmr-mx.google.com with ESMTPS id 200si100866wmj.0.2017.09.14.10.13.47
+        by gmr-mx.google.com with ESMTPS id t142si61855wmt.2.2017.09.13.03.05.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Sep 2017 10:13:47 -0700 (PDT)
+        Wed, 13 Sep 2017 03:05:40 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of colin.king@canonical.com designates 91.189.89.112 as permitted sender) client-ip=91.189.89.112;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: best guess record for domain of colin.king@canonical.com designates 91.189.89.112 as permitted sender) smtp.mailfrom=colin.king@canonical.com;
@@ -42,7 +46,7 @@ Received: from 1.general.cking.uk.vpn ([10.172.193.212])
 	by youngberry.canonical.com with esmtpsa (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.76)
 	(envelope-from <colin.king@canonical.com>)
-	id 1dsXhy-0002VR-RZ; Thu, 14 Sep 2017 17:13:46 +0000
+	id 1ds4Y8-0004xu-23; Wed, 13 Sep 2017 10:05:40 +0000
 Subject: Re: DR Checker and KINT static checkers
 To: Julia Lawall <julia.lawall@lip6.fr>
 References: <20170913095202.a6zsi3xeryzhmxrl@mwanda>
@@ -52,8 +56,8 @@ Cc: Dan Carpenter <dan.carpenter@oracle.com>,
  kernel-janitors@vger.kernel.org, outreachy-kernel@googlegroups.com,
  Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 From: Colin Ian King <colin.king@canonical.com>
-Message-ID: <114caf1f-c78d-b8ee-7f7e-53625867299c@canonical.com>
-Date: Thu, 14 Sep 2017 18:13:46 +0100
+Message-ID: <d17e2cb4-ccd5-9bdb-89d7-5a2b2933d11c@canonical.com>
+Date: Wed, 13 Sep 2017 11:05:39 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
  Thunderbird/45.8.0
 MIME-Version: 1.0
@@ -99,13 +103,23 @@ On 13/09/17 11:04, Julia Lawall wrote:
 > You could ask the authors.  They may be happy to have some feedback.
 > 
 > julia
-> 
 
-I've requested assistance from Aravind Machiry and he will help me with
-x86 checking once he's finished a paper, so I expect to report back with
-my results sometime at the end of the month if all goes well. Keep you
-posted.
+Yep, I'll do that sometime this week when I get some free cycles. :-)
 
 Colin
+
+> 
+>>
+>> Colin
+>> --
+>> To unsubscribe from this list: send the line "unsubscribe kernel-janitors" in
+>> the body of a message to majordomo@vger.kernel.org
+>> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>>
+> --
+> To unsubscribe from this list: send the line "unsubscribe kernel-janitors" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> 
 
 
