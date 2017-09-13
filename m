@@ -1,99 +1,89 @@
 X-GM-THRID: 6465168256299696128
-X-Received: by 10.46.67.12 with SMTP id q12mr1153352lja.35.1505365802007;
-        Wed, 13 Sep 2017 22:10:02 -0700 (PDT)
+X-Received: by 10.28.218.143 with SMTP id r137mr20389wmg.15.1505344621631;
+        Wed, 13 Sep 2017 16:17:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.184.83 with SMTP id i80ls1283410wmf.5.canary-gmail; Wed, 13
- Sep 2017 22:10:01 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QCFlfkgHFIsQzqUW7rLbjrZPoeEjLAa2Ye4eSyE8XtH0+TJg0ADKIosjIf5K5ki6izvoue2
-X-Received: by 10.28.21.65 with SMTP id 62mr75588wmv.22.1505365801089;
-        Wed, 13 Sep 2017 22:10:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505365801; cv=none;
+Received: by 10.46.4.129 with SMTP id a1ls301784ljf.4.gmail; Wed, 13 Sep 2017
+ 16:17:00 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QA+Jsttx0vN/un2J1btLXLfQvvOuBi/LYpReFYQhVnhW23MexGJ1WeGJS4oGQnjrWH7/uRO
+X-Received: by 10.46.92.193 with SMTP id q184mr1685236ljb.34.1505344620365;
+        Wed, 13 Sep 2017 16:17:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505344620; cv=none;
         d=google.com; s=arc-20160816;
-        b=so5XaFpMgG1svd0NZvAE60wfWXSGBtbKG8olALTH9KdQHTjm5AFB/jI4EnfrccJZxs
-         hawNOsIB3jXatgTE7v4VZaz8KHTjuaY57Mdx0qA8xITGUWdmgXUS3NTY4SI5d8WUWhrw
-         kEpKg5jGpvTPF7bwp1hYPzRW+FRGEHSMa5rW+YF/jWt1GqAvT0aCC1jxbYHWJg+a1kEt
-         I/Krpcm7rpL0AtpByAk2jPCKN0/Ozb1g1Uc7EdIJOkj3g7oGRqLTE+vAxIk2kLc78exf
-         +VaVHrCiq8hrXKYsKgY7xySd5h8Scqx8MOwcn6d+5b8QuHS8NXjBudFtTIX/QnX7yagk
-         V7Bw==
+        b=OU5V96I5iyTGgxtTZbU3qTaEHNGAi1IL+ln12HWPP6IdBo2fyfSa42FcHcJyrzEq2M
+         9BaJcq2E5Wd//Mhjrl63AhpF2i1iiD40ARDF77s7zrt52aDVr3q/bbJ7HjwowJLXXcaB
+         uztUDyg3IT6jc2HO2Kdk7w98cEq+CNLfK732EdC2pZzJuUhVzmlYzoj4Ma5TYoVO9cuy
+         zD0QgF8ny19oI6fPb1xdqoih7NOn4/jilPi1mUkfSfxQsjz3rd+sF5kBd+hUXZd6vwGd
+         A48Mus8vRjF+vYYUwT/wCbS98cQJ9GAut2tbntBS/+GTj2afRIv+5l6oX2eXwsnDFP3l
+         ZNeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=75kF/umga8y1aUAsebFDUnohuhb58s9yX2A4KmxqYUw=;
-        b=b20k3JHy+Gnv5civ1Pd/igg8AUUugseg7H8AOve6cEOj+x3DdD/t/mtvujijso0n0v
-         ZhIEhRh2/oPbEkW7qtgqkYPiRBFkcpQ57nN0PDLobcX3fObBIQ5Zqt6FfURx5yDD6ESd
-         I2ciAQpJ85sxqi6J4pSSP4WO3YPukTVEwwzjpWP3v7OgN9yy8ofP9ORdIgiXohkvAwp6
-         ryPKJ76/e43xRJyTFQvynCS6wbASPTSiOjFiTzGRs6YvHD4HltcvE+hfL/YnkA5vxdGY
-         ZfxvT+hS7VOTimOmWLknKhQRq2/M1XyojL1JCnqeaNaTjsthGYUMGAuImQmVTL02LBlu
-         8PeA==
+        h=message-id:from:cc:to:subject:content-transfer-encoding
+         :mime-version:references:in-reply-to:user-agent:date
+         :arc-authentication-results;
+        bh=FG0+TGvH4ofgrMEz+blndjVVDu+LjoBO/R1e92LzQyg=;
+        b=T0JMCDVL5PviVYrywGWUuJ/SiOnB8P0j0lMyvobukUT8pFqDEMdLxj6EFGKNxkVwIz
+         6mQeW7g4UjCQby+cEveQen58ICsvbyTb0Km7gCzOYGa3hots8gSkVeJ+v/TxglRdsQxj
+         u4/qMMBl/cyly/JCx5x/FZN2kAfhhCWe5R9BdJMhAe9YZ6T8+Vs0DCHIAM9rjNa9G8Vf
+         tSKQcXGsEe2jXhoBhsv8fD2kRJq5j6Z9o8XQY2V1a/wVL/xdJtk6jAEQ+Xmn6C3KatnV
+         5v8gTF7e20JX2xAucpi5SehQf45DH4+W16OlNRDpnJIbeyAUkQgzu5H61gCAuw953KEV
+         cmqA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id 191si32624wmn.2.2017.09.13.22.10.00
+       spf=pass (google.com: domain of jic23@jic23.retrosnub.co.uk designates 2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466 as permitted sender) smtp.mailfrom=jic23@jic23.retrosnub.co.uk
+Return-Path: <jic23@jic23.retrosnub.co.uk>
+Received: from saturn.retrosnub.co.uk (saturn.retrosnub.co.uk. [2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466])
+        by gmr-mx.google.com with ESMTPS id b62si6003wmd.3.2017.09.13.16.17.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 13 Sep 2017 22:10:01 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Wed, 13 Sep 2017 16:17:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jic23@jic23.retrosnub.co.uk designates 2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466 as permitted sender) client-ip=2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.42,391,1500933600"; 
-   d="scan'208";a="290982513"
-Received: from 85-171-60-79.rev.numericable.fr (HELO [192.168.0.15]) ([85.171.60.79])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 14 Sep 2017 07:10:00 +0200
-Date: Thu, 14 Sep 2017 07:10:00 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Joe Perches <joe@perches.com>
-cc: Dan Carpenter <dan.carpenter@oracle.com>, 
-    Greg KH <gregkh@linuxfoundation.org>, Lars-Peter Clausen <lars@metafoo.de>, 
-    devel@driverdev.osuosl.org, daniel.baluta@gmail.com, 
-    Himanshi Jain <himshijain.hj@gmail.com>, Michael.Hennerich@analog.com, 
-    linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org, 
-    nick.desaulniers@gmail.com, outreachy-kernel@googlegroups.com, 
-    pmeerw@pmeerw.net, knaack.h@gmx.de, Jonathan Cameron <jic23@kernel.org>
-Subject: Re: [Outreachy kernel] Re: [PATCH v2 1/2] include: linux: sysfs:
- Add __ATTR_NAMED macro
+       spf=pass (google.com: domain of jic23@jic23.retrosnub.co.uk designates 2a01:8000:1ffa:f003:bc9d:1dff:fe9b:7466 as permitted sender) smtp.mailfrom=jic23@jic23.retrosnub.co.uk
+Received: from [172.20.188.179] (unknown [12.145.98.253])
+	by saturn.retrosnub.co.uk (Postfix; Retrosnub mail submission) with ESMTPSA id 71FF640679;
+	Thu, 14 Sep 2017 00:16:56 +0100 (BST)
+Date: Wed, 13 Sep 2017 16:16:51 -0700
+User-Agent: K-9 Mail for Android
 In-Reply-To: <1505339903.8969.20.camel@perches.com>
-Message-ID: <alpine.DEB.2.20.1709140709450.2091@hadrien>
-References: <cover.1505291907.git.himshijain.hj@gmail.com>  <2bc7a124ab925dd2c50aa8c778745d179777d50d.1505291907.git.himshijain.hj@gmail.com>  <20170913180310.27cbf1b1@archlinux> <20170913185805.GB26390@kroah.com>  <5e43ea4d-eab8-c4be-c5dc-2f862578d011@metafoo.de>
-  <20170913212952.GD9288@kroah.com> <20170913214333.mcw4f24fkzndwh5k@mwanda> <1505339903.8969.20.camel@perches.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+References: <cover.1505291907.git.himshijain.hj@gmail.com> <2bc7a124ab925dd2c50aa8c778745d179777d50d.1505291907.git.himshijain.hj@gmail.com> <20170913180310.27cbf1b1@archlinux> <20170913185805.GB26390@kroah.com> <5e43ea4d-eab8-c4be-c5dc-2f862578d011@metafoo.de> <20170913212952.GD9288@kroah.com> <20170913214333.mcw4f24fkzndwh5k@mwanda> <1505339903.8969.20.camel@perches.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v2 1/2] include: linux: sysfs: Add __ATTR_NAMED macro
+To: Joe Perches <joe@perches.com>,Dan Carpenter <dan.carpenter@oracle.com>,Greg KH <gregkh@linuxfoundation.org>
+CC: Lars-Peter Clausen <lars@metafoo.de>,devel@driverdev.osuosl.org,daniel.baluta@gmail.com,Himanshi Jain <himshijain.hj@gmail.com>,Michael.Hennerich@analog.com,linux-iio@vger.kernel.org,linux-kernel@vger.kernel.org,nick.desaulniers@gmail.com,outreachy-kernel@googlegroups.com,pmeerw@pmeerw.net,knaack.h@gmx.de,Jonathan Cameron <jic23@kernel.org>
+From: Jonathan Cameron <jic23@jic23.retrosnub.co.uk>
+Message-ID: <4DB672D4-AE6E-4CFF-8566-F62BFBAB62AB@jic23.retrosnub.co.uk>
 
 
 
-On Wed, 13 Sep 2017, Joe Perches wrote:
+On 13 September 2017 14:58:23 GMT-07:00, Joe Perches <joe@perches=2Ecom> w=
+rote:
+>On Thu, 2017-09-14 at 00:43 +0300, Dan Carpenter wrote:
+>> He was exagerating a bit to call it a "static checker" warning=2E=2E=2E
+>
+>Not really=2E
+>
+>False positives and false negatives exist in just about
+>every static
+>checker=2E
+>
+>> It's just checkpatch=2Epl complaining about adding spaces around the -
+>> operator=2E
+>
+>checkpatch is a brain-damaged by design static checker=2E
+>regexes can only be sensitive to patterns, not compiled code=2E
+>
+>> The sysfs file has a hyphen in the middle=2E
+>
+>Another option would be to use an underscore instead=2E
 
-> On Thu, 2017-09-14 at 00:43 +0300, Dan Carpenter wrote:
-> > He was exagerating a bit to call it a "static checker" warning...
->
-> Not really.
->
-> False positives and false negatives exist in just about
-> every static
-> checker.
->
-> > It's just checkpatch.pl complaining about adding spaces around the -
-> > operator.
->
-> checkpatch is a brain-damaged by design static checker.
-> regexes can only be sensitive to patterns, not compiled code.
->
-> > The sysfs file has a hyphen in the middle.
->
-> Another option would be to use an underscore instead.
+Userspace ABI plus it really does mean subtract=2E  Used in description of=
+ differential channels=2E
+Most such IIO ABI is generated by the IIO core, this just comes up with co=
+rner cases of the ABI=2E
 
-There are already underscores on either side.
+Jonathan
 
-julia
-
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1505339903.8969.20.camel%40perches.com.
-> For more options, visit https://groups.google.com/d/optout.
->
+--=20
+Sent from my Android device with K-9 Mail=2E Please excuse my brevity=2E
 
