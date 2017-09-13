@@ -1,145 +1,158 @@
-X-GM-THRID: 6529312870526615552
-X-Received: by 10.36.61.21 with SMTP id n21mr8066319itn.35.1520224118890;
-        Sun, 04 Mar 2018 20:28:38 -0800 (PST)
+X-GM-THRID: 6465297049909723136
+X-Received: by 10.101.87.206 with SMTP id q14mr7294305pgr.78.1505339464949;
+        Wed, 13 Sep 2017 14:51:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.134.160 with SMTP id q32ls972335ioi.3.gmail; Sun, 04 Mar
- 2018 20:28:37 -0800 (PST)
-X-Google-Smtp-Source: AG47ELtI8/hSWfgrG90P8yk+avRO2NAUxDlZXs6PFzaBwKdyAELr+Smkvn6+zMK4x0xOyYPOj1mt
-X-Received: by 10.107.25.8 with SMTP id 8mr10323762ioz.79.1520224117978;
-        Sun, 04 Mar 2018 20:28:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520224117; cv=none;
+Received: by 10.36.3.147 with SMTP id e141ls3998398ite.1.gmail; Wed, 13 Sep
+ 2017 14:51:04 -0700 (PDT)
+X-Received: by 10.99.123.26 with SMTP id w26mr12010070pgc.115.1505339464365;
+        Wed, 13 Sep 2017 14:51:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505339464; cv=none;
         d=google.com; s=arc-20160816;
-        b=T/Y9R1BqUFHUhQtYskkR2pBCLqGrE/GmmFU5XLkQxEm43OWsCb25XWLsQ3hqPFk2QM
-         rhYh2OA5dzuipaPbOE5oHnsJFpUzrdlNlo0/qUPgzeyILRqLKGzZJxGkS+cyTgHZBZy9
-         eeBZo0ogxSK+qgWEMIn6y8Oq4fyXVdrRADY4ScWfjuKw7d3ppbFMWss18qVnRyGD6U/U
-         q5ZEWBPV3+dSlgkdRjG6aaHB7Kf9aeoDRgI9jTCmob4cnsek3WQV7EJwQqAG7WxiOYOG
-         QYbtvnJOchOplt8ls7GgQkvZOMbUwwYy1ahW5oDIN2LoknglH7wiVDMfproeQd4vNO6R
-         SShQ==
+        b=b6CRtUBW9xHcbaXd2APWG9U8ivkwIB5zzAQVxBP5cWOnPl602A0YxL3nZ5vO7Wh7NV
+         owc7+a5JJSHTAIEDldE2abX4L+dlwJYta9NmQ2QyxkvACR5nNfnim9ReMzcUCEJRUKPP
+         rQ0wO7o96l+0ePsCAvZvJtxlz35oI4lGBlZljMA5Pw4u13HPcesmXKEzR0k4oRBnC6aF
+         mFAOOE9SAD/B3rPsju43n81BxhTm5xwt5cFmM6ItSWXjnm337ogaTYdO3049J9aq3wKd
+         XPVj7J/215hChZbyV0u59CaHN31WKdQfuJhq0UjUM4avzMC3LWjcL9aUgNatLFFOjvdh
+         BfHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=zc53r2neUtdUKjj+ed2e7Q3QPwhiZdGkbYaI50NA4KI=;
-        b=am+Glwlfokg58THBh/04lvgUyIosuYHS89Jiw5ksLDvjSlETkkABevU3jQJHnWSJpv
-         /nU4+t4cUNZorDYKAWActDKkQHoDtinEnwinadm7BeOkvotDmN+oe8G0w04bWVi7EeOA
-         3kJkgirhNtswUCDFfo7duuUi5W70+EoPQmz9ONsXdk9VAbgD3mbuO2wm8BGhkVdsbJ4W
-         Z0Gu693OQT4n3cTiBXH7J6A7QtvObuEN9kiXndigZlB3swd0U4k2jKfrOKV1AdrCkpL9
-         Zk87QBHGfRcigtCYLzohplNao+kqiQJM08A5D4ZE4rSn8G2rOhAiZAgFU7GHoJJ4S+a2
-         ReWA==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=PAD/jwYLelNaAwW4/VP0hOGU+dvwEvHnLASliVOwNBc=;
+        b=0G0Qxc9KciPZrUPWfWyBbW0aeDdQMqaVwaQybwieRfwALRedg1Udps7P5/DmsY49ZO
+         NGilBsWho2dZALClNu30yrb9M9de1dO+v5KADKz9rhPbPHpPq/CVcKGGUI4jHv3j9btS
+         ALiRCwDAJTsZE2NDSY2rdT/Lzy7AhckJBX4KivO10eI7kuBeM1/0HpJA1J9Ap6gZcpTp
+         lPKf1LXrA+sBgt6Ib3PiEesKkDHZuXVHp0vJOeRbHhzMZCfr2gdILBpYyKR24r2Qmbey
+         Fe+EO9jvRpZT2q5c4gDxAuhOGJblUeNhynXjGhibLLLp362TWL7M1ieRjK+/qJ57Ty00
+         ubyg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dhqx0Ixj;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id 70si94337itz.4.2018.03.04.20.28.37
+       dkim=pass header.i=@chromium.org header.s=google header.b=LcIKs4uq;
+       spf=pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:4002:c05::236 as permitted sender) smtp.mailfrom=seanpaul@chromium.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org
+Return-Path: <seanpaul@chromium.org>
+Received: from mail-yw0-x236.google.com (mail-yw0-x236.google.com. [2607:f8b0:4002:c05::236])
+        by gmr-mx.google.com with ESMTPS id l77si1148584ywc.16.2017.09.13.14.51.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 04 Mar 2018 20:28:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Wed, 13 Sep 2017 14:51:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:4002:c05::236 as permitted sender) client-ip=2607:f8b0:4002:c05::236;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dhqx0Ixj;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id g8so1713240pgv.7
-        for <outreachy-kernel@googlegroups.com>; Sun, 04 Mar 2018 20:28:37 -0800 (PST)
+       dkim=pass header.i=@chromium.org header.s=google header.b=LcIKs4uq;
+       spf=pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:4002:c05::236 as permitted sender) smtp.mailfrom=seanpaul@chromium.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org
+Received: by mail-yw0-x236.google.com with SMTP id q80so3492991ywg.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 13 Sep 2017 14:51:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=zc53r2neUtdUKjj+ed2e7Q3QPwhiZdGkbYaI50NA4KI=;
-        b=dhqx0IxjuHw6rPSNBNcK7HMdoMqdEaBOd0B9L1a4UeoB0irE2U/S1j9rhs0Z+tqsND
-         RKPY8ZEzbiOUrpftQyBUzLVL/lnmK+J4rAZQ/uULAejxSL/Q9X3kM9uEEq4fBClazTwn
-         cacEhWuiZmZCzvBcT8rI/chC2IrnNOHczOLFpXG7Iz6l2BsMHpeZz0Hd2xjHBid+H1W2
-         YR4HJYj7b6beBJJOqUtId06tZmUlXxogI7N8MdBYy5PbLooSq42syLra92rvJxZ7IyaN
-         7lh4Xtb9BAdEDY9Hglc7pkUc7Bxmj8lx8pjh/qVmJwFKFjonKZr21wjofWO8TDKc+1Ud
-         KihQ==
+        d=chromium.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=PAD/jwYLelNaAwW4/VP0hOGU+dvwEvHnLASliVOwNBc=;
+        b=LcIKs4uq8JsS42wwotIU8NVrcEpAFWF7fCOupkOP3CwdOM/7WlrSdIeHkVF28E3py1
+         XkV3bIskv36ptAjH8pbIpSzSCnErJI8NbznP1+8V08MUsB2+a/s0k3apUCwMmlykrOvR
+         gEm0rAQfpjU3GuT6eNPH/r7nQZ2bOssFPnybA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=zc53r2neUtdUKjj+ed2e7Q3QPwhiZdGkbYaI50NA4KI=;
-        b=CP1sfezDnuG6v2aAFlp0gqaKfzu9dgsAGMOtfLjLy1o7i+WEoLaEem7ouxkH9t6HUK
-         6H839OQJJLDtqXcaPuHlkTKI8ywqTa9mFJv5iQiGwJ3Ics7IJRg5hJcXPRAPMkA+h1Jp
-         W5ZujmJjyzQFBRPu3kLqdAuhSQRaqlBB4h+Nvp3BSMGk1TmBi7iJ8E4RNQL3kLB8Br92
-         ZKz8q85+h7n5iXv0q9dgds11XbeHCjsbP0antEhgMcImD3zUuh73g3VK0dRImz/aYm+q
-         xd60uH6yRR3+/9qAqGzDPpWSNyfm5QAyikSuhELXgUkjKWXNBwCYNyDpg7z4EtTWWHcH
-         bwRg==
-X-Gm-Message-State: APf1xPAvNWjLIuHKKigNRO9IqnZpIbI1o6Ph6D0nPWer6Ay3s83zJ6CG
-	fZa2B65PE0jO0pBJ6mGmlWhoSQ==
-X-Received: by 10.99.125.19 with SMTP id y19mr10900419pgc.285.1520224116839;
-        Sun, 04 Mar 2018 20:28:36 -0800 (PST)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from seema-Inspiron-15-3567 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id m12sm17806629pgr.35.2018.03.04.20.28.34
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 04 Mar 2018 20:28:35 -0800 (PST)
-Date: Mon, 5 Mar 2018 09:58:08 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: abbotti@mev.co.uk
-Cc: H Hartley Sweeten <hsweeten@visionengravers.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: comedi:  Replace "dont" with "don't
-Message-ID: <20180305042808.GA24032@seema-Inspiron-15-3567>
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=PAD/jwYLelNaAwW4/VP0hOGU+dvwEvHnLASliVOwNBc=;
+        b=QPL/tYWzR/t0doe6I9oiN7QfthMc6zg77/7LoLor+zehhvsGO07bf2RGdsP1mvy+Xv
+         zzilaf+DhVeKpWIfKKhgaJdzLqwP6Jj1bazkT83lX06KXJr1x9UCwp2J1AxLiR6iMO6h
+         xZ588B3mpksxDv/Ga7VUQkiYQkxW4eUYXdVYwLPqwy5/v+hU8G5FRZmyXSesK5jKEoYX
+         vBTFYBRq80T+Oao1Z55WrqN9PQyGc6vkS4VTQ7/fqALSKrbgOwXh2Sqyfeu4mq5+UchF
+         p/pXTcYAQroAnI9Z/k6BvXPLm+GAdfb0tVZIyz4wzqrIgyqMpYKYX++kElYN8Y5S+6PW
+         72Jw==
+X-Gm-Message-State: AHPjjUgoDry4REK9fEJHGlE4hTBr7vu5VyQ59jMvkicC1UBvyOCx2Y5G
+	iX5HRop3uTTPAtHQjtm5LQ==
+X-Received: by 10.129.99.194 with SMTP id x185mr16435237ywb.189.1505339463959;
+        Wed, 13 Sep 2017 14:51:03 -0700 (PDT)
+Return-Path: <seanpaul@chromium.org>
+Received: from mail-it0-f49.google.com (mail-it0-f49.google.com. [209.85.214.49])
+        by smtp.gmail.com with ESMTPSA id n4sm5052414ywi.80.2017.09.13.14.51.03
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 13 Sep 2017 14:51:03 -0700 (PDT)
+Received: by mail-it0-f49.google.com with SMTP id v19so582533ite.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 13 Sep 2017 14:51:03 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QB2Ou1cwhx/2HIw4Y/4pU36ybNIC69h6+HpoEPiWacfpuGO5MBVdi/O3+W0M1BnapMJMyQ86vK+ah0xHkE+nfA=
+X-Received: by 10.36.213.212 with SMTP id a203mr249595itg.59.1505339462723;
+ Wed, 13 Sep 2017 14:51:02 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Received: by 10.107.156.195 with HTTP; Wed, 13 Sep 2017 14:50:41 -0700 (PDT)
+In-Reply-To: <20170913161420.GA3221@meghana-HP-Pavilion-Notebook>
+References: <20170913161420.GA3221@meghana-HP-Pavilion-Notebook>
+From: Sean Paul <seanpaul@chromium.org>
+Date: Wed, 13 Sep 2017 17:50:41 -0400
+X-Gmail-Original-Message-ID: <CAOw6vb+MMyiPk1N3zf=s9w1KNL683xD73GEp4mURYcOHvVyGPg@mail.gmail.com>
+Message-ID: <CAOw6vb+MMyiPk1N3zf=s9w1KNL683xD73GEp4mURYcOHvVyGPg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2 2/3] drm: Replace "foo * bar" with
+ "foo *bar"
+To: Meghana Madhyastha <meghana.madhyastha@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, 
+	Jani Nikula <jani.nikula@linux.intel.com>, dri-devel <dri-devel@lists.freedesktop.org>
+Content-Type: text/plain; charset="UTF-8"
 
-Replace "dont" with "don't".
-"Dont" is not same as "Do not" or "Don't".
+On Wed, Sep 13, 2017 at 12:14 PM, Meghana Madhyastha
+<meghana.madhyastha@gmail.com> wrote:
+> This replaces all instances of foo * bar with foo *bar
+> in drm_agpsupport.c. This is so that it adheres to
+> standard C syntax for pointers.
+>
+> Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
-changes in v2
-*Commit log is rewrite in the imperative.
+Reviewed-by: Sean Paul <seanpaul@chromium.org>
 
- drivers/staging/comedi/drivers/cb_pcidas64.c | 2 +-
- drivers/staging/comedi/drivers/das16.c       | 2 +-
- drivers/staging/comedi/drivers/das16m1.c     | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/staging/comedi/drivers/cb_pcidas64.c b/drivers/staging/comedi/drivers/cb_pcidas64.c
-index c007500..ceef905 100644
---- a/drivers/staging/comedi/drivers/cb_pcidas64.c
-+++ b/drivers/staging/comedi/drivers/cb_pcidas64.c
-@@ -1700,7 +1700,7 @@ static void i2c_write(struct comedi_device *dev, unsigned int address,
- 	 * eeprom and i2c bus
- 	 */
- 
--	/* make sure we dont send anything to eeprom */
-+	/* make sure we don't send anything to eeprom */
- 	devpriv->plx_control_bits &= ~PLX_CNTRL_EECS;
- 
- 	i2c_stop(dev);
-diff --git a/drivers/staging/comedi/drivers/das16.c b/drivers/staging/comedi/drivers/das16.c
-index 74ff204..81eb51b 100644
---- a/drivers/staging/comedi/drivers/das16.c
-+++ b/drivers/staging/comedi/drivers/das16.c
-@@ -619,7 +619,7 @@ static int das16_cmd_test(struct comedi_device *dev, struct comedi_subdevice *s,
- 
- 	/* Step 2b : and mutually compatible */
- 
--	/*  make sure scan_begin_src and convert_src dont conflict */
-+	/*  make sure scan_begin_src and convert_src don't conflict */
- 	if (cmd->scan_begin_src == TRIG_FOLLOW && cmd->convert_src == TRIG_NOW)
- 		err |= -EINVAL;
- 	if (cmd->scan_begin_src != TRIG_FOLLOW && cmd->convert_src != TRIG_NOW)
-diff --git a/drivers/staging/comedi/drivers/das16m1.c b/drivers/staging/comedi/drivers/das16m1.c
-index 72f8ed2..4e36377 100644
---- a/drivers/staging/comedi/drivers/das16m1.c
-+++ b/drivers/staging/comedi/drivers/das16m1.c
-@@ -407,7 +407,7 @@ static void das16m1_handler(struct comedi_device *dev, unsigned int status)
- 		if (num_samples > cmd->stop_arg * cmd->chanlist_len)
- 			num_samples = cmd->stop_arg * cmd->chanlist_len;
- 	}
--	/*  make sure we dont try to get too many points if fifo has overrun */
-+	/*  make sure we don't try to get too many points if fifo has overrun */
- 	if (num_samples > DAS16M1_AI_FIFO_SZ)
- 		num_samples = DAS16M1_AI_FIFO_SZ;
- 	insw(dev->iobase, devpriv->ai_buffer, num_samples);
--- 
-2.7.4
-
+> ---
+>  drivers/gpu/drm/drm_agpsupport.c | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/drm_agpsupport.c b/drivers/gpu/drm/drm_agpsupport.c
+> index 928248e..993e486 100644
+> --- a/drivers/gpu/drm/drm_agpsupport.c
+> +++ b/drivers/gpu/drm/drm_agpsupport.c
+> @@ -94,7 +94,7 @@ int drm_agp_info_ioctl(struct drm_device *dev, void *data,
+>   * Verifies the AGP device hasn't been acquired before and calls
+>   * \c agp_backend_acquire.
+>   */
+> -int drm_agp_acquire(struct drm_device * dev)
+> +int drm_agp_acquire(struct drm_device *dev)
+>  {
+>         if (!dev->agp)
+>                 return -ENODEV;
+> @@ -133,7 +133,7 @@ int drm_agp_acquire_ioctl(struct drm_device *dev, void *data,
+>   *
+>   * Verifies the AGP device has been acquired and calls \c agp_backend_release.
+>   */
+> -int drm_agp_release(struct drm_device * dev)
+> +int drm_agp_release(struct drm_device *dev)
+>  {
+>         if (!dev->agp || !dev->agp->acquired)
+>                 return -EINVAL;
+> @@ -159,7 +159,7 @@ int drm_agp_release_ioctl(struct drm_device *dev, void *data,
+>   * Verifies the AGP device has been acquired but not enabled, and calls
+>   * \c agp_enable.
+>   */
+> -int drm_agp_enable(struct drm_device * dev, struct drm_agp_mode mode)
+> +int drm_agp_enable(struct drm_device *dev, struct drm_agp_mode mode)
+>  {
+>         if (!dev->agp || !dev->agp->acquired)
+>                 return -EINVAL;
+> @@ -241,8 +241,8 @@ int drm_agp_alloc_ioctl(struct drm_device *dev, void *data,
+>   *
+>   * Walks through drm_agp_head::memory until finding a matching handle.
+>   */
+> -static struct drm_agp_mem *drm_agp_lookup_entry(struct drm_device * dev,
+> -                                          unsigned long handle)
+> +static struct drm_agp_mem *drm_agp_lookup_entry(struct drm_device *dev,
+> +                                               unsigned long handle)
+>  {
+>         struct drm_agp_mem *entry;
+>
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170913161420.GA3221%40meghana-HP-Pavilion-Notebook.
+> For more options, visit https://groups.google.com/d/optout.
 
