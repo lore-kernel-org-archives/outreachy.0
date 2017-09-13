@@ -1,140 +1,173 @@
-X-GM-THRID: 6671219486697193472
-X-Received: by 2002:a5d:9715:: with SMTP id h21mr7492946iol.266.1553264327724;
-        Fri, 22 Mar 2019 07:18:47 -0700 (PDT)
+X-GM-THRID: 6465296878768488448
+X-Received: by 10.107.3.25 with SMTP id 25mr11370689iod.45.1505339428605;
+        Wed, 13 Sep 2017 14:50:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a02:3b2e:: with SMTP id c46ls3260402jaa.2.gmail; Fri, 22 Mar
- 2019 07:18:46 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzYIvSAQJcN2gSVrioKCdA7pxuzg8SH0pPhW20gxAs+t++i2498IOGLEibYdRKDF88icgRe
-X-Received: by 2002:a02:b703:: with SMTP id g3mr7571048jam.106.1553264326836;
-        Fri, 22 Mar 2019 07:18:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553264326; cv=none;
+Received: by 10.107.222.13 with SMTP id v13ls3752957iog.40.gmail; Wed, 13 Sep
+ 2017 14:50:28 -0700 (PDT)
+X-Received: by 10.99.121.141 with SMTP id u135mr11850253pgc.156.1505339427959;
+        Wed, 13 Sep 2017 14:50:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505339427; cv=none;
         d=google.com; s=arc-20160816;
-        b=vzY/CuNgES1tJWV2mN0/5RcdTuuoOtK22aI5Ok0PHH0SlMKB1hX1OUpIpsx6BvZ7d9
-         onZO0u4VmLgy3mae8FyVsYlb2hZ6wMu4w3lR3CPhcoXPa25qSTBvRc16iFfBxFhGbDDo
-         StnklRSin1Am/sHZ34egv4WNMprtxwyitY9WlGtuMBISseolg/MkSoci3OvojWlQsPIQ
-         iBOK20Z1siC2qILz47SXIgI+KXzwOYCRGH1TeNZjfaq2CqjjNPRsbQmFXteE5oLUuLav
-         CG1WFPbbPU9ajjUtR/1ahKxR3gOpe9Pvwg9ttkQL6vrJlWGpDkLfG0vSpC6U/7zgXbup
-         v8Hw==
+        b=A7rVzchWv9I4KKe2OHR3KuA2U/GWoJ4sIhyr83gZk2S0PdQN0fKa2I6oKQkSCDa6fu
+         3LQ5s9S6bA2H7AHN8LortV/kU3OxOZgzrwiUmrwys5dvjubq8XXUeVbiaBsyCp6T/aXp
+         VjldIJJv1HqSvDvhAnfhUUgksawJw+eiNJba69PprOW10p456NMYDMp8A0dhvNhOOXJY
+         xAINP03V0Ixdu8TRUUBo9dJEmVYotiyM6IgmV9D/CP5Ps3oPhy7easBkeiXDvayvOU3r
+         Z8WtCnF6V5Jm0GZBQoAlEE2M/Fkt4cd4PxkFxdup8XFzyo+msaIwePVJ3EjH7tent4wB
+         NtTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=gTHAuF5j+ieOygcWkr1ysMsFm9hBepPihswaCqaT1fI=;
-        b=ukJeV1gP1X0fSWOlQadxpoMGMBZtRfKGfHnLpzvWr/WrqviAQxmakpc+T5oWAd/JNb
-         Y9M1G+t4niLdQVfA0ZFm9qQ/uygeTkbyC+zicopbDX71UllTsv5U6LUt8r+YBQ32BLbh
-         CFGgh95/nC7hNNe1LXlhUd739lzo8cMj3HHO1D2SrdMDgSiHzIqDD4P2HeZ0CgFnEdh8
-         A8PEWBMPyobVUFfheLbOh1D6xs9JZe1P5Cz3MfLAPHnYv/zXSJ/n43AsRZlrykxewpzV
-         5Cc6hS25bqZGnWog9scCoJhEfWjVL04YB2w7vYoZAFjvgBh5v11PAhipfcnVjAnqAoWx
-         3hAQ==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=1mKMTQgoUVo/cBSrlSiO5myQFoZmDTGotMBhA6/z1UM=;
+        b=K5PnECXcY9N2W6x8QC0fYXQFkXkXGoZmnU+NWvT/5akG4+xufZpoY5emEifkB15JNU
+         HPMkcd12k043tgEHHICc3rVrocvz4p+2j7AYGWtaq5LIZ6K0XLzbJne60/g4kskUkOzO
+         kOoXhwBRiIZc5QqJ34JoReFOiwJ2x1nvhoi2aiT44+JEgVN34+Zg12vYvU1hWRgDd0Xz
+         QOtfMOuqFgmFFOnGLLWHZdT29mIU3WAHG9mwJ6Pa5GLAWH80WszYkWua4uVvo3s0+PhD
+         hnkqzeU+V9GUpsubc2DwwPtxQYb5ijXqNanPZmmUryUt6jnLgWFAqPOBYgJX1rubshzu
+         Uszg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iq0RBVIf;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::433 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pf1-x433.google.com (mail-pf1-x433.google.com. [2607:f8b0:4864:20::433])
-        by gmr-mx.google.com with ESMTPS id e74si676484ite.1.2019.03.22.07.18.46
+       dkim=pass header.i=@chromium.org header.s=google header.b=D2mdPB5u;
+       spf=pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:4002:c05::22e as permitted sender) smtp.mailfrom=seanpaul@chromium.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org
+Return-Path: <seanpaul@chromium.org>
+Received: from mail-yw0-x22e.google.com (mail-yw0-x22e.google.com. [2607:f8b0:4002:c05::22e])
+        by gmr-mx.google.com with ESMTPS id o190si1075335ywo.11.2017.09.13.14.50.27
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Mar 2019 07:18:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::433 as permitted sender) client-ip=2607:f8b0:4864:20::433;
+        Wed, 13 Sep 2017 14:50:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:4002:c05::22e as permitted sender) client-ip=2607:f8b0:4002:c05::22e;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iq0RBVIf;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::433 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x433.google.com with SMTP id r15so1626249pfn.9
-        for <outreachy-kernel@googlegroups.com>; Fri, 22 Mar 2019 07:18:46 -0700 (PDT)
+       dkim=pass header.i=@chromium.org header.s=google header.b=D2mdPB5u;
+       spf=pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:4002:c05::22e as permitted sender) smtp.mailfrom=seanpaul@chromium.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org
+Received: by mail-yw0-x22e.google.com with SMTP id v72so3483224ywa.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 13 Sep 2017 14:50:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=gTHAuF5j+ieOygcWkr1ysMsFm9hBepPihswaCqaT1fI=;
-        b=iq0RBVIfZjaHmd8BGzajwck9pZLScJtrtb0O9Z7RoJ21g+MkJ9nOgNDV2BtPXSlYMw
-         GkLWslvZjFH0+v5TfAnSmv13/Dl8dq5WHctJmLDGFpaQUHGF3yQa/xVoV16OjG0Vkawg
-         lc1PPMwcBMT+GCaBn5CALq7VOyddahLUW2QzIEWbIMpPLlqCxWPl5OIzuSbO70gqDhJ/
-         bbhrHIRVei4zcw3VSOWBUMO+Wr0p9IYABom8DieWOo3ZlgGmRXpB1FtGGVE+wS59S7mA
-         XyPUGE2lApSiUrJASEjO1ikn1l/LayvtpjobkR9AKXZgu7nUG70lv3IDgxtAqpz60N+E
-         b1vw==
+        d=chromium.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=1mKMTQgoUVo/cBSrlSiO5myQFoZmDTGotMBhA6/z1UM=;
+        b=D2mdPB5uQ+TWrMPzpI5nwj7UEvwgcKjPzOR2B67vVFnJuWvTfCHbQYX8iC5WckR9LK
+         JOSwsi/RWS4F42v7f9vT7iLDFEMCfBAa1a6dgK/w5nTjOiZ4C1WXFyzHiS7ITu3050rh
+         ZplwR9WILDzjfDQjiAPPLGNFZFavZK1Q+Cir4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=gTHAuF5j+ieOygcWkr1ysMsFm9hBepPihswaCqaT1fI=;
-        b=Gcmwq/pAywyiQiN3LK9CS1/NnihloorYIMlv1LAFY9Gz03VoaYVSSXdCRtTkQv3upx
-         5g8oSBW0GJydxpa+NnJ/pOxm9wM/7C3BszO/qEa1qEn7Xqgd/nGdS9H7LShYM8h2SxGW
-         eS9OFJk15DCN/gqtvqVYw5PZDO/wIdMZ9mcMkQ+1QaoOzlRsK7mBYJlIxCaNfUR3coEq
-         TfBLW/rxC8MmCvaKdu/wf/PffYRbNcLgKNndjiqrlcU/Sy8I/imHmPU4Qq1D8m7Cfwas
-         9vRGDowotXcpsBKulTzWGkgasSPJGK74Ky+sNfvoLsvxcz4QsrcEVd53/8FKuXe4Teou
-         WRVQ==
-X-Gm-Message-State: APjAAAX3hYEbfNfKQXal8Oh9zCND9JZxSyvX5f7L7D9wwv8NlEM9dORy
-	mmvbpTk0xI5AH0GF2MEaSmPDkT1E/3M=
-X-Received: by 2002:a17:902:a413:: with SMTP id p19mr9897390plq.337.1553264326224;
-        Fri, 22 Mar 2019 07:18:46 -0700 (PDT)
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from localhost.localdomain ([183.83.84.116])
-        by smtp.googlemail.com with ESMTPSA id 7sm18648191pgj.64.2019.03.22.07.18.43
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=1mKMTQgoUVo/cBSrlSiO5myQFoZmDTGotMBhA6/z1UM=;
+        b=gevLL5DbVyBniu5UweDtYDnqhJ8JeEMSGL9I5OAj070IwYxfSLHLDBuU7xtZ/8IKSD
+         ipR3b172hKky7nX5iPt9jvxs5V4YH6/l33YHj4GkDrBCKDHuDMq5pbgwPWYkNYmyz6jm
+         DHjGY3ATPWYQaSltX6lKZGDNAe/mXiQK2Kdw0FaBDirnbF4WMOeXwf0BMVxJda/1yS1M
+         gMRDy+XeQ4FZynsLLX5fljxVNrcf1KoOGXNqN77wWJOUmJM2cHj8ZPHGhxs+JIaGlWIQ
+         M0h4IFVGQcQ+ygxCcIVkmSfG06fPonwiyhW78szjNMpqQ5T50A3XQ/oFbVwLb4VWYNgH
+         wHGg==
+X-Gm-Message-State: AHPjjUit8Ho4tPGB1GMtXNKKFy3gnDXLhRU4qPFKkHLpJyFGcHdkyN+c
+	PlYHXkHpklKVlqagiWcsfA==
+X-Received: by 10.129.49.75 with SMTP id x72mr16399878ywx.298.1505339427521;
+        Wed, 13 Sep 2017 14:50:27 -0700 (PDT)
+Return-Path: <seanpaul@chromium.org>
+Received: from mail-it0-f44.google.com (mail-it0-f44.google.com. [209.85.214.44])
+        by smtp.gmail.com with ESMTPSA id e4sm4944224ywd.63.2017.09.13.14.50.26
+        for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Mar 2019 07:18:45 -0700 (PDT)
-From: Bhanusree Pola <bhanusreemahesh@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Steve Longerbeam <slongerbeam@gmail.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	=Fabio Estevam <festevam@gmail.com>
-Subject: [PATCH] Staging: media: Remove unnecessary print statements
-Date: Fri, 22 Mar 2019 19:48:29 +0530
-Message-Id: <20190322141829.8440-1-bhanusreemahesh@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        Wed, 13 Sep 2017 14:50:27 -0700 (PDT)
+Received: by mail-it0-f44.google.com with SMTP id 6so563813itl.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 13 Sep 2017 14:50:26 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBBJSOREro6FxIa87p5keQ2Kb0v46FSPIK5p6pLeMX3uHYWP/UFVCkqXIvrGzGbyoTlCG/kkmznk587Ez+xxjA=
+X-Received: by 10.36.93.82 with SMTP id w79mr230290ita.119.1505339426303; Wed,
+ 13 Sep 2017 14:50:26 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.107.156.195 with HTTP; Wed, 13 Sep 2017 14:50:05 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.20.1709132214330.2920@hadrien>
+References: <20170913161340.GA3204@meghana-HP-Pavilion-Notebook> <alpine.DEB.2.20.1709132214330.2920@hadrien>
+From: Sean Paul <seanpaul@chromium.org>
+Date: Wed, 13 Sep 2017 17:50:05 -0400
+X-Gmail-Original-Message-ID: <CAOw6vbJTpMdDSQPjE4X9R-ZStSSh+4qL4mq5nbSrGT=p-HZs5Q@mail.gmail.com>
+Message-ID: <CAOw6vbJTpMdDSQPjE4X9R-ZStSSh+4qL4mq5nbSrGT=p-HZs5Q@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2 1/3] drm: Move EXPORT_SYMBOL so that
+ it immediately follows its function
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Meghana Madhyastha <meghana.madhyastha@gmail.com>, outreachy-kernel@googlegroups.com, 
+	Jani Nikula <jani.nikula@linux.intel.com>, dri-devel <dri-devel@lists.freedesktop.org>
+Content-Type: text/plain; charset="UTF-8"
 
-Remove print statements that provide information about error messages
-when memory allocation is failed.
-Issue found using coccinelle
-The following semantic patch is used to solve this:
+On Wed, Sep 13, 2017 at 4:16 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+> On Wed, 13 Sep 2017, Meghana Madhyastha wrote:
+>
+>> EXPORT_SYMBOL(foo) should immediately follow its function/variable.
+>> This coding style is preferred.
+>> Found by checkpath.pl.
+>>
+>> Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
 
-<smpl>
-@@
-expression x;
-constant char[] C;
-identifier f;
-@@
+With Julia's suggestion resolved:
 
-x = (\(kmalloc\|devm_kzalloc\|kmalloc_array\|devm_ioremap\|
-usb_alloc_urb\|alloc_netdev\|dev_alloc_skb\)(...));
+Reviewed-by: Sean Paul <seanpaul@chromium.org>
 
-if(x==NULL)
-{
-...
-(
--f(C,...);
-|
--f(...,C);
-)
-...
-}
-</smpl>
-
-Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
----
- drivers/staging/media/imx/imx6-mipi-csi2.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
-
-diff --git a/drivers/staging/media/imx/imx6-mipi-csi2.c b/drivers/staging/media/imx/imx6-mipi-csi2.c
-index 6a1cee55a49b..2c5e3dd58cea 100644
---- a/drivers/staging/media/imx/imx6-mipi-csi2.c
-+++ b/drivers/staging/media/imx/imx6-mipi-csi2.c
-@@ -628,10 +628,8 @@ static int csi2_probe(struct platform_device *pdev)
- 	}
- 
- 	csi2->base = devm_ioremap(&pdev->dev, res->start, PAGE_SIZE);
--	if (!csi2->base) {
--		v4l2_err(&csi2->sd, "failed to map CSI-2 registers\n");
-+	if (!csi2->base)
- 		return -ENOMEM;
--	}
- 
- 	mutex_init(&csi2->lock);
- 
--- 
-2.17.1
-
+>> ---
+>>  drivers/gpu/drm/drm_agpsupport.c | 4 ----
+>>  1 file changed, 4 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/drm_agpsupport.c b/drivers/gpu/drm/drm_agpsupport.c
+>> index c899534..928248e 100644
+>> --- a/drivers/gpu/drm/drm_agpsupport.c
+>> +++ b/drivers/gpu/drm/drm_agpsupport.c
+>> @@ -70,7 +70,6 @@ int drm_agp_info(struct drm_device *dev, struct drm_agp_info *info)
+>>
+>>       return 0;
+>>  }
+>> -
+>>  EXPORT_SYMBOL(drm_agp_info);
+>>
+>>  int drm_agp_info_ioctl(struct drm_device *dev, void *data,
+>> @@ -106,7 +105,6 @@ int drm_agp_acquire(struct drm_device * dev)
+>>       dev->agp->acquired = 1;
+>>       return 0;
+>>  }
+>> -
+>>  EXPORT_SYMBOL(drm_agp_acquire);
+>>
+>>  /**
+>> @@ -171,7 +169,6 @@ int drm_agp_enable(struct drm_device * dev, struct drm_agp_mode mode)
+>>       dev->agp->enabled = 1;
+>>       return 0;
+>>  }
+>> -
+>>  EXPORT_SYMBOL(drm_agp_enable);
+>>
+>>  int drm_agp_enable_ioctl(struct drm_device *dev, void *data,
+>> @@ -373,7 +370,6 @@ int drm_agp_free(struct drm_device *dev, struct drm_agp_buffer *request)
+>>  EXPORT_SYMBOL(drm_agp_free);
+>>
+>>
+>> -
+>
+> I still don't think this change belongs in this patch.  I ran checkpatch
+> on this file, and I only get warnings about the first three
+> EXPORT_SYMBOLs.  There is no warning related to EXPORT_SYMBOL after line
+> 175.
+>
+> julia
+>
+>>  int drm_agp_free_ioctl(struct drm_device *dev, void *data,
+>>                      struct drm_file *file_priv)
+>>  {
+>> --
+>> 2.7.4
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170913161340.GA3204%40meghana-HP-Pavilion-Notebook.
+>> For more options, visit https://groups.google.com/d/optout.
+>>
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/alpine.DEB.2.20.1709132214330.2920%40hadrien.
+> For more options, visit https://groups.google.com/d/optout.
 
