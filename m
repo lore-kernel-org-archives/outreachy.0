@@ -1,119 +1,101 @@
 X-GM-THRID: 6465205340686254080
-X-Received: by 10.159.60.24 with SMTP id u24mr99112uah.122.1505797262157;
-        Mon, 18 Sep 2017 22:01:02 -0700 (PDT)
+X-Received: by 10.176.79.31 with SMTP id n31mr10474233uah.111.1505307557714;
+        Wed, 13 Sep 2017 05:59:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.176.66 with SMTP id b2ls6400821itj.12.gmail; Mon, 18 Sep
- 2017 22:01:01 -0700 (PDT)
-X-Received: by 10.98.76.206 with SMTP id e75mr69212pfj.10.1505797261451;
-        Mon, 18 Sep 2017 22:01:01 -0700 (PDT)
-Received: by 10.202.166.5 with SMTP id p5msoie;
-        Mon, 18 Sep 2017 16:05:48 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QDbtkJgzx69hwHCmsnhU0T7TqYsLQ01asET16VMvD+m3Ia8cGHgOHye/km8geEGE3N1uWEw
-X-Received: by 10.99.171.67 with SMTP id k3mr107083pgp.169.1505775947966;
-        Mon, 18 Sep 2017 16:05:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505775947; cv=none;
+Received: by 10.36.25.78 with SMTP id b75ls3086863itb.4.canary-gmail; Wed, 13
+ Sep 2017 05:59:16 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QCciWLZIUp4ssWhnFzK6xo6ZPC+1V7V7H+WPWKjCe3TVO9u1W2Y84tnKzDv/7qKBL/5mxnw
+X-Received: by 10.107.222.6 with SMTP id v6mr1720790iog.16.1505307556773;
+        Wed, 13 Sep 2017 05:59:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505307556; cv=none;
         d=google.com; s=arc-20160816;
-        b=sbVb6O1Hwj1bTjp+/Dc0saZH48c0w0WHpU6HvRn9jkN3ia1wg7Nfz1LlC7sN9Z8rwQ
-         czZN/SVjoztP6c1t3UgR58k/31XlIDhaI010zkOhAncWNFeBPH75zw4oqecN9pldEaur
-         PL//OmtKU8M3qr2ZJzrAAMGHzvoOo2FBaKRVxR/gSHcCfMjs8esSj2CA7Rg79RsjxA9l
-         aO+lfDX0OZZf/cRKXTJMSjl9pLrEWkmQ2z+OCJOoOirn2btGqKw5pOBYGYS2kLlqVeVP
-         AIsswenH1YTqhWpO5TwqRfeNas/TH6dCcGEgKC6cMePY4WciFAx/wKTQakzMfhytHJbc
-         u3Nw==
+        b=yXyDLX1rIchSy9sJHezjqU9pY3lrNPB3tighMoZCORhgnWI8Q7luon7zDVUiXyekLP
+         TFwrDVwVvztxHqe09FlRS6dR4JMbYdXNDBWZ1eDk7v+0MmdDEkkrUovG8qX00VBProT3
+         LtaOjol7KujcuBmLPvqIW4ZLmQcDdD1On67gnoyXnYij3IGcY9yDm4W9sW/ArtorEbtN
+         Da6XQVHk9QK99ZDyNoUzb5vf3VE6bReqm8R63lBCXZ6K1QwadtKIOYwsEIoVkIkPUbDr
+         0sTKgomSeyFw0Y7t8/Pf2nyuP+Zw4hLyzCN8LsSJoor9aQgqLhY4aTrODuxEK90U6Viv
+         +Z5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:arc-authentication-results;
-        bh=jWAiLaODT5hvzGHffCTOnPyPE07mw3XDrWOmiB4oKQU=;
-        b=fT877+yTxPbMlNejGNFKYADBQvv7FfuIGQz9Pb7RiKJVPgTyJiUULNXbOUuzL+h4a3
-         AcNr1bzH51urQPurEFGlVmqykGx4zsyY5P9vjsPGAE6qYHPGOKR9suOUps+RJ0tXjV3X
-         trqvJQKo9DdY93AMzSHjEgir9y2PCUz/s4oikwWoeT5y0Xbe81hHDWJ0wRGVTzVBiNN4
-         CaawpHbS+MNT1oBN/sVrgXsRno01IozoWogv6fh8+Hp9QUBkGZvoWOjImYxbIk+aVp/4
-         rRKqyP7LXucv3kQFaHwGN+nW16c5adgQVm6z/mlybvvvecZSEVcv+7SmvzBKNvlZ88+b
-         Oimw==
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:arc-authentication-results;
+        bh=QUQYKebGWqBu4XxHkRKg9M2du6hD++u+sq0CzmP13Ps=;
+        b=05X+PoN7ZCO8lkTsS9bJRvh3Bb/a/JLiwXvVypGE9xaSAPamVlkvD7+RXwJdmZmSgO
+         CWR+p8dvcMcW6sicETqRiLRBWDm5XcRLYO+W91tP/lTlQTY94yYpp4DMMJUkp1uPePQt
+         2G508TQdOQkdGU2jV+lPpfg6r7uJQcTjXb3E3R8tgJi+5a/ACuqVsCni/JO9FYmilau4
+         GlOQMH8SNHdTDxNrw0oE1FozbXzbRPdHl+Z8yXvyxz3HKCBc2uVw+HqXxLxWkvz36rV/
+         0dzRgoptmbMLSYNGJZJI/lPGC3gAcPWxbcQjHcBujWV2fYZ1bl8nJiquFXd8W3rQ4Jyw
+         HJwQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of daniel.vetter@intel.com designates 134.134.136.65 as permitted sender) smtp.mailfrom=daniel.vetter@intel.com
-Return-Path: <daniel.vetter@intel.com>
-Received: from mga03.intel.com (mga03.intel.com. [134.134.136.65])
-        by gmr-mx.google.com with ESMTPS id c200si65084pfb.14.2017.09.18.16.05.47
+       spf=pass (google.com: domain of jani.nikula@intel.com designates 192.55.52.93 as permitted sender) smtp.mailfrom=jani.nikula@intel.com
+Return-Path: <jani.nikula@intel.com>
+Received: from mga11.intel.com (mga11.intel.com. [192.55.52.93])
+        by gmr-mx.google.com with ESMTPS id v25si1367761pfg.11.2017.09.13.05.59.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 18 Sep 2017 16:05:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of daniel.vetter@intel.com designates 134.134.136.65 as permitted sender) client-ip=134.134.136.65;
+        Wed, 13 Sep 2017 05:59:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jani.nikula@intel.com designates 192.55.52.93 as permitted sender) client-ip=192.55.52.93;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of daniel.vetter@intel.com designates 134.134.136.65 as permitted sender) smtp.mailfrom=daniel.vetter@intel.com
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 18 Sep 2017 16:05:46 -0700
+       spf=pass (google.com: domain of jani.nikula@intel.com designates 192.55.52.93 as permitted sender) smtp.mailfrom=jani.nikula@intel.com
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+  by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 13 Sep 2017 05:59:15 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.42,415,1500966000"; 
-   d="scan'208";a="1173500904"
-Received: from irsmsx102.ger.corp.intel.com ([163.33.3.155])
-  by orsmga001.jf.intel.com with ESMTP; 18 Sep 2017 16:05:41 -0700
-Received: from irsmsx105.ger.corp.intel.com ([169.254.7.75]) by
- IRSMSX102.ger.corp.intel.com ([169.254.2.180]) with mapi id 14.03.0319.002;
- Tue, 19 Sep 2017 00:05:40 +0100
-From: "Vetter, Daniel" <daniel.vetter@intel.com>
-To: "meghana.madhyastha@gmail.com" <meghana.madhyastha@gmail.com>,
-	"jani.nikula@linux.intel.com" <jani.nikula@linux.intel.com>,
-	"julia.lawall@lip6.fr" <julia.lawall@lip6.fr>
-CC: "seanpaul@chromium.org" <seanpaul@chromium.org>,
-	"outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] [PATCH 0/3] GPU: DRM: drm_agpsupport.c: Code
- cleanup
-Thread-Topic: [Outreachy kernel] [PATCH 0/3] GPU: DRM: drm_agpsupport.c:
- Code cleanup
-Thread-Index: AQHTLHmw2L8YL9XsJUamz9D+YbMPZ6KypFwAgAASBICACIUsAA==
-Date: Mon, 18 Sep 2017 23:05:39 +0000
-Message-ID: <1505775934.6581.6.camel@intel.com>
-References: <cover.1505296813.git.meghana.madhyastha@gmail.com>
-	 <alpine.DEB.2.20.1709131352550.26484@hadrien> <87wp52iwl0.fsf@nikula.org>
-In-Reply-To: <87wp52iwl0.fsf@nikula.org>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.254.186.107]
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <91CCF237BDD7934A96BA5815A808CFFE@intel.com>
+X-IronPort-AV: E=Sophos;i="5.42,387,1500966000"; 
+   d="scan'208";a="899847733"
+Received: from jnikula-mobl2.fi.intel.com (HELO localhost) ([10.237.72.62])
+  by FMSMGA003.fm.intel.com with ESMTP; 13 Sep 2017 05:59:14 -0700
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: Julia Lawall <julia.lawall@lip6.fr>, Meghana Madhyastha <meghana.madhyastha@gmail.com>
+Cc: Daniel Vetter <daniel.vetter@intel.com>, Sean Paul <seanpaul@chromium.org>, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 0/3] GPU: DRM: drm_agpsupport.c: Code cleanup
+In-Reply-To: <alpine.DEB.2.20.1709131352550.26484@hadrien>
+References: <cover.1505296813.git.meghana.madhyastha@gmail.com> <alpine.DEB.2.20.1709131352550.26484@hadrien>
+Date: Wed, 13 Sep 2017 15:58:51 +0300
+Message-ID: <87wp52iwl0.fsf@nikula.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: base64
+Content-Type: text/plain
 
-T24gV2VkLCAyMDE3LTA5LTEzIGF0IDE1OjU4ICswMzAwLCBKYW5pIE5pa3VsYSB3cm90ZToNCj4g
-T24gV2VkLCAxMyBTZXAgMjAxNywgSnVsaWEgTGF3YWxsIDxqdWxpYS5sYXdhbGxAbGlwNi5mcj4g
-d3JvdGU6DQo+ID4gT24gV2VkLCAxMyBTZXAgMjAxNywgTWVnaGFuYSBNYWRoeWFzdGhhIHdyb3Rl
-Og0KPiA+IA0KPiA+ID4gVGhlc2UgcGF0Y2hlcyBmaXggdGhlIGNoZWNrcGF0aCB3YXJuaW5ncyBh
-bmQgZXJyb3JzDQo+ID4gPiBpbiBkcm1fYWdwc3VwcG9ydC5jDQo+ID4gPiANCj4gPiA+IE1lZ2hh
-bmEgTWFkaHlhc3RoYSAoMyk6DQo+ID4gPiDCoCBHUFU6IERSTTogTW92ZWQgRVhQT1JUX1NZTUJP
-TCBzbyB0aGF0IGl0IGltbWVkaWF0ZWx5IGZvbGxvd2VkDQo+ID4gPiBpdHMNCj4gPiA+IMKgwqDC
-oMKgZnVuY3Rpb24NCj4gPiA+IMKgIEdQVTogRFJNOiBSZXBsYWNlICJmb28gKiBiYXIiIHdpdGgg
-ImZvbyAqYmFyIg0KPiA+ID4gwqAgR1BVOiBEUk06IFJlbW92ZSBhc3NpZ25tZW50IGluIGlmIGNv
-bmRpdGlvbg0KPiA+ID4gDQo+ID4gPiDCoGRyaXZlcnMvZ3B1L2RybS9kcm1fYWdwc3VwcG9ydC5j
-IHwgNDEgKysrKysrKysrKysrKysrKysrKysrKy0tDQo+ID4gPiAtLS0tLS0tLS0tLS0tLS0tDQo+
-IA0KPiBQbGVhc2UgdHJ5ICdnaXQgbG9nIC0tb25lbGluZSAtLSBkcml2ZXJzL2dwdS9kcm0vZHJt
-X2FncHN1cHBvcnQuYycNCj4gYW5kDQo+IG9ic2VydmUgdGhlIGNvbW1pdCBzdWJqZWN0IHByZWZp
-eCB1c2VkLiBQbGVhc2UgdHJ5IHRvIGZvbGxvdyB0aGUNCj4gc3R5bGUNCj4gaW4gdGhlIGFyZWEg
-eW91J3JlIGNoYW5naW5nLCBub3Qgc29tZSBnZW5lcmljIHJ1bGVzLg0KPiANCj4gPiA+IMKgMSBm
-aWxlIGNoYW5nZWQsIDIzIGluc2VydGlvbnMoKyksIDE4IGRlbGV0aW9ucygtKQ0KPiA+IA0KPiA+
-IEFyZSB0aGUgRFJNIHBlb3BsZSBnb2luZyB0byBwaWNrIHRoaXMgdXA/wqDCoEJlY2F1c2UgR3Jl
-ZyB3aWxsDQo+ID4gbm90LsKgwqBJZiB5b3UNCj4gPiBkbyBzb21ldGhpbmcgdGhhdCBpcyBvdXRz
-aWRlIHN0YWdpbmcgYXQgYSBtZW50b3IncyBzdWdnZXN0aW9uIGl0DQo+ID4gY291bGQgYmUNCj4g
-PiBnb29kIHRvIG1ha2UgZXhwbGljaXQgdGhhdCB0aGUgbWVudG9yIHdpbGwgbWFrZSBzdXJlIHRo
-YXQgdGhlIHBhdGNoDQo+ID4gd2lsbA0KPiA+IGJlIGFwcGxpZWQuDQo+IA0KPiBJJ20gbm90IGdl
-bmVyYWxseSBmb25kIG9mIHB1cmUgY2hlY2twYXRjaCBmaXhlcywgYnV0IHBhdGNoIDMgYWxvbmUg
-SQ0KPiB3YW50IGVub3VnaCB0byBwaWNrIHRoZW0gYWxsIHVwLiA7KQ0KPiANCj4gQnV0IHBsZWFz
-ZSBkbyBzdWJtaXQgdGhlIHNlcmllcyB0byBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-Lg0KPiBBcyBhDQo+IG1hdHRlciBvZiBwb2xpY3ksIHdlIGRvbid0IGFwcGx5IHBhdGNoZXMgbm90
-IHBvc3RlZCB0byBvdXIgc3Vic3lzdGVtDQo+IG1haWxpbmcgbGlzdC4NCg0KWWVhaCwgc3R1ZmYg
-bmVlZHMgdG8gZ28gdGhyb3VnaCBkcmktZGV2ZWwgd2hlbiBpdCdzIGEgZHJtIHBhdGNoIChvcg0K
-YW55dGhpbmcgZWxzZSBpbiBkcml2ZXJzL2dwdSkuIFRoYXQncyB3aHkgd2UgZG9uJ3QgcmVjb21t
-ZW5kIGl0IGZvciB0aGUNCnZlcnkgZmlyc3QgcGF0Y2ggKEkgZ3Vlc3MgSSBzaG91bGQgdXBkYXRl
-IHRoZSB0ZXh0IGEgYml0LCBidXQgSSdtDQp0cmF2ZWxsaW5nIGFuZCBkb24ndCBoYXZlIGxvZ2lu
-IGNyZWRzIG5lYXJieSkuDQotRGFuaWVsDQoNCj4gVGhlIHNjcmlwdHMvZ2V0X21haW50YWluZXIu
-cGwgc2NyaXB0IHdpbGwgaGVscCB5b3Ugd2l0aCB0aGUgbGlzdHMsDQo+IGJ1dA0KPiBkbyB1c2Ug
-ZGlzY3JldGlvbi4gVGhlIHNjcmlwdCBpcyBzb21ldGltZXMgbWlzZ3VpZGVkLCBhZGRpbmcgKndh
-eSoNCj4gdG9vDQo+IG1hbnkgbGlzdHMgYW5kIHBlb3BsZS4gSnVzdCB0aGUgbWFpbiBzdWJzeXN0
-ZW0gbGlzdCBhbmQNCj4gc3VwcG9ydGVycy9tYWludGFpbmVycyBhcmUgdXN1YWxseSBlbm91Z2gu
-DQo+IA0KPiANCj4gVGhhbmtzLA0KPiBKYW5pLg0KPiANCj4gCkludGVsIFNlbWljb25kdWN0b3Ig
-QUcKUmVnaXN0ZXJlZCBOby4gMDIwLjMwLjkxMy43ODYtNwpSZWdpc3RlcmVkIE9mZmljZTogQmFk
-ZW5lcnN0cmFzc2UgNTQ5LCA4MDQ4IFp1cmljaCwgU3dpdHplcmxhbmQK
+On Wed, 13 Sep 2017, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> On Wed, 13 Sep 2017, Meghana Madhyastha wrote:
+>
+>> These patches fix the checkpath warnings and errors
+>> in drm_agpsupport.c
+>>
+>> Meghana Madhyastha (3):
+>>   GPU: DRM: Moved EXPORT_SYMBOL so that it immediately followed its
+>>     function
+>>   GPU: DRM: Replace "foo * bar" with "foo *bar"
+>>   GPU: DRM: Remove assignment in if condition
+>>
+>>  drivers/gpu/drm/drm_agpsupport.c | 41 ++++++++++++++++++++++------------------
 
+Please try 'git log --oneline -- drivers/gpu/drm/drm_agpsupport.c' and
+observe the commit subject prefix used. Please try to follow the style
+in the area you're changing, not some generic rules.
+
+>>  1 file changed, 23 insertions(+), 18 deletions(-)
+>
+> Are the DRM people going to pick this up?  Because Greg will not.  If you
+> do something that is outside staging at a mentor's suggestion it could be
+> good to make explicit that the mentor will make sure that the patch will
+> be applied.
+
+I'm not generally fond of pure checkpatch fixes, but patch 3 alone I
+want enough to pick them all up. ;)
+
+But please do submit the series to dri-devel@lists.freedesktop.org. As a
+matter of policy, we don't apply patches not posted to our subsystem
+mailing list.
+
+The scripts/get_maintainer.pl script will help you with the lists, but
+do use discretion. The script is sometimes misguided, adding *way* too
+many lists and people. Just the main subsystem list and
+supporters/maintainers are usually enough.
+
+
+Thanks,
+Jani.
+
+
+-- 
+Jani Nikula, Intel Open Source Technology Center
 
