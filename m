@@ -1,126 +1,142 @@
 X-GM-THRID: 6465297049909723136
-X-Received: by 10.46.80.90 with SMTP id v26mr1599105ljd.2.1505333934752;
-        Wed, 13 Sep 2017 13:18:54 -0700 (PDT)
+X-Received: by 10.84.169.65 with SMTP id g59mr10021563plb.30.1505319273062;
+        Wed, 13 Sep 2017 09:14:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.139.211 with SMTP id n202ls1110976wmd.8.gmail; Wed, 13 Sep
- 2017 13:18:53 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QAeYlIJcqh7l6vqsOhtOxJxOpjlFNGTaFWff8MAiRIYUB11jF111UWIvktG8PZKyTXw0iKZ
-X-Received: by 10.28.45.215 with SMTP id t206mr211682wmt.17.1505333933660;
-        Wed, 13 Sep 2017 13:18:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505333933; cv=none;
+Received: by 10.36.246.135 with SMTP id u129ls3446472ith.13.gmail; Wed, 13 Sep
+ 2017 09:14:32 -0700 (PDT)
+X-Received: by 10.36.107.78 with SMTP id v75mr1155195itc.29.1505319272442;
+        Wed, 13 Sep 2017 09:14:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505319272; cv=none;
         d=google.com; s=arc-20160816;
-        b=PJDcTq/pJ7AMJxEV8eVnMTylYA5Fv0ukU8S3BW6iCneIwLE0/wgBi5uK6Ti3sTXwWr
-         17EgpwnGUEZtGC28W4xy9rjfEhuQyml8Af1FeAfCqO5Xq8or6oCHMO512QDPHh85QB/2
-         zp/nhETpzzb9hq+HcNb65enWgQwx4KFTW5MJOKNoWAmCbpLGUkrXd16QpnYEV0WccGuu
-         21pZu4BzH7PltKhZB0A0Z0DBeIqXIHVHiLtGXFfia85v7tMeHaMzbz1VrTVLJyfa5FHG
-         EXUul345Qt92YsMU3nVU4JP+lKbPhSHEdiQbHjQufqD+vPSbwZOdIB8gQCEpl72JYDzX
-         WWmg==
+        b=SFZy/OPmyi/6ZA75QcZKQSN4jad6KKo/cHzy/Ik3dEZN+WNCAfZ06xX7hsrN5zfg1n
+         H+UdQahh5W6bWxwSRV9l6aBtVqhx+4EYNV5Zkk8TaHSWIREUjm0G1kZzv3ueKMkg+Lli
+         nctcT3frIW0PRXP0ZcW6FtQQmi3LeQnamhXqU6bGGysC30R7RxYRFX43uw4Cfee+W63H
+         JSVAU3ClPrCRqpjs0L9wexDZhaRX56jfET0ArHX6PnSs84Zvn95VRYAxlmpcloOqA+PS
+         CnPBJxkDG+QvyYV2km/BKG9oBABFlbsSDpw6HinhWbJ6/NisHjEd9/11P7+bgyQM/0Jc
+         IbNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=V8UlN3EolfIHEOybGGCGMmh0RYwJS9uaQXq0/dmdcBM=;
-        b=CoS6yVTzJWS9noAiVG+GrcGpCxXumcnMTBUgB5TtpzT9DBz8O2A37MyeWjfHtNn+43
-         zK+fRi4WJGyT34Hm/rLhvFnsUIXETWlPWT/fEl7Z+TCOVcOpJBE2nNm6anRU4AjsC2zg
-         YC0eAvcG2f2A+gWYTZUujmyaCj+ajE7fUQQWs0qxGKNvZUc+QH5D+aVpbW3ueljYeJwn
-         r7l5Ztcy86kbi+WigIxJ3ZqpHn9lpFr7jWXd8ICl7MDEfP6t9pruAtCOSJIeO4i8LgY+
-         zAGNQMECZraugc8dVX9PfGNwNm+W0DbBk/sA2BsIcN8XbnZg3g0FxXpMskFtjk/uKRay
-         gusw==
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature:arc-authentication-results;
+        bh=KqKyRRUBuCxJjVanWj0rz58/nx+vBqjU1z5Co2shRFg=;
+        b=wFEkQ6Gd/VJMGzGrqqzJ8CQUbadFjFq9Ik0T82xf0Qu72ilX2Fs7cjLx9y2kIjltua
+         Km8vqvt9b/KSz2g7K6PU+5/rM7QQn9eksJCK6vQqfMu1mApfJhZ2UB6k4O9WP77+V+lp
+         yIkdpW/0B6rv1h3qnsny/OQVcd3nHVnUlvJlmtMxL1RgA8qG2CwZ/hTzCJCE7+sCn4nG
+         1bVxecLCrgsElpVzyM8DcNgNZ8KD3EhnFcAOXd/7z/AQVCNalGCzGfgIgniksIgVEa0r
+         eOjKrua+C2TOhyu3bclgpYsqkmBY8fBS8MH6ecJZGQ6FTFxEXcnCjb4N28GU3c6mElt3
+         mKeg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id q145si136401wme.4.2017.09.13.13.18.53
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=l3f4CJkx;
+       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <meghana.madhyastha@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id k76si1465943pfa.10.2017.09.13.09.14.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 13 Sep 2017 13:18:53 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Wed, 13 Sep 2017 09:14:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.42,389,1500933600"; 
-   d="scan'208";a="237392304"
-Received: from 85-171-60-79.rev.numericable.fr (HELO [192.168.0.15]) ([85.171.60.79])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 13 Sep 2017 22:18:53 +0200
-Date: Wed, 13 Sep 2017 22:18:52 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Meghana Madhyastha <meghana.madhyastha@gmail.com>
-cc: outreachy-kernel@googlegroups.com, 
-    Jani Nikula <jani.nikula@linux.intel.com>, dri-devel@lists.freedesktop.org
-Subject: Re: [Outreachy kernel] [PATCH v2 2/3] drm: Replace "foo * bar" with
- "foo *bar"
-In-Reply-To: <20170913161420.GA3221@meghana-HP-Pavilion-Notebook>
-Message-ID: <alpine.DEB.2.20.1709132218380.2920@hadrien>
-References: <20170913161420.GA3221@meghana-HP-Pavilion-Notebook>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=l3f4CJkx;
+       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x244.google.com with SMTP id q76so266179pfq.5
+        for <outreachy-kernel@googlegroups.com>; Wed, 13 Sep 2017 09:14:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=KqKyRRUBuCxJjVanWj0rz58/nx+vBqjU1z5Co2shRFg=;
+        b=l3f4CJkxXOA9oBT06phJ4MLMPhWywGm0UOHUFeWG0LSecImU1lH+pPGN5XNZkdJ/AO
+         Md4FJ1IQurGDmNFA4LdqhV3iqAgn9mucV/g5JsBSE930Hx0wmerfWGUY3vqHWL2mNMdi
+         XHL64yuHebItSDgTJcjMqhJNIXeGjDTrf05TRacHarrVC+P9OV3ZNEy7VLS3PZwCuIb1
+         f0U4pCVq0Lr50m8e7FVWReHAzgL324gJ6U4S9XKSnArRezKJEDz8q8Oofsdjty2h/cmy
+         4YQrMsqNHy+JSmaEM7caj47j+19BWurlLphH5LHB0c5CneuYwfGO7/WphDlH21bnCSwG
+         t8Dw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=KqKyRRUBuCxJjVanWj0rz58/nx+vBqjU1z5Co2shRFg=;
+        b=Rey8P4Rfq6r4XMZB81muklU0d7FAhEJzxkoLzxY7COP95dF0aJfT4IOmII6bOTguio
+         daYL81/M+GSddJsPMOVKvBFDHoZRgpp4C/i7SvwqX7IrEgvTmGYVjY1i36R+tWZ+F5bY
+         VOe/fAguFaxmvbGjJyZYbOMz+1s26cC8vB6W77NrMFFyfhGPrrFaKcAFBLWFzzUEn04q
+         p9Zdfgv57aNnFQ14xcv8uzZc08E0lRdSv9aeyjYvZhQ1xadH3iRe/uPLxBDpHZCB9IPQ
+         4d7ceAI5U6RN6HeHM7R2dLInzfReQNHwAe0Soextt631JJNLlmxb/I+NSLVRlXdBxwcJ
+         u8UA==
+X-Gm-Message-State: AHPjjUjjRTPbBkABPhUcI6668ah2IogbfloDSxZbrsT/TlMS7AFsG1EQ
+	0Ty0NoqEXjqnLFVFXQc=
+X-Google-Smtp-Source: ADKCNb5lKOqbJkqwJdr8FyBk3a9UsPA+hMSN4uVvUHOkz4FP6HVgirFJImbct0rR9T6O804+WIbRug==
+X-Received: by 10.99.126.84 with SMTP id o20mr18695201pgn.137.1505319271847;
+        Wed, 13 Sep 2017 09:14:31 -0700 (PDT)
+Return-Path: <meghana.madhyastha@gmail.com>
+Received: from meghana-HP-Pavilion-Notebook ([122.172.87.17])
+        by smtp.gmail.com with ESMTPSA id 80sm24785966pfq.38.2017.09.13.09.14.29
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 13 Sep 2017 09:14:30 -0700 (PDT)
+Date: Wed, 13 Sep 2017 21:44:25 +0530
+From: Meghana Madhyastha <meghana.madhyastha@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	Jani Nikula <jani.nikula@linux.intel.com>,
+	dri-devel@lists.freedesktop.org
+Subject: [PATCH v2 2/3] drm: Replace "foo * bar" with "foo *bar"
+Message-ID: <20170913161420.GA3221@meghana-HP-Pavilion-Notebook>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
+This replaces all instances of foo * bar with foo *bar
+in drm_agpsupport.c. This is so that it adheres to
+standard C syntax for pointers.
 
+Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
+---
+ drivers/gpu/drm/drm_agpsupport.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-On Wed, 13 Sep 2017, Meghana Madhyastha wrote:
+diff --git a/drivers/gpu/drm/drm_agpsupport.c b/drivers/gpu/drm/drm_agpsupport.c
+index 928248e..993e486 100644
+--- a/drivers/gpu/drm/drm_agpsupport.c
++++ b/drivers/gpu/drm/drm_agpsupport.c
+@@ -94,7 +94,7 @@ int drm_agp_info_ioctl(struct drm_device *dev, void *data,
+  * Verifies the AGP device hasn't been acquired before and calls
+  * \c agp_backend_acquire.
+  */
+-int drm_agp_acquire(struct drm_device * dev)
++int drm_agp_acquire(struct drm_device *dev)
+ {
+ 	if (!dev->agp)
+ 		return -ENODEV;
+@@ -133,7 +133,7 @@ int drm_agp_acquire_ioctl(struct drm_device *dev, void *data,
+  *
+  * Verifies the AGP device has been acquired and calls \c agp_backend_release.
+  */
+-int drm_agp_release(struct drm_device * dev)
++int drm_agp_release(struct drm_device *dev)
+ {
+ 	if (!dev->agp || !dev->agp->acquired)
+ 		return -EINVAL;
+@@ -159,7 +159,7 @@ int drm_agp_release_ioctl(struct drm_device *dev, void *data,
+  * Verifies the AGP device has been acquired but not enabled, and calls
+  * \c agp_enable.
+  */
+-int drm_agp_enable(struct drm_device * dev, struct drm_agp_mode mode)
++int drm_agp_enable(struct drm_device *dev, struct drm_agp_mode mode)
+ {
+ 	if (!dev->agp || !dev->agp->acquired)
+ 		return -EINVAL;
+@@ -241,8 +241,8 @@ int drm_agp_alloc_ioctl(struct drm_device *dev, void *data,
+  *
+  * Walks through drm_agp_head::memory until finding a matching handle.
+  */
+-static struct drm_agp_mem *drm_agp_lookup_entry(struct drm_device * dev,
+-					   unsigned long handle)
++static struct drm_agp_mem *drm_agp_lookup_entry(struct drm_device *dev,
++						unsigned long handle)
+ {
+ 	struct drm_agp_mem *entry;
+ 
+-- 
+2.7.4
 
-> This replaces all instances of foo * bar with foo *bar
-> in drm_agpsupport.c. This is so that it adheres to
-> standard C syntax for pointers.
->
-> Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
-
-Acked-by: Julia Lawall <julia.lawall@lip6.fr>
-
-> ---
->  drivers/gpu/drm/drm_agpsupport.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
->
-> diff --git a/drivers/gpu/drm/drm_agpsupport.c b/drivers/gpu/drm/drm_agpsupport.c
-> index 928248e..993e486 100644
-> --- a/drivers/gpu/drm/drm_agpsupport.c
-> +++ b/drivers/gpu/drm/drm_agpsupport.c
-> @@ -94,7 +94,7 @@ int drm_agp_info_ioctl(struct drm_device *dev, void *data,
->   * Verifies the AGP device hasn't been acquired before and calls
->   * \c agp_backend_acquire.
->   */
-> -int drm_agp_acquire(struct drm_device * dev)
-> +int drm_agp_acquire(struct drm_device *dev)
->  {
->  	if (!dev->agp)
->  		return -ENODEV;
-> @@ -133,7 +133,7 @@ int drm_agp_acquire_ioctl(struct drm_device *dev, void *data,
->   *
->   * Verifies the AGP device has been acquired and calls \c agp_backend_release.
->   */
-> -int drm_agp_release(struct drm_device * dev)
-> +int drm_agp_release(struct drm_device *dev)
->  {
->  	if (!dev->agp || !dev->agp->acquired)
->  		return -EINVAL;
-> @@ -159,7 +159,7 @@ int drm_agp_release_ioctl(struct drm_device *dev, void *data,
->   * Verifies the AGP device has been acquired but not enabled, and calls
->   * \c agp_enable.
->   */
-> -int drm_agp_enable(struct drm_device * dev, struct drm_agp_mode mode)
-> +int drm_agp_enable(struct drm_device *dev, struct drm_agp_mode mode)
->  {
->  	if (!dev->agp || !dev->agp->acquired)
->  		return -EINVAL;
-> @@ -241,8 +241,8 @@ int drm_agp_alloc_ioctl(struct drm_device *dev, void *data,
->   *
->   * Walks through drm_agp_head::memory until finding a matching handle.
->   */
-> -static struct drm_agp_mem *drm_agp_lookup_entry(struct drm_device * dev,
-> -					   unsigned long handle)
-> +static struct drm_agp_mem *drm_agp_lookup_entry(struct drm_device *dev,
-> +						unsigned long handle)
->  {
->  	struct drm_agp_mem *entry;
->
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170913161420.GA3221%40meghana-HP-Pavilion-Notebook.
-> For more options, visit https://groups.google.com/d/optout.
->
 
