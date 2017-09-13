@@ -1,109 +1,92 @@
 X-GM-THRID: 6465168256299696128
-X-Received: by 10.31.170.201 with SMTP id t192mr10454772vke.11.1505292138911;
-        Wed, 13 Sep 2017 01:42:18 -0700 (PDT)
+X-Received: by 10.202.196.195 with SMTP id u186mr10180611oif.25.1505290390986;
+        Wed, 13 Sep 2017 01:13:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.41.196 with SMTP id p187ls2896510itp.9.gmail; Wed, 13 Sep
- 2017 01:42:18 -0700 (PDT)
-X-Received: by 10.176.89.177 with SMTP id g46mr10387158uad.87.1505292138065;
-        Wed, 13 Sep 2017 01:42:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505292138; cv=none;
+Received: by 10.107.157.141 with SMTP id g135ls2546671ioe.23.gmail; Wed, 13
+ Sep 2017 01:13:10 -0700 (PDT)
+X-Google-Smtp-Source: ADKCNb4e/xvG4fmN2HmAezQ6wGvV8C+CdiqIPlHQXhtOFJjS/iTaYQn/LfDhxB0yAgp1VDZN/cRc
+X-Received: by 10.84.210.229 with SMTP id a92mr10807868pli.49.1505290390285;
+        Wed, 13 Sep 2017 01:13:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505290390; cv=none;
         d=google.com; s=arc-20160816;
-        b=W5RGZJp/OJlTCfnJ91c3xi//HOfovpRnrUdMPbXTb9V5gRXTihIFLY4f+3Pr3Ou4Bg
-         HkPqJCkRjYUo1DrOpC5lAP8BdIv6z1lxQ67Jcqd/pnsjdOGusKmDSnTL2BDIvGtFq5hY
-         d+irraWNypm5x6wLlATl9lEx8nRha/Wl2PLqLlOp/522BObN+oNg/9H97yvbLcTSDpGr
-         bHR6jfstiTxX2TH7YgoxJ8qWytQC9efuyHy8Yo5Dh/be2ppe3dMjCgMM5ynpm/NCzT3r
-         J2L0ZmRCRnmMpp9LE6pIv0DSEOAR7jWrGhyDAYNeLiIgThcw6AEsiKiDxcj9ABRVfYZj
-         g/Ng==
+        b=q9c0KzCaH60FSxdnYlBRlLZEpODkKf3Xrn2b1ZbbnWI3g0/fim3CBbU4O3gmLkpP9o
+         025v9GF9Eg4+MkUOTqgdv4fEvKCbgCsrl9MwDoZWbWY87/1uA5Oya1xEdK7nVcQGQgj5
+         V2c92UMmxHIq0CoNAMm6XZbfZ/OhiTz/+z9Lpd2bMReuSNBOxFf8CqUSEFydAj12L+l6
+         MR2wyPKCnSD7DNfMErle+MnEXQHkOfp20rpBOgGrUyEuEC+16bK2BKnXyGjONKweCE0l
+         YvMa33+Y/MSa62kdyl8Pq5Lyl6PBSCgt1pXFN0PRA5vpgFvXSnLnqTul6rSgV3yCGBOT
+         b0Mw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature:arc-authentication-results;
-        bh=38l21leaUFJaorHphSyWrK7P8cuwIwpv9/wEfRujUDg=;
-        b=RkajTdzCtRNGbeurpbaH2sD3A/WFt50Iwe/aY9Cd03vbvupk3Vuqi6KoK7ufL0QO40
-         KBEh6cyf2V9xhUiTcNDvWdmwuJaqxuZoP6q6hCJG2NpQ+3gVScHly56LEYVweebRC22f
-         a1YIYYIlmQUk4YQbGDHs4Y/T6urEc8+I9Vs6twwg8LLi/rJWlwYQlxd+5xLTBr7WjweV
-         1yaY2o/DULC1682S0oZ3xYPck21B90NOeJpB9uhnRsJ8QIdg2vjV8kiq6zbP3/TeXXNr
-         RBWsjjJ+nfWpXzUpV3jldLIiIqUIZlHjpXCL5fQM/9/Ec7eveYyBC66uoo4E3eM0fEbj
-         1jlw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=Hm32HWizXWtJouuDegK8ufsFp9y7owoFSLsUn/nuL4Y=;
+        b=AQyfkircBnSHBqrABHrvMzOpUQdy9HhenNNVsTEI51xXfFq+MQ9za2qLQJ8uMivljP
+         RNUMUa2z0CufBpFr+3feuU1A9zdGoTn793j+WHxveKuvZuiIcv4Mdn6437HTayHhc9E/
+         Qt9lMHliZ54d9BnccDG4V6XZxfOAHTGiisLGET3Q+E9WCffM2P1FPOx9oooXI1WJTlck
+         qfkuZFgCQI/8WiLli6TK4UD8eKgbU3ErfcW3wv3Qzswtru8Tkn4gw44qFlA+NLcb6KWI
+         eStzZleTigG8m8UPYQi8W4neOMRkIJbkHebVjywSEfc4R7DFXyz6Jn2oIsMkN2yumH7+
+         cJxQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CoNMCRSg;
-       spf=pass (google.com: domain of himshijain.hj@gmail.com designates 2607:f8b0:4001:c06::242 as permitted sender) smtp.mailfrom=himshijain.hj@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <himshijain.hj@gmail.com>
-Received: from mail-io0-x242.google.com (mail-io0-x242.google.com. [2607:f8b0:4001:c06::242])
-        by gmr-mx.google.com with ESMTPS id o190si953379ywo.11.2017.09.13.01.42.18
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.69 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <dan.carpenter@oracle.com>
+Received: from aserp1040.oracle.com (aserp1040.oracle.com. [141.146.126.69])
+        by gmr-mx.google.com with ESMTPS id z207si1071550ywz.6.2017.09.13.01.13.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 13 Sep 2017 01:42:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of himshijain.hj@gmail.com designates 2607:f8b0:4001:c06::242 as permitted sender) client-ip=2607:f8b0:4001:c06::242;
+        Wed, 13 Sep 2017 01:13:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.69 as permitted sender) client-ip=141.146.126.69;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CoNMCRSg;
-       spf=pass (google.com: domain of himshijain.hj@gmail.com designates 2607:f8b0:4001:c06::242 as permitted sender) smtp.mailfrom=himshijain.hj@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-io0-x242.google.com with SMTP id j141so42998ioj.5
-        for <outreachy-kernel@googlegroups.com>; Wed, 13 Sep 2017 01:42:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=38l21leaUFJaorHphSyWrK7P8cuwIwpv9/wEfRujUDg=;
-        b=CoNMCRSgxTtLZYmh1cte0Cl4w5P95yYwKic64d0QRAm/sMPt4RiCnRrU14dC6uX7Kf
-         /Nefo0p0sr74/xqX0AEWZZFBVflWmtzWJqob9HOK88H81WJF4VyhgOzJjEinai/gNipY
-         sBLFQnFfNDdqcW5MpBWzjelrRXQ76hwR+IXUdKwaOsW+wO9w6+iMwkxktIZEKEo6mB71
-         g5gxj0duKXAhQUtr7BNjrJTyHGea9/8hqRNQpsk4rUq+7vsqfZbnrpIIRoH39mgWsygP
-         oRg6faJtvlRbWQ+XBGIe9YTSzU+UGPACvbqR9aVNo7MT7GHiSo3TZYZP9xplogtOxr74
-         FWQA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=38l21leaUFJaorHphSyWrK7P8cuwIwpv9/wEfRujUDg=;
-        b=PeEVQhuJpHJwfTw1kFdEedlnfdHtzMeud4BBs1kQWDVUtHwhk7wbESZC3YL/f2BXYe
-         /MY6qrwT56x+Jz7nAw0AiRdxwtcjz5tADGgqvfPYMmezb0DLaWUj7AFlBerJWnyAaFEI
-         BAxmOjZ8kYZBwJ/jEKnd3jQP1veDhvOe+JWN3+bhDI8EjxtYRgB3zU0HUhfy7Bq9Z+/a
-         igiWNuMHcpDu4HUppDMGfcgMa4U4+yWr5x1f8SAItZNp6e5Oo6U3qVswUPrQ8HfhDHWt
-         L8tjyFrzfuoDf9rBhJ6j1+ODpKIrz79wqZJvpsrQGJe7qStOxevWZfUKiMO/67qr+Cg8
-         uspA==
-X-Gm-Message-State: AHPjjUg++5DK64JJKMOizoy464D457kY3rQN4TQtfTUmCksCfJw9EM0b
-	63zurr7fZN9t9AYi7RA=
-X-Google-Smtp-Source: AOwi7QATZtmA5+zXnc91qJXimgQ+sYUkuGgVLzwaTtWletdN7Sq1UyNn0k6cBHc+15Jteot9KTrRqw==
-X-Received: by 10.107.10.9 with SMTP id u9mr27980051ioi.107.1505292137464;
-        Wed, 13 Sep 2017 01:42:17 -0700 (PDT)
-Return-Path: <himshijain.hj@gmail.com>
-Received: from localhost ([223.179.135.67])
-        by smtp.gmail.com with ESMTPSA id c199sm7271858ioe.53.2017.09.13.01.42.16
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Wed, 13 Sep 2017 01:42:17 -0700 (PDT)
-Date: Wed, 13 Sep 2017 14:12:13 +0530
-From: Himanshi Jain <himshijain.hj@gmail.com>
-To: outreachy-kernel@googlegroups.com, lars@metafoo.de,
-	Michael.Hennerich@analog.com, jic23@kernel.org, knaack.h@gmx.de,
-	pmeerw@pmeerw.net, gregkh@linuxfoundation.org,
-	linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, nick.desaulniers@gmail.com,
-	daniel.baluta@gmail.com
-Subject: [PATCH v2 0/2] Rewrite the IIO_DEVICE_ATTR_NAMED API to pass name as
- string.
-Message-ID: <cover.1505291907.git.himshijain.hj@gmail.com>
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.69 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from userv0021.oracle.com (userv0021.oracle.com [156.151.31.71])
+	by aserp1040.oracle.com (Sentrion-MTA-4.3.2/Sentrion-MTA-4.3.2) with ESMTP id v8D8D1IK000631
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 13 Sep 2017 08:13:01 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+	by userv0021.oracle.com (8.14.4/8.14.4) with ESMTP id v8D8Cwbp021222
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 13 Sep 2017 08:12:59 GMT
+Received: from ubhmp0007.oracle.com (ubhmp0007.oracle.com [156.151.24.60])
+	by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id v8D8Cuso024870;
+	Wed, 13 Sep 2017 08:12:56 GMT
+Received: from mwanda (/197.157.34.176)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Wed, 13 Sep 2017 08:12:54 +0000
+Date: Wed, 13 Sep 2017 11:12:21 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Himanshi Jain <himshijain.hj@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, lars@metafoo.de,
+        Michael.Hennerich@analog.com, jic23@kernel.org, knaack.h@gmx.de,
+        pmeerw@pmeerw.net, gregkh@linuxfoundation.org,
+        linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
+        linux-kernel@vger.kernel.org, nick.desaulniers@gmail.com,
+        daniel.baluta@gmail.com
+Subject: Re: [PATCH 2/2] iio: Use __ATTR_NAMED to allow passing name as
+ string to IIO_DEVICE_ATTR_NAMED and change usage to pass string
+Message-ID: <20170913081221.udzpojijvm44ht45@mwanda>
+References: <cover.1505288677.git.himshijain.hj@gmail.com>
+ <2bc7a124ab925dd2c50aa8c778745d179777d50d.1505288677.git.himshijain.hj@gmail.com>
+ <490606d70335e84a09ef418cb3cc0dbee6f79c84.1505288677.git.himshijain.hj@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <490606d70335e84a09ef418cb3cc0dbee6f79c84.1505288677.git.himshijain.hj@gmail.com>
+User-Agent: NeoMutt/20170113 (1.7.2)
+X-Source-IP: userv0021.oracle.com [156.151.31.71]
 
-This patchset is to rewrite the IIO_DEVICE_ATTR_NAMED API to pass name
-as string.
+On Wed, Sep 13, 2017 at 01:26:27PM +0530, Himanshi Jain wrote:
+> Add IIO_ATTR_NAMED macro to use __ATTR_NAMED to allow passing name as
+> string to IIO_DEVICE_ATTR_NAMED. Change current usage of
+> IIO_DEVICE_ATTR_NAMED to pass name as string.
+> 
+> Signed-off-by: Himanshi Jain <himshijain.hj@gmail.com>
 
-Himanshi Jain (2):
-  include: linux: sysfs: Add __ATTR_NAMED macro
-  iio: Change to __ATTR_NAMED()
+This version looks nice.  The subject is just *way* too long, though.
+Also you have put a v2 in the subject and a little changelog after the
+--- cut off.  Just call it something like:
+[PATCH 2/2 v2] iio: Change to __ATTR_NAMED()
 
- drivers/iio/adc/ad7793.c          | 2 +-
- drivers/staging/iio/adc/ad7192.c  | 2 +-
- drivers/staging/iio/adc/ad7280a.c | 4 ++--
- include/linux/iio/sysfs.h         | 6 +++++-
- include/linux/sysfs.h             | 7 +++++++
- 5 files changed, 16 insertions(+), 5 deletions(-)
-
--- 
-1.9.1
+regards,
+dan carpenter
 
 
