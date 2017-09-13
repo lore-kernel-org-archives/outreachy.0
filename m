@@ -1,78 +1,65 @@
 X-GM-THRID: 6465198588662120448
-X-Received: by 10.107.174.94 with SMTP id x91mr10484017ioe.11.1505298103566;
-        Wed, 13 Sep 2017 03:21:43 -0700 (PDT)
+X-Received: by 10.25.16.224 with SMTP id 93mr558043lfq.8.1505297085940;
+        Wed, 13 Sep 2017 03:04:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.50.5 with SMTP id j5ls2812202ita.14.canary-gmail; Wed, 13
- Sep 2017 03:21:42 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QC1fDDViOcy/miJ5JD9E4v9za/FTUGos/JEwEDYP2o1TauqQiCvfmC3Ojz7w8LgpOT+feVl
-X-Received: by 10.36.90.199 with SMTP id v190mr1454067ita.12.1505298102888;
-        Wed, 13 Sep 2017 03:21:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505298102; cv=none;
+Received: by 10.25.170.138 with SMTP id t132ls52541lfe.8.gmail; Wed, 13 Sep
+ 2017 03:04:45 -0700 (PDT)
+X-Google-Smtp-Source: ADKCNb4y4Wa+cqk1tHDD2HVB8BiNk0RkZqAz9tEzVuzpIZdQYQpah4pLmHRCLsE6B33/wNbxjpjE
+X-Received: by 10.46.18.149 with SMTP id 21mr1131045ljs.28.1505297085223;
+        Wed, 13 Sep 2017 03:04:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505297085; cv=none;
         d=google.com; s=arc-20160816;
-        b=vFA4I8e2rTdzsUDt5Z3Jin2R2LYR5x3bJyyU23cL4QGghb6jDxSa2DMJyPGzlEgC4q
-         oeUUF+qLpoSyPLGOaWNvzBtDarT6DU8YeOkT1Zer/VkXhcc2fuz+Cj8R8pqZG5cveuxM
-         sKA6hOpjrIKimrjG3wUKq3GUNy2z9+O9EzzmAinANb6+znXpy9pY9c1HfqaFLoPiKcDd
-         zD8uxLctZu78x7FJ8C6Qi/oh65l4eCRJ7hW3/nZwH32E+dWV+Cdu4yrlj1s7H/hj5fiF
-         ANnP+5urOs4ngxSPKHXh/J/QcU5Y66ZDZz3UtU4aKnacFFksIeAIy1BTq0G4+3BHUYP3
-         izqA==
+        b=y4YwCwp3TGyByFUQ9YoyErMZTeTEqXPptN7EPh56jN/+0iepdZHbiI4kYfb4uwQSKr
+         R10BXLOWvlmbSQ8N1b3JxvVx9WkDQb8lztN9potqBrpTTmj34ZqflLD+dWkczGQQnZK9
+         JSP1Zx9pte8Q7HP9VTwI6fR5SVX8HCCrwWJVd6vVR/svvzpjpCQ8Z40d7NPwyynDEUSo
+         t+OhzqgHpkwf02Lqx7krQMILphcN933atCHOoN4txHbdAtWezB09ltx4jziVXiMKW5lh
+         buFuIGENxmoP/W9tG0x05dgdKe7ePZJCb/6Yjyw3woMCSWP08q3znenPSfUmMsY/WKqi
+         QK1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=FrPzC2L2e3g+QygePDypRV6cczL2NPSFGFh4SAij6PU=;
-        b=kPM5DtARbCz+xtrJgLt0NKhVNCA8v/GLrMaMNv5K3KVkcIfuEMGrabkw0wqhNLRkgJ
-         ArLm8vSuZ+YOyNlReHoSS3c0iSmjuAjQd0gPXVUGSo8BnMg64hhaw2dWrVmKGI2M+BPJ
-         v3Us7HlBdIf8C/mtVRLELvL0m0zEON4n1BEYbSh7PQyW/xmEUG02Uq3YI824pljo78PM
-         Jx8J653slZPvB0+ZYqOCD5Gl2RVMWgDi2vyC1ew/5YmkOQIW4h57qDqo3nnNmvxZUpWt
-         hLTv1jI8z0av5y93VO6b6ebTE2qStIhRJJSdk8goQD6f37/mM+R18BELkvtrS7g04IuH
-         rNBA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=yVlfCy8UyB16XM7EHbPZ4qx6XiRCElLPxY95XO0ZtA0=;
+        b=SZqly6JBzF5L6DkSNoi8F8n+g/d+Ih3Tma8zAN/Xt5R80JNxb/jpziQPvDfTg5M7l7
+         V4Nu/G8Mm5SCraCYWEJg+aangNVbYn33dcFYuZf42RWn5F2mINsjsX+a1+hdPWIWVqpw
+         nsfCjMnHwSS0UWPYx0IHdGIXjs6fWHjKzgigYD0POMAeGby6OnIKPIHLWQ+muUTh+LQn
+         MPMlMmA32q4vpeq2gSVHOosGi3s6QZGvXoxWdJMoCIafJ6pgasFfsVga/9+D7h5XvB7Z
+         GfGKjgRbjp9kQXNEtWQbUsZUAkNWzQXph0Y5YVqj2GRFkOaZzRoa5CEWwg1ky0LaoEhv
+         ETKg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.81 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <dan.carpenter@oracle.com>
-Received: from userp1040.oracle.com (userp1040.oracle.com. [156.151.31.81])
-        by gmr-mx.google.com with ESMTPS id u19si1430267pfl.4.2017.09.13.03.21.42
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 200si72208wmj.0.2017.09.13.03.04.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 13 Sep 2017 03:21:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.81 as permitted sender) client-ip=156.151.31.81;
+        Wed, 13 Sep 2017 03:04:45 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.81 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from userv0021.oracle.com (userv0021.oracle.com [156.151.31.71])
-	by userp1040.oracle.com (Sentrion-MTA-4.3.2/Sentrion-MTA-4.3.2) with ESMTP id v8DALdiJ023870
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 13 Sep 2017 10:21:40 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
-	by userv0021.oracle.com (8.14.4/8.14.4) with ESMTP id v8DALc2c022822
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 13 Sep 2017 10:21:39 GMT
-Received: from ubhmp0005.oracle.com (ubhmp0005.oracle.com [156.151.24.58])
-	by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id v8DALcEx007992;
-	Wed, 13 Sep 2017 10:21:38 GMT
-Received: from mwanda (/197.157.34.176)
-	by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Wed, 13 Sep 2017 10:21:37 +0000
-Date: Wed, 13 Sep 2017 13:21:23 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: kernel-janitors@vger.kernel.org, outreachy-kernel@googlegroups.com,
-        Colin King <colin.king@canonical.com>,
-        Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,387,1500933600"; 
+   d="scan'208";a="237316121"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 13 Sep 2017 12:04:44 +0200
+Date: Wed, 13 Sep 2017 12:04:13 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Colin Ian King <colin.king@canonical.com>
+cc: Dan Carpenter <dan.carpenter@oracle.com>, kernel-janitors@vger.kernel.org, 
+    outreachy-kernel@googlegroups.com, 
+    Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 Subject: Re: DR Checker and KINT static checkers
-Message-ID: <20170913102123.nsg7dpolysn6fk5u@mwanda>
-References: <20170913095202.a6zsi3xeryzhmxrl@mwanda>
- <alpine.DEB.2.20.1709131156450.13908@hadrien>
+In-Reply-To: <92cea65d-9461-3fed-8e07-cd41059410a9@canonical.com>
+Message-ID: <alpine.DEB.2.20.1709131203520.13908@hadrien>
+References: <20170913095202.a6zsi3xeryzhmxrl@mwanda> <92cea65d-9461-3fed-8e07-cd41059410a9@canonical.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.20.1709131156450.13908@hadrien>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-Source-IP: userv0021.oracle.com [156.151.31.71]
+Content-Type: text/plain; charset=US-ASCII
 
-On Wed, Sep 13, 2017 at 12:01:33PM +0200, Julia Lawall wrote:
-> 
-> On Wed, 13 Sep 2017, Dan Carpenter wrote:
-> 
+
+
+On Wed, 13 Sep 2017, Colin Ian King wrote:
+
+> On 13/09/17 10:52, Dan Carpenter wrote:
 > > LWN.net recently had an article about Dr Checker.  It's a promising new
 > > static analysis tool.  The LWN article is for subscribers only until
 > > tomorrow, but anyone can read the PDF or install the code.  It would be
@@ -81,28 +68,36 @@ On Wed, Sep 13, 2017 at 12:01:33PM +0200, Julia Lawall wrote:
 > > https://lwn.net/Articles/733056/
 > > https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-machiry.pdf
 > > https://github.com/ucsb-seclab/dr_checker/
-> 
-> I'm always puzzled by statements like:
-> 
-> Some 5,000 warnings were generated, of which nearly 4,000 were verified as
-> correct by the team. Of those, 158 were actual bugs that were reported
-> upstream and fixed.
+> >
+> > The other tool that's quite interesting is KINT which looks for integer
+> > overflows.  It's a bit of a pain because you have to annotate some
+> > kernel functions to make it work.  The PDF and source code are here:
+> >
+> > http://css.csail.mit.edu/kint/
+> >
+> > regards,
+> > dan carpenter
+> >
+>
+> Funnily enough, I tried Dr Checker out earlier this week.  One has to
+> make it do a fake build of the kernel to gather information on how to
+> build the specific kernel config (e.g. how it was compiled and the gcc
+> build flags) and then this gets parsed by DR-Checker.  Unfortunately it
+> seems that it only supported arm architecture builds and it could not
+> handle the gcc output for a modern x86 amd64 gcc (gcc 7.2). I kind of
+> gave up after a couple of hours trying to make it work.  I suspect more
+> patient developers may figure out how to make it work. I may go back and
+> revisit this when I have some free time.
 
-My read was that the 4000 warnings were code bugs that don't affect
-runtime, such as inconsistent NULL checking but the pointer isn't
-NULL so it doesn't affect runtime?  That's a pure guess.
+You could ask the authors.  They may be happy to have some feedback.
 
-> 
-> If they took the time to validate 5000 bugs, couldn't they have sent more
-> patches, or at least made the results public in some way so that other
-> people could fix them?  Maybe the others are "duplicated, but correct"...
+julia
 
-I think people are worried about posting the results so they don't get
-blamed for disclosing a kernel vulnerability.  I used to worry about
-that but now I assume everything a static checker can find is public
-information already.
-
-regards,
-dan carpenter
-
+>
+> Colin
+> --
+> To unsubscribe from this list: send the line "unsubscribe kernel-janitors" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>
 
