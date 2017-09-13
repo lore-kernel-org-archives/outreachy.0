@@ -1,101 +1,178 @@
 X-GM-THRID: 6465205340686254080
-X-Received: by 10.176.79.31 with SMTP id n31mr10474233uah.111.1505307557714;
-        Wed, 13 Sep 2017 05:59:17 -0700 (PDT)
+X-Received: by 10.129.68.21 with SMTP id r21mr11075055ywa.72.1505304159118;
+        Wed, 13 Sep 2017 05:02:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.25.78 with SMTP id b75ls3086863itb.4.canary-gmail; Wed, 13
- Sep 2017 05:59:16 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QCciWLZIUp4ssWhnFzK6xo6ZPC+1V7V7H+WPWKjCe3TVO9u1W2Y84tnKzDv/7qKBL/5mxnw
-X-Received: by 10.107.222.6 with SMTP id v6mr1720790iog.16.1505307556773;
-        Wed, 13 Sep 2017 05:59:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505307556; cv=none;
+Received: by 10.107.180.22 with SMTP id d22ls859561iof.48.gmail; Wed, 13 Sep
+ 2017 05:02:38 -0700 (PDT)
+X-Google-Smtp-Source: ADKCNb5XyjJAqF5oootXjWmwF9d1kpspWmb40oAz+OXwsEwbbrB/Y6C3QIJ9bqewlFUvJeXmjbNJ
+X-Received: by 10.176.79.31 with SMTP id n31mr10390504uah.111.1505304158012;
+        Wed, 13 Sep 2017 05:02:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505304157; cv=none;
         d=google.com; s=arc-20160816;
-        b=yXyDLX1rIchSy9sJHezjqU9pY3lrNPB3tighMoZCORhgnWI8Q7luon7zDVUiXyekLP
-         TFwrDVwVvztxHqe09FlRS6dR4JMbYdXNDBWZ1eDk7v+0MmdDEkkrUovG8qX00VBProT3
-         LtaOjol7KujcuBmLPvqIW4ZLmQcDdD1On67gnoyXnYij3IGcY9yDm4W9sW/ArtorEbtN
-         Da6XQVHk9QK99ZDyNoUzb5vf3VE6bReqm8R63lBCXZ6K1QwadtKIOYwsEIoVkIkPUbDr
-         0sTKgomSeyFw0Y7t8/Pf2nyuP+Zw4hLyzCN8LsSJoor9aQgqLhY4aTrODuxEK90U6Viv
-         +Z5Q==
+        b=IOYTeJDkjvMK2cfrh/asW4awHEXnJDGQERxN6uYPyRJa1RYsILBWbtEPsSddDou2kx
+         Hx7Kobm11oJa2IH1CNySepM0dqMyueDn4E02yhV0jpowJjBkus52w80A0IpfaOOgHk9j
+         tZ1wK630XEKPiL8l9cm5vASLauNgGm8unTNDOPHVnmFqooHudVEhTGlvEY4YXXK7IsRz
+         oQWE6ywDLyETqvOSo+jbDgMLYu9bHwBnVxXnQLiGF7dnU5XIgw53jD2F7tQBdo5wBIKn
+         XcURoEVkPmdNw/bTNyuzCVGbajW6Wa0t8jjl/B6Jo3+p7xiz1gITZlkN2x8S55qvQO4r
+         W+Jw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:arc-authentication-results;
-        bh=QUQYKebGWqBu4XxHkRKg9M2du6hD++u+sq0CzmP13Ps=;
-        b=05X+PoN7ZCO8lkTsS9bJRvh3Bb/a/JLiwXvVypGE9xaSAPamVlkvD7+RXwJdmZmSgO
-         CWR+p8dvcMcW6sicETqRiLRBWDm5XcRLYO+W91tP/lTlQTY94yYpp4DMMJUkp1uPePQt
-         2G508TQdOQkdGU2jV+lPpfg6r7uJQcTjXb3E3R8tgJi+5a/ACuqVsCni/JO9FYmilau4
-         GlOQMH8SNHdTDxNrw0oE1FozbXzbRPdHl+Z8yXvyxz3HKCBc2uVw+HqXxLxWkvz36rV/
-         0dzRgoptmbMLSYNGJZJI/lPGC3gAcPWxbcQjHcBujWV2fYZ1bl8nJiquFXd8W3rQ4Jyw
-         HJwQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=61EzYstfdpfxAZFM3p+O5fkoA8e/c0wCHENKUM81Qf8=;
+        b=mqsP1OYH/vq1RgNUw9MeIcES1Gi5H62SRSFSGsbb6us/vPQ1zK7JG56GSZ3waB8c5V
+         FAD2TnFf1J6f4EmopjL4bSS11UXvM3qLtquaDxTu03gto8RCG2Q83UzjQ8nBCkjuw0mK
+         SSXJOvaLRgeZnoiqA9hDL3UgOATZOj937LfmecVFavKmZ45iBFdAAiIFqZf35FpLrr9b
+         K6WGuKRahwAwT8+xzBsd5sLR9v0UUm3lqoqw8pJNeEPFZHIucxdcmO11DIgZD2BpCXfH
+         VUGyhy9yCQr5f01Y9MBouXs/++YXjOnUMyVgKhKOS2/+zLJYFyiU0WzUTMAczpNm4uQx
+         ni7g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of jani.nikula@intel.com designates 192.55.52.93 as permitted sender) smtp.mailfrom=jani.nikula@intel.com
-Return-Path: <jani.nikula@intel.com>
-Received: from mga11.intel.com (mga11.intel.com. [192.55.52.93])
-        by gmr-mx.google.com with ESMTPS id v25si1367761pfg.11.2017.09.13.05.59.16
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id v2si40421ite.4.2017.09.13.05.02.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 13 Sep 2017 05:59:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jani.nikula@intel.com designates 192.55.52.93 as permitted sender) client-ip=192.55.52.93;
+        Wed, 13 Sep 2017 05:02:37 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of jani.nikula@intel.com designates 192.55.52.93 as permitted sender) smtp.mailfrom=jani.nikula@intel.com
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 13 Sep 2017 05:59:15 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.42,387,1500966000"; 
-   d="scan'208";a="899847733"
-Received: from jnikula-mobl2.fi.intel.com (HELO localhost) ([10.237.72.62])
-  by FMSMGA003.fm.intel.com with ESMTP; 13 Sep 2017 05:59:14 -0700
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Julia Lawall <julia.lawall@lip6.fr>, Meghana Madhyastha <meghana.madhyastha@gmail.com>
-Cc: Daniel Vetter <daniel.vetter@intel.com>, Sean Paul <seanpaul@chromium.org>, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 0/3] GPU: DRM: drm_agpsupport.c: Code cleanup
-In-Reply-To: <alpine.DEB.2.20.1709131352550.26484@hadrien>
-References: <cover.1505296813.git.meghana.madhyastha@gmail.com> <alpine.DEB.2.20.1709131352550.26484@hadrien>
-Date: Wed, 13 Sep 2017 15:58:51 +0300
-Message-ID: <87wp52iwl0.fsf@nikula.org>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,387,1500933600"; 
+   d="scan'208";a="237331788"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 13 Sep 2017 14:02:36 +0200
+Date: Wed, 13 Sep 2017 14:02:05 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Meghana Madhyastha <meghana.madhyastha@gmail.com>
+cc: Daniel Vetter <daniel.vetter@intel.com>, 
+    Jani Nikula <jani.nikula@linux.intel.com>, 
+    Sean Paul <seanpaul@chromium.org>, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 3/3] GPU: DRM: Remove assignment in
+ if condition
+In-Reply-To: <5eb79800ec4c7218e23841345ba81e3a515901e7.1505296813.git.meghana.madhyastha@gmail.com>
+Message-ID: <alpine.DEB.2.20.1709131400470.26484@hadrien>
+References: <cover.1505296813.git.meghana.madhyastha@gmail.com> <5eb79800ec4c7218e23841345ba81e3a515901e7.1505296813.git.meghana.madhyastha@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=US-ASCII
 
-On Wed, 13 Sep 2017, Julia Lawall <julia.lawall@lip6.fr> wrote:
-> On Wed, 13 Sep 2017, Meghana Madhyastha wrote:
+
+
+On Wed, 13 Sep 2017, Meghana Madhyastha wrote:
+
+> This patch moves the assignment so that
+> it happens before the if condition. This
+> results in syntax which is easier to read.
+
+The commit message could be a bit wider.
+
 >
->> These patches fix the checkpath warnings and errors
->> in drm_agpsupport.c
->>
->> Meghana Madhyastha (3):
->>   GPU: DRM: Moved EXPORT_SYMBOL so that it immediately followed its
->>     function
->>   GPU: DRM: Replace "foo * bar" with "foo *bar"
->>   GPU: DRM: Remove assignment in if condition
->>
->>  drivers/gpu/drm/drm_agpsupport.c | 41 ++++++++++++++++++++++------------------
-
-Please try 'git log --oneline -- drivers/gpu/drm/drm_agpsupport.c' and
-observe the commit subject prefix used. Please try to follow the style
-in the area you're changing, not some generic rules.
-
->>  1 file changed, 23 insertions(+), 18 deletions(-)
+> Found by checkpath.pl
 >
-> Are the DRM people going to pick this up?  Because Greg will not.  If you
-> do something that is outside staging at a mentor's suggestion it could be
-> good to make explicit that the mentor will make sure that the patch will
-> be applied.
+> Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
+> ---
+>  drivers/gpu/drm/drm_agpsupport.c | 27 ++++++++++++++++++---------
+>  1 file changed, 18 insertions(+), 9 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/drm_agpsupport.c b/drivers/gpu/drm/drm_agpsupport.c
+> index 993e486..08933d6 100644
+> --- a/drivers/gpu/drm/drm_agpsupport.c
+> +++ b/drivers/gpu/drm/drm_agpsupport.c
+> @@ -100,7 +100,8 @@ int drm_agp_acquire(struct drm_device *dev)
+>  		return -ENODEV;
+>  	if (dev->agp->acquired)
+>  		return -EBUSY;
+> -	if (!(dev->agp->bridge = agp_backend_acquire(dev->pdev)))
+> +	dev->agp->bridge = agp_backend_acquire(dev->pdev);
+> +	if (!dev->agp->bridge)
+>  		return -ENODEV;
+>  	dev->agp->acquired = 1;
+>  	return 0;
+> @@ -200,12 +201,14 @@ int drm_agp_alloc(struct drm_device *dev, struct drm_agp_buffer *request)
+>
+>  	if (!dev->agp || !dev->agp->acquired)
+>  		return -EINVAL;
+> -	if (!(entry = kzalloc(sizeof(*entry), GFP_KERNEL)))
+> +	entry = kzalloc(sizeof(*entry), GFP_KERNEL);
+> +	if (!entry)
+>  		return -ENOMEM;
+>
+>  	pages = (request->size + PAGE_SIZE - 1) / PAGE_SIZE;
+>  	type = (u32) request->type;
+> -	if (!(memory = agp_allocate_memory(dev->agp->bridge, pages, type))) {
+> +	memory = agp_allocate_memory(dev->agp->bridge, pages, type);
+> +	if (!memory) {
+>  		kfree(entry);
+>  		return -ENOMEM;
+>  	}
+> @@ -272,7 +275,8 @@ int drm_agp_unbind(struct drm_device *dev, struct drm_agp_binding *request)
+>
+>  	if (!dev->agp || !dev->agp->acquired)
+>  		return -EINVAL;
+> -	if (!(entry = drm_agp_lookup_entry(dev, request->handle)))
+> +	entry = drm_agp_lookup_entry(dev, request->handle);
+> +	if (!entry)
+>  		return -EINVAL;
+>  	if (!entry->bound)
+>  		return -EINVAL;
 
-I'm not generally fond of pure checkpatch fixes, but patch 3 alone I
-want enough to pick them all up. ;)
+In this case and the next one, there are two tests that end up with the
+same result.  You could merge them now that the test expression is
+shorter, like the test a few lines up.
 
-But please do submit the series to dri-devel@lists.freedesktop.org. As a
-matter of policy, we don't apply patches not posted to our subsystem
-mailing list.
+julia
 
-The scripts/get_maintainer.pl script will help you with the lists, but
-do use discretion. The script is sometimes misguided, adding *way* too
-many lists and people. Just the main subsystem list and
-supporters/maintainers are usually enough.
-
-
-Thanks,
-Jani.
-
-
--- 
-Jani Nikula, Intel Open Source Technology Center
+> @@ -313,12 +317,14 @@ int drm_agp_bind(struct drm_device *dev, struct drm_agp_binding *request)
+>
+>  	if (!dev->agp || !dev->agp->acquired)
+>  		return -EINVAL;
+> -	if (!(entry = drm_agp_lookup_entry(dev, request->handle)))
+> +	entry = drm_agp_lookup_entry(dev, request->handle);
+> +	if (!entry)
+>  		return -EINVAL;
+>  	if (entry->bound)
+>  		return -EINVAL;
+>  	page = (request->offset + PAGE_SIZE - 1) / PAGE_SIZE;
+> -	if ((retcode = drm_bind_agp(entry->memory, page)))
+> +	retcode = drm_bind_agp(entry->memory, page);
+> +	if (retcode)
+>  		return retcode;
+>  	entry->bound = dev->agp->base + (page << PAGE_SHIFT);
+>  	DRM_DEBUG("base = 0x%lx entry->bound = 0x%lx\n",
+> @@ -356,7 +362,8 @@ int drm_agp_free(struct drm_device *dev, struct drm_agp_buffer *request)
+>
+>  	if (!dev->agp || !dev->agp->acquired)
+>  		return -EINVAL;
+> -	if (!(entry = drm_agp_lookup_entry(dev, request->handle)))
+> +	entry = drm_agp_lookup_entry(dev, request->handle);
+> +	if (!entry)
+>  		return -EINVAL;
+>  	if (entry->bound)
+>  		drm_unbind_agp(entry->memory);
+> @@ -394,11 +401,13 @@ struct drm_agp_head *drm_agp_init(struct drm_device *dev)
+>  {
+>  	struct drm_agp_head *head = NULL;
+>
+> -	if (!(head = kzalloc(sizeof(*head), GFP_KERNEL)))
+> +	head = kzalloc(sizeof(*head), GFP_KERNEL);
+> +	if (!head)
+>  		return NULL;
+>  	head->bridge = agp_find_bridge(dev->pdev);
+>  	if (!head->bridge) {
+> -		if (!(head->bridge = agp_backend_acquire(dev->pdev))) {
+> +		head->bridge = agp_backend_acquire(dev->pdev);
+> +		if (!head->bridge) {
+>  			kfree(head);
+>  			return NULL;
+>  		}
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/5eb79800ec4c7218e23841345ba81e3a515901e7.1505296813.git.meghana.madhyastha%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
