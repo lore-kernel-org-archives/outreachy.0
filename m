@@ -1,96 +1,108 @@
 X-GM-THRID: 6465198588662120448
-X-Received: by 10.99.104.6 with SMTP id d6mr10844898pgc.84.1505303319708;
-        Wed, 13 Sep 2017 04:48:39 -0700 (PDT)
+X-Received: by 10.107.174.94 with SMTP id x91mr10484017ioe.11.1505298103566;
+        Wed, 13 Sep 2017 03:21:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.41.197 with SMTP id p188ls3083408iop.51.gmail; Wed, 13 Sep
- 2017 04:48:38 -0700 (PDT)
-X-Received: by 10.176.6.8 with SMTP id f8mr11717996uaf.19.1505303318918;
-        Wed, 13 Sep 2017 04:48:38 -0700 (PDT)
-Received: by 10.55.19.41 with SMTP id d41msqkh;
-        Wed, 13 Sep 2017 03:02:32 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QD6IkNxXhwRcIyoDECE+RzK9N2F3O9ugwG+i7lSTMmOLkBZRmR0V5kWY0+wgXpVev2HGMMJ
-X-Received: by 10.46.101.8 with SMTP id z8mr1059160ljb.0.1505296952412;
-        Wed, 13 Sep 2017 03:02:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505296952; cv=none;
+Received: by 10.36.50.5 with SMTP id j5ls2812202ita.14.canary-gmail; Wed, 13
+ Sep 2017 03:21:42 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QC1fDDViOcy/miJ5JD9E4v9za/FTUGos/JEwEDYP2o1TauqQiCvfmC3Ojz7w8LgpOT+feVl
+X-Received: by 10.36.90.199 with SMTP id v190mr1454067ita.12.1505298102888;
+        Wed, 13 Sep 2017 03:21:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505298102; cv=none;
         d=google.com; s=arc-20160816;
-        b=UBGJ2xrUlVNxilZOOX+C2EPhBI5vyWBppQ+zYXJ4Txnn2ViypFwbBCElK0TyJ7bnfp
-         QmpP/dgooLnzD2ldxCt7o8RDrnzeRxD+ES92NWC+FtjIMIqYvAF++0XYa9Sj/Pm/zfIf
-         8eK6U9eE7jnGOfU+JLKC6kEUlDa1S/SfPXv/m2xeNUVixXWqC/T2WkL1S2tXvgnmo2iB
-         I2IZ1Q6ErWw5DqsZs2HKZMIk5FX2UVmNw2Koth7pnXjOydMAq0Ku2adkFABc0xiwKPfE
-         TxZM3yEJKIx28hZHVcQYCG/WSCxNzGDf6OAEFjT5lu7CHZQE4StVmTEkJ+NOuQVWHdYQ
-         FLVw==
+        b=vFA4I8e2rTdzsUDt5Z3Jin2R2LYR5x3bJyyU23cL4QGghb6jDxSa2DMJyPGzlEgC4q
+         oeUUF+qLpoSyPLGOaWNvzBtDarT6DU8YeOkT1Zer/VkXhcc2fuz+Cj8R8pqZG5cveuxM
+         sKA6hOpjrIKimrjG3wUKq3GUNy2z9+O9EzzmAinANb6+znXpy9pY9c1HfqaFLoPiKcDd
+         zD8uxLctZu78x7FJ8C6Qi/oh65l4eCRJ7hW3/nZwH32E+dWV+Cdu4yrlj1s7H/hj5fiF
+         ANnP+5urOs4ngxSPKHXh/J/QcU5Y66ZDZz3UtU4aKnacFFksIeAIy1BTq0G4+3BHUYP3
+         izqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:cc:references:to:subject:arc-authentication-results;
-        bh=4fRcfxX+gS0Zu/t8kBjRpTFK8sjBRpA3YbqYP8DUeRY=;
-        b=UQwgi68wzoc9BFr1SA0xBG2TxSMrBBi/+wFndz4xzhCCKdI6z2azSg4ejCEe3krpWN
-         pHG5usgyBVvcThsSrX7OZlmnNnC+gRyWRcmOFdFpRMoSg5FhtIwsTIVeS5/UsllcrwG9
-         8WQ/wY8ElPcv+dqpC9DuHiQ+lizqSOyRUDwO3xFX86JZ5aipcIf6gxoWXzHxn8lVS5Cj
-         d88XvWbqgSeIOtlxn9ByuQobmgDUM2Wy4SuYjBeqDwrtbMU6yfbYOS1D4yFs6hKmjByZ
-         7wA14lqhDVWoS0FSiLzcwOc5cI2OZZdN89h78STkqj8qWJMhmC3gMhLHBQnwSC7eE0BE
-         jmxQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=FrPzC2L2e3g+QygePDypRV6cczL2NPSFGFh4SAij6PU=;
+        b=kPM5DtARbCz+xtrJgLt0NKhVNCA8v/GLrMaMNv5K3KVkcIfuEMGrabkw0wqhNLRkgJ
+         ArLm8vSuZ+YOyNlReHoSS3c0iSmjuAjQd0gPXVUGSo8BnMg64hhaw2dWrVmKGI2M+BPJ
+         v3Us7HlBdIf8C/mtVRLELvL0m0zEON4n1BEYbSh7PQyW/xmEUG02Uq3YI824pljo78PM
+         Jx8J653slZPvB0+ZYqOCD5Gl2RVMWgDi2vyC1ew/5YmkOQIW4h57qDqo3nnNmvxZUpWt
+         hLTv1jI8z0av5y93VO6b6ebTE2qStIhRJJSdk8goQD6f37/mM+R18BELkvtrS7g04IuH
+         rNBA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: best guess record for domain of colin.king@canonical.com designates 91.189.89.112 as permitted sender) smtp.mailfrom=colin.king@canonical.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=canonical.com
-Return-Path: <colin.king@canonical.com>
-Received: from youngberry.canonical.com (youngberry.canonical.com. [91.189.89.112])
-        by gmr-mx.google.com with ESMTPS id t142si61111wmt.2.2017.09.13.03.02.32
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.81 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <dan.carpenter@oracle.com>
+Received: from userp1040.oracle.com (userp1040.oracle.com. [156.151.31.81])
+        by gmr-mx.google.com with ESMTPS id u19si1430267pfl.4.2017.09.13.03.21.42
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 13 Sep 2017 03:02:32 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of colin.king@canonical.com designates 91.189.89.112 as permitted sender) client-ip=91.189.89.112;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 13 Sep 2017 03:21:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.81 as permitted sender) client-ip=156.151.31.81;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: best guess record for domain of colin.king@canonical.com designates 91.189.89.112 as permitted sender) smtp.mailfrom=colin.king@canonical.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=canonical.com
-Received: from 1.general.cking.uk.vpn ([10.172.193.212])
-	by youngberry.canonical.com with esmtpsa (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.76)
-	(envelope-from <colin.king@canonical.com>)
-	id 1ds4V5-0004ib-DZ; Wed, 13 Sep 2017 10:02:31 +0000
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.81 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from userv0021.oracle.com (userv0021.oracle.com [156.151.31.71])
+	by userp1040.oracle.com (Sentrion-MTA-4.3.2/Sentrion-MTA-4.3.2) with ESMTP id v8DALdiJ023870
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 13 Sep 2017 10:21:40 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+	by userv0021.oracle.com (8.14.4/8.14.4) with ESMTP id v8DALc2c022822
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 13 Sep 2017 10:21:39 GMT
+Received: from ubhmp0005.oracle.com (ubhmp0005.oracle.com [156.151.24.58])
+	by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id v8DALcEx007992;
+	Wed, 13 Sep 2017 10:21:38 GMT
+Received: from mwanda (/197.157.34.176)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Wed, 13 Sep 2017 10:21:37 +0000
+Date: Wed, 13 Sep 2017 13:21:23 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: kernel-janitors@vger.kernel.org, outreachy-kernel@googlegroups.com,
+        Colin King <colin.king@canonical.com>,
+        Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 Subject: Re: DR Checker and KINT static checkers
-To: Dan Carpenter <dan.carpenter@oracle.com>, kernel-janitors@vger.kernel.org
+Message-ID: <20170913102123.nsg7dpolysn6fk5u@mwanda>
 References: <20170913095202.a6zsi3xeryzhmxrl@mwanda>
-Cc: outreachy-kernel@googlegroups.com,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-From: Colin Ian King <colin.king@canonical.com>
-Message-ID: <92cea65d-9461-3fed-8e07-cd41059410a9@canonical.com>
-Date: Wed, 13 Sep 2017 11:02:30 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
- Thunderbird/45.8.0
+ <alpine.DEB.2.20.1709131156450.13908@hadrien>
 MIME-Version: 1.0
-In-Reply-To: <20170913095202.a6zsi3xeryzhmxrl@mwanda>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.20.1709131156450.13908@hadrien>
+User-Agent: NeoMutt/20170113 (1.7.2)
+X-Source-IP: userv0021.oracle.com [156.151.31.71]
 
-On 13/09/17 10:52, Dan Carpenter wrote:
-> LWN.net recently had an article about Dr Checker.  It's a promising new
-> static analysis tool.  The LWN article is for subscribers only until
-> tomorrow, but anyone can read the PDF or install the code.  It would be
-> really interesting if someone could run Dr Checker on a mainline kernel
-> tree and post the results.
-> https://lwn.net/Articles/733056/
-> https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-machiry.pdf
-> https://github.com/ucsb-seclab/dr_checker/
+On Wed, Sep 13, 2017 at 12:01:33PM +0200, Julia Lawall wrote:
 > 
-> The other tool that's quite interesting is KINT which looks for integer
-> overflows.  It's a bit of a pain because you have to annotate some
-> kernel functions to make it work.  The PDF and source code are here:
+> On Wed, 13 Sep 2017, Dan Carpenter wrote:
 > 
-> http://css.csail.mit.edu/kint/
+> > LWN.net recently had an article about Dr Checker.  It's a promising new
+> > static analysis tool.  The LWN article is for subscribers only until
+> > tomorrow, but anyone can read the PDF or install the code.  It would be
+> > really interesting if someone could run Dr Checker on a mainline kernel
+> > tree and post the results.
+> > https://lwn.net/Articles/733056/
+> > https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-machiry.pdf
+> > https://github.com/ucsb-seclab/dr_checker/
 > 
-> regards,
-> dan carpenter
+> I'm always puzzled by statements like:
 > 
+> Some 5,000 warnings were generated, of which nearly 4,000 were verified as
+> correct by the team. Of those, 158 were actual bugs that were reported
+> upstream and fixed.
 
-Funnily enough, I tried Dr Checker out earlier this week.  One has to
-make it do a fake build of the kernel to gather information on how to
-build the specific kernel config (e.g. how it was compiled and the gcc
-build flags) and then this gets parsed by DR-Checker.  Unfortunately it
-seems that it only supported arm architecture builds and it could not
-handle the gcc output for a modern x86 amd64 gcc (gcc 7.2). I kind of
-gave up after a couple of hours trying to make it work.  I suspect more
-patient developers may figure out how to make it work. I may go back and
-revisit this when I have some free time.
+My read was that the 4000 warnings were code bugs that don't affect
+runtime, such as inconsistent NULL checking but the pointer isn't
+NULL so it doesn't affect runtime?  That's a pure guess.
 
-Colin
+> 
+> If they took the time to validate 5000 bugs, couldn't they have sent more
+> patches, or at least made the results public in some way so that other
+> people could fix them?  Maybe the others are "duplicated, but correct"...
+
+I think people are worried about posting the results so they don't get
+blamed for disclosing a kernel vulnerability.  I used to worry about
+that but now I assume everything a static checker can find is public
+information already.
+
+regards,
+dan carpenter
+
 
