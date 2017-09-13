@@ -1,92 +1,143 @@
 X-GM-THRID: 6465168256299696128
-X-Received: by 10.107.30.8 with SMTP id e8mr11546254ioe.53.1505339910229;
-        Wed, 13 Sep 2017 14:58:30 -0700 (PDT)
+X-Received: by 10.129.160.151 with SMTP id x145mr12727017ywg.220.1505339047706;
+        Wed, 13 Sep 2017 14:44:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.20.20 with SMTP id 20ls3591016iou.3.gmail; Wed, 13 Sep
- 2017 14:58:29 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QCL2lzCJWWmSa/+XAjZrwBuKS4tp85YgSnoJQ/5Ncd04Gj3Fx10HzbFBPqbqcMH23WUxyUY
-X-Received: by 10.36.73.156 with SMTP id e28mr114468itd.7.1505339909524;
-        Wed, 13 Sep 2017 14:58:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505339909; cv=none;
+Received: by 10.107.150.135 with SMTP id y129ls695581iod.32.gmail; Wed, 13 Sep
+ 2017 14:44:06 -0700 (PDT)
+X-Google-Smtp-Source: ADKCNb7ZgneGq5o62tszsBuBfV0qBKj+H3cTA7WMMinBqTDMVS6pgSKOsq2Dkp2b1jptXbQM31YJ
+X-Received: by 10.101.72.197 with SMTP id o5mr11834361pgs.66.1505339046741;
+        Wed, 13 Sep 2017 14:44:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505339046; cv=none;
         d=google.com; s=arc-20160816;
-        b=AydInFEATE3N6Qvc00kogbMrOTQ5CgMufwDlVNrj08zbEe4fIPQvfRVfbiB4YO/Ifu
-         UEOg+KuNfH7cKdsT0Mkv5PF1hEtFB5T9fbbicXuTi/IVHuyZhupvR7BnnQNzYMeAo9lj
-         TDOFEgJ44mRvcz8hsv935P6jWfGtZxKl7/13qiKjl0mIucCrnzyplQ6eAU3WF6VLhR00
-         4T3TPbo2frO3uCcCd5qnPz4cnHrcNEar4Z3Acb5Fo/R0Zfkj/Zg0chBqzjk5IyVypAsW
-         JqdbEiEP5PesSz813Z6wsPRIXloUUw6Ic9emFs/uEqtiMIxds0G0WJWllMTrC+7qmu+1
-         c10w==
+        b=Y9tX/xAxMG41KipTDsW3ouVhJlWlFKVYx6uAtaAtHoKeWDdd7fZjasYibKa94bjTaa
+         kr2ayf8At/Skd9gcdRci9KM77Jf9FgKc0JLUePYHBPjhRGr2gubNbYM1xCv0naDiSXRP
+         oB/g2glXxbJaA+MRGkP/H1PH661EUNnk9XRwOoQGQ9mop2Xxqrxo7FJNNm4eaI71sTS/
+         QdHjmDLixsI95ifj5ziy0BjPKA3IsI5ywIlpfH0crEQCaNjyxTl8VioTtSc2OCW/PC59
+         B2xC0Q97T417tdenBjJw5/xS4aZE4f5wdYyqYmEAzjvTZRa6U3u70LkfRfyImL7cwEjv
+         O8nw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to:date
-         :cc:to:from:subject:message-id:arc-authentication-results;
-        bh=th6sGbeBimT8Ze5tzsv2PZaFC7VnsedmTNlkBlSccr4=;
-        b=dKXY3Fyo+ZFdSsDkyuoosRxMSCiD5u9CTp4clnLXOkuWvV+ZPW2da9QoCFyBSpK54u
-         VKOU84At6BSBrnhV5qSQN1YGdPtNqBy4jwboS61qxdlX/Cq7DXzXkvmILrkoUxu4yb08
-         ettZN08VfJaEpCnx1k0UnRcxeWjGlULuMpVwyWrw93U5BZvIteDoOsbDPAmlk4GR098W
-         1KpxcXVAZOTPcYnTyUFVLRBLXkvqOKA8VF7a+qwE4uK66hQ3S5FyCwD6SVYJGiRGiMwN
-         JqcSA9ET2YtI2NHqhWMJri91fyn4KfkaSXTqCJWQ+Iks9iwBLIfXCnAg6fYokEwwQFg+
-         jkuA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=amduYUZrjEsQlFeAPvs4AROZkf2UlOWm9Ba13xVEDgc=;
+        b=r45/LlnBIkHdvuaYNH/0hqEBsZ8NRc9J55bUJSld5ZaXj8WhNzImkxSEIwNnJywotU
+         bqI4KuCiKXMw4OYXYVbsdoEKoBKjZghGpYvRQB3pHob7cCbz+3lJAYk110lS7FrPA0br
+         73oEuOt/JTuEsnaRa2mIVbOKAbN+iE27oOclgr4cXN7SjYMHs/iA86H08f+gxh4uBklG
+         xJB69HwGB3CyDr+tpCKInNTce2Ll+xGLvhIClNk+wDouNpDae9UURZb0XpqyE8HxrRrz
+         ENEWxwZL5e5AM9rVuUY88bb3WRHeWE/hoLVsP7DQHX4wNak2gs+4cL4caU/qedOU3I4o
+         9dMQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 216.40.44.30 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
-Return-Path: <joe@perches.com>
-Received: from smtprelay.hostedemail.com (smtprelay0030.hostedemail.com. [216.40.44.30])
-        by gmr-mx.google.com with ESMTPS id b186si1264ith.0.2017.09.13.14.58.29
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.69 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <dan.carpenter@oracle.com>
+Received: from aserp1040.oracle.com (aserp1040.oracle.com. [141.146.126.69])
+        by gmr-mx.google.com with ESMTPS id l77si1147599ywc.16.2017.09.13.14.44.06
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 13 Sep 2017 14:58:29 -0700 (PDT)
-Received-SPF: neutral (google.com: 216.40.44.30 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.30;
+        Wed, 13 Sep 2017 14:44:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.69 as permitted sender) client-ip=141.146.126.69;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 216.40.44.30 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
-	by smtprelay02.hostedemail.com (Postfix) with ESMTP id D43299092;
-	Wed, 13 Sep 2017 21:58:28 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,:::::::::::::::::::::::::::,RULES_HIT:41:355:379:541:599:973:988:989:1260:1277:1311:1313:1314:1345:1359:1373:1437:1515:1516:1518:1534:1538:1593:1594:1711:1714:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3350:3622:3865:3867:3868:3870:3871:3872:4321:5007:6742:7903:8660:10004:10400:10848:11232:11658:11914:12740:12760:12895:13069:13148:13230:13311:13357:13439:14181:14659:14721:21080:21434:21627:30012:30054:30091,0,RBL:error,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:,MSBL:0,DNSBL:error,Custom_rules:0:0:0,LFtime:2000,LUA_SUMMARY:none
-X-HE-Tag: soup86_83a582d9e5c63
-X-Filterd-Recvd-Size: 1931
-Received: from XPS-9350 (unknown [47.151.132.55])
-	(Authenticated sender: joe@perches.com)
-	by omf12.hostedemail.com (Postfix) with ESMTPA;
-	Wed, 13 Sep 2017 21:58:24 +0000 (UTC)
-Message-ID: <1505339903.8969.20.camel@perches.com>
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.69 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from aserv0021.oracle.com (aserv0021.oracle.com [141.146.126.233])
+	by aserp1040.oracle.com (Sentrion-MTA-4.3.2/Sentrion-MTA-4.3.2) with ESMTP id v8DLhuQN022627
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 13 Sep 2017 21:43:57 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+	by aserv0021.oracle.com (8.14.4/8.14.4) with ESMTP id v8DLhuvK012840
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 13 Sep 2017 21:43:56 GMT
+Received: from ubhmp0015.oracle.com (ubhmp0015.oracle.com [156.151.24.68])
+	by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id v8DLhsF4019121;
+	Wed, 13 Sep 2017 21:43:54 GMT
+Received: from mwanda (/41.202.241.15)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Wed, 13 Sep 2017 21:43:53 +0000
+Date: Thu, 14 Sep 2017 00:43:33 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: Lars-Peter Clausen <lars@metafoo.de>, devel@driverdev.osuosl.org,
+        daniel.baluta@gmail.com, Himanshi Jain <himshijain.hj@gmail.com>,
+        Michael.Hennerich@analog.com, linux-iio@vger.kernel.org,
+        linux-kernel@vger.kernel.org, nick.desaulniers@gmail.com,
+        outreachy-kernel@googlegroups.com, pmeerw@pmeerw.net, knaack.h@gmx.de,
+        Jonathan Cameron <jic23@kernel.org>
 Subject: Re: [PATCH v2 1/2] include: linux: sysfs: Add __ATTR_NAMED macro
-From: Joe Perches <joe@perches.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>, Greg KH
-	 <gregkh@linuxfoundation.org>
-Cc: Lars-Peter Clausen <lars@metafoo.de>, devel@driverdev.osuosl.org, 
- daniel.baluta@gmail.com, Himanshi Jain <himshijain.hj@gmail.com>, 
- Michael.Hennerich@analog.com, linux-iio@vger.kernel.org, 
- linux-kernel@vger.kernel.org, nick.desaulniers@gmail.com, 
- outreachy-kernel@googlegroups.com, pmeerw@pmeerw.net, knaack.h@gmx.de,
- Jonathan Cameron <jic23@kernel.org>
-Date: Wed, 13 Sep 2017 14:58:23 -0700
-In-Reply-To: <20170913214333.mcw4f24fkzndwh5k@mwanda>
+Message-ID: <20170913214333.mcw4f24fkzndwh5k@mwanda>
 References: <cover.1505291907.git.himshijain.hj@gmail.com>
-	 <2bc7a124ab925dd2c50aa8c778745d179777d50d.1505291907.git.himshijain.hj@gmail.com>
-	 <20170913180310.27cbf1b1@archlinux> <20170913185805.GB26390@kroah.com>
-	 <5e43ea4d-eab8-c4be-c5dc-2f862578d011@metafoo.de>
-	 <20170913212952.GD9288@kroah.com> <20170913214333.mcw4f24fkzndwh5k@mwanda>
-Content-Type: text/plain; charset="ISO-8859-1"
-X-Mailer: Evolution 3.22.6-1ubuntu1 
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+ <2bc7a124ab925dd2c50aa8c778745d179777d50d.1505291907.git.himshijain.hj@gmail.com>
+ <20170913180310.27cbf1b1@archlinux>
+ <20170913185805.GB26390@kroah.com>
+ <5e43ea4d-eab8-c4be-c5dc-2f862578d011@metafoo.de>
+ <20170913212952.GD9288@kroah.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170913212952.GD9288@kroah.com>
+User-Agent: NeoMutt/20170113 (1.7.2)
+X-Source-IP: aserv0021.oracle.com [141.146.126.233]
 
-On Thu, 2017-09-14 at 00:43 +0300, Dan Carpenter wrote:
-> He was exagerating a bit to call it a "static checker" warning...
+On Wed, Sep 13, 2017 at 02:29:52PM -0700, Greg KH wrote:
+> On Wed, Sep 13, 2017 at 09:23:31PM +0200, Lars-Peter Clausen wrote:
+> > On 09/13/2017 08:58 PM, Greg KH wrote:
+> > > On Wed, Sep 13, 2017 at 06:03:10PM +0100, Jonathan Cameron wrote:
+> > >> On Wed, 13 Sep 2017 14:14:07 +0530
+> > >> Himanshi Jain <himshijain.hj@gmail.com> wrote:
+> > >>
+> > >>> Add __ATTR_NAMED macro similar to __ATTR but taking name as a
+> > >>> string instead of implicit conversion of argument to string using
+> > >>> the macro _stringify(_name).
+> > >>>
+> > >>> Signed-off-by: Himanshi Jain <himshijain.hj@gmail.com>
+> > >>> ---
+> > >>>  include/linux/sysfs.h | 7 +++++++
+> > >>>  1 file changed, 7 insertions(+)
+> > >>>
+> > >>> diff --git a/include/linux/sysfs.h b/include/linux/sysfs.h
+> > >>> index aa02c32..20321cf 100644
+> > >>> --- a/include/linux/sysfs.h
+> > >>> +++ b/include/linux/sysfs.h
+> > >>> @@ -104,6 +104,13 @@ struct attribute_group {
+> > >>>  	.store	= _store,						\
+> > >>>  }
+> > >>>  
+> > >>> +#define __ATTR_NAMED(_name, _mode, _show, _store) {			\
+> > >>
+> > >> I'm not sure about the naming here.  The normal __ATTR macro is also
+> > >> 'named'.  Maybe something as awful as
+> > >>
+> > >> __ATTR_STRING_NAME ? 
+> > >>
+> > >> Greg what do you think?
+> > > 
+> > > ick ick ick.
+> > > 
+> > >> This is all to allow us to have names with operators in them without
+> > >> checkpatch complaining about them... A worthwhile aim just to stop
+> > >> more people wasting time trying to 'fix' those cases by adding spaces.
+> > > 
+> > > Yeah, but this really seems "heavy" for just a crazy sysfs name in a
+> > > macro.  Adding a whole new "core" define for that is a hard sell...
+> > > 
+> > > I also want to get rid of the "generic" __ATTR type macros, and force
+> > > people to use the proper _RW and friends instead.  I don't want to add
+> > > another new one that people will start to use that I later have to
+> > > change...
+> > > 
+> > > So no, I don't like this, how about just changing your macros instead?
+> > > No one else has this problem :)
+> > 
+> > Nobody else realized they have this problem yet. E.g. there are a few users
+> > of __ATTR in block/genhd.c that have the same issue and are likely to
+> > generate the same false positives from static checkers.
+> 
+> Then fix the broken static checkers :)
 
-Not really.
+He was exagerating a bit to call it a "static checker" warning...
+It's just checkpatch.pl complaining about adding spaces around the -
+operator.  The sysfs file has a hyphen in the middle.
 
-False positives and false negatives exist in just about
-every static
-checker.
+regards,
+dan carpenter
 
-> It's just checkpatch.pl complaining about adding spaces around the -
-> operator.
-
-checkpatch is a brain-damaged by design static checker.
-regexes can only be sensitive to patterns, not compiled code.
-
-> The sysfs file has a hyphen in the middle.
-
-Another option would be to use an underscore instead.
 
 
