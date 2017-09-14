@@ -1,79 +1,104 @@
 X-GM-THRID: 6465599179763744768
-X-Received: by 10.25.77.17 with SMTP id a17mr757351lfb.21.1505727506060;
-        Mon, 18 Sep 2017 02:38:26 -0700 (PDT)
+X-Received: by 10.25.201.136 with SMTP id z130mr1213530lff.3.1505389900230;
+        Thu, 14 Sep 2017 04:51:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.197.138 with SMTP id v132ls1456667wmf.25.gmail; Mon, 18 Sep
- 2017 02:38:25 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QCCcnc5DSd7HCUHvR5SSMb0PRDOsLQvbaiFfsNeBXS+XGfuqlLyMe6ouP/us8IfFodbmVLt
-X-Received: by 10.28.68.135 with SMTP id r129mr993779wma.19.1505727505153;
-        Mon, 18 Sep 2017 02:38:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505727505; cv=none;
+Received: by 10.28.208.70 with SMTP id h67ls695305wmg.26.gmail; Thu, 14 Sep
+ 2017 04:51:39 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBNcn2eYghLbObRE+3ITwrHZBXIHdORomcjrq45PA0otmmXGZZfMXtDzh6oHawyuqXANr/5
+X-Received: by 10.28.184.81 with SMTP id i78mr189590wmf.2.1505389899153;
+        Thu, 14 Sep 2017 04:51:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505389899; cv=none;
         d=google.com; s=arc-20160816;
-        b=f5Eb4N39eMlRjNd/aiD5EUm8Hgd+6ZFiey4jOwTgkM2/EsLvuURONb3RPqGovvXmYQ
-         t4W+eZHX3191la8ik3/jGAQ8KkIIcBnG5Fcygd1j6IRjkw62M8et+a5uSgNrRA24Pqyc
-         qiPCPC7ozgfRRa/S14HzU6wmTwkQFVkhC3BhRcANW9G/Bwoaht3RB05Z5RPoXeUfv7hQ
-         SoNu761zfV33MZYbjqDsKXMSYBA0bwWBuFxKceTkETPKbiCZIi807brMI/3zq+s9cEaH
-         cpngXVSYxfAiQRiR0Z0gcYpTBKkHFJT4kclnqjxwyrcBI093QWv02w3z+XGItWm1xNmY
-         P4ug==
+        b=vqV/EWjY9zv2mbAMij9TKDv9hctyr2bqo8J1KISPvAtJxYRejMrZLhl7tPIqBHCtsl
+         naDYD/eNYX4VrRDkP8J0n0ZEFCGFKgxnzO27ugQxSifwtPIEOXx+W94YUfmevafufE5F
+         Fs0FfspPIcBxQh0N/LyBEpebkwOefDdXazAIax8jlChv683Rw/1aMVmBP7Rp3l3QlvAj
+         ADtkL4WV+uI5ZieK60KL2QK6B80YfODZUUF/MXDZbNBSIDopSLQ8TAylRPhy0ILMjrZg
+         A0eNrOw5jrCZ40IR5NLZLzJ4xS2DRp/l9JINGZINZ2JmD3ERBK49Dp0YYHf3KeJOEafj
+         TeDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=HbH1GHCBhm/kJ7M6MyKA5VTQjSaprpCuJK6s+CT+0Uc=;
-        b=0RTFQOmyEbQ5986pRVqjDETpIpY63sDdd9e5NTCSoIdcZJWYb5j4rr85aRBsXJF8OA
-         /QiZw1ND4jmt6d1VooAlQD1mPq4YbEXexdKo+qW9g07gkxwWUc070HYkLhLlwgTbCPhn
-         aLGyzOeyLwFKc22BCvjZMgsYfZIYb8ORhaU18j5q8qnUR7Xc7Gup4/RGQB5O5sazbBe+
-         920TuSdtjW9cYFrFXhOSZ5orC2fVXfWSvV5tGvlbzuwc/Gs79YgcWwORGM9czGBZCNap
-         aFTCT6MlckdHbluG+BjcdQJLSzkAV/oWFjfjNMLS4wLJGJp0eYXfwW0sFySWuUawi2XY
-         Habg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=2okER3t+trigC6t6bRvvqCq7g94LXsw8x1/Grlnb2Tc=;
+        b=EELpp+sFkWuL2kxHe4CmkINrpACPrBWkRxL1j98ZMJ/xj5Yfsq2es0u8l+s1K7gJCc
+         XElTU3GSCdy8BjsdLF8DtkQZMjNiTZ7yrLAOYBlS2MpRagElZjxeUX5IeJQGkH9GCf9r
+         tkdEG6mZ2Z1fBP6v2MmCj6gO2r7L01kSALOnFX3n+q36kjsE8elvC1KZ+LZYnr/dRiXO
+         WOHp7gzSKFTKKlYtGNGD/tODXEUdra/VoB/DaCUiTjci9BDTcu2PQjUYHgXjcypW9vve
+         SoDZ0NiJ1E0ouSYCvhYvL4nHiC+h/+gUAGzgT+V/oaOT/hBHALNjObC8/k0HDm7Dke6G
+         zvmA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id j4si530184wmi.2.2017.09.18.02.38.24
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id p200si90551wmg.4.2017.09.14.04.51.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 18 Sep 2017 02:38:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Thu, 14 Sep 2017 04:51:39 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (LFbn-1-12253-150.w90-92.abo.wanadoo.fr [90.92.67.150])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 80011B0A;
-	Mon, 18 Sep 2017 09:38:23 +0000 (UTC)
-Date: Mon, 18 Sep 2017 11:38:34 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,392,1500933600"; 
+   d="scan'208";a="237478657"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 14 Sep 2017 13:51:38 +0200
+Date: Thu, 14 Sep 2017 13:51:06 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Aastha Gupta <aastha.gupta4104@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, Oleg Drokin <oleg.drokin@intel.com>,
-	Andreas Dilger <andreas.dilger@intel.com>,
-	James Simmons <jsimmons@infradead.org>
-Subject: Re: [PATCH] staging: lustre: fix comparisons should place the
- constant on the right side
-Message-ID: <20170918093834.GD9461@kroah.com>
-References: <1505389603-8642-1-git-send-email-aastha.gupta4104@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+cc: outreachy-kernel@googlegroups.com, Oleg Drokin <oleg.drokin@intel.com>, 
+    Andreas Dilger <andreas.dilger@intel.com>, 
+    James Simmons <jsimmons@infradead.org>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH] staging: lustre: fix comparisons
+ should place the constant on the right side
 In-Reply-To: <1505389603-8642-1-git-send-email-aastha.gupta4104@gmail.com>
-User-Agent: Mutt/1.9.0 (2017-09-02)
+Message-ID: <alpine.DEB.2.20.1709141350240.3185@hadrien>
+References: <1505389603-8642-1-git-send-email-aastha.gupta4104@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-On Thu, Sep 14, 2017 at 05:16:43PM +0530, Aastha Gupta wrote:
+
+
+On Thu, 14 Sep 2017, Aastha Gupta wrote:
+
 > This patch fixes checkpatch.pl warning:
-> 
+>
 > WARNING: Comparisons should place the constant on the right side of the test
-> 
+>
 > Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
-> Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+Technically, both sides are constants, but at least one side looks more
+constant-like.
+
+julia
+
 > ---
 >  drivers/staging/lustre/lustre/include/lu_object.h | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
-
-I see at least 11 different lustre patches from you that you have
-recently sent out, but yet I have no idea what patch to apply in what
-order :(
-
-Please fix this up and resend all of them as a single patch series so I
-have a chance to get this correct.
-
-thanks,
-
-greg k-h
+>
+> diff --git a/drivers/staging/lustre/lustre/include/lu_object.h b/drivers/staging/lustre/lustre/include/lu_object.h
+> index 4f213c4..a3c0481 100644
+> --- a/drivers/staging/lustre/lustre/include/lu_object.h
+> +++ b/drivers/staging/lustre/lustre/include/lu_object.h
+> @@ -1130,7 +1130,7 @@ struct lu_context_key {
+>  	{							 \
+>  		type *value;				      \
+>  								  \
+> -		BUILD_BUG_ON(PAGE_SIZE < sizeof(*value));        \
+> +		BUILD_BUG_ON(sizeof(*value) > PAGE_SIZE);        \
+>  								  \
+>  		value = kzalloc(sizeof(*value), GFP_NOFS);	\
+>  		if (!value)				\
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1505389603-8642-1-git-send-email-aastha.gupta4104%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
