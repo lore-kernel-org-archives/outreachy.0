@@ -1,74 +1,100 @@
-X-GM-THRID: 7016473009259020288
-X-Received: by 2002:a17:906:2a0d:: with SMTP id j13mr8922601eje.545.1633649926985;
-        Thu, 07 Oct 2021 16:38:46 -0700 (PDT)
+X-GM-THRID: 6465677729933033472
+X-Received: by 10.223.152.12 with SMTP id v12mr1424903wrb.12.1505409128668;
+        Thu, 14 Sep 2017 10:12:08 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:907:8689:: with SMTP id qa9ls675097ejc.4.gmail; Thu, 07
- Oct 2021 16:38:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzMqtLHC3A1fIKZDo6F94EVAoxSgSrG9+ca4LF4i1dTTOIxouASOi2xpVS+X7yA27EKa5Dh
-X-Received: by 2002:a17:906:d937:: with SMTP id rn23mr9235334ejb.101.1633649925040;
-        Thu, 07 Oct 2021 16:38:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633649925; cv=none;
+Received: by 10.46.31.9 with SMTP id f9ls443426ljf.48.gmail; Thu, 14 Sep 2017
+ 10:12:07 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QDZldf42clIwPCLr5XPvN2jSnQ/ZYnusr/3G2Ex0q8IAF3uuWqSqMMpCo9ySEtuqCKGZA8A
+X-Received: by 10.25.190.75 with SMTP id o72mr1706637lff.18.1505409127240;
+        Thu, 14 Sep 2017 10:12:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505409127; cv=none;
         d=google.com; s=arc-20160816;
-        b=ndC5ckFg6DwONOnYtedKBXhaTbrVpeWYdgZpF+dGoBsSTu5BKmWFW7BEgnoRdAjFdY
-         v/qCFC4zHO6r3qj/aJBxOa7LiQx0gohzrrecYfYYgT5N/uv2Rv7y2P4gXP+nWcthAipy
-         AMm1YQCYfRKCneD2V9+mZUtQDc3jZUQX5MN+t/Y83Vf5aGnZDAqdS1XVRFxDTyvLkyh/
-         1Q7BMJIhfRBlkXIdicn921OhFcEXR7GsAVduUmZAODcZGdfHYx6jyTF76NF5d2Wwi/ix
-         dqy77rbNOnNIn99n5SWwwoPrXRAzb2r2zx4wFpdeOuQ3hO7OXMeXah9j5efEHGoGJq38
-         cXsQ==
+        b=qFuBLOmjv7YJBtzmjrPB8tu54V0MwJrn5f5CinhmLq3K7kSY9FRW4Xb3r1Y7ZrXUsy
+         M3zn221yB4DHmmyXGuEUF5tacOYmrJ2hxD0367Ou/YSVXycXAtIyYKXUPo9+qSnj14u9
+         6IzvJQ0ErE8stBnv75gH1VFauinK5YLO5BdI2+OOkRoe28VuzC4X0oVSUlXFApNyV/xL
+         5j5u6pAR1g1RCMMOV4TcRXAbjtvmVtincmZCxPEibA4T5eV7yYeQDJzcBRiBlgq52QtU
+         uYd2vGrHrcyU42xuiE9AWHfP+LuAglqRrlFoTn5fSWMupT1PWUY2RiTCVCl1baDOmZSp
+         3x6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date;
-        bh=F6nJTVHjYVIfbAVEsHHG9JEbj0V8qGNj8VHDPbi/boo=;
-        b=m9FCKaVwmQ/FGWx99VsCvJiwBuCEXHnazyHfv3pCFl06vLd/9xn+bgmhETYJxF/HWC
-         Rk4Psu5iGymBPrz5DjIl+G1KR5Bxuq1B4SpiMzbVGg2JV7rcBdz6mtG+k0z4Gp79EsHJ
-         ykOfGlr6vw+NuyhTBc1u/zeVuDpb8NR6jmZVN8BcuuVpA8F+7YHPZQZe5wm8i0vRPU2I
-         8ssk9K+pAiU0V3pMdTZg8MUEYE83OTHIj4iKQj+BinVcPrD9r3onMiay47wwDd8LMLT2
-         pB/5ewLPMDyGqIJaz1aDtLMXyCoqtFWd4T/eNL3S0yVRexsJ8gx4ZMkVq5Gb/1FZTcQ0
-         MTlw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=/dFBfG0soZz/E3ULlXareDkMoosaiWOy/mEGMGUjH9s=;
+        b=a57cZscMGrbssEOJ2Zqc9tN6GcbLvV641agdNuvO3KgC85WUMoaQTBpO406IYiWJl0
+         knjoXHMA/6xsgmn78lCBV01Ek91pdpKT/9xSYDwzPxrfejgdaDwZSoGAZCFZ7VURGIq6
+         zai62zYkko1P6C16pGLpSxAexbIFXoZBiHTkBGcSYVjwTxsG2AZlxwzGIWlyEi8Wvvg5
+         tWC30KTKgDlrKVGDXIDdrpYA3AG1vBOZBvEBPJMv4S7ZIsjlhtBZ3e9dcmNKONSJ6ULw
+         zpNOWNVGtT+T9z8S9U+Wiafw7n+TFJmfZ6H4/Z0aoCdA/IAFUYNmEH19hjXYuJdaKVC8
+         vC5g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of alison.schofield@intel.com designates 134.134.136.31 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <alison.schofield@intel.com>
-Received: from mga06.intel.com (mga06.intel.com. [134.134.136.31])
-        by gmr-mx.google.com with ESMTPS id r21si50373edq.2.2021.10.07.16.38.44
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id c142si82598wmh.3.2017.09.14.10.12.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 07 Oct 2021 16:38:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alison.schofield@intel.com designates 134.134.136.31 as permitted sender) client-ip=134.134.136.31;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 14 Sep 2017 10:12:07 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of alison.schofield@intel.com designates 134.134.136.31 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-X-IronPort-AV: E=McAfee;i="6200,9189,10130"; a="287275209"
-X-IronPort-AV: E=Sophos;i="5.85,355,1624345200"; 
-   d="scan'208";a="287275209"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
-  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Oct 2021 16:38:32 -0700
-X-IronPort-AV: E=Sophos;i="5.85,355,1624345200"; 
-   d="scan'208";a="590352515"
-Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
-  by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Oct 2021 16:38:32 -0700
-Date: Thu, 7 Oct 2021 16:46:51 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: Outreachy Patch Restrictions
-Message-ID: <20211007234651.GA393313@alison-desk>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,394,1500933600"; 
+   d="scan'208";a="237534677"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 14 Sep 2017 19:12:06 +0200
+Date: Thu, 14 Sep 2017 19:11:34 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Meghana Madhyastha <meghana.madhyastha@gmail.com>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH] Staging: octeon: Remove unnecessary
+ parentheses
+In-Reply-To: <20170914165129.GA19272@meghana-HP-Pavilion-Notebook>
+Message-ID: <alpine.DEB.2.20.1709141911180.3185@hadrien>
+References: <20170914165129.GA19272@meghana-HP-Pavilion-Notebook>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: text/plain; charset=US-ASCII
 
 
-Hi Greg,
 
-We are about to kick off the next contribution period for Outreachy Interns.
-(October 8 - November 5)
+On Thu, 14 Sep 2017, Meghana Madhyastha wrote:
 
-I found this note and would like to know if this restriction still stands?
+> Removes unnecessary parentheses inside the conditional
+> statement.
+>
+> Found by checkpath.pl
+>
+> Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
+> ---
+>  drivers/staging/octeon/ethernet-spi.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/octeon/ethernet-spi.c b/drivers/staging/octeon/ethernet-spi.c
+> index 063dcd0..8c6bb93 100644
+> --- a/drivers/staging/octeon/ethernet-spi.c
+> +++ b/drivers/staging/octeon/ethernet-spi.c
+> @@ -213,7 +213,7 @@ int cvm_oct_spi_init(struct net_device *dev)
+>  	}
+>  	number_spi_ports++;
+>
+> -	if ((priv->port == 0) || (priv->port == 16)) {
+> +	if (priv->port == 0 || priv->port == 16) {
 
->> Please avoid sending patches for the drivers/staging/media directory
->> as Greg can't pick them in his tree during the contribution period.
+It looks fine, but did you actually compile the code?
 
-Is there anything else contributors should be aware of for this round?
+julia
 
-Thanks for your support,
-Alison
+
+>  		cvm_oct_spi_enable_error_reporting(INTERFACE(priv->port));
+>  		priv->poll = cvm_oct_spi_poll;
+>  	}
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170914165129.GA19272%40meghana-HP-Pavilion-Notebook.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
