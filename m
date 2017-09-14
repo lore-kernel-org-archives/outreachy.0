@@ -1,86 +1,87 @@
 X-GM-THRID: 6465542343215808512
-X-Received: by 10.99.114.29 with SMTP id n29mr12826256pgc.88.1505376867938;
-        Thu, 14 Sep 2017 01:14:27 -0700 (PDT)
+X-Received: by 10.200.28.82 with SMTP id j18mr9633193qtk.42.1505376799683;
+        Thu, 14 Sep 2017 01:13:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.222.13 with SMTP id v13ls4432356iog.40.gmail; Thu, 14 Sep
- 2017 01:14:27 -0700 (PDT)
-X-Received: by 10.107.174.201 with SMTP id n70mr639910ioo.112.1505376867364;
-        Thu, 14 Sep 2017 01:14:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505376867; cv=none;
+Received: by 10.36.238.75 with SMTP id b72ls4511374iti.21.canary-gmail; Thu,
+ 14 Sep 2017 01:13:19 -0700 (PDT)
+X-Received: by 10.13.220.71 with SMTP id f68mr13178404ywe.35.1505376799084;
+        Thu, 14 Sep 2017 01:13:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505376799; cv=none;
         d=google.com; s=arc-20160816;
-        b=awPpl0gMTGLD9/SWZMpErAcz6MOw9Z+zBX+9W1KyhMjZS7p2Fs9z7RLcg6YTP8HU8l
-         1JQZEi31FBSYF8tDdZVFLF6Ffrwf7qwe6HH9o4ywAYVTQ3ozmMlaqm1DFwGL1EZSjaNQ
-         Bg023XDQ6RXY804VJyaLy6WSAIn+6FeyT7q4zDceanqiHNPUTJBptZhvVUtdnpwp+YKa
-         ka1lrGJa0gZPRHiTjv/EQNRqX7AyCAn4cSZTTdpku/G9vesN/TyP2sDtL28yerAdSnuG
-         qDxwFkqFMULlpWXwmCl8os2pWDfy2B3AdHpl39IsZu8kO+Ja0KTSSMiy7aUngb2uoLYm
-         avWw==
+        b=TD7SrOo97w+UQF8mzCxcKOMbfKinzxbvbvKdgcndbPdjAyjIZQBgqN8bIH45pd0Beg
+         6PzSZ3Qm9dm7gxMZL8jR8Q7QwZ8WYmOekGaJ37VVibowkK57ALn7IiEw61JgYuMUSDBN
+         aGQxHYHDIdwt7divPEOZH3lzkt0KLGAIoDNmdTIpeDswR8yLQogjMuwFJ6lw4IbqNbMd
+         DeXqeNpdw2IdyGTgGWzzcIK0jNRMp04+jZaJh9aBbc1r00e25HqZHBMl14F0INVhrXHR
+         TtJRhbvGBt4nuwMOq++JHdion6IeFBHUVPuBvtp8Ge0gwld5hY4yhGmhWkXmIkXjFR6K
+         HpYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:to:from:date:dkim-signature
          :arc-authentication-results;
-        bh=8zl6tQdoL/Dvqwz+/VsoxKkRvvGl3KNkniSbiQtNDbc=;
-        b=kwBVFMeYXkNGJE72yVZq1VhzK55VDxh2OdUpDyCyPBCOjLHiZF0WmsqUdKZgZVtISv
-         8bkksj+hOhizSMdBrQahB0Ou5ggy730LNlD4gUjEWfKsz8+vLiV19Dq2xnS4/fhaHQhf
-         bis+hON/OHrP3Ohjw4dLCW2PZDqkj7Fd/VDUIVyuFgICV//vLZZrDZsYav/zXdgnzIrS
-         c0DSCIgCO+Gon/xRHgkJGuhLpIdT9W5vlQU51Cf0Ic+b9YuZIgFMKK5svYtPGavJrqoH
-         fTdN1Bc5NxvY+fKn1DN5XIcG2RqDXteHpGDw3+suRR/eNm9EOAs0a10EULzO9EQS6v/R
-         7lsA==
+        bh=TbxFXP28Gn3069Dg0xutp6Kwoh1JOgSvgxyVpZIJDj8=;
+        b=W/2dueoKco0AKtUAEUF0mu4Z2WinJZ7a9IJ+B1Rm9YrqHKNIVvDMupcMT3vPoTDpPs
+         bme3h9IXvn2PW9r4adfrrMnsa05mKyDCyfytSGoEITWwAGfso7iskE8WN+4nVQ/IZJ0Y
+         OzEE8LpSOKo80qBRyUXlkabL0b77wMZVZRx4UmSZwkzAs0os9fqvh4lnFNqKKtTgRJCX
+         Hut4eahZoS0SWupRTjEulO9byoljcVkWzCGcYm0fVMwelDHblXR7SprFBjmT10iwYZSN
+         kTpD9l0py27jxI2VHq8b3CLIDdAcJd0RW5A7esFZDLk1P+TNEdnGqFjzIroFJiT3jFqc
+         JoWw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aLrvfvjU;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HSzD4fnN;
+       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <meghana.madhyastha@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id e63si584593pfm.12.2017.09.14.01.14.27
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id c19si1614690pfk.9.2017.09.14.01.13.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 14 Sep 2017 01:14:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Thu, 14 Sep 2017 01:13:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aLrvfvjU;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HSzD4fnN;
+       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id g65so1195525pfe.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 14 Sep 2017 01:14:27 -0700 (PDT)
+Received: by mail-pg0-x244.google.com with SMTP id d8so1337856pgt.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 14 Sep 2017 01:13:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=8zl6tQdoL/Dvqwz+/VsoxKkRvvGl3KNkniSbiQtNDbc=;
-        b=aLrvfvjUwuuvpyvg05y7qf0Y4LflN0oq+C4ey2zUzbp62N/O9p+1oapuLbxlS4Gb4a
-         hBG3hlmGPhBYjGsws29MOmGekDfCuxsiWK4zhI5AbR+oOsf30btYAgbXEmcRN8HG7G3c
-         5FIT1ZFpwjndgyuwhd1PTQMGIoMXsRBnemdyxzXI6Zvu/ReEI/rXrLSMLWRoDGC5cNpm
-         JvgAYpLPCB0qk+dN1KhSSFOq0EumB5LP/7laqnwuYMnXVKK1dDxdtW6hjG9NXDXM4Lmd
-         uUytDAWHgLPvrxpj2dEO3rbxLFSOlWt1DUj2HbZlgK6U+sGpozYKg1nn2pf+IHbce6bm
-         smwQ==
+        bh=TbxFXP28Gn3069Dg0xutp6Kwoh1JOgSvgxyVpZIJDj8=;
+        b=HSzD4fnNIipai/U7fX8l5tZbah7s1xRtdQlKxr5DVUhMFrLwuPhj8a1HGuSlUR5Wd6
+         d052mea3V3uLue330PAgU+3Z1brcXNpAycvkaIRRlbeuqBiZimuR3NYR9pQ6Y3YfwBg+
+         MBgsc6HYqi0Efb2696cLKfTUZtjr12m435OylQHVOO6ZKjDJiQmjBW6/wSyqycxNuUwV
+         qMXoZE6hBLhpsB3WRWRceZ9Y5SQaVmhmyqmkhr84XejHJgmFiT0gljunBeDaldBOZWuS
+         wYS87NjkEu1wpkKzLPFYYzRDkM6VBGxttG6G5Iuf9U232qXSQLFNmg8W9Bdv0ZSdYFYH
+         C1Pw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=8zl6tQdoL/Dvqwz+/VsoxKkRvvGl3KNkniSbiQtNDbc=;
-        b=gcA8HO9iDKor8hzUXgyfaKndCfUkM2+pUd9XbOq4P0PVaEL64J0n8oy99BeKAdbhDq
-         apJ9dLBSxyxg/Az9W2e+xPpiEMdai59aQN5/nYhe+bz4Ol5CQnTavR0u4Jb/43pif+4j
-         hT30K0GlqrAN7B0NbKhxXtesSTp52TNO8dw84qt/1tkrWkO58VUW/3l9ZDEG0uJGtlQl
-         pTyXewQnwFqaq2HyNQQvktSHKyq3Gv4dhd2dsmr4LVQ1L82VTO7w0ST7Dc9qzn2txUXf
-         CwUHWcLv5X70PYHF1QEQCxEmPVqlJ0WV1BYCwEhLIHyYk8e9tjszrblhTorRMmV6p0lJ
-         Y9Tg==
-X-Gm-Message-State: AHPjjUiQ7LGOKddBUwAGwotZpXjsJQ5jYfejph5ygK4fQRmdS1vgd5CE
-	qGdBy+MynOlCuDATDyc=
-X-Google-Smtp-Source: ADKCNb7c+ICRdIOob3J3qTT+dQKciNd1OTfJQ37Z1RqhnnId8pVdcz7ltTfdyi/BDKS4iWUhoNtL2g==
-X-Received: by 10.101.77.4 with SMTP id i4mr20757625pgt.119.1505376866630;
-        Thu, 14 Sep 2017 01:14:26 -0700 (PDT)
+        bh=TbxFXP28Gn3069Dg0xutp6Kwoh1JOgSvgxyVpZIJDj8=;
+        b=Xz4nW5igz6ZBaqF4OA9FQU6kg1Ui3ISnJf5acj3v2h6DhNmzOD1m9ZcOrzhiokQ2hr
+         pONta2Tc1CynrJNi8823SVkOWUYzg/n02+n+QWn4HICd31/XMRO/P5IFtM+9GLzXIsWh
+         qskNgZGxfzaDEqA/G6MdMKnkXqSYnTv0EY78kZKQrj0JslAz+yevF1ltxTlj8L9FKnEr
+         4CQp+RaOb8Mt95nMPoyruWBF6QnH6zok4/7Hg39nXRx4FdGaTYStgt/kvrktZ/ag43tC
+         dsE+m6CaYXu6B4+ezwZgxQFi/Z2qeAwAAcfpw1sFR5FwmYOioPZf8izgpfXzW8eiR/cI
+         NSeg==
+X-Gm-Message-State: AHPjjUg0Y5qnBq7tboDL1TeOMC4EAA2OSpGvibZ/bL3VLS92Ew7V+UJJ
+	mWMVBu0ab/BDF/kxKLs=
+X-Google-Smtp-Source: ADKCNb5kO8WemiLsZ8WigQyR9sAUk0f6eMp987UhluwWVW3GcVOF0CTz1nNfgfEwGZOoYo1LZQCZUg==
+X-Received: by 10.84.129.226 with SMTP id b89mr22636976plb.6.1505376798451;
+        Thu, 14 Sep 2017 01:13:18 -0700 (PDT)
 Return-Path: <meghana.madhyastha@gmail.com>
 Received: from meghana-HP-Pavilion-Notebook ([122.172.87.17])
-        by smtp.gmail.com with ESMTPSA id c30sm26062572pgn.33.2017.09.14.01.14.24
+        by smtp.gmail.com with ESMTPSA id q67sm7895536pfg.160.2017.09.14.01.13.15
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 14 Sep 2017 01:14:25 -0700 (PDT)
-Date: Thu, 14 Sep 2017 13:44:20 +0530
+        Thu, 14 Sep 2017 01:13:17 -0700 (PDT)
+Date: Thu, 14 Sep 2017 13:43:12 +0530
 From: Meghana Madhyastha <meghana.madhyastha@gmail.com>
 To: outreachy-kernel@googlegroups.com,
 	Jani Nikula <jani.nikula@linux.intel.com>,
 	dri-devel@lists.freedesktop.org
-Subject: [PATCH v3 4/4] drm/agpsupport: Remove extra blank line
-Message-ID: <9cfc7e7535908f3fe3b1df706f2999687c90d4e7.1505376068.git.meghana.madhyastha@gmail.com>
+Subject: [PATCH v3 3/4] drm/agpsupport: Move EXPORT_SYMBOL so that it
+ immediately follows its function
+Message-ID: <0496f0e821082969ec7950ac35f1e6b6cedb22a6.1505376068.git.meghana.madhyastha@gmail.com>
 References: <cover.1505376068.git.meghana.madhyastha@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -88,30 +89,48 @@ Content-Disposition: inline
 In-Reply-To: <cover.1505376068.git.meghana.madhyastha@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Remove extra blank line to adhere to standard coding style.
-Found by checkpath.pl..
+EXPORT_SYMBOL(foo) should immediately follow its function/variable.
+This coding style is preferred.
+Found by checkpath.pl.
 
 Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
 ---
 Changes in v3:
- -This was part of another commit in v2 and v1.
-  Now made this a separate commit
+ -Split this commit into two commits and made another commit for
+  removing the extra blank line not part of the EXPORT_SYMBOL
+  warning
 
- drivers/gpu/drm/drm_agpsupport.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/gpu/drm/drm_agpsupport.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
 diff --git a/drivers/gpu/drm/drm_agpsupport.c b/drivers/gpu/drm/drm_agpsupport.c
-index a0510557..737f028 100644
+index 860d57a..a0510557 100644
 --- a/drivers/gpu/drm/drm_agpsupport.c
 +++ b/drivers/gpu/drm/drm_agpsupport.c
-@@ -373,7 +373,6 @@ int drm_agp_free(struct drm_device *dev, struct drm_agp_buffer *request)
- EXPORT_SYMBOL(drm_agp_free);
+@@ -70,7 +70,6 @@ int drm_agp_info(struct drm_device *dev, struct drm_agp_info *info)
  
- 
+ 	return 0;
+ }
 -
- int drm_agp_free_ioctl(struct drm_device *dev, void *data,
- 		       struct drm_file *file_priv)
- {
+ EXPORT_SYMBOL(drm_agp_info);
+ 
+ int drm_agp_info_ioctl(struct drm_device *dev, void *data,
+@@ -107,7 +106,6 @@ int drm_agp_acquire(struct drm_device *dev)
+ 	dev->agp->acquired = 1;
+ 	return 0;
+ }
+-
+ EXPORT_SYMBOL(drm_agp_acquire);
+ 
+ /**
+@@ -172,7 +170,6 @@ int drm_agp_enable(struct drm_device *dev, struct drm_agp_mode mode)
+ 	dev->agp->enabled = 1;
+ 	return 0;
+ }
+-
+ EXPORT_SYMBOL(drm_agp_enable);
+ 
+ int drm_agp_enable_ioctl(struct drm_device *dev, void *data,
 -- 
 2.7.4
 
