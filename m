@@ -1,112 +1,104 @@
-X-GM-THRID: 6463324440693309440
-X-Received: by 10.176.70.89 with SMTP id z25mr1298786uab.49.1504859989932;
-        Fri, 08 Sep 2017 01:39:49 -0700 (PDT)
+X-GM-THRID: 6464370677237415936
+X-Received: by 10.25.212.195 with SMTP id l186mr1870244lfg.31.1505396059409;
+        Thu, 14 Sep 2017 06:34:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.114.14 with SMTP id n14ls2834435ioc.12.gmail; Fri, 08 Sep
- 2017 01:39:49 -0700 (PDT)
-X-Received: by 10.176.77.154 with SMTP id s26mr618uag.108.1504859989074;
-        Fri, 08 Sep 2017 01:39:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504859988; cv=none;
+Received: by 10.28.18.81 with SMTP id 78ls1498996wms.8.canary-gmail; Thu, 14
+ Sep 2017 06:34:18 -0700 (PDT)
+X-Google-Smtp-Source: ADKCNb5H2XsdfPM615kj3h0NpnyeO2+wpNiWeW3Y7kORIUD81ebmPekUWTAwwdb55ureZTWDw7Gp
+X-Received: by 10.223.166.39 with SMTP id k36mr1382846wrc.19.1505396058205;
+        Thu, 14 Sep 2017 06:34:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505396058; cv=none;
         d=google.com; s=arc-20160816;
-        b=AryeNrZg7gUaLTTPeEKwZ7zhQ2QhSNUgkrp3LbI9lJ0Y0pftjUh3KgZnI7xJwoPj5O
-         tmtZjBy6S9MulZJM4kt6OrwsfcFijfdHkTMx79BaftrmOISXC6HA7lid62eGvC0nkxW+
-         +9+RNoUqjGm9uyWB90rQ3IO5V6+EKKVRRfY1MvakwS1S/doEjIfn5xpQnbU7mIUN2DD7
-         nqWjg6fkDWKiftBUN6CTEphHFng/UEPULFg99Xr5thG+n+gekfg+ys6wLlCLGinyz0H7
-         vTjrJMYhJGzyw5YuQXRxqkc+R3SwLy7y7plGq8R/CZE0GuhiYBVqLezFm9BGxcLW2iXk
-         w9uw==
+        b=UPOKKoBTg+DSqcavQM5e7lX9Frkqkx8oKhE4F84SpO6MdFmh9aXA5LZdH3lsOpEkOO
+         oIk2qw56c7K+58Kh+7OXEWA7w9SkHFsG7Fx/ClVgqPRsUV/fu1RFie/g+Ud+ogKJr6Ux
+         99K4eU8Aon/H1X+vceIurXQx4gdcU8518t0vD2VOfFYWTrIfH2gqsZ4yuZqdTM2Ae6Yw
+         S3Dvp0cwmRB9viCZZ5uGGfI2ii6D1DqdHw4gVviZLqsFU6HRG3i1gZiePV8R61kC+q3j
+         Xc6uzNaVwF5pmXSy+GmSZkgECHJNfhnSHf8hyDoKKi3WDIiRnPZ5tUqHQho063Wc6Jfp
+         XAsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=GVZ1b5H4NKWu0APCkIUGqCblGjWlfizvS/dZGsEFxRA=;
-        b=GFPAIjvSOICxJwEqN5Yl1/Magl2kMk5StfthKK7n4UQFapU5llhOcTHc9yteKe9kdJ
-         UVvwA41qBHWUxrROQgrOvTpLoCSaAUFaM9qw+ZdNXSIo9JvVRAbWEmHuo5M5J4A5RCZj
-         Yz0xzj7sPOIJAE7cWhh2eOw1dWv3XgaKdougOTYnm6CIYfbkKV+ptgsstVQYXZJ5kLEy
-         daJGTc2xcTWNBOrQR16WDLITkq048t701rDOPMckolWeD6inaHESzkQlgcwIQXVeg6qu
-         MNrwhlbUt1vaJd+gytVX8UosVKrhH/UvifRTeQWJmDXwHsqNHlImv6k+F2jMImlSEV4y
-         aK2g==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=jCBikaHuB6k7ia+ntowEi0bCqO7T5kTMbYt4N1t5euM=;
+        b=CCrJnKG0G8jEDGOKi0lhuDMC0dm6aoYLNwLSW44FD7VJEbN2ESb+CfS2c6/X+TKQ/B
+         aPUKNOlukFX9zbbA3rW1u8Vd8u3v39p9hgloFBFe8AWC2T+yxn2JzDzjFttgytNuGnbT
+         18OdtmwtORz/N4yqegWuL3rKvfbFdXMPSoc5tUdExWKjyK7d/wFnQ8ljBXggj0LBgl54
+         o3JO7PztP025lSDHabdQLHh7ZX/P7G414q77a+7vMdJChLW3/DMCG89MYLliY55BuaBJ
+         eDr7jSYDsTUeC7692d+/UB3dt3ufUhKgzYm2kEXJy2fqjgf4+RRDPZ0kfDz3Bs+c5M1u
+         Fogw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BX2VHnuJ;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id g19si201255pfd.14.2017.09.08.01.39.48
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id q145si23313wme.4.2017.09.14.06.34.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 08 Sep 2017 01:39:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Thu, 14 Sep 2017 06:34:18 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BX2VHnuJ;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id d8so1037876pgt.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 08 Sep 2017 01:39:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=GVZ1b5H4NKWu0APCkIUGqCblGjWlfizvS/dZGsEFxRA=;
-        b=BX2VHnuJDWZjSaPUm8U61uWz+vV0WbxtOrwPoXRJDr8RQugItNf7NlfdhVzjAZcxlQ
-         2R7rQhtyVXa4wRSAkJEN32SeEL/311bBpdOSaiNQzGeW0clI8uJJPyKJL/wnYpAc4vzt
-         yCod2Fhi3eoHKvW4xpXA1YGp4dyL1Ph10WitSWJLwG/uW3DPekhjuVS4oFPFJZB6BM8/
-         M7dSJDM9dzZASaO+Ah8wCH2ql8S3zYNmT0B/x8vHs6wAG9MrM4FKVCxPijSEvkxIpHNB
-         /l7lF5A0URP/1vH2uJn/RHAIFqC82aYMVoHNO9Ufbd5q8FlU09msYBd61l+u1JXldQzj
-         Irtg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=GVZ1b5H4NKWu0APCkIUGqCblGjWlfizvS/dZGsEFxRA=;
-        b=PJtiVqWlWJf+9DKiP4EdMYxj6nDZaiMOyWbVLe96oZJ8TJnB/Vhclb4B7opOPoz/z6
-         C3j4zxs1EfdR4gYJS3pUi+blBjQzth/XrPjovCWSKPcqJrux8x5XFnrrfkbyeHCDpFwi
-         fisw7o0Cn139WzTNUBkoAcNufBIYn6lXpXnsJDZOHsAK+VtqF2R0rdMlmA68zcHuibsE
-         iZnUFnwod4ypiZN+/Pl3owQKrWPvOIfySbtGKeYZlF3aXjLGyIbv1RA/fBTe5NWZCSYA
-         +TybJEtCZp/kOuktzNKucT1avKjhPhB1yRhGesK4Dqc8Ax/V/dVoCH8Rujue1CqabO7c
-         BVBA==
-X-Gm-Message-State: AHPjjUhlW5elyRGB0v1C+/+ENFYRzmL8PfZoRVedSEqE78BUUxcdEOW1
-	XVsQdHWnLXddpreT
-X-Google-Smtp-Source: ADKCNb78mvgrEgk84JjobyxwySWZOyxctSTPicJJGSrbIJgXLChGDyaU8YyN34LoudgzVYuIM1CgHw==
-X-Received: by 10.84.238.204 with SMTP id l12mr2587145pln.196.1504859988542;
-        Fri, 08 Sep 2017 01:39:48 -0700 (PDT)
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from harryPotter.iitr.ernet.in ([103.37.201.122])
-        by smtp.gmail.com with ESMTPSA id t2sm3041716pfe.85.2017.09.08.01.39.46
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 08 Sep 2017 01:39:48 -0700 (PDT)
-From: harsha <harshasharmaiitr@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	harsha <harshasharmaiitr@gmail.com>
-Subject: [PATCH] staging: rt8712: xmit_linux: Avoid multiple assignments in a single line
-Date: Fri,  8 Sep 2017 14:07:50 +0530
-Message-Id: <1504859870-13153-1-git-send-email-harshasharmaiitr@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,393,1500933600"; 
+   d="scan'208";a="237498808"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 14 Sep 2017 15:33:50 +0200
+Date: Thu, 14 Sep 2017 15:33:18 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Aastha Gupta <aastha.gupta4104@gmail.com>
+cc: outreachy-kernel@googlegroups.com, 
+    Arnaud Patard <arnaud.patard@rtp-net.org>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: xgifb: fix multiple line
+ dereference
+In-Reply-To: <1505390930-9374-1-git-send-email-aastha.gupta4104@gmail.com>
+Message-ID: <alpine.DEB.2.20.1709141532440.3185@hadrien>
+References: <1505390930-9374-1-git-send-email-aastha.gupta4104@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Fixed coding style issue
 
-Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
----
- drivers/staging/rtl8712/xmit_linux.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/xmit_linux.c b/drivers/staging/rtl8712/xmit_linux.c
-index d13fd15..03c6b0c 100644
---- a/drivers/staging/rtl8712/xmit_linux.c
-+++ b/drivers/staging/rtl8712/xmit_linux.c
-@@ -49,8 +49,10 @@ static uint remainder_len(struct pkt_file *pfile)
- void _r8712_open_pktfile(_pkt *pktptr, struct pkt_file *pfile)
- {
- 	pfile->pkt = pktptr;
--	pfile->cur_addr = pfile->buf_start = pktptr->data;
--	pfile->pkt_len = pfile->buf_len = pktptr->len;
-+	pfile->cur_addr = pktptr->data;
-+	pfile->buf_start = pfile->cur_addr;
-+	pfile->pkt_len = pktptr->len;
-+	pfile->buf_len = pfile->pkt_len;
- 	pfile->cur_buffer = pfile->buf_start;
- }
- 
--- 
-1.9.1
+On Thu, 14 Sep 2017, Aastha Gupta wrote:
 
+> This patch fixes the checkpatch.pl warning:
+>
+> WARNING: Avoid multiple line dereference - prefer'XGI330_EModeIDTable[ModeIdIndex].Ext_ModeFlag'
+>
+> Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
+
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+> ---
+> Changes in v2:
+>   - fix the line over 80 characters warning.
+>
+>  drivers/staging/xgifb/vb_setmode.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/xgifb/vb_setmode.c b/drivers/staging/xgifb/vb_setmode.c
+> index cea128b..d55ffa6 100644
+> --- a/drivers/staging/xgifb/vb_setmode.c
+> +++ b/drivers/staging/xgifb/vb_setmode.c
+> @@ -5479,8 +5479,9 @@ unsigned char XGISetModeNew(struct xgifb_video_info *xgifb_info,
+>  						   ModeIdIndex))
+>  				return 0;
+>
+> -		pVBInfo->ModeType = XGI330_EModeIDTable[ModeIdIndex].
+> -						Ext_ModeFlag & ModeTypeMask;
+> +		pVBInfo->ModeType =
+> +			XGI330_EModeIDTable[ModeIdIndex].Ext_ModeFlag
+> +			& ModeTypeMask;
+>
+>  		pVBInfo->SetFlag = 0;
+>  		pVBInfo->VBInfo = DisableCRT2Display;
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1505390930-9374-1-git-send-email-aastha.gupta4104%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
