@@ -1,103 +1,115 @@
 X-GM-THRID: 6465606659155689472
-X-Received: by 10.25.181.214 with SMTP id g83mr1901369lfk.17.1505392340972;
-        Thu, 14 Sep 2017 05:32:20 -0700 (PDT)
+X-Received: by 10.13.243.196 with SMTP id c187mr1768788ywf.107.1505391360161;
+        Thu, 14 Sep 2017 05:16:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.25.200 with SMTP id 69ls263670ljz.37.gmail; Thu, 14 Sep
- 2017 05:32:20 -0700 (PDT)
-X-Google-Smtp-Source: ADKCNb4o1+huhXxX+rMcW7Lp+Pv5/ZGOTCQiwdYkA55FpRum1beUUx3eDxAdLQ5igZW0lK4zB4Am
-X-Received: by 10.46.0.222 with SMTP id e91mr1748328lji.21.1505392340102;
-        Thu, 14 Sep 2017 05:32:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505392340; cv=none;
+Received: by 10.36.190.79 with SMTP id i76ls5096921itf.17.gmail; Thu, 14 Sep
+ 2017 05:15:59 -0700 (PDT)
+X-Received: by 10.202.204.4 with SMTP id c4mr11556128oig.18.1505391359260;
+        Thu, 14 Sep 2017 05:15:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505391359; cv=none;
         d=google.com; s=arc-20160816;
-        b=eCRXmCgdCGyqJOfiHhFMaRNjlPKIgQP3Y0P4q3OMLBoMA20wDsTI4lWlqUh8f+VG1q
-         oTHQzPc1Ch5Dc/0B0ViDy+Py13YKo2Bdpo6RuJccCiX74+3rEZbgUre20Bit9kVWM8vN
-         ZNcy3yty4Ky0YEkRAVywruZ8uiY2xhYz4fanoVCSKrxfSN7osxLMA6aW9ptLMNXzlzEH
-         uzvZJxfKecVRc9eXScY6CnmRIfewNUvUlgsG5gLj1Vw/2jR0ITV2hfnrDS3C9LqCL64r
-         Hs1sKCACuQX0clEZ+u0HcpDWYdcB0YtkloqwXl3BBO3GYkBHKj67SCjkdZ0rJWnNopE2
-         dWTw==
+        b=rE7A7gZ+AQ4EYm7a7cqk6TQANJfoU7d1pM/hVWgYq3obIsnoivMicu3TZnKFjVJ5bl
+         4afTBVhvFSyG3uPgTPBBhOAS3XSD5aGL+K44I9BD/C8la68HOTzqsLfePyN8iDQJJfDb
+         CDeLWajtFYJDvY7uYXWbgIlQp5XBC+k/+rX6t+7OYTKOXT3QQ0N+ApsCqUpRMGyMSk9Q
+         WG9kOLIKH1qSunDeIuGUeFxddDEy6Rr4HvvBdAxB2dBE31pXM7DZLmxaBo4Ioiv6qPbb
+         Eja9ANxnIacZZYKVqAAOIl7xmGxIn+5cMMfNliAdEE3Gp8AOrcWci/x/0WPgUFyggzTP
+         7b0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=LP1PHx8HeC632G/44MTReMtrc7D3zUm2k/cALa//Bk4=;
-        b=tTOysnMEqXglhENACblrMj+v3onENwFgptxRsL6PypxYlYGxiVQBnVSL1rRWxnsyyF
-         GgD0DBuMU90u8TnPa9xiS3s7a5zzQEceO7dPPz1oUUSCICY/+AGibHwH0Ekzv7bBPGtI
-         bU+/qZpapLlOaQk4XwnBgy6WIyF7MMt+E4cMXUpso4WnoQWvmiHDAifq98kDYR6LaoN6
-         TFQv2txAM689HQH9n0L8RZOc1x7066whj37hNc/SBxzoHOh74aIcHQY1JjuRw4mxGfb5
-         +LJMtWrdpnXPeGKa6QHKhL43BERMb/N0RmF2ezU0YyXncaPEvL8pXFOTx9hGBBWMhPR0
-         KEEQ==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=LsFN7Rl+2twQqIXwOfarXZ4Ppn9AfhHVXERPKZM+UfU=;
+        b=HJD0QvCYVeqDdhzS7Rbu891/eeF9wMT4jlU4zRGLbNSCDdFcRZkxrhbATNiYuze+JT
+         3A/DIksgatbqL/oUNyxB1AuHgIOnK+5oRkzIx9TL9ioV74id6i88Zf9gQy1/TFppWJxi
+         dcpUocyyCHclBpIpfX9lXuRPFCTVLd777UVrkAHIVoNMwNmg4GakENEvE/f7ia0c2xrd
+         iNf91COZ0OJJIMXETbE5m99xFOt8esvZaJLSnT2gi7b0blFpeUL2XrtEjdxX79HWbIO3
+         L2cDWbxaf/2iPKBWZnln4Y1H+D6byinioileJ6uf+x4ahAz0hRvW0tB9ooDzh7yJoSsC
+         LUJQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id k18si7071wmd.1.2017.09.14.05.32.20
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OsaFAZef;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <srishtishar@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id q15si1458428pfi.7.2017.09.14.05.15.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 14 Sep 2017 05:32:20 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Thu, 14 Sep 2017 05:15:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.42,392,1500933600"; 
-   d="scan'208";a="291072334"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 14 Sep 2017 14:32:19 +0200
-Date: Thu, 14 Sep 2017 14:31:47 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Srishti Sharma <srishtishar@gmail.com>
-cc: gilad@benyossef.com, gregkh@linuxfoundation.org, 
-    linux-crypto@vger.kernel.org, driverdev-devel@linuxdriverproject.org, 
-    devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
-    outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: ccree: Use kcalloc instead
- of kzalloc
-In-Reply-To: <1505391353-4516-1-git-send-email-srishtishar@gmail.com>
-Message-ID: <alpine.DEB.2.20.1709141431050.3185@hadrien>
-References: <1505391353-4516-1-git-send-email-srishtishar@gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OsaFAZef;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x244.google.com with SMTP id f84so1428785pfj.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 14 Sep 2017 05:15:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=LsFN7Rl+2twQqIXwOfarXZ4Ppn9AfhHVXERPKZM+UfU=;
+        b=OsaFAZefKOfBEru8FngsknR6iFe52XWoVszW4LgXYDjDgumLddzCzxQtOS4fDhCXjs
+         XBrncBZlybMX+WkjPwiCRSxWR0B2KhUrmbipE4z3SesJJLdde7X4OI+xVSMiwsVBqcxn
+         LkM5TZlIfjIuOyolD/dMr6UuEMqqRe5MIRDa18YYsL4YI6FF8AzQnHFK4wfGq7HLnxZ2
+         bcNlE4r+s0rCT7ZvCJxXM9N3LmLfhwABTdEGeUjdyibfRaCH/yoVqQpp11f+sdF9Kla5
+         KF5dz+uutj7IN78m0bQomuKUyWba+MZ8T7P7+gZ7RWt/1TcXPBbzyYXVL46jbGjJPbWe
+         5aBQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=LsFN7Rl+2twQqIXwOfarXZ4Ppn9AfhHVXERPKZM+UfU=;
+        b=UFU6B4OoP5QmHO9E7rskW6dlCee2vRy8mr/zIrAwaG4rb5kFYjKZh+SMpSDJFkbSch
+         NCfUUTSVkVdxRPoTDqZrSXnf450AKNDpUPSoShO6TxPONqxEjQkgEvJH5CD8wWb4F0Dj
+         nAfAJ2znCQiZ+eFYl3jonOp2NSpKpn76+W/vXQPmHdcgvT4bkJVZIz/04E2uVDPQgw0g
+         bnKV0LI4Q+hmLvVArJgnp8PyFYerpV7R0N3KZi1NEflIqxTHejv2fv0k9KCiHdcSiQws
+         RRkkJdtt6jm240yEBe6fQgAATn54KqXVVsYgh0amBnJ/ebxWMjGE6YBkZQ5tEU3yGJwy
+         5UYA==
+X-Gm-Message-State: AHPjjUj2coRuizuSk7Yn5bwtKnyfAkTG7wHB8OP4XkeNnMOPeAiZXc1d
+	K/B5uEo2YZX4Ow==
+X-Google-Smtp-Source: ADKCNb7rOGXwIHVp8lJwEs1DRIfFhxvg14N9fIIpf7nQMJ/FNJMFws2uQATNJbBv6gOIRWMKSt0mtg==
+X-Received: by 10.98.216.202 with SMTP id e193mr21601957pfg.344.1505391358901;
+        Thu, 14 Sep 2017 05:15:58 -0700 (PDT)
+Return-Path: <srishtishar@gmail.com>
+Received: from srishti-PRODiiGY-945G ([171.49.157.170])
+        by smtp.gmail.com with ESMTPSA id c30sm27124541pgn.33.2017.09.14.05.15.57
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 14 Sep 2017 05:15:57 -0700 (PDT)
+From: Srishti Sharma <srishtishar@gmail.com>
+To: gilad@benyossef.com
+Cc: gregkh@linuxfoundation.org,
+	linux-crypto@vger.kernel.org,
+	driverdev-devel@linuxdriverproject.org,
+	devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com,
+	Srishti Sharma <srishtishar@gmail.com>
+Subject: [PATCH] Staging: ccree: Use kcalloc instead of kzalloc
+Date: Thu, 14 Sep 2017 17:45:53 +0530
+Message-Id: <1505391353-4516-1-git-send-email-srishtishar@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
+Use kcalloc instead of kzalloc to check for overflow before
+multiplication. Done using the following semantic patch by
+coccinelle.
 
+http://coccinelle.lip6.fr/rules/kzalloc.cocci
 
-On Thu, 14 Sep 2017, Srishti Sharma wrote:
+Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+---
+ drivers/staging/ccree/ssi_sysfs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> Use kcalloc instead of kzalloc to check for overflow before
-> multiplication. Done using the following semantic patch by
-> coccinelle.
->
-> http://coccinelle.lip6.fr/rules/kzalloc.cocci
->
-> Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
-> ---
->  drivers/staging/ccree/ssi_sysfs.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/ccree/ssi_sysfs.c b/drivers/staging/ccree/ssi_sysfs.c
-> index 0655658..65a0529 100644
-> --- a/drivers/staging/ccree/ssi_sysfs.c
-> +++ b/drivers/staging/ccree/ssi_sysfs.c
-> @@ -376,7 +376,7 @@ static int sys_init_dir(struct sys_dir *sys_dir, struct ssi_drvdata *drvdata,
->  		return -ENOMEM;
->  	/* allocate memory for directory's attributes list */
->  	sys_dir->sys_dir_attr_list =
-> -		kzalloc(sizeof(struct attribute *) * (num_of_attrs + 1),
-> +		kcalloc((num_of_attrs + 1), sizeof(struct attribute *),
+diff --git a/drivers/staging/ccree/ssi_sysfs.c b/drivers/staging/ccree/ssi_sysfs.c
+index 0655658..65a0529 100644
+--- a/drivers/staging/ccree/ssi_sysfs.c
++++ b/drivers/staging/ccree/ssi_sysfs.c
+@@ -376,7 +376,7 @@ static int sys_init_dir(struct sys_dir *sys_dir, struct ssi_drvdata *drvdata,
+ 		return -ENOMEM;
+ 	/* allocate memory for directory's attributes list */
+ 	sys_dir->sys_dir_attr_list =
+-		kzalloc(sizeof(struct attribute *) * (num_of_attrs + 1),
++		kcalloc((num_of_attrs + 1), sizeof(struct attribute *),
+ 			GFP_KERNEL);
+ 
+ 	if (!(sys_dir->sys_dir_attr_list)) {
+-- 
+2.7.4
 
-You don't need the parentheses around the first argument.
-
-julia
-
->  			GFP_KERNEL);
->
->  	if (!(sys_dir->sys_dir_attr_list)) {
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1505391353-4516-1-git-send-email-srishtishar%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
