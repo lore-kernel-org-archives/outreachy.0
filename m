@@ -1,78 +1,78 @@
 X-GM-THRID: 6465611589668044800
-X-Received: by 10.55.221.210 with SMTP id u79mr12059419qku.11.1505422045139;
-        Thu, 14 Sep 2017 13:47:25 -0700 (PDT)
+X-Received: by 10.176.21.100 with SMTP id p33mr13643068uae.72.1505421962370;
+        Thu, 14 Sep 2017 13:46:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.117.211 with SMTP id y202ls5933593itc.17.canary-gmail; Thu,
- 14 Sep 2017 13:47:22 -0700 (PDT)
-X-Received: by 10.99.181.19 with SMTP id y19mr14085742pge.47.1505422042318;
-        Thu, 14 Sep 2017 13:47:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505422042; cv=none;
+Received: by 10.36.79.65 with SMTP id c62ls6335432itb.6.gmail; Thu, 14 Sep
+ 2017 13:46:01 -0700 (PDT)
+X-Received: by 10.36.53.208 with SMTP id k199mr806375ita.22.1505421961378;
+        Thu, 14 Sep 2017 13:46:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505421961; cv=none;
         d=google.com; s=arc-20160816;
-        b=g6YTKvYSgIA1BFgLEd1uB8LsL7BcsLgYl5wYnRIhcAdKyYCPl4pRucSL4kU7tUR4ob
-         R7s5yBJ0QcljJGWEofpq2fCXUHiqrgopVJAPQeF0umf7x64ahvmX5Tw4FAbQSckFRaTi
-         /cGmNEnOiawQXYrfVwbU2UAdl+tCR6A2R5y0sQPhH4LdDJC7VpezTd85QEwMbTNa5uRE
-         Loe8ISoxPBdyQP0D3JQjBx5LE9v3xx+nrVNjaJ9uq59ovGe4oaExhwDdjKwefVXj9DN4
-         GC5vdYk2MVcadBuGUeIRQNGNnDT1cRJ5gs2eP8uFzpB7EnNBMhtFyxs5l3G08/YdcFZt
-         3fLw==
+        b=E2MtCJsviylggLBM5wswqXLU2ciYi1SpredMItvjvUQ7QVOVesUr4sRGrZQop+0R0W
+         bvsrHmQXanAvouulUljnRqN8fGibezEOCswbH+rDrIdb+vWeG/8/IRX/zYLvh9zs42Cw
+         saD3N7oYkMvJV/kJd5UjbQnqdRqB7Ni0bbqMUVGHMW2oulejhsmYMrvSJuLy4M8O4QLg
+         9Ulsu0witlmp7ef68RF3l5uAgxNtAm1lZoW8cJ18sZK12g58leYVP1zFthTrN6f+SdZ8
+         42JpKxFsOIPtdz8X7tncqmnQvlYgBhiNoledEc3bNoOkisf3s/gKOi8Og/9QBbOU12lH
+         qeNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:references:in-reply-to:message-id:date
          :subject:cc:to:from:dkim-signature:arc-authentication-results;
-        bh=GaSla2GT8UcgOexc0ndb7mJbG7B60s6jlTlALScGOQ0=;
-        b=RdFaSClMQG92HJR9kPd5J5atUZuadGcTY33LK0B2/30gW7VShKVoKuDZW5A+8P2aix
-         JXgtj01ITdL4p0bNEP+k34IPkDJGSTipu2ElvfWYml3SuUsrFJmOAwymXixkW5d0XiNq
-         7QMi6XLBF/KqtyuOIpDBepKs0oNnFUL+PGx09b6xtSQ6e+RyzBvv2868lfISZcQ5EZCx
-         ULeKklKhrqg3RV+oyN6JOR1UN+6FBPC1dBagv3LQJojDNz8TO8PvQC/gNTu/uPG/G4Cn
-         syfAX5LQZzZsJupl6/rp/QaFXGyriuh/ueftKoPAa1uRYazDKRgw8+oHWYtwlbmC5Mrn
-         qgmw==
+        bh=1wLzM48xk6XcmE6ODsehPZh7z1aV7WQjD+Yfb8tQaC0=;
+        b=JnAcfQFERG68ZOV/9F0aA26G0TiRone3dIcyD0djRYU9MNXY2cT9N5gggXKnKrVcdU
+         sIKulphSRC8TE1Q/2zPeDhhzP4THLi0Muh8goVCtlePAS/VQ54PAYoirxxpm6YQysAxH
+         nsmJ3XzmaCIFnlo14XirHo8NFPJE488RFn1H/5pW0QSiUKVOhZEYIoYyj/pWJmukDQoy
+         ghJ3YolLnzDRIV/f9VJPhBNNKuCEBNmnQ9evdvuk/0Mfn8771sbvQKq3iXIcGCi2gTCX
+         eNl6mKjQBNee5FxAb3UHxkSEhKxDss5QxrwsQBbhRRykdLZ917qb+iNI1qQsocgkpTvd
+         ey8w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nU+mnumS;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=f+6hqCRo;
        spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <aastha.gupta4104@gmail.com>
 Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id d207si1349244pfd.16.2017.09.14.13.47.22
+        by gmr-mx.google.com with ESMTPS id k76si127471pfb.5.2017.09.14.13.46.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 14 Sep 2017 13:47:22 -0700 (PDT)
+        Thu, 14 Sep 2017 13:46:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nU+mnumS;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=f+6hqCRo;
        spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id m30so229718pgn.5
-        for <outreachy-kernel@googlegroups.com>; Thu, 14 Sep 2017 13:47:22 -0700 (PDT)
+Received: by mail-pg0-x243.google.com with SMTP id d8so233495pgt.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 14 Sep 2017 13:46:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=GaSla2GT8UcgOexc0ndb7mJbG7B60s6jlTlALScGOQ0=;
-        b=nU+mnumSCrpDVyGxDDNRDcLSjcEU1a/DEaYXaNWz4QNL6GENfqT5S7FnSIzt7kMEiJ
-         Lh+o9bwaRaWuaACFfr5KYhE6ko+/WD9GDxmIR/tUqSHMd5RnZjqPGhJES2shgDR6bGJT
-         8EbulZuMwwdlafRVQQaog1u3XBjH5dBLOTsbffb0vOY6zneVqxvExyvyJyZ0fyd57dds
-         qgnxhkEe23Qi68ZQhVk/EzuNXv9rqIzAA60Fo/dJdubHJaBa/mHM5DP5+e/jv3hhIojR
-         Bdd11whqbxpOmgwGMj0vGUHkGeqilUB1BNoe8apP74XznSmJX4RD5PUI+klah1IqVtoQ
-         xnOQ==
+        bh=1wLzM48xk6XcmE6ODsehPZh7z1aV7WQjD+Yfb8tQaC0=;
+        b=f+6hqCRokw152artqdwl6W7Wqxx1WUUEzaID2WzRFMf6UFi+M0dsG57pmcO/hsY3tf
+         ckKR5iROTlZEA94b60awDEf6VcE2MZWW7lbaWOfruVRGkRRzXLGqrmqY1ZZCDKmmjHsh
+         tH2bovlgJ+UPBJpyyMMPhtZCWCzPv8q47raGBZb0wZPlasQlXDfpbOqRZeAgeDlPK0CT
+         HKvO4N9h+pOSeDP5RvvgROpRG9JnOPggtOZwCHF5b5r0irA7WD8kaZgWi3EScNYTCTtf
+         gxQK67wFggG2PsknUwHnRPLJUK/RHVtDeIc9uCyAcuWP8ofs081ZtObR0WqWOOBC+3X2
+         WVpA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=GaSla2GT8UcgOexc0ndb7mJbG7B60s6jlTlALScGOQ0=;
-        b=M1od9ZSEvnXiUKA/ts7fif3P5s+ByUtVRAqmdZZ4S1Yk5RO9ZhztKGt9ugQ5dtPXtd
-         l0gyTm29dnrfYNJdT7xa+T1MF9FNNP5YDlWT/5duTJUwHgKzUh6EFQ60m0IL1dpeXYin
-         BRiQhopgYn02LKiaPWzJlXlzWN57utZEIuSbCmV/op+LGIX7yuLtGCZjmdwGzJsEdPwL
-         fHq4mplvUqiLOXW4eqcgWZGm6q8qu26lBGyD2GhAHJjCbJYSj9MzwvY66Wenk4OuMgd0
-         ZtUDMxAvHZ2sqBA3WXXA1t+anUY/cvXokvrelgRR7fmkV3BmHD6V7FHkv2Pw3vq0z6Ah
-         pkbA==
-X-Gm-Message-State: AHPjjUiNVnciEvK1KWPmz32DxsX+81KpEwsOZEmPc2ujsdyLZ6+i/hTB
-	2421vN9Trt0lEA==
-X-Google-Smtp-Source: ADKCNb6n6wcB3s0VfGSTVRvZAt+5yfzxNTIckRSP5TiKZie0LHq7tx86i2vut72rEuMuQeAMwV51Vg==
-X-Received: by 10.84.248.7 with SMTP id p7mr25334766pll.237.1505422042058;
-        Thu, 14 Sep 2017 13:47:22 -0700 (PDT)
+        bh=1wLzM48xk6XcmE6ODsehPZh7z1aV7WQjD+Yfb8tQaC0=;
+        b=NXJ+UR9UG4Whg6fUyfPbZ9fHLWJ66N/ngE8/axjn0pYPb5YEeoEpXE0TPR9Swz+Qs1
+         NXsNFAJhjKA0wkUt3HzgV3F/9R176knDoZ1B9ELzI/vhW30QNwueeAPOpnUSGdsrRlob
+         zljONGMskoloHAXCAEWiikpeqC4NUsrEjCcv5go/nZJ5ca/G+bvoAZ5W3Wy/FhQOy2vM
+         AVvFUvzNfZsaMVfrPQVqyP6oR9NAb68gIwiu2nd5kHeKDHo8ql+Krs1b0jRhl4cyxZ3Q
+         VPZx6xZxamyWN5v3MOxFSIJpa1WK4SvSUZQnSTGfoPkHmBsaX64Rpp0T5i90Y2O9Nd5e
+         VXWA==
+X-Gm-Message-State: AHPjjUjsDlQdWu6ByrYWdCxTL7j5iqcch/pP3FFxvjH8+cnt7OSw5qhJ
+	fSsQ/SiS0Fwjaw==
+X-Google-Smtp-Source: ADKCNb7QMGop2EGQSQvVXv3ZiDlejyuFRZ9e/AVkfNWHAFVJCJ3WOtaptWJJnfjr4aT1or9XZJDTVA==
+X-Received: by 10.98.0.199 with SMTP id 190mr11083887pfa.298.1505421960949;
+        Thu, 14 Sep 2017 13:46:00 -0700 (PDT)
 Return-Path: <aastha.gupta4104@gmail.com>
 Received: from aastha-HP-Pavilion-15-Notebook-PC ([171.78.243.118])
-        by smtp.gmail.com with ESMTPSA id w5sm28506260pfw.99.2017.09.14.13.47.20
+        by smtp.gmail.com with ESMTPSA id a75sm32354499pfe.48.2017.09.14.13.45.59
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 14 Sep 2017 13:47:21 -0700 (PDT)
+        Thu, 14 Sep 2017 13:46:00 -0700 (PDT)
 From: Aastha Gupta <aastha.gupta4104@gmail.com>
 To: outreachy-kernel@googlegroups.com,
 	Oleg Drokin <oleg.drokin@intel.com>,
@@ -80,9 +80,9 @@ To: outreachy-kernel@googlegroups.com,
 	James Simmons <jsimmons@infradead.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH 2/2] staging: lustre: drop macro definitions with no users
-Date: Fri, 15 Sep 2017 02:15:34 +0530
-Message-Id: <4f8124c17164512190f8984cb26801f8e90a13d6.1505421269.git.aastha.gupta4104@gmail.com>
+Subject: [PATCH 1/2] staging: lustre: fix macro definitions warnings
+Date: Fri, 15 Sep 2017 02:15:33 +0530
+Message-Id: <b2fc843770e35e8fc84e1c4acbdecee869633560.1505421269.git.aastha.gupta4104@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <cover.1505421269.git.aastha.gupta4104@gmail.com>
 References: <alpine.DEB.2.20.1709142137000.2650@hadrien>
@@ -90,29 +90,59 @@ References: <alpine.DEB.2.20.1709142137000.2650@hadrien>
 In-Reply-To: <cover.1505421269.git.aastha.gupta4104@gmail.com>
 References: <cover.1505421269.git.aastha.gupta4104@gmail.com>
 
-This patch removes DLUBUF and PLUBUF macro, both of which have no users.
+This patch fixes the checkpatch.pl warnings related to macro
+definitions.
+1. macros with complex values should be enclosed in parentheses.
+2. macros with multiple lines should be enclosed in do-while block.
 
 Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
 ---
-
-This patch is as instructed by Andreas Dilger in one of the previous mails.
-
- drivers/staging/lustre/lustre/include/lu_object.h | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/staging/lustre/lustre/include/lu_object.h | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/staging/lustre/lustre/include/lu_object.h b/drivers/staging/lustre/lustre/include/lu_object.h
-index c8d5e0b..d5ecd58 100644
+index a3c0481..c8d5e0b 100644
 --- a/drivers/staging/lustre/lustre/include/lu_object.h
 +++ b/drivers/staging/lustre/lustre/include/lu_object.h
-@@ -1305,8 +1305,6 @@ struct lu_buf {
- 	size_t	lb_len;
- };
+@@ -1151,8 +1151,10 @@ struct lu_context_key {
+ 	struct __##mod##__dummy_fini {; } /* semicolon catcher */
  
--#define DLUBUF "(%p %zu)"
--#define PLUBUF(buf) (buf)->lb_buf, (buf)->lb_len
- /**
-  * One-time initializers, called at obdclass module initialization, not
-  * exported.
+ #define LU_KEY_INIT_FINI(mod, type)   \
++do {					\
+ 	LU_KEY_INIT(mod, type);	\
+-	LU_KEY_FINI(mod, type)
++	LU_KEY_FINI(mod, type); \
++} while (0)
+ 
+ #define LU_CONTEXT_KEY_DEFINE(mod, tags)		\
+ 	struct lu_context_key mod##_thread_key = {      \
+@@ -1161,10 +1163,8 @@ struct lu_context_key {
+ 		.lct_fini = mod##_key_fini	      \
+ 	}
+ 
+-#define LU_CONTEXT_KEY_INIT(key)			\
+-do {						    \
+-	(key)->lct_owner = THIS_MODULE;		 \
+-} while (0)
++#define LU_CONTEXT_KEY_INIT(key) ((key)->lct_owner = THIS_MODULE)
++
+ 
+ int lu_context_key_register(struct lu_context_key *key);
+ void lu_context_key_degister(struct lu_context_key *key);
+@@ -1223,10 +1223,12 @@ void lu_context_key_revive(struct lu_context_key *key);
+ 	struct __##mod##_dummy_type_stop {; }
+ 
+ #define LU_TYPE_INIT_FINI(mod, ...)	     \
++do {						\
+ 	LU_TYPE_INIT(mod, __VA_ARGS__);	 \
+ 	LU_TYPE_FINI(mod, __VA_ARGS__);	 \
+ 	LU_TYPE_START(mod, __VA_ARGS__);	\
+-	LU_TYPE_STOP(mod, __VA_ARGS__)
++	LU_TYPE_STOP(mod, __VA_ARGS__);		\
++} while (0)
+ 
+ int lu_context_init(struct lu_context *ctx, __u32 tags);
+ void lu_context_fini(struct lu_context *ctx);
 -- 
 2.7.4
 
