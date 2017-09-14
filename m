@@ -1,90 +1,178 @@
-X-GM-THRID: 6403259174174588928
-X-Received: by 10.28.46.208 with SMTP id u199mr194198wmu.1.1490874955374;
-        Thu, 30 Mar 2017 04:55:55 -0700 (PDT)
+X-GM-THRID: 6465297812332478464
+X-Received: by 10.176.21.100 with SMTP id p33mr12243406uae.72.1505369610535;
+        Wed, 13 Sep 2017 23:13:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.48.149 with SMTP id w143ls2871303wmw.11.canary-gmail; Thu,
- 30 Mar 2017 04:55:54 -0700 (PDT)
-X-Received: by 10.223.145.199 with SMTP id 65mr377071wri.0.1490874954401;
-        Thu, 30 Mar 2017 04:55:54 -0700 (PDT)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wr0-x241.google.com (mail-wr0-x241.google.com. [2a00:1450:400c:c0c::241])
-        by gmr-mx.google.com with ESMTPS id p144si196561wme.2.2017.03.30.04.55.54
+Received: by 10.107.82.21 with SMTP id g21ls25213iob.39.gmail; Wed, 13 Sep
+ 2017 23:13:29 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QCPogCMyIaSpKK9xgR2TDkQnhYQz/NYh1js7l+XgqGCMq5iPu/Y0rtHeKntMn9UPB8IbtbE
+X-Received: by 10.55.165.201 with SMTP id o192mr10668173qke.39.1505369609498;
+        Wed, 13 Sep 2017 23:13:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505369609; cv=none;
+        d=google.com; s=arc-20160816;
+        b=dM1YdfiTDh4Fw1yJ6BshTJae1OQ/T/zmAAoHlfFh8aJzso1eHdaxY931HbjfJYEgES
+         mAD6l4Sl/kp0c893oE/1ZWCXkmiD0nnboagBM05j1RBe6dLGlC0P4SfuaPNNJptI0fcV
+         xn77YdzShSWESeUNjAL5K0K93pCsj2BAgskapTWBsy3pF6/J7AUwe5d2Ry1DZi4+Blaw
+         jeypqsKGS3Ji/CvoZXUs6yIduQH5So8uQLQWb4AUxkW2aYQ/qNdkk34bBHy3IfeHS+jc
+         Grs5YGxzpXMX+kJtzlEZrxHGUFG0elsIF0oLLDBbIhvSzX4d7w25CB5lgQW9cFaT5xLa
+         IDnA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:arc-authentication-results;
+        bh=tpl8Wvxzul9lDTZzhV5nQCIks4M8ynR5k4gPNuBTkGo=;
+        b=gsRqy8GQvWdvjZDxMKt6L6Oz1tCdR1x7/9eSJJV4Q5468SLjqPVLlInwgF/BFGJN6Y
+         XG09U1mnVQD1kQ7mNJbGZur0R6yG1GERgPRZj5duIQ9+UTkZF4UoSigC102NQYbJwQCG
+         IaJoKKpokZMSE/20X/LFdqVw4/XzK9fRVOCg+35TSzhK9FnbCVgDj4ssVNCsW/Wkycn8
+         h7Sxx0nHtS1A8dubDgOzwt9rTAmGiKMmLzWBDZbe7J7XEEqGmj+qz7Fjuv9uSELL2pxa
+         rn1FUq26J2NHesVCs4tiRePkIM3cO0+35lPLrPDyOpOiWhwKMFdFUVncDoPof2efS0Li
+         cE6g==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of jani.nikula@intel.com designates 134.134.136.24 as permitted sender) smtp.mailfrom=jani.nikula@intel.com
+Return-Path: <jani.nikula@intel.com>
+Received: from mga09.intel.com (mga09.intel.com. [134.134.136.24])
+        by gmr-mx.google.com with ESMTPS id q65si1555591pfj.8.2017.09.13.23.13.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 30 Mar 2017 04:55:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) client-ip=2a00:1450:400c:c0c::241;
+        Wed, 13 Sep 2017 23:13:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jani.nikula@intel.com designates 134.134.136.24 as permitted sender) client-ip=134.134.136.24;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x241.google.com with SMTP id k6so10139530wre.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 30 Mar 2017 04:55:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=jqNYG3phNNhZLjfiurnhDdLjsa1fO7Vnvc2zDo8PYac=;
-        b=D3gfy9mhfD/kZVn5AOOn84ByI8CXwKnlnAjI7hIvavhhKHNrkDSKeTSqRu/J+i5ABc
-         W/ZPSAHPNMc0nNwDMKYHgOBW/+ZbKrArmH+0vPDI0lqXsAURXGnYV1p/W0u24ZuRT1JM
-         tFAjKpaLX2aX//DNaKCSX2Be5C9UNYvZLeKubVVhstDHQwo3nhd0Of6MMcb917dBeD7X
-         cWykRDbky1WjZ9VvU8GnmeWg4JSz4Y/bR7DSHYTds32dk5Dzxr/2DQc/UqQg1CkVyrYf
-         nSCNMpoyg2kclMaADoqo6hIa22KCyPEP0MDw8YoivgaZFwpdq/LHWcFhP945D9GIiTHH
-         AvxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=jqNYG3phNNhZLjfiurnhDdLjsa1fO7Vnvc2zDo8PYac=;
-        b=AGK0Iqg7PiNc0tFBJ/wrLqd+rZf2B2SDYVWlCsKUfT24sKzv7JAa3k40NAarJizPPN
-         +hd7c+D9UtmYRNOO26kF6KQdgkq++UtjQLIha0VPHOPfyJ0vTtDlwYk+0tvNn5w2RhVB
-         kG4qWCd72Muaw6LkLyACWgzfoo1YDQnG1c7HoWeTYZ6Hq6i3F+GsSaaOtTvYt35hT6UL
-         H7YMdILoexDEyCI29kM4RClEwzgTUzELqtMaSCJffJ0JDypeLJPmDuVfas0hdseHZmym
-         +E3S8QLhBFyloQKccCrFTCFmRqWK+UCD1qju4RZ8tGQknDRVmVzAWDdCvkTia+c/hUEk
-         IyYg==
-X-Gm-Message-State: AFeK/H3cle4jFYIwTV1FtTxkBPp1mZ1N9W9GOSX38XAincf0xU1cDQdmJWgyHsX6yfVDYA==
-X-Received: by 10.28.131.65 with SMTP id f62mr4907wmd.4.1490874954207;
-        Thu, 30 Mar 2017 04:55:54 -0700 (PDT)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([2a02:2f0b:8160:a9a:c8b7:dd2d:d45b:b444])
-        by smtp.gmail.com with ESMTPSA id t79sm2965052wmd.29.2017.03.30.04.55.52
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 30 Mar 2017 04:55:53 -0700 (PDT)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: daniel.vetter@intel.com,
-	jani.nikula@linux.intel.com,
-	airlied@linux.ie,
-	intel-gfx@lists.freedesktop.org,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	corbet@lwn.net
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH] drivers: gpu: drm: i915L intel_lpe_audio: Fix kerneldoc comments
-Date: Thu, 30 Mar 2017 14:55:10 +0300
-Message-Id: <20170330115510.14054-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+       spf=pass (google.com: domain of jani.nikula@intel.com designates 134.134.136.24 as permitted sender) smtp.mailfrom=jani.nikula@intel.com
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+  by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 13 Sep 2017 23:13:28 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.42,391,1500966000"; 
+   d="scan'208";a="900116311"
+Received: from jnikula-mobl2.fi.intel.com (HELO localhost) ([10.237.72.62])
+  by FMSMGA003.fm.intel.com with ESMTP; 13 Sep 2017 23:13:27 -0700
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: Julia Lawall <julia.lawall@lip6.fr>, Meghana Madhyastha <meghana.madhyastha@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, dri-devel@lists.freedesktop.org
+Subject: Re: [Outreachy kernel] [PATCH v2 3/3] drm: Remove assignment in if condition
+In-Reply-To: <alpine.DEB.2.20.1709132222370.2920@hadrien>
+References: <20170913161531.GA3239@meghana-HP-Pavilion-Notebook> <alpine.DEB.2.20.1709132222370.2920@hadrien>
+Date: Thu, 14 Sep 2017 09:13:04 +0300
+Message-ID: <87k211iz9r.fsf@nikula.org>
+MIME-Version: 1.0
+Content-Type: text/plain
 
-Add description for existing parameter 'pipe' to fix the build
-warning: ./drivers/gpu/drm/i915/intel_lpe_audio.c:342: warning: No
-description found for parameter 'pipe'.
+On Wed, 13 Sep 2017, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> On Wed, 13 Sep 2017, Meghana Madhyastha wrote:
+>
+>> Move the assignment so that it happens before the if
+>> condition. This results in syntax which is easier to read.
+>
+> It would be nice to mention the merged conditionals in the log message.
 
-Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
----
- drivers/gpu/drm/i915/intel_lpe_audio.c | 1 +
- 1 file changed, 1 insertion(+)
+Either way,
 
-diff --git a/drivers/gpu/drm/i915/intel_lpe_audio.c b/drivers/gpu/drm/i915/intel_lpe_audio.c
-index 7a5b41b..d8ca187 100644
---- a/drivers/gpu/drm/i915/intel_lpe_audio.c
-+++ b/drivers/gpu/drm/i915/intel_lpe_audio.c
-@@ -331,6 +331,7 @@ void intel_lpe_audio_teardown(struct drm_i915_private *dev_priv)
-  * audio driver and i915
-  * @dev_priv: the i915 drm device private data
-  * @eld : ELD data
-+ * @pipe: pipe id
-  * @port: port id
-  * @tmds_clk_speed: tmds clock frequency in Hz
-  *
+Reviewed-by: Jani Nikula <jani.nikula@intel.com>
+
+>
+> julia
+>
+>> Found by checkpath.pl
+>>
+>> Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
+>> ---
+>>  drivers/gpu/drm/drm_agpsupport.c | 31 ++++++++++++++++++-------------
+>>  1 file changed, 18 insertions(+), 13 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/drm_agpsupport.c b/drivers/gpu/drm/drm_agpsupport.c
+>> index 993e486..737f028 100644
+>> --- a/drivers/gpu/drm/drm_agpsupport.c
+>> +++ b/drivers/gpu/drm/drm_agpsupport.c
+>> @@ -100,7 +100,8 @@ int drm_agp_acquire(struct drm_device *dev)
+>>  		return -ENODEV;
+>>  	if (dev->agp->acquired)
+>>  		return -EBUSY;
+>> -	if (!(dev->agp->bridge = agp_backend_acquire(dev->pdev)))
+>> +	dev->agp->bridge = agp_backend_acquire(dev->pdev);
+>> +	if (!dev->agp->bridge)
+>>  		return -ENODEV;
+>>  	dev->agp->acquired = 1;
+>>  	return 0;
+>> @@ -200,12 +201,14 @@ int drm_agp_alloc(struct drm_device *dev, struct drm_agp_buffer *request)
+>>
+>>  	if (!dev->agp || !dev->agp->acquired)
+>>  		return -EINVAL;
+>> -	if (!(entry = kzalloc(sizeof(*entry), GFP_KERNEL)))
+>> +	entry = kzalloc(sizeof(*entry), GFP_KERNEL);
+>> +	if (!entry)
+>>  		return -ENOMEM;
+>>
+>>  	pages = (request->size + PAGE_SIZE - 1) / PAGE_SIZE;
+>>  	type = (u32) request->type;
+>> -	if (!(memory = agp_allocate_memory(dev->agp->bridge, pages, type))) {
+>> +	memory = agp_allocate_memory(dev->agp->bridge, pages, type);
+>> +	if (!memory) {
+>>  		kfree(entry);
+>>  		return -ENOMEM;
+>>  	}
+>> @@ -272,9 +275,8 @@ int drm_agp_unbind(struct drm_device *dev, struct drm_agp_binding *request)
+>>
+>>  	if (!dev->agp || !dev->agp->acquired)
+>>  		return -EINVAL;
+>> -	if (!(entry = drm_agp_lookup_entry(dev, request->handle)))
+>> -		return -EINVAL;
+>> -	if (!entry->bound)
+>> +	entry = drm_agp_lookup_entry(dev, request->handle);
+>> +	if (!entry || !entry->bound)
+>>  		return -EINVAL;
+>>  	ret = drm_unbind_agp(entry->memory);
+>>  	if (ret == 0)
+>> @@ -313,12 +315,12 @@ int drm_agp_bind(struct drm_device *dev, struct drm_agp_binding *request)
+>>
+>>  	if (!dev->agp || !dev->agp->acquired)
+>>  		return -EINVAL;
+>> -	if (!(entry = drm_agp_lookup_entry(dev, request->handle)))
+>> -		return -EINVAL;
+>> -	if (entry->bound)
+>> +	entry = drm_agp_lookup_entry(dev, request->handle);
+>> +	if (!entry || entry->bound)
+>>  		return -EINVAL;
+>>  	page = (request->offset + PAGE_SIZE - 1) / PAGE_SIZE;
+>> -	if ((retcode = drm_bind_agp(entry->memory, page)))
+>> +	retcode = drm_bind_agp(entry->memory, page);
+>> +	if (retcode)
+>>  		return retcode;
+>>  	entry->bound = dev->agp->base + (page << PAGE_SHIFT);
+>>  	DRM_DEBUG("base = 0x%lx entry->bound = 0x%lx\n",
+>> @@ -356,7 +358,8 @@ int drm_agp_free(struct drm_device *dev, struct drm_agp_buffer *request)
+>>
+>>  	if (!dev->agp || !dev->agp->acquired)
+>>  		return -EINVAL;
+>> -	if (!(entry = drm_agp_lookup_entry(dev, request->handle)))
+>> +	entry = drm_agp_lookup_entry(dev, request->handle);
+>> +	if (!entry)
+>>  		return -EINVAL;
+>>  	if (entry->bound)
+>>  		drm_unbind_agp(entry->memory);
+>> @@ -394,11 +397,13 @@ struct drm_agp_head *drm_agp_init(struct drm_device *dev)
+>>  {
+>>  	struct drm_agp_head *head = NULL;
+>>
+>> -	if (!(head = kzalloc(sizeof(*head), GFP_KERNEL)))
+>> +	head = kzalloc(sizeof(*head), GFP_KERNEL);
+>> +	if (!head)
+>>  		return NULL;
+>>  	head->bridge = agp_find_bridge(dev->pdev);
+>>  	if (!head->bridge) {
+>> -		if (!(head->bridge = agp_backend_acquire(dev->pdev))) {
+>> +		head->bridge = agp_backend_acquire(dev->pdev);
+>> +		if (!head->bridge) {
+>>  			kfree(head);
+>>  			return NULL;
+>>  		}
+>> --
+>> 2.7.4
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170913161531.GA3239%40meghana-HP-Pavilion-Notebook.
+>> For more options, visit https://groups.google.com/d/optout.
+>>
+
 -- 
-2.9.3
-
+Jani Nikula, Intel Open Source Technology Center
 
