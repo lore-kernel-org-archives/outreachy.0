@@ -1,80 +1,173 @@
-X-GM-THRID: 6401830709926821888
-X-Received: by 10.98.23.71 with SMTP id 68mr4626451pfx.32.1490542364893;
-        Sun, 26 Mar 2017 08:32:44 -0700 (PDT)
+X-GM-THRID: 6465604112701456384
+X-Received: by 10.176.25.197 with SMTP id r5mr13802488uai.20.1505392193266;
+        Thu, 14 Sep 2017 05:29:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.50.71 with SMTP id j68ls1318768ita.12.canary-gmail; Sun, 26
- Mar 2017 08:32:44 -0700 (PDT)
-X-Received: by 10.107.13.20 with SMTP id 20mr5611866ion.1.1490542364154;
-        Sun, 26 Mar 2017 08:32:44 -0700 (PDT)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pf0-x235.google.com (mail-pf0-x235.google.com. [2607:f8b0:400e:c00::235])
-        by gmr-mx.google.com with ESMTPS id y90si1467778pfa.6.2017.03.26.08.32.44
+Received: by 10.107.59.88 with SMTP id i85ls4281942ioa.24.gmail; Thu, 14 Sep
+ 2017 05:29:52 -0700 (PDT)
+X-Google-Smtp-Source: ADKCNb6kV0LDO3Ub5MJqZZ/trYcS+9PuCKQ+WsoebGZYDMlVQZVO8P4FTfO6lr7NvKZ7x9/ptJhl
+X-Received: by 10.99.119.139 with SMTP id s133mr13240687pgc.136.1505392192187;
+        Thu, 14 Sep 2017 05:29:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505392192; cv=none;
+        d=google.com; s=arc-20160816;
+        b=BvHvh4GHuHhcfhueO7meWOJ/1lktJ9QAcfA5bunC3mmm0KTJi9x03jcOOj313iT3Z8
+         Osa2dgwlE614B2q/sD/DqXhc6Zt5wPVySsIphy8nI4QKx04rgn2nePH//FS8WCyOdRq+
+         Goh4qIaXhxonqt1p/DnCfYFRhu68h0w2/n4TSgf69uKQQFeVxsyJ5RwSNLpnOqbprHfe
+         Hd//l3iKR00aNG0rdkEdcxOcYPPZExABgovfsyfBHB7yrhH62r2qga+Ii+QDZmcnEVne
+         ZQDgo0NSPa4G5llCZZ4g8uqN9qb3KXHE3EtBIyrrX1afKTZAdvsK6E1ZOKL0NeCa1uOK
+         tuyA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=J6SRsuktmLvWGK8ecAXYVMIbf7ylXQAwtaJvh09csbg=;
+        b=rjZ/ew86ki3oMfpU/Ocyj7bzDzxPDHAHnufGDXUIpxofUX2f4WNm0knQswO6/Gyg/L
+         jepL52HL7D+Kzueq8mSvyfetMaGTo5Od+Vn4sBbE1RI0rIrickPJiWOs2HM1iVIkrB5r
+         KTzGyJVaaFQ0BhcYRqzjbwU2i5HykWh2p4mpl1/mvPC6VKrMJ8XlHfqGAopAjNZvh2hn
+         TYxQOG/tdDTDxUd3UL/uJEn4fCncO8wDU59SuhVfUBUWMZxmYHkeF3Usb8nKGPE5tQ8/
+         Xx+EVgKTSLgrkCjeOGll14eRT3skKJlL14GMz4fSrRAMzdTPwXu144+a9/HgbBlRDkDM
+         xsaQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id w19si54955itc.2.2017.09.14.05.29.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 26 Mar 2017 08:32:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) client-ip=2607:f8b0:400e:c00::235;
+        Thu, 14 Sep 2017 05:29:52 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::235 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x235.google.com with SMTP id o126so13886297pfb.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 26 Mar 2017 08:32:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:mime-version:content-disposition
-         :user-agent;
-        bh=7gjmrWSEeu0PcowQZEJl6feFpcVEhD5U+hDVdHLyf6g=;
-        b=a/x8ri/nF4rX6H6IGhKI5w0bjI24l9CuGvOX2SF3v3huM8lX5T3q5FG6utKI3+K4IK
-         /BZ3YpMEHdSugawWrVDZ7KPszyQUKwjxD+hqdQe59RCl+ExwJpWpEXDXSoswlnVj2AAA
-         VPUsVHc2HTJ6R+ESH1hXg8TztdjrSNnicEweF9H+2jcKMa8skgan5s8DZI+E7E1W2vB6
-         v27o7L4azABmkLvJHS6BlA1JcogDE9R9BhkR98+dGuWA+vUxZ2KyeS585C659nPZQtVX
-         kLedLkYnOqfV7Pe4LWXBBFNRPTCBJOd3GvRy/JM7q0uFZWOs02AimPwPdA5gzUU34kfA
-         snMA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
-         :content-disposition:user-agent;
-        bh=7gjmrWSEeu0PcowQZEJl6feFpcVEhD5U+hDVdHLyf6g=;
-        b=Se6JyySs7Kj+5wKdLWrTyurPrEiynBiZ/MydwNa4tCi62H0QKbJSAiMgi2OQvIoUSM
-         Ik9YIIAypQknvmiAi6Km0PQTWncoY+DbvxnaDQoeB0G/msF/I9deNhLgC93O56POPffl
-         5e+wr+vgZ1tKsU4PV+5Tshbp7IZyvT0dZ4qkUmVQMBKXjRhMAaPZ/Tslw12jyV8hM2Dw
-         LSmR9hmylWUl9oPD9oPUPSsGJ1C+s1u4wDsPf5oHKijuBDXmXNd8BaYugRdFEw/R99b7
-         lTeusNWVojg7oYB4qFRRDzoJD3OMGRICguAkQ8UlZyJPejx0GBnP9AFBC+BPGb5WTPpc
-         QceQ==
-X-Gm-Message-State: AFeK/H1zcum2FiSx8iuoe12vQprCwx2cCl1yxUeoHe9DldY9ntp5Hfu4yurXKHxfq60E9g==
-X-Received: by 10.99.115.68 with SMTP id d4mr19570532pgn.146.1490542363884;
-        Sun, 26 Mar 2017 08:32:43 -0700 (PDT)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([117.192.128.197])
-        by smtp.gmail.com with ESMTPSA id i124sm15661631pgd.66.2017.03.26.08.32.42
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 26 Mar 2017 08:32:43 -0700 (PDT)
-Message-ID: <58d7df1b.829d630a.23aa7.6b64@mx.google.com>
-X-Google-Original-Message-ID: <20170326153240.GA19975@<rvarsha016@gmail.com>>
-Date: Sun, 26 Mar 2017 21:02:40 +0530
-From: Varsha Rao <rvarsha016@gmail.com>
-To: mawilcox@microsoft.com
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH 0/3] kernel: pid: Update documentation and fix checkpatch
- issues.
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,392,1500933600"; 
+   d="scan'208";a="291071760"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 14 Sep 2017 14:29:50 +0200
+Date: Thu, 14 Sep 2017 14:29:18 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Harsha Sharma <harshasharmaiitr@gmail.com>
+cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org, 
+    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: Merge assignment
+ with return
+In-Reply-To: <1505390645-4461-1-git-send-email-harshasharmaiitr@gmail.com>
+Message-ID: <alpine.DEB.2.20.1709141428080.3185@hadrien>
+References: <1505390645-4461-1-git-send-email-harshasharmaiitr@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.7.1 (2016-10-04)
-
-This patchset fixes multiple checkpatch issues and updates documentation
-of pid.c file.
+Content-Type: text/plain; charset=US-ASCII
 
 
-Varsha Rao (3):
-  kernel: pid: Update documentation.
-  kernel: pid: Replace unsigned with unsigned int.
-  kernel: pid: Add blank line after declarations.
 
- kernel/pid.c | 25 ++++++++++++++++++++++++-
- 1 file changed, 24 insertions(+), 1 deletion(-)
+On Thu, 14 Sep 2017, Harsha Sharma wrote:
 
--- 
-2.9.3
+> Merge assignment with return statement to directly return the value.
+> Done using following coccinelle semantic patch
+>
+> @@
+> local idexpression ret;
+> expression e;
+> @@
+>
+> -ret =
+> +return
+>      e;
+> -return ret;
 
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+Many of these examples have the property that ret is assigned to 0 but
+that value is never used.  You could try using Coccinelle to see whether
+that occurs in other cases.
+
+julia
+
+
+>
+> Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
+> ---
+>  drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 20 ++++----------------
+>  1 file changed, 4 insertions(+), 16 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+> index ffbb35a..6a8f805 100644
+> --- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+> +++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+> @@ -2123,12 +2123,9 @@ static int rtw_wx_set_gen_ie(struct net_device *dev,
+>  			     struct iw_request_info *info,
+>  			     union iwreq_data *wrqu, char *extra)
+>  {
+> -	int ret;
+>  	struct adapter *padapter = (struct adapter *)rtw_netdev_priv(dev);
+>
+> -	ret = rtw_set_wpa_ie(padapter, extra, wrqu->data.length);
+> -
+> -	return ret;
+> +	return rtw_set_wpa_ie(padapter, extra, wrqu->data.length);
+>  }
+>
+>  static int rtw_wx_set_auth(struct net_device *dev,
+> @@ -3857,7 +3854,6 @@ static int rtw_hostapd_sta_flush(struct net_device *dev)
+>  {
+>  	/* _irqL irqL; */
+>  	/* struct list_head	*phead, *plist; */
+> -	int ret = 0;
+>  	/* struct sta_info *psta = NULL; */
+>  	struct adapter *padapter = (struct adapter *)rtw_netdev_priv(dev);
+>  	/* struct sta_priv *pstapriv = &padapter->stapriv; */
+> @@ -3866,9 +3862,7 @@ static int rtw_hostapd_sta_flush(struct net_device *dev)
+>
+>  	flush_all_cam_entry(padapter);	/* clear CAM */
+>
+> -	ret = rtw_sta_flush(padapter);
+> -
+> -	return ret;
+> +	return rtw_sta_flush(padapter);
+>
+>  }
+>
+> @@ -4266,7 +4260,6 @@ static int rtw_set_hidden_ssid(struct net_device *dev, struct ieee_param *param,
+>
+>  static int rtw_ioctl_acl_remove_sta(struct net_device *dev, struct ieee_param *param, int len)
+>  {
+> -	int ret = 0;
+>  	struct adapter *padapter = (struct adapter *)rtw_netdev_priv(dev);
+>  	struct mlme_priv *pmlmepriv = &(padapter->mlmepriv);
+>
+> @@ -4279,15 +4272,12 @@ static int rtw_ioctl_acl_remove_sta(struct net_device *dev, struct ieee_param *p
+>  		return -EINVAL;
+>  	}
+>
+> -	ret = rtw_acl_remove_sta(padapter, param->sta_addr);
+> -
+> -	return ret;
+> +	return rtw_acl_remove_sta(padapter, param->sta_addr);
+>
+>  }
+>
+>  static int rtw_ioctl_acl_add_sta(struct net_device *dev, struct ieee_param *param, int len)
+>  {
+> -	int ret = 0;
+>  	struct adapter *padapter = (struct adapter *)rtw_netdev_priv(dev);
+>  	struct mlme_priv *pmlmepriv = &(padapter->mlmepriv);
+>
+> @@ -4300,9 +4290,7 @@ static int rtw_ioctl_acl_add_sta(struct net_device *dev, struct ieee_param *para
+>  		return -EINVAL;
+>  	}
+>
+> -	ret = rtw_acl_add_sta(padapter, param->sta_addr);
+> -
+> -	return ret;
+> +	return rtw_acl_add_sta(padapter, param->sta_addr);
+>
+>  }
+>
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1505390645-4461-1-git-send-email-harshasharmaiitr%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
