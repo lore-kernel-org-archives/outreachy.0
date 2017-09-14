@@ -1,134 +1,143 @@
 X-GM-THRID: 6465665383361675264
-X-Received: by 10.25.18.223 with SMTP id 92mr1983087lfs.11.1505405419918;
-        Thu, 14 Sep 2017 09:10:19 -0700 (PDT)
+X-Received: by 10.55.17.10 with SMTP id b10mr11428557qkh.54.1505405032773;
+        Thu, 14 Sep 2017 09:03:52 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.146.131 with SMTP id u125ls1605850wmd.0.gmail; Thu, 14 Sep
- 2017 09:10:17 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QCqJ/CDYe1X134VP+wZwm7QEP6FyrSBJgLl5QE1uGWDYRpM/IreQ4wY3vKxVM3SYyJeaqAO
-X-Received: by 10.28.230.79 with SMTP id d76mr63018wmh.12.1505405417925;
-        Thu, 14 Sep 2017 09:10:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505405417; cv=none;
+Received: by 10.107.205.196 with SMTP id d187ls5434137iog.38.gmail; Thu, 14
+ Sep 2017 09:03:51 -0700 (PDT)
+X-Received: by 10.31.63.210 with SMTP id m201mr13062348vka.27.1505405031955;
+        Thu, 14 Sep 2017 09:03:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505405031; cv=none;
         d=google.com; s=arc-20160816;
-        b=jLc78mfROBVkQxmizgwd1Lpr45QLc/yVdbZb2Og801YifWNP2zlLC89CMxxD3GXGLN
-         CRcihJvpKqtmShK1F9UkPfzoNzp8GbXMKTBQ9a9l1DgsxxeKwjwpRoTke706QacZIWQ8
-         mTgu0ejdBAqDwMZWgBb/sZIF3Yav8DEGBjxEKOL/9YpUaKxVHYV+/UX4ih5beGb8/5Er
-         IhDFVgyUeE3pP7iHJshp63tzofF5NW/S0xAeOshrf+D5KJ3KwjE1dGKHfM6vWLlyzuGL
-         Jn/4XqZTN7wRIWwLN8NUOcErYZ/H2wNlJzQRT8RwRaLCOWJH3Y39HZNB2WpXCFmZ3+Bu
-         YMTA==
+        b=PbFUVW3m8Brq5GUZ5GurUeXR5AmKPtvAQj323wZAs5EpZu1ETSZRuUrNWyrsXZFIs9
+         tiWFSDnRKxqLYNpNP1oY4laeSjqc07QllaaYW2AEktcI4k3UZ5Om+EEXySn88DdLisPV
+         E3twJ91JFKKbLLJ0W9hrq3yacznrTyr3CeaYjdf1a2OLy6RsTriKa9vLxYYmNQhpmSN6
+         dIPsqauyT44zaVj/BqW2tP9dJcIONNsYjTk83J+yjpwjNT/RNDrwZvvYgB3gDkdBiiXV
+         6OVWE1JXXykuAfnXhXLAqh3y2Zgcm4UIJDLmzDTc8Dze9LKpiObwCD76OwTmSYLwYmvP
+         cjQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=KLw040TCnJ7XE20L/bFYnXgV68Z6j/iWIS46FyqFdNU=;
-        b=QgEgYRHqScJUqdhD2XXVEd3TjuwB1XLK0AJ0/2gFox+teOG92qfJDnJRlQmlJHFGfu
-         qv+komdohQ1PiWN5NPPb2O7EM/hBDMMn6trzDLwqAU5YwpQ2csA1TGn/ZdAU1I0p6Fmo
-         cJtNylwI0NcF+fDUE6+UAoXde0ZXVZkVJdX3OoRVIqwBkM5Vz3Huy5qz9uOFFPRJbkux
-         ZrRYtTmppoAIaSknaLEvFG2vJPT+JLtAVUXcb9Q5abr2mkkqQCPgcRvfscP8mrjnBs2U
-         JGjQfMJxJwzMT6yuO90r4XnSN4ErOyJB2RK+WC5YMF2n9Z/bBvWiRNqnTTJnhaPVBEcy
-         CJzQ==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=ByYvloWNTNXo0lPqeaYP13ZZj10glE8UBcKkXwUJpuw=;
+        b=d2LtQGOCDzieXMz5TEQ89HFhbacz/hj+PLGSn5dkSu6uG6KOWJLHyhjGF3m1d83kga
+         n5+LN7oTXh76i2mePUD2f3kyaZy+9SvUklruhjjWFiDsO5CMflHQCHFdlZX7tcJ9dS1Z
+         DtNeSJEvJcxJrddlVCScpMa8kvHq+CtQbv3tnGNfD3WvAy5zM/bU09ExZtrj/oYdTNHR
+         ykrGptyYSpemwyp/Cd6jRnJDAIALAFH4XvJIFjRmybE6Vv3NzUcx2x52j20/YjHYqjW2
+         ZpDo7GM5Z6Ze/HQ4XZNmrTamUDaeFKuNF3B//gMlwLjArkrEWfreNtRXDjGOHfoF2mrI
+         lUJw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id r185si19659wma.9.2017.09.14.09.10.17
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=npW08Ni7;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <harshasharmaiitr@gmail.com>
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id k76si68329pfb.5.2017.09.14.09.03.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 14 Sep 2017 09:10:17 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Thu, 14 Sep 2017 09:03:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.42,393,1500933600"; 
-   d="scan'208";a="291123571"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 14 Sep 2017 18:10:15 +0200
-Date: Thu, 14 Sep 2017 18:09:43 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Harsha Sharma <harshasharmaiitr@gmail.com>
-cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org, 
-    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: Remove unused
- variable ret
-In-Reply-To: <1505404910-11548-1-git-send-email-harshasharmaiitr@gmail.com>
-Message-ID: <alpine.DEB.2.20.1709141807561.3185@hadrien>
-References: <1505404910-11548-1-git-send-email-harshasharmaiitr@gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=npW08Ni7;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x243.google.com with SMTP id i130so1924508pgc.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 14 Sep 2017 09:03:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=ByYvloWNTNXo0lPqeaYP13ZZj10glE8UBcKkXwUJpuw=;
+        b=npW08Ni78Ug937hw9NNW6KKuq199xSejKyC099Jf5NZJ0ZiegJfAFSpFnxTZrdR5/L
+         ++BJQLO1zdqP93RSTr6Yr8ck0xwcF2uBj2YnawDmNN6lEqjz5E9SK3gYClkmFzeuHc4m
+         NAal4DiZ+JksfNQs1wDGsiQiWFxy8IemOlShj/32JMtwMf7cb4wrdKpb2PIbkJrVAGQ+
+         s8xxuZ+pxlKX1a3YljncTUraInIZk1WsU/HpsqUBSjL0wbrY1pRi23adL169mCJfBa3o
+         S4cnG/p22Ipaxxflagf0Xn7E7rKiVfFdg1JtmCjq9PKdjPXMuQJ+ZKt5o6+at9lNDCZ1
+         JCAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=ByYvloWNTNXo0lPqeaYP13ZZj10glE8UBcKkXwUJpuw=;
+        b=Up/5p0QPhGbJgmL8M17Jpsn6e2FQ6FKrXDag1b11V2RmvHpY1kNRtCtM11Xf6wchf4
+         vsdSVVRjYkh9V/rq4AmvhRhp96UUsZT6kTaDevKS+bvN21hA9bjEudbPR5V2W12o/feS
+         1ZAHt+n2qji1K8c4RtzzmiJ5laSF0FXdf2lvxtXfEN9jGmx8JtGAyqU3J2cj4VyWBGVZ
+         fZrwzQgULmTGy5AHObCYbi4+60f3+NFwBuHwPxqv6FuEo8B9tDYkxwTuJdl9bqDgbTvT
+         yUJwCkAdt+bX+y3QiY+7eb0DSF3aZ916d94BYIx8ZQK7nLYum8Mnm/V4Spu6+os7yD29
+         4++w==
+X-Gm-Message-State: AHPjjUh4o5wnuktCgQiO7sV15wQbYi4vX1diyxLioBZYt9FcKQN01I2F
+	tPRYpq+lYJFPyLlY
+X-Google-Smtp-Source: ADKCNb5okaHkUoeJl5Y/m391+i+N7R8kkRuceBcyaDKaaiqI6uR2VTqom8HfPuM10nrxVBljr5zsig==
+X-Received: by 10.84.138.1 with SMTP id 1mr22895473plo.404.1505405031285;
+        Thu, 14 Sep 2017 09:03:51 -0700 (PDT)
+Return-Path: <harshasharmaiitr@gmail.com>
+Received: from harryPotter.iitr.ernet.in ([103.37.201.27])
+        by smtp.gmail.com with ESMTPSA id j1sm28562936pfc.169.2017.09.14.09.03.47
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 14 Sep 2017 09:03:49 -0700 (PDT)
+From: Harsha Sharma <harshasharmaiitr@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com,
+	Harsha Sharma <harshasharmaiitr@gmail.com>
+Subject: [PATCH] staging: rtl8723bs: Remove unused variable ret
+Date: Thu, 14 Sep 2017 21:31:50 +0530
+Message-Id: <1505404910-11548-1-git-send-email-harshasharmaiitr@gmail.com>
+X-Mailer: git-send-email 1.9.1
 
+Remove unused variable ret as it is not used anywhere.
+Remove multiple blank lines.
+Done using following coccinelle semantic patch
 
+@@
+type T;
+identifier i;
+constant C;
+@@
 
-On Thu, 14 Sep 2017, Harsha Sharma wrote:
+(
+extern T i;
+|
+- T i;
+  <+... when != i
+- i = C;
+  ...+>
+)
 
-> Remove unused variable ret as it is not used anywhere.
-> Remove multiple blank lines.
-> Done using following coccinelle semantic patch
->
-> @@
-> type T;
-> identifier i;
-> constant C;
-> @@
->
-> (
-> extern T i;
-> |
-> - T i;
->   <+... when != i
-> - i = C;
->   ...+>
-> )
->
-> Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
-> ---
->  drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 6 ------
->  1 file changed, 6 deletions(-)
->
-> diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-> index ffbb35a..7935dc5 100644
-> --- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-> +++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-> @@ -2337,10 +2337,6 @@ static int rtw_wx_read32(struct net_device *dev,
->  	u32 data32;
->  	u32 bytes;
->  	u8 *ptmp;
-> -	int ret;
-> -
-> -
-> -	ret = 0;
->  	padapter = (struct adapter *)rtw_netdev_priv(dev);
->  	p = &wrqu->data;
->  	len = p->length;
-> @@ -2352,7 +2348,6 @@ static int rtw_wx_read32(struct net_device *dev,
->  		return -ENOMEM;
->
->  	if (copy_from_user(ptmp, p->pointer, len)) {
-> -		ret = -EFAULT;
->  		goto exit;
->  	}
->
-> @@ -2375,7 +2370,6 @@ static int rtw_wx_read32(struct net_device *dev,
->  			break;
->  		default:
->  			DBG_871X(KERN_INFO "%s: usage> read [bytes],[address(hex)]\n", __func__);
-> -			ret = -EINVAL;
->  			goto exit;
+Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
+---
+ drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 6 ------
+ 1 file changed, 6 deletions(-)
 
-One could have the impression that the function should instead return ret.
-One would have to figure out where the function is called from and what
-happens there to the return value.
+diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+index ffbb35a..7935dc5 100644
+--- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
++++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+@@ -2337,10 +2337,6 @@ static int rtw_wx_read32(struct net_device *dev,
+ 	u32 data32;
+ 	u32 bytes;
+ 	u8 *ptmp;
+-	int ret;
+-
+-
+-	ret = 0;
+ 	padapter = (struct adapter *)rtw_netdev_priv(dev);
+ 	p = &wrqu->data;
+ 	len = p->length;
+@@ -2352,7 +2348,6 @@ static int rtw_wx_read32(struct net_device *dev,
+ 		return -ENOMEM;
+ 
+ 	if (copy_from_user(ptmp, p->pointer, len)) {
+-		ret = -EFAULT;
+ 		goto exit;
+ 	}
+ 
+@@ -2375,7 +2370,6 @@ static int rtw_wx_read32(struct net_device *dev,
+ 			break;
+ 		default:
+ 			DBG_871X(KERN_INFO "%s: usage> read [bytes],[address(hex)]\n", __func__);
+-			ret = -EINVAL;
+ 			goto exit;
+ 	}
+ 	DBG_871X(KERN_INFO "%s: addr = 0x%08X data =%s\n", __func__, addr, extra);
+-- 
+1.9.1
 
-julia
-
->  	}
->  	DBG_871X(KERN_INFO "%s: addr = 0x%08X data =%s\n", __func__, addr, extra);
-> --
-> 1.9.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1505404910-11548-1-git-send-email-harshasharmaiitr%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
