@@ -1,102 +1,104 @@
 X-GM-THRID: 6465542343215808512
-X-Received: by 10.129.57.139 with SMTP id g133mr21163154ywa.226.1505727105920;
-        Mon, 18 Sep 2017 02:31:45 -0700 (PDT)
+X-Received: by 10.28.154.68 with SMTP id c65mr177115wme.5.1505388374100;
+        Thu, 14 Sep 2017 04:26:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.157.141 with SMTP id g135ls10373792ioe.23.gmail; Mon, 18
- Sep 2017 02:31:45 -0700 (PDT)
-X-Google-Smtp-Source: ADKCNb6uCOEUyJhjY/VX5JmM8j6WxPUGqF0eO2uNR321M0AtlhTTIYec4f/oaeqKq/SbQ2Wiv2Hi
-X-Received: by 10.84.197.131 with SMTP id n3mr20554040pld.19.1505727105170;
-        Mon, 18 Sep 2017 02:31:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505727105; cv=none;
+Received: by 10.28.47.207 with SMTP id v198ls1425402wmv.10.gmail; Thu, 14 Sep
+ 2017 04:26:12 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBEvnAXl51oLV8CikLhuxkIuw9HQqUpKSXtZBgl6Cj15J4UQ+R86eRrf4c5A4YkM9E/9jIn
+X-Received: by 10.28.230.79 with SMTP id d76mr180673wmh.12.1505388372818;
+        Thu, 14 Sep 2017 04:26:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505388372; cv=none;
         d=google.com; s=arc-20160816;
-        b=L/jDV56C9xPZS0sNQlQGUsa5jQbJq7lBKICOwzS12BHDPWCuz3pZ0gSdUxJQ1lhZ0f
-         Qn62WaFw7Ri9eNYNlTR0xzv1NmNXwAccV60XiyERpnmsY86e3LW5VCdkdi8IyHUZ1c82
-         kGSonXNrv7ho13tPZie6+I7r3xznYYhgCoKkbyOh9Jg+JBeBweBkH7RmMZpHkPRgsSnG
-         28QzqQIqC+vHIMBcVg4aUIN38tW5Z9jR700jtJGe14Imh0U+XjVEp+Pv2hUGMBAKoCuM
-         YlWVAc6CYbnqtX4YLBEUgRIivsmor9WwoBNWuXGj9IcAmnTPOahh3qKdpPF5fVEWalW1
-         7iLg==
+        b=ecFog7348ZmtKy5b89iExzL9z0p6F4jeh+pgbuaXlYcjkKFUJRf9iGtMTeHVgfYl1I
+         uZNMAumXqE1gXPO01SvGe0pnMpLYsqejqiw0hpxkZhJqjdFUxHVGAJ6e3KObcaP5ozsc
+         b85ESVS69L3vq6ILOEH1aaFpUGoDhcs1kJLiGDMTogmDCSjwqETP6JoDrlAFy9nDlkCH
+         Ec5mts7YrrHmEnyGosfNH/98bQUdNFL0bqpbSxLJ47MkSjcwBbLueW9Xm397jt42vdzj
+         Giy/4TcAoH5uM6kuQ8UI+iOLnITd1kpUultE25+VK2vzE9yG/n129J5Pbb2CGAg+o0b7
+         Ua0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature
-         :arc-authentication-results;
-        bh=7qg0GkU4jIHu8gEYsGlm94k6tVAyGt1LUAfX0TU4YWQ=;
-        b=z1f9Zk4Zfa0p6fz9i4X4DHDKmPDibeY2dBICMOWUYSPSajBnBz2gvTWQwgE+0Jursq
-         M7rnCL+6XDqUPd5LFkFbomHzJt3qqcsMCOQukBzewV+bcCmLOZ4rAXYNIMd6O7yjcr9d
-         SnBHEjoMtwuJbclvNl/8R+tt8cU4ot5t2e3cgku1dE/0vLmfm8owXYFJrJbEuAuVrsXK
-         HsiR6EIlsH0U/Bsss1/LgRMtTFyHICivNLMuW8tYuy1aLyRDcKP+qXr15aDRXYtJiajD
-         dXlkuY03+FA47wTX/EZ8H9fJM7Htdqo9wwTxHQ25ha/3xFa/qwQIXMDd6r6gzC9vvddJ
-         B5UA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=i/XX2v5mITmh0F5/LvU2DhddT3YWR/HjZtQYqJO72Ag=;
+        b=gk+xCEPKHipDAhkKjmylRFyzKDW0m+1IPzP3ABQHzOfhNPbJWCMwMyAR+S7ggBLK3r
+         JXDLPDCZUe32h+okmz60h8dLYIkWZHvlngJXwsTrJXYDJU0W1fRDhyynt3sESLPAYaei
+         g2ORIz1DKgZ7aSj9cocmQjVd0jA8xTej12+QuTXHr2WL0ldL0h5ZQ0xEkSALPKic1vYL
+         RlYFh14XN1iV179A/Gona9YGdmZY1atJkrsZnFNrA0pGLrqCDROVeA6Selzstff21shF
+         dxuf9p1t4AFHg93OakpLG4ZwCH7XBlFGSd1lsDZXCm0owKgKcJ6dQobfQy3Y/gctqkRK
+         jKLg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=oEM0hW/g;
-       spf=neutral (google.com: 66.111.4.25 is neither permitted nor denied by best guess record for domain of greg@kroah.com) smtp.mailfrom=greg@kroah.com
-Return-Path: <greg@kroah.com>
-Received: from out1-smtp.messagingengine.com (out1-smtp.messagingengine.com. [66.111.4.25])
-        by gmr-mx.google.com with ESMTPS id g5si14768itg.1.2017.09.18.02.31.44
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id p200si85491wmg.4.2017.09.14.04.26.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 18 Sep 2017 02:31:45 -0700 (PDT)
-Received-SPF: neutral (google.com: 66.111.4.25 is neither permitted nor denied by best guess record for domain of greg@kroah.com) client-ip=66.111.4.25;
+        Thu, 14 Sep 2017 04:26:12 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=oEM0hW/g;
-       spf=neutral (google.com: 66.111.4.25 is neither permitted nor denied by best guess record for domain of greg@kroah.com) smtp.mailfrom=greg@kroah.com
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
-	by mailout.nyi.internal (Postfix) with ESMTP id B7F7620A70;
-	Mon, 18 Sep 2017 05:31:44 -0400 (EDT)
-Received: from frontend2 ([10.202.2.161])
-  by compute6.internal (MEProxy); Mon, 18 Sep 2017 05:31:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-sender
-	:x-me-sender:x-sasl-enc:x-sasl-enc; s=fm1; bh=7qg0GkU4jIHu8gEYsG
-	lm94k6tVAyGt1LUAfX0TU4YWQ=; b=oEM0hW/gV5B1xsnTt2er1iUFxMp/gPwf7+
-	v0L5um16aEwC5oSc8c1llXVxL4plfjO4R52waAnf8LDbHgDlnKb8OHyKDEQqYJnd
-	bSjK0hGros42eFRllgCIKSLIAI+gxnaGqe89KMD6kNxYgMEvXbBkGslImZ1lBOrX
-	JV6RhVREgKUH8KMuAg+WV3Sn/sJAvKjaz/vRDDo5TJ24CP7SJJAPQAivNT863sZx
-	4jF7Yin6Rq284r645gvUuO6Yz6W3WgeSiAyvavY2nxo4F14WMKlcDcKhVv2JPC/G
-	BuJhdQc0o1HYvj4w2jeP+O/RpV2CAOpCYvnvJXTB3yaQ+p3GR03Q==
-X-ME-Sender: <xms:gJK_WdL5yd-ig60hPYIIMI0xHP5j0Rp-iIMiy6GMCt4rk2ZH41qrbg>
-X-Sasl-enc: akXcW7QXe6je5UiyoyjUMNlmyorh/uhh3WlQT7gzMn0g 1505727104
-Received: from localhost (lfbn-1-12253-150.w90-92.abo.wanadoo.fr [90.92.67.150])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 6330D2471C;
-	Mon, 18 Sep 2017 05:31:44 -0400 (EDT)
-Date: Mon, 18 Sep 2017 11:31:56 +0200
-From: Greg KH <greg@kroah.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,392,1500933600"; 
+   d="scan'208";a="237474856"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 14 Sep 2017 13:26:12 +0200
+Date: Thu, 14 Sep 2017 13:25:40 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Meghana Madhyastha <meghana.madhyastha@gmail.com>
-Cc: outreachy-kernel@googlegroups.com,
-	Jani Nikula <jani.nikula@linux.intel.com>,
-	dri-devel@lists.freedesktop.org
-Subject: Re: [Outreachy kernel] [PATCH v3 0/4] drm/agpsupport: Code cleanup
-Message-ID: <20170918093156.GA9461@kroah.com>
-References: <cover.1505376068.git.meghana.madhyastha@gmail.com>
+cc: outreachy-kernel@googlegroups.com, 
+    Jani Nikula <jani.nikula@linux.intel.com>, dri-devel@lists.freedesktop.org
+Subject: Re: [Outreachy kernel] [PATCH v3 4/4] drm/agpsupport: Remove extra
+ blank line
+In-Reply-To: <9cfc7e7535908f3fe3b1df706f2999687c90d4e7.1505376068.git.meghana.madhyastha@gmail.com>
+Message-ID: <alpine.DEB.2.20.1709141325020.3185@hadrien>
+References: <cover.1505376068.git.meghana.madhyastha@gmail.com> <9cfc7e7535908f3fe3b1df706f2999687c90d4e7.1505376068.git.meghana.madhyastha@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1505376068.git.meghana.madhyastha@gmail.com>
-User-Agent: Mutt/1.9.0 (2017-09-02)
+Content-Type: text/plain; charset=US-ASCII
 
-On Thu, Sep 14, 2017 at 01:36:17PM +0530, Meghana Madhyastha wrote:
-> Removes checkpath.pl errors and warnings.
-> 
+
+
+On Thu, 14 Sep 2017, Meghana Madhyastha wrote:
+
+> Remove extra blank line to adhere to standard coding style.
+> Found by checkpath.pl..
+>
+> Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
+> ---
 > Changes in v3:
->  -Change commit title prefix from drm to drm/agpsupport
->  -Split the commit "Move EXPORT_SYMBOL so that it immediately follows its
->      function" into two commits. Removing the extra blank line is 
->      now a separate commit.
->  -Included merging conditionals in "Remove assignment in if condition"
->      in the commit message
-> 
-> Meghana Madhyastha (4):
->   drm/agpsupport: Replace "foo * bar" with "foo *bar"
->   drm/agpsupport: Remove assignment in if condition
->   drm/agpsupport: Move EXPORT_SYMBOL so that it immediately follows its
->     function
->   drm/agpsupport: Remove extra blank line
+>  -This was part of another commit in v2 and v1.
+>   Now made this a separate commit
+>
+>  drivers/gpu/drm/drm_agpsupport.c | 1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/drivers/gpu/drm/drm_agpsupport.c b/drivers/gpu/drm/drm_agpsupport.c
+> index a0510557..737f028 100644
+> --- a/drivers/gpu/drm/drm_agpsupport.c
+> +++ b/drivers/gpu/drm/drm_agpsupport.c
+> @@ -373,7 +373,6 @@ int drm_agp_free(struct drm_device *dev, struct drm_agp_buffer *request)
+>  EXPORT_SYMBOL(drm_agp_free);
+>
+>
+> -
 
-Note, I can't do anything with patches that are outside of
-drivers/staging/ for outreachy submissions.  Hopefully the drm
-developers are ok with this, it's up to them to accept these...
+This looks better.
 
-thanks,
+But you got some Reviewed-by: annotations from Sean. You should preserve
+them on the next version.
 
-greg k-h
+julia
+
+>  int drm_agp_free_ioctl(struct drm_device *dev, void *data,
+>  		       struct drm_file *file_priv)
+>  {
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/9cfc7e7535908f3fe3b1df706f2999687c90d4e7.1505376068.git.meghana.madhyastha%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
