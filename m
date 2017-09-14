@@ -1,87 +1,111 @@
-X-GM-THRID: 6258266145196867584
-X-Received: by 10.13.226.84 with SMTP id l81mr6679334ywe.16.1457116134452;
-        Fri, 04 Mar 2016 10:28:54 -0800 (PST)
+X-GM-THRID: 6465198588662120448
+X-Received: by 10.46.92.193 with SMTP id q184mr1938343ljb.34.1505409228978;
+        Thu, 14 Sep 2017 10:13:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.131.31 with SMTP id f31ls291500iod.62.gmail; Fri, 04 Mar
- 2016 10:28:54 -0800 (PST)
-X-Received: by 10.66.148.69 with SMTP id tq5mr6897155pab.28.1457116133981;
-        Fri, 04 Mar 2016 10:28:53 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x231.google.com (mail-pf0-x231.google.com. [2607:f8b0:400e:c00::231])
-        by gmr-mx.google.com with ESMTPS id r75si1602697pfr.0.2016.03.04.10.28.53
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 04 Mar 2016 10:28:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) client-ip=2607:f8b0:400e:c00::231;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x231.google.com with SMTP id x188so15728821pfb.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 04 Mar 2016 10:28:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=/fUPEI56zsoFMhLJNiLnsCLgjtD/Rik44Vt3/L4O/bg=;
-        b=FpQlc5EqOFp67UbkODDYkpBhdPOrsvvUBi76s61+I0hdO/kBqFYuVC5a8Jm076fhTl
-         Pkzg7JM6b+kUZxBqwN5yASgYztzZpmz5rL3xl9JcQw67R/D3iFnBDZ1jSS+acv7mZJXo
-         uaf/6gnLmsiJHgkaB3DyVXvYuLspBlJd2b+TqRnGxcADpDrPu1T3pKWhtEwYMPNTOJVk
-         zGy+/ck1fSUre+5t+5UTuBEro+rmlZ6FcFV+OomuEg8L0JWbO5Q21tYDyoGUzoZ8WWtm
-         xLhtsyRNJsZyz6LiQ764v6pSyazis+FezlRtl3q4ePpFszH7xkAIiP1i1avrcBEn257N
-         zPAg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=/fUPEI56zsoFMhLJNiLnsCLgjtD/Rik44Vt3/L4O/bg=;
-        b=BKno3YdwIZ/ADjYRX9g+4aN5wJCwG3JVGTL3QLSWXVWpDDtL+VWN3qz0sBmP6T44HW
-         TBL0RqqMpNNj4RmLhJX/JhZfh1ghQ8QgXZoOxqyIpOSIXQEeibNzLv1u36Qjh7muAMi4
-         gsvNAst6tqvBjxaNSjwgzWrpjiejnNZj5ygSIfXSXW0J6LhsFkyjyFBEAyKKfJHE08Q/
-         0oDHmMVmZygTMGF0kNmMw5o2/TPdvylibit/66lWY/Pii+jdBt3up9d4PsSovZBfjRTZ
-         MsbBk31rAPcnt3p2qL6bk/VMgYrcs4cv9GNdg8+qowxV0cnhjjGiGKZ2opRTDuGmNHO5
-         iLew==
-X-Gm-Message-State: AD7BkJL8N/39gNFmhkQ/wGR78XTsg0f2fP7YZotlv/xytYUIzwWDyQt4SJF4en5t0HbpoA==
-X-Received: by 10.98.74.216 with SMTP id c85mr5505298pfj.129.1457116133832;
-        Fri, 04 Mar 2016 10:28:53 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.248])
-        by smtp.gmail.com with ESMTPSA id o7sm7099981pfa.37.2016.03.04.10.28.51
+Received: by 10.46.29.10 with SMTP id d10ls369098ljd.42.gmail; Thu, 14 Sep
+ 2017 10:13:47 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QC6qLLLGfNxgifZgG16hxfWitKd8cubWVgQXQwdollfvkYj+06iv9VjY+FxVln/ELiR/IiA
+X-Received: by 10.46.89.153 with SMTP id g25mr1614985ljf.20.1505409227920;
+        Thu, 14 Sep 2017 10:13:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505409227; cv=none;
+        d=google.com; s=arc-20160816;
+        b=S/JhuJq0lUI7O5EuxiCHRiKFEqmrU1aEpKuq1rlVNS5NWKutiMtPsB9Rcz7rAeRSC8
+         IgXQphz8gECkWSOSX+FXZROALX+hJ+jNMZnvA2gLKRo14ZIFYYHqR6PhXcvHU+OoT9Lg
+         y2T46lulgqzxqH9HWRJLstqfgRgVKkTO51SUHW9I2ZMLSB/cpZMuxIHoNKZyYfj0dHVi
+         44pfvdKspNv6dhjrkip2vN4QyiWEfXA2iD5CPFoQSbn/JJUtYkXatLv3+uDqovBa5bDG
+         u1ccVzBUdl9qtnc3A7a5YPAlhwEZvHtfl26UgshEa/hrLnIRoUS8qW0pYkYjGy4MzIxJ
+         rkuA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:cc:references:to:subject:arc-authentication-results;
+        bh=f2iKFsnsQgWKhTzhG14W8OuATs1KsHMp0I6p374oxLw=;
+        b=geSYHYJmnC1kV84bCQf3W35BBXU56l5aA8CTM0jgAhUF3hYnqHYDnsx5PLU2ybJG8t
+         nX2joUrWANsNWxJBGasJ6ELf5ksYk64WI/PJQxrHi/wPRWXHzBQMpQnjW6gM5xtICtxd
+         kYyyKcnDIFY2v8SbGOaB5PW2TVULGfzLcApLUwa4DzXdquUtGC0FXK7MxqTONWMK+nJO
+         Lnp5sR3601DlZYOdQVGGQo7Lg0IeG4ey2PSW4Z3HN+bd9yd/tCCJ0IjWYVaK0HMB03S7
+         4cA58d8PlfjHdXeIqNqVCXkmCYO1fgB1S/fwyVPoCF6N8OvBZH8iQRu+vAKU10Za5VEL
+         T4HA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: best guess record for domain of colin.king@canonical.com designates 91.189.89.112 as permitted sender) smtp.mailfrom=colin.king@canonical.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=canonical.com
+Return-Path: <colin.king@canonical.com>
+Received: from youngberry.canonical.com (youngberry.canonical.com. [91.189.89.112])
+        by gmr-mx.google.com with ESMTPS id 200si100866wmj.0.2017.09.14.10.13.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 04 Mar 2016 10:28:52 -0800 (PST)
-Date: Fri, 4 Mar 2016 15:59:12 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: vt6655: Remove & from function name.
-Message-ID: <20160304102911.GA3516@sandhya>
+        Thu, 14 Sep 2017 10:13:47 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of colin.king@canonical.com designates 91.189.89.112 as permitted sender) client-ip=91.189.89.112;
+Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: best guess record for domain of colin.king@canonical.com designates 91.189.89.112 as permitted sender) smtp.mailfrom=colin.king@canonical.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=canonical.com
+Received: from 1.general.cking.uk.vpn ([10.172.193.212])
+	by youngberry.canonical.com with esmtpsa (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.76)
+	(envelope-from <colin.king@canonical.com>)
+	id 1dsXhy-0002VR-RZ; Thu, 14 Sep 2017 17:13:46 +0000
+Subject: Re: DR Checker and KINT static checkers
+To: Julia Lawall <julia.lawall@lip6.fr>
+References: <20170913095202.a6zsi3xeryzhmxrl@mwanda>
+ <92cea65d-9461-3fed-8e07-cd41059410a9@canonical.com>
+ <alpine.DEB.2.20.1709131203520.13908@hadrien>
+Cc: Dan Carpenter <dan.carpenter@oracle.com>,
+ kernel-janitors@vger.kernel.org, outreachy-kernel@googlegroups.com,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+From: Colin Ian King <colin.king@canonical.com>
+Message-ID: <114caf1f-c78d-b8ee-7f7e-53625867299c@canonical.com>
+Date: Thu, 14 Sep 2017 18:13:46 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+ Thunderbird/45.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+In-Reply-To: <alpine.DEB.2.20.1709131203520.13908@hadrien>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 
-Remove & from function name,when function name passed as an argument to another function.
-Function name is used as pointer without &. 
+On 13/09/17 11:04, Julia Lawall wrote:
+> 
+> 
+> On Wed, 13 Sep 2017, Colin Ian King wrote:
+> 
+>> On 13/09/17 10:52, Dan Carpenter wrote:
+>>> LWN.net recently had an article about Dr Checker.  It's a promising new
+>>> static analysis tool.  The LWN article is for subscribers only until
+>>> tomorrow, but anyone can read the PDF or install the code.  It would be
+>>> really interesting if someone could run Dr Checker on a mainline kernel
+>>> tree and post the results.
+>>> https://lwn.net/Articles/733056/
+>>> https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-machiry.pdf
+>>> https://github.com/ucsb-seclab/dr_checker/
+>>>
+>>> The other tool that's quite interesting is KINT which looks for integer
+>>> overflows.  It's a bit of a pain because you have to annotate some
+>>> kernel functions to make it work.  The PDF and source code are here:
+>>>
+>>> http://css.csail.mit.edu/kint/
+>>>
+>>> regards,
+>>> dan carpenter
+>>>
+>>
+>> Funnily enough, I tried Dr Checker out earlier this week.  One has to
+>> make it do a fake build of the kernel to gather information on how to
+>> build the specific kernel config (e.g. how it was compiled and the gcc
+>> build flags) and then this gets parsed by DR-Checker.  Unfortunately it
+>> seems that it only supported arm architecture builds and it could not
+>> handle the gcc output for a modern x86 amd64 gcc (gcc 7.2). I kind of
+>> gave up after a couple of hours trying to make it work.  I suspect more
+>> patient developers may figure out how to make it work. I may go back and
+>> revisit this when I have some free time.
+> 
+> You could ask the authors.  They may be happy to have some feedback.
+> 
+> julia
+> 
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
- drivers/staging/vt6655/device_main.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+I've requested assistance from Aravind Machiry and he will help me with
+x86 checking once he's finished a paper, so I expect to report back with
+my results sometime at the end of the month if all goes well. Keep you
+posted.
 
-diff --git a/drivers/staging/vt6655/device_main.c b/drivers/staging/vt6655/device_main.c
-index 8a1ed62..c3eea07 100644
---- a/drivers/staging/vt6655/device_main.c
-+++ b/drivers/staging/vt6655/device_main.c
-@@ -1171,7 +1171,7 @@ static int vnt_start(struct ieee80211_hw *hw)
- 	if (!device_init_rings(priv))
- 		return -ENOMEM;
- 
--	ret = request_irq(priv->pcid->irq, &vnt_interrupt,
-+	ret = request_irq(priv->pcid->irq, vnt_interrupt,
- 			  IRQF_SHARED, "vt6655", priv);
- 	if (ret) {
- 		dev_dbg(&priv->pcid->dev, "failed to start irq\n");
--- 
-1.8.3.4
+Colin
 
 
