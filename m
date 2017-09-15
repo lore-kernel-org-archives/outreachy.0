@@ -1,90 +1,112 @@
-X-GM-THRID: 6394852201114632192
-X-Received: by 10.129.137.3 with SMTP id z3mr1018021ywf.20.1488917554932;
-        Tue, 07 Mar 2017 12:12:34 -0800 (PST)
+X-GM-THRID: 6466022113438334976
+X-Received: by 10.46.101.8 with SMTP id z8mr1871421ljb.0.1505503697046;
+        Fri, 15 Sep 2017 12:28:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.73.132 with SMTP id g4ls1421082otf.39.gmail; Tue, 07 Mar
- 2017 12:12:34 -0800 (PST)
-X-Received: by 10.157.82.35 with SMTP id e35mr913731oth.127.1488917554529;
-        Tue, 07 Mar 2017 12:12:34 -0800 (PST)
-Return-Path: <sreyamittal5@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id 2si202950pfx.8.2017.03.07.12.12.34
+Received: by 10.25.212.133 with SMTP id l127ls336527lfg.35.gmail; Fri, 15 Sep
+ 2017 12:28:15 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBLSstl3PgvdKqgLKSmBSVAjEaAoYZf/yXLNVmoX4MDjAyCKNa3PVnWsb3EnuTiWK0Ghqcp
+X-Received: by 10.25.228.134 with SMTP id x6mr287688lfi.33.1505503695516;
+        Fri, 15 Sep 2017 12:28:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505503695; cv=none;
+        d=google.com; s=arc-20160816;
+        b=e07ty54HwE1c5ZeO5DzkoS+mDaMOg2qzZb+EyJQwQVuWQ3ejtkGjYKYl0Ppj/MJwvR
+         P5NhXg4a73Ddtx3xx8A9IwylD3+d8BvMtFuLb/LHXdo3KpGp5pmHvfgKWfAIkzNskSp7
+         pdodPJjn09EOdr67qQ4DT03rofarIUSuObxRA4Ll60UaxhkXugm6Zd424k0SVz6Cf+co
+         AgLgorUW9sXXD4IBqULDoagXDBcnMr6JCG2ljdXeC38by8lV5cOV/tSo3v1z3W65Sn45
+         tu1TYj9juEyBAjwOmYo1AtGd7ClNrL/5HBauMBQYVqGFJDtZzIADenXtXN1ZA2GE1FQg
+         C4gg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=fQHXgwaYv65bqKgyqQegvJ7LpSprs7ColXEaM2hfR5s=;
+        b=yYHOzDd/Y7gEMehjfRLTBN6qobYG08d7CyqdweEt5UqP+xOFci/+VryEZMvp+DYAlI
+         XDC5y1tzlqTWH33XlnZfUVlwHja8mNmRXk7plrBJmHhfvbGWC398LCgaCC33weHK5FAr
+         Wl7GEhQB8Y2ToOn0QKJczv77BLu6oWvTP2tbDZlTW7tr5S+BlKCCcEU8V1aN+2qzNk0v
+         am2BfB2tebi21BncHx8nH1+2wgzKE7Xdq1DtGb8y9ge2dqh9mBTASTgBj7gMxJuZsO2c
+         t/dQWJ3Qdsb8LqMUsfp+cUyF/xx0ewG+/+X9Qgv9/kYWDCmd9LFMnnH4ZNh/EOMNyRIB
+         JvEg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id c142si21313wmh.3.2017.09.15.12.28.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 07 Mar 2017 12:12:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Fri, 15 Sep 2017 12:28:15 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of sreyamittal5@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=sreyamittal5@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id v190so1161635pfb.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 07 Mar 2017 12:12:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=VlXIQ9Tun0cKdxVsP4U8dLEj4lPmUbuUKNBgRGSl83M=;
-        b=FbA1PynTDop6a3t8PrqacwuqhNip0hIm1VqjojfDc4S4hkNlSt/25NchYCkE1boDrm
-         BTAJcgI5dQAlzRmbSLEsA7Fb+17k/S4LnsxlSIiNY9CR4h/7dYrOPGeVOPqPuJfhZk4Q
-         /+MjYcaVNrtK89nqVfthWdDlMSNnAw8RnCDLG8eFxZpS1I70rkgUB+1gn1Cj2RCwU0u8
-         PCvrmYYd++3qPK0r+ap/nEDNsRKL2AiYf8JuoyC86mC/gXwczzEyQD0IfBszzVN2h4K5
-         cz89eD4vO1PPan/Hb06nVHp8UX+8RHcIzY9CQf1BQIeE6IJ5GnOWi/dRUiHWx/ag+2OF
-         kY7g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=VlXIQ9Tun0cKdxVsP4U8dLEj4lPmUbuUKNBgRGSl83M=;
-        b=ixmckY0tSTozjk9t8QzISAyCV+wmREZuCI2Y6gCtUl9nBwlQgndoAtUUAGA81UhSsb
-         HjLbVWkpbz+W7Uhni9Z1VPrSRsmUTXawS5nOLFaN3ybdd1IkDTYpvxMdRe/l2riOeApx
-         SpKhbYOBo6t6P++Rvl3Cw06iRujsDrcphTeQFZDDF6D2kPxtBfP3A6Tm9VJEZ3Mk4w1n
-         k6uI0GkHF2QJBEbg4pHcyYQ+qjce4t4sIYmMSA1KDRryYOrMvble//KdPwnQkeb2VdCW
-         ECVVwJOPW4HxlXS7c/m9JfEkEMqbXTOd0uSLA5yaUCeXEwYu8T519SdAD8X5WB5n+AUd
-         DlMg==
-X-Gm-Message-State: AMke39lbFG6eooQvlRQwGr6UsDou3/rE/9gBx3xGIvUQ2Xcx17Dv0aHyC7Xqx9LyOuzk9g==
-X-Received: by 10.98.147.10 with SMTP id b10mr2390036pfe.177.1488917554310;
-        Tue, 07 Mar 2017 12:12:34 -0800 (PST)
-Return-Path: <sreyamittal5@gmail.com>
-Received: from stayawesome ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 74sm1476070pge.14.2017.03.07.12.12.32
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 07 Mar 2017 12:12:33 -0800 (PST)
-From: Sreya Mittal <sreyamittal5@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Sreya Mittal <sreyamittal5@gmail.com>,
-	Stephen Warren <swarren@wwwdotorg.org>,
-	Lee Jones <lee@kernel.org>,
-	Eric Anholt <eric@anholt.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Ray Jui <rjui@broadcom.com>,
-	Scott Branden <sbranden@broadcom.com>,
-	bcm-kernel-feedback-list@broadcom.com
-Subject: [PATCH] staging: vc04_services: bcm2835-audio: Align with parenthesis
-Date: Wed,  8 Mar 2017 01:42:16 +0530
-Message-Id: <20170307201216.5104-1-sreyamittal5@gmail.com>
-X-Mailer: git-send-email 2.9.3
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,398,1500933600"; 
+   d="scan'208";a="237680522"
+Received: from 85-171-60-79.rev.numericable.fr (HELO [192.168.0.15]) ([85.171.60.79])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 15 Sep 2017 21:28:14 +0200
+Date: Fri, 15 Sep 2017 21:28:14 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Aastha Gupta <aastha.gupta4104@gmail.com>
+cc: outreachy-kernel@googlegroups.com, Lidza Louina <lidza.louina@gmail.com>, 
+    Mark Hounschell <markh@compro.net>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH] staging: dgnc: remove unnecessary
+ comments
+In-Reply-To: <1505488080-7145-1-git-send-email-aastha.gupta4104@gmail.com>
+Message-ID: <alpine.DEB.2.20.1709152126530.2533@hadrien>
+References: <1505488080-7145-1-git-send-email-aastha.gupta4104@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Fix the checkpatch issue:
-Alignment should match open parenthesis
 
-Signed-off-by: Sreya Mittal <sreyamittal5@gmail.com>
----
- drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
-index 659c3d1..5b03102 100644
---- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
-+++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
-@@ -107,7 +107,7 @@ static int snd_bcm2835_ctl_get(struct snd_kcontrol *kcontrol,
- }
- 
- static int snd_bcm2835_ctl_put(struct snd_kcontrol *kcontrol,
--	struct snd_ctl_elem_value *ucontrol)
-+				struct snd_ctl_elem_value *ucontrol)
- {
- 	struct bcm2835_chip *chip = snd_kcontrol_chip(kcontrol);
- 	int changed = 0;
--- 
-2.9.3
+On Fri, 15 Sep 2017, Aastha Gupta wrote:
 
+> This patch removes unnecessary comments. These comments are already
+> there before the structure definitions.
+
+These seem to have been added on purpose, in e14047e4e3b54 that otherwise
+cleans up the comments.  Perhaps if you remove them, then checkpatch will
+complain about the locks not being commented?
+
+julia
+
+>
+> Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
+> ---
+>  drivers/staging/dgnc/dgnc_driver.h | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/dgnc/dgnc_driver.h b/drivers/staging/dgnc/dgnc_driver.h
+> index 764d6fe..1d1fa83 100644
+> --- a/drivers/staging/dgnc/dgnc_driver.h
+> +++ b/drivers/staging/dgnc/dgnc_driver.h
+> @@ -162,10 +162,8 @@ struct dgnc_board {
+>  	unsigned char	vpd[128];
+>  	unsigned char	serial_num[20];
+>
+> -	/* used to protect the board */
+>  	spinlock_t	bd_lock;
+>
+> -	/*  Protect poller tasklet and interrupt routine from each other. */
+>  	spinlock_t	bd_intr_lock;
+>
+>  	uint		state;
+> @@ -330,7 +328,7 @@ struct channel_t {
+>  	struct un_t	ch_tun;
+>  	struct un_t	ch_pun;
+>
+> -	spinlock_t	ch_lock; /* provide for serialization */
+> +	spinlock_t	ch_lock;
+>  	wait_queue_head_t ch_flags_wait;
+>
+>  	uint		ch_portnum;
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1505488080-7145-1-git-send-email-aastha.gupta4104%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
