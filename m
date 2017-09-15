@@ -1,78 +1,78 @@
 X-GM-THRID: 6465879632669310976
-X-Received: by 10.107.5.12 with SMTP id 12mr2351452iof.76.1505457532363;
-        Thu, 14 Sep 2017 23:38:52 -0700 (PDT)
+X-Received: by 10.129.51.194 with SMTP id z185mr14295055ywz.169.1505457528367;
+        Thu, 14 Sep 2017 23:38:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.79.76 with SMTP id c73ls524845itb.10.canary-gmail; Thu, 14
- Sep 2017 23:38:51 -0700 (PDT)
-X-Received: by 10.98.204.139 with SMTP id j11mr13007893pfk.11.1505457531845;
-        Thu, 14 Sep 2017 23:38:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505457531; cv=none;
+Received: by 10.107.34.6 with SMTP id i6ls1440114ioi.14.gmail; Thu, 14 Sep
+ 2017 23:38:47 -0700 (PDT)
+X-Received: by 10.55.198.139 with SMTP id s11mr12654753qkl.49.1505457527848;
+        Thu, 14 Sep 2017 23:38:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505457527; cv=none;
         d=google.com; s=arc-20160816;
-        b=e12e+kh3Ba8pfj8vLdFam1B+kleXtTnSpaaqSFPJ43/ozmdGJoXXX0+jsGFSDLaaX5
-         GgiO35dvWCZyPubwEPIWG5HlhCuKKi9zgX8SNdHoKdXYghcEnitiLhoHXxFnwDPLMIWu
-         tj1WWaz0udX1IrshvhTRgvg5ym3kRZ9RJUzWpCeI+kcdhxqUU2iUM/zKPZcusHYFBCeR
-         bKwuprKsoyLqEi/VPEFFeSEKt6wY6oettpEtfODqHwqa+JOP6JvP+SacGltH6rpgWpiD
-         qo7jNtkTQXzR6HdlfUVvRBmagyIHMj3Wy6CwPaAcPuJu9TvnsZ73GvcwCTJ55MF4AtQz
-         bQkQ==
+        b=epF9m26LNAh1abpX3MYSh/eannkwP3daerCOZUhTTuUMYZtDyLi+IkPA41tfjqqLTL
+         7vEAOBa1yGHxw6czkWS1R54p8/DKiXtza3AtN5gJ2ITiqL2KS6qtIBCBxI0Q2XY4ajMt
+         cZuo/QYv8fC373kXhPVg8zhXwUxgfvR4Lkg81LdX3b5SIgANY5ieiifNzecH6XVcMYI+
+         wQwJArPUfgn7rPfCM0GA3fG9Ba4JqXdpbLHRh1TkY+QJKicrgNy934FZDpIkoy9cQf9E
+         xVlz8qJb86usEmH2Cb3XEynOlSJMkeUkjHmNtQVyk6fjng+bumDnWgLqc7EN+O+vZEf9
+         xAYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:references:in-reply-to:message-id:date
          :subject:cc:to:from:dkim-signature:arc-authentication-results;
-        bh=Zfv633TPxT1mkHth7FMuIrPwsHcMqUmBixbysdVaju0=;
-        b=qyqH+ac5SbnSuSeqQ83qtpRgAu+J872Pw4IWGsrwPOjA9gxLYi2U4ugAv+Dtzpdt0o
-         jygTxPJ6xbrMVDqHcz6cBgrM9F+wf/gbgZ9f+6gahoDreEHBLcx1qua4ZznojfGduuR6
-         LMPAwNOIUgdzazzLjIKf4/LUULcQnjqeTakkjwPPDQtn5LAxdJ8hQhy9KvUBSgsneH2d
-         WbNx5Nv/SAg+jIZrmBwjQuk8GXxAQtAPNTc8sXgs9L2HxshRkEBdFvBLoDzXPvgF6GXx
-         3mnCHXEx4HsZ/O/Ips8KZ8bx1i3CPhNAUwMmBuBRw7Ar69Ma9JM4uLNFECwxIl2A+3Ru
-         b0vA==
+        bh=AMi/MTaqb34EE3nZbzz7jC6ExXJBtfL069lufdH5xqQ=;
+        b=DjG7c0wRaUTuPOlrno8QBK8mpjD+l70XuH+9uHAd2FxRGqYYaMIi8zrg7b0OkNkgzo
+         LLj+pR+d4Z5jysjHpWAo0skvq0JZWZgYaANuhpLYpOjnOI1HT9LphEznE9zhWHXm5lsB
+         23tvgPb42JRnygJht3VuNF+qvEGX1Rtgm1CLx1lcBDWEuzr0MVyow8wKAncBcDWPoWAT
+         Tq4wUYoMcBePvJCZ8OeW0IvIKxGjLP/297+TYIMBC0V9LFA0ubwLW2nSOBXSFCPv62QT
+         +W5FWcJwe9iYEyCx9Cboivr/ZWIrX7zJuFNPzvuX1S2t4bhzm6VtpYeQk2uTx3Ggfrzd
+         f9hw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LyOTpo9R;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FLpjZsWQ;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id s81si17669pfg.19.2017.09.14.23.38.51
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id 8si17408pfa.0.2017.09.14.23.38.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 14 Sep 2017 23:38:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Thu, 14 Sep 2017 23:38:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LyOTpo9R;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FLpjZsWQ;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id h4so825895pfk.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 14 Sep 2017 23:38:51 -0700 (PDT)
+Received: by mail-pf0-x241.google.com with SMTP id e69so817239pfg.4
+        for <outreachy-kernel@googlegroups.com>; Thu, 14 Sep 2017 23:38:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=Zfv633TPxT1mkHth7FMuIrPwsHcMqUmBixbysdVaju0=;
-        b=LyOTpo9RooRPC/FxtLRPlTZddDZd8UnupHXKXZqSa6WNkEoQ9QyUHuAgsxyU2aaVAa
-         MswAncXciHFkH1X4r35ARulggSWVqpaSRjFOvp8Kj4jVv+GtzKgAHM6B1XwjoOir5B4X
-         BrMqJP2ckKgOXMij9KTmhViED8DbwR2ELQmnxHVv6C+luC8/Mmd4Hvb1fymOpVpDJi1u
-         C5u0PwKQQAO6AechoJnHKnpGJgxaKE2EJS+zk0i+Z6lQEIJIGSivEudkp44eltsyfrri
-         lOACN7fGlq6Cqr9/nwr0Irvkp9rio9VNBzYu2MlUnUhdhIZkRHrCXPci/ztPiPZeIhUh
-         hd/g==
+        bh=AMi/MTaqb34EE3nZbzz7jC6ExXJBtfL069lufdH5xqQ=;
+        b=FLpjZsWQRmPC43y2qGFgnVBfxQCWIzL77n0PFLX+id4YuBgN6JxKY6w8eqKSvK7+fN
+         3+FbK4cjpIGqZKsQ9BtkM/gmjVo6xfzd/MTDcLRkQQnZsWCqrrS+hsI5G6olNS7m6L7a
+         kjbCr0Oabz3JZmnzWX/bYlmXs8H24bwqKTfNMUcQV87BjP2qeezZA57t8afvP+v8Hk5S
+         iU2S7tm7+PQIH8ZMpXCAgdKszBtIU+Jvh3gitrPiQf5RHgYW7my/oqQoFzasgDi4G/fW
+         tWM8kGpt71Bih7269hpYKyPiljp8LL1hNvkC06Y9aB6a//aSV7lfaBAgQs+OHe44h8kL
+         jZRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=Zfv633TPxT1mkHth7FMuIrPwsHcMqUmBixbysdVaju0=;
-        b=X4Ogn4HemQ98/WicqfpFfAkaSimv4TCfqqxkUJwGE59dAKSa9NhU3ZBCE3ODd8RoPt
-         iRERRpR7Qf+FfOL8CIPGjPu8+Iorh+xpk6kBMP5hRtYwVN370A8VVUB0G+25M8u5r4w+
-         F86+0dneLDMpekFkb8ltiN1QPd7iTSfMOErvIZGAB33FNKXCuEXTyNHoHpY5D8/QAvGc
-         Tlb0/QyfxfX3e4KM1KPqx2EE+yiNa+lFxXpu2pSykJT70I03AN0ACUwJP5cbDuNRr++y
-         ZT3q8A0VaHjNXCP+tinsUxLygydhX7eBcjhFT2IFakueP8SRRj4T/5rwS/O+EAJXVdDg
-         xP7w==
-X-Gm-Message-State: AHPjjUg3F4OWKWH0qxVY2XRn1H0NfqY6MCgW5XhngMiqOQ4H4s0+fbfb
-	o2Is++TkfWHUYc6m0jE=
-X-Google-Smtp-Source: ADKCNb56e02+Q1iMJwRvdEx79Pl/4gKYlcEFxzPugEYAF4q3NiYyYE2roKsrTsVoYxRBQ/jBczGHBA==
-X-Received: by 10.84.214.151 with SMTP id j23mr26722367pli.21.1505457531613;
-        Thu, 14 Sep 2017 23:38:51 -0700 (PDT)
+        bh=AMi/MTaqb34EE3nZbzz7jC6ExXJBtfL069lufdH5xqQ=;
+        b=StrcS7rG990M6AiS6Ida5DhhWzUiWN+opUIQ8HlZhcTPtOuvk1UFDeQWvGs0S/l+tv
+         teIRyJvA5kkntIRozlcGZUkYDNJjZy7JuJMVjLq4p2ElVtQq5hFL4o8zw8hJ/YZ+pN7N
+         xcQtLmG8O3GeE3i3y3j0mBz3SnsrA90On9qPFkmqv+YjkZk5xuYGPDeDDdl7pN7TKIZB
+         HU1uoYY2aD3upwm/gVWf2JhNipRnvPNEtkBiZKCb9DQhS1VXMDOLpaHELVXXuvuiHx8D
+         ODf17UUJUvkQ9e4V0dFcezQt7oFeouKkodaeobfNKf6c16Lc5k7BkESDBiVwVCjkzR4N
+         AUNg==
+X-Gm-Message-State: AHPjjUhNNwwSvbQy/6Af79QawLC1UfIr7pzB5iNPwysSd9NBF9NruuQ2
+	qdclhwzC1vvlDg==
+X-Google-Smtp-Source: ADKCNb5XJ606ZSWV/R7O4MFpuQdKmte/YGRPUY71+AE81fmi2ZcoNu0rpYiQLI5mGJg0lYZ05O26KA==
+X-Received: by 10.84.132.2 with SMTP id 2mr26938659ple.381.1505457527565;
+        Thu, 14 Sep 2017 23:38:47 -0700 (PDT)
 Return-Path: <aastha.gupta4104@gmail.com>
 Received: from aastha-HP-Pavilion-15-Notebook-PC ([171.78.243.118])
-        by smtp.gmail.com with ESMTPSA id c7sm797579pfc.55.2017.09.14.23.38.50
+        by smtp.gmail.com with ESMTPSA id k195sm671967pgc.4.2017.09.14.23.38.46
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 14 Sep 2017 23:38:51 -0700 (PDT)
+        Thu, 14 Sep 2017 23:38:47 -0700 (PDT)
 From: Aastha Gupta <aastha.gupta4104@gmail.com>
 To: outreachy-kernel@googlegroups.com,
 	Oleg Drokin <oleg.drokin@intel.com>,
@@ -80,9 +80,9 @@ To: outreachy-kernel@googlegroups.com,
 	James Simmons <jsimmons@infradead.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH v2 5/8] staging: lustre: ldlm: fix lines over 80 characters in ldlm_lockd
-Date: Fri, 15 Sep 2017 12:08:20 +0530
-Message-Id: <f300f41c48221e6104afd9b8c7975e3547d5920b.1505456961.git.aastha.gupta4104@gmail.com>
+Subject: [PATCH v2 4/8] staging: lustre: ldlm: fix lines over 80 characters in ldlm_lock
+Date: Fri, 15 Sep 2017 12:08:19 +0530
+Message-Id: <ed18845e7c72b6af7630cba04fcfcea5b1d3991b.1505456961.git.aastha.gupta4104@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <cover.1505456960.git.aastha.gupta4104@gmail.com>
 References: <alpine.DEB.2.20.1709150814460.2287@hadrien>
@@ -95,33 +95,106 @@ WARNING: line over 80 characters
 
 Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
 ---
- drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ drivers/staging/lustre/lustre/ldlm/ldlm_lock.c | 33 +++++++++++++++++---------
+ 1 file changed, 22 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c b/drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c
-index e270733..1b2dbb9 100644
---- a/drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c
-+++ b/drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c
-@@ -184,7 +184,8 @@ static void ldlm_handle_cp_callback(struct ptlrpc_request *req,
- 			LASSERT(lock->l_lvb_data);
- 
- 			if (unlikely(lock->l_lvb_len < lvb_len)) {
--				LDLM_ERROR(lock, "Replied LVB is larger than expectation, expected = %d, replied = %d",
-+				LDLM_ERROR(lock,
-+					   "Replied LVB is larger than expectation, expected = %d, replied = %d",
- 					   lock->l_lvb_len, lvb_len);
- 				rc = -EINVAL;
- 				goto out;
-@@ -598,7 +599,8 @@ static int ldlm_callback_handler(struct ptlrpc_request *req)
- 
- 	lock = ldlm_handle2lock_long(&dlm_req->lock_handle[0], 0);
- 	if (!lock) {
--		CDEBUG(D_DLMTRACE, "callback on lock %#llx - lock disappeared\n",
-+		CDEBUG(D_DLMTRACE,
-+		       "callback on lock %#llx - lock disappeared\n",
- 		       dlm_req->lock_handle[0].cookie);
- 		rc = ldlm_callback_reply(req, -EINVAL);
- 		ldlm_callback_errmsg(req, "Operate with invalid parameter", rc,
+diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c b/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c
+index b5d84f3..adfc0b4 100644
+--- a/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c
++++ b/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c
+@@ -1035,7 +1035,8 @@ void ldlm_grant_lock(struct ldlm_lock *lock, struct list_head *work_list)
+ 		ldlm_extent_add_lock(res, lock);
+ 	} else if (res->lr_type == LDLM_FLOCK) {
+ 		/*
+-		 * We should not add locks to granted list in the following cases:
++		 * We should not add locks to granted list in
++		 * the following cases:
+ 		 * - this is an UNLOCK but not a real lock;
+ 		 * - this is a TEST lock;
+ 		 * - this is a F_CANCELLK lock (async flock has req_mode == 0)
+@@ -2051,13 +2052,16 @@ void _ldlm_lock_debug(struct ldlm_lock *lock,
+ 		libcfs_debug_vmsg2(msgdata, fmt, args,
+ 				   " ns: \?\? lock: %p/%#llx lrc: %d/%d,%d mode: %s/%s res: \?\? rrc=\?\? type: \?\?\? flags: %#llx nid: %s remote: %#llx expref: %d pid: %u timeout: %lu lvb_type: %d\n",
+ 				   lock,
+-				   lock->l_handle.h_cookie, atomic_read(&lock->l_refc),
++				   lock->l_handle.h_cookie,
++				   atomic_read(&lock->l_refc),
+ 				   lock->l_readers, lock->l_writers,
+ 				   ldlm_lockname[lock->l_granted_mode],
+ 				   ldlm_lockname[lock->l_req_mode],
+-				   lock->l_flags, nid, lock->l_remote_handle.cookie,
++				   lock->l_flags, nid,
++				   lock->l_remote_handle.cookie,
+ 				   exp ? atomic_read(&exp->exp_refcount) : -99,
+-				   lock->l_pid, lock->l_callback_timeout, lock->l_lvb_type);
++				   lock->l_pid, lock->l_callback_timeout,
++				   lock->l_lvb_type);
+ 		va_end(args);
+ 		return;
+ 	}
+@@ -2067,7 +2071,8 @@ void _ldlm_lock_debug(struct ldlm_lock *lock,
+ 		libcfs_debug_vmsg2(msgdata, fmt, args,
+ 				   " ns: %s lock: %p/%#llx lrc: %d/%d,%d mode: %s/%s res: " DLDLMRES " rrc: %d type: %s [%llu->%llu] (req %llu->%llu) flags: %#llx nid: %s remote: %#llx expref: %d pid: %u timeout: %lu lvb_type: %d\n",
+ 				   ldlm_lock_to_ns_name(lock), lock,
+-				   lock->l_handle.h_cookie, atomic_read(&lock->l_refc),
++				   lock->l_handle.h_cookie,
++				   atomic_read(&lock->l_refc),
+ 				   lock->l_readers, lock->l_writers,
+ 				   ldlm_lockname[lock->l_granted_mode],
+ 				   ldlm_lockname[lock->l_req_mode],
+@@ -2076,8 +2081,10 @@ void _ldlm_lock_debug(struct ldlm_lock *lock,
+ 				   ldlm_typename[resource->lr_type],
+ 				   lock->l_policy_data.l_extent.start,
+ 				   lock->l_policy_data.l_extent.end,
+-				   lock->l_req_extent.start, lock->l_req_extent.end,
+-				   lock->l_flags, nid, lock->l_remote_handle.cookie,
++				   lock->l_req_extent.start,
++				   lock->l_req_extent.end,
++				   lock->l_flags, nid,
++				   lock->l_remote_handle.cookie,
+ 				   exp ? atomic_read(&exp->exp_refcount) : -99,
+ 				   lock->l_pid, lock->l_callback_timeout,
+ 				   lock->l_lvb_type);
+@@ -2087,7 +2094,8 @@ void _ldlm_lock_debug(struct ldlm_lock *lock,
+ 		libcfs_debug_vmsg2(msgdata, fmt, args,
+ 				   " ns: %s lock: %p/%#llx lrc: %d/%d,%d mode: %s/%s res: " DLDLMRES " rrc: %d type: %s pid: %d [%llu->%llu] flags: %#llx nid: %s remote: %#llx expref: %d pid: %u timeout: %lu\n",
+ 				   ldlm_lock_to_ns_name(lock), lock,
+-				   lock->l_handle.h_cookie, atomic_read(&lock->l_refc),
++				   lock->l_handle.h_cookie,
++				   atomic_read(&lock->l_refc),
+ 				   lock->l_readers, lock->l_writers,
+ 				   ldlm_lockname[lock->l_granted_mode],
+ 				   ldlm_lockname[lock->l_req_mode],
+@@ -2097,7 +2105,8 @@ void _ldlm_lock_debug(struct ldlm_lock *lock,
+ 				   lock->l_policy_data.l_flock.pid,
+ 				   lock->l_policy_data.l_flock.start,
+ 				   lock->l_policy_data.l_flock.end,
+-				   lock->l_flags, nid, lock->l_remote_handle.cookie,
++				   lock->l_flags, nid,
++				   lock->l_remote_handle.cookie,
+ 				   exp ? atomic_read(&exp->exp_refcount) : -99,
+ 				   lock->l_pid, lock->l_callback_timeout);
+ 		break;
+@@ -2115,7 +2124,8 @@ void _ldlm_lock_debug(struct ldlm_lock *lock,
+ 				   lock->l_policy_data.l_inodebits.bits,
+ 				   atomic_read(&resource->lr_refcount),
+ 				   ldlm_typename[resource->lr_type],
+-				   lock->l_flags, nid, lock->l_remote_handle.cookie,
++				   lock->l_flags, nid,
++				   lock->l_remote_handle.cookie,
+ 				   exp ? atomic_read(&exp->exp_refcount) : -99,
+ 				   lock->l_pid, lock->l_callback_timeout,
+ 				   lock->l_lvb_type);
+@@ -2133,7 +2143,8 @@ void _ldlm_lock_debug(struct ldlm_lock *lock,
+ 				   PLDLMRES(resource),
+ 				   atomic_read(&resource->lr_refcount),
+ 				   ldlm_typename[resource->lr_type],
+-				   lock->l_flags, nid, lock->l_remote_handle.cookie,
++				   lock->l_flags, nid,
++				   lock->l_remote_handle.cookie,
+ 				   exp ? atomic_read(&exp->exp_refcount) : -99,
+ 				   lock->l_pid, lock->l_callback_timeout,
+ 				   lock->l_lvb_type);
 -- 
 2.7.4
 
