@@ -1,117 +1,105 @@
 X-GM-THRID: 6465879632669310976
-X-Received: by 10.36.125.205 with SMTP id b196mr1523240itc.22.1505457511832;
-        Thu, 14 Sep 2017 23:38:31 -0700 (PDT)
+X-Received: by 10.28.15.72 with SMTP id 69mr210403wmp.3.1505456221071;
+        Thu, 14 Sep 2017 23:17:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.192.65 with SMTP id u62ls549751itf.16.gmail; Thu, 14 Sep
- 2017 23:38:31 -0700 (PDT)
-X-Received: by 10.36.219.133 with SMTP id c127mr1460270itg.37.1505457511059;
-        Thu, 14 Sep 2017 23:38:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505457511; cv=none;
+Received: by 10.28.100.130 with SMTP id y124ls131722wmb.9.gmail; Thu, 14 Sep
+ 2017 23:17:00 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QCDVomA5XnASc+arfdaw3s2yqFIHp5tFgKpaaGQFh+fmb4BbfIqBHKx0VMt3pjlzDXmsoZ2
+X-Received: by 10.28.136.143 with SMTP id k137mr216016wmd.3.1505456219999;
+        Thu, 14 Sep 2017 23:16:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505456219; cv=none;
         d=google.com; s=arc-20160816;
-        b=zGQUd6d6wFxKG+WGpB2MAdf9X5NX2ObXCULiHm2lu1uiYvCkj96MnpHAKwis2JLCLq
-         tin280bEnuM9xgpa/nOjeTwqqwCOSU2OpXVxHOueMgRihUg50ZD+Bj2Yfmj9waLCrUWa
-         JqjWSfuICKEIu3Or+YEQdY1CN2TbZwAEiDM39YIeVLrQ8Gj8TjzqsVu/tBUlrrwoDACH
-         bwvqFzIwnZdm3oFzIRjX2xoRk1HHTKNa3rgoZOICsNEVWft0BoDgBuqm/+fSlOnpoVI5
-         OMS4F4ueJBsZ1fa7XSjZCXuw9v0MfK2VL9p1n2AaKv/6ZmmZzxqz3uK53ORdvG9kAzB8
-         sRJg==
+        b=RjQbNY1W7bdyKdJ4RNlQTW9CkIL9yduNJraB3aPdVatjs6a1LkLiU31PyzEFlG+Dph
+         1j9rWwCQr6JNYyGwYeVgDkf6UDEcLh32EpBhkNLOP0xAw+fKO04TKtKZsjHQ/TAXo/s6
+         KJgsAWKDdNOFbEME8RgV1jMIFvT7JFQtZAc9TCJW5BLfYSyWdQw0aeHrnvO4F+sqvRZV
+         GytR978+rEFatqCgzmxnwBUM4gW38tCYQqPiJ0SiOL5MUyTW6I2FONoCS6QlqvOLIW0F
+         9VF47rv85/pCOirKLYKq0rnjaRaWelBYOE3CLncuhWJ7LfxHGJMqmNjJYOrRkJN0B/Mm
+         cAZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=u2DjGhRxhFCmfqekMgECynPY0fruL5qZNYDW4gZvTgM=;
-        b=P+62wlPdsvaJJjkNRkhEcSYDB91wm7MhtWeNWoOe5UMVEi70Gn7BQzg5KGM3GxIpca
-         V1134JJxYWYuG51J5WdWwdsk4MKe1Ha2MGjnVRRowTIrMOEXjlO51aoo0nh7I+Z/ckZT
-         LTHOcJwU5v83QSW/YV5G2DUbW/pRUmJxr6AcmO69dRrdgNL1wGgLFgBcutxdk3DiUt1b
-         ZCycZG1AmknW0vgGsIQqyuaz6XbX2USMLzASGm5qXQfzkBiCqH9wpmC2AYZtW2YwmEtI
-         zAaI1zMCQbIuSIHlatMrov8YUgMsMiPsrUxALNcTB4+uqYowWuQlda0G3023uJ3Ca2PQ
-         8u8A==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=6Gtc2uUXGmRvZFlUa+1rRHhjqdf3njgKUM4ndpWdZJE=;
+        b=GcW/tL0KQdQc8qFaVgcD1tx9LvsJo7xAh8l99pN668rwgarylPO7LHchwUKcV3mCVN
+         wBOqKHznWQkt6yax6tqsRMLngSNVzzOODIvqv7zI970SHivTzcqLyuV2i2xlfuMGm/56
+         gqKobLdeamzlKA+s+tCp7nEysKA2vL/Suhu+qfCoJ6iztUExBG7wBNwLKlqI664pkoM3
+         7xkF1qvd4eW0F/QT0mlxYMI7C5yFZHIDDjZJxaxcWm7TbjK5J+KyUrg5i03qI5SWaW9v
+         cCHo1B97Dtb07xMwPM2Ne1kfbB+5WC5ZV1BYTaaYLFMPBWymNqZsPZKo5ycCAUKMER3w
+         ECpQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=S7U3CVjr;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id 8si17408pfa.0.2017.09.14.23.38.31
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id k18si147549wmd.1.2017.09.14.23.16.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 14 Sep 2017 23:38:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Thu, 14 Sep 2017 23:16:59 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=S7U3CVjr;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id e69so817239pfg.4
-        for <outreachy-kernel@googlegroups.com>; Thu, 14 Sep 2017 23:38:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=u2DjGhRxhFCmfqekMgECynPY0fruL5qZNYDW4gZvTgM=;
-        b=S7U3CVjrhKQ0JFYIg95fIhgTQ3R4/WtA9NbErrTf9974Mt5NwyRo4QfQPb3bWC3TG2
-         yByFXPaMuGxKMTLS/zzG5jVEb8lY2lL5OgOaWHoSm+CJwEZ1iqR2FdzBZK/fdwXfoOG+
-         oO14qEvdXHlWphYF5x357j3UjjAsuBix8NoQfT9TNgTp7U9mhyIEzCP/aEHjb/Tme8LZ
-         jpvcaugjczVPOwJOwiXMqFn7ET2wBSM/XJziT5aALjbC/eT8mg1KWxEe4uTfhu24rFoT
-         Ta2PEXLKTM+vFvX9K8hqyf/LBUtEOpLFL7aNxL6wHKgQBk9hRJqM1R0ybuRFUakTDrJl
-         dXSQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=u2DjGhRxhFCmfqekMgECynPY0fruL5qZNYDW4gZvTgM=;
-        b=m8Al528M+KVcT3dpea15ZQFLCDDobGVjcS6+KUgtlkZF5PeimjXbVGmgtd7+BWxJIq
-         b5ubhEu2o5jBBp21j7+FWQ09oBu8KL2N2AFVcwfUKorLu5tLUZarkQPRpVPorxWxVT3B
-         MPlpXo0LHI7+Js3uAB176zfN0yQ0xLwrm/VpbOrzWrrfJAZDHuYz0osmpnySowAz6t3c
-         1tdzV44xjNMJtj28dwxbbTtx4zbIBHYgSdHzRoKscLprzXBW1aw0ELhsyztlxXD3zw6M
-         LY15m1TGp1yN7LJ1y5lFo3P00EYrDF2Noy8rGuicx7qgyRnLgONxe7rwFLc74ccPw83U
-         Cxvg==
-X-Gm-Message-State: AHPjjUhCKA9oHHL4Z8ZX7732uvIoNaXKu8TYBUCtxIeDGYlKcaPmoP+t
-	MqUAPBYxun/HKQ==
-X-Google-Smtp-Source: AOwi7QCh1OKqs36zgKQF6pHdleoh8oSEJM8Z2wa9bUrI+ZRtfpgp5/aehAAhgNY1p4SgnEjFiGB5rQ==
-X-Received: by 10.84.248.138 with SMTP id q10mr4577643pll.431.1505457510795;
-        Thu, 14 Sep 2017 23:38:30 -0700 (PDT)
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from aastha-HP-Pavilion-15-Notebook-PC ([171.78.243.118])
-        by smtp.gmail.com with ESMTPSA id 207sm740025pfu.0.2017.09.14.23.38.29
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 14 Sep 2017 23:38:30 -0700 (PDT)
-From: Aastha Gupta <aastha.gupta4104@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	Oleg Drokin <oleg.drokin@intel.com>,
-	Andreas Dilger <andreas.dilger@intel.com>,
-	James Simmons <jsimmons@infradead.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH v2 0/8] staging: lustre: ldlm: fix line over 80 characters
-Date: Fri, 15 Sep 2017 12:08:15 +0530
-Message-Id: <cover.1505456960.git.aastha.gupta4104@gmail.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <alpine.DEB.2.20.1709150814460.2287@hadrien>
-References: <alpine.DEB.2.20.1709150814460.2287@hadrien>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,396,1500933600"; 
+   d="scan'208";a="291183830"
+Received: from 85-171-60-79.rev.numericable.fr (HELO [192.168.0.15]) ([85.171.60.79])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 15 Sep 2017 08:16:59 +0200
+Date: Fri, 15 Sep 2017 08:16:59 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Aastha Gupta <aastha.gupta4104@gmail.com>
+cc: outreachy-kernel@googlegroups.com, Oleg Drokin <oleg.drokin@intel.com>, 
+    Andreas Dilger <andreas.dilger@intel.com>, 
+    James Simmons <jsimmons@infradead.org>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH 0/8] staging: lustre: ldlm: fix line
+ over 80 characters
+In-Reply-To: <cover.1505454643.git.aastha.gupta4104@gmail.com>
+Message-ID: <alpine.DEB.2.20.1709150814460.2287@hadrien>
+References: <cover.1505454643.git.aastha.gupta4104@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-These patches fix checkpatch.pl warnings 'line over 80 characters' in ldlm files.
 
-Changes in v2:
-	- edited commit messages to include the information about the file name 
 
-Aastha Gupta (8):
-  staging: lustre: ldlm: fix line over 80 characters in ldlm_extent
-  staging: lustre: ldlm: fix line over 80 characters in ldlm_flock
-  staging: lustre: ldlm: fix line over 80 characters in ldlm_internal
-  staging: lustre: ldlm: fix lines over 80 characters in ldlm_lock
-  staging: lustre: ldlm: fix lines over 80 characters in ldlm_lockd
-  staging: lustre: ldlm: fix lines over 80 characters in ldlm_pool
-  staging: lustre: ldlm: fix lines over 80 characters in ldlm_request
-  staging: lustre: ldlm: fix lines over 80 characters in ldlm_resource
+On Fri, 15 Sep 2017, Aastha Gupta wrote:
 
- drivers/staging/lustre/lustre/ldlm/ldlm_extent.c   |  3 +-
- drivers/staging/lustre/lustre/ldlm/ldlm_flock.c    |  6 ++--
- drivers/staging/lustre/lustre/ldlm/ldlm_internal.h |  4 ++-
- drivers/staging/lustre/lustre/ldlm/ldlm_lock.c     | 33 +++++++++++------
- drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c    |  6 ++--
- drivers/staging/lustre/lustre/ldlm/ldlm_pool.c     |  6 ++--
- drivers/staging/lustre/lustre/ldlm/ldlm_request.c  | 41 ++++++++++++++--------
- drivers/staging/lustre/lustre/ldlm/ldlm_resource.c |  3 +-
- 8 files changed, 67 insertions(+), 35 deletions(-)
+> These patches fix checkpatch.pl warnings 'line over 80 characters' in ldlm files.
+>
+> -------------------------------------------------------------------------
+>
+> Aastha Gupta (8):
+>   staging: lustre: ldlm: fix line over 80 characters
+>   staging: lustre: ldlm: fix line over 80 characters
+>   staging: lustre: ldlm: fix line over 80 characters
+>   staging: lustre: ldlm: fix lines over 80 characters
+>   staging: lustre: ldlm: fix lines over 80 characters
+>   staging: lustre: ldlm: fix lines over 80 characters
+>   staging: lustre: ldlm: fix lines over 80 characters
+>   staging: lustre: ldlm: fix lines over 80 characters
 
--- 
-2.7.4
+Your patches all have the same subjects.  That is not allowed.  Eihter put
+them all into one patch or add more information about the file name in the
+subject line.  But don't include .h or .c
 
+julia
+
+>
+>  drivers/staging/lustre/lustre/ldlm/ldlm_extent.c   |  3 +-
+>  drivers/staging/lustre/lustre/ldlm/ldlm_flock.c    |  6 ++--
+>  drivers/staging/lustre/lustre/ldlm/ldlm_internal.h |  4 ++-
+>  drivers/staging/lustre/lustre/ldlm/ldlm_lock.c     | 33 +++++++++++------
+>  drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c    |  6 ++--
+>  drivers/staging/lustre/lustre/ldlm/ldlm_pool.c     |  6 ++--
+>  drivers/staging/lustre/lustre/ldlm/ldlm_request.c  | 41 ++++++++++++++--------
+>  drivers/staging/lustre/lustre/ldlm/ldlm_resource.c |  3 +-
+>  8 files changed, 67 insertions(+), 35 deletions(-)
+>
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/cover.1505454643.git.aastha.gupta4104%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
