@@ -1,62 +1,69 @@
-X-GM-THRID: 3783863042048
-X-Received: by 10.112.147.35 with SMTP id th3mr1169568lbb.15.1424964816518;
-        Thu, 26 Feb 2015 07:33:36 -0800 (PST)
+X-GM-THRID: 6465312034582953984
+X-Received: by 10.28.6.76 with SMTP id 73mr375432wmg.26.1505494207770;
+        Fri, 15 Sep 2017 09:50:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.206.72 with SMTP id lm8ls54201lac.3.gmail; Thu, 26 Feb
- 2015 07:33:35 -0800 (PST)
-X-Received: by 10.112.126.194 with SMTP id na2mr1419936lbb.18.1424964815617;
-        Thu, 26 Feb 2015 07:33:35 -0800 (PST)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-wg0-x229.google.com (mail-wg0-x229.google.com. [2a00:1450:400c:c00::229])
-        by gmr-mx.google.com with ESMTPS id el6si144129wib.2.2015.02.26.07.33.35
+Received: by 10.25.17.160 with SMTP id 32ls319729lfr.3.gmail; Fri, 15 Sep 2017
+ 09:50:06 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QATrc8FyR8iSDzCp8WJhLFrn74CDT9bXLWSrk6GFkoCIGzgQi1xZrsyfUq/Z6jH7dYWHLlQ
+X-Received: by 10.25.40.20 with SMTP id o20mr247143lfo.41.1505494206320;
+        Fri, 15 Sep 2017 09:50:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505494206; cv=none;
+        d=google.com; s=arc-20160816;
+        b=RG3oRpkxiGqg3ltdni9bca26+qQVDHM/0ZgBwwB7Mr6RkMpUqqF21loFAawNd7eFq5
+         dCx9/4BzE151kyqgiLS7dh7klG1uSsKq06JweNQ0BW2VXtRhfPcywXL3Vp4rlM8RWOBz
+         ljzAyqfMVK/jvhZizU948JHTimfDl4DQqHGoet97aTxiguaD7KvGm3Du8LY5t37Hy4/K
+         2jE33n89WPIwAgvjsWwRAdZ6x38ITtWwaGwAU79njIX7KM8oWFJRKfbIIdQcOmEejPGC
+         K658xEXJVQF0krnHRJoqzYRvyPzVbkAnYua2LwlPY2z7Td+spPPXB3+1nguNKkOrmBnd
+         Srow==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:arc-authentication-results;
+        bh=HPgbheGiSQ66BWu6xHDrDZ/KjMdRXMGQcM6WDS+AyTg=;
+        b=jYWLWBSvupdBJnAeAbhEQz4gHXpLaF1k0P08g9ERvktKZ0uTKQK0bp+NPNe7DSpeSA
+         vOYzZrcJOULpbppc06rt06ceBsfG7EpkfBD/eV1gFVl23qACzvu+X7iFX6yxrz2dWiJn
+         7fsLX0Dips7T1RLFdOTge8EFXcc4gWOThascmRiChWvbDTWdkmkZLPDa61ilYFygqwSt
+         78iE5I56JuvzlPMtj7Elzb1qoSGso5EXqCTdHM2gRIbDTrCvEoWRsy38dxNfg3L5Rsua
+         CPL22M+5V9Uxyh8kqiblOzrv2lX0xv9FGA369sPQraQdQbFcTyvvOdJ8PkeKBji5q2C8
+         Mubg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id p70si50693wma.1.2017.09.15.09.50.06
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Feb 2015 07:33:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::229 as permitted sender) client-ip=2a00:1450:400c:c00::229;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 15 Sep 2017 09:50:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c00::229 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x229.google.com with SMTP id y19so11899422wgg.10
-        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 07:33:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=Zjv0m+XhboDng+QBi0CrsaJLJPbhobFj+nzR8rSf/XU=;
-        b=AM7OnL3LZXfawszPqYXHCwws/hZN5hnlY4UNh87RbuIx6WWiVX/hiavZ5aSRzYy8Lr
-         ILN6ZTTJDkri2V76L7XsuzABdpCvIgxapGww6LqdInM8V0xdlVdF5xlwEwW35mwudU0W
-         u4CzlgJ8jzjpIsdEITsQfBlMojlqiiuu5Aj9szhOGwb9CpDMwE6+GA6CY2F1QmELz+8f
-         cRKuKNXyCYRv1ki1ePuoo1d6Y7HpDzAFbry3xJ+/7ONvc5eyCoIEmEFIRuyh+sn2ZlFC
-         1CRzSIT8zJKsViptn3RqCGKU2FqMZmt+MK7dr8DE43THBPcwPEIO9eLLTtKKjdbLJYgi
-         NiAg==
-X-Received: by 10.180.78.202 with SMTP id d10mr51201898wix.25.1424964815500;
-        Thu, 26 Feb 2015 07:33:35 -0800 (PST)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from haneensa-VirtualBox ([79.170.54.248])
-        by mx.google.com with ESMTPSA id fm10sm3335461wib.7.2015.02.26.07.33.34
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Feb 2015 07:33:34 -0800 (PST)
-Received: by haneensa-VirtualBox (Postfix, from userid 1000)
-	id 9C7A463370; Thu, 26 Feb 2015 18:33:32 +0300 (AST)
-From: Haneen Mohammed <hamohammed.sa@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH 0/2] Staging: iio: Fix coding style issues
-Date: Thu, 26 Feb 2015 18:33:31 +0300
-Message-Id: <1424964811-8548-1-git-send-email-hamohammed.sa@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [12.145.98.253])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id A96F7504;
+	Fri, 15 Sep 2017 16:50:04 +0000 (UTC)
+Date: Fri, 15 Sep 2017 09:50:03 -0700
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Keerthi Reddy <keerthigd4990@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: Android: follow coding
+ guidlines
+Message-ID: <20170915165003.GF27343@kroah.com>
+References: <20170913171234.GA4052@manoharreddy>
+ <alpine.DEB.2.20.1709132210210.2920@hadrien>
+ <df162e84-1763-4fc6-8d3d-8aee1151f515@googlegroups.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <df162e84-1763-4fc6-8d3d-8aee1151f515@googlegroups.com>
+User-Agent: Mutt/1.9.0 (2017-09-02)
 
-This patchset fixes the following coding style issues found by checkpatch.pl:
-- Missing blank line after declaration.
-- Space before tabs.
+On Fri, Sep 15, 2017 at 12:02:15AM -0700, Keerthi Reddy wrote:
+> I would like to ask will this patch�be merged into Greg's Staging driver
+> development tree? If not what kind of what of patches will be merged into
+> Greg's tree?
 
-Haneen Mohammed (2):
-  Staging: iio: Add blank line after declaration
-  Staging: iio: Remove space before tabs
+I am at a conference all this week so I will resume review of staging
+patches next week, sorry for the delay...
 
- drivers/iio/accel/mma8452.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
--- 
-1.9.1
+greg k-h
 
