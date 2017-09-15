@@ -1,110 +1,127 @@
 X-GM-THRID: 6465902781475586048
-X-Received: by 10.25.115.131 with SMTP id h3mr73896lfk.44.1505460569715;
-        Fri, 15 Sep 2017 00:29:29 -0700 (PDT)
+X-Received: by 10.31.191.203 with SMTP id p194mr13222953vkf.84.1505460306351;
+        Fri, 15 Sep 2017 00:25:06 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.143.66 with SMTP id r63ls160385wmd.7.canary-gmail; Fri, 15
- Sep 2017 00:29:28 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QCEWIOPROokST71j7DFR8Y84r1pd5eAx+Tu46gbjujt5LYn3cnk0iEs+SGKRrSjbRXlK5u+
-X-Received: by 10.28.72.135 with SMTP id v129mr232817wma.14.1505460568545;
-        Fri, 15 Sep 2017 00:29:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505460568; cv=none;
+Received: by 10.36.219.5 with SMTP id c5ls696085itg.2.gmail; Fri, 15 Sep 2017
+ 00:25:05 -0700 (PDT)
+X-Received: by 10.31.16.68 with SMTP id g65mr13083695vki.120.1505460305604;
+        Fri, 15 Sep 2017 00:25:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505460305; cv=none;
         d=google.com; s=arc-20160816;
-        b=hu9J+oiOYSpINE9As2W57YcqFo9o/bMKpGan50pls9I22O4Nh/Qw5/5vBXOTe3H3Gk
-         uPPY0tpS8PyPWu5+P+BFeZUCqZWhpHY8ju221abDRpeMbsRMc6bpeO+vEfpQ0uYTt3kk
-         g9dYMZvHp4oY+yL66C35ZUUJ91dXVCaV6gSPq3bENN/bM6As6ZutA/aLfP4jvnPJO42g
-         sdiZNWKPQwT+3PAmnmoZQbS3dQofA9JjNX0jAIBAFJ1iCYKU4r8JYbx7q5UqOELIHrd/
-         HivaW0+HeJOsF0Fjkfn1We4ucSRN8D3W7vNdSYqTs2bMlrt8TtE52i0j2CQF7ALrv1A8
-         YRiA==
+        b=oSrwR6x6MnbzFCFDrWnzlOpo4yjt+jnx9QU7Ktwj5ilnaU8s5Mr+bLlBLTVkAOVkP5
+         SvX+Kfd3M7cXuORtDKjilJ11nBgF8VgxW587RT3zsIh7z2hUZ+VV2lcwSBVi9Jt1bLQY
+         aoLZsq/ogpFOo8/DB59kbOGk0WdESDof4NSfpIb4xi/UkYqUSAej5jd6v5AmoZ0dLEJa
+         Ir77/GDYOITRbRjKd+z/ONttJJsyWnbDpqB3GfRfvA4J8yBIgGCO/whHnL2/dfrOQX4Q
+         3zT1faMQyx2lkIS2xtug4gswKZnuc3tX0XKumDXlB5mcQbExSBT0UdRgduX3NX4a3Fvn
+         PBmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=udaRCJsmNtSzW7MPrSQoQH5gpqb3yy4Dg+TxF/eDhus=;
-        b=hFtBuasCDFl0765yY99k7vLSq8lJ3nS+DNx8w8s/dUjDtOxS4EEmhPELPVM0BjplZK
-         KXnhmqhoMQt+Noi7mNTnBH4zHXIzLWZCZpizIbV/wyn+e2xJEnNaSKXaDqrVi9W/oIh1
-         4xaXvhXikcLvrkGjY8ITGDOFl9YaAk3cJpsX4uwZNhHhVkgWshpHhwVwR1ZBmRhRD/ip
-         c+1nm0XgMie9zQZapUhCScnlO//EKNoLSnvG0k8Qg3BMSKRTaBwxtmN9bIU6zpuhgSxo
-         lqEzGt0gTogIIgHtM3HmDCpB2KqKd3oBCVT0Cj3GB+UREJpE/s5i2C/JdqlqR1ARuoSA
-         UaiA==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature:arc-authentication-results;
+        bh=7D5uXx1Pc3vsLUJRZzjGNYhQivcFhWehn2CddkDCYDI=;
+        b=edHTUbD2tvpfudVCFAOqTqmDhGuczEsjaMAkRFfYhao/EtfKDl1Uhcn8IDzAZfkMxW
+         M+/SYJYsOqxm53p9b+KaEDyfaxKaeMrCS086USrFhP1WVnI9DmzNYBQz4ULFLrWA0l8K
+         BS2Z0UmrFElxCyDbmjpOTWGZwDmLQC7YGuF0FUX6C6cGmf7Zmu3Blkjgh7Vx2AYjB5Hk
+         a/XwJcQmCAOSo1oRVFQWbrOAKW9YwFc2LLEz+XTJ+3uVraOUWHxUrewhwE6AvtmLNKC8
+         6ACNxd5sLHRndMijsbvSl6pWDMSHBuiUYkFM5wewYQRZxyU5moosG40RvO0qVorj9tOl
+         0F8g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id c142si193755wmh.3.2017.09.15.00.29.28
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=htTuo783;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id r78si32360pfb.3.2017.09.15.00.25.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 15 Sep 2017 00:29:28 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Fri, 15 Sep 2017 00:25:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.42,396,1500933600"; 
-   d="scan'208";a="291195186"
-Received: from 85-171-60-79.rev.numericable.fr (HELO [192.168.0.15]) ([85.171.60.79])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 15 Sep 2017 09:29:28 +0200
-Date: Fri, 15 Sep 2017 09:29:28 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Haneen Mohammed <hamohammed.sa@gmail.com>
-cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: About handling dma_mapping_error result after dma_map_*
-In-Reply-To: <20170915072502.GA11238@Haneen>
-Message-ID: <alpine.DEB.2.20.1709150927570.2287@hadrien>
-References: <20170915072502.GA11238@Haneen>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=htTuo783;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x241.google.com with SMTP id h4so869465pfk.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 15 Sep 2017 00:25:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=7D5uXx1Pc3vsLUJRZzjGNYhQivcFhWehn2CddkDCYDI=;
+        b=htTuo783jlcX10W2gOeNYidj1vJkpemAqh+H+yjvRZ6RZzFrRqJ+93E23ARdhtcKaP
+         BTOzyg6gGD5Erd0JLD9Py1wdvopmW9fvVEYlAAcM7LXM9+wzm5kKNkrawZ0UcjLOR32i
+         sCaEQp6xHIif9v+6Rel47rXynwy6nMER7yWTtwtLYryuCULET9TkUILla2Fmm94OJwE6
+         Ql7oMbbCHox40oJ5pnHuPOqNXsBNryfrdeZlPTe+ksgDC7+mgizvvFJB32R63oWAZN2Z
+         s2jowUFvYpabePv7FE3rva6BC/6LMEJr22OBUaCoNvnspn0BdOjEv96n3so7iK8UMscn
+         z8EA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=7D5uXx1Pc3vsLUJRZzjGNYhQivcFhWehn2CddkDCYDI=;
+        b=mWgdr4KIoodhYeSoGAZrRV0Dh+en8QJA6wZds8bYe/+7hQGPP7WERtKdK1Ky7KJTEZ
+         QRemTbt3aL53zadKxPKziJacbn84I5W5AJ61npBfwdkMtl9tZ2PPnpyh6N6ONPFJZihL
+         O8H04sbOB5ft2B+UPPt3R1aHn2b8SftJfMw4NJqyHEpDKVselXEidV8RNMqao5rsG/ui
+         88nfFNX4dE8fCo/K6MJlSA6TzVTWGHZ/xJ0QV+8wGgrIke7EoE2Pp0KkRbA1Zg9bpgXB
+         RXI5NTZ8PUPkMqiynh26v12a+YSpnK2U1fTulcKyt2U6my0XL5ow6ioRsYgup4ND4dcE
+         RmOw==
+X-Gm-Message-State: AHPjjUiOpOkHdIo80cCztiwA4F79VpFhkG+HPVM56Yi0RJvqu07HykTa
+	X7Jadjl/Dm5sLOgh2dY=
+X-Google-Smtp-Source: AOwi7QCeb6v5MyY1yYW+nOtpWOHrlq5XwQMIqv3jMiVVtMKrbEyOTRWpD2fCqra7qHW6Q2FaiESfig==
+X-Received: by 10.99.164.18 with SMTP id c18mr8557655pgf.359.1505460305354;
+        Fri, 15 Sep 2017 00:25:05 -0700 (PDT)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from Haneen ([64.77.242.50])
+        by smtp.gmail.com with ESMTPSA id h82sm1025694pfd.148.2017.09.15.00.25.04
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 15 Sep 2017 00:25:04 -0700 (PDT)
+Date: Fri, 15 Sep 2017 01:25:02 -0600
+From: Haneen Mohammed <hamohammed.sa@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: About handling dma_mapping_error result after dma_map_*
+Message-ID: <20170915072502.GA11238@Haneen>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
+Hello,
 
+I have a question about handling dma_mapping_error result. Is it enough
+to add a warning after it? Because I have found two missing
+dma_mapping_error in the drm/via driver but I wasn't sure how to handle 
+the return value if an error was found. Below is the code mentioned:
 
-On Fri, 15 Sep 2017, Haneen Mohammed wrote:
+---
+ drivers/gpu/drm/via/via_dmablit.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-> Hello,
->
-> I have a question about handling dma_mapping_error result. Is it enough
-> to add a warning after it? Because I have found two missing
-> dma_mapping_error in the drm/via driver but I wasn't sure how to handle
-> the return value if an error was found. Below is the code mentioned:
+diff --git a/drivers/gpu/drm/via/via_dmablit.c b/drivers/gpu/drm/via/via_dmablit.c
+index 98aae98..5c11756 100644
+--- a/drivers/gpu/drm/via/via_dmablit.c
++++ b/drivers/gpu/drm/via/via_dmablit.c
+@@ -132,12 +132,19 @@ via_map_blit_for_device(struct pci_dev *pdev,
+ 								VIA_PFN(first_addr)],
+ 						     VIA_PGOFF(cur_mem), remaining_len,
+ 						     vsg->direction);
++				if (dma_mapping_error(&pdev->dev,
++						      desc_ptr->mem_addr))
++					dev_warn(&pdev->dev, "DMA mapping failed\n");
++
+ 				desc_ptr->dev_addr = cur_fb;
+ 
+ 				desc_ptr->size = remaining_len;
+ 				desc_ptr->next = (uint32_t) next;
+ 				next = dma_map_single(&pdev->dev, desc_ptr, sizeof(*desc_ptr),
+ 						      DMA_TO_DEVICE);
++				if (dma_mapping_error(&pdev->dev,
++						      next))
++					dev_warn(&pdev->dev, "DMA mapping failed\n");
+ 				desc_ptr++;
+ 				if (++num_descriptors_this_page >= vsg->descriptors_per_page) {
+ 					num_descriptors_this_page = 0;
+-- 
+2.7.4
 
-Intuitively, I think you need to get out of the function and report
-failure to the call site.  It's like kmalloc.  If you don't get the memory
-you need, there is not much you can do afterwards.  But see what the drm
-people say before embarking on what would be a somewhat complex change.
-Perhaps there is some reason why it cannot fail.
-
-julia
-
->
-> ---
->  drivers/gpu/drm/via/via_dmablit.c | 7 +++++++
->  1 file changed, 7 insertions(+)
->
-> diff --git a/drivers/gpu/drm/via/via_dmablit.c b/drivers/gpu/drm/via/via_dmablit.c
-> index 98aae98..5c11756 100644
-> --- a/drivers/gpu/drm/via/via_dmablit.c
-> +++ b/drivers/gpu/drm/via/via_dmablit.c
-> @@ -132,12 +132,19 @@ via_map_blit_for_device(struct pci_dev *pdev,
->  								VIA_PFN(first_addr)],
->  						     VIA_PGOFF(cur_mem), remaining_len,
->  						     vsg->direction);
-> +				if (dma_mapping_error(&pdev->dev,
-> +						      desc_ptr->mem_addr))
-> +					dev_warn(&pdev->dev, "DMA mapping failed\n");
-> +
->  				desc_ptr->dev_addr = cur_fb;
->
->  				desc_ptr->size = remaining_len;
->  				desc_ptr->next = (uint32_t) next;
->  				next = dma_map_single(&pdev->dev, desc_ptr, sizeof(*desc_ptr),
->  						      DMA_TO_DEVICE);
-> +				if (dma_mapping_error(&pdev->dev,
-> +						      next))
-> +					dev_warn(&pdev->dev, "DMA mapping failed\n");
->  				desc_ptr++;
->  				if (++num_descriptors_this_page >= vsg->descriptors_per_page) {
->  					num_descriptors_this_page = 0;
-> --
-> 2.7.4
->
-> Thank you!
-> Haneen
->
+Thank you!
+Haneen
 
