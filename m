@@ -1,119 +1,155 @@
 X-GM-THRID: 6466114198556377088
-X-Received: by 10.202.245.65 with SMTP id t62mr14638592oih.37.1505511112901;
-        Fri, 15 Sep 2017 14:31:52 -0700 (PDT)
+X-Received: by 10.237.62.138 with SMTP id n10mr13058841qtf.55.1505509583001;
+        Fri, 15 Sep 2017 14:06:23 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.178.208 with SMTP id b199ls7437591iof.8.gmail; Fri, 15 Sep
- 2017 14:31:52 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QCADS9iYIfq18C0CQeOW+tazEI/YEW2yFiX8PrY1V12rMWzTQj/6mnPQx+IGm2B0eqfQ78a
-X-Received: by 10.31.155.76 with SMTP id d73mr15318258vke.35.1505511112041;
-        Fri, 15 Sep 2017 14:31:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505511111; cv=none;
+Received: by 10.36.29.86 with SMTP id 83ls1741420itj.19.gmail; Fri, 15 Sep
+ 2017 14:06:22 -0700 (PDT)
+X-Received: by 10.101.77.197 with SMTP id q5mr16254471pgt.60.1505509582478;
+        Fri, 15 Sep 2017 14:06:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505509582; cv=none;
         d=google.com; s=arc-20160816;
-        b=E97nWT+Fipvd2/xA1IjxfHf2UBRTdzJEd5sN1cMXatiW8mEV7v5gBzwlT+4mFCjCdq
-         jkeYgretk7q3uNVlch+tRXFCzqBBx0ZpdQSjwLj8uBXzOzo1owsDwxfHnUXFnvkeVhsj
-         fCLmKmqr2epsq1taLc9I9Gj3JwmUHd62+R/wie3UT7iT28zm5Nk/MJzZqPnWqopcMXGH
-         vgp7ihiZnFQe47MABVxzm52z6ACuGjiS0QBSgBGoWCZWX5+R4GJs5jnXPCriNez7WmG7
-         6LMwgLLKGfXqHtPnzyZpOt5jmoGhnunKcGhp9aZuwslpzKwQ6Ah8CMgtrcIVySfPSmMv
-         MrTA==
+        b=jJHIA6QacDpuYVqAC56jKCWdMzfYrPEB+KxjdAIjv6IETlcB8thzCVLqY7+6c/CIrY
+         tdS5XT3bPG3LV0qM4XWbH73erFFnfsf/gAPof8guu+jPxB1qq2HTWOFNXcIkaBfPSP+i
+         1ESlv+uDVl/wsxtneoEVp6Jf9qvPaNws5lKrJHOfywTbfK0Bc+kGDOVbw084yAQRCpdA
+         lYtHaHfojqEqMhnkhdwSMUXTt1PTxsfimiCD8arLOujHJSqgwF+QagD6+GMe5tztqBvb
+         C9Em343g+tSN56tncXXwQOhQjoz+cwaeZDQwimoF2Q687PzWPft2eipXrAOOajcn906D
+         QbhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to:date
-         :cc:to:from:subject:message-id:arc-authentication-results;
-        bh=iB9gq9flaeC3tWqv1n53W08surH4BdZWsY14XlAhedY=;
-        b=CZ0D0W6O0gMysj96pBIcJ2ZM/KLvgEMHuK2vaD6wSpKvctJj9nsvK25fz4mJlh9LBB
-         hPLuN9JXIqpjXPnUs+njA5jDvE0MsSp9rD21KW8vyRpss1enzwQJ4VDR/WZXmOny2/RC
-         RnxmketmQMyqT9QDcu7Zl0DcLdHGgGnKf7t8vBKIe8LVHHGpVVLB76QYl27RhwoHFTvf
-         w+RvzMuJbFVlz3xKe1nay8LdPD471SoJp4pa8f7KC3LUxCsGhiLRk23Ih/UUqE6H6iXd
-         7xtt0djyeFhBCpcF+jLg0rlT+TgOE5BInQ+ujhjxRqsX83Y8kBx/Cpy1glFFKH1TTPAF
-         uGng==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=tdKVsE27b+vF5v7LMVKRU5oxTKw/JqS+L9PeU74qano=;
+        b=mOE7Dk0dJIEX6ClCGNJGTItdI466igyN549wMV7JDaf4qcgi5nmc4TyGvN3O0q5EoV
+         bxGPjY/U5IikczrQ4YjsjOzmbcjAH0XJJJd3pQPd4ERk+bajHvNxIRtS/2DpRaGC3qhx
+         zPlWNVk/C3/BBiVKCIlZlWs6VZIXggyde9YnAhpWi/H+xZCu9p2XBxfiz3+PbtCC4uDc
+         O/j10o9wzKxrMUEefurKxXhGQkqqGNq9Ginfj7fDbIXMYy9SCgc8S6TX6lev2h9OrRff
+         thEe4JmgTK28SqVKCESkIR89KcvbveGgKGgSDP13XNong4JYk7uMCcLWJhhvrNcvsGKC
+         pOMg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 216.40.44.60 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
-Return-Path: <joe@perches.com>
-Received: from smtprelay.hostedemail.com (smtprelay0060.hostedemail.com. [216.40.44.60])
-        by gmr-mx.google.com with ESMTPS id m186si7082itd.9.2017.09.15.14.31.51
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pN4KIoeo;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <srishtishar@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id s81si187454pfg.19.2017.09.15.14.06.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 15 Sep 2017 14:31:51 -0700 (PDT)
-Received-SPF: neutral (google.com: 216.40.44.60 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.60;
+        Fri, 15 Sep 2017 14:06:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 216.40.44.60 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
-	by smtprelay04.hostedemail.com (Postfix) with ESMTP id 5B60D180A68B4;
-	Fri, 15 Sep 2017 21:31:51 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,:::::::::::::,RULES_HIT:41:355:379:541:599:960:973:982:988:989:1260:1277:1311:1313:1314:1345:1359:1373:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2194:2199:2393:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:3870:3871:4321:5007:6119:7903:10004:10400:10848:11026:11232:11473:11657:11658:11914:12043:12295:12296:12555:12740:12760:12895:13069:13161:13229:13311:13357:13439:14659:14721:21080:21611:21627:30012:30054:30091,0,RBL:none,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:,MSBL:0,DNSBL:none,Custom_rules:0:0:0,LFtime:15,LUA_SUMMARY:none
-X-HE-Tag: sort48_100690bd5ff5e
-X-Filterd-Recvd-Size: 2225
-Received: from XPS-9350 (unknown [47.151.132.55])
-	(Authenticated sender: joe@perches.com)
-	by omf03.hostedemail.com (Postfix) with ESMTPA;
-	Fri, 15 Sep 2017 21:31:49 +0000 (UTC)
-Message-ID: <1505511108.27581.16.camel@perches.com>
-Subject: Re: [PATCH 2/2] Staging: irda: Remove parentheses on the right of
- assignment
-From: Joe Perches <joe@perches.com>
-To: Srishti Sharma <srishtishar@gmail.com>, samuel@sortiz.org
-Cc: gregkh@linuxfoundation.org, netdev@vger.kernel.org, 
-	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
-	outreachy-kernel@googlegroups.com
-Date: Fri, 15 Sep 2017 14:31:48 -0700
-In-Reply-To: <9380189edb2722544981c868699ade29ab5c297d.1505508423.git.srishtishar@gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pN4KIoeo;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x241.google.com with SMTP id e69so1736662pfg.4
+        for <outreachy-kernel@googlegroups.com>; Fri, 15 Sep 2017 14:06:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=tdKVsE27b+vF5v7LMVKRU5oxTKw/JqS+L9PeU74qano=;
+        b=pN4KIoeowdyFvhZRZ7AGE52PAZ6qSZO+Py4HTyjKKcr3MEcCAxSUc9Ys3vAIUr5Cex
+         VeJIYxAw+8sa+cioZHkmf0NGn8PVhVRLAK2hLXtS+nkrSRnPNMucB1/2im2IJfo/S0Jt
+         qZDZ3WGN5e0LN4iw+w+SQvdpWcheewOd+qnjKl/au5cJF0sy72ZShmUcNf2zHM57VrP8
+         P/ri3F3UzLgw2Byt4Tm8n8728m1ceQlYkyIROUWlo4j7PBflM3ONtecAh07QKEbnqiPw
+         /qa8uF51ETkItB9Qf+zuNCtTVRlMQNW3fO3NRri6xTOWiJIOfVhXOuTSUHdOTq2H+3ch
+         IfCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=tdKVsE27b+vF5v7LMVKRU5oxTKw/JqS+L9PeU74qano=;
+        b=edPyTLnSMHez566U1qUmiagif9hY3c2J/d+vz0Nds3E7Jygii3f8svOksF8EQqyq1f
+         yyYjf9ynIVlE7c8nLSJWeIHry4Rt085AgTXjjLn3u8CTQwMkTQfMkK+QINU9tl7cPomY
+         JI5AbUDHWltjeMi6fXJKDSZkI8aOCgOXjo/KOk//z37Cet5aK5FUplaN+NQttGBd4HJe
+         CWxm9w0EOpnbQfqpJS8TQPRQkbTUAxmozuB1afu2fhARHb1Ty6xNE+NGKExeAgaOdQNw
+         CDRNfOqf7ySLbRbKKkkTZOezyevC9Jc1wVL5SCPInbxUey0mYWegkTPvBdualhGYRLQi
+         dZhQ==
+X-Gm-Message-State: AHPjjUhqqvQfrZWg1BDU4BVgrilULf3pIeol/egt7n9JzPun1ERDEXYo
+	TDTXFShtTWtLWwAa
+X-Google-Smtp-Source: ADKCNb71Zp/0UfDoWwwv2GN2avKMj6jz48/EEWcQuTDLA8O93rIOdSkKeNmBZZDgoe/FUap59YTZpA==
+X-Received: by 10.98.214.17 with SMTP id r17mr26145479pfg.40.1505509581174;
+        Fri, 15 Sep 2017 14:06:21 -0700 (PDT)
+Return-Path: <srishtishar@gmail.com>
+Received: from srishti-PRODiiGY-945G ([122.168.202.126])
+        by smtp.gmail.com with ESMTPSA id u186sm3319459pgb.35.2017.09.15.14.06.20
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 15 Sep 2017 14:06:20 -0700 (PDT)
+From: Srishti Sharma <srishtishar@gmail.com>
+To: samuel@sortiz.org
+Cc: gregkh@linuxfoundation.org,
+	netdev@vger.kernel.org,
+	devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com,
+	Srishti Sharma <srishtishar@gmail.com>
+Subject: [PATCH 2/2] Staging: irda: Remove parentheses on the right of assignment
+Date: Sat, 16 Sep 2017 02:36:16 +0530
+Message-Id: <9380189edb2722544981c868699ade29ab5c297d.1505508423.git.srishtishar@gmail.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <cover.1505508423.git.srishtishar@gmail.com>
 References: <cover.1505508423.git.srishtishar@gmail.com>
-	 <9380189edb2722544981c868699ade29ab5c297d.1505508423.git.srishtishar@gmail.com>
-Content-Type: text/plain; charset="ISO-8859-1"
-X-Mailer: Evolution 3.22.6-1ubuntu1 
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 
-On Sat, 2017-09-16 at 02:36 +0530, Srishti Sharma wrote:
-> Parentheses are not needed on the right hand side of assignment
-> statement in most cases. Done using the following semantic
-> patch by coccinelle.
-[]
-> @@
-> identifier E,F,G,f;
-> expression e,r;
-> @@
-> 
-> (
-> E = (G == F);
-> > 
-> 
-> E = (e == r);
-> > 
-> 
-> E =
-> -(
-> ...
-> -)
-> ;
-> )
-[]
-> diff --git a/drivers/staging/irda/drivers/mcs7780.c b/drivers/staging/irda/drivers/mcs7780.c
-[]
-> @@ -605,7 +605,7 @@ static int mcs_speed_change(struct mcs_cb *mcs)
->  	if (mcs->new_speed <= 115200) {
->  		rval &= ~MCS_FIR;
->  
-> -		rst = (mcs->speed > 115200);
-> +		rst = mcs->speed > 115200;
->  		if (rst)
->  			mcs_set_reg(mcs, MCS_MINRXPW_REG, 0);
+Parentheses are not needed on the right hand side of assignment
+statement in most cases. Done using the following semantic
+patch by coccinelle.
 
-Coccinelle is a good tool, but its output is limited to
-the correctness
-and completeness of its input script.
+@@
+identifier E,F,G,f;
+expression e,r;
+@@
 
-Please look at the suggested modifications of the script
-and examine the code for other similar uses.
+(
+E = (G == F);
+|
+E = (e == r);
+|
+E =
+-(
+...
+-)
+;
+)
 
-The else if block immediately below this is:
+Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+---
+ drivers/staging/irda/drivers/mcs7780.c | 4 ++--
+ drivers/staging/irda/net/irqueue.c     | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-	} else if (mcs->new_speed <= 1152000) {
-		rval &= ~MCS_FIR;
+diff --git a/drivers/staging/irda/drivers/mcs7780.c b/drivers/staging/irda/drivers/mcs7780.c
+index 2b674d5..d52e9f4 100644
+--- a/drivers/staging/irda/drivers/mcs7780.c
++++ b/drivers/staging/irda/drivers/mcs7780.c
+@@ -605,7 +605,7 @@ static int mcs_speed_change(struct mcs_cb *mcs)
+ 	if (mcs->new_speed <= 115200) {
+ 		rval &= ~MCS_FIR;
+ 
+-		rst = (mcs->speed > 115200);
++		rst = mcs->speed > 115200;
+ 		if (rst)
+ 			mcs_set_reg(mcs, MCS_MINRXPW_REG, 0);
+ 
+@@ -619,7 +619,7 @@ static int mcs_speed_change(struct mcs_cb *mcs)
+ 	} else {
+ 		rval |= MCS_FIR;
+ 
+-		rst = (mcs->speed != 4000000);
++		rst = mcs->speed != 4000000;
+ 		if (rst)
+ 			mcs_set_reg(mcs, MCS_MINRXPW_REG, 5);
+ 
+diff --git a/drivers/staging/irda/net/irqueue.c b/drivers/staging/irda/net/irqueue.c
+index 5aab072..14291cb 100644
+--- a/drivers/staging/irda/net/irqueue.c
++++ b/drivers/staging/irda/net/irqueue.c
+@@ -217,7 +217,7 @@ static __u32 hash( const char* name)
+ 
+ 	while(*name) {
+ 		h = (h<<4) + *name++;
+-		g = (h & 0xf0000000);
++		g = h & 0xf0000000;
+ 		if (g)
+ 			h ^=g>>24;
+ 		h &=~g;
+-- 
+2.7.4
 
-		if ((rst = !(mcs->speed == 576000 || mcs->speed == 11520
-00)))
-			mcs_set_reg(mcs, MCS_MINRXPW_REG, 5);
-
-which should also be corrected by this patch.
 
