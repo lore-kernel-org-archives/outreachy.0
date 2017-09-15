@@ -1,78 +1,76 @@
 X-GM-THRID: 6465937630940889088
-X-Received: by 10.84.229.144 with SMTP id c16mr15205580plk.37.1505468425827;
-        Fri, 15 Sep 2017 02:40:25 -0700 (PDT)
+X-Received: by 10.176.16.69 with SMTP id g5mr16271831uab.12.1505468420330;
+        Fri, 15 Sep 2017 02:40:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.97.24 with SMTP id v24ls6508990iob.17.gmail; Fri, 15 Sep
- 2017 02:40:24 -0700 (PDT)
-X-Received: by 10.107.168.37 with SMTP id r37mr2751965ioe.125.1505468424948;
-        Fri, 15 Sep 2017 02:40:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505468424; cv=none;
+Received: by 10.107.181.208 with SMTP id e199ls5242025iof.10.gmail; Fri, 15
+ Sep 2017 02:40:19 -0700 (PDT)
+X-Received: by 10.55.167.142 with SMTP id q136mr12735133qke.34.1505468419455;
+        Fri, 15 Sep 2017 02:40:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505468419; cv=none;
         d=google.com; s=arc-20160816;
-        b=0UhFKq++Rb/M4fTRJ/PYDkFraqEwP0kgPA/vnUEp/56Hwl9c4ZVDj7Gc12z5Cz0adg
-         Qhd5Muwq7LNHMm/xsry+w7DjkEyp3U/ppvGsQ9OKNhQ2sUIVvaEnzWeAGwf6UiLUuOgt
-         IRw4BLcpXVRMQgO2zYnNYiJTohmYlGHDkkYXk6iso9UKxS4xCygqFzIFeeuuBhXXMYO9
-         gRgRgcwBuLG/QXDBL7Grg58VbsaI/M1XO+vZCicA97XOxbGoHxxKf2G9k7VooWQC6kCm
-         o4kVaVbd60GeOSpF84cj7nKCJF1j9GH9NWo5r8W9ktSuGc/SjFJtLOW4Y3AgB6TFIAm8
-         Zrgg==
+        b=KF0GYzMQHXslfyLBPNe/GC8JIhtF9K6g/EjignjtoUcmU1mYKZw2fcU2fAAD3O+A5p
+         dwC5AYrLxDsBCsbNC0Dox+qIGytSMYMikkK8IQUUy4geFU2LWDsxc3nTVUyM8Dves3XS
+         +tg5gLMuT1OlZ48t3TbkiysPhY6iiHGAkQANCjkkS4YePs0g1YPeg5EtEibmzekkdhrr
+         XYy9Yf25sasKsfh3yxdsow/zYNk1keBK9zxLvJZ6omZDQFCbZPBGmHwSaF7E6z4jMhfb
+         3hGlWr4MkOuylkJqbdinFuQMExQv3XoUYqUhyh1Y/E6uoHP/SdpDYd/6O83LMfn7fIBC
+         Wo8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature:arc-authentication-results;
-        bh=E2CyaPsHH11YL9Xf9+fWgUx6hHhwiH9r85msFDvgzkY=;
-        b=epUoyoiedLVGG1NzUjRe63SWcjeIWJwMvSRk2HdePsy1CwYD+VpZqLzPMihC5iyaXf
-         2YAIGP+H1OSBJzCgJl0gqKD8UUWDuKYwYbshSN+r7NFGBST9UrIEJFxdB0BjQm+Bmzrk
-         OB1Hksg2hbj5tqYEZB0vMGxgd3Y8FMrDXObk4zmPbgTyBdyPVkszUfFFXSbLMoIW7z7U
-         zvAIyacN1uI5jteZ7ruhTTOgH8P9q+RktD45TWP+RoN2QDzd1i2WW+SJ9G+gv6W+H5zW
-         2qch1LCIZIOr6Hil+xiQ/4nx1t9O73q0EkC2m9k8ORQLC+JoRFIxp4rRvjIZ26dFLHxY
-         u3VA==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=M9wHU03TXjkPyIUhIP/FKaBP/lK1Zam17qnoBUMbS5Q=;
+        b=QWg9Qsisdc2cPPqLLuMvJEO+UBcOgE3DQuOOizBvnVBlCR1kZjdclnMDXG045qakUy
+         ss+zhpygsXXn51P38WvixBg8vBnb89Maj9SpBwwxifQk5tH4jp4j56f7VV5uI2cTB1WD
+         fC9c35Z3yaOA2M/JkIHxQZdHdTOqeDBSCXIphvE6KFBL8Lgu342JaR8BEdKv3kPtHI4+
+         euzD6fVQQPX+0FKwuqP6r6D1zJKvtf5anHZCCRkxx9zfGfbK2L8JnGOly28B79WtmfgA
+         WU07ksiQcN+AvyBDZMYLPNJFQevbbFfi+RnhEgCV1KsRfFAnSbU0VA3D2vtpqC4WNVc+
+         OmVQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lVda/LqH;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=G0Lj1zF7;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id f189si43476pfa.1.2017.09.15.02.40.24
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id y18si43696pfj.18.2017.09.15.02.40.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 15 Sep 2017 02:40:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Fri, 15 Sep 2017 02:40:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lVda/LqH;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=G0Lj1zF7;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id j16so1080098pga.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 15 Sep 2017 02:40:24 -0700 (PDT)
+Received: by mail-pf0-x242.google.com with SMTP id f84so994520pfj.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 15 Sep 2017 02:40:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :in-reply-to:references;
-        bh=E2CyaPsHH11YL9Xf9+fWgUx6hHhwiH9r85msFDvgzkY=;
-        b=lVda/LqHLBHJCRfID2URQLThITl0WsS3bBJ94OinjPK5je/Yw70yMVgL46NSM1BTYI
-         EWhkc9+iBG6m+xMuqnxn+rgdzUkF4AxJWNHbMFIBf3t9c5/sxWRUUPQYqmfYTbX70Wat
-         aM/mzXV6zl8DNVPLyJ+NyjRiy1rsGHQzUXvGDwc3taV/2nPLvSwPfCTpqtk9gy7fWCWO
-         lRTGp2gsv2EThJ0ZFRd2Fq0L9nzMoI7APt7D8LZZI00JBQ5DVCZKMRlpxvHv4D/Q2POy
-         Wa/8fsXFKcGSV0BOAUWnetMJPVSe/ofclHvv4Vwlsnk2RhDR6JuhqLghA/hD8ok0JpZ8
-         2c8Q==
+        h=from:to:cc:subject:date:message-id;
+        bh=M9wHU03TXjkPyIUhIP/FKaBP/lK1Zam17qnoBUMbS5Q=;
+        b=G0Lj1zF75Jj7oUCCBk0/gIU6/plRmFsGHQJvzZLVoGUKhC6WOUp0NtyzxjHnhHDw6R
+         RjXbFIg4eQ/xqhu6LmT0qp4wLZTpJtvS7Sx70LJG0mktcoEyAJTk9LxrkbpkkWLUB4xT
+         P0qPtbY1rsko9xn+bEFfvNiX/HQJLbtCGPb/LxrtsWAoPTco5K7r9iyHEaANzSBk8CMl
+         a4NkmHaaZ/N2zcVtljx1CXO9MiWIzElWeurnVKblKHgBNeWtEPLsY+wbi3p4T9ztGnPE
+         VCABNeRcSbjYueMZUAYf6wVi0XlYaoJjOllQgbgE3q+igQrAQEtIHkeyR5IdrCt4IDkL
+         gtQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:in-reply-to:references;
-        bh=E2CyaPsHH11YL9Xf9+fWgUx6hHhwiH9r85msFDvgzkY=;
-        b=SQlgvnxlTqeLwdp2RfsF47Jr4ZYRU0jLmCGNyptd/VOQatJN2F19mxsqLZbpO5Gnfx
-         aoeX97j/C6yTN/xuhpujHfQttQgzXgqWa2bd6+eqm5HhTkhkXIJk0lGIIWE5KxiYIf15
-         g6eHuMJFdCFCtUBcY6hZMSLDSQYT1gh4YhHlsHpXt4NgJMF9/UbQQsrc7HKYDYt98SHw
-         ++Z0NsqAcv/truNLA7jz9TNEaG7mFL05AIm71buxXQpeuIzCsOGGuq7/MtRXLO/86fvZ
-         H7dK3O8StJfvIs0LVvZVeKhgRZ/j3+v+dJE9J77eET1MXobAIPxXv+qVdSz4N+17dJh+
-         Cctg==
-X-Gm-Message-State: AHPjjUhu6Qi/JZRl7A/87Vii7eDvUuRt92RMRLTOlaKBbkt7exJLN/oM
-	ElL6zW+aSqpisg==
-X-Google-Smtp-Source: ADKCNb5Px/3Y8LF3SpR/5yYnLlBZhMDRxMEDc1Z09ejzJoKsDiLhpLhEhACaWGaymBhfv2FWjsfd0g==
-X-Received: by 10.98.155.139 with SMTP id e11mr24352166pfk.290.1505468424358;
-        Fri, 15 Sep 2017 02:40:24 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=M9wHU03TXjkPyIUhIP/FKaBP/lK1Zam17qnoBUMbS5Q=;
+        b=LA6EdPWWAdSQx7twhbk07nf2/MuZEm3rJ11OLNn6VPN8oK6HwYNmNHRU2U1pBs3hr6
+         MIbNYIdkfFQpEWX+xlGSa5f8zp5bMSrGbkgYmBkZICzWRpyMMsO71dnFUSTMGTe8vWJI
+         NQgOYRvOMJ4j0NsfKBBP7vYqbVYNWeTZ8VS9bJiESc9Blmdp4rBDTm3AbUQMTFFHeeml
+         I43qScFfZG1HIeVNmhPQ02GDbHK6KDY8n/YhJCXYfDAoRbT0EIaTDtovb+iaw1J7VgMm
+         EmfaFpaoz5Dv4+2CftIU/QND98dLPSnA/tHxbLYot72nUs5bVhyjCRfV68DOGzrMimxW
+         5TYQ==
+X-Gm-Message-State: AHPjjUj9uCdbolV7ynYXabeziPmHMJYeWvXPFHI3K8NnqTH7sixxE8gi
+	F28F59P8sUWKljXs77E=
+X-Google-Smtp-Source: ADKCNb4UWGjSIWyCJAHY6aUDq3PAb2B3TRSgKiRAAlQvqJPdQMVn5EKo/KFpfUlKosOyWskOod4dwg==
+X-Received: by 10.84.252.130 with SMTP id y2mr26153533pll.68.1505468419056;
+        Fri, 15 Sep 2017 02:40:19 -0700 (PDT)
 Return-Path: <aastha.gupta4104@gmail.com>
 Received: from aastha-HP-Pavilion-15-Notebook-PC ([171.78.243.118])
-        by smtp.gmail.com with ESMTPSA id k12sm1829369pgt.3.2017.09.15.02.40.22
+        by smtp.gmail.com with ESMTPSA id y83sm1545726pff.167.2017.09.15.02.40.17
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 15 Sep 2017 02:40:23 -0700 (PDT)
+        Fri, 15 Sep 2017 02:40:18 -0700 (PDT)
 From: Aastha Gupta <aastha.gupta4104@gmail.com>
 To: outreachy-kernel@googlegroups.com,
 	Oleg Drokin <oleg.drokin@intel.com>,
@@ -80,654 +78,36 @@ To: outreachy-kernel@googlegroups.com,
 	James Simmons <jsimmons@infradead.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH 1/4] staging: lustre: llite: fix lines over 80 characters in llite files
-Date: Fri, 15 Sep 2017 15:10:09 +0530
-Message-Id: <bf4c464951f9e8e0bc0be60b2acccb9e8b214b97.1505468281.git.aastha.gupta4104@gmail.com>
+Subject: [PATCH 0/4] fix code styling warnings in llite files
+Date: Fri, 15 Sep 2017 15:10:08 +0530
+Message-Id: <cover.1505468281.git.aastha.gupta4104@gmail.com>
 X-Mailer: git-send-email 2.7.4
-In-Reply-To: <cover.1505468281.git.aastha.gupta4104@gmail.com>
-References: <cover.1505468281.git.aastha.gupta4104@gmail.com>
-In-Reply-To: <cover.1505468281.git.aastha.gupta4104@gmail.com>
-References: <cover.1505468281.git.aastha.gupta4104@gmail.com>
 
-This fixes checkpatch.pl warning:
-WARNING: line over 80 characters
+These patches fix various checkpatch.pl warnings in llite files.
 
-Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
----
+---------------------------------------------------------------------------
+
+Aastha Gupta (4):
+  staging: lustre: llite: fix lines over 80 characters in llite files
+  staging: lustre: llite: fix identation in dir
+  staging: lustre: lllite: fix multi line comments alignment in file
+  staging: lustre: llite: fix multi line comments style
+
  drivers/staging/lustre/lustre/llite/dcache.c       |  9 +++--
- drivers/staging/lustre/lustre/llite/dir.c          | 20 ++++++----
- drivers/staging/lustre/lustre/llite/file.c         | 12 ++++--
- .../staging/lustre/lustre/llite/llite_internal.h   | 20 +++++++---
+ drivers/staging/lustre/lustre/llite/dir.c          | 24 +++++++-----
+ drivers/staging/lustre/lustre/llite/file.c         | 16 +++++---
+ .../staging/lustre/lustre/llite/llite_internal.h   | 25 ++++++++----
  drivers/staging/lustre/lustre/llite/llite_lib.c    | 45 ++++++++++++++--------
  drivers/staging/lustre/lustre/llite/llite_mmap.c   |  3 +-
  drivers/staging/lustre/lustre/llite/llite_nfs.c    |  3 +-
  drivers/staging/lustre/lustre/llite/namei.c        | 24 ++++++++----
- drivers/staging/lustre/lustre/llite/rw.c           | 12 ++++--
+ drivers/staging/lustre/lustre/llite/rw.c           | 15 +++++---
  drivers/staging/lustre/lustre/llite/rw26.c         |  3 +-
  drivers/staging/lustre/lustre/llite/statahead.c    | 18 +++++----
  drivers/staging/lustre/lustre/llite/super25.c      |  3 +-
  drivers/staging/lustre/lustre/llite/xattr_cache.c  |  3 +-
- 13 files changed, 115 insertions(+), 60 deletions(-)
+ 13 files changed, 124 insertions(+), 67 deletions(-)
 
-diff --git a/drivers/staging/lustre/lustre/llite/dcache.c b/drivers/staging/lustre/lustre/llite/dcache.c
-index 3670fca..ed7dbbd 100644
---- a/drivers/staging/lustre/lustre/llite/dcache.c
-+++ b/drivers/staging/lustre/lustre/llite/dcache.c
-@@ -141,7 +141,8 @@ void ll_intent_drop_lock(struct lookup_intent *it)
- 
- 		handle.cookie = it->it_lock_handle;
- 
--		CDEBUG(D_DLMTRACE, "releasing lock with cookie %#llx from it %p\n",
-+		CDEBUG(D_DLMTRACE,
-+		       "releasing lock with cookie %#llx from it %p\n",
- 		       handle.cookie, it);
- 		ldlm_lock_decref(&handle, it->it_lock_mode);
- 
-@@ -152,7 +153,8 @@ void ll_intent_drop_lock(struct lookup_intent *it)
- 		if (it->it_remote_lock_mode != 0) {
- 			handle.cookie = it->it_remote_lock_handle;
- 
--			CDEBUG(D_DLMTRACE, "releasing remote lock with cookie%#llx from it %p\n",
-+			CDEBUG(D_DLMTRACE,
-+			       "releasing remote lock with cookie%#llx from it %p\n",
- 			       handle.cookie, it);
- 			ldlm_lock_decref(&handle,
- 					 it->it_remote_lock_mode);
-@@ -185,7 +187,8 @@ void ll_invalidate_aliases(struct inode *inode)
- 
- 	spin_lock(&inode->i_lock);
- 	hlist_for_each_entry(dentry, &inode->i_dentry, d_u.d_alias) {
--		CDEBUG(D_DENTRY, "dentry in drop %pd (%p) parent %p inode %p flags %d\n",
-+		CDEBUG(D_DENTRY,
-+		       "dentry in drop %pd (%p) parent %p inode %p flags %d\n",
- 		       dentry, dentry, dentry->d_parent,
- 		       d_inode(dentry), dentry->d_flags);
- 
-diff --git a/drivers/staging/lustre/lustre/llite/dir.c b/drivers/staging/lustre/lustre/llite/dir.c
-index 1db3e7f..e019d9c 100644
---- a/drivers/staging/lustre/lustre/llite/dir.c
-+++ b/drivers/staging/lustre/lustre/llite/dir.c
-@@ -303,7 +303,8 @@ static int ll_readdir(struct file *filp, struct dir_context *ctx)
- 	struct md_op_data *op_data;
- 	int			rc;
- 
--	CDEBUG(D_VFSTRACE, "VFS Op:inode=" DFID "(%p) pos/size %lu/%llu 32bit_api %d\n",
-+	CDEBUG(D_VFSTRACE,
-+	       "VFS Op:inode=" DFID "(%p) pos/size %lu/%llu 32bit_api %d\n",
- 	       PFID(ll_inode2fid(inode)), inode, (unsigned long)pos,
- 	       i_size_read(inode), api32);
- 
-@@ -419,7 +420,8 @@ static int ll_dir_setdirstripe(struct inode *parent, struct lmv_user_md *lump,
- 	if (unlikely(lump->lum_magic != LMV_USER_MAGIC))
- 		return -EINVAL;
- 
--	CDEBUG(D_VFSTRACE, "VFS Op:inode=" DFID "(%p) name %s stripe_offset %d, stripe_count: %u\n",
-+	CDEBUG(D_VFSTRACE, "VFS Op:inode=" DFID
-+	       "(%p) name %s stripe_offset %d, stripe_count: %u\n",
- 	       PFID(ll_inode2fid(parent)), parent, dirname,
- 	       (int)lump->lum_stripe_offset, lump->lum_stripe_count);
- 
-@@ -502,7 +504,8 @@ int ll_dir_setstripe(struct inode *inode, struct lov_user_md *lump,
- 			break;
- 		}
- 		default: {
--			CDEBUG(D_IOCTL, "bad userland LOV MAGIC: %#08x != %#08x nor %#08x\n",
-+			CDEBUG(D_IOCTL,
-+			       "bad userland LOV MAGIC: %#08x != %#08x nor %#08x\n",
- 			       lump->lmm_magic, LOV_USER_MAGIC_V1,
- 			       LOV_USER_MAGIC_V3);
- 			return -EINVAL;
-@@ -732,8 +735,9 @@ static int ll_ioc_copy_start(struct super_block *sb, struct hsm_copy *copy)
- 		rc = ll_data_version(inode, &data_version, LL_DV_RD_FLUSH);
- 		iput(inode);
- 		if (rc != 0) {
--			CDEBUG(D_HSM, "Could not read file data version of "
--				      DFID " (rc = %d). Archive request (%#llx) could not be done.\n",
-+			CDEBUG(D_HSM,
-+			       "Could not read file data version of " DFID
-+			       " (rc = %d). Archive request (%#llx) could not be done.\n",
- 				      PFID(&copy->hc_hai.hai_fid), rc,
- 				      copy->hc_hai.hai_cookie);
- 			hpk.hpk_flags |= HP_FLAG_RETRY;
-@@ -816,7 +820,8 @@ static int ll_ioc_copy_end(struct super_block *sb, struct hsm_copy *copy)
- 		rc = ll_data_version(inode, &data_version, LL_DV_RD_FLUSH);
- 		iput(inode);
- 		if (rc) {
--			CDEBUG(D_HSM, "Could not read file data version. Request could not be confirmed.\n");
-+			CDEBUG(D_HSM,
-+			       "Could not read file data version. Request could not be confirmed.\n");
- 			if (hpk.hpk_errval == 0)
- 				hpk.hpk_errval = -rc;
- 			goto progress;
-@@ -832,7 +837,8 @@ static int ll_ioc_copy_end(struct super_block *sb, struct hsm_copy *copy)
- 		 */
- 		if ((copy->hc_hai.hai_action == HSMA_ARCHIVE) &&
- 		    (copy->hc_data_version != data_version)) {
--			CDEBUG(D_HSM, "File data version mismatched. File content was changed during archiving. "
-+			CDEBUG(D_HSM,
-+			       "File data version mismatched. File content was changed during archiving. "
- 			       DFID ", start:%#llx current:%#llx\n",
- 			       PFID(&copy->hc_hai.hai_fid),
- 			       copy->hc_data_version, data_version);
-diff --git a/drivers/staging/lustre/lustre/llite/file.c b/drivers/staging/lustre/lustre/llite/file.c
-index be66545..bd17b38 100644
---- a/drivers/staging/lustre/lustre/llite/file.c
-+++ b/drivers/staging/lustre/lustre/llite/file.c
-@@ -605,7 +605,8 @@ int ll_file_open(struct inode *inode, struct file *file)
- 			 * to get file with different fid.
- 			 */
- 			it->it_flags |= MDS_OPEN_LOCK | MDS_OPEN_BY_FID;
--			rc = ll_intent_file_open(file->f_path.dentry, NULL, 0, it);
-+			rc = ll_intent_file_open(file->f_path.dentry,
-+				NULL, 0, it);
- 			if (rc)
- 				goto out_openerr;
- 
-@@ -1119,7 +1120,8 @@ ll_file_io_generic(const struct lu_env *env, struct vvp_io_args *args,
- 	cl_io_fini(env, io);
- 
- 	if ((!rc || rc == -ENODATA) && count > 0 && io->ci_need_restart) {
--		CDEBUG(D_VFSTRACE, "%s: restart %s from %lld, count:%zu, result: %zd\n",
-+		CDEBUG(D_VFSTRACE,
-+		       "%s: restart %s from %lld, count:%zu, result: %zd\n",
- 		       file_dentry(file)->d_name.name,
- 		       iot == CIT_READ ? "read" : "write",
- 		       *ppos, count, result);
-@@ -2507,7 +2509,8 @@ ll_file_flock(struct file *file, int cmd, struct file_lock *file_lock)
- 	if (IS_ERR(op_data))
- 		return PTR_ERR(op_data);
- 
--	CDEBUG(D_DLMTRACE, "inode=" DFID ", pid=%u, flags=%#llx, mode=%u, start=%llu, end=%llu\n",
-+	CDEBUG(D_DLMTRACE, "inode=" DFID
-+	       ", pid=%u, flags=%#llx, mode=%u, start=%llu, end=%llu\n",
- 	       PFID(ll_inode2fid(inode)), flock.l_flock.pid, flags,
- 	       einfo.ei_mode, flock.l_flock.start, flock.l_flock.end);
- 
-@@ -3455,7 +3458,8 @@ static int ll_layout_lock_set(struct lustre_handle *lockh, enum ldlm_mode mode,
- 		if (rc == 0)
- 			rc = -EAGAIN;
- 
--		CDEBUG(D_INODE, "%s: file=" DFID " waiting layout return: %d.\n",
-+		CDEBUG(D_INODE,
-+		       "%s: file=" DFID " waiting layout return: %d.\n",
- 		       ll_get_fsname(inode->i_sb, NULL, 0),
- 		       PFID(&lli->lli_fid), rc);
- 	}
-diff --git a/drivers/staging/lustre/lustre/llite/llite_internal.h b/drivers/staging/lustre/lustre/llite/llite_internal.h
-index 0287c75..c31d98d 100644
---- a/drivers/staging/lustre/lustre/llite/llite_internal.h
-+++ b/drivers/staging/lustre/lustre/llite/llite_internal.h
-@@ -84,7 +84,9 @@ struct ll_dentry_data {
- 
- struct ll_getname_data {
- 	struct dir_context ctx;
--	char	    *lgd_name;      /* points to a buffer with NAME_MAX+1 size */
-+	char	    *lgd_name;      /* points to a buffer with
-+				     * NAME_MAX+1 size
-+				     */
- 	struct lu_fid    lgd_fid;       /* target fid we are looking for */
- 	int	      lgd_found;     /* inode matched? */
- };
-@@ -637,7 +639,8 @@ static inline int ll_need_32bit_api(struct ll_sb_info *sbi)
- #if BITS_PER_LONG == 32
- 	return 1;
- #elif defined(CONFIG_COMPAT)
--	return unlikely(in_compat_syscall() || (sbi->ll_flags & LL_SBI_32BIT_API));
-+	return unlikely(in_compat_syscall() ||
-+		(sbi->ll_flags & LL_SBI_32BIT_API));
- #else
- 	return unlikely(sbi->ll_flags & LL_SBI_32BIT_API);
- #endif
-@@ -1065,7 +1068,9 @@ struct ll_statahead_info {
- 					     * hidden entries
- 					     */
- 				sai_agl_valid:1,/* AGL is valid for the dir */
--				sai_in_readpage:1;/* statahead is in readdir() */
-+				sai_in_readpage:1;/* statahead is in
-+						   * readdir()
-+						   */
- 	wait_queue_head_t	sai_waitq;      /* stat-ahead wait queue */
- 	struct ptlrpc_thread    sai_thread;     /* stat-ahead thread */
- 	struct ptlrpc_thread    sai_agl_thread; /* AGL thread */
-@@ -1253,7 +1258,8 @@ static inline void ll_set_lock_data(struct obd_export *exp, struct inode *inode,
- 		 */
- 		if (it->it_remote_lock_mode) {
- 			handle.cookie = it->it_remote_lock_handle;
--			CDEBUG(D_DLMTRACE, "setting l_data to inode " DFID "%p for remote lock %#llx\n",
-+			CDEBUG(D_DLMTRACE, "setting l_data to inode "
-+			       DFID "%p for remote lock %#llx\n",
- 			       PFID(ll_inode2fid(inode)), inode,
- 			       handle.cookie);
- 			md_set_lock_data(exp, &handle, inode, NULL);
-@@ -1261,7 +1267,8 @@ static inline void ll_set_lock_data(struct obd_export *exp, struct inode *inode,
- 
- 		handle.cookie = it->it_lock_handle;
- 
--		CDEBUG(D_DLMTRACE, "setting l_data to inode " DFID "%p for lock %#llx\n",
-+		CDEBUG(D_DLMTRACE,
-+		       "setting l_data to inode " DFID "%p for lock %#llx\n",
- 		       PFID(ll_inode2fid(inode)), inode, handle.cookie);
- 
- 		md_set_lock_data(exp, &handle, inode, &it->it_lock_bits);
-@@ -1284,7 +1291,8 @@ static inline int d_lustre_invalid(const struct dentry *dentry)
-  */
- static inline void d_lustre_invalidate(struct dentry *dentry, int nested)
- {
--	CDEBUG(D_DENTRY, "invalidate dentry %pd (%p) parent %p inode %p refc %d\n",
-+	CDEBUG(D_DENTRY,
-+	       "invalidate dentry %pd (%p) parent %p inode %p refc %d\n",
- 	       dentry, dentry,
- 	       dentry->d_parent, d_inode(dentry), d_count(dentry));
- 
-diff --git a/drivers/staging/lustre/lustre/llite/llite_lib.c b/drivers/staging/lustre/lustre/llite/llite_lib.c
-index d855129..e54d40c 100644
---- a/drivers/staging/lustre/lustre/llite/llite_lib.c
-+++ b/drivers/staging/lustre/lustre/llite/llite_lib.c
-@@ -231,7 +231,8 @@ static int client_common_fill_super(struct super_block *sb, char *md, char *dt,
- 	err = obd_connect(NULL, &sbi->ll_md_exp, obd, &sbi->ll_sb_uuid,
- 			  data, NULL);
- 	if (err == -EBUSY) {
--		LCONSOLE_ERROR_MSG(0x14f, "An MDT (md %s) is performing recovery, of which this client is not a part. Please wait for recovery to complete, abort, or time out.\n",
-+		LCONSOLE_ERROR_MSG(0x14f,
-+				   "An MDT (md %s) is performing recovery, of which this client is not a part. Please wait for recovery to complete, abort, or time out.\n",
- 				   md);
- 		goto out;
- 	} else if (err) {
-@@ -279,7 +280,8 @@ static int client_common_fill_super(struct super_block *sb, char *md, char *dt,
- 		}
- 		obd_connect_flags2str(buf, PAGE_SIZE,
- 				      valid ^ CLIENT_CONNECT_MDT_REQD, ",");
--		LCONSOLE_ERROR_MSG(0x170, "Server %s does not support feature(s) needed for correct operation of this client (%s). Please upgrade server or downgrade client.\n",
-+		LCONSOLE_ERROR_MSG(0x170,
-+				   "Server %s does not support feature(s) needed for correct operation of this client (%s). Please upgrade server or downgrade client.\n",
- 				   sbi->ll_md_exp->exp_obd->obd_name, buf);
- 		kfree(buf);
- 		err = -EPROTO;
-@@ -380,7 +382,8 @@ static int client_common_fill_super(struct super_block *sb, char *md, char *dt,
- 	if (sbi->ll_flags & LL_SBI_ALWAYS_PING)
- 		data->ocd_connect_flags &= ~OBD_CONNECT_PINGLESS;
- 
--	CDEBUG(D_RPCTRACE, "ocd_connect_flags: %#llx ocd_version: %d ocd_grant: %d\n",
-+	CDEBUG(D_RPCTRACE,
-+	       "ocd_connect_flags: %#llx ocd_version: %d ocd_grant: %d\n",
- 	       data->ocd_connect_flags,
- 	       data->ocd_version, data->ocd_grant);
- 
-@@ -392,7 +395,8 @@ static int client_common_fill_super(struct super_block *sb, char *md, char *dt,
- 	err = obd_connect(NULL, &sbi->ll_dt_exp, obd, &sbi->ll_sb_uuid, data,
- 			  NULL);
- 	if (err == -EBUSY) {
--		LCONSOLE_ERROR_MSG(0x150, "An OST (dt %s) is performing recovery, of which this client is not a part.  Please wait for recovery to complete, abort, or time out.\n",
-+		LCONSOLE_ERROR_MSG(0x150,
-+				   "An OST (dt %s) is performing recovery, of which this client is not a part.  Please wait for recovery to complete, abort, or time out.\n",
- 				   dt);
- 		goto out_md;
- 	} else if (err) {
-@@ -540,7 +544,8 @@ static int client_common_fill_super(struct super_block *sb, char *md, char *dt,
- 		err = ldebugfs_register_mountpoint(llite_root, sb, dt, md);
- 		if (err < 0) {
- 			CERROR("%s: could not register mount in debugfs: "
--			       "rc = %d\n", ll_get_fsname(sb, NULL, 0), err);
-+			       "rc = %d\n", ll_get_fsname(sb, NULL, 0),
-+			       err);
- 			err = 0;
- 		}
- 	}
-@@ -915,7 +920,8 @@ int ll_fill_super(struct super_block *sb, struct vfsmount *mnt)
- 	/* Profile set with LCFG_MOUNTOPT so we can find our mdc and osc obds */
- 	lprof = class_get_profile(profilenm);
- 	if (!lprof) {
--		LCONSOLE_ERROR_MSG(0x156, "The client profile '%s' could not be read from the MGS.  Does that filesystem exist?\n",
-+		LCONSOLE_ERROR_MSG(0x156,
-+				   "The client profile '%s' could not be read from the MGS.  Does that filesystem exist?\n",
- 				   profilenm);
- 		err = -EINVAL;
- 		goto out_free;
-@@ -1042,7 +1048,8 @@ struct inode *ll_inode_from_resource_lock(struct ldlm_lock *lock)
- 		} else {
- 			inode = lock->l_resource->lr_lvb_inode;
- 			LDLM_DEBUG_LIMIT(inode->i_state & I_FREEING ?  D_INFO :
--					 D_WARNING, lock, "lr_lvb_inode %p is bogus: magic %08x",
-+					 D_WARNING, lock,
-+					 "lr_lvb_inode %p is bogus: magic %08x",
- 					 lock->l_resource->lr_lvb_inode,
- 					 lli->lli_inode_magic);
- 			inode = NULL;
-@@ -1419,7 +1426,8 @@ int ll_setattr_raw(struct dentry *dentry, struct iattr *attr, bool hsm_import)
- 	struct md_op_data *op_data = NULL;
- 	int rc = 0;
- 
--	CDEBUG(D_VFSTRACE, "%s: setattr inode " DFID "(%p) from %llu to %llu, valid %x, hsm_import %d\n",
-+	CDEBUG(D_VFSTRACE, "%s: setattr inode " DFID
-+	       "(%p) from %llu to %llu, valid %x, hsm_import %d\n",
- 	       ll_get_fsname(inode->i_sb, NULL, 0), PFID(&lli->lli_fid), inode,
- 	       i_size_read(inode), attr->ia_size, attr->ia_valid, hsm_import);
- 
-@@ -1744,7 +1752,8 @@ int ll_update_inode(struct inode *inode, struct lustre_md *md)
- 	}
- 	if (body->mbo_valid & OBD_MD_FLMTIME) {
- 		if (body->mbo_mtime > LTIME_S(inode->i_mtime)) {
--			CDEBUG(D_INODE, "setting ino %lu mtime from %lu to %llu\n",
-+			CDEBUG(D_INODE,
-+			       "setting ino %lu mtime from %lu to %llu\n",
- 			       inode->i_ino, LTIME_S(inode->i_mtime),
- 			       body->mbo_mtime);
- 			LTIME_S(inode->i_mtime) = body->mbo_mtime;
-@@ -1783,7 +1792,8 @@ int ll_update_inode(struct inode *inode, struct lustre_md *md)
- 		/* FID shouldn't be changed! */
- 		if (fid_is_sane(&lli->lli_fid)) {
- 			LASSERTF(lu_fid_eq(&lli->lli_fid, &body->mbo_fid1),
--				 "Trying to change FID " DFID " to the " DFID ", inode " DFID "(%p)\n",
-+				 "Trying to change FID " DFID " to the " DFID
-+				 ", inode " DFID "(%p)\n",
- 				 PFID(&lli->lli_fid), PFID(&body->mbo_fid1),
- 				 PFID(ll_inode2fid(inode)), inode);
- 		} else {
-@@ -1870,8 +1880,8 @@ void ll_delete_inode(struct inode *inode)
- 
- 	truncate_inode_pages_final(&inode->i_data);
- 
--	LASSERTF(!inode->i_data.nrpages,
--		 "inode=" DFID "(%p) nrpages=%lu, see http://jira.whamcloud.com/browse/LU-118\n",
-+	LASSERTF(!inode->i_data.nrpages, "inode=" DFID
-+		 "(%p) nrpages=%lu, see http://jira.whamcloud.com/browse/LU-118\n",
- 		 PFID(ll_inode2fid(inode)), inode, inode->i_data.nrpages);
- 
- 	ll_clear_inode(inode);
-@@ -2254,7 +2264,8 @@ int ll_process_config(struct lustre_cfg *lcfg)
- 		return -EINVAL;
- 	sb = (void *)x;
- 	/* This better be a real Lustre superblock! */
--	LASSERT(s2lsi((struct super_block *)sb)->lsi_lmd->lmd_magic == LMD_MAGIC);
-+	LASSERT(s2lsi((struct super_block *)sb)->lsi_lmd->lmd_magic ==
-+		LMD_MAGIC);
- 
- 	/* Note we have not called client_common_fill_super yet, so
- 	 * proc fns must be able to handle that!
-@@ -2441,7 +2452,8 @@ void ll_dirty_page_discard_warn(struct page *page, int ioret)
- 	}
- 
- 	CDEBUG(D_WARNING,
--	       "%s: dirty page discard: %s/fid: " DFID "/%s may get corrupted (rc %d)\n",
-+	       "%s: dirty page discard: %s/fid: " DFID
-+	       "/%s may get corrupted (rc %d)\n",
- 	       ll_get_fsname(page->mapping->host->i_sb, NULL, 0),
- 	       s2lsi(page->mapping->host->i_sb)->lsi_lmd->lmd_dev,
- 	       PFID(&obj->vob_header.coh_lu.loh_fid),
-@@ -2571,8 +2583,9 @@ static int ll_linkea_decode(struct linkea_data *ldata, unsigned int linkno,
-  *
-  * \param[in]	  file	- File descriptor against which to perform the operation
-  * \param[in,out] arg	- User-filled structure containing the linkno to operate
-- *			  on and the available size. It is eventually filled with
-- *			  the requested information or left untouched on error
-+ *			  on and the available size. It is eventually filled
-+ *			  with the requested information or left untouched on
-+ *			  error
-  *
-  * \retval - 0 on success
-  * \retval - Appropriate negative error code on failure
-diff --git a/drivers/staging/lustre/lustre/llite/llite_mmap.c b/drivers/staging/lustre/lustre/llite/llite_mmap.c
-index ccc7ae1..61a4bed 100644
---- a/drivers/staging/lustre/lustre/llite/llite_mmap.c
-+++ b/drivers/staging/lustre/lustre/llite/llite_mmap.c
-@@ -208,7 +208,8 @@ static int ll_page_mkwrite0(struct vm_area_struct *vma, struct page *vmpage,
- 			 */
- 			unlock_page(vmpage);
- 
--			CDEBUG(D_MMAP, "Race on page_mkwrite %p/%lu, page has been written out, retry.\n",
-+			CDEBUG(D_MMAP,
-+			       "Race on page_mkwrite %p/%lu, page has been written out, retry.\n",
- 			       vmpage, vmpage->index);
- 
- 			*retry = true;
-diff --git a/drivers/staging/lustre/lustre/llite/llite_nfs.c b/drivers/staging/lustre/lustre/llite/llite_nfs.c
-index e50c637..b04d456 100644
---- a/drivers/staging/lustre/lustre/llite/llite_nfs.c
-+++ b/drivers/staging/lustre/lustre/llite/llite_nfs.c
-@@ -127,7 +127,8 @@ struct lustre_nfs_fid {
- };
- 
- static struct dentry *
--ll_iget_for_nfs(struct super_block *sb, struct lu_fid *fid, struct lu_fid *parent)
-+ll_iget_for_nfs(struct super_block *sb,
-+		struct lu_fid *fid, struct lu_fid *parent)
- {
- 	struct inode  *inode;
- 	struct dentry *result;
-diff --git a/drivers/staging/lustre/lustre/llite/namei.c b/drivers/staging/lustre/lustre/llite/namei.c
-index 4897dbd..d2c28ff 100644
---- a/drivers/staging/lustre/lustre/llite/namei.c
-+++ b/drivers/staging/lustre/lustre/llite/namei.c
-@@ -204,7 +204,8 @@ int ll_md_blocking_ast(struct ldlm_lock *lock, struct ldlm_lock_desc *desc,
- 
- 		if (!fid_res_name_eq(ll_inode2fid(inode),
- 				     &lock->l_resource->lr_name)) {
--			LDLM_ERROR(lock, "data mismatch with object " DFID "(%p)",
-+			LDLM_ERROR(lock,
-+				   "data mismatch with object " DFID "(%p)",
- 				   PFID(ll_inode2fid(inode)), inode);
- 			LBUG();
- 		}
-@@ -273,7 +274,8 @@ int ll_md_blocking_ast(struct ldlm_lock *lock, struct ldlm_lock_desc *desc,
- 		if ((bits & MDS_INODELOCK_UPDATE) && S_ISDIR(inode->i_mode)) {
- 			struct ll_inode_info *lli = ll_i2info(inode);
- 
--			CDEBUG(D_INODE, "invalidating inode " DFID " lli = %p, pfid  = " DFID "\n",
-+			CDEBUG(D_INODE, "invalidating inode " DFID
-+			       " lli = %p, pfid  = " DFID "\n",
- 			       PFID(ll_inode2fid(inode)), lli,
- 			       PFID(&lli->lli_pfid));
- 
-@@ -289,7 +291,8 @@ int ll_md_blocking_ast(struct ldlm_lock *lock, struct ldlm_lock_desc *desc,
- 				 * we have to invalidate the negative children
- 				 * on master inode
- 				 */
--				CDEBUG(D_INODE, "Invalidate s" DFID " m" DFID "\n",
-+				CDEBUG(D_INODE,
-+				       "Invalidate s" DFID " m" DFID "\n",
- 				       PFID(ll_inode2fid(inode)),
- 				       PFID(&lli->lli_pfid));
- 
-@@ -684,7 +687,8 @@ static int ll_atomic_open(struct inode *dir, struct dentry *dentry,
- 	struct dentry *de;
- 	int rc = 0;
- 
--	CDEBUG(D_VFSTRACE, "VFS Op:name=%pd, dir=" DFID "(%p),file %p,open_flags %x,mode %x opened %d\n",
-+	CDEBUG(D_VFSTRACE, "VFS Op:name=%pd, dir=" DFID
-+	       "(%p),file %p,open_flags %x,mode %x opened %d\n",
- 	       dentry, PFID(ll_inode2fid(dir)), dir, file, open_flags, mode,
- 	       *opened);
- 
-@@ -737,7 +741,8 @@ static int ll_atomic_open(struct inode *dir, struct dentry *dentry,
- 
- 			*opened |= FILE_CREATED;
- 		}
--		if (d_really_is_positive(dentry) && it_disposition(it, DISP_OPEN_OPEN)) {
-+		if (d_really_is_positive(dentry) &&
-+			it_disposition(it, DISP_OPEN_OPEN)) {
- 			/* Open dentry. */
- 			if (S_ISFIFO(d_inode(dentry)->i_mode)) {
- 				/* We cannot call open here as it might
-@@ -981,7 +986,8 @@ static int ll_create_nd(struct inode *dir, struct dentry *dentry,
- {
- 	int rc;
- 
--	CDEBUG(D_VFSTRACE, "VFS Op:name=%pd, dir=" DFID "(%p), flags=%u, excl=%d\n",
-+	CDEBUG(D_VFSTRACE,
-+	       "VFS Op:name=%pd, dir=" DFID "(%p), flags=%u, excl=%d\n",
- 	       dentry, PFID(ll_inode2fid(dir)), dir, mode, want_excl);
- 
- 	rc = ll_mknod(dir, dentry, mode, 0);
-@@ -1102,7 +1108,8 @@ static int ll_link(struct dentry *old_dentry, struct inode *dir,
- 	struct md_op_data *op_data;
- 	int err;
- 
--	CDEBUG(D_VFSTRACE, "VFS Op: inode=" DFID "(%p), dir=" DFID "(%p), target=%pd\n",
-+	CDEBUG(D_VFSTRACE,
-+	       "VFS Op: inode=" DFID "(%p), dir=" DFID "(%p), target=%pd\n",
- 	       PFID(ll_inode2fid(src)), src, PFID(ll_inode2fid(dir)), dir,
- 	       new_dentry);
- 
-@@ -1137,7 +1144,8 @@ static int ll_rename(struct inode *src, struct dentry *src_dchild,
- 		return -EINVAL;
- 
- 	CDEBUG(D_VFSTRACE,
--	       "VFS Op:oldname=%pd, src_dir=" DFID "(%p), newname=%pd, tgt_dir=" DFID "(%p)\n",
-+	       "VFS Op:oldname=%pd, src_dir=" DFID
-+	       "(%p), newname=%pd, tgt_dir=" DFID "(%p)\n",
- 	       src_dchild, PFID(ll_inode2fid(src)), src,
- 	       tgt_dchild, PFID(ll_inode2fid(tgt)), tgt);
- 
-diff --git a/drivers/staging/lustre/lustre/llite/rw.c b/drivers/staging/lustre/lustre/llite/rw.c
-index e720905..9fdd104 100644
---- a/drivers/staging/lustre/lustre/llite/rw.c
-+++ b/drivers/staging/lustre/lustre/llite/rw.c
-@@ -297,7 +297,8 @@ stride_pg_count(pgoff_t st_off, unsigned long st_len, unsigned long st_pgs,
- 	else
- 		pg_count = start_left + st_pgs * (end - start - 1) + end_left;
- 
--	CDEBUG(D_READA, "st_off %lu, st_len %lu st_pgs %lu off %lu length %lu pgcount %lu\n",
-+	CDEBUG(D_READA,
-+	       "st_off %lu, st_len %lu st_pgs %lu off %lu length %lu pgcount %lu\n",
- 	       st_off, st_len, st_pgs, off, length, pg_count);
- 
- 	return pg_count;
-@@ -404,7 +405,8 @@ ll_read_ahead_pages(const struct lu_env *env, struct cl_io *io,
- 			 * forward read-ahead, it will be fixed when backward
- 			 * read-ahead is implemented
- 			 */
--			LASSERTF(page_idx >= ria->ria_stoff, "Invalid page_idx %lu rs %lu re %lu ro %lu rl %lu rp %lu\n",
-+			LASSERTF(page_idx >= ria->ria_stoff,
-+				 "Invalid page_idx %lu rs %lu re %lu ro %lu rl %lu rp %lu\n",
- 				 page_idx,
- 				 ria->ria_start, ria->ria_end, ria->ria_stoff,
- 				 ria->ria_length, ria->ria_pages);
-@@ -670,7 +672,8 @@ static void ras_stride_increase_window(struct ll_readahead_state *ras,
- 
- 	LASSERT(ras->ras_stride_length > 0);
- 	LASSERTF(ras->ras_window_start + ras->ras_window_len
--		 >= ras->ras_stride_offset, "window_start %lu, window_len %lu stride_offset %lu\n",
-+		 >= ras->ras_stride_offset,
-+		 "window_start %lu, window_len %lu stride_offset %lu\n",
- 		 ras->ras_window_start,
- 		 ras->ras_window_len, ras->ras_stride_offset);
- 
-@@ -766,7 +769,8 @@ static void ras_update(struct ll_sb_info *sbi, struct inode *inode,
- 			    PAGE_SHIFT;
- 
- 		CDEBUG(D_READA, "kmsp %llu mwp %lu mp %lu\n", kms_pages,
--		       ra->ra_max_read_ahead_whole_pages, ra->ra_max_pages_per_file);
-+		       ra->ra_max_read_ahead_whole_pages,
-+		       ra->ra_max_pages_per_file);
- 
- 		if (kms_pages &&
- 		    kms_pages <= ra->ra_max_read_ahead_whole_pages) {
-diff --git a/drivers/staging/lustre/lustre/llite/rw26.c b/drivers/staging/lustre/lustre/llite/rw26.c
-index 3619cd8..d1a1899 100644
---- a/drivers/staging/lustre/lustre/llite/rw26.c
-+++ b/drivers/staging/lustre/lustre/llite/rw26.c
-@@ -327,7 +327,8 @@ static ssize_t ll_direct_IO_26(struct kiocb *iocb, struct iov_iter *iter)
- 	if ((file_offset & ~PAGE_MASK) || (count & ~PAGE_MASK))
- 		return -EINVAL;
- 
--	CDEBUG(D_VFSTRACE, "VFS Op:inode=" DFID "(%p), size=%zd (max %lu), offset=%lld=%llx, pages %zd (max %lu)\n",
-+	CDEBUG(D_VFSTRACE, "VFS Op:inode=" DFID
-+	       "(%p), size=%zd (max %lu), offset=%lld=%llx, pages %zd (max %lu)\n",
- 	       PFID(ll_inode2fid(inode)), inode, count, MAX_DIO_SIZE,
- 	       file_offset, file_offset, count >> PAGE_SHIFT,
- 	       MAX_DIO_SIZE >> PAGE_SHIFT);
-diff --git a/drivers/staging/lustre/lustre/llite/statahead.c b/drivers/staging/lustre/lustre/llite/statahead.c
-index ea9d59f..3969c9c3 100644
---- a/drivers/staging/lustre/lustre/llite/statahead.c
-+++ b/drivers/staging/lustre/lustre/llite/statahead.c
-@@ -1008,7 +1008,8 @@ static int ll_statahead_thread(void *arg)
- 		sai->sai_in_readpage = 0;
- 		if (IS_ERR(page)) {
- 			rc = PTR_ERR(page);
--			CDEBUG(D_READA, "error reading dir " DFID " at %llu/%llu: opendir_pid = %u: rc = %d\n",
-+			CDEBUG(D_READA, "error reading dir " DFID
-+			       " at %llu/%llu: opendir_pid = %u: rc = %d\n",
- 			       PFID(ll_inode2fid(dir)), pos, sai->sai_index,
- 			       lli->lli_opendir_pid, rc);
- 			break;
-@@ -1082,7 +1083,8 @@ static int ll_statahead_thread(void *arg)
- 					struct ll_inode_info *clli;
- 
- 					clli = list_entry(sai->sai_agls.next,
--							  struct ll_inode_info, lli_agl_list);
-+							  struct ll_inode_info,
-+							  lli_agl_list);
- 					list_del_init(&clli->lli_agl_list);
- 					spin_unlock(&lli->lli_agl_lock);
- 
-@@ -1105,7 +1107,8 @@ static int ll_statahead_thread(void *arg)
- 		if (sa_low_hit(sai)) {
- 			rc = -EFAULT;
- 			atomic_inc(&sbi->ll_sa_wrong);
--			CDEBUG(D_READA, "Statahead for dir " DFID " hit ratio too low: hit/miss %llu/%llu, sent/replied %llu/%llu, stopping statahead thread: pid %d\n",
-+			CDEBUG(D_READA, "Statahead for dir " DFID
-+			       " hit ratio too low: hit/miss %llu/%llu, sent/replied %llu/%llu, stopping statahead thread: pid %d\n",
- 			       PFID(&lli->lli_fid), sai->sai_hit,
- 			       sai->sai_miss, sai->sai_sent,
- 			       sai->sai_replied, current_pid());
-@@ -1274,7 +1277,8 @@ static int is_first_dirent(struct inode *dir, struct dentry *dentry)
- 			struct ll_inode_info *lli = ll_i2info(dir);
- 
- 			rc = PTR_ERR(page);
--			CERROR("%s: error reading dir " DFID " at %llu: opendir_pid = %u : rc = %d\n",
-+			CERROR("%s: error reading dir " DFID
-+			       " at %llu: opendir_pid = %u : rc = %d\n",
- 			       ll_get_fsname(dir->i_sb, NULL, 0),
- 			       PFID(ll_inode2fid(dir)), pos,
- 			       lli->lli_opendir_pid, rc);
-@@ -1447,7 +1451,7 @@ static int revalidate_statahead_dentry(struct inode *dir,
- 	if (entry->se_state == SA_ENTRY_SUCC && entry->se_inode) {
- 		struct inode *inode = entry->se_inode;
- 		struct lookup_intent it = { .it_op = IT_GETATTR,
--					    .it_lock_handle = entry->se_handle };
-+					    .it_lock_handle = entry->se_handle};
- 		__u64 bits;
- 
- 		rc = md_revalidate_lock(ll_i2mdexp(dir), &it,
-@@ -1470,8 +1474,8 @@ static int revalidate_statahead_dentry(struct inode *dir,
- 				entry->se_inode = NULL;
- 			} else if ((*dentryp)->d_inode != inode) {
- 				/* revalidate, but inode is recreated */
--				CDEBUG(D_READA,
--				       "%s: stale dentry %pd inode " DFID ", statahead inode " DFID "\n",
-+				CDEBUG(D_READA, "%s: stale dentry %pd inode "
-+				       DFID ", statahead inode " DFID "\n",
- 				       ll_get_fsname((*dentryp)->d_inode->i_sb,
- 						     NULL, 0),
- 				       *dentryp,
-diff --git a/drivers/staging/lustre/lustre/llite/super25.c b/drivers/staging/lustre/lustre/llite/super25.c
-index 0da4af8..5a52595 100644
---- a/drivers/staging/lustre/lustre/llite/super25.c
-+++ b/drivers/staging/lustre/lustre/llite/super25.c
-@@ -88,7 +88,8 @@ static int __init lustre_init(void)
- 	struct timespec64 ts;
- 	int i, rc, seed[2];
- 
--	BUILD_BUG_ON(sizeof(LUSTRE_VOLATILE_HDR) != LUSTRE_VOLATILE_HDR_LEN + 1);
-+	BUILD_BUG_ON(sizeof(LUSTRE_VOLATILE_HDR) !=
-+		LUSTRE_VOLATILE_HDR_LEN + 1);
- 
- 	/* print an address of _any_ initialized kernel symbol from this
- 	 * module, to allow debugging with gdb that doesn't support data
-diff --git a/drivers/staging/lustre/lustre/llite/xattr_cache.c b/drivers/staging/lustre/lustre/llite/xattr_cache.c
-index 80ee392..dbf9be2 100644
---- a/drivers/staging/lustre/lustre/llite/xattr_cache.c
-+++ b/drivers/staging/lustre/lustre/llite/xattr_cache.c
-@@ -364,7 +364,8 @@ static int ll_xattr_cache_refill(struct inode *inode, struct lookup_intent *oit)
- 	}
- 
- 	if (oit->it_status < 0) {
--		CDEBUG(D_CACHE, "getxattr intent returned %d for fid " DFID "\n",
-+		CDEBUG(D_CACHE,
-+		       "getxattr intent returned %d for fid " DFID "\n",
- 		       oit->it_status, PFID(ll_inode2fid(inode)));
- 		rc = oit->it_status;
- 		/* xattr data is so large that we don't want to cache it */
 -- 
 2.7.4
 
