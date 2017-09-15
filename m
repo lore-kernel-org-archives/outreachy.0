@@ -1,78 +1,77 @@
 X-GM-THRID: 6465879632669310976
-X-Received: by 10.129.46.150 with SMTP id u144mr14303183ywu.240.1505457515776;
-        Thu, 14 Sep 2017 23:38:35 -0700 (PDT)
+X-Received: by 10.36.125.205 with SMTP id b196mr1523240itc.22.1505457511832;
+        Thu, 14 Sep 2017 23:38:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.6.36 with SMTP id 36ls2376443iog.52.gmail; Thu, 14 Sep
- 2017 23:38:35 -0700 (PDT)
-X-Received: by 10.129.75.88 with SMTP id y85mr15179657ywa.108.1505457515296;
-        Thu, 14 Sep 2017 23:38:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505457515; cv=none;
+Received: by 10.36.192.65 with SMTP id u62ls549751itf.16.gmail; Thu, 14 Sep
+ 2017 23:38:31 -0700 (PDT)
+X-Received: by 10.36.219.133 with SMTP id c127mr1460270itg.37.1505457511059;
+        Thu, 14 Sep 2017 23:38:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505457511; cv=none;
         d=google.com; s=arc-20160816;
-        b=g1hG5XopyVc8o9qDvFxGXaLYb/WDH9ZMreWnwOdrmSB3VAMVjUPxYS/Wyo9G5wJb14
-         QqSqNEV3G7+urLEXEqjfvijyrNLc2BK7IT0SdAjJQGojZgrbn/lQI+ZAqRG9Y2dQikgY
-         Qq62Rn36XCoHLTMGC9JsUs/XivuAplPors1L1XfKKQdKgoVEFVC0IZTSuhaytVTy3wXK
-         TXhoxVM4OJDyHiYIBoJynaoz6FU69NsrRsEIlOTyfGy5TPuJYSvlW2g/raq3HeQCAKQs
-         KslCZqsaWuT0OVF6UawaiFLeO3XeMYjK01YF5T3uSmCd203l7kcw4q80ASuoyE/q52p4
-         fOEA==
+        b=zGQUd6d6wFxKG+WGpB2MAdf9X5NX2ObXCULiHm2lu1uiYvCkj96MnpHAKwis2JLCLq
+         tin280bEnuM9xgpa/nOjeTwqqwCOSU2OpXVxHOueMgRihUg50ZD+Bj2Yfmj9waLCrUWa
+         JqjWSfuICKEIu3Or+YEQdY1CN2TbZwAEiDM39YIeVLrQ8Gj8TjzqsVu/tBUlrrwoDACH
+         bwvqFzIwnZdm3oFzIRjX2xoRk1HHTKNa3rgoZOICsNEVWft0BoDgBuqm/+fSlOnpoVI5
+         OMS4F4ueJBsZ1fa7XSjZCXuw9v0MfK2VL9p1n2AaKv/6ZmmZzxqz3uK53ORdvG9kAzB8
+         sRJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature:arc-authentication-results;
-        bh=LxC7VcTYabaABXo1fYD51ltlASVNB/p3I7imX5dncxY=;
-        b=yTosUy6xZ6wJM3hS3GRpu8Fq1nklRHEw5CM971sPGAbs0RQESBEONLjJDJozd4kMi+
-         bnGgMboKnLRmdgUTVEIwBLlb5J8Xrvs+MXCCMLQzO5cyh8xtasbmPglHwVhv2sPVQVoE
-         Kre/6uXtr1j/yVkfMdzJDm4m0L7//LvFGGDSC72FakH2lf1dcBrwMC2JgwXosdAyu9co
-         qhteS0tIHgxDuIOxBOyiopzQ8O1ukTKXpvqhXooIooNw7CFnm4Tkqyw/puUlPtkbhGKk
-         9tZ5ggvFi9Ky3Ptmm8mjTeR2VTHSx+0MqXczYaM7HswTnO+WX45q1ulnx0ImZqubtseJ
-         5buw==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=u2DjGhRxhFCmfqekMgECynPY0fruL5qZNYDW4gZvTgM=;
+        b=P+62wlPdsvaJJjkNRkhEcSYDB91wm7MhtWeNWoOe5UMVEi70Gn7BQzg5KGM3GxIpca
+         V1134JJxYWYuG51J5WdWwdsk4MKe1Ha2MGjnVRRowTIrMOEXjlO51aoo0nh7I+Z/ckZT
+         LTHOcJwU5v83QSW/YV5G2DUbW/pRUmJxr6AcmO69dRrdgNL1wGgLFgBcutxdk3DiUt1b
+         ZCycZG1AmknW0vgGsIQqyuaz6XbX2USMLzASGm5qXQfzkBiCqH9wpmC2AYZtW2YwmEtI
+         zAaI1zMCQbIuSIHlatMrov8YUgMsMiPsrUxALNcTB4+uqYowWuQlda0G3023uJ3Ca2PQ
+         8u8A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ltjvq04u;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=S7U3CVjr;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id q65si21563pfj.8.2017.09.14.23.38.35
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id 8si17408pfa.0.2017.09.14.23.38.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 14 Sep 2017 23:38:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Thu, 14 Sep 2017 23:38:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ltjvq04u;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=S7U3CVjr;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id i130so893100pgc.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 14 Sep 2017 23:38:35 -0700 (PDT)
+Received: by mail-pf0-x241.google.com with SMTP id e69so817239pfg.4
+        for <outreachy-kernel@googlegroups.com>; Thu, 14 Sep 2017 23:38:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :in-reply-to:references;
-        bh=LxC7VcTYabaABXo1fYD51ltlASVNB/p3I7imX5dncxY=;
-        b=ltjvq04uVTy4giywhSN4/L5h67bexZT+Tn/gAFncu9+R9txRGYxeZfLjnQNcwKzNiz
-         edT0cUGdK2Bjm9X41jiYzDjcXJoQKXdRGqv6zFQNy1242hONt8B3Hk24BIeuFmLp+IAt
-         zGDA6dhq+ReOgmrGwwW0izy7CPQm4jZ0jDefZZ/+QzemqigY/zt3Do8zwni+M4wEU4//
-         62rtb0I+9dXaYG1PG7AysH/vefPaSG9Qth0v0XTwH331Lv1dOgdN+i6CTlDKvPOHznfP
-         NGtcLFNZBzm/t57jxvWvDlF+h1rpIoDRZW87z5rPY1/Y04orboiGfAtqMXQYSysvSPVD
-         BBbA==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=u2DjGhRxhFCmfqekMgECynPY0fruL5qZNYDW4gZvTgM=;
+        b=S7U3CVjrhKQ0JFYIg95fIhgTQ3R4/WtA9NbErrTf9974Mt5NwyRo4QfQPb3bWC3TG2
+         yByFXPaMuGxKMTLS/zzG5jVEb8lY2lL5OgOaWHoSm+CJwEZ1iqR2FdzBZK/fdwXfoOG+
+         oO14qEvdXHlWphYF5x357j3UjjAsuBix8NoQfT9TNgTp7U9mhyIEzCP/aEHjb/Tme8LZ
+         jpvcaugjczVPOwJOwiXMqFn7ET2wBSM/XJziT5aALjbC/eT8mg1KWxEe4uTfhu24rFoT
+         Ta2PEXLKTM+vFvX9K8hqyf/LBUtEOpLFL7aNxL6wHKgQBk9hRJqM1R0ybuRFUakTDrJl
+         dXSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:in-reply-to:references;
-        bh=LxC7VcTYabaABXo1fYD51ltlASVNB/p3I7imX5dncxY=;
-        b=RY8YNj6+QgUZboim3wFN1HnBC5t7IlSZDv6nh1QL0lOBDmDtKWGN9nHt9J8IkxEmbL
-         /4uZbTO5CYmw77Dd9X976BHk2siBYxLJL7pKcIDUajSDhkYtzTjqEGDw9vq5PB3rJgEP
-         Me9nsBwHyEXwyFH5d1Ark+gZUdOjLSQh+DpYuGQSK+qP0maVZhzTSTx9qocMYYFBQG04
-         z6rwNlmnSPMnHn5wRWhDx2ICWKlIJ8pY7UtdOU0j3hYtKVBbtBlwgWYE79g3jt6REYan
-         hhrzRGb12r5WAUtOeiyK89U+urqiUdO+1KA+gVJLwS9zJx3RSNHuXRzitaKSyode7UsH
-         osmw==
-X-Gm-Message-State: AHPjjUgrf1BUMJoEwA4MCXbz/igsnVv8YIKZZyRmI+YfuUaqd7Zos5SJ
-	1d8eq8ZBzhyCTELMGJo=
-X-Google-Smtp-Source: AOwi7QC7+GJXzL4zIMpGB7BkdAWRzZ8m9coGCQ0ckQhF0naSHdL1FUsdqzknvgE/Spl7peOynrJBrg==
-X-Received: by 10.84.149.197 with SMTP id a5mr1852188plh.55.1505457515025;
-        Thu, 14 Sep 2017 23:38:35 -0700 (PDT)
+         :references;
+        bh=u2DjGhRxhFCmfqekMgECynPY0fruL5qZNYDW4gZvTgM=;
+        b=m8Al528M+KVcT3dpea15ZQFLCDDobGVjcS6+KUgtlkZF5PeimjXbVGmgtd7+BWxJIq
+         b5ubhEu2o5jBBp21j7+FWQ09oBu8KL2N2AFVcwfUKorLu5tLUZarkQPRpVPorxWxVT3B
+         MPlpXo0LHI7+Js3uAB176zfN0yQ0xLwrm/VpbOrzWrrfJAZDHuYz0osmpnySowAz6t3c
+         1tdzV44xjNMJtj28dwxbbTtx4zbIBHYgSdHzRoKscLprzXBW1aw0ELhsyztlxXD3zw6M
+         LY15m1TGp1yN7LJ1y5lFo3P00EYrDF2Noy8rGuicx7qgyRnLgONxe7rwFLc74ccPw83U
+         Cxvg==
+X-Gm-Message-State: AHPjjUhCKA9oHHL4Z8ZX7732uvIoNaXKu8TYBUCtxIeDGYlKcaPmoP+t
+	MqUAPBYxun/HKQ==
+X-Google-Smtp-Source: AOwi7QCh1OKqs36zgKQF6pHdleoh8oSEJM8Z2wa9bUrI+ZRtfpgp5/aehAAhgNY1p4SgnEjFiGB5rQ==
+X-Received: by 10.84.248.138 with SMTP id q10mr4577643pll.431.1505457510795;
+        Thu, 14 Sep 2017 23:38:30 -0700 (PDT)
 Return-Path: <aastha.gupta4104@gmail.com>
 Received: from aastha-HP-Pavilion-15-Notebook-PC ([171.78.243.118])
-        by smtp.gmail.com with ESMTPSA id 72sm702120pfj.102.2017.09.14.23.38.33
+        by smtp.gmail.com with ESMTPSA id 207sm740025pfu.0.2017.09.14.23.38.29
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 14 Sep 2017 23:38:34 -0700 (PDT)
+        Thu, 14 Sep 2017 23:38:30 -0700 (PDT)
 From: Aastha Gupta <aastha.gupta4104@gmail.com>
 To: outreachy-kernel@googlegroups.com,
 	Oleg Drokin <oleg.drokin@intel.com>,
@@ -80,39 +79,38 @@ To: outreachy-kernel@googlegroups.com,
 	James Simmons <jsimmons@infradead.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH v2 1/8] staging: lustre: ldlm: fix line over 80 characters in ldlm_extent
-Date: Fri, 15 Sep 2017 12:08:16 +0530
-Message-Id: <8cdd5b82963163e107bc7d73b5ed22145cbb5903.1505456961.git.aastha.gupta4104@gmail.com>
+Subject: [PATCH v2 0/8] staging: lustre: ldlm: fix line over 80 characters
+Date: Fri, 15 Sep 2017 12:08:15 +0530
+Message-Id: <cover.1505456960.git.aastha.gupta4104@gmail.com>
 X-Mailer: git-send-email 2.7.4
-In-Reply-To: <cover.1505456960.git.aastha.gupta4104@gmail.com>
+In-Reply-To: <alpine.DEB.2.20.1709150814460.2287@hadrien>
 References: <alpine.DEB.2.20.1709150814460.2287@hadrien>
- <cover.1505456960.git.aastha.gupta4104@gmail.com>
-In-Reply-To: <cover.1505456960.git.aastha.gupta4104@gmail.com>
-References: <cover.1505456960.git.aastha.gupta4104@gmail.com>
 
-This patch fixes checkpatch.pl warning:
+These patches fix checkpatch.pl warnings 'line over 80 characters' in ldlm files.
 
-WARNING: line over 80 characters
+Changes in v2:
+	- edited commit messages to include the information about the file name 
 
-Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
----
- drivers/staging/lustre/lustre/ldlm/ldlm_extent.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Aastha Gupta (8):
+  staging: lustre: ldlm: fix line over 80 characters in ldlm_extent
+  staging: lustre: ldlm: fix line over 80 characters in ldlm_flock
+  staging: lustre: ldlm: fix line over 80 characters in ldlm_internal
+  staging: lustre: ldlm: fix lines over 80 characters in ldlm_lock
+  staging: lustre: ldlm: fix lines over 80 characters in ldlm_lockd
+  staging: lustre: ldlm: fix lines over 80 characters in ldlm_pool
+  staging: lustre: ldlm: fix lines over 80 characters in ldlm_request
+  staging: lustre: ldlm: fix lines over 80 characters in ldlm_resource
 
-diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_extent.c b/drivers/staging/lustre/lustre/ldlm/ldlm_extent.c
-index 2cc6dc2..f9b4c0a 100644
---- a/drivers/staging/lustre/lustre/ldlm/ldlm_extent.c
-+++ b/drivers/staging/lustre/lustre/ldlm/ldlm_extent.c
-@@ -207,7 +207,8 @@ void ldlm_extent_add_lock(struct ldlm_resource *res,
- 				continue;
- 			if (ldlm_extent_overlap(&lck->l_req_extent,
- 						&lock->l_req_extent)) {
--				CDEBUG(D_ERROR, "granting conflicting lock %p %p\n",
-+				CDEBUG(D_ERROR,
-+				       "granting conflicting lock %p %p\n",
- 				       lck, lock);
- 				ldlm_resource_dump(D_ERROR, res);
- 				LBUG();
+ drivers/staging/lustre/lustre/ldlm/ldlm_extent.c   |  3 +-
+ drivers/staging/lustre/lustre/ldlm/ldlm_flock.c    |  6 ++--
+ drivers/staging/lustre/lustre/ldlm/ldlm_internal.h |  4 ++-
+ drivers/staging/lustre/lustre/ldlm/ldlm_lock.c     | 33 +++++++++++------
+ drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c    |  6 ++--
+ drivers/staging/lustre/lustre/ldlm/ldlm_pool.c     |  6 ++--
+ drivers/staging/lustre/lustre/ldlm/ldlm_request.c  | 41 ++++++++++++++--------
+ drivers/staging/lustre/lustre/ldlm/ldlm_resource.c |  3 +-
+ 8 files changed, 67 insertions(+), 35 deletions(-)
+
 -- 
 2.7.4
 
