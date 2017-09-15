@@ -1,156 +1,118 @@
 X-GM-THRID: 6465879632669310976
-X-Received: by 10.129.229.8 with SMTP id s8mr13753539ywl.73.1505460657986;
-        Fri, 15 Sep 2017 00:30:57 -0700 (PDT)
+X-Received: by 10.99.143.69 with SMTP id r5mr14711808pgn.10.1505457545277;
+        Thu, 14 Sep 2017 23:39:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.37.2 with SMTP id l2ls6059391iol.33.gmail; Fri, 15 Sep
- 2017 00:30:57 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QAE9Fxfz3ygcjdbK09C4pnz5IZYY91hB/AgDXhpTAiryMzKzmeMktFHsMJV9wnlIfQ4XISd
-X-Received: by 10.107.82.26 with SMTP id g26mr2626300iob.78.1505460657301;
-        Fri, 15 Sep 2017 00:30:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505460657; cv=none;
+Received: by 10.36.33.214 with SMTP id e205ls556521ita.5.canary-gmail; Thu, 14
+ Sep 2017 23:39:04 -0700 (PDT)
+X-Received: by 10.107.162.83 with SMTP id l80mr2391596ioe.133.1505457544790;
+        Thu, 14 Sep 2017 23:39:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505457544; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z1vOxz2BTwHd4q6FpAvdAkDNOnfocO/2K6rKa1trBBYpv0Y0vTaCZRqxXHgzMqgovQ
-         Z2WRwYJyj6rXMCKj/7f+iln2vMn3V5n+UzRoRasp/9+MiJLnpf6zPjIrg9o+8lFgL6dh
-         Yvi/tixOO9Jjtj+hbisdiaQ+FWraphc7CZptepWB6d9erLgIQCUnWHhHX3aTncTQrptq
-         3Pc2NdDDJfEUuRkaKb2ZWoXgbpQgOHfcZShKwtddC4NyMugC16e3T+hBI+2P1AaPeQLk
-         E3Wu240FVLZFYkrSBbfXzp3+Iqf2pElr2/taWZVsuBmmkp6EzARwAel2cbdbbnPj6kZF
-         Crsw==
+        b=VuY4bYMAuGb+dVFW/BafGOvPcDT3DXSFTw9PbZtXirJuDFi1eb3egfTOMeYHUrVHey
+         MNNkSHmRJQ0uTqwvs5Qb8WY3MKV8HpCPj54/f3r5kXAo4BxJSvpf30dU+mSpjI19ESU7
+         S254VhOrLBx6paxHhYdOXtbChpDoKqk2gCQxZN8PEAv6jlPIOodew0SeVM4PsIuuXvuV
+         DTedQR4iG9iIbXR//63GBdaxfH4+Wp/INDOyZIOmqYX6zZILpBUy+bMz4aLUdHGIjcLa
+         FXS4KJwVVGZGbw07yiP0qCZPNQBtxUiM9tpj96p0K1dw7GQqj8N/KerzFw0OhmVieph0
+         o57A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:arc-authentication-results;
-        bh=FHSFNmK4/ODFCjLTM7ALDbhLduBrbdDxNhBopXTty6E=;
-        b=TMTCkTTdB/6Kg90i1pnQ+bEmbq3kOzxJzRnZuFb23IzhtVi/3ObAQXupruImzHw2KS
-         oyilg7gmkNuLZF2hdFGQJVKo546b1yZykh/EJJKWOAlUcav9Odmz6KPW9j+C7psqLVIy
-         yhbFtULkMFb8a1CUpokl6QeNBv6xZsi2nyZdYbJd0Azbx+bWO8gsDNhlfQBCT3kTM0dY
-         0dMBupHzIMPNPxPmzIfxjLz1sod9UUHdMBLYCJn0Zep5EA8BgLDvHhFYEXxisDmQawtV
-         EPOW0IJZiL+qoCngRT6ueM5vRfwLyBuVxJ8w1keA1Fy2F6JGNRA0lxoDkMfi2W2Hv/uo
-         gAgg==
+        h=references:in-reply-to:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature:arc-authentication-results;
+        bh=e2LfbdTn/6sF9GDnReFZUh45ywZ2AM+edL1+VKae/nk=;
+        b=0GqEyuthm4QxsAYql+wClst9TQgP5CCL9t+qc2O+bqu99ZEv3KNWpAPl+/KqtbFcf9
+         4Kv7P02oY+4U+BsaATjl1GnJYxjAiXylYOlUIKKiaANadm+I66+2YUC2kFMoBfNL6KJE
+         VlCjoh1YC/hyb8MFEHVuuomcEsaiYXxmY67dEKDlnRFKLwvnBk+1KU0o1bYD9W5Py+ym
+         cqGy/cZfWwuNpaGUjUxI9i+XmMvWCvHVUopRcAOgIAVKOeZOAvdQX2SG1Z2vhXoQzhpX
+         tDLt8EmOe1OgZW4aOruYQUoaSCvS/XdUX31BgX9h8vQ+7SRykIbK1cHtNb+NN4xa3m//
+         7rhQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of andreas.dilger@intel.com designates 192.55.52.93 as permitted sender) smtp.mailfrom=andreas.dilger@intel.com
-Return-Path: <andreas.dilger@intel.com>
-Received: from mga11.intel.com (mga11.intel.com. [192.55.52.93])
-        by gmr-mx.google.com with ESMTPS id r78si33302pfb.3.2017.09.15.00.30.57
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Dh3s9ZuK;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id u184si18049pfb.17.2017.09.14.23.39.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 15 Sep 2017 00:30:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of andreas.dilger@intel.com designates 192.55.52.93 as permitted sender) client-ip=192.55.52.93;
+        Thu, 14 Sep 2017 23:39:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of andreas.dilger@intel.com designates 192.55.52.93 as permitted sender) smtp.mailfrom=andreas.dilger@intel.com
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 15 Sep 2017 00:30:56 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.42,396,1500966000"; 
-   d="scan'208";a="1172465464"
-Received: from fmsmsx103.amr.corp.intel.com ([10.18.124.201])
-  by orsmga001.jf.intel.com with ESMTP; 15 Sep 2017 00:29:58 -0700
-Received: from fmsmsx157.amr.corp.intel.com (10.18.116.73) by
- FMSMSX103.amr.corp.intel.com (10.18.124.201) with Microsoft SMTP Server (TLS)
- id 14.3.319.2; Fri, 15 Sep 2017 00:29:57 -0700
-Received: from FMSMSX109.amr.corp.intel.com ([169.254.15.81]) by
- FMSMSX157.amr.corp.intel.com ([169.254.14.145]) with mapi id 14.03.0319.002;
- Fri, 15 Sep 2017 00:29:57 -0700
-From: "Dilger, Andreas" <andreas.dilger@intel.com>
-To: Aastha Gupta <aastha.gupta4104@gmail.com>
-CC: "outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>,
-	"Drokin, Oleg" <oleg.drokin@intel.com>, James Simmons
-	<jsimmons@infradead.org>, Julia Lawall <julia.lawall@lip6.fr>, "Greg
- Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: Re: [Outreachy kernel] [PATCH 0/8] staging: lustre: ldlm: fix line
- over 80 characters
-Thread-Topic: [Outreachy kernel] [PATCH 0/8] staging: lustre: ldlm: fix line
- over 80 characters
-Thread-Index: AQHTLec819HyFcU0WkWMqgGz4j2c6KK17gOAgAAUYYA=
-Date: Fri, 15 Sep 2017 07:29:56 +0000
-Message-ID: <3FEE1B99-4424-4310-B224-ECF723457BBE@intel.com>
-References: <cover.1505454643.git.aastha.gupta4104@gmail.com>
- <alpine.DEB.2.20.1709150814460.2287@hadrien>
-In-Reply-To: <alpine.DEB.2.20.1709150814460.2287@hadrien>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.255.83.104]
-Content-Type: text/plain; charset="us-ascii"
-Content-ID: <AAD7B8A803F4D543BA35F206AE07F8F8@intel.com>
-Content-Transfer-Encoding: quoted-printable
-MIME-Version: 1.0
-Return-Path: andreas.dilger@intel.com
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Dh3s9ZuK;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x244.google.com with SMTP id m30so880950pgn.5
+        for <outreachy-kernel@googlegroups.com>; Thu, 14 Sep 2017 23:39:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=e2LfbdTn/6sF9GDnReFZUh45ywZ2AM+edL1+VKae/nk=;
+        b=Dh3s9ZuKMIG8rNzRDAgmdNr11W8Idkf/BHTWHOHbIvlwn4gSFeVv3fYRqqBMYGS/Mx
+         sCWIVh8YGusWTv9264NOHGLvXUrpPn02eLc7TTg77AkMdXwwH71O4r/f0dbyM9zZq6Ho
+         4exhZsjMJ8snuTHuupW89jG/HeQlnE5+Kgi4/Y/g3HtE1AmGdl6iI1X+OK8/JBkgFVVZ
+         zSKjNWFzPEWnkqNwsvc9GauAFqYPGymJNyJgUTrOP0zls932wGTh+9QfhnITNdkHeoOW
+         9RbPHiwFjqJuBErSfS64f2AH/nyyWXLP0d/uYU3n5f26Ixnby7g3mntnVShLyh7Ajtek
+         Np/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=e2LfbdTn/6sF9GDnReFZUh45ywZ2AM+edL1+VKae/nk=;
+        b=S4XZ0vGC96YAckZfbovKWP8NnZTB6mkNbIcIh6CTqeznUqzZz0/DyjOM9X+6MjRlXj
+         hgfgkylIIiEQ+F7b1R+J9tiZ2FYebqjlKuygM9xM4GPn4roupePsLJLg6smXuYUy3L6b
+         /9PUNudxZY5uHSeczWc+zMeuyf6vHT9OROYurjDxCXiIl6/JSEH/82Via/ssyS7Yedvs
+         EdOQdDv1etm4SupEQ7c0dn/fShQ5H6JbSpPgXEU6KjZeQQZ5Y87Hw8z6tk592KG4IAZI
+         4c8GtYNmELzRjMLHP0KQmnfZXV+kWqbuZjFwV3npan3Xz+uZo6trzACbGfrn5UVXKTGt
+         p7iA==
+X-Gm-Message-State: AHPjjUjwlWExOKunV15P10Fj2MuTw5zW8huIQqZk9cR9pOjpv001Fesh
+	X6/7n7PdAabZ8Q==
+X-Google-Smtp-Source: ADKCNb7TJPEU8LdPwvGBlIEfo8DQmrQkhsuXwfmC4DCadLee2JFbSQpl2zL3EF64D9ed9/QQrL8irQ==
+X-Received: by 10.99.113.93 with SMTP id b29mr24138047pgn.422.1505457544532;
+        Thu, 14 Sep 2017 23:39:04 -0700 (PDT)
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from aastha-HP-Pavilion-15-Notebook-PC ([171.78.243.118])
+        by smtp.gmail.com with ESMTPSA id k195sm673768pgc.4.2017.09.14.23.39.03
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 14 Sep 2017 23:39:04 -0700 (PDT)
+From: Aastha Gupta <aastha.gupta4104@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	Oleg Drokin <oleg.drokin@intel.com>,
+	Andreas Dilger <andreas.dilger@intel.com>,
+	James Simmons <jsimmons@infradead.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
+Subject: [PATCH v2 8/8] staging: lustre: ldlm: fix lines over 80 characters in ldlm_resource
+Date: Fri, 15 Sep 2017 12:08:23 +0530
+Message-Id: <73906a4d8721c0af7534b67fd7bfb661bb8df82a.1505456961.git.aastha.gupta4104@gmail.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <cover.1505456960.git.aastha.gupta4104@gmail.com>
+References: <alpine.DEB.2.20.1709150814460.2287@hadrien>
+ <cover.1505456960.git.aastha.gupta4104@gmail.com>
+In-Reply-To: <cover.1505456960.git.aastha.gupta4104@gmail.com>
+References: <cover.1505456960.git.aastha.gupta4104@gmail.com>
 
-On Sep 15, 2017, at 00:16, Julia Lawall <julia.lawall@lip6.fr> wrote:
->=20
->=20
->=20
-> On Fri, 15 Sep 2017, Aastha Gupta wrote:
->=20
->> These patches fix checkpatch.pl warnings 'line over 80 characters' in ld=
-lm files.
->>=20
->> ------------------------------------------------------------------------=
--
->>=20
->> Aastha Gupta (8):
->>  staging: lustre: ldlm: fix line over 80 characters
->>  staging: lustre: ldlm: fix line over 80 characters
->>  staging: lustre: ldlm: fix line over 80 characters
->>  staging: lustre: ldlm: fix lines over 80 characters
->>  staging: lustre: ldlm: fix lines over 80 characters
->>  staging: lustre: ldlm: fix lines over 80 characters
->>  staging: lustre: ldlm: fix lines over 80 characters
->>  staging: lustre: ldlm: fix lines over 80 characters
->=20
-> Your patches all have the same subjects.  That is not allowed.  Eihter pu=
-t
-> them all into one patch or add more information about the file name in th=
-e
-> subject line.  But don't include .h or .c
+This patch fixes checkpatch.pl warning:
+WARNING: line over 80 characters
 
-Since these patches are all trivial, and do the same thing, they could just=
- be
-a single patch.
+Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
+---
+ drivers/staging/lustre/lustre/ldlm/ldlm_resource.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Cheers, Andreas
-
->=20
-> julia
->=20
->>=20
->> drivers/staging/lustre/lustre/ldlm/ldlm_extent.c   |  3 +-
->> drivers/staging/lustre/lustre/ldlm/ldlm_flock.c    |  6 ++--
->> drivers/staging/lustre/lustre/ldlm/ldlm_internal.h |  4 ++-
->> drivers/staging/lustre/lustre/ldlm/ldlm_lock.c     | 33 +++++++++++-----=
--
->> drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c    |  6 ++--
->> drivers/staging/lustre/lustre/ldlm/ldlm_pool.c     |  6 ++--
->> drivers/staging/lustre/lustre/ldlm/ldlm_request.c  | 41 ++++++++++++++--=
-------
->> drivers/staging/lustre/lustre/ldlm/ldlm_resource.c |  3 +-
->> 8 files changed, 67 insertions(+), 35 deletions(-)
->>=20
->> --
->> 2.7.4
->>=20
->> --
->> You received this message because you are subscribed to the Google Group=
-s "outreachy-kernel" group.
->> To unsubscribe from this group and stop receiving emails from it, send a=
-n email to outreachy-kernel+unsubscribe@googlegroups.com.
->> To post to this group, send email to outreachy-kernel@googlegroups.com.
->> To view this discussion on the web visit https://groups.google.com/d/msg=
-id/outreachy-kernel/cover.1505454643.git.aastha.gupta4104%40gmail.com.
->> For more options, visit https://groups.google.com/d/optout.
->>=20
-
-Cheers, Andreas
---
-Andreas Dilger
-Lustre Principal Architect
-Intel Corporation
-
-
-
-
-
-
+diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_resource.c b/drivers/staging/lustre/lustre/ldlm/ldlm_resource.c
+index c2ddf73..c374f14 100644
+--- a/drivers/staging/lustre/lustre/ldlm/ldlm_resource.c
++++ b/drivers/staging/lustre/lustre/ldlm/ldlm_resource.c
+@@ -1358,7 +1358,8 @@ void ldlm_resource_dump(int level, struct ldlm_resource *res)
+ 			LDLM_DEBUG_LIMIT(level, lock, "###");
+ 			if (!(level & D_CANTMASK) &&
+ 			    ++granted > ldlm_dump_granted_max) {
+-				CDEBUG(level, "only dump %d granted locks to avoid DDOS.\n",
++				CDEBUG(level,
++				       "only dump %d granted locks to avoid DDOS.\n",
+ 				       granted);
+ 				break;
+ 			}
+-- 
+2.7.4
 
 
