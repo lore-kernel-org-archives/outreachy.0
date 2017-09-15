@@ -1,107 +1,100 @@
-X-GM-THRID: 6663618170330284032
-X-Received: by 2002:a25:c407:: with SMTP id u7mr3850054ybf.59.1551494507932;
-        Fri, 01 Mar 2019 18:41:47 -0800 (PST)
+X-GM-THRID: 6465881960509079552
+X-Received: by 10.25.215.228 with SMTP id q97mr51515lfi.24.1505456401454;
+        Thu, 14 Sep 2017 23:20:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:e6cd:: with SMTP id d196ls3992ybh.9.gmail; Fri, 01 Mar
- 2019 18:41:47 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz/IHkwQTmUpe9uenmzlndbpdupOK7+xG8xdNjhMPVJn9j8RAdbejz531+ounGuc8jdK17z
-X-Received: by 2002:a25:4c85:: with SMTP id z127mr2753783yba.69.1551494507017;
-        Fri, 01 Mar 2019 18:41:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551494507; cv=none;
+Received: by 10.28.113.23 with SMTP id m23ls132962wmc.5.gmail; Thu, 14 Sep
+ 2017 23:19:54 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QAEy3gKor3VmgFmMMolbttXFgV98HuQCmzshX5NB3csCZrpuM+kfyHNrmdwNk/iJ9FORV/m
+X-Received: by 10.28.230.198 with SMTP id e67mr208285wmi.24.1505456394531;
+        Thu, 14 Sep 2017 23:19:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505456394; cv=none;
         d=google.com; s=arc-20160816;
-        b=0dfa76fbDh3jGYesCz/j56YwhteOlfhzvLDYtnjtL9dzHqquVc73BHDc9Zwt1jPlBk
-         hB9cTgSLGttjNOoJdFNq7DAFgWjzGwCdLvCRNQBS5+ZkjxHFDUjwVR0Owr8xyZ12YGw2
-         dNTxoLjQLlQg7Q5e423ky0tf290IYh3DbvIq4FtlUoVHuAhQ8/aKFYhn484TX8Qlydon
-         YEGM/ZyXTd7qx23NSRMAaJyZNBsR3nTqgp6GyAJWwGVh+Gl6ImNoK7p6O+qqxdlgm8bX
-         g/cI713JGki57t+zdf1BULeGrL2HF2nB8eRQjoJf+26mhSz8EvEGqyrY8Q1JiETa0CJS
-         TwXw==
+        b=ShWg9nRnX4JIA94kWaPqnWKpf+KyJKZ3KR/9e6Vx+dSFXaagxLx3VHxiO3v5usSHRt
+         mwGZCiLnpJsivcVpNFVWK1aQY00qq2GXp3NkYKyP8g3JCYrF4vMG37xYF3Ci3aTDvfcH
+         uI30GevDqnhznabwIuXF5Y6zDscR8ih3ULwaRhQBHASDb+noRaLfD7qk6/IchXn4pVPq
+         16QRKLoo5HlE1hMFTEOiA/MKe9VxMLMfwZfpr62/XNqk8CXXttbqr6d6WBIdlJZyH49z
+         XzvAZUGI9v8pQPYLz3UfgDHPZkqSyJ//0HkcMCsguM7FMYO++/TIh0pzSp+N4mXmizQn
+         cquQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=i/+9WtE7ARqjD4aB1uQojdbPbvZlQH8r0wVii3+/EGo=;
-        b=QygN2KDGCnbx43y3RS/WwsglKKTjVhrHeyFfUOxe3MhOzrBC7TJ1VehxhuOmyfy1im
-         e+BWIARpaAdLhhKr38sHPrRi9jUEaIVxXPadyEIGCBPHGe01HfmK0xSfXRS7am7AH4Y6
-         WWy+zN5HjKCSdW9uNHUjpup6zAinEEfIvoQjrAG9LwuwHNfiypqqTCmvhz0FlWwI14f3
-         2BZyBtH7xObveBqE787TzGGU50kjHIs5EB21DEIWdVzVM28QrZQWvn0oYtwDEcA019P/
-         tJYYxzrH0B0KS0stra1RXvyXslu5M4NWkbHuI/NNx61A4QHAFL5W57VP6fGICQFBYmmg
-         M84Q==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=wCsHS/BFHqKPxU/yZtw1WbI6mv7cg1KjiLUrALM0foM=;
+        b=UzkjhiWdIvTEKB85kaFLA0zc7g7LyKZqLJroK3Zx772VWxMta6eyj/J+VMTTKLb08n
+         t8DaXaAZ0HCeC5uVp8lJcKEu/TCnq5PdbsILK6BqRXepjglDoDiuVRLW+TIaFd6Gg5Ui
+         9XsvnBQguzuMnQsceFTl5LjPimZQdoPgtUxYleJwZDG33Wpwoew5NcdQIWamE3x5jt0C
+         WEEBwUVH5FBPvseDHJ4wX03HjKnbLhrcoqgjtaMtgYHMeMONtXGQxaNGuhVEagHWfiMS
+         VJZ3AdSLRxRwFxvb49tqjxoXDJQHtFxDvSaV9Q2wYXSD8kDVQIiVjdzKaOJxN8cv7xjQ
+         pZ9g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RoPwBS9f;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::341 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-ot1-x341.google.com (mail-ot1-x341.google.com. [2607:f8b0:4864:20::341])
-        by gmr-mx.google.com with ESMTPS id c1si256317ybo.4.2019.03.01.18.41.47
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id r3si20068wmg.6.2017.09.14.23.19.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 01 Mar 2019 18:41:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::341 as permitted sender) client-ip=2607:f8b0:4864:20::341;
+        Thu, 14 Sep 2017 23:19:54 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RoPwBS9f;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::341 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ot1-x341.google.com with SMTP id z19so22774063otm.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 01 Mar 2019 18:41:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=i/+9WtE7ARqjD4aB1uQojdbPbvZlQH8r0wVii3+/EGo=;
-        b=RoPwBS9fyKqtOvM389qqZz/3ATOQ37I6xZsr4fXuTEvY3oN0C/olkEciFry1V+jPyA
-         DeSVYBUBFE/j2WGiu0Vw7MUQ9dfTJBLM0k2BQvCkWn0PtQL2y8+cRjmGRI/KcyYGV6c5
-         dZ49yWG1mbT2glBGHoa5jROS4zWI7X6/r423WH/q3JnEx9gr9lf/jBQ6YrAWYGUeOXQQ
-         coeF8vxkrMMVcl+d+YnAFqSYaLIsEHOy/zq6QM7ir6C30sdxHt7JE0s6IRxF5s8DypAh
-         Bu2yXvf6EOLEGYTK0/0n3p7l3PaIk3l78eVch48L72rTCy3I3chTi80LkYTjYDtPDFIz
-         MnQg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=i/+9WtE7ARqjD4aB1uQojdbPbvZlQH8r0wVii3+/EGo=;
-        b=shzsl12VA206eMnMqEMtDohUUg2QFxMNUo1htGoUieaFIf6EJee227ogaOLG/Mu4eh
-         lO3zP5OpDDlUy+mOYZSryA8bbHI9hnN6iow3ZgZ+XJJkXOWo2mP99sCvqNKD4FG5KXab
-         +rXKEOVixYP5O4ZSeL2/h+fjS1bbzmydHOH/S9RQoPk1GdV2YWGAHiQ5eVmQsdr1uJdy
-         aFy6SADV/FaBJElLnkGjhBqVd45QvKm7ZgFTmxLtPhm8/sPdusbCdeqPb/BShFU4K/n0
-         roGt29jf+wjJ5zl5Tlo9wNBjPVUeVzEiKmN/ZuxXl64aTorgnTaQ183Y1G69s1xkm+NS
-         Ltzg==
-X-Gm-Message-State: APjAAAXCabJUdGtFQf85ykFTqAHAWhrHFfCdBbLAP2IMhGKMZd/5wVUt
-	c6vVzK154chWFtu2M8g37G4eydIk0UM=
-X-Received: by 2002:a05:6830:19:: with SMTP id c25mr5235152otp.79.1551494506278;
-        Fri, 01 Mar 2019 18:41:46 -0800 (PST)
-Return-Path: <madhumithabiw@gmail.com>
-Received: from madhuleo (cpe-173-174-122-182.austin.res.rr.com. [173.174.122.182])
-        by smtp.gmail.com with ESMTPSA id y37sm10485955ota.17.2019.03.01.18.41.45
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Mar 2019 18:41:45 -0800 (PST)
-From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-To: forest@alittletooquiet.net,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Subject: [PATCH 0/8] Staging: vt6655: Fix checkpatch.pl issues 
-Date: Fri,  1 Mar 2019 20:41:34 -0600
-Message-Id: <cover.1551494031.git.madhumithabiw@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,396,1500933600"; 
+   d="scan'208";a="291184061"
+Received: from 85-171-60-79.rev.numericable.fr (HELO [192.168.0.15]) ([85.171.60.79])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 15 Sep 2017 08:19:54 +0200
+Date: Fri, 15 Sep 2017 08:19:53 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Aastha Gupta <aastha.gupta4104@gmail.com>
+cc: outreachy-kernel@googlegroups.com, Oleg Drokin <oleg.drokin@intel.com>, 
+    Andreas Dilger <andreas.dilger@intel.com>, 
+    James Simmons <jsimmons@infradead.org>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH] staging: lustre: fld: fix line over
+ 80 characters
+In-Reply-To: <1505455447-14539-1-git-send-email-aastha.gupta4104@gmail.com>
+Message-ID: <alpine.DEB.2.20.1709150819400.2287@hadrien>
+References: <1505455447-14539-1-git-send-email-aastha.gupta4104@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-These patches fix warnings of line over 80 characters, comment style
-issues of SPDX License Identifier and remove unnecessary blank line. 
 
-  Staging: vt6655: card.h: Fix line over 80 characters
-  Staging: vt6655: card.h: Fix line over 80 characters
-  Staging: vt6655: device.h: Fix comment style of SPDX License Identifier
-  Staging: vt6655: device_cfg.h: Fix comment style of SPDX License Identifer
-  Staging: vt6655: dpc.h: Fix comment style of SPDX License Identifier
-  Staging: vt6655: key.h: Fix comment style of SPDX License Identifier
-  Staging: vt6655: mac.c: Remove unnecessary blank line
-  Staging: vt6655: mac.h: Fix comment style of SPDX License Identifier
 
- drivers/staging/vt6655/card.h       | 6 ++++--
- drivers/staging/vt6655/device.h     | 2 +-
- drivers/staging/vt6655/device_cfg.h | 2 +-
- drivers/staging/vt6655/dpc.h        | 2 +-
- drivers/staging/vt6655/key.h        | 2 +-
- drivers/staging/vt6655/mac.c        | 1 -
- drivers/staging/vt6655/mac.h        | 2 +-
- 7 files changed, 9 insertions(+), 8 deletions(-)
+On Fri, 15 Sep 2017, Aastha Gupta wrote:
 
--- 
-2.17.1
+> This patch fixes checkpatch.pl warning:
+>
+> WARNING: line over 80 characters
+>
+> Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
 
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+> ---
+>  drivers/staging/lustre/lustre/fld/fld_request.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/lustre/lustre/fld/fld_request.c b/drivers/staging/lustre/lustre/fld/fld_request.c
+> index 5b18083..081e137 100644
+> --- a/drivers/staging/lustre/lustre/fld/fld_request.c
+> +++ b/drivers/staging/lustre/lustre/fld/fld_request.c
+> @@ -425,7 +425,8 @@ int fld_client_lookup(struct lu_client_fld *fld, u64 seq, u32 *mds,
+>  	target = fld_client_get_target(fld, seq);
+>  	LASSERT(target);
+>
+> -	CDEBUG(D_INFO, "%s: Lookup fld entry (seq: %#llx) on target %s (idx %llu)\n",
+> +	CDEBUG(D_INFO,
+> +	       "%s: Lookup fld entry (seq: %#llx) on target %s (idx %llu)\n",
+>  	       fld->lcf_name, seq, fld_target_name(target), target->ft_idx);
+>
+>  	res.lsr_start = seq;
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1505455447-14539-1-git-send-email-aastha.gupta4104%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
