@@ -1,78 +1,78 @@
 X-GM-THRID: 6465879632669310976
-X-Received: by 10.129.154.17 with SMTP id r17mr15870225ywg.102.1505454926659;
-        Thu, 14 Sep 2017 22:55:26 -0700 (PDT)
+X-Received: by 10.129.50.18 with SMTP id y18mr15133163ywy.201.1505454920787;
+        Thu, 14 Sep 2017 22:55:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.150.135 with SMTP id y129ls3041540iod.32.gmail; Thu, 14
- Sep 2017 22:55:26 -0700 (PDT)
-X-Received: by 10.202.10.84 with SMTP id 81mr13140535oik.74.1505454926146;
-        Thu, 14 Sep 2017 22:55:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505454926; cv=none;
+Received: by 10.36.213.130 with SMTP id a124ls586648itg.3.gmail; Thu, 14 Sep
+ 2017 22:55:20 -0700 (PDT)
+X-Received: by 10.99.165.83 with SMTP id r19mr14426346pgu.172.1505454920203;
+        Thu, 14 Sep 2017 22:55:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505454920; cv=none;
         d=google.com; s=arc-20160816;
-        b=N3qUaclq+s+gDILELZmZXhw67nMNdI23Zk+KrcOisroGi6uBc6MXZiJ0/rnfjKWrxF
-         5TQPFgpXO/twbadD2lxC5yfvAMMuQrwvrU8kNzDRtvjzVq3Q4rnqHovhHI7ZpQi/RdeA
-         /3phUtnyKGa0je2CbLMWSsA9nz0M7Ns47ufntos/DmBvPwjIbNdiSNE+qRuTzwUFOMMG
-         0rVSum2lgkiJSj1dael0BcHrCSuRnFblFpozDXPiwL4Bp+zeSuvHke2ggllQ6U+ElCos
-         +47Iv46H1gwqODJovHsuf05Hqg6F5wlJYKkB/JsP6uUP0ivhsYs1rzQqV8YldhjioMqD
-         cbUg==
+        b=HazNxnGbCk4mnRU14q6zS6KZitEBwgkhi7fzwuWMJXt5HOqfzj2I8PZ/7brqexiBpw
+         i0ZZrNg3R7zoCJB7/u968hHEz6e9WckeBpftqD5C2PoDhAxMgqLmXqiWChGuFGTqRvji
+         VexyNAo3RraJvfOGtMr9ITL6MDQSiRwhT0q3C74w5WJ4vMz6wEZTYGstCGXMp4Ops1nF
+         vxCta7P5MpSbu/WSVaCENM+F46WYjzoBmKnXZai5LmZQ6ww7cvDh8/B/xuu9i9jy2UfH
+         MtPOp5mAYMzFiay/wAPCNbJarjd5luaFWFmMDRZnpxa7dSSR85sJqfxaLE1bub+9iXiW
+         OhIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:references:in-reply-to:message-id:date
          :subject:cc:to:from:dkim-signature:arc-authentication-results;
-        bh=QxkUlRpXbEj9vAoQi8+mPV1YlzFSX0WzgCX9lM89LKI=;
-        b=NoPt6TwBsXFm1QvutW4T8DxCTUUg9Xdhi3LoHNaYzdh9dhA2bs8jnTwifeTujxKGKB
-         P8PB6IK8HXS+c53EgR7Tp1CVyLlDEsh+wggs47uPPODu/skoP5ZcIzMpyJRdjoCtXZLz
-         E+4H3lIPf93ZlvFuOS3wbDhiUkLd3B1qaFRKRrcAP2QYlKGmDoU/7kUywamXmoHNuvKd
-         qT/kLwngnY24GUf6wbx6My87P66n5rmZ5Fh+Olv9JfwMd9+UkTeMVifkV6J2mQ8MuZ2v
-         +rsLsrHJ5mQ5FLv0lu7AeJeDTnX96UGnz2dXE9MoQh22Et9WqQspULSo1If5bJYBpzJY
-         mgDg==
+        bh=LxC7VcTYabaABXo1fYD51ltlASVNB/p3I7imX5dncxY=;
+        b=Joy17O3JPTflDqgvRjPCflZJXsdXHMhKibm9t2EIbc6++1uscPBCaYpNkUmVp1Dmb7
+         6P3CdDN1aa4lDYHxuY1tpiUTaYKiha+8ikNo/zTjt4GJA+DHtHBg2bFrcJO1asXNOe7/
+         8GE8uymqgo/P5K6tTt8eMUs9xTNgnKOyG1UweEsrFLE5zOiAzRn7tLW3Ahny6IqlruHY
+         iBdwViFKdxR8e3eGmYLP4wpcT8i3PVpAixYtvg6Be7pW8JWjffHm7zvEnG+GSQgmn8JE
+         YO0A2s+wLIHrZ0ER1oOn6rsXKHBh5fhmlEAFaKSQjjUmHZMVx1CPh3iZ+3f5Gyh6FD1R
+         qMeA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=X/JJX/S5;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sUV4Alzy;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id t77si12211pfi.13.2017.09.14.22.55.26
+Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
+        by gmr-mx.google.com with ESMTPS id c200si12164pfb.14.2017.09.14.22.55.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 14 Sep 2017 22:55:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Thu, 14 Sep 2017 22:55:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=X/JJX/S5;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sUV4Alzy;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id h4so783917pfk.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 14 Sep 2017 22:55:26 -0700 (PDT)
+Received: by mail-pg0-x242.google.com with SMTP id m30so833376pgn.5
+        for <outreachy-kernel@googlegroups.com>; Thu, 14 Sep 2017 22:55:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=QxkUlRpXbEj9vAoQi8+mPV1YlzFSX0WzgCX9lM89LKI=;
-        b=X/JJX/S5aZvge9awQcF5FzmdvvGlerUxrCu2W4IpdsNNYeY8Jy2rI4/MRGrTiYfX76
-         3+9B3eqw8kcGs+m5gznRt2W2Tam5N9mIE+mIC8jQGsh9Bl36dxZyItOVA8/NiNZ8OFi1
-         ZhEqVJAY9sQz2NQY905YDRhRSkuO4jwvSudawZwfCtb/ZSnf/vVjNwYPzDwxgTdLTjAf
-         y3iyQ9uSqU4aI4vjszmHQTSyq7uQLoLDOCcJx6TWMml1JiTXG/eGOytRWPR38FToTyO8
-         Byj4pj8ynhsH2ZVySqsygqUsBFAE2sLlvj+fqUgo9480sF4yjb8mA6Y0PLX953CuO298
-         A9LA==
+        bh=LxC7VcTYabaABXo1fYD51ltlASVNB/p3I7imX5dncxY=;
+        b=sUV4AlzykxMvpizqvdBMwTMVD2i7qcBKWVupELQuJKZsher18MgYMA19saTIQ9/geQ
+         b5FFajyu6/BX6z8rPl35GCEkP81RuYhlbzQE6fZmGmps9asWWZIjXj2OxOLvU8rAkIBd
+         LT7ajAtHK7tEA09Y+q2omOZXWEeGvFDA03YHRyEezajnMYWDrMaKEqamzJZG4ygxJy23
+         p03Jp1S6j1u3k548tjU+gVBqXWR8dznkqsSXFEz0wbbIrngrZ+XusFUpqwnsrneHFX8h
+         XQh/6YZZ80AtFu/rZReDOIBPLdBcSKa2Mp8AsVCP8dvtf6k8bQxnltoSuCC65tglRGEa
+         jomA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=QxkUlRpXbEj9vAoQi8+mPV1YlzFSX0WzgCX9lM89LKI=;
-        b=B04wetL1m3/F8/04EIN0hYpUKdZtOZBKZ8x6KqZpmO278ztmiNc+JcfWtElNKdMLi+
-         vaE6rliEk6J9L4DO2RdV/LVHOO2R/8N4tIMyAmsN/m1slLZLLtcWorPT5Dp20q8N/uex
-         48PAGkPLIrQ6FwL6iPSnWSDTTAceekYBzs07pxbDm7juAO7d7dzCnoYjjbjNJqiKTPbA
-         j8SNNc4siWwmUSSpYUyH68C9ZDvxjJ9RaTmH9v1PtQ+aIAoZVtTY4gv7IfoKQ6/J6BS9
-         PoRrUnnSuRHryeYmN9SJ+sjkecVuK3iRbW1MUwuqPTZrLpvxSGIE4sg3Pk+f/fyX0BMP
-         NDZQ==
-X-Gm-Message-State: AHPjjUgo9fIXp8/d4jTfoFoBpNTyXuCe75vkzrTlSGI/Zv94RCrGF1hu
-	Ih6Ta0u2sg2T4g==
-X-Google-Smtp-Source: ADKCNb5vkb832g26EXx1o9qDp4GI9lffitjsaL+l02sjupwhB+4I/idX9761/cPsNyfieUcaeoh69w==
-X-Received: by 10.84.211.6 with SMTP id b6mr13501811pli.292.1505454925893;
-        Thu, 14 Sep 2017 22:55:25 -0700 (PDT)
+        bh=LxC7VcTYabaABXo1fYD51ltlASVNB/p3I7imX5dncxY=;
+        b=BpYL9l9DC9f+Oz2hIBFwXfW4ZxxOGv2PWZx9HYBwwYNGz9SpyarFSoQsZqKOdY0euB
+         y3c6AMlq14e6HmoNC4j4K6xVJvuRqeXboL8r2+lp53izuQQAuRPoOjTlfwPB4O3XoIgg
+         N+3HoP9sE9B8URoFv5nHDMJ6rAWYy7ki6SGufDa7REtIZdVAYtuL7yOj6JrA55DOU6Eb
+         3x+xGzSPNohYtypLAmpm0ckOrXkF9uYZDt1yDC6kABKO6BcpQBXfGk2PzfXL8PIhY2GB
+         5CzpSgSd8u1dvDPYdya3Y16gOtWLUHpvy8jbpcrUf+xqo9C/BYIb0Oo2ugRW74hdpdIK
+         p0Pw==
+X-Gm-Message-State: AHPjjUhfJg0IIKcsmLRAYITrRT/xU3mmIkYPm2vhzuCxxYyP7SEdYweU
+	sTxQO7XT0o5Ugg==
+X-Google-Smtp-Source: ADKCNb74nLOioqJPDrLwVW/vi/zh187J3/NRQWpXeSRzQcdDYcZtnJXeOT3bKeTa4Y2ccqGYD4YRDA==
+X-Received: by 10.84.213.150 with SMTP id g22mr27113934pli.313.1505454919972;
+        Thu, 14 Sep 2017 22:55:19 -0700 (PDT)
 Return-Path: <aastha.gupta4104@gmail.com>
 Received: from aastha-HP-Pavilion-15-Notebook-PC ([171.78.243.118])
-        by smtp.gmail.com with ESMTPSA id q13sm566260pfi.110.2017.09.14.22.55.24
+        by smtp.gmail.com with ESMTPSA id c7sm536230pfc.55.2017.09.14.22.55.18
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 14 Sep 2017 22:55:25 -0700 (PDT)
+        Thu, 14 Sep 2017 22:55:19 -0700 (PDT)
 From: Aastha Gupta <aastha.gupta4104@gmail.com>
 To: outreachy-kernel@googlegroups.com,
 	Oleg Drokin <oleg.drokin@intel.com>,
@@ -80,9 +80,9 @@ To: outreachy-kernel@googlegroups.com,
 	James Simmons <jsimmons@infradead.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH 2/8] staging: lustre: ldlm: fix line over 80 characters
-Date: Fri, 15 Sep 2017 11:25:02 +0530
-Message-Id: <8ccf66c9414e29efac245c5a8fa5ab61b02de79c.1505454643.git.aastha.gupta4104@gmail.com>
+Subject: [PATCH 1/8] staging: lustre: ldlm: fix line over 80 characters
+Date: Fri, 15 Sep 2017 11:25:01 +0530
+Message-Id: <7a4f572cd9632dd0609f2daa545164f69e1ec0fe.1505454643.git.aastha.gupta4104@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <cover.1505454643.git.aastha.gupta4104@gmail.com>
 References: <cover.1505454643.git.aastha.gupta4104@gmail.com>
@@ -90,37 +90,28 @@ In-Reply-To: <cover.1505454643.git.aastha.gupta4104@gmail.com>
 References: <cover.1505454643.git.aastha.gupta4104@gmail.com>
 
 This patch fixes checkpatch.pl warning:
+
 WARNING: line over 80 characters
 
 Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
 ---
- drivers/staging/lustre/lustre/ldlm/ldlm_flock.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ drivers/staging/lustre/lustre/ldlm/ldlm_extent.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_flock.c b/drivers/staging/lustre/lustre/ldlm/ldlm_flock.c
-index cb826e9..04e1d4c 100644
---- a/drivers/staging/lustre/lustre/ldlm/ldlm_flock.c
-+++ b/drivers/staging/lustre/lustre/ldlm/ldlm_flock.c
-@@ -479,7 +479,8 @@ ldlm_flock_completion_ast(struct ldlm_lock *lock, __u64 flags, void *data)
- 		return 0;
- 	}
- 
--	LDLM_DEBUG(lock, "client-side enqueue returned a blocked lock, sleeping");
-+	LDLM_DEBUG(lock,
-+		   "client-side enqueue returned a blocked lock, sleeping");
- 	fwd.fwd_lock = lock;
- 	obd = class_exp2obd(lock->l_conn_export);
- 
-@@ -561,7 +562,8 @@ ldlm_flock_completion_ast(struct ldlm_lock *lock, __u64 flags, void *data)
- 			mode = lock->l_granted_mode;
- 
- 		if (ldlm_is_flock_deadlock(lock)) {
--			LDLM_DEBUG(lock, "client-side enqueue deadlock received");
-+			LDLM_DEBUG(lock,
-+				   "client-side enqueue deadlock received");
- 			rc = -EDEADLK;
- 		}
- 		ldlm_flock_destroy(lock, mode, LDLM_FL_WAIT_NOREPROC);
+diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_extent.c b/drivers/staging/lustre/lustre/ldlm/ldlm_extent.c
+index 2cc6dc2..f9b4c0a 100644
+--- a/drivers/staging/lustre/lustre/ldlm/ldlm_extent.c
++++ b/drivers/staging/lustre/lustre/ldlm/ldlm_extent.c
+@@ -207,7 +207,8 @@ void ldlm_extent_add_lock(struct ldlm_resource *res,
+ 				continue;
+ 			if (ldlm_extent_overlap(&lck->l_req_extent,
+ 						&lock->l_req_extent)) {
+-				CDEBUG(D_ERROR, "granting conflicting lock %p %p\n",
++				CDEBUG(D_ERROR,
++				       "granting conflicting lock %p %p\n",
+ 				       lck, lock);
+ 				ldlm_resource_dump(D_ERROR, res);
+ 				LBUG();
 -- 
 2.7.4
 
