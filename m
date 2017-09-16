@@ -1,88 +1,126 @@
 X-GM-THRID: 6466384589611859968
-X-Received: by 10.25.233.92 with SMTP id g89mr441915lfh.22.1505575730287;
-        Sat, 16 Sep 2017 08:28:50 -0700 (PDT)
+X-Received: by 10.200.50.44 with SMTP id x41mr12491165qta.57.1505572542010;
+        Sat, 16 Sep 2017 07:35:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.153.142 with SMTP id b136ls782869wme.16.gmail; Sat, 16 Sep
- 2017 08:28:49 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QC54gyVMGn/tO6VbDsrI30uuTnuoHhJ4PQ9qC31Fp/8cahk4fvufQ41vHscJND3WoegIqXL
-X-Received: by 10.28.71.131 with SMTP id m3mr620611wmi.19.1505575729143;
-        Sat, 16 Sep 2017 08:28:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505575729; cv=none;
+Received: by 10.36.233.1 with SMTP id f1ls2663412ith.11.gmail; Sat, 16 Sep
+ 2017 07:35:41 -0700 (PDT)
+X-Received: by 10.101.86.13 with SMTP id l13mr17436485pgs.103.1505572541479;
+        Sat, 16 Sep 2017 07:35:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505572541; cv=none;
         d=google.com; s=arc-20160816;
-        b=s6x2c3sWdrGRVOgy1cc2ebyaOjgalMIPqTfP7N0kYClWWgHbuW/pute1TQ3pe1ayVv
-         A3WJ7+LDNWgsWsNYaoVrTgH+6YnWve5pE/yuOLn9XrSWIjz25j32LVdcA0+yEfDeA2OQ
-         S/3Ciy/faFWJ8CSQ/9sifeY9lgp3l/Gtw5OxS6kOpi9mpuFqgjG7nj0fQhJQEP/ateSh
-         cHn252qxB8Y5yOykksvrcfNZZGxhHnxxU0vJ784UQuo38aRJiXSkmJSBV6UJF4MpIrZM
-         HLEh6twgQOnAI+jFFJePn8VHrjBHjYS4Hj8ePEm2tRdAaHejI8CZAob7/Bzz4GJGBcsX
-         6v5Q==
+        b=C+PZYb2AiYVjgEm3hsfQX8eaDq5QaR5Soaug0H2LiejAL1T8EIPjmE3ftVa++sIVMK
+         vNX+33YekDHCMY5vJPFSuGlSdWMAh2OYaR3ZGHdiRqnEkoOEaL/NUV9VhD+wRN+oEN5p
+         KI46eRaiG2PeXJbQyzh6aXbPu8H1kTh4XmKfw91pEfDTRAXJorD/hhW9V1rYnf1lQUnx
+         fFHYpxztl9pNj0pEladuFIa72dyFUEHMmA0oGV5cWeA7ra63C//okJZ0hYxGFXjt0UiI
+         xkns6SffmZ0UPkDCEqB1opR49BQgNEXVi5SKeshkT8hMkjAg3nrb4iGhgsS63M+bJQdM
+         ivFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=z0XoG8FsWZgqbbv4C2CtVqbx10LkCmHYEK6JDGTtWps=;
-        b=mGq4Eea2N2O1HEFAYPpEaOZnlghWEPVJGQo3mnuYSR7FvIKZVVwDI7VyZSgxgxmBGe
-         KvRd5tkbJuOQttpX5l4Q/hPet5m4laxaIA3LOk8r7TvretT5mBDZEAWN5IRPVqDVs3WJ
-         +QavvGLpNprpnhlnq42Aohkew9Rxyy0aPPl4pHbbl8UrfcnobvA7Um9IsXXWJgbutlqZ
-         3TWJaaKnTBwfRxeMUYSpHaLLr+JbDSgHijh4dZA3bV1CnnRYXgAh0zqGw2GR58pwgc+/
-         ZLPMF6u5ShJck/LA3CBSrdAAsBhNVWqoaZAkcgqCoP52OZR3pRT/sFoHnd2fIFz6F1C3
-         O7TQ==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=YJSRhjaIFF5R661TKHUHsCPUVHfiwOgYw65zEXFBn3M=;
+        b=dRY4eZaYHrrkZphA4m7VexC6NKkfgTUj+dSGYs6pnylQ1Ruu+I9l9RO803wTPaZvIF
+         cP2JWP8cSiAQHew6ZfeJOhvI/CjwC2qShHEIRR8me6kiXzU9o8GWol0lBY7XtoufEgyv
+         b/B2/mf7O92HACEV8UCSIjrSdBobj5HTfzXI+O4JQmAvOKHanEbiAyOJpRBq9Oe95Gp3
+         ymhLYaqpwIVeY0PKnAC56dViXBTYXYOsooTgm4kyO7vQqIvLUtnTeq/fIfis9p1vg6oJ
+         hzEjUYhtDqlPZqPewtqCZb+/JNZhVVNnrJlPKvQW/kscOBNiwWewrA4LArW0QlAQkEwA
+         UUQA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id l133si214325wmb.3.2017.09.16.08.28.49
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CUSGUzEr;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <srishtishar@gmail.com>
+Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
+        by gmr-mx.google.com with ESMTPS id k76si291144pfa.10.2017.09.16.07.35.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Sep 2017 08:28:49 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sat, 16 Sep 2017 07:35:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.42,403,1500933600"; 
-   d="scan'208";a="291388215"
-Received: from 85-171-60-79.rev.numericable.fr (HELO [192.168.0.15]) ([85.171.60.79])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 16 Sep 2017 17:28:48 +0200
-Date: Sat, 16 Sep 2017 17:28:48 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Srishti Sharma <srishtishar@gmail.com>
-cc: lidza.louina@gmail.com, markh@compro.net, gregkh@linuxfoundation.org, 
-    driverdev-devel@linuxdriverproject.org, devel@driverdev.osuosl.org, 
-    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 0/2] Remove unused variables in
- structure definition
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CUSGUzEr;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x241.google.com with SMTP id d8so2809345pgt.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 16 Sep 2017 07:35:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=YJSRhjaIFF5R661TKHUHsCPUVHfiwOgYw65zEXFBn3M=;
+        b=CUSGUzErEGCGijHVtF50LgJk38oen8R5bBT0GkDNMlstl0VZ1ac5qI1eD23ds0/Wq9
+         wjKe817TG/6e8DtNuJOr9yfiOSVn8TDADCmQxZ4/05LnlLewWeqTaY/qdekpQMpSxsUZ
+         w0BFZ5V9cM43aT9urwxHDtSifOT/JBpfgt29o0NV3dKx59ps5PJ4kJ1o+w5lm+6dOXIH
+         0w/mWFo/oaObQP5p7pVFs50RZ1iW3A7+76V+pGm4xBpW4MtVi7FrwdItPv92x9gkayM7
+         W/FshP2TNj6tiYHa3OUAXTwfm18/H9f+c7MnFnLzB1+TIHzreSHG45JJdj47PVX+Kghw
+         v9ag==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=YJSRhjaIFF5R661TKHUHsCPUVHfiwOgYw65zEXFBn3M=;
+        b=ugWpG4t3QugZ2+2CURzwGMux7WWzR18eXjZGhLH/ZqHqjU4zwqkGcsM2DgdjedQ1aH
+         /j81BW36kJJPs33tLYJS9PM959ympzZhYWa8cp7oBjPPviTL2xAqQlTyIEmszqsqOoqA
+         ZLtBKi7mQoQ1JymZY4CfZKUYeKuKyIHch78b6R7w98sNEamWCi9PbLs/bueL7bg6TxGn
+         pu0KsPzTLwGwewo+snT5qBHwYbTCiognOeFBY5JBXLD1j++moiShCEhY3g9UdApAmljh
+         3iNlg/SkE16z+YzlXXHvE0IXSVCnkikVDVKAgtxeHDGKIHsBJwsnZQA3a87HWdCYH0vy
+         gmCQ==
+X-Gm-Message-State: AHPjjUhv+ZGrSxJQiVGs/K+Ve6t+juVgWYoFmAcZcBUCdnwmJDms2jcc
+	rhCfQhbpip11Gg==
+X-Google-Smtp-Source: ADKCNb4kcW5yGtOxvy9j1neV3gS+CTzpLejzPkkMrRjduV+hGB2vJ8pt5Td6Ui4IIqbi6VEtbgTvzA==
+X-Received: by 10.99.150.25 with SMTP id c25mr27511771pge.241.1505572541276;
+        Sat, 16 Sep 2017 07:35:41 -0700 (PDT)
+Return-Path: <srishtishar@gmail.com>
+Received: from srishti-PRODiiGY-945G ([122.168.15.200])
+        by smtp.gmail.com with ESMTPSA id t25sm7319027pfe.96.2017.09.16.07.35.40
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 16 Sep 2017 07:35:40 -0700 (PDT)
+From: Srishti Sharma <srishtishar@gmail.com>
+To: lidza.louina@gmail.com
+Cc: markh@compro.net,
+	gregkh@linuxfoundation.org,
+	driverdev-devel@linuxdriverproject.org,
+	devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com,
+	Srishti Sharma <srishtishar@gmail.com>
+Subject: [PATCH 2/2] Staging: dgnc: Remove unused variable in struct channel_t
+Date: Sat, 16 Sep 2017 20:05:36 +0530
+Message-Id: <a57f835fc443d51ae9eadd1b995435c215f14974.1505572018.git.srishtishar@gmail.com>
+X-Mailer: git-send-email 2.7.4
 In-Reply-To: <cover.1505572018.git.srishtishar@gmail.com>
-Message-ID: <alpine.DEB.2.20.1709161728230.1992@hadrien>
 References: <cover.1505572018.git.srishtishar@gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
 
+Eliminate the variables that are not used and the comments
+associated with them.
 
+Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+---
+ drivers/staging/dgnc/dgnc_driver.h | 6 ------
+ 1 file changed, 6 deletions(-)
 
-On Sat, 16 Sep 2017, Srishti Sharma wrote:
+diff --git a/drivers/staging/dgnc/dgnc_driver.h b/drivers/staging/dgnc/dgnc_driver.h
+index 5d2566e..082d659 100644
+--- a/drivers/staging/dgnc/dgnc_driver.h
++++ b/drivers/staging/dgnc/dgnc_driver.h
+@@ -312,8 +312,6 @@ struct un_t {
+  * @ch_err_overrun: Count of overruns on channel.
+  * @ch_xon_sends: Count of xons transmitted.
+  * @ch_xoff_sends: Count of xoffs transmitted.
+- * @proc_entry_pointer: Proc/<board>/<channel> entry.
+- * @dgnc_channel_table: Proc/<board>/<channel> entry.
+  */
+ struct channel_t {
+ 	struct dgnc_board *ch_bd;
+@@ -382,10 +380,6 @@ struct channel_t {
+ 
+ 	ulong		ch_xon_sends;
+ 	ulong		ch_xoff_sends;
+-
+-	struct proc_dir_entry *proc_entry_pointer;
+-	struct dgnc_proc_entry *dgnc_channel_table;
+-
+ };
+ 
+ extern uint		dgnc_major;		/* Our driver/mgmt major */
+-- 
+2.7.4
 
-> This patch series attempts to remove unused variables in structure
-> variables and the comments associated with them.
-
-Actually, I would say that a structure has fields, not variables.
-
-julia
-
->
-> Srishti Sharma (2):
->   Staging: dgnc: Remove unused variables in structure definition
->   Staging: dgnc: Remove unused variable in structure
->
->  drivers/staging/dgnc/dgnc_driver.h | 15 ---------------
->  1 file changed, 15 deletions(-)
->
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/cover.1505572018.git.srishtishar%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
