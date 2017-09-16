@@ -1,104 +1,114 @@
-X-GM-THRID: 6945912104921595904
-X-Received: by 2002:a17:902:c154:b029:e5:e7cf:9627 with SMTP id 20-20020a170902c154b02900e5e7cf9627mr4471775plj.68.1617221186858;
-        Wed, 31 Mar 2021 13:06:26 -0700 (PDT)
+X-GM-THRID: 6466329510613614592
+X-Received: by 10.99.60.17 with SMTP id j17mr16883650pga.27.1505559714157;
+        Sat, 16 Sep 2017 04:01:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:2f84:: with SMTP id v126ls467098pgv.2.gmail; Wed, 31 Mar
- 2021 13:06:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwtUAXBUpEZDa4hz0YV1qc92GRoORQURevgpLIDTVqHizyINciO6PMF0aNpT5aKrv91ZUxQ
-X-Received: by 2002:a63:1022:: with SMTP id f34mr4714166pgl.263.1617221185722;
-        Wed, 31 Mar 2021 13:06:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617221185; cv=none;
+Received: by 10.107.97.15 with SMTP id v15ls829366iob.5.gmail; Sat, 16 Sep
+ 2017 04:01:53 -0700 (PDT)
+X-Received: by 10.36.163.4 with SMTP id p4mr3760576ite.40.1505559713682;
+        Sat, 16 Sep 2017 04:01:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505559713; cv=none;
         d=google.com; s=arc-20160816;
-        b=iruW9Ex88yKqoJKSTsJ+y5kJ72o0MLB1ShNsoty8vhmBgthkxgXxZprJEJs1mRFXen
-         Ontff7nrt5yWd9R+DL0p57OC3YxsmNu60l/yUm4KhI/ySnYmMG5Ur6N+bQtKIKh34E89
-         C+LN5onPUqp14xgnjJKMvvSwdukZ/CtKQqZDJgjzj4qUF0TqhAfwEpA3XQ8BaE5C+ODF
-         aJa2CXfgZ2vgQg+Pl4J/wpM5S5cWQy/+kz7OqC+F9UpXoaw+eJhEpQgZ03SDnLzEshjs
-         XA5KN0ZnodM00Ee4vk3NAIQqqHfJGSyKO44CgMzj2eyHSqHHnQJ1jof/6WmvuODXLKzJ
-         Ukeg==
+        b=YMDpha6EL8F74fTadSXt8OlNiFjoEvU5GfnSFLxbFMp4il8EfWuIUI/kdxdeUZuQ6m
+         nIG5B3jaLTAdysH1z+bxRivhi/sVbbv/kZp1c7mb7w85zQ70tNVWv5ZU80nmptauWk/d
+         MG2c2JJjgTgr/JqyEHvv2fjdAG2LVi98rhnF9rPAZJ+SupDicP9DjRVKpns+pS4Tb/4x
+         IvnB1Fw6Wh2BRhG0KqgOMYTDXTHp2FxCCsh+2biTYdc9O5XU9CESapddoOGD3iVkq2Au
+         8R0U1rEX6EbrcKSUHEJQCpOVqrF00hik2HwI5eBB2f0pQ1ODGe+dz4UeNcIrlSE7Dwil
+         a3xA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=BRuM09+J2aRYPZ9OUTp8R2fLyI9MYToqI7peFMSk8bU=;
-        b=oqdOVYAXsyaEfnNfvhTu9TZoBSaFOv4RnqGBEhLZs7gHgwpvbraTJXiiQ6S375il5N
-         zh2iIMtw7PimwO27i1QroJh8pLyCjr4NBVqQdq5nfZnUW70UvKTJ3hB+UyyG8ZCxdkjm
-         WiAIqX7208vA6js0bc9IpxzVvWWT5AONu2yR/p32eAoAJlaA6ueXwzlOsbcZgo30BZK4
-         An7NSe6MM5QnnXCPqvWa6TKevPCyNDqLwDDvzLiMGy2yDZEOSKIWeIv6phQejrQ1xiIU
-         qGszVEVrpiObJnPohz+eMfAXo4526OR3WpmzE6VLPMNnWJMspFtegPmVWtD1VZe6omfS
-         GLLw==
+        h=references:in-reply-to:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature:arc-authentication-results;
+        bh=xyAqgotG5UqRsUMww9wSVuLAKbGIH8577p4ieaU/KZI=;
+        b=qYEz1uYXZgqCwPTVM2E3lUUBEVuKnW7I0OiuYHBx3N4xIQLgDXxfDnGiU87Vnicrhe
+         9OGJQXCbIvArjThkSuBxj/iG40MSaumRkH/VanFsExx7katMOykZlJkqPAY5eFHmJnMf
+         Qb1b7M85qPHppqnD/nYbMJj+mOVjSEuF7B6R4Nix30rHysHtFifO1+cVvnileKYyIYU8
+         8/i2kJwkFWH8Iylt2HQJzW7P2rvvjnpXEL5tGrIyXxcBHutK8NkKcjRgf/rSebIHlLng
+         8T1zaUskrEoZmVSPhLpTz9ypRuG9/a5WAb85YrOupJDY4ZsnV1Lq1hJAUFV/YYTBDnJZ
+         oPzw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lAAjckvz;
-       spf=pass (google.com: domain of deborahbrouwer3563@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=deborahbrouwer3563@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <deborahbrouwer3563@gmail.com>
-Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
-        by gmr-mx.google.com with ESMTPS id m9si278101pgr.3.2021.03.31.13.06.25
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YOfriKLp;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id e63si270785pfm.12.2017.09.16.04.01.53
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 31 Mar 2021 13:06:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of deborahbrouwer3563@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 16 Sep 2017 04:01:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lAAjckvz;
-       spf=pass (google.com: domain of deborahbrouwer3563@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=deborahbrouwer3563@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x643.google.com with SMTP id t20so8476148plr.13
-        for <outreachy-kernel@googlegroups.com>; Wed, 31 Mar 2021 13:06:25 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YOfriKLp;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x243.google.com with SMTP id m30so2620076pgn.5
+        for <outreachy-kernel@googlegroups.com>; Sat, 16 Sep 2017 04:01:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=BRuM09+J2aRYPZ9OUTp8R2fLyI9MYToqI7peFMSk8bU=;
-        b=lAAjckvzUujgug8k3+FTIryj68kvDL02K8IHYw3YEo7xayLfRq29/56j0AleZqRWmO
-         MDKvhVMKrTw8/hC2PD8PmBjm6C/hT60ToS4UQQuL+VzFptkWlcTn296vC08QtiRjBzIU
-         qTbtF56f0pARvIlV498lLIHWT7wzZk6Xe2Q3xjqKKyGk7ZIWYydCcHsiiJwZxPXu2+3S
-         HdagR7njK7ErZ7/pAx7LyjpxBWEu5Sc8KgF5rpqHa3fNdYrHeodE8FEYEa+czQNMgmiW
-         kBURRanz0kXdXPa/BOo6lik3yXnAu31YJk7tXGE5xzosh4Sy7JYNFTsatXMMy3SJ+ef/
-         JZng==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=xyAqgotG5UqRsUMww9wSVuLAKbGIH8577p4ieaU/KZI=;
+        b=YOfriKLp37Aq3EfgC+b/BYIjxX8aljysNjpOBngWd+QOp14CXVCtYVBj7EEDULET7d
+         IYICcASD6AJ0ENnmFRMBWWJ8p6hlRPxDmBJzqRl5LPVLVkOOiCb4pEAFvpSEbQyHujd9
+         1NEq6aufwpB5Va4bpZZ+iTS4MdwBvgovLyPr6lgRiI0xBymbI+HlXxETacWfh2WVuJuh
+         lvF+X/6n4fUVbiWagkCGsay92z9TfzGJ8KGg/fCCdNKx+U6CxgYVSCHCCEznVWekjRd2
+         h0SYTTmy95zsGd0IW6BKNkSZzifr3yGvZBetvgUX9Kn0OEvPnBOzecinS4qExUVkXLAQ
+         deQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=BRuM09+J2aRYPZ9OUTp8R2fLyI9MYToqI7peFMSk8bU=;
-        b=Dqa3eiTN98lVYUKI+Ja4idlRx4b5YJnnCSp8LOakw/w8mATCXXMDWz8f4mnopXI08X
-         5IHacU1bYWWuaF01UJnJRdCbchaT54mUxwYDAfraWzl/DP7l1tWy4paviaLlexhQX5Qt
-         JeOaDYiQVSyowp9vIUgkgh2Lk2w4S8dEuhhx+HZOCe6F+slA/7MmAZy2AnK9j+jJVSjV
-         W0lpqEQB+q5I4rMQ4BI/j+qJkH/Whd3nDgLuwM1cF73Zz//j3PpK99bizUoBI1C5eO9R
-         A1UwzENAO4Pl+7QoLIP+9I28xXmnSUknBCRIu+7aK4OLnANxaiiOlR7INZywwGVuZcVO
-         E5gg==
-X-Gm-Message-State: AOAM5319wx5Tg2842Tp5vMJPUHpgmZ6BW94leVWbFcyopT4r15Gf2QhL
-	rL8OjABgjNUoo1s+/x6Q3Zc=
-X-Received: by 2002:a17:90b:2284:: with SMTP id kx4mr4958415pjb.96.1617221185463;
-        Wed, 31 Mar 2021 13:06:25 -0700 (PDT)
-Return-Path: <deborahbrouwer3563@gmail.com>
-Received: from djbComp.hitronhub.home (S0106ac202ecb0523.gv.shawcable.net. [70.67.120.89])
-        by smtp.gmail.com with ESMTPSA id d22sm2985668pjx.24.2021.03.31.13.06.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 31 Mar 2021 13:06:25 -0700 (PDT)
-From: Deborah Brouwer <deborahbrouwer3563@gmail.com>
-To: gregkh@linuxfoundation.org,
-	ross.schm.dev@gmail.com,
-	marcocesati@gmail.com,
-	fabioaiuto83@gmail.com,
-	dan.carpenter@oracle.com,
-	phil@philpotter.co.uk,
-	amarjargal16@gmail.com
-Cc: linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Deborah Brouwer <deborahbrouwer3563@gmail.com>
-Subject: [PATCH 0/3] Fix block comment warnings
-Date: Wed, 31 Mar 2021 13:05:34 -0700
-Message-Id: <cover.1617221075.git.deborahbrouwer3563@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=xyAqgotG5UqRsUMww9wSVuLAKbGIH8577p4ieaU/KZI=;
+        b=WI1jJ/pWgkldFkfKejqksWi22NmfpJzfy9wuKNMShTryTRVe8plXzbu62/OYJa1+tV
+         K6a3Nd5D1smD6X3A8Dtlx9tyfXiyzL/DwRhlyA6g99lPVSw0aXZDj+jq1EuphPpHVzGA
+         qww30sEhGkBLrJjW8M7kDj3AMVgb0rHeaOq68DPFuViB7MiodzplABaxPepf4nFVk61H
+         IQnU78fQNpz173F/nqPzkoBNt5ZCBBQpDp8m2tLjaGsXCiQ6B1dzE600OjB98JGOFXCX
+         CuOBZC1DNdSCHISzwnAh/6izK8xSy5tzKT1P60dMECHNtG9aqBy95aDRykbFsUcuHcye
+         b+Qg==
+X-Gm-Message-State: AHPjjUghGRz4iLfqjyk5aOhiGpWmjzJHOP2AWdDfVi4ipi9T1CDWCXf0
+	gpLuZhfq5HG1eQ==
+X-Google-Smtp-Source: ADKCNb5DvOH8HQVfCt8RPwJyoVV4mEOItCbi+xKuZuqQHdHrLRyItl8SstFDv+HYjpDd44P6mi1S2A==
+X-Received: by 10.99.114.19 with SMTP id n19mr26203176pgc.174.1505559713411;
+        Sat, 16 Sep 2017 04:01:53 -0700 (PDT)
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from aastha-HP-Pavilion-15-Notebook-PC ([27.56.167.173])
+        by smtp.gmail.com with ESMTPSA id c30sm5951510pgn.33.2017.09.16.04.01.52
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 16 Sep 2017 04:01:53 -0700 (PDT)
+From: Aastha Gupta <aastha.gupta4104@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
+Subject: [PATCH 11/11] staging: rtl819u: move '{' to next line
+Date: Sat, 16 Sep 2017 16:30:54 +0530
+Message-Id: <55f91d336be5a01e84c2d4d9fedb205d4768448b.1505559000.git.aastha.gupta4104@gmail.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <cover.1505559000.git.aastha.gupta4104@gmail.com>
+References: <cover.1505559000.git.aastha.gupta4104@gmail.com>
+In-Reply-To: <cover.1505559000.git.aastha.gupta4104@gmail.com>
+References: <cover.1505559000.git.aastha.gupta4104@gmail.com>
 
-This patchset fixes checkpatch warnings arising
-from the block comments
+Fixes checkpatch.pl error:
+ERROR: open brace '{' following function declarations go on the next line
 
-Deborah Brouwer (3):
-  staging: rtl8723bs: core: fix repeated word warning
-  staging: rtl8723bs: core: fix block comment warning
-  staging: rtl8723bs: core: remove empty comment
+Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
+---
+ drivers/staging/rtl8192u/ieee80211/ieee80211.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
- drivers/staging/rtl8723bs/core/rtw_xmit.c | 61 +++++++++++------------
- 1 file changed, 28 insertions(+), 33 deletions(-)
-
---
-2.17.1
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211.h b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
+index 816c496..3f43441 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211.h
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
+@@ -2423,7 +2423,8 @@ static inline int ieee80211_get_scans(struct ieee80211_device *ieee)
+ 	return ieee->scans;
+ }
+ 
+-static inline const char *escape_essid(const char *essid, u8 essid_len) {
++static inline const char *escape_essid(const char *essid, u8 essid_len)
++{
+ 	static char escaped[IW_ESSID_MAX_SIZE * 2 + 1];
+ 
+ 	if (ieee80211_is_empty_essid(essid, essid_len)) {
+-- 
+2.7.4
 
 
