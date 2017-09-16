@@ -1,128 +1,107 @@
-X-GM-THRID: 6807040840718876672
-X-Received: by 2002:a25:6605:: with SMTP id a5mr29063282ybc.496.1584887700051;
-        Sun, 22 Mar 2020 07:35:00 -0700 (PDT)
+X-GM-THRID: 6466274870368927744
+X-Received: by 10.99.110.3 with SMTP id j3mr16509847pgc.121.1505546940229;
+        Sat, 16 Sep 2017 00:29:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:25d4:: with SMTP id l203ls1222588ybl.3.gmail; Sun, 22
- Mar 2020 07:34:58 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vs+SD7a66kztof7YJtW5Twplhcb4+iReNNqZ5Z14k2PHtSeVTV8gUOxeU+t1prgDatlK1mm
-X-Received: by 2002:a25:74ce:: with SMTP id p197mr28700927ybc.483.1584887698770;
-        Sun, 22 Mar 2020 07:34:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584887698; cv=none;
+Received: by 10.36.84.140 with SMTP id t134ls2395867ita.14.gmail; Sat, 16 Sep
+ 2017 00:28:59 -0700 (PDT)
+X-Received: by 10.13.214.69 with SMTP id y66mr17887663ywd.119.1505546939477;
+        Sat, 16 Sep 2017 00:28:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505546939; cv=none;
         d=google.com; s=arc-20160816;
-        b=RwKdF073EPcGY9lFkjxwQsSBpPs2wIBv99WXsV0uvCU0fqO0SQ2gQ3IyLukDTJ15ip
-         FUYGfYswosty5pz8kwg/gsowuf2Aib/m1XA7mA+Ppd/UxhrIZrNCwXUGxpwjmskuTHRA
-         4MoQLc/6gpaIfq58bd+B59XxI3Yb6e7e/hq0foV/mpx2Yvncz6Dg09qZzP7DPjuk4GW9
-         REPDxig8vzhKdPF3XikzjAooNgO4kSPE1HNS4qcWwHa0StDLwG7TLJ5fiWtY4W30DFgi
-         5BonEmYzUWLgInfLzw0tjW14bH81h+t1cCB36R7tAZjLd7HDNzVa8g53GK76EIjTFPwg
-         QyzQ==
+        b=xvF5Q6U6IgqBYLXSkkVklzemx0aitBW5jVTi+m51qpQNC3I5zUks3B2XtcbRqYrvIk
+         KTfP7LLIvpdEWB15zIlk2WQTIeNSTST+vUvrltLgSiRX2davyZCw4DiMhcyNeLDnR8QH
+         WiUpMhyCCfY4ehV0XzZ3KRtLcCBdBOhJTTxeYzDEurVrEvSumbWplPsg4xS+W+2aZq3u
+         DDXQKctqUa7x0EdHUBIr0who6hbvP/BFSu+mfjvTOdr5AUH/lzuCXENJClDggfleywTf
+         I0bNvj4K3by8q7lB9GGWSjjk+wLfkPHljZDRRH6FPdI7yjHIEMbTUUVlKJA2YED7Vj7r
+         inQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=PVVRwWPArR6g3TOckqFzLY7mwGhA6bwaXqptdlTRg70=;
-        b=EcOdJbtkhlFBLGrVgrlwG8IzSe3Eph9xG29lK2TaoCnRBHVccORE6Y7Oc1Rz15vILy
-         XT5iZVeV92Vvuj9FenE3UNxd69XYmoUAONSpUydgPjkBWRE5B9ZI7EeD2oAxYvYlqu2Q
-         YlAvxZigNavvdjvQ20E5DPDDJA7nMCOJg6lLvgpJ9UfG0q+2RckXQ82uBhCeY8qomYcj
-         vU6obxQSwr5yjT1QWWGXLeu8+TGPHmNiiN3We0pVlRK7tRN2S4nA80AHmkaHyVVN5YxE
-         owl3vXEYPQc4DPXkVo/2KKIieslbMfLRUiCt9ysRvE8qwwzudKzh1eYHrXHKuATwk1pQ
-         jL+g==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=JCsgZrEWpChc8/XFGYhrd15/JBtjdhHkiVh86zjhiss=;
+        b=CGgDqa4dYycMGtxrQqP09Y6yN1/bAcy+yBLc2CDrj5c5bNeLu0wEuJCyxf4CT8ZfyU
+         0z4j4PcZjpjF4Ot/dH+CtI3uVfvuTwzMds8PMSSuAoK7NHmsHnb9NbrLivkFBONgbfB7
+         9k3G/CyhSZ6KKTutM9AauH3CZ/D6hMgC4yK+NEd44hRZRtq66REY02rU4gH4SUmsdv4D
+         qo6P/Z8oQrmAiNwv7VEUkDtXxe6sC6M2iyucIlIy10z602Vm2IVmvKP7DbHDJCqCNQm0
+         mEU/mQvqSaqmu9VYrbDf1xsl4FyKG/892QZNp8qOYDlodyP4Kx2kPpxLzO5DjB4eqPca
+         oDiw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DDztCKyi;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <debsoumyajit100@gmail.com>
-Received: from mail-pl1-x642.google.com (mail-pl1-x642.google.com. [2607:f8b0:4864:20::642])
-        by gmr-mx.google.com with ESMTPS id l1si620550ybt.2.2020.03.22.07.34.58
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Qv9tqpY0;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
+        by gmr-mx.google.com with ESMTPS id f189si253341pfa.1.2017.09.16.00.28.59
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 22 Mar 2020 07:34:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) client-ip=2607:f8b0:4864:20::642;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 16 Sep 2017 00:28:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DDztCKyi;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x642.google.com with SMTP id t3so4728806plz.9
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Mar 2020 07:34:58 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Qv9tqpY0;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x242.google.com with SMTP id j16so2438858pga.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 16 Sep 2017 00:28:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=PVVRwWPArR6g3TOckqFzLY7mwGhA6bwaXqptdlTRg70=;
-        b=DDztCKyiqTtmIanEuD0HDehTCBihpzcjQvwOve+VeUzORkCg+nRQQWJFQv0WZHYrTO
-         lVS507soDOQ6mPmCODkt5DA71E6b2JG7v4uLHOkX9En8F+LAhF2C4BX7TN7cUBjZ5AKC
-         izW2q8lA2e76TpIfuDJVpgcnSdI/bL0iVtANu8+KGFm+jI+cioJ6f4UhslDjKr+fvIqX
-         ARTKmUmFl5J248gAn+4xhCCwm9RYQNDVBgfNosrLHXpVoa2rohxUTK/2RbH1PPfyjxQz
-         Ky/KlDMlIKSJx7V0a63HMwQsk6Rgj3H5VwVHzAAGs2nDY8yEovVC1PaIsJ8dhZwekhK8
-         fYig==
+        h=from:to:cc:subject:date:message-id;
+        bh=JCsgZrEWpChc8/XFGYhrd15/JBtjdhHkiVh86zjhiss=;
+        b=Qv9tqpY0PJNqW1VMSKrwfaRc3RAZWouBkHmevoW+vVh4qWwo/hqOYft1qgr5a6ifWc
+         FHi4e1/XNGoluwSm89ROsQYu2pjmqDiL2bCisGjQ+CIROqRIDdviW8ihHGvexo52gdjg
+         b/SMMkDLGI0Q8g5AT+jca/gxfrq5Vd0BIRxl4LT3OyGKi52NDSiz0DhmDpz2dMlCUHDB
+         YWg8DoDaklXuQRPfuiUIYtRGIvZRIZX07CSWw22gQCopI3LbbJuAj54ivo5SeorqyJ4N
+         /dh4G9446hjOACsw/YxstNCVue0qCO7x2d6AUYMu/UrtqGJP7nHyZneQ0jPmFcBEwgfI
+         LHkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=PVVRwWPArR6g3TOckqFzLY7mwGhA6bwaXqptdlTRg70=;
-        b=o/U/yJl7NQX2QM0tidO1hR0MeB8WFLVjBrW/RZ3E0mbGw2tN05+c9wL3ipQFvlWwgH
-         uGm3YHlHe2Tm516W18wej1Mf3sM2K9j0gvGEXFKxHJmi2vBa4EgVT7N7453CSjqUg1K2
-         ha3FMdk2C7L5yPBb01kY6eethB+SInm/hutvxd79lWEHPVbU7xlRZA+DAJLqyJL3sRx5
-         OuRaHryDBTk07ZKpA1pByC4FdZ3yd2yhh4x01NJSdKRpU9Bn5nvlBy3jdn1euq4WK41J
-         x5eMkRu+IEgPHNhIxWfap5K1CHVqMSJpxnpesEUyg3BjDrFhPDj1PXFLdLD2Gg5msu/K
-         pUfQ==
-X-Gm-Message-State: ANhLgQ3oON0fgkUw74L2sZW+9vNeglspBhNVq4Wrp0KOEecnmj1lWrm8
-	LTWIw2N4xkU4y2kgUA5O3pu6FM/qIpXM5g==
-X-Received: by 2002:a17:90a:30a9:: with SMTP id h38mr18533097pjb.184.1584887697536;
-        Sun, 22 Mar 2020 07:34:57 -0700 (PDT)
-Return-Path: <debsoumyajit100@gmail.com>
-Received: from ubuntu ([47.29.231.191])
-        by smtp.gmail.com with ESMTPSA id l1sm9956173pje.9.2020.03.22.07.34.54
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 22 Mar 2020 07:34:56 -0700 (PDT)
-Date: Sun, 22 Mar 2020 20:04:49 +0530
-From: Soumyajit Deb <debsoumyajit100@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org, perex@perex.cz
-Subject: [PATCH] Remove space after * in pointer declarations
-Message-ID: <20200322143442.GA32287@ubuntu>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=JCsgZrEWpChc8/XFGYhrd15/JBtjdhHkiVh86zjhiss=;
+        b=ULZ09DAt27pHfaGEi3Yz2JFpcXfOPsYg6AzZMuZ5k9pGWMQnOlPwRN8igqdi9L4mPY
+         0ZpTuDlJ4QMI9D7AXFB1H8Bzae/dIVX4TBCH2B8p4CJHZ/ZEa4eplzN5z7eY/KSoYx7F
+         rcCg20Yg1xXb8zTRW9y5rBqGhHyWQ2dhQeKnHT1FysKKxBuAT6LUBfu+4V/YURPzh/c+
+         R1U9Brx72UYX9repU8lVSsMmF5FRUSdYGJGmqwAvHkFm0WzrtS5NIbynIoNlJ8W6hj4V
+         gd2ZegZjxWp8c2WmJx2UmIuxkzHYRiVxFsY3LjrxVd0e3jsBMXjCLQBum12LG0uNn0jG
+         MWWg==
+X-Gm-Message-State: AHPjjUgvgtC9z3Od/lQpIB0Ow33emiEfo9GSn4nS58by0LLn3B+I8wgi
+	Je0FFTwuyTB0fg==
+X-Google-Smtp-Source: ADKCNb7kXftlZ5RU2uUBtfZjv9YwzJ/DTcgmQD5eR+VwC6FiyaROtUZ0kYOgFdDepQArJYYpHwWHfA==
+X-Received: by 10.84.129.131 with SMTP id b3mr31002398plb.337.1505546939215;
+        Sat, 16 Sep 2017 00:28:59 -0700 (PDT)
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from aastha-HP-Pavilion-15-Notebook-PC ([27.56.167.173])
+        by smtp.gmail.com with ESMTPSA id 64sm5183596pge.44.2017.09.16.00.28.58
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 16 Sep 2017 00:28:58 -0700 (PDT)
+From: Aastha Gupta <aastha.gupta4104@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
+Subject: [PATCH] staging: rtl8188eu: fix space between function name and '('
+Date: Sat, 16 Sep 2017 12:58:54 +0530
+Message-Id: <1505546934-16977-1-git-send-email-aastha.gupta4104@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-Remove space after * in pointer declaration to improve code readability
-and to adhere to the standard coding style.
-Reported by checkpatch.pl
+This patch fixes checkpatch.pl warning:
+WARNING: space prohibited between function name and open parenthesis '('
 
-Signed-off-by: Soumyajit Deb <debsoumyajit100@gmail.com>
+Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
 ---
- drivers/staging/hp/hp100.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/rtl8188eu/include/osdep_intf.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/hp/hp100.c b/drivers/staging/hp/hp100.c
-index 00b3db8144c3..2cf1104cd2dd 100644
---- a/drivers/staging/hp/hp100.c
-+++ b/drivers/staging/hp/hp100.c
-@@ -246,11 +246,11 @@ static void hp100_BM_shutdown(struct net_device *dev);
- static void hp100_mmuinit(struct net_device *dev);
- static void hp100_init_pdls(struct net_device *dev);
- static int hp100_init_rxpdl(struct net_device *dev,
--			    register hp100_ring_t * ringptr,
--			    register u_int * pdlptr);
-+			    register hp100_ring_t *ringptr,
-+			    register u_int *pdlptr);
- static int hp100_init_txpdl(struct net_device *dev,
--			    register hp100_ring_t * ringptr,
--			    register u_int * pdlptr);
-+			    register hp100_ring_t *ringptr,
-+			    register u_int *pdlptr);
- static void hp100_rxfill(struct net_device *dev);
- static void hp100_hwinit(struct net_device *dev);
- static void hp100_clean_txring(struct net_device *dev);
-@@ -264,7 +264,7 @@ static void hp100_RegisterDump(struct net_device *dev);
-  * because it was properly DMA allocated via pci_alloc_consistent(),
-  * so we just need to "retrieve" the original mapping to bus/phys/dma
-  * address - Jean II */
--static inline dma_addr_t virt_to_whatever(struct net_device *dev, u32 * ptr)
-+static inline dma_addr_t virt_to_whatever(struct net_device *dev, u32 *ptr)
- {
- 	struct hp100_private *lp = netdev_priv(dev);
- 	return ((u_long) ptr) + lp->whatever_offset;
+diff --git a/drivers/staging/rtl8188eu/include/osdep_intf.h b/drivers/staging/rtl8188eu/include/osdep_intf.h
+index 97d3d85..f1fb3d5 100644
+--- a/drivers/staging/rtl8188eu/include/osdep_intf.h
++++ b/drivers/staging/rtl8188eu/include/osdep_intf.h
+@@ -26,7 +26,7 @@ u8 rtw_init_drv_sw(struct adapter *padapter);
+ u8 rtw_free_drv_sw(struct adapter *padapter);
+ u8 rtw_reset_drv_sw(struct adapter *padapter);
+ 
+-void rtw_stop_drv_threads (struct adapter *padapter);
++void rtw_stop_drv_threads(struct adapter *padapter);
+ void rtw_cancel_all_timer(struct adapter *padapter);
+ 
+ int rtw_ioctl(struct net_device *dev, struct ifreq *rq, int cmd);
 -- 
-2.17.1
+2.7.4
 
 
