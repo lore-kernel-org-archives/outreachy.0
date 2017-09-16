@@ -1,106 +1,217 @@
-X-GM-THRID: 6333979787087839232
-X-Received: by 10.67.7.4 with SMTP id cy4mr3447886pad.30.1474744590444;
-        Sat, 24 Sep 2016 12:16:30 -0700 (PDT)
+X-GM-THRID: 6466169958600540160
+X-Received: by 10.46.82.9 with SMTP id g9mr973988ljb.42.1505581459378;
+        Sat, 16 Sep 2017 10:04:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.228.13 with SMTP id o13ls1336650ith.4.canary; Sat, 24 Sep
- 2016 12:16:27 -0700 (PDT)
-X-Received: by 10.107.11.106 with SMTP id v103mr3292628ioi.37.1474744587963;
-        Sat, 24 Sep 2016 12:16:27 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id um12si3067091pab.2.2016.09.24.12.16.27
+Received: by 10.28.209.78 with SMTP id i75ls821215wmg.24.gmail; Sat, 16 Sep
+ 2017 10:04:18 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBJ4pfUQQG0AO93XbF3CSTvWm3AUyEjcuJuMb0kWUm8l1td97cAg238vji8GxuDIK3As3aT
+X-Received: by 10.28.136.12 with SMTP id k12mr626707wmd.10.1505581458333;
+        Sat, 16 Sep 2017 10:04:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505581458; cv=none;
+        d=google.com; s=arc-20160816;
+        b=RAym21E9LTverz2F7L1TPwYi2imNosDS0g/+5tjKxYF4agCHYE7cd6hQ5hR77TyT5/
+         YaGgWE9uXdtP7sLAM0QIHJ4J0bi5+s6SuzjGFGKjD6kMjUSM0Ou6yWwpQMF2P+sFs9ON
+         rRsMYttOaVp8M3uqWQLtoV8Na4nIGqwHpsO/pYVtFokFF4JUMwdOc+fQVK8pZ/mvhNh/
+         z9E3B48fS4a3fmjdR4EqIr7Z3SA5R05YgtMI6zdQC/HYf3/BBJeB0wyCN5ie0ftnyVhs
+         uNyicb9HTMAwCbLpPIzg2wo3HwBcPuZLEDcLgx2Z9ZMo6T7BHEuydMZeRUZ4RW5bzZjx
+         sYUg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=MNb77ErTIR9uDOc+csTI8LkkMqtXVxnBGqVzmd2L2Fw=;
+        b=DmUNQnMaBzUvmLwNcsFXVVf/RfPNmXQ+3MgH2lrlzPr/ZFD/mKIoq7dVzRkvX+LHW4
+         tBCnXIy7PGr578uuguExtNt7oB0uCxyhLBtiV7eeyC5dD5ZhxIaT0ic9nx7ZoUsozozS
+         Cn7eGLpOTvrt8Fb2dgXMEoKuBErJhr0rGxdh6hXwNCg3yram89OK+WUnt02faoqQyCBl
+         VpxijzJs2TsD7JMOvwnTUAyVaS8jRUnib1/kKNQFX9xuzO/pfr/pZRXyEWopWMviuLJ1
+         wZyDAsPJBeMgWn6sbHMh9j5xsScYYrO3EFIDFy+UPpdTa4TI60tL+Ya7TNU2Eh0Mx5wm
+         CfTA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id d82si199191wmd.1.2017.09.16.10.04.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Sep 2016 12:16:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Sat, 16 Sep 2017 10:04:18 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id n24so6851592pfb.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 24 Sep 2016 12:16:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=sltz8M2GBBU7qBJ4xjq1UXCwwxyj/A2oc6DaYlJgPNM=;
-        b=AygdtwaiEYlH+mWfFEdYfsc1EiEweYLuwX2PN1APDn+fc4vpuhm0+ca+wjfWVK+V5/
-         A01YIDtkPTMFTxl4ZKu3GDkkYM+wD/WIFyY5olQjVF95xEbIuExUMNGBSELEdDu/zgSw
-         1FIiUSvRclHKnFndobkzw54TAMNARdsTW7Njdu3UuPspte/TQ+XVszoUBOTciPplm64y
-         yvS21TqKR7qlTDxtB/yFYOZvr9S4kV+zcq5HYocoD5q/6ng5fBZiA6aKFDNdAn+dQzE8
-         3OGmFJ6ZZY0flb88XEOODN5B3Y1ADDqHQjQXn6FhePXSlJUWymq10k2AS4ADjDElcfM7
-         fuAQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=sltz8M2GBBU7qBJ4xjq1UXCwwxyj/A2oc6DaYlJgPNM=;
-        b=lK2A3bVMfo3H3kQJorwQ9O+M4cBgkbnOB/q4fT31Efh+J08bGZE/baRzc/m0DYYXcD
-         MdDHfVWEE6e8hH0wPtOzLBc2FprH14wCxdbJVV/KolqzZTaFOIoOV+TvqDONkZ7w/1Vh
-         PuyaIyY5hRnzoFllt5YnWiPpkVHHKgVcsXdhQC54pFhtyQiIuig1Y7Y9Qm8BcnTJbOyk
-         PC8yGreBCgn/y+Y5pPjeSOhTurrNOOpCV9fYh24zivq713BZz/vihK8iw+jusnCPN6y5
-         Pz6n3aNGwLBYkl5W3c2hTY3Bpo7UGYfrun37twZbeF1oN1/CcqfDyyKX+/2i/3i+CZQl
-         tIXA==
-X-Gm-Message-State: AE9vXwMgVVTygvm0vUO+6BTYdFPjw0devV7LHsg1Anoan4AINSewohVehOMgZhafMahPng==
-X-Received: by 10.98.15.210 with SMTP id 79mr23862209pfp.183.1474744587764;
-        Sat, 24 Sep 2016 12:16:27 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from localhost.localdomain ([182.70.100.235])
-        by smtp.gmail.com with ESMTPSA id zy17sm20212419pab.28.2016.09.24.12.16.25
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Sep 2016 12:16:27 -0700 (PDT)
-Date: Sun, 25 Sep 2016 00:46:21 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net,
-	linux-iio@vger.kernel.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] drivers: iio: chemical: Fix sparse endianness warnings cast
- to restricted __be16
-Message-ID: <20160924191621.GA18812@localhost.localdomain>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,403,1500933600"; 
+   d="scan'208";a="237733707"
+Received: from 85-171-60-79.rev.numericable.fr (HELO [192.168.0.15]) ([85.171.60.79])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 16 Sep 2017 19:04:17 +0200
+Date: Sat, 16 Sep 2017 19:04:17 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Haneen Mohammed <hamohammed.sa@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: lustre: lnet: Replace
+ list_for_each with list_for_each_entry
+In-Reply-To: <20170916162124.GA6808@Haneen>
+Message-ID: <alpine.DEB.2.20.1709161903390.1992@hadrien>
+References: <20170916004148.GA25693@Haneen> <alpine.DEB.2.20.1709161320250.2943@hadrien> <20170916161048.GA6020@Haneen> <alpine.DEB.2.20.1709161814050.1992@hadrien> <20170916162124.GA6808@Haneen>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: text/plain; charset=US-ASCII
 
-Fix the following sparse endianness warnings:
 
-drivers/iio/chemical/atlas-ph-sensor.c:215:9: warning: cast to restricted __be16
-drivers/iio/chemical/atlas-ph-sensor.c:215:9: warning: cast to restricted __be16
-drivers/iio/chemical/atlas-ph-sensor.c:215:9: warning: cast to restricted __be16
-drivers/iio/chemical/atlas-ph-sensor.c:215:9: warning: cast to restricted __be16
-drivers/iio/chemical/atlas-ph-sensor.c:215:9: warning: cast to restricted __be16
-drivers/iio/chemical/atlas-ph-sensor.c:215:9: warning: cast to restricted __be16
-drivers/iio/chemical/atlas-ph-sensor.c:215:9: warning: cast to restricted __be16
-drivers/iio/chemical/atlas-ph-sensor.c:215:9: warning: cast to restricted __be16
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
- drivers/iio/chemical/atlas-ph-sensor.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+On Sat, 16 Sep 2017, Haneen Mohammed wrote:
 
-diff --git a/drivers/iio/chemical/atlas-ph-sensor.c b/drivers/iio/chemical/atlas-ph-sensor.c
-index 407f141..a3fbdb7 100644
---- a/drivers/iio/chemical/atlas-ph-sensor.c
-+++ b/drivers/iio/chemical/atlas-ph-sensor.c
-@@ -207,13 +207,14 @@ static int atlas_check_ec_calibration(struct atlas_data *data)
- 	struct device *dev = &data->client->dev;
- 	int ret;
- 	unsigned int val;
-+	__be16	rval;
- 
--	ret = regmap_bulk_read(data->regmap, ATLAS_REG_EC_PROBE, &val, 2);
-+	ret = regmap_bulk_read(data->regmap, ATLAS_REG_EC_PROBE, &rval, 2);
- 	if (ret)
- 		return ret;
- 
--	dev_info(dev, "probe set to K = %d.%.2d", be16_to_cpu(val) / 100,
--						 be16_to_cpu(val) % 100);
-+	val = be16_to_cpu(rval);
-+	dev_info(dev, "probe set to K = %d.%.2d", val / 100, val % 100);
- 
- 	ret = regmap_read(data->regmap, ATLAS_REG_EC_CALIB_STATUS, &val);
- 	if (ret)
--- 
-1.8.3.1
+> On Sat, Sep 16, 2017 at 06:14:25PM +0200, Julia Lawall wrote:
+> >
+> >
+> > On Sat, 16 Sep 2017, Haneen Mohammed wrote:
+> >
+> > > On Sat, Sep 16, 2017 at 01:23:28PM +0200, Julia Lawall wrote:
+> > > >
+> > > >
+> > > > On Fri, 15 Sep 2017, Haneen Mohammed wrote:
+> > > >
+> > > > > Replace use of the combination of list_for_each and list_entry
+> > > > > with list_for_each_entry to simplify the code and remove variables
+> > > > > that are used only in list_for_each.
+> > > > > Issue found and corrected using Coccinelle script:
+> > > > >
+> > > > > @r@
+> > > > > expression head, member, e;
+> > > > > type T1, T2, T3;
+> > > > > iterator name list_for_each, list_for_each_entry;
+> > > > > identifier pos, var;
+> > > > > @@
+> > > > >
+> > > > > -T1 *pos;
+> > > > > ...when!=pos=e;
+> > > > >
+> > > > > -list_for_each(pos, head)
+> > > > > +list_for_each_entry(var, head, member)
+> > > > > {
+> > > > > ...when!=pos=e;
+> > > > >    when!=T3 *var;
+> > > > > -var = list_entry(pos, T2, member);
+> > > > > ...when!=pos=e;
+> > > > > }
+> > > > > ...when!=pos=e;
+> > > >
+> > > > Actually, one could consider that there should be when != pos, not when !=
+> > > > pos=e, because you need that there are no references at all to pos to be
+> > > > able to delete it.  But it's true that if pos is not initialized then
+> > > > there should be no other kinds of references either.  The other
+> > > > possibility for initialization would be eg
+> > > >
+> > > > f(...,&pos,...)
+> > > >
+> > > > You could be suspicious of &pos in general.  But anyway there is no &pos
+> > > > in this code.
+> > > >
+> > > > julia
+> > > >
+> > >
+> > > I have tried "when != pos;" first and switched to "when !=pos=e;"
+> > > becuase I have found cases where pos was still used. I only realised I
+> > > should have used "when != pos" without the semicolon after I've
+> > > submitted the patch.
+> > >
+> > > There is still case where even with "when!=pos" the script fails to match pos
+> > > within an if statement. Is there away around that?
+> >
+> > Could you send an example?
+> >
+> > julia
+> >
+> >
+>
+> in staging/lustre/lustre/ldlm/ldm_lock.c, line 898:
+>
+> list_for_each(tmp, queue) {
+> 	lock = list_entry(tmp, struct ldlm_lock, l_res_link);
+>
+> 	mode_end = list_prev_entry(lock, l_sl_mode);
+>
+> 	if (lock->l_req_mode != req->l_req_mode) {
+> 		/* jump to last lock of mode group */
+> 		tmp = &mode_end->l_res_link;
+> 		continue;
+> 	}
 
+Indeed, it should not match that.  Perhaps the problem is because of the
+continue.  Thanks for the report.
+
+julia
+
+
+> > >
+> > > > > Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+> > > >
+> > > > Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+> > > >
+> > > > > ---
+> > > > >  drivers/staging/lustre/lnet/lnet/router.c | 9 ++-------
+> > > > >  1 file changed, 2 insertions(+), 7 deletions(-)
+> > > > >
+> > > > > diff --git a/drivers/staging/lustre/lnet/lnet/router.c b/drivers/staging/lustre/lnet/lnet/router.c
+> > > > > index 3df101b..b8eba33 100644
+> > > > > --- a/drivers/staging/lustre/lnet/lnet/router.c
+> > > > > +++ b/drivers/staging/lustre/lnet/lnet/router.c
+> > > > > @@ -222,15 +222,12 @@ struct lnet_remotenet *
+> > > > >  lnet_find_net_locked(__u32 net)
+> > > > >  {
+> > > > >  	struct lnet_remotenet *rnet;
+> > > > > -	struct list_head *tmp;
+> > > > >  	struct list_head *rn_list;
+> > > > >
+> > > > >  	LASSERT(!the_lnet.ln_shutdown);
+> > > > >
+> > > > >  	rn_list = lnet_net2rnethash(net);
+> > > > > -	list_for_each(tmp, rn_list) {
+> > > > > -		rnet = list_entry(tmp, struct lnet_remotenet, lrn_list);
+> > > > > -
+> > > > > +	list_for_each_entry(rnet, rn_list, lrn_list) {
+> > > > >  		if (rnet->lrn_net == net)
+> > > > >  			return rnet;
+> > > > >  	}
+> > > > > @@ -243,7 +240,6 @@ static void lnet_shuffle_seed(void)
+> > > > >  	__u32 lnd_type, seed[2];
+> > > > >  	struct timespec64 ts;
+> > > > >  	struct lnet_ni *ni;
+> > > > > -	struct list_head *tmp;
+> > > > >
+> > > > >  	if (seeded)
+> > > > >  		return;
+> > > > > @@ -254,8 +250,7 @@ static void lnet_shuffle_seed(void)
+> > > > >  	 * Nodes with small feet have little entropy
+> > > > >  	 * the NID for this node gives the most entropy in the low bits
+> > > > >  	 */
+> > > > > -	list_for_each(tmp, &the_lnet.ln_nis) {
+> > > > > -		ni = list_entry(tmp, struct lnet_ni, ni_list);
+> > > > > +	list_for_each_entry(ni, &the_lnet.ln_nis, ni_list) {
+> > > > >  		lnd_type = LNET_NETTYP(LNET_NIDNET(ni->ni_nid));
+> > > > >
+> > > > >  		if (lnd_type != LOLND)
+> > > > > --
+> > > > > 2.7.4
+> > > > >
+> > > > > --
+> > > > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > > > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > > > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170916004148.GA25693%40Haneen.
+> > > > > For more options, visit https://groups.google.com/d/optout.
+> > > > >
+> > >
+> > > --
+> > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170916161048.GA6020%40Haneen.
+> > > For more options, visit https://groups.google.com/d/optout.
+> > >
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170916162124.GA6808%40Haneen.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
