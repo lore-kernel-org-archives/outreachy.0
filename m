@@ -1,124 +1,129 @@
 X-GM-THRID: 6466416490649223168
-X-Received: by 10.223.138.151 with SMTP id y23mr1776838wry.21.1505582376656;
-        Sat, 16 Sep 2017 10:19:36 -0700 (PDT)
+X-Received: by 10.36.61.15 with SMTP id n15mr4439278itn.31.1505579975485;
+        Sat, 16 Sep 2017 09:39:35 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.21.66 with SMTP id 63ls827731wmv.12.gmail; Sat, 16 Sep 2017
- 10:19:35 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QCVL2D/RmSr4TbGgV6Buzi2i3IoAqcHg9roP8Ad/PgN6+6cw50/lu3YAtxZSiRsemGEiyOa
-X-Received: by 10.28.156.86 with SMTP id f83mr608464wme.5.1505582375542;
-        Sat, 16 Sep 2017 10:19:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505582375; cv=none;
+Received: by 10.107.154.71 with SMTP id c68ls8771119ioe.22.gmail; Sat, 16 Sep
+ 2017 09:39:34 -0700 (PDT)
+X-Received: by 10.31.142.83 with SMTP id q80mr10185819vkd.1.1505579974933;
+        Sat, 16 Sep 2017 09:39:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505579974; cv=none;
         d=google.com; s=arc-20160816;
-        b=0I7l0EeJVIrc0H6XB5Kn3xGRpRQTbKwRezGKRcM4+ahM3PHio1xkOBGh8Pt0wTFqPY
-         tlpSDaTPwDf0VNCJ3d+RJ1ml+V8OX7st6KlRsa2XAlOKhC6zncH4Qkt4F8R8gMuN8Lvt
-         3cC0zouuzrFBY8TxtgroPbY6pEgfo+YK5rFW03oe+ZxBg1OKL/gHLP+6+bk5kepZ8EAm
-         KYKqM8EMcQRDvnLg8HVn22n0Hz0aF60bvktiPlr0fnKN647CF2rhtIfrq3y+nEl371rk
-         KMflg4OZ+HXowewow58TBWI46Wchq2rRAOjQAFM5FRWomixxTP1hEIPPRtOzwdMuiLeQ
-         8sQQ==
+        b=JDtKPwQFz6IEA9ckwa/yThzdli6FrfIhwxFaaz6nigdV90VoXP/23NsoutJ/EJpzx2
+         SkXOIC3c0RSL27fETkHHvrnDd9Rc6oSvad31pFsqJKQ06RJcyFQJM7S4/ntXKqhEBYQQ
+         2cHDXTzHIKKdBjzHw8vDG4NTxG2dmsJj5XGM6Tv2o6HjpFXyTFOhRNvlSuGGbBab3d5v
+         5vGFA1onYc2Obj7jD9Np7esEeHyd33C8Mc/BLpdz+/EThf4NenQPbx7W1r4FlZWHyAbq
+         JAqTd7+D1DtMJBw8ivttIEhhH4yWpkyNtkaFa/KlyY1I85zMnHjgJ6eEf+rDyLY+oGMP
+         nGCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=mt5eko61XIVXIvGY7HyUusLl88kZ08WM4uzvPjdWuSk=;
-        b=FR2tbYWeRMewooG6Fe7P7xpPz1RjzHzP/x+8zGsvVwu6tF4/HFyERg2XQIncQAwDN6
-         I1dUhDs6jpHxw1Eslyis/IWX8Aqsm5SHJZLuTZRzUDpBDs7OPnglBSAld2iq4N4nTuR8
-         YyDTagxpLyaP+/jgYMoAfqHZimU7s8VYCLdoz6obxXhSdyjsa78opKqqF5LYc19flcY3
-         ySU/zZrQEm9LuWVQW+kvOjskbIwUludwBsYVe5IPyR5wKW8H6vzEbRcvPVzjpcnUBB90
-         wa9fboaDyiuNJnv59inVO0WwATF0EA/cr3ANs4JcI1tRs+0M8bvz25bjsIfx6z5qn5Vn
-         6OIA==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=xw/WsSuIYmvwv6LQ3dp/U61iRwIiZppuhXyueH+Ng1k=;
+        b=piVXMe7gEx9u/MRx1gDy/x+cDCyE7EFODp6d42N4OKjtkdGGGRyIPsuyJhNWSvx86t
+         NoBRW5FDQI5AQcU8/351M1t/N03E1Dk4DBSH+G2+2smG+iZjQVxUdigs6vHkY30uc+9j
+         8Hooj3CyEDNjp4RQvr6FUUz3F1j+H+OufyvU6BTBQBs5c4HnUlMIRkLwPwbPxTxnJqws
+         sVf/N5CKnW7W39s65HduBJXCSy9Vjjty4zzDWYqFZYqfR4y7YqxBSuhVxjdSncDy2Pcg
+         vxnv/6GIIsvHvh6Ty6Nx86GJs9+/2ggd5hOYGQmjQO/izDc0FUxevOyaQjTZ0Ml2STyA
+         b06Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id j4si214722wmi.2.2017.09.16.10.19.35
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=R6/t1wPQ;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <srishtishar@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id r78si371450pfb.3.2017.09.16.09.39.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Sep 2017 10:19:35 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sat, 16 Sep 2017 09:39:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.42,403,1500933600"; 
-   d="scan'208";a="291393272"
-Received: from 85-171-60-79.rev.numericable.fr (HELO [192.168.0.15]) ([85.171.60.79])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 16 Sep 2017 19:19:34 +0200
-Date: Sat, 16 Sep 2017 19:19:34 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Srishti Sharma <srishtishar@gmail.com>
-cc: lidza.louina@gmail.com, markh@compro.net, gregkh@linuxfoundation.org, 
-    driverdev-devel@linuxdriverproject.org, devel@driverdev.osuosl.org, 
-    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2 1/2] Staging: dgnc: Remove unused
- fields in struct dgnc_board
-In-Reply-To: <dd9a08aabab9cfc60a5c7c7c0d5191d72e68c2d2.1505579408.git.srishtishar@gmail.com>
-Message-ID: <alpine.DEB.2.20.1709161919170.1992@hadrien>
-References: <cover.1505579408.git.srishtishar@gmail.com> <dd9a08aabab9cfc60a5c7c7c0d5191d72e68c2d2.1505579408.git.srishtishar@gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=R6/t1wPQ;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x241.google.com with SMTP id g65so2675849pfe.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 16 Sep 2017 09:39:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=xw/WsSuIYmvwv6LQ3dp/U61iRwIiZppuhXyueH+Ng1k=;
+        b=R6/t1wPQdErBeSQCp16v7cJsO0KLq2kWikxeCI8IYuS7+TTaOuj1+ZxZoDlQE5nH6M
+         PBXzwCCcyYVtyW6O4bKAqwI5JBjG+lh1bZxGn8eGlKlY07Bgv5WZViV4NZ/qb8YHui9i
+         wJiUutsvvWtJZTuCNlhnBN04PK1V5mQGrUlXqC7xeIDtwuAfVZuZP1ccHyLbzrjtGYA3
+         vmtPlk3/au+IULBFiVdCmVJ4XvwDA3RuvwZECoOZSQdyRIZeRVmRIHrIoPSDwQaIZqB4
+         BZzFFLrex20b5ol+hWvglp2YNQUgfr7uuN9bY9eq8UNv8eBkTQUzRVbwoy3ZGqhIpLKY
+         qGTA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=xw/WsSuIYmvwv6LQ3dp/U61iRwIiZppuhXyueH+Ng1k=;
+        b=AcZJDIxJvjs+sC6FzsGPcEz05Z75nXgCpkknFiDE+6BZFWShbD0ukECp2Ki0pOnvwt
+         oM8H2kTXDZIzD0Oum+mVpxrFskUnfXitqXVsOswppvMtd30hW4hfON6jUmUnjwz8s9pZ
+         S64FCT/ToMIHcvuci+wyAs82ilwb4i1eOhlloiFoXvKEOqFtClrbszH71NZDYLWLMMj2
+         +ovE5sCx2jiNaZDD7HdVuxviH5l1CjOC7MGgRt0jZdaEBiPk52ZOSmKViFipyCPtmqBL
+         3MNNww8BwUm+J96eMvhkueCZxS0A7hFG/txHFVKYncp9SGWpfkbK3pK/r/iFc/jFfORL
+         oDXw==
+X-Gm-Message-State: AHPjjUgj98hEi+aXZMFXlnYk5VPh+yW0Nc7TyOkmzxgEbjKNNgH5ABzR
+	fozdQ8qUMbkweQ==
+X-Google-Smtp-Source: AOwi7QCgM2VoW0SFOkeSCG1DFIB08XURkZS26c+UbaMQ0Ui5lXmEoX7FyOR1/NEX0Y+q4ZQELiqmFQ==
+X-Received: by 10.99.97.208 with SMTP id v199mr10220465pgb.92.1505579974694;
+        Sat, 16 Sep 2017 09:39:34 -0700 (PDT)
+Return-Path: <srishtishar@gmail.com>
+Received: from srishti-PRODiiGY-945G ([122.168.15.200])
+        by smtp.gmail.com with ESMTPSA id n83sm7450565pfi.163.2017.09.16.09.39.33
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 16 Sep 2017 09:39:34 -0700 (PDT)
+From: Srishti Sharma <srishtishar@gmail.com>
+To: lidza.louina@gmail.com
+Cc: markh@compro.net,
+	gregkh@linuxfoundation.org,
+	driverdev-devel@linuxdriverproject.org,
+	devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com,
+	Srishti Sharma <srishtishar@gmail.com>
+Subject: [PATCH v2 2/2] Staging: dgnc: Remove unused fields in struct channel_t
+Date: Sat, 16 Sep 2017 22:09:29 +0530
+Message-Id: <a57f835fc443d51ae9eadd1b995435c215f14974.1505579409.git.srishtishar@gmail.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <cover.1505579408.git.srishtishar@gmail.com>
+References: <cover.1505579408.git.srishtishar@gmail.com>
 
+Eliminate the fields that are not used and the comments
+associated with them.
 
+Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+---
+Changes in v2:
+ - Use the word field instead of variable.
 
-On Sat, 16 Sep 2017, Srishti Sharma wrote:
+ drivers/staging/dgnc/dgnc_driver.h | 6 ------
+ 1 file changed, 6 deletions(-)
 
-> Remove unused fields and comments associated with them in
-> the structure definition.
->
-> Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+diff --git a/drivers/staging/dgnc/dgnc_driver.h b/drivers/staging/dgnc/dgnc_driver.h
+index 5d2566e..082d659 100644
+--- a/drivers/staging/dgnc/dgnc_driver.h
++++ b/drivers/staging/dgnc/dgnc_driver.h
+@@ -312,8 +312,6 @@ struct un_t {
+  * @ch_err_overrun: Count of overruns on channel.
+  * @ch_xon_sends: Count of xons transmitted.
+  * @ch_xoff_sends: Count of xoffs transmitted.
+- * @proc_entry_pointer: Proc/<board>/<channel> entry.
+- * @dgnc_channel_table: Proc/<board>/<channel> entry.
+  */
+ struct channel_t {
+ 	struct dgnc_board *ch_bd;
+@@ -382,10 +380,6 @@ struct channel_t {
+ 
+ 	ulong		ch_xon_sends;
+ 	ulong		ch_xoff_sends;
+-
+-	struct proc_dir_entry *proc_entry_pointer;
+-	struct dgnc_proc_entry *dgnc_channel_table;
+-
+ };
+ 
+ extern uint		dgnc_major;		/* Our driver/mgmt major */
+-- 
+2.7.4
 
-Acked-by: Julia Lawall <julia.lawall@lip6.fr>
-
-> ---
-> Changes in v2:
->  - Use the word field instead of variable.
->
->  drivers/staging/dgnc/dgnc_driver.h | 9 ---------
->  1 file changed, 9 deletions(-)
->
-> diff --git a/drivers/staging/dgnc/dgnc_driver.h b/drivers/staging/dgnc/dgnc_driver.h
-> index 764d6fe..5d2566e 100644
-> --- a/drivers/staging/dgnc/dgnc_driver.h
-> +++ b/drivers/staging/dgnc/dgnc_driver.h
-> @@ -104,7 +104,6 @@ struct board_ops {
->   * struct dgnc_board - Per board information.
->   * @boardnum: Board number (0 - 32).
->   *
-> - * @type: Type of board.
->   * @name: Product name.
->   * @pdev: Pointer to the pci_dev structure.
->   * @bd_flags: Board flags.
-> @@ -140,13 +139,9 @@ struct board_ops {
->   * @dpastatus: Board status as defined by DPA.
->   * @bd_dividend: Board/UART's specific dividend.
->   * @bd_ops: Pointer to board operations structure.
-> - * @proc_entry_pointer: Proc/<board> entry
-> - * @dgnc_board_table: Proc/<board> entry
->   */
->  struct dgnc_board {
->  	int		boardnum;
-> -
-> -	int		type;
->  	char		*name;
->  	struct pci_dev	*pdev;
->  	unsigned long	bd_flags;
-> @@ -200,10 +195,6 @@ struct dgnc_board {
->  	uint		bd_dividend;
->
->  	struct board_ops *bd_ops;
-> -
-> -	struct proc_dir_entry *proc_entry_pointer;
-> -	struct dgnc_proc_entry *dgnc_board_table;
-> -
->  };
->
->  /* Unit flag definitions for un_flags. */
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/dd9a08aabab9cfc60a5c7c7c0d5191d72e68c2d2.1505579408.git.srishtishar%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
