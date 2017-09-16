@@ -1,174 +1,103 @@
 X-GM-THRID: 6466329510613614592
-X-Received: by 10.13.245.195 with SMTP id e186mr5681988ywf.13.1505559667971;
-        Sat, 16 Sep 2017 04:01:07 -0700 (PDT)
+X-Received: by 10.36.16.81 with SMTP id 78mr3719263ity.33.1505559662793;
+        Sat, 16 Sep 2017 04:01:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.82.209 with SMTP id d200ls2595854itb.12.canary-gmail; Sat,
- 16 Sep 2017 04:01:07 -0700 (PDT)
-X-Received: by 10.101.81.135 with SMTP id h7mr16764358pgq.36.1505559667336;
-        Sat, 16 Sep 2017 04:01:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505559667; cv=none;
+Received: by 10.107.147.195 with SMTP id v186ls7858237iod.2.gmail; Sat, 16 Sep
+ 2017 04:01:01 -0700 (PDT)
+X-Received: by 10.129.0.70 with SMTP id 67mr17135730ywa.12.1505559661905;
+        Sat, 16 Sep 2017 04:01:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505559661; cv=none;
         d=google.com; s=arc-20160816;
-        b=mH0QowsxFUU4/GunRUF29GzIUoBXBWTqMtXUkVEBF0cv9VEql3oU8oNr2t1iLQTQI6
-         RdFaTf9tnqiZTHV7B65Lold7NmTw+UAl/+8FLw/22LTlMZLdn9EReRjhN7pUqCUDOA2K
-         r0t5WdpP9zQ8ihE1ICmU7KRdAwJgX57eV6xpn4JCG8XQASGqEFjUzZ7PA5Im8vmhHP1S
-         8NIDG8Bdi/hj86xshVbOeyRHRfcuk9QSCF9y97kpy2LycYcHdSl3KN4aYn0eKyJsQSJl
-         0ygTlGQsEHl9uwBwrhJv9W/HTP8QX+1zvcMT6B50is8LnyCmIRFTTcxn6Poco7BSHIBj
-         ymIg==
+        b=iUv4O/VwczfogEg/VU765sM0lnz8KtsHE8doxW/ySVDaYFWmgMhcsV0iGJbjItoT/B
+         dvI7dEsJOkz6MRS8NjWHG+IFDGRhKedxYiI8mBLi4MLnG1YbCRVBQmmpLu+SuFWDdoQj
+         2VJJcJiDS4kkCfGAYMH3a8rmCK8NE6ux+IpBovu9AjEQSsBJXFMWYdadUuSUA8LuR3c4
+         z7I0+uxSJ0q1vA5tJj6H4nd5hcoUVyfjvER4aroQOPoEmC4eWBbE6XU5TT4wIopJgHDf
+         wpjJcfSLA3aLwzO+2HfrdmC8h09Kr5Zf2pE5Rf4bR4rhxgjHbiy2+DvH2LFJThd0xkOc
+         XEAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature:arc-authentication-results;
-        bh=+7gtoUsxC5ngm6TwDjaz3dWduf7R0MmH/ZOFwrUJVwg=;
-        b=YL4KGMPDBaCUVTBhtWVZRdABbTio12OIx0Xlu6jLbj2hyEFeLR4WXHoXRboJO2305C
-         vSQ2EcNA4fiw1h2Vmy9J+EKksbKWl+2GZff+LtPg1Q5/c7mFg8vP3QCKoYtKIPRQyOJn
-         u1HiaSPiadWers5FNGxFRxFEyun1v5vCYuW5jD3md4E2a71cFDDTOE3CqiHz7jGPL2k4
-         1SQNVfuHo4RBdS0QJCSpUC58ehGYksbiUkYLVrbA2sT1zsHc/fuj2LReBGW5XexQazdj
-         hFUY/6pMMyodrTYL9050oRH2tvo+cXykcptTa9ZrYJgaPs7OvGgXbsgTsXWs+4EbPL6p
-         4D5w==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=FLNlnDpVZyjpudGJiLsouGkcVYQ1mbhz+KiELeQ4OCo=;
+        b=XNgHtkjS0V7w69AGgRquWACE4pxk5uuzkxU/nrdWyALMb4boF/SJ/59Tlw/b3xk6lz
+         PQE9QfoaDU1wzBUL9j32CAMzQUOamyp5QHUmtNJ5mGJwVb9HvUBJ/cY1X4cSXPvJDRi8
+         olpopGw/yB5t4gaTKzRwSxrQOWujRvj0x2kb5BmZKxxpKqixL5jCIKhnpEmdqZAHOPwk
+         Mx0RzVnracwdUrAS3sChlj97LG1E/wgCM6br+SUuRmDS5lfcZwtF01HCb4w7r9AVAfPW
+         q/zZvRbFhgYr0DDjFPFZEdDtzSHkljHb+c0BlCYLmwllT7WCfw82VK8x48Flmevcdaph
+         AzLw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QULPDfmT;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iAMamXo7;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id k76si317818pfb.5.2017.09.16.04.01.07
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id f189si278937pfa.1.2017.09.16.04.01.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Sep 2017 04:01:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Sat, 16 Sep 2017 04:01:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QULPDfmT;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iAMamXo7;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id v5so2624957pgn.4
-        for <outreachy-kernel@googlegroups.com>; Sat, 16 Sep 2017 04:01:07 -0700 (PDT)
+Received: by mail-pf0-x242.google.com with SMTP id g65so2414364pfe.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 16 Sep 2017 04:01:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :in-reply-to:references;
-        bh=+7gtoUsxC5ngm6TwDjaz3dWduf7R0MmH/ZOFwrUJVwg=;
-        b=QULPDfmTa1NTw7ErUvYimVL2lQbqQk9/TN0mxi8a6I4PFEl3GAc9Ks8vs2EWTphjXT
-         yedN8/Nymx0448ynbTE4ULPYFsGTsxz793t0J5o4gUj0sIOC5A7n8f7+TJI6JRtkCC6Z
-         La1EpyfM4JDH93YPepQqjFay6DotTK5451bExdm7FVYcN5UwiC48BIhGldol/hwwbAOb
-         FGXkQS/vor9b2SzFuROjabLeVI1N4Ev5NgMJx7JpFHqd3NfgAVTKPrNNZKel6IOhpoRr
-         qS8LipN0KQIKYvjFWppddLhL7Od4VpNM94ysGdRjLEsDDmLh/oSSlkZyc6u/LYIy/zKj
-         KSUA==
+        h=from:to:cc:subject:date:message-id;
+        bh=FLNlnDpVZyjpudGJiLsouGkcVYQ1mbhz+KiELeQ4OCo=;
+        b=iAMamXo7YQZp8gmaATCjjx1r4td+WvhvLMCvchKAm5sO8U03H7uVCFD5662XxrsO8V
+         CRAGSzc4u3MUiao2APditFfp+b8pOg7veAjL7yEE0GXWg9PCO89Mb48WSSOgMbqj0MHo
+         2jpqEZtx3xphCL9t0aS71umty3CdOsfmSjrOhYz7GJSQJqEb+/uGe2XEGEVL7IwkN/zZ
+         OEqNqIeJSekFfAuQtkCRtpoqph2h2Qrq+6x74/nIH1nw9KliFJ0vzfWK7shersgejXKH
+         ndJz3ONVG9gnU8kzsR3vlzaYwsoL/NeR2LRmb9yp5Q8fL1FB5Yz/5IbcvXiOzqbAMbWw
+         V4qw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:in-reply-to:references;
-        bh=+7gtoUsxC5ngm6TwDjaz3dWduf7R0MmH/ZOFwrUJVwg=;
-        b=IhR50gWg7bsJvFGuouCMY5xUTY0yPn0pEUwPeVh31BGG/vsWyv1KDRqhMj6bT0yQIf
-         ATGiI4fI9MkWB7n9Apq3fr39pN/iAl62vkKtPzvJ3JKMrxRP9LGfaL7SXp5OV05rXMbR
-         0CmLz0WcV1BgQa8JZBNUd5n+t/ZV9HNs3EalLotH63WPpkPK97tZWFPkXCRyBbAt+n9X
-         qNF1DCVmoz9Ganb/79uEycCXAMDYZk+i/Yo9eenuPJMFUQcOLFeeSMWczigPPXI+OWkZ
-         UAz6xhDPTl8v5GRsROdxHtxiI7fXUXsuAZ8Vqs/gdDcUJLab/HzyD4whZyCnQdali6ey
-         rDrQ==
-X-Gm-Message-State: AHPjjUgSADT1EAFEWTkFASz3+04SJsIutDKGK3RtjOtBpvgzuyWr3veW
-	iq8x3O7vclCGvAZXwMk=
-X-Google-Smtp-Source: ADKCNb5CIg0lltpuveBb9jfmfuJoaaDBsQgWpSavny1GhjGptA1BgXSjW0PWDLxc/9RzogHOQD93Ag==
-X-Received: by 10.84.231.133 with SMTP id g5mr29939275plk.188.1505559667057;
-        Sat, 16 Sep 2017 04:01:07 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=FLNlnDpVZyjpudGJiLsouGkcVYQ1mbhz+KiELeQ4OCo=;
+        b=gQq+jsKrQXZePMVGB2Mpt/ibiFfnq/o3QYbORIDhpR6uSXx+2TKpp6nNJRkv87BKrW
+         4ZTLGX4s0WCIp19kXSGOHhPTs7HoRLlQo9dig1GZeCh/NoBaxN9NEVINUM3E02BayjIW
+         KrPB/9qTzamvf+zeQ0z9k6R7tuImaCsbcLoLo5U/2Q0VPs/F08fgpfOeaSF/w6uMEhDy
+         pPA3DU5xKmIf26Ve0dtp/7QueWOzVCmA/+D1sEVuMsq7ebha1JuHUlJCvcZYz44fcN8J
+         hSOgU9aNaUPdcCXm6/fN6XvPEA0KbGdAJddSxhNtl98m59IGr91QRToQ4J/v9GtFaNnv
+         p44w==
+X-Gm-Message-State: AHPjjUjM9NyaJuFtTh15ppEYLmgqYRc8fCyOdfK00glcaqXtjgg0zTvZ
+	tMoWCqHZXBg8458BP4g=
+X-Google-Smtp-Source: ADKCNb59RFTr/D0i93EZ9LyCdhbBOufErDX1REO36gNWYR08F2bU6JGbFXPBbs+Pm5zVDuC+jNYQBg==
+X-Received: by 10.84.232.8 with SMTP id h8mr30605457plk.62.1505559661561;
+        Sat, 16 Sep 2017 04:01:01 -0700 (PDT)
 Return-Path: <aastha.gupta4104@gmail.com>
 Received: from aastha-HP-Pavilion-15-Notebook-PC ([27.56.167.173])
-        by smtp.gmail.com with ESMTPSA id k67sm5928041pga.46.2017.09.16.04.01.05
+        by smtp.gmail.com with ESMTPSA id z187sm6498599pfb.60.2017.09.16.04.01.00
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 16 Sep 2017 04:01:06 -0700 (PDT)
+        Sat, 16 Sep 2017 04:01:01 -0700 (PDT)
 From: Aastha Gupta <aastha.gupta4104@gmail.com>
 To: outreachy-kernel@googlegroups.com,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH 01/11] staging: rtl8192u: fix spaces around algebric and binary operators
-Date: Sat, 16 Sep 2017 16:30:44 +0530
-Message-Id: <78b96e43e67c3d2f6fdc7bf20b7afc68c012af22.1505559000.git.aastha.gupta4104@gmail.com>
+Subject: [PATCH 00/11] staging: rtl8192u: ieee80211: checkpatch cleanup for ieee80211
+Date: Sat, 16 Sep 2017 16:30:43 +0530
+Message-Id: <cover.1505559000.git.aastha.gupta4104@gmail.com>
 X-Mailer: git-send-email 2.7.4
-In-Reply-To: <cover.1505559000.git.aastha.gupta4104@gmail.com>
-References: <cover.1505559000.git.aastha.gupta4104@gmail.com>
-In-Reply-To: <cover.1505559000.git.aastha.gupta4104@gmail.com>
-References: <cover.1505559000.git.aastha.gupta4104@gmail.com>
 
-Fixes prefer spaces around '+', '_', '?', '&', '==', '!=', '|', '&&', '=' as reported
-by checkpatch.pl.
+These patches add or remove spaces wherever required in ieee80211.h file to make it follow kernel coding style.
 
-Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
----
- drivers/staging/rtl8192u/ieee80211/ieee80211.h | 26 +++++++++++++-------------
- 1 file changed, 13 insertions(+), 13 deletions(-)
+Aastha Gupta (11):
+  staging: rtl8192u: fix spaces around algebric and binary operators
+  staging: rtl8192u: add space after '}'
+  staging: rtl8192u: remove space after '('
+  staging: rtl8192u: remove space before ')'
+  staging: rtl8192u: add spaces after struct/enum definitions
+  staging: rtl8192u:add space before '(' and '{'
+  staging: rtl8192u: fix '{' following enum go on the same line
+  staging: rtl8192u: remove space function pointer arguments
+  staging: rtl8192u: add space after ','
+  staging: rtl8192u: remove space before semicolon
+  staging: rtl819u: move '{' to next line
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211.h b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-index b062cad..6ea104f 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-@@ -412,12 +412,12 @@ typedef struct ieee_param {
- #define IEEE80211_QCTL_TID              0x000F
- 
- #define	FC_QOS_BIT					BIT(7)
--#define IsDataFrame(pdu)			( ((pdu[0] & 0x0C)==0x08) ? true : false )
--#define	IsLegacyDataFrame(pdu)	(IsDataFrame(pdu) && (!(pdu[0]&FC_QOS_BIT)) )
-+#define IsDataFrame(pdu)			( ((pdu[0] & 0x0C) == 0x08) ? true : false )
-+#define	IsLegacyDataFrame(pdu)	(IsDataFrame(pdu) && (!(pdu[0] & FC_QOS_BIT)) )
- //added by wb. Is this right?
--#define IsQoSDataFrame(pframe)  ((*(u16 *)pframe&(IEEE80211_STYPE_QOS_DATA|IEEE80211_FTYPE_DATA)) == (IEEE80211_STYPE_QOS_DATA|IEEE80211_FTYPE_DATA))
--#define Frame_Order(pframe)     (*(u16 *)pframe&IEEE80211_FCTL_ORDER)
--#define SN_LESS(a, b)		(((a-b)&0x800)!=0)
-+#define IsQoSDataFrame(pframe)  ((*(u16 *)pframe & (IEEE80211_STYPE_QOS_DATA | IEEE80211_FTYPE_DATA)) == (IEEE80211_STYPE_QOS_DATA | IEEE80211_FTYPE_DATA))
-+#define Frame_Order(pframe)     (*(u16 *)pframe & IEEE80211_FCTL_ORDER)
-+#define SN_LESS(a, b)		(((a - b) & 0x800) != 0)
- #define SN_EQUAL(a, b)	(a == b)
- #define MAX_DEV_ADDR_SIZE 8
- typedef enum _ACT_CATEGORY{
-@@ -442,7 +442,7 @@ typedef enum _BA_ACTION{
- } BA_ACTION, *PBA_ACTION;
- 
- typedef enum _InitialGainOpType{
--	IG_Backup=0,
-+	IG_Backup = 0,
- 	IG_Restore,
- 	IG_Max
- }InitialGainOpType;
-@@ -462,10 +462,10 @@ do { if (ieee80211_debug_level & (level)) \
- 			int i;					\
- 			u8 *pdata = (u8 *) data;			\
- 			printk(KERN_DEBUG "ieee80211: %s()\n", __func__);	\
--			for(i=0; i<(int)(datalen); i++)			\
-+			for(i = 0; i < (int)(datalen); i++)			\
- 			{						\
- 				printk("%2x ", pdata[i]);		\
--				if ((i+1)%16 == 0) printk("\n");	\
-+				if ((i + 1) % 16 == 0) printk("\n");	\
- 			}				\
- 			printk("\n");			\
- 		}					\
-@@ -876,9 +876,9 @@ enum ieee80211_mfie {
- 	MFIE_TYPE_ERP = 42,
- 	MFIE_TYPE_RSN = 48,
- 	MFIE_TYPE_RATES_EX = 50,
--	MFIE_TYPE_HT_CAP= 45,
--	 MFIE_TYPE_HT_INFO= 61,
--	 MFIE_TYPE_AIRONET=133,
-+	MFIE_TYPE_HT_CAP = 45,
-+	 MFIE_TYPE_HT_INFO = 61,
-+	 MFIE_TYPE_AIRONET = 133,
- 	MFIE_TYPE_GENERIC = 221,
- 	MFIE_TYPE_QOS_PARAMETER = 222,
- };
-@@ -1196,7 +1196,7 @@ static inline u8 Frame_QoSTID(u8 *buf)
- 	u16 fc;
- 	hdr = (struct rtl_80211_hdr_3addr *)buf;
- 	fc = le16_to_cpu(hdr->frame_ctl);
--	return (u8)((frameqos *)(buf + (((fc & IEEE80211_FCTL_TODS)&&(fc & IEEE80211_FCTL_FROMDS))? 30 : 24)))->field.tid;
-+	return (u8)((frameqos *)(buf + (((fc & IEEE80211_FCTL_TODS) && (fc & IEEE80211_FCTL_FROMDS)) ? 30 : 24)))->field.tid;
- }
- 
- //added by amy for reorder
-@@ -2023,7 +2023,7 @@ struct ieee80211_device {
- #define IEEE_G            (1<<2)
- #define IEEE_N_24G		  (1<<4)
- #define	IEEE_N_5G		  (1<<5)
--#define IEEE_MODE_MASK    (IEEE_A|IEEE_B|IEEE_G)
-+#define IEEE_MODE_MASK    (IEEE_A | IEEE_B | IEEE_G)
- 
- /* Generate a 802.11 header */
- 
+ drivers/staging/rtl8192u/ieee80211/ieee80211.h | 112 ++++++++++++-------------
+ 1 file changed, 55 insertions(+), 57 deletions(-)
+
 -- 
 2.7.4
 
