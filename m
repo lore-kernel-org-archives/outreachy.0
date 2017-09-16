@@ -1,113 +1,117 @@
-X-GM-THRID: 6466254193514512384
-X-Received: by 10.159.54.44 with SMTP id r41mr17793439uad.58.1505542125497;
-        Fri, 15 Sep 2017 23:08:45 -0700 (PDT)
+X-GM-THRID: 6466298549228273664
+X-Received: by 10.84.141.1 with SMTP id 1mr17050053plu.39.1505552453009;
+        Sat, 16 Sep 2017 02:00:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.18.151 with SMTP id 23ls8196074ios.1.gmail; Fri, 15 Sep
- 2017 23:08:44 -0700 (PDT)
-X-Received: by 10.31.108.206 with SMTP id j75mr5514352vki.122.1505542124634;
-        Fri, 15 Sep 2017 23:08:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505542124; cv=none;
+Received: by 10.107.53.215 with SMTP id k84ls7994025ioo.47.gmail; Sat, 16 Sep
+ 2017 02:00:52 -0700 (PDT)
+X-Received: by 10.13.210.196 with SMTP id u187mr5285994ywd.194.1505552452323;
+        Sat, 16 Sep 2017 02:00:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505552452; cv=none;
         d=google.com; s=arc-20160816;
-        b=JsvcG7VwKxDAMLlKUk6U96ojSthEo7OcBDqK1drUDRUxJ+0YiOB1SABvSxrOh6f3QM
-         gWzi7owBD/83LayPCGJfJI8rGEgr83Lqb94ukW46mz6P+f3v0OrY5mKzJ3b0/5LY3MmP
-         lG1y/+Qr5sizKgLxpt2ky6dXCQYeFRpN6EEuiLXnfjm5As28U1KQ1WeKXdsAkiZg6GsN
-         ciUz51pFuYV23Bp0+rvQaX+bFvVHwMb+MeUeDMfaTLe4qn+CytpDAON9dbCqg6z18YX7
-         C8SCNLN/Dz5D8Gf2druLq0gOg9WqUv1fP3NdYRY67wTQxLwzgOME2ut2MIU1yyBkH5oi
-         tgGA==
+        b=fh+gbFwwahcpjS8DQO6He6iZgWunIcYzLJpcy+LxNgw5XBnnhrF0QPebd+798eqDoz
+         WhLYEr/zpr6pYzjsTk47inJKRvsW6K9a3ZtUBru1YG8VJk1DW8YelLCciGg818rOrn7F
+         i5dgH4rUmkOfAt8GosnMwQBVXr8MOIktUoxZ6FazDu7ZtyjtJYt2vY9gROaJu6l2f2Dn
+         3pTyvYYPACO23wJKHADO6Lesl/nNQm+QnL/SlK6+FPG+xXtZdMfE/1RSM1E3JQkt2VAE
+         HkxKhp2BwiWHTE8zdHTYsZd03PPlLZOHmm2UCDEKnGzXxaD08eLeksUlazUKGsi9/Qly
+         Lfuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature:arc-authentication-results;
-        bh=ljDXIZUbMEwcZGat/ixcFjxxYQYdKGEZYBJebCbnATQ=;
-        b=ZwI6VZzkn81EiqkAwyyj69k9BJzbdc0onSFhY4H7bfonbikVRpsJigxzKee9inBaN0
-         JH3/7rXUvlO7H6BjdVS0WqFgCiZLxzKp2USACUKJfT1WDoHPpZ/IcsBBf5wXz/UGOZIn
-         PVjnZc6kJQFe+kpmvC+dGbX8SmtGJQtPpaTpkIhzYRqPROL1qoujbrVVELldaJtSroLX
-         GLRk/7MBOYcGy9Ee66MuRveLkeityRqCtfi3u63Z4ar4x2rZBkzooyz35yc/UE/Dadkt
-         BymN5hGgfBaUX86pQIZmnvvqNmUbu5Rcalos9VaAVM0LEPKDRFKAH1kw3exw6eyIeY9W
-         BoXQ==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=6v0wxpPTPp0R286C30z5tNTXun4nGle/dNZE4GN8MfY=;
+        b=Fc5Whh5eF4bV+qxxfbsyeIX4vMxcmsXgcplpLD3UBOYcm+IcIIe/a6hW1YKJLsR8zi
+         1km7bceoBsRksQtlrVRor6CQBs8aedHeHQVxoSUxuD6YlR5snflUOuKB729liIryFHI6
+         VMtpLdhDi70ETGJ9wLz6gQvoHqyh4ZklnGeGfH8aFSRXxIUFpmZ1rkmp05gxmEBZYqqt
+         56jGxW2XRs8ySIXuaJs8gOtX5l88T/oNJlJ3Gvhv33EEuF7CdJCuAZ73LncThpuwXOLM
+         Ii/KRrme61YEBU0HnK223q9tK3DOHuvuSDN0gc4K/26oV38O3MW14S7nXc+CrhXC80FI
+         hr/A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=S9nj6F26;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RiTEYI1t;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <meghana.madhyastha@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id e63si238793pfm.12.2017.09.15.23.08.44
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id w11si120996pfk.4.2017.09.16.02.00.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 15 Sep 2017 23:08:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Sat, 16 Sep 2017 02:00:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=S9nj6F26;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RiTEYI1t;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id v5so2363087pgn.4
-        for <outreachy-kernel@googlegroups.com>; Fri, 15 Sep 2017 23:08:44 -0700 (PDT)
+Received: by mail-pf0-x243.google.com with SMTP id e69so2307849pfg.4
+        for <outreachy-kernel@googlegroups.com>; Sat, 16 Sep 2017 02:00:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=ljDXIZUbMEwcZGat/ixcFjxxYQYdKGEZYBJebCbnATQ=;
-        b=S9nj6F26C/UXsFpH1+Z7bq0ikU5xowcMPR4nvbeRkjRn67bW2hNFWURNvG6IO2Ayuv
-         BtH2d8x/OLw4fK0f95Tez5vxP888I3jqLlWg51xiwR+7ybOiXCqG+CgUEtK0AFi/9qZd
-         BIRgZfbDwZJr9heVbBsIHL3zlWSgCUZYn+8h4oFiT4/6K1q92EsR+B+J1l+0i8AlMeso
-         x7MCVbxxJj41vJLffYrx502j0Hc6OL2sUsDBz6c/gjZiMq+r8x3H/6VZkaqvgPjgIzd3
-         9PaJU2jSXPT975Bq6bV3z9dtgmZmdBg6LaSO2Cc6yG9hYZHXA6CMvHJCSgSNI8iO1cs8
-         GIlw==
+        h=from:to:cc:subject:date:message-id;
+        bh=6v0wxpPTPp0R286C30z5tNTXun4nGle/dNZE4GN8MfY=;
+        b=RiTEYI1t4dWS2TinHANLbmAtLbp5kaF5354eAkdVoIWlziLwIN63pLOERc3U3NvHRO
+         g/zu/CIkCr+7/XuJGdNSHsB+BdFwEmaGgWTP5MDxDnj67lZcZlGuUTGkYmzbGEAQBiik
+         x9CM9HS98Y5SLWNw/y8TR3XvMkIPhJ3jbHjG6N0N5FwqhqvMeN5KPMZcfZyTVXobFiPP
+         MdxfIEenkDx354JJqdhB004O8chDSMolGob1nfpNu59XXXp5Rv4ntHiX/i8KIDT6xWfl
+         uXACSNMF9HAovjOnTkLQJZRz/9hJl+4pY0SZMW9QlLX/ssQT1ZnzaiuQ6ebWgzDJnCsA
+         5Rmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=ljDXIZUbMEwcZGat/ixcFjxxYQYdKGEZYBJebCbnATQ=;
-        b=RTTinfVvc27uy2B/TXd9RiFOq0mzpcTLtYzDjq2eyRTfSpMJX4Zf6p/xPhBX89KIm9
-         k73wWrshqoQ5CzGkki/kdkZ4mAA2+2LHByxtGE7kmnoWhnL/fKgsGXIbzmWZD6x22Qy1
-         2Q6Z4z73VXc43RaZH9ttf+EUw4YTd+pP6K+kLx7KwtfUrLQBsfZAZxcLg9/APCVBBbOc
-         uTRziSJ4yw4Szscysil8uInc61dGauYmtrMqKZG588dMUjyVyG8F1BbozzD+bOsC9aUh
-         iIB+AMZXJOH60nEuxCdSNVrktXpzyJfYAbRdCVdmhW6sJSsUdbYCHpCj9HXaadO3VqRk
-         m/nA==
-X-Gm-Message-State: AHPjjUjxZ/ez40hDq1yuoyB+Yupm/MpqfUrd3xVUS/6en8oGv5sZ2EV6
-	fdDwi874xuyefEhT
-X-Google-Smtp-Source: ADKCNb5vvtT1H25wWADiykF8sK08J1SitUwlGLlxjzKTeW31MCiP83T9GszVKaEAJ0lq+nLMASZ7Sg==
-X-Received: by 10.98.49.70 with SMTP id x67mr26991468pfx.257.1505542123945;
-        Fri, 15 Sep 2017 23:08:43 -0700 (PDT)
-Return-Path: <meghana.madhyastha@gmail.com>
-Received: from meghana-HP-Pavilion-Notebook ([103.231.132.5])
-        by smtp.gmail.com with ESMTPSA id t73sm4525928pgb.84.2017.09.15.23.08.42
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 15 Sep 2017 23:08:43 -0700 (PDT)
-Date: Sat, 16 Sep 2017 11:38:38 +0530
-From: Meghana Madhyastha <meghana.madhyastha@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: irda: drivers: Move the curly bracket to the same
- line as if
-Message-ID: <20170916060833.GA31923@meghana-HP-Pavilion-Notebook>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=6v0wxpPTPp0R286C30z5tNTXun4nGle/dNZE4GN8MfY=;
+        b=FzzDDG0D43szKVeXIpNlQLLecbGbiRKMIyL2gIxN20W+1GxuneeviesQXfpx5/YoZg
+         J3VnRviso2/8pGzcMezL4jDALBKLBLrC/VJma5mTb7YCv6PAamc1YjRn+aPiCCpJNsHG
+         9QL1pae9UWkxuG4BlygqatfJyAxEF2LksRIPzER0sbTWlVrrf87h0k1Q34CnYVbVV9xk
+         UZmxjbnE56dphjp5JvpqFbz5A6s0l9qY7PwGOrsxN/9S/ocCaLyTHH8EmCVtZbD+NPZc
+         5slUjMh/5smxe0JqvP8fqVlp7o1D3SOnVOqlK83YKY+FyWeAGZO6zBEUOKIJtIiAhuj+
+         XSHQ==
+X-Gm-Message-State: AHPjjUhqoWbQ3LnCyZJZjsHvdCnFOwp6/hO1Sill5r1wkEVTmfNWkoBx
+	eMDhP1Ig+++Ehg==
+X-Google-Smtp-Source: AOwi7QBmujYb2VAq/wO5tp2RnZrRAwgXApU7FMK0vqkqRg+akechoF4bKUzHIOg+x0oiAcvGV3htAw==
+X-Received: by 10.84.246.197 with SMTP id j5mr9551165plt.164.1505552452021;
+        Sat, 16 Sep 2017 02:00:52 -0700 (PDT)
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from aastha-HP-Pavilion-15-Notebook-PC ([27.56.167.173])
+        by smtp.gmail.com with ESMTPSA id r11sm5974396pfg.180.2017.09.16.02.00.50
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 16 Sep 2017 02:00:51 -0700 (PDT)
+From: Aastha Gupta <aastha.gupta4104@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
+Subject: [PATCH] staging: rtl8188eu: add spaces around '|'
+Date: Sat, 16 Sep 2017 14:30:45 +0530
+Message-Id: <1505552445-26494-1-git-send-email-aastha.gupta4104@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-Move the left curly brace to the same line as the if statement.
-This coding style is more common and also reduces the number of
-lines of code.
+Fixes 'use spaces around '|' ' as reported by checkpatch.pl
 
-Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
+Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
 ---
- drivers/staging/irda/drivers/ali-ircc.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/staging/rtl8188eu/include/ieee80211.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/irda/drivers/ali-ircc.c b/drivers/staging/irda/drivers/ali-ircc.c
-index 756ae53..589cd01 100644
---- a/drivers/staging/irda/drivers/ali-ircc.c
-+++ b/drivers/staging/irda/drivers/ali-ircc.c
-@@ -1876,8 +1876,7 @@ static int  ali_ircc_dma_receive_complete(struct ali_ircc_cb *self)
- 			self->stamp = ktime_get();
+diff --git a/drivers/staging/rtl8188eu/include/ieee80211.h b/drivers/staging/rtl8188eu/include/ieee80211.h
+index 5a78c1e..aa9cdc9 100644
+--- a/drivers/staging/rtl8188eu/include/ieee80211.h
++++ b/drivers/staging/rtl8188eu/include/ieee80211.h
+@@ -202,9 +202,9 @@ enum NETWORK_TYPE {
+ #define IsSupportedTxCCK(NetType)				\
+ 	((NetType) & (WIRELESS_11B) ? true : false)
+ #define IsSupportedTxOFDM(NetType)				\
+-	((NetType) & (WIRELESS_11G|WIRELESS_11A) ? true : false)
++	((NetType) & (WIRELESS_11G | WIRELESS_11A) ? true : false)
+ #define IsSupportedTxMCS(NetType)				\
+-	((NetType) & (WIRELESS_11_24N|WIRELESS_11_5N) ? true : false)
++	((NetType) & (WIRELESS_11_24N | WIRELESS_11_5N) ? true : false)
  
- 			skb = dev_alloc_skb(len+1);
--			if (!skb)
--			{
-+			if (!skb) {
- 				self->netdev->stats.rx_dropped++;
  
- 				return FALSE;
+ struct ieee_param {
+@@ -542,7 +542,7 @@ static inline int is_broadcast_mac_addr(const u8 *addr)
+ #define IEEE_A	    BIT(0)
+ #define IEEE_B	    BIT(1)
+ #define IEEE_G	    BIT(2)
+-#define IEEE_MODE_MASK    (IEEE_A|IEEE_B|IEEE_G)
++#define IEEE_MODE_MASK    (IEEE_A | IEEE_B | IEEE_G)
+ 
+ /* Action category code */
+ enum rtw_ieee80211_category {
 -- 
 2.7.4
 
