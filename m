@@ -1,108 +1,121 @@
-X-GM-THRID: 6476749325903855616
-X-Received: by 10.223.139.198 with SMTP id w6mr392231wra.4.1507985714565;
-        Sat, 14 Oct 2017 05:55:14 -0700 (PDT)
+X-GM-THRID: 6466355648618561536
+X-Received: by 10.202.235.133 with SMTP id j127mr15658472oih.50.1505566231340;
+        Sat, 16 Sep 2017 05:50:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.223.173.164 with SMTP id w33ls2034239wrc.5.gmail; Sat, 14 Oct
- 2017 05:55:13 -0700 (PDT)
-X-Received: by 10.28.141.66 with SMTP id p63mr389303wmd.8.1507985713768;
-        Sat, 14 Oct 2017 05:55:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507985713; cv=none;
+Received: by 10.107.10.73 with SMTP id u70ls1430510ioi.17.gmail; Sat, 16 Sep
+ 2017 05:50:30 -0700 (PDT)
+X-Received: by 10.202.75.140 with SMTP id y134mr14830652oia.98.1505566230649;
+        Sat, 16 Sep 2017 05:50:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505566230; cv=none;
         d=google.com; s=arc-20160816;
-        b=FMI0K+B+M/ctJ9oG1bD1UL2rZ7YNZ4RicY/kMT4/hz0leaK0YTanugT2XKiSTYAbbq
-         c4pR670YI1mrpGxsZSdDee0Uw57uGCx4GMutBu3pwug4xz3B6PPU+UHB03SQ5hRqoTMj
-         zonor8leCfnx6eHndhPK+2nS/OBr5dNQlX+G4fahj9RNKu5ne7aEEMe0dE0o+L/FcXCY
-         TdWBn+2luqly3UHi0SAjlkSeb2UcexOAIGklSTZ8op8QXfMjStAP5hNBsUlJudJ0Seti
-         fUGCAIXho8sPjaac+KKHapyxOSzgEVqgHqc5Kj8SY4a1UT5sH69LLQzZc0HiSMiW6ZNG
-         4MHQ==
+        b=Xy1wjNz1HdFWbhFt5bAo+/ZOFkSS3VIP5Ssq/R6lDxbTaH29I5rO/Cw7Wdx7ffOXEi
+         x2O1Rf8W8eg8P+DeIepMYJsuwNhSZeV9vGPGEfv0qPYfgQF5eNfkUCvR40wEN55U79RP
+         KNTg+bapB87QM9IGm99fyFZR1h1fjaXx+nShcricbDphDO7La0d0SiXYMc/pbw/OoUka
+         sX+Gh/txx14inqEjExvHyJkY135aAYtrolYGWq/FDBVA8VotSTwW04fFydX+5Ik4v0aX
+         gUO3//kqFTiaWI7luXD81TrA2XcXzqPwBRdtS8nUwSMNkhYCIee4q6bB3msoet1BBuQC
+         ISgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=8/LBd++yXCPsU+3a7+hOGf760X6C8cTB3mpOzAMxBUU=;
-        b=jC1WJP6vXcHCZ7+YAnt4MfojWND3VB6fuOTmh9yivD8f/Ah5I7jM5Sam2Hf4MkrUZ+
-         UVM3uRAlpYTD3QU5exmZXiEUQToqJD9dqAgEcvTDQ7qPApYC68yMAwqwNYo8hversJoF
-         /NkVlDZa35PP0BwVGeuczf1x8qBsdwxA2enw9tVdTjkhjMB8DJNYtWJlIH3/plMFeue8
-         sSmvBSqckLjkM9/zXAGz1rHU5RMEHA07i0c5sEFW1vgrSUmkO5EIXlnUF23Ka9vCurZq
-         GF2RXrhALNgBCBXTXD6yz0TwoZCaLfZURu7vva/6fK6BiFxMAbwdWz3rk4CZsxgBov2y
-         3KSw==
+        h=to:subject:message-id:date:from:references:in-reply-to:mime-version
+         :dkim-signature:arc-authentication-results;
+        bh=UNIRTGL0ZLJZAH/MSc+DQUU/Bm9DFwoe+sGFD117J/g=;
+        b=kRAqobd8n99MYUnctP12k2ngO0YbDevjRurEuv4WVOhDV9CZue2dM0OUBSoNoAMVXU
+         IH5dcBA5KYoemMp1jWoyQ7+MsLDhzTPxFmVnV1+g1e4ikhTQ8BuKJJNa06PZrlq1v3rO
+         x5sEjwtjY4wRz5awgqhQ1fzTovUEyh5cVXObvCtPjVvNZrLQHw4wK7rTkI8WICJsK7bu
+         Xmh0M7DdXb+FBPnB1f/wYMqRd5bXELkWmHS7qnJ4ksnzBGGJ92nYbLhWMmzNh2vsWn6K
+         yajymUPiKm/2ksHi8V5L74yekIy1WdRvkKc4PqMM4PkMkNWTWzna+LXKqazoCOtFCXDZ
+         p/nQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Kl2If+5/;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iZYQLxWn;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400c:c08::241 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
-        by gmr-mx.google.com with ESMTPS id l9si165346wrf.4.2017.10.14.05.55.13
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from mail-ua0-x241.google.com (mail-ua0-x241.google.com. [2607:f8b0:400c:c08::241])
+        by gmr-mx.google.com with ESMTPS id e5si106191vkb.2.2017.09.16.05.50.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 14 Oct 2017 05:55:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
+        Sat, 16 Sep 2017 05:50:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400c:c08::241 as permitted sender) client-ip=2607:f8b0:400c:c08::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Kl2If+5/;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iZYQLxWn;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400c:c08::241 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x243.google.com with SMTP id u138so26277194wmu.4
-        for <outreachy-kernel@googlegroups.com>; Sat, 14 Oct 2017 05:55:13 -0700 (PDT)
+Received: by mail-ua0-x241.google.com with SMTP id g47so1387309uad.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 16 Sep 2017 05:50:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=8/LBd++yXCPsU+3a7+hOGf760X6C8cTB3mpOzAMxBUU=;
-        b=Kl2If+5/NRCBT8/vdDYo8KW9T97e5pKSQAi/oPI3WlwUYBhUbAhoMSNH3z9vhEY6gD
-         8LG3VyzRvS6UJtwEMYGj+DmjJTu7Qo8AicYAUQJA1tm4kRnSUHBUbEklpCvoaPgTxOi6
-         0XGZEtL+8olvLxqZiw0pGeRLcXLs/hoy1fGNL/HhL3IR/rEAsseIJLK0AVbXEu/4n/h/
-         9Z9X/XiBJApis9oYfmhZzQS7mkc3lAkJPVLzNwz9bMqY4htiDC7971KV4apYvV89f0qM
-         VYhbI+6KL9VT6ZNjbHsf/eOJ0ObhG1cbVr30sln9wQ6109HfXgiVEf1baArB2LTrXSMv
-         mAvg==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to;
+        bh=UNIRTGL0ZLJZAH/MSc+DQUU/Bm9DFwoe+sGFD117J/g=;
+        b=iZYQLxWnw+Y3BGt3kTPiwMQcxdp85fHScGucAnzeDTphcX5pP3LwW2p8prGz8prKeI
+         5FtsTyjwir+0EhX3efU0v75cTI1X0gcPhSJlcb+2I+w3IIp+3eJ0FaiS9VeUmZZVrYT1
+         R8UHY2pP5/iH73I/AQCO0h7RxJeYhFcKawYgKtfRDrZR2lVPTu18ze3K1upL63UaSJKe
+         mWU7c6HUd3XrAa4zzmfiZ3Ugk8/iXqWmYd4ZEiY0Ih3pjXnLQ228d1NtVSI9UUIxsIxq
+         mFy8/MBVz+WnzlOjrpg6r671glrbQQPCN7O6QDlpfJRJGFzuRzoCt7w2FuSbgUxKRoBS
+         rpBA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=8/LBd++yXCPsU+3a7+hOGf760X6C8cTB3mpOzAMxBUU=;
-        b=apyqyAwtTqdutR1oBw5olfQI9m4L8PcNaNuVXixOSXyKC27VJMY5XS0UfbyLp5i7YP
-         90FmNxxHcxZPBdkSQFZBDhvFXMsQXoXLfSxueLXY5sT15qh8X2c2lTo6eddjHMV/8Ym8
-         4Is2cGCsML6yNy17nwKoYRbGTStS7Jlq+RhMZ3p9V8M0ceiqSNItNzSvB+7RdvEPz9ye
-         BJOMfEomppEmEzQHj+Ky+p5QyWNeHBJey1oIKuVxd2cKryb4tmE5X0ctW4EtlGTuUMiI
-         1JZhXqjlOySnxXwhlqE/j6YOf0v0EDgM2n1jEPKaVvEVcCSNQBIFCF846JlFhTYWtc3b
-         8S9A==
-X-Gm-Message-State: AMCzsaVtTSy7XlHxyE8wsir4RVoKESlf2zbdK7UJ5Ns5iLTZ5LzMpQ8M
-	z1qZOFm9RMF6NOgJGGRq5RN/TQ==
-X-Google-Smtp-Source: ABhQp+RoxOLbWCdXdztO8kYhgxcFJCyKH6ucM/apLh+qMJFY+L7hZeliCUO8WDQMq3E8Der4rJubMA==
-X-Received: by 10.28.45.9 with SMTP id t9mr3699067wmt.94.1507985713457;
-        Sat, 14 Oct 2017 05:55:13 -0700 (PDT)
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from fireworks ([188.25.22.133])
-        by smtp.gmail.com with ESMTPSA id i76sm11229509wmd.2.2017.10.14.05.55.12
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 14 Oct 2017 05:55:12 -0700 (PDT)
-From: Georgiana Chelu <georgiana.chelu93@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Julia Lawall <julia.lawall@lip6.fr>,
-	Alex Deucher <alexander.deucher@amd.com>,
-	=?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
-	David Airlie <airlied@linux.ie>
-Subject: [PATCH 0/3] Drivers: gpu: drm: Fix coccinelle and checkpatch issues
-Date: Sat, 14 Oct 2017 15:54:39 +0300
-Message-Id: <cover.1507985001.git.georgiana.chelu93@gmail.com>
-X-Mailer: git-send-email 2.11.0
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to;
+        bh=UNIRTGL0ZLJZAH/MSc+DQUU/Bm9DFwoe+sGFD117J/g=;
+        b=anPwT3BsxRzr+iEmAUm2brb1Wjin0R55VjybkRtYjxiXfHmFDxHdNr7CTa8108gJAv
+         5JMjdW48LD2wNLYesP9yOLMEK2aI04ryCbQgwqS2Wo8CYDy248AXNzmWz0DqN4U3sns7
+         X0EbHqMly4wipAp6SZLr+8zWouMHPYFmSZcIfKqRu93Nsk/ZxOTiYP7Nr5tcXE9cbxPt
+         5um9E2ZeEGPCAeotgkfJfS79X83zdQIm2aU6rIkxDOAfOT+QaZLfZo37Gkid5m99LCvv
+         rTk1Pnq/lg1E9w0trBTAlv0SVfCq6yhTH9S3x+druIbHWC5RSRt7PXim4CeCZV3UWpFM
+         KzeQ==
+X-Gm-Message-State: AHPjjUiQ6lCn1Hp9KxWR9qGFcLJgzxbsg6pqYkc9kWDNKjvwKZW9fBP3
+	BVBLJPuzSahh8A2nC5s5t+9VIsZET3Uf0bU3k2/bpQ==
+X-Google-Smtp-Source: AOwi7QAeSHnNUIUDTJt5ZBM7lMRZ+LAaVWgk4ZbjcAS36e6Rc1X8U8jEQal5/KxMPaN0j8Ow1ur4dJKZhxEi/RZo26Y=
+X-Received: by 10.176.86.18 with SMTP id y18mr11563322uaa.1.1505566230112;
+ Sat, 16 Sep 2017 05:50:30 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.176.2.149 with HTTP; Sat, 16 Sep 2017 05:50:29 -0700 (PDT)
+In-Reply-To: <1505565724-11498-1-git-send-email-aastha.gupta4104@gmail.com>
+References: <1505565724-11498-1-git-send-email-aastha.gupta4104@gmail.com>
+From: Aastha Gupta <aastha.gupta4104@gmail.com>
+Date: Sat, 16 Sep 2017 18:20:29 +0530
+Message-ID: <CAHXiS58vAvWBLuUe=Mu=3MksB7yEXNU4a_COkUU-0tBzgpLpfg@mail.gmail.com>
+Subject: Re: [PATCH] staging: dgnc: remove unused variables
+To: outreachy-kernel@googlegroups.com, Lidza Louina <lidza.louina@gmail.com>, 
+	Mark Hounschell <markh@compro.net>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Content-Type: text/plain; charset="UTF-8"
 
-The first two patches fix coccinelle issues and the last patch fix
-a checkpatch issue.
+please ignore this patch.
 
-First patch: The return value of kzalloc does not need a cast because
-the assignment operator will take care of this.
-
-Second patch: The 'result' variable does not change its value until the
-end of the function. Instead of using the variable, return its default value.
-
-Third patch: Placing the constant on the right side will make the code easier
-to read, as most of the people read from right to left.
-
-Georgiana Chelu (3):
-  Drivers: gpu: drm: Don't cast kzalloc() return value
-  Drivers: gpu: drm: Remove useless variable
-  Drivers: gpu: drm: Place the constant on the right side of the test
-
- .../amd/powerplay/hwmgr/vega10_processpptables.c   | 35 ++++++++--------------
- 1 file changed, 13 insertions(+), 22 deletions(-)
-
--- 
-2.11.0
-
+On Sat, Sep 16, 2017 at 6:12 PM, Aastha Gupta
+<aastha.gupta4104@gmail.com> wrote:
+> This patch removes some unused variables.
+>
+> Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
+> ---
+>  drivers/staging/dgnc/dgnc_driver.h | 1 -
+>  drivers/staging/dgnc/dgnc_neo.c    | 1 -
+>  2 files changed, 2 deletions(-)
+>
+> diff --git a/drivers/staging/dgnc/dgnc_driver.h b/drivers/staging/dgnc/dgnc_driver.h
+> index 764d6fe..d69d9c0 100644
+> --- a/drivers/staging/dgnc/dgnc_driver.h
+> +++ b/drivers/staging/dgnc/dgnc_driver.h
+> @@ -233,7 +233,6 @@ struct device;
+>   */
+>  struct un_t {
+>         struct  channel_t *un_ch;
+> -       ulong   un_time;
+>         uint    un_type;
+>         uint    un_open_count;
+>         struct tty_struct *un_tty;
+> diff --git a/drivers/staging/dgnc/dgnc_neo.c b/drivers/staging/dgnc/dgnc_neo.c
+> index a8491d7..0fa4267 100644
+> --- a/drivers/staging/dgnc/dgnc_neo.c
+> +++ b/drivers/staging/dgnc/dgnc_neo.c
+> @@ -1182,7 +1182,6 @@ static int neo_drain(struct tty_struct *tty, uint seconds)
+>         unsigned long flags;
+>         struct channel_t *ch;
+>         struct un_t *un;
+> -       int rc = 0;
+>
+>         if (!tty)
+>                 return -ENXIO;
+> --
+> 2.7.4
+>
 
