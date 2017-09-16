@@ -1,79 +1,135 @@
-X-GM-THRID: 6802937311305662464
-X-Received: by 2002:a2e:9bc8:: with SMTP id w8mr2024815ljj.227.1583932272572;
-        Wed, 11 Mar 2020 06:11:12 -0700 (PDT)
+X-GM-THRID: 6466352868892868608
+X-Received: by 10.99.60.17 with SMTP id j17mr17140719pga.27.1505570380611;
+        Sat, 16 Sep 2017 06:59:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a19:4bd6:: with SMTP id y205ls186638lfa.8.gmail; Wed, 11 Mar
- 2020 06:11:11 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vs4UKlojCJLviZL5XxzPgnInwvd1NCaycDTx+8V1tzTK8NyuOFQbBuUWsCYS704H8eRaOjo
-X-Received: by 2002:ac2:4565:: with SMTP id k5mr2142061lfm.8.1583932270520;
-        Wed, 11 Mar 2020 06:11:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583932270; cv=none;
+Received: by 10.36.33.214 with SMTP id e205ls2729189ita.5.canary-gmail; Sat,
+ 16 Sep 2017 06:59:39 -0700 (PDT)
+X-Received: by 10.200.35.43 with SMTP id a40mr15242411qta.33.1505570379871;
+        Sat, 16 Sep 2017 06:59:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505570379; cv=none;
         d=google.com; s=arc-20160816;
-        b=hovfzTuDgTXiz1ICc3ZFh4Cf6ZQN/BcoN6zvooUxMOgeWEMbAU7DDhSGvT6U1LiFFu
-         ytscodK1pk72Vei2hI+DAu4SpLIbBsUbIwPd3XL5Mw5jxSp4E7ZidiYid7wuNN+HzfMD
-         BsG0ieDi1qdflaiKiJTQUciFGzCaprg+ntTdozA4a3njP66AqcNXkK4oMI0XWWCSpJiM
-         Cx7ICOpex6bdYK2+uaxHIvaCmRgq1jBGS5PM/dgnpW74JnASa7z5j+p0gskbk5ZyjVN3
-         Gu95TbDH4hyB8oiLN6ELxDx+YC12vMaTqCHu4BdJDGkzL4HUPLr3brrUcRECEA/PWsBz
-         WGSg==
+        b=myNeCSe6bwohErRhlfXCSdjs8yIXHFyahsA3mYjcSfWu/wn+w2PZaF55GIY+WmnySt
+         ML/QPbk+xjlDRb+FBgLzzEBKySYJJk7/NPa3JEaI/FhZ31cdJ+dOmUbQd8xLgaE42TAY
+         Hj5+Qg0hdn0Sd6XH+pDM8Oys1RpPWEhyifUwY/RFk/MbSw1FbYPSz49stH/ETSrRtGTV
+         oeN1hZyELU28H/TcqzFYcswdi2ijnCdn4MKPsl78LUaWJ0S8QdI5IkZIsmG5HhvMVJV0
+         qe7nAnmfHCU7fBHYshagiiFYz5sNrS1AV8emfvaUyA2qjp6RtfQ3nWQm2An8AL/97gjp
+         lYDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date;
-        bh=v73PjgPBw9XBw4klOic2rKtAT6WmlSfAK4j3omKFnso=;
-        b=ERjd3gskRLUjHVuef6V3vkUrTnGhJN2frbeeYE+jYl+9uCRLZcUyo/1sUYmgxEn/+G
-         F1BOz0CsTbOrz4huoLQGM8cxxymlH4fgkewShIziIPSfLk3GBegIA/LYV5UQMcY6wPF/
-         TtHmuiZErhZiPkrH+k65pdpbCeLBawOxLlDAGedjNWFIt2cq1025sio/YgZjJ2Q5AffA
-         iTbRGMMcEn/uG3PNOefIowjM/IW8Tjcxx0BGMKlcD32dWZYkomtSsL8va05c6ys70KKd
-         DnGqIrmIzpwwElbxQXTc17ctSWsqZzhrKh7dZ8r77XhGitp+9LRX2DpP/J5kYS2BwdD0
-         VpkQ==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=BQF6JZJDY6HBaMwg3giEuyj8wdDUenTWMqcPnbvkc/o=;
+        b=zFenzu2pafqOaAjeT/B2t3gTxjeM6pYUM5A8aoaVdKL8HhXUudRpkMJhHtGgxXm/0L
+         Y8D2b55Rn7d9pVZF7cqEjRA2M0IBDU7fl3xWskZgkY/g3LWWTXfILvtcFcDmkG9tULt0
+         +IHjBCrb0GMXr/SY13Cnr2ZP2xn4T+c9amduv7h/jCBxMwDE4QnXtsYoG3BFGtvxCTN1
+         eD7N6mkC45IBwufIonaUYSpcsVJlHV1wa5UmPcl6U+btnIpK2g2irA/gNvNh6+9K7kgy
+         Kjs3a3/a4B6qpRNl1fqU/SA7A3UIKdq9wmmcRQvy6+c7g+t2o1M5HrwIyZeFlyG9PkhD
+         DgwQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Return-Path: <vkor@vkten.in>
-Received: from vkten.in (vkten.in. [104.244.73.96])
-        by gmr-mx.google.com with ESMTP id p14si117043lfo.0.2020.03.11.06.11.10
-        for <outreachy-kernel@googlegroups.com>;
-        Wed, 11 Mar 2020 06:11:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aq4CrOsX;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id u184si316090pfb.17.2017.09.16.06.59.39
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 16 Sep 2017 06:59:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Received: (qmail 31616 invoked from network); 11 Mar 2020 13:11:08 -0000
-Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.219.218.167)
-  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
-  by vkten with ESMTPSA; 11 Mar 2020 13:11:08 -0000
-Date: Wed, 11 Mar 2020 18:41:02 +0530
-From: R Veera Kumar <vkor@vkten.in>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
-	Teddy Wang <teddy.wang@siliconmotion.com>,
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH] staging: sm750fb: makefile variable longline fix
-Message-ID: <20200311131056.GA4361@tulip.local>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aq4CrOsX;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x243.google.com with SMTP id m30so2777751pgn.5
+        for <outreachy-kernel@googlegroups.com>; Sat, 16 Sep 2017 06:59:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=BQF6JZJDY6HBaMwg3giEuyj8wdDUenTWMqcPnbvkc/o=;
+        b=aq4CrOsXXlOTb+ckLJiFxPzqXJ0VQnjz6u5xE0iN/xvC/DxQWTKmVMmYY9S7jRYonq
+         yHD66lqWSvuaQt4dhmu0CbPi3nUFbkK2MC+WXdS4ViAwCIChrxtzkG1DMC/QEl8hAY31
+         0HHkpJ5yUAaE7Jzqe/XYk9l++jpWzZJx1cui9wW35qAcssrnFSUABsjv+WCK1vK7Wx2z
+         uGVrtoUCmE6kfC8+dHDdcyzkIDns9CUuTdSBSJBCmEJNxys73ECUAozR9a/VLr9AmTlW
+         sHFRlQapOj/hTt0jXalTjsnMScEhkRHuUn8h05VYEd8blo0/6GZWLgqKbGYScTM2AG8b
+         E0SA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=BQF6JZJDY6HBaMwg3giEuyj8wdDUenTWMqcPnbvkc/o=;
+        b=sU5l8qtO4LWoa06NjGcNhSrZ4qFSZSNx5eg/2x6wJVfzv9GEId1Gq8C2aOnEao/wh4
+         3V6QqWgIaZyTRkscxZbLWpGxMovju+1IWf4SWCZQ75wsY+7xFYixaSi9m3+fABqIIWDL
+         DdXpr/C1vrYt6eXfPdLv8ryyudbWi9l4PsEVUs2/23A/yLWp0neyVZKCBOeB1fjAf+/h
+         9PvMw7F0XFqz3KmBVXfOqJp1c0AK667PpMDSIXkwsrGpNDncrjdSuHcWitsfUdmagsBK
+         CdPNVohNyKh5xZNGXrDZrUSZwLSZMfTGlXHWMD8G5aaIZSN3NJWa9/m/meEpgC0NAZT8
+         yCqg==
+X-Gm-Message-State: AHPjjUiT7jq8Gy6XorckGia9bB4o/ndKJRs2kpgVIqMl68lITOtfIj/0
+	PgwbhTD5Bo1vAOB2q8E=
+X-Google-Smtp-Source: AOwi7QD0eI1pDcAYjMfha6qhT8c+0EugqPosudqaEVWLEXrqVCJtJ7xjzIELQfR/wyJERlRyux0MHQ==
+X-Received: by 10.84.210.105 with SMTP id z96mr9499487plh.325.1505570379536;
+        Sat, 16 Sep 2017 06:59:39 -0700 (PDT)
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from aastha-HP-Pavilion-15-Notebook-PC ([27.56.167.173])
+        by smtp.gmail.com with ESMTPSA id a18sm6317738pgd.57.2017.09.16.06.59.38
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 16 Sep 2017 06:59:39 -0700 (PDT)
+From: Aastha Gupta <aastha.gupta4104@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	Lidza Louina <lidza.louina@gmail.com>,
+	Mark Hounschell <markh@compro.net>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
+Subject: [PATCH v3] staging: dgnc: remove variable rc
+Date: Sat, 16 Sep 2017 19:29:33 +0530
+Message-Id: <1505570373-20094-1-git-send-email-aastha.gupta4104@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-A simple makefile variable longline definition fix
+Found using coccinelle script:
+@@
+local idexpression ret;
+expression e;
+@@
 
-Signed-off-by: R Veera Kumar <vkor@vkten.in>
+-ret =
++return
+     e;
+-return ret;
+
+Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
 ---
- drivers/staging/sm750fb/Makefile | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+changes in v3:
+	-aligned call arguments to nearest preceding tab
+ drivers/staging/dgnc/dgnc_neo.c | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/sm750fb/Makefile b/drivers/staging/sm750fb/Makefile
-index 1cf3849cef23..6f832916ba65 100644
---- a/drivers/staging/sm750fb/Makefile
-+++ b/drivers/staging/sm750fb/Makefile
-@@ -1,5 +1,7 @@
- # SPDX-License-Identifier: GPL-2.0
- obj-$(CONFIG_FB_SM750)	+= sm750fb.o
+diff --git a/drivers/staging/dgnc/dgnc_neo.c b/drivers/staging/dgnc/dgnc_neo.c
+index 1943e66..0ae229c 100644
+--- a/drivers/staging/dgnc/dgnc_neo.c
++++ b/drivers/staging/dgnc/dgnc_neo.c
+@@ -1182,7 +1182,6 @@ static int neo_drain(struct tty_struct *tty, uint seconds)
+ 	unsigned long flags;
+ 	struct channel_t *ch;
+ 	struct un_t *un;
+-	int rc = 0;
  
--sm750fb-objs		:= sm750.o sm750_hw.o sm750_accel.o sm750_cursor.o ddk750_chip.o ddk750_power.o ddk750_mode.o
--sm750fb-objs		+= ddk750_display.o ddk750_swi2c.o ddk750_sii164.o ddk750_dvi.o ddk750_hwi2c.o
-+sm750fb-objs		:= sm750.o sm750_hw.o sm750_accel.o sm750_cursor.o
-+sm750fb-objs		+= ddk750_chip.o ddk750_power.o ddk750_mode.o
-+sm750fb-objs		+= ddk750_display.o ddk750_swi2c.o ddk750_sii164.o
-+sm750fb-objs		+= ddk750_dvi.o ddk750_hwi2c.o
+ 	if (!tty)
+ 		return -ENXIO;
+@@ -1199,12 +1198,10 @@ static int neo_drain(struct tty_struct *tty, uint seconds)
+ 	un->un_flags |= UN_EMPTY;
+ 	spin_unlock_irqrestore(&ch->ch_lock, flags);
+ 
+-	rc = wait_event_interruptible_timeout(un->un_flags_wait,
+-					      ((un->un_flags & UN_EMPTY) == 0),
+-					      msecs_to_jiffies(seconds * 1000));
+-
+-	/* If ret is non-zero, user ctrl-c'ed us */
+-	return rc;
++	/* If returned value is non-zero, user ctrl-c'ed us */
++	return wait_event_interruptible_timeout(un->un_flags_wait,
++					((un->un_flags & UN_EMPTY) == 0),
++					msecs_to_jiffies(seconds * 1000));
+ }
+ 
+ /*
 -- 
-2.20.1
+2.7.4
 
 
