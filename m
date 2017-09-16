@@ -1,73 +1,110 @@
-X-GM-THRID: 6401457215612387328
-X-Received: by 10.157.34.120 with SMTP id o111mr2548812ota.67.1490455403774;
-        Sat, 25 Mar 2017 08:23:23 -0700 (PDT)
+X-GM-THRID: 6466360853693202432
+X-Received: by 10.31.96.135 with SMTP id u129mr16330711vkb.50.1505566959603;
+        Sat, 16 Sep 2017 06:02:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.28.154 with SMTP id l26ls6984406ota.4.gmail; Sat, 25 Mar
- 2017 08:23:23 -0700 (PDT)
-X-Received: by 10.13.215.203 with SMTP id z194mr4866384ywd.43.1490455403378;
-        Sat, 25 Mar 2017 08:23:23 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-it0-x231.google.com (mail-it0-x231.google.com. [2607:f8b0:4001:c0b::231])
-        by gmr-mx.google.com with ESMTPS id a17si146235itd.1.2017.03.25.08.23.23
+Received: by 10.36.84.140 with SMTP id t134ls2666270ita.14.gmail; Sat, 16 Sep
+ 2017 06:02:38 -0700 (PDT)
+X-Received: by 10.36.7.79 with SMTP id f76mr3977255itf.4.1505566958723;
+        Sat, 16 Sep 2017 06:02:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505566958; cv=none;
+        d=google.com; s=arc-20160816;
+        b=VvPOiCTM+kBkvR7F22kvLtzKzWCn7dELTlGKIFzrvdxAA3a64KsX4pzNbrWHQlyMBo
+         d1zFh7fci/VVUUj8ULeLwCVIKdcGKPtWwKZBt2W1vcO4eKTf10NHXVlnT6/Fm46HiUg/
+         NakpZ09cV5qFPHZM9HT5EVsy6bjYrPB/44nlPZbY2FLSWtsd5Q4YUAovgXGQ0btfmXS2
+         RAVJYLxy2HRULyiJ8N1Q8b4c/PXcTu8DHRSAvTu8st0L2Tg56pCZtF4lmMJTDWBBPoSA
+         KtK1QgMne1BCdgPt3fEp2hRn5QZgmTSsLwNrjvgfgnGk1jqWsbj0kH0byFxyz35WM3bB
+         IRDw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=QNFAmI77MY6egvnVUgPgCD6rA/FM3JmDTa9or3oXiss=;
+        b=n3KDfBeMO1s7GJ398KhXnkC3LeB+/MxGIZ7utiAS9JuGGctIXBktvALAyXaTFqQAb8
+         S4Okbw0hYquOcXGSHwwEAGOUNyClxVDHnTBAuj72h3urLWFIZF3WQ9aLGuf1OI48DLXR
+         u5hn4TB0Y7/w8T/rRsthvMIoHSumWWgX9HOhHhsutE9BpNt6hhoR5nvQW0Jwkdc/RIfO
+         Jzxq5q+z9s3IWgLdRVVFKTMXBddFuEYh4oA0Gac8GloFw5oy0JLBzOyPmba5PktTh47C
+         t7+bl/GAelh5AuJpEyHfx4ZUEz6mDa3zCF4hUAR2uLnCgviK7MxtiRWttY8G2kc7tOWm
+         /Paw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aL+9kyQ9;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id t77si297216pfi.13.2017.09.16.06.02.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 25 Mar 2017 08:23:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:4001:c0b::231 as permitted sender) client-ip=2607:f8b0:4001:c0b::231;
+        Sat, 16 Sep 2017 06:02:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:4001:c0b::231 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aL+9kyQ9;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-it0-x231.google.com with SMTP id y18so35505127itc.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 25 Mar 2017 08:23:23 -0700 (PDT)
+Received: by mail-pg0-x243.google.com with SMTP id j16so2738591pga.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 16 Sep 2017 06:02:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:from:date:message-id:subject:to;
-        bh=Yh7jyoe3PjHLK/XMg1oylthBfEnEBOI9ITVpcwxp0tg=;
-        b=q94dgc7yfy1OT29jibWSusW0FBvfyKo4N4s2sMFzC2cFZWIt2VJEsLAAp8A7UfulGE
-         +4GVx/Frlp3uM8FXTFfvNvqr28YUbV/gKpFQggOlmRFB8Xs/vZVBZxyElfPNzrbu8D94
-         1CJYLDjJvo52/19PegV6Ro2QcepXADGlm+emDmOjMZcu7g09WvkAfxVJbf4hX3AxjC7p
-         fUpnQnqbmespmQhvqzx6GNrwlZgUiEhZ1xfO0+LeH9Js6zb6rDMAYcBHRxZRVV8mOChb
-         0yHts3or4ZvnFznTKTA5PCIaORulWN+7E8y85NNYge+A8zXk8eIdR7NiRjz0YSLB57+v
-         oKUw==
+        h=from:to:cc:subject:date:message-id;
+        bh=QNFAmI77MY6egvnVUgPgCD6rA/FM3JmDTa9or3oXiss=;
+        b=aL+9kyQ9JeTxdtsik/DbZXUwgPbHN4M0bJ47qT+DGQTmfqFtIPh9K3G6zN3JnYD+TO
+         K7UNlRRukM7VtZbrPQ2ZGkyeXzBiOwyIEtGGYUvO9kkX6mVLmFf4kETzdXcUekEdtzpq
+         YLF5NGjdlxJ2rH54v/vvjz4rIHBsadfCAur6PxmzQQHN/S4PexCHBqJzcfgaz6+FJrF0
+         E2vlGOFN5kt6hHild5pF6+BOAj+1IG2xVSZhYRC7EZPj5CemfTvMtohojHGWuPnaG7Yb
+         OKc6lZ2WTudjI8e1TxI3wgyEmdcNNLZSrvqRL47s1oqIVUJuclD2jAwh9uic41Z/uZzg
+         hI9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-        bh=Yh7jyoe3PjHLK/XMg1oylthBfEnEBOI9ITVpcwxp0tg=;
-        b=K5igZVstnsDGCUBrArUykOAQAW/0YWjnMYDmB/V/FZUtmKxaJE6/CClpM6Gr+9sMpj
-         1P1RNY62RRXq6DIAHT5tUaxcpI4rswseapWaVCcAebEyf/mSNjMCAFUVfESPLP6iA6ye
-         ay6B3XtdbQoCXUC7VPL+zhmBzzM7M0y/LIX2b9XY0F/jd8CaKl/OJ3QCBJcAbt3og+s0
-         t7CcGGMSYBeh8ihUeIav2/hAAygUMWK/05UYChbm+nKWydYU5h4S2WfIT1iVMKUeT7rV
-         HKRPpBXpLn2w0IhhK4HO5XsuZwVbVRhgJGNaM09fj3974eE8oypwb1uvV01i05nsMsSC
-         2eOQ==
-X-Gm-Message-State: AFeK/H3qnPmLn7YlY96PT4K8xzQJXfZi4Gak/k6VvdjAUCDAExkQ1png9vltDFgzgeRFZD+XHfJwHc8u/qMRiw==
-X-Received: by 10.36.7.66 with SMTP id f63mr2316596itf.83.1490455403008; Sat,
- 25 Mar 2017 08:23:23 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.79.15.199 with HTTP; Sat, 25 Mar 2017 08:22:42 -0700 (PDT)
-From: sayli karnik <karniksayli1995@gmail.com>
-Date: Sat, 25 Mar 2017 20:52:42 +0530
-Message-ID: <CAKG5xWipwnUZ9kNMG7BJeJRSH2XP-JZ6KovuBpA0_ntb-5SitQ@mail.gmail.com>
-Subject: Doubt regarding Sphinx build
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset=UTF-8
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=QNFAmI77MY6egvnVUgPgCD6rA/FM3JmDTa9or3oXiss=;
+        b=bfHyiuRhgn2uzpb7YGFyHa0iSVzBKmxfVjkZ8qtHzVe6dzsIA7NsB/hdtd7hSH9GbB
+         2CnCwft+GBzCri9BYcXujsV9+u2g2/lji4gh0E9XDild0jVAECRDSqg8yHk7/hG+T3g5
+         RBl6/ZJGOFN9TlDGvxWFmCqR1YVZ0NV1ibUft/SvedDqIr9bDvYBUsHYP4Xu+jG37drg
+         Pl5s6KHX94o4vfLYwCxqSH3KHLs9RLBnsd4WX3hOzTcOvn4prwpkhE41PC4zmC3PAiOh
+         BQwnA/na/BK/pxdymU7uOCymDS6tSIa/SveA6on7XGmdxtVcUTMFAuIc+sJYq/zEC19Z
+         aPLA==
+X-Gm-Message-State: AHPjjUgrPjduhWZv5UrW6gEIz4QI5iS3h2odMFpqpQsZtRWesE1rxjPq
+	1s5ibJHYJarA/wPXzBc=
+X-Google-Smtp-Source: ADKCNb6h95Khztceh8Mtfun4Mxzyiw/YOWxfd175wyjPGeEoIiMXh3UJQ1JNnOHLNub2HGZTzkExYg==
+X-Received: by 10.99.124.87 with SMTP id l23mr27101664pgn.351.1505566958439;
+        Sat, 16 Sep 2017 06:02:38 -0700 (PDT)
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from aastha-HP-Pavilion-15-Notebook-PC ([27.56.167.173])
+        by smtp.gmail.com with ESMTPSA id 20sm7886158pft.109.2017.09.16.06.02.37
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 16 Sep 2017 06:02:38 -0700 (PDT)
+From: Aastha Gupta <aastha.gupta4104@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	Lidza Louina <lidza.louina@gmail.com>,
+	Mark Hounschell <markh@compro.net>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
+Subject: [PATCH v2] staging: dgnc: remove unused variable
+Date: Sat, 16 Sep 2017 18:32:32 +0530
+Message-Id: <1505566952-15453-1-git-send-email-aastha.gupta4104@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-I was trying to build Sphinx documentation. I ran 'make htmldocs'.
-It gives me this:
+This patch removes unused variable.
 
-  SPHINX  htmldocs -->
-file:///home/sayli/git/kernels/staging/Documentation/output
-  DOT     Documentation/media/uapi/v4l/pipeline.dot
-/bin/sh: 1: dot: not found
-Documentation/media/Makefile:45: recipe for target
-'Documentation/media/uapi/v4l/pipeline.svg' failed
-make[2]: *** [Documentation/media/uapi/v4l/pipeline.svg] Error 1
-Documentation/Makefile.sphinx:70: recipe for target 'htmldocs' failed
-make[1]: *** [htmldocs] Error 2
-Makefile:1452: recipe for target 'htmldocs' failed
-make: *** [htmldocs] Error 2
+Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
+---
+changes in v2:
+	- removed some changes which were not of this patch
 
-Am i missing something?
+ drivers/staging/dgnc/dgnc_driver.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-thanks,
-sayli
+diff --git a/drivers/staging/dgnc/dgnc_driver.h b/drivers/staging/dgnc/dgnc_driver.h
+index 764d6fe..d69d9c0 100644
+--- a/drivers/staging/dgnc/dgnc_driver.h
++++ b/drivers/staging/dgnc/dgnc_driver.h
+@@ -233,7 +233,6 @@ struct device;
+  */
+ struct un_t {
+ 	struct	channel_t *un_ch;
+-	ulong	un_time;
+ 	uint	un_type;
+ 	uint	un_open_count;
+ 	struct tty_struct *un_tty;
+-- 
+2.7.4
+
 
