@@ -1,83 +1,105 @@
-X-GM-THRID: 6397080703466471424
-X-Received: by 10.99.251.83 with SMTP id w19mr16427290pgj.160.1489436417945;
-        Mon, 13 Mar 2017 13:20:17 -0700 (PDT)
+X-GM-THRID: 6466286051877978112
+X-Received: by 10.28.215.195 with SMTP id o186mr543962wmg.9.1505554697777;
+        Sat, 16 Sep 2017 02:38:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.52.140 with SMTP id b134ls4450409ioa.38.gmail; Mon, 13 Mar
- 2017 13:20:16 -0700 (PDT)
-X-Received: by 10.99.8.196 with SMTP id 187mr17157987pgi.115.1489436416333;
-        Mon, 13 Mar 2017 13:20:16 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id y90si3259377pfa.6.2017.03.13.13.20.16
+Received: by 10.28.213.83 with SMTP id m80ls727485wmg.4.canary-gmail; Sat, 16
+ Sep 2017 02:38:16 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBM2a1AM0UpYzjWFPCKxDTLDHOCTfQfTZfwFDgDVv+nxrhqbG4jbgYaAcde0aKYvdCA6P1f
+X-Received: by 10.28.140.199 with SMTP id o190mr521665wmd.6.1505554696735;
+        Sat, 16 Sep 2017 02:38:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505554696; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Vsqqv4rPtSPVi/9btYDBRHDtXrzay+ZowpdUAKuLUqtJr0JSrKSFEkIxqtzk3ubUOE
+         VQsltTBwkIoRxqwKw0Bc9I3YjqroWhdxRYCR3+EPbUE6LYKe7/6YMQsG9f7ixj6o6wrp
+         pbcdFVXWS1zfycqHPeGvMlsnPtAcGYmKbEsNMIK76vrZoo5CS4z5leaMrtZ+4lSBd7n2
+         Ao/wBpiaou2BZ/bN8d/NwjPe38PI2PIrnimVAHhr/Lfwj9jqf6rN0IMsgSy2eNYOC4K6
+         Xp/uBIb+S3YtL1roZBJv37HSx2Nwtqze8fXwAmNtsoZYGfloJFoTPde0Hh2mAVylZv3f
+         hYDQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=+gE3k9L2l+CtktEVb/Lae729/wCfyGPiOEmfV4Yk6/o=;
+        b=wtf4e6t0ywiRV9yL5PrPAdi4xwLToo3zTfoOlwH8b4qCsLUib+bRDwd4W3+0CLUnEM
+         iQXYSfhmWJxp6sz6OqJZU99agLwSHPVAR1L9datas/wM8g2jQXiohnos9d1Gvx0aFYOP
+         YuefNTVwdqy6jryZ9//R5cMJGw7XLU3sqPI0DoYjxmZq3AU9vVmL89ciJ8ItA3AZO0bt
+         ycMpMl6FC+2ANLX6ff9xCFK6t9XGH7CQ5lubUk4Q1KrF3I5f1aWTIfFMF07XFpX3n37/
+         ZHlg3SCF/TPEhz1cSfc1ItYhEDVCOr9MD8V69urrYdUV03VV0Ev3e9EbIiwXRjlXUAN9
+         aiVQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id m74si160523wma.0.2017.09.16.02.38.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 13 Mar 2017 13:20:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Sat, 16 Sep 2017 02:38:16 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id 25so19421907pgy.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 13 Mar 2017 13:20:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=KTsjMvXie4Q1N/uQ5xwUCskG80c3mZMUNp16QPuHUf0=;
-        b=BhJ5HQ1ZXADLZdveRWP4kY3sMe+fY6AeESEhCiBqoSq0SiHjwi5xV74KOcST1zt6WB
-         kKDLILvpoO8hlnl96e6p+e6bcdAC3xzMolGvPD5IeUNqIjb8mH1U7AnJXx+NJL+DCeiY
-         MCChNxwVzijcM/wI1O31FkhroC0NnZlZzeNRno1nlhOrnSWGo2mJR6aVEAF/mwPn5Sly
-         nboB7Rl93bioqo3ieSGeFioQH/3izmr0mQJcyYwPPJrj4HKDbWUWPR2KkFjJNg9dKBVL
-         hqTpCgzrMcqwz6VIE/EwrimQRdAqS4N7R3tZX8oouBQvAf6GOmteCvxbeeu+8HFIwWkE
-         03ew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=KTsjMvXie4Q1N/uQ5xwUCskG80c3mZMUNp16QPuHUf0=;
-        b=nGKz8AM8JYy+G5FCiaPtuhHwwdFOVu0tpSDmrM4n8VQ5360fTsjnQvfWHdNowrwg3P
-         FAyyTg9mCauYtbnUtX/am/a9JVdDyM96rnAesFA/OvTYyQYeb2+0CceDIdcEBjj96ZKd
-         Sl65RA88kXV4k4gwtLTVJ/OArqnRkS4ZHbSRk0alBSZ5Q1wNZIGkZSe9XKAUF18aSjQD
-         KlVsSfZvX2eQHvhngW5gx+LqfLkgTJHuckQ+a4NyGGunZ1h7zlNRCrKdrqouXy9o7d/j
-         /UdPvK3X5uicUomoJeup69k/RM1ko1t/vxNtGnB7srMgOdrJ7WCpJBnVreNbeC54t++r
-         k8GQ==
-X-Gm-Message-State: AMke39n5Jq4IvEh3s489s7Rke4J6UDHTCJBGkSvoNqQgjlaWUG44Whr4/nwsHJP5VYSZuQ==
-X-Received: by 10.84.241.130 with SMTP id b2mr50946555pll.32.1489436416168;
-        Mon, 13 Mar 2017 13:20:16 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id k76sm34271005pfg.42.2017.03.13.13.20.14
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 13 Mar 2017 13:20:14 -0700 (PDT)
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: w.d.hubbs@gmail.com
-Cc: chris@the-brannons.com,
-	outreachy-kernel@googlegroups.com,
-	kirk@reisers.ca,
-	samuel.thibault@ens-lyon.org,
-	gregkh@linuxfoundation.org,
-	speakup@linux-speakup.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	Arushi Singhal <arushisinghal19971997@gmail.com>
-Subject: [PATCH v3 0/2] staging: checkpatch cleanups
-Date: Tue, 14 Mar 2017 01:49:52 +0530
-Message-Id: <20170313202004.24382-1-arushisinghal19971997@gmail.com>
-X-Mailer: git-send-email 2.11.0
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,402,1500933600"; 
+   d="scan'208";a="237713280"
+Received: from 85-171-60-79.rev.numericable.fr (HELO [192.168.0.15]) ([85.171.60.79])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 16 Sep 2017 11:38:15 +0200
+Date: Sat, 16 Sep 2017 11:38:15 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Meghana Madhyastha <meghana.madhyastha@gmail.com>
+cc: Larry.Finger@lwfinger.net, gregkh@linuxfoundation.org, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8723bs/os_dep: Remove
+ typecast in kfree
+In-Reply-To: <20170916081210.GA19333@meghana-HP-Pavilion-Notebook>
+Message-ID: <alpine.DEB.2.20.1709161137590.2943@hadrien>
+References: <20170916081210.GA19333@meghana-HP-Pavilion-Notebook>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Improve readability by fixing multiple checkpatch.pl
-issues in drivers. 
 
-Arushi Singhal (2):
-  staging: speakup: identation should use tabs
-  staging: dvb-frontends: removed code in comments.
 
- drivers/media/dvb-frontends/drxk_hard.c  |   1 -
- drivers/staging/speakup/speakup_dtlk.h   |  10 +++++-----
- 2 files changed, 5 insertions(+), 6 deletions(-)
+On Sat, 16 Sep 2017, Meghana Madhyastha wrote:
 
--- 
-Changes since v3:
- -change the subject of cover letter.
+> Remove typecast of pointer in kfree((u8 *)pdvobj) as
+> it is not needed.
+>
+> Found using the following Coccinelle semantic patch:
+> @@
+> identifier x;
+> type t;
+> @@
+>
+> -kfree((t *)x)
+> +kfree(x)
+>
+> Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
 
-2.11.0
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 
+> ---
+>  drivers/staging/rtl8723bs/os_dep/os_intfs.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/rtl8723bs/os_dep/os_intfs.c b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
+> index f509713..51df42d 100644
+> --- a/drivers/staging/rtl8723bs/os_dep/os_intfs.c
+> +++ b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
+> @@ -719,7 +719,7 @@ void devobj_deinit(struct dvobj_priv *pdvobj)
+>  	mutex_destroy(&pdvobj->setch_mutex);
+>  	mutex_destroy(&pdvobj->setbw_mutex);
+>
+> -	kfree((u8 *)pdvobj);
+> +	kfree(pdvobj);
+>  }
+>
+>  u8 rtw_reset_drv_sw(struct adapter *padapter)
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170916081210.GA19333%40meghana-HP-Pavilion-Notebook.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
