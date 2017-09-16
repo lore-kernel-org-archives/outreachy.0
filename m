@@ -1,233 +1,115 @@
-X-GM-THRID: 6401906527727255552
-X-Received: by 10.28.146.72 with SMTP id u69mr281954wmd.6.1490560017298;
-        Sun, 26 Mar 2017 13:26:57 -0700 (PDT)
+X-GM-THRID: 6466280658813583360
+X-Received: by 10.31.107.141 with SMTP id k13mr14333418vki.79.1505548287109;
+        Sat, 16 Sep 2017 00:51:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.48.149 with SMTP id w143ls1045611wmw.11.canary-gmail; Sun,
- 26 Mar 2017 13:26:56 -0700 (PDT)
-X-Received: by 10.28.193.199 with SMTP id r190mr285891wmf.9.1490560016508;
-        Sun, 26 Mar 2017 13:26:56 -0700 (PDT)
-Return-Path: <azure@suarez.id.au>
-Received: from mail-wr0-x244.google.com (mail-wr0-x244.google.com. [2a00:1450:400c:c0c::244])
-        by gmr-mx.google.com with ESMTPS id k74si237994wmd.1.2017.03.26.13.26.56
+Received: by 10.107.145.68 with SMTP id t65ls8101720iod.50.gmail; Sat, 16 Sep
+ 2017 00:51:26 -0700 (PDT)
+X-Received: by 10.55.17.10 with SMTP id b10mr14304618qkh.54.1505548286322;
+        Sat, 16 Sep 2017 00:51:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505548286; cv=none;
+        d=google.com; s=arc-20160816;
+        b=tXJ93Nt/C2sAWwJ5xVS4lVjA0thz6YMndbHq7mXt4Ha83hkt5+VlXdQg/grpypm49b
+         klSxds+nDZooWxBJAZUUAAnf8Khf2v0bB8mUjh0e1OyZngrr+U7JDptWFqDgJTxaBWQd
+         Bqs3QzlfrAPR9s2s7YmCoji6oAjnvrhQpkAo/XhnHaE0EJIh14Co45rCdjEjqOmXW8B/
+         sl4esqoiTvl/Zz2VNJZ91lUCg43GIK4MhyfCgpJ9fe62wnn+AJKeP6Fg/Z/D6uKiJ7Bf
+         Z8k7CYsdFNpAP9j2V+dXsFULETYjC4FtIx5u8QnwQMqlZr26GZ3opxro2PHjqtV0rtZi
+         5CKA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=YFwuWgoajxo867HF9xvSU8gR95Y5evx+6RcYwtrsFyY=;
+        b=NtWy+crfKZ3wKO1ERl5D9NHNu+kgz8IJmu5pjB+95s6Z2P9VoNEJO8d7UFpiP10gxG
+         PDpGGPrhDH51Vq5bFhWGeT9yJklLI7sS0htK9t8Z5JMW9ZnoTKOyaCmSiRisWxrVX6os
+         z7ew0joJ2I8zDA4cv8yexzQvDSBVKmYwubxnRxzZArk+condgt/Ne9Zqbu5DwflcDJ2s
+         hADJ/JKQmXLV28oVxE1+a4pxY38HYLRPDF31uHu1tttjgUvpo9qk+K2OVd8wQQ36HtoN
+         nh4XU4cFdH8FrsJDmNwE3TSgFoM4zOe2fitym7mOS8oTjOA4APlibq7vXeW4paw8/IPN
+         kMSQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ESSFpcne;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
+        by gmr-mx.google.com with ESMTPS id t77si255074pfi.13.2017.09.16.00.51.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 26 Mar 2017 13:26:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of azure@suarez.id.au designates 2a00:1450:400c:c0c::244 as permitted sender) client-ip=2a00:1450:400c:c0c::244;
+        Sat, 16 Sep 2017 00:51:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@suarez-id-au.20150623.gappssmtp.com;
-       spf=pass (google.com: domain of azure@suarez.id.au designates 2a00:1450:400c:c0c::244 as permitted sender) smtp.mailfrom=azure@suarez.id.au
-Received: by mail-wr0-x244.google.com with SMTP id w43so4544452wrb.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 26 Mar 2017 13:26:56 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ESSFpcne;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x242.google.com with SMTP id v82so2456794pgb.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 16 Sep 2017 00:51:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=suarez-id-au.20150623.gappssmtp.com; s=20150623;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=K3TiLYFcS3SHMy/acfBynf6hSmSEDp/tmaWWLgxYXpI=;
-        b=tZEsiZ4NDjFXn0nN7bRH1ufrGbM3y8ZHxo623jVuW7Z/EDFdjZyyjya2GCR0qwsRIU
-         pBYQ/iANeTF8+z9e6wvU8mJp+Tnb2Z5E/3+zsoadDaYyzsTuNMpOCdm2lzgDrW+3pb3M
-         NIThL4z4cTtj3Yoql43mBULkA+tKlCGD9sfG/V2yeyIWtO+UM4ces0Ehedro7RK7DUmX
-         4ZWb8fqGriAmisDAmxZFlhefiajmzlXQgusd7yo8mGVuxbbymIRGXlI3xIpqWxdG4UsN
-         HfSnWDitDwT52IZiBBe/BR8X7siptixQSk6ZlDH53pERRk3MeFNRchNe66iHOFAX4xqY
-         dqNQ==
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=YFwuWgoajxo867HF9xvSU8gR95Y5evx+6RcYwtrsFyY=;
+        b=ESSFpcnezwv9zB6MlwQcFioM5KWuwtq8PslxtKha7ASY2FdRnq6JXL2lC/6fPxxHt/
+         Xd8/NNnaaYr+yXUSIprCXbRx/AD3v5pv9mI/XrxdR25WYLfGBYK3OukCovZFxi69dfkd
+         SeHHcTYnMJCiRAnCEr9IljnxgH59KU2FnbuIn0c0nBHw9R8ZrRw15VCAjUB6MI38vfiu
+         X8XQmsNq48xK35IOntOhV6/+Oqb5i6AGeYN8kkLHKKOkm1Js7VSBkH2Kn7XFSm0eG/rf
+         3FPJPn0QgQXeFf6EWYEnjmLWFNjs4ktxRIc2QR0Ouj4Q8R8RFjVIjUNAdKJnuQ1z5IeD
+         uddw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=K3TiLYFcS3SHMy/acfBynf6hSmSEDp/tmaWWLgxYXpI=;
-        b=tyFAw1cIPAOMokTcfbzKRZOWlsoIksrAsJuROvAXKd70s88ZTVTXl4CCFZVCqf0NER
-         kHNO9pUVrToRlR9ONa9SdNhmjWaaJmLA9cHhOm3JP6h0Yc4tuODxnl+a8LC1VcA/LJmq
-         6/CMGTgdq8/UTpaEHcJkhSU9Cvq60kyXwxGpgMzmIZiMNVrjfCpFfiIiwRAxC61lz/QA
-         UdidbiEj4aWi71ZRzZ6tQCjrOimQWMdA4fV4GFCVW2GVfGwo8J0u0ry1F+59i80GiVPS
-         2XfumrKjLzhd8ISJWSHIjkul8KaimKTdImfxEVVS9UHkia+KVbNme6KHcAIgDr5OdvJx
-         6Sdg==
-X-Gm-Message-State: AFeK/H29fJEc7pfYsh8p/yWCQ1ampvF7jzbvmZbQcV6VvtG5FdAso/ac0VeRJsGD70zLdQ==
-X-Received: by 10.223.178.182 with SMTP id g51mr9392209wrd.12.1490560016122;
-        Sun, 26 Mar 2017 13:26:56 -0700 (PDT)
-Return-Path: <azure@suarez.id.au>
-Received: from hcs-desktop ([37.228.230.54])
-        by smtp.gmail.com with ESMTPSA id k203sm3430757wmk.4.2017.03.26.13.26.55
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=YFwuWgoajxo867HF9xvSU8gR95Y5evx+6RcYwtrsFyY=;
+        b=dbuZWj8PMsqOGsXQZbJPypFdD46MRmn8BcMrU1ttZkL6SzuZXR9ze714xTd1EyBPzA
+         PQGI4R9/4fEYUSGazLdCyzcqHvcjC4dQXkbKmitTEKbn/qfE0QW1XqT+4XzM8csFwYSO
+         Kp2/sxEial2W5LHz2anAKnd0iVvKRrIUu1d3q/10A2AxsxNqHzpM28NTN/13/rAg739l
+         JATXSvlH4h4QSHz9tsFb5lT+ZTvUY71ncI75aytaLfHmXmq4LAcFl8H0WJDeCu0A3QF7
+         YbSKutrpGtBUpzCAnLSMKpj23KrIbjFUQ+7xQKKbmEvNiIzTzs9gJClqPkuwjEnIzCom
+         LxeA==
+X-Gm-Message-State: AHPjjUi8rMLPyO8I7Wr7CHEJ/lZUugeXuADNYVkGMMYdeh09wbI4ER67
+	EXGIwtHozpf9rQ==
+X-Google-Smtp-Source: ADKCNb5AwMpwulE8Ns/SKUt7E4HezDSzCCAcJ+gCMTts/fl+0QkeqEu4QKXbtUYWK75UxeBbCFtMeA==
+X-Received: by 10.98.27.8 with SMTP id b8mr26434381pfb.21.1505548285938;
+        Sat, 16 Sep 2017 00:51:25 -0700 (PDT)
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from aastha-HP-Pavilion-15-Notebook-PC ([27.56.167.173])
+        by smtp.gmail.com with ESMTPSA id b90sm5973529pfm.17.2017.09.16.00.51.24
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 26 Mar 2017 13:26:55 -0700 (PDT)
-Date: Sun, 26 Mar 2017 21:26:53 +0100
-From: Hannah Suarez <azure@suarez.id.au>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH] Patch 6/7. Delete FSF mail address paragraph.
-Message-ID: <20170326202653.GA10938@hcs-desktop>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+        Sat, 16 Sep 2017 00:51:25 -0700 (PDT)
+From: Aastha Gupta <aastha.gupta4104@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
+Subject: [PATCH] staging: rtl8188eu: use pr_info() instead of printk()
+Date: Sat, 16 Sep 2017 13:21:18 +0530
+Message-Id: <1505548278-18277-1-git-send-email-aastha.gupta4104@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-Delete the FSF mailing address paragraph on the event of an address
-change.
+Fixes checkpatch.pl warning:
+WARNING: printk() should include KERN_ facility level
 
-Linux already includes a copy of the GPL.
+Replaced printk() without any KERN_facility level with pr_info().
+The statements before use pr_info and the new line character is to be
+appended to them.
+Could have used printk() with KERN_INFO level, but used pr_info() 
+just to use the same function as that had been used before in the code.
 
-Signed-off-by: Hannah Suarez <azure@suarez.id.au>
+Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
 ---
- drivers/staging/rtl8712/rtl8712_xmit.h  | 4 ----
- drivers/staging/rtl8712/sta_info.h      | 4 ----
- drivers/staging/rtl8712/usb_halinit.c   | 4 ----
- drivers/staging/rtl8712/usb_intf.c      | 4 ----
- drivers/staging/rtl8712/usb_ops.c       | 4 ----
- drivers/staging/rtl8712/usb_ops.h       | 4 ----
- drivers/staging/rtl8712/usb_ops_linux.c | 4 ----
- drivers/staging/rtl8712/usb_osintf.h    | 4 ----
- drivers/staging/rtl8712/wifi.h          | 4 ----
- drivers/staging/rtl8712/wlan_bssdef.h   | 4 ----
- 10 files changed, 40 deletions(-)
+ drivers/staging/rtl8188eu/include/rtw_debug.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/rtl8712_xmit.h b/drivers/staging/rtl8712/rtl8712_xmit.h
-index 02b1593..f0c356a 100644
---- a/drivers/staging/rtl8712/rtl8712_xmit.h
-+++ b/drivers/staging/rtl8712/rtl8712_xmit.h
-@@ -11,10 +11,6 @@
-  * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
-  * more details.
-  *
-- * You should have received a copy of the GNU General Public License along with
-- * this program; if not, write to the Free Software Foundation, Inc.,
-- * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
-- *
-  * Modifications for inclusion into the Linux staging tree are
-  * Copyright(c) 2010 Larry Finger. All rights reserved.
-  *
-diff --git a/drivers/staging/rtl8712/sta_info.h b/drivers/staging/rtl8712/sta_info.h
-index 742dfa0..fb11f34 100644
---- a/drivers/staging/rtl8712/sta_info.h
-+++ b/drivers/staging/rtl8712/sta_info.h
-@@ -11,10 +11,6 @@
-  * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
-  * more details.
-  *
-- * You should have received a copy of the GNU General Public License along with
-- * this program; if not, write to the Free Software Foundation, Inc.,
-- * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
-- *
-  * Modifications for inclusion into the Linux staging tree are
-  * Copyright(c) 2010 Larry Finger. All rights reserved.
-  *
-diff --git a/drivers/staging/rtl8712/usb_halinit.c b/drivers/staging/rtl8712/usb_halinit.c
-index 0b15985..6c51c22 100644
---- a/drivers/staging/rtl8712/usb_halinit.c
-+++ b/drivers/staging/rtl8712/usb_halinit.c
-@@ -13,10 +13,6 @@
-  * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-  * more details.
-  *
-- * You should have received a copy of the GNU General Public License along with
-- * this program; if not, write to the Free Software Foundation, Inc.,
-- * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
-- *
-  * Modifications for inclusion into the Linux staging tree are
-  * Copyright(c) 2010 Larry Finger. All rights reserved.
-  *
-diff --git a/drivers/staging/rtl8712/usb_intf.c b/drivers/staging/rtl8712/usb_intf.c
-index 897d462..4d219fd 100644
---- a/drivers/staging/rtl8712/usb_intf.c
-+++ b/drivers/staging/rtl8712/usb_intf.c
-@@ -13,10 +13,6 @@
-  * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-  * more details.
-  *
-- * You should have received a copy of the GNU General Public License along with
-- * this program; if not, write to the Free Software Foundation, Inc.,
-- * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
-- *
-  * Modifications for inclusion into the Linux staging tree are
-  * Copyright(c) 2010 Larry Finger. All rights reserved.
-  *
-diff --git a/drivers/staging/rtl8712/usb_ops.c b/drivers/staging/rtl8712/usb_ops.c
-index 332e2e5..45eaf9b 100644
---- a/drivers/staging/rtl8712/usb_ops.c
-+++ b/drivers/staging/rtl8712/usb_ops.c
-@@ -13,10 +13,6 @@
-  * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-  * more details.
-  *
-- * You should have received a copy of the GNU General Public License along with
-- * this program; if not, write to the Free Software Foundation, Inc.,
-- * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
-- *
-  * Modifications for inclusion into the Linux staging tree are
-  * Copyright(c) 2010 Larry Finger. All rights reserved.
-  *
-diff --git a/drivers/staging/rtl8712/usb_ops.h b/drivers/staging/rtl8712/usb_ops.h
-index 78e775a..8a0923e 100644
---- a/drivers/staging/rtl8712/usb_ops.h
-+++ b/drivers/staging/rtl8712/usb_ops.h
-@@ -11,10 +11,6 @@
-  * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
-  * more details.
-  *
-- * You should have received a copy of the GNU General Public License along with
-- * this program; if not, write to the Free Software Foundation, Inc.,
-- * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
-- *
-  * Modifications for inclusion into the Linux staging tree are
-  * Copyright(c) 2010 Larry Finger. All rights reserved.
-  *
-diff --git a/drivers/staging/rtl8712/usb_ops_linux.c b/drivers/staging/rtl8712/usb_ops_linux.c
-index 441e76b..61e59ee 100644
---- a/drivers/staging/rtl8712/usb_ops_linux.c
-+++ b/drivers/staging/rtl8712/usb_ops_linux.c
-@@ -13,10 +13,6 @@
-  * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-  * more details.
-  *
-- * You should have received a copy of the GNU General Public License along with
-- * this program; if not, write to the Free Software Foundation, Inc.,
-- * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
-- *
-  * Modifications for inclusion into the Linux staging tree are
-  * Copyright(c) 2010 Larry Finger. All rights reserved.
-  *
-diff --git a/drivers/staging/rtl8712/usb_osintf.h b/drivers/staging/rtl8712/usb_osintf.h
-index 609f921..6a168ff 100644
---- a/drivers/staging/rtl8712/usb_osintf.h
-+++ b/drivers/staging/rtl8712/usb_osintf.h
-@@ -11,10 +11,6 @@
-  * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
-  * more details.
-  *
-- * You should have received a copy of the GNU General Public License along with
-- * this program; if not, write to the Free Software Foundation, Inc.,
-- * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
-- *
-  * Modifications for inclusion into the Linux staging tree are
-  * Copyright(c) 2010 Larry Finger. All rights reserved.
-  *
-diff --git a/drivers/staging/rtl8712/wifi.h b/drivers/staging/rtl8712/wifi.h
-index 556367b..9143423 100644
---- a/drivers/staging/rtl8712/wifi.h
-+++ b/drivers/staging/rtl8712/wifi.h
-@@ -11,10 +11,6 @@
-  * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
-  * more details.
-  *
-- * You should have received a copy of the GNU General Public License along with
-- * this program; if not, write to the Free Software Foundation, Inc.,
-- * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
-- *
-  * Modifications for inclusion into the Linux staging tree are
-  * Copyright(c) 2010 Larry Finger. All rights reserved.
-  *
-diff --git a/drivers/staging/rtl8712/wlan_bssdef.h b/drivers/staging/rtl8712/wlan_bssdef.h
-index 9dc9ce5..8eda728 100644
---- a/drivers/staging/rtl8712/wlan_bssdef.h
-+++ b/drivers/staging/rtl8712/wlan_bssdef.h
-@@ -11,10 +11,6 @@
-  * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
-  * more details.
-  *
-- * You should have received a copy of the GNU General Public License along with
-- * this program; if not, write to the Free Software Foundation, Inc.,
-- * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
-- *
-  * Modifications for inclusion into the Linux staging tree are
-  * Copyright(c) 2010 Larry Finger. All rights reserved.
-  *
+diff --git a/drivers/staging/rtl8188eu/include/rtw_debug.h b/drivers/staging/rtl8188eu/include/rtw_debug.h
+index 9cc4b8c..33bc7f5 100644
+--- a/drivers/staging/rtl8188eu/include/rtw_debug.h
++++ b/drivers/staging/rtl8188eu/include/rtw_debug.h
+@@ -106,9 +106,9 @@ extern u32 GlobalDebugLevel;
+ 					 (((__i + 1) % 4) == 0) ?	\
+ 					 "  " : " ");	\
+ 				if (((__i + 1) % 16) == 0)		\
+-					printk("\n");			\
++					pr_info("\n");			\
+ 			}						\
+-			printk("\n");					\
++			pr_info("\n");					\
+ 		}							\
+ 	} while (0)
+ 
 -- 
 2.7.4
 
