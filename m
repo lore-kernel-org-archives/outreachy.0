@@ -1,87 +1,84 @@
 X-GM-THRID: 6466262449000546304
-X-Received: by 10.31.148.210 with SMTP id w201mr4172270vkd.10.1505545330974;
-        Sat, 16 Sep 2017 00:02:10 -0700 (PDT)
+X-Received: by 10.99.6.144 with SMTP id 138mr16461683pgg.28.1505544048713;
+        Fri, 15 Sep 2017 23:40:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.189.2 with SMTP id x2ls2214828ite.19.canary-gmail; Sat, 16
- Sep 2017 00:02:10 -0700 (PDT)
-X-Received: by 10.13.254.68 with SMTP id o65mr16826726ywf.86.1505545330144;
-        Sat, 16 Sep 2017 00:02:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505545330; cv=none;
+Received: by 10.36.41.196 with SMTP id p187ls2415385itp.9.gmail; Fri, 15 Sep
+ 2017 23:40:47 -0700 (PDT)
+X-Received: by 10.176.77.195 with SMTP id b3mr16535633uah.112.1505544047826;
+        Fri, 15 Sep 2017 23:40:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505544047; cv=none;
         d=google.com; s=arc-20160816;
-        b=n3dCT0YhTx5f2nWrZbKqLeyjd+M3SL8iIlrzEgT1MUrE7Padije4tjFMjORaMvjxjB
-         SRPtuO4ivSt+nnz7dEdxpHvYgwkHj565H31Q6H5zi0G9ZJjj/CIShXPBYpX0njdj1kpx
-         nhIzTD5ntQ3ngkYV3J0dF+c+/Vr/w6TDOTvQp1Xw9e7OCl6tm3gExDzMcfPHvEo0/kS5
-         U3bFFKWJY76vQsuQQGUPkkQvxLo4A5HCyncLpxwdEdNRexMEoUkK63QegfGgNYq02K8l
-         u6qLOVBKhoReie9QMU6lKI2ON1Vomj7QFXR8JVO97n0dadFTll928CA3zW4hfgI7YdJB
-         7MzA==
+        b=PWZkR6903/iZH66P6qSnE4UwuzpR9HoIMmqGSdZD+/LcGkhgeORlsYtSbNU3RQXtU5
+         gjDI2HYmGzOrjlI4ggihhkIR94ivqj82QoMyfXA8cd6hWbfx6JyUNxPv767UvdpVskUL
+         BQk5wrjG5A6/2267q9sCo24vH2aXIonlVh3HMuH9BEAY1RXSX988MGA8G0HxOLZVOs/4
+         Y/IHCYQrYeXUaNjVNNop91bdqQg/camsATjxFvfCTUDzRcP6+sarHY8/+Fy5n9DdNkjK
+         NVH5EsGaeFMFB+Ve3kaHiwhj9IXdzwAA0/akY5mAZgyluHnoqugS+gP6DMzJgiodJ4tn
+         WArA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=JV9AEvzRTtKhaphL+mxkzO4UmPi7cxhGJ5sA6Dl6cls=;
-        b=Cznrh2lygWINX08STs9PfQjzD9LrkUPv4u83HFDLRVSo7X85IaTsG2hAd7740XqWok
-         gNGQvmn5BPis72+4I2ZsPcYXY5jf6JXkCUgecCnZRBcGUmcbhX+zLzn9eOkVkTvP8U4c
-         Rn9GbK0jw1R4XD9TwfpRs3uM4cTtw3H9XUwHUlmrWzy9nLTBLCwTT1Szls1rC6ftebI4
-         FjIM2RntRLhjR5ha5XJiOSg5+bTmRRHk0LA9HgaAy9qz9/cecrnZ9pdX5Qr1OI6plf50
-         Jv1xu4+O2LwSM4pYQ7rSzsVkR2KMJ+FESY03GkuvtO0ZLFsa/9T8HHKBDiIRzBHiXfHx
-         YB6Q==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=tQ+Svhckia0eONw80SkqO8dHWA7yW1NABv8+Lhdf54s=;
+        b=jPnX6KAfjRkbPFMFgiuAxpuL0gzWdeDr8uAFXwzv6UWdiLcSAO/qGdWJX0w5vBcePb
+         ZSyf4r4wI/DCBVG4PzGLuYzCz/Rca7Pg1/H6FPROCe3H6OjMeU4t/V84T0hHLcdVWQoh
+         h/bqIBp/kH5sYjnjW2JtZ7Vp+dUsvvK2zRIGFht3ZwsJEc0YREzYmLrHOaZ5aQ4WUMce
+         2i5PnysP+JMZOTIUebPv9KFQYB1/oFp6lWXpZt4zzJ+IcVQNR1y8Ij04A3IQiLqrEXdU
+         O+eq/DtT0moUqxxP7HVVIVgcJM4YfOXatYH1bBmGp7Y+HqzM/n9S67CvsPh23Lylp2Uk
+         vP5Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NOuJoYH8;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gnCLUJYb;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id a17si263601pfk.15.2017.09.16.00.02.10
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id d207si238337pfd.16.2017.09.15.23.40.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Sep 2017 00:02:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Fri, 15 Sep 2017 23:40:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NOuJoYH8;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gnCLUJYb;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id i23so2218928pfi.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 16 Sep 2017 00:02:10 -0700 (PDT)
+Received: by mail-pg0-x243.google.com with SMTP id v5so2391724pgn.4
+        for <outreachy-kernel@googlegroups.com>; Fri, 15 Sep 2017 23:40:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=JV9AEvzRTtKhaphL+mxkzO4UmPi7cxhGJ5sA6Dl6cls=;
-        b=NOuJoYH8GO61yAAZcIdp6pf3xqQUIl/IH2C9TaeoicWBbjVpeHr2lGeN5KcZR5MAWE
-         EH/O5jMacOHVQx5w4o8kbsWVchZmHI77BYBeZApuYs443j3ZhwVSfeoh9zbOtOckGTsU
-         40X4usss5d+NA211xe/qAM9BpcG8Ix64vDIZemkz7WvXN4KCeKEz7t6iz2RGGFZOPmbd
-         NgXkqa5MdOFFWU9BuGBOTLp0piqCYwg7SMHTKeGcoWcOsHCYTZU/Pmjp3RSXK+DhZvVn
-         vhP9k3vUpB9HfvichLEjSaJWtZunrDuaRsXXq+9OYSYCApsI+d7Vbi2o//FZYKP0YSxF
-         7daw==
+        h=from:to:cc:subject:date:message-id;
+        bh=tQ+Svhckia0eONw80SkqO8dHWA7yW1NABv8+Lhdf54s=;
+        b=gnCLUJYbsk8yGbagvWA+GmDDOLbw/sF0eAvwc/Rh+vTIThEK4sCNA3tfzVxTnSxREn
+         K10zpwMok/fyYIaGnXbRKWXXbJesQk8N/VvdRyyjh+lGIK+XG/QgKdccCa9mCXrO02bl
+         Vj7J9yDZZ6nEAeXO9NqdP6ebwikXdNZS/yV19cejcETjpxF5yC74tff14AFRTjPep65O
+         Lu6OfaJ+yV2CfOrvfQjilvxWvYNwpi04jqnk4MjUqlFT66x6KHtHS/Vn3bdlXBW1V2fO
+         3el7sfDjGLabnn0lk0wqqmgegk0nQ6TPDu3WjxLAChQ95SNJ/jDA2N6Hey6Fy39C+Q/u
+         P/eg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=JV9AEvzRTtKhaphL+mxkzO4UmPi7cxhGJ5sA6Dl6cls=;
-        b=O4k+++cVlb49PUD9yt3TLeKpuXMFaIpgjO/+nSh6EcHQSaGnWJUa5EPNfjs7mXi8mo
-         xPUt+3yGnEx1eNqIORdYToarZe45EjmQRwgSQhOM+K7FiEoTGQ8gN8APNCuVJfYFxNvN
-         g1QqKfIOhYIN5w4WdMZ3oy+gOBfakTetin0K7SN37hiwHtfhRRg9d5Bk1/G7E6hGf/eB
-         G/UeyRJGgAOXHc+U4DFr3Ol9tsz/czEDmTAVStzeoxA8V7ZL6XKfLZ6jT8NzY6yyri4E
-         vyb4Pq5hyEU6ObB3pvywlhALHyunfohPdKIAxWc+Bd5/4vgQ4m9YlbRsmP0+FImHAf6S
-         HUuQ==
-X-Gm-Message-State: AHPjjUjrqaZIuQJN0nZDebMPTeZKCsk42ibXbC1aQI3NciPdwPDH+BJz
-	X59HUIqRMO0FvQ==
-X-Google-Smtp-Source: AOwi7QAlgVJCUNulCA8v4pRdXIE5ZH6r7iGbXjTlHf1/QOTazrvsn0K6vm6QPTt5wVvMn3jjY5SARQ==
-X-Received: by 10.84.143.129 with SMTP id 1mr5445437plz.304.1505545327941;
-        Sat, 16 Sep 2017 00:02:07 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=tQ+Svhckia0eONw80SkqO8dHWA7yW1NABv8+Lhdf54s=;
+        b=Yq3o4rvvqWnVCJMU8G1zRHZ2jCaTgq1/eaVNbd9/7V9GWX32VairqssM4yo1BAkK15
+         98msiWCJNU5yui4FwCZ48tMIJ1TouOh22Bn1xqordDeabTHt21hMRwlbqpRxWY7nKqdC
+         +E5eoSNHMW5H8auRLxXFs5tzLe9w3ip1s8LsKbQlANT9l2ADVpdLlIim1JAwil+GQ+mt
+         j0oADUt/ZW5a/PEbw/DcybzMJxl29bTVAgc49QtH1NbzQuQJuuFd6MM1lx8kcjUYBo3v
+         Qtj28OsUDoAJs6rNXCXvRhqTg1cbUooAKl/307zUl81x3u+w0QXHqqBjIYtHIz5v9Zm9
+         CN/A==
+X-Gm-Message-State: AHPjjUiQMiAKN1EWnfdI5wHUwx/bjAdLAHTd03puMJkoYPrYfAxhQb+S
+	pfo4W6ZsuyjeLyArd7Q=
+X-Google-Smtp-Source: ADKCNb7/Xr3ovzbdOFwRVwd8iVIn8kgwmQ2/QRx1+u0JLZ/EJgSCLf2/NKJzDEVvLu8uLqG0BpFprA==
+X-Received: by 10.99.56.78 with SMTP id h14mr20228744pgn.192.1505544046308;
+        Fri, 15 Sep 2017 23:40:46 -0700 (PDT)
 Return-Path: <aastha.gupta4104@gmail.com>
 Received: from aastha-HP-Pavilion-15-Notebook-PC ([27.56.167.173])
-        by smtp.gmail.com with ESMTPSA id g66sm5118161pfj.161.2017.09.16.00.02.06
+        by smtp.gmail.com with ESMTPSA id x8sm4937198pff.104.2017.09.15.23.40.44
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 16 Sep 2017 00:02:07 -0700 (PDT)
+        Fri, 15 Sep 2017 23:40:45 -0700 (PDT)
 From: Aastha Gupta <aastha.gupta4104@gmail.com>
 To: outreachy-kernel@googlegroups.com,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH v2] staging: rtl8188eu: fix block comment styling in rtl8188eu files
-Date: Sat, 16 Sep 2017 12:31:51 +0530
-Message-Id: <1505545311-15102-1-git-send-email-aastha.gupta4104@gmail.com>
+Subject: [PATCH] staging: rtl8188eu: fix block comment styling in rtl8188eu files
+Date: Sat, 16 Sep 2017 12:10:39 +0530
+Message-Id: <1505544039-13645-1-git-send-email-aastha.gupta4104@gmail.com>
 X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1505544039-13645-1-git-send-email-aastha.gupta4104@gmail.com>
-References: <1505544039-13645-1-git-send-email-aastha.gupta4104@gmail.com>
 
 This patch fixes checkpatch.pl warnings for block comment styling.
 1. Block comment use a trailing */ on a separate line.
@@ -90,10 +87,6 @@ This patch fixes checkpatch.pl warnings for block comment styling.
 
 Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
 ---
-Changes in v2:
-	-removed spaces before tab added by mistake in rtw_recv
-
-
  drivers/staging/rtl8188eu/include/Hal8188EPhyCfg.h |  33 ++-
  drivers/staging/rtl8188eu/include/Hal8188EPhyReg.h |   3 +-
  .../rtl8188eu/include/Hal8188ERateAdaptive.h       |  28 +--
@@ -1520,7 +1513,7 @@ index 45a77f6..576dff6 100644
  
  #endif	/* _RTL871X_QOS_H_ */
 diff --git a/drivers/staging/rtl8188eu/include/rtw_recv.h b/drivers/staging/rtl8188eu/include/rtw_recv.h
-index 1211508..2dfc1ed 100644
+index 1211508..db37dec 100644
 --- a/drivers/staging/rtl8188eu/include/rtw_recv.h
 +++ b/drivers/staging/rtl8188eu/include/rtw_recv.h
 @@ -46,23 +46,23 @@ struct recv_reorder_ctrl {
@@ -1621,18 +1614,18 @@ index 1211508..2dfc1ed 100644
 -	len = (unsigned int )(tail - data);
 -
 -*/
-+ *	head  ----->
++ * 	head  ----->
 + *
-+ *		data  ----->
++ * 		data  ----->
 + *
-+ *			payload
++ * 			payload
 + *
-+ *		tail  ----->
++ * 		tail  ----->
 + *
 + *
-+ *	end   ----->
++ * 	end   ----->
 + *
-+ *	len = (unsigned int )(tail - data);
++ * 	len = (unsigned int )(tail - data);
 + *
 + */
  struct recv_frame {
