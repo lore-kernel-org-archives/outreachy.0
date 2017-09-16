@@ -1,111 +1,98 @@
-X-GM-THRID: 6465542343215808512
-X-Received: by 10.84.238.199 with SMTP id l7mr12937611pln.47.1505376385679;
-        Thu, 14 Sep 2017 01:06:25 -0700 (PDT)
+X-GM-THRID: 6466453874195562496
+X-Received: by 10.28.142.201 with SMTP id q192mr636074wmd.23.1505589463138;
+        Sat, 16 Sep 2017 12:17:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.174.201 with SMTP id n70ls4878880ioo.53.gmail; Thu, 14 Sep
- 2017 01:06:24 -0700 (PDT)
-X-Received: by 10.36.36.67 with SMTP id f64mr814388ita.27.1505376384895;
-        Thu, 14 Sep 2017 01:06:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505376384; cv=none;
+Received: by 10.28.61.7 with SMTP id k7ls783235wma.17.gmail; Sat, 16 Sep 2017
+ 12:17:42 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBSMkn2WoQm6fN3NDa51LC5QhInZzo+ay5Vbs8v47e2NmGb7gDg+uaKacqLRtjqZYqjo4w2
+X-Received: by 10.28.143.13 with SMTP id r13mr639982wmd.30.1505589462074;
+        Sat, 16 Sep 2017 12:17:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505589462; cv=none;
         d=google.com; s=arc-20160816;
-        b=ikjm+sPXF9jEKctnJX9zT93bnGZ7clYASSsO22fo2TZXni45ItUCm5eu5X1TaYK36n
-         CE3RYDrLvPsbrVMcp17CIuYgQa2jptutMF+gRVA8kD2WsVwjbK1gcSaLvC/5WKwAs/hE
-         ULA2/ot1hf0tjqCz12lxuWSktkBuwfqxCKeF2UrvjQOs2dXnnnV0XpKQLPYMNv6SGugM
-         RisEPr43mLf5AoeBpoDPngROO8SC9XE3iHW5Lw7PEcRCix3z6VVE+jPrVw3Z9An54/DM
-         HmwKz40HtoGFEp+9PKQdOBYt024jSBRpRRw6VH+amGYqiaBsljiaohI/YmFlyMh6+Lqp
-         vUWw==
+        b=jR4Mt+HiwEnjkvMuQ5sECCOrLFsbAGDgyBrVry1dkE44AAx1qJHHtrKlOm89sevZJm
+         sr1Mih8Azv35k+ZmAcHXAoHA6GSqzwmocWgvMSprHL8cVDC+yWqu+YpE5tG7wSW9qPXc
+         XkT5Z4mrRIqWaq4nU/LpnimSfFxrDKx0kGe4ScSV+dP2PqhaD4LbaP2TTSuytG3ZEcfx
+         qRaRjdnrT9ZgTdRH3s38Vozcjyax3oyn/ZI+OBpUe/gO4MkbTFW2nxNDH62N7b98Tehy
+         zb/xhEv0XHrhFfldEsWp9NdOyIHysJoDiJnIXLGWTB3PR9NYZC2KcG2e34HjmPRezDYK
+         r/DA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature:arc-authentication-results;
-        bh=WfqTKU0TLo0nkx9uHJmhYaT3XRj/NYO7ayEMMvmCX+I=;
-        b=dgv83WhNRjWLqC6zmbyhq6wtqwAPQRM4IRYn19fYc/LPEXQchjokh0TES9lVTOnGfE
-         NK1iaCSROmOd0WSTUpe9dvsMCkw1no9wuK5FxPG+HKigSHY0434sLYYsDzE/btpCAfdf
-         Jn6l7Q/ntUuyQ4JD2YDAO2bdq6kB4tRoM1/C+tUWsiXKjz9rh4HwwT4XhWjVVbp7r2lG
-         OULUz4RcaVNtktZuxeIzOahvWcDZ0yetv7UiYBtPz8829gXeqxVVjEUsTTkuCr7Rv89S
-         imoFSUv0FN2BxbxJsTz1fyEDMv2MRTy/UvwmATZfzxcId16NZRdJEknj/38hz/v5Nj2m
-         SVcg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=/H3LT1GC+K4Xy+4TodEFk/eL0LXjy5lHuF2d0mOIViI=;
+        b=JSw6z2DNFPlEQUJtzZRum0kNoivJATKNGV6NVaxEHW2unO5VvoYD4lMPVTIhsXNnke
+         +Wbb1rkbES/gfQJNBvme/RHKjrV2ZUzn77GPn3RDDm6MAS8j39ej6qxy0pzAmwmw/0UC
+         A46urp20cv5COY+yl20Fl3AL0qtxZXQ4gqHERSZrYxeqcFGBZO2TjzVfO2xYIOn17pdy
+         W7YreOF8URpuln2mjzxyXARfsPpXujmKP3NIK/OcFBkJU4kxf95zb2MESHATeF0a5ANd
+         tRxQMVuVhOYb4NmxY+2GN2rs7XBITEj4vTqwPyAfujTEEsC0TKib4+Uj+b1ZDWFw9FEo
+         +ykw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=d7CJ4rjE;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <meghana.madhyastha@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id t77si1578048pfi.13.2017.09.14.01.06.24
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 191si212617wmn.2.2017.09.16.12.17.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 14 Sep 2017 01:06:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Sat, 16 Sep 2017 12:17:42 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=d7CJ4rjE;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id j16so1335984pga.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 14 Sep 2017 01:06:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=WfqTKU0TLo0nkx9uHJmhYaT3XRj/NYO7ayEMMvmCX+I=;
-        b=d7CJ4rjEBLcIsu1DbBnByrpfOi/z1gGPVmJyXfI6iDRORNRKsDOvnVUjA4gWnzFlOv
-         sxcxoQCRB3wN9PoSjiEtYcpH06m25FImmaT7NTtHGv8N4MnpokhpGxFRFzQcPuWZF2OF
-         NLm3gLEd3y7OZiIffGKM2Jgl/psh6l524BNWSR/sftq7mwFhpPAayyhOE9Q61jPgW9vq
-         uBqPy6OT09t9CJHxM06hf1r4Mgh0c8C4lOyDHASlZfpMA+8NFBKQY9xKKRUkPIXe/3iC
-         yz3dO0VBT14D9OGj55ZSX99AszNfYnsJU7/dsP4aBe84W0riH/9mZBcxeieZ1WRMKElf
-         IAEw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=WfqTKU0TLo0nkx9uHJmhYaT3XRj/NYO7ayEMMvmCX+I=;
-        b=DutcItwIL53TEX1f0JPvFnHj2ZPIxS87P8xMuhw64z87hl1/evEW2jOqMUV8R3HFqd
-         dprk8MK3tYSsn1h5i+FUlEpinPoUHgl7zGx1/5FNnzQtR+9fElbmMKPKHB7mfgo7rT6t
-         5SGt81rMK2lZiaA2K1UzEm1em7f1A+9rB77eNLk86xe4iCosJzzwr0G6daBvm5JvrvU8
-         h09Zrd7QjjkCkNVm6mw4RK0HQymQRKfyf7FkMmFS2hDUVvZxO+Hzyry23iB4ng66tWMM
-         Rd1g0kon+6byOB8ESn1Acu8zis8XSwnuj/W5u8+hN7oXlb+5eT46Qtd8oPZpCfZ+jks8
-         LhYg==
-X-Gm-Message-State: AHPjjUg2hl8CkDjTrXNAsqs3Fc/W/on3q23ffTHVcnFHb2R++nId0zcx
-	PWPU5Hbpi+aheAftffE=
-X-Google-Smtp-Source: ADKCNb72qXSToMdsCDJ4Jkn6MFmNuPDa9NbtLuVxFzeugc5+2kgIz07rs1X7mAabryCYumADA/QYRQ==
-X-Received: by 10.84.224.136 with SMTP id s8mr23849130plj.324.1505376384262;
-        Thu, 14 Sep 2017 01:06:24 -0700 (PDT)
-Return-Path: <meghana.madhyastha@gmail.com>
-Received: from meghana-HP-Pavilion-Notebook ([122.172.87.17])
-        by smtp.gmail.com with ESMTPSA id h10sm28935437pgn.73.2017.09.14.01.06.21
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 14 Sep 2017 01:06:23 -0700 (PDT)
-Date: Thu, 14 Sep 2017 13:36:17 +0530
-From: Meghana Madhyastha <meghana.madhyastha@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	Jani Nikula <jani.nikula@linux.intel.com>,
-	dri-devel@lists.freedesktop.org
-Subject: [PATCH v3 0/4] drm/agpsupport: Code cleanup
-Message-ID: <cover.1505376068.git.meghana.madhyastha@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,404,1500933600"; 
+   d="scan'208";a="291397628"
+Received: from 85-171-60-79.rev.numericable.fr (HELO [192.168.0.15]) ([85.171.60.79])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 16 Sep 2017 21:17:41 +0200
+Date: Sat, 16 Sep 2017 21:17:41 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Georgiana Chelu <georgiana.chelu93@gmail.com>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
+    mchehab@kernel.org
+Subject: Re: [Outreachy kernel] [PATCH] staging: media: atomisp: pci: Move
+ constants to right side of comparisons
+In-Reply-To: <20170916190334.awmvwhunsgz4iozl@fireworks>
+Message-ID: <alpine.DEB.2.20.1709162117180.1992@hadrien>
+References: <20170916190334.awmvwhunsgz4iozl@fireworks>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-Removes checkpath.pl errors and warnings.
 
-Changes in v3:
- -Change commit title prefix from drm to drm/agpsupport
- -Split the commit "Move EXPORT_SYMBOL so that it immediately follows its
-     function" into two commits. Removing the extra blank line is 
-     now a separate commit.
- -Included merging conditionals in "Remove assignment in if condition"
-     in the commit message
 
-Meghana Madhyastha (4):
-  drm/agpsupport: Replace "foo * bar" with "foo *bar"
-  drm/agpsupport: Remove assignment in if condition
-  drm/agpsupport: Move EXPORT_SYMBOL so that it immediately follows its
-    function
-  drm/agpsupport: Remove extra blank line
+On Sat, 16 Sep 2017, Georgiana Chelu wrote:
 
- drivers/gpu/drm/drm_agpsupport.c | 45 ++++++++++++++++++++--------------------
- 1 file changed, 23 insertions(+), 22 deletions(-)
+> Place the constant on the right side of the comparison
+> to increase the readability of the code.
+>
+> Warning found by "checkpatch.pl".
+>
+> Signed-off-by: Georgiana Chelu <georgiana.chelu93@example.com>
 
--- 
-2.7.4
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 
+> ---
+>  .../media/atomisp/pci/atomisp2/css2400/runtime/queue/src/queue.c        | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/queue/src/queue.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/queue/src/queue.c
+> index 606376fdf0ba..81c0e057a8b8 100644
+> --- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/queue/src/queue.c
+> +++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/queue/src/queue.c
+> @@ -88,7 +88,7 @@ int ia_css_queue_enqueue(
+>  			uint32_t item)
+>  {
+>  	int error = 0;
+> -	if (NULL == qhandle)
+> +	if (qhandle == NULL)
+>  		return EINVAL;
+>
+>  	/* 1. Load the required queue object */
+> --
+> 2.11.0
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170916190334.awmvwhunsgz4iozl%40fireworks.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
