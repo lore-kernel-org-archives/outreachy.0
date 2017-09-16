@@ -1,90 +1,188 @@
-X-GM-THRID: 6393330913423392768
-X-Received: by 10.157.12.97 with SMTP id 88mr1452053otr.122.1488563351479;
-        Fri, 03 Mar 2017 09:49:11 -0800 (PST)
+X-GM-THRID: 6466340392828665856
+X-Received: by 10.107.28.142 with SMTP id c136mr4637893ioc.52.1505564761820;
+        Sat, 16 Sep 2017 05:26:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.162.197 with SMTP id l188ls1240690ioe.23.gmail; Fri, 03
- Mar 2017 09:49:10 -0800 (PST)
-X-Received: by 10.99.108.71 with SMTP id h68mr1573374pgc.130.1488563350548;
-        Fri, 03 Mar 2017 09:49:10 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id r66si164284pfb.7.2017.03.03.09.49.10
+Received: by 10.107.178.208 with SMTP id b199ls8137597iof.8.gmail; Sat, 16 Sep
+ 2017 05:26:01 -0700 (PDT)
+X-Received: by 10.84.215.220 with SMTP id g28mr12469190plj.59.1505564760977;
+        Sat, 16 Sep 2017 05:26:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505564760; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Xd3m7s8QgvEj0GIZKMJjCmGrDvzt2PalPac3jp7AGYlEp2tbmVX8elKTpwWTKUWo5e
+         20p9jQf7XSN6p0Oj+sKmWIR34JczWsuKhYXFjlRagzKGstcdyrbRqdpGkFtGzgxrxpz3
+         UtHeVUhxV7rCqhh6NbZsHQ7o+LFQY+j7pDjaAuH8V7Bx6NPomyMjhoBpQfz1OdXsSqVt
+         XGLSsddkWvmLqP+YTgLvmzjVvC5VfMRWdzpUw8CJRD0m3bVmoelcIi7d9Lq8kcp1Z5ds
+         pWCVygKWj8P3ZH3e+KhMyOmrHUYOGJtQbz5EGUMMROMt/eCJIswqBfvm5V02msGk8nAm
+         n32Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=hEyZnsFndaDYWGXFa7g3UoTJwcnl5oL85ETZm1dG5og=;
+        b=AjZd27Rog+XoCCTO1PCcROzn0g6m4LX53xg5kxw9/0jfphmIoywutUwRmH1X0p+wxw
+         LF2/osljErItPwXCczXuH9vamgT8u8oJ2MOUXDFLiAqM17RlW/6xb4QsC7nDEV3oQA3g
+         28xl4X7EXewVMi/HYrHbhVn4pyPfCk0FT+c9Epbv7+6cdQT/1E0cKRskDrx45sP49LVK
+         GO4Hpy1KmIjQdsmpn49KrjsOq62L+rwQQ/ADNq8qoz7lHtzCUZa93iDq3Wsy141+jogO
+         9rjo7HCpfjDDaUsNTdZivJOMWgAFZAO+DNnkvN9MD20178a3E2JpcE8gE7y0yORys5xp
+         2ckQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QeTIwakw;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c09::241 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <srishtishar@gmail.com>
+Received: from mail-qk0-x241.google.com (mail-qk0-x241.google.com. [2607:f8b0:400d:c09::241])
+        by gmr-mx.google.com with ESMTPS id l129si115158ywg.19.2017.09.16.05.26.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Mar 2017 09:49:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Sat, 16 Sep 2017 05:26:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c09::241 as permitted sender) client-ip=2607:f8b0:400d:c09::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QeTIwakw;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c09::241 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id s67so13285616pgb.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 03 Mar 2017 09:49:10 -0800 (PST)
+Received: by mail-qk0-x241.google.com with SMTP id c69so2959706qke.5
+        for <outreachy-kernel@googlegroups.com>; Sat, 16 Sep 2017 05:26:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=lXVVy0s0V9HdpKIuY2/Yuv64s2AZ7WtVHzoGqX5SIgQ=;
-        b=tHOscT1qYZPpehk4jlwQ6mZHoGFP5D2E8t7U6HEYF4v5oS3SyMvN+AndAzkb1kgSwn
-         DFHG4QAZbHUy9P2VhRc0JbYcb7BpnWaLu+svl/30mI6jPgXXoPJVR7q9gU4163xc7tyR
-         BJNAVMjnAVoogEOXpbhALIROywbG5fJCl4IBk4jyFUPySqCaCITAiW2PrJ1gaYiM1oas
-         FTm3BuZq7LzETKdAUiTLG5uJpN/zPKV2sUbCmVssVu3QhQeNgP172NXFYcQ6JC1i5IYa
-         mPW34vPuRW72vFpMLaaB1j8MtgDYAUMOFSuUpKJzMfIbMPPet1Qn3xShRJIw2HpdENuy
-         mPNg==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=hEyZnsFndaDYWGXFa7g3UoTJwcnl5oL85ETZm1dG5og=;
+        b=QeTIwakw4m6YSlbObKwsvDcCngglKxM7b3kKcQDxXDy7m7FT6w4m6MS+LUmLmOfEzk
+         Kyv1U0YCpr6ULfvyj5hWxN3RAqZpMXf02HYsZB/HUSha+tfmBBrDo/G6gZoKWWKLt1Eq
+         50zAqZzB10uGhBJvjWkqGb9ot6b4OyJAFwed4EdPRQS5GjQe21/v/LZq6uQ5O6QPufY0
+         tafwjB8T9qemgg2jSCYUZ4CpxbysP0y8DgMt6O8MyKhC0UZOxMWWlPL29eW2sZ/sPqGc
+         TkhVE2iYUz6n/Qf/HsbLwBox7W0RWNJb/ya47JM6dXjTSW62k//3ZKsxSfLawIj7inLa
+         TXnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=lXVVy0s0V9HdpKIuY2/Yuv64s2AZ7WtVHzoGqX5SIgQ=;
-        b=U2j05SLpihsVQuAI0AdyJdASUUymIzfgSV/LGxTJybgQeJwhs5VMwG0EtaXaLIZO6U
-         TiiqTxLFdlKtxeFMzh/Xi7FOcaVIlG+fLCMy0mixbc4Chh1i1K653hIKoGyuI1Q12rAe
-         fZNGOPDdGhCBMhBO/0QTm5t48wmaXLXRJ89krZ7r4I2ZRQM/tQAW6Zcd6sqM3HMDWa4E
-         7jNTjp4O0D4PTdUWIh/W38XQakTZYeSnJx/05BCXNvqTxozmLrtF2ZIwQT0CHO4WUrrZ
-         UzQx7jyfYOu+sWZ45OmLLef/tBtfEqDZqIYbYbDk/qE5sLNL15xOZfI8vdhz0Ed51c2x
-         8PjQ==
-X-Gm-Message-State: AMke39nsarqKMjr4a/eZMC9S+On85qh4aavNxpcDGGXsWgxk+QEi8sGD4stotRTSKhD/5Q==
-X-Received: by 10.98.16.14 with SMTP id y14mr4896092pfi.63.1488563350027;
-        Fri, 03 Mar 2017 09:49:10 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id q23sm24654321pfg.63.2017.03.03.09.49.08
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 03 Mar 2017 09:49:09 -0800 (PST)
-From: simran singhal <singhalsimran0@gmail.com>
-To: Larry.Finger@lwfinger.net
-Cc: florian.c.schilhabel@googlemail.com,
-	gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	oleg.drokin@intel.com,
-	marvin24@gmx.de,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH v4 0/5] Remove unnecessary cast on void pointer
-Date: Fri,  3 Mar 2017 23:18:59 +0530
-Message-Id: <1488563344-31032-1-git-send-email-singhalsimran0@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=hEyZnsFndaDYWGXFa7g3UoTJwcnl5oL85ETZm1dG5og=;
+        b=lB3/YTNr6+A+qYuy8ldKrpfav3zRtuvH3wy/bo+B+F+06g8FRsQPuk6MTO+nXkDyBc
+         xRk2E9lQMk4Po1oumzNxuAn5daxTCogupgzBGCfsPuW6Inko9Afc8h93Szm1KT/lOjDh
+         wgVFymtJ/BmB1asEZeM7sivulRgtJyTB2ee4i6zLopsDSCjNpzOw2OepfIVE9CfomDvh
+         tegRGuU14/qL+s12SRLcSDdJJqXAzjUzSYTgSddIHzL5adcqDu9/DUujAgMzdumZUX16
+         qRBv5ntwdMhmxuvquHTlvnAWYQoQZKsisH4M2NHTmqbc7uSY/PmZprDbnjahbKYa+k9q
+         4K4Q==
+X-Gm-Message-State: AHPjjUi13lZasg39vYTuAqmJwR/6Nemsg6xlLRHXC823SEsTsVLd0acZ
+	MeGWHjed4pUN82LzOj8qH6mnKvaK8GIjbZqL1vU=
+X-Google-Smtp-Source: AOwi7QAaizAI03g4msGcoNUBbKq2rUoal8q6ZcK1hpLB0wL0LxY+Lj8sLIu5whJXenhetW9Jz3FUbqYRQ4ezKqR22I0=
+X-Received: by 10.55.79.65 with SMTP id d62mr12238941qkb.224.1505564760496;
+ Sat, 16 Sep 2017 05:26:00 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.200.55.118 with HTTP; Sat, 16 Sep 2017 05:26:00 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.20.1709161414010.2943@hadrien>
+References: <1505562186-11813-1-git-send-email-srishtishar@gmail.com>
+ <alpine.DEB.2.20.1709161349030.2943@hadrien> <CAB3L5oy-yVREBwnbmJnhdnNcTtP4h77=6BGxncynZwMcQoeOsQ@mail.gmail.com>
+ <alpine.DEB.2.20.1709161414010.2943@hadrien>
+From: Srishti Sharma <srishtishar@gmail.com>
+Date: Sat, 16 Sep 2017 17:56:00 +0530
+Message-ID: <CAB3L5ow8R3=oHYhKoZaeLAgPVUw2j2nYC5qkCZMns=oJs5uEtA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: dgnc: Remove unused variables
+ from structure definition
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Lidza Louina <lidza.louina@gmail.com>, markh@compro.net, 
+	Greg KH <gregkh@linuxfoundation.org>, driverdev-devel@linuxdriverproject.org, 
+	devel@driverdev.osuosl.org, 
+	Linux kernel mailing list <linux-kernel@vger.kernel.org>, outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset="UTF-8"
 
-This patch-series removes unnecessary cast on void pointer in various 
-drivers.
+On Sat, Sep 16, 2017 at 5:45 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+> On Sat, 16 Sep 2017, Srishti Sharma wrote:
+>
+>> On Sat, Sep 16, 2017 at 5:20 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>> >
+>> >
+>> > On Sat, 16 Sep 2017, Srishti Sharma wrote:
+>> >
+>> >> Some variables in the structure were unused and hence them and
+>> >> the comments associated with them can be removed.
+>> >
+>> > How did you find these?  The last two can easily be checked with grep, but
+>> > that is ont the case for type.
+>>
+>> I removed them and then compiled the code to see if it still compiles.
+>
+> This is not 100% reliable because of the possibility of uses inside
+> ifdefs.  So you need to double check that you have found every occurrence
+> of the structure type for the type field.  The others seem not dangerous.
 
-v4:
-  -change the cover-letter subject
-v3:
-  -Fixed compilation warning in lustre/lustre/llite/range_lock.c
+Okay, I'll do that . Thanks
 
-simran singhal (5):
-  staging: nvec: Remove unnecessary cast on void pointer
-  staging: lustre: Remove unnecessary cast on void pointer
-  staging: lustre: lustre: Remove unnecessary cast on void pointer
-  staging: rts5208: Remove unnecessary cast on void pointer
-  staging: rtl8712: Remove unnecessary cast on void pointer
-
- drivers/staging/lustre/lustre/llite/range_lock.c |  2 +-
- drivers/staging/lustre/lustre/lmv/lmv_obd.c      |  4 ++--
- drivers/staging/lustre/lustre/mgc/mgc_request.c  |  2 +-
- drivers/staging/nvec/nvec_kbd.c                  |  2 +-
- drivers/staging/rtl8712/rtl8712_recv.c           | 11 +++++------
- drivers/staging/rts5208/rtsx_transport.c         |  3 +--
- 6 files changed, 11 insertions(+), 13 deletions(-)
-
--- 
-2.7.4
-
+Srishti
+>
+> julia
+>
+>> I was using grep earlier to see if the fields in the structure are
+>> ever accessed by the variables of that structure type, as the TODO of
+>> the driver says that there is a lot of unneeded code.
+>> >
+>> > Actually there are two structures in the file with useless
+>> > proc_entry_pointer fields.  The other one has a useless
+>> > dgnc_channel_table.  It could be reasonable to make a series to do both
+>> > structures.
+>>
+>> Okay, I'll send them as a series. Thanks
+>>
+>> Regards,
+>> Srishti
+>>
+>> > julia
+>> >
+>> >>
+>> >> Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+>> >> ---
+>> >>  drivers/staging/dgnc/dgnc_driver.h | 10 ----------
+>> >>  1 file changed, 10 deletions(-)
+>> >>
+>> >> diff --git a/drivers/staging/dgnc/dgnc_driver.h b/drivers/staging/dgnc/dgnc_driver.h
+>> >> index 764d6fe..2b625cc 100644
+>> >> --- a/drivers/staging/dgnc/dgnc_driver.h
+>> >> +++ b/drivers/staging/dgnc/dgnc_driver.h
+>> >> @@ -103,8 +103,6 @@ struct board_ops {
+>> >>  /**
+>> >>   * struct dgnc_board - Per board information.
+>> >>   * @boardnum: Board number (0 - 32).
+>> >> - *
+>> >> - * @type: Type of board.
+>> >>   * @name: Product name.
+>> >>   * @pdev: Pointer to the pci_dev structure.
+>> >>   * @bd_flags: Board flags.
+>> >> @@ -140,13 +138,9 @@ struct board_ops {
+>> >>   * @dpastatus: Board status as defined by DPA.
+>> >>   * @bd_dividend: Board/UART's specific dividend.
+>> >>   * @bd_ops: Pointer to board operations structure.
+>> >> - * @proc_entry_pointer: Proc/<board> entry
+>> >> - * @dgnc_board_table: Proc/<board> entry
+>> >>   */
+>> >>  struct dgnc_board {
+>> >>       int             boardnum;
+>> >> -
+>> >> -     int             type;
+>> >>       char            *name;
+>> >>       struct pci_dev  *pdev;
+>> >>       unsigned long   bd_flags;
+>> >> @@ -200,10 +194,6 @@ struct dgnc_board {
+>> >>       uint            bd_dividend;
+>> >>
+>> >>       struct board_ops *bd_ops;
+>> >> -
+>> >> -     struct proc_dir_entry *proc_entry_pointer;
+>> >> -     struct dgnc_proc_entry *dgnc_board_table;
+>> >> -
+>> >>  };
+>> >>
+>> >>  /* Unit flag definitions for un_flags. */
+>> >> --
+>> >> 2.7.4
+>> >>
+>> >> --
+>> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1505562186-11813-1-git-send-email-srishtishar%40gmail.com.
+>> >> For more options, visit https://groups.google.com/d/optout.
+>> >>
+>>
 
