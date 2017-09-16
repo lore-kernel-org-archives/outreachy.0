@@ -1,111 +1,122 @@
 X-GM-THRID: 6466352868892868608
-X-Received: by 10.46.87.82 with SMTP id r18mr2373905ljd.37.1505565372600;
-        Sat, 16 Sep 2017 05:36:12 -0700 (PDT)
+X-Received: by 10.99.134.65 with SMTP id x62mr17115829pgd.56.1505565100108;
+        Sat, 16 Sep 2017 05:31:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.66.146 with SMTP id h18ls629633ljf.36.gmail; Sat, 16 Sep
- 2017 05:36:10 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QDQ37tPQjSDab0h/0ZKhDrhWcQUqrwdZFUjP8Q5lQ/pSXd27Rg4Jt4knch2juK8OBgNyvka
-X-Received: by 10.46.87.82 with SMTP id r18mr2373903ljd.37.1505565370926;
-        Sat, 16 Sep 2017 05:36:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505565370; cv=none;
+Received: by 10.107.10.73 with SMTP id u70ls1398434ioi.17.gmail; Sat, 16 Sep
+ 2017 05:31:39 -0700 (PDT)
+X-Received: by 10.107.182.215 with SMTP id g206mr4866113iof.123.1505565099408;
+        Sat, 16 Sep 2017 05:31:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505565099; cv=none;
         d=google.com; s=arc-20160816;
-        b=Vjxk1LmgVFVgAj45a2i1VxYkdcymATGCHNZpoea5u7uQPied/6GMosqdPD1lfK3fAP
-         86hTw52B7A1vjNdJTq0XdpZmb7kKUsvLEHKT7IMUenlPC7PRXfFxMAsIIWIrMjSLx1ib
-         tnDIKwCJ6eJI2VDM9sCNRFsi7RbzY0I3cyN3FP0hdghVJ2lcguo7LIxEkeuGG6ku67zG
-         EiqLfiOMNMlosXf5r/bg6i73MThGDq2YgZ+nPa5tJ0jG1Z7E4/LkkTK/IXIRbc3vAIWp
-         6Xf+izsD9kKFMWJ5FnxPoGx8XzGXdvdvEorFFvya7espF8rjVAVysBLjiTTaXqXK7sLs
-         mbOg==
+        b=nXiIlcsKsoVHWZ0HzxBlOM5w5KcMTnB2FRNAfb84VTCPqGpv+Rth5XxQviW2CPXSvk
+         1G1Cgd3ioT6AbiQHOim14HWL9C9GqGwGijc5YFJl2cjfXW6EdE8StFoSnwZn3+AFRHc6
+         OSC6oP2HVmZ9by7Hx2xJhm6cyCzXpWkw/0IjH88C5p14UZXx55zriGE80SmW9BKsiTft
+         I3u7b6GYx+PZSRvyQGsPfkl4mNMJo5A0Up73/F8XwtMRTB7XLldE8qKPfH9aI5p5VaE6
+         XuZyUHWPc/56igrCpeiXB7gneP0+EiysIjnliQz+fBbcSKN+MxDnOh2U1nkVGcxWwogP
+         hERg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=CTtansltTODvRHbwCCuEF1mc85EJWojiCdoT4qPwDiE=;
-        b=w11cWRy7SEoJnWIMdcwfLZGcJUrO+UldkM2T7UVaDuq9Xu1TSi5VDoQv+R3hpAGmfD
-         e8UfcqBQe1BkQM+x8mFbGvnMyiOncE5QbqZ8CkM8qNbL+PKNmPSs5x+tCm/AxAz+jQ0g
-         sTvVY+LZoqvec5MnHFdNPOhR9x0DujuSaHl7i/5lLbsmdW6S7odzvmk7bicOhMntW5pk
-         c4cdn4JtaxRCXPU4fJSRasyDEQrG/VkwfK9HkZeUIU/dROnohpFwQlkY+7u0H/vZrKMR
-         dTCVVi6GikO0qAWzVEUMk1Ju2b5qzy6VFXCo+DkkeLgKqkAQpiqpVq3fx5HEwp6nqRVR
-         K1fQ==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=INupHNaxEAx7VJo7j+V1BHrZ0VJmnTWQ4lqtXsP8F7Y=;
+        b=Y0ZxvmjgnGblla93e+rar8CfDm8OaeIoy2Sh6Y3/Do7l8AYsXMuaFk8QiiM/dgdigr
+         nlh9DZufKnXJgXEDUU3i9CeohD1mb65HFPy0KbwMLsbb59R4jlXVmd1kogQofAXTfgBV
+         TK60/NkcWemig3aEXQty4JAhQgZL16MtUHzH+WM73AzLcs2Pe/cnwLlsFlSVTiccwatx
+         CmJkMdo9EdLiRA3rYn6GkPhlxy2iJdUcYE2f0kdMcEOO4V3uG1gzThuVxR09pLWPm/hN
+         TVG1yua6quXNcCyHWNcwo4DQPMhKBGbVkXKSrlms0IiXYVG4FvHDSnvBkvjLZ9kUyZO4
+         Mrhg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id j4si171540wmi.2.2017.09.16.05.36.10
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=AKmGbACh;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id k76si274215pfa.10.2017.09.16.05.31.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Sep 2017 05:36:10 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sat, 16 Sep 2017 05:31:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.42,402,1500933600"; 
-   d="scan'208";a="291379964"
-Received: from 85-171-60-79.rev.numericable.fr (HELO [192.168.0.15]) ([85.171.60.79])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 16 Sep 2017 14:36:10 +0200
-Date: Sat, 16 Sep 2017 14:36:10 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Aastha Gupta <aastha.gupta4104@gmail.com>
-cc: outreachy-kernel@googlegroups.com, Lidza Louina <lidza.louina@gmail.com>, 
-    Mark Hounschell <markh@compro.net>, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [Outreachy kernel] [PATCH] staging: dgnc: remove variable rc
-In-Reply-To: <1505565088-9210-1-git-send-email-aastha.gupta4104@gmail.com>
-Message-ID: <alpine.DEB.2.20.1709161435500.2943@hadrien>
-References: <1505565088-9210-1-git-send-email-aastha.gupta4104@gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=AKmGbACh;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x244.google.com with SMTP id g65so2486427pfe.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 16 Sep 2017 05:31:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=INupHNaxEAx7VJo7j+V1BHrZ0VJmnTWQ4lqtXsP8F7Y=;
+        b=AKmGbAChlWJ2V/oCeBUkCvZZPUDamx9SUHoqPy5kviQ1JSimSySPqddoOl+cW8T/lq
+         wzefq+cwdJlLa+PZxgg1fxIeYCmkQU2XvLuOIjrJbmIJPCTsVgnwNQvmuCVasTYiO5TL
+         8kCiiXcZGKUK1GOTLX0gswx8AswVhVzmwFHBP6taJI1Ag79Ydq0jMJruFeAROITGnTJi
+         aBTSfemj1AgEekuGI4OzsMARTK2fsGWRtWV3mOou4gWGhzgNyEdc7xpCVStbNln5Vo6A
+         N/Z3PivQwIsKY+xp+51KFuRzSAcJuowzaiDjrNogBc1iKgS4dfTfb2QGIimdSs8FXdNj
+         pdgA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=INupHNaxEAx7VJo7j+V1BHrZ0VJmnTWQ4lqtXsP8F7Y=;
+        b=FZAR3CysEbbGhZJLFkockVew4odOJ+/sZbgmt7gwTIJRhiSmIZdaFz0rpUTIDMvpsl
+         P1o31Mu6OcGW4bYdoZ2y3ePDgic2KWRq+kV2N/FNzh6hF12PGu6A410GNdxYRskth5AW
+         4/tHCcEOe8iFQY34Xxw7aaBa4Be4L2J+bYSFdSLQ2eeydpEUJQqIEpwap2AaXpb7PE1/
+         2QZ1ZDeMFY2WJwfvz4TKyUNsbbPptgv3ABzsTdt8gTLUgFp/1MuEhUFYJd557bpQwudE
+         z/URD7ADZxGRBOL5fbUf8JziGV+Z7LuaBwU2QddU0clnqPZBVKZ33p4V+/jqHPJ1njpK
+         wBYA==
+X-Gm-Message-State: AHPjjUh4s9WD4LB9g2vw+fAoHP8POdB20mIYWx4Wmjenvx2A1CHbhhm6
+	Yle0QL/LY4NkSg==
+X-Google-Smtp-Source: ADKCNb6x97vVd8jSO9WUXF0OLjTOP17iT5m9DVGFcvO86zprj4XkTQgZ81tXv16PCAA7mJVMOCCweA==
+X-Received: by 10.101.73.136 with SMTP id r8mr26504082pgs.67.1505565099067;
+        Sat, 16 Sep 2017 05:31:39 -0700 (PDT)
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from aastha-HP-Pavilion-15-Notebook-PC ([27.56.167.173])
+        by smtp.gmail.com with ESMTPSA id p70sm7218706pfk.130.2017.09.16.05.31.37
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 16 Sep 2017 05:31:38 -0700 (PDT)
+From: Aastha Gupta <aastha.gupta4104@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	Lidza Louina <lidza.louina@gmail.com>,
+	Mark Hounschell <markh@compro.net>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
+Subject: [PATCH] staging: dgnc: remove variable rc
+Date: Sat, 16 Sep 2017 18:01:28 +0530
+Message-Id: <1505565088-9210-1-git-send-email-aastha.gupta4104@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
+Found using coccinelle script:
+@@
+local idexpression ret;
+expression e;
+@@
 
+-ret =
++return
+     e;
+-return ret;
 
-On Sat, 16 Sep 2017, Aastha Gupta wrote:
+Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
+---
+ drivers/staging/dgnc/dgnc_neo.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-> Found using coccinelle script:
-> @@
-> local idexpression ret;
-> expression e;
-> @@
->
-> -ret =
-> +return
->      e;
-> -return ret;
->
-> Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
-> ---
->  drivers/staging/dgnc/dgnc_neo.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
->
-> diff --git a/drivers/staging/dgnc/dgnc_neo.c b/drivers/staging/dgnc/dgnc_neo.c
-> index 1943e66..a8491d7 100644
-> --- a/drivers/staging/dgnc/dgnc_neo.c
-> +++ b/drivers/staging/dgnc/dgnc_neo.c
-> @@ -1199,12 +1199,9 @@ static int neo_drain(struct tty_struct *tty, uint seconds)
->  	un->un_flags |= UN_EMPTY;
->  	spin_unlock_irqrestore(&ch->ch_lock, flags);
->
-> -	rc = wait_event_interruptible_timeout(un->un_flags_wait,
-> +	return wait_event_interruptible_timeout(un->un_flags_wait,
->  					      ((un->un_flags & UN_EMPTY) == 0),
->  					      msecs_to_jiffies(seconds * 1000));
-> -
-> -	/* If ret is non-zero, user ctrl-c'ed us */
-> -	return rc;
+diff --git a/drivers/staging/dgnc/dgnc_neo.c b/drivers/staging/dgnc/dgnc_neo.c
+index 1943e66..a8491d7 100644
+--- a/drivers/staging/dgnc/dgnc_neo.c
++++ b/drivers/staging/dgnc/dgnc_neo.c
+@@ -1199,12 +1199,9 @@ static int neo_drain(struct tty_struct *tty, uint seconds)
+ 	un->un_flags |= UN_EMPTY;
+ 	spin_unlock_irqrestore(&ch->ch_lock, flags);
+ 
+-	rc = wait_event_interruptible_timeout(un->un_flags_wait,
++	return wait_event_interruptible_timeout(un->un_flags_wait,
+ 					      ((un->un_flags & UN_EMPTY) == 0),
+ 					      msecs_to_jiffies(seconds * 1000));
+-
+-	/* If ret is non-zero, user ctrl-c'ed us */
+-	return rc;
+ }
+ 
+ /*
+-- 
+2.7.4
 
-Maybe the comment should be preserved?
-
-julia
-
->  }
->
->  /*
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1505565088-9210-1-git-send-email-aastha.gupta4104%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
