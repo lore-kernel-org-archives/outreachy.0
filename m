@@ -1,92 +1,70 @@
-X-GM-THRID: 6392252135167229952
-X-Received: by 10.46.82.157 with SMTP id n29mr553565lje.29.1488312179927;
-        Tue, 28 Feb 2017 12:02:59 -0800 (PST)
+X-GM-THRID: 6465665383361675264
+X-Received: by 10.25.77.17 with SMTP id a17mr762430lfb.21.1505728516208;
+        Mon, 18 Sep 2017 02:55:16 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.5.71 with SMTP id 68ls209535ljf.34.gmail; Tue, 28 Feb 2017
- 12:02:58 -0800 (PST)
-X-Received: by 10.25.67.70 with SMTP id m6mr492823lfj.21.1488312178975;
-        Tue, 28 Feb 2017 12:02:58 -0800 (PST)
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from mail-wr0-x241.google.com (mail-wr0-x241.google.com. [2a00:1450:400c:c0c::241])
-        by gmr-mx.google.com with ESMTPS id y19si1314372wmd.0.2017.02.28.12.02.58
+Received: by 10.46.87.20 with SMTP id l20ls771101ljb.20.gmail; Mon, 18 Sep
+ 2017 02:55:15 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QA2awozI6jsbtGhQAZd22keMeSwzoxvuqWUjiepzE9nj5ZBfFXRKV5Z72cQuNJXMrdR9196
+X-Received: by 10.25.78.196 with SMTP id u65mr789878lfk.4.1505728515386;
+        Mon, 18 Sep 2017 02:55:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505728515; cv=none;
+        d=google.com; s=arc-20160816;
+        b=R1pq491orAb6jnrdSmPQP4sLc7dDIIqKyMOP8ctk7NOsK7P0RGwz/aQyBg55FgBaLX
+         7Qc7+G0BlKyWnORzEAEwKnY7eGZaclx/7oM2xHSvEqD3R2wkdSa7/HYEx25sNRm3+F08
+         l+A0I2B1OLRPbakN3XHsJMAoR+H2TythASFaMI/kSQR4EiMkA/aZAIQ6qwovEjkRADm4
+         YXhHsgfg/ttFCGLppWAPBKACZiPN6uhTAHhwW/WPcbiFu+aJlSPy+W5TWDrSp+hgAfb9
+         BVyIgv4JgZ2A5iC8N69HpUjkR473mAZX5x5/HlqJ0XJERsfhmRyc+8x4urQkBl2MXJmg
+         YmYA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=sRkOOAq6UdOjy+7UcvuWpNPYoauwfQ1phNMFNillpJM=;
+        b=BhlJ/CYTmJ2DgPopXhGZhUUgLRrC9ypG/quL7hD6/AYcc32LpEJDAIk0Ho0tn9JxO9
+         wAc8b+87GbMAOqmqQdv8EE0swSixTRx8Wx4FGtYxEoBJ/8CiInMcbkNZ3eoNR3VpngjA
+         9GEYXGP2E6BkQ5Ez2JVGl3Vt4MG8DkMj0uKCYdg1yRk+7SQ10XHjA0i/lHJ0fHu026io
+         Sq4yU+NnvZWGAoihyT9UQtL8iME1VP7DPJcHIs5KfT+htlunlkMXkq7DekCxCREpABkA
+         f1CJYW1s1K6JGtRI+JEJ4VZ1TAze3E3moWIgw0+vGY1+NbNg2Ow2fhG3cP/CZYWbiCeZ
+         wzzg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id b62si383330wmd.3.2017.09.18.02.55.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Feb 2017 12:02:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) client-ip=2a00:1450:400c:c0c::241;
+        Mon, 18 Sep 2017 02:55:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x241.google.com with SMTP id q39so2888022wrb.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 28 Feb 2017 12:02:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=vQXaDxV/dCJ1gEntO1GiewImYL9OPxTr4WcuFCx2g3Q=;
-        b=GIOAXT7jIbJMmmgRqjOqjMtDkBEUPhZn08MZV1TAMX/mMqDte5XkscUuO/JJniDL2m
-         ZerVbp7tP5VlpJ2dI0VRkIVULyUDvIIWnFhDel2LMSopKhHOoOMwwboAWEIZNI6U8cof
-         pdzPhxvBqfJGR4nKSx0kcekd8YkeRiJGceEXWSuJT4iKb7vz+32oRnJLFFwfILrqUWGw
-         387TNc/pE3sKi7uLSLqsBs7qCe1Cqddl0B9rNtmq5Sef3XLzKBBTzvbA0JpWkbc/kWb3
-         j6eo13XgSGht9Dt0ZtQVk2lhDbjmzhLKgxzFRgYnIeVIX5+6GYacrb0rLzvAuLz8eXye
-         rAXg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=vQXaDxV/dCJ1gEntO1GiewImYL9OPxTr4WcuFCx2g3Q=;
-        b=WYNonFrd0HOi0PrCt+e9Tsa5AGfSgdRNleyw8s6l96AUxQ+diREGGi8FZ1M1JNCMzU
-         sEJgOvEEQAXWgd2srFgl9CffuJFQ0cHZa6FzHEAVwMio6D53JQsla0RtfwZTs6CP3DzT
-         0ef1S0NpwWvYMoo50mwdVfnqw7gIBSyFy8T/2E+fo117cPNTaeCJzZqSg7OQ9eG7Ym2O
-         Aj9kEcZw46v1SWzRw9hxeKKEqypYnzHiWH/QX3dx5jCa7DInjE7XRiqFdNZLOSi1aPme
-         0vusuYzgdd+6nc7kKwfYakLZOpvfIo3NUHPhq5Fu0yoCEsFQfieu3ZXRGf6BFf34zdhJ
-         tm4g==
-X-Gm-Message-State: AMke39lgoT67FmGRBCZ5ROMX2fws6GV28bEDgkt5KM4mQKuKFJpqr6e0t0BbbF4zz/BX/Q==
-X-Received: by 10.223.164.83 with SMTP id e19mr3797596wra.201.1488312178761;
-        Tue, 28 Feb 2017 12:02:58 -0800 (PST)
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from fireworks ([84.117.92.113])
-        by smtp.gmail.com with ESMTPSA id t103sm3640527wrc.43.2017.02.28.12.02.57
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 28 Feb 2017 12:02:58 -0800 (PST)
-Date: Tue, 28 Feb 2017 22:02:57 +0200
-From: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH] staging:rtl8192u: Check memory allocation
-Message-ID: <20170228200257.GA14816@fireworks>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (LFbn-1-12253-150.w90-92.abo.wanadoo.fr [90.92.67.150])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id AD7FFAEF;
+	Mon, 18 Sep 2017 09:55:13 +0000 (UTC)
+Date: Mon, 18 Sep 2017 11:55:25 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Harsha Sharma <harshasharmaiitr@gmail.com>
+Cc: Julia Lawall <julia.lawall@lip6.fr>, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: Remove unused
+ variable ret
+Message-ID: <20170918095525.GA14946@kroah.com>
+References: <1505404910-11548-1-git-send-email-harshasharmaiitr@gmail.com>
+ <alpine.DEB.2.20.1709141807561.3185@hadrien>
+ <CANMOCy2qhAaEdwLGM3L7sJmFNkNTqeRnwoy4am5yFt6ie5QhOQ@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <CANMOCy2qhAaEdwLGM3L7sJmFNkNTqeRnwoy4am5yFt6ie5QhOQ@mail.gmail.com>
+User-Agent: Mutt/1.9.0 (2017-09-02)
 
-Check if the allocation is not successful and
-return the error code -ENOMEM.
+On Thu, Sep 14, 2017 at 10:21:29PM +0530, Harsha Sharma wrote:
+> Hi,
+> Yes, you are right but the function returns 0 in the end and the changes
+> compiles well .
 
-Signed-off-by: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
----
- drivers/staging/rtl8192u/r8192U_core.c | 4 ++++
- 1 file changed, 4 insertions(+)
+Then the function is incorrect, it should be reporting back that error.
 
-diff --git a/drivers/staging/rtl8192u/r8192U_core.c b/drivers/staging/rtl8192u/r8192U_core.c
-index b631990..04025b6 100644
---- a/drivers/staging/rtl8192u/r8192U_core.c
-+++ b/drivers/staging/rtl8192u/r8192U_core.c
-@@ -1689,9 +1689,13 @@ static short rtl8192_usb_initendpoints(struct net_device *dev)
- #ifndef JACKSON_NEW_RX
- 	for (i = 0; i < (MAX_RX_URB + 1); i++) {
- 		priv->rx_urb[i] = usb_alloc_urb(0, GFP_KERNEL);
-+		if (!priv->rx_urb[i])
-+			return -ENOMEM;
- 
- 		priv->rx_urb[i]->transfer_buffer =
- 			kmalloc(RX_URB_SIZE, GFP_KERNEL);
-+		if (!priv->rx_urb[i]->transfer_buffer)
-+			return -ENOMEM;
- 
- 		priv->rx_urb[i]->transfer_buffer_length = RX_URB_SIZE;
- 	}
--- 
-2.7.4
+thanks,
 
+greg k-h
 
