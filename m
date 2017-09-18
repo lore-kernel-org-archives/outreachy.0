@@ -1,105 +1,93 @@
-X-GM-THRID: 6802694026822680576
-X-Received: by 2002:a2e:8090:: with SMTP id i16mr132366ljg.4.1583875628518;
-        Tue, 10 Mar 2020 14:27:08 -0700 (PDT)
+X-GM-THRID: 6464894536375074816
+X-Received: by 10.28.143.200 with SMTP id r191mr550495wmd.1.1505735070643;
+        Mon, 18 Sep 2017 04:44:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6512:686:: with SMTP id t6ls2024537lfe.3.gmail; Tue, 10
- Mar 2020 14:27:06 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtdiLRR3aRTOkryMcJG+v7eCl67TGu5/vgbzlN1kJit78hQFl7SO5b1tEDC+Zax1wDiGisa
-X-Received: by 2002:a19:ec13:: with SMTP id b19mr57143lfa.75.1583875626911;
-        Tue, 10 Mar 2020 14:27:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583875626; cv=none;
+Received: by 10.46.88.72 with SMTP id x8ls816967ljd.12.gmail; Mon, 18 Sep 2017
+ 04:44:29 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QD41ZRplhzrCXYA9GDbni/KwOQ4fzPFpw0kwHXVdb6W2MN8yUtyS8ipDBR64HSpQy2BUQFI
+X-Received: by 10.46.67.12 with SMTP id q12mr2136965lja.35.1505735069183;
+        Mon, 18 Sep 2017 04:44:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505735069; cv=none;
         d=google.com; s=arc-20160816;
-        b=LfK/+V3HP8j9ti2YchhGQ+5eOfT3rG3/YP+5RfiUN8i23Q084Z9OcZ/slzm5PMRxov
-         mJB04oJse9c/cFVYV6zDmYRI09+XFe7P90Lhf4OeFdB8QbMDXa25E7CSB8wbSs336+/P
-         wmk6sXAN4H0BXRWGV/5wWq2YSbSDBDadBGuJBIu0jqNVsLu+kCzx917mxlvDaDygWCdP
-         ScwXYXWKD6xToytm+cZ6cf8nwE+RQSiDsy+QaCV6gjEp6oBH9WFFNnHn4O7TBaQRGLE1
-         3vtMF9HC3xudUXYL4OUwjYZ2GE96Vn1Kl+JftUZvNreAiP6ECStRkOq8u+aTV2WQl3CM
-         WSBQ==
+        b=ncIZS6DW9RlteO2+bq/YgWA0EeNQwyb3ubIYmeil9D2iCtrdVk5x7Wgso0lDKtaN88
+         uT3eCOMKJH7CKOSO8iST5hT1OYGFK1T+6fD4N+LLMXe+99nswyTN7rCpo2iiITV15850
+         UfxvkiP08SXQzAuXEd+HOOiN8aIb4+uac+D3JfGkwHfuropQveoJtW4BOSgpRBWMzZaH
+         NAvT5v0Tlu1g/aj8uSTZTTgEWpfww0xDb5nNwU61jMZB384YpDBArTPEDx9yBv6qvW6n
+         T21DOR7LiihZNwL0lWJlvyiYsOXXL3ohtAvj5TLK6TPtSE9rOrQFO1q6OriuQFI0VM2r
+         eHBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:to:from:dkim-signature;
-        bh=vUPxIpoyNMCbkXuLFKVZHddGe6D7cCFjI8r6+jGqf5A=;
-        b=QvW0LT+DTT3rxauKL5xg47YvtKuB/AE5RWLKgNJQyjiDoSaPtv7rya6n/zHxVGvpNT
-         XzpmRsKkJUmiyUOgMI+PgEkYi9ihzmA0asil54KXUrT0hg46PNm18kMat+Y87cpIrTD+
-         aE6CdlGRMvqb9pmqee2jC6iP+7madyoZW2J6dyzmrdykwOTS1QCKTeoq57q8ckbu+QLN
-         vPaQzx8YUF+T1KeFt2vWsosHg3/4W56ezsUgTlwh5GCdpV63NNQlNwcrraFl+qMAE6f2
-         oZRAPO6ic1ep9n25QmYbCKuaF/JYY0kCGPhqUTyi5sftO8VUiZGxgwGkpQVu1kVbDoAP
-         u92g==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=F9Sp+uvmcbHhGxzpkBSdwpduhOiWv6XzXzGYDMJBNzQ=;
+        b=GUMi4TSPQ20tFGptw0RoAaJGAZNidOr6a2e+UEFsLfiQDB/znkuY7TCeBQ9XLShrvs
+         3PjohK1EI9EVu8Kj0dUaCa7RVDbaXUueDslAVPYeeNXLixrnpnawswt/EanPgCsaFF0H
+         0ujEQbN9NE2DeEGZQjrCROaMF2aaqMrvIZ2Vp0Dd3KjSWZ/FCfwaSm6+yomgxJlC6Rvi
+         hpgzKOWqzE1QEYhid9V9MB4SycYCRkaRTFMxnino9dSsdbvN4+WIDlii6er6R4+pICkd
+         qrbTmx8n6EZG9/lK3hm8Gl5bfCvBt21mYz8gulOBJE501tJNES+9TXHNA7/5C+MvZfU3
+         LE4A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b=WdjkiLZN;
-       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=lu@pplo.net
-Return-Path: <lu@pplo.net>
-Received: from mail-wr1-x443.google.com (mail-wr1-x443.google.com. [2a00:1450:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id w6si5731lfa.1.2020.03.10.14.27.06
+       spf=pass (google.com: domain of sakari.ailus@retiisi.org.uk designates 83.145.211.213 as permitted sender) smtp.mailfrom=sakari.ailus@retiisi.org.uk
+Return-Path: <sakari.ailus@retiisi.org.uk>
+Received: from hillosipuli.retiisi.org.uk (nblzone-211-213.nblnetworks.fi. [83.145.211.213])
+        by gmr-mx.google.com with ESMTPS id e87si196838lfi.2.2017.09.18.04.44.29
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 10 Mar 2020 14:27:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::443 as permitted sender) client-ip=2a00:1450:4864:20::443;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 18 Sep 2017 04:44:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sakari.ailus@retiisi.org.uk designates 83.145.211.213 as permitted sender) client-ip=83.145.211.213;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b=WdjkiLZN;
-       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=lu@pplo.net
-Received: by mail-wr1-x443.google.com with SMTP id l18so7677525wru.11
-        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2020 14:27:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=pplo.net; s=google;
-        h=from:to:subject:date:message-id;
-        bh=vUPxIpoyNMCbkXuLFKVZHddGe6D7cCFjI8r6+jGqf5A=;
-        b=WdjkiLZN7+U726Ap+B0bPdUJ9diwuXM3ke5D2YOeT/6EHmdsldXhOcSg7R1SaJrrRv
-         SF2OSoKY8MQM4+LXfTVe2BI7GzH4HknOf0Ke6jBGxEXz9Tdhc5ouoCOgNzVWNrvaO3gl
-         2hhBh3RmS960eWU5pbkucqA8c5ACV8lfR4a5E=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:subject:date:message-id;
-        bh=vUPxIpoyNMCbkXuLFKVZHddGe6D7cCFjI8r6+jGqf5A=;
-        b=K0NAMvWNV5mcWRKlg707glu5wzV/L1eserkm3N9l4jg7Tp/VqZ4KF4GUqe/5ozlLR2
-         2v3ji3R3CMftuEW+XXa6I5y4qQVCnig5pswORP83cjLpXmR8NoMw90/aHY64jrD5koAT
-         4Z0bkQlGFGvDPxk45SKOFWuZzqdFm2Zdam+Rq5CPibQN3GSUG/sUZ+WYVQSKjSwcslcV
-         F+4G2mUrwJdGkxbtUXfMo3dpI4H9ZNt4+BtDkpGBhhU9TtP1yac7pI4hz1k+sUBA3Pnz
-         6onW56a9uxFk424pKEgck2FA4CRBnvqvvl2rSqiJpA75jM9MACKCZ7quDHx0+tVGq4+k
-         iixw==
-X-Gm-Message-State: ANhLgQ2lAynYhDKAE3NL0EVoDkdbD3TIhWccTJes1aSPSFORdPtSGEya
-	jrIfXqvvQSiJlN9YJUFKRJS2yUNibBQaVA==
-X-Received: by 2002:adf:a4c4:: with SMTP id h4mr28971620wrb.112.1583875626005;
-        Tue, 10 Mar 2020 14:27:06 -0700 (PDT)
-Return-Path: <lu@pplo.net>
-Received: from localhost.localdomain (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
-        by smtp.gmail.com with ESMTPSA id w15sm3499113wrm.9.2020.03.10.14.27.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Mar 2020 14:27:05 -0700 (PDT)
-From: Lourdes Pedrajas <lu@pplo.net>
-To: outreachy-kernel@googlegroups.com,
-	gregkh@linuxfoundation.org
-Subject: [PATCH v2] staging: rtl8192u: r8192U_wx: use netdev_warn() instead of printk()
-Date: Tue, 10 Mar 2020 22:26:58 +0100
-Message-Id: <20200310212658.4075-1-lu@pplo.net>
-X-Mailer: git-send-email 2.17.1
+       spf=pass (google.com: domain of sakari.ailus@retiisi.org.uk designates 83.145.211.213 as permitted sender) smtp.mailfrom=sakari.ailus@retiisi.org.uk
+Received: from valkosipuli.localdomain (valkosipuli.retiisi.org.uk [IPv6:2001:1bc8:1a6:d3d5::80:2])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by hillosipuli.retiisi.org.uk (Postfix) with ESMTPS id 8F4F960109;
+	Mon, 18 Sep 2017 14:44:26 +0300 (EEST)
+Received: from sakke by valkosipuli.localdomain with local (Exim 4.89)
+	(envelope-from <sakke@valkosipuli.retiisi.org.uk>)
+	id 1dtuTQ-0004uq-S2; Mon, 18 Sep 2017 14:44:25 +0300
+Date: Mon, 18 Sep 2017 14:44:24 +0300
+From: Sakari Ailus <sakari.ailus@iki.fi>
+To: Srishti Sharma <srishtishar@gmail.com>
+Cc: mchehab@kernel.org, gregkh@linuxfoundation.org,
+	linux-media@vger.kernel.org, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] Staging: media: atomisp: Merge assignment with return
+Message-ID: <20170918114423.ewtuei2dpr7wcmdx@valkosipuli.retiisi.org.uk>
+References: <1505226307-5119-1-git-send-email-srishtishar@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1505226307-5119-1-git-send-email-srishtishar@gmail.com>
+User-Agent: NeoMutt/20170113 (1.7.2)
 
-printk() is deprecated, use netdev_warn() instead, which is a message printing
-function for network devices, defined in include/linux/netdevice.h.
-Issue found by checkpatch.
+On Tue, Sep 12, 2017 at 07:55:07PM +0530, Srishti Sharma wrote:
+> Merge the assignment and the return statements to return the value
+> directly. Done using the following semantic patch by coccinelle.
+> 
+> @@
+> local idexpression ret;
+> expression e;
+> @@
+> 
+> -ret =
+> +return
+>      e;
+> -return ret;
+> 
+> Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
 
-Signed-off-by: Lourdes Pedrajas <lu@pplo.net>
----
-Changes since v1:
- - Replace message printing function pr_warn with network devices
-   specific, netdev_warn()
+Hi Srishti,
 
- drivers/staging/rtl8192u/r8192U_wx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+I've merged the two patches as they're trivial and the commit message is
+the same.
 
-diff --git a/drivers/staging/rtl8192u/r8192U_wx.c b/drivers/staging/rtl8192u/r8192U_wx.c
-index 0118edb0b9ab..58c1a8da7a8d 100644
---- a/drivers/staging/rtl8192u/r8192U_wx.c
-+++ b/drivers/staging/rtl8192u/r8192U_wx.c
-@@ -588,7 +588,7 @@ static int r8192_wx_set_enc(struct net_device *dev,
- 				hwkey);                 /* KeyContent */
- 
- 		} else {
--			printk("wrong type in WEP, not WEP40 and WEP104\n");
-+			netdev_warn("wrong type in WEP, not WEP40 and WEP104\n");
- 		}
- 
- 	}
+It's entirely reasonable to have a patch per driver but you should mention
+that in the commit message (subject line) at least. This case is a bit
+special because the other driver is also specific to the atomisp staging
+driver.
+
+Thanks.
+
 -- 
-2.17.1
-
+Sakari Ailus
+e-mail: sakari.ailus@iki.fi
 
