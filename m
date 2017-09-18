@@ -1,251 +1,178 @@
-X-GM-THRID: 6613749508225368064
-X-Received: by 2002:aca:4f51:: with SMTP id d78-v6mr26694942oib.40.1539883554105;
-        Thu, 18 Oct 2018 10:25:54 -0700 (PDT)
+X-GM-THRID: 6467255080902983680
+X-Received: by 10.129.74.67 with SMTP id x64mr3554426ywa.84.1505775163657;
+        Mon, 18 Sep 2017 15:52:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:3946:: with SMTP id g67-v6ls5469902oia.10.gmail; Thu, 18
- Oct 2018 10:25:53 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV63NYD9cUhZ4+mpF81htw6il7cLHHZLkWCgq/1noWJB48yJe6nhbqIgQkqrkNOCwRBQQg09a
-X-Received: by 2002:aca:e087:: with SMTP id x129-v6mr25858020oig.13.1539883553363;
-        Thu, 18 Oct 2018 10:25:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539883553; cv=none;
+Received: by 10.107.174.201 with SMTP id n70ls11929198ioo.53.gmail; Mon, 18
+ Sep 2017 15:52:42 -0700 (PDT)
+X-Received: by 10.13.210.196 with SMTP id u187mr10337673ywd.194.1505775162919;
+        Mon, 18 Sep 2017 15:52:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505775162; cv=none;
         d=google.com; s=arc-20160816;
-        b=S+AVGBRhDqBKd95v1WYpjYZMRTVdV9g6Cls+Uw1wGe8dhk8aE7/70B7xsDjKOGR6ke
-         KBBwY1Ld7WtpS5W05Cblq2b9PV4ugXEiOiBf79FKE/9RaA7DshaSACqewLV33HKratm8
-         5MXpdej4J0pyL1O6fGj/cn4IEQ6AjtK9uGikw8eNXJ861CrUmB1M+TnsLaYrS6tBLzv7
-         pWuiyOpJvf0taVfSyM+k5+VB6KOUiiTOVX+WCM8txgl71jKF0lj8vJ4sV1WfnrAgvKBl
-         gBj2nQve/RNnO016VWdp0zmWyMSIu1/kbgAOdnbNmqkMkf70y/k1HA80DsOMxNYPX6mQ
-         ymuQ==
+        b=Q+UVnss52RVT+LM4LCbBkATIB0g7K5P2mysXdzO5J9NgaomiH3nRjhCGSEbGyXv0NV
+         RBLacj6PSN3f8Nj+iLCQaYgZr7n44PlXzOudby4ifYIv1Ixw5aFauTbwvAI3IPxxduzL
+         3ERo+QTF7XzEMUJqgi/2wwNxDKIB1p1vr60poLq0VUmfxsjNxQJ8l3GJSj8Pm+NaH5uZ
+         MRJX6lLoc6FcpcbRgZIkxlpy4WZlna56pDBErngmSP0kKdkybqzswCtr7l9aQkyP8VMI
+         XFjJJ95s5MA4VAKdE/p8lYdPm3lFVI+dfW2sh1DPCRIy9+lurAcc3tbkystHjnTFoWo+
+         NjOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=opp4YwnkKY0O93Qj4Yb8gghK0x+A+J5AYKToYd1IByU=;
-        b=BMZw2zQ/09xwWw0nCq2ZEyj/qhaLTSvBw4JxhUPGiChAb2DaCZu0wBxEcw/q/uJL2S
-         0INIsPzSRm3iMJyBVtRfZyLu/vTVpPrFa6BI1B7wOKxxYf8E94/PL/MjCnE2V9TbhpGy
-         x/R3ANMPjiGc+PmpPWRFaSgLedQv9RB4Lx/WcqJ++WbsqkoOeKkcGIL/22sH3v3SWmuI
-         FmyqSsgXcManiMj9qJNW/YNbTVejRhS0mND/bL5AqvRj0hZPOf7BvLMy1LIppZQQY97g
-         MVJ+mipVkqkmWND0iejb0wqg0JdLo/6gBMKmk5weaSvDEWP2x2dBnCD7Ee6Xkk0KvgPF
-         6ccA==
+         :to:from:date:dkim-signature:arc-authentication-results;
+        bh=Cbj6+YmN6552rHtXdcWvHJ2VkWxVMIFe6CbCxu6whqM=;
+        b=PaPACxXsqkdlKOO0ohBS1CzHRKJurnosuJH4DswwJeecQKwOqegKYPm5bo0gGbKEe/
+         sQJMHdc1gpdO8Eq+943YFsVLl0X0yS+ioXTeLrR/dPiDjN6rERdNjr+BKtgeeBBrkAks
+         cOjx2vfpvn8KshuOBg+/9O9A2Z+/Hg585bljHQNygXZ8BCz2CgbYROC5Y7OiW8LBXBkf
+         njN0PvFec4uKTYCM8DXw/XF4YuOiGDSPIOSjnwmnZEKY3/mWUhHTGOCVjaw0RqOzEkQe
+         H4+LIa6BqoeZMtoKT9BZNCm/hMw7Y6EQsLIfOwhoB+3pZjqBiBc7a3dlO/r2HUw5zWXE
+         rTdw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=etZ2TSXA;
-       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mamtashukla555@gmail.com>
-Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id u207-v6si906458oie.0.2018.10.18.10.25.53
+       dkim=pass header.i=@mail-ccsf-edu.20150623.gappssmtp.com header.s=20150623 header.b=FUJcP9R6;
+       spf=neutral (google.com: 2607:f8b0:400e:c00::243 is neither permitted nor denied by best guess record for domain of kdunne@mail.ccsf.edu) smtp.mailfrom=kdunne@mail.ccsf.edu
+Return-Path: <kdunne@mail.ccsf.edu>
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id s81si61014pfg.19.2017.09.18.15.52.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 18 Oct 2018 10:25:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
+        Mon, 18 Sep 2017 15:52:42 -0700 (PDT)
+Received-SPF: neutral (google.com: 2607:f8b0:400e:c00::243 is neither permitted nor denied by best guess record for domain of kdunne@mail.ccsf.edu) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=etZ2TSXA;
-       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x441.google.com with SMTP id l81-v6so15199536pfg.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 18 Oct 2018 10:25:53 -0700 (PDT)
+       dkim=pass header.i=@mail-ccsf-edu.20150623.gappssmtp.com header.s=20150623 header.b=FUJcP9R6;
+       spf=neutral (google.com: 2607:f8b0:400e:c00::243 is neither permitted nor denied by best guess record for domain of kdunne@mail.ccsf.edu) smtp.mailfrom=kdunne@mail.ccsf.edu
+Received: by mail-pf0-x243.google.com with SMTP id q76so740933pfq.5
+        for <outreachy-kernel@googlegroups.com>; Mon, 18 Sep 2017 15:52:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
+        d=mail-ccsf-edu.20150623.gappssmtp.com; s=20150623;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=opp4YwnkKY0O93Qj4Yb8gghK0x+A+J5AYKToYd1IByU=;
-        b=etZ2TSXAfSZT+KTaLArl0No4cEj896pidGavTXQ7MwYLA3lp++dZ5o9gZ0eGpbwsI5
-         Q8dt/M9BbfwVDfeuee3XmIDzbphvx2tOKShhgsfXRU47Ja6vWEVaz0wIeE7/h3oJS6J6
-         8WJjm/7+EOHaKLzG2BVHXoxvegMrPPxLwQETvDjwy7I7+2KOcdVp7wP8DfaII/qCY5tX
-         bnvKNbxk9h4qLjsZSMiXyVsJEV/2rfwBwkRRBJEKR2d9qvNE1pwceqiyEc+72Vm4OpIN
-         V2sevMUfZnYYQZC/PjMzN5hvocu5wCBhgqJAYfobVTt4CFgAoaCrCy2YjsEd2jl9p9fM
-         QXmA==
+        bh=Cbj6+YmN6552rHtXdcWvHJ2VkWxVMIFe6CbCxu6whqM=;
+        b=FUJcP9R69eeDOCFciApj7LDBhbjZsBx1dKsP8a1x/aoJeSKD16N5kZvtsFaKHW/IRD
+         pCGdXYDHmQvuRoyiuFR9txYSJvqS0Tufsmtvr5NqHPfefMAY7re13H7cVlQPBLZAcCIu
+         5y9/i8HVG4jEuQUHi2hObgO+zS3L69UqYHUKHSk9DfIVhA3+VI9O4vAyfSd7UarGZ7ZQ
+         vx6H9NC58PrWcw515r5ygsExaAc899LrJLPdsnahP1jM1sh02mv3eHVz4HHkFUV1doKL
+         LxtYz6aKGSv0FSuRUhk372BgFx39WUqGfokcvAHQNa7nlJDM8Nnae6aOFeUpEvGgVHBI
+         J8uQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=opp4YwnkKY0O93Qj4Yb8gghK0x+A+J5AYKToYd1IByU=;
-        b=CzCuCey32O7t6ao27EvoQfp+CW8uGjAWuGNpSZbxyj2HVTUDayp5tFfSm4sp9kVxqH
-         2HCre43oUnuokbr3Jyfbo325UgMZlaVxE4QDPa3hm8FKiY68F5OP/1h2dHk2Ac7nTYkg
-         8SQQCEsAZff491UvFM/pWKd1B0fuQN2CzMCHATJFn2lUcbvzv2ipxMORY8qOdXEqK7cs
-         wQhH4eePHKDvrjwjxNOpeccMF8mm375VsPAi3P+/drCIDVgpNKZiDieqNdOKKlC3F27Z
-         zLnY1afVgTOD7vvS290Q/vNpFtYU29l0ZB8CSeO24v/FGVt3udxSsiBt88hsn24z44DQ
-         PMRA==
-X-Gm-Message-State: ABuFfoiGirl/pY39d5nf+iK9i2ai+x6q1XcoN6ers2Te/59lPCj33Luy
-	ZHOcqivMCWYt/6rAODu9WXg=
-X-Received: by 2002:a62:1dca:: with SMTP id d193-v6mr30928980pfd.157.1539883552528;
-        Thu, 18 Oct 2018 10:25:52 -0700 (PDT)
-Return-Path: <mamtashukla555@gmail.com>
-Received: from armorer ([117.199.49.212])
-        by smtp.gmail.com with ESMTPSA id h88-v6sm47734087pfa.184.2018.10.18.10.25.51
+        bh=Cbj6+YmN6552rHtXdcWvHJ2VkWxVMIFe6CbCxu6whqM=;
+        b=DOLOLbqgrUe3T/28Z+oSkTfuk/QHhK2yBl0iunN6PPEMYqpVG8HOxRZ5D3H8DWgXXg
+         jR5LjBGKF9d/JxjjOp1N6DvJQbsrypFhMj9gczEPTh5FBslBna8jhQbdZXG9o5wmunzm
+         lMozMl4fge6oVt9h0HFSMDoSm44Ft0HiFZszJobvNLkcMzDL6ghWNHBuwLySSGj3nEC6
+         Bjqea74ZQtiRAFs7nTlvMnxush9tJmGdrVyIrt+671E6eqigQbBZ0rrjz6NYc209mtY1
+         rr7JLh6bMCL48vDZyoimhucCfSqdVIdGLzSZ/EeQlZPmuABiK3eBLpft/xXrIBOTX96V
+         +OHQ==
+X-Gm-Message-State: AHPjjUhmISEECpOdaNNrqxlv32keA+SXzHJ3/9ek0V2+3xUwdmiasw5r
+	syNnTXzM23jHIPNF+qHP5Q==
+X-Google-Smtp-Source: AOwi7QCOvNzWfQybGUzHRZN0QhZcy16RzhG8ZFV7tuyFkCbCPyGpmAtZhrCJe9821gXmPilZxngASQ==
+X-Received: by 10.98.166.137 with SMTP id r9mr135932pfl.86.1505775162639;
+        Mon, 18 Sep 2017 15:52:42 -0700 (PDT)
+Return-Path: <kdunne@mail.ccsf.edu>
+Received: from katie-Inspiron-5748 (c-69-181-34-251.hsd1.ca.comcast.net. [69.181.34.251])
+        by smtp.gmail.com with ESMTPSA id t25sm535540pfe.96.2017.09.18.15.52.41
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 18 Oct 2018 10:25:51 -0700 (PDT)
-Date: Thu, 18 Oct 2018 22:55:49 +0530
-From: Mamta Shukla <mamtashukla555@gmail.com>
+        Mon, 18 Sep 2017 15:52:41 -0700 (PDT)
+Date: Mon, 18 Sep 2017 15:52:40 -0700
+From: Katie Dunne <kdunne@mail.ccsf.edu>
 To: outreachy-kernel@googlegroups.com
-Cc: dri-devel@lists.freedesktop.org, daniel.vetter@ffwll.ch,
-	robdclark@gmail.com, airlied@linux.ie
-Subject: [PATCH DRM] drm: msm: Replace instances of *_reference/unreference()
- with *_get/put()
-Message-ID: <20181018172549.GA5442@armorer>
+Cc: jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de,
+	linux-iio@vger.kernel.org, pmeerw@pmeerw.net, 21cnbao@gmail.com
+Subject: [PATCH] Staging: iio: meter: ade7759: update locking method for
+ write frequency
+Message-ID: <20170918225240.GA3085@katie-Inspiron-5748>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Replace instances of *_reference/unreference() with *_get/put(),
-to maintain consistency with the kernel use of *_get/put suffixes and get/put() is shorter.
+iio_dev->mlock is to be used only by the IIO core for protecting
+device mode changes between INDIO_DIRECT and INDIO_BUFFER.
 
-Issue found with drm-get-put.cocci:
-WARNING: use get/put helpers to reference and dereference state
+This patch replaces the use of mlock with the already established
+buf_lock mutex.
 
-Path to the Coccinelle script: scripts/coccinelle/api/drm-get-put.cocci
+Introducing an 'unlocked' spi_write_reg_16 function to be used by
+ade7759_write_frequency avoids nested locks and maintains atomicity
+between bus and device frequency changes.
 
-Signed-off-by: Mamta Shukla <mamtashukla555@gmail.com>
+Based on the solution found in ade7754 patch here:
+https://marc.info/?l=linux-iio&m=149086659008991&w=2
+
+Signed-off-by: Katie Dunne <kdunne@mail.ccsf.edu>
 ---
- drivers/gpu/drm/msm/adreno/a5xx_debugfs.c  | 4 ++--
- drivers/gpu/drm/msm/adreno/a5xx_gpu.c      | 2 +-
- drivers/gpu/drm/msm/adreno/a5xx_power.c    | 2 +-
- drivers/gpu/drm/msm/adreno/a5xx_preempt.c  | 2 +-
- drivers/gpu/drm/msm/adreno/a6xx_gpu.c      | 2 +-
- drivers/gpu/drm/msm/disp/mdp5/mdp5_plane.c | 4 ++--
- drivers/gpu/drm/msm/msm_drv.c              | 4 ++--
- drivers/gpu/drm/msm/msm_gem_submit.c       | 4 ++--
- 8 files changed, 12 insertions(+), 12 deletions(-)
+ drivers/staging/iio/meter/ade7759.c | 27 +++++++++++++++++++--------
+ 1 file changed, 19 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/gpu/drm/msm/adreno/a5xx_debugfs.c b/drivers/gpu/drm/msm/adreno/a5xx_debugfs.c
-index 059ec7d..d2127b1 100644
---- a/drivers/gpu/drm/msm/adreno/a5xx_debugfs.c
-+++ b/drivers/gpu/drm/msm/adreno/a5xx_debugfs.c
-@@ -132,14 +132,14 @@ static int show(struct seq_file *m, void *arg)
- 	if (a5xx_gpu->pm4_bo) {
- 		if (a5xx_gpu->pm4_iova)
- 			msm_gem_put_iova(a5xx_gpu->pm4_bo, gpu->aspace);
--		drm_gem_object_unreference(a5xx_gpu->pm4_bo);
-+		drm_gem_object_put(a5xx_gpu->pm4_bo);
- 		a5xx_gpu->pm4_bo = NULL;
- 	}
- 
- 	if (a5xx_gpu->pfp_bo) {
- 		if (a5xx_gpu->pfp_iova)
- 			msm_gem_put_iova(a5xx_gpu->pfp_bo, gpu->aspace);
--		drm_gem_object_unreference(a5xx_gpu->pfp_bo);
-+		drm_gem_object_put(a5xx_gpu->pfp_bo);
- 		a5xx_gpu->pfp_bo = NULL;
- 	}
- 
-diff --git a/drivers/gpu/drm/msm/adreno/a5xx_gpu.c b/drivers/gpu/drm/msm/adreno/a5xx_gpu.c
-index ab1d930..6a68493 100644
---- a/drivers/gpu/drm/msm/adreno/a5xx_gpu.c
-+++ b/drivers/gpu/drm/msm/adreno/a5xx_gpu.c
-@@ -1234,7 +1234,7 @@ static void a5xx_crashdumper_free(struct msm_gpu *gpu,
- 	msm_gem_put_iova(dumper->bo, gpu->aspace);
- 	msm_gem_put_vaddr(dumper->bo);
- 
--	drm_gem_object_unreference(dumper->bo);
-+	drm_gem_object_put(dumper->bo);
- }
- 
- static int a5xx_crashdumper_run(struct msm_gpu *gpu,
-diff --git a/drivers/gpu/drm/msm/adreno/a5xx_power.c b/drivers/gpu/drm/msm/adreno/a5xx_power.c
-index e9c0e56..7a41e1c 100644
---- a/drivers/gpu/drm/msm/adreno/a5xx_power.c
-+++ b/drivers/gpu/drm/msm/adreno/a5xx_power.c
-@@ -323,7 +323,7 @@ void a5xx_gpmu_ucode_init(struct msm_gpu *gpu)
- 	if (a5xx_gpu->gpmu_iova)
- 		msm_gem_put_iova(a5xx_gpu->gpmu_bo, gpu->aspace);
- 	if (a5xx_gpu->gpmu_bo)
--		drm_gem_object_unreference(a5xx_gpu->gpmu_bo);
-+		drm_gem_object_put(a5xx_gpu->gpmu_bo);
- 
- 	a5xx_gpu->gpmu_bo = NULL;
- 	a5xx_gpu->gpmu_iova = 0;
-diff --git a/drivers/gpu/drm/msm/adreno/a5xx_preempt.c b/drivers/gpu/drm/msm/adreno/a5xx_preempt.c
-index 970c796..f3c21f8 100644
---- a/drivers/gpu/drm/msm/adreno/a5xx_preempt.c
-+++ b/drivers/gpu/drm/msm/adreno/a5xx_preempt.c
-@@ -272,7 +272,7 @@ void a5xx_preempt_fini(struct msm_gpu *gpu)
- 		if (a5xx_gpu->preempt_iova[i])
- 			msm_gem_put_iova(a5xx_gpu->preempt_bo[i], gpu->aspace);
- 
--		drm_gem_object_unreference(a5xx_gpu->preempt_bo[i]);
-+		drm_gem_object_put(a5xx_gpu->preempt_bo[i]);
- 		a5xx_gpu->preempt_bo[i] = NULL;
- 	}
- }
-diff --git a/drivers/gpu/drm/msm/adreno/a6xx_gpu.c b/drivers/gpu/drm/msm/adreno/a6xx_gpu.c
-index c629f74..53b9061 100644
---- a/drivers/gpu/drm/msm/adreno/a6xx_gpu.c
-+++ b/drivers/gpu/drm/msm/adreno/a6xx_gpu.c
-@@ -744,7 +744,7 @@ static void a6xx_destroy(struct msm_gpu *gpu)
- 	if (a6xx_gpu->sqe_bo) {
- 		if (a6xx_gpu->sqe_iova)
- 			msm_gem_put_iova(a6xx_gpu->sqe_bo, gpu->aspace);
--		drm_gem_object_unreference_unlocked(a6xx_gpu->sqe_bo);
-+		drm_gem_object_put__unlocked(a6xx_gpu->sqe_bo);
- 	}
- 
- 	a6xx_gmu_remove(a6xx_gpu);
-diff --git a/drivers/gpu/drm/msm/disp/mdp5/mdp5_plane.c b/drivers/gpu/drm/msm/disp/mdp5/mdp5_plane.c
-index d5e4f0d..1d4bce1 100644
---- a/drivers/gpu/drm/msm/disp/mdp5/mdp5_plane.c
-+++ b/drivers/gpu/drm/msm/disp/mdp5/mdp5_plane.c
-@@ -184,7 +184,7 @@ static void mdp5_plane_reset(struct drm_plane *plane)
- 	struct mdp5_plane_state *mdp5_state;
- 
- 	if (plane->state && plane->state->fb)
--		drm_framebuffer_unreference(plane->state->fb);
-+		drm_framebuffer_put(plane->state->fb);
- 
- 	kfree(to_mdp5_plane_state(plane->state));
- 	mdp5_state = kzalloc(sizeof(*mdp5_state), GFP_KERNEL);
-@@ -227,7 +227,7 @@ static void mdp5_plane_destroy_state(struct drm_plane *plane,
- 	struct mdp5_plane_state *pstate = to_mdp5_plane_state(state);
- 
- 	if (state->fb)
--		drm_framebuffer_unreference(state->fb);
-+		drm_framebuffer_put(state->fb);
- 
- 	kfree(pstate);
- }
-diff --git a/drivers/gpu/drm/msm/msm_drv.c b/drivers/gpu/drm/msm/msm_drv.c
-index 69dbdba..f1cacf9 100644
---- a/drivers/gpu/drm/msm/msm_drv.c
-+++ b/drivers/gpu/drm/msm/msm_drv.c
-@@ -338,7 +338,7 @@ static int msm_drm_uninit(struct device *dev)
- 		mdss->funcs->destroy(ddev);
- 
- 	ddev->dev_private = NULL;
--	drm_dev_unref(ddev);
-+	drm_dev_put(ddev);
- 
- 	kfree(priv);
- 
-@@ -655,7 +655,7 @@ static int msm_drm_init(struct device *dev, struct drm_driver *drv)
- err_free_priv:
- 	kfree(priv);
- err_unref_drm_dev:
--	drm_dev_unref(ddev);
-+	drm_dev_put(ddev);
+diff --git a/drivers/staging/iio/meter/ade7759.c b/drivers/staging/iio/meter/ade7759.c
+index 1691760..b52d4d7 100644
+--- a/drivers/staging/iio/meter/ade7759.c
++++ b/drivers/staging/iio/meter/ade7759.c
+@@ -60,7 +60,7 @@
+ /**
+  * struct ade7759_state - device instance specific data
+  * @us:			actual spi_device
+- * @buf_lock:		mutex to protect tx and rx
++ * @buf_lock:		mutex to protect tx and rx and write frequency
+  * @tx:			transmit buffer
+  * @rx:			receive buffer
+  **/
+@@ -89,19 +89,30 @@ static int ade7759_spi_write_reg_8(struct device *dev,
  	return ret;
  }
  
-diff --git a/drivers/gpu/drm/msm/msm_gem_submit.c b/drivers/gpu/drm/msm/msm_gem_submit.c
-index 7bd83e0..7a7923e 100644
---- a/drivers/gpu/drm/msm/msm_gem_submit.c
-+++ b/drivers/gpu/drm/msm/msm_gem_submit.c
-@@ -144,7 +144,7 @@ static int submit_lookup_objects(struct msm_gem_submit *submit,
- 			goto out_unlock;
- 		}
+-static int ade7759_spi_write_reg_16(struct device *dev,
++/*Unlocked version of ade7759_spi_write_reg_16 function */
++static int __ade7759_spi_write_reg_16(struct device *dev,
+ 		u8 reg_address,
+ 		u16 value)
+ {
+-	int ret;
+ 	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
+ 	struct ade7759_state *st = iio_priv(indio_dev);
  
--		drm_gem_object_reference(obj);
-+		drm_gem_object_get(obj);
+-	mutex_lock(&st->buf_lock);
+ 	st->tx[0] = ADE7759_WRITE_REG(reg_address);
+ 	st->tx[1] = (value >> 8) & 0xFF;
+ 	st->tx[2] = value & 0xFF;
+-	ret = spi_write(st->us, st->tx, 3);
++	return spi_write(st->us, st->tx, 3);
++}
++
++static int ade7759_spi_write_reg_16(struct device *dev,
++		u8 reg_address,
++		u16 value)
++{
++	int ret;
++	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
++	struct ade7759_state *st = iio_priv(indio_dev);
++
++	mutex_lock(&st->buf_lock);
++	ret = __ade7759_spi_write_reg_16(dev, reg_address, value);
+ 	mutex_unlock(&st->buf_lock);
  
- 		submit->bos[i].obj = msm_obj;
+ 	return ret;
+@@ -429,7 +440,7 @@ static ssize_t ade7759_write_frequency(struct device *dev,
+ 	if (!val)
+ 		return -EINVAL;
  
-@@ -396,7 +396,7 @@ static void submit_cleanup(struct msm_gem_submit *submit)
- 		struct msm_gem_object *msm_obj = submit->bos[i].obj;
- 		submit_unlock_unpin_bo(submit, i, false);
- 		list_del_init(&msm_obj->submit_entry);
--		drm_gem_object_unreference(&msm_obj->base);
-+		drm_gem_object_put(&msm_obj->base);
- 	}
+-	mutex_lock(&indio_dev->mlock);
++	mutex_lock(&st->buf_lock);
  
- 	ww_acquire_fini(&submit->ticket);
+ 	t = 27900 / val;
+ 	if (t > 0)
+@@ -447,10 +458,10 @@ static ssize_t ade7759_write_frequency(struct device *dev,
+ 	reg &= ~(3 << 13);
+ 	reg |= t << 13;
+ 
+-	ret = ade7759_spi_write_reg_16(dev, ADE7759_MODE, reg);
++	ret = __ade7759_spi_write_reg_16(dev, ADE7759_MODE, reg);
+ 
+ out:
+-	mutex_unlock(&indio_dev->mlock);
++	mutex_unlock(&st->buf_lock);
+ 
+ 	return ret ? ret : len;
+ }
 -- 
-1.9.1
+2.7.4
 
 
