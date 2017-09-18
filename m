@@ -1,80 +1,71 @@
-X-GM-THRID: 6205175654152929280
-X-Received: by 10.129.145.210 with SMTP id i201mr25212863ywg.1.1444755041473;
-        Tue, 13 Oct 2015 09:50:41 -0700 (PDT)
+X-GM-THRID: 6466370226932940800
+X-Received: by 10.25.229.18 with SMTP id c18mr808534lfh.1.1505729102473;
+        Mon, 18 Sep 2017 03:05:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.148.36 with SMTP id tp4ls968969obb.72.gmail; Tue, 13 Oct
- 2015 09:50:41 -0700 (PDT)
-X-Received: by 10.182.98.196 with SMTP id ek4mr3274736obb.17.1444755041124;
-        Tue, 13 Oct 2015 09:50:41 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-pa0-x234.google.com (mail-pa0-x234.google.com. [2607:f8b0:400e:c03::234])
-        by gmr-mx.google.com with ESMTPS id pe1si375243pac.2.2015.10.13.09.50.41
+Received: by 10.46.80.11 with SMTP id e11ls83519ljb.4.gmail; Mon, 18 Sep 2017
+ 03:05:01 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QD42Il2Ykj2yCg5Qw4P616phcV8mLZavMCXJdIdj68jheJmLaPsy2ZB2fXddb0NYeGJFFgd
+X-Received: by 10.25.195.206 with SMTP id t197mr782730lff.40.1505729101891;
+        Mon, 18 Sep 2017 03:05:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505729101; cv=none;
+        d=google.com; s=arc-20160816;
+        b=lOQbBVffgGJpfzg1YQl+yN1bN4XU2qFSdfvLRaY77EmfNDo+KaJM+pOdVtZxCKWZZx
+         MRtgsTcvPwHu8pdUlgl/5Sw1S/SYXbk6hS7uhxWO8stiY/L6Y4PM7vFxkg+O04AlvXO8
+         qz1DPA30IJ5v4ocbfxxhoEXNd5x4QgvJGuSUH+1zpuyrdPQRgHpnKVCXLhp6m36VVGUp
+         o6cFfpxa7EgtDsATl5btOSWjK5Psqr24G5hYWXOT1yJJuCOI/YRZl94bNsaEwvdS0TD4
+         OIhSPo8lbp/NvFL4zgoQoKyH2iRGv/bh7UpWzDTxEgIgf5SoicpC8xdgFmWway2jFzih
+         LVUQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=DbyZtFjX62J922POU9wAMgJ2K3rTbFQi3TtD1cl9XyM=;
+        b=emfzbYu8qrbWn66gOmgdDtgq2jtZ1IQI6EdxqamLgSEsVeajy09A+Hzo86tbj+s7Ap
+         MMoRb/JULhj9LsSMEnve9FE/IuJwIjvnB6/gM9g2YufQkgREPVZKsVlORKWGnyypQiAJ
+         fliBliJ2kJ0BIaueoOg5vmZw6AQuHp0F/hKq1WadYA22JxL8XdPXS3ipFglc687mM90r
+         nJaPtpHUnMSpMmLy1WfH/9u4okobWC4KSc/sfrt8Kcz7nxzHB/V4bCM37tHS5HMc7YGs
+         yBvd15S9UJh6cm3Ad3cfY/TCLjCOsMDdWqizGXHF3Un016Q/LHS7QK/jmPR/WwQBaH3H
+         p8YA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id j4si534969wmi.2.2017.09.18.03.05.01
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Oct 2015 09:50:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) client-ip=2607:f8b0:400e:c03::234;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 18 Sep 2017 03:05:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::234 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x234.google.com with SMTP id ex6so26097524pac.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 13 Oct 2015 09:50:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id;
-        bh=LYZmgA0HKjG3w3eBUN9dFM0csviCdDEaOSWQOnHxTwU=;
-        b=Sj/dkp/saYXUgC/0eGLUPFLtgc38LYj7C2ai5Xu0tfPyD3BYdmvGgM6Glmjk5MoP6c
-         UBHfWKWOcHfFnIxzl9bl3zigtK5lixOOFR8SsHjKL32UqrB14YTb8w/ypfuMuZqWIyM0
-         cMYNUuV4gNmLsDzeCNERP/IzQwBLW3k1AnyBA7B24s2ivgGYvwACJItR5yUfr/ANHMii
-         sblpq4n8+XtUYPh1ETnKurcfFRu1fhKKHIkYDDGhZa/lDXAUy6l0hJTADg74oRkkdagP
-         ZUTcH3SyB78Gqgtt8JsPJwsTDb+DPDZreNBv63x5ENWd139ObE46zkI72lp7rM7NemOi
-         d0MA==
-X-Received: by 10.68.244.34 with SMTP id xd2mr27450474pbc.0.1444755040988;
-        Tue, 13 Oct 2015 09:50:40 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id fk8sm4847541pab.33.2015.10.13.09.50.34
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 13 Oct 2015 09:50:40 -0700 (PDT)
-From: Shraddha Barke <shraddha.6596@gmail.com>
-To: <outreachy-kernel@googlegroups.com>
-Subject: [PATCH] Staging: lustre: lov: Remove unused #include header file
-Date: Tue, 13 Oct 2015 22:20:28 +0530
-Message-Id: <1444755028-3159-1-git-send-email-shraddha.6596@gmail.com>
-X-Mailer: git-send-email 2.1.4
-X-Cyberoam-smtpxy-version: 1.0.6.3
-X-Cyberoam-AV-Policy: default
-X-CTCH-PVer:  0000001
-X-CTCH-Spam:  Unknown
-X-CTCH-VOD:  Unknown
-X-CTCH-Flags:  0
-X-CTCH-RefID:  str=0001.0A150202.561D365F.0146,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
-X-CTCH-Score:  0.000
-X-CTCH-ScoreCust:  0.000
-X-CTCH-Rules:  
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (LFbn-1-12253-150.w90-92.abo.wanadoo.fr [90.92.67.150])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 357C9BE4;
+	Mon, 18 Sep 2017 10:05:00 +0000 (UTC)
+Date: Mon, 18 Sep 2017 12:05:11 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Aastha Gupta <aastha.gupta4104@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v2] taging: rtl8192u: ieee80211: prefer pr_debug over
+ printk
+Message-ID: <20170918100511.GC24451@kroah.com>
+References: <1505569134-18604-1-git-send-email-aastha.gupta4104@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1505569134-18604-1-git-send-email-aastha.gupta4104@gmail.com>
+User-Agent: Mutt/1.9.0 (2017-09-02)
 
-Remove lclient.h header since it is not used.
+On Sat, Sep 16, 2017 at 07:08:54PM +0530, Aastha Gupta wrote:
+> This patch replaces call to  printk with pr_debug function,
+> thus addressing the following checkpatch script warning:
+> 
+> WARNING: Prefer [subsystem eg: netdev]_dbg([subsystem]dev, ... then dev_dbg(dev, ... then pr_debug(... to printk(KERN_DEBUG ...
+> 
+> 
+> Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
+> ---
+> changes in v2:
+> 	-replaces string with function name with %s and __func__.
+> 	-combines all strings concatenations into one
+> 	-follows line not over 80 characters rule
 
-Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
----
- drivers/staging/lustre/lustre/lov/lov_object.c | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/drivers/staging/lustre/lustre/lov/lov_object.c b/drivers/staging/lustre/lustre/lov/lov_object.c
-index e67df64..1837bbf 100644
---- a/drivers/staging/lustre/lustre/lov/lov_object.c
-+++ b/drivers/staging/lustre/lustre/lov/lov_object.c
-@@ -42,7 +42,6 @@
- #define DEBUG_SUBSYSTEM S_LOV
- 
- #include "lov_cl_internal.h"
--#include "../include/lclient.h"
- 
- /** \addtogroup lov
-  *  @{
--- 
-2.1.4
-
+Same issue here, also your subject is missing a 's' :)
 
