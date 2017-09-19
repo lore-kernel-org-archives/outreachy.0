@@ -1,124 +1,179 @@
 X-GM-THRID: 6466548746929831936
-X-Received: by 10.223.150.118 with SMTP id c51mr87363wra.20.1505821731059;
-        Tue, 19 Sep 2017 04:48:51 -0700 (PDT)
+X-Received: by 10.98.204.139 with SMTP id j11mr254347pfk.11.1505786216318;
+        Mon, 18 Sep 2017 18:56:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.54.163 with SMTP id y35ls2055218wmh.23.gmail; Tue, 19 Sep
- 2017 04:48:50 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QDY7D9WIc1EyBzFMHKBSSGbPR6SkdIvX6ikUkL2i7bQEUmMlCKR4MY76p5rsk//Vpan1pSE
-X-Received: by 10.28.165.70 with SMTP id o67mr87189wme.10.1505821730166;
-        Tue, 19 Sep 2017 04:48:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505821730; cv=none;
+Received: by 10.36.224.140 with SMTP id c134ls6299220ith.22.canary-gmail; Mon,
+ 18 Sep 2017 18:56:55 -0700 (PDT)
+X-Received: by 10.13.203.82 with SMTP id n79mr22180566ywd.192.1505786215491;
+        Mon, 18 Sep 2017 18:56:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505786215; cv=none;
         d=google.com; s=arc-20160816;
-        b=ia2fdX6x0lEH6jNCxOHidLJK3lSOZdFokiq5NsQFd9ljg+VTvzbgrxEU9pTiHooRy6
-         ecmlCq2hfBHhl2HZqaHHj5akAYMGFXkpa4vgArB9RKdTfa4qivkfjgZ78tiEpdJ/aF5l
-         Q4xFKEkJH78fWKbXQFTFHyaB7zodH2Li4olb8kZcohZdveX2/DbJ1mKOsoEidTbBiQPE
-         qCZVjYJ9uClY/WC+2mxZqQ7B+w5VunM3zToAiKFNz9WDwbVqYHMlQjKUP0pQVTx46SwW
-         TTY3Bf3NRM3j679IlcY6fd4GeeWjSjl5EuBkU1PLisUfTI8U5SVvO2vvVDoeZCldwBKK
-         Ziig==
+        b=drT9t325c+T+P6vMnvjJgdYjNG36pWtg4MYh4TttV+syvMWXHqZEfyDruWXDL8P+bn
+         XAVZjgHPowTCG3JOtqBtfrrEOny+OA0rumIXlq3vEYzT/d1JW3Ac0WUs63QaEP9hRaxt
+         GPBMQsWSYzZgz/qAQd4bagvwfJWh8pUywS0kZXtOiok13PC5r9AU3ENsZq42ovANe1Q4
+         IybLBmVvCOkvOYUpg3ZBDvHTq48H3bbG0EUr3QCzHqUu+++Fw6L/w0PualTlkjWJ8d07
+         5c27mdnqyEJT6b3fNuhiwUVpktmxc+dqM9Ux2X586Y7v+6HjiUDBKZrjIJcfBLQo5ur5
+         JVuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :arc-authentication-results;
-        bh=EHz/xeZSABLGZ9GvGOTeiB/NMjpqLGT2fqB1i5cb+JE=;
-        b=zfSolTmIRZ+G2N3fD9EXDvJtYYbbs2jWtRabeCqOf+yRcjMeYCGGTEZHpyCxgdYOUe
-         GP+Dqou5WTKlAPaFVDxcgOCEBHCEnEgA9SMyx1HypVga/AUL8E3jK8ylHEQcNOBW9YCf
-         x+VpP3eoP5XZxK+VSkVCqmlP7VpkQx1BonmyLeAqLxfPfCzX+ZkUT2td1uBFV4ujM74q
-         2CRz5IKhh+8Z2HYSSoXfl7fDOBW7VRXG5qUripGDjwJWWm8sQiOmdYiHFD8izjgK7w4r
-         fl+sE/NXQFF/XBzhhoqbyYmPBHRBoKBLtCgfuRR76KBnY8BnfF0yTxY2sZB0kwlfROc5
-         5Q2Q==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature:arc-authentication-results;
+        bh=7oiDR7lTD18C2Hqts7H0Gx3hb5VSU3yK4U1HSkXgx/o=;
+        b=jjY77clF13O8RXZM2qfYMofnU1Op8rSzwPy+GACEKH7E2HkaU1pkDRgL+aSO+gh2J5
+         oy36kqvOHANzxdNV5AdwmAAVyIfg5fRvTkAIJr+JlOX+yzTB0fsv4y52BSql21/3vc7N
+         Q8NJJom5wOJ8uCNvsmTnVPiENRd2gr8Att9Ekxe5zBAjMgtXfJ+xCS83SWfDNTz1wdRS
+         Z8Ea+yd4nOO+UAiyCaj9qcZZ2B7Q5Ux42O8RF2PZDjHzN5xdPChOFT3UdUop+EqbUqCN
+         If+d9sH1hI+1HV7QX3/7f/ApxRbwbA34P//+XoxDoCGNo4ATYUDduGzQ45HFTxql7ne6
+         W2eQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) smtp.mailfrom=lars@metafoo.de
-Return-Path: <lars@metafoo.de>
-Received: from www381.your-server.de (www381.your-server.de. [78.46.137.84])
-        by gmr-mx.google.com with ESMTPS id b130si106571wme.0.2017.09.19.04.48.50
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JFFS2uLs;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
+        by gmr-mx.google.com with ESMTPS id k76si96685pfa.10.2017.09.18.18.56.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Sep 2017 04:48:50 -0700 (PDT)
-Received-SPF: neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) client-ip=78.46.137.84;
+        Mon, 18 Sep 2017 18:56:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) smtp.mailfrom=lars@metafoo.de
-Received: from [88.198.220.131] (helo=sslproxy02.your-server.de)
-	by www381.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
-	(Exim 4.85_2)
-	(envelope-from <lars@metafoo.de>)
-	id 1duH1E-0003dE-Ty; Tue, 19 Sep 2017 13:48:48 +0200
-Received: from [2003:86:2c3f:7000:8200:bff:fe9b:6612]
-	by sslproxy02.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-SHA:256)
-	(Exim 4.84_2)
-	(envelope-from <lars@metafoo.de>)
-	id 1duH1E-0004x2-No; Tue, 19 Sep 2017 13:48:48 +0200
-Subject: Re: [PATCH v2] staging: iio: Replace bit shifting with BIT macro
-To: Haneen Mohammed <hamohammed.sa@gmail.com>,
- outreachy-kernel <outreachy-kernel@googlegroups.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JFFS2uLs;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x241.google.com with SMTP id i130so1205891pgc.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 18 Sep 2017 18:56:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=7oiDR7lTD18C2Hqts7H0Gx3hb5VSU3yK4U1HSkXgx/o=;
+        b=JFFS2uLsOo0g9/Fl/NzFNIsOLcvA9I0EeInJ3nPGJr8B/vRhHL82wU72RxV+RSrGVF
+         Rc2jwpJIuYWshrxq65apyAqYx6Z1LdoWC402zbRVVom0Hxjl8Z48dE/4wNCgrUqsdwvp
+         guKG44wjpISm+OSw8R+FWqwadJTEYe2mTr/hPCQ5It7pQ7HyYKCcA2MHHR/XSbYxQUXT
+         CE35/yKT9Zx61hAm9RhYUJS4VHTrJeRWUXVuCKvI5p8hrow9hWwi0wrlT4YVX75PsE3A
+         BD9gGDSy3n5HTsKfdGXZ3Fh6gblbBt94tXbd+4PD5EcQs+s2+O5KZ3BKz99YwN2sHfgz
+         qPrA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=7oiDR7lTD18C2Hqts7H0Gx3hb5VSU3yK4U1HSkXgx/o=;
+        b=Bwt6luFGdFVulWVn0DpKuGG20tStS9UbyOr636BR2marI3l7krvDBOebD9t1hAAJ1p
+         77Kk93pZ93AWcd4Pl5i4WW+kkrg42YwMaod3StB6E1Q5K8aF2fct2QhN6Z/SEZ2e9CdM
+         zYjRhXgTYNEntCWl0EbidIATCf6lfXzCbikiVJC2rvXn+xe32H9fjBqixgoifMrOnyPe
+         h+6meTss/NYQdUfZYwNcDt2Dk9LhRLwCeAptHiZtDbeeD2j3dLZZ/8YJRDkQFrZpPr0b
+         +/391IzgaCoOIH18r6B3es7j29A+b1kXdMos9bOLBCJkZJdyowONfw6YkCLShBCzXvkT
+         v5DA==
+X-Gm-Message-State: AHPjjUj9XvpK4xWLOPmvuy+6AT4iFkS/qw4ePJpNvNsQpmKD0aPRFGi/
+	0n16NC5JfEz4a2hp8lg=
+X-Google-Smtp-Source: AOwi7QBSMRhHQR3GteO7hNK62L38o2snEyQbPiZbIfzdHuTsDzGfJdKobQLOLJDB9OlJGV5kK4ZmOA==
+X-Received: by 10.84.235.65 with SMTP id g1mr476727plt.353.1505786214744;
+        Mon, 18 Sep 2017 18:56:54 -0700 (PDT)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from Haneen ([64.77.242.50])
+        by smtp.gmail.com with ESMTPSA id d18sm880094pfk.11.2017.09.18.18.56.53
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 18 Sep 2017 18:56:53 -0700 (PDT)
+Date: Mon, 18 Sep 2017 19:56:51 -0600
+From: Haneen Mohammed <hamohammed.sa@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
 Cc: Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>,
- Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-iio@vger.kernel.org
-References: <20170919015651.GA4554@Haneen>
-From: Lars-Peter Clausen <lars@metafoo.de>
-Message-ID: <b699803e-febf-7b9b-f2d7-e778d0b993ae@metafoo.de>
-Date: Tue, 19 Sep 2017 13:48:48 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+	Lars-Peter Clausen <lars@metafoo.de>,
+	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-iio@vger.kernel.org, hamohammed.sa@gmail.com
+Subject: [PATCH v2] staging: iio: Replace bit shifting with BIT macro
+Message-ID: <20170919015651.GA4554@Haneen>
 MIME-Version: 1.0
-In-Reply-To: <20170919015651.GA4554@Haneen>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Authenticated-Sender: lars@metafoo.de
-X-Virus-Scanned: Clear (ClamAV 0.99.2/23852/Tue Sep 19 06:45:05 2017)
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On 09/19/2017 03:56 AM, Haneen Mohammed wrote:
-> This patch replace bit shifting on 1, and 3 with BIT(x) macro.
-> Issue resolved with the following Coccinelle script:
+This patch replace bit shifting on 1, and 3 with BIT(x) macro.
+Issue resolved with the following Coccinelle script:
 
-Can you explain why this is an issue and why using the BIT() macro is better
-in this case?
+@r1@
+identifier x;
+constant int g;
+@@
+(
+0<<\(x\|g\)
+|
+1<<\(x\|g\)
+|
+2<<\(x\|g\)
+|
+3<<\(x\|g\)
+)
 
-These kind of changes need to make semantic sense, the goal should generally
-be to improve the legibility of the code, so somebody looking at the code
-easier understands what the intention of the code is.
+@script:python b@
+g2 <<r1.g;
+y;
+@@
 
-E.g. we can easily write "x *= BIT(2) | BIT(3)" instead of "x *= 12", both
-have the same effect. But the later is much easier to understand for the
-casual reader.
+coccinelle.y = int(g2) + 1
 
-The intended semantics for BIT() are that we are talking about a single bit
-field. There were a few of those in version 1 of your patch, were using the
-BIT() macro makes sense. But in my opinion none of the changes in this patch
-fall in this category. I mean, what is the meaning of multiplying by
-BIT(27)? Maybe we need a POW2() macro for places where we are semantically
-speaking are talking about a number that is a power of two.
+@c@
+constant int r1.g;
+identifier b.y;
+@@
+(
+-(1 << g)
++BIT(g)
+|
+-(0 << g)
++ 0
+|
+-(2 << g)
++BIT(y)
+|
+-(3 << g)
++(BIT(y) | BIT(g))
+)
 
-> @@ -229,7 +229,7 @@ static int ad5933_set_freq(struct ad5933_state *st,
->  		u8 d8[4];
->  	} dat;
->  
-> -	freqreg = (u64) freq * (u64) (1 << 27);
-> +	freqreg = (u64)freq * (u64)BIT(27);
->  	do_div(freqreg, st->mclk_hz / 4);
->  
->  	switch (reg) {
-> @@ -318,7 +318,7 @@ static ssize_t ad5933_show_frequency(struct device *dev,
->  	freqreg = be32_to_cpu(dat.d32) & 0xFFFFFF;
->  
->  	freqreg = (u64)freqreg * (u64)(st->mclk_hz / 4);
-> -	do_div(freqreg, 1 << 27);
-> +	do_div(freqreg, BIT(27));
->  
->  	return sprintf(buf, "%d\n", (int)freqreg);
->  }
-> @@ -452,9 +452,9 @@ static ssize_t ad5933_store(struct device *dev,
->  
->  		/* 2x, 4x handling, see datasheet */
->  		if (val > 1022)
-> -			val = (val >> 2) | (3 << 9);
-> +			val = (val >> 2) | BIT(10) | BIT(9);
->  		else if (val > 511)
-> -			val = (val >> 1) | (1 << 9);
-> +			val = (val >> 1) | BIT(9);
->  
->  		dat = cpu_to_be16(val);
->  		ret = ad5933_i2c_write(st->client,
-> 
+Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+---
+Changes in v2: 
+- undo changes where it results in different styles mixed up
+- remove parenthesis aroun BIT(y) | BIT(g)
+
+ drivers/staging/iio/impedance-analyzer/ad5933.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/staging/iio/impedance-analyzer/ad5933.c b/drivers/staging/iio/impedance-analyzer/ad5933.c
+index 3d539ee..4cb418e 100644
+--- a/drivers/staging/iio/impedance-analyzer/ad5933.c
++++ b/drivers/staging/iio/impedance-analyzer/ad5933.c
+@@ -229,7 +229,7 @@ static int ad5933_set_freq(struct ad5933_state *st,
+ 		u8 d8[4];
+ 	} dat;
+ 
+-	freqreg = (u64) freq * (u64) (1 << 27);
++	freqreg = (u64)freq * (u64)BIT(27);
+ 	do_div(freqreg, st->mclk_hz / 4);
+ 
+ 	switch (reg) {
+@@ -318,7 +318,7 @@ static ssize_t ad5933_show_frequency(struct device *dev,
+ 	freqreg = be32_to_cpu(dat.d32) & 0xFFFFFF;
+ 
+ 	freqreg = (u64)freqreg * (u64)(st->mclk_hz / 4);
+-	do_div(freqreg, 1 << 27);
++	do_div(freqreg, BIT(27));
+ 
+ 	return sprintf(buf, "%d\n", (int)freqreg);
+ }
+@@ -452,9 +452,9 @@ static ssize_t ad5933_store(struct device *dev,
+ 
+ 		/* 2x, 4x handling, see datasheet */
+ 		if (val > 1022)
+-			val = (val >> 2) | (3 << 9);
++			val = (val >> 2) | BIT(10) | BIT(9);
+ 		else if (val > 511)
+-			val = (val >> 1) | (1 << 9);
++			val = (val >> 1) | BIT(9);
+ 
+ 		dat = cpu_to_be16(val);
+ 		ret = ad5933_i2c_write(st->client,
+-- 
+2.7.4
 
 
