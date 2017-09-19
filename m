@@ -1,78 +1,78 @@
 X-GM-THRID: 6467514574021066752
-X-Received: by 10.129.118.79 with SMTP id j15mr994122ywk.62.1505835592667;
-        Tue, 19 Sep 2017 08:39:52 -0700 (PDT)
+X-Received: by 10.107.43.77 with SMTP id r74mr850132ior.121.1505835586675;
+        Tue, 19 Sep 2017 08:39:46 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.139.4 with SMTP id g4ls7373529ite.15.gmail; Tue, 19 Sep
- 2017 08:39:52 -0700 (PDT)
-X-Received: by 10.31.235.129 with SMTP id j123mr888983vkh.110.1505835592035;
-        Tue, 19 Sep 2017 08:39:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505835591; cv=none;
+Received: by 10.107.30.196 with SMTP id e187ls2909287ioe.25.gmail; Tue, 19 Sep
+ 2017 08:39:46 -0700 (PDT)
+X-Received: by 10.36.242.68 with SMTP id j65mr787691ith.9.1505835586114;
+        Tue, 19 Sep 2017 08:39:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505835586; cv=none;
         d=google.com; s=arc-20160816;
-        b=0V9DFHmJ4tYdIcWK4/HhwnKDkYHjEA6rMQaGl97SkvEs34vWyPdus9B3wDZ5f1PL42
-         fRWWtlOYTcDOsl8sCaUeBc8e8UvFjSYU9kIQjTUDUB/XCj5CJSvZsy4rPqpu5giudUQe
-         3xrsxJqF8Jt9CABvkvm6gjvL6k6lqkOcxraDDy5xinsYx5BhomDrr3GXj8j6o48v0aXW
-         p9rQbth8SxfU4XboNSA4nEaDroF1/M1O6xRD5WhDQCe/j/gExQwN4kqGHYhf2+HhA5kl
-         SW2skP8V8ccj8QQ1CfaOWzZ6oSPdt7uDY6XpO5m6CF6VuFwvs/SLIfr0UucsBy75hkX5
-         N/cA==
+        b=DY/kSviUx7QljREAWDQwL2ja3roKghWBR+VmgMwQOOaU1xVSFB2KNeWLbA9h55SbdD
+         Ce2EVydFP96IwiZ1D+Rw7O6M7plsOUq5Gm9vQ5f8uAxDoXSbYtxZcmZTWXWnjVnRjA5a
+         NPlbdT/XVRDj8p7ZB7KjrvL6LgYFd8eOj4LMLQLnbCGpXniikS4tOgxRO3FmC0lmQiBe
+         uHXacIW84RoW5naY/EQWZB20YVAYrseRPBm4qfe0ygRDeNgL/LIpzNxbE2OKHz1oS0Od
+         8hYC5d4uS26c6a59GAcIorXBaw5LhZZMDBFTukLZP3u9ctvbT5BmkwOwem6pZDBgR9Mk
+         I9Pw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:references:in-reply-to:message-id:date
          :subject:cc:to:from:dkim-signature:arc-authentication-results;
-        bh=eZIWsGMaauBNFteWa8e+UIcE/L3LknodtQ/CRuK3DJc=;
-        b=jZXKEG/R06YIGM8EZ91PWc8GnNVrVc61K/LAW8kh02danNbkAzidpbkJFfelShDmjs
-         IuNeY62na8xmEEKc8IcRnEQobyOfOgywC5pNLTsz3VkBQj64ujR11zdPFu8Cmjhfyqzd
-         +iUJJ1y/Am265dy4yi3vz5k0NSPaPPg5JBSbbpuhENsUSOMkI96dCTtyI5Sdaf6YlpzR
-         rQLWDJT77j4Uu5DAw/YMSmK4kJb2vawAZHMr9EeKyB7GWTzl7r+/dDi8dznSy1GkQB1e
-         exKgde3bzw0b8hUiadwZjtZ3cxFtehJjy3PEDIDqMxfzerZjEAV1eGMoyJS0USW7L5aC
-         6dUQ==
+        bh=Dzsc8DcqLzT0KNWlm9pFxr8JKE1+/zUIVUIPbngUKPA=;
+        b=xG+TaNUpO9R8Xsejd+aiNc4Rdei5vkz2sfO5Og771OmvGatZA8vQtp9E4p8eHJ7qtK
+         5PUSW/iFNeMZLP4ArgaVUkSBRco8SJ5Y8miEjXLslQnB3GDBBoaO+bn4fsFSepQ66Ma8
+         hW45Vv4OQmzSvlAzieasS/g8RTmEf4m+su/BSbYyBdib6hq7ffn39242KAR1e2kshkoY
+         C6gBTtVInaKnJ4bYe7bnDset0I36LzwsUvQSsu0hj8snPrQlInn5RSr6aDMv64tblTYn
+         zKeUu12FJKWjpkYA3COZ/lEQm2rBmeGltjyv/eqEowR9NR13Ruz+UnHdpDdWOPEdp9aX
+         9pHg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BJI9XkEQ;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BEiPQYsu;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id c200si267092pfb.14.2017.09.19.08.39.51
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id 88si252921pfm.20.2017.09.19.08.39.46
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Sep 2017 08:39:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Tue, 19 Sep 2017 08:39:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BJI9XkEQ;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BEiPQYsu;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id h4so5130pfk.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 19 Sep 2017 08:39:51 -0700 (PDT)
+Received: by mail-pg0-x244.google.com with SMTP id i130so11775pgc.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 19 Sep 2017 08:39:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=eZIWsGMaauBNFteWa8e+UIcE/L3LknodtQ/CRuK3DJc=;
-        b=BJI9XkEQ4F3zxgkN2oUboz99egSpifUMGCIUniW+S00Q3E27ECyexo/A0Ii0JAryTH
-         g9/lhB0VfsE47LFzeHFQWXiMQ952O+hsBWfsqOBFF683P/eOt3pGSzEbac1nITMhIG3K
-         r0+C8ZOQlZUuZVVS0YBS/Az58ZsnulTOAQMZuz6YfY3LA6rHuGlDJfw9RN7p85xitqwc
-         G9rIihzlh8+iArgqh85cmS7e/B9tPZvrPm2aH5GK94q4pWH17vP3/VFI9IRGFDzv6nEK
-         Gej0bFfYpPO/fIIz7gVfZCvzkXKb4oKhzyPwIqjLonhEVwt4YqpOPdYw2P78dvtzSGYl
-         DYUQ==
+        bh=Dzsc8DcqLzT0KNWlm9pFxr8JKE1+/zUIVUIPbngUKPA=;
+        b=BEiPQYsuOpoaezU7HfVYNSe0vETEvJeRr0upMMdL8tTFWaosMK00SzTN4Z+DmAWasp
+         65PgVjDRAp6nfF8yy2QhAniPlxURrVMGUtc+XpEKiE0wFKk3FddYSyf5PC9+SfmlrFRu
+         /7aQUqHuLB6Lg6h0rw6QAAaSF6pRsab2KaX5ZLZJN7TFqMYyadbwMYzoNxLZ/14/fq3H
+         6NDacCn/FWT//uDumt+MlSBv7sEeej7Ri6X++h9QyAVMe64VECLDjupIm6Me4PvdDY3p
+         Wf+sGNRJ1jQeJ7HhDiyRnWX+1DwNU16UFULyg0oTc9Iz0xFqQ+ZwqCyfDarDVLqeR1uC
+         AzXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=eZIWsGMaauBNFteWa8e+UIcE/L3LknodtQ/CRuK3DJc=;
-        b=C1xhsvRE9X0fI+gvXMzbYOS3KbAGxcgHGrwYZPHHYpIpETRuTeTZgQbHsqHTNuePAw
-         TBjpNo2xmzylkFHsPT7OBqOZmoj18SBI0rS2pCnoISsp4jV4JRLeeR5ViRq4V5UINqXB
-         j2fsUU+6795op7LcEy2xo4sb7bbGOiA9vGrb/Vmr8mO7xJWj8Hebom92U/R62/L7t6Ru
-         DgHbQmZ1aIGPpV1Iw2kfUHcES4ZxodJCi+eq6SVpX7j4cGG8+6dWYQqduulgYbhUi2Oc
-         /BzJJesA4rijKF+4ak5MkSYzp+YfiSZzaU34dixuA2TqROLl8mDFcByV19SRlUUwvtyE
-         GtoQ==
-X-Gm-Message-State: AHPjjUjV3c+nzGqf90XYLtTVR6JMrkz+KBj64sEhhbQ6cokwpE1+pDGY
-	igBMoj6nUOFkLnTHdZssGnU=
-X-Google-Smtp-Source: AOwi7QCNKwZFVIcJClRAcNvu8HCdwyA/Z4klgQtt4+deAijKDUxh57uuf3imepcAfpguhFofnO/IJw==
-X-Received: by 10.99.168.72 with SMTP id i8mr1721876pgp.427.1505835591741;
-        Tue, 19 Sep 2017 08:39:51 -0700 (PDT)
+        bh=Dzsc8DcqLzT0KNWlm9pFxr8JKE1+/zUIVUIPbngUKPA=;
+        b=HyKGwn58F7J0plhUAUH/ExoKiQN3wHjJzTbL3ahtD4OBO3WU0/CmAGVcZkReO/eEhP
+         Oh2/zl0DGbqanQOC8rcaaK1zBXAn31ADVGSOLBFTVwg6jTQNrHwtwrOL5shpeKDLcbvF
+         fOEt0LD4vq+Cj/wZrPR94TEFUtcl3C18nv/UaYqTgyNn6EykoYIors873S5PWbSgPzV/
+         SWc0gGLfU2/Cd76M6sFiSn59T5107FyjoclQZ8IbiCvz1KNUpMMylcgwPS4iOBk2qVeO
+         TTGcLudgmSJV0RGjjNTT1S1r+VYVcNgQqoAzQztPCbDpMSftah2y5f/eknvAvChgHMFo
+         IhoQ==
+X-Gm-Message-State: AHPjjUgwl0YPmjK6l8D3UaBAG/7xV1B8eMTgjzGJp2eCJGuuFpDJJPVL
+	191o7cIDjVdo+pQZkaWIW4g=
+X-Google-Smtp-Source: AOwi7QDlRkWbSSGQoapwbdtvV3KnCurQUWCx19CAmwEzE4lDKsOELDjBUoZUpXOpzvpVoh+L4AWcMw==
+X-Received: by 10.99.99.197 with SMTP id x188mr1717537pgb.421.1505835585645;
+        Tue, 19 Sep 2017 08:39:45 -0700 (PDT)
 Return-Path: <aastha.gupta4104@gmail.com>
 Received: from aastha-HP-Pavilion-15-Notebook-PC ([2405:204:300f:5ad2:74dd:e91f:361a:e01e])
-        by smtp.gmail.com with ESMTPSA id d5sm5121494pfg.26.2017.09.19.08.39.49
+        by smtp.gmail.com with ESMTPSA id y4sm3404925pgs.19.2017.09.19.08.39.44
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 19 Sep 2017 08:39:51 -0700 (PDT)
+        Tue, 19 Sep 2017 08:39:45 -0700 (PDT)
 From: Aastha Gupta <aastha.gupta4104@gmail.com>
 To: outreachy-kernel@googlegroups.com,
 	William Hubbs <w.d.hubbs@gmail.com>,
@@ -81,37 +81,145 @@ To: outreachy-kernel@googlegroups.com,
 	Samuel Thibault <samuel.thibault@ens-lyon.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH 02/12] staging: lustre: fix comparisons should place the constant on the right side
-Date: Tue, 19 Sep 2017 21:09:14 +0530
-Message-Id: <a9eaaebd078e0e68f3cf10d3788807b84e87d680.1505834825.git.aastha.gupta4104@gmail.com>
+Subject: [PATCH 01/12] staging: lustre: fix incorrect multi-line comment style
+Date: Tue, 19 Sep 2017 21:09:13 +0530
+Message-Id: <49a45460cf7804f3bc156080b484ed37f0210e08.1505834825.git.aastha.gupta4104@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <cover.1505834825.git.aastha.gupta4104@gmail.com>
 References: <cover.1505834825.git.aastha.gupta4104@gmail.com>
 In-Reply-To: <cover.1505834825.git.aastha.gupta4104@gmail.com>
 References: <cover.1505834825.git.aastha.gupta4104@gmail.com>
 
-This patch fixes checkpatch.pl warning:
+This patch fixes the checkpatch.pl warning:
 
-WARNING: Comparisons should place the constant on the right side of the test
+WARNING: block comments use a trailing */ on a separate line
 
 Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
 ---
- drivers/staging/lustre/lustre/include/lu_object.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../staging/lustre/lustre/include/lustre_errno.h   | 51 ++++++++++++++--------
+ 1 file changed, 34 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/staging/lustre/lustre/include/lu_object.h b/drivers/staging/lustre/lustre/include/lu_object.h
-index 4f213c4..a3c0481 100644
---- a/drivers/staging/lustre/lustre/include/lu_object.h
-+++ b/drivers/staging/lustre/lustre/include/lu_object.h
-@@ -1130,7 +1130,7 @@ struct lu_context_key {
- 	{							 \
- 		type *value;				      \
- 								  \
--		BUILD_BUG_ON(PAGE_SIZE < sizeof(*value));        \
-+		BUILD_BUG_ON(sizeof(*value) > PAGE_SIZE);        \
- 								  \
- 		value = kzalloc(sizeof(*value), GFP_NOFS);	\
- 		if (!value)				\
+diff --git a/drivers/staging/lustre/lustre/include/lustre_errno.h b/drivers/staging/lustre/lustre/include/lustre_errno.h
+index 35aefa2..02642be 100644
+--- a/drivers/staging/lustre/lustre/include/lustre_errno.h
++++ b/drivers/staging/lustre/lustre/include/lustre_errno.h
+@@ -71,7 +71,8 @@
+ #define LUSTRE_EMLINK		31	/* Too many links */
+ #define LUSTRE_EPIPE		32	/* Broken pipe */
+ #define LUSTRE_EDOM		33	/* Math argument out of domain of
+-					   func */
++					 * func
++					 */
+ #define LUSTRE_ERANGE		34	/* Math result not representable */
+ #define LUSTRE_EDEADLK		35	/* Resource deadlock would occur */
+ #define LUSTRE_ENAMETOOLONG	36	/* File name too long */
+@@ -79,7 +80,8 @@
+ #define LUSTRE_ENOSYS		38	/* Function not implemented */
+ #define LUSTRE_ENOTEMPTY	39	/* Directory not empty */
+ #define LUSTRE_ELOOP		40	/* Too many symbolic links
+-					   encountered */
++					 * encountered
++					 */
+ #define LUSTRE_ENOMSG		42	/* No message of desired type */
+ #define LUSTRE_EIDRM		43	/* Identifier removed */
+ #define LUSTRE_ECHRNG		44	/* Channel number out of range */
+@@ -113,22 +115,28 @@
+ #define LUSTRE_EDOTDOT		73	/* RFS specific error */
+ #define LUSTRE_EBADMSG		74	/* Not a data message */
+ #define LUSTRE_EOVERFLOW	75	/* Value too large for defined data
+-					   type */
++					 * type
++					 */
+ #define LUSTRE_ENOTUNIQ		76	/* Name not unique on network */
+ #define LUSTRE_EBADFD		77	/* File descriptor in bad state */
+ #define LUSTRE_EREMCHG		78	/* Remote address changed */
+ #define LUSTRE_ELIBACC		79	/* Can not access a needed shared
+-					   library */
++					 * library
++					 */
+ #define LUSTRE_ELIBBAD		80	/* Accessing a corrupted shared
+-					   library */
++					 * ibrary
++					 */
+ #define LUSTRE_ELIBSCN		81	/* .lib section in a.out corrupted */
+ #define LUSTRE_ELIBMAX		82	/* Attempting to link in too many shared
+-					   libraries */
++					 * libraries
++					 */
+ #define LUSTRE_ELIBEXEC		83	/* Cannot exec a shared library
+-					   directly */
++					 * directly
++					 */
+ #define LUSTRE_EILSEQ		84	/* Illegal byte sequence */
+ #define LUSTRE_ERESTART		85	/* Interrupted system call should be
+-					   restarted */
++					 * restarted
++					 */
+ #define LUSTRE_ESTRPIPE		86	/* Streams pipe error */
+ #define LUSTRE_EUSERS		87	/* Too many users */
+ #define LUSTRE_ENOTSOCK		88	/* Socket operation on non-socket */
+@@ -139,25 +147,31 @@
+ #define LUSTRE_EPROTONOSUPPORT	93	/* Protocol not supported */
+ #define LUSTRE_ESOCKTNOSUPPORT	94	/* Socket type not supported */
+ #define LUSTRE_EOPNOTSUPP	95	/* Operation not supported on transport
+-					   endpoint */
++					 * endpoint
++					 */
+ #define LUSTRE_EPFNOSUPPORT	96	/* Protocol family not supported */
+ #define LUSTRE_EAFNOSUPPORT	97	/* Address family not supported by
+-					   protocol */
++					 * protocol
++					 */
+ #define LUSTRE_EADDRINUSE	98	/* Address already in use */
+ #define LUSTRE_EADDRNOTAVAIL	99	/* Cannot assign requested address */
+ #define LUSTRE_ENETDOWN		100	/* Network is down */
+ #define LUSTRE_ENETUNREACH	101	/* Network is unreachable */
+ #define LUSTRE_ENETRESET	102	/* Network dropped connection because of
+-					   reset */
++					 * reset
++					 */
+ #define LUSTRE_ECONNABORTED	103	/* Software caused connection abort */
+ #define LUSTRE_ECONNRESET	104	/* Connection reset by peer */
+ #define LUSTRE_ENOBUFS		105	/* No buffer space available */
+ #define LUSTRE_EISCONN		106	/* Transport endpoint is already
+-					   connected */
++					 * connected
++					 */
+ #define LUSTRE_ENOTCONN		107	/* Transport endpoint is not
+-					   connected */
++					 * connected
++					 */
+ #define LUSTRE_ESHUTDOWN	108	/* Cannot send after transport endpoint
+-					   shutdown */
++					 * shutdown
++					 */
+ #define LUSTRE_ETOOMANYREFS	109	/* Too many references: cannot splice */
+ #define LUSTRE_ETIMEDOUT	110	/* Connection timed out */
+ #define LUSTRE_ECONNREFUSED	111	/* Connection refused */
+@@ -186,7 +200,8 @@
+ #define LUSTRE_ERESTARTNOHAND	514	/* restart if no handler.. */
+ #define LUSTRE_ENOIOCTLCMD	515	/* No ioctl command */
+ #define LUSTRE_ERESTART_RESTARTBLOCK 516 /* restart by calling
+-					    sys_restart_syscall */
++					  * sys_restart_syscall
++					  */
+ #define LUSTRE_EBADHANDLE	521	/* Illegal NFS file handle */
+ #define LUSTRE_ENOTSYNC		522	/* Update synchronization mismatch */
+ #define LUSTRE_EBADCOOKIE	523	/* Cookie is stale */
+@@ -195,9 +210,11 @@
+ #define LUSTRE_ESERVERFAULT	526	/* An untranslatable error occurred */
+ #define LUSTRE_EBADTYPE		527	/* Type not supported by server */
+ #define LUSTRE_EJUKEBOX		528	/* Request initiated, but will not
+-					   complete before timeout */
++					 * complete before timeout
++					 */
+ #define LUSTRE_EIOCBQUEUED	529	/* iocb queued, will get completion
+-					   event */
++					 * event
++					 */
+ #define LUSTRE_EIOCBRETRY	530	/* iocb queued, will trigger a retry */
+ 
+ /*
 -- 
 2.7.4
 
