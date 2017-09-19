@@ -1,124 +1,105 @@
-X-GM-THRID: 6398485501253255168
-X-Received: by 10.99.115.27 with SMTP id o27mr3823107pgc.12.1489763497227;
-        Fri, 17 Mar 2017 08:11:37 -0700 (PDT)
+X-GM-THRID: 6467514574021066752
+X-Received: by 10.28.45.215 with SMTP id t206mr158704wmt.17.1505836790861;
+        Tue, 19 Sep 2017 08:59:50 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.54.4 with SMTP id w4ls7796823otb.8.gmail; Fri, 17 Mar 2017
- 08:11:36 -0700 (PDT)
-X-Received: by 10.157.37.82 with SMTP id j18mr6906323otd.68.1489763496464;
-        Fri, 17 Mar 2017 08:11:36 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id 2si1413934pfz.1.2017.03.17.08.11.36
+Received: by 10.28.211.207 with SMTP id k198ls2260343wmg.21.canary-gmail; Tue,
+ 19 Sep 2017 08:59:50 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QAg4Dtx97ZrVXsMvyVrsxk6mzNoFLp5jvZvpQv/ukk2EUjt9LDljBbTikbGQh4bwCQCp34a
+X-Received: by 10.28.54.30 with SMTP id d30mr162275wma.6.1505836790074;
+        Tue, 19 Sep 2017 08:59:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505836790; cv=none;
+        d=google.com; s=arc-20160816;
+        b=vfpStRDwxS4I0E7K3Juy2gYvvpL8TygxPBxS6zEzxlszn4LMNiUaDA79KjfyvIfhw9
+         s+arbaewaFM/46xGWuk7hKyhBeZUQeXlBry6hyDHOe+Te4h/k7duKIYJAh4zJzlN6XPA
+         w0+XiV1bOiHJw/D+YX6eD4wFJpXatErjRB38/dSKBc/Pl1VbERPJxgiEwFTxYkpOzAxN
+         bQ9r3r3SYWT6KZfQD1Nzu7ZaPGpJBMOy9tcpIJmW7/V+VjDsreTD2ghhYibpCiYwMEoK
+         LOE6+gnJM4Qw8cqvFh5cdywXRYxrLhHckS1eYKJHQSI7QTQyWUKqDcA1UL3bkEnXGksn
+         6K8g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=KK2wcWEG3+R9OQP3PGipq74bjUjjSPqKFXUgot/h4kA=;
+        b=c8GPuMiheyZQUhuEFCNklZC+TtIwoOGK7j5JlHKPaCbfLLM8B/gxYypcZ1P24htAGo
+         EYaqJiQA+LM1L632ovF+XSQ28vqabNHt7jQutB2kg9s1DnO+oyEbiaJmFFHay8xlRYpe
+         9U61IT+uKKc+gk2/d/UEl94uY86IzupgDMwHcX7Ny0VamBa08tLeXJa0N5WyHKoZb6Ys
+         tiTV8xb/wo4OVxSm1qjopII80TmlIk2GXfyCZyZshNNczrIKVRqeZdByrJftXvQiAY2H
+         MyNWmF2xrcY9LyTgELpADc1gsuC78VowrEOqzwDeffbKSJtaUIZiYxoFv0VJYP+kSBTn
+         82vQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id p70si183333wma.1.2017.09.19.08.59.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 17 Mar 2017 08:11:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Tue, 19 Sep 2017 08:59:50 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id b5so10259847pgg.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 17 Mar 2017 08:11:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=H1eKMp5pTU5n/j+uYO6e3mQf4ZJJQOcAu2T5IUUi+u0=;
-        b=FB5hAxe5vbU0Oic6TJcbiBfeZ2Gq6Y70lQUUXEQDDemisRw5zKZZANiuBRUwSORqL4
-         fivUsuWPQIuaxNX80Y8yans4W8Dnw5+SNs4PXYvMmWDPMYA8xvcbw4YyEM7LmYVzqc3t
-         ZT2RbBjDm6XIPeUlBWTHFXBoTkVKleXoDLjpWXzKW5sDqQyqe4OtgeYUv7PKHVA2T5kX
-         8TyQ0mQ1WePEQjKfIP8S27eHCIBJ6/GY1/lnyy2CzstKWdoWZjz3vyGWJeW12A1EKKgw
-         QKIQTR8+TnyAYT6tz8XIs7dzo8FV8ifFf/0bQkcPydFsFAX+4mWGta8nNUkhp2a2Xe4O
-         0L7g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=H1eKMp5pTU5n/j+uYO6e3mQf4ZJJQOcAu2T5IUUi+u0=;
-        b=amalASi2c9YOACUyULl9OuA8jnx+0YX02Ll7klTPa32Np74rW+RY2H8KuJrIvmCrLU
-         nMk8aTxWHeuvkwpIQINVX0y9R0+wUe1h+LI9EloENpgRyMa5paNIr9upeIMqYr6T98yF
-         yvHyGTu4H/8F+bJF8iwSqW8r02Ao8IMLKYJqq42pa+N1pPwqnm00g5VQv8ocLQJk4JEu
-         CA2h3yTCsytTcACrMRv8KOiZ8N6vpZTG5tK+WKo73Xccnp4KgRINUdCtqqadZJwdrLUj
-         s3sAaizxmkEQw5J9UjMs0zhF+asZO1bc4fJQewsmyfTCXCXI0VvRei5heBqCOqZNbr2e
-         VLgQ==
-X-Gm-Message-State: AFeK/H06dVZ5HI1Lm3lbG6QGpqcCUy6AoV6nboMkcM5tWakE9e6xVNg8oAtdLObanaZIaA==
-X-Received: by 10.84.197.1 with SMTP id m1mr20958816pld.123.1489763496177;
-        Fri, 17 Mar 2017 08:11:36 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from sayli-HP-15-Notebook-PC ([2405:204:2005:cd14:c57b:f0d:39df:5753])
-        by smtp.gmail.com with ESMTPSA id v26sm17496403pfl.16.2017.03.17.08.11.23
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 17 Mar 2017 08:11:35 -0700 (PDT)
-Date: Fri, 17 Mar 2017 20:41:11 +0530
-From: sayli karnik <karniksayli1995@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Lars-Peter Clausen <lars@metafoo.de>,
-	Michael Hennerich <Michael.Hennerich@analog.com>,
-	Jonathan Cameron <jic23@kernel.org>,
-	Hartmut Knaack <knaack.h@gmx.de>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-iio@vger.kernel.org
-Subject: [PATCH] staging: iio: meter: ade7758_core: Replace mlock with
- driver's private lock
-Message-ID: <20170317151110.GA26848@sayli-HP-15-Notebook-PC>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,418,1500933600"; 
+   d="scan'208";a="238041850"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 19 Sep 2017 17:59:49 +0200
+Date: Tue, 19 Sep 2017 17:59:15 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Aastha Gupta <aastha.gupta4104@gmail.com>
+cc: outreachy-kernel@googlegroups.com, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH 10/12] staging: lustre: llite: fix
+ identation in dir
+In-Reply-To: <a52560fee435ea3dc9cf0ab38d3992c9609b9139.1505834825.git.aastha.gupta4104@gmail.com>
+Message-ID: <alpine.DEB.2.20.1709191757330.3036@hadrien>
+References: <cover.1505834825.git.aastha.gupta4104@gmail.com> <a52560fee435ea3dc9cf0ab38d3992c9609b9139.1505834825.git.aastha.gupta4104@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-iio_dev->mlock should be used by the IIO core only for protecting
-device operating mode changes. ie. Changes between INDIO_DIRECT_MODE,
-INDIO_BUFFER_* modes.
-Replace mlock with a lock in the device's global data to protect
-hardware state changes.
 
-Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
----
- drivers/staging/iio/meter/ade7758_core.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/iio/meter/ade7758_core.c b/drivers/staging/iio/meter/ade7758_core.c
-index 99c89e6..1723eb8 100644
---- a/drivers/staging/iio/meter/ade7758_core.c
-+++ b/drivers/staging/iio/meter/ade7758_core.c
-@@ -522,13 +522,14 @@ static int ade7758_read_raw(struct iio_dev *indio_dev,
- 			    int *val2,
- 			    long mask)
- {
-+	struct ade7758_state *st = iio_priv(indio_dev);
- 	int ret;
- 
- 	switch (mask) {
- 	case IIO_CHAN_INFO_SAMP_FREQ:
--		mutex_lock(&indio_dev->mlock);
-+		mutex_lock(&st->buf_lock);
- 		ret = ade7758_read_samp_freq(&indio_dev->dev, val);
--		mutex_unlock(&indio_dev->mlock);
-+		mutex_unlock(&st->buf_lock);
- 		return ret;
- 	default:
- 		return -EINVAL;
-@@ -541,15 +542,16 @@ static int ade7758_write_raw(struct iio_dev *indio_dev,
- 			     struct iio_chan_spec const *chan,
- 			     int val, int val2, long mask)
- {
-+	struct ade7758_state *st = iio_priv(indio_dev);
- 	int ret;
- 
- 	switch (mask) {
- 	case IIO_CHAN_INFO_SAMP_FREQ:
- 		if (val2)
- 			return -EINVAL;
--		mutex_lock(&indio_dev->mlock);
-+		mutex_lock(&st->buf_lock);
- 		ret = ade7758_write_samp_freq(&indio_dev->dev, val);
--		mutex_unlock(&indio_dev->mlock);
-+		mutex_unlock(&st->buf_lock);
- 		return ret;
- 	default:
- 		return -EINVAL;
--- 
-2.7.4
+On Tue, 19 Sep 2017, Aastha Gupta wrote:
 
+> This patch fixes identation issue caused by one of the fixes in this
+> patch.
+
+I guess you mean "one of the fixes in this series".  But I think you could
+have just fixed the indentation when you made the change that introduced
+the problem.  Even if it was different than this change, you should fix up
+checkpatch issues as you introduce them.
+
+julia
+
+> Have the trailing line of a function call line up with the starting
+> '('.
+>
+> Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
+> ---
+>  drivers/staging/lustre/lustre/llite/dir.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/lustre/lustre/llite/dir.c b/drivers/staging/lustre/lustre/llite/dir.c
+> index e019d9c..b81aab4 100644
+> --- a/drivers/staging/lustre/lustre/llite/dir.c
+> +++ b/drivers/staging/lustre/lustre/llite/dir.c
+> @@ -738,8 +738,8 @@ static int ll_ioc_copy_start(struct super_block *sb, struct hsm_copy *copy)
+>  			CDEBUG(D_HSM,
+>  			       "Could not read file data version of " DFID
+>  			       " (rc = %d). Archive request (%#llx) could not be done.\n",
+> -				      PFID(&copy->hc_hai.hai_fid), rc,
+> -				      copy->hc_hai.hai_cookie);
+> +			       PFID(&copy->hc_hai.hai_fid), rc,
+> +			       copy->hc_hai.hai_cookie);
+>  			hpk.hpk_flags |= HP_FLAG_RETRY;
+>  			/* hpk_errval must be >= 0 */
+>  			hpk.hpk_errval = -rc;
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/a52560fee435ea3dc9cf0ab38d3992c9609b9139.1505834825.git.aastha.gupta4104%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
