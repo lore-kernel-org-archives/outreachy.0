@@ -1,78 +1,78 @@
 X-GM-THRID: 6467514574021066752
-X-Received: by 10.99.65.133 with SMTP id o127mr1018452pga.44.1505835627643;
-        Tue, 19 Sep 2017 08:40:27 -0700 (PDT)
+X-Received: by 10.107.83.9 with SMTP id h9mr910228iob.96.1505835620689;
+        Tue, 19 Sep 2017 08:40:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.17.75 with SMTP id 72ls7132712itf.10.gmail; Tue, 19 Sep
- 2017 08:40:27 -0700 (PDT)
-X-Received: by 10.202.48.68 with SMTP id w65mr870384oiw.123.1505835627034;
-        Tue, 19 Sep 2017 08:40:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505835627; cv=none;
+Received: by 10.36.77.78 with SMTP id l75ls7517346itb.9.canary-gmail; Tue, 19
+ Sep 2017 08:40:20 -0700 (PDT)
+X-Received: by 10.36.1.204 with SMTP id 195mr773552itk.41.1505835620202;
+        Tue, 19 Sep 2017 08:40:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505835620; cv=none;
         d=google.com; s=arc-20160816;
-        b=nwI19OX7LLt+kC8ySVWTTm1OGannZtviCko4LjHtmm1EYWTzueUByfxapVD94ZCvxq
-         cG1m457UbB17s7/UKYOuTf0oCQKALtFVT/AnpKQ7LBb3cY9tbJEgQ+tk5alVSZ9+meyn
-         wI7OJ2WDDoh5Kp513oPRXP/5WVTUq+X+sGQeX/uHJCW0dTCTmDxdhGr3PD59tE1d3vnd
-         RGijzDptuepAOkcKso7uEH9VcLFa07O7sJifocxuBWfISToeV1r7w9JVpcYbmJ2zV146
-         /tyvNXPr0LgqYtgcWL04DVNOb4PIEVhk++ZElPIfsQ34v5VaVrUiUIMv/xh9L0QAnhot
-         eM8Q==
+        b=pYREm1a1NySJNckcGkoUXv1v7w15YklEmiBfiMUd5+pSTQllACy1KtvDdypfxJ+jm+
+         eYN956/ZrGNO1laFMIaJWd1tWujMaPNM5d91QeEdCG13g/CGnxLxh4XaXBMyQdPoPtnO
+         UOINeSuZl0bSRvaxaoWK3roVwescj1l+piSThj+oMPp+AKYgxrmW39dSOsCsJi0ZrZra
+         Op030khIDpKbE+9I9xsC0yjnsjoJK2dkcC3QaJ9ReQSzZHxLZoETmFNmo40oIdX/U1cv
+         3n6iIPWup5YIFncLX1n4/i0JhzJVlWuX+pyznwC1Umcy4tybDNFj6tuvfiMhFWjRXTwP
+         Eu6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:references:in-reply-to:message-id:date
          :subject:cc:to:from:dkim-signature:arc-authentication-results;
-        bh=VMZcFRIhPmvdNz6y6uFOvYLlymbOySyjSR+jJ6ZzUls=;
-        b=J7vsD7RMMF+MozhR29EYnau98Zwtz8Tzh4XYC//cGCo81jISORmT0v7uTvLApJNwae
-         AU5BYSVhxuJ9P9/Ga89baTjaJ9dDm/Z2Z4AVgdVe0F1k1MUALIasLOdrOHUdH4YuBr9C
-         l8KoSc2ZtuYM/+Ox2H/z72MmW021GtibExtvvkjN0wt//5CrwcwXmaWB+K/bEBEw81i8
-         GwLTd0qci9q64wpWSPESBphFuMBbFG8dIAKGJie0D5yhoKGIXtVcHHP2PUZym+Brnau+
-         sbzf89StxizHW/SydZ0awGNbRr44j3djX0WjyhsxAiqoRSlg+h/e9GjZyq/wn174eFIj
-         8FrQ==
+        bh=9RTeACkRvBdJCyhV7XimV+byetSCikeDSSST98i0Ir4=;
+        b=nj76yraInYj655Qu5xg0FFSh/RpMbpAxo/RfOr+HHdi/NGCnerC/SPNZqOQcNouYos
+         wqnJPZPYwk7v19vwaUjPK/hn/sGdUwdaENj1EAvLbDu9SJLaDadSHDIFAuuAseX4ODQu
+         ZltmKCe1KdINGNCgfqdpV7pt/HPnq5QvydRW7KIXHKZpe06sJEXE4O/TT19bvc4HRrSn
+         vowqJ2yN3Vq/YoHq/YzasKFz9TomQH6inRCwJMnIh9minKB7diONDA7hyNsK9SYRtNNO
+         6c+KKfrElfoViG/iuyLqxN8dlX97fLYDTShK1My0q1O+XXEADdsAyWxwJBcRvS7kuVum
+         p/Zg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Oq815CNM;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=M2ZZ1ieL;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id k76si277491pfb.5.2017.09.19.08.40.26
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id c200si267092pfb.14.2017.09.19.08.40.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Sep 2017 08:40:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Tue, 19 Sep 2017 08:40:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Oq815CNM;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=M2ZZ1ieL;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id g65so4240pfe.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 19 Sep 2017 08:40:26 -0700 (PDT)
+Received: by mail-pf0-x243.google.com with SMTP id h4so5130pfk.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 19 Sep 2017 08:40:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=VMZcFRIhPmvdNz6y6uFOvYLlymbOySyjSR+jJ6ZzUls=;
-        b=Oq815CNMseOOrwg2BXDpl4C/Lfeir5umZciKltqM+An2xopbYV6i/outTcvzIRWm4K
-         GjDv8HzH7Yd4MyoIgVJdG+Hypd/4DRLVZP/uRxMQeArt8pgkXdvDwdvYWZNVkRmQFwzD
-         qLq9YkotN6HgnUe0cPMm7EwLimU2tZewia4Qix9cdXNQFPGCSTb1+5dgE+GKO5Urnvi4
-         tubaF1qT3UIyjSchNiE8WAyEok1+JZtoeXR4XV6180l65aJOXa3jH5z2ALk5V3j3i9Cn
-         kiLwNc99dafHmKho+Xx6Z7q4un0ksBEN3lHFQJEdRLOAGRduPWEria58pIZAaQXNQ3Ci
-         LhgQ==
+        bh=9RTeACkRvBdJCyhV7XimV+byetSCikeDSSST98i0Ir4=;
+        b=M2ZZ1ieLw3UbZgYoq9wAA71h/C8K5een2a+I0fin/SiddnvUc7Kp/XBC4QjGhrkl7B
+         kow9k9IK33XnmS/H0S73VDp809doAriCh6QalK1y1ds/KAQWL7dyDi1FPhlLXuXu23qT
+         cM+a7VcijAe1An1XJrxx2K5Z9udSp4QD2tHvtk9VZbYetrSEVQ9RdiwZvqKIsv3hDmew
+         4WKMTm/unh5q0NAWmPhnsUYII0+q+v7bfoKVouelNDfsXoY+7q6oP6soJecgIMIPquA8
+         ZAu1YVIoEvqdhU8uTRVmuWzGge+BqzCOOfVxYcx59ZtwNivIn60cODplB3gHWvxWQ9LD
+         GBFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=VMZcFRIhPmvdNz6y6uFOvYLlymbOySyjSR+jJ6ZzUls=;
-        b=DpJi5cQMHSCWHkbTVIKKXBpe/RqIT9BsXTwbHF9Qgq4HCqftzcKJnY/JZVX/H9ycqw
-         b8l02s1gV9pWEQQ3bNupdBy3+Ef5JVl9G9a3+wNxZQzA3jnQDEz0IENCnZbgifV7qRK0
-         VIfpTvzXhqJV/AInK+6THNfNpBX7zhlA8oKQ413DPFQVwWxNsCywGko3tqMnlU2llI0k
-         AdmdQgqabDbydlMWlQ2/Jdxvo0k73heNZT4Iw4v/oCZq+oxhRxx1UbM70kNF3R+jpkdV
-         ws/Q3HppUwqfEmcWa1G3OnvvpGXp57OvtrlVpEUtfzWXtCc9XKqq3pSy79KxB0EZDDww
-         UNrg==
-X-Gm-Message-State: AHPjjUhR/NSJlcIxmqGf04vo5XE8WlzXKtz/6lmDFnAeuuq1PCc3+TQm
-	uPEoAgn+x4rs8yNgFRfJZ9o=
-X-Google-Smtp-Source: AOwi7QAzU/aMDBPVVFIDxhlUOLDfzPo5d2KtIgzCFJfkOYBll6jlR9u4lh8GgBZfGjW8hvgXaSNH/w==
-X-Received: by 10.159.218.9 with SMTP id v9mr1693058plp.182.1505835626375;
-        Tue, 19 Sep 2017 08:40:26 -0700 (PDT)
+        bh=9RTeACkRvBdJCyhV7XimV+byetSCikeDSSST98i0Ir4=;
+        b=FdMsEsFzdLTpVDG6CLzhlotJ4D0nGT/qG/0zo3iabg6nYIteGmflKe3P39mrIJUjJy
+         LGcV4uR7kROKCnNqwI+dm6NWq/RHNOn9xzpQG4dbSmKUmfmcrCuwcgBQ2NAieeg6qsMC
+         BA9atKlR/I4vNhr356BOcUdE92+dV2aP3xNAUTmwS7ur6PmQ1zCmEodkVaQHkbnitaLs
+         QET92PcbHfUt5Ybr8HvzL/o05Q1d53plDv4+ke3q4KPXJ9R6Oj2XgVZbQosIwPY1g0qN
+         49Gpum69kiRwljiSSdksx8LVGXkASEavl6k2W+Ry8ysecwYp4sY2/OLimjAC7o7Xd6G6
+         v0Rg==
+X-Gm-Message-State: AHPjjUifVKMAK7GQzqKTXfpQkV1aNFmQ1x2xFBnTeRuwp9lNb0CEF+cZ
+	5LLwgf52hwOrpska0vTW0w0=
+X-Google-Smtp-Source: AOwi7QAJAP+jxtbhcfNluf+u5GHRouKo+BZ1s+G4H5iI7I9JGB4yYFMbgHmEkr3PcGhyCYEH0x7yCQ==
+X-Received: by 10.99.126.84 with SMTP id o20mr1708749pgn.295.1505835619929;
+        Tue, 19 Sep 2017 08:40:19 -0700 (PDT)
 Return-Path: <aastha.gupta4104@gmail.com>
 Received: from aastha-HP-Pavilion-15-Notebook-PC ([2405:204:300f:5ad2:74dd:e91f:361a:e01e])
-        by smtp.gmail.com with ESMTPSA id l86sm3845932pfg.155.2017.09.19.08.40.25
+        by smtp.gmail.com with ESMTPSA id t81sm4248392pfg.154.2017.09.19.08.40.18
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 19 Sep 2017 08:40:25 -0700 (PDT)
+        Tue, 19 Sep 2017 08:40:19 -0700 (PDT)
 From: Aastha Gupta <aastha.gupta4104@gmail.com>
 To: outreachy-kernel@googlegroups.com,
 	William Hubbs <w.d.hubbs@gmail.com>,
@@ -81,9 +81,9 @@ To: outreachy-kernel@googlegroups.com,
 	Samuel Thibault <samuel.thibault@ens-lyon.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH 08/12] staging: lustre: ldlm: fix lines over 80 characters in ldlm files
-Date: Tue, 19 Sep 2017 21:09:20 +0530
-Message-Id: <1b86d2dcceb9ddeddadf4c251c56dc257c9059a0.1505834825.git.aastha.gupta4104@gmail.com>
+Subject: [PATCH 07/12] staging: lustre: fld: fix line over 80 characters
+Date: Tue, 19 Sep 2017 21:09:19 +0530
+Message-Id: <481b78cef7d5f3f665d1cc2cf81e56d464a96821.1505834825.git.aastha.gupta4104@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <cover.1505834825.git.aastha.gupta4104@gmail.com>
 References: <cover.1505834825.git.aastha.gupta4104@gmail.com>
@@ -96,352 +96,23 @@ WARNING: line over 80 characters
 
 Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
 ---
- drivers/staging/lustre/lustre/ldlm/ldlm_extent.c   |  3 +-
- drivers/staging/lustre/lustre/ldlm/ldlm_flock.c    |  6 ++--
- drivers/staging/lustre/lustre/ldlm/ldlm_internal.h |  4 ++-
- drivers/staging/lustre/lustre/ldlm/ldlm_lock.c     | 33 +++++++++++------
- drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c    |  6 ++--
- drivers/staging/lustre/lustre/ldlm/ldlm_pool.c     |  6 ++--
- drivers/staging/lustre/lustre/ldlm/ldlm_request.c  | 41 ++++++++++++++--------
- drivers/staging/lustre/lustre/ldlm/ldlm_resource.c |  3 +-
- 8 files changed, 67 insertions(+), 35 deletions(-)
+ drivers/staging/lustre/lustre/fld/fld_request.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_extent.c b/drivers/staging/lustre/lustre/ldlm/ldlm_extent.c
-index 2cc6dc2..f9b4c0a 100644
---- a/drivers/staging/lustre/lustre/ldlm/ldlm_extent.c
-+++ b/drivers/staging/lustre/lustre/ldlm/ldlm_extent.c
-@@ -207,7 +207,8 @@ void ldlm_extent_add_lock(struct ldlm_resource *res,
- 				continue;
- 			if (ldlm_extent_overlap(&lck->l_req_extent,
- 						&lock->l_req_extent)) {
--				CDEBUG(D_ERROR, "granting conflicting lock %p %p\n",
-+				CDEBUG(D_ERROR,
-+				       "granting conflicting lock %p %p\n",
- 				       lck, lock);
- 				ldlm_resource_dump(D_ERROR, res);
- 				LBUG();
-diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_flock.c b/drivers/staging/lustre/lustre/ldlm/ldlm_flock.c
-index cb826e9..04e1d4c 100644
---- a/drivers/staging/lustre/lustre/ldlm/ldlm_flock.c
-+++ b/drivers/staging/lustre/lustre/ldlm/ldlm_flock.c
-@@ -479,7 +479,8 @@ ldlm_flock_completion_ast(struct ldlm_lock *lock, __u64 flags, void *data)
- 		return 0;
- 	}
+diff --git a/drivers/staging/lustre/lustre/fld/fld_request.c b/drivers/staging/lustre/lustre/fld/fld_request.c
+index 5b18083..081e137 100644
+--- a/drivers/staging/lustre/lustre/fld/fld_request.c
++++ b/drivers/staging/lustre/lustre/fld/fld_request.c
+@@ -425,7 +425,8 @@ int fld_client_lookup(struct lu_client_fld *fld, u64 seq, u32 *mds,
+ 	target = fld_client_get_target(fld, seq);
+ 	LASSERT(target);
  
--	LDLM_DEBUG(lock, "client-side enqueue returned a blocked lock, sleeping");
-+	LDLM_DEBUG(lock,
-+		   "client-side enqueue returned a blocked lock, sleeping");
- 	fwd.fwd_lock = lock;
- 	obd = class_exp2obd(lock->l_conn_export);
+-	CDEBUG(D_INFO, "%s: Lookup fld entry (seq: %#llx) on target %s (idx %llu)\n",
++	CDEBUG(D_INFO,
++	       "%s: Lookup fld entry (seq: %#llx) on target %s (idx %llu)\n",
+ 	       fld->lcf_name, seq, fld_target_name(target), target->ft_idx);
  
-@@ -561,7 +562,8 @@ ldlm_flock_completion_ast(struct ldlm_lock *lock, __u64 flags, void *data)
- 			mode = lock->l_granted_mode;
- 
- 		if (ldlm_is_flock_deadlock(lock)) {
--			LDLM_DEBUG(lock, "client-side enqueue deadlock received");
-+			LDLM_DEBUG(lock,
-+				   "client-side enqueue deadlock received");
- 			rc = -EDEADLK;
- 		}
- 		ldlm_flock_destroy(lock, mode, LDLM_FL_WAIT_NOREPROC);
-diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h b/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h
-index 36808db..9776c39 100644
---- a/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h
-+++ b/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h
-@@ -88,7 +88,9 @@ struct ldlm_namespace *ldlm_namespace_first_locked(enum ldlm_side client);
- /* ldlm_request.c */
- /* Cancel lru flag, it indicates we cancel aged locks. */
- enum {
--	LDLM_LRU_FLAG_AGED	= BIT(0), /* Cancel aged locks (non lru resize). */
-+	LDLM_LRU_FLAG_AGED	= BIT(0), /* Cancel aged locks (non
-+					   * lru resize).
-+					   */
- 	LDLM_LRU_FLAG_PASSED	= BIT(1), /* Cancel passed number of locks. */
- 	LDLM_LRU_FLAG_SHRINK	= BIT(2), /* Cancel locks from shrinker. */
- 	LDLM_LRU_FLAG_LRUR	= BIT(3), /* Cancel locks from lru resize. */
-diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c b/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c
-index b5d84f3..adfc0b4 100644
---- a/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c
-+++ b/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c
-@@ -1035,7 +1035,8 @@ void ldlm_grant_lock(struct ldlm_lock *lock, struct list_head *work_list)
- 		ldlm_extent_add_lock(res, lock);
- 	} else if (res->lr_type == LDLM_FLOCK) {
- 		/*
--		 * We should not add locks to granted list in the following cases:
-+		 * We should not add locks to granted list in
-+		 * the following cases:
- 		 * - this is an UNLOCK but not a real lock;
- 		 * - this is a TEST lock;
- 		 * - this is a F_CANCELLK lock (async flock has req_mode == 0)
-@@ -2051,13 +2052,16 @@ void _ldlm_lock_debug(struct ldlm_lock *lock,
- 		libcfs_debug_vmsg2(msgdata, fmt, args,
- 				   " ns: \?\? lock: %p/%#llx lrc: %d/%d,%d mode: %s/%s res: \?\? rrc=\?\? type: \?\?\? flags: %#llx nid: %s remote: %#llx expref: %d pid: %u timeout: %lu lvb_type: %d\n",
- 				   lock,
--				   lock->l_handle.h_cookie, atomic_read(&lock->l_refc),
-+				   lock->l_handle.h_cookie,
-+				   atomic_read(&lock->l_refc),
- 				   lock->l_readers, lock->l_writers,
- 				   ldlm_lockname[lock->l_granted_mode],
- 				   ldlm_lockname[lock->l_req_mode],
--				   lock->l_flags, nid, lock->l_remote_handle.cookie,
-+				   lock->l_flags, nid,
-+				   lock->l_remote_handle.cookie,
- 				   exp ? atomic_read(&exp->exp_refcount) : -99,
--				   lock->l_pid, lock->l_callback_timeout, lock->l_lvb_type);
-+				   lock->l_pid, lock->l_callback_timeout,
-+				   lock->l_lvb_type);
- 		va_end(args);
- 		return;
- 	}
-@@ -2067,7 +2071,8 @@ void _ldlm_lock_debug(struct ldlm_lock *lock,
- 		libcfs_debug_vmsg2(msgdata, fmt, args,
- 				   " ns: %s lock: %p/%#llx lrc: %d/%d,%d mode: %s/%s res: " DLDLMRES " rrc: %d type: %s [%llu->%llu] (req %llu->%llu) flags: %#llx nid: %s remote: %#llx expref: %d pid: %u timeout: %lu lvb_type: %d\n",
- 				   ldlm_lock_to_ns_name(lock), lock,
--				   lock->l_handle.h_cookie, atomic_read(&lock->l_refc),
-+				   lock->l_handle.h_cookie,
-+				   atomic_read(&lock->l_refc),
- 				   lock->l_readers, lock->l_writers,
- 				   ldlm_lockname[lock->l_granted_mode],
- 				   ldlm_lockname[lock->l_req_mode],
-@@ -2076,8 +2081,10 @@ void _ldlm_lock_debug(struct ldlm_lock *lock,
- 				   ldlm_typename[resource->lr_type],
- 				   lock->l_policy_data.l_extent.start,
- 				   lock->l_policy_data.l_extent.end,
--				   lock->l_req_extent.start, lock->l_req_extent.end,
--				   lock->l_flags, nid, lock->l_remote_handle.cookie,
-+				   lock->l_req_extent.start,
-+				   lock->l_req_extent.end,
-+				   lock->l_flags, nid,
-+				   lock->l_remote_handle.cookie,
- 				   exp ? atomic_read(&exp->exp_refcount) : -99,
- 				   lock->l_pid, lock->l_callback_timeout,
- 				   lock->l_lvb_type);
-@@ -2087,7 +2094,8 @@ void _ldlm_lock_debug(struct ldlm_lock *lock,
- 		libcfs_debug_vmsg2(msgdata, fmt, args,
- 				   " ns: %s lock: %p/%#llx lrc: %d/%d,%d mode: %s/%s res: " DLDLMRES " rrc: %d type: %s pid: %d [%llu->%llu] flags: %#llx nid: %s remote: %#llx expref: %d pid: %u timeout: %lu\n",
- 				   ldlm_lock_to_ns_name(lock), lock,
--				   lock->l_handle.h_cookie, atomic_read(&lock->l_refc),
-+				   lock->l_handle.h_cookie,
-+				   atomic_read(&lock->l_refc),
- 				   lock->l_readers, lock->l_writers,
- 				   ldlm_lockname[lock->l_granted_mode],
- 				   ldlm_lockname[lock->l_req_mode],
-@@ -2097,7 +2105,8 @@ void _ldlm_lock_debug(struct ldlm_lock *lock,
- 				   lock->l_policy_data.l_flock.pid,
- 				   lock->l_policy_data.l_flock.start,
- 				   lock->l_policy_data.l_flock.end,
--				   lock->l_flags, nid, lock->l_remote_handle.cookie,
-+				   lock->l_flags, nid,
-+				   lock->l_remote_handle.cookie,
- 				   exp ? atomic_read(&exp->exp_refcount) : -99,
- 				   lock->l_pid, lock->l_callback_timeout);
- 		break;
-@@ -2115,7 +2124,8 @@ void _ldlm_lock_debug(struct ldlm_lock *lock,
- 				   lock->l_policy_data.l_inodebits.bits,
- 				   atomic_read(&resource->lr_refcount),
- 				   ldlm_typename[resource->lr_type],
--				   lock->l_flags, nid, lock->l_remote_handle.cookie,
-+				   lock->l_flags, nid,
-+				   lock->l_remote_handle.cookie,
- 				   exp ? atomic_read(&exp->exp_refcount) : -99,
- 				   lock->l_pid, lock->l_callback_timeout,
- 				   lock->l_lvb_type);
-@@ -2133,7 +2143,8 @@ void _ldlm_lock_debug(struct ldlm_lock *lock,
- 				   PLDLMRES(resource),
- 				   atomic_read(&resource->lr_refcount),
- 				   ldlm_typename[resource->lr_type],
--				   lock->l_flags, nid, lock->l_remote_handle.cookie,
-+				   lock->l_flags, nid,
-+				   lock->l_remote_handle.cookie,
- 				   exp ? atomic_read(&exp->exp_refcount) : -99,
- 				   lock->l_pid, lock->l_callback_timeout,
- 				   lock->l_lvb_type);
-diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c b/drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c
-index e270733..1b2dbb9 100644
---- a/drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c
-+++ b/drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c
-@@ -184,7 +184,8 @@ static void ldlm_handle_cp_callback(struct ptlrpc_request *req,
- 			LASSERT(lock->l_lvb_data);
- 
- 			if (unlikely(lock->l_lvb_len < lvb_len)) {
--				LDLM_ERROR(lock, "Replied LVB is larger than expectation, expected = %d, replied = %d",
-+				LDLM_ERROR(lock,
-+					   "Replied LVB is larger than expectation, expected = %d, replied = %d",
- 					   lock->l_lvb_len, lvb_len);
- 				rc = -EINVAL;
- 				goto out;
-@@ -598,7 +599,8 @@ static int ldlm_callback_handler(struct ptlrpc_request *req)
- 
- 	lock = ldlm_handle2lock_long(&dlm_req->lock_handle[0], 0);
- 	if (!lock) {
--		CDEBUG(D_DLMTRACE, "callback on lock %#llx - lock disappeared\n",
-+		CDEBUG(D_DLMTRACE,
-+		       "callback on lock %#llx - lock disappeared\n",
- 		       dlm_req->lock_handle[0].cookie);
- 		rc = ldlm_callback_reply(req, -EINVAL);
- 		ldlm_callback_errmsg(req, "Operate with invalid parameter", rc,
-diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_pool.c b/drivers/staging/lustre/lustre/ldlm/ldlm_pool.c
-index d77bf0b..24b0b7d 100644
---- a/drivers/staging/lustre/lustre/ldlm/ldlm_pool.c
-+++ b/drivers/staging/lustre/lustre/ldlm/ldlm_pool.c
-@@ -386,7 +386,8 @@ static int ldlm_pool_recalc(struct ldlm_pool *pl)
- 			      pl->pl_recalc_period;
- 	if (recalc_interval_sec <= 0) {
- 		/* DEBUG: should be re-removed after LU-4536 is fixed */
--		CDEBUG(D_DLMTRACE, "%s: Negative interval(%ld), too short period(%ld)\n",
-+		CDEBUG(D_DLMTRACE,
-+		       "%s: Negative interval(%ld), too short period(%ld)\n",
- 		       pl->pl_name, (long)recalc_interval_sec,
- 		       (long)pl->pl_recalc_period);
- 
-@@ -415,7 +416,8 @@ static int ldlm_pool_shrink(struct ldlm_pool *pl, int nr, gfp_t gfp_mask)
- 			lprocfs_counter_add(pl->pl_stats,
- 					    LDLM_POOL_SHRINK_FREED_STAT,
- 					    cancel);
--			CDEBUG(D_DLMTRACE, "%s: request to shrink %d locks, shrunk %d\n",
-+			CDEBUG(D_DLMTRACE,
-+			       "%s: request to shrink %d locks, shrunk %d\n",
- 			       pl->pl_name, nr, cancel);
- 		}
- 	}
-diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_request.c b/drivers/staging/lustre/lustre/ldlm/ldlm_request.c
-index f3bf238..4660aa7 100644
---- a/drivers/staging/lustre/lustre/ldlm/ldlm_request.c
-+++ b/drivers/staging/lustre/lustre/ldlm/ldlm_request.c
-@@ -121,7 +121,8 @@ static int ldlm_expired_completion_wait(void *data)
- 	if (!lock->l_conn_export) {
- 		static unsigned long next_dump, last_dump;
- 
--		LDLM_ERROR(lock, "lock timed out (enqueued at %lld, %llds ago); not entering recovery in server code, just going back to sleep",
-+		LDLM_ERROR(lock,
-+			   "lock timed out (enqueued at %lld, %llds ago); not entering recovery in server code, just going back to sleep",
- 			   (s64)lock->l_last_activity,
- 			   (s64)(ktime_get_real_seconds() -
- 				 lock->l_last_activity));
-@@ -139,7 +140,8 @@ static int ldlm_expired_completion_wait(void *data)
- 	obd = lock->l_conn_export->exp_obd;
- 	imp = obd->u.cli.cl_import;
- 	ptlrpc_fail_import(imp, lwd->lwd_conn_cnt);
--	LDLM_ERROR(lock, "lock timed out (enqueued at %lld, %llds ago), entering recovery for %s@%s",
-+	LDLM_ERROR(lock,
-+		   "lock timed out (enqueued at %lld, %llds ago), entering recovery for %s@%s",
- 		   (s64)lock->l_last_activity,
- 		   (s64)(ktime_get_real_seconds() - lock->l_last_activity),
- 		   obd2cli_tgt(obd), imp->imp_connection->c_remote_uuid.uuid);
-@@ -218,7 +220,8 @@ int ldlm_completion_ast_async(struct ldlm_lock *lock, __u64 flags, void *data)
- 		return ldlm_completion_tail(lock, data);
- 	}
- 
--	LDLM_DEBUG(lock, "client-side enqueue returned a blocked lock, going forward");
-+	LDLM_DEBUG(lock,
-+		   "client-side enqueue returned a blocked lock, going forward");
- 	return 0;
- }
- EXPORT_SYMBOL(ldlm_completion_ast_async);
-@@ -264,7 +267,8 @@ int ldlm_completion_ast(struct ldlm_lock *lock, __u64 flags, void *data)
- 		return 0;
- 	}
- 
--	LDLM_DEBUG(lock, "client-side enqueue returned a blocked lock, sleeping");
-+	LDLM_DEBUG(lock,
-+		   "client-side enqueue returned a blocked lock, sleeping");
- 
- noreproc:
- 
-@@ -414,7 +418,8 @@ int ldlm_cli_enqueue_fini(struct obd_export *exp, struct ptlrpc_request *req,
- 			rc = size;
- 			goto cleanup;
- 		} else if (unlikely(size > lvb_len)) {
--			LDLM_ERROR(lock, "Replied LVB is larger than expectation, expected = %d, replied = %d",
-+			LDLM_ERROR(lock,
-+				   "Replied LVB is larger than expectation, expected = %d, replied = %d",
- 				   lvb_len, size);
- 			rc = -EINVAL;
- 			goto cleanup;
-@@ -473,7 +478,8 @@ int ldlm_cli_enqueue_fini(struct obd_export *exp, struct ptlrpc_request *req,
- 
- 		if (!ldlm_res_eq(&reply->lock_desc.l_resource.lr_name,
- 				 &lock->l_resource->lr_name)) {
--			CDEBUG(D_INFO, "remote intent success, locking " DLDLMRES
-+			CDEBUG(D_INFO,
-+			       "remote intent success, locking " DLDLMRES
- 				       " instead of " DLDLMRES "\n",
- 			       PLDLMRES(&reply->lock_desc.l_resource),
- 			       PLDLMRES(lock->l_resource));
-@@ -850,7 +856,8 @@ static __u64 ldlm_cli_cancel_local(struct ldlm_lock *lock)
- 		unlock_res_and_lock(lock);
- 
- 		if (local_only) {
--			CDEBUG(D_DLMTRACE, "not sending request (at caller's instruction)\n");
-+			CDEBUG(D_DLMTRACE,
-+			       "not sending request (at caller's instruction)\n");
- 			rc = LDLM_FL_LOCAL_ONLY;
- 		}
- 		ldlm_lock_cancel(lock);
-@@ -963,7 +970,8 @@ static int ldlm_cli_cancel_req(struct obd_export *exp,
- 
- 		rc = ptlrpc_queue_wait(req);
- 		if (rc == LUSTRE_ESTALE) {
--			CDEBUG(D_DLMTRACE, "client/server (nid %s) out of sync -- not fatal\n",
-+			CDEBUG(D_DLMTRACE,
-+			       "client/server (nid %s) out of sync -- not fatal\n",
- 			       libcfs_nid2str(req->rq_import->
- 					      imp_connection->c_peer.nid));
- 			rc = 0;
-@@ -1363,13 +1371,14 @@ ldlm_cancel_lru_policy(struct ldlm_namespace *ns, int flags)
-  * flags & LDLM_LRU_FLAG_LRUR	- use LRU resize policy (SLV from server) to
-  *				  cancel not more than \a count locks;
-  *
-- * flags & LDLM_LRU_FLAG_PASSED - cancel \a count number of old locks (located at
-- *				  the beginning of LRU list);
-+ * flags & LDLM_LRU_FLAG_PASSED - cancel \a count number of old locks (located
-+ *				  at the beginning of LRU list);
-  *
-- * flags & LDLM_LRU_FLAG_SHRINK - cancel not more than \a count locks according to
-- *				  memory pressure policy function;
-+ * flags & LDLM_LRU_FLAG_SHRINK - cancel not more than \a count locks according
-+ *				  to memory pressure policy function;
-  *
-- * flags & LDLM_LRU_FLAG_AGED   - cancel \a count locks according to "aged policy".
-+ * flags & LDLM_LRU_FLAG_AGED   - cancel \a count locks according to
-+ *				  "aged policy".
-  *
-  * flags & LDLM_LRU_FLAG_NO_WAIT - cancel as many unused locks as possible
-  *				   (typically before replaying locks) w/o
-@@ -1383,7 +1392,8 @@ static int ldlm_prepare_lru_list(struct ldlm_namespace *ns,
- 	ldlm_cancel_lru_policy_t pf;
- 	struct ldlm_lock *lock, *next;
- 	int added = 0, unused, remained;
--	int no_wait = flags & (LDLM_LRU_FLAG_NO_WAIT | LDLM_LRU_FLAG_LRUR_NO_WAIT);
-+	int no_wait = flags &
-+		(LDLM_LRU_FLAG_NO_WAIT | LDLM_LRU_FLAG_LRUR_NO_WAIT);
- 
- 	spin_lock(&ns->ns_lock);
- 	unused = ns->ns_nr_unused;
-@@ -2034,7 +2044,8 @@ static void ldlm_cancel_unused_locks_for_replay(struct ldlm_namespace *ns)
- 	int canceled;
- 	LIST_HEAD(cancels);
- 
--	CDEBUG(D_DLMTRACE, "Dropping as many unused locks as possible before replay for namespace %s (%d)\n",
-+	CDEBUG(D_DLMTRACE,
-+	       "Dropping as many unused locks as possible before replay for namespace %s (%d)\n",
- 	       ldlm_ns_name(ns), ns->ns_nr_unused);
- 
- 	/* We don't need to care whether or not LRU resize is enabled
-diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_resource.c b/drivers/staging/lustre/lustre/ldlm/ldlm_resource.c
-index c2ddf73..c374f14 100644
---- a/drivers/staging/lustre/lustre/ldlm/ldlm_resource.c
-+++ b/drivers/staging/lustre/lustre/ldlm/ldlm_resource.c
-@@ -1358,7 +1358,8 @@ void ldlm_resource_dump(int level, struct ldlm_resource *res)
- 			LDLM_DEBUG_LIMIT(level, lock, "###");
- 			if (!(level & D_CANTMASK) &&
- 			    ++granted > ldlm_dump_granted_max) {
--				CDEBUG(level, "only dump %d granted locks to avoid DDOS.\n",
-+				CDEBUG(level,
-+				       "only dump %d granted locks to avoid DDOS.\n",
- 				       granted);
- 				break;
- 			}
+ 	res.lsr_start = seq;
 -- 
 2.7.4
 
