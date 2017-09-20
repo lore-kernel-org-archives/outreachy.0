@@ -1,253 +1,154 @@
-X-GM-THRID: 6948926928626647040
-X-Received: by 2002:a5e:de0d:: with SMTP id e13mr8793436iok.208.1617923129489;
-        Thu, 08 Apr 2021 16:05:29 -0700 (PDT)
+X-GM-THRID: 6467836648401928192
+X-Received: by 10.202.217.4 with SMTP id q4mr2498528oig.110.1505914284072;
+        Wed, 20 Sep 2017 06:31:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:9501:: with SMTP id d1ls1134268iom.5.gmail; Thu, 08 Apr
- 2021 16:05:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwvICLBzRIyRE6aGQlkHFPDFgIodjFsZSSvy6GwstDLSCNHFya+pcIA+bPa+QbhA26rYPYt
-X-Received: by 2002:a5e:8717:: with SMTP id y23mr1129961ioj.111.1617923128675;
-        Thu, 08 Apr 2021 16:05:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617923128; cv=none;
+Received: by 10.84.179.36 with SMTP id a33ls87382plc.10.gmail; Wed, 20 Sep
+ 2017 06:31:22 -0700 (PDT)
+X-Received: by 10.99.67.196 with SMTP id q187mr1283757pga.59.1505914282883;
+        Wed, 20 Sep 2017 06:31:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505914282; cv=none;
         d=google.com; s=arc-20160816;
-        b=S9g761wFljxvY8593gG3P7GXZ+pV8QTJVU+OMaKXJ0SetH2dK0VxWM624Ei/Y+S7PQ
-         DvSgqYGDx8w4N7nioOgUWmkiJwoqbc3Pc5YBdIsyb6cQY9HBMgLiPnxffbKIBykDWwhp
-         K8AVqsY1GBjAtj38wxs+7P6H3l5iA0KBQ1g7wCBWrg0e6gIO2OiL6BSy22WAJIy+2ik2
-         T+/8or41GDFlBMliNEHMt2yN2sjzxjOHzm0D3hpTnd8InHdmi1RlJvk6fZsGEkVIf9ll
-         fg+ChuQtS1SLM5/eweXcRsSinnx3M5TH3y/8AVeAtMxKvk1fteXhwNtYk1S8SKKT1Ntv
-         ljUg==
+        b=ifX2ezrFRgFDGsYQZ2+EkuxUEq1MYsU80aRsq906u7flmaF9/ovXMBG+YssgFAsOMa
+         PHG07Wrrazcqa6mCntj8mKwTg5dNDIpMFDpOx1Syo6+zIjKG+tOMiASLoe1lR/72isDx
+         2P8yjIW2qSLqfa6Cd416VFayP9oeVteT2eNR0CkttlLrOxGoIUKdqxWk0i5PX9b5PU0x
+         VjrnFb5QMcPgAUdUxVXn/FD2mppu7eZ1mZtYHrgcaWJtfbjrkQlCL/KDsFZN62wiA9z+
+         SV0A93aKzvXaeqmh3GT9YEXRsbRxCZR1FE6nXpZ2jKeagi/tBgtZpk8KYEhdSvZwsqQu
+         eJWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=n86d8I0VVSWF4Xuv5hVTXdKVgAMp4Cd1RqhEoJubX0Y=;
-        b=yNgxRPwFNqU0Mi7AtrLv14xMwMpN5PTfSx8gP3xN9mUPN4iFLhPiW+3gC0n6Lr8h9p
-         LeaBavZr/1EQn1y2yICYltPEGkpbYmqPFrPHzoWVpGrfUgkIJ7TKtvpD5TMEKGNNxfkB
-         x4w04SYGA3JnvtpqWue1U0CjUkFwTMPIVLckFHUuTmsQ3OzDpe+7Y/bx2XQRaHqhuiBd
-         v+FUtCEwo2JPqmxTFtVA3bV4V2O0Jf76GPtLxXPtCw5Y4hjhUyIQZH2piGt3GbF1Sc8n
-         xhotyG7GtAaQWtsYNENVOG3+H+mHjqedh/FdkjDnY31CrhuTjtp+zHDM8Lc4FF3ZIFOd
-         PU2w==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=VClmSaBzrGu+70sMtUL2MxpvxJTEosvX7ULuq9sVkQA=;
+        b=v5bosFJilOX8QXSrH+e60ra8WcNWFBjGkB5NV4qTVj5CXLHRDgfMTAyybm23xhsRTP
+         Y8XcSG13EnUQp7Gc+BzwJmm8vJxLeSoLSpNNs7LD3RUBoTlGmt7/dlX9mfcJ4yinw2rk
+         gQetmfqYJXIJ7JaNRL6014+t5QIZLp0CwU0qGEHOGY1a9l2gUQH6ApE/hFG0NwqWId1c
+         PU7cW67EOWA6k4TpFLbdVJYCnMgQ/HmOBX8mVJAy2GB2z3PzTlvuoEsL8K4lvLWqYA12
+         n94xu4h7oAgzNM77gJda6NdmspmfSTEM2pbV6dycWmOWAXa3CF7zO2s+3/p5jEISdPWE
+         GWCw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QhgPRZJu;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::42c as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from mail-pf1-x42c.google.com (mail-pf1-x42c.google.com. [2607:f8b0:4864:20::42c])
-        by gmr-mx.google.com with ESMTPS id y13si25968ilv.0.2021.04.08.16.05.28
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HHunXo3d;
+       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <georgiana.chelu93@gmail.com>
+Received: from mail-qt0-x241.google.com (mail-qt0-x241.google.com. [2607:f8b0:400d:c0d::241])
+        by gmr-mx.google.com with ESMTPS id s69si79498ywg.33.2017.09.20.06.31.22
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 08 Apr 2021 16:05:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::42c as permitted sender) client-ip=2607:f8b0:4864:20::42c;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 20 Sep 2017 06:31:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) client-ip=2607:f8b0:400d:c0d::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QhgPRZJu;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::42c as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x42c.google.com with SMTP id q5so2937373pfh.10
-        for <outreachy-kernel@googlegroups.com>; Thu, 08 Apr 2021 16:05:28 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HHunXo3d;
+       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qt0-x241.google.com with SMTP id u48so1716718qtc.4
+        for <outreachy-kernel@googlegroups.com>; Wed, 20 Sep 2017 06:31:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=n86d8I0VVSWF4Xuv5hVTXdKVgAMp4Cd1RqhEoJubX0Y=;
-        b=QhgPRZJuZUrw6Lzc1Yw4KS8Vt59PLm4jF7notnmmmapKWK1ZBf9rR0aL1diuN1t/+7
-         ndtZWza9MAqx9XEMHSMFlLvSffSVGsWIMCaRhcKlxT+EVjaFe7FfddBn5ndsnrbp5B/F
-         0QmkZNKWyJZu2ufVkFQynSL7k2cBT+BqLMGf3HtYSijqWgcoNXXZEBuZRBue20zEYK0E
-         NjoFubxirjFAyw1b4QTXLDMaOduuyZwt7GPPWjCVAZZO/MynFUkTkybt4YAfWXWis5mw
-         CnSYvVL2bxTe+tcrn5KwVgj4Z2dnouXn8yavbhc9KEQQhvltwPDIlDktVAy8xfs+KYgi
-         dIlQ==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=VClmSaBzrGu+70sMtUL2MxpvxJTEosvX7ULuq9sVkQA=;
+        b=HHunXo3d6znSEIUA1dfEpc/z1RvT0m0SY/HJriL37sIoE3J/rwgzWsg+GCTQWD2JPS
+         NrYZsFIdA3GAWlin0PQkG5PedEIyTpnMqH0xvTjN2pOeCnJjjS0cPTivilUVofU09a45
+         Y8aFGr0yXte6DAerHK9v+IJCTb+nxO3rqdfR4jhA3eBJiDXSbsR/Fgl60JPYn0pispA0
+         4F7KpgfHxW454S2lien4LZumYiluInzBx3qsYybwJLxq3XuEBeeFwewD3FupmVGypxjQ
+         YHQTC7P28p9wabZRgPy5pEo1kiYGjezVsoFR9I0CeHyj89PdnY1iTONoiSjMAEaZGOgL
+         d9lQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=n86d8I0VVSWF4Xuv5hVTXdKVgAMp4Cd1RqhEoJubX0Y=;
-        b=KuPjp8W/jtGlyUaDJXIE0YX8dNkb9EPlRXZgoKU2VdnKk4fGpq8hiStG+xkNTMmCAf
-         4/e5NVNqd2To01Qvw8Nn6lnJgbounWgQI9mQi+Od59G/AE3DJDbOxN6NDyvGN9QcIIVy
-         W0DjMwapQb7VsHjQ/mAr7o11JQuAcpLBAUNzhurVTZ95vK/Z6PfN23rN9pw2ZEO80yQ/
-         74JQYUzS3QjE2Se4BA8YsztQ4Jkrzusf8zXkBpbgGMpm7iRl0SDq5Gf5gZlmWAtzl026
-         Nu/hq9ba77nYdvGaXHyKKiAPFDLXU40wB/WcnelTqeF8QrVZv7tzynTmvFR9qgFicXqY
-         xP8g==
-X-Gm-Message-State: AOAM530TusewRGYV6THioBJK4R6S/vOykQrXMgrOoeWjBvEw6BEfgOB3
-	VE5BrlxBx1tTK75M8ET/Cfw=
-X-Received: by 2002:a63:e913:: with SMTP id i19mr9948560pgh.426.1617923128228;
-        Thu, 08 Apr 2021 16:05:28 -0700 (PDT)
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from kali ([152.57.243.224])
-        by smtp.gmail.com with ESMTPSA id f5sm384469pjo.3.2021.04.08.16.05.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 08 Apr 2021 16:05:27 -0700 (PDT)
-Date: Fri, 9 Apr 2021 04:35:14 +0530
-From: Mitali Borkar <mitaliborkar810@gmail.com>
-To: clabbe@baylibre.com, mchehab@kernel.org, gregkh@linuxfoundation.org
-Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
-	mitali_s@me.iitr.ac.in
-Subject: [PATCH] staging: media: zoran: add '*' in subsequent line
-Message-ID: <YG+MKk9C/fTd7vj4@kali>
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=VClmSaBzrGu+70sMtUL2MxpvxJTEosvX7ULuq9sVkQA=;
+        b=VBNILT7MMfvDPmt9kGZVlL+wp+F+i8sFEvhh+5Q82l94XAxzWZCUWxhVfX6C3zTkj0
+         PpoGtucedLvLUAbWlHkQh+7oFj18Eql0af0JeD58cLyxvhqjGPJS+QUtczUnLSHKXItT
+         tgy9Xl0E6/UWJtyckNfBJsoap7WWQo8nuvnATALwtx6ZMMO0nX1oA0l9ZfGyrTj5s8tM
+         9GHU0cHj4B+PaXVN0GCetzaiuFqbzvoi++X8eRgSkHMlc0hm5eamiidlecFiZN9f+Cen
+         vFuWTjT28SP2G1tVmFU0xSH4iQj1IfpR6RqHpZBkI+6Q2+7KNC3G/PU+LyJSNpkaujAr
+         MnQg==
+X-Gm-Message-State: AHPjjUjl1KRSmqBPxX2m7y3OpjSmTN9Ha8P0GRDc3gnk0d9FzuQwAU4v
+	SVl2nKGkcmI+pEupHHOZKZJnXYT51atUqy/f9/s=
+X-Google-Smtp-Source: AOwi7QBww0CzubODHW85TESP2BdPWQ2ACsTfeoRzRgbs2R8yWMQ/hJr9bpSGu+kYZxR/Cs5Y4RsEJn64cyeSSQB0ScE=
+X-Received: by 10.200.4.169 with SMTP id s41mr7061684qtg.132.1505914282572;
+ Wed, 20 Sep 2017 06:31:22 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Received: by 10.140.18.240 with HTTP; Wed, 20 Sep 2017 06:31:22 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.20.1709201506420.3290@hadrien>
+References: <cover.1505909511.git.georgiana.chelu93@gmail.com>
+ <alpine.DEB.2.20.1709201444450.3290@hadrien> <CALta04wZGH2g6ANabq__rrZJUvJqq-UE1+M9M6HVWT8pmm1Bzw@mail.gmail.com>
+ <alpine.DEB.2.20.1709201506420.3290@hadrien>
+From: Georgiana Chelu <georgiana.chelu93@gmail.com>
+Date: Wed, 20 Sep 2017 16:31:22 +0300
+Message-ID: <CALta04yLe_5EBmGx=p67V7c8=Nhij=60e_rj0b6oneQKmRFtdw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 0/4] Staging: media: atomisp: Fix style issues
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Content-Type: text/plain; charset="UTF-8"
 
-Added '*' in susbsequent lines for block comments to meet linux kernel
-coding style.
+On 20 September 2017 at 16:07, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+> On Wed, 20 Sep 2017, Georgiana Chelu wrote:
+>
+>> On 20 September 2017 at 15:45, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>> >
+>> >
+>> > On Wed, 20 Sep 2017, Georgiana Chelu wrote:
+>> >
+>> >> This patchset fix coding style issues found by checkpatch.pl.
+>> >
+>> > Did you send these before?  They look failiar, but they don't seem to have
+>> > been applied either.
+>> >
+>> > julia
+>>
+>> Yes, these changes were sent as a single patch.
+>>
+>> Greg advised me to break it down because there
+>> were too many different fixes for a single patch.
+>> So, we agreed to resend it as a patch set.
+>
+> OK, it does look more digestible this way.  Maybe it should have been a
+> v2.  But since Greg has already discarded the previous one, maybe it is
+> OK.
+>
+> julia
+>
+>
 
-Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
----
- drivers/staging/media/zoran/zr36050.c | 34 +++++++++++++--------------
- 1 file changed, 17 insertions(+), 17 deletions(-)
+I did not label it with "v2" because the previous one was just a simple patch,
+not a patch set. In case this label is required, I will resend it with
+the correct
+label.
 
-diff --git a/drivers/staging/media/zoran/zr36050.c b/drivers/staging/media/zoran/zr36050.c
-index 2826f4e5d37b..663ac2b3434e 100644
---- a/drivers/staging/media/zoran/zr36050.c
-+++ b/drivers/staging/media/zoran/zr36050.c
-@@ -25,7 +25,7 @@
- #include "videocodec.h"
- 
- /* it doesn't make sense to have more than 20 or so,
--  just to prevent some unwanted loops */
-+ * just to prevent some unwanted loops */
- #define MAX_CODECS 20
- 
- /* amount of chips attached via this driver */
-@@ -43,7 +43,7 @@ MODULE_PARM_DESC(debug, "Debug level (0-4)");
- 	} while (0)
- 
- /* =========================================================================
--   Local hardware I/O functions:
-+ *  Local hardware I/O functions:
- 
-    read/write via codec layer (registers are located in the master device)
-    ========================================================================= */
-@@ -80,7 +80,7 @@ static void zr36050_write(struct zr36050 *ptr, u16 reg, u8 value)
- }
- 
- /* =========================================================================
--   Local helper function:
-+ *  Local helper function:
- 
-    status read
-    ========================================================================= */
-@@ -95,7 +95,7 @@ static u8 zr36050_read_status1(struct zr36050 *ptr)
- }
- 
- /* =========================================================================
--   Local helper function:
-+ *  Local helper function:
- 
-    scale factor read
-    ========================================================================= */
-@@ -112,7 +112,7 @@ static u16 zr36050_read_scalefactor(struct zr36050 *ptr)
- }
- 
- /* =========================================================================
--   Local helper function:
-+ *  Local helper function:
- 
-    wait if codec is ready to proceed (end of processing) or time is over
-    ========================================================================= */
-@@ -133,7 +133,7 @@ static void zr36050_wait_end(struct zr36050 *ptr)
- }
- 
- /* =========================================================================
--   Local helper function:
-+ *  Local helper function:
- 
-    basic test of "connectivity", writes/reads to/from memory the SOF marker
-    ========================================================================= */
-@@ -174,7 +174,7 @@ static int zr36050_basic_test(struct zr36050 *ptr)
- }
- 
- /* =========================================================================
--   Local helper function:
-+ *  Local helper function:
- 
-    simple loop for pushing the init datasets
-    ========================================================================= */
-@@ -192,7 +192,7 @@ static int zr36050_pushit(struct zr36050 *ptr, u16 startreg, u16 len, const char
- }
- 
- /* =========================================================================
--   Basic datasets:
-+ *  Basic datasets:
- 
-    jpeg baseline setup data (you find it on lots places in internet, or just
-    extract it from any regular .jpg image...)
-@@ -294,7 +294,7 @@ static const char zr36050_decimation_h[8] = { 2, 1, 1, 0, 0, 0, 0, 0 };
- static const char zr36050_decimation_v[8] = { 1, 1, 1, 0, 0, 0, 0, 0 };
- 
- /* =========================================================================
--   Local helper functions:
-+ *  Local helper functions:
- 
-    calculation and setup of parameter-dependent JPEG baseline segments
-    (needed for compression only)
-@@ -303,7 +303,7 @@ static const char zr36050_decimation_v[8] = { 1, 1, 1, 0, 0, 0, 0, 0 };
- /* ------------------------------------------------------------------------- */
- 
- /* SOF (start of frame) segment depends on width, height and sampling ratio
--			 of each color component */
-+ *			 of each color component */
- 
- static int zr36050_set_sof(struct zr36050 *ptr)
- {
-@@ -334,7 +334,7 @@ static int zr36050_set_sof(struct zr36050 *ptr)
- /* ------------------------------------------------------------------------- */
- 
- /* SOS (start of scan) segment depends on the used scan components
--			of each color component */
-+ *			of each color component */
- 
- static int zr36050_set_sos(struct zr36050 *ptr)
- {
-@@ -378,7 +378,7 @@ static int zr36050_set_dri(struct zr36050 *ptr)
- }
- 
- /* =========================================================================
--   Setup function:
-+ *  Setup function:
- 
-    Setup compression/decompression of Zoran's JPEG processor
-    ( see also zoran 36050 manual )
-@@ -531,13 +531,13 @@ static void zr36050_init(struct zr36050 *ptr)
- }
- 
- /* =========================================================================
--   CODEC API FUNCTIONS
-+ *  CODEC API FUNCTIONS
- 
-    this functions are accessed by the master via the API structure
-    ========================================================================= */
- 
- /* set compression/expansion mode and launches codec -
--   this should be the last call from the master before starting processing */
-+ *  this should be the last call from the master before starting processing */
- static int zr36050_set_mode(struct videocodec *codec, int mode)
- {
- 	struct zr36050 *ptr = (struct zr36050 *)codec->data;
-@@ -707,7 +707,7 @@ static int zr36050_control(struct videocodec *codec, int type, int size, void *d
- }
- 
- /* =========================================================================
--   Exit and unregister function:
-+ *  Exit and unregister function:
- 
-    Deinitializes Zoran's JPEG processor
-    ========================================================================= */
-@@ -732,7 +732,7 @@ static int zr36050_unset(struct videocodec *codec)
- }
- 
- /* =========================================================================
--   Setup and registry function:
-+ *  Setup and registry function:
- 
-    Initializes Zoran's JPEG processor
- 
-@@ -813,7 +813,7 @@ static const struct videocodec zr36050_codec = {
- };
- 
- /* =========================================================================
--   HOOK IN DRIVER AS KERNEL MODULE
-+ *  HOOK IN DRIVER AS KERNEL MODULE
-    ========================================================================= */
- 
- static int __init zr36050_init_module(void)
--- 
-2.30.2
+Thank you for the review,
+Georgiana
 
+>
+>>
+>>
+>> Thank you,
+>> Georgiana
+>>
+>> >
+>> >>
+>> >> Georgiana Chelu (4):
+>> >>   Staging: media: atomisp: Use unsigned int instead of unsigned
+>> >>   Staging: media: atomisp: Add blank line after declarations
+>> >>   Staging: media: atomisp: pci: Move open brace '{' on the next line
+>> >>   Staging: media: atomisp: pci: Place constant on the right side in
+>> >>     comparissons
+>> >>
+>> >>  .../atomisp/pci/atomisp2/atomisp_compat_css20.c    | 27 +++++++++++++++-------
+>> >>  1 file changed, 19 insertions(+), 8 deletions(-)
+>> >>
+>> >> --
+>> >> 2.7.4
+>> >>
+>> >> --
+>> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/cover.1505909511.git.georgiana.chelu93%40gmail.com.
+>> >> For more options, visit https://groups.google.com/d/optout.
+>> >>
+>>
 
