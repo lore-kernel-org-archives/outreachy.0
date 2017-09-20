@@ -1,252 +1,117 @@
 X-GM-THRID: 6467597635831201792
-X-Received: by 10.25.150.66 with SMTP id y63mr356544lfd.23.1505939540052;
-        Wed, 20 Sep 2017 13:32:20 -0700 (PDT)
+X-Received: by 10.46.80.65 with SMTP id v1mr382099ljd.14.1505889538329;
+        Tue, 19 Sep 2017 23:38:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.223.138.131 with SMTP id y3ls301893wry.5.gmail; Wed, 20 Sep
- 2017 13:32:19 -0700 (PDT)
-X-Received: by 10.223.183.19 with SMTP id l19mr445961wre.6.1505939539238;
-        Wed, 20 Sep 2017 13:32:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505939539; cv=none;
+Received: by 10.28.35.68 with SMTP id j65ls251901wmj.19.canary-gmail; Tue, 19
+ Sep 2017 23:38:57 -0700 (PDT)
+X-Received: by 10.28.22.4 with SMTP id 4mr338322wmw.13.1505889537562;
+        Tue, 19 Sep 2017 23:38:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505889537; cv=none;
         d=google.com; s=arc-20160816;
-        b=Of30M3782DLOc7aCTznXzfmpDioGVhy7RLfFq03xEfTC/0Lz/sByVxQ9pXl5mZsPeO
-         Ri4nMW6aVbG+v11Zuh+GLLUEPn34iezJdqQRhk9cZSiWXErBFqdRpH3wGM6auXqZ/ImV
-         fCHpzxAyKRqZ+0K98MWroX9Jg3LDzTt64XfT2JW8dW3Wi5SnBYbs5CIo+Xvm3FR7FQv+
-         FXVxI3I6gxqlNI1DG/lJ7F27eQ+CNvVURMALcmoXexWwLSncBViGGmSO4k6Gd/zFcJqe
-         5SaQCmVV0JosigRxoWfe3haUORBH4xRlt7ctSc93LfnRNLcnB5Q0EkpaKbtKxOweZGZN
-         oArw==
+        b=IbrzQUM5xhqWWM3UA5Pw2id0uhr+MCOpzCegtZIhv2BFIX4nAvFgPtgF4LSo/k0BvP
+         kpimBYhjUnoLBv5uTYMCb8iQUiX8O2q+dbiXEfiHhd3GEmtMBDe1/aj0jM4zaWSQaXOo
+         MVptLxEa5APye50AyU96IIfeyUNQwTDsy+nMl1VpzQyaiE/NmDZJ7DurZ6sjq/lNS+BU
+         ODZxAugqv0VRXtv0Ed32123iyBuQszf33tEBDRqLi4s7eaegT8Wzf6yOmv9RYk+QmaHC
+         fF3M/bs0zp0guHleheQO87XlIc5FRsmIxqtNkI2EkU6qMvWjEQS3ksPN5F8fMIELtI1/
+         ydjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:date:from:dkim-signature:arc-authentication-results;
-        bh=/gfstn5zqsFjvGELLQhnAgt10vDG6pbMourVUUGDvK8=;
-        b=wOTU5vnNic3g5K7fqeJkOZshdbMOZLHgmsbeSk0h6Mck8Hq0LuJFpsIrWNFDYvXr5L
-         JDEiAm84/pCNgNXT5SlsCapFlKOEuJkgI+9uVh7NVOeweMxD7CNSF0VjH9CP3d26oHqd
-         opUYL8iAjmKMgk7wRyxRVuKm2r9hpDGBKDqttFPEVtvcVX3WVDF1zreosgp4c3s9PmzU
-         6NF278xjawtV2JepSvKnkT3zor1Awda8bP2ZwN8dR7VyPcFBIAS7/w5dl71ToCv5w14I
-         bfBzYofVktUzBmsbLTvYlTCwYwH/dHIoesDyUZMLztteXRqc7BZyq4nVhKi/ZzAsCfJl
-         A1cg==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=TAUnlyV51Dvf6Z00pAV4bwZHXtSaDsGXQehdCguh53Y=;
+        b=hqnGvB+KMZtd4VFfWNdWEbvFTwyOFFO9Xo5Eoh1cJj2OgHGQqiKU+EM4TCVY/DXTtH
+         s2kGayt9anK8sI0m+Bv5GzmKYQa5+lvb8uOldw84T1pm3n5KTHTtuK9oOLAYlXcMa/ou
+         cG4245j0a6hqNJ5rlAaKY69UFtbUjlPYiyapqJoKlramZ3OnzvR8Ty1zX5N4agsTheUj
+         TkLT2v3ydIWokS05hMEMDytkC3HJ16lyy4NcEdG9/ro3P0ANh2/WbOL0FNjoK6FPEidn
+         ZE1LdtVxxFGN9kbo3Vfh+fVz8yStzCPuMXQx7AjndfKJ8CFX4VHsDe6azrKvGz7e2YaS
+         ui4Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=i4JufG/l;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rsFBjSH5;
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from mail-wr0-x244.google.com (mail-wr0-x244.google.com. [2a00:1450:400c:c0c::244])
-        by gmr-mx.google.com with ESMTPS id p70si5974wma.1.2017.09.20.13.32.19
+Return-Path: <daniel.baluta@gmail.com>
+Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
+        by gmr-mx.google.com with ESMTPS id l133si72154wmb.3.2017.09.19.23.38.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 20 Sep 2017 13:32:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) client-ip=2a00:1450:400c:c0c::244;
+        Tue, 19 Sep 2017 23:38:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=i4JufG/l;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rsFBjSH5;
+       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x244.google.com with SMTP id p37so2084847wrb.5
-        for <outreachy-kernel@googlegroups.com>; Wed, 20 Sep 2017 13:32:19 -0700 (PDT)
+Received: by mail-wm0-x244.google.com with SMTP id e64so1490371wmi.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 19 Sep 2017 23:38:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:date:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=/gfstn5zqsFjvGELLQhnAgt10vDG6pbMourVUUGDvK8=;
-        b=i4JufG/lsrySQ3X0Jhwu1GSLwDzHcaAfqHjsF0TRmCpO24ytZWsuE9CBLGOepdqJ1r
-         Y08LBm46BmzfJ73L3XR94kOoPzlepQNCNKuYoaeFYbyWWcda0Tevgk8DfnKTJMlpF3xe
-         tCP1rW3xvvRuzBMsnOMTSq6bGn7Vk3ieiwndj7J8FiwH1UiZyTizh7NSCt/g8SfAMUeO
-         LZ+8ingEWcRcsMAkkVmpeo3pX7MBU7NPQ90iRXFqrra/Q00lwcsTzQGTSE7dXuTzi3t9
-         /Do4kSCPXcPFwBaSooMpVlTPsuemjMNWiNXvHuU/jZyzHNcClN9Ysmf+0taDHuuUhjRc
-         ztJg==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=TAUnlyV51Dvf6Z00pAV4bwZHXtSaDsGXQehdCguh53Y=;
+        b=rsFBjSH55jmiXc4qUW1hZULMK0zyXe6dv2VHRJqcUuFIFpBuWba+9ldt7wT71QYu+I
+         rAJ5Hw+xuMcjdT6mJLR7bL2ELxl3vDsyIt6XMyHyc6R/L/le/+gN7pgDNaBsWSsOCGjq
+         NumJz3lAy0Ca9hgkk0KJGdXteYmAha93CQfRwUXQM+uKT0OhVptUbvisSGUKRDSwYzma
+         Aenn8l3IBjiQ1vN/X6QzFsJs2GIvb0PbpvrXMnXMMrWxMcjwTS3d9BOLjm2PGuUA/hPV
+         uBavlA9RleRul9Xyil3ZGDtPqJa/JC4JJThBpzW4JewHAlYiifbiC6YyIe2LcDxAH8Nf
+         IGQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:date:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=/gfstn5zqsFjvGELLQhnAgt10vDG6pbMourVUUGDvK8=;
-        b=Ow3MgR7Ql/hSnbQCi4xSqTXAeHUtizmid1ueQbse5IF/HRP/EWBmiJkmf/zlKlkO2f
-         XCQ9Q5pqoOM0KYg+1UHZOR7VLEdfO3yfxgs8dCQ76MnhkaOwpBrVQJltr7XEw67Y1D0Y
-         N2l6IT6McoxHSEd3RBrAsCcZc07HxS+DsiJNygUcRC9UqAsKzusA+dFcZgQM038eIBC8
-         1VIfoAA4mFzljTnUy8fwFGQKLL5Pz5MDq57qmTN/Rm5fequSWMHrIxXxlz3mlhwfb+Dd
-         mFkPOpDXvg7fMv1LQLu73t84rrvQA0mD5N9biC2pX7/OUl0VGiYsGSHicl7PydWF1NOK
-         ZN1w==
-X-Gm-Message-State: AHPjjUhWh9oz9i2F4Jq5l63c4iPefoTFQNB2CKCBArT3VN6DT/RGnlbE
-	9LK29T5LCyLqbO+UcXKLPC0=
-X-Google-Smtp-Source: AOwi7QBkQV/n4e6ct8xZyCkx6+BD5iSDbKveM8MwFqbVJN3Q8f3ELzSeGegX4RKrrZsBkSnN3cwtJg==
-X-Received: by 10.223.131.99 with SMTP id 90mr5660699wrd.198.1505939538781;
-        Wed, 20 Sep 2017 13:32:18 -0700 (PDT)
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from fireworks ([86.124.247.82])
-        by smtp.gmail.com with ESMTPSA id 90sm2365487wrl.52.2017.09.20.13.32.18
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 20 Sep 2017 13:32:18 -0700 (PDT)
-From: Georgiana Chelu <georgiana.chelu93@gmail.com>
-X-Google-Original-From: Georgiana Chelu <georgiana.chelu93@example.com>
-Date: Wed, 20 Sep 2017 23:32:17 +0300
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v2] Staging: rtlwifi: halmac: Remove unnecessary 'out of
- memory' messages
-Message-ID: <20170920203217.33igeua3t2kmprtm@fireworks>
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=TAUnlyV51Dvf6Z00pAV4bwZHXtSaDsGXQehdCguh53Y=;
+        b=SiHDjr/P2YU7qVPSmFA60mKcl+6hN4lVV4xGbz6bVaQB+Yt4d8hQW0jO13KXrCoa4q
+         gkX5YX/66BB1Lk65RaDJPjbUAjaGuDBtyp8twSzNKGD83vQaL4UHt7ec7pR6++RqLdeI
+         JYaWZgZ/DmEPTuiKTOLPKYoN9wrw6NnjlxlVNxFixJqQmbTEvqLNQKdmzddsyBvXhmym
+         g5GCUm7gQvVvbquZRU5hydEh0YtLFlzwx1tj5qFu9UwjBrsHAQ9pjL9pRiMikhMGMOKv
+         +SAg4o9gI5pprlruywxpO/u81Un6m9ZUEUrgvuOZLK1YJrvtr1v6AB7LmCjGHvQdtTE8
+         wrdQ==
+X-Gm-Message-State: AHPjjUgFb2SJVCiSu8adGA1SAFK4lfyyYWeEs1XjyQACgfNGuVIpCDub
+	8sMFUdeNJIwZmQj2vk6//dwE3/IzPoc/VIYUszQ=
+X-Google-Smtp-Source: AOwi7QCSnxNy5L41yOED0TCMXIssmDPL3mldhGdU2W6cMOrML3SN2esRZofMwuarPRmQurBTnt4SArSGtFIFo2BBkps=
+X-Received: by 10.80.165.23 with SMTP id y23mr3825303edb.155.1505889537236;
+ Tue, 19 Sep 2017 23:38:57 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: NeoMutt/20170113 (1.7.2)
+Received: by 10.80.172.163 with HTTP; Tue, 19 Sep 2017 23:38:56 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.20.1709192333260.2518@hadrien>
+References: <20170919210157.44uf4sm27tjshxn6@fireworks> <alpine.DEB.2.20.1709192312550.2518@hadrien>
+ <CALta04xQ91BxdN4KmXMGWTS2gpX_QOLrm4dLjQMZtcWPw=870w@mail.gmail.com> <alpine.DEB.2.20.1709192333260.2518@hadrien>
+From: Daniel Baluta <daniel.baluta@gmail.com>
+Date: Wed, 20 Sep 2017 09:38:56 +0300
+Message-ID: <CAEnQRZAs8jiSyng-0QWyfFmSZ-RY_Otv+R6WUPEd21_AHjUcbw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtlwifi: halmac: Remove
+ unnecessary 'out of memory' messages
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Georgiana Chelu <georgiana.chelu93@gmail.com>, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>, Greg KH <gregkh@linuxfoundation.org>
+Content-Type: text/plain; charset="UTF-8"
 
-Remove unnecessary messages because OOM (Out Of Memory Manager)
-reports memory allocation fail messages. The return value
-is clear regarding the problem, so there is no need for the
-'out of memory' comments. Also, delete braces {} for single
-if statement blocks to improve the coding style.
+On Wed, Sep 20, 2017 at 12:33 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+> On Wed, 20 Sep 2017, Georgiana Chelu wrote:
+>
+>> On 20 September 2017 at 00:13, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>> >
+>> >
+>> > On Wed, 20 Sep 2017, Georgiana Chelu wrote:
+>> >
+>> >> Remove unnecessary messages because OOM (Out Of Memory Manager)
+>> >> reports memory allocation fail messages.
+>> >>
+>> >> Fix issue found by by checkpatch.pl.
+>> >> WARNING: Possible unnecessary 'out of memory' message.
+>> >
+>> > Do you need to add the comments?  Looking at the code, it seems pretty
+>> > obvious from the few lines above what the problem is.
+>> >
+>> > julia
+>> >
+>> >
+>>
+>> I saw similar comments in this file, so I thought it would be nice
+>> to have uniformity in the code. But, as you say, the return error is
+>> obvious. So, I will send a second version of the patch without the
+>> 'out of memory' comments.
+>
+> If the other ones are similarly obvious, perhaps they could go too :)
 
-Fix issues found by by checkpatch.pl.
-WARNING: Possible unnecessary 'out of memory' message.
-WARNING: braces {} are not necessary for single statement blocks
-
-Signed-off-by: Georgiana Chelu <georgiana.chelu93@example.com>
----
-
-Changes in v2:
-* Remove 'out of memory' comments
-* Delete braces {} for single if statement blocks
-* Improve the patch message
-
- .../rtlwifi/halmac/halmac_88xx/halmac_func_88xx.c  | 44 ++++++----------------
- 1 file changed, 11 insertions(+), 33 deletions(-)
-
-diff --git a/drivers/staging/rtlwifi/halmac/halmac_88xx/halmac_func_88xx.c b/drivers/staging/rtlwifi/halmac/halmac_88xx/halmac_func_88xx.c
-index f33024e4d853..29dd9cf28db7 100644
---- a/drivers/staging/rtlwifi/halmac/halmac_88xx/halmac_func_88xx.c
-+++ b/drivers/staging/rtlwifi/halmac/halmac_88xx/halmac_func_88xx.c
-@@ -276,17 +276,13 @@ halmac_dump_efuse_drv_88xx(struct halmac_adapter *halmac_adapter)
- 
- 	if (!halmac_adapter->hal_efuse_map) {
- 		halmac_adapter->hal_efuse_map = kzalloc(efuse_size, GFP_KERNEL);
--		if (!halmac_adapter->hal_efuse_map) {
--			pr_err("[ERR]halmac allocate efuse map Fail!!\n");
-+		if (!halmac_adapter->hal_efuse_map)
- 			return HALMAC_RET_MALLOC_FAIL;
--		}
- 	}
- 
- 	efuse_map = kzalloc(efuse_size, GFP_KERNEL);
--	if (!efuse_map) {
--		/* out of memory */
-+	if (!efuse_map)
- 		return HALMAC_RET_MALLOC_FAIL;
--	}
- 
- 	if (halmac_read_hw_efuse_88xx(halmac_adapter, 0, efuse_size,
- 				      efuse_map) != HALMAC_RET_SUCCESS) {
-@@ -325,10 +321,8 @@ halmac_dump_efuse_fw_88xx(struct halmac_adapter *halmac_adapter)
- 	if (!halmac_adapter->hal_efuse_map) {
- 		halmac_adapter->hal_efuse_map = kzalloc(
- 			halmac_adapter->hw_config_info.efuse_size, GFP_KERNEL);
--		if (!halmac_adapter->hal_efuse_map) {
--			/* out of memory */
-+		if (!halmac_adapter->hal_efuse_map)
- 			return HALMAC_RET_MALLOC_FAIL;
--		}
- 	}
- 
- 	if (!halmac_adapter->hal_efuse_map_valid) {
-@@ -537,10 +531,8 @@ halmac_read_logical_efuse_map_88xx(struct halmac_adapter *halmac_adapter,
- 
- 	if (!halmac_adapter->hal_efuse_map_valid) {
- 		efuse_map = kzalloc(efuse_size, GFP_KERNEL);
--		if (!efuse_map) {
--			pr_err("[ERR]halmac allocate local efuse map Fail!!\n");
-+		if (!efuse_map)
- 			return HALMAC_RET_MALLOC_FAIL;
--		}
- 
- 		status = halmac_func_read_efuse_88xx(halmac_adapter, 0,
- 						     efuse_size, efuse_map);
-@@ -554,7 +546,6 @@ halmac_read_logical_efuse_map_88xx(struct halmac_adapter *halmac_adapter,
- 			halmac_adapter->hal_efuse_map =
- 				kzalloc(efuse_size, GFP_KERNEL);
- 			if (!halmac_adapter->hal_efuse_map) {
--				pr_err("[ERR]halmac allocate efuse map Fail!!\n");
- 				kfree(efuse_map);
- 				return HALMAC_RET_MALLOC_FAIL;
- 			}
-@@ -592,10 +583,8 @@ halmac_func_write_logical_efuse_88xx(struct halmac_adapter *halmac_adapter,
- 	driver_adapter = halmac_adapter->driver_adapter;
- 
- 	eeprom_map = kzalloc(eeprom_size, GFP_KERNEL);
--	if (!eeprom_map) {
--		/* out of memory */
-+	if (!eeprom_map)
- 		return HALMAC_RET_MALLOC_FAIL;
--	}
- 	memset(eeprom_map, 0xFF, eeprom_size);
- 
- 	status = halmac_read_logical_efuse_map_88xx(halmac_adapter, eeprom_map);
-@@ -687,10 +676,8 @@ halmac_func_pg_efuse_by_map_88xx(struct halmac_adapter *halmac_adapter,
- 	enum halmac_ret_status status = HALMAC_RET_SUCCESS;
- 
- 	eeprom_mask_updated = kzalloc(eeprom_mask_size, GFP_KERNEL);
--	if (!eeprom_mask_updated) {
--		/* out of memory */
-+	if (!eeprom_mask_updated)
- 		return HALMAC_RET_MALLOC_FAIL;
--	}
- 
- 	status = halmac_update_eeprom_mask_88xx(halmac_adapter, pg_efuse_info,
- 						eeprom_mask_updated);
-@@ -743,12 +730,10 @@ halmac_update_eeprom_mask_88xx(struct halmac_adapter *halmac_adapter,
- 	driver_adapter = halmac_adapter->driver_adapter;
- 
- 	eeprom_map = kzalloc(eeprom_size, GFP_KERNEL);
--	if (!eeprom_map) {
--		/* out of memory */
-+	if (!eeprom_map)
- 		return HALMAC_RET_MALLOC_FAIL;
--	}
--	memset(eeprom_map, 0xFF, eeprom_size);
- 
-+	memset(eeprom_map, 0xFF, eeprom_size);
- 	memset(eeprom_mask_updated, 0x00, pg_efuse_info->efuse_mask_size);
- 
- 	status = halmac_read_logical_efuse_map_88xx(halmac_adapter, eeprom_map);
-@@ -2548,10 +2533,8 @@ halmac_parse_efuse_data_88xx(struct halmac_adapter *halmac_adapter, u8 *c2h_buf,
- 		halmac_adapter->efuse_segment_size = segment_size;
- 
- 	eeprom_map = kzalloc(eeprom_size, GFP_KERNEL);
--	if (!eeprom_map) {
--		/* out of memory */
-+	if (!eeprom_map)
- 		return HALMAC_RET_MALLOC_FAIL;
--	}
- 	memset(eeprom_map, 0xFF, eeprom_size);
- 
- 	spin_lock(&halmac_adapter->efuse_lock);
-@@ -3354,10 +3337,8 @@ enum halmac_ret_status halmac_query_dump_logical_efuse_status_88xx(
- 		*size = eeprom_size;
- 
- 		eeprom_map = kzalloc(eeprom_size, GFP_KERNEL);
--		if (!eeprom_map) {
--			/* out of memory */
-+		if (!eeprom_map)
- 			return HALMAC_RET_MALLOC_FAIL;
--		}
- 		memset(eeprom_map, 0xFF, eeprom_size);
- 
- 		if (halmac_eeprom_parser_88xx(
-@@ -3578,10 +3559,8 @@ halmac_verify_send_rsvd_page_88xx(struct halmac_adapter *halmac_adapter)
- 
- 	rsvd_buf = kzalloc(h2c_pkt_verify_size, GFP_KERNEL);
- 
--	if (!rsvd_buf) {
--		/*pr_err("[ERR]rsvd buffer malloc fail!!\n");*/
-+	if (!rsvd_buf)
- 		return HALMAC_RET_MALLOC_FAIL;
--	}
- 
- 	memset(rsvd_buf, (u8)h2c_pkt_verify_payload, h2c_pkt_verify_size);
- 
-@@ -3598,7 +3577,6 @@ halmac_verify_send_rsvd_page_88xx(struct halmac_adapter *halmac_adapter)
- 			    GFP_KERNEL);
- 
- 	if (!rsvd_page) {
--		pr_err("[ERR]rsvd page malloc fail!!\n");
- 		kfree(rsvd_buf);
- 		return HALMAC_RET_MALLOC_FAIL;
- 	}
--- 
-2.11.0
-
+Agree with Julia. The comments are superfluous here.
 
