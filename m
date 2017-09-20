@@ -1,158 +1,193 @@
-X-GM-THRID: 6671334644654276608
-X-Received: by 2002:a0c:c3ca:: with SMTP id p10mr10370974qvi.86.1553291139338;
-        Fri, 22 Mar 2019 14:45:39 -0700 (PDT)
+X-GM-THRID: 6465205340686254080
+X-Received: by 10.129.120.21 with SMTP id t21mr3111079ywc.96.1505931203030;
+        Wed, 20 Sep 2017 11:13:23 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:b742:: with SMTP id h63ls89813qkf.2.gmail; Fri, 22 Mar
- 2019 14:45:38 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyjn0BMMSpB1cUxM5OqwfgbGg/kXvIYmsBP1P3oaGd3grVx+SIxUKcnCkd/q96vMSYi9gte
-X-Received: by 2002:a37:59c7:: with SMTP id n190mr9245385qkb.142.1553291138771;
-        Fri, 22 Mar 2019 14:45:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553291138; cv=none;
+Received: by 10.129.98.8 with SMTP id w8ls174821ywb.0.gmail; Wed, 20 Sep 2017
+ 11:13:22 -0700 (PDT)
+X-Received: by 10.13.202.5 with SMTP id m5mr3502007ywd.190.1505931202120;
+        Wed, 20 Sep 2017 11:13:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505931202; cv=none;
         d=google.com; s=arc-20160816;
-        b=v5ZP/Y2mGqGDGEChLywyRKDfxkF4WlCNJx7fF7Szz9LlKqAcdSgljGPGI7J7Pi7KfD
-         lhVnImHHh7915N/0R3vXulXaDcxKpdPcFhsAxqGy/H/49xbNEKqaI9vS88ZeOx2XA9C3
-         a3yksZTAbu2Ra0L1vrO7Em+3N7xXeb+Zp2sQt5zxzMHm/WGUlc/NOXg4l5dnEiT2E2OY
-         IneVAV5W3RsdampJBYN9GEwkVxuq6rxdTPe6wThXOEVItZz1+HGjJ+WeLhMadh1gVyF0
-         KBf1nn6YzCBMT3dXNj/1h/0MTyJP3cIIJ6Le5MYwWV0tF4M9jG9fnJ5k+ABl04/Fovvj
-         zsgA==
+        b=VFP/y3rv6wvU4GRZRNxJurm03M159tdify1uzr4wpxL0vBNAk+N0mqbxC2QMOJQoil
+         9hA0/iseCceU78RJkjeYPADFQykKwvq6dzfky8dUIhIg+eXRS9lISaq9vA05GD5Un85q
+         IiUTkSF8BLpbhMslY2E/v2JK3GazJ/mL8zuPd3rtW4rwjGKM0haUwxlyl9jGxSYDAcq1
+         ssWm/X1axbrb2M1gWEV9qqe5GucgFCWM1I5N0EZgyADUJCfMCVzWv3TFj7vKn8fHN842
+         GDbZgpZNhqovYms+05oQM+qtzIXYZNLEVDJJ69AE+6/iUazotA13WjMD/l6wYWcKNadW
+         ySWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=tUxHJ00WjU2g4oA8hyy+1xdRu1VlRZagtT+9jwz9VKY=;
-        b=yIkhHvbSSXknNxJ/9zYHsOIbQcL7LUMwN0T+M2gvJmsM/DyroabjMtHKR2HLUyAZIE
-         zW0wTvT1XrC4ZhIzHsDBvUbb03k931mlJjTFgR2rRE6mwrcVdwws9ko97hCpZt3OIRQB
-         7rGPNOgpDGqL4268dReC84dCoy7TjLctTT/MKVXKaNv4HJbpAnqJ8mhH8ih9I97ft9CE
-         B3O2GsPpkWG/LmiMb0hTEbxblXWHo38HTWCRkQu3a90j4gLhcFXqNh0svtvtGTOl1Fct
-         UuT6BsVF3Fa1VNGLjWqnMpoN9DpMA5fj4Nz/5iX26Th/qdNK75KdAPsjLOlHGOBRcvho
-         eKvA==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=DfnyemQTR02I5eqPFHYCKYGR8pMqEwERW2RWvWhRbhk=;
+        b=b2d63XMFPl9YI2kv40/pDCSmBqC4DHp6AI19zpXQGP0jwfZi9b1nZ/FzlUwp8AaekP
+         F4LJKeopW98ndNhAI/ngzUi6k4jsXXdlSSjW9nmAJPtOz3qkrvYPImIcsjGz7duc9nWl
+         sgpd6VB+SBnOZf+JZlm2+Ant2xvCpVk2TZwGcJAM+jGStbxwmMuug3B+fZkPP3ivQr/E
+         HIWbJq1KphrF4JHv2q9N3L4tq1HSuS3rbd/5OL9uLZQ1bbX3YymkgqtZPJCnwDUXeu1s
+         6uNZ+47iwi31UICazcuzK7NDBX8SV8nKGFrinUizeIb01jzwM8mlwFud0VYZy36ad0In
+         mnfA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dW3rGUUj;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::234 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-oi1-x234.google.com (mail-oi1-x234.google.com. [2607:f8b0:4864:20::234])
-        by gmr-mx.google.com with ESMTPS id 27si670143qtt.1.2019.03.22.14.45.38
+       dkim=pass header.i=@chromium.org header.s=google header.b=A7ZxWX78;
+       spf=pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:4002:c05::22d as permitted sender) smtp.mailfrom=seanpaul@chromium.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org
+Return-Path: <seanpaul@chromium.org>
+Received: from mail-yw0-x22d.google.com (mail-yw0-x22d.google.com. [2607:f8b0:4002:c05::22d])
+        by gmr-mx.google.com with ESMTPS id v85si116915ywc.0.2017.09.20.11.13.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Mar 2019 14:45:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::234 as permitted sender) client-ip=2607:f8b0:4864:20::234;
+        Wed, 20 Sep 2017 11:13:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:4002:c05::22d as permitted sender) client-ip=2607:f8b0:4002:c05::22d;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dW3rGUUj;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::234 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-oi1-x234.google.com with SMTP id u12so2860944oiv.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 22 Mar 2019 14:45:38 -0700 (PDT)
+       dkim=pass header.i=@chromium.org header.s=google header.b=A7ZxWX78;
+       spf=pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:4002:c05::22d as permitted sender) smtp.mailfrom=seanpaul@chromium.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org
+Received: by mail-yw0-x22d.google.com with SMTP id o143so2475430ywd.12
+        for <outreachy-kernel@googlegroups.com>; Wed, 20 Sep 2017 11:13:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=tUxHJ00WjU2g4oA8hyy+1xdRu1VlRZagtT+9jwz9VKY=;
-        b=dW3rGUUjEMnlEHDL90wH/pC6kAiNTb1v2f4PIgBBbmvGQvUnpf3ztcnMVBokoTjCwu
-         FNluONJAX1Eq1Yve88z8pfHN9DMgQHrGVcuuLJSfdf6OWyD5EwT/mcJoNkpICX+dMIB6
-         B/Vj5HvVYzBlwKVe8X5sdkBcECkee3sryXKusZ9XqTgyQ2EFoNvN+x11YIvrFeXUotsg
-         tqbWNMvzmOx1Yp1alqYeXFhY50ziGb2WIiX7fpBGTRyjgecT0zixIDB+ImR2Z4AEkcPS
-         /43TZ9ODD7W+1iWLIx/FhJJW3IFX4vjVaK4WklDWLTnpryPaAggj1txyDiVdQCRPcEDC
-         sUvA==
+        d=chromium.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=DfnyemQTR02I5eqPFHYCKYGR8pMqEwERW2RWvWhRbhk=;
+        b=A7ZxWX78vxX2KvhmV7Q+JmeZ/ssC2RVMrVW62a5BHnsvYLLmz39JZlTTmEaIE3fNwV
+         URvKqX8fUuB2ZB54Dc3B+TUS5gpIFRc133a+O01Lhtt/MT28R3nUl4I6G05kkiMl/fUv
+         hdGqZXnog72xejdzzZbnovWFcdYFDHQP8OuM8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=tUxHJ00WjU2g4oA8hyy+1xdRu1VlRZagtT+9jwz9VKY=;
-        b=neT0PdK/KkecTmxNW0TYQOjmO8VjpVrfdo+JWgWvEq3x19jwD+G3uP3y4/CPhVwQrR
-         EYzYU19nKFqOpoISLjPnSjxnQv5dRGwAFUKrr9KBMaoVZ3ITq0mpv5XIADuFTvsjLz+0
-         CO5sit/v46+6yivQ9tK/6xzpnUtG4EZU+L1jiNHgXld3bLjDwWAQBtj/e1c9lcBS7QnD
-         GHu7BNdVZM2vURbq5mdws0UygKxDio1ND0k0G4cI4up0fZ1bWVVAcqfzfrniL8luX8CK
-         PqiIYpC4BenITo3ZFAyokLLa/GLcQjgUSA0XP+tSxheN5pq31tsSRs9Hp6XDBPu79TYU
-         Wo/w==
-X-Gm-Message-State: APjAAAUJifbLc+z9owQsAv54FSWMUquW2Ig1JWU4c5LDuEM6d+mFZAK3
-	RqyhMCnaH8UzpGYqniFTZDE=
-X-Received: by 2002:aca:8c9:: with SMTP id 192mr3291887oii.164.1553291138361;
-        Fri, 22 Mar 2019 14:45:38 -0700 (PDT)
-Return-Path: <madhumithabiw@gmail.com>
-Received: from madhuleo ([2605:6000:1023:606d:25c4:3243:c335:9f7b])
-        by smtp.gmail.com with ESMTPSA id b125sm2184453oia.8.2019.03.22.14.45.37
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Mar 2019 14:45:37 -0700 (PDT)
-From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-To: mchehab@kernel.org,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Subject: [PATCH v3] Staging: media: davinci_vpfe: Drop macros
-Date: Fri, 22 Mar 2019 16:45:34 -0500
-Message-Id: <20190322214534.24852-1-madhumithabiw@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=DfnyemQTR02I5eqPFHYCKYGR8pMqEwERW2RWvWhRbhk=;
+        b=X594BTs/r9toaTGB+SZKdgjWgjlE529YdN2B4NyToVf1QOrhdP1/AmBOjS5vPJEJR+
+         IvU9z7NPoZdjProgyW9vZI3BL/XpLvkNqmWkd8rZ/SL3g2zk7XrC8JWFFzFizZc8j1H7
+         3Ywg+X2VcyajbjKMYl/WqvSgOJWEtI1YUVqwNOwMPMZJheNfB7et8ts0N5iBTKWQ7ssO
+         Vum8TvyPiF3SLuqQcUgGzLcF8nllsNyP045c8YgP6NPO80kSy9RJFyLlsJ0Pnh1+qjst
+         cDLCXwMP+DGZvJgqPlnrT4CSAzxdcIx0bcJbfLoCpJAPe5jIBWNZ87lfnyhqg0a42HBI
+         assw==
+X-Gm-Message-State: AHPjjUg+E+rUj36O5YkTQsoh6zR4Vy5DbC0Wt6A21Dnxd44ZYFdsMZg9
+	R+8S8wV79TNwou9aEyHm9NrDvbzRHp4=
+X-Received: by 10.129.182.15 with SMTP id u15mr4739958ywh.348.1505931201646;
+        Wed, 20 Sep 2017 11:13:21 -0700 (PDT)
+Return-Path: <seanpaul@chromium.org>
+Received: from mail-io0-f176.google.com (mail-io0-f176.google.com. [209.85.223.176])
+        by smtp.gmail.com with ESMTPSA id c11sm982674ywb.89.2017.09.20.11.13.21
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 20 Sep 2017 11:13:21 -0700 (PDT)
+Received: by mail-io0-f176.google.com with SMTP id k101so5552182iod.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 20 Sep 2017 11:13:21 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QAdF4+UeiLGZFwqle1xjdZS/ms60NuY3e9YVEnszRtJy3JXSafhjEtcNYj/hmWphoR3FqJpCpI6+0KdM1ssC+Q=
+X-Received: by 10.107.157.129 with SMTP id g123mr8605908ioe.182.1505931200628;
+ Wed, 20 Sep 2017 11:13:20 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.107.156.195 with HTTP; Wed, 20 Sep 2017 11:13:00 -0700 (PDT)
+In-Reply-To: <20170920174828.GA25248@dvetter-linux.ger.corp.intel.com>
+References: <cover.1505296813.git.meghana.madhyastha@gmail.com>
+ <alpine.DEB.2.20.1709131352550.26484@hadrien> <87wp52iwl0.fsf@nikula.org>
+ <1505775934.6581.6.camel@intel.com> <20170920174828.GA25248@dvetter-linux.ger.corp.intel.com>
+From: Sean Paul <seanpaul@chromium.org>
+Date: Wed, 20 Sep 2017 11:13:00 -0700
+X-Gmail-Original-Message-ID: <CAOw6vbKm-Nkc8vvXSyJSSTDCXtx8Lfp__TeKTMrY-Lb=g1W34g@mail.gmail.com>
+Message-ID: <CAOw6vbKm-Nkc8vvXSyJSSTDCXtx8Lfp__TeKTMrY-Lb=g1W34g@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 0/3] GPU: DRM: drm_agpsupport.c: Code cleanup
+To: Daniel Vetter <daniel@ffwll.ch>
+Cc: "Vetter, Daniel" <daniel.vetter@intel.com>, 
+	"meghana.madhyastha@gmail.com" <meghana.madhyastha@gmail.com>, 
+	"jani.nikula@linux.intel.com" <jani.nikula@linux.intel.com>, "julia.lawall@lip6.fr" <julia.lawall@lip6.fr>, 
+	"outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset="UTF-8"
 
-Drop macros instead use functions set_bit() and clear_bit directly.
+On Wed, Sep 20, 2017 at 10:48 AM, Daniel Vetter <daniel@ffwll.ch> wrote:
+> On Mon, Sep 18, 2017 at 11:05:39PM +0000, Vetter, Daniel wrote:
+>> On Wed, 2017-09-13 at 15:58 +0300, Jani Nikula wrote:
+>> > On Wed, 13 Sep 2017, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>> > > On Wed, 13 Sep 2017, Meghana Madhyastha wrote:
+>> > >
+>> > > > These patches fix the checkpath warnings and errors
+>> > > > in drm_agpsupport.c
+>> > > >
+>> > > > Meghana Madhyastha (3):
+>> > > >   GPU: DRM: Moved EXPORT_SYMBOL so that it immediately followed
+>> > > > its
+>> > > >     function
+>> > > >   GPU: DRM: Replace "foo * bar" with "foo *bar"
+>> > > >   GPU: DRM: Remove assignment in if condition
+>> > > >
+>> > > >  drivers/gpu/drm/drm_agpsupport.c | 41 ++++++++++++++++++++++--
+>> > > > ----------------
+>> >
+>> > Please try 'git log --oneline -- drivers/gpu/drm/drm_agpsupport.c'
+>> > and
+>> > observe the commit subject prefix used. Please try to follow the
+>> > style
+>> > in the area you're changing, not some generic rules.
+>> >
+>> > > >  1 file changed, 23 insertions(+), 18 deletions(-)
+>> > >
+>> > > Are the DRM people going to pick this up?  Because Greg will
+>> > > not.  If you
+>> > > do something that is outside staging at a mentor's suggestion it
+>> > > could be
+>> > > good to make explicit that the mentor will make sure that the patch
+>> > > will
+>> > > be applied.
+>> >
+>> > I'm not generally fond of pure checkpatch fixes, but patch 3 alone I
+>> > want enough to pick them all up. ;)
+>> >
+>> > But please do submit the series to dri-devel@lists.freedesktop.org.
+>> > As a
+>> > matter of policy, we don't apply patches not posted to our subsystem
+>> > mailing list.
+>>
+>> Yeah, stuff needs to go through dri-devel when it's a drm patch (or
+>> anything else in drivers/gpu). That's why we don't recommend it for the
+>> very first patch (I guess I should update the text a bit, but I'm
+>> travelling and don't have login creds nearby).
+>
+> Hm, not all of these landed. Haneen, can you pls resend the remaining
+> patches with dri-devel (and maintainers, per scripts/get_maintainer.pl) on
+> cc?
 
-Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Looks like we got our wires crossed! I just applied v3 of this set, so
+we're allll good :)
 
----
-Changes in v3:
-- Drop inline functions and use functions
+Sean
 
-Changes in v2:
-- Convert macros into inline functions
----
- .../staging/media/davinci_vpfe/dm365_ipipeif.c   | 16 ++++++++--------
- .../staging/media/davinci_vpfe/dm365_ipipeif.h   |  2 --
- 2 files changed, 8 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c b/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c
-index 4380e0a8e6dc..81010bc19f0e 100644
---- a/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c
-+++ b/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c
-@@ -296,14 +296,14 @@ static int ipipeif_hw_setup(struct v4l2_subdev *sd)
- 		case MEDIA_BUS_FMT_YUYV8_1X16:
- 		case MEDIA_BUS_FMT_UYVY8_2X8:
- 		case MEDIA_BUS_FMT_Y8_1X8:
--			RESETBIT(val, IPIPEIF_CFG2_YUV8_SHIFT);
--			SETBIT(val, IPIPEIF_CFG2_YUV16_SHIFT);
-+			clear_bit(val, IPIPEIF_CFG2_YUV8_SHIFT);
-+			set_bit(val, IPIPEIF_CFG2_YUV16_SHIFT);
- 			ipipeif_write(val, ipipeif_base_addr, IPIPEIF_CFG2);
- 			break;
- 
- 		default:
--			RESETBIT(val, IPIPEIF_CFG2_YUV8_SHIFT);
--			RESETBIT(val, IPIPEIF_CFG2_YUV16_SHIFT);
-+			clear_bit(val, IPIPEIF_CFG2_YUV8_SHIFT);
-+			clear_bit(val, IPIPEIF_CFG2_YUV16_SHIFT);
- 			ipipeif_write(val, ipipeif_base_addr, IPIPEIF_CFG2);
- 			break;
- 		}
-@@ -344,16 +344,16 @@ static int ipipeif_hw_setup(struct v4l2_subdev *sd)
- 		switch (isif_port_if) {
- 		case MEDIA_BUS_FMT_YUYV8_1X16:
- 		case MEDIA_BUS_FMT_YUYV10_1X20:
--			RESETBIT(val, IPIPEIF_CFG2_YUV8_SHIFT);
--			SETBIT(val, IPIPEIF_CFG2_YUV16_SHIFT);
-+			clear_bit(val, IPIPEIF_CFG2_YUV8_SHIFT);
-+			set_bit(val, IPIPEIF_CFG2_YUV16_SHIFT);
- 			break;
- 
- 		case MEDIA_BUS_FMT_YUYV8_2X8:
- 		case MEDIA_BUS_FMT_UYVY8_2X8:
- 		case MEDIA_BUS_FMT_Y8_1X8:
- 		case MEDIA_BUS_FMT_YUYV10_2X10:
--			SETBIT(val, IPIPEIF_CFG2_YUV8_SHIFT);
--			SETBIT(val, IPIPEIF_CFG2_YUV16_SHIFT);
-+			set_bit(val, IPIPEIF_CFG2_YUV8_SHIFT);
-+			set_bit(val, IPIPEIF_CFG2_YUV16_SHIFT);
- 			val |= IPIPEIF_CBCR_Y << IPIPEIF_CFG2_YUV8P_SHIFT;
- 			break;
- 
-diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipeif.h b/drivers/staging/media/davinci_vpfe/dm365_ipipeif.h
-index 4685d64016de..4d126fc871f3 100644
---- a/drivers/staging/media/davinci_vpfe/dm365_ipipeif.h
-+++ b/drivers/staging/media/davinci_vpfe/dm365_ipipeif.h
-@@ -166,8 +166,6 @@ struct vpfe_ipipeif_device {
- #define IPIPEIF_RSZ_MIN			16
- #define IPIPEIF_RSZ_MAX			112
- #define IPIPEIF_RSZ_CONST		16
--#define SETBIT(reg, bit)   (reg = ((reg) | ((0x00000001)<<(bit))))
--#define RESETBIT(reg, bit) (reg = ((reg) & (~(0x00000001<<(bit)))))
- 
- #define IPIPEIF_ADOFS_LSB_MASK		0x1ff
- #define IPIPEIF_ADOFS_LSB_SHIFT		5
--- 
-2.17.1
-
+>
+> Thanks, Daniel
+>
+>
+>> -Daniel
+>>
+>> > The scripts/get_maintainer.pl script will help you with the lists,
+>> > but
+>> > do use discretion. The script is sometimes misguided, adding *way*
+>> > too
+>> > many lists and people. Just the main subsystem list and
+>> > supporters/maintainers are usually enough.
+>> >
+>> >
+>> > Thanks,
+>> > Jani.
+>> >
+>> >
+>> Intel Semiconductor AG
+>> Registered No. 020.30.913.786-7
+>> Registered Office: Badenerstrasse 549, 8048 Zurich, Switzerland
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1505775934.6581.6.camel%40intel.com.
+>> For more options, visit https://groups.google.com/d/optout.
+>
+> --
+> Daniel Vetter
+> Software Engineer, Intel Corporation
+> http://blog.ffwll.ch
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170920174828.GA25248%40dvetter-linux.ger.corp.intel.com.
+> For more options, visit https://groups.google.com/d/optout.
 
