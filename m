@@ -1,299 +1,221 @@
 X-GM-THRID: 6466935626239311872
-X-Received: by 10.107.169.219 with SMTP id f88mr3219896ioj.136.1505934088454;
-        Wed, 20 Sep 2017 12:01:28 -0700 (PDT)
+X-Received: by 10.107.36.148 with SMTP id k142mr3272427iok.82.1505933840154;
+        Wed, 20 Sep 2017 11:57:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.200.18.141 with SMTP id y13ls297271qti.2.gmail; Wed, 20 Sep
- 2017 12:01:27 -0700 (PDT)
-X-Received: by 10.55.209.202 with SMTP id o71mr2961355qkl.2.1505934087923;
-        Wed, 20 Sep 2017 12:01:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505934087; cv=none;
+Received: by 10.129.68.12 with SMTP id r12ls175158ywa.14.gmail; Wed, 20 Sep
+ 2017 11:57:19 -0700 (PDT)
+X-Received: by 10.129.179.201 with SMTP id r192mr475463ywh.49.1505933839387;
+        Wed, 20 Sep 2017 11:57:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1505933839; cv=none;
         d=google.com; s=arc-20160816;
-        b=aJ5r+sWAS2GrN+XnyGfZsp/YMrDkvKhs7/RPd6OUbL1PAIQ2TheyMNotctnh87ydSF
-         euGlcsbrvOFSQHWs7zZ15/RqzZuqG8smU6eokmhy3Wja/AklbjVBOTAAtVnhWzBVzX7R
-         EHTysgdVCoLOO6ImzOABKzdRelgB+yhBAzLc6u1gNmxcwkrfYXhWk/ub2A72S/pgOkwa
-         uibTxHOEK9LNYYEGJlHhM2Xp+hchRHNxmPghJAWfWMRfqTjHFnKQtkHDdoEnmKISF6YZ
-         1Qe+/Uuo99ijOoqP65OdL2FbK907WXuGsC9lxhhpuoMGbgCGJetThDTqvT4FczXdOmrn
-         cxlQ==
+        b=XWzso2bxaLdgTKWIQpGevHvNTp9BJ44qz4orh3052smIxhawYwCLnNkV0K87jnJ+Bp
+         tpNHHqbg7gE6ejnjC0J6293N3Nwh7HLkljUc07plKGkmPPrbwuqEB0hbwi1oiycYLNfY
+         9t15W2uby0ivAb0eu5W9S1sJPea/f6h/DAfKTd/kdF5l3MwTi5R4kAnh0gKNwq/VBT/x
+         xHKHp9dHum+S321ToEfxUa0NQ3aV+9dc78pB4oRF0eJQfoWaFBaz/tfkHWqiKcJKDDXd
+         +DIb4mcJcp29B1yfoGz026CbDwYLAfifn+acV2GEnKECd6g9wUAC2cGQsu1/WgLrYBa7
+         qhAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=PGaxF4NlIGZG1FOH3olHT1D+K9maI8lmw/KHGq5IwGo=;
-        b=VCMDvB/hZPOgTMNyjiedgI4TfFhSuHLuRKvtKDTyyeD7BWm93jCDYFdOgxseCiobNX
-         0nBQnvuoTtnOKfjtfjFM17s/AitB5tMjb7CmiJ432StWnqmaHr3TnAx8qO8EvdFybBbq
-         rbUeogJsRI4pRMdcmI9nRx0zObDQJVWJit1wCVZh3V5R0B5e6YLI8ico76i6Wm/rycRg
-         imuT3fhEZXcQAWrdhzeSq0xdkaB/FXSpabs/Kne1h3wO3A2M/jcCQlwEPFCsabDHnNzu
-         /GlNUOSkd1KLGfBZCJZMQijiAidbHVdWxGFOvylW/Mrm5tjQe6TKrU+ZHGx7UMbPnAbD
-         1GpA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature
+         :arc-authentication-results;
+        bh=kXAoRyHqA/cA/ZOs5dyd88yoPJCOA+PWTP79T7Sg+ds=;
+        b=RyCIMfG5xNHqarFdVkDmtvl60btqkooWlvv/hNA/wzsUSJPgq2oxhpFUVoWtCgwgXK
+         2v5TlZ5tduG6WnQJ5o+yPf8UfiDAPUn7odvWuGB1CJGI7kUDnZVDZvSRKY2ugmVVTDzF
+         DcTJ8KOoQxx7H11GbTw2YNbBWXL4cDk5SXuEVna9A0zHo463VhKQ7U0Sn6kWiYD2jdEM
+         xqWVk7dmx1JnGiEntB606F89+dgW9Va9DIpvo90xQnaSS0NHl6fywvh59jFe0OwCP8dl
+         g4lArZNYxqkq8TlALwMvn1FxuZopnv/EtZdR/qF9R93QrqwOgYY9lkQ1NSdA2s+vw5UT
+         sO9Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@chromium.org header.s=google header.b=TxWoy0Et;
-       spf=pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:4002:c05::22a as permitted sender) smtp.mailfrom=seanpaul@chromium.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org
-Return-Path: <seanpaul@chromium.org>
-Received: from mail-yw0-x22a.google.com (mail-yw0-x22a.google.com. [2607:f8b0:4002:c05::22a])
-        by gmr-mx.google.com with ESMTPS id u203si113932ywu.21.2017.09.20.12.01.27
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=a+miB8oZ;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id q15si644703pfi.7.2017.09.20.11.57.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 20 Sep 2017 12:01:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:4002:c05::22a as permitted sender) client-ip=2607:f8b0:4002:c05::22a;
+        Wed, 20 Sep 2017 11:57:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@chromium.org header.s=google header.b=TxWoy0Et;
-       spf=pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:4002:c05::22a as permitted sender) smtp.mailfrom=seanpaul@chromium.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org
-Received: by mail-yw0-x22a.google.com with SMTP id r85so2579197ywg.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 20 Sep 2017 12:01:27 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=a+miB8oZ;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x243.google.com with SMTP id f84so1527718pfj.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 20 Sep 2017 11:57:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=PGaxF4NlIGZG1FOH3olHT1D+K9maI8lmw/KHGq5IwGo=;
-        b=TxWoy0EtKBqNFVoAWpueKZ6s4tB1TK8UTkxJc37vu5fedxuBkNqAapS2C89e5XRXqZ
-         Dzsw2Oc38szK7pa+tJ9lTvEE+pd0HMW5yGC2O0aJz6Fp+zkwnUUr/FotswZrQ32u4NBN
-         qmyPQWHGYCunvbt9hH1P65BeGBfssCTEgnHzE=
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=kXAoRyHqA/cA/ZOs5dyd88yoPJCOA+PWTP79T7Sg+ds=;
+        b=a+miB8oZufpNsN4c4h2iW+6DaYmP8cZvMGGIvkCQo2C+eiJAi/W5/yK1M/WYzgqY8m
+         d3scW+nS8Z4EDieAaQcqAytUzEaGaStB5T/DUTTL2jecCahgEjA8Eo5MORitXcJMRv6u
+         VuaxipDWZIcLt673QpZpoqeVKgG1rsEC/EzwF1AW7aWMKK4tG0NQFqrhF4qsLvYL+uGv
+         XfM3tNwcxQRUSpGK9nV02uD/TEDeZW0PTSD6pL5LpJrvColcDxs0z8HKWLyusLWPa5SM
+         UwqAdAn4gakD1wKLgQJjSjdI4Qy5vP21+d+1ori/nas43erMQBlGjcyjDfSxpq28bEBa
+         nzyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=PGaxF4NlIGZG1FOH3olHT1D+K9maI8lmw/KHGq5IwGo=;
-        b=YT9NpV9Cm4m/c4Py7n+FxkkdItYWk8CLTgWRUNaoTgnrNt1P6Wi21lnntLrGaUXm7L
-         rgdBU4XSQXeoJCYN41HMB1YGpftyMoZnE+c0AupwfpjMp+0sysBri4wu8z1VYluO90vt
-         753up7Z9vHKmBDfAvNXpQedNwjQzt8TgKp3gcKpDouXLLbgXE3FliY+rwIONb7tqQH1F
-         atwPf15Gnftie0BucqjmOMbyg++WD+Jg6ZhO85qTuLmsStc9iwgv8ZEYnyQJG4MzFiGr
-         hks6toVC0XN+Tqi03mgFXfoeyt6v3/0efD21G2LcF81aImmtrh8fOS1giMguFrYU55Z7
-         pKbA==
-X-Gm-Message-State: AHPjjUiJibTt5Qe/e9rYuUNuxsuexXDTT1nMd37Qsbkvb7V+NTH3jP6O
-	shOAFSQrPX9F7Cm1OQFG6jqfe6YdiZk=
-X-Received: by 10.37.132.134 with SMTP id v6mr4212538ybk.96.1505934087192;
-        Wed, 20 Sep 2017 12:01:27 -0700 (PDT)
-Return-Path: <seanpaul@chromium.org>
-Received: from mail-it0-f46.google.com (mail-it0-f46.google.com. [209.85.214.46])
-        by smtp.gmail.com with ESMTPSA id w137sm1026239ywd.9.2017.09.20.12.01.26
-        for <outreachy-kernel@googlegroups.com>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=kXAoRyHqA/cA/ZOs5dyd88yoPJCOA+PWTP79T7Sg+ds=;
+        b=PnfUlovk7PGGLa8ItrQfJNQ3GhO7VsNiYInmvgXXcykZglzNSMYuAuSR71pPiLs4uv
+         ILFU2WhpZRQ2hbfUuwpGY7UbIia0MeS5nLnziDmZCIi8CFq2X44WtAT+ZTgqRyS1RLU9
+         hs+LK8KFuiD3BgYlf0vEGbUInV9L0mFY1JTt7USVg6U9kGdCj+eEHB6KNHAM9UA9HaQf
+         5WBlI8Ny/MNz/ITOOzdKC5l8rfWzllZs+7NPPTFUEU0CwemveuNQwl9gn014KWc1S+Mv
+         L1B7zjUMoTy3MVLICiQvVtdlNCYjtfxSiDBjik1cTXlXmCGzXzOAwxKeezKgA9KwOYYV
+         ZTcw==
+X-Gm-Message-State: AHPjjUh4Mm9UGaw+mVDZE1zEtFOlBOJpD+05DId8GBts83CMjUTUVvoo
+	vdHp9HEZW01HLgq7o6RMs8c5NGSU
+X-Google-Smtp-Source: AOwi7QCcKbXIfy1V4AH6FiFKYU1WtxyMHTknabc3DyiOImd9qooP2Q3UBl8lj+m5hGS/VzCUkb/FIQ==
+X-Received: by 10.101.72.199 with SMTP id o7mr3212681pgs.450.1505933838894;
+        Wed, 20 Sep 2017 11:57:18 -0700 (PDT)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from Haneen ([64.77.242.50])
+        by smtp.gmail.com with ESMTPSA id a29sm473448pfj.88.2017.09.20.11.57.17
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 20 Sep 2017 12:01:27 -0700 (PDT)
-Received: by mail-it0-f46.google.com with SMTP id 85so4095914ith.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 20 Sep 2017 12:01:26 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QAFAvmG47bKGtzNdh3QuqGBCmr5Uq3syjGpWLMsaK7DOYrQU1d1xtsZW9vo62k/20QluZ8dDiTfQRkweh0GIVM=
-X-Received: by 10.36.165.8 with SMTP id k8mr4516281itf.83.1505934085791; Wed,
- 20 Sep 2017 12:01:25 -0700 (PDT)
+        Wed, 20 Sep 2017 11:57:18 -0700 (PDT)
+Date: Wed, 20 Sep 2017 12:57:16 -0600
+From: Haneen Mohammed <hamohammed.sa@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: hamohammed.sa@gmail.com, Daniel Vetter <daniel.vetter@ffwll.ch>,
+	Sean Paul <seanpaul@chromium.org>, gregkh@linuxfoundation.org,
+	dri-devel@lists.freedesktop.org,
+	Russell King <linux@armlinux.org.uk>,
+	David Airlie <airlied@linux.ie>
+Subject: [RESEND PATCH 2/2] drm/armada: Replace
+ drm_framebuffer_reference/unreference() with _get/put()
+Message-ID: <e1df1b3375faa819029559b11c32e10501c5c5d6.1505932812.git.hamohammed.sa@gmail.com>
+References: <cover.1505932812.git.hamohammed.sa@gmail.com>
 MIME-Version: 1.0
-Received: by 10.107.156.195 with HTTP; Wed, 20 Sep 2017 12:01:05 -0700 (PDT)
-In-Reply-To: <a59ef1ed109ade897bcffcb01b33214262db8942.1505932812.git.hamohammed.sa@gmail.com>
-References: <cover.1505932812.git.hamohammed.sa@gmail.com> <a59ef1ed109ade897bcffcb01b33214262db8942.1505932812.git.hamohammed.sa@gmail.com>
-From: Sean Paul <seanpaul@chromium.org>
-Date: Wed, 20 Sep 2017 12:01:05 -0700
-X-Gmail-Original-Message-ID: <CAOw6vbLLGUs=xjKYSOpAOOF6aJPD5uoja8fwDybpXoS3ptR5Sg@mail.gmail.com>
-Message-ID: <CAOw6vbLLGUs=xjKYSOpAOOF6aJPD5uoja8fwDybpXoS3ptR5Sg@mail.gmail.com>
-Subject: Re: [RESEND PATCH 1/2] drm/armada: Replace drm_gem_object_reference/unreference()
- with _get/put()
-To: Haneen Mohammed <hamohammed.sa@gmail.com>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, Russell King <linux@armlinux.org.uk>, 
-	David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, dri-devel <dri-devel@lists.freedesktop.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1505932812.git.hamohammed.sa@gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Wed, Sep 20, 2017 at 11:54 AM, Haneen Mohammed
-<hamohammed.sa@gmail.com> wrote:
-> This patch replace instances of drm_gem_object_reference/unreference with
-> *_get/put() suffixes, because get/put is shorter and consistent with the
-> kernel use of *_get/put() suffixes.
-> This was done with the following Coccinelle script:
->
-> @r1@
-> expression e;
-> @@
->
-> (
-> -drm_gem_object_reference(e);
-> +drm_gem_object_get(e);
-> |
-> -drm_gem_object_unreference(e);
-> +drm_gem_object_put(e);
-> |
-> -drm_gem_object_unreference_unlocked(e);
-> +drm_gem_object_put_unlocked(e);
-> )
->
-> Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+This patch replace instances of drm_framebuffer_reference/unreference with
+*_get/put() suffixes, because get/put is shorter and consistent with the
+kernel use of *_get/put suffixes.
+This was done with the following Coccinelle script:
 
-Reviewed-by: Sean Paul <seanpaul@chromium.org>
+@r1@
+expression e;
+@@
 
-> ---
->  drivers/gpu/drm/armada/armada_crtc.c  |  8 ++++----
->  drivers/gpu/drm/armada/armada_fb.c    |  8 ++++----
->  drivers/gpu/drm/armada/armada_fbdev.c |  6 +++---
->  drivers/gpu/drm/armada/armada_gem.c   | 14 +++++++-------
->  4 files changed, 18 insertions(+), 18 deletions(-)
->
-> diff --git a/drivers/gpu/drm/armada/armada_crtc.c b/drivers/gpu/drm/armada/armada_crtc.c
-> index 2a4d163..381dfa1 100644
-> --- a/drivers/gpu/drm/armada/armada_crtc.c
-> +++ b/drivers/gpu/drm/armada/armada_crtc.c
-> @@ -947,13 +947,13 @@ static int armada_drm_crtc_cursor_set(struct drm_crtc *crtc,
->
->                 /* Must be a kernel-mapped object */
->                 if (!obj->addr) {
-> -                       drm_gem_object_unreference_unlocked(&obj->obj);
-> +                       drm_gem_object_put_unlocked(&obj->obj);
->                         return -EINVAL;
->                 }
->
->                 if (obj->obj.size < w * h * 4) {
->                         DRM_ERROR("buffer is too small\n");
-> -                       drm_gem_object_unreference_unlocked(&obj->obj);
-> +                       drm_gem_object_put_unlocked(&obj->obj);
->                         return -ENOMEM;
->                 }
->         }
-> @@ -961,7 +961,7 @@ static int armada_drm_crtc_cursor_set(struct drm_crtc *crtc,
->         if (dcrtc->cursor_obj) {
->                 dcrtc->cursor_obj->update = NULL;
->                 dcrtc->cursor_obj->update_data = NULL;
-> -               drm_gem_object_unreference_unlocked(&dcrtc->cursor_obj->obj);
-> +               drm_gem_object_put_unlocked(&dcrtc->cursor_obj->obj);
->         }
->         dcrtc->cursor_obj = obj;
->         dcrtc->cursor_w = w;
-> @@ -997,7 +997,7 @@ static void armada_drm_crtc_destroy(struct drm_crtc *crtc)
->         struct armada_private *priv = crtc->dev->dev_private;
->
->         if (dcrtc->cursor_obj)
-> -               drm_gem_object_unreference_unlocked(&dcrtc->cursor_obj->obj);
-> +               drm_gem_object_put_unlocked(&dcrtc->cursor_obj->obj);
->
->         priv->dcrtc[dcrtc->num] = NULL;
->         drm_crtc_cleanup(&dcrtc->crtc);
-> diff --git a/drivers/gpu/drm/armada/armada_fb.c b/drivers/gpu/drm/armada/armada_fb.c
-> index 92e6b08..51839c1 100644
-> --- a/drivers/gpu/drm/armada/armada_fb.c
-> +++ b/drivers/gpu/drm/armada/armada_fb.c
-> @@ -18,7 +18,7 @@ static void armada_fb_destroy(struct drm_framebuffer *fb)
->         struct armada_framebuffer *dfb = drm_fb_to_armada_fb(fb);
->
->         drm_framebuffer_cleanup(&dfb->fb);
-> -       drm_gem_object_unreference_unlocked(&dfb->obj->obj);
-> +       drm_gem_object_put_unlocked(&dfb->obj->obj);
->         kfree(dfb);
->  }
->
-> @@ -95,7 +95,7 @@ struct armada_framebuffer *armada_framebuffer_create(struct drm_device *dev,
->          * the above call, but the caller will drop their reference
->          * to it.  Hence we need to take our own reference.
->          */
-> -       drm_gem_object_reference(&obj->obj);
-> +       drm_gem_object_get(&obj->obj);
->
->         return dfb;
->  }
-> @@ -144,12 +144,12 @@ static struct drm_framebuffer *armada_fb_create(struct drm_device *dev,
->                 goto err;
->         }
->
-> -       drm_gem_object_unreference_unlocked(&obj->obj);
-> +       drm_gem_object_put_unlocked(&obj->obj);
->
->         return &dfb->fb;
->
->   err_unref:
-> -       drm_gem_object_unreference_unlocked(&obj->obj);
-> +       drm_gem_object_put_unlocked(&obj->obj);
->   err:
->         DRM_ERROR("failed to initialize framebuffer: %d\n", ret);
->         return ERR_PTR(ret);
-> diff --git a/drivers/gpu/drm/armada/armada_fbdev.c b/drivers/gpu/drm/armada/armada_fbdev.c
-> index 29c7d04..cf6bad1 100644
-> --- a/drivers/gpu/drm/armada/armada_fbdev.c
-> +++ b/drivers/gpu/drm/armada/armada_fbdev.c
-> @@ -52,13 +52,13 @@ static int armada_fb_create(struct drm_fb_helper *fbh,
->
->         ret = armada_gem_linear_back(dev, obj);
->         if (ret) {
-> -               drm_gem_object_unreference_unlocked(&obj->obj);
-> +               drm_gem_object_put_unlocked(&obj->obj);
->                 return ret;
->         }
->
->         ptr = armada_gem_map_object(dev, obj);
->         if (!ptr) {
-> -               drm_gem_object_unreference_unlocked(&obj->obj);
-> +               drm_gem_object_put_unlocked(&obj->obj);
->                 return -ENOMEM;
->         }
->
-> @@ -68,7 +68,7 @@ static int armada_fb_create(struct drm_fb_helper *fbh,
->          * A reference is now held by the framebuffer object if
->          * successful, otherwise this drops the ref for the error path.
->          */
-> -       drm_gem_object_unreference_unlocked(&obj->obj);
-> +       drm_gem_object_put_unlocked(&obj->obj);
->
->         if (IS_ERR(dfb))
->                 return PTR_ERR(dfb);
-> diff --git a/drivers/gpu/drm/armada/armada_gem.c b/drivers/gpu/drm/armada/armada_gem.c
-> index a76ca21..49d40aa 100644
-> --- a/drivers/gpu/drm/armada/armada_gem.c
-> +++ b/drivers/gpu/drm/armada/armada_gem.c
-> @@ -266,7 +266,7 @@ int armada_gem_dumb_create(struct drm_file *file, struct drm_device *dev,
->         /* drop reference from allocate - handle holds it now */
->         DRM_DEBUG_DRIVER("obj %p size %zu handle %#x\n", dobj, size, handle);
->   err:
-> -       drm_gem_object_unreference_unlocked(&dobj->obj);
-> +       drm_gem_object_put_unlocked(&dobj->obj);
->         return ret;
->  }
->
-> @@ -295,7 +295,7 @@ int armada_gem_dumb_map_offset(struct drm_file *file, struct drm_device *dev,
->         }
->
->   err_unref:
-> -       drm_gem_object_unreference_unlocked(&obj->obj);
-> +       drm_gem_object_put_unlocked(&obj->obj);
->
->         return ret;
->  }
-> @@ -334,7 +334,7 @@ int armada_gem_create_ioctl(struct drm_device *dev, void *data,
->         /* drop reference from allocate - handle holds it now */
->         DRM_DEBUG_DRIVER("obj %p size %zu handle %#x\n", dobj, size, handle);
->   err:
-> -       drm_gem_object_unreference_unlocked(&dobj->obj);
-> +       drm_gem_object_put_unlocked(&dobj->obj);
->         return ret;
->  }
->
-> @@ -351,13 +351,13 @@ int armada_gem_mmap_ioctl(struct drm_device *dev, void *data,
->                 return -ENOENT;
->
->         if (!dobj->obj.filp) {
-> -               drm_gem_object_unreference_unlocked(&dobj->obj);
-> +               drm_gem_object_put_unlocked(&dobj->obj);
->                 return -EINVAL;
->         }
->
->         addr = vm_mmap(dobj->obj.filp, 0, args->size, PROT_READ | PROT_WRITE,
->                        MAP_SHARED, args->offset);
-> -       drm_gem_object_unreference_unlocked(&dobj->obj);
-> +       drm_gem_object_put_unlocked(&dobj->obj);
->         if (IS_ERR_VALUE(addr))
->                 return addr;
->
-> @@ -412,7 +412,7 @@ int armada_gem_pwrite_ioctl(struct drm_device *dev, void *data,
->         }
->
->   unref:
-> -       drm_gem_object_unreference_unlocked(&dobj->obj);
-> +       drm_gem_object_put_unlocked(&dobj->obj);
->         return ret;
->  }
->
-> @@ -561,7 +561,7 @@ armada_gem_prime_import(struct drm_device *dev, struct dma_buf *buf)
->                          * Importing our own dmabuf(s) increases the
->                          * refcount on the gem object itself.
->                          */
-> -                       drm_gem_object_reference(obj);
-> +                       drm_gem_object_get(obj);
->                         return obj;
->                 }
->         }
-> --
-> 2.7.4
->
+(
+-drm_framebuffer_reference(e);
++drm_framebuffer_get(e);
+|
+-drm_framebuffer_unreference(e);
++drm_framebuffer_put(e);
+)
+
+Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+---
+ drivers/gpu/drm/armada/armada_crtc.c    | 14 +++++++-------
+ drivers/gpu/drm/armada/armada_drv.c     |  2 +-
+ drivers/gpu/drm/armada/armada_overlay.c |  4 ++--
+ 3 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/gpu/drm/armada/armada_crtc.c b/drivers/gpu/drm/armada/armada_crtc.c
+index 381dfa1..2e065fa 100644
+--- a/drivers/gpu/drm/armada/armada_crtc.c
++++ b/drivers/gpu/drm/armada/armada_crtc.c
+@@ -298,7 +298,7 @@ static void armada_drm_crtc_finish_fb(struct armada_crtc *dcrtc,
+ 
+ 	if (force) {
+ 		/* Display is disabled, so just drop the old fb */
+-		drm_framebuffer_unreference(fb);
++		drm_framebuffer_put(fb);
+ 		return;
+ 	}
+ 
+@@ -321,7 +321,7 @@ static void armada_drm_crtc_finish_fb(struct armada_crtc *dcrtc,
+ 	 * the best.  The worst that will happen is the buffer gets
+ 	 * reused before it has finished being displayed.
+ 	 */
+-	drm_framebuffer_unreference(fb);
++	drm_framebuffer_put(fb);
+ }
+ 
+ static void armada_drm_vblank_off(struct armada_crtc *dcrtc)
+@@ -577,7 +577,7 @@ static int armada_drm_crtc_mode_set(struct drm_crtc *crtc,
+ 	unsigned i;
+ 	bool interlaced;
+ 
+-	drm_framebuffer_reference(crtc->primary->fb);
++	drm_framebuffer_get(crtc->primary->fb);
+ 
+ 	interlaced = !!(adj->flags & DRM_MODE_FLAG_INTERLACE);
+ 
+@@ -718,7 +718,7 @@ static int armada_drm_crtc_mode_set_base(struct drm_crtc *crtc, int x, int y,
+ 				   MAX_SCHEDULE_TIMEOUT);
+ 
+ 	/* Take a reference to the new fb as we're using it */
+-	drm_framebuffer_reference(crtc->primary->fb);
++	drm_framebuffer_get(crtc->primary->fb);
+ 
+ 	/* Update the base in the CRTC */
+ 	armada_drm_crtc_update_regs(dcrtc, regs);
+@@ -742,7 +742,7 @@ void armada_drm_crtc_plane_disable(struct armada_crtc *dcrtc,
+ 	 * primary plane.
+ 	 */
+ 	if (plane->fb)
+-		drm_framebuffer_unreference(plane->fb);
++		drm_framebuffer_put(plane->fb);
+ 
+ 	/* Power down the Y/U/V FIFOs */
+ 	sram_para1 = CFG_PDWN16x66 | CFG_PDWN32x66;
+@@ -1045,12 +1045,12 @@ static int armada_drm_crtc_page_flip(struct drm_crtc *crtc,
+ 	 * Ensure that we hold a reference on the new framebuffer.
+ 	 * This has to match the behaviour in mode_set.
+ 	 */
+-	drm_framebuffer_reference(fb);
++	drm_framebuffer_get(fb);
+ 
+ 	ret = armada_drm_crtc_queue_frame_work(dcrtc, work);
+ 	if (ret) {
+ 		/* Undo our reference above */
+-		drm_framebuffer_unreference(fb);
++		drm_framebuffer_put(fb);
+ 		kfree(work);
+ 		return ret;
+ 	}
+diff --git a/drivers/gpu/drm/armada/armada_drv.c b/drivers/gpu/drm/armada/armada_drv.c
+index 0b3227c..c993bcc 100644
+--- a/drivers/gpu/drm/armada/armada_drv.c
++++ b/drivers/gpu/drm/armada/armada_drv.c
+@@ -26,7 +26,7 @@ static void armada_drm_unref_work(struct work_struct *work)
+ 	struct drm_framebuffer *fb;
+ 
+ 	while (kfifo_get(&priv->fb_unref, &fb))
+-		drm_framebuffer_unreference(fb);
++		drm_framebuffer_put(fb);
+ }
+ 
+ /* Must be called with dev->event_lock held */
+diff --git a/drivers/gpu/drm/armada/armada_overlay.c b/drivers/gpu/drm/armada/armada_overlay.c
+index edc4491..b411b60 100644
+--- a/drivers/gpu/drm/armada/armada_overlay.c
++++ b/drivers/gpu/drm/armada/armada_overlay.c
+@@ -177,7 +177,7 @@ armada_ovl_plane_update(struct drm_plane *plane, struct drm_crtc *crtc,
+ 		 * Take a reference on the new framebuffer - we want to
+ 		 * hold on to it while the hardware is displaying it.
+ 		 */
+-		drm_framebuffer_reference(fb);
++		drm_framebuffer_get(fb);
+ 
+ 		if (plane->fb)
+ 			armada_ovl_retire_fb(dplane, plane->fb);
+@@ -278,7 +278,7 @@ static int armada_ovl_plane_disable(struct drm_plane *plane,
+ 
+ 	fb = xchg(&dplane->old_fb, NULL);
+ 	if (fb)
+-		drm_framebuffer_unreference(fb);
++		drm_framebuffer_put(fb);
+ 
+ 	return 0;
+ }
+-- 
+2.7.4
+
 
