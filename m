@@ -1,329 +1,166 @@
 X-GM-THRID: 6468320417923727360
-X-Received: by 10.25.163.210 with SMTP id m201mr715876lfe.42.1506403372593;
-        Mon, 25 Sep 2017 22:22:52 -0700 (PDT)
+X-Received: by 10.159.39.196 with SMTP id b62mr5958868uab.124.1506023258629;
+        Thu, 21 Sep 2017 12:47:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.223.161.208 with SMTP id v16ls3100351wrv.8.gmail; Mon, 25 Sep
- 2017 22:22:51 -0700 (PDT)
-X-Received: by 10.28.165.70 with SMTP id o67mr220907wme.10.1506403371674;
-        Mon, 25 Sep 2017 22:22:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506403371; cv=none;
+Received: by 10.31.151.131 with SMTP id z125ls2167084vkd.5.gmail; Thu, 21 Sep
+ 2017 12:47:37 -0700 (PDT)
+X-Received: by 10.31.153.203 with SMTP id b194mr4856477vke.5.1506023257897;
+        Thu, 21 Sep 2017 12:47:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506023257; cv=none;
         d=google.com; s=arc-20160816;
-        b=Gzm1BvMn4F1LYVpksOuEhPjpEvD6a6t2pBFcsvDP0Eqp6uRQbZVW2tLu7kR3AOra1k
-         h3mbB9eMzQhlsxX/c7Y23ojuJeKFLyzA1KwvqajF+1qdkKttA1dw+jufCxZ1BrGnvL+m
-         iiIjWi5JhRfZlaloOPYC3I5igvpB/o1ataCDESTxAO8dWyaUu/fniVdsTqAB5BfIB5aJ
-         C1MfNi+PDn5ZYXWqTlDAMSJQKFSRaRd6UUXVKROlTEDLCr9y2kTLohBrCQwSZS8q5eQS
-         aI/7cHTsBe5W9Vh/tSFGSBcPSPj7Y2wCRaEnn0Bv1JtUli/nZmFyWDM+T5BApxyaGMbB
-         tJ2A==
+        b=xs6IhnKKj/dXdIl3shu/m8YqeMrpOzsDVNcqzKERIo3llw9XhZ5LybF04OcL2Cexjj
+         d9dIv1kqQSVj1CEuQXmBKlpiD37Jdh4c8MyJCpn6/+lQiexAgPEhfpUJKd1b2fim/vR9
+         Iev7dYP0xKm2dwTA4kv/Ww73YUnumQUWHJYD9k6st8sPXA0HoVrryxsfhmox9J7ajtsH
+         CTHEY1Nea+8bssWktN3FN9YzOSsH74VHA+CqSy+3iQ1nMgbxMa8RFP2jnv/NmRmdGf/Q
+         q3KBUzIQ32P2DhUqAex5vDiCzqKZg5Qeoyk59kAxLF2fMSSwA8pFhvr334/t7h3lApEe
+         InrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:sender:dkim-signature
+         :message-id:subject:cc:to:from:date:dkim-signature
          :arc-authentication-results;
-        bh=n0kC7fAeizOJh8kV0ZwVS0BNhzA1FrBz7nSGDpIhisM=;
-        b=gYtiEJ5Zpl+hJValisd4W48uGVtWcgYY9Ot2Vc875WNFCOTy5a2Ri1Fynt8wisBt+x
-         OVKjjAaBPNuOPGiAbM24d2trMl7xZRVf8coi158V/D9OyERfVfHIb5N53E3uk90Ud8F7
-         gCb9+QbeLgAc3oKCn1mPHX/NOivcC7th8gSuj5YTKg8nGN47oTue7AAK8hQfae8notiA
-         np/uO5LpOh96ZRTUms4U75U5hKJleal5uLmRyjbVd0qfyvwt5p7GpN3rpmBz2u66TZV4
-         d+9lGvV4IxwAGusMqI3HI1dshFJXomuQF2LG6btsMk1sGV23QwQLjBGKvUv9Mw313oqv
-         rlKQ==
+        bh=pwHMpWxeVUR7eUNV/ROqJ2j9cQj2LFJHVZMHgeHKszI=;
+        b=HQn1D8Kplf0AXO1c6wLc5PInX/J6eEqCayM9SXUZqwNzZfoL4uP34LTdH08PXEJCSr
+         GTdiPO4+kztmKkr74e8Acvlsu4L+aVhWzRYLtPx7E1fuEWF/Pzt3N4TqPegczpGA7trD
+         POfqRu+odys0Hpd5xnCYAXYZKZX766qaOtWWzM2EQpaCl03x8kph4kxGoZQH/RLkLh5Q
+         Zm6qRqrjhX713htVon2z3ZNgW/QKjCP+udfb5wGLMgl+jeS/jY8RXZO4/GAx3jLzEqow
+         RMcZVcDDXAXsGis/94JMvcbWnjMYkhHn6+mNTwhrac4mke01imGNML5kp1atOoFbWukH
+         dVbg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ffwll.ch header.s=google header.b=FQC6fBXs;
-       spf=neutral (google.com: 2a00:1450:400c:c09::242 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
-Return-Path: <daniel@ffwll.ch>
-Received: from mail-wm0-x242.google.com (mail-wm0-x242.google.com. [2a00:1450:400c:c09::242])
-        by gmr-mx.google.com with ESMTPS id j4si104775wmi.2.2017.09.25.22.22.51
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=L+dvbg29;
+       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <aishpant@gmail.com>
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id f189si212958pfa.1.2017.09.21.12.47.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Sep 2017 22:22:51 -0700 (PDT)
-Received-SPF: neutral (google.com: 2a00:1450:400c:c09::242 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) client-ip=2a00:1450:400c:c09::242;
+        Thu, 21 Sep 2017 12:47:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ffwll.ch header.s=google header.b=FQC6fBXs;
-       spf=neutral (google.com: 2a00:1450:400c:c09::242 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
-Received: by mail-wm0-x242.google.com with SMTP id x17so8388551wmd.5
-        for <outreachy-kernel@googlegroups.com>; Mon, 25 Sep 2017 22:22:51 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=L+dvbg29;
+       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x243.google.com with SMTP id i130so3963149pgc.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 21 Sep 2017 12:47:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ffwll.ch; s=google;
-        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=n0kC7fAeizOJh8kV0ZwVS0BNhzA1FrBz7nSGDpIhisM=;
-        b=FQC6fBXshyZ2NVBgqNHkFEZmY0Bt2nr+64OC+Tt0uqCAC/aCFewRUf8d1idpWo1P0J
-         5/fetii/iNTOuoDjd2v5vDssdQ1nbYxdv4WiLvUkYIyG1qNGEtMoq6PdRJObVYGgrhWG
-         uBmPxbCCVZtATu9NucW92GX+Xg9JjVj2SYLFM=
+        bh=pwHMpWxeVUR7eUNV/ROqJ2j9cQj2LFJHVZMHgeHKszI=;
+        b=L+dvbg29afraF/mDaU68kE/Y5GJuEeDbuCsGFS7EDYJo7T+PnCru9rTBAeAnf01e8G
+         8bmGiGVReoJYQSTZL16z6c91OfnVfy63Fh11bavn7ACF5cjDttrDeS1zmCapmSkIcImW
+         NV8sLI7+qdp6STfBaLhhi6yTOgU3/7YH4amlr4pGy+HTu2NXuzFqK52lZqd+VT7ZHqT5
+         vr9NkYuVQmsZwX622zSbJ9EGUF5XU9dNoax9IwRsomI9O840+pH6lDV1q38DuRcn3IMK
+         2POIH44yb7EyeGCi4aUXp4am+W89cbQIl+1RhtQpi6zjDAYEXqSnb+ow4c/A5/ZDS01J
+         E4hQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
-         :references:mime-version:content-disposition:in-reply-to:user-agent;
-        bh=n0kC7fAeizOJh8kV0ZwVS0BNhzA1FrBz7nSGDpIhisM=;
-        b=cyXmgaM4WfZ6ScmwdwHljHJspbFNEAzKRCyTnYQaoQlZgg1QNdhp5jYn7NR/tU9jqF
-         C3jO+S4VoKsMzDHt8t66HrwkFD7oHPZl0wGQ0wBiIrPPTHPeFCPiemD1pNcE1DMQtp8Z
-         vut6rSBP6iUSFex5/SNJoXt72pqjJXEV/KAjZgmhXYjD0HzxexdH950UWgdaHIplxH7m
-         p9aJ4BbaEG+3yS0LZHYKZAWjh8tjG4nDANY6B6Y0aEF0ITMmlBWDKINdO5EyIlI+TdbK
-         FC+z5aSIpe7kH5Eafpu+Tnd+LRXatqunlNoLUYbVIC60r8KNvdRK+kkbBfAXNjKJ1Rjv
-         k70g==
-X-Gm-Message-State: AHPjjUjK9kQGoxaFxWjzf26l1L2qAC5IhFE63m6+q+z0Te9QTCv98Kmz
-	7z7HAoqlrGRykL44fzub/WQnTXPe
-X-Google-Smtp-Source: AOwi7QCEnE7nB6kDtHXQRT03/u15CPPFG+Qkl0dKeOMk8mmdhchqgDnv2Xmh4JAlzLGvKxXAHKN1Vg==
-X-Received: by 10.80.134.72 with SMTP id 8mr16475119edt.203.1506403371018;
-        Mon, 25 Sep 2017 22:22:51 -0700 (PDT)
-Return-Path: <daniel@ffwll.ch>
-Received: from phenom.ffwll.local ([2a02:168:5635:0:39d2:f87e:2033:9f6])
-        by smtp.gmail.com with ESMTPSA id k10sm4509893edi.27.2017.09.25.22.22.49
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Sep 2017 22:22:49 -0700 (PDT)
-Sender: Daniel Vetter <daniel.vetter@ffwll.ch>
-Date: Tue, 26 Sep 2017 07:22:47 +0200
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Aishwarya Pant <aishpant@gmail.com>
-Cc: Daniel Vetter <daniel.vetter@intel.com>,
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=pwHMpWxeVUR7eUNV/ROqJ2j9cQj2LFJHVZMHgeHKszI=;
+        b=nBcsCkyLPhoC5rUU/RjaHYdo+1zZQGUuAp7yBRol62xPMJkf4OOYltVl67FnF+z4dv
+         jNXL+qzk45KSn8idK18aZe/lImofbKtEuJfv4tpDH69btidKTJdS7IiFE/HcEBU9G3q5
+         b7cNNpC8rDt4+9NQ92dv0QB0nu57FuVFYw6IcwGz7TvlskfAzPtQlQ8sCse2CW/kB3iU
+         H7xtekg3wKIEkjJcg/DUaxaiyJB/ql2es2VDTYfNqRYGpjgchrdeeM5P7Mwcjis5E706
+         YOhd5q4XeHxX8+fzzH2u8sQkY7WXhrM5cJg4DGMHWhOT0gMGiPnk8MXxH58JBPZOd/jO
+         MzGA==
+X-Gm-Message-State: AHPjjUhhc3PC8A/D9YknDXFcLArEwO3nUN8xs2slSDMK2POXtIt1n708
+	q2jQkEcijfSEcfy0uFQjnU0=
+X-Google-Smtp-Source: AOwi7QCi9niFao3c6D6c8/rKKwBb9k2wYr+TKSMQPC7t0RAHnfSWbpW8rciXC7enIjEdnoWVm6PcOw==
+X-Received: by 10.99.8.1 with SMTP id 1mr6831439pgi.202.1506023257571;
+        Thu, 21 Sep 2017 12:47:37 -0700 (PDT)
+Return-Path: <aishpant@gmail.com>
+Received: from aishwarya ([122.166.181.88])
+        by smtp.gmail.com with ESMTPSA id x19sm3843029pfa.16.2017.09.21.12.47.34
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 21 Sep 2017 12:47:37 -0700 (PDT)
+Date: Fri, 22 Sep 2017 01:17:31 +0530
+From: Aishwarya Pant <aishpant@gmail.com>
+To: Daniel Vetter <daniel.vetter@intel.com>,
 	Jani Nikula <jani.nikula@linux.intel.com>,
 	Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>,
-	dri-devel@lists.freedesktop.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 1/2] drm: introduce drm_dev_{get/put}
- functions
-Message-ID: <20170926052247.6wng46xmwi4s72xl@phenom.ffwll.local>
+	dri-devel@lists.freedesktop.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH 2/2] drm/tilcdc: replace reference/unreference() with get/put
+Message-ID: <1c98a7620b6b9cff5b90fdb0a5085ab916482bed.1506023126.git.aishpant@gmail.com>
 References: <cover.1506023126.git.aishpant@gmail.com>
- <33c3c79daa7a8f9c52ee87f4d78f3a551ab96b54.1506023126.git.aishpant@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <33c3c79daa7a8f9c52ee87f4d78f3a551ab96b54.1506023126.git.aishpant@gmail.com>
-X-Operating-System: Linux phenom 4.12.0-1-amd64 
-User-Agent: NeoMutt/20170609 (1.8.3)
+In-Reply-To: <cover.1506023126.git.aishpant@gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Fri, Sep 22, 2017 at 01:17:06AM +0530, Aishwarya Pant wrote:
-> Reference counting functions in the kernel typically use get/put suffixes. For
-> maintaining coding style consistency, introduce drm_dev_{get/put} functions
-> and let the old APIs (with ref/unref suffixes) remain for compatibility.
-> 
-> Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
+For maintaining consistency with kernel coding style replace
+reference/unreference in ref counting functions with get/put.
 
-Excellent idea to fill this gap, we totally overlooked this in the initial
-work!
+The following cocci script was used to generate the tilcdc patch:
 
-> ---
->  drivers/gpu/drm/drm_drv.c | 64 +++++++++++++++++++++++++++++++++--------------
->  include/drm/drm_drv.h     |  4 ++-
+@@
+expression ex;
+@@
 
-Please also update scripts/coccinelle/api/drm-get-put.cocci with this new
-transformation.
+(
+-drm_framebuffer_unreference(ex);
++drm_framebuffer_put(ex);
+|
+-drm_dev_unref(ex);
++drm_dev_put(ex);
+|
+-drm_framebuffer_reference(ex);
++drm_framebuffer_get(ex);
+)
 
->  2 files changed, 48 insertions(+), 20 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/drm_drv.c b/drivers/gpu/drm/drm_drv.c
-> index be38ac7..4592314 100644
-> --- a/drivers/gpu/drm/drm_drv.c
-> +++ b/drivers/gpu/drm/drm_drv.c
-> @@ -286,13 +286,13 @@ struct drm_minor *drm_minor_acquire(unsigned int minor_id)
->  	spin_lock_irqsave(&drm_minor_lock, flags);
->  	minor = idr_find(&drm_minors_idr, minor_id);
->  	if (minor)
-> -		drm_dev_ref(minor->dev);
-> +		drm_dev_get(minor->dev);
->  	spin_unlock_irqrestore(&drm_minor_lock, flags);
->  
->  	if (!minor) {
->  		return ERR_PTR(-ENODEV);
->  	} else if (drm_dev_is_unplugged(minor->dev)) {
-> -		drm_dev_unref(minor->dev);
-> +		drm_dev_put(minor->dev);
->  		return ERR_PTR(-ENODEV);
->  	}
->  
-> @@ -301,7 +301,7 @@ struct drm_minor *drm_minor_acquire(unsigned int minor_id)
->  
->  void drm_minor_release(struct drm_minor *minor)
->  {
-> -	drm_dev_unref(minor->dev);
-> +	drm_dev_put(minor->dev);
->  }
->  
->  /**
-> @@ -326,11 +326,11 @@ void drm_minor_release(struct drm_minor *minor)
->   * When cleaning up a device instance everything needs to be done in reverse:
->   * First unpublish the device instance with drm_dev_unregister(). Then clean up
->   * any other resources allocated at device initialization and drop the driver's
-> - * reference to &drm_device using drm_dev_unref().
-> + * reference to &drm_device using drm_dev_put().
->   *
->   * Note that the lifetime rules for &drm_device instance has still a lot of
->   * historical baggage. Hence use the reference counting provided by
-> - * drm_dev_ref() and drm_dev_unref() only carefully.
-> + * drm_dev_get() and drm_dev_put() only carefully.
->   *
->   * It is recommended that drivers embed &struct drm_device into their own device
->   * structure, which is supported through drm_dev_init().
-> @@ -345,7 +345,7 @@ void drm_minor_release(struct drm_minor *minor)
->   * Cleans up all DRM device, calling drm_lastclose().
->   *
->   * Note: Use of this function is deprecated. It will eventually go away
-> - * completely.  Please use drm_dev_unregister() and drm_dev_unref() explicitly
-> + * completely.  Please use drm_dev_unregister() and drm_dev_put() explicitly
->   * instead to make sure that the device isn't userspace accessible any more
->   * while teardown is in progress, ensuring that userspace can't access an
->   * inconsistent state.
-> @@ -360,7 +360,7 @@ void drm_put_dev(struct drm_device *dev)
->  	}
->  
->  	drm_dev_unregister(dev);
-> -	drm_dev_unref(dev);
-> +	drm_dev_put(dev);
->  }
->  EXPORT_SYMBOL(drm_put_dev);
->  
-> @@ -386,7 +386,7 @@ void drm_dev_unplug(struct drm_device *dev)
->  	mutex_lock(&drm_global_mutex);
->  	drm_device_set_unplugged(dev);
->  	if (dev->open_count == 0)
-> -		drm_dev_unref(dev);
-> +		drm_dev_put(dev);
->  	mutex_unlock(&drm_global_mutex);
->  }
->  EXPORT_SYMBOL(drm_dev_unplug);
-> @@ -475,8 +475,8 @@ static void drm_fs_inode_free(struct inode *inode)
->   * initialization sequence to make sure userspace can't access an inconsistent
->   * state.
->   *
-> - * The initial ref-count of the object is 1. Use drm_dev_ref() and
-> - * drm_dev_unref() to take and drop further ref-counts.
-> + * The initial ref-count of the object is 1. Use drm_dev_get() and
-> + * drm_dev_put() to take and drop further ref-counts.
->   *
->   * Note that for purely virtual devices @parent can be NULL.
->   *
-> @@ -626,8 +626,8 @@ EXPORT_SYMBOL(drm_dev_fini);
->   * initialization sequence to make sure userspace can't access an inconsistent
->   * state.
->   *
-> - * The initial ref-count of the object is 1. Use drm_dev_ref() and
-> - * drm_dev_unref() to take and drop further ref-counts.
-> + * The initial ref-count of the object is 1. Use drm_dev_get() and
-> + * drm_dev_put() to take and drop further ref-counts.
->   *
->   * Note that for purely virtual devices @parent can be NULL.
->   *
-> @@ -670,36 +670,62 @@ static void drm_dev_release(struct kref *ref)
->  }
->  
->  /**
-> - * drm_dev_ref - Take reference of a DRM device
-> + * drm_dev_get - Take reference of a DRM device
->   * @dev: device to take reference of or NULL
->   *
->   * This increases the ref-count of @dev by one. You *must* already own a
-> - * reference when calling this. Use drm_dev_unref() to drop this reference
-> + * reference when calling this. Use drm_dev_put() to drop this reference
->   * again.
->   *
->   * This function never fails. However, this function does not provide *any*
->   * guarantee whether the device is alive or running. It only provides a
->   * reference to the object and the memory associated with it.
->   */
-> -void drm_dev_ref(struct drm_device *dev)
-> +void drm_dev_get(struct drm_device *dev)
->  {
->  	if (dev)
->  		kref_get(&dev->ref);
->  }
-> -EXPORT_SYMBOL(drm_dev_ref);
-> +EXPORT_SYMBOL(drm_dev_get);
->  
->  /**
-> - * drm_dev_unref - Drop reference of a DRM device
-> + * drm_dev_put - Drop reference of a DRM device
->   * @dev: device to drop reference of or NULL
->   *
->   * This decreases the ref-count of @dev by one. The device is destroyed if the
->   * ref-count drops to zero.
->   */
-> -void drm_dev_unref(struct drm_device *dev)
-> +void drm_dev_put(struct drm_device *dev)
->  {
->  	if (dev)
->  		kref_put(&dev->ref, drm_dev_release);
->  }
-> +EXPORT_SYMBOL(drm_dev_put);
-> +
-> +/**
-> + * drm_dev_ref - Take reference of a DRM device
-> + * @dev: device to take reference of or NULL
-> + *
-> + * This is a compatibility alias for drm_dev_get() and should not be used by new
-> + * code.
-> + */
-> +void drm_dev_ref(struct drm_device *dev)
-> +{
-> +	drm_dev_get(dev);
-> +}
-> +EXPORT_SYMBOL(drm_dev_ref);
+Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
+---
+ drivers/gpu/drm/tilcdc/tilcdc_crtc.c | 6 +++---
+ drivers/gpu/drm/tilcdc/tilcdc_drv.c  | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-I think you've already converted all callers for drm_dev_ref() with this
-patch here, so no need to add the compat function and risk getting new
-callers. Once a conversion is done in upstream we should remove these.
-
-Please remove.
-
-With those 2 nits addressed I think your patch is ready for merging,
-please resend with those changes.
-
-Thanks, Daniel
-
-> +
-> +/**
-> + * drm_dev_unref - Drop reference of a DRM device
-> + * @dev: device to drop reference of or NULL
-> + *
-> + * This is a compatibility alias for drm_dev_put() and should not be used by new
-> + * code.
-> + */
-> +void drm_dev_unref(struct drm_device *dev)
-> +{
-> +	drm_dev_put(dev);
-> +}
->  EXPORT_SYMBOL(drm_dev_unref);
->  
->  static int create_compat_control_link(struct drm_device *dev)
-> @@ -839,7 +865,7 @@ EXPORT_SYMBOL(drm_dev_register);
->   *
->   * Unregister the DRM device from the system. This does the reverse of
->   * drm_dev_register() but does not deallocate the device. The caller must call
-> - * drm_dev_unref() to drop their final reference.
-> + * drm_dev_put() to drop their final reference.
->   *
->   * A special form of unregistering for hotpluggable devices is drm_dev_unplug(),
->   * which can be called while there are still open users of @dev.
-> diff --git a/include/drm/drm_drv.h b/include/drm/drm_drv.h
-> index 71bbaae..e574fa0 100644
-> --- a/include/drm/drm_drv.h
-> +++ b/include/drm/drm_drv.h
-> @@ -155,7 +155,7 @@ struct drm_driver {
->  	 * reverse order of the initialization.  Similarly to the load
->  	 * hook, this handler is deprecated and its usage should be
->  	 * dropped in favor of an open-coded teardown function at the
-> -	 * driver layer.  See drm_dev_unregister() and drm_dev_unref()
-> +	 * driver layer.  See drm_dev_unregister() and drm_dev_put()
->  	 * for the proper way to remove a &struct drm_device.
->  	 *
->  	 * The unload() hook is called right after unregistering
-> @@ -611,6 +611,8 @@ struct drm_device *drm_dev_alloc(struct drm_driver *driver,
->  int drm_dev_register(struct drm_device *dev, unsigned long flags);
->  void drm_dev_unregister(struct drm_device *dev);
->  
-> +void drm_dev_get(struct drm_device *dev);
-> +void drm_dev_put(struct drm_device *dev);
->  void drm_dev_ref(struct drm_device *dev);
->  void drm_dev_unref(struct drm_device *dev);
->  void drm_put_dev(struct drm_device *dev);
-> -- 
-> 2.7.4
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/33c3c79daa7a8f9c52ee87f4d78f3a551ab96b54.1506023126.git.aishpant%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
-
+diff --git a/drivers/gpu/drm/tilcdc/tilcdc_crtc.c b/drivers/gpu/drm/tilcdc/tilcdc_crtc.c
+index 406fe45..d2589f310 100644
+--- a/drivers/gpu/drm/tilcdc/tilcdc_crtc.c
++++ b/drivers/gpu/drm/tilcdc/tilcdc_crtc.c
+@@ -75,7 +75,7 @@ static void unref_worker(struct drm_flip_work *work, void *val)
+ 	struct drm_device *dev = tilcdc_crtc->base.dev;
+ 
+ 	mutex_lock(&dev->mode_config.mutex);
+-	drm_framebuffer_unreference(val);
++	drm_framebuffer_put(val);
+ 	mutex_unlock(&dev->mode_config.mutex);
+ }
+ 
+@@ -456,7 +456,7 @@ static void tilcdc_crtc_set_mode(struct drm_crtc *crtc)
+ 
+ 	set_scanout(crtc, fb);
+ 
+-	drm_framebuffer_reference(fb);
++	drm_framebuffer_get(fb);
+ 
+ 	crtc->hwmode = crtc->state->adjusted_mode;
+ }
+@@ -633,7 +633,7 @@ int tilcdc_crtc_update_fb(struct drm_crtc *crtc,
+ 		return -EBUSY;
+ 	}
+ 
+-	drm_framebuffer_reference(fb);
++	drm_framebuffer_get(fb);
+ 
+ 	crtc->primary->fb = fb;
+ 	tilcdc_crtc->event = event;
+diff --git a/drivers/gpu/drm/tilcdc/tilcdc_drv.c b/drivers/gpu/drm/tilcdc/tilcdc_drv.c
+index b0d70f9..74276ef 100644
+--- a/drivers/gpu/drm/tilcdc/tilcdc_drv.c
++++ b/drivers/gpu/drm/tilcdc/tilcdc_drv.c
+@@ -225,7 +225,7 @@ static void tilcdc_fini(struct drm_device *dev)
+ 
+ 	pm_runtime_disable(dev->dev);
+ 
+-	drm_dev_unref(dev);
++	drm_dev_put(dev);
+ }
+ 
+ static int tilcdc_init(struct drm_driver *ddrv, struct device *dev)
 -- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+2.7.4
+
 
