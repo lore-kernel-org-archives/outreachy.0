@@ -1,88 +1,87 @@
 X-GM-THRID: 6468338986973659136
-X-Received: by 10.159.59.237 with SMTP id y45mr5953051uah.38.1506027869908;
-        Thu, 21 Sep 2017 14:04:29 -0700 (PDT)
+X-Received: by 10.129.99.65 with SMTP id x62mr5738162ywb.67.1506027529759;
+        Thu, 21 Sep 2017 13:58:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.99.98.3 with SMTP id w3ls1024683pgb.8.gmail; Thu, 21 Sep 2017
- 14:04:28 -0700 (PDT)
-X-Received: by 10.99.0.18 with SMTP id 18mr4347561pga.73.1506027868735;
-        Thu, 21 Sep 2017 14:04:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506027868; cv=none;
+Received: by 10.37.56.8 with SMTP id f8ls826207yba.5.gmail; Thu, 21 Sep 2017
+ 13:58:49 -0700 (PDT)
+X-Received: by 10.129.157.20 with SMTP id u20mr5828895ywg.223.1506027528993;
+        Thu, 21 Sep 2017 13:58:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506027528; cv=none;
         d=google.com; s=arc-20160816;
-        b=gbJGIvkAIOcczHoug/jZbGgMOCrllI3678ficLhnRbhr6bqW9CJuF72MIa4w6L5T0z
-         Rnj46Oe+Fo/vyS4aWn/90t5yJjUTBq1Tucz72hUL/le9eAhsVGq1Nphp2kuVtpEVm7c0
-         taK9uEbJJ93C+7TZaYPcCZzD22d8006p4EQE7qYe4yxtl755z7p5puyu48Hnnpzgb1b/
-         pwDssv/HKP8fwb7zGYZqp2Od5W92lfsCuHLFaf60/czeHDm0a7oKeh/ff6Q0Ij2skRkq
-         odefCFuzVfsaE60rdE8rCEfyc+ya03a6E7TKm4xi4/RMHBdhk7g6EdC+aSUYXVc/guUB
-         gdkw==
+        b=I+4qvXEmZ5+LGLDCgnuggRX7gzwiXAIuBIJBfM4ckqzpazzTo7AY4sOZG5I1XDuIDz
+         4znUUw+HruMVr7W0ZIsGnu2q1xULZm19KAx/5vDIDQXJ/rNXgTduz5Cvuc1blw5QIsD6
+         AjAwebYuPcV4MAdFb2WiN00VAyypcwxbchEhc1+U/E8mbSX2pkhvUnHLLfrJvV8fC4Yo
+         AIkgSJIay9Ft+ZXAK/oXSm/xwPPa7NypMeWsA7mC1Vxhz3qGskJDAeY0H27q0yIRID6A
+         HsaPW5ZHASIKfRHAi7gwJA1SwjRd84snl/anEMv6NqpXttD61bfRxb8me6OOsK+aZpJZ
+         ntDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:content-disposition:mime-version:message-id:subject:cc
          :to:from:date:dkim-signature:arc-authentication-results;
         bh=paAJu7qPCVg7+ZRN77+QN8WjlHpYarWtO1oaPFDXrrc=;
-        b=OOHBr5T7/D2e8gSemnnCANU5s6jC5TaHG1Lk2abIYcoTHazx99QrqjQ3OYmN5HWpFQ
-         FK3UyiwCgSmDOc+d/gASjr3TxZKS2tUoaZQuEswopuG6vMIsQBCWdHNW90Iw+/+GguDj
-         AHT3NUDTPotKN3U7J1l4qTf/p3ry5pe+2qXE0UKG4g4InfnIJLzrW01mYHNaEAF6GRTn
-         xtGG89qtLKoAbeDSKxCWGZVAGjRTWri3ujNdASdUs5cPUpNJSAP2fk8HpAlk2YVvdlWg
-         dAKRq95D6R7mFUaxwbY8X7+38+WrnKTUDVm7ZsnRCjhE1ihu7rF29vdjnhATKbmVd/gb
-         OX3w==
+        b=sBgPl12FYLYhVpaGEBfiQG/wkUG02tzjsrdkwTd6aFxmjC9tAcjCpk52IWTHl98dLz
+         vagmefx17mD7w1wEJ6KqbcEziPeAqhSaBasuyR7AUCAp/vugAr8bl3DAofSYiG02OGm0
+         N5Sx3KVVSA4/z8+cIE3FtS7Filp+dvsKEMpaJXhRuCRBiRb+iO2Utb+6FgL7RktT/QAS
+         Q9W/eyPRZioevlv6vbhC2kNyPslXKWWUHuHFGaz1qKWlAGKbYawAlcJAmlf0Rc5xZnZX
+         68xdBGBEerDd8dEBWTS/Wqqyn3fSMAGeEzeoKy9Q7juSs6cNJdPi50lqrogL5P6P3z4h
+         +pkA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fevCpFes;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=W/gOIR+P;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id e2si242423pfm.12.2017.09.21.14.04.28
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id b6si108704pfm.28.2017.09.21.13.58.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Sep 2017 14:04:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Thu, 21 Sep 2017 13:58:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fevCpFes;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=W/gOIR+P;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id h4so2932694pfk.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 21 Sep 2017 14:04:28 -0700 (PDT)
+Received: by mail-pg0-x243.google.com with SMTP id u18so4050132pgo.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 21 Sep 2017 13:58:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
         bh=paAJu7qPCVg7+ZRN77+QN8WjlHpYarWtO1oaPFDXrrc=;
-        b=fevCpFesFH7OTWu+7HOWQwZK7w2ml2JY/cHRHaZjIvy1npCy4pmGBCOuDK52AHLwcZ
-         ptSfgrO6eUeNpJFuTpLuokt6UhetMwHwT7Js+33vcQsg9J1xek+RdA+1m8QJUQHMsWHd
-         KZYxCIG0Phtb6EohjpioxtfmQxcGhxfhuPO6srNOXGTYD6ekqgBg74ZzcdBbhUAbx181
-         ofpRzMrcT7AVx/QA2HW62JeXvf+hzy1jLVFqytjnUrNBleoxY1Gg25z0Ur8H5Oqx7/LZ
-         /NkuTzL9t3+2SuV98DIGpcy7Gs+1KM4l9qwqmrWPvNJnGReY86RbQNgPUgsqyOqnmecH
-         mmIQ==
+        b=W/gOIR+PNhEdGGHrA6Ew8oGwQTWQBF9cU210K7EkbeBHkzDuWHkpoUDTlOAww6Lm9u
+         ym3m0livzhrzZWJXoas0sybjLNaEJPRyIkLZH3iBpiL4f1u4x+sfnoQE2v+UUJmu+uTX
+         0UrYfM9+7zweSYW82QlGrRDQqBWSzGpT2jd5t+CmgCZyuOFhHwWmrs3tSDt3Arqmxvxd
+         ZddaoWnqZ4/+/jPiq//JZyWnSZ1gVdv7gerKL30PFn8n0TIUBXyOh1kEFj355p7fEw0T
+         Be3OUC3ggTgBEW0iB57+BCFaR7OAtsjnu5fjvGusOKUeyzfvlxeldnkE4KTpUfqRFl0q
+         TVWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
         bh=paAJu7qPCVg7+ZRN77+QN8WjlHpYarWtO1oaPFDXrrc=;
-        b=nWxzPzNeOEw58O2FUipSqrwdM8DZpBrlX8zfgnk09AcRwfIO+wy8Efdt0bJop8Trwg
-         eoFSxDhbYIiTxrYLlMQRfNUWmo8eEv1/h7cMq9rvkEYEmBIEhq16uKLnaYEanCVMPsfh
-         0gEw42S6pfMi4+B4iPVZ3YIBwOsiqvHVCgJ77T/7HlYeE0s59Z5wkHp+kvsHRnqrTYg/
-         t22Jx4BHngTlV7rkSvf5aYhNEeQSZOJ4rneXcR+zZ3BO6yHumhxKXxK/Au4Alb3eXqKA
-         ygbFMf+rUrzVQWOZCXaDgbJBqyEHZNJ9UhnjyxB4MnYCSs52U0sYMyHh/nLDxIusvtU8
-         ED+w==
-X-Gm-Message-State: AHPjjUhtPCqh0dQNfuOPh4Y3csw99S6j+iRk/+sYTlu/k1uyMZ6clAns
-	7sdPcrk0HqeccMR+g35h/scCTZQo
-X-Google-Smtp-Source: AOwi7QDmb/9gH9PO7lzBZ+UBpEG4C1mG9B2p/dCMg+NngE/+55UJF6mgD6AnooVfEPZazPFC/EpuzA==
-X-Received: by 10.84.216.87 with SMTP id f23mr6729720plj.307.1506027868108;
-        Thu, 21 Sep 2017 14:04:28 -0700 (PDT)
+        b=BIiPFco0Ezie/h/PdsivUZemRmPnY9m7BF99qUkl5YQu5QQWJeIWCNu+6uxlMvv/cm
+         ZFaiicgzT2gxTssQk3xnyX8rhGDVShCmVqlxpny95MrZgE5zuEBi7wIPs0faudsVHgab
+         tedNuzMJU01rgr8yFwvMAYqO7P8Npx4fVqXIpHelu7BFZlQmYZmEg7oKqVf/x707iMU2
+         YRyLWiTXWOL3fyhZbafIXnA27LvMZUzn5drF2Bq8BJ4T4JW+WvHNoE/TyREqTUQoK0yu
+         VYTWcSzUVunOx8Vem10rqSK8Fbz8BSS+SvJFxSfgPQ/PssjSTlqGHSTAOJbbv7O0WPyK
+         UiWg==
+X-Gm-Message-State: AHPjjUj1m6eiSY5LxBDwWk3FeGYBF91YnBIq/OWmm4LPefegkULzSTxi
+	BgHeJqJzLm4LWuP0EEEEhUO8wDbX
+X-Google-Smtp-Source: AOwi7QCq5OfFzxfvbR6j/e82zZ7yo4szkzRSM2fyebp5PR2aY6z8QMVSifMZqeHQ3osCpEJAEHtaug==
+X-Received: by 10.99.126.84 with SMTP id o20mr7078240pgn.239.1506027528520;
+        Thu, 21 Sep 2017 13:58:48 -0700 (PDT)
 Return-Path: <hamohammed.sa@gmail.com>
 Received: from Haneen ([64.77.242.50])
-        by smtp.gmail.com with ESMTPSA id z5sm4599007pfi.38.2017.09.21.14.04.27
+        by smtp.gmail.com with ESMTPSA id t76sm4544861pfj.43.2017.09.21.13.58.47
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Sep 2017 14:04:27 -0700 (PDT)
-Date: Thu, 21 Sep 2017 15:04:24 -0600
+        Thu, 21 Sep 2017 13:58:48 -0700 (PDT)
+Date: Thu, 21 Sep 2017 14:58:45 -0600
 From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Cc: dri-devel@lists.freedesktop.org,
-	Daniel Vetter <daniel.vetter@intel.com>,
+Cc: Daniel Vetter <daniel.vetter@intel.com>,
 	Jani Nikula <jani.nikula@linux.intel.com>,
 	Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>,
 	gregkh@linuxfoundation.org
-Subject: [RESEND PATCH] drm: Remove obsolete "This is gross" comment
-Message-ID: <20170921210424.GA21951@Haneen>
+Subject: [PATCH] drm: Remove obsolete "This is gross" comment
+Message-ID: <20170921205845.GA21795@Haneen>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
