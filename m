@@ -1,118 +1,98 @@
 X-GM-THRID: 6467951789613252608
-X-Received: by 10.46.80.25 with SMTP id e25mr665765ljb.26.1506066767649;
-        Fri, 22 Sep 2017 00:52:47 -0700 (PDT)
+X-Received: by 10.223.153.226 with SMTP id y89mr732582wrb.18.1506066758680;
+        Fri, 22 Sep 2017 00:52:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.85.202 with SMTP id g71ls150lje.14.gmail; Fri, 22 Sep 2017
- 00:52:47 -0700 (PDT)
-X-Received: by 10.46.21.29 with SMTP id s29mr1121225ljd.25.1506066766985;
-        Fri, 22 Sep 2017 00:52:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506066766; cv=none;
+Received: by 10.223.199.73 with SMTP id b9ls1168693wrh.17.gmail; Fri, 22 Sep
+ 2017 00:52:37 -0700 (PDT)
+X-Received: by 10.28.4.84 with SMTP id 81mr76241wme.28.1506066757649;
+        Fri, 22 Sep 2017 00:52:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506066757; cv=none;
         d=google.com; s=arc-20160816;
-        b=FkhScS5DzLkH4+lfWm5t8dyxB03Bm5uxAmTQcWBbDFhHsNiMkRgIMBRF2+sVXtytmd
-         iN8y6j7PpKQmv0UGqX7Zy1fjU53gAc5566MBYBH5Q8NGoCC36+7nB614H6vokn1paRZk
-         gW0JIHiAHVJwZOjuC5i5XeHUtBhjdOnbQGyKeSR+sCmOmljoYxG4u4acuAHS5WXXRfWo
-         n8qHUPOLfq/Jp1J+NwJHW+uGypc15zJodSXecTGIJeiSkK6TnX7UI4ozxo5krksuvDkb
-         zU5hGZ0wYBR4qk0Zx9aM/DIXZ2/dF6Oy6R8rfZNUzGKzjM/Bpb3U1FfD+apgH0OHC31f
-         9vWw==
+        b=A+zbEQSWX5X5ZipxHXlPhjRWd8Dl9ctkKyWydRQZ/1vkAANqUFF1XuorbLPzzpp4Nt
+         qY1575lobOywo0Y7iUOEij0RiZaBApeB5r2gHjyHH3DW/l1mKKRAL2x7dBKviR7Zyakg
+         Cla/76H+yEeUndfsMRbekVIXEHsLwb44nIo1Tp7G2ZyGAvlWtpPfVh3dkzywm0AKN8KI
+         zTCs2iNmCMDeaUriug91Hz+a1NOeV2M/mjc/bzg7P6mFIHaG1ZKjADSTPRM6m/PNBozZ
+         QfrbNKpe/F2T2odalZ+rUx0XtbipVb0LTLnEgW5TOzBwt0gYsxyQfc8fks36fk/THX4W
+         8ysQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature:arc-authentication-results;
-        bh=CcQ3ljSi1FcqoeEnUh5zQ581gWQm6LuRiGSMUsmu3Ws=;
-        b=DO8JrYeh0rRmUbfEvl9enatt4Kb9atNOv5944xfOBPfvWbogZdt7jziJEOLR7bJKjV
-         G0gycAgpaiAKfYAJWpeozV4eJHCH7e0/WNeLaBNeCM0uF21OBLlLnby/YHJBlSEbO9vt
-         IehRub/IM/CmXhNSrdRgbI7pa9sX5y1CWhWR+oWcP9dLsMWpODJz6CfpLHuOVUyYF98e
-         uZvAfpIsgnzk/GjOjdn90C0yrdxym8APHObjQdM2jwmxYRD7M7plKVHdgRARdHhEVtgM
-         sRpkhVKM4s++FxmDiTq3etdAA+BJWgy3C6ImymGMrQtTQjcGQ6/fRzUnFnqvod4hdqFg
-         YiUg==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=eofMs3duO09kWoQtdYkvESKQjT1cyVn7QobwMZFroNA=;
+        b=j0fDSsSxwL7ed+6H7f6oI0nrW4BtR9d7QUBa9c5srcZCeZ9YEl63cm13UIJZJd264p
+         XTUsGP3QCXSgrZabuxeTFclHQJlSAIX/EMn8k1MUDDK4TU1etL9OzBR7l7oFgpgDTXdj
+         2H5vgtTwL5A0IuuNfgtKad2JpM30orgrAnSwNizyt79hxxcPJJ4KDeTCHTQh1UQKdHam
+         +W4kIwgqYt12ZLrh73RiCU5z+SlEFiOKZjBN7cKoiRE1wydTw+xzAFSUxkZf+0LgJb+W
+         xRvW3cwiN82R36XT+3Z1mhFdLGiLGpGm6GDGhORaO+At2cbadia3V4l98YinFWwO37g5
+         EyIw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ebX6jlT+;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=U4BR3IlQ;
+       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <georgiana.chelu93@gmail.com>
-Received: from mail-wm0-x242.google.com (mail-wm0-x242.google.com. [2a00:1450:400c:c09::242])
-        by gmr-mx.google.com with ESMTPS id d82si243695wmd.1.2017.09.22.00.52.46
+Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
+        by gmr-mx.google.com with ESMTPS id t142si61178wmt.2.2017.09.22.00.52.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Sep 2017 00:52:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) client-ip=2a00:1450:400c:c09::242;
+        Fri, 22 Sep 2017 00:52:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ebX6jlT+;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=U4BR3IlQ;
+       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x242.google.com with SMTP id m127so512997wmm.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 22 Sep 2017 00:52:46 -0700 (PDT)
+Received: by mail-wm0-x243.google.com with SMTP id f4so502573wmh.4
+        for <outreachy-kernel@googlegroups.com>; Fri, 22 Sep 2017 00:52:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :in-reply-to:references;
-        bh=CcQ3ljSi1FcqoeEnUh5zQ581gWQm6LuRiGSMUsmu3Ws=;
-        b=ebX6jlT+d+dj9UzCVRIhlV4laQNpZRJ2gD0zAD0BiUjWCY893FQZuD5ScMje+sbSVq
-         1xibKpNYhfXEtyo8ZzDP8tLY1EAO8KyKeqN4P1dY/8Ko2X97zcnGSjDbcNqwKx2u1PiW
-         0hQ0sfOc3vPrRjgqA4jOYDIpTi81Hc/ZM+SgLE2nxreGcHm7lVaUCRdIxcVcBtUTHi1a
-         JvgWCCg96RVkfFvfUDijSPBHA9szkDbmKWgkmjqmcrTlrjUxgCb5yV2W8sdQq2ehMg/A
-         zY/smtOFiultRctWs/v57wCJZG26UbNADcqtaNNtjpobG/qTt3bL7xGxMEEfY34PLRmr
-         e+qg==
+        h=from:to:cc:subject:date:message-id;
+        bh=eofMs3duO09kWoQtdYkvESKQjT1cyVn7QobwMZFroNA=;
+        b=U4BR3IlQaLeMBgJAjpm/Gn7lDD4wr9a/r7LnewlSSXUcR9jKCe6F/CkHb1tvDiGgFE
+         QgufRuM/e7XMm1be/qKBStE58zuCkTzPyWXEhFgQ5+U4Z5qzU5CTROB3bqKt8kgAEqlC
+         Pgb2ibogi3CjG5qcU39Tdiaz2p4V2nQ/cdea/U7wH5cb9Ll/rSYQFH8XCHFU/Xxx0A4h
+         SBEpnEGFteIOFoU6mJzjbzmbcjZaVl6D/8qEfOASfxC9E/UvTwHudRLa5y6VSNWSjiq2
+         NkE2FyPXP4kLk+eH1fEQE9IDpBdoVAKycTC2b6PZC26hp0Hf4w61Zvnxk1qmCJpeMtd0
+         0Z1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:in-reply-to:references;
-        bh=CcQ3ljSi1FcqoeEnUh5zQ581gWQm6LuRiGSMUsmu3Ws=;
-        b=EMHu3B0+Z80PCRn4lq9eXYrpwjsxjU3O7m2moNLavt+SZW9QJKMxHZ1VN4OmCtXc17
-         OruviY9LgCBGi8r8FPt0VWVinb7wHP98Z9gbwuU7pmim2hpue9i/eL3vBnoLusprGv3g
-         vZS8XADugaD8VjRaNoQw9O37lpZlO9m7y9/tHIVnYStrEbW55zmGVfZ8OAvORBrpqwb0
-         hdsKZPiyHph/yx7bgtVc5N5fVehPclHBFOBlhPtCYxySBiDdTXAxsKJmtjSVTzKhVAoa
-         CW/UQgjXhlDN7HY8xu5ED7GhB6fkcMlnfxm/wr05NQjzSRZ46DC8hJBuK64RlyAC05oH
-         2Lcg==
-X-Gm-Message-State: AHPjjUgGFP967inounZNfbwl1W3es63zrOJFNm1YcmLCnt4nsmTGWlWV
-	YIHXQCoxeEa32jnSZ0TiW68=
-X-Google-Smtp-Source: AOwi7QBndP0K6S37oFnvQFpENZYIAYKheLgeuQkAwLEFiomC0OOmXJSSm7ETPJrEeKHqQnWYHgzRsQ==
-X-Received: by 10.28.60.8 with SMTP id j8mr2858757wma.16.1506066766762;
-        Fri, 22 Sep 2017 00:52:46 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=eofMs3duO09kWoQtdYkvESKQjT1cyVn7QobwMZFroNA=;
+        b=X+LJA4QcGGrMkr4piAxf9QJVNELVZYLLU0U7qD25XqGayk0q2g2UBDWUI9t/2mBgDK
+         w3hJ0N2xYf19vntEkkzIYQLkKViEyQ/LmQZUorWIikJ+g6jCN2o8uFTpcdXZlUdgTdPM
+         rY+ORJQdITixGO4bcYQ8M07kksYXZ9nh4/WXBP2K5upfkL0pl8snZ96mNnoDTnuFtVdI
+         z3xRFI8ktoT0/LB0DcfpsHGkyN/LatqKZpTUwublhwyOTyRwCnMpbwo9y/5ZPEFTMw0I
+         z53cyvilSDyYeEgFCfI5tewIu8aoYBPwlNSpFC+Wnawb+SOBYzv3LYa67vUy2d7wmvzQ
+         FhLg==
+X-Gm-Message-State: AHPjjUh3Ld+TSWUsLOeO1T6BrbXGwhm1qKkdD0w76YstemEAFxRYPTK3
+	0pk3hneQLKAx36QBqnaLVkQ=
+X-Google-Smtp-Source: AOwi7QCjPomoeSlV90kmkygJk3rsIQ4Zi7UVQ7xKkefI+j50qXNAub+oe/8GedUq7RYHNy3CjjM75A==
+X-Received: by 10.28.141.70 with SMTP id p67mr2876566wmd.80.1506066757341;
+        Fri, 22 Sep 2017 00:52:37 -0700 (PDT)
 Return-Path: <georgiana.chelu93@gmail.com>
 Received: from ubuntu (fw-ext-11.romania.luxoft.com. [195.90.110.113])
-        by smtp.gmail.com with ESMTPSA id f188sm2978760wme.21.2017.09.22.00.52.45
+        by smtp.gmail.com with ESMTPSA id z51sm3288865wrb.22.2017.09.22.00.52.36
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 22 Sep 2017 00:52:46 -0700 (PDT)
+        Fri, 22 Sep 2017 00:52:36 -0700 (PDT)
 From: Georgiana Chelu <georgiana.chelu93@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Samuel Ortiz <samuel@sortiz.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v2 1/3] Staging: irda: net: Do not initialise statics to NULL
-Date: Fri, 22 Sep 2017 00:52:12 -0700
-Message-Id: <438d38d0151022c814595f48c670c0f1fbc1d20b.1506065957.git.georgiana.chelu93@gmail.com>
+Subject: [PATCH v2 0/3] Staging: irda: net: Code clean up
+Date: Fri, 22 Sep 2017 00:52:11 -0700
+Message-Id: <cover.1506065957.git.georgiana.chelu93@gmail.com>
 X-Mailer: git-send-email 2.7.4
-In-Reply-To: <cover.1506065957.git.georgiana.chelu93@gmail.com>
-References: <cover.1506065957.git.georgiana.chelu93@gmail.com>
-In-Reply-To: <cover.1506065957.git.georgiana.chelu93@gmail.com>
-References: <cover.1506065957.git.georgiana.chelu93@gmail.com>
 
-There is no need to initialize static variables to NULL
-because they are stored in .bss segment. This segment
-is initialized to 0 at the beginning of the code execution.
+Adjust the code to respect the Linux coding style convention.
 
-Issue found by checkpatch.pl.
-ERROR: do not initialise statics to NULL
+Change in v2:
+Use my right email address to sign off the patch set.
 
-Signed-off-by: Georgiana Chelu <georgiana.chelu93@gmail.com>
----
- drivers/staging/irda/net/irda_device.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Georgiana Chelu (3):
+  Staging: irda: net: Do not initialise statics to NULL
+  Staging: irda: net: Use NOT operator instead of comparison to NULL
+  Staging: irda: net: Fix style issues
 
-diff --git a/drivers/staging/irda/net/irda_device.c b/drivers/staging/irda/net/irda_device.c
-index 890b90d0..3501478 100644
---- a/drivers/staging/irda/net/irda_device.c
-+++ b/drivers/staging/irda/net/irda_device.c
-@@ -54,8 +54,8 @@
- 
- static void __irda_task_delete(struct irda_task *task);
- 
--static hashbin_t *dongles = NULL;
--static hashbin_t *tasks = NULL;
-+static hashbin_t *dongles;
-+static hashbin_t *tasks;
- 
- static void irda_task_timer_expired(void *data);
- 
+ drivers/staging/irda/net/irda_device.c | 28 +++++++++++++++-------------
+ 1 file changed, 15 insertions(+), 13 deletions(-)
+
 -- 
 2.7.4
 
