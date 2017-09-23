@@ -1,115 +1,125 @@
 X-GM-THRID: 6469039069975281664
-X-Received: by 10.99.62.76 with SMTP id l73mr5676766pga.16.1506368477963;
-        Mon, 25 Sep 2017 12:41:17 -0700 (PDT)
+X-Received: by 10.101.87.206 with SMTP id q14mr1609496pgr.78.1506190530241;
+        Sat, 23 Sep 2017 11:15:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.202.207.76 with SMTP id f73ls5898588oig.3.gmail; Mon, 25 Sep
- 2017 12:41:17 -0700 (PDT)
-X-Received: by 10.157.17.46 with SMTP id g43mr427538ote.122.1506368477019;
-        Mon, 25 Sep 2017 12:41:17 -0700 (PDT)
-Received: by 10.55.207.150 with SMTP id v22msqkl;
-        Mon, 25 Sep 2017 08:58:02 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QBajxZgUSmpq764IV6CdgCcRQ1YBJXIzPNWt+5a+3Y/EOecNUtdlRUH8e1Gle9tm3l7LfZI
-X-Received: by 10.28.8.71 with SMTP id 68mr87817wmi.24.1506355081185;
-        Mon, 25 Sep 2017 08:58:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506355081; cv=none;
+Received: by 10.37.171.44 with SMTP id u41ls1612644ybi.6.gmail; Sat, 23 Sep
+ 2017 11:15:29 -0700 (PDT)
+X-Received: by 10.13.236.151 with SMTP id v145mr1579644ywe.173.1506190529481;
+        Sat, 23 Sep 2017 11:15:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506190529; cv=none;
         d=google.com; s=arc-20160816;
-        b=nYXlz1F/CmSAV33ydp6vVzTg5IEIxZqvgXW6W6i5xW/e9/fyogZX1F+SxaNy1xsaHD
-         cUr0BH/bTDXovhoWZAQwDm/MyVwKdMoclCp9F9p6vq8MWydj/t576yj3bPTM7k6525nx
-         kPNxsoqlZqiibkrwN05X7lm9VPWWub8/Fv98hFxEy4UpKK+jeWJKr1+8td1CmR2kzxIV
-         QkfJTkA1WLDW0ek0tvLYiNuxSBuMX5zv7KGVRHFtXG82gjzaIB7MBeCv+O9s6oqCpsHq
-         5hJAIIK8tCrZ/ZzZXSl6z+C2vgry1rWe3i4upZdM9ghcJwGYa6RRoirbIHAqNV27zFNG
-         W5gQ==
+        b=rmqITK/crDdnlZKMbM14ylwo0fFFb91WkwHxj/3HjNjV3B+haMvHlKeBczd13MDHzy
+         GRQp0XfcPnlDiqn++/utd+gNrGKDeZvZtyuNhdCzda4KnmbBe0bZ1k4YeHcaPXV66W14
+         dMejGvjqI8n0wGpFknWXjibf2UzIu0+X5JhW9SQyIdS4bZVuf7nfyV5TO514oBQXbx/l
+         nvSZLnZ44mRsrjEvYiYBSZXGxyzozzO8zn5sE6F2Z7VB2i5cfe1kJUmj/NQ/T+qZFtNT
+         TwfY3k9Iegw2NSm+vzHqKQcJs5tbSvDdj9dY+CZXLFU46P3eU4vRou5HXzcjgG/29LAY
+         jP8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature
+        h=message-id:date:subject:cc:to:from:dkim-signature
          :arc-authentication-results;
-        bh=jiCQJfSabvlEfioGbMsvlYsLvCLoSOUN7SSGjR/az80=;
-        b=MVryRDlmk0/NRL/Lkbv4VkAX9Jdy7kb3O22pd3u7IxlIi3CKv0ETlFhYLInrYIIlnY
-         aplhUX8m0WFLIyuXEODEgArYrDPWYZpcT1olD20I4sOnlO9wxQhg3TgnsQH0Mr2tQUrL
-         XIjQCGMomP8hPlAfETBnqq58AvxbJdon74oeAvSegVhPaDXnhKPhw6l7jRbpwRCQRFTw
-         FZtWjtJOAB1cm0YnYatX79FwW6I5+WbV5X9S0rIZT41C7KlRNSK7UV9s3sohAaIsMCYm
-         UbFaRF4cTuro4MJjY9DyAA5otJHgE8fuzazHaOE2COiVTaZgqwP4WeWAzlRRBkPVgkLK
-         3Udw==
+        bh=TwXPwwdf9IUs1VaKCr21MCrMSH7IW7/jv/HA7ARtikA=;
+        b=zgaHotZpNMWnXgQKC1nkJ6byKfCXVG1458Ek2rfe6cLhKsbXo1aWDThW3qzvXiQeJO
+         KkYDihp+XYesYkGnAwxES4ZA9+zcTQHGRD4zX5diNpC985mb8kGaMPDs39OBGBIm1Yg6
+         FGZXM2b4rUglqNRURNM0RbMSD///mGxttgQnSq90GvDj08P9+Pc1/+MCNnMLj87ajL76
+         sAg4cchnaKVISr5cSPWdmF0PlMnHea+nMoIstwnXYSltv23x0C8ctugoH5sTbOYE3A4q
+         SyfYnKmDs4BCdTCTQgiRDVMV0ejegOyqk7FiloT+/AM7ov5JAWQL3P5bV1fVAMaMAVtY
+         K7jA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@sirena.org.uk header.s=20170815-heliosphere header.b=O11d5CcG;
-       spf=pass (google.com: domain of broonie@sirena.org.uk designates 2a01:7e01::f03c:91ff:fed4:a3b6 as permitted sender) smtp.mailfrom=broonie@sirena.org.uk
-Return-Path: <broonie@sirena.org.uk>
-Received: from heliosphere.sirena.org.uk (heliosphere.sirena.org.uk. [2a01:7e01::f03c:91ff:fed4:a3b6])
-        by gmr-mx.google.com with ESMTPS id l133si553130wmb.3.2017.09.25.08.58.01
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BJisl8fW;
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <shreeya.patel23498@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id t77si177670pfi.13.2017.09.23.11.15.29
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Sep 2017 08:58:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of broonie@sirena.org.uk designates 2a01:7e01::f03c:91ff:fed4:a3b6 as permitted sender) client-ip=2a01:7e01::f03c:91ff:fed4:a3b6;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 23 Sep 2017 11:15:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@sirena.org.uk header.s=20170815-heliosphere header.b=O11d5CcG;
-       spf=pass (google.com: domain of broonie@sirena.org.uk designates 2a01:7e01::f03c:91ff:fed4:a3b6 as permitted sender) smtp.mailfrom=broonie@sirena.org.uk
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=sirena.org.uk; s=20170815-heliosphere; h=In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	 bh=jiCQJfSabvlEfioGbMsvlYsLvCLoSOUN7SSGjR/az80=; b=O11d5CcGZ1KMPDWNkjv0prbdz
-	4ndgQpVPoxrxay2pkE91liVD3pt1EyOO53fmVPEW6AJP0nPWJUZoRYgXJUDl+vYhj3rEq7to+Qtbm
-	DZNbrvb1espHhdbSVefB0R3NBuHsgVs9X9fR+Jn+NLAMnJzWElkfb4uPTrP/feRUGf+Ps=;
-Received: from [70.35.39.2] (helo=finisterre.ee.mobilebroadband)
-	by heliosphere.sirena.org.uk with esmtpsa (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.89)
-	(envelope-from <broonie@sirena.org.uk>)
-	id 1dwVlb-0001Ro-B7; Mon, 25 Sep 2017 15:57:55 +0000
-Received: by finisterre.ee.mobilebroadband (Postfix, from userid 1000)
-	id 78B6F440052; Mon, 25 Sep 2017 16:57:21 +0100 (BST)
-Date: Mon, 25 Sep 2017 16:57:21 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Shreeya Patel <shreeya.patel23498@gmail.com>
-Cc: lgirdwood@gmail.com, robh+dt@kernel.org, mark.rutland@arm.com,
-	baohua@kernel.org, alsa-devel@alsa-project.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, gregkh@linuxfoundation.org,
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BJisl8fW;
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x244.google.com with SMTP id d8so2514074pgt.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 23 Sep 2017 11:15:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=TwXPwwdf9IUs1VaKCr21MCrMSH7IW7/jv/HA7ARtikA=;
+        b=BJisl8fWUNU16MXZ/kv0n57sriQcuMrUUFMTyeTTMHbPQfkvYVatXdL6Xl9AT8syij
+         NE7pAQSLvu/rsbqN6rf/E7ctpzhAFOOI7k+yl3f8F2zmS+TfzXgUvYe8BLvRIUPtprK7
+         5ROqPPt6IXlaJag12c2eega0vd5alFoGvuDdRwZ+HRgEG9tsoIzeVnnWu0YZugpynuMo
+         a+o/+qeD/47u7d5y9FGAW/20vl72JeJMnRJfla7Q7Txi+bgexwArb42n53pXn5SGCb0h
+         Xz1sA+BCMyFjRyKlMcGT6f7jczQxMvkVylAZcCwW5zx57Y9ZjM1lNcc6ggF7JOsw6RKO
+         mYUw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=TwXPwwdf9IUs1VaKCr21MCrMSH7IW7/jv/HA7ARtikA=;
+        b=g/jSYhtqG7R0j4gUV4G4igR+Dbyn2BiYbu6EksYN6uwy2gHEkERsjbtyAt8iPWi8Xl
+         Nv93sTf+gFWWQriXgsJjxQVAH/IjTCX3xaqhDb8wzodRBW0VSJD+y/2GKP2teXUJ/ND3
+         z1MZLQ6Fc/c3G0iyqF7RlFCCbOZzDSM5Kc/xpK/5d9MWdM/P4gOmCJjcHxDsJ30Ewr+L
+         uwUABQVi5EhC90IqJZORs6n7Kt5iYc0nVc6atJCvpypg6f9vT262oZ8Ona8HeJejdOEm
+         sI+Mpwyl6OBRVoXluwlI3SuaaKNOWmC24REwty7Tt2IS8ZJ41IyYDIG4lTD51ryouien
+         q2gg==
+X-Gm-Message-State: AHPjjUjDjMUwi2iTm7ILMasNgTPOH9v7zLz3z5LiI1pe/c3TiZJz9ejW
+	nba1WLxBQFOushMzL6SEFOJHnjiIoQw=
+X-Google-Smtp-Source: AOwi7QB33X4uLkzwIk3CuxtyLAHLWdbnmkINk+nyByEfC1kbyoGo8bgQ1ZI1HCmqxGfqsdHv9rS8ow==
+X-Received: by 10.159.198.10 with SMTP id f10mr2869614plo.14.1506190529142;
+        Sat, 23 Sep 2017 11:15:29 -0700 (PDT)
+Return-Path: <shreeya.patel23498@gmail.com>
+Received: from shreeya-VirtualBox ([45.113.152.81])
+        by smtp.gmail.com with ESMTPSA id i12sm4738907pgr.21.2017.09.23.11.15.28
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 23 Sep 2017 11:15:28 -0700 (PDT)
+From: Shreeya Patel <shreeya.patel23498@gmail.com>
+To: lgirdwood@gmail.com,
+	broonie@kernel.org,
+	robh+dt@kernel.org,
+	mark.rutland@arm.com,
+	baohua@kernel.org,
+	alsa-devel@alsa-project.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] Documentation: DT bindings: Add chip compatible string
- for audio codec.
-Message-ID: <20170925155721.bahw47htnsy6lw4x@sirena.org.uk>
-References: <1506190523-4338-1-git-send-email-shreeya.patel23498@gmail.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="seg6st7tp5bnfws5"
-Content-Disposition: inline
-In-Reply-To: <1506190523-4338-1-git-send-email-shreeya.patel23498@gmail.com>
-X-Cookie: MIT:
-User-Agent: NeoMutt/20170609 (1.8.3)
+Cc: Shreeya Patel <shreeya.patel23498@gmail.com>
+Subject: [PATCH] Documentation: DT bindings: Add chip compatible string for audio codec.
+Date: Sat, 23 Sep 2017 23:45:23 +0530
+Message-Id: <1506190523-4338-1-git-send-email-shreeya.patel23498@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
+This patch adds chip compatible string to remove the warnings
+generated by checkpatch that -DT compatible string
+"toshiba,apb-dummy-codec" appears un-documented.
 
---seg6st7tp5bnfws5
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
+---
+ Documentation/devicetree/bindings/sound/sirf-audio-codec.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-On Sat, Sep 23, 2017 at 11:45:23PM +0530, Shreeya Patel wrote:
-> This patch adds chip compatible string to remove the warnings
-> generated by checkpatch that -DT compatible string
-> "toshiba,apb-dummy-codec" appears un-documented.
+diff --git a/Documentation/devicetree/bindings/sound/sirf-audio-codec.txt b/Documentation/devicetree/bindings/sound/sirf-audio-codec.txt
+index 062f5ec..a61560b 100644
+--- a/Documentation/devicetree/bindings/sound/sirf-audio-codec.txt
++++ b/Documentation/devicetree/bindings/sound/sirf-audio-codec.txt
+@@ -3,6 +3,7 @@ SiRF internal audio CODEC
+ Required properties:
+ 
+   - compatible : "sirf,atlas6-audio-codec" or "sirf,prima2-audio-codec"
++		 "toshiba,apb-dummy-codec"
+ 
+   - reg : the register address of the device.
+ 
+@@ -11,7 +12,7 @@ Required properties:
+ Example:
+ 
+ audiocodec: audiocodec@b0040000 {
+-	compatible = "sirf,atlas6-audio-codec";
++	compatible = "sirf,atlas6-audio-codec", "toshiba,apb-dummy-codec";
+ 	reg = <0xb0040000 0x10000>;
+ 	clocks = <&clks 27>;
+ };
+-- 
+2.7.4
 
-What is this device and why does it make sense to be covered with this
-compatible string?  The -dummy-codec makes it seem like something that
-has no place in a DT at all.
-
-Please use subject lines matching the style for the subsystem.  This
-makes it easier for people to identify relevant patches.
-
---seg6st7tp5bnfws5
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlnJJ2AACgkQJNaLcl1U
-h9CN0Af/cS0ELv1uC5llXnO9tU2iZsecx3Yh+IuJQb1KM5JvMcCzOvodoXOnorlH
-k8j7rxo2kBA5ldHMc758flIT3Mau9L0lQQEaqST+Oicw7BQSyMQVjL/+O3BwA5xs
-tY/TVbplBrydEVg24fAoFrZfQ/EIs+Ia2mc7JpaONJo42Pl6agfvMDP9EGmocBYu
-qu85tDIVSeNXuvrmyofxrpHGA2rMW7gCb3ZcHax6yjdCqsKW/nNwD3i4bFCOnxYy
-3M4/ooxFgwENg3z8tOMIlq5vDqClSzc6+KFOvrpqtECbL7AWddE7feRd2zk10YlF
-gbkRlsqYgGbo17u2Cb//+a9GsRHKFA==
-=avhb
------END PGP SIGNATURE-----
-
---seg6st7tp5bnfws5--
 
