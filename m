@@ -1,119 +1,164 @@
-X-GM-THRID: 6340280388266491904
-X-Received: by 10.28.7.199 with SMTP id 190mr11543wmh.20.1476211563555;
-        Tue, 11 Oct 2016 11:46:03 -0700 (PDT)
+X-GM-THRID: 6468972080640557056
+X-Received: by 10.28.24.207 with SMTP id 198mr129887wmy.12.1506177895298;
+        Sat, 23 Sep 2017 07:44:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.47.143 with SMTP id v137ls16605wmv.24.gmail; Tue, 11 Oct
- 2016 11:46:02 -0700 (PDT)
-X-Received: by 10.28.31.81 with SMTP id f78mr11756wmf.2.1476211562886;
-        Tue, 11 Oct 2016 11:46:02 -0700 (PDT)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
-        by gmr-mx.google.com with ESMTPS id 128si6518wmd.3.2016.10.11.11.46.02
+Received: by 10.46.86.197 with SMTP id k66ls1753148lje.2.gmail; Sat, 23 Sep
+ 2017 07:44:53 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QDBXAN1FWOQSDIWHuHvmzfoJ+Q4an03cyJYQyDLXVFNDFPG4hCPV0e8+rgsv9fpXbG31kJb
+X-Received: by 10.46.20.17 with SMTP id u17mr94560ljd.24.1506177893864;
+        Sat, 23 Sep 2017 07:44:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506177893; cv=none;
+        d=google.com; s=arc-20160816;
+        b=cicjQdfyMvTNDP703B0x0PkXLlpr1u1p6wpgel6r5IR+nHGy5ZtlVkRWATzPadcuHX
+         g03Lp3mdMagW2Wjdz302c7gaDCpNH+74o9sgX6UiVUdXFLlgh1zXVuz6SG+BNjKs4bHn
+         qtMvGQ6Fag3T2WyKRPRZSBwnoKV0EvP+6qjl5KyXdVJkKRAKYveOnGs2qsjQ4Suuo0YF
+         bUY7yHvUhCGppcgXgQy6uUGDScM0LjF1prg4R2BUajGGR+VzKIylclGkvafrsNavUq9y
+         DG6kXV19zf8cRSesaL6AbsyrJPB5v6TvqHFfcXG2PBYg5UTz+NGfp6E/Tr6R5wBHkEO6
+         nA7w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=FxSb9ssatb/3OOWYXmsYW8s33r6jJrssYlo5qE3qfvM=;
+        b=HnOqUj2VGZmFBXSXq7QHbhA9/FMs9pIvX7I8BrQQIK+oYtlQftg+E6hjxsIJESvP2N
+         mrI3jYcF61BLix5vbAb/ilJHIHBJrzmIq7JMq3DZpbkiiRZaj6mje1I2L9/FApj7Sdq6
+         FuGHNUZK36dhNHNPNC6dLZzygMAZJ88uXW3ofQE5ozCGiHpEZb/twJNcD8/cNnuXSTV7
+         oK7Ah07ndt0xoGn+ZbzdJii3GdHztvmV+QO9XDjCpmdu1cFIUEiUTuzhaWMq01AVogN8
+         m4vyY06+3M+fl4ta6FL04UdS6JCAz56CsQVGzGD0qBfYt8NORHnz9t91l9qLJPuX07NX
+         ZI0w==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 191si156407wmn.2.2017.09.23.07.44.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 11 Oct 2016 11:46:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
+        Sat, 23 Sep 2017 07:44:53 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=dilekuzulmez@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x243.google.com with SMTP id 123so146549wmb.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 11 Oct 2016 11:46:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=1b05wbox8q2wF86bMDf43C0PVON9aGBN83GPtK8jOSw=;
-        b=FO4J7fobQ9Tepc9OWq7U0sBGg+zJJynMMeq1ULr2xWFQeMFXhWdithqGf/hKAm4cGz
-         1WExLyJi1BLbGWXqnw/8XYeyruXRLeOHvjlGK33xm16RH7EgVxM/W1G/P0lGGv90GVOS
-         smneQTNAa1hHHzTtoEmFbhVQEf6XawNhKbqSlakfJ1cjhhPKJ65xOHcExwxMDwjKrpLj
-         0oCxi5fg2gmK1yT21repmlMIFXT9NkD10FDhXpCUWD1OmQ46Atg46UHny2e+MPN1BSX5
-         FTUy8C10nob8jCcLpJ5PEyInpoNPqtmv8wjkZIUkzU3EU5qe6I+AqrEJ0mhtrWvgI+Vp
-         1Shw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=1b05wbox8q2wF86bMDf43C0PVON9aGBN83GPtK8jOSw=;
-        b=ErAtYdTugiwI6S6kubTflMcrEREGVz/sV/1HCKKLZZ3anTHY9OFh9BE5VGYxhDvnN6
-         5K6TB0uU6k4NFta8KrI6qj41/e0QBniV0BlR/kYp0bLpLMqDv1l2bBMDJJE6wmdK4I9F
-         vxx65JosbgMGa0VCal6r2CyTnI47GcSCi2OXJa/0SVMNMNXzmPXxC8Yccm0ZM0Awd9VS
-         Py0X+YRoCGX7j/dXG/yWxTXmcUzw8REvgwH+SNRI1GUJHVITErM/W5tXu8uPVwYKpvgV
-         5Tp/bMzTtgUUDRS3HXmx8PUICDx3M+wV8ieVltZaQg/jqrmavMORvFudgI3otj5jI67Y
-         +7lw==
-X-Gm-Message-State: AA6/9RmAtLbERghcPI2BGVDxhytZYtjny4fvMXQ33iNL/VDjSfXZZM2zFgABJY07OrSgsg==
-X-Received: by 10.28.216.148 with SMTP id p142mr163319wmg.4.1476211562688;
-        Tue, 11 Oct 2016 11:46:02 -0700 (PDT)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from localhost.localdomain ([88.236.251.249])
-        by smtp.gmail.com with ESMTPSA id a7sm5391923wjj.22.2016.10.11.11.45.55
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 11 Oct 2016 11:45:56 -0700 (PDT)
-From: Dilek Uzulmez <dilekuzulmez@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Subject: [PATCH] Staging: olpc_dcon: Add space around '<<'
-Date: Tue, 11 Oct 2016 21:45:50 +0300
-Message-Id: <1476211550-9937-1-git-send-email-dilekuzulmez@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,429,1500933600"; 
+   d="scan'208";a="238488863"
+Received: from 85-171-60-79.rev.numericable.fr (HELO [192.168.0.15]) ([85.171.60.79])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 23 Sep 2017 16:44:53 +0200
+Date: Sat, 23 Sep 2017 16:44:52 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Aishwarya Pant <aishpant@gmail.com>
+cc: Gilles Muller <Gilles.Muller@lip6.fr>, 
+    Nicolas Palix <nicolas.palix@imag.fr>, Michal Marek <mmarek@suse.com>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] coccinelle: boolconv: improve script to handle more
+ cases
+In-Reply-To: <20170923135526.GA30354@aishwarya>
+Message-ID: <alpine.DEB.2.20.1709231643590.2016@hadrien>
+References: <20170923135526.GA30354@aishwarya>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Add space around operator '<<'. Problem found using checkpatch.pl
-CHECK: spaces preferred around that '<<' (ctx:VxV)
 
-Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
----
- drivers/staging/olpc_dcon/olpc_dcon.h | 30 +++++++++++++++---------------
- 1 file changed, 15 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/staging/olpc_dcon/olpc_dcon.h b/drivers/staging/olpc_dcon/olpc_dcon.h
-index 215e7ec..2fe8a70 100644
---- a/drivers/staging/olpc_dcon/olpc_dcon.h
-+++ b/drivers/staging/olpc_dcon/olpc_dcon.h
-@@ -9,18 +9,18 @@
- #define DCON_REG_ID		 0
- #define DCON_REG_MODE		 1
- 
--#define MODE_PASSTHRU	(1<<0)
--#define MODE_SLEEP	(1<<1)
--#define MODE_SLEEP_AUTO	(1<<2)
--#define MODE_BL_ENABLE	(1<<3)
--#define MODE_BLANK	(1<<4)
--#define MODE_CSWIZZLE	(1<<5)
--#define MODE_COL_AA	(1<<6)
--#define MODE_MONO_LUMA	(1<<7)
--#define MODE_SCAN_INT	(1<<8)
--#define MODE_CLOCKDIV	(1<<9)
--#define MODE_DEBUG	(1<<14)
--#define MODE_SELFTEST	(1<<15)
-+#define MODE_PASSTHRU	(1 << 0)
-+#define MODE_SLEEP	(1 << 1)
-+#define MODE_SLEEP_AUTO	(1 << 2)
-+#define MODE_BL_ENABLE	(1 << 3)
-+#define MODE_BLANK	(1 << 4)
-+#define MODE_CSWIZZLE	(1 << 5)
-+#define MODE_COL_AA	(1 << 6)
-+#define MODE_MONO_LUMA	(1 << 7)
-+#define MODE_SCAN_INT	(1 << 8)
-+#define MODE_CLOCKDIV	(1 << 9)
-+#define MODE_DEBUG	(1 << 14)
-+#define MODE_SELFTEST	(1 << 15)
- 
- #define DCON_REG_HRES		0x2
- #define DCON_REG_HTOTAL		0x3
-@@ -35,11 +35,11 @@
- #define DCON_REG_MEM_OPT_B	0x42
- 
- /* Load Delay Locked Loop (DLL) settings for clock delay */
--#define MEM_DLL_CLOCK_DELAY	(1<<0)
-+#define MEM_DLL_CLOCK_DELAY	(1 << 0)
- /* Memory controller power down function */
--#define MEM_POWER_DOWN		(1<<8)
-+#define MEM_POWER_DOWN		(1 << 8)
- /* Memory controller software reset */
--#define MEM_SOFT_RESET		(1<<0)
-+#define MEM_SOFT_RESET		(1 << 0)
- 
- /* Status values */
- 
--- 
-1.9.1
+On Sat, 23 Sep 2017, Aishwarya Pant wrote:
 
+> Given expressions A, B and a binary operator op, the current script checks for
+> cases where
+> 	A op B ? true : false can be replaced by A op B
+>
+> This can be extended to handle the other case where
+> 	A op B ? false : true can be replaced by !(A op B)
+>
+> Moreover we can use the binary operator type to catch all desirable comparisons
+> in one go instead of writing them down.
+>
+> Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
+> ---
+>
+> Okay I'm not sure if A op B ? false : true conversion to !(A op B) is even
+> desirable because it might hinder code readability in certain cases.
+> Just putting it out here because while I was running coccicheck in staging
+> drivers a few cases like the above turned up.
+
+Maybe the user can decide what they want to do in this case.
+
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+> ---
+>  scripts/coccinelle/misc/boolconv.cocci | 43 ++++++++--------------------------
+>  1 file changed, 10 insertions(+), 33 deletions(-)
+>
+> diff --git a/scripts/coccinelle/misc/boolconv.cocci b/scripts/coccinelle/misc/boolconv.cocci
+> index 33c464d..9b32b5f 100644
+> --- a/scripts/coccinelle/misc/boolconv.cocci
+> +++ b/scripts/coccinelle/misc/boolconv.cocci
+> @@ -16,27 +16,19 @@ virtual report
+>
+>  @depends on patch@
+>  expression A, B;
+> +binary operator op = {==,!=,>,<,>=,<=,&&,||};
+>  symbol true, false;
+>  @@
+>
+>  (
+> -  A == B
+> -|
+> -  A != B
+> -|
+> -  A > B
+> -|
+> -  A < B
+> -|
+> -  A >= B
+> -|
+> -  A <= B
+> -|
+> -  A && B
+> +  A op B
+> +- ? true : false
+>  |
+> -  A || B
+> ++ !(
+> +  A op B
+> ++ )
+> +- ? false : true
+>  )
+> -- ? true : false
+>
+>  //----------------------------------------------------------
+>  //  For context mode
+> @@ -44,28 +36,13 @@ symbol true, false;
+>
+>  @r depends on !patch@
+>  expression A, B;
+> +binary operator op = {==,!=,>,<,>=,<=,&&,||};
+>  symbol true, false;
+>  position p;
+>  @@
+>
+> -(
+> -  A == B
+> -|
+> -  A != B
+> -|
+> -  A > B
+> -|
+> -  A < B
+> -|
+> -  A >= B
+> -|
+> -  A <= B
+> -|
+> -  A && B
+> -|
+> -  A || B
+> -)
+> -* ? true : false@p
+> +  A op B
+> +* ? \(true\|false\) : \(false@p\|true@p\)
+>
+>  //----------------------------------------------------------
+>  //  For org mode
+> --
+> 2.7.4
+>
+>
 
