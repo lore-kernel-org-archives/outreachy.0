@@ -1,61 +1,98 @@
-X-GM-THRID: 6471131811730685952
-X-Received: by 10.223.154.113 with SMTP id z104mr808184wrb.16.1506677784586;
-        Fri, 29 Sep 2017 02:36:24 -0700 (PDT)
+X-GM-THRID: 6469021492969472000
+X-Received: by 10.25.229.18 with SMTP id c18mr143400lfh.1.1506187642925;
+        Sat, 23 Sep 2017 10:27:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.161.4 with SMTP id k4ls588470wme.7.gmail; Fri, 29 Sep 2017
- 02:36:23 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QDu4EOd+Y9Gr/C/FLiz7dkHc+xsZSYkldiSsfNNEYJ581esvs/pBqBaNlaZh+wCuEMpT8hD
-X-Received: by 10.223.151.213 with SMTP id t21mr154728wrb.12.1506677783608;
-        Fri, 29 Sep 2017 02:36:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506677783; cv=none;
+Received: by 10.46.46.11 with SMTP id u11ls1798629lju.13.gmail; Sat, 23 Sep
+ 2017 10:27:21 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QCwwYhfEUxCNa4nDY1XWB5JIFEcAmF/52DjRbzY7Esh9rg61jK64fFME1KcXb0K+YuNS96q
+X-Received: by 10.46.84.69 with SMTP id y5mr123696ljd.37.1506187641386;
+        Sat, 23 Sep 2017 10:27:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506187641; cv=none;
         d=google.com; s=arc-20160816;
-        b=T7sDYEFiMWzC2N/BsW5tGeJJ2Jq96WzaARt/B32Wyr3f7MgX1yVySNgnwch2skRc0q
-         TtSPNU2nx0s7V0yYTr8OGY0Dcw5CGZkTIgoSzZn42yem/DTbfXzhn53jHb4SRDlzP1ZF
-         myNIiYzcrV8DMFe+9+QVu/PM6CDqHclzvPSIPgmzAMudMRL3Nk3++Vs7YXJDhVZ7y8Xe
-         /Ie8txCNVvz/An9WMgSuiCJvIP/chYgv994xgWwXUpnP5HqbAPXeidk4uIrMTheEVVUr
-         BSCxjmaOgoMJLEnPvmNELazcvOuFq+xP7vhRi6Xkjop/zFiU0jcJAGyveOM0QJOTQ/u5
-         taIw==
+        b=z0SKAK95fBCBVbOIobjGZlgu3amFxLtVXAcAmhCf2JHrDAZn6FXekatvzYvlBdm8oX
+         3048wVsrjUELCmqG0fQ0as8u3YCz9GIxKB58D5G+sld+27Q1pWi98JcwnVGWODf+CpYL
+         p0/882kHVE+Tl47H5eHHro1SVqYlNP1C0wT9rZc/eo5omcY99Y+7If//k4qpdcPuuZBH
+         KeGA304L9SC/UiPUal8PktFrGSfPz08V3wLfEqdmp2gkUAqUUDK7evk5nv4BgM1nrEdW
+         YRbpxX1SJsSPwfHgwouLvvd3rC7qAF18pLnqEieBffuONcDNfWCmnIAC+pRtQBQRgBJz
+         479A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:message-id:subject:to:from:date
-         :arc-authentication-results;
-        bh=QX/Tv4Ldff4xm62WEbaetJotaTBGc1Ax/01RYYCG1jc=;
-        b=SqAUyuYTP3i8ctsFWRDObIx4YR9O0Ce0jXT11B5anQYVgOoFGjIc5AqZTYXoEaBFRX
-         wSMDhsTPfpcdTRiFI4JFj72YpecLHswTb6tG+XPPH5oa1XvVc/3gy7OBIvMl/rJg7WZj
-         OxfTD78PqRMEhyQ5qazrjLdrmlMuRV+WpenIqn1xQh0DdLgsg1m54y0OunFldUez4qho
-         EDTY1xtiidQACGqc0e9lCoIdX5ekz0gyqf7ouVP/0Uudf9JHDO51Q84PnNeb8pwsBfki
-         VWdTAy4kHh2UiGJro7xlhlejKZC2oYp7RtWtDpRXEqS4TGTuqY/2fWzebe9J4ac5TbsA
-         ECYw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=/E6QI0DibuHPMNsVycPIPR6IzIA/Ndr1qntxsjY5Mys=;
+        b=BWe6+YzdUoqDNG4h8rfS5ZQNCxJ2VwF6xf6B+356/HCiOsNgFcatPIfbulEA+wNX9y
+         MoeNgZLKXrvRQeNS2s9o1hE52x9eiGiP8g3zJ5Uv0eLOkKeg55CLFlZ9J6xsqDUdPfpy
+         SyL+anPuNZxewABBGbTildDYR5aMT3EKLez4xHYacTiGHEXeDl2GbhGlqtmA/6mDv268
+         ZOFs4VrDTOT6xcMaTGJZcJ+xWXxa6saXKVASjOLbMq5QL45oux3fPsdONKcWCv+qirNX
+         ix75SSiZNlE9rQ2eYIQADS8CM//MOAwjqUCasJv1ku7gsYcIrLbuCLTS21FnFscoBvtB
+         1y7w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id d82si460535wmd.1.2017.09.29.02.36.23
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id j4si222892wmi.2.2017.09.23.10.27.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Sep 2017 02:36:23 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Sat, 23 Sep 2017 10:27:21 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.42,452,1500933600"; 
-   d="scan'208";a="239128817"
-Received: from unknown (HELO hadrien.local) ([195.81.232.10])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 29 Sep 2017 11:36:23 +0200
-Date: Fri, 29 Sep 2017 11:36:22 +0200 (CEST)
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,430,1500933600"; 
+   d="scan'208";a="292418793"
+Received: from 85-171-60-79.rev.numericable.fr (HELO [192.168.0.15]) ([85.171.60.79])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 23 Sep 2017 19:27:21 +0200
+Date: Sat, 23 Sep 2017 19:27:20 +0200 (CEST)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
-To: outreachy-kernel@googlegroups.com
-Subject: application period
-Message-ID: <alpine.DEB.2.20.1709291134550.3187@hadrien>
+To: Keerthi Reddy <keerthigd4990@gmail.com>
+cc: outreachy-kernel@googlegroups.com, johnny.kim@atmel.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: wilc1000: No space is
+ necessary after a cast
+In-Reply-To: <20170923170715.GA8329@manoharreddy>
+Message-ID: <alpine.DEB.2.20.1709231926590.5987@hadrien>
+References: <20170923170715.GA8329@manoharreddy>
 User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 
-Hello,
 
-At this point, we are around half way through the application period.  If
-you are interested in applying, could you send me an email with your first
-and second project choices?
 
-thanks,
-julia
+On Sat, 23 Sep 2017, Keerthi Reddy wrote:
+
+> A space after type casting is not needed. All the other typecasts
+> in this file don't put space after typecast. so remove space
+> after typecast at this line.
+>
+> checked with checkpatch.pl script
+>
+> Signed-off-by: Keerthi Reddy <keerthigd4990@gmail.com>
+
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+> ---
+>  drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+> index ac5aaaf..36dc2a0 100644
+> --- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+> +++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+> @@ -1617,7 +1617,7 @@ static int mgmt_tx(struct wiphy *wiphy,
+>
+>  	*cookie = (unsigned long)buf;
+>  	priv->u64tx_cookie = *cookie;
+> -	mgmt = (const struct ieee80211_mgmt *) buf;
+> +	mgmt = (const struct ieee80211_mgmt *)buf;
+>
+>  	if (ieee80211_is_mgmt(mgmt->frame_control)) {
+>  		mgmt_tx = kmalloc(sizeof(struct p2p_mgmt_data), GFP_KERNEL);
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170923170715.GA8329%40manoharreddy.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
