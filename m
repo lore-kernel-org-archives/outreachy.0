@@ -1,108 +1,180 @@
-X-GM-THRID: 6527996337022042112
-X-Received: by 10.107.159.132 with SMTP id i126mr1533591ioe.123.1519917588050;
-        Thu, 01 Mar 2018 07:19:48 -0800 (PST)
+X-GM-THRID: 6469106545355390976
+X-Received: by 10.36.57.209 with SMTP id l200mr4190243ita.31.1506332256832;
+        Mon, 25 Sep 2017 02:37:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.38.203 with SMTP id m194ls128581iom.5.gmail; Thu, 01 Mar
- 2018 07:19:46 -0800 (PST)
-X-Google-Smtp-Source: AG47ELtG78JR9BbCeVB7H7DKVzx+C/1gb5IDh6bynemSUZ/W11bLqUPNiqrXo0DUamBvrLgsvPcD
-X-Received: by 10.107.178.214 with SMTP id b205mr1542761iof.136.1519917586794;
-        Thu, 01 Mar 2018 07:19:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519917586; cv=none;
+Received: by 10.98.159.194 with SMTP id v63ls2134401pfk.6.gmail; Mon, 25 Sep
+ 2017 02:37:35 -0700 (PDT)
+X-Received: by 10.99.115.92 with SMTP id d28mr4639882pgn.55.1506332255785;
+        Mon, 25 Sep 2017 02:37:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506332255; cv=none;
         d=google.com; s=arc-20160816;
-        b=uzJRg0j4I7u0BH2qDb7qClj26M0V/kVJpa22c/90IditzbkTS+oRG7XcSBN1PocHvx
-         odvFuyhcXMpL07xJWh3oFFasmiF55aHjYDAAEezB99N4r5HZ8UW4jiHCw9Nge7aVCzEY
-         bn7FXuWHz+q8Br7JfnMCD0lMywu5wqp25VjTN9ozocBBSIL0HJSvXouqgY4szCJOxS2q
-         V0HKu6DJt59JpQlK2H5wRAm8AVPP2CDJcoo8WY/CPVlV9jiiltz8UDCFMMZP8ugQjIvp
-         C34RtwDMTontmk5vzX3koMNj9APV5vzPxUjQsieL3ux7aKdFrKdpAxjGvk6QYDGaamJd
-         tvug==
+        b=vUXYEZBMLsvTIHN1vRHc6uOkAJdOSq1BVgbzUUyxmwXOYvqrFzVIR7CBYIUBrebZm5
+         RmJtpQ3C07E7m1TYl7GC2XEdb07UjoEDTcLIoNDiKQXcdjKnpijkMv9nN/R9EXqRS154
+         MSu8UfgaHo5PCRT5HOUdmn/PiPdgxtGrEAU/CorarWNeTi8qjj/xWJMh/YMVwxS7JEdO
+         bC9Xw2dQlDn+NyhLMB4eIMaqtgXWPuhk0P/0sZ8p5zzuRiQyqAyfBGB4riEvjjnKVEqT
+         u5UPJjytdL+bPBYgmOhWDaOeZyeEXw0KzigGENAJhgu+lAQ9aZzUqZWt/VC8Fg7cyWA1
+         vPTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:date:to:from:subject
-         :message-id:dkim-signature:arc-authentication-results;
-        bh=GydMCvLKk3P2N3D7ORm431TGiqbL4rUlw4SVhs4guRs=;
-        b=n1YQnC2Kkwi/H2SZiUaP4ulJNiaiM1xUW1Z4XvNlgpHJ60fvbPstiydP2Ory+tDo3f
-         Djnl08Q64bwiorB1c4WeEuXMrINHl6oMNye/NPGySpYByVKBoxFQCXfQlY/Vqb3K88XY
-         KREchAE/467O+9cYrN86OoK+xIcZF6qQkyuLLMh3iK5JOl3J21VCAjTm1qRznZ2GY8sS
-         +k7u5PX/AdUrm+9ivBdONfM8qMNp5Rylg772nj0UVKSzZIuIhorF7WUpqasr40vzpgU+
-         UIqlyCgHe+4STOgDUGXyV1ecExPrytOzQbCCurPmordl/L3YtFxNzP6DNTGUS46D/LOd
-         uT9A==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=9HVCSJ6k+4PzI7sKGwfqAWOK3K+pEcEzjO3YfKu+2bo=;
+        b=GDhhCzNnBJe/PTMBw9qGC9sDloeQyShDei1KmS9TLuTnWxLywvQrhKWOVfIELqC69f
+         2OHDlamr99iVV4W4R27U/Mok97351objx/+T9V9xs16S4oM65uaDb8qq+oWqrilltbQg
+         vCUtQFqLk793NGSSDyCWvRnDDkmIEQR1G3RtXozAOsXycoV7Kz7ZP1LaNrgMdYML4r1T
+         A8nz3UX2OBxHVzq8V4dZsyhiYU7i1SeQ62uiPZYW9N9rxW0HVLr8jdYERMATQClpImr6
+         t9ydAFjjoC8t/c6JDb5l7KOQBTPrDahPjn8eYyxrH8rbjlwOj8N0xJaEd9JYlF1dpDUL
+         t3ZA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ChmCP17h;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c05::22b as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <shreeya.patel23498@gmail.com>
-Received: from mail-pg0-x22b.google.com (mail-pg0-x22b.google.com. [2607:f8b0:400e:c05::22b])
-        by gmr-mx.google.com with ESMTPS id d85si289912itb.2.2018.03.01.07.19.46
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=t2VWkCdl;
+       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <georgiana.chelu93@gmail.com>
+Received: from mail-qt0-x241.google.com (mail-qt0-x241.google.com. [2607:f8b0:400d:c0d::241])
+        by gmr-mx.google.com with ESMTPS id g186si277309ywc.29.2017.09.25.02.37.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Mar 2018 07:19:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c05::22b as permitted sender) client-ip=2607:f8b0:400e:c05::22b;
+        Mon, 25 Sep 2017 02:37:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) client-ip=2607:f8b0:400d:c0d::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ChmCP17h;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c05::22b as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x22b.google.com with SMTP id y26so2427489pgv.4
-        for <outreachy-kernel@googlegroups.com>; Thu, 01 Mar 2018 07:19:46 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=t2VWkCdl;
+       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2607:f8b0:400d:c0d::241 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qt0-x241.google.com with SMTP id q8so4593652qtb.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 25 Sep 2017 02:37:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=message-id:subject:from:to:date:mime-version
-         :content-transfer-encoding;
-        bh=GydMCvLKk3P2N3D7ORm431TGiqbL4rUlw4SVhs4guRs=;
-        b=ChmCP17hKHYmMGI0DRq1mIQec1Mrt/gyCPkivmcIfdoFt9q0s8EKp3Lq5vYxpKI71q
-         7hPvGY/aadkWYVlPAF7HLp6BVaH0q3W7w1kuwduRr8u1aBmjpHZc2txSYFYyGo/pcgRM
-         afhlFTqL2O12zt4tnlNznshsMg1aXbwqPgvBrPXqdVaTZKcyrqXM77jox21a36BTcw5U
-         cYropBGIowTYNtHWSACWz34ZmB+7xr+wmpcC3YNlUfAHb0mYyx0YcZEnr41uxJTEmxGC
-         L+p/j3WpoAySOoFFC5gQLjlEDDA+O+YTj8KTTANsBwkmdL5domCNfkjTatJYLFCo6v+b
-         nlew==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=9HVCSJ6k+4PzI7sKGwfqAWOK3K+pEcEzjO3YfKu+2bo=;
+        b=t2VWkCdl70i2giaTokvbON3fq6hqX56t3Fug0YPhne4dcMd13ARQ/+VbNVMccEupBE
+         9q+0ErropI8eJsUWidNyQeSV7G9+SIxIAR49tbe84bfmQpeJ3kePU/i1/d36Bu2jNKyt
+         2AfZsXoCKD30GBoSoUtuQbxjF218Za0+aeN2Hd+ainScympKZssB1KaNyiI/CcPAYtCZ
+         95bcZJshXN4nPyG6NAAkwAp76v16/Ct2NoPMx87tpgCigluPoZRMiEflH/1AD65AsjvO
+         0wp8ztoeYLURHbzjBf0EDdx/5n/Wf1Y2g0UJ0kTNI1jp25B84kkELxd13Zxm9V2xXvTg
+         D3Mg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:subject:from:to:date:mime-version
-         :content-transfer-encoding;
-        bh=GydMCvLKk3P2N3D7ORm431TGiqbL4rUlw4SVhs4guRs=;
-        b=ouc+r7MADUcoupVuoGx09D6/gMv9S/Zz+BWfE5Z3EKKmjarpdTFg75JUyZj6U3SWGi
-         vbmUvdOixb4AEJnRMjtPtf1pub11Q8m3e6O/0fLmE2vIC6d54I/ZCHHIzUfBfdl2N/FK
-         NzyKacX3zbaorYjI5PTUsxVPaTIjn1vO/+6msh0XnV1co3rf/obzaw906HOtVMCk3TyP
-         gU9EBGLORJZUtpcXEe58XaPNbFAD2PTD/QvusBsU4ZeVeILs4U9OvRGF7Z/9BKlRkvNv
-         tu8QZm8l4INHcwlaTd+tEuj5zgHNeBbiB0n7YZZ6DjXm2G5+5nvb5CXtMACa3e4xjyyz
-         9gGg==
-X-Gm-Message-State: APf1xPB8FRacE9PSOXfoZ/hIECJraGK2Nk0i3C20qOLfK70kswqizLRJ
-	Tt1oFBYytoIQJ4BsUIVLJNUNsQ==
-X-Received: by 10.98.14.200 with SMTP id 69mr2280740pfo.168.1519917586112;
-        Thu, 01 Mar 2018 07:19:46 -0800 (PST)
-Return-Path: <shreeya.patel23498@gmail.com>
-Received: from [10.0.2.15] ([103.212.140.150])
-        by smtp.googlemail.com with ESMTPSA id a67sm7325506pgc.6.2018.03.01.07.19.43
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Mar 2018 07:19:44 -0800 (PST)
-Message-ID: <1519917581.3531.3.camel@gmail.com>
-Subject: CRC warnings
-From: Shreeya Patel <shreeya.patel23498@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Date: Thu, 01 Mar 2018 20:49:41 +0530
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=9HVCSJ6k+4PzI7sKGwfqAWOK3K+pEcEzjO3YfKu+2bo=;
+        b=WYKQq4rvrsf/t4bxydR/nDyF9PInWl090AKb79gq5/6CXhP86ba0rVqC6gVI6pYnFO
+         tBC7NPBKXvOmJsFAZExpPrD+eiJr9TpVVYnNh6C9XntzWpJ+6ZowMNDesLkeOcPBLWeO
+         J9XB52E4487/im6+7Yt9SqmGQH/FhAzJTUg8zzg7YhePHuOIEp8tJ5tuxdbDZkD7Q3iI
+         bcmbvCb02lO8SEDVi1kigr8vYfKhIQMmuXQ++aqgRKNXJrRhi88otLiA4rABobGn9JHo
+         omS0vHIORsrCjDx+N3VnldobFrEbBky3oguoEEXlwZeAEnZKa5BTYfrjGMkDzrl0nHt8
+         O9zQ==
+X-Gm-Message-State: AHPjjUgbfJ8voCYmRQdShPP3Zr1Zca3C5yhqsKtQGTCvI2rTodhpj224
+	bvXWyAu9hdEjlwUXrZBG+HTQeBPAyuqOrVSxqVg=
+X-Google-Smtp-Source: AOwi7QAWXU3Ms6DP22bbXfByiq4wTnt2EtsryBScSs8BM7gVifyn2P4s7hIdxsyOkmIT3i/DveWkaSL8slipLkvcU7w=
+X-Received: by 10.200.12.11 with SMTP id k11mr10431321qti.105.1506332255492;
+ Mon, 25 Sep 2017 02:37:35 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.140.18.240 with HTTP; Mon, 25 Sep 2017 02:37:34 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.20.1709240908110.2101@hadrien>
+References: <20170923223708.19952-1-georgiana.chelu93@gmail.com> <alpine.DEB.2.20.1709240908110.2101@hadrien>
+From: Georgiana Chelu <georgiana.chelu93@gmail.com>
+Date: Mon, 25 Sep 2017 12:37:34 +0300
+Message-ID: <CALta04xDbHqximmtZTPUxS9HV7mw5Y=sVDu=sTc9XUVdxyZxPA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8188eu: core: Use __func__
+ instead of function name
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.18.5.2-0ubuntu3.2 
-Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
 
-Hello,
+On 24 September 2017 at 10:08, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+> On Sun, 24 Sep 2017, Georgiana Chelu wrote:
+>
+>> Replace the function name from format string with the
+>> constant __func__ to avoid multiple changes in case
+>> the name of the function will be modified.
+>
+> Could you meke the code that you are changing a little more 80-column
+> friendly?
+>
+> julia
+
+Yes, I will do the required changes. Thank you!
 
 
-I am getting bunch of such warnings during compilation.
-I don't have any idea that what is the reason behind it.
-Can anyone help me with this.
+Georgiana
 
-WARNING: "crypto_fl_tab" [arch/x86/crypto/aes-x86_64.ko] has no CRC!
-WARNING: "crypto_register_alg" [arch/x86/crypto/aes-x86_64.ko] has no
-CRC!
-WARNING: "__fentry__" [arch/x86/crypto/aes-x86_64.ko] has no CRC!
-WARNING: "crypto_aes_set_key" [arch/x86/crypto/aes-x86_64.ko] has no
-CRC!
-WARNING: "crypto_it_tab" [arch/x86/crypto/aes-x86_64.ko] has no CRC!
-WARNING: "crypto_unregister_alg" [arch/x86/crypto/aes-x86_64.ko] has no
-CRC!
-scripts/Makefile.modpost:92: recipe for target '__modpost' failed
-make[1]: *** [__modpost] Error 1
-Makefile:1679: recipe for target
-'drivers/staging/iio/accel/adis16209.ko' failed
-make: *** [drivers/staging/iio/accel/adis16209.ko] Error 
+>
+>>
+>> Issue reported by checkpatch.pl script.
+>>
+>> Signed-off-by: Georgiana Chelu <georgiana.chelu93@gmail.com>
+>> ---
+>>  drivers/staging/rtl8188eu/core/rtw_recv.c | 20 ++++++++++----------
+>>  1 file changed, 10 insertions(+), 10 deletions(-)
+>>
+>> diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
+>> index 3fd5f4102b36..3c764b847249 100644
+>> --- a/drivers/staging/rtl8188eu/core/rtw_recv.c
+>> +++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
+>> @@ -237,25 +237,25 @@ static int recvframe_chkmic(struct adapter *adapter,
+>>       stainfo = rtw_get_stainfo(&adapter->stapriv, &prxattrib->ta[0]);
+>>
+>>       if (prxattrib->encrypt == _TKIP_) {
+>> -             RT_TRACE(_module_rtl871x_recv_c_, _drv_info_, ("\n recvframe_chkmic:prxattrib->encrypt==_TKIP_\n"));
+>> -             RT_TRACE(_module_rtl871x_recv_c_, _drv_info_, ("\n recvframe_chkmic:da=0x%02x:0x%02x:0x%02x:0x%02x:0x%02x:0x%02x\n",
+>> -                      prxattrib->ra[0], prxattrib->ra[1], prxattrib->ra[2], prxattrib->ra[3], prxattrib->ra[4], prxattrib->ra[5]));
+>> +             RT_TRACE(_module_rtl871x_recv_c_, _drv_info_, ("\n %s: prxattrib->encrypt==_TKIP_\n", __func__));
+>> +             RT_TRACE(_module_rtl871x_recv_c_, _drv_info_, ("\n %s: da=0x%02x:0x%02x:0x%02x:0x%02x:0x%02x:0x%02x\n",
+>> +                                                            __func__, prxattrib->ra[0], prxattrib->ra[1], prxattrib->ra[2], prxattrib->ra[3], prxattrib->ra[4], prxattrib->ra[5]));
+>>
+>>               /* calculate mic code */
+>>               if (stainfo != NULL) {
+>>                       if (IS_MCAST(prxattrib->ra)) {
+>>                               if (!psecuritypriv) {
+>>                                       res = _FAIL;
+>> -                                     RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("\n recvframe_chkmic:didn't install group key!!!!!!!!!!\n"));
+>> -                                     DBG_88E("\n recvframe_chkmic:didn't install group key!!!!!!!!!!\n");
+>> +                                     RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("\n %s: didn't install group key!!!!!!!!!!\n", __func__));
+>> +                                     DBG_88E("\n %s: didn't install group key!!!!!!!!!!\n", __func__);
+>>                                       goto exit;
+>>                               }
+>>                               mickey = &psecuritypriv->dot118021XGrprxmickey[prxattrib->key_index].skey[0];
+>>
+>> -                             RT_TRACE(_module_rtl871x_recv_c_, _drv_info_, ("\n recvframe_chkmic: bcmc key\n"));
+>> +                             RT_TRACE(_module_rtl871x_recv_c_, _drv_info_, ("\n %s: bcmc key\n", __func__));
+>>                       } else {
+>>                               mickey = &stainfo->dot11tkiprxmickey.skey[0];
+>> -                             RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("\n recvframe_chkmic: unicast key\n"));
+>> +                             RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("\n %s: unicast key\n", __func__));
+>>                       }
+>>
+>>                       /* icv_len included the mic code */
+>> @@ -273,8 +273,8 @@ static int recvframe_chkmic(struct adapter *adapter,
+>>                       for (i = 0; i < 8; i++) {
+>>                               if (miccode[i] != *(pframemic+i)) {
+>>                                       RT_TRACE(_module_rtl871x_recv_c_, _drv_err_,
+>> -                                              ("recvframe_chkmic:miccode[%d](%02x)!=*(pframemic+%d)(%02x) ",
+>> -                                              i, miccode[i], i, *(pframemic+i)));
+>> +                                              ("%s: miccode[%d](%02x)!=*(pframemic+%d)(%02x) ",
+>> +                                               __func__, i, miccode[i], i, *(pframemic+i)));
+>>                                       bmic_err = true;
+>>                               }
+>>                       }
+>> @@ -346,7 +346,7 @@ static int recvframe_chkmic(struct adapter *adapter,
+>>                               }
+>>                       }
+>>               } else {
+>> -                     RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("recvframe_chkmic: rtw_get_stainfo==NULL!!!\n"));
+>> +                     RT_TRACE(_module_rtl871x_recv_c_, _drv_err_, ("%s: rtw_get_stainfo==NULL!!!\n", __func__));
+>>               }
+>>
+>>               skb_trim(precvframe->pkt, precvframe->pkt->len - 8);
+>> --
+>> 2.11.0
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170923223708.19952-1-georgiana.chelu93%40gmail.com.
+>> For more options, visit https://groups.google.com/d/optout.
+>>
 
