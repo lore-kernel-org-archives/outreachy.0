@@ -1,181 +1,115 @@
-X-GM-THRID: 6400358143313838080
-X-Received: by 10.129.147.198 with SMTP id k189mr19880680ywg.76.1490199506711;
-        Wed, 22 Mar 2017 09:18:26 -0700 (PDT)
+X-GM-THRID: 6469039069975281664
+X-Received: by 10.99.62.76 with SMTP id l73mr5676766pga.16.1506368477963;
+        Mon, 25 Sep 2017 12:41:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.24.83 with SMTP id t19ls2697423ott.28.gmail; Wed, 22 Mar
- 2017 09:18:26 -0700 (PDT)
-X-Received: by 10.157.68.229 with SMTP id p37mr16589354otg.29.1490199506294;
-        Wed, 22 Mar 2017 09:18:26 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id 2si444362pfz.1.2017.03.22.09.18.26
+Received: by 10.202.207.76 with SMTP id f73ls5898588oig.3.gmail; Mon, 25 Sep
+ 2017 12:41:17 -0700 (PDT)
+X-Received: by 10.157.17.46 with SMTP id g43mr427538ote.122.1506368477019;
+        Mon, 25 Sep 2017 12:41:17 -0700 (PDT)
+Received: by 10.55.207.150 with SMTP id v22msqkl;
+        Mon, 25 Sep 2017 08:58:02 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBajxZgUSmpq764IV6CdgCcRQ1YBJXIzPNWt+5a+3Y/EOecNUtdlRUH8e1Gle9tm3l7LfZI
+X-Received: by 10.28.8.71 with SMTP id 68mr87817wmi.24.1506355081185;
+        Mon, 25 Sep 2017 08:58:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506355081; cv=none;
+        d=google.com; s=arc-20160816;
+        b=nYXlz1F/CmSAV33ydp6vVzTg5IEIxZqvgXW6W6i5xW/e9/fyogZX1F+SxaNy1xsaHD
+         cUr0BH/bTDXovhoWZAQwDm/MyVwKdMoclCp9F9p6vq8MWydj/t576yj3bPTM7k6525nx
+         kPNxsoqlZqiibkrwN05X7lm9VPWWub8/Fv98hFxEy4UpKK+jeWJKr1+8td1CmR2kzxIV
+         QkfJTkA1WLDW0ek0tvLYiNuxSBuMX5zv7KGVRHFtXG82gjzaIB7MBeCv+O9s6oqCpsHq
+         5hJAIIK8tCrZ/ZzZXSl6z+C2vgry1rWe3i4upZdM9ghcJwGYa6RRoirbIHAqNV27zFNG
+         W5gQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature
+         :arc-authentication-results;
+        bh=jiCQJfSabvlEfioGbMsvlYsLvCLoSOUN7SSGjR/az80=;
+        b=MVryRDlmk0/NRL/Lkbv4VkAX9Jdy7kb3O22pd3u7IxlIi3CKv0ETlFhYLInrYIIlnY
+         aplhUX8m0WFLIyuXEODEgArYrDPWYZpcT1olD20I4sOnlO9wxQhg3TgnsQH0Mr2tQUrL
+         XIjQCGMomP8hPlAfETBnqq58AvxbJdon74oeAvSegVhPaDXnhKPhw6l7jRbpwRCQRFTw
+         FZtWjtJOAB1cm0YnYatX79FwW6I5+WbV5X9S0rIZT41C7KlRNSK7UV9s3sohAaIsMCYm
+         UbFaRF4cTuro4MJjY9DyAA5otJHgE8fuzazHaOE2COiVTaZgqwP4WeWAzlRRBkPVgkLK
+         3Udw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@sirena.org.uk header.s=20170815-heliosphere header.b=O11d5CcG;
+       spf=pass (google.com: domain of broonie@sirena.org.uk designates 2a01:7e01::f03c:91ff:fed4:a3b6 as permitted sender) smtp.mailfrom=broonie@sirena.org.uk
+Return-Path: <broonie@sirena.org.uk>
+Received: from heliosphere.sirena.org.uk (heliosphere.sirena.org.uk. [2a01:7e01::f03c:91ff:fed4:a3b6])
+        by gmr-mx.google.com with ESMTPS id l133si553130wmb.3.2017.09.25.08.58.01
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 22 Mar 2017 09:18:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 25 Sep 2017 08:58:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of broonie@sirena.org.uk designates 2a01:7e01::f03c:91ff:fed4:a3b6 as permitted sender) client-ip=2a01:7e01::f03c:91ff:fed4:a3b6;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id 81so23295296pgh.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 22 Mar 2017 09:18:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=4X2glnbhHCmRFsrBc8IQCiLwAPp6gqZlkOs4QGFehKE=;
-        b=pAXQ40klY/NCR41y7Lh1y08GDUehOtzEzv4U2D6qg71ZiZHsW57ZUJEu1Zyylzmkul
-         /PYpXLDmCty02qELzs0+4dgn0nJLaf4q0Nm3OZktp2Q7f0Przboc4q+ctgiZWu1Xu7JJ
-         DcqRt6E+tqaqd+JuqNK9ChpTdOfk1fn3IMOEs3QH2/uOMRO0YSA0F/4pXHlruCmd4rN6
-         B6NSf4mv+A3SkbeSi2E8NcCs2M4nXGJwinfmFkwUqOubFBaVW1LtFizTS5fwC8gehDUf
-         D+UhIa27eXNi4iRXZegBvTj20HQkSfUp/Kq5OY8Vvmgw86bmgcL4zV8wWuPP38EPvG6O
-         8ytA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=4X2glnbhHCmRFsrBc8IQCiLwAPp6gqZlkOs4QGFehKE=;
-        b=BBlyhgiAbmbdx7Po+l9oZtrpfQ0bHxRKxLe4M7CQh1mVMRxDl9b4v+IduCBOnbMp8Y
-         nXJwrKqkFPTRuI7L4ETnf2YKOPMQB7LWD1n50l8QNYEJAxnkaNvlRj40uPSschEFrYVo
-         QrMuYq/R6bCahP0a4T+SEVVvD8TArr56IzvRzZYHXunfa9ufJ7McZJtDmHGj8mCq48y3
-         vHRIqhCxktsHhngXFL6GEHs1cGpBZVeyTDrSF3Cgh7FFW2BulxLWnoKUH1T68K+vXkIe
-         OD6CbvPHwR+WJ6sundAUlm9AJTgQqvEZ6KuN84Cf0eregwgzdk5OanADo53LDXhVHvVs
-         wm+Q==
-X-Gm-Message-State: AFeK/H3STbshW6565c4Tg5EM8vF8zsJfDGk1r9Zu+XvHQPTDl9MHybrBgj/5Ut3/57Mbaw==
-X-Received: by 10.99.45.2 with SMTP id t2mr45295305pgt.209.1490199505998;
-        Wed, 22 Mar 2017 09:18:25 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id s27sm691360pfk.39.2017.03.22.09.18.24
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 22 Mar 2017 09:18:25 -0700 (PDT)
-Date: Wed, 22 Mar 2017 21:50:43 +0530
-From: simran singhal <singhalsimran0@gmail.com>
-To: lars@metafoo.de
-Cc: Michael.Hennerich@analog.com, jic23@kernel.org,
-	Hartmut Knaack <knaack.h@gmx.de>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH v8] staging: adis16060: Remove iio_dev mlock and refactor code
-Message-ID: <20170322162042.GA7955@singhal-Inspiron-5558>
+       dkim=pass header.i=@sirena.org.uk header.s=20170815-heliosphere header.b=O11d5CcG;
+       spf=pass (google.com: domain of broonie@sirena.org.uk designates 2a01:7e01::f03c:91ff:fed4:a3b6 as permitted sender) smtp.mailfrom=broonie@sirena.org.uk
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=sirena.org.uk; s=20170815-heliosphere; h=In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	 bh=jiCQJfSabvlEfioGbMsvlYsLvCLoSOUN7SSGjR/az80=; b=O11d5CcGZ1KMPDWNkjv0prbdz
+	4ndgQpVPoxrxay2pkE91liVD3pt1EyOO53fmVPEW6AJP0nPWJUZoRYgXJUDl+vYhj3rEq7to+Qtbm
+	DZNbrvb1espHhdbSVefB0R3NBuHsgVs9X9fR+Jn+NLAMnJzWElkfb4uPTrP/feRUGf+Ps=;
+Received: from [70.35.39.2] (helo=finisterre.ee.mobilebroadband)
+	by heliosphere.sirena.org.uk with esmtpsa (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.89)
+	(envelope-from <broonie@sirena.org.uk>)
+	id 1dwVlb-0001Ro-B7; Mon, 25 Sep 2017 15:57:55 +0000
+Received: by finisterre.ee.mobilebroadband (Postfix, from userid 1000)
+	id 78B6F440052; Mon, 25 Sep 2017 16:57:21 +0100 (BST)
+Date: Mon, 25 Sep 2017 16:57:21 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Shreeya Patel <shreeya.patel23498@gmail.com>
+Cc: lgirdwood@gmail.com, robh+dt@kernel.org, mark.rutland@arm.com,
+	baohua@kernel.org, alsa-devel@alsa-project.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] Documentation: DT bindings: Add chip compatible string
+ for audio codec.
+Message-ID: <20170925155721.bahw47htnsy6lw4x@sirena.org.uk>
+References: <1506190523-4338-1-git-send-email-shreeya.patel23498@gmail.com>
 MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="seg6st7tp5bnfws5"
+Content-Disposition: inline
+In-Reply-To: <1506190523-4338-1-git-send-email-shreeya.patel23498@gmail.com>
+X-Cookie: MIT:
+User-Agent: NeoMutt/20170609 (1.8.3)
+
+
+--seg6st7tp5bnfws5
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
 
-The IIO subsystem is redefining iio_dev->mlock to be used by
-the IIO core only for protecting device operating mode changes.
-ie. Changes between INDIO_DIRECT_MODE, INDIO_BUFFER_* modes.
+On Sat, Sep 23, 2017 at 11:45:23PM +0530, Shreeya Patel wrote:
+> This patch adds chip compatible string to remove the warnings
+> generated by checkpatch that -DT compatible string
+> "toshiba,apb-dummy-codec" appears un-documented.
 
-In this driver, mlock was being used to protect hardware state changes.
+What is this device and why does it make sense to be covered with this
+compatible string?  The -dummy-codec makes it seem like something that
+has no place in a DT at all.
 
-In the driver, buf_lock protects both the adis16060_spi_write() and
-adis16060_spi_read() functions and both are always called in
-pair. First write, then read. Refactor the code to have
-one single function adis16060_spi_write_than_read() and remove
-the use of mlock as adis16060_read_raw() does not require an
-iio_dev->mlock for reads.
+Please use subject lines matching the style for the subsystem.  This
+makes it easier for people to identify relevant patches.
 
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
----
+--seg6st7tp5bnfws5
+Content-Type: application/pgp-signature; name="signature.asc"
 
- v8:
-   -change subject
-   -change commit message
- v7:
-   -Change subject
-   -Remove lock from read_raw instead from
-    function adis16060_spi_write_than_read().
- v6:
-   -Change commit message
-   -Remove nested lock
- v5:
-   -Rename val in adis16060_spi_write_than_read() to conf.
-   -Rename val2 in adis16060_spi_write_than_read() to val.
-   -Corrected Checkpatch issues.
-   -Removed goto from adis16060_read_raw().
- v4:
-   -Refactored code
-   -change commit subject
-   -change commit message
- v3:
-   -Removed new lock to reuse the existing lock
- v2:
-   -Fixed compilation error
+-----BEGIN PGP SIGNATURE-----
 
- drivers/staging/iio/gyro/adis16060_core.c | 33 ++++++++-----------------------
- 1 file changed, 8 insertions(+), 25 deletions(-)
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlnJJ2AACgkQJNaLcl1U
+h9CN0Af/cS0ELv1uC5llXnO9tU2iZsecx3Yh+IuJQb1KM5JvMcCzOvodoXOnorlH
+k8j7rxo2kBA5ldHMc758flIT3Mau9L0lQQEaqST+Oicw7BQSyMQVjL/+O3BwA5xs
+tY/TVbplBrydEVg24fAoFrZfQ/EIs+Ia2mc7JpaONJo42Pl6agfvMDP9EGmocBYu
+qu85tDIVSeNXuvrmyofxrpHGA2rMW7gCb3ZcHax6yjdCqsKW/nNwD3i4bFCOnxYy
+3M4/ooxFgwENg3z8tOMIlq5vDqClSzc6+KFOvrpqtECbL7AWddE7feRd2zk10YlF
+gbkRlsqYgGbo17u2Cb//+a9GsRHKFA==
+=avhb
+-----END PGP SIGNATURE-----
 
-diff --git a/drivers/staging/iio/gyro/adis16060_core.c b/drivers/staging/iio/gyro/adis16060_core.c
-index c9d46e7..e96fce5 100644
---- a/drivers/staging/iio/gyro/adis16060_core.c
-+++ b/drivers/staging/iio/gyro/adis16060_core.c
-@@ -40,25 +40,18 @@ struct adis16060_state {
- 
- static struct iio_dev *adis16060_iio_dev;
- 
--static int adis16060_spi_write(struct iio_dev *indio_dev, u8 val)
-+static int adis16060_spi_write_than_read(struct iio_dev *indio_dev,
-+					 u8 conf, u16 *val)
- {
- 	int ret;
- 	struct adis16060_state *st = iio_priv(indio_dev);
- 
- 	mutex_lock(&st->buf_lock);
--	st->buf[2] = val; /* The last 8 bits clocked in are latched */
-+	st->buf[2] = conf; /* The last 8 bits clocked in are latched */
- 	ret = spi_write(st->us_w, st->buf, 3);
--	mutex_unlock(&st->buf_lock);
--
--	return ret;
--}
--
--static int adis16060_spi_read(struct iio_dev *indio_dev, u16 *val)
--{
--	int ret;
--	struct adis16060_state *st = iio_priv(indio_dev);
- 
--	mutex_lock(&st->buf_lock);
-+	if (ret < 0)
-+		return ret;
- 
- 	ret = spi_read(st->us_r, st->buf, 3);
- 
-@@ -86,17 +79,11 @@ static int adis16060_read_raw(struct iio_dev *indio_dev,
- 
- 	switch (mask) {
- 	case IIO_CHAN_INFO_RAW:
--		/* Take the iio_dev status lock */
--		mutex_lock(&indio_dev->mlock);
--		ret = adis16060_spi_write(indio_dev, chan->address);
-+		ret = adis16060_spi_write_than_read(indio_dev,
-+						    chan->address, &tval);
- 		if (ret < 0)
--			goto out_unlock;
-+			return ret;
- 
--		ret = adis16060_spi_read(indio_dev, &tval);
--		if (ret < 0)
--			goto out_unlock;
--
--		mutex_unlock(&indio_dev->mlock);
- 		*val = tval;
- 		return IIO_VAL_INT;
- 	case IIO_CHAN_INFO_OFFSET:
-@@ -110,10 +97,6 @@ static int adis16060_read_raw(struct iio_dev *indio_dev,
- 	}
- 
- 	return -EINVAL;
--
--out_unlock:
--	mutex_unlock(&indio_dev->mlock);
--	return ret;
- }
- 
- static const struct iio_info adis16060_info = {
--- 
-2.7.4
-
+--seg6st7tp5bnfws5--
 
