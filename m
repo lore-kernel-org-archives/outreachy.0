@@ -1,164 +1,141 @@
 X-GM-THRID: 6469221009179279360
-X-Received: by 10.129.19.10 with SMTP id 10mr646434ywt.64.1507575679631;
-        Mon, 09 Oct 2017 12:01:19 -0700 (PDT)
+X-Received: by 10.159.55.229 with SMTP id q92mr5931679uaq.29.1506368477954;
+        Mon, 25 Sep 2017 12:41:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.129.182.40 with SMTP id u40ls409308ywh.43.gmail; Mon, 09 Oct
- 2017 12:01:18 -0700 (PDT)
-X-Received: by 10.13.222.67 with SMTP id h64mr658452ywe.150.1507575678850;
-        Mon, 09 Oct 2017 12:01:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507575678; cv=none;
+Received: by 10.202.78.211 with SMTP id c202ls5830298oib.10.gmail; Mon, 25 Sep
+ 2017 12:41:17 -0700 (PDT)
+X-Received: by 10.157.88.138 with SMTP id x10mr433040otg.188.1506368477026;
+        Mon, 25 Sep 2017 12:41:17 -0700 (PDT)
+Received: by 10.55.18.103 with SMTP id c100msqkh;
+        Mon, 25 Sep 2017 01:27:08 -0700 (PDT)
+X-Received: by 10.25.207.83 with SMTP id f80mr439724lfg.0.1506328028388;
+        Mon, 25 Sep 2017 01:27:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506328028; cv=none;
         d=google.com; s=arc-20160816;
-        b=TDvsLFE5ca7fgFlZDiTEgDXPRIXQFbbU2OIdFp53HwnvMBjsp6Rq2xRWOKvtBN/4QW
-         d2E9nioK0HiRFbr453eZQcQvaeZup+GNsgVFRsxjvSqsUQzPXKC8QGZlti+uDSwLxy4E
-         Qc3yBcswhMqHpqB9zhwepJ2oB3PIB48f8mJjT+BtU5JzlXDubiKWV+KHeQxKXK545hJ2
-         HO5DP7jA4cstPkMwPVp+w+xvtmxpPd4ce+a57ADC3QISv9CO7q9xb/fcBN/lIDLmXcJT
-         YoO3eU+Dk7pbwnQYbuhh1aDqdOhIRgJTgZpgjW0Sbm87w0NZWHrplfhfl4HXkRUksZqR
-         F8Mw==
+        b=GUFPQgDexzx+LZPqd5kXz0UN80yOzkD/ii2d/6u8g5xw8YwO5n1NRTMaVc9lTjm1ln
+         WwcUzu97jKt6pQnvpVri9OvwZWPx8mRZDDhNqU9paOZhHR/DByK6g43wpKx3QCkwvhPl
+         JKO4eREdOg45gSgh0Fkup+GByUA7cBDQOfMOmLBM7d57oQw7JIT1EmMi7LW7qGYIof/M
+         GcLWMRawHeWMdgJjLVtFYvlb40Ah8UY5iRqJvww+9Hewb9FMULtLBndI4ru1iSHbFeAY
+         9m+i3DCw4uPaKTndeLwTF1y7RbdT7XbmIncmYkMMzZlEGn0SB7lLGPaOTYCYPoE4L/RO
+         vZvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:references:in-reply-to
          :mime-version:dkim-signature:arc-authentication-results;
-        bh=vphNOndw9Z445xNgGGs4ZfdR149UPMBH43/sHZ55jFc=;
-        b=H2NEc/moXp+Y/hior4hkVsVgSHAPXJmMNdl9J0eHgDfxdJNMTa2L1kBCBi8bfGCHAO
-         JnaUgWF01CDPJejX41Im5oSKJOn5e4GvpXmCdUnBdBB0/+Q61LmI61pftcYDaWKB5FuU
-         1q2dZs163Di1Et9spf4hH22wlUYS/20InipTY5+pe3FuGhad3XdXKscP6wMVYMn3VD3U
-         AVXDfGIIpXBnR/1NLHpaDJPIUWChAEuonydvaWS6MdYRlGv5PTFySM98I6BFDKpcEHET
-         1t3A89uOFrr6nAfPoX2kRpBuh2ElWJ3OZTt7wSQCW1Z0rj6MVSYSwVxfcWM5v5/PbAVK
-         s95A==
+        bh=ZvNFENHw5gaWgh2IxvNPK6LpbJavjxN3ZJEX2exhL9c=;
+        b=dXsu9C75qad6XRT6r25xEiryGcpuLKpbLvaa3hauAvOaLuyXHnvowO706VIHNeo93Z
+         JWpDL9WXfQ30J4qS3cqmBfZFtFQmpk/Rywdf1fU61gHQlrmLiP2MRtND76O7Klfqw1Qu
+         C1zE/bijZonu1LOOdWNSEOVoGXW9b3ociVXzuSd5j2U39J1IlfkbzPuCQPWVxmyP4LQT
+         JTqg1zD6GyDmM+pvORUAWqoqXwOPeIIoIo/K/gnG44Ta8WcCwuwH+c4yIRB3IdTZRvcX
+         wOr8PII5aDLYeVVv7P35ttnetm9Ys4taTZYOYb6BJ6ibZxeNILVgZ1tzR/ntH1/sv6nK
+         2oQA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@chromium.org header.s=google header.b=OixThk8A;
-       spf=pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:400d:c0d::22d as permitted sender) smtp.mailfrom=seanpaul@chromium.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org
-Return-Path: <seanpaul@chromium.org>
-Received: from mail-qt0-x22d.google.com (mail-qt0-x22d.google.com. [2607:f8b0:400d:c0d::22d])
-        by gmr-mx.google.com with ESMTPS id x26si172276ywj.28.2017.10.09.12.01.18
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZOCGpnCI;
+       spf=pass (google.com: domain of allen.lkml@gmail.com designates 2a00:1450:400c:c0c::242 as permitted sender) smtp.mailfrom=allen.lkml@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <allen.lkml@gmail.com>
+Received: from mail-wr0-x242.google.com (mail-wr0-x242.google.com. [2a00:1450:400c:c0c::242])
+        by gmr-mx.google.com with ESMTPS id l133si466155wmb.3.2017.09.25.01.27.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 Oct 2017 12:01:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:400d:c0d::22d as permitted sender) client-ip=2607:f8b0:400d:c0d::22d;
+        Mon, 25 Sep 2017 01:27:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of allen.lkml@gmail.com designates 2a00:1450:400c:c0c::242 as permitted sender) client-ip=2a00:1450:400c:c0c::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@chromium.org header.s=google header.b=OixThk8A;
-       spf=pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:400d:c0d::22d as permitted sender) smtp.mailfrom=seanpaul@chromium.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org
-Received: by mail-qt0-x22d.google.com with SMTP id z50so40017495qtj.4
-        for <outreachy-kernel@googlegroups.com>; Mon, 09 Oct 2017 12:01:18 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZOCGpnCI;
+       spf=pass (google.com: domain of allen.lkml@gmail.com designates 2a00:1450:400c:c0c::242 as permitted sender) smtp.mailfrom=allen.lkml@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wr0-x242.google.com with SMTP id b9so1428752wra.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 25 Sep 2017 01:27:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
+        d=gmail.com; s=20161025;
         h=mime-version:in-reply-to:references:from:date:message-id:subject:to
          :cc;
-        bh=vphNOndw9Z445xNgGGs4ZfdR149UPMBH43/sHZ55jFc=;
-        b=OixThk8ACDCFfXc7WjxU7y1sm22CzsWiYYWSVaStLeFNbrjMxi1WpuCNwHTn1RLCKI
-         1c1H8w6vbqlMkdsDJiG1mcEiPWAXxesbFZUTM+SdQp1jqCdPq+gdJubwn5EOv3KGlIpy
-         WrSU5DKamtEIYm/bUfbTE0BCCiqMTDBy46YkE=
+        bh=ZvNFENHw5gaWgh2IxvNPK6LpbJavjxN3ZJEX2exhL9c=;
+        b=ZOCGpnCIvkXXK+LcpwRcPfQUlFUvGmaem9Wk27B6GHfg2neOKDAjHkjCTH3fiibEfK
+         p7xNiJ4LMV0pEljI0JLlUB+G64Fiuu6G8xQOlnnudyhTaXb+27guxncJQ/QQWbD5+LDq
+         Ugl6yb4Og+ZBybWkf3FB4ZmUwX8GJ/XrdM8VoYrle6v8bXxR13LgaPlENOCha4coNg73
+         FKv19en4yrgdSmInHFlymUMATnXAIV/tOV5ieBT5oTs1Sksf5kdEswRQKg9/6ekC+hOe
+         QiYVvhDerRaiKloxul94PA9SVFk+T0RGR8oFzeCUD3uUKOktvepe3Q9+YxcbTaZeQ13A
+         2zOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:in-reply-to:references:from:date
          :message-id:subject:to:cc;
-        bh=vphNOndw9Z445xNgGGs4ZfdR149UPMBH43/sHZ55jFc=;
-        b=jWLmc+bjLRI265PnwYIPYNYMfY7DaUD8QGTV1jMZiEDI1kR7IPqwVXyHNeOiCksgDP
-         GUwbtB9xUlgm4/uzx6Z6C3iUZHR76S59Snp9ByfMoO5E2T9Bc/mmGTYmQ5RYs8fPSzGL
-         FoUSnPsRnuZcdKkuALFYIa/obaqqtpFyId6zciJ7CV4C7HSqi8PucFMEYH9/jcaECndq
-         Z13DHEQNL3R2YOBhlQlXhVQM94fXjgUq0+vLZX7jTUYSZU3XKXHXqxIbILJr6YuaHtU1
-         tnvK4IZkbxUfZjEsI0jbaWgfYzSkcEGHpDz+BJ4rVYevfbqnrPVBJMhquZgdiIedm1pF
-         TScw==
-X-Gm-Message-State: AMCzsaUcDnbh2ZgDvlxWTawgExwGQvrVYCPJ2+S34mywEJHw0pMpULvY
-	5NHNn4V69AL7cXcO40Lfk1VeVGrSSs8=
-X-Received: by 10.37.130.69 with SMTP id d5mr411237ybn.25.1507575678210;
-        Mon, 09 Oct 2017 12:01:18 -0700 (PDT)
-Return-Path: <seanpaul@chromium.org>
-Received: from mail-io0-f173.google.com (mail-io0-f173.google.com. [209.85.223.173])
-        by smtp.gmail.com with ESMTPSA id g84sm3438058ywg.100.2017.10.09.12.01.17
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 Oct 2017 12:01:17 -0700 (PDT)
-Received: by mail-io0-f173.google.com with SMTP id j17so6831963iod.5
-        for <outreachy-kernel@googlegroups.com>; Mon, 09 Oct 2017 12:01:17 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QBoFwOqTGADSrMCXd+BWYWD6x7PO0igWMcAtVR+N32wHGRkaJB3NmJ2k0697ll/ZB+IYhmPd4+X8WS54EC7mVo=
-X-Received: by 10.107.200.136 with SMTP id y130mr14329966iof.74.1507575676989;
- Mon, 09 Oct 2017 12:01:16 -0700 (PDT)
+        bh=ZvNFENHw5gaWgh2IxvNPK6LpbJavjxN3ZJEX2exhL9c=;
+        b=GmpigrHEjQ/hpKyiG+RjTkgh1qmlFw9P7Qa2+Nsd6PQ12CItsLlGyhOEniueNM7Sew
+         2OoYLSEoorgEwTHVLjxmYuGHNaEV90l9PLxoQdb88deD2tseN+OhZXRtzzKIx8/0dYCt
+         x+E2gdI5DlPSBnOOJYp/hGjDKUArKtggqS5+gKJNVfSYsgJofwEOOlK93IXSmut/En08
+         eWL+oCLKApWtbqOpPCzH3PjKhqtYKpoR/Wl3fPOhnPa5VrSZxOUR3soZm/tShbEDHQR7
+         5UYhWCsQFQCWZlCf7KEdXA+/4yy81KEBbtF/I6X74/jYrMRwlFUh/gu1qhUZ3UqypeYw
+         H8tQ==
+X-Gm-Message-State: AHPjjUg9Xj98PPgoPhmuEhPnim5sfM2KB3DSKhIR537SThDpAZNLigsQ
+	BaeflyV/tXWDBW2UPA/lHRXKrYvCJXe3SZe4oOk=
+X-Google-Smtp-Source: AOwi7QB51YTuFgUIMP84Z59WOPtAhkrSNCJlkYt44940LRdicdcGvMjy9uuq/2JmG3jyASdt3LlL92unpvPui5d1pdo=
+X-Received: by 10.25.208.9 with SMTP id h9mr1762712lfg.150.1506328028131; Mon,
+ 25 Sep 2017 01:27:08 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.107.174.66 with HTTP; Mon, 9 Oct 2017 12:00:56 -0700 (PDT)
-In-Reply-To: <20170925073841.GA12494@ulmo.fritz.box>
-References: <1506271437-23058-1-git-send-email-harshasharmaiitr@gmail.com> <20170925073841.GA12494@ulmo.fritz.box>
-From: Sean Paul <seanpaul@chromium.org>
-Date: Mon, 9 Oct 2017 15:00:56 -0400
-X-Gmail-Original-Message-ID: <CAOw6vb+YrGO=09bPzsX9aFtFKpQntadwT43dh4sL6KUwdH+f0A@mail.gmail.com>
-Message-ID: <CAOw6vb+YrGO=09bPzsX9aFtFKpQntadwT43dh4sL6KUwdH+f0A@mail.gmail.com>
-Subject: Re: [Outreachy kernel] Re: [PATCH v2] drm/tegra: Replace dev_* with DRM_DEV_*
-To: Thierry Reding <thierry.reding@gmail.com>
-Cc: Harsha Sharma <harshasharmaiitr@gmail.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
-	"linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Received: by 10.179.26.6 with HTTP; Mon, 25 Sep 2017 01:27:07 -0700 (PDT)
+In-Reply-To: <1506271437-23058-1-git-send-email-harshasharmaiitr@gmail.com>
+References: <1506271437-23058-1-git-send-email-harshasharmaiitr@gmail.com>
+From: Allen <allen.lkml@gmail.com>
+Date: Mon, 25 Sep 2017 13:57:07 +0530
+Message-ID: <CAOMdWS+W6re5C_kHTzZJHBuvHMkq97T00vFcd7KB2cQFnqGDtQ@mail.gmail.com>
+Subject: Re: [PATCH v2] drm/tegra: Replace dev_* with DRM_DEV_*
+To: Harsha Sharma <harshasharmaiitr@gmail.com>
+Cc: thierry.reding@gmail.com, dri-devel@lists.freedesktop.org, 
+	linux-tegra@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	outreachy-kernel@googlegroups.com
 Content-Type: text/plain; charset="UTF-8"
 
-On Mon, Sep 25, 2017 at 3:38 AM, Thierry Reding
-<thierry.reding@gmail.com> wrote:
-> On Sun, Sep 24, 2017 at 10:13:57PM +0530, Harsha Sharma wrote:
->> Replace all occurences of dev_info/err/dbg with DRM_DEV_INFO/
->> ERROR/DEBUG as we have DRM_DEV_* variants of drm print macros
->> Done using following coccinelle semantic patch
->>
->> @r@
->> @@
->>
->> (
->> -dev_info
->> +DRM_DEV_INFO
->> |
->> -dev_err
->> +DRM_DEV_ERROR
->> |
->> -dev_dbg
->> +DRM_DEV_DEBUG
->> )
->>
->> Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
->> ---
->> Changes in v2:
->>  -Break line over 80 characters
->>  -Changes in comments not required
->
-> Please don't do this. Most of the functions that you're trying to
-> replace here are not DRM_DEV_*() for a very specific reason: none of
-> them have anything to do with DRM/KMS in particular. This is important,
-> in my opinion, because these messages are very device-specific and the
-> additional information added by the DRM format string aren't useful in
-> the context.
-
-Hey Thierry,
-It's likely not useful to a tegra expert such as yourself. However,
-when I'm switching between platforms or providing log-parsing
-instructions, it's very useful to say "grep for drm". Without the
-common drm prefix, the reader needs to know they're looking for
-tegra-sor, tegra-dc, etc as well.
-
-Not a big deal, I just wanted to provide color for why someone might want this.
+Harsha,
 
 >
-> Perhaps the only ones I consider to be good candidates for this
-> conversion are the ones in drivers/gpu/drm/tegra/fb.c because they deal
-> with the DRM fbdev setup and hence are not device specific. And even in
-> those cases I'm not sure we gain very much by this conversion,
-> especially since most of the replacements now end up having to split up
-> argument lists.
+> @r@
+> @@
 >
-> Sorry if this isn't documented anywhere. I also suspect other driver
-> maintainers will be less picky about this sort of thing, so you might
-> have more luck there.
-
-I think the TODO entry states that contributors should check with the
-driver maintainers before taking on this work, so it is documented :)
-
-Sean
-
-
+> (
+> -dev_info
+> +DRM_DEV_INFO
+> |
+> -dev_err
+> +DRM_DEV_ERROR
+> |
+> -dev_dbg
+> +DRM_DEV_DEBUG
+> )
 >
-> Thierry
+> Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
+> ---
+> Changes in v2:
+>  -Break line over 80 characters
+>  -Changes in comments not required
 >
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170925073841.GA12494%40ulmo.fritz.box.
-> For more options, visit https://groups.google.com/d/optout.
+>  drivers/gpu/drm/tegra/dc.c     |  53 +++++++-----
+>  drivers/gpu/drm/tegra/dpaux.c  |  24 +++---
+>  drivers/gpu/drm/tegra/dsi.c    |  68 ++++++++-------
+>  drivers/gpu/drm/tegra/falcon.c |  16 ++--
+>  drivers/gpu/drm/tegra/fb.c     |  22 +++--
+>  drivers/gpu/drm/tegra/gem.c    |   8 +-
+>  drivers/gpu/drm/tegra/gr2d.c   |  10 ++-
+>  drivers/gpu/drm/tegra/gr3d.c   |  20 +++--
+>  drivers/gpu/drm/tegra/hdmi.c   |  66 +++++++++------
+>  drivers/gpu/drm/tegra/output.c |   8 +-
+>  drivers/gpu/drm/tegra/rgb.c    |  12 +--
+>  drivers/gpu/drm/tegra/sor.c    | 184 +++++++++++++++++++++++++----------------
+>  drivers/gpu/drm/tegra/vic.c    |  15 ++--
+>  13 files changed, 304 insertions(+), 202 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/tegra/dc.c b/drivers/gpu/drm/tegra/dc.c
+> index 4df3911..fbc9cc1 100644
+> --- a/drivers/gpu/drm/tegra/dc.c
+> +++ b/drivers/gpu/drm/tegra/dc.c
+> @@ -1137,7 +1137,7 @@ static void tegra_dc_commit_state(struct tegra_dc *dc,
+>
+
+ One of the first things you'll probably need to do is to break this
+huge patch into
+smaller chunks. It becomes difficult to even review this patch(though
+the change is
+pretty straight forward.).
+
+- Allen
 
