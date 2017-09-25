@@ -1,46 +1,46 @@
 X-GM-THRID: 6469118697195700224
-X-Received: by 10.223.172.8 with SMTP id v8mr315400wrc.32.1506334552164;
-        Mon, 25 Sep 2017 03:15:52 -0700 (PDT)
+X-Received: by 10.223.174.201 with SMTP id y67mr285405wrc.7.1506334446517;
+        Mon, 25 Sep 2017 03:14:06 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.20.17 with SMTP id u17ls2285963ljd.9.gmail; Mon, 25 Sep
- 2017 03:15:51 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QCmwpkCK99QvFFAK9HDpXmPXRtk5ekg6UbuH2uMs/8z8yNgYSC3NuXClHIeTERetTMkKEmN
-X-Received: by 10.46.25.66 with SMTP id p63mr419251lje.12.1506334551381;
-        Mon, 25 Sep 2017 03:15:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506334551; cv=none;
+Received: by 10.25.19.87 with SMTP id j84ls261159lfi.17.gmail; Mon, 25 Sep
+ 2017 03:14:04 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QAMYToI9to6EYCZyhcyt7fjKPYYEVtmw5stkF9mV4MhpZ1iPbi3bcgnzFfXSXWAWPsHXdtT
+X-Received: by 10.25.125.138 with SMTP id y132mr497503lfc.9.1506334444544;
+        Mon, 25 Sep 2017 03:14:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506334444; cv=none;
         d=google.com; s=arc-20160816;
-        b=jiglONNRcePnw5+BsPJ1fbYehA4wH6VzLmbvhTQ1ZtKTPOncmu8VD8XDGO0clqEFmI
-         XpOvi5qflBxT8U4vixtskoR6qgt4zukO4SQf2jY9FIrNu7OaB0NOAO3VPzmIClBnkULX
-         Fo1yCUewlSAY+EsW+ixGJE6ZzwVQGC1keCMs4qFUdHHpMlGOFGQILw16v3pwvJ3hcsF4
-         hrrkLUzswZ2d1/uWL8oAJWaRwSLgtogSKpHg0LGrOavDJwyeKNnR9+PUbTuiQ/il4dTZ
-         /1i/NPHISAOlSTXJ7qU8cqrJVhuauOlD8G0ox7V7fGEdlFkBM8TsA9HLAuIbqEZOwo4o
-         63xA==
+        b=MYnjzAKu4MRjnEJMyt4HeSA7g/dKy6hLCb7oPPmCC0VZPmpZS8Fsu0jLK7WH2jBfye
+         VdXP7Mm3bw7dxeINMGkw9mf2NUuTygvmxjrLauScuRiaFtSrs4CIHNhY/i3PjjlTUg6P
+         kbsg/2s0dJB3911/ZJaM4CJjIoBjHh3zeebu4PPNXeS5DTcFe/ShXQkO7+PDj+GHwOJ0
+         lSX/JTUqqQTkMV9cvJi1wQHAw07Ms9SYt+NCPmLFP/Yj8KxVi4rhd48dalZF8BesxO2K
+         9nuO3axRxHb6ibUUrlYy4+Wki34x6NnLCGr2U71uATFO7RTsDZKk+t5J0uPnjaoxATze
+         qQTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:user-agent:references:message-id:in-reply-to:subject
          :cc:to:from:date:arc-authentication-results;
-        bh=/ou6IeA8Hdn6ogACuMFi2f1X4zQ1ii5JAEBehsWPzDI=;
-        b=KrnNHyf+ZG8hX+SWiHpMYGx6zwZVRWmwVxADpmHF1UQ608zWohsi/YBHDwtrxYYgU6
-         I/XS+zkBwN3miXsELH0SW/ep7q47WV1b+bwQr6R9/THqd7zO24cYa4fQNthQzZosZjHY
-         4nb5h8TBe8CyZzquQx924ViGaPXwGFhhBbhrUwgTitStig1BjArvODOD9quVERfHpX6M
-         C5htbPAngFwJClhCeThJ1TonoObkjd1+ErCpyN5mRzFe7G0tTpfJJM4OrfT5tZubhIAg
-         QLUgtCCGh9tdbarX4bGCsMdDeOtW2TTvZZ4hIaZs2apTN5zRqBn01M5VxS3klhalqNn8
-         g0iw==
+        bh=tHSWJLaop8NDgvQVjJPtwNnPViibHBO5M5/bQeWgbv8=;
+        b=i3pe7rTahONJWK5HVkNJBg+8GTP721BXpaiZ6CpxPtrd5nKy6pdoVNgOxMm34fm7RA
+         x2r87fu+HXZ67U6GM5rSf+9/8tITvPJzOwIIab0Ql/kEzBaOof5tFhhEhTVGMqK2e/XB
+         /0YKYu4KZwOb9kO6Vv9jpu30ptUpwQs25mexlczNT7O7ApTpTykk8wyXlmLqH60+WoBt
+         yx9ADlvGVwjbjnpjc2q0ZnBTotS0YhFPYrAFL9WTFjfCHBEBUmfA9IWwQ5X0e1/SVG9S
+         mIhP7bbbNQuHudmEM1dAa1rdJ6KIdMiyFfwducy5n5wGPqBFQF8/A+X7L+p1QENwR4gm
+         c2iQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 Return-Path: <julia.lawall@lip6.fr>
 Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id l133si485120wmb.3.2017.09.25.03.15.51
+        by gmr-mx.google.com with ESMTPS id k18si659986wmd.1.2017.09.25.03.14.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Sep 2017 03:15:51 -0700 (PDT)
+        Mon, 25 Sep 2017 03:14:04 -0700 (PDT)
 Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
        spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.42,435,1500933600"; 
-   d="scan'208";a="292572823"
+   d="scan'208";a="292572569"
 Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 25 Sep 2017 12:15:51 +0200
-Date: Mon, 25 Sep 2017 12:15:15 +0200 (CEST)
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 25 Sep 2017 12:14:04 +0200
+Date: Mon, 25 Sep 2017 12:13:28 +0200 (CEST)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: Georgiana Chelu <georgiana.chelu93@gmail.com>
@@ -50,7 +50,7 @@ cc: outreachy-kernel <outreachy-kernel@googlegroups.com>,
 Subject: Re: [Outreachy kernel] [PATCH] Staging: media: atomisp: Use
  kmalloc_array instead of kmalloc
 In-Reply-To: <CALta04w00_XEDmGfUfFa=Sq3JsObV6eJcQ-sCS-zG+uFEwbu3g@mail.gmail.com>
-Message-ID: <alpine.DEB.2.20.1709251213590.3141@hadrien>
+Message-ID: <alpine.DEB.2.20.1709251211510.3141@hadrien>
 References: <20170923232419.21625-1-georgiana.chelu93@gmail.com> <alpine.DEB.2.20.1709240900140.2101@hadrien> <CALta04w00_XEDmGfUfFa=Sq3JsObV6eJcQ-sCS-zG+uFEwbu3g@mail.gmail.com>
 User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
@@ -109,6 +109,14 @@ On Mon, 25 Sep 2017, Georgiana Chelu wrote:
 > The memory allocation in kmalloc function is done using the Slab Allocator
 > and it is the allocator job to improve the branch prediction with the
 > likely/unlikely macros.
+
+I'm puzzled by the latter point. I don't think that the allocator would
+affect the branch prediction at the call site.  But it is a pretty
+standard strategy for a compiler to realize that a small if in the middle
+of a function that ends in a immediate return is not likely to be taken.
+
+julia
+
 > Also, it's safe to do the prediction on a lower level because any
 > mistake will cost
 > more CPU cycles.
@@ -117,14 +125,6 @@ On Mon, 25 Sep 2017, Georgiana Chelu wrote:
 >
 > I will resend this patch as a patch set. Should I change the version?
 >
-
-I think v2 would be good.  State explicitly that you enlarged a single
-patch into a series, so it is clear what is going on.  Otherwise, Greg
-will see the series version and the standalone version and wonder what is
-going on.
-
-julia
-
 >
 > Thanks,
 > Georgiana
@@ -158,12 +158,5 @@ julia
 > >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170923232419.21625-1-georgiana.chelu93%40gmail.com.
 > >> For more options, visit https://groups.google.com/d/optout.
 > >>
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CALta04w00_XEDmGfUfFa%3DSq3JsObV6eJcQ-sCS-zG%2BuFEwbu3g%40mail.gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
 >
 
