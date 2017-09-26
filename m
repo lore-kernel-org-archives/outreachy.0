@@ -1,122 +1,105 @@
 X-GM-THRID: 6470043684863737856
-X-Received: by 10.13.203.82 with SMTP id n79mr6416193ywd.192.1506427465999;
-        Tue, 26 Sep 2017 05:04:25 -0700 (PDT)
+X-Received: by 10.107.164.148 with SMTP id d20mr6140615ioj.95.1506424435127;
+        Tue, 26 Sep 2017 04:13:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.99.102.70 with SMTP id a67ls3755171pgc.20.gmail; Tue, 26 Sep
- 2017 05:04:24 -0700 (PDT)
-X-Received: by 10.84.215.220 with SMTP id g28mr5663732plj.59.1506427464889;
-        Tue, 26 Sep 2017 05:04:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506427464; cv=none;
+Received: by 10.107.107.24 with SMTP id g24ls3977083ioc.6.gmail; Tue, 26 Sep
+ 2017 04:13:54 -0700 (PDT)
+X-Received: by 10.107.53.87 with SMTP id c84mr6146986ioa.134.1506424434233;
+        Tue, 26 Sep 2017 04:13:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506424434; cv=none;
         d=google.com; s=arc-20160816;
-        b=xQkEZqTmFztdes+EL8Py+lRKq9oaTWSMmeygpUvE820tm6FqLmwq2yUFr6A4vnpnx6
-         09sY0PDVX66+iIfBk0KeHC5r57gOrXyBTXEczvwiG6X4lyjbEBDnZleLivE+sQhhHeny
-         RWTJKA/XksW42Aq04MbbPplmsRkNDbgRENcRIk26ciWRfOPgyg3XrrSJw8bphgQlSnG1
-         exwViOW12HfwH4aMEUYJX4pIpulCvC9Ni3QLXcjbR3GPMJ+PF1JiG56cQSB032bglUIN
-         KX0sAs2QC/83XCEMpi7k3nyq5d9Dy6ouy1eHHKXNmTcCsJ3ZkPuIlkPftvPMcpLmURY5
-         G0UQ==
+        b=fLaEy2aoxbcELFkE6yFT8VNUjYOjlih2qgMGKbp2Pa0hFgn5/FEV9+aFRbftQbgL0z
+         DzVD48xHYZEpLz7SclbQWpgDqrvOunFBTJnAUFOhByRPMg7iPvLZopo0u+kEU5BFiNVu
+         CQUyIadyJ50MeA5+w4/9xLSYOUNdDbflATzQL6nALAiDbHDR9f0cszN1aZEjViCStH2a
+         3ihOHHbi/mo2/JCwx/3cM1D7sYwZ5CUOX+f6SrMKc4Vr9nwRZ8ftI/YNDxnQ/ZKedOXr
+         mOuPIig/0ABl3SjBrAapX9HzR9PJLAC82fSKdL8dLnsejOu4z/dkMTbDdadyi8kRcpf9
+         1YCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=lqyPFyJY+5bdCDdcy7WzLAPJh1YnMDDrM279idRuloo=;
-        b=nx7bWCa+M7ricZSoNOV0NAQUUz1BDPf+HmnkuovPXfIjY6bOMRmObraiN10n5Zi2ua
-         uqHqdlFI7SHVwqjWQ24o8TDr5Y2gJKBI+1SkG07h31ETS6dvv0KyoIaHCFOw84qFOj5Z
-         TgggrNCCEQhHhA1dvvdz92GCSd2QhkjLWJ1LN71JKYWDwkJtMTkB2Do4Jh8o4j72zwjk
-         mcMZyJC432dVpGUrchtNWjW2Q3V1bJQgo2fkq+lzdU6i+Y+9+6RA4FZQcPF0yWgRBQRe
-         CnH1M23i5okvoOOj/vtY+ixxgWrWYEM1k0rEc0GfuW07JSxiN789HkGhRR9eKAvbYlWj
-         LDqQ==
+        h=to:subject:message-id:date:from:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=Uake/YnXkdMk1lS5L2kX0XyQFHmmu4xayRTQGtnBaYo=;
+        b=e0a4IE8FEHhJp1DX4i+ehL55J+TYYME812K3r0sKqH5omqjPLhMC5TWQePH/yu8ARK
+         ld9gC/7qLZu0M+WuRojsyPLcD5gvI1efSh4OJUKJGfeBPS4au0p1P4PUeP1JS1/XWOCi
+         06jdQjW55S86K9L9eM1hRHu4e2muzYYuMiBdFEZXYXoHeSbPLZ+Do1uO0YUrJn0d59ux
+         NYqCsnyLqR62oj58S7UfuoinON4/BZJmjGbs7X8RsYsieRs72JMQqDAViwH1oYzUPaO6
+         eIlU4qHfaQ1ugEV4qeR0m31OX34qLztYgrIvZQml5vw5qOXPM+NVHEauiBwXYb8ccRgd
+         jEkg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=P2yX4Mgw;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c09::22d as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <srishtishar@gmail.com>
-Received: from mail-qk0-x22d.google.com (mail-qk0-x22d.google.com. [2607:f8b0:400d:c09::22d])
-        by gmr-mx.google.com with ESMTPS id g186si421661ywc.29.2017.09.26.05.04.24
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=OfSWpwKY;
+       spf=neutral (google.com: 2607:f8b0:4001:c0b::22d is neither permitted nor denied by best guess record for domain of daniel.vetter@ffwll.ch) smtp.mailfrom=daniel.vetter@ffwll.ch
+Return-Path: <daniel.vetter@ffwll.ch>
+Received: from mail-it0-x22d.google.com (mail-it0-x22d.google.com. [2607:f8b0:4001:c0b::22d])
+        by gmr-mx.google.com with ESMTPS id t84si335450ywf.14.2017.09.26.04.13.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 26 Sep 2017 05:04:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c09::22d as permitted sender) client-ip=2607:f8b0:400d:c09::22d;
+        Tue, 26 Sep 2017 04:13:54 -0700 (PDT)
+Received-SPF: neutral (google.com: 2607:f8b0:4001:c0b::22d is neither permitted nor denied by best guess record for domain of daniel.vetter@ffwll.ch) client-ip=2607:f8b0:4001:c0b::22d;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=P2yX4Mgw;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400d:c09::22d as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qk0-x22d.google.com with SMTP id a128so9757744qkc.5
-        for <outreachy-kernel@googlegroups.com>; Tue, 26 Sep 2017 05:04:24 -0700 (PDT)
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=OfSWpwKY;
+       spf=neutral (google.com: 2607:f8b0:4001:c0b::22d is neither permitted nor denied by best guess record for domain of daniel.vetter@ffwll.ch) smtp.mailfrom=daniel.vetter@ffwll.ch
+Received: by mail-it0-x22d.google.com with SMTP id o200so8215100itg.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 26 Sep 2017 04:13:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=lqyPFyJY+5bdCDdcy7WzLAPJh1YnMDDrM279idRuloo=;
-        b=P2yX4Mgw+KFo4+/MFL4XMabCvJkngq0vETZ4u9g6lWoGEmJyvxXe3Thf89TMrTVpPV
-         1tKtJwV5ioKeLAjN438sGdwWdBM6xVNfEl/ueNwsmd/lMb2QESlrfprQI77gDuDwJNSy
-         gqjHN3sbIbvSCCt2nyXwiCR4ipBwmv2igiaZosnAA3+oatxY/XZ/ECTnoSbCFWXHBxAv
-         WNLxOjfnmJ7hSQUPqCHrUwmriq71BB/EP2V/lLq96nZ7BbYh2DYZaLahgpSRDnqL1Iw3
-         qdDfH4mbUaEPOBdbFc9FRinbzntntzKlDmAsSP/gnDVcnyVEBPf152OwMe9N1lvXp5O4
-         5kZw==
+        d=ffwll.ch; s=google;
+        h=mime-version:from:date:message-id:subject:to;
+        bh=Uake/YnXkdMk1lS5L2kX0XyQFHmmu4xayRTQGtnBaYo=;
+        b=OfSWpwKYOjzd/iWaS0HYj0OlvD4SsHnORMO5F/7ARnKrNi3RCx4eapEeXLt4cyhFGw
+         ks4NDUVDTII+HsBVHoFF3GLDlT7UxGa3yXEilU3IMWuwyH1qTi4TDd6vaL4V75Xr1dI7
+         TbjhQD3VwvXOxj9+Q2/+6WGKUk9ko0Q3C6+t0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=lqyPFyJY+5bdCDdcy7WzLAPJh1YnMDDrM279idRuloo=;
-        b=Gr/4YNX72i+cEgumiN4yl3vEV9rX4z3N3BUI60RVVz3p6JMmK0tN4WRW1akm9I5ssX
-         f5hy2G3qd77OtQ7gQrBX5zdxYcmy9a1a51eh9pcmMaldTK6FUgH7c4NzgHwQoczjhGQ7
-         dYy7B9gxBrI9VZTE4F6BwSJiStpv//Npb1xiqWvEHQRaZCE3tuEWOQKIqDrmaYL7A+Yf
-         EmB520JHPGR+u6cCDmbuu8yyGZotqThohesNS1CpVwQ906+ZQrzkkZn65dR0V6zV2HU7
-         ckWSPiRx6cUGQzhdKC15DfnmhtUPxLzQ5pr1W6ZTxDHlRNHvGDG2RzhTnoFs22ZtQW7Q
-         IhsA==
-X-Gm-Message-State: AHPjjUjC/ZuTd95zT2m/klP6/TjLMHfuo/psGoIj06UefZf6gGKrJ90/
-	aGbj4xSe9TLw0H5Na3lyAhcukMs3B8ncmcxTUQY=
-X-Google-Smtp-Source: AOwi7QCWh+seXaL1KEBYDYBt3vHt9pOeXRvLw1wlMkpiRElv1AiwifdhZuGMnqJvttP5Q46MNT49H/lVXuYD8lPNmSo=
-X-Received: by 10.55.104.87 with SMTP id d84mr13994825qkc.202.1506427464571;
- Tue, 26 Sep 2017 05:04:24 -0700 (PDT)
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+        bh=Uake/YnXkdMk1lS5L2kX0XyQFHmmu4xayRTQGtnBaYo=;
+        b=KR3RcM/NBEWeigMUjxeUxaLpbMPhXTaJupZlZXyE65YMcC/hpQsgCzhmaOkLpVirjN
+         jubKzAiQHzKbEOggpTZZDG05P9IpWupTI09UInWb2otUzHXc4XPeOuqn6BOIZ15Q4aND
+         AMhtmbi7KjYjF17BcTox7btq47tcL5RUW/sOq1ExQN9i8t1vbZxvdoZDilRt9w8+LBRa
+         l4gnNS+sZg5XLmdmreEhj1vUreR5gSvxr8lp/4kBZYLFKN7PqV6hyDTpqyAvEGH0HIoW
+         3/VbXBsCQUm5v1zFnIDBAOpbJV0OdJYlGWApKuWugwb3BTuaLyIYmEeSCwyS5/8m/b45
+         8lzQ==
+X-Gm-Message-State: AHPjjUhvXGVZcU9lFy/HlyX92P1nk/5xdmxGARRZMll1Bf5kcdeUufdv
+	28ZUGJ9EcA8wGrfNsKuZLW0Q+svK76i5bH/ka1lwvGZS
+X-Google-Smtp-Source: AOwi7QCeLxDs+sPxo++vyOEqscSX0c+4mo1aaKzyrU6Do3DcZdp2m0DT4bYsGMBzxmlLSXrod15pg5+39tcDMlf1Dkk=
+X-Received: by 10.36.107.146 with SMTP id v140mr5294243itc.95.1506424433438;
+ Tue, 26 Sep 2017 04:13:53 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.200.55.118 with HTTP; Tue, 26 Sep 2017 05:04:24 -0700 (PDT)
-In-Reply-To: <CAKMK7uGtMznSP7xXpLcodJbq4mHepZvjpFvD3vQdAA=MfaKD1g@mail.gmail.com>
-References: <CAKMK7uGtMznSP7xXpLcodJbq4mHepZvjpFvD3vQdAA=MfaKD1g@mail.gmail.com>
-From: Srishti Sharma <srishtishar@gmail.com>
-Date: Tue, 26 Sep 2017 17:34:24 +0530
-Message-ID: <CAB3L5ox-a4PTQRB7g1sSSAcXqat=k5Pk1hCZv+8juShFwu8akw@mail.gmail.com>
-Subject: Re: GPU subsystem outreach tasks
-To: Daniel Vetter <daniel.vetter@ffwll.ch>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, Sean Paul <seanpaul@chromium.org>, 
-	Harsha Sharma <harshasharmaiitr@gmail.com>, 
+Received: by 10.79.196.218 with HTTP; Tue, 26 Sep 2017 04:13:52 -0700 (PDT)
+X-Originating-IP: [2a02:168:5635:0:39d2:f87e:2033:9f6]
+From: Daniel Vetter <daniel.vetter@ffwll.ch>
+Date: Tue, 26 Sep 2017 13:13:52 +0200
+Message-ID: <CAKMK7uGtMznSP7xXpLcodJbq4mHepZvjpFvD3vQdAA=MfaKD1g@mail.gmail.com>
+Subject: GPU subsystem outreach tasks
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>, Sean Paul <seanpaul@chromium.org>, 
+	Srishti Sharma <srishtishar@gmail.com>, Harsha Sharma <harshasharmaiitr@gmail.com>, 
 	Meghana Madhyastha <meghana.madhyastha@gmail.com>, Julia Lawall <julia.lawall@lip6.fr>
 Content-Type: text/plain; charset="UTF-8"
 
-On Tue, Sep 26, 2017 at 4:43 PM, Daniel Vetter <daniel.vetter@ffwll.ch> wrote:
-> Hi all,
->
-> We seem to have a few coordination issues with gpu tasks. Please
-> follow these guidelines when you want to work on the GPU subsystem:
->
-> - First you need to successfully submit patches to staging. Guidelines
-> is around 10 patches merged.
->
-> - Before you start any of the todo items, pls chat with mentors.
-> Currently the todo items aren't annoated with the experience needed,
-> and some of them need full driver experts. Others are easier, but from
-> the work load more suitable for the entire internship and not for the
-> application periods. Others need acks from driver maintainers before
-> you start working on them for a given driver. Harsha Sharma and
-> Srishti Sharma, the tasks you've picked are not really suitable for
-> the appliction period.
->
-> - To avoid duplicated work, everyone pls list what they're working on in
->
-> https://kernelnewbies.org/OutreachyTasks
->
-> If you have any questions, just send Sean or me a mail or chat with us
-> on irc channels.
-Hey,
+Hi all,
 
-Sorry about that, I have removed that task from the tasks page, thanks
-a lot for these guidelines.
+We seem to have a few coordination issues with gpu tasks. Please
+follow these guidelines when you want to work on the GPU subsystem:
 
-Regards,
-Srishti
->
-> Thanks, Daniel
-> --
-> Daniel Vetter
-> Software Engineer, Intel Corporation
-> +41 (0) 79 365 57 48 - http://blog.ffwll.ch
+- First you need to successfully submit patches to staging. Guidelines
+is around 10 patches merged.
+
+- Before you start any of the todo items, pls chat with mentors.
+Currently the todo items aren't annoated with the experience needed,
+and some of them need full driver experts. Others are easier, but from
+the work load more suitable for the entire internship and not for the
+application periods. Others need acks from driver maintainers before
+you start working on them for a given driver. Harsha Sharma and
+Srishti Sharma, the tasks you've picked are not really suitable for
+the appliction period.
+
+- To avoid duplicated work, everyone pls list what they're working on in
+
+https://kernelnewbies.org/OutreachyTasks
+
+If you have any questions, just send Sean or me a mail or chat with us
+on irc channels.
+
+Thanks, Daniel
+-- 
+Daniel Vetter
+Software Engineer, Intel Corporation
++41 (0) 79 365 57 48 - http://blog.ffwll.ch
 
