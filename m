@@ -1,165 +1,209 @@
-X-GM-THRID: 6616189865324183552
-X-Received: by 2002:a2e:2c08:: with SMTP id s8-v6mr24522ljs.28.1540451744545;
-        Thu, 25 Oct 2018 00:15:44 -0700 (PDT)
+X-GM-THRID: 6468320417923727360
+X-Received: by 10.28.6.76 with SMTP id 73mr303899wmg.26.1506424431310;
+        Tue, 26 Sep 2017 04:13:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:424d:: with SMTP id p74-v6ls667225lja.4.gmail; Thu, 25
- Oct 2018 00:15:43 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5erFRuI6Sj029WP1zRyEU5vzBnXyr+1VzovsA40MeLuPVnQWNeS36xiKe8IwHwGNlmSIQPG
-X-Received: by 2002:a2e:48b:: with SMTP id a11-v6mr25243ljf.12.1540451743634;
-        Thu, 25 Oct 2018 00:15:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540451743; cv=none;
+Received: by 10.223.155.208 with SMTP id e16ls3326079wrc.11.gmail; Tue, 26 Sep
+ 2017 04:13:50 -0700 (PDT)
+X-Received: by 10.28.24.207 with SMTP id 198mr328778wmy.12.1506424430411;
+        Tue, 26 Sep 2017 04:13:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506424430; cv=none;
         d=google.com; s=arc-20160816;
-        b=JFMYebAChrU+i/golxCTzzw2O9eLczyWcPrLmg+/WALdQyNX+gQzedC5HRWaKe0Nwr
-         MGgXzQnhcsBmnvw81T5PcxgD5z+HjMptMFy0569dy/xbtClRmygz3ZnVblH8aDHYJvN4
-         3uYoebhNfFElFn/LuEeSI2S64EU3YoFAppwS75I69pgR9FjfGYdrTE6rmRjaPC19bCsf
-         xeXigoZ8aZPulYmydTvKoi8ceYAHbKSQGYoFPFlonaFQhVmTdGZZ/DkXNaMxWURcI8uQ
-         pJdqTTqM5pWk/EB2sh2h5f/wQkheMy5u1AoTODTVcq48e8JhqauifJ26An5h9hOfAu6V
-         pl+w==
+        b=o0uh5k+lAh10kxkhsw66SB+jHp8Q8ZvJbmk36eJvcBNoBhhWV9QY/Ii0OmpjYXnObC
+         wUjVHEhwmbyTxdKiwRIooqSgSvkNhJqBSGI24a8YNPJ7r1iGrOj+Prg//FT77mFMivrW
+         GDAziR8G2JjGp9FnQB/sCWwTVAswLbj49OnltzHu1jf9o0MPs300ZGKN6rwDcXZ+5xD+
+         ii2oQb3at/6/e1Ys7mLqBHV6qEvVLPKkVUFovdxAeL6+IRhTSOp2pRXhWh927b/ETotu
+         erDNpsp5mNDVmwZkQYxFOVpeqEC3o+zV1aeYehsJCuXl6QPrtHLJf8+bq0mthXo9UGho
+         8cbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=Q7kaTyCSsnxFHzxnSJeJS6xzsZx+pvjUG6zOU9b0uAE=;
-        b=00oUOSczLOq5Gs475A9gZz0Pb7sRlXY2JjCcCCpISTp1IX13g45gjWv5MOKzSD3Jjp
-         IYbuI2iDOIAcK9U3EQzIbCFu4HGPGi11Z12qOirab6oO/Q71qAdrB5w4rh5ZmJp9jGy8
-         B/NAwzXYaf+11W2xrpCf/WX3T1oHXluNp/tRNR7MTCTn3ToH/1haRj+lFbYUC+aAUDxt
-         Pi1hPYk3mv29a38ZuMeSV7bkLdC3xP9sOms6ISaNZdo+egDXgKd5QRvhUHfhVDf6Okj5
-         hcoBwMOFnmAJ3r0uaxMmeOAaVsQJfiA/GAVyzw2NfQ3GKvFVLMi5rv8uHf1Jx+I921az
-         b1/w==
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:sender:dkim-signature:arc-authentication-results;
+        bh=/mo3EEz7m019JPiRxtAUJl1NdEc/waerPLi6eWmZVpM=;
+        b=C7crUnSOhv/dHMzqUAXucaJGVXEhsmpZ0/dXvHvzWvajdid8zych/pJ+o6PSEb/Xof
+         pjZjAZclE6FB/i82Cr1XInDL2/+YGiQuXyPvPzcIFG/0Ec/rQXeEnU/xJWwnxFitlukT
+         iWqpkJoJBJnhV/al05H5Y43o7rjcW2MCxPspcQf8ZgZ0LKYQ81uRxp0Cu+5EHrUALhFY
+         8NsfMj6a7E26WkENvfBV4KJ4DzfP5ndFxb++BDB3wKeaJdW5jONirDcUwJwMDFwKQXBq
+         JJdrF50/1/HgJSkk1gFNuN8P9Z+cgzhhMxmiYDKY7r7GlTMuNjklAI4lgC7a+G4qnHnC
+         f6ug==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kyPma7Oq;
-       spf=pass (google.com: domain of kim.jamie.bradley@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=kim.jamie.bradley@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <kim.jamie.bradley@gmail.com>
-Received: from mail-wm1-x343.google.com (mail-wm1-x343.google.com. [2a00:1450:4864:20::343])
-        by gmr-mx.google.com with ESMTPS id w13-v6si260529lfe.3.2018.10.25.00.15.43
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=NRr+V5E3;
+       spf=neutral (google.com: 2a00:1450:400c:c09::244 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
+Return-Path: <daniel@ffwll.ch>
+Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
+        by gmr-mx.google.com with ESMTPS id 191si101108wmn.2.2017.09.26.04.13.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Oct 2018 00:15:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kim.jamie.bradley@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) client-ip=2a00:1450:4864:20::343;
+        Tue, 26 Sep 2017 04:13:50 -0700 (PDT)
+Received-SPF: neutral (google.com: 2a00:1450:400c:c09::244 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) client-ip=2a00:1450:400c:c09::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kyPma7Oq;
-       spf=pass (google.com: domain of kim.jamie.bradley@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=kim.jamie.bradley@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x343.google.com with SMTP id y144-v6so355159wmd.4
-        for <outreachy-kernel@googlegroups.com>; Thu, 25 Oct 2018 00:15:43 -0700 (PDT)
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=NRr+V5E3;
+       spf=neutral (google.com: 2a00:1450:400c:c09::244 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
+Received: by mail-wm0-x244.google.com with SMTP id f4so9029822wmh.4
+        for <outreachy-kernel@googlegroups.com>; Tue, 26 Sep 2017 04:13:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+        d=ffwll.ch; s=google;
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:content-transfer-encoding:in-reply-to
          :user-agent;
-        bh=Q7kaTyCSsnxFHzxnSJeJS6xzsZx+pvjUG6zOU9b0uAE=;
-        b=kyPma7OqqVKdGhl9fNBtBJeRnkUIXR/IOWEDeeZasBJsG87Jdg0R2KL6kf5/J9Xl20
-         KSUmTFJnCkn3GzgaPP6mKBxq9ilirdSXPSjgQdxo9c35/EpfLtXlJBYANSQBteCaNar2
-         3xuVScSPP+QP24hSmt6dcw68pNwqgYJmZuebPj40Wj4NyuIhqvIgyKALVutp8lp0600u
-         LQyOmHzpJjNNgEvErli9/48CKXwTx0a1WjMH3q/zBUKzMHvXbpBAbH+TZIHib9fdO0Ql
-         gu9wS6ueV8tn2PrGFBLRULjHswPnjCv/LecQm1YwMUFzPdhMgYTfLwKTVRFiGd8TYGL3
-         gG6w==
+        bh=/mo3EEz7m019JPiRxtAUJl1NdEc/waerPLi6eWmZVpM=;
+        b=NRr+V5E3gvz6D02nUM7aHtiB3gaY17Hs3EEe8DUVA0jgufS0Nb7fl6gJnedK9Hqaef
+         bF3A+9DsF9i7WiCJCT3N9yqctkXRtWOPNqlQBp3fcYBQWuYSOqUPNyUJskOlot4H4MZv
+         3o1McvOrofS0AxA4Jsy3NYWuOUr7OpLt0/MsU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=Q7kaTyCSsnxFHzxnSJeJS6xzsZx+pvjUG6zOU9b0uAE=;
-        b=QxJCn29XPID6uL7zfdFR6n1bfOlKc2YcPAcR5TkbOgSu7o/hTMU4qSE6jWGwGQZVwk
-         OKp5nDVeauvwGN5ZTdWvviRYqUFj+8hJKIC7TGXaflT6qX75lP/F1tZwi3P6nxknCMcj
-         LdrBinj+pl61KzRr/kcLLAwW4PG+cfUuCcGmSWUq2crGvdZb1HqdvTom4JPlfo+jZLrY
-         fTd98daylbJrOl1NmUUonHBBVGp+AQbX/N5a9SD5dfMw+l0S5mTedbkSY+okq9wpX4VW
-         ChR8kH4aV/x/Jdgap6ZGMhptAM95bUb7YNHQTlYSLdQjdb0QnzDZeZWkDrjRTxGE9btB
-         uZXA==
-X-Gm-Message-State: AGRZ1gJXBecbjfyv9QB79fd384bzsj1c3n4mj5OhaPMjGoBnkCZI5xdu
-	or6yK+p6gXuz6KrsUm42A41u4J3CIJI=
-X-Received: by 2002:a1c:ee05:: with SMTP id m5-v6mr336563wmh.138.1540451742635;
-        Thu, 25 Oct 2018 00:15:42 -0700 (PDT)
-Return-Path: <kim.jamie.bradley@gmail.com>
-Received: from xubuntu-vm (host86-167-247-131.range86-167.btcentralplus.com. [86.167.247.131])
-        by smtp.gmail.com with ESMTPSA id 82-v6sm937909wms.17.2018.10.25.00.15.41
+        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+         :references:mime-version:content-disposition
+         :content-transfer-encoding:in-reply-to:user-agent;
+        bh=/mo3EEz7m019JPiRxtAUJl1NdEc/waerPLi6eWmZVpM=;
+        b=WH4Gmp4GJeWd/Zds/je7Ao4QvKQTRPIWZ1udtbtgOyotS9vUbp/3d4h5vASO7yHKRe
+         tbHzuvgYCrOuUraHXSZSi2dlWpPe0xapL5XkVdccUZgqbWe67n6cBSZPPx3Wse4JOm5i
+         K+90CPWFa93SLJUPb7v8ioAnSz+g/HDsMFGEebjeoxJC3fsdqHOTvykc+bc8kIyqEB8K
+         +Suza0Yw4WMlQYzkwG2Mqry7tn2epzI99Bb1fW6tTBwO5b+uDEfOUY8wMmhXU3YwEuHB
+         KJVQXvwOCpDE9MyWVro1QDu4bw0elo71qxmtpwr3pGfTgrYKYjhZ8+pCREvzB91sjiq8
+         g5kg==
+X-Gm-Message-State: AHPjjUjVNyMnoje4tl/PZj3fMhvahV7q36RrcRiDSbymwqmUthrD6Foh
+	ljzJTGj3i92S02IwpCxVVssGPM2O
+X-Google-Smtp-Source: AOwi7QDrukzD//hhmxcGhPltCd7ShopqY1Oi6oCqgLncv7pjmOnbiAr9z1SoMyV+8wV1d4aBGjUOkg==
+X-Received: by 10.80.137.19 with SMTP id e19mr17623554ede.32.1506424429938;
+        Tue, 26 Sep 2017 04:13:49 -0700 (PDT)
+Return-Path: <daniel@ffwll.ch>
+Received: from phenom.ffwll.local ([2a02:168:5635:0:39d2:f87e:2033:9f6])
+        by smtp.gmail.com with ESMTPSA id j37sm5615483ede.12.2017.09.26.04.13.48
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Oct 2018 00:15:42 -0700 (PDT)
-Date: Thu, 25 Oct 2018 08:15:39 +0100
-From: Kim Bradley <kim.jamie.bradley@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] Staging: rts5208: Capitalise preprocessor variable names
-Message-ID: <20181025071536.GA3274@xubuntu-vm>
+        Tue, 26 Sep 2017 04:13:49 -0700 (PDT)
+Sender: Daniel Vetter <daniel.vetter@ffwll.ch>
+Date: Tue, 26 Sep 2017 13:13:47 +0200
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Jyri Sarha <jsarha@ti.com>
+Cc: Aishwarya Pant <aishpant@gmail.com>,
+	Tomi Valkeinen <tomi.valkeinen@ti.com>,
+	David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org,
+	Daniel Vetter <daniel.vetter@intel.com>,
+	Jani Nikula <jani.nikula@linux.intel.com>,
+	Sean Paul <seanpaul@chromium.org>,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v2 2/2] drm/tilcdc: replace reference/unreference() with
+ get/put
+Message-ID: <20170926111347.oueyffwwv3lgq6pw@phenom.ffwll.local>
+References: <cover.1506413698.git.aishpant@gmail.com>
+ <3f2f592f6ea28adfea3fd8b70421b2fab38f0b94.1506413698.git.aishpant@gmail.com>
+ <093fde5b-5043-48d4-e595-7b35fce1a8c7@ti.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <093fde5b-5043-48d4-e595-7b35fce1a8c7@ti.com>
+X-Operating-System: Linux phenom 4.12.0-1-amd64 
+User-Agent: NeoMutt/20170609 (1.8.3)
 
-Capitalise header preprocesser variable names (and all
-occurences) to remove checkpatch camelcase warnings.
+On Tue, Sep 26, 2017 at 12:18:06PM +0300, Jyri Sarha wrote:
+> ﻿
+> Texas Instruments Finland Oy, Porkkalankatu 22, 00180 Helsinki. Y-tunnus/Business ID: 0615521-4. Kotipaikka/Domicile: Helsinki
+> 
+> On 09/26/17 11:30, Aishwarya Pant wrote:
+> > For maintaining consistency with kernel coding style replace
+> > reference/unreference in ref counting functions with get/put.
+> > 
+> > The following cocci script was used to generate the tilcdc patch:
+> > 
+> > @@
+> > expression ex;
+> > @@
+> > 
+> > (
+> > -drm_framebuffer_unreference(ex);
+> > +drm_framebuffer_put(ex);
+> > |
+> > -drm_dev_unref(ex);
+> > +drm_dev_put(ex);
+> > |
+> > -drm_framebuffer_reference(ex);
+> > +drm_framebuffer_get(ex);
+> > )
+> > 
+> > Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
+> 
+> Acked-by: Jyri Sarha <jsarha@ti.com>
+> 
+> I guess this should go in via drm-misc at the same time with
+> "drm: introduce drm_dev_{get/put} functions".
 
-Signed-off-by: Kim Bradley <kim.jamie.bradley@gmail.com>
----
- drivers/staging/rts5208/xd.c | 8 ++++----
- drivers/staging/rts5208/xd.h | 8 ++++----
- 2 files changed, 8 insertions(+), 8 deletions(-)
+Yup, this one needs the previous one, both pushed to drm-misc-next.
 
-diff --git a/drivers/staging/rts5208/xd.c b/drivers/staging/rts5208/xd.c
-index c5ee04ecd1c9..1187c75d764a 100644
---- a/drivers/staging/rts5208/xd.c
-+++ b/drivers/staging/rts5208/xd.c
-@@ -630,13 +630,13 @@ static int reset_xd(struct rtsx_chip *chip)
- 			xd_card->zone_cnt = 32;
- 			xd_card->capacity = 1024000;
- 			break;
--		case xD_1G_X8_512:
-+		case XD_1G_X8_512:
- 			XD_PAGE_512(xd_card);
- 			xd_card->addr_cycle = 4;
- 			xd_card->zone_cnt = 64;
- 			xd_card->capacity = 2048000;
- 			break;
--		case xD_2G_X8_512:
-+		case XD_2G_X8_512:
- 			XD_PAGE_512(xd_card);
- 			xd_card->addr_cycle = 4;
- 			xd_card->zone_cnt = 128;
-@@ -669,10 +669,10 @@ static int reset_xd(struct rtsx_chip *chip)
- 		return STATUS_FAIL;
- 	}
- 
--	retval = xd_read_id(chip, READ_xD_ID, id_buf, 4);
-+	retval = xd_read_id(chip, READ_XD_ID, id_buf, 4);
- 	if (retval != STATUS_SUCCESS)
- 		return STATUS_FAIL;
--	dev_dbg(rtsx_dev(chip), "READ_xD_ID: 0x%x 0x%x 0x%x 0x%x\n",
-+	dev_dbg(rtsx_dev(chip), "READ_XD_ID: 0x%x 0x%x 0x%x 0x%x\n",
- 		id_buf[0], id_buf[1], id_buf[2], id_buf[3]);
- 	if (id_buf[2] != XD_ID_CODE)
- 		return STATUS_FAIL;
-diff --git a/drivers/staging/rts5208/xd.h b/drivers/staging/rts5208/xd.h
-index bf21bf0d1616..98c00f268e56 100644
---- a/drivers/staging/rts5208/xd.h
-+++ b/drivers/staging/rts5208/xd.h
-@@ -36,7 +36,7 @@
- #define	BLK_ERASE_1			0x60
- #define	BLK_ERASE_2			0xD0
- #define READ_STS			0x70
--#define READ_xD_ID			0x9A
-+#define READ_XD_ID			0x9A
- #define	COPY_BACK_512			0x8A
- #define	COPY_BACK_2K			0x85
- #define	READ1_1_2			0x30
-@@ -72,8 +72,8 @@
- #define	XD_128M_X16_2048		0xC1
- #define	XD_4M_X8_512_1			0xE3
- #define	XD_4M_X8_512_2			0xE5
--#define	xD_1G_X8_512			0xD3
--#define	xD_2G_X8_512			0xD5
-+#define	XD_1G_X8_512			0xD3
-+#define	XD_2G_X8_512			0xD5
- 
- #define	XD_ID_CODE			0xB5
- 
-@@ -90,7 +90,7 @@
- #define	NO_OFFSET			0x0
- #define	WITH_OFFSET			0x1
- 
--#define	Sect_Per_Page			4
-+#define	SECT_PER_PAGE			4
- #define	XD_ADDR_MODE_2C			XD_ADDR_MODE_2A
- 
- #define ZONE0_BAD_BLOCK			23
+Aishwarya, while reviewing your patches I've noticed that you've missed to
+case of drm_dev_unref() in the drm core code, one in drm_pci.c and one in
+drm_prime.c. Can you pls do a follow-up patch to address these two? Fixing
+up the core completely is nice, drivers can be done later on (also by
+others, this is a prefect newbies tasks). But making sure the core is
+consistent is good I think.
+-Daniel
+
+> 
+> Best regards,
+> Jyri
+> 
+> 
+> > ---
+> > No changes in v2
+> > 
+> > drivers/gpu/drm/tilcdc/tilcdc_crtc.c | 6 +++---
+> >  drivers/gpu/drm/tilcdc/tilcdc_drv.c  | 2 +-
+> >  2 files changed, 4 insertions(+), 4 deletions(-)
+> > 
+> > diff --git a/drivers/gpu/drm/tilcdc/tilcdc_crtc.c b/drivers/gpu/drm/tilcdc/tilcdc_crtc.c
+> > index 406fe45..d2589f310 100644
+> > --- a/drivers/gpu/drm/tilcdc/tilcdc_crtc.c
+> > +++ b/drivers/gpu/drm/tilcdc/tilcdc_crtc.c
+> > @@ -75,7 +75,7 @@ static void unref_worker(struct drm_flip_work *work, void *val)
+> >  	struct drm_device *dev = tilcdc_crtc->base.dev;
+> >  
+> >  	mutex_lock(&dev->mode_config.mutex);
+> > -	drm_framebuffer_unreference(val);
+> > +	drm_framebuffer_put(val);
+> >  	mutex_unlock(&dev->mode_config.mutex);
+> >  }
+> >  
+> > @@ -456,7 +456,7 @@ static void tilcdc_crtc_set_mode(struct drm_crtc *crtc)
+> >  
+> >  	set_scanout(crtc, fb);
+> >  
+> > -	drm_framebuffer_reference(fb);
+> > +	drm_framebuffer_get(fb);
+> >  
+> >  	crtc->hwmode = crtc->state->adjusted_mode;
+> >  }
+> > @@ -633,7 +633,7 @@ int tilcdc_crtc_update_fb(struct drm_crtc *crtc,
+> >  		return -EBUSY;
+> >  	}
+> >  
+> > -	drm_framebuffer_reference(fb);
+> > +	drm_framebuffer_get(fb);
+> >  
+> >  	crtc->primary->fb = fb;
+> >  	tilcdc_crtc->event = event;
+> > diff --git a/drivers/gpu/drm/tilcdc/tilcdc_drv.c b/drivers/gpu/drm/tilcdc/tilcdc_drv.c
+> > index b0d70f9..74276ef 100644
+> > --- a/drivers/gpu/drm/tilcdc/tilcdc_drv.c
+> > +++ b/drivers/gpu/drm/tilcdc/tilcdc_drv.c
+> > @@ -225,7 +225,7 @@ static void tilcdc_fini(struct drm_device *dev)
+> >  
+> >  	pm_runtime_disable(dev->dev);
+> >  
+> > -	drm_dev_unref(dev);
+> > +	drm_dev_put(dev);
+> >  }
+> >  
+> >  static int tilcdc_init(struct drm_driver *ddrv, struct device *dev)
+> > 
+> 
+> 
+> _______________________________________________
+> dri-devel mailing list
+> dri-devel@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+
 -- 
-2.19.1
-
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
 
