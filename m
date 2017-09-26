@@ -1,139 +1,121 @@
 X-GM-THRID: 6470196947471826944
-X-Received: by 10.28.150.151 with SMTP id y145mr94976wmd.22.1506501807612;
-        Wed, 27 Sep 2017 01:43:27 -0700 (PDT)
+X-Received: by 10.157.20.169 with SMTP id d38mr2051758ote.200.1506460119980;
+        Tue, 26 Sep 2017 14:08:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.223.141.225 with SMTP id o88ls257584wrb.3.gmail; Wed, 27 Sep
- 2017 01:43:26 -0700 (PDT)
-X-Received: by 10.223.184.104 with SMTP id u37mr57068wrf.29.1506501806857;
-        Wed, 27 Sep 2017 01:43:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506501806; cv=none;
+Received: by 10.99.100.2 with SMTP id y2ls4040318pgb.26.gmail; Tue, 26 Sep
+ 2017 14:08:38 -0700 (PDT)
+X-Received: by 10.101.92.135 with SMTP id a7mr7638875pgt.70.1506460118968;
+        Tue, 26 Sep 2017 14:08:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506460118; cv=none;
         d=google.com; s=arc-20160816;
-        b=t5pNWLe44bBypR3/6wk3CqZTW3gCHLhqXWOnelgfmvKtY4YPeUVYe3pydvUxm6zGB5
-         IJDUrqnKVmS9sn9NMH6qRRCS9aR+bcLwyPd5lgZIY6YdWO20UDmLuZqActCF3KD7702g
-         WiJylFsoQK598OqcdtU79jon5N4+GdcjwqTKDOZ2RRwi7JwVQdsiu2QlUoRJJN7cpkfL
-         gBLEF2gtVos5e5ID54Bk12jybxAkkbuckE6pBtc1AUH7N3FtxX+1K/Utpypoaew3MtJ3
-         Ic4NT5durSkuGRwB3bySqRlHKO6k17UGgWQ9iy/yPvWmK84I4z+hAGAH9BlPHh0OhB0y
-         ER1Q==
+        b=db0yZyYnc+QQzIjppPLndkDvi8ra8zyxz0kPuzJtQ6oqvgDNpNr3V8O/UNexNulOUI
+         /HjkuqN0llb4f4cqT5MjCo4Kkd5GFXyWjhgKjlwRILbBclJ4s7T2W3XJe/cf1sHlR3YA
+         lIj+Z8ouM/D2/MtJpF0JQJ0RRZ+F1KsHo0ZabCSmfSD2YJ2r25+38n+QxE7QSOd+a2u1
+         0DiLoEX4KYiYSCn9wbZmPbIz1lby+tyWvuW5kq0UcKqhIhsLmWGPd7WYkpOfE5kqvvly
+         syO0GrbhhPlpKHBH2gQSZOg/AwROqQMI4rMfWxeHP7qERdOCp++GbmNQbiQ89grqMGyN
+         n5Hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:sender:dkim-signature
-         :arc-authentication-results;
-        bh=df2kk6+/pS5IHobUoAJxRFl5LQdE/lo4KO0R3UQCxXg=;
-        b=AZDGbnJz6ZtZ7ilsv4ZR2GJIXrKuuLZpbF+NwmPLnLOXbMx5re4UPUICsOwhJWLvRi
-         ETWxs8lYWqlzSDgrPyPp6ITmzv2EyCirY8U8hKpGXtm017JgILsECP/Z2Cw9wv0MYR6z
-         ywCpR5aag+qDYOHHarLBgFJAqaB5GQ1XMKgF9TJiR9FN12LoQalCBUjB7R7WbKk92nqT
-         r9GEr4ZoBYdksLnGoLcNfwL+HFhrUpx+DUpZ0xav6CfM4cwAZu8FaloK0L3R1gNIUIe8
-         TJwQIU7dMyc6omu8WRaAvkv6wrObr/3MjKPnrfXZhn2A5aXL1Pl/efL2odWWjzX/dOFw
-         mLgw==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature:arc-authentication-results;
+        bh=jqKKNt6ArJimfwQkyQloPQqjh5DLkxczgGsSXqT/HGM=;
+        b=ZcAO9b6sltydZsNCAT5ZLAZoeLPAUE5KY5jSsOlAsvipL8Ec2x4KJNNBf+M+PLYXtu
+         q6JS+actLrtBbPwIGqckDL22THLFq4bsH5YNJffsKZ/aNWdV98zEu0WgQ90vFs4UF9WE
+         kW4C0fzbeWZYpfPpWYwkwqp63qepEr6Ev5GRoYqbPAB7k1yF6/Ze44P0ymHzdi7f3oon
+         2TMiVyjtrJwmuhaNYCi866iAXoVXmfAKAuesPocdSJX8mXnv8XalUiXi0v5IEeYhR4nc
+         vgH4EKUVQFzPmuPquMa4chhDcMSPU3YPRT89S9bJAdrOJROVUxhakSb/G+9NipT1+1C0
+         Z1qA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ffwll.ch header.s=google header.b=M3BFnTi2;
-       spf=neutral (google.com: 2a00:1450:400c:c09::241 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
-Return-Path: <daniel@ffwll.ch>
-Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
-        by gmr-mx.google.com with ESMTPS id k18si1074040wmd.1.2017.09.27.01.43.26
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oh84mBN6;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id y18si711667pfj.18.2017.09.26.14.08.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 27 Sep 2017 01:43:26 -0700 (PDT)
-Received-SPF: neutral (google.com: 2a00:1450:400c:c09::241 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) client-ip=2a00:1450:400c:c09::241;
+        Tue, 26 Sep 2017 14:08:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ffwll.ch header.s=google header.b=M3BFnTi2;
-       spf=neutral (google.com: 2a00:1450:400c:c09::241 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
-Received: by mail-wm0-x241.google.com with SMTP id q124so604795wmb.5
-        for <outreachy-kernel@googlegroups.com>; Wed, 27 Sep 2017 01:43:26 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oh84mBN6;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x244.google.com with SMTP id i130so7403243pgc.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 26 Sep 2017 14:08:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ffwll.ch; s=google;
-        h=sender:date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=df2kk6+/pS5IHobUoAJxRFl5LQdE/lo4KO0R3UQCxXg=;
-        b=M3BFnTi2ZMppLVnunFuoNKpWsKR91J/KcOukX5eZ0D6i4XQZtadJQtsBHc9xYxJDd8
-         eo8tk+UNa/SQNCIDVP+V7GZZ6Pe3fc3F1gHkSUEj5t/n6HMdRVxXkZi4xMbNLKNTbGru
-         Jiwnhqr1inPmX1jv6quD/WEUkzJTgVflfKQto=
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=jqKKNt6ArJimfwQkyQloPQqjh5DLkxczgGsSXqT/HGM=;
+        b=oh84mBN6MloBWECmGTVOBD/odgZfFs1jkpWmijQR8fmoHjkFHczFqBxVZnPnAVb4rs
+         B2iYR8i7OFh9Tj+sTIowrMsCz7qMLRqSE6VvDq2aEik1PNjCBRwG06QbVnt8Neb4PpP5
+         6uD7jJVFxgoeaXxAbQEnHoW/FYIfrhTOluaGmbu2P1nz/J5YHU9ZiuTUaxeanHOJyubM
+         kkyA7NGZ3SJF6O6bJxIllRdAkLRCVPCl7VezHG6MoGLCPvLjNWXpSZH8oEpWwd+xGOkF
+         9lZaPJH+uYqrFCCP7FFAYOw9MB5Xc1TzcNeeXcvCFXOq9U8y56uqUYBfvdhIHhGkAMhX
+         NyXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
-         :references:mime-version:content-disposition:in-reply-to:user-agent;
-        bh=df2kk6+/pS5IHobUoAJxRFl5LQdE/lo4KO0R3UQCxXg=;
-        b=DjU3mbot8W5V6KjAHxJRaF9ac6Do4C/YOnBRlTRYJK97iedqiIQZstrrVhyDaG4oQP
-         vQXr4J8xxyac0KNCoG6QPJ44kK/9LqOWbhsyaSQvXF68jEpz4Ebxza+xjXF8qatZGtQX
-         nZmSKH8M2Tb/1aGLhz52wmMJmCTcEz19qPupdqQIkvW2DDv9RZ33TjVS7CSYMnS9ctbR
-         NZPufcUWlrCsb1+Xp27vY1vUUx13zPQPuMR6WTaommQNGeZYmX4SoxHDF8obneyHtXHo
-         kK8J2LOkH6JOJJJDmhR2hU4wXYs3YIeZKXuZ3Hgci6NGvjDzHO9hg120MLr6wzC07ZN3
-         UwZQ==
-X-Gm-Message-State: AHPjjUh7nAIHCQd8YHQ1l1FFDDGsKvRTofQTuGT4biMk152Cwymc1d6a
-	M+AdkqX+LLMj34sXSVCrySdvmA==
-X-Google-Smtp-Source: AOwi7QBfzK2XhVZSYkIseT0j4P5C7BmaNyBQWt6wiE/f617ktx10m97r40Wvoye8zNJNp39eEyqeow==
-X-Received: by 10.80.166.209 with SMTP id f17mr1061300edc.278.1506501806027;
-        Wed, 27 Sep 2017 01:43:26 -0700 (PDT)
-Return-Path: <daniel@ffwll.ch>
-Received: from phenom.ffwll.local ([2a02:168:5635:0:39d2:f87e:2033:9f6])
-        by smtp.gmail.com with ESMTPSA id t5sm6226133edh.32.2017.09.27.01.43.24
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Sep 2017 01:43:25 -0700 (PDT)
-Sender: Daniel Vetter <daniel.vetter@ffwll.ch>
-Date: Wed, 27 Sep 2017 10:43:19 +0200
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Haneen Mohammed <hamohammed.sa@gmail.com>
-Cc: dri-devel@lists.freedesktop.org,
-	Daniel Vetter <daniel.vetter@intel.com>,
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=jqKKNt6ArJimfwQkyQloPQqjh5DLkxczgGsSXqT/HGM=;
+        b=TsUnNa0kGhJ8H/1n/6QZBd/kRHpI9VaWkv1hACLIonjX3f4Vn8ctiTAVQ/iXHknid3
+         cPMLmj8rEgVC2WFBGjUCV3dPuHyifOUVkzfWs1Hy99Qkums8X//djo8bhMgWkR9nqdl/
+         +23bfbhvIGt563nkPd/8tEcb/hWlP7faeuYXNso08LA5qJds8pgvRFE/uKzLoPrwsGP4
+         t7EZ7u+2rPnaH2REzG8LB0WGeDgzchrGKkz5e8nGXTZGcMbmqhArAj4oSs8g6U9jgKVp
+         pOYJEzqaK93KhScJzPcxvqHCMosh6mNZicjwGelJWz5Zv0FYl9UPTEg6eVzqm6IyOPGN
+         DTNQ==
+X-Gm-Message-State: AHPjjUg8tJUPGl7S/MZM19Mb1nRSWXdmqo4niXawEyepwvz1GPOtKqhP
+	+yrK7FTBxhAzxz6Mjjj6lkc=
+X-Google-Smtp-Source: AOwi7QBtVIu5a95g/MvuyJ8rCCNXmOYfwmH2bZAm1F0Et/ABCuzBDgKJyTEkq4NIHXlQqSCPjRAXdg==
+X-Received: by 10.84.224.136 with SMTP id s8mr11956613plj.324.1506460118735;
+        Tue, 26 Sep 2017 14:08:38 -0700 (PDT)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from Haneen ([64.77.242.50])
+        by smtp.gmail.com with ESMTPSA id h10sm21611511pgn.73.2017.09.26.14.08.36
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 26 Sep 2017 14:08:38 -0700 (PDT)
+Date: Tue, 26 Sep 2017 15:08:35 -0600
+From: Haneen Mohammed <hamohammed.sa@gmail.com>
+To: dri-devel@lists.freedesktop.org
+Cc: Daniel Vetter <daniel.vetter@intel.com>,
 	Jani Nikula <jani.nikula@linux.intel.com>,
 	Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>,
 	Jonathan Corbet <corbet@lwn.net>,
 	outreachy-kernel <outreachy-kernel@googlegroups.com>,
 	gregkh@linuxfoundation.org
-Subject: Re: [Outreachy kernel] [PATCH] drm/doc: Remove todo item about "This
- is gross" comment
-Message-ID: <20170927084319.s5ylhmrcyolaszj6@phenom.ffwll.local>
-References: <20170926210835.GA4622@Haneen>
+Subject: [PATCH] drm/doc: Remove todo item about "This is gross" comment
+Message-ID: <20170926210835.GA4622@Haneen>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20170926210835.GA4622@Haneen>
-X-Operating-System: Linux phenom 4.12.0-1-amd64 
-User-Agent: NeoMutt/20170609 (1.8.3)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Tue, Sep 26, 2017 at 03:08:35PM -0600, Haneen Mohammed wrote:
-> This patch remove the todo item "Use new IDR deletion interface to
-> clean up drm_gem_handle_delete()" after it has been resolved with
-> the commit "drm: Remove obsolete "This is gross" comment".
-> 
-> Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+This patch remove the todo item "Use new IDR deletion interface to
+clean up drm_gem_handle_delete()" after it has been resolved with
+the commit "drm: Remove obsolete "This is gross" comment".
 
-Applied, thanks.
--Daniel
+Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+---
+ Documentation/gpu/todo.rst | 6 ------
+ 1 file changed, 6 deletions(-)
 
-> ---
->  Documentation/gpu/todo.rst | 6 ------
->  1 file changed, 6 deletions(-)
-> 
-> diff --git a/Documentation/gpu/todo.rst b/Documentation/gpu/todo.rst
-> index 22af55d..5e96dc7 100644
-> --- a/Documentation/gpu/todo.rst
-> +++ b/Documentation/gpu/todo.rst
-> @@ -180,12 +180,6 @@ Contact: Daniel Vetter, respective driver maintainers
->  Core refactorings
->  =================
->  
-> -Use new IDR deletion interface to clean up drm_gem_handle_delete()
-> -------------------------------------------------------------------
-> -
-> -See the "This is gross" comment -- apparently the IDR system now can return an
-> -error code instead of oopsing.
-> -
->  Clean up the DRM header mess
->  ----------------------------
->  
-> -- 
-> 2.7.4
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170926210835.GA4622%40Haneen.
-> For more options, visit https://groups.google.com/d/optout.
-
+diff --git a/Documentation/gpu/todo.rst b/Documentation/gpu/todo.rst
+index 22af55d..5e96dc7 100644
+--- a/Documentation/gpu/todo.rst
++++ b/Documentation/gpu/todo.rst
+@@ -180,12 +180,6 @@ Contact: Daniel Vetter, respective driver maintainers
+ Core refactorings
+ =================
+ 
+-Use new IDR deletion interface to clean up drm_gem_handle_delete()
+-------------------------------------------------------------------
+-
+-See the "This is gross" comment -- apparently the IDR system now can return an
+-error code instead of oopsing.
+-
+ Clean up the DRM header mess
+ ----------------------------
+ 
 -- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+2.7.4
+
 
