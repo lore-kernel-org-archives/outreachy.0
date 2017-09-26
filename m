@@ -1,107 +1,114 @@
 X-GM-THRID: 6468588291165782016
-X-Received: by 10.46.46.10 with SMTP id u10mr848215lju.15.1506444034843;
-        Tue, 26 Sep 2017 09:40:34 -0700 (PDT)
+X-Received: by 10.99.165.23 with SMTP id n23mr7225296pgf.112.1506442433507;
+        Tue, 26 Sep 2017 09:13:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.223.144.209 with SMTP id i75ls3528915wri.12.gmail; Tue, 26 Sep
- 2017 09:40:34 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QD+8QVIfrekYgCvMeOoDqhs0GJ3A6TiHxlyVcfs11Kho3lhu484O5Xfg6SWX8ZU7AfQvpYD
-X-Received: by 10.28.35.142 with SMTP id j136mr442287wmj.1.1506444034172;
-        Tue, 26 Sep 2017 09:40:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506444034; cv=none;
+Received: by 10.157.43.225 with SMTP id u88ls857707ota.21.gmail; Tue, 26 Sep
+ 2017 09:13:52 -0700 (PDT)
+X-Received: by 10.157.73.139 with SMTP id g11mr1522531otf.181.1506442432618;
+        Tue, 26 Sep 2017 09:13:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506442432; cv=none;
         d=google.com; s=arc-20160816;
-        b=QjXn5H9ye8J98A4CuYunYzJgp4GkacVupDCiCTwxn/zX8OtPGjYwsDjLc82C2Qgb3b
-         VqpxDowhWxq6U1IGUOP8L/Rc8CHCEQXQ32qRmZ5l55rOpoJTdWRgbz60ud5Rzn+CY0d7
-         wfMBEjOsqLH3T89RSiSx+Q/W+QEfgnECliIxhJ04sPFwHqwJbb3Ye3DmKNEIBtIHLAJS
-         xuytbMXE/GgxEwLXP+eryXjteqL73qX6/wUFaRPaLZEnXAkZVFp5gcJo4zBaV2P8sVsU
-         g5I12IJc9+kSrwj77F5LcdVEA3MOMKPYOgOwKE2sMmgslQc8Pz/SBb8JJEpP83zEgn7K
-         cFpA==
+        b=UXeAN3HZYgImCUGQxH0vUNy3JUpn0AASGsFlN7QVYMLmc9butfZ2kATIIY+iAXkbQu
+         /IY259eN28AqIS8dha00zcJddu59bGRIoFyr6lqpZVpBMKRyo5oeJFqnyFwrZEftJQDx
+         t2r/Pvp0UNyrnyXsjb/o6oYKUJ7xLBhXBYWz1xDQo2T70oA0epJ7sLisNzN7PCWBMGID
+         ZeLOrKHIB84K4yjNqx6gD84ZstlxhTckh8XeFXUjKAtP9XCnCAyqgsThFn5rerb6j3an
+         UHpC/+IzxfRMXCZlWzzZhcqtGIIkyPekkV7vGVjhz7NLbXbo7x3pbIF8O8CfpsqAmqi+
+         O2fA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=M8/2T8UJOOL3ccJ8MLMgO9fIjlez+mJv9g4NJheOlMI=;
-        b=t37l1O4FzefTSosg48Q24Yi0hQp6QKa3adLvnPrZ/vtKydAAsv7Mmy1bJ/iMBQ8k/l
-         QZ5PjMk29DfuyUzABswZfcEOKyDD6cjzvVmFGdx+vEcgU2lzEHWm1DZTNswOE1TJgZfJ
-         RO2+MGwFgAp1FtfaTyT0W1RC8nc9c8gYL2HHw0DopHTrLBFUP2WlnA9BK7iBCTyGF+W9
-         I4qz+wDIIuC+GXDqVOgEhCaaIfPvuHO87eO8w0/xYO81RTZDhKXPaVeP2JY6rtX5tQqr
-         dxObQLR2eVfuJEs1dm4e2qFwnU/vS2raiEm5dHdCdpCOJBJ3nPGVvx1Ga/QbMlbMNJuY
-         ds8A==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=dtOQVZUmY3DRawy1Dnrfu6NBmKmn9W93i9xzUfm0gsY=;
+        b=ws5qDw8g55cTzwKXjnnUc29rBfrSJajSVToIfE4saiPRzhEDeVj0IpwO6wTFhWRpEA
+         9vQ0fk+YjflEIvvF9TAk6qDX+6tus3ZKb6Yc18/3vbuBAz4cyOLS7wL50pogBaoU5NpY
+         5NLIB6370jOVj4HUM12s/pRKJTdxxhTOl718wQFE937XnCQj58tsqDFSWgzpayKOPhws
+         c/87fwBrIb/3Ob5g4QXn8NEMitkBdrCCRC9jZQL/cipkk9S+Say1CKxQ4iAlrSsK/f1x
+         LH94E6/sJrSj80quqy4LuhkqfIQfU60MVZWuYey6NHV2hffBcqmtkO6/jGPR76wGgREh
+         Zwqw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id q145si964398wme.4.2017.09.26.09.40.33
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oRbVyQDo;
+       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2607:f8b0:400d:c0d::243 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <georgiana.chelu93@gmail.com>
+Received: from mail-qt0-x243.google.com (mail-qt0-x243.google.com. [2607:f8b0:400d:c0d::243])
+        by gmr-mx.google.com with ESMTPS id n131si435444ywb.20.2017.09.26.09.13.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 26 Sep 2017 09:40:34 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Tue, 26 Sep 2017 09:13:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2607:f8b0:400d:c0d::243 as permitted sender) client-ip=2607:f8b0:400d:c0d::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.42,441,1500933600"; 
-   d="scan'208";a="238802064"
-Received: from unknown (HELO hadrien.local) ([93.83.33.58])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 26 Sep 2017 18:40:24 +0200
-Date: Tue, 26 Sep 2017 18:40:13 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Georgiana Chelu <georgiana.chelu93@gmail.com>
-cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-    outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] Re: [PATCH v2 2/2] Staging: rtl8723bs: core:
- Code clean up
-In-Reply-To: <CALta04zFwGkrmWOzB+guhMfo3OE2uFJYdOT5fp38OG_2si112Q@mail.gmail.com>
-Message-ID: <alpine.DEB.2.20.1709261839310.2700@hadrien>
-References: <cover.1506092223.git.georgiana.chelu93@gmail.com> <8813107f1cbbc593f55422ef905c4d5cfb575206.1506092223.git.georgiana.chelu93@gmail.com> <20170926074138.GA26263@kroah.com> <CALta04wLzH_mJvA0Vx4U_SpvKFOkg6JMHrirVrDT6eArBEu0_Q@mail.gmail.com>
- <CALta04zFwGkrmWOzB+guhMfo3OE2uFJYdOT5fp38OG_2si112Q@mail.gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oRbVyQDo;
+       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2607:f8b0:400d:c0d::243 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qt0-x243.google.com with SMTP id b1so7347570qtc.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 26 Sep 2017 09:13:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=dtOQVZUmY3DRawy1Dnrfu6NBmKmn9W93i9xzUfm0gsY=;
+        b=oRbVyQDoY6703i/gCgMyRGz1yJvyCIOtC6HdjZLhAgbJ9c7kbYb81Z8oKhhLsj0Inw
+         sRrluB5kUvBuX7NDnua5l84a9bvbiKNScOkVvjrvdQwfSZmYeQRX+zwDjhLUwKTbFFxw
+         8iqNsoqffNYKxvrAE4/w5FUYSwRKB/oSLM2nCmHpgQ5tdK1LriJGqiWZZ/ySlrMNv3p1
+         sdWB2BPGM0wNJasqTnpCLAlRTlO+g51SO1E+2CMUwkC5Rv94obprp0E8dvA5tgA6E/L1
+         1lcC61kmH6ZEdcEcLlg3INKIZYsPh9QVP6kBSqNMPu8BtupqT5YR0a9iAKn4rhBTSrhD
+         tK5g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=dtOQVZUmY3DRawy1Dnrfu6NBmKmn9W93i9xzUfm0gsY=;
+        b=blRfiJjjVAiX1Qv7l5/vl6BXIrZT9PSUV/ei10FA+9B4jyz74m01Ni+AnCkw9INohz
+         FlzTpo8ip/AzzZoZkjd0jnejvuOO1Lb1TLzL93F5Yh1holFoiJlb+tlYotVbNuzkX4QT
+         Pyf8YYEaKYD/b5b/12YsTQ8JS7McU7mzGUJYk2RTXnJR0/kk73ThQW98Bno2+qQrEQNE
+         c8cLyEzC8SUIaANn4O1Ztm4dGDfwNB2qNUJ3b7lQKbrmozZIpA2ZAJlaLB1+5shQuLzA
+         OHxgwlD1ygQAr6dQoFkBtTLj2VcR2j+w0Eugt8iXb3xYw16bUAuvYN1KawS0Lzt9qsOR
+         hoYg==
+X-Gm-Message-State: AHPjjUjKjdvWjy52EADwInMcpCxBy9mXyCk0GPCsjP2zt5e7gjzOVtUV
+	6J0rvBKD6MbVfxHV7jA7OBAmLVWpaclJqCgyz2M=
+X-Google-Smtp-Source: AOwi7QCwLoMc5xN1LjlR2xBArxFg1adK2b2z6+8aglcDK1x/IbZm/qYA4zC3b2sQAFm6nfpNCcXJb8bUiSA727X9rck=
+X-Received: by 10.200.38.68 with SMTP id v4mr17466457qtv.128.1506442432215;
+ Tue, 26 Sep 2017 09:13:52 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Received: by 10.140.18.240 with HTTP; Tue, 26 Sep 2017 09:13:51 -0700 (PDT)
+In-Reply-To: <CALta04wLzH_mJvA0Vx4U_SpvKFOkg6JMHrirVrDT6eArBEu0_Q@mail.gmail.com>
+References: <cover.1506092223.git.georgiana.chelu93@gmail.com>
+ <8813107f1cbbc593f55422ef905c4d5cfb575206.1506092223.git.georgiana.chelu93@gmail.com>
+ <20170926074138.GA26263@kroah.com> <CALta04wLzH_mJvA0Vx4U_SpvKFOkg6JMHrirVrDT6eArBEu0_Q@mail.gmail.com>
+From: Georgiana Chelu <georgiana.chelu93@gmail.com>
+Date: Tue, 26 Sep 2017 19:13:51 +0300
+Message-ID: <CALta04zFwGkrmWOzB+guhMfo3OE2uFJYdOT5fp38OG_2si112Q@mail.gmail.com>
+Subject: Re: [PATCH v2 2/2] Staging: rtl8723bs: core: Code clean up
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset="UTF-8"
 
-
-
-On Tue, 26 Sep 2017, Georgiana Chelu wrote:
-
-> On 26 September 2017 at 19:11, Georgiana Chelu
-> <georgiana.chelu93@gmail.com> wrote:
-> > On 26 September 2017 at 10:41, Greg Kroah-Hartman
-> > <gregkh@linuxfoundation.org> wrote:
-> >> On Fri, Sep 22, 2017 at 08:04:52AM -0700, Georgiana Chelu wrote:
-> >>> Clean the code to improve the coding style.
-> >>>
-> >>> Fix minor issues reported by checkpatch.pl:
-> >>> * CHECK: Alignment should match open parenthesis
-> >>> * CHECK: Logical continuations should be on the previous line
-> >>> * WARNING: line over 80 characters
-> >>
-> >> That's a lot of different things to be doing all in one patch.  Please
-> >> break this up into "one type of thing" per patch.
-> >>
-> >> And no, "fix all coding style issues" is not "one thing" :)
-> >>
-> >
-> > I will resend the patchset! Thank you!
-> >
-> Is the << "one type of thing" per patch>> required
-> > because it is easy to follow the same change in a patch?
-
-It makes reviewing easier, and also it could be that someone will later
-find that one of the kinds of changes you did is incorrect, so it is
-easier to undo if it is by itself.
-
-julia
-
-> >
-> > Have a nice day,
-> > Georgiana
-> >
-> >> thanks,
-> >>
-> >> greg k-h
+On 26 September 2017 at 19:11, Georgiana Chelu
+<georgiana.chelu93@gmail.com> wrote:
+> On 26 September 2017 at 10:41, Greg Kroah-Hartman
+> <gregkh@linuxfoundation.org> wrote:
+>> On Fri, Sep 22, 2017 at 08:04:52AM -0700, Georgiana Chelu wrote:
+>>> Clean the code to improve the coding style.
+>>>
+>>> Fix minor issues reported by checkpatch.pl:
+>>> * CHECK: Alignment should match open parenthesis
+>>> * CHECK: Logical continuations should be on the previous line
+>>> * WARNING: line over 80 characters
+>>
+>> That's a lot of different things to be doing all in one patch.  Please
+>> break this up into "one type of thing" per patch.
+>>
+>> And no, "fix all coding style issues" is not "one thing" :)
+>>
 >
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CALta04zFwGkrmWOzB%2BguhMfo3OE2uFJYdOT5fp38OG_2si112Q%40mail.gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
+> I will resend the patchset! Thank you!
 >
+Is the << "one type of thing" per patch>> required
+> because it is easy to follow the same change in a patch?
+>
+> Have a nice day,
+> Georgiana
+>
+>> thanks,
+>>
+>> greg k-h
 
