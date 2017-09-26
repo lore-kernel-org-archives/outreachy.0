@@ -1,102 +1,113 @@
 X-GM-THRID: 6469960425637150720
-X-Received: by 10.28.184.81 with SMTP id i78mr258025wmf.2.1506405529259;
-        Mon, 25 Sep 2017 22:58:49 -0700 (PDT)
+X-Received: by 10.28.4.84 with SMTP id 81mr194268wme.28.1506405050335;
+        Mon, 25 Sep 2017 22:50:50 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.50.138 with SMTP id y132ls270898wmy.9.gmail; Mon, 25 Sep
- 2017 22:58:48 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QCwZKCfoUIasjsocnrNmaLv7dTUtvRUgYH6QGV5JHpWmAjh9KZIPtJUcKE0bd+MI7qyIy6s
-X-Received: by 10.223.185.55 with SMTP id k52mr496752wrf.23.1506405528651;
-        Mon, 25 Sep 2017 22:58:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506405528; cv=none;
+Received: by 10.223.163.207 with SMTP id m15ls3141304wrb.13.gmail; Mon, 25 Sep
+ 2017 22:50:49 -0700 (PDT)
+X-Received: by 10.28.173.203 with SMTP id w194mr215372wme.16.1506405049787;
+        Mon, 25 Sep 2017 22:50:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506405049; cv=none;
         d=google.com; s=arc-20160816;
-        b=Aq1L7aN3JCVWfoUKIehMxUrQY11rXZd+rNKUCuOLDg15AlPMKUyDYH4528iEQFGF/H
-         2xP3LjDzKkjWek7jsfRXpvFftw0YrcqxZI1+9SQOTAgmNkDq6O1AInttlTgMkFqEdphy
-         oyqQoO54RHaT9YFHCDPxbgzzIuV2HlvBRrSvOhF/OPpbX8SZHA+ZXQLzILvRD94cd0Ki
-         KfTIyE6ot0A7N2rx7KZ5T5kuJBwTbaTbVBSx7S3PS2a2Cq5ikaFdcYhaBzh4um4u97eV
-         F4tgB1Gq84ASlVLAL0BfvO208dHkBTGkI6JwWiA/xR3RUzmVuSpX8HBvqk7K4wZ1QkFw
-         VkAA==
+        b=DSjZ8xH6uHkN/xjP/u0NOMlu1sIak7fTpurSPIedbXIsDDx4Iu5l00DXIzoaj94SWp
+         j8o+QKi/DWXsxdUAmNv+ld2W7EXOHOV6S9fEaJpegDLm00/dvPlGAmqSqilte/satj2x
+         WnUnICuIn2LHp3LdcAZ+nATLP7o7Nhbp4lU84mLejkQsHFxxqdqQMxRSb9ptHWZfu7A4
+         zuvRrycfmE/kfAp0Li5/trCfUxi+wqEFzuzUt6XclOep0HR3jtFKqLFtXy+XirNjyJa9
+         UZgyTsCg/OEcivM6EIU6SnsN+vgjYFhJl4ahkUTyK+Sa1icTCINSQa6m1p8YcNEPvYG6
+         FDAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=YBkbUV8CQBwUTXKqDoG5X3VBpOJLBtc2dwqVR67OaLw=;
-        b=fVjaM4TMP3ydiHuCFgzMTf4LWztNgnTCZSdhDrE9OJBLa4ROkDyaDm7ucFWSagr5HF
-         BtEXvGWCLIHviNwG5AehlfQCnD200MJolZaeBgnp/nmDPaWVE0rGnHnPG/ioWNlzm0t3
-         m6JyJgzkuWSdsBeWpxUFRPZiS6dLk5Ic3/f5KlIC+ufCd4gQRSyvehsc9h02qwrOt6OA
-         QN7BuwzdgMnXul+BjTPVaOTygjJUzR020x9qjcDk6RCswiL+1aEW6eIxxj2JxX9FZtKs
-         BCnw4RAtzzVFlBhFWHPUy/fUXsOsc53qwrIijrIWAri1WUf3g/nHftyLxvPhXsyzMbus
-         vcJw==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature:arc-authentication-results;
+        bh=g+Ln6Vi8EhFVKgRiL7n3eUtrOWqOCLrhgmn4Rw9JbLM=;
+        b=b0mj43783tkevOrXq0u0Ek0Bxcw3MlkyU2KnI5nPJk0PeIA+i2TCWev1VoR0XGMq7A
+         NNU163r9NnLf3hDHBWRDlRRWY9DkLqBRyoktnTUoVFjuZfWJtdPb13pdoyuNbzT0iuoj
+         87K54t1XUNrFIohd7rqUE78sS5+EUKFSiyT0lMMcEnl5e7CPn4LNVcV8BvhkfS0gSW+R
+         I5eM6TuBqRyH6yU/3tp6t/9y2tFRTdPV+MRwdU+NGgI8yusrbE3Qezhy/EJ3EqPUCkYg
+         vav2WVrtOnAC8rW1z26TAJeDILbzmwp/Rpdyuf1tSOqhv9BO84ihyGI/i2QnsehiywHb
+         3uVA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id l133si79913wmb.3.2017.09.25.22.58.48
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RrTRQs4b;
+       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::232 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from mail-wm0-x232.google.com (mail-wm0-x232.google.com. [2a00:1450:400c:c09::232])
+        by gmr-mx.google.com with ESMTPS id j4si108825wmi.2.2017.09.25.22.50.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Sep 2017 22:58:48 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Mon, 25 Sep 2017 22:50:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::232 as permitted sender) client-ip=2a00:1450:400c:c09::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.42,439,1500933600"; 
-   d="scan'208";a="238702324"
-Received: from unknown (HELO hadrien.local) ([93.83.33.58])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 26 Sep 2017 07:58:47 +0200
-Date: Tue, 26 Sep 2017 07:58:36 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Mihaela Muraru <mihaela.muraru21@gmail.com>
-cc: outreachy-kernel@googlegroups.com, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8712: Fix suspect code
- indent for conditional statements
-In-Reply-To: <20170926055046.GA9014@domino-MS-16Y1>
-Message-ID: <alpine.DEB.2.20.1709260757170.2905@hadrien>
-References: <20170926055046.GA9014@domino-MS-16Y1>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RrTRQs4b;
+       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::232 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x232.google.com with SMTP id r136so3784546wmf.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 25 Sep 2017 22:50:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=g+Ln6Vi8EhFVKgRiL7n3eUtrOWqOCLrhgmn4Rw9JbLM=;
+        b=RrTRQs4bmJN2Q6WgV5EkTQg3G/4n8YNJeXx1jDEmZ4r21/3L+bPcPlRsm3t1juckOL
+         Ely5H05sXrwKKSDgXU2bXODyhhz8uG8m/21wqcZ1eoYeNn+MQnXJ+yWd0uGS0iO+8uCF
+         msdZQqXZqoL5EFk+aJTo25XCGu+ImMuuQSntrDeSxQkGwiH9AgKL08DX4OB8rq86Je8x
+         s36snmAE0tLe88SxeNP4m+C9b64IZBXqFuFBePOWaF0dGpgYddxs99KIeKuNANW0hwuc
+         fTZScQiqJpgk5zR1VCzDiCYltmgvOK5XQdy0IowTy3V3NT1Dy/GBGVl+zPxfZs8jhDQ3
+         XpDw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=g+Ln6Vi8EhFVKgRiL7n3eUtrOWqOCLrhgmn4Rw9JbLM=;
+        b=p4SHjFGEoGqHYzZoiwe4P5oqj1CpD9gAZIZj0gT51pApTxjo7GRLoH2HH28BWZ3up/
+         miLpJtoR2ARlDlc+SGkVoa6lNu1mpGWsOeYNriP0+TpLiegzGK/c5zzm8CEzzBeuERFS
+         X1xUGsUpf7PUvKZKT/g0Zwkxi+LSkorlvnEZwAs6hawX3IfSVvTddRBw0ovvvkFG7bMA
+         5dpYGKpuUQKLO6fHGZKUmdUUF/5JGe9tZxtZPL4K0hm+5hj7lt5ldeYNYBvplqT/Ih8T
+         ti6WskTOvWmUDHfh0wRf3UFa/0xkMF/j7E/uRrnTHlZ2f+sbvU1a01fVuJOQLRbsWNAN
+         RQ/g==
+X-Gm-Message-State: AHPjjUjnlBnUBqbr+1HNvJ2YO95wrkJ8ZfYQEIeFnKvpmDggRXgyTJ1B
+	untQcf9e9wZ+Rp1QV7deYXA=
+X-Google-Smtp-Source: AOwi7QC4GpDmH/EJfXHNZysiAZ8kJsLgZ2fbsMRhYx4JNjvWP7eEKXDXJRaPp+sedJj/3jx7r10HNQ==
+X-Received: by 10.28.18.210 with SMTP id 201mr1806895wms.135.1506405049496;
+        Mon, 25 Sep 2017 22:50:49 -0700 (PDT)
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from domino-MS-16Y1 ([93.122.248.7])
+        by smtp.gmail.com with ESMTPSA id q188sm882013wmb.43.2017.09.25.22.50.48
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 25 Sep 2017 22:50:48 -0700 (PDT)
+Date: Tue, 26 Sep 2017 08:50:47 +0300
+From: Mihaela Muraru <mihaela.muraru21@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: rtl8712: Fix suspect code indent for conditional
+ statements
+Message-ID: <20170926055046.GA9014@domino-MS-16Y1>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
+This patch fixes the checkpatch.pl warning:
 
+WARNING: suspect code indent for conditional statements (16, 32)
 
-On Tue, 26 Sep 2017, Mihaela Muraru wrote:
+Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
+---
+ drivers/staging/rtl8712/rtl8712_recv.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> This patch fixes the checkpatch.pl warning:
->
-> WARNING: suspect code indent for conditional statements (16, 32)
->
-> Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
+diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
+index 0978727..8f555e6 100644
+--- a/drivers/staging/rtl8712/rtl8712_recv.c
++++ b/drivers/staging/rtl8712/rtl8712_recv.c
+@@ -149,7 +149,7 @@ int r8712_free_recvframe(union recv_frame *precvframe,
+ 	list_add_tail(&(precvframe->u.hdr.list), &pfree_recv_queue->queue);
+ 	if (padapter != NULL) {
+ 		if (pfree_recv_queue == &precvpriv->free_recv_queue)
+-				precvpriv->free_recvframe_cnt++;
++			precvpriv->free_recvframe_cnt++;
+ 	}
+ 	spin_unlock_irqrestore(&pfree_recv_queue->lock, irqL);
+ 	return _SUCCESS;
+-- 
+2.7.4
 
-Acked-by Julia Lawall <julia.lawall@lip6.fr>
-
-Try to be a bit more descriptive in your commit messages about what you
-are doing and why.  Fix doesn't say what you have decided to do.
-
-julia
-
-> ---
->  drivers/staging/rtl8712/rtl8712_recv.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
-> index 0978727..8f555e6 100644
-> --- a/drivers/staging/rtl8712/rtl8712_recv.c
-> +++ b/drivers/staging/rtl8712/rtl8712_recv.c
-> @@ -149,7 +149,7 @@ int r8712_free_recvframe(union recv_frame *precvframe,
->  	list_add_tail(&(precvframe->u.hdr.list), &pfree_recv_queue->queue);
->  	if (padapter != NULL) {
->  		if (pfree_recv_queue == &precvpriv->free_recv_queue)
-> -				precvpriv->free_recvframe_cnt++;
-> +			precvpriv->free_recvframe_cnt++;
->  	}
->  	spin_unlock_irqrestore(&pfree_recv_queue->lock, irqL);
->  	return _SUCCESS;
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170926055046.GA9014%40domino-MS-16Y1.
-> For more options, visit https://groups.google.com/d/optout.
->
 
