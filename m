@@ -1,112 +1,83 @@
-X-GM-THRID: 6749515623301120000
-X-Received: by 2002:ac2:5209:: with SMTP id a9mr4763550lfl.104.1571494066756;
-        Sat, 19 Oct 2019 07:07:46 -0700 (PDT)
+X-GM-THRID: 6470101655297720320
+X-Received: by 10.25.17.102 with SMTP id g99mr972791lfi.14.1506449734811;
+        Tue, 26 Sep 2017 11:15:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:651c:1043:: with SMTP id x3ls1069225ljm.14.gmail; Sat,
- 19 Oct 2019 07:07:45 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy77pAUtWSqMlLJrMO9pblJoT2405f6TixoeXGIMue8K8YypwudV9GPdOxoXkvqlMY9ghY1
-X-Received: by 2002:a2e:207:: with SMTP id 7mr9243616ljc.248.1571494065485;
-        Sat, 19 Oct 2019 07:07:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571494065; cv=none;
+Received: by 10.46.16.197 with SMTP id 66ls2975761ljq.1.gmail; Tue, 26 Sep
+ 2017 11:15:33 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QDfCl9HKUrCtD+T+TsF/oVUMUx+BpFQvHDyzN3Ml38tiy7M7FVhT6ZOfBdcdf5wm+F/HeDo
+X-Received: by 10.25.41.149 with SMTP id p143mr684538lfp.5.1506449733393;
+        Tue, 26 Sep 2017 11:15:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506449733; cv=none;
         d=google.com; s=arc-20160816;
-        b=mp5ZbD6sNjZHNrVfiljC+RoSD6j3bo/MXaGhzdRXqdS2MljkXvXHv4R69UncE0i3Hk
-         P1l7gIvokzMRREg3j7/Q0Qoys6eDQsmK96WdsQMilGK6F6kheBnoWCQeRx6oQlK9faWY
-         4ZTOa8MTvmU4w27BS1EJxbaV+z5w6cK8q7Y30Tz9ufkuRLajXheGD0MTJGE0O3hpQxp8
-         MWePXb0rtyuIo6h9wSKTxWvFXftOlFcJxo81g+FRJC1tiNhcCuvQNsdkwN2fUxHq1vXF
-         qAtwwVN27xS4FKdMwzRPBcGrYci3pCYQOZe/BS98GYigzJHHOwbM0CbHxRDVMhgfP7wM
-         u8LQ==
+        b=iSj9W6+/FaIfRzKan3Qb/xgWzqrrbl6oJ8/B5o5SgxmuUK8ii8hIBhPcyb4KVoWD1E
+         sZ5VXPKpIu2TsPww62gFwXYPT9quATASI5lsv5NGkWeDSPQDgu4wr6XwqCEwl1PurMYN
+         CT1uBcGchz4yG7DNAjtRiGTv4O2SzuZfx9c1UP+XJJzTz1uXfHaJKNbaYKELojWdOcsr
+         rIXuZhozNcPQrdDWm0rvU4FdMXhCKb+jicmA6TbAYjKF+ZYkN+4rbSP62pCX76ga29sH
+         rtxMFNCGnhy74gkweVLtH7YspzZXY6CNebqyCIHum5TQGJsd9ZJ8vXGumfMKivn9DJ5H
+         Oa3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=p7Q5YgxIlsTOJ6RN4Gx4aIi4gFkJcajKi+6SvF9kn/0=;
-        b=CfzOBLP5KrWQc9flQs09jrN/f8JXHqT0UXeDRnfBup+D3d0MP16KSYN9/LGjnLkpYx
-         EHwicz0SKYs52Q+lkP2MdQbMxViPBUeA+B2TzlfWM1WHuJgBnqDSGCf1/FWsVjhPWcex
-         WDqu6lYMKin7uL684hVr0H6X5nVblPXg/p6E2pfQ4ucHiaZqXDiA533FPC6cVtSP0zTR
-         XIIETaY1giF1mHJ5CyEFg0FRBW5/gu/Emn943ioO0YbchzfJlypwpQOszNzS8qdVkrnx
-         CvYNctLLLkLrYAnLx01KYopNKjaqOfk8bwVz6t0M69xCN2gOj7OFfZRwCZDdUcbnCJti
-         s5dQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject
+         :arc-authentication-results;
+        bh=CHA+21pTJURCxMRNlud91WsD7sNfWPmLJxHCf8e6Qn0=;
+        b=0iYoFAlKyFTzp41Fg29KjQwhpFg+7XQd78rdGpJWpZ8NX3haJUo83z78cYiGJUkicU
+         gX7bSraGWVEzebWAnYAV/UA6umZargI9kyeIPSO+9OTiBUXLs8/GgKdQK+o0VnXkP3W/
+         UHzG5/CREfwY8cXp+Vc/D5hzieQzBLkQrSag6bxu+wml0brEVwH1zB1LXLDpEyfkFtFm
+         iYUbfRWRUU8MYMZ2tVhqzu0RIRbQKJaS/jdzAufofd1RUVbCz88c0OiwEaUN50AOlyT0
+         8E8EgreSvzK718q/0ClHjyNYQ5XEm9UMpwJuwWq51PISWioAMe6LV8XfAlkjl6AIk4J1
+         569A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=u2z5pF25;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wm1-x341.google.com (mail-wm1-x341.google.com. [2a00:1450:4864:20::341])
-        by gmr-mx.google.com with ESMTPS id h9si133927lfp.5.2019.10.19.07.07.45
+       spf=neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) smtp.mailfrom=lars@metafoo.de
+Return-Path: <lars@metafoo.de>
+Received: from www381.your-server.de (www381.your-server.de. [78.46.137.84])
+        by gmr-mx.google.com with ESMTPS id 191si156463wmn.2.2017.09.26.11.15.33
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 19 Oct 2019 07:07:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) client-ip=2a00:1450:4864:20::341;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 26 Sep 2017 11:15:33 -0700 (PDT)
+Received-SPF: neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) client-ip=78.46.137.84;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=u2z5pF25;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x341.google.com with SMTP id f22so8632406wmc.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 19 Oct 2019 07:07:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=p7Q5YgxIlsTOJ6RN4Gx4aIi4gFkJcajKi+6SvF9kn/0=;
-        b=u2z5pF250EIkte8lyu3Ud+41Bfg4Xea7dGxk3D+jBXT0gHXPBYH9VVaD3TxBHfA881
-         Cd3V9utv9g4a1wc56H+4/cEQp8oNWsXiuBmMF3YB92lffUuFSi2qRO1Euq3z7s0prnSk
-         Y1NACEZccO7vIpybvASZjcVifQ8NVXMB6U/ngK8IsG7dOS8nYgCyMjeWC2zDy5XWwf9v
-         mRBTngY0mj5t6SOMIhPBske3Z/mReI+wmSmd70MlXkVxd3MNeQibNq3MizisP2SPKrVf
-         tpvns7yRRNyx5+vxyhoHMx/yeQcEsi476a7sYwhE7/apT8tocqn6hBM+9cnc50eHu0Cm
-         VhHQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=p7Q5YgxIlsTOJ6RN4Gx4aIi4gFkJcajKi+6SvF9kn/0=;
-        b=fY5CQIb6/h+3Yi1/zUZvrQGBN6flkudENgpe4+ggfswLIIIMRNbXCp3DJNlGhAoNmZ
-         a6S5d8t4tIRDK/Wdl2x3Xk/KF64LLFE9Z91LfjvbjZO5C+1WEJrxCiEQoQIUDztnDw97
-         hY+E3aeWYYvuottxCBs+/VjsBZvXAZNOGJNURoU0nYmcGTXXGX/vBbhOiAcf5r9fFBfs
-         bDt1e0R60ChEjq9AtMJkvIhI4SZidnHFwLK8diWnyOLVCrK1rB0yI52fLXfoR7QmR+IF
-         auqYnqEpsNFXwYKa31hLWPxnkfjENfcrbe+mhL3SwYwHWGssDbrnrM7uouC64fIUk4rG
-         dpUg==
-X-Gm-Message-State: APjAAAXs8U+RCEWWoWN3yi8trYsomrTX3xnbiPlhyGKZ2DFBpf8TREGa
-	tbQOm+U+qCW+EynohLi8ltWZV8cEdEB4
-X-Received: by 2002:a1c:1bc5:: with SMTP id b188mr12424365wmb.88.1571494064634;
-        Sat, 19 Oct 2019 07:07:44 -0700 (PDT)
-Return-Path: <jbi.octave@gmail.com>
-Received: from ninjahub.lan (host-92-23-80-57.as13285.net. [92.23.80.57])
-        by smtp.googlemail.com with ESMTPSA id t4sm7893080wrm.13.2019.10.19.07.07.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 19 Oct 2019 07:07:43 -0700 (PDT)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org,
-	jerome.pouiller@silabs.com,
-	linux-kernel@vger.kernel.org,
-	Jules Irenge <jbi.octave@gmail.com>
-Subject: [PATCH v1 0/5]  staging: wfx: fix checkpatch warnings
-Date: Sat, 19 Oct 2019 15:07:14 +0100
-Message-Id: <20191019140719.2542-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.21.0
+       spf=neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) smtp.mailfrom=lars@metafoo.de
+Received: from [88.198.220.132] (helo=sslproxy03.your-server.de)
+	by www381.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
+	(Exim 4.85_2)
+	(envelope-from <lars@metafoo.de>)
+	id 1dwuOK-0000wt-To; Tue, 26 Sep 2017 20:15:32 +0200
+Received: from [93.104.178.63] (helo=[192.168.178.40])
+	by sslproxy03.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-SHA:256)
+	(Exim 4.84_2)
+	(envelope-from <lars@metafoo.de>)
+	id 1dwuOK-00070w-KY; Tue, 26 Sep 2017 20:15:32 +0200
+Subject: Re: [PATCH v2 0/2] staging: iio: adc: ad7192: use private driver lock
+ to protect hardware changes
+To: Aastha Gupta <aastha.gupta4104@gmail.com>,
+ outreachy-kernel@googlegroups.com, hennerich@blackfin.uclinux.org,
+ jic23@kernel.org, knaack.h@gmx.de, pmeerw@pmeerw.net,
+ linux-iio@vger.kernel.org
+References: <1506440468-5081-1-git-send-email-aastha.gupta4104@gmail.com>
+From: Lars-Peter Clausen <lars@metafoo.de>
+Message-ID: <e4b443c0-7d7f-e353-61c5-32867bfe01eb@metafoo.de>
+Date: Tue, 26 Sep 2017 20:15:31 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <1506440468-5081-1-git-send-email-aastha.gupta4104@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Authenticated-Sender: lars@metafoo.de
+X-Virus-Scanned: Clear (ClamAV 0.99.2/23875/Tue Sep 26 14:44:28 2017)
 
-Fix checkpatch warnings.
+On 09/26/2017 05:41 PM, Aastha Gupta wrote:
+> The IIO subsystem is redefining iio_dev->mlock to be used by
+> the IIO core only for protecting device operating mode changes.
+> ie. Changes between INDIO_DIRECT_MODE, INDIO_BUFFER_* modes.
+> 
+> These patches 
+> - replace mlock with private driver lock 
+> - add lock where there are hardware state changes 
 
-Jules Irenge (5):
-  staging: wfx: fix warnings of no space is necessary
-  staging: wfx: fix warning of line over 80 characters
-  staging: wfx: fix warnings of logical continuation
-  staging: wfx: correct misspelled words
-  staging: wfx: fix warnings of alignment should match open parenthesis
-
- drivers/staging/wfx/bh.c       |  25 ++++---
- drivers/staging/wfx/bus.h      |   6 +-
- drivers/staging/wfx/bus_sdio.c |   9 +--
- drivers/staging/wfx/bus_spi.c  |  11 +--
- drivers/staging/wfx/data_rx.c  |  35 +++++----
- drivers/staging/wfx/data_tx.c  | 127 +++++++++++++++++++++------------
- drivers/staging/wfx/data_tx.h  |   4 +-
- drivers/staging/wfx/debug.c    |  14 ++--
- 8 files changed, 143 insertions(+), 88 deletions(-)
-
--- 
-2.21.0
-
+For this to make sense both changes need to be in the same patch. You are
+removing the protection in patch 1 and then adding it back in patch 2. A
+patch series shouldn't leave the driver in a broken intermediate state if
+only part of the series is applied.
 
