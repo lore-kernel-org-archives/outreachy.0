@@ -1,119 +1,366 @@
 X-GM-THRID: 6470000031137005568
-X-Received: by 10.176.64.131 with SMTP id i3mr7298642uad.17.1506439725055;
-        Tue, 26 Sep 2017 08:28:45 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.101.76.133 with SMTP id m5ls3882749pgt.21.gmail; Tue, 26 Sep
- 2017 08:28:43 -0700 (PDT)
-X-Received: by 10.84.216.69 with SMTP id f5mr6094508plj.0.1506439723962;
-        Tue, 26 Sep 2017 08:28:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506439723; cv=none;
-        d=google.com; s=arc-20160816;
-        b=nUcjtWNIlh805x2XxcCwvr9YejZXpSfjmE1HOpWZ1M20wP/zOqYzUahKYja7vdENLy
-         FpyfgblT2ciB9/l5JTP31gcnheJjQCMc1I4tmQov1YrUSYhFC7ZbC2M9WdMGlwXZTfqK
-         +0CtbxpOkDXjbjRx+TXd2XzbyyzUPTwZ4qtQaf4D8TyBLpnBI0LW8rZPE5/2eh1Mww5h
-         Ye2vutO8W/aLIGVvs1sSf3lL++BDawnR4OEv6iOyR+3+xcRElapyMu3mrJFrXLV0v4GJ
-         Ruzxr2KWnYCX5yJ0hjnB80tC/Rsl9Or/nFpl9G2NKdFa0ys8ifjJw9H40D2XoplpRmTw
-         NMAg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=42WTiE2qWhPfPK+hYF5kiN8VXZ3uhRZ0tQHdwnjRwKA=;
-        b=vq3AGW82SUVbMS4F+aOuHm5gzFcAhvPN32pWwXuWULGt4cnzH2UBW4frqut6DLuXid
-         LAi2YkyUZprF7TyI8evef5JRQX/HXTgXMU0oZaZqFTXidcg3UShiJcXPiP5mkvHR2bIG
-         F4/ChJQEPoDEhtfAflZvUbUPOIbTqHqj6Ics2uylrWoiFG7gDSjnedn7rtWmpGuwYUKj
-         mwZS5cwcS2ATk9noUAcw6J0DZ+n7zU3aKNkmaQKS0Wo/WzaIecs3DG+KOyhQtO6JOI3U
-         1jocbRowulLch1SkJtWgR9K6dKvfm/HuAKQow9KgCUzaV/OxcfEq2vdvhDzC08Im6QEG
-         X1Ew==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RXT/05e6;
-       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <keerthigd4990@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id v9si691880pfj.24.2017.09.26.08.28.43
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 26 Sep 2017 08:28:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RXT/05e6;
-       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id u18so6971572pgo.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 26 Sep 2017 08:28:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=42WTiE2qWhPfPK+hYF5kiN8VXZ3uhRZ0tQHdwnjRwKA=;
-        b=RXT/05e6keBqvVZCM0fTSLTWqOWEYs/Y8xdcTs37DuYIRy/5bgdQ/yC3KL9RIQG6LH
-         LXXNwYHfwSehGf04UtGVQo8IQ8601SQDSCWVCOeg3kBCgq/m42IM8cwMgNnh/O4Lf4cS
-         XO2gw+/iGEuoa02sdL9hvBv7d1393rnAK7YM7Dl097wIvVa0XbGwBQRi2KLtj+CnqNsH
-         CWdvaK9/XCuQC7x1YfdtngIkesViCLQxb7jBnpVf5cE7A2wUO4PIO4RWdUr0dyYiITKS
-         /faLbM94gYKil7esQm/fdDrDEsZ/TjtAZcxi28HWb4fVdYHiDLis42nmxG3aPpKA5bOV
-         Sm4g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=42WTiE2qWhPfPK+hYF5kiN8VXZ3uhRZ0tQHdwnjRwKA=;
-        b=Ek7SsWHE7Cgu4Gt1wFgqh8iH6nUn3SJYrTYo6iSjzu7KARnsskwz9F7I9v8PsXZ3h6
-         ygn0edXrV0q+aWPbRK4BOSoJSW6gtGFc8LHQyyCOZkbGQLAUMZ9ZEyb4HGfgTX06oDT8
-         EsAlsSioiWEgatx6VxB8Cf7sk0YHeN1rmPUwnQiLunBoZDJtQIenP96xd4Ry/8lm5Bz5
-         pc/ruuDwSm5EO7Hn/1Jb74eEa7Z3aqBRWuqpiLFE4qPS7yVv8CgCldMnHdKbbrDCfOpn
-         NXHNd3lqwCboX/Uh95luLD/JK/XZvdfV6JC6/u9rjpZPKhpSpQdp6Gy97bh2LnMDEiL3
-         Il7Q==
-X-Gm-Message-State: AHPjjUjolZnDwpNmrDxdDjeOHHHyM4B0mlLDZLK6LRc03LuHBeoZWUKW
-	nuNZTOAwldffTtqjmwRHDbB0eFFx
-X-Google-Smtp-Source: AOwi7QCGhfACz4PsOwOYDG0p19RnGxr0g9CEcDVxjhxfnJ1aU+ux2ttvClE3E5q/rWxQ/s7n+zImvg==
-X-Received: by 10.84.129.226 with SMTP id b89mr11059554plb.36.1506439723748;
-        Tue, 26 Sep 2017 08:28:43 -0700 (PDT)
-Return-Path: <keerthigd4990@gmail.com>
-Received: from manoharreddy ([202.53.87.190])
-        by smtp.gmail.com with ESMTPSA id d23sm10634528pfe.115.2017.09.26.08.28.41
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 26 Sep 2017 08:28:42 -0700 (PDT)
-Date: Tue, 26 Sep 2017 20:58:38 +0530
+Date: Tue, 26 Sep 2017 07:47:59 -0700 (PDT)
 From: Keerthi Reddy <keerthigd4990@gmail.com>
-To: eric@anholt.net, stefan.wahren@i2se.com,
-	outreachy-kernel@googlegroups.com
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 0/3] Fix spaces and typos in vc04_services
-Message-ID: <cover.1506439214.git.keerthigd4990@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <e38ba3e0-6c42-4ea9-ae2a-1cf95ebab6e2@googlegroups.com>
+In-Reply-To: <alpine.DEB.2.20.1709261031590.2925@hadrien>
+References: <cover.1506413998.git.keerthigd4990@gmail.com> <f925ac589c9eaeb3815a6e6f537592abb1aa041f.1506413998.git.keerthigd4990@gmail.com>
+ <alpine.DEB.2.20.1709261031590.2925@hadrien>
+Subject: Re: [Outreachy kernel] [PATCH 3/3] staging: vc04_services: add
+ spaces around << operator
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_11817_413005595.1506437279618"
+X-Google-Token: EJ_Rqc4FgtqZtstqBio0
+X-Google-IP: 202.53.87.190
 
-This patchset removes extra newlines within file 
-and also fixes smalls typos.
+------=_Part_11817_413005595.1506437279618
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_11818_2017655515.1506437279618"
 
----
-Changes in v2:
-edit commit message for patch 2/3
+------=_Part_11818_2017655515.1506437279618
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-Keerthi Reddy (3):
-  staging: vc04_services: please do not use multiple blank lines
-  staging: vc04_services: fix typos
-  staging: vc04_services: add spaces around << operator
 
- .../vc04_services/bcm2835-audio/bcm2835-pcm.c      | 11 ----------
- .../vc04_services/bcm2835-audio/bcm2835-vchiq.c    | 11 ----------
- .../vc04_services/bcm2835-camera/mmal-msg.h        | 24 +++++++++++-----------
- .../vc04_services/bcm2835-camera/mmal-parameters.h | 12 +++++------
- .../interface/vchi/connections/connection.h        |  3 ---
- .../interface/vchi/message_drivers/message.h       |  5 -----
- .../staging/vc04_services/interface/vchi/vchi.h    | 12 +----------
- .../vc04_services/interface/vchi/vchi_common.h     |  6 ------
- .../vc04_services/interface/vchiq_arm/vchiq_arm.c  |  9 --------
- .../vc04_services/interface/vchiq_arm/vchiq_arm.h  |  5 -----
- .../vc04_services/interface/vchiq_arm/vchiq_core.c | 10 ---------
- .../vc04_services/interface/vchiq_arm/vchiq_core.h |  1 -
- .../interface/vchiq_arm/vchiq_debugfs.c            |  3 ---
- .../vc04_services/interface/vchiq_arm/vchiq_shim.c |  3 ---
- 14 files changed, 19 insertions(+), 96 deletions(-)
+>Maybe the BIT macro could be used for these instead?
+I my humble opinion, the code without BIT macro is more readable I guess.
+And also for a casual reader, BIT may not be known. 
 
--- 
-2.7.4
+On Tuesday, September 26, 2017 at 2:03:34 PM UTC+5:30, Julia Lawall wrote:
+>
+>
+>
+> On Tue, 26 Sep 2017, Keerthi Reddy wrote: 
+>
+> > Follow coding convention by adding providing space 
+> > around << operators 
+> > 
+> > Signed-off-by: Keerthi Reddy <keerth...@gmail.com <javascript:>> 
+> > --- 
+> >  .../vc04_services/bcm2835-camera/mmal-msg.h        | 22 
+> +++++++++++----------- 
+> >  .../vc04_services/bcm2835-camera/mmal-parameters.h | 12 ++++++------ 
+> >  2 files changed, 17 insertions(+), 17 deletions(-) 
+> > 
+> > diff --git a/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h 
+> b/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h 
+> > index 1144d9d..0dfad29 100644 
+> > --- a/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h 
+> > +++ b/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h 
+> > @@ -217,36 +217,36 @@ struct mmal_msg_port_action_reply { 
+> >  #define MMAL_VC_SHORT_DATA 128 
+> > 
+> >  /** Signals that the current payload is the end of the stream of data 
+> */ 
+> > -#define MMAL_BUFFER_HEADER_FLAG_EOS                    (1<<0) 
+> > +#define MMAL_BUFFER_HEADER_FLAG_EOS                    (1 << 0) 
+> >  /** Signals that the start of the current payload starts a frame */ 
+> > -#define MMAL_BUFFER_HEADER_FLAG_FRAME_START            (1<<1) 
+> > +#define MMAL_BUFFER_HEADER_FLAG_FRAME_START            (1 << 1) 
+> >  /** Signals that the end of the current payload ends a frame */ 
+> > -#define MMAL_BUFFER_HEADER_FLAG_FRAME_END              (1<<2) 
+> > +#define MMAL_BUFFER_HEADER_FLAG_FRAME_END              (1 << 2) 
+> >  /** Signals that the current payload contains only complete frames (>1) 
+> */ 
+> >  #define MMAL_BUFFER_HEADER_FLAG_FRAME                  \ 
+> > 
+>          (MMAL_BUFFER_HEADER_FLAG_FRAME_START|MMAL_BUFFER_HEADER_FLAG_FRAME_END) 
+>
+> >  /** Signals that the current payload is a keyframe (i.e. self 
+> decodable) */ 
+> > -#define MMAL_BUFFER_HEADER_FLAG_KEYFRAME               (1<<3) 
+> > +#define MMAL_BUFFER_HEADER_FLAG_KEYFRAME               (1 << 3) 
+> >  /** Signals a discontinuity in the stream of data (e.g. after a seek). 
+> >   * Can be used for instance by a decoder to reset its state 
+> >   */ 
+> > -#define MMAL_BUFFER_HEADER_FLAG_DISCONTINUITY          (1<<4) 
+> > +#define MMAL_BUFFER_HEADER_FLAG_DISCONTINUITY          (1 << 4) 
+> >  /** Signals a buffer containing some kind of config data for the 
+> component 
+> >   * (e.g. codec config data) 
+> >   */ 
+> > -#define MMAL_BUFFER_HEADER_FLAG_CONFIG                 (1<<5) 
+> > +#define MMAL_BUFFER_HEADER_FLAG_CONFIG                 (1 << 5) 
+> >  /** Signals an encrypted payload */ 
+> > -#define MMAL_BUFFER_HEADER_FLAG_ENCRYPTED              (1<<6) 
+> > +#define MMAL_BUFFER_HEADER_FLAG_ENCRYPTED              (1 << 6) 
+> >  /** Signals a buffer containing side information */ 
+> > -#define MMAL_BUFFER_HEADER_FLAG_CODECSIDEINFO          (1<<7) 
+> > +#define MMAL_BUFFER_HEADER_FLAG_CODECSIDEINFO          (1 << 7) 
+> >  /** Signals a buffer which is the snapshot/postview image from a stills 
+> >   * capture 
+> >   */ 
+> > -#define MMAL_BUFFER_HEADER_FLAGS_SNAPSHOT              (1<<8) 
+> > +#define MMAL_BUFFER_HEADER_FLAGS_SNAPSHOT              (1 << 8) 
+> >  /** Signals a buffer which contains data known to be corrupted */ 
+> > -#define MMAL_BUFFER_HEADER_FLAG_CORRUPTED              (1<<9) 
+> > +#define MMAL_BUFFER_HEADER_FLAG_CORRUPTED              (1 << 9) 
+> >  /** Signals that a buffer failed to be transmitted */ 
+> > -#define MMAL_BUFFER_HEADER_FLAG_TRANSMISSION_FAILED    (1<<10) 
+> > +#define MMAL_BUFFER_HEADER_FLAG_TRANSMISSION_FAILED    (1 << 10) 
+>
+> Maybe the BIT macro could be used for these instead? 
+>
+> > 
+> >  struct mmal_driver_buffer { 
+> >          u32 magic; 
+> > diff --git 
+> a/drivers/staging/vc04_services/bcm2835-camera/mmal-parameters.h 
+> b/drivers/staging/vc04_services/bcm2835-camera/mmal-parameters.h 
+> > index e730022..c4a2380 100644 
+> > --- a/drivers/staging/vc04_services/bcm2835-camera/mmal-parameters.h 
+> > +++ b/drivers/staging/vc04_services/bcm2835-camera/mmal-parameters.h 
+> > @@ -22,17 +22,17 @@ 
+> >   */ 
+> > 
+> >  /** Common parameter ID group, used with many types of component. */ 
+> > -#define MMAL_PARAMETER_GROUP_COMMON            (0<<16) 
+> > +#define MMAL_PARAMETER_GROUP_COMMON            (0 << 16) 
+> >  /** Camera-specific parameter ID group. */ 
+> > -#define MMAL_PARAMETER_GROUP_CAMERA            (1<<16) 
+> > +#define MMAL_PARAMETER_GROUP_CAMERA            (1 << 16) 
+> >  /** Video-specific parameter ID group. */ 
+> > -#define MMAL_PARAMETER_GROUP_VIDEO             (2<<16) 
+> > +#define MMAL_PARAMETER_GROUP_VIDEO             (2 << 16) 
+> >  /** Audio-specific parameter ID group. */ 
+> > -#define MMAL_PARAMETER_GROUP_AUDIO             (3<<16) 
+> > +#define MMAL_PARAMETER_GROUP_AUDIO             (3 << 16) 
+> >  /** Clock-specific parameter ID group. */ 
+> > -#define MMAL_PARAMETER_GROUP_CLOCK             (4<<16) 
+> > +#define MMAL_PARAMETER_GROUP_CLOCK             (4 << 16) 
+> >  /** Miracast-specific parameter ID group. */ 
+> > -#define MMAL_PARAMETER_GROUP_MIRACAST       (5<<16) 
+> > +#define MMAL_PARAMETER_GROUP_MIRACAST       (5 << 16) 
+>
+> BIT would not be apporpriate for these. 
+>
+> julia 
+>
+> > 
+> >  /* Common parameters */ 
+> >  enum mmal_parameter_common_type { 
+> > -- 
+> > 2.7.4 
+> > 
+> > -- 
+> > You received this message because you are subscribed to the Google 
+> Groups "outreachy-kernel" group. 
+> > To unsubscribe from this group and stop receiving emails from it, send 
+> an email to outreachy-kern...@googlegroups.com <javascript:>. 
+> > To post to this group, send email to outreach...@googlegroups.com 
+> <javascript:>. 
+> > To view this discussion on the web visit 
+> https://groups.google.com/d/msgid/outreachy-kernel/f925ac589c9eaeb3815a6e6f537592abb1aa041f.1506413998.git.keerthigd4990%40gmail.com. 
+>
+> > For more options, visit https://groups.google.com/d/optout. 
+> > 
+>
 
+------=_Part_11818_2017655515.1506437279618
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br>&gt;Maybe the BIT macro could be used for these instea=
+d?<div>I my humble opinion, the code without BIT macro is more readable I g=
+uess.</div><div>And also for a casual reader, BIT may not be known.=C2=A0</=
+div><div><br></div><div>On Tuesday, September 26, 2017 at 2:03:34 PM UTC+5:=
+30, Julia Lawall wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0=
+;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
+<br>
+<br>On Tue, 26 Sep 2017, Keerthi Reddy wrote:
+<br>
+<br>&gt; Follow coding convention by adding providing space
+<br>&gt; around &lt;&lt; operators
+<br>&gt;
+<br>&gt; Signed-off-by: Keerthi Reddy &lt;<a href=3D"javascript:" target=3D=
+"_blank" gdf-obfuscated-mailto=3D"WUZcX3LGBwAJ" rel=3D"nofollow" onmousedow=
+n=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.href=
+=3D&#39;javascript:&#39;;return true;">keerth...@gmail.com</a>&gt;
+<br>&gt; ---
+<br>&gt; =C2=A0.../vc04_services/bcm2835-<wbr>camera/mmal-msg.h =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0| 22 +++++++++++-----------
+<br>&gt; =C2=A0.../vc04_services/bcm2835-<wbr>camera/mmal-parameters.h | 12=
+ ++++++------
+<br>&gt; =C2=A02 files changed, 17 insertions(+), 17 deletions(-)
+<br>&gt;
+<br>&gt; diff --git a/drivers/staging/vc04_<wbr>services/bcm2835-camera/mma=
+l-<wbr>msg.h b/drivers/staging/vc04_<wbr>services/bcm2835-camera/mmal-<wbr>=
+msg.h
+<br>&gt; index 1144d9d..0dfad29 100644
+<br>&gt; --- a/drivers/staging/vc04_<wbr>services/bcm2835-camera/mmal-<wbr>=
+msg.h
+<br>&gt; +++ b/drivers/staging/vc04_<wbr>services/bcm2835-camera/mmal-<wbr>=
+msg.h
+<br>&gt; @@ -217,36 +217,36 @@ struct mmal_msg_port_action_reply {
+<br>&gt; =C2=A0#define MMAL_VC_SHORT_DATA 128
+<br>&gt;
+<br>&gt; =C2=A0/** Signals that the current payload is the end of the strea=
+m of data */
+<br>&gt; -#define MMAL_BUFFER_HEADER_FLAG_EOS =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(1&lt;&lt;0)
+<br>&gt; +#define MMAL_BUFFER_HEADER_FLAG_EOS =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 0)
+<br>&gt; =C2=A0/** Signals that the start of the current payload starts a f=
+rame */
+<br>&gt; -#define MMAL_BUFFER_HEADER_FLAG_FRAME_<wbr>START =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0(1&lt;&lt;1)
+<br>&gt; +#define MMAL_BUFFER_HEADER_FLAG_FRAME_<wbr>START =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 1)
+<br>&gt; =C2=A0/** Signals that the end of the current payload ends a frame=
+ */
+<br>&gt; -#define MMAL_BUFFER_HEADER_FLAG_FRAME_<wbr>END =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(1&lt;&lt;2)
+<br>&gt; +#define MMAL_BUFFER_HEADER_FLAG_FRAME_<wbr>END =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 2)
+<br>&gt; =C2=A0/** Signals that the current payload contains only complete =
+frames (&gt;1) */
+<br>&gt; =C2=A0#define MMAL_BUFFER_HEADER_FLAG_FRAME =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0\
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0(MMAL_BUFFER=
+_HEADER_<wbr>FLAG_FRAME_START|MMAL_BUFFER_<wbr>HEADER_FLAG_FRAME_END)
+<br>&gt; =C2=A0/** Signals that the current payload is a keyframe (i.e. sel=
+f decodable) */
+<br>&gt; -#define MMAL_BUFFER_HEADER_FLAG_<wbr>KEYFRAME =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (1&lt;&lt;3)
+<br>&gt; +#define MMAL_BUFFER_HEADER_FLAG_<wbr>KEYFRAME =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (1 &lt;&lt; 3)
+<br>&gt; =C2=A0/** Signals a discontinuity in the stream of data (e.g. afte=
+r a seek).
+<br>&gt; =C2=A0 * Can be used for instance by a decoder to reset its state
+<br>&gt; =C2=A0 */
+<br>&gt; -#define MMAL_BUFFER_HEADER_FLAG_<wbr>DISCONTINUITY =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0(1&lt;&lt;4)
+<br>&gt; +#define MMAL_BUFFER_HEADER_FLAG_<wbr>DISCONTINUITY =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 4)
+<br>&gt; =C2=A0/** Signals a buffer containing some kind of config data for=
+ the component
+<br>&gt; =C2=A0 * (e.g. codec config data)
+<br>&gt; =C2=A0 */
+<br>&gt; -#define MMAL_BUFFER_HEADER_FLAG_CONFIG =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (1&lt;&lt;5)
+<br>&gt; +#define MMAL_BUFFER_HEADER_FLAG_CONFIG =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (1 &lt;&lt; 5)
+<br>&gt; =C2=A0/** Signals an encrypted payload */
+<br>&gt; -#define MMAL_BUFFER_HEADER_FLAG_<wbr>ENCRYPTED =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(1&lt;&lt;6)
+<br>&gt; +#define MMAL_BUFFER_HEADER_FLAG_<wbr>ENCRYPTED =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 6)
+<br>&gt; =C2=A0/** Signals a buffer containing side information */
+<br>&gt; -#define MMAL_BUFFER_HEADER_FLAG_<wbr>CODECSIDEINFO =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0(1&lt;&lt;7)
+<br>&gt; +#define MMAL_BUFFER_HEADER_FLAG_<wbr>CODECSIDEINFO =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 7)
+<br>&gt; =C2=A0/** Signals a buffer which is the snapshot/postview image fr=
+om a stills
+<br>&gt; =C2=A0 * capture
+<br>&gt; =C2=A0 */
+<br>&gt; -#define MMAL_BUFFER_HEADER_FLAGS_<wbr>SNAPSHOT =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(1&lt;&lt;8)
+<br>&gt; +#define MMAL_BUFFER_HEADER_FLAGS_<wbr>SNAPSHOT =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 8)
+<br>&gt; =C2=A0/** Signals a buffer which contains data known to be corrupt=
+ed */
+<br>&gt; -#define MMAL_BUFFER_HEADER_FLAG_<wbr>CORRUPTED =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(1&lt;&lt;9)
+<br>&gt; +#define MMAL_BUFFER_HEADER_FLAG_<wbr>CORRUPTED =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 9)
+<br>&gt; =C2=A0/** Signals that a buffer failed to be transmitted */
+<br>&gt; -#define MMAL_BUFFER_HEADER_FLAG_<wbr>TRANSMISSION_FAILED =C2=A0 =
+=C2=A0(1&lt;&lt;10)
+<br>&gt; +#define MMAL_BUFFER_HEADER_FLAG_<wbr>TRANSMISSION_FAILED =C2=A0 =
+=C2=A0(1 &lt;&lt; 10)
+<br>
+<br>Maybe the BIT macro could be used for these instead?
+<br>
+<br>&gt;
+<br>&gt; =C2=A0struct mmal_driver_buffer {
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0u32 magic;
+<br>&gt; diff --git a/drivers/staging/vc04_<wbr>services/bcm2835-camera/mma=
+l-<wbr>parameters.h b/drivers/staging/vc04_<wbr>services/bcm2835-camera/mma=
+l-<wbr>parameters.h
+<br>&gt; index e730022..c4a2380 100644
+<br>&gt; --- a/drivers/staging/vc04_<wbr>services/bcm2835-camera/mmal-<wbr>=
+parameters.h
+<br>&gt; +++ b/drivers/staging/vc04_<wbr>services/bcm2835-camera/mmal-<wbr>=
+parameters.h
+<br>&gt; @@ -22,17 +22,17 @@
+<br>&gt; =C2=A0 */
+<br>&gt;
+<br>&gt; =C2=A0/** Common parameter ID group, used with many types of compo=
+nent. */
+<br>&gt; -#define MMAL_PARAMETER_GROUP_COMMON =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0(0&lt;&lt;16)
+<br>&gt; +#define MMAL_PARAMETER_GROUP_COMMON =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0(0 &lt;&lt; 16)
+<br>&gt; =C2=A0/** Camera-specific parameter ID group. */
+<br>&gt; -#define MMAL_PARAMETER_GROUP_CAMERA =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0(1&lt;&lt;16)
+<br>&gt; +#define MMAL_PARAMETER_GROUP_CAMERA =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0(1 &lt;&lt; 16)
+<br>&gt; =C2=A0/** Video-specific parameter ID group. */
+<br>&gt; -#define MMAL_PARAMETER_GROUP_VIDEO =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 (2&lt;&lt;16)
+<br>&gt; +#define MMAL_PARAMETER_GROUP_VIDEO =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 (2 &lt;&lt; 16)
+<br>&gt; =C2=A0/** Audio-specific parameter ID group. */
+<br>&gt; -#define MMAL_PARAMETER_GROUP_AUDIO =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 (3&lt;&lt;16)
+<br>&gt; +#define MMAL_PARAMETER_GROUP_AUDIO =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 (3 &lt;&lt; 16)
+<br>&gt; =C2=A0/** Clock-specific parameter ID group. */
+<br>&gt; -#define MMAL_PARAMETER_GROUP_CLOCK =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 (4&lt;&lt;16)
+<br>&gt; +#define MMAL_PARAMETER_GROUP_CLOCK =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 (4 &lt;&lt; 16)
+<br>&gt; =C2=A0/** Miracast-specific parameter ID group. */
+<br>&gt; -#define MMAL_PARAMETER_GROUP_MIRACAST =C2=A0 =C2=A0 =C2=A0 (5&lt;=
+&lt;16)
+<br>&gt; +#define MMAL_PARAMETER_GROUP_MIRACAST =C2=A0 =C2=A0 =C2=A0 (5 &lt=
+;&lt; 16)
+<br>
+<br>BIT would not be apporpriate for these.
+<br>
+<br>julia
+<br>
+<br>&gt;
+<br>&gt; =C2=A0/* Common parameters */
+<br>&gt; =C2=A0enum mmal_parameter_common_type {
+<br>&gt; --
+<br>&gt; 2.7.4
+<br>&gt;
+<br>&gt; --
+<br>&gt; You received this message because you are subscribed to the Google=
+ Groups &quot;outreachy-kernel&quot; group.
+<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
+send an email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-m=
+ailto=3D"WUZcX3LGBwAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;jav=
+ascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;re=
+turn true;">outreachy-kern...@<wbr>googlegroups.com</a>.
+<br>&gt; To post to this group, send email to <a href=3D"javascript:" targe=
+t=3D"_blank" gdf-obfuscated-mailto=3D"WUZcX3LGBwAJ" rel=3D"nofollow" onmous=
+edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
+ef=3D&#39;javascript:&#39;;return true;">outreach...@googlegroups.<wbr>com<=
+/a>.
+<br>&gt; To view this discussion on the web visit <a href=3D"https://groups=
+.google.com/d/msgid/outreachy-kernel/f925ac589c9eaeb3815a6e6f537592abb1aa04=
+1f.1506413998.git.keerthigd4990%40gmail.com" target=3D"_blank" rel=3D"nofol=
+low" onmousedown=3D"this.href=3D&#39;https://groups.google.com/d/msgid/outr=
+eachy-kernel/f925ac589c9eaeb3815a6e6f537592abb1aa041f.1506413998.git.keerth=
+igd4990%40gmail.com&#39;;return true;" onclick=3D"this.href=3D&#39;https://=
+groups.google.com/d/msgid/outreachy-kernel/f925ac589c9eaeb3815a6e6f537592ab=
+b1aa041f.1506413998.git.keerthigd4990%40gmail.com&#39;;return true;">https:=
+//groups.google.com/d/<wbr>msgid/outreachy-kernel/<wbr>f925ac589c9eaeb3815a=
+6e6f537592<wbr>abb1aa041f.1506413998.git.<wbr>keerthigd4990%40gmail.com</a>=
+.
+<br>&gt; For more options, visit <a href=3D"https://groups.google.com/d/opt=
+out" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;htt=
+ps://groups.google.com/d/optout&#39;;return true;" onclick=3D"this.href=3D&=
+#39;https://groups.google.com/d/optout&#39;;return true;">https://groups.go=
+ogle.com/d/<wbr>optout</a>.
+<br>&gt;
+<br></blockquote></div></div>
+------=_Part_11818_2017655515.1506437279618--
+
+------=_Part_11817_413005595.1506437279618--
 
