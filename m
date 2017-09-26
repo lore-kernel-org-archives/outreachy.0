@@ -1,113 +1,149 @@
 X-GM-THRID: 6470000031137005568
-X-Received: by 10.98.211.86 with SMTP id q83mr300113pfg.22.1506534532743;
-        Wed, 27 Sep 2017 10:48:52 -0700 (PDT)
+X-Received: by 10.25.233.92 with SMTP id g89mr955396lfh.22.1506444294321;
+        Tue, 26 Sep 2017 09:44:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.98.55.65 with SMTP id e62ls579908pfa.2.gmail; Wed, 27 Sep 2017
- 10:48:51 -0700 (PDT)
-X-Received: by 10.98.58.25 with SMTP id h25mr298143pfa.23.1506534531704;
-        Wed, 27 Sep 2017 10:48:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506534531; cv=none;
+Received: by 10.25.207.6 with SMTP id f6ls1195701lfg.10.gmail; Tue, 26 Sep
+ 2017 09:44:52 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QA96avrbVHsIDAVc6G3wgdHgDtgzrHosJ+WSBKCJYx63oogOEWkIB+CnpLPuAFyuLCxMwzV
+X-Received: by 10.25.79.23 with SMTP id d23mr903946lfb.34.1506444292863;
+        Tue, 26 Sep 2017 09:44:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506444292; cv=none;
         d=google.com; s=arc-20160816;
-        b=IHe+nIydy+SvEY8rirGr7KVKgX88ke/VT2FgN6IB2V9cy+OaRwloeROCECduTnUWQ5
-         njccPC92/C8QYrWChZliqAJS0LIakxoCdi1WZdRQcqJG2QQMrabQL51nWIC1HNZ0b2Vp
-         F2T/ZjlSP6mL617JAAR5U5CjDT5hnRVHMXqZSBKgi+SVRmBj/5RZGQ+scRFrxydPVfXn
-         TcA70hfvISCRj7esXHKugJnTKYHNOYuCp5vUUHIERPrpbhVS+dcFp8yWCtTqnD/veKSI
-         spYA9U/VN5jiuWnygSMojxJa+SQk8KKshWBDHtbeh0ARVcbQ8F5KuNL6RtnzibhfNe+i
-         0jPQ==
+        b=D1LjDha2QG1ZfloAd/iRbHqf4ZxmZHk35+G45uA/9gPG0bLX1Sd7IQwgDsV8cID/QL
+         puCw6x/NnlMBpJcxOuzLm1+McrcrFiz9sLwbT/k2IwWBCm4Zi+wZLMhjYih3zWxCMdJA
+         pKJJGRwUmOnqRs54/WKmgpnaI0X1hZst+cIk6PRvKp/wWkhusjMHRvwIV/iat9i96rYw
+         awa7jQ8ZIyRBQ3Y11rOfah7EfmNQKQypSAnpQGIVq4BVpuSkFEVaa4Q1ZY2Oo90FwfGg
+         ikuT4p3eqy3juBRTqdIex7CU4Tidl9cZvHQFfzvbXPA8NOEMAKufX9uqTw2iS1GHzpUH
+         17AQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=geaCCyFAEFZ4tWJ7sxuXNUtgU49+Rq2cNUpWGa9CjFQ=;
-        b=AcQDbnF3zGLnoy0tmvcOmaZtFgPJTgxFKJAlSf+2jacgN4xawIGVT8FTFp81lUU/Lf
-         6VmXwVEEGwzG9xd2eU7UbrFHD9TaJKfIIDHIjrY70SQadhdx6I7CL+pdYoju4OtPbzpq
-         XS5ZB9y7orA1XA1ojJlde3mZ96ae5rm6DcYmiqGfMCvxQtuQQQUdStlkf3qJtKTZPC/s
-         LB9hNAGYOWlCxHjPY+rxFfQuVL1yrQVPNa9QgCA5bJ7QSqjMHqg8uorDohOR8OjXuMkV
-         MzArZh6U7xROnfSDVGcrBAFWwfhX9M6XeY/Qynd+LmFrx3kzhJ3NEpPPbEa7nR6Xalyr
-         37lw==
+        h=importance:content-transfer-encoding:mime-version:subject
+         :references:in-reply-to:message-id:cc:to:from:date
+         :arc-authentication-results;
+        bh=0MvPBzlbXa4uoaKJ/6HeDlLYJ1MxYCAtUV1Vq7ACiuc=;
+        b=zHd4auROfHO7ReniVxZCp3RXdr3DSlpDKT8eAby8m/+mBUYnLT+F1m5I1oQPrmNDVZ
+         6ws7ovv73KsCqF1/RrL0PPlj4VXVSuHHI0qZph5F+q8oX4cnQyVvIVoQfk+HII+lSFSx
+         Nw5J+65Z+lKq3OsFr2K51br6fager/175C6OAWBqxJIWO2SNWBjXXAATMXB1xmuuILsu
+         mTq/bvMNvI/XAE8ye0kO0b/daq+BrHCMkswae9p2olrbJGj8HTeB+7pVUSmV7U5sL1mp
+         dR4d9+cTGlrwVH5Y7Kgp99i6T9u3VTESW0Op1ZnRFoPJtrauF6Mg/OfeqMVHpZ27sujp
+         gS5A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fYxhUGYG;
-       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <keerthigd4990@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id o128si881820pfg.22.2017.09.27.10.48.51
+       spf=neutral (google.com: 217.72.192.75 is neither permitted nor denied by best guess record for domain of stefan.wahren@i2se.com) smtp.mailfrom=stefan.wahren@i2se.com
+Return-Path: <stefan.wahren@i2se.com>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [217.72.192.75])
+        by gmr-mx.google.com with ESMTPS id j4si251286wmi.2.2017.09.26.09.44.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 27 Sep 2017 10:48:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Tue, 26 Sep 2017 09:44:52 -0700 (PDT)
+Received-SPF: neutral (google.com: 217.72.192.75 is neither permitted nor denied by best guess record for domain of stefan.wahren@i2se.com) client-ip=217.72.192.75;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fYxhUGYG;
-       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id f84so7362913pfj.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 27 Sep 2017 10:48:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=geaCCyFAEFZ4tWJ7sxuXNUtgU49+Rq2cNUpWGa9CjFQ=;
-        b=fYxhUGYGz9cTWJB/NuRcQw+orrBvtPDJiXB+7TGgG/BvzgPKby8ts18AsBaNijbRFV
-         puers0EdSjj4OWJ/czpbqtEaSzZiAw0CnV7Jldnzz1sC00+XW6XhckVhvWtYa9/fF6JT
-         lARUCIyyxDf2NBPu5kGRt7NvOGvYMo5f/JgK8dOfqhD/29g3WCtbJOGoScj/m+0TpC35
-         rOkzbiOGgBcyyVP84ouAb0ULWDpx2ghpMIN7VW+K3j4IFmx2kDM4X032APgtsJUdoGpw
-         atCh22gultvMB1ZCmxcB+pn/dx00TJrhrImK9by1rCMz1m2dyZCcvnJpdg2LV8phX0Bt
-         meCg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=geaCCyFAEFZ4tWJ7sxuXNUtgU49+Rq2cNUpWGa9CjFQ=;
-        b=Ng6CzmU0vjxsXg7Nb2LQxqLLHc/zEjg2iWMNFtkN1wsY3GLN1m9FrljeEmu9zdfrQ3
-         UMPC8+UilqZN5y9NoFhZTgEbcGUVo6Hm/VCvjUvg+X7R6oA25uQ6E8rfichVtVR//tBB
-         l735WfSGVwSN0hAIhlZcj7Nw3HgfkQk5mQTtcNw4A2qTwwBxWA9rr2UU4o3OCS7sFtT9
-         k5Li57ryBQPUEYEZUTPYbiflwp9rnyIHETAAeCOCEl4lT/hz61SVDAoQYYQotREAAzS5
-         WooKaoCbX7ILlrFdVo2KjXPJGP01+25q+WEio+39hseaPX7YUI4gIIfxGgIcmxTOWZr4
-         30+g==
-X-Gm-Message-State: AHPjjUhsEvTyV46uhyom21FinlSCOieoQj6rGQzVpoq7h80VQmWRXEMy
-	tNcdAJEzR13X2jrfNpeE7rVMQxYs
-X-Google-Smtp-Source: AOwi7QCVHuJqp+PCMFyAtJxJ6avE61t0MomGj3Ca3dKUy5q5h/fTOfIzpdsRzh9zJN/0QPc0bixKBA==
-X-Received: by 10.99.115.30 with SMTP id o30mr2000739pgc.447.1506534531526;
-        Wed, 27 Sep 2017 10:48:51 -0700 (PDT)
-Return-Path: <keerthigd4990@gmail.com>
-Received: from manoharreddy ([202.53.87.190])
-        by smtp.gmail.com with ESMTPSA id v70sm9889741pfa.173.2017.09.27.10.48.49
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 27 Sep 2017 10:48:51 -0700 (PDT)
-Date: Wed, 27 Sep 2017 23:18:45 +0530
-From: Keerthi Reddy <keerthigd4990@gmail.com>
-To: eric@anholt.net, stefan.wahren@i2se.com,
-	outreachy-kernel@googlegroups.com
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3 0/2] Fix spaces and typos in vc04_services
-Message-ID: <cover.1506534236.git.keerthigd4990@gmail.com>
+       spf=neutral (google.com: 217.72.192.75 is neither permitted nor denied by best guess record for domain of stefan.wahren@i2se.com) smtp.mailfrom=stefan.wahren@i2se.com
+Received: from oxbsltgw35.schlund.de ([172.19.249.45]) by
+ mrelayeu.kundenserver.de (mreue101 [212.227.15.183]) with ESMTPSA (Nemesis)
+ id 0MKJHi-1dxQwP1FeY-001iIB; Tue, 26 Sep 2017 18:44:51 +0200
+Date: Tue, 26 Sep 2017 18:44:50 +0200 (CEST)
+From: Stefan Wahren <stefan.wahren@i2se.com>
+To: Keerthi Reddy <keerthigd4990@gmail.com>
+Cc: eric@anholt.net, outreachy-kernel@googlegroups.com
+Message-ID: <1791558453.225264.1506444290133@email.1und1.de>
+In-Reply-To: <e95b9e3b5f74eee2e2a5586761e2972065dd687f.1506439214.git.keerthigd4990@gmail.com>
+References: <cover.1506439214.git.keerthigd4990@gmail.com>
+ <e95b9e3b5f74eee2e2a5586761e2972065dd687f.1506439214.git.keerthigd4990@gmail.com>
+Subject: Re: [PATCH v2 3/3] staging: vc04_services: add spaces around <<
+ operator
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Priority: 3
+Importance: Medium
+X-Mailer: Open-Xchange Mailer v7.8.3-Rev33
+X-Originating-Client: open-xchange-appsuite
+X-Provags-ID: V03:K0:Bw+zQZsSbl09aNjB58lGaKcAdYwW7KsPdYYRrXHdBBQyetOUhXs
+ sNwM1NtbE/OTdUFvCpFMxN/YkSHC9/RnCGMc82k5f8tgFimhFbrfXJ1nR3b6rX2zkiB6efc
+ M0pVCGdQOZELH1EDDh8ePfrtIaYQvdiiB4CpYtRjt9AJPXC+WVRC49d2pR+J6oIHq6F6Shx
+ ujiHTg0JLUMO7HGvKOV3g==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:a4tEFBJ6ICg=:BAwe/eA5Xl1ElxMwBClWzl
+ w/oQPXVD91zaxkHFyUYLqka5EGfY6lvpCcbwsU3RbInu2VO1Ra7Jwk+sP966ZopYNaAnmt5CV
+ 8izG4MYpzQAsTNVViUkqo94CTUN4fyiMHO+uQeuNvNjEnq/BNKZnnYJHeckV7W0V83vT4dNt8
+ aInErUBC21fMqqn+J+TFUs99tMpU/a0tPuyNoXnyOTx1++srpUz0p19DeKQIoKc/R0HLg5qEK
+ 7+X5Vbst/q5ru4kVLfN19z/ZoJMx4rXlH21EEkv2wt/4zo3Mt4wYOruiDZuNIkwaKNvm12YRD
+ VxiiJ8aMWjT02xJFNmKq5UXX1EnJt50hKx2qhhcL4wEJ39WiDjwqMKIbyJ3xGhB4qxDQ4zevl
+ jq5ONEXudorNSISJwWejhN/wP1WdnnnZj0JiNKApn8SKw1K5X9zAwKsS8GcamtIWdchp6E5en
+ Bu39AGwrQ+u1eJJFCachv4rFSmoEBNGsTsK9NzPk+mJCTF66KcY4DgmBIbPSbYy8AlO8QLS9F
+ WhTuFFJ95QVfo0LFJSbwWscUNkcJ08p5NIayLqR96Ql/ifqrz3Vt121a991ONNtSkABlD43NQ
+ su4zIb3cGXPHsppUYg97gPM+d628tpg4C3pu+H5aCl1mHnwJR7PhV1cgERFZNZj9v1Kq/pMj7
+ EG9MzTiTKYkAKB2FCEyUjDM6V7yHRptlEXCdSt1611t9oCR93lg1G1ABAmHy/fumtGRpLacdo
+ CHy5gACm3EEHZPcozC8sG/XerbGrot0IiUO8qvzCuVMdrDsZtrGCjEyt2WI=
 
-In this patch this patchset fixes typos and space
-related coding style
+Hi Keerthi,
 
-Keerthi Reddy (2):
-  staging: vc04_services: please do not use multiple blank lines
-  staging: vc04_services: fix typos
+> Keerthi Reddy <keerthigd4990@gmail.com> hat am 26. September 2017 um 17:33 geschrieben:
+> 
+> 
+> Follow coding convention by adding providing space
+> around << operators
+> 
+> Signed-off-by: Keerthi Reddy <keerthigd4990@gmail.com>
+> ---
+>  changes in v2:
+>  * No changes
+> 
+>  .../vc04_services/bcm2835-camera/mmal-msg.h        | 22 +++++++++++-----------
+>  .../vc04_services/bcm2835-camera/mmal-parameters.h | 12 ++++++------
+>  2 files changed, 17 insertions(+), 17 deletions(-)
+> 
+> diff --git a/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h b/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h
+> index 1144d9d..0dfad29 100644
+> --- a/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h
+> +++ b/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h
+> @@ -217,36 +217,36 @@ struct mmal_msg_port_action_reply {
+>  #define MMAL_VC_SHORT_DATA 128
+>  
+>  /** Signals that the current payload is the end of the stream of data */
+> -#define MMAL_BUFFER_HEADER_FLAG_EOS                    (1<<0)
+> +#define MMAL_BUFFER_HEADER_FLAG_EOS                    (1 << 0)
+>  /** Signals that the start of the current payload starts a frame */
+> -#define MMAL_BUFFER_HEADER_FLAG_FRAME_START            (1<<1)
+> +#define MMAL_BUFFER_HEADER_FLAG_FRAME_START            (1 << 1)
+>  /** Signals that the end of the current payload ends a frame */
+> -#define MMAL_BUFFER_HEADER_FLAG_FRAME_END              (1<<2)
+> +#define MMAL_BUFFER_HEADER_FLAG_FRAME_END              (1 << 2)
+>  /** Signals that the current payload contains only complete frames (>1) */
+>  #define MMAL_BUFFER_HEADER_FLAG_FRAME                  \
+>  	(MMAL_BUFFER_HEADER_FLAG_FRAME_START|MMAL_BUFFER_HEADER_FLAG_FRAME_END)
+>  /** Signals that the current payload is a keyframe (i.e. self decodable) */
+> -#define MMAL_BUFFER_HEADER_FLAG_KEYFRAME               (1<<3)
+> +#define MMAL_BUFFER_HEADER_FLAG_KEYFRAME               (1 << 3)
+>  /** Signals a discontinuity in the stream of data (e.g. after a seek).
+>   * Can be used for instance by a decoder to reset its state
+>   */
+> -#define MMAL_BUFFER_HEADER_FLAG_DISCONTINUITY          (1<<4)
+> +#define MMAL_BUFFER_HEADER_FLAG_DISCONTINUITY          (1 << 4)
+>  /** Signals a buffer containing some kind of config data for the component
+>   * (e.g. codec config data)
+>   */
+> -#define MMAL_BUFFER_HEADER_FLAG_CONFIG                 (1<<5)
+> +#define MMAL_BUFFER_HEADER_FLAG_CONFIG                 (1 << 5)
+>  /** Signals an encrypted payload */
+> -#define MMAL_BUFFER_HEADER_FLAG_ENCRYPTED              (1<<6)
+> +#define MMAL_BUFFER_HEADER_FLAG_ENCRYPTED              (1 << 6)
+>  /** Signals a buffer containing side information */
+> -#define MMAL_BUFFER_HEADER_FLAG_CODECSIDEINFO          (1<<7)
+> +#define MMAL_BUFFER_HEADER_FLAG_CODECSIDEINFO          (1 << 7)
+>  /** Signals a buffer which is the snapshot/postview image from a stills
+>   * capture
+>   */
+> -#define MMAL_BUFFER_HEADER_FLAGS_SNAPSHOT              (1<<8)
+> +#define MMAL_BUFFER_HEADER_FLAGS_SNAPSHOT              (1 << 8)
+>  /** Signals a buffer which contains data known to be corrupted */
+> -#define MMAL_BUFFER_HEADER_FLAG_CORRUPTED              (1<<9)
+> +#define MMAL_BUFFER_HEADER_FLAG_CORRUPTED              (1 << 9)
+>  /** Signals that a buffer failed to be transmitted */
+> -#define MMAL_BUFFER_HEADER_FLAG_TRANSMISSION_FAILED    (1<<10)
+> +#define MMAL_BUFFER_HEADER_FLAG_TRANSMISSION_FAILED    (1 << 10)
+>  
 
- drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c    | 11 -----------
- drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c  | 11 -----------
- drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h      |  2 +-
- .../vc04_services/interface/vchi/connections/connection.h    |  3 ---
- .../vc04_services/interface/vchi/message_drivers/message.h   |  5 -----
- drivers/staging/vc04_services/interface/vchi/vchi.h          | 12 +-----------
- drivers/staging/vc04_services/interface/vchi/vchi_common.h   |  6 ------
- .../staging/vc04_services/interface/vchiq_arm/vchiq_arm.c    |  9 ---------
- .../staging/vc04_services/interface/vchiq_arm/vchiq_arm.h    |  5 -----
- .../staging/vc04_services/interface/vchiq_arm/vchiq_core.c   | 10 ----------
- .../staging/vc04_services/interface/vchiq_arm/vchiq_core.h   |  1 -
- .../vc04_services/interface/vchiq_arm/vchiq_debugfs.c        |  3 ---
- .../staging/vc04_services/interface/vchiq_arm/vchiq_shim.c   |  3 ---
- 13 files changed, 2 insertions(+), 79 deletions(-)
+i agree with Julia to use the BIT macro for those flags. But in this case the patch must be split.
 
--- 
-2.7.4
-
+Thanks
+Stefan
 
