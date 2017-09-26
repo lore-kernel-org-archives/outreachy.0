@@ -1,209 +1,190 @@
 X-GM-THRID: 6468320417923727360
-X-Received: by 10.28.6.76 with SMTP id 73mr303899wmg.26.1506424431310;
-        Tue, 26 Sep 2017 04:13:51 -0700 (PDT)
+X-Received: by 10.31.154.14 with SMTP id c14mr5822444vke.37.1506421316104;
+        Tue, 26 Sep 2017 03:21:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.223.155.208 with SMTP id e16ls3326079wrc.11.gmail; Tue, 26 Sep
- 2017 04:13:50 -0700 (PDT)
-X-Received: by 10.28.24.207 with SMTP id 198mr328778wmy.12.1506424430411;
-        Tue, 26 Sep 2017 04:13:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506424430; cv=none;
+Received: by 10.99.126.83 with SMTP id o19ls2376423pgn.30.gmail; Tue, 26 Sep
+ 2017 03:21:55 -0700 (PDT)
+X-Received: by 10.99.124.30 with SMTP id x30mr6561183pgc.39.1506421315204;
+        Tue, 26 Sep 2017 03:21:55 -0700 (PDT)
+Received: by 10.129.50.215 with SMTP id y206msywy;
+        Tue, 26 Sep 2017 02:18:11 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QDbe5JogjR98rKIPUc8ZANVn1INq6f1v2mLGXbv86aCGHiLoWrtYUJpcJSxeeLJG0QHX8ue
+X-Received: by 10.176.26.150 with SMTP id j22mr7116741uai.24.1506417491515;
+        Tue, 26 Sep 2017 02:18:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506417491; cv=none;
         d=google.com; s=arc-20160816;
-        b=o0uh5k+lAh10kxkhsw66SB+jHp8Q8ZvJbmk36eJvcBNoBhhWV9QY/Ii0OmpjYXnObC
-         wUjVHEhwmbyTxdKiwRIooqSgSvkNhJqBSGI24a8YNPJ7r1iGrOj+Prg//FT77mFMivrW
-         GDAziR8G2JjGp9FnQB/sCWwTVAswLbj49OnltzHu1jf9o0MPs300ZGKN6rwDcXZ+5xD+
-         ii2oQb3at/6/e1Ys7mLqBHV6qEvVLPKkVUFovdxAeL6+IRhTSOp2pRXhWh927b/ETotu
-         erDNpsp5mNDVmwZkQYxFOVpeqEC3o+zV1aeYehsJCuXl6QPrtHLJf8+bq0mthXo9UGho
-         8cbA==
+        b=orwecksu2a6MjHkQkrxSHDsdMnsy/+cgGpUke8Q8faD9Dq/pWluVP387h7BB9FtHsp
+         5b1IgJSsv8PcGE1v08LYuTlZtZnQnZJEfYBalF5MxponRDdatZh4J0QwZxt68YoFV4u+
+         mijlEUNoBMtZua8/YmJv8/fDXlg9iETFB4etPiTfnQMCJ3kFF4o6XkpIM6im+LsX5wNi
+         M7TkL2nNUYwV02EoNRxEu1Stcfi3ArDesWuuSSwg037D1PC+XkhFtAilnpOlkj1MBzKr
+         zjs8QC8Q3UxxBhpEg3HuZV9ZMu4jW2lgolTcRkAimqXe3yaZJFpspbFh7d2jXoimZU2/
+         GFDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:sender:dkim-signature:arc-authentication-results;
-        bh=/mo3EEz7m019JPiRxtAUJl1NdEc/waerPLi6eWmZVpM=;
-        b=C7crUnSOhv/dHMzqUAXucaJGVXEhsmpZ0/dXvHvzWvajdid8zych/pJ+o6PSEb/Xof
-         pjZjAZclE6FB/i82Cr1XInDL2/+YGiQuXyPvPzcIFG/0Ec/rQXeEnU/xJWwnxFitlukT
-         iWqpkJoJBJnhV/al05H5Y43o7rjcW2MCxPspcQf8ZgZ0LKYQ81uRxp0Cu+5EHrUALhFY
-         8NsfMj6a7E26WkENvfBV4KJ4DzfP5ndFxb++BDB3wKeaJdW5jONirDcUwJwMDFwKQXBq
-         JJdrF50/1/HgJSkk1gFNuN8P9Z+cgzhhMxmiYDKY7r7GlTMuNjklAI4lgC7a+G4qnHnC
-         f6ug==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature:arc-authentication-results;
+        bh=kHMJm3P65YL9m+dlgA4DyhsToX4CzIWiufJ8ZjNlWiQ=;
+        b=b1JwTe/ALHlqMl/jorqXeFX7dE4J+edGSOT7H9ckZVafesPscqyocExmipKrQ1dYpw
+         EqKY1bv1h9FJW7xr+Tfa7ZU/6C+sI6/rZRCdHzuRF3DYItelRBuLF7NFESJvi8GLst+e
+         LLy3fGQ4+zbrfl4a91Rdlsbpp/AH+o+ht3n6usADOfegDT/efLLrLjkXUiVzKR4/Orui
+         KXR0ro/wbj7o20b7L3/mB3WpsKIbiehdiba615KBjiaLqrkGH8iinEZAQ9mDLknhYo7G
+         hQnm/vu4Nn2eZqQGpydkanOyq9UNcPoh7OPOPl+KyyMUawvGjUbSttERzZiwz+vCuuHG
+         EVMg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ffwll.ch header.s=google header.b=NRr+V5E3;
-       spf=neutral (google.com: 2a00:1450:400c:c09::244 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
-Return-Path: <daniel@ffwll.ch>
-Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
-        by gmr-mx.google.com with ESMTPS id 191si101108wmn.2.2017.09.26.04.13.50
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=vX9OgIFY;
+       spf=pass (google.com: domain of jsarha@ti.com designates 198.47.27.77 as permitted sender) smtp.mailfrom=jsarha@ti.com;
+       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
+Return-Path: <jsarha@ti.com>
+Received: from lelnx193.ext.ti.com (lelnx193.ext.ti.com. [198.47.27.77])
+        by gmr-mx.google.com with ESMTPS id d125si649035itg.0.2017.09.26.02.18.11
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 26 Sep 2017 04:13:50 -0700 (PDT)
-Received-SPF: neutral (google.com: 2a00:1450:400c:c09::244 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) client-ip=2a00:1450:400c:c09::244;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 26 Sep 2017 02:18:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jsarha@ti.com designates 198.47.27.77 as permitted sender) client-ip=198.47.27.77;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ffwll.ch header.s=google header.b=NRr+V5E3;
-       spf=neutral (google.com: 2a00:1450:400c:c09::244 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
-Received: by mail-wm0-x244.google.com with SMTP id f4so9029822wmh.4
-        for <outreachy-kernel@googlegroups.com>; Tue, 26 Sep 2017 04:13:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ffwll.ch; s=google;
-        h=sender:date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:content-transfer-encoding:in-reply-to
-         :user-agent;
-        bh=/mo3EEz7m019JPiRxtAUJl1NdEc/waerPLi6eWmZVpM=;
-        b=NRr+V5E3gvz6D02nUM7aHtiB3gaY17Hs3EEe8DUVA0jgufS0Nb7fl6gJnedK9Hqaef
-         bF3A+9DsF9i7WiCJCT3N9yqctkXRtWOPNqlQBp3fcYBQWuYSOqUPNyUJskOlot4H4MZv
-         3o1McvOrofS0AxA4Jsy3NYWuOUr7OpLt0/MsU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
-         :references:mime-version:content-disposition
-         :content-transfer-encoding:in-reply-to:user-agent;
-        bh=/mo3EEz7m019JPiRxtAUJl1NdEc/waerPLi6eWmZVpM=;
-        b=WH4Gmp4GJeWd/Zds/je7Ao4QvKQTRPIWZ1udtbtgOyotS9vUbp/3d4h5vASO7yHKRe
-         tbHzuvgYCrOuUraHXSZSi2dlWpPe0xapL5XkVdccUZgqbWe67n6cBSZPPx3Wse4JOm5i
-         K+90CPWFa93SLJUPb7v8ioAnSz+g/HDsMFGEebjeoxJC3fsdqHOTvykc+bc8kIyqEB8K
-         +Suza0Yw4WMlQYzkwG2Mqry7tn2epzI99Bb1fW6tTBwO5b+uDEfOUY8wMmhXU3YwEuHB
-         KJVQXvwOCpDE9MyWVro1QDu4bw0elo71qxmtpwr3pGfTgrYKYjhZ8+pCREvzB91sjiq8
-         g5kg==
-X-Gm-Message-State: AHPjjUjVNyMnoje4tl/PZj3fMhvahV7q36RrcRiDSbymwqmUthrD6Foh
-	ljzJTGj3i92S02IwpCxVVssGPM2O
-X-Google-Smtp-Source: AOwi7QDrukzD//hhmxcGhPltCd7ShopqY1Oi6oCqgLncv7pjmOnbiAr9z1SoMyV+8wV1d4aBGjUOkg==
-X-Received: by 10.80.137.19 with SMTP id e19mr17623554ede.32.1506424429938;
-        Tue, 26 Sep 2017 04:13:49 -0700 (PDT)
-Return-Path: <daniel@ffwll.ch>
-Received: from phenom.ffwll.local ([2a02:168:5635:0:39d2:f87e:2033:9f6])
-        by smtp.gmail.com with ESMTPSA id j37sm5615483ede.12.2017.09.26.04.13.48
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 Sep 2017 04:13:49 -0700 (PDT)
-Sender: Daniel Vetter <daniel.vetter@ffwll.ch>
-Date: Tue, 26 Sep 2017 13:13:47 +0200
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Jyri Sarha <jsarha@ti.com>
-Cc: Aishwarya Pant <aishpant@gmail.com>,
-	Tomi Valkeinen <tomi.valkeinen@ti.com>,
-	David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org,
-	Daniel Vetter <daniel.vetter@intel.com>,
-	Jani Nikula <jani.nikula@linux.intel.com>,
-	Sean Paul <seanpaul@chromium.org>,
-	outreachy-kernel@googlegroups.com
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=vX9OgIFY;
+       spf=pass (google.com: domain of jsarha@ti.com designates 198.47.27.77 as permitted sender) smtp.mailfrom=jsarha@ti.com;
+       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
+Received: from dlelxv90.itg.ti.com ([172.17.2.17])
+	by lelnx193.ext.ti.com (8.15.1/8.15.1) with ESMTP id v8Q9IAGA005496;
+	Tue, 26 Sep 2017 04:18:10 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ti.com;
+	s=ti-com-17Q1; t=1506417490;
+	bh=ChArxqL6Jc6pEwLO7zyDv9u7p3ArqhJv70vluDD37nU=;
+	h=Subject:To:CC:References:From:Date:In-Reply-To;
+	b=vX9OgIFYR4AL+Cx9R43rISiWjUB9SJfJHiSMIAmX30XYO14WlCC1YzTpKFSz6W17P
+	 2UEJTa19IfulxiKZV0YDn5uNPlmWbX4kNgkWfllXlnxuQgYT0trgOFfxRgpc0CRVc7
+	 6CqPKbCz0Y7g7GzefxbgmJ7KK8wxKuOILURB9D3g=
+Received: from DLEE105.ent.ti.com (dlee105.ent.ti.com [157.170.170.35])
+	by dlelxv90.itg.ti.com (8.14.3/8.13.8) with ESMTP id v8Q9IAnf023162;
+	Tue, 26 Sep 2017 04:18:10 -0500
+Received: from DLEE113.ent.ti.com (157.170.170.24) by DLEE105.ent.ti.com
+ (157.170.170.35) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.845.34; Tue, 26
+ Sep 2017 04:18:09 -0500
+Received: from dflp32.itg.ti.com (10.64.6.15) by DLEE113.ent.ti.com
+ (157.170.170.24) with Microsoft SMTP Server (version=TLS1_0,
+ cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.1.845.34 via Frontend Transport;
+ Tue, 26 Sep 2017 04:18:09 -0500
+Received: from [10.1.3.6] (ileax41-snat.itg.ti.com [10.172.224.153])
+	by dflp32.itg.ti.com (8.14.3/8.13.8) with ESMTP id v8Q9I79j009869;
+	Tue, 26 Sep 2017 04:18:08 -0500
 Subject: Re: [PATCH v2 2/2] drm/tilcdc: replace reference/unreference() with
  get/put
-Message-ID: <20170926111347.oueyffwwv3lgq6pw@phenom.ffwll.local>
+To: Aishwarya Pant <aishpant@gmail.com>,
+        Tomi Valkeinen
+	<tomi.valkeinen@ti.com>,
+        David Airlie <airlied@linux.ie>, <dri-devel@lists.freedesktop.org>,
+        Daniel Vetter <daniel.vetter@intel.com>,
+        Jani Nikula <jani.nikula@linux.intel.com>,
+        Sean Paul <seanpaul@chromium.org>
+CC: <outreachy-kernel@googlegroups.com>
 References: <cover.1506413698.git.aishpant@gmail.com>
  <3f2f592f6ea28adfea3fd8b70421b2fab38f0b94.1506413698.git.aishpant@gmail.com>
- <093fde5b-5043-48d4-e595-7b35fce1a8c7@ti.com>
+From: Jyri Sarha <jsarha@ti.com>
+Message-ID: <093fde5b-5043-48d4-e595-7b35fce1a8c7@ti.com>
+Date: Tue, 26 Sep 2017 12:18:06 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <093fde5b-5043-48d4-e595-7b35fce1a8c7@ti.com>
-X-Operating-System: Linux phenom 4.12.0-1-amd64 
-User-Agent: NeoMutt/20170609 (1.8.3)
+In-Reply-To: <3f2f592f6ea28adfea3fd8b70421b2fab38f0b94.1506413698.git.aishpant@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-GB
+Content-Transfer-Encoding: quoted-printable
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 
-On Tue, Sep 26, 2017 at 12:18:06PM +0300, Jyri Sarha wrote:
-> ﻿
-> Texas Instruments Finland Oy, Porkkalankatu 22, 00180 Helsinki. Y-tunnus/Business ID: 0615521-4. Kotipaikka/Domicile: Helsinki
-> 
-> On 09/26/17 11:30, Aishwarya Pant wrote:
-> > For maintaining consistency with kernel coding style replace
-> > reference/unreference in ref counting functions with get/put.
-> > 
-> > The following cocci script was used to generate the tilcdc patch:
-> > 
-> > @@
-> > expression ex;
-> > @@
-> > 
-> > (
-> > -drm_framebuffer_unreference(ex);
-> > +drm_framebuffer_put(ex);
-> > |
-> > -drm_dev_unref(ex);
-> > +drm_dev_put(ex);
-> > |
-> > -drm_framebuffer_reference(ex);
-> > +drm_framebuffer_get(ex);
-> > )
-> > 
-> > Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
-> 
-> Acked-by: Jyri Sarha <jsarha@ti.com>
-> 
-> I guess this should go in via drm-misc at the same time with
-> "drm: introduce drm_dev_{get/put} functions".
+=EF=BB=BF
+Texas Instruments Finland Oy, Porkkalankatu 22, 00180 Helsinki. Y-tunnus/Bu=
+siness ID: 0615521-4. Kotipaikka/Domicile: Helsinki
 
-Yup, this one needs the previous one, both pushed to drm-misc-next.
+On 09/26/17 11:30, Aishwarya Pant wrote:
+> For maintaining consistency with kernel coding style replace
+> reference/unreference in ref counting functions with get/put.
+>=20
+> The following cocci script was used to generate the tilcdc patch:
+>=20
+> @@
+> expression ex;
+> @@
+>=20
+> (
+> -drm_framebuffer_unreference(ex);
+> +drm_framebuffer_put(ex);
+> |
+> -drm_dev_unref(ex);
+> +drm_dev_put(ex);
+> |
+> -drm_framebuffer_reference(ex);
+> +drm_framebuffer_get(ex);
+> )
+>=20
+> Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
 
-Aishwarya, while reviewing your patches I've noticed that you've missed to
-case of drm_dev_unref() in the drm core code, one in drm_pci.c and one in
-drm_prime.c. Can you pls do a follow-up patch to address these two? Fixing
-up the core completely is nice, drivers can be done later on (also by
-others, this is a prefect newbies tasks). But making sure the core is
-consistent is good I think.
--Daniel
+Acked-by: Jyri Sarha <jsarha@ti.com>
 
-> 
-> Best regards,
-> Jyri
-> 
-> 
-> > ---
-> > No changes in v2
-> > 
-> > drivers/gpu/drm/tilcdc/tilcdc_crtc.c | 6 +++---
-> >  drivers/gpu/drm/tilcdc/tilcdc_drv.c  | 2 +-
-> >  2 files changed, 4 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/tilcdc/tilcdc_crtc.c b/drivers/gpu/drm/tilcdc/tilcdc_crtc.c
-> > index 406fe45..d2589f310 100644
-> > --- a/drivers/gpu/drm/tilcdc/tilcdc_crtc.c
-> > +++ b/drivers/gpu/drm/tilcdc/tilcdc_crtc.c
-> > @@ -75,7 +75,7 @@ static void unref_worker(struct drm_flip_work *work, void *val)
-> >  	struct drm_device *dev = tilcdc_crtc->base.dev;
-> >  
-> >  	mutex_lock(&dev->mode_config.mutex);
-> > -	drm_framebuffer_unreference(val);
-> > +	drm_framebuffer_put(val);
-> >  	mutex_unlock(&dev->mode_config.mutex);
-> >  }
-> >  
-> > @@ -456,7 +456,7 @@ static void tilcdc_crtc_set_mode(struct drm_crtc *crtc)
-> >  
-> >  	set_scanout(crtc, fb);
-> >  
-> > -	drm_framebuffer_reference(fb);
-> > +	drm_framebuffer_get(fb);
-> >  
-> >  	crtc->hwmode = crtc->state->adjusted_mode;
-> >  }
-> > @@ -633,7 +633,7 @@ int tilcdc_crtc_update_fb(struct drm_crtc *crtc,
-> >  		return -EBUSY;
-> >  	}
-> >  
-> > -	drm_framebuffer_reference(fb);
-> > +	drm_framebuffer_get(fb);
-> >  
-> >  	crtc->primary->fb = fb;
-> >  	tilcdc_crtc->event = event;
-> > diff --git a/drivers/gpu/drm/tilcdc/tilcdc_drv.c b/drivers/gpu/drm/tilcdc/tilcdc_drv.c
-> > index b0d70f9..74276ef 100644
-> > --- a/drivers/gpu/drm/tilcdc/tilcdc_drv.c
-> > +++ b/drivers/gpu/drm/tilcdc/tilcdc_drv.c
-> > @@ -225,7 +225,7 @@ static void tilcdc_fini(struct drm_device *dev)
-> >  
-> >  	pm_runtime_disable(dev->dev);
-> >  
-> > -	drm_dev_unref(dev);
-> > +	drm_dev_put(dev);
-> >  }
-> >  
-> >  static int tilcdc_init(struct drm_driver *ddrv, struct device *dev)
-> > 
-> 
-> 
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+I guess this should go in via drm-misc at the same time with
+"drm: introduce drm_dev_{get/put} functions".
 
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+Best regards,
+Jyri
+
+
+> ---
+> No changes in v2
+>=20
+> drivers/gpu/drm/tilcdc/tilcdc_crtc.c | 6 +++---
+>  drivers/gpu/drm/tilcdc/tilcdc_drv.c  | 2 +-
+>  2 files changed, 4 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/tilcdc/tilcdc_crtc.c b/drivers/gpu/drm/tilcd=
+c/tilcdc_crtc.c
+> index 406fe45..d2589f310 100644
+> --- a/drivers/gpu/drm/tilcdc/tilcdc_crtc.c
+> +++ b/drivers/gpu/drm/tilcdc/tilcdc_crtc.c
+> @@ -75,7 +75,7 @@ static void unref_worker(struct drm_flip_work *work, vo=
+id *val)
+>  	struct drm_device *dev =3D tilcdc_crtc->base.dev;
+> =20
+>  	mutex_lock(&dev->mode_config.mutex);
+> -	drm_framebuffer_unreference(val);
+> +	drm_framebuffer_put(val);
+>  	mutex_unlock(&dev->mode_config.mutex);
+>  }
+> =20
+> @@ -456,7 +456,7 @@ static void tilcdc_crtc_set_mode(struct drm_crtc *crt=
+c)
+> =20
+>  	set_scanout(crtc, fb);
+> =20
+> -	drm_framebuffer_reference(fb);
+> +	drm_framebuffer_get(fb);
+> =20
+>  	crtc->hwmode =3D crtc->state->adjusted_mode;
+>  }
+> @@ -633,7 +633,7 @@ int tilcdc_crtc_update_fb(struct drm_crtc *crtc,
+>  		return -EBUSY;
+>  	}
+> =20
+> -	drm_framebuffer_reference(fb);
+> +	drm_framebuffer_get(fb);
+> =20
+>  	crtc->primary->fb =3D fb;
+>  	tilcdc_crtc->event =3D event;
+> diff --git a/drivers/gpu/drm/tilcdc/tilcdc_drv.c b/drivers/gpu/drm/tilcdc=
+/tilcdc_drv.c
+> index b0d70f9..74276ef 100644
+> --- a/drivers/gpu/drm/tilcdc/tilcdc_drv.c
+> +++ b/drivers/gpu/drm/tilcdc/tilcdc_drv.c
+> @@ -225,7 +225,7 @@ static void tilcdc_fini(struct drm_device *dev)
+> =20
+>  	pm_runtime_disable(dev->dev);
+> =20
+> -	drm_dev_unref(dev);
+> +	drm_dev_put(dev);
+>  }
+> =20
+>  static int tilcdc_init(struct drm_driver *ddrv, struct device *dev)
+>=20
+
+
 
