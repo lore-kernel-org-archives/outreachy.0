@@ -1,86 +1,86 @@
 X-GM-THRID: 6470000031137005568
-X-Received: by 10.36.208.1 with SMTP id m1mr1704663itg.37.1506414352328;
-        Tue, 26 Sep 2017 01:25:52 -0700 (PDT)
+X-Received: by 10.202.226.211 with SMTP id z202mr5670505oig.66.1506414319195;
+        Tue, 26 Sep 2017 01:25:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.202.97.70 with SMTP id v67ls6155169oib.11.gmail; Tue, 26 Sep
- 2017 01:25:51 -0700 (PDT)
-X-Received: by 10.157.89.129 with SMTP id u1mr839622oth.173.1506414351664;
-        Tue, 26 Sep 2017 01:25:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506414351; cv=none;
+Received: by 10.202.86.70 with SMTP id k67ls6380136oib.7.gmail; Tue, 26 Sep
+ 2017 01:25:18 -0700 (PDT)
+X-Received: by 10.157.36.232 with SMTP id z95mr839988ota.36.1506414318547;
+        Tue, 26 Sep 2017 01:25:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506414318; cv=none;
         d=google.com; s=arc-20160816;
-        b=eZ14swmF6AinWWAeG+RDUM17HOb5DjKysM2x+J0taQJtSOMqFl1JxEWRmnyRuDXBl4
-         ZfdMfMpE6oDzLi+isdFQYUXvDIDGmDiDG1VIIU5wcCsb+ovRmv1JuPtAPSd7FYhYN8ve
-         RE+1OBor9Wwaf3UoSznbaqmg0xF6ijvhN+6CxB09x10/jsIdAjVzRcZAKnApqNkzXKpd
-         gRgzDdzp09vhup0z36vRFkMjwL+6EjS/trCLlNS6uFQK63H5tlQyBBgP9h2kTNM+YN3E
-         /EOlaScpaaXwLynexqoDczKreoxZKYKFiXaCJ4eQM86oV0Ieai7hLX1afolcdnFTvjbx
-         HeTQ==
+        b=z8zHEcyCFLeYZz8+zgVwws0BjXICGwaxbbHCtEX1XBw8z+qwT29OCS5RXBMTuqKpDX
+         VEqyNoX7D7g6IRfbhuHgy06TMfKGg87l45kcp7qw8OFGp51QZHpstm3JhZhIGGaOVpBl
+         AsUmizqUer2XC0lqgy+WZ+kznpghazJICwmj1uQDNTEuvEM70PSCJKgUyjxxSjrz3fSx
+         VEw046lhFm5powrUobyoCCFhd7qcyZAKRN0IE/1fjER3viWdvSNmx53aPJIaVimy/hHO
+         JXa7iObbYwZ5YmX04prt7O7kfGfD3thL/PBxFExndvnKKUgKMjxZkFo8qU7D//sohVW0
+         cMOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature
          :arc-authentication-results;
-        bh=JPQtFN+3XRc/f7m/QKQsQSLWxRbd629cka6EwQDZ0/o=;
-        b=sbwv/OZgUgqAnRiEb6OC/YTeHPFMcqJRKp0Y86pgQNjSw70k/LNFgsL9Nazn5cEwkf
-         ITozRJXBZzD0KT/Nknj34N8tFGCPlXJp9CCq9U9KPpTrRnVajrMeEQn7sFc47CpjVK60
-         QkDUgsPuFHbuda1bWziyMtEbmfNl5FUb7pFW7lM6kgVVYBOQ09fCYqMuPlvukpp9uTES
-         Xdtlwo+U2mliCKXaHhmhzXTB2+wOtDN79db7SvYzWwkElhBukYGnPQBoiXc6kmwZm3OV
-         FHM/gG/EJsim1uQVjlnlE1FS2b1ku5IbOEoJUp9ZdlB+h4jp2w/04pCsCWK73+UPOVmH
-         NFFA==
+        bh=ntzqoKhbRazmx/Z30DmDWB74EL9TKq5i14CA+PxxyIM=;
+        b=vn+cdtwT0C2UgQfLLnvLKALyPy+GBiNLdXig7baVNxyUkLsMjGspiC0otan5SAjg0/
+         ZeLHdFzSSm3m4jzF6UXi1sbEWZPHHnBY9ZT14BQ4EgfvhxSsNZ4jWIfMZToI2mipBpdK
+         tTtRGyuVH+z5BCs7gi/LgQ+DqB0QvftCDNEl4czu/2f+7UpR3IP6+bDNtHqe7mFpFNHc
+         B1jYd5+QDNl+2qARBguoifUNh20Kytnh2HX83AFHNzauMO0JSJZ+Nd9hTrnayDl+wAyU
+         C7om6kMENxTQNfaAck4ZEP0fkVU9AU+UlJUSpoljwH0AzxOeUZ8OxlJJ97OE7iBHOLCk
+         H7CA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rDEJWAtW;
-       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:4001:c06::243 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uJDpju9E;
+       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:4001:c06::242 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <keerthigd4990@gmail.com>
-Received: from mail-io0-x243.google.com (mail-io0-x243.google.com. [2607:f8b0:4001:c06::243])
-        by gmr-mx.google.com with ESMTPS id c10si365513ywb.24.2017.09.26.01.25.51
+Received: from mail-io0-x242.google.com (mail-io0-x242.google.com. [2607:f8b0:4001:c06::242])
+        by gmr-mx.google.com with ESMTPS id u4si322664ywc.2.2017.09.26.01.25.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 26 Sep 2017 01:25:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:4001:c06::243 as permitted sender) client-ip=2607:f8b0:4001:c06::243;
+        Tue, 26 Sep 2017 01:25:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:4001:c06::242 as permitted sender) client-ip=2607:f8b0:4001:c06::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rDEJWAtW;
-       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:4001:c06::243 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uJDpju9E;
+       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:4001:c06::242 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-io0-x243.google.com with SMTP id n69so4191659ioi.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 26 Sep 2017 01:25:51 -0700 (PDT)
+Received: by mail-io0-x242.google.com with SMTP id g32so4186499ioj.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 26 Sep 2017 01:25:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=JPQtFN+3XRc/f7m/QKQsQSLWxRbd629cka6EwQDZ0/o=;
-        b=rDEJWAtWxO62BpQ67ucy/mTfrIAqRaaknaqOE1fxnwSA8prAXAaxrbdIqVNVkimBhw
-         Y1/rwPB4PYMv36BtmFyFHoIXVQ8y5tNu6W8qwFLyY9qSL7NhU2Sd/TmDKhNW0xhR7tbs
-         C3nmm+qcBxHjhP3xdgvzt6TAbXoD8jpJtI8maUNNH3EqJDHK1jgNFFdQXkkNH4tNtaMg
-         NZ1+Rc8woNSPg8g5LQRLWg8MXLjCnTjQhXMnF3wftufabupxGqpUxC1OgpXDl3RVD41J
-         DWoOY5zVDf2qfrC0AAj1ZWrCIf8/aBziwqPmh+sfK+LkFlmC/fNz9H8zH8gSCyeXOc04
-         pdcA==
+        bh=ntzqoKhbRazmx/Z30DmDWB74EL9TKq5i14CA+PxxyIM=;
+        b=uJDpju9EJDkor6CtVdQQwCaJS+scGERyabJcJIwF4RMw2zJadTlitIMKA/qW+PVpEp
+         xyOPgy9h/e/V6813QpzehJcJ2TO+ipx0t6CjkwgJDGyliFTcQ/ps91oyd8hV+vON/OxO
+         C2mMncJps9XOZqnLwBoWe702SWdAd0f8rLGrGqtx1dW0ufa0/lV1LsYeRcfkBgceMNNm
+         Fzao0kE2GTpMcsJwv5imLMSLLzaVVs9ZlnUV1DMz0TyTbPpz7HUiqguhEnZ9fQsWkBql
+         FMFTKGnIwKGacecISNW0jQEiTgpHY9TiFvL9qI7fg6FuPRK5TrobvmqfTZZ6WaZBOtsn
+         Hi4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=JPQtFN+3XRc/f7m/QKQsQSLWxRbd629cka6EwQDZ0/o=;
-        b=ELjc4ouhhPVWYyxxMwyJoc01CsRmQgJHE6+ROa9ZT80CSE2PjNc81PQ/7Q39voTl6f
-         Qf4fmGEPRD1Lm9aq37zkKd+gqRJDDnShNC5dmRv/ZJk+dd/oSeUOs3OJBCYPNa61vzrH
-         ZkiGiv7RPu4I9D1u/i2Nh+S6HmQcDB30tic2ujLKadj7GON6JzVZ77VEx7SKvNcM1okk
-         6Vjy3EZFUE4C5CmJlvBTn6TmmJcH49Giw2UQdOxSR57rrGsVukfvGDgkyGsAdXAYNQ+/
-         IoHuQDpXfy5vohdaY2wV2+yXrEAbuRUVRleVcViQ/KfwQhs/LlDXzBKPJnS5IQNU6pm/
-         p8+A==
-X-Gm-Message-State: AHPjjUhZmq+ElxSZpKtTLwJVMZ40N7/90VlZ0ktu/bcuqw/7yI5xUFBO
-	RzKoB5T8XepOnyxVxwNG5Gg=
-X-Google-Smtp-Source: AOwi7QDMs0dotbD7q1U19MIhh068DIn+6XnBorMPpnYBpC+WVAOx9YA01DIb3jD6f60Xq0kv3TvOSg==
-X-Received: by 10.107.152.207 with SMTP id a198mr13327191ioe.168.1506414351193;
-        Tue, 26 Sep 2017 01:25:51 -0700 (PDT)
+        bh=ntzqoKhbRazmx/Z30DmDWB74EL9TKq5i14CA+PxxyIM=;
+        b=UCZu81pAI/j3hjp4EVZ0Aq+9fOOnOh+qldYNvHe40bJj5KMtsmYXbK09gd5xXGEsoE
+         vnqeH1PPgGPm/paXMWOdTagSnIi9VTtX4wJBqmlfXel+iU2HG/QMH9McsOMyaO0bylw8
+         JoBuMPZ9UapuLtiTp+1lH+wRjYX7dQ8sNe4lIW32ubEyeqEXtxDIZ9L0y9LCyk8COFBS
+         oZ/2J4HHzWL/iZKrDj9EcP3eufWXtf4UXcO1kCQTEt9d6Ja0XFMjMbljkkYpwlkLY3t3
+         KM9Ir9MeWvgpRNSUQGkb/PfyFbGzXBbMbFsGOmgkqdpkvWdYvs0WsKpOFDy5+jngvp3l
+         PGxA==
+X-Gm-Message-State: AHPjjUif0sQHx6W4wkoSqxC8IUJHLSTsrYKGVCWwxWcOyyhKCNyqSTBs
+	G2m3Vq4YLqNsH6HR7tGZLbN4DdJUOuc=
+X-Google-Smtp-Source: AOwi7QBwDpO3GbYmLTN/jVecI4UIPjAmyzsdUh1xHSrgD/BXxbxREH0g4ZD7FQqZh52B2LCX+SRonQ==
+X-Received: by 10.107.173.34 with SMTP id w34mr13650711ioe.14.1506414318310;
+        Tue, 26 Sep 2017 01:25:18 -0700 (PDT)
 Return-Path: <keerthigd4990@gmail.com>
 Received: from manoharreddy ([202.53.87.190])
-        by smtp.gmail.com with ESMTPSA id h84sm4025619iod.72.2017.09.26.01.25.48
+        by smtp.gmail.com with ESMTPSA id l73sm797705ita.5.2017.09.26.01.25.15
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 26 Sep 2017 01:25:50 -0700 (PDT)
-Date: Tue, 26 Sep 2017 13:55:45 +0530
+        Tue, 26 Sep 2017 01:25:18 -0700 (PDT)
+Date: Tue, 26 Sep 2017 13:55:12 +0530
 From: Keerthi Reddy <keerthigd4990@gmail.com>
 To: eric@anholt.net, stefan.wahren@i2se.com,
 	outreachy-kernel@googlegroups.com
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 3/3] staging: vc04_services: add spaces around << operator
-Message-ID: <f925ac589c9eaeb3815a6e6f537592abb1aa041f.1506413998.git.keerthigd4990@gmail.com>
+Subject: [PATCH 2/3] staging: vc04_services: fix typos
+Message-ID: <14b2c42fe27d209a1833d6fb7802c9a97142fa7e.1506413998.git.keerthigd4990@gmail.com>
 References: <cover.1506413998.git.keerthigd4990@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -88,95 +88,40 @@ Content-Disposition: inline
 In-Reply-To: <cover.1506413998.git.keerthigd4990@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Follow coding convention by adding providing space
-around << operators
+some words are misspelled. Fix typos.
 
 Signed-off-by: Keerthi Reddy <keerthigd4990@gmail.com>
 ---
- .../vc04_services/bcm2835-camera/mmal-msg.h        | 22 +++++++++++-----------
- .../vc04_services/bcm2835-camera/mmal-parameters.h | 12 ++++++------
- 2 files changed, 17 insertions(+), 17 deletions(-)
+ drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h | 2 +-
+ drivers/staging/vc04_services/interface/vchi/vchi.h     | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h b/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h
-index 1144d9d..0dfad29 100644
+index 52cdf4d..1144d9d 100644
 --- a/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h
 +++ b/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h
-@@ -217,36 +217,36 @@ struct mmal_msg_port_action_reply {
- #define MMAL_VC_SHORT_DATA 128
+@@ -70,7 +70,7 @@ enum mmal_msg_type {
  
- /** Signals that the current payload is the end of the stream of data */
--#define MMAL_BUFFER_HEADER_FLAG_EOS                    (1<<0)
-+#define MMAL_BUFFER_HEADER_FLAG_EOS                    (1 << 0)
- /** Signals that the start of the current payload starts a frame */
--#define MMAL_BUFFER_HEADER_FLAG_FRAME_START            (1<<1)
-+#define MMAL_BUFFER_HEADER_FLAG_FRAME_START            (1 << 1)
- /** Signals that the end of the current payload ends a frame */
--#define MMAL_BUFFER_HEADER_FLAG_FRAME_END              (1<<2)
-+#define MMAL_BUFFER_HEADER_FLAG_FRAME_END              (1 << 2)
- /** Signals that the current payload contains only complete frames (>1) */
- #define MMAL_BUFFER_HEADER_FLAG_FRAME                  \
- 	(MMAL_BUFFER_HEADER_FLAG_FRAME_START|MMAL_BUFFER_HEADER_FLAG_FRAME_END)
- /** Signals that the current payload is a keyframe (i.e. self decodable) */
--#define MMAL_BUFFER_HEADER_FLAG_KEYFRAME               (1<<3)
-+#define MMAL_BUFFER_HEADER_FLAG_KEYFRAME               (1 << 3)
- /** Signals a discontinuity in the stream of data (e.g. after a seek).
-  * Can be used for instance by a decoder to reset its state
-  */
--#define MMAL_BUFFER_HEADER_FLAG_DISCONTINUITY          (1<<4)
-+#define MMAL_BUFFER_HEADER_FLAG_DISCONTINUITY          (1 << 4)
- /** Signals a buffer containing some kind of config data for the component
-  * (e.g. codec config data)
-  */
--#define MMAL_BUFFER_HEADER_FLAG_CONFIG                 (1<<5)
-+#define MMAL_BUFFER_HEADER_FLAG_CONFIG                 (1 << 5)
- /** Signals an encrypted payload */
--#define MMAL_BUFFER_HEADER_FLAG_ENCRYPTED              (1<<6)
-+#define MMAL_BUFFER_HEADER_FLAG_ENCRYPTED              (1 << 6)
- /** Signals a buffer containing side information */
--#define MMAL_BUFFER_HEADER_FLAG_CODECSIDEINFO          (1<<7)
-+#define MMAL_BUFFER_HEADER_FLAG_CODECSIDEINFO          (1 << 7)
- /** Signals a buffer which is the snapshot/postview image from a stills
-  * capture
-  */
--#define MMAL_BUFFER_HEADER_FLAGS_SNAPSHOT              (1<<8)
-+#define MMAL_BUFFER_HEADER_FLAGS_SNAPSHOT              (1 << 8)
- /** Signals a buffer which contains data known to be corrupted */
--#define MMAL_BUFFER_HEADER_FLAG_CORRUPTED              (1<<9)
-+#define MMAL_BUFFER_HEADER_FLAG_CORRUPTED              (1 << 9)
- /** Signals that a buffer failed to be transmitted */
--#define MMAL_BUFFER_HEADER_FLAG_TRANSMISSION_FAILED    (1<<10)
-+#define MMAL_BUFFER_HEADER_FLAG_TRANSMISSION_FAILED    (1 << 10)
+ /* port action request messages differ depending on the action type */
+ enum mmal_msg_port_action_type {
+-	MMAL_MSG_PORT_ACTION_TYPE_UNKNOWN = 0,      /* Unkown action */
++	MMAL_MSG_PORT_ACTION_TYPE_UNKNOWN = 0,      /* Unknown action */
+ 	MMAL_MSG_PORT_ACTION_TYPE_ENABLE,           /* Enable a port */
+ 	MMAL_MSG_PORT_ACTION_TYPE_DISABLE,          /* Disable a port */
+ 	MMAL_MSG_PORT_ACTION_TYPE_FLUSH,            /* Flush a port */
+diff --git a/drivers/staging/vc04_services/interface/vchi/vchi.h b/drivers/staging/vc04_services/interface/vchi/vchi.h
+index ee92189..66a3a06 100644
+--- a/drivers/staging/vc04_services/interface/vchi/vchi.h
++++ b/drivers/staging/vc04_services/interface/vchi/vchi.h
+@@ -187,7 +187,7 @@ extern int32_t vchi_service_create( VCHI_INSTANCE_T instance_handle,
+                                     SERVICE_CREATION_T *setup,
+                                     VCHI_SERVICE_HANDLE_T *handle );
  
- struct mmal_driver_buffer {
- 	u32 magic;
-diff --git a/drivers/staging/vc04_services/bcm2835-camera/mmal-parameters.h b/drivers/staging/vc04_services/bcm2835-camera/mmal-parameters.h
-index e730022..c4a2380 100644
---- a/drivers/staging/vc04_services/bcm2835-camera/mmal-parameters.h
-+++ b/drivers/staging/vc04_services/bcm2835-camera/mmal-parameters.h
-@@ -22,17 +22,17 @@
-  */
+-// Routine to destory a service
++// Routine to destroy a service
+ extern int32_t vchi_service_destroy( const VCHI_SERVICE_HANDLE_T handle );
  
- /** Common parameter ID group, used with many types of component. */
--#define MMAL_PARAMETER_GROUP_COMMON            (0<<16)
-+#define MMAL_PARAMETER_GROUP_COMMON            (0 << 16)
- /** Camera-specific parameter ID group. */
--#define MMAL_PARAMETER_GROUP_CAMERA            (1<<16)
-+#define MMAL_PARAMETER_GROUP_CAMERA            (1 << 16)
- /** Video-specific parameter ID group. */
--#define MMAL_PARAMETER_GROUP_VIDEO             (2<<16)
-+#define MMAL_PARAMETER_GROUP_VIDEO             (2 << 16)
- /** Audio-specific parameter ID group. */
--#define MMAL_PARAMETER_GROUP_AUDIO             (3<<16)
-+#define MMAL_PARAMETER_GROUP_AUDIO             (3 << 16)
- /** Clock-specific parameter ID group. */
--#define MMAL_PARAMETER_GROUP_CLOCK             (4<<16)
-+#define MMAL_PARAMETER_GROUP_CLOCK             (4 << 16)
- /** Miracast-specific parameter ID group. */
--#define MMAL_PARAMETER_GROUP_MIRACAST       (5<<16)
-+#define MMAL_PARAMETER_GROUP_MIRACAST       (5 << 16)
- 
- /* Common parameters */
- enum mmal_parameter_common_type {
+ // Routine to open a named service
 -- 
 2.7.4
 
