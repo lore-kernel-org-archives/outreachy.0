@@ -1,133 +1,181 @@
-X-GM-THRID: 6538074938859847680
-X-Received: by 10.55.73.149 with SMTP id w143mr21477331qka.12.1522264196854;
-        Wed, 28 Mar 2018 12:09:56 -0700 (PDT)
+X-GM-THRID: 6467009585509040128
+X-Received: by 10.129.211.11 with SMTP id y11mr1697655ywi.166.1506524232323;
+        Wed, 27 Sep 2017 07:57:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.55.120.193 with SMTP id t184ls1928809qkc.13.gmail; Wed, 28 Mar
- 2018 12:09:56 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx49koKxqQjB4GDzKUgBY5lKFgOEsGPSBypyu25sWVH7Jw/9jwHypOGsGz/ecTPpmxTP5nbzd
-X-Received: by 10.55.169.13 with SMTP id s13mr3470722qke.33.1522264196214;
-        Wed, 28 Mar 2018 12:09:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1522264196; cv=none;
+Received: by 10.13.249.196 with SMTP id j187ls146203ywf.43.gmail; Wed, 27 Sep
+ 2017 07:57:11 -0700 (PDT)
+X-Received: by 10.129.71.135 with SMTP id u129mr1739876ywa.101.1506524231411;
+        Wed, 27 Sep 2017 07:57:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506524231; cv=none;
         d=google.com; s=arc-20160816;
-        b=uZ8jdplyBfgMO7vS4h1YAOPIEwaj1gtYoTUl7kmyfIFEdW7p7Xpl7aoW3ZDyuTAGWe
-         7xrc2ENGlQRk0shrEXzR5zDBPBBpR5YottzcwRpGMGb0LyaLH+paOVKNBZZYiVTFV63w
-         xzmp+j7uQDRm7Ew0aXlwwj4u/aimTO9XesDjl+TOwbs95G+kpkbR7xeCRttnLS4zDIDX
-         EaEq950ldQJphQao8Je7GVHa8sXUVK1S2Vb74SEN5UXbiAJRB64vEBW+OhKv76zxz5/6
-         YH1MON3Q9dBYWHPJt3+J5yY9786FviFJ4IKrLE/iicX/4kvfSCxz4y1C8tuaCLnELUV+
-         EPhQ==
+        b=m4rGUddndRvN9/pRXKnO3/oVedj7Xk49PaKMj7e5/MNuoPLg6ZN/Suz/InUZNw7mfz
+         d9mKcSidTGzB3vxn6PiwaBUWMnOP7pD2XRxRXIJGtADKyJp0+BMRYzcfjXJ9Z8yIs/r2
+         Xq6j14vZVOGq0cZcNdbb292yUgikOX3Js6YN+Bl//gWFpnEwi1+pyCTaK/NOeh1b18lq
+         5mpO8ApDCB/N8rdlV9Ug5MLpr7aRigqM1mB3WYecDWIcKWlMoGUs+8+ftdCUWvCCO7pS
+         Nbhm8E1PDZYHpf0Un4Yop+cSaqqDP1f1Lc0g0mluJwUihF38bv/QFx8nFPonr1/h9Rf7
+         IxrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=aHD3PfvJXOfeSAhofrvTdBjPzvzwlA7MxUo0KMdRzao=;
-        b=I8lxxOi9Ubd3oyZo8zftQSDGIZypTk04vPp8rJuNuuqHfr/dYc+wCpNbQ49wh30HFo
-         qmWQHtKi3CXERZi21vamRXTtMkxH5AraObsCXxPU2rwELYV1f3tA9qOPzEFpC6n8/sOs
-         qvRS4uuH8JfJaPYf2vcfWHpF+hL2kD4SkqaIS1e6kZgD3m0ESkgNCO1o/6BfgiNw0DdW
-         /PeAbcgTrmiceEtPzKPzjwdiPXv0UC35rvq6EJh97o3AYpi34WT/vgDwFVtQDhfi+sJD
-         ryV0cOZreJdtX3LBuy8+BYZg4V5kHHzg4jA60/ZcTWeftQAes89XOwVP6SKo5+fgMT0n
-         2FDg==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=0CmyiR6LztHP3xOULhtSKKSpUh/LHBpJsN5DejhXQTk=;
+        b=d6M3sbYY5PwIvvinyk2zxxwaLwDd1TlpZDHp1obbUrFJJXv3Wv0Xc30787dFUdQ6s3
+         qDoEkSf2RDWSxTbTplPy1LB941jTi6bejWjGg12ahM5TwqbPTurhfcGKMIoVEIHleyLJ
+         FOMn6w2pkzTUTwoGDYTnFEL3htDP6QR1c5IKuPh/oguHUPUSDqQKJEgjGdEktM1OHd3z
+         xy4mMze+I/qv/41C2RTbqQQLsY35cDJ5f2b5hPzqS+sVmSh1wR9OXFuXXymcpcLELpsl
+         68FzkFa2LKb8dXd09GA4TF6XpDl1VB1kEHuPO57Mu88rpLVfTUI0kvsMRcx+O+md0oOs
+         mnzw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kVio7JQY;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id q128si253958qkb.1.2018.03.28.12.09.56
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aZFCGlK5;
+       spf=pass (google.com: domain of himshijain.hj@gmail.com designates 2607:f8b0:4003:c06::242 as permitted sender) smtp.mailfrom=himshijain.hj@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <himshijain.hj@gmail.com>
+Received: from mail-oi0-x242.google.com (mail-oi0-x242.google.com. [2607:f8b0:4003:c06::242])
+        by gmr-mx.google.com with ESMTPS id w81si632340ywb.30.2017.09.27.07.57.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Mar 2018 12:09:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Wed, 27 Sep 2017 07:57:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of himshijain.hj@gmail.com designates 2607:f8b0:4003:c06::242 as permitted sender) client-ip=2607:f8b0:4003:c06::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kVio7JQY;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id i194so1391190pgd.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 28 Mar 2018 12:09:56 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aZFCGlK5;
+       spf=pass (google.com: domain of himshijain.hj@gmail.com designates 2607:f8b0:4003:c06::242 as permitted sender) smtp.mailfrom=himshijain.hj@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-oi0-x242.google.com with SMTP id s145so4195798oie.5
+        for <outreachy-kernel@googlegroups.com>; Wed, 27 Sep 2017 07:57:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=aHD3PfvJXOfeSAhofrvTdBjPzvzwlA7MxUo0KMdRzao=;
-        b=kVio7JQY3ZHhl1r+o3IlGxI9aIbvB8ZGVti8sc5ibYTRcuvdS4y1108JLbhcOnq2ya
-         cR05fnLe6edcn0gkEzLlchkVrapRym6VS/hzQJ6ytfB+Aq0M7BuBemM28lO6h6lTTug5
-         uJzKbzKmuoiaqeKxhs1NaToSuFFDeQeh2DqYJyMtpKD4LPavDMPNjLi35W4EkBKevqUt
-         wme69KPBkNPcL9A4GtNoY1qzrbmTPQ1o/w4VZBZg4U0Oo02vu1TsMPXFSN/MfGmk/Em6
-         n0ufDQ8cNdARxf8HsOZYd2inFjd4CLvo1JOk1w/9CcwdlDfEeBv21rOTDh88v9ESgzSC
-         hKag==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=0CmyiR6LztHP3xOULhtSKKSpUh/LHBpJsN5DejhXQTk=;
+        b=aZFCGlK55U9OF98hgQ7Ri5tmo3ZUK86ZUVElOv1gtMSgm5llArErC55GEHv38INHaS
+         DRfhAvhHcLf8Z25PZsjVH7sA2ECaxk3CT91zxuUGwzyqqtz54V5hh/rbefQjhz2wvIS/
+         hxYNUOP1lWlDP2bOqhpw72YuX+8tWm1Xg2UGdga40kSsUzDQaaNUf/d8jpgVWbPfy46+
+         E+7ailtan6l3/7tlU63ACRuytooypiGw7n+tlCzo3CRLJosYchzIKYQlMsZGmfCeUTgv
+         TFBsR/h2qzkcldS/s1E8eOjwo/niz14G3vbn83wGkvQ1ZiozSlg9YlCQK4kJ6i4gURZB
+         VFUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=aHD3PfvJXOfeSAhofrvTdBjPzvzwlA7MxUo0KMdRzao=;
-        b=aL26UvdRXec1M0hShcas3/7TIpQAAkjInRqeLNw9ZBA+tNquomCS6R+LNajANkWWWH
-         LTldQ/EleBT/lMy178/kPDhbEmOVXpOqDIi76FEp+ac2ryPu6h83x2WQRf154wEtNO8N
-         BkzYawKiPj3lj02McCKM2Z1XqPqcEagOKdaKI45Hmv0Vi65zT0c/Q/xW5T2LfVUH1nq3
-         i48Ao/zAxPgIeWjDyPIMVIRhn9n6qxMJA+7DNdbFa422IU4KMZ70PyC/BiwpTkc27lw0
-         DawBFMlUMyD/IfTtK9RRFSaeApsEfn+Qtz0P0Vc2tdX6dXUuhz5dsl4WsU7HoB1WJK/9
-         ofLg==
-X-Gm-Message-State: AElRT7EOnxeiEUK4qR0Eh4vBNhd4eO9w6fLh1iEcgGa5IV9VKSRrJSF/
-	O+S4rxBYq9Ptg0GSNmeqBZPqng==
-X-Received: by 2002:a17:902:6984:: with SMTP id l4-v6mr5145950plk.61.1522264195748;
-        Wed, 28 Mar 2018 12:09:55 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from seema-Inspiron-15-3567 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id f5sm8555307pgn.56.2018.03.28.12.09.54
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 28 Mar 2018 12:09:54 -0700 (PDT)
-Date: Thu, 29 Mar 2018 00:39:50 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: pablo@netfilter.org
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>,
-	Jozsef Kadlecsik <kadlec@blackhole.kfki.hu>,
-	Florian Westphal <fw@strlen.de>,
-	"David S. Miller" <davem@davemloft.net>,
-	netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] net: netfilter: Merge assignment with return
-Message-ID: <20180328190950.GA3151@seema-Inspiron-15-3567>
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=0CmyiR6LztHP3xOULhtSKKSpUh/LHBpJsN5DejhXQTk=;
+        b=uHQqdi0V5LKWFS0AZJleTo0Vxy1m8/fcYQfOGJ7evTdiMm2cruqJU0XRXQw26oRJGu
+         vZ+29iaPbed2/EJmCRjjdlia9bwU0OE1DxL/l52tonojaoBSx5XMO5G3Gyezb7Im3Fx1
+         dLioCsqISbBsQyabgn/wRJwAQ2s9uj+8iRhq0NOdCMQKWskZtL4PbBNlpbjaotxDpPgM
+         IauSFI4cI2OJ78zqN0FfZDr2UrlkUiFWGQZ2rgfalY4j9bp39UNhCJxVKoGKRZzoMqnQ
+         nJlcFXmjbJV4ZeduCbj1CVL7JFDBRRFzpyaVBLEiLRnYNpwRNmzYSGNllJcSsW3IHsYt
+         bkwA==
+X-Gm-Message-State: AHPjjUi4l89s1pbnK71buBQpp4h+ow/pq3q9nDYL848iiReM+ny40pL4
+	R7fD+nYSxIhlgBspGPbs5jt2a43bJ3fpwfzWWBs=
+X-Google-Smtp-Source: AOwi7QDIz4EKuyDJPG5iiz2wuUu1zl7P4oOPsODJB1ShWzgP2FduTYGHqNsGsCzvi99X/KNo3DMR9sXie4DNDI5AhWU=
+X-Received: by 10.157.60.187 with SMTP id z56mr987752otc.60.1506524230819;
+ Wed, 27 Sep 2017 07:57:10 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Received: by 10.74.174.198 with HTTP; Wed, 27 Sep 2017 07:57:09 -0700 (PDT)
+In-Reply-To: <20170924151702.776d1ec6@archlinux>
+References: <20170918065952.GA5386@himanshi-Inspiron-5558> <20170924151702.776d1ec6@archlinux>
+From: Himanshi Jain <himshijain.hj@gmail.com>
+Date: Wed, 27 Sep 2017 20:27:09 +0530
+Message-ID: <CAKJRnmPZoDgtk0vSZydQ9MG_NUD6-NGEY9u8Nkc24vDzVZDQXQ@mail.gmail.com>
+Subject: Re: [PATCH] staging: iio: ade7753: replace mlock with driver private lock
+To: Jonathan Cameron <jic23@kernel.org>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, Hartmut Knaack <knaack.h@gmx.de>, 
+	Lars-Peter Clausen <lars@metafoo.de>, Peter Meerwald <pmeerw@pmeerw.net>, linux-iio@vger.kernel.org, 
+	Daniel Baluta <daniel.baluta@gmail.com>, Alison Schofield <amsfield22@gmail.com>, 
+	"Hennerich, Michael" <Michael.Hennerich@analog.com>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Content-Type: text/plain; charset="UTF-8"
 
-Merge assignment with return statement to directly return the value.
+On Sun, Sep 24, 2017 at 7:47 PM, Jonathan Cameron <jic23@kernel.org> wrote:
+> On Mon, 18 Sep 2017 12:29:52 +0530
+> Himanshi Jain <himshijain.hj@gmail.com> wrote:
+>
+>> Replace driver usage of mlock with driver private lock to meet the new
+>> model where usage of iio_dev->mlock is being redefined as protecting
+>> operating mode changes(changes between BUFFER* and DIRECT modes).
+>>
+>> Signed-off-by: Himanshi Jain <himshijain.hj@gmail.com>
+>
+> A well presented patch making a sensible change.  My only thought here
+> is that ultimately we could cover bother the buffer protection and
+> the state protection with a single lock.
+>
+> Hmm. The new lock (as was the old mlock code) is providing protection
+> to ensure we end up with consistent state when changing the
+> sampling frequency between the sampling frequency and the
+> bus clock speed (which has different maximum values depending
+> on the current sampling frequency). In similar cases we have
+> expanded the meaning on the buffer lock to fulfil both roles
+> - that could be done here as well, although you have to be careful
+> about deadlocks.
+>
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
- net/netfilter/nf_conntrack_netlink.c | 5 ++---
- net/netfilter/xt_hashlimit.c         | 3 +--
- 2 files changed, 3 insertions(+), 5 deletions(-)
+I have understood how to use a single lock for both the purposes as you have
+quoted in Katie's patch too i.e. by making an unlocked version of the function
+ade7753_spi_write_reg_16(). And since the function is not publicly available
+to be used, an unlocked version will not create any issue(which is why I am
+assuming, we are not using nested locks - Please correct me if I am wrong.)
 
-diff --git a/net/netfilter/nf_conntrack_netlink.c b/net/netfilter/nf_conntrack_netlink.c
-index dd177eb..bfa8b7f 100644
---- a/net/netfilter/nf_conntrack_netlink.c
-+++ b/net/netfilter/nf_conntrack_netlink.c
-@@ -1497,9 +1497,8 @@ ctnetlink_setup_nat(struct nf_conn *ct, const struct nlattr * const cda[])
- 	if (ret < 0)
- 		return ret;
- 
--	ret = ctnetlink_parse_nat_setup(ct, NF_NAT_MANIP_SRC,
--					cda[CTA_NAT_SRC]);
--	return ret;
-+	return ctnetlink_parse_nat_setup(ct, NF_NAT_MANIP_SRC,
-+					 cda[CTA_NAT_SRC]);
- #else
- 	if (!cda[CTA_NAT_DST] && !cda[CTA_NAT_SRC])
- 		return 0;
-diff --git a/net/netfilter/xt_hashlimit.c b/net/netfilter/xt_hashlimit.c
-index 66f5aca..9e8ba2e 100644
---- a/net/netfilter/xt_hashlimit.c
-+++ b/net/netfilter/xt_hashlimit.c
-@@ -534,8 +534,7 @@ static u64 user2rate_bytes(u32 user)
- 	u64 r;
- 
- 	r = user ? U32_MAX / user : U32_MAX;
--	r = (r - 1) << XT_HASHLIMIT_BYTE_SHIFT;
--	return r;
-+	return (r - 1) << XT_HASHLIMIT_BYTE_SHIFT;
- }
- 
- static void rateinfo_recalc(struct dsthash_ent *dh, unsigned long now,
--- 
-2.7.4
+I will submit a new patch with a single lock.
 
+> On reflection I think this patch is worthwhile applying even
+> if this new lock gets dropped again in some later rework of this
+> driver.
+>
+> Applied to the togreg branch of iio.git and pushed out as testing for
+> the autobuilders to play with it.
+>
+
+Thank you for reviewing and applying the patch and guiding for a better logical
+solution.
+
+> Thanks,
+>
+> Jonathan
+>> ---
+>>  drivers/staging/iio/meter/ade7753.c | 7 +++++--
+>>  1 file changed, 5 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/staging/iio/meter/ade7753.c b/drivers/staging/iio/meter/ade7753.c
+>> index ce26abdea..745c5a6 100644
+>> --- a/drivers/staging/iio/meter/ade7753.c
+>> +++ b/drivers/staging/iio/meter/ade7753.c
+>> @@ -81,10 +81,12 @@
+>>   * @tx:         transmit buffer
+>>   * @rx:         receive buffer
+>>   * @buf_lock:       mutex to protect tx and rx
+>> + * @lock:    protect sensor data
+>>   **/
+>>  struct ade7753_state {
+>>       struct spi_device   *us;
+>>       struct mutex        buf_lock;
+>> +     struct mutex        lock; /* protect sensor data */
+>>       u8          tx[ADE7753_MAX_TX] ____cacheline_aligned;
+>>       u8          rx[ADE7753_MAX_RX];
+>>  };
+>> @@ -483,7 +485,7 @@ static ssize_t ade7753_write_frequency(struct device *dev,
+>>       if (!val)
+>>               return -EINVAL;
+>>
+>> -     mutex_lock(&indio_dev->mlock);
+>> +     mutex_lock(&st->lock);
+>>
+>>       t = 27900 / val;
+>>       if (t > 0)
+>> @@ -504,7 +506,7 @@ static ssize_t ade7753_write_frequency(struct device *dev,
+>>       ret = ade7753_spi_write_reg_16(dev, ADE7753_MODE, reg);
+>>
+>>  out:
+>> -     mutex_unlock(&indio_dev->mlock);
+>> +     mutex_unlock(&st->lock);
+>>
+>>       return ret ? ret : len;
+>>  }
+>> @@ -580,6 +582,7 @@ static int ade7753_probe(struct spi_device *spi)
+>>       st = iio_priv(indio_dev);
+>>       st->us = spi;
+>>       mutex_init(&st->buf_lock);
+>> +     mutex_init(&st->lock);
+>>
+>>       indio_dev->name = spi->dev.driver->name;
+>>       indio_dev->dev.parent = &spi->dev;
+>
 
