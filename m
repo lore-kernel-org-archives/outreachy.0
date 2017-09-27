@@ -1,80 +1,125 @@
-X-GM-THRID: 6204748912681549824
-X-Received: by 10.182.20.195 with SMTP id p3mr24492919obe.28.1444655683430;
-        Mon, 12 Oct 2015 06:14:43 -0700 (PDT)
+X-GM-THRID: 6470360627233685504
+X-Received: by 10.28.154.68 with SMTP id c65mr71715wme.5.1506498229395;
+        Wed, 27 Sep 2017 00:43:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.19.145 with SMTP id 17ls1559544iot.4.gmail; Mon, 12 Oct
- 2015 06:14:42 -0700 (PDT)
-X-Received: by 10.68.231.66 with SMTP id te2mr23969360pbc.5.1444655682934;
-        Mon, 12 Oct 2015 06:14:42 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
-        by gmr-mx.google.com with ESMTPS id el2si1700797pbb.0.2015.10.12.06.14.42
+Received: by 10.46.23.21 with SMTP id l21ls179445lje.3.gmail; Wed, 27 Sep 2017
+ 00:43:48 -0700 (PDT)
+X-Received: by 10.46.88.72 with SMTP id x8mr56537ljd.6.1506498228119;
+        Wed, 27 Sep 2017 00:43:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506498228; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ZkvDy8H10R0p+7vfTj7qF7VnPweVW5j/d8sHIvelcUrI8fE67x7fjakWhfpWtohIRk
+         BCkUHT1C94cEn4dMZxP7RQqHRcfiKEL9VA6ZS8GGMwk4j9h7vSPbkIitjkYuf/mRnhI9
+         VFa72/F/V+j0/2a5Mib8V50Con4qr/PaDzIcDbz9boRKnnNF5fQume7uJTNv5F9YOgoh
+         j789HBHQx1iI60w7h1hXzxVh0yafWKztEA/i2TfpgjtWMwOYzLSCk9fWU7RtJ2K91ssu
+         kxF8iHSK+bZ5uO91aC58YQPDJLZCKenpUUJuExZPblXtxKok1j3L+G89VQyFhFQp6MZn
+         GQ1A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature:arc-authentication-results;
+        bh=DbaaP0akSltqq/05jc0wWMIG/gsqrN85vXqgv7IcQhU=;
+        b=Ep9Ee9Kg0UZ4+gEo+dvCt7hHIThXIlTGjfdyh/aBz2dEHZzbjnHeHgVdGlEiU4bA+2
+         thWw9f0PW0rM9ZCvlUFMdSR577tWkl3p8s2s1VWFum+AQdJvVEdoL/Kv5NHYIbxo5bb0
+         J5ygQ2X69/mIaDaMN0lvy2NNW8TZuDywzt4GiomQ5Pyn9uHkMLbTF6jjY2fkOJXI5+AZ
+         jmATfk+ChHOGsoNU0+7BRj+a6AB/M85Z5R4vJ6g4RA4gval+XSncePuUFAq+kXlDR5ia
+         05Ir3LFp5Ns9GqnVE0h0uYQZ4V9t4kTsa9J+PXoLOTenZVCUEhSIZ+sAaUp1HUrw54sW
+         yHGQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=o7BdAktm;
+       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::242 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from mail-wr0-x242.google.com (mail-wr0-x242.google.com. [2a00:1450:400c:c0c::242])
+        by gmr-mx.google.com with ESMTPS id b203si203577wmh.4.2017.09.27.00.43.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Oct 2015 06:14:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
+        Wed, 27 Sep 2017 00:43:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::242 as permitted sender) client-ip=2a00:1450:400c:c0c::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x231.google.com with SMTP id ve7so96313173pab.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Oct 2015 06:14:42 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=o7BdAktm;
+       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::242 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wr0-x242.google.com with SMTP id n64so3671410wrb.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 27 Sep 2017 00:43:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id;
-        bh=GHBDdpmdResjKnPacY/nQkol+23KGDoAc5rGMb5dQzw=;
-        b=nXstfEvIRmXwOk4JQVEbh98MGCKvcjCqeWaD4M/fZyja6yS7/6/lBLOYmS2ohnHXNj
-         WkSFn5C5F2M9gk5eXvTTtbEOT3GWVrTzwxnHMt5mVKjHjfUxpAL6Y8NXu17z1qSh7ofL
-         ckH5xSH0fqWfW4kPprns9ntV0ZVHvm6OTpwogR+Ps3HHA2/HQKX6p12vx+m4WRBEyWqK
-         OEpgwglUZ0ojvrYbTfonGfY+qc7KmeexQfRsgDvcte3iaTX5u5duDXKxaH7Wyc+IZD8z
-         qfB2WdJs75UWvXW2LWYVR6B5DkzsIrhwwmkZJ/xs/BuT6alpPmqDNTShWWWaUfJUOY4I
-         CCrQ==
-X-Received: by 10.68.202.9 with SMTP id ke9mr34804798pbc.85.1444655682785;
-        Mon, 12 Oct 2015 06:14:42 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id d13sm16913574pbu.20.2015.10.12.06.14.39
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 12 Oct 2015 06:14:42 -0700 (PDT)
-From: Shraddha Barke <shraddha.6596@gmail.com>
-To: <outreachy-kernel@googlegroups.com>
-Subject: [PATCH] Staging: most: hdm-i2c: Drop owner assignment from i2c driver
-Date: Mon, 12 Oct 2015 18:44:34 +0530
-Message-Id: <1444655674-19991-1-git-send-email-shraddha.6596@gmail.com>
-X-Mailer: git-send-email 2.1.4
-X-Cyberoam-smtpxy-version: 1.0.6.3
-X-Cyberoam-AV-Policy: default
-X-CTCH-PVer:  0000001
-X-CTCH-Spam:  Unknown
-X-CTCH-VOD:  Unknown
-X-CTCH-Flags:  0
-X-CTCH-RefID:  str=0001.0A150201.561BB241.01F5,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
-X-CTCH-Score:  0.000
-X-CTCH-ScoreCust:  0.000
-X-CTCH-Rules:  
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=DbaaP0akSltqq/05jc0wWMIG/gsqrN85vXqgv7IcQhU=;
+        b=o7BdAktmcORWYa7ItWhuKOBkdcda6uN3fTHo0DXmIvRb/seaTSb90vMs3kQUqgFnGe
+         SS1JGIkbOwqT8VJgQR+bdERxZ9vBYUiQPusCXQdxvwlb6OtO6Hf548fQa3ULbi4b3pfn
+         rDxsVHT+kNpB0N/IyXZHgCbgo68RcwHqW8N0IA7xGe8STdMWY9Lsa/Wj1JnZAWr5pA/t
+         hyFjvwhUJ3NT2JTGbQNLZ2/65DShd4eTOIXszbLDt3bJKwbWiiBibgHBKEAxjH17WoQh
+         JjaBtE+a8w8wu3RG5OL0d1aq1ej2NFtrmzASrhFi/HaHqbQxc0b8/+CkBZMJz6wntAEc
+         UtYg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=DbaaP0akSltqq/05jc0wWMIG/gsqrN85vXqgv7IcQhU=;
+        b=CVZlcbIjE31ZDohETYGxhCm1YF/te7Rc1Mc3wiy8QfYTObv3tzqjXr45+hztQL867r
+         FLJClJE6o9H895L15M7FIeMjH0AfCKB/7Nc5EpaUCs3pjevogfdMMZLqEO5r89IR/eRu
+         569uiE9bJjcGocg/sjlIhl7/dvFbRBoqYrYVPqLx+cJUj11ltCCczeheIaeiB30YK1Nm
+         1UdnpS0jG8Stu7ZPZ/68xy2jA4RwAr1SmaaZsmublBkfOCzptA2ZzlG0eBw2/5k22XPs
+         PcdDG8/HoqRU3lH9ACOFVyuR41xO5qLWSvBJXvy1bAptGIFyELSsCvne7j0gqP05/d3v
+         Gyng==
+X-Gm-Message-State: AHPjjUjQp1AsqJ5F7K+/+CXFCqoNpSkDGrVOCUg0BKO1Egp+KMBfXxZg
+	IVw4KyciRrC1bJPZWkp9iz4=
+X-Google-Smtp-Source: AOwi7QBddb++NBu5TDLlHB/i2yJa/MZERbXOUmUksgNyPhiKqAmFKbG+BkxKC3aSCtH/K1tjCH0HQg==
+X-Received: by 10.223.182.71 with SMTP id i7mr513498wre.43.1506498227712;
+        Wed, 27 Sep 2017 00:43:47 -0700 (PDT)
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from ubuntu (fw-ext-11.romania.luxoft.com. [195.90.110.113])
+        by smtp.gmail.com with ESMTPSA id i7sm2759184wmc.18.2017.09.27.00.43.46
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 27 Sep 2017 00:43:47 -0700 (PDT)
+Date: Wed, 27 Sep 2017 00:43:45 -0700
+From: Mihaela Muraru <mihaela.muraru21@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	William Hubbs <w.d.hubbs@gmail.com>
+Subject: [PATCH] staging: speakup: Fix comment block coding style
+Message-ID: <20170927074345.GA46087@ubuntu>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-i2c_driver does not need to set an owner because core will set it
+This is a patch to the spk_ttyio.c file that fix up a comment block
+warninig, found by checkpatch.pl tool, by adding */ on a separte line.
 
-Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+WARNING: Block comments use a trailing */ on a separate line
+
+Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
 ---
- drivers/staging/most/hdm-i2c/hdm_i2c.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/staging/speakup/spk_ttyio.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/most/hdm-i2c/hdm_i2c.c b/drivers/staging/most/hdm-i2c/hdm_i2c.c
-index cffea40..9768281 100644
---- a/drivers/staging/most/hdm-i2c/hdm_i2c.c
-+++ b/drivers/staging/most/hdm-i2c/hdm_i2c.c
-@@ -416,7 +416,6 @@ MODULE_DEVICE_TABLE(i2c, i2c_id);
- static struct i2c_driver i2c_driver = {
- 	.driver = {
- 		.name = "hdm_i2c",
--		.owner = THIS_MODULE,
- 	},
- 	.probe = i2c_probe,
- 	.remove = i2c_remove,
+diff --git a/drivers/staging/speakup/spk_ttyio.c b/drivers/staging/speakup/spk_ttyio.c
+index a6330e2..513cebb 100644
+--- a/drivers/staging/speakup/spk_ttyio.c
++++ b/drivers/staging/speakup/spk_ttyio.c
+@@ -88,7 +88,8 @@ static int spk_ttyio_receive_buf2(struct tty_struct *tty,
+ 		return 0;
+ 
+ 	/* Make sure the consumer has read buf before we have seen
+-	 * buf_free == true and overwrite buf */
++	 * buf_free == true and overwrite buf
++	 */
+ 	mb();
+ 
+ 	ldisc_data->buf = cp[0];
+@@ -274,7 +275,8 @@ static unsigned char ttyio_in(int timeout)
+ 
+ 	rv = ldisc_data->buf;
+ 	/* Make sure we have read buf before we set buf_free to let
+-	 * the producer overwrite it */
++	 * the producer overwrite it
++	 */
+ 	mb();
+ 	ldisc_data->buf_free = true;
+ 	/* Let TTY push more characters */
 -- 
-2.1.4
+2.7.4
 
 
