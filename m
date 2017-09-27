@@ -1,145 +1,151 @@
-X-GM-THRID: 6467009585509040128
-X-Received: by 10.36.92.144 with SMTP id q138mr6765403itb.56.1505718004076;
-        Mon, 18 Sep 2017 00:00:04 -0700 (PDT)
+X-GM-THRID: 6470133937327833088
+X-Received: by 10.28.55.209 with SMTP id e200mr110480wma.0.1506502413191;
+        Wed, 27 Sep 2017 01:53:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.128.11 with SMTP id b11ls7103722iod.20.gmail; Mon, 18 Sep
- 2017 00:00:03 -0700 (PDT)
-X-Received: by 10.176.26.150 with SMTP id j22mr22624882uai.24.1505718003367;
-        Mon, 18 Sep 2017 00:00:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505718003; cv=none;
+Received: by 10.28.216.71 with SMTP id p68ls264086wmg.2.gmail; Wed, 27 Sep
+ 2017 01:53:32 -0700 (PDT)
+X-Received: by 10.223.184.197 with SMTP id c5mr56341wrg.17.1506502412673;
+        Wed, 27 Sep 2017 01:53:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506502412; cv=none;
         d=google.com; s=arc-20160816;
-        b=TRC5ooQsQsefQC8Xw4/Yx2uhUReA9+TddumxrXk2MQWJsm2GMmJo02cneyNH9byY8L
-         m6uJ1Q0hK46J0YlnxNTvSUxCOfYygAGEoDMJAmBjkYRjf19ql0k2yzSvJYr+Dj06LWLB
-         7pt96ZeocY5NLM6DAo4zltnw4RO5dkzaqyMKbssJ5QjAr6aWAWJBMJjjJHz/cP7JscLL
-         dVRPf0Mhns4+aoAaEaba/MVhTZDKuBlwL+hlzLUbvcPB0L6wLbUxwZP4JcTUYWFO03Xj
-         NYRBANlncJMtVUS/SGJ5mIPBgEiGtp4/6SQIZ0ts3vzXAFqnmnZXvzI6cVXfwIBjJ/8G
-         8/Bg==
+        b=iahmOH86JqVSWrhAXB8Cq9P3xeqqxkBBCsXO+dzz7wocza2xu26m8za/PQuBxz/WuR
+         ByjY5rCRJWTyKX0TcwXbm7hqNJpktkGlccX5hw+/xouu9VhsK1MHdvthk1r33iKzRLEf
+         0rRNoIIvGSWNd+PzMZ21CrMZ/XQaovfhd0jTB99cwuNpVXv7gMcIH+NPfzf9DBIGxwou
+         hVQ2umhitL9zkHw+7/sybppF7R7Rcis9nvKZKKQ+XGZetw/4cNU8/MGBRlWGOsm4+LB+
+         3Se+Afj3SSBuE1ypMdXCapJoyLgS30x2j/ALkUu4g+eFGdR9UhxAzYrQY1tjUcyKCvkP
+         QW9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature:arc-authentication-results;
-        bh=xFLzYzFE1YyAKQXylhfyyOmRHfVrp9hrhj3/sGeqPyc=;
-        b=gI8iIQ0q8/G9qsgk/ZVR738xFWdbQ2V6+AIOvZD0ECXT0fuztDKeuLpXjA1wInjq8n
-         toTs+HGMLk29VqnMKo/LN+z8we/dv9QhUj/siw5ioTbMxeVNv5x84HjfYngfRzxquw0o
-         m9YUD8dU7nDkJDxiCHoVMBsF7+InQ2deDa8urTOexegC981ngtX5uCeczzDpsH2yBtSD
-         dEmT260nZ2/Ipo56nGchGimLfrKUAOF4RDJjJ814RYVZDeD6ScpHXx9Y2nHl6wpuKi1M
-         yv9RCLr9f73qL613k9t8K+0kkbNsYEeJqtGoy1NGSyuSh1nXciocAVMFI2SDhLzwfI79
-         yb/A==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:sender:dkim-signature
+         :arc-authentication-results;
+        bh=OeH+b3HYx87koBzBDl1Ax7VL8XjCL5X5BW6XezD1s84=;
+        b=ms+GNrtOg6KN23FZOlq/QqYLKGA35lmHgxwduR20ydxRYNvcOs/WJ7pDmXXNqGC3JU
+         YePMXaKMP+ta/L67+K99olkfPlniuMyk1jCRfOX6/bRnqHPiQDu7rta9VI/j2xlSSPYa
+         X6+W5lKaGdMxuTkLpuHpGnevQcbALFGgiaEif8SFsf4i1BltQyHAgztAFCtTHLIcj7ff
+         /l5QoGGgP1gosDW7kF7Yi3SmMbESCymYTeu8Jev7ZNa3O3ntEDjkWS+FM7DY2POL0c56
+         oqwyGkCecm1MLsKDmV668oQZpiiAOGM3ht6MttZCn0mUzr3mgD8WaK+s2OItNhEgC10r
+         WhpQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FWhm1iKb;
-       spf=pass (google.com: domain of himshijain.hj@gmail.com designates 2607:f8b0:4001:c0b::242 as permitted sender) smtp.mailfrom=himshijain.hj@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <himshijain.hj@gmail.com>
-Received: from mail-it0-x242.google.com (mail-it0-x242.google.com. [2607:f8b0:4001:c0b::242])
-        by gmr-mx.google.com with ESMTPS id u123si297343ywf.8.2017.09.18.00.00.03
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=F/m8W9O7;
+       spf=neutral (google.com: 2a00:1450:400c:c09::242 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
+Return-Path: <daniel@ffwll.ch>
+Received: from mail-wm0-x242.google.com (mail-wm0-x242.google.com. [2a00:1450:400c:c09::242])
+        by gmr-mx.google.com with ESMTPS id j4si443913wmi.2.2017.09.27.01.53.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 18 Sep 2017 00:00:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of himshijain.hj@gmail.com designates 2607:f8b0:4001:c0b::242 as permitted sender) client-ip=2607:f8b0:4001:c0b::242;
+        Wed, 27 Sep 2017 01:53:32 -0700 (PDT)
+Received-SPF: neutral (google.com: 2a00:1450:400c:c09::242 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) client-ip=2a00:1450:400c:c09::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FWhm1iKb;
-       spf=pass (google.com: domain of himshijain.hj@gmail.com designates 2607:f8b0:4001:c0b::242 as permitted sender) smtp.mailfrom=himshijain.hj@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-it0-x242.google.com with SMTP id d6so4350089itc.4
-        for <outreachy-kernel@googlegroups.com>; Mon, 18 Sep 2017 00:00:03 -0700 (PDT)
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=F/m8W9O7;
+       spf=neutral (google.com: 2a00:1450:400c:c09::242 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
+Received: by mail-wm0-x242.google.com with SMTP id i131so10844172wma.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 27 Sep 2017 01:53:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=xFLzYzFE1YyAKQXylhfyyOmRHfVrp9hrhj3/sGeqPyc=;
-        b=FWhm1iKbE/sPauGPb+AtxIyTaZ63wVWHp6cttTMb3CVZlOhz+1iSfbkiaeU+AdSQql
-         ZDdj/tjmgXT7p500TkYCKGDhgkp1d/nlPVKzB//3pgDz6Do9HgdbYM80BCHC7V227uZl
-         qduz7ZV3lzVg94V4vWFuIU/Ew6sGGsFZ9FhxY/6lcFNsNz8qGvu5UI635yNGuDSD9vj0
-         E4JyPacHQrjWH6G9c6mXIWVqFqASsMFlxcD09X+WdmlyxR1WsjITd/o3SW1MMnVM1VjV
-         4dSitxC0XQb2QFInJSyG1gM20ZVsaqHGbYNHSW+cUk5u4Gcg/fvk4VM9aW/lQgKTbLdy
-         PJ0w==
+        d=ffwll.ch; s=google;
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=OeH+b3HYx87koBzBDl1Ax7VL8XjCL5X5BW6XezD1s84=;
+        b=F/m8W9O7wwKnXSEIlEBV5dRYCPH2l0S8/Vg6ZbiNh6f9PBv/4U62cRDKElzmHNrE/H
+         tBtfiZNGns26sKCaugZxHtw3qXzkYrgmTNc0p2T4zvasvLXUgMpIZIrMkzPWpm6Ta52o
+         RA6Cbzc5mVeCbL5oH0KJeVhiGxmSvDVXNTp8I=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=xFLzYzFE1YyAKQXylhfyyOmRHfVrp9hrhj3/sGeqPyc=;
-        b=EyiuFNUTa4Hgup1ZNZwYKtRhD6IKEIUyCJ52t8FYQ7cHQhA40nHvyCr6evj90ZZM/b
-         ZrbeqJVDex86xU/4TS0Xaj3AdF5Pq+fs6JOEJUsPhargBdlsR0hs0xzQPZ+Z1B9DJfld
-         oTj5CV26dDsiGw4gwfPF2S48BO+fPm6xdz38B3eBmSv4vWvzzAA0qJdl4Z5VtEJcR2VN
-         e2Q9qk9vO1sQD1hGyac7VIKn5ywLGrPceGToFvCoigWlFMN8wPrKj4MGeQAJmUgiwItT
-         1A8TbUUs1okhG43KSUz2GTmV0Uw6xS6q5PbQiHOXDuHZxBykeLlCfB4A2GN7glDYzsnq
-         MRAw==
-X-Gm-Message-State: AHPjjUiNnJxWgqU5Nr9kPKa8kisG62kNrv8fjHUDFNPW6bMsZqk19sR0
-	y26IT3JFI4wDzB91ctQXDwLKktek
-X-Google-Smtp-Source: AOwi7QDqVGIipuMi7Z7R1UAdddtvf2WZ79uvfoxMP3HRkXI9k1OlNO0TAcJ9LB8gJEuInL8hIt9JTQ==
-X-Received: by 10.36.245.138 with SMTP id k132mr14771834ith.124.1505718002626;
-        Mon, 18 Sep 2017 00:00:02 -0700 (PDT)
-Return-Path: <himshijain.hj@gmail.com>
-Received: from localhost ([223.190.121.125])
-        by smtp.gmail.com with ESMTPSA id y198sm2622224itc.30.2017.09.18.00.00.01
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Mon, 18 Sep 2017 00:00:02 -0700 (PDT)
-Date: Mon, 18 Sep 2017 12:29:52 +0530
-From: Himanshi Jain <himshijain.hj@gmail.com>
-To: outreachy-kernel@googlegroups.com, jic23@kernel.org, knaack.h@gmx.de,
-	lars@metafoo.de, pmeerw@pmeerw.net, linux-iio@vger.kernel.org,
-	daniel.baluta@gmail.com, amsfield22@gmail.com,
-	Michael.Hennerich@analog.com, gregkh@linuxfoundation.org
-Subject: [PATCH] staging: iio: ade7753:  replace mlock with driver private
- lock
-Message-ID: <20170918065952.GA5386@himanshi-Inspiron-5558>
+        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+         :references:mime-version:content-disposition:in-reply-to:user-agent;
+        bh=OeH+b3HYx87koBzBDl1Ax7VL8XjCL5X5BW6XezD1s84=;
+        b=baLWecRLKrPMSKF5CbX2a4ltU2XK2/xWO2XJB5Np2du9wpwsqK/VQwBbb4LcecnT+g
+         V3wlyD7pwXcE8vxjP1pzgNj1QKD4kdqCZyWXlwsmGO0AgxUS6hCZYbkRHYJzxswGj/Wg
+         bHjAnjmLyWN1tPufBVvoq5TnUaI3oKUc8OdG5xeL/EEx6EZchOzQAd9HKoDYOJ+1t/MM
+         1zvxJ+Rg1JsZPAL7oh9qGJXIKFK1L/qyS8SMKt6tQc3WW+K5IFiNDDZrblwVM2PPxeVW
+         K8fEHx/zg7qp3BkaauJFBTMXOdOm7iCIR/+pWMKY1yXHN//4lHO0J9wgmc8Bo6EH47xA
+         22fw==
+X-Gm-Message-State: AHPjjUiVlXyfSpGxhJMlwfzC7gwC32Kr+KHj7XF/ukacsp49qOSI9HQx
+	OyBX5g9byxRwMON+syGdFVpkaw==
+X-Google-Smtp-Source: AOwi7QCCXUUQaZJbonfvlV4mLXYXQ8OYo50ET3kt3AiYuktyfFawxqNKmmp1aSI5wiGqRQ/aWQV+PQ==
+X-Received: by 10.80.174.36 with SMTP id c33mr1047926edd.191.1506502412405;
+        Wed, 27 Sep 2017 01:53:32 -0700 (PDT)
+Return-Path: <daniel@ffwll.ch>
+Received: from phenom.ffwll.local ([2a02:168:5635:0:39d2:f87e:2033:9f6])
+        by smtp.gmail.com with ESMTPSA id g2sm2265775eda.23.2017.09.27.01.53.31
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 27 Sep 2017 01:53:31 -0700 (PDT)
+Sender: Daniel Vetter <daniel.vetter@ffwll.ch>
+Date: Wed, 27 Sep 2017 10:53:29 +0200
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Aishwarya Pant <aishpant@gmail.com>
+Cc: Daniel Vetter <daniel.vetter@intel.com>,
+	Jani Nikula <jani.nikula@linux.intel.com>,
+	Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>,
+	dri-devel@lists.freedesktop.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] drm/core: clean up references to
+ drm_dev_unref()
+Message-ID: <20170927085329.mim4cyjgwj5b3qh2@phenom.ffwll.local>
+References: <20170926170400.GA7671@aishwarya>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20170926170400.GA7671@aishwarya>
+X-Operating-System: Linux phenom 4.12.0-1-amd64 
+User-Agent: NeoMutt/20170609 (1.8.3)
 
-Replace driver usage of mlock with driver private lock to meet the new
-model where usage of iio_dev->mlock is being redefined as protecting
-operating mode changes(changes between BUFFER* and DIRECT modes).
+On Tue, Sep 26, 2017 at 10:34:00PM +0530, Aishwarya Pant wrote:
+> This is a continuation of a previous commit ("drm: introduce drm_dev_{get/put}
+> functions") to replace all references to drm_dev_unref() in drm core files with
+> drm_dev_put().
+> 
+> Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
+> ---
+> This patch is on top of branch drm-misc-next of drm-misc tree. I hope that's the
+> right one.
 
-Signed-off-by: Himanshi Jain <himshijain.hj@gmail.com>
----
- drivers/staging/iio/meter/ade7753.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+Yup.
 
-diff --git a/drivers/staging/iio/meter/ade7753.c b/drivers/staging/iio/meter/ade7753.c
-index ce26abdea..745c5a6 100644
---- a/drivers/staging/iio/meter/ade7753.c
-+++ b/drivers/staging/iio/meter/ade7753.c
-@@ -81,10 +81,12 @@
-  * @tx:         transmit buffer
-  * @rx:         receive buffer
-  * @buf_lock:       mutex to protect tx and rx
-+ * @lock:	protect sensor data
-  **/
- struct ade7753_state {
- 	struct spi_device   *us;
- 	struct mutex        buf_lock;
-+	struct mutex	    lock; /* protect sensor data */
- 	u8          tx[ADE7753_MAX_TX] ____cacheline_aligned;
- 	u8          rx[ADE7753_MAX_RX];
- };
-@@ -483,7 +485,7 @@ static ssize_t ade7753_write_frequency(struct device *dev,
- 	if (!val)
- 		return -EINVAL;
- 
--	mutex_lock(&indio_dev->mlock);
-+	mutex_lock(&st->lock);
- 
- 	t = 27900 / val;
- 	if (t > 0)
-@@ -504,7 +506,7 @@ static ssize_t ade7753_write_frequency(struct device *dev,
- 	ret = ade7753_spi_write_reg_16(dev, ADE7753_MODE, reg);
- 
- out:
--	mutex_unlock(&indio_dev->mlock);
-+	mutex_unlock(&st->lock);
- 
- 	return ret ? ret : len;
- }
-@@ -580,6 +582,7 @@ static int ade7753_probe(struct spi_device *spi)
- 	st = iio_priv(indio_dev);
- 	st->us = spi;
- 	mutex_init(&st->buf_lock);
-+	mutex_init(&st->lock);
- 
- 	indio_dev->name = spi->dev.driver->name;
- 	indio_dev->dev.parent = &spi->dev;
+Applied, thanks for your patch.
+-Daniel
+
+> 
+>  drivers/gpu/drm/drm_pci.c   | 2 +-
+>  drivers/gpu/drm/drm_prime.c | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/drm_pci.c b/drivers/gpu/drm/drm_pci.c
+> index 1235c98..4db9c51 100644
+> --- a/drivers/gpu/drm/drm_pci.c
+> +++ b/drivers/gpu/drm/drm_pci.c
+> @@ -274,7 +274,7 @@ int drm_get_pci_dev(struct pci_dev *pdev, const struct pci_device_id *ent,
+>  	drm_pci_agp_destroy(dev);
+>  	pci_disable_device(pdev);
+>  err_free:
+> -	drm_dev_unref(dev);
+> +	drm_dev_put(dev);
+>  	return ret;
+>  }
+>  EXPORT_SYMBOL(drm_get_pci_dev);
+> diff --git a/drivers/gpu/drm/drm_prime.c b/drivers/gpu/drm/drm_prime.c
+> index 782b95e..8de93a2 100644
+> --- a/drivers/gpu/drm/drm_prime.c
+> +++ b/drivers/gpu/drm/drm_prime.c
+> @@ -342,7 +342,7 @@ void drm_gem_dmabuf_release(struct dma_buf *dma_buf)
+>  	/* drop the reference on the export fd holds */
+>  	drm_gem_object_put_unlocked(obj);
+>  
+> -	drm_dev_unref(dev);
+> +	drm_dev_put(dev);
+>  }
+>  EXPORT_SYMBOL(drm_gem_dmabuf_release);
+>  
+> -- 
+> 2.7.4
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170926170400.GA7671%40aishwarya.
+> For more options, visit https://groups.google.com/d/optout.
+
 -- 
-1.9.1
-
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
 
