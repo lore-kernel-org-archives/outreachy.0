@@ -1,83 +1,83 @@
 X-GM-THRID: 6470521985468203008
-X-Received: by 10.98.220.17 with SMTP id t17mr304555pfg.44.1506538169531;
-        Wed, 27 Sep 2017 11:49:29 -0700 (PDT)
+X-Received: by 10.101.74.204 with SMTP id c12mr409200pgu.83.1506535798963;
+        Wed, 27 Sep 2017 11:09:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.84.235.134 with SMTP id p6ls659580plk.12.gmail; Wed, 27 Sep
- 2017 11:49:28 -0700 (PDT)
-X-Received: by 10.99.115.28 with SMTP id o28mr445783pgc.72.1506538168392;
-        Wed, 27 Sep 2017 11:49:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506538168; cv=none;
+Received: by 10.98.6.193 with SMTP id 184ls586808pfg.0.gmail; Wed, 27 Sep 2017
+ 11:09:57 -0700 (PDT)
+X-Received: by 10.84.240.10 with SMTP id y10mr302348plk.23.1506535797867;
+        Wed, 27 Sep 2017 11:09:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506535797; cv=none;
         d=google.com; s=arc-20160816;
-        b=ewrPvhAWUoLlJtNOy3s1sTEZ0Gx6R1Yd80f+1pFo8W2lKE6yc+pbMMZVznC/KQBFEl
-         ZBLAPAeOw3/q7hpYYtR9v9dyOLSbM2cFNR+ML+XUpisPXjHfThEnZi/fq9QWBDijacVa
-         FIapnoKNiRbWwj9oxxKJ/oCb+ROf/WQXwSl8+eR4fbYj9J/OKrWvZRh1ystoKZhhQBWi
-         EGXEKBVNG1KkU9OSSRdk4HxoEsb7PtQ7B1+f88hXiFKEfBDtb+Cc+L1aKrW93chTTwpP
-         Rhvd/jdUSm4GkLYlMU3EmYDDUHZTnxZlC2EA9x06QD99qRh7UYO6pUygcMEKSKwcN5Bd
-         cSdw==
+        b=vMb4+ZtKoVsf5mAM8WlvK/dTsz9JM4iBHg/G/rBF6gAS23Q9Lon7VFxJFBVACM5lUx
+         K0XgaS1Bi7ZR0ocQtGV3UzLm3KOwHcjaOg7Cx6uMHHnTNdINgKaggAjWqQT+yvnSDU+f
+         6Abs4VyYwGOFYTDhsxsj/kd7PVfnglMff1//RMwfNSzZSzCZz/E4XlPCWq2jzX3J1m4s
+         hHFxMxReykahBstyaLASmf0gDSPchC46yQgJ0e9Rz8Q1wEDw+CiycQU7kaburKgMCD4s
+         6FsPT3llrVyCpGSei1Pl+luydhT6sW95tu2/RNQZYEcsDpTYfNOuYU9omvfGQpYo54io
+         x2NA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:content-disposition:mime-version:message-id:subject:to
          :from:date:dkim-signature:arc-authentication-results;
-        bh=4QGP7nGjFk9DcuwCwz5qA9KqoxHr5xOAH5qbQEBD31c=;
-        b=v6vXt2q4X4SaLIz4rc/BvTp01naVxsgfl2DiagYYH+/mN4Z1xmd5jfIi4Au3v0f/S0
-         NlwXqivhQ9TDFlLK1u5FC4t81g9xEaiAGk1BkJ+nLJ9Fq390isj96yFOmYM8CC0PnxGg
-         ed6xBbLRCLvVhRnmgRjri1AhpoC+SD24cqGOoExH4x/1ouMUoDtNQlKevkBeP6BJMQd9
-         0TnzS/fOLCLrE1t5eddT6wy3i+vpVK5mbKcK9Lnp71Y+ZA627QG+VmgasrT0pJ14Is6z
-         M4mMYZTy9C7smecEMyqFybxbwhPjpWiZtyeoTPIfQHyJ6T47za+UtdUvgnyOymhCdKz1
-         kREA==
+        bh=Jvd5uXkaVg0kuaXBVbLqv9D6FaokA2+hKp45eb/meIk=;
+        b=082NGl3/goFM1dwmuR1jHqn5dSvbdoYcjEuX8xmmYTB1GwQPlXDWWcqQnLQ8tyCSAa
+         LxI0znJ6B9Pata7bOZ3MaZPJmA0zEC77mhhTMLiE2b5KCoisoowklZMPdhZxKcwRogGG
+         mcCcFrn6bLAnELiKHwWbsZ6H8n234/ctlUhsq6jdgpHnKMPpvizDgRdwOucRwbPnq1fp
+         yqejLa6f24kVU6ced9al6pT/VeWl23l/RM2cxzetI3estXdtaOSJHwIzoN49w5G6PLL5
+         jxhcqKb88xr3kuSJ56ZHxjYVPp70wKPiSkb6HlNDQ4V73vU3LTAnuiSy6K8ZQCiO3qHB
+         ewvg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ULpxuJUL;
-       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HXiO37pE;
+       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <keerthigd4990@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id t77si992352pfi.13.2017.09.27.11.49.28
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id x71si1044858pfe.0.2017.09.27.11.09.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 27 Sep 2017 11:49:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Wed, 27 Sep 2017 11:09:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ULpxuJUL;
-       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HXiO37pE;
+       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id j16so10070202pga.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 27 Sep 2017 11:49:28 -0700 (PDT)
+Received: by mail-pf0-x241.google.com with SMTP id f84so7403751pfj.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 27 Sep 2017 11:09:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=4QGP7nGjFk9DcuwCwz5qA9KqoxHr5xOAH5qbQEBD31c=;
-        b=ULpxuJULmuTVRvapLhsudsntaxNI1nUUPcZZMb8FZyI5hn4TBV92BCMZ2vWTDM76sr
-         GvLDp74UmHqDoPa2+0wMeVsGxeE0L66+KpcaKRtsxCD/SjOj8FjJvDolyvLc28o0QOxC
-         8JTnDk9tzYBZoMPi2fhyFsAWuSycBW0l9JiqUFnP679QabY8ZF5/UqdZgMaGkmcCDkvb
-         KNFCTbj0GUwj1WaVy1I1snrHu+0EPXzqeCptG+gSEnwzCvMp9E71RsUmE1snaigTSJ8l
-         cqJT2UZutJiEIxc+r3BObA8ZyafwEubYVRXphFMfL3lu/cAhgO24A5XQDBtxqz1hTUvB
-         0t2g==
+        bh=Jvd5uXkaVg0kuaXBVbLqv9D6FaokA2+hKp45eb/meIk=;
+        b=HXiO37pEUmtvFXkLJlE+A91cw3oDa4b7szoqc7hWUkCakHNPzX9UfgwUI72ZREC9Hr
+         0Eb+pXN2ymyTaTdQ56eOkBwzOreLY1Y0wLfGc/jd+AGQsYRTSIjMTQWfB+nQO/EpcNIg
+         JcjP96v7tJu9yiUYbtlUSnW0bpPcwD5uw3Gf/pusiTX9XvNgMdB0bLSQZtE49uT4FP8z
+         CuAQ8T5RkjoUO9RMmdcnrLuSFp7caUyJickEzmRmAxY6Ktn78gahktUjur7PHriQ4IZJ
+         B9nKSbYkb7hAkQ+iGsqBTEEpxq0pHjow4/xNELgwmlc7UkkWoGJclTnwBqXg35CfTtQG
+         OT4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=4QGP7nGjFk9DcuwCwz5qA9KqoxHr5xOAH5qbQEBD31c=;
-        b=ZuuvT9HB0ljGprMt0EeoIGwIO1r8tPe0GkfBIbOP+oXX+1G4SmyPgocjRBDNgyuKp6
-         lgX9Dz8bfa9ZGExcGFYdIDKQNjSQmBlJ8FShW4FDRxFnkEsCOPQfUPJnuLDEnMVubz1b
-         txH55XdnxkOqVlmEPawnNQkFGOCi2XMBrNgHkeNlfg0CogCWCWxBD1nzDeiu/Q9s9TLk
-         S6R7TwlzRKfxwA3uJ7Gyhk0fES6btbtk7wWmRlbFwYsFZoNlojF4X0QLIVdymfHJ5qIQ
-         6/49m+fLKC4L/a3UtROqBTLHzNE9dBT9NGSbhhoPQMp7RmupMUVRfcq5r7yTOaqBlsPo
-         WseA==
-X-Gm-Message-State: AHPjjUhlxJBHV/hHDqKSQo1JJwGnGeMBiOJAWXpw3g35VvHEX2WMK2Vj
-	eqBVAbxfKO8I/zmcSS6OzGJ0Dg5l
-X-Google-Smtp-Source: AOwi7QCy3W8RwWyQmEVChl2Jee2GJqodyzSpxrqOuRONLm6n8vdJ/gOK9y/eXg4MJdd6Ds+6HJ72IQ==
-X-Received: by 10.101.69.8 with SMTP id n8mr2073951pgq.167.1506538168061;
-        Wed, 27 Sep 2017 11:49:28 -0700 (PDT)
+        bh=Jvd5uXkaVg0kuaXBVbLqv9D6FaokA2+hKp45eb/meIk=;
+        b=L5Cf6Q0mm8tzLTmC3KvSgEFzk8MQyLHi2AfjSyIlMj04l+Gpz06B15XVBKFfYNXXPH
+         sozpNBsjn0DwfkKxTZUIst53YwUJFoARgLkUvWCoIv+LEsurnQ4XZzvmNNNPSqYmY2vf
+         Br/AL3D+OO4ZNcrCHqP6KR1oarjcmWWN1XVtnF6bW9hejw2p1wxWdG2v5pzCXTNOk2zh
+         2XeDSq+1iiyepCZpxZAZlZToLaNwYVgFnRNY+l4TCaKjRYmH70m8UheLada/8/C5k2wW
+         pEH97Idwq1cgV1xkqxqAmpWBuMIHeBojPCy9tDXtjQwJFonAAsLXBC/LDhFLLOhA7bfG
+         T5Kg==
+X-Gm-Message-State: AHPjjUi7yth4E3Yh5jHZcxR7H3kidbsQdmouGX6ITbi3AHORHuDVp+Xr
+	Ad3yBu5p3cu/NO3aJWFzKk3oaF+p
+X-Google-Smtp-Source: AOwi7QCverN28yGEmQzxtpbapIDCDy/6o0wemEEx7k2z0TyBq0ceq55nL3ee99ktpktCTbSOX31BdA==
+X-Received: by 10.84.238.207 with SMTP id l15mr1906985pln.194.1506535797599;
+        Wed, 27 Sep 2017 11:09:57 -0700 (PDT)
 Return-Path: <keerthigd4990@gmail.com>
 Received: from manoharreddy ([202.53.87.190])
-        by smtp.gmail.com with ESMTPSA id m9sm24098914pgt.49.2017.09.27.11.49.25
+        by smtp.gmail.com with ESMTPSA id l30sm21780251pgc.78.2017.09.27.11.09.55
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 27 Sep 2017 11:49:27 -0700 (PDT)
-Date: Thu, 28 Sep 2017 00:19:22 +0530
+        Wed, 27 Sep 2017 11:09:57 -0700 (PDT)
+Date: Wed, 27 Sep 2017 23:39:52 +0530
 From: Keerthi Reddy <keerthigd4990@gmail.com>
 To: linux@wolf-entwicklungen.de, outreachy-kernel@googlegroups.com
-Subject: [PATCH v3] Staging: pi433: fix grammar issues
-Message-ID: <20170927184922.GA7752@manoharreddy>
+Subject: [PATCH v2] Staging: pi433: fix grammar issues
+Message-ID: <20170927180952.GA6276@manoharreddy>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -87,17 +87,15 @@ User-Agent: Mutt/1.5.24 (2015-08-30)
 
 Signed-off-by: Keerthi Reddy <keerthigd4990@gmail.com>
 ---
-Changes in v3:
-  then -> than the
-
-changes in v2:
-  spellings -> spelling
+ changes in v2:
+ spellings -> spelling
+ then -> than the
 
  drivers/staging/pi433/Documentation/pi433.txt | 24 ++++++++++++------------
  1 file changed, 12 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/staging/pi433/Documentation/pi433.txt b/drivers/staging/pi433/Documentation/pi433.txt
-index 38b83b8..245fef3 100644
+index 38b83b8..9e1f747 100644
 --- a/drivers/staging/pi433/Documentation/pi433.txt
 +++ b/drivers/staging/pi433/Documentation/pi433.txt
 @@ -20,7 +20,7 @@ Discription of driver operation
@@ -114,7 +112,7 @@ index 38b83b8..245fef3 100644
  set, the hardware fifo of the rf chip gets preloaded and the transmission gets
  started. Upon hardware fifo threshold interrupt it gets reloaded, thus enabling
 -much longer telegrams then hardware fifo size. If the telegram is send and there
-+much longer telegrams than the hardware fifo size. If the telegram is sent and there
++much longer telegrams then hardware fifo size. If the telegram is sent and there
  is more data available in the kfifo, the procedure is repeated. If not the
  transmission cycle ends.
  
