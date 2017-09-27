@@ -1,122 +1,166 @@
 X-GM-THRID: 6470514248174796800
-X-Received: by 10.107.138.77 with SMTP id m74mr1157093iod.2.1506536499821;
-        Wed, 27 Sep 2017 11:21:39 -0700 (PDT)
+X-Received: by 10.99.109.8 with SMTP id i8mr420019pgc.87.1506533997705;
+        Wed, 27 Sep 2017 10:39:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.146.196 with SMTP id u187ls614165iod.10.gmail; Wed, 27 Sep
- 2017 11:21:38 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QBAmuXdzmuXvrfnwdResmsludq+iUxeute8QTtEbO7maU58tEtbIR4cNV6Rq3azZ5LdghVX
-X-Received: by 10.107.136.151 with SMTP id s23mr1163525ioi.65.1506536498854;
-        Wed, 27 Sep 2017 11:21:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506536498; cv=none;
+Received: by 10.84.130.66 with SMTP id 60ls630857plc.14.gmail; Wed, 27 Sep
+ 2017 10:39:56 -0700 (PDT)
+X-Received: by 10.101.92.135 with SMTP id a7mr410546pgt.70.1506533996678;
+        Wed, 27 Sep 2017 10:39:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506533996; cv=none;
         d=google.com; s=arc-20160816;
-        b=M/KFOY5n6EmGbPEWkZs8rdG939X1Lacohcdi2kkX8UZiks9PYQ1b0Cmwi0Ve+6cMI1
-         0eP30u6vcTgMVrv99nAALOSeRgQ0us97HkfOybw/XARRiFluJXAyeZGEFJ0KYwB8bg4c
-         1Xi8aXjVJSizH5rCWsPWw7A9pkg7JY5Q2sjIkaxFQBIazlcbDjlNt0wPQe7XGK8ltVwG
-         HBt0uPPIhyPVxET7AGVAWXeo2/T7ODxbSxNKCisnpdfPu47LwyQ3Vvaejb+kIaMoM4Gz
-         70OYlUmws8hWWaJIJmYjtaR5FZ0O21/CO/9Be+IW0MaVj/JJFr7B6HcDCBRM2nP++MEI
-         yLgA==
+        b=OQR3F6LOylGBXzflLfbiSJKoMNvOKf8HSJWuyTA9V4lk1/oeDH3SgjafyXy9mMth0g
+         h5zrnwPDBSUPX4BJq7Y5BT75/srHZx0Q3PBCeZTut0ytp5H7qh7E5qOjYUieWmbKw9Yd
+         8m2t2XU2qc1KNodC0Txx5MQm/rDklX6oKlG15lsvthndKbSXgrp6MaNvzOmYwD4LDfYd
+         MLImq2cKELgAyZMjh/inXT3Sl75L3HQ+vllIbn/CKbfX1/PZ2yVDtt9NSFrzTZXqhW1Z
+         IKJFiXPnKnWwKHsQ5ynQQIWRfZmn9uv3wNgw2KPHhOzMh7un+YkRxrr0PU23Xo+vfdxI
+         QrDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=importance:content-transfer-encoding:mime-version:subject
-         :references:in-reply-to:message-id:cc:to:from:date
-         :arc-authentication-results;
-        bh=IeqXS+k6b1aSH91qu7Kn/rxGiB7NPLNr6wlt3S4GdgA=;
-        b=viLMVecRWK+Ibd+5wQFLGD0tD8hXJCwaWxdAnhOb5lV9oMlngqkG7da0/9jWI9U0CS
-         aGFdkt/fypMSRiNRM6J/W6zvFcJFc4nd8q5oYiSyvWEj6+YFw51W1sDOKkxu6USedcXe
-         E6op2qsaYkynL8LDxNax5deYwAevQ5CAL+UtORUhVk1KE28zFPXyOXC4pHsyBkf6nz3w
-         DzN1OLrfEVX5NPHXZTwyrW5oyZEBpjrqRpKDdGtFeh3w1UAziZj3CHsHC70D7qamcepO
-         ezqDDubmF6KZrHFD1KP1JSQeY/QEEXowsgizS7ZS7dE/WDHpIJa07I65D5zPmmZZzKx5
-         lVpw==
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature:arc-authentication-results;
+        bh=c+Xo1zeszC+UMbAuUl89HeDC49b3CH4f0SpVSyrVz4w=;
+        b=t3FbkaVUEKM05lG8ydz6dwIAy/MmbhIsR1w0yxZ3jBoVN20u/lw0pRRqm87EVlZI2k
+         Xobe7U7S4qQmPj+7HNqn8atXZVKMeyiCStngUUXtuFNJJY92alEu6glKOlPHAu5XLZa+
+         gC7iYwNB+w/2r4vv4AcpC7hc2CJuWuZDBG4ZBqh/jqeuAq2r2OKDwRHcuzthFeKezs4B
+         mbtu3zfkCm6R5ogDSTHgMWFFhBfF1EyO46Sib5PfRBlRmy0FTM58cb2TLMe+yP98CyOI
+         QWadw0YkDTLM9e4L40KSD4lEv3ueRnfvg/LDv45wWDMczM1tt5Xw3olzLABh1xl+IDx7
+         Fg1Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 217.72.192.75 is neither permitted nor denied by best guess record for domain of stefan.wahren@i2se.com) smtp.mailfrom=stefan.wahren@i2se.com
-Return-Path: <stefan.wahren@i2se.com>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [217.72.192.75])
-        by gmr-mx.google.com with ESMTPS id l75si693899itb.4.2017.09.27.11.21.37
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZF0Ol2/Q;
+       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <keerthigd4990@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id k76si1060877pfb.5.2017.09.27.10.39.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 27 Sep 2017 11:21:38 -0700 (PDT)
-Received-SPF: neutral (google.com: 217.72.192.75 is neither permitted nor denied by best guess record for domain of stefan.wahren@i2se.com) client-ip=217.72.192.75;
+        Wed, 27 Sep 2017 10:39:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 217.72.192.75 is neither permitted nor denied by best guess record for domain of stefan.wahren@i2se.com) smtp.mailfrom=stefan.wahren@i2se.com
-Received: from oxbsltgw02.schlund.de ([172.19.249.19]) by
- mrelayeu.kundenserver.de (mreue105 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 0Lz2kC-1dJS6a0Cqe-014F5z; Wed, 27 Sep 2017 20:21:36 +0200
-Date: Wed, 27 Sep 2017 20:21:35 +0200 (CEST)
-From: Stefan Wahren <stefan.wahren@i2se.com>
-To: Keerthi Reddy <keerthigd4990@gmail.com>
-Cc: eric@anholt.net, outreachy-kernel@googlegroups.com
-Message-ID: <806790305.318178.1506536495339@email.1und1.de>
-In-Reply-To: <20170927173948.GA4829@manoharreddy>
-References: <20170927173948.GA4829@manoharreddy>
-Subject: Re: [PATCH] staging: vc04_services: bcm2835-camera: use BIT macro
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZF0Ol2/Q;
+       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x241.google.com with SMTP id i23so7338180pfi.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 27 Sep 2017 10:39:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=c+Xo1zeszC+UMbAuUl89HeDC49b3CH4f0SpVSyrVz4w=;
+        b=ZF0Ol2/Qttdjbv8WUzUICQfLuUk2u70TORD5xN06MT5YolG+vfUKcAXWeCQV/LO1vm
+         GKlMy00ak8EIxZMj6OYmMb+3xGHBlfB2PgnzCVfR2xkqVvDfQgwIpXrZ6OQ58RXrffmT
+         JGqs3MnxB7+dtFWmDz4SrgltGLtjhI7V491o7OHomvyrdTjBbuamW2i8TSBASFItceX1
+         7+Ox1IUQXgKMSDm9Zz5yo6ARo0YhELVHfgwyvLiihDUPQ/d11U18DrkVmsv2k+jZMa8g
+         HV6I8VO2k6Kw/c5d7RgGPHiRGjPjupd72FHL408pvo8FVZMplG5jj/HRwFmvgLU6dcqN
+         I0Xw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=c+Xo1zeszC+UMbAuUl89HeDC49b3CH4f0SpVSyrVz4w=;
+        b=gQQAxOtm2RBZ8LcGuLiX3BziXNWfQaUDZIr7bJ7UZow7xDbSvDwNXR1StWkkEY2OPW
+         0xSthvIe6E5JmkgXyb+2G1Lv4GoY3HeCZQsUkUsGWNGogxeSEFoxSG0AK6tdxYrfEzDy
+         J4a7SG4d3mifIxrZbi3QDSbDujGbEatr3Do4WtzvtMZ1Vzf4v2/XlkGxL6O0vjvOtpTM
+         U0mi+E7XylBJCtEflfBQQKoLr8JqcWGG2cZyHVg8oW+vJ2pLg9S8VQCOGsoExGaWbq9+
+         J0Fb8x9AijzxUbStcFDgqY06IhEqA8tw/gyAPNNHNjGjmwv7Y/Ur6R55+TE7ptLnRmcu
+         NXyQ==
+X-Gm-Message-State: AHPjjUjk53SaX2vcg7HDkNiVG1IfAhiWz6rkkd3jDCE6sCUO2y4Gmlgp
+	bnWWeku0kfrmXvfvaX6jRjCXLVq0
+X-Google-Smtp-Source: AOwi7QAXtzjNRK1H0njr/FNbXpvY1rALxfA5liLU9fW09oLN5f6LhIVNuR6rgptV5lzLKlVPXqBNVA==
+X-Received: by 10.84.239.15 with SMTP id w15mr1844877plk.29.1506533996431;
+        Wed, 27 Sep 2017 10:39:56 -0700 (PDT)
+Return-Path: <keerthigd4990@gmail.com>
+Received: from manoharreddy ([202.53.87.190])
+        by smtp.gmail.com with ESMTPSA id d23sm15702716pfe.115.2017.09.27.10.39.53
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 27 Sep 2017 10:39:55 -0700 (PDT)
+Date: Wed, 27 Sep 2017 23:09:48 +0530
+From: Keerthi Reddy <keerthigd4990@gmail.com>
+To: stefan.wahren@i2se.com, outreachy-kernel@googlegroups.com,
+	eric@anholt.net
+Subject: [PATCH] staging: vc04_services: bcm2835-camera: use BIT macro
+Message-ID: <20170927173948.GA4829@manoharreddy>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Priority: 3
-Importance: Medium
-X-Mailer: Open-Xchange Mailer v7.8.3-Rev33
-X-Originating-Client: open-xchange-appsuite
-X-Provags-ID: V03:K0:eQKcsRYhs3iW7FNKXqL78svEnjDXfLrI0yGRbRNlmA/RItg2VpI
- sBxq2+KjlXXI3O7ky872SVIaCHHg04udyNfiTfho6cqWwEkU8iYPjcD+0SXtf0FajFTKsu6
- fS5HgUizgToVt6EEESVYa19CTeWSoYHpHbjychkgUlNDi28L1KDeu/vJcBVYP/EYfVpT39D
- Sey38eGns3x0KsgI8deug==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:u50BPgsEsek=:ylPKJ+psaqgzIQXUKo4Z2V
- BSvgrZdtvHXX+85SpDTAeJaqr449L2mXC+zz9KcGBaRbQyG809yE3FPMpqtTIPmWobXE67xFw
- kVb07S6crImGr4rd9d3Brsx3Nlyhu0DoFZmZr5NCZyp+4lLfhcUVvFAiZRk4YB6a3srf3v0KZ
- cuFeivcBnkUYA9fMAl5tr723fQ+Aqmt4uwFhVg3Cr/M9xuQsg1HELpBqIQHwu7fzEfLqNaQCx
- CozeXUqmjvu2gGmSuTVSamSSN7AeRgXDE2SYgH40W/LFQKWBFW+yD2J3HuA2jXx+7muNDfN/K
- TvgETzjuZtCnT5jnpUOIonnu0AdxgguVRrplYkWJlOIGG36LdUeuRyRzkZTjCASjn07UyMgM1
- xuP+dKLbFnb67apLNZPNTt5AEEBJ7KPwDSc8EDqccaH0M1TBGSYPt+2BeY9qY+b1tJWIcy4AB
- GownZgW2nUomRSVuGUAvZzewfQ9LpGFFHK1CE2fIqZYdSEp1Jb6ZkY5A0tPYfunxsNgUzDtXj
- qQLewWsPC4mkngYXt/glGR7k6zd1C+WECAXeh+YX+q08YXzVJkykrRGptW1sCbv6FGKn27NlZ
- CSOshuYZIU81WdxTb1FiPyujkIPG+alKWDhbPdVUDK8znjUER4EjdvbIRWWoYyWt2Qrz5oRoD
- QYicOvx5sNC9QAugpozL2X8PfGt2PdDFo5EY2jOSwnImKLfqwyg5EY664PB1VBotHbPt9FMe+
- 5Cb6VCCB9b52c4nrDrtqJJF6O8tadZJksTMjf7qBBEPf1UKGzGmLdu/YfJo=
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Hi Kerrthi,
+As suggested by Stefan, I split this commit from the previous
+patchset. 
 
-> Keerthi Reddy <keerthigd4990@gmail.com> hat am 27. September 2017 um 19:39 geschrieben:
-> 
-> 
-> As suggested by Stefan, I split this commit from the previous
-> patchset. 
-> 
-> This commit changes left shift operator to use BIT macro
-> 
-> Signed-off-by: Keerthi Reddy <keerthigd4990@gmail.com>
-> ---
->  .../vc04_services/bcm2835-camera/mmal-msg.h        | 22 +++++++++++-----------
->  .../vc04_services/bcm2835-camera/mmal-parameters.h |  2 +-
->  2 files changed, 12 insertions(+), 12 deletions(-)
-> 
-> diff --git a/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h b/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h
-> index 1144d9d..5a1b2a7 100644
-> --- a/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h
-> +++ b/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h
-> @@ -217,36 +217,36 @@ struct mmal_msg_port_action_reply {
->  #define MMAL_VC_SHORT_DATA 128
->  
-> ...
->  struct mmal_driver_buffer {
->  	u32 magic;
-> diff --git a/drivers/staging/vc04_services/bcm2835-camera/mmal-parameters.h b/drivers/staging/vc04_services/bcm2835-camera/mmal-parameters.h
-> index e730022..1967fd1 100644
-> --- a/drivers/staging/vc04_services/bcm2835-camera/mmal-parameters.h
-> +++ b/drivers/staging/vc04_services/bcm2835-camera/mmal-parameters.h
-> @@ -24,7 +24,7 @@
->  /** Common parameter ID group, used with many types of component. */
->  #define MMAL_PARAMETER_GROUP_COMMON            (0<<16)
->  /** Camera-specific parameter ID group. */
-> -#define MMAL_PARAMETER_GROUP_CAMERA            (1<<16)
-> +#define MMAL_PARAMETER_GROUP_CAMERA            BIT(16)
+This commit changes left shift operator to use BIT macro
 
-since these defines aren't flags, so please don't use the BIT macro in this particular case. The other ones are okay.
+Signed-off-by: Keerthi Reddy <keerthigd4990@gmail.com>
+---
+ .../vc04_services/bcm2835-camera/mmal-msg.h        | 22 +++++++++++-----------
+ .../vc04_services/bcm2835-camera/mmal-parameters.h |  2 +-
+ 2 files changed, 12 insertions(+), 12 deletions(-)
 
-Best regards
+diff --git a/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h b/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h
+index 1144d9d..5a1b2a7 100644
+--- a/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h
++++ b/drivers/staging/vc04_services/bcm2835-camera/mmal-msg.h
+@@ -217,36 +217,36 @@ struct mmal_msg_port_action_reply {
+ #define MMAL_VC_SHORT_DATA 128
+ 
+ /** Signals that the current payload is the end of the stream of data */
+-#define MMAL_BUFFER_HEADER_FLAG_EOS                    (1<<0)
++#define MMAL_BUFFER_HEADER_FLAG_EOS                    BIT(0)
+ /** Signals that the start of the current payload starts a frame */
+-#define MMAL_BUFFER_HEADER_FLAG_FRAME_START            (1<<1)
++#define MMAL_BUFFER_HEADER_FLAG_FRAME_START            BIT(1)
+ /** Signals that the end of the current payload ends a frame */
+-#define MMAL_BUFFER_HEADER_FLAG_FRAME_END              (1<<2)
++#define MMAL_BUFFER_HEADER_FLAG_FRAME_END              BIT(2)
+ /** Signals that the current payload contains only complete frames (>1) */
+ #define MMAL_BUFFER_HEADER_FLAG_FRAME                  \
+ 	(MMAL_BUFFER_HEADER_FLAG_FRAME_START|MMAL_BUFFER_HEADER_FLAG_FRAME_END)
+ /** Signals that the current payload is a keyframe (i.e. self decodable) */
+-#define MMAL_BUFFER_HEADER_FLAG_KEYFRAME               (1<<3)
++#define MMAL_BUFFER_HEADER_FLAG_KEYFRAME               BIT(3)
+ /** Signals a discontinuity in the stream of data (e.g. after a seek).
+  * Can be used for instance by a decoder to reset its state
+  */
+-#define MMAL_BUFFER_HEADER_FLAG_DISCONTINUITY          (1<<4)
++#define MMAL_BUFFER_HEADER_FLAG_DISCONTINUITY          BIT(4)
+ /** Signals a buffer containing some kind of config data for the component
+  * (e.g. codec config data)
+  */
+-#define MMAL_BUFFER_HEADER_FLAG_CONFIG                 (1<<5)
++#define MMAL_BUFFER_HEADER_FLAG_CONFIG                 BIT(5)
+ /** Signals an encrypted payload */
+-#define MMAL_BUFFER_HEADER_FLAG_ENCRYPTED              (1<<6)
++#define MMAL_BUFFER_HEADER_FLAG_ENCRYPTED              BIT(6)
+ /** Signals a buffer containing side information */
+-#define MMAL_BUFFER_HEADER_FLAG_CODECSIDEINFO          (1<<7)
++#define MMAL_BUFFER_HEADER_FLAG_CODECSIDEINFO          BIT(7)
+ /** Signals a buffer which is the snapshot/postview image from a stills
+  * capture
+  */
+-#define MMAL_BUFFER_HEADER_FLAGS_SNAPSHOT              (1<<8)
++#define MMAL_BUFFER_HEADER_FLAGS_SNAPSHOT              BIT(8)
+ /** Signals a buffer which contains data known to be corrupted */
+-#define MMAL_BUFFER_HEADER_FLAG_CORRUPTED              (1<<9)
++#define MMAL_BUFFER_HEADER_FLAG_CORRUPTED              BIT(9)
+ /** Signals that a buffer failed to be transmitted */
+-#define MMAL_BUFFER_HEADER_FLAG_TRANSMISSION_FAILED    (1<<10)
++#define MMAL_BUFFER_HEADER_FLAG_TRANSMISSION_FAILED    BIT(10)
+ 
+ struct mmal_driver_buffer {
+ 	u32 magic;
+diff --git a/drivers/staging/vc04_services/bcm2835-camera/mmal-parameters.h b/drivers/staging/vc04_services/bcm2835-camera/mmal-parameters.h
+index e730022..1967fd1 100644
+--- a/drivers/staging/vc04_services/bcm2835-camera/mmal-parameters.h
++++ b/drivers/staging/vc04_services/bcm2835-camera/mmal-parameters.h
+@@ -24,7 +24,7 @@
+ /** Common parameter ID group, used with many types of component. */
+ #define MMAL_PARAMETER_GROUP_COMMON            (0<<16)
+ /** Camera-specific parameter ID group. */
+-#define MMAL_PARAMETER_GROUP_CAMERA            (1<<16)
++#define MMAL_PARAMETER_GROUP_CAMERA            BIT(16)
+ /** Video-specific parameter ID group. */
+ #define MMAL_PARAMETER_GROUP_VIDEO             (2<<16)
+ /** Audio-specific parameter ID group. */
+-- 
+2.7.4
 
->  /** Video-specific parameter ID group. */
->  #define MMAL_PARAMETER_GROUP_VIDEO             (2<<16)
->  /** Audio-specific parameter ID group. */
-> -- 
-> 2.7.4
->
 
