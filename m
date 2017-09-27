@@ -1,116 +1,139 @@
-X-GM-THRID: 6465576449843658752
-X-Received: by 10.202.195.130 with SMTP id t124mr12244287oif.28.1505384326903;
-        Thu, 14 Sep 2017 03:18:46 -0700 (PDT)
+X-GM-THRID: 6470196947471826944
+X-Received: by 10.28.150.151 with SMTP id y145mr94976wmd.22.1506501807612;
+        Wed, 27 Sep 2017 01:43:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.68.196 with SMTP id o187ls4964980ita.15.canary-gmail; Thu,
- 14 Sep 2017 03:18:46 -0700 (PDT)
-X-Received: by 10.129.52.79 with SMTP id b76mr13743562ywa.227.1505384326167;
-        Thu, 14 Sep 2017 03:18:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505384326; cv=none;
+Received: by 10.223.141.225 with SMTP id o88ls257584wrb.3.gmail; Wed, 27 Sep
+ 2017 01:43:26 -0700 (PDT)
+X-Received: by 10.223.184.104 with SMTP id u37mr57068wrf.29.1506501806857;
+        Wed, 27 Sep 2017 01:43:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506501806; cv=none;
         d=google.com; s=arc-20160816;
-        b=GSDjg1JoX5+BHfq1yTmsNj33XtDkeaxhc6aPkcB+GUHoGbgFzt9Lr8U01zSSFX5Uao
-         BEt52mEMe0DxVQhmmnvi/NfjKm5AjMY9X0OnQPNT2fSjmETJyuwcf4BzbtLTy7p1ue9w
-         8bLBXfcMXwozFPHQ4T833a0ZZdIZB7RJ+7Fu+GroD5ou5yAUGIHfH48sTBqvvUIFahK2
-         seyB0kOXcgJPvgOnAvYRIhhUsWbFaAbT0zRbOhyxRAv77bckzxdp/HydrflIfMgel23z
-         Kn4iAGxAtctS9LL2Q2YZ+e4av/ddEZXyjHNfq7t1KefrT4PdeNBWEKG0YlJRnKHmnMqd
-         F+2w==
+        b=t5pNWLe44bBypR3/6wk3CqZTW3gCHLhqXWOnelgfmvKtY4YPeUVYe3pydvUxm6zGB5
+         IJDUrqnKVmS9sn9NMH6qRRCS9aR+bcLwyPd5lgZIY6YdWO20UDmLuZqActCF3KD7702g
+         WiJylFsoQK598OqcdtU79jon5N4+GdcjwqTKDOZ2RRwi7JwVQdsiu2QlUoRJJN7cpkfL
+         gBLEF2gtVos5e5ID54Bk12jybxAkkbuckE6pBtc1AUH7N3FtxX+1K/Utpypoaew3MtJ3
+         Ic4NT5durSkuGRwB3bySqRlHKO6k17UGgWQ9iy/yPvWmK84I4z+hAGAH9BlPHh0OhB0y
+         ER1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:sender:dkim-signature
          :arc-authentication-results;
-        bh=sKYwgrUTqgilAoxzCikw+fh3B7RSbtIn3yQDbUBdnVo=;
-        b=wVjfwljqEnujGqFVUg3VHAG2HuVKVgcNE9dC4ILIKXNx0IylMhNYfgtbiin0/BQOFy
-         QwFkfLGqfM5Ihtxc5k4OJXKNCLUYHsWcJhm3BgCB2c01L1k5VK3sD2hfC420BhwTFMlg
-         DVCWtTx1WuTZ/aob4npJxDb68yA0qpGDoOI603AKIZJEoUFreqbDempaTVuiq16v30tn
-         0PD8GvmMftAXJsSwDjPm5lyvqHxKYRWcjsHaAty7ItSJtRX5NVTFx1ukgywuqmNP60Ly
-         ZnEOvqJqIkEjnQ2EUiMK3V16oi/Um00YgrMF/d4hFf9KPZliIXNyfj8tyiHjsE2CuNLw
-         wwAA==
+        bh=df2kk6+/pS5IHobUoAJxRFl5LQdE/lo4KO0R3UQCxXg=;
+        b=AZDGbnJz6ZtZ7ilsv4ZR2GJIXrKuuLZpbF+NwmPLnLOXbMx5re4UPUICsOwhJWLvRi
+         ETWxs8lYWqlzSDgrPyPp6ITmzv2EyCirY8U8hKpGXtm017JgILsECP/Z2Cw9wv0MYR6z
+         ywCpR5aag+qDYOHHarLBgFJAqaB5GQ1XMKgF9TJiR9FN12LoQalCBUjB7R7WbKk92nqT
+         r9GEr4ZoBYdksLnGoLcNfwL+HFhrUpx+DUpZ0xav6CfM4cwAZu8FaloK0L3R1gNIUIe8
+         TJwQIU7dMyc6omu8WRaAvkv6wrObr/3MjKPnrfXZhn2A5aXL1Pl/efL2odWWjzX/dOFw
+         mLgw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aeizmqgS;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <srishtishar@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id e63si613839pfm.12.2017.09.14.03.18.46
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=M3BFnTi2;
+       spf=neutral (google.com: 2a00:1450:400c:c09::241 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
+Return-Path: <daniel@ffwll.ch>
+Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
+        by gmr-mx.google.com with ESMTPS id k18si1074040wmd.1.2017.09.27.01.43.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 14 Sep 2017 03:18:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Wed, 27 Sep 2017 01:43:26 -0700 (PDT)
+Received-SPF: neutral (google.com: 2a00:1450:400c:c09::241 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) client-ip=2a00:1450:400c:c09::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aeizmqgS;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id e69so1314380pfg.4
-        for <outreachy-kernel@googlegroups.com>; Thu, 14 Sep 2017 03:18:46 -0700 (PDT)
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=M3BFnTi2;
+       spf=neutral (google.com: 2a00:1450:400c:c09::241 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
+Received: by mail-wm0-x241.google.com with SMTP id q124so604795wmb.5
+        for <outreachy-kernel@googlegroups.com>; Wed, 27 Sep 2017 01:43:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=sKYwgrUTqgilAoxzCikw+fh3B7RSbtIn3yQDbUBdnVo=;
-        b=aeizmqgS8Qhft7CSevAkhAg1GGTRaxwfiwIlpiBRwUaCl3lW1vnByhX97hfCMW+MA0
-         tiYCxlImHrqMmbTde/W4ghryidKB1qtfOPvAxbtGIU44COJMTa/MtcodoNOuvJNK1qx9
-         jz0hdW3UfLYjK6SveTTaSDBOozTpvwjmkqR8drEZBxoHeBLfPT/WlfcU6V4bJgiKDml7
-         77gymF9YcokduQ8jIpbF5ZLF982abdArz0BDLsY47rT0hGOc7QtQSl6VQBZLXwQ4S1Qd
-         YGeEryOymYuk1nhD4aqNQNMSHRKX/nMj7C6fFOCZ5l45imHS5BndqoNX2fGkHPhBqRR8
-         IXmQ==
+        d=ffwll.ch; s=google;
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=df2kk6+/pS5IHobUoAJxRFl5LQdE/lo4KO0R3UQCxXg=;
+        b=M3BFnTi2ZMppLVnunFuoNKpWsKR91J/KcOukX5eZ0D6i4XQZtadJQtsBHc9xYxJDd8
+         eo8tk+UNa/SQNCIDVP+V7GZZ6Pe3fc3F1gHkSUEj5t/n6HMdRVxXkZi4xMbNLKNTbGru
+         Jiwnhqr1inPmX1jv6quD/WEUkzJTgVflfKQto=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=sKYwgrUTqgilAoxzCikw+fh3B7RSbtIn3yQDbUBdnVo=;
-        b=lS8mnep0cJuUGcsY6k0Bpl1YKrJDrqt5N/zaC1cgHfDTZbSVGqV+GoBdB82HNq9T+t
-         MYLT7VcKPYX/YuuKY1hbjIP5dj7z/BtgdfURB8zOjo/dzXKMgXs3WpluG8ChRaBMtHi+
-         +k6cXRY5ZW/yT/NoswF0De/uI9GW/YO7g2Efo+Ud5PyNcxRKAVtrBYXTcNYKCfpqbeXI
-         UOxQc2FV40CkNdJTUdslq4rb+MePR9S1syKVpHH7BoONMRDZ8HmEnm2eqrMKUMjq554x
-         W7vMeihJFDK30xGTfDD+TS56HYRMWwz0MSC6Pw4oSMnyUZ6mQXNrFbwB11TW+qz1SKmO
-         BL0A==
-X-Gm-Message-State: AHPjjUjYJT/nWSN6kBPOb5pcqA4s/CrMhQwZjel03jRIvVIC+Zt6fS81
-	/c3C0FmPGJBU/A==
-X-Google-Smtp-Source: ADKCNb6DIODN9DNxNDG9IiM6iLPYwwHd0K7N6N+yKyJr+u0/wMQlDsw+1Ij/62+JvelEbdX0Kh9deQ==
-X-Received: by 10.84.238.198 with SMTP id l6mr23400658pln.152.1505384325877;
-        Thu, 14 Sep 2017 03:18:45 -0700 (PDT)
-Return-Path: <srishtishar@gmail.com>
-Received: from srishti-PRODiiGY-945G ([171.49.157.170])
-        by smtp.gmail.com with ESMTPSA id o73sm29874709pfk.96.2017.09.14.03.18.44
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 14 Sep 2017 03:18:45 -0700 (PDT)
-From: Srishti Sharma <srishtishar@gmail.com>
-To: mchehab@kernel.org
-Cc: gregkh@linuxfoundation.org,
-	linux-media@vger.kernel.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Srishti Sharma <srishtishar@gmail.com>
-Subject: [PATCH] Staging: media: atomisp: Use kcalloc instead of kzalloc
-Date: Thu, 14 Sep 2017 15:48:40 +0530
-Message-Id: <1505384320-6093-1-git-send-email-srishtishar@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+         :references:mime-version:content-disposition:in-reply-to:user-agent;
+        bh=df2kk6+/pS5IHobUoAJxRFl5LQdE/lo4KO0R3UQCxXg=;
+        b=DjU3mbot8W5V6KjAHxJRaF9ac6Do4C/YOnBRlTRYJK97iedqiIQZstrrVhyDaG4oQP
+         vQXr4J8xxyac0KNCoG6QPJ44kK/9LqOWbhsyaSQvXF68jEpz4Ebxza+xjXF8qatZGtQX
+         nZmSKH8M2Tb/1aGLhz52wmMJmCTcEz19qPupdqQIkvW2DDv9RZ33TjVS7CSYMnS9ctbR
+         NZPufcUWlrCsb1+Xp27vY1vUUx13zPQPuMR6WTaommQNGeZYmX4SoxHDF8obneyHtXHo
+         kK8J2LOkH6JOJJJDmhR2hU4wXYs3YIeZKXuZ3Hgci6NGvjDzHO9hg120MLr6wzC07ZN3
+         UwZQ==
+X-Gm-Message-State: AHPjjUh7nAIHCQd8YHQ1l1FFDDGsKvRTofQTuGT4biMk152Cwymc1d6a
+	M+AdkqX+LLMj34sXSVCrySdvmA==
+X-Google-Smtp-Source: AOwi7QBfzK2XhVZSYkIseT0j4P5C7BmaNyBQWt6wiE/f617ktx10m97r40Wvoye8zNJNp39eEyqeow==
+X-Received: by 10.80.166.209 with SMTP id f17mr1061300edc.278.1506501806027;
+        Wed, 27 Sep 2017 01:43:26 -0700 (PDT)
+Return-Path: <daniel@ffwll.ch>
+Received: from phenom.ffwll.local ([2a02:168:5635:0:39d2:f87e:2033:9f6])
+        by smtp.gmail.com with ESMTPSA id t5sm6226133edh.32.2017.09.27.01.43.24
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 27 Sep 2017 01:43:25 -0700 (PDT)
+Sender: Daniel Vetter <daniel.vetter@ffwll.ch>
+Date: Wed, 27 Sep 2017 10:43:19 +0200
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Haneen Mohammed <hamohammed.sa@gmail.com>
+Cc: dri-devel@lists.freedesktop.org,
+	Daniel Vetter <daniel.vetter@intel.com>,
+	Jani Nikula <jani.nikula@linux.intel.com>,
+	Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>,
+	Jonathan Corbet <corbet@lwn.net>,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>,
+	gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH] drm/doc: Remove todo item about "This
+ is gross" comment
+Message-ID: <20170927084319.s5ylhmrcyolaszj6@phenom.ffwll.local>
+References: <20170926210835.GA4622@Haneen>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170926210835.GA4622@Haneen>
+X-Operating-System: Linux phenom 4.12.0-1-amd64 
+User-Agent: NeoMutt/20170609 (1.8.3)
 
-Use kcalloc instead of kzalloc to check for an overflow before
-multiplication. Done using the following semantic patch by
-coccinelle.
+On Tue, Sep 26, 2017 at 03:08:35PM -0600, Haneen Mohammed wrote:
+> This patch remove the todo item "Use new IDR deletion interface to
+> clean up drm_gem_handle_delete()" after it has been resolved with
+> the commit "drm: Remove obsolete "This is gross" comment".
+> 
+> Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 
-http://coccinelle.lip6.fr/rules/kzalloc.cocci
+Applied, thanks.
+-Daniel
 
-Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
----
- drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_firmware.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+> ---
+>  Documentation/gpu/todo.rst | 6 ------
+>  1 file changed, 6 deletions(-)
+> 
+> diff --git a/Documentation/gpu/todo.rst b/Documentation/gpu/todo.rst
+> index 22af55d..5e96dc7 100644
+> --- a/Documentation/gpu/todo.rst
+> +++ b/Documentation/gpu/todo.rst
+> @@ -180,12 +180,6 @@ Contact: Daniel Vetter, respective driver maintainers
+>  Core refactorings
+>  =================
+>  
+> -Use new IDR deletion interface to clean up drm_gem_handle_delete()
+> -------------------------------------------------------------------
+> -
+> -See the "This is gross" comment -- apparently the IDR system now can return an
+> -error code instead of oopsing.
+> -
+>  Clean up the DRM header mess
+>  ----------------------------
+>  
+> -- 
+> 2.7.4
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170926210835.GA4622%40Haneen.
+> For more options, visit https://groups.google.com/d/optout.
 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_firmware.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_firmware.c
-index 6358216..2f4b71a 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_firmware.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_firmware.c
-@@ -235,7 +235,9 @@ sh_css_load_firmware(const char *fw_data,
- 		sh_css_blob_info = NULL;
- 	}
- 
--	fw_minibuffer = kzalloc(sh_css_num_binaries * sizeof(struct fw_param), GFP_KERNEL);
-+	fw_minibuffer = kcalloc(sh_css_num_binaries, sizeof(struct fw_param),
-+				GFP_KERNEL);
-+
- 	if (fw_minibuffer == NULL)
- 		return IA_CSS_ERR_CANNOT_ALLOCATE_MEMORY;
- 
 -- 
-2.7.4
-
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
 
