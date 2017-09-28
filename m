@@ -1,111 +1,154 @@
-X-GM-THRID: 6339007795957858304
-X-Received: by 10.129.89.84 with SMTP id n81mr6660848ywb.23.1475915265182;
-        Sat, 08 Oct 2016 01:27:45 -0700 (PDT)
+X-GM-THRID: 6468311343549120512
+X-Received: by 10.28.157.82 with SMTP id g79mr179793wme.20.1506606105596;
+        Thu, 28 Sep 2017 06:41:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.47.23 with SMTP id j23ls2416059ioo.15.gmail; Sat, 08 Oct
- 2016 01:27:44 -0700 (PDT)
-X-Received: by 10.66.167.198 with SMTP id zq6mr4826797pab.96.1475915264791;
-        Sat, 08 Oct 2016 01:27:44 -0700 (PDT)
-Return-Path: <juliana.orod@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id d11si2703093pfl.2.2016.10.08.01.27.44
+Received: by 10.28.142.199 with SMTP id q190ls92722wmd.4.canary-gmail; Thu, 28
+ Sep 2017 06:41:44 -0700 (PDT)
+X-Received: by 10.223.157.134 with SMTP id p6mr526544wre.14.1506606104836;
+        Thu, 28 Sep 2017 06:41:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506606104; cv=none;
+        d=google.com; s=arc-20160816;
+        b=gGrBcOMoPoJk0afbIW0ukPFuokbasL/QtLlhLpe4xjQdF7zxFQLsjJjmrgIgpGojZQ
+         KM/6PLHfW3/cQcNuOwfSiCh2tkXlBo8wqJ6wv/PKecQ7kli3T4UC4Ly4l4NClB76EU1F
+         T7FalgZ/fH4Hu0M4p/kVYFR6sDh8ToLiha4EmIxwF1x17mA480yt690jQJMXPfMwm7j5
+         pvGSeUhYPEwayoVjyrX+MymqKwJRe3dYdBky7FQAeEIeGUg+yS9vKHV8jk7FKeeyMETM
+         ZBt6i4H/1wWC+8Ywz1bvBfKJsR17sfjomdZYIvwpkuVY8tdvCi/9qxwsmUq5gTnYjSf6
+         8E1Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature:arc-authentication-results;
+        bh=DTNkAJkCnZ/sySkdI+1bJdmHOVgweCZO6COEWeHMH2Y=;
+        b=j0wg4SNzmFNvGIiNraFID/kPvXALpQj4ZLpiuGWFr6LNx2HH2ZbzeZ2aW/rAqyq8wY
+         Ov2Hj3oJbqEKpQJ919K6E9os7WFFvaIcNDnIo37Pw2rPK23goEdu6uB2h1ln5BnIth5J
+         7hzbXV5s+H/qJrubSVPHzm7veHQ7TsmCRbHTRM/JJZvj11BTV9ynSwgcQzDq0vKKqMIN
+         ePWsPEVOU36uRD0WpBm5ZrGo/eBevTrOxH9Mw4MvK2IwNb/NOkA9pk2CcvqBecQbACdk
+         pa9QVxF2cjJv9sPSHEMcY2dCNgO2imwXowsgNtc6N3Ew+wzj2FKYujxxR67QJQxG5eeI
+         Tt3g==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GDXSbADo;
+       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::22d as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from mail-wm0-x22d.google.com (mail-wm0-x22d.google.com. [2a00:1450:400c:c09::22d])
+        by gmr-mx.google.com with ESMTPS id l133si121437wmb.3.2017.09.28.06.41.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 08 Oct 2016 01:27:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Thu, 28 Sep 2017 06:41:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::22d as permitted sender) client-ip=2a00:1450:400c:c09::22d;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id 128so2519508pfz.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 08 Oct 2016 01:27:44 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GDXSbADo;
+       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::22d as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x22d.google.com with SMTP id m127so1866021wmm.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 28 Sep 2017 06:41:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=C+ItuVO+f7eLDRoDEyLvroSuDmMqmm4CtvwoE5R36Xo=;
-        b=IKlKRR53GgmlTGmGzYGMmz7nHGk88fqFI8H6/wTsM1AaQnyq24KDu1+BoWGw607OUo
-         baklw2e4/XHuWohB1qbrr9HMtKLJYGqFqeetQT6rerZxUOIuBQ/qklXnOyOOJQMMfESi
-         ASbb+bSw63W29PqkGCA5dSt4GD4Czq1Q6TKAnDXutY6GN8ejqEkAi1kgEbgvk0s5uD0R
-         NnrR3V5kpKLnPfy6lm37x9BYICYCeFD3JjUnFp+cy/NglFJb3Hn92SH4g9VJtxhn8Z/c
-         eJw73DChVT39u/XdsKu3/8vQ1bhHxyNjPDbNiCZkTqgWGzleJPNMtf8ntIVP1ClkgUsG
-         GQOg==
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=DTNkAJkCnZ/sySkdI+1bJdmHOVgweCZO6COEWeHMH2Y=;
+        b=GDXSbADojaYZJJxPS3GP44Koivr5UFTBpyPtJFKQU+06P16kTJmy/hWeKoOHzKIlFs
+         1tyRcpua0SpBAAvgopdTrodgnpTJ6wA5NFnL8fj0YXe8ampb5hS7aJogi6yJVQMFsolD
+         nM6U3pdKyI0SZknB5G7yQEWr4E1Y7mdDGK+HOKQdt7QwvQLMOpsu8kpYhqejYYyJ2Au1
+         4GHvcerRXXU0KMqL6iJJww+BJQtyeuf+clNF072MUJ0ChdsvjU/c8OI2vGmWPq9MkWm8
+         KcMtgE9hQ3P8/8K/Q+WZ1OwDYLQBnytsaF9PNZHHeO4/TEC6c2i8yrXh6BIOl6O5FPTk
+         JeAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=C+ItuVO+f7eLDRoDEyLvroSuDmMqmm4CtvwoE5R36Xo=;
-        b=cC1Xyrgk9ixq8DKSwuNuM0Rm046P+2yABu4EibFd3nB3TZYrQQo/geR+Q8MZLK93cn
-         AyuXMF5ISbHX4nKOI+SbVI1am+bqpg6tF/eEagn+Je8zhkzvMBG4p6SNvD6+PgX/SZqO
-         UQXbBzH6v0rowsabmRu7fd5IEIq643XAa1JCeJPsRE7hTSml+PlLA8k2fkAdOQujQgev
-         pryFPCxtmpGEVg8/9fOR2BPygWJOViH3KFtcnAieSpZfazllK7qyzqOafJUzwziTvnIm
-         SCjL0UHsp7pxS/otpO6M706RHaqnGrWBQcvOB2fq3LtP9W5WIsLR3pcepCaEDAT9sSRn
-         AmYA==
-X-Gm-Message-State: AA6/9RkLF/Agaa3RQBZ3/M755PcqrUiZYHKrztVSRZn19soFhP2qHfkE+8fWFA0/zw8kxw==
-X-Received: by 10.98.3.67 with SMTP id 64mr34787040pfd.14.1475915264611;
-        Sat, 08 Oct 2016 01:27:44 -0700 (PDT)
-Return-Path: <juliana.orod@gmail.com>
-Received: from spock ([177.68.230.98])
-        by smtp.gmail.com with ESMTPSA id p7sm36442760paa.3.2016.10.08.01.27.43
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=DTNkAJkCnZ/sySkdI+1bJdmHOVgweCZO6COEWeHMH2Y=;
+        b=VWF7d+8nSsVMpruSPljcT3efEsMlH7GST7HqwyPBzYwsxzjNPQV9l+8u4Ed1KrHZxJ
+         5Vd3n+NFoTFVHgIcBQv/NZAmF764GqZa2w8nXSp8G9JoaQbSqmh6Hu2ZB8jwlLp2VEKV
+         toedlorMqdmPy1Hmo+iaXQL0DyJAz/2rdpi4gsT86PxJkioXoPVZwgnaFAig9r9NTkNv
+         78Dmk+z6cKJuR2PpjRX3jXMoyHuSrQMlcVdRFYRnLOSZmMtmR+OT+C8cNNE9i8IGGgqa
+         6wU1xGu4OO+uDALQiiNq/5uIQTTHsGANoTLu/hjBNehFZbXL+n87Z+ImLV54letsZrOR
+         XQOA==
+X-Gm-Message-State: AHPjjUi+i0Wg55dEZSmz4CW37nPTL/AhqNi7gupaXvYWyGJVcmlv2Bhj
+	a4TiBftQj5yqPrRXf6rQ0tI9mw==
+X-Google-Smtp-Source: AOwi7QBzgDLNt3fdoEeMvnF61MdT01W65KiVwClB2WiMvJAt5caPkMurjXmMEZo5JORwsSO7mWksPg==
+X-Received: by 10.28.195.132 with SMTP id t126mr1174331wmf.0.1506606104479;
+        Thu, 28 Sep 2017 06:41:44 -0700 (PDT)
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from ubuntu (fw-ext-11.romania.luxoft.com. [195.90.110.113])
+        by smtp.gmail.com with ESMTPSA id y13sm260212wrc.81.2017.09.28.06.41.43
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 08 Oct 2016 01:27:44 -0700 (PDT)
-Date: Sat, 8 Oct 2016 05:27:41 -0300
-From: Juliana Rodrigues <juliana.orod@gmail.com>
-To: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
-Subject: [PATCH 11/13] staging: wlan-ng: renames CQ_currBSS to avoid camelcase
-Message-ID: <20161008082741.GA9504@spock>
-References: <cover.1475912465.git.juliana.orod@gmail.com>
+        Thu, 28 Sep 2017 06:41:43 -0700 (PDT)
+Date: Thu, 28 Sep 2017 06:41:42 -0700
+From: Mihaela Muraru <mihaela.muraru21@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Eric Anholt <eric@anholt.net>, Stefan Wahren <stefan.wahren@i2se.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH v3] staging: vc04_services: Remove typedef struct
+Message-ID: <20170928134142.GA5180@ubuntu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1475912465.git.juliana.orod@gmail.com>
-User-Agent: Mutt/1.7.0 (2016-08-17)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Renames the camelcased variable CQ_currBSS to cq_curr_bss in order
-to fix a checkpatch warning.
+This patch removes typedef from struct and renames it from "typedef
+struct vchiq_2835_state_struct" to "struct vchiq_2835_state" as per
+kernel coding standards.
 
-Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
+Issue found by checkpatch.pl
+
+Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
+
 ---
- drivers/staging/wlan-ng/hfa384x.h   | 2 +-
- drivers/staging/wlan-ng/prism2sta.c | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+Change in v3:
+	- add the right modified file in patch.
+---
+ .../vc04_services/interface/vchiq_arm/vchiq_2835_arm.c   | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/staging/wlan-ng/hfa384x.h b/drivers/staging/wlan-ng/hfa384x.h
-index 19d1c06..6acdbce 100644
---- a/drivers/staging/wlan-ng/hfa384x.h
-+++ b/drivers/staging/wlan-ng/hfa384x.h
-@@ -455,7 +455,7 @@ struct hfa384x_downloadbuffer {
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
+index 0159ca4..14bcd6f 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
+@@ -59,10 +59,10 @@
+ #define BELL0	0x00
+ #define BELL2	0x08
  
- /*-- Information Record: commsquality --*/
- struct hfa384x_commsquality {
--	u16 CQ_currBSS;
-+	u16 cq_curr_bss;
- 	u16 ASL_currBSS;
- 	u16 ANL_currFC;
- } __packed;
-diff --git a/drivers/staging/wlan-ng/prism2sta.c b/drivers/staging/wlan-ng/prism2sta.c
-index bb75a92..12fac7b 100644
---- a/drivers/staging/wlan-ng/prism2sta.c
-+++ b/drivers/staging/wlan-ng/prism2sta.c
-@@ -372,7 +372,7 @@ static int prism2sta_mlmerequest(struct wlandevice *wlandev,
- 			qualmsg->noise.status =
- 			    P80211ENUM_msgitem_status_data_ok;
+-typedef struct vchiq_2835_state_struct {
++struct vchiq_2835_state {
+ 	int inited;
+ 	VCHIQ_ARM_STATE_T arm_state;
+-} VCHIQ_2835_ARM_STATE_T;
++};
  
--			qualmsg->link.data = le16_to_cpu(hw->qual.CQ_currBSS);
-+			qualmsg->link.data = le16_to_cpu(hw->qual.cq_curr_bss);
- 			qualmsg->level.data = le16_to_cpu(hw->qual.ASL_currBSS);
- 			qualmsg->noise.data = le16_to_cpu(hw->qual.ANL_currFC);
- 			qualmsg->txrate.data = hw->txrate;
-@@ -1947,7 +1947,7 @@ void prism2sta_commsqual_defer(struct work_struct *data)
- 		}
+ struct vchiq_pagelist_info {
+ 	PAGELIST_T *pagelist;
+@@ -207,12 +207,12 @@ vchiq_platform_init_state(VCHIQ_STATE_T *state)
+ {
+ 	VCHIQ_STATUS_T status = VCHIQ_SUCCESS;
  
- 		pr_debug("commsqual %d %d %d\n",
--			 le16_to_cpu(hw->qual.CQ_currBSS),
-+			 le16_to_cpu(hw->qual.cq_curr_bss),
- 			 le16_to_cpu(hw->qual.ASL_currBSS),
- 			 le16_to_cpu(hw->qual.ANL_currFC));
+-	state->platform_state = kzalloc(sizeof(VCHIQ_2835_ARM_STATE_T), GFP_KERNEL);
+-	((VCHIQ_2835_ARM_STATE_T *)state->platform_state)->inited = 1;
+-	status = vchiq_arm_init_state(state, &((VCHIQ_2835_ARM_STATE_T *)state->platform_state)->arm_state);
++	state->platform_state = kzalloc(sizeof(struct vchiq_2835_state), GFP_KERNEL);
++	((struct vchiq_2835_state *)state->platform_state)->inited = 1;
++	status = vchiq_arm_init_state(state, &((struct vchiq_2835_state *)state->platform_state)->arm_state);
+ 	if (status != VCHIQ_SUCCESS)
+ 	{
+-		((VCHIQ_2835_ARM_STATE_T *)state->platform_state)->inited = 0;
++		((struct vchiq_2835_state *)state->platform_state)->inited = 0;
  	}
+ 	return status;
+ }
+@@ -220,11 +220,11 @@ vchiq_platform_init_state(VCHIQ_STATE_T *state)
+ VCHIQ_ARM_STATE_T*
+ vchiq_platform_get_arm_state(VCHIQ_STATE_T *state)
+ {
+-	if (!((VCHIQ_2835_ARM_STATE_T *)state->platform_state)->inited)
++	if (!((struct vchiq_2835_state *)state->platform_state)->inited)
+ 	{
+ 		BUG();
+ 	}
+-	return &((VCHIQ_2835_ARM_STATE_T *)state->platform_state)->arm_state;
++	return &((struct vchiq_2835_state *)state->platform_state)->arm_state;
+ }
+ 
+ void
 -- 
-2.10.0
+2.7.4
 
 
