@@ -1,88 +1,85 @@
 X-GM-THRID: 6470525432105009152
-X-Received: by 10.99.171.4 with SMTP id p4mr900507pgf.117.1507591142377;
-        Mon, 09 Oct 2017 16:19:02 -0700 (PDT)
+X-Received: by 10.98.158.139 with SMTP id f11mr359422pfk.3.1506560635359;
+        Wed, 27 Sep 2017 18:03:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.98.93.142 with SMTP id n14ls1681937pfj.9.gmail; Mon, 09 Oct
- 2017 16:19:01 -0700 (PDT)
-X-Received: by 10.99.67.131 with SMTP id q125mr552383pga.2.1507591141385;
-        Mon, 09 Oct 2017 16:19:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507591141; cv=none;
+Received: by 10.159.247.202 with SMTP id v10ls852325plz.1.gmail; Wed, 27 Sep
+ 2017 18:03:54 -0700 (PDT)
+X-Received: by 10.99.108.72 with SMTP id h69mr518989pgc.31.1506560634262;
+        Wed, 27 Sep 2017 18:03:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506560634; cv=none;
         d=google.com; s=arc-20160816;
-        b=ryrEMTdCLT5eZ2YPDRtxqOMzOboxX9kqiOIlV7QvHrZb88LsrCs8AwTM5FDdn4Oopp
-         aey9PsFRFMr3A1RRs1QpDVmOuGSQSQRMsukesPfCCmdDBpXiu0mXycDwCCl8KzNyliEr
-         MBwdeTDhVKVNUuISMPyTypfetyFdQsLRNuOqfXz7GwhqTExBp5JrXR3AI3RNotKE7SWV
-         2fNnW6/8eNMb9/zc5Mpvg1+PsdaPdqowRosgq/jDyMgy/0DxPBvb+hTjIRrV1L3ZkmYT
-         svkq6UauiP0zKBEEWiT3t3seCr9QmWfVE5xrj49grQDGZsqown0lgsX+Yq1mxhbQTJpo
-         JxOQ==
+        b=Rf/2xgzDuBmxS06e22pI6OwhE6JCQyMnfY7DeryEcbGJP5A09A0WBWeDs/bSIA97xM
+         gcp/EBBlsHa6YqXQUQW5KZrrFr+zjNKzLrNknAuttYgt8le0GwSDT+RKWPBtaetHTN0n
+         yf7NAk3sATskL5dN2A+WJeg3VTVqTFN7zSHK/5+cUO6T42b72WrblU5lxfm1pS/GsBvi
+         LhDb6Y0qN5W4Pp4gXDnmqyyqD+De0GvK2rga+jcw6ECvcHrJ1mmbEMMBh81yOcdE4f6Z
+         LFANPQbDKckrUvHHDmlSp4j2DAegzg8G3H2LkurymmIRSk/379zs8tNAglHU+UniiDs+
+         gTsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature
          :arc-authentication-results;
-        bh=qvWvfyG7Q7rfTQPRmzaMmm6GvMKM7viIlxziYEv9I6Y=;
-        b=IshNs/xesrqjqgiJ8XxGNdaNd26XkEBFsorj3/XkrqNcRCCnIQYrU0F6SzZ7xbcpu4
-         NRDDOJ7oGbYqoOTfHcemMOZ9NVXi7Ry1EQflMoDD7VakzieO+qKyMVfmbqTBl9H7/g9U
-         H97GM1om30rjSQB1lQbNNpmaqaYsSaXVczBuQd/KogvcidaHiWud98NVx3gSH/QpgZZT
-         dLYX2vJ8v+wZcQXkg9KZzeIL09+W0hpFzJL2HsCFR6SqgjzhPBSdBvXaVNN/zQOJqOzz
-         smhF6M2TELMDIL+IDMq13Gh5uOiqyGvKXaWVjMwzSo2hhZyy94zJ/i2UwNtsyv8nUX5v
-         bw4A==
+        bh=IjchZRkSiITKYVBupqUeCoahLt8o+hKihnBg4gGVt6A=;
+        b=A9rjXrWfONvmDvfOs8tGdn5fsSPkGtjGDNcTX7j2XUIkGecR9PnJynXd0SXZnseN2/
+         +jK4aALHEp8HrOPwUgrp9OcYRfuLccn/py+Eskl/48kEM7AecpnbHl5hkcRQcGDGdvgO
+         h7s32vfpVzHO1yuqqPHBPGFRdJGw55rSmHRetEDOv4/OFLaVny/zzUHiAP1p+NiQDCd7
+         d1uXa9amjxWTUoaT2ne+/+d+oBM4oHwXqZG+7G7WrsWqVzIVACQ5ZqYcLM7oQuH22Nj5
+         VFudsDSeKwhTvGXgh/cpFsby2eDxkKUnw5+QCdK/JkwEsDOmfOZEZhHB0wqSNXLLSJka
+         TYLQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=m17yIYH6;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XWY170f1;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id e80si1083960pfb.8.2017.10.09.16.19.01
+Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
+        by gmr-mx.google.com with ESMTPS id v9si28267pfj.24.2017.09.27.18.03.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 Oct 2017 16:19:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Wed, 27 Sep 2017 18:03:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=m17yIYH6;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XWY170f1;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id m28so30924266pfi.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 09 Oct 2017 16:19:01 -0700 (PDT)
+Received: by mail-pg0-x241.google.com with SMTP id d8so21634pgt.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 27 Sep 2017 18:03:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=qvWvfyG7Q7rfTQPRmzaMmm6GvMKM7viIlxziYEv9I6Y=;
-        b=m17yIYH6HFEtnKQjuvlylVf8uApQof8XYIFcy/t5z7PQnpdZlp0aJHxjHBTkMgrCn3
-         oGctg4k3ztGj8ZGOCTwJC0/yJWHnV+yo6bBtIcpaFetazT939oawSex6MwmyrH6Tgcx5
-         gN3gBJUls3tzEX2aRhVA86lJ7mfw8CIc8v08yudGSOX/oCms19RQNIrOy/t1pTGbK6mK
-         15z3yC5QGQnjku0wiAd0Wn2UXASz7YKy2g1rmdye5WImj8upxr6rbwJesnsjfRaP+OMS
-         aK2oIq4KnDwNxPMbqtoCf0CCythtE/d+uqyrnxXvLYnOsIbcVq+EqAFcDFYPfI3p16C5
-         IWVw==
+        bh=IjchZRkSiITKYVBupqUeCoahLt8o+hKihnBg4gGVt6A=;
+        b=XWY170f1A/kqEJihF/pMPHuvXwaphnrTBmsWJS32mzyYMcay+iUqein9enLhWoM5Ki
+         biU2S4tTJe8kzV7LLLAeKwlp98EPl1zAOilr7AJxb8IZPKI3+ZNOH9o99SvKC5zhzdjj
+         dkXjr/Qkd6cTPAqS6rLW9IONXTbWzjcBtHMkyQbn6S4sErFPQKD/qHQgs97Zhsm0PUe/
+         KhACowmM0xbPje0ZvSWhwoLTX4X63aCKxGuEY7K5ikd7PyDAGS/g2919CAkyvKJcEZ7Z
+         Arb7/4lKdNnNqaqkkjBcKzRYJEKbnZlf/nL8RQr36yx+zI3kFO+7FIaVFpqeILkeISF0
+         j7dA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=qvWvfyG7Q7rfTQPRmzaMmm6GvMKM7viIlxziYEv9I6Y=;
-        b=LKdWSWlOtrzVyt8cRHJxFhfT97VL9TUQ9r/nNqJWW0JUulnyQLWqzX4UC6jbxbZ7ih
-         0bSYV5m74hRPHnFnrcuviy0R2NasGJ53cwe4gyD9UqD7u7vZbrVQuuAjdiWScY9x+8LQ
-         xwndBcWWn3KdQA93rXLzkuTBe0SCKKnbbPq3P9WbNlNZIN25vjQzrN445gwaUJRNTRTH
-         C3Qtst/aSOOEKhVYYFxSQpEe4Ha17e3Cs1WqHYeTzzFdilVjM7C8sof55xP5ywXvv60I
-         LCHkgDeBV3I9eaaY2qTDDud6hTVKgA1q/0GWuQRcn4R2Xl3f7AVwBfev+vt7zJfE7o8B
-         Y7jw==
-X-Gm-Message-State: AMCzsaWDVqgO4Gh4JNeytjSCNXeodVGMEcLyexKg7U2LbRz/aKAWAkjJ
-	Uk4B7ossY07RUHweoaw7p95TkXFP
-X-Google-Smtp-Source: AOwi7QDUHA/QbuW8KbVEDH9/5xh/G83I3AXsdmChXERCNOyzS2Zk+2uteFx3Tfy4FHiWliT0iXmfXw==
-X-Received: by 10.99.113.72 with SMTP id b8mr10643452pgn.422.1507591141082;
-        Mon, 09 Oct 2017 16:19:01 -0700 (PDT)
+        bh=IjchZRkSiITKYVBupqUeCoahLt8o+hKihnBg4gGVt6A=;
+        b=OeUdAPkU2w5HbK27A6q+zBiKtlndkhvAx+ksBmQU8hVacetQkH0ereU5jA+28ZOGwM
+         m6CcxLjNZnXpXhNr5RKOK7IiuqQJ9HrIdYT6+kd6K4lencDj81F5gBVJ0gYRn75OgXfp
+         Plv5IS3ck4ivekAr/rYASgPxqKwmsmTqc876QjJljzAqOD791rlmhyTM3DrEpSwMKJW6
+         ZNiUeUgjCm3BAvreWCvWdqNMBliTGNdzfm3HL/t8Yecuan+wvU4ZGvhVkHf5bRPVg4LR
+         nOdQnWebPDLvBGl5gyseigxmtWDMOj+W8c0kWte6/OJT9DVmyZVNXQv5Gskk3+7TwH0v
+         KJBQ==
+X-Gm-Message-State: AHPjjUh/yjGjxglIJjV7Eh7qMuCvveE6y8lGyxR4fGcMj7WLrXjtMA81
+	i3OxCiwR02gtO18TCM/UF60=
+X-Google-Smtp-Source: AOwi7QDEYbBPyQbcvWfxCCWDJdh8OjQNZSkPYMCeUGOGU8SZ8Vsf9QBkT8b1lq5Cc1e+9xNwo8nkSA==
+X-Received: by 10.99.127.27 with SMTP id a27mr2791816pgd.269.1506560633918;
+        Wed, 27 Sep 2017 18:03:53 -0700 (PDT)
 Return-Path: <hamohammed.sa@gmail.com>
 Received: from Haneen ([64.77.242.50])
-        by smtp.gmail.com with ESMTPSA id d27sm18322977pfb.121.2017.10.09.16.18.59
+        by smtp.gmail.com with ESMTPSA id 76sm257061pfp.158.2017.09.27.18.03.52
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 Oct 2017 16:19:00 -0700 (PDT)
-Date: Mon, 9 Oct 2017 17:18:57 -0600
+        Wed, 27 Sep 2017 18:03:53 -0700 (PDT)
+Date: Wed, 27 Sep 2017 19:03:50 -0600
 From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: Sean Paul <seanpaul@chromium.org>
-Cc: dri-devel@lists.freedesktop.org, Mark Yao <mark.yao@rock-chips.com>,
-	David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>,
-	outreachy-kernel <outreachy-kernel@googlegroups.com>,
-	gregkh@linuxfoundation.org, Daniel Vetter <daniel.vetter@ffwll.ch>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
 Subject: Re: [PATCH] drm/rockchip: Rely on the default best_encoder() behavior
-Message-ID: <20171009231857.GA19241@Haneen>
+Message-ID: <20170928010350.GA8504@Haneen>
 References: <20170927182317.GA8249@Haneen>
  <20170927200621.txav576zblby3i2z@art_vandelay>
 MIME-Version: 1.0
@@ -108,19 +105,10 @@ On Wed, Sep 27, 2017 at 04:06:21PM -0400, Sean Paul wrote:
 > 
 > 
 
-I have found three instances, the one in bridge/synopsys/sw-hdmi.c I
-checked and the log msg of commit c2a441fe8f7 mentioned that an explicit
-assginment to the best_encoder is needed because the bridge is compatible
-with both atomic and non-atomic devices.
+sure, I will check them out.
 
-I suspect this is the same case for vmwgfx/vmwgfx_/ldu/scrn/stdu.c from
-checking commit d947d1b71.
-
-Lastly, there is an instance in tinydrm/core/tinydrm-pipe.c but I am not
-sure how to verify if the driver supports atomic and non-atomic devices
-as well, hence justify deleting it. 
-
-- Haneen
+Thank you,
+Haneen
 
 > > ---
 > >  drivers/gpu/drm/rockchip/cdn-dp-core.c | 9 ---------
