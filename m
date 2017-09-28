@@ -1,102 +1,128 @@
-X-GM-THRID: 6800771854723186688
-X-Received: by 2002:a05:620a:22b0:: with SMTP id p16mr8515631qkh.468.1583428088437;
-        Thu, 05 Mar 2020 09:08:08 -0800 (PST)
+X-GM-THRID: 6470843799541121024
+X-Received: by 10.99.112.72 with SMTP id a8mr673621pgn.41.1506610726747;
+        Thu, 28 Sep 2017 07:58:46 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac8:5057:: with SMTP id h23ls1180780qtm.8.gmail; Thu, 05 Mar
- 2020 09:08:05 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vtZRl+KT2aYRlzxd3T7vTNGfRq1HQX7TV1Sk3cPMhTHW8RCC2Og9GddorpyAsyM39sOCpM3
-X-Received: by 2002:aed:38ea:: with SMTP id k97mr8171848qte.327.1583428085187;
-        Thu, 05 Mar 2020 09:08:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583428085; cv=none;
+Received: by 10.99.122.76 with SMTP id j12ls1206380pgn.22.gmail; Thu, 28 Sep
+ 2017 07:58:45 -0700 (PDT)
+X-Received: by 10.99.8.70 with SMTP id 67mr652014pgi.126.1506610725624;
+        Thu, 28 Sep 2017 07:58:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506610725; cv=none;
         d=google.com; s=arc-20160816;
-        b=YphkH3A/u7vgFcpWKhuTVVejcVggvHHQBrekuPtSyuBV9JPuBjp+PP82WruFVhRSi3
-         WaGBFHzCr3n9VorHOAjLRCWU6ULTtqE3+rMh1w5ALCnKOENhvakZ1LmMMOB+CHFVezu0
-         y4Lhe2zFcDGCPy4DBwMnYpCL6/s0W7erC1ALEzowr+8t0w1Es74QHKxnpIUc0fa/ViFM
-         CxjFRhVqQFehi+H3e5+wAB8EF3t83LkTbU2cU9NRY5AFtPiO8BJ2jZtUD4JgZjEsbkyj
-         QVurKgXj/5tV4Iv5+qxjQ4wOLDMUxnYtLyKE1JpNtcCBHPWmLD6ZOo9nLiudl/dNVdb3
-         OAaw==
+        b=hEMPmyttI9QwR5ndBRxirT9bd2SPY5Tae5S20al1/K58S2TQFYQabGGp6KOpK8k/qo
+         x4AHMXUZtRLQJDFWgpWzyzE+m91vdzUDFqWNE1g5Z37o7GHzJ2dX9ExGaPh2KbiAWO7P
+         p0ncnPpXYVCkS0gCj75BQdP86t5fPKXyx0nvaDOPuU6vHR++I4y93rCQyHAGdwMaJsmL
+         bLVV8OHbzU0q3WvSLMNqEnxYayb380sEveXA9bey3Wr0+lAC/xXf3bEMZJz1yMy5cepP
+         /qyWXsk4HbayrA7+JPzPXYFLfyo5KpTJCZ0H1xSsm8OJj+PhgO/niKHr2/1Jjgaic7aj
+         j+tQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=R5kxT8H9rNI5+mK4wBGYwna0Yy+ZnAY2DEj3bgOg2SI=;
-        b=YgCUAaOiINQaPZO55JFXjk0awa7G394MNWxuJTdt4YYHTFjhgpR6m75aJ4P6X1M6Ad
-         5UgEgGao8Jj59P6/KKpi+dpwFHz4FH3SSH8zY+sMx0qC7KA1n0iEznwoNvZlV4hqORHR
-         IbvylRdgIYZRYTS1uP5fgNXBDyP/QrTEf8Shy2tvZ8Y8Aw3+Oo1JxIpGVTLbvEADKK+c
-         UtRFNDx0fbbK1g5UcZT8+2d0VMvW4eRDkjyn8uJubLrpvL3xK1jWgrkbUAvHMpl2StCI
-         qL+wnkuOqGCioUMVjFAo298rV6VI9L34NqzSgneWmkYOb3AuKLKQFITm1gSrWUoqpg0I
-         woJQ==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature:arc-authentication-results;
+        bh=IALOfmn/23IxqoIeOlV8aCOUlOF4eFVPtkteXB9sukM=;
+        b=NUXNxYi4Z+eAtK6WfjeaSJC7Sblcxxb17QvNJzrublO4nHwy44qJpAQmCBs/c+zT1p
+         6t0Blezvx7zy55pKmratMUqAANiXD6wEdosZsc83zbmdZCmqQx2WtaOfHwXP4dBY2A+Y
+         ZxLCCaki5T3dGh9AwdbDv8eV57WCNAOroPkE8z96I8vpbqudL+1iVE0lAlDPCAWiTBLN
+         mJThFFassKeomyXZ3fLEYuf5yKTi+WwCkbDgGKhM1Xe3zKl1Igt7WyxpJuBkBwOiiyMu
+         B4VwSQcHhEigqPe0Q9Ddpj+EmyliWORBB+bkwa9R1syFE6YBYP/V5wr4eCDcKe2I7wuo
+         CMxQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="H0kKoxI/";
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::d2c as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-io1-xd2c.google.com (mail-io1-xd2c.google.com. [2607:f8b0:4864:20::d2c])
-        by gmr-mx.google.com with ESMTPS id g42si310157qtk.3.2020.03.05.09.08.05
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dugLryNg;
+       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <keerthigd4990@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id l10si226772pfc.17.2017.09.28.07.58.45
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 05 Mar 2020 09:08:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::d2c as permitted sender) client-ip=2607:f8b0:4864:20::d2c;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 28 Sep 2017 07:58:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="H0kKoxI/";
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::d2c as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-io1-xd2c.google.com with SMTP id m25so7262022ioo.8
-        for <outreachy-kernel@googlegroups.com>; Thu, 05 Mar 2020 09:08:05 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dugLryNg;
+       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x241.google.com with SMTP id a7so1703514pfj.5
+        for <outreachy-kernel@googlegroups.com>; Thu, 28 Sep 2017 07:58:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:from:date:message-id:subject:to;
-        bh=R5kxT8H9rNI5+mK4wBGYwna0Yy+ZnAY2DEj3bgOg2SI=;
-        b=H0kKoxI/1LCRPIejnBdRTUGx4sToehu/PSOX4RuaVVI4EFYPIzI8C3fUEnraLlhS8M
-         EeSmMqjMHrBTr5+snAtFzMfgwow0YM7PDIHrfU8yA/OQrJoWAEynGOEhT/MqAr+bCPPO
-         NUQibToiQu/LsfHVNTqXb/WL7/XJ9vcFS0iOFDCDIEyoB3PSZoEIo0poSkH3KxSrE2+J
-         rdZztJK1rVu70w/VPReg0SR81t2ywonFu1UWn0hfoR0+PAmAF5GbiR+G2ys1CSlBfuO8
-         njdbMqyiOy9JApHfng7PgUOekEsCRMxgFegL3XIN/+HfnKjGzQOqkXOqhmS8GttkFBcb
-         m/ZQ==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=IALOfmn/23IxqoIeOlV8aCOUlOF4eFVPtkteXB9sukM=;
+        b=dugLryNg3jcbX6eJI+WG88NMDADnOfK9azosFaH99d+2AW7FbqEyk1uXksVOd87afh
+         VaFeocTpD17gOqbgqYaDBnx9+XWziCDIXSrj9Z5aTRTpFZ06Ois77f9Gh1R1toHHq0yd
+         q8xs0krJKi+1a3Kpv4ILLVhD1As55tY4o1ArjJ8z/6cKoKyyI/ooZ9XdnPy2E9Qrj0Gq
+         VGGOCpuSWgC4geHgNvKMWP+bNlDSJifiF/BEwHXSV/W1WxT/u+3Ese2oHgQUe7V7OJC6
+         rH5jX1/zyfQ9OrkR3qtyOfjZhLyojcGkZm1C9O4JDjCbWD4EHu/06XxFDb/PRaBsunTR
+         Jfsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-        bh=R5kxT8H9rNI5+mK4wBGYwna0Yy+ZnAY2DEj3bgOg2SI=;
-        b=GnvzSaFh20LHe8gtj4Gkl1bOmM84HayzSCgr0+fkz9yTwjmEK5O4uFyhlzsYYj5JLX
-         y8QVp0yTeNUX0RFcork7fGBC5/vVEyEs+jD5Qum0bjFquDDOrnEyvxT+xjBl/M+s59IX
-         EDRQYKEiF3BUwN8dbWMOWPX7GZmDZgKEpDX3gpyS2bpS1bkNTiyN+NcEF0MB/Tq1pDJw
-         LizYAiAtgET/xUr5Ni1xBZQyOE4Lc/BNMsPDTbgcuck4oQkyiOIxREqTVUMMwD+Njx3Q
-         nQ3FRYXqaSrIlpt4rs02+xKQrYutgMp3mdlcilvYoqbaTvxuacpJgeQbvvklif/GbXCt
-         iNfw==
-X-Gm-Message-State: ANhLgQ0GjoyvqJE1RvDRqHzlPAdAskYSbK4HsLRhmMJlP7aTfA6w7bkO
-	cRVrXUeFnM2ACHMHxV13WijqxP+ODUsmInCoaXmcyl/+
-X-Received: by 2002:a5d:8f03:: with SMTP id f3mr65188iof.28.1583428083152;
- Thu, 05 Mar 2020 09:08:03 -0800 (PST)
-MIME-Version: 1.0
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Date: Thu, 5 Mar 2020 22:37:51 +0530
-Message-ID: <CANTOzWHSNXEXaGo-0e9PUsCFvX5QmsVmfF4qJa3ii=H9Cs+B6A@mail.gmail.com>
-Subject: Issue with checkpatch.pl
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=IALOfmn/23IxqoIeOlV8aCOUlOF4eFVPtkteXB9sukM=;
+        b=qoL6U5PPp1UhIRZGNdDFgiRVJBLFVQ84pEqCJuzfgBO3TTj5dhRvTapS+HrJayq7gW
+         0t73Z852vRW6HWXUjIQloYslz2rMtImNlnShcj6pe0rD2kJ/s7jfXtAT+TZgw7UejlB3
+         xLInBbXV1zbhMUypqsYYP2tsTnBg7N0JGCJRYxaajwd+Cjb4IlNKrqHYj8eejOJFrl4F
+         L2YFtrVZYTyJEbNhYLdJyampy1KFRGfAMI0q8dZODggbl6Ytmx4CM3LO2g6gO+/OQRUu
+         YUYvTJNDcG3sdBYXRpFNfao6/nqTPDV1HvmVWt9AFXj1bZoLmsmvg2/xSSqSo4uZPjdS
+         p+pg==
+X-Gm-Message-State: AHPjjUihnbsuR14okxQDOXo3IjoFy3rSVkTKPya73JyAwgAvmtArKNwx
+	enH8LMdILR5OnwN6KydNea3MxVpf
+X-Google-Smtp-Source: AOwi7QDuBV79R3Q0HmnpIiT3vI4dHZ4g5lBKfec//dZEijmfLrc+D8AcRhiX/QKkM6OEdAgQq/0tWA==
+X-Received: by 10.84.143.195 with SMTP id 61mr4256598plz.251.1506610725256;
+        Thu, 28 Sep 2017 07:58:45 -0700 (PDT)
+Return-Path: <keerthigd4990@gmail.com>
+Received: from manoharreddy ([202.53.87.190])
+        by smtp.gmail.com with ESMTPSA id e3sm4461339pga.80.2017.09.28.07.58.43
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 28 Sep 2017 07:58:44 -0700 (PDT)
+Date: Thu, 28 Sep 2017 20:28:40 +0530
+From: Keerthi Reddy <keerthigd4990@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary="0000000000006c7aa605a01e9486"
+Cc: eric@anholt.net, stefan.wahren@i2se.com
+Subject: [PATCH v2] Staging: vc04_services: remove unused variables
+Message-ID: <20170928145840.GA16783@manoharreddy>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
---0000000000006c7aa605a01e9486
-Content-Type: text/plain; charset="UTF-8"
+the volatile fields of bcm2835_alsa_stream -
+control and status are not used.
 
-        I am trying to find files to cleanup using following command
-~/git/kernels/staging$ perl scripts/checkpatch.pl -f
-drivers/staging/android/* | less
-and I am getting a prompt as "Must be run from the top-level dir. of a
-kernel tree"; I am running the command already from the top level , I am
-not understanding how to solve it please help me regarding the same.
+$ grep bcm2835_alsa_stream
+From the above command all instances we see that
+all variables of 'bcm2835_alsa_stream' are declared as
+'alsa_stream'
 
-Thanking payal
+So search for 'control' wherever we have 'alsa_stream'
 
---0000000000006c7aa605a01e9486
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+$ grep -l 'alsa_stream' | xargs grep "control"
+The above command returns where we don't any usage of
+'control' field. which means that there is no usage of
+these fields.
 
-<div dir=3D"ltr"><div dir=3D"ltr"><div>=C2=A0 =C2=A0=C2=A0 =C2=A0=C2=A0 I a=
-m trying to find files to cleanup using following command <br></div><div>~/=
-git/kernels/staging$ perl scripts/<a href=3D"http://checkpatch.pl">checkpat=
-ch.pl</a> -f drivers/staging/android/* | less</div><div>and I am getting a =
-prompt as &quot;Must be run from the top-level dir. of a kernel tree&quot;;=
- I am running the command already from the top level , I am not understandi=
-ng how to solve it please help me regarding the same.</div><div><br></div><=
-div>Thanking payal<br></div><div><br></div></div></div>
+similarly for 'status' we see no usages.
 
---0000000000006c7aa605a01e9486--
+Signed-off-by: Keerthi Reddy <keerthigd4990@gmail.com>
+---
+ changes in v2:
+ more discriptive commit message.
+
+ drivers/staging/vc04_services/bcm2835-audio/bcm2835.h | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h b/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h
+index 379604d..f1e43e4 100644
+--- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h
++++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h
+@@ -123,8 +123,6 @@ struct bcm2835_alsa_stream {
+ 	struct snd_pcm_indirect pcm_indirect;
+ 
+ 	spinlock_t lock;
+-	volatile unsigned int control;
+-	volatile unsigned int status;
+ 
+ 	int open;
+ 	int running;
+-- 
+2.7.4
+
 
