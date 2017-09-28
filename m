@@ -1,154 +1,104 @@
 X-GM-THRID: 6468311343549120512
-X-Received: by 10.28.157.82 with SMTP id g79mr179793wme.20.1506606105596;
-        Thu, 28 Sep 2017 06:41:45 -0700 (PDT)
+X-Received: by 10.28.16.8 with SMTP id 8mr131342wmq.31.1506600895643;
+        Thu, 28 Sep 2017 05:14:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.142.199 with SMTP id q190ls92722wmd.4.canary-gmail; Thu, 28
- Sep 2017 06:41:44 -0700 (PDT)
-X-Received: by 10.223.157.134 with SMTP id p6mr526544wre.14.1506606104836;
-        Thu, 28 Sep 2017 06:41:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506606104; cv=none;
+Received: by 10.223.157.27 with SMTP id k27ls1130901wre.0.gmail; Thu, 28 Sep
+ 2017 05:14:54 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QAXJhwqnmJDavPhCXVxjFAtSzczgkIHcmvukX3ZrY2FaZA5/pir3+o3W9ijXOwxK+zbK3Et
+X-Received: by 10.28.138.195 with SMTP id m186mr140590wmd.9.1506600894838;
+        Thu, 28 Sep 2017 05:14:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506600894; cv=none;
         d=google.com; s=arc-20160816;
-        b=gGrBcOMoPoJk0afbIW0ukPFuokbasL/QtLlhLpe4xjQdF7zxFQLsjJjmrgIgpGojZQ
-         KM/6PLHfW3/cQcNuOwfSiCh2tkXlBo8wqJ6wv/PKecQ7kli3T4UC4Ly4l4NClB76EU1F
-         T7FalgZ/fH4Hu0M4p/kVYFR6sDh8ToLiha4EmIxwF1x17mA480yt690jQJMXPfMwm7j5
-         pvGSeUhYPEwayoVjyrX+MymqKwJRe3dYdBky7FQAeEIeGUg+yS9vKHV8jk7FKeeyMETM
-         ZBt6i4H/1wWC+8Ywz1bvBfKJsR17sfjomdZYIvwpkuVY8tdvCi/9qxwsmUq5gTnYjSf6
-         8E1Q==
+        b=UGVkkRDWYhsp7/mBt4LTvBrXgA5cRos5rD771UkAMMRBf6rncsxDXlhgEoXZ6RueND
+         g6OAhrcrYV66n8QAsOHOFu1oJ6MNIXlDhVHSm0T+OAP27sSbZoffdd/AaC6VbV5GHY+F
+         fLSelH4bduqn9DiA4kk+ydoHCzrpSqSPQOmc+hfA4XNugasuHp0AS6mvdySXDzMDuUnQ
+         wB8gtPvDoM/ELE4/9lPJqTIpkuUf1lDLcv76Y2gm6pdnZOskq/EVOG1epdj+88FTEUq+
+         lGegiAvHzINqW7TNrbT4jkpfnIAvXN6u+qMRpnM+F9SijJukICW4JUVyTYm5Zw+INr8K
+         1JuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=DTNkAJkCnZ/sySkdI+1bJdmHOVgweCZO6COEWeHMH2Y=;
-        b=j0wg4SNzmFNvGIiNraFID/kPvXALpQj4ZLpiuGWFr6LNx2HH2ZbzeZ2aW/rAqyq8wY
-         Ov2Hj3oJbqEKpQJ919K6E9os7WFFvaIcNDnIo37Pw2rPK23goEdu6uB2h1ln5BnIth5J
-         7hzbXV5s+H/qJrubSVPHzm7veHQ7TsmCRbHTRM/JJZvj11BTV9ynSwgcQzDq0vKKqMIN
-         ePWsPEVOU36uRD0WpBm5ZrGo/eBevTrOxH9Mw4MvK2IwNb/NOkA9pk2CcvqBecQbACdk
-         pa9QVxF2cjJv9sPSHEMcY2dCNgO2imwXowsgNtc6N3Ew+wzj2FKYujxxR67QJQxG5eeI
-         Tt3g==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=hPX/37gPATCilnFao3NEmfHrVKrxlV4aoJDoPF+hIJI=;
+        b=M3S20NYax7aTaQZowvIYFXKiJB/HoCQ/23LVRrkq+EvhzvbYvZwPWFjz1L2s+366v9
+         cn7vd3E8ZQt/LiEiDYaUXwmU3Z65ir1c3uZ80VuOHGT2VVSa6IxtErQsEe8LmSm22ioW
+         8Mk0nV73iuBeBv7We390d2Kr5KjtCUuLo0BZN/P7dB/Zh1Bt5Y0xHiHbo31K4uPwLOFz
+         9KYk0aMZLz5DeFUxRGWrYVbSUgbQAEBM7Eb/QlSy2JBsP9WuSbM4ceeIVY7CMDHPpBm5
+         tLCG705UXA+RsQ3dN4CWLcDyQfzLSTHafC64CI+6YWRyK0TugaspW0fgBeGZsPehIQNo
+         9o1Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GDXSbADo;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::22d as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from mail-wm0-x22d.google.com (mail-wm0-x22d.google.com. [2a00:1450:400c:c09::22d])
-        by gmr-mx.google.com with ESMTPS id l133si121437wmb.3.2017.09.28.06.41.44
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id b203si64490wmh.4.2017.09.28.05.14.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 28 Sep 2017 06:41:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::22d as permitted sender) client-ip=2a00:1450:400c:c09::22d;
+        Thu, 28 Sep 2017 05:14:54 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GDXSbADo;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::22d as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x22d.google.com with SMTP id m127so1866021wmm.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 28 Sep 2017 06:41:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=DTNkAJkCnZ/sySkdI+1bJdmHOVgweCZO6COEWeHMH2Y=;
-        b=GDXSbADojaYZJJxPS3GP44Koivr5UFTBpyPtJFKQU+06P16kTJmy/hWeKoOHzKIlFs
-         1tyRcpua0SpBAAvgopdTrodgnpTJ6wA5NFnL8fj0YXe8ampb5hS7aJogi6yJVQMFsolD
-         nM6U3pdKyI0SZknB5G7yQEWr4E1Y7mdDGK+HOKQdt7QwvQLMOpsu8kpYhqejYYyJ2Au1
-         4GHvcerRXXU0KMqL6iJJww+BJQtyeuf+clNF072MUJ0ChdsvjU/c8OI2vGmWPq9MkWm8
-         KcMtgE9hQ3P8/8K/Q+WZ1OwDYLQBnytsaF9PNZHHeO4/TEC6c2i8yrXh6BIOl6O5FPTk
-         JeAw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=DTNkAJkCnZ/sySkdI+1bJdmHOVgweCZO6COEWeHMH2Y=;
-        b=VWF7d+8nSsVMpruSPljcT3efEsMlH7GST7HqwyPBzYwsxzjNPQV9l+8u4Ed1KrHZxJ
-         5Vd3n+NFoTFVHgIcBQv/NZAmF764GqZa2w8nXSp8G9JoaQbSqmh6Hu2ZB8jwlLp2VEKV
-         toedlorMqdmPy1Hmo+iaXQL0DyJAz/2rdpi4gsT86PxJkioXoPVZwgnaFAig9r9NTkNv
-         78Dmk+z6cKJuR2PpjRX3jXMoyHuSrQMlcVdRFYRnLOSZmMtmR+OT+C8cNNE9i8IGGgqa
-         6wU1xGu4OO+uDALQiiNq/5uIQTTHsGANoTLu/hjBNehFZbXL+n87Z+ImLV54letsZrOR
-         XQOA==
-X-Gm-Message-State: AHPjjUi+i0Wg55dEZSmz4CW37nPTL/AhqNi7gupaXvYWyGJVcmlv2Bhj
-	a4TiBftQj5yqPrRXf6rQ0tI9mw==
-X-Google-Smtp-Source: AOwi7QBzgDLNt3fdoEeMvnF61MdT01W65KiVwClB2WiMvJAt5caPkMurjXmMEZo5JORwsSO7mWksPg==
-X-Received: by 10.28.195.132 with SMTP id t126mr1174331wmf.0.1506606104479;
-        Thu, 28 Sep 2017 06:41:44 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from ubuntu (fw-ext-11.romania.luxoft.com. [195.90.110.113])
-        by smtp.gmail.com with ESMTPSA id y13sm260212wrc.81.2017.09.28.06.41.43
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 28 Sep 2017 06:41:43 -0700 (PDT)
-Date: Thu, 28 Sep 2017 06:41:42 -0700
-From: Mihaela Muraru <mihaela.muraru21@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Eric Anholt <eric@anholt.net>, Stefan Wahren <stefan.wahren@i2se.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v3] staging: vc04_services: Remove typedef struct
-Message-ID: <20170928134142.GA5180@ubuntu>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,449,1500933600"; 
+   d="scan'208";a="239026620"
+Received: from mx.artech.at (HELO hadrien.local) ([188.21.106.106])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 28 Sep 2017 14:14:53 +0200
+Date: Thu, 28 Sep 2017 14:14:53 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Mihaela Muraru <mihaela.muraru21@gmail.com>
+cc: outreachy-kernel@googlegroups.com, Stefan Wahren <stefan.wahren@i2se.com>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: vc04_services: Remove
+ typedef struct
+In-Reply-To: <20170928114830.GA12488@ubuntu>
+Message-ID: <alpine.DEB.2.20.1709281413540.30797@hadrien>
+References: <20170928114830.GA12488@ubuntu>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-This patch removes typedef from struct and renames it from "typedef
-struct vchiq_2835_state_struct" to "struct vchiq_2835_state" as per
-kernel coding standards.
 
-Issue found by checkpatch.pl
 
-Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
+On Thu, 28 Sep 2017, Mihaela Muraru wrote:
 
----
-Change in v3:
-	- add the right modified file in patch.
----
- .../vc04_services/interface/vchiq_arm/vchiq_2835_arm.c   | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+> This patch removes typedef from struct and renames it from "typedef
+> struct vchiq_2835_state_struct" to "struct vchiq_2835_state" as per
+> kernel coding standards.
+>
+> Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
+>
+> ---
+> Changes in v2:
+> 	- rewrite log message to have less than 70 characters per line.
+> ---
+>  drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c | 1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
+> index ee00f51..a96bae0 100644
+> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
+> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
+> @@ -84,7 +84,6 @@ static char *g_free_fragments;
+>  static struct semaphore g_free_fragments_sema;
+>  static struct device *g_dev;
+>
+> -
 
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-index 0159ca4..14bcd6f 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-@@ -59,10 +59,10 @@
- #define BELL0	0x00
- #define BELL2	0x08
- 
--typedef struct vchiq_2835_state_struct {
-+struct vchiq_2835_state {
- 	int inited;
- 	VCHIQ_ARM_STATE_T arm_state;
--} VCHIQ_2835_ARM_STATE_T;
-+};
- 
- struct vchiq_pagelist_info {
- 	PAGELIST_T *pagelist;
-@@ -207,12 +207,12 @@ vchiq_platform_init_state(VCHIQ_STATE_T *state)
- {
- 	VCHIQ_STATUS_T status = VCHIQ_SUCCESS;
- 
--	state->platform_state = kzalloc(sizeof(VCHIQ_2835_ARM_STATE_T), GFP_KERNEL);
--	((VCHIQ_2835_ARM_STATE_T *)state->platform_state)->inited = 1;
--	status = vchiq_arm_init_state(state, &((VCHIQ_2835_ARM_STATE_T *)state->platform_state)->arm_state);
-+	state->platform_state = kzalloc(sizeof(struct vchiq_2835_state), GFP_KERNEL);
-+	((struct vchiq_2835_state *)state->platform_state)->inited = 1;
-+	status = vchiq_arm_init_state(state, &((struct vchiq_2835_state *)state->platform_state)->arm_state);
- 	if (status != VCHIQ_SUCCESS)
- 	{
--		((VCHIQ_2835_ARM_STATE_T *)state->platform_state)->inited = 0;
-+		((struct vchiq_2835_state *)state->platform_state)->inited = 0;
- 	}
- 	return status;
- }
-@@ -220,11 +220,11 @@ vchiq_platform_init_state(VCHIQ_STATE_T *state)
- VCHIQ_ARM_STATE_T*
- vchiq_platform_get_arm_state(VCHIQ_STATE_T *state)
- {
--	if (!((VCHIQ_2835_ARM_STATE_T *)state->platform_state)->inited)
-+	if (!((struct vchiq_2835_state *)state->platform_state)->inited)
- 	{
- 		BUG();
- 	}
--	return &((VCHIQ_2835_ARM_STATE_T *)state->platform_state)->arm_state;
-+	return &((struct vchiq_2835_state *)state->platform_state)->arm_state;
- }
- 
- void
--- 
-2.7.4
+Something went wrong.  The patch just removes a blank line.  Remember to
+start from the original version of the code when you send a patch, and not
+from the result of your previous patch.
 
+julia
+
+>  static DEFINE_SEMAPHORE(g_free_fragments_mutex);
+>
+>  static irqreturn_t
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170928114830.GA12488%40ubuntu.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
