@@ -1,102 +1,112 @@
 X-GM-THRID: 6470748769991262208
-X-Received: by 10.28.144.196 with SMTP id s187mr59862wmd.29.1506589750679;
-        Thu, 28 Sep 2017 02:09:10 -0700 (PDT)
+X-Received: by 10.99.44.72 with SMTP id s69mr543610pgs.85.1506588601771;
+        Thu, 28 Sep 2017 01:50:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.223.141.225 with SMTP id o88ls998711wrb.3.gmail; Thu, 28 Sep
- 2017 02:09:09 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QBFTD16VpO7zftX81UdVtKV+Zl36eaq7ex1y2iAmqx6xQscpfrgVtE1D+BO2Cr/OMVbMJsH
-X-Received: by 10.28.55.209 with SMTP id e200mr65071wma.0.1506589749826;
-        Thu, 28 Sep 2017 02:09:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506589749; cv=none;
+Received: by 10.98.223.28 with SMTP id u28ls1005234pfg.4.gmail; Thu, 28 Sep
+ 2017 01:50:00 -0700 (PDT)
+X-Received: by 10.101.73.198 with SMTP id t6mr577377pgs.181.1506588600773;
+        Thu, 28 Sep 2017 01:50:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506588600; cv=none;
         d=google.com; s=arc-20160816;
-        b=EmuDna4qyhaZaBPx2n/OdLxsJxMB7DID2JTugvnZtfXsOKNqlblSthNgI/ZTB598Nb
-         eR7Sv/fBwxI1idpxOGfPFgVF+cq0+F14GZWT+a5fAwoyJd+fAsGnU/p7REY0fetvkMD9
-         Ye1BWhSKogKphj9zDzkP5D5QGnxyatZ4IbXKu5ntgv8IXMBvvwE+Dd5fP7EVJx690Cho
-         VTxdVn8pwZTdGOAZfpc+H6v2eRiT83bGpBxQ8NYRAZNecc/FnCfFQPdKl2JxaOTNkv7w
-         bPPqlBsvm/BXsVMqx46km0WfhADpqIF/6KX06cxJaTqbRo+2dZARLtDcYmjzc5DRDaYF
-         tuSA==
+        b=Xxrz8ZQK5F6C3JfKfJeAcSx9+qM8Y22tXYiMpqFLu6KO6zgVezdt570sQRX3I18nCB
+         Tb+PzIAFYiek/woPCbH+O+QTRpkWcrSKiu5AgvquV3o8UhTQ5kX+vrRI8weiQR/RDZLP
+         Lm2i3xzkM5jT5Lb5mnkvMCDulHDmNq8Xql+agH0zMoc32C2HU5yd2Fbk5s+zbr5GQ4xV
+         1i5tfVeDfwvqN0u5zHjFaiFxZcv3bMg9zqlaSLSn2AZ/ri64rp3U94IU9sfFeoi6ZBPX
+         18cHLzqlUCMpbrcUPy1olO+7AZ1eYM+SxQHnZkNKMc1WvndOXwAgc5zr4+Ie82JGvq+g
+         dtZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=Dw3a0szVJmTmD+S4OjLnxb0a82a9ojdy6K3TBrA3dTI=;
-        b=QYvkay21SXwCzjJVslreyT9YlGv4TrSEQ1zLOe6Ic9cHt2bjc2qRAWLkZ3nyjQODBw
-         aWk7yk3oAG1c3u5lylcOsVYKT/zAm0E3rgIf9/ae3imeU6TvKP6VwnEs3686Q1e+L9Bh
-         0+2oyh+QZccr7OXLvsPIg2p/KbINHNGWBtzpnNyoyjtzlfgH2016nvy7rwxD0RacbRZi
-         HMLn1CazlbUr3H2oEz+8OlsXSl7ksfcdXrrW0LCgRIpeRC0bS+fEDn3gdwqFAbNxKq5Q
-         mKP3V13dbd2WtTqZWwfzKpcnm2lXC1/3W2pWGN4KcoOMdKghiodi4n11cCjU7i+Dof1A
-         AcWw==
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature:arc-authentication-results;
+        bh=WzVP/hKR71JC+C/gN9kiZEyR9WU4ooob5rNLFmZAOHE=;
+        b=yp01M3NJhxEWiyta2nu6mGeLB/X+4gr+cbKVY3TSKOtjTScIr9vvfGTNlfRPGBQCQH
+         5h09tm/eyVSsfD33rLRrpB/LvwoNjR9NZpLBzeyguaOBrAYhwOI2PALYZmPNiPMEY6Qi
+         Ekgeg2uI3vYCAYM0AJQLEQUslnAyi5/O1fPlCe/NnrNDqbtGFba+80IbCOGiOIn9/MjD
+         jUPyT2lIH2D/Cs+d5Tg0CcG/SOdj86cM0t9yZ1QIjyqBAY1yvlqY4sYJnvCfg/pRmscA
+         xvvlex1AGBcgf9b3w4oAG2wONRLPFzH7r5ijnqEtBNLFgF639fmdvcBT2WSpoCxkYsG0
+         HYWg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id b85si114129wme.2.2017.09.28.02.09.09
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I6L7NB7A;
+       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <keerthigd4990@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id d207si130406pfd.16.2017.09.28.01.50.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 28 Sep 2017 02:09:09 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Thu, 28 Sep 2017 01:50:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.42,449,1500933600"; 
-   d="scan'208";a="239001371"
-Received: from mx.artech.at (HELO hadrien.local) ([188.21.106.106])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 28 Sep 2017 11:09:09 +0200
-Date: Thu, 28 Sep 2017 11:09:08 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Keerthi Reddy <keerthigd4990@gmail.com>
-cc: eric@anholt.net, stefan.wahren@i2se.com, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: vc04_services: remove unused
- variables control and status
-In-Reply-To: <20170928084954.GA4170@manoharreddy>
-Message-ID: <alpine.DEB.2.20.1709281106560.2865@hadrien>
-References: <20170928084954.GA4170@manoharreddy>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I6L7NB7A;
+       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x244.google.com with SMTP id 125so935820pgj.4
+        for <outreachy-kernel@googlegroups.com>; Thu, 28 Sep 2017 01:50:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=WzVP/hKR71JC+C/gN9kiZEyR9WU4ooob5rNLFmZAOHE=;
+        b=I6L7NB7AtQM+PxU+doS39ka+qR1FidtLquzzKqpZ/USKIrFINmXecxVuaD1z/9QcH6
+         2dRq+FUo1ygrrNTfgoZO6xoJ+Bz0menQc0Dz0Lx7OpHEAG7/9nCv22ttYtBRhvOt3je7
+         WX10R+bkGYiKsG8YOQCy8ejnSmQfcNzSvYFB00ggbOim+VAJp0wp8RvdQ2sDcYRRMegd
+         NwNetHAQjKTISSfZGmXjbUMOKIETid1nnPvYh05F0u6jkk4+fwPmQlk0XDyPlsygqWUx
+         xrIOXX9gNdeJExH99+M57kBcDpA/LqeB0OzZGYNcc7CQj1h58f7t9WkHy3Vb3XvDgdGk
+         dGDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=WzVP/hKR71JC+C/gN9kiZEyR9WU4ooob5rNLFmZAOHE=;
+        b=tX7LvdzOMfmJxlTrtxbtGwRAoFuoiq728WcSi919kYVI3o2Kg5Y0JllLKTmUxgWhrZ
+         aGXat6VjIP1bSK6JFSHSkqv+s1PYLB/bnHmWN8jf8BJNWAheQlgmFwufDGXkX6uadDsA
+         m381rdNWDnXRbyNRHCE7kawALfNERBb3u3FQN394Ws/BiWd4X6vZUAj9dipwW47R/QZi
+         voEenwpC6ZdYFd71mgMWMsNsjSiBb+DgLQE8854nqbyyBbx7MjqxzMdJfuZXJVsK9AjL
+         0S1nv1G7Qkhk2HuX2AQ6wmkbkNacIvTEG99u1gLw1zMkHk0Rui0rsAHSGXgGg/a5TPy8
+         woHA==
+X-Gm-Message-State: AHPjjUjZNAl6P++JWHZK/wdewPHxb6dhlyz+aPENtwDwBdXfllTAd+aU
+	APuY24gLGSu7SDETcMS/vWzLxycV
+X-Google-Smtp-Source: AOwi7QCBMlqSh7y90DVN9Cm5rh8ztpP7bcYRL46kgrSGnn/LwEsEF038zVJgSRZeFiWNmrh6E/iwHA==
+X-Received: by 10.84.191.129 with SMTP id a1mr3436669pld.272.1506588600554;
+        Thu, 28 Sep 2017 01:50:00 -0700 (PDT)
+Return-Path: <keerthigd4990@gmail.com>
+Received: from manoharreddy ([202.53.87.190])
+        by smtp.gmail.com with ESMTPSA id 5sm1978372pfr.151.2017.09.28.01.49.58
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 28 Sep 2017 01:50:00 -0700 (PDT)
+Date: Thu, 28 Sep 2017 14:19:54 +0530
+From: Keerthi Reddy <keerthigd4990@gmail.com>
+To: eric@anholt.net, stefan.wahren@i2se.com,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: vc04_services: remove unused variables control and
+ status
+Message-ID: <20170928084954.GA4170@manoharreddy>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
+the volatile variables control, status are not
+used. Delete them.
 
+Signed-off-by: Keerthi Reddy <keerthigd4990@gmail.com>
+---
+ drivers/staging/vc04_services/bcm2835-audio/bcm2835.h | 2 --
+ 1 file changed, 2 deletions(-)
 
-On Thu, 28 Sep 2017, Keerthi Reddy wrote:
+diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h b/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h
+index 379604d..f1e43e4 100644
+--- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h
++++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h
+@@ -123,8 +123,6 @@ struct bcm2835_alsa_stream {
+ 	struct snd_pcm_indirect pcm_indirect;
+ 
+ 	spinlock_t lock;
+-	volatile unsigned int control;
+-	volatile unsigned int status;
+ 
+ 	int open;
+ 	int running;
+-- 
+2.7.4
 
-> the volatile variables control, status are not
-> used. Delete them.
-
-It could be useful to give some information about how you have checked
-this.  Simply compiling the directory might not be good enough, if there
-are uses under ifdefs.  Grep could be a reasonable solution.
-
-Also, I would say that these are fields rather than variables, as they are
-part of a structure rather than variables in a function.
-
-julia
-
->
-> Signed-off-by: Keerthi Reddy <keerthigd4990@gmail.com>
-> ---
->  drivers/staging/vc04_services/bcm2835-audio/bcm2835.h | 2 --
->  1 file changed, 2 deletions(-)
->
-> diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h b/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h
-> index 379604d..f1e43e4 100644
-> --- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h
-> +++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h
-> @@ -123,8 +123,6 @@ struct bcm2835_alsa_stream {
->  	struct snd_pcm_indirect pcm_indirect;
->
->  	spinlock_t lock;
-> -	volatile unsigned int control;
-> -	volatile unsigned int status;
->
->  	int open;
->  	int running;
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20170928084954.GA4170%40manoharreddy.
-> For more options, visit https://groups.google.com/d/optout.
->
 
