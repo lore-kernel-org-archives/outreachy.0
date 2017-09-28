@@ -1,88 +1,114 @@
 X-GM-THRID: 6470837981099851776
-X-Received: by 10.28.131.14 with SMTP id f14mr380060wmd.25.1506640991659;
-        Thu, 28 Sep 2017 16:23:11 -0700 (PDT)
+X-Received: by 10.99.151.82 with SMTP id d18mr702285pgo.77.1506609372522;
+        Thu, 28 Sep 2017 07:36:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.223.144.209 with SMTP id i75ls1458170wri.12.gmail; Thu, 28 Sep
- 2017 16:23:11 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QDHgbKjF3K5PKeMxhCtRCIaTSNZjVDBHPyG3E9wh6Sfbp9qPuTuimZVB63vwV73a7La02Lm
-X-Received: by 10.28.215.195 with SMTP id o186mr395766wmg.9.1506640991042;
-        Thu, 28 Sep 2017 16:23:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506640991; cv=none;
+Received: by 10.101.80.6 with SMTP id f6ls1189794pgo.19.gmail; Thu, 28 Sep
+ 2017 07:36:11 -0700 (PDT)
+X-Received: by 10.101.91.131 with SMTP id i3mr625898pgr.93.1506609371319;
+        Thu, 28 Sep 2017 07:36:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506609371; cv=none;
         d=google.com; s=arc-20160816;
-        b=ae0MmoIQnIRleghfGCS6f+zAT9+Q6LU9X7SkVYJ3FmooBFxklAQ8q9BWY3PkEZgyx/
-         TRSo8qO8uz3QGOKu9kVwHreHWqx812sI1GcU0knJBgQidXGhADXn9i9FwWDlVWYezk5F
-         xGR36MqTaPLgKCrAzk0UdwCd1DdWMQ+hq0qALMzli+7senp5fKZ9xxXfBeoAmoDzkO6j
-         YN0H2vL95VRX+KTtxue7Xj6SkbUU8+jOO8a1nbY/sPQaCtMLzd+lCrBadMiKESCyPLBz
-         eFx1beLPkAcSSOmxMn26E4nh/6cW+AaeRc7dLsWqj3hsCZ2RiR8jMmhq4guTK4d564Mz
-         fIog==
+        b=h+BsjF8utyrZITN/4uUw7sa09IvLOjfibiPMcVf31w0iix6v6F3OrxfuZYIJiWcbrS
+         1vNZkGFoMPWeNW/bplNKc6dtOJO1LxQfYaPVRJABLx9wMHs2CVfkQWPaQHgNXUhWaskm
+         MLY7j+aztcZQxm7ZV/r1XhbPbr/BfktOMLdBqM2czCUZWL/SOW8h7TZUGLQTyPVb6POz
+         lko1lt82bz8/IcghgxtjLm1QG4K4kxI3vtIX/bTd6oQUItShTBvdYuY9EBHgaXPCEAla
+         UOGG2gluT4Vf05dV044t5JwLpimudojFcOFRNXbcDDSiDmO4sDnoEoG2ghaLmoZOAoJe
+         dVeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:organization:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :arc-authentication-results;
-        bh=GGQs6Tz3LemvLhgINRmgM+S63XzHHElf4IuAUOiqgBs=;
-        b=z18fnmt0YVDvMvviRYsbRrnZ7nTGgGwjig2LsSb4qOAJeKkA6SGANddBh1daZfEw3E
-         n6BohjTrdpsdFmEUxgsAXpPrT5feDshWjIhpH7Yb/88nU0JcSIkdeju1zq5tiAWi5uXL
-         oghFNkd6P+dLA8CNgCJQQS4tq4deUm2jmpJ40Zqi65SCDzh3UcOJrmNLA5VC+7JYvpBP
-         u7ZR2Hq8KYioFyv6egOnLO8wVgIX+HukIo6Pfji7v9VEetS7RN78GMlog0xuiXBfZ1IS
-         ONE1XpBP4FLiD202uCgetZjjDuF0fU5+i/pi8m83pDYCYptlgpmJ4tb1JW+kwycZNQKz
-         pWjQ==
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature:arc-authentication-results;
+        bh=A/Gu+4bIhL3AWC7Qj5GwYM3k1crp63oKc5wj2XsA22A=;
+        b=FwFfp51t8M01+tzqBHUmySyrqU0lB+5Up5IvRG+FCZF982wQag2W9148Z+p8OBm76P
+         MzMLJvpQVPP9f3PR9c9OnNf07O0n5Cxrb7jwQpDlTI2iGH59RI9Mq3DtcyiSKG+L5aE7
+         gS04jdVSeC+v5J9bx+hFtLuZwqZGLcFC/dDBtkiChpz+ctWWllWOIK660j6V0PERYeWo
+         Bm4UsCCme7JAK2K2Kag0rkaEzL4AqIXUqdtY1RBQb9cvSLXZ7VYsEz9d9gvYQx9s/g6J
+         PWIM28573d7oJ0Sst2LPHjQkmEXDZdo7SNMhoZho2yVeOlD+IhAd4wVjynHmhcDLWjhv
+         H16w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 141.255.128.1 is neither permitted nor denied by domain of samuel.thibault@ens-lyon.org) smtp.mailfrom=samuel.thibault@ens-lyon.org
-Return-Path: <samuel.thibault@ens-lyon.org>
-Received: from hera.aquilenet.fr (hera.aquilenet.fr. [141.255.128.1])
-        by gmr-mx.google.com with ESMTPS id p200si330510wmg.4.2017.09.28.16.23.10
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=s9NWwRCJ;
+       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <keerthigd4990@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id h3si238362pfk.9.2017.09.28.07.36.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 28 Sep 2017 16:23:11 -0700 (PDT)
-Received-SPF: neutral (google.com: 141.255.128.1 is neither permitted nor denied by domain of samuel.thibault@ens-lyon.org) client-ip=141.255.128.1;
+        Thu, 28 Sep 2017 07:36:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 141.255.128.1 is neither permitted nor denied by domain of samuel.thibault@ens-lyon.org) smtp.mailfrom=samuel.thibault@ens-lyon.org
-Received: from localhost (localhost [127.0.0.1])
-	by hera.aquilenet.fr (Postfix) with ESMTP id 90717ECB7;
-	Fri, 29 Sep 2017 01:23:11 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at aquilenet.fr
-Received: from hera.aquilenet.fr ([127.0.0.1])
-	by localhost (hera.aquilenet.fr [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FSLVXAY0StML; Fri, 29 Sep 2017 01:23:11 +0200 (CEST)
-Received: from var.youpi.perso.aquilenet.fr (unknown [IPv6:2a01:cb19:181:c200:3602:86ff:fe2c:6a19])
-	by hera.aquilenet.fr (Postfix) with ESMTPSA id 04AA5ECB5;
-	Fri, 29 Sep 2017 01:23:10 +0200 (CEST)
-Received: from samy by var.youpi.perso.aquilenet.fr with local (Exim 4.89)
-	(envelope-from <samuel.thibault@ens-lyon.org>)
-	id 1dxi97-0003GI-Hx; Fri, 29 Sep 2017 01:23:09 +0200
-Date: Fri, 29 Sep 2017 01:23:09 +0200
-From: Samuel Thibault <samuel.thibault@ens-lyon.org>
-To: Keerthi Reddy <keerthigd4990@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, speakup@linux-speakup.org,
-	chris@the-brannons.com, w.d.hubbs@gmail.com, kirk@reisers.ca
-Subject: Re: [PATCH] Staging: speakup: Add comment for spinlock definition
-Message-ID: <20170928232309.m2p5x57awue4ipdt@var.youpi.perso.aquilenet.fr>
-References: <20170928143602.GA15962@manoharreddy>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=s9NWwRCJ;
+       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x241.google.com with SMTP id i23so1665083pfi.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 28 Sep 2017 07:36:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=A/Gu+4bIhL3AWC7Qj5GwYM3k1crp63oKc5wj2XsA22A=;
+        b=s9NWwRCJAa0tclwFoA6Op13qI5Hgeu8xdAEPC3Cep1hmvPhWTJk4XYHYhB42YWHObV
+         FNXUn+O7vkxocGOrEmuE2n7tbGLncjSIbTf+rl427aHHxSj7VUvxl/RYtPhgJ+7j4B98
+         0ziPJ3t1UzlO5ize4+zXQkfu3+LcwSJKQRRw0WM70Pshbk/TASbHkx4Kwm0qfRgNq8+T
+         LmxR1aXvBBWtcUq3mxVLCB3Xn5YcfOm9w3mqOd5zQGf7dk+/GUnOvGKrGzOba+nzuZor
+         aq526nJals2MaC77s5SbLLMOAiahvAm0PYy2GYmu65JytzT2pqetG1lxUOYev+ph57Ac
+         vRLg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=A/Gu+4bIhL3AWC7Qj5GwYM3k1crp63oKc5wj2XsA22A=;
+        b=YJkrRzvluZOOiz1qg7inn+Ru4+FPgQbTLgarVz6px76zMz9ZYJhih2oEqbu0Kxkyzb
+         fmSIw5GVkiyzRL2QuYxi2VMLdNzeebQ82/sdfKTEXkVcdAYYU6tj5HB2UfmdfkV2ZIzV
+         dtbENqn/inWAPhvTBYRZ2Z/+5ml1+k2K6wUA4c9RMAd8QOXSxppIZhtBANeyokwcXmB5
+         BiKsx+9H33qgTL/kkEVm2dtFvYwXVr9Am0apmnz37iC0ie4gQnYa9OVm+VWvDjt0wxgi
+         rcQFlQVWfOh6Mb4lKy784Pd+hdosUPOknJCEt4j6EIaAu0I16t9ee3uW6t1SjYkuE984
+         X/oQ==
+X-Gm-Message-State: AHPjjUgXJg0l9L6WEFSwi69ZHpzhCP82kt7/nhEDlK5FsvPWkmxwwuJM
+	dHXWDLLtuoRq5mlQkpY3zP5nal/w
+X-Google-Smtp-Source: AOwi7QD/o2r9bIuumbdynpftkEKMDmR9niDD+56InCUjlcpehGKL8feGPQc4z1tYI3v5kqtqIzcD4A==
+X-Received: by 10.159.216.139 with SMTP id s11mr4179263plp.120.1506609370914;
+        Thu, 28 Sep 2017 07:36:10 -0700 (PDT)
+Return-Path: <keerthigd4990@gmail.com>
+Received: from manoharreddy ([202.53.87.190])
+        by smtp.gmail.com with ESMTPSA id s4sm3098093pgr.32.2017.09.28.07.36.07
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 28 Sep 2017 07:36:10 -0700 (PDT)
+Date: Thu, 28 Sep 2017 20:06:02 +0530
+From: Keerthi Reddy <keerthigd4990@gmail.com>
+To: outreachy-kernel@googlegroups.com, speakup@linux-speakup.org,
+	chris@the-brannons.com, w.d.hubbs@gmail.com, kirk@reisers.ca,
+	samuel.thibault@ens-lyon.org
+Subject: [PATCH] Staging: speakup: Add comment for spinlock definition
+Message-ID: <20170928143602.GA15962@manoharreddy>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20170928143602.GA15962@manoharreddy>
-Organization: I am not organized
-User-Agent: NeoMutt/20170113 (1.7.2)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Hello,
+Its good practice to comment the usage of spinlock variable.
+Specially because, at the time of congestion, it becomes easy
+to identify how a particular mutex is used. This improves
+readability of code. So add comment for spinlock variable.
 
-Keerthi Reddy, on jeu. 28 sept. 2017 20:06:02 +0530, wrote:
-> Its good practice to comment the usage of spinlock variable.
+Signed-off-by: Keerthi Reddy <keerthigd4990@gmail.com>
+---
+ drivers/staging/speakup/main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Yes, but
+diff --git a/drivers/staging/speakup/main.c b/drivers/staging/speakup/main.c
+index e215d05..bb3908a 100644
+--- a/drivers/staging/speakup/main.c
++++ b/drivers/staging/speakup/main.c
+@@ -246,7 +246,7 @@ static u_long last_spk_jiffy;
+ 
+ struct st_spk_t *speakup_console[MAX_NR_CONSOLES];
+ 
+-DEFINE_MUTEX(spk_mutex);
++DEFINE_MUTEX(spk_mutex); /* Spinlock for synth_release() */
+ 
+ static int keyboard_notifier_call(struct notifier_block *,
+ 				  unsigned long code, void *param);
+-- 
+2.7.4
 
-> @@ -246,7 +246,7 @@ static u_long last_spk_jiffy;
->  
->  struct st_spk_t *speakup_console[MAX_NR_CONSOLES];
->  
-> -DEFINE_MUTEX(spk_mutex);
-> +DEFINE_MUTEX(spk_mutex); /* Spinlock for synth_release() */
-
-This is far from properly describing its role :)
-
-See the use in all other files, this mutex is meant to lock the whole
-speakup screen reader.
-
-Samuel
 
