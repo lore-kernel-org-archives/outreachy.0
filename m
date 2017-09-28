@@ -1,110 +1,118 @@
-X-GM-THRID: 6395503303001636864
-X-Received: by 10.129.136.6 with SMTP id y6mr5698464ywf.157.1489069150479;
-        Thu, 09 Mar 2017 06:19:10 -0800 (PST)
+X-GM-THRID: 6470864213191426048
+X-Received: by 10.28.236.83 with SMTP id k80mr251941wmh.29.1506615479454;
+        Thu, 28 Sep 2017 09:17:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.47.2 with SMTP id j2ls1818660itj.3.gmail; Thu, 09 Mar 2017
- 06:19:09 -0800 (PST)
-X-Received: by 10.99.123.7 with SMTP id w7mr5407206pgc.133.1489069149470;
-        Thu, 09 Mar 2017 06:19:09 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id u12si1216981pfd.3.2017.03.09.06.19.09
+Received: by 10.223.155.208 with SMTP id e16ls1281060wrc.11.gmail; Thu, 28 Sep
+ 2017 09:17:58 -0700 (PDT)
+X-Received: by 10.28.72.135 with SMTP id v129mr250456wma.14.1506615478257;
+        Thu, 28 Sep 2017 09:17:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506615478; cv=none;
+        d=google.com; s=arc-20160816;
+        b=vhVqRoXVZ2LY+Yj7tXDHWxZwrYCi1Lmsos/y/y6MeVcLy98m+fW/ugtcHiIHPC+520
+         tjI05E71fTiYAaw0fyAwAd2PS0SWTE+CoeC7/0pCBqqsHOrAGLNhv3GWhzUDN34yxKyi
+         BH3fMvHcC8cgpn0vwIB0D4+++6vX7bKYK5mfrPM2qW86ddY+OwP48MjkUaz6xTWjh+yY
+         I2DyYR2f4mS10S941vvj4NZkwe+k9M1RLZ2u+DfS9zTs18Gm8fOi8Zy/5Fjxwq0s1AuA
+         lmNh9bArYZMm05e3TcJTauvb/iCJwlKj6hh/Ub1zmUGha5ILjQEKxu/67ZdOJ4PEwwi0
+         fktQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature:arc-authentication-results;
+        bh=7Xlw7/U+UBV8fZtsBTJv3N6RpfB4/zQFdppVFy5Pqz4=;
+        b=wyvH/lEb+HAtOiORzMU96gAeE4BqQa+CaZMjde3o0zphbh2Si0MfyZpdrEql/PzW9p
+         kYsEpIfOD53F4eIa4UI90aas3jq1aUc/s0N2H4RAv/rUCGN29JOuycYtLx620plWOs9+
+         MWvCn0kwIXlByIXAY4GL7jgoYm67ehGS2KjCHfaQrgICrCeT6q1CL9T52AGlLxQnFwAw
+         vBB1MKaAUKwteuNochVYZ84JYjGJh9QjDCfyh6HSiD5HjclGVW5VZCa6EOeHIi2q0fis
+         L+Vbs3KyancgVRf/zsQtrRHWeWBHcZOebJCmFtv4WvQEeHFa8gaXWkh/lBTG/sC54v0K
+         xZRQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RbGS467q;
+       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::236 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from mail-wm0-x236.google.com (mail-wm0-x236.google.com. [2a00:1450:400c:c09::236])
+        by gmr-mx.google.com with ESMTPS id h17si206017wmd.0.2017.09.28.09.17.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 09 Mar 2017 06:19:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Thu, 28 Sep 2017 09:17:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::236 as permitted sender) client-ip=2a00:1450:400c:c09::236;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RbGS467q;
+       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::236 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id 25so6964065pgy.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 09 Mar 2017 06:19:09 -0800 (PST)
+Received: by mail-wm0-x236.google.com with SMTP id q132so3329109wmd.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 28 Sep 2017 09:17:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:mime-version:content-disposition
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=dlIlkgKxJsPQe8S84Ix8yRu3WB6kyMz9Ysy513wZhpg=;
-        b=ef71fjj4+MPM051yvyUvs2bHKxZsLpQB37iUtT2Fxf2ra/9e1vwWb4V0vUB9gNZ+JL
-         Icwty7xLJm5OSM3bwqWgcOGe5TPmxGuz0GT3k687NT4TkcJbmnTYSWUU60rztmBc4sSx
-         vstx4Pc5gB9A8B237fp9JnfCf8fxam74JVwPmax5uk6LxSaluPmWQUG61f6IW6prsgru
-         hxwXDxPC6yhzrhE55s9U+JnWb0GxjQlufY3SYUXlVCC3U/S7mMJiwZU9ba98yc+Mrvao
-         HJuxujyCAbQTEY9MwUA+9Z8nvf6I8EtJZYLWgHEhISFXQYlbxfHhWBQ9UFk+S6LcyGLw
-         m2KQ==
+        bh=7Xlw7/U+UBV8fZtsBTJv3N6RpfB4/zQFdppVFy5Pqz4=;
+        b=RbGS467qpiXQxWpX7j7zkF+ZMSYj8zx4FKSH0qi5ODj+OdVaaPLEr9Ji4J3IoJ4hvQ
+         NfcD8TtvxmBpHxgKC16rvvs+daWTis8Gtyg/inVNXB0NQbznfD62VlbJMY4ZnQHPVc4C
+         WTuQY6zMMIL3jan71ri58dxtWDltM1f7C83Yvz2sG+FY6YmHFaAj/AVk4y8RKGVUxQe0
+         0hP4u8qp4h/rmVEa52mf2U2eS752lVRLMNF42ver+9lWZU041GJFj3dl9Y4D7h3SSbJ9
+         XsMdpVTo0GCtSaSGFm0qto7+2QsU/19elDFpEdpxJhRP+YmndqYLaDGn+zIjul2rqSCI
+         2pVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=dlIlkgKxJsPQe8S84Ix8yRu3WB6kyMz9Ysy513wZhpg=;
-        b=kDFVoYNIBh+fpqguYpWZuzzn7dkuv9vFZakK8CJjVNgh039zROMKcb0V9SLThSM/VE
-         VsU+iGyKCKJ0S000Sa/fYa0e0tLZAj7WIrGn/Q78UuzgPQDH0wfSJdp97MXJyzid8Zfg
-         LfB84iPeEj2n6T7thagX6C/I9F430/IM8P24Yg/oyyFUPMB9mWUd5rQqMhj3ZZhnJeR9
-         CHB+jQ3Z0oigV3f1WpbhfEl7Bs+1ybhYWMTJhvHQOChYqsYwzV/KyCGefqyxLogulONs
-         zKgfdmExHG07c1hEMdNb45FjYG6xrHM1BoenrF/lVOsH9hTu1/f9QNsuZrslAyZx7vxI
-         TyQA==
-X-Gm-Message-State: AMke39lqFNBEww3yjAP5CYqOK6vC8ydkvgSBAi3P1ujKIkPK0b/QUpJiyDStCQSelCbVow==
-X-Received: by 10.99.98.6 with SMTP id w6mr13942438pgb.223.1489069149110;
-        Thu, 09 Mar 2017 06:19:09 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([45.125.141.33])
-        by smtp.gmail.com with ESMTPSA id e76sm12923260pfk.75.2017.03.09.06.19.08
+        bh=7Xlw7/U+UBV8fZtsBTJv3N6RpfB4/zQFdppVFy5Pqz4=;
+        b=n/d0g4OcUPIFEDALdKuMG5nbC/JqE+iFT9uRsQLQWEYZNv0Xl2Gn4ufl753KxtU6Y8
+         I4x/61s+YmfQymSMcvykG2FKprYwBlLRx/Lbvrs675UD8/wa2ck9SV0XDQBekmI4XYpS
+         xcsFHc0MBxaH6fLJqIym0WlqLdGa8n0/v+PJgNMVnh/Q13IVEGKQNgV0OIP3xQ3vwH3y
+         Ei1Erku6GoG4HOROlZlE6o5KQQ/7cj0FpOjt3RE4S9T+cNSVfM8TxWysVH/ZLvSnNKmO
+         CzcU2iy9NhmVfjyhUG2SL7kL3a1H2GnGR+p4PL/Tx53RwN505AcsReBffWM74MAkC8FD
+         uZIg==
+X-Gm-Message-State: AHPjjUiyNzKHVFwwLJFzMKAxBMNkGD0hKc8XKMhNKcfnYpfm/a+yb3tV
+	EGAEadFFpGjaOjyn7dTQFUs=
+X-Google-Smtp-Source: AOwi7QDyxNaWkFHNF49fYhakrwjnLYorSdFH6uZ6q/1PsZ2xqKcC4i5fl+AyiS+i9YKYzp0SWK2zUg==
+X-Received: by 10.28.35.142 with SMTP id j136mr1409272wmj.55.1506615477952;
+        Thu, 28 Sep 2017 09:17:57 -0700 (PDT)
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from domino-MS-16Y1 ([92.83.158.26])
+        by smtp.gmail.com with ESMTPSA id k52sm4118591wrf.62.2017.09.28.09.17.57
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 09 Mar 2017 06:19:08 -0800 (PST)
-Message-ID: <58c1645c.cf9b620a.9896c.d32c@mx.google.com>
-X-Google-Original-Message-ID: <20170309141901.GA14749@<rvarsha016@gmail.com>>
-Date: Thu, 9 Mar 2017 19:49:01 +0530
-From: Varsha Rao <rvarsha016@gmail.com>
-To: Ian Abbott <abbotti@mev.co.uk>,
-	H Hartley Sweeten <hsweeten@visionengravers.com>,
+        Thu, 28 Sep 2017 09:17:57 -0700 (PDT)
+Date: Thu, 28 Sep 2017 19:17:56 +0300
+From: Mihaela Muraru <mihaela.muraru21@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Stefan Wahren <stefan.wahren@i2se.com>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: comedi: Remove useless cast.
+Subject: [PATCH v3] staging: vc04_services: Remove extern variable
+Message-ID: <20170928161756.GA3062@domino-MS-16Y1>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.7.1 (2016-10-04)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Variable dac_data is already declared as of type u8. Again explicit type
-casting of dac_data to u8, is not required. Hence this patch removes it
-by using the following coccinelle script.
+This patch removes extern variable vchiq_arm_log_level, because it is
+already declared in vchiq_arm.h
 
-@@
-type T;
-T *ptr;
-T p;
-@@
-(
-- (T *)(&p)
-+ &p
-|
-- (T *)ptr
-+ ptr
-|
-- (T *)(ptr)
-+ ptr
-|
-- (T)(p)
-+ p
-)
+Issue found by checkpatch.pl
 
-Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
+Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
+
 ---
- drivers/staging/comedi/drivers/s626.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Change in v3
+	- rewrite the log message
+---
+ drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/staging/comedi/drivers/s626.c b/drivers/staging/comedi/drivers/s626.c
-index 4523378..0b189c5 100644
---- a/drivers/staging/comedi/drivers/s626.c
-+++ b/drivers/staging/comedi/drivers/s626.c
-@@ -599,7 +599,7 @@ static int s626_write_trim_dac(struct comedi_device *dev,
- 	 * Save the new setpoint in case the application needs to read it back
- 	 * later.
- 	 */
--	devpriv->trim_setpoint[logical_chan] = (u8)dac_data;
-+	devpriv->trim_setpoint[logical_chan] = dac_data;
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
+index 0159ca4..29702ea 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
+@@ -84,8 +84,6 @@ static char *g_free_fragments;
+ static struct semaphore g_free_fragments_sema;
+ static struct device *g_dev;
  
- 	/* Map logical channel number to physical channel number. */
- 	chan = s626_trimchan[logical_chan];
+-extern int vchiq_arm_log_level;
+-
+ static DEFINE_SEMAPHORE(g_free_fragments_mutex);
+ 
+ static irqreturn_t
 -- 
-2.9.3
+2.7.4
 
 
