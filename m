@@ -1,230 +1,320 @@
 X-GM-THRID: 6470705412124442624
-X-Received: by 10.98.100.200 with SMTP id y191mr631707pfb.25.1506688490044;
-        Fri, 29 Sep 2017 05:34:50 -0700 (PDT)
+X-Received: by 10.25.143.201 with SMTP id s70mr329772lfk.38.1506688396081;
+        Fri, 29 Sep 2017 05:33:16 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.98.212.80 with SMTP id u16ls1871445pfl.10.gmail; Fri, 29 Sep
- 2017 05:34:48 -0700 (PDT)
-X-Received: by 10.98.64.91 with SMTP id n88mr610104pfa.58.1506688488895;
-        Fri, 29 Sep 2017 05:34:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506688488; cv=none;
+Received: by 10.46.16.197 with SMTP id 66ls1139503ljq.1.gmail; Fri, 29 Sep
+ 2017 05:33:15 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QCbxsCWexirMhXnLWZaXzx1gxdZZQPAeuncmcdQHUE7WCA2cmLtnvHB9AeIEp5WuHS29Mb4
+X-Received: by 10.46.43.216 with SMTP id r85mr407292ljr.4.1506688395179;
+        Fri, 29 Sep 2017 05:33:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506688395; cv=none;
         d=google.com; s=arc-20160816;
-        b=Yzy384WIwc8LmPGzXx9LT6svnfErqBgPrjqcbtlZixMOE4tMkNymy6AN3ID8JQ2NJ8
-         42ih9LgrnF+lAErITksdbeWO7xr8Lx7taG2oNa2M+q0BoG0+9G1pgYNM4Qc10fe0wI7B
-         +1ec94MPZq5HcUY04b6LHe5LUk2zrb9P+nnYaFZKvUu3rbCrF5GG8ME28nRl7dpwVhUR
-         E5LqecMX+TceuBMX3ePiRnGswH9o3ageWYmOXozCWogpSzRpWzR9lprAuwusVvFIAgGp
-         ugx297xPmd4arBwL1iE5kbuEPFZD+bnIIZATyEcxtpUEqFclGHSJS1pxGwYugtF+1Zbl
-         cxpg==
+        b=ADXHpYz+IyPhuxVGdTuTcNJ1tGSduegCgbIZ/ySFd3bKWOnAuyeCMCAKChwwjEQUj+
+         eFkGGSG8MeViwOnxulclZY76iA3z9YNvaqhUDVPDGebe5bkEAEBMLTE/zNT97a2P1w4k
+         SLrKK0IXW0Chn0grr/P2HZVJvtYGcnJzBCXYqw5QDHJQ3TWJc6DFDI3QFHGLBhpIFT+H
+         tmBgxRJmWZeUBFPIEqeAoIvdNwbLMtxO3BHfkk24QtiyzjXu6EleelljImoHgl4NYPzM
+         QVAndFUsefbdqIgSPUm5uDpgryAAjsKhNE4T7QV4KsTUFchdZrsjWU8v1TOrVQDt04V5
+         U6RA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature:arc-authentication-results;
-        bh=Jz+nLz1ROrxyj7Oz39SR7nK26XcwN9J5Vp8rBK7/1RU=;
-        b=b7eRqjt8BgBjsgefhUUbV0YB8qFLJkhuqOhzbUCOZvRXFUtJgSYRRmu8Mc45h5iEAu
-         iW2ImDTVOZhCbYYDdbqMwQcrgZvMxoDTcJU2lDPw/2aT0MWBr0fGCdJO5vx2JL6kincn
-         yYsyiR1tDFUpWdO1taPJvMQglXolhhqZnjbViLFhDw2KfkUAFqIt2KO5IHIufEqa5NrW
-         zQnsLarbMGF3Y0v9jFDT+fAZiFn+tem4wFGijxr2Zw9j5riLeHha4vL8PsqK8HqFUBnw
-         FgVSYbJafrBULtPbHPWNnU/r7PqgcOgPZWF4gLSKIA5GGHhGWgt00m8kEbuML/lxokmf
-         9N0w==
+        h=content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:arc-authentication-results;
+        bh=oO4mGKaB9XwUNBuw5wIsM0MqzEiUdGra9RIuA7KW+PI=;
+        b=fkkflHCyvi/pqwfc0AzQ/VM33iA3crKC2D77T8GWxW1C4rCGIZcJn7yhI0W/scLi8A
+         4In0MY28bPVlKqujf8uBFXaILgUc9Ld33sa+eb3RYZSnkWYdvFrG4tU90HA3jtHriq1b
+         TXCrDR0oPn0Vn177R+v8gSPTVhPXoFjkCeuvJ2OtQpQDgkJwziyudVoJRHINEOX4FMWa
+         yWK+zOS68xLCzbOT+7Hn+hHIMyZAlqjxMYzpdQ/XagU6WVrkgx4dabgIrj8UB+TTNFSr
+         E+acnqNQkyxPKhTxk2kBombzA/g8KU0nnEmV9FoD/ZssFUe4VDSU38Lmt2hNQM4qRayx
+         IkOw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rqcPD7OR;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::231 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <meghana.madhyastha@gmail.com>
-Received: from mail-pg0-x231.google.com (mail-pg0-x231.google.com. [2607:f8b0:400e:c05::231])
-        by gmr-mx.google.com with ESMTPS id c200si491327pfb.14.2017.09.29.05.34.48
+       spf=pass (google.com: domain of noralf@tronnes.org designates 2a01:5b40:0:3005::1 as permitted sender) smtp.mailfrom=noralf@tronnes.org
+Return-Path: <noralf@tronnes.org>
+Received: from smtp.domeneshop.no (smtp.domeneshop.no. [2a01:5b40:0:3005::1])
+        by gmr-mx.google.com with ESMTPS id u82si168118lfg.0.2017.09.29.05.33.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Sep 2017 05:34:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::231 as permitted sender) client-ip=2607:f8b0:400e:c05::231;
+        Fri, 29 Sep 2017 05:33:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of noralf@tronnes.org designates 2a01:5b40:0:3005::1 as permitted sender) client-ip=2a01:5b40:0:3005::1;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rqcPD7OR;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::231 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x231.google.com with SMTP id v13so721265pgq.6
-        for <outreachy-kernel@googlegroups.com>; Fri, 29 Sep 2017 05:34:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-disposition:content-transfer-encoding:in-reply-to
-         :user-agent;
-        bh=Jz+nLz1ROrxyj7Oz39SR7nK26XcwN9J5Vp8rBK7/1RU=;
-        b=rqcPD7ORPso09NFOvhd0BKDv9g21CxhYqvwoKSqLKJwizwuZxfakI5nszMqO2LQp4g
-         I5LiCY/PD294dKjeYCjy2FfcI/tPXRPNernGqHWJhoA8hmACF6Y0BY0TCmmziQ7i9uXR
-         ljMb0qTQdtfweuXVgSYoOtVvH2y8TKeIJqot4CmilqxA6shs8NnuElvJkGm5LJJcAjRD
-         Ln3cwxnyBkxgx2uZZAb2orXNNYUylQfw9SnNPMOoZXoJD1hIXGYM20T+QOh4NwjUmOB5
-         cY6iD5/BgKFoZbVKCT8N9pNt4ELj4DXp1UWFsYdYC50iWGdmbX43gBk4rokLTYza2HsJ
-         1U5A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:references
-         :mime-version:content-disposition:content-transfer-encoding
-         :in-reply-to:user-agent;
-        bh=Jz+nLz1ROrxyj7Oz39SR7nK26XcwN9J5Vp8rBK7/1RU=;
-        b=Uvy/yCCWfeAlpRTvRZKF2hTYdq+m1LHcGUnrbwFhaDz8BaydOXQ9D7nCz3qHFEa52y
-         6rS4Xqhe0iw7LUfv8llHLHZ5dW3GqXOe4jwoGytut/p3mTKcVxZPVdlAAxors8hELK+C
-         OM+q8TX8mScRfBdlhOnaxXqbXBp6eJLrx2dXoqKkcEt3dXuHn1euawbfuPwVmmvwNRXr
-         YRpOmweh18ghKSVIClp2D0xp/XeT1BYoX0Svj7ZdX9CAxsMsyqZb62W1FD+ZvG6QbEDK
-         /BMBnVVHE+XkSSfZRXbVLZbedOtPe7DqjlZ6TShbv6eQD4vo8tPZcrjojrRR1+8BO7w3
-         /oqA==
-X-Gm-Message-State: AHPjjUgTKoRLlhmXfuaNVJfz/SPgvo1AV2TtVgM6B3qaH27euXUTAAuS
-	Fuba2mQIUeesHeuuvcuu2Xg=
-X-Google-Smtp-Source: AOwi7QAxmbtNBoXfeK1snSItWR77hFJGPMfsKnR7xYZoEGsQNP11UO0mcRlc/BeYavU1KDRXhfo5HA==
-X-Received: by 10.98.189.26 with SMTP id a26mr7490815pff.260.1506688488544;
-        Fri, 29 Sep 2017 05:34:48 -0700 (PDT)
-Return-Path: <meghana.madhyastha@gmail.com>
-Received: from meghana-HP-Pavilion-Notebook ([122.171.83.22])
-        by smtp.gmail.com with ESMTPSA id u27sm7092062pfl.76.2017.09.29.05.34.45
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Sep 2017 05:34:47 -0700 (PDT)
-Date: Fri, 29 Sep 2017 18:04:41 +0530
-From: Meghana Madhyastha <meghana.madhyastha@gmail.com>
-To: Noralf =?iso-8859-1?Q?Tr=F8nnes?= <noralf@tronnes.org>, daniel@ffwll.ch,
-	outreachy-kernel@googlegroups.com, dri-devel@lists.freedesktop.org
-Subject: Re: [PATCH v3 2/2] drm/tinydrm: Add devres versions of
- drm_of_find_backlight
-Message-ID: <20170929123438.GA29610@meghana-HP-Pavilion-Notebook>
+       spf=pass (google.com: domain of noralf@tronnes.org designates 2a01:5b40:0:3005::1 as permitted sender) smtp.mailfrom=noralf@tronnes.org
+Received: from 211.81-166-168.customer.lyse.net ([81.166.168.211]:59616 helo=[192.168.10.157])
+	by smtp.domeneshop.no with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+	(Exim 4.84_2)
+	(envelope-from <noralf@tronnes.org>)
+	id 1dxuTi-0002Mj-6h; Fri, 29 Sep 2017 14:33:14 +0200
+Subject: Re: [PATCH v3 1/2] drm/tinydrm: Move tinydrm_of_find_backlight into
+ drm_of.c
+To: Meghana Madhyastha <meghana.madhyastha@gmail.com>, daniel@ffwll.ch,
+ outreachy-kernel@googlegroups.com, dri-devel@lists.freedesktop.org
 References: <cover.1506589807.git.meghana.madhyastha@gmail.com>
- <bb974658fdf1945e13120b58f77755f8184a7212.1506589807.git.meghana.madhyastha@gmail.com>
- <6a467fc9-547e-2469-74fb-92384d2cae71@tronnes.org>
- <20170929031746.GA9859@meghana-HP-Pavilion-Notebook>
- <463f06a5-5e80-6781-19b0-7f228f9e040b@tronnes.org>
+ <e423bdc15522a0109bb98a479eac70409850c5be.1506589807.git.meghana.madhyastha@gmail.com>
+ <20170928140836.ja5dcovqxsmbdnha@phenom.ffwll.local>
+ <37f72839-d110-da4a-467a-cbae6cc0abc7@tronnes.org>
+ <20170929032231.GB9859@meghana-HP-Pavilion-Notebook>
+ <b87bff83-e9af-e095-2b58-8a0b3fb642e0@tronnes.org>
+ <20170929122025.GA29498@meghana-HP-Pavilion-Notebook>
+From: =?UTF-8?Q?Noralf_Tr=c3=b8nnes?= <noralf@tronnes.org>
+Message-ID: <4b32d910-f0af-e9cb-feb7-4bc4174bc9c3@tronnes.org>
+Date: Fri, 29 Sep 2017 14:33:12 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+In-Reply-To: <20170929122025.GA29498@meghana-HP-Pavilion-Notebook>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <463f06a5-5e80-6781-19b0-7f228f9e040b@tronnes.org>
-User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Fri, Sep 29, 2017 at 02:20:16PM +0200, Noralf Tr�nnes wrote:
-> 
-> Den 29.09.2017 05.17, skrev Meghana Madhyastha:
-> >On Thu, Sep 28, 2017 at 06:19:35PM +0200, Noralf Tr�nnes wrote:
-> >>Den 28.09.2017 11.15, skrev Meghana Madhyastha:
-> >>>Add devm_drm_of_find_backlight and the corresponding release
-> >>>function because some drivers such as tinydrm use devres versions
-> >>>of functions for requiring device resources.
-> >>>
-> >>>Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
-> >>>---
-> >>>Changes in v3:
-> >>>-None
-> >>>
-> >>>  drivers/gpu/drm/drm_of.c | 48 ++++++++++++++++++++++++++++++++++++++++++++++++
-> >>>  include/drm/drm_of.h     |  2 ++
-> >>>  2 files changed, 50 insertions(+)
-> >>>
-> >>>diff --git a/drivers/gpu/drm/drm_of.c b/drivers/gpu/drm/drm_of.c
-> >>>index d878d3a..238e8e5 100644
-> >>>--- a/drivers/gpu/drm/drm_of.c
-> >>>+++ b/drivers/gpu/drm/drm_of.c
-> >>>@@ -304,3 +304,51 @@ struct backlight_device *drm_of_find_backlight(struct device *dev)
-> >>>  	return backlight;
-> >>>  }
-> >>>  EXPORT_SYMBOL(drm_of_find_backlight);
-> >>>+
-> >>>+/**
-> >>>+ * devm_drm_of_find_backlight_release - Release backlight device
-> >>>+ * @dev: Device
-> >>>+ *
-> >>>+ * This is the release function corresponding to the devm_drm_of_find_backlight.
-> >>>+ * Each devres entry is associated with a release function.
-> >>>+ */
-> >>This is an internal function so no need for docs or exporting. I know
-> >>that some devm_ functions have explicit release functions, but I don't
-> >>think this is necessary since those users can just use
-> >>drm_of_find_backlight() directly instead.
-> >I have a question here. devm_drm_of_find_backlight_release is a
-> >wrapper around put_device which is passed as a parameter to
-> >devm_add_action in devm_drm_of_find_backlight. So isn't the function
-> >useful here ?
-> 
-> We need the function for devm_add_action(), but no one outside of this file
-> needs
-> it. Hence the static definition.
-> 
-> We can't use put_device directly:
-> ��� ret = devm_add_action(dev, put_device,
-> ��� ��� ��� ����� &backlight->dev);
-> because devm_add_action expects an argument like this: void (*action)(void
-> *)
-> and put_device is: void put_device(struct device *dev)
-> They differ in their argument type: void * vs. struct device *
-> The compiler would complain.
-> 
-> So we need a wrapper.
 
-Yes this is what I thought. Okay, I misunderstood your previous
-suggestion as removing the release function entirely which is why I
-asked my question. Now it makes sense and I understood.
+Den 29.09.2017 14.20, skrev Meghana Madhyastha:
+> On Fri, Sep 29, 2017 at 02:10:31PM +0200, Noralf Trønnes wrote:
+>> Den 29.09.2017 05.22, skrev Meghana Madhyastha:
+>>> On Thu, Sep 28, 2017 at 06:02:27PM +0200, Noralf Trønnes wrote:
+>>>> Den 28.09.2017 16.08, skrev Daniel Vetter:
+>>>>> On Thu, Sep 28, 2017 at 02:44:34PM +0530, Meghana Madhyastha wrote:
+>>>>>> Rename tinydrm_of_find_backlight to drm_of_find_backlight
+>>>>>> and move it into drm_of.c from tinydrm-helpers.c. This is
+>>>>>> because other drivers in the drm subsystem might need to call
+>>>>>> this function. In that case and otherwise, it is better from
+>>>>>> an organizational point of view to move it into drm_of.c along
+>>>>>> with the other _of.c functions.
+>>>>>>
+>>>>>> Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
+>>>>>> ---
+>>>>>> Changes in v3:
+>>>>>> -Change it back to a single patch from two patches in v2
+>>>>>>
+>>>>>>   drivers/gpu/drm/drm_of.c                       | 44 ++++++++++++++++++++++++++
+>>>>>>   drivers/gpu/drm/tinydrm/core/tinydrm-helpers.c | 40 -----------------------
+>>>>>>   drivers/gpu/drm/tinydrm/mi0283qt.c             |  3 +-
+>>>>>>   include/drm/drm_of.h                           |  1 +
+>>>>>>   include/drm/tinydrm/tinydrm-helpers.h          |  1 -
+>>>>>>   5 files changed, 47 insertions(+), 42 deletions(-)
+>>>>>>
+>>>>>> diff --git a/drivers/gpu/drm/drm_of.c b/drivers/gpu/drm/drm_of.c
+>>>>>> index 8dafbdf..d878d3a 100644
+>>>>>> --- a/drivers/gpu/drm/drm_of.c
+>>>>>> +++ b/drivers/gpu/drm/drm_of.c
+>>>>>> @@ -1,6 +1,7 @@
+>>>>>>   #include <linux/component.h>
+>>>>>>   #include <linux/export.h>
+>>>>>>   #include <linux/list.h>
+>>>>>> +#include <linux/backlight.h>
+>>>>>>   #include <linux/of_graph.h>
+>>>>>>   #include <drm/drmP.h>
+>>>>>>   #include <drm/drm_bridge.h>
+>>>>>> @@ -260,3 +261,46 @@ int drm_of_find_panel_or_bridge(const struct device_node *np,
+>>>>>>   	return ret;
+>>>>>>   }
+>>>>>>   EXPORT_SYMBOL_GPL(drm_of_find_panel_or_bridge);
+>>>>>> +
+>>>>>> +/**
+>>>>>> + * drm_of_find_backlight - Find backlight device in device-tree
+>>>>>> + * @dev: Device
+>>>>>> + *
+>>>>>> + * This function looks for a DT node pointed to by a property named 'backlight'
+>>>>>> + * and uses of_find_backlight_by_node() to get the backlight device.
+>>>>>> + * Additionally if the brightness property is zero, it is set to
+>>>>>> + * max_brightness.
+>>>>>> + *
+>>>>>> + * Note: It is the responsibility of the caller to call put_device() when
+>>>>>> + * releasing the resource.
+>>>>>> + *
+>>>>>> + * Returns:
+>>>>>> + * NULL if there's no backlight property.
+>>>>>> + * Error pointer -EPROBE_DEFER if the DT node is found, but no backlight device
+>>>>>> + * is found.
+>>>>>> + * If the backlight device is found, a pointer to the structure is returned.
+>>>>>> + */
+>>>>>> +struct backlight_device *drm_of_find_backlight(struct device *dev)
+>>>>>> +{
+>>>>>> +	struct backlight_device *backlight;
+>>>>>> +	struct device_node *np;
+>>>>>> +
+>>>>>> +	np = of_parse_phandle(dev->of_node, "backlight", 0);
+>>>>>> +	if (!np)
+>>>>>> +		return NULL;
+>>>>>> +
+>>>>>> +	backlight = of_find_backlight_by_node(np);
+>>>>>> +	of_node_put(np);
+>>>>>> +
+>>>>>> +	if (!backlight)
+>>>>>> +		return ERR_PTR(-EPROBE_DEFER);
+>>>>>> +
+>>>>>> +	if (!backlight->props.brightness) {
+>>>>>> +		backlight->props.brightness = backlight->props.max_brightness;
+>>>>>> +		DRM_DEBUG_KMS("Backlight brightness set to %d\n",
+>>>>>> +			      backlight->props.brightness);
+>>>>>> +	}
+>>>>>> +
+>>>>>> +	return backlight;
+>>>>>> +}
+>>>>>> +EXPORT_SYMBOL(drm_of_find_backlight);
+>>>>>> diff --git a/drivers/gpu/drm/tinydrm/core/tinydrm-helpers.c b/drivers/gpu/drm/tinydrm/core/tinydrm-helpers.c
+>>>>>> index bd6cce0..cd4c6a5 100644
+>>>>>> --- a/drivers/gpu/drm/tinydrm/core/tinydrm-helpers.c
+>>>>>> +++ b/drivers/gpu/drm/tinydrm/core/tinydrm-helpers.c
+>>>>>> @@ -237,46 +237,6 @@ void tinydrm_xrgb8888_to_gray8(u8 *dst, void *vaddr, struct drm_framebuffer *fb,
+>>>>>>   EXPORT_SYMBOL(tinydrm_xrgb8888_to_gray8);
+>>>>>>   /**
+>>>>>> - * tinydrm_of_find_backlight - Find backlight device in device-tree
+>>>>>> - * @dev: Device
+>>>>>> - *
+>>>>>> - * This function looks for a DT node pointed to by a property named 'backlight'
+>>>>>> - * and uses of_find_backlight_by_node() to get the backlight device.
+>>>>>> - * Additionally if the brightness property is zero, it is set to
+>>>>>> - * max_brightness.
+>>>>>> - *
+>>>>>> - * Returns:
+>>>>>> - * NULL if there's no backlight property.
+>>>>>> - * Error pointer -EPROBE_DEFER if the DT node is found, but no backlight device
+>>>>>> - * is found.
+>>>>>> - * If the backlight device is found, a pointer to the structure is returned.
+>>>>>> - */
+>>>>>> -struct backlight_device *tinydrm_of_find_backlight(struct device *dev)
+>>>>>> -{
+>>>>>> -	struct backlight_device *backlight;
+>>>>>> -	struct device_node *np;
+>>>>>> -
+>>>>>> -	np = of_parse_phandle(dev->of_node, "backlight", 0);
+>>>>>> -	if (!np)
+>>>>>> -		return NULL;
+>>>>>> -
+>>>>>> -	backlight = of_find_backlight_by_node(np);
+>>>>>> -	of_node_put(np);
+>>>>>> -
+>>>>>> -	if (!backlight)
+>>>>>> -		return ERR_PTR(-EPROBE_DEFER);
+>>>>>> -
+>>>>>> -	if (!backlight->props.brightness) {
+>>>>>> -		backlight->props.brightness = backlight->props.max_brightness;
+>>>>>> -		DRM_DEBUG_KMS("Backlight brightness set to %d\n",
+>>>>>> -			      backlight->props.brightness);
+>>>>>> -	}
+>>>>>> -
+>>>>>> -	return backlight;
+>>>>>> -}
+>>>>>> -EXPORT_SYMBOL(tinydrm_of_find_backlight);
+>>>>>> -
+>>>>>> -/**
+>>>>>>    * tinydrm_enable_backlight - Enable backlight helper
+>>>>>>    * @backlight: Backlight device
+>>>>>>    *
+>>>>>> diff --git a/drivers/gpu/drm/tinydrm/mi0283qt.c b/drivers/gpu/drm/tinydrm/mi0283qt.c
+>>>>>> index 7e5bb7d..5e3d635 100644
+>>>>>> --- a/drivers/gpu/drm/tinydrm/mi0283qt.c
+>>>>>> +++ b/drivers/gpu/drm/tinydrm/mi0283qt.c
+>>>>>> @@ -12,6 +12,7 @@
+>>>>>>   #include <drm/tinydrm/ili9341.h>
+>>>>>>   #include <drm/tinydrm/mipi-dbi.h>
+>>>>>>   #include <drm/tinydrm/tinydrm-helpers.h>
+>>>>>> +#include <drm/drm_of.h>
+>>>>>>   #include <linux/delay.h>
+>>>>>>   #include <linux/gpio/consumer.h>
+>>>>>>   #include <linux/module.h>
+>>>>>> @@ -189,7 +190,7 @@ static int mi0283qt_probe(struct spi_device *spi)
+>>>>>>   	if (IS_ERR(mipi->regulator))
+>>>>>>   		return PTR_ERR(mipi->regulator);
+>>>>>> -	mipi->backlight = tinydrm_of_find_backlight(dev);
+>>>>>> +	mipi->backlight = drm_of_find_backlight(dev);
+>>>>>>   	if (IS_ERR(mipi->backlight))
+>>>>>>   		return PTR_ERR(mipi->backlight);
+>>>>>> diff --git a/include/drm/drm_of.h b/include/drm/drm_of.h
+>>>>>> index 104dd51..e8fba5b 100644
+>>>>>> --- a/include/drm/drm_of.h
+>>>>>> +++ b/include/drm/drm_of.h
+>>>>>> @@ -29,6 +29,7 @@ int drm_of_find_panel_or_bridge(const struct device_node *np,
+>>>>>>   				int port, int endpoint,
+>>>>>>   				struct drm_panel **panel,
+>>>>>>   				struct drm_bridge **bridge);
+>>>>>> +struct backlight_device *drm_of_find_backlight(struct device *dev);
+>>>>>>   #else
+>>>>>>   static inline uint32_t drm_of_find_possible_crtcs(struct drm_device *dev,
+>>>>>>   						  struct device_node *port)
+>>>>> Minor detail I missed: The dummy version for the #else here is missing.
+>>>>> Not a problem for tinydrm, but might be an issue for a driver where
+>>>>> CONFIG_OF is optional.
+>>>> Yeah, we need a dummy version. tinydrm can in theory be used on non-DT
+>>>> platforms. The only resource that isn't available there is backlight
+>>>> since there is no platform or ACPI way of describing that dependency.
+>>>>
+>>>> Another problem I discovered when trying to compile this, is that if
+>>>> DRM is builtin and LCD_CLASS_DEVICE is a module:
+>>>>
+>>>> drivers/gpu/drm/drm_of.c:292: undefined reference to
+>>>> `of_find_backlight_by_node'
+>>>>
+>>>> I see that I solved this in tinydrm by just selecting
+>>>> BACKLIGHT_LCD_SUPPORT and LCD_CLASS_DEVICE. I'm not aware of a way to
+>>>> force LCD_CLASS_DEVICE to be builtin if DRM is builtin.
+>>>>
+>>>> Arnd fixed a similar type of dependecy in the repaper driver by forcing
+>>>> repaper to be a module if necessary. To be honest, I don't know why his
+>>>> fix works:
+>>>> https://github.com/torvalds/linux/commit/8312a3fe84b96e30a010fa20f933606d976ac002
+>>> I didn't quite understand how we could use this fix for the current
+>>> case. Isn't this specific to the repaper driver dependency ?
+>> This is the solution Daniel mentions:
+>>
+>>   menuconfig DRM
+>>       tristate "Direct Rendering Manager (XFree86 4.1.0 and higher DRI
+>> support)"
+>>       depends on (AGP || AGP=n) && !EMULATED_CMPXCHG && HAS_DMA
+>> +   depends on (LCD_CLASS_DEVICE || LCD_CLASS_DEVICE=n)
+> I had tried this but it resulted in a recursive dependencies error.
 
-Thanks for the clarifications.
+What's the error?
+Could this have something to do with tinydrm selecting backlight and 
+depending on DRM?
 
-Regards,
-Meghana
-> >>>+static void devm_drm_of_find_backlight_release(void *data)
-> >>>+{
-> >>>+	put_device(data);
-> >>>+}
-> >>>+EXPORT_SYMBOL(devm_drm_of_find_backlight_release);
-> >>>+
-> >>>+/**
-> >>>+ * devm_drm_of_find_backlight - Find backlight device in device-tree
-> >>>+ * devres version of the function
-> >>>+ * @dev: Device
-> >>>+ *
-> >>>+ * This is the devres version of the function drm_of_find_backlight.
-> >>>+ * Some drivers such as tinydrm use devres versions of functions for
-> >>No need to mention tinydrm here.
-> >>
-> >>>+ * requiring device resources.
-> >>>+ *
-> >>>+ * Returns:
-> >>>+ * NULL if there's no backlight property.
-> >>>+ * Error pointer -EPROBE_DEFER if the DT node is found, but no backlight device
-> >>>+ * is found.
-> >>>+ * If the backlight device is found, a pointer to the structure is returned.
-> >>>+ */
-> >>>+struct backlight_device *devm_drm_of_find_backlight(struct device *dev)
-> >>>+{
-> >>>+	struct backlight_device *backlight;
-> >>>+	int ret;
-> >>>+
-> >>>+	backlight = drm_of_find_backlight(dev);
-> >>>+	if (IS_ERR_OR_NULL(backlight))
-> >>>+		return backlight;
-> >>>+
-> >>>+	ret = devm_add_action(dev, devm_drm_of_find_backlight_release,
-> >>>+			      &backlight->dev);
-> >>>+	if (ret) {
-> >>>+		put_device(&backlight->dev);
-> >>>+		return ERR_PTR(ret);
-> >>>+	}
-> >>>+
-> >>>+	return backlight;
-> >>>+}
-> >>>+EXPORT_SYMBOL(devm_drm_of_find_backlight);
-> >>>diff --git a/include/drm/drm_of.h b/include/drm/drm_of.h
-> >>>index e8fba5b..071fb3b 100644
-> >>>--- a/include/drm/drm_of.h
-> >>>+++ b/include/drm/drm_of.h
-> >>>@@ -30,7 +30,9 @@ int drm_of_find_panel_or_bridge(const struct device_node *np,
-> >>>  				struct drm_panel **panel,
-> >>>  				struct drm_bridge **bridge);
-> >>>  struct backlight_device *drm_of_find_backlight(struct device *dev);
-> >>>+struct backlight_device *devm_drm_of_find_backlight(struct device *dev);
-> >>>  #else
-> >>We need a dummy version of devm_drm_of_find_backlight() here that
-> >>returns NULL as in the previous patch.
-> >>
-> >>>+static void devm_drm_of_find_backlight_release(void *data);
-> >>And this isn't needed as explained above.
-> >>>  static inline uint32_t drm_of_find_possible_crtcs(struct drm_device *dev,
-> >>>  						  struct device_node *port)
-> >>>  {
-> >>I'd appreciate if you could also switch mi0283qt over to this helper :-)
-> >>
-> >>Noralf.
-> >>
-> >>
-> 
+Noralf.
+
+> Regards,
+> Meghana
+>> We also have another problem: CONFIG_OF=y && CONFIG_LCD_CLASS_DEVICE=n
+>> That will result in a missing symbol error.
+>>
+>> You can try this change to include/linux/backlight.h:
+>>
+>> -#ifdef CONFIG_OF
+>> +#if defined(CONFIG_OF) && IS_ENABLED(CONFIG_LCD_CLASS_DEVICE)
+>>   struct backlight_device *of_find_backlight_by_node(struct device_node
+>> *node);
+>>   #else
+>>   static inline struct backlight_device *
+>>   of_find_backlight_by_node(struct device_node *node)
+>>   {
+>>       return NULL;
+>>   }
+>>   #endif
+>>
+>> This will need to be a patch of its own since it's another subsystem.
+>>
+>> You have to try the various kconfig variations to be sure, I'm no kconfig
+>> expert.
+>> CONFIG_OF=y/n, CONFIG_DRM=y/m, CONFIG_LCD_CLASS_DEVICE=y/m/n
+>>
+>> Noralf.
+> Sure will try this.
+>
+>>>> Another way of solving this is to put the function in
+>>>> drivers/gpu/drm/drm_backlight.c and add a DRM_BACKLIGHT konfig option
+>>>> that does the selection.
+>>>>
+>>>> Noralf.
+>>>>
+>>>>> Otherwise I think this patch looks good.
+>>>>> -Daniel
+>>>>>
+>>>>>> diff --git a/include/drm/tinydrm/tinydrm-helpers.h b/include/drm/tinydrm/tinydrm-helpers.h
+>>>>>> index d554ded..e40ef2d 100644
+>>>>>> --- a/include/drm/tinydrm/tinydrm-helpers.h
+>>>>>> +++ b/include/drm/tinydrm/tinydrm-helpers.h
+>>>>>> @@ -46,7 +46,6 @@ void tinydrm_xrgb8888_to_rgb565(u16 *dst, void *vaddr,
+>>>>>>   void tinydrm_xrgb8888_to_gray8(u8 *dst, void *vaddr, struct drm_framebuffer *fb,
+>>>>>>   			       struct drm_clip_rect *clip);
+>>>>>> -struct backlight_device *tinydrm_of_find_backlight(struct device *dev);
+>>>>>>   int tinydrm_enable_backlight(struct backlight_device *backlight);
+>>>>>>   int tinydrm_disable_backlight(struct backlight_device *backlight);
+>>>>>> -- 
+>>>>>> 2.7.4
+>>>>>>
+
 
