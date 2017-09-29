@@ -1,157 +1,154 @@
 X-GM-THRID: 6471138099019644928
-X-Received: by 10.157.34.201 with SMTP id y67mr1662953ota.165.1506718399960;
-        Fri, 29 Sep 2017 13:53:19 -0700 (PDT)
+X-Received: by 10.98.103.26 with SMTP id b26mr602767pfc.46.1506679248029;
+        Fri, 29 Sep 2017 03:00:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.202.206.141 with SMTP id e135ls1758525oig.4.gmail; Fri, 29 Sep
- 2017 13:53:19 -0700 (PDT)
-X-Received: by 10.157.35.29 with SMTP id j29mr1068058otb.105.1506718399072;
-        Fri, 29 Sep 2017 13:53:19 -0700 (PDT)
-Received: by 10.202.84.139 with SMTP id i133msoib;
-        Fri, 29 Sep 2017 08:24:59 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QD7iu+luUQjLiwqT8f+3iH2Gk+V3TJkV5GkotJ5toqtLGJCM6Pkb7FHuur9Yc4DEczL3xwW
-X-Received: by 10.107.162.83 with SMTP id l80mr4431651ioe.133.1506698698185;
-        Fri, 29 Sep 2017 08:24:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506698698; cv=none;
+Received: by 10.159.216.152 with SMTP id s24ls1879720plp.5.gmail; Fri, 29 Sep
+ 2017 03:00:47 -0700 (PDT)
+X-Received: by 10.98.79.157 with SMTP id f29mr599694pfj.13.1506679247040;
+        Fri, 29 Sep 2017 03:00:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506679247; cv=none;
         d=google.com; s=arc-20160816;
-        b=kJN5WFEyN6GB1d15LxV7FcvFmzGnWsLW0IZlNPb2lBLrU9Acdq685Yc7aeiAu4muar
-         bsqTevi73zRzezclgZvV8sgt+vFlWXpydhn1GSTjzCvmvq9dnQYzSaB75DJHqB61i54w
-         jWiT1oW38IIzN7BXAnTM705J0lmssC00vRn1F94QzcwpjlyPNgka1yk2uWCjkBrkUAIZ
-         v3IqZZ6rbtkm4KGbnWp9m4Haq84+35Z98a3UHg2w+P1Ux7CeiWSmTk86AZysWxLKpCN9
-         PiwF0zsetpETkMWGrpVbJ1jo4NW03dHF53YsASRcYYhsw08RBbnxTDU6H8uPr4mjHEV3
-         ez5Q==
+        b=go801vJ+dCVgiI6ar9LDdCrzlDKg881dbCfFpHI2y0RR3CLcRwAx4K+sqmYUoeR1Dh
+         wYC0yMAGaFwyYi9V7pD4iXmiXSWOWuuC3Q2fr/xPcqqbsV3uLB1WTq32zUg7Ahm3buTG
+         bBahKXmDFBsPazxpqkTSCJ8Qpmx+FUCMwqta6v0q8z0KhddP9tDm2INB/cbd/TTbopF1
+         6AvGYkOYsM3iAVPYitFToPBctTd56koL1lum5FGuONYzBObMXIxFGqU2kIZ8dkIg8408
+         c0K5z/EefPvFdCFPCO5KmOpCi6QqnXtezfXPhIvm+nqCggsLQl7Cfvjux7ZSeuRGHecg
+         05gQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:arc-authentication-results;
-        bh=1CS1fvhDs6LVWRVJnenIQqufziC5ISovmikynlZ7FnE=;
-        b=0yjMKqP4S7IVxRJXR7MsXMBRvUA3BAyn14KDQ74ASs//JgfnFsbRTpCKEpzsY8dhek
-         J9jzI38586/z0XtDwxtpDs/GlKhrtzCoyjihR0IPxOZi7/9ic1gkiNDkTH+RBlmGrTGW
-         Nr6sg2hil799C0ZfZvcEBHbUK4eJ+hz+dlSMCfVejQyTNYdRiA2ZAK7/KHjQgdBwGefc
-         C/7jEThpW7hwyeAj0meLvw7tmX0ULrN9qjHckwkQG341W/OmLiJHjWxmpk3D4ySH4tk1
-         7O1oCY0RHuip6WAFfSrlT9c1fp12rcGkj3Ea1tLnO3WyTtES/OGP9xOnIQgysShOemcQ
-         3rSg==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=d3lToHBP0OtPcU0pOJ3XB5YJSEWiDGQkDp2kIEQlQtk=;
+        b=xuOnWu48LtEOWndMdriaAAn3/U9N40TtNWzeUP0JpXfEW9O4dnplFAIGxKNt2OvHC4
+         U/BuUS/yMqWvNHIvwQTSFPHNCrrLQWSNSe5y2D9ewnBAZufU7CXpGxclbDdpuNnTZ+Hi
+         IKnju7NkRgwdv5WsDl4AuetrJTWTFof+IdNPXioJxGK1eTfuQjNv9lGqLhbHpoR05+96
+         MzcTunVtb069ugjCXPD0qR4Gp9WZYFl7ogp5qV2IylXZzwDiyKN+qWN1Kdm/tXz6oqQB
+         2XuiHcVklWJEnoNa+6zV3wPxAZgIFVVm1hjxbAU/S0NUcEqP+n23vEvG0zCDpbAkpxKW
+         WUzg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of liviu.dudau@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=Liviu.Dudau@arm.com
-Return-Path: <Liviu.Dudau@arm.com>
-Received: from foss.arm.com (foss.arm.com. [217.140.101.70])
-        by gmr-mx.google.com with ESMTP id m186si186165itd.9.2017.09.29.08.24.57
-        for <outreachy-kernel@googlegroups.com>;
-        Fri, 29 Sep 2017 08:24:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of liviu.dudau@arm.com designates 217.140.101.70 as permitted sender) client-ip=217.140.101.70;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DyAtU3iH;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <srishtishar@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id z74si499262pfj.21.2017.09.29.03.00.47
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 29 Sep 2017 03:00:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of liviu.dudau@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=Liviu.Dudau@arm.com
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 0FF591529;
-	Fri, 29 Sep 2017 08:24:57 -0700 (PDT)
-Received: from e110455-lin.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.72.51.249])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D4AC53F58C;
-	Fri, 29 Sep 2017 08:24:56 -0700 (PDT)
-Received: by e110455-lin.cambridge.arm.com (Postfix, from userid 1000)
-	id 38187680153; Fri, 29 Sep 2017 16:24:55 +0100 (BST)
-Date: Fri, 29 Sep 2017 16:24:55 +0100
-From: Liviu Dudau <liviu.dudau@arm.com>
-To: Srishti Sharma <srishtishar@gmail.com>
-Cc: daniel.vetter@ffwll.ch, seanpaul@chromium.org, brian.starkey@arm.com,
-	malidp@foss.arm.com, airlied@linux.ie,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] drm/arm: Replace instances of drm_dev_unref with
- drm_dev_put.
-Message-ID: <20170929152455.GL6681@e110455-lin.cambridge.arm.com>
-References: <1506679240-7061-1-git-send-email-srishtishar@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <1506679240-7061-1-git-send-email-srishtishar@gmail.com>
-User-Agent: Mutt/1.9.0 (2017-09-02)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DyAtU3iH;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x244.google.com with SMTP id i23so1021440pfi.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 29 Sep 2017 03:00:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=d3lToHBP0OtPcU0pOJ3XB5YJSEWiDGQkDp2kIEQlQtk=;
+        b=DyAtU3iHwq5A+4U1kJdmsEDSX/a0zjVogrJoU3kQeOH2lP9k7k9g9kONAZFyH0YqGU
+         c8cDPkF7ZAmRQdsg0uRcBTD5J07uzDAEdBWxj1F7774tQMgpXo9FuxbgQO2Abca2Sm/W
+         pUJdYhggtzbT9f2cCIAmZF8xeCH1l2yDIyErhTyXUSzhIfudaGYL5T5kVt+mEf23SQmM
+         QzqSa49MjnX5bvxs9dGdVTPMEX6+0+EI3k+lM7b/fq4mQMEwOnvaqPqzrZtg9N7ea2HE
+         n+Nh43yeDssaiZJUviMxzDpbPjvvyIE2OzlESO/xHN+BHHxJbyA2b9wiFuKQVrm5u6Ro
+         VOHw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=d3lToHBP0OtPcU0pOJ3XB5YJSEWiDGQkDp2kIEQlQtk=;
+        b=HlXtoXHTgM9ieaqn0AZmSqe5xHNj4fBwYiNsuGUFCytLdrIQlZjzyrMTHqrY8wV+oF
+         2uhJolZMQLmSZBCmN/qXYFuJHn0dmiYbdwRUlh+BmYp72zRJfK5DymIysIT1Hf5iYutH
+         4qxeiSWkP5p0PBXHDRs/YETNn+QyCePFxt04r0ftCCEowJOwNVFhfp5+wXn2ph51m9ZC
+         FpjnTxh+bGxEIcDnsJEd6/AKQWuiBQa65Xe2JXbq3x6WtdAWxXqeEwwfNqlN1knm5LRB
+         NDzEDj4bC9rfO08i5JC5PgJNWtvP+wSGcj/cUsl2quF2YirZ60sGqI5EJ7cejm7M2c8C
+         WLog==
+X-Gm-Message-State: AHPjjUi+UIzHeQBEXBV99CIdvwFm3hZn2ursgW+2OmdGSR1DnzKvBbis
+	eP98uGzpnX4NqFXd2Az2t0Y=
+X-Google-Smtp-Source: AOwi7QCbmiS4j0lIrh2p/lBnKOaHnijT/7Lw/GM38CH8bg94YDtYDtHuFlHSFnjywYOl3AoP2pg3KA==
+X-Received: by 10.84.131.103 with SMTP id 94mr6418050pld.302.1506679246761;
+        Fri, 29 Sep 2017 03:00:46 -0700 (PDT)
+Return-Path: <srishtishar@gmail.com>
+Received: from srishti-PRODiiGY-945G ([122.175.215.134])
+        by smtp.gmail.com with ESMTPSA id 77sm6587421pfi.103.2017.09.29.03.00.45
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 29 Sep 2017 03:00:46 -0700 (PDT)
+From: Srishti Sharma <srishtishar@gmail.com>
+To: daniel.vetter@ffwll.ch
+Cc: seanpaul@chromium.org,
+	liviu.dudau@arm.com,
+	brian.starkey@arm.com,
+	malidp@foss.arm.com,
+	airlied@linux.ie,
+	dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com,
+	Srishti Sharma <srishtishar@gmail.com>
+Subject: [PATCH] drm/arm: Replace instances of drm_dev_unref with drm_dev_put.
+Date: Fri, 29 Sep 2017 15:30:40 +0530
+Message-Id: <1506679240-7061-1-git-send-email-srishtishar@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-Hi Srishti,
+Replace drm_dev_unref with drm_dev_put as it is more consistent
+with kernel coding style. Done using the following semantic
+patch by coccinelle.
 
-On Fri, Sep 29, 2017 at 03:30:40PM +0530, Srishti Sharma wrote:
-> Replace drm_dev_unref with drm_dev_put as it is more consistent
-> with kernel coding style. Done using the following semantic
-> patch by coccinelle.
+@r@
+expression e;
+@@
 
-Thanks for the patch!
+-drm_dev_unref();
++drm_dev_put();
 
-Acked-by: Liviu Dudau <liviu.dudau@arm.com>
+Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+---
+ drivers/gpu/drm/arm/hdlcd_drv.c  | 4 ++--
+ drivers/gpu/drm/arm/malidp_drv.c | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-I'm going to pull this patch into the mali-dp tree next week when
-I'm preparing an update of that tree.
-
-Best regards,
-Liviu
-
-> 
-> @r@
-> expression e;
-> @@
-> 
-> -drm_dev_unref();
-> +drm_dev_put();
-> 
-> Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
-> ---
->  drivers/gpu/drm/arm/hdlcd_drv.c  | 4 ++--
->  drivers/gpu/drm/arm/malidp_drv.c | 4 ++--
->  2 files changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/arm/hdlcd_drv.c b/drivers/gpu/drm/arm/hdlcd_drv.c
-> index f9bda7b..1a96462 100644
-> --- a/drivers/gpu/drm/arm/hdlcd_drv.c
-> +++ b/drivers/gpu/drm/arm/hdlcd_drv.c
-> @@ -353,7 +353,7 @@ static int hdlcd_drm_bind(struct device *dev)
->  err_free:
->  	drm_mode_config_cleanup(drm);
->  	dev_set_drvdata(dev, NULL);
-> -	drm_dev_unref(drm);
-> +	drm_dev_put(drm);
->  
->  	return ret;
->  }
-> @@ -378,7 +378,7 @@ static void hdlcd_drm_unbind(struct device *dev)
->  	pm_runtime_disable(drm->dev);
->  	of_reserved_mem_device_release(drm->dev);
->  	drm_mode_config_cleanup(drm);
-> -	drm_dev_unref(drm);
-> +	drm_dev_put(drm);
->  	drm->dev_private = NULL;
->  	dev_set_drvdata(dev, NULL);
->  }
-> diff --git a/drivers/gpu/drm/arm/malidp_drv.c b/drivers/gpu/drm/arm/malidp_drv.c
-> index 7ae94a1..1b92f41 100644
-> --- a/drivers/gpu/drm/arm/malidp_drv.c
-> +++ b/drivers/gpu/drm/arm/malidp_drv.c
-> @@ -665,7 +665,7 @@ static int malidp_bind(struct device *dev)
->  		malidp_runtime_pm_suspend(dev);
->  	drm->dev_private = NULL;
->  	dev_set_drvdata(dev, NULL);
-> -	drm_dev_unref(drm);
-> +	drm_dev_put(drm);
->  alloc_fail:
->  	of_reserved_mem_device_release(dev);
->  
-> @@ -698,7 +698,7 @@ static void malidp_unbind(struct device *dev)
->  		malidp_runtime_pm_suspend(dev);
->  	drm->dev_private = NULL;
->  	dev_set_drvdata(dev, NULL);
-> -	drm_dev_unref(drm);
-> +	drm_dev_put(drm);
->  	of_reserved_mem_device_release(dev);
->  }
->  
-> -- 
-> 2.7.4
-> 
-
+diff --git a/drivers/gpu/drm/arm/hdlcd_drv.c b/drivers/gpu/drm/arm/hdlcd_drv.c
+index f9bda7b..1a96462 100644
+--- a/drivers/gpu/drm/arm/hdlcd_drv.c
++++ b/drivers/gpu/drm/arm/hdlcd_drv.c
+@@ -353,7 +353,7 @@ static int hdlcd_drm_bind(struct device *dev)
+ err_free:
+ 	drm_mode_config_cleanup(drm);
+ 	dev_set_drvdata(dev, NULL);
+-	drm_dev_unref(drm);
++	drm_dev_put(drm);
+ 
+ 	return ret;
+ }
+@@ -378,7 +378,7 @@ static void hdlcd_drm_unbind(struct device *dev)
+ 	pm_runtime_disable(drm->dev);
+ 	of_reserved_mem_device_release(drm->dev);
+ 	drm_mode_config_cleanup(drm);
+-	drm_dev_unref(drm);
++	drm_dev_put(drm);
+ 	drm->dev_private = NULL;
+ 	dev_set_drvdata(dev, NULL);
+ }
+diff --git a/drivers/gpu/drm/arm/malidp_drv.c b/drivers/gpu/drm/arm/malidp_drv.c
+index 7ae94a1..1b92f41 100644
+--- a/drivers/gpu/drm/arm/malidp_drv.c
++++ b/drivers/gpu/drm/arm/malidp_drv.c
+@@ -665,7 +665,7 @@ static int malidp_bind(struct device *dev)
+ 		malidp_runtime_pm_suspend(dev);
+ 	drm->dev_private = NULL;
+ 	dev_set_drvdata(dev, NULL);
+-	drm_dev_unref(drm);
++	drm_dev_put(drm);
+ alloc_fail:
+ 	of_reserved_mem_device_release(dev);
+ 
+@@ -698,7 +698,7 @@ static void malidp_unbind(struct device *dev)
+ 		malidp_runtime_pm_suspend(dev);
+ 	drm->dev_private = NULL;
+ 	dev_set_drvdata(dev, NULL);
+-	drm_dev_unref(drm);
++	drm_dev_put(drm);
+ 	of_reserved_mem_device_release(dev);
+ }
+ 
 -- 
-====================
-| I would like to |
-| fix the world,  |
-| but they're not |
-| giving me the   |
- \ source code!  /
-  ---------------
-    ¯\_(ツ)_/¯
+2.7.4
+
 
