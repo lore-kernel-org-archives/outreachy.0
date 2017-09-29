@@ -1,112 +1,157 @@
-X-GM-THRID: 6948321878027010048
-X-Received: by 2002:a0c:ff48:: with SMTP id y8mr2238840qvt.8.1617782255770;
-        Wed, 07 Apr 2021 00:57:35 -0700 (PDT)
+X-GM-THRID: 6471138099019644928
+X-Received: by 10.157.34.201 with SMTP id y67mr1662953ota.165.1506718399960;
+        Fri, 29 Sep 2017 13:53:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:7a82:: with SMTP id v124ls819344qkc.3.gmail; Wed, 07 Apr
- 2021 00:57:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy1KFn6sspGUIgSfnd3OHqjr/sIcE5a1J+zmfMPp0mcTVHdD3DpBEjfwma+ULlw9LgJsrSN
-X-Received: by 2002:a05:620a:22d0:: with SMTP id o16mr1909250qki.376.1617782254933;
-        Wed, 07 Apr 2021 00:57:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617782254; cv=none;
+Received: by 10.202.206.141 with SMTP id e135ls1758525oig.4.gmail; Fri, 29 Sep
+ 2017 13:53:19 -0700 (PDT)
+X-Received: by 10.157.35.29 with SMTP id j29mr1068058otb.105.1506718399072;
+        Fri, 29 Sep 2017 13:53:19 -0700 (PDT)
+Received: by 10.202.84.139 with SMTP id i133msoib;
+        Fri, 29 Sep 2017 08:24:59 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QD7iu+luUQjLiwqT8f+3iH2Gk+V3TJkV5GkotJ5toqtLGJCM6Pkb7FHuur9Yc4DEczL3xwW
+X-Received: by 10.107.162.83 with SMTP id l80mr4431651ioe.133.1506698698185;
+        Fri, 29 Sep 2017 08:24:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506698698; cv=none;
         d=google.com; s=arc-20160816;
-        b=OhKMAQkT3btT+B5VmRbocT/ATXCLxYCyfcOoMS8R7XS1fBAEZZ7aWFC4fQuV4D3GUp
-         5xPE7+Legb2kXsCNFYIGI/yZomIpIs7SKAis2mTSMoVxy7CCU8XcNF8TkUCt+wFuXSG3
-         dLE49zqkEJ4GP5WpQqez0tGuAw3esTqLkCZ43TiHQBtqtd3MzFba5rEWxBdHeOs6QYMf
-         PYGbq2jiszHnyEs0pOEXHb0jHXNLRFqyxWR9jxc7EPPSD5156X4N2iG9Ei0n60LWOo/Q
-         VELFEGHgjYOeOhqFmmxyaoopyv7T74TxnGHOlqmluHA2aUMMIuGX2qRXuguIrHRrX6W/
-         GWiQ==
+        b=kJN5WFEyN6GB1d15LxV7FcvFmzGnWsLW0IZlNPb2lBLrU9Acdq685Yc7aeiAu4muar
+         bsqTevi73zRzezclgZvV8sgt+vFlWXpydhn1GSTjzCvmvq9dnQYzSaB75DJHqB61i54w
+         jWiT1oW38IIzN7BXAnTM705J0lmssC00vRn1F94QzcwpjlyPNgka1yk2uWCjkBrkUAIZ
+         v3IqZZ6rbtkm4KGbnWp9m4Haq84+35Z98a3UHg2w+P1Ux7CeiWSmTk86AZysWxLKpCN9
+         PiwF0zsetpETkMWGrpVbJ1jo4NW03dHF53YsASRcYYhsw08RBbnxTDU6H8uPr4mjHEV3
+         ez5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:date:from
-         :dkim-signature;
-        bh=GyqCSJDTppuuFfpUrZ7k/G3TcyInJOqMzJqN1ipUF+4=;
-        b=xuIvYAgS8rA4+JI+IjbL3E7HJM2h6HOdmdbGa/4F1H4QJKgA4YpWatq3S5sRbU4SL7
-         Z9996ri661ziNGEMjIgJoyEDlp1rW8LKC1uWLc7tIPQFEgWw4LUYDBx7mSeJJp5WzlMX
-         Dgp610D1FOhlykvVChoQwfWkJXMjNyRcV3tXHpcc8MdoupVSXvTsI30TWC4rlHHgakpl
-         hVIrwu5GgtwAVzZzZPoAP4QH7nlZ/aBq5LhJL511hg78nhDjbGWtBybBvUM4IMq/u4lX
-         dmcQ/PvHB5Kj9OhCM8dBL1DFvqjTQgvv2YuDiW8EBJlRNSZkV/sc6n7nLIDx3KUTgYFC
-         HTlQ==
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:arc-authentication-results;
+        bh=1CS1fvhDs6LVWRVJnenIQqufziC5ISovmikynlZ7FnE=;
+        b=0yjMKqP4S7IVxRJXR7MsXMBRvUA3BAyn14KDQ74ASs//JgfnFsbRTpCKEpzsY8dhek
+         J9jzI38586/z0XtDwxtpDs/GlKhrtzCoyjihR0IPxOZi7/9ic1gkiNDkTH+RBlmGrTGW
+         Nr6sg2hil799C0ZfZvcEBHbUK4eJ+hz+dlSMCfVejQyTNYdRiA2ZAK7/KHjQgdBwGefc
+         C/7jEThpW7hwyeAj0meLvw7tmX0ULrN9qjHckwkQG341W/OmLiJHjWxmpk3D4ySH4tk1
+         7O1oCY0RHuip6WAFfSrlT9c1fp12rcGkj3Ea1tLnO3WyTtES/OGP9xOnIQgysShOemcQ
+         3rSg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Yhg7XiEV;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::62c as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from mail-pl1-x62c.google.com (mail-pl1-x62c.google.com. [2607:f8b0:4864:20::62c])
-        by gmr-mx.google.com with ESMTPS id a15si3447222qtn.4.2021.04.07.00.57.34
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 07 Apr 2021 00:57:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::62c as permitted sender) client-ip=2607:f8b0:4864:20::62c;
+       spf=pass (google.com: domain of liviu.dudau@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=Liviu.Dudau@arm.com
+Return-Path: <Liviu.Dudau@arm.com>
+Received: from foss.arm.com (foss.arm.com. [217.140.101.70])
+        by gmr-mx.google.com with ESMTP id m186si186165itd.9.2017.09.29.08.24.57
+        for <outreachy-kernel@googlegroups.com>;
+        Fri, 29 Sep 2017 08:24:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of liviu.dudau@arm.com designates 217.140.101.70 as permitted sender) client-ip=217.140.101.70;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Yhg7XiEV;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::62c as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x62c.google.com with SMTP id g10so8912117plt.8
-        for <outreachy-kernel@googlegroups.com>; Wed, 07 Apr 2021 00:57:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:date:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=GyqCSJDTppuuFfpUrZ7k/G3TcyInJOqMzJqN1ipUF+4=;
-        b=Yhg7XiEVh0NLRIwQs0dPjoCJ9Iy1xihWOS5sk8ACN3rBpTryEIcQXRwx5FHhnVulW4
-         mqzX4gVlA2Ax6zuMF9nG1ySEKzZ1vpBApmJOuNYlNWOEcdIrXhjkWIb6rncZZYwuJsl2
-         Xqpqhmw/EMERxT3b9NHEKZjwZ7gdptQuiuWIj7QlxIejY5/YaeWthEh13s06y9oxEPey
-         WWmly4Ve9FF2vM3VS/GyKmy/bVMRRwKTqXZRdRKukjxzqkCyByPLVjsrsBwo7xDdF06W
-         3TEpP33LFKm87imAyUmDjcixr4MpwMe/haJ9g8aKHaX5wnxALB2/HwUgETEZ1riTVP5X
-         yuAg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:date:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=GyqCSJDTppuuFfpUrZ7k/G3TcyInJOqMzJqN1ipUF+4=;
-        b=eDi9wzRhh2YXj1o9tQesOvSxPA9BH+HqPfdOv3UOzvJnA48JljCM5l1A1OEvKX0iky
-         bYiVI4VfWPTnCtn9C6ihIilTmxvrlydeMXNyA9+CwV48JgQcpJnsVlq3vANtPZNqFyNM
-         0FKTUWa5VuLpX48VDkiXdRNK31SBgFu5TfEQ9kKv/xaZ9li21cw8Io2yDtXonKWfeuKJ
-         35svmodYR41YnPd3FPuLGOn32eunVc7ukM9kYjiwZ4KZvUun7KpEzYgwxoyhVMHIarsM
-         NnoSV0uYyaFNCv7xbrfxSCHPQOmGAKyURXRmYKcFG9PEB7bDCasFX9Ytzq4ZNE/5vojA
-         eCpg==
-X-Gm-Message-State: AOAM530c7thM/hEGtjOn+WJM7UOpVWMK9C7w9pL6ln747bArLz/YKJV7
-	/V8nv1fq1Bw5FS/uTyLKiS8NmDOrQDAarrq2
-X-Received: by 2002:a17:90b:142:: with SMTP id em2mr2109427pjb.59.1617782254060;
-        Wed, 07 Apr 2021 00:57:34 -0700 (PDT)
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from kali ([152.57.146.48])
-        by smtp.gmail.com with ESMTPSA id n23sm4335230pgl.49.2021.04.07.00.57.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 07 Apr 2021 00:57:33 -0700 (PDT)
-From: Mitali Borkar <mitaliborkar810@gmail.com>
-X-Google-Original-From: Mitali Borkar <mitaliborkar810@example.com>
-Date: Wed, 7 Apr 2021 13:27:29 +0530
-To: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
-	gregkh@linuxfoundation.org
-Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
-Subject: [PATCH] staging: rtl8712: fix avoid CamelCase in xmit_osdep.h
-Message-ID: <YG1l6QIKRMjqgPiD@kali>
+       spf=pass (google.com: domain of liviu.dudau@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=Liviu.Dudau@arm.com
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 0FF591529;
+	Fri, 29 Sep 2017 08:24:57 -0700 (PDT)
+Received: from e110455-lin.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.72.51.249])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D4AC53F58C;
+	Fri, 29 Sep 2017 08:24:56 -0700 (PDT)
+Received: by e110455-lin.cambridge.arm.com (Postfix, from userid 1000)
+	id 38187680153; Fri, 29 Sep 2017 16:24:55 +0100 (BST)
+Date: Fri, 29 Sep 2017 16:24:55 +0100
+From: Liviu Dudau <liviu.dudau@arm.com>
+To: Srishti Sharma <srishtishar@gmail.com>
+Cc: daniel.vetter@ffwll.ch, seanpaul@chromium.org, brian.starkey@arm.com,
+	malidp@foss.arm.com, airlied@linux.ie,
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] drm/arm: Replace instances of drm_dev_unref with
+ drm_dev_put.
+Message-ID: <20170929152455.GL6681@e110455-lin.cambridge.arm.com>
+References: <1506679240-7061-1-git-send-email-srishtishar@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <1506679240-7061-1-git-send-email-srishtishar@gmail.com>
+User-Agent: Mutt/1.9.0 (2017-09-02)
 
-Fixed Check:Avoid CamelCase by renaming SetFilter to set_filter
-Reported by checkpatch.
+Hi Srishti,
 
-Signed-off-by: Mitali Borkar <mitaliborkar810@example.com>
----
- drivers/staging/rtl8712/xmit_osdep.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On Fri, Sep 29, 2017 at 03:30:40PM +0530, Srishti Sharma wrote:
+> Replace drm_dev_unref with drm_dev_put as it is more consistent
+> with kernel coding style. Done using the following semantic
+> patch by coccinelle.
 
-diff --git a/drivers/staging/rtl8712/xmit_osdep.h b/drivers/staging/rtl8712/xmit_osdep.h
-index b76021b568f8..7ad2ac6f5ff0 100644
---- a/drivers/staging/rtl8712/xmit_osdep.h
-+++ b/drivers/staging/rtl8712/xmit_osdep.h
-@@ -35,7 +35,7 @@ struct xmit_frame;
- struct xmit_buf;
- 
- int r8712_xmit_entry(_pkt *pkt, struct  net_device *pnetdev);
--void r8712_SetFilter(struct work_struct *work);
-+void r8712_set_filter(struct work_struct *work);
- int r8712_xmit_resource_alloc(struct _adapter *padapter,
- 			      struct xmit_buf *pxmitbuf);
- void r8712_xmit_resource_free(struct _adapter *padapter,
+Thanks for the patch!
+
+Acked-by: Liviu Dudau <liviu.dudau@arm.com>
+
+I'm going to pull this patch into the mali-dp tree next week when
+I'm preparing an update of that tree.
+
+Best regards,
+Liviu
+
+> 
+> @r@
+> expression e;
+> @@
+> 
+> -drm_dev_unref();
+> +drm_dev_put();
+> 
+> Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+> ---
+>  drivers/gpu/drm/arm/hdlcd_drv.c  | 4 ++--
+>  drivers/gpu/drm/arm/malidp_drv.c | 4 ++--
+>  2 files changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/arm/hdlcd_drv.c b/drivers/gpu/drm/arm/hdlcd_drv.c
+> index f9bda7b..1a96462 100644
+> --- a/drivers/gpu/drm/arm/hdlcd_drv.c
+> +++ b/drivers/gpu/drm/arm/hdlcd_drv.c
+> @@ -353,7 +353,7 @@ static int hdlcd_drm_bind(struct device *dev)
+>  err_free:
+>  	drm_mode_config_cleanup(drm);
+>  	dev_set_drvdata(dev, NULL);
+> -	drm_dev_unref(drm);
+> +	drm_dev_put(drm);
+>  
+>  	return ret;
+>  }
+> @@ -378,7 +378,7 @@ static void hdlcd_drm_unbind(struct device *dev)
+>  	pm_runtime_disable(drm->dev);
+>  	of_reserved_mem_device_release(drm->dev);
+>  	drm_mode_config_cleanup(drm);
+> -	drm_dev_unref(drm);
+> +	drm_dev_put(drm);
+>  	drm->dev_private = NULL;
+>  	dev_set_drvdata(dev, NULL);
+>  }
+> diff --git a/drivers/gpu/drm/arm/malidp_drv.c b/drivers/gpu/drm/arm/malidp_drv.c
+> index 7ae94a1..1b92f41 100644
+> --- a/drivers/gpu/drm/arm/malidp_drv.c
+> +++ b/drivers/gpu/drm/arm/malidp_drv.c
+> @@ -665,7 +665,7 @@ static int malidp_bind(struct device *dev)
+>  		malidp_runtime_pm_suspend(dev);
+>  	drm->dev_private = NULL;
+>  	dev_set_drvdata(dev, NULL);
+> -	drm_dev_unref(drm);
+> +	drm_dev_put(drm);
+>  alloc_fail:
+>  	of_reserved_mem_device_release(dev);
+>  
+> @@ -698,7 +698,7 @@ static void malidp_unbind(struct device *dev)
+>  		malidp_runtime_pm_suspend(dev);
+>  	drm->dev_private = NULL;
+>  	dev_set_drvdata(dev, NULL);
+> -	drm_dev_unref(drm);
+> +	drm_dev_put(drm);
+>  	of_reserved_mem_device_release(dev);
+>  }
+>  
+> -- 
+> 2.7.4
+> 
+
 -- 
-2.30.2
-
+====================
+| I would like to |
+| fix the world,  |
+| but they're not |
+| giving me the   |
+ \ source code!  /
+  ---------------
+    ¯\_(ツ)_/¯
 
