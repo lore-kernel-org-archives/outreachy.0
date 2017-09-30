@@ -1,77 +1,77 @@
 X-GM-THRID: 6470705412124442624
-X-Received: by 10.84.235.5 with SMTP id o5mr918258plk.24.1506748786306;
-        Fri, 29 Sep 2017 22:19:46 -0700 (PDT)
+X-Received: by 10.101.78.1 with SMTP id r1mr351522pgt.23.1506748725964;
+        Fri, 29 Sep 2017 22:18:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.99.152.88 with SMTP id l24ls1942650pgo.18.gmail; Fri, 29 Sep
- 2017 22:19:45 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QC6+xWT11GvyxEOI4y1s18sag3wkSO1vSM/Lz0/0Qkh+PxzbuJ3ljx9ZCKl3BlSO1fUMI0b
-X-Received: by 10.99.165.83 with SMTP id r19mr996100pgu.172.1506748785213;
-        Fri, 29 Sep 2017 22:19:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506748785; cv=none;
+Received: by 10.101.74.196 with SMTP id c4ls1920526pgu.28.gmail; Fri, 29 Sep
+ 2017 22:18:44 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QDEe8Rzsm+MnydIzQQYME8dwNK1NEUTjDljEm9eYcp4E7Fc35oFXLMmE5r0ct+0AP0aIwH5
+X-Received: by 10.98.215.68 with SMTP id v4mr873292pfl.32.1506748724756;
+        Fri, 29 Sep 2017 22:18:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506748724; cv=none;
         d=google.com; s=arc-20160816;
-        b=H21hU9kEds3qlk1I/tOlNUrNOEptxOy+aqwY59v8iT1Xq/FQW8A5nOGx+Iv2RM8TtW
-         gOlp9ctmFGDgDd251RtzEF8+gTKPPjgVgx/NClYtD2I5NlglU39yNtB6faobPejrPj4E
-         aUHCFgaIgiDYuJR3w4dtrmJqOYTaaXbnK8g7JSjYgzf92P0LGULXGiWC6x6sYfL7U33U
-         3urBAsdu6L5KgGQsbsCpwzF4n1DwzhoUao1SmmyMGjKB5q2FZcgzz03iIY5fxmB1DgNf
-         INZbkF748v6M4SzCCdfK9iygr627ld/lkt4xMusz1nYdLjfG7szjd+cPChQdAph8fsDb
-         VCPQ==
+        b=yiTaQTy8KqOd5UJS5VOp3qNN0GQ558bfslZ7W/HQ8MhEGRebpRXZt4nJmrT6O5+UTY
+         3NWEX/ng2jZ5O+cVgiGxRZ1ToBD7ui1GSn53WT9zrjXTJm69/Ov0NdOnLt1deQHq8fNh
+         S9ibJkb22ln7/MTR84BoDrf8C0FDmQ4Dwdp0yPLYl6yG7tA18AGuhrjZOpFD1rUni+Sc
+         IRhFYuEqFz3PiipkrhMkdjDEwPni8ZFYd80r6DHCaVeoOYzKvRK7d8o/wXo68I7rs86D
+         5hHtsxSRNrd9fgLOPzWED8r6PDrDj0i+jfG34ChrH++fuXNzNYF2zwQRsz9ilgdWHmll
+         4cMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:message-id
          :subject:cc:to:from:date:arc-authentication-results;
-        bh=DJBEJLpA6uKH8pAUgwhT0AE70YJyY/2ipPD0QHM83TI=;
-        b=PZBQXA9NyaySgIv6gz5e27RifmZk5cZMLTy2Bpbc/rrm89T6ayVE2qPQUOEHZwoiBQ
-         IuJoEZLnlWMt4h6uYEdLOuxt1rGsmZP6SsxTDz0v7SwUC+ZCS6pTcEd3ypLiDFkJSjSf
-         X2swCZfQniYwNNOTkQsMc+X0JzM74bvIXV1H9K5hYspsaBRi3hQojfKU+MPBbXxrR5xR
-         q1+UukN971OT83GFOIiTzfGVDltePGZkFgOpi+4R5A36vNUU4FR2DUjcNqKdUm5+ZpVG
-         i4ygsncPm08V21/liL6HpKRzs+rMMts6CGKQeovs4NioaIP8uugqbHQwxAtmGSZSt9rM
-         ZMYA==
+        bh=xSA7Q3LAgoa+RGbnZaHWUzP9d4u7X5hC0MaeQUWkrGY=;
+        b=SCpLJmfcig/YHxgW4wsbiNU9EjRImGUCQQVcfsUVwuq+Wy/ctG3hsel5KnAS2CtrLv
+         X8tWxsiUxXuWedmcX1CUxBUd5lChOzCb5tm91T5Fz6HzXH/Y+mqxIUvLw15Y4rPhh/qy
+         pBcbvIaisp9fpakN+y9Y6roaAgDwAY8FxiYnoprvxCsXS91ldaPSSZdFyomVe+DzJMJU
+         ZN0xUza9yg2oTWZMnwwk8Nc5XwyWokUSoAswZiKyic5M7TsfUu5t3GUuoIqZyKSYSdzt
+         a1yh3mwamC/e633MToReq3q3+Ld9xaXp5hwrgU6obpZrU3UaHV3+UtbYFILAX9SmArP9
+         wEiQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of fengguang.wu@intel.com designates 134.134.136.65 as permitted sender) smtp.mailfrom=fengguang.wu@intel.com
+       spf=pass (google.com: domain of fengguang.wu@intel.com designates 192.55.52.115 as permitted sender) smtp.mailfrom=fengguang.wu@intel.com
 Return-Path: <fengguang.wu@intel.com>
-Received: from mga03.intel.com (mga03.intel.com. [134.134.136.65])
-        by gmr-mx.google.com with ESMTPS id c200si611524pfb.14.2017.09.29.22.19.45
+Received: from mga14.intel.com (mga14.intel.com. [192.55.52.115])
+        by gmr-mx.google.com with ESMTPS id e80si117012pfb.8.2017.09.29.22.18.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Sep 2017 22:19:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fengguang.wu@intel.com designates 134.134.136.65 as permitted sender) client-ip=134.134.136.65;
+        Fri, 29 Sep 2017 22:18:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fengguang.wu@intel.com designates 192.55.52.115 as permitted sender) client-ip=192.55.52.115;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of fengguang.wu@intel.com designates 134.134.136.65 as permitted sender) smtp.mailfrom=fengguang.wu@intel.com
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
-  by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 29 Sep 2017 22:19:44 -0700
+       spf=pass (google.com: domain of fengguang.wu@intel.com designates 192.55.52.115 as permitted sender) smtp.mailfrom=fengguang.wu@intel.com
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+  by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 29 Sep 2017 22:18:44 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.42,456,1500966000"; 
-   d="gz'50?scan'50,208,50";a="905317627"
+   d="gz'50?scan'50,208,50";a="317934191"
 Received: from bee.sh.intel.com (HELO bee) ([10.239.97.14])
-  by FMSMGA003.fm.intel.com with ESMTP; 29 Sep 2017 22:19:42 -0700
+  by fmsmga004.fm.intel.com with ESMTP; 29 Sep 2017 22:18:41 -0700
 Received: from kbuild by bee with local (Exim 4.84_2)
 	(envelope-from <fengguang.wu@intel.com>)
-	id 1dyAGn-0004vn-69; Sat, 30 Sep 2017 13:24:57 +0800
-Date: Sat, 30 Sep 2017 13:18:53 +0800
+	id 1dyAFo-000R9Z-WB; Sat, 30 Sep 2017 13:23:57 +0800
+Date: Sat, 30 Sep 2017 13:18:38 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Meghana Madhyastha <meghana.madhyastha@gmail.com>
 Cc: kbuild-all@01.org, daniel@ffwll.ch, noralf@tronnes.org,
 	outreachy-kernel@googlegroups.com, dri-devel@lists.freedesktop.org
-Subject: Re: [PATCH v4 3/3] drm/tinydrm: Add the dummy versions of
- drm_of_find_backlight functions
-Message-ID: <201709301309.DCWPmynw%fengguang.wu@intel.com>
+Subject: Re: [PATCH v4 2/3] drm/tinydrm: Add devres versions of
+ drm_of_find_backlight
+Message-ID: <201709301353.dtkVCsoW%fengguang.wu@intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="0OAP2g/MAC+5xKAE"
+Content-Type: multipart/mixed; boundary="5vNYLRcllDrimb99"
 Content-Disposition: inline
-In-Reply-To: <aa492420b933fd8f189a4577949cbeb8b13cd066.1506698677.git.meghana.madhyastha@gmail.com>
+In-Reply-To: <d9f46a0f5e14a0ff4386b64037d6abeed60ebb0c.1506698677.git.meghana.madhyastha@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 X-SA-Exim-Connect-IP: <locally generated>
 X-SA-Exim-Mail-From: fengguang.wu@intel.com
 X-SA-Exim-Scanned: No (on bee); SAEximRunCond expanded to false
 
 
---0OAP2g/MAC+5xKAE
+--5vNYLRcllDrimb99
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
 Hi Meghana,
 
-[auto build test WARNING on drm/drm-next]
-[also build test WARNING on v4.14-rc2 next-20170929]
+[auto build test ERROR on drm/drm-next]
+[also build test ERROR on v4.14-rc2 next-20170929]
 [if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
 
 url:    https://github.com/0day-ci/linux/commits/Meghana-Madhyastha/drm-tinydrm-drm_of_find_backlight-helper/20170930-122931
@@ -82,49 +82,93 @@ reproduce:
         # save the attached .config to linux build tree
         make ARCH=x86_64 
 
-All warnings (new ones prefixed by >>):
+Note: the linux-review/Meghana-Madhyastha/drm-tinydrm-drm_of_find_backlight-helper/20170930-122931 HEAD 4dc8fd20ad41e923832dc78cf4d8e7f98c0fedb9 builds fine.
+      It only hurts bisectibility.
 
-   In file included from drivers/gpu//drm/tinydrm/mi0283qt.c:15:0:
-   include/drm/drm_of.h:74:1: error: expected identifier or '(' before '{' token
-    {
-    ^
-   include/drm/drm_of.h:80:1: error: expected identifier or '(' before '{' token
-    {
-    ^
-   include/drm/drm_of.h:72:40: warning: 'drm_of_find_backlight' declared 'static' but never defined [-Wunused-function]
-    static inline struct backlight_device *drm_of_find_backlight(
-                                           ^~~~~~~~~~~~~~~~~~~~~
->> include/drm/drm_of.h:78:40: warning: 'devm_drm_of_find_backlight' used but never defined
-    static inline struct backlight_device *devm_drm_of_find_backlight(
-                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+All errors (new ones prefixed by >>):
 
-vim +/devm_drm_of_find_backlight +78 include/drm/drm_of.h
+   drivers/gpu/drm/tinydrm/mi0283qt.c: In function 'mi0283qt_probe':
+>> drivers/gpu/drm/tinydrm/mi0283qt.c:192:20: error: implicit declaration of function 'devm_drm_of_find_backlight' [-Werror=implicit-function-declaration]
+     mipi->backlight = devm_drm_of_find_backlight(dev);
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~
+   drivers/gpu/drm/tinydrm/mi0283qt.c:192:18: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+     mipi->backlight = devm_drm_of_find_backlight(dev);
+                     ^
+   cc1: some warnings being treated as errors
 
-    71	
-    72	static inline struct backlight_device *drm_of_find_backlight(
-    73						struct device *dev);
-  > 74	{
-    75		return -EINVAL;
-    76	}
-    77	
-  > 78	static inline struct backlight_device *devm_drm_of_find_backlight(
-    79							struct device *dev);
-    80	{
-    81		return -EINVAL;
-    82	}
-    83	#endif
-    84	
+vim +/devm_drm_of_find_backlight +192 drivers/gpu/drm/tinydrm/mi0283qt.c
+
+   163	
+   164	static int mi0283qt_probe(struct spi_device *spi)
+   165	{
+   166		struct device *dev = &spi->dev;
+   167		struct mipi_dbi *mipi;
+   168		struct gpio_desc *dc;
+   169		u32 rotation = 0;
+   170		int ret;
+   171	
+   172		mipi = devm_kzalloc(dev, sizeof(*mipi), GFP_KERNEL);
+   173		if (!mipi)
+   174			return -ENOMEM;
+   175	
+   176		mipi->reset = devm_gpiod_get_optional(dev, "reset", GPIOD_OUT_HIGH);
+   177		if (IS_ERR(mipi->reset)) {
+   178			dev_err(dev, "Failed to get gpio 'reset'\n");
+   179			return PTR_ERR(mipi->reset);
+   180		}
+   181	
+   182		dc = devm_gpiod_get_optional(dev, "dc", GPIOD_OUT_LOW);
+   183		if (IS_ERR(dc)) {
+   184			dev_err(dev, "Failed to get gpio 'dc'\n");
+   185			return PTR_ERR(dc);
+   186		}
+   187	
+   188		mipi->regulator = devm_regulator_get(dev, "power");
+   189		if (IS_ERR(mipi->regulator))
+   190			return PTR_ERR(mipi->regulator);
+   191	
+ > 192		mipi->backlight = devm_drm_of_find_backlight(dev);
+   193		if (IS_ERR(mipi->backlight))
+   194			return PTR_ERR(mipi->backlight);
+   195	
+   196		device_property_read_u32(dev, "rotation", &rotation);
+   197	
+   198		ret = mipi_dbi_spi_init(spi, mipi, dc);
+   199		if (ret)
+   200			return ret;
+   201	
+   202		ret = mipi_dbi_init(&spi->dev, mipi, &mi0283qt_pipe_funcs,
+   203				    &mi0283qt_driver, &mi0283qt_mode, rotation);
+   204		if (ret)
+   205			return ret;
+   206	
+   207		ret = mi0283qt_init(mipi);
+   208		if (ret)
+   209			return ret;
+   210	
+   211		/* use devres to fini after drm unregister (drv->remove is before) */
+   212		ret = devm_add_action(dev, mi0283qt_fini, mipi);
+   213		if (ret) {
+   214			mi0283qt_fini(mipi);
+   215			return ret;
+   216		}
+   217	
+   218		spi_set_drvdata(spi, mipi);
+   219	
+   220		return devm_tinydrm_register(&mipi->tinydrm);
+   221	}
+   222	
 
 ---
 0-DAY kernel test infrastructure                Open Source Technology Center
 https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 
---0OAP2g/MAC+5xKAE
+--5vNYLRcllDrimb99
 Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICFQlz1kAAy5jb25maWcAlFxLd+M2st7nV+h0ZjGzSNp2u53OuccLiAQlRCTBJkDZ8obH
+H4sICIIlz1kAAy5jb25maWcAlFxLd+M2st7nV+h0ZjGzSNp2u53OuccLiAQlRCTBJkDZ8obH
 sdUdn/jRY8mT5N/fqgIpAmBRmckiiVCFd6Hqqwf9/Xffz8Tb/uXpdv9wd/v4+Nfs6/Z5+3q7
 397Pvjw8bv9vlupZqe1Mpsr+CMz5w/Pbn+///HTRXpzPzn88Pf/x5IfXu7PZavv6vH2cJS/P
 Xx6+vsEADy/P333/XaLLTC2Ad67s5V/9z2vqHvwefqjS2LpJrNJlm8pEp7IeiLqxVWPbTNeF
@@ -667,5 +711,5 @@ E4ybUntftmpdCvQaIru17gvRbjFIWjuhOJihcfqVXVGnntxGN47k+Q3GJhNA1WTUfJNlNNN+
 c4VWI9JeUSsnqx8mCmjkGo7txnXARz+/PFaUBJMqVGwY7sjcTSkORVSKCVXjpbEjkc434ibo
 edB3qKND8/hSnLdM1hW9ompUIYcStpRsyLa3nhiEu/0P/pv5MZC1AQA=
 
---0OAP2g/MAC+5xKAE--
+--5vNYLRcllDrimb99--
 
