@@ -1,93 +1,93 @@
 X-GM-THRID: 6471467521247543296
-X-Received: by 10.101.68.197 with SMTP id g5mr951880pgs.49.1506756087054;
-        Sat, 30 Sep 2017 00:21:27 -0700 (PDT)
+X-Received: by 10.101.69.194 with SMTP id m2mr979833pgr.7.1506756062900;
+        Sat, 30 Sep 2017 00:21:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.84.132.103 with SMTP id 94ls2708289ple.9.gmail; Sat, 30 Sep
- 2017 00:21:26 -0700 (PDT)
-X-Received: by 10.99.9.3 with SMTP id 3mr511559pgj.19.1506756086425;
-        Sat, 30 Sep 2017 00:21:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506756086; cv=none;
+Received: by 10.99.176.1 with SMTP id h1ls1961466pgf.12.gmail; Sat, 30 Sep
+ 2017 00:21:02 -0700 (PDT)
+X-Received: by 10.99.175.72 with SMTP id s8mr737489pgo.98.1506756062289;
+        Sat, 30 Sep 2017 00:21:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506756062; cv=none;
         d=google.com; s=arc-20160816;
-        b=v1CchOLVlpSyWBDUT7xbhiTiNX4MQ/Mw3rWsykgjE6mfVCnTpyV5r9INQRot2BytC/
-         sDa8vUAx1LmUu8yiEtcV4xl7IpZ+AcHn26imMagM7ztYiv1SW2JUbKKVq5oeWfIwyPEE
-         Rq/wNlMU0UtAUge170cHJO6ns0lsX566T1YOclxNV+374TMv6BRd0Kb24Zead20T98Cr
-         IRjwu9FrNjsnGQ13HsMKn3MWTdBRztiNIB/ANjhpjj2hFBYSQHMmHQf6OQSUKIiYknJe
-         Abj5hAeMKtua01m8NFWVlyBEq6C75obEASBJMuJ3tleG0M3oMvGT4pSKhefkG7YEk6FK
-         Ul2w==
+        b=RAohRng0DzLkSLGd7judM/WVTmzNTf0ZSeyLx/XJL2o0hWHKFW6JKwJY7dI3nDbXaM
+         6Nw6GmiqOPpkV7S3TH/OOG7VwlcAULd9lSSkdo09ZsgnttSc8fJ8dub3JXh5k9XZviEK
+         6nTJgSk2yRzU7wlvAoJVl85rNEIrW5+f8Zy/c6LWIjYN85hLClzCIDF/dPSY65XyxG+A
+         RegQh8f1EpvsVksP9XORlp44dC29oOjVnqKxKYtd+QRApAyCX7KU6O9wBBjztAu2jWip
+         xJJk89o1Vfji+UmcuICe4b1LQv6qkHZUPoadzjrDUCypxcd18kVpj868V33a7C1JrYoV
+         MqDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature:arc-authentication-results;
-        bh=HKc8hZjmFrzhl8zUThNTIR17C5n0FskSZRiFeZfNI/g=;
-        b=I2VyZZKmQj2r+L9T2h4anr4iHjKyUfEDHaaUWY5XOemgdc1hYWBe10R49iUG+uyxTi
-         ymegzg64PlGC9/ueR7Clz1elRl21qu6fAL15SSWAlsg0VFDdvjGcGxfR6POpB8WaTiwq
-         q9k5dbiav6slmMrr5dCgGgQnwRqcv0p8TvhBalFysDaMyIefTmhW5nMqJZ2NYESSzvsw
-         EMRUJsnR+4sunZAAiU9K7hCga1XIvoZh+dHU4bEyXmKujfEc/cW/ViOFISA/c11QkDU6
-         ensOpEj+ffJGILydGaw9aR3DDZ87zoPGpAcrov8XBPesAjZcEWBB27bJirmwfz2w+V6h
-         rsGg==
+        bh=SQ026ZZ926DOdN4dU7IG12WvqK6/NaPsn7KdWPOPUS0=;
+        b=DArigRfhNZAPG975ImUKQ8/XuHvjMIdUSJNIO8Rpy7n/pNQcZoVUiUuJT8cp6tyCpQ
+         J0RXo+qk/7bJO32KT4b9VB27kHkycpxvHctkVWbPZEvkadtzsFT4lsepdHY7/MWRsyBv
+         oeOYUfnr7l9LfWpZaY1aI9XoK9vfHoHVjiVwrUQTtRlzujfK5kSLCCndLKJJ8YhfG3Pf
+         SVo904BRiswNCyk58huX/ZwmyWFK+rRqA9hSyoJgG7tjwKV0KEustK7Ecfk3oBQwNsPE
+         Y/OlHR/ArS3sdPRtBbWF2zycnstPDj3malrQC8de5J19U54fJpWmuWLfkaHeCnBUg6Xl
+         BQ+Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=IbXCMJi7;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tfWyCu47;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <srishtishar@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id l80si79893pfg.25.2017.09.30.00.21.26
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id b6si702996pfm.28.2017.09.30.00.21.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 30 Sep 2017 00:21:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Sat, 30 Sep 2017 00:21:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=IbXCMJi7;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tfWyCu47;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id g65so1137035pfe.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 30 Sep 2017 00:21:26 -0700 (PDT)
+Received: by mail-pf0-x244.google.com with SMTP id i23so1131697pfi.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 30 Sep 2017 00:21:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=HKc8hZjmFrzhl8zUThNTIR17C5n0FskSZRiFeZfNI/g=;
-        b=IbXCMJi7OtrPgn3Eo+YpCzoiFP6oiT4zQsXk1lEyQ18b5v182Y1Oc6XDSdDhE3k9IT
-         VGetIiOqb4jabeKslqUG/tr8xMSgEi2BsELfeuVB4OY+jzg4rLm8kKiDPm0jqckSZl3x
-         mi6vmUlAtd7JhkwuQ57wVJQCs/zXOEsg2BQVjbSTvosgBXvvfd4Y8SaUnniMvSmdFYMZ
-         PUr2cvCMrfbjc2NoCKKO8LLsWIZ36l62zSWyhjUqV9/QOZ/qPWvBTHaGRc7ko8p5qA6q
-         aUyZnSjwsF9/N+LmTSYRgYvUrFLg38RpXGEBLtBRHxzE0A1fCTBqYFQiop/oS8MEj1gU
-         W+sw==
+        bh=SQ026ZZ926DOdN4dU7IG12WvqK6/NaPsn7KdWPOPUS0=;
+        b=tfWyCu47dI6YhK+tqLVuorCFHgdHBXhy6O8wBDSsSpVYxwqsGx0Wp2N1yBHK8JAXam
+         dtDt6Z9VQTL18KxpkTskRrmpsiLuU76L3V95m23NKvfEFWL8YeuyewiMyf78JElXPiWA
+         /bbgQk3z96In0LtY6RTmRuh1gWCQDSMTMYu0XIAZRZDoxglt+M2xRmjlIM8Fb0Uli6Iq
+         PQpBbdC4KAb4l5GJJBC+mfFjL77svjEd40dCS78IXzLysOhKXNQxa5fft7MAoVwn14Wk
+         MJJnWg3x226cY4XsiONlpRFyyDPUUBNBKuSfsWEAcN8ZkK10v+jYtDuFuex46nPqQALJ
+         k3XA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=HKc8hZjmFrzhl8zUThNTIR17C5n0FskSZRiFeZfNI/g=;
-        b=nfk7xqMNPL5kbWnJFPZLnNUa6w09iv7AVkcLEjJYFbV7zfiLUsqQRwGLfOxp2wJOeR
-         s3wufW7jawQiyShCUVPqFrQ+wq+cSOJ2s18KwO3bm9o3zUAt+x526OiHQHoG07rwsyEO
-         0nMLIXfE3MzQhrMKAIOdsOOnVZWjjTtIlczX5EshZ+WYjw/rSdbjlQVUwLjFc4wZOI9X
-         /HBBzSipvt/aYSgrI0LIJ76Q/naZeq0rtCEmvWSqwbhpq6RHyi6fskgtS5owaEUlR3xh
-         7CNU3/j+90xqj3Co6r+XNtD8sP7mP0G8AxRNXCoTopKivT8g9nGm2b1rvhxIQuMLC2MA
-         Ggsg==
-X-Gm-Message-State: AHPjjUiXeOl3jyOHpqbHZlCgRCTk2cBNSYOCgfkpZAvv8+H358tGXjDn
-	TxZJ/I7yF8uCcPVZMKiLznVOhA==
-X-Google-Smtp-Source: AOwi7QDi8y2nzCQ6ZtIHWMOK9IaQwttmeEeiGpv0ibaLo/c/yVCMQL68dg9Y/6UMqK+s910zq39/NQ==
-X-Received: by 10.159.198.10 with SMTP id f10mr9462539plo.14.1506756086222;
-        Sat, 30 Sep 2017 00:21:26 -0700 (PDT)
+        bh=SQ026ZZ926DOdN4dU7IG12WvqK6/NaPsn7KdWPOPUS0=;
+        b=CTCj3KK3PRmOkEhEinVeMpIIHqLUag1iVkKSOhjEwd/aYpTqtNwoOAvL7EnQeIMEWX
+         h35lixGhmIF9ufJ+G9lQA+htSMFdp3e35fVbIP+rQwSkxVKmOzVdQCXgzVZga1w6we6K
+         r1W64ZP0Pr44jghgvIxNNhnHT1ETET98y+r0E4pKYM3C4EnLcIw+RHF9pXpIugWqYfBM
+         qqAYIyxRwaSBx53HhEwY4nWWtswyZZgnNOvddpd4rNO33fNUrDMnbx5E8WsLTQn/3Ayl
+         Q7v3sW1i0LtYGKmnFVlzf0ZLZBNnv4s2Bgx/nOtYnC88p57F/C3uHayG3M5QXgd5KY/c
+         WeRw==
+X-Gm-Message-State: AHPjjUiOupJe56XzmK0A93uUP7orkHboClaMsUmg6RZx5/LspUD9xjti
+	BD/NZHEug06jiPLEAjtlZv28TQ==
+X-Google-Smtp-Source: AOwi7QCh3y3nJwyDfJOJZ3pBRyU37EHIFO58iIxZUZO2MV1VBtmXU1nt8KlpCLKUWJXwkr+xevssIQ==
+X-Received: by 10.98.70.137 with SMTP id o9mr9841010pfi.173.1506756062062;
+        Sat, 30 Sep 2017 00:21:02 -0700 (PDT)
 Return-Path: <srishtishar@gmail.com>
 Received: from srishti-PRODiiGY-945G ([122.168.6.85])
-        by smtp.gmail.com with ESMTPSA id i2sm9179480pfd.21.2017.09.30.00.21.25
+        by smtp.gmail.com with ESMTPSA id n129sm1610265pfn.78.2017.09.30.00.21.00
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 30 Sep 2017 00:21:25 -0700 (PDT)
+        Sat, 30 Sep 2017 00:21:01 -0700 (PDT)
 From: Srishti Sharma <srishtishar@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com,
 	Srishti Sharma <srishtishar@gmail.com>
-Subject: [PATCH 6/6] Staging: rtl8188eu: core: Use list_entry instead of container_of
-Date: Sat, 30 Sep 2017 12:51:20 +0530
-Message-Id: <778fb00439b44bd4a9e1ef06b1d619f9e4f5525f.1506755266.git.srishtishar@gmail.com>
+Subject: [PATCH 5/6] Staging: rtl8188eu: core: Use list_entry instead of container_of
+Date: Sat, 30 Sep 2017 12:50:57 +0530
+Message-Id: <deef34ad5b963ac49fc8086675af24db68bdc8c5.1506755265.git.srishtishar@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <cover.1506755265.git.srishtishar@gmail.com>
 References: <cover.1506755265.git.srishtishar@gmail.com>
 
 For variables of type struct list_head* use list_entry to access
-current list element instead of using container_of. Done by the
-following semantic patch by coccinelle.
+current list element instead of using container_of. Done using
+the following semantic patch by coccinelle.
 
 @r@
 struct list_head* l;
@@ -95,79 +95,34 @@ struct list_head* l;
 
 -container_of
 +list_entry
-  (l,...)
+   (l,...)
 
 Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
 ---
- drivers/staging/rtl8188eu/core/rtw_xmit.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_mlme_ext.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_xmit.c b/drivers/staging/rtl8188eu/core/rtw_xmit.c
-index be2f46e..29e9ee9 100644
---- a/drivers/staging/rtl8188eu/core/rtw_xmit.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_xmit.c
-@@ -1401,7 +1401,7 @@ void rtw_free_xmitframe_queue(struct xmit_priv *pxmitpriv, struct __queue *pfram
- 	plist = phead->next;
+diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
+index 611c940..80fe6ae 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
++++ b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
+@@ -1790,7 +1790,7 @@ static void issue_action_BSSCoexistPacket(struct adapter *padapter)
+ 			u8 *p;
+ 			struct wlan_bssid_ex *pbss_network;
  
- 	while (phead != plist) {
--		pxmitframe = container_of(plist, struct xmit_frame, list);
-+		pxmitframe = list_entry(plist, struct xmit_frame, list);
+-			pnetwork = container_of(plist, struct wlan_network, list);
++			pnetwork = list_entry(plist, struct wlan_network, list);
  
- 		plist = plist->next;
+ 			plist = plist->next;
  
-@@ -1432,7 +1432,7 @@ static struct xmit_frame *dequeue_one_xmitframe(struct xmit_priv *pxmitpriv, str
- 	xmitframe_plist = xmitframe_phead->next;
+@@ -5470,7 +5470,7 @@ u8 tx_beacon_hdl(struct adapter *padapter, unsigned char *pbuf)
+ 			xmitframe_plist = xmitframe_phead->next;
  
- 	if (xmitframe_phead != xmitframe_plist) {
--		pxmitframe = container_of(xmitframe_plist, struct xmit_frame, list);
-+		pxmitframe = list_entry(xmitframe_plist, struct xmit_frame, list);
+ 			while (xmitframe_phead != xmitframe_plist) {
+-				pxmitframe = container_of(xmitframe_plist, struct xmit_frame, list);
++				pxmitframe = list_entry(xmitframe_plist, struct xmit_frame, list);
  
- 		xmitframe_plist = xmitframe_plist->next;
- 
-@@ -1473,7 +1473,7 @@ struct xmit_frame *rtw_dequeue_xframe(struct xmit_priv *pxmitpriv, struct hw_xmi
- 		sta_plist = sta_phead->next;
- 
- 		while (sta_phead != sta_plist) {
--			ptxservq = container_of(sta_plist, struct tx_servq, tx_pending);
-+			ptxservq = list_entry(sta_plist, struct tx_servq, tx_pending);
- 
- 			pframe_queue = &ptxservq->sta_pending;
- 
-@@ -1811,7 +1811,7 @@ static void dequeue_xmitframes_to_sleeping_queue(struct adapter *padapter, struc
- 	plist = phead->next;
- 
- 	while (phead != plist) {
--		pxmitframe = container_of(plist, struct xmit_frame, list);
-+		pxmitframe = list_entry(plist, struct xmit_frame, list);
- 
- 		plist = plist->next;
- 
-@@ -1878,7 +1878,7 @@ void wakeup_sta_to_xmit(struct adapter *padapter, struct sta_info *psta)
- 	xmitframe_plist = xmitframe_phead->next;
- 
- 	while (xmitframe_phead != xmitframe_plist) {
--		pxmitframe = container_of(xmitframe_plist, struct xmit_frame, list);
-+		pxmitframe = list_entry(xmitframe_plist, struct xmit_frame, list);
- 
- 		xmitframe_plist = xmitframe_plist->next;
- 
-@@ -1959,7 +1959,7 @@ void wakeup_sta_to_xmit(struct adapter *padapter, struct sta_info *psta)
- 		xmitframe_plist = xmitframe_phead->next;
- 
- 		while (xmitframe_phead != xmitframe_plist) {
--			pxmitframe = container_of(xmitframe_plist, struct xmit_frame, list);
-+			pxmitframe = list_entry(xmitframe_plist, struct xmit_frame, list);
- 
- 			xmitframe_plist = xmitframe_plist->next;
- 
-@@ -2006,7 +2006,7 @@ void xmit_delivery_enabled_frames(struct adapter *padapter, struct sta_info *pst
- 	xmitframe_plist = xmitframe_phead->next;
- 
- 	while (xmitframe_phead != xmitframe_plist) {
--		pxmitframe = container_of(xmitframe_plist, struct xmit_frame, list);
-+		pxmitframe = list_entry(xmitframe_plist, struct xmit_frame, list);
- 
- 		xmitframe_plist = xmitframe_plist->next;
+ 				xmitframe_plist = xmitframe_plist->next;
  
 -- 
 2.7.4
