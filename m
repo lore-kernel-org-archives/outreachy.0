@@ -1,187 +1,126 @@
 X-GM-THRID: 6471275503571435520
-X-Received: by 10.101.76.1 with SMTP id u1mr1083504pgq.79.1506780679122;
-        Sat, 30 Sep 2017 07:11:19 -0700 (PDT)
+X-Received: by 10.98.181.10 with SMTP id y10mr871139pfe.51.1506770038450;
+        Sat, 30 Sep 2017 04:13:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.98.233.14 with SMTP id j14ls35338pfh.0.gmail; Sat, 30 Sep 2017
- 07:11:18 -0700 (PDT)
-X-Received: by 10.84.160.227 with SMTP id v32mr936393plg.29.1506780678018;
-        Sat, 30 Sep 2017 07:11:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506780677; cv=none;
+Received: by 10.98.201.87 with SMTP id k84ls2595996pfg.14.gmail; Sat, 30 Sep
+ 2017 04:13:57 -0700 (PDT)
+X-Received: by 10.99.101.131 with SMTP id z125mr968305pgb.151.1506770037316;
+        Sat, 30 Sep 2017 04:13:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506770037; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y8OO0wFrpQegPI41xUm9uxVpfBQ4m24yWukeXhecUxlotvVD1iVzAslPfu4zC8Yxds
-         oDggSytRlXj1FohmLKB2PmfjBh3wNbr8igH4bXcHugxJdH5+YDbH6dQfIFMaghh6Qhmk
-         xpZTxGCWsBwqcleZ4WOv1/UelfgtA0xtl4oFYqfwaIivkaQPcXCki6EQAGq7v3SXl/zo
-         CRIv1rfhGrZl9QutKATc0hrg8sEbtdyfgPqVxQOKmtzdK1R/T9bBhCXgcl2/YXj9O5Hk
-         WQYklCS7jCvr2fyW4INKL4Zc9CQHa6CbhwFcZyoAL6wMCh+G7z+KKS0lPkRkB+gmXIhK
-         NvEw==
+        b=E86rRxf0N7nQep7B5TD/dQoeJ3WeDYwVldJUUNinRwDivdpI65VQlUTgeSI4D4V99v
+         VRc950icdflGZAz8y3RJ61DFlQT/FX5qSHG0Pox/SpCscZvz4mmfB9Vu/MYBa8q/HxoZ
+         3zDmQWXdWBnnUfwRQOcmvNXM3gl0KVTK5A1AImHPkRIaYBV1nk1w9g4omGMvQFaOoCrC
+         Ch/I5uC8V9H3cX9QW2AYZvFSUg0BuxdiEJcjfFSeTexeLnH2exEuJ/csizEor2j9sfKw
+         UAQUe62o3FDsh9FHhK9dDLVw2It6EF/stQmPBmUd9/u+1JhbWqkToBLBqJyJuuk2GKep
+         Kl2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
+        h=content-transfer-encoding:mime-version:references:in-reply-to:date
+         :cc:to:from:subject:message-id:dkim-signature
          :arc-authentication-results;
-        bh=rtTUt06K9pctys7QxN9g4U6nBW5PFd3ijKPajFYzg5c=;
-        b=z40gM8elCLfSnrnVJM9s3RbvmQUao+Lj8MwYmet4cbrJHQYumoyeiVyc57039hNhIx
-         cOUYd0pdygBDkAcma84mk6JIU7nvM/Fs2EX8NVsaTmJgfg/dEcDlIbeKYdBxRgCbvG0A
-         wjNrzmOfdc11p2kYhwxP8f1FfvnvitM3jOvbVNxpXAidiSRCF8JRZgYX1fWB6i+64FJ3
-         Z/kHFathlNNhJrk6YzgSz1OJneEna4dlR7bSw9+U4ByHGwdAJDSse9D+bBvVLwAe0nc6
-         26MfZFsvRORA08z6y3Z0QeiXCPpFw0dT+GLVqVKNNtcNl8lbgfwjAOoCaQjpcs7iFUHD
-         Zb2Q==
+        bh=Cs0zzGy3vmrQH/NTUS3XJLzwo2hXCywAH4EVxWZR/Yg=;
+        b=pVkLv7vO4rSlVNlK7yNNJsRkI5XV12SmtBlR/q4MiHxX5uT1qCfdki8gAxLPoSy38j
+         2f36jcXTBdWfkpVanOgm9F/5prCqy3i2kgCaCwfeU6Nqnh/x/xJUKSd6IDCvTdI3eMWj
+         XRhZOLw8WFxeojW/o+hvHFsOTRb0vsiYPJoFgKRIaFOUIwDiVLbrBfj9x8pft6BUws1O
+         v5KnAfglDHjfyJ6jcXFhrb+xf3E7cnT5foviZ26PKCp8vhemCuHXWxvQ5ggia5jS4jI9
+         KEY6i9Whzi3YguXvNgfko8ZSXomNbXek0W1gud2SaxJGSOOCnOOFprLzoYS1dY7LI/fy
+         LHGQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=q19pBYDl;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GgLDl53j;
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <shreeya.patel23498@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id 88si681480pfm.20.2017.09.30.07.11.17
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id l10si663210pfc.17.2017.09.30.04.13.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 30 Sep 2017 07:11:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Sat, 30 Sep 2017 04:13:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=q19pBYDl;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GgLDl53j;
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id e69so1555539pfg.4
-        for <outreachy-kernel@googlegroups.com>; Sat, 30 Sep 2017 07:11:17 -0700 (PDT)
+Received: by mail-pg0-x244.google.com with SMTP id y192so1442909pgd.5
+        for <outreachy-kernel@googlegroups.com>; Sat, 30 Sep 2017 04:13:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=rtTUt06K9pctys7QxN9g4U6nBW5PFd3ijKPajFYzg5c=;
-        b=q19pBYDlBmCmw6gJVTlpW/Gj4nRaaGG0m3OyKICz4xiu+zkIg4hv+AbUKlXaPpbSW9
-         U1PQzP9Vl+GUdiqrLb+uVOLrJidm08Ly+89eq/wA409Mslw1F7JqFMQ3zfCj7MnxYWLA
-         CiDBJE7vVqPw4U0jueZ7qBpCdQkbAGmaXNv/65x7KMYkLLv9K7uq57yeOaYt9tiDJxjW
-         VysMfo8O/xpiHuYxknexJ+HxCWXk5uEhIIGpz8ymIfAeFhvPpZkQv9vVCSSRRITgVdRh
-         azmoZxOwJAVHuSjQwt67uu6OnP2HFXlIWA9FQgsYIDd3uG1xWqzItzcrFGJzC134BBxM
-         AONQ==
+        h=message-id:subject:from:to:cc:date:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=Cs0zzGy3vmrQH/NTUS3XJLzwo2hXCywAH4EVxWZR/Yg=;
+        b=GgLDl53jRqo9vMjeSv6MHHv8O7+duzdgQAMtg0Mp7UrpGh44XiLVFqYomEaYxv0kHJ
+         FZLbx1BesU+7zQfTCYCQgNydMRUCvaYheR1gSnq6VZBmC4DGJ5UM451yqBT3/p2/1hhv
+         JnzObfyo5P5Yt7YEVgQ9nTDzpGjVGuTGmKAV0f9naC6wlzOARA3ee+KY5l8SrzLbp32T
+         Xm1pJy+NRF5YMNN2nxkOlWtquvNvCg3Lf2vxc6gRgA2EDauNBDCWz1G2e9EMVTUw4l3P
+         dENrrJwWB6DH4zM9vdEett9gWyraoV35TGGU9i7aGcDxU6m/CWhw9AVmhWn15juKwS7o
+         edXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=rtTUt06K9pctys7QxN9g4U6nBW5PFd3ijKPajFYzg5c=;
-        b=oZIycnVt8BdwXW8PJHQzrQqX508dOhAsk3g9Z8kIfCt+OYRLdq1DLFU9njE0mdZyMN
-         48Nrjmy1MpeoO8lPu91o9x9FKPpnFu/k/OUBnJPKY3fn5xy5x7hRLbIuYnXPf5cO8xlB
-         ovCMSwQoZvQLyckb0Cdz3toWhhOUUfOzp9Jd1yL5LlVMwNxqIZ3a1bPkl38SmMW+/mk4
-         /8gqxyyZ7I9yi5Aj2cm3xY/qEJsvXpvsAEFUP6SX7rwVGJCFfy6M7Sj/9Co2SRQQuni2
-         WV41iQ8RlvTkDoDu2JEMTDA48KcaMGl67NgGgmXYwy4/hd3sUc8N1bk1rJm2tCedaEEk
-         oq/A==
-X-Gm-Message-State: AMCzsaUb+gWFLiJGUbKlDClgCmcA86padjY6uPNdoziU9Fp97FZNcOBm
-	ul1nx3EvOVoTV6uTzgpgYjeir20z
-X-Google-Smtp-Source: AOwi7QB0TlwuXRkD4JHkKosZWCcaYiH4ynReWJnSIFuZ7mk/uGp0PCoUVrRA5TcbF569f5QU/2K2hw==
-X-Received: by 10.159.245.149 with SMTP id a21mr129327pls.334.1506780677738;
-        Sat, 30 Sep 2017 07:11:17 -0700 (PDT)
+        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=Cs0zzGy3vmrQH/NTUS3XJLzwo2hXCywAH4EVxWZR/Yg=;
+        b=b6OL73WmP5Gm+pjdtiVbyF14r+JKvMUoGMJrTX+Yo6I2hjj0XupVoulRAA6KceVQiT
+         ZzbZz9Me0jj0AIrzlFkShYq8fcuoDlA8OSCt3rspZpoG5REVHsosWPncKq+CVcwdcKFA
+         KVYdWhimqNLD9NXHaTETP75frIQp066I4UDiFx3+2vUBY5yzMeg/k8MGKlJVmqm0w9xo
+         yOOCA3u4zAF1+6WGw1JsGgYgzRHHpM0hfF3ug3BZ51AsjlYvwzDYCT3urc8n871DUXic
+         9BvNlfGvMv8mi6sNo4k9K90OM2DAZ7ffkA27NM21pdBg4L6sQ/ScigaryKN3O9qV1n2M
+         E2KQ==
+X-Gm-Message-State: AHPjjUhqtiy5tp2t8+9Eyuf9Z/EAoEXutBjXf8F0GYOoCaZkGwhE0QCv
+	MInuh9Ek5dSKg7PTPSagcEY=
+X-Google-Smtp-Source: AOwi7QDORVxjtlA1yuSulEN1Ztxj4Yq6qeVq0R7ZrY2y4U3mFjWldBI6XKq0Jl2IZFLit1gn1aqS2g==
+X-Received: by 10.159.194.132 with SMTP id y4mr9588324pln.85.1506770037052;
+        Sat, 30 Sep 2017 04:13:57 -0700 (PDT)
 Return-Path: <shreeya.patel23498@gmail.com>
-Received: from shreeya-VirtualBox ([45.113.152.61])
-        by smtp.gmail.com with ESMTPSA id d124sm10783417pfc.42.2017.09.30.07.11.16
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 30 Sep 2017 07:11:17 -0700 (PDT)
+Received: from [10.0.2.15] ([45.113.152.61])
+        by smtp.googlemail.com with ESMTPSA id 197sm2056896pge.26.2017.09.30.04.13.54
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 30 Sep 2017 04:13:56 -0700 (PDT)
+Message-ID: <1506770032.2078.1.camel@gmail.com>
+Subject: Re: [PATCH v2] Staging: rtl8723bs: Remove unnecessary comments.
 From: Shreeya Patel <shreeya.patel23498@gmail.com>
-To: gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Cc: Shreeya Patel <shreeya.patel23498@gmail.com>
-Subject: [PATCH v3] Staging: rtl8723bs: Remove unnecessary comments.
-Date: Sat, 30 Sep 2017 19:41:11 +0530
-Message-Id: <1506780671-2209-1-git-send-email-shreeya.patel23498@gmail.com>
-X-Mailer: git-send-email 2.7.4
+To: "Tobin C. Harding" <me@tobin.cc>
+Cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org, 
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Date: Sat, 30 Sep 2017 16:43:52 +0530
+In-Reply-To: <20170930110657.GA25277@eros>
+References: <1506758434-3193-1-git-send-email-shreeya.patel23498@gmail.com>
+	 <20170930110657.GA25277@eros>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.18.5.2-0ubuntu3.2 
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
 
-Remove unnecessary comments which are there
-to explain why call to memset is in comments. Both of the
-comments are not needed as they are not very useful.
+On Sat, 2017-09-30 at 21:06 +1000, Tobin C. Harding wrote:
+> Hi Shreeya,
+> 
+> We don't usually add a period to the subject line for kernel patches.
+> (reason: we only have about
+> 52 characters for the commit brief description so best not to waste
+> any).
+> 
+> On Sat, Sep 30, 2017 at 01:30:34PM +0530, Shreeya Patel wrote:
+> > 
+> > This patch removes unnecessary comments which are there
+> > to explain why call to memset is in comments. Both of the
+> > comments are not needed as they are not very useful.
+> You may like to read Documentation/process/submitting-patches.rst
+> (specifically
+> section 2) for tips on writing your git log.
+> 
+>         Describe your changes in imperative mood, e.g. "make xyzzy do
+> frotz"
+>         instead of "[This patch] makes xyzzy do frotz" or "[I]
+> changed xyzzy
+>         to do frotz", as if you are giving orders to the codebase to
+> change
+>         its behaviour.
+> 
+> Good luck,
+> Tobin.
 
+Hello,
 
-Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
----
-Changes in v2:
-  -Remove some more unnecessary comments and make the
-   commit message more appropriate.
+Thanks for correcting me :)
+I'll do the necessary changes and will send as v3.
 
-Changes in v3:
-  -Make the commit message in imperative form.
-
-
- drivers/staging/rtl8723bs/core/rtw_mlme.c     | 3 ---
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 3 ---
- drivers/staging/rtl8723bs/core/rtw_pwrctrl.c  | 2 --
- drivers/staging/rtl8723bs/core/rtw_recv.c     | 4 ----
- drivers/staging/rtl8723bs/core/rtw_xmit.c     | 3 ---
- 5 files changed, 15 deletions(-)
-
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-index 6b77820..5b583f7 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-@@ -28,9 +28,6 @@ sint	_rtw_init_mlme_priv(struct adapter *padapter)
- 	struct mlme_priv 	*pmlmepriv = &padapter->mlmepriv;
- 	sint	res = _SUCCESS;
- 
--	/*  We don't need to memset padapter->XXX to zero, because adapter is allocated by vzalloc(). */
--	/* memset((u8 *)pmlmepriv, 0, sizeof(struct mlme_priv)); */
--
- 	pmlmepriv->nic_hdl = (u8 *)padapter;
- 
- 	pmlmepriv->pscanned = NULL;
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index b6d137f..ca35c1c 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -474,9 +474,6 @@ int	init_mlme_ext_priv(struct adapter *padapter)
- 	struct mlme_priv *pmlmepriv = &(padapter->mlmepriv);
- 	struct mlme_ext_info *pmlmeinfo = &(pmlmeext->mlmext_info);
- 
--	/*  We don't need to memset padapter->XXX to zero, because adapter is allocated by vzalloc(). */
--	/* memset((u8 *)pmlmeext, 0, sizeof(struct mlme_ext_priv)); */
--
- 	pmlmeext->padapter = padapter;
- 
- 	/* fill_fwpriv(padapter, &(pmlmeext->fwpriv)); */
-diff --git a/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c b/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
-index aabdaaf..820a061 100644
---- a/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
-@@ -1193,8 +1193,6 @@ void rtw_init_pwrctrl_priv(struct adapter *padapter)
- 
- void rtw_free_pwrctrl_priv(struct adapter *adapter)
- {
--	/* memset((unsigned char *)pwrctrlpriv, 0, sizeof(struct pwrctrl_priv)); */
--
- #ifdef CONFIG_PNO_SUPPORT
- 	if (pwrctrlpriv->pnlo_info != NULL)
- 		printk("****** pnlo_info memory leak********\n");
-diff --git a/drivers/staging/rtl8723bs/core/rtw_recv.c b/drivers/staging/rtl8723bs/core/rtw_recv.c
-index 68a6303..73e6e41 100644
---- a/drivers/staging/rtl8723bs/core/rtw_recv.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_recv.c
-@@ -46,9 +46,6 @@ sint _rtw_init_recv_priv(struct recv_priv *precvpriv, struct adapter *padapter)
- 	union recv_frame *precvframe;
- 	sint	res = _SUCCESS;
- 
--	/*  We don't need to memset padapter->XXX to zero, because adapter is allocated by vzalloc(). */
--	/* memset((unsigned char *)precvpriv, 0, sizeof (struct  recv_priv)); */
--
- 	spin_lock_init(&precvpriv->lock);
- 
- 	_rtw_init_queue(&precvpriv->free_recv_queue);
-@@ -65,7 +62,6 @@ sint _rtw_init_recv_priv(struct recv_priv *precvpriv, struct adapter *padapter)
- 		res = _FAIL;
- 		goto exit;
- 	}
--	/* memset(precvpriv->pallocated_frame_buf, 0, NR_RECVFRAME * sizeof(union recv_frame) + RXFRAME_ALIGN_SZ); */
- 
- 	precvpriv->precv_frame_buf = (u8 *)N_BYTE_ALIGMENT((SIZE_PTR)(precvpriv->pallocated_frame_buf), RXFRAME_ALIGN_SZ);
- 	/* precvpriv->precv_frame_buf = precvpriv->pallocated_frame_buf + RXFRAME_ALIGN_SZ - */
-diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-index 022f654..8cd05f8 100644
---- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-@@ -51,9 +51,6 @@ s32	_rtw_init_xmit_priv(struct xmit_priv *pxmitpriv, struct adapter *padapter)
- 	struct xmit_frame *pxframe;
- 	sint	res = _SUCCESS;
- 
--	/*  We don't need to memset padapter->XXX to zero, because adapter is allocated by vzalloc(). */
--	/* memset((unsigned char *)pxmitpriv, 0, sizeof(struct xmit_priv)); */
--
- 	spin_lock_init(&pxmitpriv->lock);
- 	spin_lock_init(&pxmitpriv->lock_sctx);
- 	sema_init(&pxmitpriv->xmit_sema, 0);
--- 
-2.7.4
 
 
