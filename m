@@ -1,120 +1,111 @@
 X-GM-THRID: 6470705412124442624
-X-Received: by 10.84.191.228 with SMTP id a91mr1065439pld.15.1506878781617;
-        Sun, 01 Oct 2017 10:26:21 -0700 (PDT)
+X-Received: by 10.98.238.16 with SMTP id e16mr1016064pfi.20.1506878698152;
+        Sun, 01 Oct 2017 10:24:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.98.212.80 with SMTP id u16ls3080471pfl.10.gmail; Sun, 01 Oct
- 2017 10:26:20 -0700 (PDT)
-X-Received: by 10.99.186.23 with SMTP id k23mr279532pgf.152.1506878780681;
-        Sun, 01 Oct 2017 10:26:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506878780; cv=none;
+Received: by 10.101.78.4 with SMTP id r4ls2493169pgt.9.gmail; Sun, 01 Oct 2017
+ 10:24:57 -0700 (PDT)
+X-Received: by 10.98.79.157 with SMTP id f29mr1011425pfj.13.1506878697114;
+        Sun, 01 Oct 2017 10:24:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506878697; cv=none;
         d=google.com; s=arc-20160816;
-        b=AiWqRZ4OIY+Qfc2L7nwNf/X6LPbsSbqEK7lsGl6wHEgqWySBOG2osQu3Ee0uD51hTT
-         xKm3EfB63Nhh0IJytyXRLvYOa+8KIV0wQymCxQ0C3eaTaDf+BdBPkS6MnPrakN9CMScJ
-         QJ9GCYfJM64EZVRrubBItLeogcwZJEShJniopvksYKUzGzVkM+xT0d+P1yfGnDkeI6W/
-         lDumBJF9Jy9RYlnzANo8ETtDxhPoCdjbukE+jVcwhoaDgfdm3t0xaM+JVNEbCT6R090O
-         rclRhLDCBMPGO9z2EBJUeB7CQHLsUq5ceNXNGzF2vS9NP2uHcQ+R3r2cSRg0+5OWmJW9
-         T9bw==
+        b=ahxJsYOMt7KFXH9BfVWJUE198rcfP3jT2d8mJjoFKFiow+LaFrKiwmTVxyFCGxvTp9
+         4XN9J9B90RkrGFWfoLTF/lYn0Du+Uf7/53Gt3RC7laFCXV88+D8/J8NHup2vXEK5XISE
+         OUkySLpK9VvTnGuP9f85ySP7VnoSiYAH430iZqb0hIDjuLSf9XHdgFgniyxsikTCOH+2
+         Etm1CiKLGEDmPnx+Rwm/MFzAxDcqJukAnbfnQb5l4e24VRghiVKJHUQmkKk4VcZp76gm
+         R0MDrMsGO15IB4DvpzZdN05AkGdFzmzD1OfqWiLWbzTQgtXfGHRWDAgdWueJEEUchgeg
+         T6tg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature
-         :arc-authentication-results;
-        bh=g03kBjiX1awdzY/fUi99ldpMqMjAIbUPrzWpFgO+Rlk=;
-        b=yWWMMW+Tztpdqqn4thtXkCb+emGRVQnVpl9tMQH/aKRny2gPFV3ANafTmwS+pCsX5h
-         n6+vmzfeZqaLqci6yDKtCE/OH6oT6m2lPajEeEWMdEPZs2jO1sxBaj4Syi90Sns5U21W
-         DAkqDGweaWF/KoZyjetXeoEbFw7mbJAZVEgW9I/OCIUYkEw0qAmMiJ7NMcZLcRJJERvB
-         f67r7kJweHKzgAYquDi10fZpMml2/P8A4kOM3KKa59SJB1m1kWXIgF3Qfthz4eD4ndoJ
-         yOM8sEPOFmbx9GNRTPCjK/FarJLngBvPoZ7AhKYbt6egpYnGqZiwsQdC1bxd2OonWvZU
-         QPAQ==
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature:arc-authentication-results;
+        bh=+1QUccEfPk/bpiZdXITirCQTDgDvdmgaFqwh38O7lTo=;
+        b=DEaosWY8mWB5Fl/HYe4ARurp7to+b0XUWoNRLT6LUPh5yKGCRWMkvpaTMNK5TrNLxB
+         diH0k81JPFV1tiY78iB3/AMIg7uH1Vu3Ho7ir5Zd0nhcUbeLJLZcoYIafg1sEv8ItHKT
+         abNaL94Ylvt6jj+HZKFw1C9DcFKLswkWlUoPGOfpmZDauu0+UMJZm6pxdYU8OHN2kGhK
+         i5oqu/o6xVFYGzwHOYAUjAD10zIQ1tYg4GTHCR3VmbK8wrxEF6NU8dk6uAQQM70ZjUKk
+         tzr+CORvTWvH7XnZ4CUetr9OddpIzHSuy7qGFwEyFc6en3UbUZ73khMiUN7DP/XxW9Ek
+         kCvQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pDfL3nkT;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YezvpfEW;
+       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <meghana.madhyastha@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id z74si897561pfj.21.2017.10.01.10.26.20
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id 13si879220pfk.26.2017.10.01.10.24.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Oct 2017 10:26:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Sun, 01 Oct 2017 10:24:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pDfL3nkT;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YezvpfEW;
+       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id o1so2307401pga.4
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Oct 2017 10:26:20 -0700 (PDT)
+Received: by mail-pg0-x244.google.com with SMTP id d8so3607784pgt.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 01 Oct 2017 10:24:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=g03kBjiX1awdzY/fUi99ldpMqMjAIbUPrzWpFgO+Rlk=;
-        b=pDfL3nkTWFES9yj+zbxIBA4Gr+OGTkU3N3yPisRk+YWBqceQdWjoAdBc9Uyanq3pkk
-         Ns5xK2nC2zREOlMTdBpx2AD0wY4XZp3L4r4FAfyYYfVsOi795KtMG+i6La+voOjwPLkq
-         zfZszMvv6E6xLDrwY/Je2VYwY03TJdqFaTN3IXwyt3CBGW6Q1ZWtL7fikUQO5/4abYPq
-         UQMcVUNzEKQXNDlwg/7Zqk2Gmf5EXtihgv3tVvi18e/TlIZLeL8WJPqplt0oahTsmaIX
-         Slc2Gn/7Z8U3JoeUvnl7lsSkXsORtnzYbonoLfF8mE57LbGtoXlNC0yFBZr/4MkjcPUx
-         wukw==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=+1QUccEfPk/bpiZdXITirCQTDgDvdmgaFqwh38O7lTo=;
+        b=YezvpfEW6M+X8dGXbbGjilifjGnIbbdoc5rLxAav+bR4qRhU0iBbMM6qbSvhSmjIjd
+         RVJntfaCZ8xBoT5Q8CE9t1mOh0GWAr8F9bCK0ceFylK32ZFqWvqVMkBsARp7CZYw+iJ5
+         fINWd1XiVYfeG/6M3r1wtcvjFAVTC/f/CAbPXDsc/9KV26si05q2lU/1OAodNbTPNBfH
+         0DWfJ7yG0NQqmAiP/n14J5QY7Nbsus6ofZms88LvR8SNSZDhE2yBwO/s1RlY/GxBStAE
+         vtxMBQSemB4VGCv6kugJcpZsl24t7Keb+vqLMr3Fb39/CPmTOnKZJtc6J24aZaUjVBcG
+         vN0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=g03kBjiX1awdzY/fUi99ldpMqMjAIbUPrzWpFgO+Rlk=;
-        b=LGqYYJrwikj+TzWft7IrJrNLgKauoTmAoABfLsZL8+nPr/bENxxIzY0/H3tXH+HP8o
-         2ZG+DnhKq7qL+ST7lzeWftI58n+CNlkbJq4VnmZRFO6ved2RR7+lACy0CBJNL8cSH975
-         y133RN6b7ZwwUVCFp4d8a+Nhr20lWEFLscQ/hu8ZaGKX8b+KkOOCaM4Q+FVVljeTu+oA
-         9FWitb2C25r101CZF0UD+Mz1/r306lkAehbNyRD0E4/OSzqJ6Luhdwq2NinXpSgj44eB
-         dx22WNgsCakGNU4d5r25iwZWYfTjEZNhz8rEc3Q76sdxCO+QpbFvp3tb3coESxl5r1LA
-         L08A==
-X-Gm-Message-State: AMCzsaVIuGucThjQ6hOLQW+DG8cfJ45Axs88V5QfH3KBofsUTkMh6g1u
-	ZbP1NuGAr/+cP1UBwBTlhCw=
-X-Google-Smtp-Source: AOwi7QCk04nlFAuPu7vCjypr2kiaOufKgljR0xrXpM+muEvvHEYimOmMHl4ezoJFrFPP0HrBlVITNg==
-X-Received: by 10.84.213.16 with SMTP id f16mr7468242pli.262.1506878780448;
-        Sun, 01 Oct 2017 10:26:20 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=+1QUccEfPk/bpiZdXITirCQTDgDvdmgaFqwh38O7lTo=;
+        b=uRj6hXdimcS4yEVm6rd0uYroTTknf+RvEup6GtJDIrF5M1/nJo4l9UWGXGV7A/9cFs
+         WQtSJt7//dh/HFh/fFFrSo7H4bVSQZgWTzhhtF3BCD5Fea1HiC4BJcCgXjeKY/OaCNWm
+         A8AM5uppeFr3Kf+nMmiLag4ZOFQXDtMW1GtUQfm8sHO6nVJzIjHFNG+/+RzRQN5hOYtL
+         2R0tNBRXBo7ZiuFpybyYQQK5aN35YDDTxLpcIKhJiZhfBKCncDjYwlM9n7Czbgx8BUjD
+         8Y1j/CldxeUo46f3Ci5Jir2QyX3bir5VcOEVOyyc6JM/SM/10jw/UWAMQZTPDCheYJk9
+         2wNA==
+X-Gm-Message-State: AHPjjUheyIFnm0/XSBWL/hZULKTeavtB4KpzUm6t/O+FKGcQnVm6ZbfC
+	WGI9BjYQXvWzrfCk6AVUku+928Ho
+X-Google-Smtp-Source: AOwi7QCE1MSmC+E9efZP4fekUMqtu5MWRy/uyKuuY6FmW5qo49HxXGPo+TCIZxwReuilrW7FNQAYYQ==
+X-Received: by 10.84.135.34 with SMTP id 31mr12411071pli.306.1506878696833;
+        Sun, 01 Oct 2017 10:24:56 -0700 (PDT)
 Return-Path: <meghana.madhyastha@gmail.com>
 Received: from meghana-HP-Pavilion-Notebook ([122.171.83.22])
-        by smtp.gmail.com with ESMTPSA id c7sm14155101pfc.55.2017.10.01.10.26.16
+        by smtp.gmail.com with ESMTPSA id a1sm15796440pgu.47.2017.10.01.10.24.53
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Oct 2017 10:26:19 -0700 (PDT)
-Date: Sun, 1 Oct 2017 22:56:12 +0530
+        Sun, 01 Oct 2017 10:24:55 -0700 (PDT)
+Date: Sun, 1 Oct 2017 22:54:49 +0530
 From: Meghana Madhyastha <meghana.madhyastha@gmail.com>
 To: daniel@ffwll.ch, noralf@tronnes.org, outreachy-kernel@googlegroups.com,
 	dri-devel@lists.freedesktop.org, Lee Jones <lee.jones@linaro.org>,
 	Daniel Thompson <daniel.thompson@linaro.org>
-Subject: [PATCH v7 1/3] backlight: Add
- IS_ENABLED(CONFIG_BACKLIGHT_CLASS_DEVICE)
-Message-ID: <7a6311819f8eea0b2845c25cca72324b25e63e13.1506878301.git.meghana.madhyastha@gmail.com>
-References: <cover.1506878301.git.meghana.madhyastha@gmail.com>
+Subject: [PATCH v7 0/3] drm/tinydrm: drm_of_find_backlight helper
+Message-ID: <cover.1506878301.git.meghana.madhyastha@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1506878301.git.meghana.madhyastha@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Add IS_ENABLED(CONFIG_BACKLIGHT_CLASS_DEVICE) as part of the
-if directive for the function declaration of
-of_find_backlight_by_node in order to avoid module dependency
-errors.
+Move tinydrm_of_find_backlight to drm_of.c and rename it to
+drm_of_find_backlight for better organizational structure.
 
-Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
----
 Changes in v7:
--This patch did not exist in v6. 
+-Move the function definitions/declarations back to drm_of.h
+ and modify the config option for of_find_backlight_by_node
+ in linux/backlight.h to resolve the build errors.
 
- include/linux/backlight.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Meghana Madhyastha (3):
+  backlight: Add IS_ENABLED(CONFIG_BACKLIGHT_CLASS_DEVICE)
+  drm/tinydrm: Move tinydrm_of_find_backlight into drm_of.c
+  drm/tinydrm: Add devres versions of drm_of_find_backlight
 
-diff --git a/include/linux/backlight.h b/include/linux/backlight.h
-index 5f2fd61..a52ce82 100644
---- a/include/linux/backlight.h
-+++ b/include/linux/backlight.h
-@@ -162,7 +162,7 @@ struct generic_bl_info {
- 	void (*kick_battery)(void);
- };
- 
--#ifdef CONFIG_OF
-+#if defined CONFIG_OF && IS_ENABLED(CONFIG_BACKLIGHT_CLASS_DEVICE)
- struct backlight_device *of_find_backlight_by_node(struct device_node *node);
- #else
- static inline struct backlight_device *
+ drivers/gpu/drm/drm_of.c                       | 85 ++++++++++++++++++++++++++
+ drivers/gpu/drm/tinydrm/core/tinydrm-helpers.c | 40 ------------
+ drivers/gpu/drm/tinydrm/mi0283qt.c             |  3 +-
+ include/drm/drm_of.h                           | 14 +++++
+ include/drm/tinydrm/tinydrm-helpers.h          |  1 -
+ include/linux/backlight.h                      |  2 +-
+ 6 files changed, 102 insertions(+), 43 deletions(-)
+
 -- 
 2.7.4
 
