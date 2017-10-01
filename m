@@ -1,120 +1,130 @@
 X-GM-THRID: 6470117861435113472
-X-Received: by 10.28.143.200 with SMTP id r191mr1420792wmd.1.1506858448705;
-        Sun, 01 Oct 2017 04:47:28 -0700 (PDT)
+X-Received: by 10.129.146.207 with SMTP id j198mr19783922ywg.27.1506857845369;
+        Sun, 01 Oct 2017 04:37:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.146.131 with SMTP id u125ls1521205wmd.0.gmail; Sun, 01 Oct
- 2017 04:47:27 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QCJaXxAYKiLEw3kHHwmwCjKFksuWl/SMO4C9EOBjb5avs4j/zQXtYc0acTpDHYXRxO51LEa
-X-Received: by 10.28.55.209 with SMTP id e200mr1422401wma.0.1506858447741;
-        Sun, 01 Oct 2017 04:47:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506858447; cv=none;
+Received: by 10.37.231.12 with SMTP id e12ls1409525ybh.3.gmail; Sun, 01 Oct
+ 2017 04:37:24 -0700 (PDT)
+X-Received: by 10.13.202.5 with SMTP id m5mr20649724ywd.190.1506857844410;
+        Sun, 01 Oct 2017 04:37:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506857844; cv=none;
         d=google.com; s=arc-20160816;
-        b=C+Bm8HgXJimMi0TmIppCWIVc3MfwUyPJbAplsErj7qy0YOmutzsLcR5Eq2BoFFlzK0
-         z5QzH+1Or1IaCRc+tdt9GYI+oQjzYr2HD91LNDR8PzaDYzw7/GqvrS4ACRGSNngZWyk9
-         zX46hZd/dyo28b3fUZlHaLr0qBCaMzgYKIt7rN4aAfJYuEHhW0joNs6cLE8Gj36A8i7Y
-         b7m+9+Yv7gzV+BrQrqLCusOKGgXRNoxpK6pFyLxnVEAOnBjnxwFT8iPEV1OGc4yNyXYb
-         00ylJxt2wn9UrAJ5u/08newYnQ3Cpxs/qpt7n/KFkpIFngLRVGlWyAyAeaCuqfz6+H2G
-         TfxA==
+        b=OgnRGTFDtvYqRS711f7BuwhSIuYtlSyS/raj15JBN6FnmzimdK4VDjjqrpByYxO8sJ
+         IxsAmU3V0J+lEAuYqpi1QL/3PTZsl74OGz/mXBbTjZerP2G28NIsIE5KeN8//hWGvjra
+         65QcKbhG6Ap2qpICXn2NkdJx8hmYjHfJsRMsiIZZdc5F1s74d6EB+hREpy/KLYIMIP7R
+         TfSXSWP6Ce/xTsWOn6v5oFbd+K3N6qWDxtMBmcK4Isl4kSswXsCJ1v/74zHLbY+DXoze
+         gCQAm/eZNq1taX2ozrvYd0Jz08YJ4YSiIED0mJeqVIuV0ppdy413oSFTubslAXSnXSCk
+         JMrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=hCfPAKR9B5BAJm/e8XEDT7bdQNebSMfMDRS/kURoHV4=;
-        b=JDqCfgqtWQD/7jYYPmQ26waE0NTR6lBxcELcEGDu3MbKHfA8QljRDyGs06CHddI8AL
-         mZ9dV+JRmjAVX+dFZEOG6sT6orUkyGqEGGJ4q7IDsMwTBUru+94x3+jcn19w7lKh96cM
-         TOm9DTP5fABfGY//0kLA71ES7AtpBv9DQ9lg8PIjxXRPS5M64k23KMoUfzwBsHV4pgvH
-         72FQeJ+hmfSn8SJUOOzZ26nfmXcvvN4CESoojl8labnmZOrntRx1FiZQgIX126XhhekU
-         AL8jRHj5U6X6z0xckWRxl9WLsBoZrWPEJz6+HLG085JnBRIPgjsJDsliQnf4hDHxyUSs
-         2Tyw==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=B5n870v1Narv7uFNEoNctPVxGT4o9sXQazVcTzY7zDc=;
+        b=Yoi1uIpqKOP7gZ6K9UXAkL2J7DH54I4yxs42t0VYc28HSo2tMHDfxM1h8KpbZvkiod
+         yAHH4epbRpK6zuOggRb4Toh/0k+vm0MSWj3MSN/lGFUSKobYIyR6Wn7Xhc/2Pa9OwiBl
+         W/KK+oLPN/ZjV8M+bZd4SSgFk0pceODblGxSUNMzjY6z/3FOWIh1ldWxheioDXA0kOf0
+         eibmhO9XgOdXCui0NzeERL0AkuyWLZjkIGDJXVLW9G7g/9XBEXWLTxMmE47CuCW/hELo
+         EB3f9tQEXgLIadcwGraoo8SOqdRKLK3bvAlyhGdSGx1ByO9HM/H6V8vCSqLVdEsWqDAV
+         FEXQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id p200si1001596wmg.4.2017.10.01.04.47.27
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=e9cUgtbp;
+       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2607:f8b0:400d:c09::243 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <georgiana.chelu93@gmail.com>
+Received: from mail-qk0-x243.google.com (mail-qk0-x243.google.com. [2607:f8b0:400d:c09::243])
+        by gmr-mx.google.com with ESMTPS id n131si464356ywb.20.2017.10.01.04.37.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Oct 2017 04:47:27 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Sun, 01 Oct 2017 04:37:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2607:f8b0:400d:c09::243 as permitted sender) client-ip=2607:f8b0:400d:c09::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.42,463,1500933600"; 
-   d="scan'208";a="239278432"
-Received: from abo-88-122-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.122.88])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 01 Oct 2017 13:47:26 +0200
-Date: Sun, 1 Oct 2017 13:47:26 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Georgiana Chelu <georgiana.chelu93@gmail.com>
-cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-    outreachy-kernel <outreachy-kernel@googlegroups.com>, 
-    Mauro Carvalho Chehab <mchehab@kernel.org>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=e9cUgtbp;
+       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2607:f8b0:400d:c09::243 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qk0-x243.google.com with SMTP id w63so746271qkd.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 01 Oct 2017 04:37:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=B5n870v1Narv7uFNEoNctPVxGT4o9sXQazVcTzY7zDc=;
+        b=e9cUgtbp+cOpOnVFfIwIxHBW3dnwhNjyrGyhSv9H1ZVONr+Z0VZaO7Z99DWDZMGrIh
+         qirf9HUCQ08qs/FDfrqILCdqQK3iV980hofRd4gaDuElHbXexJIrl/naenVcJbRf4BgQ
+         AL8mzX/4ttMJxiqzqPvC3crOtHTJ02CruLRbxgMWK5nsbt7oFt+Hjt0Y6RoCWyMcHgdZ
+         pv8LEEhQAJo8RGoxmYpKpjN7GYDJQc0a4AqukFyvUmH6co5TPst4IyIRrVkmAVAJtMV5
+         ceVf/tpyk6NjEI1dbtf0zrVXE5DiDRx8E3/UVrr7Lg3xPvPH5X51Xo8v3w3aIXLDvdl3
+         ojQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=B5n870v1Narv7uFNEoNctPVxGT4o9sXQazVcTzY7zDc=;
+        b=f+jjZaXHiQ+wX7vykaOP038q3vdwqbOA0DgE3cT5rFv4mAQdUiM7mhU4Go7NWIoyam
+         ePE/GZWLqZrNgaZmSUD+5TfkfPyYOD81LqZaZKu24aLJfP5RZV2bQx1KF0OiUNQRQHqh
+         xP98Max0BJmQ2ko31BT4E8XlC+4sM5w5KlLsmoVpu3j2d3AsK+mp+eQx7bR7yM9jN1yc
+         SCO8jFHew2OeSz7NAk87thvzKZIvQ0niZfpKFsvlAXqcpTjWz5NV3MuEMOkFSnPj85tG
+         I9RUi+AHZ7P2DpKcMyNe12IsynPJkKDZvIV2tOvD+Bg8ga+8UMgDbly0XGyn4H05VXKF
+         HKiQ==
+X-Gm-Message-State: AMCzsaUxL9a+Xqb/rCiBtOZxNrbVmW3CLyhHgBtiayoqFzDyyJuBiM57
+	uuvvaH2rqfzsRnzJ+aQiYPjgfJfBOn6V29guVe8eYw==
+X-Google-Smtp-Source: AOwi7QDQcM6IezxINU20sjpxi3wHyIf8Fxr+nChm2MIetv2p7AkW+5PYcWfjKh2a8XCe6nat5amvFPGCIhWSqfCVWPA=
+X-Received: by 10.55.188.131 with SMTP id m125mr11254407qkf.12.1506857844102;
+ Sun, 01 Oct 2017 04:37:24 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.140.105.75 with HTTP; Sun, 1 Oct 2017 04:37:23 -0700 (PDT)
+In-Reply-To: <20170929133417.GA4057@kroah.com>
+References: <cover.1506436974.git.georgiana.chelu93@gmail.com>
+ <6994f57188755df17d3ef47a36a4f4ec032dcb4d.1506436974.git.georgiana.chelu93@gmail.com>
+ <20170929133417.GA4057@kroah.com>
+From: Georgiana Chelu <georgiana.chelu93@gmail.com>
+Date: Sun, 1 Oct 2017 14:37:23 +0300
+Message-ID: <CALta04wMbvf3BDh9+_7TT_VbnApMt3HfqwD+_4qSNBpY2xaUQQ@mail.gmail.com>
 Subject: Re: [Outreachy kernel] [PATCH v2 02/10] Staging: media: atomisp:
  Remove useless 'out of memory' messages
-In-Reply-To: <CALta04wMbvf3BDh9+_7TT_VbnApMt3HfqwD+_4qSNBpY2xaUQQ@mail.gmail.com>
-Message-ID: <alpine.DEB.2.20.1710011346330.2031@hadrien>
-References: <cover.1506436974.git.georgiana.chelu93@gmail.com> <6994f57188755df17d3ef47a36a4f4ec032dcb4d.1506436974.git.georgiana.chelu93@gmail.com> <20170929133417.GA4057@kroah.com> <CALta04wMbvf3BDh9+_7TT_VbnApMt3HfqwD+_4qSNBpY2xaUQQ@mail.gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
 
-
-
-On Sun, 1 Oct 2017, Georgiana Chelu wrote:
-
-> On 29 September 2017 at 16:34, Greg Kroah-Hartman
-> <gregkh@linuxfoundation.org> wrote:
-> > On Tue, Sep 26, 2017 at 09:01:30AM -0700, Georgiana Chelu wrote:
-> >> OOM (Out Of Memory Manager) reports memory allocation fails,
-> >> so there is no need for the error messages.
-> >>
-> >> Signed-off-by: Georgiana Chelu <georgiana.chelu93@gmail.com>
-> >> ---
-> >>
-> >> Changes in v2:
-> >> * this is a new patch added to the patchset
-> >>
-> >>  drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c | 4 ----
-> >>  1 file changed, 4 deletions(-)
-> >>
-> >> diff --git a/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c b/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c
-> >> index 5232327..8667466 100644
-> >> --- a/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c
-> >> +++ b/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c
-> >> @@ -728,7 +728,6 @@ static int alloc_private_pages(struct hmm_buffer_object *bo,
-> >>       bo->page_obj = kmalloc_array(pgnr, sizeof(struct hmm_page_object),
-> >>                               GFP_KERNEL);
-> >>       if (unlikely(!bo->page_obj)) {
-> >> -             dev_err(atomisp_dev, "out of memory for bo->page_obj\n");
-> >>               return -ENOMEM;
-> >>       }
-> >
-> > The { } should also be removed when you do this.  Please fix that up
-> > here.
-> >
+On 29 September 2017 at 16:34, Greg Kroah-Hartman
+<gregkh@linuxfoundation.org> wrote:
+> On Tue, Sep 26, 2017 at 09:01:30AM -0700, Georgiana Chelu wrote:
+>> OOM (Out Of Memory Manager) reports memory allocation fails,
+>> so there is no need for the error messages.
+>>
+>> Signed-off-by: Georgiana Chelu <georgiana.chelu93@gmail.com>
+>> ---
+>>
+>> Changes in v2:
+>> * this is a new patch added to the patchset
+>>
+>>  drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c | 4 ----
+>>  1 file changed, 4 deletions(-)
+>>
+>> diff --git a/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c b/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c
+>> index 5232327..8667466 100644
+>> --- a/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c
+>> +++ b/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c
+>> @@ -728,7 +728,6 @@ static int alloc_private_pages(struct hmm_buffer_object *bo,
+>>       bo->page_obj = kmalloc_array(pgnr, sizeof(struct hmm_page_object),
+>>                               GFP_KERNEL);
+>>       if (unlikely(!bo->page_obj)) {
+>> -             dev_err(atomisp_dev, "out of memory for bo->page_obj\n");
+>>               return -ENOMEM;
+>>       }
 >
-> This fix is done in
-> [PATCH v2 07/10] Staging: media: atomisp:
->     Remove braces {} for single statement blocks
+> The { } should also be removed when you do this.  Please fix that up
+> here.
 >
-> Do you say that is better to remove the {} in 02/10?
 
-Yes.  When you make a change, you should clean immediately up any
-checkpatch warnings that you introduce.
+This fix is done in
+[PATCH v2 07/10] Staging: media: atomisp:
+    Remove braces {} for single statement blocks
 
-julia
+Do you say that is better to remove the {} in 02/10?
 
+Thank you,
+Georgiana
+
+> thanks,
 >
-> Thank you,
-> Georgiana
->
-> > thanks,
-> >
-> > greg k-h
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CALta04wMbvf3BDh9%2B_7TT_VbnApMt3HfqwD%2B_4qSNBpY2xaUQQ%40mail.gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
+> greg k-h
 
