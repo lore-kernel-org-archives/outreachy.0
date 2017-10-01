@@ -1,101 +1,115 @@
 X-GM-THRID: 6471841659603648512
-X-Received: by 10.28.15.72 with SMTP id 69mr1299928wmp.3.1506864003697;
-        Sun, 01 Oct 2017 06:20:03 -0700 (PDT)
+X-Received: by 10.223.157.134 with SMTP id p6mr1257193wre.14.1506843059444;
+        Sun, 01 Oct 2017 00:30:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.47.194 with SMTP id v185ls1567277wmv.9.canary-gmail; Sun,
- 01 Oct 2017 06:20:02 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QBOAb03W3kiJbaLnS2bcxQS1+Z9nGAUTIZUfrzTOhIdG0ijV36wqxdh2r6Dp0R2EDZ3Hj/N
-X-Received: by 10.28.22.4 with SMTP id 4mr1363495wmw.13.1506864002748;
-        Sun, 01 Oct 2017 06:20:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506864002; cv=none;
+Received: by 10.223.195.40 with SMTP id n37ls1650571wrf.2.gmail; Sun, 01 Oct
+ 2017 00:30:58 -0700 (PDT)
+X-Received: by 10.28.22.4 with SMTP id 4mr1289583wmw.13.1506843058604;
+        Sun, 01 Oct 2017 00:30:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506843058; cv=none;
         d=google.com; s=arc-20160816;
-        b=KQuULFA6UfVjRjcC7BpqmwHI27A5AlGOVWqI1W5VW5FpZ32+jTWIFF3XdEXKrpmx7r
-         JvCdq0qLd77fIW2V1Ct8cpj2ssLI3/xrY44VIztcVRa5ceC4cGnfBcIQMsTJnht417Zc
-         oAqnDZwEUJkj7AvM0X3depaYL23df28GOjI2WpeOSrbM/2UPaDSo5KEaYrwt2Y0QrNZw
-         zQ5t6U4hP5q5oeRmnGsWCYbAp10GMTvvgAc7nXgvB20nFXZKYAQNKzLmszhrx7fUJZil
-         oLN12xTlNZN1tUG/lyBggktbv7TDsQoTAfCZN02rYZ6ze1sgcZTBzfEByI7QIkUJlg2i
-         yUcw==
+        b=ZXxjHVYPBWUYm3h7Gwc9kpGuoRGhlU+zNNgFDRZMowPR5EGzDjTD5Pio1LWSZ8YcMS
+         YlBjGuHIXFEhQBh6wdoAv0SfaKOlbrTsEvVErQaZp+aeykw0Ozh2aUwtoux1AQ6SZFVh
+         9GPAYOwG8DRl7mpGCVByf/PYwWeuV6GKVByPyIDq7MdkG+tnU3Ti4K7mbvsRZY1c1IFZ
+         HkP9qW78NIM2j+R3ddsTvhnYKHq0nWaahstp9B/8wPxRgi/4A37+1gJgmQhq4WG+ccHT
+         bD07U6tt3sc5OQNSzcakZB21qZXwF8vxe8kp8QhC76IzdPefmeogI0ttaqTtAeNXcLhE
+         1YBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=8xz1cWcnxxbJQopKS8rawyVnKbJoX3j/MXAbXU67nCo=;
-        b=dfjIIkAwFYV2t9E15pt3oS4GkKfe8UtPUReRuzo4CFzw79Oi1oxbLKwqLn+goQHdAC
-         GMj2Tqart/fublsTlED7/wIXw3CiquYsh/OhQYskmprQM3qGGud5IZ4VuqnzKvCIzl8O
-         /Cw9xXQtZmxya3oSc1CqXoQVRd78yTfzfaNUTjKwNtB+G0V5Yg7+e7i8oU02ZlT/TbEa
-         mbKvqc4F6ALGDLPblu9psOgz+bSkRozEVFzAQiPKRBG9wNDbMP5nNIptaL0EmtVqVrSR
-         jluEAoAKGmDJ0O5w5h7emNGjpyks+XyrUeLKJsYBpoI8oCIGxARBr+N5bItR+sTLlyB6
-         2N9w==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature:arc-authentication-results;
+        bh=NDqwegI3L1RGjlgP7KihOVmMCjRtjUVYzj3GhP9Oddg=;
+        b=YzWDcOTkSAtpvb+g6YObC2/mFcWHHAxCv5/lbSQ1NQKCFOSbqg2i0vO4L1KQzh6fvn
+         rG7aBJhEzH7C4wq7eOvgmVS2UJoqk2gnMG8oRYHIRRJvSko9l1N06kNbuxl+8IA4YBBO
+         7CMA6YZValVitC7G+c1c0qUZUf8QS99lgRhoYnldaOD+b/CvyHiGunYSt7IRLwMH2lTx
+         IFWp7vJ4KHS7Pz4GQj1Ue4O3DGFQh6DlXB7QQ0KAfl/lU4hvexVhBoUk2+DLxhgcZa7n
+         XLGb9QuggdzJe5JH74683V2DHpZeqKnrTFyMDZS7krKGubjN4ejrDCiZBHi5wvm1PC/a
+         E/JA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id 196si162164wmk.4.2017.10.01.06.20.02
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=duK5hHPs;
+       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from mail-wr0-x243.google.com (mail-wr0-x243.google.com. [2a00:1450:400c:c0c::243])
+        by gmr-mx.google.com with ESMTPS id h17si961082wmd.0.2017.10.01.00.30.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Oct 2017 06:20:02 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Sun, 01 Oct 2017 00:30:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) client-ip=2a00:1450:400c:c0c::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.42,464,1500933600"; 
-   d="scan'208";a="239281651"
-Received: from abo-88-122-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.122.88])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 01 Oct 2017 15:20:01 +0200
-Date: Sun, 1 Oct 2017 15:20:01 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Mihaela Muraru <mihaela.muraru21@gmail.com>
-cc: outreachy-kernel@googlegroups.com, Eric Anholt <eric@anholt.net>, 
-    Stefan Wahren <stefan.wahren@i2se.com>, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [Outreachy kernel] [PATCH] staging: vc04_services: Use usleep_range()
- instead of msleep()
-In-Reply-To: <20171001073056.GA7890@domino-MS-16Y1>
-Message-ID: <alpine.DEB.2.20.1710011519390.2031@hadrien>
-References: <20171001073056.GA7890@domino-MS-16Y1>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=duK5hHPs;
+       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wr0-x243.google.com with SMTP id z96so515479wrb.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 01 Oct 2017 00:30:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=NDqwegI3L1RGjlgP7KihOVmMCjRtjUVYzj3GhP9Oddg=;
+        b=duK5hHPsZqGJosl2L8HNpcHaQAoSmWbezt91VeH+koei1l+dDdI3+lVr96mIXy9rTI
+         Zlznpi35KN2j4sq5b2AfMkI6PTRsAS1htsHLeeCu5plKuEkxVAFP6v5VTzSS5Tn1+x5o
+         +RTnozPZWAZ2KxoUsxUCEwjP2U/z+z15gKHiwOLRmcWKjKq1Bx/2E7WP+fPPIfNAk9L4
+         M7AX7rW9u4f7rtnns4ZQXo1WzhYzSGEFlrmfi1FmZXgDCrVaQCBzUyWLqf4MLGyGLNJQ
+         +7rApzgQvgeJ5+OJ30hT29gTapC9EIu4OVHH9xjXChHWSg46zNtVLTmW/wJ4hkvfBvNA
+         xtYQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=NDqwegI3L1RGjlgP7KihOVmMCjRtjUVYzj3GhP9Oddg=;
+        b=PA++FYU71+NKlogRSSK/Seg0pDru3+Dal2E7YjNe5hhsHXVHKYo1/3cLqNx3X5sr1T
+         +961uR23Z1SYPOKO8CBH0AUZ7lPKenTpx2FUgh2xGjD/6/X8r4v4JyErJu88ttxEO2F0
+         jPW5kb1GC+YxyRaL48sRA+Zxb9T0Hip39vSv5PhAlcCZTvpxi2s2pcjlEKbm7K3K95o3
+         IRzlZ1dfypctuLIhUTiY7bBcVSjo0rBByrOvKfKD2SewpxBadG1fbuVsr3XFq+aMI0/u
+         ixcXl42CleydQ4aoojn1tRqmDdrzSbajHPru2HVLvdQ8jaZvWqKOOOfB1KPmfYp81SuH
+         mKMg==
+X-Gm-Message-State: AHPjjUh8M5xQgYcqiN1xgLJcEGx8K/dyUjfEZINiDY2DEsFJofxZR3q5
+	ZxImMm3Q9gtzaNXb9cIukUa4NA==
+X-Google-Smtp-Source: AOwi7QAJOyMd1kbS0bXSfvyFApti7xNrOHkvBl++8Go72hC5AeKyiSgZO7JA2G4VZVvY5NHJXjdkXA==
+X-Received: by 10.223.175.100 with SMTP id z91mr12830687wrc.177.1506843058277;
+        Sun, 01 Oct 2017 00:30:58 -0700 (PDT)
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from domino-MS-16Y1 ([92.83.158.26])
+        by smtp.gmail.com with ESMTPSA id o59sm13979786wrc.45.2017.10.01.00.30.57
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 01 Oct 2017 00:30:57 -0700 (PDT)
+Date: Sun, 1 Oct 2017 10:30:56 +0300
+From: Mihaela Muraru <mihaela.muraru21@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Eric Anholt <eric@anholt.net>, Stefan Wahren <stefan.wahren@i2se.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: vc04_services: Use usleep_range() instead of
+ msleep()
+Message-ID: <20171001073056.GA7890@domino-MS-16Y1>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
+Since msleep() will often sleep 20 ms for any value given in the
+1~20ms range, use usleep_range() for a precise wakeup.
 
+Issue found by checkpatch.pl.
 
-On Sun, 1 Oct 2017, Mihaela Muraru wrote:
+Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
+---
+ drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> Since msleep() will often sleep 20 ms for any value given in the
-> 1~20ms range, use usleep_range() for a precise wakeup.
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
+index 631ff73..daf18e8 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
+@@ -357,7 +357,7 @@ int32_t vchi_bulk_queue_transmit(VCHI_SERVICE_HANDLE_T handle,
+ 		if (status != VCHIQ_RETRY)
+ 			break;
+ 
+-		msleep(1);
++		usleep_range(1000, 2000);
+ 	}
+ 
+ 	return vchiq_status_to_vchi(status);
+-- 
+2.7.4
 
-Why did you choose these particular argument values?
-
-julia
-
->
-> Issue found by checkpatch.pl.
->
-> Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
-> ---
->  drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-> index 631ff73..daf18e8 100644
-> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-> @@ -357,7 +357,7 @@ int32_t vchi_bulk_queue_transmit(VCHI_SERVICE_HANDLE_T handle,
->  		if (status != VCHIQ_RETRY)
->  			break;
->
-> -		msleep(1);
-> +		usleep_range(1000, 2000);
->  	}
->
->  	return vchiq_status_to_vchi(status);
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20171001073056.GA7890%40domino-MS-16Y1.
-> For more options, visit https://groups.google.com/d/optout.
->
 
