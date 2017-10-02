@@ -1,151 +1,138 @@
-X-GM-THRID: 6472285753246220288
-X-Received: by 10.223.176.122 with SMTP id g55mr298874wra.29.1506946457990;
-        Mon, 02 Oct 2017 05:14:17 -0700 (PDT)
+X-GM-THRID: 6471910913633943552
+X-Received: by 10.84.141.1 with SMTP id 1mr1155909plu.39.1506936730212;
+        Mon, 02 Oct 2017 02:32:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.191.29 with SMTP id p29ls1982137wmf.8.canary-gmail; Mon, 02
- Oct 2017 05:14:17 -0700 (PDT)
-X-Received: by 10.28.230.79 with SMTP id d76mr1743265wmh.12.1506946457082;
-        Mon, 02 Oct 2017 05:14:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506946457; cv=none;
+Received: by 10.101.85.142 with SMTP id j14ls1053945pgs.3.gmail; Mon, 02 Oct
+ 2017 02:32:09 -0700 (PDT)
+X-Received: by 10.101.72.142 with SMTP id n14mr434949pgs.108.1506936729588;
+        Mon, 02 Oct 2017 02:32:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506936729; cv=none;
         d=google.com; s=arc-20160816;
-        b=fcm4Y+UzSFfGBhPXvdOe+EIZe1gB4sKpB+qUgJYjC6SBX47pw6SEBCAA9W3oPr+LDW
-         352p12DSJWUccrGwXOc3GoTWg9JCkjRjr/ktgaSFKgW7aEEYXmD5Np9XRggfN6OqWkwx
-         9CoWJYJyLJFUgMkqtW6u2t1UhU7NMqMrHqDv/+FqpGtLNcnY5n6dD/QGRCo1tcUJpDIU
-         b1phZb/5sYRTTT0+OMvvkAFJ3TPNasvnzu2g3Ydl0JSv8oxjwt1h6NfDo7RBgIBaVCq9
-         Dc0OBl7rOrYyWYV/tKaZug3WOiDHx8xe6qp1SYIDEEj2qI82mEUEBV9mbKKJgyaMVMhl
-         Xrbg==
+        b=fIviDBYtxI/kaP0uf66rNtUN9g+t3kk1VfUcooIaynhLR7vzIubvHZNGl6UFhYzrFx
+         Hn5AfkXRGcx295CDJ9mfgXHW/R4tFgWW4WIf3b3ujpBRBLVznnnkCl50fQvPgqxmKChZ
+         +y0UI+xAZ6HHfIeROYb8my1Vxoos6Phy+jI8aZH8MQaTOR7FS0WKZRQHeuEkT+3T9jmr
+         YxG4WJS7DMKIuJ+9zAjSgc2TkA81aQLlswFeFyTIMXQp2BkDgqVq7rQNwjlwdHq3lcCp
+         x4ixoeroPKSHth9YKqqp+2jJ0xpRa/CKpu7mF8s8zYlE0KIYjiGI69hfkqxrSUjU3H+7
+         +/aQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=3lGq6KiZvHdlgF2aL44c4RI+Od30oafCvVMecf4tvko=;
-        b=1LdlQRMpZZV4KbyMiXqYBsolBbDLO6kr8eRADBFW7YfsZj3otFdgzmVCkvdTg1Nbb8
-         lqcReHyD9bWHPwwouA3Jx890zcS11kztuofWmsN7Nfq5OETOyy+AiirtUMax8wOQzjca
-         kOgVABzzLvvHwMX18zGx+VkRSkVw+8Qcj6+E3GC3IhSlC2zxuXLATf4imrHGfC1UWQle
-         8tHilJKVLEMI5CSoxiwI+NfjIihw3uE1uLF8n6biykso19VNL/jGrNpoSnA6ahL5Wy9/
-         +092DtXxQ9jpLhFc0uCVDyyJlwnlSvGSZ/+gCWIwTVI8YZLVaHVuTgpIfontVehZC86x
-         Bogg==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature
+         :arc-authentication-results;
+        bh=hklhZrFYOsR1LdGYUyQVWwO2G1zt1f0EQMCR5dF4bY0=;
+        b=db58ox060PmWZEDSFYtoiT42hljPFqJyvKQfnLCeRkb/twacRegD2Mtsd2atUAcsQF
+         VIF0W91Zhc+ASJHUs7UxdHK8iK2U4F6sTgAd92rK5ZB3dsl4vL19wo0wJVA1BxqbxKo+
+         4AkbOVIyQOWTx7Fmf13rmgwslWQuppfks009UuCtLvQQ8HewAak4aDQuA7ECpLSGiyFo
+         fn6wWt36ta6cq5mqq0sSWNI8sOl7bD30KQOTwe3oL6QOig7dyRRQwYby1PhRTIGiBdYE
+         1gbctBASObS5HwkyG1xr59EPR7Pcv4o/1tGClHBaR3+PVF5RlswyfQR7zfLNwgycDISB
+         DFuw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Zu76n99o;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PmJVPutt;
+       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from mail-wr0-x241.google.com (mail-wr0-x241.google.com. [2a00:1450:400c:c0c::241])
-        by gmr-mx.google.com with ESMTPS id q195si145655wme.4.2017.10.02.05.14.17
+Return-Path: <keerthigd4990@gmail.com>
+Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
+        by gmr-mx.google.com with ESMTPS id s81si1051944pfg.19.2017.10.02.02.32.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 02 Oct 2017 05:14:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) client-ip=2a00:1450:400c:c0c::241;
+        Mon, 02 Oct 2017 02:32:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Zu76n99o;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PmJVPutt;
+       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x241.google.com with SMTP id k10so3673196wrk.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 02 Oct 2017 05:14:17 -0700 (PDT)
+Received: by mail-pg0-x242.google.com with SMTP id u27so5333728pgn.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 02 Oct 2017 02:32:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=3lGq6KiZvHdlgF2aL44c4RI+Od30oafCvVMecf4tvko=;
-        b=Zu76n99o/4lIrAV7w/9SIq7riFgvXzyGhDA3xuUaJcyOEmRLLSC5wbT+PNYlT9dbLF
-         YePm+vwBfqizp3sQmHv4+hI/PEgrS/STCWtvKLT+6yco8e25aqPoOcrnftNDXl2UEdcT
-         U/gdV1lBcmvdvhcEbfQR/jFVPtdE3yM5SG6jRjGS+ZnNapuycizlNWhU5vDmrC44MNfb
-         zV5M/GNnDIyHePgZ75xMThoVJg+6xJkMoVERKoyx0LNQDh2NB0V+J0sSwUEWCovmlPxx
-         X33Tmyb7kM184jAmar4DIBczFfq9cRVr2xhyCPSoiLMNSkhtypDnp5xcodp5K27oPcE2
-         jJ4g==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=hklhZrFYOsR1LdGYUyQVWwO2G1zt1f0EQMCR5dF4bY0=;
+        b=PmJVPuttL63p3Sxwta2AMmvvLNkEFd7S7qMXW2Y8JOXHmYODCpAipjfiZ9eog2Pooj
+         jouCNVxXNB+KytQpzDwnzlsbT4lEIWg37UrVAaD6x6ziVm5adxTFfZu85ASaWVz0/vqy
+         uNKbs34/cmaKrTe5OwqCgjX/MGab3Y9dfVoft/OReZg5G9iHMwF12+TUsHreEQaGxGp9
+         wyba7mXUmk80v7qildYaFzcqg5SDV+3BYZ+cM/kuEbbUuzMrDi1ndC7LAV+jnHcAXdv3
+         xu6kTIKsPKljQIHWureo8mevuKNi0E2b9bgX5FFVxN2Vb1EqS1G1MMksxV8/rfm5q1jZ
+         glnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=3lGq6KiZvHdlgF2aL44c4RI+Od30oafCvVMecf4tvko=;
-        b=Y13Q7s2Gw4Qjs5Si6B8pIKaNzeMka/7aTO6MvSdMC0ng5bt2cdfEmRNaZeGsuo5EOJ
-         7CvNRqpfLmxIsI5OsSaD7Yunp9rkNbXy9DtAqd7RJ8KtU7Vfrc4HG2Xr1zX1Q1VoQU5w
-         ab/EHy7COGQTfyj0TAfnanI38PzuQ7ZWQ4bWbmaGvi3g3HqzldOkeoQflkgkRUhaNHVF
-         aJyNDCSs2Lz1i6ZnpUy9Z89wjDDVPANXS0zJWuOPb+wRzI85Ai9SsWAbOPJqHmIeUBwG
-         xwtBkHdQmV3NYcs1p7bgPqVxqZTIcNJjghryALDI4j309cwDYXydo884ISdR/kn5GYUt
-         Mk4w==
-X-Gm-Message-State: AHPjjUg6s/79ErJxZ3Q19tW371Oklg2YjLdtKTc3B7NWHQshcOSIMe7I
-	7dhEsUZfvb/ryiRBj420HVQ=
-X-Google-Smtp-Source: AOwi7QCiXkbKsVGWY90Qy683vBLYcASLL7h7Ft25JgCCw1xgQXqj5ROoAZJnktaHqJNYg+hQeeZDWQ==
-X-Received: by 10.223.187.148 with SMTP id q20mr13673256wrg.34.1506946456850;
-        Mon, 02 Oct 2017 05:14:16 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from ubuntu (fw-ext-11.romania.luxoft.com. [195.90.110.113])
-        by smtp.gmail.com with ESMTPSA id m138sm7453251wmd.29.2017.10.02.05.14.15
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 02 Oct 2017 05:14:16 -0700 (PDT)
-Date: Mon, 2 Oct 2017 05:14:15 -0700
-From: Mihaela Muraru <mihaela.muraru21@gmail.com>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=hklhZrFYOsR1LdGYUyQVWwO2G1zt1f0EQMCR5dF4bY0=;
+        b=WV4uAjohmFUa5HNxvkcIlIIgXgBN7y11Gi8GEtd5hQgtLv2APt5D4TeDQG+2ZEfmA7
+         hMj0fPX90P3AcUR4ghs3Pxohp1BbDmy2j2VVZckkd639S+n7NhypdczdkW+BQRXtR7Fj
+         i6e8FO2yaOby4w3N9UOnQYYYd+dgubyivnlc/eS4vPJXRrWa03m7nPOjVjWbGlze9qox
+         ak9ENzc+GTps4S8BJSqDQswPOckXJA7EAGtUxw6qm4SE8BdPmbx0atHdYJG3QHaP4qrJ
+         HV8fV69ZsbB4hA07GjYyYUmIE9cJC+929PyRnhmB3Uk1+Hie1FpCV2GRMDnPVZQiN0tb
+         bx1Q==
+X-Gm-Message-State: AHPjjUjzE/Ymy2yA9wTT3iPg8OfPCSmPJLI8Evu5KwiUO6GOMnRfijjx
+	vHS71wfC/BBpT4eqYRktsk+Svb/Z
+X-Google-Smtp-Source: AOwi7QA3TPFbEtzYI7zQAY7jrchHg0NY1vGjqIilhCCKtysvPSCKm3BI59Ef9FqDMC3fFMptspCA0A==
+X-Received: by 10.84.204.133 with SMTP id b5mr13620211ple.440.1506936729171;
+        Mon, 02 Oct 2017 02:32:09 -0700 (PDT)
+Return-Path: <keerthigd4990@gmail.com>
+Received: from manoharreddy ([202.53.87.190])
+        by smtp.gmail.com with ESMTPSA id b68sm16899733pfk.23.2017.10.02.02.32.07
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 02 Oct 2017 02:32:08 -0700 (PDT)
+Date: Mon, 2 Oct 2017 15:02:03 +0530
+From: Keerthi Reddy <keerthigd4990@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: rtl8188eu: Remove braces from single statement
- blocks
-Message-ID: <20171002121415.GA14303@ubuntu>
+Cc: teddy.wang@siliconmotion.com
+Subject: [PATCH 2/2] staging: sm750fb: remove typedef for enum in
+ ddk750_sii164.{c,h}
+Message-ID: <b223b918f7f5c208b16b8d00a161fab9e73faec8.1506936290.git.keerthigd4990@gmail.com>
+References: <cover.1506936290.git.keerthigd4990@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <cover.1506936290.git.keerthigd4990@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-This patch fix a coding style issue, by removing braces {} from single
-statement blocks.
+Removing this will make sure that we are actually working with
+enum. Also it is not a good coding style to use typedef.
 
-Issue found by checkpatch.pl.
+In this commit remove typedef and also drop '_t' which traditionally
+means typedef
 
-Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
+Signed-off-by: Keerthi Reddy <keerthigd4990@gmail.com>
 ---
- drivers/staging/rtl8188eu/hal/phy.c | 15 +++++++--------
- 1 file changed, 7 insertions(+), 8 deletions(-)
+ drivers/staging/sm750fb/ddk750_sii164.c | 3 ++-
+ drivers/staging/sm750fb/ddk750_sii164.h | 4 ++--
+ 2 files changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
-index 3039bbe..20253b5 100644
---- a/drivers/staging/rtl8188eu/hal/phy.c
-+++ b/drivers/staging/rtl8188eu/hal/phy.c
-@@ -820,9 +820,8 @@ static void save_adda_registers(struct adapter *adapt, u32 *addareg,
+diff --git a/drivers/staging/sm750fb/ddk750_sii164.c b/drivers/staging/sm750fb/ddk750_sii164.c
+index 0431833..3d68e1d 100644
+--- a/drivers/staging/sm750fb/ddk750_sii164.c
++++ b/drivers/staging/sm750fb/ddk750_sii164.c
+@@ -296,7 +296,8 @@ void sii164SetPower(unsigned char powerUp)
+  *  sii164SelectHotPlugDetectionMode
+  *      This function selects the mode of the hot plug detection.
+  */
+-static void sii164SelectHotPlugDetectionMode(sii164_hot_plug_mode_t hotPlugMode)
++static
++void sii164SelectHotPlugDetectionMode(enum sii164_hot_plug_mode hotPlugMode)
  {
- 	u32 i;
+ 	unsigned char detectReg;
  
--	for (i = 0; i < register_num; i++) {
-+	for (i = 0; i < register_num; i++)
- 		backup[i] = phy_query_bb_reg(adapt, addareg[i], bMaskDWord);
--	}
- }
+diff --git a/drivers/staging/sm750fb/ddk750_sii164.h b/drivers/staging/sm750fb/ddk750_sii164.h
+index 6968cf5..e06ba72 100644
+--- a/drivers/staging/sm750fb/ddk750_sii164.h
++++ b/drivers/staging/sm750fb/ddk750_sii164.h
+@@ -4,12 +4,12 @@
+ #define USE_DVICHIP
  
- static void save_mac_registers(struct adapter *adapt, u32 *mac_reg,
-@@ -830,9 +829,9 @@ static void save_mac_registers(struct adapter *adapt, u32 *mac_reg,
- {
- 	u32 i;
+ /* Hot Plug detection mode structure */
+-typedef enum _sii164_hot_plug_mode_t {
++enum sii164_hot_plug_mode {
+ 	SII164_HOTPLUG_DISABLE = 0,         /* Disable Hot Plug output bit (always high). */
+ 	SII164_HOTPLUG_USE_MDI,             /* Use Monitor Detect Interrupt bit. */
+ 	SII164_HOTPLUG_USE_RSEN,            /* Use Receiver Sense detect bit. */
+ 	SII164_HOTPLUG_USE_HTPLG            /* Use Hot Plug detect bit. */
+-} sii164_hot_plug_mode_t;
++};
  
--	for (i = 0; i < (IQK_MAC_REG_NUM - 1); i++) {
-+	for (i = 0; i < (IQK_MAC_REG_NUM - 1); i++)
- 		backup[i] = usb_read8(adapt, mac_reg[i]);
--	}
-+
- 	backup[i] = usb_read32(adapt, mac_reg[i]);
- }
  
-@@ -850,9 +849,9 @@ static void reload_mac_registers(struct adapter *adapt,
- {
- 	u32 i;
- 
--	for (i = 0; i < (IQK_MAC_REG_NUM - 1); i++) {
-+	for (i = 0; i < (IQK_MAC_REG_NUM - 1); i++)
- 		usb_write8(adapt, mac_reg[i], (u8)backup[i]);
--	}
-+
- 	usb_write32(adapt, mac_reg[i], backup[i]);
- }
- 
-@@ -880,9 +879,9 @@ static void mac_setting_calibration(struct adapter *adapt, u32 *mac_reg, u32 *ba
- 
- 	usb_write8(adapt, mac_reg[i], 0x3F);
- 
--	for (i = 1; i < (IQK_MAC_REG_NUM - 1); i++) {
-+	for (i = 1; i < (IQK_MAC_REG_NUM - 1); i++)
- 		usb_write8(adapt, mac_reg[i], (u8)(backup[i]&(~BIT(3))));
--	}
-+
- 	usb_write8(adapt, mac_reg[i], (u8)(backup[i]&(~BIT(5))));
- }
- 
+ /* Silicon Image SiI164 chip prototype */
 -- 
 2.7.4
 
