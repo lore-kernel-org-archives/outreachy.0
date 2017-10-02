@@ -1,70 +1,70 @@
 X-GM-THRID: 6470705412124442624
-X-Received: by 10.101.69.194 with SMTP id m2mr1497400pgr.7.1506975431329;
-        Mon, 02 Oct 2017 13:17:11 -0700 (PDT)
+X-Received: by 10.101.66.205 with SMTP id l13mr1599066pgp.54.1506974332999;
+        Mon, 02 Oct 2017 12:58:52 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.84.235.134 with SMTP id p6ls4255666plk.12.gmail; Mon, 02 Oct
- 2017 13:17:10 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QB0NtGGBWyzhZWMRXaPqnduWnHlvNChr7Y4DxCAXrr1lAudkKkrJYZBpUAczgQbdhMENLGd
-X-Received: by 10.101.81.70 with SMTP id g6mr1570702pgq.155.1506975430153;
-        Mon, 02 Oct 2017 13:17:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506975430; cv=none;
+Received: by 10.84.241.72 with SMTP id u8ls4252743plm.6.gmail; Mon, 02 Oct
+ 2017 12:58:51 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QDK92qykqYiiprYsi8zJW0x2BrCZTGr93tsorDzdWF1cmRskkgSKGVlnO4v2/sDyTR/yDTy
+X-Received: by 10.99.109.196 with SMTP id i187mr154568pgc.136.1506974331742;
+        Mon, 02 Oct 2017 12:58:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506974331; cv=none;
         d=google.com; s=arc-20160816;
-        b=tTUn2JMAPYO2Z7I3f66HE5qalhklZJXbxgDza+DKgSxcI2dJ0KZ/Fl9Z8oVyV7KBNn
-         UoDInIOkIx2lZGZRLkaBPElhrx2NBfLkYT8Sc57Fd5S6InuAlGsanIXtJE/EDvy13xn2
-         DifDzQdpUDLDTW+k91fE4J+ay88H79Aff9RoJgNh7rq6Lo89STERvsCKc8F/xkN/St2T
-         9HRlDnCzWlBujW9HEoOtm6rOxIBCqiuNX6QX3XJ5ijrdwYEPb9RTw4TEs1xytQPigc6U
-         HQfmL6IWa4JeRAD8rXL6B2480MkM+pDK38b8sDlcGUqGbFLbBV4afw8tY2Rcl695ZUHT
-         2SQw==
+        b=lx8UIHDGfugmuux/+gMTFwlxVLLakZerTbMSfal2fplW31a/c2GvSN8oAM2N291jQ4
+         O3UxOXH0NGGQbhauO7dRjQ7h0S6k2iusPUkhO6Wg7tsYxremGTOERWCNwwGgT8G6ve0y
+         oRNgcaVv+yjAGCYMYcBybR6lnTtIO/SnZ5DOcYbyYBdYibXDjm//7VmVCCk6HQWrj0/N
+         i9PzjV71HHKt0+lkipMv82ikkPyeW0xbhu0ELIeHZocNaQOzqflKrVF/kLeGrnW3eHVY
+         O35fhLE6ywkMWQ+lsx5ytsjFTTPah1Kkm2Rk0NZJQdzuAks2evgzkgP5HkN9dWkLkzSr
+         wApQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:message-id
          :subject:cc:to:from:date:arc-authentication-results;
-        bh=tFNDro8drh0cLECmP60knu7QLmAF0KYhEYJgNgwzi5g=;
-        b=hAvg0gUIaEP3ba9cSMF2MUhPqfwnzixThuQd6StQYOBL/zHbsCdR5mx8EEAi3JEx18
-         kFuZD1QUl/UyO6hHQel6JEr94tHGCLEnt/+aZ3FZfXJi7sLhMGbw/PUbL+59uv9QnCMT
-         kw5/xxcqFQ7jEcceCeFOVRKnc7n9UGBf2n9nqV9lm81vNqzrx3Snm8nuTIjK2YGQM4m1
-         QMM+jpNHdSrZOi/bijMBQgxF3l0T/YzVyDXZPIAwj+8D3CVoGF4krllGD4zEap8Q5ybd
-         dnPhFTBPIV9WAySG4fReVe/rUhvpgJlwe/c1PNKvnalJ7KBtTXy6c9bMAQnAaQRqtn+H
-         Eidg==
+        bh=SbGmfq7UEsy0ssbl1MSr8R/yjvuT3VrQjfLz1sIEjXM=;
+        b=X859ScEncTg/0KGF3pTHpXdNJ+xOt4F7zlFdh/B03iOhoygo/RERK8DRtLGNkjOrBd
+         zjFHBjXMw1NO84MkXz2r+Ecpcw1aiBpQxsHy6ZZr8L/3yyyP2G5BjTc5nNr3+p+G6T/g
+         rqQnTbJXI7+H4JfjKhmRtPEmv1ytEATaHSh6G2X/FS8V3w8EWLe3DyyrviANVloEHmCu
+         t+nmeiqrGIB7OZagQjngU7rMe75HtSSS525ugXPG/neNVY3ZBVfKaY9eS/oqC+7HF+9M
+         1ZU5qIpv4p7oEkzswJZRddpSy9g2fQq/cTr6N5PRXWEY6QghRBWbCL/p1zaR/6phrzpN
+         aQ6Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of fengguang.wu@intel.com designates 192.55.52.115 as permitted sender) smtp.mailfrom=fengguang.wu@intel.com
+       spf=pass (google.com: domain of fengguang.wu@intel.com designates 192.55.52.43 as permitted sender) smtp.mailfrom=fengguang.wu@intel.com
 Return-Path: <fengguang.wu@intel.com>
-Received: from mga14.intel.com (mga14.intel.com. [192.55.52.115])
-        by gmr-mx.google.com with ESMTPS id m186si1132003pfm.2.2017.10.02.13.17.09
+Received: from mga05.intel.com (mga05.intel.com. [192.55.52.43])
+        by gmr-mx.google.com with ESMTPS id m186si1127919pfm.2.2017.10.02.12.58.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 02 Oct 2017 13:17:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fengguang.wu@intel.com designates 192.55.52.115 as permitted sender) client-ip=192.55.52.115;
+        Mon, 02 Oct 2017 12:58:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fengguang.wu@intel.com designates 192.55.52.43 as permitted sender) client-ip=192.55.52.43;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of fengguang.wu@intel.com designates 192.55.52.115 as permitted sender) smtp.mailfrom=fengguang.wu@intel.com
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
-  by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 02 Oct 2017 13:17:09 -0700
+       spf=pass (google.com: domain of fengguang.wu@intel.com designates 192.55.52.43 as permitted sender) smtp.mailfrom=fengguang.wu@intel.com
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+  by fmsmga105.fm.intel.com with ESMTP; 02 Oct 2017 12:58:51 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.42,470,1500966000"; 
-   d="gz'50?scan'50,208,50";a="134444199"
+   d="gz'50?scan'50,208,50";a="158526022"
 Received: from bee.sh.intel.com (HELO bee) ([10.239.97.14])
-  by orsmga004.jf.intel.com with ESMTP; 02 Oct 2017 13:17:07 -0700
+  by fmsmga006.fm.intel.com with ESMTP; 02 Oct 2017 12:58:49 -0700
 Received: from kbuild by bee with local (Exim 4.84_2)
 	(envelope-from <fengguang.wu@intel.com>)
-	id 1dz7EL-000OF6-Ar; Tue, 03 Oct 2017 04:22:21 +0800
-Date: Tue, 3 Oct 2017 04:16:38 +0800
+	id 1dz6wd-000S4T-Nc; Tue, 03 Oct 2017 04:04:04 +0800
+Date: Tue, 3 Oct 2017 03:58:13 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Meghana Madhyastha <meghana.madhyastha@gmail.com>
 Cc: kbuild-all@01.org, daniel@ffwll.ch, noralf@tronnes.org,
 	outreachy-kernel@googlegroups.com, dri-devel@lists.freedesktop.org
-Subject: Re: [PATCH v6 2/2] drm/tinydrm: Add devres versions of
- drm_of_find_backlight
-Message-ID: <201710030416.yNCAf2el%fengguang.wu@intel.com>
+Subject: Re: [PATCH v6 1/2] drm/tinydrm: Move tinydrm_of_find_backlight into
+ drm_of.c
+Message-ID: <201710030311.7x6WkwbG%fengguang.wu@intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="FL5UXtIhxfXey3p5"
+Content-Type: multipart/mixed; boundary="GvXjxJ+pjyke8COw"
 Content-Disposition: inline
-In-Reply-To: <fe521b7135f8e16b7779d5573f8b686587d81903.1506786158.git.meghana.madhyastha@gmail.com>
+In-Reply-To: <bfad07c542b9f5c892c6beddc4ecc2c3297f1f78.1506786158.git.meghana.madhyastha@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 X-SA-Exim-Connect-IP: <locally generated>
 X-SA-Exim-Mail-From: fengguang.wu@intel.com
 X-SA-Exim-Scanned: No (on bee); SAEximRunCond expanded to false
 
 
---FL5UXtIhxfXey3p5
+--GvXjxJ+pjyke8COw
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
@@ -86,22 +86,15 @@ reproduce:
 
 All errors (new ones prefixed by >>):
 
-   drivers/gpu/drm/drm_of.c:283:26: error: redefinition of 'drm_of_find_backlight'
+>> drivers/gpu/drm/drm_of.c:283:26: error: redefinition of 'drm_of_find_backlight'
     struct backlight_device *drm_of_find_backlight(struct device *dev)
                              ^~~~~~~~~~~~~~~~~~~~~
    In file included from drivers/gpu/drm/drm_of.c:4:0:
-   include/linux/backlight.h:181:1: note: previous definition of 'drm_of_find_backlight' was here
+   include/linux/backlight.h:180:1: note: previous definition of 'drm_of_find_backlight' was here
     drm_of_find_backlight(struct device *dev)
     ^~~~~~~~~~~~~~~~~~~~~
->> drivers/gpu/drm/drm_of.c:328:26: error: redefinition of 'devm_drm_of_find_backlight'
-    struct backlight_device *devm_drm_of_find_backlight(struct device *dev)
-                             ^~~~~~~~~~~~~~~~~~~~~~~~~~
-   In file included from drivers/gpu/drm/drm_of.c:4:0:
-   include/linux/backlight.h:187:1: note: previous definition of 'devm_drm_of_find_backlight' was here
-    devm_drm_of_find_backlight(struct device *dev)
-    ^~~~~~~~~~~~~~~~~~~~~~~~~~
 
-vim +/devm_drm_of_find_backlight +328 drivers/gpu/drm/drm_of.c
+vim +/drm_of_find_backlight +283 drivers/gpu/drm/drm_of.c
 
    264	
    265	/**
@@ -123,62 +116,17 @@ vim +/devm_drm_of_find_backlight +328 drivers/gpu/drm/drm_of.c
    281	 * If the backlight device is found, a pointer to the structure is returned.
    282	 */
  > 283	struct backlight_device *drm_of_find_backlight(struct device *dev)
-   284	{
-   285		struct backlight_device *backlight;
-   286		struct device_node *np;
-   287	
-   288		np = of_parse_phandle(dev->of_node, "backlight", 0);
-   289		if (!np)
-   290			return NULL;
-   291	
-   292		backlight = of_find_backlight_by_node(np);
-   293		of_node_put(np);
-   294	
-   295		if (!backlight)
-   296			return ERR_PTR(-EPROBE_DEFER);
-   297	
-   298		if (!backlight->props.brightness) {
-   299			backlight->props.brightness = backlight->props.max_brightness;
-   300			DRM_DEBUG_KMS("Backlight brightness set to %d\n",
-   301				      backlight->props.brightness);
-   302		}
-   303	
-   304		return backlight;
-   305	}
-   306	EXPORT_SYMBOL(drm_of_find_backlight);
-   307	
-   308	static void devm_drm_of_find_backlight_release(void *data)
-   309	{
-   310		put_device(data);
-   311	}
-   312	
-   313	/**
-   314	 * devm_drm_of_find_backlight - Find backlight device in device-tree
-   315	 * devres version of the function
-   316	 * @dev: Device
-   317	 *
-   318	 * This is the devres version of the function drm_of_find_backlight.
-   319	 * Some drivers use devres versions of functions for
-   320	 * requiring device resources.
-   321	 *
-   322	 * Returns:
-   323	 * NULL if there's no backlight property.
-   324	 * Error pointer -EPROBE_DEFER if the DT node is found, but no backlight device
-   325	 * is found.
-   326	 * If the backlight device is found, a pointer to the structure is returned.
-   327	 */
- > 328	struct backlight_device *devm_drm_of_find_backlight(struct device *dev)
 
 ---
 0-DAY kernel test infrastructure                Open Source Technology Center
 https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 
---FL5UXtIhxfXey3p5
+--GvXjxJ+pjyke8COw
 Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICJeb0lkAAy5jb25maWcAlDxdc+Oosu/nV7hm78O9D2cntvNZt/KAELJZS4IBZDt5UWUz
+H4sICPCW0lkAAy5jb25maWcAlDxdc+Oosu/nV7hm78O9D2cntvNZt/KAELJZS4IBZDt5UWUz
 nr2pk0nm5GPPzr+/3SDZIINmNrVVO6IbaKDpb/zLP36ZkPe35693bw/3d4+P3yd/7J52L3dv
 u8+TLw+Pu/+d5GJSCzNhOTe/AnL58PT+18e7l6+T01+np7+e/PPlfjZZ7V6edo8T+vz05eGP
 d+j98Pz0j1/+QUVd8EVLVHX93ftol0S3etHSJeH1AVLxxdIAbM1aSfmhXd8AdiOlUEa3RFYt
@@ -606,5 +554,5 @@ r/gKgQ56bT80xEMqUXmJ86Ms9PyoYljG3208GvroCFyZ05FwCKZ3CLuqJ37gfslmOoEpMHNK
 50uR5+CZFiwrotSlsyhU1iMnKLfeHUD68e9xrYbx76qUlPBf7Hu275Z4zSoqdVxhPAdEGw5K
 Xo3m3KZuRMdTsrbDp+ws2Xti9YOE/we7Tk1P5YABAA==
 
---FL5UXtIhxfXey3p5--
+--GvXjxJ+pjyke8COw--
 
