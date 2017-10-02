@@ -1,122 +1,152 @@
-X-GM-THRID: 6748957441042415616
-X-Received: by 2002:a0d:fd03:: with SMTP id n3mr4997986ywf.170.1571364104881;
-        Thu, 17 Oct 2019 19:01:44 -0700 (PDT)
+X-GM-THRID: 6472285753246220288
+X-Received: by 10.223.176.122 with SMTP id g55mr298874wra.29.1506946457990;
+        Mon, 02 Oct 2017 05:14:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a81:77c4:: with SMTP id s187ls731403ywc.7.gmail; Thu, 17 Oct
- 2019 19:01:43 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzNC24wVeWXf22Es14HHrPeUW/wLgVp+hcbk0ZLBGEY3CVvMEqLHROClTG2J7IOLVFjXvGS
-X-Received: by 2002:a81:4e4d:: with SMTP id c74mr5362234ywb.94.1571364103220;
-        Thu, 17 Oct 2019 19:01:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571364103; cv=none;
+Received: by 10.28.191.29 with SMTP id p29ls1982137wmf.8.canary-gmail; Mon, 02
+ Oct 2017 05:14:17 -0700 (PDT)
+X-Received: by 10.28.230.79 with SMTP id d76mr1743265wmh.12.1506946457082;
+        Mon, 02 Oct 2017 05:14:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506946457; cv=none;
         d=google.com; s=arc-20160816;
-        b=VTvo+5i5nC9rRyFpwmMSNq/HARNmEDN0F0pOme7OJq5xoh2xUn5u0HBaZIppQKqnV9
-         oyBtrzj+Btm+f0FXYe/XTUhesKErBdFVB6yR56DSqAToex5kYEw09S84ZT7dfx9TqVrg
-         ZY94lvF9E9zq9BQn08t3CGiQwIfXGTqzvZEapnFdGj9CxA6nhGmA2ZF0fntI0qd3vagM
-         5WU1jAsMJp0k9ID8WhKYNIVoCgHmiC3PaOMIGbLy67zP0dZMuAT1+o/QnqNvDEBoPBI9
-         pzh2w4drY2EaZOynNZIZCzcoSC+yD1TXhtRL9kkosnwbFKjVOKlQRhsgFFhdLEGRDrGf
-         xG+Q==
+        b=fcm4Y+UzSFfGBhPXvdOe+EIZe1gB4sKpB+qUgJYjC6SBX47pw6SEBCAA9W3oPr+LDW
+         352p12DSJWUccrGwXOc3GoTWg9JCkjRjr/ktgaSFKgW7aEEYXmD5Np9XRggfN6OqWkwx
+         9CoWJYJyLJFUgMkqtW6u2t1UhU7NMqMrHqDv/+FqpGtLNcnY5n6dD/QGRCo1tcUJpDIU
+         b1phZb/5sYRTTT0+OMvvkAFJ3TPNasvnzu2g3Ydl0JSv8oxjwt1h6NfDo7RBgIBaVCq9
+         Dc0OBl7rOrYyWYV/tKaZug3WOiDHx8xe6qp1SYIDEEj2qI82mEUEBV9mbKKJgyaMVMhl
+         Xrbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=D5fXVTWKtDFjkuD7u67ySedM3tCvn1n1gYjPh+tJzpk=;
-        b=alkhWQJx6CfsmzFKHiuQUiJwgZGzXX3Ozc7kRXEkLzXvOuKocH8sDDXc6P75MTnlam
-         0/lsaqJxfZPUQvvLtvJaPmEa0IpB61qVLzGQQ2EcHJlOIx353BQ4JHrow47tNUJSomRl
-         TFyhVku9m044aTL2QoLPnN5jNVXPWD1gkB5QPlUykKJVITLnzwuuWgVyLdSDB0Iw0pyO
-         fU/YVSjqXFuruL/ofgrzQCI6m8OIg/gFNZdPXtkF9mUPZr6CFnFKE23bZQzvgxFJonpp
-         csY9iL97bnK/uUeziFzNNGFbEkl1/36FNpx5a/SwzQ7thFsrW7HQEoYZI9/Wr4u3+ttA
-         terw==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature:arc-authentication-results;
+        bh=3lGq6KiZvHdlgF2aL44c4RI+Od30oafCvVMecf4tvko=;
+        b=1LdlQRMpZZV4KbyMiXqYBsolBbDLO6kr8eRADBFW7YfsZj3otFdgzmVCkvdTg1Nbb8
+         lqcReHyD9bWHPwwouA3Jx890zcS11kztuofWmsN7Nfq5OETOyy+AiirtUMax8wOQzjca
+         kOgVABzzLvvHwMX18zGx+VkRSkVw+8Qcj6+E3GC3IhSlC2zxuXLATf4imrHGfC1UWQle
+         8tHilJKVLEMI5CSoxiwI+NfjIihw3uE1uLF8n6biykso19VNL/jGrNpoSnA6ahL5Wy9/
+         +092DtXxQ9jpLhFc0uCVDyyJlwnlSvGSZ/+gCWIwTVI8YZLVaHVuTgpIfontVehZC86x
+         Bogg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fWockRt9;
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jamal.k.shareef@gmail.com>
-Received: from mail-pg1-x541.google.com (mail-pg1-x541.google.com. [2607:f8b0:4864:20::541])
-        by gmr-mx.google.com with ESMTPS id u129si154958ywc.1.2019.10.17.19.01.43
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Zu76n99o;
+       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from mail-wr0-x241.google.com (mail-wr0-x241.google.com. [2a00:1450:400c:c0c::241])
+        by gmr-mx.google.com with ESMTPS id q195si145655wme.4.2017.10.02.05.14.17
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 17 Oct 2019 19:01:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) client-ip=2607:f8b0:4864:20::541;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 02 Oct 2017 05:14:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) client-ip=2a00:1450:400c:c0c::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fWockRt9;
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x541.google.com with SMTP id i76so2440851pgc.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 17 Oct 2019 19:01:43 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Zu76n99o;
+       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wr0-x241.google.com with SMTP id k10so3673196wrk.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 02 Oct 2017 05:14:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=D5fXVTWKtDFjkuD7u67ySedM3tCvn1n1gYjPh+tJzpk=;
-        b=fWockRt9NDsk11kQqdgSCHutabRgkbSmh2ldNuQOX97IB/gcv+SWo7Q/7IyIcoLDh9
-         1x7xCvoVYrMwelwHZDO+kIkHm/s2KXUBP82rCX88qSLGredVW6Coq/M42sVWbQeON961
-         vcUNYQe3MTfs+MTvScG7AINwB9c/Ni9YdsugY3HEHqm9SyxRAENWlAoYAeUxp+3c3jmL
-         MIoczsjZwHpdcP4voNqTNROkmYb/MxNH/fYCEy8+/2ESZLyQSeio89PBZVaWJaLJ1Xac
-         IjmhNbkctARpj8Tc6dcogjY8d+adUoo+UfDQ8+pNdu0QJWMUPAHIELRx4q88HlU3aJiL
-         fCuQ==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=3lGq6KiZvHdlgF2aL44c4RI+Od30oafCvVMecf4tvko=;
+        b=Zu76n99o/4lIrAV7w/9SIq7riFgvXzyGhDA3xuUaJcyOEmRLLSC5wbT+PNYlT9dbLF
+         YePm+vwBfqizp3sQmHv4+hI/PEgrS/STCWtvKLT+6yco8e25aqPoOcrnftNDXl2UEdcT
+         U/gdV1lBcmvdvhcEbfQR/jFVPtdE3yM5SG6jRjGS+ZnNapuycizlNWhU5vDmrC44MNfb
+         zV5M/GNnDIyHePgZ75xMThoVJg+6xJkMoVERKoyx0LNQDh2NB0V+J0sSwUEWCovmlPxx
+         X33Tmyb7kM184jAmar4DIBczFfq9cRVr2xhyCPSoiLMNSkhtypDnp5xcodp5K27oPcE2
+         jJ4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=D5fXVTWKtDFjkuD7u67ySedM3tCvn1n1gYjPh+tJzpk=;
-        b=G7pS4W3f5XYFpUnyKq7LCKKYl2wTt6PFNviGhcldvdtARvWhQ8wHVASYJ6tkmjbXHN
-         onecNqCyMHe/sHLcy/syyWjVjlusR+egBE5t2IoRl+YbXaoHrKC3fZzBofsOJpVdawZ9
-         gulrM9cv+LNGAYt64BhR3jqxbyCOmeQaAu2DUZGhPjbRi9TjoJYeY7zAEJYFra6cXT+Q
-         wWS0HwH6LKTOCXDNe7S+mfitT9EPRczH9ZWQsJSwxkwwsJEaeQrGXd16ad9C7YPNa41t
-         3ivpbb71wiC7Pk0YlJNx2YhZzhrpYE76jHbXWGlmxBCJ/zrxyDssbV6pFx01R/j98bWF
-         lGTw==
-X-Gm-Message-State: APjAAAU/aikyad5m1OObAzU4BJ0EKsJlws5/qg2ytkH7+lpyiRobOrus
-	hkxCjbfI8brWqrzmBLN1Q5Kf642p
-X-Received: by 2002:a63:b551:: with SMTP id u17mr7271163pgo.88.1571364102276;
-        Thu, 17 Oct 2019 19:01:42 -0700 (PDT)
-Return-Path: <jamal.k.shareef@gmail.com>
-Received: from jamal-XPS-13-9343 (97-126-66-56.tukw.qwest.net. [97.126.66.56])
-        by smtp.gmail.com with ESMTPSA id e16sm3916702pgt.68.2019.10.17.19.01.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 17 Oct 2019 19:01:41 -0700 (PDT)
-From: Jamal Shareef <jamal.k.shareef@gmail.com>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=3lGq6KiZvHdlgF2aL44c4RI+Od30oafCvVMecf4tvko=;
+        b=Y13Q7s2Gw4Qjs5Si6B8pIKaNzeMka/7aTO6MvSdMC0ng5bt2cdfEmRNaZeGsuo5EOJ
+         7CvNRqpfLmxIsI5OsSaD7Yunp9rkNbXy9DtAqd7RJ8KtU7Vfrc4HG2Xr1zX1Q1VoQU5w
+         ab/EHy7COGQTfyj0TAfnanI38PzuQ7ZWQ4bWbmaGvi3g3HqzldOkeoQflkgkRUhaNHVF
+         aJyNDCSs2Lz1i6ZnpUy9Z89wjDDVPANXS0zJWuOPb+wRzI85Ai9SsWAbOPJqHmIeUBwG
+         xwtBkHdQmV3NYcs1p7bgPqVxqZTIcNJjghryALDI4j309cwDYXydo884ISdR/kn5GYUt
+         Mk4w==
+X-Gm-Message-State: AHPjjUg6s/79ErJxZ3Q19tW371Oklg2YjLdtKTc3B7NWHQshcOSIMe7I
+	7dhEsUZfvb/ryiRBj420HVQ=
+X-Google-Smtp-Source: AOwi7QCiXkbKsVGWY90Qy683vBLYcASLL7h7Ft25JgCCw1xgQXqj5ROoAZJnktaHqJNYg+hQeeZDWQ==
+X-Received: by 10.223.187.148 with SMTP id q20mr13673256wrg.34.1506946456850;
+        Mon, 02 Oct 2017 05:14:16 -0700 (PDT)
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from ubuntu (fw-ext-11.romania.luxoft.com. [195.90.110.113])
+        by smtp.gmail.com with ESMTPSA id m138sm7453251wmd.29.2017.10.02.05.14.15
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 02 Oct 2017 05:14:16 -0700 (PDT)
+Date: Mon, 2 Oct 2017 05:14:15 -0700
+From: Mihaela Muraru <mihaela.muraru21@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Jamal Shareef <jamal.k.shareef@gmail.com>,
-	sudipm.mukherjee@gmail.com,
-	teddy.wang@siliconmotion.com,
-	gregkh@linuxfoundation.org
-Subject: [PATCH] staging: sm750fb: Edit CamelCase in ddk750_power.h
-Date: Thu, 17 Oct 2019 19:01:12 -0700
-Message-Id: <20191018020112.22226-1-jamal.k.shareef@gmail.com>
-X-Mailer: git-send-email 2.17.1
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: rtl8188eu: Remove braces from single statement
+ blocks
+Message-ID: <20171002121415.GA14303@ubuntu>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Removes instances of CamelCase. Issue found by checkpatch.
+This patch fix a coding style issue, by removing braces {} from single
+statement blocks.
 
-Signed-off-by: Jamal Shareef <jamal.k.shareef@gmail.com>
+Issue found by checkpatch.pl.
+
+Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
 ---
- drivers/staging/sm750fb/ddk750_power.h | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/rtl8188eu/hal/phy.c | 15 +++++++--------
+ 1 file changed, 7 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/staging/sm750fb/ddk750_power.h b/drivers/staging/sm750fb/ddk750_power.h
-index 7002567a47d2..cd892f2b717f 100644
---- a/drivers/staging/sm750fb/ddk750_power.h
-+++ b/drivers/staging/sm750fb/ddk750_power.h
-@@ -3,10 +3,10 @@
- #define DDK750_POWER_H__
+diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
+index 3039bbe..20253b5 100644
+--- a/drivers/staging/rtl8188eu/hal/phy.c
++++ b/drivers/staging/rtl8188eu/hal/phy.c
+@@ -820,9 +820,8 @@ static void save_adda_registers(struct adapter *adapt, u32 *addareg,
+ {
+ 	u32 i;
  
- enum dpms {
--	crtDPMS_ON = 0x0,
--	crtDPMS_STANDBY = 0x1,
--	crtDPMS_SUSPEND = 0x2,
--	crtDPMS_OFF = 0x3,
-+	crt_DPMS_ON = 0x0,
-+	crt_DPMS_STANDBY = 0x1,
-+	crt_DPMS_SUSPEND = 0x2,
-+	crt_DPMS_OFF = 0x3,
- };
- 
- #define set_DAC(off) {							\
-@@ -15,7 +15,7 @@ enum dpms {
+-	for (i = 0; i < register_num; i++) {
++	for (i = 0; i < register_num; i++)
+ 		backup[i] = phy_query_bb_reg(adapt, addareg[i], bMaskDWord);
+-	}
  }
  
- void ddk750_set_dpms(enum dpms state);
--void sm750_set_power_mode(unsigned int powerMode);
-+void sm750_set_power_mode(unsigned int power_mode);
- void sm750_set_current_gate(unsigned int gate);
+ static void save_mac_registers(struct adapter *adapt, u32 *mac_reg,
+@@ -830,9 +829,9 @@ static void save_mac_registers(struct adapter *adapt, u32 *mac_reg,
+ {
+ 	u32 i;
  
- /*
+-	for (i = 0; i < (IQK_MAC_REG_NUM - 1); i++) {
++	for (i = 0; i < (IQK_MAC_REG_NUM - 1); i++)
+ 		backup[i] = usb_read8(adapt, mac_reg[i]);
+-	}
++
+ 	backup[i] = usb_read32(adapt, mac_reg[i]);
+ }
+ 
+@@ -850,9 +849,9 @@ static void reload_mac_registers(struct adapter *adapt,
+ {
+ 	u32 i;
+ 
+-	for (i = 0; i < (IQK_MAC_REG_NUM - 1); i++) {
++	for (i = 0; i < (IQK_MAC_REG_NUM - 1); i++)
+ 		usb_write8(adapt, mac_reg[i], (u8)backup[i]);
+-	}
++
+ 	usb_write32(adapt, mac_reg[i], backup[i]);
+ }
+ 
+@@ -880,9 +879,9 @@ static void mac_setting_calibration(struct adapter *adapt, u32 *mac_reg, u32 *ba
+ 
+ 	usb_write8(adapt, mac_reg[i], 0x3F);
+ 
+-	for (i = 1; i < (IQK_MAC_REG_NUM - 1); i++) {
++	for (i = 1; i < (IQK_MAC_REG_NUM - 1); i++)
+ 		usb_write8(adapt, mac_reg[i], (u8)(backup[i]&(~BIT(3))));
+-	}
++
+ 	usb_write8(adapt, mac_reg[i], (u8)(backup[i]&(~BIT(5))));
+ }
+ 
 -- 
-2.17.1
+2.7.4
 
 
