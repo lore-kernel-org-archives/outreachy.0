@@ -1,94 +1,148 @@
-X-GM-THRID: 6391116266457792512
-X-Received: by 10.129.62.40 with SMTP id l40mr2763144ywa.67.1488047713023;
-        Sat, 25 Feb 2017 10:35:13 -0800 (PST)
+X-GM-THRID: 6472300341971910656
+X-Received: by 10.223.184.197 with SMTP id c5mr214350wrg.23.1506960108537;
+        Mon, 02 Oct 2017 09:01:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.2.76 with SMTP id 73ls1340929itu.13.gmail; Sat, 25 Feb 2017
- 10:35:12 -0800 (PST)
-X-Received: by 10.36.105.6 with SMTP id e6mr2424470itc.26.1488047712344;
-        Sat, 25 Feb 2017 10:35:12 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id c123si2001641pfa.4.2017.02.25.10.35.12
+Received: by 10.223.160.247 with SMTP id n52ls3473214wrn.6.gmail; Mon, 02 Oct
+ 2017 09:01:47 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QAWoc7u0NkY/AVALuveC7yAbTUB95jHa9UOt5pq+/8gJhDsFz2WeEr5xumOVhlMqBca0bdB
+X-Received: by 10.28.196.79 with SMTP id u76mr1714436wmf.5.1506960107632;
+        Mon, 02 Oct 2017 09:01:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506960107; cv=none;
+        d=google.com; s=arc-20160816;
+        b=tHwFb4utCTxkLVuWINFh8z9YMCMkPC/d8meDnsPqSAYbGHrepgAkZsovxQ6aW7mq2O
+         K5D6cSTUrInJKKuaI98IjzNUHik50xSiowmXCfs9OV7Xo2DkerdMilYKT52EujFT4cOZ
+         lv0soO17aIAWJItWfi26LREAgaS7YHYsd6AypUyPVUsGlYaggkgQP+WHXxKDssHQhZZZ
+         vCXLgKNjcxG7qKrIywGpWidQ3YYnw9dRWQmuA/rIZq0RsTxHPASzUEfN4gyO/7wXtR+C
+         HcLyO/UlH9Z0LgMKYuUVRqlUMqwW3eCuFfRCNdfy2k9ceQswoMMY3Lxn1LxjSJTMV36c
+         ooSw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=uqx5KgHRtkB4xhtI9Nny/XeaCPQaiu7le6/0Lg95aKw=;
+        b=NEzUAxg+7XL1YWtbAsk96wi6MuBFto4JSIyfIXqACZO+WF8yH6I5Eaeupzw2r5zy7r
+         qBUw3KPlm5R3TTJjSUS4Ut4KQ/8bcYO/Y6VWyftIAsexbPkyhaHgTSiYhJG6ug1O0Ryt
+         fxHoSdS+XpyxEAObTl824opSx2siBiPmG+pNRhOGapkP3Ss5tkqngHhO+Z6cniO+MkY8
+         L2zLHiVKxEqwfb9za7cmiJxhqj+PtnFOlij/gsXS5kb6fmmvra4k231C3Qa8k4QntDgb
+         e46uaojjocVmXoARxaYZt2Hh17+K+Y0q4/quI6XGNqj6TnYzMFKCjB74eWa6k8lwZa4T
+         XVmQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 200si1558093wmj.0.2017.10.02.09.01.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 25 Feb 2017 10:35:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Mon, 02 Oct 2017 09:01:47 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id s67so7371832pgb.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 25 Feb 2017 10:35:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=Igv7HFlvEoqJwKFOwq9ke5DSpYlSxr7n/dEoQkK87TY=;
-        b=gW+Oh8O0O/+C2sPc3s7v3LHQhBVbUpFM3YRbPbaIWzo1vJKpDvHmZ/q+PDNHpArWS4
-         PZ5PTBc177yRPjMKRzU4/JjXm9z7thwVjixc2LNt+TZXcdQG0feTcHIqIzS1IuuIpf7R
-         yoLpd56bFcSG74vvFW5reC1+E4FVTuN+IYVsftZ74uFNNLPqsf6pu91FT+Rur6c3zA5n
-         PKnOyBR928as5/oE+nxz8oUpV8D8tt15fKLN+FebVNc+J/xEAgOKSKqIh2qPVL4MWCu8
-         xBfzcJxL3v+k04slWqwGDXlGfYZXGieKK+KzokxMkXEYwD6lpA87FiGMxe1l8dw0SWDo
-         NclA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=Igv7HFlvEoqJwKFOwq9ke5DSpYlSxr7n/dEoQkK87TY=;
-        b=iiGtloqqiXQSMRp4KJcDoq4P7xpiQTd8kWrwJjw0E/ts5sM415eVEW/VkoIpSviPDv
-         WtR3O+BamR9I+gFu9Q2JZTYS0WbEPO3I8TySkfzElI8WgxN90JKLOuXBw2Fm87hAfvru
-         2mm2LzJuFIR44siYIyE2OpYISm48xDPhXdyFoEcdS16F55in2COV0ydnYRSmRmaAVw+q
-         aOYsr2IBBuTXY+AJxcz8vjLofjJICzmn9c86trnAmPCzed6JnLpt1CzUeuJEsj5mFXLU
-         4IH51ECgrnU9GoLY12Fba2EK+fjVlzN1c5NJCKgz2QcHr4dzpL2YjWNYNUaqc7Q2J+pJ
-         wIvQ==
-X-Gm-Message-State: AMke39lmm93jPYF0Khf5TmRE+dxCqD0LRum7zfmbOb2SFykSjawWwOZvIYAKjNxRbSfZMw==
-X-Received: by 10.98.106.134 with SMTP id f128mr3605438pfc.142.1488047711901;
-        Sat, 25 Feb 2017 10:35:11 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([117.192.154.88])
-        by smtp.gmail.com with ESMTPSA id d189sm267233pga.17.2017.02.25.10.35.10
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 25 Feb 2017 10:35:11 -0800 (PST)
-Message-ID: <58b1ce5f.c636630a.92bcd.0c2e@mx.google.com>
-X-Google-Original-Message-ID: <20170225183508.GA7130@<rvarsha016@gmail.com>>
-Date: Sun, 26 Feb 2017 00:05:08 +0530
-From: Varsha Rao <rvarsha016@gmail.com>
-To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
-	Teddy Wang <teddy.wang@siliconmotion.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 6/7] staging: sm750fb: Replace NULL comparison.
-References: <cover.1488045682.git.varshar186@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,470,1500933600"; 
+   d="scan'208";a="293788297"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 02 Oct 2017 18:01:47 +0200
+Date: Mon, 2 Oct 2017 18:01:45 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Keerthi Reddy <keerthigd4990@gmail.com>
+cc: outreachy-kernel@googlegroups.com, jsimmons@infradead.org, 
+    andreas.dilger@intel.com, oleg.drokin@intel.com
+Subject: Re: [Outreachy kernel] [PATCH v3] staging: lustre: use BIT macro
+In-Reply-To: <20171002153117.GA2109@manoharreddy>
+Message-ID: <alpine.DEB.2.20.1710021801330.17762@hadrien>
+References: <20171002153117.GA2109@manoharreddy>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1488045682.git.varshar186@gmail.com>
-User-Agent: Mutt/1.7.1 (2016-10-04)
+Content-Type: text/plain; charset=US-ASCII
 
-Replaced NULL comparison with pCurrentDviCtrl->pfnInit. This patch fixes
-the following checkpatch issue:
 
-CHECK: Comparison to NULL could be written "pCurrentDviCtrl->pfnInit"
 
-Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
----
- drivers/staging/sm750fb/ddk750_dvi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On Mon, 2 Oct 2017, Keerthi Reddy wrote:
 
-diff --git a/drivers/staging/sm750fb/ddk750_dvi.c b/drivers/staging/sm750fb/ddk750_dvi.c
-index 42c753f..171ae06 100644
---- a/drivers/staging/sm750fb/ddk750_dvi.c
-+++ b/drivers/staging/sm750fb/ddk750_dvi.c
-@@ -45,7 +45,7 @@ int dviInit(
- 	dvi_ctrl_device_t *pCurrentDviCtrl;
- 
- 	pCurrentDviCtrl = g_dcftSupportedDviController;
--	if (pCurrentDviCtrl->pfnInit != NULL) {
-+	if (pCurrentDviCtrl->pfnInit) {
- 		return pCurrentDviCtrl->pfnInit(edgeSelect, busSelect, dualEdgeClkSelect, hsyncEnable,
- 						vsyncEnable, deskewEnable, deskewSetting, continuousSyncEnable,
- 						pllFilterEnable, pllFilterValue);
--- 
-2.9.3
+> This commit changes changes left shift operator to use BIT macro
+>
+> Signed-off-by: Keerthi Reddy <keerthigd4990@gmail.com>
 
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+> ---
+>  changes in v3:
+>  move closing comment '*/' to upperline.
+>
+>  changes in v2:
+>  convert multi line comment to single line comment
+>
+>  .../staging/lustre/include/linux/lnet/lib-types.h  | 28 ++++++++++------------
+>  1 file changed, 13 insertions(+), 15 deletions(-)
+>
+> diff --git a/drivers/staging/lustre/include/linux/lnet/lib-types.h b/drivers/staging/lustre/include/linux/lnet/lib-types.h
+> index eea3b8e..99414c7 100644
+> --- a/drivers/staging/lustre/include/linux/lnet/lib-types.h
+> +++ b/drivers/staging/lustre/include/linux/lnet/lib-types.h
+> @@ -160,9 +160,9 @@ struct lnet_libmd {
+>  	} md_iov;
+>  };
+>
+> -#define LNET_MD_FLAG_ZOMBIE		(1 << 0)
+> -#define LNET_MD_FLAG_AUTO_UNLINK	(1 << 1)
+> -#define LNET_MD_FLAG_ABORTED		(1 << 2)
+> +#define LNET_MD_FLAG_ZOMBIE		BIT(0)
+> +#define LNET_MD_FLAG_AUTO_UNLINK	BIT(1)
+> +#define LNET_MD_FLAG_ABORTED		BIT(2)
+>
+>  struct lnet_test_peer {
+>  	/* info about peers we are trying to fail */
+> @@ -287,9 +287,9 @@ struct lnet_ni {
+>   * of old LNet, so there shouldn't be any compatibility issue
+>   */
+>  #define LNET_PING_FEAT_INVAL		(0)		/* no feature */
+> -#define LNET_PING_FEAT_BASE		(1 << 0)	/* just a ping */
+> -#define LNET_PING_FEAT_NI_STATUS	(1 << 1)	/* return NI status */
+> -#define LNET_PING_FEAT_RTE_DISABLED	(1 << 2)	/* Routing enabled */
+> +#define LNET_PING_FEAT_BASE		BIT(0)	/* just a ping */
+> +#define LNET_PING_FEAT_NI_STATUS	BIT(1)	/* return NI status */
+> +#define LNET_PING_FEAT_RTE_DISABLED	BIT(2)	/* Routing enabled */
+>
+>  #define LNET_PING_FEAT_MASK		(LNET_PING_FEAT_BASE | \
+>  					 LNET_PING_FEAT_NI_STATUS)
+> @@ -440,23 +440,21 @@ struct lnet_rtrbuf {
+>
+>  enum lnet_match_flags {
+>  	/* Didn't match anything */
+> -	LNET_MATCHMD_NONE	= (1 << 0),
+> +	LNET_MATCHMD_NONE	= BIT(0),
+>  	/* Matched OK */
+> -	LNET_MATCHMD_OK		= (1 << 1),
+> +	LNET_MATCHMD_OK		= BIT(1),
+>  	/* Must be discarded */
+> -	LNET_MATCHMD_DROP	= (1 << 2),
+> +	LNET_MATCHMD_DROP	= BIT(2),
+>  	/* match and buffer is exhausted */
+> -	LNET_MATCHMD_EXHAUSTED	= (1 << 3),
+> +	LNET_MATCHMD_EXHAUSTED	= BIT(3),
+>  	/* match or drop */
+>  	LNET_MATCHMD_FINISH	= (LNET_MATCHMD_OK | LNET_MATCHMD_DROP),
+>  };
+>
+>  /* Options for lnet_portal::ptl_options */
+> -#define LNET_PTL_LAZY		(1 << 0)
+> -#define LNET_PTL_MATCH_UNIQUE	(1 << 1)	/* unique match, for RDMA */
+> -#define LNET_PTL_MATCH_WILDCARD	(1 << 2)	/* wildcard match,
+> -						 * request portal
+> -						 */
+> +#define LNET_PTL_LAZY		BIT(0)
+> +#define LNET_PTL_MATCH_UNIQUE	BIT(1)	/* unique match, for RDMA */
+> +#define LNET_PTL_MATCH_WILDCARD	BIT(2)	/* wildcard match, request portal */
+>
+>  /* parameter for matching operations (GET, PUT) */
+>  struct lnet_match_info {
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20171002153117.GA2109%40manoharreddy.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
