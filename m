@@ -1,156 +1,155 @@
 X-GM-THRID: 6470705412124442624
-X-Received: by 10.223.172.196 with SMTP id o62mr1478301wrc.10.1506931100604;
-        Mon, 02 Oct 2017 00:58:20 -0700 (PDT)
+X-Received: by 10.223.135.59 with SMTP id a56mr1174793wra.30.1506930995251;
+        Mon, 02 Oct 2017 00:56:35 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.146.131 with SMTP id u125ls1873973wmd.0.gmail; Mon, 02 Oct
- 2017 00:58:19 -0700 (PDT)
-X-Received: by 10.223.138.151 with SMTP id y23mr1448486wry.21.1506931099573;
-        Mon, 02 Oct 2017 00:58:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506931099; cv=none;
+Received: by 10.28.93.130 with SMTP id r124ls1839924wmb.12.gmail; Mon, 02 Oct
+ 2017 00:56:34 -0700 (PDT)
+X-Received: by 10.28.228.11 with SMTP id b11mr1360772wmh.17.1506930994651;
+        Mon, 02 Oct 2017 00:56:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506930994; cv=none;
         d=google.com; s=arc-20160816;
-        b=awPOkIzObOA8SrIvBUTnNrnbgjQrH7ui2dDjA9or9yRl9zrISW/7a2ye93fIPed0PW
-         Vj2EPiRz+r4jAW9s/4nnfqaJSh90yyHr+VLMJwrhRzHa06CB9NiS4FzeGNxBuuP/DiaT
-         HQ5w2sqGipaz5XX8QP/TzbywefvuOEPY0Y5qvCgqA/T+EjlH1daYLsEl5koqlXznAjNK
-         NATJy+VD933N3/In85CCMHVnkQwtASEwEzG9Ob4URXyJgggP0QRdMlrHPg0YKYZ5qNLU
-         5pQ30wLiHuHaZFVwvOjeUpAAvqcWSEzMbIzXE0IqZ8BvdrCdR/+g7IIY9F7CJaFzkXGR
-         o55g==
+        b=s/Ds/ceSAqMdEQxv05ONEWrXUQhJLfHjcaUQfHvMt3Iyl8j9pM/zGRoHaiAbmYTApE
+         Vr0jXXwP21HMC7rb+ciPV6ZixqPOvOZfIQoLeg+yLtbTmaBSaDeKrTmGnxbWb15XX2K3
+         JU2wCeVMDTXLMJgGbkWOa60aJI0K+5r/Ika+ko1BhdpmVhY/usDhrmNnArHflAF3X58A
+         pk3U2nfPe1hITqCQZP+aO1mdPaIyjl44F0UIlinszJwD/I5KIMscifCyDbUA2YBBuoz4
+         J3QjiC+ER+3ILTe2CY1O/7OQM0X6TIueAgfdxee02ZuKlYuXMIyyB6RELMZhtP7S3OTQ
+         2BOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:sender:dkim-signature:arc-authentication-results;
-        bh=wH2TstXAV1uSljTjC4RFgftvRJoyptbtZO6a2mGrNG0=;
-        b=HVQjqKDvAaLddW832cQWd/Pr5tHUxPJzpmimelRczPhMk6X09IT11Vq5vdc8hkhboZ
-         kP+rdLx36adDATm4sDPDfaaelc4Zh0TGAA8hE6bIb1IQgpovxltcXJs/tnMLxjjk0akZ
-         APwHuS0yvDKhbkEnv6Dd+7T0Mp0YKWq5I6429pEZuLMFwGe9txpBvihKqPRAjtrl89Nf
-         7SvhpRsepSvU7/HNvxO/hGl48Ncn+M8tfYHG8osn2d88NOWrCLZW+NXcjQbSg0bnzpjq
-         kny7vbgbFsZxj8ENzC4PgflRUoK04lvQM9fgYBYGWlyVyQ6M3m8JvWN9fFZRFc10REyW
-         Ts5g==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:sender:dkim-signature
+         :arc-authentication-results;
+        bh=+cFTvVDHz28t7Uh8csa88wF5/fKdOLCgAj8aZl4Vq7s=;
+        b=FrAW4cPL2v4vsKlr9UljhD9lSIYPnDBj5ZhWTV4SDk9xzZE+jgmJp8u3ohdDkbXtCJ
+         UIt4eQgwJ0IvoBAmdYkbmxDjQC21T2ttfsv+uEGGpYtkERgaBtdyRE0CILTdDNHud0mQ
+         qr8SCK2CCvJPOnhn0SgH2V4F27GKhj8ZyUMUOt/Av6kcl40/vUfxrZeL2RbI8XzINUyb
+         485yxDiOkmVgoK+EZFnzQDHsiRpehJ4nf5NrEK2heugh5Wxe9wRxfgR/LlYoIyiSps6A
+         7m9zeQcYxc4arZfWnfwdTkMZKUpUvEqu2v/wYeaNmBxBb++F51ckUIxnzdAZw3T9Gcup
+         SuKw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ffwll.ch header.s=google header.b=GtKMzf3j;
-       spf=neutral (google.com: 2a00:1450:400c:c09::242 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=lYGrfBNq;
+       spf=neutral (google.com: 2a00:1450:400c:c09::243 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
 Return-Path: <daniel@ffwll.ch>
-Received: from mail-wm0-x242.google.com (mail-wm0-x242.google.com. [2a00:1450:400c:c09::242])
-        by gmr-mx.google.com with ESMTPS id q195si97523wme.4.2017.10.02.00.58.19
+Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
+        by gmr-mx.google.com with ESMTPS id d82si1006482wmd.1.2017.10.02.00.56.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 02 Oct 2017 00:58:19 -0700 (PDT)
-Received-SPF: neutral (google.com: 2a00:1450:400c:c09::242 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) client-ip=2a00:1450:400c:c09::242;
+        Mon, 02 Oct 2017 00:56:34 -0700 (PDT)
+Received-SPF: neutral (google.com: 2a00:1450:400c:c09::243 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) client-ip=2a00:1450:400c:c09::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ffwll.ch header.s=google header.b=GtKMzf3j;
-       spf=neutral (google.com: 2a00:1450:400c:c09::242 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
-Received: by mail-wm0-x242.google.com with SMTP id b189so2994399wmd.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 02 Oct 2017 00:58:19 -0700 (PDT)
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=lYGrfBNq;
+       spf=neutral (google.com: 2a00:1450:400c:c09::243 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
+Received: by mail-wm0-x243.google.com with SMTP id b189so2992591wmd.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 02 Oct 2017 00:56:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=ffwll.ch; s=google;
         h=sender:date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:content-transfer-encoding:in-reply-to
-         :user-agent;
-        bh=wH2TstXAV1uSljTjC4RFgftvRJoyptbtZO6a2mGrNG0=;
-        b=GtKMzf3j6a8evbBgZMrS0+j8I+SwtSCFSmWbymLbQ0VMgpWsOmCc6CyL1LjQIaFopp
-         TeY/JomKp44dVgq8KCvgU4h1lcut1QhokHQPUFKXiQAftupg+qSeUP20bjnvalpLVumS
-         dmcfPuoNemEO04WGdAkMHyXb3oqz2fiOHFap4=
+         :content-disposition:in-reply-to:user-agent;
+        bh=+cFTvVDHz28t7Uh8csa88wF5/fKdOLCgAj8aZl4Vq7s=;
+        b=lYGrfBNqxFRR5g+Vi53I/9ZGI98kZaykuU+FFyc1I0MH1NRFWxkFABg8wN9oIm2s9f
+         LSbrcKTxkNnXQrqYpVCMLJhREQOpXj+NEY+MdYM2XW5RdRs/87itZ12cFI7r/s2oRXWE
+         Kl3HO356LBzR3pS43gN5ARgQSKPr3Qs3msvbE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
-         :references:mime-version:content-disposition
-         :content-transfer-encoding:in-reply-to:user-agent;
-        bh=wH2TstXAV1uSljTjC4RFgftvRJoyptbtZO6a2mGrNG0=;
-        b=CNIjlNDcg98EsNWiSXpMwLGC4RYxtVRh9sKiJqFf3SiEUKxtfWCAbv75NZa3uoIxSd
-         4FSa7ABG1B/A9KNH7ItdFbcnvgRKFaSb8CEKSI1FqHn0xYO5E3Q8JVodgVUHuDZhZV+u
-         XNhZp5DIhllDROAcYssnuZKPJnrKasHgIMEU75eBL+c5H+n4AFz1Yv0kO6O7mz2FesfE
-         rGHFBorZbe9FwFFMnLLcLrn6Xt5gbr3syZ5bP44+JFBx2Tm4siwyQBd89NI4y8Xgodx7
-         3sZX8HCyS3s/vw1mRVY5DoVBo/5ZYR+Xj58SYQiBIF7KAX99CCOV6QGyeSoZI+ZnDGCQ
-         CFuQ==
-X-Gm-Message-State: AHPjjUgV/S17LJyIlAm+ylik5G1Orxunu7PsfkbFFv6hXadXag2rDPmg
-	8mZPfUaAn/KzOXd5Hi908llnZg==
-X-Google-Smtp-Source: AOwi7QDwFas4smwQQXSW8tnmSRldZq++0SiB9uQ1AACLvNEBCuzE1V1JHDfq9XKL0h3gylm/Ctxo+Q==
-X-Received: by 10.80.136.81 with SMTP id c17mr19136541edc.13.1506931099305;
-        Mon, 02 Oct 2017 00:58:19 -0700 (PDT)
+         :references:mime-version:content-disposition:in-reply-to:user-agent;
+        bh=+cFTvVDHz28t7Uh8csa88wF5/fKdOLCgAj8aZl4Vq7s=;
+        b=IC4DHAPOjJyy78IuJ10rMIIKnTBdP6wz9f6tOXWnA2TBfkGE+G1VPoJYeW21ByOjMO
+         vvyq//5JdHWlo4Nl8PFeqSDowimvUpb9ILHqTnS2tNS9odpEGBv7qvxhAIkt8MKRiA1B
+         rhK2uvGs+8Poj6RU2YODrTRGNFTViasU3E/og8WlXPNrc/htBUIuimDlDT6jC9x5hJn+
+         bAC54nTDkCeKEct6+SVsD/+tATl3KgafasWKdNS5THAMmr//rqk9v1qwsGLGmgShM3RA
+         YF3rmucvMTJnzshbZ1qyv1R92iUosIHut9EHYmRSy/31zGtka/frJjh22Hoi6rADHbGV
+         Z6qg==
+X-Gm-Message-State: AHPjjUibYVrOu1dQsiFsOVVcuYUtnWNQNEtjnvw3FuRdDcao6fu4V0xF
+	0KDX2zhMZwDAeP/GfDSQVilHOA==
+X-Google-Smtp-Source: AOwi7QAeMq/nS0MTQ5QvU/zRPwekK7yQJr0EgLN0Ejca8MQgpaDuWNKwzsWDLg+BtBBlmIPSVHkghg==
+X-Received: by 10.80.181.88 with SMTP id z24mr19648820edd.101.1506930994272;
+        Mon, 02 Oct 2017 00:56:34 -0700 (PDT)
 Return-Path: <daniel@ffwll.ch>
 Received: from phenom.ffwll.local ([2a02:168:5635:0:39d2:f87e:2033:9f6])
-        by smtp.gmail.com with ESMTPSA id n49sm8754669edd.40.2017.10.02.00.58.18
+        by smtp.gmail.com with ESMTPSA id x14sm2955297edd.10.2017.10.02.00.56.32
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Oct 2017 00:58:18 -0700 (PDT)
+        Mon, 02 Oct 2017 00:56:33 -0700 (PDT)
 Sender: Daniel Vetter <daniel.vetter@ffwll.ch>
-Date: Mon, 2 Oct 2017 09:58:16 +0200
+Date: Mon, 2 Oct 2017 09:56:31 +0200
 From: Daniel Vetter <daniel@ffwll.ch>
-To: Noralf =?iso-8859-1?Q?Tr=F8nnes?= <noralf@tronnes.org>
-Cc: Meghana Madhyastha <meghana.madhyastha@gmail.com>, daniel@ffwll.ch,
-	outreachy-kernel@googlegroups.com, dri-devel@lists.freedesktop.org,
-	Jani Nikula <jani.nikula@linux.intel.com>
-Subject: Re: [PATCH v5 4/4] drm/tinydrm: select BACKLIGHT_LCD_SUPPORT,
- BACKLIGHT_CLASS_DEVICE
-Message-ID: <20171002075816.fwhkvrue2u22e6vd@phenom.ffwll.local>
-References: <cover.1506762028.git.meghana.madhyastha@gmail.com>
- <a5ae26112f5e8d76e3ba46eae0c3137005496444.1506762029.git.meghana.madhyastha@gmail.com>
- <be741e6d-e5a2-a0ba-7ab8-9d07f8f36f99@tronnes.org>
+To: kbuild test robot <lkp@intel.com>
+Cc: Meghana Madhyastha <meghana.madhyastha@gmail.com>, kbuild-all@01.org,
+	daniel@ffwll.ch, noralf@tronnes.org,
+	outreachy-kernel@googlegroups.com, dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH v4 3/3] drm/tinydrm: Add the dummy versions of
+ drm_of_find_backlight functions
+Message-ID: <20171002075631.k5dklpuxfmv7qzbr@phenom.ffwll.local>
+References: <aa492420b933fd8f189a4577949cbeb8b13cd066.1506698677.git.meghana.madhyastha@gmail.com>
+ <201709301309.DCWPmynw%fengguang.wu@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <be741e6d-e5a2-a0ba-7ab8-9d07f8f36f99@tronnes.org>
+In-Reply-To: <201709301309.DCWPmynw%fengguang.wu@intel.com>
 X-Operating-System: Linux phenom 4.12.0-1-amd64 
 User-Agent: NeoMutt/20170609 (1.8.3)
 
-On Sat, Sep 30, 2017 at 03:49:43PM +0200, Noralf Tr�nnes wrote:
+On Sat, Sep 30, 2017 at 01:18:53PM +0800, kbuild test robot wrote:
+> Hi Meghana,
 > 
-> Den 30.09.2017 11.10, skrev Meghana Madhyastha:
-> > Add select BACKLIGHT_LCD_SUPPORT, BACKLIGHT_CLASS_DEVICE to
-> > the Kconfig of drm. This is required for the successful build of
-> > drm_of_find_backlight helpers.
-> > 
-> > Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
-> > ---
-> > Changes in v5:
-> > -This commit was not present in v4. Selecting BACKLIGHT_LCD_SUPPORT,
-> > BACKLIGHT_CLASS_DEVICE in the Kconfig file under the symbol DRM seems
-> > to fix the Kbuild error drm_of.c:(.text+0x3bc): undefined reference to
-> > `of_find_backlight_by_node'.
-> > 
-> >   drivers/gpu/drm/Kconfig | 2 ++
-> >   1 file changed, 2 insertions(+)
-> > 
-> > diff --git a/drivers/gpu/drm/Kconfig b/drivers/gpu/drm/Kconfig
-> > index 83cb2a8..3ba5632 100644
-> > --- a/drivers/gpu/drm/Kconfig
-> > +++ b/drivers/gpu/drm/Kconfig
-> > @@ -7,6 +7,8 @@
-> >   menuconfig DRM
-> >   	tristate "Direct Rendering Manager (XFree86 4.1.0 and higher DRI support)"
-> >   	depends on (AGP || AGP=n) && !EMULATED_CMPXCHG && HAS_DMA
-> > +	select BACKLIGHT_LCD_SUPPORT
-> > +	select BACKLIGHT_CLASS_DEVICE
-> >   	select HDMI
-> >   	select FB_CMDLINE
-> >   	select I2C
+> [auto build test WARNING on drm/drm-next]
+> [also build test WARNING on v4.14-rc2 next-20170929]
+> [if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
 > 
-> A night's sleep has made this more clear, we don't need 'depends on'
-> or select as you have tried here, it's enough that we make a change in
-> the backlight subsystem as I outlined earlier:
+> url:    https://github.com/0day-ci/linux/commits/Meghana-Madhyastha/drm-tinydrm-drm_of_find_backlight-helper/20170930-122931
+> base:   git://people.freedesktop.org/~airlied/linux.git drm-next
+> config: x86_64-randconfig-x017-201739 (attached as .config)
+> compiler: gcc-6 (Debian 6.2.0-3) 6.2.0 20160901
+> reproduce:
+>         # save the attached .config to linux build tree
+>         make ARCH=x86_64 
 > 
-> include/linux/backlight.h:
+> All warnings (new ones prefixed by >>):
 > 
-> -#ifdef CONFIG_OF
-> +#if defined(CONFIG_OF) && IS_ENABLED(CONFIG_BACKLIGHT_CLASS_DEVICE)
-> �struct backlight_device *of_find_backlight_by_node(struct device_node
-> *node);
-> �#else
-> �static inline struct backlight_device *
-> �of_find_backlight_by_node(struct device_node *node)
-> �{
-> ���� return NULL;
-> �}
-> �#endif
-> 
-> Now we don't have to care about backlight being built-in, module or
-> disabled.
-> 
-> This patch has to be the first in the patchset. No single patch can break
-> anything
-> even if it's fixed later. This is so people can bisect.
+>    In file included from drivers/gpu//drm/tinydrm/mi0283qt.c:15:0:
+>    include/drm/drm_of.h:74:1: error: expected identifier or '(' before '{' token
+>     {
+>     ^
+>    include/drm/drm_of.h:80:1: error: expected identifier or '(' before '{' token
+>     {
+>     ^
+>    include/drm/drm_of.h:72:40: warning: 'drm_of_find_backlight' declared 'static' but never defined [-Wunused-function]
+>     static inline struct backlight_device *drm_of_find_backlight(
+>                                            ^~~~~~~~~~~~~~~~~~~~~
+> >> include/drm/drm_of.h:78:40: warning: 'devm_drm_of_find_backlight' used but never defined
+>     static inline struct backlight_device *devm_drm_of_find_backlight(
 
-Adding Jani to double-check this plan ...
+You need to squash the dummy version into the patch that introduces the
+first usage, otherwise compilation can fail and break bisecting. And looks
+liek this doesn't compile. It takes a bit of playing around until you have
+a Kconfig that hits this. Luckily 0day has constructed one for you
+already.
 -Daniel
+
+>                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+> 
+> vim +/devm_drm_of_find_backlight +78 include/drm/drm_of.h
+> 
+>     71	
+>     72	static inline struct backlight_device *drm_of_find_backlight(
+>     73						struct device *dev);
+>   > 74	{
+>     75		return -EINVAL;
+>     76	}
+>     77	
+>   > 78	static inline struct backlight_device *devm_drm_of_find_backlight(
+>     79							struct device *dev);
+>     80	{
+>     81		return -EINVAL;
+>     82	}
+>     83	#endif
+>     84	
+> 
+> ---
+> 0-DAY kernel test infrastructure                Open Source Technology Center
+> https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+
+
+
 -- 
 Daniel Vetter
 Software Engineer, Intel Corporation
