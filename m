@@ -1,112 +1,109 @@
-X-GM-THRID: 6754510207440650240
-X-Received: by 2002:adf:f685:: with SMTP id v5mr2165989wrp.246.1572656959594;
-        Fri, 01 Nov 2019 18:09:19 -0700 (PDT)
+X-GM-THRID: 6472277834533437440
+X-Received: by 10.28.230.198 with SMTP id e67mr1620880wmi.24.1506944912239;
+        Mon, 02 Oct 2017 04:48:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:1b0b:: with SMTP id b11ls10661568wmb.3.gmail; Fri, 01
- Nov 2019 18:09:18 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxpkpkJQ8lAHi8o4aHrtkMcpizdgzK+EmVnygdsSt10gicDVs+lndbnIKqjNzpeslL/j3GS
-X-Received: by 2002:a1c:6405:: with SMTP id y5mr13601223wmb.175.1572656958571;
-        Fri, 01 Nov 2019 18:09:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572656958; cv=none;
+Received: by 10.223.195.40 with SMTP id n37ls2280334wrf.2.gmail; Mon, 02 Oct
+ 2017 04:48:31 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QA9aChB43UQSCj/y+CVXr2LuRsfa28wgtx8gvqNEygRFyf742Cfw4vve4VdvigZP8YsMZZQ
+X-Received: by 10.28.131.14 with SMTP id f14mr1669637wmd.25.1506944911411;
+        Mon, 02 Oct 2017 04:48:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506944911; cv=none;
         d=google.com; s=arc-20160816;
-        b=UVM+ufJW2p81XhD9cYuOZyvGUVlTa/Rm/OJsB14ESsXB5sBuCs7+/+48svDNjfF0Jy
-         /GwQ16Ir40/s9z9v/t10hd5TJmmHoOIZvgmh+FKltX2DPBNE9vH+713+v46xI5QNGh0A
-         CjbCnIZBLSl8cS02SM0U5nG/6M7mZAen689Zjqy1w6ZPmq7uyIGfvNF6bIgu8bdnxhjz
-         wTwa9Ij1ImVnz5DpwhL5C/YRZxmaKj0FbIjpksTxcEyazeMeerPQDbh9CtjQAcaNL2XF
-         4902PHwegYjV+SSK3Y4o686gThnsiZ9eMCCGudTobzAFbwdwArLsKPorkTNLyXzOhJB5
-         NpkA==
+        b=dcCPLmom+0PJNaxnQsFnEbKuan+5vejqW1jtysBR0+lztG3km1EfypzxxBxhQMpYgh
+         /VhcVfPBlLOU95/dgoHFRUmeqjqiAUXv9Lk4ekxQbGLFL4luAwyv/9BNlnAq7BYICcTq
+         WX9qTXaAaqqQCy4gq1Zz80/R7ImAxQkla34naQ/byQH5HX1088YsVI9qoy5fiYxVZ94d
+         OI2CsJ7mnqkBmPp/HvAKSpyVLlmeaS3rJPk0AevpdhhQvzcWOiL1KEJtxIcCLu92YC0l
+         Q6o08yXp51pr/jny75Cmk2pgPObxeWTD9SYCNxKGq3yMIoln0EJVa9ldTg2zzFX2o9zS
+         iD/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=zphYPhKZY9CyIEt2ijL99yxiqx+qpNcFu2BCzqTGVUM=;
-        b=hVZS9ox9S6uVevWXyxNUJyH6zoticBc7Tb6iqgQ+jF6rAdbtd/zK0shaASJEM60ghg
-         /NDwsdVmGL56yWdx716EhT4yDge0o0aMFufp7QkBLKc1jX1CmnymdYgogb0lkt8ks568
-         T222i2iphptbi0+M9mCIzXf6tzw/la2wplYjO2gWnNrw4QrUyJZpQd8pO3XFXqLJ72EA
-         PjK1zr8+JWUzUnj2MLC1NnvuL95IWpm0ak1b8UvAjw9IB8SkvU5TZjL48OnkRnMhbo9f
-         WYQz40FMBchOKwdxVc1grie0Otnhts1aeTC+k1LQOQAG2noIO40YWaYJ+jiqhaI+Uv92
-         uNdA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=i3xyB4VdNelBmtcnIMzyPWNT5qZiYBzjp0fSKpbLqIc=;
+        b=gDZlmA0Meb0VTyRoduAey6KbZ93uiaDNEc3gE2rY2woInk3y0Vvt/43AjXyeQDaDkB
+         /nUx+iEbT/7eoalbAvfO/Wp8S8Ujjb+jCXE5mb52xwFbHk/l6sX50X4OQGkNevrHfxl8
+         uxN3n7ihwq46ASQF0PkauihYzWGZHLPa9SUU1Tifd/KDd2I24jj+BBD0kSugkIcpBnVt
+         6peJpTBy57XQqgsGB9hdukRGsFAm4J4LrP7EE1M3GQfJ37vVcwq3FIt2v/DTvp5ubV8G
+         trrO2n0a+NGq0G17brccUhLHqLutYkUpdvVguMZjYU25BimDgzRnT+CRSs9OCkyrkrqg
+         AUYA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="dXh4/M5A";
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wr1-x444.google.com (mail-wr1-x444.google.com. [2a00:1450:4864:20::444])
-        by gmr-mx.google.com with ESMTPS id s15si472618wme.2.2019.11.01.18.09.18
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id h17si1258340wmd.0.2017.10.02.04.48.31
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 01 Nov 2019 18:09:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) client-ip=2a00:1450:4864:20::444;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 02 Oct 2017 04:48:31 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="dXh4/M5A";
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x444.google.com with SMTP id o28so11201940wro.7
-        for <outreachy-kernel@googlegroups.com>; Fri, 01 Nov 2019 18:09:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=zphYPhKZY9CyIEt2ijL99yxiqx+qpNcFu2BCzqTGVUM=;
-        b=dXh4/M5ApPgqPvyX3K6B0hS54l4jokPBDVa22MuVzxM0K7DRP1hNHKjXNV/kuf12il
-         a2Kg489uWTxfNDO6xmOhu826uWIT6SRgZBl6Y/MyoXNCoDm4OEV58EMKE/k90BTA2328
-         7CTkEFvQboIubjV+UmPxII7up4p/sBBPpCFmme2sAl1irduShjrrKEkbnzVZpsr7voXe
-         aSrlD2Fg6leFwfMksJBwTaYKnOOcqVBFCkwE8I6fAYZAxVxgtp9w96lYAq0OlfjdMcyl
-         Mv2+al2R/dv2NcX4QcQOjqwA1TtCluX6cKEJQCikYAXHJ092EKRrRAxF1vb0I0NtgB8K
-         cWCQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=zphYPhKZY9CyIEt2ijL99yxiqx+qpNcFu2BCzqTGVUM=;
-        b=pc1Yb0Wn1ZzUqoMmVaBpgmjVj+/0zUGRYK8SbJ06bJ/Wz/Kyo6NaAoCRt46XKZ9wUo
-         Rp7etfDyioMA0n+SCRn3U9DvK2DRZWqFsYtY9FIiq5qBg96S/KzRRkqV0Hjg3fQLy9AE
-         c/rdSEhyK9JBtkjTI7qXrYyeuh0ZNjEhTermHLTB2yB846i4RZu+XFjA9DxON0MMUNDc
-         RUcY1g9/6Y5ul0s2YxQ1C68/qzujc2msmz5S9RamYpSuc4pZMgOGZswVOR6ni4rQS4r/
-         j8CeGQJtY1VRtfDtAccqm+hDgNuGglaD92PiAQPbtktXeodi84o9zlPlUI0Dz6D3KhKI
-         znwA==
-X-Gm-Message-State: APjAAAVWj2+pvIAi1rCktAE09W+/f+FiqX5Ub2kTGahaVi9U4bTeC4fC
-	+nk4XZp77IPhwnr2egOSTNPlPo5Io8xI
-X-Received: by 2002:adf:e506:: with SMTP id j6mr1428653wrm.19.1572656957926;
-        Fri, 01 Nov 2019 18:09:17 -0700 (PDT)
-Return-Path: <jbi.octave@gmail.com>
-Received: from ninjahub.lan (79-73-36-243.dynamic.dsl.as9105.com. [79.73.36.243])
-        by smtp.googlemail.com with ESMTPSA id m9sm9354249wro.66.2019.11.01.18.09.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 01 Nov 2019 18:09:17 -0700 (PDT)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	julia.lawall@lip6.fr,
-	Jules Irenge <jbi.octave@gmail.com>
-Subject: [PATCH] staging: wfx: fix warning of assignment of 0/1 to bool variable
-Date: Sat,  2 Nov 2019 01:09:08 +0000
-Message-Id: <20191102010908.30269-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.21.0
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,469,1500933600"; 
+   d="scan'208";a="293723710"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 02 Oct 2017 13:48:31 +0200
+Date: Mon, 2 Oct 2017 13:48:29 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Keerthi Reddy <keerthigd4990@gmail.com>
+cc: outreachy-kernel@googlegroups.com, devel@driverdev.osuosl.org, 
+    linux-kernel@vger.kernel.org, gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH] staging: rts5208: use usleep_range
+ instead of udelay
+In-Reply-To: <20171002114322.GA8908@manoharreddy>
+Message-ID: <alpine.DEB.2.20.1710021347340.3515@hadrien>
+References: <20171002114322.GA8908@manoharreddy>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
 
-Fix warning of assignment of 0/1 to bool variable.
-Issue reported by coccinelle tool.
 
-Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
----
- drivers/staging/wfx/sta.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/wfx/sta.c b/drivers/staging/wfx/sta.c
-index 688586e823c0..ea5707ff8847 100644
---- a/drivers/staging/wfx/sta.c
-+++ b/drivers/staging/wfx/sta.c
-@@ -291,7 +291,7 @@ u64 wfx_prepare_multicast(struct ieee80211_hw *hw, struct netdev_hw_addr_list *m
- 			ether_addr_copy(wvif->mcast_filter.address_list[i], ha->addr);
- 			i++;
- 		}
--		wvif->mcast_filter.enable = 1;
-+		wvif->mcast_filter.enable = true;
- 		wvif->mcast_filter.num_addresses = count;
- 	}
- 
--- 
-2.21.0
+On Mon, 2 Oct 2017, Keerthi Reddy wrote:
 
+> Since a its a slow device, allow a small range of 100
+
+How do you know that it is a slow device?
+
+Try to make the commit log message more self contained, not a continuation
+of the subject line, and use the imperative.
+
+julia
+
+>
+> Signed-off-by: Keerthi Reddy <Keerthigd4990@gmail.com>
+> ---
+>  drivers/staging/rts5208/rtsx_card.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/rts5208/rtsx_card.c b/drivers/staging/rts5208/rtsx_card.c
+> index a6b7bff..418e29d 100644
+> --- a/drivers/staging/rts5208/rtsx_card.c
+> +++ b/drivers/staging/rts5208/rtsx_card.c
+> @@ -825,7 +825,7 @@ int switch_normal_clock(struct rtsx_chip *chip, int clk)
+>  	}
+>
+>  	if (sd_vpclk_phase_reset) {
+> -		udelay(200);
+> +		usleep_range(200, 300);
+>  		retval = rtsx_write_register(chip, SD_VPCLK0_CTL,
+>  					     PHASE_NOT_RESET, PHASE_NOT_RESET);
+>  		if (retval) {
+> @@ -838,7 +838,7 @@ int switch_normal_clock(struct rtsx_chip *chip, int clk)
+>  			rtsx_trace(chip);
+>  			return retval;
+>  		}
+> -		udelay(200);
+> +		usleep_range(200, 300);
+>  	}
+>  	retval = rtsx_write_register(chip, CLK_CTL, 0xFF, 0);
+>  	if (retval) {
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20171002114322.GA8908%40manoharreddy.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
