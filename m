@@ -1,102 +1,173 @@
 X-GM-THRID: 6471910913633943552
-X-Received: by 10.99.122.81 with SMTP id j17mr146555pgn.5.1506936620920;
-        Mon, 02 Oct 2017 02:30:20 -0700 (PDT)
+X-Received: by 10.28.92.18 with SMTP id q18mr1467927wmb.15.1506923697081;
+        Sun, 01 Oct 2017 22:54:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.101.85.142 with SMTP id j14ls1053038pgs.3.gmail; Mon, 02 Oct
- 2017 02:30:19 -0700 (PDT)
-X-Received: by 10.99.120.197 with SMTP id t188mr1217673pgc.173.1506936619943;
-        Mon, 02 Oct 2017 02:30:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506936619; cv=none;
+Received: by 10.223.130.196 with SMTP id 62ls856856wrc.5.gmail; Sun, 01 Oct
+ 2017 22:54:56 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QA3PIk9DmpdmAe2c8BhmQGlCfibYRbficBT+QiKedGfnZ/1JwHxylJUB17s2fx6fQLkT4Cc
+X-Received: by 10.28.156.145 with SMTP id f139mr462650wme.10.1506923696261;
+        Sun, 01 Oct 2017 22:54:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506923696; cv=none;
         d=google.com; s=arc-20160816;
-        b=PGvbDfrxFG4qZAWe2mXu5lEOW1P3iyd5mZsb8WAFGxFXHzdJE2hF2jnzG1tRk9cUC7
-         4Tyee1/P5Hz6vC0O4dkPcqVTHl0+pQofGevQSM9+LHuN0AoBswGuPJD54s2fOnRmzTKd
-         VtZOZqBmKpKvLPEyGrpou9qkRpKZqzTIlOB9DZI73smJD43SzilrTkRNKPHCmVnsUW+x
-         ZrKkIJ9siqIizPy7IiZGqRx4nOWqdohvuc99hkAOg4pAHo4k7I2xPAstc/9rN87tydWH
-         6MczxchK6BXUA0tCIy9R8RpfU98FIyLP+j5fZEkkuzd643B3U9b6ycFRj8VnabaJ1bcr
-         2hEg==
+        b=sKybFHnZmxjCuBfQCeXxktuOWaEiIyDb2Y/e2MYy42tVU9CtOuyC5bhdCsC9TwGPvd
+         Azi1lC/jUvDOlDJ0wgDuBkNlTQo95JR31YsiJ/tEcXs1mKNPPBSenf20IWa/DrADWyKa
+         zllD6BeE9DzfFH7F3FhfnajsK+FJr85BlhYoWf8JwZBlTu0i6O8x2KEWyXuVHRPJaWBH
+         E3f/TybOyGnVfJ4GJn3UQ/F75vXMVUf4igFsUILpVDNNZOXjMCeK8fr+5CgocSFHLXZR
+         Njr/lRyLG87klDgST3L0HSCcaVMo1qryNcjN5S/ypiOXdxqkKd8v8maS0Y9DAHdwJc2I
+         s2jQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=B0OQGrnNLMo4ghcntQf5sZxZEN9HOfMKctAfHH4+EpA=;
-        b=OesDr8GoI/6rDD17X7nAso+SRlRCuinyRTPFqpDEJo8y3OeW2dbiV1b8ls1lcUJBf6
-         OJSr8LNZ9ZuNqZ3rLb75ooaUkV8fS0xNQeIj8oNWdLuSVwQxkZgT3KgQgbVb5ET6iI+p
-         2fYn2Kl2nXHwagYkofL9N87EInQvmJn09N3nHkvJzuDDlynOM1b4EyHVbPNBYfh+bhXB
-         FbsNk4dGzxv5d4T59hJtzUcwD91URsFpetSkf85vV7xyy8Ifk5Pb4rZ5kkqNNwvfEhgp
-         E9r9ewOHvWFi1p+fRSHZFmOl8wbnxWBbU8NQaXoxm468xpQgz9bU9r/DhSI17qwzN9xM
-         YSKg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=xYgqXPZjN6fCbDjQt8eCWxA96V0KnlcR8A0czNDK9Tc=;
+        b=o08mq+FjW2i70zXqOIuWLJXETS9VczMaLKg33TTe3Mu1/QE4lMitOwfdj6GWkVi5NM
+         K7rYtqMGfwx0u/hHnBb+TTp0BMg5BobmXrvtJMLLt1ANidInMANRYOD0HV8rTMpv8MDx
+         5+yDupUjhXjy9pmkXvYIZsEpru7G96VHJp1CEL/H4uvkUkEwG+DPbWK3aLthPsNjSqQj
+         LWqd440yFdjKu8jykFHYkuP6/tqOWDlfwbsta8Rx+CYOHhBXpy45Y0CWwLZXoroVaFNp
+         qNir3wEDGJZf6JW69neMZ4UxDjrFctvRNXg1jV3RrNsvRaAZQ6hNnl6C9LsAk54H+BF9
+         RZ6A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nTqiiD3x;
-       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <keerthigd4990@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id d207si976446pfd.16.2017.10.02.02.30.19
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 191si929755wmn.2.2017.10.01.22.54.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 02 Oct 2017 02:30:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Sun, 01 Oct 2017 22:54:56 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nTqiiD3x;
-       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id 124so811297pgi.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 02 Oct 2017 02:30:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=B0OQGrnNLMo4ghcntQf5sZxZEN9HOfMKctAfHH4+EpA=;
-        b=nTqiiD3xMX+seMRbDEgYszXH9W/VZPNznKeWqgqtx1sDYCi7HdtiiXdz7Wl+mJOMbN
-         ADBgiG0LJAFMiUgAWLPJj+ifabQAPL5Ky0TPZg/5F9VgcpLDCuF3FT6qREPO9BIiTDW9
-         S08RHIKK5mAX4QIhhQdhDa9yaDzAhKZgiwVaiGHFQS1QxxDm32Gxpij8uvD8qJyL+JXQ
-         LHAOM5jZr8xP+Q0OBOgXp0yyFc0qpxIAR+r7GNcXr0yO03eV0jb/Cn55kuN6e34oe/if
-         XpY/BVb/mMaZ1vpO3h6Z0RehsztTJn7hADDIQUFGVbGr18PwaBHUHNldcFydgI/Q1zlW
-         uEJQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=B0OQGrnNLMo4ghcntQf5sZxZEN9HOfMKctAfHH4+EpA=;
-        b=OXlfFNp+s2+t1EzHPr987op32UjxvjmTvqLS9iOmiIRjwwZFQI0X1VLSxK9j9CyoBJ
-         xNsdsXkCYI+u/vEid7ETG7xt7om4KJd7Y4yPCiLXG6Kb3wg8fDl7aINEbrbrZz73ur8i
-         vVfMDikQOcPOBRcm9AdQJH9Irllfguoht3NO+VBiu4iMy+mNSdEO7AXL0oZcJ22hhrG9
-         xK1IK2h5lW6vYB68nvNEdlWTA9x03Fn/Kw7vs1b+lslsxcDzNwKimDWpjbL8hb6Aiobh
-         Tk4Gg3oTQmyNH072nqr6XVfL4ql90pGtYW7yMGdTB86ulZXo6qFdlUzFZKcCisjg2cY3
-         fLjw==
-X-Gm-Message-State: AMCzsaWGq/EQkZW8kfbgk3HjJEkwyfRD7eCDwDnHKCGxIa5Jvov80ryQ
-	+C6qXxCWdWvhHLHaSm1crL1cq3ZZ
-X-Google-Smtp-Source: AOwi7QD+XsBwuFMm6kYXDyH0OdAjZYGF0OhNKgJHt9CmxnRoPCf62x+kWLrupHymjw4gQcf+uXqJcA==
-X-Received: by 10.99.96.68 with SMTP id u65mr5277093pgb.355.1506936619176;
-        Mon, 02 Oct 2017 02:30:19 -0700 (PDT)
-Return-Path: <keerthigd4990@gmail.com>
-Received: from manoharreddy ([202.53.87.190])
-        by smtp.gmail.com with ESMTPSA id n12sm16882317pfb.131.2017.10.02.02.30.17
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 02 Oct 2017 02:30:18 -0700 (PDT)
-Date: Mon, 2 Oct 2017 15:00:13 +0530
-From: Keerthi Reddy <keerthigd4990@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: teddy.wang@siliconmotion.com
-Subject: [PATCH 0/2] staging: sm750fb: remove typedef for enum
-Message-ID: <cover.1506936290.git.keerthigd4990@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,467,1500933600"; 
+   d="scan'208";a="293634011"
+Received: from abo-88-122-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.122.88])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 02 Oct 2017 07:54:55 +0200
+Date: Mon, 2 Oct 2017 07:54:55 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Keerthi Reddy <keerthigd4990@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v3] staging: sm750fb: remove typedef
+ for enum
+In-Reply-To: <20171002025033.GA2772@manoharreddy>
+Message-ID: <alpine.DEB.2.20.1710020753490.2193@hadrien>
+References: <20171002025033.GA2772@manoharreddy>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-This patchset will remove typedef for enums in sm750fb driver.
 
-Keerthi Reddy (2):
-  Staging: sm750fb: remove typedef for enum in ddk750_power.{c,h}
-  staging: sm750fb: remove typedef for enum in ddk750_sii164.{c,h}
 
- drivers/staging/sm750fb/ddk750_power.c  | 2 +-
- drivers/staging/sm750fb/ddk750_power.h  | 7 +++----
- drivers/staging/sm750fb/ddk750_sii164.c | 3 ++-
- drivers/staging/sm750fb/ddk750_sii164.h | 4 ++--
- 4 files changed, 8 insertions(+), 8 deletions(-)
+On Mon, 2 Oct 2017, Keerthi Reddy wrote:
 
--- 
-2.7.4
+> Using typedef will hide that 'DPMS_t' is enum. Removing this
+> will make sure that we are actually working with enum. Also is not
+> a good coding style to use typedef.
+>
+> Signed-off-by: Keerthi Reddy <keerthigd4990@gmail.com>
+> ---
+> changes in v3:
+> edit commit message
+>
+> changes in v2:
+> 1. Lower case the name and drop the _t which traditionally indicates
+> typedef
+> 2. make the same change in ddk750_sii164.{c,h}
 
+This is not the same change.  It also relates to an enum, but it doesn't
+relate to the type DPMS.  Since the files involved are totally disjoint,
+it would be better to just make two patches.
+
+julia
+
+
+>
+>  drivers/staging/sm750fb/ddk750_power.c  | 2 +-
+>  drivers/staging/sm750fb/ddk750_power.h  | 7 +++----
+>  drivers/staging/sm750fb/ddk750_sii164.c | 3 ++-
+>  drivers/staging/sm750fb/ddk750_sii164.h | 4 ++--
+>  4 files changed, 8 insertions(+), 8 deletions(-)
+>
+> diff --git a/drivers/staging/sm750fb/ddk750_power.c b/drivers/staging/sm750fb/ddk750_power.c
+> index 222ae1a..6f82ab0 100644
+> --- a/drivers/staging/sm750fb/ddk750_power.c
+> +++ b/drivers/staging/sm750fb/ddk750_power.c
+> @@ -2,7 +2,7 @@
+>  #include "ddk750_reg.h"
+>  #include "ddk750_power.h"
+>
+> -void ddk750_set_dpms(DPMS_t state)
+> +void ddk750_set_dpms(enum dpms state)
+>  {
+>  	unsigned int value;
+>
+> diff --git a/drivers/staging/sm750fb/ddk750_power.h b/drivers/staging/sm750fb/ddk750_power.h
+> index 44c4fc5..033889f 100644
+> --- a/drivers/staging/sm750fb/ddk750_power.h
+> +++ b/drivers/staging/sm750fb/ddk750_power.h
+> @@ -1,20 +1,19 @@
+>  #ifndef DDK750_POWER_H__
+>  #define DDK750_POWER_H__
+>
+> -typedef enum _DPMS_t {
+> +enum dpms {
+>  	crtDPMS_ON = 0x0,
+>  	crtDPMS_STANDBY = 0x1,
+>  	crtDPMS_SUSPEND = 0x2,
+>  	crtDPMS_OFF = 0x3,
+> -}
+> -DPMS_t;
+> +};
+>
+>  #define setDAC(off) {							\
+>  	poke32(MISC_CTRL,						\
+>  	       (peek32(MISC_CTRL) & ~MISC_CTRL_DAC_POWER_OFF) | (off)); \
+>  }
+>
+> -void ddk750_set_dpms(DPMS_t state);
+> +void ddk750_set_dpms(enum dpms state);
+>  void sm750_set_power_mode(unsigned int powerMode);
+>  void sm750_set_current_gate(unsigned int gate);
+>
+> diff --git a/drivers/staging/sm750fb/ddk750_sii164.c b/drivers/staging/sm750fb/ddk750_sii164.c
+> index 0431833..3d68e1d 100644
+> --- a/drivers/staging/sm750fb/ddk750_sii164.c
+> +++ b/drivers/staging/sm750fb/ddk750_sii164.c
+> @@ -296,7 +296,8 @@ void sii164SetPower(unsigned char powerUp)
+>   *  sii164SelectHotPlugDetectionMode
+>   *      This function selects the mode of the hot plug detection.
+>   */
+> -static void sii164SelectHotPlugDetectionMode(sii164_hot_plug_mode_t hotPlugMode)
+> +static
+> +void sii164SelectHotPlugDetectionMode(enum sii164_hot_plug_mode hotPlugMode)
+>  {
+>  	unsigned char detectReg;
+>
+> diff --git a/drivers/staging/sm750fb/ddk750_sii164.h b/drivers/staging/sm750fb/ddk750_sii164.h
+> index 6968cf5..e06ba72 100644
+> --- a/drivers/staging/sm750fb/ddk750_sii164.h
+> +++ b/drivers/staging/sm750fb/ddk750_sii164.h
+> @@ -4,12 +4,12 @@
+>  #define USE_DVICHIP
+>
+>  /* Hot Plug detection mode structure */
+> -typedef enum _sii164_hot_plug_mode_t {
+> +enum sii164_hot_plug_mode {
+>  	SII164_HOTPLUG_DISABLE = 0,         /* Disable Hot Plug output bit (always high). */
+>  	SII164_HOTPLUG_USE_MDI,             /* Use Monitor Detect Interrupt bit. */
+>  	SII164_HOTPLUG_USE_RSEN,            /* Use Receiver Sense detect bit. */
+>  	SII164_HOTPLUG_USE_HTPLG            /* Use Hot Plug detect bit. */
+> -} sii164_hot_plug_mode_t;
+> +};
+>
+>
+>  /* Silicon Image SiI164 chip prototype */
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20171002025033.GA2772%40manoharreddy.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
