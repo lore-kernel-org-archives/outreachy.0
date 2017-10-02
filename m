@@ -1,122 +1,114 @@
 X-GM-THRID: 6471841659603648512
-X-Received: by 10.223.176.122 with SMTP id g55mr535028wra.29.1507017323377;
-        Tue, 03 Oct 2017 00:55:23 -0700 (PDT)
+X-Received: by 10.28.149.18 with SMTP id x18mr1481685wmd.18.1506946919416;
+        Mon, 02 Oct 2017 05:21:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.223.188.18 with SMTP id s18ls3896321wrg.9.gmail; Tue, 03 Oct
- 2017 00:55:22 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QApPk6KoVNKJmFtvD0nh27qhpabbE4LWWjTnx8/8qX7nR5V7IAoRKez3KpujFGT/RSy4rpn
-X-Received: by 10.223.154.112 with SMTP id z103mr493914wrb.0.1507017322484;
-        Tue, 03 Oct 2017 00:55:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507017322; cv=none;
+Received: by 10.28.168.14 with SMTP id r14ls1986283wme.3.canary-gmail; Mon, 02
+ Oct 2017 05:21:58 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QDoZaJjyTk0GfmO/cDZP4RDcMdD3kaaLWm34sfv8VmGyqAkxz5fyy3SOCLB437GolneqfBl
+X-Received: by 10.28.1.146 with SMTP id 140mr1743029wmb.2.1506946918745;
+        Mon, 02 Oct 2017 05:21:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1506946918; cv=none;
         d=google.com; s=arc-20160816;
-        b=MjdczNJApmwD1ROf+62AM0YakfhS6XORIAGvHPukHr+bD7HGSz8IGff6bKrpokgwfN
-         I6rCgHU2JDUgp0ZhpVWnrahGD1TKseGanIWIPblwpFN7KYPNmSE5+Imz1/E2RSmE1UUD
-         KHe+rPgmW28k5xpxR98XfTQHcP1CPEuG85l2CcAdfKpPOfXZhJ+WLY8SQC1NwLOYwgpe
-         LoaaaPV77F2vnaqXVamGH46AKT+Erx/IkSDkWQ1LoFG22GWAyp6ZezgqGYfcGMG1qNih
-         BWWE2fTbTztBT3ohuBIQdwZe3iQL5zzO5hPqggZSD8nuXkG1ijkIKGNa+ITlwsltnTcP
-         Unsw==
+        b=vrPOcZ3qSp4HtGY6gQbtCeriIU85fbyYgArKFi77v9iWs9OVD6MH9TSD8rZZGxjiA0
+         QD7Lpp9MKD+pLr3A8CnRp9krkseIj13FXxbcsxsJeOeTDDoJytH9eYE0hTHmB5K2bvmd
+         paNrBLQNmgp/LiLVqDEe6+v+sNeq08mn6ll5+RYKvcihbyC/ioJiBHWq/ixyWkELa4Em
+         8ZAXHYJH3Gdu5uEQDXuz5CBdTi3P9Ipn/6S3O9fqa0FaJU1xI5EVehRuVku+XlRsVqeu
+         JTEk7Fqn0lC0L0+7FXiKRyLKP21b8hfUbC+Bh6tN+HNsiVNEuFvgOiaONeeO9AYPIcCf
+         GusQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=importance:content-transfer-encoding:mime-version:subject
-         :references:in-reply-to:message-id:cc:to:from:date
+        h=content-language:content-transfer-encoding:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
          :arc-authentication-results;
-        bh=/T57ZqB0deWpLvxv2RcBocpXmSdT0PZHVW5CpVFOpCE=;
-        b=qb5mIVvFwGhyDpVVuCmuudamQT55gWsifgzaXMcq+AsxEsGXP0FRkxKW14tChLpxY1
-         Xu4O6ne0lK3rQKwTeccNh+JQUcgmAKt5nBfqpP77st6AZeqR3oJByCwYKZI35tVRrt4P
-         pkQ1ns6yCNkPGfJDBOEP4UdkjTpkOSUUw9eV2lMDhTZyY0xtvhWy1B2DSMXBVB02QsFO
-         nWSfcm2F2YfWkRzI1iB9ZNuXwwRemlgb+Jym1daKjzQhiohIvoSTaMHZYVhnMb+yly5g
-         Qy9Qor319bnYMiHhZXns2yO75W+e9WISdBKkYhUqRxgs9sSwbeU7yP1KW8UcKXQr8586
-         W2Ow==
+        bh=1FkGFJ8kRCdet3LhCTEcBu5u1ESRFoPC7HoBpcDZU30=;
+        b=bLGDMbAxIa8YDwl/Us7CXovOuKblhVhfQ7gOTHtQpapCjOY7XoojInX0+V/YhIIgrv
+         PX8E7t+G4Tc3Pc+roJD4iX4jGwCH2nIS/3rDST7JTsDS/6mMxuz6vQQs2sNGrHI77Plc
+         2aWY6afxU85lmeQ0882EgDPoW46rl+TM7zwGud+atsK1I9QZn/DkqLlYdCiRtwpbzKBC
+         FMYa4Rp2VCpdnwaCV9ATosO9YeMP+7/sVTjuhcwvMstPSoXHYuzbuuG5PBQcWn1lFNMe
+         mkzO4fkL3fZjIUN3ycFLPYk32qA6X2jqh43wCl/ei8SSBAEXe+blMLUvD6lzwlFZ3mee
+         /T0w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 217.72.192.75 is neither permitted nor denied by best guess record for domain of stefan.wahren@i2se.com) smtp.mailfrom=stefan.wahren@i2se.com
+       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of stefan.wahren@i2se.com) smtp.mailfrom=stefan.wahren@i2se.com
 Return-Path: <stefan.wahren@i2se.com>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [217.72.192.75])
-        by gmr-mx.google.com with ESMTPS id p200si1537117wmg.4.2017.10.03.00.55.22
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
+        by gmr-mx.google.com with ESMTPS id 200si1494100wmj.0.2017.10.02.05.21.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 03 Oct 2017 00:55:22 -0700 (PDT)
-Received-SPF: neutral (google.com: 217.72.192.75 is neither permitted nor denied by best guess record for domain of stefan.wahren@i2se.com) client-ip=217.72.192.75;
+        Mon, 02 Oct 2017 05:21:58 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of stefan.wahren@i2se.com) client-ip=212.227.126.130;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 217.72.192.75 is neither permitted nor denied by best guess record for domain of stefan.wahren@i2se.com) smtp.mailfrom=stefan.wahren@i2se.com
-Received: from oxbsltgw02.schlund.de ([172.19.249.19]) by
- mrelayeu.kundenserver.de (mreue104 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 0MZls6-1dkNnF2JKw-00LYLk; Tue, 03 Oct 2017 09:55:19 +0200
-Date: Tue, 3 Oct 2017 09:55:18 +0200 (CEST)
-From: Stefan Wahren <stefan.wahren@i2se.com>
-To: phil@raspberrypi.org
-Cc: Eric Anholt <eric@anholt.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Mihaela Muraru <mihaela.muraru21@gmail.com>,
-	outreachy-kernel@googlegroups.com
-Message-ID: <625751478.62338.1507017318331@email.1und1.de>
-In-Reply-To: <20171001073056.GA7890@domino-MS-16Y1>
-References: <20171001073056.GA7890@domino-MS-16Y1>
+       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of stefan.wahren@i2se.com) smtp.mailfrom=stefan.wahren@i2se.com
+Received: from [192.168.178.54] ([109.104.33.132]) by mrelayeu.kundenserver.de
+ (mreue002 [212.227.15.167]) with ESMTPSA (Nemesis) id
+ 0LrmfO-1dJu822mY2-013iSm; Mon, 02 Oct 2017 14:21:56 +0200
 Subject: Re: [PATCH] staging: vc04_services: Use usleep_range() instead of
  msleep()
+To: Mihaela Muraru <mihaela.muraru21@gmail.com>,
+ outreachy-kernel@googlegroups.com
+Cc: Eric Anholt <eric@anholt.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+References: <20171001073056.GA7890@domino-MS-16Y1>
+From: Stefan Wahren <stefan.wahren@i2se.com>
+Message-ID: <8b6116b9-668f-4f6e-7894-775dd0ec1afb@i2se.com>
+Date: Mon, 2 Oct 2017 14:21:55 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20171001073056.GA7890@domino-MS-16Y1>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Priority: 3
-Importance: Medium
-X-Mailer: Open-Xchange Mailer v7.8.3-Rev33
-X-Originating-Client: open-xchange-appsuite
-X-Provags-ID: V03:K0:WKGNK9i7ANoT42LqJbq1FMjh77f/j4xESsYdZ/5B9Gm3kKgg8Rv
- QhRye/SE19hhEzmE4TrY+e3uG1ItSHYC5FiOqSxXML04mgNCZ07Iz2t9kYSpe52dVImpZbR
- VQXhsl/F55oz3ZV90YQmWYMfIc4yzwuRRetq/ic3FRMAt27NMEkwVs2QBycUN0JHo3a3PXq
- tbObuNFzrWsUM7m/j6vHg==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:kSnNdiinsJw=:8pcch7QTBvjGokcdQKBRcn
- jcGYS7bqGjue0CJibmS7E4h3wN64G71ewMBPfcaagfamhRo1ODwMkA0jJUc4HgVctJAW3Udgp
- xeAodNc3gQkKEJrbEwBuKJQlOG63Bkev1572flTmne76EL3guzdKtYmhgCE9/dhDPjXM4am8P
- LXVNjwFT381ytIMmgzU/4goVwxoGdkRBmFfKmegKG5nSxkqtMDbGYNT1uyD2iggjliiWXsM5q
- dqwr1J8st0aZuyLEFHgcA51dM3edMjsooQQ/sMYFUaNw5yMjq+Pg5FDHyntsxk/LENkVze5ME
- GLpGv18Q6la6xa6P5/fu55q30OtP5MIAablxa83zLm8WkOM3sVued7z6309YVZxPAsyArU2DA
- slPvUu3DjEc2FlOO7y7YtphIStFrGl2PeLCU1VPRn5Isbt5ohsoEgZw/3vUjI8a5EY6xYKhSO
- VLftQYuY3DZ9WjXcWPEaFBkU7ZD4WvRhMP5tV4ifgB0r162PJ1JcHMz1YHxwr7zhBkVlTK4c7
- dEfo5wYE4GcCha/5SKbiJ8+dTq+ZrpHjULdDJaibrWVz8ShuXeoomjt0gpEOzQ6dRTh3ODB/l
- LI0Si2T2/oDY/G/JdqJuyxq2hSzipGGzChCal5TsGZ3BIerkxIYAJX9mqVLEzR7CDW4o4EGYY
- IUdQNqs4tKOI89ug6VgbMrh4u0Fx0/9hzhQ7NsYAuInAcYD6ildU4s/GAnAjz3G4njVxJ6Wh/
- LoiC2lZZbcz/TcugHfE4dUfXcW/V66QPEYlZ82IRKr2ucFNkERXZl8e4QfA=
+Content-Language: en-US
+X-Provags-ID: V03:K0:HEmK17sdZc+NWTQrvUhFSGuNewpv5LQCgs2bPgqo25j6xJF3nzh
+ L5x6UpR/DuMqi2694nspGm8pIdXmmYdktg9PVBO8u3TMsJUKh/MbPWnO3NAdMQfUJD0gSus
+ KvfOkCr2IM70LwHJandWJ9+52gb92Ze9YwtQdC2kcdrI8AULEjDDIf2LnEXtkQZaHn+p2US
+ PJC58ZpESzz4bVrw4Jr4Q==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:ng+9rXHOQJo=:W5/cLFCVfsuw2I0cbCy2oF
+ qt7PTzlKC5BxKmfugobXJleveUGLOzvTSez5+KzVC6xF73yeukl22tWTa9OD/zwpiz0TPJPEx
+ 0qaEaBbUaXz47OI4chjxwzDyWhFbwcd8Fe53uZZGJSYX1einc6/jJuHcny/Fw5p3p7HGK4rt3
+ a3jKW1AkYJxFGjJ1WzgnSyScqbe0pZoSeWcVe/JYkq/kUXYDJjScDvegLZuqqCh9KMiHYTIad
+ ihafNvSA1TYkNouyTdc3Jz+IH12tHepcZWb6qyrryEk58oQDsiDoJBs4tg5RV+TSESmtsTrl6
+ 3/4CVmLtCacqaXG9J9l/XkJD01gpA3nu26BC9XrWKyrE/vk0mLeDpMmj1nLZpwtyJg0CsEhYv
+ wZVCHxMTHh231hlJop1mGFrcwwzAQsGdoWGdpFmcEH9i2UcSR0gtsQMep+7jp8QIDe07YfY3r
+ fHSVGLJjR5bXsOHo3SS9PiYmcmBmeRwPjb6aZWo3QfMZD4tGS+caLq52Z2CeIwXT2GJJcEEfi
+ 879DLk+lv4aIVVdfHkWgXWBZk07x9Bb5TChbt3X/sxkIr3ZWxAQ/JpRl4uSHxlHY5p/vCLUgz
+ utszEQY9tTljxLNbrBz8Q6ztMsrMHprjgAE5lX30XloyNJvaqrtBvbd3qO98Q3cOB6/LKr6VQ
+ 0SVfN4bJU1JMBCSexqcmBJJWfehIRm7FWJmQ41A7B6NmamRu10pOb+uF6thQOckn7TcslhzSh
+ dEGuysaEBCPxsrBCg9Ai01y5mVw6sw/YKeOG4Oge7mFpFBhlXFdKY8JQvIQ=
 
-Hi Phil,
+Hi Mihaela,
 
-> Mihaela Muraru <mihaela.muraru21@gmail.com> hat am 1. Oktober 2017 um 09:30 geschrieben:
-> 
-> 
+
+Am 01.10.2017 um 09:30 schrieb Mihaela Muraru:
 > Since msleep() will often sleep 20 ms for any value given in the
 > 1~20ms range, use usleep_range() for a precise wakeup.
-> 
+>
 > Issue found by checkpatch.pl.
-> 
+>
 > Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
-
-the vchiq driver calls 3 times msleep with parameter 1 (millisec). Depending on the kernel config the actual time of sleeping would be larger. In order to fix these checkpatch warning i see two options:
-
-1) Use usleep_range in order to achieve the 1 millisec at cost of a higher CPU load
-
-2) Increase the msleep values to 20 in order to keep the current runtime behavior
-
-Do you have any preference?
-
-Regards
-Stefan
-
 > ---
->  drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
+>   drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+>
 > diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
 > index 631ff73..daf18e8 100644
 > --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
 > +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
 > @@ -357,7 +357,7 @@ int32_t vchi_bulk_queue_transmit(VCHI_SERVICE_HANDLE_T handle,
->  		if (status != VCHIQ_RETRY)
->  			break;
->  
+>   		if (status != VCHIQ_RETRY)
+>   			break;
+>   
 > -		msleep(1);
 > +		usleep_range(1000, 2000);
->  	}
->  
->  	return vchiq_status_to_vchi(status);
-> -- 
-> 2.7.4
->
+
+since this code has been working downstream for many years, we must be 
+careful with such functional changes.
+
+Did you test this code on a Raspberry Pi?
+
+Regards
+Stefan
+
+>   	}
+>   
+>   	return vchiq_status_to_vchi(status);
+
 
