@@ -1,79 +1,192 @@
 X-GM-THRID: 6472784237919469568
-X-Received: by 10.107.169.219 with SMTP id f88mr13317085ioj.136.1507116078673;
-        Wed, 04 Oct 2017 04:21:18 -0700 (PDT)
+X-Received: by 10.99.55.74 with SMTP id g10mr982236pgn.114.1507062520027;
+        Tue, 03 Oct 2017 13:28:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.3.24 with SMTP id 24ls4490362iod.21.gmail; Wed, 04 Oct
- 2017 04:21:17 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QDwRkHP/v5aSv+HUiyd4VSDIjQ1X2TsU7ILNt3KHLEhx4pAyxlwJXZZ5IaXXc9DjfdEgNrl
-X-Received: by 10.107.36.148 with SMTP id k142mr13541103iok.82.1507116077703;
-        Wed, 04 Oct 2017 04:21:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507116077; cv=none;
+Received: by 10.84.236.65 with SMTP id h1ls5179711pln.13.gmail; Tue, 03 Oct
+ 2017 13:28:38 -0700 (PDT)
+X-Received: by 10.99.123.26 with SMTP id w26mr1689376pgc.115.1507062518877;
+        Tue, 03 Oct 2017 13:28:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507062518; cv=none;
         d=google.com; s=arc-20160816;
-        b=jVX/ctBUPvZmvjiToe63KQQF6xKTN4l1/yLWHQJyduvWhTv8KG3vPZGp6THjYzEjqh
-         jr09s/BtiHrlIUx2gR3+zmHp41+AWYBs+nqNd74TB7015ASEbPgIc/F8PZaYmk5RWb4c
-         sK6V4iSe4I/Zvpfbkux+ceEq5ZQv3NtyOhIVBraVOfM+YWx2cbwsOS1ygTaFGSPbs5ry
-         7xvCu/NVG5GJqWYCr1SCE/lcyjnl4pvsjjjxp2GDCjBr2f/Jstw7rk+gXY9yZHEKwluj
-         MGTsGGGpD+TvpL2bB+XS3dNSKDesOEXbe6+v8DNAwvlfmaRk2dtTysuvkPqk2AZu5LV4
-         pxYw==
+        b=mW1MzEs02blE9QFpEfUFxwL7YV19OiFOZOniU7GWztk/rQ/pEIFbeTh0YQzSTxHfFh
+         SO5heekTMP7hfHjEeXC5GzaSjF+jKBS60EqLixVupFQiY0S7CsIHscEnUvah9ZOA/6O8
+         dmRjDKFZ+tEW7gTa3dS4srLKwpgWsZn33ErYTar3zOAaq8Il3TVAEfrEQKuN/wvKK4x+
+         AGlvTtMRorZeXv/NyV1nOofu+xme5MwaCb4jfuVhMvauPalrv95//7726iAy52GwGDAV
+         3zYpYbgyHuCn75W9VmrFPoeaKcV3BMQNWO+DiwKuB4GW/5dClOXgMEeXt9SJRMhNr+cn
+         voYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=8Mwxy0Pst839phaH4YJJAKIHpVqRz3gjrAw4MIgbmSY=;
-        b=CTK8kakV7fX+EvmIz7v7TlcEURdBR5PUBCDNEKLjTOzWOdqXEjQO+TJikcpSLmkhvs
-         6YlpKgqcTTdYpR7XROuj01b7ukPx35EplldNVQtxDi1c5G08o0EdCy4Bg6kMflvGXbun
-         o9gqoDqpKG2foURf+fsnBh6KzuqomyDdy08923YtOKQyXnlbGL+7MLhmlsEhDEjAA0Hv
-         R3GSk5u5UrQFsT/WBU4wxE0/SogRWc0tuGuDezchGg+UummGc+No5ZK5mpC+mA1qdNtw
-         oxamNiIZuykvOXQVXQr4qis6AKn+P7h7aqOrSYjxRhlsRIUDeOgdVOs+oLxHcfZXnjEo
-         5i6w==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=sS6PmyW+y4oMlEg/Ugw6RxcTY0XQ3HVqO2B3PMDJUkQ=;
+        b=FR8amZfmJMQI6oS23Fz4HugFSUzhaaARf2IsurDk17ncsGUVcfzQc5RFNiD22su2km
+         3H07u6mzJBzcHxerOk6lSXZBcab0mdpF4RS27nPix6edWEYpS6Vey8ZNnW6pjY0TDSBi
+         2gnOWCH/qMCbbSL6ZjdbcJ8wauyaIIdW66tgbqjOIlHON5ZrCkxE0PwMWk6RiNG0QaXe
+         mFQi5efl637JnMhEY5PcCYzMaZMqIYBnMtLibmOqNUbSkJ3T3cMu1Jb6fGhMWLdjLDuE
+         6uasFsDBL9kfE+poH3S4JJfWdc+6h57IYcFthE/FhgXzoxva10JCSvgibz3dv3aiFeYM
+         usMw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.81 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <dan.carpenter@oracle.com>
-Received: from userp1040.oracle.com (userp1040.oracle.com. [156.151.31.81])
-        by gmr-mx.google.com with ESMTPS id a43si676267itj.3.2017.10.04.04.21.17
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=d3zWaf3N;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <srishtishar@gmail.com>
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id n21si588340pfk.18.2017.10.03.13.28.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 04 Oct 2017 04:21:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.81 as permitted sender) client-ip=156.151.31.81;
+        Tue, 03 Oct 2017 13:28:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.81 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from userv0021.oracle.com (userv0021.oracle.com [156.151.31.71])
-	by userp1040.oracle.com (Sentrion-MTA-4.3.2/Sentrion-MTA-4.3.2) with ESMTP id v94BLE8h026685
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 4 Oct 2017 11:21:14 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
-	by userv0021.oracle.com (8.14.4/8.14.4) with ESMTP id v94BLDn1002683
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 4 Oct 2017 11:21:14 GMT
-Received: from abhmp0012.oracle.com (abhmp0012.oracle.com [141.146.116.18])
-	by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id v94BLDwA023332;
-	Wed, 4 Oct 2017 11:21:13 GMT
-Received: from mwanda (/197.254.35.146)
-	by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Wed, 04 Oct 2017 04:21:12 -0700
-Date: Wed, 4 Oct 2017 14:21:03 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Srishti Sharma <srishtishar@gmail.com>
-Cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
-        outreachy-kernel@googlegroups.com, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] Staging: rtl8188eu: core: Use list_for_each_entry_safe
-Message-ID: <20171004112103.cvu5ipkudfpz2adc@mwanda>
-References: <1507062512-9145-1-git-send-email-srishtishar@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1507062512-9145-1-git-send-email-srishtishar@gmail.com>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-Source-IP: userv0021.oracle.com [156.151.31.71]
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=d3zWaf3N;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x243.google.com with SMTP id o1so9726507pga.4
+        for <outreachy-kernel@googlegroups.com>; Tue, 03 Oct 2017 13:28:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=sS6PmyW+y4oMlEg/Ugw6RxcTY0XQ3HVqO2B3PMDJUkQ=;
+        b=d3zWaf3Nqb/DbtE+uzyPRsLvVV0lBMM4MIjxaq9FogGDWuf6mFxiD0HfJvzG5yZDCb
+         gIZvA2IwLlQxrU5tURTY41t++AM2SuBnH7WUOMRT3WSWURU1wHqKcPEL4xPeqUt3+np7
+         xbiVniuKyX2Et2halsKXykIT3RIFEC/nbZ8Ivf1a2LtkY/+fN3VQrIcTwOMsG+5OzDPU
+         LfOs9b5FPCamSPmvBcNyKH4SptnVrwAq41cj9au/XYCtdF/Z+v8yIFt7t8NOctueFwJy
+         1QMsOUU2bLZs2BYuBcRZNmko3fTZBp5jverY0bh8OTlbU9YkG65FAiELwqLJVX4jiddU
+         XKNg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=sS6PmyW+y4oMlEg/Ugw6RxcTY0XQ3HVqO2B3PMDJUkQ=;
+        b=gcGg5SRmvReKgl5x+AkQFWkVonmDYiC3lEicLUIktbOATg3OnVjzKQjy9KZhcYrXg7
+         qZa3dotot6Ny2eVV6xOpFPGfcwpVm10vjfaqXeeIG4eIXGeOugdZGJvmRqduerdP0+d6
+         o6Jkn+n6KkpzNSqT1H+tBbcoLc8bCVOevZJQwe2d8La7KLyhi4IIIQw3orzzYQPXgZ/C
+         dtIyNwh58ZSbJ+qcYI/gof+gAY5HVArBOvnBRoERXrC1ircIMJUu6iYIrqIwxfwStcX0
+         MJDPlPq2nCPQ+zcDgtvbhNnXqbePtyrUGxmoipX4+9FCbfINAkB0gZQLgOhVFrnDca8h
+         gHmQ==
+X-Gm-Message-State: AMCzsaWbOojUzibISmsJGQA7WGNbyrhTyqSLOYE/OnzrjiJ45e2Jr+KF
+	jP2r9rsnRZt5o/F95x8RsqHhkA==
+X-Google-Smtp-Source: AOwi7QDGe2pOaaXIZ2ifWKYo4WmaecCXKYVZRTyJW80BZicQK5zngt9hHbVfra4QslhuHF76F9oSfA==
+X-Received: by 10.99.49.134 with SMTP id x128mr7527563pgx.35.1507062518637;
+        Tue, 03 Oct 2017 13:28:38 -0700 (PDT)
+Return-Path: <srishtishar@gmail.com>
+Received: from srishti-PRODiiGY-945G ([122.168.110.160])
+        by smtp.gmail.com with ESMTPSA id k73sm23318942pfg.81.2017.10.03.13.28.36
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 03 Oct 2017 13:28:37 -0700 (PDT)
+From: Srishti Sharma <srishtishar@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com,
+	Srishti Sharma <srishtishar@gmail.com>
+Subject: [PATCH] Staging: rtl8188eu: core: Use list_for_each_entry_safe
+Date: Wed,  4 Oct 2017 01:58:32 +0530
+Message-Id: <1507062512-9145-1-git-send-email-srishtishar@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-On Wed, Oct 04, 2017 at 01:58:32AM +0530, Srishti Sharma wrote:
-> Use list_for_each_entry_safe when the list elements may get deleted
-> during traversal.
+Use list_for_each_entry_safe when the list elements may get deleted
+during traversal. Done using the following semantic patch by
+coccinelle.
 
-This patch is fine as a cleanup but none of these are actually buggy.
+@r@
+struct list_head* l;
+expression e;
+identifier m, list_del_init, f;
+type T1;
+T1* pos;
+iterator name list_for_each_entry_safe;
+@@
 
-regards,
-dan carpenter
+f(...){
+
++T1* tmp;
+...
+-while(...)
++list_for_each_entry_safe(pos,tmp,l,m)
+{
+...
+-pos = container_of(l,T1,m);
+...
+-l=e;
+ <+...
+  list_del_init(&pos->m)
+ ...+>
+}
+...
+}
+
+Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+---
+ drivers/staging/rtl8188eu/core/rtw_ap.c | 22 ++++++----------------
+ 1 file changed, 6 insertions(+), 16 deletions(-)
+
+diff --git a/drivers/staging/rtl8188eu/core/rtw_ap.c b/drivers/staging/rtl8188eu/core/rtw_ap.c
+index 32a4837..a2c599f 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_ap.c
++++ b/drivers/staging/rtl8188eu/core/rtw_ap.c
+@@ -1196,7 +1196,7 @@ int rtw_acl_add_sta(struct adapter *padapter, u8 *addr)
+ int rtw_acl_remove_sta(struct adapter *padapter, u8 *addr)
+ {
+ 	struct list_head *plist, *phead;
+-	struct rtw_wlan_acl_node *paclnode;
++	struct rtw_wlan_acl_node *paclnode, *tmp;
+ 	struct sta_priv *pstapriv = &padapter->stapriv;
+ 	struct wlan_acl_pool *pacl_list = &pstapriv->acl_list;
+ 	struct __queue *pacl_node_q = &pacl_list->acl_node_q;
+@@ -1208,10 +1208,7 @@ int rtw_acl_remove_sta(struct adapter *padapter, u8 *addr)
+ 	phead = get_list_head(pacl_node_q);
+ 	plist = phead->next;
+ 
+-	while (phead != plist) {
+-		paclnode = container_of(plist, struct rtw_wlan_acl_node, list);
+-		plist = plist->next;
+-
++	list_for_each_entry_safe(paclnode, tmp, plist, list) {
+ 		if (!memcmp(paclnode->addr, addr, ETH_ALEN)) {
+ 			if (paclnode->valid) {
+ 				paclnode->valid = false;
+@@ -1711,7 +1708,7 @@ u8 ap_free_sta(struct adapter *padapter, struct sta_info *psta,
+ int rtw_sta_flush(struct adapter *padapter)
+ {
+ 	struct list_head *phead, *plist;
+-	struct sta_info *psta = NULL;
++	struct sta_info *psta = NULL, *tmp;
+ 	struct sta_priv *pstapriv = &padapter->stapriv;
+ 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
+ 	struct mlme_ext_info	*pmlmeinfo = &pmlmeext->mlmext_info;
+@@ -1727,11 +1724,7 @@ int rtw_sta_flush(struct adapter *padapter)
+ 	plist = phead->next;
+ 
+ 	/* free sta asoc_queue */
+-	while (phead != plist) {
+-		psta = container_of(plist, struct sta_info, asoc_list);
+-
+-		plist = plist->next;
+-
++	list_for_each_entry_safe(psta, tmp, plist, asoc_list) {
+ 		list_del_init(&psta->asoc_list);
+ 		pstapriv->asoc_list_cnt--;
+ 
+@@ -1833,7 +1826,7 @@ void start_ap_mode(struct adapter *padapter)
+ void stop_ap_mode(struct adapter *padapter)
+ {
+ 	struct list_head *phead, *plist;
+-	struct rtw_wlan_acl_node *paclnode;
++	struct rtw_wlan_acl_node *paclnode, *tmp;
+ 	struct sta_info *psta = NULL;
+ 	struct sta_priv *pstapriv = &padapter->stapriv;
+ 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
+@@ -1855,10 +1848,7 @@ void stop_ap_mode(struct adapter *padapter)
+ 	spin_lock_bh(&pacl_node_q->lock);
+ 	phead = get_list_head(pacl_node_q);
+ 	plist = phead->next;
+-	while (phead != plist) {
+-		paclnode = container_of(plist, struct rtw_wlan_acl_node, list);
+-		plist = plist->next;
+-
++	list_for_each_entry_safe(paclnode, tmp, plist, list) {
+ 		if (paclnode->valid) {
+ 			paclnode->valid = false;
+ 
+-- 
+2.7.4
 
 
