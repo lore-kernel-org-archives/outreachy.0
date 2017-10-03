@@ -1,125 +1,130 @@
-X-GM-THRID: 6468320417923727360
-X-Received: by 10.36.41.210 with SMTP id p201mr1274069itp.35.1506023206974;
-        Thu, 21 Sep 2017 12:46:46 -0700 (PDT)
+X-GM-THRID: 6471963734455615488
+X-Received: by 10.13.197.68 with SMTP id h65mr31310568ywd.54.1507059253094;
+        Tue, 03 Oct 2017 12:34:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.120.3 with SMTP id p3ls1605390itc.7.gmail; Thu, 21 Sep 2017
- 12:46:46 -0700 (PDT)
-X-Received: by 10.107.107.13 with SMTP id g13mr5197739ioc.56.1506023206174;
-        Thu, 21 Sep 2017 12:46:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506023206; cv=none;
+Received: by 10.13.237.4 with SMTP id w4ls668183ywe.19.gmail; Tue, 03 Oct 2017
+ 12:34:12 -0700 (PDT)
+X-Received: by 10.129.79.200 with SMTP id d191mr30833959ywb.184.1507059252275;
+        Tue, 03 Oct 2017 12:34:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507059252; cv=none;
         d=google.com; s=arc-20160816;
-        b=0NDEOqtoJNmyuZr8U8kBXzlYBgoXwxQGV3LqppdsFRSsSHUXN4Sd/GUp0QqPK/LleB
-         ySfxC/Phw+yPT4Gy9r+xOOPzWRfYtSmzolzasq/Sm3PlO7pVOi5S1zERF5bpMt3SRSFw
-         VARKbQEgSXtOBQCCAFVj+0ik4Kr7WaIiECwlH0CUj9kLFVMjoANfvTDLiVuNQIaO5qoM
-         KxU9zXJUNzz+D2ti8KRN7hFCJhDOhbzkgnaNRlkE0AmQbUucd9ehOzSQOR2oipbKh7a9
-         MtYnYLnaGGEj7zQBVojNiy5TrUAj/DS2hMz/eGjKsXnPbotgvlSlQcMLCaq1JRrmPDJc
-         HdBQ==
+        b=cC0FShCXNyOXyroQY0ZlQWzOZzZuBfsXvrPJr1W3oah1/5y2+74SyfWCdalO15ixeA
+         zcyGsnoRSRZjgzd7nyhhuFYAAbcu45ku13rsVJXBTDV9iB8QDuA2ALUpyc8kMeE2jVcD
+         9vAIAZ9o/30XbI/L3eMzzzkxpeHzR236JFO8MTbJfTgcgjo1GRxvsueIFOiXR8JmivA/
+         DFF4eeXVTjzfa4hDg0NUzy42xcfCSD+hhLXoZEWJoMi6byykBP9Mvq90V/XzOnlUL2by
+         VBQFku2hvq4nsTUSTYvIAgh8bMyaJvDtDi/UzXsgl/9PKfkmda4as7fyo6//YoIhBmSr
+         UFqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=IbC/lG5GLlOdEtfGe5TalJX8+juDZV2wTDBocMEdM00=;
-        b=RHkangZEFogsb+1JJ7u3DPx3YzzbY8QDtCzbs7rNEipjfvIvQHy/RzEA2T4BCgMWYa
-         CUfLmQFvoUMCxnKbwW5iQJohCDyPVnfXF2EHoDlU613E1tvCOo/dW9y6G6nx6gR9q56D
-         gPCarOmvElE8ri0Pw5PbOCbPCuXANuMbEij9duf6qreRSHaTqTfh2CqVcxlmJGOiNqG4
-         1zPKiL8zB7F7KWCahLGfboQmlaDfq8L7U9fqy1feB1KC5t+142itJkbgh81BaCJ6AMA1
-         m+JGibSiXtYp4Xmg5iVpLvnPaY6A/mlEcApTr2nOu0BMle6BF66usrCta+a+qVYzVK15
-         7WGw==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=yA656eAmgbwXqc5h5zrZPxROiKTOVqk5xeznP4kIkJk=;
+        b=QmYiLOJurnn2VkD4QSkBm+pbHDvoPan7nGjxPg2/IQF+/pSpon5I2OKqsv6wpbZcrN
+         P9UFt/L9gyVpCvVc4GO+jlgSDj6A5DtpHtJdvc/5QGVQAYDYoK/INYJD7EsekKC/mYSA
+         39eAuyxDur3Twq/NDTTYDbnNwZw4sqHcbK/HA67B+1hr+3cHxo1JrhahP+apw2MrwfEI
+         ++4zJx796gWSKG1xQIFic6Tp5Gg+6J7FW/6l0L5LUCmd0Lt4CJSy0qZ6rKxcNeax8QXJ
+         bGd6pPiJ5v3G/UmCi49JHWyFJr9UAqJaynvnW/1eNZHtNWh831tGqZPGa05ZZILW8seL
+         5hPQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=T6EN/o6U;
-       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UOU5qyzM;
+       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2607:f8b0:400d:c0d::22e as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <aishpant@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id t77si215637pfi.13.2017.09.21.12.46.46
+Return-Path: <georgiana.chelu93@gmail.com>
+Received: from mail-qt0-x22e.google.com (mail-qt0-x22e.google.com. [2607:f8b0:400d:c0d::22e])
+        by gmr-mx.google.com with ESMTPS id a70si749369ywe.19.2017.10.03.12.34.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Sep 2017 12:46:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Tue, 03 Oct 2017 12:34:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2607:f8b0:400d:c0d::22e as permitted sender) client-ip=2607:f8b0:400d:c0d::22e;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=T6EN/o6U;
-       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UOU5qyzM;
+       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2607:f8b0:400d:c0d::22e as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id g65so2861854pfe.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 21 Sep 2017 12:46:46 -0700 (PDT)
+Received: by mail-qt0-x22e.google.com with SMTP id o3so15089639qte.6
+        for <outreachy-kernel@googlegroups.com>; Tue, 03 Oct 2017 12:34:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=IbC/lG5GLlOdEtfGe5TalJX8+juDZV2wTDBocMEdM00=;
-        b=T6EN/o6UvcScBTFBAhaPFloa0ouzONdHnHiH0DZFgiGzlmb48BnMsRjHtSOIutIUa6
-         WOwawLfuqAEq2InSoy9tXJzMNm99c7qhnqzjVCXJuHwDd9mfgRqzcAWbsNZlgt7CDki7
-         JAVYj8AlhNB69KTuvW/lVxRXipsKIUE6L2hz4dsHo9g3gaXKbnGJ8e1aERn+DpQPG6nM
-         nvuEPGZijxzB6tT23yd61V/7ursxUZqdSgoXWOHVWM4/CsLqq1Z5oglsG7pWMKCNY38h
-         kVLx5XAVRTsBVytRgHhtCklrnDvpB2RWFmkqInVtjjXbOps76amOCzocyaXait5xWqG9
-         WH7w==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=yA656eAmgbwXqc5h5zrZPxROiKTOVqk5xeznP4kIkJk=;
+        b=UOU5qyzMpevJoJFZz3dEEDjM5V7ZSir0E0BA6vbcbTXO3hYRkewEFVK/KkOzdVdP/E
+         PzjX7hf3DbX715xgtSDbFG5D6lHcFXkLriffuzMmSPX9NYI/1ljdbEP3YC1rEVxDF7vr
+         mFdmyoPoMjH84sI6USw0fSYZns4AIU/eQpAZKSL7aMixV5P2D/oG+imDweqk4urL4P1S
+         AOhOBEquz0tRK1qgNfxqUeJRsVYbj55/ARuKhB3nzto93VA6AejzkS8SnwTfhPn7xiQL
+         aGgkzTV8YRUV5UFWHy0hCK0WAJMEeteb0oM4ao3wnpu8sY+AqFcKeBB/+Wk328cbhbs6
+         XZDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=IbC/lG5GLlOdEtfGe5TalJX8+juDZV2wTDBocMEdM00=;
-        b=sQ3Qtfd1U/l2+PDy9txQO9ILP735FFpXjm6UXSnExp72KPWK8AJ0BWm3G8iQwN+ny+
-         zJhYshupWO1BlF8g44V/BrRIAMdJdEAug8a67nnOL7hQXlIzFxG/HKuSX+sIB8cH1GI2
-         lYHbXJUn5JvVdbzQ8345NqZSSAZsFkzteasva9LRyFjEvhWrogjYSqeyUP31edRS55+w
-         Mk71CGWc4LSWeCYlKif5J2PBjRUzXkybsJVZQ6bIMqynsYjw6klh9mgjW3Qgt38R2LXn
-         ZO8Ju/bVrzfA9ZJ/cqkMd4G0LE8dRr+afBa1EzjF8OkhCDbgJBO4Z4vHrioPd3g5foUc
-         dNRg==
-X-Gm-Message-State: AHPjjUiBQsvKKr3HIa3/u5BKez0ky9pZh4xukfksHhZBQMc4lyOenqWw
-	NSeILx/J+RWZX3wz8BaVSUwlYEzV
-X-Google-Smtp-Source: AOwi7QAdwXJld3hzEwhLA+jLn+uddFTKIeUkkU4A9yBnW1S3gMOPpq89/Dqo21otKtHMDQjHhxkfPg==
-X-Received: by 10.84.195.1 with SMTP id i1mr6552737pld.70.1506023205893;
-        Thu, 21 Sep 2017 12:46:45 -0700 (PDT)
-Return-Path: <aishpant@gmail.com>
-Received: from aishwarya ([122.166.181.88])
-        by smtp.gmail.com with ESMTPSA id n18sm3702464pgd.69.2017.09.21.12.46.42
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Sep 2017 12:46:45 -0700 (PDT)
-Date: Fri, 22 Sep 2017 01:16:40 +0530
-From: Aishwarya Pant <aishpant@gmail.com>
-To: Daniel Vetter <daniel.vetter@intel.com>,
-	Jani Nikula <jani.nikula@linux.intel.com>,
-	Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>,
-	dri-devel@lists.freedesktop.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] drm/tilcdc: replace reference/unreference with get/put
-Message-ID: <cover.1506023126.git.aishpant@gmail.com>
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=yA656eAmgbwXqc5h5zrZPxROiKTOVqk5xeznP4kIkJk=;
+        b=cyg78Q+G0gGDvT4Fj8v+iGIYKvJp2RGwhliGt/dAJJQLtg1OjkcEVmfZIBzyGYUpqH
+         a24R3oxFabp0hkSRHvzNg1fMJPBZwcKP9CSkfax7dP50idBR/58KfgpN4a2T8R8Y22HU
+         FYrxqymKWnM3SMP/CG5YvbinvXpdu5SE2nsAdN/twaTh+dFJAcRxVYvBKOnXHDXbY39I
+         6DO0ZZy0mUhxYvx2jUsPIZ6dM33Q4ROh7YM3T0RgTTDwu2nbAL9rR2IpnFkFsS2JCDtP
+         /0pSxIITqZk9O32ECJvESGicSgTOvA6J7RWAyBU9cfHP92VX7DLqvt32Boa/eu1coGRe
+         jl+w==
+X-Gm-Message-State: AMCzsaUIUEoEkZL3NwTgY43Qyyo4eQ4A1+OS5wKoZQbfC9Fry1wwqoff
+	A7WRivFLDjw6SJ0zy+hJh4unp9qzTZyxLgZoJ7A=
+X-Google-Smtp-Source: AOwi7QCpbdNDVOYVVSgUN2un5vveS3IjtwyCJlzcT1MpRXlEmF/jdXSg4b3Iepj3GszdDYl3II/Qnqv9bblCo1kfJkQ=
+X-Received: by 10.200.4.169 with SMTP id s41mr23656694qtg.132.1507059252016;
+ Tue, 03 Oct 2017 12:34:12 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Received: by 10.140.105.75 with HTTP; Tue, 3 Oct 2017 12:34:11 -0700 (PDT)
+In-Reply-To: <20171003161947.GB25889@kroah.com>
+References: <20171001152428.11054-1-georgiana.chelu93@gmail.com> <20171003161947.GB25889@kroah.com>
+From: Georgiana Chelu <georgiana.chelu93@gmail.com>
+Date: Tue, 3 Oct 2017 22:34:11 +0300
+Message-ID: <CALta04ySyBDceTWZr6LRCwVSBsPsbCdKwyEZ_5v=tN7NGRSGRw@mail.gmail.com>
+Subject: Re: [PATCH] Staging: rtl8723bs: Use kstrto<type> instead of single
+ variable sscanf
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset="UTF-8"
 
-This patchset introduces drm_dev_get() and drm_dev_put() functions that are
-intented to be replacements for drm_dev_{ref/unref}.
+On 3 October 2017 at 19:19, Greg Kroah-Hartman
+<gregkh@linuxfoundation.org> wrote:
+> On Sun, Oct 01, 2017 at 06:24:28PM +0300, Georgiana Chelu wrote:
+>> Use kstro<type> instead of single variable sscanf to
+>> convert a string to the appropriate integer type.
+>> Also, check the return value.
+>>
+>> Issue found by checkpatch.pl script:
+>> Prefer kstrto<type> to single variable sscanf
+>>
+>> Signed-off-by: Georgiana Chelu <georgiana.chelu93@gmail.com>
+>> ---
+>>  drivers/staging/rtl8723bs/os_dep/rtw_proc.c | 12 ++++++++----
+>>  1 file changed, 8 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/drivers/staging/rtl8723bs/os_dep/rtw_proc.c b/drivers/staging/rtl8723bs/os_dep/rtw_proc.c
+>> index 92277457aba4..58eb50aa8098 100644
+>> --- a/drivers/staging/rtl8723bs/os_dep/rtw_proc.c
+>> +++ b/drivers/staging/rtl8723bs/os_dep/rtw_proc.c
+>> @@ -70,7 +70,11 @@ static ssize_t proc_set_log_level(struct file *file, const char __user *buffer,
+>>               return -EINVAL;
+>>
+>>       if (buffer && !copy_from_user(tmp, buffer, sizeof(tmp))) {
+>> -             sscanf(tmp, "%d ", &log_level);
+>> +             int num = kstrtoint(tmp, 10, &log_level);
+>> +
+>> +             if (num != 1)
+>> +                     return count;
+>
+> How would num ever be 1 here?  Did you test this?
+>
+> Look at the documentation for kstrtoint() please, I think this just
+> broke things :(
+>
 
-Then all usages of ref/reference and unref/unreference suffixes are replaced by
-get/put reference count functions in tilcdc. The following cocci script was used
-to make the tilcdc patch:
+I missed that kstrtoint and sscanf have different output on SUCCESS.
+The return value should be 0 in case of success. I will send the second
+version of the patch. Thank you!
 
-@@
-expression ex;
-@@
 
-(
--drm_framebuffer_unreference(ex);
-+drm_framebuffer_put(ex);
-|
--drm_dev_unref(ex);
-+drm_dev_put(ex);
-|
--drm_framebuffer_reference(ex);
-+drm_framebuffer_get(ex);
-)
+Georgiana
 
-Aishwarya Pant (2):
-  drm: introduce drm_dev_{get/put} functions
-  drm/tilcdc: replace reference/unreference() with get/put
 
- drivers/gpu/drm/drm_drv.c            | 64 +++++++++++++++++++++++++-----------
- drivers/gpu/drm/tilcdc/tilcdc_crtc.c |  6 ++--
- drivers/gpu/drm/tilcdc/tilcdc_drv.c  |  2 +-
- include/drm/drm_drv.h                |  4 ++-
- 4 files changed, 52 insertions(+), 24 deletions(-)
-
--- 
-2.7.4
-
+> thanks,
+>
+> greg k-h
 
