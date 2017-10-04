@@ -1,125 +1,103 @@
 X-GM-THRID: 6472991965630693376
-X-Received: by 10.28.54.84 with SMTP id d81mr1258661wma.21.1507115339314;
-        Wed, 04 Oct 2017 04:08:59 -0700 (PDT)
+X-Received: by 10.99.61.12 with SMTP id k12mr1898038pga.160.1507110885788;
+        Wed, 04 Oct 2017 02:54:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.50.138 with SMTP id y132ls3296925wmy.9.gmail; Wed, 04 Oct
- 2017 04:08:58 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QCNcUQfAwdC6oljS4rzuJghbTlqZQsUDIJkXA8VZf7Kp/ECTNP0HkANsW6aYJu11Gk6ixR9
-X-Received: by 10.28.230.198 with SMTP id e67mr2401833wmi.24.1507115338352;
-        Wed, 04 Oct 2017 04:08:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507115338; cv=none;
+Received: by 10.99.167.11 with SMTP id d11ls4287501pgf.13.gmail; Wed, 04 Oct
+ 2017 02:54:44 -0700 (PDT)
+X-Received: by 10.101.83.73 with SMTP id w9mr1423673pgr.99.1507110884567;
+        Wed, 04 Oct 2017 02:54:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507110884; cv=none;
         d=google.com; s=arc-20160816;
-        b=qOMv0hWwkpCpW+HhTRHoy360+shDrTF6rpHlHYyDZzQiQs3P3ZInAsHIkvx5kIwS5V
-         k09viD/cFZtfkZFsRIO98cLGrqJ3PzHpapeP3RIB3+V2x5cFJCJ3cMU3iuEMB7RC5BYI
-         d+bgas8IDekEgwMh7Cg3KHii5+WjpUJCxXAWdIdShTn7l89Pq9QknPDq7PCBeJ8Cw74w
-         uH/mcmDL6GZfDD28OZ9H2hl96uCDsMIhcOwZU93EoDs/Ata/T01I19X8FMgFcP5vl+ws
-         5w9oiziqGcSk7lUTlNUPOZePYAzh6eqwD5HmwAzTXc3/PEQozAqEVhZxlguCHPoNkGOR
-         UGNg==
+        b=V0l0CgIYNHIZjIV9iyDwQVdVLl3xUTBEidBInti+TBO6M6spDxiKACjuZE57y/101W
+         59CfxlqT9QzPF/pl4TxDyEDnOjWI/D+qqW74vNArZrPJNbD/b0OmdCYHRfodi1PykGcK
+         4KUdmudKozi0uNtMxmckYyCOei5ky3WSjnlPuzZ0ku3L/4HiIpVb9JXLo/cLb6lFVg25
+         OZRgWaTwcKY9LVenmoC7UPajz/151UIFnW2+abNIRF7HrbMPrnA7uXkaTEo+SXdM1jXR
+         5MdJmaF8uHfnX+p3j0VkRrVykMzq5zGUR9kC+B72d7LkvfAkhKBt5mssAwzWjTfLCBAW
+         JalA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=suORdUHv2wDtUXZ1EcLXR7mGsglRrFkt9BV4HJzS8+s=;
-        b=JrGVqClfrrjG7QeETeyIYxKMT0QbBBJyqMtciFLQlf7LP5ZBfUwcDbKL9GeEZli4pv
-         xzujBNMCfD/sb75wjzkZC1StUfreFdrjW2gCgtWAuH97wDjxtwrVViGha/VWylb73nwR
-         d1mIrcWQajMPj7zToJ6f70GfqDrFuCPw+3I7URaCUq38VgdZGd8l9fJ8fJ36snLwoH9L
-         7JrrqISRIbrTojRIOMaaUfGYy2U9lhPdoI/KiiYvfgCBNQgTHL85KNVAFRODJSGi1/X6
-         PhOYvIBUgKuoSd/63HDOtO8fwI+6c5yv85kKWu/ltl2gZ5nCgR84qaZofnZCRetR9a3m
-         TBPQ==
+        h=content-transfer-encoding:mime-version:date:cc:to:from:subject
+         :message-id:dkim-signature:arc-authentication-results;
+        bh=voEG2Y5CnF0iMBvdhy5XvFXYIp6o/qlHWT+4tt0+hqU=;
+        b=xFoqE3aw8wRZsc12j4qwdUTQamIZWhqeM8I2T87qx56xaRH98rJJImO6HMbE1p/Lfp
+         mXyFD+Xe5ZPsQM7p1jWmvY0cizL6aC1jINnoAsBeV1UsdiPP6sypFa1Ku1zXaokgOtMU
+         3AFj5g1wgMqWTb0cgkra1KW6+YYVXf2qdUZ2f1MEHKaLYliqKvsgDbKWVTHCI03e9C5z
+         6XkHbgXU5BL69dHHQFnesOa4ZF3WPAlSZi/aFJz2t1ytFGnAp/96Nf/Ys0zQrkbiRj2n
+         mOBfWWEgakCLCIOeFquKwfBy/cHxMFZjtmmU4ICeHN2nzeWLSW1QGThE55ViaDIQoB/o
+         HBxw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of pablo@gnumonks.org designates 2001:780:45:1d:225:90ff:fe52:c662 as permitted sender) smtp.mailfrom=pablo@gnumonks.org
-Return-Path: <pablo@gnumonks.org>
-Received: from ganesha.gnumonks.org (ganesha.gnumonks.org. [2001:780:45:1d:225:90ff:fe52:c662])
-        by gmr-mx.google.com with ESMTPS id h17si1874637wmd.0.2017.10.04.04.08.55
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VKXU4SZd;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <harshasharmaiitr@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id b6si1847310pfm.28.2017.10.04.02.54.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 04 Oct 2017 04:08:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pablo@gnumonks.org designates 2001:780:45:1d:225:90ff:fe52:c662 as permitted sender) client-ip=2001:780:45:1d:225:90ff:fe52:c662;
+        Wed, 04 Oct 2017 02:54:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of pablo@gnumonks.org designates 2001:780:45:1d:225:90ff:fe52:c662 as permitted sender) smtp.mailfrom=pablo@gnumonks.org
-Received: from 129.166.216.87.static.jazztel.es ([87.216.166.129] helo=gnumonks.org)
-	by ganesha.gnumonks.org with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	(Exim 4.84_2)
-	(envelope-from <pablo@gnumonks.org>)
-	id 1dzhXp-0006Lo-7U; Wed, 04 Oct 2017 13:08:55 +0200
-Date: Wed, 4 Oct 2017 13:08:52 +0200
-From: Pablo Neira Ayuso <pablo@netfilter.org>
-To: Harsha Sharma <harshasharmaiitr@gmail.com>
-Cc: netfilter-devel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: Re: nftables: Add support for unsupported codes in icmp and icmp6
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VKXU4SZd;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x244.google.com with SMTP id i23so11938985pfi.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 04 Oct 2017 02:54:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=message-id:subject:from:to:cc:date:mime-version
+         :content-transfer-encoding;
+        bh=voEG2Y5CnF0iMBvdhy5XvFXYIp6o/qlHWT+4tt0+hqU=;
+        b=VKXU4SZdPzsLOceehc5d/yKsKyxxK47msF653TftH2gpMYffj/3v4aPNF7q0U1GY1+
+         Q0V+YYye0ngcH4M4kHzchkN4rRlPdpuZwe44Il9g4M/RugNuNiOE42OYgyydQMO8obRm
+         8bxd/NbJvcSX7bYAkCtqx4f++So5j5HML3NLeM6EKZ2W4/zh0z30JOltaOdOutGVSokv
+         MrISmA/08aYg4NAzQcaNfbU3r36vVyO+YKscvraWqZB/3TVpx3+YaeDMsEOeX8D3I/gw
+         qehuniM9J3tbLC/Fm2Sq3qGfYt3uCRQzFSPVwGwDdyhDdkW+AvOkQ8yy+s+CzOSSPEyW
+         38VA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:message-id:subject:from:to:cc:date:mime-version
+         :content-transfer-encoding;
+        bh=voEG2Y5CnF0iMBvdhy5XvFXYIp6o/qlHWT+4tt0+hqU=;
+        b=BBAzftffdbYwsWBX+6hWoBRSgTzFNv3vnRzQnq0jsNhkO6xsKa4aS8Nt4b5hBpb2X0
+         7UzoOGWuDUTdShoRDlYdNpp5BuCDmNlSg9vgwM1h6NN3Bp4cq9fBLubdLjleotcwkjRd
+         y2WTso0iSFsbfkCzCa95114b2MC7lyeCVxi7IpTufpU9mAgYFroChamIVzOD4Fr4Hyo2
+         qdnqhI3NEinui9EpN0Ub17db3Hvl5akk8PhYP/sGbS0eXQMCtwc8a+ba8+zL/YeaP1DX
+         /OvliUxr4lZmGRx6h2IfEXvFf1WjmVavRLwqXKPojoPEf/yWKId19lge3lD3nl9NfLf+
+         yOdw==
+X-Gm-Message-State: AMCzsaW3ZezZEtR6i+nfp0egds/K2qQhXbcP7TquGDc/8e+9Vrnn6yk4
+	uY+EK0nLbT6PJA91QwAChUQ=
+X-Google-Smtp-Source: AOwi7QCXfuWrseWvR4ehFbAuv352p+hAUAG5lC17KKyGPSUXnMfCc1OSYAzzJsKjP5hZ6lWDSWTgyA==
+X-Received: by 10.99.7.133 with SMTP id 127mr11015187pgh.147.1507110884342;
+        Wed, 04 Oct 2017 02:54:44 -0700 (PDT)
+Return-Path: <harshasharmaiitr@gmail.com>
+Received: from [192.168.100.7] ([103.37.201.27])
+        by smtp.gmail.com with ESMTPSA id f12sm1459705pga.7.2017.10.04.02.54.42
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 04 Oct 2017 02:54:43 -0700 (PDT)
+Message-ID: <1507110760.6328.16.camel@harryPotter>
+Subject: nftables: Add support for unsupported codes in icmp and icmp6
  extensions
-Message-ID: <20171004110852.GA2575@salvia>
-References: <1507110760.6328.16.camel@harryPotter>
-MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="jI8keyz6grp/JLjh"
-Content-Disposition: inline
-In-Reply-To: <1507110760.6328.16.camel@harryPotter>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Spam-Score: -2.9 (--)
+From: Harsha Sharma <harshasharmaiitr@gmail.com>
+To: netfilter-devel@vger.kernel.org
+Cc: outreachy-kernel@googlegroups.com, harshasharmaiitr@gmail.com
+Date: Wed, 04 Oct 2017 15:22:40 +0530
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.10.4-0ubuntu2 
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 
+Hello,
+I am trying to add support for unsupported codes in icmp and icmp6
+extensions. Like in iptables, various icmp and icmp6 codes are defined
+with their type, code_min and code_max but in nftables various icmp and
+icmp6 codes are defined only with their type so codes for unreach,
+redirect and time-exceeded are not supported as some of their type
+values mismatches otherwise.
+Can someone please guide me on what will be the best way to add support
+for unreach, redirect and time-exceeded codes in icmp and icmp6
+extensions in nftables.
+Thanks for your time.
 
---jI8keyz6grp/JLjh
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Regards,
+Harsha Sharma
 
-Hi Harsha,
-
-I would suggest you start with a more simple task:
-
-Probably you can add one test for named objects to our tests/shell/
-directory under nftables.git tree.
-
-I'm attaching a couple of examples. Please, have a look at
-nft/tests/shell/ directory.
-
-Thanks.
-
---jI8keyz6grp/JLjh
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: attachment; filename=nft-limit-name
-
-table ip filter {
-            limit http-traffic {
-		rate 1/second
-            }
-
-            chain input {
-                    type filter hook input priority 0; policy accept;
-                    limit name tcp dport map { 80 : "http-traffic", 443 : "http-traffic"}
-            }
-}
-
---jI8keyz6grp/JLjh
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: attachment; filename=nft-stateful-objs
-
-table ip x {
-        counter user123 {
-                packets 12 bytes 1433
-        }
-
-        quota user123 {
-                over 2000 bytes
-        }
-
-        quota user124 {
-                over 2000 bytes
-        }
-
-        set y {
-                type ipv4_addr
-        }
-
-        map test {
-                type ipv4_addr : quota
-                elements = { 192.168.2.2 : "user124", 192.168.2.3 : "user124"}
-        }
-
-        chain y {
-                type filter hook input priority 0; policy accept;
-                counter name ip saddr map { 192.168.2.2 : "user123", 1.1.1.1 : "user123", 2.2.2.2 : "user123"}
-                quota name ip saddr map @test drop
-        }
-}
-
---jI8keyz6grp/JLjh--
 
