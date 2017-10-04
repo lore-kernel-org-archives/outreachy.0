@@ -1,106 +1,89 @@
 X-GM-THRID: 6472784237919469568
-X-Received: by 10.129.125.193 with SMTP id y184mr6966322ywc.191.1507128029064;
-        Wed, 04 Oct 2017 07:40:29 -0700 (PDT)
+X-Received: by 10.28.149.18 with SMTP id x18mr2234754wmd.18.1507124373862;
+        Wed, 04 Oct 2017 06:39:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.129.62.37 with SMTP id l37ls1074250ywa.36.gmail; Wed, 04 Oct
- 2017 07:40:28 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QA+Qm5+oiPCAAg1ksWCUBsKbIDw4frW/Tzk6DhPqoOc9QFmsTr1+TIBn7uI+ZtSn/eoYoaK
-X-Received: by 10.13.241.196 with SMTP id a187mr34844232ywf.128.1507128028187;
-        Wed, 04 Oct 2017 07:40:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507128028; cv=none;
+Received: by 10.28.168.14 with SMTP id r14ls3310573wme.3.canary-gmail; Wed, 04
+ Oct 2017 06:39:32 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QCNPfUCp29NCQEnVacpBGxCNNSvSiszjRPFUCOw9zaI5MVOsX3h/H0rmu4u7m59h7iAWdy9
+X-Received: by 10.223.163.130 with SMTP id l2mr924209wrb.16.1507124372872;
+        Wed, 04 Oct 2017 06:39:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507124372; cv=none;
         d=google.com; s=arc-20160816;
-        b=yAjweGk4P2bgYVwm4mTviRX6Qt1qUNMGxdj8pNWGmQK4nZjZG3jCTvAsIPJNNSt7eU
-         WIZv5YEQrM3hJU/+iD7AR/d261duuGzMk4CyJN14hsF62KbGeJbUo+teSKP7MnwR3og7
-         M3ulhGsReAng7gM8YQ9LhALB0zY+LIrX9PPFXVZjRNR4MCAfzdr9eXNsloZp09uIgpa7
-         /AhKG6jtdXJExxyMOKhaKcPYluPj7lk6v9mA3sWrLHoM/a33dReYQ4PViJD69OH7ow9E
-         MAShrXS5iHAyRldzVYZLVwZHgjDmpcyZ4rzZoOOzpccPWBzmUHW2HfSzGM18ykyPFULi
-         LIyA==
+        b=RPKBKYwUtkQnKkj8OalcNc2VYgqHAisLfNUUyQezg8h08V7s0S5ArYtJiqSIm3cUie
+         3w07EQwTp4nhSjSluhwbhYLFZEAmuk52TKW8ybiyB+KnhgqjLCVDHRQffbJNRzGRXG3k
+         LHm8O5+revV3y/f6RblsMYzht9LotbwsQ5dZ1GvI+esbL6s5jC9WTaydtUoJLT5CKFHJ
+         17jwPcD1fW4hII0ETAJBUBKseHx6gPBdBNNE49kBMk3/qH1JjbSLNbMzqJlrLR0G2eyF
+         80uwaOA1b28seFmT1IPzSMpPTD2UKlXtet6e+0MYn3NHt9qCXMXdE3Xd2zZlXdksKECO
+         lTzg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=59z9r9n6L97bX1gQQgHzUFxCJFQ2N5V0W39aKaPrvsI=;
-        b=t0QZrS03vtj8F4iXRwVA+uHk50K4sW4oAqNBxXlT9Nu/5SSoGwmI/91R/AuMeBKsn9
-         hv6bKQ4ovgP9T+xKqxPV8Dcs+q/tR42UlJrO53rxYJhLDkPrj+clY2KoWM3ziB+CrE+l
-         +NoBDZ2WFzod0jFf0F96fApRcYsR2kvLoiCv7XP257SyS1W8KdZI5Ddd/kj336/zVbsv
-         uKyhan4WvpHY1aVF43beTPxKZCAZ19FGhltuXfVJpvTEYBKZR8tK6zdj3karlL0Px23h
-         blJB5iDft9rqy3/U5c6Zg3dldcCoNmwsj896i8gZ2JUJJ8SWwkzK8uU3dbSYai4J+c8U
-         Y77g==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=EPyjRb7qQVrK6o910AEIWm7Vi2EXGCfhPsVsbQGjUtw=;
+        b=O5dLH5HyIfRtK3Gq7DNIrYGnRIVX43BCmp4qOYOcA/J5sdxgphxfivwGhJ8bD9VfR/
+         J1ho7Ko1dSeobxpvpW/idyR7aFFR4YeYl+cuTeJ0fMlFbftYu4vVAG1DPu2ULB1EWLyB
+         81gSO0HBXeP7QM3hQ/x9wR8vk/W5zQMvyz4xdN3do2sKwJK9NSNJtnUqiITpxPK7H6yV
+         1twWFqSmmae6Y8J6gndbST80wmnAx4Qzk/p6ZpsmCjspzc9TZOm7IHvyCSW/ZfGjOFJ9
+         GF6G2cxNfxTAhGGdtN2exhJ/YkMXJVbPsIBtfYV0UwKMI0RhAoNErKNkXdbDYLOhQEB+
+         QNQQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.81 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <dan.carpenter@oracle.com>
-Received: from userp1040.oracle.com (userp1040.oracle.com. [156.151.31.81])
-        by gmr-mx.google.com with ESMTPS id w65si842798ywg.18.2017.10.04.07.40.27
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id e14si1232001wmg.1.2017.10.04.06.39.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 04 Oct 2017 07:40:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.81 as permitted sender) client-ip=156.151.31.81;
+        Wed, 04 Oct 2017 06:39:32 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.81 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from userv0022.oracle.com (userv0022.oracle.com [156.151.31.74])
-	by userp1040.oracle.com (Sentrion-MTA-4.3.2/Sentrion-MTA-4.3.2) with ESMTP id v94EeO2s002432
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 4 Oct 2017 14:40:24 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
-	by userv0022.oracle.com (8.14.4/8.14.4) with ESMTP id v94EeNnH018590
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 4 Oct 2017 14:40:23 GMT
-Received: from abhmp0016.oracle.com (abhmp0016.oracle.com [141.146.116.22])
-	by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id v94EeM3D022318;
-	Wed, 4 Oct 2017 14:40:22 GMT
-Received: from mwanda (/197.254.35.146)
-	by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Wed, 04 Oct 2017 07:40:22 -0700
-Date: Wed, 4 Oct 2017 17:40:12 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
-        Srishti Sharma <srishtishar@gmail.com>, linux-kernel@vger.kernel.org,
-        outreachy-kernel@googlegroups.com
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,477,1500933600"; 
+   d="scan'208";a="239724310"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 04 Oct 2017 15:39:32 +0200
+Date: Wed, 4 Oct 2017 15:39:30 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Dan Carpenter <dan.carpenter@oracle.com>
+cc: Srishti Sharma <srishtishar@gmail.com>, gregkh@linuxfoundation.org, 
+    devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com, 
+    linux-kernel@vger.kernel.org
 Subject: Re: [Outreachy kernel] Re: [PATCH] Staging: rtl8188eu: core: Use
  list_for_each_entry_safe
-Message-ID: <20171004144012.jciztelhwjdyzpwg@mwanda>
-References: <1507062512-9145-1-git-send-email-srishtishar@gmail.com>
- <20171004112103.cvu5ipkudfpz2adc@mwanda>
- <alpine.DEB.2.20.1710041537060.2815@hadrien>
+In-Reply-To: <20171004112103.cvu5ipkudfpz2adc@mwanda>
+Message-ID: <alpine.DEB.2.20.1710041537060.2815@hadrien>
+References: <1507062512-9145-1-git-send-email-srishtishar@gmail.com> <20171004112103.cvu5ipkudfpz2adc@mwanda>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.20.1710041537060.2815@hadrien>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-Source-IP: userv0022.oracle.com [156.151.31.74]
-
-On Wed, Oct 04, 2017 at 03:39:30PM +0200, Julia Lawall wrote:
-> 
-> 
-> On Wed, 4 Oct 2017, Dan Carpenter wrote:
-> 
-> > On Wed, Oct 04, 2017 at 01:58:32AM +0530, Srishti Sharma wrote:
-> > > Use list_for_each_entry_safe when the list elements may get deleted
-> > > during traversal.
-> >
-> > This patch is fine as a cleanup but none of these are actually buggy.
-> 
-> I'm not sure what you are getting at with the comment.  The commit doesn't
-> say that they were buggy.  Perhaps the commit message could have been more
-> verbose, like "Use list operators on list_head values.
-> List_for_each_entry_safe is needed because the list elements get deleted
-                           ^^^^^^^^^
-
-It is not *needed*, the original code works fine.  The problem with the
-original code, is that it's ugly as sin.
-
-> during the traversal"?
-
-The changelog needs to say *why* we're applying the patch.  At first I
-thought it was going to fix a use after free.  What I would prefer in
-the changelog is something like:  "This patch is a cleanup and doesn't
-change runtime behavior.  It changes an open coded list traversal to
-use list_for_each_entry_safe."
-
-regards,
-dan carpenter
+Content-Type: text/plain; charset=US-ASCII
 
 
+
+On Wed, 4 Oct 2017, Dan Carpenter wrote:
+
+> On Wed, Oct 04, 2017 at 01:58:32AM +0530, Srishti Sharma wrote:
+> > Use list_for_each_entry_safe when the list elements may get deleted
+> > during traversal.
+>
+> This patch is fine as a cleanup but none of these are actually buggy.
+
+I'm not sure what you are getting at with the comment.  The commit doesn't
+say that they were buggy.  Perhaps the commit message could have been more
+verbose, like "Use list operators on list_head values.
+List_for_each_entry_safe is needed because the list elements get deleted
+during the traversal"?
+
+thanks,
+julia
+
+>
+> regards,
+> dan carpenter
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20171004112103.cvu5ipkudfpz2adc%40mwanda.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
