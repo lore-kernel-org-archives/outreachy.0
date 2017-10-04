@@ -1,76 +1,76 @@
 X-GM-THRID: 6473105457256857600
-X-Received: by 10.101.66.5 with SMTP id c5mr2204476pgq.133.1507196809372;
-        Thu, 05 Oct 2017 02:46:49 -0700 (PDT)
+X-Received: by 10.98.147.28 with SMTP id b28mr404950pfe.56.1507137310005;
+        Wed, 04 Oct 2017 10:15:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.159.253.142 with SMTP id q14ls6473438pls.0.gmail; Thu, 05 Oct
- 2017 02:46:48 -0700 (PDT)
-X-Received: by 10.99.160.85 with SMTP id u21mr1105562pgn.113.1507196808429;
-        Thu, 05 Oct 2017 02:46:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507196808; cv=none;
+Received: by 10.98.212.80 with SMTP id u16ls5217594pfl.10.gmail; Wed, 04 Oct
+ 2017 10:15:08 -0700 (PDT)
+X-Received: by 10.101.69.1 with SMTP id n1mr2036148pgq.94.1507137308935;
+        Wed, 04 Oct 2017 10:15:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507137308; cv=none;
         d=google.com; s=arc-20160816;
-        b=LI/2BpptxTF1/moVfVVPejFvIHoZkkrnpjlqLTPXg8kAhUiFTLHI8u2PV3veBo7wXu
-         b3esQCpnWXMd2uWAzJHObPyHhQNMueeN21ldRZUVEpwyKaAyBXXWkBxbLxD3YgtK637J
-         NwrXM2Y0v8rPfFPWJkW0EDxidZtkKRmm6Hhp6ZcOpWHMzoh6hdSBHpB/0g67aIeQB4Rn
-         NqhfwGb5omqDOU9bXl4ibBhbY2k11KPzxv7QAnBIhbadHsrMqWjOGcEzik9tzH+tw7/t
-         Es4pEKmRFPsasatN3v6Dn1OBB8Bdbf9Z0lpW8BhZVRWtaZFMgpOd568P8Cqogz6UWgt9
-         MWLA==
+        b=N0pyw2evZLHLu+1NENR+WqLDSBMERvbYa7sBhywcMQ6TKzLtk67jBpOu+aX5yVvML8
+         3llXxQNxIGVBGHXukU8pVeNNbhE+yqTt2QL3HU/rTzJcTNgvF3KhF2yrsRv74FwzayvK
+         /G94rnIZ3jndtcs9jheCRHdbJde1kS/YkW40wm1LOEHBBimW8TXNd2/I7HQywjFXx8Y3
+         2yOaFqjESptXA+3gJZhVLtCrTCS09TNRQbK+/VRu+tk3yszrhFi/tZzxKh+xHd4KyLrx
+         Kf4MTsMrxcx5O8g3BvdBPuZvAm6giUePBzqcrPm2dyDaE8EwsRWXtIgEsQbQ3ccMaVn2
+         oHJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=message-id:date:subject:cc:to:from:dkim-signature
          :arc-authentication-results;
-        bh=/fJSddIW0y63x+y9aEGl4TBAkgfRcOpAKYYMtPdH6+0=;
-        b=ALGnDgTUZJtEiezV91S+PsBtxiN01TBKs4mdkltn/et03Jbgu1bBW0nFBpBmWfJugb
-         NespIWe8fvZvQzDA7rvviAb12PzfwHYK7PxY4yLRPRdVriSh8n9wAPrTnfsi4+wZwHha
-         XPTKG5qVh2SqFVUNwaZaTA5t2ecNY8o/8NruBOvbU3ZnhZiPQh1ajoMa+dVuhxxQ1bhQ
-         qWUG0/obNzZSP3titi5TflSVTD8+DlLnV6sB8WVf95NvfcvNyfdh9A9m388Sg6FBKJgJ
-         bdUwSV6Cfpl1Xixvi/2b/UFie7gffLFPjkYghXzbyJZcgKxsrrXA8rNk6/SoB4qmaIml
-         fIPg==
+        bh=i3Va20nyVkEhhf+SmnTEX1lpXCKG/4e+Ew7x5YIhDm8=;
+        b=L8nUFDmUemydbt5TGlQDJiPJmXWCLp+WY0pCukYf5UMJS8KOwuhc2FRyIms+dOJoCF
+         MBTsCbEoq8KKrDQfx0EWjJVvIEm7tRo9peK6oRS8K5jXr5qyyac/NvCkT29Jiwl7r0lW
+         oB4JbwCgyWUGyLtMXFzV99a8PE1JVIm2l2hcl/aQH8RzJwnssZPISzP0gISAkv0BSZp9
+         uxC7eXezV07tEcWbmRkGEr/xgzI+wwaOvSoVbQRbr7YHYD16ybuK/qoJZrPfi4HCcEuQ
+         JpVXeugQ+ZTra0dnlP9G8yUgpd/FwawOccOJx/wbET7PefSRz7ySq39j1VT/bjWoybzu
+         WD0A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=AimZ4HoC;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=EcPbhRK6;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <srishtishar@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id f189si1804563pfa.1.2017.10.05.02.46.48
+Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
+        by gmr-mx.google.com with ESMTPS id h3si1884875pfk.9.2017.10.04.10.15.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 05 Oct 2017 02:46:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Wed, 04 Oct 2017 10:15:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=AimZ4HoC;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=EcPbhRK6;
+       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id b11so6292457pgn.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 05 Oct 2017 02:46:48 -0700 (PDT)
+Received: by mail-pg0-x242.google.com with SMTP id i195so5355507pgd.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 04 Oct 2017 10:15:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=/fJSddIW0y63x+y9aEGl4TBAkgfRcOpAKYYMtPdH6+0=;
-        b=AimZ4HoCRl+q7spWNPMMug3H78y6+MksJiVIkfhewjpGn9FrDKIC+H05D1/9RmuwvT
-         auUovg5S4ilkX+M7Z4AA7+eL948QzWD69eT08uJf8SIzB7zYfxkUhEsltndshk3RANMH
-         BVQrKZ4l7DfRgI72DXvS8PaAoO2MYqu6XmYZYPC0TuBxM1HGdPsHV8x0EChizQfaBwZi
-         rMGNZmQ0JUr7IDaa3kmWjdgodn2nu/D5TMHr2Upkmnm09iWzgS/GFfltArS1yoZ1otJW
-         35AhF0Td/Y5NXPffv0wkgIGPxsWtvb+LbBCKXwJc+V4QvsCPfVdED08OyFFVZj6kTtV7
-         dvLA==
+        bh=i3Va20nyVkEhhf+SmnTEX1lpXCKG/4e+Ew7x5YIhDm8=;
+        b=EcPbhRK6Gyj2leNOuAHm+SpK9O8bSfmWlcmJh4trKJdxneYnKzzPrw3SkKxt2d1DPX
+         TqdyMnnCnW5qF/nR0ripbKeYjjSasKFCJHrjat6pVsHPGfF8YnPsGWBDcH8CUgjZa8L/
+         883qsNYsH1+hr/uh1o99H9CTnlhn2XAza5zyiU1X2TLtnZ3A3O6aDkO4LWt72NnoQJyT
+         7pC0JtY5Xm7IpNOfUwTXMWsHZJGlmqT7rzlbqIRRa5AFAxuvgFPE2UQaHd/HZ9CgfadX
+         uAGQdlTjKrZlDdu8PcF4nKtO63lL3ULe8oE0zyA+RUv5Mknc1vQ6L4As5rVJ0kZtzvrP
+         GXBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=/fJSddIW0y63x+y9aEGl4TBAkgfRcOpAKYYMtPdH6+0=;
-        b=l+9dwJmMHTJyqdpdeDOVF6EIwxX66RbV8JNJcxIe3InXY3Ul0KOZ5/kHz+/jxG/eQv
-         peG85kgoPrJBRqU4FtUHxwinR8salBDqNqi9MSJ/46I7OkW4Od/gI77jMoHQECeYqlET
-         AjxNDYxs1Uju35InvxTzIEyHi/Z/VPJK2+cWeYu6r+n+rt7gnXJN8eLbZvjYZmXFkgVo
-         +PLiOOmYLtZKkY51mjJnCZztGShBP7c9XqS/s/vzQJnHToo3jSQnGbRFCPVsGcr7xRwl
-         UDEdI6Idv3GBS7xLQsRmzb2TzbixuvNM/4yr6iAQSZM0JNJxnPDJsHKqUobeSFW6kwMg
-         0t0g==
-X-Gm-Message-State: AHPjjUheEitu6vURo1reE0cmLmXvK2mnk3GlgeyXxnH7j6ovkOZZwWsi
-	+KJP8hA2x4BU3fVd0eLw00M=
-X-Google-Smtp-Source: AOwi7QBOs1RZjwz5W83m/J1OzP0Obt/HzICXV38Djkz3G9+QCV3DBEaVFgRNEszA1C33iKpnzJdoLw==
-X-Received: by 10.159.246.24 with SMTP id b24mr22662432pls.358.1507196808200;
-        Thu, 05 Oct 2017 02:46:48 -0700 (PDT)
+        bh=i3Va20nyVkEhhf+SmnTEX1lpXCKG/4e+Ew7x5YIhDm8=;
+        b=hwPvXUSRjbBWJI1cb4y5xO2AJrH2exfNVpkwrJQxLsjN6i7EcsjtPaLLqm/IPp+NAg
+         Fg/8E5fL3F/2jBUkNAd+7QCh3qeR4N7BWaYx1355Fbk1KXE9wdZ/2zscEXr0Ec+IEP97
+         dJPahV9VJKIf4LY/GWTGSV3IOnDbqArH3N6dnoCLU5lz9/jcxykB+2I9b5bI1kxDlI/T
+         pyEOVQvRZLxDORg4Rv5MR1AKByjXEPxvXahBC8lNeUyEGYGWBdDOQRAZcwT8ujI7b25F
+         yZm9HV5VHidP4WBclGrig/XDdBr5ZKv3m/HIDGZaOyB1Vj4eMs36CfGI96De9YDhpFR1
+         VcTw==
+X-Gm-Message-State: AMCzsaUq7Ga6XRrScfttA9YH3Fpc06olxzqLtGXqxj896s2sSvtGt4OB
+	i0l0UtPlk4LUW1LyrIzXll8=
+X-Google-Smtp-Source: AOwi7QCOY2OS6UiyHfYvGp69QSTJruw7aJTWdftygrkt1gduTX+ECB18UkZjr4RyD3e4+9nGNul3Sw==
+X-Received: by 10.84.247.133 with SMTP id o5mr8326163pll.6.1507137308594;
+        Wed, 04 Oct 2017 10:15:08 -0700 (PDT)
 Return-Path: <srishtishar@gmail.com>
-Received: from srishti-PRODiiGY-945G ([122.175.169.210])
-        by smtp.gmail.com with ESMTPSA id q62sm12706578pga.75.2017.10.05.02.46.47
+Received: from srishti-PRODiiGY-945G ([182.70.213.86])
+        by smtp.gmail.com with ESMTPSA id u73sm27239913pfi.58.2017.10.04.10.15.07
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 05 Oct 2017 02:46:47 -0700 (PDT)
+        Wed, 04 Oct 2017 10:15:08 -0700 (PDT)
 From: Srishti Sharma <srishtishar@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: devel@driverdev.osuosl.org,
@@ -78,18 +78,18 @@ Cc: devel@driverdev.osuosl.org,
 	outreachy-kernel@googlegroups.com,
 	Srishti Sharma <srishtishar@gmail.com>
 Subject: [PATCH v2] Staging: rtl8188eu: core: rtw_ap: Use list_for_each_entry_safe
-Date: Thu,  5 Oct 2017 15:16:42 +0530
-Message-Id: <1507196802-4143-1-git-send-email-srishtishar@gmail.com>
+Date: Wed,  4 Oct 2017 22:44:55 +0530
+Message-Id: <1507137295-3753-1-git-send-email-srishtishar@gmail.com>
 X-Mailer: git-send-email 2.7.4
 
-This is a cleanup patch and doesn't change runtime behavior. It 
+This is a cleanup patch and doesn't change runtime behaviour. It 
 changes an open coded list traversal to use list_for_each_entry_safe.
 Done using the following semantic patch by coccinelle.
 
 @r@
 struct list_head* l;
 expression e;
-identifier m, list_del_init, f;
+identifier m,list_del_init,f;
 type T1;
 T1* pos;
 iterator name list_for_each_entry_safe;
@@ -98,7 +98,7 @@ iterator name list_for_each_entry_safe;
 f(...){
 
 +T1* tmp;
-...
+<+...
 -while(...)
 +list_for_each_entry_safe(pos,tmp,l,m)
 {
@@ -107,89 +107,59 @@ f(...){
 ...
 -l=e;
  <+...
-  list_del_init(&pos->m)
+ list_del_init(&pos->m)
  ...+>
 }
-...
+...+>
+
 }
 
 Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
 ---
 Changes in v2
- -Make commit message clear.
- -Add file name to subject.
+ -Make commit message more clear.
+ -Add file name to the subject.
 
- drivers/staging/rtl8188eu/core/rtw_ap.c | 22 ++++++----------------
- 1 file changed, 6 insertions(+), 16 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_ap.c | 12 +++---------
+ 1 file changed, 3 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/staging/rtl8188eu/core/rtw_ap.c b/drivers/staging/rtl8188eu/core/rtw_ap.c
-index 32a4837..a2c599f 100644
+index a2c599f..551af9e 100644
 --- a/drivers/staging/rtl8188eu/core/rtw_ap.c
 +++ b/drivers/staging/rtl8188eu/core/rtw_ap.c
-@@ -1196,7 +1196,7 @@ int rtw_acl_add_sta(struct adapter *padapter, u8 *addr)
- int rtw_acl_remove_sta(struct adapter *padapter, u8 *addr)
- {
- 	struct list_head *plist, *phead;
--	struct rtw_wlan_acl_node *paclnode;
-+	struct rtw_wlan_acl_node *paclnode, *tmp;
- 	struct sta_priv *pstapriv = &padapter->stapriv;
- 	struct wlan_acl_pool *pacl_list = &pstapriv->acl_list;
- 	struct __queue *pacl_node_q = &pacl_list->acl_node_q;
-@@ -1208,10 +1208,7 @@ int rtw_acl_remove_sta(struct adapter *padapter, u8 *addr)
- 	phead = get_list_head(pacl_node_q);
- 	plist = phead->next;
- 
--	while (phead != plist) {
--		paclnode = container_of(plist, struct rtw_wlan_acl_node, list);
--		plist = plist->next;
--
-+	list_for_each_entry_safe(paclnode, tmp, plist, list) {
- 		if (!memcmp(paclnode->addr, addr, ETH_ALEN)) {
- 			if (paclnode->valid) {
- 				paclnode->valid = false;
-@@ -1711,7 +1708,7 @@ u8 ap_free_sta(struct adapter *padapter, struct sta_info *psta,
- int rtw_sta_flush(struct adapter *padapter)
+@@ -280,7 +280,7 @@ void	expire_timeout_chk(struct adapter *padapter)
  {
  	struct list_head *phead, *plist;
+ 	u8 updated = 0;
 -	struct sta_info *psta = NULL;
 +	struct sta_info *psta = NULL, *tmp;
  	struct sta_priv *pstapriv = &padapter->stapriv;
- 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
- 	struct mlme_ext_info	*pmlmeinfo = &pmlmeext->mlmext_info;
-@@ -1727,11 +1724,7 @@ int rtw_sta_flush(struct adapter *padapter)
+ 	u8 chk_alive_num = 0;
+ 	char chk_alive_list[NUM_STA];
+@@ -292,10 +292,7 @@ void	expire_timeout_chk(struct adapter *padapter)
  	plist = phead->next;
  
- 	/* free sta asoc_queue */
+ 	/* check auth_queue */
+-	while (phead != plist) {
+-		psta = container_of(plist, struct sta_info, auth_list);
+-		plist = plist->next;
+-
++	list_for_each_entry_safe(psta, tmp, plist, auth_list) {
+ 		if (psta->expire_to > 0) {
+ 			psta->expire_to--;
+ 			if (psta->expire_to == 0) {
+@@ -326,10 +323,7 @@ void	expire_timeout_chk(struct adapter *padapter)
+ 	plist = phead->next;
+ 
+ 	/* check asoc_queue */
 -	while (phead != plist) {
 -		psta = container_of(plist, struct sta_info, asoc_list);
--
 -		plist = plist->next;
 -
 +	list_for_each_entry_safe(psta, tmp, plist, asoc_list) {
- 		list_del_init(&psta->asoc_list);
- 		pstapriv->asoc_list_cnt--;
- 
-@@ -1833,7 +1826,7 @@ void start_ap_mode(struct adapter *padapter)
- void stop_ap_mode(struct adapter *padapter)
- {
- 	struct list_head *phead, *plist;
--	struct rtw_wlan_acl_node *paclnode;
-+	struct rtw_wlan_acl_node *paclnode, *tmp;
- 	struct sta_info *psta = NULL;
- 	struct sta_priv *pstapriv = &padapter->stapriv;
- 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
-@@ -1855,10 +1848,7 @@ void stop_ap_mode(struct adapter *padapter)
- 	spin_lock_bh(&pacl_node_q->lock);
- 	phead = get_list_head(pacl_node_q);
- 	plist = phead->next;
--	while (phead != plist) {
--		paclnode = container_of(plist, struct rtw_wlan_acl_node, list);
--		plist = plist->next;
--
-+	list_for_each_entry_safe(paclnode, tmp, plist, list) {
- 		if (paclnode->valid) {
- 			paclnode->valid = false;
- 
+ 		if (chk_sta_is_alive(psta) || !psta->expire_to) {
+ 			psta->expire_to = pstapriv->expire_to;
+ 			psta->keep_alive_trycnt = 0;
 -- 
 2.7.4
 
