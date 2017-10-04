@@ -1,90 +1,86 @@
-X-GM-THRID: 6254157113165086720
-X-Received: by 10.140.18.239 with SMTP id 102mr327259qgf.28.1456159426928;
-        Mon, 22 Feb 2016 08:43:46 -0800 (PST)
+X-GM-THRID: 6472213781908815872
+X-Received: by 10.28.15.134 with SMTP id 128mr698064wmp.0.1507127358849;
+        Wed, 04 Oct 2017 07:29:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.90.71 with SMTP id w65ls1575342qgd.6.gmail; Mon, 22 Feb
- 2016 08:43:46 -0800 (PST)
-X-Received: by 10.129.58.16 with SMTP id h16mr27201877ywa.56.1456159426267;
-        Mon, 22 Feb 2016 08:43:46 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pf0-x22e.google.com (mail-pf0-x22e.google.com. [2607:f8b0:400e:c00::22e])
-        by gmr-mx.google.com with ESMTPS id yd9si3201667pab.1.2016.02.22.08.43.46
+Received: by 10.28.47.194 with SMTP id v185ls3407620wmv.9.canary-gmail; Wed,
+ 04 Oct 2017 07:29:17 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QCdPvXfvUJ8RepYnD2Ot6aAtiAHJYFIE/oofWHdUqr/XiEsfpGZzvQBzPuLwNXZpAV66K17
+X-Received: by 10.28.47.197 with SMTP id v188mr2155658wmv.23.1507127357868;
+        Wed, 04 Oct 2017 07:29:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507127357; cv=none;
+        d=google.com; s=arc-20160816;
+        b=OBzoMDTWHHr99t6ldp5EZgcoSCez6tJ+ey4LDF7qF9qnWBLrhTbGQcU4/YNc2sRL8x
+         c3rPAh1AELs3GDZO3eeUzTBhV8MBmFGieBrAcObj9AmTsDZpbqBNyAsQNe32fxSjQVXu
+         tV8IfizjjCMphJkyNWZA/4TjWQASPFNxx1kJRI2OLtZpQ9NFfTk/YLKKvqffM09YvEKR
+         QQIR73lS0lidqEu+dDzqKuu0u6tnCnCpSKG1RGxulVKh5QL/QNXfWtgXCt2DWyIfMNFq
+         mzS6nOVwE8WdT76XM5gu8ymPMEuIteLqLAC8CHwV0lWW7fRQbFKVeXNNSvMGKZVFpqM/
+         BBiQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=KIHaj4Xp4zoMp8QNHx3HOBJG/NiwpEnGBxyypGnyNHE=;
+        b=S/suNSSmhx9U9wXyrX0b1Jf/vUs9N7T5u4rX4/p+Rwjvbv4hE04byRlQLwl6rDNsmY
+         Uf7Sc3hO1A5pSxV9YFfniZlAUlAIXAGmSHXNqZmmzh1C69uyEJCphMLCATyVBaPqE+/Z
+         ld+vCbPVjAjwTPkxd5/ox+DCoDY7zgNat9v5IFdV+bDK+VKy17eE5wOfBPGXoKsH9zWX
+         Wo7yOvgyJSSV8xbt0Nj0+h2kS96wCavN6hrEdDlgy1ST9p9OH7aapT0IJs5sjqAoAu3n
+         NYZ1SmX3REB2SUABpVUybZRcnnTaX/j0OU9/SXVX3grhF+FsdlDT05JaqCPMPT9whagi
+         ay0g==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of pablo@gnumonks.org designates 2001:780:45:1d:225:90ff:fe52:c662 as permitted sender) smtp.mailfrom=pablo@gnumonks.org
+Return-Path: <pablo@gnumonks.org>
+Received: from ganesha.gnumonks.org (ganesha.gnumonks.org. [2001:780:45:1d:225:90ff:fe52:c662])
+        by gmr-mx.google.com with ESMTPS id h17si1912049wmd.0.2017.10.04.07.29.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Feb 2016 08:43:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::22e as permitted sender) client-ip=2607:f8b0:400e:c00::22e;
+        Wed, 04 Oct 2017 07:29:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pablo@gnumonks.org designates 2001:780:45:1d:225:90ff:fe52:c662 as permitted sender) client-ip=2001:780:45:1d:225:90ff:fe52:c662;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::22e as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22e.google.com with SMTP id x65so95316549pfb.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 22 Feb 2016 08:43:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=8hQZ46mtmKqx6Iu61Ub6dPgTRhehVetlBYK1vYHnA1Q=;
-        b=Uy8iiZn0gFM37jY3BKOWyotowAkrTnf7b/ohi4amGa2Zpk83JuZB3TAbqa2LaGfar1
-         M9Lm2Vvng68aDeakDz0xFr/gamZuOx2l6raUPJ0M8nteqohyEvGOu/xzt4pbP7uvQR0t
-         3kNEMUuClk8i1mEf1Ae63DzX2jG6iWbQYGZx+GPw7aNYuScuRL8gWeh48XB9xsPKahnh
-         ynhISTuLD8GgCpu5Lj2aaCgQQGoww/zwLOW20qCRMLIjFomwN0/rriOX2EcUSXymzHWR
-         GAiLAKphCjW+YvWdoeUdDGEF912Up+M55hhgVg88+2uBtmDD+AmDDnmEuhAR3D76zMEu
-         +ASw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=8hQZ46mtmKqx6Iu61Ub6dPgTRhehVetlBYK1vYHnA1Q=;
-        b=joc5+b5XalnK0WtqbNEefmhRmLOcySr6brGXEjM9aeBdzhLai/wZBw7Khb1CALzaTc
-         AA1MzrmSMuuHz8SxkfBH6Fu/S54rEBXXsGXrBDsXKQqZyT3lcOO7js745VK5r+Ph8zV1
-         X+QONu/OghRVlILNd1J4C0qhe2HVPHY3J+d4+BFb7Km+fXxL9aR8D6sdEwBboxu0/+bq
-         hQcuiJ8VWNwzCwNEZ1MkPeFIVele8nxA2ERugmqUguUa/bcfjK62f3Byjq7H2/TcGNJs
-         tkcoRlR1bwcEV9g4Y62LQCgiiNCiOb7kPbsnkd4y3u6+3RUo+DBcGap0CU7kTH8jODxJ
-         1pTg==
-X-Gm-Message-State: AG10YOR3zXAz0iuqLPKD1XC/Ge8dtlFbZ+dG4ZBfj+txqZu3SrLdgo5crxbAKSgUfcm/YQ==
-X-Received: by 10.98.12.221 with SMTP id 90mr39325442pfm.95.1456159426069;
-        Mon, 22 Feb 2016 08:43:46 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([122.176.170.221])
-        by smtp.gmail.com with ESMTPSA id c9sm37992443pfd.90.2016.02.22.08.43.44
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Mon, 22 Feb 2016 08:43:45 -0800 (PST)
-Date: Mon, 22 Feb 2016 22:13:39 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rdma: hfi1: Remove unnecessary kfree
-Message-ID: <20160222164338.GA13593@amitoj-Inspiron-3542>
+       spf=pass (google.com: domain of pablo@gnumonks.org designates 2001:780:45:1d:225:90ff:fe52:c662 as permitted sender) smtp.mailfrom=pablo@gnumonks.org
+Received: from 129.166.216.87.static.jazztel.es ([87.216.166.129] helo=gnumonks.org)
+	by ganesha.gnumonks.org with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+	(Exim 4.84_2)
+	(envelope-from <pablo@gnumonks.org>)
+	id 1dzkff-0004AQ-7N; Wed, 04 Oct 2017 16:29:17 +0200
+Date: Wed, 4 Oct 2017 16:29:10 +0200
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Harsha Sharma <harshasharmaiitr@gmail.com>
+Cc: netfilter-devel@vger.kernel.org, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 3/3] evaluate: make pointers in string
+ arrays constant
+Message-ID: <20171004142910.GA22122@salvia>
+References: <cover.1506928244.git.harshasharmaiitr@gmail.com>
+ <9b81cec687c3082f5fd762ece696f1272945e0ad.1506928244.git.harshasharmaiitr@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <9b81cec687c3082f5fd762ece696f1272945e0ad.1506928244.git.harshasharmaiitr@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Spam-Score: -2.9 (--)
 
-Remove an unnecessary kfree since rcd->opstats's value must be NULL
-for the code to execute `bail` label.
+On Mon, Oct 02, 2017 at 01:02:50PM +0530, Harsha Sharma wrote:
+> static const char * array should probably be static const char * const
+> array
+> as per linux-kernel coding style
+> 
+> Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
+> ---
+>  src/evaluate.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/src/evaluate.c b/src/evaluate.c
+> index b783054..f48801a 100644
+> --- a/src/evaluate.c
+> +++ b/src/evaluate.c
+> @@ -33,7 +33,7 @@
+>  static struct output_ctx octx_debug_dummy;
+>  static int expr_evaluate(struct eval_ctx *ctx, struct expr **expr);
+>  
+> -static const char *byteorder_names[] = {
+> +static const char * const byteorder_names[] = {
 
-This fixes the following smatch warning:
-drivers/staging/rdma/hfi1/init.c:335 hfi1_create_ctxtdata() warn:
-calling kfree() when 'rcd->opstats' is always NULL.
+I can see more string array that could use this in the nftables tree.
+Please, fix all in one single patch.
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/rdma/hfi1/init.c | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/drivers/staging/rdma/hfi1/init.c b/drivers/staging/rdma/hfi1/init.c
-index 4dd8051..3107103 100644
---- a/drivers/staging/rdma/hfi1/init.c
-+++ b/drivers/staging/rdma/hfi1/init.c
-@@ -332,7 +332,6 @@ struct hfi1_ctxtdata *hfi1_create_ctxtdata(struct hfi1_pportdata *ppd, u32 ctxt)
- 	}
- 	return rcd;
- bail:
--	kfree(rcd->opstats);
- 	kfree(rcd->egrbufs.rcvtids);
- 	kfree(rcd->egrbufs.buffers);
- 	kfree(rcd);
--- 
-1.9.1
-
+Thanks.
 
