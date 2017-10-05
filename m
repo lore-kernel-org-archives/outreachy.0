@@ -1,83 +1,125 @@
 X-GM-THRID: 6473326624929480704
-X-Received: by 10.223.182.18 with SMTP id f18mr189682wre.9.1507293640368;
-        Fri, 06 Oct 2017 05:40:40 -0700 (PDT)
+X-Received: by 10.99.60.17 with SMTP id j17mr66095pga.127.1507188804244;
+        Thu, 05 Oct 2017 00:33:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.223.161.79 with SMTP id r15ls1579977wrr.9.gmail; Fri, 06 Oct
- 2017 05:40:39 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QCHm5DqmyrwljMyKoanQd08dxMVG5a9x7W5hFSpco59usKML9+j7A+noHarLWBaG/8Gef9R
-X-Received: by 10.28.0.7 with SMTP id 7mr218926wma.26.1507293639734;
-        Fri, 06 Oct 2017 05:40:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507293639; cv=none;
+Received: by 10.159.216.152 with SMTP id s24ls6386082plp.5.gmail; Thu, 05 Oct
+ 2017 00:33:23 -0700 (PDT)
+X-Received: by 10.99.108.72 with SMTP id h69mr2440863pgc.31.1507188803276;
+        Thu, 05 Oct 2017 00:33:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507188803; cv=none;
         d=google.com; s=arc-20160816;
-        b=XBsX8ANyZG2X6dsPuXPHH0C1CoApjCexM1hu4BEu+8Jc3ld3I4fZaKBY4L4dnJnLbi
-         QTjqqmCqNF2MIdm10pDyXZWNb5XfU9QzQcon8QDaUx6yWkfUg2vZOJjf/3Tk4lXhwita
-         MYv92ig2hjIrN62Kg1Mhrt0ZUbz6yqdCSWGl3ezJYqaZTZXnv3KvIpDZ1HLp6sRe5tUM
-         57C020ZSuv4mYSpS4yXLJZajWkrq/0t/UZtXzvqcbA6EGiEo8DDXc6rpeggyu8Qvcj9Y
-         xM4caO6EUM2li011eJB/9gGqW9nX5Kse2+B/dpL2utNnfw2mp5xAv5WwugmEU5UaYkyu
-         iWZA==
+        b=YUQsiV8tEEGftbIdxC2moHNnTsV7tDMdV1bCRlN4U0vZwBdTlHLlr/T88ZO2WAw6cI
+         ktcid3gZAp2G9T/YOUOiP9xgSfn/zwiyVf5oU3cXwgqiyw5G+aniluUkqYmwFztstr7a
+         Q2UsKkC6Jyxg89i5H5ErIPM4bhtNVmjxeDZX5LA9DhUIaQXWhk1c4YN6a/7Vwjw9SPMz
+         MGT/FWB5TKX/4P8RT84cKS1IjZRqKDUsfqhSq2TuoRT81xwzlzNgR6ctCYkWohAnyUGX
+         074P9wl5Lj8GunFs8Rk4wZwG3+QW8FHGnTAV06hW6jvdT7ZNnLt4Xm+GRhqbjhQI2C/m
+         VH3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=atsKgGmDMs/MW3UvWsLIeZmjeN7Vy9lAfUjIoOeqKEQ=;
-        b=I66IavbBxgpER4Hv/lGBCxmtEQwRW0KSoiS64DbC7s878YM7ApO85Oiee9cPee9t3v
-         dlSGbd5+uEh0vd/H/+6lFv0qnc/O76Sl7BRuVh4orWfeAJjxNgYWRnBhzftgU4udv8L2
-         35zlRcNMLB0hDb1TnPQkXfVQfmyoZ4Vi+Vfml6sYN3m3gYs4q8BOL+HmnUsvxnIyJv9X
-         QErFv7vvRf6HohupVbKNxI6Yn6VFJW55VEhPF6QNWQR9sT3BoFQzAqige1iLioU2+2pr
-         MKxZJIBN6c9ZQ9iNkPlh4QaTwk0HDQmZQLxF6fGyPgdjJr/Q7G2EGYpTouKiV9CHKlVt
-         owNA==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=RbtMO48bkX8BEHknocpRbt7iSt+KB35qzlkvP6jJKAY=;
+        b=ja/OLNoA7B4EDs2Ls2FMsvx8rgZCrtjFzJ2y+s944c2Shbb0PvmMan9qjbzQIOFLgF
+         Wg7AhfuV4RJMX/yRLb9czGoJQVi6M6uIiHckwfAK5V6qcFvdASilY/YQh5YuJAqAswP2
+         WT1VA8IZKdfq6YWFWhY6EtvT4H2ZzIsjHmhtMIfRPhZD/4WYAijdSTp6C9WdN2AZ6ZL0
+         v3UUED5tHgD9mknLCO32ohNh1pvr7PejpkHQoavlmVifjVWtErsTlRdjhCL8tMbjGtDR
+         wLZnZ1w70pN7o0HpxP+Zv2WdJgZ63a/ycoCrKEuPXqnOtU5QDHzrfGlMMJxg2hcht8w/
+         GDNw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of pablo@gnumonks.org designates 2001:780:45:1d:225:90ff:fe52:c662 as permitted sender) smtp.mailfrom=pablo@gnumonks.org
-Return-Path: <pablo@gnumonks.org>
-Received: from ganesha.gnumonks.org (ganesha.gnumonks.org. [2001:780:45:1d:225:90ff:fe52:c662])
-        by gmr-mx.google.com with ESMTPS id d82si157277wmd.1.2017.10.06.05.40.39
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iOZtPcy/;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <harshasharmaiitr@gmail.com>
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id a28si1149064pfe.24.2017.10.05.00.33.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 06 Oct 2017 05:40:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pablo@gnumonks.org designates 2001:780:45:1d:225:90ff:fe52:c662 as permitted sender) client-ip=2001:780:45:1d:225:90ff:fe52:c662;
+        Thu, 05 Oct 2017 00:33:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of pablo@gnumonks.org designates 2001:780:45:1d:225:90ff:fe52:c662 as permitted sender) smtp.mailfrom=pablo@gnumonks.org
-Received: from 129.166.216.87.static.jazztel.es ([87.216.166.129] helo=gnumonks.org)
-	by ganesha.gnumonks.org with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	(Exim 4.84_2)
-	(envelope-from <pablo@gnumonks.org>)
-	id 1e0Rvh-0006bf-5R; Fri, 06 Oct 2017 14:40:38 +0200
-Date: Fri, 6 Oct 2017 14:40:36 +0200
-From: Pablo Neira Ayuso <pablo@netfilter.org>
-To: Harsha Sharma <harshasharmaiitr@gmail.com>
-Cc: netfilter-devel@vger.kernel.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] INSTALL: Update dependency list and configure with
- libxtables support
-Message-ID: <20171006124036.GD4713@salvia>
-References: <20171005073109.19874-1-harshasharmaiitr@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20171005073109.19874-1-harshasharmaiitr@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Spam-Score: -2.7 (--)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iOZtPcy/;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x244.google.com with SMTP id y192so15174493pgd.5
+        for <outreachy-kernel@googlegroups.com>; Thu, 05 Oct 2017 00:33:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=RbtMO48bkX8BEHknocpRbt7iSt+KB35qzlkvP6jJKAY=;
+        b=iOZtPcy/JkFEZ8RtQT9wjyrEpJomeSUpBv35fQdPZchezbz3NTr9dQ73mZcyuL9kNX
+         p8FPHfYn9bDNfamvPFoNw7vlTWgG0Tz6pjPcBUsneOK5d4YZoAqmUyRs3G0hLXuy14Z6
+         ZqBP3qVUWqQuRr6Mhd9sKvRCcHD0URbVcy9lGD1u9UOo5NtlLPPofOLcWvxDbEX/ZhPO
+         KCI5UYAO1pPYxliFGKJXNa1jESlfWrAaenno2F7Vyrb1n1Zrsq/lw17mC7ZTQM81ZUa0
+         /ERig0yuexDcef//qBSmtUWeA6eanpy9z0AEm+diNM9OwXB8qZ5EnPAKgyJrm79UA3yF
+         lMNA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=RbtMO48bkX8BEHknocpRbt7iSt+KB35qzlkvP6jJKAY=;
+        b=ibavqZC6LL8EuWU6X1lA69KwZ7TRiMVpsMae2xq378IyeS0Kt6Yeo8KXWPTGTitnXH
+         khOoZI5r0GvPTYy04W2lOGA3AnchSgaO7HZbm/xHO9LysY4gDhKJWlOwtckj2WCS3wU5
+         XxEZ3iePhDFxPuJHjjVJJj2wjcf9fr3ax6STtaL8AdPBHDrzjAPkvEdq+DrS/oDk5C1t
+         +Tzj20Wr+PV2Vd8M/ieNfxeQEkIl0mg0VY6f1w7VDfuK0vnrBbeiHHR5RpD/kkyw7Ttd
+         LbVGuOu1f+XN/PK3c1e3D6URCGyJeMUb9s9G2nSiLCyHEqKjy+oEQ82kQIa2liw/LBNF
+         bI7A==
+X-Gm-Message-State: AMCzsaUp0XJukR27sLtW7aepI6SRUYAU8ZLKnFqzXishRrWyDPLluVOj
+	PkJvEWXOnLcNJA7I1WAQwo8=
+X-Google-Smtp-Source: AOwi7QBW1XO01xEVe6cjYdV60sRrEb3vetxAj+u3/Y1hTTtkNtBJ/BDQBBMSVTZMCOj0ES/s526wOw==
+X-Received: by 10.84.169.67 with SMTP id g61mr9109959plb.107.1507188803062;
+        Thu, 05 Oct 2017 00:33:23 -0700 (PDT)
+Return-Path: <harshasharmaiitr@gmail.com>
+Received: from localhost.localdomain ([103.37.201.122])
+        by smtp.gmail.com with ESMTPSA id w27sm18910540pfi.18.2017.10.05.00.33.20
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 05 Oct 2017 00:33:22 -0700 (PDT)
+From: Harsha Sharma <harshasharmaiitr@gmail.com>
+To: pablo@netfilter.org
+Cc: netfilter-devel@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com,
+	Harsha Sharma <harshasharmaiitr@gmail.com>
+Subject: [PATCH] INSTALL: Update dependency list and configure with libxtables support
+Date: Thu,  5 Oct 2017 13:01:09 +0530
+Message-Id: <20171005073109.19874-1-harshasharmaiitr@gmail.com>
+X-Mailer: git-send-email 2.11.0
 
-On Thu, Oct 05, 2017 at 01:01:09PM +0530, Harsha Sharma wrote:
-> Add configure with lixtables in INSTALL and required dependencies for
-> the same
+Add configure with lixtables in INSTALL and required dependencies for
+the same
 
-Applied, thanks.
+Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
+---
+ INSTALL | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-I have mangled this a bit.
+diff --git a/INSTALL b/INSTALL
+index 3e9a6ad..04981f1 100644
+--- a/INSTALL
++++ b/INSTALL
+@@ -18,6 +18,12 @@ Installation instructions for nftables
+ 
+   - libreadline
+ 
++  - pkg-config
++
++  - libtool
++
++  - optional: libxtables: required for libxtables support
++
+   - optional: docbook2x: required for building man-page
+ 
+   - optional: docbook-utils: required for building PDF man-page
+@@ -51,6 +57,11 @@ Installation instructions for nftables
+ 	having no other use for libgmp.
+ 	Note: This decreases the debugging verbosity in some files.
+ 
++ --with-xtables
++
++	For libxtables support which allow input of tables with -f
++ 	option in nft.
++
+  Suggested configuration options: --prefix=/ --datarootdir=/usr/share
+ 
+  Run "make" to compile nftables, "make install" to install it in the
+-- 
+2.11.0
 
-Applying: INSTALL: Update dependency list and configure with libxtables support
-patch:29: space before tab in indent.
-        option in nft.
-
-There is a space before tab in indent, have a look at your editor,
-it's easy to spot them.
-
-And I have modified the libxtables part to explain a bit more the
-interaction between nft and the iptables-compat utility. Just follow
-up if you find anything that you can improve.
-
-Here I have enabled highlight of this and trailing whitespaces, please
-have a look.
-
-Thanks.
 
