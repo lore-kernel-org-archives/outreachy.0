@@ -1,109 +1,1930 @@
 X-GM-THRID: 6473412482924806144
-X-Received: by 10.84.133.164 with SMTP id f33mr1679196plf.33.1507208802826;
-        Thu, 05 Oct 2017 06:06:42 -0700 (PDT)
+X-Received: by 10.98.65.10 with SMTP id o10mr1634299pfa.12.1507208800431;
+        Thu, 05 Oct 2017 06:06:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.99.56.12 with SMTP id f12ls494837pga.11.gmail; Thu, 05 Oct
- 2017 06:06:42 -0700 (PDT)
-X-Received: by 10.101.90.11 with SMTP id y11mr2224897pgs.82.1507208802014;
-        Thu, 05 Oct 2017 06:06:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507208802; cv=none;
+Received: by 10.84.234.137 with SMTP id n9ls6584048plk.15.gmail; Thu, 05 Oct
+ 2017 06:06:39 -0700 (PDT)
+X-Received: by 10.99.123.26 with SMTP id w26mr153465pgc.58.1507208799650;
+        Thu, 05 Oct 2017 06:06:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507208799; cv=none;
         d=google.com; s=arc-20160816;
-        b=APsNziX0QZ9Vj4BJq1pYh87VYxRzlwJ3j8NbflssjL4QoBrFGNtQgAx65g40Yeu0jE
-         GzWWemdH0AQqwLbVyOEjPjYfA65k3Hs0Sh3tk93dmZi4sa2LFpLHB/yFuM15NCCdZP8a
-         312yl2SGu0k935T3KTMgDRFfqkuHbNB8C1j6Wx9Z9Ljc4A7mmgNBPzT/oqA+KksTQeIe
-         wQCNAoSYbO4cyVxxPfVTqEDbrbzeROz0xTA4Vq3FIy0kGUlNi08L9k+m1VyNIpcoHR5E
-         UiWauZlOgVI7nqFjIDAiqy/4FI0aIHf6V0iWw24fy1SEnQA9DGU+mBULqC9mG2Ogkwye
-         gazg==
+        b=ffEWD0//GcV/dxMFDKI61ZtPbeLDb3L+sgeIqjGh4eIfFxSUv2IOUgr1rUvNYSLuS1
+         eGJrGwbKKFPsl2nFYEbZY+P4kCPuC1wclyVC8vRmybzetx5izPPnnttbGtpXdlpPY9+r
+         ViKSvMIZuJJouLLFe95H/PGnUEE3aOesouG52TI3hBFu/eunPqg/sCr9cbe7rBItT6Fo
+         WqSqIgIPQUffN2s+096f6vy+S9fBYwE2i0gapRc3UyXeJXtYlf5XLovhSpQTUAvf9mI7
+         QrPGdl/BDWbmN27mPKrX5Hu29Jyf7SSRHnKSDsoFHTn9yaVd+wXOcOxN1gxnUTT6Ztgz
+         0EgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature:arc-authentication-results;
-        bh=JCsgZrEWpChc8/XFGYhrd15/JBtjdhHkiVh86zjhiss=;
-        b=gHeGwKWCpYIRSSCfnMw2QctHhnoBaVa7d4qgyGwF/xPzceTWA5pGqqiMrQV3ubcavV
-         qmws7+f5HGURis6VAS14SVkiKZJdMG3ZlrHBqYAQbsahqVArxx/a1DdKZRTVMT0xz5hR
-         qyAFTqChDnKtsk8It13dPG/aArc3C6jSESVzN/DPPculZqsocXWGwC7UTknywmqCa7O+
-         zSSKeD7YjbbQuCwBcMuIl+1LDE7OrZvEdnoes/7eWoE8qAatVOnImvvDgLmysUHC6/Un
-         Y8BnYX0kyuNUC7axzlmQBkMvy+kwuFy0XV82LkAkzhyxiY2b5x8K7ZNS4VnnbAAudMd8
-         /AGw==
+        bh=pAfhBpNrbRu/mW6vvO9qVFMbX+2XYykJjCb2D/DVVUg=;
+        b=haeQUoOp0cO8tOT1co6TNkYRaj5m5O3UhldeCuBlOTgUGFvxJxP7erNbvx3s4SzBUZ
+         p+0nDKFaZB4+R+QBIUqkWSb/lT+oWA41493kXuIDzYxKvUiXVmIKaX+q0z+xCW2Ata3f
+         k7CsyNr/Fyh8kV+//gwtOBazNMrj0cZEEyHooN/GTWVJI33fUN9g577iFPDPBSXPegvS
+         ZmLA3Hr2Lpic5oEkETQvpaxhwH31QVahQRI/5L3b2JdwypLPLm4bxP6dT5Qec+fW1zYE
+         4t/sgsYPxvoxXFyN0S3zrfY/1+BWy37RNgCE3kDccVJEO5j+3GVbVauma63BhGfRQzB+
+         J58Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fsCzEE5F;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FnemXHVF;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id x124si1124373pfx.20.2017.10.05.06.06.42
+Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
+        by gmr-mx.google.com with ESMTPS id t77si1865390pfi.13.2017.10.05.06.06.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 05 Oct 2017 06:06:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Thu, 05 Oct 2017 06:06:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fsCzEE5F;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FnemXHVF;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id a7so14596787pfj.5
-        for <outreachy-kernel@googlegroups.com>; Thu, 05 Oct 2017 06:06:42 -0700 (PDT)
+Received: by mail-pg0-x244.google.com with SMTP id u27so15569530pgn.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 05 Oct 2017 06:06:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=JCsgZrEWpChc8/XFGYhrd15/JBtjdhHkiVh86zjhiss=;
-        b=fsCzEE5FRR3vbabqxqOiT5vIjak6svyalPhq/d8pM2MkIvxngwcj3pM1F2uNUYRcdb
-         Bo7AZ90PzKT2GkzeQ+ZBq4mbmOTKgaHIMhJ0U0/eJKxkkuYFSayO3VOBePYZl14+XoZv
-         FFXp12tt0A0w53Wnykwj/o3kZW5Bs2LQFUmCp4M+1Ob4L2wIrktg6xAQQCrFJgvKYTed
-         XQ5uokbphk9Sd9peTgIwDyfS2lDlyPzwrlitNwHG5CYsuEV6h2a5imN4mGGRv8eJKI8I
-         0k4lYQm8bOdEzwYQ1Y2iPv+cn+DZkWT/lrhckXKgRWMBO03HhVQg4g/ZNbI9OIgThnMD
-         k3hg==
+        bh=pAfhBpNrbRu/mW6vvO9qVFMbX+2XYykJjCb2D/DVVUg=;
+        b=FnemXHVFHK0+YQZRJpLrj3DjNDzKbMTLHZMWwf9Si/6VyUVMe72EFU6DYKRci1iU/R
+         kjLNdewFkK0Ao6WJ0G0zZr5BDkbMC71mztPEJDbunZA/GQJ1cJ2Ja2fIZsbWsDrFrXnO
+         sHBU4txFYBsv8b0By1UI4ImQG1U/8zefCarmsavyfXc82sgPw9/H1oPV9IVu7cjos1Qn
+         GKZTt71aHkYwaUwVfwmypc2xEfLNSHSqbkTZ9C9ii7ZMrg3cqvigCi88UilOusx3tWrG
+         CVbScDlZi0EhMqSR/9QQl3A3GD0L9oN9I4DoitIVozcu/2A7xbCSDcwe9cj9jtcYQR2S
+         tr+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=JCsgZrEWpChc8/XFGYhrd15/JBtjdhHkiVh86zjhiss=;
-        b=nJe2ulg/ZHNO8X4GrrEAC1Y4owouuvQZuGQSuJowPQr2bzXCxVCrXFsBklhuVrvcar
-         w4Q8k79xC7I9fIdDKYG5m/O/1q2cTgrtkYzx+pvigTbN4jhBWGnX/+CK3n1AAZOWFsBj
-         PH8gMXcPqlSzMYmmO2hVqqwFDSgU/cxy935Kl0ENHxww3rYHxNIo4AqAhJ9OMPCw2NNV
-         JUCbdBrwpSVcUMwjMl2vfYvQ6qGU8fkbxxZQpUJ315ExP0olRyukgQJB3mxehmngw5t1
-         F9StHNnMUCrg66s8G84k6zX3ES9eCBtEvxhT13lY/aOWPmKWjlARPbGChipChd18hBdN
-         mzFA==
-X-Gm-Message-State: AHPjjUgo6l6BzopOBNN1k9mcufH9QixUiBwy4J5ieKm6DLArkXCNwKI0
-	a5T6XgJUd+1Dbop4OYTAGBw=
-X-Google-Smtp-Source: AOwi7QBnWPJ2xIXB5SEtCx6Wubco6lrQ3tQ9AEX6KJSQeB5aBVu/M9GreiYxPW73qk/fVMz+mGMGhw==
-X-Received: by 10.84.196.164 with SMTP id l33mr22744794pld.331.1507208801783;
-        Thu, 05 Oct 2017 06:06:41 -0700 (PDT)
+        bh=pAfhBpNrbRu/mW6vvO9qVFMbX+2XYykJjCb2D/DVVUg=;
+        b=ZciZzS8E0qJODTmi/RkIiSU0YVlaZgnFhQnsmcfnaYdAYg2ujOMF+GtlbcfsEANShP
+         6/Gf4DRF0rFq9NY7az9M5TaVfl7+X7QccGgorAcHPV0bfZ31nv/yDJUUUoQ8+dCzw8i6
+         FFA8VeQpDXQTqElHP1JeC5c5bGeQeQuFcbTf7dx6rjwm+0da9b3GG7i54jdDK/KjKKE7
+         g7xqdwwvsZzks/mRh+pRr/gTHWcAv6f+ox8nqq/EdjApbeMaB7G42KbsroFLAbnHJSPc
+         KWeIistTvMyjXt0FLRm1Nlyub9/gwpu/loj2sVjX5E9uqRMOlITTauTXvR1fjRLJyUKG
+         oTNg==
+X-Gm-Message-State: AHPjjUhs1g7+K4OdkrX3+DgK3LCwiEOvQfxHCdPgQAp298Pxt8VR45rs
+	v75OdKM1UHc1/iN8LbklcgA=
+X-Google-Smtp-Source: AOwi7QCAebPPQI/SJf2Zddna7UmgO1vDBcrXBnT9p2jtGWLrz7dtvSS91UxdpWNgjiHEreJiTgCwgQ==
+X-Received: by 10.98.134.194 with SMTP id x185mr23546525pfd.8.1507208797936;
+        Thu, 05 Oct 2017 06:06:37 -0700 (PDT)
 Return-Path: <aastha.gupta4104@gmail.com>
 Received: from aastha-HP-Pavilion-15-Notebook-PC ([103.196.221.229])
-        by smtp.gmail.com with ESMTPSA id v14sm13510141pgc.78.2017.10.05.06.06.40
+        by smtp.gmail.com with ESMTPSA id h90sm34377276pfj.32.2017.10.05.06.06.36
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 05 Oct 2017 06:06:41 -0700 (PDT)
+        Thu, 05 Oct 2017 06:06:37 -0700 (PDT)
 From: Aastha Gupta <aastha.gupta4104@gmail.com>
 To: outreachy-kernel@googlegroups.com,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH 2/7] staging: rtl8188eu: fix space between function name and '('
-Date: Thu,  5 Oct 2017 18:36:22 +0530
-Message-Id: <1507208787-18008-3-git-send-email-aastha.gupta4104@gmail.com>
+Subject: [PATCH 1/7] staging: rtl8188eu: fix block comment styling in rtl8188eu files
+Date: Thu,  5 Oct 2017 18:36:21 +0530
+Message-Id: <1507208787-18008-2-git-send-email-aastha.gupta4104@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1507208787-18008-1-git-send-email-aastha.gupta4104@gmail.com>
 References: <1507208787-18008-1-git-send-email-aastha.gupta4104@gmail.com>
 
-This patch fixes checkpatch.pl warning:
-WARNING: space prohibited between function name and open parenthesis '('
+This patch fixes checkpatch.pl warnings for block comment styling.
+1. Block comment use a trailing */ on a separate line.
+2. Block comment use * on subsequent lines.
+3. Block comment should align * on each line.
 
 Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
 ---
- drivers/staging/rtl8188eu/include/osdep_intf.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rtl8188eu/include/Hal8188EPhyCfg.h |  33 ++-
+ drivers/staging/rtl8188eu/include/Hal8188EPhyReg.h |   3 +-
+ .../rtl8188eu/include/Hal8188ERateAdaptive.h       |  28 +--
+ drivers/staging/rtl8188eu/include/basic_types.h    |  14 +-
+ drivers/staging/rtl8188eu/include/drv_types.h      |   3 +-
+ drivers/staging/rtl8188eu/include/hal_intf.h       |   6 +-
+ drivers/staging/rtl8188eu/include/ieee80211.h      |  30 +--
+ drivers/staging/rtl8188eu/include/odm.h            |  40 ++--
+ drivers/staging/rtl8188eu/include/pwrseq.h         |  44 ++--
+ drivers/staging/rtl8188eu/include/rtl8188e_hal.h   |  21 +-
+ drivers/staging/rtl8188eu/include/rtl8188e_spec.h  | 117 ++++++-----
+ drivers/staging/rtl8188eu/include/rtw_cmd.h        | 222 +++++++++++----------
+ drivers/staging/rtl8188eu/include/rtw_eeprom.h     |   9 +-
+ drivers/staging/rtl8188eu/include/rtw_event.h      |  40 ++--
+ drivers/staging/rtl8188eu/include/rtw_led.h        |   6 +-
+ drivers/staging/rtl8188eu/include/rtw_mlme.h       |  38 ++--
+ drivers/staging/rtl8188eu/include/rtw_mlme_ext.h   |  27 ++-
+ .../staging/rtl8188eu/include/rtw_mp_phy_regdef.h  |  19 +-
+ drivers/staging/rtl8188eu/include/rtw_pwrctrl.h    |  22 +-
+ drivers/staging/rtl8188eu/include/rtw_qos.h        |   3 +-
+ drivers/staging/rtl8188eu/include/rtw_recv.h       |  80 ++++----
+ drivers/staging/rtl8188eu/include/rtw_rf.h         |   6 +-
+ drivers/staging/rtl8188eu/include/rtw_security.h   |  27 ++-
+ drivers/staging/rtl8188eu/include/rtw_xmit.h       |  12 +-
+ drivers/staging/rtl8188eu/include/sta_info.h       |  12 +-
+ drivers/staging/rtl8188eu/include/wifi.h           |  25 ++-
+ drivers/staging/rtl8188eu/include/wlan_bssdef.h    |  22 +-
+ 27 files changed, 514 insertions(+), 395 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/include/osdep_intf.h b/drivers/staging/rtl8188eu/include/osdep_intf.h
-index 97d3d85..f1fb3d5 100644
---- a/drivers/staging/rtl8188eu/include/osdep_intf.h
-+++ b/drivers/staging/rtl8188eu/include/osdep_intf.h
-@@ -26,7 +26,7 @@ u8 rtw_init_drv_sw(struct adapter *padapter);
- u8 rtw_free_drv_sw(struct adapter *padapter);
- u8 rtw_reset_drv_sw(struct adapter *padapter);
+diff --git a/drivers/staging/rtl8188eu/include/Hal8188EPhyCfg.h b/drivers/staging/rtl8188eu/include/Hal8188EPhyCfg.h
+index 550ad62..4e5d7fc 100644
+--- a/drivers/staging/rtl8188eu/include/Hal8188EPhyCfg.h
++++ b/drivers/staging/rtl8188eu/include/Hal8188EPhyCfg.h
+@@ -75,7 +75,8 @@ enum rf_radio_path {
+ #define CHANNEL_MAX_NUMBER		14	/*  14 is the max chnl number */
+ #define MAX_CHNL_GROUP_24G		6	/*  ch1~2, ch3~5, ch6~8,
+ 						 *ch9~11, ch12~13, CH 14
+-						 * total three groups */
++						 * total three groups
++						 */
+ #define CHANNEL_GROUP_MAX_88E		6
  
--void rtw_stop_drv_threads (struct adapter *padapter);
-+void rtw_stop_drv_threads(struct adapter *padapter);
- void rtw_cancel_all_timer(struct adapter *padapter);
+ enum wireless_mode {
+@@ -116,35 +117,45 @@ struct bb_reg_def {
+ 				/*	0x80c~0x80f [4 bytes] */
+ 	u32 rfHSSIPara1;	/*  wire parameter control1 : */
+ 				/*	0x820~0x823,0x828~0x82b,
+-				 *	0x830~0x833, 0x838~0x83b [16 bytes] */
++				 *	0x830~0x833, 0x838~0x83b [16 bytes]
++				 */
+ 	u32 rfHSSIPara2;	/*  wire parameter control2 : */
+ 				/*	0x824~0x827,0x82c~0x82f, 0x834~0x837,
+-				 *	0x83c~0x83f [16 bytes] */
++				 *	0x83c~0x83f [16 bytes]
++				 */
+ 	u32 rfSwitchControl;	/* Tx Rx antenna control : */
+ 				/*	0x858~0x85f [16 bytes] */
+ 	u32 rfAGCControl1;	/* AGC parameter control1 : */
+ 				/*	0xc50~0xc53,0xc58~0xc5b, 0xc60~0xc63,
+-				 * 0xc68~0xc6b [16 bytes] */
++				 * 0xc68~0xc6b [16 bytes]
++				 */
+ 	u32 rfAGCControl2;	/* AGC parameter control2 : */
+ 				/*	0xc54~0xc57,0xc5c~0xc5f, 0xc64~0xc67,
+-				 *	0xc6c~0xc6f [16 bytes] */
++				 *	0xc6c~0xc6f [16 bytes]
++				 */
+ 	u32 rfRxIQImbalance;	/* OFDM Rx IQ imbalance matrix : */
+ 				/*	0xc14~0xc17,0xc1c~0xc1f, 0xc24~0xc27,
+-				 *	0xc2c~0xc2f [16 bytes] */
++				 *	0xc2c~0xc2f [16 bytes]
++				 */
+ 	u32 rfRxAFE;		/* Rx IQ DC ofset and Rx digital filter,
+-				 * Rx DC notch filter : */
++				 * Rx DC notch filter :
++				 */
+ 				/*	0xc10~0xc13,0xc18~0xc1b, 0xc20~0xc23,
+-				 *	0xc28~0xc2b [16 bytes] */
++				 *	0xc28~0xc2b [16 bytes]
++				 */
+ 	u32 rfTxIQImbalance;	/* OFDM Tx IQ imbalance matrix */
+ 				/*	0xc80~0xc83,0xc88~0xc8b, 0xc90~0xc93,
+-				 *	 0xc98~0xc9b [16 bytes] */
++				 *	 0xc98~0xc9b [16 bytes]
++				 */
+ 	u32 rfTxAFE;		/* Tx IQ DC Offset and Tx DFIR type */
+ 				/*	0xc84~0xc87,0xc8c~0xc8f, 0xc94~0xc97,
+-				 *	0xc9c~0xc9f [16 bytes] */
++				 *	0xc9c~0xc9f [16 bytes]
++				 */
+ 	u32 rfLSSIReadBack;	/* LSSI RF readback data SI mode */
+ 				/*	0x8a0~0x8af [16 bytes] */
+ 	u32 rfLSSIReadBackPi;	/* LSSI RF readback data PI mode 0x8b8-8bc for
+-				 * Path A and B */
++				 * Path A and B
++				 */
+ };
  
- int rtw_ioctl(struct net_device *dev, struct ifreq *rq, int cmd);
+ /*------------------------------Define structure----------------------------*/
+diff --git a/drivers/staging/rtl8188eu/include/Hal8188EPhyReg.h b/drivers/staging/rtl8188eu/include/Hal8188EPhyReg.h
+index 04159a9..8cbba85 100644
+--- a/drivers/staging/rtl8188eu/include/Hal8188EPhyReg.h
++++ b/drivers/staging/rtl8188eu/include/Hal8188EPhyReg.h
+@@ -136,7 +136,8 @@
+ #define	rCCK0_CCA			0xa08
+ 
+ /* AGC default value, saturation level Antenna Diversity, RX AGC, LNA Threshold,
+- * RX LNA Threshold useless now. Not the same as 90 series */
++ * RX LNA Threshold useless now. Not the same as 90 series
++ */
+ #define	rCCK0_RxAGC1			0xa0c
+ #define	rCCK0_RxAGC2			0xa10	/* AGC & DAGC */
+ 
+diff --git a/drivers/staging/rtl8188eu/include/Hal8188ERateAdaptive.h b/drivers/staging/rtl8188eu/include/Hal8188ERateAdaptive.h
+index 21996a1..c7218c4 100644
+--- a/drivers/staging/rtl8188eu/include/Hal8188ERateAdaptive.h
++++ b/drivers/staging/rtl8188eu/include/Hal8188ERateAdaptive.h
+@@ -1,19 +1,19 @@
+ #ifndef __INC_RA_H
+ #define __INC_RA_H
+-/*++
+-Copyright (c) Realtek Semiconductor Corp. All rights reserved.
+-
+-Module Name:
+-	RateAdaptive.h
+-
+-Abstract:
+-	Prototype of RA and related data structure.
+-
+-Major Change History:
+-	When       Who               What
+-	---------- ---------------   -------------------------------
+-	2011-08-12 Page            Create.
+---*/
++/*
++ * Copyright (c) Realtek Semiconductor Corp. All rights reserved.
++ *
++ * Module Name:
++ *	RateAdaptive.h
++ *
++ * Abstract:
++ *	Prototype of RA and related data structure.
++ *
++ * Major Change History:
++ *	When       Who               What
++ *	---------- ---------------   -------------------------------
++ *	2011-08-12 Page            Create.
++ */
+ 
+ /*  Rate adaptive define */
+ #define	PERENTRY	23
+diff --git a/drivers/staging/rtl8188eu/include/basic_types.h b/drivers/staging/rtl8188eu/include/basic_types.h
+index 69c4d49..73cc867 100644
+--- a/drivers/staging/rtl8188eu/include/basic_types.h
++++ b/drivers/staging/rtl8188eu/include/basic_types.h
+@@ -1,4 +1,4 @@
+-/******************************************************************************
++	/******************************************************************************
+  *
+  * Copyright(c) 2007 - 2011 Realtek Corporation. All rights reserved.
+  *
+@@ -20,14 +20,15 @@
+ 
+ /* port from fw */
+ /*  TODO: Macros Below are Sync from SD7-Driver. It is necessary
+- * to check correctness */
++ * to check correctness
++ */
+ 
+ /*
+  *	Call endian free function when
+  *		1. Read/write packet content.
+  *		2. Before write integer to IO.
+  *		3. After read integer from IO.
+-*/
++ */
+ 
+ /* Convert little data endian to host ordering */
+ #define EF1BYTE(_val)		\
+@@ -74,9 +75,10 @@
+ #define LE_P1BYTE_TO_HOST_1BYTE(__pstart) \
+ 	(EF1BYTE(*((u8 *)(__pstart))))
+ 
+-/*Description:
+-Translate subfield (continuous bits in little-endian) of 4-byte
+-value to host byte ordering.*/
++/* Description:
++ * Translate subfield (continuous bits in little-endian) of 4-byte
++ * value to host byte ordering.
++ */
+ #define LE_BITS_TO_4BYTE(__pstart, __bitoffset, __bitlen) \
+ 	( \
+ 		(LE_P4BYTE_TO_HOST_4BYTE(__pstart) >> (__bitoffset))  & \
+diff --git a/drivers/staging/rtl8188eu/include/drv_types.h b/drivers/staging/rtl8188eu/include/drv_types.h
+index c3517c0..2734565 100644
+--- a/drivers/staging/rtl8188eu/include/drv_types.h
++++ b/drivers/staging/rtl8188eu/include/drv_types.h
+@@ -128,7 +128,8 @@ struct dvobj_priv {
+ static inline struct device *dvobj_to_dev(struct dvobj_priv *dvobj)
+ {
+ 	/* todo: get interface type from dvobj and the return
+-	 * the dev accordingly */
++	 * the dev accordingly
++	 */
+ 	return &dvobj->pusbintf->dev;
+ };
+ 
+diff --git a/drivers/staging/rtl8188eu/include/hal_intf.h b/drivers/staging/rtl8188eu/include/hal_intf.h
+index dfdbd02..da4ee15 100644
+--- a/drivers/staging/rtl8188eu/include/hal_intf.h
++++ b/drivers/staging/rtl8188eu/include/hal_intf.h
+@@ -96,9 +96,11 @@ enum hw_variables {
+ 	HW_VAR_FIFO_CLEARN_UP,
+ 	HW_VAR_CHECK_TXBUF,
+ 	HW_VAR_APFM_ON_MAC, /* Auto FSM to Turn On, include clock, isolation,
+-			     * power control for MAC only */
++			     * power control for MAC only
++			     */
+ 	/*  The valid upper nav range for the HW updating, if the true value is
+-	 *  larger than the upper range, the HW won't update it. */
++	 *  larger than the upper range, the HW won't update it.
++	 */
+ 	/*  Unit in microsecond. 0 means disable this function. */
+ 	HW_VAR_NAV_UPPER,
+ 	HW_VAR_RPT_TIMER_SETTING,
+diff --git a/drivers/staging/rtl8188eu/include/ieee80211.h b/drivers/staging/rtl8188eu/include/ieee80211.h
+index 284db7d..5075cb4 100644
+--- a/drivers/staging/rtl8188eu/include/ieee80211.h
++++ b/drivers/staging/rtl8188eu/include/ieee80211.h
+@@ -276,12 +276,13 @@ struct sta_data {
+ 
+ #define IEEE80211_DATA_LEN		2304
+ /* Maximum size for the MA-UNITDATA primitive, 802.11 standard section
+-   6.2.1.1.2.
++ * 6.2.1.1.2.
+ 
+-   The figure in section 7.1.2 suggests a body size of up to 2312
+-   bytes is allowed, which is a bit confusing, I suspect this
+-   represents the 2304 bytes of real data, plus a possible 8 bytes of
+-   WEP IV and ICV. (this interpretation suggested by Ramiro Barreiro) */
++ * The figure in section 7.1.2 suggests a body size of up to 2312
++ * bytes is allowed, which is a bit confusing, I suspect this
++ * represents the 2304 bytes of real data, plus a possible 8 bytes of
++ * WEP IV and ICV. (this interpretation suggested by Ramiro Barreiro)
++ */
+ 
+ 
+ #define IEEE80211_HLEN			30
+@@ -423,7 +424,8 @@ struct ieee80211_snap_hdr {
+ /* IEEE 802.11 requires that STA supports concurrent reception of at least
+  * three fragmented frames. This define can be increased to support more
+  * concurrent frames, but it should be noted that each entry can consume about
+- * 2 kB of RAM and increasing cache size will slow down frame reassembly. */
++ * 2 kB of RAM and increasing cache size will slow down frame reassembly.
++ */
+ #define IEEE80211_FRAG_CACHE_LEN 4
+ 
+ #define SEC_KEY_1	(1<<0)
+@@ -451,7 +453,8 @@ struct ieee80211_snap_hdr {
+ /* MAX_RATES_LENGTH needs to be 12.  The spec says 8, and many APs
+  * only use 8, and then use extended rates for the remaining supported
+  * rates.  Other APs, however, stick all of their supported rates on the
+- * main rates information element... */
++ * main rates information element...
++ */
+ #define MAX_RATES_LENGTH		((u8)12)
+ #define MAX_RATES_EX_LENGTH		((u8)16)
+ #define MAX_NETWORK_COUNT		128
+@@ -473,11 +476,11 @@ struct ieee80211_snap_hdr {
+ 
+ #define IW_ESSID_MAX_SIZE 32
+ /*
+-join_res:
+--1: authentication fail
+--2: association fail
+-> 0: TID
+-*/
++ * join_res:
++ * -1: authentication fail
++ * -2: association fail
++ * > 0: TID
++ */
+ 
+ enum ieee80211_state {
+ 	/* the card is not linked at all */
+@@ -615,7 +618,8 @@ enum rtw_ieee80211_back_parties {
+ };
+ 
+ #define OUI_MICROSOFT 0x0050f2 /* Microsoft (also used in Wi-Fi specs)
+-				* 00:50:F2 */
++				* 00:50:F2
++				*/
+ #define WME_OUI_TYPE 2
+ #define WME_OUI_SUBTYPE_INFORMATION_ELEMENT 0
+ #define WME_OUI_SUBTYPE_PARAMETER_ELEMENT 1
+diff --git a/drivers/staging/rtl8188eu/include/odm.h b/drivers/staging/rtl8188eu/include/odm.h
+index 50e2673..dd44f45 100644
+--- a/drivers/staging/rtl8188eu/include/odm.h
++++ b/drivers/staging/rtl8188eu/include/odm.h
+@@ -36,7 +36,8 @@
+ /*  Mainly, it just retains last scan result and scan again. */
+ /*  After that, it compares the scan result to see which one gets better
+  *  RSSI. It selects antenna with better receiving power and returns better
+- *  scan result. */
++ *  scan result.
++ */
+ 
+ #define	TP_MODE			0
+ #define	RSSI_MODE		1
+@@ -173,10 +174,12 @@ struct rx_hpc {
+ 
+ /*  This indicates two different steps. */
+ /*  In SWAW_STEP_PEAK, driver needs to switch antenna and listen to
+- *  the signal on the air. */
++ *  the signal on the air.
++ */
+ /*  In SWAW_STEP_DETERMINE, driver just compares the signal captured in
+  *  SWAW_STEP_PEAK with original RSSI to determine if it is necessary to
+- *  switch antenna. */
++ *  switch antenna.
++ */
+ 
+ #define SWAW_STEP_PEAK		0
+ #define SWAW_STEP_DETERMINE	1
+@@ -265,7 +268,8 @@ struct odm_phy_status_info {
+ 	s8	RxPower; /*  in dBm Translate from PWdB */
+ 	s8	RecvSignalPower;/*  Real power in dBm for this packet, no
+ 				 * beautification and aggregation. Keep this raw
+-				 * info to be used for the other procedures. */
++				 * info to be used for the other procedures.
++				 */
+ 	u8	BTRxRSSIPercentage;
+ 	u8	SignalStrength; /*  in 0-100 index. */
+ 	u8	RxPwr[MAX_PATH_NUM_92CS];/* per-path's pwdb */
+@@ -567,7 +571,8 @@ struct odm_ra_info {
+ 	u8 PTPreRssi;	/*  if RSSI change 5% do PT */
+ 	u8 PTModeSS;	/*  decide whitch rate should do PT */
+ 	u8 RAstage;	/*  StageRA, decide how many times RA will be done
+-			 * between PT */
++			 * between PT
++			 */
+ 	u8 PTSmoothFactor;
+ };
+ 
+@@ -587,12 +592,14 @@ struct odm_rf_cal {
+ 	u8	TXPowercount;
+ 	bool	bTXPowerTracking;
+ 	u8	TxPowerTrackControl; /* for mp mode, turn off txpwrtracking
+-				      * as default */
++				      * as default
++				      */
+ 	u8	TM_Trigger;
+ 	u8	InternalPA5G[2];	/* pathA / pathB */
+ 
+ 	u8	ThermalMeter[2];    /* ThermalMeter, index 0 for RFIC0,
+-				     * and 1 for RFIC1 */
++				     * and 1 for RFIC1
++				     */
+ 	u8	ThermalValue;
+ 	u8	ThermalValue_LCK;
+ 	u8	ThermalValue_IQK;
+@@ -714,7 +721,8 @@ struct odm_dm_struct {
+ 	/*  ODM PCIE/USB/SDIO/GSPI = 0/1/2/3 */
+ 	u8	SupportInterface;
+ 	/*  ODM composite or independent. Bit oriented/ 92C+92D+ .... or any
+-	 *  other type = 1/2/3/... */
++	 *  other type = 1/2/3/...
++	 */
+ 	u32	SupportICType;
+ 	/*  Cut Version TestChip/A-cut/B-cut... = 0/1/2/3/... */
+ 	u8	CutVersion;
+@@ -788,19 +796,21 @@ struct odm_dm_struct {
+ 	bool	bBtHsOperation;	/*  BT HS mode is under progress */
+ 	u8	btHsDigVal;	/*  use BT rssi to decide the DIG value */
+ 	bool	bBtDisableEdcaTurbo;/* Under some condition, don't enable the
+-				     * EDCA Turbo */
++				     * EDCA Turbo
++				     */
+ 	bool	bBtBusy;			/*  BT is busy. */
+ /* CALL BY VALUE------------- */
+ 
+ 	/* 2 Define STA info. */
+ 	/*  _ODM_STA_INFO */
+-	/*  For MP, we need to reduce one array pointer for default port.?? */
++	/*  For MP, we need to reduce one array pointer for default port.??*/
+ 	struct sta_info *pODM_StaInfo[ODM_ASSOCIATE_ENTRY_NUM];
+ 
+ 	u16	CurrminRptTime;
+ 	struct odm_ra_info RAInfo[ODM_ASSOCIATE_ENTRY_NUM]; /* Use MacID as
+-			* array index. STA MacID=0,
+-			* VWiFi Client MacID={1, ODM_ASSOCIATE_ENTRY_NUM-1} */
++							     * array index. STA MacID=0,
++							     * VWiFi Client MacID={1, ODM_ASSOCIATE_ENTRY_NUM-1}
++							     */
+ 	/*  */
+ 	/*  2012/02/14 MH Add to share 88E ra with other SW team. */
+ 	/*  We need to colelct all support abilit to a proper area. */
+@@ -1029,9 +1039,11 @@ extern	u8 CCKSwingTable_Ch14[CCK_TABLE_SIZE][8];
+ /*  20100514 Joseph: Add definition for antenna switching test after link. */
+ /*  This indicates two different the steps. */
+ /*  In SWAW_STEP_PEAK, driver needs to switch antenna and listen to the
+- *  signal on the air. */
++ *  signal on the air.
++ */
+ /*  In SWAW_STEP_DETERMINE, driver just compares the signal captured in
+- *  SWAW_STEP_PEAK */
++ *  SWAW_STEP_PEAK
++ */
+ /*  with original RSSI to determine if it is necessary to switch antenna. */
+ #define SWAW_STEP_PEAK		0
+ #define SWAW_STEP_DETERMINE	1
+diff --git a/drivers/staging/rtl8188eu/include/pwrseq.h b/drivers/staging/rtl8188eu/include/pwrseq.h
+index addf90b..bd77a50 100644
+--- a/drivers/staging/rtl8188eu/include/pwrseq.h
++++ b/drivers/staging/rtl8188eu/include/pwrseq.h
+@@ -20,28 +20,28 @@
+ #include "pwrseqcmd.h"
+ 
+ /*
+-	Check document WM-20110607-Paul-RTL8188E_Power_Architecture-R02.vsd
+-	There are 6 HW Power States:
+-	0: POFF--Power Off
+-	1: PDN--Power Down
+-	2: CARDEMU--Card Emulation
+-	3: ACT--Active Mode
+-	4: LPS--Low Power State
+-	5: SUS--Suspend
+-
+-	The transition from different states are defined below
+-	TRANS_CARDEMU_TO_ACT
+-	TRANS_ACT_TO_CARDEMU
+-	TRANS_CARDEMU_TO_SUS
+-	TRANS_SUS_TO_CARDEMU
+-	TRANS_CARDEMU_TO_PDN
+-	TRANS_ACT_TO_LPS
+-	TRANS_LPS_TO_ACT
+-
+-	TRANS_END
+-
+-    PWR SEQ Version: rtl8188E_PwrSeq_V09.h
+-*/
++ *	Check document WM-20110607-Paul-RTL8188E_Power_Architecture-R02.vsd
++ *	There are 6 HW Power States:
++ *	0: POFF--Power Off
++ *	1: PDN--Power Down
++ *	2: CARDEMU--Card Emulation
++ *	3: ACT--Active Mode
++ *	4: LPS--Low Power State
++ *	5: SUS--Suspend
++ *
++ *	The transition from different states are defined below
++ *	TRANS_CARDEMU_TO_ACT
++ *	TRANS_ACT_TO_CARDEMU
++ *	TRANS_CARDEMU_TO_SUS
++ *	TRANS_SUS_TO_CARDEMU
++ *	TRANS_CARDEMU_TO_PDN
++ *	TRANS_ACT_TO_LPS
++ *	TRANS_LPS_TO_ACT
++ *
++ *	TRANS_END
++ *
++ *   PWR SEQ Version: rtl8188E_PwrSeq_V09.h
++ */
+ #define RTL8188E_TRANS_CARDEMU_TO_ACT_STEPS	10
+ #define RTL8188E_TRANS_ACT_TO_CARDEMU_STEPS	10
+ #define RTL8188E_TRANS_CARDEMU_TO_SUS_STEPS	10
+diff --git a/drivers/staging/rtl8188eu/include/rtl8188e_hal.h b/drivers/staging/rtl8188eu/include/rtl8188e_hal.h
+index 9330361..827cd4d 100644
+--- a/drivers/staging/rtl8188eu/include/rtl8188e_hal.h
++++ b/drivers/staging/rtl8188eu/include/rtl8188e_hal.h
+@@ -81,7 +81,8 @@ enum usb_rx_agg_mode {
+ 
+ #define MAX_RX_DMA_BUFFER_SIZE_88E				\
+       0x2400 /* 9k for 88E nornal chip , MaxRxBuff=10k-max(TxReportSize(64*8),
+-	      * WOLPattern(16*24)) */
++	      * WOLPattern(16*24))
++	      */
+ 
+ #define MAX_TX_REPORT_BUFFER_SIZE		0x0400 /*  1k */
+ 
+@@ -94,11 +95,13 @@ enum usb_rx_agg_mode {
+ #define TX_SELE_NQ			BIT(2)		/*  Normal Queue */
+ 
+ /*  Note: We will divide number of page equally for each queue other
+- *  than public queue! */
++ *  than public queue!
++ */
+ /*  22k = 22528 bytes = 176 pages (@page =  128 bytes) */
+ /*  must reserved about 7 pages for LPS =>  176-7 = 169 (0xA9) */
+ /*  2*BCN / 1*ps-poll / 1*null-data /1*prob_rsp /1*QOS null-data /1*BT QOS
+- *  null-data */
++ *  null-data
++ */
+ 
+ #define TX_TOTAL_PAGE_NUMBER_88E		0xA9/*   169 (21632=> 21k) */
+ 
+@@ -168,7 +171,8 @@ struct txpowerinfo24g {
+ #define		AVAILABLE_EFUSE_ADDR_88E(addr)			\
+ 	(addr < EFUSE_REAL_CONTENT_LEN_88E)
+ /*  To prevent out of boundary programming case, leave 1byte and program
+- *  full section */
++ *  full section
++ */
+ /*  9bytes + 1byt + 5bytes and pre 1byte. */
+ /*  For worst case: */
+ /*  | 2byte|----8bytes----|1byte|--7bytes--| 92D */
+@@ -293,7 +297,8 @@ struct hal_data_8188e {
+ 	u8	bDumpRxPkt;/* for debug */
+ 	u8	bDumpTxPkt;/* for debug */
+ 	u8	FwRsvdPageStartOffset; /* Reserve page start offset except
+-					*  beacon in TxQ. */
++					*  beacon in TxQ.
++					*/
+ 
+ 	/*  2010/08/09 MH Add CU power down mode. */
+ 	bool		pwrdown;
+@@ -307,7 +312,8 @@ struct hal_data_8188e {
+ 	u16	EfuseUsedBytes;
+ 
+ 	/*  Auto FSM to Turn On, include clock, isolation, power control
+-	 *  for MAC only */
++	 *  for MAC only
++	 */
+ 	u8	bMacPwrCtrlOn;
+ 
+ 	u32	UsbBulkOutSize;
+@@ -324,7 +330,8 @@ struct hal_data_8188e {
+ 	enum usb_rx_agg_mode UsbRxAggMode;
+ 	u8	UsbRxAggBlockCount;	/*  USB Block count. Block size is
+ 					 * 512-byte in high speed and 64-byte
+-					 * in full speed */
++					 * in full speed
++					 */
+ 	u8	UsbRxAggBlockTimeout;
+ 	u8	UsbRxAggPageCount;	/*  8192C DMA page count */
+ 	u8	UsbRxAggPageTimeout;
+diff --git a/drivers/staging/rtl8188eu/include/rtl8188e_spec.h b/drivers/staging/rtl8188eu/include/rtl8188e_spec.h
+index c33d312..03e5382 100644
+--- a/drivers/staging/rtl8188eu/include/rtl8188e_spec.h
++++ b/drivers/staging/rtl8188eu/include/rtl8188e_spec.h
+@@ -62,12 +62,15 @@
+ #define REG_HSIMR			0x0058
+ #define REG_HSISR			0x005c
+ #define REG_GPIO_PIN_CTRL_2		0x0060 /*  RTL8723 WIFI/BT/GPS
+-				 * Multi-Function GPIO Pin Control. */
++						* Multi-Function GPIO Pin Control.
++						*/
+ #define REG_GPIO_IO_SEL_2		0x0062 /*  RTL8723 WIFI/BT/GPS
+-				 * Multi-Function GPIO Select. */
++						* Multi-Function GPIO Select.
++						*/
+ #define REG_BB_PAD_CTRL			0x0064
+ #define REG_MULTI_FUNC_CTRL		0x0068 /*  RTL8723 WIFI/BT/GPS
+-				 * Multi-Function control source. */
++						* Multi-Function control source.
++						*/
+ #define REG_GPIO_OUTPUT			0x006c
+ #define REG_AFE_XTAL_CTRL_EXT		0x0078 /* RTL8188E */
+ #define REG_XCK_OUT_CTRL		0x007c /* RTL8188E */
+@@ -87,7 +90,8 @@
+ #define REG_HIMRE_88E			0x00B8
+ #define REG_HISRE_88E			0x00BC
+ #define REG_EFUSE_ACCESS		0x00CF	/*  Efuse access protection
+-						 * for RTL8723 */
++						 * for RTL8723
++						 */
+ #define REG_BIST_SCAN			0x00D0
+ #define REG_BIST_RPT			0x00D4
+ #define REG_BIST_ROM_RPT		0x00D8
+@@ -252,21 +256,24 @@
+ #define REG_TXPAUSE			0x0522
+ #define REG_DIS_TXREQ_CLR		0x0523
+ #define REG_RD_CTRL			0x0524
+-/*  Format for offset 540h-542h: */
+-/*	[3:0]:   TBTT prohibit setup in unit of 32us. The time for HW getting
+- *		 beacon content before TBTT. */
+-/*	[7:4]:   Reserved. */
+-/*	[19:8]:  TBTT prohibit hold in unit of 32us. The time for HW holding
+- *		 to send the beacon packet. */
+-/*	[23:20]: Reserved */
+-/*  Description: */
+-/*	              | */
+-/*      |<--Setup--|--Hold------------>| */
+-/*	--------------|---------------------- */
+-/*                 | */
+-/*                TBTT */
+-/*  Note: We cannot update beacon content to HW or send any AC packets during
+- *	  the time between Setup and Hold. */
++/*  Format for offset 540h-542h:
++ *	[3:0]:   TBTT prohibit setup in unit of 32us. The time for HW getting
++ *		 beacon content before TBTT.
++ *
++ *	[7:4]:   Reserved.
++ *	[19:8]:  TBTT prohibit hold in unit of 32us. The time for HW holding
++ *		 to send the beacon packet.
++ *
++ *	[23:20]: Reserved
++ *  Description:
++ *	              |
++ *      |<--Setup--|--Hold------------>|
++ *	--------------|----------------------
++ *                 |
++ *                TBTT
++ *  Note: We cannot update beacon content to HW or send any AC packets during
++ *	  the time between Setup and Hold.
++ */
+ #define REG_TBTT_PROHIBIT		0x0540
+ #define REG_RD_NAV_NXT			0x0544
+ #define REG_NAV_PROT_LEN		0x0546
+@@ -340,13 +347,14 @@
+ #define RXERR_RPT_RST			BIT(27)
+ #define _RXERR_RPT_SEL(type)		((type) << 28)
+ 
+-/*  Note: */
+-/*	The NAV upper value is very important to WiFi 11n 5.2.3 NAV test.
++/*  Note:
++ *	The NAV upper value is very important to WiFi 11n 5.2.3 NAV test.
+  *	The default value is always too small, but the WiFi TestPlan test
+  *	by 25,000 microseconds of NAV through sending CTS in the air.
+  *	We must update this value greater than 25,000 microseconds to pass
+  *	the item. The offset of NAV_UPPER in 8192C Spec is incorrect, and
+- *	the offset should be 0x0652. */
++ *	the offset should be 0x0652.
++ */
+ #define REG_NAV_UPPER			0x0652	/*  unit of 128 */
+ 
+ /* WMA, BA, CCX */
+@@ -455,7 +463,8 @@
+ /*  GPIO pins output value */
+ #define	GPIO_OUT			(REG_GPIO_PIN_CTRL+1)
+ /*  GPIO pins output enable when a bit is set to "1"; otherwise,
+- *  input is configured. */
++ *  input is configured.
++ */
+ #define	GPIO_IO_SEL			(REG_GPIO_PIN_CTRL+2)
+ #define	GPIO_MOD			(REG_GPIO_PIN_CTRL+3)
+ 
+@@ -475,13 +484,13 @@
+ 
+ /*   8192C (MSR) Media Status Register	(Offset 0x4C, 8 bits) */
+ /*
+-Network Type
+-00: No link
+-01: Link in ad hoc network
+-10: Link in infrastructure network
+-11: AP mode
+-Default: 00b.
+-*/
++ * Network Type
++ * 00: No link
++ * 01: Link in ad hoc network
++ * 10: Link in infrastructure network
++ * 11: AP mode
++ * Default: 00b.
++ */
+ #define	MSR_NOLINK			0x00
+ #define	MSR_ADHOC			0x01
+ #define	MSR_INFRA			0x02
+@@ -635,26 +644,27 @@ So the following defines for 92C is not entire!!!!!!
+ =====================================================================
+ =====================================================================*/
+ /*
+-Based on Datasheet V33---090401
+-Register Summary
+-Current IOREG MAP
+-0x0000h ~ 0x00FFh   System Configuration (256 Bytes)
+-0x0100h ~ 0x01FFh   MACTOP General Configuration (256 Bytes)
+-0x0200h ~ 0x027Fh   TXDMA Configuration (128 Bytes)
+-0x0280h ~ 0x02FFh   RXDMA Configuration (128 Bytes)
+-0x0300h ~ 0x03FFh   PCIE EMAC Reserved Region (256 Bytes)
+-0x0400h ~ 0x04FFh   Protocol Configuration (256 Bytes)
+-0x0500h ~ 0x05FFh   EDCA Configuration (256 Bytes)
+-0x0600h ~ 0x07FFh   WMAC Configuration (512 Bytes)
+-0x2000h ~ 0x3FFFh   8051 FW Download Region (8196 Bytes)
+-*/
++ * Based on Datasheet V33---090401
++ * Register Summary
++ * Current IOREG MAP
++ * 0x0000h ~ 0x00FFh   System Configuration (256 Bytes)
++ * 0x0100h ~ 0x01FFh   MACTOP General Configuration (256 Bytes)
++ * 0x0200h ~ 0x027Fh   TXDMA Configuration (128 Bytes)
++ * 0x0280h ~ 0x02FFh   RXDMA Configuration (128 Bytes)
++ * 0x0300h ~ 0x03FFh   PCIE EMAC Reserved Region (256 Bytes)
++ * 0x0400h ~ 0x04FFh   Protocol Configuration (256 Bytes)
++ * 0x0500h ~ 0x05FFh   EDCA Configuration (256 Bytes)
++ * 0x0600h ~ 0x07FFh   WMAC Configuration (512 Bytes)
++ * 0x2000h ~ 0x3FFFh   8051 FW Download Region (8196 Bytes)
++ */
+ /*		 8192C (TXPAUSE) transmission pause (Offset 0x522, 8 bits) */
+-/*  Note: */
+-/*	The bits of stopping AC(VO/VI/BE/BK) queue in datasheet
+- *	RTL8192S/RTL8192C are wrong, */
+-/*	the correct arragement is VO - Bit0, VI - Bit1, BE - Bit2,
+- *	and BK - Bit3. */
+-/*	8723 and 88E may be not correct either in the earlier version. */
++/*  Note:
++ *	The bits of stopping AC(VO/VI/BE/BK) queue in datasheet
++ *	RTL8192S/RTL8192C are wrong,
++ *	the correct arragement is VO - Bit0, VI - Bit1, BE - Bit2,
++ *	and BK - Bit3.
++ *	8723 and 88E may be not correct either in the earlier version.
++ */
+ #define		StopBecon			BIT(6)
+ #define		StopHigh			BIT(5)
+ #define		StopMgt				BIT(4)
+@@ -680,7 +690,8 @@ Current IOREG MAP
+ #define	RCR_AICV		BIT(9)	/* Accept ICV error packet */
+ #define	RCR_ACRC32		BIT(8)	/* Accept CRC32 error packet */
+ #define	RCR_CBSSID_BCN		BIT(7)	/* Accept BSSID match packet
+-					 * (Rx beacon, probe rsp) */
++					 * (Rx beacon, probe rsp)
++					 */
+ #define	RCR_CBSSID_DATA		BIT(6)	/* Accept BSSID match (Data)*/
+ #define	RCR_CBSSID		RCR_CBSSID_DATA	/* Accept BSSID match */
+ #define	RCR_APWRMGT		BIT(5)	/* Accept power management pkt*/
+@@ -1242,10 +1253,12 @@ Current IOREG MAP
+ 
+ /* 2REG_C2HEVT_CLEAR */
+ /*  Set by driver and notify FW that the driver has read
+- *  the C2H command message */
++ *  the C2H command message
++ */
+ #define	C2H_EVT_HOST_CLOSE	0x00
+ /*  Set by FW indicating that FW had set the C2H command
+- *  message and it's not yet read by driver. */
++ *  message and it's not yet read by driver.
++ */
+ #define C2H_EVT_FW_CLOSE	0xFF
+ 
+ /* 2REG_MULTI_FUNC_CTRL(For RTL8723 Only) */
+diff --git a/drivers/staging/rtl8188eu/include/rtw_cmd.h b/drivers/staging/rtl8188eu/include/rtw_cmd.h
+index f79feeb..2c026bf 100644
+--- a/drivers/staging/rtl8188eu/include/rtw_cmd.h
++++ b/drivers/staging/rtl8188eu/include/rtw_cmd.h
+@@ -97,13 +97,13 @@ enum RFINTFS {
+ };
+ 
+ /*
+-Caller Mode: Infra, Ad-HoC(C)
+-
+-Notes: To disconnect the current associated BSS
+-
+-Command Mode
+-
+-*/
++ * Caller Mode: Infra, Ad-HoC(C)
++ *
++ * Notes: To disconnect the current associated BSS
++ *
++ * Command Mode
++ *
++ */
+ struct disconnect_parm {
+ 	u32 deauth_timeout_ms;
+ };
+@@ -114,13 +114,13 @@ struct	setopmode_parm {
+ };
+ 
+ /*
+-Caller Mode: AP, Ad-HoC, Infra
+-
+-Notes: To ask RTL8711 performing site-survey
+-
+-Command-Event Mode
+-
+-*/
++ * Caller Mode: AP, Ad-HoC, Infra
++ *
++ * Notes: To ask RTL8711 performing site-survey
++ *
++ * Command-Event Mode
++ *
++ */
+ 
+ #define RTW_SSID_SCAN_AMOUNT 9 /*  for WEXT_CSCAN_AMOUNT 9 */
+ #define RTW_CHANNEL_SCAN_AMOUNT (14+37)
+@@ -133,13 +133,13 @@ struct sitesurvey_parm {
+ };
+ 
+ /*
+-Caller Mode: Any
+-
+-Notes: To set the auth type of RTL8711. open/shared/802.1x
+-
+-Command Mode
+-
+-*/
++ * Caller Mode: Any
++ *
++ * Notes: To set the auth type of RTL8711. open/shared/802.1x
++ *
++ * Command Mode
++ *
++ */
+ struct setauth_parm {
+ 	u8 mode;  /* 0: legacy open, 1: legacy shared 2: 802.1x */
+ 	u8 _1x;   /* 0: PSK, 1: TLS */
+@@ -147,40 +147,42 @@ struct setauth_parm {
+ };
+ 
+ /*
+-Caller Mode: Infra
+-
+-a. algorithm: wep40, wep104, tkip & aes
+-b. keytype: grp key/unicast key
+-c. key contents
+-
+-when shared key ==> keyid is the camid
+-when 802.1x ==> keyid [0:1] ==> grp key
+-when 802.1x ==> keyid > 2 ==> unicast key
+-
+-*/
++ * Caller Mode: Infra
++ *
++ * a. algorithm: wep40, wep104, tkip & aes
++ * b. keytype: grp key/unicast key
++ * c. key contents
++ *
++ * when shared key ==> keyid is the camid
++ * when 802.1x ==> keyid [0:1] ==> grp key
++ * when 802.1x ==> keyid > 2 ==> unicast key
++ *
++ */
+ struct setkey_parm {
+ 	u8	algorithm;	/* could be none, wep40, TKIP, CCMP, wep104 */
+ 	u8	keyid;
+ 	u8	grpkey;		/* 1: this is the grpkey for 802.1x.
+-				 * 0: this is the unicast key for 802.1x */
++				 * 0: this is the unicast key for 802.1x
++				 */
+ 	u8	set_tx;		/* 1: main tx key for wep. 0: other key. */
+ 	u8	key[16];	/* this could be 40 or 104 */
+ };
+ 
+ /*
+-When in AP or Ad-Hoc mode, this is used to
+-allocate an sw/hw entry for a newly associated sta.
+-
+-Command
+-
+-when shared key ==> algorithm/keyid
+-
+-*/
++ * When in AP or Ad-Hoc mode, this is used to
++ * allocate an sw/hw entry for a newly associated sta.
++ *
++ * Command
++ *
++ * when shared key ==> algorithm/keyid
++ *
++ */
+ struct set_stakey_parm {
+ 	u8	addr[ETH_ALEN];
+ 	u8	algorithm;
+ 	u8	id;/* currently for erasing cam entry if
+-		    * algorithm == _NO_PRIVACY_ */
++		    * algorithm == _NO_PRIVACY_
++		    */
+ 	u8	key[16];
+ };
+ 
+@@ -191,15 +193,15 @@ struct set_stakey_rsp {
+ };
+ 
+ /*
+-Caller Ad-Hoc/AP
+-
+-Command -Rsp(AID == CAMID) mode
+-
+-This is to force fw to add an sta_data entry per driver's request.
+-
+-FW will write an cam entry associated with it.
+-
+-*/
++ * Caller Ad-Hoc/AP
++ *
++ * Command -Rsp(AID == CAMID) mode
++ *
++ * This is to force fw to add an sta_data entry per driver's request.
++ *
++ * FW will write an cam entry associated with it.
++ *
++ */
+ struct set_assocsta_parm {
+ 	u8	addr[ETH_ALEN];
+ };
+@@ -210,55 +212,57 @@ struct set_assocsta_rsp {
+ };
+ 
+ /*
+-	Notes: This command is used for H2C/C2H loopback testing
+-
+-	mac[0] == 0
+-	==> CMD mode, return H2C_SUCCESS.
+-	The following condition must be true under CMD mode
+-		mac[1] == mac[4], mac[2] == mac[3], mac[0]=mac[5]= 0;
+-		s0 == 0x1234, s1 == 0xabcd, w0 == 0x78563412, w1 == 0x5aa5def7;
+-		s2 == (b1 << 8 | b0);
+-
+-	mac[0] == 1
+-	==> CMD_RSP mode, return H2C_SUCCESS_RSP
+-
+-	The rsp layout shall be:
+-	rsp:			parm:
+-		mac[0]  =   mac[5];
+-		mac[1]  =   mac[4];
+-		mac[2]  =   mac[3];
+-		mac[3]  =   mac[2];
+-		mac[4]  =   mac[1];
+-		mac[5]  =   mac[0];
+-		s0		=   s1;
+-		s1		=   swap16(s0);
+-		w0		=	swap32(w1);
+-		b0		=	b1
+-		s2		=	s0 + s1
+-		b1		=	b0
+-		w1		=	w0
+-
+-	mac[0] ==	2
+-	==> CMD_EVENT mode, return	H2C_SUCCESS
+-	The event layout shall be:
+-	event:			parm:
+-		mac[0]  =   mac[5];
+-		mac[1]  =   mac[4];
+-		mac[2]  =   event's seq no, starting from 1 to parm's marc[3]
+-		mac[3]  =   mac[2];
+-		mac[4]  =   mac[1];
+-		mac[5]  =   mac[0];
+-		s0		=   swap16(s0) - event.mac[2];
+-		s1		=   s1 + event.mac[2];
+-		w0		=	swap32(w0);
+-		b0		=	b1
+-		s2		=	s0 + event.mac[2]
+-		b1		=	b0
+-		w1		=	swap32(w1) - event.mac[2];
+-
+-		parm->mac[3] is the total event counts that host requested.
+-	event will be the same with the cmd's param.
+-*/
++ *	Notes: This command is used for H2C/C2H loopback testing
++ *
++ *	mac[0] == 0
++ *	==> CMD mode, return H2C_SUCCESS.
++ *	The following condition must be true under CMD mode
++ *		mac[1] == mac[4], mac[2] == mac[3], mac[0]=mac[5]= 0;
++ *		s0 == 0x1234, s1 == 0xabcd, w0 == 0x78563412, w1 == 0x5aa5def7;
++ *		s2 == (b1 << 8 | b0);
++ *
++ *	mac[0] == 1
++ *	==> CMD_RSP mode, return H2C_SUCCESS_RSP
++ *
++ *	The rsp layout shall be:
++ *	rsp:			parm:
++ *		mac[0]  =   mac[5];
++ *		mac[1]  =   mac[4];
++ *		mac[2]  =   mac[3];
++ *		mac[3]  =   mac[2];
++ *		mac[4]  =   mac[1];
++ *		mac[5]  =   mac[0];
++ *		s0		=   s1;
++ *		s1		=   swap16(s0);
++ *		w0		=	swap32(w1);
++ *		b0		=	b1
++ *		s2		=	s0 + s1
++ *		b1		=	b0
++ *		w1		=	w0
++ *
++ *	mac[0] ==	2
++ *	==> CMD_EVENT mode, return	H2C_SUCCESS
++ *	The event layout shall be:
++ *	event:			parm:
++ *		mac[0]  =   mac[5];
++ *		mac[1]  =   mac[4];
++ *		mac[2]  =   event's seq no, starting from 1 to parm's marc[3]
++ *		mac[2]  =   event's seq no, starting from 1 to parm's marc[3]
++ *		mac[2]  =   event's seq no, starting from 1 to parm's marc[3]
++ *		mac[3]  =   mac[2];
++ *		mac[4]  =   mac[1];
++ *		mac[5]  =   mac[0];
++ *		s0		=   swap16(s0) - event.mac[2];
++ *		s1		=   s1 + event.mac[2];
++ *		w0		=	swap32(w0);
++ *		b0		=	b1
++ *		s2		=	s0 + event.mac[2]
++ *		b1		=	b0
++ *		w1		=	swap32(w1) - event.mac[2];
++ *
++ *		parm->mac[3] is the total event counts that host requested.
++ *	event will be the same with the cmd's param.
++ */
+ 
+ /*  CMD param Format for driver extra cmd handler */
+ struct drvextra_cmd_parm {
+@@ -285,15 +289,15 @@ struct SetChannelPlan_param {
+ };
+ 
+ /*
+-
+-Result:
+-0x00: success
+-0x01: success, and check Response.
+-0x02: cmd ignored due to duplicated sequcne number
+-0x03: cmd dropped due to invalid cmd code
+-0x04: reserved.
+-
+-*/
++ *
++ * Result:
++ * 0x00: success
++ * 0x01: success, and check Response.
++ * 0x02: cmd ignored due to duplicated sequcne number
++ * 0x03: cmd dropped due to invalid cmd code
++ * 0x04: reserved.
++ *
++ */
+ 
+ #define H2C_SUCCESS		0x00
+ #define H2C_SUCCESS_RSP		0x01
+diff --git a/drivers/staging/rtl8188eu/include/rtw_eeprom.h b/drivers/staging/rtl8188eu/include/rtw_eeprom.h
+index 5dd7384..11d1cb6 100644
+--- a/drivers/staging/rtl8188eu/include/rtw_eeprom.h
++++ b/drivers/staging/rtl8188eu/include/rtw_eeprom.h
+@@ -55,7 +55,8 @@
+ /*  This variable is initiailzed through EEPROM or registry, */
+ /*  however, its definition may be different with that in EEPROM for */
+ /*  EEPROM size consideration. So, we have to perform proper translation
+- *  between them. */
++ *  between them.
++ */
+ /*  Besides, CustomerID of registry has precedence of that of EEPROM. */
+ /*  defined below. 060703, by rcnjko. */
+ enum RT_CUSTOMER_ID {
+@@ -79,7 +80,8 @@ enum RT_CUSTOMER_ID {
+ 	RT_CID_819x_Sitecom = 17,
+ 	RT_CID_CCX = 18, /*  It's set under CCX logo test and isn't demanded
+ 			  * for CCX functions, but for test behavior like retry
+-			  * limit and tx report. By Bruce, 2009-02-17. */
++			  * limit and tx report. By Bruce, 2009-02-17.
++			  */
+ 	RT_CID_819x_Lenovo = 19,
+ 	RT_CID_819x_QMI = 20,
+ 	RT_CID_819x_Edimax_Belkin = 21,
+@@ -89,7 +91,8 @@ enum RT_CUSTOMER_ID {
+ 	RT_CID_819x_Acer = 25,
+ 	RT_CID_819x_AzWave_ASUS = 26,
+ 	RT_CID_819x_AzWave = 27, /*  For AzWave in PCIe,i
+-				  * The ID is AzWave use and not only Asus */
++				  * The ID is AzWave use and not only Asus
++				  */
+ 	RT_CID_819x_HP = 28,
+ 	RT_CID_819x_WNC_COREGA = 29,
+ 	RT_CID_819x_Arcadyan_Belkin = 30,
+diff --git a/drivers/staging/rtl8188eu/include/rtw_event.h b/drivers/staging/rtl8188eu/include/rtw_event.h
+index 1c5ebde..e798e79 100644
+--- a/drivers/staging/rtl8188eu/include/rtw_event.h
++++ b/drivers/staging/rtl8188eu/include/rtw_event.h
+@@ -22,42 +22,42 @@
+ #include <linux/sem.h>
+ 
+ /*
+-Used to report a bss has been scanned
+-*/
++ * Used to report a bss has been scanned
++ */
+ struct survey_event	{
+ 	struct wlan_bssid_ex bss;
+ };
+ 
+ /*
+-Used to report that the requested site survey has been done.
+-
+-bss_cnt indicates the number of bss that has been reported.
+-
+-
+-*/
++ * Used to report that the requested site survey has been done.
++ *
++ * bss_cnt indicates the number of bss that has been reported.
++ *
++ *
++ */
+ struct surveydone_event {
+ 	unsigned int	bss_cnt;
+ 
+ };
+ 
+ /*
+-Used to report the link result of joinning the given bss
+-
+-
+-join_res:
+--1: authentication fail
+--2: association fail
+-> 0: TID
+-
+-*/
++ * Used to report the link result of joinning the given bss
++ *
++ *
++ * join_res:
++ * -1: authentication fail
++ * -2: association fail
++ * > 0: TID
++ *
++ */
+ struct joinbss_event {
+ 	struct	wlan_network	network;
+ };
+ 
+ /*
+-Used to report a given STA has joinned the created BSS.
+-It is used in AP/Ad-HoC(M) mode.
+-*/
++ * Used to report a given STA has joinned the created BSS.
++ * It is used in AP/Ad-HoC(M) mode.
++ */
+ 
+ struct stassoc_event {
+ 	unsigned char macaddr[6];
+diff --git a/drivers/staging/rtl8188eu/include/rtw_led.h b/drivers/staging/rtl8188eu/include/rtw_led.h
+index 607d1ba..c871c65 100644
+--- a/drivers/staging/rtl8188eu/include/rtw_led.h
++++ b/drivers/staging/rtl8188eu/include/rtw_led.h
+@@ -58,7 +58,8 @@ struct LED_871x {
+ 
+ 	enum LED_STATE_871x	CurrLedState; /*  Current LED state. */
+ 	enum LED_STATE_871x	BlinkingLedState; /*  Next state for blinking,
+-				   * either RTW_LED_ON or RTW_LED_OFF are. */
++						   * either RTW_LED_ON or RTW_LED_OFF are.
++						   */
+ 
+ 	u8 bLedOn; /*  true if LED is ON, false if LED is OFF. */
+ 
+@@ -75,7 +76,8 @@ struct LED_871x {
+ 	u8 bLedLinkBlinkInProgress;
+ 	u8 bLedScanBlinkInProgress;
+ 	struct work_struct BlinkWorkItem; /* Workitem used by BlinkTimer to
+-					   * manipulate H/W to blink LED. */
++					   * manipulate H/W to blink LED.
++					   */
+ };
+ 
+ #define IS_LED_WPS_BLINKING(_LED_871x)					\
+diff --git a/drivers/staging/rtl8188eu/include/rtw_mlme.h b/drivers/staging/rtl8188eu/include/rtw_mlme.h
+index 5c5d0ae..3a8ed8a 100644
+--- a/drivers/staging/rtl8188eu/include/rtw_mlme.h
++++ b/drivers/staging/rtl8188eu/include/rtw_mlme.h
+@@ -70,25 +70,28 @@ enum rt_scan_type {
+ enum SCAN_RESULT_TYPE {
+ 	SCAN_RESULT_P2P_ONLY = 0,	/* Will return all the P2P devices. */
+ 	SCAN_RESULT_ALL = 1,		/* Will return all the scanned device,
+-					 * include AP. */
++					 * include AP.
++					 */
+ 	SCAN_RESULT_WFD_TYPE = 2	/* Will just return the correct WFD
+-					 * device. */
++					 * device.
++					 */
+ 					/* If this device is Miracast sink
+ 					 * device, it will just return all the
+-					 * Miracast source devices. */
++					 * Miracast source devices.
++					 */
+ };
+ 
+ /*
+-there are several "locks" in mlme_priv,
+-since mlme_priv is a shared resource between many threads,
+-like ISR/Call-Back functions, the OID handlers, and even timer functions.
+-
+-Each _queue has its own locks, already.
+-Other items are protected by mlme_priv.lock.
+-
+-To avoid possible dead lock, any thread trying to modifiying mlme_priv
+-SHALL not lock up more than one lock at a time!
+-*/
++ * there are several "locks" in mlme_priv,
++ * since mlme_priv is a shared resource between many threads,
++ * like ISR/Call-Back functions, the OID handlers, and even timer functions.
++ *
++ * Each _queue has its own locks, already.
++ * Other items are protected by mlme_priv.lock.
++ *
++ * To avoid possible dead lock, any thread trying to modifiying mlme_priv
++ * SHALL not lock up more than one lock at a time!
++ */
+ 
+ #define traffic_threshold	10
+ #define	traffic_scan_period	500
+@@ -102,9 +105,11 @@ struct rt_link_detect {
+ 	bool	bRxBusyTraffic;
+ 	bool	bHigherBusyTraffic; /*  For interrupt migration purpose. */
+ 	bool	bHigherBusyRxTraffic; /* We may disable Tx interrupt according
+-				       * to Rx traffic. */
++				       * to Rx traffic.
++				       */
+ 	bool	bHigherBusyTxTraffic; /* We may disable Tx interrupt according
+-				       * to Tx traffic. */
++				       * to Tx traffic.
++				       */
+ };
+ 
+ struct mlme_priv {
+@@ -164,7 +169,8 @@ struct mlme_priv {
+ 
+ #if defined(CONFIG_88EU_AP_MODE)
+ 	/* Number of associated Non-ERP stations (i.e., stations using 802.11b
+-	 * in 802.11g BSS) */
++	 * in 802.11g BSS)
++	 */
+ 	int num_sta_non_erp;
+ 
+ 	/* Number of associated stations that do not support Short Slot Time */
+diff --git a/drivers/staging/rtl8188eu/include/rtw_mlme_ext.h b/drivers/staging/rtl8188eu/include/rtw_mlme_ext.h
+index 1b1caaf..84752bd 100644
+--- a/drivers/staging/rtl8188eu/include/rtw_mlme_ext.h
++++ b/drivers/staging/rtl8188eu/include/rtw_mlme_ext.h
+@@ -101,9 +101,11 @@ extern unsigned char WMM_PARA_OUI[];
+ /*  Channel Plan Type. */
+ /*  Note: */
+ /*	We just add new channel plan when the new channel plan is different
+- *      from any of the following channel plan. */
++ *      from any of the following channel plan.
++ */
+ /*	If you just want to customize the actions(scan period or join actions)
+- *      about one of the channel plan, */
++ *      about one of the channel plan,
++ */
+ /*	customize them in struct rt_channel_info in the RT_CHANNEL_LIST. */
+ enum RT_CHANNEL_DOMAIN {
+ 	/*  old channel plan mapping =====  */
+@@ -319,7 +321,8 @@ struct mlme_ext_info {
+ 	u32	authModeToggle;
+ 	u32	enc_algo;/* encrypt algorithm; */
+ 	u32	key_index;	/*  this is only valid for legacy wep,
+-				 *  0~3 for key id. */
++				 *  0~3 for key id.
++				 */
+ 	u32	iv;
+ 	u8	chg_txt[128];
+ 	u16	aid;
+@@ -353,16 +356,19 @@ struct mlme_ext_info {
+ 	struct HT_info_element	HT_info;
+ 	struct wlan_bssid_ex	network;/* join network or bss_network,
+ 					 * if in ap mode, it is the same
+-					 * as cur_network.network */
++					 * as cur_network.network
++					 */
+ 	struct FW_Sta_Info	FW_sta_info[NUM_STA];
+ };
+ 
+ /*  The channel information about this channel including joining,
+- *  scanning, and power constraints. */
++ *  scanning, and power constraints.
++ */
+ struct rt_channel_info {
+ 	u8	ChannelNum;	/*  The channel number. */
+ 	enum rt_scan_type ScanType;	/*  Scan type such as passive
+-					 *  or active scan. */
++					 *  or active scan.
++					 */
+ 	u32	rx_count;
+ };
+ 
+@@ -413,7 +419,8 @@ struct mlme_ext_priv {
+ 	unsigned char	cur_wireless_mode;	/*  NETWORK_TYPE */
+ 
+ 	unsigned char	oper_channel; /* saved chan info when call
+-				       * set_channel_bw */
++				       * set_channel_bw
++				       */
+ 	unsigned char	oper_bwmode;
+ 	unsigned char	oper_ch_offset;/* PRIME_CHNL_OFFSET */
+ 
+@@ -427,7 +434,8 @@ struct mlme_ext_priv {
+ 	struct mlme_ext_info	mlmext_info;/* for sta/adhoc mode, including
+ 					     * current scan/connecting/connected
+ 					     * related info. For ap mode,
+-					     * network includes ap's cap_info*/
++					     * network includes ap's cap_info
++					     */
+ 	struct timer_list survey_timer;
+ 	struct timer_list link_timer;
+ 	u16	chan_scan_time;
+@@ -690,7 +698,8 @@ enum rtw_c2h_event {
+ 	_C2HBCN_EVT_,
+ 	_ReportPwrState_EVT_,	/* filen: only for PCIE, USB */
+ 	_CloseRF_EVT_,		/* filen: only for PCIE,
+-					 * work around ASPM */
++				 * work around ASPM
++				 */
+ 	MAX_C2HEVT
+ };
+ 
+diff --git a/drivers/staging/rtl8188eu/include/rtw_mp_phy_regdef.h b/drivers/staging/rtl8188eu/include/rtw_mp_phy_regdef.h
+index 4872a21..aa353ae 100644
+--- a/drivers/staging/rtl8188eu/include/rtw_mp_phy_regdef.h
++++ b/drivers/staging/rtl8188eu/include/rtw_mp_phy_regdef.h
+@@ -521,14 +521,16 @@
+ #define	bCCKRxPhase			0x4
+ #if (RTL92SE_FPGA_VERIFY == 1)
+ #define	bLSSIReadAddress		0x3f000000   /* LSSI "Read" Address
+-					Reg 0x824 rFPGA0_XA_HSSIParameter2 */
++						      * Reg 0x824 rFPGA0_XA_HSSIParameter2
++						      */
+ #else
+ #define	bLSSIReadAddress		0x7f800000   /*  T65 RF */
+ #endif
+ #define	bLSSIReadEdge			0x80000000   /* LSSI "Read" edge signal */
+ #if (RTL92SE_FPGA_VERIFY == 1)
+ #define	bLSSIReadBackData		0xfff	/*  Reg 0x8a0
+-					 rFPGA0_XA_LSSIReadBack */
++						 * rFPGA0_XA_LSSIReadBack
++						 */
+ #else
+ #define	bLSSIReadBackData		0xfffff	/*  T65 RF */
+ #endif
+@@ -548,13 +550,16 @@
+ #define	bDA6Swing			0x380000
+ 
+ #define	bADClkPhase			0x4000000	/*  Reg 0x880
+-	 rFPGA0_AnalogParameter1 20/40 CCK support switch 40/80 BB MHZ */
++							 * rFPGA0_AnalogParameter1 20/40 CCK
++							 * support switch 40/80 BB MHZ
++							 */
+ 
+ #define	b80MClkDelay			0x18000000	/*  Useless */
+ #define	bAFEWatchDogEnable		0x20000000
+ 
+ #define	bXtalCap01			0xc0000000	/*  Reg 0x884
+-	 rFPGA0_AnalogParameter2 Crystal cap */
++							 * rFPGA0_AnalogParameter2 Crystal cap
++							 */
+ #define	bXtalCap23			0x3
+ #define	bXtalCap92x			0x0f000000
+ #define		bXtalCap		0x0f000000
+@@ -598,7 +603,8 @@
+ #define	bCCKTxOn			0x1
+ #define	bOFDMTxOn			0x2
+ #define	bDebugPage			0xfff  /* reset debug page and HWord,
+-						* LWord */
++						* LWord
++						*/
+ #define	bDebugItem			0xff   /* reset debug page and LWord */
+ #define	bAntL				0x10
+ #define	bAntNonHT			0x100
+@@ -1071,7 +1077,8 @@
+ #define RCR_EnCS1	BIT(29)		/*  enable carrier sense method 1 */
+ #define RCR_EnCS2	BIT(30)		/*  enable carrier sense method 2 */
+ #define RCR_OnlyErlPkt	BIT(31)		/*  Rx Early mode is performed for
+-					 *  packet size greater than 1536 */
++					 *  packet size greater than 1536
++					 */
+ 
+ /*--------------------------Define Parameters-------------------------------*/
+ 
+diff --git a/drivers/staging/rtl8188eu/include/rtw_pwrctrl.h b/drivers/staging/rtl8188eu/include/rtw_pwrctrl.h
+index 18a9e74..f39e90c 100644
+--- a/drivers/staging/rtl8188eu/include/rtw_pwrctrl.h
++++ b/drivers/staging/rtl8188eu/include/rtw_pwrctrl.h
+@@ -51,11 +51,11 @@ enum power_mgnt {
+ };
+ 
+ /*
+-	BIT[2:0] = HW state
+-	BIT[3] = Protocol PS state,   0: register active state,
+-				      1: register sleep state
+-	BIT[4] = sub-state
+-*/
++ *	BIT[2:0] = HW state
++ *	BIT[3] = Protocol PS state,   0: register active state,
++ *				      1: register sleep state
++ *	BIT[4] = sub-state
++ */
+ 
+ #define PS_DPS			BIT(0)
+ #define PS_LCLK			(PS_DPS)
+@@ -115,9 +115,11 @@ enum rt_rf_power_state {
+ #define	RT_RF_OFF_LEVL_FREE_FW		BIT(4)	/* FW free, re-download the FW*/
+ #define	RT_RF_OFF_LEVL_FW_32K		BIT(5)	/* FW in 32k */
+ #define	RT_RF_PS_LEVEL_ALWAYS_ASPM	BIT(6)	/* Always enable ASPM and Clock
+-						 * Req in initialization. */
++						 * Req in initialization.
++						 */
+ #define	RT_RF_LPS_DISALBE_2R		BIT(30)	/* When LPS is on, disable 2R
+-						 * if no packet is RX or TX. */
++						 * if no packet is RX or TX.
++						 */
+ #define	RT_RF_LPS_LEVEL_ASPM		BIT(31)	/* LPS with ASPM */
+ 
+ #define	RT_IN_PS_LEVEL(ppsc, _PS_FLAG)				\
+@@ -145,7 +147,8 @@ struct pwrctrl_priv {
+ 	struct mutex mutex_lock;
+ 	volatile u8 rpwm; /*  requested power state for fw */
+ 	volatile u8 cpwm; /*  fw current power state. updated when
+-			   * 1. read from HCPWM 2. driver lowers power level */
++			   * 1. read from HCPWM 2. driver lowers power level
++			   */
+ 	volatile u8 tog; /*  toggling */
+ 	volatile u8 cpwm_tog; /*  toggling */
+ 
+@@ -170,7 +173,8 @@ struct pwrctrl_priv {
+ 
+ 	u8	ips_mode;
+ 	u8	ips_mode_req;	/*  used to accept the mode setting request,
+-				 *  will update to ipsmode later */
++				 *  will update to ipsmode later
++				 */
+ 	uint bips_processing;
+ 	unsigned long ips_deny_time; /* will deny IPS when system time less than this */
+ 	u8 ps_processing; /* temp used to mark whether in rtw_ps_processor */
+diff --git a/drivers/staging/rtl8188eu/include/rtw_qos.h b/drivers/staging/rtl8188eu/include/rtw_qos.h
+index 45a77f6..576dff6 100644
+--- a/drivers/staging/rtl8188eu/include/rtw_qos.h
++++ b/drivers/staging/rtl8188eu/include/rtw_qos.h
+@@ -19,7 +19,8 @@
+ 
+ struct	qos_priv	{
+ 	unsigned int	  qos_option;	/* bit mask option: u-apsd,
+-					 * s-apsd, ts, block ack... */
++					 * s-apsd, ts, block ack...
++					 */
+ };
+ 
+ #endif	/* _RTL871X_QOS_H_ */
+diff --git a/drivers/staging/rtl8188eu/include/rtw_recv.h b/drivers/staging/rtl8188eu/include/rtw_recv.h
+index 1211508..2dfc1ed 100644
+--- a/drivers/staging/rtl8188eu/include/rtw_recv.h
++++ b/drivers/staging/rtl8188eu/include/rtw_recv.h
+@@ -46,23 +46,23 @@ struct recv_reorder_ctrl {
+ struct	stainfo_rxcache	{
+ 	u16	tid_rxseq[16];
+ /*
+-	unsigned short	tid0_rxseq;
+-	unsigned short	tid1_rxseq;
+-	unsigned short	tid2_rxseq;
+-	unsigned short	tid3_rxseq;
+-	unsigned short	tid4_rxseq;
+-	unsigned short	tid5_rxseq;
+-	unsigned short	tid6_rxseq;
+-	unsigned short	tid7_rxseq;
+-	unsigned short	tid8_rxseq;
+-	unsigned short	tid9_rxseq;
+-	unsigned short	tid10_rxseq;
+-	unsigned short	tid11_rxseq;
+-	unsigned short	tid12_rxseq;
+-	unsigned short	tid13_rxseq;
+-	unsigned short	tid14_rxseq;
+-	unsigned short	tid15_rxseq;
+-*/
++ *	unsigned short	tid0_rxseq;
++ *	unsigned short	tid1_rxseq;
++ *	unsigned short	tid2_rxseq;
++ *	unsigned short	tid3_rxseq;
++ *	unsigned short	tid4_rxseq;
++ *	unsigned short	tid5_rxseq;
++ *	unsigned short	tid6_rxseq;
++ *	unsigned short	tid7_rxseq;
++ *	unsigned short	tid8_rxseq;
++ *	unsigned short	tid9_rxseq;
++ *	unsigned short	tid10_rxseq;
++ *	unsigned short	tid11_rxseq;
++ *	unsigned short	tid12_rxseq;
++ *	unsigned short	tid13_rxseq;
++ *	unsigned short	tid14_rxseq;
++ *	unsigned short	tid15_rxseq;
++ */
+ };
+ 
+ struct signal_stat {
+@@ -79,7 +79,8 @@ struct phy_info {
+ 	u8	RxMIMOSignalStrength[MAX_PATH_NUM_92CS];/*  in 0~100 index */
+ 	s8	RxPower; /*  in dBm Translate from PWdB */
+ /*  Real power in dBm for this packet, no beautification and aggregation.
+- * Keep this raw info to be used for the other procedures. */
++ * Keep this raw info to be used for the other procedures.
++ */
+ 	s8	recvpower;
+ 	u8	BTRxRSSIPercentage;
+ 	u8	SignalStrength; /*  in 0-100 index. */
+@@ -106,7 +107,8 @@ struct rx_pkt_attrib {
+ 	u8	privacy; /* in frame_ctrl field */
+ 	u8	bdecrypted;
+ 	u8	encrypt; /* when 0 indicate no encrypt. when non-zero,
+-			  * indicate the encrypt algorithm */
++			  * indicate the encrypt algorithm
++			  */
+ 	u8	iv_len;
+ 	u8	icv_len;
+ 	u8	crc_err;
+@@ -152,12 +154,12 @@ struct recv_stat {
+ };
+ 
+ /*
+-accesser of recv_priv: rtw_recv_entry(dispatch / passive level);
+-recv_thread(passive) ; returnpkt(dispatch)
+-; halt(passive) ;
+-
+-using enter_critical section to protect
+-*/
++ * accesser of recv_priv: rtw_recv_entry(dispatch / passive level);
++ * recv_thread(passive) ; returnpkt(dispatch)
++ * ; halt(passive) ;
++ *
++ * using enter_critical section to protect
++ */
+ struct recv_priv {
+ 	struct __queue free_recv_queue;
+ 	struct __queue recv_pending_queue;
+@@ -209,20 +211,20 @@ struct recv_buf {
+ };
+ 
+ /*
+-	head  ----->
+-
+-		data  ----->
+-
+-			payload
+-
+-		tail  ----->
+-
+-
+-	end   ----->
+-
+-	len = (unsigned int )(tail - data);
+-
+-*/
++ *	head  ----->
++ *
++ *		data  ----->
++ *
++ *			payload
++ *
++ *		tail  ----->
++ *
++ *
++ *	end   ----->
++ *
++ *	len = (unsigned int )(tail - data);
++ *
++ */
+ struct recv_frame {
+ 	struct list_head list;
+ 	struct sk_buff	 *pkt;
+diff --git a/drivers/staging/rtl8188eu/include/rtw_rf.h b/drivers/staging/rtl8188eu/include/rtw_rf.h
+index 66896af..0718a29 100644
+--- a/drivers/staging/rtl8188eu/include/rtw_rf.h
++++ b/drivers/staging/rtl8188eu/include/rtw_rf.h
+@@ -31,7 +31,8 @@
+ #define RTL8711_RF_DEF_SENS		4
+ 
+ /*  We now define the following channels as the max channels in each
+- * channel plan. */
++ * channel plan.
++ */
+ /*  2G, total 14 chnls */
+ /*  {1,2,3,4,5,6,7,8,9,10,11,12,13,14} */
+ #define	MAX_CHANNEL_NUM_2G		14
+@@ -65,7 +66,8 @@ enum capability {
+ 	cChannelAgility	= 0x0080,
+ 	cSpectrumMgnt	= 0x0100,
+ 	cQos		= 0x0200,	/* For HCCA, use with CF-Pollable
+-					 * and CF-PollReq */
++					 * and CF-PollReq
++					 */
+ 	cShortSlotTime	= 0x0400,
+ 	cAPSD		= 0x0800,
+ 	cRM		= 0x1000,	/*  RRM (Radio Request Measurement) */
+diff --git a/drivers/staging/rtl8188eu/include/rtw_security.h b/drivers/staging/rtl8188eu/include/rtw_security.h
+index 74fe664..a0c6cf7 100644
+--- a/drivers/staging/rtl8188eu/include/rtw_security.h
++++ b/drivers/staging/rtl8188eu/include/rtw_security.h
+@@ -100,20 +100,26 @@ struct rt_pmkid_list {
+ 
+ struct security_priv {
+ 	u32	  dot11AuthAlgrthm;	/*  802.11 auth, could be open,
+-					 * shared, 8021x and authswitch */
++					 * shared, 8021x and authswitch
++					 */
+ 	u32	  dot11PrivacyAlgrthm;	/*  This specify the privacy for
+-					 * shared auth. algorithm. */
++					 * shared auth. algorithm.
++					 */
+ 	/* WEP */
+ 	u32	  dot11PrivacyKeyIndex;	/*  this is only valid for legendary
+-					 * wep, 0~3 for key id.(tx key index) */
++					 * wep, 0~3 for key id.(tx key index)
++					 */
+ 	union Keytype dot11DefKey[4];	/*  this is only valid for def. key */
+ 	u32	dot11DefKeylen[4];
+ 	u32 dot118021XGrpPrivacy;	/*  This specify the privacy algthm.
+-					 * used for Grp key */
++					 * used for Grp key
++					 */
+ 	u32	dot118021XGrpKeyid;	/*  key id used for Grp Key
+-					 * ( tx key index) */
++					 * ( tx key index)
++					 */
+ 	union Keytype	dot118021XGrpKey[4];	/*  802.1x Group Key,
+-						 * for inx0 and inx1 */
++						 * for inx0 and inx1
++						 */
+ 	union Keytype	dot118021XGrptxmickey[4];
+ 	union Keytype	dot118021XGrprxmickey[4];
+ 	union pn48	dot11Grptxpn;		/* PN48 used for Grp Key xmit.*/
+@@ -134,10 +140,12 @@ struct security_priv {
+ 	u8	bcheck_grpkey;
+ 	u8	bgrpkey_handshake;
+ 	s32	hw_decrypted;/* if the rx packets is hw_decrypted==false,i
+-			      * it means the hw has not been ready. */
++			      * it means the hw has not been ready.
++			      */
+ 
+ 	/* keeps the auth_type & enc_status from upper layer
+-	 * ioctl(wpa_supplicant or wzc) */
++	 * ioctl(wpa_supplicant or wzc)
++	 */
+ 	u32 ndisauthtype;	/*  NDIS_802_11_AUTHENTICATION_MODE */
+ 	u32 ndisencryptstatus;	/*  NDIS_802_11_ENCRYPTION_STATUS */
+ 	struct wlan_bssid_ex sec_bss;  /* for joinbss (h2c buffer) usage */
+@@ -256,7 +264,8 @@ static inline u32 rotr(u32 val, int bits)
+ /* ===== start - public domain SHA256 implementation ===== */
+ 
+ /* This is based on SHA256 implementation in LibTomCrypt that was released into
+- * public domain by Tom St Denis. */
++ * public domain by Tom St Denis.
++ */
+ 
+ /* the K array */
+ static const unsigned long K[64] = {
+diff --git a/drivers/staging/rtl8188eu/include/rtw_xmit.h b/drivers/staging/rtl8188eu/include/rtw_xmit.h
+index dd6b7a9..b4b3d13 100644
+--- a/drivers/staging/rtl8188eu/include/rtw_xmit.h
++++ b/drivers/staging/rtl8188eu/include/rtw_xmit.h
+@@ -115,11 +115,13 @@ struct pkt_attrib {
+ 	u16	seqnum;
+ 	u16	hdrlen;		/* the WLAN Header Len */
+ 	u32	pktlen;		/* the original 802.3 pkt raw_data len (not include
+-				 * ether_hdr data) */
++				 * ether_hdr data)
++				 */
+ 	u32	last_txcmdsz;
+ 	u8	nr_frags;
+ 	u8	encrypt;	/* when 0 indicate no encrypt. when non-zero,
+-				 * indicate the encrypt algorith */
++				 * indicate the encrypt algorith
++				 */
+ 	u8	iv_len;
+ 	u8	icv_len;
+ 	u8	iv[18];
+@@ -234,7 +236,8 @@ struct sta_xmit_priv {
+ 	spinlock_t lock;
+ 	int	option;
+ 	int	apsd_setting;	/* When bit mask is on, the associated edca
+-				 * queue supports APSD. */
++				 * queue supports APSD.
++				 */
+ 	struct tx_servq	be_q;			/* priority == 0,3 */
+ 	struct tx_servq	bk_q;			/* priority == 1,2 */
+ 	struct tx_servq	vi_q;			/* priority == 4,5 */
+@@ -280,7 +283,8 @@ struct	xmit_priv {
+ 	u8	hwxmit_entry;
+ 	u8	wmm_para_seq[4];/* sequence for wmm ac parameter strength
+ 				 * from large to small. it's value is 0->vo,
+-				 * 1->vi, 2->be, 3->bk. */
++				 * 1->vi, 2->be, 3->bk.
++				 */
+ 	u8		txirp_cnt;/*  */
+ 	struct tasklet_struct xmit_tasklet;
+ 	/* per AC pending irp */
+diff --git a/drivers/staging/rtl8188eu/include/sta_info.h b/drivers/staging/rtl8188eu/include/sta_info.h
+index 42a03512..8f01dee 100644
+--- a/drivers/staging/rtl8188eu/include/sta_info.h
++++ b/drivers/staging/rtl8188eu/include/sta_info.h
+@@ -126,7 +126,8 @@ struct sta_info {
+ 	/* Notes: */
+ 	/* STA_Mode: */
+ 	/* curr_network(mlme_priv/security_priv/qos/ht) +
+-	 * sta_info: (STA & AP) CAP/INFO */
++	 * sta_info: (STA & AP) CAP/INFO
++	 */
+ 	/* scan_q: AP CAP/INFO */
+ 
+ 	/* AP_Mode: */
+@@ -184,7 +185,8 @@ struct sta_info {
+ 
+ 	/*  ================ODM Relative Info======================= */
+ 	/*  Please be careful, don't declare too much structure here.
+-	 *  It will cost memory * STA support num. */
++	 *  It will cost memory * STA support num.
++	 */
+ 	/*  2011/10/20 MH Add for ODM STA info. */
+ 	/*  Driver Write */
+ 	u8	bValid;		/*  record the sta status link or not? */
+@@ -318,9 +320,11 @@ struct	sta_priv {
+ 	struct sta_info *sta_aid[NUM_STA];
+ 
+ 	u16 sta_dz_bitmap;/* only support 15 stations, station aid bitmap
+-			   * for sleeping sta. */
++			   * for sleeping sta.
++			   */
+ 	u16 tim_bitmap;	/* only support 15 stations, aid=0~15 mapping
+-			 * bit0~bit15 */
++			 * bit0~bit15
++			 */
+ 
+ 	u16 max_num_sta;
+ 
+diff --git a/drivers/staging/rtl8188eu/include/wifi.h b/drivers/staging/rtl8188eu/include/wifi.h
+index cb46d35..084a246 100644
+--- a/drivers/staging/rtl8188eu/include/wifi.h
++++ b/drivers/staging/rtl8188eu/include/wifi.h
+@@ -35,7 +35,8 @@
+ 
+ /*  This value is tested by WiFi 11n Test Plan 5.2.3. */
+ /*  This test verifies the WLAN NIC can update the NAV through sending
+- *  the CTS with large duration. */
++ *  the CTS with large duration.
++ */
+ #define	WiFiNavUpperUs				30000	/*  30 ms */
+ 
+ enum WIFI_FRAME_TYPE {
+@@ -459,14 +460,14 @@ static inline int IsFrameTypeCtrl(unsigned char *pframe)
+ #define _IEEE8021X_PSK_			2	/*  WPA with pre-shared key */
+ 
+ /*
+-#define _NO_PRIVACY_			0
+-#define _WEP_40_PRIVACY_		1
+-#define _TKIP_PRIVACY_			2
+-#define _WRAP_PRIVACY_			3
+-#define _CCMP_PRIVACY_			4
+-#define _WEP_104_PRIVACY_		5
+-#define _WEP_WPA_MIXED_PRIVACY_ 6	WEP + WPA
+-*/
++ * #define _NO_PRIVACY_			0
++ * #define _WEP_40_PRIVACY_		1
++ * #define _TKIP_PRIVACY_		2
++ * #define _WRAP_PRIVACY_		3
++ * #define _CCMP_PRIVACY_		4
++ * #define _WEP_104_PRIVACY_		5
++ * #define _WEP_WPA_MIXED_PRIVACY_ 6	WEP + WPA
++ */
+ 
+ /*-----------------------------------------------------------------------------
+ 				Below is the definition for WMM
+@@ -771,10 +772,12 @@ enum ht_cap_ampdu_factor {
+ #define	P2P_PROVISIONING_SCAN_CNT		3
+ 
+ /* default value, used when: (1)p2p disabled or (2)p2p enabled
+- * but only do 1 scan phase */
++ * but only do 1 scan phase
++ */
+ #define	P2P_FINDPHASE_EX_NONE		0
+ /*  used when p2p enabled and want to do 1 scan phase and
+- *  P2P_FINDPHASE_EX_MAX-1 find phase */
++ *  P2P_FINDPHASE_EX_MAX-1 find phase
++ */
+ #define	P2P_FINDPHASE_EX_FULL		1
+ #define	P2P_FINDPHASE_EX_SOCIAL_FIRST	(P2P_FINDPHASE_EX_FULL+1)
+ #define	P2P_FINDPHASE_EX_MAX		4
+diff --git a/drivers/staging/rtl8188eu/include/wlan_bssdef.h b/drivers/staging/rtl8188eu/include/wlan_bssdef.h
+index e1931dd..d7b25d2 100644
+--- a/drivers/staging/rtl8188eu/include/wlan_bssdef.h
++++ b/drivers/staging/rtl8188eu/include/wlan_bssdef.h
+@@ -86,7 +86,8 @@ struct ndis_802_11_var_ie {
+  *	+ NDIS_802_11_LENGTH_RATES_EX + IELength
+  *
+  * Except the IELength, all other fields are fixed length.
+- * Therefore, we can define a macro to represent the partial sum. */
++ * Therefore, we can define a macro to represent the partial sum.
++ */
+ 
+ enum ndis_802_11_auth_mode {
+ 	Ndis802_11AuthModeOpen,
+@@ -130,7 +131,8 @@ enum ndis_802_11_reload_def {
+ struct ndis_802_11_wep {
+ 	u32     Length;        /*  Length of this structure */
+ 	u32     KeyIndex;      /*  0 is the per-client key,
+-				  * 1-N are the global keys */
++				* 1-N are the global keys
++				*/
+ 	u32     KeyLength;     /*  length of key in bytes */
+ 	u8     KeyMaterial[16];/*  variable len depending on above field */
+ };
+@@ -140,7 +142,8 @@ enum ndis_802_11_status_type {
+ 	Ndis802_11StatusType_MediaStreamMode,
+ 	Ndis802_11StatusType_PMKID_CandidateList,
+ 	Ndis802_11StatusTypeMax    /*  not a real type, defined as
+-				    * an upper bound */
++				    * an upper bound
++				    */
+ };
+ 
+ /*  mask for authentication/integrity fields */
+@@ -166,7 +169,8 @@ struct wlan_phy_info {
+ 
+ struct wlan_bcn_info {
+ 	/* these infor get from rtw_get_encrypt_info when
+-	 *	 * translate scan to UI */
++	 *	 * translate scan to UI
++	 */
+ 	u8 encryp_protocol;/* ENCRYP_PROTOCOL_E: OPEN/WEP/WPA/WPA2/WAPI */
+ 	int group_cipher; /* WPA/WPA2 group cipher */
+ 	int pairwise_cipher;/* WPA/WPA2/WEP pairwise cipher */
+@@ -178,8 +182,8 @@ struct wlan_bcn_info {
+ };
+ 
+ /* temporally add #pragma pack for structure alignment issue of
+-*   struct wlan_bssid_ex and get_struct wlan_bssid_ex_sz()
+-*/
++ *   struct wlan_bssid_ex and get_struct wlan_bssid_ex_sz()
++ */
+ struct wlan_bssid_ex {
+ 	u32  Length;
+ 	unsigned char MacAddress[ETH_ALEN];
+@@ -194,7 +198,8 @@ struct wlan_bssid_ex {
+ 	struct wlan_phy_info	PhyInfo;
+ 	u32  IELength;
+ 	u8  IEs[MAX_IE_SZ];	/* timestamp, beacon interval, and
+-				 * capability information) */
++				 * capability information)
++				 */
+ } __packed;
+ 
+ static inline uint get_wlan_bssid_ex_sz(struct wlan_bssid_ex *bss)
+@@ -206,7 +211,8 @@ struct	wlan_network {
+ 	struct list_head list;
+ 	int	network_type;	/* refer to ieee80211.h for WIRELESS_11A/B/G */
+ 	int	fixed;		/*  set fixed when not to be removed
+-				 *  in site-surveying */
++				 *  in site-surveying
++				 */
+ 	unsigned long	last_scanned; /* timestamp for the network */
+ 	int	aid;		/* will only be valid when a BSS is joinned. */
+ 	int	join_res;
 -- 
 2.7.4
 
