@@ -1,289 +1,138 @@
 X-GM-THRID: 6473410411176656896
-X-Received: by 10.99.127.93 with SMTP id p29mr983880pgn.157.1507621909443;
-        Tue, 10 Oct 2017 00:51:49 -0700 (PDT)
+X-Received: by 10.99.119.68 with SMTP id s65mr778449pgc.89.1507208357655;
+        Thu, 05 Oct 2017 05:59:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.159.211.11 with SMTP id bc11ls1325426plb.11.gmail; Tue, 10 Oct
- 2017 00:51:48 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QAURdZ6zdxupxZpaIf6K92AtSYbtKXjlY4GqIbkcJqMWVC2FjE5JuiMCusDwxE1RaNoh2EY
-X-Received: by 10.98.64.91 with SMTP id n88mr850906pfa.58.1507621908344;
-        Tue, 10 Oct 2017 00:51:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507621908; cv=none;
+Received: by 10.99.49.84 with SMTP id x81ls1169001pgx.23.gmail; Thu, 05 Oct
+ 2017 05:59:17 -0700 (PDT)
+X-Received: by 10.84.131.65 with SMTP id 59mr623914pld.32.1507208357018;
+        Thu, 05 Oct 2017 05:59:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507208357; cv=none;
         d=google.com; s=arc-20160816;
-        b=kmAW0Jv6hxH7A9MQyBdXGHZqRdirOQ9BrXndu4Jg5WaYrTfyEqKfhDCzywUpSVtUt+
-         GezoI0mA5fSNaEGqqt7NTu619/06m0eTNR0coMmYjWZuAiRIHza7phaC8yAPGu4TF5V4
-         sZVdUnGNyPLF8WSGRxzZNHDstaKLMJPVvjXbA9O+91WRSWf8M+gcq1k6TmJRmMkZNAAT
-         cxzKDkf4xEl2gS6+57077b8bLZE/cEzibOB1d6Pl/pPLoAsLoVuEgUrFxRRnKCTzx0k4
-         erIok8OuGCscGnPOXTDK0lGCCn/Wx07JVmGsVbzgrXRxnncLFAhsRaNweY7WrlZ1zTvx
-         Bj8Q==
+        b=W3nURoCrDt08R5nVOP80OPZQokQ4ZkzOL65MZv/TfSSFfu15fxvQPlv9+tcd5tL13n
+         EESL7UzdAUL0KXUjbwW+wUDsPLXTX3JDn0nQ7SGhQwWI65Kj2iwGH01lieYHtjeOrDIC
+         WfwU1W6a0LM+LeJWcYWXMIt3TmE2OScwEAutfU48X7Op2HCwwFcIxegnXuXIoqdlmLNz
+         WH+ni1124Ffm588Y2yZWpKCxKBhid8UGfDkTwQpM1XSIISeFhj2O6MLMuQ0vhjmBKitP
+         AD+GkB3ZBd8g6gVcTuSupbJQSoO51vKcIr7aEyFrNRnbHpBQDeIVnrJlzEVSC0kskI8b
+         WLOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:arc-authentication-results;
-        bh=TveNKU/wix2YeSqKFtOBJEq4bF/P7FxfYISt527I2Js=;
-        b=aq89q4AqgfMd0SPJpoT6uS8YknTYta4UPX56sHQX9An5TBRLjoI+2uollfv8718M16
-         XP9ShlCL0gvHHmyo8FYB8PQs6bYYdtSQQ0LiQP6G8Pv4i6zXD8yeo5tCxUZtmxDKr+EH
-         r/evTK9aVc5HW9nk0KJX8hzpejsVlaVwA9sUOpT3xm/nMD/hZVpNPFckdlpbqRzLsMqZ
-         BFyBT8yn1O5jXRBMXK5w6bbUyPsmciVNdV5fTANZ3UO4aUx64Zff+wM1Bd0VdHpc0siq
-         3yV4SlqsYpq5c9eO6WxQmeaEbhLh4SJDl9UbhoegLROYAJaV6PpbWLWsxNvDgF+tHOby
-         tWLg==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=84jLPOTx20MszT6LJIp6/O2Zo60MWRAgLglPb4wuPGk=;
+        b=pIxTBLDTsqw3F4qUcqvGa6kHmj2a5XLA/xk7U9aZgFy8JzFhGIiWBkzVoEAZimXv4A
+         15h/9/GI0Zx2us+Q84/pr2MRKqnYrrgx5orCagF7DUojYoQeMOfL9XR8gOT9IqVYTFZ6
+         SO1ZfU7Hbl9Tl3Wm7XkgcXqk5vQLAktjgV18svgpDhL/4GfFLqT/c+lUjgA2ChpxXnNK
+         7w5lk/02yiQ2Us2lO4lWgNzrKTZ399dubP/wZNtxLNgZhn7hsoOPBKQIjmXe8jP8zU55
+         vJQ85VACX3K0zvkMagO0Jk4cApQzz1ra2lsG39K1Ay2pvy5ZfVzxQqiWqabRMLoxK8rK
+         qqvg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of andreas.dilger@intel.com designates 134.134.136.65 as permitted sender) smtp.mailfrom=andreas.dilger@intel.com
-Return-Path: <andreas.dilger@intel.com>
-Received: from mga03.intel.com (mga03.intel.com. [134.134.136.65])
-        by gmr-mx.google.com with ESMTPS id n63si1126202pfb.10.2017.10.10.00.51.47
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=n79YRKPx;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id p73si1767101pfk.27.2017.10.05.05.59.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Oct 2017 00:51:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of andreas.dilger@intel.com designates 134.134.136.65 as permitted sender) client-ip=134.134.136.65;
+        Thu, 05 Oct 2017 05:59:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of andreas.dilger@intel.com designates 134.134.136.65 as permitted sender) smtp.mailfrom=andreas.dilger@intel.com
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
-  by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 10 Oct 2017 00:51:47 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.42,503,1500966000"; 
-   d="scan'208";a="1023544014"
-Received: from fmsmsx108.amr.corp.intel.com ([10.18.124.206])
-  by orsmga003.jf.intel.com with ESMTP; 10 Oct 2017 00:51:23 -0700
-Received: from fmsmsx153.amr.corp.intel.com (10.18.125.6) by
- FMSMSX108.amr.corp.intel.com (10.18.124.206) with Microsoft SMTP Server (TLS)
- id 14.3.319.2; Tue, 10 Oct 2017 00:51:23 -0700
-Received: from FMSMSX109.amr.corp.intel.com ([169.254.15.12]) by
- FMSMSX153.amr.corp.intel.com ([169.254.9.146]) with mapi id 14.03.0319.002;
- Tue, 10 Oct 2017 00:51:23 -0700
-From: "Dilger, Andreas" <andreas.dilger@intel.com>
-To: Aastha Gupta <aastha.gupta4104@gmail.com>
-CC: "outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>,
-	"Drokin, Oleg" <oleg.drokin@intel.com>, James Simmons
-	<jsimmons@infradead.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH 01/11] staging: lustre: fix incorrect multi-line comment
- style
-Thread-Topic: [PATCH 01/11] staging: lustre: fix incorrect multi-line
- comment style
-Thread-Index: AQHTPdmq+xnmf5RBS0OajPFk9ySxl6LdMsWA
-Date: Tue, 10 Oct 2017 07:51:22 +0000
-Message-ID: <0A5F2D63-41B2-4345-9F46-D53738ACF370@intel.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=n79YRKPx;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x243.google.com with SMTP id i195so7287033pgd.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 05 Oct 2017 05:59:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=84jLPOTx20MszT6LJIp6/O2Zo60MWRAgLglPb4wuPGk=;
+        b=n79YRKPxvSBy06m9ZYApd+Kq0YSH6ZQ4lNW2c+xWKAQsPlhnm20xjAcU+WGyn6uElh
+         tUZTblAfSGop/XZgoYluyU2vIEFI/angcTSdUX9Ln4lP2Fz4M3YXxCaECQqHdk9QgS8u
+         uVOaJ0hf2dmYUM0JKxpiOuGKVlbelmMwoE3t6/GqHnrWnQvV3T33NfXkOl8tgM6CkES1
+         HssZ/2PvkqARw8vZzK1XRMaN4XE0PizHiY27wl+pdhsMyX6IZHmtzwKRYkH4YWACjE91
+         m1WrPiMb7pMFC/mpa2nhovJyYFTZgTij8GZ+JkUD+OPoUWDsHW4Y6QuN/qy+ne3GtEQG
+         cMJg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=84jLPOTx20MszT6LJIp6/O2Zo60MWRAgLglPb4wuPGk=;
+        b=jLFblGEVdPcZE35Qd0O9WlYemNR8LSJph1zqH0vPIBZIt75Ez2mJ0jQmy/BgVvYIrj
+         iwn8gHPPZakFhFjs4a1dYnW2WLYHjkdDz3lu+E4JEPn4RSBjb6jlPkc+/9UBa5vekOXL
+         ArIzcBlfQGx3Tr3mGwhH9hkP+eN/4bFZLfBmVBW5c8S6C8htMkCTfpXu7SMLt0u4chXL
+         9z2ndBJFvktW+opnoOjH/rBSZpn6qv0g6m9352aTeN29q3OFn3CROCra5oiQDiIURgMu
+         Ermy6oPySF3ZN9GV//vUD1DP6t9Q3IKP/mUY5Ol1CfmL/U6nZafSlzbx3tLHU83WZmkr
+         aqQQ==
+X-Gm-Message-State: AMCzsaXV0dYcSMVOzX1/FKvlJ/JAcpkzy5ShyaGnB6yrmVKCBUpC3/ak
+	u6sbSBocOGcwMmOQF4y8EoM=
+X-Google-Smtp-Source: AOwi7QCxrrmkb0x3KtvtwCUWoEKJkW2YFSY7QNqq12Fr0tNBCLgpHLxZpOrTUBlbHK/Xewll7WdOqA==
+X-Received: by 10.99.164.18 with SMTP id c18mr8374790pgf.167.1507208356735;
+        Thu, 05 Oct 2017 05:59:16 -0700 (PDT)
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from aastha-HP-Pavilion-15-Notebook-PC ([103.196.221.229])
+        by smtp.gmail.com with ESMTPSA id t87sm8650572pfi.180.2017.10.05.05.59.15
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 05 Oct 2017 05:59:16 -0700 (PDT)
+From: Aastha Gupta <aastha.gupta4104@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	Oleg Drokin <oleg.drokin@intel.com>,
+	Andreas Dilger <andreas.dilger@intel.com>,
+	James Simmons <jsimmons@infradead.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
+Subject: [PATCH 11/11] staging: lustre: llite: fix multi line comments style
+Date: Thu,  5 Oct 2017 18:28:23 +0530
+Message-Id: <1507208303-17615-12-git-send-email-aastha.gupta4104@gmail.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1507208303-17615-1-git-send-email-aastha.gupta4104@gmail.com>
 References: <1507208303-17615-1-git-send-email-aastha.gupta4104@gmail.com>
- <1507208303-17615-2-git-send-email-aastha.gupta4104@gmail.com>
-In-Reply-To: <1507208303-17615-2-git-send-email-aastha.gupta4104@gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.255.230.93]
-Content-Type: text/plain; charset="us-ascii"
-Content-ID: <C656549C28F9FF4BA4D6D0BEAD8BFDE4@intel.com>
-Content-Transfer-Encoding: quoted-printable
-MIME-Version: 1.0
-Return-Path: andreas.dilger@intel.com
 
-On Oct 5, 2017, at 06:58, Aastha Gupta <aastha.gupta4104@gmail.com> wrote:
->=20
-> This patch fixes the checkpatch.pl warning:
->=20
-> WARNING: block comments use a trailing */ on a separate line
->=20
-> Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
-> ---
-> .../staging/lustre/lustre/include/lustre_errno.h   | 51 ++++++++++++++---=
------
-> 1 file changed, 34 insertions(+), 17 deletions(-)
->=20
-> diff --git a/drivers/staging/lustre/lustre/include/lustre_errno.h b/drive=
-rs/staging/lustre/lustre/include/lustre_errno.h
-> index 35aefa2..02642be 100644
-> --- a/drivers/staging/lustre/lustre/include/lustre_errno.h
-> +++ b/drivers/staging/lustre/lustre/include/lustre_errno.h
-> @@ -71,7 +71,8 @@
-> #define LUSTRE_EMLINK		31	/* Too many links */
-> #define LUSTRE_EPIPE		32	/* Broken pipe */
-> #define LUSTRE_EDOM		33	/* Math argument out of domain of
-> -					   func */
-> +					 * func
-> +					 */
+This patch fixes checkpatch.pl warning:
+WARNING: Block comments use a trailing */ on a separate line
 
-In cases like this, I'd rather just shorten the comment to fit onto a
-single line so that it is easier to read, something like:
+Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
+---
+ drivers/staging/lustre/lustre/llite/llite_internal.h | 5 +++--
+ drivers/staging/lustre/lustre/llite/rw.c             | 3 ++-
+ 2 files changed, 5 insertions(+), 3 deletions(-)
 
-#define LUSTRE_EDOM		33	/* Math argument out of func domain */
-
-> #define LUSTRE_ERANGE		34	/* Math result not representable */
-> #define LUSTRE_EDEADLK		35	/* Resource deadlock would occur */
-> #define LUSTRE_ENAMETOOLONG	36	/* File name too long */
-> @@ -79,7 +80,8 @@
-> #define LUSTRE_ENOSYS		38	/* Function not implemented */
-> #define LUSTRE_ENOTEMPTY	39	/* Directory not empty */
-> #define LUSTRE_ELOOP		40	/* Too many symbolic links
-> -					   encountered */
-> +					 * encountered
-> +					 */
-
-Similarly,
-
-#define LUSTRE_ELOOP		40	/* Too many symbolic links found */
-
-
-> #define LUSTRE_ENOMSG		42	/* No message of desired type */
-> #define LUSTRE_EIDRM		43	/* Identifier removed */
-> #define LUSTRE_ECHRNG		44	/* Channel number out of range */
-> @@ -113,22 +115,28 @@
-> #define LUSTRE_EDOTDOT		73	/* RFS specific error */
-> #define LUSTRE_EBADMSG		74	/* Not a data message */
-> #define LUSTRE_EOVERFLOW	75	/* Value too large for defined data
-> -					   type */
-> +					 * type
-> +					 */
-
-#define LUSTRE_EOVERFLOW	75	/* Value too large for data type */
-
-> #define LUSTRE_ENOTUNIQ		76	/* Name not unique on network */
-> #define LUSTRE_EBADFD		77	/* File descriptor in bad state */
-> #define LUSTRE_EREMCHG		78	/* Remote address changed */
-> #define LUSTRE_ELIBACC		79	/* Can not access a needed shared
-> -					   library */
-> +					 * library
-> +					 */
-
-#define LUSTRE_ELIBACC		79	/* Can't access needed shared library */
-
-> #define LUSTRE_ELIBBAD		80	/* Accessing a corrupted shared
-> -					   library */
-> +					 * ibrary
-> +					 */
-
-Typo here, "ibrary", and this could be shortened to fit on one line:
-
-#define LUSTRE_ELIBBAD		80	/* Accessing corrupted shared library */
-
-> #define LUSTRE_ELIBSCN		81	/* .lib section in a.out corrupted */
-> #define LUSTRE_ELIBMAX		82	/* Attempting to link in too many shared
-> -					   libraries */
-> +					 * libraries
-> +					 */
-
-#define LUSTRE_ELIBMAX		82	/* Trying to link too many libraries */
-
-> #define LUSTRE_ELIBEXEC		83	/* Cannot exec a shared library
-> -					   directly */
-> +					 * directly
-> +					 */
-
-#define LUSTRE_ELIBEXEC		83	/* Cannot exec shared lib directly */
-
-> #define LUSTRE_EILSEQ		84	/* Illegal byte sequence */
-> #define LUSTRE_ERESTART		85	/* Interrupted system call should be
-> -					   restarted */
-> +					 * restarted
-> +					 */
-
-#define LUSTRE_ERESTART		85	/* Restart interrupted system call */
-
-> #define LUSTRE_ESTRPIPE		86	/* Streams pipe error */
-> #define LUSTRE_EUSERS		87	/* Too many users */
-> #define LUSTRE_ENOTSOCK		88	/* Socket operation on non-socket */
-> @@ -139,25 +147,31 @@
-> #define LUSTRE_EPROTONOSUPPORT	93	/* Protocol not supported */
-> #define LUSTRE_ESOCKTNOSUPPORT	94	/* Socket type not supported */
-> #define LUSTRE_EOPNOTSUPP	95	/* Operation not supported on transport
-> -					   endpoint */
-> +					 * endpoint
-> +					 */
-
-#define LUSTRE_EOPNOTSUPP	95	/* Operation not supported */
-
-> #define LUSTRE_EPFNOSUPPORT	96	/* Protocol family not supported */
-> #define LUSTRE_EAFNOSUPPORT	97	/* Address family not supported by
-> -					   protocol */
-> +					 * protocol
-> +					 */
-
-#define LUSTRE_EAFNOSUPPORT	97	/* Address family not supported */
-
-> #define LUSTRE_EADDRINUSE	98	/* Address already in use */
-> #define LUSTRE_EADDRNOTAVAIL	99	/* Cannot assign requested address */
-> #define LUSTRE_ENETDOWN		100	/* Network is down */
-> #define LUSTRE_ENETUNREACH	101	/* Network is unreachable */
-> #define LUSTRE_ENETRESET	102	/* Network dropped connection because of
-> -					   reset */
-> +					 * reset
-> +					 */
-
-#define LUSTRE_ENETRESET	102	/* Network connection drop for reset */
-
-> #define LUSTRE_ECONNABORTED	103	/* Software caused connection abort */
-> #define LUSTRE_ECONNRESET	104	/* Connection reset by peer */
-> #define LUSTRE_ENOBUFS		105	/* No buffer space available */
-> #define LUSTRE_EISCONN		106	/* Transport endpoint is already
-> -					   connected */
-> +					 * connected
-> +					 */
-
-#define LUSTRE_EISCONN		106	/* Transport endpoint is connected */
-
-> #define LUSTRE_ENOTCONN		107	/* Transport endpoint is not
-> -					   connected */
-> +					 * connected
-> +					 */
-
-#define LUSTRE_ENOTCONN		107	/* Transport endpoint not connected */
-
-> #define LUSTRE_ESHUTDOWN	108	/* Cannot send after transport endpoint
-> -					   shutdown */
-> +					 * shutdown
-> +					 */
-
-#define LUSTRE_ESHUTDOWN	108	/* Cannot send after shutdown */=20
-
-> #define LUSTRE_ETOOMANYREFS	109	/* Too many references: cannot splice */
-> #define LUSTRE_ETIMEDOUT	110	/* Connection timed out */
-> #define LUSTRE_ECONNREFUSED	111	/* Connection refused */
-> @@ -186,7 +200,8 @@
-> #define LUSTRE_ERESTARTNOHAND	514	/* restart if no handler.. */
-> #define LUSTRE_ENOIOCTLCMD	515	/* No ioctl command */
-> #define LUSTRE_ERESTART_RESTARTBLOCK 516 /* restart by calling
-> -					    sys_restart_syscall */
-> +					  * sys_restart_syscall
-> +					  */
-
-#define LUSTRE_ERESTART_RESTARTBLOCK 516 /* restart via sys_restart_syscall=
-() */
-
-> #define LUSTRE_EBADHANDLE	521	/* Illegal NFS file handle */
-> #define LUSTRE_ENOTSYNC		522	/* Update synchronization mismatch */
-> #define LUSTRE_EBADCOOKIE	523	/* Cookie is stale */
-> @@ -195,9 +210,11 @@
-> #define LUSTRE_ESERVERFAULT	526	/* An untranslatable error occurred */
-> #define LUSTRE_EBADTYPE		527	/* Type not supported by server */
-> #define LUSTRE_EJUKEBOX		528	/* Request initiated, but will not
-> -					   complete before timeout */
-> +					 * complete before timeout
-> +					 */
-
-#define LUSTRE_EJUKEBOX		528	/* Request won't finish before timeout */
-
-> #define LUSTRE_EIOCBQUEUED	529	/* iocb queued, will get completion
-> -					   event */
-> +					 * event
-> +					 */
-
-#define LUSTRE_EIOCBQUEUED	529	/* iocb queued await completion event */
-
-> #define LUSTRE_EIOCBRETRY	530	/* iocb queued, will trigger a retry */
->=20
-> /*
-> --=20
-> 2.7.4
->=20
-
-Cheers, Andreas
---
-Andreas Dilger
-Lustre Principal Architect
-Intel Corporation
-
-
-
-
-
-
+diff --git a/drivers/staging/lustre/lustre/llite/llite_internal.h b/drivers/staging/lustre/lustre/llite/llite_internal.h
+index c31d98d..8a5b064 100644
+--- a/drivers/staging/lustre/lustre/llite/llite_internal.h
++++ b/drivers/staging/lustre/lustre/llite/llite_internal.h
+@@ -394,7 +394,8 @@ enum stats_track_type {
+ #define LL_SBI_XATTR_CACHE    0x80000 /* support for xattr cache */
+ #define LL_SBI_NOROOTSQUASH	0x100000 /* do not apply root squash */
+ #define LL_SBI_ALWAYS_PING	0x200000 /* always ping even if server
+-					  * suppress_pings */
++					  * suppress_pings
++					  */
+ 
+ #define LL_SBI_FLAGS {	\
+ 	"nolck",	\
+@@ -1203,7 +1204,7 @@ typedef enum llioc_iter (*llioc_callback_t)(struct inode *inode,
+  * Return value:
+  *      A magic pointer will be returned if success;
+  *      otherwise, NULL will be returned.
+- * */
++ */
+ void *ll_iocontrol_register(llioc_callback_t cb, int count, unsigned int *cmd);
+ void ll_iocontrol_unregister(void *magic);
+ 
+diff --git a/drivers/staging/lustre/lustre/llite/rw.c b/drivers/staging/lustre/lustre/llite/rw.c
+index 9fdd104..f05e97d 100644
+--- a/drivers/staging/lustre/lustre/llite/rw.c
++++ b/drivers/staging/lustre/lustre/llite/rw.c
+@@ -888,7 +888,8 @@ static void ras_update(struct ll_sb_info *sbi, struct inode *inode,
+ 
+ 	/* The initial ras_window_len is set to the request size.  To avoid
+ 	 * uselessly reading and discarding pages for random IO the window is
+-	 * only increased once per consecutive request received. */
++	 * only increased once per consecutive request received.
++	 */
+ 	if ((ras->ras_consecutive_requests > 1 || stride_detect) &&
+ 	    !ras->ras_request_index)
+ 		ras_increase_window(inode, ras, ra);
+-- 
+2.7.4
 
 
