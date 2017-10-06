@@ -1,103 +1,66 @@
 X-GM-THRID: 6473369006202945536
-X-Received: by 10.31.79.4 with SMTP id d4mr586504vkb.27.1507362079731;
-        Sat, 07 Oct 2017 00:41:19 -0700 (PDT)
+X-Received: by 10.28.88.197 with SMTP id m188mr235399wmb.4.1507293519337;
+        Fri, 06 Oct 2017 05:38:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.31.190.209 with SMTP id o200ls142785vkf.9.gmail; Sat, 07 Oct
- 2017 00:41:18 -0700 (PDT)
-X-Received: by 10.31.164.71 with SMTP id n68mr591108vke.66.1507362078631;
-        Sat, 07 Oct 2017 00:41:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507362078; cv=none;
+Received: by 10.223.155.208 with SMTP id e16ls6018857wrc.11.gmail; Fri, 06 Oct
+ 2017 05:38:38 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBglexvb6h79ACCfiHIkfUPMQcl+cGeOw9/xo1UzrwDtRuVtLDR0y0In6+8KMQFDVnxjumH
+X-Received: by 10.223.153.10 with SMTP id x10mr21119wrb.3.1507293518745;
+        Fri, 06 Oct 2017 05:38:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507293518; cv=none;
         d=google.com; s=arc-20160816;
-        b=jV7XsNhsFGXRrfdrdh2BXBfFF0zFpQwqQF3snatJ65b84icdg9aiCn1BeJ3U4HCR+5
-         LCJ9pQzZb0FAwqZ0lqEpK41sKhNARIKEvsAw3I1OcCrzQTXhGRnpC5XKT+a4sh74ir20
-         IMTQ6D1m0ggmfOD0K4D4drMQLklduyRXgT/+G6M5j7TLz33NKD/PHg4QgsWxhO/EYkox
-         g55GM7GzYlVSe2VifZbeTWrzeYFixqD3x/4TfiQzq8llaJ5U0z7hCwtb3NaMzAGZANFb
-         a8jsn5HNPG85neewmSPAH4imzZE7ZyQ9gC4/xu+g7ONvMMgoFh1ZGSemX3lGs87q3XtS
-         XTfQ==
+        b=hIa+o9Uw1hnVI3HWvLBLTchVl9BuTZojNXN9wR7TiSv6vdbR30q8c43FojEtkzr54G
+         mW2xE9n3qguf8XODm0nS98caol50g7wpsRtJWEZDJ7ljmq02EgQoOL8Ac5GPbzUTHAki
+         1voEcPlXYtHkewebtLmEnRHvli2pNrtk2ZFoCgw2HVJXQK74cbPL9vcVN1yaBLDr7rOT
+         03CiF1/FZHEK8w+PbEJy3YGbB7YFxc/GayEMfTSQYUKQh3OYdR2XeshzgdCTwAxy68tL
+         VvX+ZPrdEW/PjZ8xSeuOfXTUVXQvfw9VxEzJgSWEI1r4h4qHALohxDJ8zWXUKBABxY3c
+         mVlA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=x40xb9AzSo97E3DObI8H3Tt/c5d/m/XXfpLszMGdOio=;
-        b=K7KeR9FEoZ4NJHHPbR74D3UH4O+e08ibBcs5GplBenxV5m/QR1JFjVYWl5deIqH8B/
-         1lwEgwTcRPU3lwsZ/VFGsg2rvy7Fvt+ZWPApzE/SsET5G4llUPDmQ81+ChNhtMjhtG7n
-         OjE6q84nW0XRrzIFkIp56pMO2ZGGwxnYAvK2QNU/S04ed/DJ9tCMaR750/iPMOScn4Qo
-         ZD82lIGEhyM3PsliDMF6as+kKE6+6N92TnmDgDlj7wAawLEYXUoL6HA9ccnWoGFNFc6I
-         Lhqp8swFjokdfzpVuqC4Av1XuGvjcdVIjJ7a0IEH3M3/7Rh3HoYwsAWNaW0Toi3Qgarx
-         wd5g==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=bMR3jCG3V3J0CZagYHpY9x17IAiLAZrcF7mj1j58olE=;
+        b=zAoSZr4MWlzNTP0uVJQ2ddGRkMJkSsQtHjtmw5pt94jCMcUYXZNXgOJibyAkE5jGZM
+         lbfOVngML2rU2gmXOkwL8YiXGW3/dFapvn3ud6545BjgyzjPfjv6WwWUJytrllysdAYb
+         Qxtdu99EzmGM2Vc5/k5yBPwlnTxPv0Gwl0cBEpUFWO0Okq1YBt9cOG4y60SatXVyT0cF
+         zzRFz1yWxXE0y+I/IiPVZ0cH3aNM7AcJ5eMxJOqEO3O2Hf8t9DUYFX9QRECEJROopdmd
+         X3HrFnS6zZC2KERHbw7hIYYqjkwaKg9lJ5LDR/Xh6pcd/hznZaP6AbY9XuxHcBRH9AU0
+         r/Ew==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=i4tOR8ft;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400c:c08::242 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from mail-ua0-x242.google.com (mail-ua0-x242.google.com. [2607:f8b0:400c:c08::242])
-        by gmr-mx.google.com with ESMTPS id p68si171768vkp.7.2017.10.07.00.41.18
+       spf=pass (google.com: domain of pablo@gnumonks.org designates 2001:780:45:1d:225:90ff:fe52:c662 as permitted sender) smtp.mailfrom=pablo@gnumonks.org
+Return-Path: <pablo@gnumonks.org>
+Received: from ganesha.gnumonks.org (ganesha.gnumonks.org. [2001:780:45:1d:225:90ff:fe52:c662])
+        by gmr-mx.google.com with ESMTPS id 74si249052wme.2.2017.10.06.05.38.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 07 Oct 2017 00:41:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400c:c08::242 as permitted sender) client-ip=2607:f8b0:400c:c08::242;
+        Fri, 06 Oct 2017 05:38:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pablo@gnumonks.org designates 2001:780:45:1d:225:90ff:fe52:c662 as permitted sender) client-ip=2001:780:45:1d:225:90ff:fe52:c662;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=i4tOR8ft;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400c:c08::242 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-ua0-x242.google.com with SMTP id 103so4237769uas.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 07 Oct 2017 00:41:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=x40xb9AzSo97E3DObI8H3Tt/c5d/m/XXfpLszMGdOio=;
-        b=i4tOR8ftm4soZQhgkD1PlKPZn7eh4TJJi0cE14IdMBJvjHuB2OB5VVzaKafyLfFmVc
-         97Shz9L8VZj/BaOUMkEOBb6gD0te6FjAij2s57AER9jNKAXG/y4EzVUhnc25A5bL3D92
-         55aRzsay+pNxtERNFmpLE9pW/2m1zOrXCi4Ngp3zsGSzYVFaJK0demehlX3SfO0acI4m
-         QnIxLXevdrOBzQbh+yyWNOVVfpLAlX21jk+CSsc7Tvrn3hFRl25mE/X6Q//cVDHoqSZg
-         TWPLVg5MprHTOLP273Gc93hxYRrvImK/uDWOgmyCJN1byQBozhqvFMOsG7ntsqkCSdAx
-         8RVg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=x40xb9AzSo97E3DObI8H3Tt/c5d/m/XXfpLszMGdOio=;
-        b=D5ELjU6etF4m6ocC852XQU1i4arz1nH27Kd8LWqDoMiP0Drnu8YseGT78hc4DQLbUj
-         5K4Q+rZfswjRv1YMCSIhdETF+KstwFzfIMp5r9nixdDs4+iKmVeTWOtYlp7lriO5gJSN
-         xm8u4sGm/jyse2+NdkaNZPQp3XiEKG1b9uih/X2uVITlHC1cfsEpTMG2mlcp0iFFh6HS
-         HdJeZ0jK9RbydRB3EXfY+WdYpgeA3sDBSippBU0oxVtu+KlTXYvBj1baobFJmuaDmLep
-         WKADvqCyMnlX2PbqYQPASE0OXkmHSA9VgCdTNisM54IidwSCyxIqhIpJWiNwrY7mBrAP
-         SziQ==
-X-Gm-Message-State: AMCzsaVmJ6hCgAnjW8LWSBwzcvScc3M3SjSEFlZOArrEa9DdKL6JDsfq
-	wsgOWCt2nUMn0+IjBIgBfqIkMT0qdpib0uTxGgJaOw==
-X-Google-Smtp-Source: AOwi7QAhP8JkleCsMFfAvEYtQhW3sqYLqyPBF9LcNmGorUWuu2/sbZXVikzTOh1KLmrQdY47u15hsAC85ojIk3lDBQg=
-X-Received: by 10.176.21.136 with SMTP id i8mr2188463uae.142.1507362078337;
- Sat, 07 Oct 2017 00:41:18 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.103.68.26 with HTTP; Sat, 7 Oct 2017 00:41:17 -0700 (PDT)
-In-Reply-To: <20171006123835.GC4713@salvia>
-References: <20171005101539.32010-1-harshasharmaiitr@gmail.com> <20171006123835.GC4713@salvia>
-From: Harsha Sharma <harshasharmaiitr@gmail.com>
-Date: Sat, 7 Oct 2017 13:11:17 +0530
-Message-ID: <CANMOCy0E1zpo_0ajtf0jvvZ7oGB1YKtQNkHAK8wEViiaVnsZ8Q@mail.gmail.com>
+       spf=pass (google.com: domain of pablo@gnumonks.org designates 2001:780:45:1d:225:90ff:fe52:c662 as permitted sender) smtp.mailfrom=pablo@gnumonks.org
+Received: from 129.166.216.87.static.jazztel.es ([87.216.166.129] helo=gnumonks.org)
+	by ganesha.gnumonks.org with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+	(Exim 4.84_2)
+	(envelope-from <pablo@gnumonks.org>)
+	id 1e0Rtk-0006aD-Fc; Fri, 06 Oct 2017 14:38:38 +0200
+Date: Fri, 6 Oct 2017 14:38:35 +0200
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Harsha Sharma <harshasharmaiitr@gmail.com>
+Cc: netfilter-devel@vger.kernel.org, outreachy-kernel@googlegroups.com
 Subject: Re: [PATCH] tests: shell: add testcases for named objects
-To: Pablo Neira Ayuso <pablo@netfilter.org>
-Cc: netfilter-devel@vger.kernel.org, 
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset="UTF-8"
+Message-ID: <20171006123835.GC4713@salvia>
+References: <20171005101539.32010-1-harshasharmaiitr@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20171005101539.32010-1-harshasharmaiitr@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Spam-Score: -2.9 (--)
 
-On Fri, Oct 6, 2017 at 6:08 PM, Pablo Neira Ayuso <pablo@netfilter.org> wrote:
-> On Thu, Oct 05, 2017 at 03:45:39PM +0530, Harsha Sharma wrote:
->> Add testcases for creating named objects with unique name, defined
->> by user and referencing them from rule.
->
-> Also applied, thanks.
->
-> Could you add another tests for 'limit' objects too? I think I posted
-> an example to the mailing list.
+On Thu, Oct 05, 2017 at 03:45:39PM +0530, Harsha Sharma wrote:
+> Add testcases for creating named objects with unique name, defined
+> by user and referencing them from rule.
 
-Hello,
-I have pulled to latest tree, then make and make installed all changes
-but still I'm unable to add named 'limit' objects. If there is something that
-I'm missing, please let me know.
-Can you also please suggest some more tasks ?
-Thanks in advance.
+Also applied, thanks.
 
-Regards,
-Harsha Sharma
+Could you add another tests for 'limit' objects too? I think I posted
+an example to the mailing list.
 
