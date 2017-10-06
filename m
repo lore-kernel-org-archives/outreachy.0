@@ -1,192 +1,268 @@
 X-GM-THRID: 6470705412124442624
-X-Received: by 10.25.67.30 with SMTP id q30mr86352lfa.40.1507313102347;
-        Fri, 06 Oct 2017 11:05:02 -0700 (PDT)
+X-Received: by 10.46.86.157 with SMTP id k29mr103175lje.39.1507312872236;
+        Fri, 06 Oct 2017 11:01:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.86.197 with SMTP id k66ls3660521lje.2.gmail; Fri, 06 Oct
- 2017 11:05:01 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QBlUIITwHEnZNH/6plx2k3BDpLfS4xgDVSiy6gkF1Vx+D6WRNmDqbsNtp5IfroooxnKDdjh
-X-Received: by 10.46.82.9 with SMTP id g9mr109508ljb.42.1507313101006;
-        Fri, 06 Oct 2017 11:05:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507313100; cv=none;
+Received: by 10.46.88.72 with SMTP id x8ls3664710ljd.12.gmail; Fri, 06 Oct
+ 2017 11:01:10 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QCbDw58hQDxVR4wqY6BWh8+RK2u6Mc4n2M3OtOQ1ZvsCIShTK2OOpvDXRoVt8Dz7q4kzHMY
+X-Received: by 10.25.155.140 with SMTP id d134mr99191lfe.28.1507312870703;
+        Fri, 06 Oct 2017 11:01:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507312870; cv=none;
         d=google.com; s=arc-20160816;
-        b=XUz7mQQhquejpfU1gBlVOT+JG0dWJidZut06d6jOBScshYByTtcLlRtm44G5o5OYgw
-         21Uvg4tvKevFDhzClxqcqWAGaXimIT9sld56bOqzLkGma9JaIKK/51P/XqJHMvQxkE6B
-         joLZN+w7MQ0ErG9TEJBtXHcTQM/l3WsMrRSJ9MAjEFV/oa/JeJx2in55YzU3E5Ab9olM
-         mQ57Zjd/dEjCQeC8JqMMWomTtSg4rdarikXvHtkurPOb/k0a/tVLUveLpY0GRRj2xOSX
-         HJzOf7vr4z4LTjLaNFJEbjYUS+Qj7kTyHQ4hUlVprRA4VGJK6mVJw3pkGBVB7Ei1TMdk
-         kziw==
+        b=NmTtbU8tjmFIn24J6htjN0dzKIKOBJ+XeVIdf9ecWtBrwBLZehGDmuKWBtxYws1ADr
+         JoeDjRmUj62V7/KGpYon4TvfMDuQBrXQfouzVsNClHq4T4/jDChfP/D5GVWqDVysqRjN
+         2hNmMJ+mqdh/6QhmZcwnAPCYsq/mC9n0yyCwB8FDEb2qM9r1gCWTIVoLDGXMAnsyL5mp
+         SNjYUi4QHrHlv7Qwj+aacxCPNzjRJ4ZBk1EvpUbo5I1q7Ep8sN/dER5DwyunR/oHO7+E
+         jExeBNWfwbaOH7Zb/Miu938Hy/Zdx0Z/MkcUAj6OmQfNwinVIGI/ozLpZBhGEDUjDYbq
+         YWZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:arc-authentication-results;
-        bh=RqNx+qq5h7R2hGWOCzaF0VZiYTZOQZrvWoOhRtQiQY4=;
-        b=CIFjlOpfPwg4s0E+8f8TS4jEd7Q2GlAbGsiI7IKdfuH8Myx21X8W4vBVrbBEj0uBni
-         ZLH76/kZUmQUMBXeUT0KVuLdQSoBTcHMN9uNQf/960rjJuW6+FtQH5p0Wz6I1FDOIluE
-         rBLi+V1eG+WM62H4uikaR41BQ0y94Szxug0e6o2nW8TBo9MGtOzwylAXBqhYwHdNITt/
-         yVuKGTLhOiwurkd9mNdxXZ66Ix9by/rU9iqT+0FKqhFZhNJFndJWcIeAdCbmZEEgd/38
-         sBqFSBAPSO8A0zPvob+bGsQjRawQDZ1z4uUxyHz8vBaNP4ZDI1FF/wVP6ncgt/kUJOLZ
-         S8ww==
+         :message-id:from:references:cc:to:subject:arc-authentication-results;
+        bh=xAaMpRq0kohVxYb42fTMSJ2Vgz/koYjc/iFoTWR3O8E=;
+        b=gAbCVwDC60zkdGUfLPWs98Cml67S/ue9PdEo+IqoTTOsgvLgYd6MfHf3HQdDBms8bJ
+         PuhYJEqTu6He2gGPSEQBNEmnwGDmXa/+k6ny+kmsUG13iGxHXFACYNzxoScfvBIFXt07
+         Vr1LD1WXjySCSRdW1u19E2ZgPNCOFB7emzn6w8PqDBv+qOUb4rbiSD4QIVf0wkJV3xZ0
+         YF/PPiXED9gQ+UQtdzdKykdtClFColIy0PB2yVeIRUanE95nWMEMuA1TQV60SZZGxEzz
+         vwkExHOhiq9wMqkhdBil8G5ebb8JnHbr96FwxoumMZbN49Nu/gFgC8qOBmQqrrL4/nRZ
+         b8rw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=pass (google.com: domain of noralf@tronnes.org designates 2a01:5b40:0:3005::1 as permitted sender) smtp.mailfrom=noralf@tronnes.org
 Return-Path: <noralf@tronnes.org>
 Received: from smtp.domeneshop.no (smtp.domeneshop.no. [2a01:5b40:0:3005::1])
-        by gmr-mx.google.com with ESMTPS id 198si85814lfa.2.2017.10.06.11.05.00
+        by gmr-mx.google.com with ESMTPS id i68si108964lfk.6.2017.10.06.11.01.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 06 Oct 2017 11:05:00 -0700 (PDT)
+        Fri, 06 Oct 2017 11:01:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of noralf@tronnes.org designates 2a01:5b40:0:3005::1 as permitted sender) client-ip=2a01:5b40:0:3005::1;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of noralf@tronnes.org designates 2a01:5b40:0:3005::1 as permitted sender) smtp.mailfrom=noralf@tronnes.org
-Received: from 211.81-166-168.customer.lyse.net ([81.166.168.211]:53557 helo=[192.168.10.157])
+Received: from 211.81-166-168.customer.lyse.net ([81.166.168.211]:53546 helo=[192.168.10.157])
 	by smtp.domeneshop.no with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
 	(Exim 4.84_2)
 	(envelope-from <noralf@tronnes.org>)
-	id 1e0Wzc-0005NV-0E; Fri, 06 Oct 2017 20:05:00 +0200
-Subject: Re: [PATCH v3 1/2] drm/tinydrm: Move tinydrm_of_find_backlight into
- drm_of.c
-To: Meghana Madhyastha <meghana.madhyastha@gmail.com>, daniel@ffwll.ch,
- outreachy-kernel@googlegroups.com, dri-devel@lists.freedesktop.org
-References: <b87bff83-e9af-e095-2b58-8a0b3fb642e0@tronnes.org>
- <20170929122025.GA29498@meghana-HP-Pavilion-Notebook>
- <4b32d910-f0af-e9cb-feb7-4bc4174bc9c3@tronnes.org>
- <20170929141324.GA30107@meghana-HP-Pavilion-Notebook>
- <08dd8e6a-3028-098e-e193-9f408c6a9633@tronnes.org>
- <20171002074718.jinjkmc76igo2lkx@phenom.ffwll.local>
- <87y3ou55nx.fsf@intel.com> <3b0e7a80-fe29-1732-63c7-3a84568e617e@tronnes.org>
- <bf92a0e6-66e4-b830-aa32-b4c6d899f4de@tronnes.org>
- <623db97b-5b65-88d2-0ff6-69abd8602b0d@tronnes.org>
- <20171005035350.GB28390@meghana-HP-Pavilion-Notebook>
+	id 1e0Wvt-0004Xg-HN; Fri, 06 Oct 2017 20:01:09 +0200
+Subject: Re: [PATCH v7 1/3] backlight: Add
+ IS_ENABLED(CONFIG_BACKLIGHT_CLASS_DEVICE)
+To: Daniel Vetter <daniel@ffwll.ch>,
+ Daniel Thompson <daniel.thompson@linaro.org>
+Cc: Jani Nikula <jani.nikula@linux.intel.com>,
+ Meghana Madhyastha <meghana.madhyastha@gmail.com>,
+ outreachy-kernel@googlegroups.com, dri-devel@lists.freedesktop.org,
+ Lee Jones <lee.jones@linaro.org>
+References: <cover.1506878301.git.meghana.madhyastha@gmail.com>
+ <7a6311819f8eea0b2845c25cca72324b25e63e13.1506878301.git.meghana.madhyastha@gmail.com>
+ <527a54b8-d67a-651c-3326-4780b9f3cfc4@linaro.org> <87o9pp6i0p.fsf@intel.com>
+ <20171003080341.wvdgtgw6uuwcpmj4@phenom.ffwll.local>
+ <464023c9-9fef-1372-93df-a54f43524ebb@linaro.org>
+ <20171003090403.5mpxu22lxu2f7x7g@phenom.ffwll.local>
 From: =?UTF-8?Q?Noralf_Tr=c3=b8nnes?= <noralf@tronnes.org>
-Message-ID: <c472af4a-920d-8506-f1d7-a0154aeb5f53@tronnes.org>
-Date: Fri, 6 Oct 2017 20:04:59 +0200
+Message-ID: <c676f762-00a8-0883-c4db-9b6e97ebdd11@tronnes.org>
+Date: Fri, 6 Oct 2017 20:01:05 +0200
 User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101
  Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <20171005035350.GB28390@meghana-HP-Pavilion-Notebook>
+In-Reply-To: <20171003090403.5mpxu22lxu2f7x7g@phenom.ffwll.local>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 
 
-Den 05.10.2017 05.53, skrev Meghana Madhyastha:
-> On Tue, Oct 03, 2017 at 07:38:29PM +0200, Noralf Trønnes wrote:
->> Den 03.10.2017 18.02, skrev Noralf Trønnes:
->>> Den 03.10.2017 16.58, skrev Noralf Trønnes:
->>>> Den 02.10.2017 10.13, skrev Jani Nikula:
->>>>> On Mon, 02 Oct 2017, Daniel Vetter <daniel@ffwll.ch> wrote:
->>>>>> Also adding Jani, who looked at the backlight Kconfig mess in the
->>>>>> past.
->>>>> I've even sent patches to fix some of the dependency mess, but the
->>>>> problem is social not technical. The problem is that people think
->>>>> "select" is more convenient than "depends" because they can just enable
->>>>> a config that way, while "depends" would require finding and enabling
->>>>> all the dependencies before the menu option even shows up.
+Den 03.10.2017 11.04, skrev Daniel Vetter:
+> On Tue, Oct 03, 2017 at 09:51:49AM +0100, Daniel Thompson wrote:
+>> On 03/10/17 09:03, Daniel Vetter wrote:
+>>> On Mon, Oct 02, 2017 at 12:00:54PM +0300, Jani Nikula wrote:
+>>>> On Mon, 02 Oct 2017, Daniel Thompson <daniel.thompson@linaro.org> wrote:
+>>>>> So I'm coming to this patchset cold but can you explain *why* something
+>>>>> wants to call of_find_backlight_by_node() when there is no backlight
+>>>>> support enabled. Why isn't the code that called is conditional on
+>>>>> BACKLIGHT_CLASS_DEVICE?
 >>>>>
->>>>> I don't deny, that's annoying. But it's also abuse of select, see
->>>>> Documentation/kbuild/kconfig-language.txt:
->>>>>
->>>>>     Note:
->>>>>      select should be used with care. select will force
->>>>>      a symbol to a value without visiting the dependencies.
->>>>>      By abusing select you are able to select a symbol FOO even
->>>>>      if FOO depends on BAR that is not set.
->>>>>      In general use select only for non-visible symbols
->>>>>      (no prompts anywhere) and for symbols with no dependencies.
->>>>>      That will limit the usefulness but on the other hand avoid
->>>>>      the illegal configurations all over.
->>>>>
->>>>> The real fix would be making finding and enabling dependencies
->>>>> recursively more convenient, but I don't see that happening anytime
->>>>> soon.
->>>> If we don't select BACKLIGHT in drivers, we can end up with CONFIG_DRM=y
->>>> and CONFIG_BACKLIGHT_CLASS_DEVICE=m.
+>>>>> The undefined symbol issue is a pain but to be honest I'd rather solve
+>>>>> the use of undefined symbols by avoiding declaring them; this making
+>>>>> them into compile errors rather than link errors.
+>>>> Typically the kernel header files define static inline stubs of the
+>>>> functions when the actual functions aren't configured/built. The code
+>>>> using the functions looks the same regardless of the config option, and
+>>>> handles the -ENODEV or NULL or whatever returns from the stubs
+>>>> gracefully. With the inlines, the compiler can usually throw out much of
+>>>> the code anyway.
 >>>>
->>>> So we can either do:
->>>>
->>>> menuconfig DRM
->>>>      depends on (BACKLIGHT_CLASS_DEVICE || BACKLIGHT_CLASS_DEVICE=n)
->>>>
->>> No, this was the thing that didn't work:
->>>
->>> drivers/gpu/drm/Kconfig:7:      symbol DRM depends on
->>> BACKLIGHT_CLASS_DEVICE
->>> drivers/video/backlight/Kconfig:158:    symbol BACKLIGHT_CLASS_DEVICE is
->>> selected by DRM_RADEON
->>> drivers/gpu/drm/Kconfig:164:    symbol DRM_RADEON depends on DRM
->>>
->> How about putting the dependency in the driver combined with IS_REACHABLE,
->> but not in backlight.h as I first proposed, that won't work:
+>>>> In this regard, the backlight interface is an exception, forcing the
+>>>> callers to wrap the code around IS_ENABLED(BACKLIGHT_CLASS_DEVICE), not
+>>>> the rule.
+>>> fwiw, I think it'd be great if we can move backlight over to the common
+>>> pattern, like everyone else. It's pretty big pain as-is ...
+>> For sure, after Jani's mail yesterday I looked at the GMA500 driver and
+>> concluded I didn't want code related to backlight having to look like that!
 >>
->>   menuconfig DRM_TINYDRM
->> -    select BACKLIGHT_LCD_SUPPORT
->> -    select BACKLIGHT_CLASS_DEVICE
->> +    depends on (BACKLIGHT_CLASS_DEVICE || BACKLIGHT_CLASS_DEVICE=n)
+>> Currently the three main patterns of use are:
 >>
+>>   1. Standalone drivers simple depend on BACKLIGHT_CLASS_DEVICE,
+>>   2. Some compound drivers select BACKLIGHT_CLASS_DEVICE (the AMD DRM
+>>      driver is an example of this),
+>>   3. Other compound drivers perform heroics with the pre-processor.
 >>
->> struct backlight_device *drm_of_find_backlight(struct device *dev)
->> {
->>      struct backlight_device *backlight;
->>      struct device_node *np;
->>
->>      if (!IS_REACHABLE(CONFIG_BACKLIGHT_CLASS_DEVICE))
->>          return NULL;
->> [...]
->> }
->>
->> But the IS_REACHABLE doesn't feel right.
->>
->> Maybe the problem is putting a function in DRM that really doesn't
->> belong there. How about calling it of_find_backlight() instead and
->> put it in backlight.[hc]?
-> Wouldn't it make more sense to put the function in DRM ? Because all of
-> the callers are located in DRM and so I'd think it makes more sense to
-> put it in DRM along with the other _of functions.
-
-I don't think it matters where the callers are, but the fact that the 
-functions
-are all about backlight and nothing about DRM, except the error messages.
-
-I've made a suggestion in the last version where we have backlight 
-maintainer attention.
-
-Noralf.
-
->> Noralf.
->>
->>>> Or we can:
->>>>
->>>> -#ifdef CONFIG_OF
->>>> +#if IS_ENABLED(CONFIG_OF) &&
->>>> IS_REACHABLE(CONFIG_BACKLIGHT_CLASS_DEVICE)
->>>>   struct backlight_device *of_find_backlight_by_node(struct device_node
->>>> *node);
->>>>   #else
->>>>   static inline struct backlight_device *
-> I have one question. Why isn't your previous solution a good solution?
-> i.e IS_ENABLED(CONFIG_BACKLIGHT_CLASS_DEVICE) which was part of v7
+>> The main reason I'm not just agreeing straight away is that, to adopt the
+>> static inline pattern for the whole API, we have to believe that #3 above is
+>> desirable. Given the size and scope of the compound drivers in #3 above, I
+>> don't entirely understand why they want to avoid the select.
+> People love to over-configure their kernels and shave off a few bytes. And
+> big gpu drivers might have backlight support, but not always need it (e.g.
+> if you run without a panel as e.g. a tv set-top-box). Same with e.g. a
+> driver that supports both OF/DT and pci to find its devices.
 >
->>>> Using the second one it won't be obvious to users why backlight doesn't
->>>> work,
->>>> they have after all enabled backlight (but as module and DRM builtin).
->>>>
->>>> So I suppose the first one is preferred.
->>>> What effect will such a change have on an existing configuration where
->>>> DRM=y and BACKLIGHT_CLASS_DEVICE=m? Will DRM become a module or will it
->>>> be disabled?
-> Why would it be disabled in this case ?
+> On the desktop gpu driver side we don't really subscribe to this idea of
+> making everything optional, hence select (mostly), except select is a huge
+> pain. On the mobile/soc gpu side, #3 seems to be the desired outcome.
+> Doing static inline helpers for backlights would make both easier (since
+> in the end for desktop you just get a distro kernel that enables
+> everything anyway).
 >
-> Thanks and regards,
-> Meghana
->
->>>> Noralf.
->>>>
->>>> _______________________________________________
->>>> dri-devel mailing list
->>>> dri-devel@lists.freedesktop.org
->>>> https://lists.freedesktop.org/mailman/listinfo/dri-devel
->>>>
->>> _______________________________________________
->>> dri-devel mailing list
->>> dri-devel@lists.freedesktop.org
->>> https://lists.freedesktop.org/mailman/listinfo/dri-devel
->>>
+> So yeah, imo if you think backlight should be a Kconfig, then it should
+> have static inline dummy functions to make life simpler for everyone. Only
+> exception are pure driver-only subsystem code which aren't ever called by
+> anything outside of your subsystem. But since the point of the backlight
+> subsystem is to provide backlight support to other drivers (there's still
+> the dream that we don't offload this onto userspace, that just doesn't
+> work well) we really should have these static inline helpers.
+
+I suggest we put all the backlight subsystem only functionality we need,
+into the backlight subsystem :-)
+I've put together a suggestion below and I've deliberately dropped the
+of_ infix in backlight_get() to make room for possible future additions
+that can make it possible to set the connection between device and
+backlight using platform table or ACPI, fashioned after gpiolib.
+
+
+include/linux/backlight.h:
+
+/**
+  * backlight_enable - Enable backlight
+  * @bd: the backlight device to enable
+  */
+static inline int backlight_enable(struct backlight_device *bd)
+{
+     if (!bd)
+         return 0;
+
+     bd->props.power = FB_BLANK_UNBLANK;
+     bd->props.state &= ~BL_CORE_FBBLANK;
+
+     return backlight_update_status(bd);
+}
+
+/**
+  * backlight_disable - Disable backlight
+  * @bd: the backlight device to disable
+  */
+static inline int backlight_disable(struct backlight_device *bd)
+{
+     if (!bd)
+         return 0;
+
+     bd->props.power = FB_BLANK_POWERDOWN;
+     bd->props.state |= BL_CORE_FBBLANK;
+
+     return backlight_update_status(bd);
+}
+
+/**
+  * backlight_put - Drop backlight reference
+  * @bd: the backlight device to put
+  */
+static inline void backlight_put(struct backlight_device *bd)
+{
+     if (bd)
+         put_device(bd->dev);
+}
+
+#if IS_ENABLED(CONFIG_BACKLIGHT_CLASS_DEVICE)
+struct backlight_device *backlight_get(struct device *dev);
+struct backlight_device *devm_backlight_get(struct device *dev);
+#else
+static inline struct backlight_device *backlight_get(struct device *dev)
+{
+     return NULL;
+}
+
+static inline struct backlight_device *devm_backlight_get(struct device 
+*dev)
+{
+     return NULL;
+}
+#endif
+
+
+
+drivers/video/backlight/backlight.c:
+
+/**
+  * backlight_get - Get backlight device
+  * @dev: Device
+  *
+  * This function looks for a property named 'backlight' on the DT node
+  * connected to @dev and looks up the backlight device.
+  *
+  * Call backlight_put() to drop the reference on the backlight device.
+  *
+  * Returns:
+  * A pointer to the backlight device if found.
+  * Error pointer -EPROBE_DEFER if the DT property is set, but no backlight
+  * device is found.
+  * NULL if there's no backlight property.
+  */
+struct backlight_device *backlight_get(struct device *dev)
+{
+     struct backlight_device *bd = NULL;
+     struct device_node *np;
+
+     if (!dev)
+         return NULL;
+
+     if (IS_ENABLED(CONFIG_OF) && dev->of_node) {
+         np = of_parse_phandle(dev->of_node, 'backlight', 0);
+         if (np) {
+             bd = of_find_backlight_by_node(np);
+             of_node_put(np);
+             if (!bd)
+                 return ERR_PTR(-EPROBE_DEFER);
+         }
+     }
+
+     return bd;
+}
+EXPORT_SYMBOL(backlight_get);
+
+static void devm_backlight_get_release(void *data)
+{
+     backlight_put(data);
+}
+
+/**
+  * devm_backlight_get - Resource-managed backlight_get()
+  * @dev: Device
+  *
+  * Device managed version of backlight_get(). The reference on the 
+backlight
+  * device is automatically dropped on driver detach.
+  */
+struct backlight_device *devm_backlight_get(struct device *dev)
+{
+     struct backlight_device *bd;
+     int ret;
+
+     bd = backlight_get(dev);
+     if (!bd)
+         return NULL;
+
+     ret = devm_add_action(dev, devm_backlight_get_release, bd);
+     if (ret) {
+         backlight_put(bd);
+         return ERR_PTR(ret);
+     }
+
+     return bd;
+}
+EXPORT_SYMBOL(devm_backlight_get);
+
 
 
