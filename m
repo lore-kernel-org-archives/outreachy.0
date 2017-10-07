@@ -1,225 +1,350 @@
-X-GM-THRID: 6951280273110597632
-X-Received: by 2002:a19:a402:: with SMTP id q2mr1631835lfc.407.1618471060149;
-        Thu, 15 Apr 2021 00:17:40 -0700 (PDT)
+X-GM-THRID: 6474151874881650688
+X-Received: by 10.28.94.5 with SMTP id s5mr659556wmb.15.1507408869339;
+        Sat, 07 Oct 2017 13:41:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6512:3b95:: with SMTP id g21ls5064087lfv.1.gmail; Thu,
- 15 Apr 2021 00:17:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxwO5aHnQg1yqVI4Qc6m5qRAnA8MJaU5hF0+leMFsCxzXqmZdu6cTt9figfon1FE/n7os/N
-X-Received: by 2002:a05:6512:3f2a:: with SMTP id y42mr593926lfa.234.1618471058399;
-        Thu, 15 Apr 2021 00:17:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618471058; cv=none;
+Received: by 10.223.195.204 with SMTP id d12ls330278wrg.14.gmail; Sat, 07 Oct
+ 2017 13:41:08 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QDAiuZtNrVzA711xHSpkTTNJfQ44fq0qrMN/NPRE+7ZWfiMVXnvl4KeNG8jCsIrnkJdib7N
+X-Received: by 10.28.136.12 with SMTP id k12mr693592wmd.10.1507408868505;
+        Sat, 07 Oct 2017 13:41:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507408868; cv=none;
         d=google.com; s=arc-20160816;
-        b=kpeYS1KPUz0sdVRqF1nt97+khTpMCJcFTbhzY9x6S9RE5wxa3D6gbpPOUJsDKg4CQN
-         ciZQ5CqpnipJybh7vaX1+FEWQ8oVaCDz9pVhFt92GqvQYRvoYEbu7xxh1zgUdnnu9Jyy
-         EF7HN/S0gQeWimWdIn8eFv0/ASAAXU/SY975e96WhitMZjzptMbuHmBR4Sj6V2OF8e81
-         0/lzC7QTLlpA1yuIN7v+iCinZD3XoEka45DtB0vtOLTdZMbZUMBpBw+vJTXNcN/5Betn
-         Vd3bXP145QYqGjxxdQf5WLVUd8HquckrPZAs6BGtjJ1TYWWG/6QP1KsE7plYgq4S+NvW
-         d/oA==
+        b=rz9kuFYMtSxa1kP18t/HdNszi5I9ZrS84DW9eW+dJ0B+fVPFthImUVCaNF8Aer24/+
+         uVk9Z/ZeDCCvBBDfx3nlyVwLZHv2Zi7eI3LI5k4I9JQXX0klU/rLIVANSaghFwZTOHPq
+         3wEyQmpgpCpbgXSVIHHICiE+obnH4ceuiqL/7GijCs/2zMnWxqg+qmzOFci3JsRJKgnJ
+         9X4UwfyIiLelu+D/tCLG1f8rwyGUIZRQ6PILXEDmHL0utLMiZy86z5Dij3At/diw+P/o
+         T5w530l3MVodtxzKxdtLjUWHTwY1rqQNrCrFKxMeCtm3HM8WlEdTJKTiGwqmQMO3H7gJ
+         Yu7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=Qel2OPZGhx5lJbWSQUP/ydunsj2txfHm1wL988zsXDA=;
-        b=vz1L/V5NVJ8lXGTAUgBrOUdZzPTFWnaciL+Z+O9viB1bt38PFdJiTp+KYSYhRPoUlB
-         el0L+eWbRWfd0+ONJpS+Avlv3c4jp5bW3kYmPBc2m4BAD8OmDP9+OW6/13ht5Pkmi+sN
-         eZGF3B1XA32uBEFUC54EyfGJvmAnzEEi37vKm/S5e6tFZPyrXJWX66xvnf/vr3i3aIIq
-         eDHwMxczmEkpHGcTAG0kTPLuUF7qzNTuirQAFnkcKPYaRhZR93humSD2SYV7Ab2rGo9P
-         BmHvFwS08xQtPnZzk9yfQqHbusd61IoeEmDFyanv46bja/yJpc+hCH04Nt2uhuEwsdK7
-         /p4A==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=Xy76eN453qlCKiaEsyaeo9xwr5QcwHD//TkbUm8QCmk=;
+        b=UWzGpVnObkRmojT9rLgppESsW7yAvbAjrziqxHCXboiogcmUU735kbxPWZ/QaonhES
+         nmbQmXRgqQZlyKpLlglcNVPeIdjwwMCY5i/mrbYQxrGLajTuhbF1B12lSWumNTRcLXIq
+         vCQe8pR9hYFLKXoV1/zudFL0LRzpVbiZxoM5pPGGQ1Vhs1j4HiJ8ORonYCvWBnIOYFca
+         4mP4+3/W3CWyqEek89UDjInE0ObZqaCNbxy6HVJ6qFmkgEk19IS1pZHHWcwjOW3Es9Mq
+         3xrdG44h5fR2eNbxQtTkobp+LXBQ3zmzZtVdoplchc/PiTBRIngM3pmWYZLcMTASVhYD
+         x77g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=i+DP25U6;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62e as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ej1-x62e.google.com (mail-ej1-x62e.google.com. [2a00:1450:4864:20::62e])
-        by gmr-mx.google.com with ESMTPS id q9si69083ljm.3.2021.04.15.00.17.38
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 74si664961wme.2.2017.10.07.13.41.08
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 15 Apr 2021 00:17:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62e as permitted sender) client-ip=2a00:1450:4864:20::62e;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 07 Oct 2017 13:41:08 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=i+DP25U6;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62e as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ej1-x62e.google.com with SMTP id u17so35306548ejk.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 15 Apr 2021 00:17:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=Qel2OPZGhx5lJbWSQUP/ydunsj2txfHm1wL988zsXDA=;
-        b=i+DP25U6FJ2GdBJemsuVFT4rvEgX3pk41eJ97a3jwL56mNNOgPQe/6GDBtH+FpaLuq
-         AbEdYBI96LtpadsR8Xf18OxHzBhMOqFK27Ceg3Q8G2qn05+a0zASoTE40J7W9ejQVNUd
-         NlqI2clmxLx9vo7i9yTQ3CnRUS9NFA0ONLlWXV2oawpIHO+rZfMI22z3C+ySFImlelMU
-         D3Q9QPYJin8Q/j3NnJAoTlGNW35z5HX3PjfGuzfh3R75P58hm5/+i2nY22KGuJ0NE3Gw
-         SsoPnOulBvYPr9Krz3t3ubALVGM1IBzGhkdwJUc3k+U6V718lM/kxi8NnoisQhWW93H0
-         Affw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=Qel2OPZGhx5lJbWSQUP/ydunsj2txfHm1wL988zsXDA=;
-        b=SkBGs2VHkSKpE1pPJB5by6pkMZ3L6aQk5AJmYX8U6W8zz8JUFPOE6Aise6XSZLWtr0
-         RxrLePJ1w3sZr/lzBYK5mXTtNK7J91B5LhDIsVff2idhbXN69HhQovihngwiw8BZHPB7
-         SEBpOgBEKgZpOvGqqtstRxdOmQNVhUegvHHjLOCrAGcMDfi+P6HOpDQ3llBKO2+4mqq7
-         eLC0RyIjmTW6lEPZgw3JD6JNpXaFc51zezOJg2ezYGHQCO5noJXcB887INR6PhZRd3CV
-         MR4Nds9CtaPIMtpTbRoOnkARJ2LQreiRBzwWWOmqp7YV8eZHO//WiV7QqN+hsODxtqEA
-         n38g==
-X-Gm-Message-State: AOAM533k8dtGRV6ZrP3nWsIooEkGEcUyYaco1JRbqnzO2DT4XSgjY3qK
-	3dhE+Rr1X4vVbuvHyuRUiiw9+vUphXLT+fNm
-X-Received: by 2002:a17:906:3018:: with SMTP id 24mr2003959ejz.186.1618471057647;
-        Thu, 15 Apr 2021 00:17:37 -0700 (PDT)
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from linux.local (host-95-237-55-30.retail.telecomitalia.it. [95.237.55.30])
-        by smtp.gmail.com with ESMTPSA id d15sm1237733ejj.42.2021.04.15.00.17.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 Apr 2021 00:17:37 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	Matthew Wilcox <willy@infradead.org>,
-	Julia Lawall <julia.lawall@inria.fr>,
-	Fabio Aiuto <fabioaiuto83@gmail.com>,
-	Dan Carpenter <dan.carpenter@oracle.com>
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [Outreachy kernel] [PATCH v4] staging: rtl8723bs: Remove led_blink_hdl() and everything related
-Date: Thu, 15 Apr 2021 09:17:31 +0200
-Message-Id: <20210415071731.25725-1-fmdefrancesco@gmail.com>
-X-Mailer: git-send-email 2.31.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,490,1500933600"; 
+   d="scan'208";a="240120181"
+Received: from abo-88-122-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.122.88])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 07 Oct 2017 22:41:07 +0200
+Date: Sat, 7 Oct 2017 22:41:07 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Srishti Sharma <srishtishar@gmail.com>
+cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org, 
+    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: rtl8723bs: core: rtw_cmd:
+ Remove cast to pointer types in kfree
+In-Reply-To: <1507408404-5719-1-git-send-email-srishtishar@gmail.com>
+Message-ID: <alpine.DEB.2.20.1710072240550.2071@hadrien>
+References: <1507408404-5719-1-git-send-email-srishtishar@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
 
-Removed useless led_blink_hdl() prototype and definition.
-Removed struct LedBlink_param. Removed LedBlink entries in
-rtw_cmd_callback[] and in wlancmds[]. Everything related to LedBlink is
-not anymore needed. Index of slots changed in arrays comments to reflect
-current positions.
 
-Reported-by: Julia Lawall <julia.lawall@inria.fr>
-Reported-by: Fabio Aiuto <fabioaiuto83@gmail.com>
-Reported-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Suggested-by: Matthew Wilcox <willy@infradead.org>
-Suggested-by: Dan Carpenter <dan.carpenter@oracle.com>
-Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
----
 
-Changes from v3: Merged the series into one single patch for avoiding
-unnecessary intermediate stages.
-Changes from v2: Made a series and added another patch (2/2).
-Changes from v1: Corrected a bad solution to this issue that made use of
-an unnecessary dummy function.
+On Sun, 8 Oct 2017, Srishti Sharma wrote:
 
- drivers/staging/rtl8723bs/core/rtw_cmd.c         | 16 +++++++---------
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c    |  9 ---------
- drivers/staging/rtl8723bs/include/rtw_cmd.h      | 14 ++++----------
- drivers/staging/rtl8723bs/include/rtw_mlme_ext.h |  1 -
- 4 files changed, 11 insertions(+), 29 deletions(-)
+> The cast to pointer types in kfree is not needed and can be dropped.
+> This was done using the following semantic patch by coccinelle,
+> except kfree((unsigned char*) pcmd->parmbuf) which was transformed by
+> hand because coccinelle didn't have enough type information.
+>
+> @r@
+> type T,P;
+> T* x;
+> @@
+>
+> kfree(
+> -(P *)
+> x )
+>
+> Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-index 0297fbad7bce..d834a82aaf55 100644
---- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-@@ -78,13 +78,12 @@ static struct _cmd_callback rtw_cmd_callback[] = {
- 	{GEN_CMD_CODE(_Set_Drv_Extra), NULL},/*57*/
- 	{GEN_CMD_CODE(_Set_H2C_MSG), NULL},/*58*/
- 	{GEN_CMD_CODE(_SetChannelPlan), NULL},/*59*/
--	{GEN_CMD_CODE(_LedBlink), NULL},/*60*/
- 
--	{GEN_CMD_CODE(_SetChannelSwitch), NULL},/*61*/
--	{GEN_CMD_CODE(_TDLS), NULL},/*62*/
--	{GEN_CMD_CODE(_ChkBMCSleepq), NULL}, /*63*/
-+	{GEN_CMD_CODE(_SetChannelSwitch), NULL},/*60*/
-+	{GEN_CMD_CODE(_TDLS), NULL},/*61*/
-+	{GEN_CMD_CODE(_ChkBMCSleepq), NULL}, /*62*/
- 
--	{GEN_CMD_CODE(_RunInThreadCMD), NULL},/*64*/
-+	{GEN_CMD_CODE(_RunInThreadCMD), NULL},/*63*/
- };
- 
- static struct cmd_hdl wlancmds[] = {
-@@ -150,11 +149,10 @@ static struct cmd_hdl wlancmds[] = {
- 
- 	GEN_MLME_EXT_HANDLER(0, h2c_msg_hdl) /*58*/
- 	GEN_MLME_EXT_HANDLER(sizeof(struct SetChannelPlan_param), set_chplan_hdl) /*59*/
--	GEN_MLME_EXT_HANDLER(sizeof(struct LedBlink_param), led_blink_hdl) /*60*/
- 
--	GEN_MLME_EXT_HANDLER(sizeof(struct SetChannelSwitch_param), set_csa_hdl) /*61*/
--	GEN_MLME_EXT_HANDLER(sizeof(struct TDLSoption_param), tdls_hdl) /*62*/
--	GEN_MLME_EXT_HANDLER(0, chk_bmc_sleepq_hdl) /*63*/
-+	GEN_MLME_EXT_HANDLER(sizeof(struct SetChannelSwitch_param), set_csa_hdl) /*60*/
-+	GEN_MLME_EXT_HANDLER(sizeof(struct TDLSoption_param), tdls_hdl) /*61*/
-+	GEN_MLME_EXT_HANDLER(0, chk_bmc_sleepq_hdl) /*62*/
- 	GEN_MLME_EXT_HANDLER(sizeof(struct RunInThread_param), run_in_thread_hdl) /*63*/
- };
- 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index 873d3792ac8e..963ea80083c8 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -6189,15 +6189,6 @@ u8 set_chplan_hdl(struct adapter *padapter, unsigned char *pbuf)
- 	return	H2C_SUCCESS;
- }
- 
--u8 led_blink_hdl(struct adapter *padapter, unsigned char *pbuf)
--{
--
--	if (!pbuf)
--		return H2C_PARAMETERS_ERROR;
--
--	return	H2C_SUCCESS;
--}
--
- u8 set_csa_hdl(struct adapter *padapter, unsigned char *pbuf)
- {
- 	return	H2C_REJECTED;
-diff --git a/drivers/staging/rtl8723bs/include/rtw_cmd.h b/drivers/staging/rtl8723bs/include/rtw_cmd.h
-index 517ae3b51386..28d2d2732374 100644
---- a/drivers/staging/rtl8723bs/include/rtw_cmd.h
-+++ b/drivers/staging/rtl8723bs/include/rtw_cmd.h
-@@ -537,11 +537,6 @@ struct SetChannelPlan_param {
- 	u8 channel_plan;
- };
- 
--/*H2C Handler index: 60 */
--struct LedBlink_param {
--	void *pLed;
--};
--
- /*H2C Handler index: 61 */
- struct SetChannelSwitch_param {
- 	u8 new_ch_no;
-@@ -709,13 +704,12 @@ enum {
- 	GEN_CMD_CODE(_Set_H2C_MSG), /*58*/
- 
- 	GEN_CMD_CODE(_SetChannelPlan), /*59*/
--	GEN_CMD_CODE(_LedBlink), /*60*/
- 
--	GEN_CMD_CODE(_SetChannelSwitch), /*61*/
--	GEN_CMD_CODE(_TDLS), /*62*/
--	GEN_CMD_CODE(_ChkBMCSleepq), /*63*/
-+	GEN_CMD_CODE(_SetChannelSwitch), /*60*/
-+	GEN_CMD_CODE(_TDLS), /*61*/
-+	GEN_CMD_CODE(_ChkBMCSleepq), /*62*/
- 
--	GEN_CMD_CODE(_RunInThreadCMD), /*64*/
-+	GEN_CMD_CODE(_RunInThreadCMD), /*63*/
- 
- 	MAX_H2CCMD
- };
-diff --git a/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h b/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
-index 5e6cf63956b8..472818c5fd83 100644
---- a/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
-+++ b/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
-@@ -745,7 +745,6 @@ u8 chk_bmc_sleepq_hdl(struct adapter *padapter, unsigned char *pbuf);
- u8 tx_beacon_hdl(struct adapter *padapter, unsigned char *pbuf);
- u8 set_ch_hdl(struct adapter *padapter, u8 *pbuf);
- u8 set_chplan_hdl(struct adapter *padapter, unsigned char *pbuf);
--u8 led_blink_hdl(struct adapter *padapter, unsigned char *pbuf);
- u8 set_csa_hdl(struct adapter *padapter, unsigned char *pbuf);	/* Kurt: Handling DFS channel switch announcement ie. */
- u8 tdls_hdl(struct adapter *padapter, unsigned char *pbuf);
- u8 run_in_thread_hdl(struct adapter *padapter, u8 *pbuf);
--- 
-2.31.1
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 
+
+> ---
+> Changes in v2:
+>  -Do transformation left out by coccinelle
+>  -Improve commit message
+>
+>  drivers/staging/rtl8723bs/core/rtw_cmd.c | 60 ++++++++++++++++----------------
+>  1 file changed, 30 insertions(+), 30 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
+> index 1843c44..9ac2dea 100644
+> --- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
+> +++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
+> @@ -408,7 +408,7 @@ void rtw_free_cmd_obj(struct cmd_obj *pcmd)
+>  	}
+>
+>  	/* free cmd_obj */
+> -	kfree((unsigned char *)pcmd);
+> +	kfree(pcmd);
+>  }
+>
+>
+> @@ -619,7 +619,7 @@ u8 rtw_sitesurvey_cmd(struct adapter  *padapter, struct ndis_802_11_ssid *ssid,
+>
+>  	psurveyPara = rtw_zmalloc(sizeof(struct sitesurvey_parm));
+>  	if (psurveyPara == NULL) {
+> -		kfree((unsigned char *) ph2c);
+> +		kfree(ph2c);
+>  		return _FAIL;
+>  	}
+>
+> @@ -689,7 +689,7 @@ u8 rtw_setdatarate_cmd(struct adapter *padapter, u8 *rateset)
+>
+>  	pbsetdataratepara = rtw_zmalloc(sizeof(struct setdatarate_parm));
+>  	if (pbsetdataratepara == NULL) {
+> -		kfree((u8 *) ph2c);
+> +		kfree(ph2c);
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+> @@ -706,8 +706,8 @@ u8 rtw_setdatarate_cmd(struct adapter *padapter, u8 *rateset)
+>  void rtw_getbbrfreg_cmdrsp_callback(struct adapter *padapter,  struct cmd_obj *pcmd)
+>  {
+>  	/* rtw_free_cmd_obj(pcmd); */
+> -	kfree((unsigned char *) pcmd->parmbuf);
+> -	kfree((unsigned char *) pcmd);
+> +	kfree(pcmd->parmbuf);
+> +	kfree(pcmd);
+>  }
+>
+>  u8 rtw_createbss_cmd(struct adapter  *padapter)
+> @@ -847,7 +847,7 @@ u8 rtw_joinbss_cmd(struct adapter  *padapter, struct wlan_network *pnetwork)
+>  	psecnetwork = (struct wlan_bssid_ex *)&psecuritypriv->sec_bss;
+>  	if (psecnetwork == NULL) {
+>  		if (pcmd != NULL)
+> -			kfree((unsigned char *)pcmd);
+> +			kfree(pcmd);
+>
+>  		res = _FAIL;
+>
+> @@ -955,7 +955,7 @@ u8 rtw_disassoc_cmd(struct adapter *padapter, u32 deauth_timeout_ms, bool enqueu
+>  		cmdobj = rtw_zmalloc(sizeof(*cmdobj));
+>  		if (cmdobj == NULL) {
+>  			res = _FAIL;
+> -			kfree((u8 *)param);
+> +			kfree(param);
+>  			goto exit;
+>  		}
+>  		init_h2fwcmd_w_parm_no_rsp(cmdobj, param, _DisConnect_CMD_);
+> @@ -964,7 +964,7 @@ u8 rtw_disassoc_cmd(struct adapter *padapter, u32 deauth_timeout_ms, bool enqueu
+>  		/* no need to enqueue, do the cmd hdl directly and free cmd parameter */
+>  		if (H2C_SUCCESS != disconnect_hdl(padapter, (u8 *)param))
+>  			res = _FAIL;
+> -		kfree((u8 *)param);
+> +		kfree(param);
+>  	}
+>
+>  exit:
+> @@ -990,7 +990,7 @@ u8 rtw_setopmode_cmd(struct adapter  *padapter, enum NDIS_802_11_NETWORK_INFRAST
+>  	if (enqueue) {
+>  		ph2c = rtw_zmalloc(sizeof(struct cmd_obj));
+>  		if (ph2c == NULL) {
+> -			kfree((u8 *)psetop);
+> +			kfree(psetop);
+>  			res = _FAIL;
+>  			goto exit;
+>  		}
+> @@ -999,7 +999,7 @@ u8 rtw_setopmode_cmd(struct adapter  *padapter, enum NDIS_802_11_NETWORK_INFRAST
+>  		res = rtw_enqueue_cmd(pcmdpriv, ph2c);
+>  	} else{
+>  		setopmode_hdl(padapter, (u8 *)psetop);
+> -		kfree((u8 *)psetop);
+> +		kfree(psetop);
+>  	}
+>  exit:
+>  	return res;
+> @@ -1042,15 +1042,15 @@ u8 rtw_setstakey_cmd(struct adapter *padapter, struct sta_info *sta, u8 unicast_
+>  	if (enqueue) {
+>  		ph2c = rtw_zmalloc(sizeof(struct cmd_obj));
+>  		if (ph2c == NULL) {
+> -			kfree((u8 *) psetstakey_para);
+> +			kfree(psetstakey_para);
+>  			res = _FAIL;
+>  			goto exit;
+>  		}
+>
+>  		psetstakey_rsp = rtw_zmalloc(sizeof(struct set_stakey_rsp));
+>  		if (psetstakey_rsp == NULL) {
+> -			kfree((u8 *) ph2c);
+> -			kfree((u8 *) psetstakey_para);
+> +			kfree(ph2c);
+> +			kfree(psetstakey_para);
+>  			res = _FAIL;
+>  			goto exit;
+>  		}
+> @@ -1061,7 +1061,7 @@ u8 rtw_setstakey_cmd(struct adapter *padapter, struct sta_info *sta, u8 unicast_
+>  		res = rtw_enqueue_cmd(pcmdpriv, ph2c);
+>  	} else{
+>  		set_stakey_hdl(padapter, (u8 *)psetstakey_para);
+> -		kfree((u8 *) psetstakey_para);
+> +		kfree(psetstakey_para);
+>  	}
+>  exit:
+>  	return res;
+> @@ -1091,15 +1091,15 @@ u8 rtw_clearstakey_cmd(struct adapter *padapter, struct sta_info *sta, u8 enqueu
+>
+>  		psetstakey_para = rtw_zmalloc(sizeof(struct set_stakey_parm));
+>  		if (psetstakey_para == NULL) {
+> -			kfree((u8 *) ph2c);
+> +			kfree(ph2c);
+>  			res = _FAIL;
+>  			goto exit;
+>  		}
+>
+>  		psetstakey_rsp = rtw_zmalloc(sizeof(struct set_stakey_rsp));
+>  		if (psetstakey_rsp == NULL) {
+> -			kfree((u8 *) ph2c);
+> -			kfree((u8 *) psetstakey_para);
+> +			kfree(ph2c);
+> +			kfree(psetstakey_para);
+>  			res = _FAIL;
+>  			goto exit;
+>  		}
+> @@ -1136,7 +1136,7 @@ u8 rtw_addbareq_cmd(struct adapter *padapter, u8 tid, u8 *addr)
+>
+>  	paddbareq_parm = rtw_zmalloc(sizeof(struct addBaReq_parm));
+>  	if (paddbareq_parm == NULL) {
+> -		kfree((unsigned char *)ph2c);
+> +		kfree(ph2c);
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+> @@ -1170,7 +1170,7 @@ u8 rtw_reset_securitypriv_cmd(struct adapter *padapter)
+>
+>  	pdrvextra_cmd_parm = rtw_zmalloc(sizeof(struct drvextra_cmd_parm));
+>  	if (pdrvextra_cmd_parm == NULL) {
+> -		kfree((unsigned char *)ph2c);
+> +		kfree(ph2c);
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+> @@ -1205,7 +1205,7 @@ u8 rtw_free_assoc_resources_cmd(struct adapter *padapter)
+>
+>  	pdrvextra_cmd_parm = rtw_zmalloc(sizeof(struct drvextra_cmd_parm));
+>  	if (pdrvextra_cmd_parm == NULL) {
+> -		kfree((unsigned char *)ph2c);
+> +		kfree(ph2c);
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+> @@ -1241,7 +1241,7 @@ u8 rtw_dynamic_chk_wk_cmd(struct adapter *padapter)
+>
+>  	pdrvextra_cmd_parm = rtw_zmalloc(sizeof(struct drvextra_cmd_parm));
+>  	if (pdrvextra_cmd_parm == NULL) {
+> -		kfree((unsigned char *)ph2c);
+> +		kfree(ph2c);
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+> @@ -1294,7 +1294,7 @@ u8 rtw_set_chplan_cmd(struct adapter *padapter, u8 chplan, u8 enqueue, u8 swconf
+>  		/* need enqueue, prepare cmd_obj and enqueue */
+>  		pcmdobj = rtw_zmalloc(sizeof(struct cmd_obj));
+>  		if (pcmdobj == NULL) {
+> -			kfree((u8 *)setChannelPlan_param);
+> +			kfree(setChannelPlan_param);
+>  			res = _FAIL;
+>  			goto exit;
+>  		}
+> @@ -1306,7 +1306,7 @@ u8 rtw_set_chplan_cmd(struct adapter *padapter, u8 chplan, u8 enqueue, u8 swconf
+>  		if (H2C_SUCCESS != set_chplan_hdl(padapter, (unsigned char *)setChannelPlan_param))
+>  			res = _FAIL;
+>
+> -		kfree((u8 *)setChannelPlan_param);
+> +		kfree(setChannelPlan_param);
+>  	}
+>
+>  	/* do something based on res... */
+> @@ -1561,7 +1561,7 @@ u8 rtw_lps_ctrl_wk_cmd(struct adapter *padapter, u8 lps_ctrl_type, u8 enqueue)
+>
+>  		pdrvextra_cmd_parm = rtw_zmalloc(sizeof(struct drvextra_cmd_parm));
+>  		if (pdrvextra_cmd_parm == NULL) {
+> -			kfree((unsigned char *)ph2c);
+> +			kfree(ph2c);
+>  			res = _FAIL;
+>  			goto exit;
+>  		}
+> @@ -1603,7 +1603,7 @@ u8 rtw_dm_in_lps_wk_cmd(struct adapter *padapter)
+>
+>  	pdrvextra_cmd_parm = rtw_zmalloc(sizeof(struct drvextra_cmd_parm));
+>  	if (pdrvextra_cmd_parm == NULL) {
+> -		kfree((unsigned char *)ph2c);
+> +		kfree(ph2c);
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+> @@ -1676,7 +1676,7 @@ u8 rtw_dm_ra_mask_wk_cmd(struct adapter *padapter, u8 *psta)
+>
+>  	pdrvextra_cmd_parm = rtw_zmalloc(sizeof(struct drvextra_cmd_parm));
+>  	if (pdrvextra_cmd_parm == NULL) {
+> -		kfree((unsigned char *)ph2c);
+> +		kfree(ph2c);
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+> @@ -1727,7 +1727,7 @@ u8 rtw_ps_cmd(struct adapter *padapter)
+>
+>  	pdrvextra_cmd_parm = rtw_zmalloc(sizeof(struct drvextra_cmd_parm));
+>  	if (pdrvextra_cmd_parm == NULL) {
+> -		kfree((unsigned char *)ppscmd);
+> +		kfree(ppscmd);
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+> @@ -1799,7 +1799,7 @@ u8 rtw_chk_hi_queue_cmd(struct adapter *padapter)
+>
+>  	pdrvextra_cmd_parm = rtw_zmalloc(sizeof(struct drvextra_cmd_parm));
+>  	if (pdrvextra_cmd_parm == NULL) {
+> -		kfree((unsigned char *)ph2c);
+> +		kfree(ph2c);
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+> @@ -1898,7 +1898,7 @@ u8 rtw_c2h_packet_wk_cmd(struct adapter *padapter, u8 *pbuf, u16 length)
+>
+>  	pdrvextra_cmd_parm = rtw_zmalloc(sizeof(struct drvextra_cmd_parm));
+>  	if (pdrvextra_cmd_parm == NULL) {
+> -		kfree((u8 *)ph2c);
+> +		kfree(ph2c);
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+> @@ -1933,7 +1933,7 @@ u8 rtw_c2h_wk_cmd(struct adapter *padapter, u8 *c2h_evt)
+>
+>  	pdrvextra_cmd_parm = rtw_zmalloc(sizeof(struct drvextra_cmd_parm));
+>  	if (pdrvextra_cmd_parm == NULL) {
+> -		kfree((u8 *)ph2c);
+> +		kfree(ph2c);
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1507408404-5719-1-git-send-email-srishtishar%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
