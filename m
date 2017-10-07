@@ -1,72 +1,77 @@
 X-GM-THRID: 6474221644274466816
-X-Received: by 10.80.139.209 with SMTP id n17mr4192637edn.10.1508334815875;
-        Wed, 18 Oct 2017 06:53:35 -0700 (PDT)
+X-Received: by 10.28.8.12 with SMTP id 12mr238203wmi.31.1507399353314;
+        Sat, 07 Oct 2017 11:02:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.80.170.121 with SMTP id p54ls1865010edc.7.gmail; Wed, 18 Oct
- 2017 06:53:35 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QBe05acgEYrLtepDCOIMUI6Oc/5hhMB0kpG3qTacdY9VUl8Ri4b7wCceQAdWEfSBg7BKDFN
-X-Received: by 10.80.139.209 with SMTP id n17mr4192630edn.10.1508334815173;
-        Wed, 18 Oct 2017 06:53:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508334815; cv=none;
+Received: by 10.223.155.208 with SMTP id e16ls291498wrc.11.gmail; Sat, 07 Oct
+ 2017 11:02:32 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBmS51Ojm9LUMTk3jUp5Lal7uTGOHFDwna67lsUDTTphNpPd2r0zgYMzp1soH4wyhFYCGWb
+X-Received: by 10.28.196.79 with SMTP id u76mr600108wmf.5.1507399352266;
+        Sat, 07 Oct 2017 11:02:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507399352; cv=none;
         d=google.com; s=arc-20160816;
-        b=aNbSqweHYNe2ZVOzfWvG4BthnpxgbWmgrrnhkDI4qoLHdayb7o0mIFHbnxEKwZY8Fi
-         VMl8fBVgf39Yl+e0nIA6t8XCPKtgFZe16MhEdJcHv48s+5yq5c94E+28QJYWLI4huAVR
-         7nHMFviFlRkTmqkX8cR/m3BnzfgYtA9vthBOgYPLaIZ/K1W5CFQ5lqRi/XyWokc6W8Ql
-         50wBc77Pp2CeAkd5rkrrADbOn772wgVaSJPQajY1j6PTP6vnQ1T8Y8O1PB3PmZWaAXV9
-         nzEa2hlonlAgKyjdNMujVfzI5vMaDBsT40GuNexA3QQ2J2065AKsSkal3y3PEcxhRToG
-         vNxA==
+        b=PUnmwuElZmVSs3cQG9/kilOFUtw+obEOK8f3+iUxiw0gMSBiiuYmdSJA8bOnxM/25/
+         Mc2HyOPqGn9eCON6HoRV6uUmgpKvqyYr+GWI4jsOSERLPOJMUe9Ek1wMDHVzRbOD+LDj
+         8qBTnMspP94xQPsjnaEV0lbbZ1TJ5Ojc/6XYARxoiZ+eYmDO3BYV3MmRULi1M/pNYqOF
+         AAyjo4ato2xBR76HMQRqUTP7ObZboP7PypfDTih4kGRzNZU99X1vNmQKDaJ8F/RqRH9S
+         uDEGFK6ruxBItX3tMV2wB33be8avKgz9laefzd0ohQNdyATpZxgNW8kd9pf2GuLktOBz
+         5iyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=+Y41m4TDrOt6BKjW00igKQqlryROWj7J9M3AyQgVDdc=;
-        b=bcyx/NgW2nAQI3q+nhPHZZus1Pjbjj7Jp0an/yhaO7boYgkZKaUsYhm2knvKX74Kwd
-         pJscBx0qtpjGONGarlOjGVx8444MFQf6JAt3CXVZBz8FdIlsyP7cK5L4rRWX1PiYluZ+
-         NbJtVOZuUc4litqfxBJqTGFj7Z5oCS8UX2J4TTnUOxiTVjy4tYWE2dyUlB787YhnpMO8
-         b1kf3He1WGkxKnPzd9mXFeCfeJ3Xjr+A/dyoySgYBF9HV22w1afnKtBKrZ21XGWEBufL
-         hUefJF+dEI2O8qhoS2ODZH+fjx3WCAoWX8vw9CHpqrHMIi9sAo6duKn/UZ84pNmpe72v
-         vIEg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=md/fmFPxUxVHWJq/Q8fkL2Be87EFBRgiO25I4rSyIuA=;
+        b=EN55mmLX8q1f6Cyp9xlXw8qlM+nn/ewiikaJCwgZtle3hLFr2Kc0gWYCcLE5EBnxBK
+         jzpoBUKD8bd5Dibmfo1zFahxR0+6Pyhj1odtKiUUSEwSg85I0wwipTvItHIQw6roMWi3
+         QzfD5VzzSatKDo8uI1Tuo9qmIVnY3fHEwuK0JTIQU27YdUhmYxckuflniwP7EaC32g/h
+         SNwuvWHBUeIUNkW7QJere5xQgj2HBavWhQLrHFs2k4z8IVBLn2uW+QQu7r4mIDQIfhLF
+         SSF6/YTvGZZUNw4j1xuugQAQBLZkwE9Kcc8dMSSo6KrRf7ID4dogmHvqofxGAnfIGabf
+         qd8g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id w24si586645edl.5.2017.10.18.06.53.34
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id m19si608390wmd.2.2017.10.07.11.02.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 18 Oct 2017 06:53:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Sat, 07 Oct 2017 11:02:32 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (LFbn-1-12253-150.w90-92.abo.wanadoo.fr [90.92.67.150])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 6B69440F;
-	Wed, 18 Oct 2017 13:53:33 +0000 (UTC)
-Date: Wed, 18 Oct 2017 15:53:42 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,490,1500933600"; 
+   d="scan'208";a="240114294"
+Received: from abo-88-122-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.122.88])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 07 Oct 2017 20:02:25 +0200
+Date: Sat, 7 Oct 2017 20:02:25 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Srishti Sharma <srishtishar@gmail.com>
-Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] Staging: rtlwifi: phydm: Use setup_timer
-Message-ID: <20171018135342.GA16676@kroah.com>
-References: <1507397185-6139-1-git-send-email-srishtishar@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org, 
+    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtlwifi: phydm: Use
+ setup_timer
 In-Reply-To: <1507397185-6139-1-git-send-email-srishtishar@gmail.com>
-User-Agent: Mutt/1.9.1 (2017-09-22)
+Message-ID: <alpine.DEB.2.20.1710072002130.2134@hadrien>
+References: <1507397185-6139-1-git-send-email-srishtishar@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-On Sat, Oct 07, 2017 at 10:56:25PM +0530, Srishti Sharma wrote:
+
+
+On Sat, 7 Oct 2017, Srishti Sharma wrote:
+
 > Use setup_timer to combine initialization of a timer with the
 > initialization of the timer's function and data fields. Done
 > using the following semantic patch by coccinelle.
-> 
+>
 > @r@
 > struct timer_list *l;
 > expression f, d;
 > @@
-> 
+>
 > -init_timer(l);
 > +setup_timer(l,f,d);
 > ...
-> 
+>
 > (
 > - l->function = f;
 > ...
@@ -76,15 +81,38 @@ On Sat, Oct 07, 2017 at 10:56:25PM +0530, Srishti Sharma wrote:
 > ...
 > - l->function = f;
 > )
-> 
+>
 > Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
-> Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
 > ---
 >  drivers/staging/rtlwifi/phydm/phydm_interface.c | 4 +---
 >  1 file changed, 1 insertion(+), 3 deletions(-)
-
-Due to other changes in this same function, this patch no longer
-applies, sorry.
-
-greg k-h
+>
+> diff --git a/drivers/staging/rtlwifi/phydm/phydm_interface.c b/drivers/staging/rtlwifi/phydm/phydm_interface.c
+> index 102576a..aa1fb75 100644
+> --- a/drivers/staging/rtlwifi/phydm/phydm_interface.c
+> +++ b/drivers/staging/rtlwifi/phydm/phydm_interface.c
+> @@ -189,9 +189,7 @@ void odm_initialize_timer(struct phy_dm_struct *dm, struct timer_list *timer,
+>  			  void *call_back_func, void *context,
+>  			  const char *sz_id)
+>  {
+> -	init_timer(timer);
+> -	timer->function = call_back_func;
+> -	timer->data = (unsigned long)dm;
+> +	setup_timer(timer, call_back_func, (unsigned long)dm);
+>  	/*mod_timer(timer, jiffies+RTL_MILISECONDS_TO_JIFFIES(10));	*/
+>  }
+>
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1507397185-6139-1-git-send-email-srishtishar%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
