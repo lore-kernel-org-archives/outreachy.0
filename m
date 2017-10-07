@@ -1,102 +1,298 @@
-X-GM-THRID: 6956170409670606848
-X-Received: by 2002:a19:700a:: with SMTP id h10mr20137679lfc.178.1619609633089;
-        Wed, 28 Apr 2021 04:33:53 -0700 (PDT)
+X-GM-THRID: 6474214314983030784
+X-Received: by 10.28.71.131 with SMTP id m3mr701193wmi.19.1507408133406;
+        Sat, 07 Oct 2017 13:28:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:651c:507:: with SMTP id o7ls7566667ljp.6.gmail; Wed, 28
- Apr 2021 04:33:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw4IL6phwwSvyZfJDTpCE+hEsGwXZwOivR5SrU4Qyi5x8KCeNKlaE57K2MQpOq/lzmUTCX3
-X-Received: by 2002:a05:651c:307:: with SMTP id a7mr20503838ljp.166.1619609631098;
-        Wed, 28 Apr 2021 04:33:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619609631; cv=none;
+Received: by 10.223.157.37 with SMTP id k37ls265607wre.13.gmail; Sat, 07 Oct
+ 2017 13:28:52 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QD0Hv2fgwBHsmUWQZq37F04YvTLx0U77A3Y7Ge5izXJcvxvFwWvbKMhoM2xYY3kqAfHTeBr
+X-Received: by 10.223.133.244 with SMTP id 49mr440765wru.22.1507408132579;
+        Sat, 07 Oct 2017 13:28:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507408132; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ug4M6dnZCRMmvWmXICuni6kOPifuLiDtjBjZbxtZL371lo/0efXgXsjyB8520nQfam
-         TdWeiVNwlmzonglQEAgi+Wf04ZPi6PRYVNQ/H3i0vbPyqTWGb8EqqUZXLcF4PdpxEUjb
-         GulAmpdI10MFeA/CCojOBxMriBJb9NPw/l54qX9saosHkER7K9Zp4epiRIk3JAd9knrY
-         a0NzzUmaeD8ejU9c46+eYoCUQOvfxFrHdQz51YKbDye36RHZMdYioDD5MiJoccyKWjfS
-         MgsHKTlLtBRuvesTqKgK9Z5+DLXriNunaRY6F49Lzaqzxo4jPbimLuSmjZBDbMMp8G46
-         /QNw==
+        b=K+L9tDksdaqaxiYcrUH+bCdaxo6h5Z5yoi8QXcITzOQTlWqEzHeaerg5pOKJd5u8OU
+         3hP/KBjFJ8gh6G+mG5y/xZoRciB61lqyzdAGBEdr1bFv7F5zpF8AVMoqpEbEa6vkUOJ8
+         RtbqZ+7yBjAi8Cxw5rsHxDVA5wNrY/2rfnnagucCI2P9TWRme7h1E6dLR5pkY1rHG+I9
+         +QGJrSdOUyEnFnjUO0mmFnfLeKd/cfC071Go/lKo39S8VSYLyo5MuC8B/XMbTf1Jj7pm
+         bce8QH+6WYWCf+B/O18Ps/3fB5WixekxCnJoYxayaViM/cUs39kJRd7RjCb9kkKTABBO
+         F4TA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=SRL7LAkBzsLUShMKaYemtSvs+IVP4TH25c50jQgyGbc=;
-        b=jyYp3INwuu2ouWB6sNVLeRWs18wKBe2Jq+oTDLFhbHXzJIlCRq7wrxBcd3MV6ttlGE
-         foT6sQE7aH9b2emjEPwRRLs7spx7m4gEGYmwyIlsyZ1ogewiqt1bIbIbx7I4WD9MQmku
-         nhmm2nwm7JDv957m/S/7WbK2gF14a7RP8aJnBuqt6tFP62rU3lg04Eja9VBLGdKFPIbd
-         GB4mt3CX3LTizvPu/D2XJd3WxNvAWnXG+I+Qia4ZmvvFr8hsUZhtGbe8j4rCjGHt3Ykz
-         hxnDdVq1xy2UlUHq79rKOk0HZE6xJ5Y0IMWntesOr66fePydbydZrT/TiRxkaszOoe0c
-         v/2g==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=Z4KIExrqr99Y+Am7X0G2zjPlIUbsNrZG9qtdS3+l+zA=;
+        b=tsvvdKnq9y/Y0q509utxrnM4HggpGUWWoHjLbvAD521fmZfy3a9Uj52OaQrR7KfqKy
+         dCeekwo9MSDTm7+Faa9NQsrTViS1wDm1hPf2BvzWBvzu5EhuenJZqrOpMElEg2RSBLYf
+         dgjNrFYqVeaD9INWo8/zCNMHQ6WEUYRtUy3yb67qHcBslz80DyTnKNZTkEtJ/cXvcAQg
+         OPGZP8lDpZGH/uBSxgpf6q42U3kU6bip1CdBkKGs7CufoSR74kvFPfZ5FezGYa75KQTu
+         S8IxTh9KvO11HwljDkbYiZgjFsAUgXOtPHuwN3xzvIcGxUCLr9B6xdUQ4OSbDCMLK5UI
+         OJlw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=H22f8cen;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52f as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ed1-x52f.google.com (mail-ed1-x52f.google.com. [2a00:1450:4864:20::52f])
-        by gmr-mx.google.com with ESMTPS id l11si1285587lfg.13.2021.04.28.04.33.51
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id m19si641642wmd.2.2017.10.07.13.28.52
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 28 Apr 2021 04:33:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52f as permitted sender) client-ip=2a00:1450:4864:20::52f;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 07 Oct 2017 13:28:52 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=H22f8cen;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52f as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ed1-x52f.google.com with SMTP id g14so14086233edy.6
-        for <outreachy-kernel@googlegroups.com>; Wed, 28 Apr 2021 04:33:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=SRL7LAkBzsLUShMKaYemtSvs+IVP4TH25c50jQgyGbc=;
-        b=H22f8cenNNUgyJ6uU1FRqxyvANwieddNRC0SaSE9AWvvRIu/qY9xgul+uvp/EZ1jab
-         6OxfuFXHEtQvscV9yZTCaK3gyXP3Us4OXlyRDmnPwCPvj3+jonhU78rdVHGuSY78FyIH
-         icOWJ0nSmxenTalBCqaBaft4/j3eLuqK44WiMwPcIgCpX7qXVAhO8q8xkGk2vu1PjqJU
-         Jl7YRdTUbtnxjLgAKXfYt7EuvXU/+qImrFu32lNNe4HYl/BtGIsPibtE5lU2Wc1EhTBA
-         dJcgQ+XtQaHnsCPGbzk6N0fesutFyOHwAOUOhZqnt4WjgRPp1citkMhU5TgFHeNtXyFo
-         2FrA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=SRL7LAkBzsLUShMKaYemtSvs+IVP4TH25c50jQgyGbc=;
-        b=YZg6JqofpDk5WYpkFR04G6J/j4nFfTOYCDX68rlMPAMvtELXG27xzYEi/jgUqIwqrb
-         HCF8mKfNuDARdD/cuzu4aW4YxyXGW/9EcrT54EBrkNZ+kfgrPHDfmetib+KR3xjFP+CW
-         fouincc9q82x4O9WIZm5KhVSfBrAoMxRI5rptQhQfH6FkOpm6rtjyMJl3KZo38drQrKR
-         EqLLmxRu9JiY5DfSdMfwWiQsv1g5fD5K4dXJQdNF+kYq1hOL0+QpWzO1vjJNlNlVkdGi
-         JrroC9LQLkjD3+QVeYfR7hyGQYC9f1pra1Uv+GLgtp8/Nsx7iIDebSLxSTpPJn60k6eY
-         bXBA==
-X-Gm-Message-State: AOAM533YQqpTkd/Ivax4c4V1BYb/XQfN2yJekYnQCmRusEZyKMTo8vvK
-	HPuPa7EVbx9JiK6GiASep2kUPiu+9Wet8jy9
-X-Received: by 2002:a50:fc99:: with SMTP id f25mr10711029edq.147.1619609630443;
-        Wed, 28 Apr 2021 04:33:50 -0700 (PDT)
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from linux.local (host-79-52-107-152.retail.telecomitalia.it. [79.52.107.152])
-        by smtp.gmail.com with ESMTPSA id u19sm4677187edy.23.2021.04.28.04.33.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 28 Apr 2021 04:33:49 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [Outreachy kernel] [PATCH 0/2] Removed set but unused variables
-Date: Wed, 28 Apr 2021 13:33:44 +0200
-Message-Id: <20210428113346.28305-1-fmdefrancesco@gmail.com>
-X-Mailer: git-send-email 2.31.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,490,1500933600"; 
+   d="scan'208";a="240119540"
+Received: from abo-88-122-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.122.88])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 07 Oct 2017 22:28:51 +0200
+Date: Sat, 7 Oct 2017 22:28:51 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Srishti Sharma <srishtishar@gmail.com>
+cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org, 
+    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: pi433: Fix the position
+ of brace after if
+In-Reply-To: <1507406225-3585-1-git-send-email-srishtishar@gmail.com>
+Message-ID: <alpine.DEB.2.20.1710072228360.2071@hadrien>
+References: <1507406225-3585-1-git-send-email-srishtishar@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
 
-Removed set but unused variables. Issue detected by gcc.
 
-Fabio M. De Francesco (2):
-  staging: rtl8723bs: hal: Remove set but unused variables.
-  staging: rtl8723bs: core: Removed set but unused variable.
 
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c     | 4 +---
- drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c | 5 -----
- 2 files changed, 1 insertion(+), 8 deletions(-)
+On Sun, 8 Oct 2017, Srishti Sharma wrote:
 
--- 
-2.31.1
+> Fix the position of the brace after if when it is on the next line.
+> Done using the following semantic patch by coccinelle.
+>
+> @r1@
+> position p1, p2;
+> @@
+>
+> if(...)@p1 {@p2
+> ...
+> }
+>
+> @script: python r2@
+> p1 << r1.p1;
+> p2 << r1.p2;
+> @@
+>
+> l1 = int (p1[0].line)
+> l2 = int (p2[0].line)
+> c1 = int (p1[0].column_end)
+> c2 = int (p2[0].column)
+>
+> if l1 == l2 and c1+1 == c2:
+>         cocci.include_match(False)
+>
+> @r3@
+> position r1.p1, r1.p2;
+> @@
+>
+> if(...
+> - )@p1
+> -{@p2
+> +) {
+> ...
+> }
+>
+> Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
 
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+> ---
+> Changes in v2:
+>  -Improve commit message.
+>
+>  drivers/staging/pi433/pi433_if.c | 54 ++++++++++++++--------------------------
+>  1 file changed, 18 insertions(+), 36 deletions(-)
+>
+> diff --git a/drivers/staging/pi433/pi433_if.c b/drivers/staging/pi433/pi433_if.c
+> index d82c74d..d946838 100644
+> --- a/drivers/staging/pi433/pi433_if.c
+> +++ b/drivers/staging/pi433/pi433_if.c
+> @@ -285,8 +285,7 @@ rf69_set_tx_cfg(struct pi433_device *dev, struct pi433_tx_cfg *tx_cfg)
+>  	SET_CHECKED(rf69_set_crc_enable	  (dev->spi, tx_cfg->enable_crc));
+>
+>  	/* configure sync, if enabled */
+> -	if (tx_cfg->enable_sync == optionOn)
+> -	{
+> +	if (tx_cfg->enable_sync == optionOn) {
+>  		SET_CHECKED(rf69_set_sync_size(dev->spi, tx_cfg->sync_length));
+>  		SET_CHECKED(rf69_set_sync_values(dev->spi, tx_cfg->sync_pattern));
+>  	}
+> @@ -408,8 +407,7 @@ pi433_receive(void *data)
+>  		if (retval) goto abort; /* wait was interrupted */
+>
+>  		rf69_read_fifo(spi, (u8 *)&bytes_total, 1);
+> -		if (bytes_total > dev->rx_buffer_size)
+> -		{
+> +		if (bytes_total > dev->rx_buffer_size) {
+>  			retval = -1;
+>  			goto abort;
+>  		}
+> @@ -509,16 +507,14 @@ pi433_tx_thread(void *data)
+>  		mutex_lock(&device->tx_fifo_lock);
+>
+>  		retval = kfifo_out(&device->tx_fifo, &tx_cfg, sizeof(tx_cfg));
+> -		if (retval != sizeof(tx_cfg))
+> -		{
+> +		if (retval != sizeof(tx_cfg)) {
+>  			dev_dbg(device->dev, "reading tx_cfg from fifo failed: got %d byte(s), expected %d", retval, (unsigned int)sizeof(tx_cfg) );
+>  			mutex_unlock(&device->tx_fifo_lock);
+>  			continue;
+>  		}
+>
+>  		retval = kfifo_out(&device->tx_fifo, &size, sizeof(size_t));
+> -		if (retval != sizeof(size_t))
+> -		{
+> +		if (retval != sizeof(size_t)) {
+>  			dev_dbg(device->dev, "reading msg size from fifo failed: got %d, expected %d", retval, (unsigned int)sizeof(size_t) );
+>  			mutex_unlock(&device->tx_fifo_lock);
+>  			continue;
+> @@ -650,8 +646,7 @@ pi433_tx_thread(void *data)
+>  		SET_CHECKED(rf69_set_mode(spi, standby));
+>
+>  		/* everything sent? */
+> -		if ( kfifo_is_empty(&device->tx_fifo) )
+> -		{
+> +		if (kfifo_is_empty(&device->tx_fifo)) {
+>  abort:
+>  			if (rx_interrupted)
+>  			{
+> @@ -705,8 +700,7 @@ pi433_read(struct file *filp, char __user *buf, size_t size, loff_t *f_pos)
+>  	mutex_unlock(&device->rx_lock);
+>
+>  	/* if read was successful copy to user space*/
+> -	if (bytes_received > 0)
+> -	{
+> +	if (bytes_received > 0) {
+>  		retval = copy_to_user(buf, device->rx_buffer, bytes_received);
+>  		if (retval)
+>  			return -EFAULT;
+> @@ -806,8 +800,7 @@ pi433_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
+>  	switch (cmd) {
+>  	case PI433_IOC_RD_TX_CFG:
+>  		tmp = _IOC_SIZE(cmd);
+> -		if ( (tmp == 0) || ((tmp % sizeof(struct pi433_tx_cfg)) != 0) )
+> -		{
+> +		if ((tmp == 0) || ((tmp % sizeof(struct pi433_tx_cfg)) != 0)) {
+>  			retval = -EINVAL;
+>  			break;
+>  		}
+> @@ -823,8 +816,7 @@ pi433_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
+>  		break;
+>  	case PI433_IOC_WR_TX_CFG:
+>  		tmp = _IOC_SIZE(cmd);
+> -		if ( (tmp == 0) || ((tmp % sizeof(struct pi433_tx_cfg)) != 0) )
+> -		{
+> +		if ((tmp == 0) || ((tmp % sizeof(struct pi433_tx_cfg)) != 0)) {
+>  			retval = -EINVAL;
+>  			break;
+>  		}
+> @@ -917,8 +909,7 @@ static int pi433_open(struct inode *inode, struct file *filp)
+>
+>  	if (!device->rx_buffer) {
+>  		device->rx_buffer = kmalloc(MAX_MSG_SIZE, GFP_KERNEL);
+> -		if (!device->rx_buffer)
+> -		{
+> +		if (!device->rx_buffer) {
+>  			dev_dbg(device->dev, "open/ENOMEM\n");
+>  			return -ENOMEM;
+>  		}
+> @@ -926,8 +917,7 @@ static int pi433_open(struct inode *inode, struct file *filp)
+>
+>  	device->users++;
+>  	instance = kzalloc(sizeof(*instance), GFP_KERNEL);
+> -	if (!instance)
+> -	{
+> +	if (!instance) {
+>  		kfree(device->rx_buffer);
+>  		device->rx_buffer = NULL;
+>  		return -ENOMEM;
+> @@ -987,8 +977,7 @@ static int setup_GPIOs(struct pi433_device *device)
+>  		snprintf(name, sizeof(name), "DIO%d", i);
+>  		device->gpiod[i] = gpiod_get(&device->spi->dev, name, 0 /*GPIOD_IN*/);
+>
+> -		if (device->gpiod[i] == ERR_PTR(-ENOENT))
+> -		{
+> +		if (device->gpiod[i] == ERR_PTR(-ENOENT)) {
+>  			dev_dbg(&device->spi->dev, "Could not find entry for %s. Ignoring.", name);
+>  			continue;
+>  		}
+> @@ -1017,8 +1006,7 @@ static int setup_GPIOs(struct pi433_device *device)
+>
+>  		/* configure irq */
+>  		device->irq_num[i] = gpiod_to_irq(device->gpiod[i]);
+> -		if (device->irq_num[i] < 0)
+> -		{
+> +		if (device->irq_num[i] < 0) {
+>  			device->gpiod[i] = ERR_PTR(-EINVAL);//(struct gpio_desc *)device->irq_num[i];
+>  			return device->irq_num[i];
+>  		}
+> @@ -1157,8 +1145,7 @@ static int pi433_probe(struct spi_device *spi)
+>
+>  	/* setup GPIO (including irq_handler) for the different DIOs */
+>  	retval = setup_GPIOs(device);
+> -	if (retval)
+> -	{
+> +	if (retval) {
+>  		dev_dbg(&spi->dev, "setup of GPIOs failed");
+>  		goto GPIO_failed;
+>  	}
+> @@ -1176,16 +1163,14 @@ static int pi433_probe(struct spi_device *spi)
+>  	device->tx_task_struct = kthread_run(pi433_tx_thread,
+>  					     device,
+>  					     "pi433_tx_task");
+> -	if (IS_ERR(device->tx_task_struct))
+> -	{
+> +	if (IS_ERR(device->tx_task_struct)) {
+>  		dev_dbg(device->dev, "start of send thread failed");
+>  		goto send_thread_failed;
+>  	}
+>
+>  	/* determ minor number */
+>  	retval = pi433_get_minor(device);
+> -	if (retval)
+> -	{
+> +	if (retval) {
+>  		dev_dbg(device->dev, "get of minor number failed");
+>  		goto minor_failed;
+>  	}
+> @@ -1214,8 +1199,7 @@ static int pi433_probe(struct spi_device *spi)
+>  	device->cdev->owner = THIS_MODULE;
+>  	cdev_init(device->cdev, &pi433_fops);
+>  	retval = cdev_add(device->cdev, device->devt, 1);
+> -	if (retval)
+> -	{
+> +	if (retval) {
+>  		dev_dbg(device->dev, "register of cdev failed");
+>  		goto cdev_failed;
+>  	}
+> @@ -1307,15 +1291,13 @@ static int __init pi433_init(void)
+>  		return status;
+>
+>  	pi433_class = class_create(THIS_MODULE, "pi433");
+> -	if (IS_ERR(pi433_class))
+> -	{
+> +	if (IS_ERR(pi433_class)) {
+>  		unregister_chrdev(MAJOR(pi433_dev), pi433_spi_driver.driver.name);
+>  		return PTR_ERR(pi433_class);
+>  	}
+>
+>  	status = spi_register_driver(&pi433_spi_driver);
+> -	if (status < 0)
+> -	{
+> +	if (status < 0) {
+>  		class_destroy(pi433_class);
+>  		unregister_chrdev(MAJOR(pi433_dev), pi433_spi_driver.driver.name);
+>  	}
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1507406225-3585-1-git-send-email-srishtishar%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
