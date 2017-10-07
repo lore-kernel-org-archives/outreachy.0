@@ -1,117 +1,157 @@
-X-GM-THRID: 6672001868710805504
-X-Received: by 2002:a05:6638:258:: with SMTP id w24mr15242163jaq.85.1553446489408;
-        Sun, 24 Mar 2019 09:54:49 -0700 (PDT)
+X-GM-THRID: 6474135928708268032
+X-Received: by 10.98.54.68 with SMTP id d65mr318177pfa.3.1507377235912;
+        Sat, 07 Oct 2017 04:53:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:da01:: with SMTP id z1ls3968044itg.0.canary-gmail; Sun,
- 24 Mar 2019 09:54:48 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwsC3pxvZxdavKp5V2A0LSU3lsoMgLD7edWHESAUWpMre2cq6Ylbfl6DIdPz2qGmvMZ6E/L
-X-Received: by 2002:a24:3449:: with SMTP id z70mr5811783itz.169.1553446488236;
-        Sun, 24 Mar 2019 09:54:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553446488; cv=none;
+Received: by 10.84.195.228 with SMTP id j91ls338779pld.4.gmail; Sat, 07 Oct
+ 2017 04:53:54 -0700 (PDT)
+X-Received: by 10.98.160.71 with SMTP id r68mr311125pfe.9.1507377234797;
+        Sat, 07 Oct 2017 04:53:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507377234; cv=none;
         d=google.com; s=arc-20160816;
-        b=OgULvVKMznXsn+rObH13K3pfuYIoAaK3YvLDlHZrw+ojW0MrVtdvASRPGffaS7H2H+
-         5BYIdLw08Im7/YUm2d7qWFyFB4KDeoeWMycwACMGMOfC0lmWXqz/Ocxqjrun9GAc9T6H
-         grqi2EvXuNpC4RfBb98LAfylJAcIeG4MHYIlpOPprmiTprHd7De5VgUPjxvuIZgYO/T5
-         +5WRQual8rl9+fEr1586plwpL5kTC0ZOASUJ7ybdlosFOXUELQmWRy2rvWpaRr1wYvVU
-         AopTwAU6G6mU7FG2StKING3IuVk2y4rIaEC6I5lIbgWg2pfbvu8kQ+pMODCYFE9Guxg8
-         WOyQ==
+        b=eyCXba1gWwF2VogRuts+VE4+QWImYKhUSMmHROJ4ed453hjpXUXPc+BJOvmgOkjkEV
+         vHD3wnQb5yZhpN0xeU80w2I7+7rxXPT/ED2UVTDY8fZbpbf3QCn38xt46rNttgFtB3wN
+         EHPBVUHWJOSPKbqtBsosPHMkAV8NNkQjg6DtQ1ZVgPRTU1Sxd4ifAdK9TBZVKmqHG+VT
+         UOoykyREo9u7t9Tmj5BlRPLYNfphpgSJCSs7jbpkqzkOjXM0hXBqyoHc0KfZd7P+6ARp
+         78SlacJIbgVdm51Gpgeej0tGSQchb2ABilVIFOcHKO5AQCxThhaFnHYInC1ojth+I2u+
+         CtqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=32aOm7VzzHeXZn9flMvx9CEu1Qu+m/o6X1pjibCthoc=;
-        b=H9w2/i8AcCv2Dn2tZAtrywyWwGkcq6xc1UvXUrrKeTEiAN/MJ7q9g7TG8m24OG8eRj
-         JLNOkgoGxFMOw2A7o2HeBTMMWe3v1vIVvT6VwBfk2fQoet2TqPuHT4U8u9eyjlRX5Tln
-         R84T4g0pN/wBO+Cmx18So86+y24Kb1AXUluWs4Xn8x7PotK+P9tx488v0n7TP9U7UYot
-         wQJ4IjyTn+MosqIszf0W1bt/2vd5hU1RbHemcib2WHAo2k+aZXck03mzY8KQWOjsSS+Z
-         6HokInVWNzvnNHKtf1ftaSr+U/VvA4kEJywqAFQ9EmW/J1fn3BXrv0NuE6uZf+GMjcBZ
-         LYCQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature:arc-authentication-results;
+        bh=l1gvMR7xlvJureHRJP3avtCynIGGVSz0a0lxtiGTLME=;
+        b=i7QnAajsrhSX+JqDYhyP49d2GwQXUqQQkhpBjvXijfESJHXzPDL9Qel1jyoTOeZe0r
+         YF4zYMe6mxUskaplC0SheW+5gBwYUKMQbzgfc9AQRdTDQY29jU8YjpRMXtZwDeOplczd
+         IXICijWeTcUCccbbPQfNLJOKdO2T9/cSej4mUVzdrE6gFDa+MyiyfI1rl2bgZ1woQsc4
+         Ge3he9AsHBb6zf3PHJae8pmP17DnKqXld3qk4e+ce7uPZokPsXvv8+k5598IoCqYSd//
+         Si62Er5aeAUdkHh9ixylABjUPkBD5nNe0U0+1j7kF+DSTzUv3pVoBJ+BOvq5/TCvTrYU
+         ft1A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iQrjQ8VS;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <himadri18.07@gmail.com>
-Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id f13si749343iok.3.2019.03.24.09.54.48
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XUbGXbkD;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id g193si426554pfc.9.2017.10.07.04.53.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 24 Mar 2019 09:54:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
+        Sat, 07 Oct 2017 04:53:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iQrjQ8VS;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x441.google.com with SMTP id t21so4723726pfe.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 24 Mar 2019 09:54:48 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XUbGXbkD;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x242.google.com with SMTP id i23so18986751pfi.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 07 Oct 2017 04:53:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=32aOm7VzzHeXZn9flMvx9CEu1Qu+m/o6X1pjibCthoc=;
-        b=iQrjQ8VSz+ps4Ux0xaE9eEDKBGm5jAmLjOLybpatQ0D0ycIQ7rGovNyaJ/omg1yP/K
-         S9wbwhtlznFMKM7qxZUOhYCSq/37PYpdk6p6UBuG4Doq2xtxb3QfLCqGeJQyje+zt9eD
-         x3Ec5WYg5CZAY2dr1xcu3sgCdu+simt46gDySH46V4ZjxfQ82CLcS7w1eKppGfFt4EsM
-         l7k0YNVgA3TvYeaUNn4qn51BgZe4j8n3KN05nbDIFgR0u96uCDL5AxTB6BMxfQ9rJrRU
-         CH0gF+P8c4j1WsZZFpDcuzMxgsNIrQ/2h+OKyUQvhjn0tQaLaOErmf6VLD2Dq53kza1C
-         rMUg==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=l1gvMR7xlvJureHRJP3avtCynIGGVSz0a0lxtiGTLME=;
+        b=XUbGXbkDBu1KD8NHRi/yX/3jDY2Kz9UMZhcTAWKmJbbqsBYsikU3lwJ7ejPV8wG17A
+         estzOPhHM7/3uoZFaekqBIkEZYkDsNpSCcUqxmV+EFqapnauNhPthtLmJKbdosCQvdpK
+         W/OXSXTb8dXx1YNvrqQFuWBBXLwr5NPviMttNoV0q067bu/BcWP8TYhkp5UoN03hR3Dr
+         ycrHxfkEYPoIvaxB/I7WX3nOkeY5gpcca7OeHRALzkKqOW86rruc5cvxg17/s6fx5b5+
+         b7bhUuvLHB2nfY+7i6y9pgszi7TA3E+Ku6n8GtHEaxOrY2QaiQ0UOXD9FS55DKb4WhSV
+         xuYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=32aOm7VzzHeXZn9flMvx9CEu1Qu+m/o6X1pjibCthoc=;
-        b=cj7jnglLjj/o6ujx77JGWbKcsp22p70x8HA6CPlEn0RGIbQWPa0HYRQJmjVuei0PRv
-         pCrN3/N88jschsUtzdSuPm/maeP4e5WQzRWiicGDMJFInEueHKoIrQDGnfkSAoMN2+eJ
-         l6golhLSUpKYLRN295UUJnRGkv9gT09iagIJPZ2aN+vqhakHVeqoPeM8ZIWt1XuNQA3l
-         7xo4GY3YQI3hl0pW6RBQkLdMjBIiXY87858RjDhbxxNVfkk+DChbvoU1taBAqXMcBONL
-         orLDRSyIPePn+Rcng5/fglNZs0jHiTa7HoWC4Dim6TecGNFkzD35JfOULJANzkXcPLmv
-         lNyg==
-X-Gm-Message-State: APjAAAWJ/d+Z3O+Gc3pGODNk8yP7DA5ZKUzgf2zP7GXggJdY+OEixW7l
-	BbaPG6sntjreLKgurkfKTuc=
-X-Received: by 2002:a17:902:bf07:: with SMTP id bi7mr14201876plb.87.1553446487402;
-        Sun, 24 Mar 2019 09:54:47 -0700 (PDT)
-Return-Path: <himadri18.07@gmail.com>
-Received: from localhost.localdomain ([157.32.91.166])
-        by smtp.googlemail.com with ESMTPSA id j14sm18761473pfn.77.2019.03.24.09.54.42
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 24 Mar 2019 09:54:46 -0700 (PDT)
-From: Himadri Pandya <himadri18.07@gmail.com>
-To: laurent.pinchart@ideasonboard.com,
-	mchehab@kernel.org,
-	gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	Himadri Pandya <himadri18.07@gmail.com>
-Subject: [PATCH] staging: media: omap4iss: Use list_entry instead of container_of
-Date: Sun, 24 Mar 2019 22:24:33 +0530
-Message-Id: <20190324165433.95833-1-himadri18.07@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=l1gvMR7xlvJureHRJP3avtCynIGGVSz0a0lxtiGTLME=;
+        b=GhxwRJPJvVUBkDGgdpEyl6Cv5N0+o4jROia7YOFx/Z3HRJj5OhdVjGUAVP4Yi9L0so
+         4emJJPsX6N5fXv6+QJf1wu31mslB4YhAx4GBmr2ft7MfjyXUmKz9fYuwqxv8UaeONCeH
+         jeVA9Eark+KyOeZwx5YklvnmTL7vecOLTxGonAaHrAJVZXPjl52tMka29pDE9+7TA/RW
+         QDkLyAJQr2Cw+Rud0m4FM8fKlsU6iql/o9/81D/Zkg1u8LVofbIF3YZ5NaV9mUaxhd4O
+         EoM+OSZG0ZS5IpKnWVx/e14PtBRx0ARb8whiD7YiTFWpdRgiwGEzpsVIRipwd2d4wjYk
+         VFbg==
+X-Gm-Message-State: AMCzsaX9vJ8teK9yuSP0L0fZ7Gop6wVtelhpI64o2RgQMCP0vC4OPKbb
+	kmJZo4POG+6PFa0/nTiNtI0=
+X-Google-Smtp-Source: AOwi7QBA3Tj7ZvbIzHMljcURM++QN/WgnpYF3H3IbFBPzsL4BBkw02jw7GTs8UyDnIQcLSVk9yDU7g==
+X-Received: by 10.98.139.76 with SMTP id j73mr5030249pfe.265.1507377234434;
+        Sat, 07 Oct 2017 04:53:54 -0700 (PDT)
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from aastha-HP-Pavilion-15-Notebook-PC ([45.127.232.78])
+        by smtp.gmail.com with ESMTPSA id z11sm7693194pfe.41.2017.10.07.04.53.53
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 07 Oct 2017 04:53:53 -0700 (PDT)
+From: Aastha Gupta <aastha.gupta4104@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	seanpaul@chromium.org,
+	Lucas Stach <l.stach@pengutronix.de>,
+	Russell King <linux+etnaviv@armlinux.org.uk>,
+	Christian Gmeiner <christian.gmeiner@gmail.com>,
+	David Airlie <airlied@linux.ie>
+Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
+Subject: [PATCH] drm: etnaviv: Replace dev_info with DRM_DEV_INFO
+Date: Sat,  7 Oct 2017 17:23:48 +0530
+Message-Id: <1507377228-9365-1-git-send-email-aastha.gupta4104@gmail.com>
+X-Mailer: git-send-email 2.7.4
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
-Use list_entry instead of container_of for lists iss_buffer and
-iss_video.
+For drivers which could have multiple instances, it is necessary to
+differentiate between which is which in the logs. Since
+DRM_INFO/WARN/ERROR don’t do this, drivers used dev_info/warn/err to
+make this differentiation. We now have DRM_DEV_* variants of the drm
+print macros, so we can start to convert those drivers back to using
+drm-formwatted specific log messages.
 
-Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
+Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
 ---
- drivers/staging/media/omap4iss/iss_video.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/etnaviv/etnaviv_buffer.c | 4 ++--
+ drivers/gpu/drm/etnaviv/etnaviv_gpu.c    | 9 +++++----
+ 2 files changed, 7 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/media/omap4iss/iss_video.h b/drivers/staging/media/omap4iss/iss_video.h
-index f22489edb562..e8d27b7ac329 100644
---- a/drivers/staging/media/omap4iss/iss_video.h
-+++ b/drivers/staging/media/omap4iss/iss_video.h
-@@ -118,7 +118,7 @@ struct iss_buffer {
- 	dma_addr_t iss_addr;
- };
+diff --git a/drivers/gpu/drm/etnaviv/etnaviv_buffer.c b/drivers/gpu/drm/etnaviv/etnaviv_buffer.c
+index ed9588f..0091a8b 100644
+--- a/drivers/gpu/drm/etnaviv/etnaviv_buffer.c
++++ b/drivers/gpu/drm/etnaviv/etnaviv_buffer.c
+@@ -125,8 +125,8 @@ static void etnaviv_buffer_dump(struct etnaviv_gpu *gpu,
+ 	u32 size = buf->size;
+ 	u32 *ptr = buf->vaddr + off;
  
--#define to_iss_buffer(buf)	container_of(buf, struct iss_buffer, vb)
-+#define to_iss_buffer(buf)	list_entry(buf, struct iss_buffer, vb)
+-	dev_info(gpu->dev, "virt %p phys 0x%08x free 0x%08x\n",
+-			ptr, etnaviv_cmdbuf_get_va(buf) + off, size - len * 4 - off);
++	DRM_DEV_INFO(gpu->dev, "virt %p phys 0x%08x free 0x%08x\n", ptr,
++		     etnaviv_cmdbuf_get_va(buf) + off, size - len * 4 - off);
  
- enum iss_video_dmaqueue_flags {
- 	/* Set if DMA queue becomes empty when ISS_PIPELINE_STREAM_CONTINUOUS */
-@@ -170,7 +170,7 @@ struct iss_video {
- 	const struct iss_video_operations *ops;
- };
+ 	print_hex_dump(KERN_INFO, "cmd ", DUMP_PREFIX_OFFSET, 16, 4,
+ 			ptr, len * 4, 0);
+diff --git a/drivers/gpu/drm/etnaviv/etnaviv_gpu.c b/drivers/gpu/drm/etnaviv/etnaviv_gpu.c
+index fc9a6a8..862beac 100644
+--- a/drivers/gpu/drm/etnaviv/etnaviv_gpu.c
++++ b/drivers/gpu/drm/etnaviv/etnaviv_gpu.c
+@@ -344,8 +344,8 @@ static void etnaviv_hw_identify(struct etnaviv_gpu *gpu)
+ 		}
+ 	}
  
--#define to_iss_video(vdev)	container_of(vdev, struct iss_video, video)
-+#define to_iss_video(vdev)	list_entry(vdev, struct iss_video, video)
+-	dev_info(gpu->dev, "model: GC%x, revision: %x\n",
+-		 gpu->identity.model, gpu->identity.revision);
++	DRM_DEV_INFO(gpu->dev, "model: GC%x, revision: %x\n",
++		     gpu->identity.model, gpu->identity.revision);
  
- struct iss_video_fh {
- 	struct v4l2_fh vfh;
+ 	gpu->identity.features = gpu_read(gpu, VIVS_HI_CHIP_FEATURE);
+ 
+@@ -673,7 +673,7 @@ int etnaviv_gpu_init(struct etnaviv_gpu *gpu)
+ 	/* Exclude VG cores with FE2.0 */
+ 	if (gpu->identity.features & chipFeatures_PIPE_VG &&
+ 	    gpu->identity.features & chipFeatures_FE20) {
+-		dev_info(gpu->dev, "Ignoring GPU with VG and FE2.0\n");
++		DRM_DEV_INFO(gpu->dev, "Ignoring GPU with VG and FE2.0\n");
+ 		ret = -ENXIO;
+ 		goto fail;
+ 	}
+@@ -695,7 +695,8 @@ int etnaviv_gpu_init(struct etnaviv_gpu *gpu)
+ 		else
+ 			gpu->memory_base = dma_mask - SZ_2G + 1;
+ 	} else if (PHYS_OFFSET >= SZ_2G) {
+-		dev_info(gpu->dev, "Need to move linear window on MC1.0, disabling TS\n");
++		DRM_DEV_INFO(gpu->dev,
++			     "Need to move linear window on MC1.0, disabling TS\n");
+ 		gpu->memory_base = PHYS_OFFSET;
+ 		gpu->identity.features &= ~chipFeatures_FAST_CLEAR;
+ 	}
 -- 
-2.17.1
+2.7.4
 
 
