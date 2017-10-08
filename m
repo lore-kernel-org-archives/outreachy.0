@@ -1,129 +1,128 @@
 X-GM-THRID: 6474399283336445952
-X-Received: by 10.99.43.204 with SMTP id r195mr566685pgr.162.1507438568018;
-        Sat, 07 Oct 2017 21:56:08 -0700 (PDT)
+X-Received: by 10.98.76.206 with SMTP id e75mr409182pfj.10.1507438563951;
+        Sat, 07 Oct 2017 21:56:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.84.248.133 with SMTP id q5ls232121pll.7.gmail; Sat, 07 Oct
- 2017 21:56:07 -0700 (PDT)
-X-Received: by 10.99.121.77 with SMTP id u74mr558277pgc.140.1507438567477;
-        Sat, 07 Oct 2017 21:56:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507438567; cv=none;
+Received: by 10.84.132.103 with SMTP id 94ls691575ple.9.gmail; Sat, 07 Oct
+ 2017 21:56:03 -0700 (PDT)
+X-Received: by 10.98.144.15 with SMTP id a15mr257354pfe.33.1507438563299;
+        Sat, 07 Oct 2017 21:56:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507438563; cv=none;
         d=google.com; s=arc-20160816;
-        b=l62oMd9N1ZM2u4znYZroqMZxzooYbq/luYy/heiSFS/QtEKoWWjnVmEsf04B9Os1/8
-         GjcnkAg4pAgWNyFScIdtUSroNH8wcKqm/wbhvIlA6tbWwL8EHTrWADvyI4FcmwOp+/Wo
-         hqdc4HsveIN8GiTeFDEk9AE8nT502L8o9jOHEP7bnKlmex3f5pnX4f6nAVNOA4eRaZwW
-         PhArBtnH8qKww+yEGen6WIMSNVqhTExRwASJjMtHLJGvTZpHe4ycmvz6OWbiF6wb/t8g
-         wv6xq9lFaAgptKfFdzALzjTd9S89ExDvCvbtNhv/3q66TeAM3uPLJjqgjjYY7eAmHeSO
-         IKGg==
+        b=lQTSCq1DmNkYREpmzXJ5V0XCNac1GasjT89WcfCjphHAXpd/ynuAmo5DR+x8JGI5dF
+         DWIrRUX0SglLgGmzE9M1qg90jSnTjjpD1mokpvoYLq7MoCpN7f7uh6la9TfzsCv9Anme
+         dNwHqFejJz/QzgvMTXrB9sn7A4xABaarR6FuqLMxEJlb6UfOmhmeiQSnMSbYThHK+CRv
+         VGBE0/uUqJYmKc2yr3UznekyKCGjiPYEUK8SjkjixZVP+GWV6V9wQmL8FaC8ZgLgRkTX
+         xlrKtTs81QdUfwPlO1/c3j9jbDMvBqTCczXrnPbposGkhe6dkzonVneMW03NYFYQsbh9
+         0bCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:references:in-reply-to:message-id:date
          :subject:cc:to:from:dkim-signature:arc-authentication-results;
-        bh=SZnKC0KgofCsOje/ZCwNqMWcEgiZMo3+PEFwXvrE6p8=;
-        b=eoBEq1b7RhDdb2o4XrYBPD3CVOkRG1ogm1QErQhFa1bTISpSuJqdfO5kDqy8BIkZw3
-         RdLy5g3/GIECqBBMVskkNxh3JFmxw+Bc9q/WHBu5mNz5NP4DnT552PifE1vL6OzzdSrh
-         uw9Zspxt54NqNpHZdG2zRqebhTHYplQgKrDlpcyIb53JH3jd8zjbEIqtKrryeeNCpKTz
-         t00NqUw0a0IgDRZDVVi+ZbaiEBKnKGp3suTMGzykkDWfevC4E10HvaSsViWMJm+K0XE8
-         IU2BojTCcLTFxOfVTdcuzmG8G6AkoBt7KqsMU3lQr2R5WbOyp3UGtKlmkn4vrFRPxp+R
-         nwZA==
+        bh=ajP9aQVEm4IxC8aolzN7AzXlOV24SPhrOaJaERscxVE=;
+        b=untUqdvqpNPri2RGw4VQQDjhQNNwVCYD/7FnK82mqUODtN6y+cnH9MU5swdIvMGrsF
+         4udFI8S7gJA0xwtKqKuiSFvE3KrbVd1em400xBYNUhjdBvl0Nb4vRxrnKIlujKj2aeaK
+         JMYx5TQXlQN1pQoAemtHVdonLn6MZWuQ6C+af5C2IAuY2b5pNb9kkJTC76x4EUZP8eSI
+         aOrmXjCtOBs71JGlnsiVacAYicwyTXTBtSnY5xXlYY/uouKXZHY96zD4xrxioD22Lbpk
+         vI9X2tF1knWgEJkUMuKlBIsduV32/bbr9mtmR/09mbjbZTsEmGUjniJyy4f7dxE4EPl8
+         ZxEg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I7v8C1Ir;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qdkYmzEs;
        spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <aastha.gupta4104@gmail.com>
 Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id 82si565865pfz.6.2017.10.07.21.56.07
+        by gmr-mx.google.com with ESMTPS id a24si172825pfc.5.2017.10.07.21.56.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 07 Oct 2017 21:56:07 -0700 (PDT)
+        Sat, 07 Oct 2017 21:56:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I7v8C1Ir;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qdkYmzEs;
        spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id z11so3322933pfk.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 07 Oct 2017 21:56:07 -0700 (PDT)
+Received: by mail-pf0-x242.google.com with SMTP id a7so20711873pfj.5
+        for <outreachy-kernel@googlegroups.com>; Sat, 07 Oct 2017 21:56:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=SZnKC0KgofCsOje/ZCwNqMWcEgiZMo3+PEFwXvrE6p8=;
-        b=I7v8C1IrP+L5mL2AR/maJJWUrMJRyFCALUQ0bFpQ7wOYW9MnDT+rzVGaQhrSxuMFjo
-         w5aBilOVgp5z64orhHV2p3rPcPqx6816XvW4wZ2ZsGDM/aJbBtrlfvnYu6WF4eGy2uL3
-         Z5RuORd6HIFF5vQEjrWWpJuG8xhiPUwTFgpNfBqxh2vP0GFB1qcK6lqvgBRxC4lVR3Y6
-         eHtWM3ZfeG7IxyT9LQBm698guAKCKw7C4F8i70saomIIUYLM1xStOBNrnCmzf8Vc0uwD
-         FqDXjgU1eU4Ke8R6LH1rQVkVwVOXu+LPgANzMGszBvPVGl+64yY0fUHqIVCEdm1zT+ai
-         9r3w==
+        bh=ajP9aQVEm4IxC8aolzN7AzXlOV24SPhrOaJaERscxVE=;
+        b=qdkYmzEs2usi6dkj/Q/be4WVcAAKD7+tSwRdwqP4m6fx2P6kGoIJAUp51B3DNpxIvi
+         e5XjODXfUUpninr/UvqZ+wNvEsAVcQ0E6/Feu/cc1vL5iUEd8O89uIOFlRTIFmDzNKZr
+         C5wH1mkUBQgs2h+ODIodhItJ7eGX8JLn3bUpkgsws9ISKzVmlj1vkaMyxT8LSjvHUnzn
+         idqg/rSUcTCxyhWoX1fwDV7dNxOAhlW8rRh3fPXSrsLVvcI85bbLX95VXKhOX2IsUO9F
+         FlZv6/rkliwIvBJuyzdqzxkhtAbB2PzGLRUA5+gv8uMD7vmMMs/51KHz6sfOg9IINMm+
+         viiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=SZnKC0KgofCsOje/ZCwNqMWcEgiZMo3+PEFwXvrE6p8=;
-        b=lQxJ7tncmCUi6vCi4qGshdzKM1aJexYpUHbvLrEowXsZb/c700i3x8qQtI8r89/SeB
-         2eUHbuVAbYNnPGtCLDsu8kG3ZIFGqCEk74GVtzCi8VTOGc0GMKCCGflx0uuEh1D0BviT
-         KHaNhL9C38lPezid91isMt99UUm56k7JaT1Jf3q9Z5D2zQ8mful7TkDHygxlSBqbRZs4
-         ziu7KM1ghFOT9dzMzuXu6QvMCfiiqnJBMkTtYshs/ZKJCV2P9+++t0JC605ygY4cPBFL
-         PoHEsdpwuQPG6XI4iOqxwqE1pQoiLQp+4n17NQwWOmftSLMk+XO9lXCF4RjujX0zwBZ8
-         u5iA==
-X-Gm-Message-State: AMCzsaV6mMi2oUka44G/oc6yk2/mQaLjcHmgvJtq1AfGmKO2/5iyLT3K
-	irXkuytB/tRRSLSZQqV4BoCQx3HV
-X-Google-Smtp-Source: AOwi7QCP+QTfBHeliSxRlbuHtEE/pv8wajMoZIVI+z3vay1CeZpzVILEwEvJ0VG2WI1VzyCJ+iLz9g==
-X-Received: by 10.99.99.65 with SMTP id x62mr6113008pgb.221.1507438567192;
-        Sat, 07 Oct 2017 21:56:07 -0700 (PDT)
+        bh=ajP9aQVEm4IxC8aolzN7AzXlOV24SPhrOaJaERscxVE=;
+        b=fpRP/5585cjxR0Sdwhqh5sORylc1Uk9kJqj9DraPzqgJ+b2ZQZLg2BEiVWuy+GZXi4
+         qn7toTo6vL6PbokAo/jvdMGXYsf1tFIbUtTjEp7fWvJ5FY0O9m4LZH5eWpS0EN9mGSxh
+         hhI+xE7ZGGo1zhpglHCYPYKsPQaCXTyXAwtmoPFkppHLaXyzTitnou6HFfWt0HRdqXWz
+         +R0CffMeWWvXozb56LaHt3PDpjhPfebcgNsnaGh+1ZKl0gYQ2L2twW7wTMW0sjVO80XA
+         mIZFYkIsm2lnT6wIrba82A5iu5c5oH0VbhOWM3wtxWCKdMvP43cz7CY+whiE7h/fzoG1
+         Yphg==
+X-Gm-Message-State: AMCzsaVUKz+xiKnSgB0b1E62zGB3/3nXSdU+QgyyvzFd493B0QEHHRFl
+	9T6r+AGAsKRXsI2mhCchvPE=
+X-Google-Smtp-Source: AOwi7QCCMiGeEjmHUT6trpjoeT65yXL7fD5kV5y3e4d/fqXxusbbml1enUtCZB/10tU0BCLe/6I3EA==
+X-Received: by 10.99.152.68 with SMTP id l4mr6102276pgo.443.1507438563047;
+        Sat, 07 Oct 2017 21:56:03 -0700 (PDT)
 Return-Path: <aastha.gupta4104@gmail.com>
 Received: from aastha-HP-Pavilion-15-Notebook-PC ([45.127.232.78])
-        by smtp.gmail.com with ESMTPSA id j12sm8694167pgc.6.2017.10.07.21.56.06
+        by smtp.gmail.com with ESMTPSA id w10sm9103667pfg.40.2017.10.07.21.56.02
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 07 Oct 2017 21:56:06 -0700 (PDT)
+        Sat, 07 Oct 2017 21:56:02 -0700 (PDT)
 From: Aastha Gupta <aastha.gupta4104@gmail.com>
 To: outreachy-kernel@googlegroups.com,
 	gregkh@linuxfoundation.org
 Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH v3 4/6] staging: rtl8723bs: convert type to bool
-Date: Sun,  8 Oct 2017 10:24:54 +0530
-Message-Id: <9e56985ecdf7399c31f3e2075fd8a678d8772611.1507437264.git.aastha.gupta4104@gmail.com>
+Subject: [PATCH v3 3/6] staging: rtl8723bs: Change type to bool
+Date: Sun,  8 Oct 2017 10:24:53 +0530
+Message-Id: <3ab5fc49fd28cd0601426adb6437dcd763d077fb.1507437264.git.aastha.gupta4104@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <cover.1507437263.git.aastha.gupta4104@gmail.com>
 References: <cover.1507437263.git.aastha.gupta4104@gmail.com>
 In-Reply-To: <cover.1507437263.git.aastha.gupta4104@gmail.com>
 References: <cover.1507437263.git.aastha.gupta4104@gmail.com>
 
-Here the variable bips_processing is always supplied a bool value 
-while inside struct definition it is defined as an uint type. 
-Fix it by defining bips_processing a bool type.
-
-Also a restore_iqk_rst = (pwrpriv->bips_processing == true) is same 
-as restore_iqk_rst = pwrpriv->bips_processing
+res and Match have only either 'true' or 'false' values.
+So making them of type bool for better readability of code.
 
 Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
 ---
- drivers/staging/rtl8723bs/hal/sdio_halinit.c    | 2 +-
- drivers/staging/rtl8723bs/include/rtw_pwrctrl.h | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/rtl8723bs/core/rtw_sta_mgt.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/sdio_halinit.c b/drivers/staging/rtl8723bs/hal/sdio_halinit.c
-index 63bca67..1af77ad 100644
---- a/drivers/staging/rtl8723bs/hal/sdio_halinit.c
-+++ b/drivers/staging/rtl8723bs/hal/sdio_halinit.c
-@@ -1019,7 +1019,7 @@ static u32 rtl8723bs_hal_init(struct adapter *padapter)
+diff --git a/drivers/staging/rtl8723bs/core/rtw_sta_mgt.c b/drivers/staging/rtl8723bs/core/rtw_sta_mgt.c
+index c6ebb9d..03dd684 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_sta_mgt.c
++++ b/drivers/staging/rtl8723bs/core/rtw_sta_mgt.c
+@@ -604,10 +604,10 @@ struct sta_info *rtw_get_bcmc_stainfo(struct adapter *padapter)
  
- 			rtw_btcoex_IQKNotify(padapter, true);
+ u8 rtw_access_ctrl(struct adapter *padapter, u8 *mac_addr)
+ {
+-	u8 res = true;
++	bool res = true;
+ 	struct list_head	*plist, *phead;
+ 	struct rtw_wlan_acl_node *paclnode;
+-	u8 match = false;
++	bool match = false;
+ 	struct sta_priv *pstapriv = &padapter->stapriv;
+ 	struct wlan_acl_pool *pacl_list = &pstapriv->acl_list;
+ 	struct __queue	*pacl_node_q = &pacl_list->acl_node_q;
+@@ -630,10 +630,10 @@ u8 rtw_access_ctrl(struct adapter *padapter, u8 *mac_addr)
  
--			restore_iqk_rst = (pwrpriv->bips_processing == true) ? true : false;
-+			restore_iqk_rst = pwrpriv->bips_processing;
- 			b2Ant = pHalData->EEPROMBluetoothAntNum == Ant_x2;
- 			PHY_IQCalibrate_8723B(padapter, false, restore_iqk_rst, b2Ant, pHalData->ant_path);
- 			pHalData->odmpriv.RFCalibrateInfo.bIQKInitialized = true;
-diff --git a/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h b/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
-index cf8e766..79a2db6 100644
---- a/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
-+++ b/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
-@@ -250,7 +250,7 @@ struct pwrctrl_priv
- 	u8 ips_mode;
- 	u8 ips_org_mode;
- 	u8 ips_mode_req; /*  used to accept the mode setting request, will update to ipsmode later */
--	uint bips_processing;
-+	bool bips_processing;
- 	unsigned long ips_deny_time; /* will deny IPS when system time is smaller than this */
- 	u8 pre_ips_type;/*  0: default flow, 1: carddisbale flow */
+ 
+ 	if (pacl_list->mode == 1) /* accept unless in deny list */
+-		res = (match == true) ?  false:true;
++		res = !match;
+ 
+ 	else if (pacl_list->mode == 2)/* deny unless in accept list */
+-		res = (match == true) ?  true:false;
++		res = match;
+ 	else
+ 		 res = true;
  
 -- 
 2.7.4
