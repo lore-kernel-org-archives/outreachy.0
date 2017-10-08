@@ -1,225 +1,241 @@
-X-GM-THRID: 6469264363106598912
-X-Received: by 10.46.91.82 with SMTP id p79mr197538ljb.34.1506242985213;
-        Sun, 24 Sep 2017 01:49:45 -0700 (PDT)
+X-GM-THRID: 6474497832409628672
+X-Received: by 10.101.78.202 with SMTP id w10mr616451pgq.105.1507461497124;
+        Sun, 08 Oct 2017 04:18:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.67.148 with SMTP id z20ls1948143lje.0.gmail; Sun, 24 Sep
- 2017 01:49:43 -0700 (PDT)
-X-Received: by 10.25.201.136 with SMTP id z130mr231286lff.3.1506242983649;
-        Sun, 24 Sep 2017 01:49:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506242983; cv=none;
+Received: by 10.98.43.9 with SMTP id r9ls751785pfr.6.gmail; Sun, 08 Oct 2017
+ 04:18:16 -0700 (PDT)
+X-Received: by 10.101.86.13 with SMTP id l13mr601317pgs.103.1507461496168;
+        Sun, 08 Oct 2017 04:18:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507461496; cv=none;
         d=google.com; s=arc-20160816;
-        b=0kHDODOHQ62Op7RnA11wGQY35Df62jpI3zxJuPsHMTa+wLobj7Tmccd5HM9pRgEAMb
-         KKuRKNzubAA0cfAad6mfx0WkfjE+nLp9d2/SsdOX8rkOt9o5IYn5rdYOaKqrPHcl6RJg
-         1qkSHHDu6CewrdmMrQ1XeWCe4wVEfn0KAzYT+F6O19hGYVdkbI1fxa/3GJF1bLgNcF4D
-         HAuzPWMQtS4QfoqwC/F+awMs0CfeqFifm9JZQFCUqq9ETTWigCgdczs1AhmAglHsl+KA
-         W6H2Zf1VFoMejqkkWnk+MXewfdiFgywLgCLLvlobfga6ccLtCTuRn1D2Psz6nfKSUe8y
-         W5AA==
+        b=P1kCTe+PivmjDfw3t+kNpWSxKuALKXeievN9RsgsyzqO73J4vRiKs15bvx5WSdLsQ7
+         xSi04ZiX0yHYqW+6lm9zUgr22NEDR9VeqodLadxOJgjWSn3bQrXYLHAoYHh4XR/+gL9V
+         jzwfgMBGHlOedxMhdbWeZkK+QhgIL61H9BCLSjHWBg3BmzmDweI84d6aHstSmDjbD5cF
+         fnVtdFVao1hKcpckiGkG9quPi2usQR/YBcd4Il6E+T5T4UgdNSfm8ZejujZWgtKlRyGt
+         +XJ2v2DpnSXyKo9qTv8LGobGuw4kGIT2TWM9fXNXkRWsnPRpiAEig/FekbdseIskwl6V
+         1C6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=x3URuUrGHCWXKPvS5z0nFE6bNa8q599dPPO2dI1MFMk=;
-        b=cGep2JS/rxiGI/I0ZsrZ8ku+IzDsH1TygQBewPTZLD9X8LDt0lDkT8eFe2ijP5Sdft
-         vZS6n1rUAJDokWe0rVxY4iUJO0prRTL3rcv9CZSzcvX/bN+9oYJZmo1s/HSInYnWrdr8
-         ndMA2e5rmjKmG05sIjuMn/0sbPHJcc2Y+87ij73+gROSi/h5lSZcwHjse/uaucfwNnNv
-         3pEHpoZuxKJxAzZqOjERcrQOezJKvgS8rwDRqQhJgaq3N6BlMCHVVEOUyl5mFqlT6R9O
-         Gguk+929MgdujIO89aRJqqU3rMTzVYd/fxB07zwOibKVbmkCrYE7MXFrkp05X3/5giDT
-         xLHA==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=lR5TeYjIMaSF2539e3dHUIrIwjgCbJNp++C/FxW3b7o=;
+        b=BqXiimewK/VrKO3lyzERw5LppZcFaajtgz6oXko0q5We6dyoca8w5/Y2AeGe68JCmv
+         l+K7nx/pVEWWK2l6g1Rd37dF1R6xL81wLBZMc7O39gHbQQyZmMigncIUOg1s9d3ftHPA
+         37CnI80VWoesvigPCeqUUsJKBu3LAYsVtyurMHsPYu7HdBu5kX6xuwZgfyQBLtvAzL0Y
+         HR3IgomivyeNwEpFN6JMArv2oc7HXVWI7FxSUdyYk/5GoBEqdBnSAbdJq6M7S0X8xi6F
+         Pp++6h3YIQda2Wtg5xRH/PxvPIzUufRlnSG0YEGAPxOmWlnIdUdhOvsumsbKboZwwID9
+         y1Ew==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GKJhLHs6;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dUk1mxM9;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from mail-wr0-x244.google.com (mail-wr0-x244.google.com. [2a00:1450:400c:c0c::244])
-        by gmr-mx.google.com with ESMTPS id l133si302430wmb.3.2017.09.24.01.49.43
+Return-Path: <harshasharmaiitr@gmail.com>
+Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
+        by gmr-mx.google.com with ESMTPS id l80si234002pfk.26.2017.10.08.04.18.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 24 Sep 2017 01:49:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) client-ip=2a00:1450:400c:c0c::244;
+        Sun, 08 Oct 2017 04:18:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GKJhLHs6;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dUk1mxM9;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x244.google.com with SMTP id b9so2651218wra.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 24 Sep 2017 01:49:43 -0700 (PDT)
+Received: by mail-pg0-x242.google.com with SMTP id l24so6322620pgu.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 08 Oct 2017 04:18:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=x3URuUrGHCWXKPvS5z0nFE6bNa8q599dPPO2dI1MFMk=;
-        b=GKJhLHs6E5zVkega/OMN1t+yjgNmKWpVuMRQQXNnqnILpBHI8rBdJyBWRLVLjSe+ei
-         dq0nG0AoY8erq6fDsGLytqv/4hVksRce6XYN8pKZjqu+zWh1XgVO921/pVXww53xBZPR
-         0aKLSgJrkMZX6Ihr7BsjuXC0N2SGVnO1rj7B6/wwdC8Ll+nlVYYbdjZSKNfWszd50y/7
-         y4fq4Ca0XN1AzQI6nHpK21VdsmotTfr/zwMbfmfOZvL+bi9ymtpAkfYH+D4+Sy+JQuHm
-         y+SnoGadYixw9VdvvfFwKiM4jVPm8NnICzQ6OX8tEILwJvxBX0kkOf93CrsoMw2iCX//
-         ARtA==
+        h=from:to:cc:subject:date:message-id;
+        bh=lR5TeYjIMaSF2539e3dHUIrIwjgCbJNp++C/FxW3b7o=;
+        b=dUk1mxM9Gm3ZXA2Q1zgVcMTedr54lyZSFYv7p/t5a89W56ZYQ/F4kzLV6jMxEJdKOv
+         zLDtqzfAGhNp76gtoB6I3Q0Uq87M3pfufSL881oROWOhW29TIO6FohKDblUwPyYwqGH9
+         lGEsOl/qPs8gPvy5+2ZmGwqkh0JW5S1CchrrDjYWGmvvXRWH9AroTewhKdzzHaKK74fG
+         oiWOrHJ3ErTp8eb4lno+jgNCajyOPV5WtSaUG/zb4wO2Hpho+0YDe5OdcyLluR7T8Tih
+         ooHN9FMS3XPUKmimNLCV+SPSpqf0mhgXKY/tR3TCRB/H1qUJVV8LSiu1SgdI4LJ3+5oD
+         uJ4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=x3URuUrGHCWXKPvS5z0nFE6bNa8q599dPPO2dI1MFMk=;
-        b=cHiGMsvHo92DkFzMSzR7/97inW312HHJi2XCdk0Y/PnceCbqmF/0d44Gw5amC7jzxA
-         ou91aickHueXzeKuttx539DZHnu5KyRUox2Ng5phwrxqSLwbvwySfDesNTDoiI2ovl/E
-         /y2NrF7hLgfBNW3QyPsNfUd5xbPNPANAV4NPAKVE1JIuqIMr2bcAUF/DGpGcl/FADpzO
-         LyVi7lYeE6Npc6YwgsESZ5vOxCYrwIo1W+FajOhYH2sfwK9FPS4IWHuEHowPIfS7uROQ
-         iLxdEb9LSo8YxJ5UKr1JR/fTiyBFl7YBsLlegKiCfLtg9iUN/D8ujk03FhnsfayCvPcT
-         +cEA==
-X-Gm-Message-State: AHPjjUhvqXGY9ogcCpHXMNC6dPpnh4ESZ5MkyXt/4s8QCxmCayuS5YnL
-	RF52Au+nlaf38h8AIlBGvJdWyw==
-X-Google-Smtp-Source: AOwi7QAHQs3ukI3ck21s41LWbo1TcHpg9E3h+5QmfSEBya9NTWZL2E3U0a4kqs79Bbf7lX20uRhBKw==
-X-Received: by 10.223.182.137 with SMTP id j9mr3129807wre.150.1506242983356;
-        Sun, 24 Sep 2017 01:49:43 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from domino-MS-16Y1 ([92.83.158.26])
-        by smtp.gmail.com with ESMTPSA id 55sm7278455wrw.60.2017.09.24.01.49.42
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 24 Sep 2017 01:49:42 -0700 (PDT)
-Date: Sun, 24 Sep 2017 11:49:41 +0300
-From: Mihaela Muraru <mihaela.muraru21@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: speakup: Use octal permissions '0444'
-Message-ID: <20170924084941.GA12556@domino-MS-16Y1>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=lR5TeYjIMaSF2539e3dHUIrIwjgCbJNp++C/FxW3b7o=;
+        b=WbOHS6s57x+tRy7ngiidgFhdN6rpTqcoKPWJ2x0VzZNLKBEp71e2BHeztDunq9ZYqk
+         kZqaFQgb8mxbJfpENX5LStkg6dT+Lp0e9tl97q+pqOGTAHAHh4Am5iQnl21x/WsBd7y8
+         Sq9X2WYRDB/lj0PseGFlh5+BID4yTwigQXY55JmOvXzMjEERKiYafCVSeziJm17NyFBx
+         PasyJIjjYT9nUhznHxYcK5l/6Mj4TL2Zd1JTKSObnoXmXvzY27ZPBI0Ti25WO4R9ULGl
+         N083wEvum01P9uVzDBv2AF8mnXcFE9DrbbplZ5Bw/mP2loa10fwgc8/i65at3rMmnY+r
+         k0Fw==
+X-Gm-Message-State: AMCzsaXsnqA5LX+09blO+Xb7YReWHxS7l/4E8vW0nWiJ9rBmYG/jtb3o
+	lw7bvMHzfEMmlf/XpLpyX8k=
+X-Google-Smtp-Source: AOwi7QAsfGlI+D4RKz9gbsnkOUOt1/kcxcrrv2ZfQr06djeU3xkoFd0ovNuWGBXlHiRZ+UuQQk21Ww==
+X-Received: by 10.98.34.130 with SMTP id p2mr7324610pfj.108.1507461495914;
+        Sun, 08 Oct 2017 04:18:15 -0700 (PDT)
+Return-Path: <harshasharmaiitr@gmail.com>
+Received: from localhost.localdomain ([103.37.201.122])
+        by smtp.gmail.com with ESMTPSA id 85sm2213128pfz.119.2017.10.08.04.18.13
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 08 Oct 2017 04:18:15 -0700 (PDT)
+From: Harsha Sharma <harshasharmaiitr@gmail.com>
+To: pablo@netfilter.org
+Cc: netfilter-devel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com,
+	Harsha Sharma <harshasharmaiitr@gmail.com>
+Subject: [PATCH] src: Code indent should use tabs wherever possible
+Date: Sun,  8 Oct 2017 16:46:04 +0530
+Message-Id: <20171008111604.18781-1-harshasharmaiitr@gmail.com>
+X-Mailer: git-send-email 2.11.0
 
-Fixed the following checkpatch warning:
+Remove unnecessary spaces and use tabs for code indent.
 
-WARNING: Symbolic permissions 'S_IRUGO' are not preferred. Consider using octal
-permissions '0444'.
-
-Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
+Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
 ---
- drivers/staging/speakup/speakup_apollo.c | 2 +-
- drivers/staging/speakup/speakup_audptr.c | 2 +-
- drivers/staging/speakup/speakup_bns.c    | 2 +-
- drivers/staging/speakup/speakup_decext.c | 2 +-
- drivers/staging/speakup/speakup_dectlk.c | 2 +-
- drivers/staging/speakup/speakup_dummy.c  | 2 +-
- drivers/staging/speakup/speakup_ltlk.c   | 2 +-
- drivers/staging/speakup/speakup_spkout.c | 2 +-
- drivers/staging/speakup/speakup_txprt.c  | 2 +-
- 9 files changed, 9 insertions(+), 9 deletions(-)
+ src/datatype.c |  2 +-
+ src/evaluate.c | 10 +++++-----
+ src/gmputil.c  |  4 ++--
+ src/meta.c     |  4 ++--
+ src/netlink.c  |  6 +++---
+ src/segtree.c  |  4 ++--
+ 6 files changed, 15 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/staging/speakup/speakup_apollo.c b/drivers/staging/speakup/speakup_apollo.c
-index 2edb56c..dcf0c3b 100644
---- a/drivers/staging/speakup/speakup_apollo.c
-+++ b/drivers/staging/speakup/speakup_apollo.c
-@@ -200,7 +200,7 @@ static void do_catch_up(struct spk_synth *synth)
+diff --git a/src/datatype.c b/src/datatype.c
+index 94b1224..d83ecec 100644
+--- a/src/datatype.c
++++ b/src/datatype.c
+@@ -370,7 +370,7 @@ static void string_type_print(const struct expr *expr, struct output_ctx *octx)
  }
  
- module_param_named(ser, synth_apollo.ser, int, 0444);
--module_param_named(dev, synth_apollo.dev_name, charp, S_IRUGO);
-+module_param_named(dev, synth_apollo.dev_name, charp, 0444);
- module_param_named(start, synth_apollo.startup, short, 0444);
+ static struct error_record *string_type_parse(const struct expr *sym,
+-	      				      struct expr **res)
++					      struct expr **res)
+ {
+ 	*res = constant_expr_alloc(&sym->location, &string_type,
+ 				   BYTEORDER_HOST_ENDIAN,
+diff --git a/src/evaluate.c b/src/evaluate.c
+index 193ea1c..79af65c 100644
+--- a/src/evaluate.c
++++ b/src/evaluate.c
+@@ -132,7 +132,7 @@ static int byteorder_conversion(struct eval_ctx *ctx, struct expr **expr,
+ 		return 0;
+ 	if (expr_basetype(*expr)->type != TYPE_INTEGER)
+ 		return expr_error(ctx->msgs, *expr,
+-			 	  "Byteorder mismatch: expected %s, got %s",
++				  "Byteorder mismatch: expected %s, got %s",
+ 				  byteorder_names[byteorder],
+ 				  byteorder_names[(*expr)->byteorder]);
  
- MODULE_PARM_DESC(ser, "Set the serial port for the synthesizer (0-based).");
-diff --git a/drivers/staging/speakup/speakup_audptr.c b/drivers/staging/speakup/speakup_audptr.c
-index 8ae826e..45b5721 100644
---- a/drivers/staging/speakup/speakup_audptr.c
-+++ b/drivers/staging/speakup/speakup_audptr.c
-@@ -163,7 +163,7 @@ static int synth_probe(struct spk_synth *synth)
+@@ -1388,7 +1388,7 @@ static int expr_evaluate_hash(struct eval_ctx *ctx, struct expr **exprp)
+ 		return -1;
+ 
+ 	/* expr_evaluate_primary() sets the context to what to the input
+-         * expression to be hashed. Since this input is transformed to a 4 bytes
++	 * expression to be hashed. Since this input is transformed to a 4 bytes
+ 	 * integer, restore context to the datatype that results from hashing.
+ 	 */
+ 	__expr_set_context(&ctx->ectx, expr->dtype, expr->byteorder, expr->len,
+@@ -1691,7 +1691,7 @@ static int expr_evaluate_relational(struct eval_ctx *ctx, struct expr **expr)
+ 		case EXPR_CONCAT:
+ 			return expr_binary_error(ctx->msgs, left, rel,
+ 					"Relational expression (%s) is undefined "
+-				        "for %s expressions",
++					"for %s expressions",
+ 					expr_op_symbols[rel->op],
+ 					left->ops->name);
+ 		default:
+@@ -1701,7 +1701,7 @@ static int expr_evaluate_relational(struct eval_ctx *ctx, struct expr **expr)
+ 		if (!expr_is_singleton(right))
+ 			return expr_binary_error(ctx->msgs, right, rel,
+ 					"Relational expression (%s) is undefined "
+-				        "for %s expressions",
++					"for %s expressions",
+ 					expr_op_symbols[rel->op],
+ 					right->ops->name);
+ 
+@@ -1723,7 +1723,7 @@ range:
+ 		case EXPR_CONCAT:
+ 			return expr_binary_error(ctx->msgs, left, rel,
+ 					"Relational expression (%s) is undefined"
+-				        "for %s expressions",
++					"for %s expressions",
+ 					expr_op_symbols[rel->op],
+ 					left->ops->name);
+ 		default:
+diff --git a/src/gmputil.c b/src/gmputil.c
+index 3cc4e61..a817bb8 100644
+--- a/src/gmputil.c
++++ b/src/gmputil.c
+@@ -50,11 +50,11 @@ void mpz_rshift_ui(mpz_t rop, unsigned int n)
+ 
+ #define mpz_get_type(type, endian, op)					\
+ ({									\
+- 	type ret = 0;							\
++	type ret = 0;							\
+ 	size_t cnt;							\
+ 	mpz_export(&ret, &cnt, MPZ_LSWF, sizeof(ret), endian, 0, op);	\
+ 	assert(cnt <= 1);						\
+- 	ret;								\
++	ret;								\
+  })
+ 
+ uint64_t mpz_get_uint64(const mpz_t op)
+diff --git a/src/meta.c b/src/meta.c
+index 56b9e29..e387028 100644
+--- a/src/meta.c
++++ b/src/meta.c
+@@ -625,8 +625,8 @@ struct stmt *meta_stmt_meta_iiftype(const struct location *loc, uint16_t type)
  }
  
- module_param_named(ser, synth_audptr.ser, int, 0444);
--module_param_named(dev, synth_audptr.dev_name, charp, S_IRUGO);
-+module_param_named(dev, synth_audptr.dev_name, charp, 0444);
- module_param_named(start, synth_audptr.startup, short, 0444);
+ struct error_record *meta_key_parse(const struct location *loc,
+-                                    const char *str,
+-                                    unsigned int *value)
++				    const char *str,
++				    unsigned int *value)
+ {
+ 	int ret, len, offset = 0;
+ 	const char *sep = "";
+diff --git a/src/netlink.c b/src/netlink.c
+index d5d410a..c1d0d56 100644
+--- a/src/netlink.c
++++ b/src/netlink.c
+@@ -445,7 +445,7 @@ struct expr *netlink_alloc_data(const struct location *loc,
  
- MODULE_PARM_DESC(ser, "Set the serial port for the synthesizer (0-based).");
-diff --git a/drivers/staging/speakup/speakup_bns.c b/drivers/staging/speakup/speakup_bns.c
-index 60bcf0d..402b0fb 100644
---- a/drivers/staging/speakup/speakup_bns.c
-+++ b/drivers/staging/speakup/speakup_bns.c
-@@ -120,7 +120,7 @@ static struct spk_synth synth_bns = {
- };
+ int netlink_add_rule_batch(struct netlink_ctx *ctx,
+ 			   const struct handle *h,
+-		           const struct rule *rule, uint32_t flags)
++			   const struct rule *rule, uint32_t flags)
+ {
+ 	struct nftnl_rule *nlr;
+ 	int err;
+@@ -2117,7 +2117,7 @@ out:
+ /* returns true if the event should be ignored (i.e. null element) */
+ static bool netlink_event_ignore_range_event(struct nftnl_set_elem *nlse)
+ {
+-        uint32_t flags = 0;
++	uint32_t flags = 0;
  
- module_param_named(ser, synth_bns.ser, int, 0444);
--module_param_named(dev, synth_bns.dev_name, charp, S_IRUGO);
-+module_param_named(dev, synth_bns.dev_name, charp, 0444);
- module_param_named(start, synth_bns.startup, short, 0444);
- 
- MODULE_PARM_DESC(ser, "Set the serial port for the synthesizer (0-based).");
-diff --git a/drivers/staging/speakup/speakup_decext.c b/drivers/staging/speakup/speakup_decext.c
-index 95f4b21..4310c2c 100644
---- a/drivers/staging/speakup/speakup_decext.c
-+++ b/drivers/staging/speakup/speakup_decext.c
-@@ -227,7 +227,7 @@ static void synth_flush(struct spk_synth *synth)
+ 	if (nftnl_set_elem_is_set(nlse, NFTNL_SET_ELEM_FLAGS))
+ 		flags = nftnl_set_elem_get_u32(nlse, NFTNL_SET_ELEM_FLAGS);
+@@ -2765,7 +2765,7 @@ next:
  }
  
- module_param_named(ser, synth_decext.ser, int, 0444);
--module_param_named(dev, synth_decext.dev_name, charp, S_IRUGO);
-+module_param_named(dev, synth_decext.dev_name, charp, 0444);
- module_param_named(start, synth_decext.startup, short, 0444);
+ static void trace_print_packet(const struct nftnl_trace *nlt,
+-			        struct output_ctx *octx)
++			       struct output_ctx *octx)
+ {
+ 	struct list_head stmts = LIST_HEAD_INIT(stmts);
+ 	const struct proto_desc *ll_desc;
+diff --git a/src/segtree.c b/src/segtree.c
+index f0efd15..1dd8039 100644
+--- a/src/segtree.c
++++ b/src/segtree.c
+@@ -346,9 +346,9 @@ static bool interval_overlap(const struct elementary_interval *e1,
+ 		return false;
  
- MODULE_PARM_DESC(ser, "Set the serial port for the synthesizer (0-based).");
-diff --git a/drivers/staging/speakup/speakup_dectlk.c b/drivers/staging/speakup/speakup_dectlk.c
-index f069954..5d6a861 100644
---- a/drivers/staging/speakup/speakup_dectlk.c
-+++ b/drivers/staging/speakup/speakup_dectlk.c
-@@ -299,7 +299,7 @@ static void synth_flush(struct spk_synth *synth)
+ 	return (mpz_cmp(e1->left, e2->left) >= 0 &&
+-	        mpz_cmp(e1->left, e2->right) <= 0) ||
++		mpz_cmp(e1->left, e2->right) <= 0) ||
+ 	       (mpz_cmp(e1->right, e2->left) >= 0 &&
+-	        mpz_cmp(e1->right, e2->right) <= 0) ||
++		mpz_cmp(e1->right, e2->right) <= 0) ||
+ 	       (mpz_cmp(e1->left, e2->left) <= 0 &&
+ 		mpz_cmp(e1->right, e2->right) >= 0);
  }
- 
- module_param_named(ser, synth_dectlk.ser, int, 0444);
--module_param_named(dev, synth_dectlk.dev_name, charp, S_IRUGO);
-+module_param_named(dev, synth_dectlk.dev_name, charp, 0444);
- module_param_named(start, synth_dectlk.startup, short, 0444);
- 
- MODULE_PARM_DESC(ser, "Set the serial port for the synthesizer (0-based).");
-diff --git a/drivers/staging/speakup/speakup_dummy.c b/drivers/staging/speakup/speakup_dummy.c
-index 851953d..ea3b291 100644
---- a/drivers/staging/speakup/speakup_dummy.c
-+++ b/drivers/staging/speakup/speakup_dummy.c
-@@ -122,7 +122,7 @@ static struct spk_synth synth_dummy = {
- };
- 
- module_param_named(ser, synth_dummy.ser, int, 0444);
--module_param_named(dev, synth_dummy.dev_name, charp, S_IRUGO);
-+module_param_named(dev, synth_dummy.dev_name, charp, 0444);
- module_param_named(start, synth_dummy.startup, short, 0444);
- 
- MODULE_PARM_DESC(ser, "Set the serial port for the synthesizer (0-based).");
-diff --git a/drivers/staging/speakup/speakup_ltlk.c b/drivers/staging/speakup/speakup_ltlk.c
-index 423795f..95efaab 100644
---- a/drivers/staging/speakup/speakup_ltlk.c
-+++ b/drivers/staging/speakup/speakup_ltlk.c
-@@ -167,7 +167,7 @@ static int synth_probe(struct spk_synth *synth)
- }
- 
- module_param_named(ser, synth_ltlk.ser, int, 0444);
--module_param_named(dev, synth_ltlk.dev_name, charp, S_IRUGO);
-+module_param_named(dev, synth_ltlk.dev_name, charp, 0444);
- module_param_named(start, synth_ltlk.startup, short, 0444);
- 
- MODULE_PARM_DESC(ser, "Set the serial port for the synthesizer (0-based).");
-diff --git a/drivers/staging/speakup/speakup_spkout.c b/drivers/staging/speakup/speakup_spkout.c
-index 9ca21ed..1037aa0 100644
---- a/drivers/staging/speakup/speakup_spkout.c
-+++ b/drivers/staging/speakup/speakup_spkout.c
-@@ -131,7 +131,7 @@ static void synth_flush(struct spk_synth *synth)
- }
- 
- module_param_named(ser, synth_spkout.ser, int, 0444);
--module_param_named(dev, synth_spkout.dev_name, charp, S_IRUGO);
-+module_param_named(dev, synth_spkout.dev_name, charp, 0444);
- module_param_named(start, synth_spkout.startup, short, 0444);
- 
- MODULE_PARM_DESC(ser, "Set the serial port for the synthesizer (0-based).");
-diff --git a/drivers/staging/speakup/speakup_txprt.c b/drivers/staging/speakup/speakup_txprt.c
-index 831ee40..e160034 100644
---- a/drivers/staging/speakup/speakup_txprt.c
-+++ b/drivers/staging/speakup/speakup_txprt.c
-@@ -119,7 +119,7 @@ static struct spk_synth synth_txprt = {
- };
- 
- module_param_named(ser, synth_txprt.ser, int, 0444);
--module_param_named(dev, synth_txprt.dev_name, charp, S_IRUGO);
-+module_param_named(dev, synth_txprt.dev_name, charp, 0444);
- module_param_named(start, synth_txprt.startup, short, 0444);
- 
- MODULE_PARM_DESC(ser, "Set the serial port for the synthesizer (0-based).");
 -- 
-2.7.4
+2.11.0
 
 
