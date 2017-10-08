@@ -1,106 +1,157 @@
-X-GM-THRID: 6477617002737303552
-X-Received: by 10.237.56.74 with SMTP id j68mr2133357qte.29.1508187736425;
-        Mon, 16 Oct 2017 14:02:16 -0700 (PDT)
+X-GM-THRID: 6474623523829579776
+X-Received: by 10.101.75.17 with SMTP id r17mr713538pgq.83.1507490762986;
+        Sun, 08 Oct 2017 12:26:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.55.100.7 with SMTP id y7ls1707458qkb.4.gmail; Mon, 16 Oct 2017
- 14:02:15 -0700 (PDT)
-X-Received: by 10.55.102.200 with SMTP id a191mr9608446qkc.51.1508187735820;
-        Mon, 16 Oct 2017 14:02:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508187735; cv=none;
+Received: by 10.98.26.83 with SMTP id a80ls922094pfa.8.gmail; Sun, 08 Oct 2017
+ 12:26:01 -0700 (PDT)
+X-Received: by 10.99.174.77 with SMTP id e13mr827296pgp.62.1507490761920;
+        Sun, 08 Oct 2017 12:26:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507490761; cv=none;
         d=google.com; s=arc-20160816;
-        b=hI7kZ/weG8KDDpz5aW5aaFYo9oqMIuWvXvgBYJ8A3i3FCfAn4RlgUChgDxJ+nGJptV
-         51XeNIDXTR2Ua513fANqKRKosPetha7eG9ubh15ww0OnEQloqzTScYh/Xyfk+jGHdSKw
-         SQdm6xRLrFv5bRaZdL5hI3NjuAzYLmqy5V2HUEejMJzcsjdyLtObDHCokkcW105nMUx/
-         HaT32qAU4bVgNf9IbEPH1DWq3qRV/6mNlAX4Ds2O0Q69ku3Nyrnl3U/fFwIy6dmHK9HU
-         nz3V1I8gKzO/AXYI3aQQaT5QhGqeglsoKAQe4YEJ+aiFLh31URr+jf2vzhWh2kI2Ywpx
-         PCtg==
+        b=fwTj3V8ckbws7I3hrD8iaFFKqBWcnrJn2WT4wIfm9TCPx2YVmwWZYh3u0MgfbwZudY
+         gOhYMOpoQIKSXwqSaB7UNvXupoOu8YCcPGaI4qIcn7YVOyHzKxaviqm+LFbeg/um1930
+         f6pFxB8lIZm2khQstDX6pxJL7rFUkLlhXAcWSSNB0IaKk+EytQJsgaIXF4kOePa9YPq/
+         qCxhe8Y4+QMmfZiLWVk2AVCopeKVeUiUH1veuR/+HowSU5GdH3JzMAzPuKrKM7oyzjSQ
+         g1ChKFm9I5cfEyujWUDW4arkms9gvGiahzsCYQh9KM/9hQw36BqHiBd87OLZLBaoAHX8
+         2utg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=message-id:date:subject:cc:to:from:dkim-signature
          :arc-authentication-results;
-        bh=uQqtQBMqQM7P14lLI+h7JoYFleirCJbLs6AuDLrzYL0=;
-        b=Wxz2W6ZK/6XxVoyefvBl7npbyTgI6R21FNVD8iL7Z2Rnqzmu4Yz+v9p+WPsgdNfo1C
-         GH2TSq8FC3gaIOPpioHWca3yr6XpYT9FZbmx9fW4TXmdizt8lbOedc5fWGeSC7nhNRya
-         jMeQkjeICFwjVNUOH+2LgOMihbgPcS9iicQEq4Fz2I09bdHOiqdF87CEir1pUmmmieoT
-         CYjm0UyhcwMkseOiTTRfiEhHEnwKagwzBMEn2KOEKJh+8fGryTLkUG+M/Jl8hw3li3f6
-         uoU0hos5RBcW45x+fRNwoAjvfCqlQts5qbnSHg/JP+DnIpcmlqoWja6+3ELqb+D9PBXs
-         Ewww==
+        bh=zCKzmHiyn7Tn2Ls1gzEVH6hY8atB+ZaDaqJGOTgNJU0=;
+        b=D7omy4N8xv1RDhVyG9upEL7tWS8CX7el8p5DvqaUGiZtCOch3PKyltjrd5evm+YFKt
+         3LakEfJyVNQd/W4/+n/b8W7mqZzA0ZUVKzNg8YJcT7QG0Ht8lo1D6N/C9oRqBV6KziKv
+         hLpIr5up0ie9f232Xef92kOSvBNZ4v4zuaduzDzLsK01bdgpmkFoW+V/1+KX70ILs6HS
+         FiA6jIVzJjBGURaYH4coL47Cy+OsJDrXOU3sceEGw/rX+nJYPkCXveE+XoIvlIonlMiJ
+         8jMezWX+cDG9VVd6sD+jK/yUePQi81fKcL8kzblr+uyxnUGb/ldl5eKzOrk8BkaEnoVN
+         FsCg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HHgK3/CQ;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CkrxjG0g;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id 80si435546qkb.3.2017.10.16.14.02.15
+Return-Path: <harshasharmaiitr@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id e80si738631pfb.8.2017.10.08.12.26.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Oct 2017 14:02:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Sun, 08 Oct 2017 12:26:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HHgK3/CQ;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CkrxjG0g;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id y7so7787669pgb.7
-        for <outreachy-kernel@googlegroups.com>; Mon, 16 Oct 2017 14:02:15 -0700 (PDT)
+Received: by mail-pf0-x244.google.com with SMTP id i23so22653790pfi.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 08 Oct 2017 12:26:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=uQqtQBMqQM7P14lLI+h7JoYFleirCJbLs6AuDLrzYL0=;
-        b=HHgK3/CQ/1VGSAnTttSdp3EZuLHc4qAJBiDKuwxy3/Y7BjhLwEGqW65Yd/4sr/pbuO
-         4vePTHJXPgvnoOr/Imx62uLUhIC8ohT7sFrZYuVTsvm3nHv2ztR3GS3R0ShH2fCwv1YK
-         enOKzTTUc+zXwZgGmHHfYkaeHMUXbdsPP6nerED+ZI/GNr191iXfcu2WEoCRQx4Gyag+
-         VxYgo5Uj3yIaU48W2I5VZZK2FLhIEEP4/69kjMooo58PQH63TiVm3X493DX5sYM5R5bx
-         ltsIwi95s0j3seYHspYYrwhPVH+T7FmYfsjDizwiTYBYotMv6jDF6DED47ya1WtHbz0G
-         Eb2A==
+        bh=zCKzmHiyn7Tn2Ls1gzEVH6hY8atB+ZaDaqJGOTgNJU0=;
+        b=CkrxjG0gcsjIvZuOzj5HutP7fg6SGqq0jk2vGxVz4N7p1NgYJB2f0wiHDOqkwQD5Nj
+         cCalaazAG/NdciM00Xsg0Bt3m/+eu47yQ6ELjYbxRejUvckirdVO1oNNvY2P9PQBWxHf
+         Cfr2M5QPkaLAFH94PvAhAjTKq3CZPZ8Ff0YvusoyJkNSDgPwy1ShRekRxufSURl2by+r
+         9fPWHZFzWdB4+4Fe1TKAsEF4QUEEChY0SQKDt1dh9jFdWNsS/Y4D7rf0OVLrnRC6aWBF
+         ScLSJj2WgGyZHWBQ55i7E4G2asu1iN05/ZDOOFCunWQEWEfbraq6swEZIy5jyLPVPgOY
+         FayA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=uQqtQBMqQM7P14lLI+h7JoYFleirCJbLs6AuDLrzYL0=;
-        b=dyq8vYHne8+4URAz8r4yioZ6QwiPM7TVFAWHFgUpiSdWWJUg9LABqfxGOfFyzMaPov
-         E5hkWRWu4qt8JIflDITDfW5P2mhnTk2F1IYudrcFs/1QNXmp1DakD2yusX+KYun/MjhJ
-         STl6p+MVhxIMDxI+bbeOf3nvmkfkQD/RBysIN3nwN8vyaSm2YSpmd6YKz60rmKuxW8vJ
-         2Dnr+RdNgiOEvWJcxLt6P2n56cGWIpgy2T5VmcrOPEo9m1n7O/Iyvu9jdnWQTwAQ+1mP
-         yvnXDv9LdbIiWuGAdqr6KlAp9r9CcKkfrpIBlZR1ieXs+KXL6QSAaYfx7mxPM90c/IOv
-         BdLg==
-X-Gm-Message-State: AMCzsaVS0eyUDUW1qfTH+AqTgq/mGdjQbxw0dFCCSX+Zz1fdWzMreJM7
-	bOPeiB+afoiq01iJ6xErxp4=
-X-Google-Smtp-Source: ABhQp+RwHAYq8cSMQfWD3xviQ7W8aHRZJboe9CB23WX27SXHL03/4/0lIBnLdObLTTVrxbvmcdvQ4A==
-X-Received: by 10.84.225.6 with SMTP id t6mr364464plj.106.1508187734904;
-        Mon, 16 Oct 2017 14:02:14 -0700 (PDT)
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from aastha-HP-Pavilion-15-Notebook-PC ([103.196.221.228])
-        by smtp.gmail.com with ESMTPSA id n19sm16882494pfj.52.2017.10.16.14.02.13
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 16 Oct 2017 14:02:13 -0700 (PDT)
-From: Aastha Gupta <aastha.gupta4104@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	Pablo Neira Ayuso <pablo@netfilter.org>,
-	netfilter-devel@vger.kernel.org
-Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH] iptables: add test file for TCPMSS extension
-Date: Tue, 17 Oct 2017 02:32:09 +0530
-Message-Id: <1508187729-3926-1-git-send-email-aastha.gupta4104@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        bh=zCKzmHiyn7Tn2Ls1gzEVH6hY8atB+ZaDaqJGOTgNJU0=;
+        b=Xe0v7sM/REfksTBsH7bm6Ri2y23ktB8tXTF3nBrvXqYluoActwECjkJu90d1DX77ya
+         g8Hl1RhTmVJNKXix+1ZS/1nLJd4pVkFlMrRL/d8FFxqCPHvrtOpCi9V0RDoK+U3h2fZN
+         3iVanDSURze0CS5bXrEmoxyP8if7uXeVXHnKQDE8XJhBNepLH4JiLqv/QKNH1hAI5kvu
+         RJGlyJ/1/uDC7LTuHom54LAFC+e2uJPIu1I9JpYnUrQC/etWNzYdvs8dPw0HCqnMdJZR
+         HtuBYPMWtDpy4DUw4EU4co+jajePYqpnRuI0ktrShcZ/kQOKuYT9ooVQLam8U16FuCtA
+         nsOQ==
+X-Gm-Message-State: AMCzsaUlYAXEMhBRv7canVoFY877B2WxymL2X0k0PdTgd3dWt2WNilnM
+	70s4vrz3l9PpC3j2TFv9iSK8NyMx
+X-Google-Smtp-Source: AOwi7QBdZgKkzYNf1gV0Q0uQqxFFaZYCCxTqralVdSjsnrnh2Kna12ZqyKrUXT81Dt0SLrVPGBnveA==
+X-Received: by 10.84.139.129 with SMTP id 1mr7215796plr.120.1507490761699;
+        Sun, 08 Oct 2017 12:26:01 -0700 (PDT)
+Return-Path: <harshasharmaiitr@gmail.com>
+Received: from localhost.localdomain ([103.37.201.27])
+        by smtp.gmail.com with ESMTPSA id y84sm13908641pff.158.2017.10.08.12.25.55
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 08 Oct 2017 12:26:01 -0700 (PDT)
+From: Harsha Sharma <harshasharmaiitr@gmail.com>
+To: pablo@netfilter.org
+Cc: netfilter-devel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com,
+	Harsha Sharma <harshasharmaiitr@gmail.com>
+Subject: [PATCH v2] src: Use snprintf() over strncpy()
+Date: Mon,  9 Oct 2017 00:53:43 +0530
+Message-Id: <20171008192343.22050-1-harshasharmaiitr@gmail.com>
+X-Mailer: git-send-email 2.11.0
 
-This adds test file for the recently added TCPMSS extension.
+Use snprintf() over strncpy() functions as the buffer is not null
+terminated in strncpy().
 
-Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
+Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
 ---
- extensions/libxt_TCPMSS.txlate | 5 +++++
- 1 file changed, 5 insertions(+)
- create mode 100644 extensions/libxt_TCPMSS.txlate
+Changes in v2:
+ -Change subject
 
-diff --git a/extensions/libxt_TCPMSS.txlate b/extensions/libxt_TCPMSS.txlate
-new file mode 100644
-index 0000000..6a64d2c
---- /dev/null
-+++ b/extensions/libxt_TCPMSS.txlate
-@@ -0,0 +1,5 @@
-+iptables-translate -A FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
-+nft add rule ip filter FORWARD tcp flags & (syn|rst) == syn counter tcp option maxseg size set rt mtu
-+
-+iptables-translate -A FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --set-mss 90
-+nft add rule ip filter FORWARD tcp flags & (syn|rst) == syn counter tcp option maxseg size set 90
+ src/datatype.c | 2 +-
+ src/iface.c    | 4 ++--
+ src/netlink.c  | 4 ++--
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/datatype.c b/src/datatype.c
+index 94b1224..9439ea3 100644
+--- a/src/datatype.c
++++ b/src/datatype.c
+@@ -858,7 +858,7 @@ static uint32_t str2int(char *tmp, const char *c, int k)
+ 	if (k == 0)
+ 		return 0;
+ 
+-	strncpy(tmp, c-k, k+1);
++	snprintf(tmp, k+1, "%s", c-k);
+ 	return atoi(tmp);
+ }
+ 
+diff --git a/src/iface.c b/src/iface.c
+index 9936388..d0e1834 100644
+--- a/src/iface.c
++++ b/src/iface.c
+@@ -53,7 +53,7 @@ static int data_cb(const struct nlmsghdr *nlh, void *data)
+ 	iface = xmalloc(sizeof(struct iface));
+ 	iface->ifindex = ifm->ifi_index;
+ 	mnl_attr_parse(nlh, sizeof(*ifm), data_attr_cb, tb);
+-	strncpy(iface->name, mnl_attr_get_str(tb[IFLA_IFNAME]), IFNAMSIZ);
++	snprintf(iface->name, IFNAMSIZ, "%s", mnl_attr_get_str(tb[IFLA_IFNAME]));
+ 	list_add(&iface->list, &iface_list);
+ 
+ 	return MNL_CB_OK;
+@@ -139,7 +139,7 @@ char *nft_if_indextoname(unsigned int ifindex, char *name)
+ 
+ 	list_for_each_entry(iface, &iface_list, list) {
+ 		if (iface->ifindex == ifindex) {
+-			strncpy(name, iface->name, IFNAMSIZ);
++			snprintf(name, IFNAMSIZ, "%s", iface->name);
+ 			return name;
+ 		}
+ 	}
+diff --git a/src/netlink.c b/src/netlink.c
+index d5d410a..f69a5b9 100644
+--- a/src/netlink.c
++++ b/src/netlink.c
+@@ -386,7 +386,7 @@ static void netlink_gen_verdict(const struct expr *expr,
+ 	switch (expr->verdict) {
+ 	case NFT_JUMP:
+ 	case NFT_GOTO:
+-		strncpy(data->chain, expr->chain, NFT_CHAIN_MAXNAMELEN);
++		snprintf(data->chain, NFT_CHAIN_MAXNAMELEN, "%s", expr->chain);
+ 		data->chain[NFT_CHAIN_MAXNAMELEN-1] = '\0';
+ 		break;
+ 	}
+@@ -2915,7 +2915,7 @@ static int netlink_events_newgen_cb(const struct nlmsghdr *nlh, int type,
+ 		case NFTA_GEN_PROC_NAME:
+ 			if (mnl_attr_validate(attr, MNL_TYPE_NUL_STRING) < 0)
+ 				break;
+-			strncpy(name, mnl_attr_get_str(attr), sizeof(name));
++			snprintf(name, sizeof(name), "%s", mnl_attr_get_str(attr));
+ 			break;
+ 		case NFTA_GEN_PROC_ID:
+ 			if (mnl_attr_validate(attr, MNL_TYPE_U32) < 0)
 -- 
-2.7.4
+2.11.0
 
 
