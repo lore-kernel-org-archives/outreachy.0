@@ -1,190 +1,132 @@
-X-GM-THRID: 6330205612337528832
-X-Received: by 10.129.105.6 with SMTP id e6mr2245385ywc.8.1473865847660;
-        Wed, 14 Sep 2016 08:10:47 -0700 (PDT)
+X-GM-THRID: 6474612206173421568
+X-Gmail-Labels: Topic type: DISCUSSION
+X-Received: by 10.28.158.129 with SMTP id h123mr755510wme.17.1507489036941;
+        Sun, 08 Oct 2017 11:57:16 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.61.202 with SMTP id l68ls1415420otc.1.gmail; Wed, 14 Sep
- 2016 08:10:47 -0700 (PDT)
-X-Received: by 10.13.214.83 with SMTP id y80mr2306532ywd.33.1473865847256;
-        Wed, 14 Sep 2016 08:10:47 -0700 (PDT)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id um12si1248560pab.2.2016.09.14.08.10.47
+Received: by 10.223.157.208 with SMTP id q16ls653395wre.5.gmail; Sun, 08 Oct
+ 2017 11:57:16 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBwG6YNy8eIHkbrJc3xJhQUPp9CtwX4vs94mZO76hpdPRFeNST8GcEvu6UjpoeIr+ua5aWX
+X-Received: by 10.28.21.65 with SMTP id 62mr916064wmv.22.1507489036073;
+        Sun, 08 Oct 2017 11:57:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507489036; cv=none;
+        d=google.com; s=arc-20160816;
+        b=VGVz6X5WBt/UPDsFHnqNL8n94lDxpld1DuWMlxmOgwbKfXS0c1rdzbUUTtypry12Gg
+         qGvv0G1/vtiW8JeeY7faO87YstmiKm68EmA9MFD2mHyi2kUebjLWUQxAUCtUHEmnjksn
+         ay06lSahbkvOqQUg7MaE06dyfZmMr49UFOnT7UCzK0aRx8sMqX8bSppJQUC99+AMmHmo
+         Tzyb6nBJx7biGBcZAGTqTSDqh6UgHTr7uFIYhzKE0xymD0SaJvzq9l6mqanoOXmRRqat
+         CP1MvyujGzgx4cOZh69gOPLw7iojHuQgW9vAh6xt3TeWBz+Vi0XnfjjYxCqKbYq+1i0e
+         ewVA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=pSBSMN5yWv0VdlFWz6V727WHWjkIiBVQ/GyDm+mWYNE=;
+        b=YpS62nSdyO8OJn8ArKoPteFsc/ZOSiFeQLeuC+lG1BYGylk483HNrx0GvIIhk+tGie
+         WUY/glON2bmj9MaQH2nSt9VLnLgok4aeYxQ4VVFUZZRfoxB+6VeH5lr1HFgKnKzz5phm
+         bKoaANdkQgWNTKukx9KeE56lOFut1twZnZGfFgS2yoeEOr+nIN5820mIqbVMChSQ6rp4
+         ArSku58VppgaRxLyLntmibdkrau8P+n2XCmMFaXp7+jXlnNFVd90FszDxliLJ4P7Cp2Q
+         xSJEa1dfNV9Xi9aQ41hSKi0f1SnXISiOYa0ynDFuAPoRmPDNUj95Vl2WTS1+AbPsCNwt
+         AWgA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id h17si745707wmd.0.2017.10.08.11.57.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Sep 2016 08:10:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Sun, 08 Oct 2017 11:57:16 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id g202so920049pfb.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Sep 2016 08:10:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=598cFPZdU4nkYm5Aclc70sYa1DwWV4YIw0MbumV58DE=;
-        b=Y0PV9cu25GcY34nraPfX48wt9Qi5lBIsXzr9amKHAxpvIxw5c4HgNmgxwXxtN41DWb
-         nkQayK4Zq4Wk267d4EZyH7Lf15bbMqIzAC/2hdiPeaKAcnvJSiuZWyd56BujaV3EvySX
-         kTNSEnCSoeJ2Ob7Kua9a659dp3IBB84dwJxZbuqiGaLp+7pN8XItjJkp+q8Qs7JNK3uY
-         qrPBz+JwPLnKUumnf+xoh6cQPHHvm3iJ0f1RBEWvReoiRIUQ1MEJKGtqaVPZRHcbYjs0
-         nKIm3tqlHMZIP/Q+IgcgqQrlKg4Mwa31YrNsftplGF+ZnXK1RI2nvycmmGUQ9QQDz7zm
-         jf/g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=598cFPZdU4nkYm5Aclc70sYa1DwWV4YIw0MbumV58DE=;
-        b=H/04wSqW1NptXQaDkw4Yza/h+2XzVDxj4g9EUsMuVbeXQuUHNBW5D8ewfuuCkCjzKn
-         1vk+Lyle6/Sx39A1tBu/oo/vIG+54UVSzUHbedh6OjtZcQhhGMQfRI7WadZCllZEkZ22
-         c+6511pyqSBYVoJ9t66jp1ayzF/YBPBYJ44G3Rs3A+2OB3MOHqflmWlhTts+QVuFU78y
-         Sf1rdsGCvlmXZb/HqV9pjVrRnc0PaIz/RS4a9e2n4Oe3KotrOrOxApiMmSQ3LUTKeD9G
-         jz62OfeAwqwxCdjIPbjdToYqrBopBiCrqEKXjl5in84Knq+SEiL8HxhKtwEycEhxBi3Z
-         EfUg==
-X-Gm-Message-State: AE9vXwO6JfkOvYzws6ryKfhqwCCds70cp6J7pm2S9FK6Phn6tWRsXyWeT4ArJmW9VizcDg==
-X-Received: by 10.98.133.202 with SMTP id m71mr5336554pfk.155.1473865847033;
-        Wed, 14 Sep 2016 08:10:47 -0700 (PDT)
-Return-Path: <bhumirks@gmail.com>
-Received: from gmail.com ([223.176.141.25])
-        by smtp.gmail.com with ESMTPSA id 70sm38965387pfw.92.2016.09.14.08.10.35
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 14 Sep 2016 08:10:45 -0700 (PDT)
-Received: by gmail.com (sSMTP sendmail emulation); Wed, 14 Sep 2016 20:40:25 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: abbotti@mev.co.uk,
-	hsweeten@visionengravers.com,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: comedi: drivers: Remove unused functions
-Date: Wed, 14 Sep 2016 20:39:53 +0530
-Message-Id: <1473865793-20468-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.42,496,1500933600"; 
+   d="scan'208";a="295059320"
+Received: from abo-88-122-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.122.88])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 08 Oct 2017 20:57:15 +0200
+Date: Sun, 8 Oct 2017 20:57:15 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: mamta shukla <mamtashukla555@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH]:staging:most:aim-cdev:Reducing number
+ of blank lines, to follow the coding style
+In-Reply-To: <f674ab2c-4484-41d9-ba71-6fafddc7792e@googlegroups.com>
+Message-ID: <alpine.DEB.2.20.1710082054500.2160@hadrien>
+References: <f674ab2c-4484-41d9-ba71-6fafddc7792e@googlegroups.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: multipart/mixed; BOUNDARY="8323329-1616909132-1507489035=:2160"
 
-The functions s626_get_latch_source, s626_get_load_trig,
-s626_set_clk_pol and  s626_set_index_src are not used anywhere in
-the kernel. Therefore, remove them. The static unused functions were
-detected using Coccinelle but the changes were done by hand.
-Script used :
+--8323329-1616909132-1507489035=:2160
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-@initialize:python@
-@@
-def display(name,p):
-	print(name,p[0].file)
+The format of the subject line is not correct.  There should not be a : at
+the beginning.  There should be a space after each :.  Run git log
+--oneline on the file you are changing and follow the format of the
+beginning of the subject line exactly.
 
-@r1@
-identifier func;
-type T;
-position p;
-@@
-static T func@p(...)
-{
-...
-}
+On Sun, 8 Oct 2017, mamta shukla wrote:
 
-@r@
-identifier r1.func;
-position p;
-@@
-(
- func(...)
-|
- func
-)
+> Reducing number of blank lines, to follow the linux kernel coding style.
 
-@script:python depends on !r@
-func<<r1.func;
-p<<r1.p;
-@@
-display(func,p)
+linux -> Linux.
 
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
- drivers/staging/comedi/drivers/s626.c | 51 -----------------------------------
- 1 file changed, 51 deletions(-)
+But the description is totally unrelated to what is done by the patch.
+What is done by the patch looks quite incorrect.  You should not be adding
+new files.
 
-diff --git a/drivers/staging/comedi/drivers/s626.c b/drivers/staging/comedi/drivers/s626.c
-index 6d89ca0..670d55c 100644
---- a/drivers/staging/comedi/drivers/s626.c
-+++ b/drivers/staging/comedi/drivers/s626.c
-@@ -1034,14 +1034,6 @@ static uint16_t s626_get_enable(struct comedi_device *dev,
- }
- #endif
- 
--#ifdef unused
--static uint16_t s626_get_latch_source(struct comedi_device *dev,
--				      unsigned int chan)
--{
--	return S626_GET_CRB_LATCHSRC(s626_debi_read(dev, S626_LP_CRB(chan)));
--}
--#endif
--
- /*
-  * Return/set the event that will trigger transfer of the preload
-  * register into the counter.  0=ThisCntr_Index, 1=ThisCntr_Overflow,
-@@ -1066,19 +1058,6 @@ static void s626_set_load_trig(struct comedi_device *dev,
- 	s626_debi_replace(dev, reg, ~mask, set);
- }
- 
--#ifdef unused
--static uint16_t s626_get_load_trig(struct comedi_device *dev,
--				   unsigned int chan)
--{
--	if (chan < 3)
--		return S626_GET_CRA_LOADSRC_A(s626_debi_read(dev,
--							S626_LP_CRA(chan)));
--	else
--		return S626_GET_CRB_LOADSRC_B(s626_debi_read(dev,
--							S626_LP_CRB(chan)));
--}
--#endif
--
- /*
-  * Return/set counter interrupt source and clear any captured
-  * index/overflow events.  int_source: 0=Disabled, 1=OverflowOnly,
-@@ -1168,21 +1147,6 @@ static void s626_set_clk_mult(struct comedi_device *dev,
- }
- 
- /*
-- * Return/set the clock polarity.
-- */
--static void s626_set_clk_pol(struct comedi_device *dev,
--			     unsigned int chan, uint16_t value)
--{
--	uint16_t mode;
--
--	mode = s626_get_mode(dev, chan);
--	mode &= ~S626_STDMSK_CLKPOL;
--	mode |= S626_SET_STD_CLKPOL(value);
--
--	s626_set_mode(dev, chan, mode, false);
--}
--
--/*
-  * Return/set the encoder mode.
-  */
- static void s626_set_enc_mode(struct comedi_device *dev,
-@@ -1203,21 +1167,6 @@ static uint16_t s626_get_index_pol(struct comedi_device *dev,
- 	return S626_GET_STD_INDXPOL(s626_get_mode(dev, chan));
- }
- 
--/*
-- * Return/set the index source.
-- */
--static void s626_set_index_src(struct comedi_device *dev,
--			       unsigned int chan, uint16_t value)
--{
--	uint16_t mode;
--
--	mode = s626_get_mode(dev, chan);
--	mode &= ~S626_STDMSK_INDXSRC;
--	mode |= S626_SET_STD_INDXSRC(value != 0);
--
--	s626_set_mode(dev, chan, mode, false);
--}
--
- static uint16_t s626_get_index_src(struct comedi_device *dev,
- 				   unsigned int chan)
- {
--- 
-1.9.1
+julia
 
+> Signed-off-by: mamta <mamtashukla555@gmail.com>
+> ---
+>  drivers/staging/most/aim-cdev/aim_cdev.mod.c | 26
+> ++++++++++++++++++++++++++
+>  1 file changed, 26 insertions(+)
+>  create mode 100644 drivers/staging/most/aim-cdev/aim_cdev.mod.c
+>
+> diff --git a/drivers/staging/most/aim-cdev/aim_cdev.mod.c
+> b/drivers/staging/most/aim-cdev/aim_cdev.mod.c
+> new file mode 100644
+> index 0000000..0048f6c
+> --- /dev/null
+> +++ b/drivers/staging/most/aim-cdev/aim_cdev.mod.c
+> @@ -0,0 +1,26 @@
+> +#include <linux/module.h>
+> +#include <linux/vermagic.h>
+> +#include <linux/compiler.h>
+> +
+> +MODULE_INFO(vermagic, VERMAGIC_STRING);
+> +MODULE_INFO(name, KBUILD_MODNAME);
+> +
+> +__visible struct module __this_module
+> +__attribute__((section(".gnu.linkonce.this_module"))) = {
+> +       .name = KBUILD_MODNAME,
+> +       .init = init_module,
+> +#ifdef CONFIG_MODULE_UNLOAD
+> +       .exit = cleanup_module,
+> +#endif
+> +       .arch = MODULE_ARCH_INIT,
+> +};
+> +
+> +MODULE_INFO(intree, "Y");
+> +
+> +MODULE_INFO(staging, "Y");
+> +
+> +static const char __module_depends[]
+> +__used
+> +__attribute__((section(".modinfo"))) =
+> +"depends=mostcore";
+> +MODULE_INFO(srcversion, "9D77257EA6146867C072D85");[cleardot.gif]
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/f674ab2c-4484-41d9-ba71-
+> 6fafddc7792e%40googlegroups.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-1616909132-1507489035=:2160--
 
