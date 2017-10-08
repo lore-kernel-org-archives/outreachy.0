@@ -1,105 +1,139 @@
-X-GM-THRID: 6663088716189270016
-X-Received: by 2002:a17:902:262:: with SMTP id 89mr91841plc.68.1551371234920;
-        Thu, 28 Feb 2019 08:27:14 -0800 (PST)
+X-GM-THRID: 6474399283336445952
+X-Received: by 10.99.125.28 with SMTP id y28mr596112pgc.161.1507438580128;
+        Sat, 07 Oct 2017 21:56:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:246:: with SMTP id 67ls2146775pgc.11.gmail; Thu, 28 Feb
- 2019 08:27:14 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IaEM2wGaxDuFUmC/bWfgLC7JXm8pe403ILUGZ9lVZ7IFuY65KqOcr4q0h2M+i8hAEBEzBOd
-X-Received: by 2002:a63:d84a:: with SMTP id k10mr3577162pgj.123.1551371234056;
-        Thu, 28 Feb 2019 08:27:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551371234; cv=none;
+Received: by 10.99.4.206 with SMTP id 197ls525672pge.15.gmail; Sat, 07 Oct
+ 2017 21:56:19 -0700 (PDT)
+X-Received: by 10.84.233.2 with SMTP id j2mr330141plk.14.1507438579495;
+        Sat, 07 Oct 2017 21:56:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507438579; cv=none;
         d=google.com; s=arc-20160816;
-        b=IDN054riuzFG6DMZlsK3KPYUvqk8ChtjxpofyJXVmvllU/66nTeiNcIBXPE79kXuVs
-         VBunWvdBy78ihXSO/DHEXhjvIVjz3C3zU2mhCgfb42MEMBeFzsCQbnK8VT3RmRQoYlQb
-         RV1GlUYstN5Us2bTIdLgu6imcZ0dPTRHGvaJBaP03ZTyoPtkFKZT0Dj/OC+ODnF7S7KG
-         E8cRX2VPy/Qlezc5gDaiRxfU1tl5KibPxERL6FZaMhwxM5FH0ftE+lqhYRyMWWl7AFtu
-         zrTKkviVGnWAOADvCO+JwpaxPK/K2G5PiUqlN4HQARa7nDPgBXGGhkGnPoeYhnMMyBBm
-         rvsQ==
+        b=oH5SJ/M5rwiuBwCbkw3dcOh9O1hMMTLmeTfg9YGXtlKtTkJOq1caRQlS+RUT+/R69S
+         0IXsjFveLoR1503z6WQsuV6qHyvm9zfRO6GIwVYqUvma5y4XJagCiHupElLQVIT1yiQg
+         fII5EdqcPM9O90azGEjBh1a1BUtPndLOdrCKakLDa9foll0JnAquLDIDOO/AJgC7i3qo
+         SOnrq3XxJQcLR4Xt+ZlOSGGHziREEFejfBbQFe4GM+2iavw7mMHc265OLSd4nJv4P6Dx
+         itJvaQssMSlvW6TFJkiGduT/e3TTwCuFvYj+5USTRdYHnsIOHVLUdXst+b4Wvs8KKH2+
+         l3ow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Gh/5pUB5dwYtCnd24itlEwPGlN5jC1pz15NAw+tkbd8=;
-        b=sekPa7RdIHhkPtHDv1TcavTPV6jgRJ00Wb7OYMxc/gWlUkA+rJYnVnNjmandlEEl6/
-         7XK73ygkqDdQ4OzY0xzyep+jYkC5SdJukUa0cGePguBfh8F91XMDsFy/aRywI7l4PPkM
-         81a13oQ17jhDFZaRZU1e3HuzuK6LVtKy2S/85cql45Xc3k39F+XhnMPWq55d2b0ol0u/
-         /kb1MekAxrRYCE4/k+7cnIHTAMYqgTXDauYK5gb3HjAT33NYYJpfw8oHIzNuzT6EfWbi
-         ODK+E8ebZLzddYM3xeTUVFTcczyWHO/7fdPyWIyAhtzee/9vs67+hlaOJet1rmdS5GDu
-         spvg==
+        h=references:in-reply-to:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature:arc-authentication-results;
+        bh=eV+M7J0ZcO/rhcoIMg8dUfNK64OqEX8I5sw1F1zzwfs=;
+        b=c1q2ni74MWjJfM8nBR4Iai/oOfB8VrW+y5pmqW0Idon+eC8dhhjVgR+DokDovgp7hH
+         awoPx9kV40lUZxc7HNKNxnhavLv5HYNUVS05dkJd4QuzeLa4qTblOPgIz+6NcAjyuwUw
+         74OLfcA35sksM3QhuZHv1VRyEV7qLWyUhvqtvqcDWnIawuAMXqjnLbZkOAa626ZGmEnY
+         n6D0/18bGiv6lAyHxguAJi/IntbF3NR6JkCuZxeGZ7ruGmT3Ue5zKdlyMjug09OKpo8/
+         jCLtNJCL4++c7qBEyC/nFD6NwE478+3wrFAEscMeosiYgyUvgIxHouLpyhb8wuVNGbaK
+         X3JQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VBH8gGDT;
-       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::434 as permitted sender) smtp.mailfrom=etsai042@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <etsai042@gmail.com>
-Received: from mail-pf1-x434.google.com (mail-pf1-x434.google.com. [2607:f8b0:4864:20::434])
-        by gmr-mx.google.com with ESMTPS id e71si338124pfc.1.2019.02.28.08.27.14
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fKV4kYO+;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id w124si517094pfd.18.2017.10.07.21.56.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 28 Feb 2019 08:27:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::434 as permitted sender) client-ip=2607:f8b0:4864:20::434;
+        Sat, 07 Oct 2017 21:56:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VBH8gGDT;
-       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::434 as permitted sender) smtp.mailfrom=etsai042@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x434.google.com with SMTP id d25so9954023pfn.8
-        for <outreachy-kernel@googlegroups.com>; Thu, 28 Feb 2019 08:27:14 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fKV4kYO+;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x244.google.com with SMTP id z80so2168560pff.4
+        for <outreachy-kernel@googlegroups.com>; Sat, 07 Oct 2017 21:56:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Gh/5pUB5dwYtCnd24itlEwPGlN5jC1pz15NAw+tkbd8=;
-        b=VBH8gGDTuqADVO30Ies+MdoD8YmQ7DJHzW5GccJBjaW95YDw9Do0r21NC+k6RCWkjU
-         L7L+4uOxbxNIkGgUMQp9AAv8IwHFbN3if2QVPA+NjfpfwXRVuC+nI7rXo3N8HdjXwy+B
-         FCCdXaZV7n0yRczqLZaGXTY22oEexp4Y8tUfeABuJASRr63ZetLThfTeYlwiCiV54Z2u
-         EPdvpM8ftGSU/unYn9LzPN0SY3h8603rhjRVoyoui8WOPC4v+dMMustmVkTQYClO2v1C
-         KYLtkxQq6av9FBs8IbyfjFhhtudJGWVTjDcVQYHidmTCfUpiWO/vcXdNV6KxBO46bitB
-         4TwA==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=eV+M7J0ZcO/rhcoIMg8dUfNK64OqEX8I5sw1F1zzwfs=;
+        b=fKV4kYO+fq+eM/PO9B8dJ0ivcLEbwLSGg8MoHf0OOCpPA8E2hSgR1eoyMNDVc+FJa0
+         J3V/ghdaYKWe2pr8+JSM4Js3D7aBSW1EDqEwXEFo+/eBJfTFEOBrgqEgrJRDy1MYe7i6
+         EO/vGTpOGNzB4/h/uoJPeuJUSeHydbhtyV1eIPpcek1cdXlCBRr5uunDtaUBnmCUR29S
+         RZcovx5qbq981+pE0XUH1BXwHc8Ky92D8v58oeIug2PswZdH1Yu7EIIuCDXL5xq5QKNq
+         BCBSuAwJp4N50oHcSkUITJtLSY0V7QeBnqbQNpmz2vksYfLFcvyBimVyRizuk0p6CeU7
+         dujA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Gh/5pUB5dwYtCnd24itlEwPGlN5jC1pz15NAw+tkbd8=;
-        b=HWbV4KK2NcOiFnlUujINU2X1fTAWlId1pjJ303idSlsdA3i/X7mL68yQutytVxDzmL
-         rOUiXkBg4OkrFbfmwQPFBWooO1bI+nzBL5B4R+qQsJT7jS9F3qdEmuYKTBqZ3UQEhUVh
-         3Q0uYCWrQJZjwwUd2KDbLEYgAMatvZmmIriZrI15MuX9yZLqMaDE0zbaMsFrKPcDXZA+
-         IwcHyzOcJIszO45sQYGz9pb5VWtru7HTM4B83qDFMnAzNtXmaDT4ezPL30TGOCl9xI4x
-         9vvXqyaaClgczyC7HK5b4dP5sjuXfZ8u5SwAd7fF/4mG6eGw2Rc8KDBH/O+hWrZeQPmr
-         V2QA==
-X-Gm-Message-State: APjAAAUbM1HGj/dPOCGRaOkzVowwdZqeDLGLcwF7oq1ps6u9QO2GT0/e
-	q2vcSNmJFTcFETpo42NUKLFNVrfR3JGpRQ==
-X-Received: by 2002:a63:8942:: with SMTP id v63mr175pgd.406.1551371233635;
-        Thu, 28 Feb 2019 08:27:13 -0800 (PST)
-Return-Path: <etsai042@gmail.com>
-Received: from localhost.localdomain ([223.104.36.240])
-        by smtp.googlemail.com with ESMTPSA id 71sm1758196pgc.23.2019.02.28.08.27.10
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 28 Feb 2019 08:27:13 -0800 (PST)
-From: Elisa Tsai <etsai042@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: E-Tsai <etsai042@gmail.com>
-Subject: [PATCH] Staging: fpgaboot: Delete newline at end of file
-Date: Fri,  1 Mar 2019 00:27:03 +0800
-Message-Id: <20190228162703.14828-1-etsai042@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=eV+M7J0ZcO/rhcoIMg8dUfNK64OqEX8I5sw1F1zzwfs=;
+        b=OZNhR0UYiHg7sowEeGTr2FDeJQXe/NWQQ8SK1XvmeY1wA+bLCMGo5q0DKWsnAfJeO1
+         CGy01B+8eMlFitJnr1bfMEr6SJOJgyyr3C9baLKj7TS9Z8VF1RLY/B5d5fZrYFu2gm7k
+         Zxs99XLIahVQhsdohmz3O4u7qKFFPabYhaBFDS7KQXGx5FuZi2KlQQWxCVAbjSZTTEro
+         inXRItB/RJrMhzgIZuTsGwdhZMJehJLbrsIqsQq/gehnQjhyyk74nMc76ZgcheXzYinx
+         nUucUxtkOToVEnUrvty5q1cCtaIgNGZyHcFrlDqK+TA2pmlJ8ZrrILzbt0N6fte6v7A2
+         Stbg==
+X-Gm-Message-State: AMCzsaVExsGqZSiYCLqEZNRhlcwLRMYFj8l5lwTx47vX1PX3buBXJsHA
+	9yHmsKlJ5L8iMrm69YS9YjM=
+X-Google-Smtp-Source: AOwi7QCAA8MXRitDUe4c2x0j0zRTu/lErzTs/Yjj9fnQq7ngZbR+23ELLNsri+5i+1ooBWYTVfP6Kg==
+X-Received: by 10.98.17.202 with SMTP id 71mr6597313pfr.142.1507438579196;
+        Sat, 07 Oct 2017 21:56:19 -0700 (PDT)
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from aastha-HP-Pavilion-15-Notebook-PC ([45.127.232.78])
+        by smtp.gmail.com with ESMTPSA id d7sm8492589pgf.20.2017.10.07.21.56.18
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 07 Oct 2017 21:56:18 -0700 (PDT)
+From: Aastha Gupta <aastha.gupta4104@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	gregkh@linuxfoundation.org
+Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
+Subject: [PATCH v3 6/6] staging: rtl8723bs: remove useless variable rtw_AcceptAddbaReq
+Date: Sun,  8 Oct 2017 10:24:56 +0530
+Message-Id: <400354c142eb8a27a4f50eb2decd3fd63ec34bc0.1507437264.git.aastha.gupta4104@gmail.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <cover.1507437263.git.aastha.gupta4104@gmail.com>
+References: <cover.1507437263.git.aastha.gupta4104@gmail.com>
+In-Reply-To: <cover.1507437263.git.aastha.gupta4104@gmail.com>
+References: <cover.1507437263.git.aastha.gupta4104@gmail.com>
 
-From: E-Tsai <etsai042@gmail.com>
+rtw_AcceptAddbaReq is a static variable, it is set once and never
+modified. It is referenced only once, to assign its value to a member
+of struct registry_priv.
 
-This patch fixes the checkpatch.pl warning:
-WARNING: please write a paragraph that describes the config symbol fully
+Remove the variable, and move the meaningful part of the comment
+near the declaration of the relevant field of struct registry_priv.
 
-Signed-off-by: E-Tsai <etsai042@gmail.com>
+Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
 ---
- drivers/staging/gs_fpgaboot/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rtl8723bs/include/drv_types.h | 1 +
+ drivers/staging/rtl8723bs/os_dep/os_intfs.c   | 4 +---
+ 2 files changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/gs_fpgaboot/Kconfig b/drivers/staging/gs_fpgaboot/Kconfig
-index 550645291fab..f1179eef2d78 100644
---- a/drivers/staging/gs_fpgaboot/Kconfig
-+++ b/drivers/staging/gs_fpgaboot/Kconfig
-@@ -5,4 +5,4 @@ config GS_FPGABOOT
- 	tristate "Xilinx FPGA firmware download module"
- 	default n
- 	help
--	  Xilinx FPGA firmware download module
-+	  Xilinx FPGA firmware download module
-\ No newline at end of file
+diff --git a/drivers/staging/rtl8723bs/include/drv_types.h b/drivers/staging/rtl8723bs/include/drv_types.h
+index 6812dd0..32129ac 100644
+--- a/drivers/staging/rtl8723bs/include/drv_types.h
++++ b/drivers/staging/rtl8723bs/include/drv_types.h
+@@ -177,6 +177,7 @@ struct registry_priv
+ 	u8 bt_ampdu;
+ 	s8	ant_num;
+ 
++	/* false:Reject AP's Add BA req, true:accept AP's Add BA req */
+ 	bool	accept_addba_req;
+ 
+ 	u8 antdiv_cfg;
+diff --git a/drivers/staging/rtl8723bs/os_dep/os_intfs.c b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
+index b4b79fe..c002c10 100644
+--- a/drivers/staging/rtl8723bs/os_dep/os_intfs.c
++++ b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
+@@ -113,8 +113,6 @@ static int rtw_ant_num = -1; /*  <0: undefined, >0: Antenna number */
+ module_param(rtw_ant_num, int, 0644);
+ MODULE_PARM_DESC(rtw_ant_num, "Antenna number setting");
+ 
+-static int rtw_AcceptAddbaReq = true;/*  0:Reject AP's Add BA req, 1:Accept AP's Add BA req. */
+-
+ static int rtw_antdiv_cfg = 1; /*  0:OFF , 1:ON, 2:decide by Efuse config */
+ static int rtw_antdiv_type; /* 0:decide by efuse  1: for 88EE, 1Tx and 1RxCG are diversity.(2 Ant with SPDT), 2:  for 88EE, 1Tx and 2Rx are diversity.(2 Ant, Tx and RxCG are both on aux port, RxCS is on main port), 3: for 88EE, 1Tx and 1RxCG are fixed.(1Ant, Tx and RxCG are both on aux port) */
+ 
+@@ -311,7 +309,7 @@ static uint loadparam(struct adapter *padapter, _nic_hdl pnetdev)
+ 	registry_par->bt_ampdu = (u8)rtw_bt_ampdu;
+ 	registry_par->ant_num = (s8)rtw_ant_num;
+ 
+-	registry_par->accept_addba_req = (u8)rtw_AcceptAddbaReq;
++	registry_par->accept_addba_req = true;
+ 
+ 	registry_par->antdiv_cfg = (u8)rtw_antdiv_cfg;
+ 	registry_par->antdiv_type = (u8)rtw_antdiv_type;
 -- 
-2.17.1
+2.7.4
 
 
