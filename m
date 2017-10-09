@@ -1,144 +1,211 @@
 X-GM-THRID: 6470825285154504704
-X-Received: by 10.13.217.204 with SMTP id b195mr757534ywe.7.1507577489813;
-        Mon, 09 Oct 2017 12:31:29 -0700 (PDT)
+X-Received: by 10.101.67.130 with SMTP id m2mr724171pgp.178.1507550947938;
+        Mon, 09 Oct 2017 05:09:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.13.217.195 with SMTP id b186ls421310ywe.9.gmail; Mon, 09 Oct
- 2017 12:31:29 -0700 (PDT)
-X-Received: by 10.129.210.9 with SMTP id x9mr738603ywi.38.1507577489082;
-        Mon, 09 Oct 2017 12:31:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507577489; cv=none;
+Received: by 10.84.248.133 with SMTP id q5ls941403pll.7.gmail; Mon, 09 Oct
+ 2017 05:09:06 -0700 (PDT)
+X-Received: by 10.98.181.10 with SMTP id y10mr619273pfe.51.1507550946973;
+        Mon, 09 Oct 2017 05:09:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507550946; cv=none;
         d=google.com; s=arc-20160816;
-        b=fpVuOWzOYWAV1njEBG/loqvtFxeaUD3Uc+8qHal8a3WMt9sgOQ9c1HswBoUwxCkvVH
-         2XDg7nZqzy9JDHHY1fbECanXUtXoQRVzPGGK6y083Kxu68txk8ZOxzMEI55BpO8p0r+E
-         ao3UeVodI0TPXHi1RggHjPHrK4G7slkhnKkuHGRgwigERzL0DkUki1JCKknCtiYJ3WLu
-         JAR0nvra0attK0eqk6VAK9Cvgdm59M9e4w+gm5tFaNddWQR+w4kZeO0eVs8QK96FboQN
-         EoK3dk//Ha5U3HaFrVb8IjJVdalC4sPaPGamWhShcsLmrwAoD1nvPC8+ZaElYWcTKM3/
-         Qo6g==
+        b=i3AXht8p9Uh4ENhIzHjyg3GFIXHJEUPhD661alDXaRZYwckhAY9ztmB7H4Ab7cD08z
+         CtEUxBa/oy/xiJCBSbPPgCTo53tt85CN6G3wMu6jNknOSa+vpbNp8Jp3GrB41hXqS4t/
+         g88SAjzM4xaDXyDZ3Ks+PMVeepfWy02rAVeO2lFizlkvrVC0bOB09p1ancItQLwvd7Pe
+         YGokCmZrdhNyIkbJdqj2akf7VspumS4pOTV2Ific5d4OD4UvpphXafDVwuGN6gS9k4ye
+         XVCDw8R470f/VmfjZ5C4ijS525Jm1jJY6qCnP5wQAeCqyiZ8WngfYoPbm2Z1zmOEq6RC
+         OhEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=vXjKRV7kklCOP7tqXXb/xvl1RmgoJWKYaGRnulRCbh8=;
-        b=aExPB5ED/L13R8MtSUFayvSmuX7dPNQDoLxaJR+bq0rlAyA10vZY4pldDiGzKRH2nO
-         eGLeuwB7dxnbJhxoFET2o4HfppEooRVMNOMd1gES8Ac/8vXe/3TXweIzFDB/YkadIpu0
-         1LpxcAddVMFBXfl0p9klkv7kVeB6YX+TMtKhZNtv3aVKlqpVkfWmCoyXVl2ytDYVKCFs
-         5hknUvN8CxijaS/uKgAeLEt1E128dQDutmopkp5coz0bH83BWn8tSJmnCD9MXse6Xa8Z
-         qJ84kCpjcVqM+7jmD9NmHefnqajusXYMy5/+uQfVzoSgSpLvmxcKy/l3BOadAdZ+opKk
-         5F1g==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=KXSPjlrziZmFVrvsjSGtPQdnMBukwPLvP4jdApfyBCE=;
+        b=VbvNUuVUVTQmQPyGIN+sAICB9Bb1cTApRl9fiI9Uzw1SXOISKljTa5eY4GVfCaISnP
+         qTG5RLrS5iv/FCQBGs2ccM46X1zKjaA6gowS5a7F55FWA+adSb207wpmOnLhDNNG/h7s
+         ZAe/uTB3dgw1L2YQCJnQtrJQtiqkgZXUo7lhgjoTR7qVtZ+IDj4l8xBA7rVpCuqNtoG2
+         N2qaxWHRzbPJoqPxBxz3CP89J4NcgzULSEK4P0Eh2pOZO88xNP91JhEbIib5Nwe3s69x
+         krQcWfqHsZCIeaSooLOqERsXhFd7Qs+KEtGTvzm5INYrXYEALGbjvEvxoWIDOJN5oKKg
+         L/nA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@chromium.org header.s=google header.b=UkvKg1v7;
-       spf=pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:400d:c0d::230 as permitted sender) smtp.mailfrom=seanpaul@chromium.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org
-Return-Path: <seanpaul@chromium.org>
-Received: from mail-qt0-x230.google.com (mail-qt0-x230.google.com. [2607:f8b0:400d:c0d::230])
-        by gmr-mx.google.com with ESMTPS id w81si474418ywb.30.2017.10.09.12.31.29
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Tytcv3XQ;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <harshasharmaiitr@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id y6si893655pfd.28.2017.10.09.05.09.06
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 Oct 2017 12:31:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:400d:c0d::230 as permitted sender) client-ip=2607:f8b0:400d:c0d::230;
+        Mon, 09 Oct 2017 05:09:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@chromium.org header.s=google header.b=UkvKg1v7;
-       spf=pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:400d:c0d::230 as permitted sender) smtp.mailfrom=seanpaul@chromium.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org
-Received: by mail-qt0-x230.google.com with SMTP id i13so45195970qtc.11
-        for <outreachy-kernel@googlegroups.com>; Mon, 09 Oct 2017 12:31:29 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Tytcv3XQ;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x242.google.com with SMTP id b85so6921242pfj.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 09 Oct 2017 05:09:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=vXjKRV7kklCOP7tqXXb/xvl1RmgoJWKYaGRnulRCbh8=;
-        b=UkvKg1v7MWk7rOx45UAx2qkIJgNcW3X5ZBCTIFcVjw2D7KL4adJFKuU0sX0bhSAoIG
-         rQkp4zPdA7MGSkYoKCt3lhVEP23CAqJeaVaXW7ZDH9iSgkGV4vQZXO//8d94QgTLcjIi
-         h+z2QBqeT7h13VusnkGC4Q6+HnhCTVL99eL2s=
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=KXSPjlrziZmFVrvsjSGtPQdnMBukwPLvP4jdApfyBCE=;
+        b=Tytcv3XQCxXbJ0IwSvukp85SnVpsx2ZXHzifHSHoi5EcBQZMmokHAqENoeZ2HPBFGt
+         ym0ZanjtB4D0cFui8LQqz/9Mk9C7jby3gDm4tziJQddueRdHg3KjP+l4mYTbOngUgU1b
+         1rOU80tQkzZa52vCZtP1h6WzBbMJ54fpQU41Rh/T27Rw5dEZNhult1teA7zZVz1HO2Z/
+         aiHYiQBegAym63x0Q7c/EMwB0NRJ6VUzbNqw2qzXxgV0OwE3UcGC7DHc69Zmc+8V1nkf
+         FMx0ImFlRwrj/0whtn2rNp03bRpq3g2Ot/TJohq7MCfXjvIflUicP5r2pRVQjX/vb3hG
+         7D2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=vXjKRV7kklCOP7tqXXb/xvl1RmgoJWKYaGRnulRCbh8=;
-        b=ogfOGdhDQ64Rz3UIJNLmtBClfKNv0pu9Trc2pLBCqKGMlEHh0T0Lbtr1qQVCNbgBS7
-         dL/v0+l1rqedwnnSVzOrP65gb5aq4xfqm9CQK+KjlmRHax3ffXibeItFXWw8mZuNjs2g
-         N1MJMxipKiToIzemj45FuvtXd0Xg4hyQl3PjQPEfOrbSEQMrTIw1wzMZHIBVtoRLqKGC
-         l11d/EEmIV5cZBVF/BG1LNCtQqFfXc12rlowdACXQezo/lQ1jEoaB2rsL0SxTR76uRAe
-         i4dLU9bn06VAUCjIx3torH8AUEsxr+gcDObTQm4lyBL/7bLLcwjmrpGCPMp9LGEFKRJu
-         p8Fg==
-X-Gm-Message-State: AMCzsaX0rYopnGrfMZw4G7TLcgd5eVa+tCJICkEgzYBkxaFpBk0U3UiZ
-	2fxHWu+rtMGaxvuWzOffHmzGcm8NC4U=
-X-Received: by 10.37.179.195 with SMTP id x3mr480690ybf.113.1507577488521;
-        Mon, 09 Oct 2017 12:31:28 -0700 (PDT)
-Return-Path: <seanpaul@chromium.org>
-Received: from mail-io0-f173.google.com (mail-io0-f173.google.com. [209.85.223.173])
-        by smtp.gmail.com with ESMTPSA id i184sm3440525ywc.77.2017.10.09.12.31.27
-        for <outreachy-kernel@googlegroups.com>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=KXSPjlrziZmFVrvsjSGtPQdnMBukwPLvP4jdApfyBCE=;
+        b=F+326fs9ONYk6LAfb2zCh3YKBC8ovgexxpqXiTu95F1/T8DOW+5vLdQ8KZtCgZKffS
+         6wQX2zIUkNJCz4avwBOsPUh7IFqV4c57KjII+5c3vwdXV6f0Ua0QYN93WQFM+n+FWHPk
+         oPSwPRBFGs0t1v8WpChamcYqGyLhKKSMpJQR2A3vXg1QtS1Hgz5p5npBXFmznb/aB9kJ
+         axx6m9GoQl0B3ndhQDjsfbGEZCUn8ppG/8FwKkc+goVCQw3MBk0o3m7hMHiWlPCD/fOk
+         9OK8bKs04KXQ5cOwHSKsObXcnEJ8IFWcF5T/MsNalwVt1BIxK2eG4LvNxII0pa0E4fe9
+         lDWw==
+X-Gm-Message-State: AMCzsaUQ6T8v1p3sIp+/KfeurAH9vl0+C8X5pvKVyn2com23kcoCT3CJ
+	V7SKHbSNUUHBtq6SYgFDGtVwV2TZ
+X-Google-Smtp-Source: AOwi7QAUyGf0MZ5t8DvThlb9UTxHup7q5hNZMtx/YKi/0J6VrTnf21f7WndHwbLhxxG77pYOjyW0iA==
+X-Received: by 10.99.149.15 with SMTP id p15mr9122215pgd.406.1507550946681;
+        Mon, 09 Oct 2017 05:09:06 -0700 (PDT)
+Return-Path: <harshasharmaiitr@gmail.com>
+Received: from localhost.localdomain ([103.37.201.27])
+        by smtp.gmail.com with ESMTPSA id e7sm15429278pfi.188.2017.10.09.05.08.57
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 Oct 2017 12:31:27 -0700 (PDT)
-Received: by mail-io0-f173.google.com with SMTP id f202so6941933ioe.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 09 Oct 2017 12:31:27 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QAt5OZ2cO6R12t1Gfj6+butum23Qp1CGSsnznspYH/C92wPuG5dzVdIadZ/xtIUxPeq32JSVdmLZwwpcljXMr4=
-X-Received: by 10.107.200.136 with SMTP id y130mr14435420iof.74.1507577487103;
- Mon, 09 Oct 2017 12:31:27 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.107.174.66 with HTTP; Mon, 9 Oct 2017 12:31:06 -0700 (PDT)
-In-Reply-To: <20171009085957.nwfree4igdhiqtuf@phenom.ffwll.local>
-References: <20171008140407.13927-1-harshasharmaiitr@gmail.com>
- <150747381515.24532.16488907175098177864@mail.alporthouse.com> <20171009085957.nwfree4igdhiqtuf@phenom.ffwll.local>
-From: Sean Paul <seanpaul@chromium.org>
-Date: Mon, 9 Oct 2017 15:31:06 -0400
-X-Gmail-Original-Message-ID: <CAOw6vb+e4dkLPL11gdyN2RhV0w5OemkcKoGD7mMAVKA9RQBwoA@mail.gmail.com>
-Message-ID: <CAOw6vb+e4dkLPL11gdyN2RhV0w5OemkcKoGD7mMAVKA9RQBwoA@mail.gmail.com>
-Subject: Re: [Intel-gfx] [PATCH v3] drm/i915: Replace *_reference/unreference()
- or *_ref/unref with _get/put()
-To: Chris Wilson <chris@chris-wilson.co.uk>, Harsha Sharma <harshasharmaiitr@gmail.com>, 
-	Sean Paul <seanpaul@chromium.org>, Jani Nikula <jani.nikula@linux.intel.com>, 
-	outreachy-kernel <outreachy-kernel@googlegroups.com>, 
-	Intel Graphics Development <intel-gfx@lists.freedesktop.org>, 
-	dri-devel <dri-devel@lists.freedesktop.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
-Cc: Daniel Vetter <daniel.vetter@ffwll.ch>
-Content-Type: text/plain; charset="UTF-8"
+        Mon, 09 Oct 2017 05:09:06 -0700 (PDT)
+From: Harsha Sharma <harshasharmaiitr@gmail.com>
+To: daniel.vetter@ffwll.ch,
+	seanpaul@chromium.org,
+	jani.nikula@linux.intel.com
+Cc: intel-gfx@lists.freedesktop.org,
+	dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com,
+	Harsha Sharma <harshasharmaiitr@gmail.com>
+Subject: [PATCH v4] drm/i915: Replace *_reference/unreference() or *_ref/unref with _get/put()
+Date: Mon,  9 Oct 2017 17:36:43 +0530
+Message-Id: <20171009120643.11953-1-harshasharmaiitr@gmail.com>
+X-Mailer: git-send-email 2.11.0
 
-On Mon, Oct 9, 2017 at 4:59 AM, Daniel Vetter <daniel@ffwll.ch> wrote:
-> On Sun, Oct 08, 2017 at 03:43:35PM +0100, Chris Wilson wrote:
->> Quoting Harsha Sharma (2017-10-08 15:04:07)
->> > @@ -624,7 +624,7 @@ static bool intel_fbdev_init_bios(struct drm_device *dev,
->> >         ifbdev->preferred_bpp = fb->base.format->cpp[0] * 8;
->> >         ifbdev->fb = fb;
->> >
->> > -       drm_framebuffer_reference(&ifbdev->fb->base);
->> > +       drm_framebuffer_put(&ifbdev->fb->base);
->>
->> Whoops.
->
-> Hm yeah, how did this happen? Does cocci really do this, or is that an
-> accident from manually fixing stuff up?
+Replace instances of drm_framebuffer_reference/unreference() with
+*_get/put() suffixes and drm_dev_unref with *_put() suffix
+because get/put is shorter and consistent with the
+kernel use of *_get/put suffixes.
+Done with following coccinelle semantic patch
 
+@@
+expression ex;
+@@
 
-Running the spatch from the commit message gives me the correct substitution:
-@@ -627,7 +627,7 @@ static bool intel_fbdev_init_bios(struct drm_device *dev,
-        ifbdev->preferred_bpp = fb->base.format->cpp[0] * 8;
-        ifbdev->fb = fb;
+(
+-drm_framebuffer_unreference(ex);
++drm_framebuffer_put(ex);
+|
+-drm_dev_unref(ex);
++drm_dev_put(ex);
+|
+-drm_framebuffer_reference(ex);
++drm_framebuffer_get(ex);
+)
 
--       drm_framebuffer_reference(&ifbdev->fb->base);
-+       drm_framebuffer_get(&ifbdev->fb->base);
+Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
+---
+Changes in v4:
+ -change one instance of *_put to *_get
+Changes in v3:
+ -Removed changes in selftests
+Changes in v2:
+ -Added cocinelle patch in log message
+ -cc to all driver-specific mailing lists
 
-        /* Final pass to check if any active pipes don't have fbs */
-        for_each_crtc(dev, crtc) {
+ drivers/gpu/drm/i915/i915_pci.c      |  2 +-
+ drivers/gpu/drm/i915/intel_display.c | 10 +++++-----
+ drivers/gpu/drm/i915/intel_fbdev.c   |  4 ++--
+ 3 files changed, 8 insertions(+), 8 deletions(-)
 
+diff --git a/drivers/gpu/drm/i915/i915_pci.c b/drivers/gpu/drm/i915/i915_pci.c
+index 09d97e0990b7..2f106cca46b4 100644
+--- a/drivers/gpu/drm/i915/i915_pci.c
++++ b/drivers/gpu/drm/i915/i915_pci.c
+@@ -510,7 +510,7 @@ static void i915_pci_remove(struct pci_dev *pdev)
+ 	struct drm_device *dev = pci_get_drvdata(pdev);
+ 
+ 	i915_driver_unload(dev);
+-	drm_dev_unref(dev);
++	drm_dev_put(dev);
+ }
+ 
+ static int i915_pci_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+diff --git a/drivers/gpu/drm/i915/intel_display.c b/drivers/gpu/drm/i915/intel_display.c
+index 64f7b51ed97c..cb62f7e5d59a 100644
+--- a/drivers/gpu/drm/i915/intel_display.c
++++ b/drivers/gpu/drm/i915/intel_display.c
+@@ -2856,7 +2856,7 @@ intel_find_initial_plane_obj(struct intel_crtc *intel_crtc,
+ 
+ 		if (intel_plane_ggtt_offset(state) == plane_config->base) {
+ 			fb = c->primary->fb;
+-			drm_framebuffer_reference(fb);
++			drm_framebuffer_get(fb);
+ 			goto valid_fb;
+ 		}
+ 	}
+@@ -2887,7 +2887,7 @@ intel_find_initial_plane_obj(struct intel_crtc *intel_crtc,
+ 			  intel_crtc->pipe, PTR_ERR(intel_state->vma));
+ 
+ 		intel_state->vma = NULL;
+-		drm_framebuffer_unreference(fb);
++		drm_framebuffer_put(fb);
+ 		return;
+ 	}
+ 
+@@ -2908,7 +2908,7 @@ intel_find_initial_plane_obj(struct intel_crtc *intel_crtc,
+ 	if (i915_gem_object_is_tiled(obj))
+ 		dev_priv->preserve_bios_swizzle = true;
+ 
+-	drm_framebuffer_reference(fb);
++	drm_framebuffer_get(fb);
+ 	primary->fb = primary->state->fb = fb;
+ 	primary->crtc = primary->state->crtc = &intel_crtc->base;
+ 
+@@ -9847,7 +9847,7 @@ mode_fits_in_fbdev(struct drm_device *dev,
+ 	if (obj->base.size < mode->vdisplay * fb->pitches[0])
+ 		return NULL;
+ 
+-	drm_framebuffer_reference(fb);
++	drm_framebuffer_get(fb);
+ 	return fb;
+ #else
+ 	return NULL;
+@@ -10028,7 +10028,7 @@ int intel_get_load_detect_pipe(struct drm_connector *connector,
+ 	if (ret)
+ 		goto fail;
+ 
+-	drm_framebuffer_unreference(fb);
++	drm_framebuffer_put(fb);
+ 
+ 	ret = drm_atomic_set_mode_for_crtc(&crtc_state->base, mode);
+ 	if (ret)
+diff --git a/drivers/gpu/drm/i915/intel_fbdev.c b/drivers/gpu/drm/i915/intel_fbdev.c
+index 262e75c00dd2..e34334a1fbf9 100644
+--- a/drivers/gpu/drm/i915/intel_fbdev.c
++++ b/drivers/gpu/drm/i915/intel_fbdev.c
+@@ -189,7 +189,7 @@ static int intelfb_create(struct drm_fb_helper *helper,
+ 			      " releasing it\n",
+ 			      intel_fb->base.width, intel_fb->base.height,
+ 			      sizes->fb_width, sizes->fb_height);
+-		drm_framebuffer_unreference(&intel_fb->base);
++		drm_framebuffer_put(&intel_fb->base);
+ 		intel_fb = ifbdev->fb = NULL;
+ 	}
+ 	if (!intel_fb || WARN_ON(!intel_fb->obj)) {
+@@ -624,7 +624,7 @@ static bool intel_fbdev_init_bios(struct drm_device *dev,
+ 	ifbdev->preferred_bpp = fb->base.format->cpp[0] * 8;
+ 	ifbdev->fb = fb;
+ 
+-	drm_framebuffer_reference(&ifbdev->fb->base);
++	drm_framebuffer_get(&ifbdev->fb->base);
+ 
+ 	/* Final pass to check if any active pipes don't have fbs */
+ 	for_each_crtc(dev, crtc) {
+-- 
+2.11.0
 
-Probably just finger slip since this is the last chunk before the
-omitted selftests changes.
-
-Harsha: the "better" way to omit the selftests without hand tuning the
-patch would be to run the cocci spatch on i915 as normal, and then run
-"git checkout -- drivers/gpu/drm/i915/selftests/" before committing.
-It's dangerous to edit patches by hand, or to misrepresent a patch as
-being the result of a cocci spatch when it's not.
-
-Sean
-
-
-
-> -Daniel
-> --
-> Daniel Vetter
-> Software Engineer, Intel Corporation
-> http://blog.ffwll.ch
 
