@@ -1,317 +1,315 @@
-X-GM-THRID: 6474214314983030784
-X-Received: by 10.159.216.130 with SMTP id s2mr273624plp.42.1507395486299;
-        Sat, 07 Oct 2017 09:58:06 -0700 (PDT)
+X-GM-THRID: 6470705412124442624
+X-Received: by 10.46.20.17 with SMTP id u17mr346084ljd.24.1507563311246;
+        Mon, 09 Oct 2017 08:35:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.99.117.77 with SMTP id f13ls350850pgn.17.gmail; Sat, 07 Oct
- 2017 09:58:05 -0700 (PDT)
-X-Received: by 10.99.122.81 with SMTP id j17mr475605pgn.5.1507395485291;
-        Sat, 07 Oct 2017 09:58:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507395485; cv=none;
+Received: by 10.46.71.206 with SMTP id u197ls676275lja.16.gmail; Mon, 09 Oct
+ 2017 08:35:09 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QAsc9zks8DrC4nGU3xiQ2yE0LztU0Y/zwAaKsqLvvvTb+PfyKFc+HwSseAsKWAGV+LlsT56
+X-Received: by 10.46.4.26 with SMTP id 26mr373894lje.22.1507563309713;
+        Mon, 09 Oct 2017 08:35:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507563309; cv=none;
         d=google.com; s=arc-20160816;
-        b=YluFG/QztKa+TfXluQw/OK6H8EZ7sf/xLlGUShRpeoesCun99TBxiq4NwnMyKF47zF
-         YLVTv+2A5wSwP80hHote9ufs7juqX3Ac+7+rRnZCaW6pdummnexr4zG5WqcPa2yr3rBo
-         6mbbD+8gZvJM8LBCraw82NWhvYhMSWx19nxAjZTRy7kI6FtGTGsZJbHSMs7OxmXnn9fr
-         o4n7V7qj81IHOHRzu/2p7xkhrHePbZB3Ln6ms0bjAGyvMLjXrOtaj5AVOEa3Y5qB62nk
-         OeMzP/YthFGWJ5rinTIAPuNY+Dp4M2t0WGuKFDGAkMjx5f7dnZU2XcIyc8H7m7DzYp7t
-         eDiQ==
+        b=xOY5l7EiSRPxF3gO9A2w2RdIGfBlnxPY9ZNRI3jE0CxcWqhv4SnIrz8BlKNzQND/70
+         L4gz8uKXHL438uH3eVbDej0FZfD81CGuBhh8jMP7yAQoJYjKCN8PvpJ3CaxVwmoxlSyC
+         wYld/0ZnSbo/MLILP6tPUtbKYA7+K8uTKGw5taeLfIvCkRGxN5WduspVGzMhbddTSo02
+         iY2o8BWfHBKd5h+PGiMLNG9h/LVrXccTZkn6KwGMEoFLaOf0uc21q3XlO5+zJ9FPOQSj
+         7lgaCzmaSaDye/4f3jZhnIGNdX3tDgKb8Q+ex8fiCBdi6/cIUanUo+N/KJFcmtorbfTc
+         itEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=MrLgpQ6b7/AvEVxzF6yYkZR0QPBAbtXExqsxEzEQnOI=;
-        b=p7g7N/vpYcCvgGJVNNErlBJ2cwA/gtcaAbSB5AxI69bdBr5+KcLh7lh0ZQpIEBwER0
-         nHSNvIuEQq3uF0TlupGUdZ34baEUy5H8x+raPC7kDPOrIFBxP/tOfFNeDuEaYMvgMIsl
-         wwQGJgJoIc/YVlYRRmwmbQJuZFzFbSv4RKXs8aHKxiuKv3vq5ecvdQu8kdzpE5fYSV8g
-         nwmASm/fvhQtaaV0D/L8pIR244dZf5yqW/7NJOgJ6/377s+bz0NCVCYh7D3ECIbcY3qJ
-         7EqfEaX0713I/lJDyS150+qUevoyg3GYlQREh/cc4T59XcaEDpW6FMoXSA5ncb3fPP3H
-         EKnQ==
+        h=content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject:arc-authentication-results;
+        bh=AoFzub+/VtGxMiSOqtjWVU81OPBvkrqGp3ME7O0NWVc=;
+        b=xdcb7MF1YisyqqbviSH1y1NbKg/kfa4Z9s5RmaLr9+5baQFi+tKXxx74ny56xluKAp
+         LxfCjogKrQhCA2RuL6WhZtJL0Tzq446cqNplOyAs9gEnsDoy50q2kzfkNFqfeOdOtbsd
+         760/d6LASPavWTt3ZWO31MgzD30E6tovLssFWeTkw5K/XcopwmOJ4Eu9ms8UW5cQkRg2
+         PmMwlIH4+52pxxyR4feLx+kdFT2Sw2j46wnOQDwQkBJvBjCxhSTqMja4D0y+eJYMkrgT
+         sXeWcdOoCprI5Se35JCkhPIBYFk/hKFHLeC14omSLLnscaIyAh3/B8Z7VBOq2/UgWX/P
+         rQNQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vUY10ZFl;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <srishtishar@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id j10si460030pfj.7.2017.10.07.09.58.05
+       spf=pass (google.com: domain of noralf@tronnes.org designates 2a01:5b40:0:3005::1 as permitted sender) smtp.mailfrom=noralf@tronnes.org
+Return-Path: <noralf@tronnes.org>
+Received: from smtp.domeneshop.no (smtp.domeneshop.no. [2a01:5b40:0:3005::1])
+        by gmr-mx.google.com with ESMTPS id 84si550940lfs.9.2017.10.09.08.35.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 07 Oct 2017 09:58:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Mon, 09 Oct 2017 08:35:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of noralf@tronnes.org designates 2a01:5b40:0:3005::1 as permitted sender) client-ip=2a01:5b40:0:3005::1;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vUY10ZFl;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id j3so5883646pga.5
-        for <outreachy-kernel@googlegroups.com>; Sat, 07 Oct 2017 09:58:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=MrLgpQ6b7/AvEVxzF6yYkZR0QPBAbtXExqsxEzEQnOI=;
-        b=vUY10ZFlRV37ICM3Jp0DgyQgVy/NfXs1h8f0LQT2i2XbCBrJBsB4Gqsqnl8URf5df6
-         xX6syTLDTzKOXK0Ct9CNDWOAK9qkP3ZV4mfcrAwiEcwwu1IPYKvnWANGIjdbb/LhTlGS
-         WwFlnPpCpEmhLCYyBtRxEw80jtyLBTIEIwz55HU2b2fbkZ7mWx/I5uyJWPallEyGyB1Q
-         hUvDL3l0e27pICBPdJA14biUbWZNEh8nh6lUbaGLosVCKqwtxmTS/+PEiHtJ8TR7U0WH
-         Varjq+dFmEmfeajSsHA3I1p+t+gst4y62ezvu5DB1Ar3XfBFUXFODaK1eZhyXRhxjx8D
-         J4ew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=MrLgpQ6b7/AvEVxzF6yYkZR0QPBAbtXExqsxEzEQnOI=;
-        b=RvD/j2rKBbvPfrieHqFqBfOwiFHntCY2I4j8ELE7P+pdhZweIhja4sZ/J0BNRylKL1
-         fen7+chZxRLMQFePUAupCj6QBeKUpar6WRwm4xdLmzGa0volXdctGNa0CTwjfgx0k5u8
-         fYsHKQgF3cLD4BYaqenIbgRAH7/gusN+dK3x2KkDX6oS6WxCTJEAY/5KmG61S31bMAaz
-         fhazzsQQRBG8f4ndhPSiASsVxXALy5ifLlitZHElZm/PqB5HVnrnp1xQFsI0Ihf2McLo
-         D2BVCtHDpb9mi3lj6fA5P9XS0PRv9IAAAJy3gQ6DyA1ktdpVY1un/qBeAQ5gVX7LHadN
-         VRuw==
-X-Gm-Message-State: AMCzsaWOGHzVyVRj+cSJUdqToUya0tQCRiKdRTpXopI2VtPph1D2HK7y
-	Ldf28RQBthGqwwRcO2XAa2I=
-X-Google-Smtp-Source: AOwi7QBRl0mUAqclk21xJz+dR4bgByKmzBVKo1LwG4UDiJZVnlFTQW+S+443mkPVHx2JpNmSxbtVGg==
-X-Received: by 10.159.197.75 with SMTP id d11mr5030241plo.213.1507395484950;
-        Sat, 07 Oct 2017 09:58:04 -0700 (PDT)
-Return-Path: <srishtishar@gmail.com>
-Received: from srishti-PRODiiGY-945G ([122.168.109.202])
-        by smtp.gmail.com with ESMTPSA id v15sm8468247pfa.50.2017.10.07.09.58.03
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 07 Oct 2017 09:58:04 -0700 (PDT)
-From: Srishti Sharma <srishtishar@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Srishti Sharma <srishtishar@gmail.com>
-Subject: [PATCH] Staging: pi433: Fix the position of brace after if
-Date: Sat,  7 Oct 2017 22:27:58 +0530
-Message-Id: <1507395478-4416-1-git-send-email-srishtishar@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=pass (google.com: domain of noralf@tronnes.org designates 2a01:5b40:0:3005::1 as permitted sender) smtp.mailfrom=noralf@tronnes.org
+Received: from 211.81-166-168.customer.lyse.net ([81.166.168.211]:54888 helo=[192.168.10.157])
+	by smtp.domeneshop.no with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+	(Exim 4.84_2)
+	(envelope-from <noralf@tronnes.org>)
+	id 1e1a5E-0002oh-E6; Mon, 09 Oct 2017 17:35:08 +0200
+Subject: Re: [PATCH v7 1/3] backlight: Add
+ IS_ENABLED(CONFIG_BACKLIGHT_CLASS_DEVICE)
+To: Daniel Thompson <daniel.thompson@linaro.org>,
+ Daniel Vetter <daniel@ffwll.ch>
+Cc: Jani Nikula <jani.nikula@linux.intel.com>,
+ Meghana Madhyastha <meghana.madhyastha@gmail.com>,
+ outreachy-kernel@googlegroups.com, dri-devel@lists.freedesktop.org,
+ Lee Jones <lee.jones@linaro.org>
+References: <cover.1506878301.git.meghana.madhyastha@gmail.com>
+ <7a6311819f8eea0b2845c25cca72324b25e63e13.1506878301.git.meghana.madhyastha@gmail.com>
+ <527a54b8-d67a-651c-3326-4780b9f3cfc4@linaro.org> <87o9pp6i0p.fsf@intel.com>
+ <20171003080341.wvdgtgw6uuwcpmj4@phenom.ffwll.local>
+ <464023c9-9fef-1372-93df-a54f43524ebb@linaro.org>
+ <20171003090403.5mpxu22lxu2f7x7g@phenom.ffwll.local>
+ <c676f762-00a8-0883-c4db-9b6e97ebdd11@tronnes.org>
+ <2e063b3f-daf2-66d6-d73d-ad8fda4f91ec@linaro.org>
+From: =?UTF-8?Q?Noralf_Tr=c3=b8nnes?= <noralf@tronnes.org>
+Message-ID: <867165d3-a4a7-2a33-c09a-d7b1a8d051d2@tronnes.org>
+Date: Mon, 9 Oct 2017 17:35:05 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
+MIME-Version: 1.0
+In-Reply-To: <2e063b3f-daf2-66d6-d73d-ad8fda4f91ec@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 
-Fix the position of the brace after if when it is on the next line
-or when there is no space between them. Done using the following
-semantic patch by coccinelle.
 
-@r1@
-position p1, p2;
-identifier x,f;
-expression e;
-@@
+Den 09.10.2017 11.06, skrev Daniel Thompson:
+> On 06/10/17 19:01, Noralf Trønnes wrote:
+>>
+>> Den 03.10.2017 11.04, skrev Daniel Vetter:
+>>> On Tue, Oct 03, 2017 at 09:51:49AM +0100, Daniel Thompson wrote:
+>>>> On 03/10/17 09:03, Daniel Vetter wrote:
+>>>>> On Mon, Oct 02, 2017 at 12:00:54PM +0300, Jani Nikula wrote:
+>>>>>> On Mon, 02 Oct 2017, Daniel Thompson <daniel.thompson@linaro.org> 
+>>>>>> wrote:
+>>>>>>> So I'm coming to this patchset cold but can you explain *why* 
+>>>>>>> something
+>>>>>>> wants to call of_find_backlight_by_node() when there is no 
+>>>>>>> backlight
+>>>>>>> support enabled. Why isn't the code that called is conditional on
+>>>>>>> BACKLIGHT_CLASS_DEVICE?
+>>>>>>>
+>>>>>>> The undefined symbol issue is a pain but to be honest I'd rather 
+>>>>>>> solve
+>>>>>>> the use of undefined symbols by avoiding declaring them; this 
+>>>>>>> making
+>>>>>>> them into compile errors rather than link errors.
+>>>>>> Typically the kernel header files define static inline stubs of the
+>>>>>> functions when the actual functions aren't configured/built. The 
+>>>>>> code
+>>>>>> using the functions looks the same regardless of the config 
+>>>>>> option, and
+>>>>>> handles the -ENODEV or NULL or whatever returns from the stubs
+>>>>>> gracefully. With the inlines, the compiler can usually throw out 
+>>>>>> much of
+>>>>>> the code anyway.
+>>>>>>
+>>>>>> In this regard, the backlight interface is an exception, forcing the
+>>>>>> callers to wrap the code around 
+>>>>>> IS_ENABLED(BACKLIGHT_CLASS_DEVICE), not
+>>>>>> the rule.
+>>>>> fwiw, I think it'd be great if we can move backlight over to the 
+>>>>> common
+>>>>> pattern, like everyone else. It's pretty big pain as-is ...
+>>>> For sure, after Jani's mail yesterday I looked at the GMA500 driver 
+>>>> and
+>>>> concluded I didn't want code related to backlight having to look 
+>>>> like that!
+>>>>
+>>>> Currently the three main patterns of use are:
+>>>>
+>>>>   1. Standalone drivers simple depend on BACKLIGHT_CLASS_DEVICE,
+>>>>   2. Some compound drivers select BACKLIGHT_CLASS_DEVICE (the AMD DRM
+>>>>      driver is an example of this),
+>>>>   3. Other compound drivers perform heroics with the pre-processor.
+>>>>
+>>>> The main reason I'm not just agreeing straight away is that, to 
+>>>> adopt the
+>>>> static inline pattern for the whole API, we have to believe that #3 
+>>>> above is
+>>>> desirable. Given the size and scope of the compound drivers in #3 
+>>>> above, I
+>>>> don't entirely understand why they want to avoid the select.
+>>> People love to over-configure their kernels and shave off a few 
+>>> bytes. And
+>>> big gpu drivers might have backlight support, but not always need it 
+>>> (e.g.
+>>> if you run without a panel as e.g. a tv set-top-box). Same with e.g. a
+>>> driver that supports both OF/DT and pci to find its devices.
+>>>
+>>> On the desktop gpu driver side we don't really subscribe to this 
+>>> idea of
+>>> making everything optional, hence select (mostly), except select is 
+>>> a huge
+>>> pain. On the mobile/soc gpu side, #3 seems to be the desired outcome.
+>>> Doing static inline helpers for backlights would make both easier 
+>>> (since
+>>> in the end for desktop you just get a distro kernel that enables
+>>> everything anyway).
+>>>
+>>> So yeah, imo if you think backlight should be a Kconfig, then it should
+>>> have static inline dummy functions to make life simpler for 
+>>> everyone. Only
+>>> exception are pure driver-only subsystem code which aren't ever 
+>>> called by
+>>> anything outside of your subsystem. But since the point of the 
+>>> backlight
+>>> subsystem is to provide backlight support to other drivers (there's 
+>>> still
+>>> the dream that we don't offload this onto userspace, that just doesn't
+>>> work well) we really should have these static inline helpers.
+>>
+>> I suggest we put all the backlight subsystem only functionality we need,
+>> into the backlight subsystem :-)
+>> I've put together a suggestion below and I've deliberately dropped the
+>> of_ infix in backlight_get() to make room for possible future additions
+>> that can make it possible to set the connection between device and
+>> backlight using platform table or ACPI, fashioned after gpiolib.
+>
+> Looks good to me.
+>
+> If I've read this right, other sub-systems can use these symbols with 
+> or without BACKLIGHT_CLASS_DEVICE and still compile OK?
+>
 
-(
-x=e;
-|
-f(...)
-)
+The code haven't seen a compiler, but that's the idea.
 
-if(...)@p1 {@p2
-...
-}
+Noralf.
 
-@script: python r2@
-p1 << r1.p1;
-p2 << r1.p2;
-@@
-
-l1 = int (p1[0].line)
-l2 = int (p2[0].line)
-c1 = int (p1[0].column_end)
-c2 = int (p2[0].column)
-
-if l1 == l2 and c1+1 == c2:
-        cocci.include_match(False)
-
-@r3@
-position r1.p1, r1.p2;
-@@
-
-if(...
-- )@p1
--{@p2
-+) {
-...
-}
-
-Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
----
- drivers/staging/pi433/pi433_if.c | 54 ++++++++++++++--------------------------
- 1 file changed, 18 insertions(+), 36 deletions(-)
-
-diff --git a/drivers/staging/pi433/pi433_if.c b/drivers/staging/pi433/pi433_if.c
-index d82c74d..d946838 100644
---- a/drivers/staging/pi433/pi433_if.c
-+++ b/drivers/staging/pi433/pi433_if.c
-@@ -285,8 +285,7 @@ rf69_set_tx_cfg(struct pi433_device *dev, struct pi433_tx_cfg *tx_cfg)
- 	SET_CHECKED(rf69_set_crc_enable	  (dev->spi, tx_cfg->enable_crc));
- 
- 	/* configure sync, if enabled */
--	if (tx_cfg->enable_sync == optionOn)
--	{
-+	if (tx_cfg->enable_sync == optionOn) {
- 		SET_CHECKED(rf69_set_sync_size(dev->spi, tx_cfg->sync_length));
- 		SET_CHECKED(rf69_set_sync_values(dev->spi, tx_cfg->sync_pattern));
- 	}
-@@ -408,8 +407,7 @@ pi433_receive(void *data)
- 		if (retval) goto abort; /* wait was interrupted */
- 
- 		rf69_read_fifo(spi, (u8 *)&bytes_total, 1);
--		if (bytes_total > dev->rx_buffer_size)
--		{
-+		if (bytes_total > dev->rx_buffer_size) {
- 			retval = -1;
- 			goto abort;
- 		}
-@@ -509,16 +507,14 @@ pi433_tx_thread(void *data)
- 		mutex_lock(&device->tx_fifo_lock);
- 
- 		retval = kfifo_out(&device->tx_fifo, &tx_cfg, sizeof(tx_cfg));
--		if (retval != sizeof(tx_cfg))
--		{
-+		if (retval != sizeof(tx_cfg)) {
- 			dev_dbg(device->dev, "reading tx_cfg from fifo failed: got %d byte(s), expected %d", retval, (unsigned int)sizeof(tx_cfg) );
- 			mutex_unlock(&device->tx_fifo_lock);
- 			continue;
- 		}
- 
- 		retval = kfifo_out(&device->tx_fifo, &size, sizeof(size_t));
--		if (retval != sizeof(size_t))
--		{
-+		if (retval != sizeof(size_t)) {
- 			dev_dbg(device->dev, "reading msg size from fifo failed: got %d, expected %d", retval, (unsigned int)sizeof(size_t) );
- 			mutex_unlock(&device->tx_fifo_lock);
- 			continue;
-@@ -650,8 +646,7 @@ pi433_tx_thread(void *data)
- 		SET_CHECKED(rf69_set_mode(spi, standby));
- 
- 		/* everything sent? */
--		if ( kfifo_is_empty(&device->tx_fifo) )
--		{
-+		if (kfifo_is_empty(&device->tx_fifo)) {
- abort:
- 			if (rx_interrupted)
- 			{
-@@ -705,8 +700,7 @@ pi433_read(struct file *filp, char __user *buf, size_t size, loff_t *f_pos)
- 	mutex_unlock(&device->rx_lock);
- 
- 	/* if read was successful copy to user space*/
--	if (bytes_received > 0)
--	{
-+	if (bytes_received > 0) {
- 		retval = copy_to_user(buf, device->rx_buffer, bytes_received);
- 		if (retval)
- 			return -EFAULT;
-@@ -806,8 +800,7 @@ pi433_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
- 	switch (cmd) {
- 	case PI433_IOC_RD_TX_CFG:
- 		tmp = _IOC_SIZE(cmd);
--		if ( (tmp == 0) || ((tmp % sizeof(struct pi433_tx_cfg)) != 0) )
--		{
-+		if ((tmp == 0) || ((tmp % sizeof(struct pi433_tx_cfg)) != 0)) {
- 			retval = -EINVAL;
- 			break;
- 		}
-@@ -823,8 +816,7 @@ pi433_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
- 		break;
- 	case PI433_IOC_WR_TX_CFG:
- 		tmp = _IOC_SIZE(cmd);
--		if ( (tmp == 0) || ((tmp % sizeof(struct pi433_tx_cfg)) != 0) )
--		{
-+		if ((tmp == 0) || ((tmp % sizeof(struct pi433_tx_cfg)) != 0)) {
- 			retval = -EINVAL;
- 			break;
- 		}
-@@ -917,8 +909,7 @@ static int pi433_open(struct inode *inode, struct file *filp)
- 
- 	if (!device->rx_buffer) {
- 		device->rx_buffer = kmalloc(MAX_MSG_SIZE, GFP_KERNEL);
--		if (!device->rx_buffer)
--		{
-+		if (!device->rx_buffer) {
- 			dev_dbg(device->dev, "open/ENOMEM\n");
- 			return -ENOMEM;
- 		}
-@@ -926,8 +917,7 @@ static int pi433_open(struct inode *inode, struct file *filp)
- 
- 	device->users++;
- 	instance = kzalloc(sizeof(*instance), GFP_KERNEL);
--	if (!instance)
--	{
-+	if (!instance) {
- 		kfree(device->rx_buffer);
- 		device->rx_buffer = NULL;
- 		return -ENOMEM;
-@@ -987,8 +977,7 @@ static int setup_GPIOs(struct pi433_device *device)
- 		snprintf(name, sizeof(name), "DIO%d", i);
- 		device->gpiod[i] = gpiod_get(&device->spi->dev, name, 0 /*GPIOD_IN*/);
- 
--		if (device->gpiod[i] == ERR_PTR(-ENOENT))
--		{
-+		if (device->gpiod[i] == ERR_PTR(-ENOENT)) {
- 			dev_dbg(&device->spi->dev, "Could not find entry for %s. Ignoring.", name);
- 			continue;
- 		}
-@@ -1017,8 +1006,7 @@ static int setup_GPIOs(struct pi433_device *device)
- 
- 		/* configure irq */
- 		device->irq_num[i] = gpiod_to_irq(device->gpiod[i]);
--		if (device->irq_num[i] < 0)
--		{
-+		if (device->irq_num[i] < 0) {
- 			device->gpiod[i] = ERR_PTR(-EINVAL);//(struct gpio_desc *)device->irq_num[i];
- 			return device->irq_num[i];
- 		}
-@@ -1157,8 +1145,7 @@ static int pi433_probe(struct spi_device *spi)
- 
- 	/* setup GPIO (including irq_handler) for the different DIOs */
- 	retval = setup_GPIOs(device);
--	if (retval)
--	{
-+	if (retval) {
- 		dev_dbg(&spi->dev, "setup of GPIOs failed");
- 		goto GPIO_failed;
- 	}
-@@ -1176,16 +1163,14 @@ static int pi433_probe(struct spi_device *spi)
- 	device->tx_task_struct = kthread_run(pi433_tx_thread,
- 					     device,
- 					     "pi433_tx_task");
--	if (IS_ERR(device->tx_task_struct))
--	{
-+	if (IS_ERR(device->tx_task_struct)) {
- 		dev_dbg(device->dev, "start of send thread failed");
- 		goto send_thread_failed;
- 	}
- 
- 	/* determ minor number */
- 	retval = pi433_get_minor(device);
--	if (retval)
--	{
-+	if (retval) {
- 		dev_dbg(device->dev, "get of minor number failed");
- 		goto minor_failed;
- 	}
-@@ -1214,8 +1199,7 @@ static int pi433_probe(struct spi_device *spi)
- 	device->cdev->owner = THIS_MODULE;
- 	cdev_init(device->cdev, &pi433_fops);
- 	retval = cdev_add(device->cdev, device->devt, 1);
--	if (retval)
--	{
-+	if (retval) {
- 		dev_dbg(device->dev, "register of cdev failed");
- 		goto cdev_failed;
- 	}
-@@ -1307,15 +1291,13 @@ static int __init pi433_init(void)
- 		return status;
- 
- 	pi433_class = class_create(THIS_MODULE, "pi433");
--	if (IS_ERR(pi433_class))
--	{
-+	if (IS_ERR(pi433_class)) {
- 		unregister_chrdev(MAJOR(pi433_dev), pi433_spi_driver.driver.name);
- 		return PTR_ERR(pi433_class);
- 	}
- 
- 	status = spi_register_driver(&pi433_spi_driver);
--	if (status < 0)
--	{
-+	if (status < 0) {
- 		class_destroy(pi433_class);
- 		unregister_chrdev(MAJOR(pi433_dev), pi433_spi_driver.driver.name);
- 	}
--- 
-2.7.4
+>
+> Daniel.
+>
+>
+>>
+>>
+>> include/linux/backlight.h:
+>>
+>> /**
+>>   * backlight_enable - Enable backlight
+>>   * @bd: the backlight device to enable
+>>   */
+>> static inline int backlight_enable(struct backlight_device *bd)
+>> {
+>>      if (!bd)
+>>          return 0;
+>>
+>>      bd->props.power = FB_BLANK_UNBLANK;
+>>      bd->props.state &= ~BL_CORE_FBBLANK;
+>>
+>>      return backlight_update_status(bd);
+>> }
+>>
+>> /**
+>>   * backlight_disable - Disable backlight
+>>   * @bd: the backlight device to disable
+>>   */
+>> static inline int backlight_disable(struct backlight_device *bd)
+>> {
+>>      if (!bd)
+>>          return 0;
+>>
+>>      bd->props.power = FB_BLANK_POWERDOWN;
+>>      bd->props.state |= BL_CORE_FBBLANK;
+>>
+>>      return backlight_update_status(bd);
+>> }
+>>
+>> /**
+>>   * backlight_put - Drop backlight reference
+>>   * @bd: the backlight device to put
+>>   */
+>> static inline void backlight_put(struct backlight_device *bd)
+>> {
+>>      if (bd)
+>>          put_device(bd->dev);
+>> }
+>>
+>> #if IS_ENABLED(CONFIG_BACKLIGHT_CLASS_DEVICE)
+>> struct backlight_device *backlight_get(struct device *dev);
+>> struct backlight_device *devm_backlight_get(struct device *dev);
+>> #else
+>> static inline struct backlight_device *backlight_get(struct device *dev)
+>> {
+>>      return NULL;
+>> }
+>>
+>> static inline struct backlight_device *devm_backlight_get(struct 
+>> device *dev)
+>> {
+>>      return NULL;
+>> }
+>> #endif
+>>
+>>
+>>
+>> drivers/video/backlight/backlight.c:
+>>
+>> /**
+>>   * backlight_get - Get backlight device
+>>   * @dev: Device
+>>   *
+>>   * This function looks for a property named 'backlight' on the DT node
+>>   * connected to @dev and looks up the backlight device.
+>>   *
+>>   * Call backlight_put() to drop the reference on the backlight device.
+>>   *
+>>   * Returns:
+>>   * A pointer to the backlight device if found.
+>>   * Error pointer -EPROBE_DEFER if the DT property is set, but no 
+>> backlight
+>>   * device is found.
+>>   * NULL if there's no backlight property.
+>>   */
+>> struct backlight_device *backlight_get(struct device *dev)
+>> {
+>>      struct backlight_device *bd = NULL;
+>>      struct device_node *np;
+>>
+>>      if (!dev)
+>>          return NULL;
+>>
+>>      if (IS_ENABLED(CONFIG_OF) && dev->of_node) {
+>>          np = of_parse_phandle(dev->of_node, 'backlight', 0);
+>>          if (np) {
+>>              bd = of_find_backlight_by_node(np);
+>>              of_node_put(np);
+>>              if (!bd)
+>>                  return ERR_PTR(-EPROBE_DEFER);
+>>          }
+>>      }
+>>
+>>      return bd;
+>> }
+>> EXPORT_SYMBOL(backlight_get);
+>>
+>> static void devm_backlight_get_release(void *data)
+>> {
+>>      backlight_put(data);
+>> }
+>>
+>> /**
+>>   * devm_backlight_get - Resource-managed backlight_get()
+>>   * @dev: Device
+>>   *
+>>   * Device managed version of backlight_get(). The reference on the 
+>> backlight
+>>   * device is automatically dropped on driver detach.
+>>   */
+>> struct backlight_device *devm_backlight_get(struct device *dev)
+>> {
+>>      struct backlight_device *bd;
+>>      int ret;
+>>
+>>      bd = backlight_get(dev);
+>>      if (!bd)
+>>          return NULL;
+>>
+>>      ret = devm_add_action(dev, devm_backlight_get_release, bd);
+>>      if (ret) {
+>>          backlight_put(bd);
+>>          return ERR_PTR(ret);
+>>      }
+>>
+>>      return bd;
+>> }
+>> EXPORT_SYMBOL(devm_backlight_get);
+>>
+>>
+>
 
 
