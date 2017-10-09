@@ -1,100 +1,190 @@
-X-GM-THRID: 6257098330259587072
-X-Received: by 10.66.142.230 with SMTP id rz6mr17346528pab.31.1456844231394;
-        Tue, 01 Mar 2016 06:57:11 -0800 (PST)
+X-GM-THRID: 6475021395996704768
+X-Received: by 10.99.186.79 with SMTP id l15mr879162pgu.177.1507583399819;
+        Mon, 09 Oct 2017 14:09:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.99.18 with SMTP id p18ls3168910qge.86.gmail; Tue, 01 Mar
- 2016 06:57:10 -0800 (PST)
-X-Received: by 10.140.102.69 with SMTP id v63mr34618910qge.14.1456844230820;
-        Tue, 01 Mar 2016 06:57:10 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
-        by gmr-mx.google.com with ESMTPS id ui7si4415875pab.0.2016.03.01.06.57.10
+Received: by 10.99.50.131 with SMTP id y125ls1320388pgy.6.gmail; Mon, 09 Oct
+ 2017 14:09:58 -0700 (PDT)
+X-Received: by 10.99.179.77 with SMTP id x13mr258396pgt.162.1507583398846;
+        Mon, 09 Oct 2017 14:09:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507583398; cv=none;
+        d=google.com; s=arc-20160816;
+        b=NmtRe4gKZHae6WF7iPkWsOox+6eW6En/IXak9PwgM1+wirdQD1OvypAMu1fTY065oN
+         r/DRJkh9U1ymc/7MQ6YZawEMq4NjUU0J2dEsqK526XltqPOuHcSJqcaCfqdyMwTyHCJi
+         ZHvFRTV2dVnno8QpqrOepRmyFswv1zA8hiUU5TlKRIyBja8E6p4s4QfANe0FW9RGmEdO
+         wxhBblgCnhXzcCXK1IkJeZwOtDK0zbq5X5b1/FDfIb8ZikxUQhHIeyQuuI3qrp636THx
+         kK86LTdhhEtm5h94g8qi153yIwyGLKtPrsxdEhWpLOElrRDPljNVTGKAcsUxO7TpaR7Z
+         Xhug==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature:arc-authentication-results;
+        bh=4qf50dFbI0cMIefO3PHD5jWS6Qbaq3YKlcYMPHbd3Ok=;
+        b=Fqwlk5VH9mt6QcB3Iyx436rkEMh1bmA8+33XctHxTLrddS0Sv/+DvK4N20s24T8lN7
+         fkSFiG7WLdhzeXp+eTkH2FukOctRjZD8UZOsyet6Qn6rpvUyIgXvq5988cvLMFdCy3lP
+         aFlf5Dr++BG1xtXXUXG0gXbAOP2tIHQ/uu+YwvKa8Zy2Sm6y9j5lF3z3yIeG7hxPjk/J
+         aW+CmhVr3uI2sc/a+VMwmdiLcmoqWTzN8XR2DCPzHZkTwtpw4V66vwEgJuQ1q+3n4+0c
+         XXeEfROkiAb267hvFsMEtaBznSG5ZxMjQ+UuHXmUKL5r3B/w4VOzwhOGPnfe0giobEOk
+         2KBA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=scO6S4om;
+       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <aishpant@gmail.com>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id l80si1075677pfg.25.2017.10.09.14.09.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 01 Mar 2016 06:57:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
+        Mon, 09 Oct 2017 14:09:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22e.google.com with SMTP id fl4so113425550pad.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 01 Mar 2016 06:57:10 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=scO6S4om;
+       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x241.google.com with SMTP id z11so13083877pfk.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 09 Oct 2017 14:09:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=pQRd0ffdh2OvJEbDqW12g3HmFz/XAhWxVvs29HBDRXs=;
-        b=Y8+gGdw5kUAIYZwUzrFls3A3vmbGWs0SIJ5s9nX8sKdSQQTpwjq4SEGGwtnSUjv3O4
-         1PGgmoKG8J5az22s1yydY806UMKkmBfSFstqiaXeR588ZuXzj20T9C+G9Q06+YsR2Fs5
-         NQv4pIl4Hz5CJHLw+aXE0jWQRGB7FW/fSNYtOfaqmJQ7CZaPl7zSl4A3UZtAO6DMXOla
-         3qWGnvjQJNAWWfR1aQ2y6P0y7IH1vfwaBwf9HQWiSQwiuSlRRrRo2Kg/j2kzk4Q67sz2
-         UIs3xvoFNS8AnPsYiOgGIWunvkY+0O3mKQXgV49PLts9C1Aqx7OsVBZz59IS4+vangne
-         a/Uw==
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=4qf50dFbI0cMIefO3PHD5jWS6Qbaq3YKlcYMPHbd3Ok=;
+        b=scO6S4omUUVEAdFrcCXrILbsfdbiEP9MBMpDgnyRPG98IHhoOR1jiHsAnu+md9Sm2y
+         yXQiCtmowwg9PG/ZXv1QRsFWTribndTswBBKfLo9PKE355aYkjl0U1VB8v12oDj10X+8
+         3/vSlNVzP0cPml0MS3sMirwK6JuNhrxTNDTwaRWZQ99IJ7WmW4ISrjzdu+d1XnoWblYd
+         IhYAjJFIzmHNzmrmfi1pFtAXgj1S77nhVKu2t6WP7i9RR3t2w6/kFvKMS5WumQKexDAc
+         qh17PRu5aTfDIpIncEPnfF1jbireyDGVXRyzfdRQvV0C6JgJSUhVR/4hlcea6gGg9uKL
+         ofFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=pQRd0ffdh2OvJEbDqW12g3HmFz/XAhWxVvs29HBDRXs=;
-        b=hMLpaw03Lu/lG5w4wCozg8Jw5UBdV8KmIM/sWsGoN86JQIyUWw1b+6WIbZzA3WXc/3
-         6hCdLdEFif+2Ve75xLbKwSlF12vYWdO/H8+exOps6JeT6iHjCcSV3mlLeJBzZkTQOz7Q
-         hFxybblshk2X2MEWyezU9bSdaVakvyDpSHPJKgZSoO/pme2bfYS7ihW4RwNGixJnTfXJ
-         CiPNbzQGy7hQoTYt2dOtwJqE4ZsfrMjcP+/KIkcpdcuK9IwqnU8qk7VHH1U6X7ZMoSwo
-         4bHOnTliisPBVwr20sLQ1QQIRHGmmPd1oN5aWp/lJEPUWZGTSjOmLQW6lKczk8HZyo7k
-         nevw==
-X-Gm-Message-State: AD7BkJLZc3Y0TveA2JV4pM8f6dDkciQnr4xcnIGzsybOCXI0+ymg5HvrFMvqoAPXpK1zwg==
-X-Received: by 10.66.132.37 with SMTP id or5mr23289841pab.144.1456844230633;
-        Tue, 01 Mar 2016 06:57:10 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from bhumirks@gmail.com ([223.176.154.42])
-        by smtp.gmail.com with ESMTPSA id z67sm46220338pfa.71.2016.03.01.06.57.06
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 01 Mar 2016 06:57:10 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Tue, 01 Mar 2016 20:26:58 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: rtl8192e: Use kzalloc instead of kmalloc and memset
-Date: Tue,  1 Mar 2016 20:26:52 +0530
-Message-Id: <1456844212-29057-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=4qf50dFbI0cMIefO3PHD5jWS6Qbaq3YKlcYMPHbd3Ok=;
+        b=Fug/3gstFyLBissdaF2EpLpcAKMbTwV7niU3rNBW8ggRbgi2Niu3EaNVLwla9zajgn
+         kEwQ85QKcr3kTo6mnYKnhf9io4XIgl8KalBynqnDEyjUElBvCMlnFn4VyxWILDRHrGNy
+         dtRVgyeRTanJOe+FljJPjGQHJL0++MAY/uxozbQ6B8ahNh6BcQXMrMqqcC/R7wWK5QQJ
+         xPC12I0Qc4lPiotiz8zVXnrpr/XsiIetgSQIaoqwk3s3hzTAt692o1pPU1p5DHnMx12r
+         lffbUlwN/fg9GpJhx1+sXU/f3SReong4tzboUS9mP3jUwWqHiWGHDYbIpJj7Q3GfJ+pL
+         f+QQ==
+X-Gm-Message-State: AMCzsaXcFq13gBI1nBmRxJsEJBl2dQZbABnX4gr+d2ylbEvv5czqeznu
+	tUeSJhxpHBSDwlfLhAkxEyc=
+X-Google-Smtp-Source: AOwi7QBg4B3Hnp52rG04q6OhlWnCBwdirBLxTQK+V3Piw9asR+iCt0Ngs8yyUFndBJMtL2OFGu/dfQ==
+X-Received: by 10.99.177.9 with SMTP id r9mr7527482pgf.194.1507583398521;
+        Mon, 09 Oct 2017 14:09:58 -0700 (PDT)
+Return-Path: <aishpant@gmail.com>
+Received: from aishwarya ([122.179.25.150])
+        by smtp.gmail.com with ESMTPSA id 204sm16311371pgf.59.2017.10.09.14.09.56
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 09 Oct 2017 14:09:58 -0700 (PDT)
+Date: Tue, 10 Oct 2017 02:39:54 +0530
+From: Aishwarya Pant <aishpant@gmail.com>
+To: Sebastian Reichel <sre@kernel.org>, linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH] power: supply: replace pr_* with dev_*
+Message-ID: <20171009210954.5fdeimcmt35jbcoa@aishwarya>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: NeoMutt/20170113 (1.7.2)
 
-The code in this patch allocates some memory and then clears it. The
-function kzalloc does the both so replace kmalloc and memset with
-kzalloc.
-Done using coccinelle:
+Use kernel preferred dev_* family of functions in place of pr_*,
+wherever a device object is present.
 
-@@
-expression e,e1,e2;
-@@
-- e=kmalloc(e1,e2);
-+ e=kzalloc(e1,e2);
-if(!e)
-  return NULL;
-...
-- memset(e,...);
+Done with the help of coccinelle.
 
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
 ---
- drivers/staging/rtl8192e/rtllib_tx.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+The following cocci script was used to make the patch:
+@r exists@
+identifier f, s, x;
+position p;
+@@
+ f(..., struct s *x,...) {
+<+... when != x == NULL
+ \(pr_err@p\|pr_debug@p\|pr_info@p\|pr_warn@p\)(...); ...+>
+ }
 
-diff --git a/drivers/staging/rtl8192e/rtllib_tx.c b/drivers/staging/rtl8192e/rtllib_tx.c
-index 58fc70e..1642f29 100644
---- a/drivers/staging/rtl8192e/rtllib_tx.c
-+++ b/drivers/staging/rtl8192e/rtllib_tx.c
-@@ -221,12 +221,11 @@ static struct rtllib_txb *rtllib_alloc_txb(int nr_frags, int txb_size,
- 	struct rtllib_txb *txb;
- 	int i;
+@struc@
+identifier dev, r.s;
+@@
+struct s {
+        ...
+        struct device *dev;
+        ...
+};
+
+@@
+identifier r.x, struc.dev;
+position r.p;
+@@
+(
+- pr_err@p
++ dev_err
+|
+- pr_warn@p
++ dev_warn
+|
+- pr_info@p
++ dev_info
+|
+- pr_debug@p
++ dev_dbg
+)
+ (
++ x->dev,
+...)
+
+@rr exists@
+local idexpression struct device *dev;
+@@
+
+<+... dev ...+>
+(
+- pr_err
++ dev_err
+|
+- pr_info
++ dev_info
+|
+- pr_warn
++ dev_warn
+|
+- pr_debug
++ dev_dbg
+)
+ (
++ dev,
+...)
+---
+ drivers/power/supply/power_supply_core.c | 2 +-
+ drivers/power/supply/twl4030_charger.c   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/power/supply/power_supply_core.c b/drivers/power/supply/power_supply_core.c
+index 02c6340ae36f..4b57fa9779ae 100644
+--- a/drivers/power/supply/power_supply_core.c
++++ b/drivers/power/supply/power_supply_core.c
+@@ -669,7 +669,7 @@ EXPORT_SYMBOL_GPL(power_supply_powers);
+ static void power_supply_dev_release(struct device *dev)
+ {
+ 	struct power_supply *psy = container_of(dev, struct power_supply, dev);
+-	pr_debug("device: '%s': %s\n", dev_name(dev), __func__);
++	dev_dbg(dev, "device: '%s': %s\n", dev_name(dev), __func__);
+ 	kfree(psy);
+ }
  
--	txb = kmalloc(sizeof(struct rtllib_txb) + (sizeof(u8 *) * nr_frags),
-+	txb = kzalloc(sizeof(struct rtllib_txb) + (sizeof(u8 *) * nr_frags),
- 		      gfp_mask);
- 	if (!txb)
- 		return NULL;
+diff --git a/drivers/power/supply/twl4030_charger.c b/drivers/power/supply/twl4030_charger.c
+index a5915f498eea..7ed2bc3039c4 100644
+--- a/drivers/power/supply/twl4030_charger.c
++++ b/drivers/power/supply/twl4030_charger.c
+@@ -743,7 +743,7 @@ static int twl4030bci_state(struct twl4030_bci *bci)
  
--	memset(txb, 0, sizeof(struct rtllib_txb));
- 	txb->nr_frags = nr_frags;
- 	txb->frag_size = cpu_to_le16(txb_size);
+ 	ret = twl4030_bci_read(TWL4030_BCIMSTATEC, &state);
+ 	if (ret) {
+-		pr_err("twl4030_bci: error reading BCIMSTATEC\n");
++		dev_err(bci->dev, "twl4030_bci: error reading BCIMSTATEC\n");
+ 		return ret;
+ 	}
  
 -- 
-1.9.1
+2.11.0
 
 
