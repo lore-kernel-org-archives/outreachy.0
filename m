@@ -1,157 +1,126 @@
-X-GM-THRID: 6392973316881121280
-X-Received: by 10.46.81.66 with SMTP id b2mr2190392lje.3.1488480092707;
-        Thu, 02 Mar 2017 10:41:32 -0800 (PST)
+X-GM-THRID: 6473369006202945536
+X-Received: by 10.31.96.138 with SMTP id u132mr1154650vkb.115.1507552430958;
+        Mon, 09 Oct 2017 05:33:50 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.88.20 with SMTP id m20ls787593ljb.27.gmail; Thu, 02 Mar
- 2017 10:41:31 -0800 (PST)
-X-Received: by 10.46.81.66 with SMTP id b2mr2190379lje.3.1488480091982;
-        Thu, 02 Mar 2017 10:41:31 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
-        by gmr-mx.google.com with ESMTPS id 14si859860wmn.2.2017.03.02.10.41.31
+Received: by 10.31.153.129 with SMTP id b123ls1174157vke.20.gmail; Mon, 09 Oct
+ 2017 05:33:49 -0700 (PDT)
+X-Received: by 10.31.114.201 with SMTP id n192mr957935vkc.14.1507552429917;
+        Mon, 09 Oct 2017 05:33:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507552429; cv=none;
+        d=google.com; s=arc-20160816;
+        b=s5FabNReIhJ/afcKIYHr40oki4Cx38+iGzb7LxEFfKrMt7f/ERXDspl2KzNNB8Qs4y
+         SavQnL7QE1QaoAmn/BJd06UIMwLeN9jf7sEs7060sFN8AzSCQqtcWHpZMjtzi7nH3nVa
+         qft1P95WDi4xsG8/6anW7aNStnwFmn0Ij2CpfYHmE9sdLZv8uVA7IRVMBzM1K2ecAjxX
+         2+JTH661qsZi+tfSE6Bto7UEk5h2AWYRyIYKhE2MkwrEiaQu1xNL5YWdq9IUxzVlxqPw
+         x+N5aA/LZP6yo2YR5XN2VZrqtqJfCMRvVDMxNItPCBKbqm9GYwckZllpxJFl4xEvMdan
+         ao0A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=zF0mN9NH75hUPu0VrgBd4GjOCJHzJiQ+9PqiAhY0u+0=;
+        b=NY+ofcPbKEpgu2vNImCU7z9/JIepcAxWZiEvor6vnd3xZvLxW8FFsiUI1fLb6ibxGk
+         +yYNV65ViG9zNr0sj8SRxvNuJ7i+JJaZiX+tZF+kh67YlJqigeXjy0aHd4IwwSWPsU4k
+         PC50j9mXQyoDO5rFWAp/HJ2D2to3mv+FBZuxpNldXo4Qb7RQ29OtUYLQymEJWjXunES9
+         kx4iFkf/fF8eTfcg5QTs/I8gzLBXTPXHhMy9WoonZ3Ye7jsvsskEIrvsI0F5UZ/rgEvs
+         5WDTQiL257ynmXm63n3Xo013LS28Dbhu+QZgi37GYlZaur0zeZUmgmZBZJMAcLQfJnUD
+         Whvw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=J7Jph4UQ;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400c:c05::243 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <harshasharmaiitr@gmail.com>
+Received: from mail-vk0-x243.google.com (mail-vk0-x243.google.com. [2607:f8b0:400c:c05::243])
+        by gmr-mx.google.com with ESMTPS id n19si419110vkf.13.2017.10.09.05.33.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Mar 2017 10:41:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
+        Mon, 09 Oct 2017 05:33:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400c:c05::243 as permitted sender) client-ip=2607:f8b0:400c:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=J7Jph4UQ;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400c:c05::243 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x241.google.com with SMTP id m70so13925056wma.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 02 Mar 2017 10:41:31 -0800 (PST)
+Received: by mail-vk0-x243.google.com with SMTP id b5so5991655vkf.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 09 Oct 2017 05:33:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=TqNwn8t2TP9wT+2aSYWVGMWSu+bsFUQdbi+2jFJhia8=;
-        b=JZcIfnivljs2WZskcwuLg3FXS8fQODrlGV+iL5Xx4d9gSR4l4ujgQIGuETv4s402pr
-         RcWOaibL1Jgw8Tto8M7NCtoxmUrt+75R+qb+tJjJm49L8TRo0Ht6fugA9CaSfF5q/ZrB
-         j4h3yO7H5mdPlGn508cwnZWzCDAr9uamERQEBVYBGIhokLpfQ20/cO84QQlHKZ3G6+61
-         yTnJwurxsuPlznCljVYVOKrmtFMKaMMG6k65RM17hnRMvwYFtMWUGt++mZSNMR4taede
-         mmW0G1LSjJeqVdF+doJcanwF78SJzek/aHrxql65rMRlZ2jpy8O3LtszcRweFB1a4Srs
-         1F/g==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=zF0mN9NH75hUPu0VrgBd4GjOCJHzJiQ+9PqiAhY0u+0=;
+        b=J7Jph4UQjxqUnRnPhQQcPue/pXIhdJ/OWFxueae895MOsNxLB7WiKbO/MRWIjw7kAa
+         RV7pT4vj4Gk96PsBwrglr74rwNORJ38nSsd5Pbum1vR9bH4it3kA4a11X5RkXQhK23+O
+         rMlHK2BNH0o+hq3OwDiInS2Cv/rIgm8dUOiUg9A2p+8OKt6MOLfLGwEAKVkXpxeTf9p2
+         9ILXrcFChHsKI2zTSmDDJnrB1DBnR0LfsGD/CPx8+U4n0TjgIGRlZUMxe+sYLCDDykBD
+         8UoqEKpykja6oHWXn4nirJNU0kMwJnyGrB0Wa9D/dCAHvzOExtVk29ueyvinefq/CfQ4
+         pwCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=TqNwn8t2TP9wT+2aSYWVGMWSu+bsFUQdbi+2jFJhia8=;
-        b=JqJKBYpH23C+y2Pi0FvKzadfmjQnXvfc8Im+/cxSJNvKeMNh+mAVTwFaRDieaqWSh+
-         remdy3WdCC70WBabHGnc3wcwxknu6MALpoi4TlWDIs1sH5wIID+J1xmwJYZ+w9NXdaoa
-         IA6umDRNguvybdJXC+AgGy2hHFCkaW2Ko1MLk4rdskurd4gMSq1/QpEbhSY4wHsFA/bp
-         8HhXlDnQq+O6LsX97PmQ8HLvQEEZ8iVPMu15nPasn92Jbw0PqwakPDM93FvAqLsNUnbW
-         I+7KscdGIH/W+JnINTayjd8bKZy4Br8zEHMbQ3pjMEQDSvp0b601rGyHSttvoVmMSYj1
-         P8FA==
-X-Gm-Message-State: AMke39nLSDd41/9P5z3d+fs5YC4Y/s9atEO95fC1PbS3fdmGg12v7QWHSm3kSBBeEjEcXQ==
-X-Received: by 10.28.215.138 with SMTP id o132mr9038577wmg.41.1488480091685;
-        Thu, 02 Mar 2017 10:41:31 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([141.85.228.72])
-        by smtp.gmail.com with ESMTPSA id o2sm12217314wmb.28.2017.03.02.10.41.30
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 02 Mar 2017 10:41:30 -0800 (PST)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: mchehab@kernel.org,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH v2 1/5] staging:cxd2099: Add spaces around arithmetical operators
-Date: Thu,  2 Mar 2017 20:41:26 +0200
-Message-Id: <20170302184126.3318-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=zF0mN9NH75hUPu0VrgBd4GjOCJHzJiQ+9PqiAhY0u+0=;
+        b=QrPGESjS/PXUKmZLG0EzgQoyRSdPEPLLRqZG0xZUUqmNXDLSz9plbCyP7TC3cowh9a
+         HSCUuRu13LgBiiMxCpWVhiWuGvb00uqghgmuoFBD3YxqCpi6MFExjTbgHsus4HI56kun
+         w3TbScn8r5e1ceBLU16ond2pAU4huwJhkTGxKZmjYspUYziEfJYdn1sIyxrvE1KJCRr5
+         UfpUcBUkeSCGGR8gx05Y+axNP4PtnTfrE9ACK+w/JdDXOTOgMf1UcAOF/g8VEPq02JRm
+         c8yBfVWZKLlmA7YECvyjWxhz0xNO5wTvbTNczjarIX4NG53gY1hgs5t1S/5F9zDo1obj
+         WLEA==
+X-Gm-Message-State: AMCzsaUtT3A7Nqy8/TBUAA3xQ47f/w9Y9f2r5xi8XDamPQRd+GT4jwN2
+	rfpVOht58xtjO3FGY92hiOaBgIHs9cIVuF7Lq6Q=
+X-Google-Smtp-Source: AOwi7QAlBdEntaXcDa+IlIaEaCYTIbpxe3Xn7NxXglQHHnnOHx71G3wSYmS/Zy9zvyyFVlFpGkZvcqAh0/FJ8EPPzXg=
+X-Received: by 10.31.165.11 with SMTP id o11mr4568678vke.103.1507552429444;
+ Mon, 09 Oct 2017 05:33:49 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.103.68.70 with HTTP; Mon, 9 Oct 2017 05:33:49 -0700 (PDT)
+In-Reply-To: <20171009120233.GA7926@salvia>
+References: <20171005101539.32010-1-harshasharmaiitr@gmail.com>
+ <20171006123835.GC4713@salvia> <CANMOCy0E1zpo_0ajtf0jvvZ7oGB1YKtQNkHAK8wEViiaVnsZ8Q@mail.gmail.com>
+ <20171009120233.GA7926@salvia>
+From: Harsha Sharma <harshasharmaiitr@gmail.com>
+Date: Mon, 9 Oct 2017 18:03:49 +0530
+Message-ID: <CANMOCy0orSvkh1+nRRAdFcnbqmbCwNWckrita3Y2-Q8fcq1TrA@mail.gmail.com>
+Subject: Re: [PATCH] tests: shell: add testcases for named objects
+To: Pablo Neira Ayuso <pablo@netfilter.org>
+Cc: netfilter-devel@vger.kernel.org, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset="UTF-8"
 
-Added spaces around multiple arithmetical operators
-to fix the checkpatch.pl issue: CHECK: spaces preferred around that 'operator'.
+On Mon, Oct 9, 2017 at 5:32 PM, Pablo Neira Ayuso <pablo@netfilter.org> wrote:
+> On Sat, Oct 07, 2017 at 01:11:17PM +0530, Harsha Sharma wrote:
+>> On Fri, Oct 6, 2017 at 6:08 PM, Pablo Neira Ayuso <pablo@netfilter.org> wrote:
+>> > On Thu, Oct 05, 2017 at 03:45:39PM +0530, Harsha Sharma wrote:
+>> >> Add testcases for creating named objects with unique name, defined
+>> >> by user and referencing them from rule.
+>> >
+>> > Also applied, thanks.
+>> >
+>> > Could you add another tests for 'limit' objects too? I think I posted
+>> > an example to the mailing list.
+>>
+>> Hello,
+>> I have pulled to latest tree, then make and make installed all changes
+>> but still I'm unable to add named 'limit' objects. If there is something that
+>> I'm missing, please let me know.
+>
+> Are you using a kernel compiled from nf.git tree?
 
-Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
----
- drivers/staging/media/cxd2099/cxd2099.c | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
+No, I was using kernel 4.10 but I have build the kernel 4.14 from
+nf-git tree now.
 
-diff --git a/drivers/staging/media/cxd2099/cxd2099.c b/drivers/staging/media/cxd2099/cxd2099.c
-index c72c3f0..e047ea8 100644
---- a/drivers/staging/media/cxd2099/cxd2099.c
-+++ b/drivers/staging/media/cxd2099/cxd2099.c
-@@ -152,8 +152,8 @@ static int write_pccard(struct cxd *ci, u16 address, u8 *data, u8 n)
- 	if (!status) {
- 		u8 buf[256] = {3};
- 
--		memcpy(buf+1, data, n);
--		status = i2c_write(ci->i2c, ci->cfg.adr, buf, n+1);
-+		memcpy(buf + 1, data, n);
-+		status = i2c_write(ci->i2c, ci->cfg.adr, buf, n + 1);
- 	}
- 	return status;
- }
-@@ -202,7 +202,7 @@ static int write_io_data(struct cxd *ci, u8 *data, u8 n)
- 	if (!status) {
- 		u8 buf[256] = {3};
- 
--		memcpy(buf+1, data, n);
-+		memcpy(buf + 1, data, n);
- 		status = i2c_write(ci->i2c, ci->cfg.adr, buf, n + 1);
- 	}
- 	return 0;
-@@ -531,7 +531,7 @@ static int slot_reset(struct dvb_ca_en50221 *ca, int slot)
- #if 0
- 			read_reg(ci, 0x06, &val);
- 			dev_info(&ci->i2c->dev, "%d:%02x\n", i, val);
--			if (!(val&0x10))
-+			if (!(val & 0x10))
- 				break;
- #else
- 			if (ci->ready)
-@@ -582,18 +582,18 @@ static int campoll(struct cxd *ci)
- 		return 0;
- 	write_reg(ci, 0x05, istat);
- 
--	if (istat&0x40) {
-+	if (istat & 0x40) {
- 		ci->dr = 1;
- 		dev_info(&ci->i2c->dev, "DR\n");
- 	}
--	if (istat&0x20)
-+	if (istat & 0x20)
- 		dev_info(&ci->i2c->dev, "WC\n");
- 
--	if (istat&2) {
-+	if (istat & 2) {
- 		u8 slotstat;
- 
- 		read_reg(ci, 0x01, &slotstat);
--		if (!(2&slotstat)) {
-+		if (!(2 & slotstat)) {
- 			if (!ci->slot_stat) {
- 				ci->slot_stat = DVB_CA_EN50221_POLL_CAM_PRESENT;
- 				write_regm(ci, 0x03, 0x08, 0x08);
-@@ -607,7 +607,7 @@ static int campoll(struct cxd *ci)
- 				ci->ready = 0;
- 			}
- 		}
--		if (istat&8 &&
-+		if (istat & 8 &&
- 		    ci->slot_stat == DVB_CA_EN50221_POLL_CAM_PRESENT) {
- 			ci->ready = 1;
- 			ci->slot_stat |= DVB_CA_EN50221_POLL_CAM_READY;
-@@ -648,7 +648,7 @@ static int read_data(struct dvb_ca_en50221 *ca, int slot, u8 *ebuf, int ecount)
- 	mutex_lock(&ci->lock);
- 	read_reg(ci, 0x0f, &msb);
- 	read_reg(ci, 0x10, &lsb);
--	len = (msb<<8)|lsb;
-+	len = (msb << 8) | lsb;
- 	read_block(ci, 0x12, ebuf, len);
- 	ci->dr = 0;
- 	mutex_unlock(&ci->lock);
-@@ -662,8 +662,8 @@ static int write_data(struct dvb_ca_en50221 *ca, int slot, u8 *ebuf, int ecount)
- 
- 	mutex_lock(&ci->lock);
- 	dev_info(&ci->i2c->dev, "write_data %d\n", ecount);
--	write_reg(ci, 0x0d, ecount>>8);
--	write_reg(ci, 0x0e, ecount&0xff);
-+	write_reg(ci, 0x0d, ecount >> 8);
-+	write_reg(ci, 0x0e, ecount & 0xff);
- 	write_block(ci, 0x11, ebuf, ecount);
- 	mutex_unlock(&ci->lock);
- 	return ecount;
--- 
-2.9.3
+>
+>> Can you also please suggest some more tasks ?
+>
+> Yes. It would be great if you could update tests/py/nft-tests.py to
+> add a new option, basically to take all tests from files, place them
+> in a file and exercise the 'nft -f' path with such an autogenerated
+> large file with all tests.
+>
+> Would you have a look into that?
+>
 
+Yes, definitely.
+Thanks for your time :).
+
+Regards,
+Harsha Sharma
+
+> Thanks.
 
