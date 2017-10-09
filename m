@@ -1,121 +1,64 @@
-X-GM-THRID: 6751743425868988416
-X-Received: by 2002:a25:760c:: with SMTP id r12mr3465366ybc.240.1572012767140;
-        Fri, 25 Oct 2019 07:12:47 -0700 (PDT)
+X-GM-THRID: 6473933964018974720
+X-Received: by 10.28.145.11 with SMTP id t11mr1266147wmd.0.1507555339111;
+        Mon, 09 Oct 2017 06:22:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a81:7845:: with SMTP id t66ls314560ywc.14.gmail; Fri, 25 Oct
- 2019 07:12:45 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyG+Vor33yfXhB1oO82AYDsA9b4oWOzoWYIReAYgKnwYKwMAddoyo70u2Ea7wImXQBpI+CI
-X-Received: by 2002:a0d:d6d5:: with SMTP id y204mr2550777ywd.338.1572012765632;
-        Fri, 25 Oct 2019 07:12:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572012765; cv=none;
+Received: by 10.28.145.14 with SMTP id t14ls162863wmd.4.canary-gmail; Mon, 09
+ Oct 2017 06:22:18 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QABhbnj5Aajz8Tevbp5MTSX0v9qY22tf2aBYghSHISu9xZQTftM3Y3F7KekcLLPH/oRhl+B
+X-Received: by 10.223.184.43 with SMTP id h40mr155473wrf.6.1507555338395;
+        Mon, 09 Oct 2017 06:22:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507555338; cv=none;
         d=google.com; s=arc-20160816;
-        b=acRAlLvLjMjriTgkvh1Eavc7mdfqjZbbUfaC5jHvOtPjxQ///97vWDuuomYENPwevJ
-         elk2ZBYo7gttaLnTKytTiFzX94V+ruSFf9eqxTLkfDqyFc9058jhq34zU8m4B9vAjK71
-         YbFYjrAFr6a/Spg2dXIiT8wj/FqaHvGwVYPCRxa48sb1oTu5TYeDhUFDoHCvtP8/v9Re
-         zbP/5Q6KuCtVlOnBIEBLBziGPZhdooJzY7vrTRW/ZP5rAtPULnk+yNfHO24/h0CjtOEs
-         tIduEc9d+hMvAP9+O9ULMMZLLij8Jl/qlida7+rmtMX7IDgZF3QcLoXd59GghC78TnD6
-         5/TA==
+        b=WROdV80pVrEKzuxIrqxxT85LVj+TrvcNFCVUfA9H0DGxkkq3QECocyCIIfdGexew8h
+         1X1QkvHkA3EVp/ssvFQkMVraSZ2aisoWavhcDbWCv5dEfO0zy0UceTeOLDno2mqF5VA/
+         DOZiYSB//x03ka+i9dR3t6Ksbvimoum2yZH8HiZR3QVDYJ3uKKXntqOmnBDOAc1JJMDh
+         YKuyVS4Q8CZ1OEivzKpFRdn5C/uVdLBbw/VXFsyRo2LPdoD2YiWsrmNu7WuaftYQxaTr
+         EFWQLOU8L0AA1jhaX8lZ2PWaOvKve535wy36X1En4oUUw+nSjdKhFnN1iCXB/mVw9B/m
+         /21g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=B3QNGQaRfRP3JxiuDzrTC4XuUl3K70Q06jgbwqGq/fY=;
-        b=UykXBUl8KO0AuP22pu+es86CX6bUqr7wvVxc8xcVfO/OL76QLrRHdt0RRP3nH47zAJ
-         aj/jXhuvohuo0eIRsNe5clo96ve/NH8TUKn7ufo6tWLKQjp3/QMVeEIwTvFCPLxEriB9
-         au2oKelXOE2XEmtyhJ2U7xWoLAtK4ArTYM1cxAmlarRnlTneJ7s5P/DHWrEmhpIipgPj
-         s9jeXz+65tKHoHH/1FkSLBCUpBgBmNiCS5HIsgSLFrsth2/aEL3a998cCo5aqV1TOka9
-         9Flfvk1OYUSI8VT+MkiOj6jrvg8A8zb6NOSi2KU1ACfJX4wSDGpww1t8yN0jFFYPQgZ/
-         3qrg==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=l97IExo/+PbtIaOE7Fz9GcAWi/X6syjvZGgKRiSNTpM=;
+        b=gGoFFkcT58mbDY4YiUqyI7UlYiygGDLsVVcDSaeZJXltEHBZfer2D5aZ5RcExLbmR8
+         zNu3S6aCzSO4576OYJUEegrlYmxklasslAuC9J76/NojI4XxbkSzp7ICoEN8C/z4GVzT
+         gIpsxHgi/LjiUNpR7yPF4uyge1icIf7zkmsy1wYz3FQI4yakyFSTcjOKekaVCFT1SdGI
+         mp6qZPxMcpS+Ipj1KsnPw9hnnv8iPgPmBpNCNwdOxAo0Hi9PPBYrSy2qMKaE/ISI0rOG
+         vakCJpxIBrl8u7o83PxA4rWu+2s/bBmBGFy0NV/AN5sDynll8arWZ8ElTAKEufrqBfYe
+         pCVQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZfocA9c+;
-       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <cristianenavescardoso09@gmail.com>
-Received: from mail-qt1-x842.google.com (mail-qt1-x842.google.com. [2607:f8b0:4864:20::842])
-        by gmr-mx.google.com with ESMTPS id x7si158096ywd.5.2019.10.25.07.12.45
+       spf=pass (google.com: domain of pablo@gnumonks.org designates 2001:780:45:1d:225:90ff:fe52:c662 as permitted sender) smtp.mailfrom=pablo@gnumonks.org
+Return-Path: <pablo@gnumonks.org>
+Received: from ganesha.gnumonks.org (ganesha.gnumonks.org. [2001:780:45:1d:225:90ff:fe52:c662])
+        by gmr-mx.google.com with ESMTPS id p200si1024231wmg.4.2017.10.09.06.22.18
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 25 Oct 2019 07:12:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) client-ip=2607:f8b0:4864:20::842;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZfocA9c+;
-       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x842.google.com with SMTP id w14so3402834qto.9
-        for <outreachy-kernel@googlegroups.com>; Fri, 25 Oct 2019 07:12:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=B3QNGQaRfRP3JxiuDzrTC4XuUl3K70Q06jgbwqGq/fY=;
-        b=ZfocA9c+Vfpz7YXih1cyLCfA2sF6ubYtLj39U1xirNijZgrnSxvobYdnpyoVzgD6CW
-         t+uH7n6cu8lsFQ1Y+MhsG8mQ0LYanKLuRUDtVX98+tpu0RK2TfZJwuEhksC9X7SbH7PN
-         tbidiiPFAkuQvz1LHaslqhZ5x2dl0Dibr645ovHpaSxbwx22wccf4Wxwtj7AXJkEBPR2
-         7MciGuIVfurNyz9qdDZxoQ8LDIOgY9hKKMxl1TwfdMgSnWBiSY0S4z2jeujB0VNn18hy
-         hJssj+Fgjp8IvuEjpnvgNvNO8ZHMRsouGxmHdpZ0KEx5tnOlnZLCKrIHlS85xyPwZNrd
-         GR9A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=B3QNGQaRfRP3JxiuDzrTC4XuUl3K70Q06jgbwqGq/fY=;
-        b=Ps6+0N7qHt0RUn1lStglltS0XvrU3tJFkzmfRG0iHhpoNeVwV20cMyYk/Ul6cJGXuJ
-         hTNC9XAd/NigfZVMfewypJzVqly2zi4u0Om5uRlVYU9B/4XZ5nY5umoB076kp99pWxof
-         7i0VuI/dedF5B1yLRP2f9QghD0YtFkmjxN/9U9U8j9sENajzQ0trAqOegAq9WaCBiIAK
-         qTzYmMh7Z2FNZOg7TNMpVsc0xrKLX2ZNbbbN3P4IDmcrcCxF7v0omoyyAScA6TNFFVKL
-         55NfLnZLIw1kpNsA7u4R4JCHDpExxRjoOJreFnBOqPwnWAMfx1M0n7nLkws6SkJ8N7WH
-         Vx+w==
-X-Gm-Message-State: APjAAAVNaUukFejWfVX04yYQs/WfMHfMQWroQEjTIz1enrYya53IfoT+
-	MVmKhC7ELub1TOkVVDn7xAJIToEl30akEQ==
-X-Received: by 2002:ac8:384a:: with SMTP id r10mr3260746qtb.261.1572012765089;
-        Fri, 25 Oct 2019 07:12:45 -0700 (PDT)
-Return-Path: <cristianenavescardoso09@gmail.com>
-Received: from cristiane-Inspiron-5420 ([131.100.148.220])
-        by smtp.gmail.com with ESMTPSA id c195sm1421388qkg.6.2019.10.25.07.12.43
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 25 Oct 2019 07:12:44 -0700 (PDT)
-Date: Fri, 25 Oct 2019 11:12:40 -0300
-From: CristianeNaves <cristianenavescardoso09@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>,
-	Joerg Roedel <joro@8bytes.org>,
-	Greg KH <gregkh@linuxfoundation.org>
-Subject: [PATCH] iommu : Remove var of return
-Message-ID: <20191025141240.GA30575@cristiane-Inspiron-5420>
+        Mon, 09 Oct 2017 06:22:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pablo@gnumonks.org designates 2001:780:45:1d:225:90ff:fe52:c662 as permitted sender) client-ip=2001:780:45:1d:225:90ff:fe52:c662;
+Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of pablo@gnumonks.org designates 2001:780:45:1d:225:90ff:fe52:c662 as permitted sender) smtp.mailfrom=pablo@gnumonks.org
+Received: from 129.166.216.87.static.jazztel.es ([87.216.166.129] helo=gnumonks.org)
+	by ganesha.gnumonks.org with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+	(Exim 4.84_2)
+	(envelope-from <pablo@gnumonks.org>)
+	id 1e1Y0d-0007AJ-Vr; Mon, 09 Oct 2017 15:22:17 +0200
+Date: Mon, 9 Oct 2017 15:22:15 +0200
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Harsha Sharma <harshasharmaiitr@gmail.com>
+Cc: netfilter-devel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] test: shell: update shell/run-tests.sh to refer to
+ relative path of testcase
+Message-ID: <20171009132215.GB8460@salvia>
+References: <20171006224752.2188-1-harshasharmaiitr@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20171006224752.2188-1-harshasharmaiitr@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Spam-Score: -2.9 (--)
 
-Remove the variable of return. Issue found by
-coccicheck(scripts/coccinelle/misc/returnvar.cocci)
+On Sat, Oct 07, 2017 at 04:17:52AM +0530, Harsha Sharma wrote:
+> Refer to relative path for tests from any directory if path for testcases
+> is specified.
 
-Signed-off-by: CristianeNaves <cristianenavescardoso09@gmail.com>
----
- drivers/iommu/virtio-iommu.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/drivers/iommu/virtio-iommu.c b/drivers/iommu/virtio-iommu.c
-index 3ea9d76..d8f29c8 100644
---- a/drivers/iommu/virtio-iommu.c
-+++ b/drivers/iommu/virtio-iommu.c
-@@ -153,7 +153,6 @@ static off_t viommu_get_write_desc_offset(struct viommu_dev *viommu,
-  */
- static int __viommu_sync_req(struct viommu_dev *viommu)
- {
--	int ret = 0;
- 	unsigned int len;
- 	size_t write_len;
- 	struct viommu_request *req;
-@@ -182,7 +181,7 @@ static int __viommu_sync_req(struct viommu_dev *viommu)
- 		kfree(req);
- 	}
- 
--	return ret;
-+	return 0;
- }
- 
- static int viommu_sync_req(struct viommu_dev *viommu)
--- 
-2.7.4
-
+Applied, thanks.
 
