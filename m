@@ -1,316 +1,692 @@
 X-GM-THRID: 6475501667265544192
-X-Received: by 10.55.158.86 with SMTP id h83mr3160808qke.6.1507851132211;
-        Thu, 12 Oct 2017 16:32:12 -0700 (PDT)
+X-Received: by 10.99.111.7 with SMTP id k7mr101273pgc.109.1507758909624;
+        Wed, 11 Oct 2017 14:55:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.55.159.85 with SMTP id i82ls2540568qke.2.gmail; Thu, 12 Oct
- 2017 16:32:11 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+RfIFktvAhhVIYAHG2uHacihOikg1nlyvkM1u6xXW+CL6mFGP1TMdK9RPrYhrL9B7dguRVg
-X-Received: by 10.200.17.130 with SMTP id d2mr3291163qtj.17.1507851131661;
-        Thu, 12 Oct 2017 16:32:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507851131; cv=none;
+Received: by 10.99.111.68 with SMTP id k65ls584655pgc.22.gmail; Wed, 11 Oct
+ 2017 14:55:08 -0700 (PDT)
+X-Received: by 10.98.134.12 with SMTP id x12mr149640pfd.24.1507758908375;
+        Wed, 11 Oct 2017 14:55:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507758908; cv=none;
         d=google.com; s=arc-20160816;
-        b=Kf1yCa/Bbv4RQeu+dHZ6mnxPiWJik8AjfgJ4l1HrRmZ4SvKgN7bgp4oxVYmRgXWqoV
-         BlFgCMa+2bD8C6TCkG/hLfCfD2IRBN2uDs3MRCCxJcr4aSpt5oKkdIUoMpc7rGPMx8cC
-         MFLKMZFdfy3fejgLjoH9LbI/V8FXhkxBR1DiAdvC+OpQS0AkMTuztGJapcZuaKOT7jI1
-         zK9EjIXLvDz4Z4tgVX4dqTO0VS+ZE2kjKnbGodbH5rZvxUDmdwlmVlnO05JjkLZTT1rH
-         pavMTEV/W1qL1pkbyDi8AbWdZReXzUU5M7SwTbWj4E80/GZgODVoh7o2amuDw4W/+qSF
-         jqcA==
+        b=S7+GElJWU7B7uqasWZ6gfvno4AX/6t+xHnnq01ZsnaBfpYHyfM7bXTF+zAkoGkfe+/
+         lhP2XEW200UbPaq9Zq/GmusqJ6uya7WIzj//64rJvqeLG7/0QPXENwZ5yPbTJ7tzwBRE
+         8nwmIhoIuHLPe9b+hv9aTfMkWTwRa9fVkQrgeK29oNUIhmNi5IQG4zNg+aizoXrOu7H/
+         m/xL9s/vGZqcppRZGd+ba15GDDRWc0YgsPN3fkq3xxNoEZkGwbzaalwHV1mvBJonRIbC
+         tc/NE9rfBTDQczn0WN+XjiTuX45TebRTzVDWNpooNlQUgOIncg4hmSYjvTGZ6LTWpizk
+         KXqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:message-id
-         :subject:cc:to:from:date:arc-authentication-results;
-        bh=2Spzbnazo6X283asIQ6oVzEFzD6H7Z8Q/AaJ3S799oU=;
-        b=jdRJ5Sqzteuz9EC6nRW7pA6GTbV8kBRCvazcY+UwSFPno4JYZN+tvX8W9HDqc1k2Ij
-         lFDTxD99Z2YGF2WkvCjdbqla2ECe1Kw80gzxtcImtLn7aN8oMn1mXIxGFr4cHQYfXcuQ
-         lEZsX08jenoCx+HQBTJsX9LT/r/DAFlSE+EPAnKG7QJJlyHLgZFGsc3u/C15iL/aPXi8
-         6L+2C36vMZOSNX6z/2IEJifOf+J2Hquky1jGZ4YZxMzewQQ4mXoW8Eg4D8BL6fDDTxCD
-         n/UbPPDxflIprYQoR0LP8OS2flSsMaCF/NFm5pkpWiOXhqYVdZ7vo8/jqHTztmTrxEVw
-         UqcQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature
+         :arc-authentication-results;
+        bh=yY1tkbxoUVTjc1+/kIZxvKCiPc9NyyU4s/fIvo58A8E=;
+        b=KtTFbWbvZWj2esibqSMmyAeecA8h6JCjVY9Tu4V13RlQVdsXKkQQEk+gm96cfE2dek
+         GC9FUgDa0oFLHyd+FO0LXz25h+dEVloRyCSbGiGFwHVmoBZp8hrP+hRKTOh8zXeBGPJ6
+         BRZjfXLBqSrAMBaMIGjMarJjty5G5lprmfVe5dZX0OT/s2JtLuuFxViNx7gwCctFD3PN
+         Zfyc9aYaST0eGfICSt6dX/5XpdTndWi6ONudJvJSUP9I9zddfp35Lwv/3wFZ6IPWemj9
+         DVXOQ0/wdq7VE6RJnq4WqnHfRDNAMFXfr/y9PfHOh8M19SFPmxw4/fAahcqy2mbzDXnd
+         6ZEQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of fengguang.wu@intel.com designates 192.55.52.88 as permitted sender) smtp.mailfrom=fengguang.wu@intel.com
-Return-Path: <fengguang.wu@intel.com>
-Received: from mga01.intel.com (mga01.intel.com. [192.55.52.88])
-        by gmr-mx.google.com with ESMTPS id i8si335484qta.1.2017.10.12.16.32.11
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=klnn4NpW;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from mail-pf0-x232.google.com (mail-pf0-x232.google.com. [2607:f8b0:400e:c00::232])
+        by gmr-mx.google.com with ESMTPS id c200si1591853pfb.14.2017.10.11.14.55.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Oct 2017 16:32:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fengguang.wu@intel.com designates 192.55.52.88 as permitted sender) client-ip=192.55.52.88;
+        Wed, 11 Oct 2017 14:55:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) client-ip=2607:f8b0:400e:c00::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of fengguang.wu@intel.com designates 192.55.52.88 as permitted sender) smtp.mailfrom=fengguang.wu@intel.com
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 12 Oct 2017 16:32:10 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.43,368,1503385200"; 
-   d="gz'50?scan'50,208,50";a="1181432732"
-Received: from bee.sh.intel.com (HELO bee) ([10.239.97.14])
-  by orsmga001.jf.intel.com with ESMTP; 12 Oct 2017 16:32:08 -0700
-Received: from kbuild by bee with local (Exim 4.84_2)
-	(envelope-from <fengguang.wu@intel.com>)
-	id 1e2n2W-000GFO-7d; Fri, 13 Oct 2017 07:37:20 +0800
-Date: Fri, 13 Oct 2017 07:32:06 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Haneen Mohammed <hamohammed.sa@gmail.com>
-Cc: kbuild-all@01.org, dri-devel@lists.freedesktop.org,
-	Daniel Vetter <daniel.vetter@ffwll.ch>, gregkh@linuxfoundation.org,
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=klnn4NpW;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x232.google.com with SMTP id z11so2191311pfk.4
+        for <outreachy-kernel@googlegroups.com>; Wed, 11 Oct 2017 14:55:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=yY1tkbxoUVTjc1+/kIZxvKCiPc9NyyU4s/fIvo58A8E=;
+        b=klnn4NpWyyS+sKhdhYW800sZbx32rL7td3GtcWRZR0elBr3RMFxkSR/Y4dcEEYK5mj
+         NfZaatMRkau33nEGWp4MEjdL18XBfKaul+zNH/6vOwA/uP7qJOKPIIFO8GYbSNuFmReA
+         /02QOs2ckZhwSp9xb7E1vch0PVC2vZ4UZGxWdhaulOsoi5q1dM8ACIv3rRIxGz/CgotX
+         xZzCQute+FHZwfVLYBDSpd/+qQ69DmTcvhLXr+8zB25lBGQfMbXWIJptRVey+RDxf+zB
+         O6tXZceLSP7gpg1hHTPRJdoMn+Pic/ZRUifaKupuN5Q/QR1CNYEdTTIuevhPJAGrBul3
+         f0bw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=yY1tkbxoUVTjc1+/kIZxvKCiPc9NyyU4s/fIvo58A8E=;
+        b=UtPDHvxCViy0x+UYyBybNWOwiVjqP1Ko1Cw0OEqNnYY8HByPYKlAHD9sU7YNXH4s7o
+         YpmJhvZ4BNMay2p5xjxUx5qrD15N7NjFpReZ8t9rU5Vx07IZea5frX9tmuF10qovxHjl
+         rkT6DFLxkNFN+XLkoNUhCJWOGYsR7eOiE5IzDVEUUWRY1LsVgCZ3QaMAKRQWZXtCwUK7
+         E4OCgyh/mx3l4/Aqk8oG2RAjPWQKR5kSKKL6VwqrAwPjGhU8ecxNcT5LPOVeRrHsVjL2
+         decHFtQq/myp/rIK8WvR7KJavPi5hA9IL0JF9KBMvdj7+GQ3OM6DsIBcRV0ERfOfCYUL
+         e8xA==
+X-Gm-Message-State: AMCzsaXsbW0r8d/zUHflYjYvypb1TTe0cC3+XFWJQ1iMAwRuQGMvxpq1
+	Q8x/byFRSDKmRKj20/LE+mPUen+u
+X-Google-Smtp-Source: AOwi7QA6FB3pCOuKILEyxIMkd7lV18Kbo4S4gyY2rFLdqu9zGTwbxZJhwaiRatb50XmGukFBFV0l9A==
+X-Received: by 10.98.21.86 with SMTP id 83mr350178pfv.290.1507758907866;
+        Wed, 11 Oct 2017 14:55:07 -0700 (PDT)
+Return-Path: <hamohammed.sa@gmail.com>
+Received: from Haneen ([64.77.242.50])
+        by smtp.gmail.com with ESMTPSA id o9sm14163288pfk.162.2017.10.11.14.55.06
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 11 Oct 2017 14:55:07 -0700 (PDT)
+Date: Wed, 11 Oct 2017 15:55:05 -0600
+From: Haneen Mohammed <hamohammed.sa@gmail.com>
+To: Daniel Vetter <daniel@ffwll.ch>
+Cc: dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>,
+	Daniel Vetter <daniel.vetter@ffwll.ch>,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>,
+	gregkh@linuxfoundation.org
 Subject: Re: [PATCH 1/2] drm: Extract drm_debug.[hc]
-Message-ID: <201710130730.TWb7j1dL%fengguang.wu@intel.com>
+Message-ID: <20171011215505.GB27169@Haneen>
+References: <cover.1507693829.git.hamohammed.sa@gmail.com>
+ <830fcacb4513dc2ca7f44cb1828d8cfa0e4e15ae.1507693829.git.hamohammed.sa@gmail.com>
+ <20171011114047.af5kyccy3epxf7ke@phenom.ffwll.local>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="NzB8fVQJ5HfG6fxh"
-Content-Disposition: inline
-In-Reply-To: <830fcacb4513dc2ca7f44cb1828d8cfa0e4e15ae.1507693829.git.hamohammed.sa@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-SA-Exim-Connect-IP: <locally generated>
-X-SA-Exim-Mail-From: fengguang.wu@intel.com
-X-SA-Exim-Scanned: No (on bee); SAEximRunCond expanded to false
-
-
---NzB8fVQJ5HfG6fxh
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <20171011114047.af5kyccy3epxf7ke@phenom.ffwll.local>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Hi Haneen,
+On Wed, Oct 11, 2017 at 01:40:47PM +0200, Daniel Vetter wrote:
+> On Tue, Oct 10, 2017 at 10:13:36PM -0600, Haneen Mohammed wrote:
+> > Extract DRM_* debug macros from drmP.h to drm_debug.h and move printting
+> > related functions from drm_drv.[hc] to drm_debug.[hc].
+> > 
+> > Update kerneldoc include directives accordingly.
+> > 
+> > Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+> > ---
+> >  Documentation/gpu/drm-uapi.rst |   9 ++
+> >  drivers/gpu/drm/Makefile       |   2 +-
+> >  drivers/gpu/drm/drm_debug.c    |  75 ++++++++++++++++
+> >  drivers/gpu/drm/drm_drv.c      |  47 ----------
+> >  include/drm/drmP.h             | 149 +------------------------------
+> >  include/drm/drm_debug.h        | 193 +++++++++++++++++++++++++++++++++++++++++
+> >  include/drm/drm_drv.h          |   7 --
+> >  7 files changed, 279 insertions(+), 203 deletions(-)
+> >  create mode 100644 drivers/gpu/drm/drm_debug.c
+> >  create mode 100644 include/drm/drm_debug.h
+> > 
+> > diff --git a/Documentation/gpu/drm-uapi.rst b/Documentation/gpu/drm-uapi.rst
+> > index 679373b..9a374e6 100644
+> > --- a/Documentation/gpu/drm-uapi.rst
+> > +++ b/Documentation/gpu/drm-uapi.rst
+> > @@ -235,6 +235,15 @@ Debugfs Support
+> >  .. kernel-doc:: drivers/gpu/drm/drm_debugfs.c
+> >     :export:
+> >  
+> > +Debug Support
+> > +-------------
+> > +
+> > +.. kernel-doc:: include/drm/drm_debug.h
+> > +   :internal:
+> > +
+> > +.. kernel-doc:: drivers/gpu/drm/drm_debug.c
+> > +   :export:
+> 
+> debug output isn't really userspace interfaces. Why did you place it here?
+> 
+> I think finding a suitable place somewhere in drm-internal.rst would be
+> better.
+> -Daniel
+> 
 
-[auto build test WARNING on drm/drm-next]
-[also build test WARNING on v4.14-rc4 next-20171009]
-[if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
+I wasn't sure where to place it, I've just followed the example of drm_debugfs.[hc].
+Sure, will fix that. 
 
-url:    https://github.com/0day-ci/linux/commits/Haneen-Mohammed/drm-Extract-drm_debug-hc/20171013-052937
-base:   git://people.freedesktop.org/~airlied/linux.git drm-next
-reproduce: make htmldocs
+Haneen
 
-All warnings (new ones prefixed by >>):
-
-   WARNING: convert(1) not found, for SVG to PDF conversion install ImageMagick (https://www.imagemagick.org)
-   kernel/trace/blktrace.c:824: warning: No description found for parameter 'cgid'
-   drivers/gpio/gpiolib.c:593: warning: No description found for parameter '16'
-   drivers/gpio/gpiolib.c:593: warning: Excess struct/union/enum/typedef member 'events' description in 'lineevent_state'
-   include/linux/usb/gadget.h:232: warning: No description found for parameter 'claimed'
-   include/linux/usb/gadget.h:232: warning: No description found for parameter 'enabled'
-   include/linux/usb/gadget.h:414: warning: No description found for parameter 'quirk_altset_not_supp'
-   include/linux/usb/gadget.h:414: warning: No description found for parameter 'quirk_stall_not_supp'
-   include/linux/usb/gadget.h:414: warning: No description found for parameter 'quirk_zlp_not_supp'
-   fs/inode.c:1680: warning: No description found for parameter 'rcu'
-   include/linux/jbd2.h:443: warning: No description found for parameter 'i_transaction'
-   include/linux/jbd2.h:443: warning: No description found for parameter 'i_next_transaction'
-   include/linux/jbd2.h:443: warning: No description found for parameter 'i_list'
-   include/linux/jbd2.h:443: warning: No description found for parameter 'i_vfs_inode'
-   include/linux/jbd2.h:443: warning: No description found for parameter 'i_flags'
-   include/linux/jbd2.h:497: warning: No description found for parameter 'h_rsv_handle'
-   include/linux/jbd2.h:497: warning: No description found for parameter 'h_reserved'
-   include/linux/jbd2.h:497: warning: No description found for parameter 'h_type'
-   include/linux/jbd2.h:497: warning: No description found for parameter 'h_line_no'
-   include/linux/jbd2.h:497: warning: No description found for parameter 'h_start_jiffies'
-   include/linux/jbd2.h:497: warning: No description found for parameter 'h_requested_credits'
-   include/linux/jbd2.h:497: warning: No description found for parameter 'saved_alloc_context'
-   include/linux/jbd2.h:1050: warning: No description found for parameter 'j_chkpt_bhs'
-   include/linux/jbd2.h:1050: warning: No description found for parameter 'j_devname'
-   include/linux/jbd2.h:1050: warning: No description found for parameter 'j_average_commit_time'
-   include/linux/jbd2.h:1050: warning: No description found for parameter 'j_min_batch_time'
-   include/linux/jbd2.h:1050: warning: No description found for parameter 'j_max_batch_time'
-   include/linux/jbd2.h:1050: warning: No description found for parameter 'j_commit_callback'
-   include/linux/jbd2.h:1050: warning: No description found for parameter 'j_failed_commit'
-   include/linux/jbd2.h:1050: warning: No description found for parameter 'j_chksum_driver'
-   include/linux/jbd2.h:1050: warning: No description found for parameter 'j_csum_seed'
-   fs/jbd2/transaction.c:511: warning: No description found for parameter 'type'
-   fs/jbd2/transaction.c:511: warning: No description found for parameter 'line_no'
-   fs/jbd2/transaction.c:641: warning: No description found for parameter 'gfp_mask'
-   include/drm/drm_drv.h:594: warning: No description found for parameter 'gem_prime_pin'
-   include/drm/drm_drv.h:594: warning: No description found for parameter 'gem_prime_unpin'
-   include/drm/drm_drv.h:594: warning: No description found for parameter 'gem_prime_res_obj'
-   include/drm/drm_drv.h:594: warning: No description found for parameter 'gem_prime_get_sg_table'
-   include/drm/drm_drv.h:594: warning: No description found for parameter 'gem_prime_import_sg_table'
-   include/drm/drm_drv.h:594: warning: No description found for parameter 'gem_prime_vmap'
-   include/drm/drm_drv.h:594: warning: No description found for parameter 'gem_prime_vunmap'
-   include/drm/drm_drv.h:594: warning: No description found for parameter 'gem_prime_mmap'
-   include/drm/drm_mode_config.h:771: warning: No description found for parameter 'modifiers_property'
-   include/drm/drm_mode_config.h:771: warning: Excess struct/union/enum/typedef member 'modifiers' description in 'drm_mode_config'
-   include/drm/drm_plane.h:552: warning: No description found for parameter 'modifiers'
-   include/drm/drm_plane.h:552: warning: No description found for parameter 'modifier_count'
->> include/drm/drm_debug.h:78: warning: No description found for parameter 'dev'
-   include/drm/drm_debug.h:78: warning: No description found for parameter 'fmt'
-   include/drm/drm_debug.h:96: warning: No description found for parameter 'dev'
-   include/drm/drm_debug.h:96: warning: No description found for parameter 'fmt'
-   include/drm/drm_debug.h:121: warning: No description found for parameter 'dev'
-   include/drm/drm_debug.h:121: warning: No description found for parameter 'fmt'
-   include/drm/drm_debug.h:172: warning: No description found for parameter 'dev'
-   include/drm/drm_debug.h:172: warning: No description found for parameter 'fmt'
->> drivers/gpu/drm/drm_debug.c:1: warning: no structured comments found
-   drivers/gpu/host1x/bus.c:50: warning: No description found for parameter 'driver'
-   drivers/gpu/drm/tve200/tve200_drv.c:1: warning: no structured comments found
-   Documentation/core-api/kernel-api.rst:354: ERROR: Error in "kernel-doc" directive:
-   unknown option: "external".
-
-vim +/dev +78 include/drm/drm_debug.h
-
-    48	
-    49	#define _DRM_PRINTK(once, level, fmt, ...)				\
-    50		do {								\
-    51			printk##once(KERN_##level "[" DRM_NAME "] " fmt,	\
-    52				     ##__VA_ARGS__);				\
-    53		} while (0)
-    54	
-    55	#define DRM_INFO(fmt, ...)						\
-    56		_DRM_PRINTK(, INFO, fmt, ##__VA_ARGS__)
-    57	#define DRM_NOTE(fmt, ...)						\
-    58		_DRM_PRINTK(, NOTICE, fmt, ##__VA_ARGS__)
-    59	#define DRM_WARN(fmt, ...)						\
-    60		_DRM_PRINTK(, WARNING, fmt, ##__VA_ARGS__)
-    61	
-    62	#define DRM_INFO_ONCE(fmt, ...)						\
-    63		_DRM_PRINTK(_once, INFO, fmt, ##__VA_ARGS__)
-    64	#define DRM_NOTE_ONCE(fmt, ...)						\
-    65		_DRM_PRINTK(_once, NOTICE, fmt, ##__VA_ARGS__)
-    66	#define DRM_WARN_ONCE(fmt, ...)						\
-    67		_DRM_PRINTK(_once, WARNING, fmt, ##__VA_ARGS__)
-    68	
-    69	/**
-    70	 * Error output.
-    71	 *
-    72	 * \param fmt printf() like format string.
-    73	 * \param arg arguments
-    74	 */
-    75	#define DRM_DEV_ERROR(dev, fmt, ...)					\
-    76		drm_dev_printk(dev, KERN_ERR, DRM_UT_NONE, __func__, " *ERROR*",\
-    77			       fmt, ##__VA_ARGS__)
-  > 78	#define DRM_ERROR(fmt, ...)						\
-    79		drm_printk(KERN_ERR, DRM_UT_NONE, fmt,	##__VA_ARGS__)
-    80	
-
----
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
-
---NzB8fVQJ5HfG6fxh
-Content-Type: application/gzip
-Content-Disposition: attachment; filename=".config.gz"
-Content-Transfer-Encoding: base64
-
-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
-tacaLxOoEjlsKo3/PyJddtRAYQAA
-
---NzB8fVQJ5HfG6fxh--
+> > +
+> >  Sysfs Support
+> >  =============
+> >  
+> > diff --git a/drivers/gpu/drm/Makefile b/drivers/gpu/drm/Makefile
+> > index a8acc19..d09bd06 100644
+> > --- a/drivers/gpu/drm/Makefile
+> > +++ b/drivers/gpu/drm/Makefile
+> > @@ -3,7 +3,7 @@
+> >  # Direct Rendering Infrastructure (DRI) in XFree86 4.1.0 and higher.
+> >  
+> >  drm-y       :=	drm_auth.o drm_bufs.o drm_cache.o \
+> > -		drm_context.o drm_dma.o \
+> > +		drm_context.o drm_dma.o drm_debug.o \
+> >  		drm_file.o drm_gem.o drm_ioctl.o drm_irq.o \
+> >  		drm_lock.o drm_memory.o drm_drv.o \
+> >  		drm_scatter.o drm_pci.o \
+> > diff --git a/drivers/gpu/drm/drm_debug.c b/drivers/gpu/drm/drm_debug.c
+> > new file mode 100644
+> > index 0000000..a79593f
+> > --- /dev/null
+> > +++ b/drivers/gpu/drm/drm_debug.c
+> > @@ -0,0 +1,75 @@
+> > +/*
+> > + * Copyright 2001 VA Linux Systems, Inc., Sunnyvale, California.
+> > + * All Rights Reserved.
+> > + *
+> > + * Author Rickard E. (Rik) Faith <faith@valinux.com>
+> > + *
+> > + * Permission is hereby granted, free of charge, to any person obtaining a
+> > + * copy of this software and associated documentation files (the "Software"),
+> > + * to deal in the Software without restriction, including without limitation
+> > + * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+> > + * and/or sell copies of the Software, and to permit persons to whom the
+> > + * Software is furnished to do so, subject to the following conditions:
+> > + *
+> > + * The above copyright notice and this permission notice (including the next
+> > + * paragraph) shall be included in all copies or substantial portions of the
+> > + * Software.
+> > + *
+> > + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> > + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> > + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+> > + * PRECISION INSIGHT AND/OR ITS SUPPLIERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+> > + * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+> > + * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+> > + * DEALINGS IN THE SOFTWARE.
+> > + */
+> > +
+> > +#include <drm/drm_debug.h>
+> > +#include <drm/drmP.h>
+> > +
+> > +#define DRM_PRINTK_FMT "[" DRM_NAME ":%s]%s %pV"
+> > +
+> > +void drm_dev_printk(const struct device *dev, const char *level,
+> > +		    unsigned int category, const char *function_name,
+> > +		    const char *prefix, const char *format, ...)
+> > +{
+> > +	struct va_format vaf;
+> > +	va_list args;
+> > +
+> > +	if (category != DRM_UT_NONE && !(drm_debug & category))
+> > +		return;
+> > +
+> > +	va_start(args, format);
+> > +	vaf.fmt = format;
+> > +	vaf.va = &args;
+> > +
+> > +	if (dev)
+> > +		dev_printk(level, dev, DRM_PRINTK_FMT, function_name, prefix,
+> > +			   &vaf);
+> > +	else
+> > +		printk("%s" DRM_PRINTK_FMT, level, function_name, prefix, &vaf);
+> > +
+> > +	va_end(args);
+> > +}
+> > +EXPORT_SYMBOL(drm_dev_printk);
+> > +
+> > +void drm_printk(const char *level, unsigned int category,
+> > +		const char *format, ...)
+> > +{
+> > +	struct va_format vaf;
+> > +	va_list args;
+> > +
+> > +	if (category != DRM_UT_NONE && !(drm_debug & category))
+> > +		return;
+> > +
+> > +	va_start(args, format);
+> > +	vaf.fmt = format;
+> > +	vaf.va = &args;
+> > +
+> > +	printk("%s" "[" DRM_NAME ":%ps]%s %pV",
+> > +	       level, __builtin_return_address(0),
+> > +	       strcmp(level, KERN_ERR) == 0 ? " *ERROR*" : "", &vaf);
+> > +
+> > +	va_end(args);
+> > +}
+> > +EXPORT_SYMBOL(drm_printk);
+> > diff --git a/drivers/gpu/drm/drm_drv.c b/drivers/gpu/drm/drm_drv.c
+> > index be38ac7..9710c78 100644
+> > --- a/drivers/gpu/drm/drm_drv.c
+> > +++ b/drivers/gpu/drm/drm_drv.c
+> > @@ -74,53 +74,6 @@ static bool drm_core_init_complete = false;
+> >  
+> >  static struct dentry *drm_debugfs_root;
+> >  
+> > -#define DRM_PRINTK_FMT "[" DRM_NAME ":%s]%s %pV"
+> > -
+> > -void drm_dev_printk(const struct device *dev, const char *level,
+> > -		    unsigned int category, const char *function_name,
+> > -		    const char *prefix, const char *format, ...)
+> > -{
+> > -	struct va_format vaf;
+> > -	va_list args;
+> > -
+> > -	if (category != DRM_UT_NONE && !(drm_debug & category))
+> > -		return;
+> > -
+> > -	va_start(args, format);
+> > -	vaf.fmt = format;
+> > -	vaf.va = &args;
+> > -
+> > -	if (dev)
+> > -		dev_printk(level, dev, DRM_PRINTK_FMT, function_name, prefix,
+> > -			   &vaf);
+> > -	else
+> > -		printk("%s" DRM_PRINTK_FMT, level, function_name, prefix, &vaf);
+> > -
+> > -	va_end(args);
+> > -}
+> > -EXPORT_SYMBOL(drm_dev_printk);
+> > -
+> > -void drm_printk(const char *level, unsigned int category,
+> > -		const char *format, ...)
+> > -{
+> > -	struct va_format vaf;
+> > -	va_list args;
+> > -
+> > -	if (category != DRM_UT_NONE && !(drm_debug & category))
+> > -		return;
+> > -
+> > -	va_start(args, format);
+> > -	vaf.fmt = format;
+> > -	vaf.va = &args;
+> > -
+> > -	printk("%s" "[" DRM_NAME ":%ps]%s %pV",
+> > -	       level, __builtin_return_address(0),
+> > -	       strcmp(level, KERN_ERR) == 0 ? " *ERROR*" : "", &vaf);
+> > -
+> > -	va_end(args);
+> > -}
+> > -EXPORT_SYMBOL(drm_printk);
+> > -
+> >  /*
+> >   * DRM Minors
+> >   * A DRM device can provide several char-dev interfaces on the DRM-Major. Each
+> > diff --git a/include/drm/drmP.h b/include/drm/drmP.h
+> > index 7277783a..8186a96 100644
+> > --- a/include/drm/drmP.h
+> > +++ b/include/drm/drmP.h
+> > @@ -77,6 +77,7 @@
+> >  #include <drm/drm_prime.h>
+> >  #include <drm/drm_pci.h>
+> >  #include <drm/drm_file.h>
+> > +#include <drm/drm_debug.h>
+> >  #include <drm/drm_debugfs.h>
+> >  #include <drm/drm_ioctl.h>
+> >  #include <drm/drm_sysfs.h>
+> > @@ -142,154 +143,6 @@ struct pci_controller;
+> >  /*@{*/
+> >  
+> >  /***********************************************************************/
+> > -/** \name Macros to make printk easier */
+> > -/*@{*/
+> > -
+> > -#define _DRM_PRINTK(once, level, fmt, ...)				\
+> > -	do {								\
+> > -		printk##once(KERN_##level "[" DRM_NAME "] " fmt,	\
+> > -			     ##__VA_ARGS__);				\
+> > -	} while (0)
+> > -
+> > -#define DRM_INFO(fmt, ...)						\
+> > -	_DRM_PRINTK(, INFO, fmt, ##__VA_ARGS__)
+> > -#define DRM_NOTE(fmt, ...)						\
+> > -	_DRM_PRINTK(, NOTICE, fmt, ##__VA_ARGS__)
+> > -#define DRM_WARN(fmt, ...)						\
+> > -	_DRM_PRINTK(, WARNING, fmt, ##__VA_ARGS__)
+> > -
+> > -#define DRM_INFO_ONCE(fmt, ...)						\
+> > -	_DRM_PRINTK(_once, INFO, fmt, ##__VA_ARGS__)
+> > -#define DRM_NOTE_ONCE(fmt, ...)						\
+> > -	_DRM_PRINTK(_once, NOTICE, fmt, ##__VA_ARGS__)
+> > -#define DRM_WARN_ONCE(fmt, ...)						\
+> > -	_DRM_PRINTK(_once, WARNING, fmt, ##__VA_ARGS__)
+> > -
+> > -/**
+> > - * Error output.
+> > - *
+> > - * \param fmt printf() like format string.
+> > - * \param arg arguments
+> > - */
+> > -#define DRM_DEV_ERROR(dev, fmt, ...)					\
+> > -	drm_dev_printk(dev, KERN_ERR, DRM_UT_NONE, __func__, " *ERROR*",\
+> > -		       fmt, ##__VA_ARGS__)
+> > -#define DRM_ERROR(fmt, ...)						\
+> > -	drm_printk(KERN_ERR, DRM_UT_NONE, fmt,	##__VA_ARGS__)
+> > -
+> > -/**
+> > - * Rate limited error output.  Like DRM_ERROR() but won't flood the log.
+> > - *
+> > - * \param fmt printf() like format string.
+> > - * \param arg arguments
+> > - */
+> > -#define DRM_DEV_ERROR_RATELIMITED(dev, fmt, ...)			\
+> > -({									\
+> > -	static DEFINE_RATELIMIT_STATE(_rs,				\
+> > -				      DEFAULT_RATELIMIT_INTERVAL,	\
+> > -				      DEFAULT_RATELIMIT_BURST);		\
+> > -									\
+> > -	if (__ratelimit(&_rs))						\
+> > -		DRM_DEV_ERROR(dev, fmt, ##__VA_ARGS__);			\
+> > -})
+> > -#define DRM_ERROR_RATELIMITED(fmt, ...)					\
+> > -	DRM_DEV_ERROR_RATELIMITED(NULL, fmt, ##__VA_ARGS__)
+> > -
+> > -#define DRM_DEV_INFO(dev, fmt, ...)					\
+> > -	drm_dev_printk(dev, KERN_INFO, DRM_UT_NONE, __func__, "", fmt,	\
+> > -		       ##__VA_ARGS__)
+> > -
+> > -#define DRM_DEV_INFO_ONCE(dev, fmt, ...)				\
+> > -({									\
+> > -	static bool __print_once __read_mostly;				\
+> > -	if (!__print_once) {						\
+> > -		__print_once = true;					\
+> > -		DRM_DEV_INFO(dev, fmt, ##__VA_ARGS__);			\
+> > -	}								\
+> > -})
+> > -
+> > -/**
+> > - * Debug output.
+> > - *
+> > - * \param fmt printf() like format string.
+> > - * \param arg arguments
+> > - */
+> > -#define DRM_DEV_DEBUG(dev, fmt, args...)				\
+> > -	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_CORE, __func__, "", fmt,	\
+> > -		       ##args)
+> > -#define DRM_DEBUG(fmt, ...)						\
+> > -	drm_printk(KERN_DEBUG, DRM_UT_CORE, fmt, ##__VA_ARGS__)
+> > -
+> > -#define DRM_DEV_DEBUG_DRIVER(dev, fmt, args...)				\
+> > -	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_DRIVER, __func__, "",	\
+> > -		       fmt, ##args)
+> > -#define DRM_DEBUG_DRIVER(fmt, ...)					\
+> > -	drm_printk(KERN_DEBUG, DRM_UT_DRIVER, fmt, ##__VA_ARGS__)
+> > -
+> > -#define DRM_DEV_DEBUG_KMS(dev, fmt, args...)				\
+> > -	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_KMS, __func__, "", fmt,	\
+> > -		       ##args)
+> > -#define DRM_DEBUG_KMS(fmt, ...)					\
+> > -	drm_printk(KERN_DEBUG, DRM_UT_KMS, fmt, ##__VA_ARGS__)
+> > -
+> > -#define DRM_DEV_DEBUG_PRIME(dev, fmt, args...)				\
+> > -	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_PRIME, __func__, "",	\
+> > -		       fmt, ##args)
+> > -#define DRM_DEBUG_PRIME(fmt, ...)					\
+> > -	drm_printk(KERN_DEBUG, DRM_UT_PRIME, fmt, ##__VA_ARGS__)
+> > -
+> > -#define DRM_DEV_DEBUG_ATOMIC(dev, fmt, args...)				\
+> > -	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_ATOMIC, __func__, "",	\
+> > -		       fmt, ##args)
+> > -#define DRM_DEBUG_ATOMIC(fmt, ...)					\
+> > -	drm_printk(KERN_DEBUG, DRM_UT_ATOMIC, fmt, ##__VA_ARGS__)
+> > -
+> > -#define DRM_DEV_DEBUG_VBL(dev, fmt, args...)				\
+> > -	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_VBL, __func__, "", fmt,	\
+> > -		       ##args)
+> > -#define DRM_DEBUG_VBL(fmt, ...)					\
+> > -	drm_printk(KERN_DEBUG, DRM_UT_VBL, fmt, ##__VA_ARGS__)
+> > -
+> > -#define _DRM_DEV_DEFINE_DEBUG_RATELIMITED(dev, level, fmt, args...)	\
+> > -({									\
+> > -	static DEFINE_RATELIMIT_STATE(_rs,				\
+> > -				      DEFAULT_RATELIMIT_INTERVAL,	\
+> > -				      DEFAULT_RATELIMIT_BURST);		\
+> > -	if (__ratelimit(&_rs))						\
+> > -		drm_dev_printk(dev, KERN_DEBUG, DRM_UT_ ## level,	\
+> > -			       __func__, "", fmt, ##args);		\
+> > -})
+> > -
+> > -/**
+> > - * Rate limited debug output. Like DRM_DEBUG() but won't flood the log.
+> > - *
+> > - * \param fmt printf() like format string.
+> > - * \param arg arguments
+> > - */
+> > -#define DRM_DEV_DEBUG_RATELIMITED(dev, fmt, args...)			\
+> > -	DEV__DRM_DEFINE_DEBUG_RATELIMITED(dev, CORE, fmt, ##args)
+> > -#define DRM_DEBUG_RATELIMITED(fmt, args...)				\
+> > -	DRM_DEV_DEBUG_RATELIMITED(NULL, fmt, ##args)
+> > -#define DRM_DEV_DEBUG_DRIVER_RATELIMITED(dev, fmt, args...)		\
+> > -	_DRM_DEV_DEFINE_DEBUG_RATELIMITED(dev, DRIVER, fmt, ##args)
+> > -#define DRM_DEBUG_DRIVER_RATELIMITED(fmt, args...)			\
+> > -	DRM_DEV_DEBUG_DRIVER_RATELIMITED(NULL, fmt, ##args)
+> > -#define DRM_DEV_DEBUG_KMS_RATELIMITED(dev, fmt, args...)		\
+> > -	_DRM_DEV_DEFINE_DEBUG_RATELIMITED(dev, KMS, fmt, ##args)
+> > -#define DRM_DEBUG_KMS_RATELIMITED(fmt, args...)				\
+> > -	DRM_DEV_DEBUG_KMS_RATELIMITED(NULL, fmt, ##args)
+> > -#define DRM_DEV_DEBUG_PRIME_RATELIMITED(dev, fmt, args...)		\
+> > -	_DRM_DEV_DEFINE_DEBUG_RATELIMITED(dev, PRIME, fmt, ##args)
+> > -#define DRM_DEBUG_PRIME_RATELIMITED(fmt, args...)			\
+> > -	DRM_DEV_DEBUG_PRIME_RATELIMITED(NULL, fmt, ##args)
+> > -
+> > -/* Format strings and argument splitters to simplify printing
+> > - * various "complex" objects
+> > - */
+> > -
+> > -/*@}*/
+> > -
+> > -/***********************************************************************/
+> >  /** \name Internal types and structures */
+> >  /*@{*/
+> >  
+> > diff --git a/include/drm/drm_debug.h b/include/drm/drm_debug.h
+> > new file mode 100644
+> > index 0000000..24fbea4
+> > --- /dev/null
+> > +++ b/include/drm/drm_debug.h
+> > @@ -0,0 +1,193 @@
+> > +/*
+> > + * Internal Header for the Direct Rendering Manager
+> > + *
+> > + * Copyright 1999 Precision Insight, Inc., Cedar Park, Texas.
+> > + * Copyright 2000 VA Linux Systems, Inc., Sunnyvale, California.
+> > + * Copyright (c) 2009-2010, Code Aurora Forum.
+> > + * All rights reserved.
+> > + *
+> > + * Author: Rickard E. (Rik) Faith <faith@valinux.com>
+> > + * Author: Gareth Hughes <gareth@valinux.com>
+> > + *
+> > + * Permission is hereby granted, free of charge, to any person obtaining a
+> > + * copy of this software and associated documentation files (the "Software"),
+> > + * to deal in the Software without restriction, including without limitation
+> > + * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+> > + * and/or sell copies of the Software, and to permit persons to whom the
+> > + * Software is furnished to do so, subject to the following conditions:
+> > + *
+> > + * The above copyright notice and this permission notice (including the next
+> > + * paragraph) shall be included in all copies or substantial portions of the
+> > + * Software.
+> > + *
+> > + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> > + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> > + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+> > + * VA LINUX SYSTEMS AND/OR ITS SUPPLIERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+> > + * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+> > + * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+> > + * OTHER DEALINGS IN THE SOFTWARE.
+> > + */
+> > +
+> > +#ifndef _DRM_DEBUG_H_
+> > +#define _DRM_DEBUG_H_
+> > +
+> > +#include <linux/kernel.h>
+> > +
+> > +__printf(6, 7)
+> > +void drm_dev_printk(const struct device *dev, const char *level,
+> > +		    unsigned int category, const char *function_name,
+> > +		    const char *prefix, const char *format, ...);
+> > +__printf(3, 4)
+> > +void drm_printk(const char *level, unsigned int category,
+> > +		const char *format, ...);
+> > +
+> > +/***********************************************************************/
+> > +/** \name Macros to make printk easier */
+> > +/*@{*/
+> > +
+> > +#define _DRM_PRINTK(once, level, fmt, ...)				\
+> > +	do {								\
+> > +		printk##once(KERN_##level "[" DRM_NAME "] " fmt,	\
+> > +			     ##__VA_ARGS__);				\
+> > +	} while (0)
+> > +
+> > +#define DRM_INFO(fmt, ...)						\
+> > +	_DRM_PRINTK(, INFO, fmt, ##__VA_ARGS__)
+> > +#define DRM_NOTE(fmt, ...)						\
+> > +	_DRM_PRINTK(, NOTICE, fmt, ##__VA_ARGS__)
+> > +#define DRM_WARN(fmt, ...)						\
+> > +	_DRM_PRINTK(, WARNING, fmt, ##__VA_ARGS__)
+> > +
+> > +#define DRM_INFO_ONCE(fmt, ...)						\
+> > +	_DRM_PRINTK(_once, INFO, fmt, ##__VA_ARGS__)
+> > +#define DRM_NOTE_ONCE(fmt, ...)						\
+> > +	_DRM_PRINTK(_once, NOTICE, fmt, ##__VA_ARGS__)
+> > +#define DRM_WARN_ONCE(fmt, ...)						\
+> > +	_DRM_PRINTK(_once, WARNING, fmt, ##__VA_ARGS__)
+> > +
+> > +/**
+> > + * Error output.
+> > + *
+> > + * \param fmt printf() like format string.
+> > + * \param arg arguments
+> > + */
+> > +#define DRM_DEV_ERROR(dev, fmt, ...)					\
+> > +	drm_dev_printk(dev, KERN_ERR, DRM_UT_NONE, __func__, " *ERROR*",\
+> > +		       fmt, ##__VA_ARGS__)
+> > +#define DRM_ERROR(fmt, ...)						\
+> > +	drm_printk(KERN_ERR, DRM_UT_NONE, fmt,	##__VA_ARGS__)
+> > +
+> > +/**
+> > + * Rate limited error output.  Like DRM_ERROR() but won't flood the log.
+> > + *
+> > + * \param fmt printf() like format string.
+> > + * \param arg arguments
+> > + */
+> > +#define DRM_DEV_ERROR_RATELIMITED(dev, fmt, ...)			\
+> > +({									\
+> > +	static DEFINE_RATELIMIT_STATE(_rs,				\
+> > +				      DEFAULT_RATELIMIT_INTERVAL,	\
+> > +				      DEFAULT_RATELIMIT_BURST);		\
+> > +									\
+> > +	if (__ratelimit(&_rs))						\
+> > +		DRM_DEV_ERROR(dev, fmt, ##__VA_ARGS__);			\
+> > +})
+> > +#define DRM_ERROR_RATELIMITED(fmt, ...)					\
+> > +	DRM_DEV_ERROR_RATELIMITED(NULL, fmt, ##__VA_ARGS__)
+> > +
+> > +#define DRM_DEV_INFO(dev, fmt, ...)					\
+> > +	drm_dev_printk(dev, KERN_INFO, DRM_UT_NONE, __func__, "", fmt,	\
+> > +		       ##__VA_ARGS__)
+> > +
+> > +#define DRM_DEV_INFO_ONCE(dev, fmt, ...)				\
+> > +({									\
+> > +	static bool __print_once __read_mostly;				\
+> > +	if (!__print_once) {						\
+> > +		__print_once = true;					\
+> > +		DRM_DEV_INFO(dev, fmt, ##__VA_ARGS__);			\
+> > +	}								\
+> > +})
+> > +
+> > +/**
+> > + * Debug output.
+> > + *
+> > + * \param fmt printf() like format string.
+> > + * \param arg arguments
+> > + */
+> > +#define DRM_DEV_DEBUG(dev, fmt, args...)				\
+> > +	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_CORE, __func__, "", fmt,	\
+> > +		       ##args)
+> > +#define DRM_DEBUG(fmt, ...)						\
+> > +	drm_printk(KERN_DEBUG, DRM_UT_CORE, fmt, ##__VA_ARGS__)
+> > +
+> > +#define DRM_DEV_DEBUG_DRIVER(dev, fmt, args...)				\
+> > +	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_DRIVER, __func__, "",	\
+> > +		       fmt, ##args)
+> > +#define DRM_DEBUG_DRIVER(fmt, ...)					\
+> > +	drm_printk(KERN_DEBUG, DRM_UT_DRIVER, fmt, ##__VA_ARGS__)
+> > +
+> > +#define DRM_DEV_DEBUG_KMS(dev, fmt, args...)				\
+> > +	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_KMS, __func__, "", fmt,	\
+> > +		       ##args)
+> > +#define DRM_DEBUG_KMS(fmt, ...)					\
+> > +	drm_printk(KERN_DEBUG, DRM_UT_KMS, fmt, ##__VA_ARGS__)
+> > +
+> > +#define DRM_DEV_DEBUG_PRIME(dev, fmt, args...)				\
+> > +	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_PRIME, __func__, "",	\
+> > +		       fmt, ##args)
+> > +#define DRM_DEBUG_PRIME(fmt, ...)					\
+> > +	drm_printk(KERN_DEBUG, DRM_UT_PRIME, fmt, ##__VA_ARGS__)
+> > +
+> > +#define DRM_DEV_DEBUG_ATOMIC(dev, fmt, args...)				\
+> > +	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_ATOMIC, __func__, "",	\
+> > +		       fmt, ##args)
+> > +#define DRM_DEBUG_ATOMIC(fmt, ...)					\
+> > +	drm_printk(KERN_DEBUG, DRM_UT_ATOMIC, fmt, ##__VA_ARGS__)
+> > +
+> > +#define DRM_DEV_DEBUG_VBL(dev, fmt, args...)				\
+> > +	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_VBL, __func__, "", fmt,	\
+> > +		       ##args)
+> > +#define DRM_DEBUG_VBL(fmt, ...)					\
+> > +	drm_printk(KERN_DEBUG, DRM_UT_VBL, fmt, ##__VA_ARGS__)
+> > +
+> > +#define _DRM_DEV_DEFINE_DEBUG_RATELIMITED(dev, level, fmt, args...)	\
+> > +({									\
+> > +	static DEFINE_RATELIMIT_STATE(_rs,				\
+> > +				      DEFAULT_RATELIMIT_INTERVAL,	\
+> > +				      DEFAULT_RATELIMIT_BURST);		\
+> > +	if (__ratelimit(&_rs))						\
+> > +		drm_dev_printk(dev, KERN_DEBUG, DRM_UT_ ## level,	\
+> > +			       __func__, "", fmt, ##args);		\
+> > +})
+> > +
+> > +/**
+> > + * Rate limited debug output. Like DRM_DEBUG() but won't flood the log.
+> > + *
+> > + * \param fmt printf() like format string.
+> > + * \param arg arguments
+> > + */
+> > +#define DRM_DEV_DEBUG_RATELIMITED(dev, fmt, args...)			\
+> > +	DEV__DRM_DEFINE_DEBUG_RATELIMITED(dev, CORE, fmt, ##args)
+> > +#define DRM_DEBUG_RATELIMITED(fmt, args...)				\
+> > +	DRM_DEV_DEBUG_RATELIMITED(NULL, fmt, ##args)
+> > +#define DRM_DEV_DEBUG_DRIVER_RATELIMITED(dev, fmt, args...)		\
+> > +	_DRM_DEV_DEFINE_DEBUG_RATELIMITED(dev, DRIVER, fmt, ##args)
+> > +#define DRM_DEBUG_DRIVER_RATELIMITED(fmt, args...)			\
+> > +	DRM_DEV_DEBUG_DRIVER_RATELIMITED(NULL, fmt, ##args)
+> > +#define DRM_DEV_DEBUG_KMS_RATELIMITED(dev, fmt, args...)		\
+> > +	_DRM_DEV_DEFINE_DEBUG_RATELIMITED(dev, KMS, fmt, ##args)
+> > +#define DRM_DEBUG_KMS_RATELIMITED(fmt, args...)				\
+> > +	DRM_DEV_DEBUG_KMS_RATELIMITED(NULL, fmt, ##args)
+> > +#define DRM_DEV_DEBUG_PRIME_RATELIMITED(dev, fmt, args...)		\
+> > +	_DRM_DEV_DEFINE_DEBUG_RATELIMITED(dev, PRIME, fmt, ##args)
+> > +#define DRM_DEBUG_PRIME_RATELIMITED(fmt, args...)			\
+> > +	DRM_DEV_DEBUG_PRIME_RATELIMITED(NULL, fmt, ##args)
+> > +
+> > +/* Format strings and argument splitters to simplify printing
+> > + * various "complex" objects
+> > + */
+> > +
+> > +/*@}*/
+> > +
+> > +#endif /* _DRM_DEBUG_H_ */
+> > diff --git a/include/drm/drm_drv.h b/include/drm/drm_drv.h
+> > index 71bbaae..4f3cc25 100644
+> > --- a/include/drm/drm_drv.h
+> > +++ b/include/drm/drm_drv.h
+> > @@ -592,13 +592,6 @@ struct drm_driver {
+> >  	int dev_priv_size;
+> >  };
+> >  
+> > -__printf(6, 7)
+> > -void drm_dev_printk(const struct device *dev, const char *level,
+> > -		    unsigned int category, const char *function_name,
+> > -		    const char *prefix, const char *format, ...);
+> > -__printf(3, 4)
+> > -void drm_printk(const char *level, unsigned int category,
+> > -		const char *format, ...);
+> >  extern unsigned int drm_debug;
+> >  
+> >  int drm_dev_init(struct drm_device *dev,
+> > -- 
+> > 2.7.4
+> > 
+> 
+> -- 
+> Daniel Vetter
+> Software Engineer, Intel Corporation
+> http://blog.ffwll.ch
 
