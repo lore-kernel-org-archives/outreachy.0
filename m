@@ -1,232 +1,196 @@
 X-GM-THRID: 6475592721521180672
-X-Received: by 10.80.152.61 with SMTP id g58mr903184edb.5.1507826769181;
-        Thu, 12 Oct 2017 09:46:09 -0700 (PDT)
+X-Received: by 10.55.200.18 with SMTP id c18mr2288824qkj.11.1507823769555;
+        Thu, 12 Oct 2017 08:56:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.80.241.28 with SMTP id w28ls2103878edl.6.gmail; Thu, 12 Oct
- 2017 09:46:08 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QCwYGmpZg+ZZCtnxFo5V1KLJijXOAPzSMaeyWDq57A0fM1A/BEihj30IMFNLC1G5qZuxfC3
-X-Received: by 10.80.242.140 with SMTP id f12mr906244edm.1.1507826768003;
-        Thu, 12 Oct 2017 09:46:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507826767; cv=none;
+Received: by 10.55.98.11 with SMTP id w11ls2092306qkb.1.gmail; Thu, 12 Oct
+ 2017 08:56:09 -0700 (PDT)
+X-Received: by 10.55.73.15 with SMTP id w15mr2139371qka.25.1507823769050;
+        Thu, 12 Oct 2017 08:56:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507823768; cv=none;
         d=google.com; s=arc-20160816;
-        b=LPTmuqOExlMDO1pJKOvn1wup/UWljRPj/ftxD9FR+RPa6pWVkHKRzdIs1t89Zsejjb
-         C7Lz08u+2SMJPL8fuklwk8iQMAd0WSc+aKbiREzX3cEAjFoMHurbtRczdL/HmhP+pF53
-         EMg0rnc61yeXortKiDj+ABheNkDUua/y4TNvV9m4xEfrl6Jw32DwpPrWTD62CVHIC/M7
-         MTqrlfnWWeYwV4zlxMjZRl9AyWMU1vltRoqy0smNF9ZNN8gbhZuPR0UyJv9cpAy3NVp1
-         ugQOtwrB6IV6sWzTomshSTuLb1mdCO6ZUk6VUFwxLIx0nSdtX9YKTZVJbep9JnMnW9I6
-         KtsA==
+        b=KpREZWwvA1KYiFc5QJjOeoaQNieWBxUiO5CdEhRjJFDy964mfuzZp3gl/UJIuNHSA+
+         HP8SaMSlcljySVYaIUdyiD2few5AkNYrCrg3kmOrthjbP0LqhlF3ofXJsV3X+JKm6KU7
+         oPc5mETaNfDoopoFeH/6EzSy8OZKMTgTCV/lON7fJ849jMG/DeTa00AdToayHBCdQJMe
+         agPRJr5cy3wji4eIgk0lMmcljtPBxRm36MU1hq6hm0aKseFMHnrjAt7Pj3Lut1KfkpsF
+         qMwN+JB4XxyRuvo/4h5Pp8Kml+6lgf05JF7oevS+5bPtungmWa9dwWG0g/eGJf4JUZQ6
+         JQUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:arc-authentication-results;
-        bh=e5N+2Xs+/irKHbFdlA+ItF4gdHz+JTWW44JyLUh/D6A=;
-        b=xnSXssYlyzanpFp4LW22z2CTv+Me/awwkmkDaFsBHcpt8Fs76/D47EhUQ7SgFXuE61
-         xhm6f1TVbhdfueU/Uok7nSzjjhUXogStxJouaHpcskZN0s7jDhwrCZKMijtK2/u4Fy8q
-         AStd5SDlykK3MBjV+YQcLfpLS2dqXGiwQCSkGgzkSrMU7kfs5wYC5dDm9M8l9GRXofVu
-         7c7Z7BjlEwJgPrZ1cxhoKxygB6EWdqghzzLEWpycRXkJDq572cG0XFCp8VkEcY9m4xGV
-         tCxcTiCg4jAyC0ceBfxh70FeN/pyP1I911C0tmvx0Bf6RkdYSl2erkmWBFAaOMgc7Vjl
-         +onA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature
+         :arc-authentication-results;
+        bh=7DbSyDgbnkWD0/rtf2VJU1S2J5TR3u4UeZsvURk0t80=;
+        b=trWi6X2jjo2i4uqx4L1/U+skycARkKDQhV1s6f+bTPpZ7w5HXw6S1QVWpnqlkpKFOM
+         wezayoMDu2msvTyXrUqWE+EcX/bZEXi8wXB5dfLbhKH2FvkCWNr89S9q0IIDxo8E4TVZ
+         ECEDJ0I5UyAZ+2wX28gQ1LVgPh3hsk+cKyt8lM0l7JbqikAFZ99f5SPJtkplFKRAqhr3
+         hpw/durZk/PXelC2BxeNVhKnA1D91/YaFj0Lske+l9q39mXfTE8m3wOTn0F74Q5kyiL3
+         2wyir+Zkph0ZuAch2dI3KAb/GMnpapuLSp3sHL2OtRazPfm5Dkx501k8+qgzSkRho7u4
+         CoQw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of noralf@tronnes.org designates 2a01:5b40:0:3005::1 as permitted sender) smtp.mailfrom=noralf@tronnes.org
-Return-Path: <noralf@tronnes.org>
-Received: from smtp.domeneshop.no (smtp.domeneshop.no. [2a01:5b40:0:3005::1])
-        by gmr-mx.google.com with ESMTPS id f9si286208edm.1.2017.10.12.09.46.07
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YJV0Eosj;
+       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <meghana.madhyastha@gmail.com>
+Received: from mail-pf0-x231.google.com (mail-pf0-x231.google.com. [2607:f8b0:400e:c00::231])
+        by gmr-mx.google.com with ESMTPS id a13si225943qtd.3.2017.10.12.08.56.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Oct 2017 09:46:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of noralf@tronnes.org designates 2a01:5b40:0:3005::1 as permitted sender) client-ip=2a01:5b40:0:3005::1;
+        Thu, 12 Oct 2017 08:56:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) client-ip=2607:f8b0:400e:c00::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of noralf@tronnes.org designates 2a01:5b40:0:3005::1 as permitted sender) smtp.mailfrom=noralf@tronnes.org
-Received: from 211.81-166-168.customer.lyse.net ([81.166.168.211]:55230 helo=[192.168.10.157])
-	by smtp.domeneshop.no with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	(Exim 4.84_2)
-	(envelope-from <noralf@tronnes.org>)
-	id 1e2gcY-00026k-IH; Thu, 12 Oct 2017 18:46:06 +0200
-Subject: Re: [PATCH v12 1/3] drm/tinydrm: Move helper functions from
- tinydrm-helpers to backlight.h
-To: Meghana Madhyastha <meghana.madhyastha@gmail.com>, daniel@ffwll.ch,
- outreachy-kernel@googlegroups.com, dri-devel@lists.freedesktop.org,
- daniel.thompson@linaro.org, jani.nikula@linux.intel.com
-References: <cover.1507821742.git.meghana.madhyastha@gmail.com>
- <b55490e9e10fe0b97e2a79c69015a171913c1c34.1507821742.git.meghana.madhyastha@gmail.com>
-From: =?UTF-8?Q?Noralf_Tr=c3=b8nnes?= <noralf@tronnes.org>
-Message-ID: <51d43af9-8066-1b89-2742-767c209ee4da@tronnes.org>
-Date: Thu, 12 Oct 2017 18:46:03 +0200
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YJV0Eosj;
+       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x231.google.com with SMTP id b85so5411264pfj.13
+        for <outreachy-kernel@googlegroups.com>; Thu, 12 Oct 2017 08:56:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=7DbSyDgbnkWD0/rtf2VJU1S2J5TR3u4UeZsvURk0t80=;
+        b=YJV0EosjdEMfygMxe8mqLP84wCU/3Adjokt0iPpVzVtNa9e0cfyxLrUK+D0gKQTRQa
+         Lj5b9Rv0WC4TwDL17+fcoWJgJRkKgqSUmwUDuXQt/DOP1bGbxUuP9+n/Az7vQbShLgqr
+         uitsL0ReUdPbUdmSmQJNDUvRivIQkr+/dQHDz9J4yZKWpO9wuz3B8kkQ/yvcAaNmf0F/
+         HM/YInY6An9dEpGNqnxLXk+r6p6qi4zFtSTm9Rxr7EeP8U3BXLbC7OKxpqfuS5QZxS3U
+         9RAfY+NJiEORbeoOwSSo5lO6p+HQzQZvnAaeYFuIDGi23j1c6akMT+/7SWDMGN6AKTb2
+         W2NQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=7DbSyDgbnkWD0/rtf2VJU1S2J5TR3u4UeZsvURk0t80=;
+        b=LaYycXxYaDhmf3d+kF8B/5Hk363ZkOsk2qUi9bxbriPoKjg/+jqvmXYYN6IGfT+lB2
+         1Y/g751zJkqXV4jWfN33OWUIdQnbnNJ2FjJpauHDyLV2JSqLgjcWCXyX15VKO7SmJe7i
+         ojLFzDZWUzt9TPaqMuy3ptTve0HG/uqBRvOiqsuFB/pSZzTGuCB9OsKTUDe86WjZmOuV
+         zTljzZ0Am0R51PcipM7KklEfTes6uycji0MetnwRXXifRR3F29YU3rH1IFZtV4Swt6s8
+         Hg/ADfYB68aH2P9qW4Z7/j1yZmQMKiK1P3o+MptXm98wSerjdXDRHZ+D8m/LjM6UxHrc
+         haGQ==
+X-Gm-Message-State: AMCzsaU7BIQIWfcstaea1TTUCNIEnfHC/jMd4G7rBRxbGI4vCTsGU7AZ
+	a3WzbLVxqJt2Pd16Npc9QXA=
+X-Google-Smtp-Source: AOwi7QBec+Oko4tVMts1ibYGYXZjkf/8eDHrses4NM0WX614cgaRSifWgGDwhilDmfqgoT5HsE4QWg==
+X-Received: by 10.159.206.137 with SMTP id bg9mr580549plb.95.1507823768434;
+        Thu, 12 Oct 2017 08:56:08 -0700 (PDT)
+Return-Path: <meghana.madhyastha@gmail.com>
+Received: from meghana-HP-Pavilion-Notebook ([122.172.84.136])
+        by smtp.gmail.com with ESMTPSA id d74sm12618584pfe.167.2017.10.12.08.56.04
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 12 Oct 2017 08:56:07 -0700 (PDT)
+Date: Thu, 12 Oct 2017 21:26:00 +0530
+From: Meghana Madhyastha <meghana.madhyastha@gmail.com>
+To: daniel@ffwll.ch, noralf@tronnes.org, outreachy-kernel@googlegroups.com,
+	dri-devel@lists.freedesktop.org, daniel.thompson@linaro.org,
+	jani.nikula@linux.intel.com
+Subject: [PATCH v12 3/3] drm/tinydrm: Add devres versions of backlight_get
+Message-ID: <bde34c13ea289cd2f0c5c0011c1b10db9c6a8c18.1507823238.git.meghana.madhyastha@gmail.com>
+References: <cover.1507823238.git.meghana.madhyastha@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <b55490e9e10fe0b97e2a79c69015a171913c1c34.1507821742.git.meghana.madhyastha@gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1507823238.git.meghana.madhyastha@gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
+Add devm_backlight_get and the corresponding release
+function because some drivers use devres versions of functions
+for requiring device resources.
 
-Den 12.10.2017 17.28, skrev Meghana Madhyastha:
-> Move the helper functions enable_backlight and disable_backlight
-> from tinydrm-helpers.c to backlight.h as static inline functions so
-> that they can be used by other drivers.
->
-> Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
-> ---
+Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
+---
+Changes in v12:
+ -Move backlight_put() to the patch 2/3 from patch 3/3.
 
-Please rebase on latest drm-misc, the patch doesn't apply.
+ drivers/gpu/drm/tinydrm/mi0283qt.c  |  2 +-
+ drivers/video/backlight/backlight.c | 25 +++++++++++++++++++++++++
+ include/linux/backlight.h           | 16 ++++++++++++++++
+ 3 files changed, 42 insertions(+), 1 deletion(-)
 
-> Changes in v12:
-> -None
->
->   drivers/gpu/drm/tinydrm/core/tinydrm-helpers.c | 55 --------------------------
->   drivers/gpu/drm/tinydrm/mipi-dbi.c             |  5 ++-
->   include/drm/tinydrm/tinydrm-helpers.h          |  2 -
->   include/linux/backlight.h                      | 30 ++++++++++++++
->   4 files changed, 33 insertions(+), 59 deletions(-)
->
-> diff --git a/drivers/gpu/drm/tinydrm/core/tinydrm-helpers.c b/drivers/gpu/drm/tinydrm/core/tinydrm-helpers.c
-> index bd6cce0..a42dee6 100644
-> --- a/drivers/gpu/drm/tinydrm/core/tinydrm-helpers.c
-> +++ b/drivers/gpu/drm/tinydrm/core/tinydrm-helpers.c
-> @@ -276,61 +276,6 @@ struct backlight_device *tinydrm_of_find_backlight(struct device *dev)
->   }
->   EXPORT_SYMBOL(tinydrm_of_find_backlight);
->   
-> -/**
-> - * tinydrm_enable_backlight - Enable backlight helper
-> - * @backlight: Backlight device
-> - *
-> - * Returns:
-> - * Zero on success, negative error code on failure.
-> - */
-> -int tinydrm_enable_backlight(struct backlight_device *backlight)
-> -{
-> -	unsigned int old_state;
-> -	int ret;
-> -
-> -	if (!backlight)
-> -		return 0;
-> -
-> -	old_state = backlight->props.state;
-> -	backlight->props.state &= ~BL_CORE_FBBLANK;
-> -	DRM_DEBUG_KMS("Backlight state: 0x%x -> 0x%x\n", old_state,
-> -		      backlight->props.state);
-> -
-> -	ret = backlight_update_status(backlight);
-> -	if (ret)
-> -		DRM_ERROR("Failed to enable backlight %d\n", ret);
-> -
-> -	return ret;
-> -}
-> -EXPORT_SYMBOL(tinydrm_enable_backlight);
-> -
-> -/**
-> - * tinydrm_disable_backlight - Disable backlight helper
-> - * @backlight: Backlight device
-> - *
-> - * Returns:
-> - * Zero on success, negative error code on failure.
-> - */
-> -int tinydrm_disable_backlight(struct backlight_device *backlight)
-> -{
-> -	unsigned int old_state;
-> -	int ret;
-> -
-> -	if (!backlight)
-> -		return 0;
-> -
-> -	old_state = backlight->props.state;
-> -	backlight->props.state |= BL_CORE_FBBLANK;
-> -	DRM_DEBUG_KMS("Backlight state: 0x%x -> 0x%x\n", old_state,
-> -		      backlight->props.state);
-> -	ret = backlight_update_status(backlight);
-> -	if (ret)
-> -		DRM_ERROR("Failed to disable backlight %d\n", ret);
-> -
-> -	return ret;
-> -}
-> -EXPORT_SYMBOL(tinydrm_disable_backlight);
-> -
->   #if IS_ENABLED(CONFIG_SPI)
->   
->   /**
-> diff --git a/drivers/gpu/drm/tinydrm/mipi-dbi.c b/drivers/gpu/drm/tinydrm/mipi-dbi.c
-> index 2caeabc..71b416b 100644
-> --- a/drivers/gpu/drm/tinydrm/mipi-dbi.c
-> +++ b/drivers/gpu/drm/tinydrm/mipi-dbi.c
-> @@ -11,6 +11,7 @@
->   
->   #include <drm/tinydrm/mipi-dbi.h>
->   #include <drm/tinydrm/tinydrm-helpers.h>
-> +#include <linux/backlight.h>
->   #include <linux/debugfs.h>
->   #include <linux/dma-buf.h>
->   #include <linux/gpio/consumer.h>
-> @@ -279,7 +280,7 @@ void mipi_dbi_pipe_enable(struct drm_simple_display_pipe *pipe,
->   	if (fb)
->   		fb->funcs->dirty(fb, NULL, 0, 0, NULL, 0);
->   
-> -	tinydrm_enable_backlight(mipi->backlight);
-> +	backlight_enable(mipi->backlight);
->   }
->   EXPORT_SYMBOL(mipi_dbi_pipe_enable);
->   
-> @@ -318,7 +319,7 @@ void mipi_dbi_pipe_disable(struct drm_simple_display_pipe *pipe)
->   	mipi->enabled = false;
->   
->   	if (mipi->backlight)
-> -		tinydrm_disable_backlight(mipi->backlight);
-> +		backlight_disable(mipi->backlight);
->   	else
->   		mipi_dbi_blank(mipi);
->   }
-> diff --git a/include/drm/tinydrm/tinydrm-helpers.h b/include/drm/tinydrm/tinydrm-helpers.h
-> index d554ded..f54fae0 100644
-> --- a/include/drm/tinydrm/tinydrm-helpers.h
-> +++ b/include/drm/tinydrm/tinydrm-helpers.h
-> @@ -47,8 +47,6 @@ void tinydrm_xrgb8888_to_gray8(u8 *dst, void *vaddr, struct drm_framebuffer *fb,
->   			       struct drm_clip_rect *clip);
->   
->   struct backlight_device *tinydrm_of_find_backlight(struct device *dev);
-> -int tinydrm_enable_backlight(struct backlight_device *backlight);
-> -int tinydrm_disable_backlight(struct backlight_device *backlight);
->   
->   size_t tinydrm_spi_max_transfer_size(struct spi_device *spi, size_t max_len);
->   bool tinydrm_spi_bpw_supported(struct spi_device *spi, u8 bpw);
-> diff --git a/include/linux/backlight.h b/include/linux/backlight.h
-> index 5f2fd61..355e9f5 100644
-> --- a/include/linux/backlight.h
-> +++ b/include/linux/backlight.h
-> @@ -153,6 +153,36 @@ static inline void * bl_get_data(struct backlight_device *bl_dev)
->   	return dev_get_drvdata(&bl_dev->dev);
->   }
->   
-> +/**
-> + * backlight_enable - Enable backlight
-> + * @bd: the backlight device to enable
-> + */
-> +static inline int backlight_enable(struct backlight_device *bd)
-> +{
-> +	if (!bd)
-> +		return 0;
-> +
-> +	bd->props.power = FB_BLANK_UNBLANK;
-> +	bd->props.state &= ~BL_CORE_FBBLANK;
-> +
-> +	return backlight_update_status(bd);
-> +}
-> +
-> +/**
-> + * backlight_disable - Disable backlight
-> + * @bd: the backlight device to disable
-> + */
-> +static inline int backlight_disable(struct backlight_device *bd)
-> +{
-> +	if (!bd)
-> +		return 0;
-> +
-> +	bd->props.power = FB_BLANK_POWERDOWN;
-> +	bd->props.state |= BL_CORE_FBBLANK;
-> +
-> +	return backlight_update_status(bd);
-> +}
-> +
->   struct generic_bl_info {
->   	const char *name;
->   	int max_intensity;
+diff --git a/drivers/gpu/drm/tinydrm/mi0283qt.c b/drivers/gpu/drm/tinydrm/mi0283qt.c
+index edf9502..03fec36 100644
+--- a/drivers/gpu/drm/tinydrm/mi0283qt.c
++++ b/drivers/gpu/drm/tinydrm/mi0283qt.c
+@@ -190,7 +190,7 @@ static int mi0283qt_probe(struct spi_device *spi)
+ 	if (IS_ERR(mipi->regulator))
+ 		return PTR_ERR(mipi->regulator);
+ 
+-	mipi->backlight = backlight_get(dev);
++	mipi->backlight = devm_backlight_get(dev);
+ 	if (IS_ERR(mipi->backlight))
+ 		return PTR_ERR(mipi->backlight);
+ 
+diff --git a/drivers/video/backlight/backlight.c b/drivers/video/backlight/backlight.c
+index f3e95b3..3663f26 100644
+--- a/drivers/video/backlight/backlight.c
++++ b/drivers/video/backlight/backlight.c
+@@ -623,6 +623,31 @@ static inline void backlight_put(struct backlight_device *bd)
+ 		put_device(&bd->dev);
+ }
+ 
++/**
++ ** devm_backlight_get - Resource-managed backlight_get()
++ ** @dev: Device
++ **
++ ** Device managed version of backlight_get(). The reference on the backlight
++ ** device is automatically dropped on driver detach.
++ **/
++struct backlight_device *devm_backlight_get(struct device *dev)
++{
++	struct backlight_device *bd;
++	int ret;
++
++	bd = backlight_get(dev);
++	if (!bd)
++		return NULL;
++	ret = devm_add_action(dev, devm_backlight_get_release, bd);
++	if (ret) {
++		backlight_put(bd);
++		return ERR_PTR(ret);
++	}
++
++	return bd;
++}
++EXPORT_SYMBOL(devm_backlight_get);
++
+ static void __exit backlight_class_exit(void)
+ {
+ 	class_destroy(backlight_class);
+diff --git a/include/linux/backlight.h b/include/linux/backlight.h
+index 1d713b3..0bfadb6 100644
+--- a/include/linux/backlight.h
++++ b/include/linux/backlight.h
+@@ -183,6 +183,16 @@ static inline int backlight_disable(struct backlight_device *bd)
+ 	return backlight_update_status(bd);
+ }
+ 
++/**
++ ** backlight_put - Drop backlight reference
++ ** @bd: the backlight device to put
++ **/
++static inline void backlight_put(struct backlight_device *bd)
++{
++	if (bd)
++		put_device(&bd->dev);
++}
++
+ struct generic_bl_info {
+ 	const char *name;
+ 	int max_intensity;
+@@ -204,11 +214,17 @@ of_find_backlight_by_node(struct device_node *node)
+ 
+ #if IS_ENABLED(CONFIG_BACKLIGHT_CLASS_DEVICE)
+ struct backlight_device *backlight_get(struct device *dev);
++struct backlight_device *devm_backlight_get(struct device *dev);
+ #else
+ static inline struct backlight_device *backlight_get(struct device *dev)
+ {
+ 	return NULL;
+ }
++
++static inline struct backlight_device *devm_backlight_get(struct device *dev)
++{
++	return NULL;
++}
+ #endif
+ 
+ #endif
+-- 
+2.7.4
 
 
