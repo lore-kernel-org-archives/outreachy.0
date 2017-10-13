@@ -1,408 +1,389 @@
 X-GM-THRID: 6476305073791041536
-X-Received: by 10.176.29.20 with SMTP id j20mr1058186uak.47.1507916172142;
-        Fri, 13 Oct 2017 10:36:12 -0700 (PDT)
+X-Received: by 10.28.156.145 with SMTP id f139mr266379wme.10.1507910174557;
+        Fri, 13 Oct 2017 08:56:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.31.180.146 with SMTP id d140ls1954037vkf.14.gmail; Fri, 13 Oct
- 2017 10:36:11 -0700 (PDT)
-X-Received: by 10.159.60.168 with SMTP id s40mr982840uai.96.1507916171128;
-        Fri, 13 Oct 2017 10:36:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507916171; cv=none;
+Received: by 10.28.11.143 with SMTP id 137ls337162wml.0.canary-gmail; Fri, 13
+ Oct 2017 08:56:13 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QAmH//xW/qk7Altt6nnBA6ROaLNAre7sqmRIQBivCwR+xZWh/PPLLX1pWzMXZ6GRFiodHUe
+X-Received: by 10.28.184.81 with SMTP id i78mr117960wmf.1.1507910173605;
+        Fri, 13 Oct 2017 08:56:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507910173; cv=none;
         d=google.com; s=arc-20160816;
-        b=XkIbFZucAMsnmCg9uzEIoO/Eemy+fdCE//lxPa9/pz+4moz7o+7GlDbq+RR1Bl/mBj
-         uN8gjt7YRnGtW+2VCS3Rbk0hcTEaU+HEfuU9u4le5U93GflH18y83WCJCgs5sqjvYgVq
-         NKt3Urf/Cd1myx+8csZ+ZQ/ucHV55IFcRwPtr1VkkCVIS/AHBJCJIOcU3UgZB0DwBtj5
-         S/43K5dm6/xAuoPZykO2lnyguPRYh1MaBzry2JYYIvbC2bWiVe0taU9rtzyodIP7rV+a
-         dkYh2J9RthlU6KC2CsSF1E0t8EpSjfLQkeLCrDE1iECRt+wRw7NsjvIc3dpACBO+Dkk/
-         Mbig==
+        b=boSZvS46XHNJ67MAjsUERFSvKwwV8pkhmy6W2niWIqBQF12kTuxECHhQEB5meiiQY4
+         3nKEanHQwnISdmoP8mWtVjOmOsbDSuS5Q9vGk7P7RIMMGy9BF72dhC0932P7DsdwlbyG
+         7uOaPZ/NBjYdah6HHyQjZaKnS7OohBuOEMuufYFklh65a/HKjbukztwnAGoxI+fAm+xX
+         IwCAvF8TP0U5f1LhNqscuNIZllpAgw3UlWT/c+0Ntih6uYcO+SNk4xGiZqrPLAnUoGYj
+         WpzNEXcgwy6HDAcqXoE52VI0ZAm0OOQtbBUxuxC0Mi3bsFsA4Wwa/7mTuTYzUAgjMScH
+         BKXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=mO6uHbX2LrcUV5uniGDZk/K8GKOy23NCaFxHAWNJbgg=;
-        b=QwgGk6Z+GxlD3p9QlFcDKEbO2r8PGj2cZTm47dBo9lcnJ7N5jzagkgP6PTGzN09IP+
-         pzoY9/8S3aAGloPVi7t13kW9ov1BG7CKNHYxDq1np7G5sqCYQwTvsRjEVpMLy3W34rhh
-         BYuntPaQoAsZTu+Q0H59F+QtbKo5so9tgNBZEXHD7MkpKA21NlllM0tVIhl8jz8sCVVx
-         vWeXvaCOcbXi5PjnnqDopzOrRTFAj+GHVL9RrEXbtwzE/u9mdO9n7i/VzIl2TH2Q/rxK
-         uY6AQKU4tOCJVgw9jlFdFA3Yv0A4TceT9ZZJROA83KB0B/r74b/IxpASvdqCEXAQI5u0
-         n3nQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=PO2dXhKq/iN00sg3YUOWntSFSbnrfLWVYMwmS7B7YF8=;
+        b=mgftT3ZVToO3HOBcBMggnAvOThDxPgXphCCejnNn5pI11OpS1HHAjsIF+DGPQOsZSn
+         1b/W2x2N6zvIxu0MGx051Qs/LPOfpvrdrlkHTSfS6Y8UQK2T4ahwU1ZQhXFQxHASGnI2
+         AA8IXhsNJ6cFw95+Ffi5VraK75KaJrjQ3AuxEVFrqs1HimeaJTpqGDg8aTtjfPt5emhX
+         IfGS9NHSpvuDN7WKGaxtoiur64/1fO+Q2aYpMMSHIDJaZOkNvKlKOJedxqBBz2d8hx6x
+         YgNRoXcQGf64J5DgvrZxnWN1QxP+E0T3iDZuM34o2gMQ0nNw1jFfvA5N6GhT1XdiD5kO
+         4S0w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kuir78Lv;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id e5si49477vkb.2.2017.10.13.10.36.11
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 196si134470wmk.4.2017.10.13.08.56.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Oct 2017 10:36:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Fri, 13 Oct 2017 08:56:13 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kuir78Lv;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id s2so1713506pge.10
-        for <outreachy-kernel@googlegroups.com>; Fri, 13 Oct 2017 10:36:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=mO6uHbX2LrcUV5uniGDZk/K8GKOy23NCaFxHAWNJbgg=;
-        b=kuir78LvvgSphJ2YEIIk4Dhj1sQnv3StNFssaV7oxKmHJjvDvuF7hyA53FNxLIXtzI
-         XlsWWtCnfLLTnNodr9r+aa/BQHzTtiiGBFsjImeitBdlgbrWVnEi1St91RWrp5GCRO+1
-         Z88lbweK4Ot01ct5AGNBd4IP/xLEo7YeDmdoTFY5O2IHecOqq3gmkFHpwjmd8gKL/H7h
-         M/fw0gE10CgIVHeQT0bZ1H19FS+mR9+GDLo8yyc5RZeqd534z1AcKU4o7/e04YHgSASK
-         OZEF4gciwrKRpRVPblXTGXM5G3oI10WJMKqo5Y9RR664y/WDXkYe4u1U4C4iouUrLsPe
-         F1Ag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=mO6uHbX2LrcUV5uniGDZk/K8GKOy23NCaFxHAWNJbgg=;
-        b=iE7HvLrpsVzqZ0q0zuT3Qioh+dkodc7QuosqRvyDAZXZG6J/pQoT3SljBb0XWSlwem
-         beO43wm6zXFiIiqUN5qfBbPw0d80FgwZn3dmwK5w7SBH/mUBW4Ec8H2ciyKfhLiR1klG
-         VLj54gJEkdCZwVv9wSY4casjfKuUyKlrg6EdOgF5LcK4vk3fhuqyYKtjaCEbGetHOuAE
-         aPdb2TwrocvA+LQwsybbBDc0eUZ2SsmvuQfRkaRnvy+iQc5mFSrlY5POrp2lGqlG93tU
-         PNPirVfyvgQGDX4Hk49zo4ntkz+z01HemkVqN2+TtFN/SL5X4+T800nVu7esSMMj+iPg
-         5Nzw==
-X-Gm-Message-State: AMCzsaV+75gsXOXk4msFX66UwvtGa+1mYZzfZqejmIxAKEnfeCFYX87I
-	bgiie3Zo0vEIgBXR78WdCpY=
-X-Google-Smtp-Source: AOwi7QDGJNb55yncai8ycBMHF3u8wjfKatAIm5k6Gxm1KfMUf1K7AWmN0BCmOjouQA8V0EkGKzYYqg==
-X-Received: by 10.84.224.76 with SMTP id a12mr2031691plt.207.1507916170632;
-        Fri, 13 Oct 2017 10:36:10 -0700 (PDT)
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from localhost.localdomain ([103.37.201.27])
-        by smtp.gmail.com with ESMTPSA id a25sm3624114pfc.143.2017.10.13.10.35.59
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Oct 2017 10:36:10 -0700 (PDT)
-From: Harsha Sharma <harshasharmaiitr@gmail.com>
-To: alexander.deucher@amd.com,
-	christian.koenig@amd.com,
-	airlied@linux.ie
-Cc: amd-gfx@lists.freedesktop.org,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Harsha Sharma <harshasharmaiitr@gmail.com>
-Subject: [PATCH v2] drm/amd/powerplay: Remove unnecessary cast on void pointer
-Date: Fri, 13 Oct 2017 23:03:41 +0530
-Message-Id: <20171013173341.12367-1-harshasharmaiitr@gmail.com>
-X-Mailer: git-send-email 2.11.0
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.43,371,1503352800"; 
+   d="scan'208";a="296117281"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 13 Oct 2017 17:56:13 +0200
+Date: Fri, 13 Oct 2017 17:56:10 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Harsha Sharma <harshasharmaiitr@gmail.com>
+cc: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie, 
+    amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org, 
+    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] drm/amd/powerplay: Remove unnecessary
+ cast on void pointer
+In-Reply-To: <20171013080902.3323-1-harshasharmaiitr@gmail.com>
+Message-ID: <alpine.DEB.2.20.1710131755170.6944@hadrien>
+References: <20171013080902.3323-1-harshasharmaiitr@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Done with following coccinelle patch
 
-@r@
-expression x;
-void* e;
-type T;
-identifier f;
-@@
-(
-  *((T *)e)
-|
-  ((T *)x)[...]
-|
-  ((T*)x)->f
-|
 
-- (T*)
-  e
-)
+On Fri, 13 Oct 2017, Harsha Sharma wrote:
 
-Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
----
-Changes in v2:
- -Remove unnecessary parentheses 
- -Remove one more useless cast
+> Done with following coccinelle patch
+>
+> @r@
+> expression x;
+> void* e;
+> type T;
+> identifier f;
+> @@
+> (
+>   *((T *)e)
+> |
+>   ((T *)x)[...]
+> |
+>   ((T*)x)->f
+> |
+>
+> - (T*)
+>   e
+> )
+>
+> Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
+> ---
+>  drivers/gpu/drm/amd/powerplay/hwmgr/cz_hwmgr.c        |  6 +++---
+>  drivers/gpu/drm/amd/powerplay/hwmgr/hwmgr.c           |  8 ++++----
+>  drivers/gpu/drm/amd/powerplay/hwmgr/ppatomctrl.c      |  2 +-
+>  drivers/gpu/drm/amd/powerplay/hwmgr/ppatomfwctrl.c    |  6 +++---
+>  drivers/gpu/drm/amd/powerplay/hwmgr/processpptables.c |  2 +-
+>  drivers/gpu/drm/amd/powerplay/hwmgr/smu7_hwmgr.c      | 18 +++++++++---------
+>  drivers/gpu/drm/amd/powerplay/hwmgr/smu7_thermal.c    |  4 ++--
+>  drivers/gpu/drm/amd/powerplay/hwmgr/vega10_hwmgr.c    | 12 ++++++------
+>  drivers/gpu/drm/amd/powerplay/hwmgr/vega10_thermal.c  |  2 +-
+>  9 files changed, 30 insertions(+), 30 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/amd/powerplay/hwmgr/cz_hwmgr.c b/drivers/gpu/drm/amd/powerplay/hwmgr/cz_hwmgr.c
+> index bc839ff0bdd0..897f666622f3 100644
+> --- a/drivers/gpu/drm/amd/powerplay/hwmgr/cz_hwmgr.c
+> +++ b/drivers/gpu/drm/amd/powerplay/hwmgr/cz_hwmgr.c
+> @@ -474,7 +474,7 @@ static int cz_tf_upload_pptable_to_smu(struct pp_hwmgr *hwmgr, void *input,
+>  	PP_ASSERT_WITH_CODE((0 == ret && NULL != table),
+>  			    "Fail to get clock table from SMU!", return -EINVAL;);
+>
+> -	clock_table = (struct SMU8_Fusion_ClkTable *)table;
+> +	clock_table = table;
+>
+>  	/* patch clock table */
+>  	PP_ASSERT_WITH_CODE((vddc_table->count <= CZ_MAX_HARDWARE_POWERLEVELS),
+> @@ -868,8 +868,8 @@ static int cz_tf_update_low_mem_pstate(struct pp_hwmgr *hwmgr,
+>  {
+>  	bool disable_switch;
+>  	bool enable_low_mem_state;
+> -	struct cz_hwmgr *hw_data = (struct cz_hwmgr *)(hwmgr->backend);
+> -	const struct phm_set_power_state_input *states = (struct phm_set_power_state_input *)input;
+> +	struct cz_hwmgr *hw_data = (hwmgr->backend);
+> +	const struct phm_set_power_state_input *states = input;
+>  	const struct cz_power_state *pnew_state = cast_const_PhwCzPowerState(states->pnew_state);
+>
+>  	if (hw_data->sys_info.nb_dpm_enable) {
+> diff --git a/drivers/gpu/drm/amd/powerplay/hwmgr/hwmgr.c b/drivers/gpu/drm/amd/powerplay/hwmgr/hwmgr.c
+> index 9547f265a8bb..5d63a1b18b39 100644
+> --- a/drivers/gpu/drm/amd/powerplay/hwmgr/hwmgr.c
+> +++ b/drivers/gpu/drm/amd/powerplay/hwmgr/hwmgr.c
+> @@ -469,7 +469,7 @@ int phm_reset_single_dpm_table(void *table,
+>  {
+>  	int i;
+>
+> -	struct vi_dpm_table *dpm_table = (struct vi_dpm_table *)table;
+> +	struct vi_dpm_table *dpm_table = table;
+>
+>  	dpm_table->count = count > max ? max : count;
+>
+> @@ -484,7 +484,7 @@ void phm_setup_pcie_table_entry(
+>  	uint32_t index, uint32_t pcie_gen,
+>  	uint32_t pcie_lanes)
+>  {
+> -	struct vi_dpm_table *dpm_table = (struct vi_dpm_table *)table;
+> +	struct vi_dpm_table *dpm_table = table;
+>  	dpm_table->dpm_level[index].value = pcie_gen;
+>  	dpm_table->dpm_level[index].param1 = pcie_lanes;
+>  	dpm_table->dpm_level[index].enabled = 1;
+> @@ -494,7 +494,7 @@ int32_t phm_get_dpm_level_enable_mask_value(void *table)
+>  {
+>  	int32_t i;
+>  	int32_t mask = 0;
+> -	struct vi_dpm_table *dpm_table = (struct vi_dpm_table *)table;
+> +	struct vi_dpm_table *dpm_table = table;
+>
+>  	for (i = dpm_table->count; i > 0; i--) {
+>  		mask = mask << 1;
+> @@ -566,7 +566,7 @@ int phm_find_boot_level(void *table,
+>  {
+>  	int result = -EINVAL;
+>  	uint32_t i;
+> -	struct vi_dpm_table *dpm_table = (struct vi_dpm_table *)table;
+> +	struct vi_dpm_table *dpm_table = table;
+>
+>  	for (i = 0; i < dpm_table->count; i++) {
+>  		if (value == dpm_table->dpm_level[i].value) {
+> diff --git a/drivers/gpu/drm/amd/powerplay/hwmgr/ppatomctrl.c b/drivers/gpu/drm/amd/powerplay/hwmgr/ppatomctrl.c
+> index 953e0c9ad7cd..676f2e8bb2ee 100644
+> --- a/drivers/gpu/drm/amd/powerplay/hwmgr/ppatomctrl.c
+> +++ b/drivers/gpu/drm/amd/powerplay/hwmgr/ppatomctrl.c
+> @@ -579,7 +579,7 @@ static ATOM_GPIO_PIN_LUT *get_gpio_lookup_table(void *device)
+>  	PP_ASSERT_WITH_CODE((NULL != table_address),
+>  			"Error retrieving BIOS Table Address!", return NULL;);
+>
+> -	return (ATOM_GPIO_PIN_LUT *)table_address;
+> +	return table_address;
+>  }
+>
+>  /**
+> diff --git a/drivers/gpu/drm/amd/powerplay/hwmgr/ppatomfwctrl.c b/drivers/gpu/drm/amd/powerplay/hwmgr/ppatomfwctrl.c
+> index c062844b15f3..05e3f5302994 100644
+> --- a/drivers/gpu/drm/amd/powerplay/hwmgr/ppatomfwctrl.c
+> +++ b/drivers/gpu/drm/amd/powerplay/hwmgr/ppatomfwctrl.c
+> @@ -66,7 +66,7 @@ static struct atom_voltage_objects_info_v4_1 *pp_atomfwctrl_get_voltage_info_tab
+>          "Error retrieving BIOS Table Address!",
+>          return NULL);
+>
+> -    return (struct atom_voltage_objects_info_v4_1 *)table_address;
+> +    return table_address;
+>  }
+>
+>  /**
+> @@ -173,7 +173,7 @@ static struct atom_gpio_pin_lut_v2_1 *pp_atomfwctrl_get_gpio_lookup_table(
+>  			"Error retrieving BIOS Table Address!",
+>  			return NULL);
+>
+> -	return (struct atom_gpio_pin_lut_v2_1 *)table_address;
+> +	return table_address;
+>  }
+>
+>  static bool pp_atomfwctrl_lookup_gpio_pin(
+> @@ -542,4 +542,4 @@ int pp_atomfwctrl_get_vbios_bootup_values(struct pp_hwmgr *hwmgr,
+>  		boot_values->ulDCEFClk   = frequency;
+>
+>  	return 0;
+> -}
+> \ No newline at end of file
+> +}
+> diff --git a/drivers/gpu/drm/amd/powerplay/hwmgr/processpptables.c b/drivers/gpu/drm/amd/powerplay/hwmgr/processpptables.c
+> index 2716721e5453..e795b14eaabe 100644
+> --- a/drivers/gpu/drm/amd/powerplay/hwmgr/processpptables.c
+> +++ b/drivers/gpu/drm/amd/powerplay/hwmgr/processpptables.c
+> @@ -807,7 +807,7 @@ static const ATOM_PPLIB_POWERPLAYTABLE *get_powerplay_table(
+>  		hwmgr->soft_pp_table_size = size;
+>  	}
+>
+> -	return (const ATOM_PPLIB_POWERPLAYTABLE *)table_addr;
+> +	return table_addr;
+>  }
+>
+>  int pp_tables_get_response_times(struct pp_hwmgr *hwmgr,
+> diff --git a/drivers/gpu/drm/amd/powerplay/hwmgr/smu7_hwmgr.c b/drivers/gpu/drm/amd/powerplay/hwmgr/smu7_hwmgr.c
+> index c2743233ba10..9b4b644525c9 100644
+> --- a/drivers/gpu/drm/amd/powerplay/hwmgr/smu7_hwmgr.c
+> +++ b/drivers/gpu/drm/amd/powerplay/hwmgr/smu7_hwmgr.c
+> @@ -2954,11 +2954,11 @@ static int smu7_get_pp_table_entry_callback_func_v1(struct pp_hwmgr *hwmgr,
+>  {
+>  	struct smu7_hwmgr *data = (struct smu7_hwmgr *)(hwmgr->backend);
+>  	struct smu7_power_state  *smu7_power_state =
+> -			(struct smu7_power_state *)(&(power_state->hardware));
+> +			(&(power_state->hardware));
 
- drivers/gpu/drm/amd/powerplay/hwmgr/cz_hwmgr.c       |  6 +++---
- drivers/gpu/drm/amd/powerplay/hwmgr/hwmgr.c          |  8 ++++----
- drivers/gpu/drm/amd/powerplay/hwmgr/ppatomctrl.c     |  2 +-
- drivers/gpu/drm/amd/powerplay/hwmgr/ppatomfwctrl.c   |  6 +++---
- .../gpu/drm/amd/powerplay/hwmgr/processpptables.c    |  2 +-
- drivers/gpu/drm/amd/powerplay/hwmgr/smu7_hwmgr.c     | 20 ++++++++++----------
- drivers/gpu/drm/amd/powerplay/hwmgr/smu7_thermal.c   |  4 ++--
- drivers/gpu/drm/amd/powerplay/hwmgr/vega10_hwmgr.c   | 12 ++++++------
- drivers/gpu/drm/amd/powerplay/hwmgr/vega10_thermal.c |  2 +-
- 9 files changed, 31 insertions(+), 31 deletions(-)
+There are extra parentheses here.  Check the rest of the patch for this
+issue.  I saw at least one other occurrence.
 
-diff --git a/drivers/gpu/drm/amd/powerplay/hwmgr/cz_hwmgr.c b/drivers/gpu/drm/amd/powerplay/hwmgr/cz_hwmgr.c
-index bc839ff0bdd0..f22104c78dcb 100644
---- a/drivers/gpu/drm/amd/powerplay/hwmgr/cz_hwmgr.c
-+++ b/drivers/gpu/drm/amd/powerplay/hwmgr/cz_hwmgr.c
-@@ -474,7 +474,7 @@ static int cz_tf_upload_pptable_to_smu(struct pp_hwmgr *hwmgr, void *input,
- 	PP_ASSERT_WITH_CODE((0 == ret && NULL != table),
- 			    "Fail to get clock table from SMU!", return -EINVAL;);
- 
--	clock_table = (struct SMU8_Fusion_ClkTable *)table;
-+	clock_table = table;
- 
- 	/* patch clock table */
- 	PP_ASSERT_WITH_CODE((vddc_table->count <= CZ_MAX_HARDWARE_POWERLEVELS),
-@@ -868,8 +868,8 @@ static int cz_tf_update_low_mem_pstate(struct pp_hwmgr *hwmgr,
- {
- 	bool disable_switch;
- 	bool enable_low_mem_state;
--	struct cz_hwmgr *hw_data = (struct cz_hwmgr *)(hwmgr->backend);
--	const struct phm_set_power_state_input *states = (struct phm_set_power_state_input *)input;
-+	struct cz_hwmgr *hw_data = hwmgr->backend;
-+	const struct phm_set_power_state_input *states = input;
- 	const struct cz_power_state *pnew_state = cast_const_PhwCzPowerState(states->pnew_state);
- 
- 	if (hw_data->sys_info.nb_dpm_enable) {
-diff --git a/drivers/gpu/drm/amd/powerplay/hwmgr/hwmgr.c b/drivers/gpu/drm/amd/powerplay/hwmgr/hwmgr.c
-index 9547f265a8bb..5d63a1b18b39 100644
---- a/drivers/gpu/drm/amd/powerplay/hwmgr/hwmgr.c
-+++ b/drivers/gpu/drm/amd/powerplay/hwmgr/hwmgr.c
-@@ -469,7 +469,7 @@ int phm_reset_single_dpm_table(void *table,
- {
- 	int i;
- 
--	struct vi_dpm_table *dpm_table = (struct vi_dpm_table *)table;
-+	struct vi_dpm_table *dpm_table = table;
- 
- 	dpm_table->count = count > max ? max : count;
- 
-@@ -484,7 +484,7 @@ void phm_setup_pcie_table_entry(
- 	uint32_t index, uint32_t pcie_gen,
- 	uint32_t pcie_lanes)
- {
--	struct vi_dpm_table *dpm_table = (struct vi_dpm_table *)table;
-+	struct vi_dpm_table *dpm_table = table;
- 	dpm_table->dpm_level[index].value = pcie_gen;
- 	dpm_table->dpm_level[index].param1 = pcie_lanes;
- 	dpm_table->dpm_level[index].enabled = 1;
-@@ -494,7 +494,7 @@ int32_t phm_get_dpm_level_enable_mask_value(void *table)
- {
- 	int32_t i;
- 	int32_t mask = 0;
--	struct vi_dpm_table *dpm_table = (struct vi_dpm_table *)table;
-+	struct vi_dpm_table *dpm_table = table;
- 
- 	for (i = dpm_table->count; i > 0; i--) {
- 		mask = mask << 1;
-@@ -566,7 +566,7 @@ int phm_find_boot_level(void *table,
- {
- 	int result = -EINVAL;
- 	uint32_t i;
--	struct vi_dpm_table *dpm_table = (struct vi_dpm_table *)table;
-+	struct vi_dpm_table *dpm_table = table;
- 
- 	for (i = 0; i < dpm_table->count; i++) {
- 		if (value == dpm_table->dpm_level[i].value) {
-diff --git a/drivers/gpu/drm/amd/powerplay/hwmgr/ppatomctrl.c b/drivers/gpu/drm/amd/powerplay/hwmgr/ppatomctrl.c
-index 953e0c9ad7cd..676f2e8bb2ee 100644
---- a/drivers/gpu/drm/amd/powerplay/hwmgr/ppatomctrl.c
-+++ b/drivers/gpu/drm/amd/powerplay/hwmgr/ppatomctrl.c
-@@ -579,7 +579,7 @@ static ATOM_GPIO_PIN_LUT *get_gpio_lookup_table(void *device)
- 	PP_ASSERT_WITH_CODE((NULL != table_address),
- 			"Error retrieving BIOS Table Address!", return NULL;);
- 
--	return (ATOM_GPIO_PIN_LUT *)table_address;
-+	return table_address;
- }
- 
- /**
-diff --git a/drivers/gpu/drm/amd/powerplay/hwmgr/ppatomfwctrl.c b/drivers/gpu/drm/amd/powerplay/hwmgr/ppatomfwctrl.c
-index c062844b15f3..05e3f5302994 100644
---- a/drivers/gpu/drm/amd/powerplay/hwmgr/ppatomfwctrl.c
-+++ b/drivers/gpu/drm/amd/powerplay/hwmgr/ppatomfwctrl.c
-@@ -66,7 +66,7 @@ static struct atom_voltage_objects_info_v4_1 *pp_atomfwctrl_get_voltage_info_tab
-         "Error retrieving BIOS Table Address!",
-         return NULL);
- 
--    return (struct atom_voltage_objects_info_v4_1 *)table_address;
-+    return table_address;
- }
- 
- /**
-@@ -173,7 +173,7 @@ static struct atom_gpio_pin_lut_v2_1 *pp_atomfwctrl_get_gpio_lookup_table(
- 			"Error retrieving BIOS Table Address!",
- 			return NULL);
- 
--	return (struct atom_gpio_pin_lut_v2_1 *)table_address;
-+	return table_address;
- }
- 
- static bool pp_atomfwctrl_lookup_gpio_pin(
-@@ -542,4 +542,4 @@ int pp_atomfwctrl_get_vbios_bootup_values(struct pp_hwmgr *hwmgr,
- 		boot_values->ulDCEFClk   = frequency;
- 
- 	return 0;
--}
-\ No newline at end of file
-+}
-diff --git a/drivers/gpu/drm/amd/powerplay/hwmgr/processpptables.c b/drivers/gpu/drm/amd/powerplay/hwmgr/processpptables.c
-index 2716721e5453..e795b14eaabe 100644
---- a/drivers/gpu/drm/amd/powerplay/hwmgr/processpptables.c
-+++ b/drivers/gpu/drm/amd/powerplay/hwmgr/processpptables.c
-@@ -807,7 +807,7 @@ static const ATOM_PPLIB_POWERPLAYTABLE *get_powerplay_table(
- 		hwmgr->soft_pp_table_size = size;
- 	}
- 
--	return (const ATOM_PPLIB_POWERPLAYTABLE *)table_addr;
-+	return table_addr;
- }
- 
- int pp_tables_get_response_times(struct pp_hwmgr *hwmgr,
-diff --git a/drivers/gpu/drm/amd/powerplay/hwmgr/smu7_hwmgr.c b/drivers/gpu/drm/amd/powerplay/hwmgr/smu7_hwmgr.c
-index c2743233ba10..8f339a3d6221 100644
---- a/drivers/gpu/drm/amd/powerplay/hwmgr/smu7_hwmgr.c
-+++ b/drivers/gpu/drm/amd/powerplay/hwmgr/smu7_hwmgr.c
-@@ -2952,13 +2952,13 @@ static int smu7_get_pp_table_entry_callback_func_v1(struct pp_hwmgr *hwmgr,
- 		void *state, struct pp_power_state *power_state,
- 		void *pp_table, uint32_t classification_flag)
- {
--	struct smu7_hwmgr *data = (struct smu7_hwmgr *)(hwmgr->backend);
-+	struct smu7_hwmgr *data = hwmgr->backend;
- 	struct smu7_power_state  *smu7_power_state =
--			(struct smu7_power_state *)(&(power_state->hardware));
-+			&(power_state->hardware);
- 	struct smu7_performance_level *performance_level;
--	ATOM_Tonga_State *state_entry = (ATOM_Tonga_State *)state;
-+	ATOM_Tonga_State *state_entry = state;
- 	ATOM_Tonga_POWERPLAYTABLE *powerplay_table =
--			(ATOM_Tonga_POWERPLAYTABLE *)pp_table;
-+			pp_table;
- 	PPTable_Generic_SubTable_Header *sclk_dep_table =
- 			(PPTable_Generic_SubTable_Header *)
- 			(((unsigned long)powerplay_table) +
-@@ -3391,7 +3391,7 @@ static int smu7_read_sensor(struct pp_hwmgr *hwmgr, int idx,
- 		if (*size < sizeof(struct pp_gpu_power))
- 			return -EINVAL;
- 		*size = sizeof(struct pp_gpu_power);
--		return smu7_get_gpu_power(hwmgr, (struct pp_gpu_power *)value);
-+		return smu7_get_gpu_power(hwmgr, value);
- 	default:
- 		return -EINVAL;
- 	}
-@@ -3400,7 +3400,7 @@ static int smu7_read_sensor(struct pp_hwmgr *hwmgr, int idx,
- static int smu7_find_dpm_states_clocks_in_dpm_table(struct pp_hwmgr *hwmgr, const void *input)
- {
- 	const struct phm_set_power_state_input *states =
--			(const struct phm_set_power_state_input *)input;
-+			input;
- 	const struct smu7_power_state *smu7_ps =
- 			cast_const_phw_smu7_power_state(states->pnew_state);
- 	struct smu7_hwmgr *data = (struct smu7_hwmgr *)(hwmgr->backend);
-@@ -3478,7 +3478,7 @@ static int smu7_request_link_speed_change_before_state_change(
- 		struct pp_hwmgr *hwmgr, const void *input)
- {
- 	const struct phm_set_power_state_input *states =
--			(const struct phm_set_power_state_input *)input;
-+			input;
- 	struct smu7_hwmgr *data = (struct smu7_hwmgr *)(hwmgr->backend);
- 	const struct smu7_power_state *smu7_nps =
- 			cast_const_phw_smu7_power_state(states->pnew_state);
-@@ -3558,7 +3558,7 @@ static int smu7_populate_and_upload_sclk_mclk_dpm_levels(
- {
- 	int result = 0;
- 	const struct phm_set_power_state_input *states =
--			(const struct phm_set_power_state_input *)input;
-+			input;
- 	const struct smu7_power_state *smu7_ps =
- 			cast_const_phw_smu7_power_state(states->pnew_state);
- 	struct smu7_hwmgr *data = (struct smu7_hwmgr *)(hwmgr->backend);
-@@ -3729,7 +3729,7 @@ static int smu7_generate_dpm_level_enable_mask(
- {
- 	int result;
- 	const struct phm_set_power_state_input *states =
--			(const struct phm_set_power_state_input *)input;
-+			input;
- 	struct smu7_hwmgr *data = (struct smu7_hwmgr *)(hwmgr->backend);
- 	const struct smu7_power_state *smu7_ps =
- 			cast_const_phw_smu7_power_state(states->pnew_state);
-@@ -3789,7 +3789,7 @@ static int smu7_notify_link_speed_change_after_state_change(
- 		struct pp_hwmgr *hwmgr, const void *input)
- {
- 	const struct phm_set_power_state_input *states =
--			(const struct phm_set_power_state_input *)input;
-+			input;
- 	struct smu7_hwmgr *data = (struct smu7_hwmgr *)(hwmgr->backend);
- 	const struct smu7_power_state *smu7_ps =
- 			cast_const_phw_smu7_power_state(states->pnew_state);
-diff --git a/drivers/gpu/drm/amd/powerplay/hwmgr/smu7_thermal.c b/drivers/gpu/drm/amd/powerplay/hwmgr/smu7_thermal.c
-index baddb569a8b8..a17443d5aa61 100644
---- a/drivers/gpu/drm/amd/powerplay/hwmgr/smu7_thermal.c
-+++ b/drivers/gpu/drm/amd/powerplay/hwmgr/smu7_thermal.c
-@@ -452,7 +452,7 @@ static int tf_smu7_thermal_start_smc_fan_control(struct pp_hwmgr *hwmgr,
- static int tf_smu7_thermal_set_temperature_range(struct pp_hwmgr *hwmgr,
- 		void *input, void *output, void *storage, int result)
- {
--	struct PP_TemperatureRange *range = (struct PP_TemperatureRange *)input;
-+	struct PP_TemperatureRange *range = input;
- 
- 	if (range == NULL)
- 		return -EINVAL;
-@@ -581,4 +581,4 @@ void pp_smu7_thermal_fini(struct pp_hwmgr *hwmgr)
- 	phm_destroy_table(hwmgr, &(hwmgr->set_temperature_range));
- 	phm_destroy_table(hwmgr, &(hwmgr->start_thermal_controller));
- 	return;
--}
-\ No newline at end of file
-+}
-diff --git a/drivers/gpu/drm/amd/powerplay/hwmgr/vega10_hwmgr.c b/drivers/gpu/drm/amd/powerplay/hwmgr/vega10_hwmgr.c
-index f8f02e70b8bc..9e82eed7e7a9 100644
---- a/drivers/gpu/drm/amd/powerplay/hwmgr/vega10_hwmgr.c
-+++ b/drivers/gpu/drm/amd/powerplay/hwmgr/vega10_hwmgr.c
-@@ -2994,9 +2994,9 @@ static int vega10_get_pp_table_entry_callback_func(struct pp_hwmgr *hwmgr,
- 	struct vega10_power_state *vega10_power_state =
- 			cast_phw_vega10_power_state(&(power_state->hardware));
- 	struct vega10_performance_level *performance_level;
--	ATOM_Vega10_State *state_entry = (ATOM_Vega10_State *)state;
-+	ATOM_Vega10_State *state_entry = state;
- 	ATOM_Vega10_POWERPLAYTABLE *powerplay_table =
--			(ATOM_Vega10_POWERPLAYTABLE *)pp_table;
-+			pp_table;
- 	ATOM_Vega10_SOCCLK_Dependency_Table *socclk_dep_table =
- 			(ATOM_Vega10_SOCCLK_Dependency_Table *)
- 			(((unsigned long)powerplay_table) +
-@@ -3306,7 +3306,7 @@ static int vega10_apply_state_adjust_rules(struct pp_hwmgr *hwmgr,
- static int vega10_find_dpm_states_clocks_in_dpm_table(struct pp_hwmgr *hwmgr, const void *input)
- {
- 	const struct phm_set_power_state_input *states =
--			(const struct phm_set_power_state_input *)input;
-+			input;
- 	const struct vega10_power_state *vega10_ps =
- 			cast_const_phw_vega10_power_state(states->pnew_state);
- 	struct vega10_hwmgr *data =
-@@ -3397,7 +3397,7 @@ static int vega10_populate_and_upload_sclk_mclk_dpm_levels(
- {
- 	int result = 0;
- 	const struct phm_set_power_state_input *states =
--			(const struct phm_set_power_state_input *)input;
-+			input;
- 	const struct vega10_power_state *vega10_ps =
- 			cast_const_phw_vega10_power_state(states->pnew_state);
- 	struct vega10_hwmgr *data =
-@@ -3813,7 +3813,7 @@ static int vega10_generate_dpm_level_enable_mask(
- 	struct vega10_hwmgr *data =
- 			(struct vega10_hwmgr *)(hwmgr->backend);
- 	const struct phm_set_power_state_input *states =
--			(const struct phm_set_power_state_input *)input;
-+			input;
- 	const struct vega10_power_state *vega10_ps =
- 			cast_const_phw_vega10_power_state(states->pnew_state);
- 	int i;
-@@ -4042,7 +4042,7 @@ static int vega10_read_sensor(struct pp_hwmgr *hwmgr, int idx,
- 			ret = -EINVAL;
- 		else {
- 			*size = sizeof(struct pp_gpu_power);
--			ret = vega10_get_gpu_power(hwmgr, (struct pp_gpu_power *)value);
-+			ret = vega10_get_gpu_power(hwmgr, value);
- 		}
- 		break;
- 	default:
-diff --git a/drivers/gpu/drm/amd/powerplay/hwmgr/vega10_thermal.c b/drivers/gpu/drm/amd/powerplay/hwmgr/vega10_thermal.c
-index d44243441d28..4f832c607514 100644
---- a/drivers/gpu/drm/amd/powerplay/hwmgr/vega10_thermal.c
-+++ b/drivers/gpu/drm/amd/powerplay/hwmgr/vega10_thermal.c
-@@ -647,7 +647,7 @@ int tf_vega10_thermal_start_smc_fan_control(struct pp_hwmgr *hwmgr,
- int tf_vega10_thermal_set_temperature_range(struct pp_hwmgr *hwmgr,
- 		void *input, void *output, void *storage, int result)
- {
--	struct PP_TemperatureRange *range = (struct PP_TemperatureRange *)input;
-+	struct PP_TemperatureRange *range = input;
- 
- 	if (range == NULL)
- 		return -EINVAL;
--- 
-2.11.0
+julia
 
+>  	struct smu7_performance_level *performance_level;
+> -	ATOM_Tonga_State *state_entry = (ATOM_Tonga_State *)state;
+> +	ATOM_Tonga_State *state_entry = state;
+>  	ATOM_Tonga_POWERPLAYTABLE *powerplay_table =
+> -			(ATOM_Tonga_POWERPLAYTABLE *)pp_table;
+> +			pp_table;
+>  	PPTable_Generic_SubTable_Header *sclk_dep_table =
+>  			(PPTable_Generic_SubTable_Header *)
+>  			(((unsigned long)powerplay_table) +
+> @@ -3391,7 +3391,7 @@ static int smu7_read_sensor(struct pp_hwmgr *hwmgr, int idx,
+>  		if (*size < sizeof(struct pp_gpu_power))
+>  			return -EINVAL;
+>  		*size = sizeof(struct pp_gpu_power);
+> -		return smu7_get_gpu_power(hwmgr, (struct pp_gpu_power *)value);
+> +		return smu7_get_gpu_power(hwmgr, value);
+>  	default:
+>  		return -EINVAL;
+>  	}
+> @@ -3400,7 +3400,7 @@ static int smu7_read_sensor(struct pp_hwmgr *hwmgr, int idx,
+>  static int smu7_find_dpm_states_clocks_in_dpm_table(struct pp_hwmgr *hwmgr, const void *input)
+>  {
+>  	const struct phm_set_power_state_input *states =
+> -			(const struct phm_set_power_state_input *)input;
+> +			input;
+>  	const struct smu7_power_state *smu7_ps =
+>  			cast_const_phw_smu7_power_state(states->pnew_state);
+>  	struct smu7_hwmgr *data = (struct smu7_hwmgr *)(hwmgr->backend);
+> @@ -3478,7 +3478,7 @@ static int smu7_request_link_speed_change_before_state_change(
+>  		struct pp_hwmgr *hwmgr, const void *input)
+>  {
+>  	const struct phm_set_power_state_input *states =
+> -			(const struct phm_set_power_state_input *)input;
+> +			input;
+>  	struct smu7_hwmgr *data = (struct smu7_hwmgr *)(hwmgr->backend);
+>  	const struct smu7_power_state *smu7_nps =
+>  			cast_const_phw_smu7_power_state(states->pnew_state);
+> @@ -3558,7 +3558,7 @@ static int smu7_populate_and_upload_sclk_mclk_dpm_levels(
+>  {
+>  	int result = 0;
+>  	const struct phm_set_power_state_input *states =
+> -			(const struct phm_set_power_state_input *)input;
+> +			input;
+>  	const struct smu7_power_state *smu7_ps =
+>  			cast_const_phw_smu7_power_state(states->pnew_state);
+>  	struct smu7_hwmgr *data = (struct smu7_hwmgr *)(hwmgr->backend);
+> @@ -3729,7 +3729,7 @@ static int smu7_generate_dpm_level_enable_mask(
+>  {
+>  	int result;
+>  	const struct phm_set_power_state_input *states =
+> -			(const struct phm_set_power_state_input *)input;
+> +			input;
+>  	struct smu7_hwmgr *data = (struct smu7_hwmgr *)(hwmgr->backend);
+>  	const struct smu7_power_state *smu7_ps =
+>  			cast_const_phw_smu7_power_state(states->pnew_state);
+> @@ -3789,7 +3789,7 @@ static int smu7_notify_link_speed_change_after_state_change(
+>  		struct pp_hwmgr *hwmgr, const void *input)
+>  {
+>  	const struct phm_set_power_state_input *states =
+> -			(const struct phm_set_power_state_input *)input;
+> +			input;
+>  	struct smu7_hwmgr *data = (struct smu7_hwmgr *)(hwmgr->backend);
+>  	const struct smu7_power_state *smu7_ps =
+>  			cast_const_phw_smu7_power_state(states->pnew_state);
+> diff --git a/drivers/gpu/drm/amd/powerplay/hwmgr/smu7_thermal.c b/drivers/gpu/drm/amd/powerplay/hwmgr/smu7_thermal.c
+> index baddb569a8b8..a17443d5aa61 100644
+> --- a/drivers/gpu/drm/amd/powerplay/hwmgr/smu7_thermal.c
+> +++ b/drivers/gpu/drm/amd/powerplay/hwmgr/smu7_thermal.c
+> @@ -452,7 +452,7 @@ static int tf_smu7_thermal_start_smc_fan_control(struct pp_hwmgr *hwmgr,
+>  static int tf_smu7_thermal_set_temperature_range(struct pp_hwmgr *hwmgr,
+>  		void *input, void *output, void *storage, int result)
+>  {
+> -	struct PP_TemperatureRange *range = (struct PP_TemperatureRange *)input;
+> +	struct PP_TemperatureRange *range = input;
+>
+>  	if (range == NULL)
+>  		return -EINVAL;
+> @@ -581,4 +581,4 @@ void pp_smu7_thermal_fini(struct pp_hwmgr *hwmgr)
+>  	phm_destroy_table(hwmgr, &(hwmgr->set_temperature_range));
+>  	phm_destroy_table(hwmgr, &(hwmgr->start_thermal_controller));
+>  	return;
+> -}
+> \ No newline at end of file
+> +}
+> diff --git a/drivers/gpu/drm/amd/powerplay/hwmgr/vega10_hwmgr.c b/drivers/gpu/drm/amd/powerplay/hwmgr/vega10_hwmgr.c
+> index f8f02e70b8bc..9e82eed7e7a9 100644
+> --- a/drivers/gpu/drm/amd/powerplay/hwmgr/vega10_hwmgr.c
+> +++ b/drivers/gpu/drm/amd/powerplay/hwmgr/vega10_hwmgr.c
+> @@ -2994,9 +2994,9 @@ static int vega10_get_pp_table_entry_callback_func(struct pp_hwmgr *hwmgr,
+>  	struct vega10_power_state *vega10_power_state =
+>  			cast_phw_vega10_power_state(&(power_state->hardware));
+>  	struct vega10_performance_level *performance_level;
+> -	ATOM_Vega10_State *state_entry = (ATOM_Vega10_State *)state;
+> +	ATOM_Vega10_State *state_entry = state;
+>  	ATOM_Vega10_POWERPLAYTABLE *powerplay_table =
+> -			(ATOM_Vega10_POWERPLAYTABLE *)pp_table;
+> +			pp_table;
+>  	ATOM_Vega10_SOCCLK_Dependency_Table *socclk_dep_table =
+>  			(ATOM_Vega10_SOCCLK_Dependency_Table *)
+>  			(((unsigned long)powerplay_table) +
+> @@ -3306,7 +3306,7 @@ static int vega10_apply_state_adjust_rules(struct pp_hwmgr *hwmgr,
+>  static int vega10_find_dpm_states_clocks_in_dpm_table(struct pp_hwmgr *hwmgr, const void *input)
+>  {
+>  	const struct phm_set_power_state_input *states =
+> -			(const struct phm_set_power_state_input *)input;
+> +			input;
+>  	const struct vega10_power_state *vega10_ps =
+>  			cast_const_phw_vega10_power_state(states->pnew_state);
+>  	struct vega10_hwmgr *data =
+> @@ -3397,7 +3397,7 @@ static int vega10_populate_and_upload_sclk_mclk_dpm_levels(
+>  {
+>  	int result = 0;
+>  	const struct phm_set_power_state_input *states =
+> -			(const struct phm_set_power_state_input *)input;
+> +			input;
+>  	const struct vega10_power_state *vega10_ps =
+>  			cast_const_phw_vega10_power_state(states->pnew_state);
+>  	struct vega10_hwmgr *data =
+> @@ -3813,7 +3813,7 @@ static int vega10_generate_dpm_level_enable_mask(
+>  	struct vega10_hwmgr *data =
+>  			(struct vega10_hwmgr *)(hwmgr->backend);
+>  	const struct phm_set_power_state_input *states =
+> -			(const struct phm_set_power_state_input *)input;
+> +			input;
+>  	const struct vega10_power_state *vega10_ps =
+>  			cast_const_phw_vega10_power_state(states->pnew_state);
+>  	int i;
+> @@ -4042,7 +4042,7 @@ static int vega10_read_sensor(struct pp_hwmgr *hwmgr, int idx,
+>  			ret = -EINVAL;
+>  		else {
+>  			*size = sizeof(struct pp_gpu_power);
+> -			ret = vega10_get_gpu_power(hwmgr, (struct pp_gpu_power *)value);
+> +			ret = vega10_get_gpu_power(hwmgr, value);
+>  		}
+>  		break;
+>  	default:
+> diff --git a/drivers/gpu/drm/amd/powerplay/hwmgr/vega10_thermal.c b/drivers/gpu/drm/amd/powerplay/hwmgr/vega10_thermal.c
+> index d44243441d28..4f832c607514 100644
+> --- a/drivers/gpu/drm/amd/powerplay/hwmgr/vega10_thermal.c
+> +++ b/drivers/gpu/drm/amd/powerplay/hwmgr/vega10_thermal.c
+> @@ -647,7 +647,7 @@ int tf_vega10_thermal_start_smc_fan_control(struct pp_hwmgr *hwmgr,
+>  int tf_vega10_thermal_set_temperature_range(struct pp_hwmgr *hwmgr,
+>  		void *input, void *output, void *storage, int result)
+>  {
+> -	struct PP_TemperatureRange *range = (struct PP_TemperatureRange *)input;
+> +	struct PP_TemperatureRange *range = input;
+>
+>  	if (range == NULL)
+>  		return -EINVAL;
+> --
+> 2.11.0
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20171013080902.3323-1-harshasharmaiitr%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
