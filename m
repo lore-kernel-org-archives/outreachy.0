@@ -1,181 +1,165 @@
-X-GM-THRID: 6471369058680832000
-X-Received: by 10.101.73.7 with SMTP id p7mr964207pgs.80.1506733023357;
-        Fri, 29 Sep 2017 17:57:03 -0700 (PDT)
+X-GM-THRID: 6476152782824931328
+X-Received: by 10.36.175.66 with SMTP id l2mr1985307iti.42.1507925220034;
+        Fri, 13 Oct 2017 13:07:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.98.43.9 with SMTP id r9ls887445pfr.6.gmail; Fri, 29 Sep 2017
- 17:57:02 -0700 (PDT)
-X-Received: by 10.99.99.197 with SMTP id x188mr898156pgb.118.1506733022412;
-        Fri, 29 Sep 2017 17:57:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506733022; cv=none;
+Received: by 10.36.189.65 with SMTP id x62ls407864ite.3.gmail; Fri, 13 Oct
+ 2017 13:06:59 -0700 (PDT)
+X-Received: by 10.107.112.18 with SMTP id l18mr1748087ioc.0.1507925219295;
+        Fri, 13 Oct 2017 13:06:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507925219; cv=none;
         d=google.com; s=arc-20160816;
-        b=YEbsUKoCsVJyT0E4PdVLV8Rgw7O9obcsnnHTqVzCDvfufL9qWBQ1EKW+6fo3a9Ts6v
-         EIPfeOcrQxaBt126Ysa+RJtdSdSrZKdROvTO9pFm/BWiPbLxMkhDnkQTiSeWiJhAKsLq
-         RM3zlt13DdrV9AmQZ0WT9Uw72dq4qZ6w/B7bQ7mmeH1w7K3ovKP0tHp6x8tSnibAycgq
-         XSpViYgvg+X+rpQ/sT56rYKe5rkSpzJdXr857vJPPqMJ/UYBC4pEuiocbhfTX/GhIqcU
-         QhvDag87WD5Y7G2MwVqCchoK5wbNsbP2UjmLx+AGKMv9LSPx7NeturFMiBgwaHLAzcmU
-         y8OQ==
+        b=Mg2tnqvcISzUMhMeE3HoofDe1sLaxZFFwWQRFImtMTC5XmNkdeRbBDzOCtOTDC7/77
+         X/aWLSR9aUHiJ7FqOEHdMs7vQcpM4Yz8tb6PDz/EEgGGeGjYHZFEH201YzX9+nMAZ9k9
+         Xqu6CImpKS7BsEXRbiVh9Q38x/jOsn4La8SEdAz4p/+1G/WSO2ktD7g5/OEc9jLtvO/l
+         pNToO+lEmN2Q/e6Ot2trk14eD4n2/mlvVOm98SisHIf+fUL/CXE79AfOGhmfzP8k3bvk
+         tLIFjlIIGjltuxQ4Abbtd1ur7IdKBc7xMmrnTfzBMDO+RhbHAF1oe9OpwUs19xoEpiue
+         Ul6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature
          :arc-authentication-results;
-        bh=y8wlO+Zs1hupAtctO9sGhK0j8BBjomxv9e62EvXl+Og=;
-        b=NmDzQGLbj2ZvzcpAv3VHmzpw7mBD2sGGhpJ0wMVTD8+nbENThmbNE20BPllBJC5sCn
-         +F9LWGvbN4P0B3b8Az+NR3Zh+ptqSYoDwU5fiBXaiVl8rFZcp1eOU/Vohc28uIXO9x80
-         YwT60Ag0vL/lVdQtPrGtNUxFelWzViSK8zRt5In/qfbd+MWKKN3nFAX2F7ris4bRtYQO
-         FXh4KeH3KcGK0byt8aFSCSrH/wiKZFVSid4mNYNpi+BRKG71Vbu3sehuh8VH+8GU72IR
-         JjqhCE3o1v2WekHO901RhhunJ50hzcHl37JgK+soK36A5ogVyBl/BSsO2nVKyt+DpZN+
-         iw8A==
+        bh=oXw6DykbpR7JoyHO7dKPJ0uKS9nv850naelGY6ITBvk=;
+        b=c8oNo1ACM1PEESy1PsDBjNK5go+ZRNxsdQjMxiKDOLCs6/OK/xSoTxz1bwIwe8TwmE
+         2j7JWjhmvUsshmnUUO0vruvd7W/TPgDbWWsGd2hqtFGFNAnV/AsqyyXNnf0BfH3BGS/E
+         pUS8M2eKkSAh6WoFq5CpQCt2duOxw9CnzddU8ljzlpLtCSIJRb0J4uwNOzEU2oPOJqFD
+         mNynjVhmzl7U/6vO+/YqItljN9H/Wjkv+Rg21c9daya0jNgol4CFejkOyEng28XDklq6
+         vakXgLRsqfBtH0I+dRFLVrBmY8aKt5C0AIz/K5bXadRf7L78eSj4DhLuO/0KQODg5BUr
+         6k9Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sv1ZZ4gv;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <srishtishar@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id f13si650977pfj.11.2017.09.29.17.57.02
+       dkim=pass header.i=@chromium.org header.s=google header.b=N+uUIV84;
+       spf=pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:400d:c0d::229 as permitted sender) smtp.mailfrom=seanpaul@chromium.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org
+Return-Path: <seanpaul@chromium.org>
+Received: from mail-qt0-x229.google.com (mail-qt0-x229.google.com. [2607:f8b0:400d:c0d::229])
+        by gmr-mx.google.com with ESMTPS id c3si78177ioj.2.2017.10.13.13.06.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Sep 2017 17:57:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Fri, 13 Oct 2017 13:06:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:400d:c0d::229 as permitted sender) client-ip=2607:f8b0:400d:c0d::229;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sv1ZZ4gv;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id y192so744407pgd.5
-        for <outreachy-kernel@googlegroups.com>; Fri, 29 Sep 2017 17:57:02 -0700 (PDT)
+       dkim=pass header.i=@chromium.org header.s=google header.b=N+uUIV84;
+       spf=pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:400d:c0d::229 as permitted sender) smtp.mailfrom=seanpaul@chromium.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org
+Received: by mail-qt0-x229.google.com with SMTP id j58so10615153qtj.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 13 Oct 2017 13:06:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=y8wlO+Zs1hupAtctO9sGhK0j8BBjomxv9e62EvXl+Og=;
-        b=sv1ZZ4gvUwewp7BsSgi4gDNhQclMS/ZPIDpSga53IE3NkdAKFEgIln7nW7eRV10Be3
-         L+gCog4otrgD5xMtNpFcfY5RSYFotLbXvchUK/eT1Bpqdowv1IF0T2iil2f8266BnB45
-         QHIHvjGZKYr/bweWp4ASr/LvSCGDxz74Lwpmm3C/rImQq7ELtkDHNLg/e7VcLOWzBgJ9
-         0GcNYRBN02pywz2MeNOhgLHo7545A8o4LOR+1STBSEqCE/xdPsbErgUO2B/xDkDnKRJP
-         V6imkL34TiqqxeRnGTcpnSE5ZDssH2gfjaiRnXZLUXmF/hsFrw42j75p/++nxUi2VwSN
-         SESg==
+        d=chromium.org; s=google;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=oXw6DykbpR7JoyHO7dKPJ0uKS9nv850naelGY6ITBvk=;
+        b=N+uUIV84mTq2JTaI1PN4s3oJ71BtBYukFjtrgYaunqqrX2qrCDmRknJHt/hIx+0FuA
+         68d9qmZW8OG6mG/TvvMXZRn8msyB+YID3h5bL0bdJvSwK+uLj4ia48ILA0i/XRMk145m
+         61wuzRm/yMiBR4m4JHQJGr4dw3+LgZhIOnwqE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=y8wlO+Zs1hupAtctO9sGhK0j8BBjomxv9e62EvXl+Og=;
-        b=ZN+TCZxm73Cqx1k7WCsIHetPs8Vf4l15aIIUUG/7d9oak5NR4bIspKc0NN0NPWzBUn
-         QjCDt3nCo4MsNWR55mwHmRGAhCG5rii+kmQseChR2a7QYZVPS8M03fGXecuh7jqIKOg4
-         DKdufu6WGZsuB09oFt2FNelTtUgY87J4DmY8IwWZAkDW+Lt8saWWBcISr/AlAST8gURG
-         /1+jPxAe8cvJ6yDqo4gMWhnZ2ULizAx++3Ful39Ueb1tX+eg+sAt6gZXLpOjpspWq4AB
-         Gjv7y4EKOoBwpWCZNeP6T1MJY0NBsjT0YJ5G+/49VW6bG+amt1Guzd4sPuoaNdN5mw3e
-         /xqg==
-X-Gm-Message-State: AHPjjUgR4TJAbFr6K2ZXRKDF3Q/KpOYr8GMXqEwLRYVYBU/W2OihYR4H
-	6uZdq27cS38Za4Bs0AIvdSk=
-X-Google-Smtp-Source: AOwi7QDpUvUBuHTpwsPny2+VTXgyUxJIdYyBxJqoavm4L9Ft+ovqelb3ieEFDGDQIrzufWom48CDCA==
-X-Received: by 10.98.153.132 with SMTP id t4mr9230883pfk.19.1506733022124;
-        Fri, 29 Sep 2017 17:57:02 -0700 (PDT)
-Return-Path: <srishtishar@gmail.com>
-Received: from srishti-PRODiiGY-945G ([122.175.215.134])
-        by smtp.gmail.com with ESMTPSA id l74sm9124262pfi.9.2017.09.29.17.57.00
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 29 Sep 2017 17:57:01 -0700 (PDT)
-From: Srishti Sharma <srishtishar@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Srishti Sharma <srishtishar@gmail.com>
-Subject: [PATCH] Staging: rtl8188eu: core: Use list_entry instead of container_of
-Date: Sat, 30 Sep 2017 06:26:55 +0530
-Message-Id: <1506733015-8564-1-git-send-email-srishtishar@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=oXw6DykbpR7JoyHO7dKPJ0uKS9nv850naelGY6ITBvk=;
+        b=Z8SPjOpD0xIthGhu/YkSGDALu2//NhjmX2I7ZZGv3cLadm7bZXarjmuejBQSoqKVN7
+         9LF0Q/KVP+nfcDAgKJESBRV4R/CA6u46D9Hwknp7/yUOZPU7gKpA3EVBEwbemB9Jqm1J
+         yasEuLmhvOjSHo7KpN7AwqL400kOSLWS8gsYIPu98T7018PuEq1cRtgX2fA3IQBlQtJy
+         tSkjrv683WLa8/Ew3ozuLJto4T1J9ujNu/alOazOAcPI20H8m89aoTW7Sly4BcGd+lIj
+         mSuXkceziAMSQLvpKrc+UAaOuZYes1UsminuB5DSyOyCW3GvWxxgWpj+wy103cWWKWj4
+         uXlg==
+X-Gm-Message-State: AMCzsaXJoi62dm02vUyhAc+AOFpgb7ther3QLMLo+6C9D4uHYn/0YwnW
+	j2lqXLB4ncagA8lIl+cfiuXzdA==
+X-Google-Smtp-Source: AOwi7QCkgLzZw5BFPkP4JOxMbVPRTfSi0RgdUJlR11ajfY6u2oLr0sKn2S1g1QURdN1sDPHecPDJPQ==
+X-Received: by 10.37.133.68 with SMTP id f4mr1696898ybn.385.1507925218566;
+        Fri, 13 Oct 2017 13:06:58 -0700 (PDT)
+Return-Path: <seanpaul@chromium.org>
+Received: from localhost ([2620:0:1013:8:f586:7071:d44a:c2c4])
+        by smtp.gmail.com with ESMTPSA id g204sm739755ywb.7.2017.10.13.13.06.57
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Fri, 13 Oct 2017 13:06:57 -0700 (PDT)
+Date: Fri, 13 Oct 2017 16:06:57 -0400
+From: Sean Paul <seanpaul@chromium.org>
+To: Jani Nikula <jani.nikula@linux.intel.com>
+Cc: Harsha Sharma <harshasharmaiitr@gmail.com>, daniel.vetter@ffwll.ch,
+	seanpaul@chromium.org, dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v2] drm: Replace kzalloc with kcalloc
+Message-ID: <20171013200656.4kj4fw3wkaunyi3n@art_vandelay>
+References: <20171013073747.29877-1-harshasharmaiitr@gmail.com>
+ <87r2u7lbrq.fsf@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <87r2u7lbrq.fsf@intel.com>
+User-Agent: NeoMutt/20170306-97-7656f1-dirty (1.8.0)
 
-For variables that have type struct list_head* use list_entry to
-access current list element instead of using container_of.
-Done using the following semantic patch by coccinelle.
+On Fri, Oct 13, 2017 at 10:58:33AM +0300, Jani Nikula wrote:
+> On Fri, 13 Oct 2017, Harsha Sharma <harshasharmaiitr@gmail.com> wrote:
+> > Prefer kcalloc over kzalloc to allocate an array.
+> > This patch fixes checkcpatch issue.
+> >
+> > Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
+> 
+> Reviewed-by: Jani Nikula <jani.nikula@intel.com>
+> 
 
-@r@
-identifier e;
-struct list_head* l;
-@@
+Applied to -misc-next, thanks!
 
-<... when != l == NULL
-l;
-...>
+Sean
 
-(
-e=
--container_of
-+list_entry
-    (
-     ...)
-)
+> 
+> > ---
+> > Changes in v2:
+> >  -kcalloc will take 3 arguments
+> >
+> >  drivers/gpu/drm/drm_crtc_helper.c  | 4 ++--
+> >  drivers/gpu/drm/drm_fb_helper.c    | 2 +-
+> >  drivers/gpu/drm/drm_plane_helper.c | 2 +-
+> >  3 files changed, 4 insertions(+), 4 deletions(-)
+> >
+> > diff --git a/drivers/gpu/drm/drm_crtc_helper.c b/drivers/gpu/drm/drm_crtc_helper.c
+> > index eab36a460638..5a84c3bc915d 100644
+> > --- a/drivers/gpu/drm/drm_crtc_helper.c
+> > +++ b/drivers/gpu/drm/drm_crtc_helper.c
+> > @@ -562,12 +562,12 @@ int drm_crtc_helper_set_config(struct drm_mode_set *set,
+> >  	 * Allocate space for the backup of all (non-pointer) encoder and
+> >  	 * connector data.
+> >  	 */
+> > -	save_encoder_crtcs = kzalloc(dev->mode_config.num_encoder *
+> > +	save_encoder_crtcs = kcalloc(dev->mode_config.num_encoder,
+> >  				sizeof(struct drm_crtc *), GFP_KERNEL);
+> >  	if (!save_encoder_crtcs)
+> >  		return -ENOMEM;
+> >  
+> > -	save_connector_encoders = kzalloc(dev->mode_config.num_connector *
+> > +	save_connector_encoders = kcalloc(dev->mode_config.num_connector,
+> >  				sizeof(struct drm_encoder *), GFP_KERNEL);
+> >  	if (!save_connector_encoders) {
+> >  		kfree(save_encoder_crtcs);
+> > diff --git a/drivers/gpu/drm/drm_fb_helper.c b/drivers/gpu/drm/drm_fb_helper.c
+> > index 1b8f013ffa65..de31e52ab9cb 100644
+> > --- a/drivers/gpu/drm/drm_fb_helper.c
+> > +++ b/drivers/gpu/drm/drm_fb_helper.c
+> > @@ -2266,7 +2266,7 @@ static int drm_pick_crtcs(struct drm_fb_helper *fb_helper,
+> >  	if (modes[n] == NULL)
+> >  		return best_score;
+> >  
+> > -	crtcs = kzalloc(fb_helper->connector_count *
+> > +	crtcs = kcalloc(fb_helper->connector_count,
+> >  			sizeof(struct drm_fb_helper_crtc *), GFP_KERNEL);
+> >  	if (!crtcs)
+> >  		return best_score;
+> > diff --git a/drivers/gpu/drm/drm_plane_helper.c b/drivers/gpu/drm/drm_plane_helper.c
+> > index 06aee1741e96..759ed93f4ba8 100644
+> > --- a/drivers/gpu/drm/drm_plane_helper.c
+> > +++ b/drivers/gpu/drm/drm_plane_helper.c
+> > @@ -354,7 +354,7 @@ int drm_primary_helper_update(struct drm_plane *plane, struct drm_crtc *crtc,
+> >  	/* Find current connectors for CRTC */
+> >  	num_connectors = get_connectors_for_crtc(crtc, NULL, 0);
+> >  	BUG_ON(num_connectors == 0);
+> > -	connector_list = kzalloc(num_connectors * sizeof(*connector_list),
+> > +	connector_list = kcalloc(num_connectors, sizeof(*connector_list),
+> >  				 GFP_KERNEL);
+> >  	if (!connector_list)
+> >  		return -ENOMEM;
+> 
+> -- 
+> Jani Nikula, Intel Open Source Technology Center
 
-Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
----
- drivers/staging/rtl8188eu/core/rtw_recv.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
-index 3fd5f41..af59c16 100644
---- a/drivers/staging/rtl8188eu/core/rtw_recv.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
-@@ -193,7 +193,7 @@ void rtw_free_recvframe_queue(struct __queue *pframequeue,  struct __queue *pfre
- 	plist = phead->next;
- 
- 	while (phead != plist) {
--		hdr = container_of(plist, struct recv_frame, list);
-+		hdr = list_entry(plist, struct recv_frame, list);
- 
- 		plist = plist->next;
- 
-@@ -943,7 +943,7 @@ static int validate_recv_ctrl_frame(struct adapter *padapter,
- 			xmitframe_plist = xmitframe_phead->next;
- 
- 			if (xmitframe_phead != xmitframe_plist) {
--				pxmitframe = container_of(xmitframe_plist, struct xmit_frame, list);
-+				pxmitframe = list_entry(xmitframe_plist, struct xmit_frame, list);
- 
- 				xmitframe_plist = xmitframe_plist->next;
- 
-@@ -1347,7 +1347,7 @@ static struct recv_frame *recvframe_defrag(struct adapter *adapter,
- 
- 	phead = get_list_head(defrag_q);
- 	plist = phead->next;
--	pfhdr = container_of(plist, struct recv_frame, list);
-+	pfhdr = list_entry(plist, struct recv_frame, list);
- 	prframe = pfhdr;
- 	list_del_init(&(prframe->list));
- 
-@@ -1367,7 +1367,7 @@ static struct recv_frame *recvframe_defrag(struct adapter *adapter,
- 	plist = plist->next;
- 
- 	while (phead != plist) {
--		pnfhdr = container_of(plist, struct recv_frame, list);
-+		pnfhdr = list_entry(plist, struct recv_frame, list);
- 		pnextrframe = pnfhdr;
- 
- 		/* check the fragment sequence  (2nd ~n fragment frame) */
-@@ -1655,7 +1655,7 @@ static int enqueue_reorder_recvframe(struct recv_reorder_ctrl *preorder_ctrl,
- 	plist = phead->next;
- 
- 	while (phead != plist) {
--		hdr = container_of(plist, struct recv_frame, list);
-+		hdr = list_entry(plist, struct recv_frame, list);
- 		pnextattrib = &hdr->attrib;
- 
- 		if (SN_LESS(pnextattrib->seq_num, pattrib->seq_num))
-@@ -1690,7 +1690,7 @@ static int recv_indicatepkts_in_order(struct adapter *padapter, struct recv_reor
- 		if (list_empty(phead))
- 			return true;
- 
--		prhdr = container_of(plist, struct recv_frame, list);
-+		prhdr = list_entry(plist, struct recv_frame, list);
- 		pattrib = &prhdr->attrib;
- 		preorder_ctrl->indicate_seq = pattrib->seq_num;
- 	}
-@@ -1698,7 +1698,7 @@ static int recv_indicatepkts_in_order(struct adapter *padapter, struct recv_reor
- 	/*  Prepare indication list and indication. */
- 	/*  Check if there is any packet need indicate. */
- 	while (!list_empty(phead)) {
--		prhdr = container_of(plist, struct recv_frame, list);
-+		prhdr = list_entry(plist, struct recv_frame, list);
- 		prframe = prhdr;
- 		pattrib = &prframe->attrib;
- 
 -- 
-2.7.4
-
+Sean Paul, Software Engineer, Google / Chromium OS
 
