@@ -1,173 +1,265 @@
-X-GM-THRID: 1756921593856
-X-Received: by 10.194.86.1 with SMTP id l1mr278520wjz.0.1424521132485;
-        Sat, 21 Feb 2015 04:18:52 -0800 (PST)
+X-GM-THRID: 6468899055788359680
+X-Received: by 10.46.5.147 with SMTP id 141mr80077ljf.44.1507909454951;
+        Fri, 13 Oct 2017 08:44:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.37.4 with SMTP id u4ls348313laj.88.gmail; Sat, 21 Feb 2015
- 04:18:52 -0800 (PST)
-X-Received: by 10.112.131.106 with SMTP id ol10mr280329lbb.20.1424521132171;
-        Sat, 21 Feb 2015 04:18:52 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from mail-we0-x22a.google.com (mail-we0-x22a.google.com. [2a00:1450:400c:c03::22a])
-        by gmr-mx.google.com with ESMTPS id el6si296049wib.2.2015.02.21.04.18.52
+Received: by 10.46.80.11 with SMTP id e11ls1125476ljb.4.gmail; Fri, 13 Oct
+ 2017 08:44:13 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+RXxpzVD/y13kaezNeWsiiYNlVRT5+XOdE0KEOBnQRfeehZUVicm/xyN4Y/yPP7UCyzK8/l
+X-Received: by 10.46.16.131 with SMTP id 3mr83556ljq.8.1507909453617;
+        Fri, 13 Oct 2017 08:44:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507909453; cv=none;
+        d=google.com; s=arc-20160816;
+        b=PsNX4A64DSnnxoVks3vnXlb58a1t2+cibpDJC4k8Knfj6zsU8XOtZbwFJ5CHms4gqa
+         HcmBaQeZ9q525zA9eaqdftp6g3qOfGGyVuegw4nx3l+7ACZ0XV33KHhYKQ3XSORovVQQ
+         ieecMcLoO+ScuUl6dWMh4bXleiRH93iAjy+v68QQ24tFZ2J30Yc7IG+z2BB6t+js7pnv
+         VZT79EVvu9CVr+0DVkYIWYLPLdHZHwBQBn5txN6ACjmczAzMxcP4BMPSBcq9aosvYYH2
+         8FsXWpRNJ01OwjelzOV3RwuuHiz9jdSNfIT8psMyJ22hhTZkVgrZxNtoIu5sEiRg6kTn
+         cAyQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject:arc-authentication-results;
+        bh=UrPQxZkoTjuSpbUH9WI+9fIsmUTLCjnOuoPW9p4b3Oc=;
+        b=kiQ/faVDMd8zRVNxmFeoCI3ATIWDlZXP8LDngZ0eWR5BXD91O1DGXbfKeK9GsK4L9w
+         WBqBu7ZF7VwsYGy4knSCgcEIBGicxHJp5tI10UtAcJX7Ed98bYsYTnjsiwvI8B6MIZ5Y
+         atn9F4XbngrL0FdWf8wxyIQpAuVjLw+44XDykQ5osdsicZJmY6j5M+VsjWyUhdOk99Q9
+         51kKcGjmPtuDtdDwgPiCc/8wGQYxAZidG/YIYhWp1SdiMKdPc7NLRaM83YQl92Vj3px2
+         nhmjDd9iv0kfTq1uHKT361H7Ug2TyAIaxTi0BZ7IaOR5+GfQdYKZnFEKQA1utT2khf7C
+         6Bng==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of noralf@tronnes.org designates 2a01:5b40:0:3005::1 as permitted sender) smtp.mailfrom=noralf@tronnes.org
+Return-Path: <noralf@tronnes.org>
+Received: from smtp.domeneshop.no (smtp.domeneshop.no. [2a01:5b40:0:3005::1])
+        by gmr-mx.google.com with ESMTPS id c185si44883lfd.5.2017.10.13.08.44.13
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Feb 2015 04:18:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c03::22a as permitted sender) client-ip=2a00:1450:400c:c03::22a;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 13 Oct 2017 08:44:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of noralf@tronnes.org designates 2a01:5b40:0:3005::1 as permitted sender) client-ip=2a01:5b40:0:3005::1;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c03::22a as permitted sender) smtp.mail=dilekuzulmez@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wesx3 with SMTP id x3so10041799wes.6
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 04:18:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=266oqzuc5hXQOBnbdW8b27PjaQGFp4Vj2+XpC946ILc=;
-        b=ekPL8OfO3e/8ro/1YE7DCGenjL3w29Rd3Qqe7H9gdRto7oF37cBWUwQXorM0lKqPI6
-         8p1bpkW4IHH88Jcf3ycGhX1ZQeylUscQ9R3mYx87+Qvdq6FjomrDryyoISPydJ26/2dB
-         FfVw2km4DUFSq2ph34slaSJD1ZIsGPae7SpGx+DRuW4fPHIwbWmetiVEnSkk9kd0F0lg
-         nScfJ/Gy8zAClZHuMrFSotKWhwKSG2NQQ7QdzQrDcA3m0z9fhExyVu2v4YoUstne1w9v
-         wdvpDx6qgQ7dpPRhEEuYsh+qIB1wrRed2zqfWrjiNz0g35gHDr2or/kUjJkkXObTDNsX
-         FDuA==
-X-Received: by 10.194.158.39 with SMTP id wr7mr4362695wjb.118.1424521132067;
-        Sat, 21 Feb 2015 04:18:52 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from localhost.localdomain ([88.236.245.176])
-        by mx.google.com with ESMTPSA id dm6sm6727144wib.22.2015.02.21.04.18.50
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 21 Feb 2015 04:18:51 -0800 (PST)
-From: Dilek Uzulmez <dilekuzulmez@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Subject: [PATCH] Staging: wlan-ng: Remove typedefs
-Date: Sat, 21 Feb 2015 14:18:43 +0200
-Message-Id: <1424521123-23632-1-git-send-email-dilekuzulmez@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of noralf@tronnes.org designates 2a01:5b40:0:3005::1 as permitted sender) smtp.mailfrom=noralf@tronnes.org
+Received: from 211.81-166-168.customer.lyse.net ([81.166.168.211]:57409 helo=[192.168.10.157])
+	by smtp.domeneshop.no with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+	(Exim 4.84_2)
+	(envelope-from <noralf@tronnes.org>)
+	id 1e328C-0006Gv-HA; Fri, 13 Oct 2017 17:44:12 +0200
+Subject: Re: [PATCH v3] drm/tinydrm: Replace dev_error with DRM_DEV_ERROR
+To: Harsha Sharma <harshasharmaiitr@gmail.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ outreachy-kernel@googlegroups.com
+References: <20171006221738.30200-1-harshasharmaiitr@gmail.com>
+From: =?UTF-8?Q?Noralf_Tr=c3=b8nnes?= <noralf@tronnes.org>
+Message-ID: <0612ed4e-7890-8e64-d0f1-fe3a7a423db9@tronnes.org>
+Date: Fri, 13 Oct 2017 17:44:10 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
+MIME-Version: 1.0
+In-Reply-To: <20171006221738.30200-1-harshasharmaiitr@gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 
-This patch fixes "do not add new typedefs"
-checkpatch.pl warning in hfa384x.h
 
-Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
----
- drivers/staging/wlan-ng/hfa384x.h | 26 +++++++++++++-------------
- 1 file changed, 13 insertions(+), 13 deletions(-)
+Den 07.10.2017 00.17, skrev Harsha Sharma:
+> Convert instances of dev_error to DRM_DEV_ERROR as we have
+> DRM_DEV_ERROR variants of drm print macros.
+>
+> Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
+> ---
 
-diff --git a/drivers/staging/wlan-ng/hfa384x.h b/drivers/staging/wlan-ng/hfa384x.h
-index 3bb8c1b..2be8876 100644
---- a/drivers/staging/wlan-ng/hfa384x.h
-+++ b/drivers/staging/wlan-ng/hfa384x.h
-@@ -355,7 +355,7 @@ struct hfa384x_bytestr {
- 	u8 data[0];
- } __packed;
- 
--typedef struct hfa384x_bytestr32 {
-+struct hfa384x_bytestr32 {
- 	u16 len;
- 	u8 data[32];
- } __packed hfa384x_bytestr32_t;
-@@ -366,14 +366,14 @@ Configuration Record Structures:
- --------------------------------------------------------------------*/
- 
- /*-- Hardware/Firmware Component Information ----------*/
--typedef struct hfa384x_compident {
-+struct hfa384x_compident {
- 	u16 id;
- 	u16 variant;
- 	u16 major;
- 	u16 minor;
- } __packed hfa384x_compident_t;
- 
--typedef struct hfa384x_caplevel {
-+struct hfa384x_caplevel {
- 	u16 role;
- 	u16 id;
- 	u16 variant;
-@@ -394,27 +394,27 @@ Configuration Record Structures:
- #define HFA384x_CREATEIBSS_JOINCREATEIBSS          0
- 
- /*-- Configuration Record: HostScanRequest (data portion only) --*/
--typedef struct hfa384x_HostScanRequest_data {
-+struct hfa384x_HostScanRequest_data {
- 	u16 channelList;
- 	u16 txRate;
- 	hfa384x_bytestr32_t ssid;
- } __packed hfa384x_HostScanRequest_data_t;
- 
- /*-- Configuration Record: JoinRequest (data portion only) --*/
--typedef struct hfa384x_JoinRequest_data {
-+struct hfa384x_JoinRequest_data {
- 	u8 bssid[WLAN_BSSID_LEN];
- 	u16 channel;
- } __packed hfa384x_JoinRequest_data_t;
- 
- /*-- Configuration Record: authenticateStation (data portion only) --*/
--typedef struct hfa384x_authenticateStation_data {
-+struct hfa384x_authenticateStation_data {
- 	u8 address[ETH_ALEN];
- 	u16 status;
- 	u16 algorithm;
- } __packed hfa384x_authenticateStation_data_t;
- 
- /*-- Configuration Record: WPAData       (data portion only) --*/
--typedef struct hfa384x_WPAData {
-+struct hfa384x_WPAData {
- 	u16 datalen;
- 	u8 data[0];		/* max 80 */
- } __packed hfa384x_WPAData_t;
-@@ -425,7 +425,7 @@ Information Record Structures: NIC Information
- 
- /*-- Information Record: DownLoadBuffer --*/
- /* NOTE: The page and offset are in AUX format */
--typedef struct hfa384x_downloadbuffer {
-+struct hfa384x_downloadbuffer {
- 	u16 page;
- 	u16 offset;
- 	u16 len;
-@@ -438,14 +438,14 @@ Information Record Structures: NIC Information
- #define HFA384x_PSTATUS_CONN_IBSS	((u16)3)
- 
- /*-- Information Record: commsquality --*/
--typedef struct hfa384x_commsquality {
-+struct hfa384x_commsquality {
- 	u16 CQ_currBSS;
- 	u16 ASL_currBSS;
- 	u16 ANL_currFC;
- } __packed hfa384x_commsquality_t;
- 
- /*-- Information Record: dmbcommsquality --*/
--typedef struct hfa384x_dbmcommsquality {
-+struct hfa384x_dbmcommsquality {
- 	u16 CQdbm_currBSS;
- 	u16 ASLdbm_currBSS;
- 	u16 ANLdbm_currFC;
-@@ -457,7 +457,7 @@ FRAME STRUCTURES: Communication Frames
- Communication Frames: Transmit Frames
- --------------------------------------------------------------------*/
- /*-- Communication Frame: Transmit Frame Structure --*/
--typedef struct hfa384x_tx_frame {
-+struct hfa384x_tx_frame {
- 	u16 status;
- 	u16 reserved1;
- 	u16 reserved2;
-@@ -519,7 +519,7 @@ Communication Frames: Test/Get/Set Field Values for Transmit Frames
- Communication Frames: Receive Frames
- --------------------------------------------------------------------*/
- /*-- Communication Frame: Receive Frame Structure --*/
--typedef struct hfa384x_rx_frame {
-+struct hfa384x_rx_frame {
- 	/*-- MAC rx descriptor (hfa384x byte order) --*/
- 	u16 status;
- 	u32 time;
-@@ -586,7 +586,7 @@ Information Frames: Notification Frame Structures
- --------------------------------------------------------------------*/
- 
- /*--  Inquiry Frame, Diagnose: Communication Tallies --*/
--typedef struct hfa384x_CommTallies16 {
-+struct hfa384x_CommTallies16 {
- 	u16 txunicastframes;
- 	u16 txmulticastframes;
- 	u16 txfragments;
--- 
-1.9.1
+Thanks, applied to drm-misc.
+
+Noralf.
+
+> Changes in v3:
+>   -Solve merge conflicts
+> Changes in v2:
+>   -Fix alignment issues
+>   drivers/gpu/drm/tinydrm/mi0283qt.c |  8 ++++----
+>   drivers/gpu/drm/tinydrm/repaper.c  | 28 +++++++++++++---------------
+>   drivers/gpu/drm/tinydrm/st7586.c   |  6 +++---
+>   3 files changed, 20 insertions(+), 22 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/tinydrm/mi0283qt.c b/drivers/gpu/drm/tinydrm/mi0283qt.c
+> index 7e5bb7d6f655..7dded506ba8c 100644
+> --- a/drivers/gpu/drm/tinydrm/mi0283qt.c
+> +++ b/drivers/gpu/drm/tinydrm/mi0283qt.c
+> @@ -31,7 +31,7 @@ static int mi0283qt_init(struct mipi_dbi *mipi)
+>   
+>   	ret = regulator_enable(mipi->regulator);
+>   	if (ret) {
+> -		dev_err(dev, "Failed to enable regulator %d\n", ret);
+> +		DRM_DEV_ERROR(dev, "Failed to enable regulator %d\n", ret);
+>   		return ret;
+>   	}
+>   
+> @@ -42,7 +42,7 @@ static int mi0283qt_init(struct mipi_dbi *mipi)
+>   	mipi_dbi_hw_reset(mipi);
+>   	ret = mipi_dbi_command(mipi, MIPI_DCS_SOFT_RESET);
+>   	if (ret) {
+> -		dev_err(dev, "Error sending command %d\n", ret);
+> +		DRM_DEV_ERROR(dev, "Error sending command %d\n", ret);
+>   		regulator_disable(mipi->regulator);
+>   		return ret;
+>   	}
+> @@ -175,13 +175,13 @@ static int mi0283qt_probe(struct spi_device *spi)
+>   
+>   	mipi->reset = devm_gpiod_get_optional(dev, "reset", GPIOD_OUT_HIGH);
+>   	if (IS_ERR(mipi->reset)) {
+> -		dev_err(dev, "Failed to get gpio 'reset'\n");
+> +		DRM_DEV_ERROR(dev, "Failed to get gpio 'reset'\n");
+>   		return PTR_ERR(mipi->reset);
+>   	}
+>   
+>   	dc = devm_gpiod_get_optional(dev, "dc", GPIOD_OUT_LOW);
+>   	if (IS_ERR(dc)) {
+> -		dev_err(dev, "Failed to get gpio 'dc'\n");
+> +		DRM_DEV_ERROR(dev, "Failed to get gpio 'dc'\n");
+>   		return PTR_ERR(dc);
+>   	}
+>   
+> diff --git a/drivers/gpu/drm/tinydrm/repaper.c b/drivers/gpu/drm/tinydrm/repaper.c
+> index 30dc97b3ff21..028d428d4ab9 100644
+> --- a/drivers/gpu/drm/tinydrm/repaper.c
+> +++ b/drivers/gpu/drm/tinydrm/repaper.c
+> @@ -473,8 +473,7 @@ static void repaper_get_temperature(struct repaper_epd *epd)
+>   
+>   	ret = thermal_zone_get_temp(epd->thermal, &temperature);
+>   	if (ret) {
+> -		dev_err(&epd->spi->dev, "Failed to get temperature (%d)\n",
+> -			ret);
+> +		DRM_DEV_ERROR(&epd->spi->dev, "Failed to get temperature (%d)\n", ret);
+>   		return;
+>   	}
+>   
+> @@ -629,7 +628,7 @@ static int repaper_fb_dirty(struct drm_framebuffer *fb,
+>   	mutex_unlock(&tdev->dirty_lock);
+>   
+>   	if (ret)
+> -		dev_err(fb->dev->dev, "Failed to update display (%d)\n", ret);
+> +		DRM_DEV_ERROR(fb->dev->dev, "Failed to update display (%d)\n", ret);
+>   	kfree(buf);
+>   
+>   	return ret;
+> @@ -703,7 +702,7 @@ static void repaper_pipe_enable(struct drm_simple_display_pipe *pipe,
+>   	}
+>   
+>   	if (!i) {
+> -		dev_err(dev, "timeout waiting for panel to become ready.\n");
+> +		DRM_DEV_ERROR(dev, "timeout waiting for panel to become ready.\n");
+>   		power_off(epd);
+>   		return;
+>   	}
+> @@ -725,9 +724,9 @@ static void repaper_pipe_enable(struct drm_simple_display_pipe *pipe,
+>   	ret = repaper_read_val(spi, 0x0f);
+>   	if (ret < 0 || !(ret & 0x80)) {
+>   		if (ret < 0)
+> -			dev_err(dev, "failed to read chip (%d)\n", ret);
+> +			DRM_DEV_ERROR(dev, "failed to read chip (%d)\n", ret);
+>   		else
+> -			dev_err(dev, "panel is reported broken\n");
+> +			DRM_DEV_ERROR(dev, "panel is reported broken\n");
+>   		power_off(epd);
+>   		return;
+>   	}
+> @@ -767,7 +766,7 @@ static void repaper_pipe_enable(struct drm_simple_display_pipe *pipe,
+>   		/* check DC/DC */
+>   		ret = repaper_read_val(spi, 0x0f);
+>   		if (ret < 0) {
+> -			dev_err(dev, "failed to read chip (%d)\n", ret);
+> +			DRM_DEV_ERROR(dev, "failed to read chip (%d)\n", ret);
+>   			power_off(epd);
+>   			return;
+>   		}
+> @@ -779,7 +778,7 @@ static void repaper_pipe_enable(struct drm_simple_display_pipe *pipe,
+>   	}
+>   
+>   	if (!dc_ok) {
+> -		dev_err(dev, "dc/dc failed\n");
+> +		DRM_DEV_ERROR(dev, "dc/dc failed\n");
+>   		power_off(epd);
+>   		return;
+>   	}
+> @@ -959,7 +958,7 @@ static int repaper_probe(struct spi_device *spi)
+>   	if (IS_ERR(epd->panel_on)) {
+>   		ret = PTR_ERR(epd->panel_on);
+>   		if (ret != -EPROBE_DEFER)
+> -			dev_err(dev, "Failed to get gpio 'panel-on'\n");
+> +			DRM_DEV_ERROR(dev, "Failed to get gpio 'panel-on'\n");
+>   		return ret;
+>   	}
+>   
+> @@ -967,7 +966,7 @@ static int repaper_probe(struct spi_device *spi)
+>   	if (IS_ERR(epd->discharge)) {
+>   		ret = PTR_ERR(epd->discharge);
+>   		if (ret != -EPROBE_DEFER)
+> -			dev_err(dev, "Failed to get gpio 'discharge'\n");
+> +			DRM_DEV_ERROR(dev, "Failed to get gpio 'discharge'\n");
+>   		return ret;
+>   	}
+>   
+> @@ -975,7 +974,7 @@ static int repaper_probe(struct spi_device *spi)
+>   	if (IS_ERR(epd->reset)) {
+>   		ret = PTR_ERR(epd->reset);
+>   		if (ret != -EPROBE_DEFER)
+> -			dev_err(dev, "Failed to get gpio 'reset'\n");
+> +			DRM_DEV_ERROR(dev, "Failed to get gpio 'reset'\n");
+>   		return ret;
+>   	}
+>   
+> @@ -983,7 +982,7 @@ static int repaper_probe(struct spi_device *spi)
+>   	if (IS_ERR(epd->busy)) {
+>   		ret = PTR_ERR(epd->busy);
+>   		if (ret != -EPROBE_DEFER)
+> -			dev_err(dev, "Failed to get gpio 'busy'\n");
+> +			DRM_DEV_ERROR(dev, "Failed to get gpio 'busy'\n");
+>   		return ret;
+>   	}
+>   
+> @@ -991,8 +990,7 @@ static int repaper_probe(struct spi_device *spi)
+>   					 &thermal_zone)) {
+>   		epd->thermal = thermal_zone_get_zone_by_name(thermal_zone);
+>   		if (IS_ERR(epd->thermal)) {
+> -			dev_err(dev, "Failed to get thermal zone: %s\n",
+> -				thermal_zone);
+> +			DRM_DEV_ERROR(dev, "Failed to get thermal zone: %s\n", thermal_zone);
+>   			return PTR_ERR(epd->thermal);
+>   		}
+>   	}
+> @@ -1033,7 +1031,7 @@ static int repaper_probe(struct spi_device *spi)
+>   		if (IS_ERR(epd->border)) {
+>   			ret = PTR_ERR(epd->border);
+>   			if (ret != -EPROBE_DEFER)
+> -				dev_err(dev, "Failed to get gpio 'border'\n");
+> +				DRM_DEV_ERROR(dev, "Failed to get gpio 'border'\n");
+>   			return ret;
+>   		}
+>   
+> diff --git a/drivers/gpu/drm/tinydrm/st7586.c b/drivers/gpu/drm/tinydrm/st7586.c
+> index b439956a07f4..14361a5e9deb 100644
+> --- a/drivers/gpu/drm/tinydrm/st7586.c
+> +++ b/drivers/gpu/drm/tinydrm/st7586.c
+> @@ -187,7 +187,7 @@ static void st7586_pipe_enable(struct drm_simple_display_pipe *pipe,
+>   	mipi_dbi_hw_reset(mipi);
+>   	ret = mipi_dbi_command(mipi, ST7586_AUTO_READ_CTRL, 0x9f);
+>   	if (ret) {
+> -		dev_err(dev, "Error sending command %d\n", ret);
+> +		DRM_DEV_ERROR(dev, "Error sending command %d\n", ret);
+>   		return;
+>   	}
+>   
+> @@ -355,13 +355,13 @@ static int st7586_probe(struct spi_device *spi)
+>   
+>   	mipi->reset = devm_gpiod_get(dev, "reset", GPIOD_OUT_HIGH);
+>   	if (IS_ERR(mipi->reset)) {
+> -		dev_err(dev, "Failed to get gpio 'reset'\n");
+> +		DRM_DEV_ERROR(dev, "Failed to get gpio 'reset'\n");
+>   		return PTR_ERR(mipi->reset);
+>   	}
+>   
+>   	a0 = devm_gpiod_get(dev, "a0", GPIOD_OUT_LOW);
+>   	if (IS_ERR(a0)) {
+> -		dev_err(dev, "Failed to get gpio 'a0'\n");
+> +		DRM_DEV_ERROR(dev, "Failed to get gpio 'a0'\n");
+>   		return PTR_ERR(a0);
+>   	}
+>   
 
 
