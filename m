@@ -1,89 +1,129 @@
 X-GM-THRID: 6476443340841680896
-X-Received: by 10.28.217.201 with SMTP id q192mr478983wmg.20.1508243564492;
-        Tue, 17 Oct 2017 05:32:44 -0700 (PDT)
+X-Received: by 10.99.111.7 with SMTP id k7mr466717pgc.109.1507914471026;
+        Fri, 13 Oct 2017 10:07:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.145.14 with SMTP id t14ls281532wmd.4.canary-gmail; Tue, 17
- Oct 2017 05:32:43 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QBgMgE3iORJLZXQ8xhMdzV3KYY+knPwl2Q++XuwIM5kZukClGSgU+CmqUz653PGeuhEjt7V
-X-Received: by 10.223.142.227 with SMTP id q90mr1119664wrb.32.1508243563618;
-        Tue, 17 Oct 2017 05:32:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508243563; cv=none;
+Received: by 10.98.246.4 with SMTP id x4ls183322pfh.13.gmail; Fri, 13 Oct 2017
+ 10:07:49 -0700 (PDT)
+X-Received: by 10.98.65.8 with SMTP id o8mr456311pfa.27.1507914469167;
+        Fri, 13 Oct 2017 10:07:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507914469; cv=none;
         d=google.com; s=arc-20160816;
-        b=XkxxTy9RUoxN2MVuWPAxk3C4QSywfe3rnxtMNGlP4+0z4Z5lNtqidhj6wmpl1Un773
-         MvVPZI34vkvrjuR29VArlqn0I0A8h/AdpL0zPQRNYLxzJsCtorUwQan9YWPwE35KqPNX
-         nss5pMqUGCnDs1S3J1DUmcSM1np2lJ+//zBqT1smIT4wQZpBxCXYeA9Nm5X7DyQzgzZU
-         syPm7B++wd1hYHUeYJB9zLEbUILYb1OyTSiBzSOreStvhGWul+t9HC19vGMN4cINJl/+
-         CokvuIyK+EQXC9pnQ1VJa4W+NIwbF73KFZGt8a88p6rru91F3fqu2iwBaYTQZ0RRPiDQ
-         ZxpA==
+        b=P/qLP5CzgKoemu828Xi5yIuuw+01dyRRtGSKtWIplrHs7Nje1xTuugHraym+p7K3dJ
+         QOJ/nA+itNKNKtzfnwPhXV5kuP0B4LXWP4oXsToU9wZ2Fm2vXNr31jgkzCyGem83YcHY
+         x0zgdYg00eMknB06ZS8GA6F3N/c4udXB0h1x1Pl4oTUvhOcXqPFpjJ8ZQtYwq5Ctz2Wk
+         Ql04uS3CuhmPL8M8YGih8OQySQKAyLJNhYGyt83yFzODu/ooiCSq4zY0erDvH4kpTQ4M
+         URq9fenSzwz178TIcrZL6aDNMfQDPQM3gKmT54V0s/59AyXTe2r+sbKf6FdKRa4HTHhB
+         o1jQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=F9V/FEcWA4k83twnS2zYBRk85OZbvgK1hlk7YR3bHik=;
-        b=s5KmvkTi8j2YVIdT1/3arnw6Afyw+1jmZv4zMZm/jyvFoAEnrxR3C20PEF4YOBQE1X
-         TGUxzvP18MpxWLoNQ/CweHBhDRf+bS89FRLLnfGrvXaISMRV2MvOGCy0X51/39C19JRV
-         i7Pmil1hKlnfhcBA/go5bP4/DVavi+nCPC+mVoj6ZurpZ06UpQhh7Cb2xVcxdXVdtMe7
-         WT5lDrv5IBdRd23Z0AWhv7VhUWSLxM3WfpnbU6JUcHo1tjI/h6t3um2+NltIh3QGbMUl
-         MOCTxbce0zFNksSPFl2FvMTCTTxmoaXsC2Jpxm2m7gKOknytKp/vo117UxeYQ1WFVzUo
-         MiVA==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=nAgd4AakMAm/lSZcdVImfAbyfjO98Hqdcj0oZv2Hhdg=;
+        b=lOmCEU64SXGXQ4B5CmLphwOsGSiL8GetOWULXG7KsKepcb86VCq1Ui3k1qrOPoU1/2
+         uUFw1Re3mbp6SwdzHdZMXwO/tav0eRVh+hEPeXaRz/had07KtRU+eFsSGIBTe0bMNj/z
+         VHh1CbrTqaaWvDWqhmY0KfXZwRDCBvtPMudB0ATHjO4DFGWC6vKL5P5yeLVYWOyFdUBa
+         8V4lkWal3cLpp/bFOAMAcwZ6DZxdNG+u4cqP0gXrlQR2+nNTxt7aENJP0fIN7C5PRPhX
+         Rn58/sRjOjufxcUDgSHq5ZZlJV3/VOHb4FZg80SOSVbYPunIz3QbiWRl7gb8DwQkLlZT
+         2YVA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
-Return-Path: <pneira@us.es>
-Received: from mail.us.es (mail.us.es. [193.147.175.20])
-        by gmr-mx.google.com with ESMTPS id m62si62528wmi.1.2017.10.17.05.32.43
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eMk7a8Nm;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <harshasharmaiitr@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id z2si70718plk.4.2017.10.13.10.07.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Oct 2017 05:32:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
+        Fri, 13 Oct 2017 10:07:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
-Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
-	by mail.us.es (Postfix) with ESMTP id 08F4152305
-	for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 14:32:43 +0200 (CEST)
-Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
-	by antivirus1-rhel7.int (Postfix) with ESMTP id EEABBDA874
-	for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 14:32:42 +0200 (CEST)
-Received: by antivirus1-rhel7.int (Postfix, from userid 99)
-	id E465FDA873; Tue, 17 Oct 2017 14:32:42 +0200 (CEST)
-X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
-X-Spam-Level: 
-X-Spam-Status: No, score=-108.2 required=7.5 tests=ALL_TRUSTED,BAYES_50,
-	HEADER_FROM_DIFFERENT_DOMAINS,SMTPAUTH_US2,USER_IN_WHITELIST
-	autolearn=disabled version=3.4.1
-Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
-	by antivirus1-rhel7.int (Postfix) with ESMTP id F23EBDA861;
-	Tue, 17 Oct 2017 14:32:39 +0200 (CEST)
-Received: from 192.168.1.97 (192.168.1.97)
- by antivirus1-rhel7.int (F-Secure/fsigk_smtp/550/antivirus1-rhel7.int);
- Tue, 17 Oct 2017 14:32:39 +0200 (CEST)
-X-Virus-Status: clean(F-Secure/fsigk_smtp/550/antivirus1-rhel7.int)
-Received: from us.es (129.166.216.87.static.jazztel.es [87.216.166.129])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	(Authenticated sender: 1984lsi)
-	by entrada.int (Postfix) with ESMTPSA id B99CD40584D3;
-	Tue, 17 Oct 2017 14:32:39 +0200 (CEST)
-Date: Tue, 17 Oct 2017 14:32:39 +0200
-X-SMTPAUTHUS: auth mail.us.es
-From: Pablo Neira Ayuso <pablo@netfilter.org>
-To: Harsha Sharma <harshasharmaiitr@gmail.com>
-Cc: netfilter-devel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] Update .gitignore
-Message-ID: <20171017123239.GA19723@salvia>
-References: <20171013170524.8104-1-harshasharmaiitr@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20171013170524.8104-1-harshasharmaiitr@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Virus-Scanned: ClamAV using ClamSMTP
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eMk7a8Nm;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x242.google.com with SMTP id n14so10875319pfh.8
+        for <outreachy-kernel@googlegroups.com>; Fri, 13 Oct 2017 10:07:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=nAgd4AakMAm/lSZcdVImfAbyfjO98Hqdcj0oZv2Hhdg=;
+        b=eMk7a8Nmt4hfuZs17CtpuHPLzf+DUt4n2nXl6nBQiT0MNMhWxGTgjbfO+GvnhIBU6u
+         Nr4Kv8upEKb0E/9r2Z0w+dG8WPkwIA4crF0XgTWFJG/eszCmkqQLI2MB+CHB3ZNAtwrZ
+         GK1rNAHTwfMEzENHRcJoNhyjXn2DxcLKwgO+hNV5jOOfjEJ816qfxPnR+56KC0BHBSzd
+         pyXxxNBWcOJ7Dvd3Dy44JxFYQMVLl0Yr/SJPGQ2gTli+OExiObd8fH4Udg978cPMmYlu
+         DwHHkNLb281KbZYxB82uov3QIEPaX8noDTRutBqzSE1NmgayfpekVwPQTHDQelvDYJOn
+         r9iQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=nAgd4AakMAm/lSZcdVImfAbyfjO98Hqdcj0oZv2Hhdg=;
+        b=Ldo4MnOsCm6lqO3s44q8BwQntw043FHl46CxzTy28tNSPivk1vWQInQeNAYVo4YrsS
+         LTI4QqJ26L1LXNI5eegpTUkmvRWQ3a3S+lasruk4vx7YDMlwJGPSVBZHJcEVqTp2O+/n
+         L7bJpvs/WO3cf/EIKFWMPAaaPdLwk5WMSynkNkFIjorpgQ6yZbeHyj4s2fO6uc0YAHS8
+         fJbthq0pz75ef+B2hlCBqj5uAeQ8ZlI5Cpd1vD+qAoJOFgVpiChNZuwBy05mL8/wfoyW
+         zXUpFWgOZyMyEkOLzU+w8IQmevdHAGLQryPcLll3uK2JhsPLdReA5TN5rYeWA9j01glG
+         rhUg==
+X-Gm-Message-State: AMCzsaWTzw1YzjzPE4ZQZOvOvtP9hLJ+cy6gJp4GG1Z+vihp6UHs7Jt8
+	1R3BoH3ly1LJERfOo0mSzhI=
+X-Google-Smtp-Source: AOwi7QDWoFFqkOXLuYfKRN6SM5AXNlWCYQ9qVYiqTVmO6j2tP2yQ2uS7nRjnGOWwtKiAHYdcntz/IQ==
+X-Received: by 10.84.234.194 with SMTP id i2mr1919811plt.420.1507914468951;
+        Fri, 13 Oct 2017 10:07:48 -0700 (PDT)
+Return-Path: <harshasharmaiitr@gmail.com>
+Received: from localhost.localdomain ([103.37.201.27])
+        by smtp.gmail.com with ESMTPSA id 70sm3112795pfv.97.2017.10.13.10.07.42
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 13 Oct 2017 10:07:48 -0700 (PDT)
+From: Harsha Sharma <harshasharmaiitr@gmail.com>
+To: pablo@netfilter.org
+Cc: netfilter-devel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com,
+	Harsha Sharma <harshasharmaiitr@gmail.com>
+Subject: [PATCH] Update .gitignore
+Date: Fri, 13 Oct 2017 22:35:24 +0530
+Message-Id: <20171013170524.8104-1-harshasharmaiitr@gmail.com>
+X-Mailer: git-send-email 2.11.0
 
-On Fri, Oct 13, 2017 at 10:35:24PM +0530, Harsha Sharma wrote:
-> Added comments and files generated by libtools
+Added comments and files generated by libtools
 
-Applied, thanks.
+Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
+---
+ .gitignore | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
 
-Please, add the right tag next time, eg. [PATCH iptables] So I know
-the route for this at quick glance.
+diff --git a/.gitignore b/.gitignore
+index fa86c482..3d1fc79d 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,17 +1,17 @@
++# Dependency and object files
+ *.a
+ *.la
+ *.lo
+ *.so
+ *.o
++
++# Generated by autoconf/configure/automake
+ .deps/
+ .dirstamp
+-.libs/
+ Makefile
+ Makefile.in
+-
+ /include/xtables-version.h
+ /include/iptables/internal.h
+-
+ /aclocal.m4
+ /autom4te.cache/
+ /build-aux/
+@@ -19,3 +19,9 @@ Makefile.in
+ /configure
+ /libtool
+ /stamp-h1
++/iptables/iptables-apply.8
++
++# Generated by libtool
++/iptables/xtables-multi
++/iptables/xtables-compat-multi
++.libs/
+-- 
+2.11.0
 
-Thanks!
 
