@@ -1,139 +1,250 @@
 X-GM-THRID: 6470825285154504704
-X-Received: by 10.101.75.135 with SMTP id t7mr1247856pgq.48.1508006340385;
-        Sat, 14 Oct 2017 11:39:00 -0700 (PDT)
+X-Received: by 10.46.57.19 with SMTP id g19mr82214lja.3.1507906680627;
+        Fri, 13 Oct 2017 07:58:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.99.39.70 with SMTP id n67ls1856283pgn.30.gmail; Sat, 14 Oct
- 2017 11:38:59 -0700 (PDT)
-X-Received: by 10.84.172.67 with SMTP id m61mr1296607plb.9.1508006339469;
-        Sat, 14 Oct 2017 11:38:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508006339; cv=none;
+Received: by 10.46.82.14 with SMTP id g14ls642547ljb.0.gmail; Fri, 13 Oct 2017
+ 07:57:59 -0700 (PDT)
+X-Received: by 10.25.41.149 with SMTP id p143mr62990lfp.5.1507906679384;
+        Fri, 13 Oct 2017 07:57:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507906679; cv=none;
         d=google.com; s=arc-20160816;
-        b=VrPgr6oqF9z7YK3ocXVeRuDB0mKKbQTbuu3U94a/NDw3pyGU1Pc5eXPULZ3o8L63gl
-         BG6Bvs9j4AN6q8KVN3M5XbDH8JmNcGsba+8F0lpytRbzzIg5Ye8rx8PZv4ViP0ADARpu
-         Hfftr03ELLCEsOdsqkl2LkFaQ/8/UWmHdw0+BzzQKJvwz3GBxIaGzyH8M8Umu5YIIcvv
-         +fbM9CHgltRBURcN/bzKvSTOFIucCwe4jYQME3Y0Yxa8w/Axj0Z9mYx7lnq8MLj3tKXw
-         /ytorOOtjrLnmDuslrmtpUQVfUoszy/YkraVEvYMHuwOieiglJjhZrHuBtVfvn+Uheg3
-         WpTg==
+        b=lm+pshhu08+RYNq4GEqk72I46NnsK7z2fFpYCalvoUZB19YJuFOVaLOXhIaEf5h44z
+         dOWQYhBcY3XPw/FVbr3K0ONIwH54k6+LrVpDpqJ5Rfl8WTK9BCaVaXmPtdFOJBFGRniU
+         HEqBy/ChL/vwFn2dWtpx8fbhKVoGx/p1wHVEdNk9VAd07ckMzG7OzfL8ERlrJayBKYi1
+         IvJyhe6mlk96c2QeAjMzJlwZTrxbPCyGpbk7zP1r91bwOoKv4jiyym6NUmT7kXyrQ113
+         EB4C279/PkqTnBsuP3wtj4gFXgEgAOqbmtJp/5i+wQMLBSMzggABBWXWnJ8BF/6djFnI
+         MbOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=ovSAkSBCe7LIfsL+haxWKviEWqujq5GYZO5j1bv3/iU=;
-        b=q+KoU3EZUVSqcuSO1iQmOZTTIyJA7Ixd+RxVp7pykS2E5Ew2I09exGR5rtQDY897ov
-         kB4Fyyafe6sOSvpBWUtt5RGquNM82LKcSdqH1SeR7k2H53dgW4RZEao0qwEy+GQglomP
-         qbmroIyIElr9gQGI9Oz/s5zhGgcBgRDsWOLBut8jHCl5hFvoHu59delVx7Q6S9at1tL1
-         A2+D2zQLPZpyub7jf8Jbth//2k43LBdZJQOBC1iauzsTGQIdkYIAkBKkLXr87XU5HzGO
-         peT6dELtYb6Bw8O8Rulf6bfUS7EPO66dhnI6AKn+9i8m4zYZgHRIajZwdv8+XF742c9/
-         Py/w==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :mail-followup-to:message-id:subject:cc:to:from:date:sender
+         :dkim-signature:arc-authentication-results;
+        bh=azjMNNb5UXqWHV0lrxqR/HyNumUz/wzXk1OEDAq58U4=;
+        b=FxtyYxvniR1Nhwl7KoGQfNDMolopT/N+vOSBFO1IirJOmxC1FQsiskJUnAH4oOtzlg
+         LpKjL3zSSjWHQkrIQXtGDdpqqXTGzElhSGrCzTnvuUYbzCKDt7RFXO6tkYb80xL1RJ4j
+         1G4mOY77DUl5SJuG9nfzDoeH4IyBYkLM706Wz+xvi06vDdYEt2jj4nOooWh7Hh/aVJ8P
+         UYS4Q3Kzk92DC/KUVLd6/Fo40MP/7lKhBpdmHMzGgA6ePoD7WKUwSbFBzyk4z4d6Pj5Z
+         zVnWx3FmWesMY6t368aFWXeHOfSd1hvZN5M/rQbIcXCVVbJyrNtHwxHqGoyPAKv1wRTY
+         dhyA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=c3xqqiho;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id l27si162480pfb.4.2017.10.14.11.38.59
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=F3/6Azbk;
+       spf=neutral (google.com: 2a00:1450:400c:c09::244 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
+Return-Path: <daniel@ffwll.ch>
+Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
+        by gmr-mx.google.com with ESMTPS id w29si75258lfc.1.2017.10.13.07.57.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 14 Oct 2017 11:38:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Fri, 13 Oct 2017 07:57:59 -0700 (PDT)
+Received-SPF: neutral (google.com: 2a00:1450:400c:c09::244 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) client-ip=2a00:1450:400c:c09::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=c3xqqiho;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id n14so12794949pfh.8
-        for <outreachy-kernel@googlegroups.com>; Sat, 14 Oct 2017 11:38:59 -0700 (PDT)
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=F3/6Azbk;
+       spf=neutral (google.com: 2a00:1450:400c:c09::244 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
+Received: by mail-wm0-x244.google.com with SMTP id u138so22468066wmu.4
+        for <outreachy-kernel@googlegroups.com>; Fri, 13 Oct 2017 07:57:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=ovSAkSBCe7LIfsL+haxWKviEWqujq5GYZO5j1bv3/iU=;
-        b=c3xqqihoHBaJIDg2I2Qtz05XT7qdUcegbJGR19fiZkqiFjW/Pn6vzwNk1OkyRJgjbh
-         dU2xnE9IVagEqP0yR24V9BqmjGct0h2PJAnUI/vreK46dbW7056TvQjJ44eX7nle/ie3
-         XR08vyBkNQ1kLj5LAjbZfQr8MBzm+XqgS976KanKyq1pl5L6ebjE1iZRDh8zAAZChGK9
-         NDdVwWDZv5EJgH/uyFuPMyPf3ATJp9A7Fc/RIbdG++LI9DM+uDxTu3aZVB1TLCImeY4X
-         OBkc86/uAXb5FaRtz1ZR7JzsEwbFAAqhOVqaYQWEh60Ovfrvj+SGHWiuFgeti9mxL18e
-         xAVA==
+        d=ffwll.ch; s=google;
+        h=sender:date:from:to:cc:subject:message-id:mail-followup-to
+         :references:mime-version:content-disposition:in-reply-to:user-agent;
+        bh=azjMNNb5UXqWHV0lrxqR/HyNumUz/wzXk1OEDAq58U4=;
+        b=F3/6AzbkRuQNBI/iRRao8BnNMEJugh8r3qy+31vwpCaIFTkL3+/ERokQoSnw1rJt0D
+         LQduSgg0ruKEIfY98dbTG44GGKtYiUIjv9ttZdKBqMd6lmkdMbeuq6btsDYyaSrRwYJw
+         8FnZoLdW2r61xa+wK2niFq0/FTRyMmTu2x2vg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=ovSAkSBCe7LIfsL+haxWKviEWqujq5GYZO5j1bv3/iU=;
-        b=c15HevEbmVgcY6TWAKTiLhoyTCmobxLuNsKsH829YX4T5DzrLsExXd5CKGdpF+w8Qk
-         OHkOmjci0L/SPaUNDuP3eJtKv9Xd2AX7sqKYvYp68/5l/DEFKfbX5hFT2eiHIn8QlMR3
-         hNcD/TtdDNfXeOvS6H6oNCPxrXAp1RoQxF9nlz29n2ZzZkSq9oABcVcLl1XG1DAyS+Zy
-         94OfUetGIx+fWZedb9QuaYCxklWUJVCBPptEQ3QTar6Ki2XIngMXNzn3vZBjEl8MczYw
-         UodGEzJXUixDhsnvSjFSC1K/y7WNR6mYiT7myMI8IlhFkjHZA7Lys8XPQSPEeIEV3RSF
-         PmRA==
-X-Gm-Message-State: AMCzsaWwITXVGVs1XweABeC0ZIPv3Q+aURz1cPMWl+cNOShediyE4tEt
-	9dV+8RxaaIKMBUBMJUf1z/Y=
-X-Google-Smtp-Source: AOwi7QBoe723INOMj6RSBTMjTN+O4qLaVxbWhJ/d9Il8SmmkWJMfNR/OPvOCUbl/nADQk6Ey6Z20Qw==
-X-Received: by 10.84.129.193 with SMTP id b59mr4709692plb.317.1508006339257;
-        Sat, 14 Oct 2017 11:38:59 -0700 (PDT)
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from localhost.localdomain ([103.37.201.27])
-        by smtp.gmail.com with ESMTPSA id y127sm7001037pgb.60.2017.10.14.11.38.56
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 14 Oct 2017 11:38:58 -0700 (PDT)
-From: Harsha Sharma <harshasharmaiitr@gmail.com>
-To: daniel.vetter@ffwll.ch,
-	seanpaul@chromium.org,
-	jani.nikula@linux.intel.com
-Cc: intel-gfx@lists.freedesktop.org,
-	dri-devel@lists.freedesktop.org,
+        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+         :mail-followup-to:references:mime-version:content-disposition
+         :in-reply-to:user-agent;
+        bh=azjMNNb5UXqWHV0lrxqR/HyNumUz/wzXk1OEDAq58U4=;
+        b=uJkzDESUwYIHMc1EvTU3fHv9ANlyEJtOjTL+7axQ+KxfIyXaNf7E92hP5IyJniprGn
+         N+rsjUaVxWi5QXwD49LLU+hmQO/B1Ny6mS5t3g6sUxTbXkHRFypKvCierodk5DQ+KHmQ
+         oOdhLuWFRYHXuJYVKy7u1jwT23ENZQ9p22V5wrX11bvmbjw6ORtOmKS8mcU5Zvd5fvpD
+         hVSnQmPIQbV5eZWzKh1fVC2oFEgFI3k56g8jrGX6/V5rmODi3lbMVauX6QuWb0ACcV9C
+         kChohxBHkmB75aASwLH6VS3/tbe4Vj94nT2WEi4E5iOHJr9P5QN2RUuSy60cYxfrnbF+
+         uVfg==
+X-Gm-Message-State: AMCzsaVzfNW3H/vH3WVRRyYXDQsGn0Ey29fvcZMcJID6hCoa1iqJXl79
+	qg3FFnjfp9TtJ0cck+XnojTaRA==
+X-Google-Smtp-Source: AOwi7QBvoZhWEyjBw/kTPojoNqGj3QzOwiUb565Syea1Tooii0JnCSVsdHwliIKFW9ahLXQeTkhheQ==
+X-Received: by 10.80.170.46 with SMTP id o43mr2629237edc.40.1507906678473;
+        Fri, 13 Oct 2017 07:57:58 -0700 (PDT)
+Return-Path: <daniel@ffwll.ch>
+Received: from phenom.ffwll.local ([2a02:168:5635:0:39d2:f87e:2033:9f6])
+        by smtp.gmail.com with ESMTPSA id w51sm1053397edd.60.2017.10.13.07.57.57
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 13 Oct 2017 07:57:57 -0700 (PDT)
+Sender: Daniel Vetter <daniel.vetter@ffwll.ch>
+Date: Fri, 13 Oct 2017 16:57:55 +0200
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Harsha Sharma <harshasharmaiitr@gmail.com>
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>,
+	Sean Paul <seanpaul@chromium.org>, jani.nikula@linux.intel.com,
+	intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
 	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Harsha Sharma <harshasharmaiitr@gmail.com>
-Subject: [PATCH v5] drm/i915: Replace *_reference/unreference() or *_ref/unref with _get/put()
-Date: Sun, 15 Oct 2017 00:06:44 +0530
-Message-Id: <20171014183644.21990-1-harshasharmaiitr@gmail.com>
-X-Mailer: git-send-email 2.11.0
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Re: [PATCH v4] drm/i915: Replace
+ *_reference/unreference() or *_ref/unref with _get/put()
+Message-ID: <20171013145755.uk4ewjqammqtxify@phenom.ffwll.local>
+Mail-Followup-To: Harsha Sharma <harshasharmaiitr@gmail.com>,
+	Sean Paul <seanpaul@chromium.org>, jani.nikula@linux.intel.com,
+	intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+References: <20171009120643.11953-1-harshasharmaiitr@gmail.com>
+ <CANMOCy1U+buz2UtAvqYOURsJmvL3n3HfAYQ-Z0ST1ZgSB2U4dA@mail.gmail.com>
+ <20171013145138.uaydq2kpythwzzmx@phenom.ffwll.local>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20171013145138.uaydq2kpythwzzmx@phenom.ffwll.local>
+X-Operating-System: Linux phenom 4.12.0-1-amd64 
+User-Agent: NeoMutt/20170609 (1.8.3)
 
-Replace instances of drm_framebuffer_reference/unreference() with
-*_get/put() suffixes and drm_dev_unref with *_put() suffix
-because get/put is shorter and consistent with the
-kernel use of *_get/put suffixes.
-Done with following coccinelle semantic patch
+On Fri, Oct 13, 2017 at 04:51:38PM +0200, Daniel Vetter wrote:
+> On Fri, Oct 13, 2017 at 08:03:59PM +0530, Harsha Sharma wrote:
+> > On Mon, Oct 9, 2017 at 5:36 PM, Harsha Sharma
+> > <harshasharmaiitr@gmail.com> wrote:
+> > > Replace instances of drm_framebuffer_reference/unreference() with
+> > > *_get/put() suffixes and drm_dev_unref with *_put() suffix
+> > > because get/put is shorter and consistent with the
+> > > kernel use of *_get/put suffixes.
+> > > Done with following coccinelle semantic patch
+> > >
+> > > @@
+> > > expression ex;
+> > > @@
+> > >
+> > > (
+> > > -drm_framebuffer_unreference(ex);
+> > > +drm_framebuffer_put(ex);
+> > > |
+> > > -drm_dev_unref(ex);
+> > > +drm_dev_put(ex);
+> > > |
+> > > -drm_framebuffer_reference(ex);
+> > > +drm_framebuffer_get(ex);
+> > > )
+> > >
+> > > Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
+> > > ---
+> > > Changes in v4:
+> > >  -change one instance of *_put to *_get
+> > > Changes in v3:
+> > >  -Removed changes in selftests
+> > > Changes in v2:
+> > >  -Added cocinelle patch in log message
+> > >  -cc to all driver-specific mailing lists
+> > >
+> > >  drivers/gpu/drm/i915/i915_pci.c      |  2 +-
+> > >  drivers/gpu/drm/i915/intel_display.c | 10 +++++-----
+> > >  drivers/gpu/drm/i915/intel_fbdev.c   |  4 ++--
+> > >  3 files changed, 8 insertions(+), 8 deletions(-)
+> > >
+> > > diff --git a/drivers/gpu/drm/i915/i915_pci.c b/drivers/gpu/drm/i915/i915_pci.c
+> > > index 09d97e0990b7..2f106cca46b4 100644
+> > > --- a/drivers/gpu/drm/i915/i915_pci.c
+> > > +++ b/drivers/gpu/drm/i915/i915_pci.c
+> > > @@ -510,7 +510,7 @@ static void i915_pci_remove(struct pci_dev *pdev)
+> > >         struct drm_device *dev = pci_get_drvdata(pdev);
+> > >
+> > >         i915_driver_unload(dev);
+> > > -       drm_dev_unref(dev);
+> > > +       drm_dev_put(dev);
+> > >  }
+> > >
+> > >  static int i915_pci_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+> > > diff --git a/drivers/gpu/drm/i915/intel_display.c b/drivers/gpu/drm/i915/intel_display.c
+> > > index 64f7b51ed97c..cb62f7e5d59a 100644
+> > > --- a/drivers/gpu/drm/i915/intel_display.c
+> > > +++ b/drivers/gpu/drm/i915/intel_display.c
+> > > @@ -2856,7 +2856,7 @@ intel_find_initial_plane_obj(struct intel_crtc *intel_crtc,
+> > >
+> > >                 if (intel_plane_ggtt_offset(state) == plane_config->base) {
+> > >                         fb = c->primary->fb;
+> > > -                       drm_framebuffer_reference(fb);
+> > > +                       drm_framebuffer_get(fb);
+> > >                         goto valid_fb;
+> > >                 }
+> > >         }
+> > > @@ -2887,7 +2887,7 @@ intel_find_initial_plane_obj(struct intel_crtc *intel_crtc,
+> > >                           intel_crtc->pipe, PTR_ERR(intel_state->vma));
+> > >
+> > >                 intel_state->vma = NULL;
+> > > -               drm_framebuffer_unreference(fb);
+> > > +               drm_framebuffer_put(fb);
+> > >                 return;
+> > >         }
+> > >
+> > > @@ -2908,7 +2908,7 @@ intel_find_initial_plane_obj(struct intel_crtc *intel_crtc,
+> > >         if (i915_gem_object_is_tiled(obj))
+> > >                 dev_priv->preserve_bios_swizzle = true;
+> > >
+> > > -       drm_framebuffer_reference(fb);
+> > > +       drm_framebuffer_get(fb);
+> > >         primary->fb = primary->state->fb = fb;
+> > >         primary->crtc = primary->state->crtc = &intel_crtc->base;
+> > >
+> > > @@ -9847,7 +9847,7 @@ mode_fits_in_fbdev(struct drm_device *dev,
+> > >         if (obj->base.size < mode->vdisplay * fb->pitches[0])
+> > >                 return NULL;
+> > >
+> > > -       drm_framebuffer_reference(fb);
+> > > +       drm_framebuffer_get(fb);
+> > >         return fb;
+> > >  #else
+> > >         return NULL;
+> > > @@ -10028,7 +10028,7 @@ int intel_get_load_detect_pipe(struct drm_connector *connector,
+> > >         if (ret)
+> > >                 goto fail;
+> > >
+> > > -       drm_framebuffer_unreference(fb);
+> > > +       drm_framebuffer_put(fb);
+> > >
+> > >         ret = drm_atomic_set_mode_for_crtc(&crtc_state->base, mode);
+> > >         if (ret)
+> > > diff --git a/drivers/gpu/drm/i915/intel_fbdev.c b/drivers/gpu/drm/i915/intel_fbdev.c
+> > > index 262e75c00dd2..e34334a1fbf9 100644
+> > > --- a/drivers/gpu/drm/i915/intel_fbdev.c
+> > > +++ b/drivers/gpu/drm/i915/intel_fbdev.c
+> > > @@ -189,7 +189,7 @@ static int intelfb_create(struct drm_fb_helper *helper,
+> > >                               " releasing it\n",
+> > >                               intel_fb->base.width, intel_fb->base.height,
+> > >                               sizes->fb_width, sizes->fb_height);
+> > > -               drm_framebuffer_unreference(&intel_fb->base);
+> > > +               drm_framebuffer_put(&intel_fb->base);
+> > >                 intel_fb = ifbdev->fb = NULL;
+> > >         }
+> > >         if (!intel_fb || WARN_ON(!intel_fb->obj)) {
+> > > @@ -624,7 +624,7 @@ static bool intel_fbdev_init_bios(struct drm_device *dev,
+> > >         ifbdev->preferred_bpp = fb->base.format->cpp[0] * 8;
+> > >         ifbdev->fb = fb;
+> > >
+> > > -       drm_framebuffer_reference(&ifbdev->fb->base);
+> > > +       drm_framebuffer_get(&ifbdev->fb->base);
+> > >
+> > >         /* Final pass to check if any active pipes don't have fbs */
+> > >         for_each_crtc(dev, crtc) {
+> > >
+> > I hope that this one can be merged.
+> > Please let me know if any change is required.
+> > Thanks for your time.
+> 
+> Sorry, fell through the cracks.
+> 
+> Applied now to drm-intel-next-queued, thanks for your patch.
 
-@@
-expression ex;
-@@
+Ok just realized that it doesn't apply on plain drm-intel-next-queued
+since that tree doesn't yet have the drm_dev_put function. I've taken that
+part out of your patch to unblock it.
 
-(
--drm_framebuffer_unreference(ex);
-+drm_framebuffer_put(ex);
-|
--drm_dev_unref(ex);
-+drm_dev_put(ex);
-|
--drm_framebuffer_reference(ex);
-+drm_framebuffer_get(ex);
-)
+Can you pls rebase the remaining parts onto drm-tip from
 
-Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
----
-Changes in v5:
- -rebase drm_dev_put change on drm-tip
-Changes in v4:
- -change one instance of *_put to *_get
-Changes in v3:
- -Removed changes in selftests
-Changes in v2:
- -Added cocinelle patch in log message
- -cc to all driver-specific mailing lists
- drivers/gpu/drm/i915/i915_pci.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+https://cgit.freedesktop.org/drm/drm-tip
 
-diff --git a/drivers/gpu/drm/i915/i915_pci.c b/drivers/gpu/drm/i915/i915_pci.c
-index bf467f30c99b..1223961c3700 100644
---- a/drivers/gpu/drm/i915/i915_pci.c
-+++ b/drivers/gpu/drm/i915/i915_pci.c
-@@ -645,7 +645,7 @@ static void i915_pci_remove(struct pci_dev *pdev)
- 	struct drm_device *dev = pci_get_drvdata(pdev);
- 
- 	i915_driver_unload(dev);
--	drm_dev_unref(dev);
-+	drm_dev_put(dev);
- }
- 
- static int i915_pci_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+and send a new patch for just the drm_dev_put change? I asked the
+drm-intel maintainers to do the backmerge to make sure I can apply this
+next week.
+
+Thanks, Daniel
 -- 
-2.11.0
-
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
 
