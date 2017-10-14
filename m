@@ -1,299 +1,525 @@
 X-GM-THRID: 6476782191370043392
-X-Received: by 10.223.154.112 with SMTP id z103mr417200wrb.0.1507994200448;
-        Sat, 14 Oct 2017 08:16:40 -0700 (PDT)
+X-Received: by 10.55.19.209 with SMTP id 78mr3645860qkt.55.1507993464498;
+        Sat, 14 Oct 2017 08:04:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.218.73 with SMTP id r70ls689254wmg.2.gmail; Sat, 14 Oct
- 2017 08:16:39 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+RmKIypvVUqKAjhpZo48PZfEpjwjCx6WyNHI4jj9zXmLrIbU3ym6oshaasxRSmIuLst2SKo
-X-Received: by 10.28.150.130 with SMTP id y124mr476635wmd.22.1507994199604;
-        Sat, 14 Oct 2017 08:16:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507994199; cv=none;
+Received: by 10.200.34.181 with SMTP id f50ls4431327qta.6.gmail; Sat, 14 Oct
+ 2017 08:04:23 -0700 (PDT)
+X-Received: by 10.237.48.66 with SMTP id 60mr3562957qte.45.1507993463928;
+        Sat, 14 Oct 2017 08:04:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507993463; cv=none;
         d=google.com; s=arc-20160816;
-        b=0aumc5as7J58WW6ucuratuqEB7+a/hkTp9pO2qHT4GPtut4ZjY3lY0opoCQnMKB2jg
-         HTdkeWgBdtpM8VqEb5HfZ+7MCHF6iMftBu7sxXYk09TkcSXGV2yCv2bC7kMygbENI/Ex
-         xo2uK0rhnWDTSJ5w6d83IkaocyYICmQ8CpsBzSTzle7+02KbaaqJOjZZMYnpBAJPG3d7
-         lMP4MCm2Uv5qQa6mwMScSUucTUp++bDOp1KvI54g/lOv3rWvG649DRRCW2OdOUyTcVFw
-         1q9gJD9gtG81VaihpflcPXfDQfkEWV79KpiKeh4A89kXEtZ5VPN3HgGelVeTN/1HvUMg
-         JW1Q==
+        b=OtfIcM3ry67A2rQDmOADcPLSmzLwDQqJc/ugjzl5+qS6OT/RXXjtsjqLJCShNvrUaN
+         ZDZq9QOes9mYTCWB+go8kZthQ5UdxGYxSiRxj7Cmnx8bKHCjIrj/LTs3MZjlVRJQbYpM
+         F8Dhg/K1kdAY/0P8/o9N6q7thFfMNg+IHqqYVr9FhWP8haEt+0nfjyoAAa2S3xaWRg8M
+         DtAVmAtd2C8/cSMz5umR0nCAOTxJmemxA6/F3iuoEj7yF3ljZB70EiFQhrpprH7LQhtZ
+         tJ3+SsN2I6Q1odp6n+THYktUUNgxAQmTaW0jhQAZU42HvRiphFrAijHZkIe/j9k2wRqY
+         LQuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=KGnHTK/y8mmCgJ4CZ6MlwHSmQLtckJE95RowK5QmxOU=;
-        b=WfvFOLapDWC6cRkxoqJHLs5TBrvGaDfmLrKSahcFIk3tiMQ2pQhj/mGpBthr6EkcH/
-         6fm6oDZlTUxhC6jh/TS5Ur7lVz8ZvsDnVtVQaWiyRMFv3w90Z4AACcWFXlqMOmT6nDMK
-         qluex+/QRwOyWBYCQS5cdW98PUw+zpaL9Ux85BcUJ01N1jvR6iYdURPU4CYYCrApeMy8
-         zYlmQNC9Vhh/6pHHK1p0MWNi7FtmvwgDzp2/Q2uoEfvf6Mla1z5jpvZ65ITKyErcKEUZ
-         30Cz9d40i7e6omrNFoW7PDcamUmdAONnYrRlu7MaerHZpn3lmNGHOv0ASvEv1G0fNL0X
-         rpOg==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature
+         :arc-authentication-results;
+        bh=WHNX36l9fpcK8mXg30TDwwDOg3FLqVb8SvD3AG3J9vM=;
+        b=aGbs2Df+ivAqMIcuEkHhoxAc3xKLR/70L/QsVW920akte6AOZk4f16Q/cZNqTAdlTa
+         Pa6p1YBO9/kpzvOsRGln91At0ekqum1sFGbsAoS4DEG9Zi0ZCN03Dif/PFTrTylFyzIo
+         7lzq00ORCYbjAMR+d6y38o+D9i8Pdew2s0INOA8nxkVId/EEtXbo7NkWL/caiVfHtTvF
+         l1S3ZdnI3eXNezuHLCqzqLds2GQK1Ey7vq0R5boncT0dsXx2MQjkOeneGdOlhfuQ4rBG
+         9qrgkoLgRu4JhAx5z2V8O3sTlgLw/aotsRPBkJ6NW4xi5zlV5LnyR5DM7WGVhlZUMqkC
+         JeeA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id r15si214414wrc.1.2017.10.14.08.16.39
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sw1L2G2G;
+       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::22e as permitted sender) smtp.mailfrom=aishpant@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <aishpant@gmail.com>
+Received: from mail-pf0-x22e.google.com (mail-pf0-x22e.google.com. [2607:f8b0:400e:c00::22e])
+        by gmr-mx.google.com with ESMTPS id i8si204896qta.1.2017.10.14.08.04.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 14 Oct 2017 08:16:39 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sat, 14 Oct 2017 08:04:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::22e as permitted sender) client-ip=2607:f8b0:400e:c00::22e;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.43,377,1503352800"; 
-   d="scan'208";a="296204790"
-Received: from abo-88-122-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.122.88])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 14 Oct 2017 17:16:39 +0200
-Date: Sat, 14 Oct 2017 17:16:39 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Aishwarya Pant <aishpant@gmail.com>
-cc: Mauro Carvalho Chehab <mchehab@kernel.org>, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-    linux-media@vger.kernel.org, devel@driverdev.osuosl.org, 
-    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2 1/2] staging: atomisp2: cleanup
- null check on memory allocation
-In-Reply-To: <94b66136d4007e3219fba5714c01eb934c833588.1507989088.git.aishpant@gmail.com>
-Message-ID: <alpine.DEB.2.20.1710141715520.2034@hadrien>
-References: <cover.1507989087.git.aishpant@gmail.com> <94b66136d4007e3219fba5714c01eb934c833588.1507989088.git.aishpant@gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sw1L2G2G;
+       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::22e as permitted sender) smtp.mailfrom=aishpant@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x22e.google.com with SMTP id n89so4935298pfk.11
+        for <outreachy-kernel@googlegroups.com>; Sat, 14 Oct 2017 08:04:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=WHNX36l9fpcK8mXg30TDwwDOg3FLqVb8SvD3AG3J9vM=;
+        b=sw1L2G2GMkQv8tm3As1fORLf5YzWSlFZX239CCAgfdaYCxP5JugxA9zbqBRpcg+6Mm
+         NeBWzKBeuGvq8mbn7BY2fzIShXPetUxuILWT7r4UN6gj1tYGPDmwqxRmIWyVyv9AGVLa
+         SCa1VKiPzkef1OBe7g6d1wf4YdayP5doyX8GruP8vjfptWLqq8XDs2/FCCEazSssmcT5
+         t38FShJFyHyGUMo/z50d5BIkNirpRz24HMuQeumA153rSKZafymF675f5tH5fWV51Nmw
+         8DS/m/ShJ9IegKgkYnFWg3pK+n+9f1eqj3vDCEUyB+kUT5nDF2XESCTttdM0xT0URSSZ
+         f9UA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=WHNX36l9fpcK8mXg30TDwwDOg3FLqVb8SvD3AG3J9vM=;
+        b=Krsk0dmjQtiA9mfE8mokQQJAKURcT88bJGag7m7ryYZ64N5i+lWwWXgi62eNTZjO7A
+         UGNeZER9hBxJ8ZOTwpZz2PBGTtSp0YlMB9W72KeEiOkTpIt/QTNrKo4M4O4ByW0uTvIQ
+         j0ObDR817LHcIqjDp53bmUz3p3NqalSTyWHeYvOREbprLJB31iWT7hCK5XGQLSuACdHv
+         363ABixZ+DMUMNm6ylBdVXGWQTZM+CaE+Wcx3sjCxVpUscC6XAdj8SAiSG89HOiAUYlq
+         mrNbr48CNvApjvVDWiRafeW/n6OpuOsoL7IuSgerd10PgTG3NPpyMq3BJjXNCwv3hDAV
+         YbJQ==
+X-Gm-Message-State: AMCzsaXQzM7X2jPDgu06pj1nbs1Z+GNQHezuRrzEXa/FUYD3m6HreqiG
+	8yGazz1P3y8s6u1hxDKq1K8=
+X-Google-Smtp-Source: AOwi7QBk7SjkRjSuzgc2k3hiWOPOGmsR/xpVVkDrGMUD/zGXS9woqG6M+/52ge0Sfv0Co47VJgA7qw==
+X-Received: by 10.159.204.132 with SMTP id t4mr4270279plo.344.1507993463374;
+        Sat, 14 Oct 2017 08:04:23 -0700 (PDT)
+Return-Path: <aishpant@gmail.com>
+Received: from aishwarya ([27.59.102.186])
+        by smtp.gmail.com with ESMTPSA id w27sm7890303pfi.18.2017.10.14.08.04.18
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 14 Oct 2017 08:04:22 -0700 (PDT)
+Date: Sat, 14 Oct 2017 19:25:40 +0530
+From: Aishwarya Pant <aishpant@gmail.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-media@vger.kernel.org, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH v2 2/2] staging: atomisp: cleanup out of memory messages
+Message-ID: <8ec1344bd00674449202099775f8835896a77695.1507989088.git.aishpant@gmail.com>
+References: <cover.1507989087.git.aishpant@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1507989087.git.aishpant@gmail.com>
+User-Agent: NeoMutt/20170113 (1.7.2)
 
+Logging of explicit out of memory messages is redundant since memory allocation
+failures produce a backtrace.
 
+Done with the help of the following cocci script:
 
-On Sat, 14 Oct 2017, Aishwarya Pant wrote:
+@@
+expression ex, ret;
+statement s;
+constant char[] c;
+constant err;
+identifier f, l;
+@@
 
-> For memory allocation functions that fail with a NULL return value, it
-> is preferred to use the (!x) test in place of (x == NULL).
->
-> Changes in atomisp2/css2400/sh_css.c were done by hand.
->
-> Done with the help of the following cocci script:
->
-> @@
-> type T;
-> T* p;
-> statement s,s1;
-> @@
->
-> p =
->   \(devm_kzalloc\|devm_ioremap\|usb_alloc_urb\|alloc_netdev\|dev_alloc_skb\|
->    kmalloc\|kmalloc_array\|kzalloc\|kcalloc\|kmem_cache_alloc\|kmem_cache_zalloc\|
->    kmem_cache_alloc_node\|kmalloc_node\|kzalloc_node\|devm_kzalloc\)(...)
-> ...when != p
->
-> if (
-> - p == NULL
-> + !p
->  ) s
->  else s1
->
-> Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
+ex =
+\(kmalloc\|kmalloc_array\|kzalloc\|kcalloc\|kmem_cache_alloc\|kmem_cache_zalloc\|
+kmem_cache_alloc_node\|kmalloc_node\|kzalloc_node\|devm_kzalloc\)(...)
+... when != ex
 
-Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+if (
+(
+!ex
+|
+unlikely(!ex)
+)
+)
+- {
+- f(..., c, ...);
+(
+return ex;
+|
+return;
+|
+return err;
+|
+goto l;
+)
+- }
+else s
 
->
-> --
-> Changes in atomisp2/css2400/sh_css.c were done by hand, the above script
-> was not able to match the pattern if (a->b != null).
->
-> v2 changes:
-> None, just rebase and re-send
-> ---
->  .../media/atomisp/pci/atomisp2/css2400/sh_css.c    | 36 +++++++++++-----------
->  .../atomisp/pci/atomisp2/css2400/sh_css_firmware.c |  6 ++--
->  .../pci/atomisp2/css2400/sh_css_param_shading.c    |  2 +-
->  3 files changed, 22 insertions(+), 22 deletions(-)
->
-> diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css.c
-> index e882b5596813..56de641d8848 100644
-> --- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css.c
-> +++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css.c
-> @@ -5607,13 +5607,13 @@ static enum ia_css_err load_video_binaries(struct ia_css_pipe *pipe)
->  		mycs->num_yuv_scaler = cas_scaler_descr.num_stage;
->  		mycs->yuv_scaler_binary = kzalloc(cas_scaler_descr.num_stage *
->  			sizeof(struct ia_css_binary), GFP_KERNEL);
-> -		if (mycs->yuv_scaler_binary == NULL) {
-> +		if (!mycs->yuv_scaler_binary) {
->  			err = IA_CSS_ERR_CANNOT_ALLOCATE_MEMORY;
->  			return err;
->  		}
->  		mycs->is_output_stage = kzalloc(cas_scaler_descr.num_stage
->  					* sizeof(bool), GFP_KERNEL);
-> -		if (mycs->is_output_stage == NULL) {
-> +		if (!mycs->is_output_stage) {
->  			err = IA_CSS_ERR_CANNOT_ALLOCATE_MEMORY;
->  			return err;
->  		}
-> @@ -6258,14 +6258,14 @@ static enum ia_css_err load_primary_binaries(
->  		mycs->num_yuv_scaler = cas_scaler_descr.num_stage;
->  		mycs->yuv_scaler_binary = kzalloc(cas_scaler_descr.num_stage *
->  			sizeof(struct ia_css_binary), GFP_KERNEL);
-> -		if (mycs->yuv_scaler_binary == NULL) {
-> +		if (!mycs->yuv_scaler_binary) {
->  			err = IA_CSS_ERR_CANNOT_ALLOCATE_MEMORY;
->  			IA_CSS_LEAVE_ERR_PRIVATE(err);
->  			return err;
->  		}
->  		mycs->is_output_stage = kzalloc(cas_scaler_descr.num_stage *
->  			sizeof(bool), GFP_KERNEL);
-> -		if (mycs->is_output_stage == NULL) {
-> +		if (!mycs->is_output_stage) {
->  			err = IA_CSS_ERR_CANNOT_ALLOCATE_MEMORY;
->  			IA_CSS_LEAVE_ERR_PRIVATE(err);
->  			return err;
-> @@ -6982,27 +6982,27 @@ static enum ia_css_err ia_css_pipe_create_cas_scaler_desc_single_output(
->  	}
->
->  	descr->in_info = kmalloc(descr->num_stage * sizeof(struct ia_css_frame_info), GFP_KERNEL);
-> -	if (descr->in_info == NULL) {
-> +	if (!descr->in_info) {
->  		err = IA_CSS_ERR_CANNOT_ALLOCATE_MEMORY;
->  		goto ERR;
->  	}
->  	descr->internal_out_info = kmalloc(descr->num_stage * sizeof(struct ia_css_frame_info), GFP_KERNEL);
-> -	if (descr->internal_out_info == NULL) {
-> +	if (!descr->internal_out_info) {
->  		err = IA_CSS_ERR_CANNOT_ALLOCATE_MEMORY;
->  		goto ERR;
->  	}
->  	descr->out_info = kmalloc(descr->num_stage * sizeof(struct ia_css_frame_info), GFP_KERNEL);
-> -	if (descr->out_info == NULL) {
-> +	if (!descr->out_info) {
->  		err = IA_CSS_ERR_CANNOT_ALLOCATE_MEMORY;
->  		goto ERR;
->  	}
->  	descr->vf_info = kmalloc(descr->num_stage * sizeof(struct ia_css_frame_info), GFP_KERNEL);
-> -	if (descr->vf_info == NULL) {
-> +	if (!descr->vf_info) {
->  		err = IA_CSS_ERR_CANNOT_ALLOCATE_MEMORY;
->  		goto ERR;
->  	}
->  	descr->is_output_stage = kmalloc(descr->num_stage * sizeof(bool), GFP_KERNEL);
-> -	if (descr->is_output_stage == NULL) {
-> +	if (!descr->is_output_stage) {
->  		err = IA_CSS_ERR_CANNOT_ALLOCATE_MEMORY;
->  		goto ERR;
->  	}
-> @@ -7118,22 +7118,22 @@ static enum ia_css_err ia_css_pipe_create_cas_scaler_desc(struct ia_css_pipe *pi
->  	descr->num_stage = num_stages;
->
->  	descr->in_info = kmalloc(descr->num_stage * sizeof(struct ia_css_frame_info), GFP_KERNEL);
-> -	if (descr->in_info == NULL) {
-> +	if (!descr->in_info) {
->  		err = IA_CSS_ERR_CANNOT_ALLOCATE_MEMORY;
->  		goto ERR;
->  	}
->  	descr->internal_out_info = kmalloc(descr->num_stage * sizeof(struct ia_css_frame_info), GFP_KERNEL);
-> -	if (descr->internal_out_info == NULL) {
-> +	if (!descr->internal_out_info) {
->  		err = IA_CSS_ERR_CANNOT_ALLOCATE_MEMORY;
->  		goto ERR;
->  	}
->  	descr->out_info = kmalloc(descr->num_stage * sizeof(struct ia_css_frame_info), GFP_KERNEL);
-> -	if (descr->out_info == NULL) {
-> +	if (!descr->out_info) {
->  		err = IA_CSS_ERR_CANNOT_ALLOCATE_MEMORY;
->  		goto ERR;
->  	}
->  	descr->vf_info = kmalloc(descr->num_stage * sizeof(struct ia_css_frame_info), GFP_KERNEL);
-> -	if (descr->vf_info == NULL) {
-> +	if (!descr->vf_info) {
->  		err = IA_CSS_ERR_CANNOT_ALLOCATE_MEMORY;
->  		goto ERR;
->  	}
-> @@ -7276,13 +7276,13 @@ load_yuvpp_binaries(struct ia_css_pipe *pipe)
->  		mycs->num_yuv_scaler = cas_scaler_descr.num_stage;
->  		mycs->yuv_scaler_binary = kzalloc(cas_scaler_descr.num_stage *
->  			sizeof(struct ia_css_binary), GFP_KERNEL);
-> -		if (mycs->yuv_scaler_binary == NULL) {
-> +		if (!mycs->yuv_scaler_binary) {
->  			err = IA_CSS_ERR_CANNOT_ALLOCATE_MEMORY;
->  			goto ERR;
->  		}
->  		mycs->is_output_stage = kzalloc(cas_scaler_descr.num_stage *
->  			sizeof(bool), GFP_KERNEL);
-> -		if (mycs->is_output_stage == NULL) {
-> +		if (!mycs->is_output_stage) {
->  			err = IA_CSS_ERR_CANNOT_ALLOCATE_MEMORY;
->  			goto ERR;
->  		}
-> @@ -7383,7 +7383,7 @@ load_yuvpp_binaries(struct ia_css_pipe *pipe)
->  	}
->  	mycs->vf_pp_binary = kzalloc(mycs->num_vf_pp * sizeof(struct ia_css_binary),
->  						GFP_KERNEL);
-> -	if (mycs->vf_pp_binary == NULL) {
-> +	if (!mycs->vf_pp_binary) {
->  		err = IA_CSS_ERR_CANNOT_ALLOCATE_MEMORY;
->  		goto ERR;
->  	}
-> @@ -9445,7 +9445,7 @@ ia_css_stream_create(const struct ia_css_stream_config *stream_config,
->
->  	/* allocate the stream instance */
->  	curr_stream = kmalloc(sizeof(struct ia_css_stream), GFP_KERNEL);
-> -	if (curr_stream == NULL) {
-> +	if (!curr_stream) {
->  		err = IA_CSS_ERR_CANNOT_ALLOCATE_MEMORY;
->  		IA_CSS_LEAVE_ERR(err);
->  		return err;
-> @@ -9457,7 +9457,7 @@ ia_css_stream_create(const struct ia_css_stream_config *stream_config,
->  	/* allocate pipes */
->  	curr_stream->num_pipes = num_pipes;
->  	curr_stream->pipes = kzalloc(num_pipes * sizeof(struct ia_css_pipe *), GFP_KERNEL);
-> -	if (curr_stream->pipes == NULL) {
-> +	if (!curr_stream->pipes) {
->  		curr_stream->num_pipes = 0;
->  		kfree(curr_stream);
->  		curr_stream = NULL;
-> diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_firmware.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_firmware.c
-> index 53a7891111f9..ec026b8d6756 100644
-> --- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_firmware.c
-> +++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_firmware.c
-> @@ -147,7 +147,7 @@ sh_css_load_blob_info(const char *fw, const struct ia_css_fw_info *bi, struct ia
->
->  		char *parambuf = kmalloc(paramstruct_size + configstruct_size + statestruct_size,
->  					 GFP_KERNEL);
-> -		if (parambuf == NULL)
-> +		if (!parambuf)
->  			return IA_CSS_ERR_CANNOT_ALLOCATE_MEMORY;
->
->  		bd->mem_offsets.array[IA_CSS_PARAM_CLASS_PARAM].ptr = NULL;
-> @@ -229,14 +229,14 @@ sh_css_load_firmware(const char *fw_data,
->  		sh_css_blob_info = kmalloc(
->  					(sh_css_num_binaries - NUM_OF_SPS) *
->  					sizeof(*sh_css_blob_info), GFP_KERNEL);
-> -		if (sh_css_blob_info == NULL)
-> +		if (!sh_css_blob_info)
->  			return IA_CSS_ERR_CANNOT_ALLOCATE_MEMORY;
->  	} else {
->  		sh_css_blob_info = NULL;
->  	}
->
->  	fw_minibuffer = kzalloc(sh_css_num_binaries * sizeof(struct fw_param), GFP_KERNEL);
-> -	if (fw_minibuffer == NULL)
-> +	if (!fw_minibuffer)
->  		return IA_CSS_ERR_CANNOT_ALLOCATE_MEMORY;
->
->  	for (i = 0; i < sh_css_num_binaries; i++) {
-> diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_param_shading.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_param_shading.c
-> index eaf60e7b2dac..48e2e63c2336 100644
-> --- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_param_shading.c
-> +++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_param_shading.c
-> @@ -365,7 +365,7 @@ ia_css_shading_table_alloc(
->  	IA_CSS_ENTER("");
->
->  	me = kmalloc(sizeof(*me), GFP_KERNEL);
-> -	if (me == NULL) {
-> +	if (!me) {
->  		IA_CSS_ERROR("out of memory");
->  		return me;
->  	}
-> --
-> 2.11.0
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/94b66136d4007e3219fba5714c01eb934c833588.1507989088.git.aishpant%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
+Another case where if branch has multiple statements was handled with the
+following condition:
+
+{
+...
+- f(..., c, ...);
+...
+}
+
+Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
+---
+v2 changes:
+None, just rebase and re-send
+
+drivers/staging/media/atomisp/i2c/ap1302.c                     |  4 +---
+ drivers/staging/media/atomisp/i2c/gc0310.c                     |  4 +---
+ drivers/staging/media/atomisp/i2c/gc2235.c                     |  4 +---
+ drivers/staging/media/atomisp/i2c/imx/imx.c                    |  4 +---
+ drivers/staging/media/atomisp/i2c/lm3554.c                     |  4 +---
+ drivers/staging/media/atomisp/i2c/mt9m114.c                    |  4 +---
+ drivers/staging/media/atomisp/i2c/ov2680.c                     |  4 +---
+ drivers/staging/media/atomisp/i2c/ov2722.c                     |  4 +---
+ drivers/staging/media/atomisp/i2c/ov5693/ov5693.c              |  4 +---
+ drivers/staging/media/atomisp/i2c/ov8858.c                     |  6 +-----
+ drivers/staging/media/atomisp/pci/atomisp2/atomisp_fops.c      |  4 +---
+ drivers/staging/media/atomisp/pci/atomisp2/atomisp_ioctl.c     |  9 ++-------
+ .../media/atomisp/pci/atomisp2/css2400/sh_css_param_shading.c  |  4 +---
+ drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c        | 10 ++--------
+ .../staging/media/atomisp/pci/atomisp2/hmm/hmm_dynamic_pool.c  |  6 +-----
+ .../staging/media/atomisp/pci/atomisp2/hmm/hmm_reserved_pool.c |  5 +----
+ drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_vm.c        |  4 +---
+ .../media/atomisp/platform/intel-mid/atomisp_gmin_platform.c   |  4 +---
+ 18 files changed, 20 insertions(+), 68 deletions(-)
+
+diff --git a/drivers/staging/media/atomisp/i2c/ap1302.c b/drivers/staging/media/atomisp/i2c/ap1302.c
+index 2f772a020c8b..bfbf85122c3b 100644
+--- a/drivers/staging/media/atomisp/i2c/ap1302.c
++++ b/drivers/staging/media/atomisp/i2c/ap1302.c
+@@ -1153,10 +1153,8 @@ static int ap1302_probe(struct i2c_client *client,
+ 
+ 	/* allocate device & init sub device */
+ 	dev = devm_kzalloc(&client->dev, sizeof(*dev), GFP_KERNEL);
+-	if (!dev) {
+-		dev_err(&client->dev, "%s: out of memory\n", __func__);
++	if (!dev)
+ 		return -ENOMEM;
+-	}
+ 
+ 	mutex_init(&dev->input_lock);
+ 
+diff --git a/drivers/staging/media/atomisp/i2c/gc0310.c b/drivers/staging/media/atomisp/i2c/gc0310.c
+index 35ed51ffe944..291565451bfe 100644
+--- a/drivers/staging/media/atomisp/i2c/gc0310.c
++++ b/drivers/staging/media/atomisp/i2c/gc0310.c
+@@ -1385,10 +1385,8 @@ static int gc0310_probe(struct i2c_client *client,
+ 
+ 	pr_info("%s S\n", __func__);
+ 	dev = kzalloc(sizeof(*dev), GFP_KERNEL);
+-	if (!dev) {
+-		dev_err(&client->dev, "out of memory\n");
++	if (!dev)
+ 		return -ENOMEM;
+-	}
+ 
+ 	mutex_init(&dev->input_lock);
+ 
+diff --git a/drivers/staging/media/atomisp/i2c/gc2235.c b/drivers/staging/media/atomisp/i2c/gc2235.c
+index e43d31ea9676..f51535eee091 100644
+--- a/drivers/staging/media/atomisp/i2c/gc2235.c
++++ b/drivers/staging/media/atomisp/i2c/gc2235.c
+@@ -1123,10 +1123,8 @@ static int gc2235_probe(struct i2c_client *client,
+ 	unsigned int i;
+ 
+ 	dev = kzalloc(sizeof(*dev), GFP_KERNEL);
+-	if (!dev) {
+-		dev_err(&client->dev, "out of memory\n");
++	if (!dev)
+ 		return -ENOMEM;
+-	}
+ 
+ 	mutex_init(&dev->input_lock);
+ 
+diff --git a/drivers/staging/media/atomisp/i2c/imx/imx.c b/drivers/staging/media/atomisp/i2c/imx/imx.c
+index 49ab0af87096..957fb1863b40 100644
+--- a/drivers/staging/media/atomisp/i2c/imx/imx.c
++++ b/drivers/staging/media/atomisp/i2c/imx/imx.c
+@@ -2365,10 +2365,8 @@ static int imx_probe(struct i2c_client *client,
+ 
+ 	/* allocate sensor device & init sub device */
+ 	dev = kzalloc(sizeof(*dev), GFP_KERNEL);
+-	if (!dev) {
+-		v4l2_err(client, "%s: out of memory\n", __func__);
++	if (!dev)
+ 		return -ENOMEM;
+-	}
+ 
+ 	mutex_init(&dev->input_lock);
+ 
+diff --git a/drivers/staging/media/atomisp/i2c/lm3554.c b/drivers/staging/media/atomisp/i2c/lm3554.c
+index 679176f7c542..37876d245a02 100644
+--- a/drivers/staging/media/atomisp/i2c/lm3554.c
++++ b/drivers/staging/media/atomisp/i2c/lm3554.c
+@@ -871,10 +871,8 @@ static int lm3554_probe(struct i2c_client *client,
+ 	int ret;
+ 
+ 	flash = kzalloc(sizeof(*flash), GFP_KERNEL);
+-	if (!flash) {
+-		dev_err(&client->dev, "out of memory\n");
++	if (!flash)
+ 		return -ENOMEM;
+-	}
+ 
+ 	flash->pdata = client->dev.platform_data;
+ 
+diff --git a/drivers/staging/media/atomisp/i2c/mt9m114.c b/drivers/staging/media/atomisp/i2c/mt9m114.c
+index 3c837cb8859c..e204238ae06b 100644
+--- a/drivers/staging/media/atomisp/i2c/mt9m114.c
++++ b/drivers/staging/media/atomisp/i2c/mt9m114.c
+@@ -1863,10 +1863,8 @@ static int mt9m114_probe(struct i2c_client *client,
+ 
+ 	/* Setup sensor configuration structure */
+ 	dev = kzalloc(sizeof(*dev), GFP_KERNEL);
+-	if (!dev) {
+-		dev_err(&client->dev, "out of memory\n");
++	if (!dev)
+ 		return -ENOMEM;
+-	}
+ 
+ 	v4l2_i2c_subdev_init(&dev->sd, client, &mt9m114_ops);
+ 	pdata = client->dev.platform_data;
+diff --git a/drivers/staging/media/atomisp/i2c/ov2680.c b/drivers/staging/media/atomisp/i2c/ov2680.c
+index 51b7d61df0f5..c81e80e7bdea 100644
+--- a/drivers/staging/media/atomisp/i2c/ov2680.c
++++ b/drivers/staging/media/atomisp/i2c/ov2680.c
+@@ -1447,10 +1447,8 @@ static int ov2680_probe(struct i2c_client *client,
+ 	unsigned int i;
+ 
+ 	dev = kzalloc(sizeof(*dev), GFP_KERNEL);
+-	if (!dev) {
+-		dev_err(&client->dev, "out of memory\n");
++	if (!dev)
+ 		return -ENOMEM;
+-	}
+ 
+ 	mutex_init(&dev->input_lock);
+ 
+diff --git a/drivers/staging/media/atomisp/i2c/ov2722.c b/drivers/staging/media/atomisp/i2c/ov2722.c
+index 10094ac56561..5f2e8a2798ef 100644
+--- a/drivers/staging/media/atomisp/i2c/ov2722.c
++++ b/drivers/staging/media/atomisp/i2c/ov2722.c
+@@ -1285,10 +1285,8 @@ static int ov2722_probe(struct i2c_client *client,
+ 	struct acpi_device *adev;
+ 
+ 	dev = kzalloc(sizeof(*dev), GFP_KERNEL);
+-	if (!dev) {
+-		dev_err(&client->dev, "out of memory\n");
++	if (!dev)
+ 		return -ENOMEM;
+-	}
+ 
+ 	mutex_init(&dev->input_lock);
+ 
+diff --git a/drivers/staging/media/atomisp/i2c/ov5693/ov5693.c b/drivers/staging/media/atomisp/i2c/ov5693/ov5693.c
+index 123642557aa8..3560f3cd25e8 100644
+--- a/drivers/staging/media/atomisp/i2c/ov5693/ov5693.c
++++ b/drivers/staging/media/atomisp/i2c/ov5693/ov5693.c
+@@ -1965,10 +1965,8 @@ static int ov5693_probe(struct i2c_client *client,
+ 	}
+ 
+ 	dev = kzalloc(sizeof(*dev), GFP_KERNEL);
+-	if (!dev) {
+-		dev_err(&client->dev, "out of memory\n");
++	if (!dev)
+ 		return -ENOMEM;
+-	}
+ 
+ 	mutex_init(&dev->input_lock);
+ 
+diff --git a/drivers/staging/media/atomisp/i2c/ov8858.c b/drivers/staging/media/atomisp/i2c/ov8858.c
+index 43e1638fd674..918139d3d3c0 100644
+--- a/drivers/staging/media/atomisp/i2c/ov8858.c
++++ b/drivers/staging/media/atomisp/i2c/ov8858.c
+@@ -480,8 +480,6 @@ static int ov8858_priv_int_data_init(struct v4l2_subdev *sd)
+ 	if (!dev->otp_data) {
+ 		dev->otp_data = devm_kzalloc(&client->dev, size, GFP_KERNEL);
+ 		if (!dev->otp_data) {
+-			dev_err(&client->dev, "%s: can't allocate memory",
+-				__func__);
+ 			r = -ENOMEM;
+ 			goto error3;
+ 		}
+@@ -2094,10 +2092,8 @@ static int ov8858_probe(struct i2c_client *client,
+ 
+ 	/* allocate sensor device & init sub device */
+ 	dev = kzalloc(sizeof(*dev), GFP_KERNEL);
+-	if (!dev) {
+-		dev_err(&client->dev, "%s: out of memory\n", __func__);
++	if (!dev)
+ 		return -ENOMEM;
+-	}
+ 
+ 	mutex_init(&dev->input_lock);
+ 
+diff --git a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_fops.c b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_fops.c
+index d8cfed358d55..d64c98944d49 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_fops.c
++++ b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_fops.c
+@@ -1137,10 +1137,8 @@ static int remove_pad_from_frame(struct atomisp_device *isp,
+ 	ia_css_ptr store = load;
+ 
+ 	buffer = kmalloc(width*sizeof(load), GFP_KERNEL);
+-	if (!buffer) {
+-		dev_err(isp->dev, "out of memory.\n");
++	if (!buffer)
+ 		return -ENOMEM;
+-	}
+ 
+ 	load += ISP_LEFT_PAD;
+ 	for (i = 0; i < height; i++) {
+diff --git a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_ioctl.c b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_ioctl.c
+index 717647951fb6..889cc73be800 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_ioctl.c
++++ b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_ioctl.c
+@@ -943,10 +943,8 @@ int atomisp_alloc_css_stat_bufs(struct atomisp_sub_device *asd,
+ 		dev_dbg(isp->dev, "allocating %d 3a buffers\n", count);
+ 		while (count--) {
+ 			s3a_buf = kzalloc(sizeof(struct atomisp_s3a_buf), GFP_KERNEL);
+-			if (!s3a_buf) {
+-				dev_err(isp->dev, "s3a stat buf alloc failed\n");
++			if (!s3a_buf)
+ 				goto error;
+-			}
+ 
+ 			if (atomisp_css_allocate_stat_buffers(
+ 					asd, stream_id, s3a_buf, NULL, NULL)) {
+@@ -965,7 +963,6 @@ int atomisp_alloc_css_stat_bufs(struct atomisp_sub_device *asd,
+ 		while (count--) {
+ 			dis_buf = kzalloc(sizeof(struct atomisp_dis_buf), GFP_KERNEL);
+ 			if (!dis_buf) {
+-				dev_err(isp->dev, "dis stat buf alloc failed\n");
+ 				kfree(s3a_buf);
+ 				goto error;
+ 			}
+@@ -990,10 +987,8 @@ int atomisp_alloc_css_stat_bufs(struct atomisp_sub_device *asd,
+ 			while (count--) {
+ 				md_buf = kzalloc(sizeof(struct atomisp_metadata_buf),
+ 						 GFP_KERNEL);
+-				if (!md_buf) {
+-					dev_err(isp->dev, "metadata buf alloc failed\n");
++				if (!md_buf)
+ 					goto error;
+-				}
+ 
+ 				if (atomisp_css_allocate_stat_buffers(
+ 						asd, stream_id, NULL, NULL, md_buf)) {
+diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_param_shading.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_param_shading.c
+index 48e2e63c2336..e6ebd1b08f0d 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_param_shading.c
++++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_param_shading.c
+@@ -365,10 +365,8 @@ ia_css_shading_table_alloc(
+ 	IA_CSS_ENTER("");
+ 
+ 	me = kmalloc(sizeof(*me), GFP_KERNEL);
+-	if (!me) {
+-		IA_CSS_ERROR("out of memory");
++	if (!me)
+ 		return me;
+-	}
+ 
+ 	me->width         = width;
+ 	me->height        = height;
+diff --git a/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c b/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c
+index 5232327f5d9c..ca90b22020cc 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c
++++ b/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_bo.c
+@@ -727,10 +727,8 @@ static int alloc_private_pages(struct hmm_buffer_object *bo,
+ 
+ 	bo->page_obj = kmalloc_array(pgnr, sizeof(struct hmm_page_object),
+ 				GFP_KERNEL);
+-	if (unlikely(!bo->page_obj)) {
+-		dev_err(atomisp_dev, "out of memory for bo->page_obj\n");
++	if (unlikely(!bo->page_obj))
+ 		return -ENOMEM;
+-	}
+ 
+ 	i = 0;
+ 	alloc_pgnr = 0;
+@@ -991,15 +989,12 @@ static int alloc_user_pages(struct hmm_buffer_object *bo,
+ 	struct page **pages;
+ 
+ 	pages = kmalloc_array(bo->pgnr, sizeof(struct page *), GFP_KERNEL);
+-	if (unlikely(!pages)) {
+-		dev_err(atomisp_dev, "out of memory for pages...\n");
++	if (unlikely(!pages))
+ 		return -ENOMEM;
+-	}
+ 
+ 	bo->page_obj = kmalloc_array(bo->pgnr, sizeof(struct hmm_page_object),
+ 		GFP_KERNEL);
+ 	if (unlikely(!bo->page_obj)) {
+-		dev_err(atomisp_dev, "out of memory for bo->page_obj...\n");
+ 		kfree(pages);
+ 		return -ENOMEM;
+ 	}
+@@ -1366,7 +1361,6 @@ void *hmm_bo_vmap(struct hmm_buffer_object *bo, bool cached)
+ 	pages = kmalloc_array(bo->pgnr, sizeof(*pages), GFP_KERNEL);
+ 	if (unlikely(!pages)) {
+ 		mutex_unlock(&bo->mutex);
+-		dev_err(atomisp_dev, "out of memory for pages...\n");
+ 		return NULL;
+ 	}
+ 
+diff --git a/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_dynamic_pool.c b/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_dynamic_pool.c
+index 19e0e9ee37de..eb82c3e4c776 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_dynamic_pool.c
++++ b/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_dynamic_pool.c
+@@ -116,8 +116,6 @@ static void free_pages_to_dynamic_pool(void *pool,
+ 	hmm_page = kmem_cache_zalloc(dypool_info->pgptr_cache,
+ 						GFP_KERNEL);
+ 	if (!hmm_page) {
+-		dev_err(atomisp_dev, "out of memory for hmm_page.\n");
+-
+ 		/* free page directly */
+ 		ret = set_pages_wb(page_obj->page, 1);
+ 		if (ret)
+@@ -151,10 +149,8 @@ static int hmm_dynamic_pool_init(void **pool, unsigned int pool_size)
+ 
+ 	dypool_info = kmalloc(sizeof(struct hmm_dynamic_pool_info),
+ 		GFP_KERNEL);
+-	if (unlikely(!dypool_info)) {
+-		dev_err(atomisp_dev, "out of memory for repool_info.\n");
++	if (unlikely(!dypool_info))
+ 		return -ENOMEM;
+-	}
+ 
+ 	dypool_info->pgptr_cache = kmem_cache_create("pgptr_cache",
+ 						sizeof(struct hmm_page), 0,
+diff --git a/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_reserved_pool.c b/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_reserved_pool.c
+index bf6586805f7f..177bc354f1d7 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_reserved_pool.c
++++ b/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_reserved_pool.c
+@@ -92,15 +92,12 @@ static int hmm_reserved_pool_setup(struct hmm_reserved_pool_info **repool_info,
+ 
+ 	pool_info = kmalloc(sizeof(struct hmm_reserved_pool_info),
+ 				GFP_KERNEL);
+-	if (unlikely(!pool_info)) {
+-		dev_err(atomisp_dev, "out of memory for repool_info.\n");
++	if (unlikely(!pool_info))
+ 		return -ENOMEM;
+-	}
+ 
+ 	pool_info->pages = kmalloc(sizeof(struct page *) * pool_size,
+ 			GFP_KERNEL);
+ 	if (unlikely(!pool_info->pages)) {
+-		dev_err(atomisp_dev, "out of memory for repool_info->pages.\n");
+ 		kfree(pool_info);
+ 		return -ENOMEM;
+ 	}
+diff --git a/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_vm.c b/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_vm.c
+index 0722a68a49e7..402ffd9cb480 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_vm.c
++++ b/drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm_vm.c
+@@ -89,10 +89,8 @@ static struct hmm_vm_node *alloc_hmm_vm_node(unsigned int pgnr,
+ 	struct hmm_vm_node *node;
+ 
+ 	node = kmem_cache_alloc(vm->cache, GFP_KERNEL);
+-	if (!node) {
+-		dev_err(atomisp_dev, "out of memory.\n");
++	if (!node)
+ 		return NULL;
+-	}
+ 
+ 	INIT_LIST_HEAD(&node->list);
+ 	node->pgnr = pgnr;
+diff --git a/drivers/staging/media/atomisp/platform/intel-mid/atomisp_gmin_platform.c b/drivers/staging/media/atomisp/platform/intel-mid/atomisp_gmin_platform.c
+index edaae93af8f9..0304801fcbe5 100644
+--- a/drivers/staging/media/atomisp/platform/intel-mid/atomisp_gmin_platform.c
++++ b/drivers/staging/media/atomisp/platform/intel-mid/atomisp_gmin_platform.c
+@@ -739,10 +739,8 @@ int camera_sensor_csi(struct v4l2_subdev *sd, u32 port,
+ 
+ 	if (flag) {
+ 		csi = kzalloc(sizeof(*csi), GFP_KERNEL);
+-		if (!csi) {
+-			dev_err(&client->dev, "out of memory\n");
++		if (!csi)
+ 			return -ENOMEM;
+-		}
+ 		csi->port = port;
+ 		csi->num_lanes = lanes;
+ 		csi->input_format = format;
+-- 
+2.11.0
+
 
