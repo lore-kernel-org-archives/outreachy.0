@@ -1,111 +1,127 @@
-X-GM-THRID: 6807036987972780032
-X-Received: by 2002:aca:af97:: with SMTP id y145mr13376119oie.24.1584886803380;
-        Sun, 22 Mar 2020 07:20:03 -0700 (PDT)
+X-GM-THRID: 6474128496939499520
+X-Received: by 10.80.145.13 with SMTP id e13mr1412299eda.12.1508012612862;
+        Sat, 14 Oct 2017 13:23:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:30c4:: with SMTP id r4ls4837755otg.9.gmail; Sun, 22 Mar
- 2020 07:20:01 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vskZkJlv2qVPlfgAs21fHJEWGJy+ywgYL0yONBFWCHNsB9o9SFUR5ECgD1rsXKgWSXACMIF
-X-Received: by 2002:a9d:8d0:: with SMTP id 74mr14599804otf.39.1584886801668;
-        Sun, 22 Mar 2020 07:20:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584886801; cv=none;
+Received: by 10.80.167.100 with SMTP id h91ls1104186edc.8.gmail; Sat, 14 Oct
+ 2017 13:23:32 -0700 (PDT)
+X-Received: by 10.80.202.69 with SMTP id e5mr1417278edi.0.1508012612034;
+        Sat, 14 Oct 2017 13:23:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508012612; cv=none;
         d=google.com; s=arc-20160816;
-        b=IiwLRoy6CX0apHBbrWZU3eQMJ6rZTkPC/mRq0eHYb/XfOKFBx/ZGZSbhHJKg7qA3kR
-         WR8KAcYn6+EqRP3Jum18q7UMEYLp2dPEnMiJkv+UGg4BC7FE9hkmQ1fBaVYx27D5LmHU
-         ImBQFGMABmUXcYy/A3pwdxoxL7oeqyGqSLgMxYrNUu9YAOusbzGtJ1E+/hld5zvp10aD
-         cs7ptjVvS9DcZ+9irhVQvwWP+mHeto/0ByBmIlvzqHYv3KAjmsKC9BEeWBRvAiy2fzLV
-         uZNgA7OAbEKTaDwWs616U6U2pX76SuqKPlfdQoiLKraXl9awfubPi6o/GzDFa1YZ8AKB
-         L3gg==
+        b=MndnM5A6LBkKcTJaZVvuADHOCmIOZgzPK/kiAfMZHNcyY4xj07UJ8bXwl4vQIPvv+q
+         S3bVuU9tV25Ex3k6gsQxR9PeDnmrvCSsW1SuZxiUe4575pEfzXX8zMO1Daym4bIYyqAr
+         et8CabWQ27gCWVoDIlTDUpHQ9Q0to4T4wQYhEIa/116uuEpvWGxtWcr/RKsLXeH+evZy
+         8+vAFKFddnqehDjrzYaJftYgjWQPXUcF2d4tL/lRxSSLUIhJ+rWmDI/LK4ovTZzuj6jv
+         EaKNhzVOLukF3oPU4BXGxe3rFfy84iK8I4rY/9g8H8HmRAqYTPQgF+GiKx+iDjR7QN8g
+         9HNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=ZSoPFSIoYuevJ/KpvqckuaOqUqAljl6gtKbHNbZT/3E=;
-        b=yW6PuKsGhKOnPJq1CS+p7K2bjfLsoNIESmcKgh89dQw6UD9avRHJGkRHAM+rb/d6wA
-         7ZnInunDpqR/Mv6hnob771CSOhdAKq/TbOVFJCPAqRsPtV10uXx5KLCjgN6COCSQcm8p
-         skTvT5tp7smBdSy50g5/0FlzuiLnKlDXLGSgx7uDs2IGbdtjKSBajRUy9l/Zi5tZeJmr
-         rY0HOask/ofb+PTtc4oh8XQlOEvqouvCFaHphMw5XE002q+wL9/HtRODCi/6yoblaguk
-         7jv3IW2rLqYaDtkwzXQpC5YH4BpovGuJszXhZf0cCRquUEQnxRGJivpLbeB+eSpBMUwX
-         PkUA==
+         :to:from:date:dkim-signature:arc-authentication-results;
+        bh=MYLou4AjcG02HBpasF4/fKiDF7oz8+QAxOw3av0Ydnc=;
+        b=GNv+rhX+m0HkZAm3cyHOsn8uDZ1a5rS7cOxGJ7lkcDMuWvgjPFJmS/8W/eW0QKQGtb
+         5kxOu14HF+bTCS/fr0dJyl6LfFIK3yGEkvCXelMM+iaGWBbVUju4MimFjuQdLfPYf3/R
+         V5xjUOTmH2PhQBfE12dtJsEO+/bbwmcYfc9SNAterDB6OojQiJyVHe4PbH9hsE5MJTSq
+         pd4A7X4xRyRUU/L41bPKALv9FFXY+6NiCtpOnaaDPmV6zenoCLbozR4e1X8B/tZJusPG
+         oE6ACouGbmyoCQfwWfJyMDOXJk+Fj/TkC7LjgcLZSvxTieZO35d7s/tK13aorYgkru4v
+         qUHQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gQxX8inG;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <debsoumyajit100@gmail.com>
-Received: from mail-pj1-x1041.google.com (mail-pj1-x1041.google.com. [2607:f8b0:4864:20::1041])
-        by gmr-mx.google.com with ESMTPS id n5si272688otf.3.2020.03.22.07.20.01
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=a1V7KKgS;
+       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::242 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from mail-wr0-x242.google.com (mail-wr0-x242.google.com. [2a00:1450:400c:c0c::242])
+        by gmr-mx.google.com with ESMTPS id w24si185730edl.5.2017.10.14.13.23.32
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 22 Mar 2020 07:20:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) client-ip=2607:f8b0:4864:20::1041;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 14 Oct 2017 13:23:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::242 as permitted sender) client-ip=2a00:1450:400c:c0c::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gQxX8inG;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1041.google.com with SMTP id ck23so4803733pjb.4
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Mar 2020 07:20:01 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=a1V7KKgS;
+       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::242 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wr0-x242.google.com with SMTP id k15so2612436wrc.4
+        for <outreachy-kernel@googlegroups.com>; Sat, 14 Oct 2017 13:23:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=ZSoPFSIoYuevJ/KpvqckuaOqUqAljl6gtKbHNbZT/3E=;
-        b=gQxX8inGkYT2jQ0/Df9oFZyZMlfoMV5p/JaSLg8uBbKwhmwyn6PDhK/1YCpAatRibB
-         kEsm5zmwEzpJyfU1kLezGAUP+jxH4jRNfklwndGSkuvFhEKZBBMgZlO2w41aQZwbTLU6
-         IOBwGXbgjk5lxmXNZAHeYPEU4lZFEJ2aBekCg/K+a5S0e0XN7A6hTlEcUXk46IWpLsKi
-         EOAKcQQyQy7YvtTQgCr/RtSZMUbpqZcRR/0x7I8K7jcgzEIGoSMtzPODpPK/SXkbffqM
-         IiZy9PmBAaTUqfcT/58RQ/w+g+cZ00hVxJRHZkvQhAw6v9b8QlfzKlFx0V2Gs6ylJHq3
-         V1fg==
+        bh=MYLou4AjcG02HBpasF4/fKiDF7oz8+QAxOw3av0Ydnc=;
+        b=a1V7KKgShSz5u87kyQZk8DGoueD7T2j8iYsKfbu0qyzRU18Cm3l2nG5ILMF9UYNrSA
+         jEuayym7670t9gxsNJwPQBYHWh2bWv7xWp07A40fXgl8K+btBzTRRMtZnKID8xTxiHzl
+         78Nr3BnEMNzd0pc+IMqnXWP78dqpBNO8vmwgcXCZQhjKSzuTVms8zk5wic49cUfqNT+u
+         JxQWpNigY3GAQdDtW/TMDdkvshQYVDcLLnU8yPIdfaYkCSV3ef+uR2HD396UjuGd7uER
+         lt34GeIm5G65zVeY+exm4q0zTEajmysnHItYs4e4ArLsAdR0d5t1mYDBrtRg2D5CeaV6
+         /T5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=ZSoPFSIoYuevJ/KpvqckuaOqUqAljl6gtKbHNbZT/3E=;
-        b=CRXCYsscqlixuAH+4yOZhalXOnhooIBg4HhBvw+53/t2zz0RNP22QrcDXxKRgrBzak
-         Z5RnlMMNMfBe6COoA0+s9KvQLVJiwyPicbqtKKGUMBhlkdy7e3w1Ti24PBgvaO3fFJBK
-         25eFQyxba3LRoALgEjM5wnVw72vk+O/eWFA4L7jBEdr+WaA8HEtCYx36PU/r9E/Eq3au
-         VWnDd87/SOAk7USTzQGlLOnC80TarI+XbVpPIyaB3deFGnpCO6pHDzIuq/I68QMqH6MB
-         C+4Ke+FatuXTX46nA1LPpc36O9cDCuMi9j2Ex26MCOTX7uTVuPXuKbIz2dXn0vk/9gk5
-         f1ow==
-X-Gm-Message-State: ANhLgQ3TVPjpzhGKS23dxqkjnTz2McYiY9trT6LS0lqGrBw0DHEzVook
-	JNRgYpykD8Q/Ht3Z1ked0qv+cO9b7mXg2w==
-X-Received: by 2002:a17:90a:d34b:: with SMTP id i11mr18982494pjx.180.1584886800547;
-        Sun, 22 Mar 2020 07:20:00 -0700 (PDT)
-Return-Path: <debsoumyajit100@gmail.com>
-Received: from ubuntu ([47.29.231.191])
-        by smtp.gmail.com with ESMTPSA id i20sm2967404pfd.89.2020.03.22.07.19.57
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 22 Mar 2020 07:19:59 -0700 (PDT)
-Date: Sun, 22 Mar 2020 19:49:52 +0530
-From: Soumyajit Deb <debsoumyajit100@gmail.com>
+        bh=MYLou4AjcG02HBpasF4/fKiDF7oz8+QAxOw3av0Ydnc=;
+        b=NZaBpkAoMiJIiGzukap9G/00t11nivT5YiQFKbOsxrNFwIjOu9/kVo/x5tphOzI4s2
+         RRHZc5O/+uv4RBX0O9TApMECht7EyvEgKVJu9AbOjeFK8dvT5zOw2FjRfrvR+tbfKKP8
+         TqLRZQ11YBVlL2ICjpzGyEnVDuan8qXDyaILdWTxOnk8DPbgwaY1hnBJmVnPPq22xWOn
+         cOFadSYtp5xeQPpqhb2KVp+wU/x+wmsoqFaaRng83dvtCxx0k1Bwrb2k4Pah3UwlwvpZ
+         WkriqXnuOmg8oY0V9UkvE8Z4Bve1fkoFpHvuKxfvRcRuXJrnjJO1vTn9G9vHya3o2LZM
+         +u+w==
+X-Gm-Message-State: AMCzsaU2VZllapnafqmqjsTbNm/D3TcQyQxXDTaUaEdfUyUjRt9urlGQ
+	N4Pm4h+7j7K7doHGo9vEHZk=
+X-Google-Smtp-Source: AOwi7QBZBqBD5ChVcVxfCKSe6eLmkyWo3mXbjgHDD7s0KyR4AWxq0/8HE9FyYN90Bo2QRxsVr92LvQ==
+X-Received: by 10.223.186.201 with SMTP id w9mr4312981wrg.230.1508012611731;
+        Sat, 14 Oct 2017 13:23:31 -0700 (PDT)
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from domino-MS-16Y1 ([92.83.158.26])
+        by smtp.gmail.com with ESMTPSA id h5sm6165616wrb.89.2017.10.14.13.23.30
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 14 Oct 2017 13:23:31 -0700 (PDT)
+Date: Sat, 14 Oct 2017 23:23:28 +0300
+From: Mihaela Muraru <mihaela.muraru21@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org, perex@perex.cz
-Subject: [PATCH] staging: hp100: Add space around operator +
-Message-ID: <20200322141945.GA31741@ubuntu>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH v4] staging: rtl8192e: Use __func__ instead of function name
+Message-ID: <20171014202328.GA4580@domino-MS-16Y1>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Add space around operator + to improve code readability.
-Reported by checkpatch.pl
+Use identifier __func__ instead of the name of the function.
 
-Signed-off-by: Soumyajit Deb <debsoumyajit100@gmail.com>
+Issue found by checkpatch.pl.
+
+Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
 ---
- drivers/staging/hp/hp100.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes in v4:
+        -removes two points from the string and whitespaces from the 
+	front of the arguments to meet the condition no more than 80
+	characters per line.
 
-diff --git a/drivers/staging/hp/hp100.c b/drivers/staging/hp/hp100.c
-index b89c4dcf53f5..00b3db8144c3 100644
---- a/drivers/staging/hp/hp100.c
-+++ b/drivers/staging/hp/hp100.c
-@@ -119,7 +119,7 @@
- #define HP100_REGION_SIZE	0x20	/* for ioports */
- #define HP100_SIG_LEN		8	/* same as EISA_SIG_LEN */
+ drivers/staging/rtl8192e/dot11d.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/rtl8192e/dot11d.c b/drivers/staging/rtl8192e/dot11d.c
+index 017fe04..88f89d7 100644
+--- a/drivers/staging/rtl8192e/dot11d.c
++++ b/drivers/staging/rtl8192e/dot11d.c
+@@ -128,12 +128,16 @@ void Dot11d_UpdateCountryIe(struct rtllib_device *dev, u8 *pTaddr,
+ 	pTriple = (struct chnl_txpow_triple *)(pCoutryIe + 3);
+ 	for (i = 0; i < NumTriples; i++) {
+ 		if (MaxChnlNum >= pTriple->FirstChnl) {
+-			netdev_info(dev->dev, "Dot11d_UpdateCountryIe(): Invalid country IE, skip it........1\n");
++			netdev_info(dev->dev,
++				    "%s: Invalid country IE, skip it......1\n",
++				    __func__);
+ 			return;
+ 		}
+ 		if (MAX_CHANNEL_NUMBER < (pTriple->FirstChnl +
+ 		    pTriple->NumChnls)) {
+-			netdev_info(dev->dev, "Dot11d_UpdateCountryIe(): Invalid country IE, skip it........2\n");
++			netdev_info(dev->dev,
++				    "%s: Invalid country IE, skip it......2\n",
++				    __func__);
+ 			return;
+ 		}
  
--#define HP100_MAX_PACKET_SIZE	(1536+4)
-+#define HP100_MAX_PACKET_SIZE	(1536 + 4)
- #define HP100_MIN_PACKET_SIZE	60
- 
- #ifndef HP100_DEFAULT_RX_RATIO
 -- 
-2.17.1
+2.7.4
 
 
