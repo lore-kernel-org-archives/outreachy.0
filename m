@@ -1,101 +1,131 @@
-X-GM-THRID: 6536419046106071040
-X-Received: by 10.176.66.133 with SMTP id j5mr13231171uaj.120.1521878653028;
-        Sat, 24 Mar 2018 01:04:13 -0700 (PDT)
+X-GM-THRID: 6476695783848542208
+X-Received: by 10.28.238.220 with SMTP id j89mr534086wmi.6.1508015315607;
+        Sat, 14 Oct 2017 14:08:35 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.176.76.137 with SMTP id y9ls1035481uaf.5.gmail; Sat, 24 Mar
- 2018 01:04:10 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELvf67RUtkc0RT3Qzsr9P5z7dgjsn6BxMUVfXm0Xf1JOoWV9w/5T984DUz1/uCHZSc0c3XfK
-X-Received: by 10.176.80.177 with SMTP id c46mr8535797uaa.75.1521878650249;
-        Sat, 24 Mar 2018 01:04:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521878650; cv=none;
+Received: by 10.223.157.208 with SMTP id q16ls2011282wre.6.gmail; Sat, 14 Oct
+ 2017 14:08:34 -0700 (PDT)
+X-Received: by 10.28.184.78 with SMTP id i75mr587903wmf.30.1508015314750;
+        Sat, 14 Oct 2017 14:08:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508015314; cv=none;
         d=google.com; s=arc-20160816;
-        b=cKK2PjWmdzFc1Ke99dAoRvNA1/oBociKu7LmJqZIZSk/DmiVHQO3V1/1odIDvfS2Gm
-         weYnT7Jnz7qNrL0tC+s4+UrV3BtupJJYyMoiLjucW8KZwXct8onNz5PC746i6A/ZZuFs
-         vsxamFmWLMKnMR7KFl9saLtSi+mGSBEe7Xou+pRnzOn1i0LJN4CQaMLRUmoYEuBtIpPL
-         pLQc/BznAIJYWW+yvFjYagPbCMSIOmPAOXY1fO8GbtsgU49aaKJhx9/egApHmVf1JsuC
-         O+5mabz0AZMKDXBSkFZAdRorbYMl+1o092v4w9FeK0+xOwrXAUdgc4kDwF6zZCBKk3/1
-         CcBA==
+        b=b1EjQ0updXJ74GUmVy3kFiqGmSU9V1i6somgtOKSFHzAPPiaFXVTz4B5LA1IuY3bTB
+         ivvT/mMczGgqX0gSRbEef873XEB8CbYtZ3Vfha55iyvAQXLROnSeYe62K8YFlLS7Wtgh
+         UDww5WpcFNlHEglIlRB+vmC/4KhHElLrHRK2KCpEiErTfImC0SC75WZlcPNcX2+YVWi4
+         qEg7j/UuSDvqReFWxE4HL8pS3larh3K7OVF+YHPS33exwLG21NARMNNul+IdmkYU8FZU
+         pYvH+iDkmivODhXz/Mwmf90qSDlsBZ/OJuynhRJ38Uo++6n1YrVRZtvczD5J2lnaBMzF
+         H1dw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=3VAyftcEtdzLXYbfx7sgLr1lujMA/C+a9X/UbceQisg=;
-        b=pbXQdi/SsJc86B+o4NbmapYNHXeRsWRHFkfor3DpVKY963ploSgYdYkUh4X64kds+Q
-         XcbcmwqNhktwCizCpvJWxKaZME0YGCsRgwyP/buUBAM6/0iALHfByt4nI/4OqSKUSwj6
-         6Uj2l0glBxr5vXGGrtMpgDWyZ58jMZV1biiH/qfa6kpm9H7oP2iJOgu9RggPOAjckQGv
-         JRylmcfrWZ/vj08HWCMKWBROElyPG+gE+P5F1kDNpV9aNoDtDz8Tnr5ZhQ/zPqN7cWGl
-         d6KaYrJOeRmmMcURfgDZXnZiCzWBEx63YQAo4SvV9+mUElkzG8fs/XfHeYm6yYViFviU
-         o8qw==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature:arc-authentication-results;
+        bh=z335sum1aSix/NClEq+k3I2RdcTm16nunp8XeJbahog=;
+        b=0CR4GPyG+sO/rr7yaMC+Whck5OT/vzYdwk3Z+rIutV8vPTwdYWP/j10TdKZxQ0XjIb
+         IHWIdN+5DC6B3bRe9vMtrgFfOXttmPYWKrwBu9074IQt8gP/dT/gI9GtJXDXKmSfmMkf
+         Sre3zt1GgQKsY8McaWQuOQGcuZLt/eHn1yn14QaHA4HvU04pjJPv8vsMkV7gJCxit6FO
+         vJ01ilRE3Cs799exiY/wwNikNPhqx8jRaEzqWuYgAdLBKEy+ZPj2/G0Paomtc+VbfXnP
+         8I3eWxUWdhUfdDev9g/yPi5BWr5z2sOLsRqZz+e3hC8EojmZ3GxlBTA5BFi4lKlQmUL6
+         HZ7Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=TYsun8vH;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::22a as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from mail-pl0-x22a.google.com (mail-pl0-x22a.google.com. [2607:f8b0:400e:c01::22a])
-        by gmr-mx.google.com with ESMTPS id c78si896548vke.2.2018.03.24.01.04.10
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PzG8xOgT;
+       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::233 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from mail-wm0-x233.google.com (mail-wm0-x233.google.com. [2a00:1450:400c:c09::233])
+        by gmr-mx.google.com with ESMTPS id j31si14250wre.3.2017.10.14.14.08.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Mar 2018 01:04:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::22a as permitted sender) client-ip=2607:f8b0:400e:c01::22a;
+        Sat, 14 Oct 2017 14:08:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::233 as permitted sender) client-ip=2a00:1450:400c:c09::233;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=TYsun8vH;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::22a as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Received: by mail-pl0-x22a.google.com with SMTP id w12-v6so8826629plp.4
-        for <outreachy-kernel@googlegroups.com>; Sat, 24 Mar 2018 01:04:10 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PzG8xOgT;
+       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::233 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x233.google.com with SMTP id f4so27345988wme.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 14 Oct 2017 14:08:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ashoka.edu.in; s=google;
-        h=from:to:cc:subject:date:message-id;
-        bh=3VAyftcEtdzLXYbfx7sgLr1lujMA/C+a9X/UbceQisg=;
-        b=TYsun8vHgyyKZhzIbEygZ419GDwVuzsFC5wV/pndxvF3iCvy0q2BXR2MmMy9Jbh2cS
-         pLBD01jDQzbqlFDNWPlKkNQEoOWL5a03ai7bbN5vbYe0u8sCrQRKK4vxtQnQtm008gTN
-         yJPUUUAZd2duqo/TDEaDxdLgdzXvWsQOKPuOs=
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=z335sum1aSix/NClEq+k3I2RdcTm16nunp8XeJbahog=;
+        b=PzG8xOgTBboEniv1UBuRio4KUynC2cvoiILCs+oEac6BCYX1zlPRmHucchy4UOeMgd
+         5NDiXeAJ/0g6dtZI79gyPCooq13dztJi7nAoiCtXjcnqC0ZOg8EVfvh6h8J/svPEUdQv
+         DHaAikrmkQYL1LwAAMI2Pcb7fsci4EVz8X+1nsSY1EQ8W8iN/RxjcKoLcLHZ9t9yGPiw
+         pScF9RTbussBfkqlgMR3tcOIwWfdT9t1smumk3Z2QIuZlpwBLe/HsQ2qEVM1L/SsyCeM
+         bxcFxpfZLSsdFpVtH0CjrQAyrl07SUMinCkpmnbgox64Dp4yFHw52xtmXPjF1r+phC+l
+         xqeg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=3VAyftcEtdzLXYbfx7sgLr1lujMA/C+a9X/UbceQisg=;
-        b=rLtinDZ6rBJVysYG+5xqkBsa4/rpk/1zZBVxM8Zfnv7tNk/3HGNNdjV/hAKbHijjiQ
-         06xgwrdZHod/agZiRF5wh7gX4k15LAG7CrnbiuMh4fyFZhaLG9rgOQtEFkGVmMbnUaim
-         KGTPDHB7yviN3HAklJ5GxK/7kqdKxBMakMxkSIYRNMgsOavz4TO4FaGgdYXu9egM1DZd
-         WoRwvRG85O4d+WtDi1c6OEDUzIsFIFMRymm1u52pD7tVySsM0KZEXRwnRckVetfszgeI
-         3bVFDKCDQyv9Z/eM9FMqbhMAKQOl3B76hYT9XQjlf2WydH3Q+N1QhhVsknAWIp+MrJQw
-         YoEw==
-X-Gm-Message-State: AElRT7HSHBPcYT7iTGOo2MjgYwd7cs4PA/vfzFqcBeWgGup3pyEb5atf
-	8C7GIuVX/LqL5a2VHone3s1ezODT
-X-Received: by 2002:a17:902:8b82:: with SMTP id ay2-v6mr31862545plb.12.1521878649847;
-        Sat, 24 Mar 2018 01:04:09 -0700 (PDT)
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from localhost.localdomain ([139.59.85.247])
-        by smtp.gmail.com with ESMTPSA id h6sm19288806pgn.65.2018.03.24.01.04.07
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 24 Mar 2018 01:04:09 -0700 (PDT)
-From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-Subject: [PATCH] staging: mt7621-dts: Replace spaces with tabs in indentation
-Date: Sat, 24 Mar 2018 08:03:57 +0000
-Message-Id: <1521878637-21803-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=z335sum1aSix/NClEq+k3I2RdcTm16nunp8XeJbahog=;
+        b=DAzEn3tEACAsaS31QarvfrfiecL3TjvZnQ/wLQJLOQ8QHFUUCpP/wyeYTvDILly9JK
+         1RHqIf7LxuhVlrDVeW3hkDWi8MSWxqi9FyUaOao/M8rLcbgS7e/DXTPPRu+01HEposB7
+         w7jpaTQsVUFYtL0+OKPRtL1S7RnLDh48lPKcW5JlJhf4M4urf33WJeVmEKp8AiHhoKPG
+         SuO97aGkv3irlv2EWfeqXwYBQBjljPnJcJk3yvToTmSlErOOTyUSTQzbLeRwWdkCxWjp
+         NxulpuVnaM5v4mDFucfjSj07fjajfKzRrLuAiyYrNo1tyIKjOtIJfwGvQUTns6W6aCOa
+         jILw==
+X-Gm-Message-State: AMCzsaUW4sCqu8jLbu/EbLN8mL/nChgJdmXmsvJ3FurUzYTchi8cuNy1
+	F9UMID0+LytjxNAiTofRCme/3g==
+X-Google-Smtp-Source: ABhQp+SvpXfCqugQPXRFYXAzqqI/7e/0UIyXE8f2HP3uQTJpux82AWdhwB7eV1aoRuI56OzgsoTGlg==
+X-Received: by 10.28.57.4 with SMTP id g4mr3692648wma.92.1508015314481;
+        Sat, 14 Oct 2017 14:08:34 -0700 (PDT)
+Return-Path: <mihaela.muraru21@gmail.com>
+Received: from domino-MS-16Y1 ([92.83.158.26])
+        by smtp.gmail.com with ESMTPSA id h5sm6239345wrb.89.2017.10.14.14.08.33
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 14 Oct 2017 14:08:33 -0700 (PDT)
+Date: Sun, 15 Oct 2017 00:08:32 +0300
+From: Mihaela Muraru <mihaela.muraru21@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Eric Anholt <eric@anholt.net>, Stefan Wahren <stefan.wahren@i2se.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH v2] staging: vc04_services: Use __func__ instead of function
+ name
+Message-ID: <20171014210832.GA6858@domino-MS-16Y1>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Replace spaces with tabs in indentation.
-Issue found with checkpatch.
+Use identifier __func__ instead of the name of the function.
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+Issue found by checkpatch.pl.
+
+Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
 ---
- drivers/staging/mt7621-dts/mt7621.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes in v2:
+	-arrange the modified code to be in line with the coding
+	style used by linux kernel organization.
 
-diff --git a/drivers/staging/mt7621-dts/mt7621.dtsi b/drivers/staging/mt7621-dts/mt7621.dtsi
-index a6b17ea..ebcaa8b 100644
---- a/drivers/staging/mt7621-dts/mt7621.dtsi
-+++ b/drivers/staging/mt7621-dts/mt7621.dtsi
-@@ -142,7 +142,7 @@
- 		mc: mc@1fbf8000 {
- 			    compatible = "mtk,mt7621-mc";
- 			    reg = <0x1fbf8000 0x8000>;
-- 		};
-+		};
+ .../staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c   | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
+index a96bae0..08619b3 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
+@@ -420,8 +420,8 @@ create_pagelist(char __user *buf, size_t count, unsigned short type,
+ 				       &dma_addr,
+ 				       GFP_KERNEL);
  
- 		uartlite: uartlite@c00 {
- 			compatible = "ns16550a";
+-	vchiq_log_trace(vchiq_arm_log_level, "create_pagelist - %pK",
+-			pagelist);
++	vchiq_log_trace(vchiq_arm_log_level, "%s - %pK", __func__, pagelist);
++
+ 	if (!pagelist)
+ 		return NULL;
+ 
+@@ -481,9 +481,8 @@ create_pagelist(char __user *buf, size_t count, unsigned short type,
+ 
+ 		if (actual_pages != num_pages) {
+ 			vchiq_log_info(vchiq_arm_log_level,
+-				       "create_pagelist - only %d/%d pages locked",
+-				       actual_pages,
+-				       num_pages);
++				       "%s - only %d/%d pages locked",
++				       __func__, actual_pages, num_pages);
+ 
+ 			/* This is probably due to the process being killed */
+ 			while (actual_pages > 0)
 -- 
 2.7.4
 
