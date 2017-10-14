@@ -1,132 +1,126 @@
 X-GM-THRID: 6476695783848542208
-X-Received: by 10.28.238.220 with SMTP id j89mr534086wmi.6.1508015315607;
-        Sat, 14 Oct 2017 14:08:35 -0700 (PDT)
+X-Received: by 10.80.139.209 with SMTP id n17mr1200085edn.10.1507983841181;
+        Sat, 14 Oct 2017 05:24:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.223.157.208 with SMTP id q16ls2011282wre.6.gmail; Sat, 14 Oct
- 2017 14:08:34 -0700 (PDT)
-X-Received: by 10.28.184.78 with SMTP id i75mr587903wmf.30.1508015314750;
-        Sat, 14 Oct 2017 14:08:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508015314; cv=none;
+Received: by 10.80.167.100 with SMTP id h91ls809829edc.8.gmail; Sat, 14 Oct
+ 2017 05:24:00 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QCUGTx7DSYxtYmYEXF8x5DeDM82gqgdwOAoaxUAD7u6vnCRJa9+1va67CtjToefliwmHzF7
+X-Received: by 10.80.145.13 with SMTP id e13mr1210350eda.12.1507983840477;
+        Sat, 14 Oct 2017 05:24:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507983840; cv=none;
         d=google.com; s=arc-20160816;
-        b=b1EjQ0updXJ74GUmVy3kFiqGmSU9V1i6somgtOKSFHzAPPiaFXVTz4B5LA1IuY3bTB
-         ivvT/mMczGgqX0gSRbEef873XEB8CbYtZ3Vfha55iyvAQXLROnSeYe62K8YFlLS7Wtgh
-         UDww5WpcFNlHEglIlRB+vmC/4KhHElLrHRK2KCpEiErTfImC0SC75WZlcPNcX2+YVWi4
-         qEg7j/UuSDvqReFWxE4HL8pS3larh3K7OVF+YHPS33exwLG21NARMNNul+IdmkYU8FZU
-         pYvH+iDkmivODhXz/Mwmf90qSDlsBZ/OJuynhRJ38Uo++6n1YrVRZtvczD5J2lnaBMzF
-         H1dw==
+        b=Lz5gEvFjG4PxHIEgVtk/fKMkZof7PrhGoJhx/hq/Pt8Ji/5xxzIOoC4MPNzcTCsK82
+         s1dfv39qWlyaqJvfFPl/SboeW7XPTrcyaiP6ojQtSI/qpWvkVjKtQwfZpKtNe6GRiHQQ
+         a0QdnEX59jgFtqlWoKVKdnUaBaosLDt9+rbMN6HWKRsmO8eZ+bV25R5dwOb6mjGOuBr5
+         80KV1HAlVWs651xjk2aSw1pPrhI+lwMmKywD2cK6tv/vinHMvZFX0tHMPHa8u5b87BEI
+         eVsX++a5ws0Zm7qlQ0nkFpqhdiZ4ni8N+JfLd+O2vWQvy9Qnk7Pe/k8OR3Wwq9Eq0+Qk
+         J5Ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=z335sum1aSix/NClEq+k3I2RdcTm16nunp8XeJbahog=;
-        b=0CR4GPyG+sO/rr7yaMC+Whck5OT/vzYdwk3Z+rIutV8vPTwdYWP/j10TdKZxQ0XjIb
-         IHWIdN+5DC6B3bRe9vMtrgFfOXttmPYWKrwBu9074IQt8gP/dT/gI9GtJXDXKmSfmMkf
-         Sre3zt1GgQKsY8McaWQuOQGcuZLt/eHn1yn14QaHA4HvU04pjJPv8vsMkV7gJCxit6FO
-         vJ01ilRE3Cs799exiY/wwNikNPhqx8jRaEzqWuYgAdLBKEy+ZPj2/G0Paomtc+VbfXnP
-         8I3eWxUWdhUfdDev9g/yPi5BWr5z2sOLsRqZz+e3hC8EojmZ3GxlBTA5BFi4lKlQmUL6
-         HZ7Q==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=/0x8fb3uFccc9t3w07Fc1RKcg2Sn4CcswsubL6S1U80=;
+        b=uxdgJCdajWPMIo+YbjFv6sSeWBSwivWw6lrOFJxEVgNgJCPVxYDvFrK0QMnLkmeEXM
+         MNAslZcef38XGMX08NUa4JKuafbkWB6AkOMSOgR8m2u/g5x8tykHO4eEnQXhDFHcus05
+         z4KwKs99XlRJrMjIYpKiROlBfvXBYuOb/B5pNjqB4qynmbDhOvZOVMrCUacrB53O6UeR
+         UfAiVjOFWsv6buf1vp2DIsWiNY6vNWPYmmJ4ngp5Ie0Ed7z9d8NwvabzWaNkWLaCY9OH
+         rZXWIQ6yniZFUf5G4mFA3TXZmb3+LSp1sX95UW8IYnYvTNm6+JkicsPMML1XCpFr9SpV
+         F1Ww==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PzG8xOgT;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::233 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from mail-wm0-x233.google.com (mail-wm0-x233.google.com. [2a00:1450:400c:c09::233])
-        by gmr-mx.google.com with ESMTPS id j31si14250wre.3.2017.10.14.14.08.34
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id f21si128070edj.0.2017.10.14.05.24.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 14 Oct 2017 14:08:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::233 as permitted sender) client-ip=2a00:1450:400c:c09::233;
+        Sat, 14 Oct 2017 05:24:00 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PzG8xOgT;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::233 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x233.google.com with SMTP id f4so27345988wme.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 14 Oct 2017 14:08:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=z335sum1aSix/NClEq+k3I2RdcTm16nunp8XeJbahog=;
-        b=PzG8xOgTBboEniv1UBuRio4KUynC2cvoiILCs+oEac6BCYX1zlPRmHucchy4UOeMgd
-         5NDiXeAJ/0g6dtZI79gyPCooq13dztJi7nAoiCtXjcnqC0ZOg8EVfvh6h8J/svPEUdQv
-         DHaAikrmkQYL1LwAAMI2Pcb7fsci4EVz8X+1nsSY1EQ8W8iN/RxjcKoLcLHZ9t9yGPiw
-         pScF9RTbussBfkqlgMR3tcOIwWfdT9t1smumk3Z2QIuZlpwBLe/HsQ2qEVM1L/SsyCeM
-         bxcFxpfZLSsdFpVtH0CjrQAyrl07SUMinCkpmnbgox64Dp4yFHw52xtmXPjF1r+phC+l
-         xqeg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=z335sum1aSix/NClEq+k3I2RdcTm16nunp8XeJbahog=;
-        b=DAzEn3tEACAsaS31QarvfrfiecL3TjvZnQ/wLQJLOQ8QHFUUCpP/wyeYTvDILly9JK
-         1RHqIf7LxuhVlrDVeW3hkDWi8MSWxqi9FyUaOao/M8rLcbgS7e/DXTPPRu+01HEposB7
-         w7jpaTQsVUFYtL0+OKPRtL1S7RnLDh48lPKcW5JlJhf4M4urf33WJeVmEKp8AiHhoKPG
-         SuO97aGkv3irlv2EWfeqXwYBQBjljPnJcJk3yvToTmSlErOOTyUSTQzbLeRwWdkCxWjp
-         NxulpuVnaM5v4mDFucfjSj07fjajfKzRrLuAiyYrNo1tyIKjOtIJfwGvQUTns6W6aCOa
-         jILw==
-X-Gm-Message-State: AMCzsaUW4sCqu8jLbu/EbLN8mL/nChgJdmXmsvJ3FurUzYTchi8cuNy1
-	F9UMID0+LytjxNAiTofRCme/3g==
-X-Google-Smtp-Source: ABhQp+SvpXfCqugQPXRFYXAzqqI/7e/0UIyXE8f2HP3uQTJpux82AWdhwB7eV1aoRuI56OzgsoTGlg==
-X-Received: by 10.28.57.4 with SMTP id g4mr3692648wma.92.1508015314481;
-        Sat, 14 Oct 2017 14:08:34 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from domino-MS-16Y1 ([92.83.158.26])
-        by smtp.gmail.com with ESMTPSA id h5sm6239345wrb.89.2017.10.14.14.08.33
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 14 Oct 2017 14:08:33 -0700 (PDT)
-Date: Sun, 15 Oct 2017 00:08:32 +0300
-From: Mihaela Muraru <mihaela.muraru21@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Eric Anholt <eric@anholt.net>, Stefan Wahren <stefan.wahren@i2se.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v2] staging: vc04_services: Use __func__ instead of function
- name
-Message-ID: <20171014210832.GA6858@domino-MS-16Y1>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.43,376,1503352800"; 
+   d="scan'208";a="240982396"
+Received: from abo-88-122-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.122.88])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 14 Oct 2017 14:23:59 +0200
+Date: Sat, 14 Oct 2017 14:23:59 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Mihaela Muraru <mihaela.muraru21@gmail.com>
+cc: outreachy-kernel@googlegroups.com, Eric Anholt <eric@anholt.net>, 
+    Stefan Wahren <stefan.wahren@i2se.com>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH] staging: vc04_services: Use __func__
+ instead of function name
+In-Reply-To: <20171014092725.GA6081@domino-MS-16Y1>
+Message-ID: <alpine.DEB.2.20.1710141422240.1995@hadrien>
+References: <20171014092725.GA6081@domino-MS-16Y1>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-Use identifier __func__ instead of the name of the function.
 
-Issue found by checkpatch.pl.
 
-Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
----
-Changes in v2:
-	-arrange the modified code to be in line with the coding
-	style used by linux kernel organization.
+On Sat, 14 Oct 2017, Mihaela Muraru wrote:
 
- .../staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c   | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
+> Use identifier __func__ instead of the name of the function.
+>
+> Issue found by checkpatch.pl.
+>
+> Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
+> ---
+>  .../staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c | 10 ++++++----
+>  1 file changed, 6 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
+> index a96bae0..88634e4 100644
+> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
+> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
+> @@ -420,7 +420,8 @@ create_pagelist(char __user *buf, size_t count, unsigned short type,
+>  				       &dma_addr,
+>  				       GFP_KERNEL);
+>
+> -	vchiq_log_trace(vchiq_arm_log_level, "create_pagelist - %pK",
+> +	vchiq_log_trace(vchiq_arm_log_level, "%s - %pK",
+> +			__func__,
+>  			pagelist);
 
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-index a96bae0..08619b3 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-@@ -420,8 +420,8 @@ create_pagelist(char __user *buf, size_t count, unsigned short type,
- 				       &dma_addr,
- 				       GFP_KERNEL);
- 
--	vchiq_log_trace(vchiq_arm_log_level, "create_pagelist - %pK",
--			pagelist);
-+	vchiq_log_trace(vchiq_arm_log_level, "%s - %pK", __func__, pagelist);
-+
- 	if (!pagelist)
- 		return NULL;
- 
-@@ -481,9 +481,8 @@ create_pagelist(char __user *buf, size_t count, unsigned short type,
- 
- 		if (actual_pages != num_pages) {
- 			vchiq_log_info(vchiq_arm_log_level,
--				       "create_pagelist - only %d/%d pages locked",
--				       actual_pages,
--				       num_pages);
-+				       "%s - only %d/%d pages locked",
-+				       __func__, actual_pages, num_pages);
- 
- 			/* This is probably due to the process being killed */
- 			while (actual_pages > 0)
--- 
-2.7.4
+You have plenty of room on the function call line for at least __func__
+and perhaps for both arguments.
 
+>  	if (!pagelist)
+>  		return NULL;
+> @@ -481,7 +482,8 @@ create_pagelist(char __user *buf, size_t count, unsigned short type,
+>
+>  		if (actual_pages != num_pages) {
+>  			vchiq_log_info(vchiq_arm_log_level,
+> -				       "create_pagelist - only %d/%d pages locked",
+> +				       "%s - only %d/%d pages locked",
+> +				       __func__,
+>  				       actual_pages,
+>  				       num_pages);
+
+Maybe all of the last three arguments could be put on a single line.
+
+julia
+
+>
+> @@ -583,8 +585,8 @@ free_pagelist(struct vchiq_pagelist_info *pagelistinfo,
+>  	struct page **pages    = pagelistinfo->pages;
+>  	unsigned int num_pages = pagelistinfo->num_pages;
+>
+> -	vchiq_log_trace(vchiq_arm_log_level, "free_pagelist - %pK, %d",
+> -			pagelistinfo->pagelist, actual);
+> +	vchiq_log_trace(vchiq_arm_log_level, "%s - %pK, %d",
+> +			__func__, pagelistinfo->pagelist, actual);
+>
+>  	/*
+>  	 * NOTE: dma_unmap_sg must be called before the
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20171014092725.GA6081%40domino-MS-16Y1.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
