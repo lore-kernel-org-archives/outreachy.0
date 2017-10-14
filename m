@@ -1,126 +1,190 @@
 X-GM-THRID: 6476749325903855616
-X-Received: by 10.223.169.144 with SMTP id b16mr379251wrd.26.1507985717236;
-        Sat, 14 Oct 2017 05:55:17 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.159.4 with SMTP id i4ls648369wme.3.gmail; Sat, 14 Oct 2017
- 05:55:16 -0700 (PDT)
-X-Received: by 10.223.154.112 with SMTP id z103mr399295wrb.0.1507985716714;
+X-Received: by 10.46.43.4 with SMTP id q4mr149798lje.13.1507985716367;
         Sat, 14 Oct 2017 05:55:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507985716; cv=none;
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.46.17.77 with SMTP id f74ls565246lje.8.gmail; Sat, 14 Oct 2017
+ 05:55:15 -0700 (PDT)
+X-Received: by 10.46.16.131 with SMTP id 3mr151339ljq.8.1507985715143;
+        Sat, 14 Oct 2017 05:55:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1507985715; cv=none;
         d=google.com; s=arc-20160816;
-        b=FHzPHKtB17kvvIpM8ZDIklFbCFCiaDRq4BEjI8NqBXMwXNNoEoSJHaANP8hmcKw68v
-         +HNjiWe9jtaRKbCy6VYhvOeRTbJbdy757nuo/Zy0MS1ft//kYI74+iFsHpUFwbAD2IL5
-         a+fwzAReZQrVRl0vKqi+j8cgEDoFym2IhEWAX8jC1NuAPQf4qqBadV6/gsxeukPV21pW
-         3veOh6h8hi9Kkbh9SaV8FULtHfUJOnmYKEnNFNZ9Sw2iUUi7nNF1y8TzAdMzS32Dl92P
-         HcoFmrxHJVEs9R93A/S6AsvdxZOZ/Pj7ohy9F3VRIgWuiGXWd+G93c/dRzhbkb1SclwB
-         3RLQ==
+        b=yNzc3jg4ugiYNcPufEIv5wIYgWboXRC380X4BCGykCSrz6TVvjA++W2biUOKjxrtk6
+         fsAev6qK3UYs+YMLcZhPUywQ1yQnsFmwaY34fSvBK+hoD4VaVHSNsaHmYSmuPSsElX9e
+         dv+CQOHG1BBWqPDLvpjD3Wj4BE8Jp5ahfwwtwFGXGK76o9M7JP9HlqZYA5mk2Gnt1W2l
+         LMK8Udq8WvKj3DEIiPMUTSN+R1jZNYr2Lh6XbH9x3VupYkW7yE7bd5uonNFAaj+7RB9k
+         aMzyN8Gd/M5LbD6Qnv9nX5jBCkQC4mqCuyZE/YiHvohjaBh2rHl7B9+f17MNXd7EnlBy
+         w3kA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:references:in-reply-to:message-id:date
          :subject:cc:to:from:dkim-signature:arc-authentication-results;
-        bh=iOhSMa5qyGVaGf6fl/bB1F2eulcze2EnMwv0cJloThg=;
-        b=aqR5WSvs5oL5pKO8NSjFrRPiCK/24Y50jvlgGr8RRal90ikCWBAoyGV1qa2Oyq6Xj6
-         SB6Do5Z2KegIvSf2eonscXxwFtfkYayjmRl811qWV0zRtPoosdZUB/TiKgT714lmk8P9
-         Tu6gKExrHZUB+9CyQ29T5tBACCpVUoq7lZ+rueJpd0kWv5ErwpYUboJ8Z/NvwEw3yCwA
-         Gr693COB1bClf8GWjrFOVKLNVPX6mQTY4sfjYwSbOZxocUp7bmKlQRyGM+EKzarG135w
-         umYhuQPrb/cTWL0CKJb8EUf+7Er6vcj46Byu7e9QLQB7LpUZ0Ogs7V44yw0u9sKwz5Ic
-         incg==
+        bh=e5wxfQfLqXfwbTIobgngpvJDnz2FBPsDLjTDiI99CRo=;
+        b=L1XtsAMpWpAbBVjpcG2MRsi1HIJzu5Zkln+aAVrtFCMF+2wJoYVfOMR8q7gcT0Vot5
+         0pc4YYVEe58mqrLYZ2NnyYDioR3c/d/TZ28K0eqhgRwIHruQFx/vwbEJfNeTVwfgmzXo
+         oo0XSiOtotXSBG2ql6WCFUimGaucjAy6Li3sED8TSVBdVl1UFoDDPAEQSnAiXxqMsSFf
+         aLppJ5095DlKrxpUJFXMmzak4W46Hj0PzN+p3YBt9Bnc1xb5siQxabizjirLtxISfjYC
+         ytPb+f+9ec41AMM5Th/UdL9cq8VdjYGj37r9r9oqMX5zbbIjstc8VRzgBlzoEnhP7nxr
+         /bmg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Uw+uRTtp;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pYr6NVzy;
+       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::234 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <georgiana.chelu93@gmail.com>
-Received: from mail-wr0-x244.google.com (mail-wr0-x244.google.com. [2a00:1450:400c:c0c::244])
-        by gmr-mx.google.com with ESMTPS id r15si199834wrc.1.2017.10.14.05.55.16
+Received: from mail-wm0-x234.google.com (mail-wm0-x234.google.com. [2a00:1450:400c:c09::234])
+        by gmr-mx.google.com with ESMTPS id r17si163269ljb.2.2017.10.14.05.55.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 14 Oct 2017 05:55:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) client-ip=2a00:1450:400c:c0c::244;
+        Sat, 14 Oct 2017 05:55:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::234 as permitted sender) client-ip=2a00:1450:400c:c09::234;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Uw+uRTtp;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pYr6NVzy;
+       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::234 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x244.google.com with SMTP id v91so1315849wrc.5
-        for <outreachy-kernel@googlegroups.com>; Sat, 14 Oct 2017 05:55:16 -0700 (PDT)
+Received: by mail-wm0-x234.google.com with SMTP id t69so25794312wmt.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 14 Oct 2017 05:55:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=iOhSMa5qyGVaGf6fl/bB1F2eulcze2EnMwv0cJloThg=;
-        b=Uw+uRTtpIBRk0u+/JkXJBTmBbH4LKVpFhJt1HBQfE31UsJXyP3GJmAQTIcop37Cea+
-         YkcxmQ7ufk78fpS5J/hwrqDW/9l5Q+yIw9w+ve6ELfrJAHKO6VUaSQtxBzcw6l1C3rre
-         MjHBOHFoShOwGUSc0vFVW+FkVD2yoHLeObKEYhTtz2sq+oggv6L/tsNT//4QPG4zusZw
-         XUZ9X0vR0PCytPMYnHk3HIIsibcNjLq7Mf3FoeJ43SM41/on3FXV6w6hUtqjEP+KE0x2
-         z+YePt8jdcZU4H6NnRXjc8O1kjP41kxgz8wji8XboI1kPb0FGOQ1t2u95uaiM4tX70qd
-         MPAg==
+        bh=e5wxfQfLqXfwbTIobgngpvJDnz2FBPsDLjTDiI99CRo=;
+        b=pYr6NVzy5X59yrlbyNQSzQ3QYQHK/eFC5McbsSCNNLR9Z++mk06/aL6eA6Kq+rpzlM
+         xqO5q6E4AxGSH0jDaNsbZHpEXu0S6Hf9CvrWUvC0OoxA5BiJ0R/lNPVXRO/fTZV3RZby
+         y+T9+qCDRcrxnOTNb14gdVpz2X174YQT+qnr9J0js0Xofec5xuUYXOIr0P643XROwM6q
+         0KfaBKsbYTW2OXER0gp3HdDOFZPsSxM5ZskS57J/HdyKC6UwMwcD1kn44LrKJcrqRk8d
+         9IxgAfcSvF87R+s2JE3LS/Klr1a87kroYu8ZZlboBZDnx/N2e6O+C1vVFUCwNfGOHjsa
+         qSng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=iOhSMa5qyGVaGf6fl/bB1F2eulcze2EnMwv0cJloThg=;
-        b=QjUegGUkF23t/iqTdP7AeqH2Rgbz+Xak2UmZPGPi7fP7AHvcjBcfZZ9qyJ2IC01ziJ
-         Lmtp9OLr7FryWNovkRj16rB/DQyCy97/PxPHNCKi2OxKVW/nba6HFEbOhU2dna0I1hEO
-         Ka4imr3YFjJKT7rckOxfDh4CK0ggdDFIJpOH9L3J6ra/kCohajsPA8kyR8RGk9aW1M8l
-         s2RC6/yCutfe42w2ezhRVd8aqCM/7QYqx8aFyF9MhAJvik8ofCY3UVN2oph9TOTrDHVh
-         b8d07efFSPoDurAKxzpr5PpNRb1hFI2yvu0lY/zUE2ftV5FaRrYonUluWvwWaXrKIjPF
-         t4vg==
-X-Gm-Message-State: AMCzsaUz0VExT4LQ/QI9S34TifQc+Xw/vtjnWRB1Z6QhUa+SKY5Qmy21
-	jkkdoFxFtxvE0ETvOU/Ek4c=
-X-Google-Smtp-Source: AOwi7QAqxX4c9pJAGGP3dt/zltb1NRn5DuO6B5Fe4jilKtSPFIF9XO1zP9CvRqg8dYqDa9ozvJG5Ng==
-X-Received: by 10.223.192.135 with SMTP id d7mr3560629wrf.128.1507985716404;
-        Sat, 14 Oct 2017 05:55:16 -0700 (PDT)
+        bh=e5wxfQfLqXfwbTIobgngpvJDnz2FBPsDLjTDiI99CRo=;
+        b=KFq3xXlliP+fVd1aSQK+Q10ZgJix30udW9msbvbdalgUs6yD/K8+dfQ1LvHODsErW5
+         GAauGmdamnxSB9evbu9OtNlxaV6WpCbejEwfSA/o0phfBkMuNU4xo0CWyENgcc0pIXZN
+         DeeCNJOvGfG7nFq3dwTCgA7+aaIItvx6RNKOpgJJxUfm1RefHa2UBXDUYNxdhkL1Oyh7
+         2wy4PQBpJ0WTSihrBK77EACJXPbDz5JZOQ84CrBFbDT36u2sCf5E9NeOAobxqwAWV0L7
+         OoV4B/4w9Y3vdx/4Lb4nBUnRxpF/SrE8VEQgqlCyTYcnm8GBZKUuOGz1gf14nLTW/IQo
+         sg1A==
+X-Gm-Message-State: AMCzsaVfMxzWj0JQdLAeQHd3nxdoX7ef8mNtMVeeaRQwzWjC1c6VD5Rv
+	wEMyycHHpqh+cN1WgZeTCx8=
+X-Google-Smtp-Source: ABhQp+S0kB9smJko24NfhWstnGNtbZURBpBATMEef2IzSO6or2MwL14NnRXBTtOsWOd6/hhm/vhabA==
+X-Received: by 10.28.181.2 with SMTP id e2mr3193344wmf.81.1507985714877;
+        Sat, 14 Oct 2017 05:55:14 -0700 (PDT)
 Return-Path: <georgiana.chelu93@gmail.com>
 Received: from fireworks ([188.25.22.133])
-        by smtp.gmail.com with ESMTPSA id g26sm4950591wra.14.2017.10.14.05.55.15
+        by smtp.gmail.com with ESMTPSA id 5sm4709241wrt.59.2017.10.14.05.55.14
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 14 Oct 2017 05:55:15 -0700 (PDT)
+        Sat, 14 Oct 2017 05:55:14 -0700 (PDT)
 From: Georgiana Chelu <georgiana.chelu93@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Julia Lawall <julia.lawall@lip6.fr>,
 	Alex Deucher <alexander.deucher@amd.com>,
 	=?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
 	David Airlie <airlied@linux.ie>
-Subject: [PATCH 2/3] Drivers: gpu: drm: Remove useless variable
-Date: Sat, 14 Oct 2017 15:54:41 +0300
-Message-Id: <31c903200332c2b3a3ecc29e190eef42edc12ad5.1507985001.git.georgiana.chelu93@gmail.com>
+Subject: [PATCH 1/3] Drivers: gpu: drm: Don't cast kzalloc() return value
+Date: Sat, 14 Oct 2017 15:54:40 +0300
+Message-Id: <5247f2b512912f0f62b71c69820d868c7d7619e1.1507985001.git.georgiana.chelu93@gmail.com>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <cover.1507985001.git.georgiana.chelu93@gmail.com>
 References: <cover.1507985001.git.georgiana.chelu93@gmail.com>
 In-Reply-To: <cover.1507985001.git.georgiana.chelu93@gmail.com>
 References: <cover.1507985001.git.georgiana.chelu93@gmail.com>
 
-The result variable is initialized at the beginning of the function, but
-its value does not change during the function execution. Thus, remove the
-variable and return the SUCCESS value, which is 0.
+The kzalloc function returns a void pointer and the assignment
+operator converts it to the type of pointer it is assigned to.
+Therefore, there is no need to cast.
 
 Issue found by coccinelle script:
-* Unneeded variable: "result". Return "0"
+WARNING: casting value returned by memory allocation function
+to <struct type> is useless.
 
 Signed-off-by: Georgiana Chelu <georgiana.chelu93@gmail.com>
 ---
- drivers/gpu/drm/amd/powerplay/hwmgr/vega10_processpptables.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ .../amd/powerplay/hwmgr/vega10_processpptables.c   | 24 ++++++++--------------
+ 1 file changed, 8 insertions(+), 16 deletions(-)
 
 diff --git a/drivers/gpu/drm/amd/powerplay/hwmgr/vega10_processpptables.c b/drivers/gpu/drm/amd/powerplay/hwmgr/vega10_processpptables.c
-index d968c3834481..769ac11a9215 100644
+index e343df190375..d968c3834481 100644
 --- a/drivers/gpu/drm/amd/powerplay/hwmgr/vega10_processpptables.c
 +++ b/drivers/gpu/drm/amd/powerplay/hwmgr/vega10_processpptables.c
-@@ -1174,7 +1174,6 @@ int vega10_pp_tables_initialize(struct pp_hwmgr *hwmgr)
+@@ -291,8 +291,7 @@ static int get_mm_clock_voltage_table(
+ 	table_size = sizeof(uint32_t) +
+ 			sizeof(phm_ppt_v1_mm_clock_voltage_dependency_record) *
+ 			mm_dependency_table->ucNumEntries;
+-	mm_table = (phm_ppt_v1_mm_clock_voltage_dependency_table *)
+-			kzalloc(table_size, GFP_KERNEL);
++	mm_table = kzalloc(table_size, GFP_KERNEL);
  
- static int vega10_pp_tables_uninitialize(struct pp_hwmgr *hwmgr)
- {
--	int result = 0;
- 	struct phm_ppt_v2_information *pp_table_info =
- 			(struct phm_ppt_v2_information *)(hwmgr->pptable);
+ 	if (!mm_table)
+ 		return -ENOMEM;
+@@ -519,8 +518,7 @@ static int get_socclk_voltage_dependency_table(
+ 			sizeof(phm_ppt_v1_clock_voltage_dependency_record) *
+ 			clk_dep_table->ucNumEntries;
  
-@@ -1217,7 +1216,7 @@ static int vega10_pp_tables_uninitialize(struct pp_hwmgr *hwmgr)
- 	kfree(hwmgr->pptable);
- 	hwmgr->pptable = NULL;
+-	clk_table = (phm_ppt_v1_clock_voltage_dependency_table *)
+-			kzalloc(table_size, GFP_KERNEL);
++	clk_table = kzalloc(table_size, GFP_KERNEL);
  
--	return result;
-+	return 0;
- }
+ 	if (!clk_table)
+ 		return -ENOMEM;
+@@ -554,8 +552,7 @@ static int get_mclk_voltage_dependency_table(
+ 			sizeof(phm_ppt_v1_clock_voltage_dependency_record) *
+ 			mclk_dep_table->ucNumEntries;
  
- const struct pp_table_func vega10_pptable_funcs = {
+-	mclk_table = (phm_ppt_v1_clock_voltage_dependency_table *)
+-			kzalloc(table_size, GFP_KERNEL);
++	mclk_table = kzalloc(table_size, GFP_KERNEL);
+ 
+ 	if (!mclk_table)
+ 		return -ENOMEM;
+@@ -596,8 +593,7 @@ static int get_gfxclk_voltage_dependency_table(
+ 			sizeof(phm_ppt_v1_clock_voltage_dependency_record) *
+ 			clk_dep_table->ucNumEntries;
+ 
+-	clk_table = (struct phm_ppt_v1_clock_voltage_dependency_table *)
+-			kzalloc(table_size, GFP_KERNEL);
++	clk_table = kzalloc(table_size, GFP_KERNEL);
+ 
+ 	if (!clk_table)
+ 		return -ENOMEM;
+@@ -663,8 +659,7 @@ static int get_pix_clk_voltage_dependency_table(
+ 			sizeof(phm_ppt_v1_clock_voltage_dependency_record) *
+ 			clk_dep_table->ucNumEntries;
+ 
+-	clk_table = (struct phm_ppt_v1_clock_voltage_dependency_table *)
+-			kzalloc(table_size, GFP_KERNEL);
++	clk_table = kzalloc(table_size, GFP_KERNEL);
+ 
+ 	if (!clk_table)
+ 		return -ENOMEM;
+@@ -728,8 +723,7 @@ static int get_dcefclk_voltage_dependency_table(
+ 			sizeof(phm_ppt_v1_clock_voltage_dependency_record) *
+ 			num_entries;
+ 
+-	clk_table = (struct phm_ppt_v1_clock_voltage_dependency_table *)
+-			kzalloc(table_size, GFP_KERNEL);
++	clk_table = kzalloc(table_size, GFP_KERNEL);
+ 
+ 	if (!clk_table)
+ 		return -ENOMEM;
+@@ -772,8 +766,7 @@ static int get_pcie_table(struct pp_hwmgr *hwmgr,
+ 			sizeof(struct phm_ppt_v1_pcie_record) *
+ 			atom_pcie_table->ucNumEntries;
+ 
+-	pcie_table = (struct phm_ppt_v1_pcie_table *)
+-			kzalloc(table_size, GFP_KERNEL);
++	pcie_table = kzalloc(table_size, GFP_KERNEL);
+ 
+ 	if (!pcie_table)
+ 		return -ENOMEM;
+@@ -1026,8 +1019,7 @@ static int get_vddc_lookup_table(
+ 	table_size = sizeof(uint32_t) +
+ 			sizeof(phm_ppt_v1_voltage_lookup_record) * max_levels;
+ 
+-	table = (phm_ppt_v1_voltage_lookup_table *)
+-			kzalloc(table_size, GFP_KERNEL);
++	table = kzalloc(table_size, GFP_KERNEL);
+ 
+ 	if (NULL == table)
+ 		return -ENOMEM;
 -- 
 2.11.0
 
