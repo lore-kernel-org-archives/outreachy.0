@@ -1,114 +1,163 @@
 X-GM-THRID: 6475500386308325376
-X-Received: by 10.55.221.196 with SMTP id u65mr10155107qku.18.1508229503373;
-        Tue, 17 Oct 2017 01:38:23 -0700 (PDT)
+X-Received: by 10.46.48.7 with SMTP id w7mr291619ljw.28.1508144615273;
+        Mon, 16 Oct 2017 02:03:35 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.200.17.4 with SMTP id c4ls341856qtj.4.gmail; Tue, 17 Oct 2017
- 01:38:22 -0700 (PDT)
-X-Received: by 10.233.232.135 with SMTP id a129mr10604929qkg.14.1508229502870;
-        Tue, 17 Oct 2017 01:38:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508229502; cv=none;
+Received: by 10.46.93.79 with SMTP id r76ls1743550ljb.7.gmail; Mon, 16 Oct
+ 2017 02:03:33 -0700 (PDT)
+X-Received: by 10.46.18.17 with SMTP id t17mr284881lje.33.1508144613811;
+        Mon, 16 Oct 2017 02:03:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508144613; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pghi5CcgGXNa6W2YU4WIKu89LsZ7rVm9OQ63hLyfw7DZRnJLR+unN7591lC94Hn3wR
-         9bxhTsCCy4e4AkjIlZdWjIn+seY9KLB42xY03eELfVRSyI7HumAnjfnv6yGWltPcrK1P
-         ARzGJcrwGKJtn/ypvaJtOwCE+VDcepsd6C1IdufQJs0HrcRrx41/WreYQ6kT8o5uup6n
-         Ztt+0rfNTdHTmmb2raZJC+l7ot5UNsW1ToG21f6qKQVnF79CL8VlwftR5yj70DS6d679
-         BxT4GRmH5K+5RhNKK7RbXljHjd32A5FyOUJ01Gu84jVbz+Doo1zzkDkOg0nAwNZYT89m
-         jNSA==
+        b=YasVrb1oQ9OsuKZ1sw2tC6H0G3MoCcIjogGnCYSoyvTEPB7whn/HXZ+nCKdXQf5rC2
+         cK4E7sUntwpm+bSaOkxL7MD0DuUihzOxbOTkCNN/UTnzJFL8cli8tsaqqhdDLq49VQe+
+         R524PkNGC6KCnA3etPNzB5oMftSnT0joivONmZW40x7TmAHPX7qWKEQvULeqeb4r/icW
+         Y6adYXLrhIaxx61kPrDT10tPjdroFDRX0rtn6FCGSht0RoCLQ94tSb36TVvEnyTw6FOF
+         AildBD6PdtbbaXv0YUsMx9pVDTmfBCyBpt+YxlM6vDyJnfoGjWpMwX9PH7fsYz9SE9Za
+         rlrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=J0Ui467V1SuwC4Zw0IfmdgTAR6BsZCkwmL1pDnstAUo=;
-        b=Znozlca1/zgyd+IL0jPixg/8s9z0ASKv1aubIDrqtg9043Lf36gTiASq53vt/RdriA
-         hOpi/KZlw32AtTwHY7DwE3IsYGOjBCRvpRfd+nwst1+GRM4UJUmUB1r2zqy3Fh9vWaIr
-         ni17j4UfcoTjoFi22E99wFMQPnFmOmv2+596YlsOa/tCPGEcDpjEksIBpUdCpjoOlmu7
-         Sv8veJLOP1w3SN47Xi4RxQEcpa3f7bll/yTIsg/hQS+3MA0NjcAEJ6GQZUz+vCIFndy3
-         Xh0SsT177SGvnytHkKQ8GfvhudSIJxhAhGU0gSeyciNqOx3d2KNlbMDBXAEJ4fl/C/Ih
-         FSFQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:sender:dkim-signature
+         :arc-authentication-results;
+        bh=N/pDmJcZTDcMh9T/CnO6S6sQR/grIt7skcn0o/S/hWc=;
+        b=Kmf1Tj+db8GCR/0nBYu5G0Wv3XwXZfTfIxH+Kbqo4UnH8k1+DsOzBx0xML+mDBjXpz
+         pBo/MuNx7BoPZ3CBv9k4ip9HNzDBW6ytvKy1S9iSJq68v5oAnLfOL/WzpfuT/jZ2PePe
+         EqKeakEiUm1/rjjRpGwFVFtHcG6V39Lfcpy22sn0fzl7VWKJWQ5hY2MQANjGElruAdHd
+         pNg3R6uAOknBjTvMPGGYj3i2ryHMrO5po9J5Kh3oqPz4wAx/PXYOSKO1zrA/E347i4qf
+         GfMWtjfT3ZUDOM/gWky0z5pU6qL8mCx+taKab8/74NSmvyNazIN2OICYhATndXdIWj8g
+         8ySQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=onOiABtG;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-pf0-x231.google.com (mail-pf0-x231.google.com. [2607:f8b0:400e:c00::231])
-        by gmr-mx.google.com with ESMTPS id v50si641243qta.0.2017.10.17.01.38.22
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=VBLjrQOK;
+       spf=neutral (google.com: 2a00:1450:400c:c09::229 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
+Return-Path: <daniel@ffwll.ch>
+Received: from mail-wm0-x229.google.com (mail-wm0-x229.google.com. [2a00:1450:400c:c09::229])
+        by gmr-mx.google.com with ESMTPS id g84si245026lfl.3.2017.10.16.02.03.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Oct 2017 01:38:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) client-ip=2607:f8b0:400e:c00::231;
+        Mon, 16 Oct 2017 02:03:33 -0700 (PDT)
+Received-SPF: neutral (google.com: 2a00:1450:400c:c09::229 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) client-ip=2a00:1450:400c:c09::229;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=onOiABtG;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x231.google.com with SMTP id n14so836475pfh.8
-        for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 01:38:22 -0700 (PDT)
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=VBLjrQOK;
+       spf=neutral (google.com: 2a00:1450:400c:c09::229 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
+Received: by mail-wm0-x229.google.com with SMTP id b189so820995wmd.4
+        for <outreachy-kernel@googlegroups.com>; Mon, 16 Oct 2017 02:03:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=J0Ui467V1SuwC4Zw0IfmdgTAR6BsZCkwmL1pDnstAUo=;
-        b=onOiABtGxyKmGQzbF+Wi9eCQq1YOh+Jkvb5+5qu53HRiwXTr3mRbI0Zq4NqZ5WOmo+
-         aGxGqF04knMPoeDKKELdhcs8xahFjHONCeE1fbTXARQv3PcR33RlbGU1qdzFHi+c8rnp
-         4uj67vo+DylOyNljFlI9FPhc4CicFfgaUKnAiTffe197sUVxTSkK5K2BNZ2GtqlHCK3l
-         MwUsMHeHFSF/v6IQe4BEoEzWv+mDWp4g4n5Tu6jU72BcC2SuYtZkSJX4pc69FntIAUho
-         AMN71/RFK7d6Wh2G+KOfte31Zl1KucFvXiGgnwDvMjie7yYO06DIEQq3nT3czv6lwaaH
-         6X7g==
+        d=ffwll.ch; s=google;
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=N/pDmJcZTDcMh9T/CnO6S6sQR/grIt7skcn0o/S/hWc=;
+        b=VBLjrQOK2Hgf1RxfNEUe4oUEwkCBBVT98H8Z42RNyYklpnc60JkstNTNeRTgh55E6Z
+         ECdqzfWIgXB+6ri5c3QsrM43U4G9RPBRSrLt4ptO7JKX1u53dsg6QY9Uj1PVktgX3SR+
+         G7jZKQn2Z1fzfdUaPkWlZdygS0YwTsJmdCe48=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=J0Ui467V1SuwC4Zw0IfmdgTAR6BsZCkwmL1pDnstAUo=;
-        b=XlrQ2PbKFPJqz3kC4zpGltYuRXJ4dLOdrHpMo1cwzxhQdl0Z1XdXE87sc7mnhKFylf
-         gs8U3NJfz/8SByxRqcGJzb0VHI4sRunWty1KMdDXpB/kIBw80dfD4WD/uM+jgdlxpl80
-         Sro0GpZSuiKEjbiUXot2qalP62mpbKvrRlnSS5LREtffdFGtV1xcy7be8ULTOnYY7kL8
-         MmCAS9ZcdvB6RsBIAXOiaMuu9/xnfxlodOnnQ1xTfUuJx+m4EFr3JpXvHyfa8HslP3CS
-         83AXeTebHWvMIn1xfgOodY5ZPx3FVhmzyIdHqOH4HuY/oFXxzMKLdcCMqKGxo4a+s7FC
-         jtkw==
-X-Gm-Message-State: AMCzsaUnIU9cVVJQp4alua0BKlR+0qQpFXWrxYd/DeMDnKQeztkDEAiV
-	r7uo7rKWsorIQvi3XgqqiSLOkve8
-X-Google-Smtp-Source: AOwi7QDDBX1QIj4CrORU+zZawYXfHJvDOgUdARGoPqjokxGmWJISyl5lHA/ZL9pHhHQnygGlCUSrVA==
-X-Received: by 10.101.65.129 with SMTP id a1mr10469666pgq.203.1508229502502;
-        Tue, 17 Oct 2017 01:38:22 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from Haneen ([64.77.242.50])
-        by smtp.gmail.com with ESMTPSA id c25sm15603475pgn.64.2017.10.17.01.38.20
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Oct 2017 01:38:21 -0700 (PDT)
-Date: Tue, 17 Oct 2017 02:38:19 -0600
-From: Haneen Mohammed <hamohammed.sa@gmail.com>
-To: dri-devel@lists.freedesktop.org
-Cc: Daniel Vetter <daniel.vetter@intel.com>,
+        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+         :references:mime-version:content-disposition:in-reply-to:user-agent;
+        bh=N/pDmJcZTDcMh9T/CnO6S6sQR/grIt7skcn0o/S/hWc=;
+        b=JDGCiE5VFSkLeCfXCMurHCr06fSM5pqMmSbYG0LcZbpuDVizU0bkO/DMAzQt689IHz
+         1enmltgOz2ixwzvxU4fWk+jtyUlrEi1ozj5blaRbQwUm9Blqrpk3ZPEReFMRV7sTARPw
+         WDcK4+FcszZfTuqLJS2Ob4OkcgWa8HvIpjuF99wfyWsy91+MY0H49hotbLapuYzH/ikG
+         yLOqIFedkIN6upKkMu5Bd8VdRaiu/EDBY1XHITtZEB7Au18jy3Cyi2xX90RIbAkrmmM2
+         azphnvK1kwzVGcH7RuFiCIXh1knwB18eV4/JvGmn4LE5olnTRuSaMhEg4mSBUEg6S8/a
+         bYrA==
+X-Gm-Message-State: AMCzsaW2rdntJXvYmViPuNujtX+hHLZTms50KnHE6mQPVpN90LaPitJ6
+	31jqS35VuqV190Z4lARsFkZLHw==
+X-Google-Smtp-Source: AOwi7QDSGN5Ikf5o7oLegbiGEtH2IpDsG1po5JOxTxXwMkcsPjOb93j+rs1CeM/vHaP57stYX6j6VA==
+X-Received: by 10.80.175.66 with SMTP id g60mr12472561edd.283.1508144613033;
+        Mon, 16 Oct 2017 02:03:33 -0700 (PDT)
+Return-Path: <daniel@ffwll.ch>
+Received: from phenom.ffwll.local ([2a02:168:5635:0:39d2:f87e:2033:9f6])
+        by smtp.gmail.com with ESMTPSA id k51sm5559242ede.42.2017.10.16.02.03.31
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 16 Oct 2017 02:03:32 -0700 (PDT)
+Sender: Daniel Vetter <daniel.vetter@ffwll.ch>
+Date: Mon, 16 Oct 2017 11:03:30 +0200
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Haneen Mohammed <hamohammed.sa@gmail.com>
+Cc: dri-devel@lists.freedesktop.org,
+	Daniel Vetter <daniel.vetter@intel.com>,
 	Jani Nikula <jani.nikula@linux.intel.com>,
 	Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>,
 	outreachy-kernel <outreachy-kernel@googlegroups.com>,
 	gregkh@linuxfoundation.org
-Subject: [PATCH v3 0/2] drm: Move debug macros out of drmP.h
-Message-ID: <cover.1508228315.git.hamohammed.sa@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2 3/3] drm/debug: Add missing
+ kerneldoc comments to exported functions
+Message-ID: <20171016090330.tzmq36qwmar7znks@phenom.ffwll.local>
+References: <cover.1507773977.git.hamohammed.sa@gmail.com>
+ <7fc383433d651ee4e81e2c132afdad57ad04b9dd.1507773977.git.hamohammed.sa@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <7fc383433d651ee4e81e2c132afdad57ad04b9dd.1507773977.git.hamohammed.sa@gmail.com>
+X-Operating-System: Linux phenom 4.12.0-1-amd64 
+User-Agent: NeoMutt/20170609 (1.8.3)
 
-This patchset move debug macros from drmP.h to drm_print.h and move
-printing related functions used by the debug macros from drm_drv.[hc]
-to drm_print.[hc].
-In addition, it fixes old comment style.
+On Wed, Oct 11, 2017 at 08:39:15PM -0600, Haneen Mohammed wrote:
+> Add missing documentation for exported functions to avoid kerneldoc
+> warning.
+> 
+> Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+> ---
+> Changes in v2: 
+> - Include this patch to avoid kerneldoc warning
+> 
+>  drivers/gpu/drm/drm_debug.c | 17 +++++++++++++++++
+>  1 file changed, 17 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/drm_debug.c b/drivers/gpu/drm/drm_debug.c
+> index a79593f..6e66b05 100644
+> --- a/drivers/gpu/drm/drm_debug.c
+> +++ b/drivers/gpu/drm/drm_debug.c
+> @@ -29,6 +29,16 @@
+>  
+>  #define DRM_PRINTK_FMT "[" DRM_NAME ":%s]%s %pV"
+>  
+> +/**
+> + * drm_dev_printk
+> + *
+> + * @dev: device pointer
+> + * @level: logging level
+> + * @category: debug category
+> + * @function_name: function name
+> + * @prefix: prefix string
+> + * @format: printf() like format string
 
-Changes in v3:
-- Move debug macros and print functions into drm_print.[hc] instead of
-introducing drm_debug.[hc].
+This shuts up kernel-doc complaining about missing doc entries, but not
+sure how useful this is. A sentence to what it does, and that drivers
+should use it through the provided DRM_DEV_* macros would be more
+informative. Similarly for the one below.
 
-Haneen Mohammed (2):
-  drm: Move debug macros out of drmP.h
-  drm/print: Update old comment style
+Thanks, Daniel
 
- drivers/gpu/drm/drm_drv.c   |  47 --------------
- drivers/gpu/drm/drm_print.c |  47 ++++++++++++++
- include/drm/drmP.h          | 150 +-------------------------------------------
- include/drm/drm_drv.h       |   7 ---
- include/drm/drm_print.h     | 149 +++++++++++++++++++++++++++++++++++++++++++
- 5 files changed, 197 insertions(+), 203 deletions(-)
+> + */
+>  void drm_dev_printk(const struct device *dev, const char *level,
+>  		    unsigned int category, const char *function_name,
+>  		    const char *prefix, const char *format, ...)
+> @@ -53,6 +63,13 @@ void drm_dev_printk(const struct device *dev, const char *level,
+>  }
+>  EXPORT_SYMBOL(drm_dev_printk);
+>  
+> +/**
+> + * drm_printk
+> + *
+> + * @level: logging level
+> + * @category: debug category
+> + * @format: printf() like format string
+> + */
+>  void drm_printk(const char *level, unsigned int category,
+>  		const char *format, ...)
+>  {
+> -- 
+> 2.7.4
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/7fc383433d651ee4e81e2c132afdad57ad04b9dd.1507773977.git.hamohammed.sa%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
 
 -- 
-2.7.4
-
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
 
