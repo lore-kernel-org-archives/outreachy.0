@@ -1,91 +1,98 @@
 X-GM-THRID: 6476866726968426496
-X-Received: by 10.176.11.1 with SMTP id b1mr3761297uak.34.1508181556696;
-        Mon, 16 Oct 2017 12:19:16 -0700 (PDT)
+X-Received: by 10.28.45.215 with SMTP id t206mr37704wmt.17.1508145776786;
+        Mon, 16 Oct 2017 02:22:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.176.72.41 with SMTP id b38ls1046959uad.2.gmail; Mon, 16 Oct
- 2017 12:19:15 -0700 (PDT)
-X-Received: by 10.159.59.92 with SMTP id j28mr5702037uah.26.1508181555726;
-        Mon, 16 Oct 2017 12:19:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508181555; cv=none;
+Received: by 10.223.162.137 with SMTP id s9ls2938443wra.7.gmail; Mon, 16 Oct
+ 2017 02:22:55 -0700 (PDT)
+X-Received: by 10.28.6.76 with SMTP id 73mr44519wmg.26.1508145775913;
+        Mon, 16 Oct 2017 02:22:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508145775; cv=none;
         d=google.com; s=arc-20160816;
-        b=0/+V3ckCVfX9y8ld346/7VBOcITjc4MgwdUaaqiY2qk8F8mgpNcneO2Iz/FFFsNQVa
-         JLbXpaKziixh8asCBmT29EUZcoRHq9FcAz6NjJdvEqxsEJc0Q3o3dfY2G6YHJFIbMnt7
-         WzStr+FOzT8QEert20601SHMKG1w1EHdUoyDINkuIp05DYlaIibtFCS3Zg4V3EHgdaXh
-         XnhW6+U8bd35fzNFbh9EjwTSVPSGqTvJTWX9aQfYBvv4+YcwVUjENljfh6pONIyusIBJ
-         f/CKjB1LHindqtzd0mC05aeCPdmQrAq+C/sZ0mCh142+SsM9BdYw1KIQ4QgloqdeAwUl
-         PtUQ==
+        b=xPUGrcy4jAeIUd7O7MGINok2tlhIzjxmMfRB0LV2kt5qtsUwV9tib7z5hZbwPpjwPQ
+         nGuirq0ghDsnbmQskFLtHimg4sEs9ipjU3HOoTyTWyJM50n8KCHy4Y0ue+RB/PuYoyE7
+         a3T06ySHMlwkM8Q4iXXyFgpMtrNuraZUlCLP+9g2SaSbmI7yMctOK/rBDz68NKRk746c
+         J1oOH+Yt5ZMfxzoXw96U1M4AQ7hD4pfJD1tLVAg2U2Jx/1dTq6ZftCmSXeHpR0OQ74Wt
+         whF9M72v0oWRTXvWVHiGtZOY5ndTkwiYHpfnRI2cIZcDpIPHrgPXuy4ft1wDP4tMnJf9
+         Ofdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature
-         :arc-authentication-results;
-        bh=8FxRIhq1ZQsS06gR0oGvfz2e7AI0XPonDcQ+XsXcoNc=;
-        b=vRhX0527l+uvpigWr2ivDkNlno0VEJC3gQMUPpHvxquw3P3IXiOWVYQD4stvzm//kc
-         orJCmZPwFj+0kTeo5+OM4FK+fowhJmQVc8xaJ2yE2Z5hhX22wt8Q/fHpw0DF2pjMsXpz
-         58jTiEJxJ1yTY7iNgsUy4lyhB+59rKTxepFmnKjzFKlE28IJWiDWXi50OR81PIDk41Gb
-         eQg++IT0XjMuW/PBFjtfeWSZAN5aj0GdSjg7M+4HVplIP/u2PbZRJ9iL7OOYaJlE/O8k
-         E/4QsZ7rOuRBK3w0chU9ib4JsIWk2zXdzbMojmpsgoww8P4DhAyOW+ATt1ni7WAyC+tE
-         8JUw==
+         :mail-followup-to:message-id:subject:cc:to:from:date:sender
+         :dkim-signature:arc-authentication-results;
+        bh=vA5feeCs+3DW/jA+9iPzPhpTN9ZZgFpg36wVsgMTwq8=;
+        b=xRtkwTZqteDmyqmEka/c5iTRqYxmO4KbU8aOTGsvlasVOwxWhULILkdEdFyGb5etsB
+         qjHBlVFjqroOZ+NmAR+N/REtvapxsmJr7aV1fpxX5zCDxX9Qu7w5zGZo3z6pwR9XHeu2
+         fTOa10earEq4nRJ3fwIjAe7mBsfFaGHnBdeVMlU5QGXKRfIfGd07qq1vjNwCxU6advnz
+         yo8YX4B3el7IHf8iRn+Kq3YNU+mZ/acpI4JnaIauOW4pGnxxqKi7WaEbK4QF3RQe14+p
+         VcRPwTPeDY7sjCGBQ2vTw2KTpqdMfPJx//c0pYKKR2gt7odAFmpOMKjY2lj+tMWW8OxQ
+         N3/g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@chromium.org header.s=google header.b=H9BL2mSa;
-       spf=pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:400d:c0d::230 as permitted sender) smtp.mailfrom=seanpaul@chromium.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org
-Return-Path: <seanpaul@chromium.org>
-Received: from mail-qt0-x230.google.com (mail-qt0-x230.google.com. [2607:f8b0:400d:c0d::230])
-        by gmr-mx.google.com with ESMTPS id b10si291686uak.3.2017.10.16.12.19.15
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=D2+C6eCO;
+       spf=neutral (google.com: 2a00:1450:400c:c09::22c is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
+Return-Path: <daniel@ffwll.ch>
+Received: from mail-wm0-x22c.google.com (mail-wm0-x22c.google.com. [2a00:1450:400c:c09::22c])
+        by gmr-mx.google.com with ESMTPS id d82si306418wmd.1.2017.10.16.02.22.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Oct 2017 12:19:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:400d:c0d::230 as permitted sender) client-ip=2607:f8b0:400d:c0d::230;
+        Mon, 16 Oct 2017 02:22:55 -0700 (PDT)
+Received-SPF: neutral (google.com: 2a00:1450:400c:c09::22c is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) client-ip=2a00:1450:400c:c09::22c;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@chromium.org header.s=google header.b=H9BL2mSa;
-       spf=pass (google.com: domain of seanpaul@chromium.org designates 2607:f8b0:400d:c0d::230 as permitted sender) smtp.mailfrom=seanpaul@chromium.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org
-Received: by mail-qt0-x230.google.com with SMTP id f15so34001385qtf.7
-        for <outreachy-kernel@googlegroups.com>; Mon, 16 Oct 2017 12:19:15 -0700 (PDT)
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=D2+C6eCO;
+       spf=neutral (google.com: 2a00:1450:400c:c09::22c is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
+Received: by mail-wm0-x22c.google.com with SMTP id f4so1071342wme.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 16 Oct 2017 02:22:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=8FxRIhq1ZQsS06gR0oGvfz2e7AI0XPonDcQ+XsXcoNc=;
-        b=H9BL2mSa/y86TdF6k+IstsRGFKvRH/x02njerj741Qa8/t139nGJAYrxpuQ3pi63J6
-         OEr3iV+w+A/zjv69Q/YPoRikVncebMNmcNK6wrqlg61oTRVGGP/MChzD+q6p0EyWAK40
-         XnX1I9WqXjwM3cHxh7qyLd4z2+a0BKPSQODCY=
+        d=ffwll.ch; s=google;
+        h=sender:date:from:to:cc:subject:message-id:mail-followup-to
+         :references:mime-version:content-disposition:in-reply-to:user-agent;
+        bh=vA5feeCs+3DW/jA+9iPzPhpTN9ZZgFpg36wVsgMTwq8=;
+        b=D2+C6eCOjNEZNS67uNrePLJAmX6mszuPniSZFbbFs/HNFniDsXh/QHEgR3+w8V8Cug
+         i9NJydjxk0L1d1yt5lKhEMAHnRCB6P5UcYTyS+lclksBTsN848VlLQUzOik8c7noc8PD
+         1Kmhl/9triIBPTiRiwRpNIxEFOxTMQ5lEf72k=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=8FxRIhq1ZQsS06gR0oGvfz2e7AI0XPonDcQ+XsXcoNc=;
-        b=nVOW6xR4C9T7S6nf2hpKtzQTh6ZF24Mh5U/L2GTuDZ0bAUKqCtYejYP708ISpcaZIc
-         rUQADjlNyhxmtmnBEqdwHhY+FC/nIvCONLfuq0aadIyoWJzB3ulcO+HMNpozntM0jzm3
-         8/n5HPd6dpwI0T/KAqIH/y/Yiyw9O65y2NVqTw0B9vw4Lp5JMNQdmDtXatMU/xjiZS1s
-         2BXqXB7icI1K6gMUnGivjgGMtZI6JfsfUHyepWytx+Xf9WydRku5dMA/dCnPkj08yEpr
-         5XFrmAtJs1qCbR/zfvK0ij1CYg1ZtdjRpYCjefJgmV3ml3m8AVXfEH+bEV2uEp2UKD04
-         Pzig==
-X-Gm-Message-State: AMCzsaX/RLWwvreAFesN0Ro+motxtE+oKqkU9/VSowXMPysLmHGazn4q
-	KWKUfmFH8szhGwF1tXdDpGBSa54jTu0=
-X-Google-Smtp-Source: ABhQp+R3Iee583otnFnzkGFlsXu8XbJFAND5aYsuMXPo5oXZUmqSfTpv60xi4gBmC3fmNvU+NJQbNg==
-X-Received: by 10.129.137.2 with SMTP id z2mr1109162ywf.159.1508181555419;
-        Mon, 16 Oct 2017 12:19:15 -0700 (PDT)
-Return-Path: <seanpaul@chromium.org>
-Received: from localhost ([2620:0:1013:0:f685:3152:9ba1:429a])
-        by smtp.gmail.com with ESMTPSA id l74sm3455110ywc.28.2017.10.16.12.19.14
+        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+         :mail-followup-to:references:mime-version:content-disposition
+         :in-reply-to:user-agent;
+        bh=vA5feeCs+3DW/jA+9iPzPhpTN9ZZgFpg36wVsgMTwq8=;
+        b=cWAk4j/PawNP3m7HYdlCcLnjeoxN491KyDa+HzmD2k3KDeZQFlJuYj+X6jBiCshaqD
+         WcG/8pOK+uLs7b/XmhnD3BBU3JA0OfKqcmdFOmwhwq/0ml2VjVM4H34fhX6jqzY8Bu4C
+         uIoAace1WKg32unJXWAvQ1qk7dbEtrGy5Z3YPCtr4+1UqfCCK7UL3O8O6xC9db6qSdmK
+         oFp68KUnGmR2CDyZe3WgfJo4hbe9AWXduiydaJf1xVA3l9jyrMcyI0GlAdOsIwe0bTa3
+         KDgMH+ke7bmHzqVyf/E9Lq6W3k3SYlkXaE/fFAoTF1ei4rM2UA41lFej3P1P5rkwLPOu
+         LApg==
+X-Gm-Message-State: AMCzsaXFVmz+2hvpuayqdA0dtwDP8w4HZQOs9Ey0StURF1qexURNdJhx
+	V13W0I2atFFbgycoNMhtotX1sw==
+X-Google-Smtp-Source: AOwi7QBltwAslf7CsrTgUpb1sOTLZMc1UE3WLy8UfJ4M1cKD5Nz4oa7TTZJwIBaY2oGCBnidFyWT8w==
+X-Received: by 10.80.137.6 with SMTP id e6mr12386094ede.32.1508145775548;
+        Mon, 16 Oct 2017 02:22:55 -0700 (PDT)
+Return-Path: <daniel@ffwll.ch>
+Received: from phenom.ffwll.local ([2a02:168:5635:0:39d2:f87e:2033:9f6])
+        by smtp.gmail.com with ESMTPSA id 23sm4460597edx.8.2017.10.16.02.22.54
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Oct 2017 12:19:14 -0700 (PDT)
-Date: Mon, 16 Oct 2017 15:19:14 -0400
-From: Sean Paul <seanpaul@chromium.org>
-To: Harsha Sharma <harshasharmaiitr@gmail.com>
+        Mon, 16 Oct 2017 02:22:54 -0700 (PDT)
+Sender: Daniel Vetter <daniel.vetter@ffwll.ch>
+Date: Mon, 16 Oct 2017 11:22:52 +0200
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Harsha Sharma <harshasharmaiitr@gmail.com>,
+	Noralf =?iso-8859-1?Q?Tr=F8nnes?= <noralf@tronnes.org>
 Cc: daniel.vetter@ffwll.ch, treding@nvidia.com, airlied@linux.ie,
 	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] drm/tinydrm: Replace list_for_each
- with list_for_each_entry
-Message-ID: <20171016191914.zumhme7hl2iwin7p@art_vandelay>
+Subject: Re: [PATCH] drm/tinydrm: Replace list_for_each with
+ list_for_each_entry
+Message-ID: <20171016092252.cs5rdruvnshurgnz@phenom.ffwll.local>
+Mail-Followup-To: Harsha Sharma <harshasharmaiitr@gmail.com>,
+	Noralf =?iso-8859-1?Q?Tr=F8nnes?= <noralf@tronnes.org>,
+	treding@nvidia.com, airlied@linux.ie,
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com
 References: <20171014202823.29230-1-harshasharmaiitr@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <20171014202823.29230-1-harshasharmaiitr@gmail.com>
-User-Agent: NeoMutt/20170113 (1.7.2)
+X-Operating-System: Linux phenom 4.12.0-1-amd64 
+User-Agent: NeoMutt/20170609 (1.8.3)
 
 On Sun, Oct 15, 2017 at 01:58:23AM +0530, Harsha Sharma wrote:
 > Replace use of list_for_each with list_for_each_entry to simplify the
@@ -171,7 +178,9 @@ On Sun, Oct 15, 2017 at 01:58:23AM +0530, Harsha Sharma wrote:
 > 
 > Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
 
-Reviewed-by: Sean Paul <seanpaul@chromium.org>
+Please use scripts/get_maintainers.pl to generate the list of recipients,
+you've missed Noralf as the tinydrm maintainer. I've added him.
+-Daniel
 
 > ---
 >  drivers/gpu/drm/tinydrm/core/tinydrm-helpers.c | 4 +---
@@ -197,13 +206,9 @@ Reviewed-by: Sean Paul <seanpaul@chromium.org>
 > -- 
 > 2.11.0
 > 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20171014202823.29230-1-harshasharmaiitr%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
 
 -- 
-Sean Paul, Software Engineer, Google / Chromium OS
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
 
