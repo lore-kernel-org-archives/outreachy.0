@@ -1,88 +1,84 @@
-X-GM-THRID: 6398121697082343424
-X-Received: by 10.46.80.18 with SMTP id e18mr465715ljb.10.1489678792334;
-        Thu, 16 Mar 2017 08:39:52 -0700 (PDT)
+X-GM-THRID: 6477856577977057280
+X-Received: by 10.46.42.66 with SMTP id q63mr75157ljq.39.1508243928543;
+        Tue, 17 Oct 2017 05:38:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.19.10 with SMTP id 10ls412406ljt.24.gmail; Thu, 16 Mar 2017
- 08:39:51 -0700 (PDT)
-X-Received: by 10.25.203.151 with SMTP id b145mr1369491lfg.17.1489678791285;
-        Thu, 16 Mar 2017 08:39:51 -0700 (PDT)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wm0-x242.google.com (mail-wm0-x242.google.com. [2a00:1450:400c:c09::242])
-        by gmr-mx.google.com with ESMTPS id 82si331167wmg.3.2017.03.16.08.39.51
+Received: by 10.46.71.148 with SMTP id u142ls206454lja.16.gmail; Tue, 17 Oct
+ 2017 05:38:48 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+QnbfsR6bw8F24NPkwa84zdOeVM6px1TPAqrz47edI9UjfJGY8cVqnaeIYTzmyzf1Uvp7+Q
+X-Received: by 10.25.208.15 with SMTP id h15mr359753lfg.14.1508243928042;
+        Tue, 17 Oct 2017 05:38:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508243928; cv=none;
+        d=google.com; s=arc-20160816;
+        b=GwrnVVZCJw+TG6obuxEMdvTCp1CMx5wPABEsyHSdJwXQu+7aQNUXHrkryCXAqrK3Zm
+         13FIgnuqKq5Pr+/ftmn3pSXmGl/Jr/6/+6JF7i9VRiMs1orTo0AtiNZjCH4TFVW2j97M
+         +g3cMg82zXgaLm4TjzQnqKI/TSDrBfq8VMvqOS9Fl53E1YmFm52Fftu9cjnqsD06pURl
+         9btnF+qpIc0Mey3rM2ItiCyqgr6hn9xZ5TdiVpENrbVoWKDT2Vtere6e4q+2Z7UyQs4T
+         k4z1Qx1Xzvf2h21jGOX2hKsRK+6XVTRvLQM42LTcENg5L+veIKCEwXdUniH7pp96Hwzy
+         +Y1Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=4jM3xuwlSFfF/lIqmjxE96dBfIJAYl0RM/fG6zMZKck=;
+        b=CYf+7QIv0fcdS7J9uUjJXx/k5Uew91O0LPqJa53UbzKoUvEf+mDaCHNnBFXGqVV7Ih
+         6Bu0eDITBJFrXYhUeyJGpfn7yALViCknV7I4RWITpAkFhTS46E9qt63OuqDMJHVGA9XJ
+         3CuTEy7zsy3fy3rPd14WbmOJrbn+MHfjYt8VB11Ve3XnHnjhaAgUqtVn1Zn7+WxdRiTl
+         ZSm8wEtC/ZFE7siQn6FhdGGV/ILtGE5HsYNUeg6E8lJNdDokD/ep29LglYhW9Jc/XyZ8
+         ppeYfRtWvDpBdKZ1NhrphjjiyWa+8GvzgUIXh8ImNb0uGYcF0IEf+YXfevntnGctZxx0
+         uMUA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Return-Path: <pneira@us.es>
+Received: from mail.us.es (mail.us.es. [193.147.175.20])
+        by gmr-mx.google.com with ESMTPS id g84si339642lfl.3.2017.10.17.05.38.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 16 Mar 2017 08:39:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) client-ip=2a00:1450:400c:c09::242;
+        Tue, 17 Oct 2017 05:38:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x242.google.com with SMTP id x124so4747106wmf.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 16 Mar 2017 08:39:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Emnerq2EAiKVzaN2Usvt4p4KrDCRjOIpeAcOyAqL3wg=;
-        b=GrdMn8dsymumhyp5OQpkADJwyb9Rwtz+q/wZlgiCSpWQuMsJNnSVHmOU8QP066Iez9
-         AjqEzV1cYPE9b9LperYT7uKqGE9+14LYfrHcEBSKDhnZEaxyKI3/G8q/Ra0hp++vcwZg
-         HfMqn27ICYM2jQXN/BArX+VCXbAA/ZBgtu54hzRxvFf+KJ6i5SJpxWF8KWojYYW6Ot9Y
-         KohwhFKEvNRjG3DcmhPMAfhRNEMzFIeMueDyI/BXrhwKWQxttP0sNLP/v71+wBnkBxf/
-         TMmVKn/BP9FJfwTkvbx4l1f73PiNwsO4vb/TTM/fQr5fRO46A8lcJ/V5fMv64Ny6Ejor
-         BvSg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Emnerq2EAiKVzaN2Usvt4p4KrDCRjOIpeAcOyAqL3wg=;
-        b=l2esXDq61CEenscYLPASUcGuKc0MVN/XQkvVwweavmEgkXAdtUjqmHfr67UucB9nok
-         B5FZ5rLuDI9UnBKKWF4B824O8WTGW4Y16mPz2xLhKgXbs5xhhfK13OwXXU11Y+hVnVBd
-         UjuSexM/jp01oOxh58SZK1s7I/pJPzayL05F0eKsMAzrJ1t/guCUs7QUMZlUKxuRIWf6
-         j9tSJbPL8Q9go37rv0MmeZlscrsVPCP8Spw2sKZMcsmrn5YroLGQAkeqE+dGvNlQKulQ
-         7JY5vlKg13k9NnYeIFRe+xJP/Aq8PUbe+PV7eXKFpDao+19bXpGfkB4VRETnR3VisBUl
-         NomQ==
-X-Gm-Message-State: AFeK/H0RxBAFjM6tyMion7O9oaRcKVQxBTlszzuIHIcOKOEf5X1nMgqGOq47wxhgiGVdGQ==
-X-Received: by 10.28.111.136 with SMTP id c8mr9672860wmi.128.1489678791039;
-        Thu, 16 Mar 2017 08:39:51 -0700 (PDT)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([141.85.225.204])
-        by smtp.gmail.com with ESMTPSA id c58sm6581635wrc.9.2017.03.16.08.39.49
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 16 Mar 2017 08:39:49 -0700 (PDT)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: corbet@lwn.net,
-	outreachy-kernel@googlegroups.com,
-	linux-doc@vger.kernel.org
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH v2] Documentation: sync_file.txt: Fix typos
-Date: Thu, 16 Mar 2017 17:39:46 +0200
-Message-Id: <20170316153946.18643-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
+	by mail.us.es (Postfix) with ESMTP id EB35052305
+	for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 14:38:45 +0200 (CEST)
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id DD047DA86D
+	for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 14:38:45 +0200 (CEST)
+Received: by antivirus1-rhel7.int (Postfix, from userid 99)
+	id DC780DA86E; Tue, 17 Oct 2017 14:38:45 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
+X-Spam-Level: 
+X-Spam-Status: No, score=-108.2 required=7.5 tests=ALL_TRUSTED,BAYES_50,
+	HEADER_FROM_DIFFERENT_DOMAINS,SMTPAUTH_US2,USER_IN_WHITELIST
+	autolearn=disabled version=3.4.1
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id D0CC6DA86D;
+	Tue, 17 Oct 2017 14:38:43 +0200 (CEST)
+Received: from 192.168.1.97 (192.168.1.97)
+ by antivirus1-rhel7.int (F-Secure/fsigk_smtp/550/antivirus1-rhel7.int);
+ Tue, 17 Oct 2017 14:38:43 +0200 (CEST)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/550/antivirus1-rhel7.int)
+Received: from us.es (129.166.216.87.static.jazztel.es [87.216.166.129])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	(Authenticated sender: 1984lsi)
+	by entrada.int (Postfix) with ESMTPSA id 8DAF440584D3;
+	Tue, 17 Oct 2017 14:38:43 +0200 (CEST)
+Date: Tue, 17 Oct 2017 14:38:42 +0200
+X-SMTPAUTHUS: auth mail.us.es
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Harsha Sharma <harshasharmaiitr@gmail.com>
+Cc: netfilter-devel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v2] libxt_TOS: add tests for translation infrastructure
+Message-ID: <20171017123842.GA20455@salvia>
+References: <20171017122937.20617-1-harshasharmaiitr@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20171017122937.20617-1-harshasharmaiitr@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Virus-Scanned: ClamAV using ClamSMTP
 
-Fix spelling mistakes in sync_file.txt to make documentation clear. 
+On Tue, Oct 17, 2017 at 05:59:37PM +0530, Harsha Sharma wrote:
+> This patch checks that the iptables TOS to nftables translation works fine.
 
-Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
----
-Changes since v1:
-*Add the file name to the subject of the patch.
-*Change the description of the patch.
-
- Documentation/sync_file.txt | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/Documentation/sync_file.txt b/Documentation/sync_file.txt
-index 269681a..c3d033a 100644
---- a/Documentation/sync_file.txt
-+++ b/Documentation/sync_file.txt
-@@ -37,7 +37,7 @@ dma_fence_signal(), when it has finished using (or processing) that buffer.
- Out-fences are fences that the driver creates.
- 
- On the other hand if the driver receives fence(s) through a sync_file from
--userspace we call these fence(s) 'in-fences'. Receiveing in-fences means that
-+userspace we call these fence(s) 'in-fences'. Receiving in-fences means that
- we need to wait for the fence(s) to signal before using any buffer related to
- the in-fences.
- 
--- 
-2.9.3
-
+Applied, thanks Harsha.
 
