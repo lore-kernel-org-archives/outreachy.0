@@ -1,89 +1,85 @@
-X-GM-THRID: 6201691543779147776
-X-Received: by 10.68.239.226 with SMTP id vv2mr12494019pbc.13.1443943833856;
-        Sun, 04 Oct 2015 00:30:33 -0700 (PDT)
+X-GM-THRID: 6476716620752355328
+X-Received: by 10.223.134.175 with SMTP id 44mr1124182wrx.11.1508241728342;
+        Tue, 17 Oct 2017 05:02:08 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.3.169 with SMTP id e41ls1349750ioi.8.gmail; Sun, 04 Oct
- 2015 00:30:33 -0700 (PDT)
-X-Received: by 10.50.142.103 with SMTP id rv7mr5655132igb.2.1443943833609;
-        Sun, 04 Oct 2015 00:30:33 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-pa0-x233.google.com (mail-pa0-x233.google.com. [2607:f8b0:400e:c03::233])
-        by gmr-mx.google.com with ESMTPS id w5si2716686pbt.1.2015.10.04.00.30.33
+Received: by 10.223.186.15 with SMTP id o15ls394227wrg.13.gmail; Tue, 17 Oct
+ 2017 05:02:07 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+QDICQZOCAXhbZ068GLptkWkppBqTKJl3js/EuFjCCZLSMXDijF0Kl4QzDvIL8JpIcnYIS6
+X-Received: by 10.28.215.195 with SMTP id o186mr452641wmg.9.1508241727755;
+        Tue, 17 Oct 2017 05:02:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508241727; cv=none;
+        d=google.com; s=arc-20160816;
+        b=XVxtmKxWyjWB0Zqt+8AYmvtbwcp/L7DXMm2vdIX6l+7g5xdCtJuAaeG4fNZ11lyF0t
+         W6pRY7lmtWE33DXSKfqU0FEQqeT3eWvECdLocOFWZ3jCpQg0K9Vl+ENtu89ytTvzRktS
+         9HlIOecZoQOgwAIasWObYswuPMOyg8F889qY74EOJH+5b7+i4th0lC7vNUvsp5hjLQ8K
+         GV+56gbvd9zZoU8zEAIDSBVIbdYNpK64l0ompa/6wpGRV0IqMcWvAus3Ylv2oDkuYabU
+         QTNQQGjJp/eI3mtKEqZw6Ohp8clw2Dwnhub+qUmWpB86UepGA5g0AJvVHyLrJIYhf8vq
+         wJSQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=UYPScb10Awjy7PO1eivc8KOhLHX7zYYLwh5Z5jIuZ6g=;
+        b=QNLnYshp8ZkGSLDynKpifYJUyZtBZeGq0+jD/86quyS6cB4ZgoOrbR6TKvEjmIfjGe
+         tlLEkphl0Ada4V0G7ZYt4ar4sFOQvPv1b2TdMdgKsOe6oX2D3FnkLBJnSSgLnrW7B/CR
+         2hHHY2CW+yqb/2ATbqFZdHbXIQ5GGMlwh/+mStnlOlE9f0ifpBEjwH+nJ5qDrMcaMXEB
+         UWYy/x9igSweju1j2jwkOF9EO8tvhS4xs99OyS7fxcdUp2ZWinFjvWcmybqIvxAVBBJy
+         i86CcuxVAqKJ6WCppQED7p8HzJlZXpH5sSSGnBfbIpH8U3t9h576jd3RTRmGkZT81bhM
+         SJFg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Return-Path: <pneira@us.es>
+Received: from mail.us.es (mail.us.es. [193.147.175.20])
+        by gmr-mx.google.com with ESMTPS id r15si569027wrc.1.2017.10.17.05.02.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 04 Oct 2015 00:30:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) client-ip=2607:f8b0:400e:c03::233;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 17 Oct 2017 05:02:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::233 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x233.google.com with SMTP id lk4so144767280pab.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 04 Oct 2015 00:30:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id;
-        bh=488GNOpur2zpL1bZoCER0NpF8U2eHIyjW6I+Nt73Ce4=;
-        b=ifoauTPICb2C+gdNfbopo6PZ1KzCp5hD6TaxvbAonqBKmBCTVcM8/jH4zy42XYp1Hm
-         wNpX1HlNO6pHiS0r3ylM+r+0QBZ+zP6nrzdoCIvw9g86nTqxZsH8n96jo3vyd+OfQjdq
-         vdbX4lHE11jBvzzyt6Tod2mks8ejB49fCxDVSKSkRsSZ72ubPE8Dvyy1lzhNcv2SJd1m
-         nhfh3PbqqaabYwiRVIQoN9QotzwYQp51KwNeMeGP3B6U1F0EEjUP2E/5bkWqvehJJB+s
-         dQkigkAABlfJ6+8czc531LursrwHYs6XaGdGLzUYOCZcBUjCLN4NEJCvKpNGm1rTBeO7
-         su3w==
-X-Received: by 10.66.146.4 with SMTP id sy4mr31344240pab.79.1443943833438;
-        Sun, 04 Oct 2015 00:30:33 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id uq1sm4087085pbc.82.2015.10.04.00.30.27
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 04 Oct 2015 00:30:32 -0700 (PDT)
-From: Shraddha Barke <shraddha.6596@gmail.com>
-To: <outreachy-kernel@googlegroups.com>
-Subject: [PATCH 0/8] Declare as static
-Date: Sun,  4 Oct 2015 13:00:08 +0530
-Message-Id: <1443943816-21546-1-git-send-email-shraddha.6596@gmail.com>
-X-Mailer: git-send-email 2.1.4
-X-Cyberoam-smtpxy-version: 1.0.6.3
-X-Cyberoam-AV-Policy: default
-X-CTCH-PVer:  0000001
-X-CTCH-Spam:  Unknown
-X-CTCH-VOD:  Unknown
-X-CTCH-Flags:  0
-X-CTCH-RefID:  str=0001.0A150209.5610D598.000E,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
-X-CTCH-Score:  0.000
-X-CTCH-ScoreCust:  0.000
-X-CTCH-Rules:  
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
+	by mail.us.es (Postfix) with ESMTP id DC0A04D654
+	for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 14:02:05 +0200 (CEST)
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id CBA55DA87D
+	for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 14:02:05 +0200 (CEST)
+Received: by antivirus1-rhel7.int (Postfix, from userid 99)
+	id CAA6DDA87C; Tue, 17 Oct 2017 14:02:05 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
+X-Spam-Level: 
+X-Spam-Status: No, score=-108.2 required=7.5 tests=ALL_TRUSTED,BAYES_50,
+	HEADER_FROM_DIFFERENT_DOMAINS,SMTPAUTH_US2,USER_IN_WHITELIST
+	autolearn=disabled version=3.4.1
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id CAF32BAAC5;
+	Tue, 17 Oct 2017 14:02:02 +0200 (CEST)
+Received: from 192.168.1.97 (192.168.1.97)
+ by antivirus1-rhel7.int (F-Secure/fsigk_smtp/550/antivirus1-rhel7.int);
+ Tue, 17 Oct 2017 14:02:02 +0200 (CEST)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/550/antivirus1-rhel7.int)
+Received: from us.es (129.166.216.87.static.jazztel.es [87.216.166.129])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	(Authenticated sender: 1984lsi)
+	by entrada.int (Postfix) with ESMTPSA id 8A7B940584D3;
+	Tue, 17 Oct 2017 14:02:02 +0200 (CEST)
+Date: Tue, 17 Oct 2017 14:02:01 +0200
+X-SMTPAUTHUS: auth mail.us.es
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Harsha Sharma <harshasharmaiitr@gmail.com>
+Cc: netfilter-devel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] tests: shell: add testcases for named limits
+Message-ID: <20171017120201.GA13929@salvia>
+References: <20171014104603.16365-1-harshasharmaiitr@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20171014104603.16365-1-harshasharmaiitr@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Virus-Scanned: ClamAV using ClamSMTP
 
-These patches declare the functions and structures which are not
-used anywhere else as static.
+On Sat, Oct 14, 2017 at 04:16:03PM +0530, Harsha Sharma wrote:
+> Add testcases for creating named limits and referencing them
+> from rule
 
-Shraddha Barke (8):
-  Staging: lustre: ptlrpc: nrs: Declare as static
-  Staging: lustre: ptlrpc: events: Declare as static
-  Staging: lustre: ptlrpc: pinger: Declare as static
-  Staging: lustre: ptlrpc: layout: Declare as static
-  Staging: lustre: ptlrpc: niobuf: Declare as static
-  Staging: lustre: obdclass: genops: Declare as static
-  Staging: lustre: obdclass: class_obd: Declare as static
-  Staging: lustre: obdclass: obd_mount: Declare as static
-
- .../staging/lustre/lustre/include/lustre_disk.h    |  5 -----
- drivers/staging/lustre/lustre/include/lustre_net.h |  7 ------
- .../staging/lustre/lustre/include/lustre_param.h   |  3 ---
- .../lustre/lustre/include/lustre_req_layout.h      |  4 ----
- drivers/staging/lustre/lustre/include/obd_class.h  |  3 ---
- drivers/staging/lustre/lustre/obdclass/class_obd.c |  2 +-
- drivers/staging/lustre/lustre/obdclass/genops.c    |  5 ++---
- drivers/staging/lustre/lustre/obdclass/obd_mount.c | 25 +++++++++++-----------
- drivers/staging/lustre/lustre/ptlrpc/events.c      |  2 +-
- drivers/staging/lustre/lustre/ptlrpc/layout.c      | 10 ++++-----
- drivers/staging/lustre/lustre/ptlrpc/niobuf.c      |  3 +--
- drivers/staging/lustre/lustre/ptlrpc/nrs.c         |  3 +--
- drivers/staging/lustre/lustre/ptlrpc/pinger.c      |  4 ++--
- 13 files changed, 24 insertions(+), 52 deletions(-)
-
--- 
-2.1.4
-
+Applied, thanks Harsha.
 
