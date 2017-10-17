@@ -1,107 +1,106 @@
 X-GM-THRID: 6473410411176656896
-X-Received: by 10.107.138.100 with SMTP id m97mr879652iod.109.1508280124171;
-        Tue, 17 Oct 2017 15:42:04 -0700 (PDT)
+X-Received: by 10.107.156.81 with SMTP id f78mr26175ioe.99.1508280113776;
+        Tue, 17 Oct 2017 15:41:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.41.17 with SMTP id p17ls637932iop.22.gmail; Tue, 17 Oct
- 2017 15:42:03 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+TBdQztLqtgacYe5A1eKyjZnOpT7DfSWCgLpDCWaEyHRGF31UjU2S+KO1MOQ/eoDeRv8mkq
-X-Received: by 10.36.88.67 with SMTP id f64mr3819291itb.25.1508280123644;
-        Tue, 17 Oct 2017 15:42:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508280123; cv=none;
+Received: by 10.107.232.14 with SMTP id f14ls622185ioh.20.gmail; Tue, 17 Oct
+ 2017 15:41:53 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+S+Rjd65NkBqajOf+QVL/aERRoxR+aXUP5pn8T0EHiwKWhhaOLFQpZLwqLj9Xoi3g1u4Y5R
+X-Received: by 10.36.14.210 with SMTP id 201mr2291663ite.42.1508280113003;
+        Tue, 17 Oct 2017 15:41:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508280112; cv=none;
         d=google.com; s=arc-20160816;
-        b=cFQtx/PRYpdeOk4Xvy5z8p2SsPNTiJiGGIC5x1px42Qw9Ye06tjGuiADnedb1gi83r
-         Xc8xOcMNQU2AI1akvJGmyOu1xHpuJ0/+6f/UFc1edaPiIEV8WFDncG2jCt5sFlZEEW6v
-         pZZYADEi5ErUOe6CU511rYtFF9LmDlk4p9xZfsvN24Lf/bT4rBkbpncSKG0cjLbpvr4c
-         xnQklzUmJoEK4OZW2zt6EaTvFanuq2acv5MvSQ55pOOQudWivBczQLdfQUapXyStwVnA
-         Q0CPAII623DHuQjgedzE3IGZ3i4Xq6dp6VZgS3Y9sgpazvLxdpvut1IhHeYE1dI8WyPd
-         NLHg==
+        b=KdkSvuZwMwuVTP5Ylm8l6IhV3F3VH4rXuaAR3cMiMulGsM7REMqa5IFOm29UYFiYwB
+         aU3yuHS28rqwVHEjEnCx06mY+Ht7frKAEN+uz5Y5TwE5o+vZljL0k/MNecGNWtUcC5fM
+         Z4nDWE3sTXYpeYWDkMipYXo7O5X693+KEBcTevauj7TY1F9sKgQX3xq2Fx2FjnEZASFH
+         zAcIvp2P6mn/IDRw2IVYk2KPKtWk08uS4Z44b4GKKiLvbYkmRJzhZNEkhkSe8shxAgKO
+         MmXehZ5V/PqMx771WvwqyeNujCtj7/gdJhmsIrYpDaHoA4Fns1cHDFSslwDTRex86uU9
+         cY6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:content-transfer-encoding:content-id:content-language
          :accept-language:in-reply-to:references:message-id:date:thread-index
          :thread-topic:subject:cc:to:from:arc-authentication-results;
-        bh=3PCLsK6d556xIn5qsjFNH3HRCHi+qXt4JcIuCFTEzac=;
-        b=m6aAnSq9giQvGbgGsNOyYYfPbjZVh7uXo8wd4BfTuFlluGE7p2Ju6F8sg7MAZKhTmv
-         61N5EUDDT1Ul7z7Nbvo3tYzoMXpJ2dlaDexYTNuTJfaacz04Tgx5zjcn5MjvIU/Lerwz
-         E0J7vpe7kqov1Yh8IBTYYAEM942LtC/FXqH75Zx0+JLt7i0u+Q0bOgheioErL6/lEAEU
-         zSRdnu4YZ5yfyx5babeCmBqhRND/qBuoi2NwfKhtXuJUCLgbMrvcgUCNdDd/uBBrUMnc
-         3jfzVhmYyz6UGByXStSSMlqm7xUOuJVucjt/wQYPYXclyZb1jwWs6A+IFoxIVG4NdlcG
-         IhVQ==
+        bh=NOdS3bD2VI0dYDbiiOb5cJ5s7n0HPC0V1+ILoZWbKzs=;
+        b=IyTXzS5cPMWIAeDcX8Qm/2YBueGksLj63ofQxDoilK1XLVKaSr+kuzGv7sDMd2LpWG
+         TbHwGgaC/R9lBni6GRxb6a9TAtAY/ZV22lYotNA7xaCgqJX9s4Eo0RN49N+FusxJkHKO
+         LmZwJ1oZRXqdQ61p9WJdDBaNuM8YIeY+S+Dqj9Uc5T4B71hvQm8jSYayLJOTKs/feaR5
+         R1A0g96EZHT2WtDN0U6Df1oqkTD+xxpgeQeOkNIkht+R0EDTHEI683GZEN2rx/vcj5Wo
+         fURSxb+EM9EpePxtqFISppnxnmbH6Tm5XFTspoXTYh/mZmQWKjFAaeJOiCwKMEUjkM3B
+         637A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of andreas.dilger@intel.com designates 134.134.136.20 as permitted sender) smtp.mailfrom=andreas.dilger@intel.com
+       spf=pass (google.com: domain of andreas.dilger@intel.com designates 192.55.52.88 as permitted sender) smtp.mailfrom=andreas.dilger@intel.com
 Return-Path: <andreas.dilger@intel.com>
-Received: from mga02.intel.com (mga02.intel.com. [134.134.136.20])
-        by gmr-mx.google.com with ESMTPS id o184si111086ith.4.2017.10.17.15.42.03
+Received: from mga01.intel.com (mga01.intel.com. [192.55.52.88])
+        by gmr-mx.google.com with ESMTPS id c29si610789iod.3.2017.10.17.15.41.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Oct 2017 15:42:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of andreas.dilger@intel.com designates 134.134.136.20 as permitted sender) client-ip=134.134.136.20;
+        Tue, 17 Oct 2017 15:41:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of andreas.dilger@intel.com designates 192.55.52.88 as permitted sender) client-ip=192.55.52.88;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of andreas.dilger@intel.com designates 134.134.136.20 as permitted sender) smtp.mailfrom=andreas.dilger@intel.com
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
-  by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 17 Oct 2017 15:42:02 -0700
+       spf=pass (google.com: domain of andreas.dilger@intel.com designates 192.55.52.88 as permitted sender) smtp.mailfrom=andreas.dilger@intel.com
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+  by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 17 Oct 2017 15:41:51 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.43,392,1503385200"; 
-   d="scan'208";a="139421614"
-Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
-  by orsmga004.jf.intel.com with ESMTP; 17 Oct 2017 15:42:02 -0700
-Received: from fmsmsx124.amr.corp.intel.com (10.18.125.39) by
- fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
- id 14.3.319.2; Tue, 17 Oct 2017 15:42:01 -0700
+   d="scan'208";a="1026224417"
+Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
+  by orsmga003.jf.intel.com with ESMTP; 17 Oct 2017 15:41:51 -0700
 Received: from FMSMSX109.amr.corp.intel.com ([169.254.15.12]) by
- fmsmsx124.amr.corp.intel.com ([169.254.8.94]) with mapi id 14.03.0319.002;
- Tue, 17 Oct 2017 15:42:02 -0700
+ FMSMSX106.amr.corp.intel.com ([169.254.5.207]) with mapi id 14.03.0319.002;
+ Tue, 17 Oct 2017 15:41:39 -0700
 From: "Dilger, Andreas" <andreas.dilger@intel.com>
 To: Aastha Gupta <aastha.gupta4104@gmail.com>
 CC: "outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>,
 	"Drokin, Oleg" <oleg.drokin@intel.com>, James Simmons
 	<jsimmons@infradead.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v2 04/10] staging: lustre: drop macro that has no uses
-Thread-Topic: [PATCH v2 04/10] staging: lustre: drop macro that has no uses
-Thread-Index: AQHTQxMJB0lJzSpNrkK78sh00CtlvaLpIXwA
-Date: Tue, 17 Oct 2017 22:42:00 +0000
-Message-ID: <4A0A4269-74B5-487B-ABCC-B4934992C5B0@intel.com>
+Subject: Re: [PATCH v2 02/10] staging: lustre: fix comparisons should place
+ the constant on the right side
+Thread-Topic: [PATCH v2 02/10] staging: lustre: fix comparisons should place
+ the constant on the right side
+Thread-Index: AQHTQxMFP8kYZroMQEuWcoR0spTnmKLpIWIA
+Date: Tue, 17 Oct 2017 22:41:38 +0000
+Message-ID: <5BF7C09D-0DCC-401D-9365-3BF622A1EB36@intel.com>
 References: <1507782683-12754-1-git-send-email-aastha.gupta4104@gmail.com>
- <1507782683-12754-5-git-send-email-aastha.gupta4104@gmail.com>
-In-Reply-To: <1507782683-12754-5-git-send-email-aastha.gupta4104@gmail.com>
+ <1507782683-12754-3-git-send-email-aastha.gupta4104@gmail.com>
+In-Reply-To: <1507782683-12754-3-git-send-email-aastha.gupta4104@gmail.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach:
 X-MS-TNEF-Correlator:
 x-originating-ip: [10.252.142.85]
 Content-Type: text/plain; charset="us-ascii"
-Content-ID: <0DAE416857036348A6467DB233811EB0@intel.com>
+Content-ID: <B5CD8322470E0A43B5B891901E3BE98B@intel.com>
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Return-Path: andreas.dilger@intel.com
 
-
-> On Oct 11, 2017, at 22:31, Aastha Gupta <aastha.gupta4104@gmail.com> wrot=
-e:
+On Oct 11, 2017, at 22:31, Aastha Gupta <aastha.gupta4104@gmail.com> wrote:
 >=20
-> This patch removes DLUBUF and PLUBUF macro, both of which have no users.
+> This patch fixes checkpatch.pl warning:
+>=20
+> WARNING: Comparisons should place the constant on the right side of the t=
+est
 >=20
 > Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
 
 Reviewed-by: Andreas Dilger <andreas.dilger@intel.com>
 
 > ---
-> drivers/staging/lustre/lustre/include/lu_object.h | 2 --
-> 1 file changed, 2 deletions(-)
+> drivers/staging/lustre/lustre/include/lu_object.h | 2 +-
+> 1 file changed, 1 insertion(+), 1 deletion(-)
 >=20
 > diff --git a/drivers/staging/lustre/lustre/include/lu_object.h b/drivers/=
 staging/lustre/lustre/include/lu_object.h
-> index c8d5e0b..d5ecd58 100644
+> index 4f213c4..a3c0481 100644
 > --- a/drivers/staging/lustre/lustre/include/lu_object.h
 > +++ b/drivers/staging/lustre/lustre/include/lu_object.h
-> @@ -1305,8 +1305,6 @@ struct lu_buf {
-> 	size_t	lb_len;
-> };
->=20
-> -#define DLUBUF "(%p %zu)"
-> -#define PLUBUF(buf) (buf)->lb_buf, (buf)->lb_len
-> /**
->  * One-time initializers, called at obdclass module initialization, not
->  * exported.
+> @@ -1130,7 +1130,7 @@ struct lu_context_key {
+> 	{							 \
+> 		type *value;				      \
+> 								  \
+> -		BUILD_BUG_ON(PAGE_SIZE < sizeof(*value));        \
+> +		BUILD_BUG_ON(sizeof(*value) > PAGE_SIZE);        \
+> 								  \
+> 		value =3D kzalloc(sizeof(*value), GFP_NOFS);	\
+> 		if (!value)				\
 > --=20
 > 2.7.4
 >=20
