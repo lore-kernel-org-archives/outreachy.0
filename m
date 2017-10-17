@@ -1,144 +1,168 @@
 X-GM-THRID: 6473410411176656896
-X-Received: by 10.129.200.14 with SMTP id n14mr1143613ywi.187.1508328877412;
-        Wed, 18 Oct 2017 05:14:37 -0700 (PDT)
+X-Received: by 10.84.217.2 with SMTP id o2mr3783199pli.4.1508280911491;
+        Tue, 17 Oct 2017 15:55:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.13.217.195 with SMTP id b186ls306519ywe.9.gmail; Wed, 18 Oct
- 2017 05:14:36 -0700 (PDT)
-X-Received: by 10.37.131.203 with SMTP id v11mr9526518ybm.58.1508328876695;
-        Wed, 18 Oct 2017 05:14:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508328876; cv=none;
+Received: by 10.99.102.70 with SMTP id a67ls638876pgc.20.gmail; Tue, 17 Oct
+ 2017 15:55:10 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBsIHFi9Bao2mcFjZckzNR//eKgP/4MD8PwBKjrVDCn/qSQf3F8j8KTJ86+tL8eokOd36mU
+X-Received: by 10.98.7.80 with SMTP id b77mr3454241pfd.30.1508280910607;
+        Tue, 17 Oct 2017 15:55:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508280910; cv=none;
         d=google.com; s=arc-20160816;
-        b=hVn2vhoJ3npwAuu+vegMgFfAWItg4HKNoUmbwAVrB5zv+xkjotmqL0iztX7gQNNff1
-         ScZVjgDrfZxyHrWyaTRU4OSifKMog1ejV/lNSTTDFJNFvJz/47m0YHqmMpvCYkM9O6oF
-         PODC6dyLOmV2tZew7dg6p6ayD2EqZ1AXGmS5Gv6ZFZDSeeaPYmO+nGu6Jhm7e4HcoTIo
-         bUIdF6NGKQ48DGrnv+ezi0ftvM07G5vhvxNrmuEUs2i3UBDfXJ5RXeOJNixT/OfJaRHD
-         kRvWoAiPHtNBWWVnxfFUcBWKeX5EZ3E11DLkm3xyfaF2/TUqQj0sH/HBDAKkKwuo33Aw
-         pxfg==
+        b=I2J/tkDBnQfrKszsLUQehRwwN/yIfAVk/p+wuX+Wp30p3IiXy3FzEDmwCvOWWKmcSI
+         NuaELrGwIfK5b/1uEtxxqlTNRazo3i94Cl3ghN+xwNJBZLoSK/j56Ff/lvHTVg5XLf8/
+         Q6xENO7UG07Ht7aYHBYBxRgp2XeuaGp09/LkZ5WUbg3jYh9kSOEivnzcyRvcGaLnicBS
+         T+Fm9eMO6qfAT/O20VEm+6yOU32O97zAybQc1cCeYSmxbzWqz41PKn+KJLF8IR5Tfs+6
+         spnxQZGgb7j+kNfcb+0R49aZS0VkxXwLZKrXNykhalOuFGf5vSm5f7EMURCzgCAmyc1x
+         OjVw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=1i5FzL0ICnQ7fSdLrRoCIg2JGOyEt1phv8YgJWkKvI8=;
-        b=G2dzMXT1Jlv2wdJ/aYpACa+iN5sGUDDBn8K3zBS42y6d1DPtbrc3mUZWlqVmh70UaN
-         rd8WuAFt8GydlvdF3LKpFzILbMkELbe33jh6Hb02NL5OMoMFJRuvjDsT9TC1Rvx/1r6y
-         ng89Wzb0KBxn+qGme7wXM4VaUZhQBJ8smDM2v+VU8/fuRlEgo4lsEHf+JAI6uos6ijVJ
-         aB3zTfH+Em2Uv1akJDNLQUtzpum5urxKeSj0ii9REAn/cMNst7Nqvv2YnbMLMMhw0ySZ
-         QSfO3dmvIhpqNBZ9KlEEK+5OJqNlLKmGC0HVcjOmJsN+pB2/9QxEiKhc+JdB0Wy1zSRe
-         0lsQ==
+        h=mime-version:content-transfer-encoding:content-id:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from:arc-authentication-results;
+        bh=+CedYDRRfY58mgSVqDuh9F+U1Gmvu4tnSxx+nEwtI9c=;
+        b=nA8kqm7Me2h9c184BUoqKOQHVc7MqpVi0S0+l3nmU+Rx26Qwy1uuup84+oBTo1WpyX
+         uD0V3Yliteg4YSAtODYGgE1wIvcPn+xEymdt8qTMFgGUf1hJotkoYRhw3+78gB7cefHm
+         /FbA75eaK4sFxmc78SHrYrhswX2TPNSLefLQpbxorAxHtWaYtlaZoJcHNMs/iLoQDVc6
+         Z/Wt7gHiObcCRiQ+R3wcWVQLy4ZqMmhcJbTfNQICWhBovlwzZpMplV9L+t6BBCF0Aaos
+         P55Q4qzXqq8heYjGWDucHHmQZWLKv91qi9nj0nVQNPQtVIWNz1yPas8zpETQStr2MLdg
+         KjWA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QQzq1Vcj;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id g2si583216ywa.2.2017.10.18.05.14.36
+       spf=pass (google.com: domain of andreas.dilger@intel.com designates 134.134.136.24 as permitted sender) smtp.mailfrom=andreas.dilger@intel.com
+Return-Path: <andreas.dilger@intel.com>
+Received: from mga09.intel.com (mga09.intel.com. [134.134.136.24])
+        by gmr-mx.google.com with ESMTPS id z2si611207plk.4.2017.10.17.15.55.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 18 Oct 2017 05:14:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Tue, 17 Oct 2017 15:55:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of andreas.dilger@intel.com designates 134.134.136.24 as permitted sender) client-ip=134.134.136.24;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QQzq1Vcj;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id m18so4117808pgd.13
-        for <outreachy-kernel@googlegroups.com>; Wed, 18 Oct 2017 05:14:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=1i5FzL0ICnQ7fSdLrRoCIg2JGOyEt1phv8YgJWkKvI8=;
-        b=QQzq1VcjUco3XjBtG9xSvO5ceXpofJhCSLzIjWL4/283mtg1flXXKokNm+G5KOf7x3
-         /GqtoETHR0sySQgInFJT8mclApVnFNq3AlZEzHD/nuwQ0WvLluR3oJDXupgRsjZSwo5/
-         4iBtlhLR1IOUAweVojH/krcTWfE7nZ0dbl5+0sfp4I2ZMgPrLZ/sAgJwJ6Vc8baQSEhz
-         4mK8UZ8uKIftXgDAZJOVLRngaOt9lNaqwP9xGsbup5t6TMSF6JeSVdBuvuVsLdeEBR6v
-         ugPspZn2j0QpBtlLmSKwQLPs95z5amHj2NgRksevSMQwIepXNHo43s14UExNmgW24Lvo
-         AHTA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=1i5FzL0ICnQ7fSdLrRoCIg2JGOyEt1phv8YgJWkKvI8=;
-        b=CwkOVFgKlOhUJv6Hzj9VTm5WOZYE2aXuNF6KyjCrRO8JiFhqJXTcbfFn1nI3kmNgIJ
-         WtbSfK0HRukLOcggKQdb8IujPVvg5AiSN/4LP5s5XZFviACO0fFlTaqYO0rwkUZjgzEg
-         Wa9vdzim9wBU3169GJLfQk4yo+/5YC7lSc5u3Og0PCFrBgbIMMf/GJP7aHW7deUW+QQF
-         k8Ido7k0I2IG+mMf95rpPz/6X3H8VtAONwOv0OenNwuBAesVfvhNIlii81yfM94HLT3K
-         Hy8cjQEO8tSaUHcuET0lWde8GvKgRtQTD6be+ibUqKVz2jJM85uTpSfIIuaF1FmqN94B
-         g6gg==
-X-Gm-Message-State: AMCzsaVd8Q1pFB8M6Ydo1ojORBn1YvxoqnP3LAo9gTv9RC50KC4exz9B
-	7WxxLxlddMSpFFxdJUe0me/JAukt
-X-Google-Smtp-Source: AOwi7QAclpU7QKJ+CMEyxpZf6tlNZGDFiyOpd6WnBfwEgVhshTqkcYqzDw68sjm/HRE+ILCcKNJDuw==
-X-Received: by 10.98.15.77 with SMTP id x74mr14569938pfi.17.1508328875892;
-        Wed, 18 Oct 2017 05:14:35 -0700 (PDT)
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from aastha-HP-Pavilion-15-Notebook-PC ([103.196.221.228])
-        by smtp.gmail.com with ESMTPSA id 68sm24537643pfx.105.2017.10.18.05.14.34
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 18 Oct 2017 05:14:35 -0700 (PDT)
-From: Aastha Gupta <aastha.gupta4104@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	Oleg Drokin <oleg.drokin@intel.com>,
-	Andreas Dilger <andreas.dilger@intel.com>,
-	James Simmons <jsimmons@infradead.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH v3 00/10] staging: lustre: fix code styling issues and remove macros without users
-Date: Wed, 18 Oct 2017 17:44:20 +0530
-Message-Id: <1508328870-9416-1-git-send-email-aastha.gupta4104@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=pass (google.com: domain of andreas.dilger@intel.com designates 134.134.136.24 as permitted sender) smtp.mailfrom=andreas.dilger@intel.com
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+  by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 17 Oct 2017 15:55:10 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.43,392,1503385200"; 
+   d="scan'208";a="139424573"
+Received: from fmsmsx103.amr.corp.intel.com ([10.18.124.201])
+  by orsmga004.jf.intel.com with ESMTP; 17 Oct 2017 15:55:10 -0700
+Received: from FMSMSX109.amr.corp.intel.com ([169.254.15.12]) by
+ FMSMSX103.amr.corp.intel.com ([169.254.2.182]) with mapi id 14.03.0319.002;
+ Tue, 17 Oct 2017 15:55:09 -0700
+From: "Dilger, Andreas" <andreas.dilger@intel.com>
+To: Aastha Gupta <aastha.gupta4104@gmail.com>
+CC: "outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>,
+	"Drokin, Oleg" <oleg.drokin@intel.com>, James Simmons
+	<jsimmons@infradead.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH v2 10/10] staging: lustre: lllite: fix multi line
+ comments style
+Thread-Topic: [PATCH v2 10/10] staging: lustre: lllite: fix multi line
+ comments style
+Thread-Index: AQHTQxMdvU4D2JUXIEyLynMjWtIIr6LpJScA
+Date: Tue, 17 Oct 2017 22:55:08 +0000
+Message-ID: <7C8C1B3D-B8DD-4ACE-A6D5-456FA4A718E9@intel.com>
+References: <1507782683-12754-1-git-send-email-aastha.gupta4104@gmail.com>
+ <1507782683-12754-11-git-send-email-aastha.gupta4104@gmail.com>
+In-Reply-To: <1507782683-12754-11-git-send-email-aastha.gupta4104@gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [10.252.142.85]
+Content-Type: text/plain; charset="us-ascii"
+Content-ID: <6448BFF105CA3841961E6F3BC59E265C@intel.com>
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
 
-These patches fix:
-- multi line comment styling
-- line over 80 characters
-- macro definitions warnings by checkpatch.pl
-- drops macros without any users
-- Comparisons should place the constant on the right side
+On Oct 11, 2017, at 22:31, Aastha Gupta <aastha.gupta4104@gmail.com> wrote:
+>=20
+> This patch fixes checkpatch.pl warnings:
+>=20
+> WARNING: Block comments should align the * on each line
+>=20
+> WARNING: Block comments use a trailing */ on a separate line
+>=20
+> Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
 
-This patch series includes all the patches I sent for this driver to
-show the correct order.
+Reviewed-by: Andreas Dilger <andreas.dilger@intel.com>
 
-Changes in v3:
-	(as suggested by Andreas Dilger)
-        - fixed error message coding style
-        - fixed comment in ldlm_internal
+> ---
+> drivers/staging/lustre/lustre/llite/file.c           | 4 ++--
+> drivers/staging/lustre/lustre/llite/llite_internal.h | 5 +++--
+> drivers/staging/lustre/lustre/llite/rw.c             | 3 ++-
+> 3 files changed, 7 insertions(+), 5 deletions(-)
+>=20
+> diff --git a/drivers/staging/lustre/lustre/llite/file.c b/drivers/staging=
+/lustre/lustre/llite/file.c
+> index eee9bed..bbfc675 100644
+> --- a/drivers/staging/lustre/lustre/llite/file.c
+> +++ b/drivers/staging/lustre/lustre/llite/file.c
+> @@ -386,8 +386,8 @@ static int ll_intent_file_open(struct dentry *de, voi=
+d *lmm, int lmmsize,
+> 	ll_finish_md_op_data(op_data);
+> 	if (rc =3D=3D -ESTALE) {
+> 		/* reason for keep own exit path - don`t flood log
+> -		* with messages with -ESTALE errors.
+> -		*/
+> +		 * with messages with -ESTALE errors.
+> +		 */
+> 		if (!it_disposition(itp, DISP_OPEN_OPEN) ||
+> 		    it_open_error(DISP_OPEN_OPEN, itp))
+> 			goto out;
+> diff --git a/drivers/staging/lustre/lustre/llite/llite_internal.h b/drive=
+rs/staging/lustre/lustre/llite/llite_internal.h
+> index fc1d3f5..b553f9a 100644
+> --- a/drivers/staging/lustre/lustre/llite/llite_internal.h
+> +++ b/drivers/staging/lustre/lustre/llite/llite_internal.h
+> @@ -392,7 +392,8 @@ enum stats_track_type {
+> #define LL_SBI_XATTR_CACHE    0x80000 /* support for xattr cache */
+> #define LL_SBI_NOROOTSQUASH	0x100000 /* do not apply root squash */
+> #define LL_SBI_ALWAYS_PING	0x200000 /* always ping even if server
+> -					  * suppress_pings */
+> +					  * suppress_pings
+> +					  */
+>=20
+> #define LL_SBI_FLAGS {	\
+> 	"nolck",	\
+> @@ -1199,7 +1200,7 @@ typedef enum llioc_iter (*llioc_callback_t)(struct =
+inode *inode,
+>  * Return value:
+>  *      A magic pointer will be returned if success;
+>  *      otherwise, NULL will be returned.
+> - * */
+> + */
+> void *ll_iocontrol_register(llioc_callback_t cb, int count, unsigned int =
+*cmd);
+> void ll_iocontrol_unregister(void *magic);
+>=20
+> diff --git a/drivers/staging/lustre/lustre/llite/rw.c b/drivers/staging/l=
+ustre/lustre/llite/rw.c
+> index b6371c4..4fa9f9b 100644
+> --- a/drivers/staging/lustre/lustre/llite/rw.c
+> +++ b/drivers/staging/lustre/lustre/llite/rw.c
+> @@ -888,7 +888,8 @@ static void ras_update(struct ll_sb_info *sbi, struct=
+ inode *inode,
+>=20
+> 	/* The initial ras_window_len is set to the request size.  To avoid
+> 	 * uselessly reading and discarding pages for random IO the window is
+> -	 * only increased once per consecutive request received. */
+> +	 * only increased once per consecutive request received.
+> +	 */
+> 	if ((ras->ras_consecutive_requests > 1 || stride_detect) &&
+> 	    !ras->ras_request_index)
+> 		ras_increase_window(inode, ras, ra);
+> --=20
+> 2.7.4
+>=20
 
-Aastha Gupta (10):
-  staging: lustre: fix incorrect multi-line comment style
-  staging: lustre: fix comparisons should place the constant on the
-    right side
-  staging: lustre: fix macro definitions warnings
-  staging: lustre: drop macro that has no uses
-  staging: lustre: fid: fix line over 80 characters
-  staging: lustre: fld: fix line over 80 characters
-  staging: lustre: ldlm: fix lines over 80 characters in ldlm files
-  staging: lustre: llite: fix lines over 80 characters in llite files
-  staging: lustre: llite: fix coding style for error messages
-  staging: lustre: lllite: fix multi line comments style
+Cheers, Andreas
+--
+Andreas Dilger
+Lustre Principal Architect
+Intel Corporation
 
- drivers/staging/lustre/lustre/fid/fid_request.c    |  3 +-
- drivers/staging/lustre/lustre/fld/fld_request.c    |  3 +-
- drivers/staging/lustre/lustre/include/lu_object.h  | 18 ++++----
- .../lustre/lustre/include/lustre_dlm_flags.h       |  6 ++-
- .../staging/lustre/lustre/include/lustre_errno.h   | 51 ++++++++--------------
- drivers/staging/lustre/lustre/ldlm/ldlm_extent.c   |  3 +-
- drivers/staging/lustre/lustre/ldlm/ldlm_flock.c    |  6 ++-
- drivers/staging/lustre/lustre/ldlm/ldlm_internal.h |  2 +-
- drivers/staging/lustre/lustre/ldlm/ldlm_lock.c     | 33 +++++++++-----
- drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c    |  6 ++-
- drivers/staging/lustre/lustre/ldlm/ldlm_pool.c     |  6 ++-
- drivers/staging/lustre/lustre/ldlm/ldlm_request.c  | 42 +++++++++++-------
- drivers/staging/lustre/lustre/ldlm/ldlm_resource.c |  3 +-
- drivers/staging/lustre/lustre/llite/dcache.c       |  9 ++--
- drivers/staging/lustre/lustre/llite/dir.c          | 20 +++++----
- drivers/staging/lustre/lustre/llite/file.c         | 13 +++---
- .../staging/lustre/lustre/llite/llite_internal.h   | 18 +++++---
- drivers/staging/lustre/lustre/llite/llite_lib.c    | 29 +++++++-----
- drivers/staging/lustre/lustre/llite/llite_mmap.c   |  3 +-
- drivers/staging/lustre/lustre/llite/llite_nfs.c    |  3 +-
- drivers/staging/lustre/lustre/llite/namei.c        | 15 ++++---
- drivers/staging/lustre/lustre/llite/rw.c           | 17 +++++---
- drivers/staging/lustre/lustre/llite/statahead.c    |  3 +-
- drivers/staging/lustre/lustre/llite/super25.c      |  3 +-
- drivers/staging/lustre/lustre/llite/xattr_cache.c  |  3 +-
- 25 files changed, 185 insertions(+), 133 deletions(-)
 
--- 
-2.7.4
+
+
+
+
 
 
