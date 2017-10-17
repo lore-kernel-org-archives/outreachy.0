@@ -1,116 +1,141 @@
 X-GM-THRID: 6477930690755166208
-X-Received: by 10.99.116.75 with SMTP id e11mr3460068pgn.49.1508290573513;
-        Tue, 17 Oct 2017 18:36:13 -0700 (PDT)
+X-Received: by 10.84.211.39 with SMTP id b36mr3510967pli.13.1508260772907;
+        Tue, 17 Oct 2017 10:19:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.101.78.4 with SMTP id r4ls716357pgt.9.gmail; Tue, 17 Oct 2017
- 18:36:12 -0700 (PDT)
-X-Received: by 10.99.149.16 with SMTP id p16mr3554851pgd.52.1508290572595;
-        Tue, 17 Oct 2017 18:36:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508290572; cv=none;
+Received: by 10.99.100.133 with SMTP id y127ls501792pgb.26.gmail; Tue, 17 Oct
+ 2017 10:19:31 -0700 (PDT)
+X-Received: by 10.98.130.129 with SMTP id w123mr3173013pfd.19.1508260771895;
+        Tue, 17 Oct 2017 10:19:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508260771; cv=none;
         d=google.com; s=arc-20160816;
-        b=rUo+3/bL5wSYLFCmJcQbdE1nC0ArEtGmO0xzTBdf1Y7a4hfT/oEFhf2Ro/lxCAnJwt
-         jkE8kllT28X5pQf2JxVKH/LCp33ZWEumYIoQWNhK0GxT7CgZU/Mn3QtZ7yY9x3VOa0/2
-         kvu+sBsAmgGA7K5AeoOXZRsP8ddKRwiaF5XsweJjexW3kpSJWgL1pT8G8KG8u7UbVTmJ
-         LmiOuQM9Pw73x9PrNxxGIZR68f3K8qVAMuOAsyzChevmbykqLd6yxDaZAdOo7MhpLltA
-         /xvm19UVOO0xt++KfIORYa56aJI2t2/k83NyMc8dNz2DdrqJLGq4TugusfrvE2CFN5b/
-         2mEg==
+        b=XIo/qfyf5jIRlnP0yMNcbk+YoAadjkz0Uxfj1I/1HnPiGyZS6NZleXqhEedawabdxj
+         +JYv40LK8UxM6tl/+cHgkZxK4ucc7Jcl01vmy0kMHb4QwmQfXEZD1H0t+dPopm6zozvm
+         VT0/9Y4VCYrkrP2Hey0fv8VDmpiVDUbzAz1mrA8NRDIhYkYmfzWHGzJKBGB4GGUaHD6a
+         /n0ft0CZgQJtsStPHWwcu72Gth37rReoMW3yzWeUkk1yEPLWW5KZ2LKemtctpKssre7A
+         TMWp79mCUjLKZWpUpS4gZ1Uu0AshMiEKXKpYiiz2c34zd3H7YmjycVxmy0a4RTAQKzGV
+         iz4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature
-         :arc-authentication-results;
-        bh=oCLoaSF0sIphanlFkoUjlCFWu5YSiDEZn+piSX2fciA=;
-        b=xZAKDjIE2P5v2HihpQdj/sYAnPXuw/ffmC3JuEhIWOs6/jar+LtbP5VOMBM/siyJkg
-         nwV7F/X/B8rFuPJPkjse9P5IGvJl75DN9WvRwnpbPtJrBNg7Pq8h7uUukYUuOXz8iWSC
-         UUD8O7GXjfdIuydj+MbdelTdY96D2qPNEYDDSMbaXslLn3ogLZ2MZ5NlKpb+DgT2cVJ6
-         3Z+ohFE2/K+GDbMpAcRcflv7WpDOnv2OvyrDsdtSSL0WG46mLgcb4CHd+uW11Vr/r81X
-         ymz0MlskXk3D2L7CBFGoRDRw4wqHfUlqE2AXGtlJVuaKGGl7aVzotw7vIc5U+fCuuvJw
-         QD7Q==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature:arc-authentication-results;
+        bh=n7wIBhoWE0IivHkULY7lYAhgXsg5b1RyLRTXbojfbbI=;
+        b=NN7cydnrt0o2Rr2lKDOwX0xALsRdHhbq9hj5JaM6q7GUb5aR81gN+MW31E1b4mj1RJ
+         LAsq/4iNhiNbErxxnKWZA/5AsaysSsWRfmwtoBH1jygVRtPB2z+oHVYlx1QCR+YDnRxY
+         ylP0wB8GdxQtQXa2okTFIxHYfgs6TLKXfmeGzDL7rCeIGFTpSBhx+697cmbzlJEP6SKY
+         xjiAAZZtYk4YiFanq/JocY2kLJqnnLVUAwktpINCyD82a07ALydRndQuj/kv4MvNqh+S
+         hzevVQjcxdFXdOHiM1eP6A/1qT9G9b/Y843WVXigSFGdHeQ4gP/smY/t9uDPgAPmK4Qk
+         HjuA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=0rGjr7bt;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::229 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=uf/t1NS7;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c05::230 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
 Return-Path: <frank@generalsoftwareinc.com>
-Received: from mail-ua0-x229.google.com (mail-ua0-x229.google.com. [2607:f8b0:400c:c08::229])
-        by gmr-mx.google.com with ESMTPS id w4si1050093plp.5.2017.10.17.18.36.12
+Received: from mail-vk0-x230.google.com (mail-vk0-x230.google.com. [2607:f8b0:400c:c05::230])
+        by gmr-mx.google.com with ESMTPS id z2si572829plk.4.2017.10.17.10.19.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Oct 2017 18:36:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::229 as permitted sender) client-ip=2607:f8b0:400c:c08::229;
+        Tue, 17 Oct 2017 10:19:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c05::230 as permitted sender) client-ip=2607:f8b0:400c:c05::230;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=0rGjr7bt;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::229 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
-Received: by mail-ua0-x229.google.com with SMTP id l40so2515989uah.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 18:36:12 -0700 (PDT)
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=uf/t1NS7;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c05::230 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+Received: by mail-vk0-x230.google.com with SMTP id b5so1589150vkf.12
+        for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 10:19:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=generalsoftwareinc-com.20150623.gappssmtp.com; s=20150623;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=oCLoaSF0sIphanlFkoUjlCFWu5YSiDEZn+piSX2fciA=;
-        b=0rGjr7bt9/EqSErar93ktBZXrlLCltvOm91mhmTN6fIGcjaW2fEV0U4MrI9fPyEf7r
-         w4dmZhOBej1FzgCnrUmaZ+f+asWWVhaRVLP4CnJjOrKjhOHzS1g2uTucNOHiz8KwEWJ1
-         DIqDZRRcuHixHFJXBj42Li47mv42rJnDnUA0+r1UMU4p9sihkVMyjjb2Q1ztfi1lOwKr
-         kLNLFEktqdmrLfD35wv04ccmUnjC34qKvJzSK/bOcfFJUVK2c2497QTJf/1GHjY6kosb
-         4Ao1iEo/+Hlz8HodBz8FGNAvsD6QKMrj6UJOHrDO50l8RgGOsh72+RYfGYK5k9Btu9sj
-         adOg==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=n7wIBhoWE0IivHkULY7lYAhgXsg5b1RyLRTXbojfbbI=;
+        b=uf/t1NS7S7SXSBFpTgL2taznvh6hUJ6AWTbciO1ij9UY01Bwfidoy95ny5TV+/I4xo
+         TmchoSwdzL4xhqXUmxVvLjnVJkURfU2eaNTa8YAg0bxf5HSVkE9hwfeHYGxTaXUiTNsF
+         Vfv6VyiggRaILaA2dBYkpcwJNjd60JETZQOjchwOtQbt1N8s2g1Fe0H3cOoNfBZeM0fK
+         Q6NnoE9I8sY4OtrcFab1eiZriii5rfMwRxQiWLWTsRHP8vXtWzlVAujxMUuEGN6Ztuvm
+         YUICZXoC8/lbZBkNZ3DxrzDdPEZeezzNc3AW7cvAf/gXglU2WzMhk0X8dtmxFhWGyTfY
+         pTkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=oCLoaSF0sIphanlFkoUjlCFWu5YSiDEZn+piSX2fciA=;
-        b=FG0jW9sBklWFYHk2lGgtmaCLt8mJ8sSHc4hrIyEkex2MvFKV3n8K5E/wfRediCqxPp
-         k62aHSid3t1BrPiZpPWSMwlGAe6uh2wh51vJOnXgS4IJRdaIcFn7jRrlqM+ht68dZZXC
-         KbDnkVlIQ6IecocnRKE6z3VGDlHohJ7FPWHhzP8/VEddkYg4/w9RdHkDsa1lotUqkV3w
-         O6op08s0C5RXdAJ+DrfEzBi4rVZkIgPy4Iqaoa0oSkU6c14K0PR+UJWZ6eyRp7rsUL7M
-         w5OxgAHBQfogJCgHfZqGoMgeCxGRBvfJwFMuXgWq690DPHRnMZPmT6hTJvS4ygRm3wzU
-         k5Pw==
-X-Gm-Message-State: AMCzsaW2L953r+/uYfCMe1WA1UUeQuUioiapPTFsHSiYI8R/7xYdIW45
-	XmPvGP2Od32vOrkBDsGab00qZrm6
-X-Google-Smtp-Source: ABhQp+SZVXogQv96aMe7ZBx9unfF8Li1LP+fOSTLQ0MdqZ7OBRGg3maDb6kU03Of5KLayPpInPrp2g==
-X-Received: by 10.159.40.9 with SMTP id c9mr6873700uac.3.1508290571345;
-        Tue, 17 Oct 2017 18:36:11 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=n7wIBhoWE0IivHkULY7lYAhgXsg5b1RyLRTXbojfbbI=;
+        b=cLiUy2pHlMFJDGM+rcNOyZHXbJAGBHBlfTbnk0UV5rRkw7tPz+MUK24M3RGfkj5f5N
+         Kmdl/KNX/Ita40cQHwsZOwI1DOA+HKPZqoLZWTtGR7Qe0oqeNks/NrUYLGBvxk1vGrb/
+         KQIeRHNEslXR/jTFutZwqRPzW5i2xV3+evVJ5Y2Gv6vh1DbPGlSzHJvc6DXCEMqa7cZy
+         GW6AOawFtK4YvzLgYx2rt0ZpSB0tf7T+aPv+G17u21A2RM4KhKr3oRJED59/NFrPzT4r
+         KHJbig2IzMlBDB3jpRxYyucUiTQNSDbs1gyYm5U92GnUjaBHwlb4ykaBxjb+EKmB90bh
+         V5uA==
+X-Gm-Message-State: AMCzsaXTRgU712DvV+QlPoiSBJoawJfF9zjZg7MqYhe+19KshpJWgApa
+	pSXREWoNdbzXFANFUyRDfCyZ5qWf
+X-Google-Smtp-Source: ABhQp+SnfR7tXH/CrGAje9vQKEutueztqjKKCe+/CyLT/cPqUGSTS5ZcpMTE2zwo7rNCfzyqNOoCig==
+X-Received: by 10.31.165.214 with SMTP id o205mr3662879vke.147.1508260771009;
+        Tue, 17 Oct 2017 10:19:31 -0700 (PDT)
 Return-Path: <frank@generalsoftwareinc.com>
-Received: from ubuntu-server-1604 ([152.206.125.129])
-        by smtp.gmail.com with ESMTPSA id o20sm2092925vke.15.2017.10.17.18.36.10
+Received: from ubuntu-server-1604 ([152.206.93.190])
+        by smtp.gmail.com with ESMTPSA id w204sm2398172vke.42.2017.10.17.10.19.30
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 17 Oct 2017 18:36:10 -0700 (PDT)
-Date: Tue, 17 Oct 2017 21:36:07 -0400
+        Tue, 17 Oct 2017 10:19:30 -0700 (PDT)
+Date: Tue, 17 Oct 2017 13:19:28 -0400
 From: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
-To: pablo@netfilter.org, netfilter-devel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: Re: Problem compiling nftables
-Message-ID: <20171018013607.GA14756@ubuntu-server-1604>
-References: <20171017171928.GJ6963@ubuntu-server-1604>
- <20171017233802.GA3615@dimstar.local.net>
+To: pablo@netfilter.org
+Cc: netfilter-devel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Problem compiling nftables
+Message-ID: <20171017171928.GJ6963@ubuntu-server-1604>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20171017233802.GA3615@dimstar.local.net>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Wed, Oct 18, 2017 at 10:38:02AM +1100, Duncan Roe wrote:
-> Hi Frank,
-> 
-> The libnftnl patch was comitted 2 minutes before you posted :/
-> 
-> It all builds fine for me now.
-> 
-> Your problem is with generating the man page rather than with compiling the
-> code. There is a separate Makefile in nftables/doc which you can run on its
-> own to do this.
-> 
+Hi,
 
-Worked like a charm!
+I trying to install nftables from source ask part of my Outreachy application tasks. I already installed libmnl and libnftnl successfully.
 
-> When I run "make V=1" in nftables/doc I see the single command
-> > docbook2x-man --xinclude nft.xml
-> which gnerates nft.8 for me when I run it. Do you have that utility?
-> 
-> docbook2x-man and jw both come from package linuxdoc-tools (on Slackware, at
-> least). If you end up installing docbook2x-man, you should likely re-run
-> ./configure before re-trying make.
->
+The problem comes after the 'make' command while trying to compile nftables. I'm running Ubuntu 16.04 and following the steps described here: https://wiki.nftables.org/wiki-nftables/index.php/Building_and_installing_nftables_from_sources
 
-After execute 'sudo apt install docbook2x' on my Ubuntu box the problem went away.
+I removed the last commit of the nftables master branch: 8dee5e43ad4beb2b0a95e0bbf2b3972630c1b327 'netlink: Use nftnl_expr_fprintf() in netlink_dump_expr()', to avoid a compilation error because a dependency with a libnftnl's patch still pending to apply. But the following error is beyond my skills right now and maybe is just a detail that I'm missing and somebody can help me.
 
-Thanks a lot for your quick response Duncan!
+Thanks in advance
 frank
+
+Here is the relevant make output:
+
+...
+make[3]: Leaving directory '/home/vagrant/git/pablo/nftables/nftables/include/linux'
+make[3]: Entering directory '/home/vagrant/git/pablo/nftables/nftables/include'
+make[3]: Nothing to be done for 'all-am'.
+make[3]: Leaving directory '/home/vagrant/git/pablo/nftables/nftables/include'
+make[2]: Leaving directory '/home/vagrant/git/pablo/nftables/nftables/include'
+Making all in doc
+make[2]: Entering directory '/home/vagrant/git/pablo/nftables/nftables/doc'
+  GEN      nft.8
+Usage: jw [<options>] <sgml_file>
+where <options> are:
+  -f|--frontend <frontend>: 	 Specify the frontend (source format)
+  				 (default is docbook)
+  -b|--backend <backend>: 	 Specify the backend (destination format)
+  				 (default is html)
+  -c|--cat <file>: 		 Specify an extra SGML open catalog
+  -n|--nostd: 			 Do not use the standard SGML open catalogs
+  -d|--dsl <file>|default|none:	 Specify an alternate style sheet
+  				 (default is to use the default stylesheet)
+  -l|--dcl <file>: 		 Specify an alternate SGML declaration
+  				 (usual ones like xml.dcl get detected automatically)
+  -s|--sgmlbase <path>: 	 Change base directory for SGML distribution
+  				 (usually /usr/share/sgml)
+  -p|--parser <program>: 	 Specify the parser if several are installed
+  				  (jade or openjade)
+  -o|--output <directory>: 	 Set output directory
+  -u|--nochunks: 		 Output only one big file
+  				 (overrides the stylesheet settings)
+  -i|--include <section>: 	 Specify a SGML marked section to include
+  				 (should be marked as "ignore" in the SGML text)
+  -w|--warning <warning_type>|list: Control warnings or display the allowed warning types
+  -e|--errors <error_type>|list: Control errors or display the allowed error types
+  -h|--help: 			 Print this help message and exit
+  -V <variable[=value]>: 	 Set a variable
+  -v|--version: 		 Print the version and exit
+Makefile:539: recipe for target 'nft.8' failed
+make[2]: *** [nft.8] Error 1
+make[2]: Leaving directory '/home/vagrant/git/pablo/nftables/nftables/doc'
+Makefile:397: recipe for target 'all-recursive' failed
+make[1]: *** [all-recursive] Error 1
+make[1]: Leaving directory '/home/vagrant/git/pablo/nftables/nftables'
+Makefile:338: recipe for target 'all' failed
+make: *** [all] Error 2
 
