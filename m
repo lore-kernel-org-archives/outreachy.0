@@ -1,94 +1,89 @@
 X-GM-THRID: 6476443340841680896
-X-Received: by 10.46.2.4 with SMTP id 4mr75624ljc.20.1508243809213;
-        Tue, 17 Oct 2017 05:36:49 -0700 (PDT)
+X-Received: by 10.28.217.201 with SMTP id q192mr478983wmg.20.1508243564492;
+        Tue, 17 Oct 2017 05:32:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.46.15 with SMTP id u15ls141745lju.12.gmail; Tue, 17 Oct
- 2017 05:36:47 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+QH7y3W2DxkDwbb5aWHar70MMXfGoVA9C5G+O0AHS1k2eGzLlORXJlK2HIipiRle+YQ2lqH
-X-Received: by 10.46.22.20 with SMTP id w20mr69624ljd.40.1508243807340;
-        Tue, 17 Oct 2017 05:36:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508243807; cv=none;
+Received: by 10.28.145.14 with SMTP id t14ls281532wmd.4.canary-gmail; Tue, 17
+ Oct 2017 05:32:43 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QBgMgE3iORJLZXQ8xhMdzV3KYY+knPwl2Q++XuwIM5kZukClGSgU+CmqUz653PGeuhEjt7V
+X-Received: by 10.223.142.227 with SMTP id q90mr1119664wrb.32.1508243563618;
+        Tue, 17 Oct 2017 05:32:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508243563; cv=none;
         d=google.com; s=arc-20160816;
-        b=Aj4t74kFx4hkoD2yMUFM/zCxdMbxIgiQvlItxej3p0AmZgBPPQbMYX6Oa2yJxhNm7/
-         0DoY2P7RIWsQMipejZf+JHO7N69vS0DVXs4HWGm1bK3Pe+b9qGCAiZ6lssod5O5Jx+GC
-         CGWXZdVZtbuAZU0vyFXNg2055nDvXrk7rMlDkCYS30EQgiUykAycwxo8vttOQA/2AN0R
-         KYdhmpSn0A4Z2ev5LRk1sL/Q/mIy4V4Hr9xkAxDCbIOtHCygclROwPV1XQsVrrMqkNoi
-         oSIrn3zJdK3iHVEH61Qwqu9ElZ4UXiUUqf64qJGY+ienf/wRLmpvXG9nfX/Qt0MYE7cx
-         hYFw==
+        b=XkxxTy9RUoxN2MVuWPAxk3C4QSywfe3rnxtMNGlP4+0z4Z5lNtqidhj6wmpl1Un773
+         MvVPZI34vkvrjuR29VArlqn0I0A8h/AdpL0zPQRNYLxzJsCtorUwQan9YWPwE35KqPNX
+         nss5pMqUGCnDs1S3J1DUmcSM1np2lJ+//zBqT1smIT4wQZpBxCXYeA9Nm5X7DyQzgzZU
+         syPm7B++wd1hYHUeYJB9zLEbUILYb1OyTSiBzSOreStvhGWul+t9HC19vGMN4cINJl/+
+         CokvuIyK+EQXC9pnQ1VJa4W+NIwbF73KFZGt8a88p6rru91F3fqu2iwBaYTQZ0RRPiDQ
+         ZxpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=TS0Vw0eWfhtMorm9967Q77UCkf0BX3qomkbaOGpGt4k=;
-        b=0epo6xQUTaW9WiRGWr5ygjLX7MCxFqlMeUMo6HDMV2T13u6cpzaCEPA3kidyAMrKLj
-         CXTdApy8op0rPCRdjoZ0ApxmHhiusgUqPDIjyNHK3ZE02SsamHJQ9qtGSE2GXRRLvntr
-         i0+Q+OqVjWRQ381tZfpBSSFONCf9gLKfBHX+0JSHfaLciaBSe+m3W0BgjsSkHR8z8tAs
-         mWONXJhHIF7P2oMck7/RyAKQOyIhbJW/mhbj5ijA7qticFPg+vwPYiHJLw+iH8yZN6qU
-         cVxjOI74103F+71EWEfOcMezFs/VBgzsH3vsjgjHff1eu6cm+o2/+7DMQNOmeuSVSr8d
-         SMWw==
+        bh=F9V/FEcWA4k83twnS2zYBRk85OZbvgK1hlk7YR3bHik=;
+        b=s5KmvkTi8j2YVIdT1/3arnw6Afyw+1jmZv4zMZm/jyvFoAEnrxR3C20PEF4YOBQE1X
+         TGUxzvP18MpxWLoNQ/CweHBhDRf+bS89FRLLnfGrvXaISMRV2MvOGCy0X51/39C19JRV
+         i7Pmil1hKlnfhcBA/go5bP4/DVavi+nCPC+mVoj6ZurpZ06UpQhh7Cb2xVcxdXVdtMe7
+         WT5lDrv5IBdRd23Z0AWhv7VhUWSLxM3WfpnbU6JUcHo1tjI/h6t3um2+NltIh3QGbMUl
+         MOCTxbce0zFNksSPFl2FvMTCTTxmoaXsC2Jpxm2m7gKOknytKp/vo117UxeYQ1WFVzUo
+         MiVA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
 Return-Path: <pneira@us.es>
 Received: from mail.us.es (mail.us.es. [193.147.175.20])
-        by gmr-mx.google.com with ESMTPS id w14si464979lfk.2.2017.10.17.05.36.47
+        by gmr-mx.google.com with ESMTPS id m62si62528wmi.1.2017.10.17.05.32.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Oct 2017 05:36:47 -0700 (PDT)
+        Tue, 17 Oct 2017 05:32:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
 Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
-	by mail.us.es (Postfix) with ESMTP id 8660A5230A
-	for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 14:36:46 +0200 (CEST)
+	by mail.us.es (Postfix) with ESMTP id 08F4152305
+	for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 14:32:43 +0200 (CEST)
 Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
-	by antivirus1-rhel7.int (Postfix) with ESMTP id 783FADA878
-	for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 14:36:46 +0200 (CEST)
+	by antivirus1-rhel7.int (Postfix) with ESMTP id EEABBDA874
+	for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 14:32:42 +0200 (CEST)
 Received: by antivirus1-rhel7.int (Postfix, from userid 99)
-	id 6D828DA875; Tue, 17 Oct 2017 14:36:46 +0200 (CEST)
+	id E465FDA873; Tue, 17 Oct 2017 14:32:42 +0200 (CEST)
 X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
 X-Spam-Level: 
 X-Spam-Status: No, score=-108.2 required=7.5 tests=ALL_TRUSTED,BAYES_50,
 	HEADER_FROM_DIFFERENT_DOMAINS,SMTPAUTH_US2,USER_IN_WHITELIST
 	autolearn=disabled version=3.4.1
 Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
-	by antivirus1-rhel7.int (Postfix) with ESMTP id 7F496DA86B;
-	Tue, 17 Oct 2017 14:36:44 +0200 (CEST)
+	by antivirus1-rhel7.int (Postfix) with ESMTP id F23EBDA861;
+	Tue, 17 Oct 2017 14:32:39 +0200 (CEST)
 Received: from 192.168.1.97 (192.168.1.97)
  by antivirus1-rhel7.int (F-Secure/fsigk_smtp/550/antivirus1-rhel7.int);
- Tue, 17 Oct 2017 14:36:44 +0200 (CEST)
+ Tue, 17 Oct 2017 14:32:39 +0200 (CEST)
 X-Virus-Status: clean(F-Secure/fsigk_smtp/550/antivirus1-rhel7.int)
 Received: from us.es (129.166.216.87.static.jazztel.es [87.216.166.129])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
 	(Authenticated sender: 1984lsi)
-	by entrada.int (Postfix) with ESMTPSA id 4848640584D3;
-	Tue, 17 Oct 2017 14:36:44 +0200 (CEST)
-Date: Tue, 17 Oct 2017 14:36:43 +0200
+	by entrada.int (Postfix) with ESMTPSA id B99CD40584D3;
+	Tue, 17 Oct 2017 14:32:39 +0200 (CEST)
+Date: Tue, 17 Oct 2017 14:32:39 +0200
 X-SMTPAUTHUS: auth mail.us.es
 From: Pablo Neira Ayuso <pablo@netfilter.org>
 To: Harsha Sharma <harshasharmaiitr@gmail.com>
 Cc: netfilter-devel@vger.kernel.org, outreachy-kernel@googlegroups.com
 Subject: Re: [PATCH] Update .gitignore
-Message-ID: <20171017123643.GA19972@salvia>
+Message-ID: <20171017123239.GA19723@salvia>
 References: <20171013170524.8104-1-harshasharmaiitr@gmail.com>
- <20171017123239.GA19723@salvia>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20171017123239.GA19723@salvia>
+In-Reply-To: <20171013170524.8104-1-harshasharmaiitr@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 X-Virus-Scanned: ClamAV using ClamSMTP
 
-On Tue, Oct 17, 2017 at 02:32:39PM +0200, Pablo Neira Ayuso wrote:
-> On Fri, Oct 13, 2017 at 10:35:24PM +0530, Harsha Sharma wrote:
-> > Added comments and files generated by libtools
-> 
-> Applied, thanks.
-> 
-> Please, add the right tag next time, eg. [PATCH iptables] So I know
-> the route for this at quick glance.
+On Fri, Oct 13, 2017 at 10:35:24PM +0530, Harsha Sharma wrote:
+> Added comments and files generated by libtools
 
-For the record, I mangled this patch to focus on missing files that
-need to be ignore, that's enough I think.
+Applied, thanks.
 
-Thanks.
+Please, add the right tag next time, eg. [PATCH iptables] So I know
+the route for this at quick glance.
+
+Thanks!
 
