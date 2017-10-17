@@ -1,87 +1,85 @@
-X-GM-THRID: 6337703450435911680
-X-Received: by 10.200.56.243 with SMTP id g48mr1361822qtc.57.1475611573734;
-        Tue, 04 Oct 2016 13:06:13 -0700 (PDT)
+X-GM-THRID: 6477098943281889280
+X-Received: by 10.223.166.39 with SMTP id k36mr1018608wrc.8.1508241644860;
+        Tue, 17 Oct 2017 05:00:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.9.151 with SMTP id q23ls12128823otd.18.gmail; Tue, 04 Oct
- 2016 13:06:13 -0700 (PDT)
-X-Received: by 10.129.97.139 with SMTP id v133mr1484190ywb.105.1475611573368;
-        Tue, 04 Oct 2016 13:06:13 -0700 (PDT)
-Return-Path: <gnudevliz@gmail.com>
-Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
-        by gmr-mx.google.com with ESMTPS id d11si2996268pfl.2.2016.10.04.13.06.13
+Received: by 10.28.93.130 with SMTP id r124ls266262wmb.12.gmail; Tue, 17 Oct
+ 2017 05:00:44 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+S6e4hwX6e8fUeBNE+vh5JfpY8HTYKsv2rsmdJEhJmYgQGFG2d8Ax4uS+ainzPA4e+TusK3
+X-Received: by 10.28.71.131 with SMTP id m3mr462616wmi.19.1508241644270;
+        Tue, 17 Oct 2017 05:00:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508241644; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ra9WUyLdXxTEY/iGwv4UjHduBIGum5HWyunzIfvGs7l2D0WFAbsHRm3tSRnfKFkhRD
+         4+/nBHYPDsOkMpwHhKZzTl0qn9kkoQPxpEhDi304Aokp9n3oPp9PyahOg73QAOnqGBF3
+         gqZKNWQKfPJ3Gg5UVSjAui0QZDp6AEPrUZslFG3A6q/ATnP9BILX4GJwFKKq5H0Dn7/h
+         QE6Y+JQY2NeTn9RO+mgC/EvQBfHJxnpe0Xya/VbuZfTnWyanLzTfYP+pcLS9ZOztIivJ
+         ZCbP9PFx1vlcnqzg4iPWWNzW3JTGWNOgfEFd8rieVBPZpHudt6Ykkios3hIYjI+GY1Xr
+         ifwQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=HeE86z6xDNMVQNf1l0zinxJ0khrZc+jeCVHELFMOO9U=;
+        b=pCRPuN9x9LPo9ge48o14o6YUTf5wiFf4P6ZoCa3xZz7UtqhB07m3t45AaSzk16+UYp
+         vHjWTWpzf2Xg+pHemQrdvxm6i0N41AEiah3zdPPmMIjlXwkSV1TfQkErG1SyX2/QLmsm
+         vFKBPSCFUOTGLQf9DcKc3fEUc+aaKb52DQggb6dPzLnQ3RgKk2yZzMfvVTO8fVIFP1cn
+         jj50hIdq8Dns4OBcWpQs6Sxxw00f0WZCXwtuLQeV/KM+eed/pf9/AyShBZJUG3tmGh1O
+         l2AUNtaq4x9s1VsNGugpP2lkqufYJVSNjh8cHwwsiQiRJ2UU7hLxsJOLeqtRDbREWIyS
+         KUEg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Return-Path: <pneira@us.es>
+Received: from mail.us.es (mail.us.es. [193.147.175.20])
+        by gmr-mx.google.com with ESMTPS id m62si59981wmi.1.2017.10.17.05.00.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 04 Oct 2016 13:06:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
+        Tue, 17 Oct 2017 05:00:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=gnudevliz@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x242.google.com with SMTP id t6so6728827pae.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 04 Oct 2016 13:06:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=9cTrGfUEuEit+Gl/8YbI8pzd9apwy1thzY1HGJ4wyYI=;
-        b=ckKuuSTzcfGQovLGckJ+cuoSpbu1mReyiNONhDOgXvy7Gjvoa2kHyUg4lcktQPu8Qh
-         ys7+cJ02fneLQ+4X3tVPkFtVxEZbrUEWDg9IZ3iHTy56sOU3BgNRY1wuMpEeR3gsMcVy
-         cdEN69/8oSBtpi7sv+SNjT4QIEvPKdQI3+iGSpAXeaDNGfIS2YGtcjxR0i2ObmDbk90p
-         gO0JIDA7Wh3DTK5gXmWPzpYefHQP5dftNjmfjVkK/+YmyZJJPQH/j3bqK2WlZxdEYgnR
-         hdoqbkJj7xISvS4z4h/FTbZKt5rpJ1Jtvw+7dgB5qvq3Yx3EU3R/Y8xcR14Dp2QqZ9Zh
-         jYmQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=9cTrGfUEuEit+Gl/8YbI8pzd9apwy1thzY1HGJ4wyYI=;
-        b=RFb/8BFr37yq4L/2s1eBpqmXT/Cjifn/a0ZTim2DoTvy1I3SJN87FE3AbI0iPEAEvD
-         mGhZI8h8W45dyREAdzTnpfMBNjJtgBCteP5qJabQnuueS/UBbmRqG4Ol9hy3jcKM7gY4
-         KguNifvmcH35tT3pkjj3xa9tEhC+kbLytFs6XB5QJoVOXYDncpTHrURg9PniRAufp5nc
-         LvseuO19tXpeyYaH4z5oXQ+RXCoR24pIXsRSSVwq9x++J8HsV7OJH5SZ/C4vWXD0qKSj
-         tLAb7CB/58Rlzo48NB93QMAS3p6cUoRK9R4IZu3XzjkfmsE/uE6pwR356tbMJ1IMmzcx
-         1QvQ==
-X-Gm-Message-State: AA6/9RkrJKZE5mxsOF8RsAHFv4X0du5PGhS8k25dzQfkCDq6i2GNB/fexHD+ESZsdeG2wg==
-X-Received: by 10.66.10.132 with SMTP id i4mr7773189pab.101.1475611573034;
-        Tue, 04 Oct 2016 13:06:13 -0700 (PDT)
-Return-Path: <gnudevliz@gmail.com>
-Received: from localhost ([2601:644:300:fd6b:4e0f:6eff:fe69:e9ea])
-        by smtp.gmail.com with ESMTPSA id ah5sm7963451pad.30.2016.10.04.13.06.12
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 04 Oct 2016 13:06:12 -0700 (PDT)
-Date: Tue, 4 Oct 2016 13:06:10 -0700
-From: Elizabeth Ferdman <gnudevliz@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: amsfield22@gmail.com, daniel.baluta@intel.com, vaibhav.sr@gmail.com,
-	mgreer@animalcreek.com, johan@kernel.org, elder@kernel.org,
-	gregkh@linuxfoundation.org
-Subject: [PATCH] staging: greybus: Add blank line after declaration
-Message-ID: <20161004200608.GA29287@localhost>
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
+	by mail.us.es (Postfix) with ESMTP id AFECF4D652
+	for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 14:00:43 +0200 (CEST)
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id A1B82DA861
+	for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 14:00:43 +0200 (CEST)
+Received: by antivirus1-rhel7.int (Postfix, from userid 99)
+	id 97690DA86E; Tue, 17 Oct 2017 14:00:43 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
+X-Spam-Level: 
+X-Spam-Status: No, score=-108.2 required=7.5 tests=ALL_TRUSTED,BAYES_50,
+	HEADER_FROM_DIFFERENT_DOMAINS,SMTPAUTH_US2,USER_IN_WHITELIST
+	autolearn=disabled version=3.4.1
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 4DAE3DA391;
+	Tue, 17 Oct 2017 14:00:38 +0200 (CEST)
+Received: from 192.168.1.97 (192.168.1.97)
+ by antivirus1-rhel7.int (F-Secure/fsigk_smtp/550/antivirus1-rhel7.int);
+ Tue, 17 Oct 2017 14:00:38 +0200 (CEST)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/550/antivirus1-rhel7.int)
+Received: from us.es (129.166.216.87.static.jazztel.es [87.216.166.129])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	(Authenticated sender: 1984lsi)
+	by entrada.int (Postfix) with ESMTPSA id 132E240584D8;
+	Tue, 17 Oct 2017 14:00:38 +0200 (CEST)
+Date: Tue, 17 Oct 2017 14:00:37 +0200
+X-SMTPAUTHUS: auth mail.us.es
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Aastha Gupta <aastha.gupta4104@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, netfilter-devel@vger.kernel.org
+Subject: Re: [PATCH v2] iptables: iptables-compat translation for TCPMSS
+Message-ID: <20171017120037.GA13186@salvia>
+References: <1508068939-17220-1-git-send-email-aastha.gupta4104@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <1508068939-17220-1-git-send-email-aastha.gupta4104@gmail.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Virus-Scanned: ClamAV using ClamSMTP
 
-Add a blank line after a declaration. Error found by checkpatch.
+On Sun, Oct 15, 2017 at 05:32:19PM +0530, Aastha Gupta wrote:
+> Since path mtu support was added, we can now add
+> iptables-compat translation for TCPMSS extension.
 
-Signed-off-by: Elizabeth Ferdman <gnudevliz@gmail.com>
----
- drivers/staging/greybus/audio_topology.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/staging/greybus/audio_topology.c b/drivers/staging/greybus/audio_topology.c
-index b625169..5c76067 100644
---- a/drivers/staging/greybus/audio_topology.c
-+++ b/drivers/staging/greybus/audio_topology.c
-@@ -114,6 +114,7 @@ static int gbaudio_map_widgetname(struct gbaudio_module_info *module,
- 				  const char *name)
- {
- 	struct gbaudio_widget *widget;
-+
- 	list_for_each_entry(widget, &module->widget_list, list) {
- 		if (!strncmp(widget->name, name, NAME_SIZE))
- 			return widget->id;
--- 
-2.1.4
-
+Applied, thanks.
 
