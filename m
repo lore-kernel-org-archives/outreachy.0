@@ -1,98 +1,121 @@
 X-GM-THRID: 6477808984307793920
-X-Received: by 10.46.86.156 with SMTP id k28mr68065lje.22.1508239688619;
-        Tue, 17 Oct 2017 04:28:08 -0700 (PDT)
+X-Received: by 10.157.80.41 with SMTP id a41mr7071123oth.89.1508232435453;
+        Tue, 17 Oct 2017 02:27:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.80.11 with SMTP id e11ls184727ljb.4.gmail; Tue, 17 Oct 2017
- 04:28:07 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+QGkeyp9QgN9rt7WrUxqsRxHDqe4h2t9uG2hwEp83lbeSRmySDm35QTXKPVW0yZqV0xYRwm
-X-Received: by 10.25.148.130 with SMTP id o2mr360107lfk.36.1508239686988;
-        Tue, 17 Oct 2017 04:28:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508239686; cv=none;
+Received: by 10.157.36.19 with SMTP id p19ls200408ota.8.gmail; Tue, 17 Oct
+ 2017 02:27:14 -0700 (PDT)
+X-Received: by 10.157.83.138 with SMTP id w10mr6859886otg.29.1508232434709;
+        Tue, 17 Oct 2017 02:27:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508232434; cv=none;
         d=google.com; s=arc-20160816;
-        b=Op8rPIUUR/2uP1QI26JMSuGcK3O/LUJP/8EsqSB56f4/ZcMAl6Gt88DotRIf7+FU+P
-         fF4WebCX4kvBwyAiVgLV7mQDZ+THQFKCKG8CyF4UTVgj6k808ahShjYCnWpLIIVdOAMY
-         WK1E9WuMD6S3stJdPXmsh8I12/3JSx5EPEISsrOGdQWf7x/hYD6d7nE9X56eO6F+ia7J
-         W3W72FtBTTyKIEXWugjL+p1ZI1BZ0XXHg5zF0RaJ/Wif7fYwAKoh1lBtuQ3CyjPsi9TP
-         54IN+aD0z/VEwHGTgz9qPLZN5oyQgsbqCCjr9K+u/nJseYnEgszYZwa3WZjjS64szg/w
-         5MLw==
+        b=AIN4ibTW9IrCu0BG4aV0qF32KBIh51tYZ0Hrid42tJanKKmJol70ey3zovSvPCTOEz
+         G6WH8s1VxcHJcwpGsj57M1bjoiQ+n7A3Y9yxswOOLR19IhEzykp96P+rFlKKM7uYKtz2
+         yxWxGbRuI/qhT4zWsPJSpMb2QiKIfcSR0z95VglwtbrOhHA5yiVRemISfTolpeUVMlFF
+         /HaR/aR0p1D0Jg++IkOfqll1n4Di7RuWCXkBwj3c7NW5HMaJkHe2M6HQdc5XCUyXQlc0
+         sE1x9pHk+Mt7EhgR+1VTOZoGkro48KUaWNAU/c5RXVlHSii9csMn7wy3MLBXmsoPGv1W
+         UKRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=0Kt/bkHIpjosBfpqWLEMazubZ2FnWJD+JEop5le06M4=;
-        b=xZovBIYH5BPM1jy72O0ofgyqZ33ANSAaZLZbNl+YDtP0iSZGsfdli1coGLWdYtbQz0
-         jXXENi2DjIR6zMWRpTY9W6tVAt6IF+yctYhRtEr6L1pAKXWjwclwsTsBHWGRFyAIY3A/
-         e6DJ4siqEFwIDq7KR5LOOK4d262Y8p4PWym96274tVNwyNUjzVAH4Wm/MUDINZwmlSPA
-         vbM2v8uUhb/dLwMcaaHCoAsfZK9Gw8D5x5i/WkLxMwCCZwaBhJ9sLRJGReRHuJS+1A0/
-         6/nruN0XDlyVWsL0Zehi97g/PGIkipyFTZPV8iXC62/nPATd57bV/UIzdXYZ30gDeb3j
-         23GQ==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=rF8N6QZUvjaIgytqWMOn8Rrfa043JB5C0QjK60jsTms=;
+        b=q8QgZQlcbKktGdjIfGXMacbfrb9kT3nEV3iqJAQ5xQFogJSlAdQHpESwVpUkgYayYg
+         6xiOsPDeU3lDwB1XdoVPm5q0JXmzhpYjsdAJ/Tnp+c9/sKdoffkGedMjV/aBD9slEvdh
+         0tmL3ggtuQqpKGmnao6+r44U1EdIN75b/RhaTfSlFsN7Q0n06WYbksJ3lvOs3k5QnnGr
+         AQjlIgUcMNrHl/U9UAIUkmlKd7meSn4q8NfKYpVvnlHNC/BIsMWizNE7eX0MkCZbddvb
+         jwVPAwLnSce5+LzQHFHQh/BsEOwnx0RiiNEb7aFCIoSWeSrmLslGCN7FDIsaIcpZnbZ1
+         ZnkA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
-Return-Path: <pneira@us.es>
-Received: from mail.us.es (mail.us.es. [193.147.175.20])
-        by gmr-mx.google.com with ESMTPS id l14si480765lje.1.2017.10.17.04.28.06
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qUMNlc8Z;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <harshasharmaiitr@gmail.com>
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by gmr-mx.google.com with ESMTPS id t9si541349ote.1.2017.10.17.02.27.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Oct 2017 04:28:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
+        Tue, 17 Oct 2017 02:27:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
-Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
-	by mail.us.es (Postfix) with ESMTP id 7E3CD220AC
-	for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 13:28:04 +0200 (CEST)
-Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
-	by antivirus1-rhel7.int (Postfix) with ESMTP id 6BB14DA392
-	for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 13:28:04 +0200 (CEST)
-Received: by antivirus1-rhel7.int (Postfix, from userid 99)
-	id 6AAC2DA391; Tue, 17 Oct 2017 13:28:04 +0200 (CEST)
-X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
-X-Spam-Level: 
-X-Spam-Status: No, score=-108.2 required=7.5 tests=ALL_TRUSTED,BAYES_50,
-	HEADER_FROM_DIFFERENT_DOMAINS,SMTPAUTH_US2,USER_IN_WHITELIST
-	autolearn=disabled version=3.4.1
-Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
-	by antivirus1-rhel7.int (Postfix) with ESMTP id DBEADDA86E;
-	Tue, 17 Oct 2017 13:27:58 +0200 (CEST)
-Received: from 192.168.1.97 (192.168.1.97)
- by antivirus1-rhel7.int (F-Secure/fsigk_smtp/550/antivirus1-rhel7.int);
- Tue, 17 Oct 2017 13:27:57 +0200 (CEST)
-X-Virus-Status: clean(F-Secure/fsigk_smtp/550/antivirus1-rhel7.int)
-Received: from us.es (129.166.216.87.static.jazztel.es [87.216.166.129])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	(Authenticated sender: 1984lsi)
-	by entrada.int (Postfix) with ESMTPSA id A4EF240584D3;
-	Tue, 17 Oct 2017 13:27:58 +0200 (CEST)
-Date: Tue, 17 Oct 2017 13:27:57 +0200
-X-SMTPAUTHUS: auth mail.us.es
-From: Pablo Neira Ayuso <pablo@netfilter.org>
-To: Harsha Sharma <harshasharmaiitr@gmail.com>
-Cc: netfilter-devel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH v2] tests: xlate: print tests passed and error for
- testfile argument
-Message-ID: <20171017112757.GA8578@salvia>
-References: <20171017092458.18672-1-harshasharmaiitr@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20171017092458.18672-1-harshasharmaiitr@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Virus-Scanned: ClamAV using ClamSMTP
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qUMNlc8Z;
+       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x244.google.com with SMTP id d28so936416pfe.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 02:27:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=rF8N6QZUvjaIgytqWMOn8Rrfa043JB5C0QjK60jsTms=;
+        b=qUMNlc8Za+2IctCsPoJnoFpI4FgT+EYZ2Lzw+xeNKxNdfC2yls/W4eaIcYXjNWSafA
+         wOLjNbh9LOnJPZ1qyTaRqqEZGzKRBIz/Xjv9N8dNpzMjRcko9GwXGisp1gD4U+f6825w
+         Q0YlvGtLmMygmqNTID1vgIZdt/aIb+voLjR78gx45pZOuydbXfAAjbqgP7DkUwbS0Azg
+         n26vM+3TXpQfk7RiL4XAS+zQFBrZf15WOjjOL/9a/R4AgsiMcqL+w5IiZz+YycyH8og1
+         J6ZJrIwGyLZfBohVhpqSpAqJS0LJ6KrwU4NYnaOST0Uq//Afxh8M6m0CdO3NYJLejjm+
+         C4cQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=rF8N6QZUvjaIgytqWMOn8Rrfa043JB5C0QjK60jsTms=;
+        b=SoPePHcsEeC5AXzYfDsNCPFCm0Cd9UcmmR6oTu0U1fzSzULbvLwx8wELQbR99hbmks
+         DxzumUJMJ54lgRG5TdWIUYm1Eh33daf7LAusthNuln3S2DMWb13zZLpZ0ysyOM+um27Q
+         s7EmG2CJ9gux32q3Q5M6k6fUO+91Aawww71CH4zT9kU1Kufz9Bt0pOx7lUWAg4/CxRCY
+         YJ26ikxWKFk6VlbU0xk8cJA3/Troe4uJg8OwxeDJSnB/2m2moU3879l1fPENZRNq/G3l
+         eMdIJqFJxsZfBInBLgtwZWwEQiLxUfaozSQYLdSD8cwHNtpyoZ3T6VBWnpnzRZJIw0Xf
+         Y8wg==
+X-Gm-Message-State: AMCzsaWbtgAkg+U7JlceR0qXff9bK3GYiokAhPrJJG1fbGGCde+XnjBD
+	XbN5s4DqM6UN9K4B+XQZXUAPe15e
+X-Google-Smtp-Source: AOwi7QAGu34DsrTQT0h1/j8nkqdWIQR0s2zpkJDgGhTQMw6SHTmNZ+7zZGQgU2KVL/8PrqHSQQYOxw==
+X-Received: by 10.84.217.206 with SMTP id d14mr11438394plj.62.1508232434139;
+        Tue, 17 Oct 2017 02:27:14 -0700 (PDT)
+Return-Path: <harshasharmaiitr@gmail.com>
+Received: from localhost.localdomain ([103.37.201.122])
+        by smtp.gmail.com with ESMTPSA id g24sm19435519pfk.0.2017.10.17.02.27.12
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 17 Oct 2017 02:27:13 -0700 (PDT)
+From: Harsha Sharma <harshasharmaiitr@gmail.com>
+To: pablo@netfilter.org
+Cc: netfilter-devel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com,
+	Harsha Sharma <harshasharmaiitr@gmail.com>
+Subject: [PATCH v2] tests: xlate: print tests passed and error for testfile argument
+Date: Tue, 17 Oct 2017 14:54:58 +0530
+Message-Id: <20171017092458.18672-1-harshasharmaiitr@gmail.com>
+X-Mailer: git-send-email 2.11.0
 
-On Tue, Oct 17, 2017 at 02:54:58PM +0530, Harsha Sharma wrote:
-> Print tests passed with errors and warnings when run with only specified
-> test file.
+Print tests passed with errors and warnings when run with only specified
+test file.
 
-I would expect this works like this, for consistency with other test
-infrastructure we have:
+Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
+---
+Changes in v2:
+ -Change subject
+ -print the errors if no argument is passed
 
-# python xlate-test.py extensions/libxt_ecn.txlate 
-Error: test file does not exist
+ xlate-test.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-I can see here this works like this:
+diff --git a/xlate-test.py b/xlate-test.py
+index 43c4be19..0a582af1 100755
+--- a/xlate-test.py
++++ b/xlate-test.py
+@@ -51,7 +51,7 @@ def run_test(name, payload):
+                     result.append(magenta("exp: ") + expected)
+                     result.append(magenta("res: ") + translation + "\n")
+                     test_passed = False
+-                elif args.all:
++                elif args.all or args.test:
+                     result.append(green("Ok"))
+                     result.append(magenta("src: ") + line.rstrip(" \n"))
+                     result.append(magenta("res: ") + translation + "\n")
+@@ -60,7 +60,7 @@ def run_test(name, payload):
+                 result.append(red("Error: ") + "iptables-translate failure")
+                 result.append(error.decode("utf-8"))
+ 
+-    if not test_passed or args.all:
++    if not test_passed or args.all or args.test:
+         print("\n".join(result))
+ 
+ 
+-- 
+2.11.0
 
-# python xlate-test.py libxt_ecn.txlate 
-
-But as said, it is counterintuitive. Would you revisit this patch?
-
-Thanks.
 
