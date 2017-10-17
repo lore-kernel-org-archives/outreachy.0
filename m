@@ -1,110 +1,94 @@
-X-GM-THRID: 6669714716866117632
-X-Received: by 2002:ac8:22e9:: with SMTP id g38mr10214442qta.47.1552913970003;
-        Mon, 18 Mar 2019 05:59:30 -0700 (PDT)
+X-GM-THRID: 6476443340841680896
+X-Received: by 10.46.2.4 with SMTP id 4mr75624ljc.20.1508243809213;
+        Tue, 17 Oct 2017 05:36:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:aa9d:: with SMTP id f29ls6697255qvb.4.gmail; Mon, 18 Mar
- 2019 05:59:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyvlRXGdYyKP4usB6Dqf5oN6+DQNgxWB0nJxsNnpLv0HaekmqiVxxYHrJDzRCndEcrZ9zlD
-X-Received: by 2002:a0c:d112:: with SMTP id a18mr5080297qvh.35.1552913969358;
-        Mon, 18 Mar 2019 05:59:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552913969; cv=none;
+Received: by 10.46.46.15 with SMTP id u15ls141745lju.12.gmail; Tue, 17 Oct
+ 2017 05:36:47 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+QH7y3W2DxkDwbb5aWHar70MMXfGoVA9C5G+O0AHS1k2eGzLlORXJlK2HIipiRle+YQ2lqH
+X-Received: by 10.46.22.20 with SMTP id w20mr69624ljd.40.1508243807340;
+        Tue, 17 Oct 2017 05:36:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508243807; cv=none;
         d=google.com; s=arc-20160816;
-        b=UNrXJR+h3RXJOWfpdQ1i0mLt4MWjLZEojLsyiiQHplYN/F+mNQZNXiSXWdZosFI+Zg
-         DTwjxBtyDwjPN4QGrbAO5zMMPATEG3Zoh2nc3rnweDip7YQpNgxcqsV4TVoOloI7Ht74
-         VtPyMn7oKZ6BYkVJvHzTUt4nAvmMsZiIowwYpcxKxJTx6U6otOtxCv/p/MfOkQwmqzlh
-         anoSZbt6CqBT/GlYU/F2DhfjWHnNCtGTeHDEfyhPIi9zJDxrG6HPWRdbjOtcfgp6kqx6
-         RP3teqgaPMYuy9831X79/fG92mqRWH3GnZl5HTBWYVw/k0X4+NMdxG9Ue1ngw3424ZTU
-         998w==
+        b=Aj4t74kFx4hkoD2yMUFM/zCxdMbxIgiQvlItxej3p0AmZgBPPQbMYX6Oa2yJxhNm7/
+         0DoY2P7RIWsQMipejZf+JHO7N69vS0DVXs4HWGm1bK3Pe+b9qGCAiZ6lssod5O5Jx+GC
+         CGWXZdVZtbuAZU0vyFXNg2055nDvXrk7rMlDkCYS30EQgiUykAycwxo8vttOQA/2AN0R
+         KYdhmpSn0A4Z2ev5LRk1sL/Q/mIy4V4Hr9xkAxDCbIOtHCygclROwPV1XQsVrrMqkNoi
+         oSIrn3zJdK3iHVEH61Qwqu9ElZ4UXiUUqf64qJGY+ienf/wRLmpvXG9nfX/Qt0MYE7cx
+         hYFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=bWJ/h/CWPqKWX9rWVhxXf0XihQbfdk1oci+W/sRxR5E=;
-        b=ERHjSHsoH3KvqzDK2j+LCIO/y5vFlKXhU3lsj4hJoR3U0WllDZBKEiER4i5kBEFqqZ
-         tDVwr7J84YBiAcV1+KRnmmGNwzuMsqWEQWunKrxicaoMjaPNr7j+UqxrdQ+yU2SpUg4y
-         IrugTNdbbi07i2I0wGnyRXY7g/RS5eRHLDH5ImLMC6P4u8LDY1j0BvkV2T0yFw2yuAqk
-         KqvmWPFaFgeGTkgMVsa94YH14teoFTMrhM3poeBhw7G0xIUYqsMLDx2/NJhH7+kg9FEO
-         1sxO8BAhPCfGS5dvAWO1m+CtSEzzMQLC8WEYF3BmGjO9BCNjgIjybbSTNYGEZCXPoH7C
-         QgmQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=TS0Vw0eWfhtMorm9967Q77UCkf0BX3qomkbaOGpGt4k=;
+        b=0epo6xQUTaW9WiRGWr5ygjLX7MCxFqlMeUMo6HDMV2T13u6cpzaCEPA3kidyAMrKLj
+         CXTdApy8op0rPCRdjoZ0ApxmHhiusgUqPDIjyNHK3ZE02SsamHJQ9qtGSE2GXRRLvntr
+         i0+Q+OqVjWRQ381tZfpBSSFONCf9gLKfBHX+0JSHfaLciaBSe+m3W0BgjsSkHR8z8tAs
+         mWONXJhHIF7P2oMck7/RyAKQOyIhbJW/mhbj5ijA7qticFPg+vwPYiHJLw+iH8yZN6qU
+         cVxjOI74103F+71EWEfOcMezFs/VBgzsH3vsjgjHff1eu6cm+o2/+7DMQNOmeuSVSr8d
+         SMWw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rk1OZA4I;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pf1-x435.google.com (mail-pf1-x435.google.com. [2607:f8b0:4864:20::435])
-        by gmr-mx.google.com with ESMTPS id e12si357072qtg.5.2019.03.18.05.59.29
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Return-Path: <pneira@us.es>
+Received: from mail.us.es (mail.us.es. [193.147.175.20])
+        by gmr-mx.google.com with ESMTPS id w14si464979lfk.2.2017.10.17.05.36.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 18 Mar 2019 05:59:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) client-ip=2607:f8b0:4864:20::435;
+        Tue, 17 Oct 2017 05:36:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rk1OZA4I;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x435.google.com with SMTP id j5so11224075pfa.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 18 Mar 2019 05:59:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=bWJ/h/CWPqKWX9rWVhxXf0XihQbfdk1oci+W/sRxR5E=;
-        b=rk1OZA4I7lDtElrJKzxJXR45zNDHct8bZcf5R+kIYyXyDPZ6sEROZexV74phFArH8z
-         0NBNppgWrAhVhe4N4lHT1krt3+HcGqXkeylhqgCn/JrDxO+Oa21i8BP31YJMv4W96ufw
-         TWtuaIJ8pDl82drXugIHgRRwwhpld1OK6enKq4382W+1Rv8wsapVN1ktVLlDTasx2EWk
-         49ZS3HIgUgssNs4I95pk5X9LccJlgEP/+CcMvDb7A6zVm4D+TPfHhaGE4LkOUVfK0Mcq
-         xKR1bWJl/Oa2uhJismplpKKudjyezqCi2oQWp+kT1YBYxNSXXpNbZSixsxxJ1X3wq1GT
-         VwaA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=bWJ/h/CWPqKWX9rWVhxXf0XihQbfdk1oci+W/sRxR5E=;
-        b=HUJEOksNx1KvyI28MzXQ0NA6vsPg4+AZbsIpSoMXvynrO77qeL+sr5wA0+7GoFNHJQ
-         DNluqlnSQd3bjqk3UE/NJi1SJ2MaZcNvd/ivPm+sdcM/nBaCwSurD/7pWvjPlcvANzwM
-         UbBOja/pBlkVajvukLK2wOlGrol0h3w5gfBLny6qth/WQy/rxt7XRiAMFLTnpF5tktix
-         mwSt1tyhfXFJQgm81M55zh+9xWQ2WPISn73/rAsJPOl9IgV+OyHeu/KSuyu7RVaqe1jP
-         m+jJLzLrYyXuD7Dxk62k8M7S7/sFIbTZERcrPShwPkFZt0vI5feuxbSGFPbLjBItNSTw
-         WvVA==
-X-Gm-Message-State: APjAAAWnzQYq3PpTcoWLbDoEqvYhAbKkBV6K/cAa2mApIZYhWk0z0kU7
-	e5CQZsWHBRxB6BD5d/IUSAH7FpFBJGo=
-X-Received: by 2002:a17:902:123:: with SMTP id 32mr6393609plb.187.1552913969092;
-        Mon, 18 Mar 2019 05:59:29 -0700 (PDT)
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from sanjana-Inspiron-5570.domain.name ([203.109.108.32])
-        by smtp.googlemail.com with ESMTPSA id z6sm45571797pgo.31.2019.03.18.05.59.27
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 18 Mar 2019 05:59:28 -0700 (PDT)
-From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8188eu: core: rtw_mlme.c: Fix unbalanced braces around else.
-Date: Mon, 18 Mar 2019 18:29:18 +0530
-Message-Id: <20190318125918.13149-1-sanjana99reddy99@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
+	by mail.us.es (Postfix) with ESMTP id 8660A5230A
+	for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 14:36:46 +0200 (CEST)
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 783FADA878
+	for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 14:36:46 +0200 (CEST)
+Received: by antivirus1-rhel7.int (Postfix, from userid 99)
+	id 6D828DA875; Tue, 17 Oct 2017 14:36:46 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
+X-Spam-Level: 
+X-Spam-Status: No, score=-108.2 required=7.5 tests=ALL_TRUSTED,BAYES_50,
+	HEADER_FROM_DIFFERENT_DOMAINS,SMTPAUTH_US2,USER_IN_WHITELIST
+	autolearn=disabled version=3.4.1
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 7F496DA86B;
+	Tue, 17 Oct 2017 14:36:44 +0200 (CEST)
+Received: from 192.168.1.97 (192.168.1.97)
+ by antivirus1-rhel7.int (F-Secure/fsigk_smtp/550/antivirus1-rhel7.int);
+ Tue, 17 Oct 2017 14:36:44 +0200 (CEST)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/550/antivirus1-rhel7.int)
+Received: from us.es (129.166.216.87.static.jazztel.es [87.216.166.129])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	(Authenticated sender: 1984lsi)
+	by entrada.int (Postfix) with ESMTPSA id 4848640584D3;
+	Tue, 17 Oct 2017 14:36:44 +0200 (CEST)
+Date: Tue, 17 Oct 2017 14:36:43 +0200
+X-SMTPAUTHUS: auth mail.us.es
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Harsha Sharma <harshasharmaiitr@gmail.com>
+Cc: netfilter-devel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] Update .gitignore
+Message-ID: <20171017123643.GA19972@salvia>
+References: <20171013170524.8104-1-harshasharmaiitr@gmail.com>
+ <20171017123239.GA19723@salvia>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20171017123239.GA19723@salvia>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Virus-Scanned: ClamAV using ClamSMTP
 
-Fix unbalanced braces after else statement.
-Issue found by checkpatch.pl semantic patch results for rtw_mlme.c
+On Tue, Oct 17, 2017 at 02:32:39PM +0200, Pablo Neira Ayuso wrote:
+> On Fri, Oct 13, 2017 at 10:35:24PM +0530, Harsha Sharma wrote:
+> > Added comments and files generated by libtools
+> 
+> Applied, thanks.
+> 
+> Please, add the right tag next time, eg. [PATCH iptables] So I know
+> the route for this at quick glance.
 
-CHECK: Unbalanced braces around else statement.
+For the record, I mangled this patch to focus on missing files that
+need to be ignore, that's enough I think.
 
-Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
----
- drivers/staging/rtl8188eu/core/rtw_mlme.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c b/drivers/staging/rtl8188eu/core/rtw_mlme.c
-index ca0cf8a86671..cbee02a86d22 100644
---- a/drivers/staging/rtl8188eu/core/rtw_mlme.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_mlme.c
-@@ -1111,9 +1111,9 @@ static u8 search_max_mac_id(struct adapter *padapter)
- 				break;
- 		}
- 		mac_id = aid + 1;
--	} else
-+	} else {
- #endif
--	{/* adhoc  id =  31~2 */
-+/* adhoc  id =  31~2 */
- 		for (mac_id = NUM_STA-1; mac_id >= IBSS_START_MAC_ID; mac_id--) {
- 			if (pmlmeinfo->FW_sta_info[mac_id].status == 1)
- 				break;
--- 
-2.17.1
-
+Thanks.
 
