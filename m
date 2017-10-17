@@ -1,108 +1,93 @@
-X-GM-THRID: 6669270077430300672
-X-Received: by 2002:a9f:2922:: with SMTP id t31mr7554334uat.16.1552810444672;
-        Sun, 17 Mar 2019 01:14:04 -0700 (PDT)
+X-GM-THRID: 6477617002737303552
+X-Received: by 10.223.169.144 with SMTP id b16mr1083747wrd.26.1508241618274;
+        Tue, 17 Oct 2017 05:00:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:f7d8:: with SMTP id a24ls2793958vsp.6.gmail; Sun, 17 Mar
- 2019 01:14:03 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx77oaMZwVVyAq0Z4NDiDjZ1vbMF0KqxyeRBX1hCPCV8BbboyX6WicF9ifmtuXyPPd/MfGI
-X-Received: by 2002:a67:f3c9:: with SMTP id j9mr7673241vsn.24.1552810443775;
-        Sun, 17 Mar 2019 01:14:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552810443; cv=none;
+Received: by 10.223.142.208 with SMTP id q74ls368337wrb.8.gmail; Tue, 17 Oct
+ 2017 05:00:17 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QDbZ0uFixK7tn1IqsoZPe4swkJNFuyGduykadRXLGY00Am5W9OMYXZ9y8BBzOOEVJa5sGcM
+X-Received: by 10.223.178.210 with SMTP id g76mr1023555wrd.7.1508241617399;
+        Tue, 17 Oct 2017 05:00:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508241617; cv=none;
         d=google.com; s=arc-20160816;
-        b=a/sQ7Q2jAnVuxBQyO/mRUXkmK0TeDFf/rKl94LJ2jdGkPVKXDZMn2gSx/NeeGBAGWq
-         zuMa6yiBEkW8iwrTKMRHB+ecazD795jCSX4aRG3gR/j8uBjkX60o0JxGyPaxRiTDQZAY
-         LJiq/5NhRXNPlgpAaWBWArhzwPIZUMQ1ZRe+qr7tcCMS1Nnmz3koeZMx5oZ3zw6CWF1p
-         Oy89ynHtYuvviYPxEu5LM1qMzwB9QI9mOiX9AX11Bz+eNIJjuBs8ALh9b1F5NH6HN6lL
-         TfS82gquIL1jyYuuR9TUpjiXXHodpLH2Eb3MNKLHsJF/B+h9Fb+u+wrGt3BlMfVDdokm
-         Zy2Q==
+        b=xnDo0g6KBbPnbh7CdJuCRx0nEXEj10ee336eXJlLI1GGrueSGCDD1GQCOKKWQZa91M
+         h5UnXnfECUZVhRJh77hudMBA+qugHSBBFeWsaOOlR4vUUKMGyD4menK6G/0fpr+5iOXd
+         5OvGfQaqSe14yZdt+5FMdrHkZ9og0yfwiMk+ynj/55Cn8q/agVD/U9QiLmm1PVnbTtag
+         53CNRaK3dXgxKeR4W9pXmh7SHtPkBv/Dzsd2RDDrL9U6MAiaJSfgT73FyamdJgIJymKd
+         hAPexZ4QWWQcyf/SDF/runMDQ3N0P7kpbBhLz1rcgZ5KpCgoQyOw8nLDo5fDbbPU2lqq
+         Qeww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=XSHue/+QoqizUieagbiSFm5CQoNPV82Zz0mAPQ9Nhtc=;
-        b=IbUxvaC1MBW8tROpav8SIgWnifaVGzlQCBtpvVsl2k6YiR9xRaYYWc4mP+AvaCnj6u
-         abs/1BMJy1bTftoqTOEa+TekMlrlg86wIrDrQ2Fu4wasCSfxhPXS0WgEcyEhqxq5yrEN
-         PYTg/3rQJvtaIGB7ufRYICK3vsLG1CzP4DElAeu2QDE8iCmQZCf+9rcQT7QzVU1xym73
-         IcMnxQnZA44S+6U/eBEjM6vfSPJf/LvI878lhtpOS9zlFnXz54AB07MIFNuB3ZDZbJ2Z
-         F5TDyferKNhBhf3ipbTMSJKS/91uP41S8w+kIjyjjxEc2vIEzCAyY8yU0ztS27/l6A4J
-         Otmw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=h4WZuQVjda6aH+zms/rDOZLTX0prQFKjGE6iKwLNnuk=;
+        b=sH8bp8fddtvxRrmmhBymq/IYcvGEmzpeDeqjZKLv972TAyB09+RLoCxiHpyjb9t5dk
+         c9vcUoEQ/gTJU921bh+43Ztn/V8Yofu48mcY5piMTtUZRCP5vwtYbuosqTLXt0QJvlzm
+         hAY9BhGLy/YPjDeteKjJbXJ0LipJ7h5KJoPQHCqNDoCg7HYY1GiQret8WuHHnLWgGEUz
+         XWMAh3zL62ds7CDen3vH3jboh9UPeYhwYD07lM9MLco2lowbLsKG1nNWm3abIFA/rDbt
+         QxvaaG4rQKRg2qS7o5fdWVVym7x5KomWwOavHGPKX068ztauhQbotwy8AeDBefERIDMa
+         82Cg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="eN/1DKXx";
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id h7si311239uap.0.2019.03.17.01.14.03
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Return-Path: <pneira@us.es>
+Received: from mail.us.es (mail.us.es. [193.147.175.20])
+        by gmr-mx.google.com with ESMTPS id m74si464338wma.0.2017.10.17.05.00.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 01:14:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
+        Tue, 17 Oct 2017 05:00:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="eN/1DKXx";
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x441.google.com with SMTP id i19so9206775pfd.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 17 Mar 2019 01:14:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=XSHue/+QoqizUieagbiSFm5CQoNPV82Zz0mAPQ9Nhtc=;
-        b=eN/1DKXxeXyz7GqHS/Cm96zzbQGGqNpxZ6uqf18Vr4XmlDVk3mTLrUNmAVJXw8jNa1
-         aq8aAVdqRkdNWkrWZBBGb2GNMLcHRhPMiJw7Q13EQx0UeqBMzpcpcO+/d0re7xTAPO2/
-         AEHZOpOxZ0mCwBMAKOig4Trinz0wG9xTCa4D8dXKty7SBwm5Z2rcjMFDoLMN+mxK2qO7
-         SHC75cf8HVls6pOgT7fsa2ufp88/3+rliyRdVEIhY9KqGBJ00dJ6QeRTbIjbz+s3DiJO
-         gwCeZa2B8RkxUmK13uFrZ2JSMS/TLWi2+DI7MGUmVCf8qx/2uyyjgzbIrAO4R8bDmMe4
-         EmIg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=XSHue/+QoqizUieagbiSFm5CQoNPV82Zz0mAPQ9Nhtc=;
-        b=W+xv/+QnUgqhR0YhT2ZnZICP/93ZwtwoBSYYm1Pt0L2m5BN6Itd/Mqx2iGRTfgqIZH
-         RUEq7P+pDS0vEO9ndliVraGdHi20ac3M4oTD1YAk6bYnIS0YWufwWEX6jl4SnoOHzTOe
-         9n2sFOx3ENz1icm6mYwrS8Q/YmMx+RHViWZMJVmR/GJs4YiZmf63zUnDG0mxQ3aCyni5
-         ocmH5uMpHZJ0f8zsrT8aEl40AYdwuXJEf3YeZ28/OPe32dcY5d/gVYrJAZ16S7pCSLCA
-         rFQ0umKygjQY9Q+GeB7OqBzPLgQyh+zlL6nv2AdhTVouhcZdoftjC3sU4Zzke7ax9oxp
-         zETg==
-X-Gm-Message-State: APjAAAU/9g3yCWMQKSQgTNT60LDplRGbxcoWvYHbstQ9tWPWdEJrD92f
-	UTQ/b4SITbm9hBAE1QK0Z7w=
-X-Received: by 2002:a62:4e8a:: with SMTP id c132mr12950121pfb.24.1552810442934;
-        Sun, 17 Mar 2019 01:14:02 -0700 (PDT)
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from sanjana-Inspiron-5570.domain.name ([219.91.254.60])
-        by smtp.googlemail.com with ESMTPSA id h126sm20753125pfc.135.2019.03.17.01.14.00
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 01:14:02 -0700 (PDT)
-From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: sound: drivers: aloop.c: fix a open brace '{' error.
-Date: Sun, 17 Mar 2019 13:43:53 +0530
-Message-Id: <20190317081353.2999-1-sanjana99reddy99@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
+	by mail.us.es (Postfix) with ESMTP id EACC84D658
+	for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 14:00:16 +0200 (CEST)
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id DB2C3DA38B
+	for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 14:00:16 +0200 (CEST)
+Received: by antivirus1-rhel7.int (Postfix, from userid 99)
+	id D9F3FDA388; Tue, 17 Oct 2017 14:00:16 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
+X-Spam-Level: 
+X-Spam-Status: No, score=-108.2 required=7.5 tests=ALL_TRUSTED,BAYES_50,
+	HEADER_FROM_DIFFERENT_DOMAINS,SMTPAUTH_US2,USER_IN_WHITELIST
+	autolearn=disabled version=3.4.1
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id D23E2DA86F;
+	Tue, 17 Oct 2017 14:00:14 +0200 (CEST)
+Received: from 192.168.1.97 (192.168.1.97)
+ by antivirus1-rhel7.int (F-Secure/fsigk_smtp/550/antivirus1-rhel7.int);
+ Tue, 17 Oct 2017 14:00:14 +0200 (CEST)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/550/antivirus1-rhel7.int)
+Received: from us.es (129.166.216.87.static.jazztel.es [87.216.166.129])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	(Authenticated sender: 1984lsi)
+	by entrada.int (Postfix) with ESMTPSA id 90B4D40584D8;
+	Tue, 17 Oct 2017 14:00:14 +0200 (CEST)
+Date: Tue, 17 Oct 2017 14:00:13 +0200
+X-SMTPAUTHUS: auth mail.us.es
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Aastha Gupta <aastha.gupta4104@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, netfilter-devel@vger.kernel.org
+Subject: Re: [PATCH] iptables: add test file for TCPMSS extension
+Message-ID: <20171017120013.GB11588@salvia>
+References: <1508187729-3926-1-git-send-email-aastha.gupta4104@gmail.com>
+ <20171017115628.GA11588@salvia>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20171017115628.GA11588@salvia>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Virus-Scanned: ClamAV using ClamSMTP
 
-fix open brace '{' issue to be placed in previous line.Issue reported by checkpatch.pl semantic patch results for
-aloop.c.
+On Tue, Oct 17, 2017 at 01:56:28PM +0200, Pablo Neira Ayuso wrote:
+> On Tue, Oct 17, 2017 at 02:32:09AM +0530, Aastha Gupta wrote:
+> > This adds test file for the recently added TCPMSS extension.
+> 
+> I'm taking this last version, it doesn't say v4 but looking at timing,
+> it is the last one you have submitted.
+> 
+> Applied, thanks. If there is anything you need to fix, send me a
+> follow up patch.
 
-ERROR: open brace '{' should be in previous line.
-
-Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
----
- sound/drivers/aloop.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/sound/drivers/aloop.c b/sound/drivers/aloop.c
-index 0c27e17a19e5..45ccf8cf61cc 100644
---- a/sound/drivers/aloop.c
-+++ b/sound/drivers/aloop.c
-@@ -556,8 +556,7 @@ static snd_pcm_uframes_t loopback_pointer(struct snd_pcm_substream *substream)
- 	return bytes_to_frames(runtime, pos);
- }
- 
--static const struct snd_pcm_hardware loopback_pcm_hardware =
--{
-+static const struct snd_pcm_hardware loopback_pcm_hardware = {
- 	.info =		(SNDRV_PCM_INFO_INTERLEAVED | SNDRV_PCM_INFO_MMAP |
- 			 SNDRV_PCM_INFO_MMAP_VALID | SNDRV_PCM_INFO_PAUSE |
- 			 SNDRV_PCM_INFO_RESUME),
--- 
-2.17.1
-
+Oh, I understand, this is the test file. Other patches add the
+translation.
 
