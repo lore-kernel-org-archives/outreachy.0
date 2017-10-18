@@ -1,132 +1,239 @@
 X-GM-THRID: 6477576827810349056
-X-Received: by 10.107.183.142 with SMTP id h136mr12829125iof.44.1508362812600;
-        Wed, 18 Oct 2017 14:40:12 -0700 (PDT)
+X-Received: by 10.200.50.55 with SMTP id x52mr1904101qta.62.1508341705612;
+        Wed, 18 Oct 2017 08:48:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.34.21 with SMTP id o21ls72860ito.7.gmail; Wed, 18 Oct 2017
- 14:40:11 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+RoocBdnSL9CzMGDU4ThlzeWSEcGXsPTl4EicUW9umL0FQNUobxXtDTqyLVLuSCxu9xL9Lx
-X-Received: by 10.107.168.102 with SMTP id r99mr13340868ioe.11.1508362811834;
-        Wed, 18 Oct 2017 14:40:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508362811; cv=none;
+Received: by 10.200.16.22 with SMTP id z22ls2092742qti.3.gmail; Wed, 18 Oct
+ 2017 08:48:25 -0700 (PDT)
+X-Received: by 10.237.63.153 with SMTP id s25mr2008408qth.11.1508341705061;
+        Wed, 18 Oct 2017 08:48:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508341705; cv=none;
         d=google.com; s=arc-20160816;
-        b=ubsVLGXk+lR6KuWvapNbjG90/sFlur1KJrdnp2uqMOoUmIZ4wZkKoIl+UYoIB7FHVC
-         g8sSuG+UBifWYqL0kExUNm03s5o6eGwlBnYH9lmFobHpOEita0uE83v+G+5Y21NBOmhl
-         8/I47ggL8gBYsWSy3ICnjp64B3fP5WOsj53l3NHHjZ0gH+FPhjmwfNXnByDPxkwqjnRk
-         SmaYtDc1+SMJIzIyUy5Gxv6zlhXeXLEtQA84UxPFshnwt3eqboIij0+ZGWizPhC2Fgyv
-         TALpr9O+3NwyVO6JTVOZZeuSisT/Y7QnrfYo+5tXtmmYsnFXEJdthBC7ur1X2g0cnhWi
-         XaHA==
+        b=bb/JT/nrbj+VTx/XiqZ1Euf2bAW5l3Kn8sKf1kI3B3sIMGOBsd+mLyMOr7Oi3IDEXT
+         f0xCdOh1qK1h94QklTkJfgthbgXylksQM6iHJsJM6sfY0i8u2vcWohVmcYYZ0TzNoqdc
+         dG/IU6/OWSCIP3WEgWpMsk/rrgqgDfxqiKt0zATkt2i6+R3cYTcucHM/OHknLLk1WfoA
+         05QBxmqZw2uJfVCIpuMaofzdOS7jSd15iN8iAyHPWmwOmjtd4zKdhG8crzXZ0zn3G8G7
+         1We7wN5FFr7gHoMPYfYlR3fWqqs8emeOD2NuStTbJ52sJSJahzWwEji8orDReBtucdN7
+         PRxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature:dkim-signature
-         :arc-authentication-results;
-        bh=5vTUnASW3Zb1X5dpSyS3ADopGVIC921K80rDnuUc+r8=;
-        b=f3ir1Ygrp3aSWl7d2MfwPu2+/NaqUABWPJV4YniV12xl9ja1bjN+a2LdsbkXwMQ/lm
-         VE+0q0y+gLLVBVg1NH1FbxVClJ52UlkJjODjmEFYJ73ZQPEak/ulMznt/7k3MxQiM+bQ
-         m05EuEqD46f/ZX1+ASMVtrbyQrvtsEd5z5jsM6EJqQYQMnb3XzmA9N8ZWuR8s1AjCB2x
-         JGvWEuPLzaVt2xfiPRlAvVCtsL3oBjQJwB0zVG3vj76EErZUlNYdKB/djsKpWTTjabUx
-         0VF2t180yTrIuo/2Abn4/+6nnp1zaaK/hCukIAQkTNvu+/9t7q90/H/NbBS5rQRYjMO/
-         /6jA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:message-id
+         :subject:cc:to:from:date:dkim-signature:arc-authentication-results;
+        bh=Ry+Xtg+yhdcVgKNPcynvXPlHtNdFMjfhOpCcr4iIXRI=;
+        b=Fs3okOLA1t72Gf/RVQs/sNCOEbNluy4pCGQSBb6DTkgGXtOf7oSq9+VoU4ncQ4kJ5F
+         dyVlpioXMJCDWqgpaPrglRIGMKk2KZxe8jED51pYRWeWaLA0d5rQWdTuA+25qWW3nx9s
+         oklzTOwIw4gQGRALIXceg5TmHrWNDNdGgyyQ9BOUqhJNuc/e/421cuDJ9tbFDc8zcEXo
+         I2ZyXeJvXyLhZNTCDep1Jalm7k6SDdeqS4htcM96xkPX6G13UvGUFYRIC3HGSBnhdWKP
+         U4MmWVcbula1gz1i6Id5lw+iqaIe8+bTHcROAK4MWloQy5u1T8OL7iXDbudXAI46jTeZ
+         d7VQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@tobin.cc header.s=fm1 header.b=TkWUitPU;
-       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=UIto1Orh;
-       spf=neutral (google.com: 66.111.4.28 is neither permitted nor denied by best guess record for domain of me@tobin.cc) smtp.mailfrom=me@tobin.cc
-Return-Path: <me@tobin.cc>
-Received: from out4-smtp.messagingengine.com (out4-smtp.messagingengine.com. [66.111.4.28])
-        by gmr-mx.google.com with ESMTPS id g5si307127itg.1.2017.10.18.14.40.11
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=M7m/B9f7;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::241 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+Return-Path: <frank@generalsoftwareinc.com>
+Received: from mail-ua0-x241.google.com (mail-ua0-x241.google.com. [2607:f8b0:400c:c08::241])
+        by gmr-mx.google.com with ESMTPS id 5si806636qki.1.2017.10.18.08.48.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 18 Oct 2017 14:40:11 -0700 (PDT)
-Received-SPF: neutral (google.com: 66.111.4.28 is neither permitted nor denied by best guess record for domain of me@tobin.cc) client-ip=66.111.4.28;
+        Wed, 18 Oct 2017 08:48:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::241 as permitted sender) client-ip=2607:f8b0:400c:c08::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@tobin.cc header.s=fm1 header.b=TkWUitPU;
-       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=UIto1Orh;
-       spf=neutral (google.com: 66.111.4.28 is neither permitted nor denied by best guess record for domain of me@tobin.cc) smtp.mailfrom=me@tobin.cc
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
-	by mailout.nyi.internal (Postfix) with ESMTP id 5A1FB20E2C;
-	Wed, 18 Oct 2017 17:40:11 -0400 (EDT)
-Received: from frontend2 ([10.202.2.161])
-  by compute5.internal (MEProxy); Wed, 18 Oct 2017 17:40:11 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=tobin.cc; h=cc
-	:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm1; bh=5vTUnASW3Zb1X5dpSyS3ADopGVIC921K80rDnuUc+r8=; b=TkWUitPU
-	C/8ABtDyBnDfBTNZ3egQTlaY/4/UVmwEwUJsrCc0l5RTToG5SMO/ghU+cesiA6nS
-	RxR8KXr3F358TzCZB/Wf836/Z3EarkaOr27BJZI3lyCb2xqdheHkmIhunLNtBI7z
-	EN2170j855+eIXKZpbLAR9t5Q4lME7CwTTjcgeE6dWMlYAN69s/Nyd34Ug4wH4B1
-	E7v9TabtC5lRHpFF8LfJxnkZ6b6sFSSv5Gsv/mDbuVU6mgf9KmM18kDIlL58+Mh4
-	giklobk8wSAQmDWl7Ndq9WdMEiPJCdF3XO1gs+91Tu7aU7cMvxJRn9e2org22rCz
-	3xgHW65CnbqxyQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm1; bh=5vTUnASW3Zb1X5dpSyS3ADopGVIC9
-	21K80rDnuUc+r8=; b=UIto1OrhIiCW31xKM8ITePaCLP1HEFuzFcFGpq/NKZ/z6
-	tlxuNSKyKyVv8Lnz6nDlN9m8NYljLjNj5v3r5LS4qmqlQoOuhgayIVP4+gBjNAbN
-	icu2B07Zap7b2LmxH83oOX4fToT00OBCZEN9HSpB5OprKKu9uCxXkMm2ret3DYAy
-	yFMlLyD1s6iBILVP7IjuUg83pXEcX5ljXfabnVPO1KLDuOyLvW5T0Qq9UcDBfK7t
-	QzuyCQCFOVHn6n46aBlE3pb79NNBZU0dWxEiBYgN/HA6giUEyQh9Qw3nEffNPNzV
-	GnXMy48NNe7EDPQHzp+BQdt6h09UJmpqRNINC8nzA==
-X-ME-Sender: <xms:O8rnWS-QnOabDWo1_Z9UESzsupatvVosdUINg5CMPQI3NSIiKIZjBQ>
-Received: from localhost (124-170-207-147.dyn.iinet.net.au [124.170.207.147])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 9D6D6247D9;
-	Wed, 18 Oct 2017 17:40:10 -0400 (EDT)
-Date: Thu, 19 Oct 2017 08:40:08 +1100
-From: "Tobin C. Harding" <me@tobin.cc>
-To: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
-Cc: gregkh@linuxfoundation.org, Julia.Lawall@lip6.fr, pablo@netfilter.org,
-	devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH v3] staging: wlan-ng: Remove unnecessary parentheses
-Message-ID: <20171018214008.GC31318@eros>
-References: <20171018145522.GA27138@kroah.com>
- <20171018154821.GA2002@ubuntu-server-1604>
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=M7m/B9f7;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::241 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+Received: by mail-ua0-x241.google.com with SMTP id v27so3863335uav.7
+        for <outreachy-kernel@googlegroups.com>; Wed, 18 Oct 2017 08:48:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=generalsoftwareinc-com.20150623.gappssmtp.com; s=20150623;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :in-reply-to:user-agent;
+        bh=Ry+Xtg+yhdcVgKNPcynvXPlHtNdFMjfhOpCcr4iIXRI=;
+        b=M7m/B9f7RvTEZC7bdziC8Bz4u407X5KnvKIuqn//BkGUbL6XvxJNXvBPWFbXLs8sok
+         fothjMo2eQnVID1VN+m3Xq6Cb2dt/iqE9hoW7tjbgyA53R0pPYO7cRTyAHXrkvtoUVaG
+         A5WHnjtdO1SkX2OTy1ukO41gpPstxQggCmEGmO+yREo//fRXhxWYDKcmTEWnVJBeUONs
+         Iki+zdv/ad7bN5aDgvqkfL1w5EQuEYjShLoDucqLX0cJ9Duq+IqV9c/tXLjmMjh1c+8y
+         f0/l9aM5o996uBsWE23gMy+RPgkMp6Vgvms04cOEG55Jq0Srjyll+tc0aevX89Bs8ULC
+         /aEQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=Ry+Xtg+yhdcVgKNPcynvXPlHtNdFMjfhOpCcr4iIXRI=;
+        b=j2oDA/IIr8W2pnpNMVfOdLBPSjvzV0UFr4uNHdUmz4PXwyZSyZJDjRY7M1DuxBBsrO
+         RS4F5muVYsWD1FVniD6a5WC+md2xSuuePjdjaLZnBqS1T1xbNjKnVfOZG8U9OVzNAijZ
+         hvd/HR3Ai2Qn9qv7Mb0xiPDh1gxOUO/0+SnLf9NZnig3N/zwDc+BDv3FgzRumgFSV2wG
+         AEicq2b6n6HeXqzpRhOdDwaTQPcj9DrTOIENw/F80BlQmvlNaPgtkXfrrUt6ovPKIIhD
+         58r9Jhaj1PvrefCejnMgkbS6zwFqB90CmI5p0NFbvMTQJugOyZR/mNQQJQ8bShSqkOpd
+         NGuA==
+X-Gm-Message-State: AMCzsaW5RLh5k+KRPA1ftD46ceUpTkQHt9lWfQ1WJiDwMubI4CEuvOnQ
+	vMGtF2YQKCTHcTrWp/OlIFsZ8A==
+X-Google-Smtp-Source: ABhQp+SBDgeknKHDhlT0PYSaO7oO+sV7Z9qRzO2XWu/U6EG641u2oVzr4Z3TClXhZ9WSaAX2Tb9yTA==
+X-Received: by 10.176.91.75 with SMTP id v11mr4062956uae.26.1508341704393;
+        Wed, 18 Oct 2017 08:48:24 -0700 (PDT)
+Return-Path: <frank@generalsoftwareinc.com>
+Received: from ubuntu-server-1604 ([152.207.209.222])
+        by smtp.gmail.com with ESMTPSA id y129sm2817952vkc.16.2017.10.18.08.48.23
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 18 Oct 2017 08:48:23 -0700 (PDT)
+Date: Wed, 18 Oct 2017 11:48:21 -0400
+From: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
+To: gregkh@linuxfoundation.org, Julia.Lawall@lip6.fr, pablo@netfilter.org
+Cc: outreachy-kernel@googlegroups.com, devel@driverdev.osuosl.org
+Subject: [PATCH v3] staging: wlan-ng: Remove unnecessary parentheses
+Message-ID: <20171018154821.GA2002@ubuntu-server-1604>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20171018154821.GA2002@ubuntu-server-1604>
-X-Mailer: Mutt 1.5.24 (2015-08-30)
+In-Reply-To: <20171018145522.GA27138@kroah.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Wed, Oct 18, 2017 at 11:48:21AM -0400, Frank A. Cancio Bello wrote:
-> Remove unnecessary parentheses to comply with preferred coding style for
-> the linux kernel and avoid the following checkpatch's messages:
-> 'CHECK: Unnecessary parentheses around'
-> 'CHECK: Logical continuations should be on the previous line'
-> 
-> Credits to checkpatch.
-> 
-> Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
-> ---
-> Changes in v3:
-> 	* Exclude any parentheses removal that makes unclear the order of the operations.
-> 
-> Changes in v2:
-> 	* I rewrote the log message to improve the style taking in consideration Julia's suggestions.
-> 	* I merged in this patch similars changes that initially were in theirs own patch. I will reply that other patch email thread, saying to discard it, to avoid confussion.
-> 
->  drivers/staging/wlan-ng/p80211req.c  |  2 +-
->  drivers/staging/wlan-ng/prism2fw.c   | 21 ++++++++++-----------
->  drivers/staging/wlan-ng/prism2mgmt.c | 23 +++++++++++------------
->  drivers/staging/wlan-ng/prism2sta.c  |  4 ++--
->  4 files changed, 24 insertions(+), 26 deletions(-)
-> 
-> diff --git a/drivers/staging/wlan-ng/p80211req.c b/drivers/staging/wlan-ng/p80211req.c
-> index afe8477..0d1556c 100644
-> --- a/drivers/staging/wlan-ng/p80211req.c
-> +++ b/drivers/staging/wlan-ng/p80211req.c
-> @@ -124,7 +124,7 @@ int p80211req_dorequest(struct wlandevice *wlandev, u8 *msgbuf)
->  
->  	/* Check Permissions */
->  	if (!capable(CAP_NET_ADMIN) &&
-> -	    (msg->msgcode != DIDmsg_dot11req_mibget)) {
-> +	    msg->msgcode != DIDmsg_dot11req_mibget) {
+Remove unnecessary parentheses to comply with preferred coding style for
+the linux kernel and avoid the following checkpatch's messages:
+'CHECK: Unnecessary parentheses around'
+'CHECK: Logical continuations should be on the previous line'
 
-While this is not making the code _harder_ to read, it is not making it any easier either. So all
-the change is really doing is quieting checkpatch. Usually it is not a good idea to make code
-changes _just_ to quieten a static analysis tool. It's just a tool remember, there to help us write
-better code.
+Credits to checkpatch.
 
-On top of that CHECKS are just that, things that should be CHECK'ed, not necessarily fixed.
+Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
+---
+Changes in v3:
+	* Exclude any parentheses removal that makes unclear the order of the operations.
 
-Hope this helps,
-Tobin.
+Changes in v2:
+	* I rewrote the log message to improve the style taking in consideration Julia's suggestions.
+	* I merged in this patch similars changes that initially were in theirs own patch. I will reply that other patch email thread, saying to discard it, to avoid confussion.
+
+ drivers/staging/wlan-ng/p80211req.c  |  2 +-
+ drivers/staging/wlan-ng/prism2fw.c   | 21 ++++++++++-----------
+ drivers/staging/wlan-ng/prism2mgmt.c | 23 +++++++++++------------
+ drivers/staging/wlan-ng/prism2sta.c  |  4 ++--
+ 4 files changed, 24 insertions(+), 26 deletions(-)
+
+diff --git a/drivers/staging/wlan-ng/p80211req.c b/drivers/staging/wlan-ng/p80211req.c
+index afe8477..0d1556c 100644
+--- a/drivers/staging/wlan-ng/p80211req.c
++++ b/drivers/staging/wlan-ng/p80211req.c
+@@ -124,7 +124,7 @@ int p80211req_dorequest(struct wlandevice *wlandev, u8 *msgbuf)
+ 
+ 	/* Check Permissions */
+ 	if (!capable(CAP_NET_ADMIN) &&
+-	    (msg->msgcode != DIDmsg_dot11req_mibget)) {
++	    msg->msgcode != DIDmsg_dot11req_mibget) {
+ 		netdev_err(wlandev->netdev,
+ 			   "%s: only dot11req_mibget allowed for non-root.\n",
+ 			   wlandev->name);
+diff --git a/drivers/staging/wlan-ng/prism2fw.c b/drivers/staging/wlan-ng/prism2fw.c
+index 344bec8..7c2e9c4 100644
+--- a/drivers/staging/wlan-ng/prism2fw.c
++++ b/drivers/staging/wlan-ng/prism2fw.c
+@@ -1177,8 +1177,8 @@ static int validate_identity(void)
+ 				 s3info[i].info.compat.top);
+ 
+ 			/* MAC compat range */
+-			if ((s3info[i].info.compat.role == 1) &&
+-			    (s3info[i].info.compat.id == 2)) {
++			if (s3info[i].info.compat.role == 1 &&
++			    s3info[i].info.compat.id == 2) {
+ 				if (s3info[i].info.compat.variant !=
+ 				    macid.variant) {
+ 					result = 2;
+@@ -1186,17 +1186,16 @@ static int validate_identity(void)
+ 			}
+ 
+ 			/* PRI compat range */
+-			if ((s3info[i].info.compat.role == 1) &&
+-			    (s3info[i].info.compat.id == 3)) {
+-				if ((s3info[i].info.compat.bottom > priid.top)
+-				    || (s3info[i].info.compat.top <
+-					priid.bottom)) {
++			if (s3info[i].info.compat.role == 1 &&
++			    s3info[i].info.compat.id == 3) {
++				if (s3info[i].info.compat.bottom > priid.top ||
++				    s3info[i].info.compat.top < priid.bottom) {
+ 					result = 3;
+ 				}
+ 			}
+ 			/* SEC compat range */
+-			if ((s3info[i].info.compat.role == 1) &&
+-			    (s3info[i].info.compat.id == 4)) {
++			if (s3info[i].info.compat.role == 1 &&
++			    s3info[i].info.compat.id == 4) {
+ 				/* FIXME: isn't something missing here? */
+ 			}
+ 
+@@ -1218,8 +1217,8 @@ static int validate_identity(void)
+ 				continue;
+ 			if (nicid.minor != s3info[i].info.version.minor)
+ 				continue;
+-			if ((nicid.variant != s3info[i].info.version.variant) &&
+-			    (nicid.id != 0x8008))
++			if (nicid.variant != s3info[i].info.version.variant &&
++			    nicid.id != 0x8008)
+ 				continue;
+ 
+ 			trump = 1;
+diff --git a/drivers/staging/wlan-ng/prism2mgmt.c b/drivers/staging/wlan-ng/prism2mgmt.c
+index 7207059..97ab6d7 100644
+--- a/drivers/staging/wlan-ng/prism2mgmt.c
++++ b/drivers/staging/wlan-ng/prism2mgmt.c
+@@ -1256,10 +1256,9 @@ int prism2mgmt_wlansniff(struct wlandevice *wlandev, void *msgp)
+ 				     word, result);
+ 				goto failed;
+ 			}
+-			if ((msg->keepwepflags.status ==
+-			     P80211ENUM_msgitem_status_data_ok)
+-			    && (msg->keepwepflags.data !=
+-				P80211ENUM_truth_true)) {
++			if (msg->keepwepflags.status ==
++			     P80211ENUM_msgitem_status_data_ok &&
++			    msg->keepwepflags.data != P80211ENUM_truth_true) {
+ 				/* Set the wepflags for no decryption */
+ 				word = HFA384x_WEPFLAGS_DISABLE_TXCRYPT |
+ 				    HFA384x_WEPFLAGS_DISABLE_RXCRYPT;
+@@ -1279,8 +1278,8 @@ int prism2mgmt_wlansniff(struct wlandevice *wlandev, void *msgp)
+ 		}
+ 
+ 		/* Do we want to strip the FCS in monitor mode? */
+-		if ((msg->stripfcs.status == P80211ENUM_msgitem_status_data_ok)
+-		    && (msg->stripfcs.data == P80211ENUM_truth_true)) {
++		if (msg->stripfcs.status == P80211ENUM_msgitem_status_data_ok &&
++		    msg->stripfcs.data == P80211ENUM_truth_true) {
+ 			hw->sniff_fcs = 0;
+ 		} else {
+ 			hw->sniff_fcs = 1;
+@@ -1317,14 +1316,14 @@ int prism2mgmt_wlansniff(struct wlandevice *wlandev, void *msgp)
+ 
+ 		/* Set the driver state */
+ 		/* Do we want the prism2 header? */
+-		if ((msg->prismheader.status ==
+-		     P80211ENUM_msgitem_status_data_ok) &&
+-		    (msg->prismheader.data == P80211ENUM_truth_true)) {
++		if (msg->prismheader.status ==
++		     P80211ENUM_msgitem_status_data_ok &&
++		    msg->prismheader.data == P80211ENUM_truth_true) {
+ 			hw->sniffhdr = 0;
+ 			wlandev->netdev->type = ARPHRD_IEEE80211_PRISM;
+-		} else if ((msg->wlanheader.status ==
+-			    P80211ENUM_msgitem_status_data_ok) &&
+-			   (msg->wlanheader.data == P80211ENUM_truth_true)) {
++		} else if (msg->wlanheader.status ==
++			    P80211ENUM_msgitem_status_data_ok &&
++			   msg->wlanheader.data == P80211ENUM_truth_true) {
+ 			hw->sniffhdr = 1;
+ 			wlandev->netdev->type = ARPHRD_IEEE80211_PRISM;
+ 		} else {
+diff --git a/drivers/staging/wlan-ng/prism2sta.c b/drivers/staging/wlan-ng/prism2sta.c
+index 070a237..38956fb 100644
+--- a/drivers/staging/wlan-ng/prism2sta.c
++++ b/drivers/staging/wlan-ng/prism2sta.c
+@@ -1929,8 +1929,8 @@ void prism2sta_commsqual_defer(struct work_struct *data)
+ 		return;
+ 
+ 	/* we don't care if we're in AP mode */
+-	if ((wlandev->macmode == WLAN_MACMODE_NONE) ||
+-	    (wlandev->macmode == WLAN_MACMODE_ESS_AP)) {
++	if (wlandev->macmode == WLAN_MACMODE_NONE ||
++	    wlandev->macmode == WLAN_MACMODE_ESS_AP) {
+ 		return;
+ 	}
+ 
+-- 
+2.7.4
+
 
