@@ -1,84 +1,84 @@
 X-GM-THRID: 6478086724175003648
-X-Received: by 10.176.19.70 with SMTP id h6mr7938390uae.94.1508297594968;
-        Tue, 17 Oct 2017 20:33:14 -0700 (PDT)
+X-Received: by 10.98.157.144 with SMTP id a16mr3558539pfk.44.1508297424769;
+        Tue, 17 Oct 2017 20:30:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.176.27.91 with SMTP id n27ls842454uai.5.gmail; Tue, 17 Oct
- 2017 20:33:14 -0700 (PDT)
-X-Received: by 10.31.149.18 with SMTP id x18mr7525270vkd.19.1508297594002;
-        Tue, 17 Oct 2017 20:33:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508297593; cv=none;
+Received: by 10.98.185.6 with SMTP id z6ls767681pfe.1.gmail; Tue, 17 Oct 2017
+ 20:30:23 -0700 (PDT)
+X-Received: by 10.84.142.1 with SMTP id 1mr2437131plw.36.1508297423885;
+        Tue, 17 Oct 2017 20:30:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508297423; cv=none;
         d=google.com; s=arc-20160816;
-        b=0J7RfRrkBIaFiawdcxsyAKqARXAz/wy02x2b1At3NS2m6opHKtTwxx7LZg24rnXU83
-         TN+9eRdZLaoJXr0+Sx6PpIJMLr4NaDN+I7JULyp0y2F7t8Rbi1NFXXydOES88scpLFrQ
-         Mjbyr0CE2+pdacMepdDffGjz30+3TanYTKSaJpaxZHU0MN2o7Mkk7xmewEmAP30kDW24
-         vjaUUNSXWKdC11o9M7Vu1JI4t+lskR4rUD3Lq9SIt3+mlhRpvmVWkOv77wSwfSxuUJgc
-         PJ6Tb4xpx3aI7eOKHH8xTznElhQkt3pYSHwHiBwqK5JrAvyNO0xpV/oaJPOVYuXNKH4c
-         VtnQ==
+        b=0WtGB+qpk4BbYno20q8fi0mYhQ10wihKKvGJoWYxNPKGmuCT3Vd8u6vnx4199sKikh
+         u9G7YBcamgLz3NYi96AeuB3lwhdBD8F6pN7+5/6pn0ZfY04ZU/nPxsyMXeHXR8iTQ9d6
+         YfTMkl1rU/FXMGuebPpRy3AAwDenxefbIWO2ZLJI2DGzfbN9FuIV1jygA7t9Wcr6SYqg
+         ArhrkEqFb0ctK8yNAjSIwgRWZYYsmQDxYAHCOPbFgRWvx7nd6KmtbO8GM8utUFbUdlW/
+         4Tr7cokkd4crvvcIT10FYlMMiQ6+iGKGZCl2KFn/KWXNDiz/UwRWdGBTjyq3UXlMVFK4
+         GrkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature
          :arc-authentication-results;
-        bh=Mi4Qjpxz3aleUZw6Jqmj48bbuO2CTsHSoxmCBgL+f8E=;
-        b=kNFGBLn7QKZCSHE9NRl5AXcZ4+UbiWej6ZhCG5aTgQ4MbaObCIl6IHn/bb7bRnmlW8
-         1gzdlhkfoSNlg5JVvPOKFUQWztbNEUth7WGMgBgIWThOk0AYsW0S6jjRUkqduYIOi1Y4
-         w94Qz2TPSJ1TgJ9M7lr/EkN1pKu5ky3SV7bQ+IGTwiDTe2pMMGNy7M5kdUck5NYWFUfd
-         OfdQSE9wcPQQYuw5fiOUNhhRfTAD76eWMQ5UrFP+E1BXmSAF3qNa8+IA8A71dbdnXOU8
-         4269bCb5czyWn8Vap+wkSsrI9EzUnmDXHlTrFbRIVoPqE7XOpOv5/3rbGE5l45Fu+Dpi
-         dp+w==
+        bh=HyZOCDpAs94juO2ST29hyw0tPVzw4IC0FgsmsZW6dZI=;
+        b=YW0+zsw4NHoKhVr0O9kzHVA8sAC2PvU/DT6UUtPt5kbd9Dj1Z7BeTdvpY4qLaAuB4q
+         e//u9Q9uZdxpcTPNiWBy98AcxRFsqEPWh/6EuDgMiwbg38GgEKMQnWU5jMpYqp5iUDQv
+         bsdKoRmXfDVO1NWtdhnQPSF1BmyTkBJDOmgM16UfbJmyO1warMqeqrIU3Jplg44fLCh7
+         8G+gji7DtNdYSqlMMJ7ble2X0/FCvs4MvSaQ6WZJTDRz9qw8iOWbTu3A3HlMOrUYjffM
+         a1I0JfzZIOscPDVXidMlNWBxqIE7pcvvEZ6ADhMUd9QymxvRUVd3RhHmNHoPY0TVavi9
+         iEdg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=ZTNpi/88;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c05::231 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=rIyKRsr6;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c05::234 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
 Return-Path: <frank@generalsoftwareinc.com>
-Received: from mail-vk0-x231.google.com (mail-vk0-x231.google.com. [2607:f8b0:400c:c05::231])
-        by gmr-mx.google.com with ESMTPS id q64si541226vkg.3.2017.10.17.20.33.13
+Received: from mail-vk0-x234.google.com (mail-vk0-x234.google.com. [2607:f8b0:400c:c05::234])
+        by gmr-mx.google.com with ESMTPS id b9si723974pfm.1.2017.10.17.20.30.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Oct 2017 20:33:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c05::231 as permitted sender) client-ip=2607:f8b0:400c:c05::231;
+        Tue, 17 Oct 2017 20:30:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c05::234 as permitted sender) client-ip=2607:f8b0:400c:c05::234;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=ZTNpi/88;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c05::231 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
-Received: by mail-vk0-x231.google.com with SMTP id g69so2461756vke.5
-        for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 20:33:13 -0700 (PDT)
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=rIyKRsr6;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c05::234 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+Received: by mail-vk0-x234.google.com with SMTP id q13so2466018vkb.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 20:30:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=generalsoftwareinc-com.20150623.gappssmtp.com; s=20150623;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=Mi4Qjpxz3aleUZw6Jqmj48bbuO2CTsHSoxmCBgL+f8E=;
-        b=ZTNpi/88fM6+XKDLtC0jCrII4Uc95n+t2U5D0nqmmw33yNwDRoJBABKvHYYqdSpTuT
-         6V2Ff6TBUyrzh8mTJEZeDCCF8FtaYhEaNTI98AJeryTcibMtZou03bVj6RsxQtKgh9do
-         7Fs0uooJ3rAhWfEXCIwUEygvdfBoXQL38TWqEGurO8eFt7xq/7gEgSoNzogj9J2A3vf2
-         ivDwoQhuu3X7XK672Qxak14bLQtRCli/mFiJybX79EQFiD8WuxIVqOedlmw2RXvLVmRw
-         c7gOAgI6T8hSi7Nnah+gtQZXdn7r3w7GTuouJUlW4mdPGvlzzkOcOGxX4fi9IbqfvDS5
-         1XKQ==
+        bh=HyZOCDpAs94juO2ST29hyw0tPVzw4IC0FgsmsZW6dZI=;
+        b=rIyKRsr6DD4RAobHHmF+Uzko7g4YRpZN9uFdM0mwgCYC9b79Y1QTlOu2TivYuXG7RB
+         WNyzL++cDi2/m9n/ufLBQqaAaXh7Hw78B9kfmPTSwaXeA+RwEdzdPpZg7PSyV8oUrRDk
+         A+OyDqdBBu6fmBeM3ZOYvdo9KGdVcHKC11rGFnYfkdPts0MOj5Dr0N/6MtQQ3SpXY6Ll
+         M3gE8h/h8U1ZtAmnGF2jhl++M8hd4XC/ldutaK2OfIGUnOhZqGTH5pa2E/nRz+C8TEQE
+         Dd8wcE5ux5CoH1VO15MbNOJSp4SZkeWi/17AV+0B5LkUARZprbaY3v5JXal6HItlbhCz
+         CHxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=Mi4Qjpxz3aleUZw6Jqmj48bbuO2CTsHSoxmCBgL+f8E=;
-        b=G2CYIhfhlYfL3itYknm3KlM2O9EouTZnadFmrXhuRLAAK6Xrk5m3AlV5srMfQERQkE
-         +4+R2LAIt4obV/yf/iIVdq7GZdsvCcOTU1gf8Efm59SE1RA00Cde1LhQAs1VN9gPsznu
-         c6TwNCBkYrn3//8i7hW6QVhMg3u9wh/ufunZgMjAAW5XtzGCxp/p3egQga5cAyOIgUp1
-         GYbVGPzReaoab0Ss7TpjKrQTbL25Gk8Xw43m9gwCxb8DA8MOE1B1MrAfl6KGraeZTD3P
-         ctkSe5bJ0tNZ8a48srS8Nyu+3xKE5WF8FitDmIP46PaSTQHzyzXMtG6vZeJzLvMnRgqG
-         oaJg==
-X-Gm-Message-State: AMCzsaV52lw5Is7pyb/6DjEnpyzpqX1DvAbl/EHVY5gPIH3aQ7FyWMhK
-	kTKkJiDWEfswMJ1noiC+ITG//ZJ8
-X-Google-Smtp-Source: ABhQp+QdavItl6UgnGrcWN0G8uLBjAKsjx8DgRsvhDGZo5HGW7HMO+0lJkgB1KGNwuY/iNkOxcjfow==
-X-Received: by 10.31.168.66 with SMTP id r63mr4357857vke.32.1508297593517;
-        Tue, 17 Oct 2017 20:33:13 -0700 (PDT)
+        bh=HyZOCDpAs94juO2ST29hyw0tPVzw4IC0FgsmsZW6dZI=;
+        b=gUKY574R77kizMfTjMJPfKmxgOBfoDPcLVEB6B01h54pFHD9cPCjbrZzXnLJ7DYyuw
+         mcYsdK4NWZXdS0V7xlCng2GZ/6C/LqGYsrcP6e+nDZh0mbNCD+Z4co9e0eftFh2Dz7Zt
+         /UafaFYUC6yyqlvl9FoG4vA5Y79Qo/tDxVDaz+R8OxHYQDChALHeSrA3YXvu7F+xlCSH
+         7HIVw8nIHsW8dziNbAsmpb/4hc7OS7xK9vSb3VowwYqIaOKmtSr/Js2TJzy8YawVpYPf
+         3djNhaN5BCyJPFRqv2JJ8ZdBMLf/Bdf+teHfH60wRRy5lbd8mjUbA1oyC60Hpg4o1hqF
+         lbzA==
+X-Gm-Message-State: AMCzsaVlzZsaDhKhgCP7Kfwb+A22q/x+1QBlH0wPZRLP0JAyiZKqCT1P
+	SdBojGkS6tIjqWmWqTU5RULxaPtI
+X-Google-Smtp-Source: ABhQp+RIcnlWLmwpMmprcLg5qEQLKnE1q0CkLtKuYFqsF/1tqnXHq3FSzLyTPu80GY0C7spqQzbCGw==
+X-Received: by 10.31.73.129 with SMTP id w123mr4504063vka.163.1508297422770;
+        Tue, 17 Oct 2017 20:30:22 -0700 (PDT)
 Return-Path: <frank@generalsoftwareinc.com>
 Received: from ubuntu-server-1604 ([152.206.125.129])
-        by smtp.gmail.com with ESMTPSA id h15sm2240569vke.39.2017.10.17.20.33.12
+        by smtp.gmail.com with ESMTPSA id 5sm3392295vkh.10.2017.10.17.20.30.21
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 17 Oct 2017 20:33:13 -0700 (PDT)
-Date: Tue, 17 Oct 2017 23:33:06 -0400
+        Tue, 17 Oct 2017 20:30:22 -0700 (PDT)
+Date: Tue, 17 Oct 2017 23:30:20 -0400
 From: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
 To: pablo@netfilter.org, Julia.Lawall@lip6.fr
 Cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/4] staging: rtlwifi: rtl8822be: Use __func__ instead of
- hardcoded name
-Message-ID: <7ce624d59500b35c025e847e29f1ee32be778f21.1508295702.git.frank@generalsoftwareinc.com>
+Subject: [PATCH 1/4] staging: rtlwifi: rtl8822be: Balance braces in else
+ statement
+Message-ID: <d00f40fcdf006d232220524b368bb849b785ace5.1508295702.git.frank@generalsoftwareinc.com>
 References: <cover.1508295702.git.frank@generalsoftwareinc.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -86,36 +86,50 @@ Content-Disposition: inline
 In-Reply-To: <cover.1508295702.git.frank@generalsoftwareinc.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Switch hardcoded function name with a reference to __func__ making
-the code more maintenable and addressing the checkpatch warning:
-
-WARNING: Prefer using '"%s...", __func__' to using 'rtl8822be_sc_mapping', this function's name, in a string
-+                                       "rtl8822be_sc_mapping: Not Correct Primary40MHz Setting\n");
+Add braces to else statements to comply with section 3) of  'Linux
+kernel coding style' and avoid the following checkpatch message:
+'CHECK: Unbalanced braces around else statement'
 
 Credits to checkpatch.
 
 Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
 ---
- drivers/staging/rtlwifi/rtl8822be/trx.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/rtlwifi/rtl8822be/fw.c  | 3 ++-
+ drivers/staging/rtlwifi/rtl8822be/phy.c | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtlwifi/rtl8822be/trx.c b/drivers/staging/rtlwifi/rtl8822be/trx.c
-index 38f80e4..54f65f3 100644
---- a/drivers/staging/rtlwifi/rtl8822be/trx.c
-+++ b/drivers/staging/rtlwifi/rtl8822be/trx.c
-@@ -571,9 +571,9 @@ static u8 rtl8822be_sc_mapping(struct ieee80211_hw *hw,
- 				sc_setting_of_desc =
- 					VHT_DATA_SC_20_UPPERST_OF_80MHZ;
- 			else
--				RT_TRACE(
--					rtlpriv, COMP_SEND, DBG_LOUD,
--					"rtl8822be_sc_mapping: Not Correct Primary40MHz Setting\n");
-+				RT_TRACE(rtlpriv, COMP_SEND, DBG_LOUD,
-+					 "%s: Not Correct Primary40MHz Setting\n",
-+					 __func__);
- 		}
- 	} else if (rtlphy->current_chan_bw == HT_CHANNEL_WIDTH_20_40) {
- 		if (ptcb_desc->packet_bw == HT_CHANNEL_WIDTH_20_40) {
+diff --git a/drivers/staging/rtlwifi/rtl8822be/fw.c b/drivers/staging/rtlwifi/rtl8822be/fw.c
+index 8e24da1..02f5004 100644
+--- a/drivers/staging/rtlwifi/rtl8822be/fw.c
++++ b/drivers/staging/rtlwifi/rtl8822be/fw.c
+@@ -766,9 +766,10 @@ void rtl8822be_set_fw_rsvdpagepkt(struct ieee80211_hw *hw, bool b_dl_finished)
+ 		rtl8822be_fill_h2c_cmd(hw, H2C_8822B_RSVDPAGE,
+ 				       sizeof(u1_rsvd_page_loc),
+ 				       u1_rsvd_page_loc);
+-	} else
++	} else {
+ 		RT_TRACE(rtlpriv, COMP_ERR, DBG_WARNING,
+ 			 "Set RSVD page location to Fw FAIL!!!!!!.\n");
++	}
+ }
+ 
+ /* Should check FW support p2p or not. */
+diff --git a/drivers/staging/rtlwifi/rtl8822be/phy.c b/drivers/staging/rtlwifi/rtl8822be/phy.c
+index 921226b..589ef15 100644
+--- a/drivers/staging/rtlwifi/rtl8822be/phy.c
++++ b/drivers/staging/rtlwifi/rtl8822be/phy.c
+@@ -1562,9 +1562,10 @@ static char _rtl8822be_phy_get_txpower_limit(struct ieee80211_hw *hw, u8 band,
+ 						      [channel_index]
+ 						      [rate_section]
+ 						      [channel_index][rf_path];
+-	} else
++	} else {
+ 		RT_TRACE(rtlpriv, COMP_INIT, DBG_LOUD,
+ 			 "No power limit table of the specified band\n");
++	}
+ 
+ 	return power_limit;
+ }
 -- 
 2.7.4
 
