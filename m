@@ -1,80 +1,79 @@
 X-GM-THRID: 6475500386308325376
-X-Received: by 10.55.103.82 with SMTP id b79mr12772994qkc.32.1508301012204;
-        Tue, 17 Oct 2017 21:30:12 -0700 (PDT)
+X-Received: by 10.202.0.193 with SMTP id 184mr8119525oia.100.1508300483989;
+        Tue, 17 Oct 2017 21:21:23 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.55.166.136 with SMTP id p130ls1488374qke.7.gmail; Tue, 17 Oct
- 2017 21:30:11 -0700 (PDT)
-X-Received: by 10.237.39.155 with SMTP id a27mr772857qtd.13.1508301011630;
-        Tue, 17 Oct 2017 21:30:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508301011; cv=none;
+Received: by 10.157.1.211 with SMTP id e77ls946336ote.21.gmail; Tue, 17 Oct
+ 2017 21:21:23 -0700 (PDT)
+X-Received: by 10.202.227.203 with SMTP id a194mr6590996oih.4.1508300483192;
+        Tue, 17 Oct 2017 21:21:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508300483; cv=none;
         d=google.com; s=arc-20160816;
-        b=pdxagQbaGffhLqUJ+gZDysKxwk1XCr/3RumqJ0jWaaqOO9SYJSHz2RAJzjB8pGip7T
-         GXnJCcETU+MowYrBOF+B4qIvtdidqOL+aem7CryZCcP7Gny5KqrDTuWp6vN6FUdQwDaQ
-         pYJYCR5lMlVg9m+Fgxrm3FcmK1betUP8+3H/4wkZYQDje3AZTb75pAY49uXnNkIMAL8l
-         CruSrYItTkCzPN8O+xE8ZPFbTXDavU1ySX/Vwsqq1UXguXDxiTKSWu7hxQP7gAfXlJZD
-         lTZURFjPkKB+q/uELxFN7y+sELjc06bngwXbN09UEhM+hYqA+l9k3nBBUfEBbOo0T949
-         b/Mw==
+        b=WVQqSKUsR4GnJFUFnqg1cj+o4naFhXvU7zhnE65qzwLKOra5HEj04Qnnd539QQO7ZE
+         sclTrLKuP3Qa3bQXtQzbmY7520NLPuBOswh4drtYqzdQhSHT6vvLaRFWJ6s7dcNvM6zy
+         MAZut8Nq9lCy1k7QirIhG300fqDOWOjpnKLaFRQjiQHGCgbd99/cqyclhbG5QwD0+gTb
+         e89ZvxyFBH+CLenAWTCPVq1Ul1Qr0q0FXzo2b12wUlG01mnP2qXtI/EBIrEp2gG7HBPW
+         NcUMXOxTkv0zZlh0qgrZEFqzHNstRbWgnPjlcYvEtL+vmEaaxMrBubFBKx9yFlqjoHDR
+         tOTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature
-         :arc-authentication-results;
-        bh=fV+2LDhlN7Qz0II6qVShT8a8L4YKxXf5nDExtTTw11Y=;
-        b=f9McWUXMhyrJ1P0Rk7zGDWg7EZn6IlW2BJT8ixz3zRd1LHw2aTqqPbi10C1Hnf5It3
-         yOTujyzh4I1iVsvU5uqpbPYaARWI98TCM6j90OuCm+vGERxVhVDCHcY/wSNLPwcvgLYq
-         zYlQYfT6K7jb6yZopyyR0aawj2LxrPpOFhG0Gy9HlRvu5czmMSeIuXQzQlOwGePVzPq9
-         zgrGhdVp1EergKp/0xyolkaTon9diHQOBAhdyc8X7J7TeUtCraqOPLHWuDrEDN0Dmk75
-         R33LOmwfDFVcUiLHTxrGrv9oOYCaT6AB0HUlKuMwGtWaF3skLxUpY3EEK+Nis2kK9HfV
-         SWjw==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature:arc-authentication-results;
+        bh=WNzwz5vNGkKWRPbDKozaXmoQQJ03P1Wv44L4N+wEvaQ=;
+        b=ipRKJ1u6bU44BTgOheqClN/7i5UXoqHe+4pnkIc2cURDNsIFiZetiRDQKg0cOTPhqX
+         KBlTFQU0ue0wcxoGw58g3CL2TX+0daQK++Z2UD0qkbLCFMZ0SKN6yyfIzTwvsI+v+/x8
+         xpAf4yknbil5b8kXfRUr8VwoKC4siNK/e7M+7aWLxc3X7JOGruMPZZdM+m9Q1tMR7W4W
+         9mj/Zz1T5oWp90EZP2zylZmMxcKOzMbwKMVSCNg6Mg4SqSoDGV3VOEKEbe3XEGUTTNV+
+         e5fbsOHdSydOKC95X9MBF2NRwsf++PNerPMY1wI/Z5qvKf2m5FXl/i839FIARH+3agUf
+         g0Yw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GKFupL8N;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pfBtpwAX;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::234 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id w140si543687qkb.4.2017.10.17.21.30.11
+Received: from mail-pg0-x234.google.com (mail-pg0-x234.google.com. [2607:f8b0:400e:c05::234])
+        by gmr-mx.google.com with ESMTPS id w3si435517oif.3.2017.10.17.21.21.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Oct 2017 21:30:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Tue, 17 Oct 2017 21:21:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::234 as permitted sender) client-ip=2607:f8b0:400e:c05::234;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GKFupL8N;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pfBtpwAX;
+       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::234 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id i5so2999406pfe.6
-        for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 21:30:11 -0700 (PDT)
+Received: by mail-pg0-x234.google.com with SMTP id r25so3218697pgn.4
+        for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 21:21:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=fV+2LDhlN7Qz0II6qVShT8a8L4YKxXf5nDExtTTw11Y=;
-        b=GKFupL8NFy5ffYzEY3lGDmXd+rhtRhcQf+INroajrZdGEl02l0TtZ+bO1lfPkW1cNs
-         ingH+ACvrHQ3lOYXdNPDRIrRWL+o2r0JQv7V4f5YtmZxyExcM5lLWOTd5vM7BqaPw/AO
-         bVA9jn63TWZYcyfsy7FYWXunCyUlZrwJLAxl7NtQVV9vuSip+tfp4MRDwEDI2r52oX16
-         s+9tdnMXijGa9ZMqg/i1o6SfwslHNSdx0oaFgx/Fpzbb6bCePb2fX6MWtf/fuil6cIES
-         Zs38Ky2dXeS7SrXEPhHcLz+dC0hOK08GS4TpVnuHUxpzlBzAohF/baYnRnEypC+D5/XJ
-         NlxQ==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=WNzwz5vNGkKWRPbDKozaXmoQQJ03P1Wv44L4N+wEvaQ=;
+        b=pfBtpwAXUBYFwNR7oQbjldqIQaBVoiXh14BkHcFtrCYnkyBdLdwKfJlVFOJUxO+Il1
+         wmoHq7NkmuqgSIM7or+VOrz/a8/FYzm4rkCxcSAwlcysWSR91p3riY+UDBS7Wn/vj6yo
+         8sdthQQwEvGj5vmV3jKsESBK4Fztpo2DJ/MYNx/EckYH+/aiTF9uMgHpkC6a9v4Q/G79
+         03H9SkWjxW1WeJi9tDYCwvble50jABOI+5s33LCq7OmzBgt8iPHIWQNhP5utRuX4Oqsa
+         TyKXJm8F8WzYXYLKCoOo4lPfW1qWI+Ygrw/SXQB4tobdqAr2JlVpQwZBr6OnzKCmdfeG
+         LhcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=fV+2LDhlN7Qz0II6qVShT8a8L4YKxXf5nDExtTTw11Y=;
-        b=cfo6U34vn5jS6lIWae1n/g3LnJsMzgt3cP0GQQoUL8eywX7caD9iur/MbwI2wWOfXY
-         salFnle/4TS3yolH+ALi1M6Ots8tsx7Z7AZ1G37yNG29uQI1huJc72c7HHD468Pcp2qr
-         Hwn0UYx3ViwYieRfsIAYEDIuIa1BUd4wy4XPcJt4nZyqQG4dCQ65qCZqZV52AEseqonC
-         eZeDBBMqTJjih2YJdr46O7S4nlyZ53ydm5+zymw1Vv1rs07nbTqbtd9T0hiDOgUoquSY
-         mzLMdSDgaJ8ZAgu5A7mJbHJS+bCmRCxsgfXW1s3izYR9ti9UYV5cvyCaFKAu0qToWq7P
-         bABw==
-X-Gm-Message-State: AMCzsaX3WMd5ofb02+HBsokPaLnD7DPv3D2krc4tnmyoiBkJj5HrwFNe
-	Goo+0SWLLdNRCjwtHHwAcSc=
-X-Google-Smtp-Source: AOwi7QAePOkLm82/R5LcikIdFtqBFy0OjmC47SmtxkO+QpUG78iW+nH49yFTTHVopVp9Co/C/vD34g==
-X-Received: by 10.99.0.4 with SMTP id 4mr12924129pga.417.1508301010475;
-        Tue, 17 Oct 2017 21:30:10 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=WNzwz5vNGkKWRPbDKozaXmoQQJ03P1Wv44L4N+wEvaQ=;
+        b=hPdBNels5b4s9In4ssfYkGudjLBKZ1BejMWNgSn6zCujHyDpDpa+DaDrCYTDibeL29
+         iUlaQP1FXNIgI4UHXGyJm3AfykxL+tOFlxWL9fgghOnUzjenxSvFihRus9ltUWgV05gj
+         /XWbZjTDj/q8zGhY+LOKMm8kghWatatAddvLScRSqOX7aOeZLA0D/9/5IZEyndt4ZPc7
+         QX8HjSI02v8cHqGIG6L1TAh8NFQZJ0ZVkUB1PMluPTEzVefimwo8djH0ANdtBMeYjywX
+         VJ5tbskFLz/yHsDifzXcNPkxEVPHzh5eW74+MjZIDiVOieP4y6FsPsfgHuTF2YE0ACuA
+         yiEg==
+X-Gm-Message-State: AMCzsaWrNBVXCoiH1DI5b6NTKLoYTtZbVqHHI9XJXgY6DzhZmGq2WH1j
+	CKX82gI51dsOn8eECweOyrY=
+X-Google-Smtp-Source: AOwi7QAHH4MFdXMGZGl2CKGKmME0hxINZ8pKg6C/SRrQj4Gxv4k5jonVOMgOOhJMCz0Wf5nSYPdv2g==
+X-Received: by 10.99.183.67 with SMTP id w3mr12711869pgt.329.1508300482851;
+        Tue, 17 Oct 2017 21:21:22 -0700 (PDT)
 Return-Path: <hamohammed.sa@gmail.com>
 Received: from Haneen ([64.77.242.50])
-        by smtp.gmail.com with ESMTPSA id a78sm22244101pfl.122.2017.10.17.21.30.09
+        by smtp.gmail.com with ESMTPSA id p83sm22128268pfd.61.2017.10.17.21.21.21
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Oct 2017 21:30:09 -0700 (PDT)
-Date: Tue, 17 Oct 2017 22:30:07 -0600
+        Tue, 17 Oct 2017 21:21:21 -0700 (PDT)
+Date: Tue, 17 Oct 2017 22:21:19 -0600
 From: Haneen Mohammed <hamohammed.sa@gmail.com>
 To: dri-devel@lists.freedesktop.org
 Cc: Daniel Vetter <daniel.vetter@intel.com>,
@@ -82,591 +81,36 @@ Cc: Daniel Vetter <daniel.vetter@intel.com>,
 	Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>,
 	outreachy-kernel <outreachy-kernel@googlegroups.com>,
 	gregkh@linuxfoundation.org
-Subject: [PATCH v4 1/2] drm: Move debug macros out of drmP.h
-Message-ID: <4020bc7c5ffad2af516919f78bb837c7f366b82b.1508297716.git.hamohammed.sa@gmail.com>
-References: <cover.1508297716.git.hamohammed.sa@gmail.com>
+Subject: [PATCH v4 0/2] drm: Move debug macros out of drmP.h
+Message-ID: <cover.1508297716.git.hamohammed.sa@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1508297716.git.hamohammed.sa@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-This patch extract DRM_* debug macros from drmP.h to drm_print.h and
-move printing related functions used by these macros from drm_drv.[hc]
+This patchset move debug macros from drmP.h to drm_print.h and move
+printing related functions used by the debug macros from drm_drv.[hc]
 to drm_print.[hc].
+In addition, it fixes old comment style.
 
-Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
----
-Changes in v4: 
+Changes in v4:
 - Move DRM_UT_ debug messaging macros from drmP.h to drm_print.h.
+
+Changes in v3:
+- Move debug macros and print functions into drm_print.[hc] instead of
+introducing drm_debug.[hc].
+
+Haneen Mohammed (2):
+  drm: Move debug macros out of drmP.h
+  drm/print: Update old comment style
 
  drivers/gpu/drm/drm_drv.c   |  47 -----------
  drivers/gpu/drm/drm_print.c |  47 +++++++++++
- include/drm/drmP.h          | 193 +-----------------------------------------
+ include/drm/drmP.h          | 193 +-------------------------------------------
  include/drm/drm_drv.h       |   7 --
- include/drm/drm_print.h     | 199 ++++++++++++++++++++++++++++++++++++++++++++
- 5 files changed, 247 insertions(+), 246 deletions(-)
+ include/drm/drm_print.h     | 192 +++++++++++++++++++++++++++++++++++++++++++
+ 5 files changed, 240 insertions(+), 246 deletions(-)
 
-diff --git a/drivers/gpu/drm/drm_drv.c b/drivers/gpu/drm/drm_drv.c
-index be38ac7..9710c78 100644
---- a/drivers/gpu/drm/drm_drv.c
-+++ b/drivers/gpu/drm/drm_drv.c
-@@ -74,53 +74,6 @@ static bool drm_core_init_complete = false;
- 
- static struct dentry *drm_debugfs_root;
- 
--#define DRM_PRINTK_FMT "[" DRM_NAME ":%s]%s %pV"
--
--void drm_dev_printk(const struct device *dev, const char *level,
--		    unsigned int category, const char *function_name,
--		    const char *prefix, const char *format, ...)
--{
--	struct va_format vaf;
--	va_list args;
--
--	if (category != DRM_UT_NONE && !(drm_debug & category))
--		return;
--
--	va_start(args, format);
--	vaf.fmt = format;
--	vaf.va = &args;
--
--	if (dev)
--		dev_printk(level, dev, DRM_PRINTK_FMT, function_name, prefix,
--			   &vaf);
--	else
--		printk("%s" DRM_PRINTK_FMT, level, function_name, prefix, &vaf);
--
--	va_end(args);
--}
--EXPORT_SYMBOL(drm_dev_printk);
--
--void drm_printk(const char *level, unsigned int category,
--		const char *format, ...)
--{
--	struct va_format vaf;
--	va_list args;
--
--	if (category != DRM_UT_NONE && !(drm_debug & category))
--		return;
--
--	va_start(args, format);
--	vaf.fmt = format;
--	vaf.va = &args;
--
--	printk("%s" "[" DRM_NAME ":%ps]%s %pV",
--	       level, __builtin_return_address(0),
--	       strcmp(level, KERN_ERR) == 0 ? " *ERROR*" : "", &vaf);
--
--	va_end(args);
--}
--EXPORT_SYMBOL(drm_printk);
--
- /*
-  * DRM Minors
-  * A DRM device can provide several char-dev interfaces on the DRM-Major. Each
-diff --git a/drivers/gpu/drm/drm_print.c b/drivers/gpu/drm/drm_print.c
-index 74c466a..0b3bf47 100644
---- a/drivers/gpu/drm/drm_print.c
-+++ b/drivers/gpu/drm/drm_print.c
-@@ -63,3 +63,50 @@ void drm_printf(struct drm_printer *p, const char *f, ...)
- 	va_end(args);
- }
- EXPORT_SYMBOL(drm_printf);
-+
-+#define DRM_PRINTK_FMT "[" DRM_NAME ":%s]%s %pV"
-+
-+void drm_dev_printk(const struct device *dev, const char *level,
-+		    unsigned int category, const char *function_name,
-+		    const char *prefix, const char *format, ...)
-+{
-+	struct va_format vaf;
-+	va_list args;
-+
-+	if (category != DRM_UT_NONE && !(drm_debug & category))
-+		return;
-+
-+	va_start(args, format);
-+	vaf.fmt = format;
-+	vaf.va = &args;
-+
-+	if (dev)
-+		dev_printk(level, dev, DRM_PRINTK_FMT, function_name, prefix,
-+			   &vaf);
-+	else
-+		printk("%s" DRM_PRINTK_FMT, level, function_name, prefix, &vaf);
-+
-+	va_end(args);
-+}
-+EXPORT_SYMBOL(drm_dev_printk);
-+
-+void drm_printk(const char *level, unsigned int category,
-+		const char *format, ...)
-+{
-+	struct va_format vaf;
-+	va_list args;
-+
-+	if (category != DRM_UT_NONE && !(drm_debug & category))
-+		return;
-+
-+	va_start(args, format);
-+	vaf.fmt = format;
-+	vaf.va = &args;
-+
-+	printk("%s" "[" DRM_NAME ":%ps]%s %pV",
-+	       level, __builtin_return_address(0),
-+	       strcmp(level, KERN_ERR) == 0 ? " *ERROR*" : "", &vaf);
-+
-+	va_end(args);
-+}
-+EXPORT_SYMBOL(drm_printk);
-diff --git a/include/drm/drmP.h b/include/drm/drmP.h
-index 7277783a..c6666cd 100644
---- a/include/drm/drmP.h
-+++ b/include/drm/drmP.h
-@@ -75,6 +75,7 @@
- #include <drm/drm_sarea.h>
- #include <drm/drm_drv.h>
- #include <drm/drm_prime.h>
-+#include <drm/drm_print.h>
- #include <drm/drm_pci.h>
- #include <drm/drm_file.h>
- #include <drm/drm_debugfs.h>
-@@ -94,208 +95,16 @@ struct dma_buf_attachment;
- struct pci_dev;
- struct pci_controller;
- 
--/*
-- * The following categories are defined:
-- *
-- * CORE: Used in the generic drm code: drm_ioctl.c, drm_mm.c, drm_memory.c, ...
-- *	 This is the category used by the DRM_DEBUG() macro.
-- *
-- * DRIVER: Used in the vendor specific part of the driver: i915, radeon, ...
-- *	   This is the category used by the DRM_DEBUG_DRIVER() macro.
-- *
-- * KMS: used in the modesetting code.
-- *	This is the category used by the DRM_DEBUG_KMS() macro.
-- *
-- * PRIME: used in the prime code.
-- *	  This is the category used by the DRM_DEBUG_PRIME() macro.
-- *
-- * ATOMIC: used in the atomic code.
-- *	  This is the category used by the DRM_DEBUG_ATOMIC() macro.
-- *
-- * VBL: used for verbose debug message in the vblank code
-- *	  This is the category used by the DRM_DEBUG_VBL() macro.
-- *
-- * Enabling verbose debug messages is done through the drm.debug parameter,
-- * each category being enabled by a bit.
-- *
-- * drm.debug=0x1 will enable CORE messages
-- * drm.debug=0x2 will enable DRIVER messages
-- * drm.debug=0x3 will enable CORE and DRIVER messages
-- * ...
-- * drm.debug=0x3f will enable all messages
-- *
-- * An interesting feature is that it's possible to enable verbose logging at
-- * run-time by echoing the debug value in its sysfs node:
-- *   # echo 0xf > /sys/module/drm/parameters/debug
-- */
--#define DRM_UT_NONE		0x00
--#define DRM_UT_CORE 		0x01
--#define DRM_UT_DRIVER		0x02
--#define DRM_UT_KMS		0x04
--#define DRM_UT_PRIME		0x08
--#define DRM_UT_ATOMIC		0x10
--#define DRM_UT_VBL		0x20
--#define DRM_UT_STATE		0x40
--
- /***********************************************************************/
- /** \name DRM template customization defaults */
- /*@{*/
- 
- /***********************************************************************/
--/** \name Macros to make printk easier */
--/*@{*/
--
--#define _DRM_PRINTK(once, level, fmt, ...)				\
--	do {								\
--		printk##once(KERN_##level "[" DRM_NAME "] " fmt,	\
--			     ##__VA_ARGS__);				\
--	} while (0)
--
--#define DRM_INFO(fmt, ...)						\
--	_DRM_PRINTK(, INFO, fmt, ##__VA_ARGS__)
--#define DRM_NOTE(fmt, ...)						\
--	_DRM_PRINTK(, NOTICE, fmt, ##__VA_ARGS__)
--#define DRM_WARN(fmt, ...)						\
--	_DRM_PRINTK(, WARNING, fmt, ##__VA_ARGS__)
--
--#define DRM_INFO_ONCE(fmt, ...)						\
--	_DRM_PRINTK(_once, INFO, fmt, ##__VA_ARGS__)
--#define DRM_NOTE_ONCE(fmt, ...)						\
--	_DRM_PRINTK(_once, NOTICE, fmt, ##__VA_ARGS__)
--#define DRM_WARN_ONCE(fmt, ...)						\
--	_DRM_PRINTK(_once, WARNING, fmt, ##__VA_ARGS__)
--
--/**
-- * Error output.
-- *
-- * \param fmt printf() like format string.
-- * \param arg arguments
-- */
--#define DRM_DEV_ERROR(dev, fmt, ...)					\
--	drm_dev_printk(dev, KERN_ERR, DRM_UT_NONE, __func__, " *ERROR*",\
--		       fmt, ##__VA_ARGS__)
--#define DRM_ERROR(fmt, ...)						\
--	drm_printk(KERN_ERR, DRM_UT_NONE, fmt,	##__VA_ARGS__)
--
--/**
-- * Rate limited error output.  Like DRM_ERROR() but won't flood the log.
-- *
-- * \param fmt printf() like format string.
-- * \param arg arguments
-- */
--#define DRM_DEV_ERROR_RATELIMITED(dev, fmt, ...)			\
--({									\
--	static DEFINE_RATELIMIT_STATE(_rs,				\
--				      DEFAULT_RATELIMIT_INTERVAL,	\
--				      DEFAULT_RATELIMIT_BURST);		\
--									\
--	if (__ratelimit(&_rs))						\
--		DRM_DEV_ERROR(dev, fmt, ##__VA_ARGS__);			\
--})
--#define DRM_ERROR_RATELIMITED(fmt, ...)					\
--	DRM_DEV_ERROR_RATELIMITED(NULL, fmt, ##__VA_ARGS__)
--
--#define DRM_DEV_INFO(dev, fmt, ...)					\
--	drm_dev_printk(dev, KERN_INFO, DRM_UT_NONE, __func__, "", fmt,	\
--		       ##__VA_ARGS__)
--
--#define DRM_DEV_INFO_ONCE(dev, fmt, ...)				\
--({									\
--	static bool __print_once __read_mostly;				\
--	if (!__print_once) {						\
--		__print_once = true;					\
--		DRM_DEV_INFO(dev, fmt, ##__VA_ARGS__);			\
--	}								\
--})
--
--/**
-- * Debug output.
-- *
-- * \param fmt printf() like format string.
-- * \param arg arguments
-- */
--#define DRM_DEV_DEBUG(dev, fmt, args...)				\
--	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_CORE, __func__, "", fmt,	\
--		       ##args)
--#define DRM_DEBUG(fmt, ...)						\
--	drm_printk(KERN_DEBUG, DRM_UT_CORE, fmt, ##__VA_ARGS__)
--
--#define DRM_DEV_DEBUG_DRIVER(dev, fmt, args...)				\
--	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_DRIVER, __func__, "",	\
--		       fmt, ##args)
--#define DRM_DEBUG_DRIVER(fmt, ...)					\
--	drm_printk(KERN_DEBUG, DRM_UT_DRIVER, fmt, ##__VA_ARGS__)
--
--#define DRM_DEV_DEBUG_KMS(dev, fmt, args...)				\
--	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_KMS, __func__, "", fmt,	\
--		       ##args)
--#define DRM_DEBUG_KMS(fmt, ...)					\
--	drm_printk(KERN_DEBUG, DRM_UT_KMS, fmt, ##__VA_ARGS__)
--
--#define DRM_DEV_DEBUG_PRIME(dev, fmt, args...)				\
--	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_PRIME, __func__, "",	\
--		       fmt, ##args)
--#define DRM_DEBUG_PRIME(fmt, ...)					\
--	drm_printk(KERN_DEBUG, DRM_UT_PRIME, fmt, ##__VA_ARGS__)
--
--#define DRM_DEV_DEBUG_ATOMIC(dev, fmt, args...)				\
--	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_ATOMIC, __func__, "",	\
--		       fmt, ##args)
--#define DRM_DEBUG_ATOMIC(fmt, ...)					\
--	drm_printk(KERN_DEBUG, DRM_UT_ATOMIC, fmt, ##__VA_ARGS__)
--
--#define DRM_DEV_DEBUG_VBL(dev, fmt, args...)				\
--	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_VBL, __func__, "", fmt,	\
--		       ##args)
--#define DRM_DEBUG_VBL(fmt, ...)					\
--	drm_printk(KERN_DEBUG, DRM_UT_VBL, fmt, ##__VA_ARGS__)
--
--#define _DRM_DEV_DEFINE_DEBUG_RATELIMITED(dev, level, fmt, args...)	\
--({									\
--	static DEFINE_RATELIMIT_STATE(_rs,				\
--				      DEFAULT_RATELIMIT_INTERVAL,	\
--				      DEFAULT_RATELIMIT_BURST);		\
--	if (__ratelimit(&_rs))						\
--		drm_dev_printk(dev, KERN_DEBUG, DRM_UT_ ## level,	\
--			       __func__, "", fmt, ##args);		\
--})
--
--/**
-- * Rate limited debug output. Like DRM_DEBUG() but won't flood the log.
-- *
-- * \param fmt printf() like format string.
-- * \param arg arguments
-- */
--#define DRM_DEV_DEBUG_RATELIMITED(dev, fmt, args...)			\
--	DEV__DRM_DEFINE_DEBUG_RATELIMITED(dev, CORE, fmt, ##args)
--#define DRM_DEBUG_RATELIMITED(fmt, args...)				\
--	DRM_DEV_DEBUG_RATELIMITED(NULL, fmt, ##args)
--#define DRM_DEV_DEBUG_DRIVER_RATELIMITED(dev, fmt, args...)		\
--	_DRM_DEV_DEFINE_DEBUG_RATELIMITED(dev, DRIVER, fmt, ##args)
--#define DRM_DEBUG_DRIVER_RATELIMITED(fmt, args...)			\
--	DRM_DEV_DEBUG_DRIVER_RATELIMITED(NULL, fmt, ##args)
--#define DRM_DEV_DEBUG_KMS_RATELIMITED(dev, fmt, args...)		\
--	_DRM_DEV_DEFINE_DEBUG_RATELIMITED(dev, KMS, fmt, ##args)
--#define DRM_DEBUG_KMS_RATELIMITED(fmt, args...)				\
--	DRM_DEV_DEBUG_KMS_RATELIMITED(NULL, fmt, ##args)
--#define DRM_DEV_DEBUG_PRIME_RATELIMITED(dev, fmt, args...)		\
--	_DRM_DEV_DEFINE_DEBUG_RATELIMITED(dev, PRIME, fmt, ##args)
--#define DRM_DEBUG_PRIME_RATELIMITED(fmt, args...)			\
--	DRM_DEV_DEBUG_PRIME_RATELIMITED(NULL, fmt, ##args)
--
--/* Format strings and argument splitters to simplify printing
-- * various "complex" objects
-- */
--
--/*@}*/
--
--/***********************************************************************/
- /** \name Internal types and structures */
- /*@{*/
- 
- #define DRM_IF_VERSION(maj, min) (maj << 16 | min)
- 
--
- /**
-  * drm_drv_uses_atomic_modeset - check if the driver implements
-  * atomic_commit()
-diff --git a/include/drm/drm_drv.h b/include/drm/drm_drv.h
-index 71bbaae..4f3cc25 100644
---- a/include/drm/drm_drv.h
-+++ b/include/drm/drm_drv.h
-@@ -592,13 +592,6 @@ struct drm_driver {
- 	int dev_priv_size;
- };
- 
--__printf(6, 7)
--void drm_dev_printk(const struct device *dev, const char *level,
--		    unsigned int category, const char *function_name,
--		    const char *prefix, const char *format, ...);
--__printf(3, 4)
--void drm_printk(const char *level, unsigned int category,
--		const char *format, ...);
- extern unsigned int drm_debug;
- 
- int drm_dev_init(struct drm_device *dev,
-diff --git a/include/drm/drm_print.h b/include/drm/drm_print.h
-index ca4d7c6..41dd757 100644
---- a/include/drm/drm_print.h
-+++ b/include/drm/drm_print.h
-@@ -128,4 +128,203 @@ static inline struct drm_printer drm_debug_printer(const char *prefix)
- 	};
- 	return p;
- }
-+
-+/*
-+ * The following categories are defined:
-+ *
-+ * CORE: Used in the generic drm code: drm_ioctl.c, drm_mm.c, drm_memory.c, ...
-+ *	 This is the category used by the DRM_DEBUG() macro.
-+ *
-+ * DRIVER: Used in the vendor specific part of the driver: i915, radeon, ...
-+ *	   This is the category used by the DRM_DEBUG_DRIVER() macro.
-+ *
-+ * KMS: used in the modesetting code.
-+ *	This is the category used by the DRM_DEBUG_KMS() macro.
-+ *
-+ * PRIME: used in the prime code.
-+ *	  This is the category used by the DRM_DEBUG_PRIME() macro.
-+ *
-+ * ATOMIC: used in the atomic code.
-+ *	  This is the category used by the DRM_DEBUG_ATOMIC() macro.
-+ *
-+ * VBL: used for verbose debug message in the vblank code
-+ *	  This is the category used by the DRM_DEBUG_VBL() macro.
-+ *
-+ * Enabling verbose debug messages is done through the drm.debug parameter,
-+ * each category being enabled by a bit.
-+ *
-+ * drm.debug=0x1 will enable CORE messages
-+ * drm.debug=0x2 will enable DRIVER messages
-+ * drm.debug=0x3 will enable CORE and DRIVER messages
-+ * ...
-+ * drm.debug=0x3f will enable all messages
-+ *
-+ * An interesting feature is that it's possible to enable verbose logging at
-+ * run-time by echoing the debug value in its sysfs node:
-+ *   # echo 0xf > /sys/module/drm/parameters/debug
-+ */
-+#define DRM_UT_NONE		0x00
-+#define DRM_UT_CORE		0x01
-+#define DRM_UT_DRIVER		0x02
-+#define DRM_UT_KMS		0x04
-+#define DRM_UT_PRIME		0x08
-+#define DRM_UT_ATOMIC		0x10
-+#define DRM_UT_VBL		0x20
-+#define DRM_UT_STATE		0x40
-+
-+__printf(6, 7)
-+void drm_dev_printk(const struct device *dev, const char *level,
-+		    unsigned int category, const char *function_name,
-+		    const char *prefix, const char *format, ...);
-+__printf(3, 4)
-+void drm_printk(const char *level, unsigned int category,
-+		const char *format, ...);
-+/***********************************************************************/
-+/** \name Macros to make printk easier */
-+/*@{*/
-+
-+#define _DRM_PRINTK(once, level, fmt, ...)				\
-+	do {								\
-+		printk##once(KERN_##level "[" DRM_NAME "] " fmt,	\
-+			     ##__VA_ARGS__);				\
-+	} while (0)
-+
-+#define DRM_INFO(fmt, ...)						\
-+	_DRM_PRINTK(, INFO, fmt, ##__VA_ARGS__)
-+#define DRM_NOTE(fmt, ...)						\
-+	_DRM_PRINTK(, NOTICE, fmt, ##__VA_ARGS__)
-+#define DRM_WARN(fmt, ...)						\
-+	_DRM_PRINTK(, WARNING, fmt, ##__VA_ARGS__)
-+
-+#define DRM_INFO_ONCE(fmt, ...)						\
-+	_DRM_PRINTK(_once, INFO, fmt, ##__VA_ARGS__)
-+#define DRM_NOTE_ONCE(fmt, ...)						\
-+	_DRM_PRINTK(_once, NOTICE, fmt, ##__VA_ARGS__)
-+#define DRM_WARN_ONCE(fmt, ...)						\
-+	_DRM_PRINTK(_once, WARNING, fmt, ##__VA_ARGS__)
-+
-+/**
-+ * Error output.
-+ *
-+ * \param fmt printf() like format string.
-+ * \param arg arguments
-+ */
-+#define DRM_DEV_ERROR(dev, fmt, ...)					\
-+	drm_dev_printk(dev, KERN_ERR, DRM_UT_NONE, __func__, " *ERROR*",\
-+		       fmt, ##__VA_ARGS__)
-+#define DRM_ERROR(fmt, ...)						\
-+	drm_printk(KERN_ERR, DRM_UT_NONE, fmt,	##__VA_ARGS__)
-+
-+/**
-+ * Rate limited error output.  Like DRM_ERROR() but won't flood the log.
-+ *
-+ * \param fmt printf() like format string.
-+ * \param arg arguments
-+ */
-+#define DRM_DEV_ERROR_RATELIMITED(dev, fmt, ...)			\
-+({									\
-+	static DEFINE_RATELIMIT_STATE(_rs,				\
-+				      DEFAULT_RATELIMIT_INTERVAL,	\
-+				      DEFAULT_RATELIMIT_BURST);		\
-+									\
-+	if (__ratelimit(&_rs))						\
-+		DRM_DEV_ERROR(dev, fmt, ##__VA_ARGS__);			\
-+})
-+#define DRM_ERROR_RATELIMITED(fmt, ...)					\
-+	DRM_DEV_ERROR_RATELIMITED(NULL, fmt, ##__VA_ARGS__)
-+
-+#define DRM_DEV_INFO(dev, fmt, ...)					\
-+	drm_dev_printk(dev, KERN_INFO, DRM_UT_NONE, __func__, "", fmt,	\
-+		       ##__VA_ARGS__)
-+
-+#define DRM_DEV_INFO_ONCE(dev, fmt, ...)				\
-+({									\
-+	static bool __print_once __read_mostly;				\
-+	if (!__print_once) {						\
-+		__print_once = true;					\
-+		DRM_DEV_INFO(dev, fmt, ##__VA_ARGS__);			\
-+	}								\
-+})
-+
-+/**
-+ * Debug output.
-+ *
-+ * \param fmt printf() like format string.
-+ * \param arg arguments
-+ */
-+#define DRM_DEV_DEBUG(dev, fmt, args...)				\
-+	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_CORE, __func__, "", fmt,	\
-+		       ##args)
-+#define DRM_DEBUG(fmt, ...)						\
-+	drm_printk(KERN_DEBUG, DRM_UT_CORE, fmt, ##__VA_ARGS__)
-+
-+#define DRM_DEV_DEBUG_DRIVER(dev, fmt, args...)				\
-+	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_DRIVER, __func__, "",	\
-+		       fmt, ##args)
-+#define DRM_DEBUG_DRIVER(fmt, ...)					\
-+	drm_printk(KERN_DEBUG, DRM_UT_DRIVER, fmt, ##__VA_ARGS__)
-+
-+#define DRM_DEV_DEBUG_KMS(dev, fmt, args...)				\
-+	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_KMS, __func__, "", fmt,	\
-+		       ##args)
-+#define DRM_DEBUG_KMS(fmt, ...)					\
-+	drm_printk(KERN_DEBUG, DRM_UT_KMS, fmt, ##__VA_ARGS__)
-+
-+#define DRM_DEV_DEBUG_PRIME(dev, fmt, args...)				\
-+	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_PRIME, __func__, "",	\
-+		       fmt, ##args)
-+#define DRM_DEBUG_PRIME(fmt, ...)					\
-+	drm_printk(KERN_DEBUG, DRM_UT_PRIME, fmt, ##__VA_ARGS__)
-+
-+#define DRM_DEV_DEBUG_ATOMIC(dev, fmt, args...)				\
-+	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_ATOMIC, __func__, "",	\
-+		       fmt, ##args)
-+#define DRM_DEBUG_ATOMIC(fmt, ...)					\
-+	drm_printk(KERN_DEBUG, DRM_UT_ATOMIC, fmt, ##__VA_ARGS__)
-+
-+#define DRM_DEV_DEBUG_VBL(dev, fmt, args...)				\
-+	drm_dev_printk(dev, KERN_DEBUG, DRM_UT_VBL, __func__, "", fmt,	\
-+		       ##args)
-+#define DRM_DEBUG_VBL(fmt, ...)					\
-+	drm_printk(KERN_DEBUG, DRM_UT_VBL, fmt, ##__VA_ARGS__)
-+
-+#define _DRM_DEV_DEFINE_DEBUG_RATELIMITED(dev, level, fmt, args...)	\
-+({									\
-+	static DEFINE_RATELIMIT_STATE(_rs,				\
-+				      DEFAULT_RATELIMIT_INTERVAL,	\
-+				      DEFAULT_RATELIMIT_BURST);		\
-+	if (__ratelimit(&_rs))						\
-+		drm_dev_printk(dev, KERN_DEBUG, DRM_UT_ ## level,	\
-+			       __func__, "", fmt, ##args);		\
-+})
-+
-+/**
-+ * Rate limited debug output. Like DRM_DEBUG() but won't flood the log.
-+ *
-+ * \param fmt printf() like format string.
-+ * \param arg arguments
-+ */
-+#define DRM_DEV_DEBUG_RATELIMITED(dev, fmt, args...)			\
-+	DEV__DRM_DEFINE_DEBUG_RATELIMITED(dev, CORE, fmt, ##args)
-+#define DRM_DEBUG_RATELIMITED(fmt, args...)				\
-+	DRM_DEV_DEBUG_RATELIMITED(NULL, fmt, ##args)
-+#define DRM_DEV_DEBUG_DRIVER_RATELIMITED(dev, fmt, args...)		\
-+	_DRM_DEV_DEFINE_DEBUG_RATELIMITED(dev, DRIVER, fmt, ##args)
-+#define DRM_DEBUG_DRIVER_RATELIMITED(fmt, args...)			\
-+	DRM_DEV_DEBUG_DRIVER_RATELIMITED(NULL, fmt, ##args)
-+#define DRM_DEV_DEBUG_KMS_RATELIMITED(dev, fmt, args...)		\
-+	_DRM_DEV_DEFINE_DEBUG_RATELIMITED(dev, KMS, fmt, ##args)
-+#define DRM_DEBUG_KMS_RATELIMITED(fmt, args...)				\
-+	DRM_DEV_DEBUG_KMS_RATELIMITED(NULL, fmt, ##args)
-+#define DRM_DEV_DEBUG_PRIME_RATELIMITED(dev, fmt, args...)		\
-+	_DRM_DEV_DEFINE_DEBUG_RATELIMITED(dev, PRIME, fmt, ##args)
-+#define DRM_DEBUG_PRIME_RATELIMITED(fmt, args...)			\
-+	DRM_DEV_DEBUG_PRIME_RATELIMITED(NULL, fmt, ##args)
-+
-+/* Format strings and argument splitters to simplify printing
-+ * various "complex" objects
-+ */
-+
-+/*@}*/
-+
- #endif /* DRM_PRINT_H_ */
 -- 
 2.7.4
 
