@@ -1,65 +1,71 @@
 X-GM-THRID: 6473412482924806144
-X-Received: by 10.28.127.10 with SMTP id a10mr234453wmd.0.1508334200136;
-        Wed, 18 Oct 2017 06:43:20 -0700 (PDT)
+X-Received: by 10.80.141.200 with SMTP id s8mr286749edh.12.1508334161708;
+        Wed, 18 Oct 2017 06:42:41 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.168.14 with SMTP id r14ls842901wme.3.canary-gmail; Wed, 18
- Oct 2017 06:43:19 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+StbCPPDLiV/sN/oYZNpxhUA6C3c8Vy5dB/2PYRkCuSfDXYFy7fMgns/ycoj17WKcqmsqFe
-X-Received: by 10.28.107.65 with SMTP id g62mr802032wmc.32.1508334199284;
-        Wed, 18 Oct 2017 06:43:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508334199; cv=none;
+Received: by 10.80.167.100 with SMTP id h91ls1853044edc.8.gmail; Wed, 18 Oct
+ 2017 06:42:40 -0700 (PDT)
+X-Google-Smtp-Source: AOwi7QDU+/V/mUDyDVqZfrH9gmbubyHEKBso24yBtD2DuMzTTJcKFban4EBPcYf6tndlElR7EvuL
+X-Received: by 10.80.182.75 with SMTP id c11mr4185370ede.4.1508334160975;
+        Wed, 18 Oct 2017 06:42:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508334160; cv=none;
         d=google.com; s=arc-20160816;
-        b=OeREKrvedoVKL6IeLm9tF44RI9FYcSf/Zyz+qwRy4ZQRyydFa8XNLAgG7z0b3Hp8+L
-         XibFDYoglJu1btYx1sNsAfV4xiaSb3TqSFYQeQaXpdzA3FXWAP80SKFkCFQ+zh67Qb1v
-         AOzsGrQAfUVXtcR2zAV5oYVSZFKlA2Qs0d9bvNutmPIQKCqg3OJ6TV5LTLqm84Q7as6W
-         pR1N0cGZEng13QWdNvJq1Po4Xytw/04vIamgyimhA3IqYRKy5w45RgGKL3ZrZBBWDry3
-         xNrzN1Q4g2CJQCwUj2SNwb9gqO0qNW9a48AHGz2IUUUNXpsLAnE+K2+epe4p3e1TbnHN
-         escg==
+        b=iWur6rmjXXbpYz3puouLwxrFUSGCIOdMFCt+33os/lv5Rba6icl4dUbd/DmL2YaMYu
+         BueMSoePE4SZlns0sDk1HpyyUeQzUsYRVvwDc0yFRBPMVgUFD8MsWbOV6zTTKhLjXXRF
+         zKaKHaTkDYY3ICll6YWlc5dSLAGc7rUbOT1ZQnjPbiSvwPKsapgNdLQCfUKWXEhBoS2c
+         jCF9EdVaJNtp3s6lNKpRn+T0PH11+JgIAX8SSiDMc5KtP2048Lbf8Ya1QYo1Sd330ba4
+         vjLwwgR5HtRuXpJqKVUGu/xKKyZNVnmTCj03E2egxZttTyBWQCN8BdRumniGOIdC++MC
+         qVdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=42k1FQ+71FZWyz6IfwZGgqxVc3UaKbVtLgYpvrcoyxA=;
-        b=f5ba56nmKYQnHh5zmMFDzGKV65QWTjEynBRDL8m3Y4HIjLFlKLpdFY+vUu/SQJ2Vsb
-         fI4tE+Udm65rxnKcbh3MFO2fTnQuJPwb4KwaAjEMKDgDtlZUibuFBtTOov0af7cUWtXV
-         0yt4aVo8pGhCXyHmDHsA0mHQjbtTULjCN1SuEepFvL4DnFIOwb8jT3MIKLFOe8/Wfp7O
-         5WpFGSSwi5QRmZc3dFZdFHlzjXL0zwSUO5ZJYvFurp6F3KhzN3b281xnBg1fuRNWGyR6
-         tV6R9Iovw5YdcSHfJBl36wCcIGKhRW5fRVRi444WNQoxK+Ir0fb5GyKnqtaYfIYc9NZm
-         jK3Q==
+        bh=GZ0V3aDPKeC29kqt71jexv/0xK6CV8w3s9VEypKqGgI=;
+        b=MqI9vAHRJrzScYOnYEoopjOKl7MsnNIvVCgt4hUMYSG7217RcszDYmT9Pu8URs1dpw
+         Z5cis0/+AducErWxvj/CZqpqemkKGpiBACNjo1yFx33rIW9/5nX4map4MjzN01sjyjS5
+         5AvXlHW/eqj43OR6LXmVpn/NHXo5ZiPsG+u+W/NvsbvUzFa9EOQniPVo3uJ0kQPeCSN0
+         HI01dXnIgJuueQxFUVdzj1HUigSFX3ghnvO02c1g4f3oANo1RO5TrhEpJsvPABJUzp+w
+         fGcXfnFiBqsUCDJxFK65kFjBvQA5HYWCU6HuOdJ500l7RvUVjmelwD2AOzDB9xQgFYkP
+         aqpA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
 Return-Path: <gregkh@linuxfoundation.org>
 Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id p70si583843wma.1.2017.10.18.06.43.19
+        by gmr-mx.google.com with ESMTPS id w24si585790edl.5.2017.10.18.06.42.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 18 Oct 2017 06:43:19 -0700 (PDT)
+        Wed, 18 Oct 2017 06:42:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
 Received: from localhost (LFbn-1-12253-150.w90-92.abo.wanadoo.fr [90.92.67.150])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 9D7EEACC;
-	Wed, 18 Oct 2017 13:43:17 +0000 (UTC)
-Date: Wed, 18 Oct 2017 15:43:26 +0200
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 3121BACC;
+	Wed, 18 Oct 2017 13:42:39 +0000 (UTC)
+Date: Wed, 18 Oct 2017 15:42:47 +0200
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: Aastha Gupta <aastha.gupta4104@gmail.com>
 Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH 7/7] staging: rtl8188eu: add spaces around '|'
-Message-ID: <20171018134326.GB9535@kroah.com>
+Subject: Re: [PATCH 6/7] staging: rtl8188eu: prefer using BIT macro
+Message-ID: <20171018134247.GA9535@kroah.com>
 References: <1507208787-18008-1-git-send-email-aastha.gupta4104@gmail.com>
- <1507208787-18008-8-git-send-email-aastha.gupta4104@gmail.com>
+ <1507208787-18008-7-git-send-email-aastha.gupta4104@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1507208787-18008-8-git-send-email-aastha.gupta4104@gmail.com>
+In-Reply-To: <1507208787-18008-7-git-send-email-aastha.gupta4104@gmail.com>
 User-Agent: Mutt/1.9.1 (2017-09-22)
 
-On Thu, Oct 05, 2017 at 06:36:27PM +0530, Aastha Gupta wrote:
-> Fixes 'use spaces around '|' ' as reported by checkpatch.pl
+On Thu, Oct 05, 2017 at 06:36:26PM +0530, Aastha Gupta wrote:
+> Fixes checkpatch.pl:
+> 	Use BIT(x) instead of using (1<<x)
 > 
 > Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
 > ---
->  drivers/staging/rtl8188eu/include/ieee80211.h | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+>  drivers/staging/rtl8188eu/include/ieee80211.h | 78 +++++++++++++--------------
+>  1 file changed, 39 insertions(+), 39 deletions(-)
 
-This patch no longer applies as I had to drop the previous one :(
+This patch causes all sorts of build warning errors, dso I've dropped it
+from my trees.
+
+Please always test build your patches :(
+
+greg k-h
 
