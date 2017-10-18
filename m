@@ -1,102 +1,119 @@
-X-GM-THRID: 6253642223906193408
-X-Received: by 10.66.146.193 with SMTP id te1mr20748255pab.17.1456039544914;
-        Sat, 20 Feb 2016 23:25:44 -0800 (PST)
+X-GM-THRID: 6478086724175003648
+X-Received: by 10.157.37.125 with SMTP id j58mr8035646otd.96.1508297850182;
+        Tue, 17 Oct 2017 20:37:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.130.229 with SMTP id oh5ls487887obb.74.gmail; Sat, 20 Feb
- 2016 23:25:44 -0800 (PST)
-X-Received: by 10.182.247.97 with SMTP id yd1mr21736553obc.9.1456039544550;
-        Sat, 20 Feb 2016 23:25:44 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
-        by gmr-mx.google.com with ESMTPS id ui7si2537665pab.0.2016.02.20.23.25.44
+Received: by 10.157.14.43 with SMTP id c40ls920145otc.17.gmail; Tue, 17 Oct
+ 2017 20:37:29 -0700 (PDT)
+X-Received: by 10.202.62.3 with SMTP id l3mr7113641oia.112.1508297849448;
+        Tue, 17 Oct 2017 20:37:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508297849; cv=none;
+        d=google.com; s=arc-20160816;
+        b=BbgvPt+gnDGKvN+PoJz4zbfwKIw1FoQNt0QOZoEYT2qOo9EFLh38I54ccpxqjJcsIq
+         rgBaDzkcXmBu75F7L+OoSW6ufF2hHGOHNt/iN/4TI8CRt1HVDQyEFUKgbVHGZDttmi8a
+         0njQa2usYoQqBiHvzfHZ155kHkEVnPpQYObFuJC2KfbY6zNjGmahaNkmiUfP2wJsn9MK
+         l6glXNTnFTq9qZ21HsrH4aWzSqC3cQqvAsgtsEtyTjdogDRZLv4MzdSm3Yf6mTC6xUOC
+         jqGKDy9ySKa6IFi/+rZG7MSKZtSq0zodSIFzcRsBXEvYhZ2fks+4/kdvJZ/hY4AQL4c6
+         4h2A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature
+         :arc-authentication-results;
+        bh=7Wt+H9M3UsJ7WgmO6nVgLPS400gBtfBLNiOD/ZBAKSA=;
+        b=ODTXdATKZNsFM2sCf6uOBstMhJ5ociX7dTxyCx+1+DZuuwTornwoNjZbp7JVl9vbj5
+         v161io8fNxyhFGnWghTq1LWrPphvhXdAAhOhYRMB2Z1wtyXBA7XpqK3y7RQCvDuchUhA
+         4xWrUBCT3LyiqaR/iLES7ObNbtnDxtoJC4rweD+pCfq2SDWyrYvv5Alt7u2J3AZBeJsR
+         C26M8FPWL7L94VKl58KaVmA5riPUbgXcd1o08Fk6dNg/dxUrbt6w9u3eeq5zU77eNvKz
+         vsyFrPidVEbH5ZNisbRCfVnRUPepA3TzZSkxclNMuHFoiLjZFQfZjVZgp0rRiNh4jqa1
+         1nmw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=hSJ1+8mj;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::22d as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+Return-Path: <frank@generalsoftwareinc.com>
+Received: from mail-ua0-x22d.google.com (mail-ua0-x22d.google.com. [2607:f8b0:400c:c08::22d])
+        by gmr-mx.google.com with ESMTPS id b194si593583oii.0.2017.10.17.20.37.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 20 Feb 2016 23:25:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
+        Tue, 17 Oct 2017 20:37:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::22d as permitted sender) client-ip=2607:f8b0:400c:c08::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22c.google.com with SMTP id fl4so73770595pad.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 20 Feb 2016 23:25:44 -0800 (PST)
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=hSJ1+8mj;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::22d as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+Received: by mail-ua0-x22d.google.com with SMTP id l40so2644073uah.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 20:37:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=8sFt4Bep7XNxqW6ceHYlAFjaenU6htus+Fg3RZNqgEY=;
-        b=c0J3ho2SxcEn23Hn25lD5PgKeFIKwfW2aOknsBrWU5txXZrG1WVpeCqO7By5kxpjH8
-         3JRDy04Y6p9O+3suDFpUdvdf7+q+wU9xnjv7T5kusHKJdrwuTK+dzVh8kAlK0b16q7S4
-         eVLeo2M1DuCe4u+d2fTKCwbvfLp1tDD9Yl3LQ+fZkehBYftLZ8BEqgX+ht70T+hisnE7
-         EPOLw3HnaHEQ6u83jA2WeORoZW5JNxUDAkP9K9SoZ5uio5GDOmd50HLbViYiRJI0K6Ds
-         DkSO6Ria3ZPyp8SSmkjm0Z6JGvvjamCP1hXmsqKJMf0vfkUuF1S0S54XpPNqiZz/KyyK
-         oBEw==
+        d=generalsoftwareinc-com.20150623.gappssmtp.com; s=20150623;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=7Wt+H9M3UsJ7WgmO6nVgLPS400gBtfBLNiOD/ZBAKSA=;
+        b=hSJ1+8mj4V52iSTU3D9ilZcttG1I5UNh6ebBK+vh1sHx5poaC/x3bTYV7sA9+uW0Ka
+         YfKd3KNdSiBMNIvWgiBWnhHnMvAykoeTByd9q23my+LGDk3QMWVobDCjTJwgIq62Ef8e
+         hvgx+mR0iHYTWh7b14oPFUe+ofDVi9oFu5uBjRMNh1EikMN1Rtg9sUG055IG6p3exTQ3
+         Gjqg4x+uqK5JExPIn9ZbvtinfWJkI6XskLPJIZnilqCpxsAIrcSa80EZESKei10J5YbX
+         qBrEyLuLPfJNR83FNa2mXsGbCePw0mK1hi/0tK233paf4T1RpfbUxFiJaijAP03D3UKc
+         kJtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=8sFt4Bep7XNxqW6ceHYlAFjaenU6htus+Fg3RZNqgEY=;
-        b=YgmA8+BMoU8zLPbzlkoYg8w/ZtdHATMliRgqgO4cjqvn3BZb1yk+wxxgIUFthuvWKS
-         AH11RGqS/8EUNslfcv3LthfJtFxZISHEmdPOamyCk4J4vtdR8Uolzg16sZ1Q9VlAHeUn
-         qqmEPt7gUFcgYnibBBrhsvj16RVMFE9b9FSKJnWRLZGCZX8hnr6Vl32YRE26gNoxfZ5+
-         Cwru2hmv4Xv/RwwRjBrZOrZ6gV7hhzzcyZeR4rrOXoeY8D/nVgRFoY0kHBG8JIUOL5Oc
-         KPrM8sMpwQml61rLUU58hbP79iFcCDbKZNlMqErDTwaZ6yqv0dBd0s0YWRRu8AFHzibk
-         epVw==
-X-Gm-Message-State: AG10YOQ6Qw2HcZjLuoUKzsyoD+m1e7iPYAtpJBJALCYONLekwaT4EnBmpZQM5Uz0u3mAww==
-X-Received: by 10.66.146.196 with SMTP id te4mr29696916pab.125.1456039544434;
-        Sat, 20 Feb 2016 23:25:44 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id g25sm28417214pfg.35.2016.02.20.23.25.43
-        for <outreachy-kernel@googlegroups.com>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=7Wt+H9M3UsJ7WgmO6nVgLPS400gBtfBLNiOD/ZBAKSA=;
+        b=OF01692y4zoSzGy/p8b2ePuYHOXWo0x206ndfLgI/JbKb6RwY3ezVJHyp6OmOspiOk
+         HpFoLHfw38yGi0MUHly4wVyDB6wFvkUNPQPb9bpRf4TXW6KjB4YnCt2BmYISwSsRm6Sw
+         zRfBWTOaHJo6xh6hlLr5IVZ0Av0QaiU8j96i1O8Gw6xMXId1nZH6CmWXylr6CS28knOA
+         w4L/raJYqmu2Jl+YKHVPahM1e9qVWRFfU8AzPBkdeTlJqRtFFvw8GJEgwKxaP0719rrl
+         mUh2xxUNAhFKEGx8PXlQECm0N3Y+4xVN6wxD7+fv5Cdo1CQZzTtVVHXwWdCc43IWa4m+
+         MOmg==
+X-Gm-Message-State: AMCzsaW6q1pd2/eIavsIdmR8towCLJIkFUK7/i3tr7M8JvE5wrztNz1K
+	XUjXAmdq8S5gZy/XkFcmOM9+WrWp
+X-Google-Smtp-Source: AOwi7QCyZaDAkWrdBo94q44iRGoaUbExmbVVBdYXJomoJrzP0H7jaJg1/LKTJEOOFZYBp224Mlu1fQ==
+X-Received: by 10.176.27.164 with SMTP id k36mr11595567uai.59.1508297848814;
+        Tue, 17 Oct 2017 20:37:28 -0700 (PDT)
+Return-Path: <frank@generalsoftwareinc.com>
+Received: from ubuntu-server-1604 ([152.206.125.129])
+        by smtp.gmail.com with ESMTPSA id 30sm342560uad.51.2017.10.17.20.37.27
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 20 Feb 2016 23:25:44 -0800 (PST)
-Date: Sun, 21 Feb 2016 12:56:16 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8712: Remove unnecessary cast on void pointer
-Message-ID: <20160221072616.GA14914@Karyakshetra>
+        Tue, 17 Oct 2017 20:37:28 -0700 (PDT)
+Date: Tue, 17 Oct 2017 23:37:21 -0400
+From: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
+To: pablo@netfilter.org, Julia.Lawall@lip6.fr
+Cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: [PATCH 4/4] staging: rtlwifi: rtl8822be: Align the * in block comment
+Message-ID: <c7088d12170f908e704104c7f6a226d301afdfb5.1508295702.git.frank@generalsoftwareinc.com>
+References: <cover.1508295702.git.frank@generalsoftwareinc.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <cover.1508295702.git.frank@generalsoftwareinc.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-The following Coccinelle script was used to detect this:
-@r@
-expression x;
-void* e;
-type T;
-identifier f;
-@@
-(
-  *((T *)e)
-|
-  ((T *)x)[...]
-|
-  ((T*)x)->f
-|
-- (T*)
-  e
-)
+Align the * on each line of a block comment to comply with kernel coding
+style and address the following checkpatch message:
+'WARNING: Block comments should align the * on each line'.
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+Credits to checkpatch.
+
+Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
 ---
- drivers/staging/rtl8712/usb_ops_linux.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rtlwifi/rtl8822be/phy.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/usb_ops_linux.c b/drivers/staging/rtl8712/usb_ops_linux.c
-index c2ac581..454cdf6 100644
---- a/drivers/staging/rtl8712/usb_ops_linux.c
-+++ b/drivers/staging/rtl8712/usb_ops_linux.c
-@@ -334,7 +334,7 @@ void r8712_usb_read_port_cancel(struct _adapter *padapter)
- void r8712_xmit_bh(void *priv)
- {
- 	int ret = false;
--	struct _adapter *padapter = (struct _adapter *)priv;
-+	struct _adapter *padapter = priv;
- 	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
-
- 	if (padapter->bDriverStopped ||
---
-2.1.4
+diff --git a/drivers/staging/rtlwifi/rtl8822be/phy.c b/drivers/staging/rtlwifi/rtl8822be/phy.c
+index aacaca6..ef37ae9 100644
+--- a/drivers/staging/rtlwifi/rtl8822be/phy.c
++++ b/drivers/staging/rtlwifi/rtl8822be/phy.c
+@@ -1756,9 +1756,9 @@ static void _rtl8822be_phy_set_txpower_index(struct ieee80211_hw *hw,
+ 	static u32 index;
+ 
+ 	/*
+-	* For 8822B, phydm api use 4 bytes txagc value
+-	* driver must combine every four 1 byte to one 4 byte and send to phydm
+-	*/
++	 * For 8822B, phydm api use 4 bytes txagc value driver must
++	 * combine every four 1 byte to one 4 byte and send to phydm
++	 */
+ 	shift = rate & 0x03;
+ 	index |= ((u32)power_index << (shift * 8));
+ 
+-- 
+2.7.4
 
 
