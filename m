@@ -1,77 +1,77 @@
 X-GM-THRID: 6473410411176656896
-X-Received: by 10.200.6.196 with SMTP id j4mr1996500qth.60.1508352624253;
-        Wed, 18 Oct 2017 11:50:24 -0700 (PDT)
+X-Received: by 10.159.44.153 with SMTP id w25mr5038236uaj.86.1508352620048;
+        Wed, 18 Oct 2017 11:50:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.200.16.22 with SMTP id z22ls2294312qti.3.gmail; Wed, 18 Oct
- 2017 11:50:23 -0700 (PDT)
-X-Received: by 10.55.159.5 with SMTP id i5mr14515326qke.47.1508352623784;
-        Wed, 18 Oct 2017 11:50:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508352623; cv=none;
+Received: by 10.176.72.41 with SMTP id b38ls1423494uad.2.gmail; Wed, 18 Oct
+ 2017 11:50:19 -0700 (PDT)
+X-Received: by 10.31.16.83 with SMTP id g80mr8757322vki.91.1508352619642;
+        Wed, 18 Oct 2017 11:50:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508352619; cv=none;
         d=google.com; s=arc-20160816;
-        b=ARq63cSKL4AqVLe2rUbmyfLtipyHr6WclpB6hxJ8lsddIwvbL7lzu8sjpVz4/W8I4p
-         OOBvYs2nV2j0OcVNiVvqSjKQmYJOiD1vUtPU60SdHRjGDJm6qSKQZkwZpi/UQTF42pL/
-         1gehMlMcfidsqBGeeJbuZlVM6o5V+6OULTrcB8lgJFyri5X8pSRS7iaYm3T389s8Jm/N
-         8LfK2FIyB0TMAsJkiEEkcVYMIk/AoXjpB0ka28Fs1UasP/8jJtt+FBnLCY4pZHaFTXhw
-         b+3kEaM1SsX/VCtRjA+tsN3W6PncCM+L04vS9t5W6gj/n61/UoRszcNURsn1ZGyeQOUc
-         Tbsg==
+        b=g+tjurXZieQ0I7fN54X1Rn6D8Pne6FAEyAhJ+whBv/YcMPcgvFLw28IXsZFC+Cjjhb
+         zrzKhIeiM1Q6eMuf74qeUQ/k05yH7Vwze7GHTKLatC+CKowNz21tY06IvxP2JcLYzdY9
+         eNM88egSdtoS5sawPxF5m1gEpaK8AhUTMdtQkSeD12nOxTuAU/aMJ+0Fl2Sm4C7Z7qiK
+         Mg/Mxn2xJ4XeO/Ejarib1s7CH3OABp1B+APoRgF9Ut9G12PMFtO3gPJtrF3gLCl8BcYW
+         jSiPvAadW8sZj4+DtWFkHkt66HNmBU1lIMz/V5p4WjDLbAs1/lgb9Q15bAw72cpz+3N+
+         m7tA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature:arc-authentication-results;
-        bh=qVPsp+5lsCD4WN6SC11WczwTSHiWHh8zqIGhpHA272M=;
-        b=Xg+1mr/RIYj0j4vVaek2sv3WmPHiTl0a2n4Sg3wXq/fepVPX5WpAdsrpk9mzCsoumz
-         XGhzfQjAkxzoaN5in96fH1SAzTMQSblKf1ymNKaas5hhBRVW9wMTThe2yJb12f9k+1Ql
-         z3TOj5fpZaO/mHxtyV7SHWQBbZ0bPXOBDWCG6sUZV4A2ukp52Dv3SgU91MMwe/8wsmIH
-         vj7iH7stngrqB+RfQUYUCFz9qdowwdV5hKMj7fLj8v2F70JwgPun9CcFLaROOZAr/6c0
-         AFO0zX7bAa4hrA6aLmbAZUtgWdh1ZdNryQOUcrm6kjesRKNiAEr7B+Fepir2Y8vuDOin
-         9nUw==
+        bh=dt+mYIjBqPxp03m6tJqs/O2aepzQAvG0B5IzjVyVVt8=;
+        b=xqYJJiQXXEJFeLtQMB1F9Bu2PWnTE7SS1L9WPmfYijnKHS/7IOIObxK+E/HNGdjLgo
+         xoxto6ZpCZQ/sg/oG6usatpEaa1qFNTEe2CoDYUkp8iP+LpGRrP00yzvzx6YhbyvQ3Ao
+         0Pj3qt9HC7WwL/esZ+B/cB7XckpxYgmA++6OTeGwCPSYT7jNSVFFHX+7eYT0KzkqDmno
+         HaipsakEYYj+GIM9ZnU6oYl5RnWR+NFbLCFF50lIsNrK1G6rdCf48FTwSaJ+twhtiHNl
+         6tgjQgk+4sBTIg4lzxqSjQfFziHnloYEmgdbqi0h5Zlg1HcRz/LQLR4M7qno+VbYnPua
+         Ipgw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fE90I07x;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WIIpR83G;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id w140si631249qkb.4.2017.10.18.11.50.23
+Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
+        by gmr-mx.google.com with ESMTPS id 72si39762vko.3.2017.10.18.11.50.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 18 Oct 2017 11:50:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Wed, 18 Oct 2017 11:50:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fE90I07x;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WIIpR83G;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id d28so4618960pfe.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 18 Oct 2017 11:50:23 -0700 (PDT)
+Received: by mail-pg0-x241.google.com with SMTP id v78so4993483pgb.5
+        for <outreachy-kernel@googlegroups.com>; Wed, 18 Oct 2017 11:50:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=qVPsp+5lsCD4WN6SC11WczwTSHiWHh8zqIGhpHA272M=;
-        b=fE90I07xONRLql2kgDVu09zgyC2yQXISMC796tA9jiA98gtr45pruENFPkwplo23SI
-         LCisgR14/MPm2Qrn2/UKxtK3YpsvJfhY0kOx02FMQRt1kOSDji6+34P3mxFUrxAR50Ab
-         TqKfwu3CEPC7JGD7C9gQW9mu3NPJZ1LpsXSCFTAC7b64+5kGhE2biW8vOxQpo9y2XgHx
-         PapP6famznQg2qfYsV1sPHxx5t0PKvrsqjEZ7kQNm/lLyVrKPWT+vmNi+98PNm5PBm81
-         w/f8zgLq7PVoFUaYNYCfL74MyNcn9D9q7dDKL3ajArCIxLT+fL65v/NZC07Uie5YnDpv
-         AaYg==
+        bh=dt+mYIjBqPxp03m6tJqs/O2aepzQAvG0B5IzjVyVVt8=;
+        b=WIIpR83GFgLCLa/uSxM265Vnn5kdsnHR9yzAATloK+PHxhQ0gUqNxsoxaLjH/I7yxU
+         w04xToYeVVnQzI8WaoNjmyHxhqhrvHv3pfkwm74HNp4ExtyI3cRhR/lJ1JsJ+OI485nJ
+         a9u++RClxpHhdPCMcAPKXaz37mQmxTBDKU7KA79xrE6WkWMlUenSSHwii+in8pXRJb09
+         zxl9emzNSMk+Dnx5EK8b95jvy/6LgBA6EhEMxzWBYzO1eQTv0yWkuAI9HqdnFv4yqikA
+         xI3zEkXjgNZpq3rqRJj5qBUu61HRQzG0wh6UUoHejfh3Q5Eny74GG3ZK1YfCP1buSRKX
+         EHAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=qVPsp+5lsCD4WN6SC11WczwTSHiWHh8zqIGhpHA272M=;
-        b=jz32ajTqVumyUZXEl2bIyoeg+FKESJln5joXqiqXt8a83B3TP/mYR+arMRTAFd3lI2
-         jDUvE/tk/+m2Z758t/9SLX5ocRetHGbW+K+6Qslo7SMujEVO6DDqnq6REpYZeHfpsprv
-         xMp8xOXBiNyPSkPbVcgmKsMBumRejjTsjICZzayvKF5WWEAQTkGQgzuCVPvDjcaWtLoI
-         V+4TLjdfv1Wv4pce7t5EY8iUjn/Wgb30j5MLUp1mM+G4lEAzH9PeXvrB+/Ia+qHQsbi9
-         8oDji2ONBjeoGWBcFqZnSgZQbbaXos9c/ba5SnUWstnI92sfHclFnXxzPWb7k+5qBGmu
-         NtXA==
-X-Gm-Message-State: AMCzsaVWP+yvob6+YFWTXoZeNGSOc7Oef2S2Gh7MVEQ07JTawAdksnjr
-	mivdi2pvmgoheizaaVMCC5Q=
-X-Google-Smtp-Source: AOwi7QAlKVYW2F3rDI41DE0LmscXSPc//cEJMRfiFPK+6coTk8I+4ZxQZO0y+MJ/+WUBZY0RIQINkg==
-X-Received: by 10.98.34.22 with SMTP id i22mr15576751pfi.340.1508352622931;
-        Wed, 18 Oct 2017 11:50:22 -0700 (PDT)
+        bh=dt+mYIjBqPxp03m6tJqs/O2aepzQAvG0B5IzjVyVVt8=;
+        b=GEOByLDZDhOkA+1T0J0d5wAXqJzOSFUOSAJ/EmS8qV+psNsC3Kl9LHEi8gIV5GBor9
+         ome95WBJtsRyBvnLW06CVahs928JCNAfs7N/fQ1Cq/KzazJQsqathgJnpvNNG6pM6voj
+         QSZfIZCjFVHbRgK4uJT7AWLqg77fLeAObE/at7dzVhiEg4qr40vq+ZCx4MYgIGr/+/Ok
+         xOr1Sx+Nn+eOlAPACfLjhjZabJ3J1eban2uHxV+ErF7O5CGLUp6nLrQbO5MnLmL/nT/f
+         oX8igQbNE4on5PErMsEYsPmbuAqx3lpwLeIaFZ1A/8KkGJO3lT/iVDG2OITfbFx/+lYG
+         bebg==
+X-Gm-Message-State: AMCzsaVn8500UCbW9pScqhk0tzDjBKSHbjSfckW3IKLZV0WOA0A504bh
+	d+2Dgi7WBI1ub8zFmlAg8CA=
+X-Google-Smtp-Source: AOwi7QD7g7wKGEaRBdxrCDPbJeZr1o8AV4yVoENqRuiBJ5CQkLmYyhGG87Zd61XNjkyd4DXKv0v4jg==
+X-Received: by 10.99.129.199 with SMTP id t190mr14553123pgd.227.1508352618728;
+        Wed, 18 Oct 2017 11:50:18 -0700 (PDT)
 Return-Path: <aastha.gupta4104@gmail.com>
 Received: from aastha-HP-Pavilion-15-Notebook-PC ([103.196.221.228])
-        by smtp.gmail.com with ESMTPSA id r78sm27414672pfb.29.2017.10.18.11.50.21
+        by smtp.gmail.com with ESMTPSA id m9sm22950983pff.26.2017.10.18.11.50.17
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 18 Oct 2017 11:50:21 -0700 (PDT)
+        Wed, 18 Oct 2017 11:50:18 -0700 (PDT)
 From: Aastha Gupta <aastha.gupta4104@gmail.com>
 To: outreachy-kernel@googlegroups.com,
 	Oleg Drokin <oleg.drokin@intel.com>,
@@ -79,78 +79,50 @@ To: outreachy-kernel@googlegroups.com,
 	James Simmons <jsimmons@infradead.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH v4 7/7] staging: lustre: lllite: fix multi line comments style
-Date: Thu, 19 Oct 2017 00:19:46 +0530
-Message-Id: <1508352586-25475-8-git-send-email-aastha.gupta4104@gmail.com>
+Subject: [PATCH v4 6/7] staging: lustre: llite: fix coding style for error messages
+Date: Thu, 19 Oct 2017 00:19:45 +0530
+Message-Id: <1508352586-25475-7-git-send-email-aastha.gupta4104@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1508352586-25475-1-git-send-email-aastha.gupta4104@gmail.com>
 References: <1508352586-25475-1-git-send-email-aastha.gupta4104@gmail.com>
 
-This patch fixes checkpatch.pl warnings:
-
-WARNING: Block comments should align the * on each line
-
-WARNING: Block comments use a trailing */ on a separate line
+The "DFID" part should be added to the same line as the rest of
+the message, to match current coding style.
 
 Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
 ---
- drivers/staging/lustre/lustre/llite/file.c           | 4 ++--
- drivers/staging/lustre/lustre/llite/llite_internal.h | 5 +++--
- drivers/staging/lustre/lustre/llite/rw.c             | 3 ++-
- 3 files changed, 7 insertions(+), 5 deletions(-)
+ drivers/staging/lustre/lustre/llite/dir.c | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/lustre/lustre/llite/file.c b/drivers/staging/lustre/lustre/llite/file.c
-index eee9bed..bbfc675 100644
---- a/drivers/staging/lustre/lustre/llite/file.c
-+++ b/drivers/staging/lustre/lustre/llite/file.c
-@@ -386,8 +386,8 @@ static int ll_intent_file_open(struct dentry *de, void *lmm, int lmmsize,
- 	ll_finish_md_op_data(op_data);
- 	if (rc == -ESTALE) {
- 		/* reason for keep own exit path - don`t flood log
--		* with messages with -ESTALE errors.
--		*/
-+		 * with messages with -ESTALE errors.
-+		 */
- 		if (!it_disposition(itp, DISP_OPEN_OPEN) ||
- 		    it_open_error(DISP_OPEN_OPEN, itp))
- 			goto out;
-diff --git a/drivers/staging/lustre/lustre/llite/llite_internal.h b/drivers/staging/lustre/lustre/llite/llite_internal.h
-index fc1d3f5..b553f9a 100644
---- a/drivers/staging/lustre/lustre/llite/llite_internal.h
-+++ b/drivers/staging/lustre/lustre/llite/llite_internal.h
-@@ -392,7 +392,8 @@ enum stats_track_type {
- #define LL_SBI_XATTR_CACHE    0x80000 /* support for xattr cache */
- #define LL_SBI_NOROOTSQUASH	0x100000 /* do not apply root squash */
- #define LL_SBI_ALWAYS_PING	0x200000 /* always ping even if server
--					  * suppress_pings */
-+					  * suppress_pings
-+					  */
- 
- #define LL_SBI_FLAGS {	\
- 	"nolck",	\
-@@ -1199,7 +1200,7 @@ typedef enum llioc_iter (*llioc_callback_t)(struct inode *inode,
-  * Return value:
-  *      A magic pointer will be returned if success;
-  *      otherwise, NULL will be returned.
-- * */
-+ */
- void *ll_iocontrol_register(llioc_callback_t cb, int count, unsigned int *cmd);
- void ll_iocontrol_unregister(void *magic);
- 
-diff --git a/drivers/staging/lustre/lustre/llite/rw.c b/drivers/staging/lustre/lustre/llite/rw.c
-index b6371c4..4fa9f9b 100644
---- a/drivers/staging/lustre/lustre/llite/rw.c
-+++ b/drivers/staging/lustre/lustre/llite/rw.c
-@@ -888,7 +888,8 @@ static void ras_update(struct ll_sb_info *sbi, struct inode *inode,
- 
- 	/* The initial ras_window_len is set to the request size.  To avoid
- 	 * uselessly reading and discarding pages for random IO the window is
--	 * only increased once per consecutive request received. */
-+	 * only increased once per consecutive request received.
-+	 */
- 	if ((ras->ras_consecutive_requests > 1 || stride_detect) &&
- 	    !ras->ras_request_index)
- 		ras_increase_window(inode, ras, ra);
+diff --git a/drivers/staging/lustre/lustre/llite/dir.c b/drivers/staging/lustre/lustre/llite/dir.c
+index 58d832d..ec9b1ba 100644
+--- a/drivers/staging/lustre/lustre/llite/dir.c
++++ b/drivers/staging/lustre/lustre/llite/dir.c
+@@ -734,10 +734,10 @@ static int ll_ioc_copy_start(struct super_block *sb, struct hsm_copy *copy)
+ 		rc = ll_data_version(inode, &data_version, LL_DV_RD_FLUSH);
+ 		iput(inode);
+ 		if (rc != 0) {
+-			CDEBUG(D_HSM, "Could not read file data version of "
+-				      DFID " (rc = %d). Archive request (%#llx) could not be done.\n",
+-				      PFID(&copy->hc_hai.hai_fid), rc,
+-				      copy->hc_hai.hai_cookie);
++			CDEBUG(D_HSM,
++			       "Could not read file data version of " DFID " (rc = %d). Archive request (%#llx) could not be done.\n",
++			       PFID(&copy->hc_hai.hai_fid), rc,
++			       copy->hc_hai.hai_cookie);
+ 			hpk.hpk_flags |= HP_FLAG_RETRY;
+ 			/* hpk_errval must be >= 0 */
+ 			hpk.hpk_errval = -rc;
+@@ -835,8 +835,7 @@ static int ll_ioc_copy_end(struct super_block *sb, struct hsm_copy *copy)
+ 		 */
+ 		if ((copy->hc_hai.hai_action == HSMA_ARCHIVE) &&
+ 		    (copy->hc_data_version != data_version)) {
+-			CDEBUG(D_HSM, "File data version mismatched. File content was changed during archiving. "
+-			       DFID ", start:%#llx current:%#llx\n",
++			CDEBUG(D_HSM, "File data version mismatched. File content was changed during archiving. " DFID ", start:%#llx current:%#llx\n",
+ 			       PFID(&copy->hc_hai.hai_fid),
+ 			       copy->hc_data_version, data_version);
+ 			/* File was changed, send error to cdt. Do not ask for
 -- 
 2.7.4
 
