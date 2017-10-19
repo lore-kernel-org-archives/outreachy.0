@@ -1,75 +1,75 @@
 X-GM-THRID: 6478258108976070656
-X-Received: by 10.80.167.162 with SMTP id i31mr369534edc.9.1508409307931;
-        Thu, 19 Oct 2017 03:35:07 -0700 (PDT)
+X-Received: by 10.223.173.147 with SMTP id w19mr113926wrc.32.1508409241866;
+        Thu, 19 Oct 2017 03:34:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.80.170.121 with SMTP id p54ls2717566edc.7.gmail; Thu, 19 Oct
- 2017 03:35:07 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+RhwcUTR9w+2SZrHCK/aFqW7+fGmuMP9ELXZXH5xCSgAIHEC91EpFXpg1j7/JKFd50Bryaq
-X-Received: by 10.80.173.69 with SMTP id z5mr370610edc.0.1508409307060;
-        Thu, 19 Oct 2017 03:35:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508409307; cv=none;
+Received: by 10.223.144.209 with SMTP id i75ls1935047wri.12.gmail; Thu, 19 Oct
+ 2017 03:34:00 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+QccI7VVIrtBB38EmZtL4JMlU9HEBwsAFfZNdMkoOh/yI1BazcsKY6zV5jhq3F/AnD9aCmi
+X-Received: by 10.28.47.197 with SMTP id v188mr146945wmv.23.1508409240935;
+        Thu, 19 Oct 2017 03:34:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508409240; cv=none;
         d=google.com; s=arc-20160816;
-        b=wV3rIHqOq/W6glSPS2P+r852+n2MUPq6GuxSgXZ6zFSSC9JS2vj1uA87Qcjgld7olp
-         7FAFU7Dw2aPekB3BW0IUBXAr1dc32TAuuXzCSAbA7LRSMlKkr5S/CW1EiMcwtfVfTY8H
-         r0qhLhNv2aOCkQucDFZDHAwrNF5znuxOjI5DAh7z7R0zC2jkNfj/t7iTjgDC7KMjVVdC
-         l3vB0X9Fqv+bzIWJHz0XIZYtO7b3UnHFePgDd1SwMmXmdcN1rngm2J3mEvUdx5B+wgbQ
-         ODln8kNRSMAfcVG998+0Q2o68rXDYAkeLoSCloMJZn4u3QdHEeb/ptD4Q7sJSfws6dkr
-         AyUg==
+        b=K1ODTf1QbkSF+JGO+kGijQiFXQwYjBFMbWpimycjvMAuWmHc9eN51TEEG0ucNejtKg
+         XY5sjHNY4v4t5WVECbNR+OuQ8myZC+0a6Ic4m1kXO192f9EiC3caWLyPIbKiDaCwrYzq
+         aJezp7dqxhz9nXwhLzggMMG/OgdIqZ23sYO/EeWCGK2Tq3bjuYYXamP5+jkiaxLkI5hw
+         tEpwfs0eJ8dgQ1/KsZsDQuhZ70hc9dbbMOz3icnFqtvoY9bOEK/BX1afFrFF5vtPOZk8
+         ZSG6f/coXY5/1MPLPN7H/sQzMaMxo/Vq1JNkVYR3z04Jq/1Z39TE4fYcshI57tbgmrgg
+         GDfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=W0oKSzUxGrEHwi08GCeviHuxs9bY1NwOGGBb1fPvGOA=;
-        b=Z0DNcyz6TttlaQRTtwRVTa8eSxhpz3usSRRM4JBq5DM9aGvv8Q4rpQaKpqjtuSDXrd
-         xgjc5twdq4hZnf+Wh5yc4gqaeGnp1ceq1ChKQmCZXVpV5eVadupawTUZwkH9HETVfi7j
-         s1cV7y168p5KbuLFgRQBLayAcZmgg533zVuBRQMOfkama7YX1aj21hhdeVBMNZMU0YRd
-         FMxZEJlIqJyst3DtMYLUQKf8emJViigr20RMpZYVv9A13Oau8WchWGh3Bgeoncj0lxa7
-         O233UMY3wmuR6XjLPjqmS6HuI9sZiXDe78r0tBvEMRO4OQDfcqWZfMMfWZcyggjAc7Iu
-         p+Iw==
+        bh=9TEBCM/CK0ETqReomlFVwvzxn/eljT0Siec5YFh1mg4=;
+        b=QvGNQRUIE1NZwDiEnLRJH/2UbRYw/q9TJt8a1lFFJQfgqEHUZGH8dBW5hYzcZIGT9J
+         kdrbw15Jjw1g67THMxp6c79/ZU+Ni3kNjFEqs8n26Ex6k6Qw1X7+qgLH0J1DnfoByjP1
+         GXLy8E0pRDluadmHsbKLKbDlhRC90GeS84Snvi0CDuCFnB7c3igippzXvvdz2yZdQ0rG
+         MBLjB7gmY1xQPrla1SChWzZERWe7+4kuz+57lcbXyXFQqtOZ4GCldE2QSWmy0O9TDRXh
+         1pnkSmQvq8Rqz9WcOsj4QKJtWxpk0AS3EQu4tHUW7VCQ82SrD4e5pLRAnNRaL+dwVryg
+         aOPg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
 Return-Path: <pneira@us.es>
 Received: from mail.us.es (mail.us.es. [193.147.175.20])
-        by gmr-mx.google.com with ESMTPS id f21si514037edj.0.2017.10.19.03.35.06
+        by gmr-mx.google.com with ESMTPS id m74si76678wma.0.2017.10.19.03.34.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Oct 2017 03:35:07 -0700 (PDT)
+        Thu, 19 Oct 2017 03:34:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
 Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
-	by mail.us.es (Postfix) with ESMTP id 8E08F2492B
-	for <outreachy-kernel@googlegroups.com>; Thu, 19 Oct 2017 12:35:06 +0200 (CEST)
+	by mail.us.es (Postfix) with ESMTP id 483922492B
+	for <outreachy-kernel@googlegroups.com>; Thu, 19 Oct 2017 12:34:00 +0200 (CEST)
 Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
-	by antivirus1-rhel7.int (Postfix) with ESMTP id 7D270DA8FB
-	for <outreachy-kernel@googlegroups.com>; Thu, 19 Oct 2017 12:35:06 +0200 (CEST)
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 3833CDA8E9
+	for <outreachy-kernel@googlegroups.com>; Thu, 19 Oct 2017 12:34:00 +0200 (CEST)
 Received: by antivirus1-rhel7.int (Postfix, from userid 99)
-	id 72CD2DA8F4; Thu, 19 Oct 2017 12:35:06 +0200 (CEST)
+	id 2DA72DA871; Thu, 19 Oct 2017 12:34:00 +0200 (CEST)
 X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
 X-Spam-Level: 
 X-Spam-Status: No, score=-108.2 required=7.5 tests=ALL_TRUSTED,BAYES_50,
 	HEADER_FROM_DIFFERENT_DOMAINS,SMTPAUTH_US2,USER_IN_WHITELIST
 	autolearn=disabled version=3.4.1
 Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
-	by antivirus1-rhel7.int (Postfix) with ESMTP id 66371DA86F;
-	Thu, 19 Oct 2017 12:35:04 +0200 (CEST)
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 1A68FDA871;
+	Thu, 19 Oct 2017 12:33:58 +0200 (CEST)
 Received: from 192.168.1.97 (192.168.1.97)
  by antivirus1-rhel7.int (F-Secure/fsigk_smtp/550/antivirus1-rhel7.int);
- Thu, 19 Oct 2017 12:35:04 +0200 (CEST)
+ Thu, 19 Oct 2017 12:33:58 +0200 (CEST)
 X-Virus-Status: clean(F-Secure/fsigk_smtp/550/antivirus1-rhel7.int)
 Received: from us.es (129.166.216.87.static.jazztel.es [87.216.166.129])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
 	(Authenticated sender: 1984lsi)
-	by entrada.int (Postfix) with ESMTPSA id 301F040584CF;
-	Thu, 19 Oct 2017 12:35:04 +0200 (CEST)
-Date: Thu, 19 Oct 2017 12:35:03 +0200
+	by entrada.int (Postfix) with ESMTPSA id D4F2540584D3;
+	Thu, 19 Oct 2017 12:33:57 +0200 (CEST)
+Date: Thu, 19 Oct 2017 12:33:57 +0200
 X-SMTPAUTHUS: auth mail.us.es
 From: Pablo Neira Ayuso <pablo@netfilter.org>
 To: Harsha Sharma <harshasharmaiitr@gmail.com>
 Cc: netfilter-devel@vger.kernel.org, outreachy-kernel@googlegroups.com
 Subject: Re: [PATCH] tests: xlate: print total no. of testfiles, tests and
  tests passed
-Message-ID: <20171019103503.GA2752@salvia>
+Message-ID: <20171019103357.GA2716@salvia>
 References: <20171018142944.14872-1-harshasharmaiitr@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -82,10 +82,23 @@ On Wed, Oct 18, 2017 at 07:59:44PM +0530, Harsha Sharma wrote:
 > Print errors and total no of tests and tests passed for testfile argument.
 > Print total no. of testfiles, total no. of tests and total no. of tests
 > passed for "all" argument.
+> Change testfile argument to take "extensions/test_file" as argument.
 
-BTW, could you also to the commit description an example on how the
-output looks like, for people that don't want to apply and run it, so
-we set clear expectations on what this is doing.
+Looks good, but general rule is:
 
-Thanks Harsha!
+        One logical change per patch.
+
+I mean, this patch description says you're doing two things:
+
+1) Print errors and total no of tests and tests passed for testfile
+argument.
+
+2) Change testfile argument to take "extensions/test_file" as
+argument.
+
+This means you have to send two patches, one for #1, and another one
+for #2.
+
+If you do so, git becomes way more useful when doing archeology, since
+we know what patch added what single thing.
 
