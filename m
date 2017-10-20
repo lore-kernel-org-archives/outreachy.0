@@ -1,95 +1,102 @@
-X-GM-THRID: 6607095314902941696
-X-Received: by 2002:adf:ad4a:: with SMTP id p68-v6mr724644wrc.8.1538334254142;
-        Sun, 30 Sep 2018 12:04:14 -0700 (PDT)
+X-GM-THRID: 6478258108976070656
+X-Received: by 10.28.128.140 with SMTP id b134mr182342wmd.3.1508503008089;
+        Fri, 20 Oct 2017 05:36:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:f2ce:: with SMTP id d14-v6ls6141187wrp.14.gmail; Sun, 30
- Sep 2018 12:04:13 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV634T2CZAeRoV1lj3SgHtM+LQn+myUTdCPeeok+ZlUfcydLiRpsR4uiDxP5bTKs1Kj3m1s47
-X-Received: by 2002:a5d:5201:: with SMTP id j1-v6mr789365wrv.30.1538334253004;
-        Sun, 30 Sep 2018 12:04:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538334252; cv=none;
+Received: by 10.28.191.29 with SMTP id p29ls292736wmf.8.canary-gmail; Fri, 20
+ Oct 2017 05:36:47 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+RnJDS0P4x7YlB+R6qDttIYUcBxmvVNVwxTPejCoEkG3ySqmgce02qdkqnISbY8cDQ67Qb9
+X-Received: by 10.28.24.207 with SMTP id 198mr188054wmy.12.1508503007347;
+        Fri, 20 Oct 2017 05:36:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508503007; cv=none;
         d=google.com; s=arc-20160816;
-        b=LvfkddsanY5PMtpHghX4Btc52wwal3ulerTXiraBOeqq6zQ8vDM7WZSXExZunhkQ3V
-         V5yv+2daIAy0ERtgPepinbwUYHVPuCdeoLvUPeDha6nr08pif0v8/PusmhxOnnKTfrAl
-         uGpYaMoPC0jWPPnoI0WdC/u/Y7gC+dp1LE/zhXx+TCiO0ZD6IbetuGEU9V7IKNEMldUg
-         A7ghCwGSpoJfsKDOPWMk4eCgqUq2aOjejK55Hv26tx7B16YHicIQsa6vmMHKt1QN53sO
-         b8iUqzoKgAG9xCtJKce33u3c9xyJfjm75OVAc2SgEQjWOzJw6kV5f5JMKzMASz/7IaVO
-         AZ+g==
+        b=u1ynTjmeMj8kxB4KXJXpmfnsEi5q8IxiZJNUlsfkebwNiQaKJMXl+LO8YVBllnGeTe
+         y3EZtaP01BGDM8h3jrna8fbZBuLMpCugQc0nmStN4QtETjEvqiH3uqhUc8YurF3BeCaE
+         bj72hIhFJZAD7AQxNkYxpBfZcFxLCTtDGwOqaTqGwwjaVQKHoxRbmzzGf/on6q7DYIBi
+         03HjfWIXzz7ACOrks0o7j/MDtHmPOt5dYx4yUYgXCt+h5YrDZHaw7kNg7bfeMJwtwV46
+         +nu1hQJ82goWD/Bj6mUL5A5dF/8rjSGmoh9PxGteRcGNYbo2PE1yxSDTtmIJpdFMxyZB
+         sI6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=GHlq1lA1cwK7WaPMa8q75tnpw0JDV5jvKBbrgfUdI3Q=;
-        b=lITjD8bNSD2/9L0GtibddvlkxxxVVcmmBY5I5nUV7WklBwx1Ixmb96WBytd7VkRCw0
-         jZHzjUKuvevFdFZ9+fFmc9CnrkRbn8fGE2LEHLzEO9ECMLjJNsDcNy0R3U9n11iq4YX+
-         7OuTJR/BiAN2PvhHQ7y3vS+mmclHeVfOsK5/mNvH0LojcS9vx5q0v0r8FOBob/rIeQBM
-         e+0YftcOR9ceQsCetnpBc1pwzoo7yfxZDnywucAjfPsCmsPpzuxfUvodfmD9tiH0Mmuk
-         3bAFCPeJnewK1R+PqGEj/TizVws+/RdNcjWlN7go0w1B+W5uQYubCAq/BU9Bz6Euv4Te
-         dFtQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=JsAPLCCKvQGFrJLV3ppXhiGBUIipKjQTSeso6BXugic=;
+        b=SIVWI7P4D81ut8P/BHRaTpyk1KsZkve5H++tq6xVuT+itWF468tCXDQMHwt8MN8eiY
+         T2X7k8DNTWv5bI0DNLgVlPWSxtfj8oxk6Pwj7lrsjhVbewd8OhTFlSVQSCdoDe4pyiBi
+         XsQxw9rhFWW/i76cjaCYP1HuLpQIwig3GGSdvc0PpTpa4ZAb2jJ+n6dSsfrAgPgxFIM6
+         Xl/SFlgvVT5qVas+v13Iqp8iJTniYsoa1hN8LVl7GIeGKeKsauKak/p5L3bQtM33nh3f
+         syVucUoj866/MLp5nXTwpyBoJfbGD1VtK9Yzoyqe8HNKOXmeXBo4Kt3T0P1pbE39l1FP
+         X/zg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rKMIFSST;
-       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=dafna3@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <dafna3@gmail.com>
-Received: from mail-wr1-x444.google.com (mail-wr1-x444.google.com. [2a00:1450:4864:20::444])
-        by gmr-mx.google.com with ESMTPS id h188-v6si312448wmg.2.2018.09.30.12.04.12
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Return-Path: <pneira@us.es>
+Received: from mail.us.es (mail.us.es. [193.147.175.20])
+        by gmr-mx.google.com with ESMTPS id m62si452005wmi.1.2017.10.20.05.36.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 30 Sep 2018 12:04:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) client-ip=2a00:1450:4864:20::444;
+        Fri, 20 Oct 2017 05:36:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rKMIFSST;
-       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=dafna3@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x444.google.com with SMTP id 63-v6so4162716wra.11
-        for <outreachy-kernel@googlegroups.com>; Sun, 30 Sep 2018 12:04:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=GHlq1lA1cwK7WaPMa8q75tnpw0JDV5jvKBbrgfUdI3Q=;
-        b=rKMIFSSTX3sHYOLn5QYspxFPicP7ReXB2zdzLNMpwea3XKxfYQjZI9EaBsYIn0ebuI
-         LgaLwECznV6qQ9Pnf2YRc6Zbycop84fI5B2kqpe/4q+j8qGYnmUN3KgDDO1d+VaHKWAo
-         BECpLc2gPByRE4Y4bHwAuAqohM7vH1v2wEEVcbEYxi8iNZTM5idILL5baqQFmEch6ulH
-         z0OLmOxXgQQp9uZsQSEKyi7dbipayIEoEzYXUE5rPa2hrSNCgiScr8w9Eberz0eW6xer
-         Eb9pgAFn9aneQ/aqOxoJYXenjV/8yX4FmpVNnt7JmfG1BEhIKeYGVrXlWsWB+yBc1/iv
-         J7Kw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=GHlq1lA1cwK7WaPMa8q75tnpw0JDV5jvKBbrgfUdI3Q=;
-        b=G7D+OjKpf3XHVCfzdTVUYFA+jMbJe1zMGchYW7eP9g8WZLZ9qh1/2ToUgYsezOB8AE
-         4HrsqhsIuQCsl9LNJn1/fersX3o6OhFh73FRVFVf3wdqbVYLqC5JvLx1Ohm3nclwNoMN
-         r95oeVa9K1uVNon5yMk7MwbpR9D02WhGL1yMR5aqs49w8FNJdCaG1dDZkrXVfxuXAOqs
-         b525ioQjhbFrXsRmcgP8db8UQMv4tGhs0+Y+l7Z7m5xHsBmEUWrn7G0vvhVHRcZ+4JF/
-         cQHn4ZV5KP9dSowOHxR/DtXzbku4r6t4bJ6Dl425rZWFilto76t+8oqVedlDIJWbw8cL
-         YOBQ==
-X-Gm-Message-State: ABuFfoj19AmYhxNeYEfFJKt0jBLc6YT2oAPx7sN7TR36JmFy6pQLFb/3
-	T87zBHFRm4XCMyiG85HRxfQsB1vGjq0=
-X-Received: by 2002:adf:a925:: with SMTP id u34-v6mr4506438wrc.175.1538334252431;
-        Sun, 30 Sep 2018 12:04:12 -0700 (PDT)
-Return-Path: <dafna3@gmail.com>
-Received: from vdoo.home ([77.127.1.188])
-        by smtp.gmail.com with ESMTPSA id n4-v6sm10657610wrr.21.2018.09.30.12.04.10
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 30 Sep 2018 12:04:11 -0700 (PDT)
-From: Dafna Hirschfeld <dafna3@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	dafna3@gmail.com
-Subject: [PATCH 0/3] *** Cleanup patches for mt7621-mmc staging driver ***
-Date: Sun, 30 Sep 2018 22:04:01 +0300
-Message-Id: <cover.1538333858.git.dafna3@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
+	by mail.us.es (Postfix) with ESMTP id D1E2E6926B
+	for <outreachy-kernel@googlegroups.com>; Fri, 20 Oct 2017 14:36:46 +0200 (CEST)
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id BDD8FDA804
+	for <outreachy-kernel@googlegroups.com>; Fri, 20 Oct 2017 14:36:46 +0200 (CEST)
+Received: by antivirus1-rhel7.int (Postfix, from userid 99)
+	id B3867DA7F7; Fri, 20 Oct 2017 14:36:46 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
+X-Spam-Level: 
+X-Spam-Status: No, score=-108.2 required=7.5 tests=ALL_TRUSTED,BAYES_50,
+	HEADER_FROM_DIFFERENT_DOMAINS,SMTPAUTH_US2,USER_IN_WHITELIST
+	autolearn=disabled version=3.4.1
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 72919DA848;
+	Fri, 20 Oct 2017 14:36:44 +0200 (CEST)
+Received: from 192.168.1.97 (192.168.1.97)
+ by antivirus1-rhel7.int (F-Secure/fsigk_smtp/550/antivirus1-rhel7.int);
+ Fri, 20 Oct 2017 14:36:44 +0200 (CEST)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/550/antivirus1-rhel7.int)
+Received: from us.es (129.166.216.87.static.jazztel.es [87.216.166.129])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	(Authenticated sender: 1984lsi)
+	by entrada.int (Postfix) with ESMTPSA id 4134040584CD;
+	Fri, 20 Oct 2017 14:36:44 +0200 (CEST)
+Date: Fri, 20 Oct 2017 14:36:43 +0200
+X-SMTPAUTHUS: auth mail.us.es
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Harsha Sharma <harshasharmaiitr@gmail.com>
+Cc: netfilter-devel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v2] tests: xlate: print total no. of testfiles, tests and
+ tests passed
+Message-ID: <20171020123643.GA6675@salvia>
+References: <20171019124002.11066-1-harshasharmaiitr@gmail.com>
+ <20171020123356.GA5925@salvia>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20171020123356.GA5925@salvia>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Virus-Scanned: ClamAV using ClamSMTP
 
-3 Cleanup patches, all issues found with checkpatch.pl
+On Fri, Oct 20, 2017 at 02:33:56PM +0200, Pablo Neira Ayuso wrote:
+> On Thu, Oct 19, 2017 at 06:10:02PM +0530, Harsha Sharma wrote:
+> > Print errors and total no of tests and tests passed for testfile argument.
+> > Print total no. of testfiles, total no. of tests and total no. of tests
+> > passed for "all" argument.
+> > For e.g. :
+> > sudo ./xlate-test.py --all (adds this line in end with whole output)
+> 
+> Why we need --all?
 
-Dafna Hirschfeld (3):
-  staging: mt7621-mmc: remove unnecessary braces from 'if' statements
-  staging: mt7621-mmc: Fix comparison to NULL
-  staging: mt7621-mmc: replace `printk` with preferred API
+Oh, I forgot. This is like this, right?
 
- drivers/staging/mt7621-mmc/sd.c | 25 +++++++++++--------------
- 1 file changed, 11 insertions(+), 14 deletions(-)
+http://patchwork.ozlabs.org/patch/825100/
 
--- 
-2.17.1
+Hm, but --all here should probably be --test-file-path or such.
 
+I may be missing anything, but I think we don't need a --all for
+xlate-test.py.
+
+Thanks!
 
