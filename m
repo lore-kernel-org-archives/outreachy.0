@@ -1,85 +1,85 @@
 X-GM-THRID: 6478777723718205440
-X-Received: by 10.98.139.20 with SMTP id j20mr813386pfe.13.1508458933871;
-        Thu, 19 Oct 2017 17:22:13 -0700 (PDT)
+X-Received: by 10.37.170.102 with SMTP id s93mr1853727ybi.75.1508458012496;
+        Thu, 19 Oct 2017 17:06:52 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.84.132.110 with SMTP id 101ls2182900ple.8.gmail; Thu, 19 Oct
- 2017 17:22:12 -0700 (PDT)
-X-Received: by 10.99.185.86 with SMTP id v22mr797095pgo.76.1508458932776;
-        Thu, 19 Oct 2017 17:22:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508458932; cv=none;
+Received: by 10.129.98.8 with SMTP id w8ls681020ywb.0.gmail; Thu, 19 Oct 2017
+ 17:06:51 -0700 (PDT)
+X-Received: by 10.37.39.7 with SMTP id n7mr1843250ybn.55.1508458011748;
+        Thu, 19 Oct 2017 17:06:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508458011; cv=none;
         d=google.com; s=arc-20160816;
-        b=YtkRSuaf9L1M7yEUPHOji9kHqfN45Ur0b/nMVWi2qHPFXC0AfAdaWE/LjmRT04qoOI
-         K2bxfmB8b2VRAirZtf/8zzhxz9KVBekm1COr/Mqgup2YbZYaXqq6VfrNdEGMvV9/g62u
-         8W/Q6J17oztdHlwEskST0/VSdeJUEN6pGKa7soR1KAJPZpKBLdgy0gOaKmPtVqNhofyq
-         balAL7UelwNTvgvNOMQYGXLuVDalZSQTgTquC96BugFYN5/w6451X3R18Nq4wUQACnco
-         fseDkCbPG6E4LJ1hRwkS2XawvKan0BAjmIWI33cC9qKt8XfpCl1uHhN96rRV6Wn9Xcx0
-         LFtw==
+        b=Yl5Ft299WMpBhLm3BzdCRkEioOhEv1fu+3xh6/Dcy1ptGFR29B0k1cOZKdxgZTU0wb
+         NrXCPScNW9QuhVjX7zmDgH65z2Iw0W4jUSl9W3THZaSRJfznk4JdRiorTUmnmmxlEse9
+         oRi/nRN4Ajf+7ltJHgWfoIVt5iX0DKFlC6vtbrORvtGqgsXcqIcQy2iNBP0Tw80NRjoC
+         1JULRUowToM/0cXgXNGSaARhpNllgCJcBKVM9QDhtga3pCmJzKQhlX3zT0XKA8Xi8n8s
+         N+NE69VRWG4mEkti0N/l3i1hOrCKCbZIevSzBLbZf22XhzKkOx/IUYLMn9mMoppN+5b2
+         l8kg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature
          :arc-authentication-results;
-        bh=4FvLARdrtqdSvzunHsZWdgMOWr/i29M7MAbCmAa3wdA=;
-        b=PfmW4pqELuZNa7mKR6ZEKtjcAnuo9zzgNfGTyzDpqvMUDVIea0Pp6yit77DTRJtoWs
-         HLkkJhIas+tXAdKxXdvEjaLlSZzdzy0BkPjntJSReTLItTOud2bhyuOJAFPc71RruM/R
-         JSh7I12J1PyK0C0/RHCtOp66Mo/6goEgei9aDo/J6LJbgMOuacYomjng0H0rdNB9T3zH
-         KAciJrGAeQClIu2ngUTXkw5IjxnNhafzOVN5Fvj3fiR/+wMWvl0r5Gn4jhn9FoCZ2Td/
-         LMSGFCaVzyN2KueDA9klA4lYwrofRRfVKEYAF+NFksh5PYoWLjnyPNtrqYDag2eJdWtz
-         p3aQ==
+        bh=ECUZU29RHoNIZpszmh6T5TTK4H9x/Xeywjm35vbx7H4=;
+        b=CIXupc6CO74wacpUCHl8ntTuG+NHC04nbe+pLCAlN6gsWYMu26BqgoSX1grz1CelA+
+         jHdUTrrSPgZ1ffm4l2DgsZEjFQzOouvzVvmxsNHTNaxaRwIdlBkB9SNzkSyqdyaXkX3e
+         9NDWwlIIOl4ZonGDuwanQwoSmwlULO4loEIKcCBT9Iju25vUK2AME7Ui+hhgt+DeGncj
+         4SNEXJCtXGmGho8PZgFElFEFZ7ueIE/Y/dxvrGG9g4bKK+5HbadN1Q6N3AlmxJTqRh0+
+         9xj10kQD5I7fHmDvyCXQGC19REXrLlbhbY+jdFrMQ7Dy7Bgg6JO78uMjdU1tcK8g7aSg
+         3qRQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=Ym30OczU;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::242 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=HvyV7O4b;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::243 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
 Return-Path: <frank@generalsoftwareinc.com>
-Received: from mail-ua0-x242.google.com (mail-ua0-x242.google.com. [2607:f8b0:400c:c08::242])
-        by gmr-mx.google.com with ESMTPS id m7si792476pga.0.2017.10.19.17.22.12
+Received: from mail-ua0-x243.google.com (mail-ua0-x243.google.com. [2607:f8b0:400c:c08::243])
+        by gmr-mx.google.com with ESMTPS id g13si1095993ybk.3.2017.10.19.17.06.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Oct 2017 17:22:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::242 as permitted sender) client-ip=2607:f8b0:400c:c08::242;
+        Thu, 19 Oct 2017 17:06:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::243 as permitted sender) client-ip=2607:f8b0:400c:c08::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=Ym30OczU;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::242 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
-Received: by mail-ua0-x242.google.com with SMTP id w45so7247418uac.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Oct 2017 17:22:12 -0700 (PDT)
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=HvyV7O4b;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::243 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+Received: by mail-ua0-x243.google.com with SMTP id f46so7255114uae.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Oct 2017 17:06:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=generalsoftwareinc-com.20150623.gappssmtp.com; s=20150623;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=4FvLARdrtqdSvzunHsZWdgMOWr/i29M7MAbCmAa3wdA=;
-        b=Ym30OczUSNmSbffq2JcPc4jiZC8tqmq3bnn+YyV2PPRE2TxR73drgyYnH00qMIjX8e
-         zaw6RqhscVZ8Re0eQllYv7azxCozmrG9pNLLvKm+NPPr5+BydVurXVCRy3TParLPySZS
-         MUx0eNXVcn7by8y7fdoqR1E8yw+7Fljo+0JLk5EjcGFYeLY8s+q2uQFvwLagn034pES+
-         p6HlXqdoi+O7RXgzYmyTrtt7/bR1YV6p1GTYjxKfgQcWZ0WRKT6RZVhLXwOawDuHIbVf
-         W4bju3rFpWXbBVeJgzDGVR3mQFfKCxUrLcbiYEE1h3YVAevXozEMHf3jvl5PhkbfBhqh
-         wHBw==
+        bh=ECUZU29RHoNIZpszmh6T5TTK4H9x/Xeywjm35vbx7H4=;
+        b=HvyV7O4bfeNilO1cKBaANstnOzS+egVcMKGA2zDNkQmrLA6F9a9ANTvejCOsQy/ncs
+         XIQBchx8BjpX6+mZuHFuzHoXbu0LWVbkrOlyhAI+GEmiidZ/1/z2t/6NvOj/FilQ1Chw
+         UoPvMa/joG1fsi8eKZFfcfEK4byh0Zrth0MJklMOOoCVWb/RBJTT/Fv3IEsG4Wc1K+UQ
+         S3cyBZgo1+CdWfp0u0vHnFgP9/4rEmxqIJeA184KqW7Ggx0UDBtze+3gs5lRhJ9+XpQ6
+         diJfxO+jGZq690LYxI6YPw32K1gUlmwRkreTqvaqxcGEEEcGkiN/0jTPgYb2qNHzaUq5
+         q/Yw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=4FvLARdrtqdSvzunHsZWdgMOWr/i29M7MAbCmAa3wdA=;
-        b=dZs58WCKHrzSk4QNXJOfSxKk/u5bklNFi3dadbqh7eOBxp/S0ENcXUQP+RovWjPPhs
-         2wbEza2qe/Pjuq9VNL926dpTTWTRGgJem9hRIo6z9csHqnXu7DsrxB7ekGqQVD0j3l8k
-         RnOXZLc63bVS5qS/kW0Cqk9yq1xhCOI6Ad5GfQQefHE5bK8OQh3CkIbOVqSLFw6OKCTs
-         i7BM8DqazRtKdSk0PKwmJ3ywOs8bKzAdyQLzA3+dOykE8bFWfYYW+jKQT+T1ImLDY415
-         Q7kpndJw0tX5yxuxK3Ha1nCBeUXnLYDcj2bhHH7Z7G9aavncWPnIqEHwn+0HouyvaIpC
-         YMZQ==
-X-Gm-Message-State: AMCzsaWi/8xk/fjz3pwPhtggH+X7DiokkIph2xHhnBiV70jzUPPUQmBY
-	8D1Ksos7ZqA7sM8dw8mcDBgg0bzG
-X-Google-Smtp-Source: ABhQp+TVHyUz4l6w1uq+rNhZm7fW/kSR3FLBriqeKduqkJoQbN0qo7tlHT5OWiRvE8FyJIey+7rmbQ==
-X-Received: by 10.176.17.195 with SMTP id q3mr2608096uac.20.1508458931432;
-        Thu, 19 Oct 2017 17:22:11 -0700 (PDT)
+        bh=ECUZU29RHoNIZpszmh6T5TTK4H9x/Xeywjm35vbx7H4=;
+        b=k/RxkchjZu3ilcjaxoJ8ljTnCFHqNMFE/tL9Doivb8WjkBtzC/Xqep6LyAyf7chyC3
+         GDoN9MhEE97PJp07YKCweVkNI+TJJOnqbAtNME1/MhHsNOWO3Lg+6HBHaAqFc4SYPsnQ
+         A9mifxrJj/QEgRZJICAM0cVWfQpecvXZm0zVdc9CdBLVXxa+WMEhmQw/3uA3DW/zEokQ
+         Tv7S1vf0zow7iGiEXd9usgmApSnyKtnskQqDPDzGuXQFQn3ImzJw3UdEuCaBTR/bopdi
+         lxUFsCRXga6NqDzUsySqDOR5QHfHRudSSl1EI7PH69vszIYo3NWLUgyuVKAyQuPSWJM4
+         Qemw==
+X-Gm-Message-State: AMCzsaVAgusFBkNMHOgdwLknv05AXdoD7F44sg3YwFO86FuDZCEY+Fws
+	gpOjzMd6JXCPy9sdmMWAdObhC5xl
+X-Google-Smtp-Source: ABhQp+SJqryhTpYXaf5SzeVqvc/vdyocmkiFcTQPZEnf5w9oDecBqd5JEnZfrKeMO0VecS250x7LBA==
+X-Received: by 10.176.11.2 with SMTP id b2mr2554770uak.80.1508458011124;
+        Thu, 19 Oct 2017 17:06:51 -0700 (PDT)
 Return-Path: <frank@generalsoftwareinc.com>
 Received: from ubuntu-server-1604 ([152.207.209.222])
-        by smtp.gmail.com with ESMTPSA id c29sm9008387uaa.50.2017.10.19.17.22.10
+        by smtp.gmail.com with ESMTPSA id 80sm3897602vkf.47.2017.10.19.17.06.50
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 19 Oct 2017 17:22:10 -0700 (PDT)
-Date: Thu, 19 Oct 2017 20:22:09 -0400
+        Thu, 19 Oct 2017 17:06:50 -0700 (PDT)
+Date: Thu, 19 Oct 2017 20:06:48 -0400
 From: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
 To: pablo@netfilter.org, Julia.Lawall@lip6.fr
 Cc: Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/6] staging: greybus: Fix alignment issues
-Message-ID: <f4940e71d13e091b372169b23c9c29dc1133faf2.1508457306.git.frank@generalsoftwareinc.com>
+Subject: [PATCH 1/6] staging: greybus: Remove unnecessary blank lines
+Message-ID: <870ff7f2e00dcc63442173183383490a0adc3169.1508457306.git.frank@generalsoftwareinc.com>
 References: <cover.1508457306.git.frank@generalsoftwareinc.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -87,564 +87,106 @@ Content-Disposition: inline
 In-Reply-To: <cover.1508457306.git.frank@generalsoftwareinc.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Fix alignment to match open parenthesis and comply in with the preferred
-coding style for the linux kernel.
-
-The 'checkpatch' message was:
-'CHECK: Alignment should match open parenthesis'
+Remove unnecessary blank lines to reduce file length and address
+checkpatch messages:
+CHECK: Please don't use multiple blank lines
+CHECK: Blank lines aren't necessary before a close brace '}'
 
 Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
 ---
- drivers/staging/greybus/arche-apb-ctrl.c | 36 ++++++++++-----------
- drivers/staging/greybus/arche-platform.c | 10 +++---
- drivers/staging/greybus/audio_codec.c    |  6 ++--
- drivers/staging/greybus/audio_codec.h    |  2 +-
- drivers/staging/greybus/audio_module.c   |  4 +--
- drivers/staging/greybus/audio_topology.c | 54 ++++++++++++++++----------------
- drivers/staging/greybus/authentication.c |  2 +-
- drivers/staging/greybus/bootrom.c        | 20 ++++++------
- 8 files changed, 67 insertions(+), 67 deletions(-)
+ drivers/staging/greybus/arche-apb-ctrl.c | 1 -
+ drivers/staging/greybus/audio_codec.c    | 3 ---
+ drivers/staging/greybus/audio_topology.c | 1 -
+ drivers/staging/greybus/connection.c     | 4 ----
+ drivers/staging/greybus/control.c        | 1 -
+ 5 files changed, 10 deletions(-)
 
 diff --git a/drivers/staging/greybus/arche-apb-ctrl.c b/drivers/staging/greybus/arche-apb-ctrl.c
-index 4d75f2e..4b03fbc 100644
+index 0412f3d..4d75f2e 100644
 --- a/drivers/staging/greybus/arche-apb-ctrl.c
 +++ b/drivers/staging/greybus/arche-apb-ctrl.c
-@@ -72,14 +72,14 @@ static int coldboot_seq(struct platform_device *pdev)
- 	int ret;
+@@ -21,7 +21,6 @@
+ #include <linux/spinlock.h>
+ #include "arche_platform.h"
  
- 	if (apb->init_disabled ||
--			apb->state == ARCHE_PLATFORM_STATE_ACTIVE)
-+	    apb->state == ARCHE_PLATFORM_STATE_ACTIVE)
- 		return 0;
+-
+ static void apb_bootret_deassert(struct device *dev);
  
- 	/* Hold APB in reset state */
- 	assert_reset(apb->resetn_gpio);
- 
- 	if (apb->state == ARCHE_PLATFORM_STATE_FW_FLASHING &&
--			gpio_is_valid(apb->spi_en_gpio))
-+	    gpio_is_valid(apb->spi_en_gpio))
- 		devm_gpio_free(dev, apb->spi_en_gpio);
- 
- 	/* Enable power to APB */
-@@ -122,7 +122,7 @@ static int fw_flashing_seq(struct platform_device *pdev)
- 	int ret;
- 
- 	if (apb->init_disabled ||
--			apb->state == ARCHE_PLATFORM_STATE_FW_FLASHING)
-+	    apb->state == ARCHE_PLATFORM_STATE_FW_FLASHING)
- 		return 0;
- 
- 	ret = regulator_enable(apb->vcore);
-@@ -146,7 +146,7 @@ static int fw_flashing_seq(struct platform_device *pdev)
- 			flags = GPIOF_OUT_INIT_LOW;
- 
- 		ret = devm_gpio_request_one(dev, apb->spi_en_gpio,
--				flags, "apb_spi_en");
-+					    flags, "apb_spi_en");
- 		if (ret) {
- 			dev_err(dev, "Failed requesting SPI bus en gpio %d\n",
- 				apb->spi_en_gpio);
-@@ -174,11 +174,11 @@ static int standby_boot_seq(struct platform_device *pdev)
- 	 * then we do not want to change the state
- 	 */
- 	if (apb->state == ARCHE_PLATFORM_STATE_STANDBY ||
--			apb->state == ARCHE_PLATFORM_STATE_OFF)
-+	    apb->state == ARCHE_PLATFORM_STATE_OFF)
- 		return 0;
- 
- 	if (apb->state == ARCHE_PLATFORM_STATE_FW_FLASHING &&
--			gpio_is_valid(apb->spi_en_gpio))
-+	    gpio_is_valid(apb->spi_en_gpio))
- 		devm_gpio_free(dev, apb->spi_en_gpio);
- 
- 	/*
-@@ -203,7 +203,7 @@ static void poweroff_seq(struct platform_device *pdev)
- 		return;
- 
- 	if (apb->state == ARCHE_PLATFORM_STATE_FW_FLASHING &&
--			gpio_is_valid(apb->spi_en_gpio))
-+	    gpio_is_valid(apb->spi_en_gpio))
- 		devm_gpio_free(dev, apb->spi_en_gpio);
- 
- 	/* disable the clock */
-@@ -297,7 +297,7 @@ static ssize_t state_store(struct device *dev,
- }
- 
- static ssize_t state_show(struct device *dev,
--		struct device_attribute *attr, char *buf)
-+			  struct device_attribute *attr, char *buf)
- {
- 	struct arche_apb_ctrl_drvdata *apb = dev_get_drvdata(dev);
- 
-@@ -319,7 +319,7 @@ static ssize_t state_show(struct device *dev,
- static DEVICE_ATTR_RW(state);
- 
- static int apb_ctrl_get_devtree_data(struct platform_device *pdev,
--		struct arche_apb_ctrl_drvdata *apb)
-+				     struct arche_apb_ctrl_drvdata *apb)
- {
- 	struct device *dev = &pdev->dev;
- 	struct device_node *np = dev->of_node;
-@@ -331,10 +331,10 @@ static int apb_ctrl_get_devtree_data(struct platform_device *pdev,
- 		return apb->resetn_gpio;
- 	}
- 	ret = devm_gpio_request_one(dev, apb->resetn_gpio,
--			GPIOF_OUT_INIT_LOW, "apb-reset");
-+				    GPIOF_OUT_INIT_LOW, "apb-reset");
- 	if (ret) {
- 		dev_err(dev, "Failed requesting reset gpio %d\n",
--				apb->resetn_gpio);
-+			apb->resetn_gpio);
- 		return ret;
- 	}
- 
-@@ -344,10 +344,10 @@ static int apb_ctrl_get_devtree_data(struct platform_device *pdev,
- 		return apb->boot_ret_gpio;
- 	}
- 	ret = devm_gpio_request_one(dev, apb->boot_ret_gpio,
--			GPIOF_OUT_INIT_LOW, "boot retention");
-+				    GPIOF_OUT_INIT_LOW, "boot retention");
- 	if (ret) {
- 		dev_err(dev, "Failed requesting bootret gpio %d\n",
--				apb->boot_ret_gpio);
-+			apb->boot_ret_gpio);
- 		return ret;
- 	}
- 
-@@ -358,10 +358,10 @@ static int apb_ctrl_get_devtree_data(struct platform_device *pdev,
- 		return apb->pwroff_gpio;
- 	}
- 	ret = devm_gpio_request_one(dev, apb->pwroff_gpio,
--			GPIOF_IN, "pwroff_n");
-+				    GPIOF_IN, "pwroff_n");
- 	if (ret) {
- 		dev_err(dev, "Failed requesting pwroff_n gpio %d\n",
--				apb->pwroff_gpio);
-+			apb->pwroff_gpio);
- 		return ret;
- 	}
- 
-@@ -371,10 +371,10 @@ static int apb_ctrl_get_devtree_data(struct platform_device *pdev,
- 		dev_warn(dev, "failed to get clock en gpio\n");
- 	} else if (gpio_is_valid(apb->clk_en_gpio)) {
- 		ret = devm_gpio_request_one(dev, apb->clk_en_gpio,
--				GPIOF_OUT_INIT_LOW, "apb_clk_en");
-+					    GPIOF_OUT_INIT_LOW, "apb_clk_en");
- 		if (ret) {
- 			dev_warn(dev, "Failed requesting APB clock en gpio %d\n",
--					apb->clk_en_gpio);
-+				 apb->clk_en_gpio);
- 			return ret;
- 		}
- 	}
-@@ -407,7 +407,7 @@ static int apb_ctrl_get_devtree_data(struct platform_device *pdev,
- 	apb->spi_en_gpio = of_get_named_gpio(np, "spi-en-gpio", 0);
- 	if (apb->spi_en_gpio >= 0) {
- 		if (of_property_read_bool(pdev->dev.of_node,
--					"spi-en-active-high"))
-+					  "spi-en-active-high"))
- 			apb->spi_en_polarity_high = true;
- 	}
- 
-diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
-index 21ac92d..791c564 100644
---- a/drivers/staging/greybus/arche-platform.c
-+++ b/drivers/staging/greybus/arche-platform.c
-@@ -234,7 +234,7 @@ arche_platform_coldboot_seq(struct arche_platform_drvdata *arche_pdata)
- 	ret = clk_prepare_enable(arche_pdata->svc_ref_clk);
- 	if (ret) {
- 		dev_err(arche_pdata->dev, "failed to enable svc_ref_clk: %d\n",
--				ret);
-+			ret);
- 		return ret;
- 	}
- 
-@@ -270,7 +270,7 @@ arche_platform_fw_flashing_seq(struct arche_platform_drvdata *arche_pdata)
- 	ret = clk_prepare_enable(arche_pdata->svc_ref_clk);
- 	if (ret) {
- 		dev_err(arche_pdata->dev, "failed to enable svc_ref_clk: %d\n",
--				ret);
-+			ret);
- 		return ret;
- 	}
- 
-@@ -377,7 +377,7 @@ static ssize_t state_store(struct device *dev,
- }
- 
- static ssize_t state_show(struct device *dev,
--		struct device_attribute *attr, char *buf)
-+			  struct device_attribute *attr, char *buf)
- {
- 	struct arche_platform_drvdata *arche_pdata = dev_get_drvdata(dev);
- 
-@@ -458,7 +458,7 @@ static int arche_platform_probe(struct platform_device *pdev)
- 		return ret;
- 	}
- 	ret = gpio_direction_output(arche_pdata->svc_reset_gpio,
--					arche_pdata->is_reset_act_hi);
-+				    arche_pdata->is_reset_act_hi);
- 	if (ret) {
- 		dev_err(dev, "failed to set svc-reset gpio dir:%d\n", ret);
- 		return ret;
-@@ -526,7 +526,7 @@ static int arche_platform_probe(struct platform_device *pdev)
- 				"wake detect");
- 	if (ret) {
- 		dev_err(dev, "Failed requesting wake_detect gpio %d\n",
--				arche_pdata->wake_detect_gpio);
-+			arche_pdata->wake_detect_gpio);
- 		return ret;
- 	}
- 
+ struct arche_apb_ctrl_drvdata {
 diff --git a/drivers/staging/greybus/audio_codec.c b/drivers/staging/greybus/audio_codec.c
-index 0ce0b8c..b5e4fe1 100644
+index a6d01f0..0ce0b8c 100644
 --- a/drivers/staging/greybus/audio_codec.c
 +++ b/drivers/staging/greybus/audio_codec.c
-@@ -568,7 +568,7 @@ static int gbcodec_prepare(struct snd_pcm_substream *substream,
- 	if (ret) {
- 		mutex_unlock(&codec->lock);
- 		dev_err_ratelimited(dai->dev, "set_data_size failed:%d\n",
--				     ret);
-+				    ret);
- 		return ret;
- 	}
+@@ -588,7 +588,6 @@ static int gbcodec_mute_stream(struct snd_soc_dai *dai, int mute, int stream)
+ 	struct gbaudio_codec_info *codec = dev_get_drvdata(dai->dev);
+ 	struct gbaudio_stream_params *params;
  
-@@ -827,7 +827,7 @@ int gbaudio_register_module(struct gbaudio_module_info *module)
- 					  module->num_dapm_widgets);
- 	if (module->controls)
- 		snd_soc_add_codec_controls(codec, module->controls,
--				     module->num_controls);
-+					   module->num_controls);
- 	if (module->dapm_routes)
- 		snd_soc_dapm_add_routes(&codec->dapm, module->dapm_routes,
- 					module->num_dapm_routes);
-@@ -970,7 +970,7 @@ void gbaudio_unregister_module(struct gbaudio_module_info *module)
- 		dev_dbg(codec->dev, "Removing %d controls\n",
- 			module->num_controls);
- 		snd_soc_remove_codec_controls(codec, module->controls,
--					  module->num_controls);
-+					      module->num_controls);
- 	}
- 	if (module->dapm_widgets) {
- 		dev_dbg(codec->dev, "Removing %d widgets\n",
-diff --git a/drivers/staging/greybus/audio_codec.h b/drivers/staging/greybus/audio_codec.h
-index 6fb064c..32aac14 100644
---- a/drivers/staging/greybus/audio_codec.h
-+++ b/drivers/staging/greybus/audio_codec.h
-@@ -160,7 +160,7 @@ struct gbaudio_module_info {
- };
+-
+ 	dev_dbg(dai->dev, "Mute:%d, Direction:%s\n", mute,
+ 		stream ? "CAPTURE":"PLAYBACK");
  
- int gbaudio_tplg_parse_data(struct gbaudio_module_info *module,
--			       struct gb_audio_topology *tplg_data);
-+			    struct gb_audio_topology *tplg_data);
- void gbaudio_tplg_release(struct gbaudio_module_info *module);
+@@ -908,7 +907,6 @@ static void gbaudio_codec_clean_data_rx(struct gbaudio_data_connection *data)
+ 	data->state[1] = GBAUDIO_CODEC_SHUTDOWN;
+ }
  
- int gbaudio_module_update(struct gbaudio_codec_info *codec,
-diff --git a/drivers/staging/greybus/audio_module.c b/drivers/staging/greybus/audio_module.c
-index 094c3be..f424d715 100644
---- a/drivers/staging/greybus/audio_module.c
-+++ b/drivers/staging/greybus/audio_module.c
-@@ -19,7 +19,7 @@
-  */
- 
- static int gbaudio_request_jack(struct gbaudio_module_info *module,
--				  struct gb_audio_jack_event_request *req)
-+				struct gb_audio_jack_event_request *req)
+-
+ static void gbaudio_codec_cleanup(struct gbaudio_module_info *module)
  {
- 	int report;
- 	struct snd_jack *jack = module->headset_jack.jack;
-@@ -318,7 +318,7 @@ static int gb_audio_probe(struct gb_bundle *bundle,
- 	ret = gbaudio_tplg_parse_data(gbmodule, topology);
- 	if (ret) {
- 		dev_err(dev, "%d:Error while parsing topology data\n",
--			  ret);
-+			ret);
- 		goto free_topology;
+ 	struct gbaudio_data_connection *data;
+@@ -924,7 +922,6 @@ static void gbaudio_codec_cleanup(struct gbaudio_module_info *module)
+ 
+ 		if (cap_state > GBAUDIO_CODEC_SHUTDOWN)
+ 			gbaudio_codec_clean_data_rx(data);
+-
  	}
- 	gbmodule->topology = topology;
+ }
+ 
 diff --git a/drivers/staging/greybus/audio_topology.c b/drivers/staging/greybus/audio_topology.c
-index be71124..155e70e 100644
+index 07fac39..be71124 100644
 --- a/drivers/staging/greybus/audio_topology.c
 +++ b/drivers/staging/greybus/audio_topology.c
-@@ -159,7 +159,7 @@ static const char **gb_generate_enum_strings(struct gbaudio_module_info *gb,
- }
- 
- static int gbcodec_mixer_ctl_info(struct snd_kcontrol *kcontrol,
--		     struct snd_ctl_elem_info *uinfo)
-+				  struct snd_ctl_elem_info *uinfo)
- {
- 	unsigned int max;
- 	const char *name;
-@@ -210,7 +210,7 @@ static int gbcodec_mixer_ctl_info(struct snd_kcontrol *kcontrol,
- }
- 
- static int gbcodec_mixer_ctl_get(struct snd_kcontrol *kcontrol,
--	struct snd_ctl_elem_value *ucontrol)
-+				 struct snd_ctl_elem_value *ucontrol)
- {
- 	int ret;
- 	struct gb_audio_ctl_elem_info *info;
-@@ -272,7 +272,7 @@ static int gbcodec_mixer_ctl_get(struct snd_kcontrol *kcontrol,
- }
- 
- static int gbcodec_mixer_ctl_put(struct snd_kcontrol *kcontrol,
--			      struct snd_ctl_elem_value *ucontrol)
-+				 struct snd_ctl_elem_value *ucontrol)
- {
- 	int ret = 0;
- 	struct gb_audio_ctl_elem_info *info;
-@@ -348,7 +348,7 @@ static int gbcodec_mixer_ctl_put(struct snd_kcontrol *kcontrol,
-  * of DAPM related sequencing, etc.
-  */
- static int gbcodec_mixer_dapm_ctl_info(struct snd_kcontrol *kcontrol,
--		     struct snd_ctl_elem_info *uinfo)
-+				       struct snd_ctl_elem_info *uinfo)
- {
- 	int platform_max, platform_min;
- 	struct gbaudio_ctl_pvt *data;
-@@ -379,7 +379,7 @@ static int gbcodec_mixer_dapm_ctl_info(struct snd_kcontrol *kcontrol,
- }
- 
- static int gbcodec_mixer_dapm_ctl_get(struct snd_kcontrol *kcontrol,
--	struct snd_ctl_elem_value *ucontrol)
-+				      struct snd_ctl_elem_value *ucontrol)
- {
- 	int ret;
- 	struct gb_audio_ctl_elem_info *info;
-@@ -428,7 +428,7 @@ static int gbcodec_mixer_dapm_ctl_get(struct snd_kcontrol *kcontrol,
- }
- 
- static int gbcodec_mixer_dapm_ctl_put(struct snd_kcontrol *kcontrol,
--			      struct snd_ctl_elem_value *ucontrol)
-+				      struct snd_ctl_elem_value *ucontrol)
- {
- 	int ret, wi, max, connect;
- 	unsigned int mask, val;
-@@ -502,7 +502,7 @@ static int gbcodec_mixer_dapm_ctl_put(struct snd_kcontrol *kcontrol,
- 	.private_value = (unsigned long)data}
- 
- static int gbcodec_event_spk(struct snd_soc_dapm_widget *w,
--					struct snd_kcontrol *k, int event)
-+			     struct snd_kcontrol *k, int event)
- {
- 	/* Ensure GB speaker is connected */
- 
-@@ -510,7 +510,7 @@ static int gbcodec_event_spk(struct snd_soc_dapm_widget *w,
- }
- 
- static int gbcodec_event_hp(struct snd_soc_dapm_widget *w,
--					struct snd_kcontrol *k, int event)
-+			    struct snd_kcontrol *k, int event)
- {
- 	/* Ensure GB module supports jack slot */
- 
-@@ -518,7 +518,7 @@ static int gbcodec_event_hp(struct snd_soc_dapm_widget *w,
- }
- 
- static int gbcodec_event_int_mic(struct snd_soc_dapm_widget *w,
--					struct snd_kcontrol *k, int event)
-+				 struct snd_kcontrol *k, int event)
- {
- 	/* Ensure GB module supports jack slot */
- 
-@@ -665,7 +665,7 @@ static int gbaudio_tplg_create_enum_kctl(struct gbaudio_module_info *gb,
- 
- 	/* debug enum info */
- 	dev_dbg(gb->dev, "Max:%d, name_length:%d\n", gbe->max,
--		 le16_to_cpu(gb_enum->names_length));
-+		le16_to_cpu(gb_enum->names_length));
- 	for (i = 0; i < gbe->max; i++)
- 		dev_dbg(gb->dev, "src[%d]: %s\n", i, gbe->texts[i]);
- 
-@@ -885,8 +885,8 @@ static int gbaudio_tplg_create_enum_ctl(struct gbaudio_module_info *gb,
- }
- 
- static int gbaudio_tplg_create_mixer_ctl(struct gbaudio_module_info *gb,
--					     struct snd_kcontrol_new *kctl,
--					     struct gb_audio_control *ctl)
-+					 struct snd_kcontrol_new *kctl,
-+					 struct gb_audio_control *ctl)
- {
- 	struct gbaudio_ctl_pvt *ctldata;
- 
-@@ -906,8 +906,8 @@ static int gbaudio_tplg_create_mixer_ctl(struct gbaudio_module_info *gb,
- }
- 
- static int gbaudio_tplg_create_wcontrol(struct gbaudio_module_info *gb,
--					     struct snd_kcontrol_new *kctl,
--					     struct gb_audio_control *ctl)
-+					struct snd_kcontrol_new *kctl,
-+					struct gb_audio_control *ctl)
- {
- 	int ret;
- 
-@@ -1100,16 +1100,16 @@ static int gbaudio_tplg_create_widget(struct gbaudio_module_info *module,
- 	case snd_soc_dapm_mixer:
- 		*dw = (struct snd_soc_dapm_widget)
- 			SND_SOC_DAPM_MIXER_E(w->name, SND_SOC_NOPM, 0, 0, NULL,
--					   0, gbaudio_widget_event,
--					   SND_SOC_DAPM_PRE_PMU |
--					   SND_SOC_DAPM_POST_PMD);
-+					     0, gbaudio_widget_event,
-+					     SND_SOC_DAPM_PRE_PMU |
-+					     SND_SOC_DAPM_POST_PMD);
+@@ -924,7 +924,6 @@ static int gbaudio_tplg_create_wcontrol(struct gbaudio_module_info *gb,
  		break;
- 	case snd_soc_dapm_mux:
- 		*dw = (struct snd_soc_dapm_widget)
- 			SND_SOC_DAPM_MUX_E(w->name, SND_SOC_NOPM, 0, 0,
--					 widget_kctls, gbaudio_widget_event,
--					 SND_SOC_DAPM_PRE_PMU |
--					 SND_SOC_DAPM_POST_PMD);
-+					   widget_kctls, gbaudio_widget_event,
-+					   SND_SOC_DAPM_PRE_PMU |
-+					   SND_SOC_DAPM_POST_PMD);
- 		break;
- 	case snd_soc_dapm_aif_in:
- 		*dw = (struct snd_soc_dapm_widget)
-@@ -1145,7 +1145,7 @@ static int gbaudio_tplg_create_widget(struct gbaudio_module_info *module,
- }
- 
- static int gbaudio_tplg_process_kcontrols(struct gbaudio_module_info *module,
--				   struct gb_audio_control *controls)
-+					  struct gb_audio_control *controls)
- {
- 	int i, csize, ret;
- 	struct snd_kcontrol_new *dapm_kctls;
-@@ -1215,7 +1215,7 @@ static int gbaudio_tplg_process_kcontrols(struct gbaudio_module_info *module,
- }
- 
- static int gbaudio_tplg_process_widgets(struct gbaudio_module_info *module,
--				   struct gb_audio_widget *widgets)
-+					struct gb_audio_widget *widgets)
- {
- 	int i, ret, w_size;
- 	struct snd_soc_dapm_widget *dapm_widgets;
-@@ -1264,7 +1264,7 @@ static int gbaudio_tplg_process_widgets(struct gbaudio_module_info *module,
- }
- 
- static int gbaudio_tplg_process_routes(struct gbaudio_module_info *module,
--				   struct gb_audio_route *routes)
-+				       struct gb_audio_route *routes)
- {
- 	int i, ret;
- 	struct snd_soc_dapm_route *dapm_routes;
-@@ -1300,8 +1300,8 @@ static int gbaudio_tplg_process_routes(struct gbaudio_module_info *module,
- 		}
- 		dapm_routes->control =
- 			gbaudio_map_controlid(module,
--						      curr->control_id,
--						      curr->index);
-+					      curr->control_id,
-+					      curr->index);
- 		if ((curr->control_id !=  GBAUDIO_INVALID_ID) &&
- 		    !dapm_routes->control) {
- 			dev_err(module->dev, "%d:%d:%d:%d - Invalid control\n",
-@@ -1325,7 +1325,7 @@ static int gbaudio_tplg_process_routes(struct gbaudio_module_info *module,
- }
- 
- static int gbaudio_tplg_process_header(struct gbaudio_module_info *module,
--				 struct gb_audio_topology *tplg_data)
-+				       struct gb_audio_topology *tplg_data)
- {
- 	/* fetch no. of kcontrols, widgets & routes */
- 	module->num_controls = tplg_data->num_controls;
-@@ -1351,7 +1351,7 @@ static int gbaudio_tplg_process_header(struct gbaudio_module_info *module,
- }
- 
- int gbaudio_tplg_parse_data(struct gbaudio_module_info *module,
--			       struct gb_audio_topology *tplg_data)
-+			    struct gb_audio_topology *tplg_data)
- {
- 	int ret;
- 	struct gb_audio_control *controls;
-diff --git a/drivers/staging/greybus/authentication.c b/drivers/staging/greybus/authentication.c
-index 6c5dcb1..e0d67c2 100644
---- a/drivers/staging/greybus/authentication.c
-+++ b/drivers/staging/greybus/authentication.c
-@@ -203,7 +203,7 @@ static int cap_release(struct inode *inode, struct file *file)
- }
- 
- static int cap_ioctl(struct gb_cap *cap, unsigned int cmd,
--			 void __user *buf)
-+		     void __user *buf)
- {
- 	struct cap_ioc_get_endpoint_uid endpoint_uid;
- 	struct cap_ioc_get_ims_certificate *ims_cert;
-diff --git a/drivers/staging/greybus/bootrom.c b/drivers/staging/greybus/bootrom.c
-index 06df0ce..befbaf0c 100644
---- a/drivers/staging/greybus/bootrom.c
-+++ b/drivers/staging/greybus/bootrom.c
-@@ -176,7 +176,7 @@ static int find_firmware(struct gb_bootrom *bootrom, u8 stage)
- 		 firmware_name);
- 
- 	rc = request_firmware(&bootrom->fw, firmware_name,
--		&connection->bundle->dev);
-+			      &connection->bundle->dev);
- 	if (rc) {
- 		dev_err(&connection->bundle->dev,
- 			"failed to find %s firmware (%d)\n", firmware_name, rc);
-@@ -275,7 +275,7 @@ static int gb_bootrom_get_firmware(struct gb_operation *op)
- 
- 	if (offset >= fw->size || size > fw->size - offset) {
- 		dev_warn(dev, "bad firmware request (offs = %u, size = %u)\n",
--				offset, size);
-+			 offset, size);
- 		ret = -EINVAL;
- 		goto unlock;
- 	}
-@@ -388,15 +388,15 @@ static int gb_bootrom_get_version(struct gb_bootrom *bootrom)
- 				sizeof(response));
- 	if (ret) {
- 		dev_err(&bundle->dev,
--				"failed to get protocol version: %d\n",
--				ret);
-+			"failed to get protocol version: %d\n",
-+			ret);
- 		return ret;
+ 	default:
+ 		return -EINVAL;
+-
  	}
  
- 	if (response.major > request.major) {
- 		dev_err(&bundle->dev,
--				"unsupported major protocol version (%u > %u)\n",
--				response.major, request.major);
-+			"unsupported major protocol version (%u > %u)\n",
-+			response.major, request.major);
- 		return -ENOTSUPP;
- 	}
+ 	dev_dbg(gb->dev, "%s:%d DAPM control created, ret:%d\n", ctl->name,
+diff --git a/drivers/staging/greybus/connection.c b/drivers/staging/greybus/connection.c
+index 2cf6464..cb96877 100644
+--- a/drivers/staging/greybus/connection.c
++++ b/drivers/staging/greybus/connection.c
+@@ -12,17 +12,13 @@
+ #include "greybus.h"
+ #include "greybus_trace.h"
  
-@@ -404,13 +404,13 @@ static int gb_bootrom_get_version(struct gb_bootrom *bootrom)
- 	bootrom->protocol_minor = response.minor;
+-
+ #define GB_CONNECTION_CPORT_QUIESCE_TIMEOUT	1000
  
- 	dev_dbg(&bundle->dev, "%s - %u.%u\n", __func__, response.major,
--			response.minor);
-+		response.minor);
+-
+ static void gb_connection_kref_release(struct kref *kref);
  
- 	return 0;
- }
+-
+ static DEFINE_SPINLOCK(gb_connections_lock);
+ static DEFINE_MUTEX(gb_connection_mutex);
  
- static int gb_bootrom_probe(struct gb_bundle *bundle,
--					const struct greybus_bundle_id *id)
-+			    const struct greybus_bundle_id *id)
+-
+ /* Caller holds gb_connection_mutex. */
+ static bool gb_connection_cport_in_use(struct gb_interface *intf, u16 cport_id)
  {
- 	struct greybus_descriptor_cport *cport_desc;
- 	struct gb_connection *connection;
-@@ -429,7 +429,7 @@ static int gb_bootrom_probe(struct gb_bundle *bundle,
- 		return -ENOMEM;
+diff --git a/drivers/staging/greybus/control.c b/drivers/staging/greybus/control.c
+index 5b30be3..590f540 100644
+--- a/drivers/staging/greybus/control.c
++++ b/drivers/staging/greybus/control.c
+@@ -16,7 +16,6 @@
+ #define GB_CONTROL_VERSION_MAJOR	0
+ #define GB_CONTROL_VERSION_MINOR	1
  
- 	connection = gb_connection_create(bundle,
--						le16_to_cpu(cport_desc->id),
-+					  le16_to_cpu(cport_desc->id),
- 						gb_bootrom_request_handler);
- 	if (IS_ERR(connection)) {
- 		ret = PTR_ERR(connection);
-@@ -467,7 +467,7 @@ static int gb_bootrom_probe(struct gb_bundle *bundle,
- 				NULL, 0);
- 	if (ret) {
- 		dev_err(&connection->bundle->dev,
--				"failed to send AP READY: %d\n", ret);
-+			"failed to send AP READY: %d\n", ret);
- 		goto err_cancel_timeout;
- 	}
- 
+-
+ static int gb_control_get_version(struct gb_control *control)
+ {
+ 	struct gb_interface *intf = control->connection->intf;
 -- 
 2.7.4
 
