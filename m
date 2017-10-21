@@ -1,149 +1,114 @@
 X-GM-THRID: 6476685007232434176
-X-Received: by 10.80.204.74 with SMTP id n10mr1991438edi.2.1508566768781;
-        Fri, 20 Oct 2017 23:19:28 -0700 (PDT)
+X-Received: by 10.28.229.16 with SMTP id c16mr90166wmh.13.1508566624915;
+        Fri, 20 Oct 2017 23:17:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.80.170.121 with SMTP id p54ls4771423edc.7.gmail; Fri, 20 Oct
- 2017 23:19:27 -0700 (PDT)
-X-Received: by 10.80.182.75 with SMTP id c11mr1995355ede.4.1508566767910;
-        Fri, 20 Oct 2017 23:19:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508566767; cv=none;
+Received: by 10.28.11.143 with SMTP id 137ls595050wml.0.canary-gmail; Fri, 20
+ Oct 2017 23:17:04 -0700 (PDT)
+X-Received: by 10.28.94.5 with SMTP id s5mr90394wmb.15.1508566624118;
+        Fri, 20 Oct 2017 23:17:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508566624; cv=none;
         d=google.com; s=arc-20160816;
-        b=y5hDwRD9hfosTFyNHmWTwyP/qUqZhNT6AXrDV6MeS+J7tf4VOhE0a1aGxE5d1odN14
-         bXOvTTtdML1D5XTLkaljvKTmnnDDimDAEElZt6l8PceWkXMBfzUkUFvTE7ROcri86iJ8
-         N7uRH/6PaJiMMosMGMR8hThrg4lVcl2roAOcUTFbOTnm3SmphUqytylUkkduNDX4rFQj
-         +xDVHPfnYaZ2KNaxnpsuxJPkq/BpeLhfGxmktR1wTK28nKxz1cq28q7CA828jOcP48ai
-         k5sMPYd49E2ow4Fmhnpd0aCEccN3qBdlwx5uUtp8Ukv6l+Ck/KGSbGg4qMmQ3eESouPH
-         I+PA==
+        b=yAvERF2FMTTZmKVVhnVO8q1KWxI+aIsX6/ida7spvGEsgjP+klSjuSWzWhRA0e0fet
+         q4Q+GsN7CKQ0/aSp0JY74cCXBSmaLJSzgiYI4q/pIVz93DvC70QxW+Vc6v/jYgYX1Caj
+         2NM7h0v/StcEKUl/3woZOu4wZZPNloT28u3j5knZ/XALiKvrJx9q/1lE57ErdCYVJ/ju
+         tjzHGLhTc6YQcVa8nosla5N803avVdjcIdA/Fy36vceBzYfIXVnP378mD9T3H2fbqpjf
+         k6w4UZdb4NKr4qmjgdknEVswniJvr/1A6UJO16Nc9JYu/w9pwrQKomBKu2FRPjirZYB8
+         qGuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=+srh13/tvv1B2uORBbpjg7pOZBZpna23U9ZzB8FrG9U=;
-        b=K+Tq8iokM5R1MtCL4+fkNrmBdR6FGeeD8jAC6meTeZNnEXR2vs74fWTD+zsQCS1Zee
-         7GRo49QCUrlH7xashdkyzJxunKg2R+xfhWEPBsqkHSBWupCcPZ0LYyPA0oAqKmv60hmY
-         1Zn9iN7U4tSjJR1H73+xQ49PKoa2EqTgYQQ9+Sty0R+Qy/nlWSYgnKh1kENtHTMvgkD8
-         XX/G7ZPqFhk95duPzmBriz44IV1DnNZ2KsGxTtlrxdzPkA+A4IrtVikvKyYvrWQxZ2bl
-         CzdQVLZaRWQab6JYB4tRuiDiHhV9L+pnQVib14NibdF7czxsR2l0Jv1OwswD959Z5Ldv
-         lOSA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature
+         :arc-authentication-results;
+        bh=mOWr6AIx9mudY+n4gh856IBeGTN63y0C/VWTs/aoEfY=;
+        b=nzWyon56AZOOcH2JwSmcWewdjcbc0VZEZ6+UWTLqNgYUbZ89DmlDtYtI+SAg2fyh37
+         i6yhtzRZ4lgGrK5eyyJmqgWgJvIW8IJrO5735YFDbuTsWEXCPp28V9RiO/Sl5KUFD5AN
+         dGGWUrrldlXbRZSYouijJwwa4bWMkIb1Afqg6HqhsvPqANodh1AX0A6DiKu+UEjZIik9
+         TQ5aInzhXwVojPfoaZdCW/+zAGtD+i3sLYN8tZe6Mc3B7FGce9onVe+jumY4ONGVQMWO
+         yk4fnzlCmtL6t8Qp43z8kkW8J96JgYDas3Wjd0h4JZEj8pVBFjBajIvK6GPoR0c5VjDV
+         lSag==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Fe/uKCkC;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=COy72UTQ;
+       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::236 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <mihaela.muraru21@gmail.com>
-Received: from mail-wr0-x241.google.com (mail-wr0-x241.google.com. [2a00:1450:400c:c0c::241])
-        by gmr-mx.google.com with ESMTPS id m13si192456edc.2.2017.10.20.23.19.27
+Received: from mail-wm0-x236.google.com (mail-wm0-x236.google.com. [2a00:1450:400c:c09::236])
+        by gmr-mx.google.com with ESMTPS id m62si20857wmi.1.2017.10.20.23.17.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Oct 2017 23:19:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) client-ip=2a00:1450:400c:c0c::241;
+        Fri, 20 Oct 2017 23:17:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::236 as permitted sender) client-ip=2a00:1450:400c:c09::236;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Fe/uKCkC;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=COy72UTQ;
+       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::236 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x241.google.com with SMTP id y9so740078wrb.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 20 Oct 2017 23:19:27 -0700 (PDT)
+Received: by mail-wm0-x236.google.com with SMTP id q132so1257135wmd.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 20 Oct 2017 23:17:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=+srh13/tvv1B2uORBbpjg7pOZBZpna23U9ZzB8FrG9U=;
-        b=Fe/uKCkC1h/bbUo1TZ0oBenLuXy0uQLbt8bHJw+2DKOZ16WG8Ur/6Ze80Wpn+KcEVX
-         S8fNNJLjtfyzsitlNOZKO1lp8OU2nh+FI9XVMFR5JIJCpuIRw0fgpdynwmO0f87iDcKb
-         ZXzZhItKWod9hQJYjkJKpyJMpjsPlHaw8SMB2cn00o+k92zn7wnpW/rDhHh4PGixNxQJ
-         cz/2FKN8vm3G5nC1MztYHD2Pm4W10cwrubcAG+t/yl3tTtF38JdgaapIj1gB65B4Z3DQ
-         GABe1d9G4LWQnvtY/QJVklZlSvYdsewjtfy2QTgVwhwu9PBVuyWKr8cucSrlV7j5I/+s
-         s8dg==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=mOWr6AIx9mudY+n4gh856IBeGTN63y0C/VWTs/aoEfY=;
+        b=COy72UTQcjUvb4Ts6q0TLJc0ULq3g6ZjQmYq3r50jv0C3WoKh+J64VxBgUWBmAVkhI
+         vN0CH1QNKhPZecKpuId/wlIMIWq/mVTd1fRsu81st56YNxca0qngUhbeZOnXQIUBI/4j
+         Z/3AviNkAjZ1mv8tgQmZCoWBfzWBf7ld1Yi0GjmtxUog+mjt0WMRd6t4ypG8G+qy7Df9
+         0es7Ga58Fo3T9BtYYLCJUXBhS55uNKBxLGdqq1BzUihT6t8yOiHrxxOiupjfh/PrvuV+
+         KzJWKwSEusU/rARnp+K8rhYi+j+WNWGCzWyMKy2ctggIGmzEahyNP/+kSMGXqvITxRrr
+         +86Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=+srh13/tvv1B2uORBbpjg7pOZBZpna23U9ZzB8FrG9U=;
-        b=LH3Lpy9dGaUYa9cO2NgvO0fcBwvG2PDBOVbd5nS8IvS1KtDdUY1iQ18HR4HInH04Nu
-         tc+aqKL5E+POjD2h5z5ItBUBVMqKW6YMpXyg5mnLe4pGTBlu5N9FjTUnydSKuyYNnI0a
-         y+o2jyu/MGcN8DONRoLeh95sfahAbEPGizU7Ko3l44Z3lQWP9f900mD0bBbZRZbVvpfu
-         HYn6WBvglvGUcHF4nvlYZHO98NkVJWroqwBXVWq5JrpiotqMsFuo+GkJDXzoep3snnYn
-         vK1gh+47z7jTkc/ZX1QQfgzg9Z938tW699DbCTwDBBFwC204mF7Cq1pz09KaR4HBJoXw
-         NFTQ==
-X-Gm-Message-State: AMCzsaU76GWoNG4PhEj1U4ET6n0syGHxCgjfTohSQlLnX+eRjlDcxXiE
-	2h5acZYU8lrEL2G3DgyBR+k=
-X-Google-Smtp-Source: ABhQp+Qr3k7HnAYW2eXFn6gz9Z1Dij//sznZl4mdJS/xwvkkNky71qWuobRK23Gdg7tYyVbALZgn6A==
-X-Received: by 10.223.166.119 with SMTP id k110mr5862179wrc.182.1508566767586;
-        Fri, 20 Oct 2017 23:19:27 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=mOWr6AIx9mudY+n4gh856IBeGTN63y0C/VWTs/aoEfY=;
+        b=XohorFDwSkFfcZ6kE3Ji/KAgFICyk9qHqw7PUT38rVcXaMFsG0uIW0GDA33nwk6NJm
+         cpu4mKkb5XpSs63epqdGmhB6o2LUrx9QbMz/zePY+Zz9Hh9q6ILkX4BW3XQHwPi69eq1
+         RbvmiJsbRgAS/3rJyUeZ+zOeGr/LarHc+yd+z/Buy667fb2BdgC8liehPP5pDKiakGkw
+         zyRF/SRbFRCXbOfLNhhpf8OpwLVxvdL8nzgQAwfj9POhdXsE05y1tmnaBQcY6j4TQIzd
+         yg8Tbz85p/Z0OBnZ86FQ6mt6xhHNfBL8ZBMaIc5ujSfS6P3K2iRFut6noFZbyqNsIV7h
+         Q0yg==
+X-Gm-Message-State: AMCzsaW+LOQ6hoTELlNxLQi3Boyic3rSvMyywckXrDf9Y41oJ57+NPkt
+	qI/E8/1oYBmTdzr+asnJSnDnO6SD
+X-Google-Smtp-Source: ABhQp+Rsrha/cRQJcfvz1syQ/4ubNalj1npvw+Dw95dL98K8Xb1LftighqlUXG2jbAlcWYo0PmUO6w==
+X-Received: by 10.28.236.203 with SMTP id h72mr784745wmi.147.1508566623840;
+        Fri, 20 Oct 2017 23:17:03 -0700 (PDT)
 Return-Path: <mihaela.muraru21@gmail.com>
 Received: from domino-MS-16Y1 ([93.122.248.5])
-        by smtp.gmail.com with ESMTPSA id c37sm7199844wra.73.2017.10.20.23.19.26
+        by smtp.gmail.com with ESMTPSA id e17sm1212286wmf.46.2017.10.20.23.17.02
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 20 Oct 2017 23:19:27 -0700 (PDT)
-Date: Sat, 21 Oct 2017 09:19:25 +0300
+        Fri, 20 Oct 2017 23:17:03 -0700 (PDT)
+Date: Sat, 21 Oct 2017 09:17:01 +0300
 From: Mihaela Muraru <mihaela.muraru21@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Eric Anholt <eric@anholt.net>, Stefan Wahren <stefan.wahren@i2se.com>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v3] staging: vc04_services: Remove unnecessary braces
-Message-ID: <20171021061925.GA5362@domino-MS-16Y1>
+Subject: Re: [PATCH v2] staging: vc04_services: Remove unnecessary braces
+Message-ID: <20171021061701.GA5272@domino-MS-16Y1>
+References: <20171015190040.GA6755@domino-MS-16Y1>
+ <20171018141452.GA17907@kroah.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <20171018141452.GA17907@kroah.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Remove unnecessary braces for single statements also declare a local
-variable "platform_state" of type "struct vchiq_2835_state", to
-avoid the multiple cast.
+On Wed, Oct 18, 2017 at 04:14:52PM +0200, Greg Kroah-Hartman wrote:
+> On Sun, Oct 15, 2017 at 10:00:41PM +0300, Mihaela Muraru wrote:
+> > Remove unnecessary braces for single statements.
+> > 
+> > Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
+> > ---
+> > Changes in v2:
+> > 	 - declare a local variable "platform_state" of type "struct
+> > 	 vchiq_2835_state", to avoid the multiple cast.
+> 
+> This patch does a lot more than what the changelog says :(
+> Please describe everything in the changelog.
+> 
+> thanks,
+> 
+> greg k-h
 
-Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
----
-Changes in v3:
-        -add more details in changelog
+Thank you,
 
- .../interface/vchiq_arm/vchiq_2835_arm.c           | 26 +++++++++++++---------
- 1 file changed, 16 insertions(+), 10 deletions(-)
+I will send patch v3 with more information.
 
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-index a96bae0..7b7cc5a 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-@@ -204,25 +204,31 @@ VCHIQ_STATUS_T
- vchiq_platform_init_state(VCHIQ_STATE_T *state)
- {
- 	VCHIQ_STATUS_T status = VCHIQ_SUCCESS;
-+	struct vchiq_2835_state *platform_state;
-+
-+	state->platform_state = kzalloc(sizeof(*platform_state), GFP_KERNEL);
-+	platform_state = (struct vchiq_2835_state *)state->platform_state;
-+
-+	platform_state->inited = 1;
-+	status = vchiq_arm_init_state(state, &platform_state->arm_state);
- 
--	state->platform_state = kzalloc(sizeof(struct vchiq_2835_state), GFP_KERNEL);
--	((struct vchiq_2835_state *)state->platform_state)->inited = 1;
--	status = vchiq_arm_init_state(state, &((struct vchiq_2835_state *)state->platform_state)->arm_state);
- 	if (status != VCHIQ_SUCCESS)
--	{
--		((struct vchiq_2835_state *)state->platform_state)->inited = 0;
--	}
-+		platform_state->inited = 0;
-+
- 	return status;
- }
- 
- VCHIQ_ARM_STATE_T*
- vchiq_platform_get_arm_state(VCHIQ_STATE_T *state)
- {
--	if (!((struct vchiq_2835_state *)state->platform_state)->inited)
--	{
-+	struct vchiq_2835_state *platform_state;
-+
-+	platform_state   = (struct vchiq_2835_state *)state->platform_state;
-+
-+	if (!platform_state->inited)
- 		BUG();
--	}
--	return &((struct vchiq_2835_state *)state->platform_state)->arm_state;
-+
-+	return &platform_state->arm_state;
- }
- 
- void
--- 
-2.7.4
-
+Mihaela
 
