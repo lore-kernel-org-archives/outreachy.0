@@ -1,115 +1,62 @@
-X-GM-THRID: 6255223202189934592
-X-Received: by 10.129.116.214 with SMTP id p205mr42999485ywc.55.1456407644237;
-        Thu, 25 Feb 2016 05:40:44 -0800 (PST)
+X-GM-THRID: 6475953327371714560
+X-Received: by 10.46.18.17 with SMTP id t17mr308637lje.33.1508658155165;
+        Sun, 22 Oct 2017 00:42:35 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.13.103 with SMTP id g7ls194728igc.29.gmail; Thu, 25 Feb
- 2016 05:40:43 -0800 (PST)
-X-Received: by 10.66.139.162 with SMTP id qz2mr38318773pab.1.1456407643824;
-        Thu, 25 Feb 2016 05:40:43 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-ig0-x230.google.com (mail-ig0-x230.google.com. [2607:f8b0:4001:c05::230])
-        by gmr-mx.google.com with ESMTPS id i9si218950igg.1.2016.02.25.05.40.43
+Received: by 10.46.71.148 with SMTP id u142ls1798087lja.16.gmail; Sun, 22 Oct
+ 2017 00:42:33 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+S2vNql/Pj8fwXNqtKlKvNSoHWK8WwMMed2ni9l86kH2JT4kED2rXUbSoIFqLzortgrL8fR
+X-Received: by 10.46.2.4 with SMTP id 4mr304987ljc.20.1508658153750;
+        Sun, 22 Oct 2017 00:42:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508658153; cv=none;
+        d=google.com; s=arc-20160816;
+        b=KOVBN3UJW1RhCNr6xGuClD2sBj4fi0Rbnn+WYvTtDU+/B5scm7SN5lhnxDIYns2jnu
+         kBTwFTEfWa/Law59q2rVRCGr/tPR4eZDW1V124rxljwdUMnnuohbHGKVz6+AavxAy4Mf
+         DNEjwCnT6BYWpgkDW89zaCwqrQfNgxCtVkOLG8tyeldTDsimAPFZjgpaazyQpmWJCtv8
+         g+Ao6ajCaUMNMV3xXbqPXoB3xuNWxcdubH1I6Mr5aTo050ZN07ISJggaSYAA/YuFoWXO
+         7wKXmck1d99O6zR5ini94tv4dFTI3/kIRPuA7xSqXljxAVWZj0haifB8/DAlA3NwmXgl
+         LU+w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:message-id:subject:to:from:date
+         :arc-authentication-results;
+        bh=umZw8sWElQl2nymubRoSxmz9pJqXydCvoUrtPg02BCg=;
+        b=xznkeY77mOfD5OZen7M8PWrbuHAT/gpuCrHtScox6/nA37I76z/azeO6Kp5MibrMPw
+         srNnFdaPr5SaFNW1OUKGjNIct5br4j70J1IC0oDit9AV7x3vL4yqlDhcikAZt1Hsewln
+         IGL9/cFQqy6lhqZn+hexUbEGYsjpokqx9z+wrAR8jOBMzySxdf4UnQuQdyGovE/jaG8m
+         2miVTi6ITDhxTDFqYquc6v6umvAbQBcIGlLH2TtXubt1lO76ddcYJBDJAKnKZWBAPYE1
+         eoHVkAyOnJv9/QvWnSFjq+BWpHPlWV4Kqb95cNwDZ/vMbuwh5xzr4Rlh/Tn8+z20cnYB
+         i+kg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id r17si253759ljb.2.2017.10.22.00.42.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 05:40:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::230 as permitted sender) client-ip=2607:f8b0:4001:c05::230;
+        Sun, 22 Oct 2017 00:42:33 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::230 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-ig0-x230.google.com with SMTP id g6so14427517igt.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 05:40:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=wXKkdtk6CXY7uCiqWv588jwQvi2uxs8hLdipFgnR264=;
-        b=xyfSDAGIybrLmm9F2jfOizg6ADY33wkzeGfpdqz+rhU0uxNNodwr2V5d5N8jUwgl04
-         G8Ag6d/ZT8Ts3ZogSyiNn/szY819Yv1a+dLZXSKFC4U7ZqJVTf1/YGMexPFRC7amfvia
-         zu2jdxrJk5NGrruBfWmFLXoNapykeRitWcGRoBRadBUOLUtYLig2Lvzdq0wIsJFSSS1Z
-         +Cncb/76Z+1TpsmW3e6tqTO5y5XZbgd9Qw2U1+ntE917biXCC7jdz3i79LFjvShquoGr
-         Dq9LilF+UrPaJKCB9NdUHuBBs9XnPaN1g10th3UI7qV7mpRXnqyEssWOZZiulwOxl+w+
-         fHGQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=wXKkdtk6CXY7uCiqWv588jwQvi2uxs8hLdipFgnR264=;
-        b=mXWI3wX1V7YZnpHsl2D5qpY1mYscTJtgqikKOdHIz7DD/60ZD/kJZhPTDA0kGK3sZi
-         f7Yh4tw8I/LoD1fH1hvsMwRMpkSIxvjInssWJuyGBc4CNa3s1EnY/O5FvRTw6EEVRFVF
-         plbwhEKBLhqI9x4qetWCdXPnC98g/EYcHpJde63zt/e6QMo+KBUTDqPN3Uehuj8GK5dU
-         5nKOm2IcfjPyfgtUOwqhc3+bDt3ovyTQF9ZK4AySrJlkSFX7ZQVYYUQNRz3uciCe4sX8
-         yHQXPd9iW+3dFJSbWQh8WW8LKPtRfJeOi6GQN6WpJi+ezpxsEuEAQ/6Su2vpJUo0dWab
-         nj+g==
-X-Gm-Message-State: AG10YOQmBjzqzMQpZrvyqy0BQ6aUAUCD/+RboBfqLLRc9eDHm4LlCzOJdogwhyAol9U3IQ==
-X-Received: by 10.50.159.7 with SMTP id wy7mr3144471igb.24.1456407643632;
-        Thu, 25 Feb 2016 05:40:43 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id l94sm3262265iod.13.2016.02.25.05.40.42
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 05:40:43 -0800 (PST)
-Date: Thu, 25 Feb 2016 13:39:55 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.43,416,1503352800"; 
+   d="scan'208";a="241912432"
+Received: from abo-88-122-68.mrs.modulonet.fr (HELO hadrien-2.local) ([85.68.122.88])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 22 Oct 2017 09:42:32 +0200
+Date: Sun, 22 Oct 2017 09:42:31 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: fbtft: fb_ra8875.c: Remove unneeded void pointer
- cast
-Message-ID: <20160225183955.GA6135@janani-Inspiron-3521>
+Subject: applications
+Message-ID: <alpine.DEB.2.20.1710220938250.2862@hadrien>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: text/plain; charset=US-ASCII
 
-Void pointers need not be cast to other pointer types.
-Semantic patch used:
+Applications are due tomorrow at 07:00 pm UTC.  If you aren't sure what
+time that is, just start your application now :)  In particular, please
+fill in all information related to your eligibility status as soon as
+possible.  No more new patches will be accepted via the outreachy mailing
+list after that time.  You can update your application after the deadline,
+but don't delay, because we will be making decisions very shortly.
 
-@r@
-expression x;
-void* e;
-type T;
-identifier f;
-@@
-
-(
-  *((T *)e)
-| 
-  ((T *)x) [...]
-| 
-  ((T *)x)->f
-| 
-- (T *)
-  e
-)
-
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
----
- drivers/staging/fbtft/fb_ra8875.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/fbtft/fb_ra8875.c b/drivers/staging/fbtft/fb_ra8875.c
-index b167c50..1b02c39 100644
---- a/drivers/staging/fbtft/fb_ra8875.c
-+++ b/drivers/staging/fbtft/fb_ra8875.c
-@@ -257,7 +257,7 @@ static void write_reg8_bus8(struct fbtft_par *par, int len, ...)
- static int write_vmem16_bus8(struct fbtft_par *par, size_t offset, size_t len)
- {
- 	u16 *vmem16;
--	u16 *txbuf16 = (u16 *)par->txbuf.buf;
-+	u16 *txbuf16 = par->txbuf.buf;
- 	size_t remain;
- 	size_t to_copy;
- 	size_t tx_array_size;
-@@ -271,7 +271,7 @@ static int write_vmem16_bus8(struct fbtft_par *par, size_t offset, size_t len)
- 	remain = len / 2;
- 	vmem16 = (u16 *)(par->info->screen_buffer + offset);
- 	tx_array_size = par->txbuf.len / 2;
--		txbuf16 = (u16 *)(par->txbuf.buf + 1);
-+		txbuf16 = par->txbuf.buf + 1;
- 		tx_array_size -= 2;
- 		*(u8 *)(par->txbuf.buf) = 0x00;
- 		startbyte_size = 1;
--- 
-2.5.0
-
+thanks,
+julia
 
