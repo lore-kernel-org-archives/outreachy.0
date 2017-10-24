@@ -1,111 +1,84 @@
-X-GM-THRID: 6534657346534113280
-X-Received: by 10.159.54.111 with SMTP id s44mr5567156uad.29.1521468476842;
-        Mon, 19 Mar 2018 07:07:56 -0700 (PDT)
+X-GM-THRID: 6479957249539178496
+X-Received: by 10.46.4.90 with SMTP id 87mr567004lje.16.1508861642645;
+        Tue, 24 Oct 2017 09:14:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.31.182.65 with SMTP id g62ls7249985vkf.10.gmail; Mon, 19 Mar
- 2018 07:07:55 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELv+ufUPFEjbJHxAxBM19iBtpbps2DjZOa9GzhOqmdlSM5st7iT47hvb8SYgA5IYNh/wn6tz
-X-Received: by 10.31.160.202 with SMTP id j193mr1946089vke.58.1521468475646;
-        Mon, 19 Mar 2018 07:07:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521468475; cv=none;
+Received: by 10.25.67.89 with SMTP id m25ls14206lfj.1.gmail; Tue, 24 Oct 2017
+ 09:14:01 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+SmkcQnzxXB4ZVJqYj2ZqcUmOIDoyxozqvRuZxwn8mG0h9x1DLRXeYUfAiCv9XQHvn03u2+
+X-Received: by 10.25.63.131 with SMTP id m125mr467610lfa.24.1508861641698;
+        Tue, 24 Oct 2017 09:14:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508861641; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZBnRuDhbnz+nD4VhI9vMxYGR0eGPhawKfaxoPHW7GI47J074J5Luzyf2rshbuRjzFj
-         rRrO4/Q+IC4Qepscgl5EHCstOIz2shUDW4gkTwlh39UVHkr9iMkX0fh6xTvUUCX/dQiR
-         m+d2+Bn0KQIMYLLGz9Si2xKJpXfKp2leZkB6Z24YSCCAMFNMvIvA3lIULLq7Oh/doDmI
-         keYhNz7udvZMhZ1hvLC0dfSz3q+J3XQaAa5sFxZRYSDpacQDMoW0gpzvMRYweaeHdzPK
-         84nwSJCC6ogzHW+Z2klcPXRyIPvjqHTaVh5ztNScjb4War0bDTGRnazugRT+AdV7mUNZ
-         FY6g==
+        b=t9S2++DkC61Eb8nmeSxRxOGMmhD+ejKulwyj0Qb8yEoTY7GjBS4hVojKqNKs0hog2u
+         xDB+qjAO8j8OpFW+jTmcPoc2NuNYBBZVd6+pNPXFvKTRC/tG2ibFwoqJ6WX1f+iPPxAo
+         caVnu5g4uTXawM7tM/HHBqUKy+E2KZIeHvI2vmJfp/oMV3npHtIXY3oj9FEw3OuM1kcd
+         46GeTdsKbt1bkDKpdnZZQSserAxoC/T1zXs5WArg+sFCRnv5oq7RRpsI6V/82UJ6OCCi
+         R/SVUNLuNR+YKJz6+jrJl2r7rHMpK0xAmyzsKo3p8vIctfXsogX5oY1+adLfSupb12dl
+         tdCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=EiZyE6I3+XWR8VRhAJHThoZMnIxtP93EJwVG/5v3irE=;
-        b=wXAMJ8r84ZQSv6/QoSLubXvULel1MBojLQ5a2iajcKYxIvzE7dx1nWxtQmeZ4C96M1
-         og6t9nL/wMaIuW5YlSAlr2zb2wMGWJO4RmzAYTozy+ftOIi28Z3NPx0yfnO041gtpV7/
-         wu/qo+cu+0YPRud6MKMTB3mSIl5G+QwUYLfjON2xs0Q4kwlRYfJStlo7LYh0yxXfqxsl
-         8W/6is+/cgJGN0LBKLDDBBGoYKPvOXrniWTT4IJgyUDd/GsEwqpoJ9i7Z6NYwqUKYxh5
-         9yy2Ugcs5lrDit6PKQE5P1h0/SnlMiSKtIxsmfBck2xt7903UyYGntU9N3Mbvx6VbRe8
-         wNBQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=nrt9BYgTqm299mdT6OREWddyl3f7QPPBNZviqEUDvE0=;
+        b=1Cldn+XSpnNU4NlCSOJ9X/18CCirxjAR8xyfVTApus1NP27WVVX+r8ao/54WeyOn2U
+         GYW1Bvw9n+v2WNDrQIH6p2g2SMo1RwZK97t68VYXLza8ou7RMhRpNCiu+Fu6yobWTUuS
+         rw/4FtxibLbTvn5NODz7Y8QPcbz52H/HurJtRz4R8Pg9as8gxNDLlwRDU8vjDkbNif7b
+         bbt3tJFIV3KZtMim9IoKRZQxAfv6fdQxyOPJDir3B4GJhXoIxF63ZQzY8EZC3NKFv/n2
+         WANxBAVo0JQ8/+SUknaHsagKQNK8GmbgbWu+a4CCBxWlAGxjdfsyAm7VLrkiBN1zFXGp
+         CPNg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=Zx65W1pE;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::241 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from mail-pl0-x241.google.com (mail-pl0-x241.google.com. [2607:f8b0:400e:c01::241])
-        by gmr-mx.google.com with ESMTPS id q126si10435vkf.1.2018.03.19.07.07.55
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Return-Path: <pneira@us.es>
+Received: from mail.us.es (mail.us.es. [193.147.175.20])
+        by gmr-mx.google.com with ESMTPS id c185si13071lfd.5.2017.10.24.09.14.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 19 Mar 2018 07:07:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::241 as permitted sender) client-ip=2607:f8b0:400e:c01::241;
+        Tue, 24 Oct 2017 09:14:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=Zx65W1pE;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::241 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Received: by mail-pl0-x241.google.com with SMTP id n15-v6so2538094plp.12
-        for <outreachy-kernel@googlegroups.com>; Mon, 19 Mar 2018 07:07:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ashoka.edu.in; s=google;
-        h=from:to:cc:subject:date:message-id;
-        bh=EiZyE6I3+XWR8VRhAJHThoZMnIxtP93EJwVG/5v3irE=;
-        b=Zx65W1pE9gjGAeC1zuZpohDRdWVXM46LyusHFvla4yYXqwwJkzkq1eW914malB5xRw
-         Jq4McZtBrUdgIJGJGM+qsG1uRrLU2iJjMyNwuYE5hjHqt3RYkBYkZVMqTuzSmBYP3bVi
-         spIfNBzB3rFfEWJab/3UKfZMjN4sooaGvXYD0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=EiZyE6I3+XWR8VRhAJHThoZMnIxtP93EJwVG/5v3irE=;
-        b=LYZWLd4TiJFCmzQ8tTWBOxa8WjwuL7NmJphccs/poWlGMZ8jwiG+C9HTBmN4sV+bR2
-         hIunrHR52Z9xUEYhZZCEI7NlHPnjI41q9nQTLih801A+WjfpJd4pVbX4MuMFjiIk8GkL
-         iE7g3kbaA//fTy43Ih/6eFBAfLWUE2Dx8n9j7SB7PEv+qd92130KJbTyx97YA35JUjll
-         Qn0toV38T/nk+myrUJjzb4PTR73c8Fb7YHr1YLX+NMemK7ZZWWPIs1no8EFdIk+V39YB
-         ykaqYkCo9hgjv3L0+XlEz+ZidPqn5kVcYeJ9dwQUAIyn96TkjmaeSaK5oIEwhO9WpnSx
-         ufUA==
-X-Gm-Message-State: AElRT7Ep7Y2be6TymcSfw4dvYN81j8XY42sO41rEZ+XOD8kYPp+FltBq
-	MvHAwbZGlvA2BYlrQWA21LruyQ==
-X-Received: by 2002:a17:902:d202:: with SMTP id t2-v6mr12909750ply.216.1521468474611;
-        Mon, 19 Mar 2018 07:07:54 -0700 (PDT)
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from localhost.localdomain ([139.59.85.247])
-        by smtp.gmail.com with ESMTPSA id t87sm254485pfi.37.2018.03.19.07.07.52
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 19 Mar 2018 07:07:53 -0700 (PDT)
-From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-Subject: [PATCH] staging:vc04_services:bcm2835-camera:controls.c: Fix multiple line dereference
-Date: Mon, 19 Mar 2018 14:07:42 +0000
-Message-Id: <1521468462-28073-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-X-Mailer: git-send-email 2.7.4
+       spf=pass (google.com: domain of pneira@us.es designates 193.147.175.20 as permitted sender) smtp.mailfrom=pneira@us.es
+Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
+	by mail.us.es (Postfix) with ESMTP id D8D55E9775
+	for <outreachy-kernel@googlegroups.com>; Tue, 24 Oct 2017 18:14:00 +0200 (CEST)
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id B8B6CDA86E
+	for <outreachy-kernel@googlegroups.com>; Tue, 24 Oct 2017 18:14:00 +0200 (CEST)
+Received: by antivirus1-rhel7.int (Postfix, from userid 99)
+	id AE3CCDA80B; Tue, 24 Oct 2017 18:14:00 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
+X-Spam-Level: 
+X-Spam-Status: No, score=-107.5 required=7.5 tests=ALL_TRUSTED,BAYES_60,
+	HEADER_FROM_DIFFERENT_DOMAINS,SMTPAUTH_US2,USER_IN_WHITELIST
+	autolearn=disabled version=3.4.1
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 9D4CEDA7F7;
+	Tue, 24 Oct 2017 18:13:58 +0200 (CEST)
+Received: from 192.168.1.97 (192.168.1.97)
+ by antivirus1-rhel7.int (F-Secure/fsigk_smtp/550/antivirus1-rhel7.int);
+ Tue, 24 Oct 2017 18:13:58 +0200 (CEST)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/550/antivirus1-rhel7.int)
+Received: from us.es (40.red-212-170-55.staticip.rima-tde.net [212.170.55.40])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	(Authenticated sender: 1984lsi)
+	by entrada.int (Postfix) with ESMTPSA id 75D9B40584CB;
+	Tue, 24 Oct 2017 18:13:58 +0200 (CEST)
+Date: Tue, 24 Oct 2017 18:13:58 +0200
+X-SMTPAUTHUS: auth mail.us.es
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Harsha Sharma <harshasharmaiitr@gmail.com>
+Cc: netfilter-devel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] extensions: add tests for ipcomp protocol
+Message-ID: <20171024161358.GA5875@salvia>
+References: <20171023042316.4278-1-harshasharmaiitr@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20171023042316.4278-1-harshasharmaiitr@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Virus-Scanned: ClamAV using ClamSMTP
 
-Fix multiple line dereference. Issue found with checkpatch.
+On Mon, Oct 23, 2017 at 09:53:16AM +0530, Harsha Sharma wrote:
+> This patch adds test for ipcomp protocol.
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
----
- drivers/staging/vc04_services/bcm2835-camera/controls.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/vc04_services/bcm2835-camera/controls.c b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-index cff7b1e..bae7f2e 100644
---- a/drivers/staging/vc04_services/bcm2835-camera/controls.c
-+++ b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-@@ -1194,6 +1194,8 @@ int set_framerate_params(struct bm2835_mmal_dev *dev)
- {
- 	struct mmal_parameter_fps_range fps_range;
- 	int ret;
-+	int mcc = MMAL_COMPONENT_CAMERA;
-+	int mcpp = MMAL_CAMERA_PORT_PREVIEW;
- 
- 	if ((dev->exposure_mode_active != MMAL_PARAM_EXPOSUREMODE_OFF) &&
- 	    (dev->exp_auto_priority)) {
-@@ -1220,8 +1222,7 @@ int set_framerate_params(struct bm2835_mmal_dev *dev)
- 		 fps_range.fps_high.den);
- 
- 	ret = vchiq_mmal_port_parameter_set(dev->instance,
--					    &dev->component[MMAL_COMPONENT_CAMERA]->
--					    output[MMAL_CAMERA_PORT_PREVIEW],
-+					    &dev->component[mcc]->output[mcpp],
- 					    MMAL_PARAMETER_FPS_RANGE,
- 					    &fps_range, sizeof(fps_range));
- 	ret += vchiq_mmal_port_parameter_set(dev->instance,
--- 
-2.7.4
-
+Applied, thanks.
 
