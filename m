@@ -1,356 +1,158 @@
-X-GM-THRID: 6673408192486047744
-X-Received: by 2002:aca:3841:: with SMTP id f62mr2576807oia.9.1553773924589;
-        Thu, 28 Mar 2019 04:52:04 -0700 (PDT)
+X-GM-THRID: 6480480783151661056
+X-Received: by 10.107.44.69 with SMTP id s66mr12522033ios.141.1508854511890;
+        Tue, 24 Oct 2017 07:15:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:e683:: with SMTP id d125ls3503049oih.5.gmail; Thu, 28
- Mar 2019 04:52:03 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwUmGNGKqwKMAZkFhoBmC4J9P8C0HZr70JP3+TgDvybIA+fLix1yaEEcWjKQV0YmPbcz7mG
-X-Received: by 2002:aca:c7c4:: with SMTP id x187mr1631514oif.2.1553773923648;
-        Thu, 28 Mar 2019 04:52:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553773923; cv=none;
+Received: by 10.107.180.141 with SMTP id d135ls72653iof.6.gmail; Tue, 24 Oct
+ 2017 07:15:11 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+SSqDBUVv8cHTl6EtB+OHqDkyIfVS5eIqwxMNy2/cjADwHAQJImyTdCbOIPAbAeyxQBQyfz
+X-Received: by 10.36.117.83 with SMTP id y80mr8713234itc.48.1508854511122;
+        Tue, 24 Oct 2017 07:15:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508854511; cv=none;
         d=google.com; s=arc-20160816;
-        b=qIvmskoPaobso5oRH6pKuzHc0py9k5dL9jeGI7K7BVHiSbqUoCzK9lzkDgK8jMZLJi
-         J2G/CEyhK3o4yHGhJscB6edTplKFYo/gJHlsGdKSO5vYq5S5xDA9zdeoOw+Srbl7p8ID
-         OQTlYqqEFvGKAlJJYRXqpoQCgVxakicYKhUGrsJBr6Hh9Xo9OhSplIgtBFBh2M7iYUj5
-         EYkzNBkHf6yla0DN8ia38R1Bf48+SCm1OD/DehzUZBxToRvWpE20BFXnGrWIafOMQ6QK
-         MHQryAPEiLCUQgf0w/s9/z6ihMCSY1bOKhDv4GaBOfXsaab0SDQeOR5gkEPaUdYZmymp
-         9JGA==
+        b=ShI+LXitCR0rMJCZnssEt6yJB/WQnsRTr2L7M3fYKS0q38QKs8aIzJSW+AXXeTVLWe
+         xtCELdUMVbjpbUnd36knf9rbn62CI2+ZW3PCiYfQDapBsDHMgiLYsNXBNRqap64zeSVJ
+         me4upFlb+zBgiA7rAmBk9kEguwUBmdeFlWo+/Tb9KV7F2OBuffvZbYcLvXQjxEZHWye4
+         jjbOoWufW5XGL5jBEosTdXk3w+2YMZxsrr+WYW5fto647Pjd7tGwG4ajXAfzhCmUSmwk
+         /8GK31L4NPEitP+jII88P17urSYdUXqiofC30RJNk0Cfxw1thd3qhDKG8fIJ2vgwTRRr
+         zCFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=4hdYCdwk0Bin2lvA/BcGirgDNzVKoAgF8bpg2NuIpnE=;
-        b=P1BXspvKS8VDTP5ZEjZEHhZffYeFWVlC7gH7L1yG4Z5DtWpd58AD5uiGaOja5JmZb1
-         7LatKIUTj3IR9ZC3Eq1WyDD9e4KmHYr/XMpeQbNq+4QN6ucdqHXz3SkodswRKg/1Ytut
-         uDD0U/QwFBEWNm6fSOEtSxWehMlH4U7mCHi1HKotWn/JEl0PLr9MLr6EU8oFop7FCRIK
-         9OjSnEuBP4fGm7NYg89WlqfS864kOFZ9uetaPNmh0j3lTUAy3ZxrWXthwGEEdV4lL7Vx
-         6Pan67sYaCERXbRblPY+gbkr2R+OUvDvJOCHZUPRlf0kGdR2B9VrNu6+jfEJKMIJM8m4
-         Qrvg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature:arc-authentication-results;
+        bh=l1gvMR7xlvJureHRJP3avtCynIGGVSz0a0lxtiGTLME=;
+        b=lIs1MCnKbhVQM05apEjv5ZXpIzF1yoAx/3+mMOAiIauAyfkuRmLfPs+TQu0sZ99ZpO
+         HsqinQxfo4iVmJzJpjqxdu+at6hdcf+iL4jlMrIhoHR+zJpmg3BTJGryDMWKrk6kixJ6
+         4LCV2dIHWUyrh05y5RoFQMYDdcnEqvq2jNc2TDMLRM68spG4KhjJI2xpwQqExtiOuC9M
+         7kx9FDbNVWpCAtu2ravPKYMHJMDFSJmS8ZWke/H74nH3uHbqPrGtxWZJg9PQPKfQxXSv
+         1ZhiTA9NWDDsHrphebkQtRu/gt5r+7NPjQfL7C2GIjYsvIj0KTb8DeOWARAfqdO8DMiT
+         5gpg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ADEsJhlS;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id x4si1499664otg.2.2019.03.28.04.52.03
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bsnauIeQ;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::231 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from mail-pg0-x231.google.com (mail-pg0-x231.google.com. [2607:f8b0:400e:c05::231])
+        by gmr-mx.google.com with ESMTPS id e77si36812ita.0.2017.10.24.07.15.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 28 Mar 2019 04:52:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
+        Tue, 24 Oct 2017 07:15:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::231 as permitted sender) client-ip=2607:f8b0:400e:c05::231;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ADEsJhlS;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x544.google.com with SMTP id i2so11476609pgj.11
-        for <outreachy-kernel@googlegroups.com>; Thu, 28 Mar 2019 04:52:03 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bsnauIeQ;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::231 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x231.google.com with SMTP id y5so6805359pgq.7
+        for <outreachy-kernel@googlegroups.com>; Tue, 24 Oct 2017 07:15:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=4hdYCdwk0Bin2lvA/BcGirgDNzVKoAgF8bpg2NuIpnE=;
-        b=ADEsJhlSiIgLyL7FOoKMjGzzTuQVbeJ3UFU0B9eOM/JPZN9rTFBG3Sjlk3R4dcMzP7
-         +knSlPNF/eEPrfjit0QFM5VeSgmvKCtOETjthmDC8QkHg0TUCnqv6gPsFmWTkc+jUKq3
-         DYevsznBZsXrbYPLtll7QTxKdS6XNXjkfyzwPGWFHJcYh56ZjthcjNetr8IDHeQ0rEqG
-         lzYg9d4ysbi8xDL7Et4BSzJdriZtApcvosn3asZDsovYfXiH80akTfgX2yXVIUCgvSB6
-         o7Jur+4/+ulvUIF6rLJzWXPlL3mjBy7D2PLWFIE7MCREHk4JRfQBoTYJWxV2hFzY1eqP
-         AKjQ==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=l1gvMR7xlvJureHRJP3avtCynIGGVSz0a0lxtiGTLME=;
+        b=bsnauIeQ4KhH+vEIdcgmGluQxL7seP4FqrFRiOjxDYYqAfG6B/bnBCPgdSQVpvWUrL
+         rzZHYSpIb+P+syZJx7lkxSMWYHJ061Y3v6FJ9PoeP+z8rSrVN+rDFe10uRzLgIbhSYIv
+         IMJ7/pB9/DoPPXEHtc1Sj+wZBs+jYFeSFIhn3AKY4b3MYtVA58khkpN9NR2XPfD7nqiE
+         mqqbVwrse4Tk9OaWk7wyQofNMbN6ld4Xe+xPWsGFrdO7HY6OaLtJowpyi5YtHBIH8TJW
+         DphRdIWyuzMGjnI0chT1PNTsrCsta8IOZl+ZO085nlgjDHCVE1cKuqLKwvPCkY8bEmSE
+         oMxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=4hdYCdwk0Bin2lvA/BcGirgDNzVKoAgF8bpg2NuIpnE=;
-        b=eqkSxU4ruih1sDso2+7bp5dTYVWwhn/LBMZ8lTiYEx6RNGEsOPgHDLD3U+riECEM7E
-         A+WEmh0M3vgKIZsLbTIXdmRe2Q07jtKaIZlwXpCUkenn+hXn53I04/kG5q+l2nFojBZG
-         fFQ5DLeuGo2e4sTOpzdkHK83a0m3BuavaHt6fDzUgtV5g7yba8PRDn27a+qc5L8qJSkx
-         WDZX+FeHaZepZsUooOjy/B+2Y/z/zINtloMMpo5QCuXmYdcSWtPJCYY/LlSq41ZJuclV
-         iqga9+rIFGXYizTIJ2E0AcZNHL0h5qjULSmzKnTMlulkI8ZqHD8+wokMSHDFaE0Zsz8x
-         9N8g==
-X-Gm-Message-State: APjAAAVpUOcVNqy4AHabgg/UEPgFy9I9OdVatGQRI3G9EF4C/BRrG/bd
-	hVrfYfnAvxYlsk9OZQb6RJ0a/70V
-X-Received: by 2002:aa7:8818:: with SMTP id c24mr40394819pfo.129.1553773922520;
-        Thu, 28 Mar 2019 04:52:02 -0700 (PDT)
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from localhost.localdomain ([157.33.249.65])
-        by smtp.gmail.com with ESMTPSA id p86sm42366742pfa.104.2019.03.28.04.51.58
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 28 Mar 2019 04:52:00 -0700 (PDT)
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [Outreachy kernel] [PATCH] staging: Remove unnecessary parentheses
-Date: Thu, 28 Mar 2019 17:20:57 +0530
-Message-Id: <1553773857-4964-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=l1gvMR7xlvJureHRJP3avtCynIGGVSz0a0lxtiGTLME=;
+        b=G496E9nx3xNHRMWGQU6WviQd9Q+ZSBjqOSqpPtNbR+qF9Hxv/H5XIz080cNAyH7/bR
+         ptxuDUC97n6o+gUfiTbepMmjwOpuPAVqrmUhOuT/S/mcjz4FB7zbdSNBYdp4qrQhHoWH
+         LnMaypK3bIFDffIXbweQMZQjW6BWi/Es0z3zySO0Ym9OpqPLt8KZJj/R5xHghoTEixOZ
+         WK9EivEM+Fsh6UBcsXxS1ATTnBnm/3vPTYzO+7kwAcT/4kFhRFKw2PA/Pv5RB4dzFjJX
+         uRpAhpa2pjlzuxE6wenqKofzCtNmFR6kVCg9E02aBQzJckj7g9O0BOQ+u96GZSxbHZAN
+         3YqQ==
+X-Gm-Message-State: AMCzsaX/xvKovUgO0+3ltwZjHFZChJm2mPCazfEMPtlIGm1A7MgT29+n
+	KZj+0NK0gn+IQ4wvzGhP2D4=
+X-Received: by 10.98.74.149 with SMTP id c21mr16555311pfj.200.1508854510719;
+        Tue, 24 Oct 2017 07:15:10 -0700 (PDT)
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from aastha-HP-Pavilion-15-Notebook-PC ([103.196.221.228])
+        by smtp.gmail.com with ESMTPSA id v14sm737740pgq.72.2017.10.24.07.15.09
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 24 Oct 2017 07:15:10 -0700 (PDT)
+From: Aastha Gupta <aastha.gupta4104@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	seanpaul@chromium.org,
+	Lucas Stach <l.stach@pengutronix.de>,
+	Russell King <linux+etnaviv@armlinux.org.uk>,
+	Christian Gmeiner <christian.gmeiner@gmail.com>,
+	David Airlie <airlied@linux.ie>,
+	dri-devel@lists.freedesktop.org
+Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
+Subject: [RESEND PATCH] drm: etnaviv: Replace dev_info with DRM_DEV_INFO
+Date: Tue, 24 Oct 2017 19:45:04 +0530
+Message-Id: <1508854504-19190-1-git-send-email-aastha.gupta4104@gmail.com>
 X-Mailer: git-send-email 2.7.4
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
-Challenge suggested by coccinelle.
+For drivers which could have multiple instances, it is necessary to
+differentiate between which is which in the logs. Since
+DRM_INFO/WARN/ERROR don’t do this, drivers used dev_info/warn/err to
+make this differentiation. We now have DRM_DEV_* variants of the drm
+print macros, so we can start to convert those drivers back to using
+drm-formwatted specific log messages.
 
-This patch removes unnecessary parentheses around the right hand side of an assignment.
-Using following script: 
-
-@@ 
-local idexpression id;
-expression e1,e2;
-@@
-
-- id = (e1<<e2)
-+ id = e1<<e2
-
-@@ 
-local idexpression id;
-expression e1,e2;
-@@
-
-- id = (e1>>e2)
-+ id = e1>>e2
-
-Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
 ---
-diff -u -p a/rtlwifi/phydm/phydm.c b/rtlwifi/phydm/phydm.c
---- a/rtlwifi/phydm/phydm.c
-+++ b/rtlwifi/phydm/phydm.c
-@@ -1766,8 +1766,7 @@ static u8 phydm_calculate_intf_distance(
- 	if (f_interference >= bw_low && f_interference <= bw_up) {
- 		int_distance = (fc >= f_interference) ? (fc - f_interference) :
- 							(f_interference - fc);
--		tone_idx_tmp =
--			(int_distance << 5); /* =10*(int_distance /0.3125) */
-+		tone_idx_tmp = int_distance << 5; /* =10*(int_distance /0.3125) */
- 		ODM_RT_TRACE(
- 			dm, ODM_COMP_API,
- 			"int_distance = ((%d MHz)) Mhz, tone_idx_tmp = ((%d.%d))\n",
-diff -u -p a/rtlwifi/phydm/phydm_adc_sampling.c b/rtlwifi/phydm/phydm_adc_sampling.c
---- a/rtlwifi/phydm/phydm_adc_sampling.c
-+++ b/rtlwifi/phydm/phydm_adc_sampling.c
-@@ -67,7 +67,7 @@ static void phydm_la_get_tx_pkt_buf(void
- 			"is_round_up = ((%d)), finish_addr=((0x%x)), 0x7c0=((0x%x))\n",
- 			is_round_up, finish_addr, value32);
- 		/*Byte to 64Byte*/
--		smp_number = ((adc_smp_buf->buffer_size) >> 3);
-+		smp_number = (adc_smp_buf->buffer_size) >> 3;
- 	} else {
- 		addr = adc_smp_buf->start_pos;
+ drivers/gpu/drm/etnaviv/etnaviv_buffer.c | 4 ++--
+ drivers/gpu/drm/etnaviv/etnaviv_gpu.c    | 9 +++++----
+ 2 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/gpu/drm/etnaviv/etnaviv_buffer.c b/drivers/gpu/drm/etnaviv/etnaviv_buffer.c
+index ed9588f..0091a8b 100644
+--- a/drivers/gpu/drm/etnaviv/etnaviv_buffer.c
++++ b/drivers/gpu/drm/etnaviv/etnaviv_buffer.c
+@@ -125,8 +125,8 @@ static void etnaviv_buffer_dump(struct etnaviv_gpu *gpu,
+ 	u32 size = buf->size;
+ 	u32 *ptr = buf->vaddr + off;
  
-diff -u -p a/rtlwifi/phydm/phydm_hwconfig.c b/rtlwifi/phydm/phydm_hwconfig.c
---- a/rtlwifi/phydm/phydm_hwconfig.c
-+++ b/rtlwifi/phydm/phydm_hwconfig.c
-@@ -59,10 +59,7 @@ static u32 phydm_process_rssi_pwdb(struc
- 			weighting = ((entry->rssi_stat.ofdm_pkt) > 4) ?
- 					    64 :
- 					    (entry->rssi_stat.ofdm_pkt << 4);
--			undecorated_smoothed_pwdb =
--				(weighting * undecorated_smoothed_ofdm +
--				 (64 - weighting) * undecorated_smoothed_cck) >>
--				6;
-+			undecorated_smoothed_pwdb = (weighting * undecorated_smoothed_ofdm + (64 - weighting) * undecorated_smoothed_cck) >> 6;
- 			ODM_RT_TRACE(dm, ODM_COMP_RSSI_MONITOR,
- 				     "PWDB_1[%d] = (( %d )), W = (( %d ))\n",
- 				     pktinfo->station_id,
-@@ -218,16 +215,14 @@ static u32 phydm_process_rssi_ofdm(struc
- 		/* Calculate average RSSI */
- 		switch (rx_count) {
- 		case 2:
--			rssi_linear = (rssi_linear >> 1);
-+			rssi_linear = rssi_linear >> 1;
- 			break;
- 		case 3:
- 			/* rssi_linear/3 ~ rssi_linear*11/32 */
--			rssi_linear = ((rssi_linear) + (rssi_linear << 1) +
--				       (rssi_linear << 3)) >>
--				      5;
-+			rssi_linear = ((rssi_linear) + (rssi_linear << 1) + (rssi_linear << 3)) >> 5;
- 			break;
- 		case 4:
--			rssi_linear = (rssi_linear >> 2);
-+			rssi_linear = rssi_linear >> 2;
- 			break;
+-	dev_info(gpu->dev, "virt %p phys 0x%08x free 0x%08x\n",
+-			ptr, etnaviv_cmdbuf_get_va(buf) + off, size - len * 4 - off);
++	DRM_DEV_INFO(gpu->dev, "virt %p phys 0x%08x free 0x%08x\n", ptr,
++		     etnaviv_cmdbuf_get_va(buf) + off, size - len * 4 - off);
+ 
+ 	print_hex_dump(KERN_INFO, "cmd ", DUMP_PREFIX_OFFSET, 16, 4,
+ 			ptr, len * 4, 0);
+diff --git a/drivers/gpu/drm/etnaviv/etnaviv_gpu.c b/drivers/gpu/drm/etnaviv/etnaviv_gpu.c
+index fc9a6a8..862beac 100644
+--- a/drivers/gpu/drm/etnaviv/etnaviv_gpu.c
++++ b/drivers/gpu/drm/etnaviv/etnaviv_gpu.c
+@@ -344,8 +344,8 @@ static void etnaviv_hw_identify(struct etnaviv_gpu *gpu)
  		}
- 
-@@ -582,7 +577,7 @@ static void odm_rx_phy_status92c_series_
- 		if (dm->support_ic_type & (ODM_RTL8703B)) {
- 		} else { /*3 bit LNA*/
- 
--			LNA_idx = ((cck_agc_rpt & 0xE0) >> 5);
-+			LNA_idx = (cck_agc_rpt & 0xE0) >> 5;
- 			VGA_idx = (cck_agc_rpt & 0x1F);
- 		}
- 
-@@ -813,7 +808,7 @@ static void odm_rx_phy_status_jaguar_ser
- 		cck_highpwr = dm->is_cck_high_power;
- 
- 		cck_agc_rpt = phy_sta_rpt->cfosho[0];
--		LNA_idx = ((cck_agc_rpt & 0xE0) >> 5);
-+		LNA_idx = (cck_agc_rpt & 0xE0) >> 5;
- 		VGA_idx = (cck_agc_rpt & 0x1F);
- 
- 		if (dm->support_ic_type == ODM_RTL8812) {
-@@ -1435,7 +1430,7 @@ static void phydm_set_per_path_phy_info(
- 
- 	if (rx_evm < 0) {
- 		/* Calculate EVM in dBm */
--		evm_dbm = ((u8)(0 - rx_evm) >> 1);
-+		evm_dbm = (u8)(0 - rx_evm) >> 1;
- 
- 		/* Calculate EVM in percentage */
- 		if (evm_dbm >= 33)
-@@ -1774,32 +1769,26 @@ phydm_process_rssi_for_dm_new_type(struc
- 
- 		switch (phy_info->rx_count + 1) {
- 		case 2:
--			rssi_linear = (rssi_linear >> 1);
-+			rssi_linear = rssi_linear >> 1;
- 			break;
- 		case 3:
- 			/* rssi_linear/3 ~ rssi_linear*11/32 */
--			rssi_linear = ((rssi_linear) + (rssi_linear << 1) +
--				       (rssi_linear << 3)) >>
--				      5;
-+			rssi_linear = ((rssi_linear) + (rssi_linear << 1) + (rssi_linear << 3)) >> 5;
- 			break;
- 		case 4:
--			rssi_linear = (rssi_linear >> 2);
-+			rssi_linear = rssi_linear >> 2;
- 			break;
- 		}
- 		rssi_ave = odm_convert_to_db(rssi_linear);
- 
- 		if (undecorated_smoothed_pwdb <= 0) {
--			accumulate_pwdb =
--				(phy_info->rx_pwdb_all << scaling_factor);
-+			accumulate_pwdb = phy_info->rx_pwdb_all << scaling_factor;
- 			undecorated_smoothed_pwdb = phy_info->rx_pwdb_all;
- 		} else {
- 			accumulate_pwdb = accumulate_pwdb -
- 					  (accumulate_pwdb >> scaling_factor) +
- 					  rssi_ave;
--			undecorated_smoothed_pwdb =
--				(accumulate_pwdb +
--				 (1 << (scaling_factor - 1))) >>
--				scaling_factor;
-+			undecorated_smoothed_pwdb = (accumulate_pwdb + (1 << (scaling_factor - 1))) >> scaling_factor;
- 		}
- 
- 		entry->rssi_stat.undecorated_smoothed_pwdb =
-diff -u -p a/rtlwifi/btcoexist/halbtc8822b1ant.c b/rtlwifi/btcoexist/halbtc8822b1ant.c
---- a/rtlwifi/btcoexist/halbtc8822b1ant.c
-+++ b/rtlwifi/btcoexist/halbtc8822b1ant.c
-@@ -4035,7 +4035,7 @@ void ex_btc8822b1ant_display_coex_info(s
- 	btcoexist->btc_get(btcoexist, BTC_GET_U4_WIFI_FW_VER, &fw_ver);
- 	phyver = btcoexist->btc_get_bt_phydm_version(btcoexist);
- 
--	bt_coex_ver = ((coex_sta->bt_coex_supported_version & 0xff00) >> 8);
-+	bt_coex_ver = (coex_sta->bt_coex_supported_version & 0xff00) >> 8;
- 
- 	seq_printf(
- 		m, "\r\n %-35s = %d_%02x/ 0x%02x/ 0x%02x (%s)",
-diff -u -p a/rtlwifi/efuse.c b/rtlwifi/efuse.c
---- a/rtlwifi/efuse.c
-+++ b/rtlwifi/efuse.c
-@@ -266,7 +266,7 @@ void read_efuse(struct ieee80211_hw *hw,
- 	while ((*rtemp8 != 0xFF) && (efuse_addr < efuse_len)) {
- 		/*  Check PG header for section num.  */
- 		if ((*rtemp8 & 0x1F) == 0x0F) {/* extended header */
--			u1temp = ((*rtemp8 & 0xE0) >> 5);
-+			u1temp = (*rtemp8 & 0xE0) >> 5;
- 			read_efuse_byte(hw, efuse_addr, rtemp8);
- 
- 			if ((*rtemp8 & 0x0F) == 0x0F) {
-diff -u -p a/rtlwifi/halmac/halmac_88xx/halmac_func_88xx.c b/rtlwifi/halmac/halmac_88xx/halmac_func_88xx.c
---- a/rtlwifi/halmac/halmac_88xx/halmac_func_88xx.c
-+++ b/rtlwifi/halmac/halmac_88xx/halmac_func_88xx.c
-@@ -838,7 +838,7 @@ halmac_check_efuse_enough_88xx(struct ha
- 				(*(eeprom_mask_updated + (i >> 4)) & 0x0F);
- 			word_enb = pre_word_enb ^ 0x0F;
- 		} else {
--			pre_word_enb = (*(eeprom_mask_updated + (i >> 4)) >> 4);
-+			pre_word_enb = *(eeprom_mask_updated + (i >> 4)) >> 4;
- 			word_enb = pre_word_enb ^ 0x0F;
- 		}
- 
-@@ -912,7 +912,7 @@ halmac_program_efuse_88xx(struct halmac_
- 				(*(eeprom_mask_updated + (i >> 4)) & 0x0F);
- 			word_enb = pre_word_enb ^ 0x0F;
- 		} else {
--			pre_word_enb = (*(eeprom_mask_updated + (i >> 4)) >> 4);
-+			pre_word_enb = *(eeprom_mask_updated + (i >> 4)) >> 4;
- 			word_enb = pre_word_enb ^ 0x0F;
- 		}
- 
-diff -u -p a/media/zoran/zoran_device.c b/media/zoran/zoran_device.c
---- a/media/zoran/zoran_device.c
-+++ b/media/zoran/zoran_device.c
-@@ -496,7 +496,7 @@ zr36057_overlay (struct zoran *zr,
- 				KERN_ERR
- 				"%s: zr36057_overlay() - video_stride not aligned\n",
- 				ZR_DEVNAME(zr));
--		reg = (reg << ZR36057_VSSFGR_DispStride);
-+		reg = reg << ZR36057_VSSFGR_DispStride;
- 		reg |= ZR36057_VSSFGR_VidOvf;	/* clear overflow status */
- 		btwrite(reg, ZR36057_VSSFGR);
- 
-@@ -1421,7 +1421,7 @@ zoran_irq (int             irq,
- 					reg = 0;
- 					if (zr->v4l_settings.height > BUZ_MAX_HEIGHT / 2)
- 						reg += zr->v4l_settings.bytesperline;
--					reg = (reg << ZR36057_VSSFGR_DispStride);
-+					reg = reg << ZR36057_VSSFGR_DispStride;
- 					reg |= ZR36057_VSSFGR_VidOvf;
- 					reg |= ZR36057_VSSFGR_SnapShot;
- 					reg |= ZR36057_VSSFGR_FrameGrab;
-diff -u -p a/comedi/drivers/usbduxsigma.c b/comedi/drivers/usbduxsigma.c
---- a/comedi/drivers/usbduxsigma.c
-+++ b/comedi/drivers/usbduxsigma.c
-@@ -1121,8 +1121,8 @@ static void usbduxsigma_pwm_pattern(stru
- 				    unsigned int sign)
- {
- 	struct usbduxsigma_private *devpriv = dev->private;
--	char pwm_mask = (1 << chan);	/* DIO bit for the PWM data */
--	char sgn_mask = (16 << chan);	/* DIO bit for the sign */
-+	char pwm_mask = 1 << chan;	/* DIO bit for the PWM data */
-+	char sgn_mask = 16 << chan;	/* DIO bit for the sign */
- 	char *buf = (char *)(devpriv->pwm_urb->transfer_buffer);
- 	int szbuf = devpriv->pwm_buf_sz;
- 	int i;
-diff -u -p a/comedi/drivers/usbdux.c b/comedi/drivers/usbdux.c
---- a/comedi/drivers/usbdux.c
-+++ b/comedi/drivers/usbdux.c
-@@ -1278,8 +1278,8 @@ static void usbdux_pwm_pattern(struct co
- 			       unsigned int sign)
- {
- 	struct usbdux_private *devpriv = dev->private;
--	char pwm_mask = (1 << chan);	/* DIO bit for the PWM data */
--	char sgn_mask = (16 << chan);	/* DIO bit for the sign */
-+	char pwm_mask = 1 << chan;	/* DIO bit for the PWM data */
-+	char sgn_mask = 16 << chan;	/* DIO bit for the sign */
- 	char *buf = (char *)(devpriv->pwm_urb->transfer_buffer);
- 	int szbuf = devpriv->pwm_buf_sz;
- 	int i;
-diff -u -p a/mt7621-mmc/sd.c b/mt7621-mmc/sd.c
---- a/mt7621-mmc/sd.c
-+++ b/mt7621-mmc/sd.c
-@@ -1274,7 +1274,7 @@ static int msdc_ops_get_ro(struct mmc_ho
- 
- 	if (host->hw->flags & MSDC_WP_PIN_EN) { /* set for card */
- 		spin_lock_irqsave(&host->lock, flags);
--		ro = (readl(host->base + MSDC_PS) >> 31);
-+		ro = readl(host->base + MSDC_PS) >> 31;
- 		spin_unlock_irqrestore(&host->lock, flags);
  	}
- 	return ro;
-diff -u -p a/rtl8723bs/hal/odm_HWConfig.c b/rtl8723bs/hal/odm_HWConfig.c
---- a/rtl8723bs/hal/odm_HWConfig.c
-+++ b/rtl8723bs/hal/odm_HWConfig.c
-@@ -122,7 +122,7 @@ static void odm_RxPhyStatus92CSeries_Par
- 		/* 2011.11.28 LukeLee: 88E use different LNA & VGA gain table */
- 		/* The RSSI formula should be modified according to the gain table */
- 		/* In 88E, cck_highpwr is always set to 1 */
--		LNA_idx = ((cck_agc_rpt & 0xE0)>>5);
-+		LNA_idx = (cck_agc_rpt & 0xE0) >> 5;
- 		VGA_idx = (cck_agc_rpt & 0x1F);
- 		rx_pwr_all = odm_CCKRSSI_8723B(LNA_idx, VGA_idx);
- 		PWDB_ALL = odm_QueryRxPwrPercentage(rx_pwr_all);
-@@ -387,7 +387,7 @@ static void odm_Process_RSSIForDM(
  
- 			if (pEntry->rssi_stat.ValidBit == 64) {
- 				Weighting = ((OFDM_pkt<<4) > 64)?64:(OFDM_pkt<<4);
--				UndecoratedSmoothedPWDB = (Weighting*UndecoratedSmoothedOFDM+(64-Weighting)*UndecoratedSmoothedCCK)>>6;
-+				UndecoratedSmoothedPWDB = (Weighting * UndecoratedSmoothedOFDM + (64 - Weighting) * UndecoratedSmoothedCCK) >> 6;
- 			} else {
- 				if (pEntry->rssi_stat.ValidBit != 0)
- 					UndecoratedSmoothedPWDB = (OFDM_pkt*UndecoratedSmoothedOFDM+(pEntry->rssi_stat.ValidBit-OFDM_pkt)*UndecoratedSmoothedCCK)/pEntry->rssi_stat.ValidBit;
+-	dev_info(gpu->dev, "model: GC%x, revision: %x\n",
+-		 gpu->identity.model, gpu->identity.revision);
++	DRM_DEV_INFO(gpu->dev, "model: GC%x, revision: %x\n",
++		     gpu->identity.model, gpu->identity.revision);
+ 
+ 	gpu->identity.features = gpu_read(gpu, VIVS_HI_CHIP_FEATURE);
+ 
+@@ -673,7 +673,7 @@ int etnaviv_gpu_init(struct etnaviv_gpu *gpu)
+ 	/* Exclude VG cores with FE2.0 */
+ 	if (gpu->identity.features & chipFeatures_PIPE_VG &&
+ 	    gpu->identity.features & chipFeatures_FE20) {
+-		dev_info(gpu->dev, "Ignoring GPU with VG and FE2.0\n");
++		DRM_DEV_INFO(gpu->dev, "Ignoring GPU with VG and FE2.0\n");
+ 		ret = -ENXIO;
+ 		goto fail;
+ 	}
+@@ -695,7 +695,8 @@ int etnaviv_gpu_init(struct etnaviv_gpu *gpu)
+ 		else
+ 			gpu->memory_base = dma_mask - SZ_2G + 1;
+ 	} else if (PHYS_OFFSET >= SZ_2G) {
+-		dev_info(gpu->dev, "Need to move linear window on MC1.0, disabling TS\n");
++		DRM_DEV_INFO(gpu->dev,
++			     "Need to move linear window on MC1.0, disabling TS\n");
+ 		gpu->memory_base = PHYS_OFFSET;
+ 		gpu->identity.features &= ~chipFeatures_FAST_CLEAR;
+ 	}
+-- 
+2.7.4
+
 
