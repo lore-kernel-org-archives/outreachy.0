@@ -1,79 +1,79 @@
 X-GM-THRID: 6480148992322699264
-X-Received: by 10.99.124.24 with SMTP id x24mr4255392pgc.40.1508854286908;
-        Tue, 24 Oct 2017 07:11:26 -0700 (PDT)
+X-Received: by 10.107.12.26 with SMTP id w26mr11954958ioi.104.1508854282525;
+        Tue, 24 Oct 2017 07:11:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.98.185.13 with SMTP id z13ls107077pfe.1.gmail; Tue, 24 Oct
- 2017 07:11:25 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+QgmtyHyrNP//h1jdyv1n8chIyDDsemVU990IcergGAgPRlmbD8196Sv6v1MEPTvUEvwNYU
-X-Received: by 10.99.126.90 with SMTP id o26mr4238611pgn.154.1508854285765;
-        Tue, 24 Oct 2017 07:11:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508854285; cv=none;
+Received: by 10.36.120.3 with SMTP id p3ls146963itc.4.gmail; Tue, 24 Oct 2017
+ 07:11:21 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+QiiEGZIpJb9HTKqGdBpjdlKPFN3QXCY64oAABxaawB3jcXfPmd5x5GznoKTMjwfNzNANDE
+X-Received: by 10.107.153.129 with SMTP id b123mr9315842ioe.57.1508854281702;
+        Tue, 24 Oct 2017 07:11:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508854281; cv=none;
         d=google.com; s=arc-20160816;
-        b=v37LHeucgKnO3WzDI3I8YudaEVmNLLpQ37TDO2p0jXc6ijAXFAEqAWC271pT6QWQd4
-         e/hx7g0dmffYDyWIY5oZRhqklBET5NxeFeVOnxdqSIubfEGDFhfvKK9OodYF9lUEQ5Ot
-         TROYoNQ0+3bqfEMcw1IBIdyNVAIK4G3jSnD1fxC3uSkOiBDnZ4xjH8Hh64fR9nyEAHNt
-         uQJ1Bk9UiQH9LSuQo4NrVmobvIDdqAGZrtS5D2H4Le3MfiVxfmy0zbJYaAN+5NLn/5Bb
-         Yn47NagV200ZPb65z8UbjFnsRi+lE5+Jr3spK884hUtCgJaW3wOBnbEOIC5F+wokCAfr
-         D6OA==
+        b=iOmgucIk/MGVk8gUe45e/GUmgljHG/aC01goX5U3b+9kMiWWiKHxR9S2zsQa0X73+H
+         se2xCxsoXP/2Etus0lrmFwK37Kowd4priAgQghJQWjhSdDOsk1QoqyGm4CrZFgTigNDk
+         blI6/IWWOCTqFzWTuAweVxilqx0ckKzTu4lc7hEHQXNDvrJCCek/tOXzrY2t2QIe9Fps
+         agxKIhWmZcqp3jJnnVg6Rv6A8u3o6mzcDof37Rw9lRxLEdJ5/ryLbLuwwyo+Sfolz3zf
+         tVQlT8IFElsyrHrKIiAU+ycBX7x0KjVY/o1+OLwKjCPkJyXCqcNTJjPf6EPn1ufdiU97
+         hpyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature
          :arc-authentication-results;
-        bh=+dIBdeQppVyvWIP8R6FIzFzFSffFBqrpWYZvFuBYc0I=;
-        b=zPua5//TwQECDrfN53/VWIlB+qbMt4JRBP/z5EqPMf/Lldzhpsvg13/oQ4QAOoh8t5
-         trx4AyElTBAEVcsF+1Nyhjwac/ruR6WAJG0zkbkDN4Ap0WX20Zun0hztSoX9qz2Ic6zS
-         XNu+Qag4ChlJD1xa4v20zUE8DzqthUtcpAxohgkYw8PYJWeona2J1qA4kv3t2DUP2q4R
-         ecN7ig7owcnIWT6HTpmfyUVdqsAPQ8kzVW9j6x7bSFKPvt1h0f3CQM/qRO2JcFSQbdMA
-         UIFtiuBeUwMkuJrhQLDkQ9fitVBoaLe1NEE1cYADSzU45jkApbvBTt4wRSt4erc8ufWR
-         N4iw==
+        bh=guZy3D5vf6DDmyQhfYSretdOnkeJZytVLDV3ioIg+w0=;
+        b=ZzxX8ie11oJYU82BWqBeUR/xs8ahcdEZdGRkxILw8YtTaJtm/x/wIqQSoQjQly9cjF
+         BudBO7tzgcBCEo92TWJhoZ/0+MoPpgbe/XMY5AktOXz9bCMbWmdlbCLxchEM8luvj5iB
+         /v54jYbz3nh4YZwMMpuiniHpoWkJBPGSMWM8XFrdkgLov7l1YSX64J04IEl9AmfXhqce
+         ZxIhXdNlCKJ7Ltm/0HaBiIoh0HFtvclqeu1Iz6Jql+ItD1RkLJ4oorpF+dcP/gvPCPFu
+         T82DnacGk7MEJUnuGsbaPCMdnGG4mIV+M5biCU1x2ABAE/nkxHadQ+W0CyZQ+S/oA10e
+         90qQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=e01o3OYU;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=IQIQg3qy;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
 Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pf0-x22a.google.com (mail-pf0-x22a.google.com. [2607:f8b0:400e:c00::22a])
-        by gmr-mx.google.com with ESMTPS id b2si23522pgt.1.2017.10.24.07.11.25
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id l10si48117ioc.2.2017.10.24.07.11.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 24 Oct 2017 07:11:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) client-ip=2607:f8b0:400e:c00::22a;
+        Tue, 24 Oct 2017 07:11:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=e01o3OYU;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=IQIQg3qy;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22a.google.com with SMTP id b85so19756343pfj.13
-        for <outreachy-kernel@googlegroups.com>; Tue, 24 Oct 2017 07:11:25 -0700 (PDT)
+Received: by mail-pf0-x243.google.com with SMTP id e64so19768384pfk.9
+        for <outreachy-kernel@googlegroups.com>; Tue, 24 Oct 2017 07:11:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=+dIBdeQppVyvWIP8R6FIzFzFSffFBqrpWYZvFuBYc0I=;
-        b=e01o3OYUvcGVwObbjNLgnRet1fjQ5IRcwZaI0SJavCXK2GnientBADzAUun1fGUMEF
-         2RDctfwij5wOwgMWA2DpUn6mkWIzN9peKwfc/aLyfKq/9VCgYj6Q170PkOfFfMjq4PpW
-         WGo8i7x3RgKWQH8GJ8WuPh9J2SrXY9radc6zsFeS1TnIvfmNoWJpDL0UtsJc3uj5xb/F
-         UQ5WyzbbfYhOAqHGkZQAOywU8U0ktdQ2N+77XrNmwboewwAl6KaVY7vXGjMm0gOB8MrV
-         BsFPpYsUi1UASw0dhQQKFZk+sYq304u+g9yC8Gl6g5gNZF0657MjD9pg47ICsy4CxcZO
-         r+RA==
+        bh=guZy3D5vf6DDmyQhfYSretdOnkeJZytVLDV3ioIg+w0=;
+        b=IQIQg3qyH6LzobSuk5CpQ6wS4EGuVyZrowzrzdROgz0Ujq+c/Ij0kMDpbhnlPR2cz/
+         XqeKBQvd7WyXBMHzAuekY025fRM+JKVC0j8+vMMSRxGXSeiX8F3TJGos2nxXzPCwm2XF
+         +xTjWsEqR1wYUeWadNE+rRlSA1/1T57H2rIP0DVd+5nrpehdL7/cB45q+IIQbtZUpjp3
+         e0j81JzmugAnAanEemthmzZk/8+b+9sl2uIZSwO95z4+m9dj+9qWXHIU7936Rw6nIjRz
+         CyWkeDS6tV5se4Gq5cuZylPd77x2wP6eRODI2SWX5dGww+MQMLcOLlhBmKSqb6LNb4kt
+         NxQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=+dIBdeQppVyvWIP8R6FIzFzFSffFBqrpWYZvFuBYc0I=;
-        b=l8tfB3BHOEc6O0xOpyu/XjQkiV+SEHBQ13FNhs7jtdynuMIixBS/4fQXVPpg83Knds
-         7/eKfFSdG5GQgvuiVWQWYPLesr31fbjqtGHcxoIhz5L6GdVZRG07j05jaqA/MLbgj08e
-         Aj+ZGwMFPTVbUQU+OmwjZzHHtttFUXnim1e65VSjdAOZzyvLyU+97gWqtIHLdR8+6KA1
-         Q+XFixt4AtNO5dMDXQrK5hSKU8+G1gPoy+NcOBm1U2YI4x25iqfYXjztEcvByZoS3i5K
-         UJPufbHZgf27D69FQDTsHFEMSvaQyLPVed2hbJXunoDfth1Fcgph8ekpqDYVPLaGTvuM
-         RNgQ==
-X-Gm-Message-State: AMCzsaUB2FKQ2ULJ7UQwP+iiVZFkniZQpCRFSW9KqIho3JwxXIsVRBag
-	h9nkm/E7rU8nEt3kmdx348Y=
-X-Received: by 10.101.64.198 with SMTP id u6mr14861382pgp.44.1508854285420;
-        Tue, 24 Oct 2017 07:11:25 -0700 (PDT)
+        bh=guZy3D5vf6DDmyQhfYSretdOnkeJZytVLDV3ioIg+w0=;
+        b=o3UYERrZIWw3ltExC2zrVdF92nsaU/juBk/0UzZI5BJg/wYEPA68bLUl8Sw0V89Qov
+         EErtKh6Sy+QE9sep3frdagHjHAududELIlc5T1YsoiX2zTcxkShx7mHb6QBexbvhQ4Mn
+         7V2kv0bN72MRi6Zwn4CFMuuN+4sTb1J2LvBpzgrD8fBjUAan1XYL0nTRfNsvfBsR+1ci
+         lKLnlVWAn++6HTX2QpWsNwF7TLfYYpBXowlHLASorOGQ6UwHHE2fhxR1GN1K6uWJahd7
+         0Lsg1lFARfvSnjxPVkAZE9dsG/cosVBG/p00fRYSSWIUFPUoG5sdKKmYoPmGkpwWJhIx
+         tUbQ==
+X-Gm-Message-State: AMCzsaWEnS7h58BFOkiEQRKvK9Bbk7hVDdoXan7NsBO7KMy5NNW6EgSL
+	w0IVAMBstmAtFW0t/AOdPNI=
+X-Received: by 10.84.176.131 with SMTP id v3mr13099625plb.208.1508854281268;
+        Tue, 24 Oct 2017 07:11:21 -0700 (PDT)
 Return-Path: <aastha.gupta4104@gmail.com>
 Received: from aastha-HP-Pavilion-15-Notebook-PC ([103.196.221.228])
-        by smtp.gmail.com with ESMTPSA id g15sm830869pgr.57.2017.10.24.07.11.24
+        by smtp.gmail.com with ESMTPSA id z89sm981615pff.21.2017.10.24.07.11.19
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 24 Oct 2017 07:11:24 -0700 (PDT)
+        Tue, 24 Oct 2017 07:11:20 -0700 (PDT)
 From: Aastha Gupta <aastha.gupta4104@gmail.com>
 To: outreachy-kernel <outreachy-kernel@googlegroups.com>,
 	Thierry Reding <thierry.reding@gmail.com>,
@@ -81,9 +81,9 @@ To: outreachy-kernel <outreachy-kernel@googlegroups.com>,
 	dri-devel@lists.freedesktop.org,
 	seanpaul@chromium.org
 Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH v2 03/12] drm: panel: replace dev_* with DRM_DEV_* equivalent in panel-sitronix-st7789v
-Date: Tue, 24 Oct 2017 19:40:54 +0530
-Message-Id: <1508854263-18881-4-git-send-email-aastha.gupta4104@gmail.com>
+Subject: [PATCH v2 02/12] drm: panel: replace dev_* with DRM_DEV_* equivalent in  panel-jdi-lt070me05000
+Date: Tue, 24 Oct 2017 19:40:53 +0530
+Message-Id: <1508854263-18881-3-git-send-email-aastha.gupta4104@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1508854263-18881-1-git-send-email-aastha.gupta4104@gmail.com>
 References: <1508854263-18881-1-git-send-email-aastha.gupta4104@gmail.com>
@@ -115,35 +115,149 @@ This patch is using following Coccinelle script:
 
 Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
 ---
- drivers/gpu/drm/panel/panel-sitronix-st7789v.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/gpu/drm/panel/panel-jdi-lt070me05000.c | 38 +++++++++++++-------------
+ 1 file changed, 19 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/gpu/drm/panel/panel-sitronix-st7789v.c b/drivers/gpu/drm/panel/panel-sitronix-st7789v.c
-index 358c64e..b2e4a05 100644
---- a/drivers/gpu/drm/panel/panel-sitronix-st7789v.c
-+++ b/drivers/gpu/drm/panel/panel-sitronix-st7789v.c
-@@ -176,9 +176,9 @@ static int st7789v_get_modes(struct drm_panel *panel)
+diff --git a/drivers/gpu/drm/panel/panel-jdi-lt070me05000.c b/drivers/gpu/drm/panel/panel-jdi-lt070me05000.c
+index 5b2340e..9c29035 100644
+--- a/drivers/gpu/drm/panel/panel-jdi-lt070me05000.c
++++ b/drivers/gpu/drm/panel/panel-jdi-lt070me05000.c
+@@ -161,7 +161,7 @@ static int jdi_panel_on(struct jdi_panel *jdi)
+ 
+ 	ret = mipi_dsi_dcs_set_display_on(dsi);
+ 	if (ret < 0)
+-		dev_err(dev, "failed to set display on: %d\n", ret);
++		DRM_DEV_ERROR(dev, "failed to set display on: %d\n", ret);
+ 
+ 	return ret;
+ }
+@@ -176,11 +176,11 @@ static void jdi_panel_off(struct jdi_panel *jdi)
+ 
+ 	ret = mipi_dsi_dcs_set_display_off(dsi);
+ 	if (ret < 0)
+-		dev_err(dev, "failed to set display off: %d\n", ret);
++		DRM_DEV_ERROR(dev, "failed to set display off: %d\n", ret);
+ 
+ 	ret = mipi_dsi_dcs_enter_sleep_mode(dsi);
+ 	if (ret < 0)
+-		dev_err(dev, "failed to enter sleep mode: %d\n", ret);
++		DRM_DEV_ERROR(dev, "failed to enter sleep mode: %d\n", ret);
+ 
+ 	msleep(100);
+ }
+@@ -213,7 +213,7 @@ static int jdi_panel_unprepare(struct drm_panel *panel)
+ 
+ 	ret = regulator_bulk_disable(ARRAY_SIZE(jdi->supplies), jdi->supplies);
+ 	if (ret < 0)
+-		dev_err(dev, "regulator disable failed, %d\n", ret);
++		DRM_DEV_ERROR(dev, "regulator disable failed, %d\n", ret);
+ 
+ 	gpiod_set_value(jdi->enable_gpio, 0);
+ 
+@@ -237,7 +237,7 @@ static int jdi_panel_prepare(struct drm_panel *panel)
+ 
+ 	ret = regulator_bulk_enable(ARRAY_SIZE(jdi->supplies), jdi->supplies);
+ 	if (ret < 0) {
+-		dev_err(dev, "regulator enable failed, %d\n", ret);
++		DRM_DEV_ERROR(dev, "regulator enable failed, %d\n", ret);
+ 		return ret;
+ 	}
+ 
+@@ -254,13 +254,13 @@ static int jdi_panel_prepare(struct drm_panel *panel)
+ 
+ 	ret = jdi_panel_init(jdi);
+ 	if (ret < 0) {
+-		dev_err(dev, "failed to init panel: %d\n", ret);
++		DRM_DEV_ERROR(dev, "failed to init panel: %d\n", ret);
+ 		goto poweroff;
+ 	}
+ 
+ 	ret = jdi_panel_on(jdi);
+ 	if (ret < 0) {
+-		dev_err(dev, "failed to set panel on: %d\n", ret);
++		DRM_DEV_ERROR(dev, "failed to set panel on: %d\n", ret);
+ 		goto poweroff;
+ 	}
+ 
+@@ -271,7 +271,7 @@ static int jdi_panel_prepare(struct drm_panel *panel)
+ poweroff:
+ 	ret = regulator_bulk_disable(ARRAY_SIZE(jdi->supplies), jdi->supplies);
+ 	if (ret < 0)
+-		dev_err(dev, "regulator disable failed, %d\n", ret);
++		DRM_DEV_ERROR(dev, "regulator disable failed, %d\n", ret);
+ 
+ 	gpiod_set_value(jdi->enable_gpio, 0);
+ 
+@@ -319,9 +319,9 @@ static int jdi_panel_get_modes(struct drm_panel *panel)
  
  	mode = drm_mode_duplicate(panel->drm, &default_mode);
  	if (!mode) {
--		dev_err(panel->drm->dev, "failed to add mode %ux%ux@%u\n",
+-		dev_err(dev, "failed to add mode %ux%ux@%u\n",
 -			default_mode.hdisplay, default_mode.vdisplay,
 -			default_mode.vrefresh);
-+		DRM_DEV_ERROR(panel->drm->dev, "failed to add mode %ux%ux@%u\n",
++		DRM_DEV_ERROR(dev, "failed to add mode %ux%ux@%u\n",
 +			      default_mode.hdisplay, default_mode.vdisplay,
 +			      default_mode.vrefresh);
  		return -ENOMEM;
  	}
  
-@@ -389,7 +389,7 @@ static int st7789v_probe(struct spi_device *spi)
- 
- 	ctx->reset = devm_gpiod_get(&spi->dev, "reset", GPIOD_OUT_LOW);
- 	if (IS_ERR(ctx->reset)) {
--		dev_err(&spi->dev, "Couldn't get our reset line\n");
-+		DRM_DEV_ERROR(&spi->dev, "Couldn't get our reset line\n");
- 		return PTR_ERR(ctx->reset);
+@@ -416,35 +416,35 @@ static int jdi_panel_add(struct jdi_panel *jdi)
+ 	ret = devm_regulator_bulk_get(dev, ARRAY_SIZE(jdi->supplies),
+ 				      jdi->supplies);
+ 	if (ret < 0) {
+-		dev_err(dev, "failed to init regulator, ret=%d\n", ret);
++		DRM_DEV_ERROR(dev, "failed to init regulator, ret=%d\n", ret);
+ 		return ret;
  	}
  
+ 	jdi->enable_gpio = devm_gpiod_get(dev, "enable", GPIOD_OUT_LOW);
+ 	if (IS_ERR(jdi->enable_gpio)) {
+ 		ret = PTR_ERR(jdi->enable_gpio);
+-		dev_err(dev, "cannot get enable-gpio %d\n", ret);
++		DRM_DEV_ERROR(dev, "cannot get enable-gpio %d\n", ret);
+ 		return ret;
+ 	}
+ 
+ 	jdi->reset_gpio = devm_gpiod_get(dev, "reset", GPIOD_OUT_HIGH);
+ 	if (IS_ERR(jdi->reset_gpio)) {
+ 		ret = PTR_ERR(jdi->reset_gpio);
+-		dev_err(dev, "cannot get reset-gpios %d\n", ret);
++		DRM_DEV_ERROR(dev, "cannot get reset-gpios %d\n", ret);
+ 		return ret;
+ 	}
+ 
+ 	jdi->dcdc_en_gpio = devm_gpiod_get(dev, "dcdc-en", GPIOD_OUT_LOW);
+ 	if (IS_ERR(jdi->dcdc_en_gpio)) {
+ 		ret = PTR_ERR(jdi->dcdc_en_gpio);
+-		dev_err(dev, "cannot get dcdc-en-gpio %d\n", ret);
++		DRM_DEV_ERROR(dev, "cannot get dcdc-en-gpio %d\n", ret);
+ 		return ret;
+ 	}
+ 
+ 	jdi->backlight = drm_panel_create_dsi_backlight(jdi->dsi);
+ 	if (IS_ERR(jdi->backlight)) {
+ 		ret = PTR_ERR(jdi->backlight);
+-		dev_err(dev, "failed to register backlight %d\n", ret);
++		DRM_DEV_ERROR(dev, "failed to register backlight %d\n", ret);
+ 		return ret;
+ 	}
+ 
+@@ -495,12 +495,12 @@ static int jdi_panel_remove(struct mipi_dsi_device *dsi)
+ 
+ 	ret = jdi_panel_disable(&jdi->base);
+ 	if (ret < 0)
+-		dev_err(&dsi->dev, "failed to disable panel: %d\n", ret);
++		DRM_DEV_ERROR(&dsi->dev, "failed to disable panel: %d\n", ret);
+ 
+ 	ret = mipi_dsi_detach(dsi);
+ 	if (ret < 0)
+-		dev_err(&dsi->dev, "failed to detach from DSI host: %d\n",
+-			ret);
++		DRM_DEV_ERROR(&dsi->dev, "failed to detach from DSI host: %d\n",
++			      ret);
+ 
+ 	drm_panel_detach(&jdi->base);
+ 	jdi_panel_del(jdi);
 -- 
 2.7.4
 
