@@ -1,115 +1,294 @@
-X-GM-THRID: 6812648549642141696
-X-Received: by 2002:a2e:a365:: with SMTP id i5mr174731ljn.246.1586193346118;
-        Mon, 06 Apr 2020 10:15:46 -0700 (PDT)
+X-GM-THRID: 6480148992322699264
+X-Received: by 10.129.122.143 with SMTP id v137mr9110158ywc.93.1508854321847;
+        Tue, 24 Oct 2017 07:12:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac2:5a0e:: with SMTP id q14ls2095417lfn.3.gmail; Mon, 06 Apr
- 2020 10:15:44 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKO5MZT3+9QA0Pw0Dt0UB/c0kv8jPkfdo8qeYSK8GWxxd/zAHED7HS1EQA6eydSUD0Tv1W7
-X-Received: by 2002:ac2:58ec:: with SMTP id v12mr3437807lfo.215.1586193344503;
-        Mon, 06 Apr 2020 10:15:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586193344; cv=none;
+Received: by 10.129.161.75 with SMTP id y72ls26850ywg.5.gmail; Tue, 24 Oct
+ 2017 07:12:01 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+SYiGfVFRsoNqQGXlM5rDVddQb3SnBhq6saiSEj714qrCYT2Gck96FeyWaXzlSni488OQaZ
+X-Received: by 10.129.154.9 with SMTP id r9mr9142661ywg.48.1508854321041;
+        Tue, 24 Oct 2017 07:12:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508854321; cv=none;
         d=google.com; s=arc-20160816;
-        b=oFHk9nzamnXfGlCbcBlAky9ikYHOm8GqHsSvgENSmTKR4OFtEpcQI8DqSmUeUP522F
-         YSFccR3HKGOzDs9LtgtyRqH6LaQsPGwKT1xTUVMZGJ6HbOfxeKSVFkk6HNOAD4bklhZI
-         +RbWbzAXXIZm7Fntopxo1zSLITLSVZhoWMorn+1Wi7rEputnr0oBmHtg9rgP72s506J3
-         a8zgvSSXZW8shWA5LVuWKh8ILkD7wF6dnRrctoHLKEzoyGipUYByS/39qsfR+SNRT8Cv
-         3hVi48t6hTVo4svnQz0KsL+ruttyU4df8X2iF74jwh+pVH7hadDfmC5yfZOjXElZ/R0X
-         Kxuw==
+        b=FFrMTyXjwHWRYsknWH2PdrIpwRAwQj3I1zC5Tzv2FPs8kRhH+QY0LebhMWpSwxtMXg
+         pB1KjrYZJ38c2tN/IL0IJdStNDLfTiHvp2M5R2kpFG3tkEBDVolqRbyxN72MBUXSTg0E
+         B0zYFPx8jzbP7S9FvHx3TCC1g+hJBTRMOV20tlbQL18suqHlFTvp+lOfFzx+3DuKnIml
+         Yw32O1kV8zdpji8F/zDeijFiQ4T8IfD8D87mFaN0bACCmma21hq2A3IR2o7Hw/BEO+LE
+         r7Tp7tjdB6eS8T9d+nBnH2GpttIh9hnASYWwUORxacWXzJufJyeSnVbl2SWB8TgAHYF6
+         uiAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=ZFrz63gZ8FLTcuRyUYp8JL3TWxcUUk2ur63GKiylecg=;
-        b=yAlDli+qqDeJfDCJl8737jl8+0qXpD7d+55dG1TP6AHYysZ4BNFA+rpWma0kGiDq8g
-         1qPwXOjP5rljrqScWyHq77zjNns5sFNITYdwUyMttracN97ltF432vOn/7syrph46qed
-         +1OCwqfKQWfPxkbCMRhuQlap9hoAR/GfuSxvZxNrV9I3zGq6MPh37VnGYYwVzVTewIdL
-         hnr5ESbqLyo3fX7Bs1zuipwAajkqMYx3l46eAZ/9+RzFC9y9yekzcjYzIA2pwaUDdseE
-         BhuwyPzelviS0Qmu3iM+ZxAT1SJ5/2d9q9v/19XyoIs4yWAaigdcTmOFqsmsl/JoahdI
-         vBDA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=jyTxXd1FfM29SaDycTqGaG1QQdxyYQFSOog5o3BbckE=;
+        b=tWgErziWEFhJWYhS+Kees5GBLdZljYEloWKjHRUVIGmsv8B+KDIGZ6Ie4G10w5qlnO
+         hrhfMXmUPZq5fUwggGcjBym4sooFoaUaZWQD7OWJLhFZhFnVk/vIMmXEZrQDq5lta/mY
+         uE6kHgvYV9k6OyBtjpMKDndjTNHXDEKGNtM70CZ2IGM54wzxLvoYVwwggKte+AcJtUFQ
+         6HCXLvg872ZCTTqJPAn7zeRop8t9XSN47+uzsx8htC/MZtJq9ePbCvhlMWouKAd8qFjp
+         tQKcXCgVVSCyL4nO3x8Vrb8ScyUmn9lJ3DLBYRnO4te2upeyLbBoARv8GahsGPrce5KE
+         TRZA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fWssLsap;
-       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jane.pnx9@gmail.com>
-Received: from mail-wr1-x442.google.com (mail-wr1-x442.google.com. [2a00:1450:4864:20::442])
-        by gmr-mx.google.com with ESMTPS id f17si18596lfp.0.2020.04.06.10.15.44
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VR5NnMJK;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::22b as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from mail-pg0-x22b.google.com (mail-pg0-x22b.google.com. [2607:f8b0:400e:c05::22b])
+        by gmr-mx.google.com with ESMTPS id g13si25344ybk.3.2017.10.24.07.12.01
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 06 Apr 2020 10:15:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) client-ip=2a00:1450:4864:20::442;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 24 Oct 2017 07:12:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::22b as permitted sender) client-ip=2607:f8b0:400e:c05::22b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fWssLsap;
-       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x442.google.com with SMTP id s8so361186wrt.7
-        for <outreachy-kernel@googlegroups.com>; Mon, 06 Apr 2020 10:15:44 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VR5NnMJK;
+       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::22b as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x22b.google.com with SMTP id a192so14615849pge.9
+        for <outreachy-kernel@googlegroups.com>; Tue, 24 Oct 2017 07:12:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=ZFrz63gZ8FLTcuRyUYp8JL3TWxcUUk2ur63GKiylecg=;
-        b=fWssLsapGMbOg1C33/FKiFm8x1t2nqW+/KltippY3rLfN6fG53St1b42QTm3Uvwycy
-         w94eV8ZIrxor6VdWeMFDIHde7lbOoAttrFEJGWT6LxNgmOkYgu6ZL92v7dQl8aeDMfEf
-         w48barWplRYggxjj+JOZEs7uSmVKtNqcHSQe2k1zQWU2OUcCuMXztC6bEjxmOXBc30FA
-         Soxsot5U42bnfyFcYnzteORXCVgX4IBUZbSWtoz+Q2Wj3kne9N1NMGQKf5GrrCE5bImM
-         uPKG+khrdCbv8lLRYgRp7rRfmimCa2nWqkAdIhUK1E/oxW7iOloybVgQE0uy9uBDh4OZ
-         VELg==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=jyTxXd1FfM29SaDycTqGaG1QQdxyYQFSOog5o3BbckE=;
+        b=VR5NnMJKsaX2Xif9GfwxCBiyHY87sFeLYAagAXll7valYd5i30boxsmmA12Sg+y4kN
+         +ymehEYhT//KjFP58Hn47FqSTvQfmbr24/HopAGaB0fOE4/8fyzLnT0c7pJeLL1oZW0u
+         5Pd4csEeSSWVBK85JVi4zAnSazemVpf3qns3+D2dX4TtETdna3LllvQHjCwEU1hSmIlq
+         I5O45qH4WmE67IBMudWhZn/umkCuQxjT8SQVqnksub2fM8fS2+ChZ2nVBRZRM2n4l3n7
+         0iT36b2jIINcqWA+hrbr1eRWThcoK1KK4Dm3eh8imdIgWXAuNJBCGe6qEFzgdxurOkwG
+         fJUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=ZFrz63gZ8FLTcuRyUYp8JL3TWxcUUk2ur63GKiylecg=;
-        b=GPm4+zaPSFFjAUBVlWx5LryTIT8rEMgJ6SxJR1BVHZaZENF8fdmWyjUPQAqbwygWMx
-         VbmH45az6loAKEPNdk32OAT5RHt+vULIcPVQ9h4WDCx6NblmmGMPx4tuLZKIEL7u5ghZ
-         S6fsTi4f9z1U1DpqMhq+G3EKURhi3kBRATmq/jR2EYir4tGbvj8ALbQTaiAL/pbTA5Fq
-         xBraskIn3j9ujs/gsVVPI2ZMgB8MWWZMoeV0Tfix0YGiOB5estdwtUswD+3huHtPECd9
-         2iY9cQte2NMJ53uT0GieZwj/ip5rkYrytH3wsc8IBw+foIn1R21EII5sUtHesJJzOyGV
-         mVXA==
-X-Gm-Message-State: AGi0PuaWr2MoOD3ocBGRnxIznxVLHXE3kbNpr0rlhIPtYVQycemw8XVD
-	RrsKLhNRiESdJyF1NhTyZbM=
-X-Received: by 2002:adf:e691:: with SMTP id r17mr183071wrm.421.1586193344280;
-        Mon, 06 Apr 2020 10:15:44 -0700 (PDT)
-Return-Path: <jane.pnx9@gmail.com>
-Received: from localhost.localdomain ([197.34.214.63])
-        by smtp.gmail.com with ESMTPSA id p10sm26921845wrm.6.2020.04.06.10.15.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Apr 2020 10:15:43 -0700 (PDT)
-From: Sam Muhammed <jane.pnx9@gmail.com>
-To: Hans Verkuil <hverkuil@xs4all.nl>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Cc: Sam Muhammed <jane.pnx9@gmail.com>
-Subject: [PATCH 0/3] staging: media: Misc driver Cleanup
-Date: Mon,  6 Apr 2020 13:15:32 -0400
-Message-Id: <20200406171535.7275-1-jane.pnx9@gmail.com>
-X-Mailer: git-send-email 2.20.1
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=jyTxXd1FfM29SaDycTqGaG1QQdxyYQFSOog5o3BbckE=;
+        b=fd06ZOi45WmQH4/X45G3lhl2H46TZdJENRBMIMJ3IrS9zXHHOH5nF8Qpzq4dBL+jo7
+         Vn6RWP4p9YuA/1HlFVIUdvFm9EqQvmsdlndNxEiF08ABn3h6E8/gjkCL8Dh56hJLIIgJ
+         3VIdpzL9an/u1ga99GvTbMqw/Fbon0lnCg8F/6wI53DttruFQS8V1KQ7zEy1wJANTZpI
+         jj1P3dY20rQvLY5F9+FgkLPlj8mxSUg4kpyWrM+AnEa3c0KGEFsrGQvSFGMrpjoArvAR
+         zCi/iDgk/du1m14Dt9ti0JpobU+/lvQjoaxLrIwZJylQ3huUscjp/AqmrG6vfegJWHhY
+         ch0Q==
+X-Gm-Message-State: AMCzsaUugyfzg0Vpye67awc/2jPoxQm5YDCNASOFqPm+itMLNT+tjF/9
+	Y+DGRle8/DauKsSo9pIr4CURjX4t
+X-Received: by 10.99.157.133 with SMTP id i127mr15236729pgd.204.1508854320567;
+        Tue, 24 Oct 2017 07:12:00 -0700 (PDT)
+Return-Path: <aastha.gupta4104@gmail.com>
+Received: from aastha-HP-Pavilion-15-Notebook-PC ([103.196.221.228])
+        by smtp.gmail.com with ESMTPSA id p12sm800268pgd.0.2017.10.24.07.11.59
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 24 Oct 2017 07:12:00 -0700 (PDT)
+From: Aastha Gupta <aastha.gupta4104@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	David Airlie <airlied@linux.ie>,
+	dri-devel@lists.freedesktop.org,
+	seanpaul@chromium.org
+Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
+Subject: [PATCH v2 12/12] drm: panel: replace dev_* with DRM_DEV_* equivalent in panel-sharp-lq101r1sx01
+Date: Tue, 24 Oct 2017 19:41:03 +0530
+Message-Id: <1508854263-18881-13-git-send-email-aastha.gupta4104@gmail.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1508854263-18881-1-git-send-email-aastha.gupta4104@gmail.com>
+References: <1508854263-18881-1-git-send-email-aastha.gupta4104@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
-Modifications:
-	- Clean kernel messages with dev_err()
-	- Remove Comparison with NULL
-	- Use dev_*() family for printing kernel
-	  messages
+For drivers which could have multiple instances, it is necessary to
+differentiate between which is which in the logs. Since
+DRM_INFO/WARN/ERROR don’t do this, drivers used dev_info/warn/err to
+make this differentiation. We now have DRM_DEV_* variants of the drm
+print macros, so we can start to convert those drivers back to using
+drm-formatted specific log messages.
 
-Basically changes are made to silence some
-Checkpatch.pl WARNINGs, and modify the code
-to be more readable.
+This patch is using following Coccinelle script:
+@@
+@@
 
-Sam Muhammed (3):
-  staging: media: Clean dev_err() message
-  staging: media: Avoid comparison to NULL
-  staging: media: Use dev_*() family
+(
+- dev_info
++ DRM_DEV_INFO
+|
+- dev_err
++ DRM_DEV_ERROR
+|
+- dev_dbg
++ DRM_DEV_DEBUG
+)
 
- drivers/staging/media/imx/imx-media-utils.c   |  2 +-
- drivers/staging/media/meson/vdec/esparser.c   |  2 +-
- drivers/staging/media/soc_camera/soc_ov5642.c |  9 +--
- .../staging/media/usbvision/usbvision-core.c  | 71 ++++++++++---------
- .../staging/media/usbvision/usbvision-i2c.c   |  7 +-
- .../staging/media/usbvision/usbvision-video.c | 41 ++++++-----
- 6 files changed, 66 insertions(+), 66 deletions(-)
-
+Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
 ---
-2.20.1
+ drivers/gpu/drm/panel/panel-sharp-lq101r1sx01.c | 60 +++++++++++++++----------
+ 1 file changed, 37 insertions(+), 23 deletions(-)
+
+diff --git a/drivers/gpu/drm/panel/panel-sharp-lq101r1sx01.c b/drivers/gpu/drm/panel/panel-sharp-lq101r1sx01.c
+index 3cce3ca..42a9d4d 100644
+--- a/drivers/gpu/drm/panel/panel-sharp-lq101r1sx01.c
++++ b/drivers/gpu/drm/panel/panel-sharp-lq101r1sx01.c
+@@ -57,14 +57,14 @@ static int sharp_panel_write(struct sharp_panel *sharp, u16 offset, u8 value)
+ 
+ 	err = mipi_dsi_generic_write(dsi, payload, sizeof(payload));
+ 	if (err < 0) {
+-		dev_err(&dsi->dev, "failed to write %02x to %04x: %zd\n",
+-			value, offset, err);
++		DRM_DEV_ERROR(&dsi->dev, "failed to write %02x to %04x: %zd\n",
++			      value, offset, err);
+ 		return err;
+ 	}
+ 
+ 	err = mipi_dsi_dcs_nop(dsi);
+ 	if (err < 0) {
+-		dev_err(&dsi->dev, "failed to send DCS nop: %zd\n", err);
++		DRM_DEV_ERROR(&dsi->dev, "failed to send DCS nop: %zd\n", err);
+ 		return err;
+ 	}
+ 
+@@ -83,8 +83,9 @@ static __maybe_unused int sharp_panel_read(struct sharp_panel *sharp,
+ 	err = mipi_dsi_generic_read(sharp->link1, &offset, sizeof(offset),
+ 				    value, sizeof(*value));
+ 	if (err < 0)
+-		dev_err(&sharp->link1->dev, "failed to read from %04x: %zd\n",
+-			offset, err);
++		DRM_DEV_ERROR(&sharp->link1->dev,
++			      "failed to read from %04x: %zd\n",
++			      offset, err);
+ 
+ 	return err;
+ }
+@@ -118,11 +119,13 @@ static int sharp_panel_unprepare(struct drm_panel *panel)
+ 
+ 	err = mipi_dsi_dcs_set_display_off(sharp->link1);
+ 	if (err < 0)
+-		dev_err(panel->dev, "failed to set display off: %d\n", err);
++		DRM_DEV_ERROR(panel->dev,
++			      "failed to set display off: %d\n", err);
+ 
+ 	err = mipi_dsi_dcs_enter_sleep_mode(sharp->link1);
+ 	if (err < 0)
+-		dev_err(panel->dev, "failed to enter sleep mode: %d\n", err);
++		DRM_DEV_ERROR(panel->dev,
++			      "failed to enter sleep mode: %d\n", err);
+ 
+ 	msleep(120);
+ 
+@@ -141,26 +144,30 @@ static int sharp_setup_symmetrical_split(struct mipi_dsi_device *left,
+ 
+ 	err = mipi_dsi_dcs_set_column_address(left, 0, mode->hdisplay / 2 - 1);
+ 	if (err < 0) {
+-		dev_err(&left->dev, "failed to set column address: %d\n", err);
++		DRM_DEV_ERROR(&left->dev,
++			      "failed to set column address: %d\n", err);
+ 		return err;
+ 	}
+ 
+ 	err = mipi_dsi_dcs_set_page_address(left, 0, mode->vdisplay - 1);
+ 	if (err < 0) {
+-		dev_err(&left->dev, "failed to set page address: %d\n", err);
++		DRM_DEV_ERROR(&left->dev,
++			      "failed to set page address: %d\n", err);
+ 		return err;
+ 	}
+ 
+ 	err = mipi_dsi_dcs_set_column_address(right, mode->hdisplay / 2,
+ 					      mode->hdisplay - 1);
+ 	if (err < 0) {
+-		dev_err(&right->dev, "failed to set column address: %d\n", err);
++		DRM_DEV_ERROR(&right->dev,
++			      "failed to set column address: %d\n", err);
+ 		return err;
+ 	}
+ 
+ 	err = mipi_dsi_dcs_set_page_address(right, 0, mode->vdisplay - 1);
+ 	if (err < 0) {
+-		dev_err(&right->dev, "failed to set page address: %d\n", err);
++		DRM_DEV_ERROR(&right->dev,
++			      "failed to set page address: %d\n", err);
+ 		return err;
+ 	}
+ 
+@@ -190,7 +197,8 @@ static int sharp_panel_prepare(struct drm_panel *panel)
+ 
+ 	err = mipi_dsi_dcs_exit_sleep_mode(sharp->link1);
+ 	if (err < 0) {
+-		dev_err(panel->dev, "failed to exit sleep mode: %d\n", err);
++		DRM_DEV_ERROR(panel->dev,
++			      "failed to exit sleep mode: %d\n", err);
+ 		goto poweroff;
+ 	}
+ 
+@@ -206,20 +214,23 @@ static int sharp_panel_prepare(struct drm_panel *panel)
+ 	/* set left-right mode */
+ 	err = sharp_panel_write(sharp, 0x1000, 0x2a);
+ 	if (err < 0) {
+-		dev_err(panel->dev, "failed to set left-right mode: %d\n", err);
++		DRM_DEV_ERROR(panel->dev,
++			      "failed to set left-right mode: %d\n", err);
+ 		goto poweroff;
+ 	}
+ 
+ 	/* enable command mode */
+ 	err = sharp_panel_write(sharp, 0x1001, 0x01);
+ 	if (err < 0) {
+-		dev_err(panel->dev, "failed to enable command mode: %d\n", err);
++		DRM_DEV_ERROR(panel->dev,
++			      "failed to enable command mode: %d\n", err);
+ 		goto poweroff;
+ 	}
+ 
+ 	err = mipi_dsi_dcs_set_pixel_format(sharp->link1, format);
+ 	if (err < 0) {
+-		dev_err(panel->dev, "failed to set pixel format: %d\n", err);
++		DRM_DEV_ERROR(panel->dev,
++			      "failed to set pixel format: %d\n", err);
+ 		goto poweroff;
+ 	}
+ 
+@@ -233,14 +244,16 @@ static int sharp_panel_prepare(struct drm_panel *panel)
+ 	err = sharp_setup_symmetrical_split(sharp->link1, sharp->link2,
+ 					    sharp->mode);
+ 	if (err < 0) {
+-		dev_err(panel->dev, "failed to set up symmetrical split: %d\n",
+-			err);
++		DRM_DEV_ERROR(panel->dev,
++			      "failed to set up symmetrical split: %d\n",
++			      err);
+ 		goto poweroff;
+ 	}
+ 
+ 	err = mipi_dsi_dcs_set_display_on(sharp->link1);
+ 	if (err < 0) {
+-		dev_err(panel->dev, "failed to set display on: %d\n", err);
++		DRM_DEV_ERROR(panel->dev,
++			      "failed to set display on: %d\n", err);
+ 		goto poweroff;
+ 	}
+ 
+@@ -292,9 +305,9 @@ static int sharp_panel_get_modes(struct drm_panel *panel)
+ 
+ 	mode = drm_mode_duplicate(panel->drm, &default_mode);
+ 	if (!mode) {
+-		dev_err(panel->drm->dev, "failed to add mode %ux%ux@%u\n",
+-			default_mode.hdisplay, default_mode.vdisplay,
+-			default_mode.vrefresh);
++		DRM_DEV_ERROR(panel->drm->dev, "failed to add mode %ux%ux@%u\n",
++			      default_mode.hdisplay, default_mode.vdisplay,
++			      default_mode.vrefresh);
+ 		return -ENOMEM;
+ 	}
+ 
+@@ -436,11 +449,12 @@ static int sharp_panel_remove(struct mipi_dsi_device *dsi)
+ 
+ 	err = sharp_panel_disable(&sharp->base);
+ 	if (err < 0)
+-		dev_err(&dsi->dev, "failed to disable panel: %d\n", err);
++		DRM_DEV_ERROR(&dsi->dev, "failed to disable panel: %d\n", err);
+ 
+ 	err = mipi_dsi_detach(dsi);
+ 	if (err < 0)
+-		dev_err(&dsi->dev, "failed to detach from DSI host: %d\n", err);
++		DRM_DEV_ERROR(&dsi->dev,
++			      "failed to detach from DSI host: %d\n", err);
+ 
+ 	drm_panel_detach(&sharp->base);
+ 	sharp_panel_del(sharp);
+-- 
+2.7.4
 
 
