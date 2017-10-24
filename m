@@ -1,68 +1,98 @@
 X-GM-THRID: 6475592721521180672
-X-Received: by 10.80.182.75 with SMTP id c11mr4535269ede.4.1508863540387;
-        Tue, 24 Oct 2017 09:45:40 -0700 (PDT)
+X-Received: by 10.25.83.9 with SMTP id h9mr392380lfb.1.1508860623845;
+        Tue, 24 Oct 2017 08:57:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.80.219.194 with SMTP id s2ls513497edk.5.gmail; Tue, 24 Oct
- 2017 09:45:39 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+QFLHUiUIYbQ7qCZxcww6yLA7RWWAYKOCpJoQQtARD+9ofpiV4yJoLKDrZeMbV0fD3fnkrA
-X-Received: by 10.80.240.130 with SMTP id v2mr2419425edl.10.1508863539542;
-        Tue, 24 Oct 2017 09:45:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508863539; cv=none;
+Received: by 10.46.82.14 with SMTP id g14ls99979ljb.0.gmail; Tue, 24 Oct 2017
+ 08:57:02 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+TFDGaTSkZ1IudQmENaE4EiMhgAn4cs4BsjyO0ZXszLS2EQY0gb0htr+dAu+v1Ppc0O11Bm
+X-Received: by 10.46.43.193 with SMTP id r62mr574849ljr.30.1508860622820;
+        Tue, 24 Oct 2017 08:57:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1508860622; cv=none;
         d=google.com; s=arc-20160816;
-        b=NPlA5Sd7QlSSp1SZ6W/WhoalLAer16imI+/gWcnyVVSsPsQMpbRZr8JUTOAsex4wSH
-         33YvGBpMogQaNbW9HTqJcyljKHQr4gQwBY6zyCon4Z+5itI9xNIV7i5O5KIe9gv1IztB
-         crBPpLq8horbF9R4Ndr7km2bdsm3ZDshFP2ZmCaInHyOWBRzboRLZ1xdE+zKfqIupXO2
-         i4TzlxQDcNnlVJvyuAou63/IC/BhiRYG2cY+2hIzplC/NR7YyMUc1gy4GnWRjFssvxsv
-         C+fmfD2phh3L26ZRqCWcphcmSy3+h2dep0yr8GqjkoESG3UUZBg8EhXE2i4FIxuO2dEU
-         Ehuw==
+        b=JCJA9W9p22nwYgSggphFJjKb9gd0ph/Thb+74lyn8JhO+joeKnV2LAsr6lFin7jpsS
+         kZCFrGOpQ6bbHKTjIr9/lUVUE4DSKfbwOdVvca0hWEK+i/8ZU+zI2+H9IKYKVWeDsL3I
+         aQFOGMJoMV+YGoEQHC6IuUSkObquehhi7FhwE9GQ7uoPnEjCEuZS1dXUMoTpcDcA1LBf
+         aEIwDYqNExjK5jkUrOYM3/cQicqDyAlD/rjqoChESBSQ2fp4RGQuaIFmI+OmcsQ8NqE4
+         oiNY+jcvR8SaqgtjoOW9SkYWO//l9vc9asU18TDp7L3RwyghnwvbRwXuQl7xNsw6DJjy
+         uNlQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject:arc-authentication-results;
-        bh=Wu0Js+5VK27lboD0VzjYqwwy5eEM2/XQwaXf0JQkoZc=;
-        b=pUB0fqqfE8f0gE5F1W8jgVpGY3n0X02sUCdTv3clJ8AxAykbLEqOPEMp/b+031hojq
-         31LuVyhUx7Qa2GKPhHmZwKd5/W5fS3PoVkKQxyIQiPfOYeLNvMwMXqxi1Wx/S7v1tOma
-         UKOQYChwU6M9iqIotQIeVwZgOf4XKuymV1XtOtPyKB0U7YDdSV9qyglFWV5j0c2sRsI8
-         cADXeHM18zM1myYaOwTWUK1Eka7DuY9gSpkSMyLm7An+pRHIaQXH+CrHl86R/JhBrMcz
-         gCEikllwyNTJbfOKaLgaZpZ3q7Icl+JD9LuBhI1DgNX8kiKhX+TtZX+gDV67F4VpJFey
-         A4kA==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature:arc-authentication-results;
+        bh=S2Fty8qDWen97kDgVXNEyDX6iaXdGkD+qxZaNjhfA48=;
+        b=BBYGzoX42n1YBms4gzMcgkyKj4qBVvci4i9dt2LQTOilTnrjX0J0f1En+uGcHHCWT2
+         LJ3ntQRXSjCgyTP3AytD5YA9b3+7+T8Tewuy4L/2C04STZ8r6mkwO5XesnLf9N3/1mut
+         Mcn6JxSbbN9KmmmvGFLA7hD7sc0gsKv9aJbFW156f1F3bKgGS1yPuOQNOdzImPvHH1k7
+         F/WgBBzIgtJxWvQUaGUXJrakvOx3f/eBjlNRwPxFPjEJ2FDeXVJ8sMr9SV8l79dLMfrX
+         OGaAs7SLMBoirZIY/PYY7Xh7TSx+Y7qLFLIklhPp5rkorzExXBt9ih7stgplomYJ1HjS
+         ENhA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of noralf@tronnes.org designates 2a01:5b40:0:3005::1 as permitted sender) smtp.mailfrom=noralf@tronnes.org
-Return-Path: <noralf@tronnes.org>
-Received: from smtp.domeneshop.no (smtp.domeneshop.no. [2a01:5b40:0:3005::1])
-        by gmr-mx.google.com with ESMTPS id a57si30224edd.3.2017.10.24.09.45.39
+       dkim=pass header.i=@linaro.org header.s=google header.b=DDkoQ1JK;
+       spf=pass (google.com: domain of daniel.thompson@linaro.org designates 2a00:1450:400c:c09::22b as permitted sender) smtp.mailfrom=daniel.thompson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <daniel.thompson@linaro.org>
+Received: from mail-wm0-x22b.google.com (mail-wm0-x22b.google.com. [2a00:1450:400c:c09::22b])
+        by gmr-mx.google.com with ESMTPS id j65si24692lje.3.2017.10.24.08.57.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 24 Oct 2017 09:45:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of noralf@tronnes.org designates 2a01:5b40:0:3005::1 as permitted sender) client-ip=2a01:5b40:0:3005::1;
+        Tue, 24 Oct 2017 08:57:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of daniel.thompson@linaro.org designates 2a00:1450:400c:c09::22b as permitted sender) client-ip=2a00:1450:400c:c09::22b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of noralf@tronnes.org designates 2a01:5b40:0:3005::1 as permitted sender) smtp.mailfrom=noralf@tronnes.org
-Received: from 211.81-166-168.customer.lyse.net ([81.166.168.211]:64964 helo=[192.168.10.157])
-	by smtp.domeneshop.no with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	(Exim 4.84_2)
-	(envelope-from <noralf@tronnes.org>)
-	id 1e72Kg-0000Ij-5p; Tue, 24 Oct 2017 18:45:38 +0200
+       dkim=pass header.i=@linaro.org header.s=google header.b=DDkoQ1JK;
+       spf=pass (google.com: domain of daniel.thompson@linaro.org designates 2a00:1450:400c:c09::22b as permitted sender) smtp.mailfrom=daniel.thompson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by mail-wm0-x22b.google.com with SMTP id r196so4391829wmf.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 24 Oct 2017 08:57:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=S2Fty8qDWen97kDgVXNEyDX6iaXdGkD+qxZaNjhfA48=;
+        b=DDkoQ1JKN3ofUP9LYFU99iTo+sb86UlRvWokOwPT4UwTKqybo9nU7UVCOACQxtC4/2
+         iCiGh7iLtW3lDbU5l6goZxuEv1sWLDNjvov675+t9Lo1TbjCS+I06VAeqPZpQ7RAl9S8
+         I9SlI13tEVeB8Pn34+7xbWqHS+qRPFOGfQtUU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=S2Fty8qDWen97kDgVXNEyDX6iaXdGkD+qxZaNjhfA48=;
+        b=CnpoCIEQNwJpj5WpmVo3Tcxrz9ECYaPkJ0EUNQWtmBvCNMSZihDNFvCm1u8/n+hrMW
+         H44/UTWqYUFCFIubj3We9mhBmC1eAyEuOekrKqRSxWnVyr+QqV2g2pBKO6+FzeL6Hkay
+         QWsE9LbOTmS7EJCQp2NIlsCj/et0vcR1cKDvi7xezxrvmpFKmr7+npA05cCZa4lzhUo4
+         9TNXTZq3RyI+ceieMGAXTLnei5D19toCmf3Ck4A0t0zVdKYxweRDMmugc15AKQC7iBMf
+         pY2OsFS0sBj9RTI9dLa8XPXjYIZ0XhjlvN7/7PhiczCRodyOmEqmTSClgW7jb/e4EHRp
+         RAVw==
+X-Gm-Message-State: AMCzsaU2CKo4Y7J2wqHXJKV9aEuwY1/H0qBr0r4z5VYeNI06MbKpdspc
+	yme+t4/6YUB3u53HoemO2BLn4fVv6Yg=
+X-Received: by 10.28.54.22 with SMTP id d22mr7854764wma.120.1508860622268;
+        Tue, 24 Oct 2017 08:57:02 -0700 (PDT)
+Return-Path: <daniel.thompson@linaro.org>
+Received: from [192.168.1.191] (cpc87211-aztw31-2-0-cust196.18-1.cable.virginm.net. [82.46.60.197])
+        by smtp.googlemail.com with ESMTPSA id o7sm720355wrf.31.2017.10.24.08.57.00
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 24 Oct 2017 08:57:01 -0700 (PDT)
 Subject: Re: [Outreachy kernel] [PATCH v14 2/3] drm/tinydrm: Move
  tinydrm_of_find_backlight to backlight.c
 To: Sean Paul <seanpaul@chromium.org>,
  Meghana Madhyastha <meghana.madhyastha@gmail.com>
-Cc: daniel@ffwll.ch, outreachy-kernel@googlegroups.com,
- dri-devel@lists.freedesktop.org, daniel.thompson@linaro.org,
- jani.nikula@linux.intel.com
+Cc: daniel@ffwll.ch, noralf@tronnes.org, outreachy-kernel@googlegroups.com,
+ dri-devel@lists.freedesktop.org, jani.nikula@linux.intel.com
 References: <cover.1508586429.git.meghana.madhyastha@gmail.com>
  <678c3adb07b729acf6e80119ab9adec01d89842f.1508586429.git.meghana.madhyastha@gmail.com>
- <20171024154202.5h63j3j3rvbadolo@art_vandelay>
-From: =?UTF-8?Q?Noralf_Tr=c3=b8nnes?= <noralf@tronnes.org>
-Message-ID: <73f488c6-b2ef-e5a4-5ff6-17ef9758c8f0@tronnes.org>
-Date: Tue, 24 Oct 2017 18:45:34 +0200
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.4.0
+ <20171024153831.jdbyct5ikxengnuz@art_vandelay>
+From: Daniel Thompson <daniel.thompson@linaro.org>
+Message-ID: <80c7411c-75c9-725b-0065-d54348701891@linaro.org>
+Date: Tue, 24 Oct 2017 16:56:59 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <20171024154202.5h63j3j3rvbadolo@art_vandelay>
+In-Reply-To: <20171024153831.jdbyct5ikxengnuz@art_vandelay>
 Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 
-
-Den 24.10.2017 17.42, skrev Sean Paul:
+On 24/10/17 16:38, Sean Paul wrote:
 > On Sat, Oct 21, 2017 at 05:27:33PM +0530, Meghana Madhyastha wrote:
 >> Rename tinydrm_of_find_backlight to of_find_backlight and move
 >> it to linux/backlight.c so that it can be used by other drivers.
@@ -148,18 +178,6 @@ Den 24.10.2017 17.42, skrev Sean Paul:
 >>   
 >> -	mipi->backlight = tinydrm_of_find_backlight(dev);
 >> +	mipi->backlight = of_find_backlight(dev);
-> Sorry for the follow-up spam, but are you missing the put_device somewhere? The
-> next patch uses devm_of_find_backlight. So AFAICT you're either leaking a reference
-> here, or you're closing an additional reference in the next patch.
-
-This is my fault, put_device() has been missing all along, so Meghana is 
-plugging that hole,
-in the next patch :-)
-
-Noralf.
-
-> Sean
->
 >>   	if (IS_ERR(mipi->backlight))
 >>   		return PTR_ERR(mipi->backlight);
 >>   
@@ -241,6 +259,23 @@ Noralf.
 >> +	if (bd)
 >> +		put_device(&bd->dev);
 >> +}
+> 
+> 
+> As I mentioned in my last review, I don't think we need this function.
+
+Just to check... some DRM drivers do allow themselves to work if 
+CONFIG_BACKLIGHT_CLASS_DEVICE isn't enabled (as discussed earlier in the 
+thread ;-). Did you consider what happens when this happens.
+
+Wrapped up with backlight_put() we are sure never to accidentally 
+dereference bd in DRM de-init paths when CONFIG_BACKLIGHT_CLASS_DEVICVE 
+if it is not set. With a raw put_device() all that conditional logic 
+ends up on the driver.
+
+
+Daniel.
+
+
 >> +
 >>   extern struct backlight_device *backlight_device_register(const char *name,
 >>   	struct device *dev, void *devdata, const struct backlight_ops *ops,
@@ -268,5 +303,6 @@ Noralf.
 >> To post to this group, send email to outreachy-kernel@googlegroups.com.
 >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/678c3adb07b729acf6e80119ab9adec01d89842f.1508586429.git.meghana.madhyastha%40gmail.com.
 >> For more options, visit https://groups.google.com/d/optout.
+> 
 
 
