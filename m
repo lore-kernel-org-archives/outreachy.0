@@ -1,84 +1,85 @@
 X-GM-THRID: 6473410411176656896
-X-Received: by 10.98.201.2 with SMTP id k2mr4152264pfg.18.1509326125292;
-        Sun, 29 Oct 2017 18:15:25 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.99.143.2 with SMTP id n2ls3779420pgd.15.gmail; Sun, 29 Oct
- 2017 18:15:24 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+ShdmZQaRoSgrFW+ZJ8N1/L4ccrG0AN6eZICboM6zjOiDlKz4vp6tI2dwdN8OfbFHLtKNKs
-X-Received: by 10.101.83.141 with SMTP id x13mr4288160pgq.37.1509326124217;
+X-Received: by 10.129.112.82 with SMTP id l79mr18570151ywc.91.1509326124032;
         Sun, 29 Oct 2017 18:15:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1509326124; cv=none;
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.129.145.19 with SMTP id i19ls848827ywg.35.gmail; Sun, 29 Oct
+ 2017 18:15:23 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+T92cD5fEqki1ant8g0mUs5wRMKD3QGiuY063LlXozSDwdojt5xbBC1LV6743vESLlQuiFt
+X-Received: by 10.129.112.208 with SMTP id l199mr19619787ywc.8.1509326123451;
+        Sun, 29 Oct 2017 18:15:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1509326123; cv=none;
         d=google.com; s=arc-20160816;
-        b=K7zPKSoqximrPjhvuZLwyj2DB8Vq/zK2H+dHyLrsYonsXsWGbHLqWGXlcrbBm89ERh
-         JX7ACxJzn0087fNG8j+415fck2J9w6As5N8rLp4+2lmq0J0rPbmEGi6tIJfYWk3L/ra/
-         QGBTMebtXJFo47/M45yn3YW6G/z8oR5RDWETXyr0mC8sqr+7Ns05AYqIIQpoMCNP15tI
-         Qkr4MtkpUQQfhx1wO8U8DYqMTcBqVdrs48W1hq2IklHQ4St94Yi9/U3Cdou82mf0fCl9
-         kCh5oYJemgxrovgAW0sIog8iS+t+hQyXEHbQDFLA1/MXD/D9anFpFavY8taoyEdNT7hk
-         UWyA==
+        b=K0gn23NpLaNtZKWqSfKVcqu4C7ja0l14DG4V69+pBFvuYiL+Pl6bKHFo7dWNA+8BE2
+         SOYAbcrob3lGObQSS020nAXCgMtgo6BlsMxr7+cWuv0MednsZuFWm+suiWJk53nqsWSr
+         BSNHPvUMSqdqTaALuV0lNs7EqMS+Ol7+vJpYGyQPb9dcs1wzH8biv3AtBZ0aaq0AEkR1
+         wwHRHt9Zxo1CtouEFc4dyrpUPAcj0kvkWS4yYNm/B+vvRPw8br0av2XMbCAlEvtHxU17
+         i+NYvYyHUUwHy9vIFkbjYO06iEoJwiu7eJglXpuWiWeEklhp0jis7Cu0p/o7Z99uFgDG
+         u1aw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:content-transfer-encoding:content-id:content-language
          :accept-language:in-reply-to:references:message-id:date:thread-index
          :thread-topic:subject:cc:to:from:arc-authentication-results;
-        bh=qD9J8dcyqswkteaEhbWu+/7ymLECqGVblZzVBazthUU=;
-        b=qZAT5Jrf/32KcTZ8UpyQKlRw8SDzEoQmHWNqWOgnUhJLEwTVRbnPPsoCqzV1q2y0ph
-         WO/a9aGLowqurghW60v2Vi45rnU4yrLYHwfQWwX2f1liPt80HceUs6dcIY0JxUuIKnB3
-         Z83J6xv89/h9Z9yYqUfj3XCznJ4KpdHe6UXHrBkrXT9OgG+FoiFjKYA9IuxukxTFviFs
-         nuXfv2fY2dfeS87t7SwOvnRDvJjTMIBFGydxd3sf8tZHtIxfETvgkGLrOTmmI/U2r+KI
-         T3a6YvK8nvZJr0zADvce27ftZCUppdpD5CeBJixi6JvTO6s8mrc2ad5OtU16Ie4q9KuA
-         6QTQ==
+        bh=maECWGeWyOl6oCIQNOV91TG3Q0vU6f29TV28OjJk1vk=;
+        b=lXwGgDyUIDSmLdttZ84j3BMFlzoWsAI+ZZo4ss+Pb0pOPmWroqRM/+NFjLnb0j8Qpd
+         cNgq430KL7DLeXXlKOur6j2tMSh9e9oRRLOSg8/OMCjvL5wa1fL1O+piNIOLUA6MlvbH
+         0xKCt7wLdtXq9oInUcanv+GxFkdNmt+CC17m2iOQI6HWJ9DWX7dDJW7LuvTYPKVCgmR2
+         O+EE8wMqZEtHdBzQiUKDjqDh0R3LpFaFfpisnz/NlSBkcngfaVZG0yKi3p9XT29cLIFQ
+         Lj5WYqHPEtDNJA2HJwz3mk995BWzg7r/0N3Rwy/OXEY7ruaiHLsga6JVq5gboTZTEiBO
+         sWrA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of andreas.dilger@intel.com designates 192.55.52.93 as permitted sender) smtp.mailfrom=andreas.dilger@intel.com
+       spf=pass (google.com: domain of andreas.dilger@intel.com designates 192.55.52.120 as permitted sender) smtp.mailfrom=andreas.dilger@intel.com
 Return-Path: <andreas.dilger@intel.com>
-Received: from mga11.intel.com (mga11.intel.com. [192.55.52.93])
-        by gmr-mx.google.com with ESMTPS id e6si1027020pgt.2.2017.10.29.18.15.24
+Received: from mga04.intel.com (mga04.intel.com. [192.55.52.120])
+        by gmr-mx.google.com with ESMTPS id a13si1023710ywe.0.2017.10.29.18.15.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 29 Oct 2017 18:15:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of andreas.dilger@intel.com designates 192.55.52.93 as permitted sender) client-ip=192.55.52.93;
+        Sun, 29 Oct 2017 18:15:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of andreas.dilger@intel.com designates 192.55.52.120 as permitted sender) client-ip=192.55.52.120;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of andreas.dilger@intel.com designates 192.55.52.93 as permitted sender) smtp.mailfrom=andreas.dilger@intel.com
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 29 Oct 2017 18:15:23 -0700
+       spf=pass (google.com: domain of andreas.dilger@intel.com designates 192.55.52.120 as permitted sender) smtp.mailfrom=andreas.dilger@intel.com
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+  by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 29 Oct 2017 18:15:22 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.44,317,1505804400"; 
-   d="scan'208";a="169303282"
-Received: from fmsmsx105.amr.corp.intel.com ([10.18.124.203])
-  by fmsmga006.fm.intel.com with ESMTP; 29 Oct 2017 18:15:23 -0700
-Received: from fmsmsx111.amr.corp.intel.com (10.18.116.5) by
- FMSMSX105.amr.corp.intel.com (10.18.124.203) with Microsoft SMTP Server (TLS)
- id 14.3.319.2; Sun, 29 Oct 2017 18:15:23 -0700
+   d="scan'208";a="329375186"
+Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
+  by fmsmga004.fm.intel.com with ESMTP; 29 Oct 2017 18:15:22 -0700
+Received: from fmsmsx113.amr.corp.intel.com (10.18.116.7) by
+ fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
+ id 14.3.319.2; Sun, 29 Oct 2017 18:15:22 -0700
 Received: from FMSMSX109.amr.corp.intel.com ([169.254.15.50]) by
- fmsmsx111.amr.corp.intel.com ([169.254.12.234]) with mapi id 14.03.0319.002;
- Sun, 29 Oct 2017 18:15:23 -0700
+ FMSMSX113.amr.corp.intel.com ([169.254.13.251]) with mapi id 14.03.0319.002;
+ Sun, 29 Oct 2017 18:15:22 -0700
 From: "Dilger, Andreas" <andreas.dilger@intel.com>
 To: Aastha Gupta <aastha.gupta4104@gmail.com>
 CC: "outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>,
 	"Drokin, Oleg" <oleg.drokin@intel.com>, James Simmons
 	<jsimmons@infradead.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v4 5/7] staging: lustre: llite: fix lines over 80
- characters in llite files
-Thread-Topic: [PATCH v4 5/7] staging: lustre: llite: fix lines over 80
- characters in llite files
-Thread-Index: AQHTSEHxDZ+mamdh20i+ASSZ/Guo+6L63WaA
-Date: Mon, 30 Oct 2017 01:15:22 +0000
-Message-ID: <8ECA438A-DE26-4F34-899F-06CAEBD730E0@intel.com>
+Subject: Re: [PATCH v4 4/7] staging: lustre: ldlm: fix lines over 80
+ characters in ldlm files
+Thread-Topic: [PATCH v4 4/7] staging: lustre: ldlm: fix lines over 80
+ characters in ldlm files
+Thread-Index: AQHTSEH004RyxvPbHkGRMdBPj5lLPaL63R8A
+Date: Mon, 30 Oct 2017 01:15:21 +0000
+Message-ID: <5FDF6634-129A-41C9-8929-A36798259856@intel.com>
 References: <1508352586-25475-1-git-send-email-aastha.gupta4104@gmail.com>
- <1508352586-25475-6-git-send-email-aastha.gupta4104@gmail.com>
-In-Reply-To: <1508352586-25475-6-git-send-email-aastha.gupta4104@gmail.com>
+ <1508352586-25475-5-git-send-email-aastha.gupta4104@gmail.com>
+In-Reply-To: <1508352586-25475-5-git-send-email-aastha.gupta4104@gmail.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach:
 X-MS-TNEF-Correlator:
 x-originating-ip: [10.238.139.56]
 Content-Type: text/plain; charset="us-ascii"
-Content-ID: <2A762CB794F83A4481B48805F36BA5D8@intel.com>
+Content-ID: <16D17E7ACF55284D844C0D8AE9CD93A5@intel.com>
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 Return-Path: andreas.dilger@intel.com
 
 On Oct 18, 2017, at 12:49, Aastha Gupta <aastha.gupta4104@gmail.com> wrote:
 >=20
-> This fixes checkpatch.pl warning:
+> This patch fixes checkpatch.pl warning:
+>=20
 > WARNING: line over 80 characters
 >=20
 > Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
@@ -86,519 +87,409 @@ On Oct 18, 2017, at 12:49, Aastha Gupta <aastha.gupta4104@gmail.com> wrote:
 Reviewed-by: Andreas Dilger <andreas.dilger@intel.com>
 
 > ---
-> drivers/staging/lustre/lustre/llite/dcache.c       |  9 ++++---
-> drivers/staging/lustre/lustre/llite/dir.c          |  9 ++++---
-> drivers/staging/lustre/lustre/llite/file.c         |  9 ++++---
-> .../staging/lustre/lustre/llite/llite_internal.h   | 13 ++++++----
-> drivers/staging/lustre/lustre/llite/llite_lib.c    | 29 ++++++++++++++---=
+> drivers/staging/lustre/lustre/ldlm/ldlm_extent.c   |  3 +-
+> drivers/staging/lustre/lustre/ldlm/ldlm_flock.c    |  6 ++--
+> drivers/staging/lustre/lustre/ldlm/ldlm_internal.h |  2 +-
+> drivers/staging/lustre/lustre/ldlm/ldlm_lock.c     | 33 +++++++++++------
+> drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c    |  6 ++--
+> drivers/staging/lustre/lustre/ldlm/ldlm_pool.c     |  6 ++--
+> drivers/staging/lustre/lustre/ldlm/ldlm_request.c  | 42 +++++++++++++----=
 -----
-> drivers/staging/lustre/lustre/llite/llite_mmap.c   |  3 ++-
-> drivers/staging/lustre/lustre/llite/llite_nfs.c    |  3 ++-
-> drivers/staging/lustre/lustre/llite/namei.c        | 15 +++++++----
-> drivers/staging/lustre/lustre/llite/rw.c           | 14 +++++++----
-> drivers/staging/lustre/lustre/llite/statahead.c    |  3 ++-
-> drivers/staging/lustre/lustre/llite/super25.c      |  3 ++-
-> drivers/staging/lustre/lustre/llite/xattr_cache.c  |  3 ++-
-> 12 files changed, 74 insertions(+), 39 deletions(-)
+> drivers/staging/lustre/lustre/ldlm/ldlm_resource.c |  3 +-
+> 8 files changed, 65 insertions(+), 36 deletions(-)
 >=20
-> diff --git a/drivers/staging/lustre/lustre/llite/dcache.c b/drivers/stagi=
-ng/lustre/lustre/llite/dcache.c
-> index 3670fca..ed7dbbd 100644
-> --- a/drivers/staging/lustre/lustre/llite/dcache.c
-> +++ b/drivers/staging/lustre/lustre/llite/dcache.c
-> @@ -141,7 +141,8 @@ void ll_intent_drop_lock(struct lookup_intent *it)
+> diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_extent.c b/drivers/s=
+taging/lustre/lustre/ldlm/ldlm_extent.c
+> index 2cc6dc2..f9b4c0a 100644
+> --- a/drivers/staging/lustre/lustre/ldlm/ldlm_extent.c
+> +++ b/drivers/staging/lustre/lustre/ldlm/ldlm_extent.c
+> @@ -207,7 +207,8 @@ void ldlm_extent_add_lock(struct ldlm_resource *res,
+> 				continue;
+> 			if (ldlm_extent_overlap(&lck->l_req_extent,
+> 						&lock->l_req_extent)) {
+> -				CDEBUG(D_ERROR, "granting conflicting lock %p %p\n",
+> +				CDEBUG(D_ERROR,
+> +				       "granting conflicting lock %p %p\n",
+> 				       lck, lock);
+> 				ldlm_resource_dump(D_ERROR, res);
+> 				LBUG();
+> diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_flock.c b/drivers/st=
+aging/lustre/lustre/ldlm/ldlm_flock.c
+> index cb826e9..04e1d4c 100644
+> --- a/drivers/staging/lustre/lustre/ldlm/ldlm_flock.c
+> +++ b/drivers/staging/lustre/lustre/ldlm/ldlm_flock.c
+> @@ -479,7 +479,8 @@ ldlm_flock_completion_ast(struct ldlm_lock *lock, __u=
+64 flags, void *data)
+> 		return 0;
+> 	}
 >=20
-> 		handle.cookie =3D it->it_lock_handle;
+> -	LDLM_DEBUG(lock, "client-side enqueue returned a blocked lock, sleeping=
+");
+> +	LDLM_DEBUG(lock,
+> +		   "client-side enqueue returned a blocked lock, sleeping");
+> 	fwd.fwd_lock =3D lock;
+> 	obd =3D class_exp2obd(lock->l_conn_export);
 >=20
-> -		CDEBUG(D_DLMTRACE, "releasing lock with cookie %#llx from it %p\n",
+> @@ -561,7 +562,8 @@ ldlm_flock_completion_ast(struct ldlm_lock *lock, __u=
+64 flags, void *data)
+> 			mode =3D lock->l_granted_mode;
+>=20
+> 		if (ldlm_is_flock_deadlock(lock)) {
+> -			LDLM_DEBUG(lock, "client-side enqueue deadlock received");
+> +			LDLM_DEBUG(lock,
+> +				   "client-side enqueue deadlock received");
+> 			rc =3D -EDEADLK;
+> 		}
+> 		ldlm_flock_destroy(lock, mode, LDLM_FL_WAIT_NOREPROC);
+> diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h b/drivers=
+/staging/lustre/lustre/ldlm/ldlm_internal.h
+> index 36808db..03c137f 100644
+> --- a/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h
+> +++ b/drivers/staging/lustre/lustre/ldlm/ldlm_internal.h
+> @@ -88,7 +88,7 @@ struct ldlm_namespace *ldlm_namespace_first_locked(enum=
+ ldlm_side client);
+> /* ldlm_request.c */
+> /* Cancel lru flag, it indicates we cancel aged locks. */
+> enum {
+> -	LDLM_LRU_FLAG_AGED	=3D BIT(0), /* Cancel aged locks (non lru resize). *=
+/
+> +	LDLM_LRU_FLAG_AGED	=3D BIT(0), /* Cancel old non-LRU resize locks */
+> 	LDLM_LRU_FLAG_PASSED	=3D BIT(1), /* Cancel passed number of locks. */
+> 	LDLM_LRU_FLAG_SHRINK	=3D BIT(2), /* Cancel locks from shrinker. */
+> 	LDLM_LRU_FLAG_LRUR	=3D BIT(3), /* Cancel locks from lru resize. */
+> diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c b/drivers/sta=
+ging/lustre/lustre/ldlm/ldlm_lock.c
+> index b5d84f3..adfc0b4 100644
+> --- a/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c
+> +++ b/drivers/staging/lustre/lustre/ldlm/ldlm_lock.c
+> @@ -1035,7 +1035,8 @@ void ldlm_grant_lock(struct ldlm_lock *lock, struct=
+ list_head *work_list)
+> 		ldlm_extent_add_lock(res, lock);
+> 	} else if (res->lr_type =3D=3D LDLM_FLOCK) {
+> 		/*
+> -		 * We should not add locks to granted list in the following cases:
+> +		 * We should not add locks to granted list in
+> +		 * the following cases:
+> 		 * - this is an UNLOCK but not a real lock;
+> 		 * - this is a TEST lock;
+> 		 * - this is a F_CANCELLK lock (async flock has req_mode =3D=3D 0)
+> @@ -2051,13 +2052,16 @@ void _ldlm_lock_debug(struct ldlm_lock *lock,
+> 		libcfs_debug_vmsg2(msgdata, fmt, args,
+> 				   " ns: \?\? lock: %p/%#llx lrc: %d/%d,%d mode: %s/%s res: \?\? rrc=
+=3D\?\? type: \?\?\? flags: %#llx nid: %s remote: %#llx expref: %d pid: %u =
+timeout: %lu lvb_type: %d\n",
+> 				   lock,
+> -				   lock->l_handle.h_cookie, atomic_read(&lock->l_refc),
+> +				   lock->l_handle.h_cookie,
+> +				   atomic_read(&lock->l_refc),
+> 				   lock->l_readers, lock->l_writers,
+> 				   ldlm_lockname[lock->l_granted_mode],
+> 				   ldlm_lockname[lock->l_req_mode],
+> -				   lock->l_flags, nid, lock->l_remote_handle.cookie,
+> +				   lock->l_flags, nid,
+> +				   lock->l_remote_handle.cookie,
+> 				   exp ? atomic_read(&exp->exp_refcount) : -99,
+> -				   lock->l_pid, lock->l_callback_timeout, lock->l_lvb_type);
+> +				   lock->l_pid, lock->l_callback_timeout,
+> +				   lock->l_lvb_type);
+> 		va_end(args);
+> 		return;
+> 	}
+> @@ -2067,7 +2071,8 @@ void _ldlm_lock_debug(struct ldlm_lock *lock,
+> 		libcfs_debug_vmsg2(msgdata, fmt, args,
+> 				   " ns: %s lock: %p/%#llx lrc: %d/%d,%d mode: %s/%s res: " DLDLMRES =
+" rrc: %d type: %s [%llu->%llu] (req %llu->%llu) flags: %#llx nid: %s remot=
+e: %#llx expref: %d pid: %u timeout: %lu lvb_type: %d\n",
+> 				   ldlm_lock_to_ns_name(lock), lock,
+> -				   lock->l_handle.h_cookie, atomic_read(&lock->l_refc),
+> +				   lock->l_handle.h_cookie,
+> +				   atomic_read(&lock->l_refc),
+> 				   lock->l_readers, lock->l_writers,
+> 				   ldlm_lockname[lock->l_granted_mode],
+> 				   ldlm_lockname[lock->l_req_mode],
+> @@ -2076,8 +2081,10 @@ void _ldlm_lock_debug(struct ldlm_lock *lock,
+> 				   ldlm_typename[resource->lr_type],
+> 				   lock->l_policy_data.l_extent.start,
+> 				   lock->l_policy_data.l_extent.end,
+> -				   lock->l_req_extent.start, lock->l_req_extent.end,
+> -				   lock->l_flags, nid, lock->l_remote_handle.cookie,
+> +				   lock->l_req_extent.start,
+> +				   lock->l_req_extent.end,
+> +				   lock->l_flags, nid,
+> +				   lock->l_remote_handle.cookie,
+> 				   exp ? atomic_read(&exp->exp_refcount) : -99,
+> 				   lock->l_pid, lock->l_callback_timeout,
+> 				   lock->l_lvb_type);
+> @@ -2087,7 +2094,8 @@ void _ldlm_lock_debug(struct ldlm_lock *lock,
+> 		libcfs_debug_vmsg2(msgdata, fmt, args,
+> 				   " ns: %s lock: %p/%#llx lrc: %d/%d,%d mode: %s/%s res: " DLDLMRES =
+" rrc: %d type: %s pid: %d [%llu->%llu] flags: %#llx nid: %s remote: %#llx =
+expref: %d pid: %u timeout: %lu\n",
+> 				   ldlm_lock_to_ns_name(lock), lock,
+> -				   lock->l_handle.h_cookie, atomic_read(&lock->l_refc),
+> +				   lock->l_handle.h_cookie,
+> +				   atomic_read(&lock->l_refc),
+> 				   lock->l_readers, lock->l_writers,
+> 				   ldlm_lockname[lock->l_granted_mode],
+> 				   ldlm_lockname[lock->l_req_mode],
+> @@ -2097,7 +2105,8 @@ void _ldlm_lock_debug(struct ldlm_lock *lock,
+> 				   lock->l_policy_data.l_flock.pid,
+> 				   lock->l_policy_data.l_flock.start,
+> 				   lock->l_policy_data.l_flock.end,
+> -				   lock->l_flags, nid, lock->l_remote_handle.cookie,
+> +				   lock->l_flags, nid,
+> +				   lock->l_remote_handle.cookie,
+> 				   exp ? atomic_read(&exp->exp_refcount) : -99,
+> 				   lock->l_pid, lock->l_callback_timeout);
+> 		break;
+> @@ -2115,7 +2124,8 @@ void _ldlm_lock_debug(struct ldlm_lock *lock,
+> 				   lock->l_policy_data.l_inodebits.bits,
+> 				   atomic_read(&resource->lr_refcount),
+> 				   ldlm_typename[resource->lr_type],
+> -				   lock->l_flags, nid, lock->l_remote_handle.cookie,
+> +				   lock->l_flags, nid,
+> +				   lock->l_remote_handle.cookie,
+> 				   exp ? atomic_read(&exp->exp_refcount) : -99,
+> 				   lock->l_pid, lock->l_callback_timeout,
+> 				   lock->l_lvb_type);
+> @@ -2133,7 +2143,8 @@ void _ldlm_lock_debug(struct ldlm_lock *lock,
+> 				   PLDLMRES(resource),
+> 				   atomic_read(&resource->lr_refcount),
+> 				   ldlm_typename[resource->lr_type],
+> -				   lock->l_flags, nid, lock->l_remote_handle.cookie,
+> +				   lock->l_flags, nid,
+> +				   lock->l_remote_handle.cookie,
+> 				   exp ? atomic_read(&exp->exp_refcount) : -99,
+> 				   lock->l_pid, lock->l_callback_timeout,
+> 				   lock->l_lvb_type);
+> diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c b/drivers/st=
+aging/lustre/lustre/ldlm/ldlm_lockd.c
+> index e270733..1b2dbb9 100644
+> --- a/drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c
+> +++ b/drivers/staging/lustre/lustre/ldlm/ldlm_lockd.c
+> @@ -184,7 +184,8 @@ static void ldlm_handle_cp_callback(struct ptlrpc_req=
+uest *req,
+> 			LASSERT(lock->l_lvb_data);
+>=20
+> 			if (unlikely(lock->l_lvb_len < lvb_len)) {
+> -				LDLM_ERROR(lock, "Replied LVB is larger than expectation, expected =
+=3D %d, replied =3D %d",
+> +				LDLM_ERROR(lock,
+> +					   "Replied LVB is larger than expectation, expected =3D %d, replie=
+d =3D %d",
+> 					   lock->l_lvb_len, lvb_len);
+> 				rc =3D -EINVAL;
+> 				goto out;
+> @@ -598,7 +599,8 @@ static int ldlm_callback_handler(struct ptlrpc_reques=
+t *req)
+>=20
+> 	lock =3D ldlm_handle2lock_long(&dlm_req->lock_handle[0], 0);
+> 	if (!lock) {
+> -		CDEBUG(D_DLMTRACE, "callback on lock %#llx - lock disappeared\n",
 > +		CDEBUG(D_DLMTRACE,
-> +		       "releasing lock with cookie %#llx from it %p\n",
-> 		       handle.cookie, it);
-> 		ldlm_lock_decref(&handle, it->it_lock_mode);
+> +		       "callback on lock %#llx - lock disappeared\n",
+> 		       dlm_req->lock_handle[0].cookie);
+> 		rc =3D ldlm_callback_reply(req, -EINVAL);
+> 		ldlm_callback_errmsg(req, "Operate with invalid parameter", rc,
+> diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_pool.c b/drivers/sta=
+ging/lustre/lustre/ldlm/ldlm_pool.c
+> index d77bf0b..24b0b7d 100644
+> --- a/drivers/staging/lustre/lustre/ldlm/ldlm_pool.c
+> +++ b/drivers/staging/lustre/lustre/ldlm/ldlm_pool.c
+> @@ -386,7 +386,8 @@ static int ldlm_pool_recalc(struct ldlm_pool *pl)
+> 			      pl->pl_recalc_period;
+> 	if (recalc_interval_sec <=3D 0) {
+> 		/* DEBUG: should be re-removed after LU-4536 is fixed */
+> -		CDEBUG(D_DLMTRACE, "%s: Negative interval(%ld), too short period(%ld)\=
+n",
+> +		CDEBUG(D_DLMTRACE,
+> +		       "%s: Negative interval(%ld), too short period(%ld)\n",
+> 		       pl->pl_name, (long)recalc_interval_sec,
+> 		       (long)pl->pl_recalc_period);
 >=20
-> @@ -152,7 +153,8 @@ void ll_intent_drop_lock(struct lookup_intent *it)
-> 		if (it->it_remote_lock_mode !=3D 0) {
-> 			handle.cookie =3D it->it_remote_lock_handle;
->=20
-> -			CDEBUG(D_DLMTRACE, "releasing remote lock with cookie%#llx from it %p=
-\n",
+> @@ -415,7 +416,8 @@ static int ldlm_pool_shrink(struct ldlm_pool *pl, int=
+ nr, gfp_t gfp_mask)
+> 			lprocfs_counter_add(pl->pl_stats,
+> 					    LDLM_POOL_SHRINK_FREED_STAT,
+> 					    cancel);
+> -			CDEBUG(D_DLMTRACE, "%s: request to shrink %d locks, shrunk %d\n",
 > +			CDEBUG(D_DLMTRACE,
-> +			       "releasing remote lock with cookie%#llx from it %p\n",
-> 			       handle.cookie, it);
-> 			ldlm_lock_decref(&handle,
-> 					 it->it_remote_lock_mode);
-> @@ -185,7 +187,8 @@ void ll_invalidate_aliases(struct inode *inode)
->=20
-> 	spin_lock(&inode->i_lock);
-> 	hlist_for_each_entry(dentry, &inode->i_dentry, d_u.d_alias) {
-> -		CDEBUG(D_DENTRY, "dentry in drop %pd (%p) parent %p inode %p flags %d\=
-n",
-> +		CDEBUG(D_DENTRY,
-> +		       "dentry in drop %pd (%p) parent %p inode %p flags %d\n",
-> 		       dentry, dentry, dentry->d_parent,
-> 		       d_inode(dentry), dentry->d_flags);
->=20
-> diff --git a/drivers/staging/lustre/lustre/llite/dir.c b/drivers/staging/=
-lustre/lustre/llite/dir.c
-> index 1db3e7f..58d832d 100644
-> --- a/drivers/staging/lustre/lustre/llite/dir.c
-> +++ b/drivers/staging/lustre/lustre/llite/dir.c
-> @@ -303,7 +303,8 @@ static int ll_readdir(struct file *filp, struct dir_c=
-ontext *ctx)
-> 	struct md_op_data *op_data;
-> 	int			rc;
->=20
-> -	CDEBUG(D_VFSTRACE, "VFS Op:inode=3D" DFID "(%p) pos/size %lu/%llu 32bit=
-_api %d\n",
-> +	CDEBUG(D_VFSTRACE,
-> +	       "VFS Op:inode=3D" DFID "(%p) pos/size %lu/%llu 32bit_api %d\n",
-> 	       PFID(ll_inode2fid(inode)), inode, (unsigned long)pos,
-> 	       i_size_read(inode), api32);
->=20
-> @@ -502,7 +503,8 @@ int ll_dir_setstripe(struct inode *inode, struct lov_=
-user_md *lump,
-> 			break;
+> +			       "%s: request to shrink %d locks, shrunk %d\n",
+> 			       pl->pl_name, nr, cancel);
 > 		}
-> 		default: {
-> -			CDEBUG(D_IOCTL, "bad userland LOV MAGIC: %#08x !=3D %#08x nor %#08x\n=
-",
-> +			CDEBUG(D_IOCTL,
-> +			       "bad userland LOV MAGIC: %#08x !=3D %#08x nor %#08x\n",
-> 			       lump->lmm_magic, LOV_USER_MAGIC_V1,
-> 			       LOV_USER_MAGIC_V3);
-> 			return -EINVAL;
-> @@ -816,7 +818,8 @@ static int ll_ioc_copy_end(struct super_block *sb, st=
-ruct hsm_copy *copy)
-> 		rc =3D ll_data_version(inode, &data_version, LL_DV_RD_FLUSH);
-> 		iput(inode);
-> 		if (rc) {
-> -			CDEBUG(D_HSM, "Could not read file data version. Request could not be=
- confirmed.\n");
-> +			CDEBUG(D_HSM,
-> +			       "Could not read file data version. Request could not be confir=
-med.\n");
-> 			if (hpk.hpk_errval =3D=3D 0)
-> 				hpk.hpk_errval =3D -rc;
-> 			goto progress;
-> diff --git a/drivers/staging/lustre/lustre/llite/file.c b/drivers/staging=
-/lustre/lustre/llite/file.c
-> index be66545..eee9bed 100644
-> --- a/drivers/staging/lustre/lustre/llite/file.c
-> +++ b/drivers/staging/lustre/lustre/llite/file.c
-> @@ -605,7 +605,8 @@ int ll_file_open(struct inode *inode, struct file *fi=
-le)
-> 			 * to get file with different fid.
-> 			 */
-> 			it->it_flags |=3D MDS_OPEN_LOCK | MDS_OPEN_BY_FID;
-> -			rc =3D ll_intent_file_open(file->f_path.dentry, NULL, 0, it);
-> +			rc =3D ll_intent_file_open(file->f_path.dentry,
-> +						 NULL, 0, it);
-> 			if (rc)
-> 				goto out_openerr;
->=20
-> @@ -1119,7 +1120,8 @@ ll_file_io_generic(const struct lu_env *env, struct=
- vvp_io_args *args,
-> 	cl_io_fini(env, io);
->=20
-> 	if ((!rc || rc =3D=3D -ENODATA) && count > 0 && io->ci_need_restart) {
-> -		CDEBUG(D_VFSTRACE, "%s: restart %s from %lld, count:%zu, result: %zd\n=
-",
-> +		CDEBUG(D_VFSTRACE,
-> +		       "%s: restart %s from %lld, count:%zu, result: %zd\n",
-> 		       file_dentry(file)->d_name.name,
-> 		       iot =3D=3D CIT_READ ? "read" : "write",
-> 		       *ppos, count, result);
-> @@ -3455,7 +3457,8 @@ static int ll_layout_lock_set(struct lustre_handle =
-*lockh, enum ldlm_mode mode,
-> 		if (rc =3D=3D 0)
-> 			rc =3D -EAGAIN;
->=20
-> -		CDEBUG(D_INODE, "%s: file=3D" DFID " waiting layout return: %d.\n",
-> +		CDEBUG(D_INODE,
-> +		       "%s: file=3D" DFID " waiting layout return: %d.\n",
-> 		       ll_get_fsname(inode->i_sb, NULL, 0),
-> 		       PFID(&lli->lli_fid), rc);
 > 	}
-> diff --git a/drivers/staging/lustre/lustre/llite/llite_internal.h b/drive=
-rs/staging/lustre/lustre/llite/llite_internal.h
-> index 0287c75..fc1d3f5 100644
-> --- a/drivers/staging/lustre/lustre/llite/llite_internal.h
-> +++ b/drivers/staging/lustre/lustre/llite/llite_internal.h
-> @@ -84,7 +84,7 @@ struct ll_dentry_data {
+> diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_request.c b/drivers/=
+staging/lustre/lustre/ldlm/ldlm_request.c
+> index 6943987..5c22085 100644
+> --- a/drivers/staging/lustre/lustre/ldlm/ldlm_request.c
+> +++ b/drivers/staging/lustre/lustre/ldlm/ldlm_request.c
+> @@ -121,7 +121,8 @@ static int ldlm_expired_completion_wait(void *data)
+> 	if (!lock->l_conn_export) {
+> 		static unsigned long next_dump, last_dump;
 >=20
-> struct ll_getname_data {
-> 	struct dir_context ctx;
-> -	char	    *lgd_name;      /* points to a buffer with NAME_MAX+1 size */
-> +	char	    *lgd_name;      /* points to buffer with NAME_MAX+1 size */
-> 	struct lu_fid    lgd_fid;       /* target fid we are looking for */
-> 	int	      lgd_found;     /* inode matched? */
-> };
-> @@ -637,7 +637,8 @@ static inline int ll_need_32bit_api(struct ll_sb_info=
- *sbi)
-> #if BITS_PER_LONG =3D=3D 32
-> 	return 1;
-> #elif defined(CONFIG_COMPAT)
-> -	return unlikely(in_compat_syscall() || (sbi->ll_flags & LL_SBI_32BIT_AP=
-I));
-> +	return unlikely(in_compat_syscall() ||
-> +			(sbi->ll_flags & LL_SBI_32BIT_API));
-> #else
-> 	return unlikely(sbi->ll_flags & LL_SBI_32BIT_API);
-> #endif
-> @@ -1065,7 +1066,7 @@ struct ll_statahead_info {
-> 					     * hidden entries
-> 					     */
-> 				sai_agl_valid:1,/* AGL is valid for the dir */
-> -				sai_in_readpage:1;/* statahead is in readdir() */
-> +				sai_in_readpage:1;/* statahead in readdir() */
-> 	wait_queue_head_t	sai_waitq;      /* stat-ahead wait queue */
-> 	struct ptlrpc_thread    sai_thread;     /* stat-ahead thread */
-> 	struct ptlrpc_thread    sai_agl_thread; /* AGL thread */
-> @@ -1261,7 +1262,8 @@ static inline void ll_set_lock_data(struct obd_expo=
-rt *exp, struct inode *inode,
->=20
-> 		handle.cookie =3D it->it_lock_handle;
->=20
-> -		CDEBUG(D_DLMTRACE, "setting l_data to inode " DFID "%p for lock %#llx\=
-n",
-> +		CDEBUG(D_DLMTRACE,
-> +		       "setting l_data to inode " DFID "%p for lock %#llx\n",
-> 		       PFID(ll_inode2fid(inode)), inode, handle.cookie);
->=20
-> 		md_set_lock_data(exp, &handle, inode, &it->it_lock_bits);
-> @@ -1284,7 +1286,8 @@ static inline int d_lustre_invalid(const struct den=
-try *dentry)
->  */
-> static inline void d_lustre_invalidate(struct dentry *dentry, int nested)
-> {
-> -	CDEBUG(D_DENTRY, "invalidate dentry %pd (%p) parent %p inode %p refc %d=
-\n",
-> +	CDEBUG(D_DENTRY,
-> +	       "invalidate dentry %pd (%p) parent %p inode %p refc %d\n",
-> 	       dentry, dentry,
-> 	       dentry->d_parent, d_inode(dentry), d_count(dentry));
->=20
-> diff --git a/drivers/staging/lustre/lustre/llite/llite_lib.c b/drivers/st=
-aging/lustre/lustre/llite/llite_lib.c
-> index 25393e3..4ddf3230 100644
-> --- a/drivers/staging/lustre/lustre/llite/llite_lib.c
-> +++ b/drivers/staging/lustre/lustre/llite/llite_lib.c
-> @@ -231,7 +231,8 @@ static int client_common_fill_super(struct super_bloc=
-k *sb, char *md, char *dt,
-> 	err =3D obd_connect(NULL, &sbi->ll_md_exp, obd, &sbi->ll_sb_uuid,
-> 			  data, NULL);
-> 	if (err =3D=3D -EBUSY) {
-> -		LCONSOLE_ERROR_MSG(0x14f, "An MDT (md %s) is performing recovery, of w=
-hich this client is not a part. Please wait for recovery to complete, abort=
-, or time out.\n",
-> +		LCONSOLE_ERROR_MSG(0x14f,
-> +				   "An MDT (md %s) is performing recovery, of which this client is n=
-ot a part. Please wait for recovery to complete, abort, or time out.\n",
-> 				   md);
-> 		goto out;
-> 	} else if (err) {
-> @@ -279,7 +280,8 @@ static int client_common_fill_super(struct super_bloc=
-k *sb, char *md, char *dt,
-> 		}
-> 		obd_connect_flags2str(buf, PAGE_SIZE,
-> 				      valid ^ CLIENT_CONNECT_MDT_REQD, ",");
-> -		LCONSOLE_ERROR_MSG(0x170, "Server %s does not support feature(s) neede=
-d for correct operation of this client (%s). Please upgrade server or downg=
-rade client.\n",
-> +		LCONSOLE_ERROR_MSG(0x170,
-> +				   "Server %s does not support feature(s) needed for correct operati=
-on of this client (%s). Please upgrade server or downgrade client.\n",
-> 				   sbi->ll_md_exp->exp_obd->obd_name, buf);
-> 		kfree(buf);
-> 		err =3D -EPROTO;
-> @@ -380,7 +382,8 @@ static int client_common_fill_super(struct super_bloc=
-k *sb, char *md, char *dt,
-> 	if (sbi->ll_flags & LL_SBI_ALWAYS_PING)
-> 		data->ocd_connect_flags &=3D ~OBD_CONNECT_PINGLESS;
->=20
-> -	CDEBUG(D_RPCTRACE, "ocd_connect_flags: %#llx ocd_version: %d ocd_grant:=
- %d\n",
-> +	CDEBUG(D_RPCTRACE,
-> +	       "ocd_connect_flags: %#llx ocd_version: %d ocd_grant: %d\n",
-> 	       data->ocd_connect_flags,
-> 	       data->ocd_version, data->ocd_grant);
->=20
-> @@ -392,7 +395,8 @@ static int client_common_fill_super(struct super_bloc=
-k *sb, char *md, char *dt,
-> 	err =3D obd_connect(NULL, &sbi->ll_dt_exp, obd, &sbi->ll_sb_uuid, data,
-> 			  NULL);
-> 	if (err =3D=3D -EBUSY) {
-> -		LCONSOLE_ERROR_MSG(0x150, "An OST (dt %s) is performing recovery, of w=
-hich this client is not a part.  Please wait for recovery to complete, abor=
-t, or time out.\n",
-> +		LCONSOLE_ERROR_MSG(0x150,
-> +				   "An OST (dt %s) is performing recovery, of which this client is n=
-ot a part.  Please wait for recovery to complete, abort, or time out.\n",
-> 				   dt);
-> 		goto out_md;
-> 	} else if (err) {
-> @@ -915,7 +919,8 @@ int ll_fill_super(struct super_block *sb, struct vfsm=
-ount *mnt)
-> 	/* Profile set with LCFG_MOUNTOPT so we can find our mdc and osc obds */
-> 	lprof =3D class_get_profile(profilenm);
-> 	if (!lprof) {
-> -		LCONSOLE_ERROR_MSG(0x156, "The client profile '%s' could not be read f=
-rom the MGS.  Does that filesystem exist?\n",
-> +		LCONSOLE_ERROR_MSG(0x156,
-> +				   "The client profile '%s' could not be read from the MGS.  Does th=
-at filesystem exist?\n",
-> 				   profilenm);
-> 		err =3D -EINVAL;
-> 		goto out_free;
-> @@ -1042,7 +1047,8 @@ struct inode *ll_inode_from_resource_lock(struct ld=
-lm_lock *lock)
-> 		} else {
-> 			inode =3D lock->l_resource->lr_lvb_inode;
-> 			LDLM_DEBUG_LIMIT(inode->i_state & I_FREEING ?  D_INFO :
-> -					 D_WARNING, lock, "lr_lvb_inode %p is bogus: magic %08x",
-> +					 D_WARNING, lock,
-> +					 "lr_lvb_inode %p is bogus: magic %08x",
-> 					 lock->l_resource->lr_lvb_inode,
-> 					 lli->lli_inode_magic);
-> 			inode =3D NULL;
-> @@ -1744,7 +1750,8 @@ int ll_update_inode(struct inode *inode, struct lus=
-tre_md *md)
+> -		LDLM_ERROR(lock, "lock timed out (enqueued at %lld, %llds ago); not en=
+tering recovery in server code, just going back to sleep",
+> +		LDLM_ERROR(lock,
+> +			   "lock timed out (enqueued at %lld, %llds ago); not entering recove=
+ry in server code, just going back to sleep",
+> 			   (s64)lock->l_last_activity,
+> 			   (s64)(ktime_get_real_seconds() -
+> 				 lock->l_last_activity));
+> @@ -139,7 +140,8 @@ static int ldlm_expired_completion_wait(void *data)
+> 	obd =3D lock->l_conn_export->exp_obd;
+> 	imp =3D obd->u.cli.cl_import;
+> 	ptlrpc_fail_import(imp, lwd->lwd_conn_cnt);
+> -	LDLM_ERROR(lock, "lock timed out (enqueued at %lld, %llds ago), enterin=
+g recovery for %s@%s",
+> +	LDLM_ERROR(lock,
+> +		   "lock timed out (enqueued at %lld, %llds ago), entering recovery fo=
+r %s@%s",
+> 		   (s64)lock->l_last_activity,
+> 		   (s64)(ktime_get_real_seconds() - lock->l_last_activity),
+> 		   obd2cli_tgt(obd), imp->imp_connection->c_remote_uuid.uuid);
+> @@ -218,7 +220,8 @@ int ldlm_completion_ast_async(struct ldlm_lock *lock,=
+ __u64 flags, void *data)
+> 		return ldlm_completion_tail(lock, data);
 > 	}
-> 	if (body->mbo_valid & OBD_MD_FLMTIME) {
-> 		if (body->mbo_mtime > LTIME_S(inode->i_mtime)) {
-> -			CDEBUG(D_INODE, "setting ino %lu mtime from %lu to %llu\n",
-> +			CDEBUG(D_INODE,
-> +			       "setting ino %lu mtime from %lu to %llu\n",
-> 			       inode->i_ino, LTIME_S(inode->i_mtime),
-> 			       body->mbo_mtime);
-> 			LTIME_S(inode->i_mtime) =3D body->mbo_mtime;
-> @@ -2254,7 +2261,8 @@ int ll_process_config(struct lustre_cfg *lcfg)
-> 		return -EINVAL;
-> 	sb =3D (void *)x;
-> 	/* This better be a real Lustre superblock! */
-> -	LASSERT(s2lsi((struct super_block *)sb)->lsi_lmd->lmd_magic =3D=3D LMD_=
-MAGIC);
-> +	LASSERT(s2lsi((struct super_block *)sb)->lsi_lmd->lmd_magic =3D=3D
-> +		LMD_MAGIC);
 >=20
-> 	/* Note we have not called client_common_fill_super yet, so
-> 	 * proc fns must be able to handle that!
-> @@ -2571,8 +2579,9 @@ static int ll_linkea_decode(struct linkea_data *lda=
-ta, unsigned int linkno,
->  *
->  * \param[in]	  file	- File descriptor against which to perform the opera=
-tion
->  * \param[in,out] arg	- User-filled structure containing the linkno to op=
-erate
-> - *			  on and the available size. It is eventually filled with
-> - *			  the requested information or left untouched on error
-> + *			  on and the available size. It is eventually filled
-> + *			  with the requested information or left untouched on
-> + *			  error
->  *
->  * \retval - 0 on success
->  * \retval - Appropriate negative error code on failure
-> diff --git a/drivers/staging/lustre/lustre/llite/llite_mmap.c b/drivers/s=
-taging/lustre/lustre/llite/llite_mmap.c
-> index ccc7ae1..61a4bed 100644
-> --- a/drivers/staging/lustre/lustre/llite/llite_mmap.c
-> +++ b/drivers/staging/lustre/lustre/llite/llite_mmap.c
-> @@ -208,7 +208,8 @@ static int ll_page_mkwrite0(struct vm_area_struct *vm=
-a, struct page *vmpage,
-> 			 */
-> 			unlock_page(vmpage);
+> -	LDLM_DEBUG(lock, "client-side enqueue returned a blocked lock, going fo=
+rward");
+> +	LDLM_DEBUG(lock,
+> +		   "client-side enqueue returned a blocked lock, going forward");
+> 	return 0;
+> }
+> EXPORT_SYMBOL(ldlm_completion_ast_async);
+> @@ -264,7 +267,8 @@ int ldlm_completion_ast(struct ldlm_lock *lock, __u64=
+ flags, void *data)
+> 		return 0;
+> 	}
 >=20
-> -			CDEBUG(D_MMAP, "Race on page_mkwrite %p/%lu, page has been written ou=
-t, retry.\n",
-> +			CDEBUG(D_MMAP,
-> +			       "Race on page_mkwrite %p/%lu, page has been written out, retry=
-.\n",
-> 			       vmpage, vmpage->index);
+> -	LDLM_DEBUG(lock, "client-side enqueue returned a blocked lock, sleeping=
+");
+> +	LDLM_DEBUG(lock,
+> +		   "client-side enqueue returned a blocked lock, sleeping");
 >=20
-> 			*retry =3D true;
-> diff --git a/drivers/staging/lustre/lustre/llite/llite_nfs.c b/drivers/st=
-aging/lustre/lustre/llite/llite_nfs.c
-> index e50c637..b04d456 100644
-> --- a/drivers/staging/lustre/lustre/llite/llite_nfs.c
-> +++ b/drivers/staging/lustre/lustre/llite/llite_nfs.c
-> @@ -127,7 +127,8 @@ struct lustre_nfs_fid {
-> };
+> noreproc:
 >=20
-> static struct dentry *
-> -ll_iget_for_nfs(struct super_block *sb, struct lu_fid *fid, struct lu_fi=
-d *parent)
-> +ll_iget_for_nfs(struct super_block *sb,
-> +		struct lu_fid *fid, struct lu_fid *parent)
-> {
-> 	struct inode  *inode;
-> 	struct dentry *result;
-> diff --git a/drivers/staging/lustre/lustre/llite/namei.c b/drivers/stagin=
-g/lustre/lustre/llite/namei.c
-> index cc16803..0fb2baf 100644
-> --- a/drivers/staging/lustre/lustre/llite/namei.c
-> +++ b/drivers/staging/lustre/lustre/llite/namei.c
-> @@ -204,7 +204,8 @@ int ll_md_blocking_ast(struct ldlm_lock *lock, struct=
- ldlm_lock_desc *desc,
->=20
-> 		if (!fid_res_name_eq(ll_inode2fid(inode),
-> 				     &lock->l_resource->lr_name)) {
-> -			LDLM_ERROR(lock, "data mismatch with object " DFID "(%p)",
+> @@ -414,7 +418,8 @@ int ldlm_cli_enqueue_fini(struct obd_export *exp, str=
+uct ptlrpc_request *req,
+> 			rc =3D size;
+> 			goto cleanup;
+> 		} else if (unlikely(size > lvb_len)) {
+> -			LDLM_ERROR(lock, "Replied LVB is larger than expectation, expected =
+=3D %d, replied =3D %d",
 > +			LDLM_ERROR(lock,
-> +				   "data mismatch with object " DFID "(%p)",
-> 				   PFID(ll_inode2fid(inode)), inode);
-> 			LBUG();
+> +				   "Replied LVB is larger than expectation, expected =3D %d, replied=
+ =3D %d",
+> 				   lvb_len, size);
+> 			rc =3D -EINVAL;
+> 			goto cleanup;
+> @@ -473,8 +478,8 @@ int ldlm_cli_enqueue_fini(struct obd_export *exp, str=
+uct ptlrpc_request *req,
+>=20
+> 		if (!ldlm_res_eq(&reply->lock_desc.l_resource.lr_name,
+> 				 &lock->l_resource->lr_name)) {
+> -			CDEBUG(D_INFO, "remote intent success, locking " DLDLMRES
+> -				       " instead of " DLDLMRES "\n",
+> +			CDEBUG(D_INFO,
+> +			       "remote intent success, locking " DLDLMRES " instead of " DLDL=
+MRES "\n",
+> 			       PLDLMRES(&reply->lock_desc.l_resource),
+> 			       PLDLMRES(lock->l_resource));
+>=20
+> @@ -850,7 +855,8 @@ static __u64 ldlm_cli_cancel_local(struct ldlm_lock *=
+lock)
+> 		unlock_res_and_lock(lock);
+>=20
+> 		if (local_only) {
+> -			CDEBUG(D_DLMTRACE, "not sending request (at caller's instruction)\n")=
+;
+> +			CDEBUG(D_DLMTRACE,
+> +			       "not sending request (at caller's instruction)\n");
+> 			rc =3D LDLM_FL_LOCAL_ONLY;
 > 		}
-> @@ -289,7 +290,8 @@ int ll_md_blocking_ast(struct ldlm_lock *lock, struct=
- ldlm_lock_desc *desc,
-> 				 * we have to invalidate the negative children
-> 				 * on master inode
-> 				 */
-> -				CDEBUG(D_INODE, "Invalidate s" DFID " m" DFID "\n",
-> +				CDEBUG(D_INODE,
-> +				       "Invalidate s" DFID " m" DFID "\n",
-> 				       PFID(ll_inode2fid(inode)),
-> 				       PFID(&lli->lli_pfid));
->=20
-> @@ -736,7 +738,8 @@ static int ll_atomic_open(struct inode *dir, struct d=
-entry *dentry,
->=20
-> 			*opened |=3D FILE_CREATED;
-> 		}
-> -		if (d_really_is_positive(dentry) && it_disposition(it, DISP_OPEN_OPEN)=
-) {
-> +		if (d_really_is_positive(dentry) &&
-> +		    it_disposition(it, DISP_OPEN_OPEN)) {
-> 			/* Open dentry. */
-> 			if (S_ISFIFO(d_inode(dentry)->i_mode)) {
-> 				/* We cannot call open here as it might
-> @@ -982,7 +985,8 @@ static int ll_create_nd(struct inode *dir, struct den=
-try *dentry,
-> {
-> 	int rc;
->=20
-> -	CDEBUG(D_VFSTRACE, "VFS Op:name=3D%pd, dir=3D" DFID "(%p), flags=3D%u, =
-excl=3D%d\n",
-> +	CDEBUG(D_VFSTRACE,
-> +	       "VFS Op:name=3D%pd, dir=3D" DFID "(%p), flags=3D%u, excl=3D%d\n"=
+> 		ldlm_lock_cancel(lock);
+> @@ -963,7 +969,8 @@ static int ldlm_cli_cancel_req(struct obd_export *exp=
 ,
-> 	       dentry, PFID(ll_inode2fid(dir)), dir, mode, want_excl);
 >=20
-> 	rc =3D ll_mknod(dir, dentry, mode, 0);
-> @@ -1103,7 +1107,8 @@ static int ll_link(struct dentry *old_dentry, struc=
-t inode *dir,
-> 	struct md_op_data *op_data;
-> 	int err;
+> 		rc =3D ptlrpc_queue_wait(req);
+> 		if (rc =3D=3D LUSTRE_ESTALE) {
+> -			CDEBUG(D_DLMTRACE, "client/server (nid %s) out of sync -- not fatal\n=
+",
+> +			CDEBUG(D_DLMTRACE,
+> +			       "client/server (nid %s) out of sync -- not fatal\n",
+> 			       libcfs_nid2str(req->rq_import->
+> 					      imp_connection->c_peer.nid));
+> 			rc =3D 0;
+> @@ -1364,13 +1371,14 @@ ldlm_cancel_lru_policy(struct ldlm_namespace *ns,=
+ int flags)
+>  * flags & LDLM_LRU_FLAG_LRUR	- use LRU resize policy (SLV from server) t=
+o
+>  *				  cancel not more than \a count locks;
+>  *
+> - * flags & LDLM_LRU_FLAG_PASSED - cancel \a count number of old locks (l=
+ocated at
+> - *				  the beginning of LRU list);
+> + * flags & LDLM_LRU_FLAG_PASSED - cancel \a count number of old locks (l=
+ocated
+> + *				  at the beginning of LRU list);
+>  *
+> - * flags & LDLM_LRU_FLAG_SHRINK - cancel not more than \a count locks ac=
+cording to
+> - *				  memory pressure policy function;
+> + * flags & LDLM_LRU_FLAG_SHRINK - cancel not more than \a count locks ac=
+cording
+> + *				  to memory pressure policy function;
+>  *
+> - * flags & LDLM_LRU_FLAG_AGED   - cancel \a count locks according to "ag=
+ed policy".
+> + * flags & LDLM_LRU_FLAG_AGED   - cancel \a count locks according to
+> + *				  "aged policy".
+>  *
+>  * flags & LDLM_LRU_FLAG_NO_WAIT - cancel as many unused locks as possibl=
+e
+>  *				   (typically before replaying locks) w/o
+> @@ -1384,7 +1392,8 @@ static int ldlm_prepare_lru_list(struct ldlm_namesp=
+ace *ns,
+> 	ldlm_cancel_lru_policy_t pf;
+> 	struct ldlm_lock *lock, *next;
+> 	int added =3D 0, unused, remained;
+> -	int no_wait =3D flags & (LDLM_LRU_FLAG_NO_WAIT | LDLM_LRU_FLAG_LRUR_NO_=
+WAIT);
+> +	int no_wait =3D flags &
+> +		(LDLM_LRU_FLAG_NO_WAIT | LDLM_LRU_FLAG_LRUR_NO_WAIT);
 >=20
-> -	CDEBUG(D_VFSTRACE, "VFS Op: inode=3D" DFID "(%p), dir=3D" DFID "(%p), t=
-arget=3D%pd\n",
-> +	CDEBUG(D_VFSTRACE,
-> +	       "VFS Op: inode=3D" DFID "(%p), dir=3D" DFID "(%p), target=3D%pd\=
-n",
-> 	       PFID(ll_inode2fid(src)), src, PFID(ll_inode2fid(dir)), dir,
-> 	       new_dentry);
+> 	spin_lock(&ns->ns_lock);
+> 	unused =3D ns->ns_nr_unused;
+> @@ -2035,7 +2044,8 @@ static void ldlm_cancel_unused_locks_for_replay(str=
+uct ldlm_namespace *ns)
+> 	int canceled;
+> 	LIST_HEAD(cancels);
 >=20
-> diff --git a/drivers/staging/lustre/lustre/llite/rw.c b/drivers/staging/l=
-ustre/lustre/llite/rw.c
-> index e720905..b6371c4 100644
-> --- a/drivers/staging/lustre/lustre/llite/rw.c
-> +++ b/drivers/staging/lustre/lustre/llite/rw.c
-> @@ -297,7 +297,8 @@ stride_pg_count(pgoff_t st_off, unsigned long st_len,=
- unsigned long st_pgs,
-> 	else
-> 		pg_count =3D start_left + st_pgs * (end - start - 1) + end_left;
+> -	CDEBUG(D_DLMTRACE, "Dropping as many unused locks as possible before re=
+play for namespace %s (%d)\n",
+> +	CDEBUG(D_DLMTRACE,
+> +	       "Dropping as many unused locks as possible before replay for nam=
+espace %s (%d)\n",
+> 	       ldlm_ns_name(ns), ns->ns_nr_unused);
 >=20
-> -	CDEBUG(D_READA, "st_off %lu, st_len %lu st_pgs %lu off %lu length %lu p=
-gcount %lu\n",
-> +	CDEBUG(D_READA,
-> +	       "st_off %lu, st_len %lu st_pgs %lu off %lu length %lu pgcount %l=
-u\n",
-> 	       st_off, st_len, st_pgs, off, length, pg_count);
->=20
-> 	return pg_count;
-> @@ -404,7 +405,8 @@ ll_read_ahead_pages(const struct lu_env *env, struct =
-cl_io *io,
-> 			 * forward read-ahead, it will be fixed when backward
-> 			 * read-ahead is implemented
-> 			 */
-> -			LASSERTF(page_idx >=3D ria->ria_stoff, "Invalid page_idx %lu rs %lu r=
-e %lu ro %lu rl %lu rp %lu\n",
-> +			LASSERTF(page_idx >=3D ria->ria_stoff,
-> +				 "Invalid page_idx %lu rs %lu re %lu ro %lu rl %lu rp %lu\n",
-> 				 page_idx,
-> 				 ria->ria_start, ria->ria_end, ria->ria_stoff,
-> 				 ria->ria_length, ria->ria_pages);
-> @@ -669,8 +671,9 @@ static void ras_stride_increase_window(struct ll_read=
-ahead_state *ras,
-> 	unsigned long stride_len;
->=20
-> 	LASSERT(ras->ras_stride_length > 0);
-> -	LASSERTF(ras->ras_window_start + ras->ras_window_len
-> -		 >=3D ras->ras_stride_offset, "window_start %lu, window_len %lu stride=
-_offset %lu\n",
-> +	LASSERTF(ras->ras_window_start + ras->ras_window_len >=3D
-> +		 ras->ras_stride_offset,
-> +		 "window_start %lu, window_len %lu stride_offset %lu\n",
-> 		 ras->ras_window_start,
-> 		 ras->ras_window_len, ras->ras_stride_offset);
->=20
-> @@ -766,7 +769,8 @@ static void ras_update(struct ll_sb_info *sbi, struct=
- inode *inode,
-> 			    PAGE_SHIFT;
->=20
-> 		CDEBUG(D_READA, "kmsp %llu mwp %lu mp %lu\n", kms_pages,
-> -		       ra->ra_max_read_ahead_whole_pages, ra->ra_max_pages_per_file);
-> +		       ra->ra_max_read_ahead_whole_pages,
-> +		       ra->ra_max_pages_per_file);
->=20
-> 		if (kms_pages &&
-> 		    kms_pages <=3D ra->ra_max_read_ahead_whole_pages) {
-> diff --git a/drivers/staging/lustre/lustre/llite/statahead.c b/drivers/st=
-aging/lustre/lustre/llite/statahead.c
-> index ea9d59f..99cc1cb 100644
-> --- a/drivers/staging/lustre/lustre/llite/statahead.c
-> +++ b/drivers/staging/lustre/lustre/llite/statahead.c
-> @@ -1082,7 +1082,8 @@ static int ll_statahead_thread(void *arg)
-> 					struct ll_inode_info *clli;
->=20
-> 					clli =3D list_entry(sai->sai_agls.next,
-> -							  struct ll_inode_info, lli_agl_list);
-> +							  struct ll_inode_info,
-> +							  lli_agl_list);
-> 					list_del_init(&clli->lli_agl_list);
-> 					spin_unlock(&lli->lli_agl_lock);
->=20
-> diff --git a/drivers/staging/lustre/lustre/llite/super25.c b/drivers/stag=
-ing/lustre/lustre/llite/super25.c
-> index 0da4af8..8938713 100644
-> --- a/drivers/staging/lustre/lustre/llite/super25.c
-> +++ b/drivers/staging/lustre/lustre/llite/super25.c
-> @@ -88,7 +88,8 @@ static int __init lustre_init(void)
-> 	struct timespec64 ts;
-> 	int i, rc, seed[2];
->=20
-> -	BUILD_BUG_ON(sizeof(LUSTRE_VOLATILE_HDR) !=3D LUSTRE_VOLATILE_HDR_LEN +=
- 1);
-> +	BUILD_BUG_ON(sizeof(LUSTRE_VOLATILE_HDR) !=3D
-> +		     LUSTRE_VOLATILE_HDR_LEN + 1);
->=20
-> 	/* print an address of _any_ initialized kernel symbol from this
-> 	 * module, to allow debugging with gdb that doesn't support data
-> diff --git a/drivers/staging/lustre/lustre/llite/xattr_cache.c b/drivers/=
-staging/lustre/lustre/llite/xattr_cache.c
-> index 80ee392..dbf9be2 100644
-> --- a/drivers/staging/lustre/lustre/llite/xattr_cache.c
-> +++ b/drivers/staging/lustre/lustre/llite/xattr_cache.c
-> @@ -364,7 +364,8 @@ static int ll_xattr_cache_refill(struct inode *inode,=
- struct lookup_intent *oit)
-> 	}
->=20
-> 	if (oit->it_status < 0) {
-> -		CDEBUG(D_CACHE, "getxattr intent returned %d for fid " DFID "\n",
-> +		CDEBUG(D_CACHE,
-> +		       "getxattr intent returned %d for fid " DFID "\n",
-> 		       oit->it_status, PFID(ll_inode2fid(inode)));
-> 		rc =3D oit->it_status;
-> 		/* xattr data is so large that we don't want to cache it */
+> 	/* We don't need to care whether or not LRU resize is enabled
+> diff --git a/drivers/staging/lustre/lustre/ldlm/ldlm_resource.c b/drivers=
+/staging/lustre/lustre/ldlm/ldlm_resource.c
+> index c2ddf73..c374f14 100644
+> --- a/drivers/staging/lustre/lustre/ldlm/ldlm_resource.c
+> +++ b/drivers/staging/lustre/lustre/ldlm/ldlm_resource.c
+> @@ -1358,7 +1358,8 @@ void ldlm_resource_dump(int level, struct ldlm_reso=
+urce *res)
+> 			LDLM_DEBUG_LIMIT(level, lock, "###");
+> 			if (!(level & D_CANTMASK) &&
+> 			    ++granted > ldlm_dump_granted_max) {
+> -				CDEBUG(level, "only dump %d granted locks to avoid DDOS.\n",
+> +				CDEBUG(level,
+> +				       "only dump %d granted locks to avoid DDOS.\n",
+> 				       granted);
+> 				break;
+> 			}
 > --=20
 > 2.7.4
 >=20
