@@ -1,110 +1,158 @@
 X-GM-THRID: 6473410411176656896
-X-Received: by 10.99.171.4 with SMTP id p4mr4170425pgf.117.1509326174010;
-        Sun, 29 Oct 2017 18:16:14 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.159.249.3 with SMTP id bf3ls2177938plb.9.gmail; Sun, 29 Oct
- 2017 18:16:13 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+TfHcGp0cv005sb/KdGiLXDe4lJwjJJUQZYJJU0LTELqhz1pxptZ8SOrzyF5lrUIT1tO3nP
-X-Received: by 10.99.127.3 with SMTP id a3mr4156512pgd.145.1509326173197;
+X-Received: by 10.84.176.129 with SMTP id v1mr3626588plb.34.1509326173769;
         Sun, 29 Oct 2017 18:16:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1509326173; cv=none;
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.101.78.193 with SMTP id w1ls3775273pgq.27.gmail; Sun, 29 Oct
+ 2017 18:16:12 -0700 (PDT)
+X-Google-Smtp-Source: ABhQp+ShuMz4xQ7jknygCOohrYmkiWBU2qV2UN34yCZE4Co/xi8iScyF0Cm+KALegso4yL12SsT2
+X-Received: by 10.84.177.36 with SMTP id w33mr3633107plb.31.1509326172855;
+        Sun, 29 Oct 2017 18:16:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1509326172; cv=none;
         d=google.com; s=arc-20160816;
-        b=XjzQVFxiFYrNNfiHufEOLLgofKzH4h8wI5JX4FeahC/69zle6p256bpfjLDaF6KaVq
-         1IhY58ZRJQJFWFZqncx+RPMVzaf4byNnkZLzr2aNFVkO5qYuJfXVq4qMjfPnrqcKLcl4
-         kMcE5dyShnuH7PWsAiF9x59TD2yjgEP5zHHsHp3AmhDZjP0MsQSShZ/FAtLQuJiHVVJe
-         mqY3gctNuFMg464gRWSQX4A9UeXIP0H9M4jk+A872u1ruw5I9W3+iraBofm9pgvBfgia
-         oKNEQ5xLClHdpW8Sytl2T8WiIPKK5dkszCZsrXhMaZTs12wipSSeH6v74IHzcJhF57lB
-         14hw==
+        b=WbRbfoIX7rN/sLnvY5j0NLKAVFfyZUC6jG/HkjbitTTpTmBAPPUZJQ/c27w4d6zrmp
+         MwGMgdS7OxU27Ax2axRAGtClUn9nAzpJ7QJTUSLtVNzvosty0Vr6sOOLx+Zyut7IJO/m
+         vaSCE3na+GLQEwQgNBTufycLfejmGbFftJe7ZcK1ajpnp1klfuV+fygwh/zp9MLHNZqt
+         WG9Vs92u7+5DWQC1RElhenMdPjL/sXqbg+MPDYQnGw4+MDkKTwGWkeViMwe4nr73PTU7
+         607rHu+30AfcnimLItmo8VuHOLxPYiaP1f+tNHCs7qfBe+nwa19O2BynVHdEtrKh2F4t
+         ijUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:content-transfer-encoding:content-id:content-language
          :accept-language:in-reply-to:references:message-id:date:thread-index
          :thread-topic:subject:cc:to:from:arc-authentication-results;
-        bh=I7YWuE5bLpb+4ySvrYz6OaQv+/EpxHovdGqq14BxfLA=;
-        b=Q488LGWHpWlC4ARPt7u5OeO+tvV8CHw0cuztTXTNpPO1S1r9ay2UgUzIBJmniGpjSO
-         UnhXlgdIWKALCV6kJIRCoblQmEL3H7NLxgwIEyrY1t80xY4AjoksLO4itJMy+B29PAyB
-         SAAXF2TZUUvCcbgxxQKFwVV8RFUt4v99dqa2l1BM/SqE7G8LeyhsVNVV4B/oly3Y4Xzu
-         0A/qCFsIsPA+A2gTFUJtZXys6ugX038LM4BR9myP390wKRNzWSa9ddZqLT7/YQBDXzZo
-         RH8DHH+xRum7BQavhz2ieEWRfwlaA3VKhcZXWmtZ4d6TJeIfG+lRbWDSbb3eL6rOXfvh
-         3wMw==
+        bh=XAm+DSjYHoNIyuGNHcXPZ1lZaD+CU2sf4kos1MDPEcs=;
+        b=h/J+vjoyeXxRLFlPiIqCRPptsvgO3qajJ6sSEch4ccUThYffTmnh50uWC+gO0UItpL
+         VUMLHKgfgNJPib3chUTKnTO4uVfX5sLhUrUeqfjQSkZbWIXj9TiDMmQNcJ68NilTo3Wu
+         M4dPwaueRJBlK9W+yi8Ie5Ne+fHx5581zA3qMH08AC7hkV0rR5VRZCQjekL/qsEJREGV
+         3J5OWi2++cJLHikXK4ee+qpyJIFflmHeLr2JW+voRk6u4/kf9zmRk+Wlmf7nen4jQSSF
+         eBNXwwnAq38fctcxDl8OIRPC+3cK6aWNCuy+Hym7g3z2RDaOT659oFkTRIs5fEXMvHZe
+         xhNw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of andreas.dilger@intel.com designates 134.134.136.20 as permitted sender) smtp.mailfrom=andreas.dilger@intel.com
+       spf=pass (google.com: domain of andreas.dilger@intel.com designates 192.55.52.115 as permitted sender) smtp.mailfrom=andreas.dilger@intel.com
 Return-Path: <andreas.dilger@intel.com>
-Received: from mga02.intel.com (mga02.intel.com. [134.134.136.20])
-        by gmr-mx.google.com with ESMTPS id i72si1192072pfe.0.2017.10.29.18.16.13
+Received: from mga14.intel.com (mga14.intel.com. [192.55.52.115])
+        by gmr-mx.google.com with ESMTPS id w23si1004564plk.2.2017.10.29.18.16.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 29 Oct 2017 18:16:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of andreas.dilger@intel.com designates 134.134.136.20 as permitted sender) client-ip=134.134.136.20;
+        Sun, 29 Oct 2017 18:16:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of andreas.dilger@intel.com designates 192.55.52.115 as permitted sender) client-ip=192.55.52.115;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of andreas.dilger@intel.com designates 134.134.136.20 as permitted sender) smtp.mailfrom=andreas.dilger@intel.com
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
-  by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 29 Oct 2017 18:16:12 -0700
+       spf=pass (google.com: domain of andreas.dilger@intel.com designates 192.55.52.115 as permitted sender) smtp.mailfrom=andreas.dilger@intel.com
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+  by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 29 Oct 2017 18:16:12 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.44,317,1505804400"; 
-   d="scan'208";a="169303478"
-Received: from fmsmsx105.amr.corp.intel.com ([10.18.124.203])
-  by fmsmga006.fm.intel.com with ESMTP; 29 Oct 2017 18:16:12 -0700
-Received: from fmsmsx154.amr.corp.intel.com (10.18.116.70) by
- FMSMSX105.amr.corp.intel.com (10.18.124.203) with Microsoft SMTP Server (TLS)
+   d="scan'208";a="329375395"
+Received: from fmsmsx103.amr.corp.intel.com ([10.18.124.201])
+  by fmsmga004.fm.intel.com with ESMTP; 29 Oct 2017 18:16:12 -0700
+Received: from fmsmsx112.amr.corp.intel.com (10.18.116.6) by
+ FMSMSX103.amr.corp.intel.com (10.18.124.201) with Microsoft SMTP Server (TLS)
  id 14.3.319.2; Sun, 29 Oct 2017 18:16:12 -0700
 Received: from FMSMSX109.amr.corp.intel.com ([169.254.15.50]) by
- FMSMSX154.amr.corp.intel.com ([169.254.6.161]) with mapi id 14.03.0319.002;
+ FMSMSX112.amr.corp.intel.com ([169.254.5.121]) with mapi id 14.03.0319.002;
  Sun, 29 Oct 2017 18:16:11 -0700
 From: "Dilger, Andreas" <andreas.dilger@intel.com>
 To: Aastha Gupta <aastha.gupta4104@gmail.com>
 CC: "outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>,
 	"Drokin, Oleg" <oleg.drokin@intel.com>, James Simmons
 	<jsimmons@infradead.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v4 2/7] staging: lustre: fid: fix line over 80 characters
-Thread-Topic: [PATCH v4 2/7] staging: lustre: fid: fix line over 80
- characters
-Thread-Index: AQHTSEHv6mQ4YSxOpk6sgIQXi3a4uqL8HfsA
-Date: Mon, 30 Oct 2017 01:16:11 +0000
-Message-ID: <5C9FEFE6-B967-43CD-9C3A-F64407711115@intel.com>
+Subject: Re: [PATCH v4 7/7] staging: lustre: lllite: fix multi line comments
+ style
+Thread-Topic: [PATCH v4 7/7] staging: lustre: lllite: fix multi line
+ comments style
+Thread-Index: AQHTSEH63Qd8iY8SFkeFmWTWhRDiZqL63ckA
+Date: Mon, 30 Oct 2017 01:16:10 +0000
+Message-ID: <8F806F75-A6EB-47C0-9BC2-38D0EFB68D01@intel.com>
 References: <1508352586-25475-1-git-send-email-aastha.gupta4104@gmail.com>
- <1508352586-25475-3-git-send-email-aastha.gupta4104@gmail.com>
-In-Reply-To: <1508352586-25475-3-git-send-email-aastha.gupta4104@gmail.com>
+ <1508352586-25475-8-git-send-email-aastha.gupta4104@gmail.com>
+In-Reply-To: <1508352586-25475-8-git-send-email-aastha.gupta4104@gmail.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach:
 X-MS-TNEF-Correlator:
 x-originating-ip: [10.238.139.56]
 Content-Type: text/plain; charset="us-ascii"
-Content-ID: <C9C62FD02F61864A83A0AE116BFB3868@intel.com>
+Content-ID: <67D029B34C68704C9F065835E3745296@intel.com>
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 Return-Path: andreas.dilger@intel.com
 
 On Oct 18, 2017, at 12:49, Aastha Gupta <aastha.gupta4104@gmail.com> wrote:
 >=20
-> This patch fixes checkpatch.pl warning:
+> This patch fixes checkpatch.pl warnings:
 >=20
-> WARNING: line over 80 characters
+> WARNING: Block comments should align the * on each line
+>=20
+> WARNING: Block comments use a trailing */ on a separate line
 >=20
 > Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
 
 Reviewed-by: Andreas Dilger <andreas.dilger@intel.com>
 
 > ---
-> drivers/staging/lustre/lustre/fid/fid_request.c | 3 ++-
-> 1 file changed, 2 insertions(+), 1 deletion(-)
+> drivers/staging/lustre/lustre/llite/file.c           | 4 ++--
+> drivers/staging/lustre/lustre/llite/llite_internal.h | 5 +++--
+> drivers/staging/lustre/lustre/llite/rw.c             | 3 ++-
+> 3 files changed, 7 insertions(+), 5 deletions(-)
 >=20
-> diff --git a/drivers/staging/lustre/lustre/fid/fid_request.c b/drivers/st=
-aging/lustre/lustre/fid/fid_request.c
-> index ba73623..6a98225 100644
-> --- a/drivers/staging/lustre/lustre/fid/fid_request.c
-> +++ b/drivers/staging/lustre/lustre/fid/fid_request.c
-> @@ -279,7 +279,8 @@ int seq_client_alloc_fid(const struct lu_env *env,
-> 	*fid =3D seq->lcs_fid;
-> 	mutex_unlock(&seq->lcs_mutex);
+> diff --git a/drivers/staging/lustre/lustre/llite/file.c b/drivers/staging=
+/lustre/lustre/llite/file.c
+> index eee9bed..bbfc675 100644
+> --- a/drivers/staging/lustre/lustre/llite/file.c
+> +++ b/drivers/staging/lustre/lustre/llite/file.c
+> @@ -386,8 +386,8 @@ static int ll_intent_file_open(struct dentry *de, voi=
+d *lmm, int lmmsize,
+> 	ll_finish_md_op_data(op_data);
+> 	if (rc =3D=3D -ESTALE) {
+> 		/* reason for keep own exit path - don`t flood log
+> -		* with messages with -ESTALE errors.
+> -		*/
+> +		 * with messages with -ESTALE errors.
+> +		 */
+> 		if (!it_disposition(itp, DISP_OPEN_OPEN) ||
+> 		    it_open_error(DISP_OPEN_OPEN, itp))
+> 			goto out;
+> diff --git a/drivers/staging/lustre/lustre/llite/llite_internal.h b/drive=
+rs/staging/lustre/lustre/llite/llite_internal.h
+> index fc1d3f5..b553f9a 100644
+> --- a/drivers/staging/lustre/lustre/llite/llite_internal.h
+> +++ b/drivers/staging/lustre/lustre/llite/llite_internal.h
+> @@ -392,7 +392,8 @@ enum stats_track_type {
+> #define LL_SBI_XATTR_CACHE    0x80000 /* support for xattr cache */
+> #define LL_SBI_NOROOTSQUASH	0x100000 /* do not apply root squash */
+> #define LL_SBI_ALWAYS_PING	0x200000 /* always ping even if server
+> -					  * suppress_pings */
+> +					  * suppress_pings
+> +					  */
 >=20
-> -	CDEBUG(D_INFO, "%s: Allocated FID " DFID "\n", seq->lcs_name,  PFID(fid=
-));
-> +	CDEBUG(D_INFO,
-> +	       "%s: Allocated FID " DFID "\n", seq->lcs_name,  PFID(fid));
-> 	return rc;
-> }
-> EXPORT_SYMBOL(seq_client_alloc_fid);
+> #define LL_SBI_FLAGS {	\
+> 	"nolck",	\
+> @@ -1199,7 +1200,7 @@ typedef enum llioc_iter (*llioc_callback_t)(struct =
+inode *inode,
+>  * Return value:
+>  *      A magic pointer will be returned if success;
+>  *      otherwise, NULL will be returned.
+> - * */
+> + */
+> void *ll_iocontrol_register(llioc_callback_t cb, int count, unsigned int =
+*cmd);
+> void ll_iocontrol_unregister(void *magic);
+>=20
+> diff --git a/drivers/staging/lustre/lustre/llite/rw.c b/drivers/staging/l=
+ustre/lustre/llite/rw.c
+> index b6371c4..4fa9f9b 100644
+> --- a/drivers/staging/lustre/lustre/llite/rw.c
+> +++ b/drivers/staging/lustre/lustre/llite/rw.c
+> @@ -888,7 +888,8 @@ static void ras_update(struct ll_sb_info *sbi, struct=
+ inode *inode,
+>=20
+> 	/* The initial ras_window_len is set to the request size.  To avoid
+> 	 * uselessly reading and discarding pages for random IO the window is
+> -	 * only increased once per consecutive request received. */
+> +	 * only increased once per consecutive request received.
+> +	 */
+> 	if ((ras->ras_consecutive_requests > 1 || stride_detect) &&
+> 	    !ras->ras_request_index)
+> 		ras_increase_window(inode, ras, ra);
 > --=20
 > 2.7.4
 >=20
