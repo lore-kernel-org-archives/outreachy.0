@@ -1,108 +1,79 @@
-X-GM-THRID: 6608518464000753664
-X-Received: by 2002:a9d:2a77:: with SMTP id t110mr4623448ota.5.1538665607701;
-        Thu, 04 Oct 2018 08:06:47 -0700 (PDT)
+X-GM-THRID: 6491286193203838976
+X-Received: by 10.55.23.216 with SMTP id 85mr23475622qkx.14.1511483142686;
+        Thu, 23 Nov 2017 16:25:42 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:45c6:: with SMTP id s189-v6ls3344981oia.1.gmail; Thu, 04
- Oct 2018 08:06:46 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV60LYozQ1MFNATsPIVMEEKvDLJ9hHzlWgOvZfDl084P8BoSWcrXoiGRkhRGt/W/8jAp47udU
-X-Received: by 2002:aca:b1c3:: with SMTP id a186-v6mr4893023oif.38.1538665606980;
-        Thu, 04 Oct 2018 08:06:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538665606; cv=none;
+Received: by 10.55.197.17 with SMTP id p17ls3909804qki.13.gmail; Thu, 23 Nov
+ 2017 16:25:42 -0800 (PST)
+X-Google-Smtp-Source: AGs4zMbeH6CiRIVBMBItiwl4BXgyNfwZCn/y8F5n7IjgVMVuToTAEWAaf+mG8KEWqwzQj/HAHNxb
+X-Received: by 10.200.40.56 with SMTP id 53mr10238435qtq.6.1511483142017;
+        Thu, 23 Nov 2017 16:25:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1511483141; cv=none;
         d=google.com; s=arc-20160816;
-        b=JFZxEg9G8QwHYfbtSAxXKW+QmaKTwjAjAaPw3WV0r70RWLt335YH+IB0kpgjmEcDDD
-         AdsWamoG7p68rpC0tmJrYhlAZMiaSYrO2wQx2KDga03Spcqh3A4Agm+suVGqIvyDLL0m
-         b002Ya+V7/9+3erkOhJOGq/Adl5KomKdC97C9cdqw0jbgXMz/ghq4ZgPqfOgclmNkMBB
-         +uJD2FrtYceZtHbhsOOYpVXKzSFvt/94zBKDSzmraZEZtGMHkRYgzWduaMtGpaWxXHKs
-         UxKjgHxS0rJnsNOL6VLb+x3XT08O19uX8PK1JflJJmrHFXDgn8u9D/I19Y2W0P2XWjy0
-         3Hqw==
+        b=H4KyxexxVUtohv8jFNuUvXohInuLwgABsYPQpGnQT3Lr1NtZ0aCw5zGoP/UCjzMqS7
+         TGE/dw+JbChUeFm7DuPIkqZwyBJCUtt6+4nDsEwgGzR14uefi5bCUsr4ZSnXEKmM4fmX
+         MH0cwF8IgeDexnoUIbXf1QW5tIVC8qBh9rWW9qh6Su0N4Kjwrbon+JNVxuLT/NorNJ85
+         jJh/YjIka8XqDCsuWKgoonpY44QOHb3dM8q5800adtWt1W0DD3ED9XIQyMNMpwuYceNB
+         BMmGA1BpWIk6S3/ylqCP94zLZnPh7h1wYGC7NNDTpqwIDr9ZtmvKdpVuth/X1O4Wtiwb
+         X3jQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:subject:cc:to:from:date
-         :message-id:dkim-signature;
-        bh=3C3sexSYD0cQnjgCadQL8lbPPz7WSB0sjWHtF1kgMeg=;
-        b=zxYcPfy2W4Ks+psFulWeOCC4v0KS2qaCaiVQ8DG2hB67/oPAjGbLoGjl59BrUbIEnG
-         pv8uv6Wu7sKS/4od/KrC+VwpMYxth5abNWxLbLbb6uEHupVTsIvX6yWvPkexh7pTEvd2
-         kjnsG74p6bIa3wNlUnKG33Ni/q2r9KcE0e7iDRBPVQ4Rj8QnkBQdnatUJHg11oP1gBcf
-         jL6e00U4Yr8lMlFQy1Gga+IvZy6aT05FR9MSjfAynYaxt1zOCidNf8JuMG3Gg3w+Qky5
-         hvCss1yEQoPSBgPwR09Em9C67cQg3gLMnHoTTC+kwwLUNJRRM0oUWztyHqgz9utzqMf6
-         BRfQ==
+        h=content-transfer-encoding:mime-version:references:in-reply-to:date
+         :cc:to:from:subject:message-id:arc-authentication-results;
+        bh=rDCKUw4wcGpSLVCOAdBNvPViEsiPJju2TW5OU83kBRA=;
+        b=f5PJ7kuPbpSHY6Ki22xlRvV+lklzVaR/soaAy7tOtj4SVh4nkRExFTXMrov9T47l6a
+         qRbelET56b3nzIZorTSTxyDNp8qI9O8LbBlC5Adi4r+LngO+D+2v7/CB3mw6YUVAQv/3
+         m7Q/wVbCE+yj7azMPn3C0RBSI5nrGJYUZtbVLOyKAaNobvFL58M7r+LT+yAkABI1jh7z
+         e51GIF3VSHb6iSmd7rrr7rvwsaYIWKMyIrFwtpwnriwNsIXlPVu8xPNA9QCma+0KWxPd
+         YX+n04T1pIe18tdfg3Snl2m/kcrocxbK0UtnLxT/r5v24Jby8ZKT3hIjGGXriJ5wummL
+         9Ukw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Y67Ddx6S;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id a84-v6si250363oii.1.2018.10.04.08.06.46
+       spf=neutral (google.com: 216.40.44.230 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
+Return-Path: <joe@perches.com>
+Received: from smtprelay.hostedemail.com (smtprelay0230.hostedemail.com. [216.40.44.230])
+        by gmr-mx.google.com with ESMTPS id q34si1296647qtg.2.2017.11.23.16.25.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 04 Oct 2018 08:06:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
+        Thu, 23 Nov 2017 16:25:41 -0800 (PST)
+Received-SPF: neutral (google.com: 216.40.44.230 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.230;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Y67Ddx6S;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x441.google.com with SMTP id c25-v6so3205163pfe.6
-        for <outreachy-kernel@googlegroups.com>; Thu, 04 Oct 2018 08:06:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:mime-version:content-disposition
-         :user-agent;
-        bh=3C3sexSYD0cQnjgCadQL8lbPPz7WSB0sjWHtF1kgMeg=;
-        b=Y67Ddx6SEUO2SsqLKljwv185NE6c6UOcT7SQUepfCRVMl1dTc2RRITmpPN5VBAgltl
-         tl630PZqVOQxZfj9EovLLKqTNHJl0Sgj1XxL7/iVf7WCt1s7bT4N6Vu5M7RHgsJukQIx
-         CyS7aqJGxOysmq8TJnVM7pykbELucozDXw0wRi0RmoWio6mC793UBVY0fGZJCTAlJlPc
-         6cO8aEQy8988UsezahX7Dd6A35X6qM4zw8Gq3YH0EfdbkRw645fZNU29rc0UoFULUX49
-         PN33O/swIAcnKgTtsme073+6Q90NiRGTTW1NpCDuBFVTCOPrn3z1B9qvp2ILxe3iiyvA
-         k+nQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
-         :content-disposition:user-agent;
-        bh=3C3sexSYD0cQnjgCadQL8lbPPz7WSB0sjWHtF1kgMeg=;
-        b=j5Gx50VWaGYOMVqfn5rIATYBzH+ZA0eCl88RJeeLUCGBkgiqdCcEu36IcqIpXb3Zdj
-         FdF+nfhGbz9+DdnXUNNmp0s0sb18QldXyoYxsJFpo5z+9XoaLPmPv/CMxSB0vB3DjO0P
-         +5FyVp/LM21YdbIfjCvI1mRuX76kRUmbEPGO2zBa+LZXOJE64IJu2wAhAduVyF+dKsTS
-         QPa6Pl/+6FG6BIOp0A8SgC7Ir7UpunVsq4JcZggVgIC1AXKqp+60NVt2o/3Qqyl8dwIX
-         qUftMxyJGE4yO9RNgrMomLboInzmO33w6FxaVGToruSqTc8Z0XE6AA5/LEPvfxv4I6Aa
-         1V2Q==
-X-Gm-Message-State: ABuFfoiatcwIJj1/lMPp5D2Hi+9w2DCku7BELUmoHxK2TC+WXvYeK84Q
-	NXXiAPDeS4ctU5dCXDc7LSzOvV/P
-X-Received: by 2002:a63:df06:: with SMTP id u6-v6mr6099924pgg.202.1538665606252;
-        Thu, 04 Oct 2018 08:06:46 -0700 (PDT)
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from bhanu-MacBookAir ([183.83.92.101])
-        by smtp.gmail.com with ESMTPSA id v5-v6sm13282816pfd.64.2018.10.04.08.06.44
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 04 Oct 2018 08:06:45 -0700 (PDT)
-Message-ID: <5bb62c85.1c69fb81.9de38.b242@mx.google.com>
-X-Google-Original-Message-ID: <20181004150643.GA29463@bhanusreemahesh@gmail.com>
-Date: Thu, 4 Oct 2018 20:36:43 +0530
-From: Bhanusree <bhanusreemahesh@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [Outreachy kerne][PATCH dri-devel]drm/ati_pcigart.c SPDX License
- Identifier is added in form of a comment.
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+       spf=neutral (google.com: 216.40.44.230 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
+	by smtprelay08.hostedemail.com (Postfix) with ESMTP id 0E61B182CED28;
+	Fri, 24 Nov 2017 00:25:41 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,:::::::::::::::::::::,RULES_HIT:41:355:379:541:599:988:989:1260:1277:1311:1313:1314:1345:1359:1373:1515:1516:1518:1534:1537:1560:1593:1594:1711:1714:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3622:3653:3867:4321:5007:6642:10004:10400:10848:11026:11658:11914:12555:12740:12760:12895:12986:13069:13311:13357:13439:14659:21080:21627:30054:30091,0,RBL:none,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:,MSBL:0,DNSBL:none,Custom_rules:0:0:0,LFtime:2,LUA_SUMMARY:none
+X-HE-Tag: camp95_143f85e329f24
+X-Filterd-Recvd-Size: 1453
+Received: from XPS-9350 (cpe-23-242-70-174.socal.res.rr.com [23.242.70.174])
+	(Authenticated sender: joe@perches.com)
+	by omf10.hostedemail.com (Postfix) with ESMTPA;
+	Fri, 24 Nov 2017 00:25:39 +0000 (UTC)
+Message-ID: <1511483137.5308.8.camel@perches.com>
+Subject: Re: [PATCH] net: usb: hso.c: remove unneeded DRIVER_LICENSE #define
+From: Joe Perches <joe@perches.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: netdev@vger.kernel.org, Julia Lawall <julia.lawall@lip6.fr>, cocci
+ <cocci@systeme.lip6.fr>, outreachy-kernel@googlegroups.com, "David S.
+ Miller" <davem@davemloft.net>, Andreas Kemnade <andreas@kemnade.info>,
+ Johan Hovold <johan@kernel.org>, linux-kernel@vger.kernel.org, Philippe
+ Ombredanne <pombredanne@nexb.com>, linux-usb@vger.kernel.org
+Date: Thu, 23 Nov 2017 16:25:37 -0800
+In-Reply-To: <1511479801.5308.6.camel@perches.com>
+References: <20171117141939.GD17880@kroah.com>
+	 <1511370336.6989.100.camel@perches.com> <20171122171201.GA6528@kroah.com>
+	 <1511479801.5308.6.camel@perches.com>
+Content-Type: text/plain; charset="ISO-8859-1"
+X-Mailer: Evolution 3.26.1-1 
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 
-SPDX License added Identifier in the first line
+On Thu, 2017-11-23 at 15:30 -0800, Joe Perches wrote:
+> --- /dev/null	2017-11-23 06:19:12.943046739 -0800
+> +++ single_use_module.pl	2017-11-23 15:23:11.729812156 -0800
+> @@ -0,0 +1,15 @@
+[]
+> +$data =~ s~$var~$string~;
 
-Signed-off-by: Bhanusree<bhanusreemahesh@gmail.com>
----
- drivers/gpu/drm/ati_pcigart.c | 1 +
- 1 file changed, 1 insertion(+)
+this needs to be:
 
-diff --git a/drivers/gpu/drm/ati_pcigart.c b/drivers/gpu/drm/ati_pcigart.c
-index 6c4d4b6..4825211 100644
---- a/drivers/gpu/drm/ati_pcigart.c
-+++ b/drivers/gpu/drm/ati_pcigart.c
-@@ -1,3 +1,4 @@
-+/* SPDX-License-Identifier: GPL-2.0+ */
- /**
-  * \file ati_pcigart.c
-  * ATI PCI GART support
--- 
-2.7.4
-
+$data =~ s~\b$var\b~$string~;
 
