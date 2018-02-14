@@ -1,129 +1,67 @@
-X-GM-THRID: 6337669078930423808
-X-Received: by 10.66.21.72 with SMTP id t8mr916147pae.117.1475603570479;
-        Tue, 04 Oct 2016 10:52:50 -0700 (PDT)
+X-GM-THRID: 6522213287288897536
+X-Received: by 10.80.243.144 with SMTP id g16mr30781edm.11.1518636279310;
+        Wed, 14 Feb 2018 11:24:39 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.14.162 with SMTP id 31ls13939698otj.21.gmail; Tue, 04 Oct
- 2016 10:52:50 -0700 (PDT)
-X-Received: by 10.159.48.216 with SMTP id k24mr1154738uab.3.1475603570063;
-        Tue, 04 Oct 2016 10:52:50 -0700 (PDT)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id um12si1549304pab.2.2016.10.04.10.52.49
+Received: by 10.80.171.6 with SMTP id s6ls9368710edc.2.gmail; Wed, 14 Feb 2018
+ 11:24:37 -0800 (PST)
+X-Google-Smtp-Source: AH8x226M+jXiIyRMZLb8ozgE5EzDAy9Taka0I8XsxWIq2/K2vj/oOrTI5Dl3gDP4delEECsTPL9P
+X-Received: by 10.80.243.144 with SMTP id g16mr30772edm.11.1518636277726;
+        Wed, 14 Feb 2018 11:24:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518636277; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Xxh8JIN7Apd7ztf1Dr5sswAGGZRmF1pV2N2bmWU6va3WAk1fOvXgLrooiDfbkBCUBf
+         co966U55CHW7di7nAZsjrX4OtSt5xFvMBgIyz5pWySzUdoYMAOQJdQlRQFhmsckUUqaG
+         RmNVCBROeJsWvpVZE7LjTE60tgR9RAncg9ScdlkLhDBW7r2EH6aBeL39WxzKXwbKRtJY
+         GMGCjaSZlY2TtOl+WV6xkUsoeugJ2jwMaQKeoS4hGTcv5Pq7Kh/ys8NjewDICTZ8kGRk
+         9EE97fHEgGO7CwI2nYp2u8numb8AS8zWT5huRATGNPhH1UkdtZFcQL2ryCDKg/UzZJ+E
+         lvKg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=6gT9KtsMXTGkjDR8C9HUILwDC8S8pvjxiJVoQiX1VCg=;
+        b=fTvFWNW7B9ID98EjB4YJI17ljnYAGlztSjsWSebixOfmDmW9F99UMixTQ+JCVQFJHO
+         rg5s0+jsgfPN5NfspPzV1ylovWMcuizAbKA7tU8HbkNdlCqICIyTPb1Ua193bvXnSG/l
+         4myfw0idhU4w6nnKwnZtKhTVAtiW13nke4WNHDXeb0rjYVw/3vReP3c/+XBYQ+D7k/z1
+         iO2dwNPH3DLAQJLRtmB+FKTWxVSSap0lg+NNloEhp8rsAAfcFWkJGk1ZSw1AZ6BgMDJj
+         nZ++5MEG4sTA4nD+bCHhkoOVCK4aAKolKlUVNzYMjZeI9ShwfUmr5kPltytrQvqU6iqH
+         eyjw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id t4si871060edt.2.2018.02.14.11.24.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 04 Oct 2016 10:52:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Wed, 14 Feb 2018 11:24:37 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id 190so4738209pfv.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 04 Oct 2016 10:52:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=EILq/ua/RzCGN3sbCzMD+mSufNQwqUFaY019mkefJwM=;
-        b=KXwov8YQkXZDoKoyV6wYjXUpr2BCcewNK7uz+oTYll8ERrak7Uqt0mt5oXSmWG31Fu
-         Xl4tWX+2f8A0YMRIBsJO5RhypdTr1vOsGXMfyeMQIhVGvkv3ztyou1OvwRpWD43i+o+a
-         z4/3aHaNzKY4v9ua5hnXslKehNR9tXv+Vp08Q1inWzCGQqFuBFxVM3x8UMwcldFek3R8
-         81MvfKf62xD9dCYVWijST86xITXPzbeeEOdgyfIb8rK4hTEt6UEQ7fJi1s7pd/yNiLyd
-         gLMjMl7rKLnhtU/Uja8kIdUvqmX+qRDrrz7oZlyTVDybQK8UJ3V61a7FKiP6bRzosMfs
-         l2Ug==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=EILq/ua/RzCGN3sbCzMD+mSufNQwqUFaY019mkefJwM=;
-        b=gLBDBUeWAe3EaVPDwwMWJ++7Neq1neOhsKQGu0HUwl8gqIal4Igt2G3ZvywjRtPd6Y
-         rZx5Euh/mn7hSkSyVCCJD69n1kh8yVZuYvyvEfVaiOS84tW02kQGzb2Hbz0x9Zr0xd1r
-         x9SwCDGySh2HI91DZszgAiNV2NXjRWOQUry+SP3diYkmk6G96Z5CPoZAzZ+301PKr0m2
-         SFyJJAEZRpCNDdK2Tibz2IQghY6WoICZJ5of0J4cQQoKMsdUKO2Or0MI3z8eKOMyUehy
-         C0GXUSDJAzizEaECthEWM9KtUqMtqha4P83cnZbMmbSYL+Tj+gzGDouFG0okDu09lQIx
-         2kxQ==
-X-Gm-Message-State: AA6/9RnL5kKyBNyFM4FrrkHqqZZ24CIRl05Nil+dZ/k7ljNcDAiYm64EZ7+UFML0y1jAiA==
-X-Received: by 10.98.27.138 with SMTP id b132mr7961236pfb.111.1475603569826;
-        Tue, 04 Oct 2016 10:52:49 -0700 (PDT)
-Return-Path: <bhumirks@gmail.com>
-Received: from gmail.com ([223.176.143.91])
-        by smtp.gmail.com with ESMTPSA id d85sm43237128pfj.57.2016.10.04.10.52.43
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 04 Oct 2016 10:52:48 -0700 (PDT)
-Received: by gmail.com (sSMTP sendmail emulation); Tue, 04 Oct 2016 23:22:38 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	gregkh@linuxfoundation.org
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: rtl8192e: rtl_core: Constify rtllib_qos_parameters structures
-Date: Tue,  4 Oct 2016 23:22:36 +0530
-Message-Id: <1475603556-21698-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.46,513,1511823600"; 
+   d="scan'208";a="254815838"
+Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 14 Feb 2018 20:24:37 +0100
+Date: Wed, 14 Feb 2018 20:24:36 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Katie Dunne <kedunne@ucsc.edu>
+cc: Vaishali Thakkar <vthakkar1994@gmail.com>, 
+    outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Initial Application
+In-Reply-To: <20180214164825.maasspl575rl7343@kdunne-Inspiron-5566>
+Message-ID: <alpine.DEB.2.20.1802142023150.2178@hadrien>
+References: <20180214011834.4t7ltqv632mspyy7@kdunne-Inspiron-5566> <alpine.DEB.2.20.1802140843210.3874@hadrien> <CAK-LDbJHmSzXW+n3HXGYke0_siubjruTrPD4n0dNA26VtrTGuA@mail.gmail.com> <20180214164825.maasspl575rl7343@kdunne-Inspiron-5566>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Declare the structure rtllib_qos_parameters as constant as it is only
-passed as the second argument to the function memcpy. This argument
-is constant so the fields of rtllib_qos_parameters structure are
-never modified and hence it can be declared as const.
-Done using coccinelle:
+> Thanks Vaishali and Julia for the updates. In case it is still needed, I
+> have attached a pdf of the pages that are restricted until verifying
+> eligibility.
 
-@r1 disable optional_qualifier @
-identifier i;
-position p;
-@@
-static struct rtllib_qos_parameters i@p = {...};
+To my understanding you should be able to check eligibility without making
+a contribution, then see the projects, then work on the tutorial and then
+the project small tasks, and the update your application accordingly with
+the information for the specific projects you are interested in.
 
-@ok1@
-identifier r1.i;
-position p;
-expression e1,e2;
-@@
-memcpy(e1,&i@p,e2)
-
-@bad@
-position p!={r1.p,ok1.p};
-identifier r1.i;
-@@
-i@p
-
-@depends on !bad disable optional_qualifier@
-identifier r1.i;
-@@
-static
-+const
-struct rtllib_qos_parameters i={...};
-
-@depends on !bad disable optional_qualifier@
-identifier r1.i;
-@@
-+const
-struct rtllib_qos_parameters i;
-
-File size before:
-   text	   data	    bss	    dec	    hex	filename
-  30910	    496	    201	  31607	   7b77
-drivers/staging/rtl8192e/rtl8192e/rtl_core.o
-
-File size after:
-   text	   data	    bss	    dec	    hex	filename
-  30942	    464	    201	  31607	   7b77
-drivers/staging/rtl8192e/rtl8192e/rtl_core.o
-
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
- drivers/staging/rtl8192e/rtl8192e/rtl_core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-index 4c30eea..f985d88 100644
---- a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-+++ b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-@@ -367,7 +367,7 @@ static void _rtl92e_update_cap(struct net_device *dev, u16 cap)
- 	}
- }
- 
--static struct rtllib_qos_parameters def_qos_parameters = {
-+static const struct rtllib_qos_parameters def_qos_parameters = {
- 	{cpu_to_le16(3), cpu_to_le16(3), cpu_to_le16(3), cpu_to_le16(3)},
- 	{cpu_to_le16(7), cpu_to_le16(7), cpu_to_le16(7), cpu_to_le16(7)},
- 	{2, 2, 2, 2},
--- 
-1.9.1
-
+julia
 
