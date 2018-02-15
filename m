@@ -1,67 +1,61 @@
 X-GM-THRID: 6522835256508153856
-X-Received: by 10.28.71.132 with SMTP id m4mr681884wmi.28.1518724695434;
-        Thu, 15 Feb 2018 11:58:15 -0800 (PST)
+X-Received: by 10.25.160.195 with SMTP id j186mr262854lfe.44.1518717448601;
+        Thu, 15 Feb 2018 09:57:28 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.116.12 with SMTP id p12ls212095wmc.2.gmail; Thu, 15 Feb
- 2018 11:58:14 -0800 (PST)
-X-Google-Smtp-Source: AH8x225FPd6rjyCmsA2WELvvFYAObYPjoGTCsxL5C8QSZ+3gdD4l+ENUbEaKdFHOUrP1KsCPdKBR
-X-Received: by 10.28.91.147 with SMTP id p141mr1037053wmb.31.1518724694190;
-        Thu, 15 Feb 2018 11:58:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518724694; cv=none;
+Received: by 10.46.71.68 with SMTP id u65ls35662lja.13.gmail; Thu, 15 Feb 2018
+ 09:57:26 -0800 (PST)
+X-Google-Smtp-Source: AH8x226IwqLsWow7b8AMpo6kKeKH33oH89JxDEwHATG58/yAVrbEXFWdv7zR2xBTQ7zj0Dyqm+K9
+X-Received: by 10.46.18.219 with SMTP id 88mr217296ljs.20.1518717446792;
+        Thu, 15 Feb 2018 09:57:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518717446; cv=none;
         d=google.com; s=arc-20160816;
-        b=n3tE2FMsmFR91jKGP7y+7pqAAbHh4i1L74oc5NSEUTkkgLtIWXs7UhfIoJD2W4W4dG
-         QhaTqj1qjInUAYAjc8lp1W0/8Gvwno7kkoukbi7Mxt6fOgSM7iRe/FS9mbEd0GpadhO4
-         p737WaokbPUjIFBkP3pjxjzALkKRGoiZw/IXz3Dyc/TjvPxt3Xemz08+1v9wEe+JIQUC
-         tNoUa5s++sMV39kf7qoPr26FF697SBAUTWPUNfP79oWRuk/3RaDemSII2ZThOMNZtma+
-         MVXgD2cJtNmy1+pxUdlUwsnilvR+aOxL7C+Kl2ZNRpou4+QDsIB3XrJ/+WrtpuX/kENt
-         UGrg==
+        b=T3a1yyBEJ2LGT3jfVinraFlVrQtYD2fNNKzFdMLJ2LHFAEa/Si14RjvQzhRoO6Ze3x
+         syhuB8hX6DkdiJ8jpIOB8CVSJMi/HwuWDagmFfgrCYueyA+tGY+csUoKlgaB/3ue0pJ+
+         F6K73EERMZJ9UxVwbqnnuKSsIdiQSumCY51U2yzTXeOYen5ezfUi6WmXZD67Je+hVejO
+         +Weq5qcyoC2uSFpdkWw8I4J9+WNTbfOn/AbFZDueX2MpgdkU+eHLGCUAu7a7IyQ+76/a
+         4CvtCFNsr9UB5LF2aQ6KjHiAZ3gI1jvIdZXf1pBD6/yxT1496Rr6ORNKdOUWcytkyCCO
+         OJYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=0BNSbWFgHOvOOqazplZD8u6cSxzZAI5g61gs7xH63VY=;
-        b=Y2MwgeFr2C4j80i3mAsqZeDPBqdlWtfjFy6krlDNXAYDZsWSipf5nUQWi6OlRdF0iD
-         8N+pC9Uqnh4PLOaZfhF0836g3Krmb5nZPGhJ4/xpH8OxO7HPzTTNnisSsPhdui6RTvRm
-         dk+aVvbcfr0pYBtdPOOK/g0E7YsNrS5TRGxyPxZljmpQ+mLd6PUChNXdKtR5mvVCtjz7
-         xiZBW1ANnNIZbljla+VMEbt/6dhU26zORQQrM7WPecvwVwnjOM9mhgZUkk6v1zbgZnCv
-         6OTW8vRUW5I6V5hn2FPXWewsd0VPe7jia+t0QwafoQ+XlV96Yu0+zcV7a9W6HmTCCJe0
-         aLWQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=Lx1Uj+0s/TSHpw8K3dZET5o1KlR8nscaZY3YrP9RZto=;
+        b=JWiA/aM6Dufr7omBcoxot1+3oSHgn4rTqn/h+F9JqqhP7+3XTYI/zSb2Bjzz9ZBBZi
+         IN5N4ys+Bm4aeyT62Tj6oMWdkphUIh6+Qvf1GK44avEERtAu7iXf3AaWjr1S0AbbRVbO
+         o9IQQaoDRiSNAWy075l9/SEjzdUsCFk5FJfT68XEG5jJsxcKlbRrfpmcdajUc4Uu+jpv
+         TktDs2adO1J2o+AYpR4ekbLoWvGGWijjU/KKdMdpojKoVyT8OpQeSEBLDPhn7aq3UUTn
+         DT6sMdmKwwGqgGhn8cEq5snI+SaykPaW/uZpNGscj1RXglR3iO+G4NY/EWUaNoJlJ/XD
+         9bKw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id y42si799138wry.5.2018.02.15.11.58.14
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id u10si40842lju.0.2018.02.15.09.57.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Feb 2018 11:58:14 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Thu, 15 Feb 2018 09:57:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.46,517,1511823600"; 
-   d="scan'208";a="313817023"
-Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 15 Feb 2018 20:58:13 +0100
-Date: Thu, 15 Feb 2018 20:58:13 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [37.169.103.153])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 2F7351032;
+	Thu, 15 Feb 2018 17:57:23 +0000 (UTC)
+Date: Thu, 15 Feb 2018 18:57:24 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
 To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-cc: Dafna Hirschfeld <dafna3@gmail.com>, 
-    outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: Dafna Hirschfeld <dafna3@gmail.com>,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
 Subject: Re: [Outreachy kernel] who to send first patch to
-In-Reply-To: <CAAEAJfAwxr5dyHt=yjotkdvTWNo5M_DsWvGPMBkD+eiHE++CEQ@mail.gmail.com>
-Message-ID: <alpine.DEB.2.20.1802152057000.2187@hadrien>
-References: <a8ea6283-061c-4172-a7c1-e2a7e99d46f3@googlegroups.com> <CAAEAJfAnfkDi=NvBA_FKRGasNkn-qh8TPBvE4r5Rfm23_ngyKg@mail.gmail.com> <CAAEAJfAwxr5dyHt=yjotkdvTWNo5M_DsWvGPMBkD+eiHE++CEQ@mail.gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+Message-ID: <20180215175724.GA14180@kroah.com>
+References: <a8ea6283-061c-4172-a7c1-e2a7e99d46f3@googlegroups.com>
+ <CAAEAJfAnfkDi=NvBA_FKRGasNkn-qh8TPBvE4r5Rfm23_ngyKg@mail.gmail.com>
+ <CAAEAJfAwxr5dyHt=yjotkdvTWNo5M_DsWvGPMBkD+eiHE++CEQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; BOUNDARY="8323329-337635708-1518724693=:2187"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAAEAJfAwxr5dyHt=yjotkdvTWNo5M_DsWvGPMBkD+eiHE++CEQ@mail.gmail.com>
+User-Agent: Mutt/1.9.3 (2018-01-21)
 
---8323329-337635708-1518724693=:2187
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
-
-
-
-On Thu, 15 Feb 2018, Ezequiel Garcia wrote:
-
+On Thu, Feb 15, 2018 at 02:48:30PM -0300, Ezequiel Garcia wrote:
 > On 15 February 2018 at 14:42, Ezequiel Garcia
 > <ezequiel@vanguardiasur.com.ar> wrote:
 > > On 15 February 2018 at 14:32, Dafna Hirschfeld <dafna3@gmail.com> wrote:
@@ -106,11 +100,11 @@ On Thu, 15 Feb 2018, Ezequiel Garcia wrote:
 > >  #include <plat/common.h>
 > >  #include <plat/addr-map.h>
 > >
->
+> 
 > Oops... sent the mail by mistake. So, like I was saying: I have that
 > patch ready.
 > Now I need to see who I'll sent to:
->
+> 
 > ./scripts/get_maintainer.pl 0001-ARM-mv78xx0-remove-unused-header.patch
 > Jason Cooper <jason@lakedaemon.net> (maintainer:ARM/Marvell
 > Dove/MV78xx0/Orion SOC support)
@@ -123,37 +117,24 @@ On Thu, 15 Feb 2018, Ezequiel Garcia wrote:
 > Russell King <linux@armlinux.org.uk> (maintainer:ARM PORT)
 > linux-arm-kernel@lists.infradead.org (moderated list:ARM SUB-ARCHITECTURES)
 > linux-kernel@vger.kernel.org (open list)
->
+> 
 > OK, that's a long list. I'll send the patch to just the SOC
 > maintainers and the ARM mailing list, not all of them listed above.
->
+> 
 > git send-email  --to jason@lakedaemon.net --to andrew@lunn.ch --to
 > sebastian.hesselbarth@gmail.com --to
 > gregory.clement@free-electrons.com
 > 0001-ARM-mv78xx0-remove-unused-header.patch --cc
 > linux-arm-kernel@lists.infradead.org
->
+> 
 > In your case, you'll most likely pick Cc the outreachy mailing list
 > and send it to Greg KH (as Greg just said).
 
-There is a suggested command line in the tutorial that should limit the
-set of people to the actual maintainers.
+For staging patches, please also cc: the public mailing list for the
+staging drivers, and any other maintainers of the drivers, they want to
+see these patches as well.
 
-julia
+thanks,
 
-
->
-> Hope it helps,
-> --
-> Ezequiel García, VanguardiaSur
-> www.vanguardiasur.com.ar
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAAEAJfAwxr5dyHt%3DyjotkdvTWNo5M_DsWvGPMBkD%2BeiHE%2B%2BCEQ%40mail.gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
---8323329-337635708-1518724693=:2187--
+greg k-h
 
