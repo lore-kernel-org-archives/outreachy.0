@@ -1,124 +1,113 @@
-X-GM-THRID: 6609200682225369088
-X-Received: by 2002:a63:84c1:: with SMTP id k184-v6mr6106533pgd.42.1538824448926;
-        Sat, 06 Oct 2018 04:14:08 -0700 (PDT)
+X-GM-THRID: 6522852497616273408
+X-Received: by 10.28.247.5 with SMTP id v5mr1082759wmh.12.1518725305507;
+        Thu, 15 Feb 2018 12:08:25 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:fe0a:: with SMTP id p10-v6ls2585186pgh.3.gmail; Sat, 06
- Oct 2018 04:14:08 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV61BHOJPI19tiSRoQtpvkgWcdxC4SMPJTY2yK3THGjVqKfxNOdA1TdToaVTkRobi/A5id0zI
-X-Received: by 2002:a62:46cf:: with SMTP id o76-v6mr6968144pfi.69.1538824448222;
-        Sat, 06 Oct 2018 04:14:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538824448; cv=none;
+Received: by 10.223.187.9 with SMTP id r9ls189793wrg.4.gmail; Thu, 15 Feb 2018
+ 12:08:24 -0800 (PST)
+X-Google-Smtp-Source: AH8x226mFYdz8h3RJOJqOjTenGBlfF4iy8rX883mzgLR4cdO360kSkD0iU27i0E/7FaBNP/1GZTy
+X-Received: by 10.223.184.60 with SMTP id h57mr704905wrf.0.1518725304762;
+        Thu, 15 Feb 2018 12:08:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518725304; cv=none;
         d=google.com; s=arc-20160816;
-        b=Gdzvg1nBB//Tg4A8/WWiXxuTyh9xTlfrz0+cKgK7nm2NqCL0eSPpyitb/wniJcGbZ7
-         q1OYjpiGVtxzHrbpLOBx8OS377VlQb76c/1iqUtWtqhYfc3QKEfDRuAslO6VtzVePBcP
-         SDOdcwSWuzGkuQ59uhofVMuEy/kiFFZydK6Fksbhv+7XHxWMbC+a5tx9v/5rxlOhXq02
-         FmfTNsOvUk/qAXmFNAqQvi+vxemnys/SVQ0GbroBslKqCJfnLCIkRZPsi/XTE7X+Nfkc
-         tVBwSpp2yRh0CIQeZoenFSCDuGmVx8s6CN3CxchnU67Y+zLzMN3FTRcS1PiQ4cTe6VEw
-         ZvnQ==
+        b=aYpi8HAx5JE4rpfzlJx9ThbpVVK/3wXiMdPh+L1Lm+gJxcObeE+oxCggk9aWNiBKvx
+         RZnuL58d+l7s0P9ZQ+AyWcbjOQ5EVT8RmU0iK4qsh2t1wt0gaW7lEPMfuqEbmCaa67JP
+         0TKTZGjW2KXsx5bYecny8dlysulE/56DKkSHUuXp21bN2pKLmfAHI++eJc+Ek0KO3D+L
+         8akC0zP8A4XE8ktB1nKt1Y26UeoDyob9wv+Xdd4n1H3fIMGwUk8koa/T/TS9yAbTZs3x
+         HM/SkoPehZbu9TnFvlJYb/BQcaq2Dpo40exGfcG3lD8FHQ80qJPsh6euBggyHyiW7LHH
+         cRNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=rJH4e84JPQVUMo28+bgDoJcISRq6J7z/bG1ZruR3H3U=;
-        b=S5BVmMvRY8lAm9W4Mwcm8XHKTXL7cD4BFrgW/2rxy7/UHlT+jwY9wUL4oqR6Dud2Fx
-         8sT27/UqudDieD8ygBgg3K/3MXcvNWC0deYrPmzHDRzsQ1k9e8CBJuivbWo15sSgQTjj
-         1IisTNfgFNkt5aHoj70/dplWYQm+7hPGsowFWUdMiQ4yGytDNqrvYLqGh6tudIBq4zK6
-         gyhvv4epCf+RgXk2QoOyEwIwUOUkIxkd5zVXfAKA4NEbC0F42tZBvYc6zQGs5qUJAydb
-         hYsVP2JoySLt9cKaaOVvhUzRwpiwZGXmgvncEecc3g+F3LogpwF7jzLmEzY0ZsC2T1P9
-         QhhA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=BZxK1MZ3/sBvO2auBLvR9w1y06O9otk1RL+7vJz3QXU=;
+        b=a2HWDLNXyPvv3mfEoQGTKxJKUdPV/nNg3Ka28eZoyKrWK0SUWBozUNeSwJLAEv6wad
+         b+0Xc5SDhRSDlSI8S7WswQSTf6kdRQagTAqyVArmEbp6AbLKONNxQZ8zSvMiSBDvcYWJ
+         612lzVSCEJ5/ztpEIapckWt5IvdQpjwhoRjbYud9BZxSzNj4rkdNnjRboEkFIDL9lKzs
+         Y+fuZBXGDx9aW8wjGxDqtOXFYdFSThGOtfQVd5jrCaOY0Tth5KiZkJ6swRjU9xN8IY1a
+         Wkf4PStUcA+Yyf/OwGQoKb1E3vgvWuuh2EV8+vSs2X0kgkDjqhJ0YOuN0kiDMp5faeTO
+         wNZA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TMcTug6L;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id s138-v6si564017pgs.1.2018.10.06.04.14.08
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id e14si59546wmg.0.2018.02.15.12.08.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 06 Oct 2018 04:14:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        Thu, 15 Feb 2018 12:08:24 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TMcTug6L;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id r77-v6so5835734pgr.5
-        for <outreachy-kernel@googlegroups.com>; Sat, 06 Oct 2018 04:14:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:reply-to:mime-version
-         :content-disposition:user-agent;
-        bh=rJH4e84JPQVUMo28+bgDoJcISRq6J7z/bG1ZruR3H3U=;
-        b=TMcTug6L1Gu9jYoCD0NZ/f0d8JDjwrFLm9sxcWA1ojoGIWHEDAP5j0fcy30dFpNIKZ
-         IwoXEybXyuPvtvVH987f+g8arcfDA5fDDKrPME7fEio8IwzXf0Bgvj4Jc1wOwiNGb9hI
-         Am20TT2K1+ZkSQ2/wlBvH0kRDIRH18BPhzMnqUmqnBh5neqfnMmuqnVyeLCROuI1bFOi
-         l8J8lB4rVeeO+UusK6oNDUQNNED4+HkUX5vNugmn8zkoV687CRAw0dJ0HpvNB+wwDJCu
-         /b0a/lZoYDtRiasxIjcIs4PZjvn1vi1f5N+6gbizXrAGzn+E4gUePSZUfPuFMoFPcqfw
-         jB5A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
-         :mime-version:content-disposition:user-agent;
-        bh=rJH4e84JPQVUMo28+bgDoJcISRq6J7z/bG1ZruR3H3U=;
-        b=AuaaUfbVzSRcC6DjEKCxOiQgKe2fjO8qkpnXjdV/KXT1wSHoUY1F8RzYX7yx4x3e6m
-         MrbvbaV0nMPegHw+FJt5QEn1koYGZr87CvQ925HDsWJv+wUaC11M1BE6qSWD/bnblOED
-         QIEN9ojIOpPqwzO/DAQGqSxo8n+NHiMDGW28Z5aJvuBWesrGGdst3CofU+RZALbTe1ae
-         8NZoeyldsqsNzMOiR8p4DfWk2PPJOIwhUGU/xkP7leXzfAXtcbikO0Xb8E6WN2Cb9QnJ
-         hQsD3Nj+B69iyuaNzzGIvcmXZcVNvXv40vI6uW47vyLi9cCZdbDr2spltboMZVXz5/an
-         8wmw==
-X-Gm-Message-State: ABuFfojuEqaKyhnYi4g9hl9E31D0cxra66yYG+mVDPOhykInTPMKFRXm
-	McFkwgiP5/xi5c151mnxoFI=
-X-Received: by 2002:a63:78cc:: with SMTP id t195-v6mr13724770pgc.329.1538824447841;
-        Sat, 06 Oct 2018 04:14:07 -0700 (PDT)
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from veda-VGN-CS3AGH-R ([183.83.92.101])
-        by smtp.gmail.com with ESMTPSA id s78-v6sm35409143pfd.138.2018.10.06.04.14.06
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 06 Oct 2018 04:14:07 -0700 (PDT)
-Date: Sat, 6 Oct 2018 16:44:04 +0530
-From: Bhanusree Pola <bhanusreemahesh@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: bhanusreemahesh@gmail.com, gregkh@linuxfoundation.org
-Subject: [Outreachy kernel][PATCH v2]staging:comedi:comedi_pci.h Prefer a
- maximum 75 chars per line
-Message-ID: <20181006111404.GA13951@veda-VGN-CS3AGH-R>
-Reply-To: himanshujha199640@gmail.com
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.46,517,1511823600"; 
+   d="scan'208";a="254968003"
+Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 15 Feb 2018 21:08:24 +0100
+Date: Thu, 15 Feb 2018 21:08:23 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Dafna Hirschfeld <dafna3@gmail.com>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8188eu: Fix "Missing a
+ blank line after declaration".
+In-Reply-To: <20180215183900.GA12122@gmail.com>
+Message-ID: <alpine.DEB.2.20.1802152105040.2187@hadrien>
+References: <20180215183900.GA12122@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Content-Type: text/plain; charset=US-ASCII
 
-comedi_pci_auto_config() function prototype is exceeding more than 
-75 characters per line.Adjusted to 75 chars to improve readability
-and also adjusted the arguments to match open parantheses.
+Thanks for your patch, the first one submitted in this round :)
 
-Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
----
- drivers/staging/comedi/comedi_pci.h | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+On Thu, 15 Feb 2018, Dafna Hirschfeld wrote:
 
-diff --git a/drivers/staging/comedi/comedi_pci.h b/drivers/staging/comedi/comedi_pci.h
-index 4e069440cbdc..d89273e43cea 100644
---- a/drivers/staging/comedi/comedi_pci.h
-+++ b/drivers/staging/comedi/comedi_pci.h
-@@ -31,7 +31,8 @@ int comedi_pci_enable(struct comedi_device *dev);
- void comedi_pci_disable(struct comedi_device *dev);
- void comedi_pci_detach(struct comedi_device *dev);
- 
--int comedi_pci_auto_config(struct pci_dev *pcidev, struct comedi_driver *driver,
-+int comedi_pci_auto_config(struct pci_dev *pcidev,
-+			   struct comedi_driver *driver,
- 			   unsigned long context);
- void comedi_pci_auto_unconfig(struct pci_dev *pcidev);
- 
-@@ -41,7 +42,7 @@ void comedi_pci_driver_unregister(struct comedi_driver *comedi_driver,
- 				  struct pci_driver *pci_driver);
- 
- /**
-- * module_comedi_pci_driver() - Helper macro for registering a comedi PCI driver
-+ * module_comedi_pci_driver()-Helper macro to register a comedi PCI driver
-  * @__comedi_driver: comedi_driver struct
-  * @__pci_driver: pci_driver struct
-  *
--- 
-2.17.1
+> Fix checkpatch.pl "missing a blank line after declaration" warning message from rtl8188eu module.
 
+Your commit log message needs to stay within around 70 characters, so that
+it is within 80 when it gets slightly indented by git.
+
+The subject line and the commit message should say what you have done and
+why, rather than just saying what you fixed, which could be done in many
+ways.  A subject line could be "Move a blank line" and the commit log
+message could be
+
+Move a blank line from in the middle of a declaration list to after the
+declaration list, to improve readability.
+
+Problem detected using checkpatch.
+
+Please send a v2.
+
+julia
+
+>
+> Signed-off-by: Dafna Hirschfeld <dafna3@gmail.com>
+> ---
+>
+> text here is ignored by git tools.
+>
+>  drivers/staging/rtl8188eu/hal/usb_halinit.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/rtl8188eu/hal/usb_halinit.c b/drivers/staging/rtl8188eu/hal/usb_halinit.c
+> index 17967c9..c3bb183 100644
+> --- a/drivers/staging/rtl8188eu/hal/usb_halinit.c
+> +++ b/drivers/staging/rtl8188eu/hal/usb_halinit.c
+> @@ -1516,8 +1516,8 @@ void rtw_hal_set_hwreg(struct adapter *Adapter, u8 variable, u8 *val)
+>  	case HW_VAR_CAM_WRITE:
+>  		{
+>  			u32 cmd;
+> -
+>  			u32 *cam_val = (u32 *)val;
+> +
+>  			usb_write32(Adapter, WCAMI, cam_val[0]);
+>
+>  			cmd = CAM_POLLINIG | CAM_WRITE | cam_val[1];
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20180215183900.GA12122%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
