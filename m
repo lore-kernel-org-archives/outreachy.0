@@ -1,102 +1,128 @@
-X-GM-THRID: 6668981360875536384
-X-Received: by 2002:aca:62c3:: with SMTP id w186mr5166710oib.33.1552743222162;
-        Sat, 16 Mar 2019 06:33:42 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:5d11:: with SMTP id b17ls1175322oti.8.gmail; Sat, 16 Mar
- 2019 06:33:41 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwQDYF0A/UPP4tAnn6Of6/rfXfu/igWIfq8eNwD9epbFJtSms8Ncenp9EYyYtM7K53clGTd
-X-Received: by 2002:a9d:ee4:: with SMTP id 91mr4499432otj.50.1552743221497;
-        Sat, 16 Mar 2019 06:33:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552743221; cv=none;
-        d=google.com; s=arc-20160816;
-        b=dFZF+os6XEiNRm+xxrb4JwL8hCh9PZQBmvqkse8HinKu7hi4HYra4F+Gg2/D8vhru0
-         mDlpm1wl+pZFzNZZ0u9r+ou3PQ/yHaIuzrjghCGb0x2GAQSwybJEYlq1UJMZU1S4FRwR
-         ECWgDDCMDV6699GA1NdpPBUF+LPnSX6KZy39zvw9c4QiUdY4Q25B5EtG/1Kw3NY/6775
-         bMI9xGzJv53fkBADauGrnHVob8npj6Wb5tTdbznNgduJpf9LKPZjOHmRmTFF5ELk9h2A
-         Lam9rK0skb2Xj3i0DzTTpF6T4nkC5CKEUBMPpMGdM8c1RGufEtwT4LvorX5MfvS6DDYU
-         F7xQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=KZghOKAFSSDH/PSsE8AmkIW0ijMiLOa41wcfPBXbBLA=;
-        b=Wvw6umsh9R4TpQppjpGk/7p2/eMojSvdc8rT458Oa8A+6etuMGu6rNngsQBIkdrk+U
-         N6rR/wLljaeM+54QZObxEUla63NOC85xLaZahQwVb4hhi2GL4eDca+afhxkgoF/EYdPX
-         89jY/TDru6lvoGXKcXYLvAcum6TLKMJX0Qb9bI+62zuQnt8PyIwuSzYPJVGKQp7bKxJS
-         kZEuluX6LEcObzD6+xmJVnUxFydloHvZ9c86pdLxmaV/sKwKqnLFBxiCxa34+FkFUOOb
-         lC6T4zm3VQFw3G8Z25WyoK/lNfvNbBtlKhh5AzYR8bhs3EC5vQbUXC6oOAPoan8FTOnA
-         gRLg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JiOZDQ93;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pg1-x541.google.com (mail-pg1-x541.google.com. [2607:f8b0:4864:20::541])
-        by gmr-mx.google.com with ESMTPS id l92si107236otc.4.2019.03.16.06.33.41
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Mar 2019 06:33:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) client-ip=2607:f8b0:4864:20::541;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JiOZDQ93;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x541.google.com with SMTP id k11so8335151pgb.8
-        for <outreachy-kernel@googlegroups.com>; Sat, 16 Mar 2019 06:33:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=KZghOKAFSSDH/PSsE8AmkIW0ijMiLOa41wcfPBXbBLA=;
-        b=JiOZDQ93iDehEPaXM1CCLAJ6F/PZWmRTYLtPWisjgvmBg479YlibGPsEvf13fnpAXq
-         edfnb9d2jzxoKvonZ+rirGlyHflVWmb3WGG26Uz2ECR/NBCTQFMBcmyKulPDan4bwzMA
-         p6UY6DByCmykO8HYi5jUs2zWFe4yBAzmevM/47qw9zyfd91XBFWUENtfXiyjg7qjaysZ
-         3AC1B7KUzfvfNqJnVf0GUdwGEwNQ9/bJLQiQkMgNORevo6JARlvlFH6qRl0CX2Fgr0/l
-         34/eBGmrDaPzbzpoQOSXaTd2UJN/gvj6jTqllQ7wkH9GNBDFNnqwKAK0cot0dDpconUF
-         GoFA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=KZghOKAFSSDH/PSsE8AmkIW0ijMiLOa41wcfPBXbBLA=;
-        b=Qj8R+a18NN1Ww0yJR52PGB6cDLMklYvZuv3l4an991D7jGP9yWDWWL88A7I5ii6LuM
-         VQjaGg2tfizdKmpJsi7c13ipZj1+yIXp4wocvZp+bOxH5YN7i6ICHbcB8XEDRegTn+QG
-         XhfDIrPuChDrL0lsAZGHH5zN0rPr+b2MEb0bFh4w9Ku1wJ6zYHNm2mfP0bYxRItsiZTr
-         z/UrJJu9/LaUDPHKhRNsB/OaP6ubJg7vH8MjSd7CjWgKzjlNkTcZYXj0DiH2jrXZMKQM
-         fdBMcHgYYtst57HZT8VS4wQ6BsNFAuaykLeiMhM3sMQ3TM2qmZoRe2CdRPHjws8zmN3m
-         oXKQ==
-X-Gm-Message-State: APjAAAXH8UMTdudq5noN4alK+yteTXaadndhLkui9sABjQJ8FsXEEW9i
-	FDRyCL+0NL7CcHY8AHm5yUKk8qoROvE=
-X-Received: by 2002:a17:902:1029:: with SMTP id b38mr9768842pla.204.1552743220878;
-        Sat, 16 Mar 2019 06:33:40 -0700 (PDT)
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from sanjana-Inspiron-5570.domain.name ([219.91.254.23])
-        by smtp.googlemail.com with ESMTPSA id n23sm7223786pgv.86.2019.03.16.06.33.38
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Mar 2019 06:33:39 -0700 (PDT)
-From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/3] Staging: rtl8188eu: rtw_recv.c: fix  various warnings and checks in rtw_recv.c.
-Date: Sat, 16 Mar 2019 19:03:06 +0530
-Message-Id: <20190316133306.8747-1-sanjana99reddy99@gmail.com>
-X-Mailer: git-send-email 2.17.1
+X-GM-THRID: 6523255029551333376
+Date: Fri, 16 Feb 2018 13:26:57 -0800 (PST)
+From: Ishita Tripathi <sakurakhadag@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <50576300-68a8-4dae-94d6-6452639c5c9d@googlegroups.com>
+In-Reply-To: <20180216204100.GA76452@ubuntu>
+References: <20180216204100.GA76452@ubuntu>
+Subject: Re: [PATCH] Fix checkpatch issue
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_5079_109241472.1518816417315"
+X-Google-Token: EKGZndQFcNqAMYQtXmo0
+X-Google-IP: 171.79.78.116
 
-This series fix the following warning: 
-fix a tab indent issue.
+------=_Part_5079_109241472.1518816417315
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_5080_1523544061.1518816417316"
 
-This series fix the following checks.
-fix a paranthesis issue
-fix a space issue
+------=_Part_5080_1523544061.1518816417316
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-Changes in v2:
-Fix the patch series number
+Hi!
+I'm very sorry about the horrible quality. I'll try better with v2. 
+Thank you very much for the replies.
+Ishita
 
-Sanjana (3):
-  Staging: rtl8188eu: rtw_recv.c: fix a tab indent issue
-  Staging: rtl8188eu: rtw_recv.c: fix a paranthesis issue
-  Staging: rtl8188eu: rtw_recv.c: fix a space issue
+On Saturday, 17 February 2018 02:11:07 UTC+5:30, Ishita Tripathi wrote:
+>
+> Deleted line break after dereference operator (->) 
+>
+> Signed-off-by: Ishita Tripathi <sakurakhadag@gmail.com> 
+>
+> --- 
+>  drivers/staging/comedi/drivers/rtd520.c | 5 ++--- 
+>  1 file changed, 2 insertions(+), 3 deletions(-) 
+>
+> diff --git a/drivers/staging/comedi/drivers/rtd520.c 
+> b/drivers/staging/comedi/drivers/rtd520.c 
+> index bb400e0..47b7093 100644 
+> --- a/drivers/staging/comedi/drivers/rtd520.c 
+> +++ b/drivers/staging/comedi/drivers/rtd520.c 
+> @@ -815,9 +815,8 @@ static int rtd_ai_cmdtest(struct comedi_device *dev, 
+>   
+>                  if (cmd->scan_begin_src == TRIG_TIMER) { 
+>                          arg = cmd->convert_arg * cmd->scan_end_arg; 
+> -                        err |= comedi_check_trigger_arg_min(&cmd-> 
+> -                                                           
+>  scan_begin_arg, 
+> -                                                            arg); 
+> +                        err |= 
+> comedi_check_trigger_arg_min(&cmd->scan_begin_arg, 
+> +                                        arg); 
+>                  } 
+>          } 
+>   
+> -- 
+> 2.7.4 
+>
+>
+------=_Part_5080_1523544061.1518816417316
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
- drivers/staging/rtl8188eu/core/rtw_recv.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+<div dir=3D"ltr">Hi!<br>I&#39;m very sorry about the horrible quality. I&#3=
+9;ll try better with v2. <br>Thank you very much for the replies.<br>Ishita=
+<br><br>On Saturday, 17 February 2018 02:11:07 UTC+5:30, Ishita Tripathi  w=
+rote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8e=
+x;border-left: 1px #ccc solid;padding-left: 1ex;">Deleted line break after =
+dereference operator (-&gt;)
+<br>
+<br>Signed-off-by: Ishita Tripathi &lt;<a href=3D"mailto:sakurakhadag@gmail=
+.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;ma=
+ilto:sakurakhadag@gmail.com&#39;;return true;" onclick=3D"this.href=3D&#39;=
+mailto:sakurakhadag@gmail.com&#39;;return true;">sakurakhadag@gmail.com</a>=
+&gt;
+<br>
+<br>---
+<br>=C2=A0drivers/staging/comedi/<wbr>drivers/rtd520.c | 5 ++---
+<br>=C2=A01 file changed, 2 insertions(+), 3 deletions(-)
+<br>
+<br>diff --git a/drivers/staging/comedi/<wbr>drivers/rtd520.c b/drivers/sta=
+ging/comedi/<wbr>drivers/rtd520.c
+<br>index bb400e0..47b7093 100644
+<br>--- a/drivers/staging/comedi/<wbr>drivers/rtd520.c
+<br>+++ b/drivers/staging/comedi/<wbr>drivers/rtd520.c
+<br>@@ -815,9 +815,8 @@ static int rtd_ai_cmdtest(struct comedi_device *dev=
+,
+<br>=C2=A0
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (cmd-&gt;scan_begin_src =3D=3D TRIG_TIM=
+ER) {
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0arg =3D cmd-&gt;convert_arg * cmd-&gt;scan_end_arg;
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+err |=3D comedi_check_trigger_arg_min(&amp;<wbr>cmd-&gt;
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0scan_begin_ar=
+g,
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0arg);
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+err |=3D comedi_check_trigger_arg_min(&amp;<wbr>cmd-&gt;scan_begin_arg,
+<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0arg);
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>=C2=A0
+<br>--=20
+<br>2.7.4
+<br>
+<br></blockquote></div>
+------=_Part_5080_1523544061.1518816417316--
 
--- 
-2.17.1
-
+------=_Part_5079_109241472.1518816417315--
 
