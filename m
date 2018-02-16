@@ -1,133 +1,73 @@
 X-GM-THRID: 6523195637320646656
-X-Received: by 10.107.197.65 with SMTP id v62mr8789018iof.3.1518801888881;
-        Fri, 16 Feb 2018 09:24:48 -0800 (PST)
+X-Received: by 10.200.11.73 with SMTP id m9mr4715062qti.7.1518801857343;
+        Fri, 16 Feb 2018 09:24:17 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.26.17 with SMTP id a17ls659504ioa.8.gmail; Fri, 16 Feb
- 2018 09:24:48 -0800 (PST)
-X-Google-Smtp-Source: AH8x225ZcQbOj8T2QpAaCvis/2dD2p8Z3wcXtZcZgHQJh2N3SlTDYJPeCReqTi8xyxsjIlEOdkZI
-X-Received: by 10.107.9.67 with SMTP id j64mr8373370ioi.93.1518801887984;
-        Fri, 16 Feb 2018 09:24:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518801887; cv=none;
+Received: by 10.200.19.197 with SMTP id i5ls1615850qtj.12.gmail; Fri, 16 Feb
+ 2018 09:24:16 -0800 (PST)
+X-Received: by 10.200.28.82 with SMTP id j18mr4957562qtk.49.1518801856463;
+        Fri, 16 Feb 2018 09:24:16 -0800 (PST)
+Received: by 10.55.77.69 with SMTP id a66msqkb;
+        Fri, 16 Feb 2018 09:18:24 -0800 (PST)
+X-Google-Smtp-Source: AH8x224x1vpdJA1oRrostUhsubS5YC60K7OU+N20mhANkZB0H4GoTLemgnC/rrpJeaO6I2Dkoi11
+X-Received: by 10.25.141.211 with SMTP id p202mr447352lfd.23.1518801504108;
+        Fri, 16 Feb 2018 09:18:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518801504; cv=none;
         d=google.com; s=arc-20160816;
-        b=Zx53tcAqDFLs3aK9AUzVHD7tuL25nY9oN0BEHx9OVXXpYYpmXUFbVlv/ReCiHD86mV
-         PZMNSnYAv6QbmBzbDJvom53P3fsnma1kDT/3EDd1tiFhQ7oBDRS4LL7Zixf5hM9gP9ZV
-         FvKCyr4XzjIazOod9uPNq5VYO6gHc17Vhi6qGrgG8BJukqHopAAFAb5SYVVqmlPKOfxF
-         G7aSUHvzsLtUfonZigQd6PddTkCIe4g0i9H6o1/1kKyi8+EeEgqFaTbWLaP7YMPZ2fo2
-         009vtNq2swSEkRzho2PpbOGLPCRAO6ANKuPkLUvzw2/TFA1GclKMP8RXHUfmlWZtN9GE
-         YByQ==
+        b=O4qzNvLcZfxCt15O9n8GaaprexQ2rZS0J/l5LgFiN9pXYIUfPrcOM2hYcFnaps9NUM
+         zq1uxa0wn6WLJPVLtnZmty/o7u7mJoItvdp4BBZTF5T77vpz3Spr3XkpXYiXUE93tMvv
+         PrkYX073DxzSOicKmzkQgJlt1gUFvF963Hoa3Fr5arM+iYXvg2hWZvajD+SNATfQnhED
+         XD9q9RRuO3/7w83f42i14Ys7ohJll9ZtVBe5PI6K+88IjjXlROF5l+bauujI1lhTd67D
+         DRCCjaNJeS8lWa1rxC/Fj1VlZ5trLAVfjHRwZIDgqhNgmKce8w7qnOSdP/1qFbeuYlWm
+         WVzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=n1p5NwOIvVvYNaATTD5QOQ/CYBS3s3vyjYVX52rAWL0=;
-        b=nhAQDdHilp+ENoYf4ijxhIeJamNX/gJ5y55O3GuAqa5u6IfMyRkuh4RY9p6iKgdV6T
-         1nJZcY2sq6EELHDY6q69PhkAKrsU+Y+Wi+5FdW5TT4BXgD8JLiqQAeiapW29FDy0x8uM
-         59gsreCfHtliKfT3aCU38pPdclvx4AHseAOLSq53M41BD3yp3pgg9BgWjPWzyXdMfsC9
-         glTSXSZiF4t9OGtvU0h7MkVrnAtyvk/PG3ElUI23RS/eS1wUURuSBhvcayITFHPHc/fl
-         ATsU1HQialBdRGD0eqLrlVD76TOXZbbqr/Bukva/iqKmU2pVnQ8pvcL2H2SeK9CjUdNJ
-         vzZw==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:arc-authentication-results;
+        bh=nDrbqZy8sHQKYyl50iP7s0iOTtMJE4HOpgLr0rdLXms=;
+        b=Gw+8A2+YQ65EpIQ90Y/Mp/dGttT6odCwdYOBAZeixPKq6JdB2QwQoNqx79NKJXg9dn
+         Lez9syq4ALs6haLcPEVu5Air5OPU3624qCuIA89YFr8kvKfnucxUPaBReQT2/h6rVGDM
+         as1Hb30jq3Hj613Wrpq4CSrMZpNYLY/uVgQDzG8FQ33gKNL9h1qz66Q7be2nEPQbF73V
+         I0yGzIp+3Xf4mNGfqXu3hYA1hsVP+X+H5I59Pfj6hzsdTQtvZ3mM4GXQxtEpKRau1c8L
+         KiMbm61ZUS9L6H5uazW+PPb6+dLgtXkWQg+IeQB6Wlh1T3qjuQhPJRNeTShjWSyF5/1I
+         fqRA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@vanguardiasur-com-ar.20150623.gappssmtp.com header.s=20150623 header.b=j4gqUUqy;
-       spf=pass (google.com: domain of ezequiel@vanguardiasur.com.ar designates 2607:f8b0:400e:c01::242 as permitted sender) smtp.mailfrom=ezequiel@vanguardiasur.com.ar
-Return-Path: <ezequiel@vanguardiasur.com.ar>
-Received: from mail-pl0-x242.google.com (mail-pl0-x242.google.com. [2607:f8b0:400e:c01::242])
-        by gmr-mx.google.com with ESMTPS id l7si21438iog.5.2018.02.16.09.24.47
+       spf=softfail (google.com: domain of transitioning richard@nod.at does not designate 109.75.188.150 as permitted sender) smtp.mailfrom=richard@nod.at
+Return-Path: <richard@nod.at>
+Received: from lilium.sigma-star.at (lilium.sigma-star.at. [109.75.188.150])
+        by gmr-mx.google.com with ESMTPS id u16si110134lfc.3.2018.02.16.09.18.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 16 Feb 2018 09:24:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of ezequiel@vanguardiasur.com.ar designates 2607:f8b0:400e:c01::242 as permitted sender) client-ip=2607:f8b0:400e:c01::242;
+        Fri, 16 Feb 2018 09:18:23 -0800 (PST)
+Received-SPF: softfail (google.com: domain of transitioning richard@nod.at does not designate 109.75.188.150 as permitted sender) client-ip=109.75.188.150;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@vanguardiasur-com-ar.20150623.gappssmtp.com header.s=20150623 header.b=j4gqUUqy;
-       spf=pass (google.com: domain of ezequiel@vanguardiasur.com.ar designates 2607:f8b0:400e:c01::242 as permitted sender) smtp.mailfrom=ezequiel@vanguardiasur.com.ar
-Received: by mail-pl0-x242.google.com with SMTP id v3so2023464plg.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 16 Feb 2018 09:24:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=vanguardiasur-com-ar.20150623.gappssmtp.com; s=20150623;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=n1p5NwOIvVvYNaATTD5QOQ/CYBS3s3vyjYVX52rAWL0=;
-        b=j4gqUUqyL8S6+321jIGmmEblET7Fc1qP6vsUnPx8426dy3dFRwngaEvwrqWa6wlXoS
-         KYgCm+AeeZmFelzBNsKjL6t0xxMri1ZIsMdQtuDZh/2qEOoZ0THA5wF6N4cshUNJjEq8
-         5V3vFeUyg9Gxy1J8s6fqTCZhV2kkIjNlpyppdkcBvUuIsqFZVAyXMMgHb+HGkMBPrkER
-         tua1ltoh+8sLwDiY6eVFsBsfiP+ZWrraZacsV1SCj9ImHiYYnZmpCUgI6p3e2olx5PXm
-         3uLLsqqzU6N8ibU9BgBNed/f4TLy1azLi5OTuvlw5SxAaU0l2kKb4bMbO4oFmbMuIEF3
-         RSgg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=n1p5NwOIvVvYNaATTD5QOQ/CYBS3s3vyjYVX52rAWL0=;
-        b=hAQQqEeYQD9RprYXYmAixBuGn9kao5GXqsWaZuI9ne0DQ9ywn8DRTvw5TWXXxCP7Xc
-         wUoCI7X8WBaHDxaU7v5KiE6l75k69jLy2taQA2jcmrrJM8cnz4xl7b1DPXFWZ+vWUBVB
-         +SoIM164R70Q/WuureQfUcNFf5iRpkVs55zH70HJn0Z9z7tDbBN+RUkXwDBfJGBvz2c3
-         ExdASSUpHxljJ+nfo7mGdOYW0OLVGLHeDqZeVpfDZ7JTn4WNscIH4ulq+0/40LH1sK5G
-         LXv68rG82bD0Ei2zZQfJFy8crdairwGoHZYGsUlms6Yd6SVVIzTi9cn4sDLm9WkM46Zh
-         jtdA==
-X-Gm-Message-State: APf1xPB5U/LaZnWBbEsnNNB8aeKavfTU9n3wsXQnUJEn/G7aXSgroeNT
-	41xwQY4gNaI87jz+BIqDoCK1HqQpA1Tn3t79su5O/Q==
-X-Received: by 2002:a17:902:9893:: with SMTP id s19-v6mr6408124plp.101.1518801887390;
- Fri, 16 Feb 2018 09:24:47 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.236.140.23 with HTTP; Fri, 16 Feb 2018 09:24:46 -0800 (PST)
-In-Reply-To: <1963507.Bpu1nn9g4S@blindfold>
-References: <cover.1518797480.git.shreeya.patel23498@gmail.com> <1963507.Bpu1nn9g4S@blindfold>
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Date: Fri, 16 Feb 2018 14:24:46 -0300
-Message-ID: <CAAEAJfD6CbWOfrYOY4QDW0tte-yOebcZTGjUDQhR8uE+fsOs3w@mail.gmail.com>
+       spf=softfail (google.com: domain of transitioning richard@nod.at does not designate 109.75.188.150 as permitted sender) smtp.mailfrom=richard@nod.at
+Received: from localhost (localhost [127.0.0.1])
+	by lilium.sigma-star.at (Postfix) with ESMTP id 30E9A18181ABD;
+	Fri, 16 Feb 2018 18:18:23 +0100 (CET)
+From: Richard Weinberger <richard@nod.at>
+To: Shreeya Patel <shreeya.patel23498@gmail.com>
+Cc: boris.brezillon@free-electrons.com, dwmw2@infradead.org, computersforpeace@gmail.com, marek.vasut@gmail.com, cyrille.pitchen@wedev4u.fr, outreachy-kernel@googlegroups.com, ezequiel@vanguardiasur.com.ar
 Subject: Re: [PATCH NAND 0/5] Replace printk statements with pr_*macros
-To: Richard Weinberger <richard@nod.at>
-Cc: Shreeya Patel <shreeya.patel23498@gmail.com>, 
-	Boris Brezillon <boris.brezillon@free-electrons.com>, David Woodhouse <dwmw2@infradead.org>, 
-	Brian Norris <computersforpeace@gmail.com>, Marek Vasut <marek.vasut@gmail.com>, 
-	Cyrille Pitchen <cyrille.pitchen@wedev4u.fr>, 
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Date: Fri, 16 Feb 2018 18:19:40 +0100
+Message-ID: <1963507.Bpu1nn9g4S@blindfold>
+In-Reply-To: <cover.1518797480.git.shreeya.patel23498@gmail.com>
+References: <cover.1518797480.git.shreeya.patel23498@gmail.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
 
-Hey Richard,
+Am Freitag, 16. Februar 2018, 17:50:09 CET schrieb Shreeya Patel:
+> This patchset removes all the log levels i.e. KERN_WARN,
+> KERN_NOTICE, KERN_ERR, KERN_INFO, KERN_DEBUG used in the printk
+> statements and replaces the printk statements with appropriate
+> pr_*macros.
+> According to the kernel coding style, pr_*macro is the preferred
+> way to print the message.
 
-On 16 February 2018 at 14:19, Richard Weinberger <richard@nod.at> wrote:
-> Am Freitag, 16. Februar 2018, 17:50:09 CET schrieb Shreeya Patel:
->> This patchset removes all the log levels i.e. KERN_WARN,
->> KERN_NOTICE, KERN_ERR, KERN_INFO, KERN_DEBUG used in the printk
->> statements and replaces the printk statements with appropriate
->> pr_*macros.
->> According to the kernel coding style, pr_*macro is the preferred
->> way to print the message.
->
-> Beside of that, how does it improve the code?
-> Don't get me wrong, pr_* is the way to go for new code, but I don't think=
- it
-> is worth "fixing" in existing code and make working with git blame more
-> painful.
->
-
-Shreeya's intention is to work on [1], migrating drivers to exec_op.
-As a first task, before being accepted, she is required to submit
-cleanup patches (or small tasks).
-
-Since I couldn't come up with small tasks for MTD, I suggested
-starting with printk cleaning. So this was my idea.
-
-Printk to pr_{} or dev_{} is not only aesthetical, it's also a consolidatio=
-n
-change. Centralizing prints allows for other improvements.
-
-See for instance Wolfram's work [2, 3].
-
-In any case, does it hurt git-blame so much? It only affects
-the lines where the print is performed.
-
-BTW, should you have ideas for small cleanup tasks in MTD,
-let us know.
-
-[1] https://www.outreachy.org/communities/cfp/linux-kernel/project/migrate-=
-nand-driver-to-new-exec_op-framework/
-[2] https://elinux.org/Refactor_kernel_strings
-[3] https://elinux.org/Refactor_kernel_strings
+Beside of that, how does it improve the code?
+Don't get me wrong, pr_* is the way to go for new code, but I don't think it 
+is worth "fixing" in existing code and make working with git blame more 
+painful.
 
 Thanks,
---=20
-Ezequiel Garc=C3=ADa, VanguardiaSur
-www.vanguardiasur.com.ar
+//richard
 
