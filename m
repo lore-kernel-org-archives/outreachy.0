@@ -1,73 +1,147 @@
 X-GM-THRID: 6523195637320646656
-X-Received: by 10.200.11.73 with SMTP id m9mr4715062qti.7.1518801857343;
-        Fri, 16 Feb 2018 09:24:17 -0800 (PST)
+X-Received: by 10.28.145.13 with SMTP id t13mr1369914wmd.14.1518801806451;
+        Fri, 16 Feb 2018 09:23:26 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.200.19.197 with SMTP id i5ls1615850qtj.12.gmail; Fri, 16 Feb
- 2018 09:24:16 -0800 (PST)
-X-Received: by 10.200.28.82 with SMTP id j18mr4957562qtk.49.1518801856463;
-        Fri, 16 Feb 2018 09:24:16 -0800 (PST)
-Received: by 10.55.77.69 with SMTP id a66msqkb;
-        Fri, 16 Feb 2018 09:18:24 -0800 (PST)
-X-Google-Smtp-Source: AH8x224x1vpdJA1oRrostUhsubS5YC60K7OU+N20mhANkZB0H4GoTLemgnC/rrpJeaO6I2Dkoi11
-X-Received: by 10.25.141.211 with SMTP id p202mr447352lfd.23.1518801504108;
-        Fri, 16 Feb 2018 09:18:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518801504; cv=none;
+Received: by 10.28.141.4 with SMTP id p4ls443131wmd.12.canary-gmail; Fri, 16
+ Feb 2018 09:23:25 -0800 (PST)
+X-Google-Smtp-Source: AH8x2263PZsFO4gy42RijJCjErojO8/SDF7qbBP3NLJKVCuGJJb4yZqtS8sFl3QijgSvPGj8uJ+L
+X-Received: by 10.28.218.16 with SMTP id r16mr1486639wmg.11.1518801805334;
+        Fri, 16 Feb 2018 09:23:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518801805; cv=none;
         d=google.com; s=arc-20160816;
-        b=O4qzNvLcZfxCt15O9n8GaaprexQ2rZS0J/l5LgFiN9pXYIUfPrcOM2hYcFnaps9NUM
-         zq1uxa0wn6WLJPVLtnZmty/o7u7mJoItvdp4BBZTF5T77vpz3Spr3XkpXYiXUE93tMvv
-         PrkYX073DxzSOicKmzkQgJlt1gUFvF963Hoa3Fr5arM+iYXvg2hWZvajD+SNATfQnhED
-         XD9q9RRuO3/7w83f42i14Ys7ohJll9ZtVBe5PI6K+88IjjXlROF5l+bauujI1lhTd67D
-         DRCCjaNJeS8lWa1rxC/Fj1VlZ5trLAVfjHRwZIDgqhNgmKce8w7qnOSdP/1qFbeuYlWm
-         WVzw==
+        b=VFlY5K5k5Y38i7VTMaY9OoTjP7vL9+9FcVvoDLiSV9729afS5c2nnPqJK+OeMmKXfe
+         YoZAgoHQGHmVNp9WkCmgSdrPcVRKJo4/zd1/cuUzVCiWx32ZItinK3MNku0i+uFiyBHc
+         E3rrnBnayAQAty3gUr4UEMzyKNc0XYSg68F0cXdGY6+FlPeA/gtgkGJkGOCATOoBW6il
+         8gcM/neTVjwUmPIYkY706ZggWGy6ecf+Kx2vfHGmWbo9JDqOKNfQMeFxawxdr09zXd1V
+         6GSuvuMahRtmMC/gc8EGVyn43au97F/xYD6JV+K63XDMPNwr7pW2OwrvjOoHh0cZjRl7
+         6ePg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:arc-authentication-results;
-        bh=nDrbqZy8sHQKYyl50iP7s0iOTtMJE4HOpgLr0rdLXms=;
-        b=Gw+8A2+YQ65EpIQ90Y/Mp/dGttT6odCwdYOBAZeixPKq6JdB2QwQoNqx79NKJXg9dn
-         Lez9syq4ALs6haLcPEVu5Air5OPU3624qCuIA89YFr8kvKfnucxUPaBReQT2/h6rVGDM
-         as1Hb30jq3Hj613Wrpq4CSrMZpNYLY/uVgQDzG8FQ33gKNL9h1qz66Q7be2nEPQbF73V
-         I0yGzIp+3Xf4mNGfqXu3hYA1hsVP+X+H5I59Pfj6hzsdTQtvZ3mM4GXQxtEpKRau1c8L
-         KiMbm61ZUS9L6H5uazW+PPb6+dLgtXkWQg+IeQB6Wlh1T3qjuQhPJRNeTShjWSyF5/1I
-         fqRA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=neGRKLzFhh2Q3T76WAF6TpZFVxFBsdjn+e1NV42ducA=;
+        b=Ow27nScvZTYFTd2X5HJRg8oPLpqYPrHJeMu0S/gGndduXJRKhzrvL/7ln1rJhun4Gr
+         yTz8+oOVRG/z1hSen7RpNKgQ2pTgnqN3wOBipkTbubTFxfehzpaUPHJ4DMb/B94Oj9Ni
+         d0t2e5yinFlI3agNxYB/Gm/yf2gmkyckUf4jj3MRmnaeQ6mAubGrFMVsz3I8mR0kC4VC
+         GIx+lQOJuUsfbkm3PQvd2b2KNxMkrIimJLsXb0r/JnOjIPjZjuU9mwwOsQ1ceXaeuxX4
+         sDdEqTWOVy57kSULF9bP61LmtQrgD9LbvIvqsrl+aliCt/Y5dtlKYzrje4TX2ANEd9tj
+         n06g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=softfail (google.com: domain of transitioning richard@nod.at does not designate 109.75.188.150 as permitted sender) smtp.mailfrom=richard@nod.at
-Return-Path: <richard@nod.at>
-Received: from lilium.sigma-star.at (lilium.sigma-star.at. [109.75.188.150])
-        by gmr-mx.google.com with ESMTPS id u16si110134lfc.3.2018.02.16.09.18.23
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id a138si235748wmd.0.2018.02.16.09.23.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 16 Feb 2018 09:18:23 -0800 (PST)
-Received-SPF: softfail (google.com: domain of transitioning richard@nod.at does not designate 109.75.188.150 as permitted sender) client-ip=109.75.188.150;
+        Fri, 16 Feb 2018 09:23:25 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=softfail (google.com: domain of transitioning richard@nod.at does not designate 109.75.188.150 as permitted sender) smtp.mailfrom=richard@nod.at
-Received: from localhost (localhost [127.0.0.1])
-	by lilium.sigma-star.at (Postfix) with ESMTP id 30E9A18181ABD;
-	Fri, 16 Feb 2018 18:18:23 +0100 (CET)
-From: Richard Weinberger <richard@nod.at>
-To: Shreeya Patel <shreeya.patel23498@gmail.com>
-Cc: boris.brezillon@free-electrons.com, dwmw2@infradead.org, computersforpeace@gmail.com, marek.vasut@gmail.com, cyrille.pitchen@wedev4u.fr, outreachy-kernel@googlegroups.com, ezequiel@vanguardiasur.com.ar
-Subject: Re: [PATCH NAND 0/5] Replace printk statements with pr_*macros
-Date: Fri, 16 Feb 2018 18:19:40 +0100
-Message-ID: <1963507.Bpu1nn9g4S@blindfold>
-In-Reply-To: <cover.1518797480.git.shreeya.patel23498@gmail.com>
-References: <cover.1518797480.git.shreeya.patel23498@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.46,520,1511823600"; 
+   d="scan'208";a="313984569"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 16 Feb 2018 18:23:24 +0100
+Date: Fri, 16 Feb 2018 18:23:24 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+cc: Shreeya Patel <shreeya.patel23498@gmail.com>, 
+    Boris Brezillon <boris.brezillon@free-electrons.com>, 
+    Richard Weinberger <richard@nod.at>, David Woodhouse <dwmw2@infradead.org>, 
+    Brian Norris <computersforpeace@gmail.com>, 
+    Marek Vasut <marek.vasut@gmail.com>, 
+    Cyrille Pitchen <cyrille.pitchen@wedev4u.fr>, 
+    outreachy-kernel <outreachy-kernel@googlegroups.com>, 
+    linux-mtd@lists.infradead.org
+Subject: Re: [Outreachy kernel] Re: [PATCH NAND 0/5] Replace printk statements
+ with pr_*macros
+In-Reply-To: <CAAEAJfAg_hei2PF37_oX2tf+Mv43ye-nEOt+KRVFerp1Jfzn2Q@mail.gmail.com>
+Message-ID: <alpine.DEB.2.20.1802161822560.4340@hadrien>
+References: <cover.1518797480.git.shreeya.patel23498@gmail.com> <CAAEAJfAg_hei2PF37_oX2tf+Mv43ye-nEOt+KRVFerp1Jfzn2Q@mail.gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: multipart/mixed; BOUNDARY="8323329-1437051580-1518801804=:4340"
 
-Am Freitag, 16. Februar 2018, 17:50:09 CET schrieb Shreeya Patel:
-> This patchset removes all the log levels i.e. KERN_WARN,
-> KERN_NOTICE, KERN_ERR, KERN_INFO, KERN_DEBUG used in the printk
-> statements and replaces the printk statements with appropriate
-> pr_*macros.
-> According to the kernel coding style, pr_*macro is the preferred
-> way to print the message.
+--8323329-1437051580-1518801804=:4340
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-Beside of that, how does it improve the code?
-Don't get me wrong, pr_* is the way to go for new code, but I don't think it 
-is worth "fixing" in existing code and make working with git blame more 
-painful.
 
-Thanks,
-//richard
+
+On Fri, 16 Feb 2018, Ezequiel Garcia wrote:
+
+> Hi Shreeya,
+>
+> Thanks for the contribution.
+>
+> On 16 February 2018 at 13:50, Shreeya Patel
+> <shreeya.patel23498@gmail.com> wrote:
+> > This patchset removes all the log levels i.e. KERN_WARN,
+> > KERN_NOTICE, KERN_ERR, KERN_INFO, KERN_DEBUG used in the printk
+> > statements and replaces the printk statements with appropriate
+> > pr_*macros.
+> > According to the kernel coding style, pr_*macro is the preferred
+> > way to print the message.
+> >
+>
+> So, two things to begin with.
+>
+> First of all, despite this contribution being part of outreachy,
+> I believe you can include mailing lists in your case.
+>
+> In other words, don't use the "nol" option in get_maintainer
+> script and Cc the MTD mailing list: linux-mtd at lists.infradead.org.
+
+Shouldn't the dev_* functions also be usable?
+
+julia
+
+>
+> >
+> > Shreeya Patel (5):
+> >   mtd/nand: Replace printk with pr_warn
+> >   mtd/nand: Replace printk with pr_notice
+> >   mtd/nand: Replace printk with pr_err
+> >   mtd/nand: Replace printk with pr_info
+> >   mtd/nand: Replace printk with pr_debug
+> >
+>
+> This is a non-usual split. We usually split patches per-driver,
+> instead of grouping all the pr_{} of a given type together.
+>
+> Can you re-do the series? Grouping the changes per-driver,
+> i.e. all the pr_{} changes in cafe_nand.c together, and so on.
+>
+> >  drivers/mtd/nand/ams-delta.c     |  4 +--
+> >  drivers/mtd/nand/cafe_nand.c     |  4 +--
+> >  drivers/mtd/nand/cs553x_nand.c   |  8 ++---
+> >  drivers/mtd/nand/diskonchip.c    | 76 +++++++++++++++++++++-------------------
+> >  drivers/mtd/nand/fsl_elbc_nand.c |  4 +--
+> >  drivers/mtd/nand/fsl_ifc_nand.c  |  2 +-
+> >  drivers/mtd/nand/mxc_nand.c      |  2 +-
+> >  drivers/mtd/nand/nand_bch.c      | 12 +++----
+> >  drivers/mtd/nand/nandsim.c       | 10 +++---
+> >  drivers/mtd/nand/r852.c          |  2 +-
+> >  drivers/mtd/nand/r852.h          |  6 ++--
+> >  drivers/mtd/nand/sh_flctl.c      |  2 +-
+> >  drivers/mtd/nand/sm_common.c     |  5 ++-
+> >  13 files changed, 70 insertions(+), 67 deletions(-)
+> >
+> > --
+> > 2.7.4
+> >
+>
+>
+>
+> --
+> Ezequiel García, VanguardiaSur
+> www.vanguardiasur.com.ar
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAAEAJfAg_hei2PF37_oX2tf%2BMv43ye-nEOt%2BKRVFerp1Jfzn2Q%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+--8323329-1437051580-1518801804=:4340--
 
