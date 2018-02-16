@@ -1,134 +1,120 @@
 X-GM-THRID: 6523279529594585088
-X-Received: by 10.37.119.135 with SMTP id s129mr3512979ybc.63.1518822099248;
-        Fri, 16 Feb 2018 15:01:39 -0800 (PST)
+X-Received: by 10.55.23.165 with SMTP id 37mr5373585qkx.18.1518819371957;
+        Fri, 16 Feb 2018 14:16:11 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.13.212.209 with SMTP id w200ls204488ywd.0.gmail; Fri, 16 Feb
- 2018 15:01:38 -0800 (PST)
-X-Google-Smtp-Source: AH8x227bAEQaDSEwoU5EnkfpImx2O9E981Aoqs5URxwfVcAJUHxq4EX52LCka5eSbHqDFZ51gj2v
-X-Received: by 10.129.181.72 with SMTP id c8mr7600079ywk.189.1518822098101;
-        Fri, 16 Feb 2018 15:01:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518822098; cv=none;
+Received: by 10.55.33.138 with SMTP id f10ls487701qki.9.gmail; Fri, 16 Feb
+ 2018 14:16:10 -0800 (PST)
+X-Google-Smtp-Source: AH8x2279rUstnnNDkfO40HXsqN16JLc51YTHgOTwoBfhUgGPl5IidQJkNV4mB+IJFVmP2CPKB35S
+X-Received: by 10.55.149.69 with SMTP id x66mr5561852qkd.33.1518819370914;
+        Fri, 16 Feb 2018 14:16:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518819370; cv=none;
         d=google.com; s=arc-20160816;
-        b=vQDDbMfNspcE8x1WkqXUZkc97jcjALbi6is7ioa+BvTdXpmDbSB0hTDDJDXDcTKyj1
-         upOSdMbT+7swwk71on5BPkJHayTIqwc2/T5P2kuroLq2kRuASkEJ3IBOv27FS6QLovq8
-         mMVRno52k2DIHgmOWjtY6ZWlKs/+sVLLqSLBPUPD1CTCbV2aGFM/rHDO4gm/uUxLj9Xu
-         2yIOXTo3vChTWrz+M1IM1kEiiUnRw0BTUHhArSkak1u0cZShNkC3TZ1V+SvNlOsojd6K
-         kPdkTadpSPDqTdPRyXBB4ps6SwuExNSspLElC3ohtV1G1YPN7OtzDSfUQx4BN07rlL5K
-         D37A==
+        b=w9lpOt0enGN3tT8zxtTh0YX51go0RogMQwVsUigc0MeCV0lXh1wRnC4QAZP/JC0dtp
+         s9thZ15E3L+mbUQJhAO1zPxh7kSLa04PQWxDgViJ2bhMcjaMbg0nrsnrQRU7pWVUEhd0
+         PTZymsLg7TGDH8OtrITQbREZaGK7qY/shgVqxlsedkLnzVj6BUMgBbai9n7qPXkuFnNq
+         2dO7UFDy0fk3IgGTMpW9aYAWI3X8qzi4/81Y3gQ3Y5kVKfSCrDN5uk5IukUqzcVHFe3K
+         DQMwiSE69S84nEA8UGIMoQcuAAWaYRPpUxVohGOp2sER4vnSD2yj8M9srxdTGjz+ZmSS
+         99Pw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=0DzR28YNuSHRdFdA02ANwjDPGKZmj5huphuHdGILFtY=;
-        b=e7qcaQ4Nj047Q0hfp9Yt1SgZqGaPNlIgHLrgai9LaPQBc+DbmdTKsQHjcPQCBwg3JY
-         A3B246ScGI/kUhrK7oZhHKykIOmXKNlrE4ODLFyaOtyKh0tNZ+3iWAIqcqgf9jFVRTZN
-         paQRkg316udwixL9cLRQd7yxH0n2feXhAL6YnMR8s7kuFiTxZJ2czQxoLjr7m9AbpWXU
-         BWSSQW8/mDd7JlUVt/H2gIEk8yEfXssWWfTXKKUX6tHhZvJ/ef42Q3qcocupiPgSv1vK
-         C3ahGiAHDHDYMKuG5FGPWCVhbnnJQefXO10ZHmhZtuBsSJUay/8rWJlom+jTMNnVRTvG
-         N/Bw==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature:arc-authentication-results;
+        bh=AyFuFO3KzGerAxHjFn0Xwye9l9mLchdQShGBaYVAeY0=;
+        b=Hhi77wmS8GdWsMY+DUgomIL6RD9l8UnkF96sfHC28U59KMTK3Q0dZ5+BZF2lL1AmWB
+         IQVdKy7HhF798NSjAfNn9PWzbmoHLB8r0z6qjtO2TUrPLFIyhPKuxrV5oc+xxw3QgyZe
+         BSLEM7B6jVXV4ZuyOsl5Q0cJP+jpLQNZSU2izXTrdPQh/8R/o9dYp33OZwP+Dulf7Zcv
+         kObwGYCMZW/CWWC/SEogxn+wGTX19FxWZ6PDge8DfxTqz+q5dZTlxGCZwTZ+vbCsLVWI
+         gfZH2xblz9RRf3VK+iCRlDoahj1QPNqCE6jU3IPSLC3Ua2l+gw7rVr7CAzFt8jTjBkxs
+         g50g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=o5SclHlz;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:4003:c06::242 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pB+RYgiH;
+       spf=pass (google.com: domain of sakurakhadag@gmail.com designates 2607:f8b0:400e:c01::244 as permitted sender) smtp.mailfrom=sakurakhadag@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <gs051095@gmail.com>
-Received: from mail-oi0-x242.google.com (mail-oi0-x242.google.com. [2607:f8b0:4003:c06::242])
-        by gmr-mx.google.com with ESMTPS id l13si704869ywm.0.2018.02.16.15.01.38
+Return-Path: <sakurakhadag@gmail.com>
+Received: from mail-pl0-x244.google.com (mail-pl0-x244.google.com. [2607:f8b0:400e:c01::244])
+        by gmr-mx.google.com with ESMTPS id h67si466067qkd.4.2018.02.16.14.16.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 16 Feb 2018 15:01:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:4003:c06::242 as permitted sender) client-ip=2607:f8b0:4003:c06::242;
+        Fri, 16 Feb 2018 14:16:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of sakurakhadag@gmail.com designates 2607:f8b0:400e:c01::244 as permitted sender) client-ip=2607:f8b0:400e:c01::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=o5SclHlz;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:4003:c06::242 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pB+RYgiH;
+       spf=pass (google.com: domain of sakurakhadag@gmail.com designates 2607:f8b0:400e:c01::244 as permitted sender) smtp.mailfrom=sakurakhadag@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-oi0-x242.google.com with SMTP id e10so112517oiy.8
-        for <outreachy-kernel@googlegroups.com>; Fri, 16 Feb 2018 15:01:38 -0800 (PST)
+Received: by mail-pl0-x244.google.com with SMTP id v3so2412676plg.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 16 Feb 2018 14:16:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=0DzR28YNuSHRdFdA02ANwjDPGKZmj5huphuHdGILFtY=;
-        b=o5SclHlzhKHNI/3ggaaDmSxASl9tG+yG3qNglASsdNJy3vUYe2+YBfDOge3Yr5MRkF
-         8L93pV5jkF6U06TPsQxSN/+rnVf2i6hM3YmYHwvbu49AXoWStVCigzn+IKRmUmCw353H
-         BwNiZA0W++7q1HusmW//7kHAZ5gSik8ZN923fXypy5iZiiGjc1DDciPRbUEOJO9Mrt4s
-         XM9mUg1fsPW2asj3eMTTzSEglTiKTWW9mDEZ9s2sf0msw1KTFB2QXq0ohuiTJtzpOn76
-         m6V9zVGrZ6VvtgPsGKJz2SBQ0kT3B5efqxj1UzkdqGybb0nSaQq3d2FfU6ezF0FdxdAw
-         RVng==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=AyFuFO3KzGerAxHjFn0Xwye9l9mLchdQShGBaYVAeY0=;
+        b=pB+RYgiHG0NPYlww34zosDaKTtKFqQ2xj2yFxwLjNgm/rAWLxCFhaJ+CmtGLbLwBA4
+         etOf3BGxE3oVLNznwuzAXpUI+fRM+fEdPc4I8hwoSsOJXNElpRjtrpqyU5m3piKY/CuT
+         JxjXbw3w97A9bWxIsKHOyMDJbWydODmvOT3KV8+ld3BCQjacgOHmo4L5y1ii7XeLgXFB
+         TPTh6jSOxqr6ISNQ11n+buOdfRCzAPA3aMrkDYjw0nJ+VHhpeeD7phnj/al5QgOEq1XA
+         MnkmEeDwigpvKt2bKOOoDWesCEZQa3AIcrzZ/Ce5M16ZC5tQa2H/tDiH6rgTzCN40jk5
+         916g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=0DzR28YNuSHRdFdA02ANwjDPGKZmj5huphuHdGILFtY=;
-        b=IJoiZ9OKIWBvUA3FmU9hI3HfgVk7T7dMZBuHZggfjk9uzILg4YSoyGcDeB9ESwYQef
-         iR8ks4/BdzaAD5f7d/d6UPn17oJY3gmnEZ/9r0CklY3T/8v83NbETVUBZaItb6IYFGUs
-         Px5YivudcSxUeauH9uKiiJe0aAF910HQLtBxqK8RJDIcUxWR0lyth61F/a6JQ05UTYV/
-         AYv5I+jLAsyiazFoM7frkOlfolACDo5atui5mbsI89Bm7YgqHFqldi1fCpILM0h7dXFW
-         skvw/6HZaTMhOzZQ7wa5Q+f1iNzmcP1gGkbfyQv/mKedT67nsBVYFMsydNlKMBeKxY13
-         teOQ==
-X-Gm-Message-State: APf1xPDQf0X9HgOyrXL+Whf+GHDW9D7WDJRUSbmwsM6krB6Tycr2oYyU
-	+z4IYeEaM3aM3+LAYaDQmInbs/yPvKIrDCu4bRFXkmTG
-X-Received: by 10.202.74.130 with SMTP id x124mr2205747oia.325.1518822097434;
- Fri, 16 Feb 2018 15:01:37 -0800 (PST)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=AyFuFO3KzGerAxHjFn0Xwye9l9mLchdQShGBaYVAeY0=;
+        b=ErFqFIKxzp0+oP4K8/xKRUwyeE11f29+lxF2WSHebq9lQL1It0dza5+fZ0IaCjvnqR
+         pQn/58VDHyiy/8A67rONnyVx5cNpHaqg+AgnhmO14wetzmyoTrbp5tqEGWmEclhjzoi5
+         AuQVzFT1OsdTVrQ8RwWxJvCH9MvZXshErrk9ysX8zM0Xo7K6echwofoZicNwkfkBNjTQ
+         PXVzZYcCpSCI3bW2aN4/C0pO2Y1McYJM2QnvzY8yGL8QkVkkkZsgAYHsjTQXmrG3hLn0
+         wENO0WdUzgXbhfmsQ0edAOuQxIWyKtGnBuHsEzOZM16Nr0xTFWbccCI932zELB1Qrr8r
+         ddUg==
+X-Gm-Message-State: APf1xPDcGLxhRKa6cIZZwbWzIctRE61/oe9CRlipyGT96mpYLfoapogy
+	dczRwlFl4sDWOJrlYt2l2dkncTp+
+X-Received: by 2002:a17:902:678e:: with SMTP id g14-v6mr7014987plk.309.1518819370036;
+        Fri, 16 Feb 2018 14:16:10 -0800 (PST)
+Return-Path: <sakurakhadag@gmail.com>
+Received: from ubuntu ([171.79.78.116])
+        by smtp.gmail.com with ESMTPSA id h186sm5334287pfg.15.2018.02.16.14.16.07
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 16 Feb 2018 14:16:09 -0800 (PST)
+Date: Fri, 16 Feb 2018 14:16:03 -0800
+From: Ishita Tripathi <sakurakhadag@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	H Hartley Sweeten <hsweeten@visionengravers.com>,
+	Ian Abbott <abbotti@mev.co.uk>
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH v2] staging: rtd520.c: Fix new line after dereference operator
+Message-ID: <20180216221603.GA77503@ubuntu>
 MIME-Version: 1.0
-Received: by 10.74.180.201 with HTTP; Fri, 16 Feb 2018 15:01:07 -0800 (PST)
-In-Reply-To: <20180216221603.GA77503@ubuntu>
-References: <20180216221603.GA77503@ubuntu>
-From: Gargi Sharma <gs051095@gmail.com>
-Date: Fri, 16 Feb 2018 23:01:07 +0000
-Message-ID: <CAOCi2DH1OBjhY8SF4zdekC1MOU4f1YdesdXnSJ_itUg4EUydVg@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v2] staging: rtd520.c: Fix new line
- after dereference operator
-To: Ishita Tripathi <sakurakhadag@gmail.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	H Hartley Sweeten <hsweeten@visionengravers.com>, Ian Abbott <abbotti@mev.co.uk>, 
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Fri, Feb 16, 2018 at 10:16 PM, Ishita Tripathi
-<sakurakhadag@gmail.com> wrote:
->
-> Delete new line after the dereference operator (->).
-> According to https://kernelnewbies.org/CheckpatchTips, it is better to
-> have longer lines than break at this operator.
->
-> Signed-off-by: Ishita Tripathi <sakurakhadag@gmail.com>
-> ---
->  drivers/staging/comedi/drivers/rtd520.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/staging/comedi/drivers/rtd520.c b/drivers/staging/comedi/drivers/rtd520.c
-> index bb400e0..47b7093 100644
-> --- a/drivers/staging/comedi/drivers/rtd520.c
-> +++ b/drivers/staging/comedi/drivers/rtd520.c
-> @@ -815,9 +815,8 @@ static int rtd_ai_cmdtest(struct comedi_device *dev,
->
->                 if (cmd->scan_begin_src == TRIG_TIMER) {
->                         arg = cmd->convert_arg * cmd->scan_end_arg;
-> -                       err |= comedi_check_trigger_arg_min(&cmd->
-> -                                                           scan_begin_arg,
-> -                                                           arg);
-> +                       err |= comedi_check_trigger_arg_min(&cmd->scan_begin_arg,
+Delete new line after the dereference operator (->).
+According to https://kernelnewbies.org/CheckpatchTips, it is better to
+have longer lines than break at this operator.
 
-This goes over the 80 character limit, and you would want to move
-&cmd->scan_begin_arg to the
-next line and lining it up with arg.
+Signed-off-by: Ishita Tripathi <sakurakhadag@gmail.com>
+---
+ drivers/staging/comedi/drivers/rtd520.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-Thanks,
-gargi
+diff --git a/drivers/staging/comedi/drivers/rtd520.c b/drivers/staging/comedi/drivers/rtd520.c
+index bb400e0..47b7093 100644
+--- a/drivers/staging/comedi/drivers/rtd520.c
++++ b/drivers/staging/comedi/drivers/rtd520.c
+@@ -815,9 +815,8 @@ static int rtd_ai_cmdtest(struct comedi_device *dev,
+ 
+ 		if (cmd->scan_begin_src == TRIG_TIMER) {
+ 			arg = cmd->convert_arg * cmd->scan_end_arg;
+-			err |= comedi_check_trigger_arg_min(&cmd->
+-							    scan_begin_arg,
+-							    arg);
++			err |= comedi_check_trigger_arg_min(&cmd->scan_begin_arg,
++					arg);
+ 		}
+ 	}
+ 
+-- 
+changes in v2:
+-changed subject line
+-improved description
+2.7.4
 
-> +                                       arg);
->                 }
->         }
->
-> --
-> changes in v2:
-> -changed subject line
-> -improved description
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20180216221603.GA77503%40ubuntu.
-> For more options, visit https://groups.google.com/d/optout.
 
