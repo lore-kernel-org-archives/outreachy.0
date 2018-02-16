@@ -1,116 +1,135 @@
 X-GM-THRID: 6523195637320646656
-X-Received: by 10.31.95.210 with SMTP id t201mr3734752vkb.30.1518807000087;
-        Fri, 16 Feb 2018 10:50:00 -0800 (PST)
+X-Received: by 10.28.145.13 with SMTP id t13mr1386668wmd.14.1518804971579;
+        Fri, 16 Feb 2018 10:16:11 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.176.19.231 with SMTP id n36ls308062uae.2.gmail; Fri, 16 Feb
- 2018 10:49:58 -0800 (PST)
-X-Google-Smtp-Source: AH8x227AU0G/j8uNcEK2WqoA0zwQqMuvwMdamxm5CK3TuguMKToBiwJsiRiMm8G5RVPvcXahzf4C
-X-Received: by 10.176.73.193 with SMTP id f1mr2139699uad.1.1518806998948;
-        Fri, 16 Feb 2018 10:49:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518806998; cv=none;
+Received: by 10.223.163.205 with SMTP id m13ls871136wrb.0.gmail; Fri, 16 Feb
+ 2018 10:16:10 -0800 (PST)
+X-Google-Smtp-Source: AH8x227NKgyuDtR//i3cOLOma9eamKHzCWWh9A7EV1QvURPjVlIWglwXA4jO1mkluNp6OTVaVHX1
+X-Received: by 10.223.133.101 with SMTP id 92mr1338462wrh.5.1518804970529;
+        Fri, 16 Feb 2018 10:16:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518804970; cv=none;
         d=google.com; s=arc-20160816;
-        b=oIcnV5cELv69zHAc8v2WIbes0LEk0prlu/C7bh3xFSjl109HZLhVTvOgDJNe//U1Z3
-         2Pvb2B6Nnsw84ABWXuDYOlBm7lIwM88bgXRSbBC5UmFJRxkPxMHOrKzAe7jnN76nuNjY
-         pvUuG7yGJ3UsZcCnkWFTehceEHIQAi0C1ATOXEjJoczQqEuf8TDtbzuJhvesVhoiB2Ps
-         SvAKBwKl7PdBijK0sUaRhU8rWPLAeFFU5slBGDuBsD+O1idwxnXH8ncDYkh3LczrdcbN
-         bIy/2kiXmkWh8aXsFXA+t7QA4Kl6Q1Bd2Qc6AWd9h5IKiwwmkZ6G6NfFFD47eXsJsbbe
-         36Yw==
+        b=XhNFQwgarzNg1ZxFMh1nArdxbuj1IZbnrme02YgOXI8h5SJ9MLqUR89xLFQrqlMMqj
+         iLXdwBBitBLrEDu5iRQJxxM2JOSw2GCdPPJxhqxD/ghgwgjK0vwMIhZR+PmJEkZ5Pz7s
+         ie19zlnh5lyO0ZEhn5g9S8o/Xz+KXeg4a63YuJppuEGOUm122a+A5a1QbBdgLayWCb1i
+         vyeMpeAUEy0SSuTSqciRAf7xY52BhSRYwejQoRsf4lUUC9WY5d1ln2r2K7PCbGY55gme
+         pS0MaNHWSUaz1XkWolCqzV+57r/ZrFuA57ePEB5Qqz5Rz5z+2WamusSwm5UZn12wFB2m
+         c3hw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature
-         :arc-authentication-results;
-        bh=Hg3b57a7Hfm5VnETqXFdD/t1IKP4KbMXg/anxRlaqko=;
-        b=hbIABbJS1NEPWWpBnRanpRzoRF+8qcNgNgVOzlwK90GwUEy9NHr6E0zfJAygqnVGT4
-         6gGUCjW7qG5wEA5F8A9j8Je4kAT3oRI3IhydtU5bCJH1dLk+cysc89stUCYVkSlXt+wQ
-         ZTo/bD1MW8tb9DEzFS6FgQ4CXWmYoaM2s43kr2MqiED8KUUCG+kGmeQaF1iwxXxMNCI7
-         LvIWLr6wzbuKHG+RLLmcrvDNtWl8g8PAZrV/5KuY8nyd6lH0/hxiiBgnMDa3hvdk6hRS
-         IyPQn6HxvvSpVH7Daj7Ujc6SpcaJMNjw2mseakSAqwhxlOCn+56C+WWXeP5LpeGHnD4Z
-         IrWQ==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=icW42ZBxuiYeEFnIXi4T8r3JCyaooQ+MAUIj1v9TF9c=;
+        b=Jl1DW8Qmr9R29DXN5rJVy9Uj+NPIqKM517/+51/CIgpQeUnhRKabIHTSYFKkH1jt4t
+         IHCms0I97V8UJ7rTpZ6/aQZqCATsCNfj2v7BleNPlmUB7ti8Cm1BtxWAdZw9F3zx/fly
+         uOQXa/bFlxL8xbIIAFAN38+oYt+iGNabLViAVQeY4A33W/wJb4xyy+7/Rg4I9uwxO28n
+         Gqo7QU74AvsH47zY8RieI2QH45Ib7x8QYxFqayJxgoI+VZDpKaAhh7zSNO4mStg1Oo70
+         EhE0bUgBRWf9pVTBw554PIOgO0WBapq3+rI/GOh9CQgsPFWPd+9NJIiIcSqTfB+8zupf
+         BV6g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=BemyMXVG;
-       spf=neutral (google.com: 66.111.4.29 is neither permitted nor denied by best guess record for domain of greg@kroah.com) smtp.mailfrom=greg@kroah.com
-Return-Path: <greg@kroah.com>
-Received: from out5-smtp.messagingengine.com (out5-smtp.messagingengine.com. [66.111.4.29])
-        by gmr-mx.google.com with ESMTPS id b32si226385uad.4.2018.02.16.10.49.58
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 16 Feb 2018 10:49:58 -0800 (PST)
-Received-SPF: neutral (google.com: 66.111.4.29 is neither permitted nor denied by best guess record for domain of greg@kroah.com) client-ip=66.111.4.29;
+       spf=pass (google.com: domain of boris.brezillon@bootlin.com designates 62.4.15.54 as permitted sender) smtp.mailfrom=boris.brezillon@bootlin.com
+Return-Path: <boris.brezillon@bootlin.com>
+Received: from mail.free-electrons.com (mail.free-electrons.com. [62.4.15.54])
+        by gmr-mx.google.com with ESMTP id t15si217929wmh.1.2018.02.16.10.16.10
+        for <outreachy-kernel@googlegroups.com>;
+        Fri, 16 Feb 2018 10:16:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of boris.brezillon@bootlin.com designates 62.4.15.54 as permitted sender) client-ip=62.4.15.54;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=BemyMXVG;
-       spf=neutral (google.com: 66.111.4.29 is neither permitted nor denied by best guess record for domain of greg@kroah.com) smtp.mailfrom=greg@kroah.com
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
-	by mailout.nyi.internal (Postfix) with ESMTP id 6B44420A78;
-	Fri, 16 Feb 2018 13:49:58 -0500 (EST)
-Received: from frontend1 ([10.202.2.160])
-  by compute6.internal (MEProxy); Fri, 16 Feb 2018 13:49:58 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm2; bh=Hg3b57a7Hfm5VnETqXFdD/t1IKP4K
-	bMXg/anxRlaqko=; b=BemyMXVGpEXaZAgzQhO/f2YRj+PhIJzNwiqkeVJC1NMe6
-	6htr2pIGdyQ/vRgx8Wmdlm8G8h/kEt0B8C+EOTUEbAzmoVb5h46ObPacIwv3aCTf
-	V/6Go/oi+5zHIYSYYL7QLKt8T5GraB37lfB0ONJXiWQCPkO6nUaIzy5Q4W0xfp8I
-	QDGha7m5HNfZ1DhOB7ZcQHnogSKqEe7ZwA3jcr7auflNgnrp+Bu/eihStvRIUisI
-	kxnTsm6qfSmlnc96CJmP4OAhV0XxAKcdedq+uhGaC56BKFLk1/4bAVpmmmmJYFwa
-	qM/svfaeRNd12JPQVIkUZiDqmlm4SzRayWExfMCPw==
-X-ME-Sender: <xms:1ieHWkus5EdnT0LKFQsht5g6XYYDsp9_R3cE-Mdo2TdfeLfoK3Sbeg>
-Received: from localhost (unknown [37.173.12.47])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 6501C7E4A8;
-	Fri, 16 Feb 2018 13:49:56 -0500 (EST)
-Date: Fri, 16 Feb 2018 19:48:32 +0100
-From: Greg KH <greg@kroah.com>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Cc: Richard Weinberger <richard@nod.at>,
-	Shreeya Patel <shreeya.patel23498@gmail.com>,
-	Boris Brezillon <boris.brezillon@free-electrons.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Brian Norris <computersforpeace@gmail.com>,
-	Marek Vasut <marek.vasut@gmail.com>,
-	Cyrille Pitchen <cyrille.pitchen@wedev4u.fr>,
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] Re: [PATCH NAND 0/5] Replace printk
- statements with pr_*macros
-Message-ID: <20180216184832.GA9616@kroah.com>
+       spf=pass (google.com: domain of boris.brezillon@bootlin.com designates 62.4.15.54 as permitted sender) smtp.mailfrom=boris.brezillon@bootlin.com
+Received: by mail.free-electrons.com (Postfix, from userid 110)
+	id 986AC2080B; Fri, 16 Feb 2018 19:16:09 +0100 (CET)
+X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
+	mail.free-electrons.com
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.0 required=5.0 tests=ALL_TRUSTED,SHORTCIRCUIT,
+	URIBL_BLOCKED shortcircuit=ham autolearn=disabled version=3.4.0
+Received: from bbrezillon (unknown [91.160.177.164])
+	by mail.free-electrons.com (Postfix) with ESMTPSA id 435E8207FF;
+	Fri, 16 Feb 2018 19:15:59 +0100 (CET)
+Date: Fri, 16 Feb 2018 19:15:59 +0100
+From: Boris Brezillon <boris.brezillon@bootlin.com>
+To: Richard Weinberger <richard@nod.at>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Shreeya Patel
+ <shreeya.patel23498@gmail.com>, Boris Brezillon
+ <boris.brezillon@free-electrons.com>, David Woodhouse
+ <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Marek
+ Vasut <marek.vasut@gmail.com>, Cyrille Pitchen
+ <cyrille.pitchen@wedev4u.fr>, outreachy-kernel
+ <outreachy-kernel@googlegroups.com>
+Subject: Re: [PATCH NAND 0/5] Replace printk statements with pr_*macros
+Message-ID: <20180216191559.3d979b20@bbrezillon>
+In-Reply-To: <6607259.WBtX1k9nZE@blindfold>
 References: <cover.1518797480.git.shreeya.patel23498@gmail.com>
- <1963507.Bpu1nn9g4S@blindfold>
- <CAAEAJfD6CbWOfrYOY4QDW0tte-yOebcZTGjUDQhR8uE+fsOs3w@mail.gmail.com>
+	<1963507.Bpu1nn9g4S@blindfold>
+	<CAAEAJfD6CbWOfrYOY4QDW0tte-yOebcZTGjUDQhR8uE+fsOs3w@mail.gmail.com>
+	<6607259.WBtX1k9nZE@blindfold>
+X-Mailer: Claws Mail 3.15.0-dirty (GTK+ 2.24.31; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAAEAJfD6CbWOfrYOY4QDW0tte-yOebcZTGjUDQhR8uE+fsOs3w@mail.gmail.com>
-User-Agent: Mutt/1.9.3 (2018-01-21)
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-On Fri, Feb 16, 2018 at 02:24:46PM -0300, Ezequiel Garcia wrote:
-> Hey Richard,
+On Fri, 16 Feb 2018 18:58:35 +0100
+Richard Weinberger <richard@nod.at> wrote:
+
+> Ezequiel,
 > 
-> On 16 February 2018 at 14:19, Richard Weinberger <richard@nod.at> wrote:
-> > Am Freitag, 16. Februar 2018, 17:50:09 CET schrieb Shreeya Patel:
-> >> This patchset removes all the log levels i.e. KERN_WARN,
-> >> KERN_NOTICE, KERN_ERR, KERN_INFO, KERN_DEBUG used in the printk
-> >> statements and replaces the printk statements with appropriate
-> >> pr_*macros.
-> >> According to the kernel coding style, pr_*macro is the preferred
-> >> way to print the message.
-> >
-> > Beside of that, how does it improve the code?
-> > Don't get me wrong, pr_* is the way to go for new code, but I don't think it
-> > is worth "fixing" in existing code and make working with git blame more
-> > painful.
-> >
+> Am Freitag, 16. Februar 2018, 18:24:46 CET schrieb Ezequiel Garcia:
+> > Hey Richard,
+> > 
+> > On 16 February 2018 at 14:19, Richard Weinberger <richard@nod.at> wrote:  
+> > > Am Freitag, 16. Februar 2018, 17:50:09 CET schrieb Shreeya Patel:  
+> > >> This patchset removes all the log levels i.e. KERN_WARN,
+> > >> KERN_NOTICE, KERN_ERR, KERN_INFO, KERN_DEBUG used in the printk
+> > >> statements and replaces the printk statements with appropriate
+> > >> pr_*macros.
+> > >> According to the kernel coding style, pr_*macro is the preferred
+> > >> way to print the message.  
+> > > 
+> > > Beside of that, how does it improve the code?
+> > > Don't get me wrong, pr_* is the way to go for new code, but I don't think
+> > > it is worth "fixing" in existing code and make working with git blame
+> > > more painful.  
+> > 
+> > Shreeya's intention is to work on [1], migrating drivers to exec_op.
+> > As a first task, before being accepted, she is required to submit
+> > cleanup patches (or small tasks).  
 > 
-> Shreeya's intention is to work on [1], migrating drivers to exec_op.
-> As a first task, before being accepted, she is required to submit
-> cleanup patches (or small tasks).
+> Working on exec_op would be great! This is highly appreciated.
 
-"cleanup patches" should always start in the drivers/staging/ tree, to
-avoid bothering other subsytem maintainers.  Please start there before
-moving on to the "tasks" as mentioned on the site that are picked by the
-mentors.
+Indeed.
 
-Don't skip the cleanup patches for no good reason please.
+>  
+> > Since I couldn't come up with small tasks for MTD, I suggested
+> > starting with printk cleaning. So this was my idea.
+> > 
+> > Printk to pr_{} or dev_{} is not only aesthetical, it's also a consolidation
+> > change. Centralizing prints allows for other improvements.
+> > 
+> > See for instance Wolfram's work [2, 3].
+> > 
+> > In any case, does it hurt git-blame so much? It only affects
+> > the lines where the print is performed.  
+> 
+> ...and it pollutes patch context. So, from now on back/forward porting patches
+> will cause much more rejects and need manual interaction.
+> In UBI we did a similar change a few years ago.
 
-thanks,
+Oh, I didn't thought about this side-effect. Still, we're talking about
+really old drivers that are most of the time not maintained or poorly
+maintained.
 
-greg k-h
+> 
+> So, I'm not rejecting this patches but:
+> 
+> Told-you-so: Richard Weinberger <richard@nod.at>
+> 
+
+If I can get interesting contributions (like conversion of one or
+several drivers to ->exec_op()) I'm okay to pay the price and manually
+backport the potential fixes that do not apply cleanly because of
+these cosmetic changes ;-).
+
+-- 
+Boris Brezillon, Bootlin (formerly Free Electrons)
+Embedded Linux and Kernel engineering
+http://bootlin.com
 
