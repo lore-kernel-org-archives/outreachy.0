@@ -1,192 +1,117 @@
 X-GM-THRID: 6523195637320646656
-X-Received: by 10.80.242.130 with SMTP id f2mr3525245edm.5.1518984594059;
-        Sun, 18 Feb 2018 12:09:54 -0800 (PST)
+X-Received: by 10.28.129.133 with SMTP id c127mr297594wmd.8.1518807269127;
+        Fri, 16 Feb 2018 10:54:29 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.80.170.50 with SMTP id o47ls3288154edc.3.gmail; Sun, 18 Feb
- 2018 12:09:52 -0800 (PST)
-X-Google-Smtp-Source: AH8x227gdXTzIGm6hhAxYF4v83s+Dry9ZNqJS4t6De1s0O5ybmnpg8gnaAiykP/lGJIDyVoG+hS2
-X-Received: by 10.80.166.153 with SMTP id e25mr40682edc.7.1518984592197;
-        Sun, 18 Feb 2018 12:09:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518984592; cv=none;
+Received: by 10.223.208.133 with SMTP id y5ls889365wrh.5.gmail; Fri, 16 Feb
+ 2018 10:54:28 -0800 (PST)
+X-Google-Smtp-Source: AH8x227V3tNpy/nfJdIlmXClg+5QTROwMyIFjbrKfABrLRHjD/aWQ7VgOvjHOTGICX1zIWsCZ5bn
+X-Received: by 10.223.133.101 with SMTP id 92mr1345383wrh.5.1518807267990;
+        Fri, 16 Feb 2018 10:54:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518807267; cv=none;
         d=google.com; s=arc-20160816;
-        b=ecHCwJxql7InbiP58aAK/+At9SrE3EQwbCC47Ss8eXH9etP3k1Rxs42VuvEKJHHcB/
-         RPqfbW15lkuibii1VJSVZBdFIEiSjRfQkQECM9SxHRNT/pnG5FcXJ5RtN7jTCoDSToMl
-         xqXk3oX/3QZWhWNQGLMZjGAXMK3KXIkCYdIbmPrGUagY/HVBrbNWgMilx+D+MK242NMB
-         FU6TnVHB4CJybCH3wxeFcf66MeXwL9ZKa4BbvbndsgiahFb7J4epGkJ2v+tS8R4Ouqbe
-         lm+3heaLFWz3Lmjj3iIcXpxn57Lr3Uv4RmLoBlZk5a9ZMrwLhE5g+2AyiKvC+lpgk31f
-         zVgA==
+        b=hnqoUSr1Vv5FCwIttOEJGqFYYOSi3ZPGubkxroGBM3jcVA37LWTi0Jyd5FZSk3jLeo
+         6gwW33aG/fRdAbhnSiNlMvm7et4lFnKnYOW7xRwC6YKY7GFQ8PdTn7rzXl2D23RkRFNu
+         kgbkZaFf0YPaiRq5IePg4xgmotzZcx1TvFvV+c8BducrU4+P5QTmTi47ewbKKr/3JA+5
+         JG7F0S3q+LDJ/7kxAH1viUVV08YIytCoUUM4OKCteVhxQqkTpo1ySqAJxwQ6aCb0L4ML
+         DE8d5zfa7BozNTrS5XEiVqqZXsVOAYU99kqC4lVLf2qPDLFfvFVJ9jllDCIrJuX1eau0
+         DTDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=9CSrTSmLzOq2Yd0SxK4bPOjt5MDnCORZfX11UQNdOKo=;
-        b=hwWPQAUMhtI0kh65V7xVoslgr8xW0aYucVK+6DLVUMb7+sAFJ9gTnga9J5cdWlQDls
-         ztNC4sxCvexEU8QEZ8vASGGFxazf5YwDpXrXhF10mOy4FZABr/Q8qzK+RI+Go6NM+Nce
-         GF2lxVYc+YoyeWaWPAqQXhW5B+18ArfbOThcmsEM/44ONilWZDrYxGfqE0GyjCH0eGPm
-         bKE4MTymwAYLEc9Emm8zOp08stCOpMRFUUiXYZAY0/2t95guyGvDkNif9x23gD1/k8hs
-         KoSjc6X5L1tm9n9S3ePLAaGJGLcw6bTPWu6aJU4gwk7GJlvdXlLyg9Gh3QMya8KxTdIe
-         yPVw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=a4qEWpIzM3riPo9xjQGrbDeEu2RtORoW+Q4ob2F/CEs=;
+        b=TdkTrhlAuVB4P9fZ7HyU1llaDxHpHTrg5G11OjmcMUzJ9GW9yDtRJOxgvTDndP0uLg
+         8HAuNs4op39dKkwwhp70Z8uPqQLhZEdp7B7mlWbSz00sr63wF29aKm17251Ixwcob+Pr
+         4r73BU0zk3n1MrnR3LC26LNjxX+oySjkFCjOfVb+YHnUDn9ycLzoGXrFX4CvWqjesCC4
+         8xzrv2GSCXiCf8rBv74lSXS7UPQRRF30hcOUzcPfPWyP5de4JT0pnpKlcc5KhjD2ykul
+         bGPWYeZze4YCga9NowvQUOTgFodSRaFhut47TLEvWe/h86hIu0hOyly68rD1bOwqie2E
+         QoMA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of boris.brezillon@bootlin.com designates 62.4.15.54 as permitted sender) smtp.mailfrom=boris.brezillon@bootlin.com
-Return-Path: <boris.brezillon@bootlin.com>
-Received: from mail.free-electrons.com (mail.free-electrons.com. [62.4.15.54])
-        by gmr-mx.google.com with ESMTP id i30si92824edd.0.2018.02.18.12.09.52
-        for <outreachy-kernel@googlegroups.com>;
-        Sun, 18 Feb 2018 12:09:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of boris.brezillon@bootlin.com designates 62.4.15.54 as permitted sender) client-ip=62.4.15.54;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id r20si464043wmg.0.2018.02.16.10.54.27
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 16 Feb 2018 10:54:27 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of boris.brezillon@bootlin.com designates 62.4.15.54 as permitted sender) smtp.mailfrom=boris.brezillon@bootlin.com
-Received: by mail.free-electrons.com (Postfix, from userid 110)
-	id 33D1D20715; Sun, 18 Feb 2018 21:09:51 +0100 (CET)
-X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
-	mail.free-electrons.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-1.0 required=5.0 tests=ALL_TRUSTED,SHORTCIRCUIT
-	shortcircuit=ham autolearn=disabled version=3.4.0
-Received: from bbrezillon (91-160-177-164.subs.proxad.net [91.160.177.164])
-	by mail.free-electrons.com (Postfix) with ESMTPSA id D1D242037F;
-	Sun, 18 Feb 2018 21:09:50 +0100 (CET)
-Date: Sun, 18 Feb 2018 21:09:50 +0100
-From: Boris Brezillon <boris.brezillon@bootlin.com>
-To: Shreeya Patel <shreeya.patel23498@gmail.com>
-Cc: Julia Lawall <julia.lawall@lip6.fr>, Shreeya Patel 
- <shreeya.patel23498@gmail.com>, Boris Brezillon 
- <boris.brezillon@free-electrons.com>, Richard Weinberger <richard@nod.at>,
- David Woodhouse <dwmw2@infradead.org>, Brian Norris 
- <computersforpeace@gmail.com>, Marek Vasut <marek.vasut@gmail.com>, Cyrille
-  Pitchen <cyrille.pitchen@wedev4u.fr>, outreachy-kernel 
- <outreachy-kernel@googlegroups.com>, linux-mtd@lists.infradead.org,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Subject: Re: [Outreachy kernel] Re: [PATCH NAND 0/5] Replace printk
- statements with pr_*macros
-Message-ID: <20180218210950.30fe9310@bbrezillon>
-In-Reply-To: <1518978365.2969.6.camel@gmail.com>
-References: <cover.1518797480.git.shreeya.patel23498@gmail.com>
-	<CAAEAJfAg_hei2PF37_oX2tf+Mv43ye-nEOt+KRVFerp1Jfzn2Q@mail.gmail.com>
-	<alpine.DEB.2.20.1802161822560.4340@hadrien>
-	<CAAEAJfAtvm5bii9eyUnYmU=tQCOvE_hPk0eBJQ1vwgogbGYr-A@mail.gmail.com>
-	<20180216184840.096e534c@bbrezillon>
-	<1518976870.2784.4.camel@gmail.com>
-	<20180218191347.76f4a287@bbrezillon>
-	<1518978365.2969.6.camel@gmail.com>
-X-Mailer: Claws Mail 3.15.0-dirty (GTK+ 2.24.31; x86_64-pc-linux-gnu)
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.46,520,1511823600"; 
+   d="scan'208";a="313991983"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 16 Feb 2018 19:54:27 +0100
+Date: Fri, 16 Feb 2018 19:54:27 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Greg KH <greg@kroah.com>
+cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+    Richard Weinberger <richard@nod.at>, 
+    Shreeya Patel <shreeya.patel23498@gmail.com>, 
+    Boris Brezillon <boris.brezillon@free-electrons.com>, 
+    David Woodhouse <dwmw2@infradead.org>, 
+    Brian Norris <computersforpeace@gmail.com>, 
+    Marek Vasut <marek.vasut@gmail.com>, 
+    Cyrille Pitchen <cyrille.pitchen@wedev4u.fr>, 
+    outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Re: [PATCH NAND 0/5] Replace printk statements
+ with pr_*macros
+In-Reply-To: <20180216184832.GA9616@kroah.com>
+Message-ID: <alpine.DEB.2.20.1802161952170.4340@hadrien>
+References: <cover.1518797480.git.shreeya.patel23498@gmail.com> <1963507.Bpu1nn9g4S@blindfold> <CAAEAJfD6CbWOfrYOY4QDW0tte-yOebcZTGjUDQhR8uE+fsOs3w@mail.gmail.com> <20180216184832.GA9616@kroah.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-Hi Shreeya,
-
-Please try to keep everyone in the loop when you reply to an email. All
-discussions should happen publicly to keep everyone aware of the
-progress and let other developers/maintainers take part to the
-discussion if they have something to add.
+Content-Type: text/plain; charset=US-ASCII
 
 
-On Sun, 18 Feb 2018 23:56:05 +0530
-Shreeya Patel <shreeya.patel23498@gmail.com> wrote:
 
-> On Sun, 2018-02-18 at 19:13 +0100, Boris Brezillon wrote:
-> > On Sun, 18 Feb 2018 23:31:10 +0530
-> > Shreeya Patel <shreeya.patel23498@gmail.com> wrote:
-> >  =20
-> > >=20
-> > > On Fri, 2018-02-16 at 18:48 +0100, Boris Brezillon wrote:
-> > >=20
-> > > Hello Sir,
-> > >  =20
-> > > >=20
-> > > > On Fri, 16 Feb 2018 14:26:56 -0300
-> > > > Ezequiel Garcia <ezequiel@vanguardiasur.com.ar> wrote:
-> > > > =C2=A0=C2=A0 =20
-> > > > >=20
-> > > > >=20
-> > > > > On 16 February 2018 at 14:23, Julia Lawall <julia.lawall@lip6.f =
-=20
-> > > > > r> =20
-> > > > > wrote:=C2=A0=C2=A0 =20
-> > > > > >=20
-> > > > > >=20
-> > > > > >=20
-> > > > > >=20
-> > > > > > On Fri, 16 Feb 2018, Ezequiel Garcia wrote:
-> > > > > > =C2=A0=C2=A0=C2=A0 =20
-> > > > > > >=20
-> > > > > > >=20
-> > > > > > > Hi Shreeya,
-> > > > > > >=20
-> > > > > > > Thanks for the contribution.
-> > > > > > >=20
-> > > > > > > On 16 February 2018 at 13:50, Shreeya Patel
-> > > > > > > <shreeya.patel23498@gmail.com> wrote:=C2=A0=C2=A0=C2=A0=C2=A0=
- =20
-> > > > > > > >=20
-> > > > > > > >=20
-> > > > > > > > This patchset removes all the log levels i.e. KERN_WARN,
-> > > > > > > > KERN_NOTICE, KERN_ERR, KERN_INFO, KERN_DEBUG used in the
-> > > > > > > > printk
-> > > > > > > > statements and replaces the printk statements with
-> > > > > > > > appropriate
-> > > > > > > > pr_*macros.
-> > > > > > > > According to the kernel coding style, pr_*macro is the
-> > > > > > > > preferred
-> > > > > > > > way to print the message.
-> > > > > > > > =C2=A0=C2=A0=C2=A0 =20
-> > > > > > > So, two things to begin with.
-> > > > > > >=20
-> > > > > > > First of all, despite this contribution being part of
-> > > > > > > outreachy,
-> > > > > > > I believe you can include mailing lists in your case.
-> > > > > > >=20
-> > > > > > > In other words, don't use the "nol" option in
-> > > > > > > get_maintainer
-> > > > > > > script and Cc the MTD mailing list: linux-mtd at
-> > > > > > > lists.infradead.org.=C2=A0=C2=A0=C2=A0=C2=A0 =20
-> > > > > > Shouldn't the dev_* functions also be usable?
-> > > > > > =C2=A0=C2=A0=C2=A0 =20
-> > > > > Provided that:
-> > > > > 1. it's applicable, i.e. if in the context of a device.=C2=A0=C2=
-=A0 =20
-> > > > Yep, be careful with that. The MTD/NAND subsystem initializes
-> > > > mtd->dev.name quite late, so it's not safe to use &mtd->dev with
-> > > > dev_<loglevel>(). Note that you can use the NAND controller pdev- =
-=20
-> > > > >dev=C2=A0 =20
-> > > > if
-> > > > available.=C2=A0=C2=A0 =20
-> > > I would like to ask here that what will be the benefit or good
-> > > cause if
-> > > I use pdev->dev?
-> > > How is it different from others? =20
-> > Well, pdev->dev is guaranteed to be properly initialized when you
-> > pass
-> > it to dev_<loglevel>(). This is not the case with mtd->dev which is
-> > initialized in mtd_device_register(), but the NAND controller driver
-> > usually does some operations on the NAND device before reaching this
-> > point (reading the ID, reading the bad block markers to determine
-> > which
-> > blocks are bad, ...).
-> >  =20
-> Thanks for making me understand.
->=20
-> > Anyway, I think it's better if you first do the
-> > s/printk(KERN_<LOGLEVEL>(/pr_<loglevel>(/ replacement. Replacing
-> > pr_xxx
-> > by dev_xxx is something we can do afterwards. =20
->=20
-> I've created one patch where I have replaced printk
-> with dev_* and used pdev->dev.
+On Fri, 16 Feb 2018, Greg KH wrote:
 
-Okay. pdev->dev is not always directly accessible so doing
-s/printk(KERN_<LOGLEVEL>/dev_<loglevel>(&pdev->dev, / is likely to
-cause build failures. But I guess you compile-tested the changes you're
-about to submit.
+> On Fri, Feb 16, 2018 at 02:24:46PM -0300, Ezequiel Garcia wrote:
+> > Hey Richard,
+> >
+> > On 16 February 2018 at 14:19, Richard Weinberger <richard@nod.at> wrote:
+> > > Am Freitag, 16. Februar 2018, 17:50:09 CET schrieb Shreeya Patel:
+> > >> This patchset removes all the log levels i.e. KERN_WARN,
+> > >> KERN_NOTICE, KERN_ERR, KERN_INFO, KERN_DEBUG used in the printk
+> > >> statements and replaces the printk statements with appropriate
+> > >> pr_*macros.
+> > >> According to the kernel coding style, pr_*macro is the preferred
+> > >> way to print the message.
+> > >
+> > > Beside of that, how does it improve the code?
+> > > Don't get me wrong, pr_* is the way to go for new code, but I don't think it
+> > > is worth "fixing" in existing code and make working with git blame more
+> > > painful.
+> > >
+> >
+> > Shreeya's intention is to work on [1], migrating drivers to exec_op.
+> > As a first task, before being accepted, she is required to submit
+> > cleanup patches (or small tasks).
+>
+> "cleanup patches" should always start in the drivers/staging/ tree, to
+> avoid bothering other subsytem maintainers.  Please start there before
+> moving on to the "tasks" as mentioned on the site that are picked by the
+> mentors.
+>
+> Don't skip the cleanup patches for no good reason please.
 
-Regards,
+Actually, I told Shreeya that she could skip the initial phase because she
+has been doing some other work on kernel code off and on over the last few
+months.  On the other hand, a generic change such as printk -> pr* or dev*
+could indeed have just been experimented with on staging drivers.
 
-Boris
+julia
 
-
---=20
-Boris Brezillon, Bootlin (formerly Free Electrons)
-Embedded Linux and Kernel engineering
-http://bootlin.com
+>
+> thanks,
+>
+> greg k-h
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20180216184832.GA9616%40kroah.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
