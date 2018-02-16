@@ -1,128 +1,127 @@
 X-GM-THRID: 6523255029551333376
-Date: Fri, 16 Feb 2018 13:26:57 -0800 (PST)
-From: Ishita Tripathi <sakurakhadag@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <50576300-68a8-4dae-94d6-6452639c5c9d@googlegroups.com>
+X-Received: by 10.25.44.7 with SMTP id s7mr561064lfs.20.1518814451050;
+        Fri, 16 Feb 2018 12:54:11 -0800 (PST)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.46.25.151 with SMTP id 23ls322991ljz.5.gmail; Fri, 16 Feb 2018
+ 12:54:09 -0800 (PST)
+X-Google-Smtp-Source: AH8x2279nNHmNrT/ocRdlV0I06Pa5FUXYXZraZ+T9fS6FLY3QjA0A6DGZIStFZ/tmudmqrSTI2o4
+X-Received: by 10.46.60.21 with SMTP id j21mr493535lja.39.1518814449046;
+        Fri, 16 Feb 2018 12:54:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518814449; cv=none;
+        d=google.com; s=arc-20160816;
+        b=agAZLy6fKw4IyKkqziFe7fNYtP+UPLVJsQ3TU+VLYC7Ho7cHpGgxgGofKlCInGpRE6
+         WHu/2JjAbaliTM64xDkg4DyeKZhQ7mcSSHcFHxE+0dncPC86NesBRZEesDKKzGRTrFu/
+         eSJ6RgTpg18ke7u4uvLaVJLIofMUv/Qm19XsZbPQy9N5FRyJUNy1AZ4joCOK1bjloS+V
+         twzbK38+npzwGLAAbUPPx7e7gvRtPfiqRTRhxnHz1w8d9mB31Ba6f+iZJsspj1H2SdT+
+         sxqJHmgw2D19gORXbfqybLFxW+Bhequl3DiLLALC3VS+jwj3M9909Zv9cTL42i2tFx0B
+         CcVQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=p0q3DFwGjTtz53Ct/c0IWpIBw6eXUNI3bPO10M2dilM=;
+        b=r9EksKOlxjCuI2uy3oPhgyKn00U7ISgNCrZz/zXA9g6paayh2xRwsV+vxZ6xk5ab8o
+         68e0DUZU19JTu2+9ef3cq0PoXJUzBhhYfsTEUHVRuoFUmGqoWJGAjfuTamUkaOqEjHLE
+         IL0qhrycuiGeQGuBLlPub81J+F4FQyEnOFUGQqwCm9nwylPAcJ+swQEiAWv4CKT0uqFG
+         gOlaGgGLoUukd0LWQkWsvvGuJCqZkn0hJisXkc04ej4UPBPC+mYMrKAuvTskvRRLQuQe
+         GWifrM/gxa068hOKMOQwP0qZW9LIQMz2kWqEV4J0U5KbYHYXItwUDtyCXFW7hLC3V0Rj
+         StSg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id b10si870942lfe.4.2018.02.16.12.54.08
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 16 Feb 2018 12:54:08 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.46,520,1511823600"; 
+   d="scan'208";a="255093223"
+Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 16 Feb 2018 21:54:07 +0100
+Date: Fri, 16 Feb 2018 21:54:07 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Ishita Tripathi <sakurakhadag@gmail.com>
+cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    Ian Abbott <abbotti@mev.co.uk>, 
+    H Hartley Sweeten <hsweeten@visionengravers.com>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Fix checkpatch issue
 In-Reply-To: <20180216204100.GA76452@ubuntu>
+Message-ID: <alpine.DEB.2.20.1802162148210.2213@hadrien>
 References: <20180216204100.GA76452@ubuntu>
-Subject: Re: [PATCH] Fix checkpatch issue
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_5079_109241472.1518816417315"
-X-Google-Token: EKGZndQFcNqAMYQtXmo0
-X-Google-IP: 171.79.78.116
+Content-Type: text/plain; charset=US-ASCII
 
-------=_Part_5079_109241472.1518816417315
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_5080_1523544061.1518816417316"
 
-------=_Part_5080_1523544061.1518816417316
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
 
-Hi!
-I'm very sorry about the horrible quality. I'll try better with v2. 
-Thank you very much for the replies.
-Ishita
+On Fri, 16 Feb 2018, Ishita Tripathi wrote:
 
-On Saturday, 17 February 2018 02:11:07 UTC+5:30, Ishita Tripathi wrote:
->
-> Deleted line break after dereference operator (->) 
->
-> Signed-off-by: Ishita Tripathi <sakurakhadag@gmail.com> 
->
-> --- 
->  drivers/staging/comedi/drivers/rtd520.c | 5 ++--- 
->  1 file changed, 2 insertions(+), 3 deletions(-) 
->
-> diff --git a/drivers/staging/comedi/drivers/rtd520.c 
-> b/drivers/staging/comedi/drivers/rtd520.c 
-> index bb400e0..47b7093 100644 
-> --- a/drivers/staging/comedi/drivers/rtd520.c 
-> +++ b/drivers/staging/comedi/drivers/rtd520.c 
-> @@ -815,9 +815,8 @@ static int rtd_ai_cmdtest(struct comedi_device *dev, 
->   
->                  if (cmd->scan_begin_src == TRIG_TIMER) { 
->                          arg = cmd->convert_arg * cmd->scan_end_arg; 
-> -                        err |= comedi_check_trigger_arg_min(&cmd-> 
-> -                                                           
->  scan_begin_arg, 
-> -                                                            arg); 
-> +                        err |= 
-> comedi_check_trigger_arg_min(&cmd->scan_begin_arg, 
-> +                                        arg); 
->                  } 
->          } 
->   
-> -- 
-> 2.7.4 
->
->
-------=_Part_5080_1523544061.1518816417316
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+> Deleted line break after dereference operator (->)
 
-<div dir=3D"ltr">Hi!<br>I&#39;m very sorry about the horrible quality. I&#3=
-9;ll try better with v2. <br>Thank you very much for the replies.<br>Ishita=
-<br><br>On Saturday, 17 February 2018 02:11:07 UTC+5:30, Ishita Tripathi  w=
-rote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8e=
-x;border-left: 1px #ccc solid;padding-left: 1ex;">Deleted line break after =
-dereference operator (-&gt;)
-<br>
-<br>Signed-off-by: Ishita Tripathi &lt;<a href=3D"mailto:sakurakhadag@gmail=
-.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;ma=
-ilto:sakurakhadag@gmail.com&#39;;return true;" onclick=3D"this.href=3D&#39;=
-mailto:sakurakhadag@gmail.com&#39;;return true;">sakurakhadag@gmail.com</a>=
-&gt;
-<br>
-<br>---
-<br>=C2=A0drivers/staging/comedi/<wbr>drivers/rtd520.c | 5 ++---
-<br>=C2=A01 file changed, 2 insertions(+), 3 deletions(-)
-<br>
-<br>diff --git a/drivers/staging/comedi/<wbr>drivers/rtd520.c b/drivers/sta=
-ging/comedi/<wbr>drivers/rtd520.c
-<br>index bb400e0..47b7093 100644
-<br>--- a/drivers/staging/comedi/<wbr>drivers/rtd520.c
-<br>+++ b/drivers/staging/comedi/<wbr>drivers/rtd520.c
-<br>@@ -815,9 +815,8 @@ static int rtd_ai_cmdtest(struct comedi_device *dev=
-,
-<br>=C2=A0
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (cmd-&gt;scan_begin_src =3D=3D TRIG_TIM=
-ER) {
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0arg =3D cmd-&gt;convert_arg * cmd-&gt;scan_end_arg;
-<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-err |=3D comedi_check_trigger_arg_min(&amp;<wbr>cmd-&gt;
-<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0scan_begin_ar=
-g,
-<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0arg);
-<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-err |=3D comedi_check_trigger_arg_min(&amp;<wbr>cmd-&gt;scan_begin_arg,
-<br>+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0arg);
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
-<br>=C2=A0
-<br>--=20
-<br>2.7.4
-<br>
-<br></blockquote></div>
-------=_Part_5080_1523544061.1518816417316--
+Thank you for your patch.  There are some issues with various parts of it,
+however.
 
-------=_Part_5079_109241472.1518816417315--
+First, the "To" list looks strange.  There should not be the --to: and the
+; after the email of H Hartley Sweeten.  Did these come from th
+get_maintainers script?
+
+Next, the subject line should give some information about what files are
+affected.  Run git log --oneline drivers/staging/comedi/drivers/rtd520.c
+to see what are the subject lines that others have used on this file.
+
+Next, "Fix checkpatch issue" is not very descriptive. Find something short
+that described what you do.  You can put that the issue was found using
+checkpatch at the end of the commit log message.
+
+Next, the commit log message should be in the imperative, like you are
+ordering the patch to do something.  So it would be "Delete" rather than
+"Deleted".  Here you may also want to say why you made the change.  I
+think the code is more readable without these strange linebreaks.
+
+Finally, it could be better to just put &cmd->scan_begin_arg on the next
+line, lined up with arg, rather than going over the 80 character limit.
+
+Please send a v2 patch.  There are some hints about doing this in the
+tutorial.
+
+julia
+
+
+>
+> Signed-off-by: Ishita Tripathi <sakurakhadag@gmail.com>
+>
+> ---
+>  drivers/staging/comedi/drivers/rtd520.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/comedi/drivers/rtd520.c b/drivers/staging/comedi/drivers/rtd520.c
+> index bb400e0..47b7093 100644
+> --- a/drivers/staging/comedi/drivers/rtd520.c
+> +++ b/drivers/staging/comedi/drivers/rtd520.c
+> @@ -815,9 +815,8 @@ static int rtd_ai_cmdtest(struct comedi_device *dev,
+>
+>  		if (cmd->scan_begin_src == TRIG_TIMER) {
+>  			arg = cmd->convert_arg * cmd->scan_end_arg;
+> -			err |= comedi_check_trigger_arg_min(&cmd->
+> -							    scan_begin_arg,
+> -							    arg);
+> +			err |= comedi_check_trigger_arg_min(&cmd->scan_begin_arg,
+> +					arg);
+>  		}
+>  	}
+>
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20180216204100.GA76452%40ubuntu.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
