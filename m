@@ -1,116 +1,110 @@
 X-GM-THRID: 6523837369429262336
-X-Received: by 10.80.202.201 with SMTP id f9mr3295099edi.12.1518956937920;
-        Sun, 18 Feb 2018 04:28:57 -0800 (PST)
+X-Received: by 10.36.117.194 with SMTP id y185mr2389521itc.56.1518949253458;
+        Sun, 18 Feb 2018 02:20:53 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.80.158.236 with SMTP id a99ls3027098edf.7.gmail; Sun, 18 Feb
- 2018 04:28:56 -0800 (PST)
-X-Google-Smtp-Source: AH8x226PaxmXJCfjcA5KdGetujrobvRrwzr627hMpBPuMgr4NFSXIrbwJF7OjvyS78ZbvPFlemEb
-X-Received: by 10.80.202.11 with SMTP id d11mr3289796edi.9.1518956936298;
-        Sun, 18 Feb 2018 04:28:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518956936; cv=none;
+Received: by 10.107.174.80 with SMTP id x77ls380350ioe.16.gmail; Sun, 18 Feb
+ 2018 02:20:52 -0800 (PST)
+X-Google-Smtp-Source: AH8x226h4RmMVOBcBh76JAmbESwZ3vvtnPlst4YCbTQJSuZfUzuIr9nucvAZXM1L8i4eovpFClz8
+X-Received: by 10.107.167.208 with SMTP id q199mr7943956ioe.84.1518949252574;
+        Sun, 18 Feb 2018 02:20:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518949252; cv=none;
         d=google.com; s=arc-20160816;
-        b=ImzACNseuIjc3CqprjrtnV9kazHB70HyYPUdNfFm4bwK0Q1+/72BEDEd2CsUh5laLM
-         KucJjaTFe4Z1pQh1h8cD/ApnYJMOJbGtekbsz6KVx6NZoO7/aVf/yH4yj814vEt2Z6L0
-         2PMFQzKJnUx/2VMbaP8kNO6Zi67sTRPBpkD4RFDMnE1pmPstUMfZZ/Qp4eEKVR+l8Lz5
-         W+Vmb8FB1x3b2y8D+KMSAVpHiM7zofN9YqE3FieikQuz+/1CrOr7n1smBbHUHINSqFKX
-         WBAl701CJHkeUEyEY9Aa02TZAJ6eA4GPb6ubj4HbhyqvcrVIsT81tFe2i+l6Z4LYMQXR
-         zTpg==
+        b=A3IG3P3+sRYSS5SlYUoyvtrRIbx+X7O5DR1YsTzvAy7Qq2rGI+gEsZyrMfq2PBf22/
+         w3AIsen+qKsG9Csl6H3FvQEY6E8vRVWmcRSeaPqX/BpGLsHojxvgVtDCFvrlHa4rYGdf
+         4ZmgrB/xEc27vjy8miGBwEZHOphOo81fFEzZO6tvsLKACfSa0nCCyg0bZhpnctMchxYE
+         UGJIjGpN5qHrIXvCK4oXWJY9CnmsYDtFDx1XauSUQ9viP1nUeJMOsAkOBP8HQJSH1Dfg
+         P0lYil4v+/dzXsI+o8sqFmKE5LWyds671kADJPQFoP5z+ee9q69sNri+0jVOot7alfXD
+         NFVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=qwgqVDREbJHj2RXZxOY33nieLirXD8/+qjOuUyY43lM=;
-        b=dQtF/P5Fcp0phb7OGvW0aQoMiBfx+4Abjlq9gyz31VunFI49mTRuzzE26+Fc3R7V+M
-         GGdvkwZWZ5ao5Q82ioyDio08sfFwxQkv0Qb1RkB1UwreT9t/xYPn+5g/mTgwBxlOOWwl
-         667KYWW4LwYTvkRay9sAnHyRS96CGYllmWBRyfM6CwW7dSaIrjwF0hJrLAUOUizxAyCI
-         fgXVoBp+a2Lq3TB3mHFHd3eH1R9QWQq8TA9cGOXioDDmr8/4oCNOpz3CiP2U12BtMia/
-         vfXPnkaviLT7DWV8yTHHhL+1mBKXvb3usLRwHHbngBh1PpvDKJBzON0tJr82ZOaBRmSv
-         2GTg==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=Ids22nm9trl6dl+9BX+jfTFX8raUx+o5+Uv9AouJc6M=;
+        b=Fk5dLC0ddwRqcha0oMAIT9lyqTy2KjxfSwPILLKDjzPFDgf3oYEardSrlHI+THLnc+
+         LGm0sfi6h3Ji2JUSDKY57hkOqOCuz8+vb539ENO2Sp4JOTs8lyyzWJuxtdwBRGAzrC9J
+         uC56xXsOiqeL4Bg+gTuYYGLqB3zq0sxmBWtBuZ1kKItQAOVaP2YKsY7tjKIQP16t0iwS
+         JBpgKDFdkxe2yhJcUupemcNCI++Xj/cmvr+A0UfDMlvSZl0/gcPu33BWKW7inXcreUAa
+         w1UU9KjMOmbx3kMsGecxXfNZgRQvLH7rWFvasTMNsykpDG/1U8semWi3SXy0NLFXElkA
+         asUA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id n22si165151edb.5.2018.02.18.04.28.56
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DyveacI7;
+       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::243 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <santhameena13@gmail.com>
+Received: from mail-pl0-x243.google.com (mail-pl0-x243.google.com. [2607:f8b0:400e:c01::243])
+        by gmr-mx.google.com with ESMTPS id n14si247356ith.1.2018.02.18.02.20.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Feb 2018 04:28:56 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sun, 18 Feb 2018 02:20:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::243 as permitted sender) client-ip=2607:f8b0:400e:c01::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.46,530,1511823600"; 
-   d="scan'208";a="314116259"
-Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 18 Feb 2018 13:28:55 +0100
-Date: Sun, 18 Feb 2018 13:28:55 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Santha Meena Ramamoorthy <santhameena13@gmail.com>
-cc: gregkh@linuxfoundation.org, aditya.shankar@microchip.com, 
-    outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: wilc1000: wilc_wfi_cfgoperations:
- Fixed a coding style issue
-In-Reply-To: <1518949244-48499-1-git-send-email-santhameena13@gmail.com>
-Message-ID: <alpine.DEB.2.20.1802181324090.2777@hadrien>
-References: <1518949244-48499-1-git-send-email-santhameena13@gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DyveacI7;
+       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::243 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl0-x243.google.com with SMTP id x19so4105870plr.13
+        for <outreachy-kernel@googlegroups.com>; Sun, 18 Feb 2018 02:20:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=Ids22nm9trl6dl+9BX+jfTFX8raUx+o5+Uv9AouJc6M=;
+        b=DyveacI7kBs01yDpnCjE5gu3Lbhp6iSwgrwb2uaF3X+xtCw31fYSTpixaD+vOiuUnE
+         YFRsuIHJ5TBT+kFLDH6uCIOgqFWqulzmqyvJdoyJycv60d2ss3DovKEIs7GaZOm+VY1w
+         5Y6ujqBd3ln3sp+z1U1uGnVOiAxyo+l1U/lJLofdThPEQyC4jbrCK4dG8nrKo2L9/QpY
+         cpafhDy3jHezNo8War+I+tI2/rAiy0aZOezA8bXH1pbmtj5nW0HjsWwXX7t0xqbDO5V5
+         QSvfiI7/yPCTxA/Z+iU+qU7DJppQrK6WIeRMSSuHiN9mFMUm8URBEjprbYVr5Rv1LbaK
+         leDA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=Ids22nm9trl6dl+9BX+jfTFX8raUx+o5+Uv9AouJc6M=;
+        b=rMTfzQ3GbvMoCq5ocLICCaZXqm/F8pfVvksBUuSwvWF873eY5MI4ptBtQHaex9ZOG2
+         Oy/NNJO7S8ALEFQQk7ty7sePImH83E4EK4fMNkSTijt3c2R5J0vG3iEYrfCebHB2soHv
+         JgfddVflAUnyQJ0N+do5i9Xkq7LOW4fV/u5BUZT4j4EsPzy0nsFL4fGMDlCXgETSR0/I
+         i8Ng51meQwBgFv1JWI85NXSi+JTGRUnV0CDN/2hFnNe9gc1prjz87O4MF+kX2RiqyBDF
+         1WlbBDTSABCoPO2WfR7iBA68wT95Wp3WKbUnhDQiQGPlwzcnfKzgZ4T8zOusqObEA4vP
+         YKlw==
+X-Gm-Message-State: APf1xPDvRo/ZmSzNeWd7DiqxmWob+qi+xeL/R1QEk2zRoIVMFC8Hn0/I
+	Rueuf5MLeyda28+/d21Cris=
+X-Received: by 2002:a17:902:4383:: with SMTP id j3-v6mr10849207pld.320.1518949252002;
+        Sun, 18 Feb 2018 02:20:52 -0800 (PST)
+Return-Path: <santhameena13@gmail.com>
+Received: from localhost.localdomain (ResNet-23-187.resnet.ucsb.edu. [169.231.23.187])
+        by smtp.gmail.com with ESMTPSA id r78sm12573213pfb.24.2018.02.18.02.20.50
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 18 Feb 2018 02:20:50 -0800 (PST)
+From: Santha Meena Ramamoorthy <santhameena13@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: aditya.shankar@microchip.com,
+	outreachy-kernel@googlegroups.com,
+	Santha Meena Ramamoorthy <santhameena13@gmail.com>
+Subject: [PATCH] Staging: wilc1000: wilc_wfi_cfgoperations: Fixed a coding style issue
+Date: Sun, 18 Feb 2018 02:20:44 -0800
+Message-Id: <1518949244-48499-1-git-send-email-santhameena13@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-On Sun, 18 Feb 2018, Santha Meena Ramamoorthy wrote:
+Fixed the checkpatch warning "braces {} are not necessary for single
+statement blocks"
 
-> Fixed the checkpatch warning "braces {} are not necessary for single
-> statement blocks"
+Signed-off-by: Santha Meena Ramamoorthy <santhameena13@gmail.com>
+---
+ drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Thank you for your patch.
+diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+index 621810d..df04bf80 100644
+--- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
++++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+@@ -287,9 +287,8 @@ static void remove_network_from_shadow(struct timer_list *unused)
+ 		}
+ 	}
+ 
+-	if (last_scanned_cnt != 0) {
++	if (last_scanned_cnt != 0)
+ 		mod_timer(&hAgingTimer, jiffies + msecs_to_jiffies(AGING_TIME));
+-	}
+ }
+ 
+ static void clear_duringIP(struct timer_list *unused)
+-- 
+2.7.4
 
-The change is fine, but the subject line and commit message could be
-improved.  For the subject line, there are two parts: where the change is
-and what is done.  For the where the change is part, there is no
-algorithm.  You need to see what others have done on this file.  You can
-do that by saying git log --oneline on the file name.  Typically, the
-actual file name is not included.
-
-Then for describing what is done, the word "fix" is not very helpful.  It
-doesn't indicate how the fix was done.  In this case you could say Remove
-unneeded braces.
-
-Then in the commit message you can provide more information about what you
-have done and why.  In this case, it could be something like "Remove
-braces around a single-statement block to conform to the Linux kernel
-coding style.  Problem found using checkpatch."
-
-Please send a v2.
-
-julia
-
->
-> Signed-off-by: Santha Meena Ramamoorthy <santhameena13@gmail.com>
-> ---
->  drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
->
-> diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-> index 621810d..df04bf80 100644
-> --- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-> +++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-> @@ -287,9 +287,8 @@ static void remove_network_from_shadow(struct timer_list *unused)
->  		}
->  	}
->
-> -	if (last_scanned_cnt != 0) {
-> +	if (last_scanned_cnt != 0)
->  		mod_timer(&hAgingTimer, jiffies + msecs_to_jiffies(AGING_TIME));
-> -	}
->  }
->
->  static void clear_duringIP(struct timer_list *unused)
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1518949244-48499-1-git-send-email-santhameena13%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
