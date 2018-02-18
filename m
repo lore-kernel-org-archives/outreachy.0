@@ -1,89 +1,116 @@
-X-GM-THRID: 6801528463992815616
-X-Received: by 2002:a1c:5684:: with SMTP id k126mr10937325wmb.181.1583604250352;
-        Sat, 07 Mar 2020 10:04:10 -0800 (PST)
+X-GM-THRID: 6523837369429262336
+X-Received: by 10.80.202.201 with SMTP id f9mr3295099edi.12.1518956937920;
+        Sun, 18 Feb 2018 04:28:57 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:82b7:: with SMTP id 52ls2019895wrc.1.gmail; Sat, 07 Mar
- 2020 10:04:08 -0800 (PST)
-X-Google-Smtp-Source: ADFU+vtmGhS1tKTUGVr2i7cItjHt8j96hV+X9ubxW8xTr0wc5L6KqrSPS1wQmgEa+cYNaL/R4XR1
-X-Received: by 2002:a5d:628c:: with SMTP id k12mr10449529wru.237.1583604248859;
-        Sat, 07 Mar 2020 10:04:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1583604248; cv=none;
+Received: by 10.80.158.236 with SMTP id a99ls3027098edf.7.gmail; Sun, 18 Feb
+ 2018 04:28:56 -0800 (PST)
+X-Google-Smtp-Source: AH8x226PaxmXJCfjcA5KdGetujrobvRrwzr627hMpBPuMgr4NFSXIrbwJF7OjvyS78ZbvPFlemEb
+X-Received: by 10.80.202.11 with SMTP id d11mr3289796edi.9.1518956936298;
+        Sun, 18 Feb 2018 04:28:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518956936; cv=none;
         d=google.com; s=arc-20160816;
-        b=wuCGsJroSkcuInaTtP0OrkIub//PTayk65b9CkG2U+6rFWeJr6xjDdiWSQLGa3kleC
-         FBGXfFknNd+NGLsCFKs66k6YkYU3vHVzXtiMPe3bT5oPNMxmoon3z6OhXMQPIZiPeX0t
-         /MCQsx5Vqz+YUan1n71mPOjxFk43Q5VD1bVUSL0HTyE42Y2g3le5oHn3YKG6dc+mMcFZ
-         soiaHiqllEQuhXHf3phd9UiQ5D+PNT8fIH/lpTA5iqDWH/k+ZNf51Ppk8GMKnUh4Nz2j
-         DRLJJSUlv/8qkOeWjqIhAm7TCuVTjCP5iS/plBR8+VYRClfFgLGxb+jMTgWVGCXGyKWr
-         tFog==
+        b=ImzACNseuIjc3CqprjrtnV9kazHB70HyYPUdNfFm4bwK0Q1+/72BEDEd2CsUh5laLM
+         KucJjaTFe4Z1pQh1h8cD/ApnYJMOJbGtekbsz6KVx6NZoO7/aVf/yH4yj814vEt2Z6L0
+         2PMFQzKJnUx/2VMbaP8kNO6Zi67sTRPBpkD4RFDMnE1pmPstUMfZZ/Qp4eEKVR+l8Lz5
+         W+Vmb8FB1x3b2y8D+KMSAVpHiM7zofN9YqE3FieikQuz+/1CrOr7n1smBbHUHINSqFKX
+         WBAl701CJHkeUEyEY9Aa02TZAJ6eA4GPb6ubj4HbhyqvcrVIsT81tFe2i+l6Z4LYMQXR
+         zTpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=69ZGTjXgnMeblqE4znwQ7wWlDO9jAFIPLXhn4Bj04DQ=;
-        b=dZe+J3tpyNoYPahjUdx7StmiBSz0x+Xh9C1mNpxBVrHsuKfkA5aaNyy81ii39FjbSa
-         9iGzZ/+cpI/GOcOUO5d7GbMDJujLnF3FZZ0jPebu7q7Ch3eRYAFNFKME7yj28hH124m5
-         E5RVUR4iWzA05df3qllpwRA7s/RUEGKROZiMKeGPq5e50DFUDRcUVY+bkAIbfCDr12I0
-         kHgnbAORisI9L2KHxA8pWMrpSucXrCtRAHrEmKb7ba8qZEb3GXQ8LxaTwyTi7swWvgkr
-         BuRP20CK0qgHu9xj4LXLLXvFZrzOrKTI9156Ak5apu7V3Nm8bnVdlCtwxpGNSc4G8tqM
-         Dihg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=qwgqVDREbJHj2RXZxOY33nieLirXD8/+qjOuUyY43lM=;
+        b=dQtF/P5Fcp0phb7OGvW0aQoMiBfx+4Abjlq9gyz31VunFI49mTRuzzE26+Fc3R7V+M
+         GGdvkwZWZ5ao5Q82ioyDio08sfFwxQkv0Qb1RkB1UwreT9t/xYPn+5g/mTgwBxlOOWwl
+         667KYWW4LwYTvkRay9sAnHyRS96CGYllmWBRyfM6CwW7dSaIrjwF0hJrLAUOUizxAyCI
+         fgXVoBp+a2Lq3TB3mHFHd3eH1R9QWQq8TA9cGOXioDDmr8/4oCNOpz3CiP2U12BtMia/
+         vfXPnkaviLT7DWV8yTHHhL+1mBKXvb3usLRwHHbngBh1PpvDKJBzON0tJr82ZOaBRmSv
+         2GTg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b=ZGnM3EEr;
-       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::542 as permitted sender) smtp.mailfrom=lu@pplo.net
-Return-Path: <lu@pplo.net>
-Received: from mail-ed1-x542.google.com (mail-ed1-x542.google.com. [2a00:1450:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id w11si291295wmk.0.2020.03.07.10.04.08
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id n22si165151edb.5.2018.02.18.04.28.56
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 07 Mar 2020 10:04:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::542 as permitted sender) client-ip=2a00:1450:4864:20::542;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 18 Feb 2018 04:28:56 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b=ZGnM3EEr;
-       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::542 as permitted sender) smtp.mailfrom=lu@pplo.net
-Received: by mail-ed1-x542.google.com with SMTP id h62so6667591edd.12
-        for <outreachy-kernel@googlegroups.com>; Sat, 07 Mar 2020 10:04:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=pplo.net; s=google;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=69ZGTjXgnMeblqE4znwQ7wWlDO9jAFIPLXhn4Bj04DQ=;
-        b=ZGnM3EErvmpGChkQxyQyWGK1KEXRZV9lq9dfb2GifZESHqWCXBo8sX5iCIBywoXDxV
-         2246pqu5kFllTD1hTLguBo785PJulpA2di71ggKU6diy56nI7u3jEgkcVOrAPN2hZeVg
-         YaspjRE3qvDzBYhNewVLrIXZHSsOY0cQCohgE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=69ZGTjXgnMeblqE4znwQ7wWlDO9jAFIPLXhn4Bj04DQ=;
-        b=pFBu76UMLcwtoiHCfQNlCI+uyoGGjdOE7YD+KaB/i5uMLkrZ4xgnzrgpkpfsZ+EQuN
-         TtFndcH7Pi5fhFd8XnRn8G+TPZE5w45HK6wed5+mtH3r2O6QqY+cetIoRUnocoSKtFjw
-         u75gjnRvPW4E/q4xE3oJQbX+qldnLVHhEeAl0hPKKfQ5UQAsTKZSOPzrT+Q/mUQDg1fU
-         5PbGV4dBEHSiRt4bJhuTSbBc4WwCFPkxIjTBnUCy5D6Sj5f+mZdnqtaU7/qP8ewpCtOo
-         7OkPGQrS9ourpfdOtf8FkdBM5tFz2agTyQs4w2UquSqu6yjzX7538w+E6W6I0BG/zgY8
-         SdPQ==
-X-Gm-Message-State: ANhLgQ0V5m02SDqQEJr7+vub4v55NTDccUvlGDyGzwcXXc5D+DZFsdRS
-	c/6gvXHw1H2PnwnPitTjYZHaK86jHW4=
-X-Received: by 2002:a05:6402:1291:: with SMTP id w17mr9154639edv.180.1583604248255;
-        Sat, 07 Mar 2020 10:04:08 -0800 (PST)
-Return-Path: <lu@pplo.net>
-Received: from supernova (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
-        by smtp.gmail.com with ESMTPSA id e17sm2121853ejb.71.2020.03.07.10.04.07
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 07 Mar 2020 10:04:07 -0800 (PST)
-Date: Sat, 7 Mar 2020 19:03:59 +0100
-From: Lourdes Pedrajas <lu@pplo.net>
-To: outreachy-kernel@googlegroups.com
-Subject: New here
-Message-ID: <20200307180359.GA24478@supernova>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.46,530,1511823600"; 
+   d="scan'208";a="314116259"
+Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 18 Feb 2018 13:28:55 +0100
+Date: Sun, 18 Feb 2018 13:28:55 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Santha Meena Ramamoorthy <santhameena13@gmail.com>
+cc: gregkh@linuxfoundation.org, aditya.shankar@microchip.com, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: wilc1000: wilc_wfi_cfgoperations:
+ Fixed a coding style issue
+In-Reply-To: <1518949244-48499-1-git-send-email-santhameena13@gmail.com>
+Message-ID: <alpine.DEB.2.20.1802181324090.2777@hadrien>
+References: <1518949244-48499-1-git-send-email-santhameena13@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Content-Type: text/plain; charset=US-ASCII
 
-Hi, I'm a new applicant for this 2020, newbie programmer too. For me is the
-first time participating in a large project like this.
+On Sun, 18 Feb 2018, Santha Meena Ramamoorthy wrote:
 
-While reading kernelnewbies wiki, it says: 'drivers/staging contains both
-drivers that are on their way into the kernel and those that are on theirway
-out of the kernel.' How to know which of them are in their way out? I tried a
-git grep, but maybe there is a better way to know it. Thank you!
+> Fixed the checkpatch warning "braces {} are not necessary for single
+> statement blocks"
+
+Thank you for your patch.
+
+The change is fine, but the subject line and commit message could be
+improved.  For the subject line, there are two parts: where the change is
+and what is done.  For the where the change is part, there is no
+algorithm.  You need to see what others have done on this file.  You can
+do that by saying git log --oneline on the file name.  Typically, the
+actual file name is not included.
+
+Then for describing what is done, the word "fix" is not very helpful.  It
+doesn't indicate how the fix was done.  In this case you could say Remove
+unneeded braces.
+
+Then in the commit message you can provide more information about what you
+have done and why.  In this case, it could be something like "Remove
+braces around a single-statement block to conform to the Linux kernel
+coding style.  Problem found using checkpatch."
+
+Please send a v2.
+
+julia
+
+>
+> Signed-off-by: Santha Meena Ramamoorthy <santhameena13@gmail.com>
+> ---
+>  drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+> index 621810d..df04bf80 100644
+> --- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+> +++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
+> @@ -287,9 +287,8 @@ static void remove_network_from_shadow(struct timer_list *unused)
+>  		}
+>  	}
+>
+> -	if (last_scanned_cnt != 0) {
+> +	if (last_scanned_cnt != 0)
+>  		mod_timer(&hAgingTimer, jiffies + msecs_to_jiffies(AGING_TIME));
+> -	}
+>  }
+>
+>  static void clear_duringIP(struct timer_list *unused)
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1518949244-48499-1-git-send-email-santhameena13%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
