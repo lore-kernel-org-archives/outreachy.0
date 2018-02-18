@@ -1,97 +1,107 @@
 X-GM-THRID: 6523943394650095616
-X-Received: by 10.25.159.129 with SMTP id i123mr847095lfe.21.1518980246726;
-        Sun, 18 Feb 2018 10:57:26 -0800 (PST)
+X-Received: by 10.28.18.212 with SMTP id 203mr54938wms.7.1518973939314;
+        Sun, 18 Feb 2018 09:12:19 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.190.21 with SMTP id o21ls620245lff.8.gmail; Sun, 18 Feb
- 2018 10:57:24 -0800 (PST)
-X-Google-Smtp-Source: AH8x22634excuyla70rtbFSV+5OQ1wrDPmQlxrJId/2poEtGytJAjVUdV6CiZc7HW/ylDix0QLPG
-X-Received: by 10.25.216.12 with SMTP id p12mr847460lfg.32.1518980244212;
-        Sun, 18 Feb 2018 10:57:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518980244; cv=none;
+Received: by 10.28.145.10 with SMTP id t10ls140246wmd.9.canary-gmail; Sun, 18
+ Feb 2018 09:12:18 -0800 (PST)
+X-Google-Smtp-Source: AH8x225hGfQmpd5UevoR/BeKuAo9QmneSv/qcr3C/9hKV5rTMCNnDegMe6J+/noHfXUy8o/ZkzbP
+X-Received: by 10.28.15.145 with SMTP id 139mr1868266wmp.27.1518973938054;
+        Sun, 18 Feb 2018 09:12:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518973938; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZXSlstunUFH4Mg413qRO3VNgQEwSKjf5exW0fT5n5In2OTRsxD7aTN2cLcwBrGp+yC
-         +P/NYh1AvTZGHBY3hzHrDIPAH5ooSh6A4etHgK5gC8oAQgA99CenG8ZCY/8/yQFzFW7m
-         c4L1xuA34935tTcYNrZ5U5R2IbHGzdmX3KBUYVcZmgnnUH+SMnAA6WPrO3t5OAwx6Bml
-         Dx/sSqIQRC6c2B20iVh3RtR3F1V5Z13lrq6sa1Yd05fUzcocRuMnoX7j4BFvLxcjYVVs
-         kbCCbPm8z7aHeceX/LILkSZhJs2QVAWDxNV9Slu6Q1/EiVlag5Yer9YTCYZoRvfCItWz
-         0ZFg==
+        b=mD+lzTsWVI905qp5+CqXPHHgj/wNRwBPF3z+6mQz15AI+ZZfsNVwN3eFuHONQmxr51
+         vFSbM7ChVCH73GDYc/aIw1Dv/pmrkWsfuxFWzAc68H+We+jcaPaRsprRT96QML/LNLOf
+         F+JHBlq1YRRU+vx/i/gNkGnTGRMhcMgaINS4dob/0e+xSE3uOAPr80rXwXqfTDUHutVn
+         CP/igLYeM3EpIbBmLY6KtfA0WWK8kEVlSC/3sw0o+G76LFmjXj+Ju24HdXJso5fFBKmi
+         dttJsnupb6wlx6cKJlkGfaWLzAd0qLIEra2fM6VHG2kUTH/QhSaC4BN2BI2jwuHO55qR
+         UC2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=EdtrhGJSgG9+gyXFs1chNrZSLF4mfyG50K7a8nh0vvU=;
-        b=plxBFs/Izh/9SC8kPcl33ymyCl5mwjpnXVbfIsgfBBzwUsc4oQmwZDU8vGioRKUtQz
-         GAZUhq6WbI1W+fpTkW8D/C2IxgZaT/oFoXaKG4AFJ+GXxavrydvmgab2Hx/fjHuQb6qw
-         yqbpbblOxAMGl7jT8KHLni5F+YyIZW4iq2t9ZElh4IO9HM5FEEan61wJ2Rkf+DSO+OXF
-         UxoixIZhTxl1LguKLEBpszTsO7xLAEyeCFIRrwZujq5liG7mxjkBLVINs62Mku0USKuh
-         HY2AVZLGoJnkoOZdqXc+s7H4o1pYjHr6KdJdCzr6BeubuGIzIHefSz3fvu8M9CCA79lw
-         K9DQ==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=LJoDnChzJygeBdpQ0+HqF/YbNKBYKB4gkKHq01igsbs=;
+        b=PHm4SYP/Z+8ZqLxF55ns1aODoxpQZl6F3UIg77pA5qkwwbQwjfo+bk3Kgu7W//HBPg
+         3kqK4X68niVSOLYqyCWrU1KwaFvx3X9KZOm14RjlunIi/lKgVeK55+eFfbpJ8JWSQOG3
+         mrTGZchLrY5WhOGRk7A/Jgs9hFgd4Sr9EGuCPefnBWE4Y/FDrHNKc2rgKeNx0Mp03d9u
+         ZKkLu/jxtIqz6JkIS4VglbIJIwRujZMo0/iBNKCkUnEOxnsOCm03r/SuFQiM6SyMBEHc
+         bhFrUygBrstDfqFEDwQ/7+jii0uusErYWbkPBv5qF1rOSj0OoUU7Hof4X/f6IDbOhJM9
+         /vmA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id 25si232503ljt.1.2018.02.18.10.57.23
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sU0Q6j2F;
+       spf=pass (google.com: domain of chenyensu0@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=chenyensu0@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <chenyensu0@gmail.com>
+Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
+        by gmr-mx.google.com with ESMTPS id v196si439595wmf.1.2018.02.18.09.12.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Feb 2018 10:57:24 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Sun, 18 Feb 2018 09:12:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of chenyensu0@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.46,531,1511823600"; 
-   d="scan'208";a="255191124"
-Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 18 Feb 2018 19:57:23 +0100
-Date: Sun, 18 Feb 2018 19:57:22 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Eisha Chen-yen-su <chenyensu0@gmail.com>
-cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
-Subject: Re: [Outreachy kernel] [PATCH] staging: comedi: Add a missing
- space
-In-Reply-To: <20180218171138.4313-1-chenyensu0@gmail.com>
-Message-ID: <alpine.DEB.2.20.1802181956480.2777@hadrien>
-References: <20180218171138.4313-1-chenyensu0@gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sU0Q6j2F;
+       spf=pass (google.com: domain of chenyensu0@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=chenyensu0@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x244.google.com with SMTP id h21so3807160wmd.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 18 Feb 2018 09:12:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=LJoDnChzJygeBdpQ0+HqF/YbNKBYKB4gkKHq01igsbs=;
+        b=sU0Q6j2Fu1De0mQBx+iYLRMX2kDDevKzDsd9kDEr3LpeQwvmATern7z2stz+Lvm27M
+         FB9ETXBNDQYtKk9+t+G5DvgLMBITgeSzW1QTZy21jZSUUZnBixTh+sA0zVxTnx+pTpXq
+         T3f2FL5e84wR2M/wDT3BQp//ptdoT4xcQEVXxKj8/iCytKPHujiy8u7saJ6XpaC9znrZ
+         rmL2ycUK0gDJyWuWn5lhs63vZAtJMm1bbv9vhesbxSYTaptJABQAjySZalGDDEy96oMv
+         doyJQXaaP2l8VCwVyB7UsRpRvkPdv85ma2KtjTmewK8AoVzaS9GppQ4wBhe6vMGmebjD
+         319w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=LJoDnChzJygeBdpQ0+HqF/YbNKBYKB4gkKHq01igsbs=;
+        b=PjfftEdt2QWLI7jNYdnRIIpcAzPtAZNh7H8LAmXnvCnQphtGteJRA/gl12le/dBQ6C
+         AVFntc5pmZzlcn8GYI7TDvO0TQLluLUYBAN0FHGfOBAeRaQRajmNxdGQekw8CRPnvBC+
+         VD8b1rdw+9KH5/7a+r1JrWSQU4Zf8FcgO7TMqeZZ/+j0fWTyLjyEg6tVwsuy/7PykiwP
+         iWru/jyeNaxmXQVDL9g1bxBU8AehlvYr7LW39ArTukHgAtGHXkAjbDq1rMcBVljx17cY
+         VnL5+3kbeBANyP8ahciXwtst24xhSlK2zRgqIwmqsz+Axug7aAnbiCGye5/3GgqvuxHK
+         025w==
+X-Gm-Message-State: APf1xPDjOj81hw++tEW1jD1j0DRSnl0dNAgAtpLX7Gc8hm3sBCCZQe5j
+	Dps0FgVNkE7hDwezNpw+zDktJ0AUbwk=
+X-Received: by 10.28.18.144 with SMTP id 138mr9888224wms.131.1518973937440;
+        Sun, 18 Feb 2018 09:12:17 -0800 (PST)
+Return-Path: <chenyensu0@gmail.com>
+Received: from outreachy-kernel.wifirst.net (eth-west-pareq2-46-193-1-181.wb.wifirst.net. [46.193.1.181])
+        by smtp.googlemail.com with ESMTPSA id w104sm22750795wrb.33.2018.02.18.09.12.16
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 18 Feb 2018 09:12:16 -0800 (PST)
+From: Eisha Chen-yen-su <chenyensu0@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	gregkh@linuxfoundation.org
+Cc: Eisha Chen-yen-su <chenyensu0@gmail.com>
+Subject: [PATCH] staging: comedi: Add a missing space
+Date: Sun, 18 Feb 2018 18:11:38 +0100
+Message-Id: <20180218171138.4313-1-chenyensu0@gmail.com>
+X-Mailer: git-send-email 2.14.3
 
+Add a missing space so that the * is properly aligned with
+the rest of the block comment. Problem found with checkpatch.
 
+Signed-off-by: Eisha Chen-yen-su <chenyensu0@gmail.com>
+---
+ drivers/staging/comedi/drivers/ni_stc.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On Sun, 18 Feb 2018, Eisha Chen-yen-su wrote:
+diff --git a/drivers/staging/comedi/drivers/ni_stc.h b/drivers/staging/comedi/drivers/ni_stc.h
+index cb9d4c3a1926..831088c5cabb 100644
+--- a/drivers/staging/comedi/drivers/ni_stc.h
++++ b/drivers/staging/comedi/drivers/ni_stc.h
+@@ -9,7 +9,7 @@
+ /*
+  * References:
+  *   DAQ-STC Technical Reference Manual
+-*/
++ */
+ 
+ #ifndef _COMEDI_NI_STC_H
+ #define _COMEDI_NI_STC_H
+-- 
+2.14.3
 
-> Add a missing space so that the * is properly aligned with
-> the rest of the block comment. Problem found with checkpatch.
-
-Good job on the log message.
-
-Acked-by: Julia Lawall <julia.lawall@lip6.fr>
-
->
-> Signed-off-by: Eisha Chen-yen-su <chenyensu0@gmail.com>
-> ---
->  drivers/staging/comedi/drivers/ni_stc.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/comedi/drivers/ni_stc.h b/drivers/staging/comedi/drivers/ni_stc.h
-> index cb9d4c3a1926..831088c5cabb 100644
-> --- a/drivers/staging/comedi/drivers/ni_stc.h
-> +++ b/drivers/staging/comedi/drivers/ni_stc.h
-> @@ -9,7 +9,7 @@
->  /*
->   * References:
->   *   DAQ-STC Technical Reference Manual
-> -*/
-> + */
->
->  #ifndef _COMEDI_NI_STC_H
->  #define _COMEDI_NI_STC_H
-> --
-> 2.14.3
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20180218171138.4313-1-chenyensu0%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
