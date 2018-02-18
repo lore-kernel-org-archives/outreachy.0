@@ -1,106 +1,100 @@
-X-GM-THRID: 6526929159245004800
-X-Received: by 10.223.150.47 with SMTP id b44mr976723wra.7.1519669117077;
-        Mon, 26 Feb 2018 10:18:37 -0800 (PST)
+X-GM-THRID: 6523785201916575744
+X-Gmail-Labels: Topic type: DISCUSSION
+X-Received: by 10.80.215.210 with SMTP id m18mr3153378edj.0.1518937316399;
+        Sat, 17 Feb 2018 23:01:56 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.9.70 with SMTP id 67ls1699707wmj.7.canary-gmail; Mon, 26
- Feb 2018 10:18:34 -0800 (PST)
-X-Google-Smtp-Source: AG47ELuiyWcnah5edKmAzkbxWBhmf83EIlIzooGzJoMdIF8RGj4JhUn/Pt4LucGMhsQYulBP8s/z
-X-Received: by 10.28.178.80 with SMTP id b77mr1145840wmf.5.1519669114702;
-        Mon, 26 Feb 2018 10:18:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519669114; cv=none;
+Received: by 10.80.190.10 with SMTP id a10ls2842722edi.6.gmail; Sat, 17 Feb
+ 2018 23:01:54 -0800 (PST)
+X-Google-Smtp-Source: AH8x227D+HOYD4odty9vE9VrCFYo8N/+OjstF6JulPz1JjgXEBHtPnH8pmmVSEBPTFV4CAt/u/+p
+X-Received: by 10.80.149.230 with SMTP id x35mr1747590eda.3.1518937314525;
+        Sat, 17 Feb 2018 23:01:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1518937314; cv=none;
         d=google.com; s=arc-20160816;
-        b=uQIwnk4b75//VJHnss6fB3AG87aHU/IDSSDtROxEu19s8vyefTSjOzP5vDUn1wGsSi
-         xITkWbJb2XsujpiAAIfZdYYiwAoq/XD08iFw1mn6vJ14bSa2N24EyHtXYYfzgphmpJfu
-         IBAmvo8Nwe6YUUzTFVL63b+Y2o/QZ0KQpsdDD5N8QaaFqykaL6HnG0sk6Q9qlpxlGXmH
-         PdmEzE59bVFoh+oYpv53ixfHt+9GEHAlacCEdv9W6PlcSmHFwS7wTG4dYl2JArCfiycY
-         N9OQHPBuz7MaCSy9r7OvkeHou+gJNQ1BKnpFjC4wqlDe7IEEqr2LlyuZpvXELaESzo8A
-         TqxQ==
+        b=a1txcmmCvrbmh8p966E0EZFXLWKMH0+98ckp/Og3iWkTS00W30IJk1W/rMV0Mai4tt
+         uIAOneRO18x2YrKsDa1JfKeC4/1X21QZ4a3HxKh+z4Jf/tci+xqJuJ3UyeGwbo2Fl1HP
+         vkrHubML4YVc7NgqrasGnRoLwAYY6uZ69mc9KtYDuZaSUqByZ5IxbH+gvx0RQqoas5va
+         b60xg8v655xMiWSDfwU9hjMMc1doj2CzephKhNTRYxvBY5GJwSJjeHl4fMz8AwtJBmML
+         +BWXFCc1upEhe6lcpgl9u+89gwomN6b+miA2NgPXYg/QJfmExkzOdsvRYjyIQyP9ikBX
+         /tWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=kKfED0KlnmH9p0IEs+tM8zH7mnbDhSWlxd0WJkKLHTM=;
-        b=QWCCcQH1eiEhQgxH4mtXvWKE3yZrUODoPRMZ2LndrqXRdCENaOl9kqSpK6r38Clp0i
-         c/c2ADjPvNb/YLuzUYxgwDaAmv6nV0IZsYiyoM0M3XsGTPyrKqaMHtafGFHQ7xLuv8DG
-         l97Pe5Py1a5V4i8XuiFFut8k0Cy8ELMLIS8xHAS+K/TCsnMglyhstzYAR5U52NYUdr+k
-         a44YGBZreXoxjIjBVFGtJwTayzFlNyXUvz4ayBoEdarQdolegTeiLZvt5KTqF84Oli22
-         8oH4ZWtoc6h8Baw7+ulIYBWmxK/TLMg78NZMDwLZ+dZzITGeQTHnh0e5THjrCOhr2Qzz
-         +4qg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=WYubWItg0AH4HyDbIx+GXrleyTPt/L8+UPj7BMk0IGw=;
+        b=pv/iRyYVcPkYBCJR5DIq2Jm7k8izBpHLhLcQ6sizvRg2VNXRzJ57olXAPfe2ROOQBF
+         EKw3KBX8k1zQTbCHhvrT/oZg6T4ftvxJKcNh/4iW1Uk9DOBj8xMVZzjjaC5eIKnWf0Nq
+         LN0VkvtJPem/rS0JCJ5KtxcjicZdK4IJUlWDN5uybycFwG9W3Fe5CknBLsZUB84gjwjX
+         Hz8BECqC4II1uqoiLotLPZkKAfBdS6df0BSAlBPBEbkP120k8yTS2ftbTH7guKlXgIFX
+         PAjptCPYC2NcHGpxCT91JGrQguNK1D/4Y4w9PEICSKcBPw3t17zH/aqaReUeFr4Z//ce
+         cbJA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=YEY1qrAo;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
-        by gmr-mx.google.com with ESMTPS id 200si492852wml.2.2018.02.26.10.18.34
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id m19si1362580edd.4.2018.02.17.23.01.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 26 Feb 2018 10:18:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
+        Sat, 17 Feb 2018 23:01:54 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=YEY1qrAo;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Received: by mail-wm0-x243.google.com with SMTP id 139so5933466wmn.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 26 Feb 2018 10:18:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ashoka.edu.in; s=google;
-        h=from:to:cc:subject:date:message-id;
-        bh=kKfED0KlnmH9p0IEs+tM8zH7mnbDhSWlxd0WJkKLHTM=;
-        b=YEY1qrAopZLIk+yOVutnbhm2koFu5IN01ytMHRCN51KKcm9Zw1jojVLjki2yAh2JFZ
-         S/phZixlK+QpMIi0vs1Q8STPOoJwjEgFT+KLuxRGVMitemJtPk8T70XCcjxKw7mr7r9a
-         xqTdk9jduPvpEi1Vj5JPdisaqt0l4AJlns4mI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=kKfED0KlnmH9p0IEs+tM8zH7mnbDhSWlxd0WJkKLHTM=;
-        b=XPtfwRb8mIhHJ7HXeJuNUTjvxhq9axxPcGIySUT8M+WYsQ2apVsJSUWpZYEGiCvg7K
-         eTOpzSiC6rvs610GnXxhZ9NNPXFWbM/UKyDjevWFldKFirtdHh489P/AoWvPvujxQpx2
-         qm9g8ZFHIASzjzNsM1SnCoBVT0+JEdzxNDfpnFcg4lFLmZRKv/ZsrGwDuDzQNXrmCAT2
-         Y+6vJ2KKSyPMnUdrB23EQHAIyLE7DxlpXy+W4tq3+r2iu1syFeFYXHFP0vmsgBHhwH+U
-         YDbAM0v4GFs+m/EL/Iya+LmYnN+ZYXB2MsSXyJ5HnCWTas7zMzcBY7TjTmykTBWYEJZv
-         oZ0g==
-X-Gm-Message-State: APf1xPBnto4zOob47eJmpOb9xYpdh6mEeFhnYmQ+6I86Xp65t3Ba1uYC
-	cIBnmi3h6i/uOcc4mnCswj+ugeW9
-X-Received: by 10.80.180.186 with SMTP id w55mr3345423edd.184.1519669113762;
-        Mon, 26 Feb 2018 10:18:33 -0800 (PST)
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from ashoka-ThinkCentre-E73z.internal.ashoka.edu.in ([210.212.93.46])
-        by smtp.gmail.com with ESMTPSA id u38sm8827144edm.50.2018.02.26.10.18.30
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 26 Feb 2018 10:18:32 -0800 (PST)
-From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-To: outreachy-kernel@googlegroups.com
-Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-Subject: [PATCH] h [Patch] Fixed unnecessary typecasting to int. Error found with checkpatch. Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-Date: Mon, 26 Feb 2018 23:48:15 +0530
-Message-Id: <1519669095-31351-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.46,528,1511823600"; 
+   d="scan'208";a="314095176"
+Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 18 Feb 2018 08:01:54 +0100
+Date: Sun, 18 Feb 2018 08:01:53 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: oormilaghantasala@gmail.com
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Application Process
+In-Reply-To: <013a9e4e-435b-4b81-ad16-0f84a44a096b@googlegroups.com>
+Message-ID: <alpine.DEB.2.20.1802180800330.2720@hadrien>
+References: <013a9e4e-435b-4b81-ad16-0f84a44a096b@googlegroups.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
----
- drivers/staging/ks7010/ks_wlan_net.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/ks7010/ks_wlan_net.c b/drivers/staging/ks7010/ks_wlan_net.c
-index e48c557..69cd8347 100644
---- a/drivers/staging/ks7010/ks_wlan_net.c
-+++ b/drivers/staging/ks7010/ks_wlan_net.c
-@@ -201,6 +201,8 @@ static int ks_wlan_set_freq(struct net_device *dev,
- {
- 	struct ks_wlan_private *priv = netdev_priv(dev);
- 	int channel;
-+	int a2412 = 2.412e8;
-+	int b2487 = 2.487e8;
- 
- 	if (priv->sleep_mode == SLP_SLEEP)
- 		return -EPERM;
-@@ -208,7 +210,7 @@ static int ks_wlan_set_freq(struct net_device *dev,
- 	/* for SLEEP MODE */
- 	/* If setting by frequency, convert to a channel */
- 	if ((fwrq->e == 1) &&
--	    (fwrq->m >= (int)2.412e8) && (fwrq->m <= (int)2.487e8)) {
-+	    (fwrq->m >= a2412) && (fwrq->m <= b2487)) {
- 		int f = fwrq->m / 100000;
- 		int c = 0;
- 
--- 
-1.9.1
 
+On Sat, 17 Feb 2018, oormilaghantasala@gmail.com wrote:
+
+> Hello mentors,
+>
+> I am totally new to this! So could you please guide me through the
+> application process.
+>
+> Quick Questions:
+> ->Do I have to fill any application form before getting done my first
+> tutorial?
+
+You have to fill out the Outreachy eligibility form.
+
+> ->Do I have to contribute small tasks before applying?
+
+Technically no, but you will have very little chance of being accepted if
+you only submit cleanup patches.
+
+> ->Should I contact a mentor to get started with the tutorial?
+
+No.  Just get started.
+
+Thank you for your interest in the Linux kernel.
+
+julia
+
+>
+> Thanks,
+> Oormila Ghantasala
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/013a9e4e-435b-4b81-ad16-
+> 0f84a44a096b%40googlegroups.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
 
