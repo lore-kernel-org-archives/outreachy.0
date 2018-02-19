@@ -1,203 +1,119 @@
 X-GM-THRID: 6524253044666793984
-X-Received: by 10.28.190.2 with SMTP id o2mr2432882wmf.2.1519051888491;
-        Mon, 19 Feb 2018 06:51:28 -0800 (PST)
+X-Received: by 10.202.108.65 with SMTP id h62mr7541625oic.17.1519047644770;
+        Mon, 19 Feb 2018 05:40:44 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.147.12 with SMTP id v12ls1555869wmd.0.gmail; Mon, 19 Feb
- 2018 06:51:27 -0800 (PST)
-X-Google-Smtp-Source: AH8x226vZMz+aLdiiwm9PbFAweeJhe6mEkTs1RoD5SZXKlTX1ci8DeAwxSczK2Lar6J4cYFpofiH
-X-Received: by 10.28.3.11 with SMTP id 11mr2288246wmd.4.1519051887325;
-        Mon, 19 Feb 2018 06:51:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519051887; cv=none;
+Received: by 10.157.3.130 with SMTP id f2ls4710011otf.14.gmail; Mon, 19 Feb
+ 2018 05:40:43 -0800 (PST)
+X-Google-Smtp-Source: AH8x224R1TGrzv4mGcxOIVNYAPTHuVEoD0QFW/GYrXyF03p1P27E/IjZZskE+JoTMJwCd2jCD5Gk
+X-Received: by 10.157.56.92 with SMTP id r28mr7165492otd.57.1519047643647;
+        Mon, 19 Feb 2018 05:40:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519047643; cv=none;
         d=google.com; s=arc-20160816;
-        b=kag46nYaTVnSdKBgkQf9ovPVsYP0OIzaz3bnWOZ7XJxPHVCHWnnRVYeLTtwOSe5QcY
-         QGzCzAdYor0sJh/wmp0g8QkCu1kAo2dC/hEOjPw6bKh6Xig2V/CRKb0OoawrPJfap6xE
-         a7GKGTo7ez1kfrPhyr/kWiEM/IlkYX5LTUNdIAavcZ7fvJrTA7zZS71lLIuLE/PvWgp3
-         gpNysJ1Al/V24/R24SheE9MHqTpBw5JTTjgbjC+x0H10nEkS//anGLFAiSAoLvYbu+xG
-         LJWcs4HhcQVqRtnExfq4GfqZFEm9+AD9EHROTZ/o2oj+bRZBK05z7+2/vVGrKp/7G7wE
-         U2Yw==
+        b=j7dfXw0vS05qOHkav3nMj7KxDTCfAzCzTt8ROVmWuG9dEF0r28hcENy0bXzsXPhVFP
+         hZC9LG9p0M9G79BkIbTosMoLXTm+koMwTFE8nplyrTyWnzHCeXOjKtj6m9h0sA9X7olY
+         a07DG9cVCyKu5LlXxu3THWcQUAyaEdcd/V6eA+se0Te6uom/K5hben9aJvOUEmHCvlVF
+         EsBV7jvQR/kLFoJfJA2pRMy6T55BHmeSigm3Pa9bxZKLJzwey6AGw7x1/p90WGAFoffG
+         oUmnO91omWxa1MNX9RnY34vDjmF+LFIAnGDgUTSBxX261D3DQUORCSZ7fxIHl5pjV3Uo
+         hVJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=dGiK58+okdu+yoVX1u/6eqIVhlVDniVs2FBrZbmp9Ao=;
-        b=xwMUrHSEGjQ4sE3ZWwmNlRW2uygH6j1vUoPlOy1MJcVZKIRar9lLVfKm+F+MRNB83G
-         Ct26dOL5VkT7QG7stB9shxeyr10d6SechIebQ7FEmH219vSOJXYLu1YftEPxf89+/LHc
-         b2yoRGX5BgylBGZOJJNGRlKJt0SJFEXFnuhkbncCPr18mVVBn+ytQwk4+pFRDLgRP59O
-         CWDYbJ9KgFKxF9FD5/uPnjKcUIcyrrkRGtRp5dwRoGmTJXKkYMasxZJ58Exi6I2cIsJ0
-         /1Xb6+mWwjiJMXjuH9V/LOBNlTRS1jVAB9qC+iZen3cdx3Q7+0WFHMB1IipPSzhCc/gu
-         klYw==
+        h=content-transfer-encoding:mime-version:references:in-reply-to:date
+         :cc:to:from:subject:message-id:dkim-signature
+         :arc-authentication-results;
+        bh=37Vn7zBGKYtdhGIN77JNbWAj4PY4rio8BZ0xdPnfzXw=;
+        b=JKVaHJSF8LooFiHaV7hceby0hot763dMsRuTllQwGbnjQwyDqOikydGObJtvz6UBGy
+         N+XaGK20uzoXMX+e7cTJLO0eyTrKsy3oZf3FjVlmScLALHdRpCA7oD7+gj8OmpTi28I3
+         L++sAqmvDoOxTlwzFTzcQDlrZuGi7jIsljfujyubZb9N4RiRooUeZ1WaLhp8EatbqI0u
+         njMzgAK6ZHR6iXCL3tN89Fu6Wr6j1dyPBXZmBhV82NzxlE/NuMDzyMIG7Y1Nyw4QRS5A
+         B0sJHQNRWGf6aRnJoEsiLPS0BBxt2ZcJFWkYmJV7m3TpM2PKFn/7brWm2h6voQLsZAYh
+         R5tA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of boris.brezillon@bootlin.com designates 62.4.15.54 as permitted sender) smtp.mailfrom=boris.brezillon@bootlin.com
-Return-Path: <boris.brezillon@bootlin.com>
-Received: from mail.free-electrons.com (mail.free-electrons.com. [62.4.15.54])
-        by gmr-mx.google.com with ESMTP id i44si147751wri.1.2018.02.19.06.51.27
-        for <outreachy-kernel@googlegroups.com>;
-        Mon, 19 Feb 2018 06:51:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of boris.brezillon@bootlin.com designates 62.4.15.54 as permitted sender) client-ip=62.4.15.54;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XrqE2XQb;
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <shreeya.patel23498@gmail.com>
+Received: from mail-pf0-x231.google.com (mail-pf0-x231.google.com. [2607:f8b0:400e:c00::231])
+        by gmr-mx.google.com with ESMTPS id d14si611868oth.5.2018.02.19.05.40.43
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 19 Feb 2018 05:40:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) client-ip=2607:f8b0:400e:c00::231;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of boris.brezillon@bootlin.com designates 62.4.15.54 as permitted sender) smtp.mailfrom=boris.brezillon@bootlin.com
-Received: by mail.free-electrons.com (Postfix, from userid 110)
-	id 6E2832046F; Mon, 19 Feb 2018 15:51:26 +0100 (CET)
-X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
-	mail.free-electrons.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-1.0 required=5.0 tests=ALL_TRUSTED,SHORTCIRCUIT
-	shortcircuit=ham autolearn=disabled version=3.4.0
-Received: from bbrezillon (LStLambert-657-1-97-87.w90-63.abo.wanadoo.fr [90.63.216.87])
-	by mail.free-electrons.com (Postfix) with ESMTPSA id EF06620146;
-	Mon, 19 Feb 2018 15:51:15 +0100 (CET)
-Date: Mon, 19 Feb 2018 15:51:15 +0100
-From: Boris Brezillon <boris.brezillon@bootlin.com>
-To: Shreeya Patel <shreeya.patel23498@gmail.com>
-Cc: boris.brezillon@free-electrons.com, richard@nod.at, dwmw2@infradead.org,
- computersforpeace@gmail.com, marek.vasut@gmail.com,
- cyrille.pitchen@wedev4u.fr, maximlevitsky@gmail.com,
- linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org,
- ezequiel@vanguardiasur.com.ar, outreachy-kernel@googlegroups.com
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XrqE2XQb;
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x231.google.com with SMTP id t15so1350292pfh.9
+        for <outreachy-kernel@googlegroups.com>; Mon, 19 Feb 2018 05:40:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=message-id:subject:from:to:cc:date:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=37Vn7zBGKYtdhGIN77JNbWAj4PY4rio8BZ0xdPnfzXw=;
+        b=XrqE2XQbmtAqAI9tIYdJzQN/sUwRz4TqSGllYHEuqVn8cwh8ZiLPiZrEX6oFOYY+F0
+         AXuqiVGMKUt+EY1v3r71tfBP+OM4cnRFrgzg9YtuxEU7Jsk0aF670kOGIhDEQEJ5im7A
+         Pg+MOeWE77qb+LKBM+F+Nz1IS6eiHbu6/bHcEDGMu314SZWrZWKuGeXC3XlJbHvnToZO
+         2O72qX3VtoUvUtGAy7lkI0UvBh5Yq7JuR3EMr8aTDlcZJZQ2elaGKKXqK+UA3zRJhqsf
+         fth2IkaRhjkK758jQGDUI6xSQ/oOkU01HIzsG5lEnMpiPZ81J4wRGJm2c3lw/q6hV6Gr
+         nkxg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=37Vn7zBGKYtdhGIN77JNbWAj4PY4rio8BZ0xdPnfzXw=;
+        b=W7P2hS/q+uXNnA4X/yMGvt58lEL2WXkajMKyLuytgH9S16lb9Sn5HC2ZStIFIZldL3
+         gc0Yd0kj65131dvuug2aDEWcw2zvEaCGnpFvUME23OHTGkS3VdQMRfqujBKoA5cBCf+9
+         PC7lJNyjYF2EsHqkONDcAV78WhAWMlDRz+I6Rt/e5VfuFpqLmht/QhCaqwKMtF48m2lR
+         GXDYA6qXOF8/wC1pqPH0G5EFtOAtPKP3U3wTnZrtiFh5d53brcQUF9untdIrGotAMwHR
+         DO/Mo6wgcKGM2d8HkXe0U1eiIn1shwifSbU6OBWzGarxp7E5BhWwilCVP7EFGcUIfHT6
+         qjlw==
+X-Gm-Message-State: APf1xPA5ngZZq1OW0ljLhGJ5SZKkMk5UvC8xwYRUhiGgURtt6eVWy29m
+	1IsJCwYeFW8oS0jTQBMKh+I=
+X-Received: by 10.98.69.146 with SMTP id n18mr14765373pfi.29.1519047643299;
+        Mon, 19 Feb 2018 05:40:43 -0800 (PST)
+Return-Path: <shreeya.patel23498@gmail.com>
+Received: from [10.0.2.15] ([103.212.140.144])
+        by smtp.googlemail.com with ESMTPSA id b18sm3541002pfi.34.2018.02.19.05.40.39
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 19 Feb 2018 05:40:42 -0800 (PST)
+Message-ID: <1519047636.2063.3.camel@gmail.com>
 Subject: Re: [PATCH NAND v2] mtd: nand: Replace printk() with appropriate
  pr_*macro()
-Message-ID: <20180219155115.3d9d1bd5@bbrezillon>
-In-Reply-To: <1519046025-9412-1-git-send-email-shreeya.patel23498@gmail.com>
+From: Shreeya Patel <shreeya.patel23498@gmail.com>
+To: Richard Weinberger <richard@nod.at>
+Cc: boris.brezillon@free-electrons.com, dwmw2@infradead.org, 
+ computersforpeace@gmail.com, marek.vasut@gmail.com,
+ cyrille.pitchen@wedev4u.fr,  maximlevitsky@gmail.com,
+ linux-mtd@lists.infradead.org,  linux-kernel@vger.kernel.org,
+ ezequiel@vanguardiasur.com.ar,  outreachy-kernel@googlegroups.com
+Date: Mon, 19 Feb 2018 19:10:36 +0530
+In-Reply-To: <5296610.PbIriun04K@blindfold>
 References: <1519046025-9412-1-git-send-email-shreeya.patel23498@gmail.com>
-X-Mailer: Claws Mail 3.15.0-dirty (GTK+ 2.24.31; x86_64-pc-linux-gnu)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+	 <5296610.PbIriun04K@blindfold>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.18.5.2-0ubuntu3.2 
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
 
-Hi Shreeya,
-
-On Mon, 19 Feb 2018 18:43:45 +0530
-Shreeya Patel <shreeya.patel23498@gmail.com> wrote:
-
-> The log levels embedded with the name are more concise than
-> printk.
-> Replace printks having a log level with the appropriate
-> pr_*macro.
+On Mon, 2018-02-19 at 14:30 +0100, Richard Weinberger wrote:
+> Shreeya,
+Hi Richard,
 > 
-> Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
-> ---
+> Am Montag, 19. Februar 2018, 14:13:45 CET schrieb Shreeya Patel:
+> > 
+> > The log levels embedded with the name are more concise than
+> > printk.
+> > Replace printks having a log level with the appropriate
+> > pr_*macro.
+> > 
+> > Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
+> Multiple patches with the same subject are confusing. :)
+
+I'll keep this in mind.
+
+I did not combine the two patches as they had some different
+changes.
+
+Thanks :)
 > 
-> Changes in v2:
->   -Merge previous patches of the patchset regarding replacement
-> of printk with pr_*macro, into single patch.
-> 
-> 
->  drivers/mtd/nand/cs553x_nand.c   |  9 ++---
->  drivers/mtd/nand/diskonchip.c    | 76 +++++++++++++++++++++-------------------
->  drivers/mtd/nand/fsl_elbc_nand.c |  2 +-
->  drivers/mtd/nand/fsl_ifc_nand.c  |  2 +-
->  drivers/mtd/nand/mxc_nand.c      |  2 +-
->  drivers/mtd/nand/nand_bch.c      | 12 +++----
->  drivers/mtd/nand/nandsim.c       | 10 +++---
->  drivers/mtd/nand/r852.c          |  2 +-
->  drivers/mtd/nand/r852.h          |  6 ++--
->  drivers/mtd/nand/sm_common.c     |  5 ++-
->  10 files changed, 65 insertions(+), 61 deletions(-)
-> 
-
-[...]
-
->  
-> diff --git a/drivers/mtd/nand/diskonchip.c b/drivers/mtd/nand/diskonchip.c
-> index c3aa53c..b97d88c 100644
-> --- a/drivers/mtd/nand/diskonchip.c
-> +++ b/drivers/mtd/nand/diskonchip.c
-
-[...]
-
-> @@ -438,7 +438,7 @@ static void __init doc2000_count_chips(struct mtd_info *mtd)
->  			break;
->  	}
->  	doc->chips_per_floor = i;
-> -	printk(KERN_DEBUG "Detected %d chips per floor.\n", i);
-> +	pr_info("Detected %d chips per floor.\n", i);
-
-Should be pr_debug() here.
-
->  }
->  
-
-[...]
-
-> diff --git a/drivers/mtd/nand/nandsim.c b/drivers/mtd/nand/nandsim.c
-> index 246b439..4e5f817 100644
-> --- a/drivers/mtd/nand/nandsim.c
-> +++ b/drivers/mtd/nand/nandsim.c
-> @@ -184,15 +184,15 @@ MODULE_PARM_DESC(bch,		 "Enable BCH ecc and set how many bits should "
->  
->  /* Simulator's output macros (logging, debugging, warning, error) */
->  #define NS_LOG(args...) \
-> -	do { if (log) printk(KERN_DEBUG NS_OUTPUT_PREFIX " log: " args); } while(0)
-> +	do { if (log) pr_debug(NS_OUTPUT_PREFIX " log: " args); } while(0)
-
-You could define pr_fmt() to avoid passing NS_OUTPUT_PREFIX. Something
-like:
-
-#define pr_fmt(fmt)	"[nandsim]" fmt
-
-(remember to put this definition before include directives).
-
-Then, all you have to do is
-
-do { if (log) pr_debug(" log: " args); } while(0)
-
->  #define NS_DBG(args...) \
-> -	do { if (dbg) printk(KERN_DEBUG NS_OUTPUT_PREFIX " debug: " args); } while(0)
-> +	do { if (dbg) pr_debug(NS_OUTPUT_PREFIX " debug: " args); } while(0)
->  #define NS_WARN(args...) \
-> -	do { printk(KERN_WARNING NS_OUTPUT_PREFIX " warning: " args); } while(0)
-> +	do { pr_warn(NS_OUTPUT_PREFIX " warning: " args); } while(0)
->  #define NS_ERR(args...) \
-> -	do { printk(KERN_ERR NS_OUTPUT_PREFIX " error: " args); } while(0)
-> +	do { pr_err(NS_OUTPUT_PREFIX " error: " args); } while(0)
->  #define NS_INFO(args...) \
-> -	do { printk(KERN_INFO NS_OUTPUT_PREFIX " " args); } while(0)
-> +	do { pr_info(NS_OUTPUT_PREFIX " " args); } while(0)
->  
->  /* Busy-wait delay macros (microseconds, milliseconds) */
->  #define NS_UDELAY(us) \
-> diff --git a/drivers/mtd/nand/r852.c b/drivers/mtd/nand/r852.c
-> index fc9287a..3d54c6a 100644
-> --- a/drivers/mtd/nand/r852.c
-> +++ b/drivers/mtd/nand/r852.c
-> @@ -935,7 +935,7 @@ static int  r852_probe(struct pci_dev *pci_dev, const struct pci_device_id *id)
->  		&dev->card_detect_work, 0);
->  
->  
-> -	printk(KERN_NOTICE DRV_NAME ": driver loaded successfully\n");
-> +	pr_notice(DRV_NAME ": driver loaded successfully\n");
-
-Same here:
-
-#define pr_fmt(fmt)	DRV_NAME fmt
-
->  	return 0;
->  
->  error10:
-> diff --git a/drivers/mtd/nand/r852.h b/drivers/mtd/nand/r852.h
-> index 8713c57..63de9b6 100644
-> --- a/drivers/mtd/nand/r852.h
-> +++ b/drivers/mtd/nand/r852.h
-> @@ -149,12 +149,12 @@ struct r852_device {
->  
->  #define dbg(format, ...) \
->  	if (debug) \
-> -		printk(KERN_DEBUG DRV_NAME ": " format "\n", ## __VA_ARGS__)
-> +		pr_debug(DRV_NAME ": " format "\n", ## __VA_ARGS__)
->  
->  #define dbg_verbose(format, ...) \
->  	if (debug > 1) \
-> -		printk(KERN_DEBUG DRV_NAME ": " format "\n", ## __VA_ARGS__)
-> +		pr_debug(DRV_NAME ": " format "\n", ## __VA_ARGS__)
->  
-
-And here as well.
-
-Regards,
-
-Boris
-
--- 
-Boris Brezillon, Bootlin (formerly Free Electrons)
-Embedded Linux and Kernel engineering
-http://bootlin.com
+> Thanks,
+> //richard 
 
