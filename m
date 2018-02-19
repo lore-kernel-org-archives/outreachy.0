@@ -1,103 +1,129 @@
 X-GM-THRID: 6523432871904935936
-X-Received: by 10.101.67.129 with SMTP id m1mr3088679pgp.70.1519036810874;
-        Mon, 19 Feb 2018 02:40:10 -0800 (PST)
+X-Received: by 10.25.0.140 with SMTP id 134mr971335lfa.9.1519025830402;
+        Sun, 18 Feb 2018 23:37:10 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.101.96.153 with SMTP id t25ls1664412pgu.9.gmail; Mon, 19 Feb
- 2018 02:40:09 -0800 (PST)
-X-Google-Smtp-Source: AH8x227uvS+oWWRATQAYAWJrk6hsvsb8R3hSQEPjXvMdT5ARGIk6wvnJZYEUY6NDSKtUUPuugWdZ
-X-Received: by 10.99.96.68 with SMTP id u65mr3123410pgb.52.1519036809835;
-        Mon, 19 Feb 2018 02:40:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519036809; cv=none;
+Received: by 10.25.162.79 with SMTP id l76ls182291lfe.1.gmail; Sun, 18 Feb
+ 2018 23:37:08 -0800 (PST)
+X-Google-Smtp-Source: AH8x227i8TPMkjE89MbFvNnF2x/vmwhSsPpRCf7hR+IAzHwcBdTuK3thj6cNNdHvgjb3LnAfTgcg
+X-Received: by 10.25.213.201 with SMTP id m192mr919291lfg.43.1519025828774;
+        Sun, 18 Feb 2018 23:37:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519025828; cv=none;
         d=google.com; s=arc-20160816;
-        b=n7ByjXcWMIs37S7PiogL29JOlCjLnZw6G99PEQv6igJH0IDCBjiGgtSfHYRTqND9Ge
-         0ewc9YTdOjUVeXk38UVP2Q9dy2UyimBWqIt/erEc2q+620F/+y6Kc3qr2U17MiMyYbm0
-         EK0IHtHHYClA8aE1iBS4mMyNjEKR3TQ/nHoObLiJISrl1Phqtwb6cX3PzH2dXE8a0U5G
-         R8odj08KksybWqEstXFa3/JfJFj/hAFATRJDXOF83PKeZ9i0aYluQoCDFMomGd/Dxc1n
-         4KI4H5k1JXMxrDrzMtFMaygu/pT5X7OF0Q3nvflI88ZqgN/d0NJpeCZzx5U0KfY3Q1lf
-         hkrg==
+        b=oPnmPSExFJ/myRwUdcN+NZfy2PBXCqlOaiUfxm39fZr4jD2Y5voWgGMe/J0C8nqMa9
+         AhgNK7cdqMCH3aemfxCYuXG/swGk+yHig9Z6tHBfPt+3g2y/rR+t1u7lPgCOy4RLd5J5
+         SbHdarq0usmBqhDzLa/dQoG3WFxIFQubClCYKZ+aTA8EdUhOV3D+b+rL4ndMg/nDx38J
+         N5Uh/XW9tgFTWY030edU6Wwdc/kCabLLyYzJqwQOkIUQGVjEKptOhi6VVffhgQRzpqCi
+         6hkD1y/0AlNyuNDPu0s6HE6SU3EBlKn8zMisjJ8S27ZDCDP1F1mhdzZbn+MUR51DfI0R
+         jQNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :arc-authentication-results;
-        bh=3FUlrs2GZeswRgpyD8e8KmTUXkI6+xOFp9+716xdq8o=;
-        b=IWBI9+o3G/XRwYYbzc27zyR0DWa08JUUmXJt81BhXt2e+AOEK3Xd6jriWlpjNF5qvy
-         TIhWDC+nc8ijmr8yMx5HY5cFgfuVc4Yre7Nf15AaD9RTZ46RjAqUWL+11yabP1470wRv
-         sFm76/VjjNlR44OHUgAWsl7OSO980DQmq3EHwnylx4fTJW2oK+02p68FwSdKxhYSBtp+
-         eQSKeInHaAuzVhjcxtI+ExFtUXmzHpB+qpebHuQ9Z5j6hQJJ1XZ5pzEVy7fkr5dQRFR0
-         6zGVJ/w1Oj4QUuqpKfaryQrc1RUZgUzOrnOuk5wFvTjJQ8R4dldOKIAwOu16hS6/G+SD
-         pQNA==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:arc-authentication-results;
+        bh=Gr27J2Ned72XhHw1slSp01LiGg8vRy/6NYuvt5tl29c=;
+        b=bw8dPw7j8lUwj6EEXctnE/WSiEtdmOJ7JgAncqsS2CYSuwP2mBXSiF7TmdLuCLjB4s
+         kqCHuI0QECm2uTf6/lyCGHmPorNKF5LgUTwEhKU4WGXimPyivgeDqWQViD1vkmXs3Smz
+         XNgo4uxgGvNrHWUN1IffRSlOeeLWrhxswYO2KjynHFpnmE/n+vqIoX5Nbw8Ue5cqCEiw
+         o2uvOEgIXJ/ZBHtysnKt2WGhNkl+u2vqGGzzeR+mGQRdjoPnC58II1paeIMKFdPOjHgA
+         ipLBSWspR1+Iax3UpC6bLuhJ8i4o9UkFCxqFbkoWa6mI5ZSz5T2I66H8u4H052DkDAW0
+         1t4w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 173.203.187.89 is neither permitted nor denied by best guess record for domain of abbotti@mev.co.uk) smtp.mailfrom=abbotti@mev.co.uk
-Return-Path: <abbotti@mev.co.uk>
-Received: from smtp89.iad3a.emailsrvr.com (smtp89.iad3a.emailsrvr.com. [173.203.187.89])
-        by gmr-mx.google.com with ESMTPS id m193si333006pga.5.2018.02.19.02.40.09
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 209.85.215.67 as permitted sender) smtp.mailfrom=vthakkar1994@gmail.com
+Return-Path: <vthakkar1994@gmail.com>
+Received: from mail-lf0-f67.google.com (mail-lf0-f67.google.com. [209.85.215.67])
+        by gmr-mx.google.com with ESMTPS id 25si289755ljt.1.2018.02.18.23.37.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 19 Feb 2018 02:40:09 -0800 (PST)
-Received-SPF: neutral (google.com: 173.203.187.89 is neither permitted nor denied by best guess record for domain of abbotti@mev.co.uk) client-ip=173.203.187.89;
+        Sun, 18 Feb 2018 23:37:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 209.85.215.67 as permitted sender) client-ip=209.85.215.67;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 173.203.187.89 is neither permitted nor denied by best guess record for domain of abbotti@mev.co.uk) smtp.mailfrom=abbotti@mev.co.uk
-Received: from smtp20.relay.iad3a.emailsrvr.com (localhost [127.0.0.1])
-	by smtp20.relay.iad3a.emailsrvr.com (SMTP Server) with ESMTP id ED4E324A64;
-	Mon, 19 Feb 2018 05:40:08 -0500 (EST)
-X-Auth-ID: siepeng@mev.co.uk
-Received: by smtp20.relay.iad3a.emailsrvr.com (Authenticated sender: siepeng-AT-mev.co.uk) with ESMTPSA id 6A22524A77;
-	Mon, 19 Feb 2018 05:40:08 -0500 (EST)
-X-Sender-Id: siepeng@mev.co.uk
-Received: from [10.0.0.185] (remote.quintadena.com [81.133.34.160])
-	(using TLSv1.2 with cipher DHE-RSA-AES128-SHA)
-	by 0.0.0.0:465 (trex/5.7.12);
-	Mon, 19 Feb 2018 05:40:08 -0500
-Subject: Re: [PATCH v2] staging: comedi: Remove a newline inside a dereference
-To: Eisha Chen-yen-su <chenyensu0@gmail.com>, gregkh@linuxfoundation.org
-Cc: hsweeten@visionengravers.com, outreachy-kernel@googlegroups.com
-References: <20180217081047.5763-1-chenyensu0@gmail.com>
-From: Ian Abbott <abbotti@mev.co.uk>
-Message-ID: <86b6dad5-922f-6d5f-db1f-f401823fefea@mev.co.uk>
-Date: Mon, 19 Feb 2018 10:40:07 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.6.0
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 209.85.215.67 as permitted sender) smtp.mailfrom=vthakkar1994@gmail.com
+Received: by mail-lf0-f67.google.com with SMTP id x196so11697383lfd.12
+        for <outreachy-kernel@googlegroups.com>; Sun, 18 Feb 2018 23:37:08 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=Gr27J2Ned72XhHw1slSp01LiGg8vRy/6NYuvt5tl29c=;
+        b=qR/58ToWWanUBl7sb0piVcx5BiF7/mV6ioy6nzL5NeNc+ROSAMH8BXAToobo3kyATw
+         YGSq0JHuxKWfLVOB9I+uaCAhgMLo8ZxqWORYgc74TG7u5HTKLHsieuaWSr3GRs1WtJbi
+         yFMizkDHOkSSKgndCJoMa9djUf8zYaPaA97Qho/G07N37YQLM2IV6//VrYKpQJSv/OyZ
+         YNsDc8VP5ds+FIAywv7wJeuS3ZaDVFBV2YDdZM3SqtC2nf78QS3T0LaDNIcPtW6TGpQy
+         TTrunk57pbC3eK2n/HOQIa/VwxnSD8XVqmAsMs7c51usTNyzPT0uqTRgeRC6HnayEpDm
+         Hs0A==
+X-Gm-Message-State: APf1xPBZHqwjAajMY6vVp3BBFQiXItoUpjQgNmNALQT/QNsRGn4+f1TP
+	mcKAT0DOE5nbCPWGjglOKzRJ+WX5
+X-Received: by 10.46.33.230 with SMTP id h99mr6761982lji.47.1519025827720;
+        Sun, 18 Feb 2018 23:37:07 -0800 (PST)
+Return-Path: <vthakkar1994@gmail.com>
+Received: from mail-lf0-f48.google.com (mail-lf0-f48.google.com. [209.85.215.48])
+        by smtp.gmail.com with ESMTPSA id w14sm1512952ljd.25.2018.02.18.23.37.07
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 18 Feb 2018 23:37:07 -0800 (PST)
+Received: by mail-lf0-f48.google.com with SMTP id x196so11697334lfd.12
+        for <outreachy-kernel@googlegroups.com>; Sun, 18 Feb 2018 23:37:07 -0800 (PST)
+X-Received: by 10.46.85.157 with SMTP id g29mr8433997lje.118.1519025827043;
+ Sun, 18 Feb 2018 23:37:07 -0800 (PST)
 MIME-Version: 1.0
+Received: by 10.46.112.4 with HTTP; Sun, 18 Feb 2018 23:37:06 -0800 (PST)
 In-Reply-To: <20180217081047.5763-1-chenyensu0@gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-GB
-Content-Transfer-Encoding: 7bit
+References: <20180217081047.5763-1-chenyensu0@gmail.com>
+From: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
+Date: Mon, 19 Feb 2018 13:07:06 +0530
+X-Gmail-Original-Message-ID: <CAK-LDbKka2y9+6yKHa_v3YCiiQPCsJ1bpLKCFSstToS2O0=Tbg@mail.gmail.com>
+Message-ID: <CAK-LDbKka2y9+6yKHa_v3YCiiQPCsJ1bpLKCFSstToS2O0=Tbg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: comedi: Remove a newline
+ inside a dereference
+To: Eisha Chen-yen-su <chenyensu0@gmail.com>
+Cc: Greg KH <gregkh@linuxfoundation.org>, abbotti@mev.co.uk, 
+	hsweeten@visionengravers.com, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset="UTF-8"
 
-On 17/02/18 08:10, Eisha Chen-yen-su wrote:
+On Sat, Feb 17, 2018 at 1:40 PM, Eisha Chen-yen-su <chenyensu0@gmail.com> wrote:
 > This patch fixes the checkpatch.pl warning:
-> 
+>
 > WARNING: Avoid multiple line dereference - prefer 'devpriv->ao_buffer_bus_addr[i]'
-> 
+
+Hi Eisha,
+
+Good work on subject.
+
+For the commit log, as Julia mentioned in her previous comments
+it's not necessary to keep the checkpatch.pl's warning message in
+the commit log. Instead you can write about what change you with
+the reason of doing that change. And at the end to give credit to the
+tool, you can add something like 'Problem detected by checkpatch.pl'.
+
 > Signed-off-by: Eisha Chen-yen-su <chenyensu0@gmail.com>
 > ---
 > Changes in v2:
->    - Change the commit log to mention what I have done.
->    - Remove the unnecessary cited lines from checkpatch inside the commit body.
-> 
->   drivers/staging/comedi/drivers/cb_pcidas64.c | 3 +--
->   1 file changed, 1 insertion(+), 2 deletions(-)
-> 
+>   - Change the commit log to mention what I have done.
+>   - Remove the unnecessary cited lines from checkpatch inside the commit body.
+>
+>  drivers/staging/comedi/drivers/cb_pcidas64.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>
 > diff --git a/drivers/staging/comedi/drivers/cb_pcidas64.c b/drivers/staging/comedi/drivers/cb_pcidas64.c
 > index b657beedd5ff..eea44435a2aa 100644
 > --- a/drivers/staging/comedi/drivers/cb_pcidas64.c
 > +++ b/drivers/staging/comedi/drivers/cb_pcidas64.c
 > @@ -1490,8 +1490,7 @@ static int alloc_and_init_dma_members(struct comedi_device *dev)
->   			devpriv->ao_buffer[i] =
->   				dma_alloc_coherent(&pcidev->dev,
->   						   DMA_BUFFER_SIZE,
-> -						   &devpriv->
-> -						   ao_buffer_bus_addr[i],
-> +						   &devpriv->ao_buffer_bus_addr[i],
->   						   GFP_KERNEL);
-
-That makes the line go over 80 columns.  You could avoid that by moving 
-the whole dma_alloc_coherent() call back 4 columns (so the amount of 
-indentation after the line break following the '=' is reduced from 8 to 
-4).  You could even move it back by 8 columns (so the amount of 
-indentation would be 0), but I think it looks better with *some* 
-indentation.
-
--- 
--=( Ian Abbott @ MEV Ltd.    E-mail: <abbotti@mev.co.uk> )=-
--=(                          Web: http://www.mev.co.uk/  )=-
+>                         devpriv->ao_buffer[i] =
+>                                 dma_alloc_coherent(&pcidev->dev,
+>                                                    DMA_BUFFER_SIZE,
+> -                                                  &devpriv->
+> -                                                  ao_buffer_bus_addr[i],
+> +                                                  &devpriv->ao_buffer_bus_addr[i],
+>                                                    GFP_KERNEL);
+>                         if (!devpriv->ao_buffer[i])
+>                                 return -ENOMEM;
+> --
+> 2.14.3
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20180217081047.5763-1-chenyensu0%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
 
