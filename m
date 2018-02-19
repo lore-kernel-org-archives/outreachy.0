@@ -1,128 +1,121 @@
-X-GM-THRID: 6803327190249242624
-X-Received: by 2002:a02:6658:: with SMTP id l24mr6719307jaf.33.1584023048405;
-        Thu, 12 Mar 2020 07:24:08 -0700 (PDT)
+X-GM-THRID: 6523279529594585088
+X-Received: by 10.98.13.78 with SMTP id v75mr3269235pfi.54.1519035856475;
+        Mon, 19 Feb 2018 02:24:16 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a92:194:: with SMTP id 142ls1731426ilb.4.gmail; Thu, 12 Mar
- 2020 07:24:07 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vscvOndY0Egp8GrBLd1WnqW8plOuwcTcDytm10E/rDAWL06ld8nwL7+MWmcsjDCGaMwxKgU
-X-Received: by 2002:a92:1906:: with SMTP id 6mr8688269ilz.130.1584023047012;
-        Thu, 12 Mar 2020 07:24:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584023047; cv=none;
+Received: by 10.98.25.70 with SMTP id 67ls2113187pfz.0.gmail; Mon, 19 Feb 2018
+ 02:24:15 -0800 (PST)
+X-Google-Smtp-Source: AH8x226Iazvb01Rp5VvmusAtBnANqvqy7N28OAq874Cpc5hruQ3ENOtXqMWfC2yNqABqJr3ztBxj
+X-Received: by 10.98.234.7 with SMTP id t7mr3288598pfh.16.1519035855086;
+        Mon, 19 Feb 2018 02:24:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519035855; cv=none;
         d=google.com; s=arc-20160816;
-        b=NXHVPprFR+IFJSWy3UWArXkX38FumSM1TxpZvSRCYHYSosvE2p7Xc3gVD+S9AYW00n
-         awl2AUVN0cDm0RjBHBMUwropVgqm43/dQb1wzup3dJuPewkvarS7UnJrou0VJEYvSo9m
-         ivDAkGISTplbXTgx/m2Ek5Kkz/JobexiZwujZxpx0aIFhQzt8HzvW1QMXkfyg6qQO+e9
-         RnalGfmt/6/aZkob2hY4NuMuWY74RNbtCFdBuXlTSZKY16h5r6JMIFxW3uZPzSa6MDmQ
-         Hn2Ctn+jJav95fIo7B5yHMfE+YWwKqJjfMZx0VKcUdUnqF8lbIjtXLO05lX+ksLtPtVj
-         y5aA==
+        b=Z72NbMQyO9bWDIy03uktZnOf5rbMF4h0ckdGeiI5rWs9gHZPpH9ab4yCuaw2km9dbZ
+         xuwFZDdtopdINCMboziWypbdpcABB7tU9K6B1iZQcNWY6A8SbHTHI7bIQjf5ekwL4r0E
+         1w9+vfIxdwewHbgCVs1/89tXf2gov2FNmTfjKAs0DmWra0GLt9xOPKlCqfig4Cb9eu8G
+         gRfB+QhXaMaPt5SidwvQ3lkygbJtnUJpoQy50SOOEbie3KeXsoJufz7FBrc9MCGgzvMB
+         nSIiWJig9hdL2T2Ejjh349UvpEfaj9A8lep5ISLJ1V1U7zQ6u7USF7U/n21mR6JLndig
+         1G1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=Qa2UBcQg7FZzKASztJKI67glIJtb4cWSBfHvuZ+02+k=;
-        b=Hrui3CYAu4qnX4cLakhukId85MDsr+Q7b67js7V7X7tAuARQn/TLDUY+xSqr1gt1uj
-         sUKUNxAak0LrS9VyWLsZGCXm+oepLp3UL2SjOCWfqKD48wJsqXWQag2pOskvD1CsY5uT
-         olsqXAL3nvw1sTTd6+tv9i0j4pnI9mYVa7mfsV6CtSbddvjXDXHqViQavxWe0Vnldf52
-         8XGwxmUL9tcC2a+8IRbBEfAGBSLkpgQnIsy+LggG3TyEmVnNDvlyytz7I5nmA1YqUFVG
-         HmvgWDOgXGrvlFvT80XuWquKkv6tWd0c8N5Y7M4/FERX9U4VXjAXwWlRiC86tk4tqNpa
-         C/ew==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :arc-authentication-results;
+        bh=LQxv1Rg2/Q81AgfYwIMvhrsW5/C7btaqGcZ+7lCaBFk=;
+        b=WojGQ/mQ8TSytlcLOoNCYopkD/YOywCpxwemysWoJdC3VXkq22doDK/0Fpn+MSdjWv
+         nhvbW1FOfF3D2r2yRK8OYiUMxv4bn6+xyTXLQSz8H7abMBz2RDPQmWsFR3xHOf/kcqjE
+         q54HBP7rlKU9KlqprdFnzNyNJ1YJazjEjGAzfnjMkXqNC8SNZoTODW/G8qwPrqVIBtGG
+         XlSWJCRFhZvN3iPFToPDfU6s9YN09ojhJ4pZiHIewWQBHVyC5lCMgoKY+3EhD42Apadl
+         6ZSP261pOUi2FkAjaI+OQpYcKXjnHZMZbNBZmr1jXSVdRbgtxfJNSGrjX5b0YLWBKAcY
+         MuJg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qQz6RjT4;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id t10si275128ilf.3.2020.03.12.07.24.07
+       spf=neutral (google.com: 173.203.187.113 is neither permitted nor denied by best guess record for domain of abbotti@mev.co.uk) smtp.mailfrom=abbotti@mev.co.uk
+Return-Path: <abbotti@mev.co.uk>
+Received: from smtp113.iad3a.emailsrvr.com (smtp113.iad3a.emailsrvr.com. [173.203.187.113])
+        by gmr-mx.google.com with ESMTPS id 187si122738pge.4.2018.02.19.02.24.14
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 12 Mar 2020 07:24:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 19 Feb 2018 02:24:14 -0800 (PST)
+Received-SPF: neutral (google.com: 173.203.187.113 is neither permitted nor denied by best guess record for domain of abbotti@mev.co.uk) client-ip=173.203.187.113;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qQz6RjT4;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x544.google.com with SMTP id 7so3165383pgr.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2020 07:24:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=Qa2UBcQg7FZzKASztJKI67glIJtb4cWSBfHvuZ+02+k=;
-        b=qQz6RjT435bDGVYUC19N4JdatJ6j7QGb1nsUVvRUP0lr3OJ9GO9PtCfVPioDBDIWsw
-         P8VoexbaXI9cFZBw7qgHz5HnRNRtsRbG1HEMhhdNncHVIyGCentpFDw1NaRVe9JH0sti
-         6RQIcwVX3zetCz3JfYfrhazVoKzjF5wPoWTtQxL+D4tqrfWIJ4se++y+aV6BbTvLvvJI
-         aI2t77jI62g2dGez1i8putobVtUO5bCEWm9A75BJOqqRzUUkZtVTPdbImMyiEnWvpO8A
-         PImIAkA/HczxXzj1Q0Z0Bc3F0gsOd5DC3HIbkFMc/a+fPGXuOwyeaPwvwRQqcLdasDiJ
-         5qXA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=Qa2UBcQg7FZzKASztJKI67glIJtb4cWSBfHvuZ+02+k=;
-        b=QGtuzEtsPspIFRcCoXyDkFgsYr6Z+TdlDzMxEfTYHBKjiknjdKqcLSaqRDPyZl/2Mb
-         elMEbfZtkFWWgY8zJPt1i5wB7/jiDZwTFcmeAYi0eHizQhqN+SrBPsV7sP6YPOcn6Svy
-         RQpcT6hVOibNTQq+DXvotcwszPYBkiGHPZZ/q/5rPdgGjTh98JBVufSGb6VLh85iS5+/
-         ev9zjlJxcLiZAOPg3Li129S7lFHI05QAyYGFsvVhBxoTdqwxpJdbCnpIWrPdCCh9kGnM
-         Uro6dOv7Zb/wfupMua6YZyDqOq+Ee/Y9NE/IfnLdAsd08U5/Pp7VjVbS/w2V6OW8IbAX
-         GaZQ==
-X-Gm-Message-State: ANhLgQ31BVPPs42xSA6sPnzRcu+3+Z1zSYmE1dAm1gq8VxEQDD3mPtI3
-	lnwFcfyJydKXyoGGHCGylNBVC/ut
-X-Received: by 2002:a63:1210:: with SMTP id h16mr7985819pgl.408.1584023046130;
-        Thu, 12 Mar 2020 07:24:06 -0700 (PDT)
-Return-Path: <mh12gx2825@gmail.com>
-Received: from deeUbuntu ([103.39.128.28])
-        by smtp.gmail.com with ESMTPSA id y4sm26217871pfe.31.2020.03.12.07.24.04
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Mar 2020 07:24:05 -0700 (PDT)
-Date: Thu, 12 Mar 2020 19:54:01 +0530
-From: Deepak R Varma <mh12gx2825@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org, daniel.baluta@gmail.com
-Subject: [PATCH v2] staging: fbtft: Reformat longer macro definitions
-Message-ID: <20200312142357.GA29468@deeUbuntu>
+       spf=neutral (google.com: 173.203.187.113 is neither permitted nor denied by best guess record for domain of abbotti@mev.co.uk) smtp.mailfrom=abbotti@mev.co.uk
+Received: from smtp23.relay.iad3a.emailsrvr.com (localhost [127.0.0.1])
+	by smtp23.relay.iad3a.emailsrvr.com (SMTP Server) with ESMTP id 2CEB125352;
+	Mon, 19 Feb 2018 05:24:14 -0500 (EST)
+X-Auth-ID: siepeng@mev.co.uk
+Received: by smtp23.relay.iad3a.emailsrvr.com (Authenticated sender: siepeng-AT-mev.co.uk) with ESMTPSA id 832F125006;
+	Mon, 19 Feb 2018 05:24:13 -0500 (EST)
+X-Sender-Id: siepeng@mev.co.uk
+Received: from [10.0.0.185] (remote.quintadena.com [81.133.34.160])
+	(using TLSv1.2 with cipher DHE-RSA-AES128-SHA)
+	by 0.0.0.0:465 (trex/5.7.12);
+	Mon, 19 Feb 2018 05:24:14 -0500
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: rtd520.c: Fix new line
+ after dereference operator
+To: Julia Lawall <julia.lawall@lip6.fr>,
+ Ishita Tripathi <sakurakhadag@gmail.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ H Hartley Sweeten <hsweeten@visionengravers.com>,
+ outreachy-kernel@googlegroups.com
+References: <20180216221603.GA77503@ubuntu>
+ <alpine.DEB.2.20.1802170829440.2645@hadrien>
+From: Ian Abbott <abbotti@mev.co.uk>
+Message-ID: <f8ff6584-8cbf-356d-6c6b-262118f57635@mev.co.uk>
+Date: Mon, 19 Feb 2018 10:24:12 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <alpine.DEB.2.20.1802170829440.2645@hadrien>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-GB
+Content-Transfer-Encoding: 7bit
 
-Multiple macro definitions crossings 80 character line length nakes it
-hard to understand. Reformating the these lines makes the code more
-readable and easy to understand. Issue flagged by checkpatch script.
+On 17/02/18 07:31, Julia Lawall wrote:
+> 
+> 
+> On Fri, 16 Feb 2018, Ishita Tripathi wrote:
+> 
+>> Delete new line after the dereference operator (->).
+>> According to https://kernelnewbies.org/CheckpatchTips, it is better to
+>> have longer lines than break at this operator.
+>>
+>> Signed-off-by: Ishita Tripathi <sakurakhadag@gmail.com>
+>> ---
+>>   drivers/staging/comedi/drivers/rtd520.c | 5 ++---
+>>   1 file changed, 2 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/drivers/staging/comedi/drivers/rtd520.c b/drivers/staging/comedi/drivers/rtd520.c
+>> index bb400e0..47b7093 100644
+>> --- a/drivers/staging/comedi/drivers/rtd520.c
+>> +++ b/drivers/staging/comedi/drivers/rtd520.c
+>> @@ -815,9 +815,8 @@ static int rtd_ai_cmdtest(struct comedi_device *dev,
+>>
+>>   		if (cmd->scan_begin_src == TRIG_TIMER) {
+>>   			arg = cmd->convert_arg * cmd->scan_end_arg;
+>> -			err |= comedi_check_trigger_arg_min(&cmd->
+>> -							    scan_begin_arg,
+>> -							    arg);
+>> +			err |= comedi_check_trigger_arg_min(&cmd->scan_begin_arg,
+>> +					arg);
+>>   		}
+>>   	}
+>>
+>> --
+>> changes in v2:
+>> -changed subject line
+>> -improved description
+> 
+> Greg asked you not to move arg and I asked you to move the first line down
+> to the next line to line up with arg (and thus not exceed 80 characters).
+> These suggestions are contradictory, but you should do at least one of
+> them.
+> 
+> julia
 
-Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+How about adding a line break between 'err |=' and 
+'comedi_check_trigger_arg_min'?  That will avoid the line break after 
+the dereference operator and still keep the line length within 80 
+characters.
 
-Changes in V2:
-	- Update patch short description to avoid confution with an earlier patch
-description.
----
- drivers/staging/fbtft/fbtft.h | 14 +++++++++++---
- 1 file changed, 11 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/staging/fbtft/fbtft.h b/drivers/staging/fbtft/fbtft.h
-index 5f782da51959..81da30f4062e 100644
---- a/drivers/staging/fbtft/fbtft.h
-+++ b/drivers/staging/fbtft/fbtft.h
-@@ -348,9 +348,17 @@ module_exit(fbtft_driver_module_exit);
- 
- /* shorthand debug levels */
- #define DEBUG_LEVEL_1	DEBUG_REQUEST_GPIOS
--#define DEBUG_LEVEL_2	(DEBUG_LEVEL_1 | DEBUG_DRIVER_INIT_FUNCTIONS | DEBUG_TIME_FIRST_UPDATE)
--#define DEBUG_LEVEL_3	(DEBUG_LEVEL_2 | DEBUG_RESET | DEBUG_INIT_DISPLAY | DEBUG_BLANK | DEBUG_REQUEST_GPIOS | DEBUG_FREE_GPIOS | DEBUG_VERIFY_GPIOS | DEBUG_BACKLIGHT | DEBUG_SYSFS)
--#define DEBUG_LEVEL_4	(DEBUG_LEVEL_2 | DEBUG_FB_READ | DEBUG_FB_WRITE | DEBUG_FB_FILLRECT | DEBUG_FB_COPYAREA | DEBUG_FB_IMAGEBLIT | DEBUG_FB_BLANK)
-+#define DEBUG_LEVEL_2	(DEBUG_LEVEL_1 | DEBUG_DRIVER_INIT_FUNCTIONS        \
-+				       | DEBUG_TIME_FIRST_UPDATE)
-+#define DEBUG_LEVEL_3	(DEBUG_LEVEL_2 | DEBUG_RESET | DEBUG_INIT_DISPLAY   \
-+				       | DEBUG_BLANK | DEBUG_REQUEST_GPIOS  \
-+				       | DEBUG_FREE_GPIOS                   \
-+				       | DEBUG_VERIFY_GPIOS                 \
-+				       | DEBUG_BACKLIGHT | DEBUG_SYSFS)
-+#define DEBUG_LEVEL_4	(DEBUG_LEVEL_2 | DEBUG_FB_READ | DEBUG_FB_WRITE     \
-+				       | DEBUG_FB_FILLRECT                  \
-+				       | DEBUG_FB_COPYAREA                  \
-+				       | DEBUG_FB_IMAGEBLIT | DEBUG_FB_BLANK)
- #define DEBUG_LEVEL_5	(DEBUG_LEVEL_3 | DEBUG_UPDATE_DISPLAY)
- #define DEBUG_LEVEL_6	(DEBUG_LEVEL_4 | DEBUG_LEVEL_5)
- #define DEBUG_LEVEL_7	0xFFFFFFFF
 -- 
-2.17.1
-
+-=( Ian Abbott @ MEV Ltd.    E-mail: <abbotti@mev.co.uk> )=-
+-=(                          Web: http://www.mev.co.uk/  )=-
 
