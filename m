@@ -1,125 +1,94 @@
-X-GM-THRID: 6210788690269044736
-X-Received: by 10.182.142.38 with SMTP id rt6mr11705757obb.33.1446061928203;
-        Wed, 28 Oct 2015 12:52:08 -0700 (PDT)
+X-GM-THRID: 6523432871904935936
+X-Received: by 10.107.166.68 with SMTP id p65mr15981982ioe.71.1519061992994;
+        Mon, 19 Feb 2018 09:39:52 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.6.20 with SMTP id w20ls32265igw.35.gmail; Wed, 28 Oct 2015
- 12:52:07 -0700 (PDT)
-X-Received: by 10.66.110.111 with SMTP id hz15mr28025578pab.16.1446061927145;
-        Wed, 28 Oct 2015 12:52:07 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
-        by gmr-mx.google.com with ESMTPS id vy6si4990741pbc.1.2015.10.28.12.52.07
+Received: by 10.36.117.196 with SMTP id y187ls1864353itc.1.gmail; Mon, 19 Feb
+ 2018 09:39:52 -0800 (PST)
+X-Google-Smtp-Source: AH8x225SDj+/CKe6ifdhqSWimMD+5KmOci1+3q3gJL0yCU+ZYRKWx44TnL+rxL9ondCIK66IO9Br
+X-Received: by 10.36.23.6 with SMTP id 6mr11888321ith.45.1519061991997;
+        Mon, 19 Feb 2018 09:39:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519061991; cv=none;
+        d=google.com; s=arc-20160816;
+        b=cogLxSjKibma/n7plBZlfqInXRmcf+9uqXU+hVD4jfPpfHT5hrWp3+WjVRpL5LFsXP
+         a6XW1ZQXHpk0aKxCDWQINxqD6Ms7fUOpn198Wp6oA69uVxhF+NVU+aTzFRQ9BsWCjRfA
+         IGI3mk+bo9QUQu4y1G/GvatJK2m6Iu+UukRhZwS9+hwHbyrlWiGY/PPAN2502Qd8hHUr
+         b+gLWp0BjPMQ/uZITna95uO+fERYPhdsZXTlwe1T67DfZTvx3n7k9cAVBTAzPzMuWh4A
+         ZLRa5Fg7e9AiPFTnkBmR2o2r2ZdOP6Ramz/9szOR/80i4e0r2RI9GEsE3XRBn0FWd46E
+         SQFA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :arc-authentication-results;
+        bh=9/AXSeAYwcIRNY32nqIQk4z3RntoPHWMUZiRfy4sYFw=;
+        b=e8rLRo3BF1xLNs8KCLhAqoYkLc+W0MKdZacqC1scTbmytA4563jomtvhmjV2njQUS/
+         FVARUbDy8sV7/1B+S4YX0iy49QKLHSy8+hvcF9WZH1p7MMDChMRcYrq9HyYXksx1Akxc
+         skpQILxNQYisWVXbfjbbTAg1bDvB3uIqdn2tQis3bSxPkUZHWO+GWrQY2+KTCrKx63a6
+         QEnE3RultfEHFjRWaNEsvy0tEz+tKFKFJb18yzMnd3jytFLREKU65BtSkqB+oGiEclgB
+         DqLLUnqUlyyXh2LFdkel53JJA/559MPp+zuvwYX6WkSwlHotHUwOTvMYl9zb3+69R0Wj
+         0ZMw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 108.166.43.105 is neither permitted nor denied by best guess record for domain of abbotti@mev.co.uk) smtp.mailfrom=abbotti@mev.co.uk
+Return-Path: <abbotti@mev.co.uk>
+Received: from smtp105.ord1c.emailsrvr.com (smtp105.ord1c.emailsrvr.com. [108.166.43.105])
+        by gmr-mx.google.com with ESMTPS id x35si656707ioe.2.2018.02.19.09.39.51
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Oct 2015 12:52:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 19 Feb 2018 09:39:51 -0800 (PST)
+Received-SPF: neutral (google.com: 108.166.43.105 is neither permitted nor denied by best guess record for domain of abbotti@mev.co.uk) client-ip=108.166.43.105;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x232.google.com with SMTP id fv9so16534142pac.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 28 Oct 2015 12:52:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=PONp42m+Ikhlkv1GubEsU6/kmiwIPstWbkooy5OhfG8=;
-        b=lakEhdhKhc6/rkKEbh1fButXSEbBt1Uf686+Yt2eXJCIQ6KVH6cdhOjPLdsA9Bj/nY
-         6QU0uGKA8/bBxaF1lfxXNEYQxUbUZTtu+AxZJ6EqMxlcYSZLJA+pvhysxsNsfN8EClQf
-         LYX0ny0mZVqbCIWNCpXhPawsoOWCBrm9Nc/WvOuSwfJarshL8rGGtxqAwlVilm5rtfmh
-         9A+S8ZYSl176RyJ5RDVRe8U+BJTnsG0m8nLBe5VKEr2kvxuYPxlTL3xawsBrEHC5cHNz
-         jA5bDJZXwaQ0lEGdRXYtqI9nUPVD2XXnmG7HGTw+9apYG7Y9bYPPZM5EPtHZQOvsaqYX
-         fdTA==
-X-Received: by 10.69.11.193 with SMTP id ek1mr36376006pbd.32.1446061926988;
-        Wed, 28 Oct 2015 12:52:06 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.198.148])
-        by smtp.gmail.com with ESMTPSA id rc5sm46918520pbc.95.2015.10.28.12.52.05
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Wed, 28 Oct 2015 12:52:06 -0700 (PDT)
-Date: Thu, 29 Oct 2015 01:22:02 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: y2038@lists.linaro.org
-Subject: [PATCH] net: hamradio: baycom_ser_fdx: Replace timeval with
- timespec64
-Message-ID: <20151028195202.GA1200@amitoj-Inspiron-3542>
+       spf=neutral (google.com: 108.166.43.105 is neither permitted nor denied by best guess record for domain of abbotti@mev.co.uk) smtp.mailfrom=abbotti@mev.co.uk
+Received: from smtp6.relay.ord1c.emailsrvr.com (localhost [127.0.0.1])
+	by smtp6.relay.ord1c.emailsrvr.com (SMTP Server) with ESMTP id A6EFCA04AA;
+	Mon, 19 Feb 2018 12:39:51 -0500 (EST)
+X-Auth-ID: siepeng@mev.co.uk
+Received: by smtp6.relay.ord1c.emailsrvr.com (Authenticated sender: siepeng-AT-mev.co.uk) with ESMTPSA id 0999EA0381;
+	Mon, 19 Feb 2018 12:39:50 -0500 (EST)
+X-Sender-Id: siepeng@mev.co.uk
+Received: from [10.0.0.185] (remote.quintadena.com [81.133.34.160])
+	(using TLSv1.2 with cipher DHE-RSA-AES128-SHA)
+	by 0.0.0.0:465 (trex/5.7.12);
+	Mon, 19 Feb 2018 12:39:51 -0500
+Subject: Re: [PATCH v3] staging: comedi: Remove a newline inside a dereference
+To: Eisha Chen-yen-su <chenyensu0@gmail.com>,
+ outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Cc: hsweeten@visionengravers.com
+References: <20180219160422.27240-1-chenyensu0@gmail.com>
+From: Ian Abbott <abbotti@mev.co.uk>
+Message-ID: <4cb95218-cb92-802e-b5d1-b80f40b822bb@mev.co.uk>
+Date: Mon, 19 Feb 2018 17:39:49 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20180219160422.27240-1-chenyensu0@gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-GB
+Content-Transfer-Encoding: 7bit
 
-32 bit systems using 'struct timeval' will break in the year 2038, so
-we replace the code appropriately.
+On 19/02/18 16:04, Eisha Chen-yen-su wrote:
+> Remove a new line inside a dereference so that it is not on
+> multiple lines.
+> And avoid making the line go over 80 columns by moving the whole
+> dma_alloc_coherent() call back 4 columns. Problem found with
+> checkpatch.
+> 
+> Signed-off-by: Eisha Chen-yen-su <chenyensu0@gmail.com>
+> ---
+> Changes in v2:
+>    - Change the commit log to mention what I have done.
+>    - Remove the unnecessary cited lines from checkpatch inside the commit body.
+> Changes in v3:
+>    - Rephrase completely the commit message.
+>    - Move the whole dma_alloc_coherent() call back 4 columns in order
+>      to avoid making the line exceeding 80 characters length.
+> 
+>   drivers/staging/comedi/drivers/cb_pcidas64.c | 9 ++++-----
+>   1 file changed, 4 insertions(+), 5 deletions(-)
 
-This patch replaces struct timeval with struct timespec64.
+Looks good. Thanks!
 
-The patch also changes the code to use ktime_get_real_ts64() which returns a 'struct timespec64' instead of do_gettimeofday() which returns a 'struct timeval'
+Reviewed-by: Ian Abbott <abbotti@mev.co.uk>
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/net/hamradio/baycom_ser_fdx.c | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/net/hamradio/baycom_ser_fdx.c b/drivers/net/hamradio/baycom_ser_fdx.c
-index 636b65c..e250ec4 100644
---- a/drivers/net/hamradio/baycom_ser_fdx.c
-+++ b/drivers/net/hamradio/baycom_ser_fdx.c
-@@ -71,6 +71,7 @@
- 
- /*****************************************************************************/
- 
-+#include <linux/time64.h>
- #include <linux/capability.h>
- #include <linux/module.h>
- #include <linux/ioport.h>
-@@ -228,14 +229,15 @@ static inline unsigned int hweight8(unsigned int w)
- 
- /* --------------------------------------------------------------------- */
- 
--static __inline__ void ser12_rx(struct net_device *dev, struct baycom_state *bc, struct timeval *tv, unsigned char curs)
-+static __inline__ void ser12_rx(struct net_device *dev, struct baycom_state *bc, struct timespec64 *ts, unsigned char curs)
- {
- 	int timediff;
- 	int bdus8 = bc->baud_us >> 3;
- 	int bdus4 = bc->baud_us >> 2;
- 	int bdus2 = bc->baud_us >> 1;
- 
--	timediff = 1000000 + tv->tv_usec - bc->modem.ser12.pll_time;
-+	timediff = 1000000 + (ts->tv_nsec / NSEC_PER_USEC) -
-+						bc->modem.ser12.pll_time;
- 	while (timediff >= 500000)
- 		timediff -= 1000000;
- 	while (timediff >= bdus2) {
-@@ -287,7 +289,7 @@ static irqreturn_t ser12_interrupt(int irq, void *dev_id)
- {
- 	struct net_device *dev = (struct net_device *)dev_id;
- 	struct baycom_state *bc = netdev_priv(dev);
--	struct timeval tv;
-+	struct timespec64 ts;
- 	unsigned char iir, msr;
- 	unsigned int txcount = 0;
- 
-@@ -297,7 +299,7 @@ static irqreturn_t ser12_interrupt(int irq, void *dev_id)
- 	if ((iir = inb(IIR(dev->base_addr))) & 1) 	
- 		return IRQ_NONE;
- 	/* get current time */
--	do_gettimeofday(&tv);
-+	ktime_get_real_ts64(&ts);
- 	msr = inb(MSR(dev->base_addr));
- 	/* delta DCD */
- 	if ((msr & 8) && bc->opt_dcd)
-@@ -340,7 +342,7 @@ static irqreturn_t ser12_interrupt(int irq, void *dev_id)
- 		}
- 		iir = inb(IIR(dev->base_addr));
- 	} while (!(iir & 1));
--	ser12_rx(dev, bc, &tv, msr & 0x10); /* CTS */
-+	ser12_rx(dev, bc, &ts, msr & 0x10); /* CTS */
- 	if (bc->modem.ptt && txcount) {
- 		if (bc->modem.ser12.txshreg <= 1) {
- 			bc->modem.ser12.txshreg = 0x10000 | hdlcdrv_getbits(&bc->hdrv);
 -- 
-1.9.1
-
+-=( Ian Abbott @ MEV Ltd.    E-mail: <abbotti@mev.co.uk> )=-
+-=(                          Web: http://www.mev.co.uk/  )=-
 
