@@ -1,111 +1,274 @@
-X-GM-THRID: 6886430706216468480
-X-Received: by 2002:a17:906:348c:: with SMTP id g12mr2310513ejb.422.1603372093769;
-        Thu, 22 Oct 2020 06:08:13 -0700 (PDT)
+X-GM-THRID: 6524253044666793984
+X-Received: by 10.80.215.210 with SMTP id m18mr416613edj.0.1519154423549;
+        Tue, 20 Feb 2018 11:20:23 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6402:1d3c:: with SMTP id dh28ls313851edb.0.gmail; Thu,
- 22 Oct 2020 06:08:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzGts7X2AfGYm7f1fdy0F+JxrVkIkfVo60/Av97tX9HGsZPF+wKD67qI8oWA8wPucVqWjVj
-X-Received: by 2002:a50:d796:: with SMTP id w22mr2232543edi.123.1603372091368;
-        Thu, 22 Oct 2020 06:08:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603372091; cv=none;
+Received: by 10.80.133.197 with SMTP id q5ls5810630edh.1.gmail; Tue, 20 Feb
+ 2018 11:20:21 -0800 (PST)
+X-Google-Smtp-Source: AH8x227jh5ztN8k18LaIK6AfNGQPdUzVF0opGy7OLfNC9Of+j0yIEXlibZ/FxK0VNSX2jz7GeVck
+X-Received: by 10.80.206.8 with SMTP id y8mr411045edi.1.1519154421387;
+        Tue, 20 Feb 2018 11:20:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519154421; cv=none;
         d=google.com; s=arc-20160816;
-        b=DY/VZkvsz7J6/qX9jXs2WjmiplOvhsfOzUWULp+ds2liXV6SVnIMcT7+DPRNm+nRBP
-         si+lNclrJGIp2hA7PcQFAcAoSkdkH+laDOkAfy3dFKF/00dz6lxCQPwOI0UssnbjRgVl
-         pWR2TgBR6vo7F/9a34APnsQ86C2VMd38zNs5IO4BJbYA/plsC/NCoYRAhafwwU02aHJU
-         NM2sHdyiZJk/kiFfwn9pyvjbY96UWrXgeRjAktwTV8xoaPtQS68Zp6wr48GhrQ+U44s5
-         tHIRzIu43vUBa7L3rkKOsudQqMy+LGgfM1P+niakleUzaGD4hsQ2JRVTETnfwWrp35mb
-         7ZFw==
+        b=X1o20KUGC/XhaeJTRjdZ2smLtl+4HdUY+phAAl2g8bPLURuWbJ8LRywZn0APzUHxFa
+         YWJSoRY4ZSfcUDGk7MHUUSfs5xiYwGqN997EI4E4FI9EqayuYXpFiuuyNwGPyYj6Odjo
+         gpuX7Ep6Yq90mhceYfudgUIhO59GLdBjvbdy/7koeV9HjEGjFua005HDEgb6QmuqXbGv
+         1XWUMOaZ+NJAM1OSaabiqnu/dLwthvvdXAmS/AsqxCqU2cvBsqvPQNvznAlt4PL1xvpa
+         7DcP95wDbdeOZQ80i0G44k7pIYrr0V27kiwXZ9qptwvoAoOTlDIPercVd4ACDhe0f4an
+         Qmvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=YnVSHPtkEDV80qgIOohyTUBh5oj/YizZewvliA8voeQ=;
-        b=Tk005L8+3V1I8gd+ZlYzWsWmUZNe+T6nutkF8afV6gwU6d7hRx69+PEEAA8CmQgLZK
-         PTYOOavZkEab7j3k+CQfq1+JG6dNo3/zi9vT2Nl2O9uDCvVMdw/5cL8lKoJPMyRotf7V
-         Y1TwTPa7GzitJvoOTUFXV08QHzQhJrCzmGugY4GUKUP+Sx4RP8tjjPyTZiiqHfNb6/J5
-         Hou4ip/E9NNSo6AqZsGenlfJC+L79YXl8VBV17kymgNgHADDIFkG2ZaR1APFKVmljrRT
-         jalXAQWoETLUGqIIP3wjck1OjOhzGMqk+pJZQneRG9eCU5gyX5eCRhQC+1I3Fd0kBTEo
-         I9Vw==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=GFfwZSQQAFELIP8h4zi+j425q17Kcn3N2OIV+jiA+38=;
+        b=Z+cDecJzqTLaWYXvLFQcq54dsGT2Ae7qRCg1NDnOYGJ03hCGZuEzrZ9HwpHZLXWIiO
+         uAQyR6iO8ZLBEUqKntDvALJR8JZTD4TrVQT1WQQrQZ16uxBjZ+uCxFovtln+xUrHTQfV
+         ElwEIyowNpZJWrXt+fGEHLMC2n+C5VVFx6QO3Ys7dWuEk46Z6vVg5tcy+V8CaAGRjwj5
+         q0wNgfosHLWn5VKM9BAJjDk6j/1GpPQmK04yVHujRSDlHjcbRiM+4Nm/um6+In1hxKXq
+         oZ2Y+Gh7iXo899DhA1pUFIB2c8JN5rPburxd3/lAPJsl3VSD1tDvK2qOFZw5mU5R1wle
+         MV/A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ElU6qfg6;
-       spf=pass (google.com: domain of izabela.bakollari@gmail.com designates 2a00:1450:4864:20::643 as permitted sender) smtp.mailfrom=izabela.bakollari@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <izabela.bakollari@gmail.com>
-Received: from mail-ej1-x643.google.com (mail-ej1-x643.google.com. [2a00:1450:4864:20::643])
-        by gmr-mx.google.com with ESMTPS id n11si58333edi.1.2020.10.22.06.08.11
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 22 Oct 2020 06:08:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of izabela.bakollari@gmail.com designates 2a00:1450:4864:20::643 as permitted sender) client-ip=2a00:1450:4864:20::643;
+       spf=pass (google.com: domain of boris.brezillon@bootlin.com designates 62.4.15.54 as permitted sender) smtp.mailfrom=boris.brezillon@bootlin.com
+Return-Path: <boris.brezillon@bootlin.com>
+Received: from mail.free-electrons.com (mail.free-electrons.com. [62.4.15.54])
+        by gmr-mx.google.com with ESMTP id n22si391157edb.5.2018.02.20.11.20.21
+        for <outreachy-kernel@googlegroups.com>;
+        Tue, 20 Feb 2018 11:20:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of boris.brezillon@bootlin.com designates 62.4.15.54 as permitted sender) client-ip=62.4.15.54;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ElU6qfg6;
-       spf=pass (google.com: domain of izabela.bakollari@gmail.com designates 2a00:1450:4864:20::643 as permitted sender) smtp.mailfrom=izabela.bakollari@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ej1-x643.google.com with SMTP id h24so2187182ejg.9
-        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2020 06:08:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=YnVSHPtkEDV80qgIOohyTUBh5oj/YizZewvliA8voeQ=;
-        b=ElU6qfg6v/wFR7SXZ6Er6eboZ3A5bx8GD5X9SAdsxJiJCfWp23+eyZMYpIedG3cN8r
-         x5sktzejMQgBoVHggchF2yC1AWyxMCSOwP1paYXrqVRyfuaHcH2V3ZBMODUFHdbuXawD
-         aQxNQQjlOeQtDUzS37KrK9YOA739hNydhJFmso8JoNXCkA+6Pm3ywynD0dO8VKEUjnnt
-         R7CfzStF0bnPCD9SMpXZT7ON0pnhxNz6er8DHAopQPh8/9ZBTfeEP7QAYyOPHUDFHO9Z
-         XqVfIdqYr0212gA5TOFUWjVPVyC59W7y0civxWmB00tGD/+HoiwzmRhBM08mQ7Mu+Dmj
-         eeJQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=YnVSHPtkEDV80qgIOohyTUBh5oj/YizZewvliA8voeQ=;
-        b=NqOd5nQB5r/l5vmPO1dhLFB/KdKXfQvdX9e0Xvuy/FHYAZcZ4Q9BDcT4lCDlyQmCNx
-         M/qsl4wYR/jR4C0MFOSrMgojvAKDIREIQusx94ssz7NDqrwAE+HlmWta9St+VZ2F+R+Q
-         Tr2cJaqLQTbpebKlyKMc2Yj5JPtZgA0EHzoffjyNcxPpSZzvnKl2dSzA34JxnIBkDS3v
-         bpHIeQVdQbSVev1d3novTMGLL8bkViwjiuJidUxQZUrRsCM49KoG0CAaFq/vrHOzXeeL
-         zVWteebkFXGa/tWu24fu1pqRFZ5PEXy6kBPy0cXKEu+8cM+rVs/HekqOTbIXbEvqKXSw
-         KUwQ==
-X-Gm-Message-State: AOAM532F6T3T6EWpNLswx/qBvZtVP6u1f3eY8YKzaYUSV4/uZOiWMFE6
-	SCTZGHpOXYKYqeGzqm1Q8fo=
-X-Received: by 2002:a17:906:388d:: with SMTP id q13mr2101698ejd.92.1603372091196;
-        Thu, 22 Oct 2020 06:08:11 -0700 (PDT)
-Return-Path: <izabela.bakollari@gmail.com>
-Received: from localhost.localdomain ([185.200.214.168])
-        by smtp.gmail.com with ESMTPSA id e4sm732723eds.50.2020.10.22.06.08.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 Oct 2020 06:08:10 -0700 (PDT)
-From: izabela.bakollari@gmail.com
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Izabela Bakollari <izabela.bakollari@gmail.com>
-Subject: [PATCH] staging/wlan-ng: Fix line that exceeds 100 columns
-Date: Thu, 22 Oct 2020 15:08:07 +0200
-Message-Id: <20201022130807.212454-1-izabela.bakollari@gmail.com>
-X-Mailer: git-send-email 2.18.4
+       spf=pass (google.com: domain of boris.brezillon@bootlin.com designates 62.4.15.54 as permitted sender) smtp.mailfrom=boris.brezillon@bootlin.com
+Received: by mail.free-electrons.com (Postfix, from userid 110)
+	id 6D58C2071C; Tue, 20 Feb 2018 20:20:20 +0100 (CET)
+X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
+	mail.free-electrons.com
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.0 required=5.0 tests=ALL_TRUSTED,SHORTCIRCUIT
+	shortcircuit=ham autolearn=disabled version=3.4.0
+Received: from bbrezillon (unknown [91.160.177.164])
+	by mail.free-electrons.com (Postfix) with ESMTPSA id 1526720376;
+	Tue, 20 Feb 2018 20:20:10 +0100 (CET)
+Date: Tue, 20 Feb 2018 20:20:08 +0100
+From: Boris Brezillon <boris.brezillon@bootlin.com>
+To: Shreeya Patel <shreeya.patel23498@gmail.com>
+Cc: boris.brezillon@free-electrons.com, richard@nod.at, dwmw2@infradead.org,
+ computersforpeace@gmail.com, marek.vasut@gmail.com,
+ cyrille.pitchen@wedev4u.fr, maximlevitsky@gmail.com,
+ linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org,
+ ezequiel@vanguardiasur.com.ar, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH NAND v2] mtd: nand: Replace printk() with appropriate
+ pr_*macro()
+Message-ID: <20180220202008.4a67d0e9@bbrezillon>
+In-Reply-To: <1519148238.14621.3.camel@gmail.com>
+References: <1519046025-9412-1-git-send-email-shreeya.patel23498@gmail.com>
+	<20180219155115.3d9d1bd5@bbrezillon>
+	<1519146401.12276.4.camel@gmail.com>
+	<20180220181647.6f2367b6@bbrezillon>
+	<1519148238.14621.3.camel@gmail.com>
+X-Mailer: Claws Mail 3.15.0-dirty (GTK+ 2.24.31; x86_64-pc-linux-gnu)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-From: Izabela Bakollari <izabela.bakollari@gmail.com>
+On Tue, 20 Feb 2018 23:07:18 +0530
+Shreeya Patel <shreeya.patel23498@gmail.com> wrote:
 
-Rearrange comment that exceeds 100 columns length. Issue reported
-by checkpatch.pl
+> On Tue, 2018-02-20 at 18:16 +0100, Boris Brezillon wrote:
+> > On Tue, 20 Feb 2018 22:36:41 +0530
+> > Shreeya Patel <shreeya.patel23498@gmail.com> wrote:
+> >  =20
+> > >=20
+> > > On Mon, 2018-02-19 at 15:51 +0100, Boris Brezillon wrote: =20
+> > > >=20
+> > > > Hi Shreeya,
+> > > >=20
+> > > > On Mon, 19 Feb 2018 18:43:45 +0530
+> > > > Shreeya Patel <shreeya.patel23498@gmail.com> wrote:
+> > > > =C2=A0=C2=A0 =20
+> > > > >=20
+> > > > >=20
+> > > > > The log levels embedded with the name are more concise than
+> > > > > printk.
+> > > > > Replace printks having a log level with the appropriate
+> > > > > pr_*macro.
+> > > > >=20
+> > > > > Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
+> > > > > ---
+> > > > >=20
+> > > > > Changes in v2:
+> > > > > =C2=A0 -Merge previous patches of the patchset regarding replacem=
+ent
+> > > > > of printk with pr_*macro, into single patch.
+> > > > >=20
+> > > > >=20
+> > > > > =C2=A0drivers/mtd/nand/cs553x_nand.c=C2=A0=C2=A0=C2=A0|=C2=A0=C2=
+=A09 ++---
+> > > > > =C2=A0drivers/mtd/nand/diskonchip.c=C2=A0=C2=A0=C2=A0=C2=A0| 76 +=
+++++++++++++++++++++---
+> > > > > ----
+> > > > > ------------
+> > > > > =C2=A0drivers/mtd/nand/fsl_elbc_nand.c |=C2=A0=C2=A02 +-
+> > > > > =C2=A0drivers/mtd/nand/fsl_ifc_nand.c=C2=A0=C2=A0|=C2=A0=C2=A02 +-
+> > > > > =C2=A0drivers/mtd/nand/mxc_nand.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0|=C2=A0=C2=A02 +-
+> > > > > =C2=A0drivers/mtd/nand/nand_bch.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0| 12 +++----
+> > > > > =C2=A0drivers/mtd/nand/nandsim.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0| 10 +++---
+> > > > > =C2=A0drivers/mtd/nand/r852.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0|=C2=A0=C2=A02 +-
+> > > > > =C2=A0drivers/mtd/nand/r852.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0|=C2=A0=C2=A06 ++--
+> > > > > =C2=A0drivers/mtd/nand/sm_common.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0|=
+=C2=A0=C2=A05 ++-
+> > > > > =C2=A010 files changed, 65 insertions(+), 61 deletions(-)
+> > > > > =C2=A0=C2=A0 =20
+> > > > [...]
+> > > > =C2=A0=C2=A0 =20
+> > > > >=20
+> > > > >=20
+> > > > > =C2=A0
+> > > > > diff --git a/drivers/mtd/nand/diskonchip.c
+> > > > > b/drivers/mtd/nand/diskonchip.c
+> > > > > index c3aa53c..b97d88c 100644
+> > > > > --- a/drivers/mtd/nand/diskonchip.c
+> > > > > +++ b/drivers/mtd/nand/diskonchip.c=C2=A0=C2=A0 =20
+> > > > [...]
+> > > > =C2=A0=C2=A0 =20
+> > > > >=20
+> > > > >=20
+> > > > > @@ -438,7 +438,7 @@ static void __init
+> > > > > doc2000_count_chips(struct
+> > > > > mtd_info *mtd)
+> > > > > =C2=A0			break;
+> > > > > =C2=A0	}
+> > > > > =C2=A0	doc->chips_per_floor =3D i;
+> > > > > -	printk(KERN_DEBUG "Detected %d chips per floor.\n",
+> > > > > i);
+> > > > > +	pr_info("Detected %d chips per floor.\n", i);=C2=A0=C2=A0 =20
+> > > > Should be pr_debug() here.
+> > > > =C2=A0=C2=A0 =20
+> > > > >=20
+> > > > >=20
+> > > > > =C2=A0}
+> > > > > =C2=A0=C2=A0=C2=A0 =20
+> > > > [...]
+> > > > =C2=A0=C2=A0 =20
+> > > > >=20
+> > > > >=20
+> > > > > diff --git a/drivers/mtd/nand/nandsim.c
+> > > > > b/drivers/mtd/nand/nandsim.c
+> > > > > index 246b439..4e5f817 100644
+> > > > > --- a/drivers/mtd/nand/nandsim.c
+> > > > > +++ b/drivers/mtd/nand/nandsim.c
+> > > > > @@ -184,15 +184,15 @@ MODULE_PARM_DESC(bch,		=C2=A0"En
+> > > > > able
+> > > > > BCH ecc and set how many bits should "
+> > > > > =C2=A0
+> > > > > =C2=A0/* Simulator's output macros (logging, debugging, warning,
+> > > > > error)
+> > > > > */
+> > > > > =C2=A0#define NS_LOG(args...) \
+> > > > > -	do { if (log) printk(KERN_DEBUG NS_OUTPUT_PREFIX "
+> > > > > log: "
+> > > > > args); } while(0)
+> > > > > +	do { if (log) pr_debug(NS_OUTPUT_PREFIX " log: "
+> > > > > args); }
+> > > > > while(0)=C2=A0=C2=A0 =20
+> > > > You could define pr_fmt() to avoid passing NS_OUTPUT_PREFIX.
+> > > > Something
+> > > > like:
+> > > >=20
+> > > > #define pr_fmt(fmt)	"[nandsim]" fmt
+> > > >=20
+> > > > (remember to put this definition before include directives).
+> > > >=20
+> > > > Then, all you have to do is
+> > > >=20
+> > > > do { if (log) pr_debug(" log: " args); } while(0)
+> > > > =C2=A0=C2=A0 =20
+> > > > >=20
+> > > > >=20
+> > > > > =C2=A0#define NS_DBG(args...) \
+> > > > > -	do { if (dbg) printk(KERN_DEBUG NS_OUTPUT_PREFIX "
+> > > > > debug:
+> > > > > " args); } while(0)
+> > > > > +	do { if (dbg) pr_debug(NS_OUTPUT_PREFIX " debug: "
+> > > > > args);
+> > > > > } while(0)
+> > > > > =C2=A0#define NS_WARN(args...) \
+> > > > > -	do { printk(KERN_WARNING NS_OUTPUT_PREFIX " warning: "
+> > > > > args); } while(0)
+> > > > > +	do { pr_warn(NS_OUTPUT_PREFIX " warning: " args); }
+> > > > > while(0)
+> > > > > =C2=A0#define NS_ERR(args...) \
+> > > > > -	do { printk(KERN_ERR NS_OUTPUT_PREFIX " error: "
+> > > > > args); }
+> > > > > while(0)
+> > > > > +	do { pr_err(NS_OUTPUT_PREFIX " error: " args); }
+> > > > > while(0)
+> > > > > =C2=A0#define NS_INFO(args...) \
+> > > > > -	do { printk(KERN_INFO NS_OUTPUT_PREFIX " " args); }
+> > > > > while(0)
+> > > > > +	do { pr_info(NS_OUTPUT_PREFIX " " args); } while(0)
+> > > > > =C2=A0
+> > > > > =C2=A0/* Busy-wait delay macros (microseconds, milliseconds) */
+> > > > > =C2=A0#define NS_UDELAY(us) \
+> > > > > diff --git a/drivers/mtd/nand/r852.c b/drivers/mtd/nand/r852.c
+> > > > > index fc9287a..3d54c6a 100644
+> > > > > --- a/drivers/mtd/nand/r852.c
+> > > > > +++ b/drivers/mtd/nand/r852.c
+> > > > > @@ -935,7 +935,7 @@ static int=C2=A0=C2=A0r852_probe(struct pci_d=
+ev
+> > > > > *pci_dev,
+> > > > > const struct pci_device_id *id)
+> > > > > =C2=A0		&dev->card_detect_work, 0);
+> > > > > =C2=A0
+> > > > > =C2=A0
+> > > > > -	printk(KERN_NOTICE DRV_NAME ": driver loaded
+> > > > > successfully\n");
+> > > > > +	pr_notice(DRV_NAME ": driver loaded
+> > > > > successfully\n");=C2=A0=C2=A0 =20
+> > > > Same here:
+> > > >=20
+> > > > #define pr_fmt(fmt)	DRV_NAME fmt=C2=A0=C2=A0 =20
+> > > I am facing the following errors here.
+> > >=20
+> > >=20
+> > >=20
+> > > In file included from drivers/mtd/nand/r852.c:22:0:
+> > > drivers/mtd/nand/r852.h:148:0: warning: "pr_fmt" redefined
+> > > =C2=A0#define pr_fmt(fmt)=C2=A0=C2=A0(DRV_NAME fmt)
+> > > =C2=A0^
+> > > In file included from ./include/linux/kernel.h:14:0,
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0from drivers/mtd/nand/r852.c:10:
+> > > ./include/linux/printk.h:287:0: note: this is the location of the
+> > > previous definition
+> > > =C2=A0#define pr_fmt(fmt) fmt =20
+> > That's because you didn't define pr_fmt() before all the #include
+> > directives in this driver. See the '#indef pr_fmt' statement in
+> > printk.h
+> > which is preventing redefinition of this symbol if the file including
+> > printk.h (either directly or indirectly) already defines it. =20
+>=20
+> Yes, and that is why I did undef before defining it again in the r852.c
+> file.
+> Shouldn't it work in this manner?
 
-Signed-off-by: Izabela Bakollari <izabela.bakollari@gmail.com>
----
- drivers/staging/wlan-ng/cfg80211.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+It should compile (I'd need to see the diff to figure out why it fails
+to compile in your case), but not necessarily do what you want.
+When you use #undef/#define to redefine a macro the new definition
+applies to everything that uses it in the code *after* the
+point it's been redefined. One problem I can think of (but there
+probably are others) is when some intermediate header files use
+pr_xxx() inside macros/inline functions. In this case, you probably
+want the prefix to be applied and that can only be done if you've
+defined your own pr_fmt() before including printk.h.
 
-diff --git a/drivers/staging/wlan-ng/cfg80211.c b/drivers/staging/wlan-ng/cfg80211.c
-index 759e475e303c..5fad37a49aa5 100644
---- a/drivers/staging/wlan-ng/cfg80211.c
-+++ b/drivers/staging/wlan-ng/cfg80211.c
-@@ -366,7 +366,8 @@ static int prism2_scan(struct wiphy *wiphy,
- 					  msg2.beaconperiod.data,
- 					  ie_buf,
- 					  ie_len,
--					  (msg2.signal.data - 65536) * 100, /* Conversion to signed type */
-+					  (msg2.signal.data - 65536) * 100,
-+					  /* Conversion to signed type */
- 					  GFP_KERNEL);
- 
- 		if (!bss) {
--- 
-2.18.4
+Another reason to define pr_fmt() before including printk.h is that it
+requires one line instead of 2 if you go for the #undef/#define
+solution.
 
+--=20
+Boris Brezillon, Bootlin (formerly Free Electrons)
+Embedded Linux and Kernel engineering
+http://bootlin.com
 
