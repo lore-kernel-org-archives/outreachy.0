@@ -1,123 +1,133 @@
-X-GM-THRID: 6951428927234506752
-X-Received: by 2002:a4a:eb02:: with SMTP id f2mr117472ooj.36.1618505671738;
-        Thu, 15 Apr 2021 09:54:31 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6808:13d0:: with SMTP id d16ls1463845oiw.10.gmail; Thu,
- 15 Apr 2021 09:54:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxvPfp8ehzskF4sbHOMSp+OnsRQVPjraYfILEmMvQ/8NY/Qnxc4Wmr1xn0jeuVSeE8tJtGy
-X-Received: by 2002:aca:db85:: with SMTP id s127mr3247039oig.142.1618505671067;
-        Thu, 15 Apr 2021 09:54:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618505671; cv=none;
-        d=google.com; s=arc-20160816;
-        b=CNm833SZ3JNLfXyM9Kt5diaQxBiMWPln9S6xmWOkbuQoNhfyiYwRj1Vjy4A8YKYJpJ
-         dhet2WB2eu3+J1DIC013p6rpkyrJVJ6TDHsB19c/bgTuAWHT8K2YwV7bbGVynNEPbzPO
-         jhq0MLYgaMCR6DsnItmoTtpMEe2tFyW3AfgCHA2paFrG9SU9nW0FdaOBW15FKrDKuegW
-         K73LDnXSZPQejFTTtsKQGXvgj6sW9KHMwDx9SWb4h/0WnRSSBqc19mgCA0ZXSvcGocYK
-         GbC6mdWuglL9sRAETrUTeUpWI5QsTKpOfzIMyZhBnQsA0YeOIYkxU/h9rWN21y0POIkd
-         yxEA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=hfH9qknOEmohu17OrwvjCdEEb8rYc5CBKzPF1LsT3eY=;
-        b=eshOSwcXZrUJKD6bLbKWE6r5kKTUAi8nmTUq/kNcL6Y69zisHgQa1Gz5HGgJt/6jAC
-         cptbF6xb19LgzeQ6/RXxDuxPplviv1LOTsJOtgiKleavVHq68ZGyq/7NeNQ4B3yimtPL
-         xaKNmsD6mH13dhvLZIAEFWLmoVHDsNlvAgKDWHc5qOWdkO8NAX+uAGVujGEFMHzAT2ur
-         hjUDVwHswhYlJIclfobiViCCMB1wdaAzW8OdSqN5FhroRyFyw+0dTyCNJEBrEEZQgoEd
-         jLtheST3+D8BYdOQMRnEoaP3QWH3AFkg8ktyqo0N2YdVmL/FDMONEp1+tSzahSeg1k0c
-         p9OQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HzCYmhgb;
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::72b as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from mail-qk1-x72b.google.com (mail-qk1-x72b.google.com. [2607:f8b0:4864:20::72b])
-        by gmr-mx.google.com with ESMTPS id m62si250549oig.5.2021.04.15.09.54.31
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 15 Apr 2021 09:54:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::72b as permitted sender) client-ip=2607:f8b0:4864:20::72b;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HzCYmhgb;
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::72b as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qk1-x72b.google.com with SMTP id h13so7232264qka.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 15 Apr 2021 09:54:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=hfH9qknOEmohu17OrwvjCdEEb8rYc5CBKzPF1LsT3eY=;
-        b=HzCYmhgbLL5xC8q4+NrcVQ3vIVEBudkfm4plF8E6VgB6YhvtP2uyfobR4oGYRqc2Wi
-         Q5DGBKpm/SDyP1yoMOxMC1jhtsZ2069gFEzpzJ9wx3Q0d8U3ykMwuQNmnqJS3urjDLPL
-         JnEQOW6B8VCio8ObDanO5gEpypAHZWUe0vAnAjAdUiTe6ALa0nNBfuaA0rGXxDtALEwh
-         A71fyif6OZWf6DSJpxi4I2i1enFxLqkggYqtbmp+XybqdK6HpDL+i6/7kU/tGQbIuIob
-         cJESNvbo00sUZobY3tcS8JEurg64cXZLCYpSLuQd84nZmN2LoLd4tzSzBQUxvSXhhYkD
-         TW1A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=hfH9qknOEmohu17OrwvjCdEEb8rYc5CBKzPF1LsT3eY=;
-        b=t/ZCg58uSW4jhSSCmz7Y6e8rsX6GNU9IIfxNUmRUZDusDP05zKNnoBhj8r+mphIoqi
-         7//hwnCRT1xgUSXFwZ2A1D7Ot9S345Pkx56L59gPpdh6XsApWEyK9ebxIVJkMyUAhpTy
-         yqOPbDnULUZCxbs4+VCosZXyidwmIRZutvtxP52JG4O9PDfRDJBPBfW0bheL0NbQvWVe
-         Vf8R0uVaCAzo6MQzTsXzd0JlAvWSQSHuagrfkG62EithsrQfmzVvELCxcgfQcdLJ05Vs
-         VerdnRWxcTzzc1NThcA43tgJfjvkPjlOG4TagIWOR9HOxSCUrYOhqnvyCgsEcModkZ9d
-         K2iA==
-X-Gm-Message-State: AOAM533IDBUyCPluXq8cLkrtR+Qtoz50FGokCc3LIZbcb4aMwU3vfEj6
-	A/VWtxQFBvbSB9OKPuaTfZop9Do4eqKsxUdP
-X-Received: by 2002:a37:6693:: with SMTP id a141mr2048435qkc.121.1618505670663;
-        Thu, 15 Apr 2021 09:54:30 -0700 (PDT)
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from focaruja ([138.204.24.234])
-        by smtp.gmail.com with ESMTPSA id q125sm2431762qke.11.2021.04.15.09.54.29
-        (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
-        Thu, 15 Apr 2021 09:54:30 -0700 (PDT)
-Date: Thu, 15 Apr 2021 13:54:27 -0300
-From: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/4] staging: media: atomisp: pci: Balance braces around
- conditional statements in file atomisp_compat_css20.c
-Message-ID: <f62bb001e25d0ba395810de7f02452c7a13869c1.1618505476.git.alinesantanacordeiro@gmail.com>
-References: <cover.1618505476.git.alinesantanacordeiro@gmail.com>
+X-GM-THRID: 6524333003381932032
+X-Gmail-Labels: Topic type: DISCUSSION
+Date: Tue, 20 Feb 2018 08:31:28 -0800 (PST)
+From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <3623e426-9887-4b51-b73f-910a44ca3292@googlegroups.com>
+In-Reply-To: <alpine.DEB.2.20.1802192157290.2909@hadrien>
+References: <c564850c-61c0-48af-a8f1-d3f03f3fbd11@googlegroups.com>
+ <alpine.DEB.2.20.1802192157290.2909@hadrien>
+Subject: Re: [Outreachy kernel] [SETUP] menuconfig
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1618505476.git.alinesantanacordeiro@gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_5818_1529152832.1519144288162"
+X-Google-Token: EOCasdQFpLNxjGi84Mo0
+X-Google-IP: 106.67.112.197
 
-Balance braces around conditional statements.
-Issue detected by checkpatch.pl.
-It happens in if-else statements where one of the commands
-uses braces around a block of code and the other command
-does not since it has just a single line of code.
+------=_Part_5818_1529152832.1519144288162
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_5819_156570228.1519144288163"
 
-Signed-off-by: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
----
- drivers/staging/media/atomisp/pci/atomisp_compat_css20.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+------=_Part_5819_156570228.1519144288163
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp_compat_css20.c b/drivers/staging/media/atomisp/pci/atomisp_compat_css20.c
-index faa0935..92e2bad 100644
---- a/drivers/staging/media/atomisp/pci/atomisp_compat_css20.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp_compat_css20.c
-@@ -2784,9 +2784,9 @@ int atomisp_get_css_frame_info(struct atomisp_sub_device *asd,
- 	int stream_index;
- 	struct atomisp_device *isp = asd->isp;
- 
--	if (ATOMISP_SOC_CAMERA(asd))
-+	if (ATOMISP_SOC_CAMERA(asd)) {
- 		stream_index = atomisp_source_pad_to_stream_id(asd, source_pad);
--	else {
-+	} else {
- 		stream_index = (pipe_index == IA_CSS_PIPE_ID_YUVPP) ?
- 			       ATOMISP_INPUT_STREAM_VIDEO :
- 			       atomisp_source_pad_to_stream_id(asd, source_pad);
--- 
-2.7.4
+Thank you! make allyesconfig worked perfectly.
 
+Regards, 
+Nishka Dasgupta
+
+On Tuesday, February 20, 2018 at 2:27:54 AM UTC+5:30, Julia Lawall wrote:
+>
+>
+>
+> On Mon, 19 Feb 2018, Nishka Dasgupta wrote: 
+>
+> > make menuconfig does not show the driver I worked on (xgifb in staging) 
+> and 
+> > I can't seem to be able to set staging or xgifb to m. How can I make 
+> xgifb a 
+> > module so that it shows up in menuconfig? 
+>
+> Have you tried make allyesconfig?.  Most of the time that is sufficient. 
+>
+> julia 
+>
+> > 
+> > Thanking you, 
+> > Nishka Dasgupta 
+> > 
+> > -- 
+> > You received this message because you are subscribed to the Google 
+> Groups 
+> > "outreachy-kernel" group. 
+> > To unsubscribe from this group and stop receiving emails from it, send 
+> an 
+> > email to outreachy-kern...@googlegroups.com <javascript:>. 
+> > To post to this group, send email to outreach...@googlegroups.com 
+> <javascript:>. 
+> > To view this discussion on the web visithttps://
+> groups.google.com/d/msgid/outreachy-kernel/c564850c-61c0-48af-a8f1- 
+> > d3f03f3fbd11%40googlegroups.com. 
+> > For more options, visit https://groups.google.com/d/optout. 
+> > 
+> > 
+>
+
+------=_Part_5819_156570228.1519144288163
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Thank you! make allyesconfig worked perfectly.<br><br>Rega=
+rds, <br>Nishka Dasgupta<br><br>On Tuesday, February 20, 2018 at 2:27:54 AM=
+ UTC+5:30, Julia Lawall wrote:<blockquote class=3D"gmail_quote" style=3D"ma=
+rgin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
+<br>
+<br>On Mon, 19 Feb 2018, Nishka Dasgupta wrote:
+<br>
+<br>&gt; make menuconfig does not show the driver I worked on (xgifb in sta=
+ging) and
+<br>&gt; I can&#39;t seem to be able to set staging or xgifb to m. How can =
+I make xgifb a
+<br>&gt; module so that it shows up in menuconfig?
+<br>
+<br>Have you tried make allyesconfig?. =C2=A0Most of the time that is suffi=
+cient.
+<br>
+<br>julia
+<br>
+<br>&gt;
+<br>&gt; Thanking you,
+<br>&gt; Nishka Dasgupta
+<br>&gt;
+<br>&gt; --
+<br>&gt; You received this message because you are subscribed to the Google=
+ Groups
+<br>&gt; &quot;outreachy-kernel&quot; group.
+<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
+send an
+<br>&gt; email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-=
+mailto=3D"tcbsyo4iCQAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;ja=
+vascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;r=
+eturn true;">outreachy-kern...@<wbr>googlegroups.com</a>.
+<br>&gt; To post to this group, send email to <a href=3D"javascript:" targe=
+t=3D"_blank" gdf-obfuscated-mailto=3D"tcbsyo4iCQAJ" rel=3D"nofollow" onmous=
+edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
+ef=3D&#39;javascript:&#39;;return true;">outreach...@googlegroups.<wbr>com<=
+/a>.
+<br>&gt; To view this discussion on the web visithttps://<a href=3D"http://=
+groups.google.com/d/msgid/outreachy-kernel/c564850c-61c0-48af-a8f1-" target=
+=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://groups.=
+google.com/d/msgid/outreachy-kernel/c564850c-61c0-48af-a8f1-&#39;;return tr=
+ue;" onclick=3D"this.href=3D&#39;http://groups.google.com/d/msgid/outreachy=
+-kernel/c564850c-61c0-48af-a8f1-&#39;;return true;">groups.google.<wbr>com/=
+d/msgid/outreachy-kernel/<wbr>c564850c-61c0-48af-a8f1-</a>
+<br>&gt; d3f03f3fbd11%<a href=3D"http://40googlegroups.com" target=3D"_blan=
+k" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://www.google.com/u=
+rl?q\x3dhttp%3A%2F%2F40googlegroups.com\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dA=
+FQjCNEjt8k9OhR10y0jYLX0ZgJix1hnBQ&#39;;return true;" onclick=3D"this.href=
+=3D&#39;http://www.google.com/url?q\x3dhttp%3A%2F%2F40googlegroups.com\x26s=
+a\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNEjt8k9OhR10y0jYLX0ZgJix1hnBQ&#39;;retur=
+n true;">40googlegroups.<wbr>com</a>.
+<br>&gt; For more options, visit <a href=3D"https://groups.google.com/d/opt=
+out" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;htt=
+ps://groups.google.com/d/optout&#39;;return true;" onclick=3D"this.href=3D&=
+#39;https://groups.google.com/d/optout&#39;;return true;">https://groups.go=
+ogle.com/d/<wbr>optout</a>.
+<br>&gt;
+<br>&gt;
+<br></blockquote></div>
+------=_Part_5819_156570228.1519144288163--
+
+------=_Part_5818_1529152832.1519144288162--
 
