@@ -1,90 +1,111 @@
 X-GM-THRID: 6524431890733072384
-X-Received: by 10.25.22.20 with SMTP id m20mr861223lfi.3.1519108788442;
-        Mon, 19 Feb 2018 22:39:48 -0800 (PST)
+X-Received: by 10.46.29.133 with SMTP id w5mr1024907lje.26.1519087688402;
+        Mon, 19 Feb 2018 16:48:08 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.190.21 with SMTP id o21ls987863lff.8.gmail; Mon, 19 Feb
- 2018 22:39:46 -0800 (PST)
-X-Google-Smtp-Source: AH8x226dqgGedkxssu87s+qtdvyrSovtziK4CgaxTdE8q3Z+0ctRC66XU1ORs6+xWkFA1IjvvkXY
-X-Received: by 10.25.209.146 with SMTP id i140mr1204580lfg.34.1519108786830;
-        Mon, 19 Feb 2018 22:39:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519108786; cv=none;
+Received: by 10.25.190.21 with SMTP id o21ls938302lff.8.gmail; Mon, 19 Feb
+ 2018 16:48:06 -0800 (PST)
+X-Google-Smtp-Source: AH8x2264fd+6KYEQ5gKUQup9XCP4jcw9UjaB6q7b++CsgRp6UWykHi0EgbOoCW3pve+oLhEFN5IP
+X-Received: by 10.25.217.81 with SMTP id q78mr310211lfg.23.1519087686961;
+        Mon, 19 Feb 2018 16:48:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519087686; cv=none;
         d=google.com; s=arc-20160816;
-        b=sU5mTaRbU+xtw4GpPwPmczseSfd+1DbIAFjdVujbAVBQw2pDbJMfnMFzrRa8NCbm7T
-         kuEHrIGOKZd9YtwRY+BnQpfyl8OuaN97msob+D3kptjHjXGqZM/gLFoRibDdSYTakqUl
-         B8kEuVbGalT33rKoY7TLhbC6SeR1HiX6ZbuISWG+06ds+Afv2R8b6CA6LPBaQRSt4Xla
-         NWhHNcxeLwRvESkbX4sB3KZxc2pqEaxNiPIKKOA0QpQ3Ye98uFGL4M4W0EWFUbk7MSQJ
-         O1+5SZfwUzX1kptwbtRrKmbGepfOwWhDLGkcjp36dcXQsI/KXB6uu2UqwK/BfgcJoSQs
-         xe0g==
+        b=BpeWkctj5Eb28zlTggWdzQrldYhoH3agAqicaWgYUHBbExk3oXeR+vdz+XsxY3koaB
+         lm2QlYUiqt9XmcrMbOAPnrxCsOpmPssUo2xr5A/oqrxh4VqYPeX84G8y15OGdXMF+MCN
+         fMn4HsKdgIdkp44ZJIQxsYr3vDaiE37n4DHne90Ua7n486v+MyHlfqWNAGwLNVAjrE1m
+         K1T/OpCkq1f+dKA0YZszIHUi4PgfB2Z/9RU9D0I84ALzqDY3WHm/Uk8trgiTYBwimGi6
+         jQOgeWr/yRZdGEDa4SlnEtpS+2xv67ViYbysN3lY1vh70yTX9jK12TcJX4A24rukWhYi
+         esgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=HgIBiCQwJyFn/eHfQsxX6332WTD4T1LR31lrGZ1qSZs=;
-        b=hIPJ4KepHbvxFUj9pkHtmOUs9+D02DF12YUPve9S5/pcC5lcJyhkVm4eHPAUdURIWS
-         BNgv9/ax72rYo1GYgbFUOv/D5Gr3CAQJ3Tv9DlQqTw4HvNlnU/xVwxZBII6lHbSDTJ7+
-         GBIA/GoH5zDzPr9ccv6rUHp0UlhMkiqsi2/e86BAqVPjEHcFKtDvkV8DPJCxCVLRUjbm
-         pYh9RgL1JlriKzZPu30WqE/YH/Rcyf6mngPgQHcPHHo2EufA+iGl5qs7p2TT1t270Z0L
-         BBftHUq/4M3qdK2DdWGZWC2fJBuSlRc5+ACoH+QrQu3Gyn1U7nJZevSK8pXYYIMJ6W6M
-         zbCg==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=CpfSMZY2lM20M+fvVQRXHgsz3w+KH7rzvAoxpI6xSG8=;
+        b=KyJUk4jj1kXPgj0ZWcjfc3zMVvrxqv8tXpNHX+HIKpFXZT1sADaNvkv70AvCNaEIvh
+         Rb5D0PIgDmMH4cUKZ3kfANWWs676O8N3/kPpGLXYI51cA09dqqWE1ieElip9QA6QBcyq
+         FSPeeCSi57Gpf1o3UWmaYOZNKsCbGgE+mpqXrJnDLNyayTqA+qFBqKo1AS8UyFxhNS+p
+         quKJDZGxT+b6ZBoB/VzKk0By+P/kIvUuYEOQsIdO5H0EPCaMZgYYKWQNG8jdzmwn6L3b
+         N6PSlMBcPbM8WTPFkR71aMml77l7IMl23gtRgr3xJooukqyCh6IWApV1sOe7fBc9trtS
+         oeCg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id u16si616539lfc.3.2018.02.19.22.39.46
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tP5nT8fG;
+       spf=pass (google.com: domain of chenyensu0@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) smtp.mailfrom=chenyensu0@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <chenyensu0@gmail.com>
+Received: from mail-wr0-x244.google.com (mail-wr0-x244.google.com. [2a00:1450:400c:c0c::244])
+        by gmr-mx.google.com with ESMTPS id w29si646235lfc.5.2018.02.19.16.48.06
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 19 Feb 2018 22:39:46 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Mon, 19 Feb 2018 16:48:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of chenyensu0@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) client-ip=2a00:1450:400c:c0c::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.46,537,1511823600"; 
-   d="scan'208";a="314398586"
-Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 20 Feb 2018 07:39:35 +0100
-Date: Tue, 20 Feb 2018 07:39:34 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Eisha Chen-yen-su <chenyensu0@gmail.com>
-cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
-Subject: Re: [Outreachy kernel] [PATCH 0/2] Cleanup in staging pi433 driver
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tP5nT8fG;
+       spf=pass (google.com: domain of chenyensu0@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) smtp.mailfrom=chenyensu0@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wr0-x244.google.com with SMTP id z12so5249697wrg.4
+        for <outreachy-kernel@googlegroups.com>; Mon, 19 Feb 2018 16:48:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=CpfSMZY2lM20M+fvVQRXHgsz3w+KH7rzvAoxpI6xSG8=;
+        b=tP5nT8fGPIuvK26lC0/B/Fa2V1Ir5VrDoOiQVXJ1L1XjBxsSr5dzyWvUr0+GzTW1Ts
+         Y7JPQiWJbAKotCBOfQkEvZo/XvFniXr6XAVJDBEjrrCFGf2hyp8941Dll4N/K0Sc/fMh
+         8yfWJMahVxtA69fNzbkIF+0yh4EGepqkXjr6mGA6gGWI8ZCVXeCHgSDSApqoP8Xjq1cr
+         oIXPTjPwqXB7lbAoYz7UljPSgzuVhGonMmrUkLR3+EoaSFsIs4JndQP23gDc5iUZugJl
+         Ik1CQ+otSzT5OggSf0qKV2NumGeBEJsUyhH93/YOrAFLpDUwS3F0Nx998fjpgPv3wht1
+         U//w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=CpfSMZY2lM20M+fvVQRXHgsz3w+KH7rzvAoxpI6xSG8=;
+        b=r8FOa8F/Tuz8qmmO4kEdAU3Rf9/pnQT2khT67CpvldSj12+AYy1XPba2E2dPBrYBCV
+         hMIcNgUta6MMpNfRys0Gz1qOjooWpClLYcbLvu7pTW50SNasFcLyn9NJHsA/m92ldroS
+         drNqixv0+i/h7TL+cBCFfSfHl6Cs1sDbCyTTXVYlYqD1kpTSAr8HtbzUgYZs7n50cDkx
+         S9qyTP6oaWtj/bnIdBkoZMSag/z1EkMZu3bVBOKZYLpNmd2WyRvaFaPNXbjK5jr4DgGu
+         EM302Q175+FsyhoTD2QZHZVQd8v09o9YWCoemFmPFNMmCED0/BOb7uzi+NuHjdgnrB07
+         099w==
+X-Gm-Message-State: APf1xPBdfMaw5LkOP/0dl3kX1EqYgMNT9/qCD8jdG5t0nrGeD1ozHTDs
+	kAxbxLPhPowPPQqckR7X6Derr1NT/hA=
+X-Received: by 10.223.153.215 with SMTP id y81mr14511629wrb.144.1519087686247;
+        Mon, 19 Feb 2018 16:48:06 -0800 (PST)
+Return-Path: <chenyensu0@gmail.com>
+Received: from outreachy-kernel.wifirst.net (eth-west-pareq2-46-193-1-181.wb.wifirst.net. [46.193.1.181])
+        by smtp.googlemail.com with ESMTPSA id d27sm33336876wrd.60.2018.02.19.16.48.05
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 19 Feb 2018 16:48:05 -0800 (PST)
+From: Eisha Chen-yen-su <chenyensu0@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	gregkh@linuxfoundation.org
+Cc: Eisha Chen-yen-su <chenyensu0@gmail.com>
+Subject: [PATCH 2/2] staging: pi433: Split subtraction across 2 lines
+Date: Tue, 20 Feb 2018 01:47:26 +0100
+Message-Id: <20180220004726.9662-3-chenyensu0@gmail.com>
+X-Mailer: git-send-email 2.14.3
 In-Reply-To: <20180220004726.9662-1-chenyensu0@gmail.com>
-Message-ID: <alpine.DEB.2.20.1802200738180.2868@hadrien>
 References: <20180220004726.9662-1-chenyensu0@gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
 
+Split a subtraction across 2 lines in order to make these lines
+no longer than 80 columns. Problem found with checkpatch.
 
+Signed-off-by: Eisha Chen-yen-su <chenyensu0@gmail.com>
+---
+ drivers/staging/pi433/pi433_if.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-On Tue, 20 Feb 2018, Eisha Chen-yen-su wrote:
+diff --git a/drivers/staging/pi433/pi433_if.c b/drivers/staging/pi433/pi433_if.c
+index 4a8e633a0a1d..e8ddc924bb04 100644
+--- a/drivers/staging/pi433/pi433_if.c
++++ b/drivers/staging/pi433/pi433_if.c
+@@ -528,7 +528,8 @@ pi433_receive(void *data)
+ 
+ 		/* need to drop bytes or acquire? */
+ 		if (dev->rx_bytes_to_drop > dev->rx_bytes_dropped)
+-			bytes_to_read = dev->rx_bytes_to_drop - dev->rx_bytes_dropped;
++			bytes_to_read = dev->rx_bytes_to_drop -
++					dev->rx_bytes_dropped;
+ 		else
+ 			bytes_to_read = bytes_total - dev->rx_position;
+ 
+-- 
+2.14.3
 
-> Do some code cleanup in order to reduce the quantity of lines
-> exceeding 80 columns. Problem found with checkpatch.
-
-Acked-by: Julia Lawall <julia.lawall@lip6.fr>
-
-The series looks good.  Try to find some issues involving code rather than
-just whitespace, now that you have figured out the patch submission
-process.
-
-julia
-
-
->
-> Eisha Chen-yen-su (2):
->   staging: pi433: Split some function calls
->   staging: pi433: Split subtraction across 2 lines
->
->  drivers/staging/pi433/pi433_if.c | 48 ++++++++++++++++++++++++++--------------
->  1 file changed, 32 insertions(+), 16 deletions(-)
->
-> --
-> 2.14.3
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20180220004726.9662-1-chenyensu0%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
