@@ -1,85 +1,85 @@
 X-GM-THRID: 6525083396428791808
-X-Received: by 2002:a25:2708:: with SMTP id n8-v6mr2506599ybn.47.1519250399871;
-        Wed, 21 Feb 2018 13:59:59 -0800 (PST)
+X-Received: by 10.31.147.143 with SMTP id v137mr2308508vkd.28.1519248992076;
+        Wed, 21 Feb 2018 13:36:32 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.129.114.135 with SMTP id n129ls132149ywc.4.gmail; Wed, 21 Feb
- 2018 13:59:58 -0800 (PST)
-X-Google-Smtp-Source: AH8x226tFepmDmih5mD8ZB2SCsP0QrHk7QRs/ri6RGJ6VG/kGHDACHqtT06H7aQTjuYlk8Sw2QPO
-X-Received: by 10.129.120.146 with SMTP id t140mr2521296ywc.32.1519250398699;
-        Wed, 21 Feb 2018 13:59:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519250398; cv=none;
+Received: by 10.176.73.107 with SMTP id a40ls227624uad.9.gmail; Wed, 21 Feb
+ 2018 13:36:30 -0800 (PST)
+X-Google-Smtp-Source: AH8x224ra33tmy7aH1M9msKNGlvtyDvEUlLO4LIcaxTSlaSEsROJjcfQ57dDcTKL9mCBdK2D5J2H
+X-Received: by 10.159.58.214 with SMTP id q22mr2165559uag.90.1519248990971;
+        Wed, 21 Feb 2018 13:36:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519248990; cv=none;
         d=google.com; s=arc-20160816;
-        b=hG+LeM5uvouThDezSyVTPy1xpJpSyAnBSsqGL4TCPm4OiG+oXZT7qLWDWJgZjPaJFW
-         jXy5bRTo29fG7DDd4B0tTCixHP6BIyUHs2+1VjGWi43Y2Yf04HO1H6V+k8e99N2VPGkX
-         xsqFCo+RxAroSoCpSKsRva6+/ujf/e7/NEESlo0HxcaoOkkqxatOgps0KQSTfn2hB6Zo
-         BN+GlkGiNcBfc/aWkOMo3XY4M4Jw6ljgTMJ7g4Sw1eBhK8nNh63tfbel9JisXrRIgZjH
-         cAm2mcotXZnv+Yza3suGDbswZYf0Y7e2cqJ0VDOF4fT0XGJYJXoVnPkL4OJ7Vj1yJqzb
-         PSrg==
+        b=oDOfmhWIVwIhL1JAvt25GjEuxI7ufH1r3xp+OeMZ3AoKP7XgbfFpgaJ7D3RxP5NovN
+         jP2svGHik4cYGY3BuycF132gi+iIeN7hZpnaMlDM225otUPYvC7eIlE8+T3cZv1sPv/v
+         jnCLcOg1cmeOMIXljbYYG9cJ1g1I8OMlXsyq+CUt7uTbTomwC7oxv3P7meu847TbYt9w
+         p6fvP/0A/LhHXLhfeW8DQlaEsbdLsUb3Nt87GhdTMfO6bGzqyHNCqOiYfep3Ox6MsNLe
+         54CAweD0k3g48DMuych3nbg+NAlX8hfjVe7INnz8HrBtSHo293KUl8FSGq+8XzEjDxjz
+         SaiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:to:from:date:dkim-signature
          :arc-authentication-results;
-        bh=7a0wQaZVIPv0KFI6mecLVVYUa/pxbdxSTU6Jjj7UlIA=;
-        b=BeSKxiDHE5kSN8Eub+nPLCJOvhz+N7iAqjgN1n0qiPFj0W0OqfWhkcVrBCXAwn3m+U
-         0WkW+U7d5b+XLqA9ZjMaV5GaVaHe7RC54dkNrPd3JqpTNM2xCjIxszj0DHBuZH+ovx5b
-         2Kok0U6umd+k9rcDOqHFcTJKdFgUCPlpF1bLeUZ6+cgoWPP//LYOE+2vPJ3hdMqqeQUU
-         SnUvm+xB6La2iDdw4HShLsIepUX44QdW/Ohd3LfHeTNt06cwAVgkFVVDXELYw5/shc9z
-         L6W5VASz2Dg4vYBu7uBsxxJ8UY+G1SBk9RWzZFiWhHl3tuzKxeDyod1j/gUqWqD3ZKEv
-         h5mQ==
+        bh=H1w3B02Gnt1/zZF+855kwLAc7G31jKhnryfOzAw/heA=;
+        b=h84A6QlqVFHpv8E69W5iM5vudUZk7ThDhCRztTl+lNlqyWgsBnOi3WeYOawy4qneQK
+         F/C2U0KG+M7YSf7QfwMQjz1etE76ymUzpsNxsn+NCZEV0NSLEJRaDU02Qgg2FDmw8gO5
+         0wv5S4YHw0i2Q3K75WngBYhc5le6fZTOxHTribUeFHZTORHod4abKk0QAKJgy8Jx+Nt3
+         k9+NXyOJyh09WDrdO5RVd3jRi5OQ5TLeSAzq8SoWpNFgrDz6p1MgGjrFAi33lt5KngX9
+         lt+EZXmafu8xFXplY081OgdgCQ4LImCQ8NtLH8HEyVgY3kpEsGwCQD5H0OH22bnu5isn
+         n1OQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UxT3CgSp;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::22f as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fJfW2U6t;
+       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::231 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <santhameena13@gmail.com>
-Received: from mail-pl0-x22f.google.com (mail-pl0-x22f.google.com. [2607:f8b0:400e:c01::22f])
-        by gmr-mx.google.com with ESMTPS id t4si140920ybl.3.2018.02.21.13.59.58
+Received: from mail-pg0-x231.google.com (mail-pg0-x231.google.com. [2607:f8b0:400e:c05::231])
+        by gmr-mx.google.com with ESMTPS id 143si579996vkl.0.2018.02.21.13.36.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Feb 2018 13:59:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::22f as permitted sender) client-ip=2607:f8b0:400e:c01::22f;
+        Wed, 21 Feb 2018 13:36:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::231 as permitted sender) client-ip=2607:f8b0:400e:c05::231;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UxT3CgSp;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::22f as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fJfW2U6t;
+       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::231 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl0-x22f.google.com with SMTP id x18so1704747pln.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 21 Feb 2018 13:59:58 -0800 (PST)
+Received: by mail-pg0-x231.google.com with SMTP id l4so1164550pgp.11
+        for <outreachy-kernel@googlegroups.com>; Wed, 21 Feb 2018 13:36:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=7a0wQaZVIPv0KFI6mecLVVYUa/pxbdxSTU6Jjj7UlIA=;
-        b=UxT3CgSp2kEE2nJGyNTajdmiv+O/XJqAZmwLDhz0FEIFRfmaieANeLFkJZzAEkc8A9
-         8pynbyaBIlmi+vM+9Pg8CEfLlfc14PGDdoMH8OvgoYP9dgCYHn6UTt7Q6kXzoXoE2sVS
-         9iOcbcCd/hB+xDAqwwARnLqD7edr9HQfsAHgV5QAiGGeF+oTYj0iyAAmXXUVzmh9qES0
-         qARMoTKDz7xUEOCicyBZSy3BZAXtZq4axwF1qnT38ijwxvl/qa29Mp4ldJJfp9K2Mh4V
-         m9hL7UYejUu/UIpel5/KKsCS2F15cgxC7DzC2YU3C3U1X/iPDeZRH1HvuNb3h0IAWzuo
-         rJWw==
+        bh=H1w3B02Gnt1/zZF+855kwLAc7G31jKhnryfOzAw/heA=;
+        b=fJfW2U6thOCPnczR7gMEOSkBZCqPCv44vt53aQ72WBhNpgg/xKRgywqoPAPGHHFKwI
+         TWZcFHkmgj1S8fTXEYMIOQqlujZ1QymLxg6P9uSwRAeWD1TZXY65CSPLxuqCpm5ZgnuV
+         ZGV3pLCJY+gVgkDI2Z1AnRay4CHszWyjjwC7t2m1QHjOEhRTbdmb+dTjMmrJmlzoRq4N
+         pQdX/hq47K8BNi7azD8oaV7PSy0LtzBktgjE6J15IWqyLDUx0Nsv9sZ9vT4JHzPo/eBZ
+         O3DRTyql4oRsdSlef9k3ayhi6zAPvcFARkeZYx+OyAJ3k6qrsRpq++S7gzTevVKuibgN
+         2qOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=7a0wQaZVIPv0KFI6mecLVVYUa/pxbdxSTU6Jjj7UlIA=;
-        b=Vy3bItdx3s85a7shzFJ+PyrnDxEwuRXwARZKdNhgqpzjLe49OVgexwqe7Jz4jeSIDZ
-         +O2no0l3yJxsDS1ZLWiZyNqMpK0LmU3g0VIaBXH0JV8OGkRgtYjp21535NPr6clIAxAu
-         4x/nZWHUlXY8Di4yyFh/ykyY+wuQhD129uYyu4DgP5fw6IymRAM04NFWXpFHHemKomeC
-         JKnHp6JGIEECcmZdPFxKEOcoVqP18tlt77bMjFKyM0Sq5HkptEjf9fWZ3ksSYk1y/kcv
-         B6LK6aRPYwjAf6J5HDES6bGqD0HL9mcgyamzZ0M/TwqOM8csCtFpyOTcugyYJr4L2St8
-         wK3A==
-X-Gm-Message-State: APf1xPCSEV8GhnQR1ej3z9f454d6RWHMiXgdPcnz4n85lcP5iQemNwKo
-	UZ7k/Rc5/prHEPaHactfhzaWVB/H
-X-Received: by 2002:a17:902:96a:: with SMTP id 97-v6mr4445769plm.183.1519250398164;
-        Wed, 21 Feb 2018 13:59:58 -0800 (PST)
+        bh=H1w3B02Gnt1/zZF+855kwLAc7G31jKhnryfOzAw/heA=;
+        b=JgqqD1xTQAr1D3LTBNKKPFaXYDJdruabcgH75hcI2sLX4jfFOg2ebqbwm1IT2BJcB4
+         ApRfCQ39HFhsoyVB32Fe795q3IoffGJg1VTQV1dWDx5h5ivnTqxQqmP02unen1h3w8fm
+         +Byr5x1TxucdAsykXt9MvNiaeiMw3D3RXDpc87LnsvoahEDgQY6a3i3QXRd1X4kY11R2
+         oIFUq2q8s7QlowhdxuJq1JToOKg7krly3t7KuT4FEgCES6EakkBOJvXcvtRJ908dnqwl
+         a6Fa1kRK3Bh5KRZR3qQjc+nx08agY7F0LPtDynIi7MuHW5rgrSmoMnvQ3T0C/JJwvrJs
+         IZPA==
+X-Gm-Message-State: APf1xPCBQFPYzbOKVJ1QcwF9gKa37uQM6EQMW+BZubXAFBH52RScXfFh
+	D0U4IDFWekrFj6CEYGH3l3k=
+X-Received: by 10.101.93.73 with SMTP id e9mr3858971pgt.264.1519248990106;
+        Wed, 21 Feb 2018 13:36:30 -0800 (PST)
 Return-Path: <santhameena13@gmail.com>
 Received: from ubuntu (ResNet-23-0.resnet.ucsb.edu. [169.231.23.0])
-        by smtp.gmail.com with ESMTPSA id m80sm79308121pfj.163.2018.02.21.13.59.56
+        by smtp.gmail.com with ESMTPSA id 186sm63585479pfe.2.2018.02.21.13.36.28
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Feb 2018 13:59:57 -0800 (PST)
-Date: Wed, 21 Feb 2018 13:59:55 -0800
+        Wed, 21 Feb 2018 13:36:29 -0800 (PST)
+Date: Wed, 21 Feb 2018 13:36:27 -0800
 From: Santha Meena Ramamoorthy <santhameena13@gmail.com>
 To: Julia Lawall <julia.lawall@lip6.fr>, outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH v2 0/3] Cleanup in staging speakup
  driver
-Message-ID: <20180221215955.GA3637@ubuntu>
+Message-ID: <20180221213627.GA3516@ubuntu>
 References: <1519246723-2977-1-git-send-email-santhameena13@gmail.com>
  <alpine.DEB.2.20.1802212210440.2292@hadrien>
 MIME-Version: 1.0
@@ -95,6 +95,9 @@ On Wed, Feb 21, 2018 at 10:12:10PM +0100, Julia Lawall wrote:
 > 
 > julia
 
-Hi, 
-I noticed that I misspelled 'begin' in commit message (my bad) and that the logs should be rephrased. Should I change it to 'Changes since v1' or should I include what has been changed in every version? I'm really sorry for the confusion.  
+I have added the note in all patches. Please check if it's in the proper
+format.
+
+Best,
+Santha 
 
