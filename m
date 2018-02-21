@@ -1,159 +1,101 @@
 X-GM-THRID: 6525083396428791808
-X-Received: by 10.55.165.207 with SMTP id o198mr3351080qke.38.1519248833179;
-        Wed, 21 Feb 2018 13:33:53 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.55.162.69 with SMTP id l66ls1410182qke.5.gmail; Wed, 21 Feb
- 2018 13:33:51 -0800 (PST)
-X-Google-Smtp-Source: AH8x2250I4XSiGYY9sgqJmPAFgO9fYw6YkdtwFqifS221fwvBMkH0SmGfmKGhnO6LOsoupEXsLuK
-X-Received: by 10.55.141.70 with SMTP id p67mr3365675qkd.22.1519248831812;
+X-Received: by 10.99.102.4 with SMTP id a4mr1000498pgc.28.1519248831101;
         Wed, 21 Feb 2018 13:33:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519248831; cv=none;
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.99.56.12 with SMTP id f12ls496657pga.16.gmail; Wed, 21 Feb
+ 2018 13:33:49 -0800 (PST)
+X-Google-Smtp-Source: AH8x225p9QqxFKMB0QE6GzGW+d0wt8HxQaazXqUgKhH9pO17HiaCA3OGwtxOi3msZRt4UY4vz1U3
+X-Received: by 10.101.99.213 with SMTP id n21mr1025877pgv.14.1519248829963;
+        Wed, 21 Feb 2018 13:33:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519248829; cv=none;
         d=google.com; s=arc-20160816;
-        b=UdV9FDxWoK05KLzN29T09XJ8JTvOF+BbBJkZYGtTcAc4dH775pK62YUFzjLSKjiwN2
-         MQUuLx46+ok5WNPTXZMnL17xWwrYIYLQZ8VJfo3XNtRBSV4HNfmw4RrPCXj/I57gtupp
-         j+ouC2NdP7TPENlG6DKCyzPBx8NR5N/VNiKPxHJZCMs8TluLgQD5w2LlkoURNVXzqX3o
-         Kf9xUjWzkjJkhBNI4RpFC0/nDugYO5x9PGjbMncTSW25nF0SDj/KFTVCMbV/uFdazReQ
-         jR8K0K4sXD4cvXtJa3mKU7y906Zep/9OzR0rNw67R3nCG0K7uonhZW9p5dueVQhhgsVP
-         Sojg==
+        b=mmBzE+8R4VE8Pjj7A7YulVAA9FRMnkyXQePgQNdcUqIRxHW5H96ZcfTOsES2hJeE2H
+         TqpPJb86iBkEWv58fEzl1fnoWwmj0VBZZVVPqQ+9a92Br4/HiHUXMoFa53Xh7lWJE2qq
+         h5D0A+AC37FVZwuTvuXguftG+6wlmwmmnc4nJoOuK0jq/lxSX0DU2XUUgr/3f8VJeXtP
+         AedY+J0TD4Dlg0l+7pzb2IP9L0IFgz4ZBRVFymuhwrcXXvbD05zYLjUv+yuHRwpzay+I
+         rxdoTu20ViL4lRnbRGeL84ffQm9tZpKdULoSi4Baj4OVQ346Cim3+HknHRaHz87xug7m
+         eehQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=m4VLN6r7lkqW/oy/wu9qtdRmvd5mHLbHX677cV9L+2g=;
-        b=giXCfSYOrBcec/HmiGK0o5ZtWb/Jn00UCRe22WFU9FRTrgi+yYLX2IAbrUHf9Hy6QV
-         6g5DkHBKOaglns49ooQM0m4c4h2n0u6dPZvPEOv83W8pWEOPFd32NCkCHCavpS66F3NR
-         2o/bWxII3pABiAiXILN/yHOGc0pP5FLUKZe2SplVlpgg77FdWbClAL92embEDZkW1FA5
-         fT0QKoeNMM4ZCWMN8phe6lkhsvkmk2epLvXf2+DJFixGVT9DbaO+oGrcnwDcGNFf3jXx
-         geHod5+/dcz98Dn5jvvlSXGmczyG/fbfz5HvFmCv4yshchP163hczShsjhfjBM/CeYiJ
-         PJag==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=o6T0pWd7gXL+Wqvtc1tvdfw2Er+1Fx/xPbNJp7k7wGw=;
+        b=0XTYZWndMOFAXHJOQylPBckc6naikG62zgBwtTMCCimBfjYmnh4CTA5BeoopapAgUM
+         cyYesolsr44tZQ/NS06IEzKSyEeYKs1I7N1e227a1DtdMpGfR0eIy/O9kyDb1XdRyudH
+         E9MpXuVIjLLoW15mVYTCCHoBQzDL+hjuoJHkTvP4ma0NpNXe7g7pMOZMTxtIe2QwGeRw
+         jEX83X7qyJlND0/BB84GDqo5gUfaR++3mhVgP1L+jN2kujah0ToYGQ5fnjJ28+Nr3nq1
+         9/1HNIA85fBHNb09bBW6s0GDu26AEXZuGhe5umpPVhHw/Z2LqiZ9Xe716ngalULCfSNm
+         2INg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Wv++sSiG;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kmt7mrcC;
+       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::229 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <santhameena13@gmail.com>
-Received: from mail-pf0-x22f.google.com (mail-pf0-x22f.google.com. [2607:f8b0:400e:c00::22f])
-        by gmr-mx.google.com with ESMTPS id p43si817129qtg.2.2018.02.21.13.33.51
+Received: from mail-pg0-x229.google.com (mail-pg0-x229.google.com. [2607:f8b0:400e:c05::229])
+        by gmr-mx.google.com with ESMTPS id w4-v6si806271plp.4.2018.02.21.13.33.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Feb 2018 13:33:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) client-ip=2607:f8b0:400e:c00::22f;
+        Wed, 21 Feb 2018 13:33:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::229 as permitted sender) client-ip=2607:f8b0:400e:c05::229;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Wv++sSiG;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kmt7mrcC;
+       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::229 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22f.google.com with SMTP id k2so1209230pfi.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 21 Feb 2018 13:33:51 -0800 (PST)
+Received: by mail-pg0-x229.google.com with SMTP id l4so1161582pgp.11
+        for <outreachy-kernel@googlegroups.com>; Wed, 21 Feb 2018 13:33:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=m4VLN6r7lkqW/oy/wu9qtdRmvd5mHLbHX677cV9L+2g=;
-        b=Wv++sSiGqdJaDHfJmlpVDGQGibczx1N4P4NIzi4mJwbq14Ce4ampYZIexO4CXLrZEt
-         JIsgIt3++IH255ZS589NRjMmk0KRJVzJMW4PQa3h8A84043WdxMxOgo9G2kv8sy9ZZu7
-         ebr0cqCaILisu21zO2n40hRuX9/0ZdK/nxftVNUd/J6S4jsxyugozH6DzCEmzrSGCsGO
-         bYn6i/U0mMB5E5uiOlfnEjji4NuaCSSghUwNfQtTKROqVHdOsJXZ4NyziMr7uP2BcBoA
-         OnaYEUwvWj5/s3lcVRxgz4x9zuvkySelRdIKYl8ORUL2lIiQLVaOSGky1VmmZqgSK3To
-         fCYw==
+        h=from:to:cc:subject:date:message-id;
+        bh=o6T0pWd7gXL+Wqvtc1tvdfw2Er+1Fx/xPbNJp7k7wGw=;
+        b=kmt7mrcCzRsjNZSzMH9PUFFkxRhljBYsbT11os+/Cr7Ny8ufrTpDdChaR24Kpz7HBS
+         ihdUPS2RACsDnJyq3lBPXmMFDzKkiYDnnwqBHhU8AABqaLsaK22cnJndmifsxaBVPGYX
+         tl22WWnaA0Gzy6E5YBfyRjZwrLys3EkZCaEBxu5XsT+AmuMadZRkWs66W3viyRhEvwgw
+         z6vQDr4us5txkbBxyS/Fk6G7h2BZNx5YkArrTcx0I4putHJliTBaeYHFj3dFKUWxoNci
+         fr7z2JAba5aFO6zh268/ierKqyS4JHj33wCfGIdz1mfyNf6q+23MNFfWN9spMEKk226n
+         Fyxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=m4VLN6r7lkqW/oy/wu9qtdRmvd5mHLbHX677cV9L+2g=;
-        b=VyqhFrG2BLz3w2wUhRgpegcmsje7vEYZ9kHwrq4w3kaCifR7e3M9Rb80EQIThdEBqk
-         lKExBWx1M0WL9SCzQPdFWP5Ueb2zWRZSlW3tt0ymkw/cJCTRLNIFyT1S0daezv+p3QFM
-         JlqPzr0OtV3LdlEgOrWxPB9NqMc9meq6P+qLff2VffM+pvgpS0Dd0nBGfxMCkNr7THJK
-         TxfAZix+BvDLS2IvTDFzn8EUOel9z+34eDbLyFCPSR33AnFIHZyeitV8omO2I2T4MxZW
-         RjWVKC8NJnhnyFRO90uZlLIfHxxYc/GvOUUn3cKiqOYTKHLMI2VsL6u0uhj3TvPjRV39
-         nAWg==
-X-Gm-Message-State: APf1xPBKME34sncymcaAVTSfOKAAGdxLeB+m9nRR8tvqgue9s5Y2N+GB
-	EggRKDeOt8rwGPz8k2oRacs=
-X-Received: by 10.98.223.93 with SMTP id u90mr4600191pfg.13.1519248831390;
-        Wed, 21 Feb 2018 13:33:51 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=o6T0pWd7gXL+Wqvtc1tvdfw2Er+1Fx/xPbNJp7k7wGw=;
+        b=GHwg5dh9yuVUSiHQW6eARsld1+Ki8diaHkhXyMTL2Mu4lz92ejQhIudnZHYrcHfqW0
+         JLa7CrUPsPg6Y8A3E+SwaKcYK5FNAYEnCJYRkdS2qT5HR5aE9Q84AKOjknCSBmkSuf/q
+         pYCUkQa7hw2aNvpJ4dj4/caNwZEAMkxNlzi7nUUsscI6O4ULZ7d+T7lOp98i9zglRuZq
+         T1P0c9wRcIOrUuVhlrxa9xFOKNx0bkY+dDkV/eclrRNGc0V84BMDaJsC1O97eDGJfL+y
+         u8FXyoAgy+zrLDLbCH4LxpdbM8Uoydt93TOSdFrGJ9mEZL14BAgE58MS/GThWXWaRrCE
+         5mig==
+X-Gm-Message-State: APf1xPAYdrv6/pmhhaTVknmI7C/7Lxxpg7GjyigxiFHNz8+n3FmrrG/P
+	WzuRVxUOUOrOqiMS34eRsrs=
+X-Received: by 10.98.238.2 with SMTP id e2mr4635806pfi.206.1519248829647;
+        Wed, 21 Feb 2018 13:33:49 -0800 (PST)
 Return-Path: <santhameena13@gmail.com>
 Received: from localhost.localdomain (ResNet-23-0.resnet.ucsb.edu. [169.231.23.0])
-        by smtp.gmail.com with ESMTPSA id n81sm9295573pfk.152.2018.02.21.13.33.49
+        by smtp.gmail.com with ESMTPSA id n81sm9295573pfk.152.2018.02.21.13.33.48
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 21 Feb 2018 13:33:50 -0800 (PST)
+        Wed, 21 Feb 2018 13:33:48 -0800 (PST)
 From: Santha Meena Ramamoorthy <santhameena13@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: w.d.hubbs@gmail.com,
 	chris@the-brannons.com,
 	outreachy-kernel@googlegroups.com,
 	Santha Meena Ramamoorthy <santhameena13@gmail.com>
-Subject: [PATCH v3 1/3] staging: speakup: add spaces around arithmetic operators
-Date: Wed, 21 Feb 2018 13:33:41 -0800
-Message-Id: <1519248823-3468-2-git-send-email-santhameena13@gmail.com>
+Subject: [PATCH v3 0/3] Cleanup in staging speakup driver
+Date: Wed, 21 Feb 2018 13:33:40 -0800
+Message-Id: <1519248823-3468-1-git-send-email-santhameena13@gmail.com>
 X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1519248823-3468-1-git-send-email-santhameena13@gmail.com>
-References: <1519248823-3468-1-git-send-email-santhameena13@gmail.com>
 
-Add space around arithmetic operators ('+', '-' and '*') to conform to
-Linux kernel coding style. Problem found using checkpatch.
+Do coding style cleanup to improve readability and maintainability.
 
-Signed-off-by: Santha Meena Ramamoorthy <santhameena13@gmail.com>
----
-Change since v3:
- - Change the commit message to being with capital letter.
+Changes since v3:
+ - Change commit message to begin with capital letter.
+ - Indicate what has been changed with versions in all patches.
 
- drivers/staging/speakup/speakup_dtlk.c | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
+Santha Meena Ramamoorthy (3):
+  staging: speakup: add spaces around arithmetic operators
+  staging: speakup: match alignment with open paranthesis
+  staging: speakup: remove space after a cast
 
-diff --git a/drivers/staging/speakup/speakup_dtlk.c b/drivers/staging/speakup/speakup_dtlk.c
-index f8cb83c..df31f8b 100644
---- a/drivers/staging/speakup/speakup_dtlk.c
-+++ b/drivers/staging/speakup/speakup_dtlk.c
-@@ -287,7 +287,7 @@ static struct synth_settings *synth_interrogate(struct spk_synth *synth)
- 	}
- 	t = buf;
- 	/* serial number is little endian */
--	status.serial_number = t[0] + t[1]*256;
-+	status.serial_number = t[0] + t[1] * 256;
- 	t += 2;
- 	for (i = 0; *t != '\r'; t++) {
- 		status.rom_version[i] = *t;
-@@ -326,13 +326,13 @@ static int synth_probe(struct spk_synth *synth)
- 				speakup_info.port_tts);
- 		if ((port_forced & 0xf) != 0xf)
- 			pr_info("warning: port base should probably end with f\n");
--		if (synth_request_region(speakup_info.port_tts-1,
-+		if (synth_request_region(speakup_info.port_tts - 1,
- 					SYNTH_IO_EXTENT)) {
- 			pr_warn("sorry, port already reserved\n");
- 			return -EBUSY;
- 		}
--		port_val = inw(speakup_info.port_tts-1);
--		synth_lpc = speakup_info.port_tts-1;
-+		port_val = inw(speakup_info.port_tts - 1);
-+		synth_lpc = speakup_info.port_tts - 1;
- 	} else {
- 		for (i = 0; synth_portlist[i]; i++) {
- 			if (synth_request_region(synth_portlist[i],
-@@ -341,7 +341,7 @@ static int synth_probe(struct spk_synth *synth)
- 			port_val = inw(synth_portlist[i]) & 0xfbff;
- 			if (port_val == 0x107f) {
- 				synth_lpc = synth_portlist[i];
--				speakup_info.port_tts = synth_lpc+1;
-+				speakup_info.port_tts = synth_lpc + 1;
- 				break;
- 			}
- 			synth_release_region(synth_portlist[i],
-@@ -359,7 +359,7 @@ static int synth_probe(struct spk_synth *synth)
- 		cpu_relax(); /* wait until it's ready */
- 	sp = synth_interrogate(synth);
- 	pr_info("%s: %03x-%03x, ROM ver %s, s/n %u, driver: %s\n",
--		synth->long_name, synth_lpc, synth_lpc+SYNTH_IO_EXTENT - 1,
-+		synth->long_name, synth_lpc, synth_lpc + SYNTH_IO_EXTENT - 1,
- 		sp->rom_version, sp->serial_number, synth->version);
- 	synth->alive = 1;
- 	return 0;
-@@ -369,7 +369,8 @@ static void dtlk_release(void)
- {
- 	spk_stop_serial_interrupt();
- 	if (speakup_info.port_tts)
--		synth_release_region(speakup_info.port_tts-1, SYNTH_IO_EXTENT);
-+		synth_release_region(speakup_info.port_tts - 1,
-+				     SYNTH_IO_EXTENT);
- 	speakup_info.port_tts = 0;
- }
- 
+ drivers/staging/speakup/speakup_dtlk.c | 25 +++++++++++++------------
+ 1 file changed, 13 insertions(+), 12 deletions(-)
+
 -- 
 2.7.4
 
