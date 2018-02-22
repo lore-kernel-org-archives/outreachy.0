@@ -1,107 +1,109 @@
 X-GM-THRID: 6525083396428791808
-X-Received: by 10.202.168.193 with SMTP id r184mr3811193oie.64.1519323319007;
-        Thu, 22 Feb 2018 10:15:19 -0800 (PST)
+X-Received: by 10.25.31.66 with SMTP id f63mr392118lff.42.1519283739814;
+        Wed, 21 Feb 2018 23:15:39 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.202.6.129 with SMTP id 123ls538012oig.15.gmail; Thu, 22 Feb
- 2018 10:15:17 -0800 (PST)
-X-Google-Smtp-Source: AH8x225YPysOiqlh9GxFiCYXHczqVsakb0av8PY3iz8q6ww6JNMJwQOR+2Sm2wU5udiM/omxliYm
-X-Received: by 10.202.87.14 with SMTP id l14mr3804709oib.100.1519323317961;
-        Thu, 22 Feb 2018 10:15:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519323317; cv=none;
+Received: by 10.25.207.203 with SMTP id f194ls352403lfg.2.gmail; Wed, 21 Feb
+ 2018 23:15:38 -0800 (PST)
+X-Google-Smtp-Source: AH8x227Tan3DTQ2pws2o/6mH/oV7TXndhQLAIa2za3i9Aqb5GCzN0G8TDm7IHuqnzlfO3XyF7NhF
+X-Received: by 10.25.158.145 with SMTP id h139mr396249lfe.30.1519283738579;
+        Wed, 21 Feb 2018 23:15:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519283738; cv=none;
         d=google.com; s=arc-20160816;
-        b=FTRi3B0lneKF4hHw/Ef5bV/96kD59gSSTl2SPDka09D76GaQeCpmM9VJum5ZOQ4Qqf
-         hJ6k9SrtIGJKue0M2uyqtRtAM6rk/B9mLJ1E2Q0J8HmJWsaWt58a19/1rVvuVYkn4H0j
-         y4ZMQAduzzCvTn4V9scHtCNF4FRxP6Y5QOwW9C3REI4cIm4HftwhfaHYf/iB1HCUCwXe
-         IoOxj+lnUllVoqnJJdc0lJeTxg8YZwMHaxRkFv0HMq6bwFtSmKbwsT9Omt6Xp3THU4mA
-         ZYrDhcZjCIBybIkKpaN8r25ra6masgsOCWdi+yNMSG5Et/RgMI3idCubmSuVubHom9hB
-         s4vg==
+        b=heVT/604rhzKmGghOcWXptnuRg5ohpbpni7fE0v5HoRMun0qbkx0GlFAIaSRf+YGlS
+         gyKSgP+h3Q2zMKJLtuXVLw3zXRE+QlBBNbcSG+7+a3bLuEz1Go2nrxdf5/dmTWLbMx8p
+         K45cRxDkWbErgJDtPTLj4SKzQOChBbRfQLgfjiEj2Rb6rSehGdiK3DY7DN3u/BF+QNRQ
+         S1fwc4N3qefpGBF3chqfcVKqh0yoYHtHca1wchvJRPRafEDDe6+DF7mgGuYfJKtwNhDc
+         YyiPdn4Ocr150YtZrcwUGHugNIuJolndJyCX3qyI0Q6C/5sv23cO3AurGqE33AsXjrAd
+         fU7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=RRpEm23N4fl8VeAkDzPzBOV6SiIyDzvE6ahaEucpLDw=;
-        b=FzE+PszsN5rAXtY67QWx0EP9nQVNbLyNibHkuzpU8lgFiZn3jwYzXCtj1YQrJw6mjf
-         DW5hB8ezyFz3I8VSDk2l6Q2OV4xZbZk4WXhTTW+KZRSJaG5WXXStAwjI88tOb20tpdNG
-         Ow2yleoHsQ5HhqopEmC/84sjD9mfD6Ef/GIPShx9WbhJqIO9hpicVQ2XVRkAEtoev/lh
-         R6Fg4U9uS0Kl0UISic1Vwqx3roX+vnzR2FLwgbOaI86WC7GGXJXFPegdIEOEnR8hAnM/
-         FEDdJTu8GT44HzE/ucweDSs1iSQ+O5Xe1N43dealpb58Ac/Ax21oOGKXwt5ntAyiBX5n
-         XxIQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=B8WpQi/w9j18vg0pmXz7it9xQFmWtb1p2XSVACb8SOU=;
+        b=ZyYOiU0JRYhl0g4lS0h1GT+SPWHp+KBMKryM66SwHwil0xyS9klNG+L+SLnvWTo+lh
+         TqZHMSZ/jcWGPr05q92xL2mjxm8qRydAkvqM+CrLjM8mq3tNAfZ++DzXJsNECpvqDnPg
+         zwYXb04G5X8fHGkd8FyPaWakG/KuPdjcgEkGzUjt4KAapvtvVrJfyzhIp/N1ZJ8Md7u2
+         Ke1AmR+cGQK53tiy+tf9Ify35Nn2NrrADwHP/1pwdy11XpDrykdWKpF8C+tqIQJ9he2C
+         p1bcbQ+N2m2ql+GUKDULZ9+owv168MlwJt/nX6gnvO4bMM4v+nbeIyTaHoI8m61I+tuE
+         ROAg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kuX4kvfv;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::241 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <santhameena13@gmail.com>
-Received: from mail-pl0-x241.google.com (mail-pl0-x241.google.com. [2607:f8b0:400e:c01::241])
-        by gmr-mx.google.com with ESMTPS id d67si50209otb.0.2018.02.22.10.15.17
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id b10si410679lfe.4.2018.02.21.23.15.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 22 Feb 2018 10:15:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::241 as permitted sender) client-ip=2607:f8b0:400e:c01::241;
+        Wed, 21 Feb 2018 23:15:38 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kuX4kvfv;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::241 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl0-x241.google.com with SMTP id v9-v6so1319983plp.12
-        for <outreachy-kernel@googlegroups.com>; Thu, 22 Feb 2018 10:15:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=RRpEm23N4fl8VeAkDzPzBOV6SiIyDzvE6ahaEucpLDw=;
-        b=kuX4kvfvW2YmIyyYb3fkQUMljFmahzJ9NK63Eee2b3W5lqUP6qDVWBOXi4KtoSAU6T
-         vDpBBI3qC++TE+hGeyTXgQ31FLRZ1c/6zwjHtXYqPQtKn8JklGSTF1o9v7wJwaeRP8h7
-         vIieP1RU5WkkJluoazwU0Ul6/ysxclQo1gavigOT2OQfdCVDWqDpMTwV0FuohJjdVSG1
-         zO0CsFHuDL+YF2qqPAZHv9V6H/aYr6WX4nKr6j0a5RIlB07+vkNa7NRFnhp49+AmRGAY
-         DAT+W/qEC3vaM75k5MIOvG7bwgRBCPQtF3AnL+4A9AjZ5SP3yTuAorXIKVoV+iRsR6jY
-         IV5g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=RRpEm23N4fl8VeAkDzPzBOV6SiIyDzvE6ahaEucpLDw=;
-        b=f6yEQKJuc9kxIhQlBVu7NX9p2jGDSxv66VTZrhH+HL4Fmzab4oJJ7ZMxb3xdmk6xp8
-         azL/VkfIIKEAEZkbBINQ3orWRA2n+/AYs7Vblt3tCkhlrh+HL2ixmqTe1gbG4317XaNt
-         PQ1QdJoHAZ1M/Ka7SuwsL8wViXHD6TXwp+dzC3xgbUe+Gsug0AexDSmQuaDJgo96Fl3q
-         x6jT6Jw4w7dbpxf6qWs2l3aIzR6DGw9qoqYzl2Fr/nLVHeZQYIJVEJ1vkHG5782G85a9
-         YOC5uw9uRlDoKIQW1RNorWDdBnAbl0HgebjAMJBaElT9O0QuewIJIcJLls+sXpnV84U2
-         IFrg==
-X-Gm-Message-State: APf1xPBaDUQbX61QlSUjPQgAC29255Q/gw+Skk4vUElFn+SLenB4NkHb
-	/QzuSKdaQNOMvd3pp7QZ2zQ=
-X-Received: by 2002:a17:902:d204:: with SMTP id t4-v6mr2677238ply.377.1519323317277;
-        Thu, 22 Feb 2018 10:15:17 -0800 (PST)
-Return-Path: <santhameena13@gmail.com>
-Received: from localhost.localdomain (ResNet-23-0.resnet.ucsb.edu. [169.231.23.0])
-        by smtp.gmail.com with ESMTPSA id i1sm1506314pfi.116.2018.02.22.10.15.15
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 22 Feb 2018 10:15:16 -0800 (PST)
-From: Santha Meena Ramamoorthy <santhameena13@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: w.d.hubbs@gmail.com,
-	chris@the-brannons.com,
-	outreachy-kernel@googlegroups.com,
-	Santha Meena Ramamoorthy <santhameena13@gmail.com>
-Subject: [PATCH v4 0/3] Cleanup in staging speakup driver
-Date: Thu, 22 Feb 2018 10:15:08 -0800
-Message-Id: <1519323311-24338-1-git-send-email-santhameena13@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.47,377,1515452400"; 
+   d="scan'208";a="255704411"
+Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 22 Feb 2018 08:15:37 +0100
+Date: Thu, 22 Feb 2018 08:15:36 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Santha Meena Ramamoorthy <santhameena13@gmail.com>
+cc: gregkh@linuxfoundation.org, w.d.hubbs@gmail.com, chris@the-brannons.com, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v3 3/3] staging: speakup: remove space
+ after a cast
+In-Reply-To: <1519248823-3468-4-git-send-email-santhameena13@gmail.com>
+Message-ID: <alpine.DEB.2.20.1802220812510.2281@hadrien>
+References: <1519248823-3468-1-git-send-email-santhameena13@gmail.com> <1519248823-3468-4-git-send-email-santhameena13@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Do coding style cleanup to improve readability and maintainability.
 
-Change in v2:
- - Change commit message to begin with a capital letter.
-Change in v3:
- - Make the change description clearer.
-Changes in v4:
- - Improve the change description.
- - Change commit message and subject line to remove typo.
-No change in the code since v1.
 
-Santha Meena Ramamoorthy (3):
-  staging: speakup: add spaces around arithmetic operators
-  staging: speakup: match alignment with open paranthesis
-  staging: speakup: remove space after a cast
+On Wed, 21 Feb 2018, Santha Meena Ramamoorthy wrote:
 
- drivers/staging/speakup/speakup_dtlk.c | 25 +++++++++++++------------
- 1 file changed, 13 insertions(+), 12 deletions(-)
+> Remove blank space after a cast to conform to Linux kernel coding style.
+> Problem found using checkpatch.
+>
+> Signed-off-by: Santha Meena Ramamoorthy <santhameena13@gmail.com>
+> ---
+> Change since v3:
+>  - Nothing has changed.
 
--- 
-2.7.4
+Actually, this is v3, so change since v3 doesn't make sense.  It should be
+change in v3 or change since v2.  And actually the change that you have
+made is to add an indication that there was no change since the first
+version, ie the change is the comment about there being no code change.
 
+Please send a new version and state clearly the situation.  Here for
+example your v4 will have made the change description more clear since v3,
+but there has been no change in the code modification since v1.
+
+thanks,
+julia
+
+>
+>  drivers/staging/speakup/speakup_dtlk.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/speakup/speakup_dtlk.c b/drivers/staging/speakup/speakup_dtlk.c
+> index f109b51..dbebed0 100644
+> --- a/drivers/staging/speakup/speakup_dtlk.c
+> +++ b/drivers/staging/speakup/speakup_dtlk.c
+> @@ -266,7 +266,7 @@ static char synth_read_tts(void)
+>  	outb_p(ch, speakup_info.port_tts);
+>  	while (synth_readable())
+>  		cpu_relax();
+> -	return (char) ch;
+> +	return (char)ch;
+>  }
+>
+>  /* interrogate the DoubleTalk PC and return its settings */
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1519248823-3468-4-git-send-email-santhameena13%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
