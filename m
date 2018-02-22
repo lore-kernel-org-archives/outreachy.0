@@ -1,131 +1,86 @@
-X-GM-THRID: 6401831587283992576
-X-Received: by 10.98.218.86 with SMTP id w22mr4614704pfl.15.1490542569875;
-        Sun, 26 Mar 2017 08:36:09 -0700 (PDT)
+X-GM-THRID: 6524718047469502464
+X-Received: by 10.157.112.19 with SMTP id k19mr1000083otj.117.1519331886588;
+        Thu, 22 Feb 2018 12:38:06 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.156.16 with SMTP id f16ls3425569ioe.31.gmail; Sun, 26 Mar
- 2017 08:36:09 -0700 (PDT)
-X-Received: by 10.36.127.19 with SMTP id r19mr1690460itc.33.1490542569325;
-        Sun, 26 Mar 2017 08:36:09 -0700 (PDT)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id 2si1487601pfx.8.2017.03.26.08.36.09
+Received: by 10.202.18.2 with SMTP id 2ls595618ois.11.gmail; Thu, 22 Feb 2018
+ 12:38:05 -0800 (PST)
+X-Google-Smtp-Source: AH8x227G5+9QM/YkqWjeWKzy5pdwjOgvYdgHljCrUIRuOGwKThcgKweidX8mRENV0R45dXvrYwDl
+X-Received: by 10.202.235.79 with SMTP id j76mr3891860oih.113.1519331885659;
+        Thu, 22 Feb 2018 12:38:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519331885; cv=none;
+        d=google.com; s=arc-20160816;
+        b=fEryy3OjhxMrTzAZD5Qy17xfKp0IAM1SXZwuhZ6e6gVHa7xW2hPMZ6ilcZGFWB4pJ4
+         cEXB+AeKFkKkOCc36XGp3MImdMWRrRpprYoMd/LW+mzg650xTzGcuCjQqhr9jg02/wck
+         mHTFsR9SUntLPNY49mU2qk6XNqFx+HQ3rfYMOYQp/7g0JjKyGztRUqSbims5i9kx6FF4
+         jT02546t1BEioLSqYaRH/h7Dibgt68GnevXqVJzJyw6ibVkSj75/qoOIKlhh1p3/wuIA
+         uuw+MTofEkJGDgxZHrRe07zUg3A8dxvCvcj/gqwv/yrna2pNqmFieY/WPGhPE3+BQ+Ay
+         LIXg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=OY9/ZxCco3iKnVGzxMXiZTL1YAodUVWhSzNIHTF8brQ=;
+        b=ok5X01XEMygsJSy3EE0O0tolxqx/xrkCSWKTgjcjidFZQ//cpgCWHG4J5tN4DZTKTF
+         JmZBftJV68dM1763aEgpWRGnEjdSKG2F63D7o+e9Ih2BsubDlPkRLtAMEcYG1PJmpaSH
+         xN4AtM4tTwCigkFWV0dmAvUF00XeU+uYqFmM/zisT4btMi9zWQKFAhnqsymS7DyVQ3nJ
+         8LY+ceDeNqd3QV5yWA10zDp8nwjJ2qF5Z/74b6o47rgzH+R8uEmPLvw5PNdlD6QjK+Ig
+         VXfngO5pg1reVgkVIujt8ndBnCnZy7Azqqc2u9XKJJLxyzB/oVfxlp+XOiLN6LiNNlq7
+         pDbw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=hInB/qux;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::244 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
+Received: from mail-pl0-x244.google.com (mail-pl0-x244.google.com. [2607:f8b0:400e:c01::244])
+        by gmr-mx.google.com with ESMTPS id y81si55776oia.4.2018.02.22.12.38.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 26 Mar 2017 08:36:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Thu, 22 Feb 2018 12:38:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::244 as permitted sender) client-ip=2607:f8b0:400e:c01::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id 81so6207459pgh.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 26 Mar 2017 08:36:09 -0700 (PDT)
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=hInB/qux;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::244 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Received: by mail-pl0-x244.google.com with SMTP id v9-v6so1544913plp.12
+        for <outreachy-kernel@googlegroups.com>; Thu, 22 Feb 2018 12:38:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=A0ijvLV+l9qWafJ8rrnRpsAzjwbtFSonRAZLmY3f7D4=;
-        b=qvteLjRNp1DzgcEXVqTk2dm+IE9+CyCFblTlpIqWQsgvQAHC/z/JSLwquZyp/HZqP5
-         bYKWwExcI5E6Ms9RVmyYg6fHBJSKGPk1g7TH2JXPdWl3da022C7oINSXdxxei0xsriZm
-         3XSr61a/8EQg5dTHP8Crm9TG470uEIcdrS8lJK5qNeNfA+22RdyEwLsMCLsfFCUtuPKw
-         ytmxY3YjsXeYzL9HUdhsB5jnDbH5K+4/QDbCCwpcQS4Zq5lUbWb7FhbRRjkXVdXz/hal
-         z6nkMB4JF+EcxBxwTiYr3RBpjC909+eG25zWVOubIky3J31gH4cMz0dwg6eh/SCWLXBn
-         YV5w==
+        d=ashoka.edu.in; s=google;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=OY9/ZxCco3iKnVGzxMXiZTL1YAodUVWhSzNIHTF8brQ=;
+        b=hInB/quxNlsgVlpyl7SFGTorwqg+OauzTGctAN2M9rropOOJklWd4xD56PQkuTl+vz
+         vCR/9sE8j8M1bD9T/Fd+lXzW6Ee2bRMFr2F+t3r+7DgdrD9Xaf46OpJNnPC2BZI2sl5Y
+         g/0z7VTUk37tinYGqCakAlveZ1MrP26EkL8vQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=A0ijvLV+l9qWafJ8rrnRpsAzjwbtFSonRAZLmY3f7D4=;
-        b=d8x6Fs2TarjoPuL2Y1PPNqTUDVzzp3fNGr9S0qXp50T40dw5yCEOmDIlu+1H/O+R26
-         ZgRr8KirthnKuSaBiET0ClTG4iMaoDkLDuNMtyeL0OJT/dyEjtR4D0a0QpJs3bndQD6U
-         SicWTs3qKngQk12KaSmJVcv5tzJRClMo4NOEL1A0LrA2xb6FaqIN3Cn7Kh+k5SzhAyTR
-         pLNqMV6oQ4caJ7ns8kuaRIHf/Zup5xCVNlsnLp+G6lW08efXLiBp39zHyc3PFoo8b/33
-         fSO1n0LKAPP8Oslxc78tHga614ea5kGGlD06JR/mRR71T9d5ar272znNGYY/BItAurFN
-         lwJQ==
-X-Gm-Message-State: AFeK/H3DWG2ge5pJlKqjMyzs3rmHJW+exroTnmtQ4W8WODmScIbAls/qNe3B5MI1mW/cBw==
-X-Received: by 10.98.85.135 with SMTP id j129mr19938235pfb.79.1490542568883;
-        Sun, 26 Mar 2017 08:36:08 -0700 (PDT)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([117.192.128.197])
-        by smtp.gmail.com with ESMTPSA id s27sm15711929pfk.39.2017.03.26.08.36.07
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 26 Mar 2017 08:36:08 -0700 (PDT)
-Message-ID: <58d7dfe8.9b96620a.19c5e.7db4@mx.google.com>
-X-Google-Original-Message-ID: <20170326153604.GA20037@<rvarsha016@gmail.com>>
-Date: Sun, 26 Mar 2017 21:06:04 +0530
-From: Varsha Rao <rvarsha016@gmail.com>
-To: mawilcox@microsoft.com
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH 3/3] kernel: pid: Add blank line after declarations.
-References: <cover.1490542214.git.rvarsha016@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1490542214.git.rvarsha016@gmail.com>
-User-Agent: Mutt/1.7.1 (2016-10-04)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=OY9/ZxCco3iKnVGzxMXiZTL1YAodUVWhSzNIHTF8brQ=;
+        b=QrgeMBGrHToVg1oovQaNcQ4vLM9nYcFGI+LBr0qqRuE9gf6+M5RazLzMvYqPhcmudv
+         s4wLnbTD7ZlGjRLrcBBRZONkAoMq8qqr8zTRzGmK4S+6X8zFzRrmw57UvmatRJ7rgHzT
+         A9f12KrJz8tHAJ6VCM89RZ/+jA1v/tu3goQwsyE2h1ih2jhV/9XZXE0Dam2Cy790FAVD
+         VRbC4bNo5Z4t/eGVWo2KnGGZbbakAIZe45YDtZM2xacUPj+RmtAMZm441xO9NfjbGtB+
+         F8Sy8K0NG93JBEM/VviiS6/tB7rlvisWRXp31cdH1ihSHR97oe2+NQ4VMyzX/bDiXkUh
+         yIcg==
+X-Gm-Message-State: APf1xPC8Tua7XVxsEx4VshJ6Elh6cXShqahRgLiIjgohH3xKbw8qUvJ+
+	QwmAvYnrkSmEzAix/1jfKVpxZRpy
+X-Received: by 2002:a17:902:b58d:: with SMTP id a13-v6mr3201369pls.123.1519331884171;
+        Thu, 22 Feb 2018 12:38:04 -0800 (PST)
+Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
+Received: from DESKTOP-3NPFG8T.localdomain ([125.22.40.140])
+        by smtp.gmail.com with ESMTPSA id c185sm1312225pfb.146.2018.02.22.12.38.02
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 22 Feb 2018 12:38:03 -0800 (PST)
+From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+To: outreachy-kernel@googlegroups.com
+Cc: nishka.dasgupta_ug18@ashoka.edu.in
+Subject: Re: [PATCH] xgif: Fixed Line Splitting Issue
+Date: Fri, 23 Feb 2018 02:07:58 +0530
+Message-Id: <1519331878-14667-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <20180222173740.GA22317@kroah.com>
+References: <20180222173740.GA22317@kroah.com>
 
-Add a blank line after declarations, to fix the checkpatch issue.
+From: nishka.dasgupta_ug18@ashoka.edu.in
 
-Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
----
- kernel/pid.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+Yes, it was a huge error. I had been composing replies in the git/kernels/staging (a mistake I will not repeat). The reply files must have been added and then committed, even though I removed them before committing. I am sorry about that, and promise to be much more careful in future.
 
-diff --git a/kernel/pid.c b/kernel/pid.c
-index c022239..64c0ce4 100644
---- a/kernel/pid.c
-+++ b/kernel/pid.c
-@@ -147,6 +147,7 @@ static void set_last_pid(struct pid_namespace *pid_ns, int base, int pid)
- {
- 	int prev;
- 	int last_write = base;
-+
- 	do {
- 		prev = last_write;
- 		last_write = cmpxchg(&pid_ns->last_pid, prev, pid);
-@@ -265,6 +266,7 @@ EXPORT_SYMBOL_GPL(put_pid);
- static void delayed_put_pid(struct rcu_head *rhp)
- {
- 	struct pid *pid = container_of(rhp, struct pid, rcu);
-+
- 	put_pid(pid);
- }
- 
-@@ -404,6 +406,7 @@ EXPORT_SYMBOL_GPL(find_vpid);
- void attach_pid(struct task_struct *task, enum pid_type type)
- {
- 	struct pid_link *link = &task->pids[type];
-+
- 	hlist_add_head_rcu(&link->node, &link->pid->tasks[type]);
- }
- 
-@@ -450,8 +453,10 @@ void transfer_pid(struct task_struct *old, struct task_struct *new,
- struct task_struct *pid_task(struct pid *pid, enum pid_type type)
- {
- 	struct task_struct *result = NULL;
-+
- 	if (pid) {
- 		struct hlist_node *first;
-+
- 		first = rcu_dereference_check(hlist_first_rcu(&pid->tasks[type]),
- 					      lockdep_tasklist_lock_is_held());
- 		if (first)
-@@ -479,6 +484,7 @@ struct task_struct *find_task_by_vpid(pid_t vnr)
- struct pid *get_task_pid(struct task_struct *task, enum pid_type type)
- {
- 	struct pid *pid;
-+
- 	rcu_read_lock();
- 	if (type != PIDTYPE_PID)
- 		task = task->group_leader;
-@@ -491,6 +497,7 @@ EXPORT_SYMBOL_GPL(get_task_pid);
- struct task_struct *get_pid_task(struct pid *pid, enum pid_type type)
- {
- 	struct task_struct *result;
-+
- 	rcu_read_lock();
- 	result = pid_task(pid, type);
- 	if (result)
--- 
-2.9.3
-
+Regards,
+Nishka Dasgupta
 
