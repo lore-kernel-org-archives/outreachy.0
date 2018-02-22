@@ -1,123 +1,137 @@
 X-GM-THRID: 6525272592807362560
-X-Received: by 10.28.88.195 with SMTP id m186mr502284wmb.31.1519286690009;
-        Thu, 22 Feb 2018 00:04:50 -0800 (PST)
+X-Received: by 10.28.50.4 with SMTP id y4mr519214wmy.1.1519283417734;
+        Wed, 21 Feb 2018 23:10:17 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.223.145.3 with SMTP id j3ls911973wrj.8.gmail; Thu, 22 Feb 2018
- 00:04:48 -0800 (PST)
-X-Google-Smtp-Source: AH8x225B55nogIsTPq3q4z9GlSB3Q5uA5vTJ6mm54J3K1BgCgzmeIR4uFYhjH4YL0RYL+105p92n
-X-Received: by 10.223.180.86 with SMTP id v22mr563622wrd.1.1519286688950;
-        Thu, 22 Feb 2018 00:04:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519286688; cv=none;
+Received: by 10.28.26.6 with SMTP id a6ls51949wma.2.gmail; Wed, 21 Feb 2018
+ 23:10:16 -0800 (PST)
+X-Google-Smtp-Source: AH8x227RMbp7/67EDM52xw6S9PmndBRcw7b++J1U1M6TD+x4Gk8P7Xb4MtpPztUqU7QGTvbwVDBq
+X-Received: by 10.28.66.202 with SMTP id k71mr304488wmi.5.1519283416805;
+        Wed, 21 Feb 2018 23:10:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519283416; cv=none;
         d=google.com; s=arc-20160816;
-        b=FEPK7woXijnwDW87VXshshRviliLTOU1ydYO10zocFHHift7jySu/8uI9Wu5x/EuC4
-         E3BHUW6PdTf3JfX1LU3hmUsHr9MZF7yw/tVjD+T2tGX9gThGAZ/ftVPLwHbGeMJ7WWTQ
-         Pc3j8jkg9mmqKrKR9wczaSq5deXnk6jf7sT8rOMx12qViM8lCHDlHFNzoz+2UQ/RGqQQ
-         vU38i+VyBpu/lpSg97i/FrU2j70gR5oKEKu4+ReeukRlMAaz1Gn2LS6eZXC0j+BLIv8Y
-         t4fZDkgcNQLk/utD52KVHTAtHIAYU//y1hG3/NZB2tqrWzh8TLMVaXrRTkHvKd5pIpTC
-         nDqw==
+        b=O46QSeUSATETKz1RdBHPawOjw5WcjVgBhNJjYOLEHl/1vcxIWxruhUxAe8AFS+rttC
+         AZ34ZX8y+sNn5IjRQZXoSKS2tprpXBUxe0+wD6vjdkNLui+9h4QV+rqR54HFb/Jn6OFY
+         PetVO8bnmtBdiTwmrSuiZrG4YTHIVTNuhmOeYax39tdNXRq5v6mBDHZNpGn28Y7EyKRX
+         aRBNrm8DSDAVFomK/TL2NWG1+pr9RAbEaSqYOhZR4Rd9DTjxYyjazivhOCgG4HmtW9Lw
+         BDqAyBqdOmGqugsnBNaERpR8FLfjs52p9bYoldrjJna897ZmjYHc/kNBymrmDZ6hlKnX
+         BhiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=YBcbbBdBsXzIJsq6MYDhsbyIERVXEUEH4NjWg08VOCU=;
-        b=EOQv9ZNB9D4B3Y2UrxtYB0H/XZfj03fANHejjlUPbL+sqjWsjqBdalCecDNH7ZWLSZ
-         eC7pqJ+Bb3brdHjStsEoEWV3BwwH7ZHYRUSnphx5UY3sELVoQYr5Q/7pq1iK7lRsAaKb
-         VSWzcaOnkn6F/oA9LMYi9+rWQQoeTn+i7gh9usPJUs69FV+OnTS8pvzKT/MS4cY42Mmx
-         4+feYPtT0H2+vAXgHpl2RmolJKarx/i1mG4ARtGCpEvZxgPXL3YZ9Wu6quT3WTuOnKUy
-         WJnVKFiXz4+nEEup0hpJzuldoqTFQigStsvbD1rKe66xmgwCyAdvbuOZvidJUMahiVlZ
-         A8Qg==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature:arc-authentication-results;
+        bh=9xu0r96W9mHJK3UfDuIfrP0wjJRjqm20zu9uzdaGhN0=;
+        b=LmgnsNCPw0i6U9L5VK/E7PDuNy+t8ya9O6XaNlQTumYiephIv7Qmmj9POP2taQjVt5
+         O2bW7/JeksUSmXLhXCDzOMGOMYFd8+W+m4jGtT/aRTf9WGoH+BqMYSjvnQs4zUiULS6n
+         jk/MXpPzse55GiCMbC+7JyKADUiiADP5f3gzQ+JZqASVlzVa7+ZD+nCy1TnWXj5qLp9h
+         L7KfdrtyCoIS6BXVta4cZS0bpjgOMwpTSm1vKGonFEMuc3qWW6j41Qb2f35+XEh9bpXW
+         VzD5ST7EgTvRS5hLTbnNOjpCeQBZMML20EclfWuUFaiSZt7CawsK8cvO7BYs/HneKDqQ
+         A69A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id a72si232664wme.1.2018.02.22.00.04.48
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Sq0cTyRp;
+       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:400c:c09::233 as permitted sender) smtp.mailfrom=dafna3@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <dafna3@gmail.com>
+Received: from mail-wm0-x233.google.com (mail-wm0-x233.google.com. [2a00:1450:400c:c09::233])
+        by gmr-mx.google.com with ESMTPS id f137si43005wme.0.2018.02.21.23.10.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 22 Feb 2018 00:04:48 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Wed, 21 Feb 2018 23:10:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:400c:c09::233 as permitted sender) client-ip=2a00:1450:400c:c09::233;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.47,377,1515452400"; 
-   d="scan'208";a="314786438"
-Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 22 Feb 2018 09:04:48 +0100
-Date: Thu, 22 Feb 2018 09:04:47 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Dafna Hirschfeld <dafna3@gmail.com>
-cc: aditya.shankar@microchip.com, ganesh.krishna@microchip.com, 
-    gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: wilc1000: remove 'if' on
- field address
-In-Reply-To: <20180222071009.GA4082@gmail.com>
-Message-ID: <alpine.DEB.2.20.1802220904230.2281@hadrien>
-References: <20180222071009.GA4082@gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Sq0cTyRp;
+       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:400c:c09::233 as permitted sender) smtp.mailfrom=dafna3@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x233.google.com with SMTP id t82so1620275wmt.5
+        for <outreachy-kernel@googlegroups.com>; Wed, 21 Feb 2018 23:10:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=9xu0r96W9mHJK3UfDuIfrP0wjJRjqm20zu9uzdaGhN0=;
+        b=Sq0cTyRpFMLP6dWPDS14kHed3VT3AQlAU6ECWDhMOCyYvlARvhjLzNF98wlIOZFsla
+         skejlQQEzUNVtDh9qxY+aBrxGDzxhbRxHrq84In51ASNjg8po4mJctdbmiW98A8oreeN
+         QV3RXHejVF0CAybfYdZdSqWXa0OVp5zPRMKCOkYmomuCXWwBhq0Qvy9S1zBDJTqhxE/v
+         Xr8fUrmSrL/Aa2J2iNymZo7ipXBTt9X0el5zK14PXBuxwUp2VfuKAalZRDmgR/z/jxkT
+         4ec49GSUGo3fYPLCf4UcZlCsc/jsHtok39VXFrfo2XjE1zFwZjws+TnlTTj9wmW4Rrjv
+         HigQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=9xu0r96W9mHJK3UfDuIfrP0wjJRjqm20zu9uzdaGhN0=;
+        b=idFSx/YEUkoz3mNvVwFu1CXm5YoiBJM4FXFx9KkDpCpp5sPK7Nnvmr1fYzAKDFAfTX
+         uOIaLBVv8rJYaEU7E6bcnHEBI4XvXW3FncxIhyz36arT6F5Hr8E1arU35hoQ8jyGB3PF
+         5Qb/f7AWXqCYCVlzzyZwjBQos8tZ3iroC1CJHTHlJ0yyZTHr/qbvK0UuxasPpfsvOUK9
+         GrEG4Hl1yiyTbBh8G8qx6reFQS358zNSeFaGO2wYm0bPSB8KMAAzBXXvU0xHtzc9rPhJ
+         C7YG3MNNjUo5tHKEWlAaNWfP4gUAnjnoVVqXZ9pCG/mScwq7zbcF+fFfj0gCZdElIAKK
+         caRA==
+X-Gm-Message-State: APf1xPBFtz9amrkAQTGYQMGp9sobOgIHzXtfxKYL/wOMfZU8u1gRUz9o
+	nyJ4zBhyBRljSIX8ydbTMJXNoA==
+X-Received: by 10.28.97.139 with SMTP id v133mr4130309wmb.9.1519283416456;
+        Wed, 21 Feb 2018 23:10:16 -0800 (PST)
+Return-Path: <dafna3@gmail.com>
+Received: from gmail.com ([87.71.142.168])
+        by smtp.gmail.com with ESMTPSA id s18sm4218822wrg.3.2018.02.21.23.10.15
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 21 Feb 2018 23:10:15 -0800 (PST)
+Date: Thu, 22 Feb 2018 09:10:12 +0200
+From: Dafna Hirschfeld <dafna3@gmail.com>
+To: aditya.shankar@microchip.com, ganesh.krishna@microchip.com,
+	gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: wilc1000: remove 'if' on field address
+Message-ID: <20180222071009.GA4082@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
+Remove 'if' statements testing struct's field address.
+Since such statements always return true, they are redundant.
 
+Signed-off-by: Dafna Hirschfeld <dafna3@gmail.com>
+---
+ drivers/staging/wilc1000/linux_wlan.c | 13 ++++---------
+ 1 file changed, 4 insertions(+), 9 deletions(-)
 
-On Thu, 22 Feb 2018, Dafna Hirschfeld wrote:
+diff --git a/drivers/staging/wilc1000/linux_wlan.c b/drivers/staging/wilc1000/linux_wlan.c
+index d9725ef..cf746f2 100644
+--- a/drivers/staging/wilc1000/linux_wlan.c
++++ b/drivers/staging/wilc1000/linux_wlan.c
+@@ -628,8 +628,7 @@ void wilc1000_wlan_deinit(struct net_device *dev)
+ 			wl->hif_func->disable_interrupt(wl);
+ 			mutex_unlock(&wl->hif_cs);
+ 		}
+-		if (&wl->txq_event)
+-			complete(&wl->txq_event);
++		complete(&wl->txq_event);
+ 
+ 		wlan_deinitialize_threads(dev);
+ 		deinit_irq(dev);
+@@ -677,11 +676,8 @@ static int wlan_deinit_locks(struct net_device *dev)
+ 	vif = netdev_priv(dev);
+ 	wilc = vif->wilc;
+ 
+-	if (&wilc->hif_cs)
+-		mutex_destroy(&wilc->hif_cs);
+-
+-	if (&wilc->rxq_cs)
+-		mutex_destroy(&wilc->rxq_cs);
++	mutex_destroy(&wilc->hif_cs);
++	mutex_destroy(&wilc->rxq_cs);
+ 
+ 	return 0;
+ }
+@@ -716,8 +712,7 @@ static void wlan_deinitialize_threads(struct net_device *dev)
+ 
+ 	wl->close = 1;
+ 
+-	if (&wl->txq_event)
+-		complete(&wl->txq_event);
++	complete(&wl->txq_event);
+ 
+ 	if (wl->txq_thread) {
+ 		kthread_stop(wl->txq_thread);
+-- 
+2.7.4
 
-> Remove 'if' statements testing struct's field address.
-> Since such statements always return true, they are redundant.
->
-> Signed-off-by: Dafna Hirschfeld <dafna3@gmail.com>
-
-Acked-by: Julia Lawall <julia.lawall@lip6.fr>
-
-Good catch :)
-
-> ---
->  drivers/staging/wilc1000/linux_wlan.c | 13 ++++---------
->  1 file changed, 4 insertions(+), 9 deletions(-)
->
-> diff --git a/drivers/staging/wilc1000/linux_wlan.c b/drivers/staging/wilc1000/linux_wlan.c
-> index d9725ef..cf746f2 100644
-> --- a/drivers/staging/wilc1000/linux_wlan.c
-> +++ b/drivers/staging/wilc1000/linux_wlan.c
-> @@ -628,8 +628,7 @@ void wilc1000_wlan_deinit(struct net_device *dev)
->  			wl->hif_func->disable_interrupt(wl);
->  			mutex_unlock(&wl->hif_cs);
->  		}
-> -		if (&wl->txq_event)
-> -			complete(&wl->txq_event);
-> +		complete(&wl->txq_event);
->
->  		wlan_deinitialize_threads(dev);
->  		deinit_irq(dev);
-> @@ -677,11 +676,8 @@ static int wlan_deinit_locks(struct net_device *dev)
->  	vif = netdev_priv(dev);
->  	wilc = vif->wilc;
->
-> -	if (&wilc->hif_cs)
-> -		mutex_destroy(&wilc->hif_cs);
-> -
-> -	if (&wilc->rxq_cs)
-> -		mutex_destroy(&wilc->rxq_cs);
-> +	mutex_destroy(&wilc->hif_cs);
-> +	mutex_destroy(&wilc->rxq_cs);
->
->  	return 0;
->  }
-> @@ -716,8 +712,7 @@ static void wlan_deinitialize_threads(struct net_device *dev)
->
->  	wl->close = 1;
->
-> -	if (&wl->txq_event)
-> -		complete(&wl->txq_event);
-> +	complete(&wl->txq_event);
->
->  	if (wl->txq_thread) {
->  		kthread_stop(wl->txq_thread);
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20180222071009.GA4082%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
