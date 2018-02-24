@@ -1,120 +1,130 @@
 X-GM-THRID: 6526266190940078080
-X-Received: by 10.46.67.147 with SMTP id z19mr375357lje.24.1519514835585;
-        Sat, 24 Feb 2018 15:27:15 -0800 (PST)
+X-Received: by 10.13.198.193 with SMTP id i184mr3515269ywd.187.1519514757509;
+        Sat, 24 Feb 2018 15:25:57 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.88.85 with SMTP id x21ls962619ljd.2.gmail; Sat, 24 Feb 2018
- 15:27:14 -0800 (PST)
-X-Google-Smtp-Source: AG47ELvpOhwYuow7CWUzEygbyp3gLziwfItVgX8PAGtX+M4ZrHYq4m1E4G6nOsaPIAqsceNRw5t6
-X-Received: by 10.46.17.17 with SMTP id f17mr380127lje.29.1519514834365;
-        Sat, 24 Feb 2018 15:27:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519514834; cv=none;
+Received: by 10.129.179.72 with SMTP id r69ls495113ywh.9.gmail; Sat, 24 Feb
+ 2018 15:25:56 -0800 (PST)
+X-Google-Smtp-Source: AH8x226bUiCRTnl00RoFVoOxfAqRH9pHiXf2lLAVEB1MSJUwh2dNHbv3NErmr0zN0hTFTPHkZ5rL
+X-Received: by 10.13.247.133 with SMTP id h127mr3273529ywf.113.1519514756076;
+        Sat, 24 Feb 2018 15:25:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519514756; cv=none;
         d=google.com; s=arc-20160816;
-        b=t7r0cea7afnfewtOJxytBWVJUB61q/tlFfCQ3IVYdRlG104wQoFOL0KdH3ZnCLgpcV
-         O9BrQUW7KwuviavIJNEZDw/tIgr/XPIuFB3GyNchZUfrp4jNDmsoYSq1A9VBchylIJ0R
-         mQ+4Em0pd4Bimcb3hL5PozEfTzZoL3kAIe1w24k/YEjHWClK9NgjYv732ryT8lNIZV4y
-         kEi1dFDaBDLFtbS9cc2brXqADivulVrtGgRmxAPsIwa2ydaoK0pjpSl8Xi7LpBpdM2xT
-         chGdXzv+sc1lrw665WmVrisY52XMLoPheibrts7VQ2X25BuoeVxLMKGavNoy3ETZPrWH
-         WXTg==
+        b=GKoe6DDxxUv2W9kmuw+26PONwbNJa46kjGCXfbxhBOMBWIEmEhS0+N6mu8oEXXEUlT
+         BmVdlb0cmq3jomlDrH/oklOyG47CdESfrKcJtC3C2Xv3NVtH5D3NcQyrEIDbDgXxf9wX
+         GK+VWDqhoMG/P3evF73ZPsSBt65p3s6aGFrwYxujATZPvRHgiVszWnU3C88yBFRy8n9j
+         BSIjxyQ4BZiw4RYYopnlhvaDzKm72vu5tVBFe0El4uOh3kTc38DTvb91I2wV9L8IWBWP
+         R8Dg8dE61nfrI71KM8VZUoR6I/5VNpiyhVvgQnm8kFokPClDR72Cb6LozI+S/XpeH5mw
+         j9jQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:organization:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:arc-authentication-results;
-        bh=fkW8sK6U9p8/l6Ssl+DfEnijutfAUELiyj6nbUJaQYE=;
-        b=iOJ59HReBctPzIyZMUGu3qfaYvmCSqtnumdw+WejGYFeHHeunJ4t7DVqUtwqkszm58
-         fVHwVR4UelkFfbEmkBcqPoJgcZlfrwfsDyLmwn+H4oYmmOPt97318xnlsVKp7QH1UjTZ
-         nO7BzXdkyG4qkkKMYkpzGGP2MekAM8JUgR4ocUI73kyqSHkiTPU6PDgC8YA3+n9PsYIm
-         i5bnTbOpqlihLWZLp7kV+J8JBQymGrs0U2H3xoXBcE0JV6uYetPXQvjW0KzS+1ze7q5j
-         +HFrljVtVAVJbq4AWJIRLVmKxpAs5hxfsLJUgESjlfK57RSr3LbPTKnPJOrbUeRbjRDy
-         ikEw==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=BKW8XqeIcQjF33GbIBBMhATb96LCgOHpXjgfXDB+HAY=;
+        b=e7sM3I3qLib4zRSjXXe8wimoDwG2lUrfvA0NnUmXHGPyZEE8qMuEO6liaPCWnLZqYo
+         52BEqVxbO2414Z67HpEpyQiEx0ToTCS9zaXgxEXNi3yUe15ofiwocE3Ej1Cajc21RBZq
+         fSI41ODslGH9rI6PR3uxtfLDKaBPKqLw+yQ5syfDV7A+myyYBfFTIh3BG5d3D7lglgqH
+         9VvoT+51TxEal1rdnh8fLtFEvfQOBktAQJR9eDpx/dNt0q8r5FWHWyjK58PiU0CgdV2h
+         5N5uutvwfpFj1hF86IF6I0Jm/JrO1+6lVjDHNdt23LUB33F7dSu5JPrQh37q8B9sriLf
+         HcJQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 2a0c:e300::1 is neither permitted nor denied by domain of samuel.thibault@ens-lyon.org) smtp.mailfrom=samuel.thibault@ens-lyon.org
-Return-Path: <samuel.thibault@ens-lyon.org>
-Received: from hera.aquilenet.fr (hera.aquilenet.fr. [2a0c:e300::1])
-        by gmr-mx.google.com with ESMTPS id u16si238787lfc.3.2018.02.24.15.27.13
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dXFYFv2h;
+       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::244 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <santhameena13@gmail.com>
+Received: from mail-pl0-x244.google.com (mail-pl0-x244.google.com. [2607:f8b0:400e:c01::244])
+        by gmr-mx.google.com with ESMTPS id u40si12719ywh.5.2018.02.24.15.25.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Feb 2018 15:27:13 -0800 (PST)
-Received-SPF: neutral (google.com: 2a0c:e300::1 is neither permitted nor denied by domain of samuel.thibault@ens-lyon.org) client-ip=2a0c:e300::1;
+        Sat, 24 Feb 2018 15:25:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::244 as permitted sender) client-ip=2607:f8b0:400e:c01::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 2a0c:e300::1 is neither permitted nor denied by domain of samuel.thibault@ens-lyon.org) smtp.mailfrom=samuel.thibault@ens-lyon.org
-Received: from localhost (localhost [127.0.0.1])
-	by hera.aquilenet.fr (Postfix) with ESMTP id B881A10C92;
-	Sun, 25 Feb 2018 00:27:12 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at aquilenet.fr
-Received: from hera.aquilenet.fr ([127.0.0.1])
-	by localhost (hera.aquilenet.fr [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nDGPG9qPFeaC; Sun, 25 Feb 2018 00:26:49 +0100 (CET)
-Received: from var.youpi.perso.aquilenet.fr (dhcp-97-217.dsi-ext.ens-lyon.fr [140.77.97.217])
-	by hera.aquilenet.fr (Postfix) with ESMTPSA id 3778210800;
-	Sun, 25 Feb 2018 00:26:49 +0100 (CET)
-Received: from samy by var.youpi.perso.aquilenet.fr with local (Exim 4.90_1)
-	(envelope-from <samuel.thibault@ens-lyon.org>)
-	id 1epjDM-0003Dq-V2; Sun, 25 Feb 2018 00:26:48 +0100
-Date: Sun, 25 Feb 2018 00:26:48 +0100
-From: Samuel Thibault <samuel.thibault@ens-lyon.org>
-To: Santha Meena Ramamoorthy <santhameena13@gmail.com>
-Cc: gregkh@linuxfoundation.org, w.d.hubbs@gmail.com, chris@the-brannons.com,
-	kirk@reisers.ca, outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] staging: speakup: add braces around else statement
-Message-ID: <20180224232648.x75wtvvpja77n3d5@var.youpi.perso.aquilenet.fr>
-References: <1519514749-12702-1-git-send-email-santhameena13@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <1519514749-12702-1-git-send-email-santhameena13@gmail.com>
-Organization: I am not organized
-User-Agent: NeoMutt/20170113 (1.7.2)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dXFYFv2h;
+       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::244 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl0-x244.google.com with SMTP id c11-v6so3662979plo.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 24 Feb 2018 15:25:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=BKW8XqeIcQjF33GbIBBMhATb96LCgOHpXjgfXDB+HAY=;
+        b=dXFYFv2h+goN27aT4wZbmuF2FQR4aSy26K2IqOOFuyOQQ2l6xczkBdf3ltoV+ISOeq
+         HjNZPN0TiyJ5e5UU5I4PL5AI4usbXxzlMRWkEHrE4Also+D6cDV3vam/ta/cvq+2QF8T
+         R5Xd8NLYT+XGfVgGgHIwxLQdZkPVsnMDRL2mbd+H1ptOfheWiy1R5rR58kDdgi7TKht/
+         rz9z6PmLVXrJ4JPlug/7jAKVNxsQRxEbURIuWJq6OYraROxSc3k2ASMZqlErtWVVWQVu
+         epdbfxmkwGqekjBTAoG5gAhxAvnUU1ST9+N3JqfeRyOegqW52AOsD6nRz9kMASWbj4Gp
+         NumQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=BKW8XqeIcQjF33GbIBBMhATb96LCgOHpXjgfXDB+HAY=;
+        b=hDiy5yKj3QeQ5d9ctXBg3KL4q4pfT3flzmYtQ6ho0XcOHPKjiZtW+7PXYvOZ2iS8tR
+         FA/5GrpiTtvwu4vQv5VItnNeDsTrLp1OO0CCi40vaxDh0/Hov+B1PVF5GegWXKpZxWx3
+         0yo3nJbKubjMNn7Hbk43L+dGFaHjpLwUvNcISGLxuI8SRhFwCZ69yQWi7tMovgUCD0Ei
+         h8u6tjKRLkiJPm13/+O61qNPE59Tkuu3fUlMhDwtoSZ062K6beeh82V+/zcb1M9lt9qN
+         /TG9GxxyjJXwcDi670dLxH+3JQTA1uljXSH1TYH9eC7wkugMVN9e6sxZG21CBcEGAeAb
+         j24Q==
+X-Gm-Message-State: APf1xPCEk/IsM144t9V8Pt5EMhCSxZnJV8mcGI66oAbt2swN/th/kHB4
+	4G+D0EJVadajjauyiTRq2wIFL8tz
+X-Received: by 2002:a17:902:8f96:: with SMTP id z22-v6mr6020508plo.330.1519514755512;
+        Sat, 24 Feb 2018 15:25:55 -0800 (PST)
+Return-Path: <santhameena13@gmail.com>
+Received: from localhost.localdomain (ResNet-23-0.resnet.ucsb.edu. [169.231.23.0])
+        by smtp.gmail.com with ESMTPSA id b5sm12068057pfc.12.2018.02.24.15.25.54
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 24 Feb 2018 15:25:54 -0800 (PST)
+From: Santha Meena Ramamoorthy <santhameena13@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: w.d.hubbs@gmail.com,
+	chris@the-brannons.com,
+	kirk@reisers.ca,
+	samuel.thibault@ens-lyon.org,
+	outreachy-kernel@googlegroups.com,
+	Santha Meena Ramamoorthy <santhameena13@gmail.com>
+Subject: [PATCH] staging: speakup: add braces around else statement
+Date: Sat, 24 Feb 2018 15:25:49 -0800
+Message-Id: <1519514749-12702-1-git-send-email-santhameena13@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-Santha Meena Ramamoorthy, on sam. 24 févr. 2018 15:25:49 -0800, wrote:
-> Add braces {} around else statement to conform to the Linux kernel
-> coding style. Issue found using checkpatch.
-> 
-> Signed-off-by: Santha Meena Ramamoorthy <santhameena13@gmail.com>
+Add braces {} around else statement to conform to the Linux kernel
+coding style. Issue found using checkpatch.
 
-Acked-by: Samuel Thibault <samuel.thibault@ens-lyon.org>
+Signed-off-by: Santha Meena Ramamoorthy <santhameena13@gmail.com>
+---
+ drivers/staging/speakup/main.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-> ---
->  drivers/staging/speakup/main.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/speakup/main.c b/drivers/staging/speakup/main.c
-> index cf12590..d7cdec3 100644
-> --- a/drivers/staging/speakup/main.c
-> +++ b/drivers/staging/speakup/main.c
-> @@ -449,8 +449,9 @@ static void speak_char(u16 ch)
->  		if (*cp == '^') {
->  			cp++;
->  			synth_printf(" %s%s ", spk_msg_get(MSG_CTRL), cp);
-> -		} else
-> +		} else {
->  			synth_printf(" %s ", cp);
-> +		}
->  	}
->  }
->  
-> @@ -561,7 +562,7 @@ static u_long get_word(struct vc_data *vc)
->  		   get_char(vc, (u_short *)&tmp_pos + 1, &temp) > SPACE) {
->  		tmp_pos += 2;
->  		tmpx++;
-> -	} else
-> +	} else {
->  		while (tmpx > 0) {
->  			ch = get_char(vc, (u_short *)tmp_pos - 1, &temp);
->  			if ((ch == SPACE || ch == 0 ||
-> @@ -571,6 +572,7 @@ static u_long get_word(struct vc_data *vc)
->  			tmp_pos -= 2;
->  			tmpx--;
->  		}
-> +	}
->  	attr_ch = get_char(vc, (u_short *)tmp_pos, &spk_attr);
->  	buf[cnt++] = attr_ch;
->  	while (tmpx < vc->vc_cols - 1) {
-> -- 
-> 2.7.4
-> 
-
+diff --git a/drivers/staging/speakup/main.c b/drivers/staging/speakup/main.c
+index cf12590..d7cdec3 100644
+--- a/drivers/staging/speakup/main.c
++++ b/drivers/staging/speakup/main.c
+@@ -449,8 +449,9 @@ static void speak_char(u16 ch)
+ 		if (*cp == '^') {
+ 			cp++;
+ 			synth_printf(" %s%s ", spk_msg_get(MSG_CTRL), cp);
+-		} else
++		} else {
+ 			synth_printf(" %s ", cp);
++		}
+ 	}
+ }
+ 
+@@ -561,7 +562,7 @@ static u_long get_word(struct vc_data *vc)
+ 		   get_char(vc, (u_short *)&tmp_pos + 1, &temp) > SPACE) {
+ 		tmp_pos += 2;
+ 		tmpx++;
+-	} else
++	} else {
+ 		while (tmpx > 0) {
+ 			ch = get_char(vc, (u_short *)tmp_pos - 1, &temp);
+ 			if ((ch == SPACE || ch == 0 ||
+@@ -571,6 +572,7 @@ static u_long get_word(struct vc_data *vc)
+ 			tmp_pos -= 2;
+ 			tmpx--;
+ 		}
++	}
+ 	attr_ch = get_char(vc, (u_short *)tmp_pos, &spk_attr);
+ 	buf[cnt++] = attr_ch;
+ 	while (tmpx < vc->vc_cols - 1) {
 -- 
-Samuel
-<L> pour moi le seul qui est autorisé à fasciser, c moi :-)
+2.7.4
+
 
