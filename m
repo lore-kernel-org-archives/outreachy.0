@@ -1,117 +1,84 @@
-X-GM-THRID: 6664664784241164288
-X-Received: by 2002:a1c:4087:: with SMTP id n129mr87415wma.13.1551738191239;
-        Mon, 04 Mar 2019 14:23:11 -0800 (PST)
+X-GM-THRID: 6523882080322977792
+X-Gmail-Labels: Topic type: DISCUSSION
+X-Received: by 10.46.5.200 with SMTP id 191mr933965ljf.25.1519738258671;
+        Tue, 27 Feb 2018 05:30:58 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:81cb:: with SMTP id 69ls3728379wra.10.gmail; Mon, 04 Mar
- 2019 14:23:10 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzwz2JPstcqcG7fXXrw6kLOgHUCKdstaruSTuMwGUYQjcPOT8FJz7tPdGuC1nHPmgODaCM/
-X-Received: by 2002:adf:e412:: with SMTP id g18mr1118269wrm.9.1551738190536;
-        Mon, 04 Mar 2019 14:23:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551738190; cv=none;
+Received: by 10.46.129.207 with SMTP id s15ls152147ljg.10.gmail; Tue, 27 Feb
+ 2018 05:30:57 -0800 (PST)
+X-Google-Smtp-Source: AG47ELvqqs2i5kZandDoD8/ThjrjQ0kFTkfbsNugogLO1BhKy+5kCLGpTvhvv+5Q+gZe1yd1Nwdt
+X-Received: by 10.46.145.198 with SMTP id u6mr691700ljg.14.1519738257074;
+        Tue, 27 Feb 2018 05:30:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519738257; cv=none;
         d=google.com; s=arc-20160816;
-        b=velN/RqpJNMHb3BorLrXM+RwIvRmPiVnyb1Ar/wJ6NaHxfCsqPBKGG1XzsUZ3IuVll
-         OTCH7+6QqWABdAfXtVvDelD1Nf+oYGi9L+YVsHoSBa4/Gp1ZDrl1ZExhSXKxnI37mZCl
-         q8G4Jk+ETFOxSdHqV86op5qqPsw9cjT9qUWxSJoJrfk2Qxiqf9cc4STgc9ZorbUtSTzb
-         QzuVzbQK+nquLYIBUgM2JsqCwkMi9VrSlA+WFQtoOgY27PAuQCvfryOyAFPkEkfopYMW
-         dreV7wBkcTv1uH1UOrXvv4EH00R6pp9bpJX+inH/UO+vkUt2D7WIQA0h8WZoFTDjTjk2
-         gWyw==
+        b=tFnOLDD4Pom/C29tIAyTp5r3bdwj7PApwkGT0w3Yd4Sffj0pQ4A3w9Ishz21Pna1wk
+         /OWydroqJJVUijwQcqbuquIPB1O0QMCyq98is41uQ490XN8AlcQ9KPhh49CIs/E/Qfyf
+         0u1gxGSwntJM2XlwaOftmAs0Luj6Mgo/1YWGWSEE3P+So5ZeZrarcnatwCifzutSBj8d
+         hDxboSmGnqpfw3TDgdueglgDyMnJKZAEz2e+ggcMV2wDck/o8aG1D157qt7bOP98uKEx
+         fDP0GrC7VISKC4FXsMZoi7F8hr36jVay4GeKU+51Lwb1JpZuydyNOiRrx/24Sa/l0vFE
+         A4dA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=/9IQ6AfjERd1HyuKdyr+1GlSNOVVhWLlxxVwjQJ9Q4Q=;
-        b=AtC04A5WE8Go0sBZXgOxOmS89uDELW/BC9X85C3ZZvIFM5XvQeSkuru8vOvp/0+WAm
-         uwSVqJ/ZbD3T9sqWRhQYfgO2ePMq7VNADP7DyhIq80x/PSEybq3ONRTAxXENOujxL/xC
-         p9UKSn5KzSiPd+lFdPQIXe8AF9AZdhJX2LI7wpHP7LgbxgEj21Kydp8XNuoVCYY7uzr3
-         RRQ8d/mUzYQ3jXZyAa4IJt2AGnXReOlipTlo/YGcR4HVmvuobck7koF8K4v9lKEZ1Iwq
-         7S+BWOED4T5V+2xAM/k9p4+CD3xtqHW4MZcdQE9lSa6wt60eDtCtjgNCfZU4AKyvvt+d
-         1Nkw==
+        h=references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=IBnMQDOmXBvlvah0AV2AlOU3yNAOMycCtdK9BNESP3Q=;
+        b=FRfhF7TkY+L1hnXR3Cn+f1OdlNX4ANgtLu24fDv4ezkgYvcijxdFNH9HyNZ2ztvPKw
+         g91EbwB464L6ZnEzQa0UjCF7ErDYvzxAERPBebE2o5Quj7QoSTRWLITst4Wd1vfd/vN3
+         PsoSxfZks05X+/QcRb/5mhkokoUcXVzeQKJB+EKxK1P/CS81LsORtNTDatY11MzByOLM
+         xDT4+e9CRMcvgf+tW0l7gYrrpFTkK9KScQ7WfEjtiroEYojQUga2y8q7/2pobWQZKTAt
+         ztcbvthRaQXav/jQMUcmxby9acn1igBXJvNu0a0tfDikc4IbHm+zzQ5s3K+gik4Iwtnt
+         Sbcg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=k3PEIEPG;
-       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <daniela.mormocea@gmail.com>
-Received: from mail-wr1-x442.google.com (mail-wr1-x442.google.com. [2a00:1450:4864:20::442])
-        by gmr-mx.google.com with ESMTPS id b130si290951wmc.0.2019.03.04.14.23.10
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=X+EDmQUA;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2a00:1450:400c:c09::22b as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
+Received: from mail-wm0-x22b.google.com (mail-wm0-x22b.google.com. [2a00:1450:400c:c09::22b])
+        by gmr-mx.google.com with ESMTPS id v6si168748ljc.0.2018.02.27.05.30.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 04 Mar 2019 14:23:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) client-ip=2a00:1450:4864:20::442;
+        Tue, 27 Feb 2018 05:30:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2a00:1450:400c:c09::22b as permitted sender) client-ip=2a00:1450:400c:c09::22b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=k3PEIEPG;
-       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x442.google.com with SMTP id g12so7290942wrm.5
-        for <outreachy-kernel@googlegroups.com>; Mon, 04 Mar 2019 14:23:10 -0800 (PST)
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=X+EDmQUA;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2a00:1450:400c:c09::22b as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Received: by mail-wm0-x22b.google.com with SMTP id z9so23674345wmb.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 27 Feb 2018 05:30:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=/9IQ6AfjERd1HyuKdyr+1GlSNOVVhWLlxxVwjQJ9Q4Q=;
-        b=k3PEIEPGreEmKkLOaGWjrX8O3QaBpLpNHD+1VAEBFuPYXNmYb/rpjilIeWlxqbcHk1
-         brCQ5PbB5Djp3jpEMzOxqaWVn+CYOGPofbjMnDhTLFvgzdB0x5de8+KsrHhIshQNa9Rg
-         VXmTZ7rFH9BJP4Tq3QbqbqkohgBiYtutXbLDiyMWFEiq9iFJbQGXV4dSeaqdqQ89Zm1E
-         E+mh+u6G4Xm8IBBMNxuZCWO9VJKRn44i82khet300YCkRxk5Fkkqxw3C7doYJov2Bsgi
-         9igsHZBcb/tWdQoTBHEul/YmwmPdBeRO3XzMC0eE7AkN4fx3YnCSb7SYshTQ3COtBi91
-         RgFA==
+        d=ashoka.edu.in; s=google;
+        h=from:to:subject:date:message-id:in-reply-to:references;
+        bh=IBnMQDOmXBvlvah0AV2AlOU3yNAOMycCtdK9BNESP3Q=;
+        b=X+EDmQUAP5NFE9SqVwIk49kel6vywuFeHUPmHWvFgINg6jxE9z1X36APzcz1mUyo7D
+         md9Ctj7Yl7H9Kc/k5n+0jbFDVkTAcEbE8YDJUNJ6d9rfD057NSy0KsqrLy4Xi4y7h6eA
+         SJNNnMY1yUM5oSHnzL9hhUxgYbazUg6RtxB9E=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=/9IQ6AfjERd1HyuKdyr+1GlSNOVVhWLlxxVwjQJ9Q4Q=;
-        b=kb33fhFGSzQ/1LdDpPMrjGKTWjkOpbjKroIAdgSYmbr6EKvDdzsEGM/m80xwyP1IxF
-         uFZfnCH1DzukaBg24anItQIEWqKrblYrltIxV4bl53fEB7acSPJoPhAhIBrRGD0092LM
-         zPy8hsCQKhNCq+j7qcqNdCctXjGt3xTDckfpdcN2yGJapyHSWEvqIi8d9FrjCOSUCcoE
-         2d7RtpfXaMssB6HVclZMXzJKY2+vpNqNHw9WvxsjtiZ1hvXlIYENcycOszvUQUA1cxKO
-         ufxpQZ+H9Oe4uqcJX7RgDL6PYthCNy2N5upZk1ZdqHh8O+bYbX7kFRpQgR5ZwF7pXAoI
-         oQ1w==
-X-Gm-Message-State: APjAAAV4t2Ov1niMZ2PTMJGXZA3q6eZuumGqwul1LPUTRrk8Qehoil3c
-	AqbJPOusJYzQnhG9EYL1MSQhnjUh
-X-Received: by 2002:a5d:558c:: with SMTP id i12mr13832356wrv.19.1551738189930;
-        Mon, 04 Mar 2019 14:23:09 -0800 (PST)
-Return-Path: <daniela.mormocea@gmail.com>
-Received: from pthm ([2a02:2f0a:b600:4700:9c19:34c6:5e3b:e162])
-        by smtp.gmail.com with ESMTPSA id v6sm16271595wme.24.2019.03.04.14.23.09
+        h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+         :references;
+        bh=IBnMQDOmXBvlvah0AV2AlOU3yNAOMycCtdK9BNESP3Q=;
+        b=W0FVl7CtMwDYFw5ZGMoX6sFMOB6JnA0MBsmvoj3qGPCo4T3S6GF8MFOCN/G0YHx51s
+         FdIZl8zUdV5x4+CvcqkRRbpwnmje/5X8n+ucr0cgZEnGy2z4NURy1W/pLK8lYTMqEu35
+         NsJSyjT7WRQ0nC8d5RMKOjkPCMENFJEVzKwAHjpMQ7nTaETzBSiPac1uwU5ef59mCmpQ
+         waL/pfEbbV7jEo+Sh6TLbS08E+qORm9Awkc8q51RbfdsFrCBU7DeHCFK4uRMlgaooWUW
+         H3FU2BVDW0oF+sCH/52fjjMY+dVWPCMFy9KQPHIRCvt+D2w0laf3GNXBTI/9LJm50953
+         IQJA==
+X-Gm-Message-State: APf1xPCUtRU5uHQU7rwgSXIPF65pOyDGK4EduD+ojJtFTIjxbGqdxrAN
+	kkqKJFnc880vq8bv549px+8oQhgO
+X-Received: by 10.80.200.203 with SMTP id k11mr18075890edh.161.1519738255913;
+        Tue, 27 Feb 2018 05:30:55 -0800 (PST)
+Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
+Received: from ashoka-ThinkCentre-E73z.internal.ashoka.edu.in ([210.212.93.46])
+        by smtp.gmail.com with ESMTPSA id s7sm9319284edk.61.2018.02.27.05.30.53
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 04 Mar 2019 14:23:09 -0800 (PST)
-Date: Tue, 5 Mar 2019 00:23:08 +0200
-From: Daniela Mormocea <daniela.mormocea@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 27 Feb 2018 05:30:55 -0800 (PST)
+From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: fbtft: Fix line over 80 characters
-Message-ID: <20190304222308.GA9982@pthm>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Subject: Re: Re: [SETUP] Difficulty with dmesg 
+Date: Tue, 27 Feb 2018 19:00:42 +0530
+Message-Id: <1519738242-4970-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1519401525.2617.295.camel@decadent.org.uk>
+References: <1519401525.2617.295.camel@decadent.org.uk>
 
-Fix line with over 80 characters to get rid of the warning
-given by checkpatch
-
-Signed-off-by: Daniela Mormocea <daniela.mormocea@gmail.com>
----
-Changes in v2:
--Correct a mistake I made in the previous patch regarding
-a multiline string
-
- drivers/staging/fbtft/flexfb.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/staging/fbtft/flexfb.c b/drivers/staging/fbtft/flexfb.c
-index c5fa591..b91b459 100644
---- a/drivers/staging/fbtft/flexfb.c
-+++ b/drivers/staging/fbtft/flexfb.c
-@@ -718,7 +718,9 @@ static int flexfb_probe_common(struct spi_device *sdev,
- 			par->fbtftops.write_vmem = fbtft_write_vmem16_bus16;
- 			break;
- 		default:
--			dev_err(dev, "argument 'buswidth': %d is not supported with parallel.\n", buswidth);
-+			dev_err(dev,
-+				"argument 'buswidth': %d is not supported with parallel.\n",
-+				buswidth);
- 			return -EINVAL;
- 		}
- 	}
--- 
-2.7.4
-
+I have now switched to native Linux. I apologise for the trouble.
+Thanking you,
+Nishka Dasgupta
 
