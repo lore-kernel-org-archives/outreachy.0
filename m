@@ -1,108 +1,68 @@
 X-GM-THRID: 6527234917858803712
-X-Received: by 10.107.15.159 with SMTP id 31mr11325127iop.14.1519744934612;
-        Tue, 27 Feb 2018 07:22:14 -0800 (PST)
+X-Received: by 10.28.227.5 with SMTP id a5mr107294wmh.7.1519740763470;
+        Tue, 27 Feb 2018 06:12:43 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.123.145 with SMTP id q139ls370248itc.8.canary-gmail; Tue,
- 27 Feb 2018 07:22:13 -0800 (PST)
-X-Google-Smtp-Source: AH8x227DykcAmfVprI+eeJp/GGSDZ1JvRYITgd16ODpj9I4ldgBTvsXtSt7zU5l21lLG6QMvCicr
-X-Received: by 10.36.123.129 with SMTP id q123mr11619375itc.17.1519744933549;
-        Tue, 27 Feb 2018 07:22:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519744933; cv=none;
+Received: by 10.28.91.212 with SMTP id p203ls343772wmb.1.gmail; Tue, 27 Feb
+ 2018 06:12:41 -0800 (PST)
+X-Google-Smtp-Source: AG47ELvcZiw6/vqlBMxwyJ2zEkKU0qOdjjWAbrTc0Kl9V2Qn+Lw//uzC7OTc8/gyPD7UFCE88QhW
+X-Received: by 10.28.153.194 with SMTP id b185mr1506710wme.9.1519740761541;
+        Tue, 27 Feb 2018 06:12:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519740761; cv=none;
         d=google.com; s=arc-20160816;
-        b=j2UFc0Yy+AAJs2A6H6Wlcf7e7YR0G+HK1Mtl/vplmu7gwTc4PJl5SmWEHnjkEvoSqr
-         c5hRCb2Vv8ZxiPvulXDaLfujkgB+RmsrLLpAzLRVlfDGzy0I7vneiCXNFx6rz2KQ6ghK
-         H0SZpDK0IE+1xOOlSfcZQYY5XMea/zHAGq5YWdo8ua6HzIjuWjS6Zrz7/PfGtJSJK6IX
-         k8YM9edeA83FETVHE2RD9y4GnZ9PpcdomwwfaIbIFcooATEcX/usO31MEtStWkRqKBqr
-         pxIGKbTYTPkeQNSKszlrXutpRsNupMpBKfjV/ao4dGtiI/YJWf2BJO1saWBLzg+6yJ1+
-         tm/g==
+        b=M89PRkwH6wkNC9QHnPAhkPH82rQsVn2bUKm0GHTmwEo5UuMD956opFBE63s4BvowfQ
+         qD/vu3/9FXsYDzUzZ/trCfc3JFbhc5RxDNC7lBOr3+X2Ym6Ez1hDA0ALacVU3FZHOXCm
+         ftXUejEkxbghgi0+xW3rIYC8unMCS3a1tAxo/zp+6g2hrQRDdu8Cn5zuuBRfNqA4a7oT
+         zTaYyf8lOy4G0iZgeqnd5UjsH0hsYgpS4kVzHj72QoYnVuVRQ1oyVoQQpXiFAVIn2vue
+         DbU6Oj+zEZ3UJZEmKC7kJH0OlLgsRhcChN07UJXGzdolhPSGL4rsLUTf8PXYkL8cfxqz
+         Namg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=8yz4No3C3NfZoOSdgg3JTGVoXzlwRkdgri8bT8kUyeQ=;
-        b=E/j92/bwwLr/TEn1HCApk8t8U7ceQNHASJRxzNCkvza4nin6feu9lWliNdAEG/d2FW
-         +ijtc0oM7b+bFYzzdxxIjqEraTCPb6vWwxGd3UQh5Zr5cJe/4VGet0+i9xEN0OwXn4Fj
-         +MHpC31bslUF1fo6Piy3oR1nWB9LragvnRpENGh1J4FoebipeXrxvDo4M6Wi5E7h5/jr
-         Mo3BE7SbsbP3G6MRSIM0DUqJR2skTf5Cp7cBofgK8MzhUP3gMQJbmEY3U+5M+1ivxMZW
-         NHfbD1CzIM+49qeHDzVovglkowdM4POT2728xdipSkVGXIrpUHXxUV4g/bRrXn73Zgbk
-         GFQQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=/NUhP+6Zz6E1XIEfXa8/4BYQcSkZ31h8kTODeqM1q8E=;
+        b=gPm4QVfYdAKNh5FrxfJISN22psuj1Y0/cNYPFxZkwdgcZdoNj/ELulov1nswzTzUSU
+         ZXtSISR4g1QXt70PBpJCN50kizMNLwzk1WK8isXrVi2BUo6Wuw+JL3IOsFcoOOjczxF2
+         yjwnohGvQvZWZGHlIJDkGC0LpwWYsXdAOzlLpqkSGsDfJSc0MrY1VMCkmKjAJ+GGmNMZ
+         4BYX0CWVCJnXh21paOmv5u46uflKKMc1LgF36GrsX0KBzQZ0T+k8zuXgotdODDLDYWDR
+         z2FB4FzlNbwQOf96Rd0J7qA03pIK5EfmmPmycdKHXz0EEaTrqcDXK2wCO/zHduzAf63o
+         Hegg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NFZxs+P7;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:4001:c0b::231 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-it0-x231.google.com (mail-it0-x231.google.com. [2607:f8b0:4001:c0b::231])
-        by gmr-mx.google.com with ESMTPS id o6si926453ith.3.2018.02.27.07.22.13
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id i44si429346wri.1.2018.02.27.06.12.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Feb 2018 07:22:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:4001:c0b::231 as permitted sender) client-ip=2607:f8b0:4001:c0b::231;
+        Tue, 27 Feb 2018 06:12:41 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NFZxs+P7;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:4001:c0b::231 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-it0-x231.google.com with SMTP id a75so15512532itd.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 27 Feb 2018 07:22:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=8yz4No3C3NfZoOSdgg3JTGVoXzlwRkdgri8bT8kUyeQ=;
-        b=NFZxs+P7zLZr/X47gH4mI5kRDvk7NIesz5cXCkktWHHUhy2Lh8/Szr1bzNqnSxH5Zu
-         BAHkYpgQLmug6kWIGAqCYKFVkftTN78X8ubqJT4DIhdiNKxRLsfXCwpXs2ARVJVPYQUl
-         Hz0ZNgCRByB0c9t+wd7Q6DVH929XhZDErpJe2RzhTjA8GvLeTAXpgQtxVuiidtp2d4Mc
-         SJ1KCB7mRl2Er0AhF29UcYZYeKqWi7H/VwfE4fiVkkQEmD3nj6uefhtIKuXZxY3l2bBp
-         fSh+ER9OTC/5jT4CfezotZByC9qzebtpgZU8ZNeL7ZCuJG4sXAZLl8Q/b9rCb4OOC+JU
-         9uUw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=8yz4No3C3NfZoOSdgg3JTGVoXzlwRkdgri8bT8kUyeQ=;
-        b=JZb5PEBhZJwXL5B1Vaj6e5/JAHhscgR0KvxYfd4MTFAjs4Gq26ndKzHFDr5Ne/vsjo
-         m8n9cGglI+FjCX4oqphMvinlTV+iBPpi9ze97rdCd9HysTmbk8nK56K95HzL7ytlFb4L
-         8YvtK+pM9UO5UHcYCeRYfdVPNW7XjVy31coeHi0BhwPvvtj5r4MQf9M8aiqZGKuLZck8
-         u6sTG5ZZ8r3s77o7IWZ7WVH9pvY+WDJ7uUNtbsrp4Y6FOEQ7eT1QTT8w4PFlOdEFc5eW
-         ltLP9rILDXrCUZnVov02xIFhKA6Ld7uaAxvthe0LNRxaP0mMopDdd9pMmQuv+ukla+KD
-         QBdw==
-X-Gm-Message-State: APf1xPCxBoUiKhZ1V8kI972DTWKvuEymbwsKyYnfUojbrPRu/9P2QpTI
-	XvccA4Wp6ms0TYPTCfd5lF27dxArILjNmlv9IBfY6Q==
-X-Received: by 10.36.133.194 with SMTP id r185mr6028035itd.26.1519744932938;
- Tue, 27 Feb 2018 07:22:12 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.107.132.101 with HTTP; Tue, 27 Feb 2018 07:21:32 -0800 (PST)
-In-Reply-To: <alpine.DEB.2.20.1802271511460.18318@hadrien>
-References: <7597d005-1a8f-486e-a706-25f99b7b126c@googlegroups.com> <alpine.DEB.2.20.1802271511460.18318@hadrien>
-From: Varsha Rao <rvarsha016@gmail.com>
-Date: Tue, 27 Feb 2018 20:51:32 +0530
-Message-ID: <CAAFX7JRW5YAfzd-gR+YACa+2aAJ405oDYF8Lh9LTyckbLwcLyg@mail.gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.47,401,1515452400"; 
+   d="scan'208";a="256267791"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 27 Feb 2018 15:12:40 +0100
+Date: Tue, 27 Feb 2018 15:12:38 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
 Subject: Re: [Outreachy kernel] [IRC] How do I join
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>, 
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <7597d005-1a8f-486e-a706-25f99b7b126c@googlegroups.com>
+Message-ID: <alpine.DEB.2.20.1802271511460.18318@hadrien>
+References: <7597d005-1a8f-486e-a706-25f99b7b126c@googlegroups.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Hi Nishka,
 
-On Tue, Feb 27, 2018 at 7:42 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
->
->
-> On Tue, 27 Feb 2018, Nishka Dasgupta wrote:
->
->> How do I join the IRC channels? Simply clicking on the links leads to
->> "Problem loading page" errors on Firefox (Windows 10) and Firefox (Ubuntu
->> 14.04). I apologise for the stupid question; I have never used IRC before.
->
-> Maybe try a client such as pidgin.  There is "join a chat" in the
-> "conversation" menu.
 
-You can even try Hexchat. Refer these links,
+On Tue, 27 Feb 2018, Nishka Dasgupta wrote:
 
-https://code.tutsplus.com/tutorials/irc-is-back-heres-your-starter-guide--net-31369
-http://www.ircbeginner.com/ircinfo/tutorials.html
-https://fedoramagazine.org/beginners-guide-irc/
+> How do I join the IRC channels? Simply clicking on the links leads to
+> "Problem loading page" errors on Firefox (Windows 10) and Firefox (Ubuntu
+> 14.04). I apologise for the stupid question; I have never used IRC before.
 
-Hope it helps.
+Maybe try a client such as pidgin.  There is "join a chat" in the
+"conversation" menu.
 
-Thanks,
-Varsha
+julia
 
