@@ -1,102 +1,105 @@
 X-GM-THRID: 6527315033715638272
-X-Received: by 10.28.150.137 with SMTP id y131mr1498093wmd.6.1519762765102;
-        Tue, 27 Feb 2018 12:19:25 -0800 (PST)
+X-Received: by 10.99.183.69 with SMTP id w5mr3244095pgt.123.1519758960976;
+        Tue, 27 Feb 2018 11:16:00 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.217.137 with SMTP id q131ls511068wmg.0.gmail; Tue, 27 Feb
- 2018 12:19:23 -0800 (PST)
-X-Google-Smtp-Source: AG47ELv9OtNwZqH2nio+Y6lIZ3hJw6PNCr86ZHDxWD6K/d7yrE8BgiNUx7JXV6PbV+k9cSb3g+JZ
-X-Received: by 10.28.105.80 with SMTP id e77mr1158647wmc.26.1519762763081;
-        Tue, 27 Feb 2018 12:19:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519762763; cv=none;
+Received: by 10.101.101.12 with SMTP id x12ls405080pgv.13.gmail; Tue, 27 Feb
+ 2018 11:15:59 -0800 (PST)
+X-Google-Smtp-Source: AH8x224BgistY04rqC3NCnZoxXg6uZj73fnjGZeJbdy2JgQ3jUQBOF0fj90e0Ph8EJfXUOsKe6Ij
+X-Received: by 10.98.251.4 with SMTP id x4mr3556600pfm.58.1519758959667;
+        Tue, 27 Feb 2018 11:15:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519758959; cv=none;
         d=google.com; s=arc-20160816;
-        b=GNl9draUtuDnO1cY37YuL30x6w6hVWK5avVO6CSoT39OnP6GOiTolbQCtkUIpR7zM3
-         tNM+/flEfu5dTmUxIvaNFvjCfWf4LGys+bKh7XqtjtEVLW166ki+WNMFfod3ewwljste
-         4X2xufTH0TEExRzlXjw5ZQYEVlHhKWsUFjbaCA7JpkZ5rTzVvNWTxzG8HuN8mF6vSoZ4
-         1YdlhQXDUHpGY3cy2jH4hQydaXx60VnJpqg9dQV07LTr9VCnjKO1d5dgiPHmkQqhaSMc
-         7R6Vhf6sIDW82lWPGv/+/O78JNTRZMpOAUhNKIQTAPU0pN0FVuSytlLr4bZhvXq8bkGP
-         PSyQ==
+        b=Usnt58R9TbimNJryODpaEeaVth9vFeI6HE1RMx7/830XWxR+hyjY8WXIpAJ+b1dTlf
+         GQ8IcTCZJZIINMWDbYE2Rcz6EEaWcy8wvwfk4tjxxCSGrL4MZqqqHfa+YSxDnUZLkriW
+         luRkV/zWrEOZWx8RL2ypdLt/2K9d8eGr+m12ylUVhE8BacF7Izkif7aR1qHmzA+J8js1
+         1e9/Eosipab/U6hO9j5tmkv6W5XIGROkujI55GYOcsa2bPR67agO1hRCk0Vkf8Phoilp
+         9953QsoZHj4B4Rm/J22oEAfzyRHuSaoWV3QBNlbmbAaw2kPw3YcMtkCBQHFAZadS8kmS
+         K6KQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=fLs3fCrniB9vgbFTQrCM2ImjWtduqZT9+bvlbjK8onU=;
-        b=HXdnw0w5ny6ZPmrBIVRci0AdUU8PV/CoNSb29urL1wM193q2CN2OKty3IW1s7ljTBZ
-         teTBCZ6EqRgDk4/FfnOorfCTxvHQBRb5L2Isdem2OAIMDYHpFHqVoKWEn2NrQhcXOHi7
-         ynBjAKTijGXh2gY9lrt9MrthA9Fkitx1KFgjL9Q3MmGmL2sI4RUjb5mQvTPLjcAn12nw
-         i6TcEH9GU5cznQsffDjEC3fPyRdzDvnSUTLXtBCVsKbX531pkg06hqXTMXsWR8VDr28H
-         ci5FBF75Mx2moyv6yJKohy+U8WaXBSxRvvctx6QNC3g86pY0eD5FHsuksbU1QOzNQc/Z
-         vQww==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=PzuQtfqtfWDtV+GGo0Oh8xwHswrQ+0zunvoEmBv/6Gk=;
+        b=pYPAc1JHHWl9fdk19uaz9pkRy2O1jxjOFDww+qSb7uFVAm2xAslG6gdqbc2dShyh8C
+         ViXeockq0iAmlGZWIppD/5AEL5EqU1ih8zgGEbYLJ83PLAHU6BYVG6mPBy3kuivr6/Ib
+         LD7kWzEtG34NUs0ks9MEx1Dh3fgXQUFzZ6/2xSytJVw02uB5BXP2fxOCjhNWU/GZNFmE
+         J8EWUVP4xHcCoZanqaB3Jasx01AH2+4j3ESzyGgh3YwzqzRs1XMiRlmP8PfvXuFpfCv0
+         IpYEkoxbbIKibTQtdLNGaSgj9Uag3T9tdVF7HDGZszIZTvObnVY0WaEaGYYxHBHgtaQg
+         oDAg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id 200si25372wml.2.2018.02.27.12.19.22
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=JRVqxV09;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::235 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
+Received: from mail-pf0-x235.google.com (mail-pf0-x235.google.com. [2607:f8b0:400e:c00::235])
+        by gmr-mx.google.com with ESMTPS id q12si166121pgn.2.2018.02.27.11.15.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Feb 2018 12:19:23 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Tue, 27 Feb 2018 11:15:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::235 as permitted sender) client-ip=2607:f8b0:400e:c00::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.47,402,1515452400"; 
-   d="scan'208";a="256312618"
-Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 27 Feb 2018 21:19:21 +0100
-Date: Tue, 27 Feb 2018 21:19:21 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-cc: eric@anholt.net, stefan.wahren@i2se.com, gregkh@linuxfoundation.org, 
-    f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, 
-    bcm-kernel-feedback-list@broadcom.com, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging:vc04_services:bcm2835-camera
- Added blank line after declaration
-In-Reply-To: <1519758941-25173-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-Message-ID: <alpine.DEB.2.20.1802272117260.2575@hadrien>
-References: <1519758941-25173-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=JRVqxV09;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::235 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Received: by mail-pf0-x235.google.com with SMTP id j24so8348790pff.12
+        for <outreachy-kernel@googlegroups.com>; Tue, 27 Feb 2018 11:15:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ashoka.edu.in; s=google;
+        h=from:to:cc:subject:date:message-id;
+        bh=PzuQtfqtfWDtV+GGo0Oh8xwHswrQ+0zunvoEmBv/6Gk=;
+        b=JRVqxV09h9P8r3JqI2MDQ5a7PzmLHGD3XiKvt11oTLe9g+uYRxI0eIHOb0qnGqyCtS
+         +cakbZus2MDrDMBJMmHKtkn38BONTWthXGjd62h0S84imfINcl+Z/HwrYoT1v05lC/VZ
+         SpPG+93vSMcFfaAjU8/DMQNxG/jyva5HM/iAs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=PzuQtfqtfWDtV+GGo0Oh8xwHswrQ+0zunvoEmBv/6Gk=;
+        b=NmKHMgnXi75GCUxw7aLE2Ui7qEIX6PSOeFEQydaLb5Ypk5JDx2kfJ3RNHXbt16jUtb
+         POzBL5G9Zlgda+KWtb/UHnfL/e+u4VCHD1ttNF3LvYfCkTbPz7wIVXknGP/hie7dOjLS
+         ern8tKUk+onjYvn6OGersTIw/CUJPoWzSctYD9xzNZfEERn+0l+3x5esN7e6EUSJ/ML3
+         7usJxohhReqHQJknWe0a2WE4i6aW3fuLdxgy8E98fiIVSH44rn3+q/zfPmCTM68PtT6y
+         mqVKxWRnwr/7ajL235AXcaBQX3n7nzO2zQOkDQXEOxgclv4IsEitfTOOBr6AorQVUnVl
+         EBLA==
+X-Gm-Message-State: APf1xPB4qbQgiHpPGXJHbXOVOVj6dlioKJ0CbFwJR9od1P9Hw1M/Zpci
+	V5PVObIwYFghNN1qqymvpJFlzQ==
+X-Received: by 10.98.223.93 with SMTP id u90mr15112596pfg.13.1519758959068;
+        Tue, 27 Feb 2018 11:15:59 -0800 (PST)
+Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
+Received: from ashoka-ThinkCentre-E73z.internal.ashoka.edu.in ([125.22.40.140])
+        by smtp.gmail.com with ESMTPSA id w63sm21619671pgb.80.2018.02.27.11.15.55
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 27 Feb 2018 11:15:58 -0800 (PST)
+From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+To: eric@anholt.net,
+	stefan.wahren@i2se.com,
+	gregkh@linuxfoundation.org,
+	f.fainelli@gmail.com,
+	rjui@broadcom.com,
+	sbranden@broadcom.com,
+	bcm-kernel-feedback-list@broadcom.com,
+	outreachy-kernel@googlegroups.com
+Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+Subject: [PATCH] staging:vc04_services:bcm2835-camera Added blank line after declaration
+Date: Wed, 28 Feb 2018 00:45:41 +0530
+Message-Id: <1519758941-25173-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+X-Mailer: git-send-email 1.9.1
 
-Please check the subject line.  The first part, indicating the part of the
-kernel that is changed should not be something that you made up but should
-rather be what has been used previously for this file.  You can find that
-using git log --onefile filename.
+Added blank line after declaration (line 1273). Issue found with checkpatch.
+Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+---
+ drivers/staging/vc04_services/bcm2835-camera/controls.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-On Wed, 28 Feb 2018, Nishka Dasgupta wrote:
+diff --git a/drivers/staging/vc04_services/bcm2835-camera/controls.c b/drivers/staging/vc04_services/bcm2835-camera/controls.c
+index 0736214..cff7b1e 100644
+--- a/drivers/staging/vc04_services/bcm2835-camera/controls.c
++++ b/drivers/staging/vc04_services/bcm2835-camera/controls.c
+@@ -1270,6 +1270,7 @@ int bm2835_mmal_init_controls(struct bm2835_mmal_dev *dev,
+ 				 * mismatches.
+ 				 */
+ 				int i;
++
+ 				mask = 1 << V4L2_SCENE_MODE_NONE;
+ 				for (i = 0;
+ 				     i < ARRAY_SIZE(scene_configs);
+-- 
+1.9.1
 
-> Added blank line after declaration (line 1273). Issue found with checkpatch.
-> Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-
-Put the subject line and the commit message in the imperative.  So for the
-commit message, it should be Add, rather than Added.
-
-Put a blank line before the signed off by.
-
-julia
-
-> ---
->  drivers/staging/vc04_services/bcm2835-camera/controls.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/drivers/staging/vc04_services/bcm2835-camera/controls.c b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-> index 0736214..cff7b1e 100644
-> --- a/drivers/staging/vc04_services/bcm2835-camera/controls.c
-> +++ b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-> @@ -1270,6 +1270,7 @@ int bm2835_mmal_init_controls(struct bm2835_mmal_dev *dev,
->  				 * mismatches.
->  				 */
->  				int i;
-> +
->  				mask = 1 << V4L2_SCENE_MODE_NONE;
->  				for (i = 0;
->  				     i < ARRAY_SIZE(scene_configs);
-> --
-> 1.9.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1519758941-25173-1-git-send-email-nishka.dasgupta_ug18%40ashoka.edu.in.
-> For more options, visit https://groups.google.com/d/optout.
->
 
