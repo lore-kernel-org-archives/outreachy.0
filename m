@@ -1,71 +1,125 @@
-X-GM-THRID: 6401819323480932352
-X-Received: by 10.99.115.87 with SMTP id d23mr6510594pgn.112.1490539713921;
-        Sun, 26 Mar 2017 07:48:33 -0700 (PDT)
+X-GM-THRID: 6527741709040746496
+X-Received: by 10.200.55.21 with SMTP id o21mr11379950qtb.37.1519858303375;
+        Wed, 28 Feb 2018 14:51:43 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.2.98 with SMTP id 89ls8391436otb.22.gmail; Sun, 26 Mar
- 2017 07:48:33 -0700 (PDT)
-X-Received: by 10.237.36.21 with SMTP id r21mr5581328qtc.1.1490539713576;
-        Sun, 26 Mar 2017 07:48:33 -0700 (PDT)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id 2si1471004pfx.8.2017.03.26.07.48.33
+Received: by 10.55.64.210 with SMTP id n201ls3225221qka.14.gmail; Wed, 28 Feb
+ 2018 14:51:42 -0800 (PST)
+X-Google-Smtp-Source: AG47ELs0krWlLrJurYE8A1ABRmvt+zDgD0qWhKRTdIbeIayU5gFAUaMemlHLMfRBXLaYVLnbBtJk
+X-Received: by 10.55.77.1 with SMTP id a1mr14490489qkb.49.1519858302122;
+        Wed, 28 Feb 2018 14:51:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519858302; cv=none;
+        d=google.com; s=arc-20160816;
+        b=j4cS5PaB9IzP8vqkIyY/7V2sJECfINaxXXgDPxcJeZokyD/Kg/2gjF4+YjJz5t5Ats
+         BQqOzn0ig+4zpJRXQ5hLiROvXSeu2VVZdLRunPtckG76Z5scCTbMNb6xZbulMn5Tb2l9
+         ReV5SF/BWW4Rh2x0hLTzi1zfyfAjJCYSIodrbPjNRpAhvvuWaIf4UkrXJJMik2F/ev/p
+         22Iv1ZmVaDLNeGIsMV1/1mykvSjyMS1gukw5l3+/aVwIve4llat4QrwbCMgsA37NYkbF
+         knJ4lfdOzmjc355xPyoQ6Vw8XZ5Mwv4BDZmW+/o7MeHdpRfl9bmglUz/QuuXGDB7WArm
+         zyjw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=FeWNfBorV8XHTCPn8em1MUWWLchqHqGLHnLU8/pqBVo=;
+        b=tGouaGQ+kGZukwM7KP+4wmqE3X5mYcJ8N9A+i0fngnr/L8Bw63yh+aOyl1phP4elAe
+         Z3C2Trfsor2moKhi0bPpwpb8zVk8zROl4Oegk7P0lehwd8ZbWv7qCUyNq49Tv7UnYEYz
+         qRBx7G2CTFwA0BjJBgOS22ZZ+LQ5e+8EwxkLOtSNlWJj2e4hK6GiY64DRUjDyCAE11ib
+         z6fGDn3b38g5cgfKybWQf7LaIXNk7imu2xTTDc19cUDugLMUqim1UmRcuKVOhYzPkhPH
+         hQNmoRx8lliizCEaVxhJbpC9HvVhyUD7gs1yWTHqhk+qnIt4JHA9OEdIFcB4yzhTEaKb
+         F5vQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=IH4Sb5Xs;
+       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <santhameena13@gmail.com>
+Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
+        by gmr-mx.google.com with ESMTPS id b26si201406qtb.2.2018.02.28.14.51.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 26 Mar 2017 07:48:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Wed, 28 Feb 2018 14:51:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id n11so5345259pfg.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 26 Mar 2017 07:48:33 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=IH4Sb5Xs;
+       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg0-x241.google.com with SMTP id l24so1530427pgc.5
+        for <outreachy-kernel@googlegroups.com>; Wed, 28 Feb 2018 14:51:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=TJF/ey8SihwuAioqRL/FqPHbYpKj13tS/kHUG4K/WE0=;
-        b=jMiluBJ1PGiEnDN2Snr6zQZn8NPiBmN7caaKOVbwM4BJQvt5mh15cmjwlRiYzVvL2j
-         E9EHiH3xcWJMsYQZxCgoz5Zogum0nTxHNjL5m/MX61q+er09Q2kMGsu/Ph28dftaDfk6
-         TqUakazkVjIvjG/UX6Qh1uZf/8bxPct3LOv6wG3veoWG4YAB557bmF77hXLKOMKf3Ol4
-         0ZhMO0nKshYWHMNrIfF502AsI6EMJmSolQpF1eI9P6TmA3eb8bkXJXmbpOkApwcz/sHw
-         WIcKmQMPqMPqnfyoZrSzFU6EIiDeS6w40HUyMnXmN08AYdNE8fk+KpZxjNeaoRcUAaty
-         U+bQ==
+        bh=FeWNfBorV8XHTCPn8em1MUWWLchqHqGLHnLU8/pqBVo=;
+        b=IH4Sb5XsEFMn0jMNr/3PZTnrJ0dGTnN8ehq5+zEWFTZMUsjPNtqAZYNjJTK6tHDycA
+         1DLl4m4Cx37u8namZY0NwT1rq4SSeqsI93Z/0qCQuM1x6vBzTA0jkpu/LF1vUE7ojIOO
+         H812AhXH8v4xpcHH3X0OcFYmjOd4PhmHzXKVQfEVXPKmOHv8Y0Yaf1xg8gz9HDtv66f3
+         yH1eDqL51E0zJDHbR44DEQu1csFgf3VRmBWohbzfR5B3pBsgEtHa5jhJc7fKpJMeGGTm
+         T7BUa2lIUOeQHsRS9EGj/G7Gv96Km9UUC1SP647N2lhPVB+/TAA/IvkHk0PIw0J1NLdg
+         yC8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=TJF/ey8SihwuAioqRL/FqPHbYpKj13tS/kHUG4K/WE0=;
-        b=AYPmEb2T1TSUwL5hXdLNAA9CO0YzJFUsseDHgmSLH9L93bCOXY9fmSxPLIJMr8Pn5C
-         zdmhAfCrYdJKyA58L9zpWuRgjxPBghb9NUe/BLnpaXU6mWEkYOt3zw81xC3e/OKq2eAI
-         otcv4+3Eaet72ZCff+Xh2ynWrFI3M1nALvXF2LTUMuOgyjeJHm8rr2be6VkA9rlyOOEv
-         0djbV8S4A3ciUNc+pTb99gQPb3RnMYSc8XhSMipBFp4JF2jesPYelxXpTCeM7+bol08m
-         ocKD3YbsgHm7kCKdoVyrSA7alKz0b9IpfwShNojwfdso9vZ+OKnNPbdjH6OYAHqbIonR
-         ooMA==
-X-Gm-Message-State: AFeK/H0s/Fh38NTj6CaKFILPbWBmeUYg5Yn51Qb/DGDQGzt/RINbHQAadN7Q042pW6Uufg==
-X-Received: by 10.84.172.193 with SMTP id n59mr23373256plb.77.1490539713374;
-        Sun, 26 Mar 2017 07:48:33 -0700 (PDT)
-Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([47.9.132.176])
-        by smtp.googlemail.com with ESMTPSA id d4sm15520148pfb.104.2017.03.26.07.48.26
+        bh=FeWNfBorV8XHTCPn8em1MUWWLchqHqGLHnLU8/pqBVo=;
+        b=Gs82IgHv/TlnJsANS9eACrTxU/hFOa9ssRVKsO5vP8+cvLasxTYulbza24MDe4FNzV
+         eClgFbu5R2kB4nbiRbhOxIxJkZRg/QQWWmdzckd3Znnx5lEa+e6IyEBcwkv1v1KY+bUl
+         hMnEYeo9OEc59WvOx9cTjlQ+HhLMZZlH7GNd8N1hloCr4UPLyfHEJeO38NSXYAGnyw0G
+         cCmwQwqPLf5dfXvzQNIyYhoJWQtOmxDweTdv/YXd+W4sdA6Ymr0LMP+5d0RnRL51zMJ3
+         gh/PzaEp1HhPfoLysfOk3FMqQeIA4DwxIr+Ub7gsiIzufwV1tymKedzNmMm/SNzHlcNV
+         cfgg==
+X-Gm-Message-State: APf1xPBRkQrFJp6P2SIAwkg9/jRPDde8NuL/mvRzd6RAw/qXrN32Kggd
+	HbAHDC+R/+9sgB31x2SKm+o=
+X-Received: by 10.99.143.88 with SMTP id r24mr14373066pgn.160.1519858301275;
+        Wed, 28 Feb 2018 14:51:41 -0800 (PST)
+Return-Path: <santhameena13@gmail.com>
+Received: from localhost.localdomain (ResNet-23-249.resnet.ucsb.edu. [169.231.23.249])
+        by smtp.gmail.com with ESMTPSA id c11sm6694885pfe.109.2018.02.28.14.51.39
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 26 Mar 2017 07:48:32 -0700 (PDT)
-From: Gargi Sharma <gs051095@gmail.com>
-To: mawilcox@microsoft.com
-Cc: outreachy-kernel@googlegroups.com,
-	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH 0/3] Fix multiple checkpatch issues
-Date: Sun, 26 Mar 2017 20:18:12 +0530
-Message-Id: <cover.1490539466.git.gs051095@gmail.com>
+        Wed, 28 Feb 2018 14:51:40 -0800 (PST)
+From: Santha Meena Ramamoorthy <santhameena13@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: forest@alittletooquiet.net,
+	outreachy-kernel@googlegroups.com,
+	Santha Meena Ramamoorthy <santhameena13@gmail.com>
+Subject: [PATCH] staging: vt6655: replace NULL comparison with variable
+Date: Wed, 28 Feb 2018 14:51:12 -0800
+Message-Id: <1519858272-23123-1-git-send-email-santhameena13@gmail.com>
 X-Mailer: git-send-email 2.7.4
 
-This file fixes multiple checkpatch issues in pid_namespace.c file.
+Replace NULL comparison of the variable with just the variable name to
+conform to the Linux kernel coding style. Issue found using checkpatch.
 
-Gargi Sharma (3):
-  kernel: pid_namespace: Remove return statement from void function
-  kernel: pid_namespace: Fix line over 80 characters
-  kernel: pid_namespace: Do not initialise statics to 0
+Signed-off-by: Santha Meena Ramamoorthy <santhameena13@gmail.com>
+---
+ drivers/staging/vt6655/rxtx.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
- kernel/pid_namespace.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
+diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
+index bea0b7f..7a5c2a8 100644
+--- a/drivers/staging/vt6655/rxtx.c
++++ b/drivers/staging/vt6655/rxtx.c
+@@ -966,7 +966,7 @@ s_vGenerateTxParameter(
+ 		return;
+ 
+ 	if (byPktType == PK_TYPE_11GB || byPktType == PK_TYPE_11GA) {
+-		if (pvRTS != NULL) { /* RTS_need */
++		if (pvRTS) { /* RTS_need */
+ 			/* Fill RsvTime */
+ 			struct vnt_rrv_time_rts *buf = pvRrvTime;
+ 
+@@ -988,7 +988,7 @@ s_vGenerateTxParameter(
+ 			s_vFillCTSHead(pDevice, uDMAIdx, byPktType, pvCTS, cbFrameSize, bNeedACK, bDisCRC, wCurrentRate, byFBOption);
+ 		}
+ 	} else if (byPktType == PK_TYPE_11A) {
+-		if (pvRTS != NULL) {/* RTS_need, non PCF mode */
++		if (pvRTS) {/* RTS_need, non PCF mode */
+ 			struct vnt_rrv_time_ab *buf = pvRrvTime;
+ 
+ 			buf->rts_rrv_time = s_uGetRTSCTSRsvTime(pDevice, 2, byPktType, cbFrameSize, wCurrentRate);
+@@ -1002,7 +1002,7 @@ s_vGenerateTxParameter(
+ 			buf->rrv_time = vnt_rxtx_rsvtime_le16(pDevice, PK_TYPE_11A, cbFrameSize, wCurrentRate, bNeedACK);
+ 		}
+ 	} else if (byPktType == PK_TYPE_11B) {
+-		if (pvRTS != NULL) {/* RTS_need, non PCF mode */
++		if (pvRTS) {/* RTS_need, non PCF mode */
+ 			struct vnt_rrv_time_ab *buf = pvRrvTime;
+ 
+ 			buf->rts_rrv_time = s_uGetRTSCTSRsvTime(pDevice, 0, byPktType, cbFrameSize, wCurrentRate);
 -- 
 2.7.4
 
