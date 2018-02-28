@@ -1,148 +1,100 @@
-X-GM-THRID: 1550436007936
-X-Received: by 10.112.124.142 with SMTP id mi14mr1514443lbb.1.1424464942250;
-        Fri, 20 Feb 2015 12:42:22 -0800 (PST)
+X-GM-THRID: 6527683536897441792
+X-Received: by 10.46.29.133 with SMTP id w5mr1300031lje.26.1519850599115;
+        Wed, 28 Feb 2018 12:43:19 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.88.98 with SMTP id bf2ls201622lab.70.gmail; Fri, 20 Feb
- 2015 12:42:21 -0800 (PST)
-X-Received: by 10.112.25.7 with SMTP id y7mr1512223lbf.21.1424464941923;
-        Fri, 20 Feb 2015 12:42:21 -0800 (PST)
-Return-Path: <gamzepolat94@gmail.com>
-Received: from mail-we0-x232.google.com (mail-we0-x232.google.com. [2a00:1450:400c:c03::232])
-        by gmr-mx.google.com with ESMTPS id i7si186411wif.0.2015.02.20.12.42.21
+Received: by 10.46.114.14 with SMTP id n14ls553373ljc.14.gmail; Wed, 28 Feb
+ 2018 12:43:15 -0800 (PST)
+X-Google-Smtp-Source: AG47ELvImGX749zJyp3ja2Bb0swRnO+EQvsB6MB0fzSkZk3zO+KCimPjYrpc52sCOe3zDCzOcgYv
+X-Received: by 10.46.129.134 with SMTP id e6mr1320787ljg.41.1519850595668;
+        Wed, 28 Feb 2018 12:43:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519850595; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Fs0IVOeDdwiiA48G1Y6cmizfyIxVAzcWgs88mN/W76A3cmmafUWklWMDidEeNTqMD4
+         B1KvYwXEuDxFQC1tMtaa9x4q6ggd6AxcmDley5mvY79knQxhItEk+jS2uLaOFoCPvcCO
+         3JRg7l4duz16Q9RtecVaKQ4R01hQIbLGgqIfFjiG7MODISgCyNaggk9Y+Rt/rAsy3CtN
+         bzQ0fmCRPszdsunH1xupFVTnJ8nkoP0TS0dsycpFiMQk9gxx0/P8iw2f8bdeCpLvMO5z
+         zvKFtrstu57PkjgcdEp+IA+6mF4AXgBRR3zLlTG/Pg0XMFXk5SBUseLWlpqgHdkoKv42
+         /i8Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=53BgraoHJcEJisc4BmcjhddspEKf60FLtbb+IVIvs40=;
+        b=UTnLJNrFm95p8uRa35OMazbVloOLeogcJ98cJZbyQ3mV5tbQ/DkTm3ZJkD6gJz/dZY
+         3cSjj7gPBsEtC34U3q8wYooFwKoBrsjITSq6q7SNo0IsMtXs8O0LTqUwRZs+9CCnShOh
+         tO/IiPXhwzuYKoV57P3uh+f8TrSG3gJTVgwlto7btnVJkTKKEr/IEwa9U3WyNuIpR54C
+         DmN3ipRYgj6V5smyIFWGfA3KVa4fmWj5xLsOPsflYnXSrt8QH+ki50GQ7yeMrBg9Xxi7
+         9Il5P6FsVKocf0zveOzSUjlYffke3GPEcPGSChIU1XUFKbkxfnVbXxGLjcXXY6u6yflv
+         rQbA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id u16si101430lfc.3.2018.02.28.12.43.15
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Feb 2015 12:42:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of gamzepolat94@gmail.com designates 2a00:1450:400c:c03::232 as permitted sender) client-ip=2a00:1450:400c:c03::232;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 28 Feb 2018 12:43:15 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gamzepolat94@gmail.com designates 2a00:1450:400c:c03::232 as permitted sender) smtp.mail=gamzepolat94@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wesk11 with SMTP id k11so7660852wes.11
-        for <outreachy-kernel@googlegroups.com>; Fri, 20 Feb 2015 12:42:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=Yq33dWx/2WenZ2krO/s7zAEc0s/9lYsJXd2KG2RnPik=;
-        b=Ak7rE8a2QcLiZAr3l6IPOt4UwUalZAYCrU6u11Fzf4vMzeND9BMCKH1WtQ6NfsBjCL
-         DXn13WJtyxXcw4IZQ2bOO9EIv8ICcE9c+5xO4G/FdNd0z+foSwiHmvbqlqLJ3N1KPusB
-         jmMlFpVWUI1rX9OgVf7CqjEKQl2cLmJRrWVFBeTye0q7j4c3GHb4nfU2x3UrlAqo9Yeb
-         eOCDjuRwiYGj24Lfqzc/+1T2uV1O38ZycqSv1onSe1GDBQVaU6Y/N0HO0DULhLq+Pyvu
-         3wSKZOB7Pe19JnqckgO4C4FyYSlqxjhqLfWezksaxYuoo/VV8trbtkzXEYb94tU58GnU
-         EcFA==
-X-Received: by 10.180.77.166 with SMTP id t6mr1240885wiw.28.1424464941800;
-        Fri, 20 Feb 2015 12:42:21 -0800 (PST)
-Return-Path: <gamzepolat94@gmail.com>
-Received: from gamze-Lenovo-IdeaPad-Z510 ([81.214.238.226])
-        by mx.google.com with ESMTPSA id j9sm43630132wjy.18.2015.02.20.12.42.20
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 20 Feb 2015 12:42:20 -0800 (PST)
-From: Gamze POLAT <gamzepolat94@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Gamze POLAT <gamzepolat94@gmail.com>
-Subject: [PATCH 1/2] staging: rtl8712: warning of prefer ether_addr_copy
-Date: Fri, 20 Feb 2015 22:42:16 +0200
-Message-Id: <1424464937-8767-1-git-send-email-gamzepolat94@gmail.com>
-X-Mailer: git-send-email 2.1.0
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.47,406,1515452400"; 
+   d="scan'208";a="256461425"
+Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 28 Feb 2018 21:43:14 +0100
+Date: Wed, 28 Feb 2018 21:43:14 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Santha Meena Ramamoorthy <santhameena13@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: rtl8192e: move logical
+ continuation to previous line
+In-Reply-To: <1519850448-21871-1-git-send-email-santhameena13@gmail.com>
+Message-ID: <alpine.DEB.2.20.1802282142550.2582@hadrien>
+References: <1519850448-21871-1-git-send-email-santhameena13@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-This patch fixes the following checkpatch.pl warnings:
-WARNING: Prefer ether_addr_copy() over memcpy() if the Ethernet
-addresses are __aligned(2)
 
-Signed-off-by: Gamze POLAT <gamzepolat94@gmail.com>
----
- drivers/staging/rtl8712/rtl871x_recv.c | 46 +++++++++++++++++-----------------
- 1 file changed, 23 insertions(+), 23 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/rtl871x_recv.c b/drivers/staging/rtl8712/rtl871x_recv.c
-index 06f15f8..243c8d8 100644
---- a/drivers/staging/rtl8712/rtl871x_recv.c
-+++ b/drivers/staging/rtl8712/rtl871x_recv.c
-@@ -356,11 +356,11 @@ static sint sta2sta_data_frame(struct _adapter *adapter,
- 			sta_addr = pattrib->src;
- 		}
- 	  } else if (check_fwstate(pmlmepriv, WIFI_MP_STATE) == true) {
--		memcpy(pattrib->dst, GetAddr1Ptr(ptr), ETH_ALEN);
--		memcpy(pattrib->src, GetAddr2Ptr(ptr), ETH_ALEN);
--		memcpy(pattrib->bssid, GetAddr3Ptr(ptr), ETH_ALEN);
--		memcpy(pattrib->ra, pattrib->dst, ETH_ALEN);
--		memcpy(pattrib->ta, pattrib->src, ETH_ALEN);
-+		ether_addr_copy(pattrib->dst, GetAddr1Ptr(ptr));
-+		ether_addr_copy(pattrib->src, GetAddr2Ptr(ptr));
-+		ether_addr_copy(pattrib->bssid, GetAddr3Ptr(ptr));
-+		ether_addr_copy(pattrib->ra, pattrib->dst);
-+		ether_addr_copy(pattrib->ta, pattrib->src);
- 		sta_addr = mybssid;
- 	  } else
- 		ret  = _FAIL;
-@@ -421,12 +421,12 @@ static sint ap2sta_data_frame(struct _adapter *adapter,
- 			return _FAIL;
- 	} else if ((check_fwstate(pmlmepriv, WIFI_MP_STATE) == true) &&
- 		   (check_fwstate(pmlmepriv, _FW_LINKED) == true)) {
--		memcpy(pattrib->dst, GetAddr1Ptr(ptr), ETH_ALEN);
--		memcpy(pattrib->src, GetAddr2Ptr(ptr), ETH_ALEN);
--		memcpy(pattrib->bssid, GetAddr3Ptr(ptr), ETH_ALEN);
--		memcpy(pattrib->ra, pattrib->dst, ETH_ALEN);
--		memcpy(pattrib->ta, pattrib->src, ETH_ALEN);
--		memcpy(pattrib->bssid,  mybssid, ETH_ALEN);
-+		ether_addr_copy(pattrib->dst, GetAddr1Ptr(ptr));
-+		ether_addr_copy(pattrib->src, GetAddr2Ptr(ptr));
-+		ether_addr_copy(pattrib->bssid, GetAddr3Ptr(ptr));
-+		ether_addr_copy(pattrib->ra, pattrib->dst);
-+		ether_addr_copy(pattrib->ta, pattrib->src);
-+		ether_addr_copy(pattrib->bssid,  mybssid);
- 		*psta = r8712_get_stainfo(pstapriv, pattrib->bssid);
- 		if (*psta == NULL)
- 			return _FAIL;
-@@ -487,28 +487,28 @@ static sint validate_recv_data_frame(struct _adapter *adapter,
- 	pbssid = get_hdr_bssid(ptr);
- 	if (pbssid == NULL)
- 		return _FAIL;
--	memcpy(pattrib->dst, pda, ETH_ALEN);
--	memcpy(pattrib->src, psa, ETH_ALEN);
--	memcpy(pattrib->bssid, pbssid, ETH_ALEN);
-+	ether_addr_copy(pattrib->dst, pda);
-+	ether_addr_copy(pattrib->src, psa);
-+	ether_addr_copy(pattrib->bssid, pbssid);
- 	switch (pattrib->to_fr_ds) {
- 	case 0:
--		memcpy(pattrib->ra, pda, ETH_ALEN);
--		memcpy(pattrib->ta, psa, ETH_ALEN);
-+		ether_addr_copy(pattrib->ra, pda);
-+		ether_addr_copy(pattrib->ta, psa);
- 		res = sta2sta_data_frame(adapter, precv_frame, &psta);
- 		break;
- 	case 1:
--		memcpy(pattrib->ra, pda, ETH_ALEN);
--		memcpy(pattrib->ta, pbssid, ETH_ALEN);
-+		ether_addr_copy(pattrib->ra, pda);
-+		ether_addr_copy(pattrib->ta, pbssid);
- 		res = ap2sta_data_frame(adapter, precv_frame, &psta);
- 		break;
- 	case 2:
--		memcpy(pattrib->ra, pbssid, ETH_ALEN);
--		memcpy(pattrib->ta, psa, ETH_ALEN);
-+		ether_addr_copy(pattrib->ra, pbssid);
-+		ether_addr_copy(pattrib->ta, psa);
- 		res = sta2ap_data_frame(adapter, precv_frame, &psta);
- 		break;
- 	case 3:
--		memcpy(pattrib->ra, GetAddr1Ptr(ptr), ETH_ALEN);
--		memcpy(pattrib->ta, GetAddr2Ptr(ptr), ETH_ALEN);
-+		ether_addr_copy(pattrib->ra, GetAddr1Ptr(ptr));
-+		ether_addr_copy(pattrib->ta, GetAddr2Ptr(ptr));
- 		return _FAIL;
- 	default:
- 		return _FAIL;
-@@ -644,7 +644,7 @@ sint r8712_wlanhdr_to_ethhdr(union recv_frame *precvframe)
- 		ptr = recvframe_pull(precvframe, (rmv_len -
- 		      sizeof(struct ethhdr) + (bsnaphdr ? 2 : 0)));
- 
--	memcpy(ptr, pattrib->dst, ETH_ALEN);
-+	ether_addr_copy(ptr, pattrib->dst);
- 	memcpy(ptr+ETH_ALEN, pattrib->src, ETH_ALEN);
- 	if (!bsnaphdr) {
- 		len = htons(len);
--- 
-2.1.0
+On Wed, 28 Feb 2018, Santha Meena Ramamoorthy wrote:
 
+> Move logical continuation '&&' to the previous line to conform to the
+> Linux kernel coding style. Issue found using checkpatch.
+>
+> Signed-off-by: Santha Meena Ramamoorthy <santhameena13@gmail.com>
+
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+> ---
+> Change in v2:
+>  - Match alignment with the appropriate open parenthesis.
+>
+>  drivers/staging/rtl8192e/rtllib_rx.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8192e/rtllib_rx.c b/drivers/staging/rtl8192e/rtllib_rx.c
+> index 30f72d2..fa580ce 100644
+> --- a/drivers/staging/rtl8192e/rtllib_rx.c
+> +++ b/drivers/staging/rtl8192e/rtllib_rx.c
+> @@ -2644,8 +2644,8 @@ static inline void rtllib_process_probe_response(
+>  	   (network->ssid_len ? 1 : 0))) {
+>  		update_network(ieee, &ieee->current_network, network);
+>  		if ((ieee->current_network.mode == IEEE_N_24G ||
+> -		     ieee->current_network.mode == IEEE_G)
+> -		     && ieee->current_network.berp_info_valid) {
+> +		     ieee->current_network.mode == IEEE_G) &&
+> +		    ieee->current_network.berp_info_valid) {
+>  			if (ieee->current_network.erp_value & ERP_UseProtection)
+>  				ieee->current_network.buseprotection = true;
+>  			else
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1519850448-21871-1-git-send-email-santhameena13%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
