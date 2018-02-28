@@ -1,94 +1,103 @@
-X-GM-THRID: 6397271096211537920
-X-Received: by 10.25.18.219 with SMTP id 88mr5191230lfs.29.1489480746539;
-        Tue, 14 Mar 2017 01:39:06 -0700 (PDT)
+X-GM-THRID: 6527539355129479168
+X-Received: by 10.107.79.13 with SMTP id d13mr13549184iob.11.1519816318080;
+        Wed, 28 Feb 2018 03:11:58 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.19.10 with SMTP id 10ls1671269ljt.24.gmail; Tue, 14 Mar
- 2017 01:39:06 -0700 (PDT)
-X-Received: by 10.46.83.76 with SMTP id t12mr6467296ljd.26.1489480746105;
-        Tue, 14 Mar 2017 01:39:06 -0700 (PDT)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
-        by gmr-mx.google.com with ESMTPS id t131si757148wmf.1.2017.03.14.01.39.06
+Received: by 10.107.11.223 with SMTP id 92ls690155iol.14.gmail; Wed, 28 Feb
+ 2018 03:11:56 -0800 (PST)
+X-Google-Smtp-Source: AG47ELsZtXsjr1nIgsNH8Clei0B30/Fu0Hmmo9bpM/p0pUbsB6UUu+aWEcAp/WY+k9oaDhJ7OfuK
+X-Received: by 10.107.158.72 with SMTP id h69mr13232534ioe.19.1519816316962;
+        Wed, 28 Feb 2018 03:11:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519816316; cv=none;
+        d=google.com; s=arc-20160816;
+        b=YrsaxcAw08Q8qPwBo1DaIDTO6TYWm1iXlD5qEfjldIgWppgNP1xkW8+jITIpvedXjY
+         zxowUgIOQJ5rEe3jdKgKyvz7dS109Cnqat5Mcl6BN5JvqrVf2B/in8L3Jyf5VQhzLAqv
+         rYgKzHXP2iSD1DgqZrMrXsL4n8H+i7T+aY8LpJfT7uZR/h79NOp/U2RBo2i+gmxG2+47
+         meNuHjDPOLeZDRwau1/Pv5Ecj1KMzXKFKeun26vHDts8nhibOT0tCC/r/T8HKf2HWdC1
+         G6kl8yOn7WGVZoQrMrtJCYFSrMNkcjSFPgryrFQ4mrQrN3GG4wWvhtQtFHLxa9lGBld1
+         FPdg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=piO7Qv5WiYHeQgaYNQPKsuzwBlnCK+rVKvCkuM8Bz88=;
+        b=yP5Zr50Q/Hw51ed++p8w66mr+gxcVimi6yWFRK0VQ5s3FPjKLrx29MbYQyeqw4h0wr
+         m7UuvX4icuMNp4PkuZjgKbGic//KsLu5KQoEvXEx370Qgxjgga8PMGCC04Q97oiWTFFq
+         xUpZ2K+MGQlQgqHOAVAvnyX4eGbQGe6OA/VOVWWQn61mcGHmQhXqadVDwGLqqG4KCU22
+         dECuhGEn3ct7GA7tvSV3DFxzCeD8b1jOvWLyWw5n7bN/CQR00QNttKKt4CfTthaG8dkm
+         q5y41rTN5O7p50lSBcVLZt3TtiPWkNlahueyCfgnw3+aT+AJgMNZiEP+V0MgisBhVEI4
+         kzRA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=i+1xyOrK;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:4001:c0b::229 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <rvarsha016@gmail.com>
+Received: from mail-it0-x229.google.com (mail-it0-x229.google.com. [2607:f8b0:4001:c0b::229])
+        by gmr-mx.google.com with ESMTPS id x35si125900ioe.2.2018.02.28.03.11.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 14 Mar 2017 01:39:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
+        Wed, 28 Feb 2018 03:11:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:4001:c0b::229 as permitted sender) client-ip=2607:f8b0:4001:c0b::229;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x241.google.com with SMTP id u132so13588915wmg.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 14 Mar 2017 01:39:06 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=i+1xyOrK;
+       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:4001:c0b::229 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-it0-x229.google.com with SMTP id u5so3066058itc.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 28 Feb 2018 03:11:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Xekh1gWYPsrbLjgOwBUb5xzjDO9qpHA+a6ubcTVFj7Q=;
-        b=fYPHxkMZCgN18qpkDZX0508X+wb3lOYMm3CDmOv4Y1qbgVFOgSBpqRbqHVr4d0pfyN
-         Dsizo948D0VMEI4pNTLcw+m8R40cMPcjfAis1Z95DfpDSbBfwlzvWxE9rV+iK46uE6uQ
-         vGRiVuK2UJcW++0djpzs73hydFyP5bIPAjVvGiKrST7f+rx7kyR8iwOI/WrZQnxWRjgy
-         krURzOe09vks3RFeY5sP2sHriuQpSfKyh5QWUQC0F8yLMGLnx9rM4gn216DyXpbmPWaS
-         l1+/4AO+UV4C8TXYIEpamjW/kg/mqxzQ4gflx09i5lXHLTJyjjeEKTGUdTAeuhv0gr+2
-         zQdg==
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=piO7Qv5WiYHeQgaYNQPKsuzwBlnCK+rVKvCkuM8Bz88=;
+        b=i+1xyOrKH1xvNKMz/5u1v/C+UlWuGg1uYHO5tUJH77BRFXi4zXpXC+0gkBvpMwyz7l
+         D5Y4l3FUeDlvcjFgF7YkwlWww8NzredNiXvrr9bE5R4oeSP3Vp5euw/be6YDGVwcsOGi
+         yX+GtYNKpXD+iAG2V3gZL7lQNh5vw55Ppx1Fob9I6eozOA52+Ya6VBwODaNI8vjlp3qz
+         cr2o03rZ2jhW8y/dT1ugcmCS7xbdQa3/bklAQORMCki3trvMVYwOARP9pg/YQsSEOEp2
+         /edC+p5vT8N7iw2JVM3lmkrN7/d/ijyvlULr9IFYjny2MkBjljJL3DWcgb2kcgPiGI5u
+         qLZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Xekh1gWYPsrbLjgOwBUb5xzjDO9qpHA+a6ubcTVFj7Q=;
-        b=bNs7ntUMCp2+x4i+58mVfwVllWitmHXSG/+NX8HpI4upXhOVEv8xGwy2k6Hd5c/9j3
-         adaePNWPx78ti8oTZrdbeuzq3HoEH6V7tZ7dPKjUVcynN7MCyBEYMxOUfgCXGXhmw/Z2
-         9y/fkba0XaPOnM4vwbyCTo/gl8xnJidm4ULF/O5JjnflyDg5+WpflKliw9bGjW3t6F9t
-         PUdalk26V//ErAPrUr6HSOLAjgVByGmt785IjFnAjxZvsHEh28DCCKisFNQlgGrVUfSv
-         ZQlReq9bS6WsjGNfOgeFZ7KyVlRBVttQs6+EOzCMfzOyt/nTJkmxSCw3obf4wFB8my0H
-         8aiw==
-X-Gm-Message-State: AFeK/H2BPGxaIDyQwJQYKCQeAGvzjuJK6JNdRD2qpLMCMyEONVo0/DrrZ2dBB6Ni/CxhYw==
-X-Received: by 10.28.234.147 with SMTP id g19mr13512510wmi.102.1489480745921;
-        Tue, 14 Mar 2017 01:39:05 -0700 (PDT)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([2a02:2f0b:8130:11ea:2816:d9d2:5dd8:da73])
-        by smtp.gmail.com with ESMTPSA id g5sm28226871wrb.48.2017.03.14.01.39.04
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 14 Mar 2017 01:39:04 -0700 (PDT)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: linux-doc@vger.kernel.org,
-	corbet@lwn.net,
-	outreachy-kernel@googlegroups.com
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH] Documentation: x86: Fix typos
-Date: Tue, 14 Mar 2017 10:39:02 +0200
-Message-Id: <20170314083902.4491-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=piO7Qv5WiYHeQgaYNQPKsuzwBlnCK+rVKvCkuM8Bz88=;
+        b=Ill0aWLIh2c67g6r4ANSNIDX3eASy+gzEztRZfv6jXlyi/rqGaUpGxIsSXBQPgsg8I
+         PKWVB/oo/ORohv8Zf4UUiV0KA4RSDUpVF56HwjS331ZDtBT59hyN8TyD1Wdlk6YKVWLc
+         Isxd2mA1vQ/VfDDQEON1kYqRJc8j8QqWjL8yxdS6iX/4s3YXd+DQ+uJTqr6EHttXOSis
+         4vcOoXI+lIib4iXZ01Z6eG+zB5l33EBe+LIYxPIcgJeaX3ml3gXDkR2Je5Gxi9lEtGcN
+         T7mx5zCPgb8eisX+QrRYmkDnDxDmed7xI08c95UI4JylWBRqPzxanfZG0LbCLZblfop0
+         YfcA==
+X-Gm-Message-State: APf1xPAerOHTVD1Mv/4ImM3bFRRbJxzkbdpJ2CuDSh2/MapXmJ9AS63E
+	CPoCeG28KL9R76SoyZODfk5ZA7+b+uTud3MFanlnQw==
+X-Received: by 10.36.112.17 with SMTP id f17mr20562023itc.34.1519816316252;
+ Wed, 28 Feb 2018 03:11:56 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.107.132.101 with HTTP; Wed, 28 Feb 2018 03:11:15 -0800 (PST)
+In-Reply-To: <CABwYNcWn2bj=fN4dyCopd74W7dP7mNC6PNj_urzJ_Vc23TgGnQ@mail.gmail.com>
+References: <CABwYNcWn2bj=fN4dyCopd74W7dP7mNC6PNj_urzJ_Vc23TgGnQ@mail.gmail.com>
+From: Varsha Rao <rvarsha016@gmail.com>
+Date: Wed, 28 Feb 2018 16:41:15 +0530
+Message-ID: <CAAFX7JRPDwvtZyOCVDobnj4FVHikVuU01V4vJe7cx0Azf6YoMA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] post commit hook
+To: Shreyasi Rao <shreyasirao97@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset="UTF-8"
 
-Fix typos in x86 directory.
-Make documentation clear and grammatically correct.
+Hi Shreyasi,
 
-Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
----
- Documentation/x86/boot.txt | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+On Wed, Feb 28, 2018 at 3:15 PM, Shreyasi Rao <shreyasirao97@gmail.com> wrote:
+> In the .git/hooks folder I found that there was no post-commit file or
+> post-commit.sample folder so I used mkdir and touch to create the file. But
+> when I edited the post-commit file with vim
+> .git/hooks/post-commit.sample/post-commitit gives me the following error
+>
+> .git/hooks/post-commit.sample/post-commit" E212: Can't open file for writing
 
-diff --git a/Documentation/x86/boot.txt b/Documentation/x86/boot.txt
-index 5e9b826..694979a 100644
---- a/Documentation/x86/boot.txt
-+++ b/Documentation/x86/boot.txt
-@@ -336,7 +336,7 @@ Type:		read
- Offset/size:	0x20e/2
- Protocol:	2.00+
- 
--  If set to a nonzero value, contains a pointer to a NUL-terminated
-+  If set to a nonzero value, contains a pointer to a NULL-terminated
-   human-readable kernel version number string, less 0x200.  This can
-   be used to display the kernel version to the user.  This value
-   should be less than (0x200*setup_sects).
-@@ -1105,7 +1105,7 @@ address of the struct boot_params.
- 
- **** EFI HANDOVER PROTOCOL
- 
--This protocol allows boot loaders to defer initialisation to the EFI
-+This protocol allows boot loaders to defer initialization to the EFI
- boot stub. The boot loader is required to load the kernel/initrd(s)
- from the boot media and jump to the EFI handover protocol entry point
- which is hdr->handover_offset bytes from the beginning of
--- 
-2.9.3
+The file path has error. The file path should be .git/hooks/post-commit.sample
+You need to rename the post-commit.sample file as post-commit. Then remove
+and add lines as suggested in the tutorial. If post-commit file is not
+available, check
+with pre-commit file.
 
+https://kernelnewbies.org/Outreachyfirstpatch?action=show&redirect=OPWfirstpatch#kernel-setup-done
+
+Thanks,
+Varsha
 
