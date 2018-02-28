@@ -1,170 +1,144 @@
-X-GM-THRID: 6529360493201588224
-X-Received: by 10.157.31.14 with SMTP id x14mr7516249otd.29.1520235206419;
-        Sun, 04 Mar 2018 23:33:26 -0800 (PST)
+X-GM-THRID: 6526240605789487104
+X-Received: by 10.237.53.243 with SMTP id d48mr14261485qte.33.1519841895567;
+        Wed, 28 Feb 2018 10:18:15 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.202.198.6 with SMTP id w6ls1705247oif.22.gmail; Sun, 04 Mar
- 2018 23:33:25 -0800 (PST)
-X-Google-Smtp-Source: AG47ELs+lYrxhLwSRWWs5NbL/Bb2waN/G/nFX3se5fOk0iqi30vMs3u5vRvn9oFMi2YEYj6FKhds
-X-Received: by 10.202.57.7 with SMTP id g7mr6615568oia.15.1520235205591;
-        Sun, 04 Mar 2018 23:33:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520235205; cv=none;
+Received: by 10.237.60.99 with SMTP id u32ls2892180qte.11.gmail; Wed, 28 Feb
+ 2018 10:18:14 -0800 (PST)
+X-Google-Smtp-Source: AG47ELtQHHPHd5t9NWkUkz7uEd05Utl9pBf9D//XuVvIkWmhnRkdDkWDLPHVYTq2kHRpYsfJ+wOG
+X-Received: by 10.200.44.187 with SMTP id 56mr1463797qtw.10.1519841894234;
+        Wed, 28 Feb 2018 10:18:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519841894; cv=none;
         d=google.com; s=arc-20160816;
-        b=j0RxavAY3OoCUWbLz5+8JRhHuzIa8iobb9tBF224HlrLRqbyRMnn43BmOmXyC+4PIu
-         xjwKvqF+QYWHCY0Ov9DnGiQiEVa7a3s2D/GeKZ8ciMA+yBYMC6/ZNfqnm4aqOv4BS8nQ
-         h1PyGEPR3k3fD4LVrshqmhV45zj/ZWeCesmGsrRAdArksuL1oA/4gFTkSrtodvaox3dE
-         9kxbOcChMmI9yeGwP1Vnp9EmZBm67Bb3o9Ac9O5tF6ZahHHgFMPNw6S8cYjvQIfu9/8t
-         CzcO5rzH93j8P1r06aHcFtpScebiVouuHUKLeSyoJl/2UWUHI4fv694hZpvpaB1njhQt
-         92mQ==
+        b=huWzyZXOaJUqrlXVj0oYVcDLaVCczGPJInnoIYAnMVGr2lgX8z4JXHdc53eYwNtP/s
+         43AJX1/Fn3mVhaPIhiy8/NK0l+03ah1fl42d0M3c+HBRwJulLHzKQ5QBgKOUskBbB3ct
+         ULPcGtZ8ThYW8FyxuAFIdIw9z14e9ww3CljLwIjV7mqUlgs0LXZ7UMIysdKFzXivMdXJ
+         UAFr6f9S9TWzoRuGaFbU1f/zko1bxPCtZNGWFALuxKWICKxWlKFxVUHG0M2QSPgZwOga
+         7zZ5mzdM6FSQi0BKxGIUI6ep89BVFmzVAueuz1ARr1bwroy8PmWxT3zDosEbe06878Eb
+         YyYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=KqFPgL951ulUrbax3HEmIgtMXHGZaXJwBsYua/b27e4=;
-        b=UfSEjHS0bfP+7NDi4qc4PnGbDn+ycXbXOh6GaZqoly739mKtnV1sTXNjdAQrHUEBvY
-         B7FuE4FZ3AQormg7X1Lfmsa2twBJIJyTn3reqzXi0ik/TWcdal+E6shQCJYiQmMbghwz
-         I4AdQD52ec01LCvbfOGGJ8fqCpL7vds80PCpChzEGUeRcTJ1QJDAOD0FChI9zTt8ffni
-         8NOpQl4t0cKafteohzsBZzc43Izubiz5C8C1mLfFecOXKd6VSBVzL8bZSTV7YPO0lwe1
-         NgLeBEu9yz4P3YQd4F1t5UoCxXE7mIlFEq49GaQJSU/ZSUNP0QKH3zQ2X/7uSV4JguG/
-         +2fA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature
+         :arc-authentication-results;
+        bh=jnedIa3hNS5KwJGzNWZnfcuNN3unWrgbBUjFt4DDs9Q=;
+        b=jbd3Mzr44sCuFJuCKhOYnnOJIjTTTkeUhnVmxasN2DDL0vOP2x66QAdhI3a59uwD9g
+         iP3SfIyS5Lg7XRk0VmepJXLCqc7DapYoET0BWLp98NFL3vGze7KQFXflLATQHMBM0Dsk
+         kpWQNr+YRMHOHFQWMN4KLwljWWIgHpzfRhynBAWoxhoIP0axd4n/SL+KYLK6wRMNdrFv
+         UMu9/mW6t6/t83CD/YpEGiIzBrZRlsBz4Yog/Lq5+dz5HaZ2Ut+Figcu2t7hVtamgtzF
+         wPs2mg3s3UrtIoJn53/1Q5k0+jvGCYwUopSeukEZPQKDTBk5Q5RCW7pcVNmZyMtTCDop
+         5EOQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=T+75hort;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::22d as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jxcT0Tu8;
+       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::22d as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <arushisinghal19971997@gmail.com>
+Return-Path: <santhameena13@gmail.com>
 Received: from mail-pg0-x22d.google.com (mail-pg0-x22d.google.com. [2607:f8b0:400e:c05::22d])
-        by gmr-mx.google.com with ESMTPS id x2si808518oia.5.2018.03.04.23.33.25
+        by gmr-mx.google.com with ESMTPS id f40si133089qta.5.2018.02.28.10.18.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 04 Mar 2018 23:33:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::22d as permitted sender) client-ip=2607:f8b0:400e:c05::22d;
+        Wed, 28 Feb 2018 10:18:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::22d as permitted sender) client-ip=2607:f8b0:400e:c05::22d;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=T+75hort;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::22d as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jxcT0Tu8;
+       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::22d as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x22d.google.com with SMTP id i133so6494811pgc.12
-        for <outreachy-kernel@googlegroups.com>; Sun, 04 Mar 2018 23:33:25 -0800 (PST)
+Received: by mail-pg0-x22d.google.com with SMTP id y26so1252896pgv.4
+        for <outreachy-kernel@googlegroups.com>; Wed, 28 Feb 2018 10:18:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=KqFPgL951ulUrbax3HEmIgtMXHGZaXJwBsYua/b27e4=;
-        b=T+75hortb832ZWYu28wcYZ2lg0Qz2+rBogW6gW/VePEy0evHMvj23qpsTuOfoOHPV0
-         x29nmENSuVDZCdcxlp/3sJFKsKU7H+PxrpPMqxgv7SNS2wof+Cd6KAY2aL8I0mev8bUp
-         vou9GaCBGUjyYDJBZ46POPoVISekuE77lCFkg1T04XEBjErGzur5qoLJ8wYuHKO9FsYF
-         hArpSQq+SXXWbh7S7LMQa72F0je5MTiuRPWvms3plauAx2npfP5RsF19VcNJz4LD0o+6
-         N83YQ1WPIVniA3aQAdutvpOLebJnITfi5aLyS1egpZ1iOCrhXJrXhnlSn9u3dCiL2KDg
-         aG7w==
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=jnedIa3hNS5KwJGzNWZnfcuNN3unWrgbBUjFt4DDs9Q=;
+        b=jxcT0Tu8KD7KFzhyroHXI6x0LQhuoEL+DWyRU9fN6ouWblr+wP1AG7wSq118+4uasK
+         tJPjXLXobQBGCttrvs26lTYYkAg5LiPNOgmgkavc46fFNCKny8p9yrdwNR0yMKGR6sfV
+         XDNaa9UbdaDomkXtBn+RfqylK/tsjNE5H8JOchLUPuQR88y+JTSVOILF7d5jlzqNWaYy
+         KQr/84a22S5owIMOmOepymj+5g3/VJvqKqb1byIWb7rGkRYLlD5jeqTen+PcIuVdvOrM
+         fO1tZfvJVNNK7xTV0PU4nJix4E98yZIJ/h7qpPF9Qv73ItnaoUpsrR72VHRCrFfEXtrM
+         aW1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=KqFPgL951ulUrbax3HEmIgtMXHGZaXJwBsYua/b27e4=;
-        b=hqx89Cex7nRIPMkJo0r0i9xRLBWwdrf1DXTqhUpDDMbtmMcAptah7z9F9nhPo/eKJ9
-         wFNiU6yNinZEeXYcEjRkJQRvBpqji7I+VmNgWnWIi8yU7PiNBWAPn91nX2HDxvDOKGqS
-         x1+pkBlzK7P5iG0JFJD1/2u9x1Jfwu+yFy2BrbtE+6a2OB61IAz6od4m3FSTWhp49nxl
-         8Wka8oW2eBGzB9XDWv0A6qUFd4otH2brQ8mtOvsXQfhBlLiZacdQdRm3vXmwc6xKugoa
-         e5g+FzwFFhJDbZyoH9fISeVGAkZrnj4BNoiI48l+zWsqYSGY0U8sWXf++VeqrJRBMXlO
-         ZuKg==
-X-Gm-Message-State: APf1xPDCjYlDaZVi56ubA13cRb58Y50eaSBbDvAfYOSeEkfDNK3r16R1
-	vYq17Rn97pfHnSlieOSnDLrOFw==
-X-Received: by 10.101.89.6 with SMTP id f6mr11563361pgu.22.1520235204602;
-        Sun, 04 Mar 2018 23:33:24 -0800 (PST)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from seema-Inspiron-15-3567 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id u10sm21523456pfh.57.2018.03.04.23.33.22
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 04 Mar 2018 23:33:23 -0800 (PST)
-Date: Mon, 5 Mar 2018 13:02:56 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
-	Larry.Finger@lwfinger.net, outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: rtl8192u: Replace printk() with appropriate
- net_*macro_ratelimited()
-Message-ID: <20180305073256.GA4347@seema-Inspiron-15-3567>
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=jnedIa3hNS5KwJGzNWZnfcuNN3unWrgbBUjFt4DDs9Q=;
+        b=gML3rom6tZ7u8kMT55b2GjVcGhp7b7nZWQ2fc7gHtG1t96go+ZPz9oBi6WyvgMP8o1
+         /Uy/Qv8NZ9guQuazMXbMGUFmD6xGg+9uNvhOLmJa3Pxa/2GHqBqat9wWaxupVi7Bmxay
+         m/G61DPeLKuDN0f8HF1eE0tR2RXx6e4a85vb12kZs8AptYxxWZgWuD0NVUWL5Y/bc2e/
+         zhU09jMpn3My+Ef7AnukXJfb+6ouGO4R7qegH/vMx4o9BHkFZeRAKG7jAg8N4vUNnsuN
+         keaoTA04JevjIp44FtL70hTtH6cvc7+91AWX9jjXogbu5tLb6a0kSW2deeXO4QnjHJOJ
+         zBtQ==
+X-Gm-Message-State: APf1xPCs/5bFHtCbwifsjANy1YtpUCO9sJ2LLqd3MURT+noOkOxYzx1b
+	x6gV87p/QLHHTzO4aWfv9lHv/A==
+X-Received: by 10.98.61.73 with SMTP id k70mr18738434pfa.10.1519841893703;
+        Wed, 28 Feb 2018 10:18:13 -0800 (PST)
+Return-Path: <santhameena13@gmail.com>
+Received: from ubuntu (ResNet-23-249.resnet.ucsb.edu. [169.231.23.249])
+        by smtp.gmail.com with ESMTPSA id f190sm5934477pfb.158.2018.02.28.10.18.12
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 28 Feb 2018 10:18:12 -0800 (PST)
+Date: Wed, 28 Feb 2018 10:17:47 -0800
+From: Santha Meena Ramamoorthy <santhameena13@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v3] staging: rtl8192e: use struct
+ pointer to get the size of the struct
+Message-ID: <20180228181747.GA17434@ubuntu>
+References: <1519508793-11537-1-git-send-email-santhameena13@gmail.com>
+ <alpine.DEB.2.20.1802251012080.4584@hadrien>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.20.1802251012080.4584@hadrien>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Replace printk having a log level with the appropriate
-net_*macro_ratelimited.
-It's better to use actual device name as a prefix in error messages.
-Indentation is also changed, to fix the  checkpatch issue if line is not
-exceding 80 characters.
+On Sun, Feb 25, 2018 at 10:12:38AM +0100, Julia Lawall wrote:
+> 
+> 
+> On Sat, 24 Feb 2018, Santha Meena Ramamoorthy wrote:
+> 
+> > Use pointer to the structure to get the size of the structure in order
+> > to conform to the Linux kernel coding style. Issue found using
+> > checkpatch.
+> >
+> > Signed-off-by: Santha Meena Ramamoorthy <santhameena13@gmail.com>
+> 
+> Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+> 
+> > ---
+> > Change in v2:
+> >  - Use single line when the number of characters is less than 80
+> > Change in v3:
+> >  - Improve the subject line and the commit message
+> > No code change since v2
+> 
+> Actually, the most recent change description should come first.
+> 
+> julia
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
-changes in v2
-*change the subject line, in v1 driver name was wrong.
-
- .../rtl8192u/ieee80211/ieee80211_crypt_ccmp.c      | 22 +++++++++++-----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
-index e6648f7..200fe5f 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
-@@ -73,7 +73,7 @@ static void *ieee80211_ccmp_init(int key_idx)
- 
- 	priv->tfm = (void *)crypto_alloc_cipher("aes", 0, CRYPTO_ALG_ASYNC);
- 	if (IS_ERR(priv->tfm)) {
--		printk(KERN_DEBUG "ieee80211_crypt_ccmp: could not allocate crypto API aes\n");
-+		net_dbg_ratelimited("ieee80211_crypt_ccmp: could not allocate crypto API aes\n");
- 		priv->tfm = NULL;
- 		goto fail;
- 	}
-@@ -276,22 +276,22 @@ static int ieee80211_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 	keyidx = pos[3];
- 	if (!(keyidx & (1 << 5))) {
- 		if (net_ratelimit()) {
--			printk(KERN_DEBUG "CCMP: received packet without ExtIV flag from %pM\n",
--				hdr->addr2);
-+			net_dbg_ratelimited("CCMP: received packet without ExtIV flag from %pM\n",
-+					    hdr->addr2);
- 		}
- 		key->dot11RSNAStatsCCMPFormatErrors++;
- 		return -2;
- 	}
- 	keyidx >>= 6;
- 	if (key->key_idx != keyidx) {
--		printk(KERN_DEBUG "CCMP: RX tkey->key_idx=%d frame keyidx=%d priv=%p\n",
--			key->key_idx, keyidx, priv);
-+		net_dbg_ratelimited("CCMP: RX tkey->key_idx=%d frame keyidx=%d priv=%p\n",
-+				    key->key_idx, keyidx, priv);
- 		return -6;
- 	}
- 	if (!key->key_set) {
- 		if (net_ratelimit()) {
--			printk(KERN_DEBUG "CCMP: received packet from %pM with keyid=%d that does not have a configured key\n",
--				hdr->addr2, keyidx);
-+			net_dbg_ratelimited("CCMP: received packet from %pM with keyid=%d that does not have a configured key\n",
-+					    hdr->addr2, keyidx);
- 		}
- 		return -3;
- 	}
-@@ -306,8 +306,8 @@ static int ieee80211_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 
- 	if (memcmp(pn, key->rx_pn, CCMP_PN_LEN) <= 0) {
- 		if (net_ratelimit()) {
--			printk(KERN_DEBUG "CCMP: replay detected: STA=%pM previous PN %pm received PN %pm\n",
--			       hdr->addr2, key->rx_pn, pn);
-+			net_dbg_ratelimited("CCMP: replay detected: STA=%pM previous PN %pm received PN %pm\n",
-+					    hdr->addr2, key->rx_pn, pn);
- 		}
- 		key->dot11RSNAStatsCCMPReplays++;
- 		return -4;
-@@ -341,8 +341,8 @@ static int ieee80211_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 
- 		if (memcmp(mic, a, CCMP_MIC_LEN) != 0) {
- 			if (net_ratelimit()) {
--				printk(KERN_DEBUG "CCMP: decrypt failed: STA=%pM\n",
--					hdr->addr2);
-+				net_dbg_ratelimited("CCMP: decrypt failed: STA=%pM\n",
-+						    hdr->addr2);
- 			}
- 			key->dot11RSNAStatsCCMPDecryptErrors++;
- 			return -5;
--- 
-2.7.4
-
+Sorry, I'll remember that :)
+> 
+> >  drivers/staging/rtl8192e/rtllib_wx.c | 3 +--
+> >  1 file changed, 1 insertion(+), 2 deletions(-)
+> >
+> > diff --git a/drivers/staging/rtl8192e/rtllib_wx.c b/drivers/staging/rtl8192e/rtllib_wx.c
+> > index 03fbff0..74d4d2d 100644
+> > --- a/drivers/staging/rtl8192e/rtllib_wx.c
+> > +++ b/drivers/staging/rtl8192e/rtllib_wx.c
+> > @@ -371,8 +371,7 @@ int rtllib_wx_set_encode(struct rtllib_device *ieee,
+> >  		struct lib80211_crypt_data *new_crypt;
+> >
+> >  		/* take WEP into use */
+> > -		new_crypt = kzalloc(sizeof(struct lib80211_crypt_data),
+> > -				    GFP_KERNEL);
+> > +		new_crypt = kzalloc(sizeof(*new_crypt), GFP_KERNEL);
+> >  		if (new_crypt == NULL)
+> >  			return -ENOMEM;
+> >  		new_crypt->ops = lib80211_get_crypto_ops("R-WEP");
+> > --
+> > 2.7.4
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1519508793-11537-1-git-send-email-santhameena13%40gmail.com.
+> > For more options, visit https://groups.google.com/d/optout.
+> >
 
