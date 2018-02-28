@@ -1,103 +1,156 @@
 X-GM-THRID: 6527539355129479168
-X-Received: by 10.107.79.13 with SMTP id d13mr13549184iob.11.1519816318080;
-        Wed, 28 Feb 2018 03:11:58 -0800 (PST)
+X-Received: by 10.80.149.230 with SMTP id x35mr5267975eda.3.1519811189573;
+        Wed, 28 Feb 2018 01:46:29 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.11.223 with SMTP id 92ls690155iol.14.gmail; Wed, 28 Feb
- 2018 03:11:56 -0800 (PST)
-X-Google-Smtp-Source: AG47ELsZtXsjr1nIgsNH8Clei0B30/Fu0Hmmo9bpM/p0pUbsB6UUu+aWEcAp/WY+k9oaDhJ7OfuK
-X-Received: by 10.107.158.72 with SMTP id h69mr13232534ioe.19.1519816316962;
-        Wed, 28 Feb 2018 03:11:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519816316; cv=none;
+Received: by 10.80.202.5 with SMTP id d5ls1933887edi.8.gmail; Wed, 28 Feb 2018
+ 01:46:27 -0800 (PST)
+X-Google-Smtp-Source: AG47ELt0G7XEjD/9KvqOFOHE8TCKTf4xRQdVOj6qco7t7ZkkRnm6lXbNxGYVMleLYIC6AwW5nWnR
+X-Received: by 10.80.232.139 with SMTP id f11mr3540065edn.5.1519811187709;
+        Wed, 28 Feb 2018 01:46:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519811187; cv=none;
         d=google.com; s=arc-20160816;
-        b=YrsaxcAw08Q8qPwBo1DaIDTO6TYWm1iXlD5qEfjldIgWppgNP1xkW8+jITIpvedXjY
-         zxowUgIOQJ5rEe3jdKgKyvz7dS109Cnqat5Mcl6BN5JvqrVf2B/in8L3Jyf5VQhzLAqv
-         rYgKzHXP2iSD1DgqZrMrXsL4n8H+i7T+aY8LpJfT7uZR/h79NOp/U2RBo2i+gmxG2+47
-         meNuHjDPOLeZDRwau1/Pv5Ecj1KMzXKFKeun26vHDts8nhibOT0tCC/r/T8HKf2HWdC1
-         G6kl8yOn7WGVZoQrMrtJCYFSrMNkcjSFPgryrFQ4mrQrN3GG4wWvhtQtFHLxa9lGBld1
-         FPdg==
+        b=Yir84vEIRAJp8dG8kx9AuigFwNGAJNE34Odcsh/kYjr/ji5HA9J+bxz04GA6m8uhPy
+         QX4aBFu8YBVVTG408dWzzN9wsv9VIAHlgpyeEdjpKCKHB1M5GLOhIp2Kwr+qW5JQDUiI
+         mwLaZTjHfNK5kI7vGgIXodFCAUSYBxbAj6oxO4EvdeSvSaTyMWX/9x/W4zfAScDTMVeD
+         LeWLS1junqKjEbQpSlam/5omxXsSE/Pw/ajHX4yt8QD1o63aq+EaEDS4V8oR0SUO+hHv
+         IFSfhRv++PMPnGqr8brZqPbV9m14IGkGKlUNG172vCYsuZakOWJbFXZxU7tnehm4VYt8
+         qaZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=piO7Qv5WiYHeQgaYNQPKsuzwBlnCK+rVKvCkuM8Bz88=;
-        b=yP5Zr50Q/Hw51ed++p8w66mr+gxcVimi6yWFRK0VQ5s3FPjKLrx29MbYQyeqw4h0wr
-         m7UuvX4icuMNp4PkuZjgKbGic//KsLu5KQoEvXEx370Qgxjgga8PMGCC04Q97oiWTFFq
-         xUpZ2K+MGQlQgqHOAVAvnyX4eGbQGe6OA/VOVWWQn61mcGHmQhXqadVDwGLqqG4KCU22
-         dECuhGEn3ct7GA7tvSV3DFxzCeD8b1jOvWLyWw5n7bN/CQR00QNttKKt4CfTthaG8dkm
-         q5y41rTN5O7p50lSBcVLZt3TtiPWkNlahueyCfgnw3+aT+AJgMNZiEP+V0MgisBhVEI4
-         kzRA==
+        h=to:subject:message-id:date:from:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=VIStQZlBaZT8CzrLpQYCxqv0RPYxNc7tewqR3tDgFNA=;
+        b=KBBfDzbP/gz9KsG3dTX8cC1H2dwTx+YH30978aKXf/fu+IeIIkSrujbNXaJ8PgNDvh
+         aPvNysCbqsOCykgD1iWqjyV4tROekRZ+j3HJyUldXz06NdkzEHy3xw1RyJIyHiNFoZAV
+         DzD6VpkQKb9oHO386z2IIAh14Z72u2aulQZWVGBxroCsWHUI9JeEr1guGvvEsCXK1tnH
+         kpZ1FxxmFAx5wCjvWnNe4zR0xt1pdOLstexTpSVN1+usjl+PscO9RFfjWDAMb/E3lOr0
+         1xnZhs1N9I0yRKsFWITqQR9cWjbH/BXmEPAh9U6SJzyIqkxdM3rG6pn165vAwdLVVauA
+         KVoQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=i+1xyOrK;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:4001:c0b::229 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hygGttvK;
+       spf=pass (google.com: domain of shreyasirao97@gmail.com designates 2a00:1450:400c:c09::236 as permitted sender) smtp.mailfrom=shreyasirao97@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-it0-x229.google.com (mail-it0-x229.google.com. [2607:f8b0:4001:c0b::229])
-        by gmr-mx.google.com with ESMTPS id x35si125900ioe.2.2018.02.28.03.11.56
+Return-Path: <shreyasirao97@gmail.com>
+Received: from mail-wm0-x236.google.com (mail-wm0-x236.google.com. [2a00:1450:400c:c09::236])
+        by gmr-mx.google.com with ESMTPS id f20si61651edm.5.2018.02.28.01.46.27
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Feb 2018 03:11:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:4001:c0b::229 as permitted sender) client-ip=2607:f8b0:4001:c0b::229;
+        Wed, 28 Feb 2018 01:46:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of shreyasirao97@gmail.com designates 2a00:1450:400c:c09::236 as permitted sender) client-ip=2a00:1450:400c:c09::236;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=i+1xyOrK;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:4001:c0b::229 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hygGttvK;
+       spf=pass (google.com: domain of shreyasirao97@gmail.com designates 2a00:1450:400c:c09::236 as permitted sender) smtp.mailfrom=shreyasirao97@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-it0-x229.google.com with SMTP id u5so3066058itc.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 28 Feb 2018 03:11:56 -0800 (PST)
+Received: by mail-wm0-x236.google.com with SMTP id s206so25457200wme.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 28 Feb 2018 01:46:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=piO7Qv5WiYHeQgaYNQPKsuzwBlnCK+rVKvCkuM8Bz88=;
-        b=i+1xyOrKH1xvNKMz/5u1v/C+UlWuGg1uYHO5tUJH77BRFXi4zXpXC+0gkBvpMwyz7l
-         D5Y4l3FUeDlvcjFgF7YkwlWww8NzredNiXvrr9bE5R4oeSP3Vp5euw/be6YDGVwcsOGi
-         yX+GtYNKpXD+iAG2V3gZL7lQNh5vw55Ppx1Fob9I6eozOA52+Ya6VBwODaNI8vjlp3qz
-         cr2o03rZ2jhW8y/dT1ugcmCS7xbdQa3/bklAQORMCki3trvMVYwOARP9pg/YQsSEOEp2
-         /edC+p5vT8N7iw2JVM3lmkrN7/d/ijyvlULr9IFYjny2MkBjljJL3DWcgb2kcgPiGI5u
-         qLZw==
+        h=mime-version:from:date:message-id:subject:to;
+        bh=VIStQZlBaZT8CzrLpQYCxqv0RPYxNc7tewqR3tDgFNA=;
+        b=hygGttvKCNO6/9Ptnn2djSBG0BfAawUZquNGluJv/xdAfiOAZP9oP48FUAJxcMUyhK
+         o4Bhvh0jBzBaxdBn2+mP1FYe3pvBeDurDkFpABpv9icGmYJ4yOKn+wlviERe9LI3o/o5
+         TFZQN2hMSWnMhgspS9lwfbphIBXNSTZ1dKOnharccm8vGBkCMGK2w5yxB6FGh16Qz8Vh
+         d9u//FGMpxNKhTl3ZUN3ylasuHeUSm8aum76jtWIzMgn05FRsOzNQ0XlolOflCX20LY+
+         UqSpv/W7ZTXLWg2rq1az1KT/53j6tJuXtsvY47Zc68eNCjkRSinRPLW5pbbrUDXYvzPQ
+         cdwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=piO7Qv5WiYHeQgaYNQPKsuzwBlnCK+rVKvCkuM8Bz88=;
-        b=Ill0aWLIh2c67g6r4ANSNIDX3eASy+gzEztRZfv6jXlyi/rqGaUpGxIsSXBQPgsg8I
-         PKWVB/oo/ORohv8Zf4UUiV0KA4RSDUpVF56HwjS331ZDtBT59hyN8TyD1Wdlk6YKVWLc
-         Isxd2mA1vQ/VfDDQEON1kYqRJc8j8QqWjL8yxdS6iX/4s3YXd+DQ+uJTqr6EHttXOSis
-         4vcOoXI+lIib4iXZ01Z6eG+zB5l33EBe+LIYxPIcgJeaX3ml3gXDkR2Je5Gxi9lEtGcN
-         T7mx5zCPgb8eisX+QrRYmkDnDxDmed7xI08c95UI4JylWBRqPzxanfZG0LbCLZblfop0
-         YfcA==
-X-Gm-Message-State: APf1xPAerOHTVD1Mv/4ImM3bFRRbJxzkbdpJ2CuDSh2/MapXmJ9AS63E
-	CPoCeG28KL9R76SoyZODfk5ZA7+b+uTud3MFanlnQw==
-X-Received: by 10.36.112.17 with SMTP id f17mr20562023itc.34.1519816316252;
- Wed, 28 Feb 2018 03:11:56 -0800 (PST)
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+        bh=VIStQZlBaZT8CzrLpQYCxqv0RPYxNc7tewqR3tDgFNA=;
+        b=VWKM9Fh2Lf7rC7TfZICB5oiD2Qm+TVAMmfn/naGlcdCuaCah66j9kJ7ELZFvKUCdXa
+         2WjKMAqToxbeNnNVTuw0FgWlntlCnxVCRl87l92oeVMad0PKFLUi9TcfnTDV0iuqkfVo
+         ARYVmZyq79IHuOuH5AOVz1TG00vDQf2biiv0mkI6HYuhKYXNXyc0Ssd0uO0IZP7gFu64
+         TpCsrxLHEMXTXI+6Hxra78qz+eB8xX+WLm6PeapH4Bekf1fYsWLPtn12CVLiXvk6IE7b
+         HGuQp2a0+5M7cbwbySmcxOZJDnsupBxp7b4PKKfqCfeHBtAxirvht0AdS0+zbtbtwFkE
+         UFkQ==
+X-Gm-Message-State: APf1xPClgKcuAZLPtLBqwaUhRZ/W9qPB6SR6TTcmTPYsVNnZD1yxQT1G
+	2m4eWBLQiFXz1v534+gTbBPMlhDd5XV1ey2RDIr2jg==
+X-Received: by 10.28.237.23 with SMTP id l23mr14360359wmh.113.1519811187055;
+ Wed, 28 Feb 2018 01:46:27 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.107.132.101 with HTTP; Wed, 28 Feb 2018 03:11:15 -0800 (PST)
-In-Reply-To: <CABwYNcWn2bj=fN4dyCopd74W7dP7mNC6PNj_urzJ_Vc23TgGnQ@mail.gmail.com>
-References: <CABwYNcWn2bj=fN4dyCopd74W7dP7mNC6PNj_urzJ_Vc23TgGnQ@mail.gmail.com>
-From: Varsha Rao <rvarsha016@gmail.com>
-Date: Wed, 28 Feb 2018 16:41:15 +0530
-Message-ID: <CAAFX7JRPDwvtZyOCVDobnj4FVHikVuU01V4vJe7cx0Azf6YoMA@mail.gmail.com>
-Subject: Re: [Outreachy kernel] post commit hook
-To: Shreyasi Rao <shreyasirao97@gmail.com>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Received: by 10.28.108.2 with HTTP; Wed, 28 Feb 2018 01:45:56 -0800 (PST)
+From: Shreyasi Rao <shreyasirao97@gmail.com>
+Date: Wed, 28 Feb 2018 15:15:56 +0530
+Message-ID: <CABwYNcWn2bj=fN4dyCopd74W7dP7mNC6PNj_urzJ_Vc23TgGnQ@mail.gmail.com>
+Subject: post commit hook
+To: outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary="089e0827d214ee20a90566429d2c"
+
+--089e0827d214ee20a90566429d2c
 Content-Type: text/plain; charset="UTF-8"
 
-Hi Shreyasi,
+In the .git/hooks folder I found that there was no post-commit file or
+post-commit.sample folder so I used mkdir and touch to create the file. But
+when I edited the post-commit file with vim
+.git/hooks/post-commit.sample/post-commitit gives me the following error
 
-On Wed, Feb 28, 2018 at 3:15 PM, Shreyasi Rao <shreyasirao97@gmail.com> wrote:
-> In the .git/hooks folder I found that there was no post-commit file or
-> post-commit.sample folder so I used mkdir and touch to create the file. But
-> when I edited the post-commit file with vim
-> .git/hooks/post-commit.sample/post-commitit gives me the following error
->
-> .git/hooks/post-commit.sample/post-commit" E212: Can't open file for writing
+.git/hooks/post-commit.sample/post-commit" E212: Can't open file for writing
+If you could please help me with this, I am very new to git and waited a
+little too long to ask for help.
 
-The file path has error. The file path should be .git/hooks/post-commit.sample
-You need to rename the post-commit.sample file as post-commit. Then remove
-and add lines as suggested in the tutorial. If post-commit file is not
-available, check
-with pre-commit file.
+--089e0827d214ee20a90566429d2c
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-https://kernelnewbies.org/Outreachyfirstpatch?action=show&redirect=OPWfirstpatch#kernel-setup-done
+<div dir=3D"ltr">
 
-Thanks,
-Varsha
+<p style=3D"margin:0px 0px 1em;padding:0px;border:0px;font-style:normal;fon=
+t-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:in=
+herit;font-variant-east-asian:inherit;font-weight:400;font-stretch:inherit;=
+font-size:15px;line-height:inherit;font-family:Arial,&quot;Helvetica Neue&q=
+uot;,Helvetica,sans-serif;vertical-align:baseline;box-sizing:inherit;clear:=
+both;color:rgb(36,39,41);letter-spacing:normal;text-align:left;text-indent:=
+0px;text-transform:none;white-space:normal;word-spacing:0px;background-colo=
+r:rgb(255,255,255);text-decoration-style:initial;text-decoration-color:init=
+ial">In the<span>=C2=A0</span><code style=3D"margin:0px;padding:1px 5px;bor=
+der:0px;font-style:inherit;font-variant:inherit;font-weight:inherit;font-st=
+retch:inherit;font-size:13px;line-height:inherit;font-family:Consolas,Menlo=
+,Monaco,&quot;Lucida Console&quot;,&quot;Liberation Mono&quot;,&quot;DejaVu=
+ Sans Mono&quot;,&quot;Bitstream Vera Sans Mono&quot;,&quot;Courier New&quo=
+t;,monospace,sans-serif;vertical-align:baseline;box-sizing:inherit;backgrou=
+nd-color:rgb(239,240,241);white-space:pre-wrap">.git/hooks</code><span>=C2=
+=A0</span>folder I found that there was no<span>=C2=A0</span><code style=3D=
+"margin:0px;padding:1px 5px;border:0px;font-style:inherit;font-variant:inhe=
+rit;font-weight:inherit;font-stretch:inherit;font-size:13px;line-height:inh=
+erit;font-family:Consolas,Menlo,Monaco,&quot;Lucida Console&quot;,&quot;Lib=
+eration Mono&quot;,&quot;DejaVu Sans Mono&quot;,&quot;Bitstream Vera Sans M=
+ono&quot;,&quot;Courier New&quot;,monospace,sans-serif;vertical-align:basel=
+ine;box-sizing:inherit;background-color:rgb(239,240,241);white-space:pre-wr=
+ap">post-commit</code><span>=C2=A0</span>file or<span>=C2=A0</span><code st=
+yle=3D"margin:0px;padding:1px 5px;border:0px;font-style:inherit;font-varian=
+t:inherit;font-weight:inherit;font-stretch:inherit;font-size:13px;line-heig=
+ht:inherit;font-family:Consolas,Menlo,Monaco,&quot;Lucida Console&quot;,&qu=
+ot;Liberation Mono&quot;,&quot;DejaVu Sans Mono&quot;,&quot;Bitstream Vera =
+Sans Mono&quot;,&quot;Courier New&quot;,monospace,sans-serif;vertical-align=
+:baseline;box-sizing:inherit;background-color:rgb(239,240,241);white-space:=
+pre-wrap">post-commit.sample</code><span>=C2=A0</span>folder so I used mkdi=
+r and touch to create the file. But when I edited the post-commit file with=
+<span>=C2=A0</span><code style=3D"margin:0px;padding:1px 5px;border:0px;fon=
+t-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inher=
+it;font-size:13px;line-height:inherit;font-family:Consolas,Menlo,Monaco,&qu=
+ot;Lucida Console&quot;,&quot;Liberation Mono&quot;,&quot;DejaVu Sans Mono&=
+quot;,&quot;Bitstream Vera Sans Mono&quot;,&quot;Courier New&quot;,monospac=
+e,sans-serif;vertical-align:baseline;box-sizing:inherit;background-color:rg=
+b(239,240,241);white-space:pre-wrap">vim .git/hooks/post-commit.sample/post=
+-commit</code>it gives me the following error</p><p style=3D"margin:0px 0px=
+ 1em;padding:0px;border:0px;font-style:normal;font-variant-ligatures:normal=
+;font-variant-caps:normal;font-variant-numeric:inherit;font-variant-east-as=
+ian:inherit;font-weight:400;font-stretch:inherit;font-size:15px;line-height=
+:inherit;font-family:Arial,&quot;Helvetica Neue&quot;,Helvetica,sans-serif;=
+vertical-align:baseline;box-sizing:inherit;clear:both;color:rgb(36,39,41);l=
+etter-spacing:normal;text-align:left;text-indent:0px;text-transform:none;wh=
+ite-space:normal;word-spacing:0px;background-color:rgb(255,255,255);text-de=
+coration-style:initial;text-decoration-color:initial"><code style=3D"margin=
+:0px;padding:1px 5px;border:0px;font-style:inherit;font-variant:inherit;fon=
+t-weight:inherit;font-stretch:inherit;font-size:13px;line-height:inherit;fo=
+nt-family:Consolas,Menlo,Monaco,&quot;Lucida Console&quot;,&quot;Liberation=
+ Mono&quot;,&quot;DejaVu Sans Mono&quot;,&quot;Bitstream Vera Sans Mono&quo=
+t;,&quot;Courier New&quot;,monospace,sans-serif;vertical-align:baseline;box=
+-sizing:inherit;background-color:rgb(239,240,241);white-space:pre-wrap">.gi=
+t/hooks/post-commit.sample/post-commit&quot; E212: Can&#39;t open file for =
+writing</code></p>
+
+If you could please help me with this, I am very new to git and waited a li=
+ttle too long to ask for help.</div>
+
+--089e0827d214ee20a90566429d2c--
 
