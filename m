@@ -1,150 +1,93 @@
-X-GM-THRID: 6673855780112826368
-X-Received: by 2002:a17:902:5181:: with SMTP id z1mr1000774plh.62.1553878136430;
-        Fri, 29 Mar 2019 09:48:56 -0700 (PDT)
+X-GM-THRID: 6528054471582285824
+X-Received: by 10.159.48.1 with SMTP id h1mr1533678uab.46.1519939252501;
+        Thu, 01 Mar 2018 13:20:52 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:282b:: with SMTP id e40ls389738plb.6.gmail; Fri, 29
- Mar 2019 09:48:55 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwqkrQC38Y13NKASOQ2Pip/LEgNCnlYX0/wpxjiB9qJGVUqnrFqrFIBwCjQYN50fYsdSSzT
-X-Received: by 2002:a17:902:4624:: with SMTP id o33mr813312pld.91.1553878135679;
-        Fri, 29 Mar 2019 09:48:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553878135; cv=none;
+Received: by 10.31.120.135 with SMTP id t129ls4002506vkc.15.gmail; Thu, 01 Mar
+ 2018 13:20:51 -0800 (PST)
+X-Google-Smtp-Source: AG47ELvfhxNafvwmnthiQBF8SyU+HCFRko6QspRVPFYi/lb8cL9QuZNzTK3TDNcZpfvkNn9Qspbg
+X-Received: by 10.31.3.15 with SMTP id 15mr1463412vkd.20.1519939251094;
+        Thu, 01 Mar 2018 13:20:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519939251; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ix5XMQniN1DUrEDZT4bjCtLYMrtO6j8fVAhDzyMJKT0EP/jWn9QGVKuwXcu+K4+ijl
-         /twSJJl2+D8/T5xu6pr9vBGwYqKaHzL5JTPsj3hQ8pcHOYBX7IlEAR+O0iAdfYYAsN4G
-         JNACPZrI8xMNPftzcqpw7uRIirXlO7v28A5c8J/cG401nonqOxVGH9BPgy5Bzl+1XXle
-         Ajq+XbS0UiRWxa8r9yPkU3SjnXjiBINUqmA+VSq3dJfbv0N8lQh5M+0996ehqTAo1Ldh
-         2Bm+OXmAevR68saOURHXi072Mg9KHgVM1uVPyjipmmb8KXjBr0cYr/50YAtOCf71xGoC
-         KQXg==
+        b=zJ9JyyjgzYLH/CF5tcC3e8yHuw+2CfmyFQxW0fFpkcPqnGQ7NfdqvXZXEPr7U6Q3hq
+         MSwYrKC8uGPzUSU06lwb5IlHsfJg5NxLrnj8nWhkwiVQn6FGFFb3ovM/6IL+ARzT/Vmx
+         aqI//XRibJOZbItyoZi/IVQyFYGf2hIJ0cTEhNjAZfyUOB5Z5xJbLT8mayBGw7hzCmjp
+         JaIArJEKQDu7sKdNuHOeW4h/exphx0tCeAKUULAR9l40hLGD8M2RCxJytLF+Zq60jcRX
+         dKK0JvlQmJD1lzf8OuslEG3jMqTn84aB4/drTAxOdfI3p4JHBCnPAiLVhFQFAVLyHSv8
+         Vv6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=t4sU8UH0hw/5p7z5aSQ47Zu1g0Sk4C0aOwBWL2o+Inw=;
-        b=S74BB1/FJCKyYc3C6DhJXteMW3PLGfngoS5raK+KUcHNTym/hCqmR18vuu9H6czKWP
-         /9OArUV2qFriZahXcXVFyxlowOhuo5g4Su5h3ixIUlD40sX5VgrHxYq8orDNm4lBNSUJ
-         RB6EwDl7OTJwI1EPqRq3qXPt1DYMjNXE36hn0oCWdY+bLqNv3a/1y/m6IPLTWhLuyZFz
-         KigU2PY8FBQnQqyzkXfMHqKdGKzzM7YFENDdh7dk48JD7azmJhVlWN0VDyWXd1/8H8hK
-         +OoBCF58BVCDTv0t3mvczhzfQhi2Tlv3vOIWGk+l3CDm9Z08ZM/2R/Zw35axMTD2hgDf
-         1ESA==
+        h=references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=BJ49e0C6HHLzk6aYhewrTSju38hh+gJYN82JoTueri4=;
+        b=0S2e3oJgSx1dLzuE0GhTSoGQdIZfmWiSDa3+nkVsB0PLowEWfuOvBPw91mp2Uqu4Vl
+         tZwPs6q4mGAF02VI71htu3jZZ/5sa5SboZq1WGMoHykcxgxQT6eQR0DUhKjVPRsatxP5
+         K+RHmaQrtrF9s3hMHpDJf/xq/qn3HhTbVZdF7ccq7m/4n1VeDoAQukkhjbwtkP+9PFPd
+         vFPD9quZx9rtU5NJ5Lz6b3C7+knP0Lp4MMhlUVrqkAvowJUOuF3ZuaIQdKeEO30Rslsu
+         NTHmDDca4ummyOluM25ccq//YAeDfI8Z5Lf9DjGYu4kH3tXrt2KgnoNPs9gnE4byPRIj
+         bSaQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mWVUYX6g;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::231 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-oi1-x231.google.com (mail-oi1-x231.google.com. [2607:f8b0:4864:20::231])
-        by gmr-mx.google.com with ESMTPS id cu1si226233plb.4.2019.03.29.09.48.55
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=ejNJyaE3;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::22e as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
+Received: from mail-pf0-x22e.google.com (mail-pf0-x22e.google.com. [2607:f8b0:400e:c00::22e])
+        by gmr-mx.google.com with ESMTPS id b32si346748uad.4.2018.03.01.13.20.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Mar 2019 09:48:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::231 as permitted sender) client-ip=2607:f8b0:4864:20::231;
+        Thu, 01 Mar 2018 13:20:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::22e as permitted sender) client-ip=2607:f8b0:400e:c00::22e;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mWVUYX6g;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::231 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-oi1-x231.google.com with SMTP id w139so2164582oie.9
-        for <outreachy-kernel@googlegroups.com>; Fri, 29 Mar 2019 09:48:55 -0700 (PDT)
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=ejNJyaE3;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::22e as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Received: by mail-pf0-x22e.google.com with SMTP id j2so874661pff.10
+        for <outreachy-kernel@googlegroups.com>; Thu, 01 Mar 2018 13:20:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=t4sU8UH0hw/5p7z5aSQ47Zu1g0Sk4C0aOwBWL2o+Inw=;
-        b=mWVUYX6g8u4Pw4eArdEqWVUCXB7sNAjWMUQpNtSGzUqIsThy6FCTqQqCAja2EjxGFU
-         6hZbSh+Z2hZmGQzlxlHPb04a6b9jUAW5j/OouMFtJGwrcZsRahBRIyiBqvzFRXFWwFH4
-         nt3+CNK3imgr/yU/m3CZ2gDvtj7jsjx8NvTQpQjmQFTFC7pBX77sbv9OijM1XZzh2grX
-         3OQOfWMgsdQCWihDbsNoHrVi/zfPwEzy9S72HuznqkKhLtVOXiicjBQk7Vc3rVti26nf
-         Hk7dIBeL5jNE9TzeivZz/7U3OClC05qXluQhQNKGlPSrBIITyJDPv+I16OfhwiGnUot4
-         k3QQ==
+        d=ashoka.edu.in; s=google;
+        h=from:to:subject:date:message-id:in-reply-to:references;
+        bh=BJ49e0C6HHLzk6aYhewrTSju38hh+gJYN82JoTueri4=;
+        b=ejNJyaE3YVrGTOEABayfNqmKIoAqFF0DOhq9RAONpclcb6FLLpbbR5p32Ejsq9O927
+         tmf8vxLgpk6oRkWyKA34a/Bru5+D/vxb7QGd99JBRmQ2U6ct49oAtsDz6ClKT/bolXqJ
+         gH/3HjK3xbftp0VbL69ud/prpqb1tPWfIjKRM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=t4sU8UH0hw/5p7z5aSQ47Zu1g0Sk4C0aOwBWL2o+Inw=;
-        b=szRjyLdX13u/OZTwnPirlq8LAEcHPbWFaCcyg3cXLrx0/mHdqf64ByE+xgkiaP99jO
-         7wLgVvwz/pJpThowgutUm8oLGQM78WW0T2WlNNhnccjpzEXmaEQt73z6V7238cvP+Pta
-         O4q+b0uR/4bVh9LkNQtr9rUJTbc6um4xjoxQmPZpcwoTo1T9KvErA6xefjTvWqVShkrY
-         KmgRCY/zy+/hpj0z0hG8AAsIh56x8ttosRHZD6qXcAp3w87+0Ocs49ypQhAvSuu9Tps5
-         I+3jfinaqBJMldezMB53oJ55f3IFc4OLH2d+DXfBOzwiUv1nDcj2svnXE78IveyLDZQ7
-         Qvdw==
-X-Gm-Message-State: APjAAAUQ7WBIYD0aEKCLuZ0kKijACce3T8ulotcD4X2pYXHA+EmY5KLM
-	M8UHlzjylGo6k0k131RUbWQ=
-X-Received: by 2002:aca:4405:: with SMTP id r5mr4161652oia.165.1553878135063;
-        Fri, 29 Mar 2019 09:48:55 -0700 (PDT)
-Return-Path: <madhumithabiw@gmail.com>
-Received: from madhuleo ([2605:6000:1023:606d:88a:2f6f:3d5a:23bf])
-        by smtp.gmail.com with ESMTPSA id a23sm913283otf.69.2019.03.29.09.48.53
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 29 Mar 2019 09:48:53 -0700 (PDT)
-From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-To: mchehab@kernel.org,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Subject: [PATCH v2] Staging: media: davinci_vpfe: Convert macro 'IPIPE_S12Q8' into inline
-Date: Fri, 29 Mar 2019 11:48:51 -0500
-Message-Id: <20190329164851.7230-1-madhumithabiw@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+         :references;
+        bh=BJ49e0C6HHLzk6aYhewrTSju38hh+gJYN82JoTueri4=;
+        b=gvnLN7gjKJ4YMEmu7wk4lVnWqEcXvwka+9ULFhDaorOICTsN9Gnl01ihnEHedpcQin
+         r/abFcwUgPpwZxSFGndtGKIFkS3h20cq4qO1DMNi+aguamCCw8DyeQR9Rw1cEOtwX1h+
+         fCALLDJXqM+0IoGKC4daM+/AFzk/yDMQMU4XGN42Xw7gWE7ooOXEbFNubhytF+/bvbu/
+         tIqEDXt5F0XxgiWLd8qmGfZvFAjIdGpQc54i/FfeFVqBUa4f4aoqUmWQT5G1JghklMDD
+         PNM+5tzJnXtzCgg6HiR4I+wn+flWqszU4FBMK5yJrZioMmivRXhZqBu458Ax3h3CXFM2
+         p8Gg==
+X-Gm-Message-State: APf1xPCBoK0R6mBeY+McmoOVlnC9TkzNkcmSq4bcMQnQf/9kFU6z7Uy/
+	8nHJQagj6ce1rVsgFf1Y39/0GS4P
+X-Received: by 10.98.79.90 with SMTP id d87mr3299527pfb.41.1519939250078;
+        Thu, 01 Mar 2018 13:20:50 -0800 (PST)
+Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
+Received: from ashoka-ThinkCentre-E73z.internal.ashoka.edu.in ([210.212.93.46])
+        by smtp.gmail.com with ESMTPSA id t11sm10220709pfe.17.2018.03.01.13.20.48
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 01 Mar 2018 13:20:49 -0800 (PST)
+From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+To: outreachy-kernel@googlegroups.com,
+	julia.lawall@lip6.fr
+Subject: Re:
+Date: Fri,  2 Mar 2018 02:50:42 +0530
+Message-Id: <1519939242-28507-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <alpine.DEB.2.20.1803012103480.3474@hadrien>
+References: <alpine.DEB.2.20.1803012103480.3474@hadrien>
 
-Convert macro 'IPIPE_S12Q8' into an inline function to maintain Linux
-kernel coding style based on which inline function is preferable to
-macro resembling function.
+This is with response to your message that you don't see any spaces in
+the staging tree.
 
-Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Yes, the commit "remove spaces after typecast to int" was an unnecessary
+commit since I added the spaces in the first place. This patch was
+submitted before I read your email regarding not submitting patches to
+fix the incorrect changes I have proposed. Sorry about that. Will focus
+on new patches from next time.
 
----
-Change in v2
-- Resent patch
-- Changed subject line
----
- .../media/davinci_vpfe/dm365_ipipe_hw.c       | 24 ++++++++++---------
- 1 file changed, 13 insertions(+), 11 deletions(-)
+Thank you for your time, and apologies  for the confusion.
 
-diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c b/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c
-index 565a3dc5bed1..110473c30577 100644
---- a/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c
-+++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c
-@@ -825,8 +825,10 @@ ipipe_set_lum_adj_regs(void __iomem *base_addr, struct ipipe_lum_adj *lum_adj)
- 	regw_ip(base_addr, val, YUV_ADJ);
- }
- 
--#define IPIPE_S12Q8(decimal, integer) \
--	(((decimal & 0xff) | ((integer & 0xf) << 8)))
-+inline u32 ipipe_s12q8(unsigned short decimal, short integer)
-+{
-+	return (decimal & 0xff) | ((integer & 0xf) << 8);
-+}
- 
- void ipipe_set_rgb2ycbcr_regs(void __iomem *base_addr,
- 			      struct vpfe_ipipe_rgb2yuv *yuv)
-@@ -835,23 +837,23 @@ void ipipe_set_rgb2ycbcr_regs(void __iomem *base_addr,
- 
- 	/* S10Q8 */
- 	ipipe_clock_enable(base_addr);
--	val = IPIPE_S12Q8(yuv->coef_ry.decimal, yuv->coef_ry.integer);
-+	val = ipipe_s12q8(yuv->coef_ry.decimal, yuv->coef_ry.integer);
- 	regw_ip(base_addr, val, YUV_MUL_RY);
--	val = IPIPE_S12Q8(yuv->coef_gy.decimal, yuv->coef_gy.integer);
-+	val = ipipe_s12q8(yuv->coef_gy.decimal, yuv->coef_gy.integer);
- 	regw_ip(base_addr, val, YUV_MUL_GY);
--	val = IPIPE_S12Q8(yuv->coef_by.decimal, yuv->coef_by.integer);
-+	val = ipipe_s12q8(yuv->coef_by.decimal, yuv->coef_by.integer);
- 	regw_ip(base_addr, val, YUV_MUL_BY);
--	val = IPIPE_S12Q8(yuv->coef_rcb.decimal, yuv->coef_rcb.integer);
-+	val = ipipe_s12q8(yuv->coef_rcb.decimal, yuv->coef_rcb.integer);
- 	regw_ip(base_addr, val, YUV_MUL_RCB);
--	val = IPIPE_S12Q8(yuv->coef_gcb.decimal, yuv->coef_gcb.integer);
-+	val = ipipe_s12q8(yuv->coef_gcb.decimal, yuv->coef_gcb.integer);
- 	regw_ip(base_addr, val, YUV_MUL_GCB);
--	val = IPIPE_S12Q8(yuv->coef_bcb.decimal, yuv->coef_bcb.integer);
-+	val = ipipe_s12q8(yuv->coef_bcb.decimal, yuv->coef_bcb.integer);
- 	regw_ip(base_addr, val, YUV_MUL_BCB);
--	val = IPIPE_S12Q8(yuv->coef_rcr.decimal, yuv->coef_rcr.integer);
-+	val = ipipe_s12q8(yuv->coef_rcr.decimal, yuv->coef_rcr.integer);
- 	regw_ip(base_addr, val, YUV_MUL_RCR);
--	val = IPIPE_S12Q8(yuv->coef_gcr.decimal, yuv->coef_gcr.integer);
-+	val = ipipe_s12q8(yuv->coef_gcr.decimal, yuv->coef_gcr.integer);
- 	regw_ip(base_addr, val, YUV_MUL_GCR);
--	val = IPIPE_S12Q8(yuv->coef_bcr.decimal, yuv->coef_bcr.integer);
-+	val = ipipe_s12q8(yuv->coef_bcr.decimal, yuv->coef_bcr.integer);
- 	regw_ip(base_addr, val, YUV_MUL_BCR);
- 	regw_ip(base_addr, yuv->out_ofst_y & RGB2YCBCR_OFST_MASK, YUV_OFT_Y);
- 	regw_ip(base_addr, yuv->out_ofst_cb & RGB2YCBCR_OFST_MASK, YUV_OFT_CB);
--- 
-2.17.1
-
+Regards, 
+Nishka Dasgupta
 
