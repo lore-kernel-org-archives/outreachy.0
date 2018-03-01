@@ -1,101 +1,105 @@
 X-GM-THRID: 6528054471582285824
-X-Received: by 10.80.138.132 with SMTP id j4mr1191093edj.4.1519934668799;
-        Thu, 01 Mar 2018 12:04:28 -0800 (PST)
+X-Received: by 10.176.20.146 with SMTP id d18mr1303556uae.96.1519931124303;
+        Thu, 01 Mar 2018 11:05:24 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.80.133.197 with SMTP id q5ls4042591edh.1.gmail; Thu, 01 Mar
- 2018 12:04:27 -0800 (PST)
-X-Google-Smtp-Source: AG47ELv2f08X+QbOyxinsGobzWaetQ4nPQGqChEIMBevEylGB0lA90AINC18mR6m3VtiEf5d24tC
-X-Received: by 10.80.244.2 with SMTP id r2mr1193259edm.2.1519934667718;
-        Thu, 01 Mar 2018 12:04:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519934667; cv=none;
+Received: by 10.31.124.135 with SMTP id x129ls3905989vkc.9.gmail; Thu, 01 Mar
+ 2018 11:05:23 -0800 (PST)
+X-Google-Smtp-Source: AG47ELtnRzVjo/30C8qCblGKzfHo0GPvzYRUs6dh4ioPusU1caWwUPfwcfRztlYS3MV6obbcOsRa
+X-Received: by 10.31.244.132 with SMTP id s126mr1282131vkh.8.1519931123465;
+        Thu, 01 Mar 2018 11:05:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519931123; cv=none;
         d=google.com; s=arc-20160816;
-        b=E0YIVwnPcsy1ag/KAXlqPHrDtTYUCYafcjMZQ3EOEG7UzmEct3VWOon/iJk04hUqDl
-         U8Omw3pyNp1080IV313+m6rcVv2KzAYY2RqUjajL0JKGJPlxeIc5wrLePfjd4GTYf+N6
-         qM90OwRGLhmcyeiwUrneyCHROEwctkehpCWsAaiUiCyHJLaZUGUWKlc/LMz1E6UMI0lw
-         J0fJESpl4y/ykYtOny5HPfcr7PSQbctCrd0D/Q/lL2KJmfgsqek9CbfZWKllxP/sJRvy
-         5iOAtfaDKud5XlbKCp98PI0Rdb2aAFIm6TMpVN8fXflRcr3fjFggENVzGHlb2hjyLXTU
-         d0dg==
+        b=uUMWgTLGYg/k2Uif7BX79Zq2CcADy44o9F6U+al+HvKDHPddLNC2HK6LrMfnbjOjX3
+         a5Y0lxvrOG6IuuDt3qwEadI3btLi8/5kpYfPWJjoEZTuOB1ZqbZxewdx9t+CwW78TSZB
+         Gu8TtyFH8mA09CC2TA5+QvyxMYdzqEDw5Uzhxd9JBhrwityoXjIE5v5Pi24QqShRLq4f
+         EXHDPvBO/1jyNMS9OmTVESDLGI/lHZC+/OoIKi7ESt5ARWc2EMHBVoKhyJhFVTCC7L41
+         TeGn2a1L00LSClehP9WtcsjswnPM8+jmDXQeSTI9PU7VjN3ag8IkNZyrFcpwryEHUJ8N
+         YcSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=u2ZeuhKXsMq2A1j3QrBdvM1EKeK5sRgPq2IxdKfmOfQ=;
-        b=0rKtmXP9HxuV3U7atGmmOH46GD4mASLgsuEfQlaiyVThZX8lyKz7TKHz8G0tMInoan
-         /tlDkQKWZFSOXuQunA9heq5ZdfaGXXF77uHPqyDd5xY+7DM2EIN7mxUtUX2B1RebOwKo
-         ssrNmvmTvI1737HHCRZ9r+fMpxx670a5hqKfh8vl5IC0JGUNzYaPf+xCmWBihE1rJtym
-         rCtJdeF8nGFTj3c3Yyf1gaGIr7+/JEORks4CO3i4CObM9kYF7GOCxtnvpyPh89tFeido
-         B7f4jbhpzp2QFomMVIe3ZTMXZqowiJPzIBkE4eBVyBYDHQsd3gokyk7ejEA+3BG9fXzL
-         jNng==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=Cte7jvfcg+2U7mfdT14sOqfvx/VIniSt/wvsUzu6pVk=;
+        b=fz6byu98dMQMOS1JzqI3sZp9y54EPJX0kiGlINyCS7v87gF00+hVhJ75h4cDiVG1YX
+         EjpEbUxfHNEcT/YX/UYW/iuGoIPLSZva3IqnGgMrof6AhZ0AlSzD3Lb7zuBDeheE3W82
+         QDmxt/puHIzS5g3uzQNFOS6Vd+x0+8h1RX4K75HZunQY+es7CXKx095p1+LroQM0/nhw
+         9J0HIXwVJQFYVsTKQnZ1Lnkmvef2Ajt1ID/R+3dviqsjn4t3JWvMEX81sAAyrpBtL17Y
+         QrTPDo8sZDP2HGxcLscvqWjCY6bu5Sdsv8M4oaOeqLoPmWaNc56tgfIylSGZRGubCUsA
+         Jafw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id f24si277312edc.0.2018.03.01.12.04.27
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=gePXvKI1;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::242 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
+Received: from mail-pl0-x242.google.com (mail-pl0-x242.google.com. [2607:f8b0:400e:c01::242])
+        by gmr-mx.google.com with ESMTPS id x135si277736vke.2.2018.03.01.11.05.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Mar 2018 12:04:27 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Thu, 01 Mar 2018 11:05:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::242 as permitted sender) client-ip=2607:f8b0:400e:c01::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.47,409,1515452400"; 
-   d="scan'208";a="256633726"
-Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 01 Mar 2018 21:04:27 +0100
-Date: Thu, 1 Mar 2018 21:04:26 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2] staging: ks7010: Remove spaces
- after typecast to int
-In-Reply-To: <1519931110-2763-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-Message-ID: <alpine.DEB.2.20.1803012103480.3474@hadrien>
-References: <1519931110-2763-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=gePXvKI1;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::242 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Received: by mail-pl0-x242.google.com with SMTP id u13-v6so4196435plq.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 01 Mar 2018 11:05:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ashoka.edu.in; s=google;
+        h=from:to:cc:subject:date:message-id;
+        bh=Cte7jvfcg+2U7mfdT14sOqfvx/VIniSt/wvsUzu6pVk=;
+        b=gePXvKI1bcrt+DCUEDGMBkiYHQXlkoD0GdJV1ctrdQ9a+jpNmmHrupTY7UR/ER8TuM
+         NogbTTTVtmnY6ZyWMj7nPdmKUadzwZZIgVyMKlHErHfbiP9SCol6vqhUBa54p4Gh7G0s
+         DmNNzmi5Cnilhs91QdITkRIyGKb1Evoz+mBOA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=Cte7jvfcg+2U7mfdT14sOqfvx/VIniSt/wvsUzu6pVk=;
+        b=gyW8kuE35wksX6SOshcRLAkK2CNBbyeoy/r8hcWFhuFRi0PlT1T+U7dzeq/DUapIwt
+         YZhWumbCm4nY81MnZxW1AtZivh/M42Qdwn/xLRF8mIkcbcUV0lQ93jCD+KtGzXnXa54N
+         JcM5wzFlrfP/dioIxKH3+bzwsNEGA2zuBusUsbEgap/4IHkij3avjjdRHeQoB7bS3yui
+         IvKyMqsHyYCKb2fkCA2bThqgxprJq3V/8PFoXjQOlaLiimxsI72VfSkH5hRl1bNMATer
+         t5Qj9Z754KFtE3KRCBkKPdDddRNgvIB0w84aONO5N/YDOWUQO7vmQHhhutkFr7wfmZsc
+         PYBQ==
+X-Gm-Message-State: APf1xPC96mZjUkArzKHugZnLrWqT0S8KUTW/CdbHPE9a9gkpgb+dcU51
+	Ig7GqbrO6oMtiK/OEwILhSocaDFN
+X-Received: by 2002:a17:902:d682:: with SMTP id v2-v6mr2818298ply.348.1519931122123;
+        Thu, 01 Mar 2018 11:05:22 -0800 (PST)
+Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
+Received: from ashoka-ThinkCentre-E73z.internal.ashoka.edu.in ([125.22.40.140])
+        by smtp.gmail.com with ESMTPSA id e5sm7176269pgs.17.2018.03.01.11.05.19
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 01 Mar 2018 11:05:21 -0800 (PST)
+From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+To: gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+Subject: [PATCH v2] staging: ks7010: Remove spaces after typecast to int
+Date: Fri,  2 Mar 2018 00:35:10 +0530
+Message-Id: <1519931110-2763-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+X-Mailer: git-send-email 1.9.1
 
+Remove spaces after typecast. Issue found with checkpatch.
 
+Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+---
+Changes in v2:
+ - Revert to typecasting after removing in version 1.
+ - Remove space after typecasting.
 
-On Fri, 2 Mar 2018, Nishka Dasgupta wrote:
+ drivers/staging/ks7010/ks_wlan_net.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> Remove spaces after typecast. Issue found with checkpatch.
+diff --git a/drivers/staging/ks7010/ks_wlan_net.c b/drivers/staging/ks7010/ks_wlan_net.c
+index 482af50..91acf87 100644
+--- a/drivers/staging/ks7010/ks_wlan_net.c
++++ b/drivers/staging/ks7010/ks_wlan_net.c
+@@ -208,7 +208,7 @@ static int ks_wlan_set_freq(struct net_device *dev,
+ 	/* for SLEEP MODE */
+ 	/* If setting by frequency, convert to a channel */
+ 	if ((fwrq->e == 1) &&
+-	    (fwrq->m >= (int) 2.412e8) && (fwrq->m <= (int) 2.487e8)) {
++	    (fwrq->m >= (int)2.412e8) && (fwrq->m <= (int)2.487e8)) {
+ 		int f = fwrq->m / 100000;
+ 		int c = 0;
+ 
+-- 
+1.9.1
 
-I don't see any spaces in the staging tree.  Maybe a previous change of
-yours added them, or maybe someone else already fixed the issue.
-
-julia
-
->
-> Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-> ---
-> Changes in v2:
->  - Revert to typecasting after removing in version 1.
->  - Remove space after typecasting.
->
->  drivers/staging/ks7010/ks_wlan_net.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/ks7010/ks_wlan_net.c b/drivers/staging/ks7010/ks_wlan_net.c
-> index 482af50..91acf87 100644
-> --- a/drivers/staging/ks7010/ks_wlan_net.c
-> +++ b/drivers/staging/ks7010/ks_wlan_net.c
-> @@ -208,7 +208,7 @@ static int ks_wlan_set_freq(struct net_device *dev,
->  	/* for SLEEP MODE */
->  	/* If setting by frequency, convert to a channel */
->  	if ((fwrq->e == 1) &&
-> -	    (fwrq->m >= (int) 2.412e8) && (fwrq->m <= (int) 2.487e8)) {
-> +	    (fwrq->m >= (int)2.412e8) && (fwrq->m <= (int)2.487e8)) {
->  		int f = fwrq->m / 100000;
->  		int c = 0;
->
-> --
-> 1.9.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1519931110-2763-1-git-send-email-nishka.dasgupta_ug18%40ashoka.edu.in.
-> For more options, visit https://groups.google.com/d/optout.
->
 
