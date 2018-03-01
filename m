@@ -1,108 +1,95 @@
-X-GM-THRID: 6476153920097878016
-X-Received: by 10.233.220.132 with SMTP id q126mr3113835qkf.41.1507847085728;
-        Thu, 12 Oct 2017 15:24:45 -0700 (PDT)
+X-GM-THRID: 6528063050610638848
+X-Received: by 10.223.175.42 with SMTP id z39mr340724wrc.21.1519933352982;
+        Thu, 01 Mar 2018 11:42:32 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.200.34.181 with SMTP id f50ls2522961qta.6.gmail; Thu, 12 Oct
- 2017 15:24:45 -0700 (PDT)
-X-Received: by 10.200.2.141 with SMTP id p13mr3178934qtg.34.1507847085315;
-        Thu, 12 Oct 2017 15:24:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507847085; cv=none;
+Received: by 10.28.3.66 with SMTP id 63ls1622551wmd.6.canary-gmail; Thu, 01
+ Mar 2018 11:42:31 -0800 (PST)
+X-Google-Smtp-Source: AG47ELv++Ij2waB/MqDItSCZgfL+zSKbTepM7FFV4AUYL7ZKDlwehNL6n1jIaybk47pRssxeknIo
+X-Received: by 10.28.153.194 with SMTP id b185mr317817wme.17.1519933351927;
+        Thu, 01 Mar 2018 11:42:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519933351; cv=none;
         d=google.com; s=arc-20160816;
-        b=c69+umWsCLxwl6gNA/9VC/3ty3PxGawcZOgR351g2ts1oRxyqlSEH8K69CtP3Gm+VG
-         j5ivW/TwNzH91wss2HJEaBauKKcOpHKs/mI24b6yu/me/CmwexhObKCeu0UUsj1OoZ0J
-         hYn33OZUitMrKdCGoip2r2+jlb5cx114QBYPYwvocRtl5FmUeTS6X3pMyPlNubqCbOUM
-         bjfxblQKi2q7PLK0aC9veo6u9d+P0TxNo9LG/ztlU0Gzx6ZaMU6bnMxclj4Nv7Nruwt2
-         JXvLQ6wHwbX+smv1tY7Zxmgq1oCLqk0XBo/5N4Q8l7wyeYgiWZBTH1rdPmROKP6sm5Ob
-         J9VA==
+        b=skGreJeXZGjBFMrbREiF95iLNvGR8DlruWcjTtF9xxquO+YgeEdvf2yNF972OB8FxT
+         7qcZQgAFCCLYfrWBBtBefXV4iT2B5JtOkCvlJqEYqvM0Xl20d5v2hMGdipKJzkLS0I1w
+         4qm7laRHdwJnBSCVefgSFs2MvbaQ2f1KXMHHTdaZbHawe/8FU2DlMRjRr8nemrCP2bss
+         A2SbPMos4VF/5wz4Nt2lYjbrWYp9HuqkTddraGNPqCk5A14OShAAXBUaLjg62qQn+sS9
+         FN11gRbUIcFpB2/kwtujBBl4RjFhEuCBGwgZDH32Axf88NqiSkXYpGb3vuAF2Y11nU3Q
+         XtZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=Po/79vgrYZxc9dcNtTKixNMKauWgK/jjhE+Mp8ckuFg=;
-        b=Qu1trCGS+EExhv/fCc5zYrJNQReBhpeDjkTPOGcLDPAbBMZg2nhRdhWg4rvxddS+Ok
-         2hr3mmnP2xSVh8Bdw8aCbfX9WOWxwXiY9oAZMxW07IQ9E19IwxXXAwY/8DiLirNHWSAL
-         7c0Wz2mbzFnlXatsWWqie4Lolf6DXn51dYXT0CIgbqyhRVeE3at3Nvb5p93UjVhsCry2
-         u2SEW6ydWJqJ6st7zV50s4CxkMtSulADn1DyoqbSMB3+DQjqXFJAwc46CKCLtbLj/U7B
-         f8OoWXOGK8Dl/SDgL2EwftgND+GUR5t3FDP8Ng4o0L1vNtOPw8dE57c3Lw3kd/6hrgfV
-         13Gg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=HTiFDDV+a0GW7o2WJrDFsAW3kpdaV2FQpO050VtBzQA=;
+        b=UCxmvzanQbfgRVydJVaOV1eK1+emBVtLZdj4ggZWnLUrEuY2TN3URZKvefd4XkGwJK
+         kajiYmKzNcqM38Yz/E+NzLfWLVn7wOFG2RfwmmLEXldWo/uXR6CdA/BheKy7uAC1emSl
+         ZZwmusn1FioeaWoVooSAPbIwkoaSzKUszMG6dk6Aw2EuButkJ5v7+24jGuBR7PCYtd+l
+         KnwEKQcJxoSPeIaZeC3rSAaijbweGRiqtZUH45VGvAX1eWuHvxhuiV03SFeM4FNHQZ8H
+         Em5UtGMtMraGaG6I3OsA7f/WKg3LFYyCjmeAmd7ahDLHLngshXTb7l8z4YG5M+bZlZra
+         S0HQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=if40DlGv;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::229 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from mail-pf0-x229.google.com (mail-pf0-x229.google.com. [2607:f8b0:400e:c00::229])
-        by gmr-mx.google.com with ESMTPS id d142si300077qke.0.2017.10.12.15.24.45
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id a139si170896wma.4.2018.03.01.11.42.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Oct 2017 15:24:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::229 as permitted sender) client-ip=2607:f8b0:400e:c00::229;
+        Thu, 01 Mar 2018 11:42:31 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=if40DlGv;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::229 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x229.google.com with SMTP id m63so6919174pfk.7
-        for <outreachy-kernel@googlegroups.com>; Thu, 12 Oct 2017 15:24:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Po/79vgrYZxc9dcNtTKixNMKauWgK/jjhE+Mp8ckuFg=;
-        b=if40DlGvp0oLt6PWDFcEfH7Q6HtxMP7hZZUQgEilYB8Mp6weQcxYOb96RK0nzVKfhK
-         5OnVuvaLzpSLPFVDm3KhqcdFpCU8Ox5BFQUQjR1lXU4zq5NS30EjfVDqXnjFXsAgdyh4
-         NPu9Ai0Jvr7Hrnz0qNC9mLaY2fBn3wnyQAy0+f1rTXhL3aIgbS2gE5qwWMbvXv6qwlV5
-         xWqcyxe9ccp4sSqugt0FXcg8PEif6MoOhfF4Xa7MSaxMEbKHwKRyznhY9fZWPWDkXy8D
-         jAfpBCrU4eZkaJoeK4DbQ5htZEepKSVujkwggxsFjuoCn7Yy0cPYb2bmGqWRpg4Q4lOT
-         4g1Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Po/79vgrYZxc9dcNtTKixNMKauWgK/jjhE+Mp8ckuFg=;
-        b=AqpyF/5YyfUk73XHYIMr89NQs3ksU6ZCXZkko9BbZarajnlk9QAdnRxa03NqPUeazB
-         88B8GGR69jvngwJdCs5SUESa0n3y/cqqQ5a03lwROy0Nqhx1hfDie1P6t0iGtZ1rYSvj
-         fTybV6ouxtU+FPyKIZApecqnYnjWRYjT5uYCG3zNr1yujc06/jqxKYgP3/I/irfDppsR
-         u33QFKLGvkjCuFbZxl7B/p7QkuXQaiINbeu4kaLTZEeeAnjPMh4Jkc5u7kR2vaeqhh8x
-         VqJuA1j26wasmadF04RgtZcc0U5TmD/w5SVPxrDauicOi1ywlTqy6Ej+LfLdhWcMncSn
-         Wotg==
-X-Gm-Message-State: AMCzsaVseKad7hYvoWMMxR/EW/Nce5NbDDude3C5X5KQYZXEJdskPddx
-	Nz/BCro1Uy36UDmbJLztMlxTOf4w
-X-Google-Smtp-Source: AOwi7QCVSj9GAWndj2IUNcXSTxAZia0NsJxqivtV5p7Oewx88UMsRuq2AKKu3UneQFVwPnzBR/N96Q==
-X-Received: by 10.101.74.12 with SMTP id s12mr1265717pgq.381.1507847085014;
-        Thu, 12 Oct 2017 15:24:45 -0700 (PDT)
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from localhost.localdomain ([103.37.201.27])
-        by smtp.gmail.com with ESMTPSA id q13sm25299185pgt.87.2017.10.12.15.24.34
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Oct 2017 15:24:44 -0700 (PDT)
-From: Harsha Sharma <harshasharmaiitr@gmail.com>
-To: pablo@netfilter.org
-Cc: netfilter-devel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Harsha Sharma <harshasharmaiitr@gmail.com>
-Subject: [PATCH] netfilter: nfnl_cthelper: Replace kzalloc with kcalloc
-Date: Fri, 13 Oct 2017 03:52:18 +0530
-Message-Id: <20171012222218.1220-1-harshasharmaiitr@gmail.com>
-X-Mailer: git-send-email 2.11.0
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.47,409,1515452400"; 
+   d="scan'208";a="315957868"
+Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 01 Mar 2018 20:42:31 +0100
+Date: Thu, 1 Mar 2018 20:42:31 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+cc: eric@anholt.net, stefan.wahren@i2se.com, gregkh@linuxfoundation.org, 
+    f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, 
+    bcm-kernel-feedback-list@broadcom.com, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: vc04_services: bcm2835-audio:
+ Add blank line after declaration
+In-Reply-To: <1519933107-15683-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+Message-ID: <alpine.DEB.2.20.1803012042190.3474@hadrien>
+References: <1519933107-15683-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-kcalloc is preferred to allocate an array instead of kzalloc.
-This patch fixes checkpatch isssue.
 
-Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
----
- net/netfilter/nfnetlink_cthelper.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/net/netfilter/nfnetlink_cthelper.c b/net/netfilter/nfnetlink_cthelper.c
-index 41628b393673..f1ce335b9158 100644
---- a/net/netfilter/nfnetlink_cthelper.c
-+++ b/net/netfilter/nfnetlink_cthelper.c
-@@ -189,7 +189,7 @@ nfnl_cthelper_parse_expect_policy(struct nf_conntrack_helper *helper,
- 	if (class_max > NF_CT_MAX_EXPECT_CLASSES)
- 		return -EOVERFLOW;
- 
--	expect_policy = kzalloc(sizeof(struct nf_conntrack_expect_policy) *
-+	expect_policy = kcalloc(sizeof(struct nf_conntrack_expect_policy) *
- 				class_max, GFP_KERNEL);
- 	if (expect_policy == NULL)
- 		return -ENOMEM;
--- 
-2.11.0
+On Fri, 2 Mar 2018, Nishka Dasgupta wrote:
 
+> Add blank line after declaration. Issue found with checkpatch.
+>
+> Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+> ---
+>  drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c
+> index 5f7551f..22214ee 100644
+> --- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c
+> +++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c
+> @@ -209,6 +209,7 @@ static int snd_bcm2835_playback_close(struct snd_pcm_substream *substream)
+>  	 */
+>  	if (alsa_stream->running) {
+>  		int err;
+> +
+>  		err = bcm2835_audio_stop(alsa_stream);
+>  		alsa_stream->running = 0;
+>  		if (err)
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1519933107-15683-1-git-send-email-nishka.dasgupta_ug18%40ashoka.edu.in.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
