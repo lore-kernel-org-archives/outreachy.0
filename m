@@ -1,90 +1,88 @@
 X-GM-THRID: 6528044448013615104
-X-Received: by 2002:a25:2904:: with SMTP id p4-v6mr1331573ybp.57.1519931760468;
-        Thu, 01 Mar 2018 11:16:00 -0800 (PST)
+X-Received: by 10.25.78.9 with SMTP id c9mr221202lfb.24.1519929731158;
+        Thu, 01 Mar 2018 10:42:11 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:3214:: with SMTP id y20-v6ls784982yby.8.gmail; Thu, 01
- Mar 2018 11:15:58 -0800 (PST)
-X-Google-Smtp-Source: AG47ELtd05i7KKW4dZF52neKcC2TgHdF3d3si49urWa1HzSSd7LxdEc82psYG98i1TOnD0f6ZfKz
-X-Received: by 2002:a25:4291:: with SMTP id p139-v6mr1333605yba.73.1519931758687;
-        Thu, 01 Mar 2018 11:15:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519931758; cv=none;
+Received: by 10.46.17.66 with SMTP id f63ls844304lje.1.gmail; Thu, 01 Mar 2018
+ 10:42:09 -0800 (PST)
+X-Google-Smtp-Source: AG47ELscGbNHmxyWU/2Ozlc6sQgguOwSMmnsyLy1YiMgJ4BfnC6jkZADYkc+p8lBOUie1zh+gafr
+X-Received: by 10.46.129.206 with SMTP id s14mr210625ljg.9.1519929729317;
+        Thu, 01 Mar 2018 10:42:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519929729; cv=none;
         d=google.com; s=arc-20160816;
-        b=ar01yE+usfc7gdhxtzAKmppgi5fdPoPwINdFPt1CVvRPWJzSMnCZlkSS3ANfSVe4qE
-         wPU/JX3Sa803HnbEXUtUPC4WTmvjwVC+rxG4/sOc7Syr1YdEUqFMAwilqMiwgZ8FZPRN
-         MkgqH5uMCzqwRpZvw16qNgFYwWuTZQOFWU2GX1IiYnt5VwLeQ6cy9dlj/lmM+PtATf9E
-         cNK0TWwwhXjN9wXqz4ojKqb8DZ5KFEdpDVsiNgHTK+TmpsViR9HcwK//soFzGagZHzkT
-         eUetWos3ZTERBXWbgxXOwYXbmgjGx1ydpSgwnxrS3HlDOfDmR6ztNQjToGur+ywsziWD
-         kVAQ==
+        b=H2huGrmUj4W+x0uTayyLgg/sr0wkDTk8j5rU0y5wXJs6DrdgqJDU/BswVrcJj/5vC+
+         kX2t/4CPB1ubBVObTCPqmC8n59/aoDwhUYoV73jSb/0y+cK/Z1o2/pFw07oVHEzLZa1o
+         3jcbldwa5jPHmk48ys9QaBjQunkIHmziVknLsZFlPN+d6lNnQfmnZ1jgNxwOdo9EXOkI
+         zIAFERsEd5TkLuVgH8w5ZoU9LTzmIyAEYjNfFTj2pM157MctjACxwGFC6SjQUQATx2Wt
+         T4l9jBX0exoQaiyG2NPn9DwlkYRoom7bni1sEaw7TkOR3s+1tgDIifqYUfmzOmHDpChu
+         fJRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=n7eTJCM/QolDzws2nTc1kIgUMnWmX7/rL/Zea8MhCZ8=;
-        b=gWpGObQKUuFoufPseM3TGuU7ldk9BCExhoJd58d5nOniNPtzMGtj/BAH88Y2Jq27Uy
-         CciDRlV9W8G45WjiUBe1B+/VoTQk27qq6D9QSNhDvIN48qke30e7UWvdVF7VORabOo67
-         K3xxKgM5O9RftYHezVmAx16xw4S86QU7vtf8nA7rerdezb6ArdkN7amfcrA9fiTeFQuR
-         H0VEaB3PE8D9ju9AdwFtZJ+waPPBLiMXeFL4jbxtEAuPtWSljnInMMl23qQMKXvBUc8g
-         UpTLZ1/QiMjtG3CzOpdJSQ3YysQ71RWJ2ZwQnXppNlFncav8mGAaP7lbCrmuNrjR58sZ
-         sMkw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=Z4icI4ScMJxpO9yBpx2Wz156TguZCZk32F3hIhFaOCI=;
+        b=GTbHLtfuNp8Wjjts6J8TZqL1GGa15npb2zNdz/qyCQ34MR79fdTZxEiTEZfsFgPiNv
+         TMMX1mpUJ+ASHjKRRe8olHAG/7lb/pqpWcVWEc9T729b6wIXLkZsA+NrpFzobK98L6SS
+         8pjMPPehM9yR9bhFP1tKmHuYiziiZyd/S8Rb+Qv1+rhnmiGf5jbsmWlD067iJXFTI7qM
+         kVUxiliKGPIuDyXLBfiv0yWXfY5Bb5+9wMD2ZK3bcUag9hLyx7aIT7bT3Z+IcjiM9UEt
+         JvP77IVvxh2pX0J4zH1bFKSYabKdpFj4bkHe4aowAF4b6oDgXchk1pEgkw2DKUUVESoF
+         4wtQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=R1djgc+p;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id 200-v6si241119ybd.1.2018.03.01.11.15.58
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id s26si87848lfi.1.2018.03.01.10.42.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Mar 2018 11:15:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Thu, 01 Mar 2018 10:42:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=R1djgc+p;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Received: by mail-pg0-x243.google.com with SMTP id e9so2703893pgs.10
-        for <outreachy-kernel@googlegroups.com>; Thu, 01 Mar 2018 11:15:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ashoka.edu.in; s=google;
-        h=from:to:subject:date:message-id:in-reply-to:references;
-        bh=n7eTJCM/QolDzws2nTc1kIgUMnWmX7/rL/Zea8MhCZ8=;
-        b=R1djgc+plUVh8KoxlWz+W+7HDLMuwL3f8WMwFMoz2AFGLYlBJ2J+KIG0hAiMVYBLyR
-         OT6rL79ga5xwM3St7uNKU9awxNZ5bWeM1eUukr8MC9hpWzOk+4vGGO6lQUvHP41yM6tc
-         OR0rzrZ3lim4LRLNmBY7mo5xonJ92mq3OztU4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
-         :references;
-        bh=n7eTJCM/QolDzws2nTc1kIgUMnWmX7/rL/Zea8MhCZ8=;
-        b=gXt/o7b2DU+et+LkAoEa88kSsLA9+S0Sj6DoHglukTvygjcbOqY1g5GK8shpM0usxC
-         MXANCoS4YOFgG2zr8xEsC49ugArxkwMzNsjNZLLPpt2aiyyR5dVPtq5VyEnvg8A2slvW
-         Wymq2s9cwWh7MomlF2Cton8o88kEj/jk3MpYPRN8Qsx5bYeum0cgfJhy3W0UsDeEjwU4
-         bCLIcSwEnsWLAlXo26bYefDROGu1L5HDcQcN+yBH5mTmqUdmUxPZuoW/6q8JMg2pEmTM
-         b8o5h4758qWC/1dgTDM0UT4Txp2seT9geN/wotXLl1Dg+kW2RpuYic/upEV4XgGgqODE
-         wzqg==
-X-Gm-Message-State: APf1xPADLsF2cPrnZcD/rm5IOdpNT0RmGMD2BluwGLNZ5eZRfXAsZOsi
-	3MZ+0B3s6NpKiHs0haaZHFLVFA==
-X-Received: by 10.101.88.76 with SMTP id s12mr2313251pgr.385.1519931757845;
-        Thu, 01 Mar 2018 11:15:57 -0800 (PST)
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from ashoka-ThinkCentre-E73z.internal.ashoka.edu.in ([125.22.40.140])
-        by smtp.gmail.com with ESMTPSA id p16sm10333604pfd.77.2018.03.01.11.15.54
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 01 Mar 2018 11:15:57 -0800 (PST)
-From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-To: eric@anholt.net,
-	stefan.wahren@i2se.com,
-	gregkh@linuxfoundation.org,
-	f.fainelli@gmail.com,
-	rjui@broadcom.com,
-	sbranden@broadcom.com,
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (clnet-b04-243.ikbnet.co.at [83.175.124.243])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 16783DA7;
+	Thu,  1 Mar 2018 18:42:06 +0000 (UTC)
+Date: Thu, 1 Mar 2018 19:42:07 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+Cc: eric@anholt.net, stefan.wahren@i2se.com, f.fainelli@gmail.com,
+	rjui@broadcom.com, sbranden@broadcom.com,
 	bcm-kernel-feedback-list@broadcom.com,
 	outreachy-kernel@googlegroups.com
 Subject: Re: [PATCH v2] staging: vc04_services: bcm2835-camera: Add blank line
-Date: Fri,  2 Mar 2018 00:45:48 +0530
-Message-Id: <1519931748-3066-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <20180301184207.GA15880@kroah.com>
-References: <20180301184207.GA15880@kroah.com>
+Message-ID: <20180301184207.GA15880@kroah.com>
+References: <1519928773-10756-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1519928773-10756-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+User-Agent: Mutt/1.9.3 (2018-01-21)
 
-Checkpatch suggested two warnings for this file in consecutive lines: "static VCHI_CONNECTION_T *vchi_connection;" and "static VCHI_INSTANCE_T vchi_instance;". Both warnings said to add a blank line after the declaration. If checkpatch was wrong, is it okay if I submit a version 2 with a blank line only after "vchi_instance" and not below "*vchi_connection" (effectively undoing one of my commits)?
+On Thu, Mar 01, 2018 at 11:56:13PM +0530, Nishka Dasgupta wrote:
+> Add blank line after variable declaration. Issue found with checkpatch.
+> 
+> Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+> ---
+> Changes in v2:
+>  - Format commit message.
+> 
+>  drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c b/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c
+> index e3460b7..c90754f 100644
+> --- a/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c
+> +++ b/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c
+> @@ -1979,6 +1979,7 @@ int vchiq_mmal_init(struct vchiq_mmal_instance **out_instance)
+>  	static VCHI_CONNECTION_T *vchi_connection;
+>  
+>  	static VCHI_INSTANCE_T vchi_instance;
+> +
+>  	SERVICE_CREATION_T params = {
+>  		.version		= VCHI_VERSION_EX(VC_MMAL_VER, VC_MMAL_MIN_VER),
+>  		.service_id		= VC_MMAL_SERVER_NAME,
 
-Thanking you,
-Nishka Dasgupta
+Checkpatch is wrong here, don't you think?  Are you sure this is
+actually doing what you think it is?
+
+thanks,
+
+greg k-h
 
