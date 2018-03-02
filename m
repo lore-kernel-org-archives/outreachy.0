@@ -1,88 +1,171 @@
 X-GM-THRID: 6528334297317769216
-X-Received: by 10.28.202.2 with SMTP id a2mr532033wmg.20.1520090523677;
-        Sat, 03 Mar 2018 07:22:03 -0800 (PST)
+X-Received: by 10.80.202.69 with SMTP id e5mr1891868edi.9.1519996397740;
+        Fri, 02 Mar 2018 05:13:17 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.63.138 with SMTP id m132ls768296wma.5.canary-gmail; Sat, 03
- Mar 2018 07:22:02 -0800 (PST)
-X-Google-Smtp-Source: AG47ELvJ5WNVx07cukC51HREqUXyPoukRc3VuOV5Tjf4QjqkFBD975we+eu2joKVaEY7OM9blhfG
-X-Received: by 10.28.45.84 with SMTP id t81mr510820wmt.24.1520090522803;
-        Sat, 03 Mar 2018 07:22:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520090522; cv=none;
+Received: by 10.80.205.208 with SMTP id h16ls4933729edj.5.gmail; Fri, 02 Mar
+ 2018 05:13:16 -0800 (PST)
+X-Google-Smtp-Source: AG47ELsiNxQg1sF79zOqX9fUIhyTbAAE31aV8t0X0k76/tVcaFWYKeXYixZynzih7ysr+l9qeI/E
+X-Received: by 10.80.149.230 with SMTP id x35mr1888623eda.3.1519996396875;
+        Fri, 02 Mar 2018 05:13:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519996396; cv=none;
         d=google.com; s=arc-20160816;
-        b=drYYl5D0kW/je4G622gKq8WV5dlZgstb/aGv37nw84mU+7cNYME+r0DZ2jHJo/GJ1b
-         t3DSlfoBHn4VURNBteS7OYph4PyWaZD/hCeAYb3P52jBpvz1qofwalwtoTCcGxUcDomJ
-         QDJqOY1rPrF8MQR6KPyi/TJs/CXmfF1q0Dp3GCQvf90wr/8fdcHyCA38l5aBR23eiwdS
-         1vio379QPdpO8J1LYFteBsqceZhKHaMZnkIAoomupd9J593aTyo6tUfZEyegmIRBMdcd
-         7HltVSylXmu02cKJJDcpeP86PGPQ9L/90G3dzJn0wuOwoaqybJIvHfSfxz5Oi/9NNf3p
-         tDdw==
+        b=OwFHsyfXOn/WKePS+FKO3Lc9RluHMIrrBKITOzP5YrgyDpzkk44etkF+vk42HkIg2l
+         tSQ+OlNauKqTSB1dZDNYSHGlBVNEyvM8e3MQ8nJV7ibagKmMVZMfnO+hdkSbYeKsh+6f
+         8Y3vry0cv/3fHQiA3En3x8ELdsowzDQqcDBOOSaPNsA5X3+OZGE2QMpDOuvm3bn43YrU
+         pvZxXcz0MZ49Q89sVidFvcO2LkPY4KNABxWzhV7gSuFJ5MSsSSkvUB7m2Y/JKINsmDMN
+         CvYedbzbqi9Iwsj6HfrXrYnEpS/alAu/wLiGY4JMvBPqOXNZHK+upjl9IA6pkz66a/Xs
+         yhfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=A/rmvQP3H1CBtxJrIRS8g0YRiHQ1eJ4Nz+CflmPCFzI=;
-        b=lIh4QaXBU8O1NdXCBH3573IY89Dbf4uH7x2i3bSFKJD7ur+80lJjA+IBNlXCVXtijT
-         yDRVwM/n0V3izaf6SvMsZPRdhIT5+SDy758ZiiYrB5e/7oedL15Yy1wPXdLH4v+26xTJ
-         i96doXmqSQvtAFkC+yipnHJM0PLXQoG+t5z2Pk6D026xG93o48e9FLTTRf6mRDaPNDBn
-         8sMDFYhz0vTk+XvGFDNlSDdUaQ/Y4JpF4GvWm/OSAJaScoce/x+U2bpL/FafV117XnPl
-         bGhiwUxrCls8y/+30HYsPEzMXdQEN2lO3zSk6ZjZ+LIpFpTEpse7njSaLKNH3XxMF3Ya
-         69ww==
+        h=references:in-reply-to:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature:arc-authentication-results;
+        bh=MI0mYY5nrU1PE10IL8y6m8G05chdoPamCCCF+KdR/wU=;
+        b=n3pHc8DD1HUgv54pLg3c6ifYtYo9wnYQhTnm2FWqCPD9jRxHDe7wZnMQpwaNFZSnOc
+         Db57hJ8ptQ0gGiNd0SYaB3e6CDQVxT7xjytYWeT8TDKd9JT9UsUGrddu8T8sb3IR4oyF
+         ArSiJmVVzZd+jP/f6jb6Lcf+5D+g/dBTDGt3Uc0JkctdjYAxf2Yupm/PPS2qUimJTRsK
+         eHStbng0LXquB6NvLDim3BNHT3Z1Yf3F2hScRmaZ8ycFgxRJ5fK73SsUJ9HIwbhfReWb
+         GYBAKoYOFyEQxVocM5AVtNmH0ULexyS++sq5jwm6hzb00QJoNiLY6xhk4dAjYMBtM3aw
+         9gWA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id 51si523215wrw.0.2018.03.03.07.22.02
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=a8ES+Cvb;
+       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:400c:c09::22d as permitted sender) smtp.mailfrom=dafna3@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <dafna3@gmail.com>
+Received: from mail-wm0-x22d.google.com (mail-wm0-x22d.google.com. [2a00:1450:400c:c09::22d])
+        by gmr-mx.google.com with ESMTPS id f24si347736edc.0.2018.03.02.05.13.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 03 Mar 2018 07:22:02 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Fri, 02 Mar 2018 05:13:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:400c:c09::22d as permitted sender) client-ip=2a00:1450:400c:c09::22d;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.47,418,1515452400"; 
-   d="scan'208";a="316219018"
-Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 03 Mar 2018 16:22:02 +0100
-Date: Sat, 3 Mar 2018 16:22:02 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Dafna Hirschfeld <dafna3@gmail.com>
-cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 0/3] cleanup in staging rtl8192e
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=a8ES+Cvb;
+       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:400c:c09::22d as permitted sender) smtp.mailfrom=dafna3@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x22d.google.com with SMTP id q83so3068201wme.5
+        for <outreachy-kernel@googlegroups.com>; Fri, 02 Mar 2018 05:13:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=MI0mYY5nrU1PE10IL8y6m8G05chdoPamCCCF+KdR/wU=;
+        b=a8ES+CvbY7X5kHUFCaNKGOhrWY+BkEi+jJgsCMhvmNLwsvvYnWQANXPavoy3CYMNQR
+         43dZ76IQarO/Rzx3LajZrr+TbZEz9FuMimuv6fGprZ1pfS/hfBKh/4DA4rkP9hQkJIQZ
+         0c8ROm/8glmFcxAz1QRVJJGEoBMPem7COAJMl2+6XYVChhj8l87DYjdssnc9S+5ZLtY+
+         +8Q2JG5SNusJPDEwwpaSgGknrrt9ehDQlhPKxoxMlip9kdN5CNtEQh8RD16uIoXgJ4eW
+         WmT94iBRxW6Ep1uvryx/9aB+9y1PckMPcN0VwzG39fk4hO0+n+MRAu6mm12/lCslvXa1
+         ZzTg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=MI0mYY5nrU1PE10IL8y6m8G05chdoPamCCCF+KdR/wU=;
+        b=jcevD2y7Wm4KQO5TcXCSOp1MY+AvhlemYnE/6XjMPBIM4WnwW0vSpZ2s53Uve8wKIY
+         Fwnj9tcpfORiOhw/2YeZlARuN4ZIORD3DpfT37l/VzBm9dni/hYdijZ5HFZA7xYe0lXO
+         uaBCZuU6VYB1ttiWyck8DRQ2lrP2aySHbJ5tXX+bPyTP/ZRLT+uqN5dFpYjVRYY0Gp0V
+         eutO+BRycnWpyP9oKGVw5Qu9Tx3lCwqtbfVBSZkqZq9S0YFxtUVFee4eO27QSmfYxG40
+         sqQsU1DJnZ50/qyJNc4dYCx/5GZcNWTSqD0n9Y6GsROCPRCdltc5rRX7xAZBUuWF8Tpx
+         0b/g==
+X-Gm-Message-State: AElRT7GshP1GH2HxGkrccu1WAyUYK0SKsGSxdlMBJemL7nIra+bwyrvI
+	yPyrYRhqDtBozl7bHKn+PqI=
+X-Received: by 10.28.212.13 with SMTP id l13mr1610604wmg.123.1519996396606;
+        Fri, 02 Mar 2018 05:13:16 -0800 (PST)
+Return-Path: <dafna3@gmail.com>
+Received: from guri.home (IGLD-84-229-54-107.inter.net.il. [84.229.54.107])
+        by smtp.gmail.com with ESMTPSA id 47sm5896815wrb.48.2018.03.02.05.13.15
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 02 Mar 2018 05:13:15 -0800 (PST)
+From: Dafna Hirschfeld <dafna3@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: Dafna Hirschfeld <dafna3@gmail.com>,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH 3/3] staging: rtl8192e: Add spaces around operators.
+Date: Fri,  2 Mar 2018 15:09:58 +0200
+Message-Id: <727cd7623b85d96d11495705f52406c7ad182dfb.1519995327.git.dafna3@gmail.com>
+X-Mailer: git-send-email 2.7.4
 In-Reply-To: <cover.1519995327.git.dafna3@gmail.com>
-Message-ID: <alpine.DEB.2.20.1803031621460.2302@hadrien>
 References: <cover.1519995327.git.dafna3@gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+In-Reply-To: <cover.1519995327.git.dafna3@gmail.com>
+References: <cover.1519995327.git.dafna3@gmail.com>
 
+Add spaces around arithmetic and bitwise operators to improve
+readability of the code.
+Issues found with checkpatch.pl
 
+Signed-off-by: Dafna Hirschfeld <dafna3@gmail.com>
+---
+ drivers/staging/rtl8192e/rtl8192e/rtl_wx.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-On Fri, 2 Mar 2018, Dafna Hirschfeld wrote:
+diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_wx.c b/drivers/staging/rtl8192e/rtl8192e/rtl_wx.c
+index a9192e8..843e874 100644
+--- a/drivers/staging/rtl8192e/rtl8192e/rtl_wx.c
++++ b/drivers/staging/rtl8192e/rtl8192e/rtl_wx.c
+@@ -243,7 +243,7 @@ static int _rtl92e_wx_set_debug(struct net_device *dev,
+ 	netdev_info(dev, "=====>%s(), *extra:%x, debugflag:%x\n", __func__,
+ 		    *extra, rt_global_debug_component);
+ 	if (c > 0)
+-		rt_global_debug_component |= (1<<c);
++		rt_global_debug_component |= (1 << c);
+ 	else
+ 		rt_global_debug_component &= BIT31;
+ 	return 0;
+@@ -352,7 +352,7 @@ static int _rtl92e_wx_get_range(struct net_device *dev,
+ 	range->min_pmp = 0;
+ 	range->max_pmp = 5000000;
+ 	range->min_pmt = 0;
+-	range->max_pmt = 65535*1000;
++	range->max_pmt = 65535 * 1000;
+ 	range->pmp_flags = IW_POWER_PERIOD;
+ 	range->pmt_flags = IW_POWER_TIMEOUT;
+ 	range->pm_capa = IW_POWER_PERIOD | IW_POWER_TIMEOUT | IW_POWER_ALL_R;
+@@ -360,7 +360,7 @@ static int _rtl92e_wx_get_range(struct net_device *dev,
+ 	range->we_version_source = 18;
+ 
+ 	for (i = 0, val = 0; i < 14; i++) {
+-		if ((priv->rtllib->active_channel_map)[i+1]) {
++		if ((priv->rtllib->active_channel_map)[i + 1]) {
+ 			range->freq[val].i = i + 1;
+ 			range->freq[val].m = rtllib_wlan_frequencies[i] *
+ 					     100000;
+@@ -373,8 +373,8 @@ static int _rtl92e_wx_get_range(struct net_device *dev,
+ 	}
+ 	range->num_frequency = val;
+ 	range->num_channels = val;
+-	range->enc_capa = IW_ENC_CAPA_WPA|IW_ENC_CAPA_WPA2|
+-			  IW_ENC_CAPA_CIPHER_TKIP|IW_ENC_CAPA_CIPHER_CCMP;
++	range->enc_capa = IW_ENC_CAPA_WPA | IW_ENC_CAPA_WPA2 |
++			  IW_ENC_CAPA_CIPHER_TKIP | IW_ENC_CAPA_CIPHER_CCMP;
+ 	range->scan_capa = IW_SCAN_CAPA_ESSID | IW_SCAN_CAPA_TYPE;
+ 
+ 	/* Event capability (kernel + driver) */
+@@ -702,7 +702,7 @@ static int _rtl92e_wx_set_enc(struct net_device *dev,
+ 	}
+ 	if (wrqu->encoding.length != 0) {
+ 		for (i = 0; i < 4; i++) {
+-			hwkey[i] |=  key[4*i+0]&mask;
++			hwkey[i] |=  key[4 * i + 0] & mask;
+ 			if (i == 1 && (4 * i + 1) == wrqu->encoding.length)
+ 				mask = 0x00;
+ 			if (i == 3 && (4 * i + 1) == wrqu->encoding.length)
+@@ -1139,15 +1139,15 @@ static const struct iw_priv_args r8192_private_args[] = {
+ 		IW_PRIV_TYPE_INT | IW_PRIV_SIZE_FIXED | 1, 0, "forcereset"
+ 	}, {
+ 		SIOCIWFIRSTPRIV + 0x6,
+-		IW_PRIV_TYPE_INT | IW_PRIV_SIZE_FIXED|1, IW_PRIV_TYPE_NONE,
++		IW_PRIV_TYPE_INT | IW_PRIV_SIZE_FIXED | 1, IW_PRIV_TYPE_NONE,
+ 		"set_power"
+ 	}, {
+ 		SIOCIWFIRSTPRIV + 0xa,
+-		IW_PRIV_TYPE_INT | IW_PRIV_SIZE_FIXED|1, IW_PRIV_TYPE_NONE,
++		IW_PRIV_TYPE_INT | IW_PRIV_SIZE_FIXED | 1, IW_PRIV_TYPE_NONE,
+ 		"lps_interv"
+ 	}, {
+ 		SIOCIWFIRSTPRIV + 0xb,
+-		IW_PRIV_TYPE_INT | IW_PRIV_SIZE_FIXED|1, IW_PRIV_TYPE_NONE,
++		IW_PRIV_TYPE_INT | IW_PRIV_SIZE_FIXED | 1, IW_PRIV_TYPE_NONE,
+ 		"lps_force"
+ 	}, {
+ 		SIOCIWFIRSTPRIV + 0x16,
+-- 
+2.7.4
 
-> Fix issues found with checkpatch.pl for the file
-> drivers/staging/rtl8192e/rtl8192e/rtl_wx.c
->
-> Dafna Hirschfeld (3):
->   staging: rtl8192e: Fix issues regarding blank lines
->   staging: rtl8192e: Remove unnecessary parentheses
->   staging: rtl8192e: Add spaces around operators.
-
-For the series:
-
-Acked-by: Julia Lawall <julia.lawall@lip6.fr>
-
-
-
->
->  drivers/staging/rtl8192e/rtl8192e/rtl_wx.c | 51 +++++++-----------------------
->  1 file changed, 12 insertions(+), 39 deletions(-)
->
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/cover.1519995327.git.dafna3%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
