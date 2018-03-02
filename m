@@ -1,79 +1,143 @@
 X-GM-THRID: 6528085796947230720
-X-Received: by 10.223.169.234 with SMTP id b97mr647033wrd.8.1520013500735;
-        Fri, 02 Mar 2018 09:58:20 -0800 (PST)
+X-Received: by 10.28.7.73 with SMTP id 70mr35405wmh.7.1519964837814;
+        Thu, 01 Mar 2018 20:27:17 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.0.78 with SMTP id 75ls409485wma.4.gmail; Fri, 02 Mar 2018
- 09:58:19 -0800 (PST)
-X-Google-Smtp-Source: AG47ELsTnjO57/MFUKF2kyM6gNgWptIDyfUh1xC9uxbDvGXFK57MSeA83N4cB3pme+mFVJ7fWF2h
-X-Received: by 10.28.247.5 with SMTP id v5mr256981wmh.12.1520013499381;
-        Fri, 02 Mar 2018 09:58:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520013499; cv=none;
+Received: by 10.28.4.212 with SMTP id 203ls77306wme.0.canary-gmail; Thu, 01
+ Mar 2018 20:27:16 -0800 (PST)
+X-Google-Smtp-Source: AG47ELv3ySgxJ0h9slyuQ8f0EM0WT9EDXcBNqYk71pX9IuoyyjFup7VexyLkhbgWKGdkB+cjmgUR
+X-Received: by 10.28.190.24 with SMTP id o24mr40049wmf.10.1519964836558;
+        Thu, 01 Mar 2018 20:27:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519964836; cv=none;
         d=google.com; s=arc-20160816;
-        b=jADaxAbq23v6wsKjInCiQF3iZ4vrO4HaOiefjZwA3klbijqPXaev8LpFtzUhXl84GR
-         puhXvSVwZtAC6zMiTQj6/k5Teb7mg3sV+Aw95OyA/xdPF8LuZeO3QbRAIXLFl3d6whbh
-         cs0JI/G1c/BbjfTK8F/k5X9V6Ce5adffZ8adHorEFbFUtIMzvK96tsNN70oXMe/ZBUHV
-         5p8hKQbWyvOfwx0O44uMr+M7nixyQnlpDRk/bJuyleNOBYnFZHTPdr/4O5pxk0CBuJQp
-         3ZBRUIGrATIKUIGT4pSi+VHzfBUPOxsDZRFVLsFEMmCsUzX6nKuIMG+GzOsRnXFrX59/
-         R2Ag==
+        b=Kk/fLeeSkaaNYYCxZ4U910UugUHERh2TDzeXIcfZpiDcKDlReSzq5iM42j6YfFa5N8
+         C4Xd6SRKiBDW1iXBLXmGBGK33zk1XhtHmF/LYmfwUKFWlJbKzL0Z1TSk05fgWPOFJksC
+         AWGmiQLXtaAa6Qk+yLPgnvFgatuDUZdw5Uubq+sxZ+r6h9uzH9ID+oBdJbKzfX1BSJmH
+         8I4qvC8rNFR6d0vknZ7OMi4WeXcY0hn9YAku4H6GgCo/YCQagbP4pim1Jo5IYTAV+rCS
+         WCJ8URq9ASEIPtGaiUuQ1J5jX4PjDqYaGXA4FoqSdaz1HcSzNfiVtSDalyTOz/ZkhpCp
+         F9ow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=TnYva+NhoWjAKOkfUel71DDHo0egt9b/85Ss5Xf+s48=;
-        b=SmBGr/oIgZ2K6R2IhhX5OlFWBleH+mF7NjmYPAnpKhA9otC1/SSQrQxrl1+EAjYksr
-         N4srtxVZJnRV9iW3aep6SB67xoT4N2c/rx0gyULhuw8X5e7g+ZB6mnQYgO5lOGJ5pl/3
-         V3hpMPH7oAhTXEprUT8uV3IHm78zL821xxslNES5tz/a3oFKMcAt2dj9guL+7KOcLjkV
-         yFoaY3TTCy5363WUDxKQojAY2Df5evtQeX/gx79Kn34ij62kpfbhFoCqZcOLmLBCZXNY
-         8sq+1LZgalbVsv3u13UN5myIe1lxrgY1ngulYfOH+b8DvCg+CtF5PpRI5dJcOWitb/yH
-         0KJQ==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=nyEgAOToDOARxwi5HAIC83m1h74yHGTHkct3vXj0h6Y=;
+        b=pkz3BTw83UV6krlElYiJkcOhUvJ7Vt1PgXcocF21Nvf7sk++V1WnMqPODHBCkIExSs
+         k1jHvNdm+hi3zHDVdCyeEcQqbsmvlGwpdmdZ9eLjh2TABBQl1jzu73+YzFwa9NtVQ1a4
+         4nnpPnBwktkoevGxVHrQGEnIy6xyrDJVy5DnGpBL7IKawHhRY/eh9tTKJxsAxQeumwiu
+         rNwjn7M1rPCal25yrh5o4tMH59AdpmrUPP1DcEm3MwsIHprDt/xMEhbOKo5AFtergJRG
+         ebJ1382FsY68GYM7pGWbZUeajYladeCeW/LVen/gSScT3d3JdsLb6rafNhQAtjB5PeL2
+         UdKA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id r10si49689wmg.2.2018.03.02.09.58.19
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pEobi8Z0;
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:4010:c07::230 as permitted sender) smtp.mailfrom=vthakkar1994@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <vthakkar1994@gmail.com>
+Received: from mail-lf0-x230.google.com (mail-lf0-x230.google.com. [2a00:1450:4010:c07::230])
+        by gmr-mx.google.com with ESMTPS id l1si18411wmc.0.2018.03.01.20.27.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 02 Mar 2018 09:58:19 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Thu, 01 Mar 2018 20:27:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:4010:c07::230 as permitted sender) client-ip=2a00:1450:4010:c07::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.47,413,1515452400"; 
-   d="scan'208";a="256750441"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 02 Mar 2018 18:58:18 +0100
-Date: Fri, 2 Mar 2018 18:58:17 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] Questions regarding the application process
-In-Reply-To: <1519938402-28218-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-Message-ID: <alpine.DEB.2.20.1803021856320.17455@hadrien>
-References: <1519938402-28218-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pEobi8Z0;
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:4010:c07::230 as permitted sender) smtp.mailfrom=vthakkar1994@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-lf0-x230.google.com with SMTP id m69so11562206lfe.8
+        for <outreachy-kernel@googlegroups.com>; Thu, 01 Mar 2018 20:27:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=nyEgAOToDOARxwi5HAIC83m1h74yHGTHkct3vXj0h6Y=;
+        b=pEobi8Z04tz67VjLqEdH9FOfk/CQKi8x8tkce9HhSv9T3JsqN1cXw8BXKRPtuIuy2b
+         1WaXbSo269JRa21AfWu5a03NeLFEVCqe9QwLvtVLT6HHtnKd9993yYHY/E7ypalH6sKF
+         83r6qdce0+GkYQInjPPMJpQpNUL61UHaF+RsYfMuecieF6RTEUxeAquqV1lf5W5PegNq
+         C6/BEa58/XVtGg1XHAuAUJsNC7O800C9ut++VNmFritjWz0Lja54OuEUd4ohOejdvUQU
+         n0fdeOySlfklUJKmONPXlGzMCR8Klg+kI3YbRXwG6ewYjC5qsm2who9j0EqSTQt5M3xt
+         x3ag==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=nyEgAOToDOARxwi5HAIC83m1h74yHGTHkct3vXj0h6Y=;
+        b=MUoiFmUdpRAdwp8Av9PQFN2kvle5x81wUMjVL6cDICLfkrDCSReAV6k5FHketzX/Qy
+         iJzzHDw52coHAOZdfOV7W8jte4SDCGVJTtUrK0DSmJPcnC9itJKXvsFeQA5KgH037+AK
+         vfR1kJQtT98pcQETIeG1UV/60npSCYl30Lenn9bDMnhnOkfCYgBAo6rBWoON6zziRJ2R
+         kPxk7PWrzfd8C8pADiuH+/m6l0vNiC1eg/280UsBgH+4xpYvKpvTNiNJFEjJdu6v0rnN
+         4NELCQTVIiKC+Zn073YyhknzE2JZH6//PyFEhpk6STtdILv3aQxMgbPhgmN4La4PlIkF
+         q6Mg==
+X-Gm-Message-State: AElRT7GxNlkZm5Q0s5JW8UcVoYpQ/jZSbr6jdBX6bv04Z+yEpULUAwRD
+	pnv1D/CUl+gbfUpW+vP6FhQDnf89iDjq4RE291EokVsS
+X-Received: by 10.25.44.16 with SMTP id s16mr2846494lfs.15.1519964835951; Thu,
+ 01 Mar 2018 20:27:15 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Received: by 10.46.129.212 with HTTP; Thu, 1 Mar 2018 20:27:15 -0800 (PST)
+In-Reply-To: <1519938402-28218-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+References: <1519938402-28218-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+From: Vaishali Thakkar <vthakkar1994@gmail.com>
+Date: Fri, 2 Mar 2018 09:57:15 +0530
+Message-ID: <CAK-LDb+VENHz6pWO+pca5vis7PtThfMqTWDjVuN-2V=9SDrF7w@mail.gmail.com>
+Subject: Re: [Outreachy kernel] Questions regarding the application process
+To: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset="UTF-8"
 
-
-
-On Fri, 2 Mar 2018, Nishka Dasgupta wrote:
-
+On Fri, Mar 2, 2018 at 2:36 AM, Nishka Dasgupta
+<nishka.dasgupta_ug18@ashoka.edu.in> wrote:
 > The introduction to this mailing list says: "once your first patch is
 > accepted, add that as a contribution for the project(s) you're
 > interested in". I had two questions about this:
->
+
+Hi Nishka,
+
 > 1. Will different projects require disjoint patches to be added as
 > contributions?
 
-No.  You will have the best hcance of being picked for a particular
-project if you do the small tasks for that project, but it is not an
-absolute requirement.
+Outreachy's new process requires you to sort of record your contribution.
+And once you record that, it allows you an access to an application form.
+Now, in the Linux Kernel we feel that every accepted patch is applicant's
+contribution, so for an applicant to have an access to an application, it's fine
+if they put their first patch as a contribution for the projects. Also, please
+note that you need to fill separate application for each project , even within
+a single organization.
+
+Now, for the Linux Kernel we still follow the same process. Which is basically
+you need to submit 10 clean up patches before starting on project tasks.
+
+I hope this makes sense.
 
 > 2. Does a response of "Acked-by" mean the patch in question has been
 > accepted?
 
-No.  It just means that the ack-er thinks it looks OK.  It needs to appear
-in Greg's staging tree.  You will get a message from him when he takes
-your patches.
+No, you can check what does it mean under point 13 and 14 in following link:
 
-julia
+https://kernelnewbies.org/UpstreamMerge/SubmittingPatches
+
+Usually you know patch is accepted when Greg picks up your patch in his
+tree and you get automated mail.
+
+P.S. I've seen that your replies in our mailing list doesn't follow
+the rules. So,
+this is a friendly reminder to fix your mutt and reply inline instead
+of top-posting.
+You can read more about it here under responding to emails:
+
+https://kernelnewbies.org/FirstKernelPatch
+
+> Thank you for your time.
+>
+> Regards,
+>
+> Nishka Dasgupta
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1519938402-28218-1-git-send-email-nishka.dasgupta_ug18%40ashoka.edu.in.
+> For more options, visit https://groups.google.com/d/optout.
+
+
+
+-- 
+Vaishali
+http://vaishalithakkar.in/
 
