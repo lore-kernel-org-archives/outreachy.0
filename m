@@ -1,82 +1,70 @@
-X-GM-THRID: 10349433585664
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,222a9111e0db7cb8,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.152.87.110 with SMTP id w14mr5207906laz.3.1427642427138;
-        Sun, 29 Mar 2015 08:20:27 -0700 (PDT)
+X-GM-THRID: 6528076274942869504
+X-Received: by 10.46.34.196 with SMTP id i187mr305078lji.10.1519971787682;
+        Thu, 01 Mar 2018 22:23:07 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.27.135 with SMTP id t7ls508411lag.45.gmail; Sun, 29 Mar
- 2015 08:20:26 -0700 (PDT)
-X-Received: by 10.112.130.71 with SMTP id oc7mr2671799lbb.13.1427642426586;
-        Sun, 29 Mar 2015 08:20:26 -0700 (PDT)
-Return-Path: <cristina.opriceana@gmail.com>
-Received: from mail-wg0-x229.google.com (mail-wg0-x229.google.com. [2a00:1450:400c:c00::229])
-        by gmr-mx.google.com with ESMTPS id a14si157742wib.3.2015.03.29.08.20.26
+Received: by 10.46.114.14 with SMTP id n14ls962143ljc.14.gmail; Thu, 01 Mar
+ 2018 22:23:06 -0800 (PST)
+X-Google-Smtp-Source: AG47ELvRNfnbZnkPkArRfua6G8UgosKMEvnKTwaXpilNAbBfw8cx4IinBL77NAieczlfU5fpD48b
+X-Received: by 10.46.23.6 with SMTP id l6mr309982lje.11.1519971786328;
+        Thu, 01 Mar 2018 22:23:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519971786; cv=none;
+        d=google.com; s=arc-20160816;
+        b=S5EI/B5cKAsOYNGPOKOC0ibHTD5vDS9xdZ2XKErM8o5QfyAqFyelwvMK5ycRYHOubJ
+         6nzvNKCaWbx2T/cbZNgpVOVcyUEufEjrbUpduBLhZAU7YGRSAnSQ/HSGe0trbFPBtGkH
+         C3i+H96fQ8mMCIC3hiJl1ETAA2bNmMLaXvgA1wNyhf4veJdyUAtRePl27bx5ZUzxY2MP
+         IdAs50NT3c0KrhdQwDiHHqoVXXeJ7kOy6pqoDaaHiCCx1Uew9kyvFZk51NZPv8LL0Nbb
+         osBNTSWUYTCB/4bl7ZApMJdspRSbFGRk3kfSjWvjfcWuKvRw2zcXyLsU38ea+bXcGlzo
+         4mrw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=CpOVLHr2HbEeeTrM1rvRpQ8om5WHS4VRfflayQNHycA=;
+        b=BZM0kW4lU/T2twIhk8Trqtn1p6K5N0+z+aTJc72xXQ+QVH8PTkmP3qKeJWe75ciaiN
+         aWxitxDaYGzUeQuM1uGMrDgi/pqhKE9q5gHmCryXA9v7Zy5v8O9TKoDcIvmqJzhQ4bPO
+         W7YJcZ+g7iSUw4bAfGA3ctMXp7WXDHf3AAtWani8Z11G7FUjTEgq/YRsOwD7N+bmXIvl
+         HIcL7FaImdqJZy92o5zwxEc7JkEuT2lT9LR2QaEgIYTldV9zRiNZz2w3nN/i9i4LIhYL
+         lnXIJbgQb4+YPuQVc265NjZhdcHiby1SHQx+Cx0PUu6ganmrgaMCHYkWTk7eye7p7zGS
+         ZXKg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id s26si148323lfi.1.2018.03.01.22.23.06
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 29 Mar 2015 08:20:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::229 as permitted sender) client-ip=2a00:1450:400c:c00::229;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 01 Mar 2018 22:23:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c00::229 as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x229.google.com with SMTP id m6so145569582wgd.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 29 Mar 2015 08:20:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=ppdvLfI4OO8XieRL3hn/JS4RRHGpm+0cydvz95qG27Q=;
-        b=Wx8/aTKT5jlI6NhKnzz56yTWVhYuK52RmXkU1Od6is0wrkRcAXwtTOo6Ap1f9MCOz5
-         0ZNpBwd+mi+pTRQp9ReWoIh/OdpC/W/URSGrSjxA/AZ7X1e7cdyd+TGzwlm6rIgd6kIj
-         c5B72tFUeprKyOTOHOQDKpy6yaJO/rwCvlzU+KxKEe0B8YqLF5VnCST6EpSridxlHjCt
-         sHVmA+u2NTZW06CE18PR+29aYO9Xme7IfNmqnxZkKG6FTD/l2/coyMBvd6nQvdl/pSQJ
-         9j4bKsRpi9JGrSXk6YtGpmsMbLoKd12jS5JMSyeHLqEKy8xIpsw/xM1qAIepqgg0OuL9
-         fHRQ==
-X-Received: by 10.194.211.104 with SMTP id nb8mr55732519wjc.51.1427642426496;
-        Sun, 29 Mar 2015 08:20:26 -0700 (PDT)
-Return-Path: <cristina.opriceana@gmail.com>
-Received: from Inspiron (p3.eregie.pub.ro. [141.85.0.103])
-        by mx.google.com with ESMTPSA id ga8sm11591868wib.11.2015.03.29.08.20.25
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sun, 29 Mar 2015 08:20:25 -0700 (PDT)
-Date: Sun, 29 Mar 2015 18:19:28 +0300
-From: Cristina Opriceana <cristina.opriceana@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/7] Staging: iio: Remove explicit NULL comparison
-Message-ID: <cover.1427642156.git.cristina.opriceana@gmail.com>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (clnet-b04-243.ikbnet.co.at [83.175.124.243])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 37D451367;
+	Fri,  2 Mar 2018 06:23:04 +0000 (UTC)
+Date: Fri, 2 Mar 2018 07:23:04 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+Cc: outreachy-kernel@googlegroups.com, eric@anholt.net,
+	stefan.wahren@i2se.com, f.fainelli@gmail.com, rjui@broadcom.com,
+	sbranden@broadcom.com, bcm-kernel-feedback-list@broadcom.com
+Subject: Re: [PATCH] staging: vc04_services: bcm2835-audio: Format multiline
+ comment
+Message-ID: <20180302062304.GA28759@kroah.com>
+References: <1519936185-27614-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <1519936185-27614-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+User-Agent: Mutt/1.9.3 (2018-01-21)
 
-This patchet removes explicit NULL comparison from the iio drivers.
+On Fri, Mar 02, 2018 at 01:59:45AM +0530, Nishka Dasgupta wrote:
+> Move closing "*/" of multiline comment to new line. Issue found with
+> checkpatch.
 
-Cristina Opriceana (7):
-  Staging: iio: Simplify NULL comparison
-  Staging: iio: Remove explicit NULL comparison
-  Staging: iio: Remove explicit NULL comparison
-  Staging: iio: Remove explicit NULL comparison
-  Staging: iio: Remove explicit NULL comparison
-  Staging: iio: Remove explicit NULL comparison
-  Staging: iio: Remove explicit NULL comparison
+That is not what this patch does :(
 
- drivers/staging/iio/accel/lis3l02dq_ring.c          | 6 +++---
- drivers/staging/iio/adc/ad7606_ring.c               | 2 +-
- drivers/staging/iio/adc/ad7780.c                    | 2 +-
- drivers/staging/iio/iio_dummy_evgen.c               | 4 ++--
- drivers/staging/iio/iio_simple_dummy.c              | 2 +-
- drivers/staging/iio/iio_simple_dummy_buffer.c       | 6 +++---
- drivers/staging/iio/impedance-analyzer/ad5933.c     | 2 +-
- drivers/staging/iio/meter/ade7758_core.c            | 2 +-
- drivers/staging/iio/meter/ade7758_ring.c            | 2 +-
- drivers/staging/iio/meter/ade7758_trigger.c         | 2 +-
- drivers/staging/iio/trigger/iio-trig-periodic-rtc.c | 4 ++--
- 11 files changed, 17 insertions(+), 17 deletions(-)
+Please remember to get the descriptions correct for what the actual
+change does.
 
--- 
-1.9.1
+thanks,
 
+greg k-h
 
