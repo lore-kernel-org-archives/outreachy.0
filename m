@@ -1,115 +1,92 @@
-X-GM-THRID: 6608856202267852800
-X-Received: by 2002:a1f:cc05:: with SMTP id c5-v6mr9409722vkg.2.1538744243148;
-        Fri, 05 Oct 2018 05:57:23 -0700 (PDT)
+X-GM-THRID: 6528381540192223232
+X-Gmail-Labels: Topic type: DISCUSSION
+X-Received: by 10.25.72.6 with SMTP id v6mr473879lfa.18.1520008628549;
+        Fri, 02 Mar 2018 08:37:08 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ab0:254:: with SMTP id 78ls1412501uas.4.gmail; Fri, 05 Oct
- 2018 05:57:22 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV60TiQzZZsMky9FQujt5XvlfZOKII+whyPewqnt3194BUUrWh9G7JL2BL4IthSM3lfb6i1AP
-X-Received: by 2002:ab0:2102:: with SMTP id d2-v6mr9416749ual.6.1538744242641;
-        Fri, 05 Oct 2018 05:57:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538744242; cv=none;
+Received: by 10.46.65.141 with SMTP id d13ls1115918ljf.11.gmail; Fri, 02 Mar
+ 2018 08:37:06 -0800 (PST)
+X-Google-Smtp-Source: AG47ELvwgiST+MtBj5p53cRYeHzPUXkE98RqaTTR1kvcdJ9K9hAs4HMIui4OWUIMN67CrFzVnjIe
+X-Received: by 10.46.84.66 with SMTP id y2mr434527ljd.5.1520008626726;
+        Fri, 02 Mar 2018 08:37:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520008626; cv=none;
         d=google.com; s=arc-20160816;
-        b=QUv0GIUnjllqHvOlHGcKNvv3dqP+4fLuqaAH5FkSLfmemPNEZ/XC3qp0QhJe0KXEY8
-         VNGxw4l8nz3+ZYcNcpb5i0cwtU07TGv2vOLU9TUudJnNGzB7g6vxsoeoB6WfJ8/mDRhh
-         DDcRp+mn2iKn36YS2q3QTsgAtX5vOR8hf5Qv20pkSQ5oMUIX2Zo3FqoxyhNMNb80DEvN
-         2dsNuE2K0Yxz3NqMV1TsymUD8Q/xN896X/kOSO84yNklAXv4KgV8I27V0lP3aAs1jjHk
-         0Bk3joQlBNgs8cou9s/VOFJJ+Zb8inEHi/yEJbVHULnO/tO6KDKgJN+tnwysTIzUN1FZ
-         2Cbw==
+        b=tz3iDn7ScQ/0bpQ86Rqeo5TjxiSbeST72oO9Ehs8oOfSJU0kJgDA4tNMvzi/yEJbxT
+         1ARWREdB2zR7GNMdGdhxOZEXZD6vmH7YNFtQqtVqWmQ9dYZd6e/OzTWgedq3u5aaThM+
+         tvNTL8a721jjmKvEs59z1NXPuJKMR8nKjLDO1YUWbf3/AQGndDq7Ek2gvsCbqrI3h3Nb
+         nB7lEya+aC9dYvdm0Spi4yMKhEy4r3OiL5qYHO9Xn8uHBdhZxZAdOQIjFDCD9KJWvFjg
+         PG1fPQV8BFWRLgc1Lo/jn6x5gq9+Zzj3OLB5OLvmfiV1LUp4BXeVjio7zftQxez4y+ZB
+         0GRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:subject:cc:to:from:date
-         :message-id:dkim-signature;
-        bh=jIT9Uo7dsYv3Rgsoa0PfWcYPRsbcmj8ILdsz6B3a9k4=;
-        b=siMDdXyvR5MKwZJi7BqNJQ2cwKYcqG9NhUNU2kpi24DMm9K5SK/SGupDe96ruGa7Mh
-         bKSerEULs0X03iTsTVD0YHyL/0w805refGJYtO7nZqtYeeFGl8UJ5vxKKsKl7cyj47/p
-         PDjpsldlV7IVrr2HUBul1BRjE3Cx70rl8mjPohFndPjlmx1bO8acCRKGJJVXr2mJ1fkz
-         wkgJh256tae+EHXbrAZ074KjKJq27JOGRWBE71J1Qw0HhGsCWnDDQXn7FzzOCroSnOS5
-         vh8KxG/vPPSW/2fk7t6atjNTIP0oB/lVYK3L3tlcyFSVwj/vuCFAUoaI7tAUqjmPE2lU
-         ONiw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=8vRnJJ5DRvDwCyzVl7FljX+4av8QF6LHA3UQQuIq4N0=;
+        b=QV05HOt/ZvkkybHmrVweWdP14cey+WR3gBVOThZGfiM2HV0JWefIkkFjqMzGkKnbpk
+         wxjTxnFCRsOjh1OwA+uXbpTH2fC6zRXOsQdrmXAru74XFF4UCmZz/fzI8HSptinFsSTh
+         E1Bo6QbGCbFboIg9JYUMROTKso0YZIbomz0JkbNvkHKqAdpOB63ErmMBK9kZbaueOQkt
+         geZDW3riuX+akmmbU6+ZQ/VF34b2X97kOJKLQ7dSSwVaryHHf5T82gvgKt+Au1zcimlo
+         QMfVUbriq1SlAiFftItsY3OvCuSFuggV7+2huggdd0/plyx+o2Appxlwjn+LLu7WXxeZ
+         hf9w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bGMNX9Ul;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::429 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pf1-x429.google.com (mail-pf1-x429.google.com. [2607:f8b0:4864:20::429])
-        by gmr-mx.google.com with ESMTPS id i13si473295uan.0.2018.10.05.05.57.22
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id w7si297473lfc.2.2018.03.02.08.37.06
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 05 Oct 2018 05:57:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::429 as permitted sender) client-ip=2607:f8b0:4864:20::429;
+        Fri, 02 Mar 2018 08:37:06 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bGMNX9Ul;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::429 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x429.google.com with SMTP id f26-v6so4901418pfn.9
-        for <outreachy-kernel@googlegroups.com>; Fri, 05 Oct 2018 05:57:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:mime-version:content-disposition
-         :user-agent;
-        bh=jIT9Uo7dsYv3Rgsoa0PfWcYPRsbcmj8ILdsz6B3a9k4=;
-        b=bGMNX9UlcBOjeqYMsFol0o3RPeoLqdRizqs3o3DI9w7f6ulKm8q4S3/PszVzhTNkmB
-         goZG2hWkhqBdSTraRvE/NUqft3g/G1tYdGP+o8NzwhBD5bzuj4quOJ4w1HaTBWiqXPod
-         KtO7IvUr9unuDD6zv07fhJLMyFFb6StDxx5bg0amJC9YU0KNdUR3hBNP1LFiVM+J4oyp
-         lxUpJZrre3IPvx3ckGKU2vMrM9ndznjtklifG8iqL0yMMMBOlksTRnwlP/iakzRthY0B
-         /zTaG2i3jWQjruyrqUinlXAhPpF91t2BONT+cfEQG6SKtqvISfLnG/tK8ycIp3Lod/zb
-         UbRA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
-         :content-disposition:user-agent;
-        bh=jIT9Uo7dsYv3Rgsoa0PfWcYPRsbcmj8ILdsz6B3a9k4=;
-        b=rHzsKIosesBjOULh2QLSkHFSoZungHcvxNcKp8dYlRi8abKBeyiOUXxpYhzt5Vzl2M
-         ZHeObYFKCEibduGAS8JnTjOE9jLHnt3z3hXwRZrrNYtknDuInqEV7YmbLl93N+jiZKb4
-         gV8qdoRrbRs5Kts5RYMSfs99B8LUhJxrKFGRQLexgyCTw+mnxOHLepLpDy/uAH3lCmEB
-         TFtZOBpv1y4LCb+Fzwxm9ilAPMrKz7O3pzMNYWzEqsE4xjlxYh0SPGZs25T3gfZ5RGKR
-         1Bqtqh+uw2+n0EI0PSIDTk/miuFGC6dMZqPl4+K6IF/mfRXY/qeABQmkrJe1WUepzuEX
-         it8w==
-X-Gm-Message-State: ABuFfoj/nE6E/OYEJAkg2JSfakS1dJ3VT0GFw7e0mKJVHTbTQGg510Ui
-	eQPu2i7myIs0UrGi9JIR18rh26Tnkzc=
-X-Received: by 2002:a63:d60a:: with SMTP id q10-v6mr9982772pgg.175.1538744241962;
-        Fri, 05 Oct 2018 05:57:21 -0700 (PDT)
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from bhanu-MacBookAir ([183.83.92.101])
-        by smtp.gmail.com with ESMTPSA id a1-v6sm16971639pfc.28.2018.10.05.05.57.20
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 05 Oct 2018 05:57:21 -0700 (PDT)
-Message-ID: <5bb75fb1.1c69fb81.8a08c.4eba@mx.google.com>
-X-Google-Original-Message-ID: <20181005125718.GA8941@bhanusreemahesh@gmail.com>
-Date: Fri, 5 Oct 2018 18:27:18 +0530
-From: Bhanusree Pola <bhanusreemahesh@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [Outreachy Kernel][PATCH] staging: comedi: comedi_pci.h: prefer a
- maximum 75 chars per line
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.47,413,1515452400"; 
+   d="scan'208";a="316104751"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 02 Mar 2018 17:37:05 +0100
+Date: Fri, 2 Mar 2018 17:37:04 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Anika Murarka <murarka.anika97@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Unable to find "/I can modify" string
+In-Reply-To: <34fccbb8-63bd-4613-b04c-8c6f31f4dd97@googlegroups.com>
+Message-ID: <alpine.DEB.2.20.1803021736250.17455@hadrien>
+References: <34fccbb8-63bd-4613-b04c-8c6f31f4dd97@googlegroups.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-comedi_pci_auto_config() function prototype is exceeding more than 75 characters per line.
-Adjusted to less than 75 characters to improve readability.
 
-Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
----
- drivers/staging/comedi/comedi_pci.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/comedi/comedi_pci.h b/drivers/staging/comedi/comedi_pci.h
-index 4e06944..5cb7cd7 100644
---- a/drivers/staging/comedi/comedi_pci.h
-+++ b/drivers/staging/comedi/comedi_pci.h
-@@ -31,8 +31,8 @@ int comedi_pci_enable(struct comedi_device *dev);
- void comedi_pci_disable(struct comedi_device *dev);
- void comedi_pci_detach(struct comedi_device *dev);
- 
--int comedi_pci_auto_config(struct pci_dev *pcidev, struct comedi_driver *driver,
--			   unsigned long context);
-+int comedi_pci_auto_config(struct pci_dev *pcidev, 
-+		struct comedi_driver *driver,unsigned long context);
- void comedi_pci_auto_unconfig(struct pci_dev *pcidev);
- 
- int comedi_pci_driver_register(struct comedi_driver *comedi_driver,
--- 
-2.7.4
+On Fri, 2 Mar 2018, Anika Murarka wrote:
 
+> Hi,
+>
+> I am Anika. I am looking forward to contribute to Kernel for Outreachy this
+> round. I am following the first patch guide[1] and stuck on testing my
+> change.
+>
+> [1] https://kernelnewbies.org/Outreachyfirstpatch
+>
+> I did exactly what was written there. But the command - dmesg | less -> "/I
+> can modify" says pattern not found. Where I am going wrong? I will be
+> pleased if someone can help me.
+
+Maybe you modified a driver for a device that you don't have?
+
+julia
+
+>
+> Regards
+> Anika
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/34fccbb8-63bd-4613-b04c-
+> 8c6f31f4dd97%40googlegroups.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
 
