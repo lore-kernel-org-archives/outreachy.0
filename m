@@ -1,77 +1,77 @@
 X-GM-THRID: 6528466201738215424
-X-Received: by 10.107.10.39 with SMTP id u39mr5562126ioi.115.1520055242922;
-        Fri, 02 Mar 2018 21:34:02 -0800 (PST)
+X-Received: by 10.99.125.66 with SMTP id m2mr1523366pgn.85.1520055239779;
+        Fri, 02 Mar 2018 21:33:59 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.66.12 with SMTP id i12ls658863itb.8.canary-gmail; Fri, 02
- Mar 2018 21:34:02 -0800 (PST)
-X-Google-Smtp-Source: AG47ELtrBJHju1N+dbVK94lkUHXV3xvUJr1s/8ns141sIadgIKnrjTaJzLtquDBOutzmUovxfuZl
-X-Received: by 10.36.95.209 with SMTP id r200mr3229663itb.54.1520055242347;
-        Fri, 02 Mar 2018 21:34:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520055242; cv=none;
+Received: by 10.98.174.15 with SMTP id q15ls1183992pff.8.gmail; Fri, 02 Mar
+ 2018 21:33:58 -0800 (PST)
+X-Google-Smtp-Source: AG47ELs3v87/vTxVaj4m5cy6ZTRn7PoWEIs3CP200rPIEr923+N66obAA2ha+muoTRWhm2bVSmVZ
+X-Received: by 10.99.8.130 with SMTP id 124mr1588488pgi.32.1520055238474;
+        Fri, 02 Mar 2018 21:33:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520055238; cv=none;
         d=google.com; s=arc-20160816;
-        b=VqqkY9gQMRwSmn/hfK42xvnec4Lz1bpIWuqnOXwtYaz7iWt56VsDzpx2I9LzwiNcIH
-         CU7vJZxDY8JXTYIjw1oGsXcgRVpS0m/O27+TB8ofjJ9filpgNqXa7uaG1OCV4+mA3rMd
-         SVihXBgWq03S069QVuJIeS9gjNA876rimVflxopAV6k6ZL+5yFUIfTY04YsEVJhd3Wzb
-         EQXKPe7xLiLwrqjVa0mL+0oDmnErK8Qr2C8+nrr8MCF16osS53fPmVv5BQHf5l9yQwsy
-         zhSKDGLJbgJ2TufyKBv+p+Fn9/9CtzFv+wbnoXcVSt4axfpGwkKop/jy12I03J3xbyip
-         ujSw==
+        b=qMRNiyl+JZGDjHPjfCL/0mjmm3SnFduzMb1oGx6+BxwxmJy7jGBpANU3Jv3u4KBIbJ
+         NGwabj0KnhE5K1xZFKtXg8pXQnKimvguJtBOvUnLc5xZR6Lcx1tAg9fbj5pXikAmcwTp
+         VUTXNwc4v9NKOOCp4FnSHgRI4CPZUO8v8laKVlEGeoqVto3m2q7cRz25ItvtDGrPHmWW
+         EX9gEzotaS/UZ31y/h0lqdNqMh9EBlrUmIRCSxuTmcl4iuMqe/JWRvi+83fc4kaQUZr1
+         RPxSluQ/9/tjJTyUq75SfZgatHk5Hqruum2WzCYNrfBwuBAzEEy3QIZAaww+VJxpIYGM
+         mtSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature:arc-authentication-results;
-        bh=VThnTDxtxLOKPx+8NZy8Gp4Z8pXJjMh0ogajEyqAQF8=;
-        b=BDrHx2bT3fCvceZPAxOT/PaXi/hYDJ4s/3ovhb+byv6O/zBsSJTwEzSEeZeIMf2wPh
-         okEfvT5RWUAWf6/irqpFG6TzXIzE8EihcClGvr7V+zaObt0551E9t6DZSkLk47Q/sg+X
-         QbMsz0Nrhjc+rZ2n1wHeIZnTeMkFPSOOrfzbk/wQUggE4rOEv7kAfhJV9SAWash77vJx
-         y64vGa3s2r2jU/qRwTouDVxSuAXKb5CG0RZiKI3aJXXAtVyQr45byCaBIMaK+qqmFqxb
-         V4ytBSL8qix+bej+KE/+DNCqA0oh+8v4cTka+mNhdBQMJ2j5S87Ol6KlFsmCsfEWTU2h
-         hngg==
+        bh=xgZuF8qSLf4egCp0Bh6o2RvGkNlkoImt3oUSPvl73Ts=;
+        b=JHursOG6/nbhlOXl2p6N5TsRXFTzkNnFgpvR2llukmGa/xTJ4oy78cgHl1NKkrWQL7
+         0S3cehTqgo+Eg6LXauuUYTLK9a9tb50blwu7gp8m9GpMlnz+olwwdGx+72hubV1rFMEO
+         4lle5gyqo/usLepSkUB8mgzJ4WZPAkeOHFh2IIVCAcnxvNDXpbbjm6EvbIGGnfoRIxLQ
+         wKTo4taUR9MSxhQDsHpj8uzoev22rDzkBkvu4bgqxwCaUBXK5fFFxYSk2FMqI64WTrkz
+         wSuiSovLMQbkvHQehvfjjJnsxPGJACtNs3F6hddcTXoYWb+d5BhXlpgvCyG8RRcl40Zc
+         XbfA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HxF37NRU;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c01::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NnrEf6qP;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pl0-x241.google.com (mail-pl0-x241.google.com. [2607:f8b0:400e:c01::241])
-        by gmr-mx.google.com with ESMTPS id l8si877699iog.3.2018.03.02.21.34.02
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id w4-v6si543702plp.4.2018.03.02.21.33.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 02 Mar 2018 21:34:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c01::241 as permitted sender) client-ip=2607:f8b0:400e:c01::241;
+        Fri, 02 Mar 2018 21:33:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HxF37NRU;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c01::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NnrEf6qP;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl0-x241.google.com with SMTP id f23-v6so6901168plr.10
-        for <outreachy-kernel@googlegroups.com>; Fri, 02 Mar 2018 21:34:02 -0800 (PST)
+Received: by mail-pf0-x241.google.com with SMTP id x1so3011225pfh.7
+        for <outreachy-kernel@googlegroups.com>; Fri, 02 Mar 2018 21:33:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=VThnTDxtxLOKPx+8NZy8Gp4Z8pXJjMh0ogajEyqAQF8=;
-        b=HxF37NRUs+2jCdE/o6mnnAc+Az2OM1vHe+n2GopNIyCR0iGrJ5pNJTND5nYdhNVpXk
-         eKnVGIAVuVzcXatamk1VRTxr85Z23wVcNipqxaOBRmxGNgDARztmkVwTssR0KEwRDRs/
-         vWbrJD6mM7o5AYF9uvqZkImUZnM2Jno35eSPMjgZPrAkcO3AvhK6zCxuA6z4sPnN/UIE
-         ZPU4+esc+w35SVu4bCuxHjtXcVpZJgrs6YO/9iJ1YTe3iA+KhfV5eN4yqwpLsDlB3tT+
-         qftigLXRE+KJ/6h6W4heZqBZe73fnCVlnyAzX8xSrewM7E/90UIBptCWhDD+DpST/n6q
-         COKg==
+        bh=xgZuF8qSLf4egCp0Bh6o2RvGkNlkoImt3oUSPvl73Ts=;
+        b=NnrEf6qPPghL8MgwDskP0/J1Vyz3jd7hNhOLwglrLfUxucSH6WbTbT32pO2yVBzlxd
+         46QiphiBADQwBcylpnXQWbSzX+s4iwWX6jhLJDDlAJakgtETHjVMFOl/6HCLU9XM64bn
+         2HOCR+fLJkDyhoO8cTEhr83KLus5KWJU2yLURPj60JrGwbdkShOTxRO4dicQwoZsHJgO
+         CWkQFJljBy9ornc/DhGOQEkMQY8Hgsyx7ijUxZIEGh4Aq6p1t+njVpB5C9gRqOyrO7GK
+         8odqsZwGioz9g3ZnbDg41EALkNSr1cGiRXgCPPqdKjwMlmT9X9kk7rDFEgco6aMVnAoa
+         1sIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=VThnTDxtxLOKPx+8NZy8Gp4Z8pXJjMh0ogajEyqAQF8=;
-        b=kcBDZx/syWMknsxX0p3VXJ4uY6IIsx+EoCiLTdQS67xfzypBP8s5juC9HiOwfYxJLp
-         MCCZofCjqf5x0xlME23tsTiTaHXpuf+RxWok7DRL5uRbcsz8/Qa7lXye02dsW2Wp7RGO
-         SyNdCM+RpOqyUViYMTYLhhXdaNoRk5uqCJqap7eMDjUWvHIS/tX5DN/9Z34P51KWtUVt
-         DOJA1bLepoczL/LmqZ9xyp6LcLVxy6o14qCfQgNB34TzjiHVt+sUF9NVTOog3SYvxgjs
-         5URf1BcZstMthnWhmgQtFlk8Ej+nSH8LOVtkx1I5+xp2DQ4ROO73TgyEMjNqotowEW4P
-         vu3g==
-X-Gm-Message-State: AElRT7FjJFb3CnHLipXXK5Gqzm/ZB/jjcTVT0SLaVGE9WKFucDbrZ64q
-	q5yp5g+5TTVGlcxesnmshXiLbQ==
-X-Received: by 2002:a17:902:7082:: with SMTP id z2-v6mr4087478plk.130.1520055241426;
-        Fri, 02 Mar 2018 21:34:01 -0800 (PST)
+        bh=xgZuF8qSLf4egCp0Bh6o2RvGkNlkoImt3oUSPvl73Ts=;
+        b=Ymzl9oduCDuUwakmiIJdnJFl9QkKVryq2H6lu/3b38mvPeJqVZHwtGVvHMp72bV4Yq
+         ADIlVv6wpCaFzVV1kx4pumL5VqnC53ZKKGdJ2QAR1Za3vaUwpmWFfSKxwY6yZsVX8yCY
+         hPayQwgbl8XJSzPJMMouJsCZvNh+XBYElFzSS+Dp9R7QQS9/WylPomyQEEvvGk009o6U
+         jaVTkBhSM9BzrJIz5ZV5+dxFwQOTwMuhZx/Bhyl7enIWqpnBCn8hBVLCzACrlQZJoSFM
+         2C9aQCF8gBuQX0bMjgL8mHRYkjiP23+F5xKgjXJyBXWJkFm6P2XAzOjcyd18n+N/L1gG
+         bDxA==
+X-Gm-Message-State: APf1xPBiI0UTCCeRMUgvEQPXD9psEBtMMxXcu/t4h80Urt8TjkXdvyYJ
+	jVPyaM9yu/TLkAKjZsK0vTyVIQ==
+X-Received: by 10.99.116.16 with SMTP id p16mr6141220pgc.194.1520055237752;
+        Fri, 02 Mar 2018 21:33:57 -0800 (PST)
 Return-Path: <arushisinghal19971997@gmail.com>
 Received: from seema-Inspiron-15-3567.iiit.ac.in ([14.139.82.6])
-        by smtp.googlemail.com with ESMTPSA id m22sm16008604pfg.188.2018.03.02.21.33.57
+        by smtp.googlemail.com with ESMTPSA id m22sm16008604pfg.188.2018.03.02.21.33.54
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 02 Mar 2018 21:34:00 -0800 (PST)
+        Fri, 02 Mar 2018 21:33:56 -0800 (PST)
 From: Arushi Singhal <arushisinghal19971997@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Larry.Finger@lwfinger.net,
@@ -80,49 +80,36 @@ Cc: Larry.Finger@lwfinger.net,
 	devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org,
 	Arushi Singhal <arushisinghal19971997@gmail.com>
-Subject: [PATCH v2 5/6] staging: rtl8712: Add spaces around '|'
-Date: Sat,  3 Mar 2018 11:02:35 +0530
-Message-Id: <1520055156-8388-6-git-send-email-arushisinghal19971997@gmail.com>
+Subject: [PATCH v2 4/6] staging: rtl8712: Added spaces around '+'
+Date: Sat,  3 Mar 2018 11:02:34 +0530
+Message-Id: <1520055156-8388-5-git-send-email-arushisinghal19971997@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1520055156-8388-1-git-send-email-arushisinghal19971997@gmail.com>
 References: <1520055156-8388-1-git-send-email-arushisinghal19971997@gmail.com>
 
-Add spaces around '|' to conform to the Linux
+Add spaces around arithmetic operator '+',  to conform to the Linux
 kernel coding style. Issue found using checkpatch.
-CHECK: spaces preferred around that '|'.
 
 Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
 ---
- drivers/staging/rtl8712/rtl8712_cmdctrl_bitdef.h | 2 +-
- drivers/staging/rtl8712/rtl8712_gp_bitdef.h      | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/rtl8712/rtl8712_cmd.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8712/rtl8712_cmdctrl_bitdef.h b/drivers/staging/rtl8712/rtl8712_cmdctrl_bitdef.h
-index b7dda90..4b8985d 100644
---- a/drivers/staging/rtl8712/rtl8712_cmdctrl_bitdef.h
-+++ b/drivers/staging/rtl8712/rtl8712_cmdctrl_bitdef.h
-@@ -63,7 +63,7 @@
- #define _IMEM_CHK_RPT			BIT(1)
- #define _IMEM_CODE_DONE			BIT(0)
+diff --git a/drivers/staging/rtl8712/rtl8712_cmd.h b/drivers/staging/rtl8712/rtl8712_cmd.h
+index 67e9e91..9181bb6 100644
+--- a/drivers/staging/rtl8712/rtl8712_cmd.h
++++ b/drivers/staging/rtl8712/rtl8712_cmd.h
+@@ -145,8 +145,8 @@ enum rtl8712_h2c_cmd {
+ #define _SetBBReg_CMD_		_Write_BBREG_CMD_
+ #define _GetRFReg_CMD_		_Read_RFREG_CMD_
+ #define _SetRFReg_CMD_		_Write_RFREG_CMD_
+-#define _DRV_INT_CMD_		(MAX_H2CCMD+1)
+-#define _SetRFIntFs_CMD_	(MAX_H2CCMD+2)
++#define _DRV_INT_CMD_		(MAX_H2CCMD + 1)
++#define _SetRFIntFs_CMD_	(MAX_H2CCMD + 2)
  
--#define	_TXDMA_INIT_VALUE	(_IMEM_CHK_RPT|_EMEM_CHK_RPT)
-+#define	_TXDMA_INIT_VALUE	(_IMEM_CHK_RPT | _EMEM_CHK_RPT)
- 
- /*RCR*/
- #define	_ENMBID				BIT(27)
-diff --git a/drivers/staging/rtl8712/rtl8712_gp_bitdef.h b/drivers/staging/rtl8712/rtl8712_gp_bitdef.h
-index 44c9060..66c35c9 100644
---- a/drivers/staging/rtl8712/rtl8712_gp_bitdef.h
-+++ b/drivers/staging/rtl8712/rtl8712_gp_bitdef.h
-@@ -70,7 +70,7 @@
- #define		GPIOSEL_PHYDBG	1	/* PHYDBG*/
- #define		GPIOSEL_BT	2	/* BT_coex*/
- #define		GPIOSEL_WLANDBG	3	/* WLANDBG*/
--#define		GPIOSEL_GPIO_MASK	(~(BIT(0)|BIT(1)))
-+#define		GPIOSEL_GPIO_MASK	(~(BIT(0) | BIT(1)))
- /* HW Radio OFF switch (GPIO BIT) */
- #define		HAL_8192S_HW_GPIO_OFF_BIT	BIT(3)
- #define		HAL_8192S_HW_GPIO_OFF_MASK	0xF7
+ #ifdef _RTL8712_CMD_C_
+ static struct _cmd_callback	cmd_callback[] = {
 -- 
 2.7.4
 
