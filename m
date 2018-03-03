@@ -1,113 +1,109 @@
-X-GM-THRID: 6744898801865064448
-X-Received: by 2002:a25:3b45:: with SMTP id i66mr10067733yba.365.1570419129349;
-        Sun, 06 Oct 2019 20:32:09 -0700 (PDT)
+X-GM-THRID: 6528799857356832768
+X-Received: by 10.25.80.68 with SMTP id z4mr732460lfj.31.1520110364673;
+        Sat, 03 Mar 2018 12:52:44 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a81:4303:: with SMTP id q3ls2275228ywa.1.gmail; Sun, 06 Oct
- 2019 20:32:08 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyndO7cintP5na74PCbomTZIKr1SX2lYdcsW+XPGRkheNcGFkuWowK4lbuQwntT/g/M/MVu
-X-Received: by 2002:a81:c1:: with SMTP id 184mr19527594ywa.175.1570419128137;
-        Sun, 06 Oct 2019 20:32:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570419128; cv=none;
+Received: by 10.25.72.82 with SMTP id v79ls1372151lfa.11.gmail; Sat, 03 Mar
+ 2018 12:52:43 -0800 (PST)
+X-Google-Smtp-Source: AG47ELtsy9MhCVU+wWOzE/36saWjInG2LkemOptyIlomZjmGDwpdw32FegkotCis3Op3HjuTd1cI
+X-Received: by 10.25.235.140 with SMTP id f12mr741005lfk.19.1520110362982;
+        Sat, 03 Mar 2018 12:52:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520110362; cv=none;
         d=google.com; s=arc-20160816;
-        b=k+Qgl56vS2sAgVtd7dHm7Sm9eMGsd5LAvI8MhGON22CnLK4IncC9ih0VOzgUkFmhJr
-         Mnc0+7VB3OH/nyrgn39sXJb9mqVObUvfrAbk3TUWJ4mWFymqMKd08tRfCaGm9hgup3w/
-         yNNoVK/Com7TKd6s7g+5nLqvIrRLg/iYCcogmR37h7Y+dL16n0aR4s8PXzF/CAOr/FhX
-         1SIF9RWYMHIpg/8vct9xJGxHdZ1yViqNxAcy0mpX0/dltw36FTTIExVi9VKqv+4scMwk
-         S6YFAnApPImEfVe0Kml8WTgK+b7a4+6zlGABKPH4kwsfvNrKxRxTJH2vNMuRA9G0RTwW
-         aPDg==
+        b=TPJras8ZLYA+72J+jOQtnRsiw4ht2QjX838AyGUaQdMIvKuDDU3RmlOwZ0pXEQe+PS
+         c1WrPU+j9tPTRGN8kelT+1AQZvaG0NVmi7lQPhIT8LQRoTeMjMm/BD6QDt0wQugcdz2+
+         WEz6pi6k0bdkcNfOqIIh6EB9ejjlPpZuOvNNMIDBKHzbnxNC6OdN8371zLakwCN+DmTf
+         MSQBwSxDEQ0x7ZtxEWTpbISCT1r5gcUqZpUUY7bDUlrRTRRDsokFk9rDkLX/ZLCASpL5
+         VtnlJDtpDiBzUKGiR+8W482uuRLW2UIFdqUNZOteP6rPbd7BcPpJRCpAqy+UXDLcXWJh
+         LShQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:mail-followup-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=THRUKUzX8hzAjwXB57IC4HUD9pgdEWH9ZbF+if0IrRs=;
-        b=LsZfTVlNDhq8IbuKtbDKhVx3VOd6dTh6ocL/CN9z6vCXN51hmE4JE2uZ40+ky4AFXC
-         XGyqiQSlZsWGEIeU0x826xwSUnG4fLfkAdWKLUUWt8S+bAyuiuOgI2GNL2IU8cpZzlWK
-         r2unXe/PaxrqW6ajsCH98QD9GrjpYBwAGO6Bvuxa8b9eYyMkSz0x3dYGLF3H2uEtiR0E
-         HgYTA7R9TUM95Xerm9lhRchee6h6Am5lLwIPHWRD/2O1LoyJRKqftVgU1+0XaccV1rzK
-         yPM1MBmtceLE/eSX/zJleN4qKknravYclPpyl6fb2aFfrMmjaJaYwRX/spW7IGj67l1c
-         iqmA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=zdmsXkYGCHB8/db6iyjow5zIFnkKdzuTERHdjEKliPE=;
+        b=X7T/YlQ7j4xRK9qOgkV5TFNGsUjRRYF1PScjXg0GhoXuZ0BNwpbM+95/6YIm4DuFl3
+         e3akeYCunH4doCUnwylSbjH5tEW66H2ev9jMYahDw9e+d1InRechWLCR9LyIe81YjHYn
+         sVFnx8VfImg1zz3av0rsyrDLStTBv+aK320xHop4dcgNpRMV2nhDno3AGu05P7l0Jvb0
+         +3XwPuG+FIzUV4byYfVzmeho0S5pNaJRwo8hLPbxy5BPZvvxgyvvsOs3TI6413ub9WjO
+         8v66gcI7exhwY1n3uiInAWL012sNG4kASvgx1YVuRxotTJQYNpHZmcXmEUaOoH1ijKoB
+         2spw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="ddakZof/";
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e42 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jarias.linux@gmail.com>
-Received: from mail-vs1-xe42.google.com (mail-vs1-xe42.google.com. [2607:f8b0:4864:20::e42])
-        by gmr-mx.google.com with ESMTPS id j136si321752ybj.3.2019.10.06.20.32.08
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id j4si405581lja.1.2018.03.03.12.52.42
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 06 Oct 2019 20:32:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e42 as permitted sender) client-ip=2607:f8b0:4864:20::e42;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 03 Mar 2018 12:52:42 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="ddakZof/";
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e42 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-vs1-xe42.google.com with SMTP id z14so7931562vsz.13
-        for <outreachy-kernel@googlegroups.com>; Sun, 06 Oct 2019 20:32:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mail-followup-to:mime-version
-         :content-disposition:user-agent;
-        bh=THRUKUzX8hzAjwXB57IC4HUD9pgdEWH9ZbF+if0IrRs=;
-        b=ddakZof/kranXtlub1Z5PSoUbVNayjAlYaPHTkpg6EJy1pQN83kzeMNhEhAe650vt9
-         7t4oSfg4G2hZeND+I3eM1AVnpifKVAAtePC6dRPvnutO1DVElt/RFqmwKHN4OgONrPuR
-         N/hWjrfamhdw57T6avIHTHwcekeMypy86mNUDWhaGOwPxfEAV0T5Zyo/ecnOQ35BbNDh
-         BKYa71NAe+gX6tkVij5tFDkgRyAsNSNm6dirIxzBWKv/mYI+dN1V0b883GockyuOLecE
-         IwjIL2kMtGnWwQ8nWNi6G36dB51lBTCIh+Dy8+CX/rZ6JCFf9gYupN9J31TvmEm19tvH
-         /q7g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id
-         :mail-followup-to:mime-version:content-disposition:user-agent;
-        bh=THRUKUzX8hzAjwXB57IC4HUD9pgdEWH9ZbF+if0IrRs=;
-        b=giuF/BLXV32is48p6wuxW6pBGtAWcedr9U6TDs9ZfLnXPoyniWXToW74zneoq34uTw
-         36g8pBmwtYXzwSJDVHtjYtwQU1cZQc60GY18/TOBmmlbWnELVvs/SI9A6nBNLZ2wOET8
-         JkZaMVqJPmjprXDfuupo4VQGkn9C0JrdOSMZbp3uWXoe6qicx9uiljUTRIMP/6r8hgET
-         xNJjx//C7+qiYJofstYnGKDSya9DpVHpSkcC3XThCfjGj2KiC+JTP1zn1H3NfpDexG6j
-         PdKzq9QUr8g0t+YmzPBOmOC5DzrCz5wjFYlFIzox2ZGgHpoth9555FTCHW11vhr2ZyvY
-         c2Nw==
-X-Gm-Message-State: APjAAAUTiePRdzAVnUCkidV/U4N+dIHkYTfMsIEtJiPMrSUtpTxV0ZUo
-	LDJRzaoMMm/EW1AxwrlG0iHrG124md0Zww==
-X-Received: by 2002:a67:e891:: with SMTP id x17mr12918955vsn.98.1570419127835;
-        Sun, 06 Oct 2019 20:32:07 -0700 (PDT)
-Return-Path: <jarias.linux@gmail.com>
-Received: from gmail.com (dynamic-200-119-56-53.dynamic.etb.net.co. [200.119.56.53])
-        by smtp.gmail.com with ESMTPSA id 72sm3435134uau.6.2019.10.06.20.32.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 06 Oct 2019 20:32:07 -0700 (PDT)
-Date: Sun, 6 Oct 2019 22:32:05 -0500
-From: "Javier F. Arias" <jarias.linux@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8723bs: Switch constant place in test
-Message-ID: <20191007033202.45czxuochtylkddf@gmail.com>
-Mail-Followup-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.47,419,1515452400"; 
+   d="scan'208";a="316240577"
+Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 03 Mar 2018 21:52:42 +0100
+Date: Sat, 3 Mar 2018 21:52:41 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Arushi Singhal <arushisinghal19971997@gmail.com>
+cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org, 
+    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: Remove unnecessary
+ semicolon.
+In-Reply-To: <20180303191726.GA4986@seema-Inspiron-15-3567>
+Message-ID: <alpine.DEB.2.20.1803032152260.9544@hadrien>
+References: <20180303191726.GA4986@seema-Inspiron-15-3567>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: NeoMutt/20180716
+Content-Type: text/plain; charset=US-ASCII
 
-Switch constant place as it should be on the right side of the test.
-Issue found by checkpatch.
 
-Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
----
- drivers/staging/rtl8723bs/core/rtw_xmit.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-index bda25e13e935..6f7a63f53d4f 100644
---- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-@@ -2981,7 +2981,7 @@ int rtw_xmit_thread(void *context)
- 	do {
- 		err = rtw_hal_xmit_thread_handler(padapter);
- 		flush_signals_thread();
--	} while (_SUCCESS == err);
-+	} while (err == _SUCCESS);
- 
- 	complete(&padapter->xmitpriv.terminate_xmitthread_comp);
- 
--- 
-2.20.1
+On Sun, 4 Mar 2018, Arushi Singhal wrote:
 
+> Remove unnecessary semicolon using semicolon.cocci Coccinelle script.
+>
+> Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+> ---
+>  drivers/staging/rtl8723bs/core/rtw_recv.c       | 2 +-
+>  drivers/staging/rtl8723bs/hal/rtl8723b_rf6052.c | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8723bs/core/rtw_recv.c b/drivers/staging/rtl8723bs/core/rtw_recv.c
+> index 9c7c3be..86f995b 100644
+> --- a/drivers/staging/rtl8723bs/core/rtw_recv.c
+> +++ b/drivers/staging/rtl8723bs/core/rtw_recv.c
+> @@ -1785,7 +1785,7 @@ static union recv_frame *recvframe_defrag(struct adapter *adapter,
+>  		pfhdr->attrib.icv_len = pnfhdr->attrib.icv_len;
+>  		plist = get_next(plist);
+>
+> -	};
+> +	}
+>
+>  	/* free the defrag_q queue and return the prframe */
+>  	rtw_free_recvframe_queue(defrag_q, pfree_recv_queue);
+> diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_rf6052.c b/drivers/staging/rtl8723bs/hal/rtl8723b_rf6052.c
+> index a71b552..f6aeb26 100644
+> --- a/drivers/staging/rtl8723bs/hal/rtl8723b_rf6052.c
+> +++ b/drivers/staging/rtl8723bs/hal/rtl8723b_rf6052.c
+> @@ -163,7 +163,7 @@ static int phy_RF6052_Config_ParaFile(struct adapter *Adapter)
+>  			break;
+>  		}
+>
+> -		/*----Restore RFENV control type----*/;
+> +		/*----Restore RFENV control type----*/
+>  		switch (eRFPath) {
+>  		case RF_PATH_A:
+>  		case RF_PATH_C:
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20180303191726.GA4986%40seema-Inspiron-15-3567.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
