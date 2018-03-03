@@ -1,124 +1,423 @@
 X-GM-THRID: 6528466201738215424
-X-Received: by 10.176.24.87 with SMTP id j23mr3732562uag.25.1520055226321;
-        Fri, 02 Mar 2018 21:33:46 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.31.52.151 with SMTP id b145ls5911550vka.12.gmail; Fri, 02 Mar
- 2018 21:33:45 -0800 (PST)
-X-Google-Smtp-Source: AG47ELuEDCtyEPdmZxvfp7ZfbpJfpucuS/3IaWb+AmLfKIGTjBuYNSGJ6Y477QyfKcI3pD0SWOQT
-X-Received: by 10.31.165.207 with SMTP id o198mr3540668vke.79.1520055225383;
-        Fri, 02 Mar 2018 21:33:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520055225; cv=none;
-        d=google.com; s=arc-20160816;
-        b=AOB+unMVAAVU6tumnX+eUAkZg8M0GOveIg0z/+luKHdOPg5iSj/cZKPwpNzFVO8ccz
-         lbANtA7bOG99GmcFIq+oe0zPKXm46rhIVAfSx+YA5oCnp/DhcKZN/q/jy8uKPaFhKZmI
-         RgdLxEp+yyHg3iIWVP7WddS31xB9wuot7AjY/pl1ITjQvWX78Bjs5VMng/esct3htLf/
-         bcmrGF17s9ZTvoGWfwtfplkA/uiwjG8WkVMorFO59bPk6RP6IhpnbybobNRe6QBRfd1+
-         7ze8WlIVpriTzCA5+9G8k/GU4PcB7l6KEM6lVuOLKXalx8/UGUivG4Sn/ttTCyJUFrL2
-         Ptrg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=a8DBUH/BehwAD528YFcfeBspGu2h6Q9nKhIyyffcJag=;
-        b=i450fLSakNDtpmu5qm2r4LJlsfyYDSCf6xyWH6Z77iveWurQCMG1EmeblyxV6Ch63H
-         macWUKV7MHAVrZgVBMo0BYlWYA19q/TRBW6M+Sv/fxNAtUYM+/7i/fiPab1EQCstm6z/
-         MYffveu1MjbduhvmtpB7gtIEHaMCVoC+mAqhzzOflWz0Wq8HuHfx7YOhAmjqP42VryzP
-         j70hjQiVwk6+8rsveeiW8Ibqo3Mij0jrjkgtQVzWUa5e9FOPPxDrNUDNqYtg/FiRyNPo
-         nlJgQu1xbxBrxNbmo4QS5DlpOeATUI7wgLdTpx3sHeytSQ9GFibCnB/MVZ83ZR328Lhw
-         0dGA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JxFRQXSy;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id 1si524258uag.2.2018.03.02.21.33.45
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 02 Mar 2018 21:33:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JxFRQXSy;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id h19so4007034pfd.12
-        for <outreachy-kernel@googlegroups.com>; Fri, 02 Mar 2018 21:33:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=a8DBUH/BehwAD528YFcfeBspGu2h6Q9nKhIyyffcJag=;
-        b=JxFRQXSyrRSQiF//sLtX8WtATQMVzaRXYzEkXq9ETitlb0hviXhNPCyW5E4HuA6dcC
-         sJpgVrZBGajevtq2VanNVd/XKRxiStV8IcgqkakoauPtsuCI1L02qUudHGc98oyORNxK
-         X/dunc8o8ZUwaWi4XC2kC+lhNjrvQ8RYCj+2EHOOtzdHEkBizuciTjFojP7JFnMOJS+B
-         ce1WqDmcZTpp4vZtzzv7a5nQ2fXrOgetJlMW9uleiH7h5hqmc6ndwvdkGkf77yE18bdW
-         x1ImsSgmit0u0ocQcRjVtgKqw/Sb5xZKXEG0Jvro5JtdfFuwJWrg8V7ZbCTNRGxbpiI/
-         jZ/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=a8DBUH/BehwAD528YFcfeBspGu2h6Q9nKhIyyffcJag=;
-        b=pHrY45XBmPtjrOs1z9w4keDE9S7cQqmSh2aQ2h0R5e0tmW4T0YkXq88Fv0WdjMG1bJ
-         GQDZiC89tNzXfpJ/ThM8xL4rQiJz2wjSHncFVSHk4ItOFOvFeF4nenOnVxGQ+I9Oczbz
-         CWV0RA/Z/pNF5sNc8UxyS3L9gp7SlcaXEYIAYdk97ye0UWyCPwpblxBn/RboJxtGTaAM
-         uzhc/h3APefuZqbBKkt3nBiomukHclrHvODyXrVFwK3wjyBs0MCKeDOCux32agpmDKvM
-         RWlyPUIXEigKAAAe8gmaNb4iYmSsG29fgVdKD9kl49IS6sflE0srOKNvDHDxM9izpEPv
-         yfKg==
-X-Gm-Message-State: APf1xPDtj8VHVbP43QY0/S+L09kyCz5FtdS9mj6hu3gb8jgtWjO2xys3
-	G9FAnk7uBluLTtgLiNm8l0Nnrw==
-X-Received: by 10.99.127.80 with SMTP id p16mr6420464pgn.144.1520055223927;
-        Fri, 02 Mar 2018 21:33:43 -0800 (PST)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from seema-Inspiron-15-3567.iiit.ac.in ([14.139.82.6])
-        by smtp.googlemail.com with ESMTPSA id m22sm16008604pfg.188.2018.03.02.21.33.38
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 02 Mar 2018 21:33:41 -0800 (PST)
+Date: Fri, 2 Mar 2018 20:00:09 -0800 (PST)
 From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Larry.Finger@lwfinger.net,
-	florian.c.schilhabel@googlemail.com,
-	gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	Arushi Singhal <arushisinghal19971997@gmail.com>
-Subject: [PATCH v2 0/6] staging: rtl8712: fix coding style issues
-Date: Sat,  3 Mar 2018 11:02:30 +0530
-Message-Id: <1520055156-8388-1-git-send-email-arushisinghal19971997@gmail.com>
-X-Mailer: git-send-email 2.7.4
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <a3e7f438-5d31-491c-a462-89757352f077@googlegroups.com>
+In-Reply-To: <CAO393AD6M9K6GYrM35z2-xu+hwZs4BANThtAbVYzN543VS_TnQ@mail.gmail.com>
+References: <1520026941-16548-1-git-send-email-arushisinghal19971997@gmail.com>
+ <1520026941-16548-2-git-send-email-arushisinghal19971997@gmail.com>
+ <CAO393AD6M9K6GYrM35z2-xu+hwZs4BANThtAbVYzN543VS_TnQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 1/4] staging: rtl8712: Remove
+ multiple blank line(s)
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_9469_991144668.1520049609607"
+X-Google-Token: EMm76NQFOBb5anfAgZU0
+X-Google-IP: 14.139.82.6
 
-Fix issues found with checkpatch.pl to conform to the Linux
-kernel coding style.
+------=_Part_9469_991144668.1520049609607
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_9470_2065124184.1520049609608"
 
-Changes in v2:
-* From and Signed-off emails were not same in v1.
-* Added detailed commit message
+------=_Part_9470_2065124184.1520049609608
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-Arushi Singhal (6):
-  staging: rtl8712: Fixed 'tabstop' coding style warning
-  staging: rtl8712: match alignment with open parenthesis
-  staging: rtl8712: Remove multiple blank line(s)
-  staging: rtl8712: Added spaces around '+'
-  staging: rtl8712: Add spaces around '|'
-  staging: rtl8712: remove unnecessary parentheses
 
- drivers/staging/rtl8712/drv_types.h                |  2 +-
- drivers/staging/rtl8712/mlme_linux.c               |  2 +-
- drivers/staging/rtl8712/os_intfs.c                 |  3 +-
- drivers/staging/rtl8712/recv_linux.c               |  4 +-
- drivers/staging/rtl8712/rtl8712_bitdef.h           |  1 -
- drivers/staging/rtl8712/rtl8712_cmd.c              |  8 +--
- drivers/staging/rtl8712/rtl8712_cmd.h              |  4 +-
- drivers/staging/rtl8712/rtl8712_cmdctrl_bitdef.h   |  2 +-
- drivers/staging/rtl8712/rtl8712_cmdctrl_regdef.h   |  2 -
- drivers/staging/rtl8712/rtl8712_debugctrl_bitdef.h |  1 -
- drivers/staging/rtl8712/rtl8712_debugctrl_regdef.h |  2 -
- drivers/staging/rtl8712/rtl8712_fifoctrl_bitdef.h  |  1 -
- drivers/staging/rtl8712/rtl8712_fifoctrl_regdef.h  |  2 -
- drivers/staging/rtl8712/rtl8712_gp_bitdef.h        |  2 +-
- drivers/staging/rtl8712/rtl8712_gp_regdef.h        |  1 -
- drivers/staging/rtl8712/rtl8712_interrupt_bitdef.h |  1 -
- drivers/staging/rtl8712/rtl8712_led.c              | 70 +++++++++++-----------
- 17 files changed, 48 insertions(+), 60 deletions(-)
 
--- 
-2.7.4
+On Saturday, March 3, 2018 at 3:19:17 AM UTC+5:30, Shraddha Barke wrote:
+>
+>
+>
+> On Fri, Mar 2, 2018 at 10:42 PM, Arushi Singhal <arushising...@gmail.com> 
+> wrote:
+>
+>> From: Arushi Singhal <arushi...@gmail.com>
+>>
+>> Remove extra blank line(s) that were causing checkpatch issues.
+>>
+>> Signed-off-by: Arushi Singhal <arushising...@gmail.com>
+>>
+>
+> Your From and Signed-off emails are still different (maybe check your git 
+> config) Regarding the commit message, you should write why you removed
+> the extra lines say "to adhere to Linux coding style", not because they 
+> were checkpatch errors. Give credit to the tool.
+> The change looks fine to me.
+>
+ 
+Hi  Shraddha
+Yes, I mentioned in my previous mail to ignore this series. I made changes 
+to my git config but the problem occurred may be because for some commits, 
+I tried to change the signed off manually.  
+I'll take care of the suggestions in next version. 
+Best
+Arushi
 
+>  
+>
+>> ---
+>>  drivers/staging/rtl8712/os_intfs.c                 | 1 -
+>>  drivers/staging/rtl8712/rtl8712_bitdef.h           | 1 -
+>>  drivers/staging/rtl8712/rtl8712_cmdctrl_regdef.h   | 2 --
+>>  drivers/staging/rtl8712/rtl8712_debugctrl_bitdef.h | 1 -
+>>  drivers/staging/rtl8712/rtl8712_debugctrl_regdef.h | 2 --
+>>  drivers/staging/rtl8712/rtl8712_fifoctrl_bitdef.h  | 1 -
+>>  drivers/staging/rtl8712/rtl8712_fifoctrl_regdef.h  | 2 --
+>>  drivers/staging/rtl8712/rtl8712_gp_regdef.h        | 1 -
+>>  drivers/staging/rtl8712/rtl8712_interrupt_bitdef.h | 1 -
+>>  9 files changed, 12 deletions(-)
+>>
+>> diff --git a/drivers/staging/rtl8712/os_intfs.c 
+>> b/drivers/staging/rtl8712/os_intfs.c
+>> index d6d27da..ff4e451 100644
+>> --- a/drivers/staging/rtl8712/os_intfs.c
+>> +++ b/drivers/staging/rtl8712/os_intfs.c
+>> @@ -347,7 +347,6 @@ u8 r8712_free_drv_sw(struct _adapter *padapter)
+>>         return _SUCCESS;
+>>  }
+>>
+>> -
+>>  static void enable_video_mode(struct _adapter *padapter, int cbw40_value)
+>>  {
+>>         /*   bit 8:
+>> diff --git a/drivers/staging/rtl8712/rtl8712_bitdef.h 
+>> b/drivers/staging/rtl8712/rtl8712_bitdef.h
+>> index bff57a8..dee35fe 100644
+>> --- a/drivers/staging/rtl8712/rtl8712_bitdef.h
+>> +++ b/drivers/staging/rtl8712/rtl8712_bitdef.h
+>> @@ -18,7 +18,6 @@
+>>   *
+>>   
+>> ******************************************************************************/
+>>
+>> -
+>>  #ifndef __RTL8712_BITDEF_H__
+>>  #define __RTL8712_BITDEF_H__
+>>
+>> diff --git a/drivers/staging/rtl8712/rtl8712_cmdctrl_regdef.h 
+>> b/drivers/staging/rtl8712/rtl8712_cmdctrl_regdef.h
+>> index 9374f1c..8df42a7 100644
+>> --- a/drivers/staging/rtl8712/rtl8712_cmdctrl_regdef.h
+>> +++ b/drivers/staging/rtl8712/rtl8712_cmdctrl_regdef.h
+>> @@ -20,7 +20,6 @@
+>>  #ifndef __RTL8712_CMDCTRL_REGDEF_H__
+>>  #define __RTL8712_CMDCTRL_REGDEF_H__
+>>
+>> -
+>>  #define CR                     (RTL8712_CMDCTRL_ + 0x0000)
+>>  #define TXPAUSE                        (RTL8712_CMDCTRL_ + 0x0002)
+>>  #define TCR                    (RTL8712_CMDCTRL_ + 0x0004)
+>> @@ -29,6 +28,5 @@
+>>  #define SYSF_CFG               (RTL8712_CMDCTRL_ + 0x000D)
+>>  #define MBIDCTRL               (RTL8712_CMDCTRL_ + 0x000E)
+>>
+>> -
+>>  #endif /* __RTL8712_CMDCTRL_REGDEF_H__ */
+>>
+>> diff --git a/drivers/staging/rtl8712/rtl8712_debugctrl_bitdef.h 
+>> b/drivers/staging/rtl8712/rtl8712_debugctrl_bitdef.h
+>> index 8bd4837..4b34367 100644
+>> --- a/drivers/staging/rtl8712/rtl8712_debugctrl_bitdef.h
+>> +++ b/drivers/staging/rtl8712/rtl8712_debugctrl_bitdef.h
+>> @@ -51,5 +51,4 @@
+>>  /*FDLOCKFLAG1*/
+>>  #define        _LOCKFLAG1_MSK          0x03
+>>
+>> -
+>>  #endif /* __RTL8712_DEBUGCTRL_BITDEF_H__ */
+>> diff --git a/drivers/staging/rtl8712/rtl8712_debugctrl_regdef.h 
+>> b/drivers/staging/rtl8712/rtl8712_debugctrl_regdef.h
+>> index 43630bb..d7c964d 100644
+>> --- a/drivers/staging/rtl8712/rtl8712_debugctrl_regdef.h
+>> +++ b/drivers/staging/rtl8712/rtl8712_debugctrl_regdef.h
+>> @@ -41,7 +41,5 @@
+>>  #define TRXPKTBUF_DBG_CTRL     (RTL8712_DEBUGCTRL_ + 0x38)
+>>  #define DPLL_MON               (RTL8712_DEBUGCTRL_ + 0x3A)
+>>
+>> -
+>> -
+>>  #endif /* __RTL8712_DEBUGCTRL_REGDEF_H__ */
+>>
+>> diff --git a/drivers/staging/rtl8712/rtl8712_fifoctrl_bitdef.h 
+>> b/drivers/staging/rtl8712/rtl8712_fifoctrl_bitdef.h
+>> index c564dc8..bd82404 100644
+>> --- a/drivers/staging/rtl8712/rtl8712_fifoctrl_bitdef.h
+>> +++ b/drivers/staging/rtl8712/rtl8712_fifoctrl_bitdef.h
+>> @@ -140,6 +140,5 @@
+>>  /*TXFF_PG_NUM*/
+>>  #define        _TXFF_PG_NUM_MSK        0x0FFF
+>>
+>> -
+>>  #endif /*      __RTL8712_FIFOCTRL_BITDEF_H__ */
+>>
+>> diff --git a/drivers/staging/rtl8712/rtl8712_fifoctrl_regdef.h 
+>> b/drivers/staging/rtl8712/rtl8712_fifoctrl_regdef.h
+>> index 29b89c4..6d52738 100644
+>> --- a/drivers/staging/rtl8712/rtl8712_fifoctrl_regdef.h
+>> +++ b/drivers/staging/rtl8712/rtl8712_fifoctrl_regdef.h
+>> @@ -71,6 +71,4 @@
+>>  #define TXQ_PGADD              (RTL8712_FIFOCTRL_ + 0xB3)
+>>  #define TXFF_PG_NUM            (RTL8712_FIFOCTRL_ + 0xB4)
+>>
+>> -
+>> -
+>>  #endif /* __RTL8712_FIFOCTRL_REGDEF_H__ */
+>> diff --git a/drivers/staging/rtl8712/rtl8712_gp_regdef.h 
+>> b/drivers/staging/rtl8712/rtl8712_gp_regdef.h
+>> index 8fc68f6..a037936 100644
+>> --- a/drivers/staging/rtl8712/rtl8712_gp_regdef.h
+>> +++ b/drivers/staging/rtl8712/rtl8712_gp_regdef.h
+>> @@ -37,6 +37,5 @@
+>>  #define PHY_REG_RPT            (RTL8712_GP_ + 0x13)
+>>  #define PHY_REG_DATA           (RTL8712_GP_ + 0x14)
+>>
+>> -
+>>  #endif /*__RTL8712_GP_REGDEF_H__ */
+>>
+>> diff --git a/drivers/staging/rtl8712/rtl8712_interrupt_bitdef.h 
+>> b/drivers/staging/rtl8712/rtl8712_interrupt_bitdef.h
+>> index 49598c3..2a561d2 100644
+>> --- a/drivers/staging/rtl8712/rtl8712_interrupt_bitdef.h
+>> +++ b/drivers/staging/rtl8712/rtl8712_interrupt_bitdef.h
+>> @@ -53,6 +53,5 @@
+>>  #define        _VODOK                                  BIT(1)
+>>  #define        _RXOK                                   BIT(0)
+>>
+>> -
+>>  #endif /*__RTL8712_INTERRUPT_BITDEF_H__*/
+>>
+>> --
+>> 2.7.4
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups 
+>> "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an 
+>> email to outreachy-kern...@googlegroups.com.
+>> To post to this group, send email to outreach...@googlegroups.com.
+>> To view this discussion on the web visit 
+>> https://groups.google.com/d/msgid/outreachy-kernel/1520026941-16548-2-git-send-email-arushisinghal19971997%40gmail.com
+>> .
+>> For more options, visit https://groups.google.com/d/optout.
+>>
+>
+>
+>
+> -- 
+> Shraddha
+>
+
+------=_Part_9470_2065124184.1520049609608
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Saturday, March 3, 2018 at 3:19:17 AM UTC+5:30,=
+ Shraddha Barke wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;=
+margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><div dir=
+=3D"ltr"><br><div><br><div class=3D"gmail_quote">On Fri, Mar 2, 2018 at 10:=
+42 PM, Arushi Singhal <span dir=3D"ltr">&lt;<a rel=3D"nofollow">arushising.=
+..@gmail.<wbr>com</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote=
+" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">F=
+rom: Arushi Singhal &lt;<a rel=3D"nofollow">arushi...@gmail.com</a>&gt;<br>
+<br>
+Remove extra blank line(s) that were causing checkpatch issues.<br>
+<br>
+Signed-off-by: Arushi Singhal &lt;<a rel=3D"nofollow">arushising...@gmail.<=
+wbr>com</a>&gt;<br></blockquote><div><br></div><div>Your From and Signed-of=
+f emails are still different (maybe check your git config) Regarding the co=
+mmit message, you should write why you removed</div><div>the extra lines sa=
+y &quot;to adhere to Linux coding style&quot;, not because they were checkp=
+atch errors. Give credit to the tool.</div><div>The change looks fine to me=
+.</div></div></div></div></blockquote><div>=C2=A0<br>Hi=C2=A0 Shraddha<br>Y=
+es, I mentioned in my previous mail to ignore this series. I made changes t=
+o my git config but the problem occurred may be because for some commits, I=
+ tried to change the signed off manually.=C2=A0 <br>I&#39;ll take care of t=
+he suggestions in next version. <br>Best<br>Arushi<br>
+
+             </div><blockquote class=3D"gmail_quote" style=3D"margin: 0;mar=
+gin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><div dir=3D=
+"ltr"><div><div class=3D"gmail_quote"><div>=C2=A0</div><blockquote class=3D=
+"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding=
+-left:1ex">
+---<br>
+=C2=A0drivers/staging/rtl8712/os_<wbr>intfs.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 1 -<br>
+=C2=A0drivers/staging/rtl8712/<wbr>rtl8712_bitdef.h=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0| 1 -<br>
+=C2=A0drivers/staging/rtl8712/<wbr>rtl8712_cmdctrl_regdef.h=C2=A0 =C2=A0| 2=
+ --<br>
+=C2=A0drivers/staging/rtl8712/<wbr>rtl8712_debugctrl_bitdef.h | 1 -<br>
+=C2=A0drivers/staging/rtl8712/<wbr>rtl8712_debugctrl_regdef.h | 2 --<br>
+=C2=A0drivers/staging/rtl8712/<wbr>rtl8712_fifoctrl_bitdef.h=C2=A0 | 1 -<br=
+>
+=C2=A0drivers/staging/rtl8712/<wbr>rtl8712_fifoctrl_regdef.h=C2=A0 | 2 --<b=
+r>
+=C2=A0drivers/staging/rtl8712/<wbr>rtl8712_gp_regdef.h=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 | 1 -<br>
+=C2=A0drivers/staging/rtl8712/<wbr>rtl8712_interrupt_bitdef.h | 1 -<br>
+=C2=A09 files changed, 12 deletions(-)<br>
+<br>
+diff --git a/drivers/staging/rtl8712/os_<wbr>intfs.c b/drivers/staging/rtl8=
+712/os_<wbr>intfs.c<br>
+index d6d27da..ff4e451 100644<br>
+--- a/drivers/staging/rtl8712/os_<wbr>intfs.c<br>
++++ b/drivers/staging/rtl8712/os_<wbr>intfs.c<br>
+@@ -347,7 +347,6 @@ u8 r8712_free_drv_sw(struct _adapter *padapter)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 return _SUCCESS;<br>
+=C2=A0}<br>
+<br>
+-<br>
+=C2=A0static void enable_video_mode(struct _adapter *padapter, int cbw40_va=
+lue)<br>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 /*=C2=A0 =C2=A0bit 8:<br>
+diff --git a/drivers/staging/rtl8712/<wbr>rtl8712_bitdef.h b/drivers/stagin=
+g/rtl8712/<wbr>rtl8712_bitdef.h<br>
+index bff57a8..dee35fe 100644<br>
+--- a/drivers/staging/rtl8712/<wbr>rtl8712_bitdef.h<br>
++++ b/drivers/staging/rtl8712/<wbr>rtl8712_bitdef.h<br>
+@@ -18,7 +18,6 @@<br>
+=C2=A0 *<br>
+=C2=A0 ******************************<wbr>******************************<wb=
+r>******************/<br>
+<br>
+-<br>
+=C2=A0#ifndef __RTL8712_BITDEF_H__<br>
+=C2=A0#define __RTL8712_BITDEF_H__<br>
+<br>
+diff --git a/drivers/staging/rtl8712/<wbr>rtl8712_cmdctrl_regdef.h b/driver=
+s/staging/rtl8712/<wbr>rtl8712_cmdctrl_regdef.h<br>
+index 9374f1c..8df42a7 100644<br>
+--- a/drivers/staging/rtl8712/<wbr>rtl8712_cmdctrl_regdef.h<br>
++++ b/drivers/staging/rtl8712/<wbr>rtl8712_cmdctrl_regdef.h<br>
+@@ -20,7 +20,6 @@<br>
+=C2=A0#ifndef __RTL8712_CMDCTRL_REGDEF_H__<br>
+=C2=A0#define __RTL8712_CMDCTRL_REGDEF_H__<br>
+<br>
+-<br>
+=C2=A0#define CR=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0(RTL8712_CMDCTRL_ + 0x0000)<br>
+=C2=A0#define TXPAUSE=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (RTL8712_CMDCTRL_ + 0x0002)<br>
+=C2=A0#define TCR=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 (RTL8712_CMDCTRL_ + 0x0004)<br>
+@@ -29,6 +28,5 @@<br>
+=C2=A0#define SYSF_CFG=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0(RTL8712_CMDCTRL_ + 0x000D)<br>
+=C2=A0#define MBIDCTRL=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0(RTL8712_CMDCTRL_ + 0x000E)<br>
+<br>
+-<br>
+=C2=A0#endif /* __RTL8712_CMDCTRL_REGDEF_H__ */<br>
+<br>
+diff --git a/drivers/staging/rtl8712/<wbr>rtl8712_debugctrl_bitdef.h b/driv=
+ers/staging/rtl8712/<wbr>rtl8712_debugctrl_bitdef.h<br>
+index 8bd4837..4b34367 100644<br>
+--- a/drivers/staging/rtl8712/<wbr>rtl8712_debugctrl_bitdef.h<br>
++++ b/drivers/staging/rtl8712/<wbr>rtl8712_debugctrl_bitdef.h<br>
+@@ -51,5 +51,4 @@<br>
+=C2=A0/*FDLOCKFLAG1*/<br>
+=C2=A0#define=C2=A0 =C2=A0 =C2=A0 =C2=A0 _LOCKFLAG1_MSK=C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 0x03<br>
+<br>
+-<br>
+=C2=A0#endif /* __RTL8712_DEBUGCTRL_BITDEF_H__ */<br>
+diff --git a/drivers/staging/rtl8712/<wbr>rtl8712_debugctrl_regdef.h b/driv=
+ers/staging/rtl8712/<wbr>rtl8712_debugctrl_regdef.h<br>
+index 43630bb..d7c964d 100644<br>
+--- a/drivers/staging/rtl8712/<wbr>rtl8712_debugctrl_regdef.h<br>
++++ b/drivers/staging/rtl8712/<wbr>rtl8712_debugctrl_regdef.h<br>
+@@ -41,7 +41,5 @@<br>
+=C2=A0#define TRXPKTBUF_DBG_CTRL=C2=A0 =C2=A0 =C2=A0(RTL8712_DEBUGCTRL_ + 0=
+x38)<br>
+=C2=A0#define DPLL_MON=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0(RTL8712_DEBUGCTRL_ + 0x3A)<br>
+<br>
+-<br>
+-<br>
+=C2=A0#endif /* __RTL8712_DEBUGCTRL_REGDEF_H__ */<br>
+<br>
+diff --git a/drivers/staging/rtl8712/<wbr>rtl8712_fifoctrl_bitdef.h b/drive=
+rs/staging/rtl8712/<wbr>rtl8712_fifoctrl_bitdef.h<br>
+index c564dc8..bd82404 100644<br>
+--- a/drivers/staging/rtl8712/<wbr>rtl8712_fifoctrl_bitdef.h<br>
++++ b/drivers/staging/rtl8712/<wbr>rtl8712_fifoctrl_bitdef.h<br>
+@@ -140,6 +140,5 @@<br>
+=C2=A0/*TXFF_PG_NUM*/<br>
+=C2=A0#define=C2=A0 =C2=A0 =C2=A0 =C2=A0 _TXFF_PG_NUM_MSK=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 0x0FFF<br>
+<br>
+-<br>
+=C2=A0#endif /*=C2=A0 =C2=A0 =C2=A0 __RTL8712_FIFOCTRL_BITDEF_H__ */<br>
+<br>
+diff --git a/drivers/staging/rtl8712/<wbr>rtl8712_fifoctrl_regdef.h b/drive=
+rs/staging/rtl8712/<wbr>rtl8712_fifoctrl_regdef.h<br>
+index 29b89c4..6d52738 100644<br>
+--- a/drivers/staging/rtl8712/<wbr>rtl8712_fifoctrl_regdef.h<br>
++++ b/drivers/staging/rtl8712/<wbr>rtl8712_fifoctrl_regdef.h<br>
+@@ -71,6 +71,4 @@<br>
+=C2=A0#define TXQ_PGADD=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (RT=
+L8712_FIFOCTRL_ + 0xB3)<br>
+=C2=A0#define TXFF_PG_NUM=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (RTL8712=
+_FIFOCTRL_ + 0xB4)<br>
+<br>
+-<br>
+-<br>
+=C2=A0#endif /* __RTL8712_FIFOCTRL_REGDEF_H__ */<br>
+diff --git a/drivers/staging/rtl8712/<wbr>rtl8712_gp_regdef.h b/drivers/sta=
+ging/rtl8712/<wbr>rtl8712_gp_regdef.h<br>
+index 8fc68f6..a037936 100644<br>
+--- a/drivers/staging/rtl8712/<wbr>rtl8712_gp_regdef.h<br>
++++ b/drivers/staging/rtl8712/<wbr>rtl8712_gp_regdef.h<br>
+@@ -37,6 +37,5 @@<br>
+=C2=A0#define PHY_REG_RPT=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (RTL8712=
+_GP_ + 0x13)<br>
+=C2=A0#define PHY_REG_DATA=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(RTL8712=
+_GP_ + 0x14)<br>
+<br>
+-<br>
+=C2=A0#endif /*__RTL8712_GP_REGDEF_H__ */<br>
+<br>
+diff --git a/drivers/staging/rtl8712/<wbr>rtl8712_interrupt_bitdef.h b/driv=
+ers/staging/rtl8712/<wbr>rtl8712_interrupt_bitdef.h<br>
+index 49598c3..2a561d2 100644<br>
+--- a/drivers/staging/rtl8712/<wbr>rtl8712_interrupt_bitdef.h<br>
++++ b/drivers/staging/rtl8712/<wbr>rtl8712_interrupt_bitdef.h<br>
+@@ -53,6 +53,5 @@<br>
+=C2=A0#define=C2=A0 =C2=A0 =C2=A0 =C2=A0 _VODOK=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 BIT(1)<br>
+=C2=A0#define=C2=A0 =C2=A0 =C2=A0 =C2=A0 _RXOK=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0BIT(0)<br>
+<br>
+-<br>
+=C2=A0#endif /*__RTL8712_INTERRUPT_BITDEF_<wbr>H__*/<br>
+<span><font color=3D"#888888"><br>
+--<br>
+2.7.4<br>
+<br>
+--<br>
+You received this message because you are subscribed to the Google Groups &=
+quot;outreachy-kernel&quot; group.<br>
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to <a rel=3D"nofollow">outreachy-kern...@<wbr>googlegroups.com</a>.<br=
+>
+To post to this group, send email to <a rel=3D"nofollow">outreach...@google=
+groups.<wbr>com</a>.<br>
+To view this discussion on the web visit <a href=3D"https://groups.google.c=
+om/d/msgid/outreachy-kernel/1520026941-16548-2-git-send-email-arushisinghal=
+19971997%40gmail.com" rel=3D"nofollow">https://groups.google.com/d/<wbr>msg=
+id/outreachy-kernel/<wbr>1520026941-16548-2-git-send-<wbr>email-arushisingh=
+al19971997%<wbr>40gmail.com</a>.<br>
+For more options, visit <a href=3D"https://groups.google.com/d/optout" rel=
+=3D"nofollow">https://groups.google.com/d/<wbr>optout</a>.<br>
+</font></span></blockquote></div><br><br clear=3D"all"><div><br></div>-- <b=
+r><div><div dir=3D"ltr">Shraddha<br></div></div>
+</div></div>
+</blockquote></div>
+------=_Part_9470_2065124184.1520049609608--
+
+------=_Part_9469_991144668.1520049609607--
 
