@@ -1,68 +1,97 @@
-X-GM-THRID: 6204754090721804288
-X-Received: by 10.107.155.130 with SMTP id d124mr326279ioe.28.1444656888147;
-        Mon, 12 Oct 2015 06:34:48 -0700 (PDT)
+X-GM-THRID: 6528798605512278016
+X-Received: by 10.28.124.10 with SMTP id x10mr611723wmc.20.1520105533124;
+        Sat, 03 Mar 2018 11:32:13 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.30.65 with SMTP id e62ls1616874ioe.49.gmail; Mon, 12 Oct
- 2015 06:34:47 -0700 (PDT)
-X-Received: by 10.50.114.2 with SMTP id jc2mr12571490igb.5.1444656887733;
-        Mon, 12 Oct 2015 06:34:47 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
-        by gmr-mx.google.com with ESMTPS id zg1si1684357pbb.2.2015.10.12.06.34.47
+Received: by 10.28.12.195 with SMTP id 186ls823495wmm.8.canary-gmail; Sat, 03
+ Mar 2018 11:32:11 -0800 (PST)
+X-Google-Smtp-Source: AG47ELsGximRh3LcGcivwVAK4Armu8iJBOgU4j7pEJjtzpconmpb3QH6ciu3pu6bNIH5u+ycausm
+X-Received: by 10.28.11.65 with SMTP id 62mr497600wml.19.1520105531537;
+        Sat, 03 Mar 2018 11:32:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520105531; cv=none;
+        d=google.com; s=arc-20160816;
+        b=C8jU/l3Fh+byN3rqPGkS45Cj71UFuO3AVH+ONA4c9kCMyhEbAgbfIWn+ATyoefgHLz
+         LSj3NFeP+MM0j3ZTISDniwXy1lQY6PRIoP8ljFCzic64sv8bLMXBsWdsI079AvXYBn/i
+         RiJ+TWmn/zxswElQ6G+pk/SGIwmWoz8vloWWKtSw7ZmBUduDJSkVohMyM2jO8NwhAXEy
+         Y2D0630fH3SVzZ5hTDZREtKuUVZNY0cXNnla34iGg4cltIvyACD8am3vJ7Pzv9HzdWeS
+         765RVnilcMyZ5biuVAUIgkC8sUWi5HpNzr68D/uI43CU06PUDNwn1bR3mkYpspDsmEJ5
+         ZKQg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=bZvj0kqD61EmgGXSYyLokf44g6FKg31u9fcLykILgSc=;
+        b=0zxdWVY7zd8DtCZNBh+O5vUk+/4Sw1PDOTeGMkYOZ507QzFUaTp5AWOMsd5Wgn2+Nf
+         yNvKv4QQaB9DshdpFkgZWeWhsLsplQU7FsP/bW4oIG910JSSzdN9nHF5IPHrcij2u6V9
+         7Oyk0FRRkQlkdvuLUqDbd7VkOuG5Mfs3hL7hw2Q550bIfrrOXwubZTPOISkHdZi2MYrJ
+         z+jsVhFwI4RPpgXwkq0EnEVi+J6bKNMxquOp8jSAFgAF7sXn06k8ykIRd5kJntTGu5bC
+         +64erVUHG7UsT74YiNQ6UzYl/G35yGxL6dRI40xRv/Kbvo46MHeo8lr+5EcpyfKxV8IG
+         k5rA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id a72si124793wme.1.2018.03.03.11.32.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Oct 2015 06:34:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
+        Sat, 03 Mar 2018 11:32:11 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shivanib134@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=shivanib134@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x231.google.com with SMTP id rc13so19711625pab.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Oct 2015 06:34:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=BciItAgNH9AnyJPZqr8JwGMyKfeFS4ilx2oTsM/Gfbs=;
-        b=tluxCHSnu5tszF0/nx18OfmLjCv9jUuVlIW4tjt3bYl/2v6XEKT2rUWA8WM0O1JnYO
-         ZxiqLowPFA05tTJ4CKH/CwC1F+zfbagB+c4It/wgjSX2DmOwmChf6NC4Fz+PeQKIONhj
-         /KeWLj5Mho18icfz72TX4u1/2FwdRl2ilIyT5+DBJu40qi2MMOviz9Xp++/IE7d15zHP
-         JFHVNdANN68C55hN+EITcvRvSZUlNijZJ/nUq6phCqeDvxkFlGt8gkz/4D/twGmj9DP2
-         NmcTf/DKU1pdg8ofwydS0NAT6ppe+xLPfb6APmbZSVOmt8ctCdgS6YqZujX05ZtDxxu5
-         Cy/g==
-X-Received: by 10.66.253.199 with SMTP id ac7mr34300787pad.56.1444656887614;
-        Mon, 12 Oct 2015 06:34:47 -0700 (PDT)
-Return-Path: <shivanib134@gmail.com>
-Received: from ubuntu ([124.124.47.116])
-        by smtp.gmail.com with ESMTPSA id b6sm15070988pbu.90.2015.10.12.06.34.44
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Oct 2015 06:34:46 -0700 (PDT)
-Date: Mon, 12 Oct 2015 19:04:38 +0530
-From: Shivani Bhardwaj <shivanib134@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/3] Fix issues detected by coccinelle
-Message-ID: <cover.1444655924.git.shivanib134@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.47,419,1515452400"; 
+   d="scan'208";a="316234896"
+Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 03 Mar 2018 20:32:10 +0100
+Date: Sat, 3 Mar 2018 20:32:10 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
+    eric@anholt.net, stefan.wahren@i2se.com, f.fainelli@gmail.com, 
+    rjui@broadcom.com, sbranden@broadcom.com, 
+    bcm-kernel-feedback-list@broadcom.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: vc04_services: bcm2835-audio:
+ Change to unsigned int *
+In-Reply-To: <1520104364-24339-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+Message-ID: <alpine.DEB.2.20.1803032031540.9544@hadrien>
+References: <1520104364-24339-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: text/plain; charset=US-ASCII
 
-Replace appropriate functions with kzalloc(), fix NULL tests
-and remove unnecessary code.
-After applying this patch, code becomes better.
 
-Shivani Bhardwaj (3):
-  Staging: wilc1000: host_interface: Replace kmalloc with kzalloc
-  Staging: wilc1000: host_interface: Remove extra NULL test
-  Staging: wilc1000: host_interface: Remove unused code
 
- drivers/staging/wilc1000/host_interface.c | 24 +++++-------------------
- 1 file changed, 5 insertions(+), 19 deletions(-)
+On Sun, 4 Mar 2018, Nishka Dasgupta wrote:
 
--- 
-2.1.0
+> Change 'unsigned *' to 'unsigned int *'. Issue found with checkpatch.
+>
+> Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
 
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+> ---
+>  drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c
+> index 0630040..8359cf8 100644
+> --- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c
+> +++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c
+> @@ -414,7 +414,7 @@ static int snd_bcm2835_pcm_lib_ioctl(struct snd_pcm_substream *substream,
+>  	int ret = snd_pcm_lib_ioctl(substream, cmd, arg);
+>
+>  	audio_info(" .. substream=%p, cmd=%d, arg=%p (%x) ret=%d\n", substream,
+> -		cmd, arg, arg ? *(unsigned *) arg : 0, ret);
+> +		cmd, arg, arg ? *(unsigned int *)arg : 0, ret);
+>  	return ret;
+>  }
+>
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1520104364-24339-1-git-send-email-nishka.dasgupta_ug18%40ashoka.edu.in.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
