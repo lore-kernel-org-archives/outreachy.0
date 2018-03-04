@@ -1,123 +1,83 @@
-X-GM-THRID: 6803763855931473920
-X-Received: by 2002:a17:90a:ec0f:: with SMTP id l15mr11650953pjy.191.1584124717230;
-        Fri, 13 Mar 2020 11:38:37 -0700 (PDT)
+X-GM-THRID: 6529011739100446720
+X-Received: by 10.46.44.4 with SMTP id s4mr746693ljs.40.1520170792201;
+        Sun, 04 Mar 2018 05:39:52 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:ab0b:: with SMTP id p11ls4311580pff.0.gmail; Fri, 13 Mar
- 2020 11:38:35 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vviYEwIv7nEpEUGOPAfP0Q1hAFTGr7j6IxL8kGI/5mWxuOWPISsZQlcsQ7Nj68ksAHtrGqf
-X-Received: by 2002:aa7:9471:: with SMTP id t17mr12777126pfq.272.1584124715767;
-        Fri, 13 Mar 2020 11:38:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584124715; cv=none;
+Received: by 10.46.129.207 with SMTP id s15ls1411436ljg.10.gmail; Sun, 04 Mar
+ 2018 05:39:50 -0800 (PST)
+X-Google-Smtp-Source: AG47ELsC+ynXmQvsuoEd8dFKBkZcTzokN2/qc39Dm0fP//xtXfO11NIFqgaeD80qR0GF6JAHniF5
+X-Received: by 10.46.36.2 with SMTP id k2mr750624ljk.2.1520170790646;
+        Sun, 04 Mar 2018 05:39:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520170790; cv=none;
         d=google.com; s=arc-20160816;
-        b=z7vAe4GmFm8gcqHjzv9BwFd9r8txUIff/2g+ri9ASp6olVIRCxtIXJtR+oybRUUaZa
-         1IT1qpBPnPnIzHn+YpsfYgOxg0+ZDFhYx4v3EWt4AwmQKGmJ8ewcaM3y85nN4jHseB+2
-         Ve3Tux1536hp6nnYewDgoP+2c3aUHbfnqvxX8RzsnFMrX+rOf7kJ2jjXCc3YiIOkzCw5
-         iaxmPbV2fqEoGuSv+LHDq5t8T8hBokVhZcdFd2Q5CRCZQN7nmLaZafLFIqK73mivfGif
-         L4bvCJmZxOwj43czogUe4vChPy78workkK9jZ3MiIpEtyGbNFB7KtidadGPTVhvwCw3c
-         12ug==
+        b=rk9AC9QZcl3Ux/H817EmoBWJgAg5yJAQUr22ZKl+57xdfd2f8oAh8on4JQjQ8AeNA+
+         Gs3p6gAn76qTZ5KOOcKYHveL0yMVizgN+yF9BNR+5KOIo1zoKQlKiStWo0m253mQ23dL
+         dpK7N5PYpkekwikNZ1NcupYMKBQTO+gfgaofmn+mwmP2Yx41kQdl2BaDMwiec5T82Rzn
+         AWmVFQJM4Dtltu26BJKy+M2A8CHRkQbmeIv+8OyCKAVaGVpWmdqXKfCZ217YHkmwHT+b
+         VvkiRx1RndtOl3ihuXXTXhNnio6RAufnq5xuRKw7HkYygsYlvvZwCjbngwZSjjfskiK6
+         t2Aw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=4AIxeUfOD1SctCpTFMClgUYEaOaT4few9FShijzheEE=;
-        b=i2Si35ipTAIMfbwNQuOMEs2SFD9YlJDH8lkPHsgomly7C7IhevJJ+6mH4kLFZxJWP/
-         VHt9EODX/boKLFI8763AwPTTUfbRzVyJ6ebBIivG/svbjYpxnPp1xFRl7QBD5PUstOMm
-         T47Tl9CjKs3WjdcBDiwpNg07nK5QGooLqDaEXZ63u9EsN9dEoqh/JIDYtySLHj2gPWci
-         yd5JnLuIPwTlImP/wVWxx9UfzkhO6i9d2YV7vuCaAy67L1u3c26RiCvek7eDxeA6Xao7
-         MymoRZ9MTgi/5MHq6u1zHwyIipEfGfsz6/bme1qZTkSpg2+xb7XatKax/Pd1nrAF837m
-         pxcg==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=zY5JhxLFYZZqb/10mPC0xbrL5I+smqCxB4UFoRbewQg=;
+        b=QNXEWi8i5EEebo+gnC5w7ADpQBkVE5kV26dkQXbwKwYKyXWOaYWqxXf3+2YiuU5rfH
+         4U+feao9LbQbekTgrLxBUKTmKuyp0i0dIQVTY+WHE1bumVCrSt1okjlNHd9zH3zgR5VL
+         dGNvr3TQTPdVHW2Fcf1qNLMKJ7tpnKqpzxzkOFNbWSHKdOcvSBxxu/x0PWiveIYgyB52
+         qR6ijZyHaHbe3eQnDHSJ43o+zSS53h1MjXgSd/mwkc4/cUF/yfMpajPz1GjtJocYG8st
+         /lrFOrCdyzZ5dwEoI/0TC9WPs3Koi0SEp3hd9U/N7vYyPt9/mJHDfITJFjqsWxFRXaXX
+         rLIw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=piFb85RB;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pj1-x1044.google.com (mail-pj1-x1044.google.com. [2607:f8b0:4864:20::1044])
-        by gmr-mx.google.com with ESMTPS id 59si390366ple.2.2020.03.13.11.38.35
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id w7si409184lfc.2.2018.03.04.05.39.50
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Mar 2020 11:38:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) client-ip=2607:f8b0:4864:20::1044;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 04 Mar 2018 05:39:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=piFb85RB;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1044.google.com with SMTP id d8so4786614pje.4
-        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2020 11:38:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=4AIxeUfOD1SctCpTFMClgUYEaOaT4few9FShijzheEE=;
-        b=piFb85RBN92hq5/YL0wp0MBrt+5J5KPorgM1JWqnvqrBLaRAxyi8+lOHWqtBSMW29S
-         D0agkQp3u954Za0msMquSFgQrq80BRDiOZWMP1PNChHT7XKNZsWLwElMOSfDU8lXlSRU
-         wct/J0JEIG+/yAo0a302SFVsq9X9m3t+wgDqa8C4CY5Kjh6Y2Q/BGjmafvlpb3m72REI
-         o1Q1FuOsIJ1ah2dzEITlowOtWdmj9Xyx34T9H+RplY9yxIycORK3W4S5MTZu3hEDyHU0
-         RivK2hzoQk1cROxmYA+rMdKy6j+1cioeGJXIReABv35MUD9BSbmKU6Pn3N7kpr3ddfDR
-         PqlQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=4AIxeUfOD1SctCpTFMClgUYEaOaT4few9FShijzheEE=;
-        b=WuyzAD+fUrfPJZ6jXFoEqLckgBsiEuhebvBvQRG0XvveVYNwLX/CZkxq+iNTV+Hdi0
-         nJ8mUWLoJ71nFg0CBs/o4IjnylY5ZCXIxOudwhHz16ZblfgcEauHcR2t+Vgma2IO3UPA
-         ExfUQURT0rEnsNYi391dIgL/vCpPPB1kHghRH8Xo5B7mgBrU7H62PRD9oaI7oqbb1dJn
-         X1p0ibyNxohAOdPeptBITHOqLreT3eya6T1gPOkE0cujYPLHp33kVLvyFYnpcl7AIbM2
-         /np4wjsznpWEnJVZKrwW425iXRP36F4kBwULwsvomc/3NCe5q58pY8PmNf+UmBm2/7ti
-         oavw==
-X-Gm-Message-State: ANhLgQ2Eg0NnonGa3EUnuzWbBhnKQPOTcj7hRZxw0ZTxLZ6lPq3SPaba
-	B39Bgbi0r20b8daJVm2x8BRfx2aq
-X-Received: by 2002:a17:902:9a42:: with SMTP id x2mr15244719plv.194.1584124715383;
-        Fri, 13 Mar 2020 11:38:35 -0700 (PDT)
-Return-Path: <mh12gx2825@gmail.com>
-Received: from deeUbuntu ([103.228.147.139])
-        by smtp.gmail.com with ESMTPSA id h132sm54846668pfe.118.2020.03.13.11.38.33
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Mar 2020 11:38:35 -0700 (PDT)
-Date: Sat, 14 Mar 2020 00:08:30 +0530
-From: Deepak R Varma <mh12gx2825@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org, daniel.baluta@gmail.com, mchehab@kernel.org,
-	sakari.ailus@linux.intel.com
-Subject: [PATCH] media: staging/intel-ipu3: Reformat pointer definition
-Message-ID: <20200313183827.GA20795@deeUbuntu>
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (mobile-107-107-185-51.mycingular.net [107.107.185.51])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 12D951078;
+	Sun,  4 Mar 2018 13:39:45 +0000 (UTC)
+Date: Sun, 4 Mar 2018 14:29:01 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Arushi Singhal <arushisinghal19971997@gmail.com>
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] staging: ipx: Replace printk() with appropriate pr_*()
+ macro
+Message-ID: <20180304132901.GA4222@kroah.com>
+References: <20180304085935.GA20591@seema-Inspiron-15-3567>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <20180304085935.GA20591@seema-Inspiron-15-3567>
+User-Agent: Mutt/1.9.3 (2018-01-21)
 
-Reformat pointer definition to make it more readable as per the coding
-standards. Problem detected by checkpatch.
+On Sun, Mar 04, 2018 at 02:29:35PM +0530, Arushi Singhal wrote:
+> Using pr_<loglevel>() is more concise than printk(KERN_<LOGLEVEL>).
+> Replace printks having a log level with the appropriate pr_*() macros.
+> 
+> Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+> ---
+>  drivers/staging/ipx/af_ipx.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/ipx/af_ipx.c b/drivers/staging/ipx/af_ipx.c
+> index d21a9d1..27f4461 100644
+> --- a/drivers/staging/ipx/af_ipx.c
+> +++ b/drivers/staging/ipx/af_ipx.c
+> @@ -744,7 +744,7 @@ static void ipxitf_discover_netnum(struct ipx_interface *intrfc,
+>  			intrfc->if_netnum = cb->ipx_source_net;
+>  			ipxitf_add_local_route(intrfc);
+>  		} else {
+> -			printk(KERN_WARNING "IPX: Network number collision "
+> +			pr_warn("IPX: Network number collision "
 
-Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
----
- drivers/staging/media/ipu3/ipu3-v4l2.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+It is a driver, so it would be best to use dev_warn() or even better
+yet, net_warn().  Please try to make that change instead.
 
-diff --git a/drivers/staging/media/ipu3/ipu3-v4l2.c b/drivers/staging/media/ipu3/ipu3-v4l2.c
-index 569e27b824c8..52826fad6f42 100644
---- a/drivers/staging/media/ipu3/ipu3-v4l2.c
-+++ b/drivers/staging/media/ipu3/ipu3-v4l2.c
-@@ -485,7 +485,6 @@ static int imgu_vb2_start_streaming(struct vb2_queue *vq, unsigned int count)
- 	if (r < 0)
- 		goto fail_return_bufs;
- 
--
- 	if (!imgu_all_nodes_streaming(imgu, node))
- 		return 0;
- 
-@@ -1013,8 +1012,9 @@ static const struct v4l2_ioctl_ops imgu_v4l2_meta_ioctl_ops = {
- 
- static int imgu_sd_s_ctrl(struct v4l2_ctrl *ctrl)
- {
--	struct imgu_v4l2_subdev *imgu_sd =
--		container_of(ctrl->handler, struct imgu_v4l2_subdev, ctrl_handler);
-+	struct imgu_v4l2_subdev *imgu_sd = container_of(ctrl->handler,
-+							struct imgu_v4l2_subdev,
-+							ctrl_handler);
- 	struct imgu_device *imgu = v4l2_get_subdevdata(&imgu_sd->subdev);
- 	struct device *dev = &imgu->pci_dev->dev;
- 
--- 
-2.17.1
+thanks,
 
+greg k-h
 
