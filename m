@@ -1,89 +1,91 @@
-X-GM-THRID: 6250668020589395968
-X-Received: by 10.66.62.162 with SMTP id z2mr5512524par.11.1455347058680;
-        Fri, 12 Feb 2016 23:04:18 -0800 (PST)
+X-GM-THRID: 6529093465723109376
+X-Received: by 10.25.208.19 with SMTP id h19mr842883lfg.10.1520178949601;
+        Sun, 04 Mar 2018 07:55:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.34.208 with SMTP id l74ls2129534qgl.47.gmail; Fri, 12 Feb
- 2016 23:04:18 -0800 (PST)
-X-Received: by 10.129.25.212 with SMTP id 203mr5310478ywz.35.1455347058070;
-        Fri, 12 Feb 2016 23:04:18 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id 79si2230919pft.0.2016.02.12.23.04.18
+Received: by 10.25.72.82 with SMTP id v79ls1466485lfa.11.gmail; Sun, 04 Mar
+ 2018 07:55:48 -0800 (PST)
+X-Google-Smtp-Source: AG47ELsGTNcmAUnFXAtmCB8PrnlsGCHPylISU0fharwZBQPFII0iae/PNoqys1t/ECJkdlvERd4y
+X-Received: by 10.25.215.23 with SMTP id o23mr876386lfg.25.1520178948877;
+        Sun, 04 Mar 2018 07:55:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520178948; cv=none;
+        d=google.com; s=arc-20160816;
+        b=wvd8c5DRg0ZyUaarQrz4ks+i6Y2pNWomRP9bTe7JL9pnIT3l9+Idrr59jBYsxNI+X7
+         z902JxXzfTR7bsp88JbqxYHNwlXiIrnaPhnN5lKZnu0L2W3Z4nNm5WzrF3Nq1aorzZOz
+         Jd4/aLbhqRh3C3sgbqljhX810hPObWAdik3ZUVF290sHJpx8kOfaZxXQ5FebwLhb7EvB
+         WYS9DNtDmRlyIAxz4MYRTZCZ6sBwFdUkLCbZXkEbuyOesAO6/kQjPJ1BVBEOKwe20u5G
+         3uXbUf/Uw269XyhCE1lT02pufuYyNDfBx5QlWDccGr9iI+YL+iP4IVtSCaLfcUi7Y5aw
+         y0IA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=z2bChMzWfSawa8c191aw8vrW3DZRUzVqIWsJceXXtaI=;
+        b=JMCJRbFgMUMmqjp1LGzMteotaitpRI+6H8hb/AtdFp61xf9pnaomeL+Q95vKR3l81D
+         Dlo/awzeq4oIhiv/dG8/mh5AbKf3/D5Ri4PjlikZGAC3wH1wuWd54HqlxiRZVPFY9BuQ
+         E6XD7OlLhtCuVUG0J+XybV90Y+A7VzNK4X2cAz5jkYKXuQv2vTdMpm6E43i+oH5Qu5UQ
+         H4tpRBtZztgQHkVylcD6o8XG60tWlNa89B+i8BHJkTS5opeM3HvQETCHMVAGTUoy6mb4
+         ZUMEPU2z8Fihgf6qpjOZFRZ4ELkxkvKeciVHHx+GrQLXxz2+UAofszsh9qPMvVBnC7R3
+         MjVA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id s26si382789lfi.1.2018.03.04.07.55.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 12 Feb 2016 23:04:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Sun, 04 Mar 2018 07:55:48 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id 71so4937576pfv.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 12 Feb 2016 23:04:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=M1w4RMn3Ll1Vt7WWe5/oM8FXAZJZv8abDPn+FRuLzvE=;
-        b=Op/kLyy3EyB4eR4xymzoxUqnninU4GbmdOeajTtRkghDfzUUuuHlXWUBrXyudJORKP
-         nJ9lLrmw6MV5LLlPokY4fqB3ua1jRjPTB0mAxE5C+B/rp3evxH2e5fMoZIOn31/KAobQ
-         iMokuwVvGpaqH0LAEUbgRbZajRkvaKXewGcYgNWTXCkqM/uwNt2W2hTH0cGkTwYny6cw
-         D7MEbUiuTayvdFr+BED7MepvV5S5n+yA4kUQMIU+GSt/LKl0gLnOcztS0qBblvBlsbEj
-         9dDmbp9D3gioO8+PuwizcaNOYQRdZROONqXZAGKaevdpvthIlX4Ob2WdjrAERZKcxB3m
-         e2ag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=M1w4RMn3Ll1Vt7WWe5/oM8FXAZJZv8abDPn+FRuLzvE=;
-        b=ReMt6N9nnnLEotthXlWSCnaWFlsyGnfh44YPoJjSJnC3637Zba6nf193eqS6+Ovj8l
-         ZcuSUau6bmmoKtZ+Msg4EYzKWlbYb+s3VtgIU4kZbdSZQEux38mi82GihXo8tXaDSmfV
-         HhRD86ci1tn+E+a8pdngQxbPvdH9wFaqXZHLmVpUXv04Nmt5g8M+N68G8S7hmbyOtnd9
-         mg4vTgKdwbNy7o3nxaTJP3QX35lcOeiKnLLpOkkbYqo2RELC0rIaRnYN+HYxAgqYUOXV
-         GldGXNgSHL1ED/A+XTCdKTaTJk7dJ/9UrwZYaU5TsHLWEnWf5PRq4QLFsMp99qno8paw
-         iUsA==
-X-Gm-Message-State: AG10YOQ9dMoBp5KZfcoVi6kgGGAFwKZo1C7RWkoD3GgAYkWmJRUp3NB78tJYm6ZNcO8enA==
-X-Received: by 10.98.66.157 with SMTP id h29mr7977730pfd.91.1455347057878;
-        Fri, 12 Feb 2016 23:04:17 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.69.135.170])
-        by smtp.gmail.com with ESMTPSA id to9sm23866783pab.3.2016.02.12.23.04.16
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Feb 2016 23:04:17 -0800 (PST)
-Date: Sat, 13 Feb 2016 12:34:14 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/2] staging: rtl8192u: ieee80211: Remove
- msleep_interruptible_rsl Macro
-Message-ID: <20160213070414.GA21071@amitoj-Inspiron-3542>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.47,423,1515452400"; 
+   d="scan'208";a="316312033"
+Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 04 Mar 2018 16:55:39 +0100
+Date: Sun, 4 Mar 2018 16:55:39 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Arushi Singhal <arushisinghal19971997@gmail.com>
+cc: oleg.drokin@intel.com, andreas.dilger@intel.com, jsimmons@infradead.org, 
+    gregkh@linuxfoundation.org, lustre-devel@lists.lustre.org, 
+    devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 0/3] staging: lustre: cleanup
+In-Reply-To: <1520172968-17448-1-git-send-email-arushisinghal19971997@gmail.com>
+Message-ID: <alpine.DEB.2.20.1803041655150.2182@hadrien>
+References: <1520172968-17448-1-git-send-email-arushisinghal19971997@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: text/plain; charset=US-ASCII
 
-Remove driver specific macro msleep_interruptible_rsl as it has been
-replaced by a direct call to msleep_interruptible in the single
-instance referencing it.
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/rtl8192u/ieee80211/ieee80211.h | 2 --
- 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211.h b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-index c0a0897..ae1c104 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-@@ -329,8 +329,6 @@ typedef struct ieee_param {
- 
- 
- // linux under 2.6.9 release may not support it, so modify it for common use
--#define msleep_interruptible_rsl  msleep_interruptible
--
- #define IEEE80211_DATA_LEN		2304
- /* Maximum size for the MA-UNITDATA primitive, 802.11 standard section
-    6.2.1.1.2.
--- 
-1.9.1
+On Sun, 4 Mar 2018, Arushi Singhal wrote:
 
+> Spellcheck the comments.
+> Remove the repeated, consecutive words with single word.
+>
+> Arushi Singhal (3):
+>   staging: lustre: Replace "be be" with "be"
+>   staging: lustre: Replace "to to" with "to"
+>   staging: lustre: Replace "dont" with "don't"
+
+For the series:
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+>
+>  drivers/staging/lustre/lnet/libcfs/debug.c             | 2 +-
+>  drivers/staging/lustre/lustre/fld/fld_cache.c          | 2 +-
+>  drivers/staging/lustre/lustre/include/cl_object.h      | 2 +-
+>  drivers/staging/lustre/lustre/include/lprocfs_status.h | 2 +-
+>  4 files changed, 4 insertions(+), 4 deletions(-)
+>
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1520172968-17448-1-git-send-email-arushisinghal19971997%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
