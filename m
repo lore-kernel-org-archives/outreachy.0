@@ -1,237 +1,136 @@
 X-GM-THRID: 6528628385749401600
-X-Received: by 10.223.176.131 with SMTP id i3mr1031609wra.22.1520163609366;
-        Sun, 04 Mar 2018 03:40:09 -0800 (PST)
+X-Received: by 10.28.213.144 with SMTP id m138mr716348wmg.19.1520154608708;
+        Sun, 04 Mar 2018 01:10:08 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.35.140 with SMTP id j134ls1012098wmj.3.gmail; Sun, 04 Mar
- 2018 03:40:08 -0800 (PST)
-X-Google-Smtp-Source: AG47ELuaR4rCt7ix0IGVBSB9hdbgvUUV447WbJ/ohZQjFfuW2vhM98XvxuPGY0e6erfaUbPu/OYG
-X-Received: by 10.28.126.22 with SMTP id z22mr440085wmc.28.1520163608310;
-        Sun, 04 Mar 2018 03:40:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520163608; cv=none;
+Received: by 10.28.193.69 with SMTP id r66ls946979wmf.10.gmail; Sun, 04 Mar
+ 2018 01:10:07 -0800 (PST)
+X-Google-Smtp-Source: AG47ELt7uuTjt6/1dbBjW7wLIWQob/unaP+InMXV1gI/p+tbLfzlvSXwCPDyxTT9B/+8AH92wEQl
+X-Received: by 10.28.87.5 with SMTP id l5mr707442wmb.23.1520154607831;
+        Sun, 04 Mar 2018 01:10:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520154607; cv=none;
         d=google.com; s=arc-20160816;
-        b=uhof6+ZI+bVdkDziNMe2gK9XhfxCnm02XwojI8TYOFpXOGBPoXHxj8oxAgj6ephCYq
-         hSupoNyCGO00f6jmQTNtCwygcThtJH/ajZVe1msffrwkStzM5wHM3n80wdiso+NW0CS0
-         wqWV3o+yk4iPXaKiOsLrG0iyU5NrdF4eit5mvIw/KcBz9gOACRVcE+4irsTdH60dak1h
-         R1KIAc0Nt04yekSrUZRvO34YTAiIvvS3Lrb8rrTXIbXCfIJB360zFtIboF1dxp+zq5hf
-         fdjyzDb4TCIAdZCdX3kzj8k1gEyaTIYY4zF9KMifq/j2L/Pp3PMI7hI4gspI9EzKpfkd
-         keHA==
+        b=u9stZT7V0u+b0vZ+Uylr0nG8OAQWKSsxcj4hV/Ep/p4bCT2c4D+SYwhhoY8jWLeLvd
+         9s7hA01uLXsSTnHRQhe6WDKo4QgrlXcSZkVT+WV0jiTqeB5gs2r3qrSYT03otXqr0TzA
+         BPVDd53b0LP14GdW3qZl4JfZfA/+QiAQezSgaBfbSPA35CfdXW+HSAVhw3IdJ5kxviFl
+         V44LrSaLzXCcrL1bAO1nWXJrCHXNnVt/e+tCD3MmTSpEr1P/hXAGR+Ll6UXJrEzIhvAu
+         rwAnlBMqiCTSyjFsHN375oFI7tL/2LNJFok2Ei7hUQ79XZEaIC5RvyvB4EF80yFl7OLg
+         ukvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=UjGisszQA30oym8iSW39D1DIhJmV/fdMXQMmDSRixCs=;
-        b=bLt2IcHt7n8NpKfQqZtdWLRoAEgdG22oXxLzy3CzgN/VR/CunydLEjVePD1PCZeI8Z
-         +v99A2rOisLsTAUGzaYi2uLdzGJ3YMNAKMwuSqZd+CIFlN2xJM+Fev8Zsebdngid6Wb6
-         SuHYgk0iakITUn64wfK8Ht95/OYwXbiHG6/Q3kPegxKfGmWWkpMieQ56HuVP1F/VJlDB
-         E2qw757DKxb+CDQamMzFSGCdiKyk/M07yQ1QBD3pc8r7awZDxnT4pdXMtSejsMzxMib6
-         jETl/tPG9Me3AzHJnlYpXM0npo451xQkDMsD2s6zp5EAHB2qOWJapHZoVg+nb1j/KiYJ
-         sXaw==
+        h=references:in-reply-to:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature:arc-authentication-results;
+        bh=gWrh6ZFQj3mtaYDJpi2nTVMZ5AAdrnlPfBya6/pg6M8=;
+        b=B6NHn0JQj8fWCQWq6b4dm0NCjKPJX1fU+Wj4zRNJ5h8JcGDhxklzfCEjm/bscE+9Jm
+         1flHmRGE8GnXsglHqWvD14ZJu46g+kcr/1Ah6QJ6FUy2Qc9+0IpacBw6V7Xi4/SULGgF
+         GMesDcZ4Y1s3tGkgS+6DPk+y4gr5QjFIPLo7dk6HIrABsbNHC2zoIMdBDttGYglL7Wu2
+         I6zZstkMQiKyrc6Fb2wY2KBKNnEAkhCsd5GeSCF+2KjBj87uQ4D1uJ05HiukxToNthU6
+         XNx5ILX2QCKm9f0+6JeuM+1qr7Q0b1S6GCbSGKQAkCWH3DlT08FpBOD0Kdqtu3BP91sb
+         z91w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id s81si223691wmd.2.2018.03.04.03.40.08
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CkjUZqEo;
+       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) smtp.mailfrom=dafna3@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <dafna3@gmail.com>
+Received: from mail-wr0-x244.google.com (mail-wr0-x244.google.com. [2a00:1450:400c:c0c::244])
+        by gmr-mx.google.com with ESMTPS id m29si389928wrb.1.2018.03.04.01.10.07
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 04 Mar 2018 03:40:08 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Sun, 04 Mar 2018 01:10:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) client-ip=2a00:1450:400c:c0c::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.47,422,1515452400"; 
-   d="scan'208";a="256896578"
-Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 04 Mar 2018 12:40:07 +0100
-Date: Sun, 4 Mar 2018 12:40:07 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Dafna Hirschfeld <dafna3@gmail.com>
-cc: oleg.drokin@intel.com, andreas.dilger@intel.com, jsimmons@infradead.org, 
-    gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 1/3] staging: lustre: obdclass: Fix
- Comparison issues.
-In-Reply-To: <CAJ1myNRJ-DBd1Bqn051Wa1cySHgJyMJMrOpPptJKrkD=kaTiTQ@mail.gmail.com>
-Message-ID: <alpine.DEB.2.20.1803041239130.2223@hadrien>
-References: <cover.1520014706.git.dafna3@gmail.com> <d54195335419311b40f159ee1d5c89a625937899.1520014706.git.dafna3@gmail.com> <alpine.DEB.2.20.1803031607450.2302@hadrien> <CAJ1myNR9_bau2kzqyXA2P9hB-pdMjkLHj5Qx2on-Ru8uyRZwNA@mail.gmail.com>
- <alpine.DEB.2.20.1803040807180.2698@hadrien> <CAJ1myNRJ-DBd1Bqn051Wa1cySHgJyMJMrOpPptJKrkD=kaTiTQ@mail.gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CkjUZqEo;
+       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:400c:c0c::244 as permitted sender) smtp.mailfrom=dafna3@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wr0-x244.google.com with SMTP id f14so14179986wre.8
+        for <outreachy-kernel@googlegroups.com>; Sun, 04 Mar 2018 01:10:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=gWrh6ZFQj3mtaYDJpi2nTVMZ5AAdrnlPfBya6/pg6M8=;
+        b=CkjUZqEowXDaJLBGUFl4lRkQ7evG6E2mUoS8M8jZITCEx3nFMUBfL5NZPuDC2LQYVL
+         ceTgRBJIkYL0Yl/SOjuObKx6BP4HkRFj4gYJT3LzgSaTCyvmQwtSf+68oPSXQLZixqAN
+         gbgHzJUg3DHvmV2sX/ZvnSIsGS9bFS4+/HsheFtujqfxdmXLjw26PAtFwmlDl/4oIY5l
+         SrKnEpoAUgh7wDa2npZQFRdLyAVtAI/UqrPiWhq+l6wYcwDmdgqVIakc/afhlo4uV3tc
+         10c3Y7KWr0jDxSjsJcflVripvwODLJfHZWAgA1t41zAHdr3QnHyGZWcqpgF8xLKn3ZFP
+         jw8g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=gWrh6ZFQj3mtaYDJpi2nTVMZ5AAdrnlPfBya6/pg6M8=;
+        b=qrgaa1Elo7PxlFP5xWEsRzXXbotyOe2xSlCOI8QiDFI0RLL26u62C0TNC0DDeViAAs
+         UFt5TUgFQX/RJRjoXNpVoo6YprfkGv0F+IhLl/qSszCtkAMhXqe7W/pRAULGLVFkw58S
+         dh0Z3zxmhrPwyviVNU+CQzxcMjIPyjYMGMLqceE3aY3dYUWHVTTrD628MoAHofsHUt2W
+         9SonWmJ7pI2cwE4msJirbi85EqJCzcHYuDCge+xS0GN65Vi6g59iJsYRR3YzQBxWEV3a
+         8O3sc3/hvRH4JLd3DRbyfvoug/DnLdO6y3IIYe3i+XILGwwxmZsOpLgpw0fuTTa20TLA
+         Iqag==
+X-Gm-Message-State: APf1xPAeqbXQMYvNa8IgR8NwBy70x+qQUxZJLr+3hxlKY2mydLbfnYwu
+	L4BOOEhys8BXgwUCpf3KFOZVhaFT
+X-Received: by 10.223.154.49 with SMTP id z46mr9291942wrb.143.1520154607518;
+        Sun, 04 Mar 2018 01:10:07 -0800 (PST)
+Return-Path: <dafna3@gmail.com>
+Received: from guri.home (IGLD-84-229-54-107.inter.net.il. [84.229.54.107])
+        by smtp.gmail.com with ESMTPSA id y1sm7871635wrh.80.2018.03.04.01.10.05
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 04 Mar 2018 01:10:06 -0800 (PST)
+From: Dafna Hirschfeld <dafna3@gmail.com>
+To: oleg.drokin@intel.com,
+	andreas.dilger@intel.com,
+	jsimmons@infradead.org,
+	gregkh@linuxfoundation.org
+Cc: Dafna Hirschfeld <dafna3@gmail.com>,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH v2 3/3] staging: lustre: obdclass: Replace 'unsigned' with 'unsigned int'
+Date: Sun,  4 Mar 2018 11:09:05 +0200
+Message-Id: <76de6d44a032085f9f62e40ef83ddd44fc301fcf.1520153895.git.dafna3@gmail.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <cover.1520153895.git.dafna3@gmail.com>
+References: <cover.1520153895.git.dafna3@gmail.com>
+In-Reply-To: <cover.1520153895.git.dafna3@gmail.com>
+References: <cover.1520153895.git.dafna3@gmail.com>
 
+Replace 'unsigned' with 'unsigned int' to improve readability.
+Issues found with checkpatch.pl
 
+Signed-off-by: Dafna Hirschfeld <dafna3@gmail.com>
+---
+ drivers/staging/lustre/lustre/obdclass/lprocfs_status.c | 2 +-
+ drivers/staging/lustre/lustre/obdclass/lu_object.c      | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
 
-On Sun, 4 Mar 2018, Dafna Hirschfeld wrote:
+diff --git a/drivers/staging/lustre/lustre/obdclass/lprocfs_status.c b/drivers/staging/lustre/lustre/obdclass/lprocfs_status.c
+index 64cc746..2ed3505 100644
+--- a/drivers/staging/lustre/lustre/obdclass/lprocfs_status.c
++++ b/drivers/staging/lustre/lustre/obdclass/lprocfs_status.c
+@@ -1467,7 +1467,7 @@ int lprocfs_write_frac_u64_helper(const char __user *buffer,
+ {
+ 	char kernbuf[22], *end, *pbuf;
+ 	__u64 whole, frac = 0, units;
+-	unsigned frac_d = 1;
++	unsigned int frac_d = 1;
+ 	int sign = 1;
+ 
+ 	if (count > (sizeof(kernbuf) - 1))
+diff --git a/drivers/staging/lustre/lustre/obdclass/lu_object.c b/drivers/staging/lustre/lustre/obdclass/lu_object.c
+index cca6881..964e854 100644
+--- a/drivers/staging/lustre/lustre/obdclass/lu_object.c
++++ b/drivers/staging/lustre/lustre/obdclass/lu_object.c
+@@ -1797,10 +1797,10 @@ int lu_env_refill(struct lu_env *env)
+ EXPORT_SYMBOL(lu_env_refill);
+ 
+ struct lu_site_stats {
+-	unsigned	lss_populated;
+-	unsigned	lss_max_search;
+-	unsigned	lss_total;
+-	unsigned	lss_busy;
++	unsigned int	lss_populated;
++	unsigned int	lss_max_search;
++	unsigned int	lss_total;
++	unsigned int	lss_busy;
+ };
+ 
+ static void lu_site_stats_get(struct cfs_hash *hs,
+-- 
+2.7.4
 
-> On Sun, Mar 4, 2018 at 9:07 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
-> >
-> >
-> > On Sun, 4 Mar 2018, Dafna Hirschfeld wrote:
-> >
-> >> On Sat, Mar 3, 2018 at 5:09 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
-> >> >
-> >> >
-> >> > On Sat, 3 Mar 2018, Dafna Hirschfeld wrote:
-> >> >
-> >> >> Replace comparison to NULL with 'not' operator.
-> >> >> Move constants to the right side of a comparison.
-> >> >
-> >> > Personally, I prefer lower_bound <= x && x < upper_bound.  I think the
-> >> > designer of checkpatch prefers x >= lower_bound && x < lower_bound.  Maybe
-> >> > the Lustre people have a preference.
-> >> >
-> >> >> Issues found with checkpatch.pl
-> >> >>
-> >> >> Signed-off-by: Dafna Hirschfeld <dafna3@gmail.com>
-> >> >> ---
-> >> >>  drivers/staging/lustre/lustre/obdclass/cl_io.c            | 6 +++---
-> >> >>  drivers/staging/lustre/lustre/obdclass/cl_lock.c          | 2 +-
-> >> >>  drivers/staging/lustre/lustre/obdclass/lprocfs_counters.c | 4 ++--
-> >> >>  drivers/staging/lustre/lustre/obdclass/lprocfs_status.c   | 2 +-
-> >> >>  drivers/staging/lustre/lustre/obdclass/lu_object.c        | 4 ++--
-> >> >>  5 files changed, 9 insertions(+), 9 deletions(-)
-> >> >>
-> >> >> diff --git a/drivers/staging/lustre/lustre/obdclass/cl_io.c b/drivers/staging/lustre/lustre/obdclass/cl_io.c
-> >> >> index ab84e01..fa4d870 100644
-> >> >> --- a/drivers/staging/lustre/lustre/obdclass/cl_io.c
-> >> >> +++ b/drivers/staging/lustre/lustre/obdclass/cl_io.c
-> >> >> @@ -59,7 +59,7 @@
-> >> >>
-> >> >>  static inline int cl_io_type_is_valid(enum cl_io_type type)
-> >> >>  {
-> >> >> -     return CIT_READ <= type && type < CIT_OP_NR;
-> >> >> +     return type >= CIT_READ && type < CIT_OP_NR;
-> >> >>  }
-> >> >>
-> >> >>  static inline int cl_io_is_loopable(const struct cl_io *io)
-> >> >> @@ -72,7 +72,7 @@ static inline int cl_io_is_loopable(const struct cl_io *io)
-> >> >>   */
-> >> >>  int cl_io_is_going(const struct lu_env *env)
-> >> >>  {
-> >> >> -     return cl_env_info(env)->clt_current_io != NULL;
-> >> >> +     return !!cl_env_info(env)->clt_current_io;
-> >> >
-> >> > It looks like the return type should be bool.
-> >> >
-> >> > This one is sort of different from the others, and should probably be in a
-> >> > different patch.
-> >> >
-> >> > julia
-> >> >
-> >> Ok, but it still bool since it is double exclamation marks.
-> >
-> > Sorry, I don't get the point.  The return type is declared as int.
-> >
-> > julia
->
-> I meant that the actual return type was a bool and is still a bool.
-> There are many functions in other parts of the kernel code that return bool
-> but in the function declaration it declared to return int.
-
-There are also many functions that have a bool return type.  It makes more
-apparent what is going on.
-
-julia
-
->
-> >
-> >>
-> >> >>  }
-> >> >>
-> >> >>  /**
-> >> >> @@ -390,7 +390,7 @@ void cl_io_unlock(const struct lu_env *env, struct cl_io *io)
-> >> >>       const struct cl_io_slice *scan;
-> >> >>
-> >> >>       LASSERT(cl_io_is_loopable(io));
-> >> >> -     LASSERT(CIS_IT_STARTED <= io->ci_state && io->ci_state < CIS_UNLOCKED);
-> >> >> +     LASSERT(io->ci_state >= CIS_IT_STARTED && io->ci_state < CIS_UNLOCKED);
-> >> >>       LINVRNT(cl_io_invariant(io));
-> >> >>
-> >> >>       set = &io->ci_lockset;
-> >> >> diff --git a/drivers/staging/lustre/lustre/obdclass/cl_lock.c b/drivers/staging/lustre/lustre/obdclass/cl_lock.c
-> >> >> index 3b683b7..3aae332 100644
-> >> >> --- a/drivers/staging/lustre/lustre/obdclass/cl_lock.c
-> >> >> +++ b/drivers/staging/lustre/lustre/obdclass/cl_lock.c
-> >> >> @@ -229,7 +229,7 @@ const char *cl_lock_mode_name(const enum cl_lock_mode mode)
-> >> >>               [CLM_WRITE]   = "W",
-> >> >>               [CLM_GROUP]   = "G"
-> >> >>       };
-> >> >> -     if (0 <= mode && mode < ARRAY_SIZE(names))
-> >> >> +     if (mode >= 0 && mode < ARRAY_SIZE(names))
-> >> >>               return names[mode];
-> >> >>       else
-> >> >>               return "U";
-> >> >> diff --git a/drivers/staging/lustre/lustre/obdclass/lprocfs_counters.c b/drivers/staging/lustre/lustre/obdclass/lprocfs_counters.c
-> >> >> index c83b7d7..46322d2 100644
-> >> >> --- a/drivers/staging/lustre/lustre/obdclass/lprocfs_counters.c
-> >> >> +++ b/drivers/staging/lustre/lustre/obdclass/lprocfs_counters.c
-> >> >> @@ -52,7 +52,7 @@ void lprocfs_counter_add(struct lprocfs_stats *stats, int idx, long amount)
-> >> >>       if (!stats)
-> >> >>               return;
-> >> >>
-> >> >> -     LASSERTF(0 <= idx && idx < stats->ls_num,
-> >> >> +     LASSERTF(idx >= 0 && idx < stats->ls_num,
-> >> >>                "idx %d, ls_num %hu\n", idx, stats->ls_num);
-> >> >>
-> >> >>       /* With per-client stats, statistics are allocated only for
-> >> >> @@ -101,7 +101,7 @@ void lprocfs_counter_sub(struct lprocfs_stats *stats, int idx, long amount)
-> >> >>       if (!stats)
-> >> >>               return;
-> >> >>
-> >> >> -     LASSERTF(0 <= idx && idx < stats->ls_num,
-> >> >> +     LASSERTF(idx >= 0 && idx < stats->ls_num,
-> >> >>                "idx %d, ls_num %hu\n", idx, stats->ls_num);
-> >> >>
-> >> >>       /* With per-client stats, statistics are allocated only for
-> >> >> diff --git a/drivers/staging/lustre/lustre/obdclass/lprocfs_status.c b/drivers/staging/lustre/lustre/obdclass/lprocfs_status.c
-> >> >> index e1f4ef2..64cc746 100644
-> >> >> --- a/drivers/staging/lustre/lustre/obdclass/lprocfs_status.c
-> >> >> +++ b/drivers/staging/lustre/lustre/obdclass/lprocfs_status.c
-> >> >> @@ -1585,7 +1585,7 @@ int ldebugfs_seq_create(struct dentry *parent, const char *name,
-> >> >>       struct dentry *entry;
-> >> >>
-> >> >>       /* Disallow secretly (un)writable entries. */
-> >> >> -     LASSERT((seq_fops->write == NULL) == ((mode & 0222) == 0));
-> >> >> +     LASSERT((!seq_fops->write) == ((mode & 0222) == 0));
-> >> >>
-> >> >>       entry = debugfs_create_file(name, mode, parent, data, seq_fops);
-> >> >>       if (IS_ERR_OR_NULL(entry))
-> >> >> diff --git a/drivers/staging/lustre/lustre/obdclass/lu_object.c b/drivers/staging/lustre/lustre/obdclass/lu_object.c
-> >> >> index cca6881..a97b2fe 100644
-> >> >> --- a/drivers/staging/lustre/lustre/obdclass/lu_object.c
-> >> >> +++ b/drivers/staging/lustre/lustre/obdclass/lu_object.c
-> >> >> @@ -1396,7 +1396,7 @@ static void key_fini(struct lu_context *ctx, int index)
-> >> >>  void lu_context_key_degister(struct lu_context_key *key)
-> >> >>  {
-> >> >>       LASSERT(atomic_read(&key->lct_used) >= 1);
-> >> >> -     LINVRNT(0 <= key->lct_index && key->lct_index < ARRAY_SIZE(lu_keys));
-> >> >> +     LINVRNT(key->lct_index >= 0 && key->lct_index < ARRAY_SIZE(lu_keys));
-> >> >>
-> >> >>       lu_context_key_quiesce(key);
-> >> >>
-> >> >> @@ -1516,7 +1516,7 @@ void *lu_context_key_get(const struct lu_context *ctx,
-> >> >>                        const struct lu_context_key *key)
-> >> >>  {
-> >> >>       LINVRNT(ctx->lc_state == LCS_ENTERED);
-> >> >> -     LINVRNT(0 <= key->lct_index && key->lct_index < ARRAY_SIZE(lu_keys));
-> >> >> +     LINVRNT(key->lct_index >= 0 && key->lct_index < ARRAY_SIZE(lu_keys));
-> >> >>       LASSERT(lu_keys[key->lct_index] == key);
-> >> >>       return ctx->lc_value[key->lct_index];
-> >> >>  }
-> >> >> --
-> >> >> 2.7.4
-> >> >>
-> >> >> --
-> >> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> >> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> >> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> >> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/d54195335419311b40f159ee1d5c89a625937899.1520014706.git.dafna3%40gmail.com.
-> >> >> For more options, visit https://groups.google.com/d/optout.
-> >> >>
-> >>
-> >> --
-> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAJ1myNR9_bau2kzqyXA2P9hB-pdMjkLHj5Qx2on-Ru8uyRZwNA%40mail.gmail.com.
-> >> For more options, visit https://groups.google.com/d/optout.
-> >>
->
 
