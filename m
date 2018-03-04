@@ -1,135 +1,110 @@
-X-GM-THRID: 6753426615643930624
-X-Received: by 2002:a17:90a:a406:: with SMTP id y6mr11240117pjp.106.1572404665670;
-        Tue, 29 Oct 2019 20:04:25 -0700 (PDT)
+X-GM-THRID: 6528739356252831744
+X-Received: by 10.46.87.24 with SMTP id l24mr751389ljb.7.1520168618147;
+        Sun, 04 Mar 2018 05:03:38 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:b042:: with SMTP id z2ls5598856pgo.16.gmail; Tue, 29 Oct
- 2019 20:04:24 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxiucqAnaD1+ALBy5ttDV7auOrTrXQTbvGUkEntkGfKD02ve1/9bOIDIB3NnxNn9/mNPveF
-X-Received: by 2002:a63:2225:: with SMTP id i37mr21805786pgi.62.1572404664046;
-        Tue, 29 Oct 2019 20:04:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572404664; cv=none;
+Received: by 10.25.72.82 with SMTP id v79ls1450688lfa.11.gmail; Sun, 04 Mar
+ 2018 05:03:36 -0800 (PST)
+X-Google-Smtp-Source: AG47ELtOQJugPL7bsaiElWl7z78ysyjNM/8JqgGUgJjzAxgHxovqrwbrKKud0jDf2eOqU+erIwVj
+X-Received: by 10.25.235.140 with SMTP id f12mr819838lfk.19.1520168616228;
+        Sun, 04 Mar 2018 05:03:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520168616; cv=none;
         d=google.com; s=arc-20160816;
-        b=IM+dcZwOv0Nxv/VAJ3mweU2+LsrXav8zwg8DzYUVYU5pxo/GHnwrHk7Pbk6UH3Hzux
-         IzNfRg1T7xYqARvRK16X3X14Pc2zMd5waM/0Q25qbq3IuuCjjAvyxlv8606uWoumHXyk
-         gQPeUZvbV05C19Jas1b6gU5cEg5TVVklvGhqLzlQ3pjKdIZxYuL5R5tm2NyuKQgRVNvy
-         7vP9chIWaITeGi8kXfZnwUBW/Lkv/h1T8LIqSEOWugZujIVRbtBb/RkUYKBCFP2TQDbk
-         dqFSrp7bmOhArNMpBExvp9BrMWAlJeNJa4IeHOWgYxMVYiDBKX3Y+h3et4YR4JRHIMMx
-         W2xw==
+        b=HdDr+iGNMZN3pSTHvvwgk+YUp5kVGnl103mDMjPLdvtK00rTe3bgOeVtrgvJvDuqlV
+         oC1o4JeThsTWe8YatP8+dQ5mAoDVXemJUixaWgaAmEXG+1G/CZ0KYqlsygFzsHqZHtNc
+         ZpAEbMlV+7hlVLtdI8zYoCBqU1K/pfHhzzB+kb8NB3E7bOq5hfguLnPMDaLaq7l6GOwf
+         YAL3yx59AWzEUMWqMp0KZ4Ri3KeCzmBY5/f+vT+nORCuS7Bg7iX4PUQknTbiNMQLrTcM
+         +TxEw5OtFf56F0Q+WX1VV8fE+UHL1nCiVZ8gEEbu4o3tM8v8qVdGSj7QcBF70V8kBq9k
+         FYFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:mail-followup-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=yw5KIz1Ay52foV3yHJvfyo63Zmw6vEdj3EDOEyd1zlk=;
-        b=ku/YoSxNbRKkEHoJQKIIK2+CCtcQ9Hf96OvpK4AxUYiPcTFYu98fzabxULtW/cSCFf
-         wzvLannXDS3AlFfoyXq38WXc42+isCrneYG/+26dd+LDlgQje321c5CLU1nAFzckz7EB
-         F4yILI0c3kG6Lkwyy/rVph1cSsI2IxliopPu+j4ROeJi/3o+fvKXItep58bDycJWUj8G
-         IBoH8E4Mmx1T18ntWqw7OBGZM0FU6Lr3AtzAQ9YV5u0Y2wqEYLoi9y6mfR+l5CCtFJol
-         hsv63cqw85EmEH3dEl3GeV3ZTz7+lyEUkZCzCuwUV1TYxYJVUyO0xSww4XS70nsu7gGA
-         0RYg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=0utvAMtMJkahPctvWuVDjC481+Xvf9PFtPpbM9tHmnQ=;
+        b=HSJEOXI/Y26KhbI3yVH9pEOl+y7CYj8jgLBFwVLuV0JSvi1m1b8lbhJM5rsu92rY4k
+         P/OAlTKfXIKTSI8qdTdSyvdudPemTyK9eHO+MQ6Iusi2NAPzONZ4C+nEEqraPeKO1Lbn
+         X345bqDpQORpkYysQuGLVkpZypvFiCyYSJXUEhdX2DEaqZiJ5I4wJeJmfNE0b4ng9yZp
+         OkTIAuJVUUIN3L3WVt99bx2NOww85wcC8C0lTxiC0xvP/p1JiwISODx/BljRH9ApmnWx
+         NIj3vADqFZX+APyfrGo5OHhZPcNMF4snwGewNgTVdVK5pwLY2vYbqT5Tki8SdzBtGsKf
+         67qg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ewF9QjW+;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e44 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jarias.linux@gmail.com>
-Received: from mail-vs1-xe44.google.com (mail-vs1-xe44.google.com. [2607:f8b0:4864:20::e44])
-        by gmr-mx.google.com with ESMTPS id g7si25596pll.5.2019.10.29.20.04.24
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id u72si391736lfi.4.2018.03.04.05.03.35
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 29 Oct 2019 20:04:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e44 as permitted sender) client-ip=2607:f8b0:4864:20::e44;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 04 Mar 2018 05:03:36 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ewF9QjW+;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e44 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-vs1-xe44.google.com with SMTP id k15so722900vsp.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 29 Oct 2019 20:04:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mail-followup-to:mime-version
-         :content-disposition;
-        bh=yw5KIz1Ay52foV3yHJvfyo63Zmw6vEdj3EDOEyd1zlk=;
-        b=ewF9QjW+GcvA6pBdpPy3CunsYT9XD6ulWuXrwmgT3F488ibmx2dND7FlY/hOnGX/AI
-         IvpP77eCFLoo38f4Ge6HblELF6EpOfMAasGpYe2aPced3tuX9VyfHSIcMZGQFKjrbmJy
-         Vsce4gHJ9aTF1TmAoh5hLtYu0TQdxFFPJX4JBd3kO0qBNUFR2tMIVYTpBlN96pfXFpoE
-         nn+4EpKDRbkUKLz+iFkGCkmv/eCJVszor1iqiPvKrYbXm94UJWhuXAk2BaMXMZa9zHi7
-         vb1qTELt0aP6CiT/ASencAnoWmQGE5lSQCbtg2x6GozBIQiQFmm5fo2b9wfcwv0Obsr6
-         z72A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id
-         :mail-followup-to:mime-version:content-disposition;
-        bh=yw5KIz1Ay52foV3yHJvfyo63Zmw6vEdj3EDOEyd1zlk=;
-        b=TuQ4x5yR3Gl8qe+NODQIBJIKRhzfOBRTqJpvkXLhzlOU1zpOn517VuoVUu39Qt5neQ
-         XBnVXBFRcwUX1IaE0krV27038qu2E9MAHuH+hHLKVu2VExXdk5wm+m7/Nl/9+AR3Cpvv
-         5m9ZZH3FEZkcnkW3ULMFZlMmP+JL/DBsjWIw+EvNvs33eh2mN5EXhk7KJGmlHSeEIXJa
-         +H/ISCvTcuCla0lH21Idoq6hhZE4dFlk7d3hqtNnTqPIpsz5wjlFYA8BeMwuZBi9EbQs
-         Z0YNUXc6HIcMTP7oE+wvQ+659xy4/aL8JBFQgFMqpjxET9yH9MgoFNOUVqFUxbzWTbT7
-         Z5iw==
-X-Gm-Message-State: APjAAAXsO7+9/9l974nEm8p+OW1YNV3KXJy0CtrSdTNdGm16kaZUfeEY
-	E3Rjac5P5IYhffCWg4noiZx0Jq9EsiEbRQ==
-X-Received: by 2002:a67:de87:: with SMTP id r7mr4023184vsk.186.1572404663176;
-        Tue, 29 Oct 2019 20:04:23 -0700 (PDT)
-Return-Path: <jarias.linux@gmail.com>
-Received: from gmail.com ([138.59.18.103])
-        by smtp.gmail.com with ESMTPSA id l19sm355890vso.9.2019.10.29.20.04.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Oct 2019 20:04:22 -0700 (PDT)
-Date: Tue, 29 Oct 2019 22:04:19 -0500
-From: "Javier F. Arias" <jarias.linux@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: emxx_udc: Fix invalid reference error
-Message-ID: <20191030030419.mmnrzm7hr4encfai@gmail.com>
-Mail-Followup-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.47,423,1515452400"; 
+   d="scan'208";a="256900664"
+Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 04 Mar 2018 14:03:35 +0100
+Date: Sun, 4 Mar 2018 14:03:34 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Rinkle Jain <rinklejain96@gmail.com>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
+    forest@alittletooquiet.net
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: vt6655: Fix style violation
+ for line ending in '('
+In-Reply-To: <20180304072225.GA17701@tic-tac>
+Message-ID: <alpine.DEB.2.20.1803041403140.2223@hadrien>
+References: <20180304072225.GA17701@tic-tac>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: text/plain; charset=US-ASCII
 
-This patch fixes an invalid reference error by moving the code that
-is executed when a queue element is found, into the loop. Also, it
-removes an unnecessary test that now checks if the element is not
-present in the queue.
-Issue found by Coccinelle.
 
-Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
----
- drivers/staging/emxx_udc/emxx_udc.c | 18 ++++++++----------
- 1 file changed, 8 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
-index 9e0c19eb867c..667753c5e2ea 100644
---- a/drivers/staging/emxx_udc/emxx_udc.c
-+++ b/drivers/staging/emxx_udc/emxx_udc.c
-@@ -2661,20 +2661,18 @@ static int nbu2ss_ep_dequeue(struct usb_ep *_ep, struct usb_request *_req)
- 
- 	/* make sure it's actually queued on this endpoint */
- 	list_for_each_entry(req, &ep->queue, queue) {
--		if (&req->req == _req)
--			break;
--	}
--	if (&req->req != _req) {
--		spin_unlock_irqrestore(&udc->lock, flags);
--		pr_debug("%s no queue(EINVAL)\n", __func__);
--		return -EINVAL;
-+		if (&req->req == _req) {
-+			_nbu2ss_ep_done(ep, req, -ECONNRESET);
-+			spin_unlock_irqrestore(&udc->lock, flags);
-+			return 0;
-+		}
- 	}
- 
--	_nbu2ss_ep_done(ep, req, -ECONNRESET);
--
- 	spin_unlock_irqrestore(&udc->lock, flags);
- 
--	return 0;
-+	pr_debug("%s no queue(EINVAL)\n", __func__);
-+
-+	return -EINVAL;
- }
- 
- /*-------------------------------------------------------------------------*/
--- 
-2.20.1
+On Sun, 4 Mar 2018, Rinkle Jain wrote:
 
+> Replace line ending with '(' with function parameters to resolve
+> style issue found by checkpath.
+>
+> Signed-off-by: Rinkle Jain <rinklejain96@gmail.com>
+
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+
+> ---
+> Changes in v2:
+> 	- Make better use of the available horizontal space.
+> 	- Remove use of a line for ');' in function declarartion.
+>
+>  drivers/staging/vt6655/baseband.h | 11 ++++-------
+>  1 file changed, 4 insertions(+), 7 deletions(-)
+>
+> diff --git a/drivers/staging/vt6655/baseband.h b/drivers/staging/vt6655/baseband.h
+> index b8ee33dcb352..30d9e9d20a39 100644
+> --- a/drivers/staging/vt6655/baseband.h
+> +++ b/drivers/staging/vt6655/baseband.h
+> @@ -46,13 +46,10 @@
+>  #define TOP_RATE_2M         0x00200000
+>  #define TOP_RATE_1M         0x00100000
+>
+> -unsigned int
+> -BBuGetFrameTime(
+> -	unsigned char byPreambleType,
+> -	unsigned char byPktType,
+> -	unsigned int cbFrameLength,
+> -	unsigned short wRate
+> -);
+> +unsigned int BBuGetFrameTime(unsigned char byPreambleType,
+> +			     unsigned char byPktType,
+> +			     unsigned int cbFrameLength,
+> +			     unsigned short wRate);
+>
+>  void vnt_get_phy_field(struct vnt_private *priv, u32 frame_length,
+>  		       u16 tx_rate, u8 pkt_type, struct vnt_phy_field *phy);
+> --
+> 2.14.3
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20180304072225.GA17701%40tic-tac.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
