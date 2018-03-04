@@ -1,96 +1,116 @@
 X-GM-THRID: 6529117174550757376
-X-Received: by 10.46.29.133 with SMTP id w5mr776542lje.26.1520178855931;
-        Sun, 04 Mar 2018 07:54:15 -0800 (PST)
+X-Received: by 10.99.1.211 with SMTP id 202mr2410824pgb.53.1520178569577;
+        Sun, 04 Mar 2018 07:49:29 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.67.82 with SMTP id m18ls1465656lfj.9.gmail; Sun, 04 Mar
- 2018 07:54:14 -0800 (PST)
-X-Google-Smtp-Source: AG47ELud7uTQ2ah1RUeoqnRGiPw/P5D7wPQ+ui0Dzbbxve1oI8IlNiWmpxsYyEC6WecOtX6pgD0+
-X-Received: by 10.25.22.20 with SMTP id m20mr837610lfi.3.1520178854184;
-        Sun, 04 Mar 2018 07:54:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520178854; cv=none;
+Received: by 2002:a17:902:3e3:: with SMTP id d90-v6ls5230479pld.7.gmail; Sun,
+ 04 Mar 2018 07:49:28 -0800 (PST)
+X-Google-Smtp-Source: AG47ELsv4YnvpAFb3Y74TAfzrIJRRRgTLwss2G2afp0s78WE2XHBQtuCTawHBWDLMuCncjgwHf/m
+X-Received: by 2002:a17:902:bcc3:: with SMTP id o3-v6mr2100135pls.0.1520178568524;
+        Sun, 04 Mar 2018 07:49:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520178568; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZKrgu2/sbQ5BmGTw44EWJW89GS0+z3zyEWZ+K29vCGGdqqkJhsqVqSf/ZMWuhiRfZl
-         66EriPhO41CYQT0n8kX5SlmUOkMcfxcyoTDaJBsU44mmAh0gPgzP12lcWUGLSt7ek93n
-         dduqHEoY0n79QMyKTBl+m8Wa0YhicxjVys92V5/6+OBqu2P+Yn/WjBUUeeS/2dq5Tiy4
-         lI/cfLSiibttOTQO6IFGcuF4ShSkvb0rb3i1IFKsKLlmg+ZGUKXgITRqStC08rNR9V7K
-         kaGejIYs2a1OKOSv0rYAI09RsXYuRUBINa8+0xtRkmRymMoeBvamhTj4bU99IFIEPW+B
-         ADGg==
+        b=lzUmdkfLtZ03dti9t9o3cOR3WniDZwISqvksIDQn1fRX77imlQMXo0bmqxvpUc2b2t
+         2+iyF5kNnHWRfSFaocPY2r2JORzb5sYbQb110ckKF0sTFF2Nfeds2/SvttpB6Biy0T0B
+         xoFbk3vT1O5Ni4f1DbvAadwfB/0AsE38ZiwwNG5efJtq3WVeRHbSz+Yqt+nwkEfGcH27
+         3v4wpxdIrOyRAA73R5aKGtPvoJGojLJNKqTXbGtI+nuw+QmPUPFT4ks/jY33Y0LYmLnP
+         QAXJUIDeJ6ppEJ7FK2mLCHRfsFcTydpWZydQSF2jTuZoaLktiWmBARJi0bprS0Z4aeti
+         e82w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=DlW6IWk+sK+bSPkBM4SQwXBZxcw5/kRFhUGA7MbmYPc=;
-        b=tTd6dGyDFY4rsJUchQTwc4InnQmcPCN8JAmtPR9ZE4d2BjOc5i1cdnVjqaBaRMEGw6
-         /DvfdAC0MQ5dOJ9HZ8kSM5ixotuIe5joJo/kmon4P9V7/br2s1eTfVjzH+KohYUsyXUj
-         xpLafhj4LkjNQRcQ69T3kKdNMf1RJa2dcsgLEeWkdL3JP8WmJ0Tj04HLM82I8/YUgOfY
-         bT4OrC+Sgw1jBXmOJmkC5tUv7pg0VaHaHibO4d1Cb0OxR/lTw0RMKKIzBbVdIIF9+cXV
-         rEmxxKMPla5zIbkXVhpKZi48MoolgnNk4TU///BGWc5jl6yq8C/NGOHUH0v3FkAyKVuN
-         pGWg==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=8C1OONcXJ8pOFAZK37YJ7mpX0xQ55DZHFoNM1U0uYNM=;
+        b=hnpvONqDIWA3yyXnzfrxMYnbDXmOHYW9sgqfaqThTQNyExNdL2kOMaX7ryerz0SbUZ
+         qbGoyeZaduXE2aUctmxRoS/PKRWug4wlh2xMsgEVCirJBD56HI+eaIYzCcJVW3CVhMvM
+         oM3FuGiEzriZAh4ORw6bE0pQleuV5kOjHMpM55ZXUAN2o4Tev7MjbbTjfxt5egl59owT
+         /83CEbxS/ANz76CECwygPoWqAxy2fk+xKNiiZKm52XWy+7nYF5WtATuXBSz/vUqnxTgz
+         XKvWYbC6/ikpkPoeXc5eSRgPJ1gV8dx/0HirRoh3nvKSezat+4FNn1v50AvZeIukJd8Y
+         n0IQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id s12si447078lje.3.2018.03.04.07.54.13
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=n2Xcv5nL;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c01::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from mail-pl0-x244.google.com (mail-pl0-x244.google.com. [2607:f8b0:400e:c01::244])
+        by gmr-mx.google.com with ESMTPS id e26si573189pfi.0.2018.03.04.07.49.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 04 Mar 2018 07:54:14 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sun, 04 Mar 2018 07:49:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c01::244 as permitted sender) client-ip=2607:f8b0:400e:c01::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.47,423,1515452400"; 
-   d="scan'208";a="316311983"
-Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 04 Mar 2018 16:54:13 +0100
-Date: Sun, 4 Mar 2018 16:54:13 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Arushi Singhal <arushisinghal19971997@gmail.com>
-cc: alan@linux.intel.com, sakari.ailus@linux.intel.com, mchehab@kernel.org, 
-    gregkh@linuxfoundation.org, linux-media@vger.kernel.org, 
-    devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
-    outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 0/3] staging: media: cleanup
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=n2Xcv5nL;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c01::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl0-x244.google.com with SMTP id d9-v6so828232plo.8
+        for <outreachy-kernel@googlegroups.com>; Sun, 04 Mar 2018 07:49:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=8C1OONcXJ8pOFAZK37YJ7mpX0xQ55DZHFoNM1U0uYNM=;
+        b=n2Xcv5nLTgjf/zBDftGNt58Y51s37RETunfWBr5rQtMio99p1pU9liRreDeTI5kXbC
+         zLWM5tuQCO8iZ7O82bWyR5xoAHTdYvVZiVC3vRP/OnbhwlkPvE/9QbuDhC2ydkCqVEKx
+         JMGaIEMziqiY6bHlsyPixUiMZKyRpzroyjDX67OT6fEpCUFVhFzz+ExGDKhIi+1My0mv
+         xpy7DsGoRjRY6A8XZetd2vwu2P10rlw26xJlvrlsNSmr4vl69UTTL37z8cTXaPdr+EKJ
+         Oo9/RC6gy9TcgK7Z0Pa5+Pm8q7GXISaFYoruzycr1cc2k/hcegL0GwMwN13P0E0NRuVB
+         /zCw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=8C1OONcXJ8pOFAZK37YJ7mpX0xQ55DZHFoNM1U0uYNM=;
+        b=BaPYWCUvOQZVET/lHzMlcdSNLq9eCKbMFWINGEoPfqjtLisvynCmX+MHgsZpKZ34rC
+         ct/bAxYAZ7RMRnVo38Fa+4U3B2QDxi7tnqR+yM2Z+lZpVMGq+vUJ22JuR66Mj2aaq+Z7
+         A9A165L73upODVjr+2uBHjum+mUqETaXk8iHbbtkWszMi+1XMIzL0Mhw5SEqQS4C+xdt
+         BF5UuX9LxA3tDoVZQxF7KDnQRsFxCknzLuYJUux8Mkj94GE5vwcSEMPnG1pFKyZXRC62
+         u9QIkEZYUccFiMkAF3KHpbKm4b145PwOpSMJ1LVljBmTzITiJv5krgDGegEX/1ONfJSs
+         4x8A==
+X-Gm-Message-State: APf1xPBJynF3PX2zTIvdNyazNWXGmL1+3BuQn0NiLAFgUwWBMy+ykSqq
+	ke5ZhCW+N1IWN76OLSTOjVo=
+X-Received: by 2002:a17:902:710f:: with SMTP id a15-v6mr10278952pll.87.1520178568162;
+        Sun, 04 Mar 2018 07:49:28 -0800 (PST)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from seema-Inspiron-15-3567.iiit.ac.in ([14.139.82.6])
+        by smtp.googlemail.com with ESMTPSA id o82sm24847163pfj.163.2018.03.04.07.49.23
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 04 Mar 2018 07:49:27 -0800 (PST)
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+To: alan@linux.intel.com
+Cc: sakari.ailus@linux.intel.com,
+	mchehab@kernel.org,
+	gregkh@linuxfoundation.org,
+	linux-media@vger.kernel.org,
+	devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com,
+	Arushi Singhal <arushisinghal19971997@gmail.com>
+Subject: [PATCH 3/3] staging: media: Replace "dont" with "don't"
+Date: Sun,  4 Mar 2018 21:18:27 +0530
+Message-Id: <1520178507-25141-4-git-send-email-arushisinghal19971997@gmail.com>
+X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1520178507-25141-1-git-send-email-arushisinghal19971997@gmail.com>
-Message-ID: <alpine.DEB.2.20.1803041653350.2182@hadrien>
 References: <1520178507-25141-1-git-send-email-arushisinghal19971997@gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
 
+Replace "dont" with "don't".
+"Dont" is not same as "Do not" or "Don't".
 
+Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+---
+ drivers/staging/media/atomisp/pci/atomisp2/mmu/isp_mmu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On Sun, 4 Mar 2018, Arushi Singhal wrote:
+diff --git a/drivers/staging/media/atomisp/pci/atomisp2/mmu/isp_mmu.c b/drivers/staging/media/atomisp/pci/atomisp2/mmu/isp_mmu.c
+index e36c2a3..f21075c 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp2/mmu/isp_mmu.c
++++ b/drivers/staging/media/atomisp/pci/atomisp2/mmu/isp_mmu.c
+@@ -450,7 +450,7 @@ static void mmu_l1_unmap(struct isp_mmu *mmu, phys_addr_t l1_pt,
+ 			ptr = end;
+ 		}
+ 		/*
+-		 * use the same L2 page next time, so we dont
++		 * use the same L2 page next time, so we don't
+ 		 * need to invalidate and free this PT.
+ 		 */
+ 		/*      atomisp_set_pte(l1_pt, idx, NULL_PTE); */
+-- 
+2.7.4
 
-> Spellcheck the comments.
-> Remove the repeated, consecutive words with single word.
-
-For the series:
-Acked-by: Julia Lawall <julia.lawall@lip6.fr>
-
-But please look out for things to change in the code, not just in the
-comments.
-
-julia
-
-
->
-> Arushi Singhal (3):
->   staging: media: Replace "be be" with "be"
->   staging: media: Replace "cant" with "can't"
->   staging: media: Replace "dont" with "don't"
->
->  drivers/staging/media/atomisp/pci/atomisp2/css2400/ia_css_pipe_public.h | 2 +-
->  drivers/staging/media/atomisp/pci/atomisp2/mmu/isp_mmu.c                | 2 +-
->  drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c                    | 2 +-
->  3 files changed, 3 insertions(+), 3 deletions(-)
->
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1520178507-25141-1-git-send-email-arushisinghal19971997%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
