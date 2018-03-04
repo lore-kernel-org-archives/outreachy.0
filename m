@@ -1,78 +1,296 @@
 X-GM-THRID: 6529194595681566720
-X-Received: by 10.80.141.16 with SMTP id s16mr5356140eds.7.1520337575944;
-        Tue, 06 Mar 2018 03:59:35 -0800 (PST)
+X-Received: by 10.80.200.202 with SMTP id k10mr3636281edh.10.1520200137086;
+        Sun, 04 Mar 2018 13:48:57 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.80.206.28 with SMTP id y28ls786685edi.0.gmail; Tue, 06 Mar
- 2018 03:59:34 -0800 (PST)
-X-Google-Smtp-Source: AG47ELuVsLluDCwmzLSSvvlTRFUdkEaLt55K++LxZp9roAtSJLVx2Tm4XFma6h09TA33Pqb8HIka
-X-Received: by 10.80.220.141 with SMTP id r13mr722754edk.4.1520337574253;
-        Tue, 06 Mar 2018 03:59:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520337574; cv=none;
+Received: by 10.80.215.82 with SMTP id i18ls1840526edj.7.gmail; Sun, 04 Mar
+ 2018 13:48:55 -0800 (PST)
+X-Google-Smtp-Source: AG47ELtfOezQPFvHYcBjFseVLtUE1MelBUTATU/f+HkpJWnQLbkgvHzjZ+dHdtsw5s2HbmKaNC2U
+X-Received: by 10.80.146.109 with SMTP id j42mr3610788eda.6.1520200135819;
+        Sun, 04 Mar 2018 13:48:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520200135; cv=none;
         d=google.com; s=arc-20160816;
-        b=m5ey+BVap5imTKOykGPNkswTe8+JJbrvGVqlAVdVT4PYMvSEQA9sbTEe6UdPA4poHn
-         Rk9nMQ3Muwyczdj6hRT4zL03FcplNEPCQgyiRsxI4KA324nySjRZdL+JAcs+SpGiXhjA
-         5hRYlNDTKR3xyF0ZwlwcOizl+ikLX3Iy8Q4wITgggFqXL5YBeanHCN32Ihfy6rjAerMb
-         fDLSBwIDwC+V0djkPgF6bfegnabw6CIuL3L+NA8ziifEofJAThw1l8nL97Nre5LvNSfW
-         IaAe0wVcMb7vc9X6j2tL3ouL7fVQOG0GSAkCR0kbCrjXZtiuxhElAELGpz4S4iwBdcq6
-         rWWw==
+        b=JFYLK7ZKSTPWR7DM8bx6xEw4ywsjssAmXzpGYbX79y6eUE4kxMgQmCl+PZHMhAsr1l
+         BL12BP1rYMb72TlI4mJNGhQK066zrfRQHhaKYRmvWA3lt93JSi74mvTaFZoUhkpl2mpI
+         sFQNqi0Pj3Vg5c6lZRl7e/Yo1NwZ8JHOJ17LUa8Qn54uiLqJMi0T9+K7o+Z2IDkReZXm
+         bD1KUC3zH+83zGiKKk2EKaEa5LdhhFaYGKB2VeTQtHdHBMi1SAt0tXwnBIPaZD1/DABa
+         HoGDxzsj9xAxPB9toUz4aTuYtEvLO02hVOmVLJ1BFiLH7wek1wB9j85jl8piWlJx23Kw
+         8PbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=f73ZQ45jvmv4gJmIAmTd8IGLA7Yz6SILXaJr88FzVtg=;
-        b=seilddLLIfGYt0Zn4hshz127Q+HAlugoubB51pj7X8Q5u80d8dg/wUUvnMDplUGC2C
-         QFqkKdNL3/6/pQSb9C7CtOhx6crmBs0kOpOs7KjGIjcrE9t/kLlPOK30J8/rpX4CCHMq
-         0uFzITwuaf3+udFc/knj/4A5ZIPDJPKCgGlPjdiIddIgzCCGnekH/AagG6ppauJUvQsd
-         Ep12Tn5XBkTPe0PPdQfrMrAEip17gTIDjzv3h3M79XUl5vjaWaRACuuWYHvR5pvMeBTu
-         6S9Rz9BhuAKI4GFlz1bXg3eR6ozl0Vt0VrJAJXOIlmjFFxSeBivwAF2uFlREXWun1r9m
-         x7rQ==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=0JZmxw8CXYrc0QSfOPutMJjB8EbQ3ps+19a1kBiiegI=;
+        b=OaD3rVy6LLCHLZwZtyiNV8C6XCik5o0SePJoM8zM8IoFNVTf86HkngaMPdP/vQrhoo
+         D7dZCiF0FrZidE0N5rQMT21eiISWkf1TRlzwaMBvKYG/oye3Q1+V4t9ei0XnELElB6nm
+         c8mOuEdfHCFeLGrmsGFcQ04I99+Idl4ZzKXkLGPC8Ke8Z1zrd39PIEnqKm0SDp1gkiPA
+         PeDuP95fRl0yoASi5lECXF/sCa4/m4iUN8/+uXc/yGfYj+MCGBZ8c/JHq3tOR0c/0gMX
+         f1wRRFvzf8Yg7606Gh4RDZhww9Y4b+E7fdYCj/eyQY9DX799UygNqpppdu8UdvEXo7Rs
+         i3Qg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id g21si286379edj.5.2018.03.06.03.59.34
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jlx4QfrM;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2a00:1450:4010:c07::230 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from mail-lf0-x230.google.com (mail-lf0-x230.google.com. [2a00:1450:4010:c07::230])
+        by gmr-mx.google.com with ESMTPS id y16si718515edc.1.2018.03.04.13.48.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 06 Mar 2018 03:59:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Sun, 04 Mar 2018 13:48:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2a00:1450:4010:c07::230 as permitted sender) client-ip=2a00:1450:4010:c07::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (unknown [185.236.200.248])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 86608114A;
-	Tue,  6 Mar 2018 11:59:32 +0000 (UTC)
-Date: Tue, 6 Mar 2018 03:59:35 -0800
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Arushi Singhal <arushisinghal19971997@gmail.com>
-Cc: netdev@vger.kernel.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH v2] staging: Replace printk() with appropriate
- net_*macro_ratelimited()
-Message-ID: <20180306115935.GA17888@kroah.com>
-References: <20180304204910.GA4840@seema-Inspiron-15-3567>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jlx4QfrM;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2a00:1450:4010:c07::230 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-lf0-x230.google.com with SMTP id f75so20365838lfg.6
+        for <outreachy-kernel@googlegroups.com>; Sun, 04 Mar 2018 13:48:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=0JZmxw8CXYrc0QSfOPutMJjB8EbQ3ps+19a1kBiiegI=;
+        b=jlx4QfrMOL0fYMJPO3novlgCIzgpWQSchUeiDvLFft/sVuvToAeGWV0GeP/bqnE+Qu
+         3TrLh7trNoq9kSqArA1NFHBGwENjQ+mxeUyo3qIOQ2VQ9HFdmNSpf3PeaJ4D7n86Om/o
+         +WLdpxy33q4zlOS6j/2B3t6e8hpAIL55nw0Qwbjcl2FkrZWuj7WdPbjDpGJoM82p+YVa
+         cuKvSS3XRAcDKL2SlDr6U7GHcqu2LsL9uribua3qOKlTXqYsZAObGFP89udKpwBQ+gRh
+         c7bBDdwv2v6J5ZcWurHksOt87mN4G+yUKI3y0uW8gwMUj1etsf3Hh3+lrqWH27RZH4o1
+         Xy/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=0JZmxw8CXYrc0QSfOPutMJjB8EbQ3ps+19a1kBiiegI=;
+        b=hGr2JVfHFiHRP16SM4FKoIZYtYpNpYPD9rm2CuaVuUyeJv8wg6nteCqIESU4i77CEQ
+         aDAFIkaCcLdyNzU4E0OX4BUQjHDpULFQrZZMuQXk22Sf9drycjGYsBz4Qhv/UuAgtx6E
+         qs14sKi4M03O83OVSVfrzbCcB2dXtikOkWugFxPvE4dJPzNWVIi3bCa+x4Li244IkJy0
+         v6NiRXLdc2J9dJG1mGAKZHV8sXkUYj/JLkX1a/aDIdsnuYXG8Sa9+UKX+LIDXcupIPSL
+         R4HtHLIb/NFMqIPTzP13+W/XlpnRUx7lfxTXrq7Z/L359nOmZYbGQH0dLH77dkRg7JQy
+         jQTA==
+X-Gm-Message-State: AElRT7GCcXY/8DKXjXXGHP8rvO5TVNA7lCsGwy/ItihHRPwsFFct75e5
+	6RnQFXI1U1JLti8wsxmY8BR/tNu1aawgKCOIRg4=
+X-Received: by 10.25.157.80 with SMTP id g77mr7996404lfe.142.1520200135468;
+ Sun, 04 Mar 2018 13:48:55 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20180304204910.GA4840@seema-Inspiron-15-3567>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Received: by 10.25.26.203 with HTTP; Sun, 4 Mar 2018 13:48:54 -0800 (PST)
+In-Reply-To: <alpine.DEB.2.20.1803042153160.2182@hadrien>
+References: <20180304204910.GA4840@seema-Inspiron-15-3567> <alpine.DEB.2.20.1803042153160.2182@hadrien>
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+Date: Mon, 5 Mar 2018 03:18:54 +0530
+Message-ID: <CA+XqjF_DhC162jJQbU6jjA+d+WAM=0iVd+Gdui665ofG6MNefw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: Replace printk() with
+ appropriate net_*macro_ratelimited()
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Greg KH <gregkh@linuxfoundation.org>, 
+	Linux Kernel Network Developers <netdev@vger.kernel.org>, driverdevel <devel@driverdev.osuosl.org>, 
+	LKML <linux-kernel@vger.kernel.org>, outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary="001a1140336c0fec7105669d2dcb"
 
-On Mon, Mar 05, 2018 at 02:19:11AM +0530, Arushi Singhal wrote:
-> Replace printk having a log level with the appropriate
-> net_*macro_ratelimited.
-> It's better to use actual device name as a prefix in error messages.
-> Indentation is also changed, to fix the  checkpatch issue.
-> 
-> Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
-> ---
-> changes in v2
-> *In previous version printk was changed to pr_*macro(), which is used
-> in kernel instead of calling printk() directly. And for drivers,
-> dev_*macro() or net_*macro_ratelimited() should be used for calling
-> printk() directly.
-> 
->  drivers/staging/ipx/af_ipx.c | 14 +++++++-------
+--001a1140336c0fec7105669d2dcb
+Content-Type: text/plain; charset="UTF-8"
 
-Please read drivers/staging/ipx/TODO
+On Mon, Mar 5, 2018 at 2:24 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
 
-thanks,
+>
+>
+> On Mon, 5 Mar 2018, Arushi Singhal wrote:
+>
+> > Replace printk having a log level with the appropriate
+> > net_*macro_ratelimited.
+>
+> Why did you choose this function?
+>
+> > It's better to use actual device name as a prefix in error messages.
+>
+> What does this message relate to.
+>
+> > Indentation is also changed, to fix the  checkpatch issue.
+>
+> It would be better to no exceed 80 characters than to follow the
+> suggestion abotu the argument being to the right of the (.
+>
 
-greg k-h
+Thanks for the suggestion. Will send the new version.
+
+>
+> julia
+>
+>
+> > Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+> > ---
+> > changes in v2
+> > *In previous version printk was changed to pr_*macro(), which is used
+> > in kernel instead of calling printk() directly. And for drivers,
+> > dev_*macro() or net_*macro_ratelimited() should be used for calling
+> > printk() directly.
+> >
+> >  drivers/staging/ipx/af_ipx.c | 14 +++++++-------
+> >  1 file changed, 7 insertions(+), 7 deletions(-)
+> >
+> > diff --git a/drivers/staging/ipx/af_ipx.c b/drivers/staging/ipx/af_ipx.c
+> > index d21a9d1..9a96962 100644
+> > --- a/drivers/staging/ipx/af_ipx.c
+> > +++ b/drivers/staging/ipx/af_ipx.c
+> > @@ -744,13 +744,13 @@ static void ipxitf_discover_netnum(struct
+> ipx_interface *intrfc,
+> >                       intrfc->if_netnum = cb->ipx_source_net;
+> >                       ipxitf_add_local_route(intrfc);
+> >               } else {
+> > -                     printk(KERN_WARNING "IPX: Network number collision
+> "
+> > -                             "%lx\n        %s %s and %s %s\n",
+> > -                             (unsigned long) ntohl(cb->ipx_source_net),
+> > -                             ipx_device_name(i),
+> > -                             ipx_frame_name(i->if_dlink_type),
+> > -                             ipx_device_name(intrfc),
+> > -                             ipx_frame_name(intrfc->if_dlink_type));
+> > +                     net_warn_ratelimited("IPX: Network number
+> collision "
+> > +                                          "%lx\n        %s %s and %s
+> %s\n",
+> > +                                          (unsigned long)
+> ntohl(cb->ipx_source_net),
+> > +                                          ipx_device_name(i),
+> > +                                          ipx_frame_name(i->if_dlink_
+> type),
+> > +                                          ipx_device_name(intrfc),
+> > +                                          ipx_frame_name(intrfc->if_
+> dlink_type));
+> >                       ipxitf_put(i);
+> >               }
+> >       }
+> > --
+> > 2.7.4
+> >
+> > --
+> > You received this message because you are subscribed to the Google
+> Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send
+> an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/
+> msgid/outreachy-kernel/20180304204910.GA4840%40seema-Inspiron-15-3567.
+> > For more options, visit https://groups.google.com/d/optout.
+> >
+>
+
+--001a1140336c0fec7105669d2dcb
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><div class=3D"gmail_extra"><br><div class=3D"gmail_quo=
+te">On Mon, Mar 5, 2018 at 2:24 AM, Julia Lawall <span dir=3D"ltr">&lt;<a h=
+ref=3D"mailto:julia.lawall@lip6.fr">julia.lawall@lip6.fr</a>&gt;</span> wro=
+te:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-=
+left:1px #ccc solid;padding-left:1ex"><span class=3D""><br>
+<br>
+On Mon, 5 Mar 2018, Arushi Singhal wrote:<br>
+<br>
+&gt; Replace printk having a log level with the appropriate<br>
+&gt; net_*macro_ratelimited.<br>
+<br>
+</span>Why did you choose this function?<br>
+<span class=3D""><br>
+&gt; It&#39;s better to use actual device name as a prefix in error message=
+s.<br>
+<br>
+</span>What does this message relate to.<br>
+<span class=3D""><br>
+&gt; Indentation is also changed, to fix the=C2=A0 checkpatch issue.<br>
+<br>
+</span>It would be better to no exceed 80 characters than to follow the<br>
+suggestion abotu the argument being to the right of the (.<br></blockquote>=
+<div><br></div><div>Thanks for the suggestion. Will send the new version. <=
+br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;borde=
+r-left:1px #ccc solid;padding-left:1ex">
+<br>
+julia<br>
+<div class=3D"HOEnZb"><div class=3D"h5"><br>
+<br>
+&gt; Signed-off-by: Arushi Singhal &lt;<a href=3D"mailto:arushisinghal19971=
+997@gmail.com">arushisinghal19971997@gmail.<wbr>com</a>&gt;<br>
+&gt; ---<br>
+&gt; changes in v2<br>
+&gt; *In previous version printk was changed to pr_*macro(), which is used<=
+br>
+&gt; in kernel instead of calling printk() directly. And for drivers,<br>
+&gt; dev_*macro() or net_*macro_ratelimited() should be used for calling<br=
+>
+&gt; printk() directly.<br>
+&gt;<br>
+&gt;=C2=A0 drivers/staging/ipx/af_ipx.c | 14 +++++++-------<br>
+&gt;=C2=A0 1 file changed, 7 insertions(+), 7 deletions(-)<br>
+&gt;<br>
+&gt; diff --git a/drivers/staging/ipx/af_ipx.c b/drivers/staging/ipx/af_ipx=
+.c<br>
+&gt; index d21a9d1..9a96962 100644<br>
+&gt; --- a/drivers/staging/ipx/af_ipx.c<br>
+&gt; +++ b/drivers/staging/ipx/af_ipx.c<br>
+&gt; @@ -744,13 +744,13 @@ static void ipxitf_discover_netnum(struct ipx_in=
+terface *intrfc,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0intrfc-&gt;if_netnum =3D cb-&gt;ipx_source_net;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0ipxitf_add_local_route(intrfc)<wbr>;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0} else {<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0printk(KERN_WARNING &quot;IPX: Network number collision &quot;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;%lx\n=C2=A0 =C2=A0 =C2=A0 =C2=A0 %=
+s %s and %s %s\n&quot;,<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(unsigned long) ntohl(cb-&gt;ipx_source_=
+net),<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ipx_device_name(i),<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ipx_frame_name(i-&gt;if_dlink_<wbr>type)=
+,<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ipx_device_name(intrfc),<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ipx_frame_name(intrfc-&gt;if_<wbr>dlink_=
+type));<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0net_warn_ratelimited(&quot;IPX: Network number collision &quot;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 &quot;%lx\n=C2=A0 =C2=A0 =C2=A0 =C2=A0 %s %s and %s %s\n&quot;,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 (unsigned long) ntohl(cb-&gt;ipx_source_net),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 ipx_device_name(i),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 ipx_frame_name(i-&gt;if_dlink_<wbr>type),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 ipx_device_name(intrfc),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 ipx_frame_name(intrfc-&gt;if_<wbr>dlink_type));<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0ipxitf_put(i);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+&gt; --<br>
+&gt; 2.7.4<br>
+&gt;<br>
+</div></div><span class=3D"HOEnZb"><font color=3D"#888888">&gt; --<br>
+&gt; You received this message because you are subscribed to the Google Gro=
+ups &quot;outreachy-kernel&quot; group.<br>
+&gt; To unsubscribe from this group and stop receiving emails from it, send=
+ an email to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.=
+com">outreachy-kernel+unsubscribe@<wbr>googlegroups.com</a>.<br>
+&gt; To post to this group, send email to <a href=3D"mailto:outreachy-kerne=
+l@googlegroups.com">outreachy-kernel@googlegroups.<wbr>com</a>.<br>
+&gt; To view this discussion on the web visit <a href=3D"https://groups.goo=
+gle.com/d/msgid/outreachy-kernel/20180304204910.GA4840%40seema-Inspiron-15-=
+3567" rel=3D"noreferrer">https://groups.google.com/d/<wbr>msgid/outreachy-k=
+ernel/<wbr>20180304204910.GA4840%40seema-<wbr>Inspiron-15-3567</a>.<br>
+&gt; For more options, visit <a href=3D"https://groups.google.com/d/optout"=
+ rel=3D"noreferrer">https://groups.google.com/d/<wbr>optout</a>.<br>
+&gt;<br>
+</font></span></blockquote></div><br></div></div>
+
+--001a1140336c0fec7105669d2dcb--
 
