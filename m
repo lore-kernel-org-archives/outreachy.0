@@ -1,112 +1,129 @@
-X-GM-THRID: 6749590938737180672
-X-Received: by 2002:a25:df47:: with SMTP id w68mr11183207ybg.476.1571511602882;
-        Sat, 19 Oct 2019 12:00:02 -0700 (PDT)
+X-GM-THRID: 6529312870526615552
+X-Received: by 10.25.158.145 with SMTP id h139mr988154lfe.30.1520234493356;
+        Sun, 04 Mar 2018 23:21:33 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a81:db4d:: with SMTP id b13ls1505588ywn.4.gmail; Sat, 19 Oct
- 2019 12:00:01 -0700 (PDT)
-X-Received: by 2002:a81:7989:: with SMTP id u131mr11454953ywc.335.1571511601592;
-        Sat, 19 Oct 2019 12:00:01 -0700 (PDT)
-Received: by 2002:a81:a985:0:0:0:0:0 with SMTP id g127msywh;
-        Sat, 19 Oct 2019 00:34:39 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwYGh0Ktl7sy2eztEt/03CgtV2kpA0a9BYJw6tLtA+7xvbCpKH4H2cHeeYxuhuG3mzIRe0b
-X-Received: by 2002:a25:dd41:: with SMTP id u62mr9174874ybg.171.1571470479054;
-        Sat, 19 Oct 2019 00:34:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571470479; cv=none;
+Received: by 10.25.67.82 with SMTP id m18ls1578869lfj.9.gmail; Sun, 04 Mar
+ 2018 23:21:31 -0800 (PST)
+X-Google-Smtp-Source: AG47ELu3fGNHA8lZ4G9Fqd94l0RTup8wKyhKF60ejTNoedis0NGv/XFe5RCuJpWR0nWxa113s7S2
+X-Received: by 10.25.43.133 with SMTP id r127mr993347lfr.22.1520234491975;
+        Sun, 04 Mar 2018 23:21:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520234491; cv=none;
         d=google.com; s=arc-20160816;
-        b=Gq3B1yzaNOio1XOFyDt0R8J43LMGapPmuaObeQ7E4lboNTQegZq3751ZXlb2ifopcC
-         c/OIp2numboVvBXycYr8Rd+O4Xq57gfJVAlAbasiaykfUkCT1dso7AyQv6O00fS/6EJq
-         0cDyRGCbL3GLGupl9pY0u2JTObDVjzPwGgTyIVkOUiZqeFEvRMpppSzhefW8Ub/6cQEa
-         s+BqwvjU4meDavcl7SDb4P8ZyHr5PD7sHI3feOkQLtl7Hr8s25yOJj8kZ/j6OMhxkwB1
-         r/mGkcYVya3m4xJG43w2IqQu4HZy/BMu0wPEbbIgoN9B/6qKdWYpQ4uNNPlwnR4lBh/j
-         yPRw==
+        b=F0798kiqnLovaoifF+f36FVzHx67LlE0+25tSCMt6RLXoRJG/LjEzO5A3VaJ/zRNod
+         s15spgN2eGXlwrJF+dmFixvqE8beFZkWZGPVY0yMtA9D2wbldEu91WC57lJcv63jfcHF
+         z+9UmGIUy2FoidxXX4L1nwQ+U8Mzau79L3Vk36ppgdiYcFfzS4Nw7osvNepN/eCgiT4d
+         GGgbESMaHHq2kOfkaLkWY85xxbdreq75lI9Y1O+1jAqtV7l7OBS5LMQVNPin2WlPntWV
+         oBKaA/4YEvvbOmr+0eAEqHnHUjQai9AxiTSPZN9QGe2B/Q7EuOqzXV7S2b/382zQ6QQi
+         E96Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=VD0Y/TC56ClMToFBUUUrxu+rBdU2Xpw8LMnF5Bu/WCM=;
-        b=aLRaUCLdMg+yQEzygGQMuqF4iaTvQjFiU1zS2wDTeRC82mNjvY0sih3RUhGUPsaMC/
-         qi7L+eAhwx3VGBCZgKNntrJYTBV6yarsqQE/FC9rWv2I/e0R6jGhGYZtZGFKPMIsOP63
-         5V6MDovFQd2eOQ8EWJb6MFXRtNknYl9OQkvHH+Ow1m9Ova/Rv5cV4q+kSTCqBAGU1RHy
-         dCtnVsPdYPPiOMn/t1m4Frh15V24O+hZaLZ713wOB64GougqxcnUXmKYuZEgQW5EijY9
-         QjDFrYEWHSRkx93PqZFw7QEnYmLF5cvHkZ8lpbGa90kArKMucMY9dj62iX+McZOT86fF
-         Ggdg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=X0T7fCmoYGVHMids7JcnDvlf8aW2L2Wv0O6uLwT0DkQ=;
+        b=pn1jmof76YcrtPHXCnf6ne0t0gssUEN9RMKGnCsKUEUGYhfJaafPxyPuHRZNlOeG2n
+         PhNG1oLfBruMw1zkp8Qy2BlqrXkijQIwHQR3M5VdvkLg/1EQkfLhm1Uu0ROM/rAT/TJg
+         ZeF7RI8fGZ1RcMVKZpHZVpa2xr7PW+eEYq7RqMr5uGAZCsuUVywEZ/ceAT2VFncpXmyQ
+         rItPuQ807lQPRFjYdAOxYhHLKlr0AzLtGopEqEena0LBMza5Sh7O2xp4yUcwwPRDmai/
+         mxsnoiDDz37RBo7s17weL0GaOCICkRRls+1M/W0YDJPavh07U/NYNBAzzOuulZzW4MQE
+         c0Vw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of wambui@karuga.xyz designates 198.54.122.58 as permitted sender) smtp.mailfrom=wambui@karuga.xyz
-Return-Path: <wambui@karuga.xyz>
-Received: from MTA-08-4.privateemail.com (mta-08-4.privateemail.com. [198.54.122.58])
-        by gmr-mx.google.com with ESMTPS id t73si591289ybi.4.2019.10.19.00.34.38
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id j4si490806lja.1.2018.03.04.23.21.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 19 Oct 2019 00:34:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of wambui@karuga.xyz designates 198.54.122.58 as permitted sender) client-ip=198.54.122.58;
+        Sun, 04 Mar 2018 23:21:31 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of wambui@karuga.xyz designates 198.54.122.58 as permitted sender) smtp.mailfrom=wambui@karuga.xyz
-Received: from MTA-08.privateemail.com (localhost [127.0.0.1])
-	by MTA-08.privateemail.com (Postfix) with ESMTP id 9E6DB60052;
-	Sat, 19 Oct 2019 03:34:37 -0400 (EDT)
-Received: from wambui.zuku.co.ke (unknown [10.20.151.244])
-	by MTA-08.privateemail.com (Postfix) with ESMTPA id 0839C60051;
-	Sat, 19 Oct 2019 07:34:33 +0000 (UTC)
-From: Wambui Karuga <wambui@karuga.xyz>
-To: dri-devel@lists.freedesktop.org
-Cc: linux-kernel@vger.kernel.org,
-	alexander.deucher@amd.com,
-	christian.koenig@amd.com,
-	David1.Zhou@amd.com,
-	airlied@linux.ie,
-	daniel@ffwll.ch,
-	amd-gfx@lists.freedesktop.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] drm/amd/amdgpu: correct length misspelling
-Date: Sat, 19 Oct 2019 10:34:30 +0300
-Message-Id: <20191019073430.22093-1-wambui@karuga.xyz>
-X-Mailer: git-send-email 2.23.0
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.47,426,1515452400"; 
+   d="scan'208";a="256958399"
+Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 05 Mar 2018 08:21:30 +0100
+Date: Mon, 5 Mar 2018 08:21:30 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Arushi Singhal <arushisinghal19971997@gmail.com>
+cc: abbotti@mev.co.uk, H Hartley Sweeten <hsweeten@visionengravers.com>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: comedi: Replace "dont"
+ with "don't
+In-Reply-To: <20180305042808.GA24032@seema-Inspiron-15-3567>
+Message-ID: <alpine.DEB.2.20.1803050821190.2306@hadrien>
+References: <20180305042808.GA24032@seema-Inspiron-15-3567>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Virus-Scanned: ClamAV using ClamSMTP
+Content-Type: text/plain; charset=US-ASCII
 
-Correct the "_LENTH" mispelling in the AMDGPU_MAX_TIMEOUT_PARAM_LENGTH
-constant.
 
-Signed-off-by: Wambui Karuga <wambui@karuga.xyz>
----
- drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
-index c5b3c0c9193b..aaab37833659 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
-@@ -86,7 +86,7 @@
- #define KMS_DRIVER_MINOR	34
- #define KMS_DRIVER_PATCHLEVEL	0
- 
--#define AMDGPU_MAX_TIMEOUT_PARAM_LENTH	256
-+#define AMDGPU_MAX_TIMEOUT_PARAM_LENGTH	256
- 
- int amdgpu_vram_limit = 0;
- int amdgpu_vis_vram_limit = 0;
-@@ -100,7 +100,7 @@ int amdgpu_disp_priority = 0;
- int amdgpu_hw_i2c = 0;
- int amdgpu_pcie_gen2 = -1;
- int amdgpu_msi = -1;
--static char amdgpu_lockup_timeout[AMDGPU_MAX_TIMEOUT_PARAM_LENTH];
-+static char amdgpu_lockup_timeout[AMDGPU_MAX_TIMEOUT_PARAM_LENGTH];
- int amdgpu_dpm = -1;
- int amdgpu_fw_load_type = -1;
- int amdgpu_aspm = -1;
-@@ -1327,9 +1327,9 @@ int amdgpu_device_get_job_timeout_settings(struct amdgpu_device *adev)
- 	adev->sdma_timeout = adev->video_timeout = adev->gfx_timeout;
- 	adev->compute_timeout = MAX_SCHEDULE_TIMEOUT;
- 
--	if (strnlen(input, AMDGPU_MAX_TIMEOUT_PARAM_LENTH)) {
-+	if (strnlen(input, AMDGPU_MAX_TIMEOUT_PARAM_LENGTH)) {
- 		while ((timeout_setting = strsep(&input, ",")) &&
--				strnlen(timeout_setting, AMDGPU_MAX_TIMEOUT_PARAM_LENTH)) {
-+				strnlen(timeout_setting, AMDGPU_MAX_TIMEOUT_PARAM_LENGTH)) {
- 			ret = kstrtol(timeout_setting, 0, &timeout);
- 			if (ret)
- 				return ret;
--- 
-2.23.0
+On Mon, 5 Mar 2018, Arushi Singhal wrote:
 
+> Replace "dont" with "don't".
+> "Dont" is not same as "Do not" or "Don't".
+>
+> Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+> ---
+> changes in v2
+> *Commit log is rewrite in the imperative.
+>
+>  drivers/staging/comedi/drivers/cb_pcidas64.c | 2 +-
+>  drivers/staging/comedi/drivers/das16.c       | 2 +-
+>  drivers/staging/comedi/drivers/das16m1.c     | 2 +-
+>  3 files changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/comedi/drivers/cb_pcidas64.c b/drivers/staging/comedi/drivers/cb_pcidas64.c
+> index c007500..ceef905 100644
+> --- a/drivers/staging/comedi/drivers/cb_pcidas64.c
+> +++ b/drivers/staging/comedi/drivers/cb_pcidas64.c
+> @@ -1700,7 +1700,7 @@ static void i2c_write(struct comedi_device *dev, unsigned int address,
+>  	 * eeprom and i2c bus
+>  	 */
+>
+> -	/* make sure we dont send anything to eeprom */
+> +	/* make sure we don't send anything to eeprom */
+>  	devpriv->plx_control_bits &= ~PLX_CNTRL_EECS;
+>
+>  	i2c_stop(dev);
+> diff --git a/drivers/staging/comedi/drivers/das16.c b/drivers/staging/comedi/drivers/das16.c
+> index 74ff204..81eb51b 100644
+> --- a/drivers/staging/comedi/drivers/das16.c
+> +++ b/drivers/staging/comedi/drivers/das16.c
+> @@ -619,7 +619,7 @@ static int das16_cmd_test(struct comedi_device *dev, struct comedi_subdevice *s,
+>
+>  	/* Step 2b : and mutually compatible */
+>
+> -	/*  make sure scan_begin_src and convert_src dont conflict */
+> +	/*  make sure scan_begin_src and convert_src don't conflict */
+>  	if (cmd->scan_begin_src == TRIG_FOLLOW && cmd->convert_src == TRIG_NOW)
+>  		err |= -EINVAL;
+>  	if (cmd->scan_begin_src != TRIG_FOLLOW && cmd->convert_src != TRIG_NOW)
+> diff --git a/drivers/staging/comedi/drivers/das16m1.c b/drivers/staging/comedi/drivers/das16m1.c
+> index 72f8ed2..4e36377 100644
+> --- a/drivers/staging/comedi/drivers/das16m1.c
+> +++ b/drivers/staging/comedi/drivers/das16m1.c
+> @@ -407,7 +407,7 @@ static void das16m1_handler(struct comedi_device *dev, unsigned int status)
+>  		if (num_samples > cmd->stop_arg * cmd->chanlist_len)
+>  			num_samples = cmd->stop_arg * cmd->chanlist_len;
+>  	}
+> -	/*  make sure we dont try to get too many points if fifo has overrun */
+> +	/*  make sure we don't try to get too many points if fifo has overrun */
+>  	if (num_samples > DAS16M1_AI_FIFO_SZ)
+>  		num_samples = DAS16M1_AI_FIFO_SZ;
+>  	insw(dev->iobase, devpriv->ai_buffer, num_samples);
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20180305042808.GA24032%40seema-Inspiron-15-3567.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
