@@ -1,184 +1,172 @@
 X-GM-THRID: 6529514677099036672
-X-Received: by 10.28.12.137 with SMTP id 131mr1157098wmm.18.1520273091552;
-        Mon, 05 Mar 2018 10:04:51 -0800 (PST)
+X-Received: by 10.36.69.152 with SMTP id c24mr9341790itd.23.1520271105744;
+        Mon, 05 Mar 2018 09:31:45 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.0.78 with SMTP id 75ls1588097wma.4.gmail; Mon, 05 Mar 2018
- 10:04:49 -0800 (PST)
-X-Google-Smtp-Source: AG47ELsllx8ANzEtLba2Lq1ySCTQ6VGGCJAmc3K0MOKFEVTFjKnb3QFYCwCGMNqjzMeVDazRNDRc
-X-Received: by 10.28.170.145 with SMTP id t139mr1274667wme.2.1520273089724;
-        Mon, 05 Mar 2018 10:04:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520273089; cv=none;
+Received: by 10.36.208.148 with SMTP id m142ls1751521itg.4.gmail; Mon, 05 Mar
+ 2018 09:31:44 -0800 (PST)
+X-Google-Smtp-Source: AG47ELsSAPhXvLs8XoXadSYV7W748C/rKR+4QoqTN9kyqYh67YlhARmGi0+oEPRsa4dVW1JClxsI
+X-Received: by 10.36.207.8 with SMTP id y8mr9349871itf.2.1520271104663;
+        Mon, 05 Mar 2018 09:31:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520271104; cv=none;
         d=google.com; s=arc-20160816;
-        b=KknzLTZOMhsDlwcJF9BtB/4PzQrTUiPfcXNNYOvirkCKr+cgTP8QoT/ZfDeHZFnybY
-         spcIMIk4tRfV1adRQP+AA31liiG5z6RfN8rti0znK3Qe8Fq+xXtM/3mzE7Nc9Znb33qz
-         3fVqGH2Pi9qKlJ1RGQwCcfsz0JAvkLgWarOHP5fBqYy/17butUxlaSFm4GxNXGzHuWRn
-         dLg5gcKnridqCQFDbIh1WjOCSYvQr3QAjfu4DFXlBmkSl+MYjhM4D0I4zzZMZGzp1i34
-         DL4stFWhCvm8mrup5iV0tdHIYyk+YobwYLiZiihqOrn5R0pt1I9NwOP5wvqiH/pml8dl
-         G0uw==
+        b=ui3gCki9qHdFr2dcRGgZQBjdUaoiPs2bDiWZ7/8FZ3Fal5XQUBlCL3ojYK4rXfJ0I9
+         lt30ISlChRFY/7jLU3j3l9TCslSBux7EitdGrvlw2DzId0bPrl0PbvVFgOXPKpuFHpu2
+         /E+lGktKpUDobdLYfXNaeduOVFTFaGA/BMHsMfqLQE5Y5cEwxf58UQ1vlNzYLiuB8O95
+         OuQH+YrBpMX9FfsoQs5F5OeGObxGAoHwrKVTsvvYeLW93twmXfClzQ3yIzXCIiOjv1eR
+         npNqgK0tWFZqGCtvNWXmRD503sEx3aAuAr2xo+xsDEMmjUI44P7DuB01mwK9q9MUUTkz
+         knhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:arc-authentication-results;
-        bh=IK9J8ZfdzBUdaTK+yRQfTrwtxZ+4aIB5+Hbl8XqNLEc=;
-        b=ewAs4HzSNN//ZlR4ROcQKOfMOqdYcyGj9KojPAPScjhyQoERHzVrC7YcDAkXoOcxX0
-         K1DUt8oSCFhlYOcVlr6fgjPbAJgiZCUtrdn1DeLF/jM6zVDZj20IRFOdLSmEFGKerlr6
-         RPNup1hUTNyEdwSFTgRK9lP5XCT9fJGdZE35weY8YmiadTQgDIR+Mw/+pDzjFlCKRd1i
-         RlGvuwdHsWUIyjLfGFSLOK00f0HIvMIecvEVtKCg1B8pxieCKSV1GnsVSz21PPNGmFE3
-         tqF5CWLZn6r9wSdImd88E1utPZ1JtKEhoKz9BISC8Zz+X55XPtczTNj2Eqz69FgaIBQU
-         TE+Q==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=7DwFun4ZOHpJbRGfxt72gvyKNoO4lSSSH81LTAhBfdc=;
+        b=rKgz5cEBOeIhYTP3DReW498ujmBgagpypziXAsrraQWbb7VlKT+wnbtA3E11Y/olIc
+         EDKsGDA1qXghyoDYKuYG2BD18ee98HQT1IsX2tc7WzztIOygzFVGOtZvnzlOWgeWFMUI
+         pI5G9Zwpjrg9dvmzEmdhSXhbC+S0gPu8AUqluH9VgN8d4kHipz18iYHB11MGCqSohw6G
+         REMBHShIimk8gbkcHrBJprrm5d7rg8A7NRS586Lnf6RaX54uDsuMnPA77q/KT4bUUKWT
+         Z5u5CNsgRWofqimsuAE+Ky5W+5Sh/HLtL3jk+V7ehFhXRf7PKndmCDVCADMsWbcI1Bw6
+         s/nQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 209.85.215.68 as permitted sender) smtp.mailfrom=vthakkar1994@gmail.com
-Return-Path: <vthakkar1994@gmail.com>
-Received: from mail-lf0-f68.google.com (mail-lf0-f68.google.com. [209.85.215.68])
-        by gmr-mx.google.com with ESMTPS id g206si252498wme.2.2018.03.05.10.04.49
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KP51PMlm;
+       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::236 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <santhameena13@gmail.com>
+Received: from mail-pl0-x236.google.com (mail-pl0-x236.google.com. [2607:f8b0:400e:c01::236])
+        by gmr-mx.google.com with ESMTPS id o6si452697ith.3.2018.03.05.09.31.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 05 Mar 2018 10:04:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 209.85.215.68 as permitted sender) client-ip=209.85.215.68;
+        Mon, 05 Mar 2018 09:31:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::236 as permitted sender) client-ip=2607:f8b0:400e:c01::236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 209.85.215.68 as permitted sender) smtp.mailfrom=vthakkar1994@gmail.com
-Received: by mail-lf0-f68.google.com with SMTP id i80so24505594lfg.5
-        for <outreachy-kernel@googlegroups.com>; Mon, 05 Mar 2018 10:04:49 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KP51PMlm;
+       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::236 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl0-x236.google.com with SMTP id ay8-v6so10050032plb.4
+        for <outreachy-kernel@googlegroups.com>; Mon, 05 Mar 2018 09:31:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=7DwFun4ZOHpJbRGfxt72gvyKNoO4lSSSH81LTAhBfdc=;
+        b=KP51PMlmKphurJa8RcXn2axIi4fu9nwyRRLs3uOBK5+cddM7J9TUnl4kTaquSLU99m
+         ZiMhPYRHFWC5v8dVannlDe8WP1FSnK38jnQJOHO0M+a30qUGOEe6mBwRf7R1yvUlSc/7
+         a0mVAPg+HS2ZVotAOEgcSGtTM8+IfBYSRPbmvmB4xkIwWA/GK/B/PirUINxBiVskq20o
+         w+Ljbk2Ilr/3ulClLtHMlzWaY1l1KXmAVxQg6zqLo5D7jCqu5U4i01gTdOgW6j5V8wSl
+         notp9nXg3rzI1iLq15rkr/6DIltv+4jHF7L3OXNTpOhLzD74rtQklOMSKDq1StsOHxdr
+         1Syg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=IK9J8ZfdzBUdaTK+yRQfTrwtxZ+4aIB5+Hbl8XqNLEc=;
-        b=gTdBJZPpGN6DCFv72yPpF9Tv6pc50EqjUqZUN/mK6L0HEqqQVVl9JGp5T4/2J3Na1d
-         P2U/lxrSTuh8hvYm9aCO2hgSkf+valYd2hSOW8TQojKUK9+L8fupJqO0PI+IrYuz3ARt
-         G4bqTCwq0optXXhVIMZNaSqpqt9d8QfUkXszEKEkanw4JCMyeoiIeIhCSjnj/bKYnHsY
-         7NCSS+dyLDMWBjsoI6XMqtsiedFmaniPVcJttvmESH7PYc3f2eQ6rIcRa8DNYyRMvWdr
-         p7fV1n7OzBRC3mkxMRg59l+AveWLfahHVHn3fDAAMQp2+GO0NpSqxyXXPS6vTDSWaGFi
-         vFwA==
-X-Gm-Message-State: AElRT7Eydp6RrnHWQPKlSLqHWIpAM0r0QIy2TOUHzHXqF4ckaOYBi9ax
-	TebunD+wT92fbuy1wFjmWqiTdtGJ
-X-Received: by 10.25.37.139 with SMTP id l133mr10835556lfl.70.1520273088897;
-        Mon, 05 Mar 2018 10:04:48 -0800 (PST)
-Return-Path: <vthakkar1994@gmail.com>
-Received: from mail-lf0-f45.google.com (mail-lf0-f45.google.com. [209.85.215.45])
-        by smtp.gmail.com with ESMTPSA id r13sm2782600lff.52.2018.03.05.10.04.48
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 05 Mar 2018 10:04:48 -0800 (PST)
-Received: by mail-lf0-f45.google.com with SMTP id i80so24505540lfg.5
-        for <outreachy-kernel@googlegroups.com>; Mon, 05 Mar 2018 10:04:48 -0800 (PST)
-X-Received: by 10.25.152.141 with SMTP id a135mr10265987lfe.93.1520273088527;
- Mon, 05 Mar 2018 10:04:48 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.46.129.212 with HTTP; Mon, 5 Mar 2018 10:04:48 -0800 (PST)
-In-Reply-To: <1520271071-53018-1-git-send-email-santhameena13@gmail.com>
-References: <1520271071-53018-1-git-send-email-santhameena13@gmail.com>
-From: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
-Date: Mon, 5 Mar 2018 23:34:48 +0530
-X-Gmail-Original-Message-ID: <CAK-LDbK6UscgOSGJHMH9VHTiS8+LLvondj80SwyMDkp_fO6JnA@mail.gmail.com>
-Message-ID: <CAK-LDbK6UscgOSGJHMH9VHTiS8+LLvondj80SwyMDkp_fO6JnA@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8188eu: place constant on
- the right side of test
-To: Santha Meena Ramamoorthy <santhameena13@gmail.com>
-Cc: Greg KH <gregkh@linuxfoundation.org>, 
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset="UTF-8"
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=7DwFun4ZOHpJbRGfxt72gvyKNoO4lSSSH81LTAhBfdc=;
+        b=FndhUSD7Ph4dMB+QYSEFuNAyti0jumRV0wUEuljuym6HDohxl+g26v5w28L8HAbrgA
+         shshXznGz+NHfcW01qoVNz9/5423jetWHmNEwOgNBgDfaq4TUf//cy5vaOs8bpqUbhju
+         RyHARCw8gBwT0fb86Q6/TgENoHmNuuSXKg3DqRUoE8u6g6u9ah4JF59hZTkqeLSHQ1w4
+         rpubuIeA6NvAAZI1JYoN3ht5uHn2Cvh23OLQgtOAdwJHPcSY/AXGD4aHp9mbFbM2puHX
+         l074L14Qqmj1bgVuak0kqLqFZsGB6QsC+9wySLVQzjO7dyhRHnB1TXfU8m/HqQjBJGPb
+         QZ/g==
+X-Gm-Message-State: APf1xPA4EFXPTL7iyVV4YdoPk557eWNNkOmz6i5dnnzzqdJEERNvEo75
+	LB8ZGniYRkp+IEmY2l3IF0GReA==
+X-Received: by 2002:a17:902:768b:: with SMTP id m11-v6mr13743254pll.185.1520271104316;
+        Mon, 05 Mar 2018 09:31:44 -0800 (PST)
+Return-Path: <santhameena13@gmail.com>
+Received: from localhost.localdomain (ResNet-21-83.resnet.ucsb.edu. [169.231.21.83])
+        by smtp.gmail.com with ESMTPSA id a14sm24619006pff.75.2018.03.05.09.31.42
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 05 Mar 2018 09:31:43 -0800 (PST)
+From: Santha Meena Ramamoorthy <santhameena13@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com,
+	Santha Meena Ramamoorthy <santhameena13@gmail.com>
+Subject: [PATCH] staging: rtl8188eu: place constant on the right side of test
+Date: Mon,  5 Mar 2018 09:31:11 -0800
+Message-Id: <1520271071-53018-1-git-send-email-santhameena13@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-On Mon, Mar 5, 2018 at 11:01 PM, Santha Meena Ramamoorthy
-<santhameena13@gmail.com> wrote:
-> Place constants on the right side of the test during comparisons to
-> conform to the Linux kernel coding style.
+Place constants on the right side of the test during comparisons to
+conform to the Linux kernel coding style.
 
-Hi Santha,
+Signed-off-by: Santha Meena Ramamoorthy <santhameena13@gmail.com>
+---
+ drivers/staging/rtl8188eu/hal/rtl8188e_cmd.c      | 2 +-
+ drivers/staging/rtl8188eu/hal/rtl8188e_dm.c       | 2 +-
+ drivers/staging/rtl8188eu/hal/rtl8188e_hal_init.c | 8 ++++----
+ drivers/staging/rtl8188eu/hal/rtl8188eu_xmit.c    | 2 +-
+ 4 files changed, 7 insertions(+), 7 deletions(-)
 
-I wonder how did you find this issue? If any tool was used, then
-as you have done in other patches it would be good to add 'Issue
-found using X'.
+diff --git a/drivers/staging/rtl8188eu/hal/rtl8188e_cmd.c b/drivers/staging/rtl8188eu/hal/rtl8188e_cmd.c
+index 1ab2e55..8d242ad 100644
+--- a/drivers/staging/rtl8188eu/hal/rtl8188e_cmd.c
++++ b/drivers/staging/rtl8188eu/hal/rtl8188e_cmd.c
+@@ -36,7 +36,7 @@ static u8 _is_fw_read_cmd_down(struct adapter *adapt, u8 msgbox_num)
+ 
+ 	do {
+ 		valid = usb_read8(adapt, REG_HMETFR) & BIT(msgbox_num);
+-		if (0 == valid)
++		if (valid == 0)
+ 			read_down = true;
+ 	} while ((!read_down) && (retry_cnts--));
+ 
+diff --git a/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c b/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c
+index d04b7fb..ff227c8 100644
+--- a/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c
++++ b/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c
+@@ -182,7 +182,7 @@ void rtw_hal_dm_init(struct adapter *Adapter)
+ /*  Compare RSSI for deciding antenna */
+ void rtw_hal_antdiv_rssi_compared(struct adapter *Adapter, struct wlan_bssid_ex *dst, struct wlan_bssid_ex *src)
+ {
+-	if (0 != Adapter->HalData->AntDivCfg) {
++	if (Adapter->HalData->AntDivCfg != 0) {
+ 		/* select optimum_antenna for before linked =>For antenna diversity */
+ 		if (dst->Rssi >=  src->Rssi) {/* keep org parameter */
+ 			src->Rssi = dst->Rssi;
+diff --git a/drivers/staging/rtl8188eu/hal/rtl8188e_hal_init.c b/drivers/staging/rtl8188eu/hal/rtl8188e_hal_init.c
+index 3673f57..54ede4b 100644
+--- a/drivers/staging/rtl8188eu/hal/rtl8188e_hal_init.c
++++ b/drivers/staging/rtl8188eu/hal/rtl8188e_hal_init.c
+@@ -221,13 +221,13 @@ s32 InitLLTTable(struct adapter *padapter, u8 txpktbuf_bndy)
+ 	} else {
+ 		for (i = 0; i < (txpktbuf_bndy - 1); i++) {
+ 			status = _LLTWrite(padapter, i, i + 1);
+-			if (_SUCCESS != status)
++			if (status != _SUCCESS)
+ 				return status;
+ 		}
+ 
+ 		/*  end of list */
+ 		status = _LLTWrite(padapter, (txpktbuf_bndy - 1), 0xFF);
+-		if (_SUCCESS != status)
++		if (status != _SUCCESS)
+ 			return status;
+ 
+ 		/*  Make the other pages as ring buffer */
+@@ -235,13 +235,13 @@ s32 InitLLTTable(struct adapter *padapter, u8 txpktbuf_bndy)
+ 		/*  Otherwise used as local loopback buffer. */
+ 		for (i = txpktbuf_bndy; i < Last_Entry_Of_TxPktBuf; i++) {
+ 			status = _LLTWrite(padapter, i, (i + 1));
+-			if (_SUCCESS != status)
++			if (status != _SUCCESS)
+ 				return status;
+ 		}
+ 
+ 		/*  Let last entry point to the start entry of ring buffer */
+ 		status = _LLTWrite(padapter, Last_Entry_Of_TxPktBuf, txpktbuf_bndy);
+-		if (_SUCCESS != status) {
++		if (status != _SUCCESS) {
+ 			return status;
+ 		}
+ 	}
+diff --git a/drivers/staging/rtl8188eu/hal/rtl8188eu_xmit.c b/drivers/staging/rtl8188eu/hal/rtl8188eu_xmit.c
+index a9912b6..4f0f512 100644
+--- a/drivers/staging/rtl8188eu/hal/rtl8188eu_xmit.c
++++ b/drivers/staging/rtl8188eu/hal/rtl8188eu_xmit.c
+@@ -552,7 +552,7 @@ s32 rtl8188eu_xmitframe_complete(struct adapter *adapt, struct xmit_priv *pxmitp
+ 		pbuf = round_up(pbuf_tail, 8);
+ 
+ 		pfirstframe->agg_num++;
+-		if (MAX_TX_AGG_PACKET_NUMBER == pfirstframe->agg_num)
++		if (pfirstframe->agg_num ==  MAX_TX_AGG_PACKET_NUMBER)
+ 			break;
+ 
+ 		if (pbuf < bulkptr) {
+-- 
+2.7.4
 
-> Signed-off-by: Santha Meena Ramamoorthy <santhameena13@gmail.com>
-> ---
->  drivers/staging/rtl8188eu/hal/rtl8188e_cmd.c      | 2 +-
->  drivers/staging/rtl8188eu/hal/rtl8188e_dm.c       | 2 +-
->  drivers/staging/rtl8188eu/hal/rtl8188e_hal_init.c | 8 ++++----
->  drivers/staging/rtl8188eu/hal/rtl8188eu_xmit.c    | 2 +-
->  4 files changed, 7 insertions(+), 7 deletions(-)
->
-> diff --git a/drivers/staging/rtl8188eu/hal/rtl8188e_cmd.c b/drivers/staging/rtl8188eu/hal/rtl8188e_cmd.c
-> index 1ab2e55..8d242ad 100644
-> --- a/drivers/staging/rtl8188eu/hal/rtl8188e_cmd.c
-> +++ b/drivers/staging/rtl8188eu/hal/rtl8188e_cmd.c
-> @@ -36,7 +36,7 @@ static u8 _is_fw_read_cmd_down(struct adapter *adapt, u8 msgbox_num)
->
->         do {
->                 valid = usb_read8(adapt, REG_HMETFR) & BIT(msgbox_num);
-> -               if (0 == valid)
-> +               if (valid == 0)
->                         read_down = true;
->         } while ((!read_down) && (retry_cnts--));
->
-> diff --git a/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c b/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c
-> index d04b7fb..ff227c8 100644
-> --- a/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c
-> +++ b/drivers/staging/rtl8188eu/hal/rtl8188e_dm.c
-> @@ -182,7 +182,7 @@ void rtw_hal_dm_init(struct adapter *Adapter)
->  /*  Compare RSSI for deciding antenna */
->  void rtw_hal_antdiv_rssi_compared(struct adapter *Adapter, struct wlan_bssid_ex *dst, struct wlan_bssid_ex *src)
->  {
-> -       if (0 != Adapter->HalData->AntDivCfg) {
-> +       if (Adapter->HalData->AntDivCfg != 0) {
->                 /* select optimum_antenna for before linked =>For antenna diversity */
->                 if (dst->Rssi >=  src->Rssi) {/* keep org parameter */
->                         src->Rssi = dst->Rssi;
-> diff --git a/drivers/staging/rtl8188eu/hal/rtl8188e_hal_init.c b/drivers/staging/rtl8188eu/hal/rtl8188e_hal_init.c
-> index 3673f57..54ede4b 100644
-> --- a/drivers/staging/rtl8188eu/hal/rtl8188e_hal_init.c
-> +++ b/drivers/staging/rtl8188eu/hal/rtl8188e_hal_init.c
-> @@ -221,13 +221,13 @@ s32 InitLLTTable(struct adapter *padapter, u8 txpktbuf_bndy)
->         } else {
->                 for (i = 0; i < (txpktbuf_bndy - 1); i++) {
->                         status = _LLTWrite(padapter, i, i + 1);
-> -                       if (_SUCCESS != status)
-> +                       if (status != _SUCCESS)
->                                 return status;
->                 }
->
->                 /*  end of list */
->                 status = _LLTWrite(padapter, (txpktbuf_bndy - 1), 0xFF);
-> -               if (_SUCCESS != status)
-> +               if (status != _SUCCESS)
->                         return status;
->
->                 /*  Make the other pages as ring buffer */
-> @@ -235,13 +235,13 @@ s32 InitLLTTable(struct adapter *padapter, u8 txpktbuf_bndy)
->                 /*  Otherwise used as local loopback buffer. */
->                 for (i = txpktbuf_bndy; i < Last_Entry_Of_TxPktBuf; i++) {
->                         status = _LLTWrite(padapter, i, (i + 1));
-> -                       if (_SUCCESS != status)
-> +                       if (status != _SUCCESS)
->                                 return status;
->                 }
->
->                 /*  Let last entry point to the start entry of ring buffer */
->                 status = _LLTWrite(padapter, Last_Entry_Of_TxPktBuf, txpktbuf_bndy);
-> -               if (_SUCCESS != status) {
-> +               if (status != _SUCCESS) {
->                         return status;
->                 }
->         }
-> diff --git a/drivers/staging/rtl8188eu/hal/rtl8188eu_xmit.c b/drivers/staging/rtl8188eu/hal/rtl8188eu_xmit.c
-> index a9912b6..4f0f512 100644
-> --- a/drivers/staging/rtl8188eu/hal/rtl8188eu_xmit.c
-> +++ b/drivers/staging/rtl8188eu/hal/rtl8188eu_xmit.c
-> @@ -552,7 +552,7 @@ s32 rtl8188eu_xmitframe_complete(struct adapter *adapt, struct xmit_priv *pxmitp
->                 pbuf = round_up(pbuf_tail, 8);
->
->                 pfirstframe->agg_num++;
-> -               if (MAX_TX_AGG_PACKET_NUMBER == pfirstframe->agg_num)
-> +               if (pfirstframe->agg_num ==  MAX_TX_AGG_PACKET_NUMBER)
->                         break;
->
->                 if (pbuf < bulkptr) {
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1520271071-53018-1-git-send-email-santhameena13%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
 
