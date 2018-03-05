@@ -1,115 +1,115 @@
 X-GM-THRID: 6528705081880084480
-X-Received: by 10.157.69.155 with SMTP id x27mr9454292ote.103.1520437733442;
-        Wed, 07 Mar 2018 07:48:53 -0800 (PST)
+X-Received: by 10.55.163.77 with SMTP id m74mr10388346qke.29.1520231722630;
+        Sun, 04 Mar 2018 22:35:22 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.12.185 with SMTP id b54ls1318381otb.0.gmail; Wed, 07 Mar
- 2018 07:48:52 -0800 (PST)
-X-Received: by 10.157.5.226 with SMTP id 89mr2805726otd.12.1520437732599;
-        Wed, 07 Mar 2018 07:48:52 -0800 (PST)
-Received: by 10.202.85.78 with SMTP id j75msoib;
-        Wed, 7 Mar 2018 07:39:04 -0800 (PST)
-X-Google-Smtp-Source: AG47ELu3iCSJPLlWrYev774ox1c5qqj+WU14xRFyPE76jEHIMexgmF7cwwZ/TCzs4SAa2mn8IJV3
-X-Received: by 10.36.47.73 with SMTP id j70mr14238449itj.21.1520437143743;
-        Wed, 07 Mar 2018 07:39:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520437143; cv=none;
+Received: by 10.200.40.247 with SMTP id j52ls9106308qtj.9.gmail; Sun, 04 Mar
+ 2018 22:35:21 -0800 (PST)
+X-Received: by 10.200.51.85 with SMTP id u21mr10436049qta.12.1520231721271;
+        Sun, 04 Mar 2018 22:35:21 -0800 (PST)
+Received: by 10.55.73.135 with SMTP id w129msqka;
+        Sun, 4 Mar 2018 17:57:18 -0800 (PST)
+X-Google-Smtp-Source: AG47ELvWQJhPoyP9ROAt4q170duVRH0LM123XyzBlp2Rl+3HbBMP+dT82p7H7ChcNUY3GmeE+JW7
+X-Received: by 10.200.50.204 with SMTP id a12mr9732147qtb.39.1520215037824;
+        Sun, 04 Mar 2018 17:57:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520215037; cv=none;
         d=google.com; s=arc-20160816;
-        b=pWk8LXzq8ML35ysXjQkMyVnmxN0BlODdR5Y+pyCE07K7TMIUNOnEwjJediMYSEETID
-         97Gc+kyDzQJ5e0PeALLQrUob9Q7EHwXvHQOCxrsI0Q8ZAYnvZdfS2ftMRX1I3X8+mdOx
-         EcnscwGfzoYAoerUb0EEbkLsQFAm6y0Qe8dz7TfJkHmpkqsF8jV2m78SIjIHx+ebpe+z
-         1Ea4IX5Inq4B/EMPIPL2PR1ElpyFsmyHVm5TihY1IiwEqwyRwdQnqxNhTnfl7GE+Hw0u
-         ZGL7smUhSDJ39I8IvrAF3s8yOmQtaLIbHWXGiuwlPz1f1rl8oRcx4mt7pF0t6aTigLUm
-         BO9w==
+        b=aSq1+5w8BqT4k2OmxZH7mEbxtKmDQbCNeEiyE6anm75FrxpkLkmCFO++r2L74w9IGI
+         6Npjg7uNOx1+aiCr8rAozpd0O8K7asFtyxVH5lJs0JzOmCWmSOdSZrUz2ZQdimeCchrn
+         iv8FhgkZ40gjNHut/gfhVY5hC3uRDzDkkQbYWfXn+RLXTjdTB6c36+yWpMyDCxsJAMKA
+         0c6V8QHOlcTwOFoXs9s/aUBNdD+Zx3n/kASbiRVGe0nonAQCpl82fIoSmfLG/IRQq7jI
+         VbI2a6o4rATg/7AEDUSJBXs18J/4z5YT6rzDEk2aIP4nUSd/el8qYGYl0/KAYWvZnpqA
+         Bi+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to:from
-         :subject:cc:to:message-id:date:arc-authentication-results;
-        bh=W2YWrcSLtglJTrZXuQgJQbCZcOulBOq1TUFOr/doYuk=;
-        b=FIq+W9ZwpAeeCOALlH1Q8kO1WkwgGTS57Q0BDMq15dPZYrHAw0Yn+vYjB/2i592fSZ
-         5iud7ASjzwpyhO1vEnaiy/87lC0Tg7FT6FqiSG9DdGYp47QjaYrKG482mLWJWsnb8Udv
-         weX6HsyCBpH7TwfANTqRWiwRXDYTM9EPDtZk/cJ3Pnjf8/MkeOog/uyJbeIuV9KPYqeM
-         aQOWBKWrIRuC/QeKHM0sVIJYFaHBb94y0M3RDKwwq0Dqrr5tUrxwOCIKpUZUHf+RqIPx
-         UJsFaJe9VgJ6PsibAP1t0tdltrdJPLxJwGt+2ScSni/Ce/9afvJUUd2/X5vP/T8x4iNO
-         CpZQ==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature
+         :arc-authentication-results;
+        bh=BU7RsmZupkUe75oebmaixL8G1y3csUrVmnPrFnpZPao=;
+        b=IL/ZFaoIRhjAWGvf7Ig5OX2Z0zclJtPJAU8BusiDvmdUuIbbDDJbLcvyskzeZVT8M2
+         aKOiGyNWPxmPoWoq9rlbrjykHWzHGCisMJddD13ejaQ3Qz/iNEG/SKuOjAsViqb++rqX
+         eNYU8XEPeusDaBr6j/Q/UZBiwZ8Qu49JLO3nQ3vcBWNDwG+NI/pCzz0uk+YYVhJZmvEr
+         JTk7zkUWonm/E6OIYOU1h3Gde3Ws0UKDr/xWbVq/nQbiXJ8GJsklYLLxP55Y2rKN3rur
+         K6hmkGt7SN70HJh+kZLDpEuftgm3j3D9KlOqIfiKayPus08Dd7GP//sJce30ppSWtmSK
+         Y+Ww==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 184.105.139.130 is neither permitted nor denied by best guess record for domain of davem@davemloft.net) smtp.mailfrom=davem@davemloft.net
-Return-Path: <davem@davemloft.net>
-Received: from shards.monkeyblade.net (shards.monkeyblade.net. [184.105.139.130])
-        by gmr-mx.google.com with ESMTPS id o6si790391ith.3.2018.03.07.07.39.03
+       dkim=pass header.i=@netronome-com.20150623.gappssmtp.com header.s=20150623 header.b=18TOPH3+;
+       spf=neutral (google.com: 2607:f8b0:400d:c09::232 is neither permitted nor denied by best guess record for domain of jakub.kicinski@netronome.com) smtp.mailfrom=jakub.kicinski@netronome.com
+Return-Path: <jakub.kicinski@netronome.com>
+Received: from mail-qk0-x232.google.com (mail-qk0-x232.google.com. [2607:f8b0:400d:c09::232])
+        by gmr-mx.google.com with ESMTPS id f40si852201qta.5.2018.03.04.17.57.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 07 Mar 2018 07:39:03 -0800 (PST)
-Received-SPF: neutral (google.com: 184.105.139.130 is neither permitted nor denied by best guess record for domain of davem@davemloft.net) client-ip=184.105.139.130;
+        Sun, 04 Mar 2018 17:57:17 -0800 (PST)
+Received-SPF: neutral (google.com: 2607:f8b0:400d:c09::232 is neither permitted nor denied by best guess record for domain of jakub.kicinski@netronome.com) client-ip=2607:f8b0:400d:c09::232;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 184.105.139.130 is neither permitted nor denied by best guess record for domain of davem@davemloft.net) smtp.mailfrom=davem@davemloft.net
-Received: from localhost (67.110.78.66.ptr.us.xo.net [67.110.78.66])
-	(using TLSv1 with cipher AES256-SHA (256/256 bits))
-	(Client did not present a certificate)
-	(Authenticated sender: davem-davemloft)
-	by shards.monkeyblade.net (Postfix) with ESMTPSA id 1A16B121807B4;
-	Wed,  7 Mar 2018 07:39:02 -0800 (PST)
-Date: Wed, 07 Mar 2018 10:39:01 -0500 (EST)
-Message-Id: <20180307.103901.1771176275743006915.davem@davemloft.net>
-To: arushisinghal19971997@gmail.com
-Cc: jdmason@kudzu.us, jakub.kicinski@netronome.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, oss-drivers@netronome.com,
- outreachy-kernel@googlegroups.com
+       dkim=pass header.i=@netronome-com.20150623.gappssmtp.com header.s=20150623 header.b=18TOPH3+;
+       spf=neutral (google.com: 2607:f8b0:400d:c09::232 is neither permitted nor denied by best guess record for domain of jakub.kicinski@netronome.com) smtp.mailfrom=jakub.kicinski@netronome.com
+Received: by mail-qk0-x232.google.com with SMTP id w142so18840776qkb.8
+        for <outreachy-kernel@googlegroups.com>; Sun, 04 Mar 2018 17:57:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=netronome-com.20150623.gappssmtp.com; s=20150623;
+        h=date:from:to:cc:subject:message-id:in-reply-to:references
+         :organization:mime-version:content-transfer-encoding;
+        bh=BU7RsmZupkUe75oebmaixL8G1y3csUrVmnPrFnpZPao=;
+        b=18TOPH3+9EKU2bERLnaxQjLkaC3g9Yw0y0mjITxi0ZaPrgoKFEp38v00lkgTantG29
+         03U/pTuNtgsZQLABH+8WfVdzYmrd66GKG1kMa5yLsmS8BXMuC4VzjyWG/FTSh/eocFtd
+         oX78F4RqXXaUTajPpjAIkpU8H3AScFrLQWEfdPOPT1pAbZ6J772o8rF+xEwpJN60w87P
+         GpQPIi2LgJL5yyj/xlpH7FbZfDI0m/Ro1iHdSPxhFBVGAzEeyOoESdnceJbmG8/lyyJ8
+         d0QlLfkG0FvwppBUZHx9Y+gLK6PpjtjpvqHpP1A3HYLjBg51tjHRT6OIXUW4EaK97ptR
+         t8Pw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+         :references:organization:mime-version:content-transfer-encoding;
+        bh=BU7RsmZupkUe75oebmaixL8G1y3csUrVmnPrFnpZPao=;
+        b=E4ac6t838Cm7p8DC7MLc68Jo1biDkMTvY3515I7g1gES/qnjFpo+FlSc+bBn2yL5qN
+         uOfrWRVYWDWfyC5bxMR9Ht1QwEv28dJcyU8XtXIre56gFQdCFzL6ayaKN3O90WpgKLFl
+         9LPOkK+QhiW+MfjhSuN6SP/k9+b3BNfvP0xwQAetCp38TxfMWk+1APJ2cDzshumgQiVG
+         vmXHuargX8seEiBLiu+QBUWH/YqISNEsCln/gPpRPsIntIg3RFs/J9vZP8PRKtJQZNxb
+         KkYffmQerwZhLY//0Ur75yOGk57VZS/E29wJWNeHFm1ndwtPyEicjr5cjbUZAG+akD6T
+         NFtg==
+X-Gm-Message-State: AElRT7H1+pcN2GcyefzQa6E6FqJbIRJIvZ0+W0iSe8FNsDxLWrIDedka
+	fK/DeHKkdyr8GAuZir+0E1nZcn9V
+X-Received: by 10.55.136.129 with SMTP id k123mr18992917qkd.296.1520215037608;
+        Sun, 04 Mar 2018 17:57:17 -0800 (PST)
+Return-Path: <jakub.kicinski@netronome.com>
+Received: from cakuba.netronome.com ([75.53.12.129])
+        by smtp.gmail.com with ESMTPSA id p25sm8714788qte.29.2018.03.04.17.57.16
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 04 Mar 2018 17:57:17 -0800 (PST)
+Date: Sun, 4 Mar 2018 17:57:13 -0800
+From: Jakub Kicinski <jakub.kicinski@netronome.com>
+To: Arushi Singhal <arushisinghal19971997@gmail.com>
+Cc: jdmason@kudzu.us, netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ oss-drivers@netronome.com, outreachy-kernel@googlegroups.com
 Subject: Re: [PATCH v2] net: ethernet: Drop unnecessary continue
-From: David Miller <davem@davemloft.net>
+Message-ID: <20180304175713.25a44ac6@cakuba.netronome.com>
 In-Reply-To: <20180303161456.GA20194@seema-Inspiron-15-3567>
 References: <20180303161456.GA20194@seema-Inspiron-15-3567>
-X-Mailer: Mew version 6.7 on Emacs 25.3 / Mule 6.0 (HANACHIRUSATO)
-Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
+Organization: Netronome Systems, Ltd.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.5.12 (shards.monkeyblade.net [149.20.54.216]); Wed, 07 Mar 2018 07:39:02 -0800 (PST)
 
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-Date: Sat, 3 Mar 2018 21:44:56 +0530
+On Sat, 3 Mar 2018 21:44:56 +0530, Arushi Singhal wrote:
+> diff --git a/drivers/net/ethernet/netronome/nfp/nfp_net_main.c b/drivers/net/ethernet/netronome/nfp/nfp_net_main.c
+> index 15fa47f..5cd4f3f 100644
+> --- a/drivers/net/ethernet/netronome/nfp/nfp_net_main.c
+> +++ b/drivers/net/ethernet/netronome/nfp/nfp_net_main.c
+> @@ -258,10 +258,8 @@ nfp_net_pf_alloc_vnics(struct nfp_pf *pf, void __iomem *ctrl_bar,
+>  		ctrl_bar += NFP_PF_CSR_SLICE_SIZE;
+>  
+>  		/* Kill the vNIC if app init marked it as invalid */
+> -		if (nn->port && nn->port->type == NFP_PORT_INVALID) {
+> +		if (nn->port && nn->port->type == NFP_PORT_INVALID)
+>  			nfp_net_pf_free_vnic(pf, nn);
+> -			continue;
+> -		}
 
-> Continue at the bottom of a loop are removed.
-> Issue found using drop_continue.cocci Coccinelle script.
-> 
-> Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
-> ---
-> Changes in v2:
-> - Braces is dropped from if with single statement.
+This is an error handling path so the continue makes sense here to
+indicate the processing can't ever fall through if more statements are
+ever added to the loop.  But OK.
 
-Sorry there is no way I am applying this.
-
-Just blindly removing continue statements that some static checker
-or compiler warning mentions is completely unacceptable.
-
-Actually _LOOK_ at this code:
-
->  		if(cards[i].vendor_id) {
->  			for(j=0;j<3;j++)
-> -				if(inb(ioaddr+cards[i].addr_offset+j) != cards[i].vendor_id[j]) {
-> +				if(inb(ioaddr+cards[i].addr_offset+j) != cards[i].vendor_id[j])
->  					release_region(ioaddr, cards[i].total_size);
-> -					continue;
-> -			  }
->  		}
-
-The extraneous continue statement is the _least_ of the problems here.
-
-This code, if the if() statement triggers, will release the ioaddr
-region and then _CONTINUE_ the for(j) loop, and try to access the
-registers using the same 'ioaddr' again.
-
-That's actually a _REAL_ bug, and you're making it seem like
-the behavior is intentional by editing it like this.
-
-And the bug probably exists because this entire sequence has
-misaligned closing curly braces.  It makes it look like
-the continue is for the outer loop, which would be fine.
-
-But it's not.  It's for the inner loop, and this causes the "use
-ioaddr after releasing it" bug.
-
-Please do not submit patches like this one, it makes for a lot of
-wasted auditing and review for people.  The onus is on you to read
-and understand the code you are editing before submitting your
-changes.
-
-Thank you.
-
+>  	}
+>  
+>  	if (list_empty(&pf->vnics))
 
