@@ -1,152 +1,113 @@
-X-GM-THRID: 6255545204724465664
-X-Received: by 10.182.200.234 with SMTP id jv10mr487126obc.39.1456482616881;
-        Fri, 26 Feb 2016 02:30:16 -0800 (PST)
+X-GM-THRID: 6528703529529376768
+X-Received: by 10.200.38.208 with SMTP id 16mr15460896qtp.8.1520412031504;
+        Wed, 07 Mar 2018 00:40:31 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.44.162 with SMTP id f2ls476598obm.86.gmail; Fri, 26 Feb
- 2016 02:30:16 -0800 (PST)
-X-Received: by 10.182.91.9 with SMTP id ca9mr518442obb.7.1456482616537;
-        Fri, 26 Feb 2016 02:30:16 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x22f.google.com (mail-pa0-x22f.google.com. [2607:f8b0:400e:c03::22f])
-        by gmr-mx.google.com with ESMTPS id u66si1965422pfa.2.2016.02.26.02.30.16
+Received: by 10.200.20.141 with SMTP id l13ls704826qtj.8.gmail; Wed, 07 Mar
+ 2018 00:40:30 -0800 (PST)
+X-Received: by 10.200.57.105 with SMTP id t38mr15855018qtb.22.1520412030939;
+        Wed, 07 Mar 2018 00:40:30 -0800 (PST)
+Received: by 10.55.195.150 with SMTP id r22msqkl;
+        Tue, 6 Mar 2018 15:35:09 -0800 (PST)
+X-Google-Smtp-Source: AG47ELsIRiXFH4J/jiE2Trb1AgeqCQvxAbixDG6Yh7hWHv+jisKJz6GKe9QF3xi0vkuOEGUzTlSm
+X-Received: by 10.28.144.17 with SMTP id s17mr368376wmd.29.1520379309240;
+        Tue, 06 Mar 2018 15:35:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520379309; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Ye9q59ZcS1vOA01xvOhucr3Bq2yRUZToVQj4k+adpCjo/Idg0Ybu5mCejlnOGTI+J9
+         N/Xz0JvuE+v46iYNj8TJV4UuGp6BehZJJjEhkDP/eGcTYN7fW6pcBLQG/9i8fBJjrvdW
+         aAXObWEF6fGLXmVObw7Wstl6G7Arn/eCRTuDmaPSiOCdYxL+96a9MGohud022smrIUxA
+         vejZL5SRgxiXTaVjVncQx6qX6xx1dY9YizM3qy7TeXykJnM5mVVWh02DevTYEU+2OShF
+         1RTzyI9awsBaoWawWAfB1tNgT4RhJIJWyN1GF/sIUkDALGHvCXP0RA2u5lY33V3k4Aqr
+         x6Fw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature
+         :arc-authentication-results;
+        bh=7kbE0xUoEbyzRI2viRsSR22r9eevLw94V+peLncbY1I=;
+        b=bsXL05Rq0PHzUjsMmzwZauIUTn/IFUADUM0shpmkwGaSspFbPtfKTigrEoOItlSz1J
+         lnyrdkyGjqsTk0GYaWYrGtV7WXCkgsuTH2lb+QSGEwVCpRMUtqJfldX/oObb7KoSBPW/
+         2Kd1hH3/+6E39JSVGjTLMFaZyYv8MRe1eHSWaf4O8ZR+ktftSCEfvs1yV9ZF1G9wB2Ys
+         +VuVN695+WXQYhydInI1el7s29WEM9/qRKfBA82gkRK6h00bzHBIdptmm3i4gcFCHXdH
+         sHnzwrLqV8KFjSaAGaAC6etrphUI9Q4zFhVxpIYenATHStZFjyhO4tXdfCemFYxFtORH
+         iXWg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@ziepe.ca header.s=google header.b=QG9ETXz9;
+       spf=pass (google.com: domain of jgg@ziepe.ca designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=jgg@ziepe.ca
+Return-Path: <jgg@ziepe.ca>
+Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
+        by gmr-mx.google.com with ESMTPS id 51si871981wrw.0.2018.03.06.15.35.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Feb 2016 02:30:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) client-ip=2607:f8b0:400e:c03::22f;
+        Tue, 06 Mar 2018 15:35:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of jgg@ziepe.ca designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::22f as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22f.google.com with SMTP id ho8so50566072pac.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 26 Feb 2016 02:30:16 -0800 (PST)
+       dkim=pass header.i=@ziepe.ca header.s=google header.b=QG9ETXz9;
+       spf=pass (google.com: domain of jgg@ziepe.ca designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=jgg@ziepe.ca
+Received: by mail-wm0-x241.google.com with SMTP id w128so1429439wmw.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 06 Mar 2018 15:35:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=wc2Rd683K4d8Bm6MYeuC5eGoJZ9ttmktUYjRadMvML8=;
-        b=S6V5ArLmH6W+uqDpJ5uHMtaBoB13dQuQSq9vY0OD1AgkxkVB5GVbH9yDmNywXyuoeh
-         11eqFCEIkLkYU13fBn0xKHEcdk9GwdvPfvnwTcoFCQ7AzEzzGkIniI4a0EGzbrlTycl6
-         A4T1QqAof74I3K9d6+xFWU3fjCMiwlQvcWLLg4U2Dt/A5kYz7b1Ld0wvRJ8Iq8skBjlJ
-         r9ZIeDiyK5yiSnpLQQyrJVpF++GB5uJXNdRBV84DkinMkXsDfMMAp4syQktBRzsBaog7
-         yrI2on3exEJXCBfreXffJmstXP1pye2QsQe4sUr7wZCToxzp29Pfc0pV6cZdYcCTWlt0
-         OPwg==
+        d=ziepe.ca; s=google;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=7kbE0xUoEbyzRI2viRsSR22r9eevLw94V+peLncbY1I=;
+        b=QG9ETXz9wdAOI0e+PqDmMSvSwrWpKKuzUS/eBcvvjzHvZ/1XVTyO81/9qYBIZ+malG
+         edg4hgfMdRH2b2a57gwOVkpa5EzfdvPqlJmalRtA/O5TeTacCbwoqIrKOi6wtwbAZnR4
+         2sTLevZO3HD1IFM3Ef2zyQqMspXW02oF5ezbsMJryUF/NQsNFpkX9PKZ1t5vWPPMmzMr
+         hQJAzccxyqmiQh6GHEIUfZGyF9vhFWpKLiJX+5/D1WZEOvJHZraMnIxnecke59gPIIO+
+         PI6GfH2eXv9BxEzoaxG/eWyYis0zKzHlcvPj9FHlpFG+aJA3Jq3vJOeW5IqYTIZtZx2z
+         GHEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=wc2Rd683K4d8Bm6MYeuC5eGoJZ9ttmktUYjRadMvML8=;
-        b=M1ervCmKbk55QRAKMjeHasmIu+3X9bxBQr8K0Wm00RT6UZo2A/AD7gT1j0CF1PbIHJ
-         6JZPA0cTEDMf8ZY+drFnGm71CYXtpMEuNDnBsLRJmm9+Hq/ghpr/eWItVDHR3owirKjh
-         UsUPR/YvUsGIL/l0fimeMH1xI6ZGkfveN8lD4e8dYumgtgezGRRUKdEgxijiGomuDnb8
-         gLPGAY0vTTX7WhFp05A+aHBlbKO6SJ9HHTkPg0DoBsC3Io7FzDdQVyC8cCG89iolPDh+
-         qI/TVDmLjYzgdS3LWI+hzv7+/hFJ0Du04uTQTfG9xPf8Hsv8ASSjePY5mLQB8Lo+S/Cy
-         JCdg==
-X-Gm-Message-State: AD7BkJIeyh4wCHEbeLZEG+br46oK32bIQF+TzB73LQbRNYwEdQHVVChPnySLrEzviLniow==
-X-Received: by 10.66.124.170 with SMTP id mj10mr978759pab.92.1456482616308;
-        Fri, 26 Feb 2016 02:30:16 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.69.179.114])
-        by smtp.gmail.com with ESMTPSA id b63sm18348294pfj.25.2016.02.26.02.30.14
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Fri, 26 Feb 2016 02:30:15 -0800 (PST)
-Date: Fri, 26 Feb 2016 16:00:12 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: tj@kernel.org
-Subject: [PATCH] staging: unisys: visorbus: visorchipset: Remove
- create_singlethread_workqueue()
-Message-ID: <20160226103012.GA13970@amitoj-Inspiron-3542>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=7kbE0xUoEbyzRI2viRsSR22r9eevLw94V+peLncbY1I=;
+        b=Favym6wCpFm01dj2ouSy5eD67N/MxVPQm01ewAB61qy4Jj6IJZqVM0io1E9fqh342b
+         /YecQKB5ng31KXM3d6T7r9hmJYtayIlELbJTR0WQ2LGQYto23dWq4OJmk0hrtZ0JRqGa
+         kZCpVtxK2Iv0VZYHcj2IZb5+ZnBZDJgyhBmL+Bq9us9bOFZP0y+WXVG5Ji5+f350WmXB
+         hsuqetYTCqN2ilC1Ak76CU5iIjN1WAzXp7rcE0rWm7JhxLA7m4fAbTacSDECuzRl+36T
+         HPuhbxit1oeBhinqqQWbqyfFYVbgBcLU2i8oAlXWvXzjZVi9HIPUOLuEWF2/zRrCTVjO
+         oyew==
+X-Gm-Message-State: AElRT7HoonkeHqni1tlAPWmG4WJ8bsnKQwqa26UWmYanYzxbtIopPz8/
+	iXsr3VLqdWDIh0fQrLPDtbqs6w==
+X-Received: by 10.28.84.19 with SMTP id i19mr11790947wmb.7.1520379308922;
+        Tue, 06 Mar 2018 15:35:08 -0800 (PST)
+Return-Path: <jgg@ziepe.ca>
+Received: from ziepe.ca (S010614cc2056d97f.ed.shawcable.net. [70.74.179.152])
+        by smtp.gmail.com with ESMTPSA id j6sm986055wmg.14.2018.03.06.15.35.07
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 06 Mar 2018 15:35:08 -0800 (PST)
+Received: from jgg by mlx.ziepe.ca with local (Exim 4.86_2)
+	(envelope-from <jgg@ziepe.ca>)
+	id 1etM6r-0002Bq-6n; Tue, 06 Mar 2018 16:35:05 -0700
+Date: Tue, 6 Mar 2018 16:35:05 -0700
+From: Jason Gunthorpe <jgg@ziepe.ca>
+To: Arushi <arushisinghal19971997@gmail.com>
+Cc: dennis.dalessandro@intel.com,
+	Mike Marciniszyn <mike.marciniszyn@intel.com>,
+	Doug Ledford <dledford@redhat.com>, linux-rdma@vger.kernel.org,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v2] infiniband: hw: Drop unnecessary continue
+Message-ID: <20180306233505.GD8328@ziepe.ca>
+References: <20180303162457.GA21730@seema-Inspiron-15-3567>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20180303162457.GA21730@seema-Inspiron-15-3567>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-With concurrency managed workqueues, use of dedicated workqueues
-can be replaced by using system_wq. Drop periodic_controlvm_workqueue 
-by using system_wq.
+On Sat, Mar 03, 2018 at 09:54:57PM +0530, Arushi wrote:
+> Continue at the bottom of a loop are removed.
+> Issue found using drop_continue.cocci Coccinelle script.
+> 
+> Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+> Changes in v2:
+> - Braces is dropped from if with single statement.
+> 
+>  drivers/infiniband/hw/qib/qib_init.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
 
-Since there is only one work item periodic_controlvm_work and different 
-periodic_controlvm_works do not need to be ordered, increase of concurrency 
-level by switching to system_wq should not break anything.
+applied to for-next
 
-cancel_work_sync() is used to ensure that work is not pending or
-executing on any CPU.
-
-Lastly, since all devices are suspended, which shutdowns the work item
-before the driver can be unregistered, it is guaranteed that no work
-item is pending or executing by the time exit path runs.
-
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/unisys/visorbus/visorchipset.c | 23 ++++-------------------
- 1 file changed, 4 insertions(+), 19 deletions(-)
-
-diff --git a/drivers/staging/unisys/visorbus/visorchipset.c b/drivers/staging/unisys/visorbus/visorchipset.c
-index b75b063..c4c71c6 100644
---- a/drivers/staging/unisys/visorbus/visorchipset.c
-+++ b/drivers/staging/unisys/visorbus/visorchipset.c
-@@ -102,7 +102,6 @@ struct parser_context {
- };
- 
- static struct delayed_work periodic_controlvm_work;
--static struct workqueue_struct *periodic_controlvm_workqueue;
- static DEFINE_SEMAPHORE(notifier_lock);
- 
- static struct cdev file_cdev;
-@@ -1913,8 +1912,7 @@ cleanup:
- 			poll_jiffies = POLLJIFFIES_CONTROLVMCHANNEL_FAST;
- 	}
- 
--	queue_delayed_work(periodic_controlvm_workqueue,
--			   &periodic_controlvm_work, poll_jiffies);
-+	schedule_delayed_work(&periodic_controlvm_work, poll_jiffies);
- }
- 
- static void
-@@ -2011,8 +2009,7 @@ cleanup:
- 
- 	poll_jiffies = POLLJIFFIES_CONTROLVMCHANNEL_SLOW;
- 
--	queue_delayed_work(periodic_controlvm_workqueue,
--			   &periodic_controlvm_work, poll_jiffies);
-+	schedule_delayed_work(&periodic_controlvm_work, poll_jiffies);
- }
- 
- static void
-@@ -2299,19 +2296,10 @@ visorchipset_init(struct acpi_device *acpi_device)
- 	else
- 		INIT_DELAYED_WORK(&periodic_controlvm_work,
- 				  controlvm_periodic_work);
--	periodic_controlvm_workqueue =
--	    create_singlethread_workqueue("visorchipset_controlvm");
- 
--	if (!periodic_controlvm_workqueue) {
--		POSTCODE_LINUX_2(CREATE_WORKQUEUE_FAILED_PC,
--				 DIAG_SEVERITY_ERR);
--		rc = -ENOMEM;
--		goto cleanup;
--	}
- 	most_recent_message_jiffies = jiffies;
- 	poll_jiffies = POLLJIFFIES_CONTROLVMCHANNEL_FAST;
--	queue_delayed_work(periodic_controlvm_workqueue,
--			   &periodic_controlvm_work, poll_jiffies);
-+	schedule_delayed_work(&periodic_controlvm_work, poll_jiffies);
- 
- 	visorchipset_platform_device.dev.devt = major_dev;
- 	if (platform_device_register(&visorchipset_platform_device) < 0) {
-@@ -2346,10 +2334,7 @@ visorchipset_exit(struct acpi_device *acpi_device)
- 
- 	visorbus_exit();
- 
--	cancel_delayed_work(&periodic_controlvm_work);
--	flush_workqueue(periodic_controlvm_workqueue);
--	destroy_workqueue(periodic_controlvm_workqueue);
--	periodic_controlvm_workqueue = NULL;
-+	cancel_delayed_work_sync(&periodic_controlvm_work);
- 	destroy_controlvm_payload_info(&controlvm_payload_info);
- 
- 	memset(&g_chipset_msg_hdr, 0, sizeof(struct controlvm_message_header));
--- 
-1.9.1
-
+Thanks
+Jason
 
