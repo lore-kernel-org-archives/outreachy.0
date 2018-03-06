@@ -1,87 +1,159 @@
 X-GM-THRID: 6529117174550757376
-X-Received: by 10.46.50.8 with SMTP id y8mr1294460ljy.34.1520355916063;
-        Tue, 06 Mar 2018 09:05:16 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.25.151 with SMTP id 23ls2018098ljz.5.gmail; Tue, 06 Mar
- 2018 09:05:14 -0800 (PST)
-X-Google-Smtp-Source: AG47ELtOGRy7n5uDxrpfSNSGx1tqcDC8xJ5IEu1oj61GX6Ikq4Zl7nvGScDhuWU7YccNwBptY4bP
-X-Received: by 10.46.20.11 with SMTP id u11mr1322285ljd.39.1520355914253;
-        Tue, 06 Mar 2018 09:05:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520355914; cv=none;
-        d=google.com; s=arc-20160816;
-        b=MUmShjUEd/uGGWfTsQjypQ+Ur5QUGQUSZ+EjaVDaW2K/PlF/K6DRIEEVoXsBpoFpmR
-         a4veqtQ3AojsNHpO66DW9t3KdyhB0DVRkm824zShoBkk5szBLakEy+bqvhI4gXeh3QBk
-         NGOB7MomQJAdTmJ5UqeSVPQTDpOJml6mxTPTx0FLT9hwSzNp5lffIG4gAFd+GvWagKV5
-         iuaePXBcOHGakmXZ07xhduEM5ArHXFYnpdObUSznOBgw91GS0dHY/0mEvFzp1wonDW8+
-         5bYqdrkOLJUQRkWaYNKAKA+tGWOvUXTHAObuJgw+kX2NijiKcLvN8Et5wFBAZEl9nHUC
-         Uxvg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=HhEdEVT3ZR/JMZDmCLEX2GXQXio1SijWC+5+/puAABs=;
-        b=HXpGM1UfH1ymcrptSOqVbIz4pzJPTPbaq16yQwoN5LjkPjRAv2qN0zU5x05RdWwPkb
-         8wz2FrQtrG4/LWQAgp1iC0cHKTr4YpV0Hrj427ySyVDgUVhy0sY/bJUnFrxT4xl+ql0O
-         qNNBVgAXBBLOpunWO2b9Is5zl3TuXIB4+ltotK6UHGSxUIht0WOpfMDp6LTOu7+ddXlF
-         JW+EBoRI1hq55G4lWr0z+H3v13BV9kLxv4YjeiNC01dgmugT8VL6ofJwat31eDUpy4dx
-         RWMhV0PRliqbcJeopzvfxF9g5uypZazFySbQa72t2kvCG3TjQHyVx1ge9ZV8TiM6rBI3
-         VhKw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id j4si621789lja.1.2018.03.06.09.05.14
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 06 Mar 2018 09:05:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (unknown [185.236.200.248])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 4740F1221;
-	Tue,  6 Mar 2018 17:05:12 +0000 (UTC)
-Date: Tue, 6 Mar 2018 09:03:54 -0800
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Arushi Singhal <arushisinghal19971997@gmail.com>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] [PATCH 0/3] staging: media: cleanup
-Message-ID: <20180306170354.GA19252@kroah.com>
+Date: Tue, 6 Mar 2018 08:18:27 -0800 (PST)
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <a814ccac-7afb-4ab0-a5b0-c6c4a4330485@googlegroups.com>
+In-Reply-To: <alpine.DEB.2.20.1803041653350.2182@hadrien>
 References: <1520178507-25141-1-git-send-email-arushisinghal19971997@gmail.com>
  <alpine.DEB.2.20.1803041653350.2182@hadrien>
- <a814ccac-7afb-4ab0-a5b0-c6c4a4330485@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH 0/3] staging: media: cleanup
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <a814ccac-7afb-4ab0-a5b0-c6c4a4330485@googlegroups.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_22404_1005500928.1520353108122"
+X-Google-Token: ENP--tQFEcGL7s2PviI0
+X-Google-IP: 14.139.82.6
 
-On Tue, Mar 06, 2018 at 08:18:27AM -0800, Arushi Singhal wrote:
-> 
-> 
-> On Sunday, March 4, 2018 at 9:24:15 PM UTC+5:30, Julia Lawall wrote:
-> >
-> >
-> >
-> > On Sun, 4 Mar 2018, Arushi Singhal wrote: 
-> >
-> > > Spellcheck the comments. 
-> > > Remove the repeated, consecutive words with single word. 
-> >
-> > For the series: 
-> > Acked-by: Julia Lawall <julia....@lip6.fr <javascript:>> 
-> >
-> > But please look out for things to change in the code, not just in the 
-> > comments. 
-> >
-> > Hello Greg
-> 
-> This is patch series is not  Added. 
+------=_Part_22404_1005500928.1520353108122
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_22405_1241222602.1520353108122"
 
-I can not parse this :(
+------=_Part_22405_1241222602.1520353108122
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-patches for drivers/staging/media/ go through the maintainer of that
-tree, not me, if that is what you are concerned about.
 
-thanks,
 
-greg k-h
+On Sunday, March 4, 2018 at 9:24:15 PM UTC+5:30, Julia Lawall wrote:
+>
+>
+>
+> On Sun, 4 Mar 2018, Arushi Singhal wrote: 
+>
+> > Spellcheck the comments. 
+> > Remove the repeated, consecutive words with single word. 
+>
+> For the series: 
+> Acked-by: Julia Lawall <julia....@lip6.fr <javascript:>> 
+>
+> But please look out for things to change in the code, not just in the 
+> comments. 
+>
+> Hello Greg
+
+This is patch series is not  Added. 
+
+> julia 
+>
+>
+> > 
+> > Arushi Singhal (3): 
+> >   staging: media: Replace "be be" with "be" 
+> >   staging: media: Replace "cant" with "can't" 
+> >   staging: media: Replace "dont" with "don't" 
+> > 
+> >  drivers/staging/media/atomisp/pci/atomisp2/css2400/ia_css_pipe_public.h 
+> | 2 +- 
+> >  drivers/staging/media/atomisp/pci/atomisp2/mmu/isp_mmu.c               
+>  | 2 +- 
+> >  drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c                   
+>  | 2 +- 
+> >  3 files changed, 3 insertions(+), 3 deletions(-) 
+> > 
+> > -- 
+> > 2.7.4 
+> > 
+> > -- 
+> > You received this message because you are subscribed to the Google 
+> Groups "outreachy-kernel" group. 
+> > To unsubscribe from this group and stop receiving emails from it, send 
+> an email to outreachy-kern...@googlegroups.com <javascript:>. 
+> > To post to this group, send email to outreach...@googlegroups.com 
+> <javascript:>. 
+> > To view this discussion on the web visit 
+> https://groups.google.com/d/msgid/outreachy-kernel/1520178507-25141-1-git-send-email-arushisinghal19971997%40gmail.com. 
+>
+> > For more options, visit https://groups.google.com/d/optout. 
+> > 
+>
+
+------=_Part_22405_1241222602.1520353108122
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Sunday, March 4, 2018 at 9:24:15 PM UTC+5:30, J=
+ulia Lawall wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;marg=
+in-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
+<br>
+<br>On Sun, 4 Mar 2018, Arushi Singhal wrote:
+<br>
+<br>&gt; Spellcheck the comments.
+<br>&gt; Remove the repeated, consecutive words with single word.
+<br>
+<br>For the series:
+<br>Acked-by: Julia Lawall &lt;<a href=3D"javascript:" target=3D"_blank" gd=
+f-obfuscated-mailto=3D"TjO4eONVAwAJ" rel=3D"nofollow" onmousedown=3D"this.h=
+ref=3D&#39;javascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javas=
+cript:&#39;;return true;">julia....@lip6.fr</a>&gt;
+<br>
+<br>But please look out for things to change in the code, not just in the
+<br>comments.
+<br>
+<br></blockquote><div>Hello Greg<br><br>This is patch series is not=C2=A0 A=
+dded. <br></div><blockquote class=3D"gmail_quote" style=3D"margin: 0;margin=
+-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">julia
+<br>
+<br>
+<br>&gt;
+<br>&gt; Arushi Singhal (3):
+<br>&gt; =C2=A0 staging: media: Replace &quot;be be&quot; with &quot;be&quo=
+t;
+<br>&gt; =C2=A0 staging: media: Replace &quot;cant&quot; with &quot;can&#39=
+;t&quot;
+<br>&gt; =C2=A0 staging: media: Replace &quot;dont&quot; with &quot;don&#39=
+;t&quot;
+<br>&gt;
+<br>&gt; =C2=A0drivers/staging/media/<wbr>atomisp/pci/atomisp2/css2400/<wbr=
+>ia_css_pipe_public.h | 2 +-
+<br>&gt; =C2=A0drivers/staging/media/<wbr>atomisp/pci/atomisp2/mmu/isp_<wbr=
+>mmu.c =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 +-
+<br>&gt; =C2=A0drivers/staging/media/<wbr>davinci_vpfe/vpfe_mc_capture.c =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 +-
+<br>&gt; =C2=A03 files changed, 3 insertions(+), 3 deletions(-)
+<br>&gt;
+<br>&gt; --
+<br>&gt; 2.7.4
+<br>&gt;
+<br>&gt; --
+<br>&gt; You received this message because you are subscribed to the Google=
+ Groups &quot;outreachy-kernel&quot; group.
+<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
+send an email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-m=
+ailto=3D"TjO4eONVAwAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;jav=
+ascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;re=
+turn true;">outreachy-kern...@<wbr>googlegroups.com</a>.
+<br>&gt; To post to this group, send email to <a href=3D"javascript:" targe=
+t=3D"_blank" gdf-obfuscated-mailto=3D"TjO4eONVAwAJ" rel=3D"nofollow" onmous=
+edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
+ef=3D&#39;javascript:&#39;;return true;">outreach...@googlegroups.<wbr>com<=
+/a>.
+<br>&gt; To view this discussion on the web visit <a href=3D"https://groups=
+.google.com/d/msgid/outreachy-kernel/1520178507-25141-1-git-send-email-arus=
+hisinghal19971997%40gmail.com" target=3D"_blank" rel=3D"nofollow" onmousedo=
+wn=3D"this.href=3D&#39;https://groups.google.com/d/msgid/outreachy-kernel/1=
+520178507-25141-1-git-send-email-arushisinghal19971997%40gmail.com&#39;;ret=
+urn true;" onclick=3D"this.href=3D&#39;https://groups.google.com/d/msgid/ou=
+treachy-kernel/1520178507-25141-1-git-send-email-arushisinghal19971997%40gm=
+ail.com&#39;;return true;">https://groups.google.com/d/<wbr>msgid/outreachy=
+-kernel/<wbr>1520178507-25141-1-git-send-<wbr>email-arushisinghal19971997%<=
+wbr>40gmail.com</a>.
+<br>&gt; For more options, visit <a href=3D"https://groups.google.com/d/opt=
+out" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;htt=
+ps://groups.google.com/d/optout&#39;;return true;" onclick=3D"this.href=3D&=
+#39;https://groups.google.com/d/optout&#39;;return true;">https://groups.go=
+ogle.com/d/<wbr>optout</a>.
+<br>&gt;
+<br></blockquote></div>
+------=_Part_22405_1241222602.1520353108122--
+
+------=_Part_22404_1005500928.1520353108122--
 
