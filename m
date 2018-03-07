@@ -1,195 +1,76 @@
 X-GM-THRID: 6528705081880084480
-X-Received: by 10.28.124.10 with SMTP id x10mr2021281wmc.20.1520451691217;
-        Wed, 07 Mar 2018 11:41:31 -0800 (PST)
+X-Received: by 10.200.51.85 with SMTP id u21mr17012614qta.12.1520442224347;
+        Wed, 07 Mar 2018 09:03:44 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.223.192.1 with SMTP id z1ls773957wre.8.gmail; Wed, 07 Mar 2018
- 11:41:29 -0800 (PST)
-X-Google-Smtp-Source: AG47ELsPhQj74MV6R1noqL4bA7+rawkEkfHLqFd9CWKJWGxUKrgQ7Mn75AWeBHvD7lbA6VoPMIQe
-X-Received: by 10.223.139.198 with SMTP id w6mr2125740wra.27.1520451689876;
-        Wed, 07 Mar 2018 11:41:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520451689; cv=none;
+Received: by 10.200.20.141 with SMTP id l13ls1278886qtj.8.gmail; Wed, 07 Mar
+ 2018 09:03:43 -0800 (PST)
+X-Received: by 10.237.59.91 with SMTP id q27mr17258450qte.11.1520442223627;
+        Wed, 07 Mar 2018 09:03:43 -0800 (PST)
+Received: by 10.55.31.142 with SMTP id n14msqkh;
+        Wed, 7 Mar 2018 09:01:51 -0800 (PST)
+X-Google-Smtp-Source: AG47ELtlUj9uGDdOv4CMNtYfJfGCXO/1y7Uh+gBYpvAe7I6ZRu8MOq4kW5SXA8PugZpBd/zWMIxM
+X-Received: by 10.55.9.130 with SMTP id 124mr16485541qkj.55.1520442111155;
+        Wed, 07 Mar 2018 09:01:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520442110; cv=none;
         d=google.com; s=arc-20160816;
-        b=eaeTLgcL0Luh1QNhmXmNSyEMbY3XOZMZWpfZBNNgCIiQjoq7gofCJv1ilp7oZCkUoF
-         lVbNlimQtAQMckqWiLJ8L9eiwIrqn5nNNRuUivs6BoqlN0a9aGnqeLpHyrfnbsRooHoj
-         18kOBEnZ2zoL2FY18h7BB+tFmBIStiU00XmGlDHoI6PnZYb/ni5fTA7XlL8b81+pY70B
-         CWkEUQlNwYIjejj83AqtYA77PGaVWDkSYgllwU4hU9noP2HM/4z+hW6ZzYjpJcIaJ2T5
-         u4Zt/iWPHCN0oOcsxjDMXGCCVExMClpF6ur6tue/drbh1ukO1nx+Wxk9/eCV10Xzyktw
-         yJ7w==
+        b=ztTwrBPMDU+eoq/wj8aoVeois4Tv4O3VhacXC2S573x7fP5cmvwHKKiqvtrN2EBwb2
+         wYWJ31amJE0e4qft92fdv4J6Oqsku7zPUvgrCiOBGteBVWkEjc7k0q/EqWztgI+ikbaQ
+         XRctge5ngFfMwXciesPdTcfRgywPImrxxu8Bnc7OkM1OWu34Dhkor2qYGs5YqbR0xPt1
+         EhZbIvjlTXWsxr70TaKmtKu6AczR0Af4cvQenRCBoAWC6/sBbrD27qO0v8ZVIHI08k1G
+         TaIOwQWePvXPfqrt/ejBuRqHVPXpvI4SbGMkp1Msd2pP7paUhDTpMKX1jb/fi2/WpYnf
+         bqpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=x3DFct0gzDLqj5ZWkpGS/2/Lto0euLgOpunajAICXN4=;
-        b=jMNFw35nXZgPqerZ/I052dWq6WE1xxu4+DiGy/GqBHDVxC6Z4bDzCh/VIZg6UPLqRd
-         LCVmgSSpnVqae09NfkJecnMX4wfXutsQ+Oehdh2IGdDbR432nU+jh4hkhRqAVKRjpyB0
-         /o/ZJ9lsIST0n++iFIL3VBaktpEyvWM86ftHaYSXiCqI+dlwi10AsooPyng5NP1zNq6S
-         CSl9PGoCGspW6zmzjQJ7vCPy136v1GSPOxvEvVQ7OWmvnr2e5HKnW1C020M+VwMubSUj
-         8aSgbioZ1Zd8bXdDQhtvZ2It9L+2QwsXB+F2uU7d8V5p9LJZg5iG+eaBW+wqcRCtcF4B
-         IEog==
+        h=content-transfer-encoding:mime-version:references:in-reply-to:from
+         :subject:cc:to:message-id:date:arc-authentication-results;
+        bh=kbNb5cmDCbJ3yd4wNa/ggfeSrJ5x2fEWCbLiCuHTTtk=;
+        b=K4limaZh0swhKw1XP+DTWAHo91aaL+X9kEApB237DaQXR1K0Rr+7P5m6fz9lqHHWXA
+         i0blh4PTYCRwqv767OwLjxbaS7Az/3BldlPnJb+cAoKhl+Wj8+hhyYaxPbZQpg9/4wm5
+         Tf/n0qdobCEITKKZs44i6NqRAL1JcqlyLi17Br09nLTokHANl2fmHpqOtjzzLrGWpX6s
+         KMxX9xSy1Do9xxPDZtCJnphtkEAZj4Cinh+Z9FkPrk41H7ep+LdLTg/seKi0e6GPyDux
+         Rghi6W5kPtY46ZfuPW7YCOSr4e9JwFld4pSxcna+oq/cUF7PLRez/TA8aDTm1nN54E+Q
+         9PZQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id r10si579774wmg.2.2018.03.07.11.41.29
+       spf=neutral (google.com: 184.105.139.130 is neither permitted nor denied by best guess record for domain of davem@davemloft.net) smtp.mailfrom=davem@davemloft.net
+Return-Path: <davem@davemloft.net>
+Received: from shards.monkeyblade.net (shards.monkeyblade.net. [184.105.139.130])
+        by gmr-mx.google.com with ESMTPS id 44si1355028qtu.1.2018.03.07.09.01.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 07 Mar 2018 11:41:29 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Wed, 07 Mar 2018 09:01:50 -0800 (PST)
+Received-SPF: neutral (google.com: 184.105.139.130 is neither permitted nor denied by best guess record for domain of davem@davemloft.net) client-ip=184.105.139.130;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.47,437,1515452400"; 
-   d="scan'208";a="316918024"
-Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 07 Mar 2018 20:41:29 +0100
-Date: Wed, 7 Mar 2018 20:41:29 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Arushi Singhal <arushisinghal19971997@gmail.com>
-cc: David Miller <davem@davemloft.net>, jdmason@kudzu.us, 
-    Jakub Kicinski <jakub.kicinski@netronome.com>, 
-    Linux Kernel Network Developers <netdev@vger.kernel.org>, 
-    LKML <linux-kernel@vger.kernel.org>, oss-drivers@netronome.com, 
-    outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] Re: [PATCH v2] net: ethernet: Drop unnecessary
- continue
+       spf=neutral (google.com: 184.105.139.130 is neither permitted nor denied by best guess record for domain of davem@davemloft.net) smtp.mailfrom=davem@davemloft.net
+Received: from localhost (67.110.78.66.ptr.us.xo.net [67.110.78.66])
+	(using TLSv1 with cipher AES256-SHA (256/256 bits))
+	(Client did not present a certificate)
+	(Authenticated sender: davem-davemloft)
+	by shards.monkeyblade.net (Postfix) with ESMTPSA id DB04F12170950;
+	Wed,  7 Mar 2018 09:01:48 -0800 (PST)
+Date: Wed, 07 Mar 2018 12:01:47 -0500 (EST)
+Message-Id: <20180307.120147.195464731584241423.davem@davemloft.net>
+To: arushisinghal19971997@gmail.com
+Cc: jdmason@kudzu.us, jakub.kicinski@netronome.com, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, oss-drivers@netronome.com,
+ outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v2] net: ethernet: Drop unnecessary continue
+From: David Miller <davem@davemloft.net>
 In-Reply-To: <CA+XqjF8_axeTnahPmokxmDnm4NmWo8QWSEmLejN4fO1nAiDaBA@mail.gmail.com>
-Message-ID: <alpine.DEB.2.20.1803072039260.2814@hadrien>
-References: <20180303161456.GA20194@seema-Inspiron-15-3567> <20180307.103901.1771176275743006915.davem@davemloft.net> <CA+XqjF8_axeTnahPmokxmDnm4NmWo8QWSEmLejN4fO1nAiDaBA@mail.gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: multipart/mixed; BOUNDARY="8323329-1036440338-1520451689=:2814"
+References: <20180303161456.GA20194@seema-Inspiron-15-3567>
+	<20180307.103901.1771176275743006915.davem@davemloft.net>
+	<CA+XqjF8_axeTnahPmokxmDnm4NmWo8QWSEmLejN4fO1nAiDaBA@mail.gmail.com>
+X-Mailer: Mew version 6.7 on Emacs 25.3 / Mule 6.0 (HANACHIRUSATO)
+Mime-Version: 1.0
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.5.12 (shards.monkeyblade.net [149.20.54.216]); Wed, 07 Mar 2018 09:01:49 -0800 (PST)
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+Date: Wed, 7 Mar 2018 22:22:13 +0530
 
---8323329-1036440338-1520451689=:2814
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
-
-
-
-On Wed, 7 Mar 2018, Arushi Singhal wrote:
-
->
->
-> On Wed, Mar 7, 2018 at 9:09 PM, David Miller <davem@davemloft.net> wrote:
->       From: Arushi Singhal <arushisinghal19971997@gmail.com>
->       Date: Sat, 3 Mar 2018 21:44:56 +0530
->
->       > Continue at the bottom of a loop are removed.
->       > Issue found using drop_continue.cocci Coccinelle script.
->       >
->       > Signed-off-by: Arushi Singhal
->       <arushisinghal19971997@gmail.com>
->       > ---
->       > Changes in v2:
->       > - Braces is dropped from if with single statement.
->
->       Sorry there is no way I am applying this.
->
->       Just blindly removing continue statements that some static
->       checker
->       or compiler warning mentions is completely unacceptable.
->
->       Actually _LOOK_ at this code:
->
->       >               if(cards[i].vendor_id) {
->       >                       for(j=0;j<3;j++)
->       > -                           
->        if(inb(ioaddr+cards[i].addr_offset+j) != cards[i].vendor_id[j])
->       {
->       > +                           
->        if(inb(ioaddr+cards[i].addr_offset+j) != cards[i].vendor_id[j])
->       >                                       release_region(ioaddr,
->       cards[i].total_size);
->       > -                                     continue;
->       > -                       }
->       >               }
->
->       The extraneous continue statement is the _least_ of the problems
->       here.
->
->
-> Hello David
->
-> Yes you are correct.
->  
->
->       This code, if the if() statement triggers, will release the
->       ioaddr
->       region and then _CONTINUE_ the for(j) loop, and try to access
->       the
->       registers using the same 'ioaddr' again.
->
->       That's actually a _REAL_ bug, and you're making it seem like
->       the behavior is intentional by editing it like this.
->
->       And the bug probably exists because this entire sequence has
->       misaligned closing curly braces.  It makes it look like
->       the continue is for the outer loop, which would be fine.
->
->       But it's not.  It's for the inner loop, and this causes the "use
->       ioaddr after releasing it" bug.
->
->
 > Yes I know it's for the inner loop.
 > But I am not able to find, where I am wrong here
 
-Arushi,
-
-You are preserving the current behavior and David is telling you that the
-current behavior is incorrect.  He doesn't want a patch that changes the
-code but preesrves the current (wrong) behavior, because that somehow
-contributes to the illusion that the incorrect code is correct.
-
-julia
-
->
-> For example
-> BEFORE:-
-> for(i=1;i<10;i++)
->        if (expr1)
->           {
->              statement;
->              continue;
->           }
->  
-> After My Patch
-> for(i=1;i<10;i++)
->     if (expr1)        
->        statement;
->
-> I am not understanding where I am getting wrong in understanding this.
-> For me both are equivalent.
->
-> I Agree with Jakub reply:-
-> "This is an error handling path so the continue makes sense here to
-> indicate the processing can't ever fall through if more statements are
-> ever added to the loop.  But OK."
->
-> Thanks
-> Arushi
->
->
->       Please do not submit patches like this one, it makes for a lot
->       of
->       wasted auditing and review for people.  The onus is on you to
->       read
->       and understand the code you are editing before submitting your
->       changes.
->
->       Thank you.
->
->
-> --
-> You received this message because you are subscribed to the Google Groups
-> "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an
-> email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CA%2BXqjF8_axeTnahPmokxm
-> Dnm4NmWo8QWSEmLejN4fO1nAiDaBA%40mail.gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
->
---8323329-1036440338-1520451689=:2814--
+You are making what is essentially a nop change to a piece of code,
+which if you had instead read carefully would have instead inspired
+you to fix a real genuine bug instead.
 
