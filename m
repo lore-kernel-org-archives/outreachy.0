@@ -1,119 +1,179 @@
 X-GM-THRID: 6530150669896122368
-X-Received: by 10.237.40.7 with SMTP id r7mr15888089qtd.38.1520419674618;
-        Wed, 07 Mar 2018 02:47:54 -0800 (PST)
+X-Received: by 10.99.110.133 with SMTP id j127mr4337490pgc.29.1520419183162;
+        Wed, 07 Mar 2018 02:39:43 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.55.11.131 with SMTP id 125ls845415qkl.10.gmail; Wed, 07 Mar
- 2018 02:47:53 -0800 (PST)
-X-Google-Smtp-Source: AG47ELu4nchmlxF4PswPDhaGzwSi2LiCdDQXGzdw5UAopyjINDsB7UcuZOPsLeBBpqU8TQmEme7o
-X-Received: by 10.55.161.88 with SMTP id k85mr3499563qke.61.1520419673862;
-        Wed, 07 Mar 2018 02:47:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520419673; cv=none;
+Received: by 10.99.114.3 with SMTP id n3ls336302pgc.11.gmail; Wed, 07 Mar 2018
+ 02:39:41 -0800 (PST)
+X-Google-Smtp-Source: AG47ELvRMMYbyaflppql7sWVB1BW/srlXXFwrjqKMKX+Q8o0/xNLCGhtE9iKAEf41f9lQfahdyrX
+X-Received: by 10.99.119.135 with SMTP id s129mr4337722pgc.143.1520419181918;
+        Wed, 07 Mar 2018 02:39:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520419181; cv=none;
         d=google.com; s=arc-20160816;
-        b=o7JpdlidHLSM+OcjRA0G6Okc0HbAGRwkcgh2hLlDWeBP4RKHzeiR2M5oanws3c5bAt
-         iUAklfIa2tevAFRxjjM0xqSnw82GxvCSb92F6jpp+N0B8jLCSTLgypdIkz/Sgs7Ppwfh
-         4oPVd/elJxERvaWGfjFAXW8V6nZd7G+G7GlS9p3C1oNUhRrSDQRPP/m3sIhp1LDdHkPr
-         sO7PbM+65pK9y08bztFA4rIQ2HIt1UURWX9KHxLYfew4IPkFgNUJJN7B7sR3xH1JH77t
-         BAp0OtkPFKTQJeQN8wz5kk3o4eiANp3cEeMZquJLb0ZDa95vko0dRjWe5dyK15dZA0EZ
-         yAaw==
+        b=sIgfpprTGkY4jHIyxf8gzY1Ej2i60Vfqy+vkh6z0KrIz3km8imWeXXkqelqQ66rKmM
+         6tSbkE/+NiM/nCWIPtELoGBZ3KAoTlKjxFM/M/Kg0fglx7DYyVLOITpaW/m32mDAsuvb
+         9YpkQN5nKY4Yn9EwdOxZbMWiZpUoqLj8Z2A30HwsNcpdWu2M8CwIsvup4ph/gzbPdxG+
+         XkPMNGY/ySsbMjOulXlW2W0apERpQKncJ5QYD8MHfe8ceRH+s9AW92oYYb9iH4UVnGeg
+         ZNJuCaclQ0g0mXboMQil/o6vnr1DoMiZ7yz+UqLVHrr0WU7s3qV56v+vf2tmQApLwr4l
+         yEfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature
-         :arc-authentication-results;
-        bh=w2OJ48OUZD1uAOwcrF4nJnO2llDvZMOd1j7NzV2rLqE=;
-        b=f8hnnivRokzo71aqiouAMCHeHiqvQd5tA4xqFZBDDmKxXn3n5c3offE+yQTPwR7v60
-         DE6W38d3VwSh2uQMUC5yYIHLUtMs73kSUtLHFLE6A0A1XyQqh1z0CwE3ignx+X1keyi5
-         Ogvnun2wd0+ZW/50Eka596+ReovHkANCqwOiThp6Uj3MOHbu4+ide3Un0Yw87tV4LTCq
-         5jIIXHRRhYWKrq1k5Evwchw+LuEFtc1QIvmBhSQpSeaWfSVKDpwVGYXcRC3W6czgbrC0
-         tvXYZMSjpqRhCtt7Vko3nGIBnEMFPEk5K2UI57olfAw9Pq5TTxgMkbIzntUN5D5jq/VI
-         K72w==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature:arc-authentication-results;
+        bh=sjRkNOE1Pl4vxp86cnAZdceo6eL00Be/53iAKIT0JLs=;
+        b=HudoLnKqBSz4YkqoDvpLW+ddtKfhPiC3Ku8AkNisNu+dWppil3hDOfuBovaAV7vO/g
+         d3NYRUwUZGDWmvHlvA7ohjKYZe5VWzYYPJuFA2y9NUbTJtlz5a/xlHL/f53YYzYxLE/E
+         dCBIDZ4xD+OvzOsxIsoksmveseN/IZN/ro2FtrJvpssvcaDOe4WupSlYcafi3XZzEORw
+         9pYlT3uVFtDLbxSMqFxz9LOFKqpavfvmpJ6rVSSw5cyW9jOKu6Wo5ltaVkyZZPtSoBjj
+         OpPOwYBf32gqXayikt+Dml+2oAma77/I7viUlWtHyKzAFLlz3ulPS56NT+2Od5gPzRBL
+         tOEw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2017-10-26 header.b=T9dN2XK7;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.79 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <dan.carpenter@oracle.com>
-Received: from aserp2130.oracle.com (aserp2130.oracle.com. [141.146.126.79])
-        by gmr-mx.google.com with ESMTPS id a9si152633qkg.1.2018.03.07.02.47.53
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KeES6dJX;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c01::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from mail-pl0-x243.google.com (mail-pl0-x243.google.com. [2607:f8b0:400e:c01::243])
+        by gmr-mx.google.com with ESMTPS id f78si108602pfa.5.2018.03.07.02.39.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 07 Mar 2018 02:47:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.79 as permitted sender) client-ip=141.146.126.79;
+        Wed, 07 Mar 2018 02:39:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c01::243 as permitted sender) client-ip=2607:f8b0:400e:c01::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2017-10-26 header.b=T9dN2XK7;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.79 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
-	by aserp2130.oracle.com (8.16.0.22/8.16.0.22) with SMTP id w27AlYUc014773;
-	Wed, 7 Mar 2018 10:47:50 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2017-10-26;
- bh=w2OJ48OUZD1uAOwcrF4nJnO2llDvZMOd1j7NzV2rLqE=;
- b=T9dN2XK7v+ri3aIoh8IRhwKGsnCl35bvcOWSPnhGb2817zNUnrH1bLQJYtLswhbDkTbT
- A4Q+XO4ehm5mcLQkQwK5HIluGRyXU0nMVD0K7t9BnY13PGFBLJJUBNlo57hceQfHGtVX
- 3fIYJGT7M4wCB0pSfhFoAKa7xrn8tRJ9qKaIl8nCpbKLpw7EF8uI6KNe3TPFgwDa9Rbo
- fohC0Xa2bsmyE2orYvcTuAJPXjQwh75bbt9cUeVhqPu7lcjaN+Zd+F/DeVFTNNZd7Zu0
- 7spZkOrqoFUpSqEBpPdhCX2mnkO0r7tn5Zo5067aZBCBmjkL6/u7EQR51JeKt8j4FNJu Xw== 
-Received: from aserv0021.oracle.com (aserv0021.oracle.com [141.146.126.233])
-	by aserp2130.oracle.com with ESMTP id 2gjeawg541-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 07 Mar 2018 10:47:50 +0000
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
-	by aserv0021.oracle.com (8.14.4/8.14.4) with ESMTP id w27AlnfI014078
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 7 Mar 2018 10:47:50 GMT
-Received: from abhmp0007.oracle.com (abhmp0007.oracle.com [141.146.116.13])
-	by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id w27Alnin006229;
-	Wed, 7 Mar 2018 10:47:49 GMT
-Received: from mwanda (/197.254.35.146)
-	by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Wed, 07 Mar 2018 02:47:48 -0800
-Date: Wed, 7 Mar 2018 13:47:41 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Arushi Singhal <arushisinghal19971997@gmail.com>
-Cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
-        outreachy-kernel@googlegroups.com, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3] staging: rtl8192u: Replace printk() with more
- standardize output format.
-Message-ID: <20180307104741.mdy2wa7hplfwxmb3@mwanda>
-References: <20180307103908.GA19612@seema-Inspiron-15-3567>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KeES6dJX;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c01::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl0-x243.google.com with SMTP id m22-v6so1079353pls.5
+        for <outreachy-kernel@googlegroups.com>; Wed, 07 Mar 2018 02:39:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=sjRkNOE1Pl4vxp86cnAZdceo6eL00Be/53iAKIT0JLs=;
+        b=KeES6dJXnvpdmSaH101bZA+gJlJxSFFUwfrkMkjonxHgTtyHsV38Mc31xC6cHNNNZ9
+         n20UpcStuvqnqN6I3F3izPDQRQf92H27K78MdKC9hj1cGwHGcOnaNqHxAZS03EKByXhi
+         8JlTDdI0NKyDs9xGFCEKrtNAY0Mn8WUWKNJtQ4vaoivcYKEttppWb7G5Q/nmUUEaZNO/
+         8a1bzSSrPpABAh+nyh57R7Dl/xydBpp43pBWBjRTUFbDOTqSQTtWLIzlPIxwoeL58yxL
+         OwWjEqtfJv9UzuEhSfISBV0pTy/Gi+kJfB02kM1RJy7iWRi2KGFPsv9bLvC7poydXbMs
+         8alg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=sjRkNOE1Pl4vxp86cnAZdceo6eL00Be/53iAKIT0JLs=;
+        b=MWlsrAXYgaGvr+p+Y2YRRo8ig11tYPEoxYOLJ7BtTSHFk83eJ86IAykmU2uSD3dNx5
+         wwd5QELpa+ZyhpIHGfeUjPnodvSYZcnkKbOmZ9zM+egcbMnyfwp0llNHnraJEk7G5Mgv
+         HN9OA0WILwNCYpkRceNtcL4rvIX1ZjERFM8JRGr1ZsyAP53lBpJmcL312oKRg8r0tP2r
+         KVJfMs36cP0O7N6IKei677iD3dzQhD/xLZpkxbZ7kGHACA735uhtHP0EsOX/ly0faV3F
+         NG8rH1+3SN7LQB25nBVOp+O6WZ48TEXoMZJgEv/K7lKb+pmj55fmhPbLjKuVEuOXYLhg
+         OoIg==
+X-Gm-Message-State: APf1xPDdO7x/1fSFUTGk1dlE1Z9n7uUml4IVPuiSkoXbbGAx8bJXlvnT
+	8leHJfS2c7dMAFb2C34ys46Kpg==
+X-Received: by 2002:a17:902:7044:: with SMTP id h4-v6mr19693176plt.378.1520419181033;
+        Wed, 07 Mar 2018 02:39:41 -0800 (PST)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from seema-Inspiron-15-3567 ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id e23sm33387351pfi.76.2018.03.07.02.39.39
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 07 Mar 2018 02:39:39 -0800 (PST)
+Date: Wed, 7 Mar 2018 16:09:09 +0530
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH v3] staging: rtl8192u: Replace printk() with more standardize
+ output format.
+Message-ID: <20180307103908.GA19612@seema-Inspiron-15-3567>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20180307103908.GA19612@seema-Inspiron-15-3567>
-User-Agent: NeoMutt/20170609 (1.8.3)
-X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=8824 signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=947
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1711220000 definitions=main-1803070125
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Wed, Mar 07, 2018 at 04:09:09PM +0530, Arushi Singhal wrote:
-> @@ -276,22 +276,22 @@ static int ieee80211_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
->  	keyidx = pos[3];
->  	if (!(keyidx & (1 << 5))) {
->  		if (net_ratelimit()) {
-> -			printk(KERN_DEBUG "CCMP: received packet without ExtIV flag from %pM\n",
-> -				hdr->addr2);
-> +			netdev_dbg(skb->dev, "CCMP: received packet without ExtIV flag from %pM\n",
-> +				   hdr->addr2);
->  		}
+printk() is the raw way to print output and should be avoided.
 
-I'm sorry.  I really hate to do this to you...  But the right thing here
-is to use net_dbg_ratelimited() but get rid of the if (net_ratelimit())
-check.  So it looks like this:
+For drivers with defined "struct device object", dev_*macro() is
+prefer and for "struct netdevice object", netdev_*macro() is prefer over
+dev_*macro() to standardize the output format within the subsystem.
 
-	if (!(keyidx & (1 << 5))) {
-		net_dbg_ratelimited(skb->dev,
-				    "CCMP: received packet without ExtIV flag from %pM\n",
-				    hdr->addr2);
-	}
+If no "struct device object" is defined prefer pr_*macro() over printk().
 
-Sorry again, when I looked at it before I just replied what my fast
-thinking lizard brain said instead of taking time to look at what I was
-saying.
+This patch Replace printk having a log level with the appropriate output
+format according to the order of preference.
 
+Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+---
+Changes in v3
+*In version2 net_*macro_ratelimited was used which is not helping in
+standardizing the output format.
 
-regards,
-dan carpenter
+Changes in v2
+*change the subject line, driver name was wrong.
+
+ .../rtl8192u/ieee80211/ieee80211_crypt_ccmp.c      | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
+index e6648f7..a4b4042 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
+@@ -73,7 +73,7 @@ static void *ieee80211_ccmp_init(int key_idx)
+ 
+ 	priv->tfm = (void *)crypto_alloc_cipher("aes", 0, CRYPTO_ALG_ASYNC);
+ 	if (IS_ERR(priv->tfm)) {
+-		printk(KERN_DEBUG "ieee80211_crypt_ccmp: could not allocate crypto API aes\n");
++		pr_debug("ieee80211_crypt_ccmp: could not allocate crypto API aes\n");
+ 		priv->tfm = NULL;
+ 		goto fail;
+ 	}
+@@ -276,22 +276,22 @@ static int ieee80211_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
+ 	keyidx = pos[3];
+ 	if (!(keyidx & (1 << 5))) {
+ 		if (net_ratelimit()) {
+-			printk(KERN_DEBUG "CCMP: received packet without ExtIV flag from %pM\n",
+-				hdr->addr2);
++			netdev_dbg(skb->dev, "CCMP: received packet without ExtIV flag from %pM\n",
++				   hdr->addr2);
+ 		}
+ 		key->dot11RSNAStatsCCMPFormatErrors++;
+ 		return -2;
+ 	}
+ 	keyidx >>= 6;
+ 	if (key->key_idx != keyidx) {
+-		printk(KERN_DEBUG "CCMP: RX tkey->key_idx=%d frame keyidx=%d priv=%p\n",
+-			key->key_idx, keyidx, priv);
++		netdev_dbg(skb->dev, "CCMP: RX tkey->key_idx=%d frame keyidx=%d priv=%p\n",
++			   key->key_idx, keyidx, priv);
+ 		return -6;
+ 	}
+ 	if (!key->key_set) {
+ 		if (net_ratelimit()) {
+-			printk(KERN_DEBUG "CCMP: received packet from %pM with keyid=%d that does not have a configured key\n",
+-				hdr->addr2, keyidx);
++			netdev_dbg(skb->dev, "CCMP: received packet from %pM with keyid=%d that does not have a configured key\n",
++				   hdr->addr2, keyidx);
+ 		}
+ 		return -3;
+ 	}
+@@ -306,8 +306,8 @@ static int ieee80211_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
+ 
+ 	if (memcmp(pn, key->rx_pn, CCMP_PN_LEN) <= 0) {
+ 		if (net_ratelimit()) {
+-			printk(KERN_DEBUG "CCMP: replay detected: STA=%pM previous PN %pm received PN %pm\n",
+-			       hdr->addr2, key->rx_pn, pn);
++			netdev_dbg(skb->dev, "CCMP: replay detected: STA=%pM previous PN %pm received PN %pm\n",
++				   hdr->addr2, key->rx_pn, pn);
+ 		}
+ 		key->dot11RSNAStatsCCMPReplays++;
+ 		return -4;
+@@ -341,8 +341,8 @@ static int ieee80211_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
+ 
+ 		if (memcmp(mic, a, CCMP_MIC_LEN) != 0) {
+ 			if (net_ratelimit()) {
+-				printk(KERN_DEBUG "CCMP: decrypt failed: STA=%pM\n",
+-					hdr->addr2);
++				netdev_dbg(skb->dev, "CCMP: decrypt failed: STA=%pM\n",
++					   hdr->addr2);
+ 			}
+ 			key->dot11RSNAStatsCCMPDecryptErrors++;
+ 			return -5;
+-- 
+2.7.4
 
 
