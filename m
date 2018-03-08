@@ -1,96 +1,99 @@
 X-GM-THRID: 6530656197776769024
-X-Received: by 10.98.178.72 with SMTP id x69mr5965439pfe.9.1520543721984;
-        Thu, 08 Mar 2018 13:15:21 -0800 (PST)
+X-Received: by 10.28.22.136 with SMTP id 130mr19908wmw.21.1520542273641;
+        Thu, 08 Mar 2018 12:51:13 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.98.137.157 with SMTP id n29ls471628pfk.2.gmail; Thu, 08 Mar
- 2018 13:15:21 -0800 (PST)
-X-Google-Smtp-Source: AG47ELuvsNJn+eloqWakNfxPre7+uL7EwFEWam/a5Y3kh0Q0fc6cCh7+0S50l3OM0A9eJRlmskhL
-X-Received: by 10.98.139.71 with SMTP id j68mr4750953pfe.1.1520543721004;
-        Thu, 08 Mar 2018 13:15:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520543720; cv=none;
+Received: by 10.223.161.20 with SMTP id o20ls1541155wro.6.gmail; Thu, 08 Mar
+ 2018 12:51:12 -0800 (PST)
+X-Google-Smtp-Source: AG47ELsXbi9pz0fVoKOPnm52ud2avuW3uo80fG6nYwHLuax9QTD1APZpJyN7oJMxOB8JioMoVPol
+X-Received: by 10.223.157.196 with SMTP id q4mr2601906wre.23.1520542272849;
+        Thu, 08 Mar 2018 12:51:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520542272; cv=none;
         d=google.com; s=arc-20160816;
-        b=zg1W/3FRPqUoCvBLrnRfRuxvPRjRS+Mv1LQufzAj7nfNHFf4hjID05afHtPST7QchW
-         BmeOyYWmVSFCjN8Rh+aclkCzUhEsAZOAZ6ZYTx7Bx8lzSo1zKVncksbcQOAxGCH8tE3S
-         k5KODpLXBtd2kQ96eShHReBgTQQl1vZgXvKj8T06Gm/Y9hoTmAOoBN0R0Bkn6TPMHgiG
-         o+79MJGpFhXC2Oqr9Y8e8bLABcgfpFSpDkfLz1shqYRTweMrk3U0GbQf4IPYkao9fu4Y
-         /OcJc6Fqcy+eF1g53+2SK1uF7kVPNq1C6SSDZXcBCCjeUe7TkUIdYuKkFM+h+v/JL0sf
-         JVgA==
+        b=k4PKOgkEeAdH/Yt9eAb/pXjLcH+qTWXNGN5BtYfsAeNFToBGGooGnKpuMWagH4pd3E
+         7bd9z4hO8+36gDukKosT2wA3PK7BUFX++13X9hZQwrREfVQ07rzbJyfV2zSaN8EAW5rW
+         j3pWRF9k2kvIOf69FnQdw1BK1PyNsdR/H3r+v4E+SZZ+ZD/orjpnfP/yD91FJ+ojvLqE
+         V2ona3Mey5rGlNEZa8oW6dB7AIS0Z2zPDDfn0ih05ZYsm5WyxUGWMHN8zAkGMDxQf0ed
+         CldWVkxn5iKdS3TbiUxv0ZpBMoZI2OhEfgv2n1kinIyjYj6OZBQ5o7u2GnX6o2wHQmjL
+         mglA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=ZODiP7rcsDNARFUm2O1LdF/ODfWjZVlzxpnZFvi1iag=;
-        b=CUT2UFHRuO+8MPyOljZG9swoHtOUT4CeZPyLmbql0cKGfda/6BKTr5NTz2CFowmvc8
-         QqNitC5Lkk02G5OVlwqFrryfpdJQTc+ydhXdS+afmHVT0srYCygvY8oc3a6vKDjkGC1a
-         pNLutwu+4JCBQ5RWpur9YlSu9Fly8gg+geZgtr0QE3dWXvmDK6hYuySO67/q9Va6Ycc3
-         mUc3GpsZbJI4dKImqo3k2KH0pdcEqKDIQ3KpoGUOmDkk/kz5SrIu+F3a6TluJJ4aRdIU
-         MaAhacQLEs+ulCnkkGYrPYYh2170Vqj694YC6mqmEp6LxKQMNvrA7dALu/KNZl10Xo7K
-         rFSw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=bvMZsihwaSUwbYSn/rqt33UYnjUBrfuzu38Op7WOoHA=;
+        b=nS4bKVQiEYZg/AgeCa2tvnis/UGLYbzhGtfwkeiMpF6xWad1nhTm5M7dnnemZMgyL/
+         Q6UBqnp80gI1myouEtiagaS3cQDm1z0YzX6x7HW71oVkBH1YvVzzANVuRZ4TmapWxxRs
+         PY/se3PpNSD3SJvenNus4Asdi1/CcdWjtmX2aO1NqeXCSA5PZ8M+FaEDbafA5BGnu9WK
+         R0Fqzxy0DSAlzeBgNi5TrKwlO9C1c573LPaplW4qA4sykGR31aHH9yo9/WBn/jL3RS3F
+         oyNH4IYCjkeO404agnTVTyCmIwJQ3Q62hA0FzecdfgplUL50PexNQSVCJDCA20LmL+6v
+         24SQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=Dm15QCeY;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:4001:c06::22a as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from mail-io0-x22a.google.com (mail-io0-x22a.google.com. [2607:f8b0:4001:c06::22a])
-        by gmr-mx.google.com with ESMTPS id q12si1087057pgn.2.2018.03.08.13.15.20
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id m29si881164wrb.1.2018.03.08.12.51.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 08 Mar 2018 13:15:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:4001:c06::22a as permitted sender) client-ip=2607:f8b0:4001:c06::22a;
+        Thu, 08 Mar 2018 12:51:12 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=Dm15QCeY;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:4001:c06::22a as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Received: by mail-io0-x22a.google.com with SMTP id 30so1251555iog.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 08 Mar 2018 13:15:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ashoka.edu.in; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=ZODiP7rcsDNARFUm2O1LdF/ODfWjZVlzxpnZFvi1iag=;
-        b=Dm15QCeYEW4JJ1Tp7w+cXfmQaKCUwXueNhKcbH/dlCk0b+njEh3vEcHuXgMGFNI+7I
-         VNhgz5jhPuW1wMQqHa/1QRgYDMGQ25VYT7nUc5eBVLDJUGRcQJ/KW1g04tHFkLrm+P1R
-         lNus6zdalXUp1lzjYtQwTb7msNuX2/RHJ4cLM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=ZODiP7rcsDNARFUm2O1LdF/ODfWjZVlzxpnZFvi1iag=;
-        b=gs7xYYwc1s3/d90kjAdl2BGGm13/jgULkhAQtwNlyHAHiDC0/S6haVKktFc6D/l7YH
-         1q3TaQ3XqpzH6Q5+Gkmz8EAuOwwy2bYgTjZXq8PCHJD4urP50F07pXQyih7K1ZV7Vrjj
-         EjyxQs5XyHIIvxtq2QpSolwW12EuYcLwWXVI21gS0KpJ5Y3wTK+mUjZwUB75A3zgXizT
-         vRPZ1PYF/oooJhWTefC2M3Fe5C1v0qHTP+057aG7hjlaFfsAISggynp1mC1I6XEmpdCO
-         +S8BXxbb8O5pK/Ub2pSJ1l9VRLofzajVz2knuuiwbnhDyWEQDCoIgao5RcAsZbfLj6ky
-         tG0w==
-X-Gm-Message-State: AElRT7G8kCnQJy2j2hP0NjzGJmpt8nOkWlXXquPrjxV7SlrFAPleY8zJ
-	aHCoIVnQvwW5uIip4wnxYUXm/rXztnSYAimeiY9LAg==
-X-Received: by 10.107.55.133 with SMTP id e127mr31240815ioa.138.1520543719420;
- Thu, 08 Mar 2018 13:15:19 -0800 (PST)
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.47,442,1515452400"; 
+   d="scan'208";a="317112917"
+Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 08 Mar 2018 21:51:12 +0100
+Date: Thu, 8 Mar 2018 21:51:12 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+cc: gregkh@linuxfoundation.org, w.d.hubbs@gmail.com, chris@the-brannons.com, 
+    kirk@reisers.ca, samuel.thibault@ens-lyon.org, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: speakup: Replace simple_strtoul
+ with kstrtoul
+In-Reply-To: <1520538226-15590-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+Message-ID: <alpine.DEB.2.20.1803082150310.2245@hadrien>
+References: <1520538226-15590-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Received: by 10.79.124.136 with HTTP; Thu, 8 Mar 2018 13:15:18 -0800 (PST)
-In-Reply-To: <20180308204847.2bmei7z43tdqvsgg@var.youpi.perso.aquilenet.fr>
-References: <20180308195332.2hao4ys737ubr275@var.youpi.perso.aquilenet.fr>
- <1520539425-16513-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in> <20180308204847.2bmei7z43tdqvsgg@var.youpi.perso.aquilenet.fr>
-From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-Date: Fri, 9 Mar 2018 02:45:18 +0530
-Message-ID: <CAC4++KCd3fAuzm3Pbz5oZEF=N9amgAd3tsBRgPzT1d39CGLF6A@mail.gmail.com>
-Subject: Re: [PATCH] staging: speakup: Replace simple_strtoul with
-To: Samuel Thibault <samuel.thibault@ens-lyon.org>
-Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
-	William Hubbs <w.d.hubbs@gmail.com>, Christopher Brannon <chris@the-brannons.com>, kirk@reisers.ca
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=US-ASCII
 
-On Fri, Mar 9, 2018 at 2:18 AM, Samuel Thibault
-<samuel.thibault@ens-lyon.org> wrote:
-> Nishka Dasgupta, on ven. 09 mars 2018 01:33:45 +0530, wrote:
->> While we are on the topic of speakup, should I also stay clear of the
->> checkpatch warnings in keyhelp.c:102 and keyhelp.c:743 to add a
->> KERN_<LEVEL> signifier in the printk() commands on those lines?
+
+
+On Fri, 9 Mar 2018, Nishka Dasgupta wrote:
+
+> Replace simple_strtoul with kstrtoul. Issue found with checkpatch.
 >
-> That should be fine.
+> Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+> ---
+>  drivers/staging/speakup/main.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/speakup/main.c b/drivers/staging/speakup/main.c
+> index af30b70..9db7160 100644
+> --- a/drivers/staging/speakup/main.c
+> +++ b/drivers/staging/speakup/main.c
+> @@ -1973,7 +1973,7 @@ static int handle_goto(struct vc_data *vc, u_char type, u_char ch, u_short key)
+>  		return 1;
+>  	}
+>
+> -	goto_pos = simple_strtoul(goto_buf, &cp, 10);
+> +	kstrtoul(goto_buf, 10, &goto_pos);
 
-What Kernel message should I include within the printk statements, if
-any? KERN_DEBUG,
-KERN_EMERG, KERN_ALERT, KERN_CRIT, KERN_ERR, KERN_WARNING, KERN_NOTICE,
-or KERN_INFO?
+I haven't looked at this case in detail, but typically the cases that
+still use simple_strtoul really need the simple_strtoul functionality.
 
-Thanking you,
-Nishka Dasgupta
+julia
+
+>
+>  	if (*cp == 'x') {
+>  		if (*goto_buf < '0')
+> --
+> 1.9.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1520538226-15590-1-git-send-email-nishka.dasgupta_ug18%40ashoka.edu.in.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
