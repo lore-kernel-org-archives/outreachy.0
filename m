@@ -1,107 +1,75 @@
 X-GM-THRID: 6530656197776769024
-X-Received: by 10.107.10.39 with SMTP id u39mr19498400ioi.115.1520538563841;
-        Thu, 08 Mar 2018 11:49:23 -0800 (PST)
+X-Received: by 10.28.128.141 with SMTP id b135mr2386725wmd.15.1520538337084;
+        Thu, 08 Mar 2018 11:45:37 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.141.79 with SMTP id p76ls928950iod.8.gmail; Thu, 08 Mar
- 2018 11:49:22 -0800 (PST)
-X-Google-Smtp-Source: AG47ELsf+qvmfap9nFcEppfMgc20y41cxr/1B3W1sep2oCZk8amaeGypEM0NDeiEUMd2jws0gYZ0
-X-Received: by 10.107.199.195 with SMTP id x186mr18504316iof.98.1520538562450;
-        Thu, 08 Mar 2018 11:49:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520538562; cv=none;
+Received: by 10.28.12.195 with SMTP id 186ls380wmm.8.canary-gmail; Thu, 08 Mar
+ 2018 11:45:36 -0800 (PST)
+X-Google-Smtp-Source: AG47ELuCjHvpF73T5PWigxX/wM1YTW+fuHiMCyhSbmR5L73HWADAuMcNjk0AxxrwtSmiAuB+nENz
+X-Received: by 10.28.128.141 with SMTP id b135mr2386658wmd.15.1520538304020;
+        Thu, 08 Mar 2018 11:45:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1520538303; cv=none;
         d=google.com; s=arc-20160816;
-        b=drGspLBIzOcR/+MnmrpwU51+egVQDAMi0/QOCyQ4LRIthwXRmVhAxMmAqix879cXkl
-         1ZSDNJGB0E2795L7G24OESTuuJX97QZ9xTi2jPuMwjRB131U1kXFnuzMiiC7cyc+TAZz
-         iq6+Lt7fijkSvrDizrsqZPWTqBnrZojIzIZqyx3aMk4Sw7b803bxV19h8/16pF0lz8Op
-         nbQVJgFU7ZPAg9wX3GJktDweIJZzPTmqTrq3Krt8cWAAkKRZXlhu0RoYBtQzW/Zh6uGl
-         SsQTBbQrA3wtWse7H+lxlN68EylYGoxz90/4eXhhf7PH3gT7L6qx6bb48aQ6j7W9qiik
-         9Gjw==
+        b=qSc3wkRjVe/whGBJj8BAJmMew65WAcKYGWKwHjxMPybXCHwicfTf5yqe0yaT6z6AM3
+         VK381oBjtG+vwxpnzwplrK72l6jRU6KvdK71TBkzDGh5MN+sUTKtoBmiXaN02nN4Al8W
+         tjeVOEjOmVSnuwDOIJfOSPNzlPdp0dTYyzTkscH/tqSXLtFhREnY5n+vs4fYiWBc+xoP
+         mfcIhAlvXeFm3nl/Oy6QouPhvO0gHiZK2dB2S4BLmwN/ZPMa/YsvXIyF76xoj32AYjix
+         ir9mNgE6CeP2y8nuCtbvEQ80X1G4VM1UOYehiXo4+ZKomZIfC7OMYEUop7Yw8ryJV35A
+         U9Ug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
+        h=user-agent:organization:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :arc-authentication-results;
-        bh=brxK225oUu2ssiEKRpLeKgydulAr5RAGOjnlxOpOQKk=;
-        b=Uuc/d4xhsFqm9Pru9RBTeEFJtsjlZQKhDYth7SpcOUONfFirbaO1SoVlnk/oznD7da
-         CaUOKrg51Sxxx0R5nAqine4C9tm8Tqk+DNImyFJYqgZA51MCYW9bMUvNSJajMUr48KFG
-         gkApPQqj0II0hFmywO38wwNVAInFNt13TckDJoo7IKpOefRakJC+aOGRnXWJrsmb5EkJ
-         /sG5gJMJrf8r6b96uGAESI5ErpLyxWiDnM5KuqT0TQwDA99zfOODqh07an5xQpwQpPHE
-         HjbxAT9YvlEtO5D6MdyW1h5m/dtw7djUeXEju4viIvrl3yCHMCD+q8nDcn7Uze5LRqbg
-         VPiA==
+        bh=slkh9UJJX4fMKFyGYkfaBk2ECsi/vR6LqhC0P3GtosI=;
+        b=zWcZLki3jroiVaFZ9c6Tiexm9X+54RTz2HEwWFcL6WwkHzGqaZ9Bia4pQ/vjNHdbmp
+         Jp8AyRgqYSzmz3tHZgNLxM/rzGCsB6x+77QVoy61j/HP2QcPoy/hrCm0W/Y37X2HxNUa
+         YoOkxTOWwmo3jQq2dDBaqXp/5fGOEMSyq6LUO91mIa7+u7GWMxM3cI8eo4jbNM8S8+dv
+         AbApabx69uwWy8VGwpBx1B6vQTULjoTL0LiqtiGvWeLxzVxEjcF/B9RLA0ka6gH3vOfz
+         WFq91lM/Gj5hzIcnAQY8IdR6+T8IhYxQ02K/6zwYH19P/migEqJREr0w0f0EIQEfa0FF
+         kVTg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=CS4IIhCR;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::244 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from mail-pl0-x244.google.com (mail-pl0-x244.google.com. [2607:f8b0:400e:c01::244])
-        by gmr-mx.google.com with ESMTPS id o185si883514ite.2.2018.03.08.11.49.21
+       spf=neutral (google.com: 185.233.100.1 is neither permitted nor denied by domain of samuel.thibault@ens-lyon.org) smtp.mailfrom=samuel.thibault@ens-lyon.org
+Return-Path: <samuel.thibault@ens-lyon.org>
+Received: from hera.aquilenet.fr (hera.aquilenet.fr. [185.233.100.1])
+        by gmr-mx.google.com with ESMTPS id m29si875891wrb.1.2018.03.08.11.45.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 08 Mar 2018 11:49:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::244 as permitted sender) client-ip=2607:f8b0:400e:c01::244;
+        Thu, 08 Mar 2018 11:45:03 -0800 (PST)
+Received-SPF: neutral (google.com: 185.233.100.1 is neither permitted nor denied by domain of samuel.thibault@ens-lyon.org) client-ip=185.233.100.1;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=CS4IIhCR;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::244 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Received: by mail-pl0-x244.google.com with SMTP id 9-v6so3895763ple.11
-        for <outreachy-kernel@googlegroups.com>; Thu, 08 Mar 2018 11:49:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ashoka.edu.in; s=google;
-        h=from:to:cc:subject:date:message-id;
-        bh=brxK225oUu2ssiEKRpLeKgydulAr5RAGOjnlxOpOQKk=;
-        b=CS4IIhCRpMCY8YiPaxCh2c4m1OwGVTTwih553H35PcWAnvJ5mr500xOuU8Rj5TC+I/
-         vm1/t0Q0trnmM+S6B2/ewYxfkqgBylh0cksfFt9Qt7BDAgLVSc1XHfwPdqH9oDsB5Fxs
-         sh/xjv3uGHI1BTMud5d8tkaWg4dQ7CF04uZZU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=brxK225oUu2ssiEKRpLeKgydulAr5RAGOjnlxOpOQKk=;
-        b=VHHA16cw6mqOtxZpBs/onquznfoTib+5RJ/WZVli+Z4S1unlPP/rgddNvt/Y8dA0uR
-         td1OOdsmIph+h6goBCdcfwM9hfH96z+CZ+qt6xQOCyhriqDDe3TTBt4oPm0FWhre3zZy
-         KegJNp1APxSgHgE9+7tBlUZTX8b9gn30PhZ68JqZ5E9pW6KtCaXvnuHGYf6BUrz7RH3s
-         w55ExrwOfhVe1mUc4UeeaP95luRGX5tptJsXiY2iEEmWhtCgOG5NRHPBIVJHlES+YCb0
-         vdkAnKV4xW7F3uQKvDnGGP5IKCjce5WzbGHOxiSPbV3qqa09SFg7APDSp6wuk0Crpq7f
-         MH4g==
-X-Gm-Message-State: APf1xPD8zoUC6codM1gVVd8yeZji9nFsGPqCmQ9iRVJv+kAiEHWfIcjm
-	Y+P9Gj5SmoVqKATiat6wppE5Qg==
-X-Received: by 2002:a17:902:6909:: with SMTP id j9-v6mr24492382plk.447.1520538560946;
-        Thu, 08 Mar 2018 11:49:20 -0800 (PST)
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from ashoka-ThinkCentre-E73z.internal.ashoka.edu.in ([125.22.40.140])
-        by smtp.gmail.com with ESMTPSA id x4sm37193473pfb.46.2018.03.08.11.49.18
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 08 Mar 2018 11:49:20 -0800 (PST)
-From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-To: gregkh@linuxfoundation.org,
-	w.d.hubbs@gmail.com,
-	chris@the-brannons.com,
-	kirk@reisers.ca,
-	samuel.thibault@ens-lyon.org,
-	outreachy-kernel@googlegroups.com
-Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-Subject: [PATCH] staging: speakup: Replace simple_strtoul with kstrtoul
-Date: Fri,  9 Mar 2018 01:19:12 +0530
-Message-Id: <1520538552-16322-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 185.233.100.1 is neither permitted nor denied by domain of samuel.thibault@ens-lyon.org) smtp.mailfrom=samuel.thibault@ens-lyon.org
+Received: from localhost (localhost [127.0.0.1])
+	by hera.aquilenet.fr (Postfix) with ESMTP id 6D70A11F97;
+	Thu,  8 Mar 2018 20:45:03 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at aquilenet.fr
+Received: from hera.aquilenet.fr ([127.0.0.1])
+	by localhost (hera.aquilenet.fr [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id NBlecId2qeZM; Thu,  8 Mar 2018 20:45:02 +0100 (CET)
+Received: from var.youpi.perso.aquilenet.fr (static-176-158-111-12.ftth.abo.bbox.fr [176.158.111.12])
+	by hera.aquilenet.fr (Postfix) with ESMTPSA id C89F010BEB;
+	Thu,  8 Mar 2018 20:45:02 +0100 (CET)
+Received: from samy by var.youpi.perso.aquilenet.fr with local (Exim 4.90_1)
+	(envelope-from <samuel.thibault@ens-lyon.org>)
+	id 1eu1TI-0001t6-Jt; Thu, 08 Mar 2018 20:45:00 +0100
+Date: Thu, 8 Mar 2018 20:45:00 +0100
+From: Samuel Thibault <samuel.thibault@ens-lyon.org>
+To: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+Cc: gregkh@linuxfoundation.org, w.d.hubbs@gmail.com, chris@the-brannons.com,
+	kirk@reisers.ca, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] staging: speakup: Replace simple_strtoul with kstrtoul
+Message-ID: <20180308194500.4pha7j7n66ka3o6c@var.youpi.perso.aquilenet.fr>
+References: <1520538226-15590-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1520538226-15590-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+Organization: I am not organized
+User-Agent: NeoMutt/20170113 (1.7.2)
 
-Replace simple_strtoul with kstrtoul. Issue found with checkpatch.
+Nishka Dasgupta, on ven. 09 mars 2018 01:13:46 +0530, wrote:
+> Replace simple_strtoul with kstrtoul. Issue found with checkpatch.
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
----
- drivers/staging/speakup/varhandlers.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+kstrtoul is not the same as simple_strtoul. Here we need to have cp
+updated.
 
-diff --git a/drivers/staging/speakup/varhandlers.c b/drivers/staging/speakup/varhandlers.c
-index 3214055..e27bd5c 100644
---- a/drivers/staging/speakup/varhandlers.c
-+++ b/drivers/staging/speakup/varhandlers.c
-@@ -327,8 +327,9 @@ char *spk_strlwr(char *s)
- char *spk_s2uchar(char *start, char *dest)
- {
- 	int val;
-+	unsigned long v = 0;
- 
--	val = simple_strtoul(skip_spaces(start), &start, 10);
-+	val = kstrtoul(skip_spaces(start), 10, &v);
- 	if (*start == ',')
- 		start++;
- 	*dest = (u_char)val;
--- 
-1.9.1
-
+Samuel
 
