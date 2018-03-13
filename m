@@ -1,225 +1,134 @@
-X-GM-THRID: 6669430672000548864
-X-Received: by 2002:aa7:83cd:: with SMTP id j13mr3838925pfn.133.1552847836236;
-        Sun, 17 Mar 2019 11:37:16 -0700 (PDT)
+X-GM-THRID: 6531834360584208384
+X-Received: by 10.223.155.145 with SMTP id d17mr12880wrc.30.1520937885138;
+        Tue, 13 Mar 2018 03:44:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a65:430a:: with SMTP id j10ls5540498pgq.0.gmail; Sun, 17 Mar
- 2019 11:37:15 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqypUv0WFkl2cIwne6zaef8KiKfhxleSRkeayOm1hWgpA9pOmb3foTVi3j1GHpbYTk3drW24
-X-Received: by 2002:a63:d04a:: with SMTP id s10mr5410445pgi.141.1552847835407;
-        Sun, 17 Mar 2019 11:37:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552847835; cv=none;
+Received: by 10.28.14.148 with SMTP id 142ls2055260wmo.11.gmail; Tue, 13 Mar
+ 2018 03:44:43 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELsKPwncpVEP9xFIKLVTWkgRza66BpxHaDt4n+uCmrUxoxLMlfdFmK6vJ5O2FZmn0uB/gx6G
+X-Received: by 10.28.190.24 with SMTP id o24mr45007wmf.10.1520937883567;
+        Tue, 13 Mar 2018 03:44:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1520937883; cv=none;
         d=google.com; s=arc-20160816;
-        b=LiSPFNcpqkqaGv+/tVxvlocIw/biEahkYWvNVurEG2dew5U5S/2mpHXIuIf9LGEpAX
-         +UkThOTJa35TvdNeuwEc+N9MlIpeOqxXRDKBufyHOKIvRRAIrBYTBfuDt6T83+TZKi9E
-         63uC66t66Bk7zxouI53Bs7Bn+/IrXxgqKWd0XlCnwqCSxdA1wEyBDUhztSMbWyqfCC75
-         rCuREmt7a4DSIklHAtR2EDxDwHdhZ+IK97gvrB061NPrjyST6iIz6LUz9olBjNP22iaI
-         1+4nT80H1DIz3YHUBPrXzlx3Rt+GjfPSh6pp8FsEzFtAX8nLs6pGYUXwQXj/0hTThlLD
-         6Ytw==
+        b=YiJix0Muo6MFMmTzSnoLn09QGX7ZP0yWt5uqqRGlmkmX+Lu7dAaWNjfTrq3mOicg2f
+         vAEHzexHZb6eDL0DLXBjggi6wV5waclsRa1hDp7uAu+OiNaTAFNq/FUTf84YPu+/4FUV
+         cHJnKj/2LHczfMvQF5AQLyjXbPkeV+acyPUn33E4c3odYy4gVLbKWycfDi6jhoXGIr5y
+         J7FjGawYhexAUtpMYO0LTlUFOEJkNZhobG3k1ZEDleeB1AhegeT5MEjSNQiOLNMAhkwB
+         VKMf2wT2uFBfD4LjybAl3+jCwdCH1C+zdA9ajxrsnT1L6weclETY0EVVQgre/FtiIT+7
+         9tfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=mjIG3pTIBD6h3ratgw5I0v5TmM+IReN/YrWBQEgoNj4=;
-        b=n99UEzCsPwa9jrexHTFTcSNQJIWdMbXmNcx5633oJn+unG+fzf/GZHE2JR6s/qTGy5
-         gQvwviZIptIHyexWS/zY7t5M7dg58ZId2y5zS68hF+KGJ7GiAxqETWMdWAN47tJTnSg5
-         bxnKLj/QVCwoO0gb1bfB5fytwR3S4Sah/7j5rFbFato8pMY0x6tXAkHtS47qmazny7A5
-         IkRmuuGmP25YV76aYpP7MOIfwLuyn47ADTiZRcXeR5CyQ7QNtStGW9XFnRTqeT1mDKAu
-         S1gOA73gQS3FROup+d/2jiJYrBBX9nPA0uMJP3d5Od38My3HcKFpGoy9L/kCYuRkLppz
-         gVmA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:sender:dkim-signature
+         :arc-authentication-results;
+        bh=nsX2rSbgVpLdctwfAJWcaTMxtLVKfMWI7M5Ke6IOsmY=;
+        b=P4SZlEsZoddsVfBiLsxC2DEqRg4CzYqlG/yUPX7D7HZ1ZyuqjQ2ZzLM/iWq2Fuhg1x
+         LFvj6DioaPie1TYiKXG8CowfPHoM5Hh4setsPLkylLVIWI53C3M9vHh5aKLCJk/pbJvM
+         WLEIm8qBPFP3+WV8z7d9kGj4fMz0Yrif4c8CcGGZUykHOPNhkleWnHO1OE5fZZo4W2xN
+         qa9QQ1DE0zpW4x2s7HAKyVIIZnREXVEJzM56hmLUzBTa4gpd6rLLK7QHpulSs4jL9M+b
+         UbfC4hDbqDtfMioS2hXAoRvSl5FUoSa0pFMs21EnLXvN9h/Iys6cv8/EevcxEs+a0oiS
+         2c2A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fxGgLLB7;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
-        by gmr-mx.google.com with ESMTPS id d62si325219pgc.5.2019.03.17.11.37.15
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=JEroWpB8;
+       spf=neutral (google.com: 2a00:1450:400c:c0c::22d is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
+Return-Path: <daniel@ffwll.ch>
+Received: from mail-wr0-x22d.google.com (mail-wr0-x22d.google.com. [2a00:1450:400c:c0c::22d])
+        by gmr-mx.google.com with ESMTPS id s18si1265wrg.5.2018.03.13.03.44.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 11:37:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
+        Tue, 13 Mar 2018 03:44:43 -0700 (PDT)
+Received-SPF: neutral (google.com: 2a00:1450:400c:c0c::22d is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) client-ip=2a00:1450:400c:c0c::22d;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fxGgLLB7;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x442.google.com with SMTP id v64so9709702pfb.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 17 Mar 2019 11:37:15 -0700 (PDT)
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=JEroWpB8;
+       spf=neutral (google.com: 2a00:1450:400c:c0c::22d is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
+Received: by mail-wr0-x22d.google.com with SMTP id o8so21163687wra.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 13 Mar 2018 03:44:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=mjIG3pTIBD6h3ratgw5I0v5TmM+IReN/YrWBQEgoNj4=;
-        b=fxGgLLB7U3JKxI3UCaiCb5SHUkAODz6NVnliDDro3U313pcrXMMNzNBVRf3GCVXvOl
-         qjQaK75/PX9FPgwLei3uz3fb38TeXy5QirrrNsweRm7AYwuK9lcHCY/p1NAU1aqEQn4A
-         MYILLWIlv2r4EXxeiUPxwEmMdIUAx6mrN34g97OiLJRe+0qc7Bftax5R4P1In0S9v5Mr
-         qHoZebVr8AZtUUzcb/ZCEP1yo4ZIgvQj9NK2DNLFcpRyWPfJukw9Xb6sb9+1YQ45setU
-         y5DEpwjzC219wNtoCqb8ZqUOT1XsMMoCmxedPEhrL9MD1VTYJJYtffe5ucPuUKrXK2ce
-         8ePg==
+        d=ffwll.ch; s=google;
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=nsX2rSbgVpLdctwfAJWcaTMxtLVKfMWI7M5Ke6IOsmY=;
+        b=JEroWpB8JwyAWgw4cd6JBwPwuyVwxZdBnAcJrw3G1QEkrFdIDITrQfunYhD8UKjZdc
+         BOueKjUfia70zx7b4RiPDFVMZPLxL2EBqg+SxSrDgjRoEXWxy4xqDzXjkhmEPNxOLnnV
+         kPeVFVWsaMBCzy+4lFosRMS1R+iYfQYn+a2j4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=mjIG3pTIBD6h3ratgw5I0v5TmM+IReN/YrWBQEgoNj4=;
-        b=DvcYa+VezEKviK89StLTrbMxMXGB15ILmXbteCQ6Huke0cU0ZwpxNHx69IHFCl5xA1
-         1ZPRt1IAZg3rkzfRh1nVzDntAUrnHqQcvTr+4KnZApEYi8EZQfAMMZGu3lJoRy3tmFVX
-         bMCUZcMnEAtipve9DCprM83IsZswcDDttoBz9rT6IuUIfuBPnEeYBUAxIzzJOj8GjAhu
-         zfN9c1OdiGcvCNPjAQ5znlPv1K/DyH5jyzL6BLkNwQdzidNKTRKdPYw3Di8BO/xUrVab
-         q1ceupuU6EkIqlwCdhtMv5p+LADeiIPYuF95GGfbppWMeaoO3Yv89nIuWUbGzLTe2oHF
-         0qwg==
-X-Gm-Message-State: APjAAAU3GZseKgBDYrvdRtQoPtsGbgLWjzLsDu7h28jjdlGVvO3R4Q7k
-	Tvd0Wk3ZNsffCmFk/n9BRFfOG7cH
-X-Received: by 2002:a17:902:45a5:: with SMTP id n34mr15986282pld.127.1552847834794;
-        Sun, 17 Mar 2019 11:37:14 -0700 (PDT)
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from localhost.localdomain ([49.35.84.34])
-        by smtp.gmail.com with ESMTPSA id b15sm13744338pfj.167.2019.03.17.11.37.11
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 17 Mar 2019 11:37:14 -0700 (PDT)
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [PATCH] [Outreachy kernel] staging: greybus: remove extern prototypes
-Date: Mon, 18 Mar 2019 00:06:55 +0530
-Message-Id: <1552847815-14090-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+         :references:mime-version:content-disposition:in-reply-to:user-agent;
+        bh=nsX2rSbgVpLdctwfAJWcaTMxtLVKfMWI7M5Ke6IOsmY=;
+        b=VEl5eiXs0zdyajlE/dcZHo3WUks8tJOYuELIFkyAcQkRK0N3HnK7xsjiChcw4fhyGg
+         bIwVg5iihvcEdlW+PXc2sW7jcq7aTNkdwYX9/KnJMzh1grXUqA0nHlpk/na+ppgqoheI
+         gF7O5HxJDNoss9V8dsSkT6QvpTiRcLvgOJ8BFrRdmfzpvUOwJYLjQTOC2xou1cxMf1JT
+         7hWHSJPJ3avo6nGwHP7hotcHezWhJKC7LbwzCPQYgoGW/qbD9t0qxIs161QPUIy47dVf
+         5q91gaZhMZZ3eC7wvVSDgUjUi9KQL0JiovURVwnEr/6Z271fX+SjkgZ3+jO6erfR6wxi
+         VuEg==
+X-Gm-Message-State: AElRT7Hf4KeQ/U8aPTgDcj9IUH0AP/M9FCz3ONOs1VxnwEl0PZolPAjj
+	GdJMX33t+qlUZCR18f+SEDwIug==
+X-Received: by 10.80.182.48 with SMTP id b45mr362506ede.87.1520937882927;
+        Tue, 13 Mar 2018 03:44:42 -0700 (PDT)
+Return-Path: <daniel@ffwll.ch>
+Received: from phenom.ffwll.local ([2a02:168:56e6:0:e4bc:76a0:8042:669e])
+        by smtp.gmail.com with ESMTPSA id u46sm264276edm.57.2018.03.13.03.44.41
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 13 Mar 2018 03:44:41 -0700 (PDT)
+Sender: Daniel Vetter <daniel.vetter@ffwll.ch>
+Date: Tue, 13 Mar 2018 11:44:35 +0100
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Sinclair Yeh <syeh@vmware.com>
+Cc: Daniel Vetter <daniel@ffwll.ch>,
+	Haneen Mohammed <hamohammed.sa@gmail.com>,
+	outreachy-kernel@googlegroups.com,
+	VMware Graphics <linux-graphics-maintainer@vmware.com>,
+	Thomas Hellstrom <thellstrom@vmware.com>,
+	David Airlie <airlied@linux.ie>, daniel.vetter@ffwll.ch,
+	seanpaul@chromium.org, dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH DRM] drm/vmwgfx: replace drm_*_unreference with drm_*_put
+Message-ID: <20180313104310.GA4788@phenom.ffwll.local>
+References: <20180311233313.GA19721@Haneen>
+ <20180312173443.GP8589@phenom.ffwll.local>
+ <20180312174246.GA32341@vmware.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20180312174246.GA32341@vmware.com>
+X-Operating-System: Linux phenom 4.15.0-1-amd64 
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-Functions are implicitly declared with "extern". The compiler doesn't
-need it.  extern removed from drivers/staging/greybus/audio_codec.h
-file.
+On Mon, Mar 12, 2018 at 10:42:47AM -0700, Sinclair Yeh wrote:
+> Hi Daniel,
+> 
+> 
+> On Mon, Mar 12, 2018 at 06:34:43PM +0100, Daniel Vetter wrote:
+> > On Sun, Mar 11, 2018 at 05:33:13PM -0600, Haneen Mohammed wrote:
+> > > This patch replace instances of drm_framebuffer_unreference with _put()
+> > > suffix, because it is shorter and consistent with the kernel use of
+> > > *_get/put() suffixes.
+> > > This was done with the following Coccinelle script:
+> > > 
+> > > @r@
+> > > expression e;
+> > > @@
+> > > 
+> > > (
+> > > -drm_framebuffer_reference(e);
+> > > +drm_framebuffer_get(e);
+> > > |
+> > > -drm_framebuffer_unreference(e);
+> > > +drm_framebuffer_put(e);
+> > > )
+> > > 
+> > > Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+> > 
+> > Reviewed-by: Daniel Vetter <daniel.vetter@ffwll.ch>
+> > 
+> > Sinclair/Thomas: Ok if I pull this in through drm-misc? Makes outreachy
+> > applicant book-keeping easier since iirc the vmwgfx tree isn't in
+> > linux-next. But ok if you want to merge it too.
+> 
+> Yes, drm-misc is fine.
 
-Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
----
- drivers/staging/greybus/audio_codec.h | 122 +++++++++++++++++-----------------
- 1 file changed, 61 insertions(+), 61 deletions(-)
-
-diff --git a/drivers/staging/greybus/audio_codec.h b/drivers/staging/greybus/audio_codec.h
-index d36f8cd..9ba09ea 100644
---- a/drivers/staging/greybus/audio_codec.h
-+++ b/drivers/staging/greybus/audio_codec.h
-@@ -173,66 +173,66 @@ int gbaudio_register_module(struct gbaudio_module_info *module);
- void gbaudio_unregister_module(struct gbaudio_module_info *module);
- 
- /* protocol related */
--extern int gb_audio_gb_get_topology(struct gb_connection *connection,
--				    struct gb_audio_topology **topology);
--extern int gb_audio_gb_get_control(struct gb_connection *connection,
--				   u8 control_id, u8 index,
--				   struct gb_audio_ctl_elem_value *value);
--extern int gb_audio_gb_set_control(struct gb_connection *connection,
--				   u8 control_id, u8 index,
--				   struct gb_audio_ctl_elem_value *value);
--extern int gb_audio_gb_enable_widget(struct gb_connection *connection,
--				     u8 widget_id);
--extern int gb_audio_gb_disable_widget(struct gb_connection *connection,
--				      u8 widget_id);
--extern int gb_audio_gb_get_pcm(struct gb_connection *connection,
--			       u16 data_cport, u32 *format,
--			       u32 *rate, u8 *channels,
--			       u8 *sig_bits);
--extern int gb_audio_gb_set_pcm(struct gb_connection *connection,
--			       u16 data_cport, u32 format,
--			       u32 rate, u8 channels,
--			       u8 sig_bits);
--extern int gb_audio_gb_set_tx_data_size(struct gb_connection *connection,
--					u16 data_cport, u16 size);
--extern int gb_audio_gb_activate_tx(struct gb_connection *connection,
--				   u16 data_cport);
--extern int gb_audio_gb_deactivate_tx(struct gb_connection *connection,
--				     u16 data_cport);
--extern int gb_audio_gb_set_rx_data_size(struct gb_connection *connection,
--					u16 data_cport, u16 size);
--extern int gb_audio_gb_activate_rx(struct gb_connection *connection,
--				   u16 data_cport);
--extern int gb_audio_gb_deactivate_rx(struct gb_connection *connection,
--				     u16 data_cport);
--extern int gb_audio_apbridgea_set_config(struct gb_connection *connection,
--					 __u16 i2s_port, __u32 format,
--					 __u32 rate, __u32 mclk_freq);
--extern int gb_audio_apbridgea_register_cport(struct gb_connection *connection,
--					     __u16 i2s_port, __u16 cportid,
--					     __u8 direction);
--extern int gb_audio_apbridgea_unregister_cport(struct gb_connection *connection,
--					       __u16 i2s_port, __u16 cportid,
--					       __u8 direction);
--extern int gb_audio_apbridgea_set_tx_data_size(struct gb_connection *connection,
--					       __u16 i2s_port, __u16 size);
--extern int gb_audio_apbridgea_prepare_tx(struct gb_connection *connection,
--					 __u16 i2s_port);
--extern int gb_audio_apbridgea_start_tx(struct gb_connection *connection,
--				       __u16 i2s_port, __u64 timestamp);
--extern int gb_audio_apbridgea_stop_tx(struct gb_connection *connection,
--				      __u16 i2s_port);
--extern int gb_audio_apbridgea_shutdown_tx(struct gb_connection *connection,
--					  __u16 i2s_port);
--extern int gb_audio_apbridgea_set_rx_data_size(struct gb_connection *connection,
--					       __u16 i2s_port, __u16 size);
--extern int gb_audio_apbridgea_prepare_rx(struct gb_connection *connection,
--					 __u16 i2s_port);
--extern int gb_audio_apbridgea_start_rx(struct gb_connection *connection,
--				       __u16 i2s_port);
--extern int gb_audio_apbridgea_stop_rx(struct gb_connection *connection,
--				      __u16 i2s_port);
--extern int gb_audio_apbridgea_shutdown_rx(struct gb_connection *connection,
--					  __u16 i2s_port);
-+int gb_audio_gb_get_topology(struct gb_connection *connection,
-+			     struct gb_audio_topology **topology);
-+int gb_audio_gb_get_control(struct gb_connection *connection,
-+			    u8 control_id, u8 index,
-+			    struct gb_audio_ctl_elem_value *value);
-+int gb_audio_gb_set_control(struct gb_connection *connection,
-+			    u8 control_id, u8 index,
-+			    struct gb_audio_ctl_elem_value *value);
-+int gb_audio_gb_enable_widget(struct gb_connection *connection,
-+			      u8 widget_id);
-+int gb_audio_gb_disable_widget(struct gb_connection *connection,
-+			       u8 widget_id);
-+int gb_audio_gb_get_pcm(struct gb_connection *connection,
-+			u16 data_cport, u32 *format,
-+			u32 *rate, u8 *channels,
-+			u8 *sig_bits);
-+int gb_audio_gb_set_pcm(struct gb_connection *connection,
-+			u16 data_cport, u32 format,
-+			u32 rate, u8 channels,
-+			u8 sig_bits);
-+int gb_audio_gb_set_tx_data_size(struct gb_connection *connection,
-+				 u16 data_cport, u16 size);
-+int gb_audio_gb_activate_tx(struct gb_connection *connection,
-+			    u16 data_cport);
-+int gb_audio_gb_deactivate_tx(struct gb_connection *connection,
-+			      u16 data_cport);
-+int gb_audio_gb_set_rx_data_size(struct gb_connection *connection,
-+				 u16 data_cport, u16 size);
-+int gb_audio_gb_activate_rx(struct gb_connection *connection,
-+			    u16 data_cport);
-+int gb_audio_gb_deactivate_rx(struct gb_connection *connection,
-+			      u16 data_cport);
-+int gb_audio_apbridgea_set_config(struct gb_connection *connection,
-+				  __u16 i2s_port, __u32 format,
-+				  __u32 rate, __u32 mclk_freq);
-+int gb_audio_apbridgea_register_cport(struct gb_connection *connection,
-+				      __u16 i2s_port, __u16 cportid,
-+				      __u8 direction);
-+int gb_audio_apbridgea_unregister_cport(struct gb_connection *connection,
-+					__u16 i2s_port, __u16 cportid,
-+					__u8 direction);
-+int gb_audio_apbridgea_set_tx_data_size(struct gb_connection *connection,
-+					__u16 i2s_port, __u16 size);
-+int gb_audio_apbridgea_prepare_tx(struct gb_connection *connection,
-+				  __u16 i2s_port);
-+int gb_audio_apbridgea_start_tx(struct gb_connection *connection,
-+				__u16 i2s_port, __u64 timestamp);
-+int gb_audio_apbridgea_stop_tx(struct gb_connection *connection,
-+			       __u16 i2s_port);
-+int gb_audio_apbridgea_shutdown_tx(struct gb_connection *connection,
-+				   __u16 i2s_port);
-+int gb_audio_apbridgea_set_rx_data_size(struct gb_connection *connection,
-+					__u16 i2s_port, __u16 size);
-+int gb_audio_apbridgea_prepare_rx(struct gb_connection *connection,
-+				  __u16 i2s_port);
-+int gb_audio_apbridgea_start_rx(struct gb_connection *connection,
-+				__u16 i2s_port);
-+int gb_audio_apbridgea_stop_rx(struct gb_connection *connection,
-+			       __u16 i2s_port);
-+int gb_audio_apbridgea_shutdown_rx(struct gb_connection *connection,
-+				   __u16 i2s_port);
- 
- #endif /* __LINUX_GBAUDIO_CODEC_H */
+Thanks, applied.
+-Daniel
 -- 
-2.7.4
-
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
 
