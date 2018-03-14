@@ -1,97 +1,103 @@
 X-GM-THRID: 6532869391138160640
-X-Received: by 10.223.134.9 with SMTP id 9mr711265wrv.22.1521062289054;
-        Wed, 14 Mar 2018 14:18:09 -0700 (PDT)
+X-Received: by 10.200.6.140 with SMTP id f12mr3691100qth.16.1521052185786;
+        Wed, 14 Mar 2018 11:29:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.14.148 with SMTP id 142ls607859wmo.11.gmail; Wed, 14 Mar
- 2018 14:18:07 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELt2MqD3WeYYFKBQ8LS3ng7oPwLHQ+v66i7gDwtbQP150NU1QykJ3e5Om4eZDDRdkac5incA
-X-Received: by 10.28.94.210 with SMTP id s201mr391022wmb.6.1521062287802;
-        Wed, 14 Mar 2018 14:18:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521062287; cv=none;
+Received: by 10.200.68.10 with SMTP id j10ls1406551qtn.6.gmail; Wed, 14 Mar
+ 2018 11:29:45 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELug16LQ4h1Odl5hQsvbI0E8e9EG6DKFAWSzbgtLY8YnBk4j5cOxf3tbf2+lzJSY6IlSBPUq
+X-Received: by 10.200.14.129 with SMTP id v1mr3875885qti.14.1521052185039;
+        Wed, 14 Mar 2018 11:29:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521052185; cv=none;
         d=google.com; s=arc-20160816;
-        b=IRbRSQqpqD1kNTf2iAzqe+S+w1/TRs7N2I+RHfLi1vcArodYt2bWAcZV+qyB7zR+Fx
-         6AgFiHLHjKLQKABanRrURwk5DmUFMH0PYXe6oqXqCV7Q/ML49bNmAMNBhYOPZWvFijxC
-         qT3E9sCkNlByLFxF2DC1Q6UrylMLgR19XN0i9nlrnvGswzTvggkg4I+HZDDlj1hnfGES
-         wcHodxBX05WnmSYxm6K1xWoG5DuKNnLSwD+fhnM5QXxGXLQSJ9t0KNyXuxP4wdY5NWoC
-         kYm3HC67wEsJmkmRUii+R4xNNHse1/gbUxSIwUAwcMNy5bNM+hzeX3GkUz5SZ7aqXTQO
-         2KEw==
+        b=ej8FCtcPjV2hkfJqck+suYIFPfIiEq4q4ApVsq3vLdIjlqptChjK46UVDbZlYWmGZU
+         NDkPnVR4cn9j304Es7dveNBoQ81oWS0MCe8TP8zytZ2fOM8bJnQRlv0H8KooZdoaJFX5
+         V96w0X7O4+csZp9NCgrZRd64w84jYb3sTGAy2DEkyNiICTU+yrRMc1dPkxIhkDlo4hJi
+         azbRe6TXFwZxDpDtHD0zexEhOfMOVW7A5hLHtDrlXVCtaKdTm3RRc6Q274T1DjML/1D0
+         P6NX0+YKKo3grQQW7bw+fNhd2wMchqT2WbSdjm2c7YYidSKcOY0g3mjy0dYNXa6XksUM
+         Aeog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:arc-authentication-results;
-        bh=r46GhL9yWQljoUj0N+14DO7LQrgCMRiPVrhqSvmR1y0=;
-        b=yunNO5SS0ZA11JwqocjSJRIXkysKuM2xgyA2YphnhZ9ARJrcRiL02PR+gZPE7ldHrc
-         Md7UFIorL3XRG/OU3c6k7D30qYSp6RlunOILE+3Nf/wGKniudeY7+kqKHoPubiUpo1/O
-         eNppZ8cHf6tEp7g19wFnQoADTp3DVewek5UfotBtdQCYov5NBI04xrtr1mkIRxLDpb1P
-         MoxD4so+6ZmYjcB8dlYERhhTJMz25d7VgpmIK+IZEl1pQWrCUS6toKYZ3d3EFpI+um8o
-         S5L0DbYTkfyBZXsrZ2KRn6hESXOsw5O8zH6bxINIugKM/1IYxRbI6nCyRDgUcEf/tuJD
-         NVVg==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=ufbwT8EnWgSCIPXRva6LBKsNllFTPn824G1rSMMmMuw=;
+        b=M47/50vjtfuco4pYwVRzObvCOG9tdxHrj4hbsNxEaEHHE+kKbPSXKIaqu4hkGqWxRh
+         wGKCktXX+kSrcC+Ue6WYFdNET+dqioEgTWMFWXESOw82OnMY0djBqpUXzwkSJTl8u8tk
+         wbt8x4PZOYK/3Tuv3vkZAAunMj/bUtM5JJnhOE5weK+dAM4QwsOlviMXozawtRCti97K
+         Hb6hvA1gpsnJJqgc+PpPYLTBf6hiLZ81yKZNgF/ceoBtgFElL8sh04Qo4I5P0h5d3V23
+         GemGvsa9py0Ff2gO7KaGunB4L5FZuazL/EgQxlUB/y+IQ1gAgzyuqV8Abfn7bBuNqKc1
+         xcqQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id x16si108480wmc.1.2018.03.14.14.18.07
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=eh5Gi7jn;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::22f as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
+Received: from mail-pl0-x22f.google.com (mail-pl0-x22f.google.com. [2607:f8b0:400e:c01::22f])
+        by gmr-mx.google.com with ESMTPS id a19si96121qtj.0.2018.03.14.11.29.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Mar 2018 14:18:07 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Wed, 14 Mar 2018 11:29:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::22f as permitted sender) client-ip=2607:f8b0:400e:c01::22f;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.48,307,1517871600"; 
-   d="scan'208";a="258324683"
-Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 14 Mar 2018 22:18:04 +0100
-Date: Wed, 14 Mar 2018 22:18:04 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: ks7010: Remove braces around
- single statement
-In-Reply-To: <1521052170-27685-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-Message-ID: <alpine.DEB.2.20.1803142217530.2326@hadrien>
-References: <1521052170-27685-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=eh5Gi7jn;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::22f as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Received: by mail-pl0-x22f.google.com with SMTP id ay1-v6so2182243plb.7
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Mar 2018 11:29:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ashoka.edu.in; s=google;
+        h=from:to:cc:subject:date:message-id;
+        bh=ufbwT8EnWgSCIPXRva6LBKsNllFTPn824G1rSMMmMuw=;
+        b=eh5Gi7jnhVzkL55PnoHOuPVe6C/zwA/PtMH63qhz+Ynnw83tuHEW0u6B5rb8TAkHqr
+         ypxfYqHIfuzgZDUSJN7u9PN2Qy2Ylw5H2QGFUDUPWhj1DndLZWAjsiMSW1aCu2DJK/Wv
+         ED+kje/ds/b+u757HiQRnnISve3FFPMARRDm0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=ufbwT8EnWgSCIPXRva6LBKsNllFTPn824G1rSMMmMuw=;
+        b=qYC6z6Chn5NFMDuxFAsiG8ITqcnsQi9vnxFdujR3OkqmsQp+JMcqllE8G3ud2b9zZ/
+         dDfmNlocAYlOSQ31C8SzZfJVd96ctWH7LoMiT1YZEb+uoZdLL6U66wB1MsrcbVmxSohI
+         //jRPlzvLBgW3QzuwOimwVvad1S+1dtags98Q4SgHWIVQGPbCQKNO14OWL0Q2QIm1pM/
+         1ajiEal+6eoZCvH3Jbdr5A7/WrKaR6REKD19zZxVXzM3WUs7rFLkeIJ7rvFQKga59DMu
+         gljHuv4nIrR9uQTlzviWKJBXK4mOmc97GF37kReSc9y/ZHQ4i4IzsAC05ueNDNq+A6/+
+         hKEQ==
+X-Gm-Message-State: AElRT7GbgNnqTyKFYdBxCkoX8VyfkbW2vQR8xIR9FxN7TS+I6fz2gJus
+	1A1S/nm+obB+IlCnuA6m2rhiwQ==
+X-Received: by 2002:a17:902:c6b:: with SMTP id 98-v6mr4901011pls.267.1521052184536;
+        Wed, 14 Mar 2018 11:29:44 -0700 (PDT)
+Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
+Received: from localhost.localdomain ([139.59.85.247])
+        by smtp.gmail.com with ESMTPSA id y3sm5697339pgc.81.2018.03.14.11.29.42
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 14 Mar 2018 11:29:43 -0700 (PDT)
+From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+To: gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+Subject: [PATCH] staging: ks7010: Remove braces around single statement
+Date: Wed, 14 Mar 2018 18:29:30 +0000
+Message-Id: <1521052170-27685-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+X-Mailer: git-send-email 2.7.4
 
+Remove braces around single statement. Issue found with checkpatch.
 
+Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+---
+ drivers/staging/ks7010/ks_hostif.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-On Wed, 14 Mar 2018, Nishka Dasgupta wrote:
+diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
+index 05f7be4..c05102d 100644
+--- a/drivers/staging/ks7010/ks_hostif.c
++++ b/drivers/staging/ks7010/ks_hostif.c
+@@ -1385,9 +1385,8 @@ static __le16 ks_wlan_cap(struct ks_wlan_private *priv)
+ {
+ 	u16 capability = 0x0000;
+ 
+-	if (priv->reg.preamble == SHORT_PREAMBLE) {
++	if (priv->reg.preamble == SHORT_PREAMBLE)
+ 		capability |= WLAN_CAPABILITY_SHORT_PREAMBLE;
+-	}
+ 
+ 	capability &= ~(WLAN_CAPABILITY_PBCC);	/* pbcc not support */
+ 
+-- 
+2.7.4
 
-> Remove braces around single statement. Issue found with checkpatch.
->
-> Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-
-Acked-by: Julia Lawall <julia.lawall@lip6.fr>
-
-
-> ---
->  drivers/staging/ks7010/ks_hostif.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
->
-> diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
-> index 05f7be4..c05102d 100644
-> --- a/drivers/staging/ks7010/ks_hostif.c
-> +++ b/drivers/staging/ks7010/ks_hostif.c
-> @@ -1385,9 +1385,8 @@ static __le16 ks_wlan_cap(struct ks_wlan_private *priv)
->  {
->  	u16 capability = 0x0000;
->
-> -	if (priv->reg.preamble == SHORT_PREAMBLE) {
-> +	if (priv->reg.preamble == SHORT_PREAMBLE)
->  		capability |= WLAN_CAPABILITY_SHORT_PREAMBLE;
-> -	}
->
->  	capability &= ~(WLAN_CAPABILITY_PBCC);	/* pbcc not support */
->
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1521052170-27685-1-git-send-email-nishka.dasgupta_ug18%40ashoka.edu.in.
-> For more options, visit https://groups.google.com/d/optout.
->
 
