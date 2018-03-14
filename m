@@ -1,78 +1,78 @@
 X-GM-THRID: 6532871168257425408
-X-Received: by 10.55.178.66 with SMTP id b63mr8281156qkf.15.1521467530650;
-        Mon, 19 Mar 2018 06:52:10 -0700 (PDT)
+X-Received: by 10.99.126.20 with SMTP id z20mr1194011pgc.160.1521052599288;
+        Wed, 14 Mar 2018 11:36:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.55.181.69 with SMTP id e66ls4457176qkf.5.gmail; Mon, 19 Mar
- 2018 06:52:09 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELtWZr41ngJwTunP07A/NujNUfjMT8ud6esRmAQffR7gd20o58aOxEqyyn/nTl8VpFnmCHN0
-X-Received: by 10.55.78.200 with SMTP id c191mr7991136qkb.21.1521467529661;
-        Mon, 19 Mar 2018 06:52:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521467529; cv=none;
+Received: by 10.101.99.24 with SMTP id g24ls556759pgv.18.gmail; Wed, 14 Mar
+ 2018 11:36:37 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELu68zopXn3hiy6iPsnYQ7g3ZhA77Dstj/oXfKYIxA/dQnphQNxY/nebCOazbqU8kdGNLeM5
+X-Received: by 10.99.1.211 with SMTP id 202mr1220455pgb.53.1521052597631;
+        Wed, 14 Mar 2018 11:36:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521052597; cv=none;
         d=google.com; s=arc-20160816;
-        b=Aerbjfc5mdMhmsmE5BqTcTA+k8jEtq2fXAIIYA2fZYJ0hMwp/LuP+A+xmZ2tQnlQOS
-         iFsjNYhASpiF/H8VO0J6GadX/IJloQD1A9cNxWTBKqFuBiH2XikqrXSR6x0T+dY4jHS/
-         sXKBEieUOt9wWHEVpC0uTENKxx1gjAdYn3Bg+cIooWSt4hWRV3d5jDyoJqVrnxHhWmTV
-         vfaFt5oQzTvPJ3eC1sd8/X6lqIsC/jNf4pCXdFEUchi0h+uSUDzHf4kxu8KPJ+ORlrXL
-         LjunnSPEWHrf0eB3d9G0twxH70OXuSUMUNF30lCeSDZSmOyg5Rf1dNoS9kHzLC1p4Rr0
-         M9DA==
+        b=dnDok5ma7jyW1jgFXg50IXpW723CFijeeZXiF96b6Y7YtaR2kK3X77+0mkAtuoyMDP
+         VorfnHwokN5f4yB55ivm2BsYFFj8s4ZibzQwZsqxsSK/Eb1myYc14LPqPxLdcuK9HXZQ
+         4fFVsCVhpiNK/eMAz+IHlwcl4rUPD/+Zxk/jntXFTTQaNudiufHXOClJxtpPy2jQRoto
+         HWe3VtZNbrVY9pfvOpmvNmq/mUYPFyJWfRWcHtX3Y1LOmFfiHDkZgZJJUOfcKr7JlStW
+         N9VUGm2mJPaFiBHh8qcgnIBow6UEeX/DgAefugIs2RXPsxvyy/S6K6W8tAk8w9hIdecW
+         c7fg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=message-id:date:subject:cc:to:from:dkim-signature
          :arc-authentication-results;
         bh=9/LtihCTR2qAPyaDRJspTlobIQRN/IqnmYUJjwKgscg=;
-        b=CKbptveAtOg//tjLbBMBgoAg2AT9g01GaDuLoq3nV7T99P37b5rdjSu3fW4/TqcTsp
-         FgF+FBGdWrKjUFhc27+0S/4UDTWh1AXSBWecXeA3TA5BKAIF3tkZaoYsa0bg2sZcp9jd
-         YaZ1eg6EG1BKfgjkCBih+KdceI5SaFqr8ejxdkJ4VON1HcVSdf1ybo2gOj8TJdSQe8Fx
-         xVWfXSxBOds7yEdBes8PdOBJo1PXScG5fJcu/ofuswHwpQq6KxBuUKTLzVTxTd2sMKXW
-         EHlm10TJkPbRSDTDh9g0UV5fJXqVnMXb7lwYgJ4AzTp5eobsXfWF8ylbUN52hYSXxCGz
-         YwEQ==
+        b=OvLTUo9T3xWHCUq6+RikGJuhwXvZZ9Y2tryPpDS3wtKmnjEYBuEcKilfsJ5qwyh7fT
+         Mgb6mKM21IZxsoHP9xZ9ObjFejeLU0msmnXhPzOyc/4bC0NsUHdJ6616y2z13aEUQT29
+         pFQnmRzA1KYIwFrOKfxQ3y5ka7R56lepFXqNInJV6dbJ9XQDGjCTkw6NUlSzqznkZxc+
+         LUWeAkDexFFqnLYESywknzdHxJi/1cTnap5s+JPglIGR1i3oIPW9KTWYvOS1QxIiDjmh
+         IasR2IK72dmB7zF7FLFADcJJyrtqMF/aeqgyqDWSLkYuzicqbzj//+H7rucIKZ+Bmo4L
+         czMw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=JggyowBM;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=RnogVkz7;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
 Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id z15si4116qti.3.2018.03.19.06.52.09
+Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
+        by gmr-mx.google.com with ESMTPS id bd8-v6si222167plb.4.2018.03.14.11.36.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 19 Mar 2018 06:52:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Wed, 14 Mar 2018 11:36:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=JggyowBM;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Received: by mail-pf0-x242.google.com with SMTP id f80so7028114pfa.8
-        for <outreachy-kernel@googlegroups.com>; Mon, 19 Mar 2018 06:52:09 -0700 (PDT)
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=RnogVkz7;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Received: by mail-pf0-x243.google.com with SMTP id h19so1776044pfd.12
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Mar 2018 11:36:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=ashoka.edu.in; s=google;
         h=from:to:cc:subject:date:message-id;
         bh=9/LtihCTR2qAPyaDRJspTlobIQRN/IqnmYUJjwKgscg=;
-        b=JggyowBM4wlUATe5A/cim9pD9XM797lOO1Dyz4FrbjMUIm/IN2AufX08frwFWlQYLO
-         56X5pwDQ1B+Y1wnnUAl04QmszyBNRmDCCX+f0xrRshuJmyiPAKV6NKSjHIbCtXZwM7fO
-         lUmB1w1UR87cL4AAH37lq5/KHanLFxsgzPu8g=
+        b=RnogVkz7QRZK9IjqeAc3KfxwIR/LOOupMM8ABASPNszzKELMmsIG4PquJXt9MTMV8/
+         bYzPMyRk5emusOhm/BJRbS+NEn4fSXx9V4J6glu1xNs329C2D0xrLK7l7RqpfnIEnNJ3
+         I6PMffkFiyK1hTUOo4JFdCWYwkAHtK2PB3+Ho=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
         bh=9/LtihCTR2qAPyaDRJspTlobIQRN/IqnmYUJjwKgscg=;
-        b=hGBeuNV/EQui3RjFuLzwqcQoN23CZm0CVVMMZ2pa7brRQjSSqR3/XeX5OHqKcRIGSF
-         5DC2r2aiVqPx1sMqo+IHnL91Q0OkQ2VHU+ONTAbNxycDVDGVzuMyOY/VqDCUQUEt1kI0
-         He5SEoPjAQqZ9U8FB/aknne9vqKOikjXVZAP9YCAFhARBxhd3vDwJhIcw8WuWA1q9+6K
-         aBTs/9gR7veV1u5TGjJDKLphHJrqubUuaRHJHs0SolxEe6mzkhbRWf3oNS3zTakmSOMH
-         5pFyncndpqJXUD2MqGb+r0ryBV0LEF3eegErTfEI60DIlzlaUL8Nx22UyDN+6CZUzk3W
-         EA0w==
-X-Gm-Message-State: AElRT7E4Ju6SY+h4R1y4RMWJkRTOwpwOvQ37w1nQpMZMUW0lv9WVh2Wc
-	zSz2AypfNuL5hCgUw01ousicO0O+
-X-Received: by 10.98.206.77 with SMTP id y74mr1502229pfg.205.1521467528463;
-        Mon, 19 Mar 2018 06:52:08 -0700 (PDT)
+        b=o6VGDzpjHy1pxycRLH+rgJO4q/93tufQj1v/8IDriOotia5iO7PU1Czt2BfbOawI0P
+         ajVh3pwXTk6g6uCyQ7UniQGgdkHZzZXWyDTs2CXfKlEQT8FwoMqi0gyRzekc5XkgdNlT
+         w0K71CXes+dGzfZlN2kBtZ6nwG+JXzbAgk/JfjzYJapkUH0y/NuRGVb0/ZalF9+0fh6P
+         s5tdM4pf+p5pX3o/bs5xojqHSEWcgiwtDOvNSNZHZ0A+7qzEQEfZuBzNBgs4dVxw44GN
+         8IDWUvIKmoTty7zjSvqMTqtMsx78TjtUtEywV9PlOzi/CJrILsxPb19bYv19uJsKdCsZ
+         OWMA==
+X-Gm-Message-State: AElRT7HqKnhT6MMKtTAC34OAAWaDgYaKwLvYD7jh6VY1EGi07yUb9BFB
+	0/AOToaQ2X/naHQenvY/hL3BvA==
+X-Received: by 10.99.64.3 with SMTP id n3mr4648857pga.316.1521052597033;
+        Wed, 14 Mar 2018 11:36:37 -0700 (PDT)
 Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
 Received: from localhost.localdomain ([139.59.85.247])
-        by smtp.gmail.com with ESMTPSA id t8sm119444pgu.48.2018.03.19.06.52.06
+        by smtp.gmail.com with ESMTPSA id a17sm7639388pfc.122.2018.03.14.11.36.35
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 19 Mar 2018 06:52:07 -0700 (PDT)
+        Wed, 14 Mar 2018 11:36:36 -0700 (PDT)
 From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
 To: gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
 Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-Subject: [RESEND PATCH] staging: vc04_services: bcm2835-camera: Add blank line after declaration
-Date: Mon, 19 Mar 2018 13:51:44 +0000
-Message-Id: <1521467506-26815-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+Subject: [PATCH] staging: vc04_services: bcm2835-camera: Add blank line after declaration
+Date: Wed, 14 Mar 2018 18:36:14 +0000
+Message-Id: <1521052574-27793-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
 X-Mailer: git-send-email 2.7.4
 
 Add blank line after declaration. Issue found with checkpatch.
