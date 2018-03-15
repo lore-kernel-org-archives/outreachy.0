@@ -1,79 +1,81 @@
-X-GM-THRID: 6395378707824902144
-X-Received: by 10.157.16.117 with SMTP id o50mr4597560oto.78.1489040140407;
-        Wed, 08 Mar 2017 22:15:40 -0800 (PST)
+X-GM-THRID: 6533243345849810944
+X-Received: by 2002:a19:1450:: with SMTP id k77-v6mr873546lfi.27.1521148234019;
+        Thu, 15 Mar 2018 14:10:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.9.185 with SMTP id q54ls1041199otd.11.gmail; Wed, 08 Mar
- 2017 22:15:39 -0800 (PST)
-X-Received: by 10.157.41.240 with SMTP id g45mr4146084otd.94.1489040139947;
-        Wed, 08 Mar 2017 22:15:39 -0800 (PST)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-pg0-x22a.google.com (mail-pg0-x22a.google.com. [2607:f8b0:400e:c05::22a])
-        by gmr-mx.google.com with ESMTPS id g82si1042697pfb.5.2017.03.08.22.15.39
+Received: by 2002:a19:cfcb:: with SMTP id f194-v6ls639665lfg.2.gmail; Thu, 15
+ Mar 2018 14:10:32 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELt0+acGYtL8QGXKArbzmIJi12k8xV4iGwUv8j+PMibsJYYdb8pUej4yyxjk/0e/SW3zFD2+
+X-Received: by 2002:a19:9b88:: with SMTP id d130-v6mr879988lfe.43.1521148232137;
+        Thu, 15 Mar 2018 14:10:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521148232; cv=none;
+        d=google.com; s=arc-20160816;
+        b=MLTF87VXyBQ8yM98ZilzJbXebDQYWtlZV5GC3Oqa/aVn2kpj7sM3quY5q88k0vGOgZ
+         Jnk4yGSAvjH6tpev5DTgAAno6weFU81zxhVZTkvBTFi93H1wV3eIJR+gv4CGxs7jmPkB
+         WE9tXohkpPwnZ4AxtnTuSNQd0R3wnFgaOW0b3QeDUKHTbxikimdCaYU5ocW3naBptu2Y
+         J9uRJrpXIoFFWtxN50+8DrU1E5oTocx+FcidlvQuodmf4vaMSq0ijD+cj7RT1scAs0fs
+         aGIxjrOubecxZiVy5nzOT7DBfBVLKRlSH1XUJWnUeoku82oLkfIOvpuwHA5DN2qwnNFa
+         SYvA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:organization:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :arc-authentication-results;
+        bh=qilAOEiGIAEGUSw36WbCL7apBuNycAKv5WaoMOcX2QU=;
+        b=AoSJCYW2qTrsvMyG2VfZwYr9er7MUFkQjmvkVYHvvjZUW9Dz9I0oADqkCDmEfCmJzF
+         hU5UYtP91aziJVht0NTXzFjJN4kWpyPG6301SXdES7NuqmqIdZgUcx2f9CAl3CKsXPLq
+         bWhJ3FgixqXEXpCceqvONza1YNQp8aJisKavR4DKL451dkUS2EaXI2W97D8BNq59+fFA
+         4u5J2r+kg2BNL1yh/aLKSWU/rOR/JDTPjgo55X78RKhUVqteTJbPWYh50NneHkx4dqtZ
+         F99Yv5Qn5bh3IAN5v8XkB308vtwvKDE5mZKY9jTJnYsTVrEde/A734Vh78u4dzIcqs1S
+         3tMw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 185.233.100.1 is neither permitted nor denied by domain of samuel.thibault@ens-lyon.org) smtp.mailfrom=samuel.thibault@ens-lyon.org
+Return-Path: <samuel.thibault@ens-lyon.org>
+Received: from hera.aquilenet.fr (hera.aquilenet.fr. [185.233.100.1])
+        by gmr-mx.google.com with ESMTPS id w7-v6si183181lfc.2.2018.03.15.14.10.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 08 Mar 2017 22:15:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c05::22a as permitted sender) client-ip=2607:f8b0:400e:c05::22a;
+        Thu, 15 Mar 2018 14:10:31 -0700 (PDT)
+Received-SPF: neutral (google.com: 185.233.100.1 is neither permitted nor denied by domain of samuel.thibault@ens-lyon.org) client-ip=185.233.100.1;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c05::22a as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x22a.google.com with SMTP id g2so5108479pge.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 08 Mar 2017 22:15:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=wLjVq48f0gkf5HwpMeB4/XuyuMXpAUOQDGkmbCM5wAo=;
-        b=SErWlgUk+XfF7g9+NP5FVkdXDpE66HW42V81Pg0oC6OWJHTyuUayiX/uKk8sHrWXHC
-         xZUDfsVymLuOO4lPWcskHYpr6SRfzOAkB59K0u26TO2UEBODcGtC0pbdnQWm6XKXTG3P
-         wwHj0kxMvV/jqK3xNhkMN4SyskcLrGnntv/IKkRAF5ogKckZfxXDksWixBL8gUrj81rH
-         ds6tafMGeWHpWBlku/iNELaYKu1XBj+2j1r/mdQlynWOsLx/3tzJ+xGWquQvOot3P58I
-         RMYxoCrz1lmLtNSC1RtVphrgkNHwNiwR73EXm9SSvXZgjoPFVKwSxtVRtHlQRG78QoBD
-         tGlg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=wLjVq48f0gkf5HwpMeB4/XuyuMXpAUOQDGkmbCM5wAo=;
-        b=Jj3byC/1hPLctDl6R9tXX8+FOB0CdA6j9ZGbuBZBnV+PbPwMRTinojnx3FXCTfLdHW
-         YeuX9nQQ5BdL/sRnkIx/X5AXowhvmPtrW2/Do5AHozvSeHrUXPtrG9rOPQJSsmpRjIvF
-         zHg4tvhNq4GnZQPO+nuC/wxPxBAMlzLQXVvgU5KSZDJpzdEAt/NiGpAItMavYS1ALtjZ
-         r4fF0W2vMfWehNjDnBrjNwLj1Dhd1IUZh/reKFmi5Oq1FHg8xdNkaVX+YVxnJb+R6B/8
-         zR/RRVb7dDOouH9kqhFgOILENE3c7Kw1EF5YEp5SmVEO3nkQJ9eIPZ/oAw/ebjT8OoW5
-         oD7g==
-X-Gm-Message-State: AMke39lUsKvG2LxF4OEpZPXltnmIELGAqb7irVa/l7xvc4cKZE7sWXmEGwCr6TeI1Rg6cA==
-X-Received: by 10.84.150.129 with SMTP id h1mr14501040plh.86.1489040139477;
-        Wed, 08 Mar 2017 22:15:39 -0800 (PST)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from sayli-HP-15-Notebook-PC ([182.58.208.174])
-        by smtp.gmail.com with ESMTPSA id r67sm9612875pfb.125.2017.03.08.22.15.31
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 08 Mar 2017 22:15:38 -0800 (PST)
-Date: Thu, 9 Mar 2017 11:45:19 +0530
-From: sayli karnik <karniksayli1995@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Jonathan Corbet <corbet@lwn.net>
-Subject: [PATCH 0/3] Fix unintentional repetition of words
-Message-ID: <cover.1489039271.git.karniksayli1995@gmail.com>
+       spf=neutral (google.com: 185.233.100.1 is neither permitted nor denied by domain of samuel.thibault@ens-lyon.org) smtp.mailfrom=samuel.thibault@ens-lyon.org
+Received: from localhost (localhost [127.0.0.1])
+	by hera.aquilenet.fr (Postfix) with ESMTP id 8112312D24;
+	Thu, 15 Mar 2018 22:10:30 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at aquilenet.fr
+Received: from hera.aquilenet.fr ([127.0.0.1])
+	by localhost (hera.aquilenet.fr [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id QY1pofeH8cmc; Thu, 15 Mar 2018 22:10:30 +0100 (CET)
+Received: from var.youpi.perso.aquilenet.fr (static-176-158-111-12.ftth.abo.bbox.fr [176.158.111.12])
+	by hera.aquilenet.fr (Postfix) with ESMTPSA id E49F712D21;
+	Thu, 15 Mar 2018 22:10:29 +0100 (CET)
+Received: from samy by var.youpi.perso.aquilenet.fr with local (Exim 4.90_1)
+	(envelope-from <samuel.thibault@ens-lyon.org>)
+	id 1ewa8q-0003iC-Rf; Thu, 15 Mar 2018 22:10:28 +0100
+Date: Thu, 15 Mar 2018 22:10:28 +0100
+From: Samuel Thibault <samuel.thibault@ens-lyon.org>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>,
+	William Hubbs <w.d.hubbs@gmail.com>,
+	Christopher Brannon <chris@the-brannons.com>, kirk@reisers.ca,
+	gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: speakup: Remove else after
+ return
+Message-ID: <20180315211028.owusqtj5kugbnv7o@var.youpi.perso.aquilenet.fr>
+References: <1521139235-6133-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+ <alpine.DEB.2.20.1803151952070.3302@hadrien>
+ <CAC4++KCjSxSvzW_bhZ-+UHW=hhfSu=kZyknD2gkpEKyM_=iAxw@mail.gmail.com>
+ <alpine.DEB.2.20.1803152029420.3302@hadrien>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <alpine.DEB.2.20.1803152029420.3302@hadrien>
+Organization: I am not organized
+User-Agent: NeoMutt/20170113 (1.7.2)
 
-Fix typos in the form of consecutive repetition of words.
+Julia Lawall, on jeu. 15 mars 2018 20:32:35 +0100, wrote:
+> But the new code is longer and has more code duplication, so I think that
+> the code was better off the way it was.
 
-sayli karnik (3):
-  Documentation: phy: Fix repetition of word 'the'
-  Documentation: ABI: testing: sysfs-bus-pci: Fix repetition of word
-    'the'
-  Documentation: cpu-freq: cpu-drivers: Fix repetition of word 'to'
+Yes, please :)
 
- Documentation/ABI/testing/sysfs-bus-pci | 2 +-
- Documentation/cpu-freq/cpu-drivers.txt  | 2 +-
- Documentation/phy.txt                   | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
-
--- 
-2.7.4
-
+Samuel
 
