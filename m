@@ -1,121 +1,137 @@
-X-GM-THRID: 6744777307658911744
-X-Received: by 2002:ab0:42c5:: with SMTP id j63mr12713739uaj.5.1570390841128;
-        Sun, 06 Oct 2019 12:40:41 -0700 (PDT)
+X-GM-THRID: 6532874572090310656
+X-Received: by 10.28.203.134 with SMTP id b128mr40542wmg.31.1521137342828;
+        Thu, 15 Mar 2018 11:09:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:66c1:: with SMTP id a184ls1506110vsc.8.gmail; Sun, 06
- Oct 2019 12:40:40 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxHFiEJSjm0LG8aiipRpaOBbkheRr2m8p2YpA96rK3UatUXYRc4WhKL//VPranu3vnBIs1k
-X-Received: by 2002:a67:6810:: with SMTP id d16mr13314312vsc.206.1570390840046;
-        Sun, 06 Oct 2019 12:40:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570390840; cv=none;
+Received: by 10.28.71.29 with SMTP id u29ls1028026wma.5.gmail; Thu, 15 Mar
+ 2018 11:09:01 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELtdxeyk1XfMsbmPzDkmfavOBOwAyfdtalsuuSBnVZ9AnPJOiBGcS/Z6DTi11bylfHRaYi+M
+X-Received: by 10.28.7.77 with SMTP id 74mr376379wmh.13.1521137341910;
+        Thu, 15 Mar 2018 11:09:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521137341; cv=none;
         d=google.com; s=arc-20160816;
-        b=uH/tsf/JYUQLIqW9uWUXm4rt8ZYBkiybe+89VHuKxlkzBz28aUHS3/cDCCoq4jXuBz
-         k/q1FV5Z3TkGLanjZuFXsbEwz2NOMSF5+alv2+TnCO35/jQteB8CAFbEiBAO9vxlj7RE
-         Chj2OqLW1fiIiaN+GWWyaO8dz6XcBVP9L5fdoGahnm4zJUXzOTQZwLBIW69mpFx7qwYI
-         sKZqaJ2FdntuGub6KYUo64EukU+ehDP5QDnuhpUujhD2QuehXul+e7dF2Owaq7AKoA3z
-         +aY8Pc/lold6nRTCKsH2WEa7N0X/3MSnd9qj4Pac7g+I+nsEt8Oy4Fd4HhNL5QaAKfjs
-         gHyQ==
+        b=b79XJQkn9kz2sQ6PFknqlgItKs695xVRgRsVESAE1XgQwqItzI1qz1fz6bqzhKmr/r
+         JMcM301PJyo2Zv7z7e3cIMAGkSY8OcKk+1DS+oB3dp4TIhfsr7kaiTSdj5Avp7g74SJE
+         Mr2as2ZylrSGP4TRamQz5pwmDDDaNs23sRoqRWpsT8J0ncTgU4KERq0GUAXUVeWdlet7
+         myeIHmSPNnM3CCJAfHmYx4rEXm/9RkG/qtCIjckxuwNhGeC08nhafBYTg48JS7CGMoi1
+         aSmAmYlggYlLZieJms1mK0C3C+s1KVfaED7a+cd0IWYMAvjJ4xfhv1BNaR05uUYqEslD
+         mgRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=tAvJBPPuJlaqIzmhwS7DOMxS9kFELAL1Kh1UTZJWTvw=;
-        b=zkRE1r8PCy/Ofzl+CXQiKAdUwOhb4aWzDjGOAwBhbBy5CQMd/ENk78QdMnzrTn+iY1
-         HdVYssKN3jCUkJdpF02LXQicMPQG5tNkbKbGveYOYC5i1E6poqfbE2t6hDhtSO+UC/Ro
-         /3qTetgyTw4tM5vL6yF0qEtQX6Ad64HFOJUthcNb7U+Y92O1hcatCe5FXQAicfPGcM+O
-         dD+owjM2PjCRdZH0MDHXuyKGesjCznH3FbmNxGlrHDgTNIa7IOTuadMBRqaweD+Ea1Re
-         H59MCseoIlK1ILNMOgHGVMwlhq6OMpBVMeT7M3gwi8aQ5Tfq9USCkbwWDsPCrtSVf07s
-         OyWA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=ZOxl4wE8F6HSBx5vSfVJ7Otnwf3UEFjCgmKkeELqXjU=;
+        b=rPRanuJWftIWgSHst8ybEfSyzqiL9fxeco//2PADn7w5MJ0XtfB0sKth0GyepcnBMR
+         EXlHN0lBkZmmV0VMS2aMro5tSBLNcSKWI0Qri4A97j7viwPSi1iuDa9EgTaPW1HvfAIs
+         qgKYbEcQpytJtIc+6A5Ayi3ph8dTjEzmk//yF0k5r1lA3cYGWJnBVpOJVsWjzUH4JBKH
+         XK4FE0pLkvABWC38ymsj0AiX99c3USN6wXbC3WN915UbVaCmn4s1xuw5ar3kx13pPmAM
+         r/ddvxRGwrrvJnxf+GmAV4MN+gLWN5aLNtiZU9AfW36x8cFJcL3wCnln+4PlAPbdjNKS
+         fmGw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aWuTmuNt;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::743 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <gabrielabittencourt00@gmail.com>
-Received: from mail-qk1-x743.google.com (mail-qk1-x743.google.com. [2607:f8b0:4864:20::743])
-        by gmr-mx.google.com with ESMTPS id r72si1035102vke.5.2019.10.06.12.40.40
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id f137si192316wme.0.2018.03.15.11.09.01
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 06 Oct 2019 12:40:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::743 as permitted sender) client-ip=2607:f8b0:4864:20::743;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 15 Mar 2018 11:09:01 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aWuTmuNt;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::743 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qk1-x743.google.com with SMTP id q203so10713731qke.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 06 Oct 2019 12:40:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=tAvJBPPuJlaqIzmhwS7DOMxS9kFELAL1Kh1UTZJWTvw=;
-        b=aWuTmuNt/cwf8xULZEND+TalnK7/OAylSM+8h2yu5z428rgEIM0BsJ/0eOvXo9/aC/
-         M7DGMXrK4yEVfLKfU3hMTawTOOpcqTok4rAViUDfa8ewzwkasBzShe7RK45nkfX58ixX
-         4ZjRcqUV1UL9iOzVAhmB3Iqj+awIcRUD3Zoj1DnJGTyUNoMV6/qoBh9QdrT8itbitH7V
-         +eTadj6u6bakQ2ntNHEJ6+9KfyTupIgrihmqvAnhbrfOfaMixsqwCkVoYZ5q2uR4N/c2
-         Y/oelBZyYzlyBcLZroa0C7210RDoO0RVQh4LZMKX/AlKSBGjUliIDLLCl8ufRFK8qoFM
-         25vw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=tAvJBPPuJlaqIzmhwS7DOMxS9kFELAL1Kh1UTZJWTvw=;
-        b=SUiAxODV0kXcI8entdsdgMJGrAldr5hpRUEzKcwHVas3WL6PTl8kjeDV2E16zIlL0R
-         9hI4nW3GF+qKM4tz+EfhapiPirYfkUK2NnVwSskpOwnVgU93T2D6vVjjHMqXYSML6h9p
-         fR00TNm6qQ2IY0BmX9zCazn7NzZApr9CQBMjtd/UDDCLHE3pLYKohESBqU7Dr9Dj4bW0
-         wHSF7La2wHcrG+oAtcN7utjdi9/KOv29Dit388r/0XfF6VS1k8Oo4EuY2Ucra3bCmQuP
-         KgIMj66C5GHm33T2rSwOaIHn+D/k7whlPo8E6tBPhU4ycy75oiFJfWbqcbIO4QT1dwWA
-         k0uQ==
-X-Gm-Message-State: APjAAAXQiBYtb3u09iHCBLnna9p9BBk+WN9wGH8X6zb8kayNva62zUV8
-	CDUWB9wZAHuOhg2b1bcqe3zHcAHNakwYlg==
-X-Received: by 2002:a37:4ecb:: with SMTP id c194mr19976895qkb.126.1570390839361;
-        Sun, 06 Oct 2019 12:40:39 -0700 (PDT)
-Return-Path: <gabrielabittencourt00@gmail.com>
-Received: from GBdebian.terracota.local ([177.103.155.130])
-        by smtp.gmail.com with ESMTPSA id l48sm7912450qtb.50.2019.10.06.12.40.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 06 Oct 2019 12:40:38 -0700 (PDT)
-From: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	forest@alittletooquiet.net,
-	gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	trivial@kernel.org
-Cc: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-Subject: [PATCH] staging: vt6656: reorganize characters so the lines are under 80 ch
-Date: Sun,  6 Oct 2019 16:40:30 -0300
-Message-Id: <20191006194030.8854-1-gabrielabittencourt00@gmail.com>
-X-Mailer: git-send-email 2.20.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.48,311,1517871600"; 
+   d="scan'208";a="258470312"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 15 Mar 2018 19:09:01 +0100
+Date: Thu, 15 Mar 2018 19:08:57 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+cc: sudipm.mukherjee@gmail.com, teddy.wang@siliconmotion.com, 
+    gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v3] staging: sm750fb: Remove typedef
+In-Reply-To: <1521136755-3760-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+Message-ID: <alpine.DEB.2.20.1803151908410.3302@hadrien>
+References: <1521136755-3760-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
 
-Cleans up warnings of "line over 80 characters"
 
-Signed-off-by: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
----
- drivers/staging/vt6656/rxtx.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/vt6656/rxtx.c b/drivers/staging/vt6656/rxtx.c
-index c7522841c8cf..922872b62994 100644
---- a/drivers/staging/vt6656/rxtx.c
-+++ b/drivers/staging/vt6656/rxtx.c
-@@ -112,11 +112,11 @@ static u32 vnt_get_rsvtime(struct vnt_private *priv, u8 pkt_type,
- 				       frame_length, rate);
- 
- 	if (pkt_type == PK_TYPE_11B)
--		ack_time = vnt_get_frame_time(priv->preamble_type, pkt_type,
--					      14, (u16)priv->top_cck_basic_rate);
-+		ack_time = vnt_get_frame_time(priv->preamble_type, pkt_type, 14,
-+					      (u16)priv->top_cck_basic_rate);
- 	else
--		ack_time = vnt_get_frame_time(priv->preamble_type, pkt_type,
--					      14, (u16)priv->top_ofdm_basic_rate);
-+		ack_time = vnt_get_frame_time(priv->preamble_type, pkt_type, 14,
-+					      (u16)priv->top_ofdm_basic_rate);
- 
- 	if (need_ack)
- 		return data_time + priv->sifs + ack_time;
--- 
-2.20.1
+On Thu, 15 Mar 2018, Nishka Dasgupta wrote:
 
+> Change typedef enum to enum and ensure compatibility of change. Issue
+> found with checkpatch.
+
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+> Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+> ---
+> Changes in v3:
+>  - Integrate both v1 and v2 into one commit.
+>
+>  drivers/staging/sm750fb/ddk750_display.c | 2 +-
+>  drivers/staging/sm750fb/ddk750_display.h | 7 +++----
+>  drivers/staging/sm750fb/sm750_hw.c       | 2 +-
+>  3 files changed, 5 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/staging/sm750fb/ddk750_display.c b/drivers/staging/sm750fb/ddk750_display.c
+> index c6fd901..1273e7d 100644
+> --- a/drivers/staging/sm750fb/ddk750_display.c
+> +++ b/drivers/staging/sm750fb/ddk750_display.c
+> @@ -111,7 +111,7 @@ static void swPanelPowerSequence(int disp, int delay)
+>  	primary_wait_vertical_sync(delay);
+>  }
+>
+> -void ddk750_setLogicalDispOut(disp_output_t output)
+> +void ddk750_setLogicalDispOut(enum disp_output output)
+>  {
+>  	unsigned int reg;
+>
+> diff --git a/drivers/staging/sm750fb/ddk750_display.h b/drivers/staging/sm750fb/ddk750_display.h
+> index 523bbf3..7fd101d 100644
+> --- a/drivers/staging/sm750fb/ddk750_display.h
+> +++ b/drivers/staging/sm750fb/ddk750_display.h
+> @@ -89,7 +89,7 @@
+>   * LCD1 means panel path TFT1  & panel path DVI (so enable DAC)
+>   * CRT means crt path DSUB
+>   */
+> -typedef enum _disp_output_t {
+> +enum disp_output {
+>  	do_LCD1_PRI = PNL_2_PRI | PRI_TP_ON | PNL_SEQ_ON | DAC_ON,
+>  	do_LCD1_SEC = PNL_2_SEC | SEC_TP_ON | PNL_SEQ_ON | DAC_ON,
+>  	do_LCD2_PRI = CRT_2_PRI | PRI_TP_ON | DUAL_TFT_ON,
+> @@ -100,9 +100,8 @@ typedef enum _disp_output_t {
+>  	 */
+>  	do_CRT_PRI = CRT_2_PRI | PRI_TP_ON | DPMS_ON | DAC_ON,
+>  	do_CRT_SEC = CRT_2_SEC | SEC_TP_ON | DPMS_ON | DAC_ON,
+> -}
+> -disp_output_t;
+> +};
+>
+> -void ddk750_setLogicalDispOut(disp_output_t output);
+> +void ddk750_setLogicalDispOut(enum disp_output output);
+>
+>  #endif
+> diff --git a/drivers/staging/sm750fb/sm750_hw.c b/drivers/staging/sm750fb/sm750_hw.c
+> index f996f84..edeae9d 100644
+> --- a/drivers/staging/sm750fb/sm750_hw.c
+> +++ b/drivers/staging/sm750fb/sm750_hw.c
+> @@ -185,7 +185,7 @@ int hw_sm750_output_setMode(struct lynxfb_output *output,
+>  			    struct fb_fix_screeninfo *fix)
+>  {
+>  	int ret;
+> -	disp_output_t disp_set;
+> +	enum disp_output disp_set;
+>  	int channel;
+>
+>  	ret = 0;
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1521136755-3760-1-git-send-email-nishka.dasgupta_ug18%40ashoka.edu.in.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
