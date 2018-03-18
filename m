@@ -1,83 +1,58 @@
 X-GM-THRID: 6534171640869158912
-Date: Tue, 20 Mar 2018 13:54:05 -0700 (PDT)
-From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <e84b04f6-0288-4490-b3e3-8bf9166f3d4f@googlegroups.com>
-In-Reply-To: <alpine.DEB.2.20.1803180739260.3299@hadrien>
-References: <alpine.DEB.2.20.1803180739260.3299@hadrien>
-Subject: Re: application
+X-Received: by 10.46.108.15 with SMTP id h15mr133733ljc.19.1521410400750;
+        Sun, 18 Mar 2018 15:00:00 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 10.46.144.214 with SMTP id o22ls910574ljg.13.gmail; Sun, 18 Mar
+ 2018 14:59:59 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELv1TyVRE8Qexg9oBlzk+lFln5tqfyiPd7IjlO79BjS6Pyw3rltY6EJ4OtGdOiY+sNS7tJbr
+X-Received: by 10.46.25.6 with SMTP id p6mr165597lje.11.1521410399184;
+        Sun, 18 Mar 2018 14:59:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521410399; cv=none;
+        d=google.com; s=arc-20160816;
+        b=x9THEXlPetg6DVhPWvGrK1wRXcWyQfZARsR5sD+vIOYpO5QMv6N9KW7fRmfYgqYqkK
+         M4ZWk5QhV3AavZaquL0Nl8RXAkBEtjRSOvJUsMpPIivKMl+Gr3o3xJ4H/O6WHb7YqP73
+         kGINJpbmzOon1y5R8Ammp4wxQvigFbTd6zc3R5MG2MHfmw3OzpSgIeUrfpt2gYc7ek6y
+         4FjiomqdQ1mTz0pdLjhDDn4MwCYo8JPUCLJkEP3vaOQi/iSReWe9gTKsuiE4gwwsJL8w
+         Ytoby4s75UTeA9W1pFS81JYvh83qF4YoEfeT6zylrYfmXbJLWtlnZfuvkDjar3t+UnUI
+         vdew==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:message-id:subject:to:from:date
+         :arc-authentication-results;
+        bh=59BP5dXeg426iGNhYjbeUhztjHr93kcodGUcYDZ923k=;
+        b=UCekShqQNLb6HJsBW1/OaZX9J6/rJC/Xw/QCVltyGpC3OQ+s63YBXed5T7+SaYEPbK
+         JbCt+snfDhakmGQBUqpR32lccqnleY9FCRgi1sw6IP8447bsgwgXdtUkffpYYc+nDIGH
+         mYo13ez09KgcYGVyHisGgywE0MNpEIWZklnJ7wX7l6hRvPsUqS73psTcyvKfyRvLPCOI
+         IZOO6nn+gTsO8Kn9DCWL8mtD9TUNltHGBUBgTAIh0/FAqF7VNoBKgmJ2k2tTbgvQOnHB
+         ZATeK1S/TjtLZuTSY7TZFvFj23+6W8VphEPxhOz44ng7XSRw6Due36dCXYpMTHYN1vVE
+         mang==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id v6si450766ljc.0.2018.03.18.14.59.58
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 18 Mar 2018 14:59:59 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.48,327,1517871600"; 
+   d="scan'208";a="318702321"
+Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 18 Mar 2018 22:59:58 +0100
+Date: Sun, 18 Mar 2018 22:59:58 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: outreachy-kernel@googlegroups.com
+Subject: application
+Message-ID: <alpine.DEB.2.20.1803182259060.2420@hadrien>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_21242_163465983.1521579246119"
-X-Google-Token: EO3pxdUF2-abGvj-fT80
-X-Google-IP: 112.110.25.213
+Content-Type: text/plain; charset=US-ASCII
 
-------=_Part_21242_163465983.1521579246119
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_21243_657021941.1521579246119"
+Please note that simpy recording your contributions is not enough ot have
+made an application.  There is an application that has to be filled out
+explicitly.
 
-------=_Part_21243_657021941.1521579246119
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-
-
-
-On Sunday, March 18, 2018 at 12:13:08 PM UTC+5:30, Julia Lawall wrote:
->
-> Hello, 
->
-> Currently three of the kernel projects have a deadline of March 22 and the 
-> Userfaultd project has a deadline of March 29.  In either case, the 
-> deadline is 4pm UTC.  You can find out what time that is in your area 
-> using the following link: 
->
-> https://www.google.com/search?q=4pm+UTC+to 
->
-> You make a separate application for each project you are interested in. 
-> If you are interested in multiple projects, please clearly indicate your 
-> preference between them. 
->
-> julia 
->
-
-Does this include the project "dri-devel aka kernel GPU subsystem"? Its 
-deadline is also listed as 29th on the outreachy website.
-
-Thanking you,
-Nishka Dasgupta
-
-------=_Part_21243_657021941.1521579246119
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><br><br>On Sunday, March 18, 2018 at 12:13:08 PM UTC+5:30,=
- Julia Lawall wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;ma=
-rgin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Hello,
-<br>
-<br>Currently three of the kernel projects have a deadline of March 22 and =
-the
-<br>Userfaultd project has a deadline of March 29. =C2=A0In either case, th=
-e
-<br>deadline is 4pm UTC. =C2=A0You can find out what time that is in your a=
-rea
-<br>using the following link:
-<br>
-<br><a href=3D"https://www.google.com/search?q=3D4pm+UTC+to" target=3D"_bla=
-nk" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;https://www.google.com=
-/search?q\x3d4pm+UTC+to&#39;;return true;" onclick=3D"this.href=3D&#39;http=
-s://www.google.com/search?q\x3d4pm+UTC+to&#39;;return true;">https://www.go=
-ogle.com/search?<wbr>q=3D4pm+UTC+to</a>
-<br>
-<br>You make a separate application for each project you are interested in.
-<br>If you are interested in multiple projects, please clearly indicate you=
-r
-<br>preference between them.
-<br>
-<br>julia
-<br></blockquote><div><br>Does this include the project &quot;dri-devel aka=
- kernel GPU subsystem&quot;? Its deadline is also listed as 29th on the out=
-reachy website.<br><br>Thanking you,<br>Nishka Dasgupta<br> </div></div>
-------=_Part_21243_657021941.1521579246119--
-
-------=_Part_21242_163465983.1521579246119--
+julia
 
