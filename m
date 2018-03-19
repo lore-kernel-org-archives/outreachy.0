@@ -1,94 +1,111 @@
 X-GM-THRID: 6534657346534113280
-X-Received: by 2002:a9d:1486:: with SMTP id d6-v6mr5859670ote.31.1521468763534;
-        Mon, 19 Mar 2018 07:12:43 -0700 (PDT)
+X-Received: by 10.159.54.111 with SMTP id s44mr5567156uad.29.1521468476842;
+        Mon, 19 Mar 2018 07:07:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.202.93.10 with SMTP id r10ls1618738oib.13.gmail; Mon, 19 Mar
- 2018 07:12:42 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELsLbuNtRiSoqzACyDY3ugY9/fpsDIj2AaAD274N2xF7gjlx+O2LaXklSkwuaYy/jRuzM3g8
-X-Received: by 10.202.208.80 with SMTP id h77mr3694715oig.70.1521468762573;
-        Mon, 19 Mar 2018 07:12:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521468762; cv=none;
+Received: by 10.31.182.65 with SMTP id g62ls7249985vkf.10.gmail; Mon, 19 Mar
+ 2018 07:07:55 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELv+ufUPFEjbJHxAxBM19iBtpbps2DjZOa9GzhOqmdlSM5st7iT47hvb8SYgA5IYNh/wn6tz
+X-Received: by 10.31.160.202 with SMTP id j193mr1946089vke.58.1521468475646;
+        Mon, 19 Mar 2018 07:07:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521468475; cv=none;
         d=google.com; s=arc-20160816;
-        b=T6zfsKxJyVAztv2Q2jE9BOW3Zo0nYQuBnkA430sdVk7o9Y1JHzc2SVlLuDaeTYaoWb
-         KeT1Vtq0RuoTtAitS37mfqt6dUioye9QIIr1RnnUKALNryO+F601ka5+L8Amf3rvwrxW
-         Y5MiHglX3tBQPdg/10mlzSi18yRVJ1kyDx1WFNc7DS3KBQO90TB6U3WZFeSCL6Yj49U5
-         5R0RNrfXA6wqli6knTtXY8R6QkdXDJ3xxR2yGJrAPrsCJKWhXUcNGu9DDGJn9GkS9gRK
-         AlAtZiO4fQkk5M3h0TXy8Obk0UuuRobVOHkdq8FsSFX14bR+usW5JeIekcXtZ4YGNEqW
-         2c+w==
+        b=ZBnRuDhbnz+nD4VhI9vMxYGR0eGPhawKfaxoPHW7GI47J074J5Luzyf2rshbuRjzFj
+         rRrO4/Q+IC4Qepscgl5EHCstOIz2shUDW4gkTwlh39UVHkr9iMkX0fh6xTvUUCX/dQiR
+         m+d2+Bn0KQIMYLLGz9Si2xKJpXfKp2leZkB6Z24YSCCAMFNMvIvA3lIULLq7Oh/doDmI
+         keYhNz7udvZMhZ1hvLC0dfSz3q+J3XQaAa5sFxZRYSDpacQDMoW0gpzvMRYweaeHdzPK
+         84nwSJCC6ogzHW+Z2klcPXRyIPvjqHTaVh5ztNScjb4War0bDTGRnazugRT+AdV7mUNZ
+         FY6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=jnDFYBDcN4Rd4SCz43JEeTRaDYY6ZkDQNwI3MzSG4Sk=;
-        b=e50cOfSEuIQpyrKH/kda4muqUmjI7Rric1N73G4jPq/QmQ2fTvnX94vChfNLZOjaNJ
-         pizPXMnN1+P8EnQa2IMjjp5E6tFk3lgvDJ7h9trsnFcL/bRMu1n1IRgSCpS4Baci8f2F
-         KbJv9ajxbXfTFevqaiLd3kH0rs5SmGd2T6kB5Sfv+dK3d0cb3wYQp4EaPLVvYGIILMyx
-         OHkUwnjG/vjoVQg8pweaSSZlZCUKcAVOPQRXiyam33VTpmduffmecISoF8d2/WAElfmQ
-         6WjuuAQv7OVVdllXBIZ3HjbJOEm1og0OI5DGooPjCYs+gjfZPTM4kEIKDtwz1cElwkg8
-         AXYQ==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=EiZyE6I3+XWR8VRhAJHThoZMnIxtP93EJwVG/5v3irE=;
+        b=wXAMJ8r84ZQSv6/QoSLubXvULel1MBojLQ5a2iajcKYxIvzE7dx1nWxtQmeZ4C96M1
+         og6t9nL/wMaIuW5YlSAlr2zb2wMGWJO4RmzAYTozy+ftOIi28Z3NPx0yfnO041gtpV7/
+         wu/qo+cu+0YPRud6MKMTB3mSIl5G+QwUYLfjON2xs0Q4kwlRYfJStlo7LYh0yxXfqxsl
+         8W/6is+/cgJGN0LBKLDDBBGoYKPvOXrniWTT4IJgyUDd/GsEwqpoJ9i7Z6NYwqUKYxh5
+         9yy2Ugcs5lrDit6PKQE5P1h0/SnlMiSKtIxsmfBck2xt7903UyYGntU9N3Mbvx6VbRe8
+         wNBQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
-        by gmr-mx.google.com with ESMTPS id q57-v6si16258otq.0.2018.03.19.07.12.42
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=Zx65W1pE;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::241 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
+Received: from mail-pl0-x241.google.com (mail-pl0-x241.google.com. [2607:f8b0:400e:c01::241])
+        by gmr-mx.google.com with ESMTPS id q126si10435vkf.1.2018.03.19.07.07.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 19 Mar 2018 07:12:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
+        Mon, 19 Mar 2018 07:07:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::241 as permitted sender) client-ip=2607:f8b0:400e:c01::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (LFbn-1-12247-202.w90-92.abo.wanadoo.fr [90.92.61.202])
-	by mail.linuxfoundation.org (Postfix) with ESMTPSA id 4B18A11D6;
-	Mon, 19 Mar 2018 14:12:41 +0000 (UTC)
-Date: Mon, 19 Mar 2018 15:12:41 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] staging:vc04_services:bcm2835-camera:controls.c: Fix
- multiple line dereference
-Message-ID: <20180319141241.GA17366@kroah.com>
-References: <1521468462-28073-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1521468462-28073-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=Zx65W1pE;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::241 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Received: by mail-pl0-x241.google.com with SMTP id n15-v6so2538094plp.12
+        for <outreachy-kernel@googlegroups.com>; Mon, 19 Mar 2018 07:07:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ashoka.edu.in; s=google;
+        h=from:to:cc:subject:date:message-id;
+        bh=EiZyE6I3+XWR8VRhAJHThoZMnIxtP93EJwVG/5v3irE=;
+        b=Zx65W1pE9gjGAeC1zuZpohDRdWVXM46LyusHFvla4yYXqwwJkzkq1eW914malB5xRw
+         Jq4McZtBrUdgIJGJGM+qsG1uRrLU2iJjMyNwuYE5hjHqt3RYkBYkZVMqTuzSmBYP3bVi
+         spIfNBzB3rFfEWJab/3UKfZMjN4sooaGvXYD0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=EiZyE6I3+XWR8VRhAJHThoZMnIxtP93EJwVG/5v3irE=;
+        b=LYZWLd4TiJFCmzQ8tTWBOxa8WjwuL7NmJphccs/poWlGMZ8jwiG+C9HTBmN4sV+bR2
+         hIunrHR52Z9xUEYhZZCEI7NlHPnjI41q9nQTLih801A+WjfpJd4pVbX4MuMFjiIk8GkL
+         iE7g3kbaA//fTy43Ih/6eFBAfLWUE2Dx8n9j7SB7PEv+qd92130KJbTyx97YA35JUjll
+         Qn0toV38T/nk+myrUJjzb4PTR73c8Fb7YHr1YLX+NMemK7ZZWWPIs1no8EFdIk+V39YB
+         ykaqYkCo9hgjv3L0+XlEz+ZidPqn5kVcYeJ9dwQUAIyn96TkjmaeSaK5oIEwhO9WpnSx
+         ufUA==
+X-Gm-Message-State: AElRT7Ep7Y2be6TymcSfw4dvYN81j8XY42sO41rEZ+XOD8kYPp+FltBq
+	MvHAwbZGlvA2BYlrQWA21LruyQ==
+X-Received: by 2002:a17:902:d202:: with SMTP id t2-v6mr12909750ply.216.1521468474611;
+        Mon, 19 Mar 2018 07:07:54 -0700 (PDT)
+Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
+Received: from localhost.localdomain ([139.59.85.247])
+        by smtp.gmail.com with ESMTPSA id t87sm254485pfi.37.2018.03.19.07.07.52
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 19 Mar 2018 07:07:53 -0700 (PDT)
+From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+To: gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+Subject: [PATCH] staging:vc04_services:bcm2835-camera:controls.c: Fix multiple line dereference
+Date: Mon, 19 Mar 2018 14:07:42 +0000
+Message-Id: <1521468462-28073-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+X-Mailer: git-send-email 2.7.4
 
-On Mon, Mar 19, 2018 at 02:07:42PM +0000, Nishka Dasgupta wrote:
-> Fix multiple line dereference. Issue found with checkpatch.
+Fix multiple line dereference. Issue found with checkpatch.
 
-What is a "multiple line dereference"?
+Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+---
+ drivers/staging/vc04_services/bcm2835-camera/controls.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-> 
-> Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-> ---
->  drivers/staging/vc04_services/bcm2835-camera/controls.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/vc04_services/bcm2835-camera/controls.c b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-> index cff7b1e..bae7f2e 100644
-> --- a/drivers/staging/vc04_services/bcm2835-camera/controls.c
-> +++ b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-> @@ -1194,6 +1194,8 @@ int set_framerate_params(struct bm2835_mmal_dev *dev)
->  {
->  	struct mmal_parameter_fps_range fps_range;
->  	int ret;
-> +	int mcc = MMAL_COMPONENT_CAMERA;
-> +	int mcpp = MMAL_CAMERA_PORT_PREVIEW;
->  
->  	if ((dev->exposure_mode_active != MMAL_PARAM_EXPOSUREMODE_OFF) &&
->  	    (dev->exp_auto_priority)) {
-> @@ -1220,8 +1222,7 @@ int set_framerate_params(struct bm2835_mmal_dev *dev)
->  		 fps_range.fps_high.den);
->  
->  	ret = vchiq_mmal_port_parameter_set(dev->instance,
-> -					    &dev->component[MMAL_COMPONENT_CAMERA]->
-> -					    output[MMAL_CAMERA_PORT_PREVIEW],
-> +					    &dev->component[mcc]->output[mcpp],
+diff --git a/drivers/staging/vc04_services/bcm2835-camera/controls.c b/drivers/staging/vc04_services/bcm2835-camera/controls.c
+index cff7b1e..bae7f2e 100644
+--- a/drivers/staging/vc04_services/bcm2835-camera/controls.c
++++ b/drivers/staging/vc04_services/bcm2835-camera/controls.c
+@@ -1194,6 +1194,8 @@ int set_framerate_params(struct bm2835_mmal_dev *dev)
+ {
+ 	struct mmal_parameter_fps_range fps_range;
+ 	int ret;
++	int mcc = MMAL_COMPONENT_CAMERA;
++	int mcpp = MMAL_CAMERA_PORT_PREVIEW;
+ 
+ 	if ((dev->exposure_mode_active != MMAL_PARAM_EXPOSUREMODE_OFF) &&
+ 	    (dev->exp_auto_priority)) {
+@@ -1220,8 +1222,7 @@ int set_framerate_params(struct bm2835_mmal_dev *dev)
+ 		 fps_range.fps_high.den);
+ 
+ 	ret = vchiq_mmal_port_parameter_set(dev->instance,
+-					    &dev->component[MMAL_COMPONENT_CAMERA]->
+-					    output[MMAL_CAMERA_PORT_PREVIEW],
++					    &dev->component[mcc]->output[mcpp],
+ 					    MMAL_PARAMETER_FPS_RANGE,
+ 					    &fps_range, sizeof(fps_range));
+ 	ret += vchiq_mmal_port_parameter_set(dev->instance,
+-- 
+2.7.4
 
-I don't see what the benifit of this change is here, a shorter line?
-It's really not worth it, don't you think?
-
-thanks,
-
-greg k-h
 
