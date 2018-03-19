@@ -1,504 +1,196 @@
 X-GM-THRID: 6534405823463948288
-X-Received: by 10.101.77.1 with SMTP id i1mr824093pgt.12.1521465342204;
-        Mon, 19 Mar 2018 06:15:42 -0700 (PDT)
+X-Received: by 10.223.208.204 with SMTP id z12mr1000053wrh.31.1521457599030;
+        Mon, 19 Mar 2018 04:06:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.99.104.132 with SMTP id d126ls2821849pgc.24.gmail; Mon, 19 Mar
- 2018 06:15:40 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELs9lVxxVcBFVgtaywe2EZrE86x0aXq9tnlL7IXj36iNXuYCDyg75DasZHnlxqSIBFuqxylc
-X-Received: by 10.99.181.15 with SMTP id y15mr3280631pge.48.1521465340498;
-        Mon, 19 Mar 2018 06:15:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521465340; cv=none;
+Received: by 10.223.208.195 with SMTP id z3ls3447370wrh.13.gmail; Mon, 19 Mar
+ 2018 04:06:37 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELt/NQtPI4FfsBJQhW+xaRxrwTme6dhhBNbFTvldbfZ2yJaQXTg3D53wj3sfv3v0n8lbkEB6
+X-Received: by 10.223.130.21 with SMTP id 21mr404659wrb.2.1521457597920;
+        Mon, 19 Mar 2018 04:06:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521457597; cv=none;
         d=google.com; s=arc-20160816;
-        b=FZe8Gmcw753NXPPpJZHsNDivL7rTKkhzSROSGV8yhGoVtYrkSqqcEZzi2MNzEvl2Mp
-         CGOEcKuCLj0UyTfcdF4bzx0KbJvh4EX7i/bnU4StpQY/yd9XdKdNAJ5lpTMyYS8z5VMZ
-         YVHL9Q2Y5Wqc9qPup1KBsQbStSeYF5apukJ1vENlTMVXYhDE9n7cQkISkulcEVwsIoTv
-         WRE2+aY5tBzNhTDC7J98PgKww7Tp2HBKYPs2RDmNO9bMNHsY+sqGV+RqfhQCuT+aWhJG
-         EwTxe6m7LgHCfbvZzjkPPDNnguMdfdzDvzlxqat+s7XDJwaHjRzFmDxZYVYTHPrG7hFl
-         cclQ==
+        b=QCFWfkdLMiVSeOEZczyxUFJv2LnF22RXv6VNoTrQW0WzLO4sBORSLzYLvRiqu5k6Oz
+         sUu6R7bBzIX9xvtuf3aiQkjsYEciRBFktufNUPej61iu0/NnPkt4ur1oB5rKxpehegEd
+         EsurYREDcSiVX/ot2YanuJ5Fo8E3DKPM6oH0/mbeXdzx1YDW3rqtMtbsGmdO+W5dJgYj
+         kyAqzpGvWWEpbgRa7tOclwH2PC/HvdZ+EigfaW9BhWcVWTzao4BoKcbEfAflPL2Gd8iz
+         Obsk8O7JWIqVllU+IbPSj6+SU7Aiv8guVZSuSvB7NYdJBVbqH6W9l42sXYiTFBBXK6dm
+         E6XQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=spamdiagnosticmetadata:spamdiagnosticoutput:content-language
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :cc:to:subject:dkim-signature:arc-authentication-results;
-        bh=EjipgeFm02x63nFTb1ng5nG+URvz3K0kxBoHgxLjSnw=;
-        b=iL9xv/824D8rK3uvS/QxpgDr1Af015Tns5JhmqQbVjf3r8GIFTAZpJXXjBVfipe1Dz
-         7FyeZJJTzM+fMDt1/Y0tVCeDnXGB2HoTO/TcIMZ7QVnTU7xPoUTt/Fry0WKtz5+Mi80K
-         v2qVedTBDOrVcbe3eSAHIAcfenJUftnKQuv+jeeZvJoWVZAi2IQYu5QiHPuGcaKmrtLu
-         Jk+vXWTBSbqD9SkXpcf9R3RpP9NF5RX03d1bonHM4rdeSqsEXqSZ+VxJnNvPMwJbvvMY
-         xoHBMi/pDwPZJ30ocd+1IN4P8G542uyahB4UuI1fAH0ELtNh3SvFb8tk3zEb3RjfeIHw
-         OXYg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=V3E5N+AmP6pfzusU54/PFC+v8NdoMmSFWOUiqch9PD4=;
+        b=tq5Ddy+UIsfE1ew29x+9uKyTiT3PerVwyS3XIjuCNGNzFaLaIIJchAelseCB5djbH/
+         u7b1wE+MZhENphmMdOsiPoHhnBrBfuS2bUHvn1jMOKwNaf1SF8LThOqJSR82HPrAlX6p
+         dpm6CIrVOk0pWlaSscu/2mfuqdXlo3LEIpBGJ7fhHwx3ZFBAa4CtX1ahegAB56IN2L5r
+         kXLliXfhcnqMEji8C60JfbLvCJEFk7Ly6cUKWAvXWBR1lI4EHFeWTwyxTT1No6m07hhi
+         5dI6MoPAyujECcQXlBWuKzmLNjegyHy33SHoA18ouJDpbrrLo9DKOxuoIET4rcw3rIF3
+         pulA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector1-amd-com header.b=Hbd6BLgt;
-       spf=neutral (google.com: 104.47.37.85 is neither permitted nor denied by best guess record for domain of christian.koenig@amd.com) smtp.mailfrom=Christian.Koenig@amd.com
-Return-Path: <Christian.Koenig@amd.com>
-Received: from NAM02-CY1-obe.outbound.protection.outlook.com (mail-cys01nam02on0085.outbound.protection.outlook.com. [104.47.37.85])
-        by gmr-mx.google.com with ESMTPS id k1si729pgt.1.2018.03.19.06.15.40
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id w16si3002wmw.1.2018.03.19.04.06.37
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 19 Mar 2018 06:15:40 -0700 (PDT)
-Received-SPF: neutral (google.com: 104.47.37.85 is neither permitted nor denied by best guess record for domain of christian.koenig@amd.com) client-ip=104.47.37.85;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 19 Mar 2018 04:06:37 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector1-amd-com header.b=Hbd6BLgt;
-       spf=neutral (google.com: 104.47.37.85 is neither permitted nor denied by best guess record for domain of christian.koenig@amd.com) smtp.mailfrom=Christian.Koenig@amd.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amdcloud.onmicrosoft.com; s=selector1-amd-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
- bh=EjipgeFm02x63nFTb1ng5nG+URvz3K0kxBoHgxLjSnw=;
- b=Hbd6BLgt31v2Doud+5FE1A0+K+cCY2q9DiVq9Hc+CZbob2inxTIJQWQjdGU9ZMVp4bwRBab5t9PDRoJnNw15m7sz8aOhych1mFxWv8WFLcSUnwW/4HGl7iUUsnga7qeBwdoTClbJAd5hVwr3EQB17imNLd3BxSghkPT0z2s2hFI=
-Authentication-Results: spf=none (sender IP is )
- smtp.mailfrom=Christian.Koenig@amd.com; 
-Received: from [IPv6:2a02:908:1251:8fc0:4c6d:7233:b7e1:3b88]
- (2a02:908:1251:8fc0:4c6d:7233:b7e1:3b88) by
- MWHPR12MB1727.namprd12.prod.outlook.com (2603:10b6:300:112::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.20.588.14; Mon, 19
- Mar 2018 13:15:34 +0000
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.48,330,1517871600"; 
+   d="scan'208";a="318780748"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 19 Mar 2018 12:06:37 +0100
+Date: Mon, 19 Mar 2018 12:06:31 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: =?ISO-8859-15?Q?Christian_K=F6nig?= <christian.koenig@amd.com>
+cc: Arushi Singhal <arushisinghal19971997@gmail.com>, 
+    alexander.deucher@amd.com, David Airlie <airlied@linux.ie>, 
+    linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+    outreachy-kernel@googlegroups.com, Tomi Valkeinen <tomi.valkeinen@ti.com>, 
+    amd-gfx@lists.freedesktop.org
 Subject: Re: [Outreachy kernel] Re: [PATCH] gpu: drm: Use list_first_entry
  instead of list_entry
-To: Julia Lawall <julia.lawall@lip6.fr>,
- =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>
-Cc: Arushi Singhal <arushisinghal19971997@gmail.com>,
- David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, outreachy-kernel@googlegroups.com,
- Tomi Valkeinen <tomi.valkeinen@ti.com>, amd-gfx@lists.freedesktop.org,
- alexander.deucher@amd.com
-References: <20180318215105.GA15431@seema-Inspiron-15-3567>
- <8b1e22f8-7a05-b66b-8825-7d4d97e46dac@amd.com>
- <alpine.DEB.2.20.1803191204550.3392@hadrien>
-From: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>
-Message-ID: <dfc1bc65-d6c0-8935-e787-4743d3cdabae@amd.com>
-Date: Mon, 19 Mar 2018 14:15:19 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.6.0
+In-Reply-To: <8b1e22f8-7a05-b66b-8825-7d4d97e46dac@amd.com>
+Message-ID: <alpine.DEB.2.20.1803191204550.3392@hadrien>
+References: <20180318215105.GA15431@seema-Inspiron-15-3567> <8b1e22f8-7a05-b66b-8825-7d4d97e46dac@amd.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-In-Reply-To: <alpine.DEB.2.20.1803191204550.3392@hadrien>
-Content-Type: multipart/alternative;
- boundary="------------6CE5DA37F03A48653B7B4E05"
-Content-Language: en-US
-X-Originating-IP: [2a02:908:1251:8fc0:4c6d:7233:b7e1:3b88]
-X-ClientProxiedBy: HE1PR0402CA0026.eurprd04.prod.outlook.com
- (2603:10a6:7:7c::15) To MWHPR12MB1727.namprd12.prod.outlook.com
- (2603:10b6:300:112::10)
-Return-Path: christian.koenig@amd.com
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-HT: Tenant
-X-MS-Office365-Filtering-Correlation-Id: 216fa055-e3e4-4d13-2dce-08d58d9b815e
-X-Microsoft-Antispam:
-	UriScan:(215639381216008);BCL:0;PCL:0;RULEID:(7020095)(4652020)(48565401081)(5600026)(4604075)(2017052603328)(7153060)(7193020);SRVR:MWHPR12MB1727;
-X-Microsoft-Exchange-Diagnostics:
-	1;MWHPR12MB1727;3:E/lp1qsAE06MLoVFZjZBELD74aPAdq3y6B17vcjaCzn8kQSaBskpqmDXimEwOD+RNZfn2vySWD3WtpWKDUZVXnHC0ZL5ekFxfJjWlOmBu81VbZfXYLNIPBOTwPX3Bw84zMejGE6OTqUNS4rZF1Gs2KKv86CJlb+clcBrinwI9NSM1ou8fslHzVzIVn6O4AAP2VUkS46F8QtZBgbngbNgF7Ny06r5znmZYhPhS1Hcbx7yNDnAohfJJW458upXo251gwf8KcuJ2pgV7daoEQmGcXphgWRxoQY3ntKg8OkdMRc=;25:LlKbEbrWD1Jdh8eiPSWonLmZsiVYnEq2NrlkLrBrriMUb4aTK0EXJ7LS9mpLABgdqpO0mZ8k0itsezuLUsHEsAg76aPE4Ct0e2aIRj0ZNNB+lYc4nbs+YdTcNzhDNoL/Noqh/c2adb9dQdkUiwWoirZW6RnRXhfWVyk6+d9+CUp7JiwZEhqtnJS5hebTrjRw0LXm/sO52SppY5LL918WPpoGlfEiu+V2n08EuelEywZjApAVYJRG/2Jj4g/+6XcvbvhcXa8PFQuGxP51qRuvb8jYRb9i5EEO7NVYDW1tSsIJdpf0mjX6UDZUGguzNjgawaYGX2/Kn5qOgh+4oa41Sw==;31:VPrcq7QCrIPCtC9CGcBKOZmxE0GY2qpmtmJyZecefQ50LCRhJXt63WVQON1sNGbuclOMheWW7O5QaYYsNupjM04Aupob+EdMYM9BHQ4s3S3t6UiLC3uSlFmgO1WTD2DkrJgN7+6CymewJwDabPdu3BC5muGVKbuIaV2/xvDyYl92/6OFFJ+DDxWotepRWuUwzlqCliVDZTYNJU3RMtgU3xhlaqfQdiD8EY60bVNHMlw=
-X-MS-TrafficTypeDiagnostic: MWHPR12MB1727:
-X-Microsoft-Exchange-Diagnostics:
-	1;MWHPR12MB1727;20:acVzB5Rhd8cWYUkBn97M9zUaQi/W2GIrAUsgeIk0uZDNKH/eVkoq1GlcthFuvAmpNZMSFeZ2lc7p8yTqsCqdeGa1sqFj4DSmlmVkQ0oQBaBMlbXPrslw1Kgb3BptcbFyIjkY5SyjRdbeSXRUAlR+1xrTtmrV5g0vtKDuhrkWzbLUz9McD5PzvgrtOxBhpsBxnK3c8dlGH+quQL3M3FI+tBEqbv6i3RqZYTDtWS8v2WItcIp964DbmEoeBROMYdy8fd5vsOc81Lt+scVyhM7v/O0reMrtEMW7IOrmxeREkTLOTqON/lhnSTEqVA3IBcAnrr+FA+Jzngg1k1igUW5e48SCblQ/xkAFdW4TbwIPboyTF7jvLp+HAfooh3+cxgo7DMTxXND+Ey2AjqTjSbUbCw/bSRBph633tIYqRD8x1nB3A/yFr3pPp68MJBX5OfQKu1z+YLOEfIwl8CtXf3FN1Jgen7DKfTvjlPjChtdRWH8mJFMrxPHm4FXE3+a9rM8m
-X-Microsoft-Antispam-PRVS:
-	<MWHPR12MB1727AF6ACF340DE59DF6079C83D40@MWHPR12MB1727.namprd12.prod.outlook.com>
-X-Exchange-Antispam-Report-Test:
-	UriScan:(215639381216008)(228788266533470)(85827821059158)(211936372134217)(217544274631240);
-X-Exchange-Antispam-Report-CFA-Test:
-	BCL:0;PCL:0;RULEID:(8211001083)(6040522)(2401047)(8121501046)(5005006)(93006095)(93001095)(3002001)(3231221)(944501244)(52105095)(10201501046)(6055026)(6041310)(20161123560045)(20161123564045)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(20161123562045)(20161123558120)(6072148)(201708071742011);SRVR:MWHPR12MB1727;BCL:0;PCL:0;RULEID:;SRVR:MWHPR12MB1727;
-X-Microsoft-Exchange-Diagnostics:
-	1;MWHPR12MB1727;4:Q3meJ4h+75lBENoQus0SzP9loXR672+d+rjI5RjwV3YV8EiCXA5h2qPPncfdb4cYiVEHBs9XoNSLMI/FJF2t4YwOOtz+nvTawXpyligIfruPu7uO/rt3adeBRjN6tocr1spOXDAwquLXJWyQfHZSyhRtXoo4H1UPK5KMmyZ1GIIzXw1RrdNY++xniR8IAJb5v+xhIBLGeFGqb8E/q3fa15VM+QuRkYj7BYAOc1UrppRcriCU+eIdB1JOrcimUqlTG+RjKCD7qrix4JO1S2169dUXYxiyGrG1XsObamhy+WKGa3uX1SPGMUeEhQwMjBCB8rfVrI0vAz53NpXj48bgTpjxN5hk88KYNfqx5ydrmwux6D9zum9xERZ5fa88M5r/MYQ/OC0j4C3843Wn7P7jEEKM3QW/DjPU6IKVwOLLN8Z5tNNRJEZCvudJTFw4EML7+J58ez2gGn6i8JC+j/2Gzg==
-X-Forefront-PRVS: 06167FAD59
-X-Forefront-Antispam-Report:
-	SFV:NSPM;SFS:(10009020)(396003)(366004)(39380400002)(346002)(39860400002)(376002)(199004)(189003)(64126003)(36756003)(6486002)(31696002)(86362001)(5660300001)(39060400002)(16526019)(65826007)(97736004)(6666003)(2906002)(606006)(68736007)(84326002)(386003)(7736002)(2950100002)(65956001)(65806001)(33964004)(25786009)(46003)(4326008)(76176011)(478600001)(16586007)(58126008)(37036004)(8936002)(52396003)(52116002)(81156014)(81166006)(236005)(31686004)(1706002)(6116002)(6306002)(54896002)(53936002)(966005)(110136005)(106356001)(6246003)(229853002)(54906003)(72206003)(316002)(105586002)(8676002);DIR:OUT;SFP:1101;SCL:1;SRVR:MWHPR12MB1727;H:[IPv6:2a02:908:1251:8fc0:4c6d:7233:b7e1:3b88];FPR:;SPF:None;PTR:InfoNoRecords;A:1;MX:1;LANG:en;
-Received-SPF: None (protection.outlook.com: amd.com does not designate
- permitted sender hosts)
-X-Microsoft-Exchange-Diagnostics:
-	=?us-ascii?Q?1;MWHPR12MB1727;23:bOQUr2sKl/Zi9eBpUF8Wow93ylye2wLheoRZ4NduH?=
- =?us-ascii?Q?RiVwuCxBanDyOFCmk8itWeiWor6pO43Rc+z4AEVs6cYWeaj3r3FjVVVrbDk7?=
- =?us-ascii?Q?IrEmqvgJTl7L4YHjbDwk5XJHKWm0nPcKUFsZpDJTg09sgiH3M4wxyBu4U0QG?=
- =?us-ascii?Q?yu6IzD8jYHfUObrZaI8yrJX+41HVZ2tzx7xtn7vBkbq564WzCu7uygElwvE5?=
- =?us-ascii?Q?4AlMU8oh35W7b9x+TGeVp8xjlMU0FVwvcjOFW/mbbrmT1i11FdZvHw3D90Yw?=
- =?us-ascii?Q?ahEPMx+BkOze7AOOy7Gy1Mcv6tNACIYvav7i6uX+vB+DSE8wsFxrp+WePGT7?=
- =?us-ascii?Q?COfp2x1r8MhZF1tQRsMlCy256TV/8nELTUGfkvXhLAHktbo6qUNS8L5iBNH3?=
- =?us-ascii?Q?+hId8qWx9pulaEPVa6jyLEWz4ZJNkPL9jT4EQx1MH2CKNV7KZhM3Of6lzjog?=
- =?us-ascii?Q?I9dBbLhxFJDMtqbSXQpcDpJ5xV22tTo+BW4uAtq2rn1h3YpXT6+SnQicda7R?=
- =?us-ascii?Q?OddXd4bvE2nCvLt/g0uTo4pKCo5Z9+z0WrO/DS0OFnQu3hEwJcGiHAwCViMW?=
- =?us-ascii?Q?KA2wQk97JCGSqpdLaB311hAwdUoBHfJl0yUUJvuzfe/OThhkKnt9iphSk0f0?=
- =?us-ascii?Q?IGVUCuwDGYIgm62zNbW7JjGyyAzCpXAjxUzhOJHSSoL1iqdaegkfTosShq68?=
- =?us-ascii?Q?XCyQzucCgOrQ497t7uwGU84FDM8T5YW5CkudTp7/A9tLeKII5+KJQ+DGoSW0?=
- =?us-ascii?Q?DpicByiWJ7HTtvuLpe7SFAbNvA5BwTy+Pjs60FcsQwc9N/NGKGvPi/w3uZIL?=
- =?us-ascii?Q?NkYSzcwOu9NzdzR9FRmsK7Q5Ge5KSbLwCMoR+QHltOK3QX71A2oo5rWqPUy/?=
- =?us-ascii?Q?zDKcfbDQ45wjXx008qAAKSKEsDz6tIp7cUG3Pv3bGzJ+SYibshX6FXX4RHMk?=
- =?us-ascii?Q?8d22GcWqthDEiw9DjTDJNPcvqZeAc4aQcB0FQrTYegPR/eYJS6EipNem7Fi7?=
- =?us-ascii?Q?IvTBIvUNY2cGbpsNavmYtU05vCgnZ5ufzCj6AJRIi5ddk5cLTTSR6YvXhYGq?=
- =?us-ascii?Q?UUdh32TejBcaeGkBOOcNMtZTbLRz8q+WcuK8d/oNBEsCVsLELIcD6RAD97pw?=
- =?us-ascii?Q?CsQBSgzuC3B7JDySxFm8uOKpmZY2WBkDJIjiKiu40zMEhfrv0l4REbwsdhys?=
- =?us-ascii?Q?PzyiDPtgKWgzve4M2Fh7Npzff8wvXHO+WyISbcBnceBOHE05vzwcKy7ftvlY?=
- =?us-ascii?Q?nhFgndTzv0uZiD1udAkdDQsVarPxpzEaDGmyvp1/wBv3C1AD5ze9t0oKnbkZ?=
- =?us-ascii?Q?ghFKHeh4xtpldLdxXIY5mni1zIREWWz4rHqeMFi7Z5U?=
-X-Microsoft-Antispam-Message-Info:
-	0rrOS3OoaMkKVO9MmPKHjZIo2lMhVh94IssZsojDkz38Y+wP69qxSwmpWwLm1alvoK0Ufi0RHzK+Qitrpcd5N+rB0XXptp3aE+3kaYfv9gETuUtoSKIXqLX+3HARJNpLgi+00YjJ4Rx1zpS4pK8ZaplBXd7dXDdSM5h5a41rIQ9pOC3GJnBAoN/PM5Lqyp/o
-X-Microsoft-Exchange-Diagnostics:
-	1;MWHPR12MB1727;6:g7C5Av+8EL+dPoqPKZtBq2NoQQ7b9jic+Mt4mGnGSlT+3lltffoOZdhCeZricTVEQAXxARwT2zDs24cAMvbJEXzEXxV4vmmlqUtpNwKvdlMQN7IEJ7pjFHaRfHUDrr+IVOGIOuKlo2dygzBZj4BJMFtgFWFN31AU92RhOWfQ3vYSDfZiNzdGvGZXckX35jVd3e7wSAJtEWgiNOoM1PSGLew2tN26B2PniCoLZEabOnbUzbeKAfMJgUMYoETeL23YGD1bu/u5XJJMPboXST7Ns3qW9sjpsnTmMlcsEwAakjQ/8EprIq8F5W4EqE61My6DYugPijJcVXRaPTe9xbb0UVb+VSNp5v4GDk5sVyXtbBw=;5:fI5/Fs1ISbf2Ke1h8HF7ESdbmLTRrPL5BKeVkPblsdSbiXDSmgWTULrOcQrpq+wNxqdDsT95m8J4XtsyrK2ExbDSExJdWzggT349rIv0BP3cCcYwwKyDf+eNUnyjRUVUsD20PA1e4xWqQlE+i730cUBG1ZEj5DHWX0SoauFST3M=;24:4p1TZUEYsixz9rOnIT7nT6E0a5zVHNHii42i0OTmUwhVFEWqfm2N3ArkHqKwLXWuW6aXGpcAhJU1jvYwK4nKE7rScI4yv6k7CvhZnPnW8D8=;7:Sv+1OXcDbNsSL81zQPEh93aiyzF6ZKIyzKuroLbAnYE69+wuLNPqliIBClQ9bbx0dgc5gAh/dfuc6YKyyLlipxSnjbl7IxENiK7FcBZfgj0Sr4a1SEz+TwSDAOPM5t7wH6ZqmzLsbQBb1PrKd4mGW5sTVYLOaIZL+FntGoa9llqvAcMLdE/A91iMybG2Gd51cCJPEfN3MRnTE3IWEycR5NYgfRJE/nWwyICvalcKzyKj0dejyFCyDRAOOyGCq5eJ
-SpamDiagnosticOutput: 1:99
-SpamDiagnosticMetadata: NSPM
-X-Microsoft-Exchange-Diagnostics:
-	1;MWHPR12MB1727;20:0FQYRPGbLtv+F5qswEbd5LivTurn/dZhdtNyZjvoZOkrifxr/8H5zeqjlAIMmrzlnvuJ/0lwP5UVWbQIA3o2HcpfwhI2ow5T8b+ZT6cmFmzIUE7Z4QqNq/wlMMam0ttiO1spJI1EwOIeYaz3UHL8l+pwYPrVtMegJNKfzc7KItgwVjsFLJurRepYKS+WVu061nUExIoJGkZlhTpDljbKjZVk1rXsTv4T1qyAjmZw7Jv7wXw57a9yU97NBTTp8WXi
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Mar 2018 13:15:34.2676 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id:
-	216fa055-e3e4-4d13-2dce-08d58d9b815e
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR12MB1727
+Content-Type: multipart/mixed; BOUNDARY="8323329-369822278-1521457591=:3392"
 
-This is a multi-part message in MIME format.
---------------6CE5DA37F03A48653B7B4E05
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Am 19.03.2018 um 12:06 schrieb Julia Lawall:
->
-> On Mon, 19 Mar 2018, Christian König wrote:
->
->> Mhm, actually that patch isn't correct. What we grab get here is the next
->> entry, not the first one.
->>
->> We don't have an alias list_next_entry for list_first_entry?
-> As compared to the semantic patch I proposed earlier today, it would seem
-> that list_first_entry is useful when the types are different?  One would
-> have to check the result of course, but a list eleemnt with the same type
-> as the structure that contains the list might be unlikely?
-
-The list element and the list head have different types in this case:
->    	if (sa_manager->hole->next == &sa_manager->olist)
->    		return;
->    -	sa_bo = list_entry(sa_manager->hole->next, struct amdgpu_sa_bo, olist);
-> +	sa_bo = list_first_entry(sa_manager->hole, struct amdgpu_sa_bo, olist);
-
-sa_manager->olist is the head of the list and sa_manager->hole can point 
-to both the head and any element in the list.
-
-The statement "if (sa_manager->hole->next == &sa_manager->olist)" now 
-checks if the next pointer points to the head and if so aborts the function.
-
-Then the statement "sa_bo = list_entry(sa_manager->hole->next, struct 
-amdgpu_sa_bo, olist);" returns the next element after the hole to try to 
-release it.
-
-So with the automated change the code is still correct, but NOT easier 
-to understand because we actually don't grab the first element here.
-
-Regards,
-Christian.
-
->
-> julia
->
->> Regards,
->> Christian.
->>
->> Am 18.03.2018 um 22:51 schrieb Arushi Singhal:
->>> This patch replaces list_entry with list_first_entry as it makes the
->>> code more clear.
->>> Done using coccinelle:
->>>
->>> @@
->>> expression e;
->>> @@
->>> (
->>> - list_entry(e->next,
->>> + list_first_entry(e,
->>>     ...)
->>> |
->>> - list_entry(e->prev,
->>> + list_last_entry(e,
->>>     ...)
->>> )
->>>
->>> Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
->>> ---
->>>    drivers/gpu/drm/amd/amdgpu/amdgpu_sa.c | 4 ++--
->>>    drivers/gpu/drm/omapdrm/dss/display.c  | 4 ++--
->>>    drivers/gpu/drm/radeon/radeon_sa.c     | 4 ++--
->>>    3 files changed, 6 insertions(+), 6 deletions(-)
->>>
->>> diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_sa.c
->>> b/drivers/gpu/drm/amd/amdgpu/amdgpu_sa.c
->>> index 3144400..646f593 100644
->>> --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_sa.c
->>> +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_sa.c
->>> @@ -158,7 +158,7 @@ static void amdgpu_sa_bo_try_free(struct
->>> amdgpu_sa_manager *sa_manager)
->>>    	if (sa_manager->hole->next == &sa_manager->olist)
->>>    		return;
->>>    -	sa_bo = list_entry(sa_manager->hole->next, struct amdgpu_sa_bo,
->>> olist);
->>> +	sa_bo = list_first_entry(sa_manager->hole, struct amdgpu_sa_bo,
->>> olist);
->>>    	list_for_each_entry_safe_from(sa_bo, tmp, &sa_manager->olist, olist) {
->>>    		if (sa_bo->fence == NULL ||
->>>    		    !dma_fence_is_signaled(sa_bo->fence)) {
->>> @@ -183,7 +183,7 @@ static inline unsigned amdgpu_sa_bo_hole_eoffset(struct
->>> amdgpu_sa_manager *sa_ma
->>>    	struct list_head *hole = sa_manager->hole;
->>>      	if (hole->next != &sa_manager->olist) {
->>> -		return list_entry(hole->next, struct amdgpu_sa_bo,
->>> olist)->soffset;
->>> +		return list_first_entry(hole, struct amdgpu_sa_bo,
->>> olist)->soffset;
->>>    	}
->>>    	return sa_manager->size;
->>>    }
->>> diff --git a/drivers/gpu/drm/omapdrm/dss/display.c
->>> b/drivers/gpu/drm/omapdrm/dss/display.c
->>> index 0c9480b..fb9ecae 100644
->>> --- a/drivers/gpu/drm/omapdrm/dss/display.c
->>> +++ b/drivers/gpu/drm/omapdrm/dss/display.c
->>> @@ -158,8 +158,8 @@ struct omap_dss_device *omap_dss_get_next_device(struct
->>> omap_dss_device *from)
->>>    				goto out;
->>>    			}
->>>    -			dssdev = list_entry(l->next, struct omap_dss_device,
->>> -					panel_list);
->>> +			dssdev = list_first_entry(l, struct omap_dss_device,
->>> +						  panel_list);
->>>    			omap_dss_get_device(dssdev);
->>>    			goto out;
->>>    		}
->>> diff --git a/drivers/gpu/drm/radeon/radeon_sa.c
->>> b/drivers/gpu/drm/radeon/radeon_sa.c
->>> index 197b157..66c0482 100644
->>> --- a/drivers/gpu/drm/radeon/radeon_sa.c
->>> +++ b/drivers/gpu/drm/radeon/radeon_sa.c
->>> @@ -158,7 +158,7 @@ static void radeon_sa_bo_try_free(struct
->>> radeon_sa_manager *sa_manager)
->>>    	if (sa_manager->hole->next == &sa_manager->olist)
->>>    		return;
->>>    -	sa_bo = list_entry(sa_manager->hole->next, struct radeon_sa_bo,
->>> olist);
->>> +	sa_bo = list_first_entry(sa_manager->hole, struct radeon_sa_bo,
->>> olist);
->>>    	list_for_each_entry_safe_from(sa_bo, tmp, &sa_manager->olist, olist) {
->>>    		if (sa_bo->fence == NULL ||
->>> !radeon_fence_signaled(sa_bo->fence)) {
->>>    			return;
->>> @@ -182,7 +182,7 @@ static inline unsigned radeon_sa_bo_hole_eoffset(struct
->>> radeon_sa_manager *sa_ma
->>>    	struct list_head *hole = sa_manager->hole;
->>>      	if (hole->next != &sa_manager->olist) {
->>> -		return list_entry(hole->next, struct radeon_sa_bo,
->>> olist)->soffset;
->>> +		return list_first_entry(hole, struct radeon_sa_bo,
->>> olist)->soffset;
->>>    	}
->>>    	return sa_manager->size;
->>>    }
->> --
->> You received this message because you are subscribed to the Google Groups
->> "outreachy-kernel" group.
->> To unsubscribe from this group and stop receiving emails from it, send an
->> email to outreachy-kernel+unsubscribe@googlegroups.com.
->> To post to this group, send email to outreachy-kernel@googlegroups.com.
->> To view this discussion on the web visit
->> https://groups.google.com/d/msgid/outreachy-kernel/8b1e22f8-7a05-b66b-8825-7d4d97e46dac%40amd.com.
->> For more options, visit https://groups.google.com/d/optout.
-> >
->
->
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+--8323329-369822278-1521457591=:3392
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
 
---------------6CE5DA37F03A48653B7B4E05
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: 8bit
-
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  </head>
-  <body text="#000000" bgcolor="#FFFFFF">
-    <div class="moz-cite-prefix">Am 19.03.2018 um 12:06 schrieb Julia
-      Lawall:<br>
-    </div>
-    <blockquote type="cite"
-      cite="mid:alpine.DEB.2.20.1803191204550.3392@hadrien">
-      <pre wrap="">
 
 On Mon, 19 Mar 2018, Christian König wrote:
 
-</pre>
-      <blockquote type="cite">
-        <pre wrap="">Mhm, actually that patch isn't correct. What we grab get here is the next
-entry, not the first one.
+> Mhm, actually that patch isn't correct. What we grab get here is the next
+> entry, not the first one.
+>
+> We don't have an alias list_next_entry for list_first_entry?
 
-We don't have an alias list_next_entry for list_first_entry?
-</pre>
-      </blockquote>
-      <pre wrap="">
 As compared to the semantic patch I proposed earlier today, it would seem
 that list_first_entry is useful when the types are different?  One would
 have to check the result of course, but a list eleemnt with the same type
-as the structure that contains the list might be unlikely?</pre>
-    </blockquote>
-    <br>
-    The list element and the list head have different types in this
-    case:<br>
-    <blockquote type="cite">
-      <pre wrap="">  	if (sa_manager-&gt;hole-&gt;next == &amp;sa_manager-&gt;olist)
-  		return;
-  -	sa_bo = list_entry(sa_manager-&gt;hole-&gt;next, struct amdgpu_sa_bo, olist);
-+	sa_bo = list_first_entry(sa_manager-&gt;hole, struct amdgpu_sa_bo, olist);</pre>
-    </blockquote>
-    <br>
-    sa_manager-&gt;olist is the head of the list and sa_manager-&gt;hole
-    can point to both the head and any element in the list.<br>
-    <br>
-    The statement "if (sa_manager-&gt;hole-&gt;next ==
-    &amp;sa_manager-&gt;olist)" now checks if the next pointer points to
-    the head and if so aborts the function.<br>
-    <br>
-    Then the statement "sa_bo = list_entry(sa_manager-&gt;hole-&gt;next,
-    struct amdgpu_sa_bo, olist);" returns the next element after the
-    hole to try to release it.<br>
-    <br>
-    So with the automated change the code is still correct, but NOT
-    easier to understand because we actually don't grab the first
-    element here.<br>
-    <br>
-    Regards,<br>
-    Christian.<br>
-    <br>
-    <blockquote type="cite"
-      cite="mid:alpine.DEB.2.20.1803191204550.3392@hadrien">
-      <pre wrap="">
+as the structure that contains the list might be unlikely?
 
 julia
 
-</pre>
-      <blockquote type="cite">
-        <pre wrap="">
-Regards,
-Christian.
-
-Am 18.03.2018 um 22:51 schrieb Arushi Singhal:
-</pre>
-        <blockquote type="cite">
-          <pre wrap="">This patch replaces list_entry with list_first_entry as it makes the
-code more clear.
-Done using coccinelle:
-
-@@
-expression e;
-@@
-(
-- list_entry(e-&gt;next,
-+ list_first_entry(e,
-   ...)
-|
-- list_entry(e-&gt;prev,
-+ list_last_entry(e,
-   ...)
-)
-
-Signed-off-by: Arushi Singhal <a class="moz-txt-link-rfc2396E" href="mailto:arushisinghal19971997@gmail.com">&lt;arushisinghal19971997@gmail.com&gt;</a>
----
-  drivers/gpu/drm/amd/amdgpu/amdgpu_sa.c | 4 ++--
-  drivers/gpu/drm/omapdrm/dss/display.c  | 4 ++--
-  drivers/gpu/drm/radeon/radeon_sa.c     | 4 ++--
-  3 files changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_sa.c
-b/drivers/gpu/drm/amd/amdgpu/amdgpu_sa.c
-index 3144400..646f593 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_sa.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_sa.c
-@@ -158,7 +158,7 @@ static void amdgpu_sa_bo_try_free(struct
-amdgpu_sa_manager *sa_manager)
-  	if (sa_manager-&gt;hole-&gt;next == &amp;sa_manager-&gt;olist)
-  		return;
-  -	sa_bo = list_entry(sa_manager-&gt;hole-&gt;next, struct amdgpu_sa_bo,
-olist);
-+	sa_bo = list_first_entry(sa_manager-&gt;hole, struct amdgpu_sa_bo,
-olist);
-  	list_for_each_entry_safe_from(sa_bo, tmp, &amp;sa_manager-&gt;olist, olist) {
-  		if (sa_bo-&gt;fence == NULL ||
-  		    !dma_fence_is_signaled(sa_bo-&gt;fence)) {
-@@ -183,7 +183,7 @@ static inline unsigned amdgpu_sa_bo_hole_eoffset(struct
-amdgpu_sa_manager *sa_ma
-  	struct list_head *hole = sa_manager-&gt;hole;
-    	if (hole-&gt;next != &amp;sa_manager-&gt;olist) {
--		return list_entry(hole-&gt;next, struct amdgpu_sa_bo,
-olist)-&gt;soffset;
-+		return list_first_entry(hole, struct amdgpu_sa_bo,
-olist)-&gt;soffset;
-  	}
-  	return sa_manager-&gt;size;
-  }
-diff --git a/drivers/gpu/drm/omapdrm/dss/display.c
-b/drivers/gpu/drm/omapdrm/dss/display.c
-index 0c9480b..fb9ecae 100644
---- a/drivers/gpu/drm/omapdrm/dss/display.c
-+++ b/drivers/gpu/drm/omapdrm/dss/display.c
-@@ -158,8 +158,8 @@ struct omap_dss_device *omap_dss_get_next_device(struct
-omap_dss_device *from)
-  				goto out;
-  			}
-  -			dssdev = list_entry(l-&gt;next, struct omap_dss_device,
--					panel_list);
-+			dssdev = list_first_entry(l, struct omap_dss_device,
-+						  panel_list);
-  			omap_dss_get_device(dssdev);
-  			goto out;
-  		}
-diff --git a/drivers/gpu/drm/radeon/radeon_sa.c
-b/drivers/gpu/drm/radeon/radeon_sa.c
-index 197b157..66c0482 100644
---- a/drivers/gpu/drm/radeon/radeon_sa.c
-+++ b/drivers/gpu/drm/radeon/radeon_sa.c
-@@ -158,7 +158,7 @@ static void radeon_sa_bo_try_free(struct
-radeon_sa_manager *sa_manager)
-  	if (sa_manager-&gt;hole-&gt;next == &amp;sa_manager-&gt;olist)
-  		return;
-  -	sa_bo = list_entry(sa_manager-&gt;hole-&gt;next, struct radeon_sa_bo,
-olist);
-+	sa_bo = list_first_entry(sa_manager-&gt;hole, struct radeon_sa_bo,
-olist);
-  	list_for_each_entry_safe_from(sa_bo, tmp, &amp;sa_manager-&gt;olist, olist) {
-  		if (sa_bo-&gt;fence == NULL ||
-!radeon_fence_signaled(sa_bo-&gt;fence)) {
-  			return;
-@@ -182,7 +182,7 @@ static inline unsigned radeon_sa_bo_hole_eoffset(struct
-radeon_sa_manager *sa_ma
-  	struct list_head *hole = sa_manager-&gt;hole;
-    	if (hole-&gt;next != &amp;sa_manager-&gt;olist) {
--		return list_entry(hole-&gt;next, struct radeon_sa_bo,
-olist)-&gt;soffset;
-+		return list_first_entry(hole, struct radeon_sa_bo,
-olist)-&gt;soffset;
-  	}
-  	return sa_manager-&gt;size;
-  }
-</pre>
-        </blockquote>
-        <pre wrap="">
---
-You received this message because you are subscribed to the Google Groups
-"outreachy-kernel" group.
-To unsubscribe from this group and stop receiving emails from it, send an
-email to <a class="moz-txt-link-abbreviated" href="mailto:outreachy-kernel+unsubscribe@googlegroups.com">outreachy-kernel+unsubscribe@googlegroups.com</a>.
-To post to this group, send email to <a class="moz-txt-link-abbreviated" href="mailto:outreachy-kernel@googlegroups.com">outreachy-kernel@googlegroups.com</a>.
-To view this discussion on the web visit
-<a class="moz-txt-link-freetext" href="https://groups.google.com/d/msgid/outreachy-kernel/8b1e22f8-7a05-b66b-8825-7d4d97e46dac%40amd.com">https://groups.google.com/d/msgid/outreachy-kernel/8b1e22f8-7a05-b66b-8825-7d4d97e46dac%40amd.com</a>.
-For more options, visit <a class="moz-txt-link-freetext" href="https://groups.google.com/d/optout">https://groups.google.com/d/optout</a>.
-</pre>
-      </blockquote>
-      <pre wrap="">&gt;</pre>
-      <br>
-      <fieldset class="mimeAttachmentHeader"></fieldset>
-      <br>
-      <pre wrap="">_______________________________________________
-dri-devel mailing list
-<a class="moz-txt-link-abbreviated" href="mailto:dri-devel@lists.freedesktop.org">dri-devel@lists.freedesktop.org</a>
-<a class="moz-txt-link-freetext" href="https://lists.freedesktop.org/mailman/listinfo/dri-devel">https://lists.freedesktop.org/mailman/listinfo/dri-devel</a>
-</pre>
-    </blockquote>
-    <br>
-  </body>
-</html>
-
---------------6CE5DA37F03A48653B7B4E05--
+>
+> Regards,
+> Christian.
+>
+> Am 18.03.2018 um 22:51 schrieb Arushi Singhal:
+> > This patch replaces list_entry with list_first_entry as it makes the
+> > code more clear.
+> > Done using coccinelle:
+> >
+> > @@
+> > expression e;
+> > @@
+> > (
+> > - list_entry(e->next,
+> > + list_first_entry(e,
+> >    ...)
+> > |
+> > - list_entry(e->prev,
+> > + list_last_entry(e,
+> >    ...)
+> > )
+> >
+> > Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+> > ---
+> >   drivers/gpu/drm/amd/amdgpu/amdgpu_sa.c | 4 ++--
+> >   drivers/gpu/drm/omapdrm/dss/display.c  | 4 ++--
+> >   drivers/gpu/drm/radeon/radeon_sa.c     | 4 ++--
+> >   3 files changed, 6 insertions(+), 6 deletions(-)
+> >
+> > diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_sa.c
+> > b/drivers/gpu/drm/amd/amdgpu/amdgpu_sa.c
+> > index 3144400..646f593 100644
+> > --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_sa.c
+> > +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_sa.c
+> > @@ -158,7 +158,7 @@ static void amdgpu_sa_bo_try_free(struct
+> > amdgpu_sa_manager *sa_manager)
+> >   	if (sa_manager->hole->next == &sa_manager->olist)
+> >   		return;
+> >   -	sa_bo = list_entry(sa_manager->hole->next, struct amdgpu_sa_bo,
+> > olist);
+> > +	sa_bo = list_first_entry(sa_manager->hole, struct amdgpu_sa_bo,
+> > olist);
+> >   	list_for_each_entry_safe_from(sa_bo, tmp, &sa_manager->olist, olist) {
+> >   		if (sa_bo->fence == NULL ||
+> >   		    !dma_fence_is_signaled(sa_bo->fence)) {
+> > @@ -183,7 +183,7 @@ static inline unsigned amdgpu_sa_bo_hole_eoffset(struct
+> > amdgpu_sa_manager *sa_ma
+> >   	struct list_head *hole = sa_manager->hole;
+> >     	if (hole->next != &sa_manager->olist) {
+> > -		return list_entry(hole->next, struct amdgpu_sa_bo,
+> > olist)->soffset;
+> > +		return list_first_entry(hole, struct amdgpu_sa_bo,
+> > olist)->soffset;
+> >   	}
+> >   	return sa_manager->size;
+> >   }
+> > diff --git a/drivers/gpu/drm/omapdrm/dss/display.c
+> > b/drivers/gpu/drm/omapdrm/dss/display.c
+> > index 0c9480b..fb9ecae 100644
+> > --- a/drivers/gpu/drm/omapdrm/dss/display.c
+> > +++ b/drivers/gpu/drm/omapdrm/dss/display.c
+> > @@ -158,8 +158,8 @@ struct omap_dss_device *omap_dss_get_next_device(struct
+> > omap_dss_device *from)
+> >   				goto out;
+> >   			}
+> >   -			dssdev = list_entry(l->next, struct omap_dss_device,
+> > -					panel_list);
+> > +			dssdev = list_first_entry(l, struct omap_dss_device,
+> > +						  panel_list);
+> >   			omap_dss_get_device(dssdev);
+> >   			goto out;
+> >   		}
+> > diff --git a/drivers/gpu/drm/radeon/radeon_sa.c
+> > b/drivers/gpu/drm/radeon/radeon_sa.c
+> > index 197b157..66c0482 100644
+> > --- a/drivers/gpu/drm/radeon/radeon_sa.c
+> > +++ b/drivers/gpu/drm/radeon/radeon_sa.c
+> > @@ -158,7 +158,7 @@ static void radeon_sa_bo_try_free(struct
+> > radeon_sa_manager *sa_manager)
+> >   	if (sa_manager->hole->next == &sa_manager->olist)
+> >   		return;
+> >   -	sa_bo = list_entry(sa_manager->hole->next, struct radeon_sa_bo,
+> > olist);
+> > +	sa_bo = list_first_entry(sa_manager->hole, struct radeon_sa_bo,
+> > olist);
+> >   	list_for_each_entry_safe_from(sa_bo, tmp, &sa_manager->olist, olist) {
+> >   		if (sa_bo->fence == NULL ||
+> > !radeon_fence_signaled(sa_bo->fence)) {
+> >   			return;
+> > @@ -182,7 +182,7 @@ static inline unsigned radeon_sa_bo_hole_eoffset(struct
+> > radeon_sa_manager *sa_ma
+> >   	struct list_head *hole = sa_manager->hole;
+> >     	if (hole->next != &sa_manager->olist) {
+> > -		return list_entry(hole->next, struct radeon_sa_bo,
+> > olist)->soffset;
+> > +		return list_first_entry(hole, struct radeon_sa_bo,
+> > olist)->soffset;
+> >   	}
+> >   	return sa_manager->size;
+> >   }
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit
+> https://groups.google.com/d/msgid/outreachy-kernel/8b1e22f8-7a05-b66b-8825-7d4d97e46dac%40amd.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+--8323329-369822278-1521457591=:3392--
 
