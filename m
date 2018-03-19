@@ -1,106 +1,187 @@
-X-GM-THRID: 6746283078211076096
-X-Received: by 2002:a05:6402:1514:: with SMTP id f20mr10277012edw.35.1570741431634;
-        Thu, 10 Oct 2019 14:03:51 -0700 (PDT)
+X-GM-THRID: 6534531198530617344
+X-Received: by 10.28.230.84 with SMTP id d81mr1314072wmh.12.1521468836822;
+        Mon, 19 Mar 2018 07:13:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aa7:d151:: with SMTP id r17ls1235774edo.4.gmail; Thu, 10 Oct
- 2019 14:03:50 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy+1IpQMthZODwWihDit4SwBBwo57/ubvRSwA79cYgRWdNjT8Dv5JgY60kRNqmHQMgb3S5R
-X-Received: by 2002:a50:ed01:: with SMTP id j1mr10262714eds.111.1570741430791;
-        Thu, 10 Oct 2019 14:03:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570741430; cv=none;
+Received: by 10.223.134.106 with SMTP id 39ls585775wrw.7.gmail; Mon, 19 Mar
+ 2018 07:13:55 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELs+NUsXtga5InZbP2Z1A14c2a9eM/zedT/UkC3iqGIr/3sJenAU530mLAr9rN35Ji/pJcHX
+X-Received: by 10.223.187.6 with SMTP id r6mr1090351wrg.9.1521468835648;
+        Mon, 19 Mar 2018 07:13:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521468835; cv=none;
         d=google.com; s=arc-20160816;
-        b=jeoKfpBvRAw47kdvDxq1HuoCpPBU2S3i8R58O33/OXF76cI79iJPDVtMKnAeTgucLG
-         ZvyTZbth0fMgxXuB5jQCp+VXp85meN5yj5yLCIo028dtomPOBds0EJiNK8no1ukJqhgL
-         jyTuZwGSPpUuC0w+JRZIblDOd0jTEvmc/xYUb9tAwozBlep9Re+yK8338kRFMeVvpg8T
-         Fxva4gaohB5zgr5walfcVMlhsK87/JAnZKcV+SEnpWPeI5M8FHXsCxHYSZmGD8in577N
-         7VNToQNO1o38eC3zeMkpRY1e8t/629yPGyutWfmaZkH9W5+eY/bIxibvH96Z86bOtqHT
-         kn3A==
+        b=swR6xq7WgqoqbIPsodBZWN85lHpcbJi73rgdowc4oz8CjQvGpG0ezlbh4lobvgPenH
+         wV+fSQLx8DNnkPg1IOzmzjB9++2cbXiYeqXtu2Fvu4bWOVpeLTiOPjiWEgVnwL5IQ2Jk
+         L7XMTuf8D49JBm2sYMLb1KbwxCGViYwFHQWPHdsfiD4klP0RTnD6po3k3lOe9bC+hISo
+         aOpY5m4TVpPwxM79LEpaAk4KCh81l6213ThdGKmssy4JLvL2cVuf/HHaPZELAcHjavLI
+         G4udk+YlgLdPkAOOEvH/d9wMnsrcDVGWwKc50VlowrSOWxe+j4XrFMpgqKgEvd6xO6iV
+         xSVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=dVd82TsNic1iRgEn8OK8OU1sOyACvsv7jo4EHLH2mCs=;
-        b=TZuW6EavTuQokdRsoRy2eDcazpglVtQx793GSuQEYusTzdkYWBZA6aJT8/Ah9bLx4v
-         IFnjYeD0Opb2AqKN+RNZOQSXyNGF0tQuLvGpVQc0bKkeO3n9UMC8pu4yePjSHre4WI8Z
-         jwOIJ7cbf+gQCCE/ZkQlsUjyKj0XxHl3YoKSiRU2lTfJii96a44f26HV/nvx1LMpCJnT
-         jk75UwDhAq55wrm6oS86VZyvsrHtSbN7Y1irNIQdB37FBBXk0aQiNFZd1K2swaeyNHAT
-         sOTF/H758ao1k9S+jKtieYSAKZaC5gCxxrSflGOAB8rqD1qS+sHH/WxYGtwkVaMfzu47
-         KBEg==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:sender:dkim-signature
+         :arc-authentication-results;
+        bh=5ALTqZuPEDdj3ZAwDGmi5xhRIf+RO2ifQqIaSafh/ow=;
+        b=oLC3eHm2m96lKXKBTvmxwEcq+Vta+gZaJDjzXW9yesf+mvxLUIxY5TdBzLhrRaQ1C+
+         kd48fsMEk8ZutoMamva8hIV5xAMowXxM/rwvIAP2qASHjgWF8ZH2JS+gJdPuDJb7AzIk
+         TtGCqdwS5/hHpYC+UM3tl470/TXUeUshlxQuSeNAXtjfm/LkZogE7G18aGtHvOb5/gJg
+         0ZSIGV/dsoRBXhWF9KKuvl0d8Fe31ADQgoNyNnG+HV9eCg4BzJTIxHgOaNR+AL/g0fP8
+         9CbyDmV0NEcQDeJFWuayd4gkO5zODRSYu3P1HUaPSDQXSav3dxiLKS+peUNnEJPX4dg3
+         Yvig==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WiXrensv;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wm1-x341.google.com (mail-wm1-x341.google.com. [2a00:1450:4864:20::341])
-        by gmr-mx.google.com with ESMTPS id r3si56865eds.2.2019.10.10.14.03.50
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=ACLmw0uv;
+       spf=neutral (google.com: 2a00:1450:400c:c09::233 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
+Return-Path: <daniel@ffwll.ch>
+Received: from mail-wm0-x233.google.com (mail-wm0-x233.google.com. [2a00:1450:400c:c09::233])
+        by gmr-mx.google.com with ESMTPS id r10si297228wmg.2.2018.03.19.07.13.55
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 10 Oct 2019 14:03:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) client-ip=2a00:1450:4864:20::341;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 19 Mar 2018 07:13:55 -0700 (PDT)
+Received-SPF: neutral (google.com: 2a00:1450:400c:c09::233 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) client-ip=2a00:1450:400c:c09::233;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WiXrensv;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x341.google.com with SMTP id v17so8136068wml.4
-        for <outreachy-kernel@googlegroups.com>; Thu, 10 Oct 2019 14:03:50 -0700 (PDT)
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=ACLmw0uv;
+       spf=neutral (google.com: 2a00:1450:400c:c09::233 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
+Received: by mail-wm0-x233.google.com with SMTP id f19so2869018wmc.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 19 Mar 2018 07:13:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=dVd82TsNic1iRgEn8OK8OU1sOyACvsv7jo4EHLH2mCs=;
-        b=WiXrensvozMU62UNWhoOYLW52zJXqI1OYiqh8V01JGAv1a6oknHHePtELmNgqP6iCu
-         WKTN5d4J2DYyZWZ/eGigsTFHvVxnGjmRocZ0wtAo1kKKbneQ3LrI5G/DqcYGN77oWJiB
-         K6ImuKOomH1y92sDPpIIip8bqZ6f4dEuw5Riy9LF53p8m8/3nbGy1oJCalGeD4NiTlJp
-         4GXzD7rACMfl5cdD+YRWUb5HAylhF702Oq2TCgq8fl5PAkicV/58Ee3K9sf3qW6mS0EG
-         v1X4820ear5WIeJR5zwHPJnAnQGnymX+QkVtkgwdIQo1HUVu/ICvIoaeLdV1dVQ1O6Sn
-         vjsw==
+        d=ffwll.ch; s=google;
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=5ALTqZuPEDdj3ZAwDGmi5xhRIf+RO2ifQqIaSafh/ow=;
+        b=ACLmw0uvrEeFOK597y88nGD5yUUYr1oYJJhMCZX/9JmJ/Og4oqhtVkKfj5FP37zDK9
+         pYOT3r79hi5PzDCmOxIlIA4mKURml30yLJ4D90V4/QHpoi6tUOD+2RRwL4pG3UXShN0p
+         ZPC79Pr0iSBgvtTVonPolBTYTtuCd3xiOqMZQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=dVd82TsNic1iRgEn8OK8OU1sOyACvsv7jo4EHLH2mCs=;
-        b=H8p7T6lVfZW1AWVTDWcNRY/ninzFiN7+OFj77layE3E00dzibJsRPijLujE5JVnIC7
-         WBtlEJVcRHZzByivAPLy2VRBbD0YvJNwIzkhvIbI40wemUUnbKiaa+vU6j9jhWnroH4M
-         ZQZPiPE6nr5sxX1x+5CS+z6FmaR40UQu8VKthM7ajN1ltLCsRr8e+MFxz/tFrDJE3X9Q
-         qSjt7+KbcQFae5S869aL1L4asJNM5iYRD1B3pAj6mz7/Q5XV21w6pNbk/zv3cr4M42n/
-         Bc8KGyWclNwcj56Glrw2X1ERHYo2Cq7tJUz+iR2Glj/YX7wU8TkILQlEdAQ2t6j+EYFq
-         McLg==
-X-Gm-Message-State: APjAAAXZ4Z47x9YyRIAZwPJDKeyeocGqLcwd/QnvQqhA0PgLB0nlEi4p
-	kl9nk58qwpSFmhWrsA/neUSuvIO2tIZH
-X-Received: by 2002:a7b:c187:: with SMTP id y7mr402036wmi.154.1570741430234;
-        Thu, 10 Oct 2019 14:03:50 -0700 (PDT)
-Return-Path: <jbi.octave@gmail.com>
-Received: from ninjahub.org.net ([94.119.64.0])
-        by smtp.googlemail.com with ESMTPSA id w125sm14908956wmg.32.2019.10.10.14.03.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Oct 2019 14:03:49 -0700 (PDT)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	linux-kernel@vger.kernel.org,
-	dan.carpenter@oracle.com,
-	Jules Irenge <jbi.octave@gmail.com>
-Subject: [RESEND PATCH v1 0/5] checkpatch warnings cleanup
-Date: Thu, 10 Oct 2019 22:02:51 +0100
-Message-Id: <20191010210256.22522-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.21.0
+        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+         :references:mime-version:content-disposition:in-reply-to:user-agent;
+        bh=5ALTqZuPEDdj3ZAwDGmi5xhRIf+RO2ifQqIaSafh/ow=;
+        b=lXfmcWhus34AGIl5OQzDXPHbftmuEYQBQRy8ZtFDFtwhLLA+W+8fOjFhORdpGI7LJn
+         MxQF7AyRa7i7zfOcme7yCBn8JnYALz9VGg90JUFggXtFbm/q1vYhVeMgllFNwM5OP2fz
+         8QiuPYIkAh9p5veyu/tOJT2+G9MmtlWULmr/Daa/M2o342udSx0JGBOTlQWRyl5wf46C
+         ksziDTw92/7/jeQasJSBcgr4+uqNfs+fOHPhaJm5yeOOWZ72KGYRsaktwAuY70HPneBm
+         1i3re9WbQrVU5acT1rIzhWXf2YS0IONvAelczL2wlFXl6ZMyT7Xj04g3/YmIZhdHmTC1
+         lICg==
+X-Gm-Message-State: AElRT7GBVDyaKEIj3x4CTi1/KxoCCFjCoxjaltqIERoYJAu8mYipwYn5
+	6zlBYxEjnCcJoa/jrt6jAn7NWXIQ
+X-Received: by 10.80.157.130 with SMTP id w2mr13748208ede.123.1521468835238;
+        Mon, 19 Mar 2018 07:13:55 -0700 (PDT)
+Return-Path: <daniel@ffwll.ch>
+Received: from phenom.ffwll.local ([2a02:168:5635:0:39d2:f87e:2033:9f6])
+        by smtp.gmail.com with ESMTPSA id o3sm277066edi.24.2018.03.19.07.13.54
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 19 Mar 2018 07:13:54 -0700 (PDT)
+Sender: Daniel Vetter <daniel.vetter@ffwll.ch>
+Date: Mon, 19 Mar 2018 15:13:52 +0100
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Haneen Mohammed <hamohammed.sa@gmail.com>
+Cc: Daniel Vetter <daniel.vetter@intel.com>,
+	Gustavo Padovan <gustavo@padovan.org>,
+	Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>,
+	dri-devel@lists.freedesktop.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH DRM] drm: remove
+ drm_mode_object_{un/reference} aliases
+Message-ID: <20180319141352.GQ14155@phenom.ffwll.local>
+References: <20180319055820.GA17502@haneen-VirtualBox>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20180319055820.GA17502@haneen-VirtualBox>
+X-Operating-System: Linux phenom 4.15.0-1-amd64 
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-Clean up multiple warnings reported by checkpatch tool. These are a resend
-in the order they were patched.
+On Mon, Mar 19, 2018 at 01:58:20AM -0400, Haneen Mohammed wrote:
+> This patch remove the compatibility aliases
+> drm_mode_object_{reference/unreference} of drm_mode_object_{get/put}
+> since all callers have been converted to the prefered _{get/put}.
+> 
+> Remove the helpers from the semantic patch drm-get-put-cocci.
+> 
+> Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
 
-Jules Irenge (5):
-  staging: qlge: correct a misspelled word
-  staging: qlge: fix "alignment should match open parenthesis" checks
-  staging: qlge: Fix multiple assignments warning by replacing integer
-    variables to bool
-  staging: qlge: add space to fix check warning
-  staging: qlge: fix comparison to NULL warning
+Yay, one set down, a few more to go!
 
- drivers/staging/qlge/qlge_dbg.c | 209 ++++++++++++++++----------------
- 1 file changed, 104 insertions(+), 105 deletions(-)
+Thanks for taking care of this.
+-Daniel
+
+> ---
+>  include/drm/drm_mode_object.h            | 24 ------------------------
+>  scripts/coccinelle/api/drm-get-put.cocci | 10 ----------
+>  2 files changed, 34 deletions(-)
+> 
+> diff --git a/include/drm/drm_mode_object.h b/include/drm/drm_mode_object.h
+> index 7ba3913..c34a3e8 100644
+> --- a/include/drm/drm_mode_object.h
+> +++ b/include/drm/drm_mode_object.h
+> @@ -120,30 +120,6 @@ struct drm_mode_object *drm_mode_object_find(struct drm_device *dev,
+>  void drm_mode_object_get(struct drm_mode_object *obj);
+>  void drm_mode_object_put(struct drm_mode_object *obj);
+>  
+> -/**
+> - * drm_mode_object_reference - acquire a mode object reference
+> - * @obj: DRM mode object
+> - *
+> - * This is a compatibility alias for drm_mode_object_get() and should not be
+> - * used by new code.
+> - */
+> -static inline void drm_mode_object_reference(struct drm_mode_object *obj)
+> -{
+> -	drm_mode_object_get(obj);
+> -}
+> -
+> -/**
+> - * drm_mode_object_unreference - release a mode object reference
+> - * @obj: DRM mode object
+> - *
+> - * This is a compatibility alias for drm_mode_object_put() and should not be
+> - * used by new code.
+> - */
+> -static inline void drm_mode_object_unreference(struct drm_mode_object *obj)
+> -{
+> -	drm_mode_object_put(obj);
+> -}
+> -
+>  int drm_object_property_set_value(struct drm_mode_object *obj,
+>  				  struct drm_property *property,
+>  				  uint64_t val);
+> diff --git a/scripts/coccinelle/api/drm-get-put.cocci b/scripts/coccinelle/api/drm-get-put.cocci
+> index 91fceb8..ceb71ea 100644
+> --- a/scripts/coccinelle/api/drm-get-put.cocci
+> +++ b/scripts/coccinelle/api/drm-get-put.cocci
+> @@ -16,12 +16,6 @@ expression object;
+>  @@
+>  
+>  (
+> -- drm_mode_object_reference(object)
+> -+ drm_mode_object_get(object)
+> -|
+> -- drm_mode_object_unreference(object)
+> -+ drm_mode_object_put(object)
+> -|
+>  - drm_connector_reference(object)
+>  + drm_connector_get(object)
+>  |
+> @@ -62,10 +56,6 @@ position p;
+>  @@
+>  
+>  (
+> -drm_mode_object_unreference@p(object)
+> -|
+> -drm_mode_object_reference@p(object)
+> -|
+>  drm_connector_unreference@p(object)
+>  |
+>  drm_connector_reference@p(object)
+> -- 
+> 2.7.4
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20180319055820.GA17502%40haneen-VirtualBox.
+> For more options, visit https://groups.google.com/d/optout.
 
 -- 
-2.21.0
-
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
 
