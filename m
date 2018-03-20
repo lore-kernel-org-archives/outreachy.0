@@ -1,106 +1,110 @@
 X-GM-THRID: 6535126466824241152
-X-Received: by 10.13.244.194 with SMTP id d185mr7404979ywf.76.1521577755304;
-        Tue, 20 Mar 2018 13:29:15 -0700 (PDT)
+X-Received: by 10.107.52.66 with SMTP id b63mr7525507ioa.66.1521577745871;
+        Tue, 20 Mar 2018 13:29:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.13.198.129 with SMTP id i123ls161723ywd.42.gmail; Tue, 20 Mar
- 2018 13:29:13 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELuKiFfp6I0qpYqf8GKxQDoUyEGuTmOYqSR23r/TNRBtI9Rk+W1XCL3330YvqpaES9an9q0p
-X-Received: by 10.129.47.19 with SMTP id v19mr7007272ywv.52.1521577753930;
-        Tue, 20 Mar 2018 13:29:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521577753; cv=none;
+Received: by 2002:a24:598f:: with SMTP id p137-v6ls445059itb.8.canary-gmail;
+ Tue, 20 Mar 2018 13:29:04 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELtIWP5TfCdbuHNrfuv6jXBRx2/uZzix+pCV5imnl7dpM7foG2WmDQ9g9fNUtvQtWNcWueMc
+X-Received: by 2002:a24:a089:: with SMTP id o131-v6mr578800ite.10.1521577744571;
+        Tue, 20 Mar 2018 13:29:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521577744; cv=none;
         d=google.com; s=arc-20160816;
-        b=R1wn1mLPvdtqoP6BVPeGxwl/9AeuVshXbkO8OkQGMEmZkQAFNjc2Jf6ykxz3ibr9aS
-         YRYS+Lw4+INPgjpqEMddErMHfUoesLPPVlcdVi3sTsnJC6zapq4uVgjQyxklI+7aXd1K
-         KAUD3S1bVSjykVHQwwQDMe9ExxxGKeRpK3DHUbFQH/ugb3c35e4L7fnGdRSRZ6B0cQch
-         8gZnVqXUga6mWFEMZvrUJWIVwxUEIK5E1CREZgkZGn3RPrOCcNDz7TE3KEeHSIRl3fC/
-         Wwu3uBJ9m+6UjdAxvNhQ7YsWByyJy8yTaGovVwJqNcPeKwiweDeiI2tIutdTB6pqIjKU
-         E+vg==
+        b=aaXa0wE351/zzqNESk1dNw+jBojgqADkn1grh5yjnvJU2WJPZqU+OzbMon4L5DoCag
+         0za4Au1B3hUo2LIX9Dp4eodjbZrZiirktZYJxN9I6GvoAzeTyp/tGwNxWXhLCbbMuA4u
+         K60Z3iljkUcN8b6tpnHckK/jepBT/zdzRE2Kfbap2upcWzBH0dMZOuFKis5y4wlTEEno
+         FNAyQ1Mlwj+mPjMpcZMLI+z4V4OTM24fsFKPmxQWjJxCVnqOUobkClQm4aFICjook4Zv
+         7iZzUnBVCtFWXG0uw5xPUDnQYT3jvLYRZYmwd3urHwsLSTN+9PrLQHbs2HYSVIeHKOvD
+         qYXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature:arc-authentication-results;
-        bh=RjvBi8ZsUDs2jirYGX6Zh2YihwzPo2CebDWZ6/v+lqk=;
-        b=TxItgaPhTtKRztJbu0dvPOVQEqex21CZrYGML08vpqQfUQLisHN0SdGpjy6ODvRawL
-         l/RZfyGQiyEmvUh2Op9P8UHMML5++cfjwQguGt6FDT5XgTH9fX7wc8HYUau1LneGcF8L
-         Gh7TR4bSyk2u+T49AKAhpAIi4Pcd4kCjBgDM/HO4jir1b0jbvoOBxqo809F6NTGjjfg2
-         URaE85mqwQG8EeYbzEhnuJ2gHV17uYRMSwBdaGDrbykh0JendXiSZX0e/44D+ScsPDyo
-         I2RLtKurhfknF2Hff7AzTmwuBmaujUqvHKxBdNZYPVunAvrrZPrlB0gmInnTIDuI5lbU
-         5gJg==
+        bh=F/1NesSlXDabDlCibBDLZL140rZ/3Lyht64ezjW30a4=;
+        b=QgYNJrKwhFdvwdni3BItLBEXXeM3ulbpIFx5qHZtmz7wf/4OGRCpd39Sfsa/5HF11+
+         1uH3xaa+7uiHwUcl9bzLpwMDBKPrLk8d95OxIUcU0QxrmqWV8hBEoKkVpyMld9lf9qzS
+         fAHhMX7FiWIhrgZxO2U/LCkmLCmXh3pnKBrmq0z6AimfvOvjW/wBGtDd4dkh7jj5Pp+6
+         Dq3F6hr3++Fd6ytNRpcPSJEaOtHohidcQTM/nt+maXHv2gW6Fq6RJN9uaWTXa5MNapxK
+         EC8rt46/WeG9O3xOC8jzdhepyKd2eu13fxqTyY+QTpVjlV/bI1QKTXAVCj4u01ntn7Lk
+         5/BQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=GIz6xiKv;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::244 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=VnVQNOeX;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
 Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from mail-pl0-x244.google.com (mail-pl0-x244.google.com. [2607:f8b0:400e:c01::244])
-        by gmr-mx.google.com with ESMTPS id g2si179756ywd.0.2018.03.20.13.29.13
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by gmr-mx.google.com with ESMTPS id t65si117055iof.0.2018.03.20.13.29.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 20 Mar 2018 13:29:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::244 as permitted sender) client-ip=2607:f8b0:400e:c01::244;
+        Tue, 20 Mar 2018 13:29:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=GIz6xiKv;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::244 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Received: by mail-pl0-x244.google.com with SMTP id c11-v6so1731108plo.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 20 Mar 2018 13:29:13 -0700 (PDT)
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=VnVQNOeX;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Received: by mail-pf0-x242.google.com with SMTP id x1so1107665pfh.7
+        for <outreachy-kernel@googlegroups.com>; Tue, 20 Mar 2018 13:29:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=ashoka.edu.in; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=RjvBi8ZsUDs2jirYGX6Zh2YihwzPo2CebDWZ6/v+lqk=;
-        b=GIz6xiKvlx1oijfqLfn/cpX7wPVLs0NKF6ndlpLHhuq1/aEHxTuHozAFoFiyCXpkRI
-         jjKMcEM2Wk/isrxgP1q0P0CClY+vDLG5EedybMDG1DY1d6hpMpCeb2IshvmVUNo8yiDv
-         wPce7H0iTYvyPhMQo1FOjmeNEMFkwdhi0JLN4=
+        bh=F/1NesSlXDabDlCibBDLZL140rZ/3Lyht64ezjW30a4=;
+        b=VnVQNOeXg2mCpuC0A7hlVj9+i03x5lnjjTp3VRaUvCujFcOdE8XQZ0AVkOIoTVDx5A
+         p09fxiTPHefC8q8D0yLWuaEjzbBh6N6GcIke0S1T3Fi8ArKESmrCN+a4Y7MrbzachZ8x
+         V9SPcXMBknE4usLxe+mx2GGAq5QBSxDOm4evw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=RjvBi8ZsUDs2jirYGX6Zh2YihwzPo2CebDWZ6/v+lqk=;
-        b=PQuztcvUiF9jxgMSx8q2BLmGozZaCAtzStyMrRmTgPFbUrjHk/ZjXuYoxbqhNn0tk3
-         aSegOxayddtaZBQS/mqyOujbFCEcZqvQQkFU1w7bkXKHD1OMTh/wByiufc+nyvNm6xSV
-         RavEIpAYjfFzI5680TTM+eRay90jkH2896sx6LBH2pDAHAX5GxbsoBsGKkHctdMyc/9D
-         Yhj8QsIVKGqd8FHlJt0y5uCrH75jvi+aK0B7iDs1oRi9B/y4maAXPJYXmkRCfhqIAB7I
-         LagCCjgxMQ9caRqXfNcOCp40ZuASjFumCWeMZr0fV7R3xTxwgGmIAuDi3RxEFqpdsOzD
-         80IA==
-X-Gm-Message-State: AElRT7EIlY3F47rtRBGD54W3dQlAuZPW7thM4QqRlQ4o6+4n86sQW12t
-	iM7Rx/cr27RSX14NUjvP+avpVxGX
-X-Received: by 2002:a17:902:66e6:: with SMTP id e93-v6mr18089400plk.312.1521577752578;
-        Tue, 20 Mar 2018 13:29:12 -0700 (PDT)
+        bh=F/1NesSlXDabDlCibBDLZL140rZ/3Lyht64ezjW30a4=;
+        b=GCWDai3aHbfnX/Scm6EYCs9LSSPnkWnlgLkBcQMUiWWtrBB4QtGZegcVOXFiEovh/B
+         FGhAknjUyYcaJH6ZNv+yTq5CszwLa3xPQL2hmd5wWoJBsKxxw+mxA2e0DSqzjAiNOb4F
+         6uRpA+mHxwIDRGdqDivJWtdJDdovbCse1b4X9dmBk2jLTy7zkE0wEqEAqCf5KPngvQN2
+         NhmkvRyHednaSVYCH5vtpR4K23Mo10lBA7EzOde8UbbRsNxXLlWDv7oJqD0iJhq4s5T5
+         5YyvhwBkcsUKtv16MUbVdhbuMYnjKUatxbl4CbTjCj06qMV+upSa89xtrnpXTs86JumY
+         c/ZQ==
+X-Gm-Message-State: AElRT7G2DiyBxLi2HpA+aUhVm+NNltua3SwBITWfQs+i6gw6AStyJCAJ
+	vdX8iTu/J08mN1Avb6j4uWyyDg==
+X-Received: by 10.98.155.137 with SMTP id e9mr5114228pfk.109.1521577743647;
+        Tue, 20 Mar 2018 13:29:03 -0700 (PDT)
 Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
 Received: from localhost.localdomain ([139.59.85.247])
-        by smtp.gmail.com with ESMTPSA id d77sm5480831pfe.20.2018.03.20.13.29.10
+        by smtp.gmail.com with ESMTPSA id d77sm5480831pfe.20.2018.03.20.13.29.01
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 20 Mar 2018 13:29:12 -0700 (PDT)
+        Tue, 20 Mar 2018 13:29:02 -0700 (PDT)
 From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
 To: forest@alittletooquiet.net,
 	gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
 Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-Subject: [PATCH 4/5] staging:vt6655:Delete typedef in typedef enum
-Date: Tue, 20 Mar 2018 20:27:58 +0000
-Message-Id: <1521577679-21104-4-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+Subject: [PATCH 3/5] staging: vt6655: Change typedef struct to struct
+Date: Tue, 20 Mar 2018 20:27:57 +0000
+Message-Id: <1521577679-21104-3-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1521577679-21104-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
 References: <1521577679-21104-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
 
-Change typedef enum to enum. Issue found with checkpatch.
+Change typedef struct to struct. Issue found with checkpatch.
 
 Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
 ---
- drivers/staging/vt6655/device_cfg.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/vt6655/device_cfg.h | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/staging/vt6655/device_cfg.h b/drivers/staging/vt6655/device_cfg.h
-index 3972881..2f38634 100644
+index 73f904b..3972881 100644
 --- a/drivers/staging/vt6655/device_cfg.h
 +++ b/drivers/staging/vt6655/device_cfg.h
-@@ -51,8 +51,8 @@ struct version {
+@@ -16,12 +16,11 @@
  
- #define PKT_BUF_SZ          2390
+ #include <linux/types.h>
  
--typedef enum  _chip_type {
-+enum CHIP_TYPE {
- 	VT3253 = 1
--} CHIP_TYPE, *PCHIP_TYPE;
+-typedef
+-struct _version {
++struct version {
+ 	unsigned char   major;
+ 	unsigned char   minor;
+ 	unsigned char   build;
+-} version_t, *pversion_t;
 +};
  
- #endif
+ #define VID_TABLE_SIZE      64
+ #define MCAST_TABLE_SIZE    64
 -- 
 2.7.4
 
