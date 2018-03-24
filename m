@@ -1,80 +1,97 @@
-X-GM-THRID: 6803299178996826112
-X-Received: by 2002:a05:600c:2c2:: with SMTP id 2mr4675115wmn.95.1584016526591;
-        Thu, 12 Mar 2020 05:35:26 -0700 (PDT)
+X-GM-THRID: 6536503854152810496
+X-Received: by 10.28.206.74 with SMTP id e71mr396188wmg.21.1521899933727;
+        Sat, 24 Mar 2018 06:58:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:afd4:: with SMTP id y20ls2804843wrd.5.gmail; Thu, 12 Mar
- 2020 05:35:25 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvWdpeIww08hYRINtO08M7oeoFN76QXWwtV02STmuVlV8xFS3UwxrVNYXGnAOEA2rrccYRj
-X-Received: by 2002:adf:f309:: with SMTP id i9mr11549232wro.0.1584016525355;
-        Thu, 12 Mar 2020 05:35:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584016525; cv=none;
+Received: by 10.223.156.193 with SMTP id h1ls449729wre.3.gmail; Sat, 24 Mar
+ 2018 06:58:52 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELuBFA1diZltbFredwohAqT9NgJaWMtrxM/eIljPD7OHWsGUD7VTH3rXhVyh5Wi8gbu7LCbt
+X-Received: by 10.223.139.198 with SMTP id w6mr2698750wra.27.1521899932694;
+        Sat, 24 Mar 2018 06:58:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521899932; cv=none;
         d=google.com; s=arc-20160816;
-        b=GL3yC/GqwF8Ab5zyrM7Nf5cUNHzaRE4hdDHSYxnvJULqiMLTMwyjz0B0GK0GsRZlMC
-         EtFlZyhAI9yL03JBURTzccWaZu328ahDN1o+BaLjLWaxqFumtHOxBs4QzJvIVTag7XCR
-         p7Ir/R73bVXiV6KB6wzD5lwzmRG5dx3d6R/tZoB8Y/eQMdiAQXqeG5yZby+blMAGwpoW
-         pwfEuk4nEGUzK+35ZK2g7ZlyF61c/Ds/pIQV5Yx5Jm+qpl6RorgnymmbUP4YjsWPan3T
-         h7fpkbNPb5Tl7UtL1BhzkUwFqDP2gcgMrkZKnNPGNgvTjz4LI5c7VUEN4cQDFmLeyb4q
-         cIxQ==
+        b=wYB40kejKa7gsPnq5+bd7gngD11G2aMNEtozQ0FMMD8OGN4ttS5LIaJCcz50G1pj4v
+         M02G6AzI/DNIAgU+fA9iB9nvz+fIKdfE8haiwIT6qnZvvEiHIyh8JS3b/i6NfuzSzUSC
+         SYagaAIVmP+obm4py/I4/w06HiZZbby6Fb9CSBiw2+vNiwEsEzyA0IswNkaFHoxw9zwW
+         RqfGA3BtUm3wO3OBYsCYiibdMMedE87kUF3pAx6XvTOSy4s7bPLtwoo+8J0PvUmowA+r
+         QffAOnwF1C1SvdDEkBKUjpe7Y915xKYvc9gNBtc4scBUvyhHWwCfxU+xovHFvljjpqC+
+         o+ow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date;
-        bh=1A0qMOY8X9VIW5g6xhf8rrYfAtoN0pLM6c3BgPjvgyk=;
-        b=KhqU62vb2R8TzSiF40UIVJEqU0VyuVTXpBAY+zqRecS2cq6RYQTgMARN8ULOUvIsp6
-         AR6EX82mcSJEKLqf2/zuYku+xNjYIELJWaHHyNHhuTY6JmGlBOpZHf5kt6djeI/bim1C
-         5pnUWSLEk/aXP1y3M0hba+o56i8xhoUVH6alE3Ip3Rp+ogHIcSPz7Xefn72ouL/cShRG
-         8kbD4D+/JR7f11z5+xgXOY2jdyDnLwaQfa3Zf6ElQTLLhXw/bH73YUzncvLCLAskLTSe
-         X3QBqcnHwKiNKGBTPzTql3QgXPGXln8dqBpxQnrBjHML0JGJDSNd+24iWhdn+a/ghepM
-         lQWw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=K0T65NwxcEwO+Xm2kQlEDTjn5fBW/ktyffDtpp0yM3Y=;
+        b=1GaStEDoXpxXsP4u1RP7IESu++TM1wiNhYWJKSIIpTNiTQHMX35smsUATMqvvqUSsX
+         B1faTTdgGGRMQIQl0YbrvPZ8cJle8ORe/9HCSunE/jyQeteEw5MUaisNcNbmAeEl5zMZ
+         x3pODjuS2PyvePOxpnbOsQX7rvZLZHO48UISvpfaud4fvB0oeYUm2ffcZ/o+QSWG3mFA
+         ejWgwUpXu2euXuDjiQfPjaB+VXfYeXfO9uG4jncb9CGOUTeIwy2uaplkKt5Htp7qQPhP
+         ZrWYf82PYTdndTBFCUqnaT2RaVYZzCy1al5U7uen5Jw9IRSY5LQP+hw0yYlqGK2zTex2
+         H+3w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Return-Path: <vkor@vkten.in>
-Received: from vkten.in (vkten.in. [104.244.73.96])
-        by gmr-mx.google.com with ESMTP id f1si168310wme.1.2020.03.12.05.35.25
-        for <outreachy-kernel@googlegroups.com>;
-        Thu, 12 Mar 2020 05:35:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 51si403913wrw.0.2018.03.24.06.58.52
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 24 Mar 2018 06:58:52 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Received: (qmail 13425 invoked from network); 12 Mar 2020 12:35:24 -0000
-Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.246.223.143)
-  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
-  by vkten with ESMTPSA; 12 Mar 2020 12:35:24 -0000
-Date: Thu, 12 Mar 2020 18:05:17 +0530
-From: R Veera Kumar <vkor@vkten.in>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
-	Teddy Wang <teddy.wang@siliconmotion.com>,
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH] staging: sm750fb: Fix longline in makefile variable
-Message-ID: <20200312123512.GA5513@tulip.local>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.48,355,1517871600"; 
+   d="scan'208";a="319731847"
+Received: from unknown (HELO [10.71.3.76]) ([209.118.33.125])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 24 Mar 2018 14:58:51 +0100
+Date: Sat, 24 Mar 2018 09:58:49 -0400 (EDT)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+cc: gregkh@linuxfoundation.org, mchehab@kernel.org, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: media: Remove address of
+ Free Software Foundation
+In-Reply-To: <1521898517-29189-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+Message-ID: <alpine.DEB.2.20.1803240957550.2323@hadrien>
+References: <1521898517-29189-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Type: text/plain; charset=US-ASCII
 
-A simple fix of long line makefile variable assignment.
-Found using checkpatch.pl.
+Each patch has to have a different subject line.  These patches are quite
+trivial, ie they don't affect the code so they can't introduce bugs, so
+you could probably just merge them all into one.
 
-Signed-off-by: R Veera Kumar <vkor@vkten.in>
----
- drivers/staging/sm750fb/Makefile | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+julia
 
-diff --git a/drivers/staging/sm750fb/Makefile b/drivers/staging/sm750fb/Makefile
-index 1cf3849cef23..6f832916ba65 100644
---- a/drivers/staging/sm750fb/Makefile
-+++ b/drivers/staging/sm750fb/Makefile
-@@ -1,5 +1,7 @@
- # SPDX-License-Identifier: GPL-2.0
- obj-$(CONFIG_FB_SM750)	+= sm750fb.o
- 
--sm750fb-objs		:= sm750.o sm750_hw.o sm750_accel.o sm750_cursor.o ddk750_chip.o ddk750_power.o ddk750_mode.o
--sm750fb-objs		+= ddk750_display.o ddk750_swi2c.o ddk750_sii164.o ddk750_dvi.o ddk750_hwi2c.o
-+sm750fb-objs		:= sm750.o sm750_hw.o sm750_accel.o sm750_cursor.o
-+sm750fb-objs		+= ddk750_chip.o ddk750_power.o ddk750_mode.o
-+sm750fb-objs		+= ddk750_display.o ddk750_swi2c.o ddk750_sii164.o
-+sm750fb-objs		+= ddk750_dvi.o ddk750_hwi2c.o
--- 
-2.20.1
+On Sat, 24 Mar 2018, Nishka Dasgupta wrote:
 
+> Remove address of Free Software Foundation in case it changes. Issue
+> found with checkpatch.
+>
+> Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+> ---
+>  drivers/staging/media/davinci_vpfe/dm365_ipipe.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe.h b/drivers/staging/media/davinci_vpfe/dm365_ipipe.h
+> index d81b29e..2b8d52c 100644
+> --- a/drivers/staging/media/davinci_vpfe/dm365_ipipe.h
+> +++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe.h
+> @@ -12,7 +12,7 @@
+>   *
+>   * You should have received a copy of the GNU General Public License
+>   * along with this program; if not, write to the Free Software
+> - * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+> + * Foundation, Inc.
+>   *
+>   * Contributors:
+>   *      Manjunath Hadli <manjunath.hadli@ti.com>
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1521898517-29189-1-git-send-email-nishka.dasgupta_ug18%40ashoka.edu.in.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
