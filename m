@@ -1,147 +1,126 @@
 X-GM-THRID: 6536210357179908096
-X-Received: by 10.176.86.88 with SMTP id z24mr15394361uaa.16.1522257299064;
-        Wed, 28 Mar 2018 10:14:59 -0700 (PDT)
+X-Received: by 2002:a19:cd90:: with SMTP id d138-v6mr1231795lfg.25.1521885754896;
+        Sat, 24 Mar 2018 03:02:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.31.160.67 with SMTP id j64ls2685268vke.21.gmail; Wed, 28 Mar
- 2018 10:14:57 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELtYV6/ix1t7uIVYpT/RxXAe8EVYIDesFKgvZCNiKqWLUo0pnyBWvuMI5vFS6ApZdHzlpReS
-X-Received: by 10.31.114.203 with SMTP id n194mr18996796vkc.9.1522257297860;
-        Wed, 28 Mar 2018 10:14:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1522257297; cv=none;
+Received: by 10.46.42.3 with SMTP id q3ls1271533ljq.15.gmail; Sat, 24 Mar 2018
+ 03:02:33 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELvnQJ71qURNQ3xnRUbyt+dzkD2H+SH1iMWb7ZxMrFeTS0OH6Pv2ekl8CxRewktpf0SZOjCL
+X-Received: by 10.46.53.4 with SMTP id z4mr1984410ljz.22.1521885753505;
+        Sat, 24 Mar 2018 03:02:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521885753; cv=none;
         d=google.com; s=arc-20160816;
-        b=bHkDFQLKtt/FkLf3ha1bQ3+lO/Y2EdBtrkdcfGi5GvYNep4UQhNdfi4bmym/CJYaGF
-         r+PP8NGB2vhXltzGfRap8OnhSRhvlK4kFBczPj0GjuzmqeoxvkLO/U3hspIFEp3GvvKQ
-         OgYaOoWoFKk5RHfqz9O+1xCFuGacYtfrJ5q5fOQQn179C5Azl9yqsFopEyOe9ExswBzz
-         bh4TraBZ311/QfdW5s8IaHS/S+jHh+4axY7pouwCvZOojXmIfoRBYD9h3ywcnBl3+GQZ
-         JA8AOfpbvK0A4zRF4d/7AN002pi6ILZR1ja642gv9ClLoknLxNrqFlTMwBozVECZZXtk
-         0/HQ==
+        b=WJSiUaysXmPb4cWBDottkU90tO4wVeAPl7vDfh7tVeZe+1rw5x6540WofKB2ZMNRgO
+         HZTqlE5mgjOVqM5sGIxxtDuRDV8aRbh+eUANC0rjMNzJBXujkc/2aw5Tp/3VWx14DKC2
+         KGNUn3hWgIcw3PQaw841ty9xcGDXObrJprOyOd3gV6pPC/SRkvyEWwU8dYSftDNiLcHh
+         e+VBQqgGMAhKaWfriROYHmh8MJxhVMi52uZsW9DU7oosbTEavURvkyjPrMqZd6u1gKPb
+         m4GNJqwYLIjv3P0yF7um61+NqN2ioagZFqYemZSC2D685eVhw2c6WIW5HtYyje8pNWRs
+         quWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=hl5325rVLLcjSR088X3YNBiDVdzlYgf8IaFuqD/eCJ0=;
-        b=lAlA4NzMCkEn5jQgCccurqCRQLbrZeLCzbQwYItDT9qswD5dsACxtM1wvtX2uETN8y
-         QDDKJLZfWCXyoC5ilbnsJ7NMmBga7UOfXRrEw9m8VTPqUWSXZdEsTgVbcNCfhGE2MLGc
-         7amGofEnFxZjGpBa+U1pzWoPI6/xo5BtWPrygm6bmpWZL3I5/exyeUmbZ1pmot7DTRQb
-         vB5Mmn0giTqmW9c0a2rABDM/dhYBa5seS1OcdVPo1eBeTTFDbQ63+3gm81HKDq8aCi3l
-         MWgQr7sDTRB2TC74OYw/8M3iFELAW0omX9TUow0cDht9Or5FLEKWPV7C4VHkU+VEFne/
-         cNNQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=amwc+DbbCO+oNI2ga7KTqxRLRsq3grW00e8GMO7WvpI=;
+        b=CT4JeLYn+cdyPKqIQg32Nrov4weHQEpnJuLbX5UBPIxPCXpC0wJrvvYXzRd3Eg9UGK
+         eZQSf0mpk3ILi03n3aVAz3wtpffrgRo8hgDpOPJZJh0yLCuVqHWeONUCl6ihuCX2kEEi
+         UuuAArmxmG3HXDSVTiEkqN3rs7ZOnkbb8jbuuU3UCWmiZC7V2vACfHugfBaJPH7ABz+9
+         rOuAcghYm1IphtnWwHT8066SEMF/lH6edcbNMLlWgQA4yt2SSe2TTEdjyRcVLcDxy3PN
+         sGYUqvKIBf1nkEmVGhDV8Z85fCcycDpaKZmtqCIpIkmD3oF9xx/PFv1WgmkYgLJTNZyD
+         52pQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=SQs+WT7O;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c05::230 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from mail-pg0-x230.google.com (mail-pg0-x230.google.com. [2607:f8b0:400e:c05::230])
-        by gmr-mx.google.com with ESMTPS id t23si321940uaj.3.2018.03.28.10.14.57
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id j4si422969lja.1.2018.03.24.03.02.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Mar 2018 10:14:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c05::230 as permitted sender) client-ip=2607:f8b0:400e:c05::230;
+        Sat, 24 Mar 2018 03:02:33 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=SQs+WT7O;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c05::230 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Received: by mail-pg0-x230.google.com with SMTP id i124so1167846pgc.10
-        for <outreachy-kernel@googlegroups.com>; Wed, 28 Mar 2018 10:14:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ashoka.edu.in; s=google;
-        h=from:to:cc:subject:date:message-id;
-        bh=hl5325rVLLcjSR088X3YNBiDVdzlYgf8IaFuqD/eCJ0=;
-        b=SQs+WT7OLiIrjLopTnC9vzlyf1y+B9RucmbFJy5iEPcDCbBzkTg7dr9KL2lCHE13zq
-         AP+qN3Z9sCJR8rIoY5Hqhg2M6NFDcNeKAlz+FFt1Nj9/xu0PRLjSkgE4cT5jTiQ40kkc
-         dO8w6D0zkr8+y7wFhc4KSkccIrgKUBXen5IlI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=hl5325rVLLcjSR088X3YNBiDVdzlYgf8IaFuqD/eCJ0=;
-        b=bbUy4TfSccEi9gmFZsvzkTa0P7lyEN6z0JfiPokuB8M+SlH2OYsbMClXFsE0RbvbCF
-         w6hdkxjzj27FkVqWLiyXZ/Vh+0+3boRTrnk2/VjZ1lbCQsB+oKpj/l4+mi/beYvn+Toy
-         oYzE6C8calo4RPRojbVG+1OucB6d9RaGAvZGOg0bukhu5jDjTZYudlNYpqL9t55iUDlX
-         uxXUTJYYF5eRDxdqzdrEOtIaPcXVOFzbccmk/+sZGh+ebM5mZ7DmfHujMjgk8pvXcMPd
-         7MX7ZJtsLMVlxdUv8GIINUT9KTYXB7AxiwhAvYCWurZTvMiVCIDJApRkXfToh5uEIKYW
-         Gctg==
-X-Gm-Message-State: AElRT7Eg+MYO7PSQ3hYoOyu7dsHKGmvuXW8UJnmtlNdBxaVcZCuwzqFD
-	acuiz5BOqm4rozaTBZWuHLbgMw==
-X-Received: by 10.99.102.132 with SMTP id a126mr3057876pgc.385.1522257297233;
-        Wed, 28 Mar 2018 10:14:57 -0700 (PDT)
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from localhost.localdomain ([139.59.85.247])
-        by smtp.gmail.com with ESMTPSA id d199sm8891288pfd.95.2018.03.28.10.14.55
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 28 Mar 2018 10:14:56 -0700 (PDT)
-From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-To: gregkh@linuxfoundation.org,
-	forest@alittletooquiet.net,
-	outreachy-kernel@googlegroups.com
-Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-Subject: [PATCH v4] staging: vt6655: Remove else after return
-Date: Wed, 28 Mar 2018 17:14:43 +0000
-Message-Id: <1522257283-2147-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-X-Mailer: git-send-email 2.7.4
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.48,354,1517871600"; 
+   d="scan'208";a="259654164"
+Received: from unknown (HELO [10.71.3.76]) ([209.118.33.125])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 24 Mar 2018 11:02:20 +0100
+Date: Sat, 24 Mar 2018 06:02:18 -0400 (EDT)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+cc: forest@alittletooquiet.net, Greg KH <gregkh@linuxfoundation.org>, 
+    outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH v2 4/5] staging: vt6655: Change
+ _chip_type from typedef enum to enum
+In-Reply-To: <CAC4++KC39g_k5CPWTRLK4GLPcM_d3xyG4M3mxU_xc9GEPtd8CA@mail.gmail.com>
+Message-ID: <alpine.DEB.2.20.1803240601420.2577@hadrien>
+References: <1521830040-7138-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in> <1521830040-7138-4-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in> <alpine.DEB.2.20.1803231437560.2450@hadrien>
+ <CAC4++KC39g_k5CPWTRLK4GLPcM_d3xyG4M3mxU_xc9GEPtd8CA@mail.gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Remove else after return. Issue found with checkpatch.
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
----
- drivers/staging/vt6655/rxtx.c | 37 ++++++++++++++++++-------------------
- 1 file changed, 18 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
-index 9c4a532..ee327c2 100644
---- a/drivers/staging/vt6655/rxtx.c
-+++ b/drivers/staging/vt6655/rxtx.c
-@@ -552,6 +552,7 @@ s_uFillDataHead(
- 			return buf->duration_a;
- 		} /* if (byFBOption == AUTO_FB_NONE) */
- 	} else if (byPktType == PK_TYPE_11A) {
-+		struct vnt_tx_datahead_ab *buf = pTxDataHead;
- 		if (byFBOption != AUTO_FB_NONE) {
- 			/* Auto Fallback */
- 			struct vnt_tx_datahead_a_fb *buf = pTxDataHead;
-@@ -568,28 +569,26 @@ s_uFillDataHead(
- 										wCurrentRate, bNeedAck, uFragIdx, cbLastFragmentSize, uMACfragNum, byFBOption));
- 			buf->time_stamp_off = vnt_time_stamp_off(pDevice, wCurrentRate);
- 			return buf->duration;
--		} else {
--			struct vnt_tx_datahead_ab *buf = pTxDataHead;
--			/* Get SignalField, ServiceField & Length */
--			vnt_get_phy_field(pDevice, cbFrameLength, wCurrentRate,
--					  byPktType, &buf->ab);
--
--			if (is_pspoll) {
--				__le16 dur = cpu_to_le16(pDevice->current_aid | BIT(14) | BIT(15));
-+		}
-+		/* Get SignalField, ServiceField & Length */
-+		vnt_get_phy_field(pDevice, cbFrameLength, wCurrentRate,
-+				  byPktType, &buf->ab);
- 
--				buf->duration = dur;
--			} else {
--				/* Get Duration and TimeStampOff */
--				buf->duration =
--					cpu_to_le16((u16)s_uGetDataDuration(pDevice, DATADUR_A, cbFrameLength, byPktType,
--									    wCurrentRate, bNeedAck, uFragIdx,
--									    cbLastFragmentSize, uMACfragNum,
--									    byFBOption));
--			}
-+		if (is_pspoll) {
-+			__le16 dur = cpu_to_le16(pDevice->current_aid | BIT(14) | BIT(15));
- 
--			buf->time_stamp_off = vnt_time_stamp_off(pDevice, wCurrentRate);
--			return buf->duration;
-+			buf->duration = dur;
-+		} else {
-+			/* Get Duration and TimeStampOff */
-+			buf->duration =
-+				cpu_to_le16((u16)s_uGetDataDuration(pDevice, DATADUR_A, cbFrameLength, byPktType,
-+								    wCurrentRate, bNeedAck, uFragIdx,
-+								    cbLastFragmentSize, uMACfragNum,
-+								    byFBOption));
- 		}
-+
-+		buf->time_stamp_off = vnt_time_stamp_off(pDevice, wCurrentRate);
-+		return buf->duration;
- 	} else {
- 		struct vnt_tx_datahead_ab *buf = pTxDataHead;
- 		/* Get SignalField, ServiceField & Length */
--- 
-2.7.4
+On Sat, 24 Mar 2018, Nishka Dasgupta wrote:
 
+> On Sat, Mar 24, 2018 at 12:08 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> >
+> >
+> > On Fri, 23 Mar 2018, Nishka Dasgupta wrote:
+> >
+> >> Change _chip_type from typedef enum to enum.
+> >> Issue found with checkpatch.
+> >>
+> >> Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+> >> ---
+> >> Changes in v2:
+> >>  - Make subject and commit message clear.
+> >>
+> >>  drivers/staging/vt6655/device_cfg.h | 4 ++--
+> >>  1 file changed, 2 insertions(+), 2 deletions(-)
+> >>
+> >> diff --git a/drivers/staging/vt6655/device_cfg.h b/drivers/staging/vt6655/device_cfg.h
+> >> index 3972881..2f38634 100644
+> >> --- a/drivers/staging/vt6655/device_cfg.h
+> >> +++ b/drivers/staging/vt6655/device_cfg.h
+> >> @@ -51,8 +51,8 @@ struct version {
+> >>
+> >>  #define PKT_BUF_SZ          2390
+> >>
+> >> -typedef enum  _chip_type {
+> >> +enum CHIP_TYPE {
+> >>       VT3253 = 1
+> >> -} CHIP_TYPE, *PCHIP_TYPE;
+> >> +};
+> >
+> > I don't think that a type name in all capital letters is such a good idea.
+> > But maybe this type is never used?  If it is not used, it should be
+> > removed.
+>
+> All the other typedefs I found in this driver had names in all upper
+> case; I modified this one for the sake of parity (and also because I
+> could not find any usage of it).
+
+In the kernel, normally only macros are in upper case.
+
+But since this is not used, you can just drop it.
+
+julia
+
+>
+> > julia
+> >
+> >>
+> >>  #endif
+> >> --
+> >> 2.7.4
+> >>
+> >> --
+> >> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> >> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> >> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1521830040-7138-4-git-send-email-nishka.dasgupta_ug18%40ashoka.edu.in.
+> >> For more options, visit https://groups.google.com/d/optout.
+> >>
+>
+> Thanking you,
+> Nishka Dasgupta
+>
 
