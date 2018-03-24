@@ -1,117 +1,99 @@
-X-GM-THRID: 6667125588994555904
-X-Received: by 2002:a65:4688:: with SMTP id h8mr7178651pgr.101.1552311142854;
-        Mon, 11 Mar 2019 06:32:22 -0700 (PDT)
+X-GM-THRID: 6536488278592323584
+X-Received: by 10.28.207.134 with SMTP id f128mr1211164wmg.11.1521900906712;
+        Sat, 24 Mar 2018 07:15:06 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:322:: with SMTP id 31ls8877359pld.1.gmail; Mon, 11
- Mar 2019 06:32:22 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyOreVhvhO61hbNMtNOZO4oPD9s/d7L/gKiiT6B3D6qcIc/3KUb99UuBXpT7YKUA0cPelBY
-X-Received: by 2002:a17:902:396a:: with SMTP id e39mr10303746plg.61.1552311142055;
-        Mon, 11 Mar 2019 06:32:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552311142; cv=none;
+Received: by 10.28.26.147 with SMTP id a141ls761844wma.0.canary-gmail; Sat, 24
+ Mar 2018 07:15:05 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELuYr67mFvImaz2Nj7X191ipa/dla2+PctbFcVHb0ki2YGBpQ/aBAqFfjIAxSPkVrXYUN8yO
+X-Received: by 10.28.52.142 with SMTP id b136mr1431751wma.13.1521900905607;
+        Sat, 24 Mar 2018 07:15:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521900905; cv=none;
         d=google.com; s=arc-20160816;
-        b=CNwoO9ABPBEonmUtycC5+rQFkkvMQslzlOrcCKOMKU3hBTVYnCzTqgm9v2YftzGStg
-         2g05TLpeIW6qQ9lqVL4+Aa/mX45SdwGQ858EMv4jsCGSkiF6HM8dCukyADFSkrrpOYio
-         3wvFIFMXQ9GHSj5u6Et0SmzDFyLM1tVLRUBDrY5Ud535GMvCUKDC1oxUKs+cythlybPo
-         gTvqfOLngrnzJnABu10NWFy+Q6UYSkSFimDatoUjb/F9toxSf/bgfcaS4w6wPJ8s3rkR
-         s4gSG8kaChdmSc2RiISDsq4HIeykSc8K48ePF1ogtu/ho+THix3AJvAGQvLMfvfFbzDc
-         JJzg==
+        b=wapHhjisaYVcnyFN++juANQbjQ22xpkpM/1poxaJx8S92s6IVhNMklHwj1YbKNwjzq
+         Qqe9cYfE8IVKT8fsglZjCynWcLL88gwtsGhNu5xNeW4F6YKhV4zOQAYJa0FMkwI3kSBJ
+         wRGY4lUuF2w21kIhhxv8z7QV1ePf8Ht9BD2KUW64htLZK1OxLCqHIWtO1Gb+A9XX4KYz
+         R6xtB3GHBQjGmuJt0qZhHQaBPcec0HFYxP62cX6cViGGiH2uJWH1VtltKUSCP0u4URSg
+         f4uwROYGhAOjU2gJUziB84yv5AeOLYBZ2Bvm30zB99T9fDG2GdiHeWGPFTcrndyqVXuA
+         gWcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=p1+Vw/OA5YtijffWYGGHJ5Yd0eMc6VrHFQviEV4rjmM=;
-        b=AkE07IDTYdCyzlP87Qam/trAExvsXxT6b5Fay1FA1QG5jT2axYtNoc7VBpDhei83SF
-         XgfpnQRzTC7BnkDHP07fpsbAIZHbO/724E2vIy0vi7U4Up9XTjLjdEyc92Lgo47WAslH
-         sa+XNSwVq33QowqMCCSxEr9CRY7F4sBQ4gzIcIqJaO8tzviZlmSXHP9JfrLhDnjr+pKU
-         6d2GA9WRGVT15h52uyY6EU1pQ+6mV6JKKMOGgWGZIzh6Mw/lvhSuZ6/ZnyXW8dURMv8c
-         Ex2+ltvLtwx5+ZVx1AUXUgunwe0TNu10O4ybyMnDjy2gGiwq1Zyx5KDkSswaEOcqTnPy
-         xqyA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=LRVKC3ltLQdbbd1Ej5AdwzkObUW0BiakRWOV6PKuWX0=;
+        b=DnTbNgrtDog5/hXJNS4j09XoFN5kaFe2/Lqh+BrevEJtqmyXGqiXDvGVk0BoUjoIcV
+         uMw3neMwQROO71g1DG/24XbgfsMcCdqqIMLNtLHARl74l2P/JQb5eJ9wqODgXH7y/cFG
+         T0pm3f0wsgaqumWXtf+t6x92BxbNfyBO5eAIbnk38oiOd1ZRYxP2HslxNa4puOe2D842
+         d3hhf/DLuFbdI4qSRMkulhWvhqea6ldgyfL9wKNA97kGV+xO1UF6NsytZaUnE54l+Lrm
+         h/V5oo+qI4rdaAH1OpVHEVoyQmAhKoJwSc2ZRr3CejpgJcudL8IKnVtlBEcA076XWP1o
+         c9AQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Fr5t4wl0;
-       spf=pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::d2e as permitted sender) smtp.mailfrom=brandonbonaby94@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <brandonbonaby94@gmail.com>
-Received: from mail-io1-xd2e.google.com (mail-io1-xd2e.google.com. [2607:f8b0:4864:20::d2e])
-        by gmr-mx.google.com with ESMTPS id z184si300129pgd.0.2019.03.11.06.32.22
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 51si405108wrw.0.2018.03.24.07.15.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 11 Mar 2019 06:32:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::d2e as permitted sender) client-ip=2607:f8b0:4864:20::d2e;
+        Sat, 24 Mar 2018 07:15:05 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Fr5t4wl0;
-       spf=pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::d2e as permitted sender) smtp.mailfrom=brandonbonaby94@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-io1-xd2e.google.com with SMTP id x7so4007222ioh.4
-        for <outreachy-kernel@googlegroups.com>; Mon, 11 Mar 2019 06:32:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=p1+Vw/OA5YtijffWYGGHJ5Yd0eMc6VrHFQviEV4rjmM=;
-        b=Fr5t4wl0rdpPAo2DIv0XBYYfvoATnahnW1WwdCLwMFNPpQB+2wQw+Y+xV/620YiY3o
-         dCIaZteODP1xPLfJ/R0KUoLF798r7NuuwVYz4zupWCP+FsisuzwMdzE7kgMn3PATCQZh
-         IGEu8bemlN4eqS7Ew1b+l0er6kh1swUd0B+ChYzValegyoYmYaKDzw7H8BW1yAQe/FY4
-         XotscuxubjL/9QfeZ/BKzminJrqmNTXlzt3vl6QctoI7QW7gSiiX9+TQZlqxyT7UJXEu
-         8GB8iR6dLjXtKnbKoAKRqPdJI6Yribx60JVIWZLGlLehOxqflmi1uQRATXO1SdVCfyrC
-         ZCcw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=p1+Vw/OA5YtijffWYGGHJ5Yd0eMc6VrHFQviEV4rjmM=;
-        b=CjJlDO3mDY8z4Gn6wd/yjrgV86gpBZuUm2hn7SKClpZgYwBXTwqZEdPe+N6Sl5E24M
-         oa1ktvyX2Rt+gjzWD+6dRJTFpKFO1eWWoRuBxoPupcOMGdek/mJV0S423zkmpkfPrPaR
-         Vaz8LKWkWqVCxuhpTTyi4jXfdKDoHW1TKDbH4hq9DMjeQC+OnbFNOxPpXxwTNAG9eby+
-         mdOkzZXYLFS/6vUp1ZmimI7iPig+10xU289T6nkOZGS8WUwuViuEb6AY/bO1fRj0Ug8z
-         HS7CQpF22JmUI2I8/d0XG2439e9fBD1wEQPMR4KCFV392axOo7SHPnCbcaL80rn6DbMt
-         im9w==
-X-Gm-Message-State: APjAAAXoB6LB6Orb7gbNmsliy0DGXGXSFba1+DzdXBDo2dsUCmyKzUeC
-	BTsPUxdFSIDBG3LFAlRnWm8jRmgDNwDb
-X-Received: by 2002:a5d:9709:: with SMTP id h9mr15604236iol.184.1552311141535;
-        Mon, 11 Mar 2019 06:32:21 -0700 (PDT)
-Return-Path: <brandonbonaby94@gmail.com>
-Received: from branx011-Vostro-430 ([2607:fea8:29a0:ff5:d93d:e73d:b219:4764])
-        by smtp.gmail.com with ESMTPSA id a16sm8210201itc.27.2019.03.11.06.32.20
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Mar 2019 06:32:20 -0700 (PDT)
-From: Branden Bonaby <brandonbonaby94@gmail.com>
-To: forest@alittletooquiet.net,
-	gregkh@linuxfoundation.org
-Cc: Branden Bonaby <brandonbonaby94@gmail.com>,
-	outreachy-kernel@googlegroups.com
-Subject: [Outreachy Kernel] [Patch] staging: vt6655: line over 80 characters
-Date: Mon, 11 Mar 2019 09:31:57 -0400
-Message-Id: <20190311133157.431-1-brandonbonaby94@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.48,355,1517871600"; 
+   d="scan'208";a="259665381"
+Received: from unknown (HELO [10.71.3.76]) ([209.118.33.125])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 24 Mar 2018 15:15:04 +0100
+Date: Sat, 24 Mar 2018 10:15:02 -0400 (EDT)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+cc: mchehab@kernel.org, gregkh@linuxfoundation.org, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 1/5] staging: media: davinci_vpfe:
+ Remove explicit function name
+In-Reply-To: <1521894759-28450-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+Message-ID: <alpine.DEB.2.20.1803241014100.2323@hadrien>
+References: <1521894759-28450-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Move function arguments that go over the 80 characters a line limit to a new line.
-"WARNING: line over 80 characters".
+Indeed, the subject lines were already the same before.
 
-Signed-off-by: Branden Bonaby <brandonbonaby94@gmail.com>
----
- drivers/staging/vt6655/card.h | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+If you want to make specific patches for each file, then you should
+incorporate the file name into the subject line.  Another possibility is
+to just make a single patch for all cases.
 
-diff --git a/drivers/staging/vt6655/card.h b/drivers/staging/vt6655/card.h
-index d71022aa3f86..f422fb3c78bd 100644
---- a/drivers/staging/vt6655/card.h
-+++ b/drivers/staging/vt6655/card.h
-@@ -44,7 +44,8 @@ struct vnt_private;
- void CARDvSetRSPINF(struct vnt_private *priv, u8 bb_type);
- void CARDvUpdateBasicTopRate(struct vnt_private *priv);
- bool CARDbIsOFDMinBasicRate(struct vnt_private *priv);
--void CARDvSetLoopbackMode(struct vnt_private *priv, unsigned short wLoopbackMode);
-+void CARDvSetLoopbackMode(struct vnt_private *priv,
-+			   unsigned short wLoopbackMode);
- bool CARDbSoftwareReset(struct vnt_private *priv);
- void CARDvSetFirstNextTBTT(struct vnt_private *priv,
- 			   unsigned short wBeaconInterval);
-@@ -61,6 +62,7 @@ bool CARDbRadioPowerOn(struct vnt_private *priv);
- bool CARDbSetPhyParameter(struct vnt_private *priv, u8 bb_type);
- bool CARDbUpdateTSF(struct vnt_private *priv, unsigned char byRxRate,
- 		    u64 qwBSSTimestamp);
--bool CARDbSetBeaconPeriod(struct vnt_private *priv, unsigned short wBeaconInterval);
-+bool CARDbSetBeaconPeriod(struct vnt_private *priv,
-+			   unsigned short wBeaconInterval);
- 
- #endif /* __CARD_H__ */
--- 
-2.17.1
+julia
 
+On Sat, 24 Mar 2018, Nishka Dasgupta wrote:
+
+> Replace explicit function name in string with %s..., __func__.
+> Issue found with checkpatch.
+>
+> Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+> ---
+>  drivers/staging/media/davinci_vpfe/dm365_ipipe.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
+> index 7d3349b..0f94b8e 100644
+> --- a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
+> +++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
+> @@ -703,7 +703,7 @@ static int ipipe_get_gamma_params(struct vpfe_ipipe_device *ipipe, void *param)
+>  	       (table_size * sizeof(struct vpfe_ipipe_gamma_entry)));
+>
+>  	if (!gamma->bypass_g && !gamma_param->table_g) {
+> -		dev_err(dev, "ipipe_get_gamma_params: table ptr empty for G\n");
+> +		dev_err(dev, "%s: table ptr empty for G\n", __func__);
+>  		return -EINVAL;
+>  	}
+>  	memcpy(gamma_param->table_g, gamma->table_g,
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1521894759-28450-1-git-send-email-nishka.dasgupta_ug18%40ashoka.edu.in.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
