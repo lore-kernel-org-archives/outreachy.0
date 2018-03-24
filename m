@@ -1,152 +1,102 @@
-X-GM-THRID: 6470902975924535296
-X-Received: by 10.28.1.146 with SMTP id 140mr304704wmb.2.1506624504569;
-        Thu, 28 Sep 2017 11:48:24 -0700 (PDT)
+X-GM-THRID: 6536502850878439424
+X-Received: by 10.99.116.84 with SMTP id e20mr9258034pgn.93.1521898166733;
+        Sat, 24 Mar 2018 06:29:26 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.223.163.207 with SMTP id m15ls1339418wrb.13.gmail; Thu, 28 Sep
- 2017 11:48:23 -0700 (PDT)
-X-Received: by 10.223.150.118 with SMTP id c51mr632555wra.20.1506624503516;
-        Thu, 28 Sep 2017 11:48:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506624503; cv=none;
+Received: by 10.101.98.81 with SMTP id q17ls2299684pgv.4.gmail; Sat, 24 Mar
+ 2018 06:29:25 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELs7Cf9gpcmVsPNiRZL29uMklaExVx5wgMM2pIv6Z2FM+sdIwPdlBzL25elhggrfPNW9F4qD
+X-Received: by 10.99.127.20 with SMTP id a20mr9258131pgd.28.1521898165618;
+        Sat, 24 Mar 2018 06:29:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521898165; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jj33TW0plgI+o5b6k+M6GG9ATGNDxRkHyBP+Hde+ggxGYCT7ix6gVh1BwjbNiDALvo
-         Xzx9XuZmWxvoJ8FOmnoDqnnP+SQnv3Kb5RdM/guMftQdKeJuXAsT6/Y6WlplGPkx7jFA
-         RQQef/Cugs8QmYfp5uJ3Sh8eBE79t69fRiYQmBGNPfXy449rzDVtG0Qf4mD8SMmkkvlw
-         00YInJwRHtFmHgn1sV3VhPXMqGOWCNfbMbLdw87LF0VFEY6FMkS8+UB5I7JpSWgZDgmY
-         1+zTHoNtAN77i9LQzUfFlGNDRiTBd2gTN6mNjzk/hzVUBbyIiRHchzRRnF9fM7I4ZDOC
-         IQ0w==
+        b=nfQXJjPBKBOKzdZw94JRh5v2CvQNEIk1rfztJu7bTqCCrw1jB/Grosztr5U2xgTe8f
+         rvGfBJ+aKt2siWSK/hKOgXCGVXxDcY+lakfXW+mAuaVO+j6lmBBCAx3LQtVP1Wsc8W1G
+         3CqdTwjlvVL5AOxsJaYTNkvfBll0nXu71HVDUX3Xi7xwv5gGkwqJoWXV5WKijrrv5CJk
+         q7nGiJP2QDWLH609AYoJQk+nIak8Si8aW+iGpC1zqHV0ViKIOkJyAQN7d7zFlnpOva54
+         ZqsaNUvXrVPQLGvzDsH7iudwRv56FMR5Jzw7bOneHghdmnRQLSnQYOvv5zt7nizyG8rd
+         vFKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=7ol4hHmpgg1mDTd+rEOVXvevYuW9gLg89RpRzYgbI54=;
-        b=e03PtXgSs4LIxg+4Ihx45D/BCBq84iWG6giAYawBHu3Uqgd1DV6qKDPgDARKEq+c35
-         r6DO3+YXgsu0Sv88lnACncDbdKFb+MCQx+AiccCIfZXyEtIdnk2eDrlsbKp2PfBbVmZG
-         UHjIEWghrkZSBXXZcMddI8/yeMc6I1mZvFyVg0GgNYkw3j2848U12UoGUl/7X4S0SY0E
-         AmVMv3AuH/hbesHrDAxCmojVYVKjFto/L/9o1kOqu+QTn099GOSmzWNvY5F2m5EKw69H
-         W7V3Vmt74fowv5rwNzJv4Bdszg2ImSa7wqrSUli6bwZ2P+Bhs7SwVYRbaeOY5va/N76r
-         yKWw==
+        h=message-id:date:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=IEPQNnfUdQ3zUTNKgmsJqFAY57h6qkl5asskuoCBIk0=;
+        b=xXS47DJh02m50iJypa6JYCxpJZkdb17vVznTvDzlOhbQSYuHTFc3DxwjA/ytKPna/j
+         KMgZ0l0GBx2i7Z7Xuz5bPQGS3WCTR6WHYktNaBjn+IpM+yw5i6HmKL/xPVRW8yprjHJV
+         N4Fn47EnoAQaBCDEWweqqg5TaORiF9yxyf1WlY1jy240DWazmW8azndVuTIhyP8LifgM
+         z41dByrZh8AQD22w2SN2wrRYxT368DumR+wh/X/F2hrIuOKnssfQhZSTfYz1gZDPPaWN
+         OlJ+wqm1ZvmQIdXUFAtnYGYeGHuVRLH3q2Ijhs8QksoB+A2bac20GrouyMnxkExNsqMP
+         fvWg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rQNsCrAI;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
-        by gmr-mx.google.com with ESMTPS id k18si365073wmd.1.2017.09.28.11.48.23
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=XcQE6imx;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::22e as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
+Received: from mail-pl0-x22e.google.com (mail-pl0-x22e.google.com. [2607:f8b0:400e:c01::22e])
+        by gmr-mx.google.com with ESMTPS id x6si471251pfx.5.2018.03.24.06.29.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 28 Sep 2017 11:48:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
+        Sat, 24 Mar 2018 06:29:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::22e as permitted sender) client-ip=2607:f8b0:400e:c01::22e;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rQNsCrAI;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x241.google.com with SMTP id m127so4109185wmm.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 28 Sep 2017 11:48:23 -0700 (PDT)
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=XcQE6imx;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::22e as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Received: by mail-pl0-x22e.google.com with SMTP id x4-v6so9116265pln.7
+        for <outreachy-kernel@googlegroups.com>; Sat, 24 Mar 2018 06:29:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=7ol4hHmpgg1mDTd+rEOVXvevYuW9gLg89RpRzYgbI54=;
-        b=rQNsCrAIsXQJoIoXo2mxvBbQd3A6XKStwCsQYF2BKifumonGOoY7jnu3MlmLXodB91
-         aq1g8NDP1elab8uJEZ7zFnaCSdGgQOSJhrIqxZi4+oIjGUa0goaCpDbRMENIB6LNdhG5
-         yXpFS0MmZYIJ1BUChr+SgzYyca8mSAzAqn+6tUwidQnWQcOSLBgvq924maOrEWfZuYXv
-         2n+uTSq8htj9X+Ab3tux+LXiXxAaPbOLpU415eOx0HbPhGtsr39dWMviF5hGhXmjCuWY
-         Y8yk2YcjMlr3VLNVO7/1OzLvOhQa3ljUGm0B9vdzbE0C5vcvikSKNTW3OYlEk8/obOvN
-         P6bA==
+        d=ashoka.edu.in; s=google;
+        h=from:to:cc:subject:date:message-id;
+        bh=IEPQNnfUdQ3zUTNKgmsJqFAY57h6qkl5asskuoCBIk0=;
+        b=XcQE6imx6oJAfj7Rq2ACD0hppsLRfNcaROx3Cho2N1bdfMiyIU1piHgfkg/efzra+g
+         0SUhf4tdbEkYMc/Y3R3b95PfbocJ8bQAaoRD9SCUFhfGEOCHIVY2KsqjrDedGTFcVG4f
+         mOjyoudzlgngOsVW8l9P9yDL1wBZOF01oqJQc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=7ol4hHmpgg1mDTd+rEOVXvevYuW9gLg89RpRzYgbI54=;
-        b=DQujJY4OYHsvHmJ+DXNton4AbK9vdq4R2Bi24cWKlSlcm7y/Oukft/lPZznXDu2Aey
-         N2UJNw8QLTgedgQqPMahEulmZPCiRwC5g4eQLuVDZ9Ibbo0leWnTbyKka2Y/MfPp8B7E
-         fuU8Ce65u1yiXL2NmHm9K/o0bCj/RiUWLiGUEtPEMCkVRKMAuKNdnL+c7wc6LU9RjSZ7
-         R5hmRCqjlBLWnOnx5h4/Yoo+h9Rm28L3NoxC7uqFBdxKWM2Nm0slWpKZcDsqvoC40fCT
-         f/LYZjZoMfNaTnyztOEop9JUJR9DYegRYtPp2Ef9ZVAk9UfC3xZGAOguj1rf3AnnXGu4
-         oBMw==
-X-Gm-Message-State: AMCzsaVBzSb2kzDxx6Qy7ZtN4WqC7WqOn2ceOydN4WZNnTa6tg5G2BNW
-	nunMGcd0Wl4UqxUKrUfCR28=
-X-Google-Smtp-Source: AOwi7QBHcqzpk8JImMMqCMyEgdawXlB5+gwWBV6xY0I7kdWyj6yYrYkM7ryYgsMhrJALjEiLBRUGfg==
-X-Received: by 10.28.29.71 with SMTP id d68mr2245675wmd.114.1506624503041;
-        Thu, 28 Sep 2017 11:48:23 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from domino-MS-16Y1 ([92.83.158.26])
-        by smtp.gmail.com with ESMTPSA id f17sm404823wmf.47.2017.09.28.11.48.22
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 28 Sep 2017 11:48:22 -0700 (PDT)
-Date: Thu, 28 Sep 2017 21:48:19 +0300
-From: Mihaela Muraru <mihaela.muraru21@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Eric Anholt <eric@anholt.net>, Stefan Wahren <stefan.wahren@i2se.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v3] staging: vc04_services: Remove typedef struct
- vchiq_2835_state_struct
-Message-ID: <20170928184819.GA7517@domino-MS-16Y1>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=IEPQNnfUdQ3zUTNKgmsJqFAY57h6qkl5asskuoCBIk0=;
+        b=iy/Oxpais3anrFJnD9/5qEOP6MeT/IPuAqhdB6SUYrMTJR1rDNFj35S4sMlzNwnUrB
+         LyIPSIQMKbqgF7bobE0TrD5a8HtIAa7PmpXlcb7T92vRbq5CDSJiLe3fnkrcn+akcZNx
+         HuJOnKBSTWj3pAXtcTVY/nCDLZuuYhD/9T6wjs+0PYgqeFxfpXjV3QmH2FZkqujc0L6b
+         0aSeG2jJbmLPbeJcJSvfDUzZ40WkaLcTY87MufdJQ9wJxcAUd5cXWryhHDgjI0ewAzdH
+         xwTO6tBHFxjy+XdbzKNpdkKVAiNOw7u9rsmQXMdEwNgnz1NwNkY8n+PwYb9R1nAqcBHV
+         avPQ==
+X-Gm-Message-State: AElRT7GBXmHqxKsw1SUvtFkndwRAHPMNd3Gy6qFVYLXerZ8xH6Jm6cB9
+	NarlCfOX7p71Y9BUZdwkyULdvg==
+X-Received: by 2002:a17:902:b786:: with SMTP id e6-v6mr34120000pls.58.1521898165339;
+        Sat, 24 Mar 2018 06:29:25 -0700 (PDT)
+Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
+Received: from localhost.localdomain ([139.59.85.247])
+        by smtp.gmail.com with ESMTPSA id c20sm15009068pfj.52.2018.03.24.06.29.23
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 24 Mar 2018 06:29:24 -0700 (PDT)
+From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+To: gregkh@linuxfoundation.org,
+	mchehab@kernel.org,
+	outreachy-kernel@googlegroups.com
+Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+Subject: [PATCH] staging: media: Remove mailing address
+Date: Sat, 24 Mar 2018 13:29:13 +0000
+Message-Id: <1521898153-28991-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+X-Mailer: git-send-email 2.7.4
 
-This patch removes typedef from struct and renames it from "typedef
-struct vchiq_2835_state_struct" to "struct vchiq_2835_state" as per
-kernel coding standards.
+Remove postal address of Free Software Foundation in case it changes
+later. Issue found with checkpatch.
 
-Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
-
+Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
 ---
-Change in v3:
-	- add character t at the end of the subject line
----
- .../vc04_services/interface/vchiq_arm/vchiq_2835_arm.c   | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ drivers/staging/media/davinci_vpfe/dm365_resizer.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-index 29702ea..a96bae0 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-@@ -59,10 +59,10 @@
- #define BELL0	0x00
- #define BELL2	0x08
- 
--typedef struct vchiq_2835_state_struct {
-+struct vchiq_2835_state {
- 	int inited;
- 	VCHIQ_ARM_STATE_T arm_state;
--} VCHIQ_2835_ARM_STATE_T;
-+};
- 
- struct vchiq_pagelist_info {
- 	PAGELIST_T *pagelist;
-@@ -205,12 +205,12 @@ vchiq_platform_init_state(VCHIQ_STATE_T *state)
- {
- 	VCHIQ_STATUS_T status = VCHIQ_SUCCESS;
- 
--	state->platform_state = kzalloc(sizeof(VCHIQ_2835_ARM_STATE_T), GFP_KERNEL);
--	((VCHIQ_2835_ARM_STATE_T *)state->platform_state)->inited = 1;
--	status = vchiq_arm_init_state(state, &((VCHIQ_2835_ARM_STATE_T *)state->platform_state)->arm_state);
-+	state->platform_state = kzalloc(sizeof(struct vchiq_2835_state), GFP_KERNEL);
-+	((struct vchiq_2835_state *)state->platform_state)->inited = 1;
-+	status = vchiq_arm_init_state(state, &((struct vchiq_2835_state *)state->platform_state)->arm_state);
- 	if (status != VCHIQ_SUCCESS)
- 	{
--		((VCHIQ_2835_ARM_STATE_T *)state->platform_state)->inited = 0;
-+		((struct vchiq_2835_state *)state->platform_state)->inited = 0;
- 	}
- 	return status;
- }
-@@ -218,11 +218,11 @@ vchiq_platform_init_state(VCHIQ_STATE_T *state)
- VCHIQ_ARM_STATE_T*
- vchiq_platform_get_arm_state(VCHIQ_STATE_T *state)
- {
--	if (!((VCHIQ_2835_ARM_STATE_T *)state->platform_state)->inited)
-+	if (!((struct vchiq_2835_state *)state->platform_state)->inited)
- 	{
- 		BUG();
- 	}
--	return &((VCHIQ_2835_ARM_STATE_T *)state->platform_state)->arm_state;
-+	return &((struct vchiq_2835_state *)state->platform_state)->arm_state;
- }
- 
- void
+diff --git a/drivers/staging/media/davinci_vpfe/dm365_resizer.c b/drivers/staging/media/davinci_vpfe/dm365_resizer.c
+index a5ab161..432fe4b 100644
+--- a/drivers/staging/media/davinci_vpfe/dm365_resizer.c
++++ b/drivers/staging/media/davinci_vpfe/dm365_resizer.c
+@@ -12,7 +12,7 @@
+  *
+  * You should have received a copy of the GNU General Public License
+  * along with this program; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
++ * Foundation, Inc.
+  *
+  * Contributors:
+  *      Manjunath Hadli <manjunath.hadli@ti.com>
 -- 
 2.7.4
 
