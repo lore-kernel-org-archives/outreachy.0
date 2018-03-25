@@ -1,46 +1,46 @@
 X-GM-THRID: 6534517780926955520
-X-Received: by 10.107.3.79 with SMTP id 76mr13139893iod.134.1522017921112;
-        Sun, 25 Mar 2018 15:45:21 -0700 (PDT)
+X-Received: by 10.46.156.194 with SMTP id g2mr239479ljj.30.1521990467659;
+        Sun, 25 Mar 2018 08:07:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:1ad3:: with SMTP id 202-v6ls1206809iti.10.canary-gmail;
- Sun, 25 Mar 2018 15:45:19 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx48jMMTXN0+IjN9RuGO39Xj8dcjYZZqCM7SoLsQHfzMt7z95t5i3x4tyL3iQqnx6H0b7lsIb
-X-Received: by 2002:a24:a704:: with SMTP id a4-v6mr4390610itf.53.1522017919958;
-        Sun, 25 Mar 2018 15:45:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1522017919; cv=none;
+Received: by 10.46.44.9 with SMTP id s9ls1438325ljs.12.gmail; Sun, 25 Mar 2018
+ 08:07:46 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx483lDX/FXzuzs+DJONQKyL1C/zcigbxIixPDCmAp+tfosOaq7fgbsNuzdWE66okrTBXY0AU
+X-Received: by 10.46.157.133 with SMTP id c5mr187959ljj.26.1521990466322;
+        Sun, 25 Mar 2018 08:07:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521990466; cv=none;
         d=google.com; s=arc-20160816;
-        b=lVRlBkUaV5Egi93iBQqLuCGlnbFglyEoEsedaB8qKln6AWm+92aK6zYqEUdu6U815m
-         pPNUkBjReSMyR8VcItJ2d6Mc1okPB0tuYBdB9sjiKxW1dj+iIlz5xP1ww5HLySj/SWPD
-         O+zenjOgYI/iijNjQmfaN8ZsnMI/zwxlDLLl7HPCM87KpBGAmxobHiIQgCMhKifR/0w1
-         oPiR31dRIo3o3i4xiSEUurzTHeR9dmUfBu+JPXy22a5wQGeCCfD9qwVPAMFidtGoumyZ
-         HoKfx3pxFZ1T6O4VcqZvJ1Jj66JcGnCceqKwoiLm5pgD8i4NCLhz5F/Xs4NNx0/0zdm9
-         W2CA==
+        b=CDQMncj6uG2eto0ZTxYLTXi7/Mkw+r4VtkohcTUPdZ4TG5+T2CR6lxrEsA3iPSf2hL
+         KpwayKwKceCOAxc49AgJzZUPGB+ycT84a/sOcsvnMNzB4LfL2IAnG62ofTTQ0SK5+a1a
+         FaRu88uX03nnSgjAvPnFJnc4S8SKEBlIHkLjwAE//LqP+COVylREofSQuupHvPfnJ397
+         4birbASVrHimj2QjK/BTc28eDu2p7AMmsFZwxiSwyMbpXscb8Q8iqY4JXqR0SRRxpD0p
+         v9554o0y7Yl49Ap8kE8a1etOaNucBiC1TyQiYTEqe2m/A/RXB4gCXwChWLv1Fg6b43YY
+         UH5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:user-agent:references:message-id:in-reply-to:subject
          :cc:to:from:date:arc-authentication-results;
-        bh=SNe6h/wNdeueDDkLWNqy2CYeLrLfDQfrgv82TSZWb0I=;
-        b=OBcSDpbOrvtkW+LhKmM6xb7+lLs92wkxAIUcbF4jkn1IxrQ8ULa9CHRwfRCGGfoKNZ
-         nrozJBGB9OC82B9qOL2cPV7TIt4ce5rduecBHPqT5gbVPAGB4iTTEeOdyUyHi5lKkWFU
-         22BMW9KAorkmZvgWHYkJVAmfwlfvSgN6C9dU6dr/vhEAcIZiO1TIcIZSF9jEI4P01Om8
-         fev2IkI9Mvw/MeC/KyYTvWX2Vp0J09WpRY+pijnQ5UbWp9vYk3+tNjcK8iLkz46fQSqb
-         vg2AQwVhGKVwrzsWcef2WXjTVTBHenrLI2yjK1kF9r+n8OITRf+t3w615TEJzp5bf9Kq
-         RtBQ==
+        bh=PnLNDO9bVco1mHCODO+IrnrZmNBbJ57HMYDm7p4/R74=;
+        b=YysCL8sWHSroQ3WxnEna0BE/cqf43huxhi2ksvtUji4q6qzJ3+Okb6RtQ7nQNz7+Sf
+         pRAcDHcvhF/Dy+yJfp3LzkfKI21tAHZaZ122hJAQzBi/lu+VGL/APjeOwRBChh02sUTj
+         eiN6WsCa7ZDRF8ZOzUWMGvrGCOd8PCUo/d5CdnrJn3oSHNSrDFTotAA+wAjrvH6pnaVN
+         9H4l4BPunw/3M9o8YOonDwMRY/skMFGFFryZlm9fRtYHhUgQxRyh8CWGnQbUqoCqgwUS
+         PEv8zi8CF3WS1Ga7RkxQE9VA1DdU2fWfAVBTpCmB/w/mwX+2M8QDCHQdoNrUIPSxLJWd
+         5D3Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id c186-v6si443039ith.1.2018.03.25.15.45.18
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id w7-v6si438384lfc.2.2018.03.25.08.07.46
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 25 Mar 2018 15:45:19 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Sun, 25 Mar 2018 08:07:46 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.48,362,1517871600"; 
-   d="scan'208";a="259740526"
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.48,360,1517871600"; 
+   d="scan'208";a="319839455"
 Received: from ip-146.net-89-2-7.rev.numericable.fr (HELO [192.168.0.15]) ([89.2.7.146])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 26 Mar 2018 00:45:14 +0200
-Date: Mon, 26 Mar 2018 00:45:14 +0200 (CEST)
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 25 Mar 2018 17:07:45 +0200
+Date: Sun, 25 Mar 2018 11:07:44 -0400 (EDT)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: Arushi Singhal <arushisinghal19971997@gmail.com>
@@ -52,13 +52,13 @@ cc: daniel.vetter@intel.com, Gustavo Padovan <gustavo@padovan.org>,
 Subject: Re: [Outreachy kernel] [PATCH] gpu: drm: Use list_{next/prev}_entry
  instead of list_entry
 In-Reply-To: <CA+XqjF9jHrOFL4LosK5GdbAgpmQRd9=08eNzvfzYxFaeXk972g@mail.gmail.com>
-Message-ID: <alpine.DEB.2.20.1803260044440.2488@hadrien>
+Message-ID: <alpine.DEB.2.20.1803251107190.2488@hadrien>
 References: <20180319050530.GA25589@seema-Inspiron-15-3567> <alpine.DEB.2.20.1803190805260.2864@hadrien> <CA+XqjF9jHrOFL4LosK5GdbAgpmQRd9=08eNzvfzYxFaeXk972g@mail.gmail.com>
 User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; BOUNDARY="8323329-1052078271-1522017915=:2488"
+Content-Type: multipart/mixed; BOUNDARY="8323329-783883557-1521990465=:2488"
 
---8323329-1052078271-1522017915=:2488
+--8323329-783883557-1521990465=:2488
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8BIT
 
@@ -164,10 +164,10 @@ On Sun, 25 Mar 2018, Arushi Singhal wrote:
 > to detect the second rule.
 > Is it working for you?
 
-If you get the latest version of Coccinelle from github, it shoudl be
-working now.
+No, I didn't have a chance to fix it yet.
 
 julia
+
 
 >
 > Thanks,
@@ -237,7 +237,16 @@ julia
 > >
 >
 >
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CA%2BXqjF9jHrOFL4LosK5Gd
+> bAgpmQRd9%3D08eNzvfzYxFaeXk972g%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
 >
 >
---8323329-1052078271-1522017915=:2488--
+--8323329-783883557-1521990465=:2488--
 
