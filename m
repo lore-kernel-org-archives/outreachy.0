@@ -1,81 +1,81 @@
 X-GM-THRID: 6534517780926955520
-X-Received: by 10.28.170.200 with SMTP id t191mr1707363wme.10.1521987500472;
-        Sun, 25 Mar 2018 07:18:20 -0700 (PDT)
+X-Received: by 10.223.224.136 with SMTP id c8mr1905816wri.31.1521976935707;
+        Sun, 25 Mar 2018 04:22:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.0.78 with SMTP id 75ls1090224wma.4.gmail; Sun, 25 Mar 2018
- 07:18:19 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELt6CM8CXJ6FcmUUc6aNAD8lTrgXkqv/Q3OyTEe80DG32Aid//tqMM7LZC33FHcHUCLNgaGd
-X-Received: by 10.28.45.88 with SMTP id t85mr541616wmt.2.1521987499407;
-        Sun, 25 Mar 2018 07:18:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521987499; cv=none;
+Received: by 10.28.167.84 with SMTP id q81ls962461wme.1.gmail; Sun, 25 Mar
+ 2018 04:22:14 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELtsUqu5bF+xOCtsvL2LO1O8MhIA0pEnDDf0Q9Ys/rXBhTG0efuRbT5HTvB0bvW1HG9Hvhfx
+X-Received: by 10.28.236.70 with SMTP id k67mr1760920wmh.9.1521976934532;
+        Sun, 25 Mar 2018 04:22:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1521976934; cv=none;
         d=google.com; s=arc-20160816;
-        b=vRzfCQMtkYK5vTIjPK6d5K3HOhvrlyoAozFTPKErBlt0lveuJ18JCQAx6JSD9TgqoX
-         UhS39DEOmWogNTJ3YvotmhAXCfE84AnPa64HAh9qEIkLM6IcRO6+0WRpd80UQoBKjDv7
-         6d7ks/ZTu2ZtGxiqBtBAa7Q8TQ1g9oeExP9LXEytCGecDaJBtDTN7oikuBaeCLuC8dae
-         wUrrV64JRA0qM+Bt0j6/IDeIHnKjU91jYIL5LpjnvbimkatxUjVea3Yxr8s7emjxHwZz
-         gF3hJB2mI0+SmPh2phl1GCsZBD1k9O5CRlnibhYrZKehGENUcCDzKFKtQ0lrT48uRhWn
-         bEVQ==
+        b=gry9mEzhtb/C5fim0xx6urUo/VZL2vSPzry8Mut2CrUdb1ulQ7LmUgHwCVcqQDmp9I
+         NCxqT0mv/06Sd83GSxlq1hHvz+IjEd3xDII5f1gVm9irUJjA/poWxi+CbDhWeB6lA7e/
+         e3ak7YFyPJ1TIqqbvf0NtR6MDe7r2VqDnLrmBFF3WcmM+sdmvcnehA1oZzvRVpty910v
+         DwuTLJB7CYvOn4qwsTT2fgWEh2qZzPdwsi4HiQ7DDXlH1ygmKEwE1p/N9L7DIyGfhu9G
+         EIl0Zp/ylcXvmDCsUEkK+09ZJ9FZ6pKJYohIpfkl7841TAmDrK1yWOJ29MfKxSCqvlyc
+         spVw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:references:in-reply-to
          :mime-version:dkim-signature:arc-authentication-results;
-        bh=jlxvSBbdbpzHgFrxlAn/gXlFx5PBC+qu5Cpeltpglyc=;
-        b=h1jDgV2Ve65KHefkaIKT194d9d6yRK3makljm8O2KwwiTHvBdQC7DFHr2NmZ4KxYI1
-         l/GWYY7OVkgX2TtwOhnhHdWhCLuDcm8Q0wAtmUmQuueiwloZSHaTzxLzTTVwK8MS4jld
-         kne26r/j4ff1llCw+p9TC87ax9BXR8Kw53WCRmJqH23s0w9mf9RplFNwWfs21Yt8H06H
-         BTIiaGyG8zM3oNDdErCUQGV853vzJHFoUCO7PbtL61cTd8BuNiPCD3lPbowWwaBCgtHJ
-         sBEqLRGs1dMkCKyIPj9tpExeHymdNvRHqZ6Gysc+rQSEtDjkfHFGV2Lft7M2LnXxAsih
-         6rAA==
+        bh=gmg6eOIBT79KXGo8apT37QQLok1lcGp3orCbGcnt3Gs=;
+        b=X1vSFhIvvEGJge4dEVc1zbBXg/c08CYmGZqJtbrFJ1vwEvy8Kwx1l29uDiPPFt5Vyg
+         PwSu5RZl1mDV6XlyF7tbZsKkOlrDpBJD4JmfhQHreIvsry7LcSqmzyjJg1hHxsT2QuzS
+         jA3yz/Zj8FyzmA1T472Oogz2ZV0tPAoAOZY6czytZpzaDCDwzR3mpi1FOZuRH/FlmIT+
+         dhmUKD76NSy9UczOH4yEfVXcqLd3CQ7/Yw/TfDy61dUxLqYEl5LHxWmW0cezkVK0Ccss
+         5ffOo0YkPqvqBamkxTWlKqt6OpOsAuv/+iZ5i/bE1BQy0/RGBxzCoY/cv2aKZ6wgoIyo
+         j6mQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LvTII3NF;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2a00:1450:4010:c07::242 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=H1FmjBME;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2a00:1450:4010:c07::22e as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-lf0-x242.google.com (mail-lf0-x242.google.com. [2a00:1450:4010:c07::242])
-        by gmr-mx.google.com with ESMTPS id t7si84056wmh.4.2018.03.25.07.18.19
+Received: from mail-lf0-x22e.google.com (mail-lf0-x22e.google.com. [2a00:1450:4010:c07::22e])
+        by gmr-mx.google.com with ESMTPS id g7si258485wrb.2.2018.03.25.04.22.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 25 Mar 2018 07:18:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2a00:1450:4010:c07::242 as permitted sender) client-ip=2a00:1450:4010:c07::242;
+        Sun, 25 Mar 2018 04:22:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2a00:1450:4010:c07::22e as permitted sender) client-ip=2a00:1450:4010:c07::22e;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LvTII3NF;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2a00:1450:4010:c07::242 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=H1FmjBME;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2a00:1450:4010:c07::22e as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lf0-x242.google.com with SMTP id j68-v6so24475733lfg.13
-        for <outreachy-kernel@googlegroups.com>; Sun, 25 Mar 2018 07:18:19 -0700 (PDT)
+Received: by mail-lf0-x22e.google.com with SMTP id g203-v6so24135950lfg.11
+        for <outreachy-kernel@googlegroups.com>; Sun, 25 Mar 2018 04:22:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=mime-version:in-reply-to:references:from:date:message-id:subject:to
          :cc;
-        bh=jlxvSBbdbpzHgFrxlAn/gXlFx5PBC+qu5Cpeltpglyc=;
-        b=LvTII3NFwWLmCrBkl042Icv9X2ECohmvhPBSRkg1WsM72wzSlPlie/1DiRZC8BkDyP
-         mqzdnTyz+hHbGyqfCDlSgLHDrrvhd/t3uEQ20U/JgaGhpGDEY9fvDk4zxzGy/YuSSo5G
-         gF6OweYyLCpHwSinlGsewGQBla2koYrQoNaGuXjTZ7Usju2aPyZz0wcvR2POdOWznLR1
-         7hRPNkIz8xNMH2gsXrJb6TorFHAvMwfLG1UQsGg0rBN9WqO2wGZnfNS65Fmkx330ED+K
-         tRnc1T59dMzivD6c/BBlP50V3jQmN11LBuFJ1meZm4wmiH62doJwi5BCkE8RZDykBXXS
-         CIFw==
+        bh=gmg6eOIBT79KXGo8apT37QQLok1lcGp3orCbGcnt3Gs=;
+        b=H1FmjBMESXB4juTh66HqswvqgzJeQfgWCC0+DwtKQdP3ZXSJL9ejppSgZyRJm6Ql86
+         4LXQugwgaQrwXIPkvotzfjYSs/voO8tJIplPKaxjcEJ+XqeIpatfry9jqBs+ncscUtaf
+         sY1Ce1Xjoxd9xilJJf/on072vRhOtCYXQ8kWkH/N0uhQfhKXOcX1NkREhs/hF/8VnomQ
+         62DDO6oFMBL0Om961tzg5T7BYQ6lfOIiNGnRIfPSMKGUFIGAP9Rm7TurAVGpAinugxZX
+         b0DoY1X24n57pNi4sIbI0JKiV+nTyjHqrq1Kw7Q5VeepE6Zxr+MQrj6mN0bfXCEGQiEo
+         Q/PA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:in-reply-to:references:from:date
          :message-id:subject:to:cc;
-        bh=jlxvSBbdbpzHgFrxlAn/gXlFx5PBC+qu5Cpeltpglyc=;
-        b=T5LS/cZy4wqzDOV4HuTkNnTuNlDuOqXD/UTQqrRFNzH+yuX69Y5cSwAqgFsWsXy0ob
-         FDuuRQ/ziuhGNIkCuIl5JMg2P/lrvHh6qUVd1LfQlXMe+In3lakMIncbltFGg/p0JKbu
-         q+tDfW+t0RR/lld9OuUSwmKz44lli9Rigi0d1hI7Dn5M9OVPHN+SMIg50fcVtp2HoGmV
-         M6hPUJ7rspUGaDWhFrWPbMB2qmaVDIPrFsjRHMAT8u5t4tGi3aXiv0/armYiz5/u5HCw
-         PGhD+WBLRQ1VIXWQxAekL3C/y5zjq4LiKMyaoGpcSoxhFrTyP2Zi0azarL5Meno7xo0A
-         GTeA==
-X-Gm-Message-State: AElRT7HenwUumcd2NwQmmr8aRE0xuBiT4jiGdXdpiNbn948Ia6jJ7UR1
-	NbaduhefflpUAcIblI7Oiw8CAvsV/nJ1Jkxx1lU=
-X-Received: by 2002:a19:d78a:: with SMTP id q10-v6mr9391124lfi.94.1521987498737;
- Sun, 25 Mar 2018 07:18:18 -0700 (PDT)
+        bh=gmg6eOIBT79KXGo8apT37QQLok1lcGp3orCbGcnt3Gs=;
+        b=C25+SHnRZEOWT6UbqiGwb9K5QBUT2a2OQkwEltkjGTnJVCZaZOJwCfZ6iLySgGauA8
+         84RgM7Wl3zPoolhR+CeHCig7zt+r3w4Wrwm/IrRucv49gtCgBoWb7xshDRd+kgJZj+Mq
+         WbiInwE1GfvcdoVudHTraIBzBccdON5UyTbbpNY/bkcX7IrMlt8GiSCRrLkG6BhR45Lk
+         ysX3t5lMft6Y2qDooQidGL9+kAKvBvKVRXqILqrSmH2EEkI49TCvFP9xPOV2cC9xOdni
+         MrurFvgvpK0kPvNfmhOYUtShj0Rb5MKpq5CY2oU8Ee6OpqDGzKzka0en+hZRsn4Zsead
+         LWGA==
+X-Gm-Message-State: AElRT7Hv+Giuy6nyWWoFJwjU4UvWZEMowwqnxX46E+dEva8ZOiVFryaN
+	gr7ICHynXLzsUARh8M+wBprOaTaUUPyfW1Dx/Xo=
+X-Received: by 10.46.23.70 with SMTP id l67mr22970679lje.132.1521976934160;
+ Sun, 25 Mar 2018 04:22:14 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a19:1a8f:0:0:0:0:0 with HTTP; Sun, 25 Mar 2018 07:18:18
+Received: by 2002:a19:1a8f:0:0:0:0:0 with HTTP; Sun, 25 Mar 2018 04:22:13
  -0700 (PDT)
 In-Reply-To: <alpine.DEB.2.20.1803190805260.2864@hadrien>
 References: <20180319050530.GA25589@seema-Inspiron-15-3567> <alpine.DEB.2.20.1803190805260.2864@hadrien>
 From: Arushi Singhal <arushisinghal19971997@gmail.com>
-Date: Sun, 25 Mar 2018 19:48:18 +0530
-Message-ID: <CA+XqjF9jHrOFL4LosK5GdbAgpmQRd9=08eNzvfzYxFaeXk972g@mail.gmail.com>
+Date: Sun, 25 Mar 2018 16:52:13 +0530
+Message-ID: <CA+XqjF8-33LS=5obrhxtBUB97WSCSLNTxCTFH_oNN6EqUZE52g@mail.gmail.com>
 Subject: Re: [Outreachy kernel] [PATCH] gpu: drm: Use list_{next/prev}_entry
  instead of list_entry
 To: Julia Lawall <julia.lawall@lip6.fr>
@@ -84,9 +84,9 @@ Cc: daniel.vetter@intel.com, Gustavo Padovan <gustavo@padovan.org>,
 	Ben Skeggs <bskeggs@redhat.com>, dri-devel@lists.freedesktop.org, 
 	LKML <linux-kernel@vger.kernel.org>, nouveau@lists.freedesktop.org, 
 	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: multipart/alternative; boundary="000000000000370afc05683d5402"
+Content-Type: multipart/alternative; boundary="001a114af28a845f5805683adec8"
 
---000000000000370afc05683d5402
+--001a114af28a845f5805683adec8
 Content-Type: text/plain; charset="UTF-8"
 
 On Mon, Mar 19, 2018 at 12:44 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
@@ -166,16 +166,11 @@ On Mon, Mar 19, 2018 at 12:44 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
 > patch.  Let me know if you have any questions.  You can always adjust the
 > semantic patch that is generated by hand afterwards if needed.
 >
+>
+Thanks Julia for explanation and it helped me to learn about Spgen tool.
+I'll make the changes and resend.
 
-Hi Julia,
-
-I tried spgen and found that second rule is still not working. It's not
-able to detect the second rule.
-Is it working for you?
-
-Thanks,
 Arushi
-
 
 > julia
 >
@@ -233,7 +228,7 @@ Arushi
 > >
 >
 
---000000000000370afc05683d5402
+--001a114af28a845f5805683adec8
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -327,13 +322,11 @@ The second run will use the results of the first run to print the semantic<=
 br>
 patch.=C2=A0 Let me know if you have any questions.=C2=A0 You can always ad=
 just the<br>
-semantic patch that is generated by hand afterwards if needed.<br></blockqu=
-ote><div><br></div><div>Hi Julia,<br><br></div><div>I tried spgen and found=
- that second rule is still not working. It&#39;s not able to detect the sec=
-ond rule.<br></div><div>Is it working for you?<br><br></div><div>Thanks,<br=
-></div><div>Arushi<br><br></div><blockquote class=3D"gmail_quote" style=3D"=
-margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
-<br>
+semantic patch that is generated by hand afterwards if needed.<br>
+<br></blockquote><div><br></div><div>Thanks Julia for explanation and it he=
+lped me to learn about Spgen tool.<br></div><div>I&#39;ll make the changes =
+and resend.<br><br>Arushi<br></div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
 julia<br>
 <div class=3D"HOEnZb"><div class=3D"h5"><br>
 <br>
@@ -410,5 +403,5 @@ ut</a>.<br>
 &gt;<br>
 </font></span></blockquote></div><br></div></div>
 
---000000000000370afc05683d5402--
+--001a114af28a845f5805683adec8--
 
