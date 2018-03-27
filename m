@@ -1,109 +1,144 @@
-X-GM-THRID: 6670430367909937152
-X-Received: by 2002:a24:c4d5:: with SMTP id v204mr4296884itf.5.1553080596604;
-        Wed, 20 Mar 2019 04:16:36 -0700 (PDT)
+X-GM-THRID: 6537549739579146240
+X-Received: by 2002:a25:e708:: with SMTP id e8-v6mr18084178ybh.5.1522163188509;
+        Tue, 27 Mar 2018 08:06:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:80c6:: with SMTP id h6ls757331ior.2.gmail; Wed, 20 Mar
- 2019 04:16:35 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxxbm8zAPx9rhUOS43oN8dQGEiZAtmzwO1K4V/NISadDbPGuKC+nCxY8UHmq5YDG8MxSynO
-X-Received: by 2002:a5e:8a07:: with SMTP id d7mr17153786iok.7.1553080595834;
-        Wed, 20 Mar 2019 04:16:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553080595; cv=none;
+Received: by 10.129.80.213 with SMTP id e204ls183291ywb.4.gmail; Tue, 27 Mar
+ 2018 08:06:27 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELvPF8t3yiQSIwP/e4b97aggSIQ3Liqs9fft+DS9zLIfDMEF8JegI0gpGB6fzB0shgdudNCa
+X-Received: by 10.129.122.196 with SMTP id v187mr18275418ywc.106.1522163187198;
+        Tue, 27 Mar 2018 08:06:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1522163187; cv=none;
         d=google.com; s=arc-20160816;
-        b=pO55g3k1AWUWbhwgW26nRkXY5ukLaQpDvmQ7ynsjdHi5iKvpMRFslB9NvIKmDVYnR3
-         ZTwevuwZjcrRH6RP7/CW9XcligFDpvgH9kxDAqRAhDuk9tBbbodNpROI2d5R3F45Ci2C
-         rCH+6TI6Z4OYFw+FxwvOdbOYOaHcdn2QqD6z7E9lpS9svo915EXy09NNMe1S8cKi5XZC
-         1DuzPAeXBK74g89dEwP7SQPKgEJAOChR8j7mZEg9l3qVNNRK265+/8BY0oQMKP7EvGC+
-         SrhCg1rb+o13UPT+3pY0fGylX789bmNLB/6L2FzNNSuwaEVxs8KtjnrkxuSuwSUsFn4G
-         hnLg==
+        b=cP/AmkMvzS2VlgCDF4RweBOnwNbzSIB6YtHzamS0CekkuP7QF96oFDcVgQlgoG5uxa
+         IIiWjkaZalwpXXrcsP+o4HuiAkVAvNxG4iTWGoOaS+RiflF5aRtze0jSMz4FZ0kpOza7
+         l8QB9IX1X8AePQUPnDjtyNzZL7m4LGhAVNEPVACb1OfSFpgQ3iRmR2xCqEsWMDaBjFO+
+         e3wiBULlsmsgxzvxhOhNlw8V/npnnhAg1kXvbg31MVqemgi+wY1D+rs3A+7ReIlZ2HB7
+         dAdpTvNj1V/jz725HQ+FcigpqVY5PVALHtR+xctZsbKQw4GRuWswx/duthOnQNDXI4eL
+         yVvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=kZEZNVcyCGd2X/mxnrh2NaRiGZtA1QyFPqnuEME9Hts=;
-        b=kgkZecqLHZcftlJhDJyCPOnNeM0j3HEu9k9wGL4Fab1pwZKia+4bg7SaGuz1L512ZL
-         HxqxQh3tp1XlDSvXsxRoCo3dWmu6oi6brDuG8FVK1idNvwiENB1U/LN39QEiSEN78ydd
-         /kmQuucZtlMpBQtmJNK87GzkbKJdq7SwRHB51RwCNcP4IlNDJ83gD9TR5pf8YHUWhK9g
-         Ktb3U/bsuXM4wsP0mH/62XMgmemB+OugLxbWXBE+nzKyLZzGYh5+KSiyP6IRZkAraNNP
-         M0k8MECe5zDCfj8dKuQnhek57KP587kqphJJnWLEPUUiwMYsbvJHJU9jXjUr+hM+9cKb
-         1Rvg==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature:arc-authentication-results;
+        bh=o8gJmUeAbWbO9nEBpomjpBeAmY63gDwZikydnRtRvoE=;
+        b=zGQ4LQNhKmZAEDVUASOaucUPeC8XK9uzUMpt0RbCffp5Ql6V6iJuoViXFRdRj1Z0nf
+         ZJDQ2jaWzFoJiKRd7CfQvbsd5lpk3HejY8ztdginXnsDVDCM5uzZ58Kgvwhu7pvXrtsP
+         SCkBJfyXsBxTzwmb8va/+3DqYz5PdiTsMEHme5c0QUTPu/apsqjiisWsGTYQhtmig3GY
+         YU0ctdm7tDElCPSO+9U+DtLxJQ9Vz4LME8syBdb9oTJ8rKd2GwOOs30HKWKT1N+NzYho
+         5fMZ5XmimdPavwwAVc/BN064h8Kb+ejBlqK0sYOl1yfS0iWmy0CwA4hf6gb1KmW/8m8q
+         QUtQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=n1Dqdov9;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::42b as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=cpFVcFB8;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pf1-x42b.google.com (mail-pf1-x42b.google.com. [2607:f8b0:4864:20::42b])
-        by gmr-mx.google.com with ESMTPS id t17si144014itb.2.2019.03.20.04.16.35
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from mail-pf0-x232.google.com (mail-pf0-x232.google.com. [2607:f8b0:400e:c00::232])
+        by gmr-mx.google.com with ESMTPS id e195-v6si98313yba.3.2018.03.27.08.06.27
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 20 Mar 2019 04:16:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::42b as permitted sender) client-ip=2607:f8b0:4864:20::42b;
+        Tue, 27 Mar 2018 08:06:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) client-ip=2607:f8b0:400e:c00::232;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=n1Dqdov9;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::42b as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=cpFVcFB8;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::232 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x42b.google.com with SMTP id i17so1706782pfo.6
-        for <outreachy-kernel@googlegroups.com>; Wed, 20 Mar 2019 04:16:35 -0700 (PDT)
+Received: by mail-pf0-x232.google.com with SMTP id g14so2437720pfh.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 27 Mar 2018 08:06:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=kZEZNVcyCGd2X/mxnrh2NaRiGZtA1QyFPqnuEME9Hts=;
-        b=n1Dqdov9ruJELR25/cbMBHsaqCwDE2B3kNF+IyC/nM1iQjh30ufkxegA5GSUPDG3HW
-         2WqYgz5oEU77sBG1ThRKwFSrQ7VCPfGsepk3dGH0SJRxOskYiWqJaQPWEMS6pZ28KN7E
-         DPjWXpGhoWBiJVmJAoJM089Yw4QuZSh2Cuic6WvmuLoXqK+LsRtBdEOp5XIWHW7kYERV
-         fYweT+yalQbjqJxxdy+Vu44zL7YMbwWtsitfP86iboTNKIgb0KLexzTBlIqm9xRRfnTw
-         0M4P49sXEnGVPrKL0UcrzPEPtvOAwMZ0TiXdcSkmJ8WoQas9PwK6yViW1UauXUNBCak2
-         2P9Q==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=o8gJmUeAbWbO9nEBpomjpBeAmY63gDwZikydnRtRvoE=;
+        b=cpFVcFB8zi/1Fsojmp7e8vahjfvvXW9n4zFTv3nWf422NPHND9QEeHRFtihXyCOQDv
+         3/YhrMEt0dAEyuAkjI+QKrjnGDX8a0o7BOgjG4tm13ReCZW0e45IbtfK6V/0ev+jGiai
+         t129qo9V8AD0QFLLrqpkSu0hszZy9ZksUlIxWPCTN9KkyUEwiN6vepIlaCA98zs7nCUL
+         +9ibN6i9Var9dvoHC9REXtW8kQaEhRZ4yZD/dYQ8h/6/i7Ej6QNnuT274Cbb0/vKuwa7
+         wR0B2lG96E+GkgjtnIQBLrbByzh4P3pIkzPEhBKZIaTAGOp44gmuRd9xHrDRLJeBLNh0
+         X+Mg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=kZEZNVcyCGd2X/mxnrh2NaRiGZtA1QyFPqnuEME9Hts=;
-        b=XUQoHg2YK9BuRx9jPgAGKljARI+D8yVOUGCAI3KhoT9S2wmOia4rZvu3yNwf7ptmpn
-         u0nB7ecKQZbKJTej9S3QHwcJjkS5Sm+bXJGEURiT6KzUv2krXSzsLGEWx4urXoXdsRFh
-         L8FANCpRv3t/llil20qWpTr9xb6uhbesuByJwsvht+SpvE5Ky7PtjZcHkTDckIWWBSzc
-         5PbGaRK3oia5v2GmTOqK8j6p0E9gOInp668v+W5H7yjoX6nBtT4w5eMxUbJpk2sSID+H
-         Yr4QboB7MYBEZYk1ClMPwypmdVEqwCXN15dQvuv+j9iBsAqu9bBGscq7Xiu7XgrUHl5m
-         vNLA==
-X-Gm-Message-State: APjAAAW6107JRoNmF7HHV08PDCDf/jr/xXPB5d7C+XE6Wy7a5sOoStrd
-	qtxLqqIYSlHVybiPWPf9HHVU1Rm6nuA=
-X-Received: by 2002:a62:39d6:: with SMTP id u83mr7197086pfj.161.1553080595536;
-        Wed, 20 Mar 2019 04:16:35 -0700 (PDT)
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from sanjana-Inspiron-5570.domain.name ([219.91.183.24])
-        by smtp.googlemail.com with ESMTPSA id l84sm5456726pfb.113.2019.03.20.04.16.33
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 20 Mar 2019 04:16:34 -0700 (PDT)
-From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8192u: ieee80211: ieee80211_rx.c: Remove unnecessary braces.
-Date: Wed, 20 Mar 2019 16:46:18 +0530
-Message-Id: <20190320111618.5785-1-sanjana99reddy99@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=o8gJmUeAbWbO9nEBpomjpBeAmY63gDwZikydnRtRvoE=;
+        b=nnFXnqyP9Emm2ostkmvLXg5caBLbI4tW88KTWJQt8hOJBPWzSfQxEgMIrn+I/gKXu7
+         0uir05jzQIdIZdb0z39leehLyEfd7GwWPKrWhxKXHoMIcZW+ALDyQcjktnjfV8klsEtW
+         yz7fLRyI+PHvotZvIWFvP7Ads7wekYu/Q03W9CVRX3ZFlg26ZepedxV1a59lttiKVZKB
+         0OPmI5too9yA2w7jypTBZ/E5ghIRxOuptnurkOkhHmQT8QVMtVRMdfI5LpZgIS6e3/lu
+         nvp+nmu/0TEM7Xv5n3EH8NGUJgecXbISo1xIgPwyfuyiJXJI349wVAnrXDA4SFVraR52
+         WEvA==
+X-Gm-Message-State: AElRT7GJSXi4+SzTvGRX2ZURyAPVGpAuqw6QiE5LN3+6z+OwJcnnuhbV
+	UQqVP0SiMtVI6OIpzr8DPEjV1Q==
+X-Received: by 10.101.101.15 with SMTP id x15mr27590781pgv.322.1522163186081;
+        Tue, 27 Mar 2018 08:06:26 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from seema-Inspiron-15-3567 ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id f5sm3529499pgn.56.2018.03.27.08.06.23
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 27 Mar 2018 08:06:24 -0700 (PDT)
+Date: Tue, 27 Mar 2018 20:36:40 +0530
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+To: bskeggs@redhat.com
+Cc: David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org,
+	nouveau@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: [PATCH v2] gpu: drm: nouveau: Use list_for_each_entry_from_reverse
+Message-ID: <20180327150640.GA17832@seema-Inspiron-15-3567>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Remove braces around single statement block.
-Issue found by checkpatch.pl
+It's better to use "list_for_each_entry_from_reverse" for iterating list
+than "for loop" as it makes the code more clear to read.
+This patch replace "for loop" with "list_for_each_entry_from_reverse"
+and "start" variable with "cstate" which helps in refactoring
+the code and also "cstate" variable is more commonly used in the other
+functions.
 
-WARNING: braces {} are not necessary for a single statement block
-
-Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
 ---
- drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+changes in v2:
+"start" variable is removed, before "cstate" variable was removed
+but "cstate" is more common so preferred "cstate" over "start".
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-index 1cbaf8a4ee1b..0288eec7179b 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-@@ -604,9 +604,8 @@ static void RxReorderIndicatePacket(struct ieee80211_device *ieee,
- 		return;
+ drivers/gpu/drm/nouveau/nvkm/subdev/clk/base.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/gpu/drm/nouveau/nvkm/subdev/clk/base.c b/drivers/gpu/drm/nouveau/nvkm/subdev/clk/base.c
+index 81c3567..ba6a868 100644
+--- a/drivers/gpu/drm/nouveau/nvkm/subdev/clk/base.c
++++ b/drivers/gpu/drm/nouveau/nvkm/subdev/clk/base.c
+@@ -109,18 +109,17 @@ nvkm_cstate_valid(struct nvkm_clk *clk, struct nvkm_cstate *cstate,
  
- 	/* Rx Reorder initialize condition.*/
--	if (pTS->rx_indicate_seq == 0xffff) {
-+	if (pTS->rx_indicate_seq == 0xffff)
- 		pTS->rx_indicate_seq = SeqNum;
--	}
+ static struct nvkm_cstate *
+ nvkm_cstate_find_best(struct nvkm_clk *clk, struct nvkm_pstate *pstate,
+-		      struct nvkm_cstate *start)
++		      struct nvkm_cstate *cstate)
+ {
+ 	struct nvkm_device *device = clk->subdev.device;
+ 	struct nvkm_volt *volt = device->volt;
+-	struct nvkm_cstate *cstate;
+ 	int max_volt;
  
- 	/* Drop out the packet which SeqNum is smaller than WinStart */
- 	if (SN_LESS(SeqNum, pTS->rx_indicate_seq)) {
+-	if (!pstate || !start)
++	if (!pstate || !cstate)
+ 		return NULL;
+ 
+ 	if (!volt)
+-		return start;
++		return cstate;
+ 
+ 	max_volt = volt->max_uv;
+ 	if (volt->max0_id != 0xff)
+@@ -133,8 +132,7 @@ nvkm_cstate_find_best(struct nvkm_clk *clk, struct nvkm_pstate *pstate,
+ 		max_volt = min(max_volt,
+ 			       nvkm_volt_map(volt, volt->max2_id, clk->temp));
+ 
+-	for (cstate = start; &cstate->head != &pstate->list;
+-	     cstate = list_prev_entry(cstate, head)) {
++	list_for_each_entry_from_reverse(cstate, &pstate->list, head) {
+ 		if (nvkm_cstate_valid(clk, cstate, max_volt, clk->temp))
+ 			break;
+ 	}
 -- 
-2.17.1
+2.7.4
 
 
