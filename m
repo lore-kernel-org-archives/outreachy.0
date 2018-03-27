@@ -1,141 +1,131 @@
 X-GM-THRID: 6537549739579146240
-X-Received: by 2002:a5b:88d:: with SMTP id e13-v6mr5688728ybq.18.1522143821292;
-        Tue, 27 Mar 2018 02:43:41 -0700 (PDT)
+X-Received: by 2002:a24:688b:: with SMTP id v133-v6mr11133546itb.0.1522141913537;
+        Tue, 27 Mar 2018 02:11:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.129.228.68 with SMTP id t4ls64420ywl.21.gmail; Tue, 27 Mar
- 2018 02:43:40 -0700 (PDT)
-X-Received: by 10.129.85.8 with SMTP id j8mr15163340ywb.190.1522143820372;
-        Tue, 27 Mar 2018 02:43:40 -0700 (PDT)
-Received: by 10.129.229.77 with SMTP id c13msywm;
-        Tue, 27 Mar 2018 02:14:06 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELskgT5SBrCnF7y7H1u+YauF7FJGr0pNI97BOcy7Qse58/22A1ym2XU/Ruen20df+uRkL3pz
-X-Received: by 10.31.228.195 with SMTP id b186mr17230919vkh.114.1522142046130;
-        Tue, 27 Mar 2018 02:14:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1522142046; cv=none;
+Received: by 10.107.195.15 with SMTP id t15ls138040iof.16.gmail; Tue, 27 Mar
+ 2018 02:11:52 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELuasJ1D7sMNX7lU8jSTAsniuLKgmtAXiEnv9ZBeD6RIC8LrvCAgQ5YJWv52pvlC4EB5mBw5
+X-Received: by 10.107.133.101 with SMTP id h98mr19624180iod.51.1522141912628;
+        Tue, 27 Mar 2018 02:11:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1522141912; cv=none;
         d=google.com; s=arc-20160816;
-        b=lRmHOmytYxj/FOO/eVJTFWLqo4oElMRbDbRrJzAdv5Itbjab8yYNDk0cU0WRkr1y1W
-         Dx84ZFuqcC89Y91WjTGP+T6ns5WtXCljhlF7MK2Wx5ngak9x6/TSPUCtzPMxGKNGYcID
-         YQ/hE6wQCclqZXO/dharR/7Rsz+tw8DnDXJ4Hc9j7AYrvebrw66IxJXo8QUM1L4CwKac
-         W2YZkuwAPyKLApwpOSfAfd31ONAoVJfvvKv/QpfkKnnrFKew5+U1VNyM6QwewDsr6H4z
-         MNJtHvx5phA0QTGvimN91jzFBAEBK2CBr4pVOg7dvrlWSSdfRu8/IM1mKMi1eFOG0K2e
-         ditA==
+        b=rFOWq3IxVsL5EY/UlavdQcFIUmLsfPRwtXkOojokzF0I8QqjFPDd7JbKYzJM+kdOt5
+         /GSVL6FP8fw+7Y5rb3q+hY1F9zrsk2saXTcYd7wa/rCEVD+N0dSDA7sQoy20muCPrh4F
+         nOuqUDDbA6nw+6UnHwhQmaLA7YvnUclapxaqMDQjFHYfPma0MSlcu8VhPwa0rhoq/FS7
+         gTvlaqVrgmW7stSRP8SUZgyGtZrDpGI0FFvkArnFjgWassYkRWCqAosxoOk4no7aXzFM
+         HfwtXJOZ2zP/WVngRukYZlItI5hlk2WZMJufQxs04f8ShA48ooceIIv135H4/2Trkn9d
+         ItgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=fo5j6+wcAg13jWE8T4OWUV2bENjTphMQ9FelCU+/XPk=;
-        b=PdoeZR31ObUzGLU8ylkNXuF/mEgXOiDbsVN9SkKHBw6v6QStpCoQ91jxyYU4E4J8Bx
-         cHI8Sbdo2F0FJJy6SQayuEFDvFeNGdWOgfT78LhiiiJUZj+u+DrNDZ80TEbkQ0LF1CoP
-         Nm0WTbxmMsL7wqmhFQqxwR7bZobuSNTQDncQvRTdumRxMiiAZ0Gx26VZXK+HIa1NHk2E
-         wtV4STyCzTa0jnS0q6l66IaTWhj+rnLW9y5yohISQTQysHJU1SE2rnjwQfyadCouF4Vy
-         a2zK6mm5+9LS8slV2uKSigHiI6kxGFywgPIia5a3iSmAR7vwXlAt72fVxm2ifsxgMU2t
-         x+wA==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature:arc-authentication-results;
+        bh=B51rQGyYPVX1wUlufoKzjPSNN+MCDrsu+sbHwRO9DfM=;
+        b=NfxtbwHQ4YQ8AhA53NJAXpOu8NNpydQ88A3kwdgWq+5TrRwMMe29wBIZRaa/vYOtCK
+         VUfBCRNVmoeTOiMJHJoLoDE5KOKPHdeqhyGP6ReljAJ64zrcyVJ3MGh61dN8Ch90kGSL
+         5P9Tra8myCpaEwz0L91s4BJaM615+i/Jp2WZIAhCku6IHgowBggZ//zNpevw4lFjwkMS
+         s+myhuy9b44frOen9ninZ/V5Bc4FYY55+6xnWsopOuH2zqYsq/9etwD4GLCTQF0wqiQU
+         TMxgbAqE7nsgTjaon3DSp7+gXkxBiEzipISELN12jV8TyriCTkC+yvNlGJ7C/rDOp01p
+         Sx3Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ruIo1CDS;
-       spf=pass (google.com: domain of skeggsb@gmail.com designates 2607:f8b0:400c:c05::22e as permitted sender) smtp.mailfrom=skeggsb@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eaCgENgH;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <skeggsb@gmail.com>
-Received: from mail-vk0-x22e.google.com (mail-vk0-x22e.google.com. [2607:f8b0:400c:c05::22e])
-        by gmr-mx.google.com with ESMTPS id r77si32802vkf.5.2018.03.27.02.14.06
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
+        by gmr-mx.google.com with ESMTPS id h63-v6si91656ith.0.2018.03.27.02.11.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Mar 2018 02:14:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of skeggsb@gmail.com designates 2607:f8b0:400c:c05::22e as permitted sender) client-ip=2607:f8b0:400c:c05::22e;
+        Tue, 27 Mar 2018 02:11:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ruIo1CDS;
-       spf=pass (google.com: domain of skeggsb@gmail.com designates 2607:f8b0:400c:c05::22e as permitted sender) smtp.mailfrom=skeggsb@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eaCgENgH;
+       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-vk0-x22e.google.com with SMTP id j85so12802093vke.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 27 Mar 2018 02:14:06 -0700 (PDT)
+Received: by mail-pg0-x243.google.com with SMTP id v26so5818184pge.11
+        for <outreachy-kernel@googlegroups.com>; Tue, 27 Mar 2018 02:11:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=fo5j6+wcAg13jWE8T4OWUV2bENjTphMQ9FelCU+/XPk=;
-        b=ruIo1CDSZiAWa2oWRUj7F0mHHbYEg0v3uWwjjw+fRpkCXo/Y/nWLOb6fp4Pt6X4/pW
-         ClV9o6xLCOeDpnp2UEYTEqmG2lT1ThN4iDjxkbUHk56Di+a4Np/5vn37MUdJ8OtxAPk+
-         7SUApDR5YnQpA8duhDHCaRtpTeeMEGGLi5KWGgSR9YmRRf+eSRFjQ7pfIQ2P8O1aQ+QY
-         a73U2IuFzCClkcWzhKrR9fz18nmBod4EV5vB2l2e+tAp0Gvpkjcxl3j5nrLorlNH8rFk
-         Pjo+DNCpBW0Of5b0WGMzRMc5NUBSo00Ce+fG+kQyFVnBc/U21oQ/iADXIr3aIbL9ZKCp
-         +Pdg==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=B51rQGyYPVX1wUlufoKzjPSNN+MCDrsu+sbHwRO9DfM=;
+        b=eaCgENgHZj+fsKQe532jUN1zH6qvM4bR+vZjd4iMt2E1nIX5mSRr+FHIR7MJlxfXxA
+         9YzyIIkYVE+L5OCLuiRpnaVOgDvenjRxDISotGJrSu37Zf34eG+4EOHX3qP2rcbGyjhp
+         4q9bC6HJJOgXcqRxPQkh3oStaZiOm5XxPccrmol9oHT1fxwBEziyhAei4kY1Qi/FJDJ2
+         s0bwYazjZPN2Y6oJq6gbH6b2cup68uqv5Wu/nrrBf6OslErZMsQn9Vf8Pn4VJTUIGKZh
+         t7//sqWdcUoGV67DHBiPwZ/XpYx/m6MYNSXALjIDaA3CaXWSgJt1EVSYpvm011GOAVoI
+         KQBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=fo5j6+wcAg13jWE8T4OWUV2bENjTphMQ9FelCU+/XPk=;
-        b=ubX4fHuMr72zO1+1J8t2aP9cKBp9QOgTl7VwheCceHRkkyU91TA6biEhhnkKF3k0nM
-         ikpo2bwb0wOzTY2GGMxAgUxuvKlYx7A7bvGnh8Bf0sZAMZjjBeE0A5VAkRtZraXc02k/
-         76qJFuOgec3ZEFsarJdhGcupSQivhDZBJw+zVViFzgQC18FJ28A/wX1QRWP+4iP7meUh
-         aX04zm9QX5x0t6+PL2lTnEURVGv8mOBSztzhFv9mAb2K2jzDcUDnPpXF6bEtYmSVBSVE
-         IV7SwvaNiLgaeSLhJzNJ4aQxebFoRIEAsIRSTmwzV3FdzthtAyuS7vuL9fUgbyhqKy5p
-         0MJg==
-X-Gm-Message-State: AElRT7EszDJU0MJkH1i40M0gIoiuoAYT6T3KyeEhaWCugkeX7OKyoPdt
-	fxMIdNqrgZ/S6yXOgVreSU085cOqZiMa7qnHYaY=
-X-Received: by 10.31.114.201 with SMTP id n192mr6658433vkc.70.1522142045669;
- Tue, 27 Mar 2018 02:14:05 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.103.137.5 with HTTP; Tue, 27 Mar 2018 02:14:05 -0700 (PDT)
-In-Reply-To: <20180327091156.GA23787@seema-Inspiron-15-3567>
-References: <20180327091156.GA23787@seema-Inspiron-15-3567>
-From: Ben Skeggs <skeggsb@gmail.com>
-Date: Tue, 27 Mar 2018 19:14:05 +1000
-Message-ID: <CACAvsv5Wzd6yFsweNXRNA93i5UeTX5qrb_xwPOeobqSjhLEMjg@mail.gmail.com>
-Subject: Re: [PATCH] gpu: drm: nouveau: Use list_for_each_entry_from_reverse
-To: Arushi Singhal <arushisinghal19971997@gmail.com>
-Cc: Ben Skeggs <bskeggs@redhat.com>, David Airlie <airlied@linux.ie>, nouveau@lists.freedesktop.org, 
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=B51rQGyYPVX1wUlufoKzjPSNN+MCDrsu+sbHwRO9DfM=;
+        b=EiQcxU4+hm1u/80BspaKN8EKwuLrfhLstUP6tK+Jdpx3OVe8edjvGAlCGEITL0BSfD
+         GXofoQRhTVp05+gq7A4GjSZHEsyVoS0AOO2w5lGfZROaDHYGLdOShXbsvO9CvbURzUJS
+         OZmB/KZ27MbqkM5btP+gvezj5mSAmpCmGhwk3Vg7xGwUM0aLi8+byhRMWbYhLfbcfeVR
+         UoH0UKhTFMDFH6QyCBk6H9Y627Xhs+dtzYFGJk1Ucaz8EVf7SioFf4658sezSowGprhj
+         DG3B/u9svHNfdSDcUwh6ZprPz8Cq6w9KzS/isuQouEhN4+x5BrEa7LCnI0JiPuEnmpAN
+         an6g==
+X-Gm-Message-State: AElRT7GCwZIt6jMM+G8p8MLT8Us072AQodzi3m/2Q8xLB13I3srDROag
+	TAb+SEIhS9Q+d++XmKaZmbarXA==
+X-Received: by 10.101.83.199 with SMTP id z7mr31451320pgr.105.1522141911498;
+        Tue, 27 Mar 2018 02:11:51 -0700 (PDT)
+Return-Path: <arushisinghal19971997@gmail.com>
+Received: from seema-Inspiron-15-3567 ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id e8sm2216233pfd.116.2018.03.27.02.11.49
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 27 Mar 2018 02:11:50 -0700 (PDT)
+Date: Tue, 27 Mar 2018 14:41:56 +0530
+From: Arushi Singhal <arushisinghal19971997@gmail.com>
+To: bskeggs@redhat.com
+Cc: David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org,
+	nouveau@lists.freedesktop.org, linux-kernel@vger.kernel.org,
 	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset="UTF-8"
+Subject: [PATCH] gpu: drm: nouveau: Use list_for_each_entry_from_reverse
+Message-ID: <20180327091156.GA23787@seema-Inspiron-15-3567>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On 27 March 2018 at 19:11, Arushi Singhal
-<arushisinghal19971997@gmail.com> wrote:
-> It's better to use "list_for_each_entry_from_reverse" for iterating list
-> than "for loop" as it makes the code more clear to read.
-> This patch replace "for loop" with "list_for_each_entry_from_reverse"
-> and remove "cstate" variable as it is redundant in the code.
-I would prefer to also see "start" renamed to "cstate" with this change.
+It's better to use "list_for_each_entry_from_reverse" for iterating list
+than "for loop" as it makes the code more clear to read.
+This patch replace "for loop" with "list_for_each_entry_from_reverse"
+and remove "cstate" variable as it is redundant in the code.
 
-Ben.
+Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+---
+ drivers/gpu/drm/nouveau/nvkm/subdev/clk/base.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
->
-> Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
-> ---
->  drivers/gpu/drm/nouveau/nvkm/subdev/clk/base.c | 8 +++-----
->  1 file changed, 3 insertions(+), 5 deletions(-)
->
-> diff --git a/drivers/gpu/drm/nouveau/nvkm/subdev/clk/base.c b/drivers/gpu/drm/nouveau/nvkm/subdev/clk/base.c
-> index 81c3567..5e56f74 100644
-> --- a/drivers/gpu/drm/nouveau/nvkm/subdev/clk/base.c
-> +++ b/drivers/gpu/drm/nouveau/nvkm/subdev/clk/base.c
-> @@ -113,7 +113,6 @@ nvkm_cstate_find_best(struct nvkm_clk *clk, struct nvkm_pstate *pstate,
->  {
->         struct nvkm_device *device = clk->subdev.device;
->         struct nvkm_volt *volt = device->volt;
-> -       struct nvkm_cstate *cstate;
->         int max_volt;
->
->         if (!pstate || !start)
-> @@ -133,13 +132,12 @@ nvkm_cstate_find_best(struct nvkm_clk *clk, struct nvkm_pstate *pstate,
->                 max_volt = min(max_volt,
->                                nvkm_volt_map(volt, volt->max2_id, clk->temp));
->
-> -       for (cstate = start; &cstate->head != &pstate->list;
-> -            cstate = list_prev_entry(cstate, head)) {
-> -               if (nvkm_cstate_valid(clk, cstate, max_volt, clk->temp))
-> +       list_for_each_entry_from_reverse(start, &pstate->list, head) {
-> +               if (nvkm_cstate_valid(clk, start, max_volt, clk->temp))
->                         break;
->         }
->
-> -       return cstate;
-> +       return start;
->  }
->
->  static struct nvkm_cstate *
-> --
-> 2.7.4
->
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+diff --git a/drivers/gpu/drm/nouveau/nvkm/subdev/clk/base.c b/drivers/gpu/drm/nouveau/nvkm/subdev/clk/base.c
+index 81c3567..5e56f74 100644
+--- a/drivers/gpu/drm/nouveau/nvkm/subdev/clk/base.c
++++ b/drivers/gpu/drm/nouveau/nvkm/subdev/clk/base.c
+@@ -113,7 +113,6 @@ nvkm_cstate_find_best(struct nvkm_clk *clk, struct nvkm_pstate *pstate,
+ {
+ 	struct nvkm_device *device = clk->subdev.device;
+ 	struct nvkm_volt *volt = device->volt;
+-	struct nvkm_cstate *cstate;
+ 	int max_volt;
+ 
+ 	if (!pstate || !start)
+@@ -133,13 +132,12 @@ nvkm_cstate_find_best(struct nvkm_clk *clk, struct nvkm_pstate *pstate,
+ 		max_volt = min(max_volt,
+ 			       nvkm_volt_map(volt, volt->max2_id, clk->temp));
+ 
+-	for (cstate = start; &cstate->head != &pstate->list;
+-	     cstate = list_prev_entry(cstate, head)) {
+-		if (nvkm_cstate_valid(clk, cstate, max_volt, clk->temp))
++	list_for_each_entry_from_reverse(start, &pstate->list, head) {
++		if (nvkm_cstate_valid(clk, start, max_volt, clk->temp))
+ 			break;
+ 	}
+ 
+-	return cstate;
++	return start;
+ }
+ 
+ static struct nvkm_cstate *
+-- 
+2.7.4
+
 
