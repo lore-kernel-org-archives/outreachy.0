@@ -1,123 +1,156 @@
-X-GM-THRID: 6334690503118815232
-X-Received: by 10.36.17.133 with SMTP id 127mr3318980itf.34.1474910067979;
-        Mon, 26 Sep 2016 10:14:27 -0700 (PDT)
+X-GM-THRID: 6534171640869158912
+X-Received: by 10.129.133.7 with SMTP id v7mr15633050ywf.231.1522222737071;
+        Wed, 28 Mar 2018 00:38:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.32.200 with SMTP id x66ls14454679ota.23.gmail; Mon, 26 Sep
- 2016 10:14:27 -0700 (PDT)
-X-Received: by 10.200.36.41 with SMTP id c38mr6064707qtc.21.1474910067512;
-        Mon, 26 Sep 2016 10:14:27 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id o13si731887itc.3.2016.09.26.10.14.27
+Received: by 10.129.120.1 with SMTP id t1ls297132ywc.41.gmail; Wed, 28 Mar
+ 2018 00:38:55 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELseS/Vc0RbSKRtbIfu7ji69+kpoepp63SOz2xFwDbCck/2iTnE2XWw5qdVILAM3NT0KzRUb
+X-Received: by 10.13.197.6 with SMTP id h6mr18540010ywd.215.1522222735815;
+        Wed, 28 Mar 2018 00:38:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1522222735; cv=none;
+        d=google.com; s=arc-20160816;
+        b=sZkbwHeAr7aL9rD+fR3BshKKZuhogpVvYSjKaj1Sr2Bks1odQV3kpGnrIyjEkLMmg8
+         QAFiV3CBa5SCtRteosAKiiR7DmiXbQxWMJL/Rcr5XOWTeFy9XPNKTI4NdUHplT1IFIoC
+         OZrByPp/BFXL87Y58YXfuYAqBVhrTtwclUQ9YSWi5ndp7l8IYMqHZd5wuwk8TNFcQCMu
+         eTRAXf4e86FIEshVBB+5kSVcxWzeU8qstNnGA+qdqBH0TQuRGBZTto4U/jDBmVNc6xqJ
+         h3z1QO7FVER1JXBQEwJ5wA84ougjIGMGNx+/hf9fOj8V/QoBeKqXhq6gBzxThZcBWdZm
+         tn5A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=EDhLCMjE5SXJRN92QD2YiXQtHxI9xsDpJj2Gxr3fxN8=;
+        b=mspRosqQByMW//4sXvYXtmVyOAP6GKw6rH3HWIp8oqAfdUXIfwOqw1eR/U8C/KtlGU
+         Pi/ywaVVBesiIwTvD3x5Ge5TiJ4FUPL6+IgDIqizjzdj8sZPz5gTLSuR/xMV5Ouj82IO
+         evoyN/wGNgNQrRPNxETexeUSTLSi19IQ26uSKWrfMLScE7BjGqvLh8kc/Q5kwUdq9tzF
+         p0asbNgSlzHW7CoBaE/ipFQBNGJVc0UCqCRsl0FwgrhIKLq1BWmpWumBlvH4BUR8OYt3
+         rinsW6titnqpIQ2eYNlmepXz+54oLkx1iJ4eWGRLaViaOv0/uqYO4o8GFBtHvQL9uxga
+         qh0Q==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=eGpOvIQb;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:4001:c06::242 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
+Received: from mail-io0-x242.google.com (mail-io0-x242.google.com. [2607:f8b0:4001:c06::242])
+        by gmr-mx.google.com with ESMTPS id d131si60925ywc.5.2018.03.28.00.38.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 26 Sep 2016 10:14:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
+        Wed, 28 Mar 2018 00:38:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:4001:c06::242 as permitted sender) client-ip=2607:f8b0:4001:c06::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x241.google.com with SMTP id oz2so9036288pac.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 26 Sep 2016 10:14:27 -0700 (PDT)
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=eGpOvIQb;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:4001:c06::242 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Received: by mail-io0-x242.google.com with SMTP id d5so2354995iob.9
+        for <outreachy-kernel@googlegroups.com>; Wed, 28 Mar 2018 00:38:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=PMiHapuvhG1oV/fVqK9IM9CO+Vv0K3GOkAKSrJpynPQ=;
-        b=LdncMoyHBP5pk7i83EbIWDJfUHrqKH+gJV+6bclHgUN66RmLBnwVzpq66VaVYwUp3b
-         VMqS6WkI8WsL2mNoaS+7UME81o/r5oDvsswxYsC5pbK+Tpri6HkhO6ak11DIZhWbQURs
-         h1bh+b0L5bvmnRk0Yjl2MbEzLWSQxgvf4tHOev+YVbestA/pw4Loei5i+lza9LtDzPEy
-         eQe1divCO9RQkbPKsYmzZMtFnf0Bi6CiXRnoVcX/7mYUX/HV/vm2VSLiqd9TAtfbksxv
-         MHNnSQ/G/YvldgBkj3cFjJHaF3MbF12ZrOg/qOa1pvdQuLHAE85aUAhFwWfmiozdiK+Y
-         h+JQ==
+        d=ashoka.edu.in; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=EDhLCMjE5SXJRN92QD2YiXQtHxI9xsDpJj2Gxr3fxN8=;
+        b=eGpOvIQbnVoc/RPKzvOOAyxdBejxrLJk0bHYF8IULai6IUSxcPS4fkqKv+JrcfbmPh
+         VnimgjzNfDdXpK3TVcN5znUGZuprBq/4+u27KhItqxRCTdZrfaeaKDmvdjPKo7J3n/s+
+         Dss2eqWW1dssRjtDG8pl5ZPQutu/hJpuNFGRk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=PMiHapuvhG1oV/fVqK9IM9CO+Vv0K3GOkAKSrJpynPQ=;
-        b=lbT0uLNUqYfbGSbJcuHMHL0FR/cu8yA1qFfKv/w3SuuIy+l5xEWn69CyLajG8lUTfF
-         XaR/oIBzUQZ5ScCbBoxXX94D3jwlrBZfF2ecqOzMH2yPx9IPpjVwX1TjfcvTUoeAUdkT
-         OEJZWV6xBPfbrThdP72CDPt0WQeZuYDfzvjfQ4R6S43N48sxV4s1ut/qPmlEeLkkN3B5
-         2I2FtFAqifll/+bTbGgVD3xeNMshV2BeFV3bYnXL9xp294fBK8MLxhsgyP2vZZD9/GQ0
-         Gp6uYKwgqv4Zeu1e7NvBb4IKVuhKkbfwWQq7goa7awgWkY780LgzXX+0plYPv/db5hiI
-         loyg==
-X-Gm-Message-State: AE9vXwPfEIsO7XfgrFYc378TwHLkYkauTkEFeJhlvHODrFCNbA5wqL/IsBLtdox3ZmpdoQ==
-X-Received: by 10.66.185.232 with SMTP id ff8mr40535079pac.12.1474910067281;
-        Mon, 26 Sep 2016 10:14:27 -0700 (PDT)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from sayli-HP-15-Notebook-PC ([182.58.214.70])
-        by smtp.gmail.com with ESMTPSA id zh13sm31636499pab.4.2016.09.26.10.14.18
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 26 Sep 2016 10:14:26 -0700 (PDT)
-Date: Mon, 26 Sep 2016 22:44:04 +0530
-From: sayli karnik <karniksayli1995@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>
-Subject: [PATCH v2] iio: temperature: maxim_thermocouple: Fix sparse
- endianness warnings
-Message-ID: <20160926171404.GA11773@sayli-HP-15-Notebook-PC>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=EDhLCMjE5SXJRN92QD2YiXQtHxI9xsDpJj2Gxr3fxN8=;
+        b=dWx3H7G45Kn2twXPpGd0WM1hGwTT4gUhFY+XHYgSUNIRt2KKGHtl2/54R1vxdyc5Qx
+         oLGLAkioAZ48JmEBQW4ngqAe5NtT0VghqsE2nqjxMCLA4htxuIH1DjkmcwEYWPGhl69T
+         Q42nujYfXRdXizzUVqcGXn+CI2Rnl/awU/JeUycG71+yyT8mxzUkznPnqLgdrKAZjVoM
+         /+e8lGp28HbMEDTFfSU0tNVWgrxqw74280y8C3sV1zCQkY99JeDThh8MlPkD5hltdzep
+         0a9lwBHoNY5jh1T8RDEQoR0GB4vHvIHoIEn64f8QHSiIIsccfjudCHLCbmr82vcSYRIy
+         jYqw==
+X-Gm-Message-State: AElRT7FtmfYF9vNWf33k1VaaNGi9a1F/i2tMi02A2AMJrFN+rh8cYV5C
+	OfwWxtH6lwrCaAC/WMqBtpvxUQzzI79zL5v+CApiRg==
+X-Received: by 10.107.44.199 with SMTP id s190mr49452088ios.123.1522222735425;
+ Wed, 28 Mar 2018 00:38:55 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Received: by 10.79.128.23 with HTTP; Wed, 28 Mar 2018 00:38:55 -0700 (PDT)
+In-Reply-To: <alpine.DEB.2.20.1803272303130.2383@hadrien>
+References: <alpine.DEB.2.20.1803180739260.3299@hadrien> <e84b04f6-0288-4490-b3e3-8bf9166f3d4f@googlegroups.com>
+ <CAO393ABtUKH6t6aZwSX0tPoDX7dQ5MggeWsN8t+Rhd1wnV6DBA@mail.gmail.com>
+ <CAC4++KD6f+8As-7qxSHwp=m+hDZ85r_btf=cxtxSx75Hc7jTvw@mail.gmail.com> <alpine.DEB.2.20.1803272303130.2383@hadrien>
+From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+Date: Wed, 28 Mar 2018 13:08:55 +0530
+Message-ID: <CAC4++KDxW2+O6q3byG+GFmu7adog7DcXqjwEGuKC5HCuz6J07g@mail.gmail.com>
+Subject: Re: [Outreachy kernel] Re: application
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Shraddha Barke <shraddha.6596@gmail.com>, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset="UTF-8"
 
-Fix following endianness warnings using sparse:
-warning: cast to restricted __be16
-warning: cast to restricted __be32
-Use __be16 type for incoming read data when storage_bytes equals 2 and __be32
-when storage_bytes equals 4. Since the variable allocated already has the
-correct storage size the patch is classified as cosmetic.
+On Wed, Mar 28, 2018 at 2:33 AM, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+> On Wed, 28 Mar 2018, Nishka Dasgupta wrote:
+>
+>> On Wed, Mar 21, 2018 at 3:34 PM, Shraddha Barke <shraddha.6596@gmail.com> wrote:
+>> >
+>> >
+>> > On Tue, Mar 20, 2018 at 9:54 PM, Nishka Dasgupta
+>> > <nishka.dasgupta_ug18@ashoka.edu.in> wrote:
+>> >>
+>> >>
+>> >>
+>> >> On Sunday, March 18, 2018 at 12:13:08 PM UTC+5:30, Julia Lawall wrote:
+>> >>>
+>> >>> Hello,
+>> >>>
+>> >>> Currently three of the kernel projects have a deadline of March 22 and
+>> >>> the
+>> >>> Userfaultd project has a deadline of March 29.  In either case, the
+>> >>> deadline is 4pm UTC.  You can find out what time that is in your area
+>> >>> using the following link:
+>> >>>
+>> >>> https://www.google.com/search?q=4pm+UTC+to
+>> >>>
+>> >>> You make a separate application for each project you are interested in.
+>> >>> If you are interested in multiple projects, please clearly indicate your
+>> >>> preference between them.
+>> >>>
+>> >>> julia
+>> >>
+>> >>
+>> >> Does this include the project "dri-devel aka kernel GPU subsystem"? Its
+>> >> deadline is also listed as 29th on the outreachy website.
+>> >>
+>> >
+>> > Yes, you should make a separate application for "dri-devel aka kernel GPU
+>> > subsystem" project as well.
+>> >
+>>
+>> May I list the same cleanup patches as contributions if I apply to
+>> multiple projects?
+>
+> Yes, this is perfectly fine.
 
-Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
----
-v2:
-Updated the subject line and changelog
-Moved the spi_read function call inside respective case statements so that data
-is read only once.
-Moved the return statement after the switch case
+Thank you for the clarification!
 
- drivers/iio/temperature/maxim_thermocouple.c | 16 +++++++++-------
- 1 file changed, 9 insertions(+), 7 deletions(-)
+Regards,
+Nishka Dasgupta
 
-diff --git a/drivers/iio/temperature/maxim_thermocouple.c b/drivers/iio/temperature/maxim_thermocouple.c
-index 39dd202..2683b0f 100644
---- a/drivers/iio/temperature/maxim_thermocouple.c
-+++ b/drivers/iio/temperature/maxim_thermocouple.c
-@@ -123,22 +123,24 @@ static int maxim_thermocouple_read(struct maxim_thermocouple_data *data,
- {
- 	unsigned int storage_bytes = data->chip->read_size;
- 	unsigned int shift = chan->scan_type.shift + (chan->address * 8);
--	unsigned int buf;
-+	__be16 buf1;
-+	__be32 buf2;
- 	int ret;
- 
--	ret = spi_read(data->spi, (void *) &buf, storage_bytes);
--	if (ret)
--		return ret;
--
- 	switch (storage_bytes) {
- 	case 2:
--		*val = be16_to_cpu(buf);
-+		ret = spi_read(data->spi, (void *) &buf1, storage_bytes);
-+		*val = be16_to_cpu(buf1);
- 		break;
- 	case 4:
--		*val = be32_to_cpu(buf);
-+		ret = spi_read(data->spi, (void *) &buf2, storage_bytes);
-+		*val = be32_to_cpu(buf2);
- 		break;
- 	}
- 
-+	if (ret)
-+		return ret;
-+
- 	/* check to be sure this is a valid reading */
- 	if (*val & data->chip->status_bit)
- 		return -EINVAL;
--- 
-2.7.4
-
+> julia
+>
+>>
+>> I will of course be ordering the projects according to my preference.
+>>
+>>  Thanking you,
+>> Nishka Dasgupta
+>> >>
+>> >> --
+>> >> You received this message because you are subscribed to the Google Groups
+>> >> "outreachy-kernel" group.
+>> >> To unsubscribe from this group and stop receiving emails from it, send an
+>> >> email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> >> To post to this group, send email to outreachy-kernel@googlegroups.com.
+>> >> To view this discussion on the web visit
+>> >> https://groups.google.com/d/msgid/outreachy-kernel/e84b04f6-0288-4490-b3e3-8bf9166f3d4f%40googlegroups.com.
+>> >>
+>> >> For more options, visit https://groups.google.com/d/optout.
+>> >
+>> >
+>> >
+>> >
+>> > --
+>> > Shraddha
+>>
 
