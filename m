@@ -1,158 +1,72 @@
 X-GM-THRID: 6536210357179908096
-X-Received: by 10.31.95.8 with SMTP id t8mr3456191vkb.94.1522659800635;
-        Mon, 02 Apr 2018 02:03:20 -0700 (PDT)
+X-Received: by 2002:a17:902:c03:: with SMTP id 3-v6mr17843786pls.1.1522262785591;
+        Wed, 28 Mar 2018 11:46:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.176.16.145 with SMTP id d17ls1411240uab.5.gmail; Mon, 02 Apr
- 2018 02:03:19 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4+rcora5anIE0pPjdpCHibkpOAKqXjudoCmJVrvSWT/UximxqjdSq4hq0XA0VM+odJVEoAx
-X-Received: by 10.176.48.209 with SMTP id c17mr3562589uam.37.1522659799484;
-        Mon, 02 Apr 2018 02:03:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1522659799; cv=none;
+Received: by 10.98.172.8 with SMTP id v8ls1115217pfe.7.gmail; Wed, 28 Mar 2018
+ 11:46:24 -0700 (PDT)
+X-Google-Smtp-Source: AG47ELuUF/83TQ1PZ9d6voecG6np/9WlpDa5Bphz/bmmZrlsJ0+vAetDdpum3VcEw6ZiY7lrv8pr
+X-Received: by 10.98.103.68 with SMTP id b65mr8417573pfc.11.1522262784369;
+        Wed, 28 Mar 2018 11:46:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1522262784; cv=none;
         d=google.com; s=arc-20160816;
-        b=p50rjgbY58qqk5p+J4l2tt1I2UozHVYe8tqP+MCj8tVpHkAoBg+lJCyK128whR0mrM
-         MeYIWIsYFZWL9egloXpxxn7cTi4aVy4UliUtQxh+cBxJU3I0HfPUkThkhl0CVN+ADGZ5
-         nmZqMsMWKyKQ1zgJgTwsRysvMY0oUu99LcuAxqyNYYyk7bRgl04OyJ+kfIyDMUQYdm/T
-         o3/omnG6uKxNG18EWQz8XymumF1+VDYjHPLpBY+6BzUEzAJEiWDo/+RwRop/hzN0nRMA
-         8oJ/yH6PKuoiGLT6MbPlONR2ZNPqpy/3aF35DZKYTzW1/I2bmx8C8k+hoJOQp75ah/vw
-         RCbw==
+        b=xjVrXoiYN6DIORLxxdx4IoCC9JrjGaFotFR2GUFJm9TPZyhLB4cG5cFND9B/A4G/5W
+         fgHRvLYw0QtQET8aOpwOH6cUEq1kzSE2te7EK/+gywekt2qL0VfjFUg83mgltFNsrvOH
+         bOa40YJlm2JrutlS7dt0bE7s4OeGGlpNjAUKR9TOE6vohla+m6gb1xVyOdkO+lAFGmL9
+         ou4TTEwf50mF5tw3ImMSx+FI4NVXKkpIWOeO2lxdhsT8x4+Rxlpa9nFZUuGzDPx5+6Mf
+         BYsk57rwq/5sypMPYwx5cDgJjaJMjMFHmzJ8uLqVaLeTeZHvRFPA/s199wDLUMCGA/Gn
+         OVHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=/Q84cYCpPFbQCkEM4KRngGncIBOQRI0Ugao3EUTqZjI=;
-        b=MEqiG1+bcGa6PbRRBszE1+4DC1jt+Xry3JMIme01hlaC+dP7K+CTH0iaK31A+U3tPK
-         cYshBsJb32DJZUlfgf5AbbVlJHvtvwbVXo27zjJA4owAHvmk1isUysxQIkkYoU4xiqiu
-         BP21RPQN3sBzXrNr50xfRwkvZBDtQHz8PvQ1V52ssMYwEXrCl46p/Nn3AH/adHMFy68S
-         gnzDNOvo5HBA6C7vT6L0DSeA9IgrUjRYeTcKcH7QQBSEzKYo+EX0aeAG3i3uoC2ZgqnD
-         YxoNolawOB48kqIZtUZHOxHbiwbib2Odjk59XF0JkaXOpYU3nd8pmSpWiGJUA8ombnuB
-         POTA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=bi5Toyi7LDGltecxw6n7VkiTz6mjMzoaFyWNodkNKrI=;
+        b=gD4qQOCWWOf7RGL1XvTvCFUCksFb72iwNi4j5Y/ynVxEikZ5itwT3y0HfLpcI62ydx
+         EF1891vx/hF0HaSKZtSgpdh/SLVED5mMiC4ql53KiszrmyYIgrVzsu47fuf7Ayge/RxR
+         1TBd9NGLgdwB3WlzMSPQntS3je2qR78e45eNm0KjFtHPIhyruv7upIYM4CKxyKYv1U6H
+         6E2Q+mSAwzeuIJswBUIhPYRL9/+b2euRlHcIV9ELLrfssgisl+vnziHi4GKtCcoke0Z3
+         4QkHt0bEP1BZY+iiSu449hizDdVR1tIUV0PsqtCrT9yBeF+Mtxig6f+uNn1bKiRGRg6Z
+         B0/w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=X+XSBGpH;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::243 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from mail-pl0-x243.google.com (mail-pl0-x243.google.com. [2607:f8b0:400e:c01::243])
-        by gmr-mx.google.com with ESMTPS id t23si989240uaj.3.2018.04.02.02.03.19
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.linuxfoundation.org (mail.linuxfoundation.org. [140.211.169.12])
+        by gmr-mx.google.com with ESMTPS id q3-v6si360395pll.5.2018.03.28.11.46.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 02 Apr 2018 02:03:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::243 as permitted sender) client-ip=2607:f8b0:400e:c01::243;
+        Wed, 28 Mar 2018 11:46:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) client-ip=140.211.169.12;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=X+XSBGpH;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::243 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Received: by mail-pl0-x243.google.com with SMTP id 61-v6so1768853plb.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 02 Apr 2018 02:03:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ashoka.edu.in; s=google;
-        h=from:to:cc:subject:date:message-id;
-        bh=/Q84cYCpPFbQCkEM4KRngGncIBOQRI0Ugao3EUTqZjI=;
-        b=X+XSBGpHOmyLTFIF7gmoLgySNUfrKypzvFcTdE+UI7rQlTvtZm8cdVft17P9d0c3JM
-         UsQPViipFMaK8Q46RwZRNhZz2yanHxM3FqPjUsj1OCWPEBg96x/LckLGHo5Mz6GLXBPG
-         /Qsi1j0BVSZnCKHZaFNuQDwWy29Bi0g8L1nVk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=/Q84cYCpPFbQCkEM4KRngGncIBOQRI0Ugao3EUTqZjI=;
-        b=CCD1rnIMyU/P3Q0VpaCWsvcGuq9Kx6/LfBx/ff1gWiVj1GsxwnEff05jj8fWXmvc+M
-         uEERampAmdPjtXpPp+CsDURSAGd1KmvTqK/6O90a+mw2TL0gF3JfBJ4QTpPGmDcVfP+z
-         yKIv+h+uvhKALqqQ/kIhuRCZaIdinKP15N7t8+Xz/MznyNWH4fHSNPgTN7SM0EvyxMSI
-         2pIgvdadSrAkdlXqkPYkh9MUV3LnBGBjqNeaXtGTxsofrl5W5hhTF/hJgE98kj4jmMbT
-         kFI8pAvdWPuN5IaTQe/D/pa6xMAbUtUI53MBasOFmX59PpKhnjK25Q5lgzGRf9ssmwHC
-         Pd2A==
-X-Gm-Message-State: AElRT7FYJVVUkOlcikdFjYDyU0OFRbptlLUoJ+chWWAmNa5U1SfkSv04
-	nyIoxRJG3umlnqyDpO+sWO77BHeF
-X-Received: by 2002:a17:902:8ec8:: with SMTP id x8-v6mr9282614plo.179.1522659798093;
-        Mon, 02 Apr 2018 02:03:18 -0700 (PDT)
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from localhost.localdomain ([139.59.85.247])
-        by smtp.gmail.com with ESMTPSA id l80sm11443422pfb.38.2018.04.02.02.03.16
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 02 Apr 2018 02:03:17 -0700 (PDT)
-From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-To: outreachy-kernel@googlegroups.com,
-	forest@alittletooquiet.net,
-	gregkh@linuxfoundation.org
-Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-Subject: [PATCH v6] staging: vt6655: Remove else after return
-Date: Mon,  2 Apr 2018 09:02:51 +0000
-Message-Id: <1522659771-799-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-X-Mailer: git-send-email 2.7.4
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 140.211.169.12 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (LFbn-1-12247-202.w90-92.abo.wanadoo.fr [90.92.61.202])
+	by mail.linuxfoundation.org (Postfix) with ESMTPSA id B7405CD3;
+	Wed, 28 Mar 2018 18:46:23 +0000 (UTC)
+Date: Wed, 28 Mar 2018 20:46:21 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+Cc: forest@alittletooquiet.net, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v5] staging: vt6655: Remove else after return
+Message-ID: <20180328184621.GA7042@kroah.com>
+References: <1522261588-17147-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1522261588-17147-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-Remove else after return and match alignment with open parenthesis.
-Issue found with checkpatch.
+On Wed, Mar 28, 2018 at 06:26:28PM +0000, Nishka Dasgupta wrote:
+> Remove else after return. Issue found with checkpatch.
+> 
+> Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+> ---
+> Changes in v5:
+>  - Add blank line after variable declarations.
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
----
-Changes in v6:
- - Remove else after return
- - Move variable declarations to top of code block
- - Adjust alignments within the if-block
+No you did not :(
 
- drivers/staging/vt6655/rxtx.c | 41 ++++++++++++++++++++---------------------
- 1 file changed, 20 insertions(+), 21 deletions(-)
+Please relax, stop, take a day off, and come back to this later.  There
+is no rush here to get it right and you are just causing mistakes by
+trying to push it out quickly.  It only causes mistakes, as seen here.
 
-diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
-index 9c4a532..78b814e 100644
---- a/drivers/staging/vt6655/rxtx.c
-+++ b/drivers/staging/vt6655/rxtx.c
-@@ -552,6 +552,11 @@ s_uFillDataHead(
- 			return buf->duration_a;
- 		} /* if (byFBOption == AUTO_FB_NONE) */
- 	} else if (byPktType == PK_TYPE_11A) {
-+		struct vnt_tx_datahead_ab *buf = pTxDataHead;
-+		/*Get SignalField, ServiceField & Length */
-+		vnt_get_phy_field(pDevice, cbFrameLength, wCurrentRate,
-+				  byPktType, &buf->ab);
-+
- 		if (byFBOption != AUTO_FB_NONE) {
- 			/* Auto Fallback */
- 			struct vnt_tx_datahead_a_fb *buf = pTxDataHead;
-@@ -565,31 +570,25 @@ s_uFillDataHead(
- 			buf->duration_f0 = cpu_to_le16((u16)s_uGetDataDuration(pDevice, DATADUR_A_F0, cbFrameLength, byPktType,
- 									       wCurrentRate, bNeedAck, uFragIdx, cbLastFragmentSize, uMACfragNum, byFBOption));
- 			buf->duration_f1 = cpu_to_le16((u16)s_uGetDataDuration(pDevice, DATADUR_A_F1, cbFrameLength, byPktType,
--										wCurrentRate, bNeedAck, uFragIdx, cbLastFragmentSize, uMACfragNum, byFBOption));
-+									       wCurrentRate, bNeedAck, uFragIdx, cbLastFragmentSize, uMACfragNum, byFBOption));
- 			buf->time_stamp_off = vnt_time_stamp_off(pDevice, wCurrentRate);
- 			return buf->duration;
--		} else {
--			struct vnt_tx_datahead_ab *buf = pTxDataHead;
--			/* Get SignalField, ServiceField & Length */
--			vnt_get_phy_field(pDevice, cbFrameLength, wCurrentRate,
--					  byPktType, &buf->ab);
--
--			if (is_pspoll) {
--				__le16 dur = cpu_to_le16(pDevice->current_aid | BIT(14) | BIT(15));
--
--				buf->duration = dur;
--			} else {
--				/* Get Duration and TimeStampOff */
--				buf->duration =
--					cpu_to_le16((u16)s_uGetDataDuration(pDevice, DATADUR_A, cbFrameLength, byPktType,
--									    wCurrentRate, bNeedAck, uFragIdx,
--									    cbLastFragmentSize, uMACfragNum,
--									    byFBOption));
--			}
-+		}
-+		if (is_pspoll) {
-+			__le16 dur = cpu_to_le16(pDevice->current_aid | BIT(14) | BIT(15));
- 
--			buf->time_stamp_off = vnt_time_stamp_off(pDevice, wCurrentRate);
--			return buf->duration;
-+			buf->duration = dur;
-+		} else {
-+			/* Get Duration and TimeStampOff */
-+			buf->duration =
-+				cpu_to_le16((u16)s_uGetDataDuration(pDevice, DATADUR_A, cbFrameLength, byPktType,
-+								    wCurrentRate, bNeedAck, uFragIdx,
-+								    cbLastFragmentSize, uMACfragNum,
-+								    byFBOption));
- 		}
-+
-+		buf->time_stamp_off = vnt_time_stamp_off(pDevice, wCurrentRate);
-+		return buf->duration;
- 	} else {
- 		struct vnt_tx_datahead_ab *buf = pTxDataHead;
- 		/* Get SignalField, ServiceField & Length */
--- 
-2.7.4
+thanks,
 
+greg k-h
 
