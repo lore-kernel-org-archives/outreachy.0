@@ -1,76 +1,76 @@
 X-GM-THRID: 6536210357179908096
-X-Received: by 10.31.208.195 with SMTP id h186mr4507373vkg.52.1522692359756;
-        Mon, 02 Apr 2018 11:05:59 -0700 (PDT)
+X-Received: by 10.101.81.135 with SMTP id h7mr928316pgq.126.1522691419350;
+        Mon, 02 Apr 2018 10:50:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.31.208.1 with SMTP id h1ls8492752vkg.19.gmail; Mon, 02 Apr
- 2018 11:05:58 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4/ZPA1rwdyP4CuvY9NAt4tTLe3yIiHFNjgvDr9lM/vzSXr9LUV54k1JHG0VeeYk49pyr5Fp
-X-Received: by 10.31.95.8 with SMTP id t8mr4134898vkb.94.1522692358771;
-        Mon, 02 Apr 2018 11:05:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1522692358; cv=none;
+Received: by 2002:a17:902:8b82:: with SMTP id ay2-v6ls6945388plb.11.gmail;
+ Mon, 02 Apr 2018 10:50:17 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4+TLWRMUsX92WSRbcDms9a1bthoTILwK6GVMnzV6IYxLyGVFRTsTOFuTLlyZYmXxqrXb+q8
+X-Received: by 2002:a17:902:8ec9:: with SMTP id x9-v6mr3273101plo.39.1522691417746;
+        Mon, 02 Apr 2018 10:50:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1522691417; cv=none;
         d=google.com; s=arc-20160816;
-        b=JC4TvjZcqPxyT1bO/rzitUebQjj3LRfkZk2UgyKKzGHGyU0RfQjs04F4S9wuUjWDlC
-         8KQKKj406kHwZCUaYcuoTM2o/MBhqrnLlccrGq/JqUCWBi33XPiVSXFqZOPTtsKP5SQ3
-         iqJafDiRJyosYX1wn0rAb7rf8ooDKZM4yd9eRHwMs/+X6TvL1X4S8HMVaiLd5hSFBmeA
-         JHCgdmylbOTTi1hUG/PxOnSVRf3S3z0nr5Y+9r0BR+2zfl77FMaKmh8SwYb9JjSYFYo/
-         EydTC05vIGUw4Lrf+Wqg7rw/f2fCtZEDdo5MK2bK5KqVglY0/kyHLHge5H2yoWviVUu2
-         b6+Q==
+        b=xHY6f1ZD0rRvQ8aC0KdKWJkWDXyA7VvFgNrYYPWeLDfYUCKJVxCWrjfjTo+cGY4XXE
+         /ZpSqINNRw0yIYk4Yy8xIXo02TvDqPwif1ILf2maNfDjSch0R0n2S4TNRy4B/MC1Bdl3
+         aum1OXjoaSRpUx+jXcFqRL9H5+vnV4bYcrTT+x8jALpw6pcZ8pqExND8FfMlujMwI+9L
+         oILGR2V/zlAjoVZdHaUe2mDvQM2lhzAiaNjd95W6ePjgnGc1icPsAbfGPNkwqpXkmG/G
+         msdtxU0E4XX+ps2a01N7+X7HpsdpDOXSU7rhF2mPxFXR0J4x5THBBLgr3225z5mXOTei
+         n6YA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:references:in-reply-to
          :mime-version:dkim-signature:arc-authentication-results;
-        bh=GGg/cM6IDtchmbkFpogzmqDTnqsI/pLaLmRaTPKuyNg=;
-        b=dR0Oyc9lwoeUVeT3d+htCVfSuCktMGIid9Wsn/Bdicp2hZGupaA1lnyJ0A4ezUOiX7
-         C206YJ5mhH3bYkCnl+W8q0+FOctWIjY2xECkD/DwvJvdoQl/FBntheA9v/+Q7pUa7e8U
-         nBimKb8FR/qjnCQTcTLFPgAQKXwXsc7N3VEA4jFaNmzI4mxiZK+mXFlvDslE+J7cNfOe
-         p1aYVCTSmPSttcFcT9Jts0q2SVl1Im5RAhgha/FbjreUqivCbWsK18WL52O/dYEiL3GM
-         gVxFp+wDo/aLgBaQ7qpdkb8Xts2OZ0ytk+lsFJV81V1YKmtx3sETqVBwVfVCy77u8jFZ
-         280A==
+        bh=XwjNGWdlzkQkCCxHeOzAdvjdsL+dcMH5Rzly+WD055I=;
+        b=grdiTD95/V0J1F3KITkD7XqsFzyMIkZlmnmDrKrDlOAwgh4cTgbFQJ5gSPCB/rXXZw
+         KvjBSuxTmyfo20MnHuASiKwueDl9vkopAwEzFs9rkEsIVC1VjCYEAzgwoIKWU03pSgcV
+         vS4YBNa2nZh8qJ8KIp96376bHB2LG11z48nhEXlL1RVsEMqXMYPdxsYKcGxWIzCg3QRo
+         dnP0qGcfFohbqRiFQkJJq3+CoOR9iOdJ1xRxe0y8hFJW5AqquFDQgEZHYDgpBKeY7c/Z
+         JpUQHXz36jP+aLWq7qNsZbshvKH/STpeEyDNI+G78ewrFesDdncj+Gd1+0BMXqCxthYw
+         nmfQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=IdedzG3x;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:4001:c0b::242 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=CkdPJ3E3;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:4001:c06::234 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
 Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from mail-it0-x242.google.com (mail-it0-x242.google.com. [2607:f8b0:4001:c0b::242])
-        by gmr-mx.google.com with ESMTPS id g138si66164vke.3.2018.04.02.11.05.58
+Received: from mail-io0-x234.google.com (mail-io0-x234.google.com. [2607:f8b0:4001:c06::234])
+        by gmr-mx.google.com with ESMTPS id 3-v6si79165plr.1.2018.04.02.10.50.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 02 Apr 2018 11:05:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:4001:c0b::242 as permitted sender) client-ip=2607:f8b0:4001:c0b::242;
+        Mon, 02 Apr 2018 10:50:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:4001:c06::234 as permitted sender) client-ip=2607:f8b0:4001:c06::234;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=IdedzG3x;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:4001:c0b::242 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Received: by mail-it0-x242.google.com with SMTP id 19-v6so19337009itw.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 02 Apr 2018 11:05:58 -0700 (PDT)
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=CkdPJ3E3;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:4001:c06::234 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Received: by mail-io0-x234.google.com with SMTP id o4so18795383iod.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 02 Apr 2018 10:50:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=ashoka.edu.in; s=google;
         h=mime-version:in-reply-to:references:from:date:message-id:subject:to
          :cc;
-        bh=GGg/cM6IDtchmbkFpogzmqDTnqsI/pLaLmRaTPKuyNg=;
-        b=IdedzG3xseBTykGKpOJVrRMy8FQOnYO6wCx25bjNDJxmEVQQuz8UFMImO+PscgR+eH
-         TvbOh6dgFZTQYFcLBZTVyKMyKShmdKSGdTFbFfIslO1kCUKq1yT7mGnW5Z2pXqukJlVp
-         AN8rVGKSNAV3Hqv4Vxo+ALU2iPDEzj8NiHK20=
+        bh=XwjNGWdlzkQkCCxHeOzAdvjdsL+dcMH5Rzly+WD055I=;
+        b=CkdPJ3E3BuQA3CwTySTfYFsi96DmpgPVWj+S9o+DvAMQKRRao7coJ6lvolqh/mRg/H
+         klzppGeO7rIJcIC/UxUY9hX06Vi1Y/dVn4Uwq5BPUWhXPDIzMOmbirGfrwXl955IcgcT
+         BWVouQr5MoTYZQGw3L/IiClsipomm4jrgeOh0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:in-reply-to:references:from:date
          :message-id:subject:to:cc;
-        bh=GGg/cM6IDtchmbkFpogzmqDTnqsI/pLaLmRaTPKuyNg=;
-        b=fGel4feSZb/AYbqRAWfB+EAjApnx7JxNPNIIjbomhfY88LHM1LgGmeWpjHEBt17r9/
-         NSPPgKOtUW+8z1qVoPoBiqCXK9wx33ACEdExe8gcziGgl0O8rQqaEcTm6pfTd1ngLmdS
-         ceelIsI8wLf5LoegALw63nCKFe2GXFgb+kD78Nl/S299zocUbSBDOPzCgNKFexYNAL27
-         CuVVlWyIYsUrJ8Indcx87PELbqw6Dqckvp0W1QsDSPQfnF+IoNEMfQbmSYQsmklWo8Hg
-         ee6gZerIJXDuCnruSt5qXpvSZb4CugWEE8c1jjPlAdQioMbL5D9+2xnrdC23V531jL1n
-         JyMQ==
-X-Gm-Message-State: ALQs6tClRAKmXhPQajoUt1GZ1x3NTDRO/igg/5dZlp0eoCBe0J8XaXiI
-	1qVJj/awIuF46aBN6Icz65NhQliHz+pXK3TKtrt57A==
-X-Received: by 2002:a24:da45:: with SMTP id z66-v6mr1798549itg.44.1522692358020;
- Mon, 02 Apr 2018 11:05:58 -0700 (PDT)
+        bh=XwjNGWdlzkQkCCxHeOzAdvjdsL+dcMH5Rzly+WD055I=;
+        b=V576K8tus42dVnX3FzpwHayXeE6zPPQidV4K8GsY3XncGekF3bVYQ5GhzJKa/CgYJf
+         nQcDf0J7WVZu45dA65v7ooMCXSshNp0BayBpYEHSmBge602qtwyhsYW/3RT0A0C5AiUM
+         AOov87Cg57u+Ff/Aw4PL8GR08q9CwluDGrCbGtFiSFms+UHOFyo3jpqpSpsY4Z9HPgvy
+         MdoS/HU/f9ewc0nrel45Pb1Y/Kgz+gmusjaMHGrOXPPsBnQ6+UekdZHQtUPSdX1tOMpc
+         XC1CnGUIvs/hZLXl4TkWSvfM4eRcVVYTvsyCeidzBAWIXOLAxBf36sYe5pTAOpn6TAIN
+         GP9w==
+X-Gm-Message-State: ALQs6tCOh6K26QhALpUQ2TqZIvJtcWo348nd0ziIKxfxJH9ExHjws9tT
+	HQFQ2qVaZMXcR7G6yW9/gGfEnJ86GDXiMPZSuhcBMg==
+X-Received: by 10.107.95.23 with SMTP id t23mr10086482iob.242.1522691417227;
+ Mon, 02 Apr 2018 10:50:17 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.79.204.130 with HTTP; Mon, 2 Apr 2018 11:05:57 -0700 (PDT)
+Received: by 10.79.204.130 with HTTP; Mon, 2 Apr 2018 10:50:16 -0700 (PDT)
 In-Reply-To: <alpine.DEB.2.20.1804021119160.3198@hadrien>
 References: <1522659771-799-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
  <alpine.DEB.2.20.1804021119160.3198@hadrien>
 From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-Date: Mon, 2 Apr 2018 23:35:57 +0530
-Message-ID: <CAC4++KCUXi2Lsum_834SQvxq6JOrZHC-9XwNYuaaF9Xs87bQUw@mail.gmail.com>
+Date: Mon, 2 Apr 2018 23:20:16 +0530
+Message-ID: <CAC4++KBNTsP=WaDJeNJ1yGJOjWFwP_DQSMKDDmfKmTtXsgyNbA@mail.gmail.com>
 Subject: Re: [Outreachy kernel] [PATCH v6] staging: vt6655: Remove else after return
 To: Julia Lawall <julia.lawall@lip6.fr>
 Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, forest@alittletooquiet.net, 
@@ -94,17 +94,40 @@ On Mon, Apr 2, 2018 at 2:58 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
 > it look more like Linux kernel code.  You could make a patch to drop all
 > the s_u and s_v's in front of function names.  In this function, maybe it
 > would be useful to make a local variable u16 datadur and then assign this
-> variable to the result of calling GetDataDuration.  There could then be eg
+> variable to the result of calling GetDataDuration.
+
+Wouldn't a new variable make it harder to keep track of the code?
+
+> There could then be eg
 > buf->duration_f0 = cpu_to_le16(datadur); all over the place.  This would
 > make it possible to move the GetDataDuration calls over to the left.  Then
 > some newline could be added to their arguments to stay within 80
-> characters.  The local variable could also have the letters indicating
-> their types removed from the fronts of their names.  Overall, it's
+> characters.
+
+I'm sorry, I'm not quite sure I follow. What would moving the
+GetDataDuration calls to the left involve?
+
+> The local variable could also have the letters indicating
+> their types removed from the fronts of their names.
+
+I will work on that.
+
+To clarify, should all these changes be in the same patch or a patchset?
+
+Also, what about the alignment I matched? There were some other cases
+like that (an extra space or not enough spaces). Should I put all
+those in the same patch or a patchset?
+
+> Overall, it's
 > unfortunate that there are so many function calls with huge argument
 > lists, where most of the arguments are the same.  This seems quite error
 > prone as well as being verbose.  I don't know if it is possible to solve
 > this problem, though.
 >
+
+Thanking you,
+Nishka Dasgupta
+
 >> Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
 >> ---
 >> Changes in v6:
@@ -130,26 +153,12 @@ On Mon, Apr 2, 2018 at 2:58 PM, Julia Lawall <julia.lawall@lip6.fr> wrote:
 >> +
 >
 > I'm not sure that this is correct, because the call to vnt_get_phy_field
-> has been moved out of a conditional.
-
-But if the if condition is true then vnt_get_phy_field gets called
-again and if not then the value stays at it is, so does that affect
-much?
-
-> Also you now have a declared
+> has been moved out of a conditional.  Also you now have a declared
 > variable buf that is shadowed by another variable buf, of another type, in
 > a nested if.  That could be confusing.
-
-Should I change the name of the outer buf? The two variables don't
-exactly conflict with each other, since the if ends with a return, but
-I agree that it is confusing.
-
 >
 > julia
-
-Thanking you,
-Nishka Dasgupta
-
+>
 >>               if (byFBOption != AUTO_FB_NONE) {
 >>                       /* Auto Fallback */
 >>                       struct vnt_tx_datahead_a_fb *buf = pTxDataHead;
