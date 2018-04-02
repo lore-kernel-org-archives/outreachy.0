@@ -1,46 +1,46 @@
 X-GM-THRID: 6536210357179908096
-X-Received: by 2002:a19:4806:: with SMTP id v6-v6mr414372lfa.37.1522694636692;
-        Mon, 02 Apr 2018 11:43:56 -0700 (PDT)
+X-Received: by 2002:a19:2a8b:: with SMTP id q11-v6mr407120lfq.15.1522694488001;
+        Mon, 02 Apr 2018 11:41:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.84.83 with SMTP id y19ls1589320ljd.12.gmail; Mon, 02 Apr
- 2018 11:43:55 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4/JSIrQy5SgYf4ZgBiHDER0tcKHZ7EOZtEkXMPIc75UjMmqm/tb544+LHY3UPonC0TnkfnL
-X-Received: by 10.46.153.73 with SMTP id r9mr391498ljj.6.1522694635940;
-        Mon, 02 Apr 2018 11:43:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1522694635; cv=none;
+Received: by 10.46.42.3 with SMTP id q3ls1591268ljq.15.gmail; Mon, 02 Apr 2018
+ 11:41:26 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx48yUrWJBFkvqFOPjIWc9gyxz3RWlOTCDD2aZ0rAIUhkW7WJfKRRUWhkLM0uOuXhQIjocxDJ
+X-Received: by 10.46.27.93 with SMTP id b90mr364521ljb.43.1522694486853;
+        Mon, 02 Apr 2018 11:41:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1522694486; cv=none;
         d=google.com; s=arc-20160816;
-        b=wVaRi8156my1WrNu6TOMx2XfAUs+bIyvPhqCUkon1yK8qSoKJHsfHY6bh/2HBhLSJt
-         91PHy6JfxRIQ5UFXs/eICZw3W6r6ZTRW2rsnyo33JSp6ccnfj1DgwOUkqJ4g9jASJ2O1
-         LDQiz3i4IVGZNi9+8wQlS4F65N9zD+R/qtbucPjGeHea15JD5F+fiLT1MqeuHZyNVMFs
-         QnonLqQhLldEU2AoNqJMNprWdnKzRWiuKRwP1kOoInUvMNd5inWPg9hlqbsu7btWdSpR
-         hpWIhMXJtpCcyzbLXVYv3cGKl5JpCCMW1m+5VQrdLwFsGur1xFl4EqNenQwi/xp8EoUB
-         hSGg==
+        b=KCScCwqp0GsZroV6pzUelOc7lnU2+6cfNInLOs7MMYM/pMWdnmp3PcK41L44QO35CA
+         WcDIn/yu31tc6K+O9f1hf0Zt2SRqAFWUlFvwjP4qlK/Khe+XMF9dlTi82Kbx4Y+wQoWq
+         jjVnEd9W9dx1K0hfe7Syz1NsBhDJ0sYjNlUyFQT/12AcRG67Equ3xkXZSxZF8v1nHCDO
+         ShOUpm8MvMcuk9LBf0FPt3jWuiwAVlySbG45BHREJlEvL9yS0rU6KQrwWSRV4ZrBMfen
+         iqRCXxW3+iKTDdKCZRg8WcGHZL7f6YqRhGle0xo6l3XXDqkrKux3q8oIiAXDZSWknUzV
+         6q6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:user-agent:references:message-id:in-reply-to:subject
          :cc:to:from:date:arc-authentication-results;
-        bh=Md6HpiB41A8T4k2Cs6sF1ZX/HZRsHb13dYr24m+kqYg=;
-        b=HdLkX0Td+5vphufgMFUZiucwRdH4sHteMFuS7SoPxsAfgwSLIh/qGu+CSPj5rP0TIW
-         EuW5dXAraWEMxQEXN67vf4Yb6L+zjqZbZkXi9dKtGu3TwM3MT1e1fxHvUs0KVK+RllPO
-         ctbYvniYoeRW0/C4rwWPLQgoXv9Aqe6bY9W8Yg8U/I237tAOelvtUyShRPW6LM3Ol3zb
-         mgqi04EdCadb1uP4dq0frb9FmDc4PzsgTzwl47SGUpJwWevJ3puBIwDfgSbxYNKr7/Za
-         OEejGgpYzWCNYO6RGeQCdKLXPfU3tKFKEvRFlKwt48BLIuGlcwEf8XYqeoI7pW68eO8Z
-         ZYTA==
+        bh=esZ0JqAc2CPYw9mHEPKkdiFDWuPJK9QEZSdhccpAha4=;
+        b=0R8kEWCsByT3oboHmR/UPm+/VFjMcoJOgfcaB3UeDL+qw9QId5qHU8gpTKSs3VsuLd
+         J4RcLscVUS5D4BhjIJopT80wop8D2eucdQnBqMVB6SBMkneu4V5dTegGLYcrzUqaHCNO
+         lXhq+XQiitdkjxsNaJNTmPQU5jOwGq8fbrT7thYf8K/P+RzX/cgQ+OqOeOb2kgMpw6Ua
+         l1bkikwf8J9z9Fukr0ZcWu4hyIFySSdHn8miatqyKy4Zx+VmSnUWkun7ZOprg8S80NIq
+         Ohl0FhquUR2HguWAsW/77qbaa+FRk1Zj+rPhEgoFkOmSUtu5wODWiIGmA4GNiAZLCpi7
+         Ea9w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 Return-Path: <julia.lawall@lip6.fr>
 Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id i24-v6si32646lfc.4.2018.04.02.11.43.55
+        by gmr-mx.google.com with ESMTPS id i24-v6si32481lfc.4.2018.04.02.11.41.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 02 Apr 2018 11:43:55 -0700 (PDT)
+        Mon, 02 Apr 2018 11:41:26 -0700 (PDT)
 Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
        spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.48,396,1517871600"; 
-   d="scan'208";a="320978147"
+   d="scan'208";a="320978009"
 Received: from ip-146.net-89-2-7.rev.numericable.fr (HELO [192.168.0.15]) ([89.2.7.146])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 02 Apr 2018 20:43:55 +0200
-Date: Mon, 2 Apr 2018 20:43:55 +0200 (CEST)
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 02 Apr 2018 20:41:25 +0200
+Date: Mon, 2 Apr 2018 20:41:25 +0200 (CEST)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
@@ -48,9 +48,9 @@ cc: outreachy-kernel <outreachy-kernel@googlegroups.com>,
     forest@alittletooquiet.net, Greg KH <gregkh@linuxfoundation.org>
 Subject: Re: [Outreachy kernel] [PATCH v6] staging: vt6655: Remove else after
  return
-In-Reply-To: <CAC4++KCUXi2Lsum_834SQvxq6JOrZHC-9XwNYuaaF9Xs87bQUw@mail.gmail.com>
-Message-ID: <alpine.DEB.2.20.1804022042040.2383@hadrien>
-References: <1522659771-799-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in> <alpine.DEB.2.20.1804021119160.3198@hadrien> <CAC4++KCUXi2Lsum_834SQvxq6JOrZHC-9XwNYuaaF9Xs87bQUw@mail.gmail.com>
+In-Reply-To: <CAC4++KBNTsP=WaDJeNJ1yGJOjWFwP_DQSMKDDmfKmTtXsgyNbA@mail.gmail.com>
+Message-ID: <alpine.DEB.2.20.1804022037410.2383@hadrien>
+References: <1522659771-799-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in> <alpine.DEB.2.20.1804021119160.3198@hadrien> <CAC4++KBNTsP=WaDJeNJ1yGJOjWFwP_DQSMKDDmfKmTtXsgyNbA@mail.gmail.com>
 User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
@@ -76,17 +76,61 @@ On Mon, 2 Apr 2018, Nishka Dasgupta wrote:
 > > it look more like Linux kernel code.  You could make a patch to drop all
 > > the s_u and s_v's in front of function names.  In this function, maybe it
 > > would be useful to make a local variable u16 datadur and then assign this
-> > variable to the result of calling GetDataDuration.  There could then be eg
+> > variable to the result of calling GetDataDuration.
+>
+> Wouldn't a new variable make it harder to keep track of the code?
+
+I think it could be OK.  You would initialize the variable and then use it
+immediately.
+
+>
+> > There could then be eg
 > > buf->duration_f0 = cpu_to_le16(datadur); all over the place.  This would
 > > make it possible to move the GetDataDuration calls over to the left.  Then
 > > some newline could be added to their arguments to stay within 80
-> > characters.  The local variable could also have the letters indicating
-> > their types removed from the fronts of their names.  Overall, it's
+> > characters.
+>
+> I'm sorry, I'm not quite sure I follow. What would moving the
+> GetDataDuration calls to the left involve?
+
+I just meant that if you have
+
+datadur = GetDataDuration(...)
+
+then the call to GetDataDuration would be somewhat further to the left
+than it is currently.  That is, there would be more space for the
+arguments before reachign column 80.
+
+> > The local variable could also have the letters indicating
+> > their types removed from the fronts of their names.
+>
+> I will work on that.
+>
+> To clarify, should all these changes be in the same patch or a patchset?
+
+A set.  But I would suggest not to do too much at once.  Do a few things,
+and then see if they are ok before moving on.  It will make a lot of
+changes to the file.
+
+> Also, what about the alignment I matched? There were some other cases
+> like that (an extra space or not enough spaces). Should I put all
+> those in the same patch or a patchset?
+
+I don't remember the details, but if they are all whitespace changes, they
+could be in a single patch.  See what seems best.
+
+julia
+
+> > Overall, it's
 > > unfortunate that there are so many function calls with huge argument
 > > lists, where most of the arguments are the same.  This seems quite error
 > > prone as well as being verbose.  I don't know if it is possible to solve
 > > this problem, though.
 > >
+>
+> Thanking you,
+> Nishka Dasgupta
+>
 > >> Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
 > >> ---
 > >> Changes in v6:
@@ -112,34 +156,12 @@ On Mon, 2 Apr 2018, Nishka Dasgupta wrote:
 > >> +
 > >
 > > I'm not sure that this is correct, because the call to vnt_get_phy_field
-> > has been moved out of a conditional.
->
-> But if the if condition is true then vnt_get_phy_field gets called
-> again and if not then the value stays at it is, so does that affect
-> much?
-
-It depends on what vnt_get_phy_field does.  Maybe it is not valid to call
-it at this point if the if test is true.
-
-> > Also you now have a declared
+> > has been moved out of a conditional.  Also you now have a declared
 > > variable buf that is shadowed by another variable buf, of another type, in
 > > a nested if.  That could be confusing.
->
-> Should I change the name of the outer buf? The two variables don't
-> exactly conflict with each other, since the if ends with a return, but
-> I agree that it is confusing.
-
-I think you should just drop the idea of removing the else.  Doing so
-makes the code somehow unbalanced.
-
-julia
-
 > >
 > > julia
->
-> Thanking you,
-> Nishka Dasgupta
->
+> >
 > >>               if (byFBOption != AUTO_FB_NONE) {
 > >>                       /* Auto Fallback */
 > >>                       struct vnt_tx_datahead_a_fb *buf = pTxDataHead;
