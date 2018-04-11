@@ -1,102 +1,88 @@
-X-GM-THRID: 6617471709084647424
-X-Received: by 2002:a9d:44ac:: with SMTP id v44mr9402749ote.42.1540750197656;
-        Sun, 28 Oct 2018 11:09:57 -0700 (PDT)
+X-GM-THRID: 6535333398324445184
+X-Received: by 2002:a19:cd90:: with SMTP id d138-v6mr253766lfg.25.1523436065123;
+        Wed, 11 Apr 2018 01:41:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:542:: with SMTP id 60ls2490442otw.14.gmail; Sun, 28 Oct
- 2018 11:09:56 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5cmhs5H1Ls5GdSnWt8X3mIs7mjcDlHuf1zQpGZIr3BZNtw3Gt7/pPeNLffhWhRfgBiNR5YB
-X-Received: by 2002:a9d:523:: with SMTP id 32mr9023470otw.3.1540750196900;
-        Sun, 28 Oct 2018 11:09:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540750196; cv=none;
+Received: by 10.46.84.83 with SMTP id y19ls102275ljd.12.gmail; Wed, 11 Apr
+ 2018 01:41:03 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx48nSh17yEgoHEkLFix/OO6EVzm98VxniYojxQ4OXyAGSQYC1/UAxOBpViFbdGWoZkTPVSSY
+X-Received: by 10.46.110.19 with SMTP id j19mr213359ljc.40.1523436063663;
+        Wed, 11 Apr 2018 01:41:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523436063; cv=none;
         d=google.com; s=arc-20160816;
-        b=xeWbdLInHSPeeWACqlVIrtdcznxFVmWJmoXU0sQJdoXDMGJW94J1ayY2gkQLhagUAU
-         xfgvGa4wlvd486o9pX7NRTvqqxJtYe2vPvzGEUbIJlOO3ryxuD1ELe9gI8vNLolfZFG8
-         kDqkMX/STSBt/zWHRF6BFPhT1eNKVNqr1yEsSCewd76NInFraSYBdUIiu4BUHdCVR3lW
-         p1xn3H6MYcqNU88CXrmFHr94hJswF63kJbzoaTrPGLUUpqwkLQJ4o4gC40ACCDH2qBbB
-         s1lthkAZJyROA9uX4F/mWTwyCk8+mDCyYs5LcWEeZw1arrHvHBPbbWNSaI22wS/xbQga
-         fhuA==
+        b=0ZiJj/3swwMctRR3G1qkh1jJIJ2lMIjiawP5Kvwzwq2ETGK0CyZOTNyvO1TcOIWDFi
+         0Bq5W7is1x3Nw7ksxGb+5hQUtCjQE2JOsFMDsbTKHA6PDVt7rdQBM1Ox8Y/zqPs/3xPi
+         feaCrqVr433Fn3sn0M0r79ccE7i7vZlg8xg6tIaem2Ye3navXQQrSMUnH+cw+YXgHr1T
+         F9hlDt2CBGOcnq7aE9qxsHbGOVDjLyb8HD7DhCVRKC5ospAQergraMK1WUzEA+3vrTSP
+         vjx52Ok7jHvEWAN0guvgXEYq8h0r85UMWE8Sg01xdhIr3A++8p6sbRJ36SwQUwzUWpZw
+         w8Pg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=Q83tiDA+BP7GfktsBlvKATVv5qIeUR212n2C2wZu53M=;
-        b=ftX9+WJxHQGsqc3KSI+6jxVpemXglMJZzlnOZzQQm17FjD7/t07Hi8EtsodZ+k7oG2
-         4h3DF5zGvejGoMLVj4XP7C+6WTEorJrer8+z/+OHaaFeho+zNawBWF9UZo/E/OBVO8Ra
-         UktHJwvaUnkJIbolI5eJShUe0Pvlkuz6Uams+MBgxWTq0atCrHYOzIciJNdrnj4r9ZFb
-         6ezS3PN3QUCnS7RLvDZi/DTbfX/nU0zCHQm6bWvrRURcq7xrNqHr7qW+gPZ+Ld42Qw3S
-         l9xin4qVPPBy6uX26hUyCN+p63szE7dZOk4tHBTVDdIOCx2W6oTfdUKS/TK0O3VqIFtV
-         azoA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=rviETenQqCfjIb+IkOMDrmbUmxB9y1HsQEV5h1B/HHw=;
+        b=LWrjpZ+jgULbI9cL/0FU67/Y9YZMglKN5Dd7uE0M8FnlQ9yjysYZIDUIpISRCXzcsw
+         63agjlvXxAIjbBfvwCAmhDcIoTVyO8pQoaVJ6OyIoxjkeRcHSXPiXVDuvgkD4Tu78tRT
+         pCFKkeKHwWr2oSO0Xi0oIT62PbgSSwWROSfaqAuII4QqTb5Z8CNnFHc7j6Vt8+jEeEzv
+         RVjvQtt0TODABWo+8QsqJLd/SjP6zX2+/2PIISyGEWU9gomDBAxq29fgjDKP+6vkyVB+
+         X2u7H54Ferdcs3hm8LRQWo+S1ZWCm663EW2rWdfgVC+3NEXFmoZ8QJ2byXOFff8TzBUW
+         xvsA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BLWgwVq4;
-       spf=pass (google.com: domain of kimbrownkd@gmail.com designates 2607:f8b0:4864:20::12f as permitted sender) smtp.mailfrom=kimbrownkd@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <kimbrownkd@gmail.com>
-Received: from mail-it1-x12f.google.com (mail-it1-x12f.google.com. [2607:f8b0:4864:20::12f])
-        by gmr-mx.google.com with ESMTPS id a84-v6si1035943oii.1.2018.10.28.11.09.56
+       spf=neutral (google.com: 193.147.175.20 is neither permitted nor denied by best guess record for domain of pablo@netfilter.org) smtp.mailfrom=pablo@netfilter.org
+Return-Path: <pablo@netfilter.org>
+Received: from mail.us.es (mail.us.es. [193.147.175.20])
+        by gmr-mx.google.com with ESMTPS id k25si21295ljk.2.2018.04.11.01.41.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Oct 2018 11:09:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kimbrownkd@gmail.com designates 2607:f8b0:4864:20::12f as permitted sender) client-ip=2607:f8b0:4864:20::12f;
+        Wed, 11 Apr 2018 01:41:03 -0700 (PDT)
+Received-SPF: neutral (google.com: 193.147.175.20 is neither permitted nor denied by best guess record for domain of pablo@netfilter.org) client-ip=193.147.175.20;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BLWgwVq4;
-       spf=pass (google.com: domain of kimbrownkd@gmail.com designates 2607:f8b0:4864:20::12f as permitted sender) smtp.mailfrom=kimbrownkd@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-it1-x12f.google.com with SMTP id y123-v6so747260itc.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Oct 2018 11:09:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=Q83tiDA+BP7GfktsBlvKATVv5qIeUR212n2C2wZu53M=;
-        b=BLWgwVq4yuDduFiQDjpVAksyAEABNs3yo4lfP6wPqSfqttsGjwRFyO3pw6RBme8y1I
-         mE4Rmuh+XgRPxxs69TPouHK4qef1AWD3QzzF4ZMYNo1k8RUcNZOLVLARLwk/sswug9/I
-         NV90+J0Jb3cJxyante6OzYaNKn0acgb2jkMG1zrJhOR0E8fN3acObmhwd2QlygGx4ywC
-         /SgQk6kHKv8D+B8MIoFX80EwCuAHy9XF62kuo38YIeBB+7MzDY66HA7kBKApb/tBparK
-         d2Bey8ixvg8ytyi1rL5R0oRvYQR3OeK4Ajv+8fHoohtQwF3czBvKlxH6MtgmnZZosQ2T
-         BcCg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=Q83tiDA+BP7GfktsBlvKATVv5qIeUR212n2C2wZu53M=;
-        b=Z4UO8lsanW2mA0DBNlo53MFIR6jPXlBVfG0wBedDsxDcV9O8ykI3ikQDjQJaV7Cgr6
-         2+Tgk7YkK9WRe3V1Uhz1ZVifbxLIrz5ZNbCx7RxlOkeVLB3CoOpez0vj/Kx10P+g7cno
-         diQWcv6nhDQOGzgaQJZXiv7fYroS+EUe0P/Qs+mOT5iVFMWQDGooyEybd1xyXS8aWRm1
-         C867dY0IVwVVthS/J6Tznscbn0iQ00b4m8R14EQ0Zgv0wQth4IPANOU9ShJVS4gta0Q2
-         q4NRr4YRgcSHjsEc8kS4lL5i2G2hr1zg0v6OImSbOE8667gRfLL/AQMbc2FL/xK6UepU
-         3+vA==
-X-Gm-Message-State: AGRZ1gKhrXALNNjsYtgSVB+VpmnOCd3APsEwIGfMIk4KC89s7TmGsb0+
-	Pz0rLx+vF14iuD17X9wOkdjPOXxlU+Q=
-X-Received: by 2002:a24:d204:: with SMTP id z4-v6mr6955318itf.11.1540750196448;
-        Sun, 28 Oct 2018 11:09:56 -0700 (PDT)
-Return-Path: <kimbrownkd@gmail.com>
-Received: from ubu-Virtual-Machine (68-188-226-58.dhcp.bycy.mi.charter.com. [68.188.226.58])
-        by smtp.gmail.com with ESMTPSA id w124-v6sm5902818ita.0.2018.10.28.11.09.55
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 28 Oct 2018 11:09:55 -0700 (PDT)
-Date: Sun, 28 Oct 2018 14:09:53 -0400
-From: Kimberly Brown <kimbrownkd@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	Arnaud Patard <arnaud.patard@rtp-net.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 0/2] staging: xgifb: vb_setmode: fix multiple line
- dereference and indentations
-Message-ID: <cover.1540749179.git.kimbrownkd@gmail.com>
+       spf=neutral (google.com: 193.147.175.20 is neither permitted nor denied by best guess record for domain of pablo@netfilter.org) smtp.mailfrom=pablo@netfilter.org
+Received: from antivirus1-rhel7.int (unknown [192.168.2.11])
+	by mail.us.es (Postfix) with ESMTP id 3AFAB1C41C9
+	for <outreachy-kernel@googlegroups.com>; Wed, 11 Apr 2018 10:40:34 +0200 (CEST)
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id 2A7B0BAC4F
+	for <outreachy-kernel@googlegroups.com>; Wed, 11 Apr 2018 10:40:34 +0200 (CEST)
+Received: by antivirus1-rhel7.int (Postfix, from userid 99)
+	id 292D4A6A0; Wed, 11 Apr 2018 10:40:34 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 3.4.1 (2015-04-28) on antivirus1-rhel7.int
+X-Spam-Level: 
+X-Spam-Status: No, score=-108.2 required=7.5 tests=ALL_TRUSTED,BAYES_50,
+	SMTPAUTH_US2,USER_IN_WHITELIST autolearn=disabled version=3.4.1
+Received: from antivirus1-rhel7.int (localhost [127.0.0.1])
+	by antivirus1-rhel7.int (Postfix) with ESMTP id E1561DA4C3;
+	Wed, 11 Apr 2018 10:40:30 +0200 (CEST)
+Received: from 192.168.1.97 (192.168.1.97)
+ by antivirus1-rhel7.int (F-Secure/fsigk_smtp/550/antivirus1-rhel7.int);
+ Wed, 11 Apr 2018 10:40:30 +0200 (CEST)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/550/antivirus1-rhel7.int)
+Received: from us.es (sys.soleta.eu [212.170.55.40])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	(Authenticated sender: 1984lsi)
+	by entrada.int (Postfix) with ESMTPSA id AA45B41E4818;
+	Wed, 11 Apr 2018 10:40:30 +0200 (CEST)
+Date: Wed, 11 Apr 2018 10:40:57 +0200
+X-SMTPAUTHUS: auth mail.us.es
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Arushi Singhal <arushisinghal19971997@gmail.com>
+Cc: netfilter-devel@vger.kernel.org,
+	Jozsef Kadlecsik <kadlec@blackhole.kfki.hu>,
+	Florian Westphal <fw@strlen.de>,
+	"David S. Miller" <davem@davemloft.net>,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [PATCH v2] iptables: constify option struct
+Message-ID: <20180411084057.6ybypjabyllgwg4p@salvia>
+References: <20180321095028.GA18484@seema-Inspiron-15-3567>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <20180321095028.GA18484@seema-Inspiron-15-3567>
+User-Agent: NeoMutt/20170113 (1.7.2)
+X-Virus-Scanned: ClamAV using ClamSMTP
 
-This patchset fixes a multiple line dereference and adjusts indentations
-to comply with the Linux kernel coding style.
+On Wed, Mar 21, 2018 at 03:20:28PM +0530, Arushi Singhal wrote:
+> The struct of type option is only used to initialise a field and
+> is not modified anywhere.
 
-Kimberly Brown (2):
-  staging: xgifb: vb_setmode: fix multiple line dereference
-  staging: xgifb: vb_setmode: adjust descendant indentation to right
-
- drivers/staging/xgifb/vb_setmode.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
-
--- 
-2.17.1
-
+I have placed these bits into iptables.git, thanks Arushi.
 
