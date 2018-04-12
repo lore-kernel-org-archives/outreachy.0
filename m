@@ -1,66 +1,149 @@
-X-GM-THRID: 6522422209365934080
-X-Received: by 10.46.2.69 with SMTP id 66mr340593ljc.23.1518619761604;
-        Wed, 14 Feb 2018 06:49:21 -0800 (PST)
+X-GM-THRID: 6543657547525521408
+X-Received: by 2002:a17:902:268:: with SMTP id 95-v6mr753514plc.5.1523563998847;
+        Thu, 12 Apr 2018 13:13:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.44.194 with SMTP id s185ls1586546lfs.15.gmail; Wed, 14 Feb
- 2018 06:49:20 -0800 (PST)
-X-Google-Smtp-Source: AH8x225mF7h3zHuv6eXPM/mvWY0pw52B9vPTjKICge6h+YFM2UkCQlUk1zM+iJlUgbgihOeouKAo
-X-Received: by 10.25.152.80 with SMTP id a77mr384170lfe.2.1518619760008;
-        Wed, 14 Feb 2018 06:49:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518619759; cv=none;
+Received: by 2002:a17:902:8f8b:: with SMTP id z11-v6ls2139677plo.11.gmail;
+ Thu, 12 Apr 2018 13:13:17 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4/CmcAiCSefoKtTjpyGZVhSehYt78zeCaFCjpRjdWr9JD4TDLAFrhec+MybqB9l/4g90yhK
+X-Received: by 2002:a17:902:1763:: with SMTP id i90-v6mr769324pli.10.1523563997371;
+        Thu, 12 Apr 2018 13:13:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523563997; cv=none;
         d=google.com; s=arc-20160816;
-        b=XNCXDrEOzZMxeyqRZnZOdo2xyEyHtMlz48I1hpYcfbftULCovbrYfVx5kzbLqLGvVN
-         eTmsn6Hp/HpjvIvyrtq8EqChsoJpHHOjJTeWO+uh5iiTgf4XhSOSOfo/5U4fKj8f5bwW
-         dgBQRQHDaL/QBB/jwxqA1jVOCx8HjQHVllHwIW2hgltVvep2qk+UfI8IRYIdOH/NlAuf
-         44DagDzrRse3P/xmVfZFvqO01N5xu7MZAW0VwvaUjxqYcZ+fE2RjLZkv/2GBatQuHkG7
-         VoRZXVNS5UqUaqmv75BQv69TBiy9sXjxIKy74CmvCq1FdTRh9dQ7yH+35/EiCf8baqgS
-         0Axg==
+        b=R3ADTGH1Heo5JUZLkoRC2d57SesqADihspYX84SpCTAFx1wjKr4G8DwyjMiRNUNRVI
+         95tOA3wFwbchv6XyZ2QYJ9zvcjz0044g80JMk/7bkHYBxgVErBXsGzrEOf5BObWyyw9S
+         YU2d0IsfC9WkTLueXH4ZjEiuduRR84B6cESgYKy7CBiEgbXc+ZoLzQGisq8t8JHV++Qn
+         8ry47aEhI/i+iu+mQkBGhPbKJbIwnOXUWNKrwDl+kzqf309lBP5alI4QCNNN530QwDra
+         qXrTQv5jcYhcUz1uLDQiiqyH+rved6ebMNnTteIdKKwYTdLXraLRggjF02NXVm3FN3Hp
+         UMoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:message-id:subject:to:from:date
+        h=message-id:date:subject:cc:to:from:dkim-signature
          :arc-authentication-results;
-        bh=zSQBTok+lVEUYi9koetbY7S+WDwJaSHk/SeamHfHFsw=;
-        b=rO0dv9HvanKc4tOjMRM87yJr2aMl9grXgF4CD5klwftpeoiABiWtRBAsltp6ExA6jz
-         kb3mridA7XXJSUwiIZ7CyahFcSFKMRgmc/UIRqKdI1c7es5McvwoslxyxPUCRqH5ofSM
-         jQB1d0H+oDLASagJOv3zW+1af24g/7IEvK4DeaJEx6VliU5LSc8qvWTUWKBawAgnsLxv
-         lF6gxwhtPhE5f328t3zp6ejVvz7jDnkKMCFZFma4JwswmuwhrQ2nXn5y1gLIXylFZNLA
-         v90bO/aNvT0PbpyD2zLuXj4uzI1T+LK9FXTvWuy62fnUmDvSyuI90N9bRrsXyMpswQf2
-         ioyg==
+        bh=xzTIxPGDG3J4UMphLp0hN/byXVCuGtmEHV/POiV/0zU=;
+        b=sAjbf8zo/UkAasz3K9V488DMKl5AZ09t75yXrF1U3Cb5Xh9PqC7zVWIhA/bAL+9kQ6
+         ZK18frZYTYDsnDEgWYmNQj5okIthX0dvUGlr+1dIlp0gnSWOi8WhR2KP9hi1mKfB6If4
+         eaRSwv0ldV3O73Td2GxiVYtGPl/8SduETloss+zSNPV4cK+fD2KeKMtNm1w+A+wD0lqL
+         XSHzWdBPaoQAeByuWtdcEAlZaVjomVBgTiEFqOTXfSZ/4yzztEZI53hGbw1JbPRQP1T7
+         EUe3g3IxlWyXeN6W7KCzD8nPTZcT+PlJCPVwTeZMY1RHnFtJb58nOKdsrDYBB83tj73+
+         tezA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id w29si921981lfc.5.2018.02.14.06.49.19
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=CciDmcnj;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by gmr-mx.google.com with ESMTPS id c23si402689pfc.5.2018.04.12.13.13.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Feb 2018 06:49:19 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Thu, 12 Apr 2018 13:13:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.46,512,1511823600"; 
-   d="scan'208";a="313569662"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 14 Feb 2018 15:49:19 +0100
-Date: Wed, 14 Feb 2018 15:49:15 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: outreachy-kernel@googlegroups.com
-Subject: Outreachy kernel wiki
-Message-ID: <alpine.DEB.2.20.1802141547450.3340@hadrien>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=CciDmcnj;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Received: by mail-pf0-x241.google.com with SMTP id o16so4662392pfk.9
+        for <outreachy-kernel@googlegroups.com>; Thu, 12 Apr 2018 13:13:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ashoka.edu.in; s=google;
+        h=from:to:cc:subject:date:message-id;
+        bh=xzTIxPGDG3J4UMphLp0hN/byXVCuGtmEHV/POiV/0zU=;
+        b=CciDmcnjdw8l9g/m01BHzt7pGgSSyuf8IjOAWkpLWBTLYjirRqF3d6/LR59rHNMkOz
+         w+RTyvuiaPVbsztG6lY2zx+jp2E+/2lAnmq4JuICVH6l3p4zDBXHJ073L0pC83jnoWzy
+         R1kZCSPmmAlvXkmvtB9Rzx8fr013HNShyzlKw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=xzTIxPGDG3J4UMphLp0hN/byXVCuGtmEHV/POiV/0zU=;
+        b=rjH+uQJFfkwqCLQ3M2g45Dc36bHj4ZMO+BdjdxCUW23+lPrW8M0eI06SDTfrCRFg0n
+         7SDoh3Q2yGJg68gcvf/uHJjA4TCqzjyhvhcoUTlbLMVqrxgwW3BnSZYwxWEhEXoLRX5g
+         79d5NReCKrefz4JG7RY6026WOZZ9+EnuPkVI5MPKPBocto41J/Oj1/L2WO4FpQKVB52g
+         5c7m9IYq7F3ancTdgC7gSK2/n99xjuR2oPptFiPr9DCU/I569gk4pffg0KxFmQFi+WVX
+         Z9P5liYPgWc2bRGi4oyMdjHOHl6UUMaYfCcVLHRqeXASCbuPx8bW6L27V2Y8vLSOb9ll
+         6P4Q==
+X-Gm-Message-State: ALQs6tCG7B3BEx+V0lZhqI62HeeIjtJfRmzLqGyHo0XKygOailquYvQ0
+	xoQ0rm9QP1wVC1F6AS7JuyBCHE1Q
+X-Received: by 10.98.92.129 with SMTP id q123mr1009769pfb.252.1523563996715;
+        Thu, 12 Apr 2018 13:13:16 -0700 (PDT)
+Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
+Received: from localhost.localdomain ([139.59.85.247])
+        by smtp.gmail.com with ESMTPSA id z65sm8418844pgz.24.2018.04.12.13.13.13
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 12 Apr 2018 13:13:15 -0700 (PDT)
+From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+To: outreachy-kernel@googlegroups.com,
+	gregkh@linuxfoundation.org,
+	mchehab@kernel.org
+Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+Subject: [PATCH] Match alignment with parentheses
+Date: Thu, 12 Apr 2018 20:13:00 +0000
+Message-Id: <1523563980-21587-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
+X-Mailer: git-send-email 2.7.4
 
-Hello,
+Match alignments with open parentheses. Issue found with checkpatch.
 
-To start making a contribution, you should follow the tutorial at this
-URL:
+Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+---
+ drivers/staging/media/davinci_vpfe/dm365_ipipe.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
-https://kernelnewbies.org/Outreachyfirstpatch
+diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
+index 90c4ddd..56dd4f9 100644
+--- a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
++++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
+@@ -780,44 +780,44 @@ ipipe_set_3d_lut_params(struct vpfe_ipipe_device *ipipe, void *param)
+ static int ipipe_validate_rgb2yuv_params(struct vpfe_ipipe_rgb2yuv *rgb2yuv)
+ {
+ 	if (rgb2yuv->coef_ry.decimal > RGB2YCBCR_COEF_DECI_MASK ||
+-	   rgb2yuv->coef_ry.integer > RGB2YCBCR_COEF_INT_MASK)
++	    rgb2yuv->coef_ry.integer > RGB2YCBCR_COEF_INT_MASK)
+ 		return -EINVAL;
+ 
+ 	if (rgb2yuv->coef_gy.decimal > RGB2YCBCR_COEF_DECI_MASK ||
+-	   rgb2yuv->coef_gy.integer > RGB2YCBCR_COEF_INT_MASK)
++	    rgb2yuv->coef_gy.integer > RGB2YCBCR_COEF_INT_MASK)
+ 		return -EINVAL;
+ 
+ 	if (rgb2yuv->coef_by.decimal > RGB2YCBCR_COEF_DECI_MASK ||
+-	   rgb2yuv->coef_by.integer > RGB2YCBCR_COEF_INT_MASK)
++	    rgb2yuv->coef_by.integer > RGB2YCBCR_COEF_INT_MASK)
+ 		return -EINVAL;
+ 
+ 	if (rgb2yuv->coef_rcb.decimal > RGB2YCBCR_COEF_DECI_MASK ||
+-	   rgb2yuv->coef_rcb.integer > RGB2YCBCR_COEF_INT_MASK)
++	    rgb2yuv->coef_rcb.integer > RGB2YCBCR_COEF_INT_MASK)
+ 		return -EINVAL;
+ 
+ 	if (rgb2yuv->coef_gcb.decimal > RGB2YCBCR_COEF_DECI_MASK ||
+-	   rgb2yuv->coef_gcb.integer > RGB2YCBCR_COEF_INT_MASK)
++	    rgb2yuv->coef_gcb.integer > RGB2YCBCR_COEF_INT_MASK)
+ 		return -EINVAL;
+ 
+ 	if (rgb2yuv->coef_bcb.decimal > RGB2YCBCR_COEF_DECI_MASK ||
+-	   rgb2yuv->coef_bcb.integer > RGB2YCBCR_COEF_INT_MASK)
++	    rgb2yuv->coef_bcb.integer > RGB2YCBCR_COEF_INT_MASK)
+ 		return -EINVAL;
+ 
+ 	if (rgb2yuv->coef_rcr.decimal > RGB2YCBCR_COEF_DECI_MASK ||
+-	   rgb2yuv->coef_rcr.integer > RGB2YCBCR_COEF_INT_MASK)
++	    rgb2yuv->coef_rcr.integer > RGB2YCBCR_COEF_INT_MASK)
+ 		return -EINVAL;
+ 
+ 	if (rgb2yuv->coef_gcr.decimal > RGB2YCBCR_COEF_DECI_MASK ||
+-	   rgb2yuv->coef_gcr.integer > RGB2YCBCR_COEF_INT_MASK)
++	    rgb2yuv->coef_gcr.integer > RGB2YCBCR_COEF_INT_MASK)
+ 		return -EINVAL;
+ 
+ 	if (rgb2yuv->coef_bcr.decimal > RGB2YCBCR_COEF_DECI_MASK ||
+-	   rgb2yuv->coef_bcr.integer > RGB2YCBCR_COEF_INT_MASK)
++	    rgb2yuv->coef_bcr.integer > RGB2YCBCR_COEF_INT_MASK)
+ 		return -EINVAL;
+ 
+ 	if (rgb2yuv->out_ofst_y > RGB2YCBCR_OFST_MASK ||
+-	   rgb2yuv->out_ofst_cb > RGB2YCBCR_OFST_MASK ||
+-	   rgb2yuv->out_ofst_cr > RGB2YCBCR_OFST_MASK)
++	    rgb2yuv->out_ofst_cb > RGB2YCBCR_OFST_MASK ||
++	    rgb2yuv->out_ofst_cr > RGB2YCBCR_OFST_MASK)
+ 		return -EINVAL;
+ 
+ 	return 0;
+-- 
+2.7.4
 
-Unfortunately, the wiki that hosts the Outreachy kernel information is not
-so stable at the moment.  If you get an nginx error, please just try again
-in a minute or so.
-
-thanks,
-julia
 
