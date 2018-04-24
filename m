@@ -1,135 +1,102 @@
-X-GM-THRID: 6609620704439566336
-X-Received: by 2002:a24:be49:: with SMTP id i70-v6mr14134506itf.32.1538922242783;
-        Sun, 07 Oct 2018 07:24:02 -0700 (PDT)
+X-GM-THRID: 6547994617189498880
+X-Gmail-Labels: Topic type: DISCUSSION
+X-Received: by 2002:a19:9b09:: with SMTP id d9-v6mr1131537lfe.20.1524577693813;
+        Tue, 24 Apr 2018 06:48:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:660c:491:: with SMTP id a17ls1797344itk.8.gmail; Sun, 07
- Oct 2018 07:24:01 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV63HWOba8wvmeG2zHxJ2h8oXDmr9qhUzafBr7IZsR1xIU/pXHa0pamktpaA11TC2P+y0Q6hV
-X-Received: by 2002:a05:660c:3cd:: with SMTP id c13mr4050599itl.22.1538922241872;
-        Sun, 07 Oct 2018 07:24:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538922241; cv=none;
+Received: by 10.46.135.129 with SMTP id n1ls2200988lji.0.gmail; Tue, 24 Apr
+ 2018 06:48:12 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4/m1Wn1KzDsFXvqOSHYLMwrShwRkWtfGQtTcopFclHCh15TpVAQvOBYIS0/siGXuMRc6OdX
+X-Received: by 10.46.22.71 with SMTP id 7mr1557456ljw.30.1524577692634;
+        Tue, 24 Apr 2018 06:48:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524577692; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ir+9Txz6EIUG9NaAWavHypSH8lKIZrKSjWmomp800iGwqCFAkTkW++8p1RKY7CJF9e
-         OjCccMHWDOjN/kY4kkrWnZPhWhcXtgmveKUhmrbQULJmIuxMAhf1Su/RIc6X0VMehDn8
-         5u2NCmfGfybWzZP69q1GZFJ/9C8pp32aPgB5UakxX4CKl9uDuHbKWZOFuX6JKghWMf99
-         J2UohCvQul1hQ1RT4kdW4TK6lkHXdj3yFaOJ5V/a4FS6SOxScXqoYgh8AXwm7BQk/FeA
-         wfr/wO4lRjbnJpHRheiwBieviN3MXpvSMoG5E38W1OnCDZE/t11oRPFP1b7c8THUwfR2
-         lvaA==
+        b=ZV5f0uL/HaNW0E3W7ySScKR+COYd0nIZU1ppTBkLgoEqc6/1SWhk3NROO+/BIQjQRW
+         YyhWobjxxGVqlu+vYpCr+2jLakvgvjx2++DGFayt2fvQN4RcqOmB1dsqGgH7b12KTH4u
+         ueVNNTjJzAtfliih7A1EJSCoYIgrS6upPaREYvb6FyJF5UeK3bfq0SnvnZXZ1dvBO1QT
+         jI8oxGwrMLZL11cntingF/pvgz5yh31B/CHuJjPYLupXU8r055cyOBHVrFmlt3wMYvQf
+         o3H+C6aED5BohWQOTCMD3g7bzC7dDabbyrJ5h7Y9ZrKH2I+5tmVFvjQNvysEOjWtJ9Pb
+         63HQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=7motJzgQJgS36e0bI3d07C08+0uoaI6/DYk/NqYIWcw=;
-        b=W2Ezy0yTk3Z6NxnKppjx6FVpD+i99yETMkYT2YQ473X8vCQn4kC8e6VUk2sD1S2tS9
-         AIn7GogfHh9tLI1EGuw4a96ZhPBS92Kcam5n70mhM70cQXXejUv+xxLa3Ki/kGrnmmys
-         CMBFEk3UdWdx+Wg+YSLXgztWtMGC7qbghLYE/vx/rvQVTKGR54uRg5oh/7phk/jMQdIa
-         Epgxs5HXx25h68u2Z07Ohz/Wm3TDsocR9XIdQCiR5CVG/yYhSWmQmghTdFgN0WOqbTnX
-         nOFW8nGa/QdeA57aBOEh3hm34GSxrqfnuDMH/XYmu9OZNUtYzTLKDaseqONfwaMPchfH
-         kPAw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:arc-authentication-results;
+        bh=9eYJmTQOKKMYT0Inov3Bw48j6Xch1mB33x3J1bG/E9c=;
+        b=JaDffHeBOzHqgcKxdKoPqlpDvbjbooDtgPdHPC3K3nkmANW8VWiOXxOfFmsQlf+1o+
+         vAGaQaeVaHv8NkGd/3XRZtfafu6eRtQPIZ+wGK7xJAGrXEvxBHJipRKPzivzRAUPJ3sd
+         GzefFxDm34WHAgrdUIgU2TABHMrbSLwBhsLqhXxFiWTiExethAV9uSELTE9mhbpeE2yZ
+         +maCu2LVh9vFXpWBOK8hyYXI8Vwvv1lEdcAbhPi/MZeIGs7hDAgJNIuj1+w9ZP/vXnNL
+         0vCgKZZ9PeEjroonc672MYYWIEl37DOQqIXed9N0SNBd7cBp4CpEFRALtIGpHxw4DaUZ
+         60ZQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="NVN/yCFp";
-       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mamtashukla555@gmail.com>
-Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
-        by gmr-mx.google.com with ESMTPS id n124-v6si351196itb.0.2018.10.07.07.24.01
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id j3-v6si326847lfb.1.2018.04.24.06.48.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 07 Oct 2018 07:24:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
+        Tue, 24 Apr 2018 06:48:12 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="NVN/yCFp";
-       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x643.google.com with SMTP id c8-v6so8892135plo.9
-        for <outreachy-kernel@googlegroups.com>; Sun, 07 Oct 2018 07:24:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=7motJzgQJgS36e0bI3d07C08+0uoaI6/DYk/NqYIWcw=;
-        b=NVN/yCFp+sIgRLkskIjTmu3vpNjQ7kW7tmZCY7Jzm9ULGIQakSOat2fLRqXJ8D8YKc
-         A2s7++gKsCLQceErelv/rd6K88UCD7iAszHlBPw1oynWCrKRdva1rkcq5F/jIQlsCv3z
-         LOa9lJL5VdmTx0dZrZXgV8sGvFrEo2jAvqKKhbIrJIGB4u858Cu4Ou2l7PEpMECzjCMf
-         vMcxz6hZs6vNlnJNxcLVzwnjkB3DSOLXagnK3UV3DW/RBNn5O/ZPodFdKfNHK/LwlvUq
-         I249KoIwNoHfny6m7NIieOwqItexiHsvWc/RMhIyYqbWUOANL56+HrcfBV8lDVibXndH
-         qTtQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=7motJzgQJgS36e0bI3d07C08+0uoaI6/DYk/NqYIWcw=;
-        b=j7ScHTjdHx6uGaGsc0FQdrHrdzozqO+8XuXs2R76SZxmL9V+S7HedMUkN2SaAaRSVy
-         UYXWTaCsuAZWEcIAcmoSGQJSzKGDplOtipT3GtRBNkYxAgHi3oGN/s5IWPzmqCxIHySw
-         ewYNt0alG0enDvm4Vx5A7kI+IMpZB/IQqbOv3NoijEmDXp/mU2NB9ISsSsqiewTWkYcT
-         4x5bP16wenuxkGXb50A4+/FFST9yysvHtS60VsIQXlNplRkq7ApdsK2hPEXzi2e6MXMy
-         S/Nt3KPb7NCqF3zr6Hz92c6ebhCX3Z3Sh3ig4RIVfy3/qwB3x8eMiVGviKoqeh8aQS7j
-         hxdA==
-X-Gm-Message-State: ABuFfohKoOruxwmRN+FtHjQB4Jemm+BucrrRHW+B3JpEyINV6cWE3dK/
-	gJS3xS3k5zQhAv5ESbWo4lU=
-X-Received: by 2002:a17:902:4403:: with SMTP id k3-v6mr19971649pld.243.1538922241046;
-        Sun, 07 Oct 2018 07:24:01 -0700 (PDT)
-Return-Path: <mamtashukla555@gmail.com>
-Received: from armorer ([117.207.206.206])
-        by smtp.gmail.com with ESMTPSA id z7-v6sm23638140pff.146.2018.10.07.07.23.59
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 07 Oct 2018 07:24:00 -0700 (PDT)
-Date: Sun, 7 Oct 2018 01:54:14 +0530
-From: Mamta Shukla <mamtashukla555@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: mchehab@kernel.org, gregkh@linuxfoundation.org,
-	mamtashukla555@gmail.com
-Subject: [PATCH] staging: media: davinci_vpfe: Use __func__ instead of
- function name
-Message-ID: <20181006202414.GA12019@armorer>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.49,323,1520895600"; 
+   d="scan'208";a="324273539"
+Received: from static-wan-bl3-194-82.rev.webside.pt (HELO [172.16.1.149]) ([62.28.194.82])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 24 Apr 2018 15:48:10 +0200
+Date: Tue, 24 Apr 2018 14:48:10 +0100 (WEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: yatripatel.169@gmail.com
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Prepare for next Outreachy round
+In-Reply-To: <da3b1a39-4299-4726-9f87-bd65d0940bf5@googlegroups.com>
+Message-ID: <alpine.DEB.2.20.1804241445550.2490@hadrien>
+References: <da3b1a39-4299-4726-9f87-bd65d0940bf5@googlegroups.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: multipart/mixed; BOUNDARY="8323329-334348570-1524577690=:2490"
 
-Access current function name using __func__.
-Use %s and __func__ instead of function name.
+--8323329-334348570-1524577690=:2490
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-Issue found with checkpatch.pl
 
-Signed-off-by: Mamta Shukla <mamtashukla555@gmail.com>
----
 
-Predefined identifier __func__ gives the name of current function name.
-Thus, it gives better debug information in this case. 
+On Tue, 24 Apr 2018, yatripatel.169@gmail.com wrote:
 
- drivers/staging/media/davinci_vpfe/dm365_ipipe.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+> Hello,
+>
+> I'm Yatri and I wish to contribute in open source and other organisations
+> before the next round of Outreachy. Can you please guide me through the
+> projects in which I can contribute keeping in mind that I know Java, C++/C,
+> HTML/CSS, and have a good hands onon Android app development.
 
-diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
-index 9594276..4d09e81 100644
---- a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
-+++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
-@@ -695,21 +695,21 @@ static int ipipe_get_gamma_params(struct vpfe_ipipe_device *ipipe, void *param)
- 
- 	if (!gamma->bypass_r) {
- 		dev_err(dev,
--			"ipipe_get_gamma_params: table ptr empty for R\n");
-+			"%s: table ptr empty for R\n", __func__);
- 		return -EINVAL;
- 	}
- 	memcpy(gamma_param->table_r, gamma->table_r,
- 	       (table_size * sizeof(struct vpfe_ipipe_gamma_entry)));
- 
- 	if (!gamma->bypass_g) {
--		dev_err(dev, "ipipe_get_gamma_params: table ptr empty for G\n");
-+		dev_err(dev, "%s: table ptr empty for G\n", __func__);
- 		return -EINVAL;
- 	}
- 	memcpy(gamma_param->table_g, gamma->table_g,
- 	       (table_size * sizeof(struct vpfe_ipipe_gamma_entry)));
- 
- 	if (!gamma->bypass_b) {
--		dev_err(dev, "ipipe_get_gamma_params: table ptr empty for B\n");
-+		dev_err(dev, "%s: table ptr empty for B\n", __func__);
- 		return -EINVAL;
- 	}
- 	memcpy(gamma_param->table_b, gamma->table_b,
--- 
-1.9.1
+If you like you are welcome to follow the Linux kernel tutorial on the
+Linux kernel outreachy page:
 
+https://kernelnewbies.org/Outreachyfirstpatch
+
+You can work on drivers in the staging/drivers directory and submit the
+patches to the people indicated by the get_maintainers comment (this is
+described in the tutorial).  It will be good practice to get ready for
+next time.  But the list is only open for mentoring during the application
+period.
+
+julia
+
+>
+> Thank you,
+> Yatri Patel
+>  
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/da3b1a39-4299-4726-9f87-
+> bd65d0940bf5%40googlegroups.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-334348570-1524577690=:2490--
 
