@@ -1,109 +1,86 @@
 X-GM-THRID: 6547933385592930304
-X-Received: by 10.80.202.200 with SMTP id f8mr8134823edi.2.1524559893476;
-        Tue, 24 Apr 2018 01:51:33 -0700 (PDT)
+X-Received: by 2002:a81:5f07:: with SMTP id t7-v6mr5011302ywb.211.1524559544622;
+        Tue, 24 Apr 2018 01:45:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.80.159.200 with SMTP id c66ls11293252edf.8.gmail; Tue, 24 Apr
- 2018 01:51:32 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4+G7RBbxmtiYOX9upuFiqJLy6QZH2t+YkI/oz7b3A1l2dV80pIaU3CO8JUmSHcU6kcW7qoX
-X-Received: by 10.80.144.253 with SMTP id d58mr8144356eda.12.1524559892238;
-        Tue, 24 Apr 2018 01:51:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1524559892; cv=none;
+Received: by 2002:a81:838e:: with SMTP id t136-v6ls11673ywf.4.gmail; Tue, 24
+ Apr 2018 01:45:43 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4/nQUiEMPROg8wCQJkK3iLNC3/wCUNIcUNEmZ6U+h3+753pwkZGq80wtOjG/rsMAXKi8Bj+
+X-Received: by 2002:a81:494:: with SMTP id 142-v6mr7235407ywe.233.1524559543479;
+        Tue, 24 Apr 2018 01:45:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524559543; cv=none;
         d=google.com; s=arc-20160816;
-        b=dXxq1hqfRHio9m/chD3AwPmmBwXoohwAPaf0ChUL9mdRV3MqNdlic6rh1Hid9J6QVl
-         G4k3MNj1DlLRVAG5RcCArOTHG/nBo7VlCgX7yold+05XLJCoV/ot5TGdYrlea48qYPeZ
-         PZEnaxXz2mf5F6hqWfVBN64dzGzxzL1AKeSoqD0Eo6QrCpzWZEMLOMg22hKv+ZmyrBtn
-         Iizh8WjH2+zYjdLF0nA5C+XFy/C06WH3E+sZWwtI92bXctJDnTz/P6LX2os8J9exMTcW
-         1Du5+IwEM4+6bYt5xUKFp1uaSYaj0qKJ0aNu3ZhAgDBx3YNDNDlJ/YqREwVquj3VEksw
-         OHaQ==
+        b=KzJUJOBCv8lr0FYZRkOdZVvk0VeHXS6cvTL7/YAF6nHQmY66MW3AWOJP66G9th6a60
+         /bRTN97zWaAlHlmZGVtc6EjYW8vwaO4RI0q60MEG+JOvqqLjGAbCGDye8yhSdkKTo592
+         0Iy8bQTQOqPoH0DWishbDLFEXTrp1NwnRIFzgnpi9iBVThWukKha/LQ2kSeHIhPMGFG1
+         quBYyyu+tKTe6rr0/9ODsFwVYVgBHtASDPnde1AnjFKvzyc+YH/GL0LrMtazi+n3DLsN
+         O+hYNdotBbtZ7uocYz94kALQz6vVSg2/eBwbvEApwxEJ19wa6aPkMNl6HjOuBgkCUeEj
+         wExw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:arc-authentication-results;
-        bh=mrAJYyz2cBWHp04J2gBE4ZDmCcDmoP3VF+TCSc99bQQ=;
-        b=FUOVuVdqLGcj95BjM9uUR4AabhU6r5L4By+eTi/5wMqAYWDG6H2hP5r+UcoMJrJBZS
-         ALhR9ThQ60FRHnFRLRxdchbVuNGnve9OQudAmo3cmZNGC2XIbeGHrua07po4ZSuBrUao
-         s7PictB9HO5rC8mYeE9AEqmlFgfAeYKUzzVynO4eiwMC7pJl8RDMMmOFnINYULsEFIYh
-         BDTV/Azxj+nAAnjhQ6ndQKgmBQCuzJLBKUJg0VeSQmkp86DVdZSHSMPdfrawjUpA3n5n
-         +wRwvyVwwBgNay9AEdSdx76SswRtt7QpCrR1a9EQo4hF8hC16p5t1sXqAXKo+XRmbpWb
-         i8jQ==
+        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=4QSo8Az10/7jmw76zPAhOl8c7LrzoGV6mW6hxGQnL84=;
+        b=jhP8T8u1xrxG3CPa5fUILLIMppKgKMLen6wbA+3ctWjJ9BaJlz+CnvvTRhoKwqPYm3
+         3IEJtcT2SGlpFC2IJoWo6/GypbhfA3VqnwCl3dJURLnhLFkC5AKoA116HJBsWi8MNHt9
+         WR8al5Wv3Mwp0THD15keWaf5bl1AMLkhimbV30AUqhsoZoMaJG1+11v572lglolhgpC1
+         QpZugMbxcUE8aNIvFjzmOBhJ9a5ty4M7nD6BE7F5o+jst+ElS1bMn6cxcFt9unBh53uZ
+         wcRtv2THo0O9j+vF2E9B1ngvsBc4wR1jlnZSCHzlM34XvhiL3/LyCrDQMlgDe66SeWl6
+         HlMg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 209.85.215.48 as permitted sender) smtp.mailfrom=vthakkar1994@gmail.com
-Return-Path: <vthakkar1994@gmail.com>
-Received: from mail-lf0-f48.google.com (mail-lf0-f48.google.com. [209.85.215.48])
-        by gmr-mx.google.com with ESMTPS id v10si614475edf.4.2018.04.24.01.51.32
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=EZgi3HAn;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:4001:c06::235 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
+Received: from mail-io0-x235.google.com (mail-io0-x235.google.com. [2607:f8b0:4001:c06::235])
+        by gmr-mx.google.com with ESMTPS id i142-v6si605013ywc.0.2018.04.24.01.45.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 24 Apr 2018 01:51:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 209.85.215.48 as permitted sender) client-ip=209.85.215.48;
+        Tue, 24 Apr 2018 01:45:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:4001:c06::235 as permitted sender) client-ip=2607:f8b0:4001:c06::235;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 209.85.215.48 as permitted sender) smtp.mailfrom=vthakkar1994@gmail.com
-Received: by mail-lf0-f48.google.com with SMTP id q5-v6so19049104lff.12
-        for <outreachy-kernel@googlegroups.com>; Tue, 24 Apr 2018 01:51:32 -0700 (PDT)
+       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=EZgi3HAn;
+       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:4001:c06::235 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
+Received: by mail-io0-x235.google.com with SMTP id a10-v6so3785950ioc.9
+        for <outreachy-kernel@googlegroups.com>; Tue, 24 Apr 2018 01:45:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ashoka.edu.in; s=google;
+        h=mime-version:from:date:message-id:subject:to:cc;
+        bh=4QSo8Az10/7jmw76zPAhOl8c7LrzoGV6mW6hxGQnL84=;
+        b=EZgi3HAnPCL0UwUbUng27GjSmolz/Ewf1kttITkYSKe6E+NSvCNBbmuGlMuzwPKfsQ
+         NebUXm24SYeFhCNlJ0JNrcv0LBl2Y9m5jkM0FJTA6SEvv4GG+3nUxfKUX9zwTT8MiunL
+         0QK3UaD82k1m/WfguFTq97bbjPk4ZrJh0CYXg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=mrAJYyz2cBWHp04J2gBE4ZDmCcDmoP3VF+TCSc99bQQ=;
-        b=egtu+1o8giijwtDsXTiplpaStE5lNOAHDzxMANjrZrEm2EnPWrvmK8pgXb3AFeRsOl
-         u77nA5lgwmkNin+0lnNeM+ueGRqj2B1ZH9D8APSYgMngclg0poVBWf67jKx0HY1W7qen
-         d1a7m2Uus/BTGV0jwt7Sv+n1K2TipVA7xETv4uxP6NlGJhBGTXi4q5TQ1XOhOlgFS/EU
-         hbMC+49oojD7ZpSa9uV+HBBQDpyfpDsCJWTWLa1LvexKAVNdqbR+Rf7G4DcQ5uuiMTOM
-         PyOaEHL9KvUiZ1CyNJWufIPIlA3M9FkiRNox3e41ugWdu6iXgUC4HBSjqyOpAsIcHata
-         yikQ==
-X-Gm-Message-State: ALQs6tAYo1+J4VpkcytWmeF62bOwf8wG5EHXsSEL62sovNeERIcLOZMa
-	/MgZ7+phmmgsrAB81itTfGTpQSh4
-X-Received: by 2002:a19:c793:: with SMTP id x141-v6mr8432849lff.32.1524559891281;
-        Tue, 24 Apr 2018 01:51:31 -0700 (PDT)
-Return-Path: <vthakkar1994@gmail.com>
-Received: from mail-lf0-f49.google.com (mail-lf0-f49.google.com. [209.85.215.49])
-        by smtp.gmail.com with ESMTPSA id j24sm2733548lji.89.2018.04.24.01.51.30
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 24 Apr 2018 01:51:31 -0700 (PDT)
-Received: by mail-lf0-f49.google.com with SMTP id p142-v6so19071587lfd.6
-        for <outreachy-kernel@googlegroups.com>; Tue, 24 Apr 2018 01:51:30 -0700 (PDT)
-X-Received: by 2002:a19:5a1d:: with SMTP id o29-v6mr10564250lfb.93.1524559890869;
- Tue, 24 Apr 2018 01:51:30 -0700 (PDT)
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+        bh=4QSo8Az10/7jmw76zPAhOl8c7LrzoGV6mW6hxGQnL84=;
+        b=QVoNJUIMfTKTj3I78PY+GEmwyjFTVUjJTK5yrOP14k3X74ahBRDsQRHBpwtnq+Ucsz
+         +OnOnWVU7TUWCEOm0+jOiZeSe8lDPy4j9GpRh2qRT6a+4RboYPUVtoozOSunDLGzl82T
+         4s5UTSINZCfMIDroxzGIpBb9pggWwR1KuJXflNcGSVE5riistP/sEr0si+N9DuA6NbSe
+         m46ezouKTSLHsjRgZ1B0T9SDYytszOaqPXEd/dLg8hqsrAuTCAwq20XOozGIERbpz7uE
+         kuAsiM73gmwSZgOZ9kjrmzkE/yckBc1rMT3E9csQJAqndzoaU5VlzRSbj7b8mX3+HC6e
+         y3bw==
+X-Gm-Message-State: ALQs6tAKZ9Tu3BHGvm4eR8IQUJEtuVFxGf3/fUFLvSye/YRBVu50bH6/
+	4npbFRN9WtAu6u3PcNVcycu+RaZoyT6wUuNb7enyKA==
+X-Received: by 2002:a6b:6918:: with SMTP id e24-v6mr27184917ioc.242.1524559542922;
+ Tue, 24 Apr 2018 01:45:42 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.46.156.1 with HTTP; Tue, 24 Apr 2018 01:51:30 -0700 (PDT)
-In-Reply-To: <CAC4++KD-CN1A4AEMMRumGcmp8igXaFHUyHiyPqt4b4v7XN4ncw@mail.gmail.com>
-References: <CAC4++KD-CN1A4AEMMRumGcmp8igXaFHUyHiyPqt4b4v7XN4ncw@mail.gmail.com>
-From: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
-Date: Tue, 24 Apr 2018 14:21:30 +0530
-X-Gmail-Original-Message-ID: <CAK-LDbLj8GqQm2yLKP5086hvJF-e8ByHgrRW5Kx6NM0U1uGMHQ@mail.gmail.com>
-Message-ID: <CAK-LDbLj8GqQm2yLKP5086hvJF-e8ByHgrRW5Kx6NM0U1uGMHQ@mail.gmail.com>
-Subject: Re: [Outreachy kernel] Continuing Contributions
-To: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, Julia Lawall <julia.lawall@lip6.fr>
+Received: by 2002:a4f:cc82:0:0:0:0:0 with HTTP; Tue, 24 Apr 2018 01:45:42
+ -0700 (PDT)
+From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+Date: Tue, 24 Apr 2018 14:15:42 +0530
+Message-ID: <CAC4++KD-CN1A4AEMMRumGcmp8igXaFHUyHiyPqt4b4v7XN4ncw@mail.gmail.com>
+Subject: Continuing Contributions
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: Julia Lawall <julia.lawall@lip6.fr>
 Content-Type: text/plain; charset="UTF-8"
 
-On Tue, Apr 24, 2018 at 2:15 PM, Nishka Dasgupta
-<nishka.dasgupta_ug18@ashoka.edu.in> wrote:
-> I would like to continue contributing to the Linux kernel, without
-> waiting for the next Outreachy cycle to begin. Would that be possible?
-> If so, do I simply send my contributions to the driver maintainers
-> (leaving out the outreachy group), or should I send it to different
-> addresses as well?
-> Additionally, if it is possible to keep contributing, should I
-> continue submitting cleanup patches for staging drivers?
+I would like to continue contributing to the Linux kernel, without
+waiting for the next Outreachy cycle to begin. Would that be possible?
+If so, do I simply send my contributions to the driver maintainers
+(leaving out the outreachy group), or should I send it to different
+addresses as well?
+Additionally, if it is possible to keep contributing, should I
+continue submitting cleanup patches for staging drivers?
 
-Hi Nishka,
-
-Glad to see your interest in continuing the contribution. Yes,
-we use Outreachy mailing list during Outreachy application
-period only. So you can just go ahead and send patches in
-other subsystems [including staging itself] and can use
-get_maintainer.pl to get the list of mailing lists and maintainers.
-
-Thanks.
-
-> Thanking you,
-> Nishka Dasgupta
-> Undergraduate Class of 2018, Ashoka University
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAC4%2B%2BKD-CN1A4AEMMRumGcmp8igXaFHUyHiyPqt4b4v7XN4ncw%40mail.gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
+Thanking you,
+Nishka Dasgupta
+Undergraduate Class of 2018, Ashoka University
 
