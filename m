@@ -1,116 +1,259 @@
-X-GM-THRID: 6466280658813583360
-X-Received: by 10.31.107.141 with SMTP id k13mr14333418vki.79.1505548287109;
-        Sat, 16 Sep 2017 00:51:27 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.145.68 with SMTP id t65ls8101720iod.50.gmail; Sat, 16 Sep
- 2017 00:51:26 -0700 (PDT)
-X-Received: by 10.55.17.10 with SMTP id b10mr14304618qkh.54.1505548286322;
-        Sat, 16 Sep 2017 00:51:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505548286; cv=none;
-        d=google.com; s=arc-20160816;
-        b=tXJ93Nt/C2sAWwJ5xVS4lVjA0thz6YMndbHq7mXt4Ha83hkt5+VlXdQg/grpypm49b
-         klSxds+nDZooWxBJAZUUAAnf8Khf2v0bB8mUjh0e1OyZngrr+U7JDptWFqDgJTxaBWQd
-         Bqs3QzlfrAPR9s2s7YmCoji6oAjnvrhQpkAo/XhnHaE0EJIh14Co45rCdjEjqOmXW8B/
-         sl4esqoiTvl/Zz2VNJZ91lUCg43GIK4MhyfCgpJ9fe62wnn+AJKeP6Fg/Z/D6uKiJ7Bf
-         Z8k7CYsdFNpAP9j2V+dXsFULETYjC4FtIx5u8QnwQMqlZr26GZ3opxro2PHjqtV0rtZi
-         5CKA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=YFwuWgoajxo867HF9xvSU8gR95Y5evx+6RcYwtrsFyY=;
-        b=NtWy+crfKZ3wKO1ERl5D9NHNu+kgz8IJmu5pjB+95s6Z2P9VoNEJO8d7UFpiP10gxG
-         PDpGGPrhDH51Vq5bFhWGeT9yJklLI7sS0htK9t8Z5JMW9ZnoTKOyaCmSiRisWxrVX6os
-         z7ew0joJ2I8zDA4cv8yexzQvDSBVKmYwubxnRxzZArk+condgt/Ne9Zqbu5DwflcDJ2s
-         hADJ/JKQmXLV28oVxE1+a4pxY38HYLRPDF31uHu1tttjgUvpo9qk+K2OVd8wQQ36HtoN
-         nh4XU4cFdH8FrsJDmNwE3TSgFoM4zOe2fitym7mOS8oTjOA4APlibq7vXeW4paw8/IPN
-         kMSQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ESSFpcne;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id t77si255074pfi.13.2017.09.16.00.51.26
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Sep 2017 00:51:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ESSFpcne;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id v82so2456794pgb.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 16 Sep 2017 00:51:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=YFwuWgoajxo867HF9xvSU8gR95Y5evx+6RcYwtrsFyY=;
-        b=ESSFpcnezwv9zB6MlwQcFioM5KWuwtq8PslxtKha7ASY2FdRnq6JXL2lC/6fPxxHt/
-         Xd8/NNnaaYr+yXUSIprCXbRx/AD3v5pv9mI/XrxdR25WYLfGBYK3OukCovZFxi69dfkd
-         SeHHcTYnMJCiRAnCEr9IljnxgH59KU2FnbuIn0c0nBHw9R8ZrRw15VCAjUB6MI38vfiu
-         X8XQmsNq48xK35IOntOhV6/+Oqb5i6AGeYN8kkLHKKOkm1Js7VSBkH2Kn7XFSm0eG/rf
-         3FPJPn0QgQXeFf6EWYEnjmLWFNjs4ktxRIc2QR0Ouj4Q8R8RFjVIjUNAdKJnuQ1z5IeD
-         uddw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=YFwuWgoajxo867HF9xvSU8gR95Y5evx+6RcYwtrsFyY=;
-        b=dbuZWj8PMsqOGsXQZbJPypFdD46MRmn8BcMrU1ttZkL6SzuZXR9ze714xTd1EyBPzA
-         PQGI4R9/4fEYUSGazLdCyzcqHvcjC4dQXkbKmitTEKbn/qfE0QW1XqT+4XzM8csFwYSO
-         Kp2/sxEial2W5LHz2anAKnd0iVvKRrIUu1d3q/10A2AxsxNqHzpM28NTN/13/rAg739l
-         JATXSvlH4h4QSHz9tsFb5lT+ZTvUY71ncI75aytaLfHmXmq4LAcFl8H0WJDeCu0A3QF7
-         YbSKutrpGtBUpzCAnLSMKpj23KrIbjFUQ+7xQKKbmEvNiIzTzs9gJClqPkuwjEnIzCom
-         LxeA==
-X-Gm-Message-State: AHPjjUi8rMLPyO8I7Wr7CHEJ/lZUugeXuADNYVkGMMYdeh09wbI4ER67
-	EXGIwtHozpf9rQ==
-X-Google-Smtp-Source: ADKCNb5AwMpwulE8Ns/SKUt7E4HezDSzCCAcJ+gCMTts/fl+0QkeqEu4QKXbtUYWK75UxeBbCFtMeA==
-X-Received: by 10.98.27.8 with SMTP id b8mr26434381pfb.21.1505548285938;
-        Sat, 16 Sep 2017 00:51:25 -0700 (PDT)
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from aastha-HP-Pavilion-15-Notebook-PC ([27.56.167.173])
-        by smtp.gmail.com with ESMTPSA id b90sm5973529pfm.17.2017.09.16.00.51.24
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 16 Sep 2017 00:51:25 -0700 (PDT)
-From: Aastha Gupta <aastha.gupta4104@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH] staging: rtl8188eu: use pr_info() instead of printk()
-Date: Sat, 16 Sep 2017 13:21:18 +0530
-Message-Id: <1505548278-18277-1-git-send-email-aastha.gupta4104@gmail.com>
-X-Mailer: git-send-email 2.7.4
+X-GM-THRID: 6603229957659295744
+X-Gmail-Labels: Topic type: DISCUSSION
+Date: Thu, 20 Sep 2018 02:04:41 -0700 (PDT)
+From: Vaishali Thakkar <vthakkar1994@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <9b2b3cef-9998-4997-bf85-1b4a46c81877@googlegroups.com>
+Subject: [Announcement] Outreachy Next Round [December 2018 to March 2019]
+ Application period has started!
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_315_1479496182.1537434281148"
+X-Google-Token: EKnFjd0FTh5753G2LjA0
+X-Google-IP: 82.233.118.215
 
-Fixes checkpatch.pl warning:
-WARNING: printk() should include KERN_ facility level
+------=_Part_315_1479496182.1537434281148
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_316_1314620974.1537434281148"
 
-Replaced printk() without any KERN_facility level with pr_info().
-The statements before use pr_info and the new line character is to be
-appended to them.
-Could have used printk() with KERN_INFO level, but used pr_info() 
-just to use the same function as that had been used before in the code.
+------=_Part_316_1314620974.1537434281148
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
+Greetings potential Linux kernel Outreachy interns!
+
+Please read this *entire* email, even if you have applied in the past.
+
+What is Outreachy?
+---------------------------
+
+The next application round for Outreachy internships starts from September=
+=20
+19, 2018 and ends on October 30, 2018.  Outreachy interns will be paid=20
+$5,500 to work on a full-time internship with an open source mentor from=20
+December 4, 2018 to March 4, 2019. Interns will also be granted a $500=20
+travel stipend to go to any conference approved by their mentor that=20
+relates to their project.
+
+Who can apply?
+-----------------------
+
+To qualify to apply for Outreachy, you MUST complete eligibility criteria=
+=20
+here: https://www.outreachy.org/apply/eligibility/.
+
+Contact the Outreachy organizers=20
+(https://www.outreachy.org/contact/organizers/) if you will be in=20
+auniversity between December 4, 2018 to March 4, 2019 or have any questions=
+=20
+about your eligibility.
+
+What Outreachy projects can you apply to?
+-------------------------------------------------------------
+
+There will be several different open source projects participating in this=
+=20
+round of Outreachy. The full list can be found here:
+
+https://www.outreachy.org/communities/cfp/
+
+The Linux Kernel expects to offer eight projects, some of which are already=
+=20
+listed on Linux kernel community page on Outreachy website and others will=
+=20
+be added in upcoming days. Projects will be visible to applicants only=20
+after they complete the eligibility check.
+
+How do I apply to the Linux kernel project via Outreachy's website?
+---------------------------------------------------------------------------=
+---------------------
+
+1. Fill out the eligibility check form on the Outreachy website
+
+2. Work on Linux kernel tutorial
+
+Basically, applicants will need to walk through our tutorial for creating=
+=20
+their first Linux kernel patch: http://kernelnewbies.org/Outreachyfirstpatc=
+h
+
+It is not necessary to contact a mentor before starting the tutorial.
+
+3. Work on cleanup patches
+
+As specified in our tutorial we require Outreachy applicants to first get=
+=20
+accepted at least 10 Staging driver cleanup patches.=20
+
+4. Once your first patch is accepted, add that as a contribution for the=20
+project(s)you're interested in applying for. This will then allow you to=20
+submit an application. Note that you'll need to apply for each project=20
+separately.
+
+5. Once applicants have completed working on 10 cleanup patches, we=20
+encourage applicants to move on to complete some small tasks outlined by=20
+the mentors. It=E2=80=99s preferable to CC the mentor when you are  working=
+ on the=20
+task so that they don=E2=80=99t miss it. Small tasks for the projects can b=
+e found=20
+in the project detail here:
+
+    https://www.outreachy.org/2018-may-august/communities/linux-kernel/
+   =20
+Note that you'll be able to see the detailed information about projects on=
+=20
+Outreachy's website only after completing eligibility form check.
+
+6. Keep editing your 'project contribution' on Outreachy's website based on=
+=20
+your accepted patches links and project specific completion of tasks
+
+7. Make sure to add your project preferences under the question=20
+'Community-specific Questions' in the application
+
+Applicants should also join the #outreachy IRC channel on irc.gnome.org, an=
+d=20
+the #kernel-outreachy channel on irc.oftc.net.  If you're having trouble=20
+with IRC, please ask for help on this mailing list.
+
+If you=E2=80=99ve applied in the Outreachy before, you=E2=80=99re still req=
+uired to send=20
+few staging driver cleanup patches to re-familiarize yourself with the=20
+process before you start to work on tasks.
+
+There is a tips section at the end of the tutorial to outline what behavior=
+s we=20
+look for in potential Outreachy interns. I hope this will give more insight=
+=20
+into our selection process.
+
+All the best!
+
 ---
- drivers/staging/rtl8188eu/include/rtw_debug.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Vaishali Thakkar
+Outreachy Linux Kernel Co-coordinator
 
-diff --git a/drivers/staging/rtl8188eu/include/rtw_debug.h b/drivers/staging/rtl8188eu/include/rtw_debug.h
-index 9cc4b8c..33bc7f5 100644
---- a/drivers/staging/rtl8188eu/include/rtw_debug.h
-+++ b/drivers/staging/rtl8188eu/include/rtw_debug.h
-@@ -106,9 +106,9 @@ extern u32 GlobalDebugLevel;
- 					 (((__i + 1) % 4) == 0) ?	\
- 					 "  " : " ");	\
- 				if (((__i + 1) % 16) == 0)		\
--					printk("\n");			\
-+					pr_info("\n");			\
- 			}						\
--			printk("\n");					\
-+			pr_info("\n");					\
- 		}							\
- 	} while (0)
- 
--- 
-2.7.4
+------=_Part_316_1314620974.1537434281148
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
+<div dir=3D"ltr"><span style=3D"font-size: small;">Greetings potential Linu=
+x kernel=C2=A0</span>Outreachy<span style=3D"font-size: small;">=C2=A0inter=
+ns!</span><br style=3D"font-size: small;"><br style=3D"font-size: small;"><=
+span style=3D"font-size: small;">Please read this *entire* email, even if y=
+ou have applied in the past.</span><br style=3D"font-size: small;"><br styl=
+e=3D"font-size: small;"><span style=3D"font-size: small;">What is=C2=A0</sp=
+an>Outreachy<span style=3D"font-size: small;">?</span><br style=3D"font-siz=
+e: small;"><span style=3D"font-size: small;">---------------------------</s=
+pan><br style=3D"font-size: small;"><br style=3D"font-size: small;"><span s=
+tyle=3D"font-size: small;">The next application round for=C2=A0</span>Outre=
+achy<span style=3D"font-size: small;">=C2=A0internships starts from Septemb=
+er 19,=C2=A0</span>2018<span style=3D"font-size: small;">=C2=A0and ends on =
+October 30, 2018. =C2=A0</span>Outreachy<span style=3D"font-size: small;">=
+=C2=A0interns will be paid $5,500 to work on a full-time internship with an=
+ open source mentor from December 4,=C2=A0</span>2018<span style=3D"font-si=
+ze: small;">=C2=A0to March 4, 2019. Interns will also be granted a $500 tra=
+vel stipend to go to any conference approved by their mentor that relates t=
+o their project.</span><br style=3D"font-size: small;"><br style=3D"font-si=
+ze: small;"><span style=3D"font-size: small;">Who can apply?</span><br styl=
+e=3D"font-size: small;"><span style=3D"font-size: small;">-----------------=
+------</span><br style=3D"font-size: small;"><br style=3D"font-size: small;=
+"><span style=3D"font-size: small;">To qualify to apply for=C2=A0</span>Out=
+reachy<span style=3D"font-size: small;">, you MUST complete eligibility cri=
+teria here: https://www.outreachy.org/apply/eligibility/.</span><br style=
+=3D"font-size: small;"><br style=3D"font-size: small;"><span style=3D"font-=
+size: small;">Contact the=C2=A0</span>Outreachy<span style=3D"font-size: sm=
+all;">=C2=A0organizers (https://www.outreachy.org/contact/organizers/) if y=
+ou will be in=C2=A0</span>auniversity<span style=3D"font-size: small;">=C2=
+=A0between December 4,=C2=A0</span>2018<span style=3D"font-size: small;">=
+=C2=A0to March 4,=C2=A0</span>2019<span style=3D"font-size: small;">=C2=A0o=
+r have any questions about your eligibility.</span><br style=3D"font-size: =
+small;"><br style=3D"font-size: small;"><span style=3D"font-size: small;">W=
+hat=C2=A0</span>Outreachy<span style=3D"font-size: small;">=C2=A0projects c=
+an you apply to?</span><br style=3D"font-size: small;"><span style=3D"font-=
+size: small;">-------------------------------------------------------------=
+</span><br style=3D"font-size: small;"><br style=3D"font-size: small;"><spa=
+n style=3D"font-size: small;">There will be several different open source p=
+rojects participating in this round of=C2=A0</span>Outreachy<span style=3D"=
+font-size: small;">. The full list can be found here:</span><br style=3D"fo=
+nt-size: small;"><br style=3D"font-size: small;"><span style=3D"font-size: =
+small;">https://www.outreachy.org/communities/cfp/</span><br style=3D"font-=
+size: small;"><br style=3D"font-size: small;"><span style=3D"font-size: sma=
+ll;">The Linux Kernel expects to offer eight projects, some of which are al=
+ready listed on Linux kernel community page on=C2=A0</span>Outreachy<span s=
+tyle=3D"font-size: small;">=C2=A0website and others will be added in upcomi=
+ng days. Projects will be visible to applicants only after they complete th=
+e eligibility check.</span><br style=3D"font-size: small;"><br style=3D"fon=
+t-size: small;"><span style=3D"font-size: small;">How do I apply to the Lin=
+ux kernel project via=C2=A0</span>Outreachy&#39;s<span style=3D"font-size: =
+small;">=C2=A0website?</span><br style=3D"font-size: small;"><span style=3D=
+"font-size: small;">-------------------------------------------------------=
+-----------------------------------------</span><br style=3D"font-size: sma=
+ll;"><br style=3D"font-size: small;"><span style=3D"font-size: small;">1. F=
+ill out the eligibility check form on the=C2=A0</span>Outreachy<span style=
+=3D"font-size: small;">=C2=A0website</span><br style=3D"font-size: small;">=
+<br style=3D"font-size: small;"><span style=3D"font-size: small;">2. Work o=
+n Linux kernel tutorial</span><br style=3D"font-size: small;"><br style=3D"=
+font-size: small;"><span style=3D"font-size: small;">Basically, applicants =
+will need to walk through our tutorial for creating their first Linux kerne=
+l patch: http://kernelnewbies.org/Outreachyfirstpatch</span><br style=3D"fo=
+nt-size: small;"><br style=3D"font-size: small;"><span style=3D"font-size: =
+small;">It is not necessary to contact a mentor before starting the tutoria=
+l.</span><br style=3D"font-size: small;"><br style=3D"font-size: small;"><s=
+pan style=3D"font-size: small;">3. Work on cleanup patches</span><br style=
+=3D"font-size: small;"><br style=3D"font-size: small;"><span style=3D"font-=
+size: small;">As specified in our tutorial we require=C2=A0</span>Outreachy=
+<span style=3D"font-size: small;">=C2=A0applicants to first get accepted at=
+ least 10 Staging driver cleanup patches.=C2=A0</span><br style=3D"font-siz=
+e: small;"><br style=3D"font-size: small;"><span style=3D"font-size: small;=
+">4. Once your first patch is accepted, add that as a contribution for the =
+project(s)you&#39;re interested in applying for. This will then allow you t=
+o submit an application. Note that you&#39;ll need to apply for each projec=
+t separately.</span><br style=3D"font-size: small;"><br style=3D"font-size:=
+ small;"><span style=3D"font-size: small;">5. Once applicants have complete=
+d working on 10 cleanup patches, we encourage applicants to move on to comp=
+lete some small tasks outlined by the mentors. It=E2=80=99s preferable to C=
+C the mentor when you=C2=A0</span>are =C2=A0working<span style=3D"font-size=
+: small;">=C2=A0on the task so that they don=E2=80=99t miss it. Small tasks=
+ for the projects can be found in the project detail here:</span><br style=
+=3D"font-size: small;"><br style=3D"font-size: small;"><span style=3D"font-=
+size: small;">=C2=A0 =C2=A0 https://www.outreachy.org/2018-may-august/commu=
+nities/linux-kernel/</span><br style=3D"font-size: small;"><span style=3D"f=
+ont-size: small;">=C2=A0 =C2=A0=C2=A0</span><br style=3D"font-size: small;"=
+><span style=3D"font-size: small;">Note that you&#39;ll be able to see the =
+detailed information about projects on=C2=A0</span>Outreachy&#39;s<span sty=
+le=3D"font-size: small;">=C2=A0website only after completing eligibility fo=
+rm check.</span><br style=3D"font-size: small;"><br style=3D"font-size: sma=
+ll;"><span style=3D"font-size: small;">6. Keep editing your &#39;project co=
+ntribution&#39; on=C2=A0</span>Outreachy&#39;s<span style=3D"font-size: sma=
+ll;">=C2=A0website based on your accepted patches links and=C2=A0</span>pro=
+ject specific<span style=3D"font-size: small;">=C2=A0completion of tasks</s=
+pan><br style=3D"font-size: small;"><br style=3D"font-size: small;"><span s=
+tyle=3D"font-size: small;">7. Make sure to add your project preferences und=
+er the question &#39;Community-specific Questions&#39; in the application</=
+span><br style=3D"font-size: small;"><br style=3D"font-size: small;"><span =
+style=3D"font-size: small;">Applicants should also join the #outreachy IRC =
+channel on=C2=A0</span>irc.gnome.org,<span style=3D"font-size: small;">=C2=
+=A0and the #kernel-</span>outreachy<span style=3D"font-size: small;">=C2=A0=
+channel on irc.oftc.net. =C2=A0If you&#39;re having trouble with IRC, pleas=
+e ask for help on this mailing list.</span><br style=3D"font-size: small;">=
+<br style=3D"font-size: small;"><span style=3D"font-size: small;">If you=E2=
+=80=99ve applied in the=C2=A0</span>Outreachy<span style=3D"font-size: smal=
+l;">=C2=A0before, you=E2=80=99re still required to send few staging driver =
+cleanup patches to re-familiarize yourself with the process before you star=
+t to work on tasks.</span><br style=3D"font-size: small;"><br style=3D"font=
+-size: small;"><span style=3D"font-size: small;">There is a tips section at=
+ the end of the tutorial to outline what=C2=A0</span>behaviors<span style=
+=3D"font-size: small;">=C2=A0we look for in potential=C2=A0</span>Outreachy=
+<span style=3D"font-size: small;">=C2=A0interns. I hope this will give more=
+ insight into our selection process.</span><br style=3D"font-size: small;">=
+<br style=3D"font-size: small;"><span style=3D"font-size: small;">All the b=
+est!</span><br style=3D"font-size: small;"><br style=3D"font-size: small;">=
+<span style=3D"font-size: small;">---</span><br style=3D"font-size: small;"=
+><span style=3D"font-size: small;">Vaishali Thakkar</span><br style=3D"font=
+-size: small;">Outreachy<span style=3D"font-size: small;">=C2=A0Linux Kerne=
+l Co-coordinator</span><br></div>
+------=_Part_316_1314620974.1537434281148--
+
+------=_Part_315_1479496182.1537434281148--
 
