@@ -1,119 +1,124 @@
 X-GM-THRID: 6607095314902941696
-X-Received: by 2002:a50:b602:: with SMTP id b2-v6mr2592834ede.6.1538338741589;
-        Sun, 30 Sep 2018 13:19:01 -0700 (PDT)
+X-Received: by 2002:ac2:42ca:: with SMTP id n10-v6mr188229lfl.16.1538334263194;
+        Sun, 30 Sep 2018 12:04:23 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a50:d716:: with SMTP id t22-v6ls10151418edi.4.gmail; Sun, 30
- Sep 2018 13:19:00 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV61dpcXofQGXFv6Xkx2G3xc39tVAGNyqERjfgDGJGu5FZ7t8ymjmQ6o6AToFzFsdQ+tKD8y0
-X-Received: by 2002:aa7:c592:: with SMTP id g18-v6mr2593802edq.10.1538338740743;
-        Sun, 30 Sep 2018 13:19:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538338740; cv=none;
+Received: by 2002:a2e:6354:: with SMTP id x81-v6ls1615756ljb.15.gmail; Sun, 30
+ Sep 2018 12:04:22 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV634r0r84ydhKE7himqnPFH+PbdYPV+HyTG/AfUygzHzZoLa51VuKBkqVlGsW0CjMLqlEX1m
+X-Received: by 2002:a2e:9bce:: with SMTP id w14-v6mr188153ljj.30.1538334262552;
+        Sun, 30 Sep 2018 12:04:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538334262; cv=none;
         d=google.com; s=arc-20160816;
-        b=rGgMFG7lrzHzY3jHTY1/YGi9GPx1SzYcG967JJv2yyV8HyiHc+VU8eJjC1tzgQqVQ9
-         wPeqg0SZkm5L6AIAlm9XZghYOyRKmucoJOXCQHe+xFhZF/Iw42H94+cZ4pgfsSNnqE2d
-         2rjEPgMXvL+XaAu2HgOhZRq5mISeK1fhQfVIAERLfA4LrVW+L/Fjkr1WAOnv4C/tZD6+
-         rz4LTXb8KvWSRwpJ3GJ4k+83EkNYKtJQDY9AIY24qI6z41BVzxpI9HMWJGSU1FcetBdh
-         1YGc+4HmQmWGucZPz4KWApaX2gLr7asnC95Utl24oe1ZMw0RZuibvXHI+YY9Wzi8wPQ8
-         oOlA==
+        b=WDs80wJHyYZ5HUMafHf2Anc/V/3OlgoJM7a5ZAajOhgM3ksb7OxwNtP9zj4BDOTzxz
+         pKhB2PmMNAiDeEUtRsaeLRN7PKk78wJEeVYWsSMZr86WqN+0zBhkF83EWhbdm5nT6OwE
+         xe95baCK3/ZV6nfVo64eztlJhbYD3XSn1sWnNL7IBdq9xUpwd5QGzcCWen+4jsJdhQSF
+         7T8eRI3bCCzKmBKzlSqS9nSNuKwFsY0TTE+5D1Leq1Kv8w/49MGu2AS4OR+VMVQZUkUq
+         C/XFcwqIhdjhiHRGYc9PYNNB/EePXhZuwqdjbqxQU7fZCkUSl3xmdLgIWhwoftuiqKvj
+         9V1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=sXozhfKUAwuoH/NBvRPbY3EYVDV7s/4R3CeDJe0Tk7c=;
-        b=NRsHpj9U3+64XdU6mB2gtHxegsQlGCavvdNYU/qmfiM2SHUdtbFnTIupI6YHzrLBNh
-         lKqcUlmiaBXuxg53WwakM9u1OdBAqTYyqxMPEZA7ua0KT19d1hfYhDLd9DJdGwQyCHqi
-         Nfk2WZOUxn2C7+QoJfJTnX2+nBpplCTzKAu+5TJYuPT11rhjeJJrXCoRMQbuE/g/Tvdj
-         Emkdhgnt2/5bdDwbig2KKJ5aWJayhZpx5SAmOEyA+putDcYN/4Z5aI5ceuMrCfssaQZB
-         5AK+BXjgxtiPUO9Tgv9DCAxaMOBn4ZaTXlwtivjVwEbuBdC6PXpg4V3Chxl3PdhIXtoZ
-         Dlbw==
+        h=references:in-reply-to:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature;
+        bh=GJnCkKGPNCa/KV+Xi4pFKLChS0p5Q5Ul7bnoeoHLr5Y=;
+        b=EsMIhIsNKNaaABaHu6DWdP5GYl/cZLbxN3AuS1YmfyvFkiGbLDnv+O4J7aukS1sBq5
+         0fDZ+m6VKod6zmcs5W1/ZJ4vJt2n3q8KQ6dXO8YfGdj8ZM2qLedLCfkCuSdJl6/Zd6Hj
+         sHjpkwW4lRSsGBsYkroGgHJFDNyGZyNuRwOUNVI/bIkC0gXWEwbNdqPVO85ucLytoqWV
+         q8KFjoAqQaPp/7cPjTGc2/2DpZ+wMRCEeq4Lq1qm5hsEJy5wO8Gp/VsHx9ZLXXqrQsJw
+         YCf6u2d8Rpu3sFPkq6HmdYqyR01iX5fkv77s9zgpZPFKxABK1FbY1DZOcVSq8+ymLbmA
+         4qsg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id b23-v6si521096edn.1.2018.09.30.13.19.00
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="IqOao/k2";
+       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=dafna3@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <dafna3@gmail.com>
+Received: from mail-wr1-x442.google.com (mail-wr1-x442.google.com. [2a00:1450:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id z8-v6si370019lji.3.2018.09.30.12.04.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 30 Sep 2018 13:19:00 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sun, 30 Sep 2018 12:04:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) client-ip=2a00:1450:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.54,325,1534802400"; 
-   d="scan'208";a="348703867"
-Received: from 89-157-201-244.rev.numericable.fr (HELO hadrien) ([89.157.201.244])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 30 Sep 2018 22:18:42 +0200
-Date: Sun, 30 Sep 2018 22:18:42 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Dafna Hirschfeld <dafna3@gmail.com>
-cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 1/3] staging: mt7621-mmc: remove
- unnecessary braces from 'if' statements
-In-Reply-To: <bf3ba7a38f000d4359c4c56fac98f17ae3ef6a2b.1538333858.git.dafna3@gmail.com>
-Message-ID: <alpine.DEB.2.21.1809302217480.2863@hadrien>
-References: <cover.1538333858.git.dafna3@gmail.com> <bf3ba7a38f000d4359c4c56fac98f17ae3ef6a2b.1538333858.git.dafna3@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="IqOao/k2";
+       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=dafna3@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wr1-x442.google.com with SMTP id z4-v6so10054625wrb.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 30 Sep 2018 12:04:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=GJnCkKGPNCa/KV+Xi4pFKLChS0p5Q5Ul7bnoeoHLr5Y=;
+        b=IqOao/k2juQIt3g9EkDfMXCeYHdm/zra2NGr9gwsWUecUoBe3996yJ1pM+aKtyp0lK
+         4duyeHHuSA6/hXjoxDBGFvLFquyyckMzTXZ/Oyp8CF4ofQTElCaB3xmcA2l7wdHgg9Iq
+         cVaF6E/QU9ZTA0qjShjIt9m5hCp3QP0yXEg8O4NtS/UPeFo684EbtM/aJQO0K4X7/nJG
+         g1AN9Y/honkD+0QcTWfJFKQMAxbgzBZtwEGComi0Q5XCC7B00maiFIHF7gGxltGnd8GH
+         lSsqgGUeJtlPot0o1DYRzSqwS8I7Cwgm6mDI/m6i6ko5+wgSYWwVYpzO4XnikMUr9d7o
+         Z2+g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=GJnCkKGPNCa/KV+Xi4pFKLChS0p5Q5Ul7bnoeoHLr5Y=;
+        b=kI/S0sJXN0QjhC97rUvQjgV4E5/7hjoRIsengfF0pfaKsNjZvsfuf1pO4PgnvUZPZR
+         eYRb4ACYWQIXoaqjETGUD460/rix4NVxvAanWJrBozCJoQ0bpsjueHgptD27Sjl5g5pQ
+         Hh/+enY7oT7bqhe2bS4GXjEZy/aN7SVvMw2pWXdm1iL75sMlY3luFU8QPXcoO9u5svkh
+         DW1Q4ZNrKbaV4zQ8G1a8donTKssWgsEG3VOtfZ4ZU+yPw84EA2nNzg+YBkd/yhOVOSmH
+         kSpSlmHSJoMpw13ckTokE/h1Qbu1Jmqaxjp82D82EiLw7TLCNEOiScWkcMpIuBy0W7q2
+         HjPA==
+X-Gm-Message-State: ABuFfoj1c0k+o/TuBRxCwmjms75Pl0ZeLXnUL/XVJ3mc8S6nZtv0U3cU
+	pch0DP+WPgllaCT+6An6p0/PJQGVvwQ=
+X-Received: by 2002:adf:8385:: with SMTP id 5-v6mr4771837wre.13.1538334261902;
+        Sun, 30 Sep 2018 12:04:21 -0700 (PDT)
+Return-Path: <dafna3@gmail.com>
+Received: from vdoo.home ([77.127.1.188])
+        by smtp.gmail.com with ESMTPSA id n4-v6sm10657610wrr.21.2018.09.30.12.04.20
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 30 Sep 2018 12:04:21 -0700 (PDT)
+From: Dafna Hirschfeld <dafna3@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com,
+	dafna3@gmail.com
+Subject: [PATCH 3/3] staging: mt7621-mmc: replace `printk` with preferred API
+Date: Sun, 30 Sep 2018 22:04:04 +0300
+Message-Id: <5afd2a76fb8c8ec834daff06b51df00e45c5aba5.1538333858.git.dafna3@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <cover.1538333858.git.dafna3@gmail.com>
+References: <cover.1538333858.git.dafna3@gmail.com>
+In-Reply-To: <cover.1538333858.git.dafna3@gmail.com>
+References: <cover.1538333858.git.dafna3@gmail.com>
 
+Replace calls to `printk` with `dev_info` and `pr_err`
+Issues found with checkpatch.pl
 
+Signed-off-by: Dafna Hirschfeld <dafna3@gmail.com>
+---
+ drivers/staging/mt7621-mmc/sd.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-On Sun, 30 Sep 2018, Dafna Hirschfeld wrote:
+diff --git a/drivers/staging/mt7621-mmc/sd.c b/drivers/staging/mt7621-mmc/sd.c
+index f2955fae7b28..c21103aed2dc 100644
+--- a/drivers/staging/mt7621-mmc/sd.c
++++ b/drivers/staging/mt7621-mmc/sd.c
+@@ -1695,8 +1695,8 @@ static irqreturn_t msdc_irq(int irq, void *dev_id)
+ 
+ 	/* mmc irq interrupts */
+ 	if (intsts & MSDC_INT_MMCIRQ)
+-		printk(KERN_INFO "msdc[%d] MMCIRQ: SDC_CSTS=0x%.8x\r\n",
+-		       host->id, readl(host->base + SDC_CSTS));
++		dev_info(mmc_dev(host->mmc), "msdc[%d] MMCIRQ: SDC_CSTS=0x%.8x\r\n",
++			host->id, readl(host->base + SDC_CSTS));
+ 
+ 	return IRQ_HANDLED;
+ }
+@@ -2131,7 +2131,7 @@ static int __init mt_msdc_init(void)
+ 
+ 	ret = platform_driver_register(&mt_msdc_driver);
+ 	if (ret) {
+-		printk(KERN_ERR DRV_NAME ": Can't register driver");
++		pr_err("%s: Can't register driver", DRV_NAME);
+ 		return ret;
+ 	}
+ 
+-- 
+2.17.1
 
-> Remove unnecessary braces from one line 'if' statements.
-> Issues found with checkpatch.pl
->
-> Signed-off-by: Dafna Hirschfeld <dafna3@gmail.com>
-> ---
->  drivers/staging/mt7621-mmc/sd.c | 9 +++------
->  1 file changed, 3 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/staging/mt7621-mmc/sd.c b/drivers/staging/mt7621-mmc/sd.c
-> index e3c1546373ba..8c32cec5950a 100644
-> --- a/drivers/staging/mt7621-mmc/sd.c
-> +++ b/drivers/staging/mt7621-mmc/sd.c
-> @@ -520,9 +520,8 @@ static void msdc_pm(pm_message_t state, void *data)
->  		host->pm_state = state;  /* default PMSG_RESUME */
->
->  	} else if (evt == PM_EVENT_RESUME || evt == PM_EVENT_USER_RESUME) {
-> -		if (!host->suspend) {
-> +		if (!host->suspend)
->  			return;
-> -		}
->
->  		/* No PM resume when USR suspend */
->  		if (evt == PM_EVENT_RESUME && host->pm_state.event == PM_EVENT_USER_SUSPEND) {
-> @@ -967,16 +966,14 @@ static int msdc_do_request(struct mmc_host *mmc, struct mmc_request *mrq)
->  	//if(host->id==1) {
->  	if (send_type == SND_CMD) {
->  		if (cmd->opcode == MMC_SEND_STATUS) {
-> -			if ((cmd->resp[0] & CARD_READY_FOR_DATA) || (CARD_CURRENT_STATE(cmd->resp[0]) != 7)) {
-> +			if ((cmd->resp[0] & CARD_READY_FOR_DATA) || (CARD_CURRENT_STATE(cmd->resp[0]) != 7))
-
-This line is really long.  Since you have sent a series on this code,
-maybe you can add in another patch to clean this up.
-
-julia
-
->  				msdc_gate_clock(host->id);
-> -			}
->  		} else {
->  			msdc_gate_clock(host->id);
->  		}
->  	} else {
-> -		if (read) {
-> +		if (read)
->  			msdc_gate_clock(host->id);
-> -		}
->  	}
->  	//}
->  #else
-> --
-> 2.17.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/bf3ba7a38f000d4359c4c56fac98f17ae3ef6a2b.1538333858.git.dafna3%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
