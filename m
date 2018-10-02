@@ -1,127 +1,132 @@
 X-GM-THRID: 6607095314902941696
-X-Received: by 2002:a19:d8a1:: with SMTP id r33-v6mr488554lfi.7.1538511893188;
-        Tue, 02 Oct 2018 13:24:53 -0700 (PDT)
+X-Received: by 2002:a17:906:3590:: with SMTP id o16-v6mr3659084ejb.1.1538511445929;
+        Tue, 02 Oct 2018 13:17:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a19:51d9:: with SMTP id g86-v6ls1414789lfl.23.gmail; Tue, 02
- Oct 2018 13:24:52 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV61HuzfLShgXGLdEerep0L5KpcGLsHq6L1gIWDpY/xyQSMxf0OjEdSCZD9WjIPKjjkOSWWpF
-X-Received: by 2002:a19:12c9:: with SMTP id 70-v6mr484215lfs.3.1538511892347;
-        Tue, 02 Oct 2018 13:24:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538511892; cv=none;
+Received: by 2002:a50:9593:: with SMTP id w19-v6ls1662268eda.11.gmail; Tue, 02
+ Oct 2018 13:17:25 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV60s3iTTDY+iOEM6njPlPiuBMuNOFXFJhPBhpE9aaIIkQMEcepzXjS8vXM2pHQz5Mm1sB5Xi
+X-Received: by 2002:a50:89fc:: with SMTP id h57-v6mr2512479edh.4.1538511445226;
+        Tue, 02 Oct 2018 13:17:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538511445; cv=none;
         d=google.com; s=arc-20160816;
-        b=zfr+OdC5fa+tDKDZ0bX8wQ0ailKn8OOoJWu6jVXBXAsGQ2oKmERwWqECcNij8tPTn0
-         YBcOouSeapjYzj+2FquAV1VAZqzFc0riXhe2mK6Y2ZN22WgOkg8TmGLL4BwzszoNngS5
-         WDqa9t3I1DZn0nk2BxLj11lz5qWj7F871l1GFVwPhk85gz2OdgrKggTSDNN+6+WmxHw6
-         gcEUhBHtN5hr0mARGZMqKEZo2n1ON2+Gdm57+FEInlSPPIJU+dbKwvK3gGapvtct18kr
-         AQL7RaTxyxc/1lMlPB2u1QyROEFCqq4bEsPAecpVD+Gn7Y3fH0+6ND2ksikUEcERsj31
-         tOYQ==
+        b=mXgqNB6cRLJfTuhGeEc1GqEcyHyI8Qgab4MRQAiwFjLWVh2Rdj6BaD28ZUxrQSWnOR
+         ktYKYMKp+BiU/gFXNDbb8RBmG2JniXxd3gSfzktsI23Ao61DxcwN07NSFtomaYZh90qH
+         I+EBssC0kTahNpa3ASZuuhc/UNwZnXJEHP33QnOJRSRnCYJvNZmqX2eCAw50rjwDxGem
+         51sHe5K1fOmXEXq81oUxqLAiXVzk8Uba0tJrwM2HHTOK4HmNHFWLeObMpHYOc8jmYaGr
+         OPHUMsbB8Z4/yj1LH1L8yDWZZ5Ooe1rz1o1QczE1AgimRwyiz3tHQHQRqYyl8xkdrKSE
+         aCWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=rzID2VHG0hCUMa7HbEMVh0/b1mZF4S/uiSiKvQVvP0s=;
-        b=E+R3X+zmczV6ZtKBau50gqhH64Y9mjSR579saWYksqypMbmL433eBAeE2hOQkH9e9Z
-         MRT8cubIbg/wX3T3nidNa97AcfQJumLDMlpZmnE9934HfBE7UJ5Qa+rC4F8mOwE1Z91D
-         To+jj4In6K0YE3lHv/3JChBe4PLhJ7uyHqUDMQCnYU75ErEM82Rmw6Gg/EoelxR7c7Id
-         04KHSePm/cUnJ9lYNaM/y/LW0Mgwg+CetYz8wxIrsYdm9bKork63F8lxnoD336t6PLAt
-         Vrq+sAczOhm/ivcIwwyJE7bqLc5m7CADj8DvnqDa5BVxX3s+APW0nPXl8yMbysSr+cNL
-         jovg==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=yV0mYXGkTQXbHTtnnGE/TzTQxLdkck1H2ixaBPlIFqQ=;
+        b=sFkNWtaFTZzhgTnU1pRSrzLaPWlo9SxkclS/yyUfrjsFOffVmXx30PgCrDYA8CUkCp
+         wuXnM6zmSwgg8wpBoyPrpoj5Ly01d8kS0dA6KQxDnYJYVYJEHA97DnapqKK71VMIv8FQ
+         sIGDvTvk9dphyAAawRJODzRZDQgmgwC7lE4wz1KLOGVTVY5w+2mVOASzQNhjandbSvMC
+         2jeRZtTi+DYXbbZR+QuZtaS/36cN/qSxSbH0gNg0J3K2IITAsO3kYt7Iqegpz3Gfui5T
+         CXgT4UUW9RIOGWXocGZffcJmDwccNhB4Ku4XGR/gq/tl1YnH33i8StyWJcoj5t4Vxz1h
+         MZcQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id n81-v6si141086lfi.0.2018.10.02.13.24.51
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=o8pUqc4Z;
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=vthakkar1994@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <vthakkar1994@gmail.com>
+Received: from mail-wr1-x441.google.com (mail-wr1-x441.google.com. [2a00:1450:4864:20::441])
+        by gmr-mx.google.com with ESMTPS id f18-v6si520475edj.3.2018.10.02.13.17.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 02 Oct 2018 13:24:52 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Tue, 02 Oct 2018 13:17:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) client-ip=2a00:1450:4864:20::441;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.54,333,1534802400"; 
-   d="scan'208";a="280714855"
-Received: from 89-157-201-244.rev.numericable.fr (HELO hadrien) ([89.157.201.244])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 02 Oct 2018 22:24:51 +0200
-Date: Tue, 2 Oct 2018 22:24:50 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Himanshu Jha <himanshujha199640@gmail.com>
-cc: Dafna Hirschfeld <dafna3@gmail.com>, gregkh@linuxfoundation.org, 
-    outreachy-kernel@googlegroups.com, hdegoede@redhat.com
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=o8pUqc4Z;
+       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=vthakkar1994@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wr1-x441.google.com with SMTP id e4-v6so3667643wrs.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 02 Oct 2018 13:17:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=yV0mYXGkTQXbHTtnnGE/TzTQxLdkck1H2ixaBPlIFqQ=;
+        b=o8pUqc4Z7G+fCrohvNBIL5tEMjVoUwD0eLljjecy3rjUg7e05mAfu0P9qpL2GNUtuQ
+         fyCuM/63FxMXirnuaL9xfcKVPZvG5Ms6pPgSVOWMeNmKIgjiGJUApj5YJY+bhPeXLe6H
+         ZtVzJL6SGFORN9H9QVYcB9kNAUWUxsviFPI9lg36a2VY9BLWoCeqt08DjJDsjZlhg4aQ
+         LDr+wPb6db80gndgyYwyBmlQQJxmYb/uW4rX0ztQFgFH7de5jJ2QqX0c97hWX2yc5W5g
+         jUAJ5UgdC+UU1lyj1bB7Jx6LiWHIi+Zz2VPCgS1ha3ouWo7FijFaZ7GYvhB2ykwzPalM
+         P8sg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=yV0mYXGkTQXbHTtnnGE/TzTQxLdkck1H2ixaBPlIFqQ=;
+        b=ok4auiPH8mBd6gB1MROlEdr4OPmTqNcXCdtFXEE3ufY4uEfEWBjrXofo9ZK/NUrA+X
+         MemvHdLQym+q4/WCbF334EuyxJ9wl0PeosrR/Eujyh51QtcBVzvSN7DQL5RJwzP9UtNY
+         wp1isMehF2EKxoDV/mLe5dxibHmffwl6smn9tAc39eo96Rf44QeiZVJdyv7IhLUeKaV3
+         YEcOnlnNHgbB8CaUiPSHK7YnnK7OuqpJ3dFyWgvIX7eUGv2OkaAebKDaDjnfVW6VRVWB
+         nhHQw3RHVjhlCssnHdTDyOrCNB4ZtYtUAP3q1neBjkw2ggJRHZrrCHkdH94KTozD35ug
+         kCWw==
+X-Gm-Message-State: ABuFfog8J3Ahf71kTBpM5Q52r9igtE7wSmaHEvp9tbn8kTcnXscDJhRB
+	Ve8QxCN0msWAXjMEXRBbSw8kkC7qUSa4h7XzTLA=
+X-Received: by 2002:a5d:4101:: with SMTP id l1-v6mr7729122wrp.45.1538511444646;
+ Tue, 02 Oct 2018 13:17:24 -0700 (PDT)
+MIME-Version: 1.0
+References: <cover.1538333858.git.dafna3@gmail.com> <bf3ba7a38f000d4359c4c56fac98f17ae3ef6a2b.1538333858.git.dafna3@gmail.com>
+ <alpine.DEB.2.21.1809302217480.2863@hadrien> <CAJ1myNR7951qEF6hpN8DRJ-hmckXMOzZWnzBJWrYqdaRoPLb2g@mail.gmail.com>
+ <alpine.DEB.2.20.1810011047210.3464@hadrien> <CAJ1myNRcjyn+GoR--7uoq4iK4Go5adEkEitX=gDd4FDPnbqPeQ@mail.gmail.com>
+ <20181002092816.GA7179@himanshu-Vostro-3559> <CAJ1myNQrZqex6nFfq9Uh1qYK94PVOE_mxUZf7wK0chDXtP74iQ@mail.gmail.com>
+ <20181002200507.GA26645@himanshu-Vostro-3559>
+In-Reply-To: <20181002200507.GA26645@himanshu-Vostro-3559>
+From: Vaishali Thakkar <vthakkar1994@gmail.com>
+Date: Wed, 3 Oct 2018 01:47:13 +0530
+Message-ID: <CAK-LDbJBE8=TeQkVrspFH620=pNrVFgqTZfAnMaOpLEQhv57pg@mail.gmail.com>
 Subject: Re: [Outreachy kernel] [PATCH 1/3] staging: mt7621-mmc: remove
  unnecessary braces from 'if' statements
-In-Reply-To: <20181002200507.GA26645@himanshu-Vostro-3559>
-Message-ID: <alpine.DEB.2.21.1810022211150.2806@hadrien>
-References: <cover.1538333858.git.dafna3@gmail.com> <bf3ba7a38f000d4359c4c56fac98f17ae3ef6a2b.1538333858.git.dafna3@gmail.com> <alpine.DEB.2.21.1809302217480.2863@hadrien> <CAJ1myNR7951qEF6hpN8DRJ-hmckXMOzZWnzBJWrYqdaRoPLb2g@mail.gmail.com>
- <alpine.DEB.2.20.1810011047210.3464@hadrien> <CAJ1myNRcjyn+GoR--7uoq4iK4Go5adEkEitX=gDd4FDPnbqPeQ@mail.gmail.com> <20181002092816.GA7179@himanshu-Vostro-3559> <CAJ1myNQrZqex6nFfq9Uh1qYK94PVOE_mxUZf7wK0chDXtP74iQ@mail.gmail.com>
- <20181002200507.GA26645@himanshu-Vostro-3559>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
-MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-483107017-1538511891=:2806"
+To: Himanshu Jha <himanshujha199640@gmail.com>
+Cc: dafna3@gmail.com, Julia Lawall <julia.lawall@lip6.fr>, 
+	Greg KH <gregkh@linuxfoundation.org>, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>, hdegoede@redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
-
---8323329-483107017-1538511891=:2806
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
-
-
-
-On Wed, 3 Oct 2018, Himanshu Jha wrote:
-
-> > > Hi, I choose the CONFIG_PCI option, it did solve the undefined symbols,
+On Wed, Oct 3, 2018 at 1:35 AM Himanshu Jha <himanshujha199640@gmail.com> w=
+rote:
+>
+> > > Hi, I choose the CONFIG_PCI option, it did solve the undefined symbol=
+s,
 > > but the file still does not compile starting with the error:
 > >
-> > drivers/staging/mt7621-pci/pci-mt7621.c:496:27: error: ‘port’ undeclared
-> > (first use in this function); did you mean ‘ror8’?
+> > drivers/staging/mt7621-pci/pci-mt7621.c:496:27: error: =E2=80=98port=E2=
+=80=99 undeclared
+> > (first use in this function); did you mean =E2=80=98ror8=E2=80=99?
 > >   list_for_each_entry_safe(port, tmp, &pcie->ports, list) {
 > >
-> > I saw that in other usages of list_for_each_entry_safe, the first parameter
+> > I saw that in other usages of list_for_each_entry_safe, the first param=
+eter
 > > is a local variable.
 >
 > Correct! Both port & tmp should be a local variable of the same object
 > type.
-
-I don't think it is necessary for either of them to be local variables.
-It might be a bit strange for them to be global variables, but there isn't
-any intrinsic problem.  Of course, it is necessary for the variable to be
-declared somewhere, which does not seem to be the case here.
-
-Actually, one could take a moment to think about why these variables have
-to already be declared.  Indeed, if the loop exits in a normal way, then
-the first argument ends up pointing to the head of the list, which is a
-dummy value and not useful for much of anything.  Referring to it is
-typically a bug.  But sometimes it is useful to break out of such a loop,
-so then the variable has to be visible in the enclosing scope.
-
-I'm not sure if there is any practical use of having the temporary
-variable in the second argument of list_for_each_entry_safe have a
-lifetime outside of the loop.  It is just a pointer to get from one
-element to the next one, in case the element that the first argument is
-pointing to is removed from the list.  But it is necessary to be able to
-specify the name for this variable, to be sure that it doesn't conflict
-with anything else, and then it might be considered strange for a macro to
-be declaring new variables; it is safer to have the scope of the variable
-be apparent in the visible source code.
-
-julia
-
 >
-> > > > Then in run "make menuconfig" again and under "Device Drivers -> staging
+> > > > Then in run "make menuconfig" again and under "Device Drivers -> st=
+aging
 > > > > drivers" I chose "MediaTek MT7621 PCI Controller"
 > > > > Hoping it will solve it , but it didn't.
 > > > >
-> > > > The files I prepared the patchset for did compile ok , is it important
+> > > > The files I prepared the patchset for did compile ok , is it import=
+ant
 > > > that
 > > > > all files will compile?
 > > >
-> > > I think for these changes just use that .config supplied by the distro
+> > > I think for these changes just use that .config supplied by the distr=
+o
 > > > at /boot/config-*
 > > >
 > > > But IIRC `make allyesconfig` should be used(not sure though..)
 > > >
 > >
-> > But I compile on ubuntu on x86 and I want to compile to a specific mips SoC.
-> > I tried it anyway and it did not compile the file  I prepared the patch for
+> > But I compile on ubuntu on x86 and I want to compile to a specific mips=
+ SoC.
+> > I tried it anyway and it did not compile the file  I prepared the patch=
+ for
 > > (drivers/staging/mt7621-mmc/sd.c)
 >
 > Cool!
@@ -131,7 +136,15 @@ julia
 > Btw, the Cc list should contain developers who might give you
 > a better feedback. Therefore, use `get_maintainer` to list all
 > those people.
->
+
+Hi Himanshu,
+
+For Outreachy applicants, we usually do not advice to use 'get_maintainer.p=
+l'
+when it comes to sending cleanup patches and contributions to staging drive=
+rs
+[unless driver specific maintainers have asked for that].
+
 >
 > --
 > Himanshu Jha
@@ -140,11 +153,18 @@ julia
 > Guru Tegh Bahadur Institute of Technology
 >
 > --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> You received this message because you are subscribed to the Google Groups=
+ "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an=
+ email to outreachy-kernel+unsubscribe@googlegroups.com.
 > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20181002200507.GA26645%40himanshu-Vostro-3559.
+> To view this discussion on the web visit https://groups.google.com/d/msgi=
+d/outreachy-kernel/20181002200507.GA26645%40himanshu-Vostro-3559.
 > For more options, visit https://groups.google.com/d/optout.
->
---8323329-483107017-1538511891=:2806--
+
+
+
+--=20
+Vaishali
+http://vaishalithakkar.in/
 
