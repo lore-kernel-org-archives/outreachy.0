@@ -1,170 +1,147 @@
 X-GM-THRID: 6607095314902941696
-X-Received: by 2002:a17:906:3590:: with SMTP id o16-v6mr3659084ejb.1.1538511445929;
-        Tue, 02 Oct 2018 13:17:25 -0700 (PDT)
+X-Received: by 2002:aca:cf87:: with SMTP id f129-v6mr13859929oig.36.1538510717179;
+        Tue, 02 Oct 2018 13:05:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a50:9593:: with SMTP id w19-v6ls1662268eda.11.gmail; Tue, 02
- Oct 2018 13:17:25 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV60s3iTTDY+iOEM6njPlPiuBMuNOFXFJhPBhpE9aaIIkQMEcepzXjS8vXM2pHQz5Mm1sB5Xi
-X-Received: by 2002:a50:89fc:: with SMTP id h57-v6mr2512479edh.4.1538511445226;
-        Tue, 02 Oct 2018 13:17:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538511445; cv=none;
+Received: by 2002:a9d:6416:: with SMTP id h22-v6ls6351433otl.9.gmail; Tue, 02
+ Oct 2018 13:05:16 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62iSG2PinSt5Ag7b+jYRrtsOxakmE5Sn7zo7/Nbh61IEvey/HGCvfMoouphvBuQDFjp12dQ
+X-Received: by 2002:a9d:11f8:: with SMTP id y53mr7389860oty.58.1538510716500;
+        Tue, 02 Oct 2018 13:05:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538510716; cv=none;
         d=google.com; s=arc-20160816;
-        b=mXgqNB6cRLJfTuhGeEc1GqEcyHyI8Qgab4MRQAiwFjLWVh2Rdj6BaD28ZUxrQSWnOR
-         ktYKYMKp+BiU/gFXNDbb8RBmG2JniXxd3gSfzktsI23Ao61DxcwN07NSFtomaYZh90qH
-         I+EBssC0kTahNpa3ASZuuhc/UNwZnXJEHP33QnOJRSRnCYJvNZmqX2eCAw50rjwDxGem
-         51sHe5K1fOmXEXq81oUxqLAiXVzk8Uba0tJrwM2HHTOK4HmNHFWLeObMpHYOc8jmYaGr
-         OPHUMsbB8Z4/yj1LH1L8yDWZZ5Ooe1rz1o1QczE1AgimRwyiz3tHQHQRqYyl8xkdrKSE
-         aCWw==
+        b=xw8YFI6HA5H5okf/ClObr7DXWHFztXfSJcl4812DzdO6EkIGo/M3zY4NDY8NtUA2ap
+         kLfI8ucKlBJmnj1L7CbbzbYdcnSgIZIbcnFBSPRVcM+PlJ/uBt5OuSPKVQ++iNGrHmGK
+         Ghh3zUSiK9ORO2z5716qix141L1pes+JQ2qiRxXFqQxfQL3e8DoF4G5mx5yq+ScyUbje
+         wTX4TwIA+1qKoiD9zt0GWnvCfPlNcaZek3+iwT9R+djgjoownlO8vU42N5B4NGVp8pfv
+         or0Jv6fooBMGeAoD8TuByB1iRsJQ8SQRboQnmqFua61MlI4jRTF6hEdsfBZIpg1GyWKE
+         Cv0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=yV0mYXGkTQXbHTtnnGE/TzTQxLdkck1H2ixaBPlIFqQ=;
-        b=sFkNWtaFTZzhgTnU1pRSrzLaPWlo9SxkclS/yyUfrjsFOffVmXx30PgCrDYA8CUkCp
-         wuXnM6zmSwgg8wpBoyPrpoj5Ly01d8kS0dA6KQxDnYJYVYJEHA97DnapqKK71VMIv8FQ
-         sIGDvTvk9dphyAAawRJODzRZDQgmgwC7lE4wz1KLOGVTVY5w+2mVOASzQNhjandbSvMC
-         2jeRZtTi+DYXbbZR+QuZtaS/36cN/qSxSbH0gNg0J3K2IITAsO3kYt7Iqegpz3Gfui5T
-         CXgT4UUW9RIOGWXocGZffcJmDwccNhB4Ku4XGR/gq/tl1YnH33i8StyWJcoj5t4Vxz1h
-         MZcQ==
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=iqfTNWtVzVEykYeLL7N+hldbf7uF7sLhBzYvnUyAnyE=;
+        b=Tn18m0mQMIoczxSpVzPGZzR8TQATjVKFi9u19cOJ3Lbz5LwDfU4Ntu9M6PLBg6kAn2
+         2G5YD/66Ebza5YGZboosSZAQ3YdnAcIep5LJ/ihlV28rXg+CLekmk/t738LVjM9L2aV4
+         Ftp0A9v5EtxzXamNO/cYm7+Y+SZb/yGukSPf2SdoS/hcDuwKXDPJeC0vnB5+597dFjLP
+         5GeA93f5Fv2dnHfMktt935SG82Wrk8zXPxpoGQN3R/tJWDDWf4mrLrHu9m6sC8nHEjtF
+         3b05d5bfx6PYr63/sYphM0JukRsso4YWRYMmL7wj9PYB8pA9vtd72M6iIuNAXoQj5b2z
+         vCBQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=o8pUqc4Z;
-       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=vthakkar1994@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Et6M1Cq7;
+       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <vthakkar1994@gmail.com>
-Received: from mail-wr1-x441.google.com (mail-wr1-x441.google.com. [2a00:1450:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id f18-v6si520475edj.3.2018.10.02.13.17.25
+Return-Path: <himanshujha199640@gmail.com>
+Received: from mail-pl1-x641.google.com (mail-pl1-x641.google.com. [2607:f8b0:4864:20::641])
+        by gmr-mx.google.com with ESMTPS id w8-v6si824551otg.3.2018.10.02.13.05.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 02 Oct 2018 13:17:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) client-ip=2a00:1450:4864:20::441;
+        Tue, 02 Oct 2018 13:05:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) client-ip=2607:f8b0:4864:20::641;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=o8pUqc4Z;
-       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=vthakkar1994@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Et6M1Cq7;
+       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x441.google.com with SMTP id e4-v6so3667643wrs.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 02 Oct 2018 13:17:25 -0700 (PDT)
+Received: by mail-pl1-x641.google.com with SMTP id s4-v6so2265930plp.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 02 Oct 2018 13:05:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=yV0mYXGkTQXbHTtnnGE/TzTQxLdkck1H2ixaBPlIFqQ=;
-        b=o8pUqc4Z7G+fCrohvNBIL5tEMjVoUwD0eLljjecy3rjUg7e05mAfu0P9qpL2GNUtuQ
-         fyCuM/63FxMXirnuaL9xfcKVPZvG5Ms6pPgSVOWMeNmKIgjiGJUApj5YJY+bhPeXLe6H
-         ZtVzJL6SGFORN9H9QVYcB9kNAUWUxsviFPI9lg36a2VY9BLWoCeqt08DjJDsjZlhg4aQ
-         LDr+wPb6db80gndgyYwyBmlQQJxmYb/uW4rX0ztQFgFH7de5jJ2QqX0c97hWX2yc5W5g
-         jUAJ5UgdC+UU1lyj1bB7Jx6LiWHIi+Zz2VPCgS1ha3ouWo7FijFaZ7GYvhB2ykwzPalM
-         P8sg==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:content-transfer-encoding:in-reply-to
+         :user-agent;
+        bh=iqfTNWtVzVEykYeLL7N+hldbf7uF7sLhBzYvnUyAnyE=;
+        b=Et6M1Cq7cHpXnNvBpK6S7osenzf6+c5Fe8M+LfMSQNlUdZ/RKJwjQ9ATCwPRhiINMR
+         XmT9oyAXkxFPqYmlkLcqrpHfTvYgqZqPN2LqKvY+FwO3EccKhZpMub3rlDFZMXq2tKx1
+         biHJSehI0YOvr7NsNNuagVv1oSZ2p2mLhhV6fSuGfeEGWzk5rfP2c5xmSj7NSxkoRlxK
+         I8b5qz/NuB/EkSOKYzArURvT/0cgOnblH9Fh39QQT0mWqaAaKHEBIJDOtHtX7iKsMxpg
+         iazOoOEDUqUkT/HmD6hFWMNrGhBkMTCygWL8p+NcydDniNK5Mc7e1V+v7iPsWZ2oxwyf
+         TsUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=yV0mYXGkTQXbHTtnnGE/TzTQxLdkck1H2ixaBPlIFqQ=;
-        b=ok4auiPH8mBd6gB1MROlEdr4OPmTqNcXCdtFXEE3ufY4uEfEWBjrXofo9ZK/NUrA+X
-         MemvHdLQym+q4/WCbF334EuyxJ9wl0PeosrR/Eujyh51QtcBVzvSN7DQL5RJwzP9UtNY
-         wp1isMehF2EKxoDV/mLe5dxibHmffwl6smn9tAc39eo96Rf44QeiZVJdyv7IhLUeKaV3
-         YEcOnlnNHgbB8CaUiPSHK7YnnK7OuqpJ3dFyWgvIX7eUGv2OkaAebKDaDjnfVW6VRVWB
-         nhHQw3RHVjhlCssnHdTDyOrCNB4ZtYtUAP3q1neBjkw2ggJRHZrrCHkdH94KTozD35ug
-         kCWw==
-X-Gm-Message-State: ABuFfog8J3Ahf71kTBpM5Q52r9igtE7wSmaHEvp9tbn8kTcnXscDJhRB
-	Ve8QxCN0msWAXjMEXRBbSw8kkC7qUSa4h7XzTLA=
-X-Received: by 2002:a5d:4101:: with SMTP id l1-v6mr7729122wrp.45.1538511444646;
- Tue, 02 Oct 2018 13:17:24 -0700 (PDT)
-MIME-Version: 1.0
-References: <cover.1538333858.git.dafna3@gmail.com> <bf3ba7a38f000d4359c4c56fac98f17ae3ef6a2b.1538333858.git.dafna3@gmail.com>
- <alpine.DEB.2.21.1809302217480.2863@hadrien> <CAJ1myNR7951qEF6hpN8DRJ-hmckXMOzZWnzBJWrYqdaRoPLb2g@mail.gmail.com>
- <alpine.DEB.2.20.1810011047210.3464@hadrien> <CAJ1myNRcjyn+GoR--7uoq4iK4Go5adEkEitX=gDd4FDPnbqPeQ@mail.gmail.com>
- <20181002092816.GA7179@himanshu-Vostro-3559> <CAJ1myNQrZqex6nFfq9Uh1qYK94PVOE_mxUZf7wK0chDXtP74iQ@mail.gmail.com>
- <20181002200507.GA26645@himanshu-Vostro-3559>
-In-Reply-To: <20181002200507.GA26645@himanshu-Vostro-3559>
-From: Vaishali Thakkar <vthakkar1994@gmail.com>
-Date: Wed, 3 Oct 2018 01:47:13 +0530
-Message-ID: <CAK-LDbJBE8=TeQkVrspFH620=pNrVFgqTZfAnMaOpLEQhv57pg@mail.gmail.com>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:content-transfer-encoding
+         :in-reply-to:user-agent;
+        bh=iqfTNWtVzVEykYeLL7N+hldbf7uF7sLhBzYvnUyAnyE=;
+        b=Pe6wmTE64xkecm/HSxh0bmiL91pGanrGFfMIYuPmMBrr5ue4ADDbbBhOTYwOboBiUw
+         hXF4sLuWH0C8V915K21eW1M3jwsCpo3cxCQaspwpAVjdbfNXlR+VUyNaCi4Fbh5TrdtE
+         T1q2s//NfxiBzUaV1J8Ob79pnA8A+uGJURY0bYJRBLoorsl5ddu8bR2YdQmk0KSroNp1
+         VCFJjMJ4W6IXx+IF640WIi+dvoV5DggO0WkMLLJ8mggrVqPDSZ+e3mWBIxGfLNMJbsX6
+         nzpL+v70ZFk6Lmpo2A7pMuTJRAzZZl57fjIXTMcmyzj1fZPRwVOsHl9dN22oRn5Ka5/F
+         8hXg==
+X-Gm-Message-State: ABuFfoiNWXHIWrjVfP2p5Zv75XdMF+SX0I5Rh///mNgJ+qhg9o9TtAH1
+	puw2FIPF5PLYG15TYO3rnSeOin3H
+X-Received: by 2002:a17:902:3a5:: with SMTP id d34-v6mr18264752pld.98.1538510715629;
+        Tue, 02 Oct 2018 13:05:15 -0700 (PDT)
+Return-Path: <himanshujha199640@gmail.com>
+Received: from himanshu-Vostro-3559 ([103.233.116.134])
+        by smtp.gmail.com with ESMTPSA id a19-v6sm29604306pfj.38.2018.10.02.13.05.12
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 02 Oct 2018 13:05:14 -0700 (PDT)
+Date: Wed, 3 Oct 2018 01:35:07 +0530
+From: Himanshu Jha <himanshujha199640@gmail.com>
+To: Dafna Hirschfeld <dafna3@gmail.com>
+Cc: Julia Lawall <julia.lawall@lip6.fr>, gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com, hdegoede@redhat.com
 Subject: Re: [Outreachy kernel] [PATCH 1/3] staging: mt7621-mmc: remove
  unnecessary braces from 'if' statements
-To: Himanshu Jha <himanshujha199640@gmail.com>
-Cc: dafna3@gmail.com, Julia Lawall <julia.lawall@lip6.fr>, 
-	Greg KH <gregkh@linuxfoundation.org>, 
-	outreachy-kernel <outreachy-kernel@googlegroups.com>, hdegoede@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Message-ID: <20181002200507.GA26645@himanshu-Vostro-3559>
+References: <cover.1538333858.git.dafna3@gmail.com>
+ <bf3ba7a38f000d4359c4c56fac98f17ae3ef6a2b.1538333858.git.dafna3@gmail.com>
+ <alpine.DEB.2.21.1809302217480.2863@hadrien>
+ <CAJ1myNR7951qEF6hpN8DRJ-hmckXMOzZWnzBJWrYqdaRoPLb2g@mail.gmail.com>
+ <alpine.DEB.2.20.1810011047210.3464@hadrien>
+ <CAJ1myNRcjyn+GoR--7uoq4iK4Go5adEkEitX=gDd4FDPnbqPeQ@mail.gmail.com>
+ <20181002092816.GA7179@himanshu-Vostro-3559>
+ <CAJ1myNQrZqex6nFfq9Uh1qYK94PVOE_mxUZf7wK0chDXtP74iQ@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAJ1myNQrZqex6nFfq9Uh1qYK94PVOE_mxUZf7wK0chDXtP74iQ@mail.gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Wed, Oct 3, 2018 at 1:35 AM Himanshu Jha <himanshujha199640@gmail.com> w=
-rote:
->
-> > > Hi, I choose the CONFIG_PCI option, it did solve the undefined symbol=
-s,
-> > but the file still does not compile starting with the error:
-> >
-> > drivers/staging/mt7621-pci/pci-mt7621.c:496:27: error: =E2=80=98port=E2=
-=80=99 undeclared
-> > (first use in this function); did you mean =E2=80=98ror8=E2=80=99?
-> >   list_for_each_entry_safe(port, tmp, &pcie->ports, list) {
-> >
-> > I saw that in other usages of list_for_each_entry_safe, the first param=
-eter
-> > is a local variable.
->
-> Correct! Both port & tmp should be a local variable of the same object
-> type.
->
-> > > > Then in run "make menuconfig" again and under "Device Drivers -> st=
-aging
-> > > > drivers" I chose "MediaTek MT7621 PCI Controller"
-> > > > Hoping it will solve it , but it didn't.
-> > > >
-> > > > The files I prepared the patchset for did compile ok , is it import=
-ant
-> > > that
-> > > > all files will compile?
+> > Hi, I choose the CONFIG_PCI option, it did solve the undefined symbols,
+> but the file still does not compile starting with the error:
+> 
+> drivers/staging/mt7621-pci/pci-mt7621.c:496:27: error: ‘port’ undeclared
+> (first use in this function); did you mean ‘ror8’?
+>   list_for_each_entry_safe(port, tmp, &pcie->ports, list) {
+> 
+> I saw that in other usages of list_for_each_entry_safe, the first parameter
+> is a local variable.
+
+Correct! Both port & tmp should be a local variable of the same object
+type.
+
+> > > Then in run "make menuconfig" again and under "Device Drivers -> staging
+> > > drivers" I chose "MediaTek MT7621 PCI Controller"
+> > > Hoping it will solve it , but it didn't.
 > > >
-> > > I think for these changes just use that .config supplied by the distr=
-o
-> > > at /boot/config-*
-> > >
-> > > But IIRC `make allyesconfig` should be used(not sure though..)
-> > >
+> > > The files I prepared the patchset for did compile ok , is it important
+> > that
+> > > all files will compile?
 > >
-> > But I compile on ubuntu on x86 and I want to compile to a specific mips=
- SoC.
-> > I tried it anyway and it did not compile the file  I prepared the patch=
- for
-> > (drivers/staging/mt7621-mmc/sd.c)
->
-> Cool!
-> You found a bug while cross-compiling for MIPS which would not
-> show up on x86.
->
-> Btw, the Cc list should contain developers who might give you
-> a better feedback. Therefore, use `get_maintainer` to list all
-> those people.
+> > I think for these changes just use that .config supplied by the distro
+> > at /boot/config-*
+> >
+> > But IIRC `make allyesconfig` should be used(not sure though..)
+> >
+> 
+> But I compile on ubuntu on x86 and I want to compile to a specific mips SoC.
+> I tried it anyway and it did not compile the file  I prepared the patch for
+> (drivers/staging/mt7621-mmc/sd.c)
 
-Hi Himanshu,
+Cool! 
+You found a bug while cross-compiling for MIPS which would not
+show up on x86.
 
-For Outreachy applicants, we usually do not advice to use 'get_maintainer.p=
-l'
-when it comes to sending cleanup patches and contributions to staging drive=
-rs
-[unless driver specific maintainers have asked for that].
-
->
-> --
-> Himanshu Jha
-> Undergraduate Student
-> Department of Electronics & Communication
-> Guru Tegh Bahadur Institute of Technology
->
-> --
-> You received this message because you are subscribed to the Google Groups=
- "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an=
- email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgi=
-d/outreachy-kernel/20181002200507.GA26645%40himanshu-Vostro-3559.
-> For more options, visit https://groups.google.com/d/optout.
+Btw, the Cc list should contain developers who might give you
+a better feedback. Therefore, use `get_maintainer` to list all
+those people.
 
 
-
---=20
-Vaishali
-http://vaishalithakkar.in/
+-- 
+Himanshu Jha
+Undergraduate Student
+Department of Electronics & Communication
+Guru Tegh Bahadur Institute of Technology
 
