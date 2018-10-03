@@ -1,177 +1,176 @@
-X-GM-THRID: 6669317820815245312
-X-Received: by 2002:a6b:251:: with SMTP id 78mr8211374ioc.39.1552821560688;
-        Sun, 17 Mar 2019 04:19:20 -0700 (PDT)
+X-GM-THRID: 6607095314902941696
+X-Received: by 2002:a1c:c90f:: with SMTP id f15-v6mr358986wmb.0.1538595614097;
+        Wed, 03 Oct 2018 12:40:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:458f:: with SMTP id c15ls171434itd.1.experimental-gmail;
- Sun, 17 Mar 2019 04:19:18 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwmwNz1d61wSFbsGlATnwfIt/8+6Jua3JiiY9f/lUtEB0NhAM8n5bo+Jcsw8FraRefjnc0I
-X-Received: by 2002:a24:4748:: with SMTP id t69mr7224845itb.10.1552821558311;
-        Sun, 17 Mar 2019 04:19:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552821558; cv=none;
+Received: by 2002:adf:9ab7:: with SMTP id a52-v6ls527542wrc.23.gmail; Wed, 03
+ Oct 2018 12:40:13 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV60/AjZBWtIuFVnSUV+q1K/dP92GKpr0MfmyzXgyHtpGiLYZ8D1YNApomakrW1m75K1N8jJD
+X-Received: by 2002:adf:fa8b:: with SMTP id h11-v6mr344916wrr.14.1538595613321;
+        Wed, 03 Oct 2018 12:40:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538595613; cv=none;
         d=google.com; s=arc-20160816;
-        b=GpEOC2xGi1YjaFbx/qlV7q8Gh6PUCSs2tIsqJhlQR+9kU92n6YqfIsRTsLcZvLfOdA
-         IgZXA4cs/e91KBuial6WXKFQEguJhWcLXnNgZFHhJLvMZv9A/Atcy2cT83yNE24TgwVb
-         wOmeQVVgSCtHlHOmAB3JZGvU5IemsXyHyf/Jvp8eSadHX/TMmdp3D080JmX6Y9IBZOXP
-         9lJ8/O8yiOkHF2tm3/1s2SgirZN1Uy7CLbw2ACtaUtej4odLJ5Vbt2xQEpwRkaD5JLNI
-         ET59EMIkWEk8DTN8Dhme2aA4RU8Yov2JTP31cFKsNjtRKC8ygON6M4Qpcj+tJDvLl97z
-         msyg==
+        b=IXQUXoOs4PuIa4GhyZkWwN33X6EYfC0EyNLuCuZHfz+f0YN7vhEQ37wfsjx43QUUvx
+         9eEDoHtwkw6M9jlSjM4PxX2RZWuHJKun7SXXTv/kXgWxdI8DbF7/qm9+wH3fhIHL5oUs
+         gHwE46DYw91vdSW/OYkPiK/gm3vDuzCXw5sRXOHuQAb83LM8I7uvv0LfzsSAcyEttvlC
+         vhz36fqczFYYZhYuXOtzJnzdvmP3LzoPoOnS5LsRil3L8hUdMRtXxRgdzcdfgVBRwEPQ
+         4zACq+sop68+Z/kha4761H2SoaeA8K9jG0j45VTyfrh1jKcaXla5PRC8wjlo/uCR7N8j
+         4Q/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=RnD8dLhejf9l7wjuGCDp4/j1qBkalFGpfgtDGAlqrVA=;
-        b=to4xkBAldMwVyIH7ZBXazZcH8g0g8UFHKmCHmIR8/I/8sWzuujxQq1r2Z9QvP9HvWZ
-         W/9Y5AZHkHT8PEn6+gCbGuuNSoYfly4+NRk/1mKGrGrkWSIN41CJZFqbwOi9bB55PEoZ
-         40T8/rEE0uRpHb7AnmQBkjhVukDMwjsGNXawKbvjCQHyDsZ6GZ6bNzOqW+ywdR+EJf/+
-         q3Rihyq1O5UMCVD/AjxpKAzoQPV78enqIvoorTWLE1RTizPEE9h5gJITS6Z5Y/9zSMFL
-         Acv2o7pC33Ay33sJ058BU6bdoNevqUaBVIeG2UoJPKq2DOFfdTJvJ30pZKshxtQ59wAI
-         N9Sg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=qH2DSuPJ6VSNnecv+TqehZ5fyfkjL3OJJEdwRto9bh8=;
+        b=kllw2KioJGqmsbFNFGoO2+bUxx92TlS8DGVIuny2nvWJ6lNndWYv06/ZJg5GdlT2aY
+         QpdSlRjmiRCRHF/u1XyHIKylCdjFixc+wLmAycRuyMQnHU266r0NUDyMAB9FNOVkrM4K
+         IX8yjJJYE+gxXAu7IIjla2xj7TItXjyVPdbal+eK1Zsb36Zu43Tvlk1G8BCy25S+HRTl
+         JWQG+vS9OAXX63uhhAZMCQ8n8wJVKavreYVTfb51s1lsag27kmVW+WlyRxjUBcLn9+MJ
+         6ehUmgWijsk2GFVHFUgDFNo8rvs7WJEzNEnlV2PDIf2zEFaiI8ExNa6u5Ipj8nhaVjPE
+         xdlw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gVCIoAVP;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id j6si860243itb.0.2019.03.17.04.19.18
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id h188-v6si79625wmg.2.2018.10.03.12.40.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 04:19:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        Wed, 03 Oct 2018 12:40:13 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gVCIoAVP;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id y3so200814pgk.12
-        for <outreachy-kernel@googlegroups.com>; Sun, 17 Mar 2019 04:19:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=RnD8dLhejf9l7wjuGCDp4/j1qBkalFGpfgtDGAlqrVA=;
-        b=gVCIoAVPM/p6Rtnm9vxJL+bfiKKTEoYPoFBBmhiU+oq87WIukt5Oq1o3+zhNfYN122
-         8htgo/xgBqhLaJ7oKCmoCuug85tK25UOXiNySSltX+prIJLxoz1zZDGXwGpKHACCLb5i
-         7CSMFcYSXovdKNr7tpCV7/I8/QpdjDzQK7sgbYuLI4NnBMeRuS84KKRqW4JWlaXx8TOK
-         aDnFt31cwLknsDe9j5VsngVVfTBeZccnvJou9Rogti5JLNsPWK+QHlIs8lkEsGGg26p9
-         6s1SIPN4khDYk2qZ85mRg+GTB3O43Ih6fHSqXZC9sdXzXWj+qWNv9I35rQma//DAbZlr
-         t8Fg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=RnD8dLhejf9l7wjuGCDp4/j1qBkalFGpfgtDGAlqrVA=;
-        b=g69Ej4hwjIdftBmJN4sWtySEl9oXmfnMAhjkkfM9T+Xd6Avi7akod3uzhsv/lpM6kX
-         w5aImiiykxWBODPcRNr7N0zZtVQ4hxTbcJS4GkUuFStEov/0BmxrxbI2VceTTsm6W7gN
-         Gc7fN94UxmjsCsNE4ipW6WS/ozu/MYRhV74Ar7D6nQasbVTDe5bvdd3pXLTSCcEWORFD
-         GpBPYaGkLfPnADTG/jmtGXgMu9uolfkcjmUEvObUzM/ecNlUeHdjgMpqQ60OPnNfdLW3
-         aw9MjwnYM3Br4rSHOQqyu9Jd8QY+BYH38giAYL/nveCt2J9+0fFk2WvRVi+k6AoV8B8S
-         t65g==
-X-Gm-Message-State: APjAAAWLspNbL1u238SPQvgGlRkGAHUygx3LC2k+Zy9+78yPH9UaJqYV
-	xbfRIyp/HdSHf4hQgY7F8kWOsbDgokQ=
-X-Received: by 2002:a17:902:7242:: with SMTP id c2mr13894009pll.245.1552821557506;
-        Sun, 17 Mar 2019 04:19:17 -0700 (PDT)
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from localhost.localdomain ([183.83.84.116])
-        by smtp.googlemail.com with ESMTPSA id v15sm14240853pfa.75.2019.03.17.04.19.15
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 04:19:16 -0700 (PDT)
-From: Bhanusree Pola <bhanusreemahesh@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Eric Anholt <eric@anholt.net>,
-	Stefan Wahren <stefan.wahren@i2se.com>
-Subject: [PATCH] Staging: vc04_services: Remove useless parentheses
-Date: Sun, 17 Mar 2019 16:49:01 +0530
-Message-Id: <20190317111901.5858-1-bhanusreemahesh@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.54,337,1534802400"; 
+   d="scan'208";a="280877947"
+Received: from 89-157-201-244.rev.numericable.fr (HELO hadrien) ([89.157.201.244])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 03 Oct 2018 21:40:12 +0200
+Date: Wed, 3 Oct 2018 21:40:12 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Dafna Hirschfeld <dafna3@gmail.com>
+cc: Himanshu Jha <himanshujha199640@gmail.com>, gregkh@linuxfoundation.org, 
+    outreachy-kernel@googlegroups.com, hdegoede@redhat.com, john@phrozen.org
+Subject: Re: [Outreachy kernel] [PATCH 1/3] staging: mt7621-mmc: remove
+ unnecessary braces from 'if' statements
+In-Reply-To: <CAJ1myNRTErSd_p5KdY6VvG9qu+e9R5QcAeJsfmO_aXkqL_SOxw@mail.gmail.com>
+Message-ID: <alpine.DEB.2.21.1810032139020.2527@hadrien>
+References: <cover.1538333858.git.dafna3@gmail.com> <bf3ba7a38f000d4359c4c56fac98f17ae3ef6a2b.1538333858.git.dafna3@gmail.com> <alpine.DEB.2.21.1809302217480.2863@hadrien> <CAJ1myNR7951qEF6hpN8DRJ-hmckXMOzZWnzBJWrYqdaRoPLb2g@mail.gmail.com>
+ <alpine.DEB.2.20.1810011047210.3464@hadrien> <CAJ1myNRcjyn+GoR--7uoq4iK4Go5adEkEitX=gDd4FDPnbqPeQ@mail.gmail.com> <20181002092816.GA7179@himanshu-Vostro-3559> <alpine.DEB.2.20.1810021138450.3520@hadrien> <CAJ1myNRF+1S=epCMJxUa1YrdPK4p80CiPn2FDdqw5mnwTq+mQA@mail.gmail.com>
+ <alpine.DEB.2.21.1810032100040.2527@hadrien> <CAJ1myNRTErSd_p5KdY6VvG9qu+e9R5QcAeJsfmO_aXkqL_SOxw@mail.gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="8323329-1653209307-1538595612=:2527"
 
-Remove the parentheses which are not required.
-Issue found using coccinelle.
-The semantic patch that fixes the problem is as follows
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-// <smpl>
-@disable paren@
-expression value,e;
-@@
-(
-- value = (e)
-+ value = e
-)
+--8323329-1653209307-1538595612=:2527
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-@disable paren@
-identifier fn;
-expression e;
-@@
 
-- fn((e))
-+ fn(e)
 
-@disable paren@
-expression e;
-@@
+On Wed, 3 Oct 2018, Dafna Hirschfeld wrote:
 
-- return (e);
-+ return e;
-// </smpl>
+>
+>
+> On Wed, Oct 3, 2018 at 10:05 PM Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+>       On Wed, 3 Oct 2018, Dafna Hirschfeld wrote:
+>
+>       >
+>       >
+>       > On Wed, Oct 3, 2018 at 7:06 AM Julia Lawall
+>       <julia.lawall@lip6.fr> wrote:
+>       >       > > Then in run "make menuconfig" again and under
+>       "Device
+>       >       Drivers -> staging
+>       >       > > drivers" I chose "MediaTek MT7621 PCI Controller"
+>       >       > > Hoping it will solve it , but it didn't.
+>       >       > >
+>       >       > > The files I prepared the patchset for did compile ok
+>       , is it
+>       >       important that
+>       >       > > all files will compile?
+>       >       >
+>       >       > I think for these changes just use that .config
+>       supplied by
+>       >       the distro
+>       >       > at /boot/config-*
+>       >       >
+>       >       > But IIRC `make allyesconfig` should be used(not sure
+>       though..)
+>       >
+>       >       Dafna,
+>       >
+>       >       It is important that the driver continues to compile.
+>       >
+>       > Hi,
+>       > Fixing the compilation error
+>       in drivers/staging/mt7621-pci/pci-mt7621.c is
+>       > not triveal,
+>       > It is not clear what type `port` and `tmp` should be.
+>
+>       pcie has a type.  I think it is possible to figure it out from
+>       there.  YOu
+>       can also see how port is used, for confirmation.
+>
+>       julia
+>
+> The code is:
+>
+> list_for_each_entry_safe(port, tmp, &pcie->ports, list) {
+>                 u32 slot = port->slot;
+>                 val = read_config(pcie, slot, 0x70c);
+>                 dev_info(dev, "Port %d N_FTS = %x\n", (unsigned int)val,
+> slot);
+>         }
+>
+> where `pcie` is of type `struct mt7621_pcie*` and `pcie->ports` is `struct
+> list_head`
+> I guess `port` should be `struct mt7621_pcie_port` but this struct does not
+> have a `slot` member.
 
-Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
----
- .../vc04_services/interface/vchiq_arm/vchiq_core.c   | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+Maybe there is code somewhere adding elements to the list?
 
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-index 53f5a1cb4636..92a4630e57a7 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
-@@ -1355,7 +1355,7 @@ static void
- abort_outstanding_bulks(struct vchiq_service *service,
- 			struct vchiq_bulk_queue *queue)
- {
--	int is_tx = (queue == &service->bulk_tx);
-+	int is_tx = queue == &service->bulk_tx;
- 
- 	vchiq_log_trace(vchiq_core_log_level,
- 		"%d: aob:%d %cx - li=%x ri=%x p=%x",
-@@ -2371,7 +2371,7 @@ vchiq_add_service_internal(struct vchiq_state *state,
- 			}
- 		}
- 	} else {
--		for (i = (state->unused_service - 1); i >= 0; i--) {
-+		for (i = state->unused_service - 1; i >= 0; i--) {
- 			struct vchiq_service *srv = state->services[i];
- 
- 			if (!srv)
-@@ -2389,7 +2389,7 @@ vchiq_add_service_internal(struct vchiq_state *state,
- 	}
- 
- 	if (pservice) {
--		service->localport = (pservice - state->services);
-+		service->localport = pservice - state->services;
- 		if (!handle_seq)
- 			handle_seq = VCHIQ_MAX_STATES *
- 				 VCHIQ_MAX_SERVICES;
-@@ -2552,14 +2552,14 @@ do_abort_bulks(struct vchiq_service *service)
- 	if (status == VCHIQ_SUCCESS)
- 		status = notify_bulks(service, &service->bulk_rx,
- 			0/*!retry_poll*/);
--	return (status == VCHIQ_SUCCESS);
-+	return status == VCHIQ_SUCCESS;
- }
- 
- static VCHIQ_STATUS_T
- close_service_complete(struct vchiq_service *service, int failstate)
- {
- 	VCHIQ_STATUS_T status;
--	int is_server = (service->public_fourcc != VCHIQ_FOURCC_INVALID);
-+	int is_server = service->public_fourcc != VCHIQ_FOURCC_INVALID;
- 	int newstate;
- 
- 	switch (service->srvstate) {
-@@ -2622,7 +2622,7 @@ vchiq_close_service_internal(struct vchiq_service *service, int close_recvd)
- {
- 	struct vchiq_state *state = service->state;
- 	VCHIQ_STATUS_T status = VCHIQ_SUCCESS;
--	int is_server = (service->public_fourcc != VCHIQ_FOURCC_INVALID);
-+	int is_server = service->public_fourcc != VCHIQ_FOURCC_INVALID;
- 
- 	vchiq_log_info(vchiq_core_log_level, "%d: csi:%d,%d (%s)",
- 		service->state->id, service->localport, close_recvd,
--- 
-2.17.1
+As a last resort, you could write to the person who produced the patch,
+and ask him what he had in mind.  It's possible that the code is just
+copied from somewhere else, and doesn't make sense at all.
 
+julia
+
+>
+> Dafna
+>       >  
+>       > Dafna
+>       >
+>       >       Make allyesconfig is often a good option.
+>       >
+>       >       julia
+>       >
+>       > --
+>       > You received this message because you are subscribed to the
+>       Google Groups
+>       > "outreachy-kernel" group.
+>       > To unsubscribe from this group and stop receiving emails from
+>       it, send an
+>       > email to outreachy-kernel+unsubscribe@googlegroups.com.
+>       > To post to this group, send email to
+>       outreachy-kernel@googlegroups.com.
+>       > To view this discussion on the webvisithttps://groups.google.com/d/msgid/outreachy-kernel/CAJ1myNRF%2B1S%3Dep
+>       CMJxU
+>       > a1YrdPK4p80CiPn2FDdqw5mnwTq%2BmQA%40mail.gmail.com.
+>       > For more options, visit https://groups.google.com/d/optout.
+>       >
+>       >
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CAJ1myNRTErSd_p5KdY6VvG9
+> qu%2Be9R5QcAeJsfmO_aXkqL_SOxw%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-1653209307-1538595612=:2527--
 
