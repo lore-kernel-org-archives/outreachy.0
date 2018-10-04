@@ -1,84 +1,84 @@
 X-GM-THRID: 6608456604457107456
-X-Received: by 2002:a81:7015:: with SMTP id l21-v6mr430357ywc.23.1538651650163;
-        Thu, 04 Oct 2018 04:14:10 -0700 (PDT)
+X-Received: by 2002:aed:3e0b:: with SMTP id l11-v6mr4066599qtf.7.1538651555874;
+        Thu, 04 Oct 2018 04:12:35 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:4054:: with SMTP id n81-v6ls1186683yba.14.gmail; Thu, 04
- Oct 2018 04:14:09 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV61toucznlqTrmT6hX9utdN1N7zHdRHNiYzYg/xn5i4kxZ0LPDCxbW/RIYyabA9Vqil4kFV1
-X-Received: by 2002:a25:2204:: with SMTP id i4-v6mr3142538ybi.54.1538651649545;
-        Thu, 04 Oct 2018 04:14:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538651649; cv=none;
+Received: by 2002:a37:4c4c:: with SMTP id z73-v6ls1580288qka.6.gmail; Thu, 04
+ Oct 2018 04:12:35 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62lO63sAU9HV4i6+r3sakFJLMWQGD2SciGynx7uSKWA2JoZNFwYnJVvAjDLXGThA6SHSrOS
+X-Received: by 2002:a37:1a66:: with SMTP id a99-v6mr3967562qka.8.1538651555326;
+        Thu, 04 Oct 2018 04:12:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538651555; cv=none;
         d=google.com; s=arc-20160816;
-        b=fOIxtrEDK2ImGAo6rrY7m8N5DvzEX5OPbgFKaAqwSoRsJcnkMQiF71T0KIxmdkGw/P
-         2CeuZWtWkdasCF+S4jZ5DHhhJGc0+h/h74V+Elr44oE7nteBMK6yyyyRIXE7ESNiJCFj
-         Qu2omb7Syum6T+b7gUsIPM48ZyA/yP1ekwIMKkxhK8WK060ce2uFpsJ+vx7NS59AqTWo
-         Pz3xv3ygqkyE2hbM5Wb+aXPtqSr9EyiFifo4/BJusg550+nVoivcyusbJkRh8GVk371T
-         fkMVRcXpRWGX+hG+xEQcQd+KESPosuDsqWuWmJcUZ2uZflY3546zFy+wSSOLr9O/BSE9
-         ef6A==
+        b=Sru/KQ2g+lBKq891aXSHWuTxH6CK61iVChwKe9rI6BaVOTHZuD3izW9NEPkmNjjgrq
+         w0IgCLMu8HbLV3dMl88zq2lm0teky5RLssqKi2M2FvODsXS8G+9PAc3fZI7hgpmyN2qA
+         FyzkCfsFPvZ9yg0OulWPbx3xDxEBn+o74gcSezs/Lb5kks2oB1q2AaYMHsaaGarOXyc2
+         ANw9XMc+RTehHdgoOce5WdQcLQUrCf3UJwO26ognGBT4JUQWKmwjTNIB0SgETJsZ9Xsd
+         dyuh0FcQi+rMkHv3iVj3QUHKKkMfyIn0TZYB6/bh8+NNptC5V+IUNAduzBJ5BtETuFE4
+         DOpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=tLJUcUdhD+lxnFYQsjfSrHi7HekUFnTawtUEWKP/sUw=;
-        b=DdstLqPA75tt+bcYeK1lHC6ET9cDPqEOT8ZTND1Yrm+htducdMbtnpMahBGC7/VDSl
-         90GAerrkTPZoVOTNIF73i5cWn72l8tDYmnctBeIcpHJpdWXZI3Pstw8YxnIY6le9jTsw
-         NaPnZ3HzGaAcrgEbmFu5ScKrYY9sFfiFGRoqiwusJUZwXFWIMtObLoaqIZ+Fa4qdKOaT
-         ijJs4npyqNwPwy5jATeUcLi2lNnSk2n/7Qy/ABpqpL5klRPRa42kWYB4KrdqxpgxuOTH
-         g6Tw0a3VJBKmBUp+xFMbmPuC6Qusi9fJKvBWpLoJ3MjEsBcP6D0JpY9ekim3dSsJPJUU
-         ryww==
+        bh=qGKGcBcpc2RF8oeJD75mmQAhj4eUPEC4ZEcjZYS+hKA=;
+        b=uxpTPPPGC+RiaLYtKRXvGAW0zIUUpwjsBAsz1b9ehj5IkQ+pYYKtXO/0wHBbJoobWW
+         EVI9S9HI4RXcqgHLZN/hk19NiwaZKn596LH+BlsNUp359tyMGxkkpC7V3Cjdoq6UoJx8
+         VN2NiF8P9XwOZOvja7M+yDZ26/utNXmv8gZWSBrbXuzh8flGj69QQDLYqULJzmyXWHH8
+         8lnzmWJbJbLoMpdo/hTaA0mFuZBCHFLcMw2rqvAA5KeeLslM2Wcri1vtAkojAfRI2lHd
+         w/YuVBCZ5yguivIJgguZt2KhPyFtU1aMTArzWn4msg4nLAJf3brG3vLXWMdmiQNYcV24
+         2hYw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rzBpWzJL;
-       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iMa1XUPk;
+       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::62e as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <mamtashukla555@gmail.com>
-Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
-        by gmr-mx.google.com with ESMTPS id y16-v6si171370ywy.3.2018.10.04.04.14.09
+Received: from mail-pl1-x62e.google.com (mail-pl1-x62e.google.com. [2607:f8b0:4864:20::62e])
+        by gmr-mx.google.com with ESMTPS id k8-v6si236008qkg.3.2018.10.04.04.12.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 04 Oct 2018 04:14:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
+        Thu, 04 Oct 2018 04:12:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::62e as permitted sender) client-ip=2607:f8b0:4864:20::62e;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rzBpWzJL;
-       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iMa1XUPk;
+       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::62e as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x442.google.com with SMTP id u12-v6so91823pfn.12
-        for <outreachy-kernel@googlegroups.com>; Thu, 04 Oct 2018 04:14:09 -0700 (PDT)
+Received: by mail-pl1-x62e.google.com with SMTP id f8-v6so5024075plb.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 04 Oct 2018 04:12:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=tLJUcUdhD+lxnFYQsjfSrHi7HekUFnTawtUEWKP/sUw=;
-        b=rzBpWzJL3km783brQ4y9Z6d7DTb+/i72wzzDdpNMm5YAodf/g2m+9Rzx842+MSDqEa
-         zbqZFalb2Dv9Xy/3BIn2DIW6dSWJ+ZxR3m7hk2kBMNOCajvjQ3Vs9885mdaK5dCekfsi
-         EjD9qbyjvOxaueOX6pnjVWBOaKeO5KQoZb2P/+X20k1YSSMELut0w9ZH+wQkBvk72G48
-         UNGPvX5ooh4RuT+gzKP3h3IF2p7wHlF8dyD/M93u2EeCCdySCreAk7zllnKXllcfMvnl
-         0EbpDsQpw6oDHlnUwlG0Sp2+QKWTVCH4AkT8gxd3Fj9fbMtgeOisfw6uJ22uo39g+bqv
-         paQQ==
+        bh=qGKGcBcpc2RF8oeJD75mmQAhj4eUPEC4ZEcjZYS+hKA=;
+        b=iMa1XUPk8DrWNn/sFoD0AFZoIsn1H9/1abSNG68Huj2VchnpCYGOM5hIkg5HSe5em9
+         5E9hHI9+ZGEwUKEdOp1k+rC/gTI9L9ulyOjMLXacDgSkv+5KkhOAsZfrRwyLH2sFmdAB
+         JtbWDWM1nO3iX+n6cNg6ecmC+cdehWUvwRD6rS4NsGaqu7h34eVnsLRQG0WUow/bbrYB
+         GS8HP5R5EMsZRxiuHz4J+6lr4moQuQdD6HhBy665dXNDy/T6UkNQA8mEbBe6cyTfs5Jq
+         bjQzv1vZIeLn0XzMwkY8JRINnXPeKTSCRBNnf+LpTboledFzezOEbiztqXOD4pFH73rn
+         3m/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=tLJUcUdhD+lxnFYQsjfSrHi7HekUFnTawtUEWKP/sUw=;
-        b=dpQNGx/7FZ45tIOAs4nWVorM51lsxCVHviDO3HJkXeYejAj3VGKCotE+DDbDRF9SMg
-         pw0J9uSn8NO7PTAvihlMf6bcvRcEmn+SiDVdlIVEMJVXz+kxPTk7MG7rfbyEXiBr2s/8
-         wfyuR69flssgoHYtCdNqHT/WELPsC1dZc4WTP7Ju7vjjmJS2CllgtsXkWuBVfzf7hMjd
-         7Y1UH9/uzJ4LmW5LVYmcpWpT3UyUryDEFaEFi/OuXD5O+oDBcmZtjBzyQ+tDOqmWClM0
-         ngyg4O1lMUbdCp3irTJubCpNXNHa+1z+MIIzAFnPE1VyM38adlBuDd3MNZMkQq4Pbtvd
-         P0aQ==
-X-Gm-Message-State: ABuFfojrkaVz0e70pm22ZsUaZG8YxKO9WweEhJBB6d2Mgx1aMZTXU0DU
-	jgHGpjjFqCCLFJQpJsdVy0s=
-X-Received: by 2002:a63:e505:: with SMTP id r5-v6mr5234119pgh.170.1538651648700;
-        Thu, 04 Oct 2018 04:14:08 -0700 (PDT)
+        bh=qGKGcBcpc2RF8oeJD75mmQAhj4eUPEC4ZEcjZYS+hKA=;
+        b=H5lOaeSuctU+vyAwmkXwp2BiALXne0kC2LZi2lqPgVcI2yyCSsuZ/ksImNcjPjXgHQ
+         Cz9gezUx52dMMmG1pYpaLDwWeiXLlpRpiecwTmNJ4O/MFUtjQPQOZ+uPGKjhjHe/6Dfx
+         yKnSkIXa6MPd/PYigzWmFYuwW1QNlXtRODUHCy8Y4ZEucKVeOESljBz2OdMkywTdKU5b
+         4adSZm4FbCB+2tHlA7ObaBDqT9IrurcY0taMOocNUl4tdLIY7e6PyrC47S8dclt4biJA
+         s/nySCDqGM9cMxBtosCtlCEbpTez5z/MBpM66RyBpRe1SXUoT1s4qLbB1gVDVzEyJH8+
+         siyA==
+X-Gm-Message-State: ABuFfojwOZHftez9ZyCS5NRFySOJN4JkxrFPTTkuQqZsYgPujzfbHyh8
+	ZlIrFc/rcpEdXPYjB1PR9TY=
+X-Received: by 2002:a17:902:b712:: with SMTP id d18-v6mr6120716pls.53.1538651554771;
+        Thu, 04 Oct 2018 04:12:34 -0700 (PDT)
 Return-Path: <mamtashukla555@gmail.com>
 Received: from armorer ([117.195.35.235])
-        by smtp.gmail.com with ESMTPSA id 189-v6sm7788634pfe.121.2018.10.04.04.14.07
+        by smtp.gmail.com with ESMTPSA id y85-v6sm9277942pfa.120.2018.10.04.04.12.33
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 04 Oct 2018 04:14:08 -0700 (PDT)
-Date: Thu, 4 Oct 2018 16:43:38 +0530
+        Thu, 04 Oct 2018 04:12:34 -0700 (PDT)
+Date: Thu, 4 Oct 2018 16:42:04 +0530
 From: Mamta Shukla <mamtashukla555@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org, mamtashukla555@gmail.com
-Subject: [PATCH 2/4] staging: mt7621-pci: spaces preferred around that '&'
-Message-ID: <7eebed7c7ca59e4d52b9874f314c54a4ef21f0d6.1538646749.git.mamtashukla555@gmail.com>
+Subject: [PATCH 1/4] staging: mt7621-pci: do not initialise statics to 0
+Message-ID: <dbd85c8647fdc02a03e1266568ac8b043bd6720d.1538646749.git.mamtashukla555@gmail.com>
 References: <cover.1538646749.git.mamtashukla555@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -86,8 +86,8 @@ Content-Disposition: inline
 In-Reply-To: <cover.1538646749.git.mamtashukla555@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Add spaces around '&' to fix checkpatch issue.
-CHECK: spaces preferred around that '&' (ctx:VxV)
+Remove initialisation for static global variable to fix checkpatch issue.
+ERROR: do not initialise statics to 0
 
 Signed-off-by: Mamta Shukla <mamtashukla555@gmail.com>
 ---
@@ -95,19 +95,23 @@ Signed-off-by: Mamta Shukla <mamtashukla555@gmail.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
-index 3182d8a..14aac08 100644
+index ba1f117..3182d8a 100644
 --- a/drivers/staging/mt7621-pci/pci-mt7621.c
 +++ b/drivers/staging/mt7621-pci/pci-mt7621.c
-@@ -489,7 +489,7 @@ static int mt7621_pci_probe(struct platform_device *pdev)
+@@ -122,7 +122,7 @@
+ #define RALINK_PCIE_CLK_EN		BIT(21)
  
- 	DEASSERT_SYSRST_PCIE(val);
+ #define MEMORY_BASE 0x0
+-static int pcie_link_status = 0;
++static int pcie_link_status;
  
--	if ((*(unsigned int *)(0xbe00000c)&0xFFFF) == 0x0101) // MT7621 E2
-+	if ((*(unsigned int *)(0xbe00000c) & 0xFFFF) == 0x0101) // MT7621 E2
- 		bypass_pipe_rst(pcie);
- 	set_phy_for_ssc(pcie);
- 
+ /**
+  * struct mt7621_pcie_port - PCIe port information
 -- 
 1.9.1
 
+Removed initialisation to 0 for static global variable:
+1.This type of variable iss initialised to 0 implicitly as per C coding
+standard.
+2.Also this will take space in .BSS segment of memory while linking.
 
