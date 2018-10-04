@@ -1,120 +1,174 @@
 X-GM-THRID: 6608144919941873664
-X-Received: by 2002:a67:3e8d:: with SMTP id a13-v6mr5324695vsi.23.1538655033013;
-        Thu, 04 Oct 2018 05:10:33 -0700 (PDT)
+X-Received: by 2002:a24:648e:: with SMTP id t136-v6mr4751536itc.25.1538652953721;
+        Thu, 04 Oct 2018 04:35:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1f:93d2:: with SMTP id v201-v6ls632653vkd.2.gmail; Thu, 04
- Oct 2018 05:10:32 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV62jh737FudxGD4Cakh2c9rVpmMELlpc7E0ktTf3kPDN2lDzFvMsqJbc1bw1zhizcIuwV0P/
-X-Received: by 2002:a1f:b3c3:: with SMTP id c186-v6mr5120594vkf.7.1538655032365;
-        Thu, 04 Oct 2018 05:10:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538655032; cv=none;
+Received: by 2002:a5e:8618:: with SMTP id z24-v6ls1443392ioj.0.gmail; Thu, 04
+ Oct 2018 04:35:53 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV63+7f2Vz6Gs8TZQHwfy2YrvMXdY61wastAcuqrd7Swq3pNx8YFEpMKnxKY77sgBmYfYo8Fx
+X-Received: by 2002:a6b:f801:: with SMTP id o1-v6mr4182123ioh.7.1538652953040;
+        Thu, 04 Oct 2018 04:35:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538652953; cv=none;
         d=google.com; s=arc-20160816;
-        b=kI7ECBa0UidwuurLXx99aQ8pRK63Do55S5P4gvPVs82yhmJ+fxYKQVN+F7EpKOPNAa
-         5ClVPCV6MiazrwCJnLiUNiG6EsMso4dCGjq8CaP5M0hS6GpEnzB3qUxozr+mWWUIZ5C0
-         8YKBGs6UF78mJUx8G53+KAoWs/uKmW1LLawBP9UebAOYpagZJvsl0KJ81D3ifeyG74+w
-         q/mhXV36rIKS2xSi4T9idUH3T/K5DC9NG0/a6kZGQZez6xz7KRgH052MoZWNh7J/tCUr
-         JwvKXwDwvlieAKT6V0H2oxME05nZZmRLHVMuzsP+VLoUUWOKdJWVfiH4oQ3wblpiQ+xi
-         wrtw==
+        b=EsRPgVvpk3E541bYZG34Q5pqmRN44YpQ318sZvQclwPfZEC4QibozaCMFOgSCoLPmG
+         1RynjdJIdi+qfGwC4WuRQCjyrZxAZgzE4JVZOF3X9yupreFCWbbFCizuqOpdbt0s/USt
+         HVsRIGaAsP8h6ht1DjJkcxkqq/1gzB4H/XsuhFa6nLrCdqkCfoWOQxQ9A60dGlY3yJZR
+         xyLaCmy6vCSz1IXaDWuOLI5qaEuEd+Cd7LPCe7nwJfLME5CHUpUtyC2CbQ7zDZ/VBqV6
+         zitylMd7JEafv6Grax3HCWPBgUuCApjKeLT++t68ChLUJFY/AJFByXjaIeI5kiJJd08o
+         DSYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=mwhurTiXSqoLWEuS5UoIPLSuz3bEd9pBwBEiTUrw4Gw=;
-        b=WkkijxgYbCJjpC0qE1OXxVCcouNUObsBIRg0RTkwvrS0+zaZqeh/HnmRlNabX8m83x
-         dZx4NvOv6uT3sESN49euIQnJsOapFM+EQj4zlsYiSuANPedNGNV/f+pdMvCWJ10TZoqx
-         bP50+XA4z7Uj9LV8HalxnUyFqN+3nDw0VtIN5n+MeW02q08r7B9bHPEnFZ0N2ulyeQbh
-         edzwrGC62X4i3coi6oWX/eACnOy7kb+nVdvGgwwoRl0LgsOGh2dfescSVLZoYAV70TuZ
-         BM3PoCcVh5TfDCtJi9p/CX1xz32JpzkIY2j1hD/EsOUydYnH5Nz2nuIXavHJ+4GIy3rI
-         xSjg==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=BMUVbz9N10oEp/p/yx6bMjtal5TXGYOhdDrXp57uPtU=;
+        b=BloqVkv5A1ew6MLBjZj8HyauJpL4YBYUtg478pr7+FVBCM8Y8fC1EwpnbEQgxIuWht
+         BW+ihgCHub/VjNdTpfV3CpItDQDIt3381lifvQAtfsFQLdrm6+th3Wn5mKIXiesV97n5
+         omBoj3/pIi7IkmLQKEcVBVWvWwDLe8FpLxoyjqjdB8DxkXDgDLOdDOfItiaKmJhvPDWl
+         nbHRCrqHdL69XfQtyop/pDnvssM2eAJiAnmneA4d/9bhY5wH94wRlRx8kBVo6TeQTfh/
+         2tmSYKFpbO7BFE0BDx1+IffXhkoJ73r68yAxF2wC1A16g4Fi2lko9cs6aNplOeeQSACD
+         fmFw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oTzcTCl0;
-       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VV1LeDsf;
+       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::434 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <himanshujha199640@gmail.com>
-Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
-        by gmr-mx.google.com with ESMTPS id y6-v6si203376vkg.2.2018.10.04.05.10.32
+Return-Path: <mamtashukla555@gmail.com>
+Received: from mail-pf1-x434.google.com (mail-pf1-x434.google.com. [2607:f8b0:4864:20::434])
+        by gmr-mx.google.com with ESMTPS id n3-v6si131501ioh.4.2018.10.04.04.35.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 04 Oct 2018 05:10:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
+        Thu, 04 Oct 2018 04:35:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::434 as permitted sender) client-ip=2607:f8b0:4864:20::434;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oTzcTCl0;
-       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VV1LeDsf;
+       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::434 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x643.google.com with SMTP id s4-v6so5097979plp.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 04 Oct 2018 05:10:32 -0700 (PDT)
+Received: by mail-pf1-x434.google.com with SMTP id r64-v6so3226082pfb.13
+        for <outreachy-kernel@googlegroups.com>; Thu, 04 Oct 2018 04:35:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=mwhurTiXSqoLWEuS5UoIPLSuz3bEd9pBwBEiTUrw4Gw=;
-        b=oTzcTCl0RR3XkdgYp2jrBVmA+wHRLHCBsLkmtxKfromMMvLhOFEdiLwSUFX3vyitIh
-         jqfwSUPF5c/ps06o7CDSEQ+va9YUVGcqrPYpblZRu6BZIKJfvy4KrtMBusMJ06V3tcjY
-         v9oXlM3WD9spw9ztGxz6eTyeqjBdsB71UdkMcVRRSVw4rmxc9DjDYPOaBaB8AwvFvjq/
-         sZ1tzg1AhS2PzjJzUj6G/znk7Q6J3It2cxkumzO8IC0ddHabrHRcExHz0CbcgJGlAKWM
-         KXi5pYIBSGREw935S//bS8R4nNqJGyfMIu0chVUH39JjBK8c8l0tbrxFzJG11Md8LMGC
-         dq0g==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=BMUVbz9N10oEp/p/yx6bMjtal5TXGYOhdDrXp57uPtU=;
+        b=VV1LeDsfIfi21pVERMT/acS+4my2v5OiuzkMLcFK9KQ9IfnVtGs2amZi5gsomnL+EE
+         igpBXfiFxHK1q937TS1rw/Rrck7WQ3QzhEHtgFrf9NQsqrx1txMUaTORsKm/b+UyHXuS
+         ScSe3EcffkdSfVwoOfRCx5baCNbfQoFXi04i+XVF20nHVOZYBwM2+OpBfeLv0usszEaV
+         qxZLfuSqQUfal15+YPEKiUWkGtsKb1Ng5ODNs+tadwHDKwfZngfyEJo9xXBC1cBV9J0b
+         D9t7D1fDjvlfcFQ5su1QdR/G3T+b8isFmkuFCy2PjFP0hEiOnLqKtp0QHf/j31+FFgHx
+         L6kQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=mwhurTiXSqoLWEuS5UoIPLSuz3bEd9pBwBEiTUrw4Gw=;
-        b=FKB/dSJyzBR4nVJGZmQmoeBhsDhqF4zX0HpZUW9Rwpfr1aHOA7ow0ocsLUYC2+1XF2
-         /INiGuou3gBC7F5/EiINsoMlL9vBG0TZjOrhUXPy72NAA08fUYjRRNkIuXfndJrZShMa
-         +Y/ZevCxhzSQRKlQk2BvPbWMsDubmd1W1BupnxVWnoElD59DdMr84CdPJQOCFdkHeh3L
-         6wlkLtmfdFQthFL3ft9LkNeRqmpaVN1J8Lq/GCMU7uDsVYj95A2NYuNwwJuRP4+bLxoR
-         o8LepJf2zxKM9QyCswY03QsJrooZJJlj4NlBU2F7A7co9UwY5GhhaWjG6+jkfuQEqrS1
-         xCUw==
-X-Gm-Message-State: ABuFfoiY6YfHwC04xsNO51yLbzKRGjHrfqD8n6xdHrufY+rJofawODjW
-	zVRL2tXZTZJdni4FPkm8T7W0uq0F
-X-Received: by 2002:a17:902:7207:: with SMTP id ba7-v6mr6348297plb.266.1538655031392;
-        Thu, 04 Oct 2018 05:10:31 -0700 (PDT)
-Return-Path: <himanshujha199640@gmail.com>
-Received: from himanshu-Vostro-3559 ([103.233.116.134])
-        by smtp.gmail.com with ESMTPSA id f193-v6sm9438986pfc.74.2018.10.04.05.10.29
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Oct 2018 05:10:30 -0700 (PDT)
-Date: Thu, 4 Oct 2018 17:40:25 +0530
-From: Himanshu Jha <himanshujha199640@gmail.com>
-To: Mamta Shukla <mamtashukla555@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2] staging: fbtft: Prefer using the
- BIT macro
-Message-ID: <20181004121025.GC24641@himanshu-Vostro-3559>
-References: <20181004113518.GA8855@armorer>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=BMUVbz9N10oEp/p/yx6bMjtal5TXGYOhdDrXp57uPtU=;
+        b=kt/C3Hfy6xKaJy11aQVQCFQAK523rE/jbfAvGHKSCwMsowZx5KWHbJNs/b+04akaPv
+         VEspQpFPV0KHc4ukTNWlt74vp6BDToUaKhSsIIiTKw0NVi/PwjHjTHaiczXA2dRy1ALb
+         lDzyKQdjYC4oZa4lWAiZVKyp5pDmIz9a8QdUe07Zd7SjPpBm7H7b9f9UjH+M9LeqWc43
+         19rJwWBIsohs+j+NGH9M/nerxVd0ikvnJF94ZQnmbga6CLPChruMCA5PL2EP6c6W/PuX
+         A6UJVaM2hHhc4n3F+KoCDto8yXgvNYYawtHKKNCYL4UZMQZO1Cp23UtBjDcLmRMxOLS+
+         2fjg==
+X-Gm-Message-State: ABuFfoh9npaGY/FKINhhSTeRbu27hq3iqcMTOOaN2fDr+zdsvfPxPSe0
+	ysdmLGxbEXF2cRklC3xeBOBKzfjZ
+X-Received: by 2002:a63:c54a:: with SMTP id g10-v6mr5229949pgd.201.1538652952552;
+        Thu, 04 Oct 2018 04:35:52 -0700 (PDT)
+Return-Path: <mamtashukla555@gmail.com>
+Received: from armorer ([117.195.35.235])
+        by smtp.gmail.com with ESMTPSA id i184-v6sm9757643pfg.88.2018.10.04.04.35.51
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 04 Oct 2018 04:35:51 -0700 (PDT)
+Date: Thu, 4 Oct 2018 17:05:18 +0530
+From: Mamta Shukla <mamtashukla555@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: mamtashukla555@gmail.com
+Subject: [PATCH v2] staging: fbtft: Prefer using the BIT macro
+Message-ID: <20181004113518.GA8855@armorer>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20181004113518.GA8855@armorer>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Thu, Oct 04, 2018 at 05:05:18PM +0530, Mamta Shukla wrote:
-> Replace all occurrences of (1<<x) with BIT(x) to fix checkpatch issue.
-> CHECK:Prefer using the BIT macro
-> 
-> Signed-off-by: Mamta Shukla <mamtashukla555@gmail.com>
-> 
-> change in v2:
-> 
->   'Replace' in place of 'Replacing'.
+Replace all occurrences of (1<<x) with BIT(x) to fix checkpatch issue.
+CHECK:Prefer using the BIT macro
 
-Changelog should go below `---` so that
-when maintainer applies to his tree using
-`git am <your_patch>` then this changelog
-wouldn't be there in the final commit.
+Signed-off-by: Mamta Shukla <mamtashukla555@gmail.com>
 
-> ---
+change in v2:
 
-Put it here!
+  'Replace' in place of 'Replacing'.
+---
+ drivers/staging/fbtft/fbtft.h | 56 +++++++++++++++++++++----------------------
+ 1 file changed, 28 insertions(+), 28 deletions(-)
 
-With new version:
-
-v3: .... 
-v2: ...
-
-
+diff --git a/drivers/staging/fbtft/fbtft.h b/drivers/staging/fbtft/fbtft.h
+index 25302ff..ac427ba 100644
+--- a/drivers/staging/fbtft/fbtft.h
++++ b/drivers/staging/fbtft/fbtft.h
+@@ -355,39 +355,39 @@ static void __exit fbtft_driver_module_exit(void)                          \
+ #define DEBUG_LEVEL_6	(DEBUG_LEVEL_4 | DEBUG_LEVEL_5)
+ #define DEBUG_LEVEL_7	0xFFFFFFFF
+ 
+-#define DEBUG_DRIVER_INIT_FUNCTIONS (1<<3)
+-#define DEBUG_TIME_FIRST_UPDATE     (1<<4)
+-#define DEBUG_TIME_EACH_UPDATE      (1<<5)
+-#define DEBUG_DEFERRED_IO           (1<<6)
+-#define DEBUG_FBTFT_INIT_FUNCTIONS  (1<<7)
++#define DEBUG_DRIVER_INIT_FUNCTIONS BIT(3)
++#define DEBUG_TIME_FIRST_UPDATE     BIT(4)
++#define DEBUG_TIME_EACH_UPDATE      BIT(5)
++#define DEBUG_DEFERRED_IO           BIT(6)
++#define DEBUG_FBTFT_INIT_FUNCTIONS  BIT(7)
+ 
+ /* fbops */
+-#define DEBUG_FB_READ               (1<<8)
+-#define DEBUG_FB_WRITE              (1<<9)
+-#define DEBUG_FB_FILLRECT           (1<<10)
+-#define DEBUG_FB_COPYAREA           (1<<11)
+-#define DEBUG_FB_IMAGEBLIT          (1<<12)
+-#define DEBUG_FB_SETCOLREG          (1<<13)
+-#define DEBUG_FB_BLANK              (1<<14)
++#define DEBUG_FB_READ               BIT(8)
++#define DEBUG_FB_WRITE              BIT(9)
++#define DEBUG_FB_FILLRECT           BIT(10)
++#define DEBUG_FB_COPYAREA           BIT(11)
++#define DEBUG_FB_IMAGEBLIT          BIT(12)
++#define DEBUG_FB_SETCOLREG          BIT(13)
++#define DEBUG_FB_BLANK              BIT(14)
+ 
+-#define DEBUG_SYSFS                 (1<<16)
++#define DEBUG_SYSFS                 BIT(16)
+ 
+ /* fbtftops */
+-#define DEBUG_BACKLIGHT             (1<<17)
+-#define DEBUG_READ                  (1<<18)
+-#define DEBUG_WRITE                 (1<<19)
+-#define DEBUG_WRITE_VMEM            (1<<20)
+-#define DEBUG_WRITE_REGISTER        (1<<21)
+-#define DEBUG_SET_ADDR_WIN          (1<<22)
+-#define DEBUG_RESET                 (1<<23)
+-#define DEBUG_MKDIRTY               (1<<24)
+-#define DEBUG_UPDATE_DISPLAY        (1<<25)
+-#define DEBUG_INIT_DISPLAY          (1<<26)
+-#define DEBUG_BLANK                 (1<<27)
+-#define DEBUG_REQUEST_GPIOS         (1<<28)
+-#define DEBUG_FREE_GPIOS            (1<<29)
+-#define DEBUG_REQUEST_GPIOS_MATCH   (1<<30)
+-#define DEBUG_VERIFY_GPIOS          (1<<31)
++#define DEBUG_BACKLIGHT             BIT(17)
++#define DEBUG_READ                  BIT(18)
++#define DEBUG_WRITE                 BIT(19)
++#define DEBUG_WRITE_VMEM            BIT(20)
++#define DEBUG_WRITE_REGISTER        BIT(21)
++#define DEBUG_SET_ADDR_WIN          BIT(22)
++#define DEBUG_RESET                 BIT(23)
++#define DEBUG_MKDIRTY               BIT(24)
++#define DEBUG_UPDATE_DISPLAY        BIT(25)
++#define DEBUG_INIT_DISPLAY          BIT(26)
++#define DEBUG_BLANK                 BIT(27)
++#define DEBUG_REQUEST_GPIOS         BIT(28)
++#define DEBUG_FREE_GPIOS            BIT(29)
++#define DEBUG_REQUEST_GPIOS_MATCH   BIT(30)
++#define DEBUG_VERIFY_GPIOS          BIT(31)
+ 
+ #define fbtft_init_dbg(dev, format, arg...)                  \
+ do {                                                         \
 -- 
-Himanshu Jha
-Undergraduate Student
-Department of Electronics & Communication
-Guru Tegh Bahadur Institute of Technology
+1.9.1
+
 
