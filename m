@@ -1,118 +1,149 @@
 X-GM-THRID: 6608897994052861952
-X-Received: by 2002:a62:5d16:: with SMTP id r22-v6mr5674545pfb.31.1538763058292;
-        Fri, 05 Oct 2018 11:10:58 -0700 (PDT)
+X-Received: by 2002:a17:902:32f:: with SMTP id 44-v6mr5778402pld.22.1538754294926;
+        Fri, 05 Oct 2018 08:44:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:258:: with SMTP id 85-v6ls2138203pgc.0.gmail; Fri, 05
- Oct 2018 11:10:57 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV61AF1zsRwfs8qKhw322Qf0EtNOX5XgPpy33SDMS5fRmLyMcIYMLQWFCJuxc8Q3sMnBb571F
-X-Received: by 2002:a63:4559:: with SMTP id u25-v6mr5040249pgk.62.1538763057613;
-        Fri, 05 Oct 2018 11:10:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538763057; cv=none;
+Received: by 2002:a65:47c7:: with SMTP id f7-v6ls2642708pgs.6.gmail; Fri, 05
+ Oct 2018 08:44:54 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV626bT+xQbSGZWG7K0xgJRLk8lw7DU7VIcxbfZ5YxNVvJWWrB2AGlv9mw6EWXhTpuq0sj7gP
+X-Received: by 2002:a62:9c4f:: with SMTP id f76-v6mr5085588pfe.33.1538754294144;
+        Fri, 05 Oct 2018 08:44:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538754294; cv=none;
         d=google.com; s=arc-20160816;
-        b=ki/kd9NZNXmxD/nq4rl8fYhXkM/5n4iG1P1bHYy4TJjwzZt4uY31zxJDGeNoucXU/P
-         mbuvkj2ogJoppbWpOJT8gN71slXqgT1HCCsKeVzHiZs5dMJUcHWJL9uhffQLSGToqXSM
-         y8muW1a19wKuhyWzVRS9DmxcYyExepBpReMnceYLY6wyPLV8+QgCatswEKK/B58Y022E
-         i2tULiLCAM7Gwshmc2LHOYOkeVo7zoe6plp4sVVSgz0RgMTzutQhhQwWazz5Q+b/ghL9
-         9piN9KAM3BDCLE21UxJANL7WJLiPIJjYDrDcqFjxZB4LHDbBokbrqsElGoqpbUSteOBH
-         IeVg==
+        b=RVNJAilAr0GBWqynDDtny66MDAVygs6/nbBwb/BZZnjrK1RzyUMLI9NBqSh5pys5R9
+         x8aZJyxnOX6ZJAj7hYxMQ1qcr/HC/fwKlD+bjroYl6dMdowRkwuFt1zYskT8GIRJ9Be8
+         DkTvvbNx3fuDcoTBL4GnW/vjFspqur3ZKlEStIeCUsYENKUkMKga1dZJgebwpYZSifoJ
+         fsbQHmrR4KA8Pi4xlJgtFMmRyA8Cc1fYFwWSP2Gz2TGS9ENArihCcbLeadK792jPmpJm
+         61RR5AgZ7V2Rg76wGgmkL6h9412M7gK7osLhVy8/XdN1mJ0UcTQMwArvYZ55fa786rN0
+         Zsfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=B78RGtcYNsPM7z0rQsUKOeB/ul100K7y1i32+j4aazQ=;
-        b=cQJtTvYk+EGP7L2voV6j0VgnMdobDEPbZuHXtoB43qjb9O3phdPaCinkwBjCLW5VWe
-         9MKWYUXnV4q0XEyT5Qcv8C2KwWuNbDTMRkzo34W5xwK9oS3FE7W/9XjwuPiOQt2N1u4m
-         BErWcYWVruhjzU1TWaKK2F18OYd+2pK5/M2FzJnU/cF6nLGSqxHV4AQTbQ63atfnDtHO
-         DsRJ6YFo0+OjchJ5u20qlyIkgTxTmwkU5MICL/U8wOBKk08OM1w8Y9/mzqkQUjyYtf5D
-         Fn4UEWCiQp6DsEQ3pD+JPfQ5Wj0jlWLV7ZGR1SVakc8UYFX45pK9BWzvRvQ4hmaIWtqG
-         oTOg==
+        bh=bj8VKQJRIdYVs94snfqRMlDvN5Ucm8NWCXQEz50BQS4=;
+        b=V0T9jgT3Wwd9g9yFy6SfuarRgjobGa4kXqZhLcPx4d+s9jdfIas78iLalZIQubBsCj
+         KYKdFonKPwkTyPHbXb9ur7eUbPDMbyDVhg2Eb6zy9GXS5BLWI0zuOQJVqDLDM1u+0iOq
+         gA5m+w0xARt5uWlotMEWTpdPT30OggMGzl3tiQRSSquQZjLj62RC5lmQgGYSuo1309km
+         20iJDNqqitEWKnmIKPh2ungRa5l+qe5AjXbdOWwCFTX0qx3Vcc0h+TGzDzbR4Jqh2u2o
+         GOcBNbi3E+VHY2gB90Ux+fHUBicrmrPJ608YgSQ1akZDkM2HKaKEf4Hcss54HnfNHOzk
+         vT9Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vfUCanpG;
-       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="RoH2JOS/";
+       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <himanshujha199640@gmail.com>
-Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
-        by gmr-mx.google.com with ESMTPS id s138-v6si450867pgs.1.2018.10.05.11.10.57
+Return-Path: <mamtashukla555@gmail.com>
+Received: from mail-pg1-x541.google.com (mail-pg1-x541.google.com. [2607:f8b0:4864:20::541])
+        by gmr-mx.google.com with ESMTPS id v186-v6si406896pgb.4.2018.10.05.08.44.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 05 Oct 2018 11:10:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) client-ip=2607:f8b0:4864:20::444;
+        Fri, 05 Oct 2018 08:44:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) client-ip=2607:f8b0:4864:20::541;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vfUCanpG;
-       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="RoH2JOS/";
+       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x444.google.com with SMTP id l81-v6so361965pfg.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 05 Oct 2018 11:10:57 -0700 (PDT)
+Received: by mail-pg1-x541.google.com with SMTP id f18-v6so4922566pgv.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 05 Oct 2018 08:44:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=B78RGtcYNsPM7z0rQsUKOeB/ul100K7y1i32+j4aazQ=;
-        b=vfUCanpGI2FDSRpNEyFAlNVlgNjXAcmVOWp9wHaC7pYXGe89AXzlpEzGTYKi09wa+c
-         8kuqiQDK1/HJVEjLNA/Nfod8zO5Zc0PjsWftPVifVEf7cXBlICiCvBpeazI3QBxhqUiS
-         aaHTAkvZM7/Ksvz93AfGSonxc+JkqitZtifsThpeQOnRHk/qhB8AX01CAE52jED7DkcE
-         6vCFSTRJiE9grcYida45egiKBtoFHH8Bby1cTuB8VqtAe9beeUPQGQGEqIxAVMdg8Pdt
-         MSNkMivAgVX7RNX7THO7BjvaMHKaUbojDIomLnzP5Kgl1KgeoPVbTs6zSXnMXzL6+W94
-         a7hw==
+        bh=bj8VKQJRIdYVs94snfqRMlDvN5Ucm8NWCXQEz50BQS4=;
+        b=RoH2JOS/KT4/1FwZubLu+IVDzphAns2Z1PlcFgat406Ub9smRr4wPErEBocOVTQpli
+         IfFBH0jZ75s8RenEysjVPDTuSbATh54nX4H81mOlps0BwW6GiGVn1UOOeQNLGPnuLK7W
+         zu7blsrw6U4/s3260Kkld39UlGJwi9l3MzpuOq/FkbIySyUAF60ep84NDz9jlzxACwTW
+         NiZw67MYjwsVohrFXcOJgR7KxTGVaXX7yv+m/lMAuWMv8qGxZsE9zC6zQRS1vz8ITldY
+         nl9W12n46W43R2XIs4MSE7asW4+bhlE8b5x5nM20sr7ui7KV6SRHz2+6HTyIuvxWsN9J
+         pIVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=B78RGtcYNsPM7z0rQsUKOeB/ul100K7y1i32+j4aazQ=;
-        b=lkjWhvPO3fpCJf98s0DW7R7LaDB5Es0nAENEqVm/7P1RPihmYpK47O7p5Eo9kzvp4U
-         vUozhabP/+PNOT0cpEf/ouMmd6Xp4rrUgIsPcp3xz4/BhEOjqFzI85vnWVtmPdfiKrNz
-         p44/P/jaJa5hHfIr1HIB/jByA0v5FCdhQQV+4dTiP1bwYpNPAcXcZgbBItrJVKnONh68
-         +yoVo+2Jte4zzJMbjJiUrt5FgEjV1EAiYYgG5XIxja93Yi5gdmbjhIWWYSqRhY+UOioF
-         Wdbi1L7a5sXxJvvfQXQEmLghH+I7h+G/5OJscJwOKX1rdAw8Hh8UWp/9cI8rYUCeGIZw
-         sQ2g==
-X-Gm-Message-State: ABuFfoihEB7nbtQlPyXjwiWvmRoVPXOx8ohoO6o/Sw5iNrgXQbIU4EGT
-	0pu5+XQlR/bPGQxzI5gkbJ4=
-X-Received: by 2002:a62:ea03:: with SMTP id t3-v6mr13602554pfh.228.1538763057118;
-        Fri, 05 Oct 2018 11:10:57 -0700 (PDT)
-Return-Path: <himanshujha199640@gmail.com>
-Received: from himanshu-Vostro-3559 ([103.233.116.134])
-        by smtp.gmail.com with ESMTPSA id c79-v6sm12527561pfb.147.2018.10.05.11.10.54
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Oct 2018 11:10:56 -0700 (PDT)
-Date: Fri, 5 Oct 2018 23:40:50 +0530
-From: Himanshu Jha <himanshujha199640@gmail.com>
-To: Mamta Shukla <mamtashukla555@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, forest@alittletooquiet.net,
-	gregkh@linuxfoundation.org
-Subject: Re: [Outreachy kernel] [PATCH 0/4] staging: vt6655: Fix coding style
- issues
-Message-ID: <20181005181050.GC30924@himanshu-Vostro-3559>
+        bh=bj8VKQJRIdYVs94snfqRMlDvN5Ucm8NWCXQEz50BQS4=;
+        b=cIUxUfQZyXms9gS1QUXy2C7mAG7HTY7/pCT6thmPfohzzctimzXPsdLfqAc4cfPxYA
+         qau1lb7HoMry5FJoIqv1iA2I8Ys+LwdLHU5c4KyvOfcBTlbhYelVQHLTu2LCcrn46vZj
+         yZlsNWvtRo8E6+3qrUEIKW5PHJubh6XJhe680YHp5Q3H5KqxVwW+UTwoB1J8glpHrFUr
+         y+rWG4W4O6mTQKzoQj1dQkqi2716CXfN0yChvhqPsr4nuSniTmq/d/4n16MEBM1wz7i0
+         mtvWDPX6OVI9cUY7RHc9ECJhIbKX+GDOH6vWtETxXOMVzQqECve0M7NZNs2zfuw9uSV+
+         kZ0g==
+X-Gm-Message-State: ABuFfoiNuYe338AfGLxENJ87Ve28+ByphHT5ItShEW5CgDrW5rQvpgMf
+	v0YLfXWT0r1T+E1MyjLNxWw=
+X-Received: by 2002:a63:9c3:: with SMTP id 186-v6mr10824822pgj.249.1538754293769;
+        Fri, 05 Oct 2018 08:44:53 -0700 (PDT)
+Return-Path: <mamtashukla555@gmail.com>
+Received: from armorer ([59.88.105.99])
+        by smtp.gmail.com with ESMTPSA id b14-v6sm10153626pgn.49.2018.10.05.08.44.52
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 05 Oct 2018 08:44:53 -0700 (PDT)
+Date: Fri, 5 Oct 2018 21:14:49 +0530
+From: Mamta Shukla <mamtashukla555@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: forest@alittletooquiet.net, gregkh@linuxfoundation.org
+Subject: [PATCH 4/4] staging: vt6655: Remove space after cast
+Message-ID: <3f08f1b38daae08c25cdf5d4a11daa76aa45a732.1538752705.git.mamtashukla555@gmail.com>
 References: <cover.1538752705.git.mamtashukla555@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1538752705.git.mamtashukla555@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+User-Agent: Mutt/1.5.21 (2010-09-15)
 
-On Fri, Oct 05, 2018 at 09:09:26PM +0530, Mamta Shukla wrote:
-> Fix issues found using checkpatch.pl for vt6655 staging driver.
-> 
-> Mamta Shukla (4):
->   staging: vt6655: Add blank line after function/struct/union/enum declarations
->   staging: vt6655: Add spaces around '*'
->   staging: vt6655: Add spaces around '-'
->   staging: vt6655: Remove space after cast
-> 
->  drivers/staging/vt6655/rxtx.c | 29 +++++++++++++++--------------
->  1 file changed, 15 insertions(+), 14 deletions(-)
+Remove space after cast to fix checkpatch issue.
+CHECK: No space is necessary after a cast
 
-Don't put a cover letter for these checkpatch changes.
-It doesn't convey any additional info about the patch
-series and therefore isn't required.
+Signed-off-by: Mamta Shukla <mamtashukla555@gmail.com>
+---
+ drivers/staging/vt6655/rxtx.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-Also, adding spaces could be squashed into a single patch.
-
-Just remember these for future..
-
-Otherwise, ACK for whole series!
-
+diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
+index 1eb8cea..a7c1e46 100644
+--- a/drivers/staging/vt6655/rxtx.c
++++ b/drivers/staging/vt6655/rxtx.c
+@@ -1094,7 +1094,7 @@ static __le16 vnt_rxtx_rsvtime_le16(struct vnt_private *priv, u8 pkt_type,
+ 							sizeof(struct vnt_tx_datahead_g);
+ 			} else { /* RTS_needless */
+ 				pvRrvTime = (void *)(pbyTxBufferAddr + wTxBufSize);
+-				pMICHDR = (struct vnt_mic_hdr *) (pbyTxBufferAddr + wTxBufSize + sizeof(struct vnt_rrv_time_cts));
++				pMICHDR = (struct vnt_mic_hdr *)(pbyTxBufferAddr + wTxBufSize + sizeof(struct vnt_rrv_time_cts));
+ 				pvRTS = NULL;
+ 				pvCTS = (void *) (pbyTxBufferAddr + wTxBufSize + sizeof(struct vnt_rrv_time_cts) + cbMICHDR);
+ 				pvTxDataHd = (void *)(pbyTxBufferAddr + wTxBufSize +
+@@ -1106,7 +1106,7 @@ static __le16 vnt_rxtx_rsvtime_le16(struct vnt_private *priv, u8 pkt_type,
+ 			/* Auto Fall Back */
+ 			if (bRTS) {/* RTS_need */
+ 				pvRrvTime = (void *)(pbyTxBufferAddr + wTxBufSize);
+-				pMICHDR = (struct vnt_mic_hdr *) (pbyTxBufferAddr + wTxBufSize + sizeof(struct vnt_rrv_time_rts));
++				pMICHDR = (struct vnt_mic_hdr *)(pbyTxBufferAddr + wTxBufSize + sizeof(struct vnt_rrv_time_rts));
+ 				pvRTS = (void *) (pbyTxBufferAddr + wTxBufSize + sizeof(struct vnt_rrv_time_rts) + cbMICHDR);
+ 				pvCTS = NULL;
+ 				pvTxDataHd = (void *)(pbyTxBufferAddr + wTxBufSize + sizeof(struct vnt_rrv_time_rts) +
+@@ -1115,7 +1115,7 @@ static __le16 vnt_rxtx_rsvtime_le16(struct vnt_private *priv, u8 pkt_type,
+ 					cbMICHDR + sizeof(struct vnt_rts_g_fb) + sizeof(struct vnt_tx_datahead_g_fb);
+ 			} else { /* RTS_needless */
+ 				pvRrvTime = (void *)(pbyTxBufferAddr + wTxBufSize);
+-				pMICHDR = (struct vnt_mic_hdr *) (pbyTxBufferAddr + wTxBufSize + sizeof(struct vnt_rrv_time_cts));
++				pMICHDR = (struct vnt_mic_hdr *)(pbyTxBufferAddr + wTxBufSize + sizeof(struct vnt_rrv_time_cts));
+ 				pvRTS = NULL;
+ 				pvCTS = (void *)(pbyTxBufferAddr + wTxBufSize + sizeof(struct vnt_rrv_time_cts) + cbMICHDR);
+ 				pvTxDataHd = (void  *)(pbyTxBufferAddr + wTxBufSize + sizeof(struct vnt_rrv_time_cts) +
+@@ -1129,7 +1129,7 @@ static __le16 vnt_rxtx_rsvtime_le16(struct vnt_private *priv, u8 pkt_type,
+ 		if (byFBOption == AUTO_FB_NONE) {
+ 			if (bRTS) {
+ 				pvRrvTime = (void *)(pbyTxBufferAddr + wTxBufSize);
+-				pMICHDR = (struct vnt_mic_hdr *) (pbyTxBufferAddr + wTxBufSize + sizeof(struct vnt_rrv_time_ab));
++				pMICHDR = (struct vnt_mic_hdr *)(pbyTxBufferAddr + wTxBufSize + sizeof(struct vnt_rrv_time_ab));
+ 				pvRTS = (void *)(pbyTxBufferAddr + wTxBufSize + sizeof(struct vnt_rrv_time_ab) + cbMICHDR);
+ 				pvCTS = NULL;
+ 				pvTxDataHd = (void *)(pbyTxBufferAddr + wTxBufSize +
+@@ -1138,7 +1138,7 @@ static __le16 vnt_rxtx_rsvtime_le16(struct vnt_private *priv, u8 pkt_type,
+ 					cbMICHDR + sizeof(struct vnt_rts_ab) + sizeof(struct vnt_tx_datahead_ab);
+ 			} else { /* RTS_needless, need MICHDR */
+ 				pvRrvTime = (void *)(pbyTxBufferAddr + wTxBufSize);
+-				pMICHDR = (struct vnt_mic_hdr *) (pbyTxBufferAddr + wTxBufSize + sizeof(struct vnt_rrv_time_ab));
++				pMICHDR = (struct vnt_mic_hdr *)(pbyTxBufferAddr + wTxBufSize + sizeof(struct vnt_rrv_time_ab));
+ 				pvRTS = NULL;
+ 				pvCTS = NULL;
+ 				pvTxDataHd = (void *)(pbyTxBufferAddr + wTxBufSize + sizeof(struct vnt_rrv_time_ab) + cbMICHDR);
 -- 
-Himanshu Jha
-Undergraduate Student
-Department of Electronics & Communication
-Guru Tegh Bahadur Institute of Technology
+1.9.1
+
 
