@@ -1,94 +1,92 @@
 X-GM-THRID: 6609263444479705088
-X-Received: by 2002:a9d:42d3:: with SMTP id c19mr21134106otj.33.1539089750436;
-        Tue, 09 Oct 2018 05:55:50 -0700 (PDT)
+X-Received: by 2002:a5e:c74b:: with SMTP id g11-v6mr7349829iop.38.1538848330856;
+        Sat, 06 Oct 2018 10:52:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:bb04:: with SMTP id l4-v6ls2183289oif.0.gmail; Tue, 09
- Oct 2018 05:55:49 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV62LJomoDP7wmvc7Q5utdeqrjfdXC77Z1/YKD2ZPJKuLLWaRgPh6mDJ0cTG3mXS/OtuI4RcA
-X-Received: by 2002:aca:7591:: with SMTP id q139-v6mr20934986oic.11.1539089749732;
-        Tue, 09 Oct 2018 05:55:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539089749; cv=none;
+Received: by 2002:a24:2c91:: with SMTP id i139-v6ls1356339iti.4.canary-gmail;
+ Sat, 06 Oct 2018 10:52:10 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV61ikyZ5VAXbIEuxuLU+dlHXIApKmTddTDanj9/+qkPGJ2cWX3jEOSQB2jwBYQNglAWalRai
+X-Received: by 2002:a24:5695:: with SMTP id o143-v6mr1383210itb.19.1538848330340;
+        Sat, 06 Oct 2018 10:52:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538848330; cv=none;
         d=google.com; s=arc-20160816;
-        b=tYrIV4Aih6G54GLqnGBPlcepNU/NfZBPOhAz0mVEOCTlnr+5kpPmvDavkfaya9WWuH
-         kvMOwY5rBheYAhfzbFKWxepWgoguqbCGVpMS2ZAEcOXcO3anqEgNOyIcKIVk+l3sXCwx
-         44zWs9aqhIeTrMS7sHOxJ5W7GvcLYOibfFqZe8SDOCoYKM2xLzJJ7HyrfyPkVq9MCplb
-         8dcuVMJAbu40XVtNsEdxuEOVXhvlqJzEPQtgcQrc3aOmk0VPvBcBUd8hCprdyQloO1nJ
-         +A1c2H+fHVBGuRgz9mWreMDuxFPpr8yEAK/cH1WIki+ZkX2mJBJcRPy/RMFiJMsZfUrt
-         9sTg==
+        b=oIu3tbLyW2Ab7u/X//AyG6kiYC25W8rVpjkWJsdJQLMdLTVt4eO+D5LzOUTfrqSmYW
+         JuJvpTmWh3+hN9QCaqG5NdnJbKTbIGI3yWK/th+USXprMh8bd7v+q6ulKbjiqYzJbkdt
+         pMKye2Bv8Q6HRxJsJFyhO9EEqIivuqjhoQZ+LF8Psn1W25XE6Hzg4AUeNFesWtHTJYuT
+         cTRLwqzjXWU2KkN4vtuPK3KG1RLDrqA+evgcaKxOJxUpj4SlzAWbNvHkpdmcTMq52fpq
+         40wmeTVQTPxDtsyGJvIWOiHr2l61gu11pyWl1Oj2NbrtomRCvTEDxv0+Uq0okDWoBq+Z
+         5U/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature:dkim-signature;
-        bh=turB1WTKYlJbk8OtFKPPEG7aW2bduNyYE7KxRAsI7p8=;
-        b=I8585bZoFMiPwD706DzQjM1WQfmllBgsAjLd5BekOacMvjd2095W3Vo4mJzFkY4E0M
-         crW6axoFgNVNn6yvknTnAKiig2/F866XQAwlsQiBhc2TvkNHLZbNVVV8tTBz2GGTELEd
-         OY8IBQOz6GGJmkIQ7z9VDTcd3MQIlqaxcmiIa0SWeJ0SFsMcJ1rU9CLjjc0XeNNPiNz/
-         +TuR1zIVGsq4DR1iSR1WjIZsSG5lj5yYQFXhEaPJ4ua69eebZHAplh1C+27nZhsIGw7p
-         ZNaP7It4l888NeavltdhNmW3W4dK1RZnI8uUfGeJ5eStDxaF8zMqVxLmKJYDmFzLp4sS
-         5hQQ==
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=xXcEbriDHyvNTGgKSeghXe6AwQZqp8Bt8ss5WTNArPM=;
+        b=QnIK0iUVYXtBHhIkwb7cpOMLnq07ey4U5+7vci4g+j95tHmIZawyec8Xc+YDnmwhIb
+         +vUoReMP772JE1V7UFHFq5FE9S2xSB0maPE7pky5Xin6iJQASgMWOTKOPzGH3uD38BpW
+         XISVLkMpI8wV43vTRym/vJjJ0C14DQzeUtSVTtq2ReUCoy2WMmb0OSkSQoRgswGAsa5p
+         x0sJgCdniXhd7FSVPcydWtxjYbeWVtGkZrHvf5u4/QwyoUN74DyY6rh5y/Qxt1jFdrmM
+         2rKNGBFSFRKwbYrmlY5rm8LJeLoSwmFLpB5AzWJi3DP8RHSJiuw3sb36t8gQMgQW0WF6
+         o2XA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kroah.com header.s=fm2 header.b=gFzqNaPw;
-       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=hdbvjeWu;
-       spf=pass (google.com: domain of greg@kroah.com designates 66.111.4.27 as permitted sender) smtp.mailfrom=greg@kroah.com
-Return-Path: <greg@kroah.com>
-Received: from out3-smtp.messagingengine.com (out3-smtp.messagingengine.com. [66.111.4.27])
-        by gmr-mx.google.com with ESMTPS id u10si662977otc.0.2018.10.09.05.55.49
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pnkfEQ6Z;
+       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <himanshujha199640@gmail.com>
+Received: from mail-pl1-x644.google.com (mail-pl1-x644.google.com. [2607:f8b0:4864:20::644])
+        by gmr-mx.google.com with ESMTPS id j6-v6si416347iog.1.2018.10.06.10.52.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 09 Oct 2018 05:55:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of greg@kroah.com designates 66.111.4.27 as permitted sender) client-ip=66.111.4.27;
+        Sat, 06 Oct 2018 10:52:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) client-ip=2607:f8b0:4864:20::644;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kroah.com header.s=fm2 header.b=gFzqNaPw;
-       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=hdbvjeWu;
-       spf=pass (google.com: domain of greg@kroah.com designates 66.111.4.27 as permitted sender) smtp.mailfrom=greg@kroah.com
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
-	by mailout.nyi.internal (Postfix) with ESMTP id C40E721F22;
-	Tue,  9 Oct 2018 08:55:48 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute6.internal (MEProxy); Tue, 09 Oct 2018 08:55:48 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
-	date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:in-reply-to; s=fm2; bh=turB1WTKYlJbk8OtFKPPEG7aW2b
-	duNyYE7KxRAsI7p8=; b=gFzqNaPwsW7GnHgMCWEgs5AGJWZW4pHG8ozAr86pwp2
-	IPUqv1EVjGXx06f5z40AiXBsazHWJzlVrSHZxWoYLf/ofIyslExdWbid8w2Ez6Wh
-	qfO6ARztMLYQ65AlRFUGc4m0mSc2pks5GdoXccnIqRxm/MWotAEThJvA0MzPqRWe
-	blgUJJDw0HlwDPRsHyg5uDqnooAvj5AZHGguIF3DGVjW+s0Bporipw6z0ArD4tmZ
-	f+lFxxAB85fNcwRCwuHfoIi6O5/zvGtDrbYuKSvoxFEi1zeOCpvwcLKKtThaKoen
-	Kms7e0kC4OoOE7xzTZF+ZYEzqZno6sLGEjF9LfWiL+A==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-proxy
-	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=turB1W
-	TKYlJbk8OtFKPPEG7aW2bduNyYE7KxRAsI7p8=; b=hdbvjeWuj6BXiZcYKfNGUh
-	/iptQ1Z263sL8hR504M0bFUfAagLBCyTWevlaAHK/cPmwzY4QfApHvkCNQ4rqHs2
-	+0IaOPnO4TwKVgUJPpRE+ljaSqfQH+R1W7Npy/kgjkTzvhtMzzxXI7ZzMeMdly4o
-	ghOIBLxq0TGgqrMSPdUoQf5PbgI/f9vKr11HKHTMLzg5DndaGG6PcnJVbeRxopk7
-	Q9m7EIk83s/gkRVK0fLWm/aXrmM2m1v2zJE+BcmHuNjE9B/jVLvabWoSXE3Y116A
-	POk6+SAXbjP6bZSlp9xr29zrz0xTH+Alr3+dKVDYl18PbY/9RqehH86S6WAqFUDQ
-	==
-X-ME-Sender: <xms:VKW8Wz62FluCRPfqT2zddX3Z-lKKP-D72shbhtVGtXYkd2wVzsZDkA>
-X-ME-Proxy: <xmx:VKW8Ww3AxfdKwMqxj16o8xnYlmcNs8pRtprUwJblG0K9IdDVGjSLgQ>
-    <xmx:VKW8W5Qm6fWHhoWdPck4CdzDAdG0lLtz2sTNxpkcrkZIxJzLM5Nbfg>
-    <xmx:VKW8W_NJzEdk5b3hx_TJJ4Wq5NjWjA1iDyiGzKBMCvfrHW_UNTgEug>
-    <xmx:VKW8W9uT0OW6FPXtdp1tuavQ-sL5rZq0ONHcEtUyqa056gwa1feXUQ>
-    <xmx:VKW8W3LC0VvsF4iqtmRpN7jim2_JeP3yPTbyc56t8MilOglqIzAwEg>
-    <xmx:VKW8WzscDyMJd4Dr8aXYcinrOk-Bz7YoRAW4Tu4NVQG94xwH38bjYA>
-Received: from localhost (ip-213-127-77-176.ip.prioritytelecom.net [213.127.77.176])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 075D9E4179;
-	Tue,  9 Oct 2018 08:55:47 -0400 (EDT)
-Date: Tue, 9 Oct 2018 14:55:46 +0200
-From: Greg KH <greg@kroah.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pnkfEQ6Z;
+       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x644.google.com with SMTP id c8-v6so8243319plo.9
+        for <outreachy-kernel@googlegroups.com>; Sat, 06 Oct 2018 10:52:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=xXcEbriDHyvNTGgKSeghXe6AwQZqp8Bt8ss5WTNArPM=;
+        b=pnkfEQ6ZxAXCWK3n15hMXA5dDHnijgga1rMdPTeRThkhWnqjNl+AZd1ZecGpQInD8b
+         japhse1mEwMLjGo16JBqR6dz030wQV4dB9LDIVC+AnGjxL8UsH+qqWXQau8gD/DZFPpF
+         QtifSaXeorR2SB8JD2fYinCPPmwzpnWJfXbtG87bmDvlNYBHJikHNvrUcshkKjEBtTSY
+         hJKhlasRXif3uWxhfe+ZwmeZb+SX+qb3fflz16UmPW+BeBQ7uhyKnVTIDjqb4M3ncTjv
+         at1Zcz2r87z7wOxTfC9qKYRBe1h/hbIvOtVayOvHmC/ol3X4IyW52x1IHM9BkActxntM
+         BmIQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=xXcEbriDHyvNTGgKSeghXe6AwQZqp8Bt8ss5WTNArPM=;
+        b=k/rrJ8K2WjRDoDQmDnr9Oy3NCqtM1hNxASopGGRGeWRdQP/nSTbI1b3VZjoJYe5HHx
+         z9SGa369mzgMEN6vSd/GE86qZWfZEabUZwF7Wlti2YIcl9X8P2rEabnUPUSwo9L3C/Gl
+         jYlK+M4AN+mNuqcU47svdnk9o9z80guAJf2DGjyAzFFak6B9jw833JhBQx+YUm3w02Q4
+         DAh26GAHNiPmodlK/7GFXGjz30n1vSP48yEU8UuXKwV33JIKJnOyUvkEkByTOVwbbh1S
+         yR02Pmok4VH/AlXDmEGYgTwCyXGckwxjfDcJu8XuJlDJ4ciaYWlOGOWKo4JtOaHH+QB5
+         AiYQ==
+X-Gm-Message-State: ABuFfogoIKEZvdJRL0aRQWZ9ofru8Yo9Ui7e0FVEs+nFV0ZosSe9TZCA
+	lzje3dSzeVDLCg115AkRuTE=
+X-Received: by 2002:a17:902:6ac7:: with SMTP id i7-v6mr17107266plt.268.1538848329690;
+        Sat, 06 Oct 2018 10:52:09 -0700 (PDT)
+Return-Path: <himanshujha199640@gmail.com>
+Received: from himanshu-Vostro-3559 ([103.233.116.134])
+        by smtp.gmail.com with ESMTPSA id c69-v6sm20552187pfg.2.2018.10.06.10.52.07
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 06 Oct 2018 10:52:09 -0700 (PDT)
+Date: Sat, 6 Oct 2018 23:22:03 +0530
+From: Himanshu Jha <himanshujha199640@gmail.com>
 To: Mamta Shukla <mamtashukla555@gmail.com>
 Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.com,
 	rspringer@google.com, toddpoynor@google.com, benchan@chromium.org
-Subject: Re: [PATCH] staging: gasket: Replace symbolic permissions with octal
- permissions
-Message-ID: <20181009125546.GA2700@kroah.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: gasket: Replace symbolic
+ permissions with octal permissions
+Message-ID: <20181006175203.GD6283@himanshu-Vostro-3559>
 References: <20181006143316.GA23864@armorer>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <20181006143316.GA23864@armorer>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
 On Sat, Oct 06, 2018 at 08:03:16PM +0530, Mamta Shukla wrote:
 > Use octal permissions in place of symbolic permissions to fix checkpatch
@@ -97,6 +95,13 @@ On Sat, Oct 06, 2018 at 08:03:16PM +0530, Mamta Shukla wrote:
 > using octal permissions '0444'.
 > 
 > Signed-off-by: Mamta Shukla <mamtashukla555@gmail.com>
+
+Reviewed-by: Himanshu Jha <himanshujha199640@gmail.com>
+
+In the meantime take a look here:
+https://lkml.org/lkml/2016/8/2/1945
+
+
 > ---
 >  drivers/staging/gasket/gasket_sysfs.h | 4 ++--
 >  1 file changed, 2 insertions(+), 2 deletions(-)
@@ -111,9 +116,6 @@ On Sat, Oct 06, 2018 at 08:03:16PM +0530, Mamta Shukla wrote:
 >  	{                                                                      \
 > -		.attr = __ATTR(GASKET_ARRAY_END_TOKEN, S_IRUGO, NULL, NULL),   \
 > +		.attr = __ATTR(GASKET_ARRAY_END_TOKEN, 0444, NULL, NULL),   \
-
-This is very odd, why is this define even needed?
-
 >  		.data.attr_type = 0,                                           \
 >  	}
 >  
@@ -123,10 +125,22 @@ This is very odd, why is this define even needed?
 >  	{                                                                      \
 > -		.attr = __ATTR(_name, S_IRUGO, _show_function, NULL),          \
 > +		.attr = __ATTR(_name, 0444, _show_function, NULL),          \
+>  		.data.attr_type = _attr_type                                   \
+>  	}
+>  
+> -- 
+> 1.9.1
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20181006143316.GA23864%40armorer.
+> For more options, visit https://groups.google.com/d/optout.
 
-This should use __ATTR_RO() instead, right?
-
-thanks,
-
-greg k-h
+-- 
+Himanshu Jha
+Undergraduate Student
+Department of Electronics & Communication
+Guru Tegh Bahadur Institute of Technology
 
