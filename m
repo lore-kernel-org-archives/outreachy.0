@@ -1,112 +1,82 @@
 X-GM-THRID: 6609200682225369088
-X-Received: by 2002:a5e:c206:: with SMTP id v6-v6mr16005909iop.9.1538993762632;
-        Mon, 08 Oct 2018 03:16:02 -0700 (PDT)
+X-Received: by 2002:a05:660c:70b:: with SMTP id l11mr16316664itk.5.1538993371452;
+        Mon, 08 Oct 2018 03:09:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:5a81:: with SMTP id v123-v6ls106302ita.6.gmail; Mon, 08
- Oct 2018 03:16:01 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV62WjWNQYn5UJc18NR8PBQ4vLd9YaJzKMa3yvcJzKZ/GxlfAmk46fZ1627EsZHuEQy0v4hCT
-X-Received: by 2002:a24:6e92:: with SMTP id w140-v6mr15922448itc.35.1538993761908;
-        Mon, 08 Oct 2018 03:16:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538993761; cv=none;
+Received: by 2002:a24:5a81:: with SMTP id v123-v6ls102539ita.6.gmail; Mon, 08
+ Oct 2018 03:09:30 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV619Y92uFaRm8huZUZM2UlbZdXCSPRQ446ceN4893YrMPUwy77DbfGZQKgWStNBRCCT6y8Nt
+X-Received: by 2002:a05:660c:485:: with SMTP id a5mr8550935itk.30.1538993370406;
+        Mon, 08 Oct 2018 03:09:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538993370; cv=none;
         d=google.com; s=arc-20160816;
-        b=H1BaCZwd8Gqj3gBf3eWaTXUamyizOUh4WyKpITjznVBMEMO1wSYKpRHJck74ZFWdtL
-         xT9LMkv7sZpp6rBLuwuvAhq3WJtiQOD2v2/Nr5iSCK1/LoYBa3VQh96XS0rk/Rd6T2KX
-         yaWOhQtJaed5vOVhK8jF5czCTmeS+vivPYaWuKGhmi/T9xfLsxUHx35I0IqcBF/r53rP
-         /yW/jcLejuPhYLfqDxi7NW241PsdKW22p9ihw3zpEB8Bk4yOlLAEfMBR9FsekeRxMXIs
-         QA3hj+DeLXn8yKNuNW33Vl5fW+3Zk8ndxl6rlkGnQW6Piec461SrngDMLzVmJkcQmyCb
-         DHqQ==
+        b=UIycS4M9wNmC9mngAOwTOBbXKyUyNdtqcUqkC0izFUk22xIZ2tvS5ENRZsnYC+nyW8
+         tXVS8SsK2YFDVLDVwPDlnOm4CVuSTd7t3qKhDzPsOnFLO6yRJNA9iz2rPNwuQ4Hui97C
+         dFxBVHCBQ+Le9SOCB04aPmWDiJ8M0iFVZaHBrHiX7r4aVACtp6LGnHBU8FcWFAmxPSET
+         0MHBG13qEcbfQcPLwwT2fIfOltkkqKyX+4nq6rryVSlecXNBv8SJdg2ZKN/USm0ReUEN
+         fUFpcBiVF9o6I1nnGa6l5yzhi9lUtLse47RtCnDrF00iC97tOkQhMuUTV0aOSLuCNSLh
+         5dUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-language:content-transfer-encoding:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject
-         :dkim-signature;
-        bh=yqhKiZfTumU66AF0UETPk+q3qSjkBVqY2hdgx+grXXw=;
-        b=EHYt17ZMAC0Z55vRqgKFyazd1HGVobiBlY+0YGsa6k+oy5H5gcf1Hu0AZBtaDun/zj
-         v5n3NeuOmq0B0iDhVkiAt6OK5ZJc2TFxPey6PWm8VIP0KW6o/SlTl6TxaMjxlH9YAPTB
-         /QnSA+1zyHbUqHntBi5zyZ3iIVx5MvbGFVAzdXLNNtPGr0rIP4KV65UwK72RupGExRe5
-         fHrwVLutkF3J0vjcpyK+fQ5qXyCLLYk9urI2Of4EgpiuEH6ecghE4EHxuZ2oPw1LOC0N
-         eMEiROUQvUixcNl41NWs7zo6k2+ErkOKRkKKBusHMOJiGGrOhioSb4paSqbKid1WF/L9
-         xNhQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:from:references:cc:to
+         :subject;
+        bh=+h1Xl2THm0gROEChacp6cxpMEz2rujsVo5G8a3Xg7Q4=;
+        b=WcqGI56Jqdb/NMr4qM0/fR+Sg7Ttg+B1yOvJGDbPOJPvYi+mfq8eMZLiCteCR0fvDf
+         LpHy1/QA31QUxnLddeFKhS0WIe7U8Wq9oESyvUeYp/dUg6EwlOUQGLWWHb6Iq0JxAAd6
+         lvpG5VoJSpHpZkJlSJQY4wzmhHyZThTsT/Gyxh5Gf1PScKLR/d7n2/+Uv11ymJ/BMX6I
+         UIQbsSDa+SOf+wRAOs5xETWhUIjJgem74twZIUXxdnJY/m02zYyIzXDRctw8kQGGvmWQ
+         NdLolrk0BuYqnlYSpR3Yn7NnuHRpjgfqRsgXXV0PYqc77ahrTyGV03d5b/oFxmn2c1/u
+         qgVQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UjAR+2jd;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id s7-v6si668613ioo.5.2018.10.08.03.16.01
+       spf=neutral (google.com: 173.203.187.64 is neither permitted nor denied by best guess record for domain of abbotti@mev.co.uk) smtp.mailfrom=abbotti@mev.co.uk
+Return-Path: <abbotti@mev.co.uk>
+Received: from smtp64.iad3a.emailsrvr.com (smtp64.iad3a.emailsrvr.com. [173.203.187.64])
+        by gmr-mx.google.com with ESMTPS id b133-v6si518696itc.3.2018.10.08.03.09.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 08 Oct 2018 03:16:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
+        Mon, 08 Oct 2018 03:09:30 -0700 (PDT)
+Received-SPF: neutral (google.com: 173.203.187.64 is neither permitted nor denied by best guess record for domain of abbotti@mev.co.uk) client-ip=173.203.187.64;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UjAR+2jd;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x544.google.com with SMTP id y18-v6so7634379pge.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 08 Oct 2018 03:16:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=subject:to:references:from:message-id:date:user-agent:mime-version
-         :in-reply-to:content-transfer-encoding:content-language;
-        bh=yqhKiZfTumU66AF0UETPk+q3qSjkBVqY2hdgx+grXXw=;
-        b=UjAR+2jd6r2t8O2bEXQSdWlS+zi8OnyeNOJShPlzQbn7WDtSTh89Q9BoWtS5m9nisn
-         uq0kYfpy4OKgkX1t6YkLBwc4H3WAKmy5JLE24PSK8RZI212PtJPf9b6qd8ToJuGxXsQF
-         46ehL7/olCh8Ae87MVkmtfbiCT5by9YmRLL799+9PTYrRh/vZ60cv2VLO+W+hWo+CHI6
-         f2A9nG5uBtEbIoEx7BWhCGwEBPBOBJIfuvFlMWMQKIATSoiFrbk3SccNw9ORK4spvQ+E
-         dDEbxlRz0mTh5W7b+tflNOvpbmjKjbm+/gAIV5eyLHJ198jLefbm4eLF3CtDRZmno9vs
-         WjbA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-transfer-encoding
-         :content-language;
-        bh=yqhKiZfTumU66AF0UETPk+q3qSjkBVqY2hdgx+grXXw=;
-        b=AUyp+Iliv+vEQR9Aa9NCXPiw176QgD8CwQBXK8u6e68WGEP21+2T9+yvZRldThGfC1
-         NaUNDjlPRUKiWsgsI4nhHX1/bCkrid+AXcHwdds1xCKSFQqyPpnTDVm9uQl/1oR3QREB
-         QSDiTlXfTHpKX/Fjyr3bhAgMfasD0zm8cwvKebq8qDnQGe63FD6/Rrqhj+td8dJmrm3j
-         rqZDLsPIk3AsLqfzxUCczsPim6jT1b7BC2QUU9YzfqOc33Mf0Ej68B2aKROJTPcxiJTK
-         mnJvFtvIHRcycHc+pOKwqy/Q5ZXjdgSSkD7nPEeZBbQhstkd7ADJ2Me0RVI71jWu3/ob
-         6UfA==
-X-Gm-Message-State: ABuFfogSiaCsOXefMQ2EVOsJb3wxQBBYqmUtNqINZxcVFoCEF2wgWtKS
-	1jrWXfj2dGo5qEPKW3Ox2NWIQkWv
-X-Received: by 2002:a62:d841:: with SMTP id e62-v6mr24347030pfg.60.1538993761020;
-        Mon, 08 Oct 2018 03:16:01 -0700 (PDT)
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from [192.168.1.3] ([183.83.92.101])
-        by smtp.gmail.com with ESMTPSA id f1-v6sm29658881pgc.4.2018.10.08.03.15.59
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 08 Oct 2018 03:16:00 -0700 (PDT)
+       spf=neutral (google.com: 173.203.187.64 is neither permitted nor denied by best guess record for domain of abbotti@mev.co.uk) smtp.mailfrom=abbotti@mev.co.uk
+Received: from smtp17.relay.iad3a.emailsrvr.com (localhost [127.0.0.1])
+	by smtp17.relay.iad3a.emailsrvr.com (SMTP Server) with ESMTP id D115825FB6;
+	Mon,  8 Oct 2018 06:09:29 -0400 (EDT)
+X-Auth-ID: siepeng@mev.co.uk
+Received: by smtp17.relay.iad3a.emailsrvr.com (Authenticated sender: siepeng-AT-mev.co.uk) with ESMTPSA id 5467125F5E;
+	Mon,  8 Oct 2018 06:09:29 -0400 (EDT)
+X-Sender-Id: siepeng@mev.co.uk
+Received: from [10.0.0.185] (remote.quintadena.com [81.133.34.160])
+	(using TLSv1.2 with cipher DHE-RSA-AES128-SHA)
+	by 0.0.0.0:465 (trex/5.7.12);
+	Mon, 08 Oct 2018 06:09:29 -0400
 Subject: Re: [Outreachy kernel][PATCH v7] staging:comedi:comedi_pci.h Prefer a
  maximum 75 chars per line
-To: outreachy-kernel@googlegroups.com
+To: bhanu20anu@gmail.com, outreachy-kernel@googlegroups.com
+Cc: hsweeten@visionengravers.com, gregkh@linuxfoundation.org
 References: <1d352f7b-f146-73af-23bc-5301c9cd035a@gmail.com>
- <62c732c8-8f6d-6a2c-3256-ba3386444f76@mev.co.uk>
-From: Bhanusree <bhanusreemahesh@gmail.com>
-Message-ID: <f8152fce-71dc-6771-a33e-bc9d95fcf46a@gmail.com>
-Date: Mon, 8 Oct 2018 15:45:57 +0530
+From: Ian Abbott <abbotti@mev.co.uk>
+Organization: MEV Ltd.
+Message-ID: <62c732c8-8f6d-6a2c-3256-ba3386444f76@mev.co.uk>
+Date: Mon, 8 Oct 2018 11:09:28 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
  Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <62c732c8-8f6d-6a2c-3256-ba3386444f76@mev.co.uk>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
+In-Reply-To: <1d352f7b-f146-73af-23bc-5301c9cd035a@gmail.com>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Language: en-GB
+Content-Transfer-Encoding: 7bit
 
+On 07/10/18 12:32, Bhanusree wrote:
+> comedi_pci_auto_config() function prototype is exceeding more than
+> 75 characters per line. Adjusted to 75 chars to improve readability
+> 
+> Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
 
+I've never heard of that preference for function prototypes to not 
+exceed 75 columns.  Where does it come from?
 
-On Monday 08 October 2018 03:39 PM, Ian Abbott wrote:
-> On 07/10/18 12:32, Bhanusree wrote:
->> comedi_pci_auto_config() function prototype is exceeding more than
->> 75 characters per line. Adjusted to 75 chars to improve readability
->>
->> Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
->
-> I've never heard of that preference for function prototypes to not 
-> exceed 75 columns.  Where does it come from?
-It is the warning given by checkpatch. Earlier it used to show if 
-characters exceeded 80 per line. But now when checkpatch is applied it 
-is showing the following warning.
-
-"Possible unwrapped commit description (prefer a maximum 75 chars per line)"
-
+-- 
+-=( Ian Abbott <abbotti@mev.co.uk> || Web: www.mev.co.uk )=-
+-=( MEV Ltd. is a company registered in England & Wales. )=-
+-=( Registered number: 02862268.  Registered address:    )=-
+-=( 15 West Park Road, Bramhall, STOCKPORT, SK7 3JZ, UK. )=-
 
