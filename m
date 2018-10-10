@@ -1,154 +1,109 @@
-X-GM-THRID: 6342587309964132352
-X-Received: by 10.66.17.228 with SMTP id r4mr49566pad.101.1476748685380;
-        Mon, 17 Oct 2016 16:58:05 -0700 (PDT)
+X-GM-THRID: 6610529510960922624
+X-Received: by 2002:ac2:4351:: with SMTP id o17-v6mr863811lfl.2.1539152965911;
+        Tue, 09 Oct 2018 23:29:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.53.124 with SMTP id l57ls3669306ote.44.gmail; Mon, 17 Oct
- 2016 16:58:05 -0700 (PDT)
-X-Received: by 10.200.51.97 with SMTP id u30mr74601qta.16.1476748685016;
-        Mon, 17 Oct 2016 16:58:05 -0700 (PDT)
-Return-Path: <elise.lennion@gmail.com>
-Received: from mail-vk0-x243.google.com (mail-vk0-x243.google.com. [2607:f8b0:400c:c05::243])
-        by gmr-mx.google.com with ESMTPS id x14si4557814vkd.3.2016.10.17.16.58.04
+Received: by 2002:a19:3b93:: with SMTP id d19-v6ls190973lfl.10.gmail; Tue, 09
+ Oct 2018 23:29:25 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62LNRDW9cw2So1S0bJAigBsHsU++jwznp4k8dMXBXSe+MYThWeLa7bYv7TkW7vLTokRQfwr
+X-Received: by 2002:a19:d807:: with SMTP id p7-v6mr836861lfg.5.1539152963789;
+        Tue, 09 Oct 2018 23:29:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539152963; cv=none;
+        d=google.com; s=arc-20160816;
+        b=IYpHiQbefzWDEm1s7vV+J87Jao9QnI6i8jLPV+xa1175/Mr+FnnVWKD5ehDwP4z776
+         UZumUWWbljmU6XgA0oBlIISAgQKeee4RSIoNAp8rohrBg6Hz8gLjY0bq978vigMIOr7T
+         ra0ayybe9XuOASA//pY7zng5VGln3vgFydqQpXWCgM/veIapTUznsCVcdpEfrfo/urSn
+         92SIU91/k69+/HqTEMNqSSk87/vakcsSwNBXhzO2e6B4wdbAfjVZ4lED0zIq627WFPms
+         Td+GrcOXHL/HKUt+5yUtNFcQbm8Z8qy3jLsdaKs9fx/EwJUKV6/SbxAbhfFiBSO/At72
+         z4ug==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=Kl1M6JMPcd/k2pVZxVscQlSoRwLolZV5NfWgNRQ9/Wk=;
+        b=D3bJ4IvhIiIp0gOmo60rpVjRw23R/wkhH0LOuT9xYpiBwq/VN9NNfvHIzRyYXZc2b2
+         jfiellpaJt146g6K9CMWSMUoJ78Hn1mJ3pI870d/Xu4/Z7QBW+FZhyIyN7A93TDWRXld
+         NExk57BxK0LKXIEO375RvV6hy0gbv17wMHfi7PVvDlw/PWi4+GABP6bMtonVbf1msVOC
+         WP7akYEeuhnBQhU3rZC9RSDP7xdpgSk49HtZwIw6b08Ug7H53VOEFyeifxzK1TPLVy9S
+         gm65T9Zn2jkzfbbo+hz+kTMnv59u3DGszZNriVqznHnQ8HPDmZ2wCj6GSkBY0AjVNfhl
+         I/RQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id h20-v6si156790ljj.5.2018.10.09.23.29.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 17 Oct 2016 16:58:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::243 as permitted sender) client-ip=2607:f8b0:400c:c05::243;
+        Tue, 09 Oct 2018 23:29:23 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::243 as permitted sender) smtp.mailfrom=elise.lennion@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-vk0-x243.google.com with SMTP id 83so7764718vkd.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 17 Oct 2016 16:58:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=Moql1P974P92seZuoRRe5ZR2RpWNKcdVIxd3X9tPE9I=;
-        b=uLpomYOFuNlHGsC0QI9ibbKNTEncKCEEBjA9a4taJ9NPLou1zztYTX6Ni3eXcc+dCC
-         Xlb3wF9MSeaV4HTc+eTge3LEwG+YW70+TZuDnVYMiSPPdgCk1P0BSjGP6mBYQeXILORJ
-         mdU8+icSCjld5FyLwZx3YjD6MBpeRmMDYhyUwalO2+T0do+EhbvbeXf8sZhsx7UyeOLS
-         oPfQhjwtusY91w13jESbhz7cHPpqkV/QmJSRnhRc/KzDObUR6w8lOY+5+/HfZMoUoq84
-         01cqOIVmeuby8JwsvKxtMBjagH6xw+e64daWjMY/4s43Ld1HxTerZXJ/X2ShRsPXGXcj
-         wOTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=Moql1P974P92seZuoRRe5ZR2RpWNKcdVIxd3X9tPE9I=;
-        b=N0C9S44nybCg04o5450pzVm8tlHxd4Ky/my39ECm36fvhvRj/OhYQf+Y5aOaVJPs8z
-         rtlcCMg/IpGlfwiaBjPAQdEYFynf6r8JZrT2tXnzxUELOA6p8k5ZWxK4Z1gLN3yqsJgc
-         5yLLavzIO1f6kNxX4IRDXDzPTq/D/TVl//T/AYKREnKpu+grm385SD7ELUbfcTKAmu9q
-         a3iJzc8DLGaIdRAZVirR0BR/VpVRuw/Wm9EzgMSlE2N8G7pvFAVz0qHea1sEPOWjpr8M
-         r6jZgmcIF7yYtbriNZ2fHBbLMgLbn9ETtQ/7oiQP+n4hlsYkcWMcgEllh5yminnYCrXz
-         XdNg==
-X-Gm-Message-State: AA6/9RmgXhS92Jv+ds5aXvG2wIHlkqvUQ0PeZHl+Ij4DHxaUizd4xvvHPdrkLxf7I29wnw==
-X-Received: by 10.31.5.15 with SMTP id 15mr59070vkf.164.1476748684868;
-        Mon, 17 Oct 2016 16:58:04 -0700 (PDT)
-Return-Path: <elise.lennion@gmail.com>
-Received: from lennorien.com ([187.64.224.84])
-        by smtp.gmail.com with ESMTPSA id s17sm12872750vka.26.2016.10.17.16.58.03
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 17 Oct 2016 16:58:04 -0700 (PDT)
-Date: Mon, 17 Oct 2016 21:57:58 -0200
-From: Elise Lennion <elise.lennion@gmail.com>
-To: arnaud.patard@rtp-net.org, gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/3] staging: xgifb: Remove unnecessary parentheses.
-Message-ID: <20161017235758.GA21742@lennorien.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.54,363,1534802400"; 
+   d="scan'208";a="350453893"
+Received: from 89-157-201-244.rev.numericable.fr (HELO hadrien) ([89.157.201.244])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 10 Oct 2018 08:29:22 +0200
+Date: Wed, 10 Oct 2018 08:29:22 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Bhanusree Pola <bhanusreemahesh@gmail.com>
+cc: outreachy-kernel@googlegroups.com, greg@kroah.com
+Subject: Re: [Outreachy kernel] [Outreachy Kernel][Patch v4] staging:
+ mt7621-dma: Delete unused define
+In-Reply-To: <20181010011035.GA13421@veda-VGN-CS3AGH-R>
+Message-ID: <alpine.DEB.2.21.1810100828460.2477@hadrien>
+References: <20181010011035.GA13421@veda-VGN-CS3AGH-R>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-The removed parentheses are unnecessary and don't add readability.
 
-Found using Coccinelle semantic patch:
-@@ expression e, e1, e2; @@
-e &=
-(
-        (e1 == e2)
-|
--       (e1)
-+       e1
-)
 
-@@ expression e, e1, e2; @@
-e |=
-(
-        (e1 == e2)
-|
--       (e1)
-+       e1
-)
+On Wed, 10 Oct 2018, Bhanusree Pola wrote:
 
-Signed-off-by: Elise Lennion <elise.lennion@gmail.com>
----
- drivers/staging/xgifb/vb_setmode.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+> delete unused '#define GDMA_REG_CTRL1_CONTINOUS BIT(14)'
+>
+> Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+> ---
+> Change log:
+>
+> v4:
+> -added change log
+>
+> v3:
+> -modified subject line
+> -modified commit message
+> -delete unused #defne
+>
+> v2:
+> -Fixed Comitt message in place
+>
+>  drivers/staging/mt7621-dma/ralink-gdma.c | 1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/drivers/staging/mt7621-dma/ralink-gdma.c b/drivers/staging/mt7621-dma/ralink-gdma.c
+> index 6d9fe175ea52..73dbc7fe38a2 100644
+> --- a/drivers/staging/mt7621-dma/ralink-gdma.c
+> +++ b/drivers/staging/mt7621-dma/ralink-gdma.c
+> @@ -47,7 +47,6 @@
+>  #define GDMA_REG_CTRL1_REQ_MASK		0x3f
+>  #define GDMA_REG_CTRL1_SRC_REQ_SHIFT	16
+>  #define GDMA_REG_CTRL1_DST_REQ_SHIFT	8
+> -#define GDMA_REG_CTRL1_CONTINOUS	BIT(14)
+>  #define GDMA_REG_CTRL1_NEXT_MASK	0x1f
+>  #define GDMA_REG_CTRL1_NEXT_SHIFT	3
+>  #define GDMA_REG_CTRL1_COHERENT		BIT(2)
 
-diff --git a/drivers/staging/xgifb/vb_setmode.c b/drivers/staging/xgifb/vb_setmode.c
-index f4bcb156..6467d96 100644
---- a/drivers/staging/xgifb/vb_setmode.c
-+++ b/drivers/staging/xgifb/vb_setmode.c
-@@ -507,7 +507,7 @@ static void XGI_SetXG27CRTC(unsigned short RefreshRateTableIndex,
- 	/* SR0B */
- 	Tempax = XGI_CRT1Table[index].CR[5];
- 	Tempax &= 0xC0; /* Tempax[7:6]: SR0B[7:6]: HRS[9:8]*/
--	Tempbx |= (Tempax << 2); /* Tempbx: HRS[9:0] */
-+	Tempbx |= Tempax << 2; /* Tempbx: HRS[9:0] */
- 
- 	Tempax = XGI_CRT1Table[index].CR[4]; /* CR5 HRE */
- 	Tempax &= 0x1F; /* Tempax[4:0]: HRE[4:0] */
-@@ -530,7 +530,7 @@ static void XGI_SetXG27CRTC(unsigned short RefreshRateTableIndex,
- 	Tempax = XGI_CRT1Table[index].CR[5]; /* SR0B */
- 	Tempax &= 0xC0; /* Tempax[7:6]: SR0B[7:6]: HRS[9:8]*/
- 	Tempax >>= 6; /* Tempax[1:0]: HRS[9:8]*/
--	Tempax |= ((Tempbx << 2) & 0xFF); /* Tempax[7:2]: HRE[5:0] */
-+	Tempax |= (Tempbx << 2) & 0xFF; /* Tempax[7:2]: HRE[5:0] */
- 	/* SR2F [7:2][1:0]: HRE[5:0]HRS[9:8] */
- 	xgifb_reg_set(pVBInfo->P3c4, 0x2F, Tempax);
- 	xgifb_reg_and_or(pVBInfo->P3c4, 0x30, 0xE3, 00);
-@@ -548,12 +548,12 @@ static void XGI_SetXG27CRTC(unsigned short RefreshRateTableIndex,
- 	Tempax >>= 2; /* Tempax[0]: VRS[8] */
- 	/* SR35[0]: VRS[8] */
- 	xgifb_reg_and_or(pVBInfo->P3c4, 0x35, ~0x01, Tempax);
--	Tempcx |= (Tempax << 8); /* Tempcx <= VRS[8:0] */
--	Tempcx |= ((Tempbx & 0x80) << 2); /* Tempcx <= VRS[9:0] */
-+	Tempcx |= Tempax << 8; /* Tempcx <= VRS[8:0] */
-+	Tempcx |= (Tempbx & 0x80) << 2; /* Tempcx <= VRS[9:0] */
- 	/* Tempax: SR0A */
- 	Tempax = XGI_CRT1Table[index].CR[14];
- 	Tempax &= 0x08; /* SR0A[3] VRS[10] */
--	Tempcx |= (Tempax << 7); /* Tempcx <= VRS[10:0] */
-+	Tempcx |= Tempax << 7; /* Tempcx <= VRS[10:0] */
- 
- 	/* Tempax: CR11 VRE */
- 	Tempax = XGI_CRT1Table[index].CR[11];
-@@ -1201,12 +1201,12 @@ static void const *XGI_GetLcdPtr(struct XGI330_LCDDataTablStruct const *table,
- 	while (table[i].PANELID != 0xff) {
- 		tempdx = pVBInfo->LCDResInfo;
- 		if (tempbx & 0x0080) { /* OEMUtil */
--			tempbx &= (~0x0080);
-+			tempbx &= ~0x0080;
- 			tempdx = pVBInfo->LCDTypeInfo;
- 		}
- 
- 		if (pVBInfo->LCDInfo & EnableScalingLCD)
--			tempdx &= (~PanelResInfo);
-+			tempdx &= ~PanelResInfo;
- 
- 		if (table[i].PANELID == tempdx) {
- 			tempbx = table[i].MASK;
-@@ -1918,7 +1918,7 @@ static void XGI_GetVBInfo(unsigned short ModeIdIndex,
- 			tempbx |= SetCRT2ToHiVision;
- 
- 			if (temp != YPbPrMode1080i) {
--				tempbx &= (~SetCRT2ToHiVision);
-+				tempbx &= ~SetCRT2ToHiVision;
- 				tempbx |= SetCRT2ToYPbPr525750;
- 			}
- 		}
--- 
-2.7.4
+There is a small thing that can be cleaned up here, which is that the
+#define values are not nicely lined up.
 
+julia
+
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20181010011035.GA13421%40veda-VGN-CS3AGH-R.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
