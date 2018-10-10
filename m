@@ -1,80 +1,95 @@
-X-GM-THRID: 6250655488927596544
-X-Received: by 10.50.28.7 with SMTP id x7mr1582980igg.6.1455344140619;
-        Fri, 12 Feb 2016 22:15:40 -0800 (PST)
+X-GM-THRID: 6610739859399114752
+X-Received: by 2002:a1c:da95:: with SMTP id r143-v6mr65378wmg.6.1539182816286;
+        Wed, 10 Oct 2018 07:46:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.47.154 with SMTP id v26ls812447iov.91.gmail; Fri, 12 Feb
- 2016 22:15:40 -0800 (PST)
-X-Received: by 10.50.142.105 with SMTP id rv9mr1580298igb.10.1455344140224;
-        Fri, 12 Feb 2016 22:15:40 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id u66si2000187pfa.2.2016.02.12.22.15.40
+Received: by 2002:adf:9aa4:: with SMTP id a33-v6ls1215563wrc.25.gmail; Wed, 10
+ Oct 2018 07:46:55 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62acCuS0guUNx+Ie6lqKgoyjWtOTrhuNEOE5gF6xS6ZaYW/F2b/bTZBYX1GmsTxPLVEnS6r
+X-Received: by 2002:a5d:4f88:: with SMTP id d8-v6mr60621wru.29.1539182815205;
+        Wed, 10 Oct 2018 07:46:55 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1539182815; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=kN7aEu7k8nbJq6fc3m4Cx81V3mifBMdE50BiHJo+dc52t+vA5hD99VNmz0drRHqRgK
+         TBxlQaRDk9z+JjnuEoiMmmqQVqVH271s011dyYFBCrs8qIKK4GeVu005aO17//UrfT0v
+         J3dDXN/viYvfOjoaOtAqx6A2cJ5N/sAlW3VZB+3UBRd8mxLaO0roDQFIodsIx7bbeNa7
+         SuGBS5282C6yKo+k5LbxLbl891C+Sl/gWhCsyh84NEmqVOl92AAklO1VBG8AP3cJAPEF
+         V/hpXZ4Nzmp675SthgegYA4in6uCIYkXuCd8ip/4JWyFlvEL3POe0rfMhCEKUAUApjWn
+         /Xzg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=6YBr/IsA2ggUhB2M1hsRuj5WaM6kyPjpL9f4/PhD/pc=;
+        b=JaS2jWslBGce2WbevvLwwgd4zu+9jWbI5ojAkZXh2/40WOfjFB+xWD1eh5ZT7NnCoy
+         5k3Gmd/JskjtkGAl3iqzHakG0LD+ocxQrn/ccEaTofiLScNsssxNFuOqkA7l3KqqPceF
+         YblnL6PEig9zMys6PmWtti93Yy6eKxW0gk+0SOYd0NoEZrdSKtXlA0osT+5GaW4KZiNe
+         zPjqr6EIKR2xD8ZuYzn7utgi9dKFOHinbrzJ2LkINylgitrC3aWPckeEpUwC+R9bXGRg
+         vTbLwfk5iTZ5/lYYwYaSJ84YA85FA1m9NdLcr+SIMQVgZyl217pmjbwQvNghTXbcg5cb
+         hlHw==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=FLJXZ8DX;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 31.186.226.248 as permitted sender) smtp.mailfrom=code@wizofe.uk
+Return-Path: <code@wizofe.uk>
+Received: from sender-of-o52.zoho.eu (sender-of-o52.zoho.eu. [31.186.226.248])
+        by gmr-mx.google.com with ESMTPS id l184-v6si728699wmb.1.2018.10.10.07.46.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 12 Feb 2016 22:15:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Wed, 10 Oct 2018 07:46:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of code@wizofe.uk designates 31.186.226.248 as permitted sender) client-ip=31.186.226.248;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id 71so4895004pfv.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 12 Feb 2016 22:15:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=lvWANGjTy/EA5rz2T6bYNqK7iY39iojjsOIJbYp5fLo=;
-        b=z5YPfJLUMZ8b6jvY0PpACHDFGJ5zInGNLKWKCyGzmPAMj6dVJudwqioTF6R79zgauY
-         N9+ZMFylOa9NXtgwoFilbKV/8IsuCjzp6F4XdlLHgnFxlZz7lJkdUCV8MVD8w+NoI3Iv
-         KJu0+gY0UMG96jrl872CVkwVZHmGleffxCyqxHWxstKp/PdUQaLpGWXrq7j4PvQmYpQ3
-         VfpyKPhuZI6nhgvcXiwmR+PI939WT3tRGjkAaJMwDi6eWHhyZnYD5o6w/SPqy9YZ1W4t
-         n14YClxNs/nFIt99hjQeXOKK87yVZriWM6ukMg/3Lc7Ma/AeZof7kD95K3zB14UVKxLO
-         5Aog==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=lvWANGjTy/EA5rz2T6bYNqK7iY39iojjsOIJbYp5fLo=;
-        b=Jj4tK/TC/VABTc1kTms+fvVyqmTUqoCTOvDxMtx7mEySjz4Fh3CNnD63z/O8OjQtC9
-         VHGYFtiE+/j7+BcMQ2fOEa19wK4P1wpJXNRX/Y9XQ1FWZccs5OXcJR5LFlVxZFbOVn7f
-         kkMqgXKGP0Sc7ZN7+JxI+EG95IgCniEiFSiER5KyD8/d5qodXPFRPuukWWEQw4HdB8rf
-         FO1ft3IEcNR3fDLKId3tHr2baJwuYlR4AQcztY0Ua17V6/cNeMv33pBg3BygMOANDpqd
-         clBJQaVwZ3TLu0HkyrpSBJVRvzvI2pp8pst5zzNMVGbGXYSf0fD6OPb7x+k/UqM4A8e+
-         jfZw==
-X-Gm-Message-State: AG10YORTX9b8r1+I7kDvywSel6uO+QokpsFd3N1eBurQCyk/hWtW4avQ6Bogbh1TzRd69g==
-X-Received: by 10.98.70.211 with SMTP id o80mr7779522pfi.124.1455344140101;
-        Fri, 12 Feb 2016 22:15:40 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from bhumirks@gmail.com ([106.215.145.71])
-        by smtp.gmail.com with ESMTPSA id k14sm23484528pfj.0.2016.02.12.22.15.27
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Feb 2016 22:15:39 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Sat, 13 Feb 2016 11:44:54 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=FLJXZ8DX;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 31.186.226.248 as permitted sender) smtp.mailfrom=code@wizofe.uk
+ARC-Seal: i=1; a=rsa-sha256; t=1539182809; cv=none; 
+	d=zoho.eu; s=zohoarc; 
+	b=MKRIHWmBoTl3PQbGX8Em4u02/cej7mtoWArtuugCsg5Mse7hqwlso08TdKifXAWhKcfLE57lS3nwuaAPXAkG7Cyh+35M//sFlOqmmZ3gFrR20XvBQqTR6MszEX06b8ofUnJAqjSBDG+Z+462yALZcV/bbWtM7XYYPfyZ1egWbBM=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
+	t=1539182809; h=Content-Type:Cc:Date:From:MIME-Version:Message-ID:Subject:To:ARC-Authentication-Results; 
+	bh=6YBr/IsA2ggUhB2M1hsRuj5WaM6kyPjpL9f4/PhD/pc=; 
+	b=IzP4zqAoklARj029PUpzw3Jv5oX5d3VE+R2YQDRZ08+C7e0hLt5zDVPcrFSzE9qUveMvmCK9KpXy/u0kC13WcaOAPRMzhM36kuL+OyXgZFSCchdokmfllCneOINXIPvDNt+nMXStNL3hBIz6EOSgCBBOXKPdBo8cuZQCf1rM5s0=
+ARC-Authentication-Results: i=1; mx.zoho.eu;
+	dkim=pass  header.i=wizofe.uk;
+	spf=pass  smtp.mailfrom=code@wizofe.uk;
+	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1539182809;
+	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
+	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type;
+	l=620; bh=6YBr/IsA2ggUhB2M1hsRuj5WaM6kyPjpL9f4/PhD/pc=;
+	b=FLJXZ8DXpca+cSLa17fjhWl2QwLP16lnUHvoqVmUGIdrT3d+8EUaDO35JMtMErjJ
+	tfMuNrzumaSY4/9DWplS2hbsloGlgwfIKDHbRpfX+u0UrLazYBmpnE5vz/JG+E96pJS
+	NaVYKIIBLGXig9CxEPNJbc2aYbVF62+gmEB5++R4=
+Received: from kvasir.local (88.151.153.114 [88.151.153.114]) by mx.zoho.eu
+	with SMTPS id 15391828078114.144308637057861; Wed, 10 Oct 2018 16:46:47 +0200 (CEST)
+Date: Wed, 10 Oct 2018 15:46:45 +0100
+From: Ioannis Valasakis <code@wizofe.uk>
 To: outreachy-kernel@googlegroups.com
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH 0/2] Remove multiple assignments
-Date: Sat, 13 Feb 2016 11:44:49 +0530
-Message-Id: <cover.1455343091.git.bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Cc: gregkh@linuxfoundation.org, aditya.shankar@microchip.com,
+	ganesh.krishna@microchip.com
+Subject: [PATCH 0/3] staging: wilc1000
+Message-ID: <cover.1539182155.git.code@wizofe.uk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-ZohoMailClient: External
 
-This patchset removes multiple assignment by factorizing them.
-Made a coccinelle script to match cases:
-@@
-identifier a,b;
-constant c;
-@@
--a=b=c;
-+a=c;
-+b=c;
+This is a patchset that fixes all the source related issues 
+that were reported by checkpatch.
 
-Bhumika Goyal (2):
-  Staging: wlan-ng: Remove multiple assignments
-  Staging: media: Remove multiple assignments
+Ioannis Valasakis (3):
+  staging: wilc1000: replace udelay with usleep_range
+  staging: wilc1000: prefer 'help' in KConfig
+  staging: wilc1000: Change struct members from bool to u8
 
- drivers/staging/media/davinci_vpfe/dm365_isif.c | 3 ++-
- drivers/staging/wlan-ng/p80211wep.c             | 6 ++++--
- 2 files changed, 6 insertions(+), 3 deletions(-)
+ drivers/staging/wilc1000/Kconfig              |  8 ++++----
+ drivers/staging/wilc1000/coreconfigurator.h   |  4 ++--
+ drivers/staging/wilc1000/host_interface.h     |  8 ++++----
+ drivers/staging/wilc1000/wilc_wfi_netdevice.h | 10 +++++-----
+ drivers/staging/wilc1000/wilc_wlan.c          |  2 +-
+ 5 files changed, 16 insertions(+), 16 deletions(-)
 
 -- 
-1.9.1
+2.19.1
+
 
 
