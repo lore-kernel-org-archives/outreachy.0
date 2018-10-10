@@ -1,153 +1,129 @@
-X-GM-THRID: 6208472977162371072
-X-Received: by 10.50.61.234 with SMTP id t10mr13201926igr.4.1445522759468;
-        Thu, 22 Oct 2015 07:05:59 -0700 (PDT)
+X-GM-THRID: 6610740153497419776
+X-Received: by 2002:ac2:4259:: with SMTP id m25-v6mr879907lfl.38.1539182884910;
+        Wed, 10 Oct 2018 07:48:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.106.225 with SMTP id e88ls998844qgf.59.gmail; Thu, 22 Oct
- 2015 07:05:58 -0700 (PDT)
-X-Received: by 10.31.149.200 with SMTP id x191mr12656504vkd.14.1445522758689;
-        Thu, 22 Oct 2015 07:05:58 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-pa0-x235.google.com (mail-pa0-x235.google.com. [2607:f8b0:400e:c03::235])
-        by gmr-mx.google.com with ESMTPS id vy6si1675239pbc.1.2015.10.22.07.05.58
+Received: by 2002:a2e:9204:: with SMTP id k4-v6ls389795ljg.31.gmail; Wed, 10
+ Oct 2018 07:48:04 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV606MoDQwJMggq66lR4+E2xVWuJXa1iK/dY0WDFYvWNMBTSKWhe6l5r+5UTTEE1Uw5ORDbq0
+X-Received: by 2002:a2e:7316:: with SMTP id o22-v6mr971850ljc.19.1539182884291;
+        Wed, 10 Oct 2018 07:48:04 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1539182884; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=mDaB2ZDzS6IlkaPDA8cisD1xRPHFRe83GNu2OLJCXjbEasXIqV7+Ck1ZcpJd7wZgYH
+         rGps05ZXCQULQuUEEbIMUySZRR2a9UHHO0tQIJPq1hxbOVRgK1ikDOAsZdicnAsTR6uq
+         naT3E3uyhBB2B7FKwXm1tPS8igSZikhCByTGo0J/oLtK2Jro+wN28bEtuAd7kUunYVyB
+         UUaj2f5xYkoYUZoru7bA0miKzM7pU6iP1l7cST86aphZG1F4ncRHCJMiGBpRhXyn7tWp
+         qHgVijtByjrutWd41UUZCF/iV2xi14cvTCWSwPkFVmDLuSY8ABx9XrQ4beMFGK0a2T8c
+         yVHg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=kLB9dbgos0yObT3tfi+YyzywB8aJoKhG+zXCQKeNy2E=;
+        b=k+pxYF7pV4qx4Rcivw8O+HaWMlCMYUIEwbmpUOC7y8u1zeSgBuKEonrSsG5b5CXdh7
+         wMtnwQ+GQuNrWK6qBTwSU73xxcKieCf8lEzxIGmzyIr8i3Lbgust/jeGCkFNXNnnX7St
+         doKgjHQJ7uCIZKCYM0cDsPJOj9IlCICdYhDH3BTcTK7uHCyR6DJUDcK7H6yr4fzohe3O
+         wiI9z2yn5VP9392iKvcMYCL+cQ8xv2KiLy5NfpHZH5exClQdzfXd5Oz4zSGNSzzNG5P1
+         PsQwZ83FUoAPH86TqJq8BmWQbDj26E0iAg/l0KqV1N+VPE5yICC7wF24CN9f7bc4k8DM
+         W2+w==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=gHGEAXEI;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 31.186.226.248 as permitted sender) smtp.mailfrom=code@wizofe.uk
+Return-Path: <code@wizofe.uk>
+Received: from sender-of-o52.zoho.eu (sender-of-o52.zoho.eu. [31.186.226.248])
+        by gmr-mx.google.com with ESMTPS id a199-v6si1087191lfa.2.2018.10.10.07.48.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 22 Oct 2015 07:05:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) client-ip=2607:f8b0:400e:c03::235;
+        Wed, 10 Oct 2018 07:48:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of code@wizofe.uk designates 31.186.226.248 as permitted sender) client-ip=31.186.226.248;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x235.google.com with SMTP id rc13so87624212pab.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2015 07:05:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=1+v0Jd3odfl4OxwMT/tmjYTiAiYzY634qVEHGE0DRMY=;
-        b=vyjjgPgT+WDiIk0KtHKla6vvYXoHJf8WSfT5CI6OBeTzRQM2tpPbD2T6kBOAzWE28I
-         bzuoXfHuphnxj4KSmmWeIGx5WeS8VXaXUSwPkl8dNbC47iYsOOjPB2DGMocskRrz+JMZ
-         Xan9dyshwP4XSPT0/EXLYUMpNFO8prKnSkkHtQzkIzIbwY77XocVk14ohYALv5eW7Nzj
-         ea+HaF9jrlF8IjkwPM/hiGBs8g2KO8mAIKSoZ55vIOFL8aur/AXQdyZOtGlO+5+NH389
-         mNWnOjZqcRlh3jBxE8LUBF3cKOo9X+/TNGJNRm07OH+P2ND/DqM36C/Gdbb+Uq8FA8Ld
-         /jFg==
-X-Received: by 10.68.93.227 with SMTP id cx3mr17554717pbb.155.1445522758505;
-        Thu, 22 Oct 2015 07:05:58 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id rx10sm14188267pab.21.2015.10.22.07.05.56
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 22 Oct 2015 07:05:57 -0700 (PDT)
-From: Shraddha Barke <shraddha.6596@gmail.com>
-To: <outreachy-kernel@googlegroups.com>
-Cc: y2038@lists.linaro.org
-Subject: [PATCH] mtd: tests: Replace timeval with ktime_t
-Date: Thu, 22 Oct 2015 19:35:49 +0530
-Message-Id: <1445522749-14269-1-git-send-email-shraddha.6596@gmail.com>
-X-Mailer: git-send-email 2.1.4
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=gHGEAXEI;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 31.186.226.248 as permitted sender) smtp.mailfrom=code@wizofe.uk
+ARC-Seal: i=1; a=rsa-sha256; t=1539182879; cv=none; 
+	d=zoho.eu; s=zohoarc; 
+	b=HnnW1/8rzg50NLxumtwxijXVLfNXqL/b3n3NbxA3w/pNAgt2sW9NPlChYBCktRuIIPsGj24dL0SGYzpeb7XdBYrfRM7o4qYiIyX05rj38p80xkxhOF11/kkf/uYoyKU45/QebAycy0QXs1C+Of4wpfZyiCqE13Zc1JnRzlKyVXY=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
+	t=1539182879; h=Content-Type:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To:ARC-Authentication-Results; 
+	bh=kLB9dbgos0yObT3tfi+YyzywB8aJoKhG+zXCQKeNy2E=; 
+	b=IeGX12nk1PZozRh3DPYx6pNFsB8KeRCN4hr4uV4B/YdbYS8A8VMS2Jhz4O+ewIy9GoBtun+LphHHUFVZ2XgKR+T0V64dCMV9akV/Pp4ny0euwAOA1lYrC/vkUIX8gTJcYKz2NSGFkMGZ2fARHdWcWuRLK5B+bXIxq4YgaklU/wg=
+ARC-Authentication-Results: i=1; mx.zoho.eu;
+	dkim=pass  header.i=wizofe.uk;
+	spf=pass  smtp.mailfrom=code@wizofe.uk;
+	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1539182879;
+	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To;
+	l=1688; bh=kLB9dbgos0yObT3tfi+YyzywB8aJoKhG+zXCQKeNy2E=;
+	b=gHGEAXEIe9yF+FzAze4+QThgkgHfZuif2P/dCHHyAXQd2Pw/MLxmrSVcdi3omDvP
+	YpsC3m3+uHBR7qiXR9aSVMfXZ48ui4nFq5INd1kOLW/kilhcmq5Vxll1sNSGPi3Ug7G
+	IYYggtYKGgVg6fx5qRGXoOsCLLHbYAyAp6ycE+po=
+Received: from kvasir.local (88.151.153.114 [88.151.153.114]) by mx.zoho.eu
+	with SMTPS id 15391828773776.610105958816121; Wed, 10 Oct 2018 16:47:57 +0200 (CEST)
+Date: Wed, 10 Oct 2018 15:47:56 +0100
+From: Ioannis Valasakis <code@wizofe.uk>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org, aditya.shankar@microchip.com,
+	ganesh.krishna@microchip.com
+Subject: [PATCH 2/3] staging: wilc1000: prefer 'help' in KConfig
+Message-ID: <8a2afba747f7567909992196e9d3fb21f7551fa1.1539182155.git.code@wizofe.uk>
+References: <cover.1539182155.git.code@wizofe.uk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1539182155.git.code@wizofe.uk>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-ZohoMailClient: External
 
-Change the 32-bit time type timeval to the 64-bit time type
-ktime_t, since 32-bit systems using struct timeval will break in the
-year 2038. Correspondingly change do_gettimeofday() to ktime_get()
-since ktime_get returns a ktime_t, but do_gettimeofday returns a
-struct timeval.
+Fix for a style warning using the help without the
+deprecated help included between dashes.
+Reported by checkpatch.
 
-Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
 ---
- drivers/mtd/tests/speedtest.c   | 10 +++++-----
- drivers/mtd/tests/torturetest.c | 10 +++++-----
- 2 files changed, 10 insertions(+), 10 deletions(-)
+ drivers/staging/wilc1000/Kconfig | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/mtd/tests/speedtest.c b/drivers/mtd/tests/speedtest.c
-index 5a6f31a..0b89418 100644
---- a/drivers/mtd/tests/speedtest.c
-+++ b/drivers/mtd/tests/speedtest.c
-@@ -22,6 +22,7 @@
- #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+diff --git a/drivers/staging/wilc1000/Kconfig b/drivers/staging/wilc1000/Kconfig
+index 73f7fefd3bc3..f9d3ad41c862 100644
+--- a/drivers/staging/wilc1000/Kconfig
++++ b/drivers/staging/wilc1000/Kconfig
+@@ -1,13 +1,13 @@
+ config WILC1000
+ 	tristate
+-	---help---
++	help
+ 	  This module only support IEEE 802.11n WiFi.
  
- #include <linux/init.h>
-+#include <linux/ktime.h>
- #include <linux/module.h>
- #include <linux/moduleparam.h>
- #include <linux/err.h>
-@@ -49,7 +50,7 @@ static int pgsize;
- static int ebcnt;
- static int pgcnt;
- static int goodebcnt;
--static struct timeval start, finish;
-+static ktime_t start, finish;
- 
- static int multiblock_erase(int ebnum, int blocks)
- {
-@@ -168,12 +169,12 @@ static int read_eraseblock_by_2pages(int ebnum)
- 
- static inline void start_timing(void)
- {
--	do_gettimeofday(&start);
-+	start = ktime_get();
- }
- 
- static inline void stop_timing(void)
- {
--	do_gettimeofday(&finish);
-+	finish = ktime_get();
- }
- 
- static long calc_speed(void)
-@@ -181,8 +182,7 @@ static long calc_speed(void)
- 	uint64_t k;
- 	long ms;
- 
--	ms = (finish.tv_sec - start.tv_sec) * 1000 +
--	     (finish.tv_usec - start.tv_usec) / 1000;
-+	ms = ktime_ms_delta(finish, start);
- 	if (ms == 0)
- 		return 0;
- 	k = (uint64_t)goodebcnt * (mtd->erasesize / 1024) * 1000;
-diff --git a/drivers/mtd/tests/torturetest.c b/drivers/mtd/tests/torturetest.c
-index e5d6e6d..93c2729 100644
---- a/drivers/mtd/tests/torturetest.c
-+++ b/drivers/mtd/tests/torturetest.c
-@@ -26,6 +26,7 @@
- #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
- 
- #include <linux/init.h>
-+#include <linux/ktime.h>
- #include <linux/module.h>
- #include <linux/moduleparam.h>
- #include <linux/err.h>
-@@ -79,18 +80,18 @@ static unsigned char *check_buf;
- static unsigned int erase_cycles;
- 
- static int pgsize;
--static struct timeval start, finish;
-+static ktime_t start, finish;
- 
- static void report_corrupt(unsigned char *read, unsigned char *written);
- 
- static inline void start_timing(void)
- {
--	do_gettimeofday(&start);
-+	start = ktime_get();
- }
- 
- static inline void stop_timing(void)
- {
--	do_gettimeofday(&finish);
-+	finish = ktime_get();
- }
- 
- /*
-@@ -333,8 +334,7 @@ static int __init tort_init(void)
- 			long ms;
- 
- 			stop_timing();
--			ms = (finish.tv_sec - start.tv_sec) * 1000 +
--			     (finish.tv_usec - start.tv_usec) / 1000;
-+			ms = ktime_ms_delta(finish, start);
- 			pr_info("%08u erase cycles done, took %lu "
- 			       "milliseconds (%lu seconds)\n",
- 			       erase_cycles, ms, ms / 1000);
+ config WILC1000_SDIO
+ 	tristate "Atmel WILC1000 SDIO (WiFi only)"
+ 	depends on CFG80211 && INET && MMC
+ 	select WILC1000
+-	---help---
++	help
+ 	  This module adds support for the SDIO interface of adapters using
+ 	  WILC1000 chipset. The Atmel WILC1000 SDIO is a full speed interface.
+ 	  It meets SDIO card specification version 2.0. The interface supports
+@@ -21,7 +21,7 @@ config WILC1000_SPI
+ 	tristate "Atmel WILC1000 SPI (WiFi only)"
+ 	depends on CFG80211 && INET && SPI
+ 	select WILC1000
+-	---help---
++	help
+ 	  This module adds support for the SPI interface of adapters using
+ 	  WILC1000 chipset. The Atmel WILC1000 has a Serial Peripheral
+ 	  Interface (SPI) that operates as a SPI slave. This SPI interface can
+@@ -34,7 +34,7 @@ config WILC1000_HW_OOB_INTR
+ 	bool "WILC1000 out of band interrupt"
+ 	depends on WILC1000_SDIO
+ 	default n
+-	---help---
++	help
+ 	  This option enables out-of-band interrupt support for the WILC1000
+ 	  chipset. This OOB interrupt is intended to provide a faster interrupt
+ 	  mechanism for SDIO host controllers that don't support SDIO interrupt.
 -- 
-2.1.4
+2.19.1
+
 
 
