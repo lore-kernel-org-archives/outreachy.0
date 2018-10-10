@@ -1,70 +1,93 @@
 X-GM-THRID: 6610740255626625024
-X-Received: by 2002:a63:7408:: with SMTP id p8-v6mr14028586pgc.46.1539196333879;
-        Wed, 10 Oct 2018 11:32:13 -0700 (PDT)
+X-Received: by 2002:a81:7c88:: with SMTP id x130-v6mr18732702ywc.18.1539195012082;
+        Wed, 10 Oct 2018 11:10:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:ca54:: with SMTP id n81-v6ls4013255pfg.9.gmail; Wed, 10
- Oct 2018 11:32:13 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV62Thq4pn1JPn2B+vFBV5NoN7s5z7JqT+5Z3g4yzBO5g2c8Kyb/luqBVAfwaXUJE1bcC1cMc
-X-Received: by 2002:a65:534a:: with SMTP id w10-v6mr14090798pgr.6.1539196333198;
-        Wed, 10 Oct 2018 11:32:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539196333; cv=none;
+Received: by 2002:a25:3b47:: with SMTP id i68-v6ls2045436yba.0.gmail; Wed, 10
+ Oct 2018 11:10:11 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV60wAzWpjkNRl0Og//Lbw8t9inBQrBf+iAKAODjjQzRmxHv9TUjuPV4HMMWscNUPCMbVZ+LS
+X-Received: by 2002:a25:b90e:: with SMTP id x14-v6mr2594001ybj.63.1539195011166;
+        Wed, 10 Oct 2018 11:10:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539195011; cv=none;
         d=google.com; s=arc-20160816;
-        b=Rkbs/vWVh2QG7YsMuffXawWGZIzcUT3m7UU96c93B8tv8eyJvl/CC61zSFULEwmKCs
-         jVAYg3hDW18YX2U8Ozk8CXgtBMwJkSbO6dhoSuT+oRGli6CBwj4QtKVj2+N00/HLOvb7
-         l/wPp+9+Tq90i4XaopsoEitiO1EgBMb1ncB7K62g5Y9HvUhDNLLZHheTnmkvdoVf6uGO
-         BbADyvteSHfDC3tU+/iR94KjYmw627gWinJcj4YXRXrpn3eeoUe00eXBVeksevRzyUnn
-         yhJlxY8XkjdM0VMuXKf6iWxlFiB/B3jttUB0ao+KVa4N/eiXq+j15qOkEOMBVfIF2Zv/
-         2Rhw==
+        b=SnncXDxF8hxRSaX2ZXYcaPCq2zCgnZx4ZnykGv/+USgieB1e1bDUoAsc17XTj4CUVe
+         m3liwDsdgAV02rIPiY70jHp7suaOgPCJv3ZXsgHH4Ts88zik73CxDgNje02o1iuO+EmG
+         nQq0SKxHS9vFz65Wj0ft3ohMKN5dsixO9OIY3PYqRcgGFNVUbuVM/Vys0ffcyKEFnd6z
+         Iezyjy9xhPjvlHm7YcznpvfQA5xjQLFt9JSCMNzJKDM/2UlJeiq1twjrXpnpW0T0ADyV
+         9OKZ2FJBqqwc6jyWEPWIzggjeuk7EAggq2+luKWmtKnm4g7y7T1JGWrJJjc3TP+yelLt
+         NlrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=Rb0XcLjeuKYqvMOgtMz0J86loZ48Ze6O6mcJ71Hp9eI=;
-        b=xK+DSikI5j3eCP78iEq95zqJo5En2BuHP8nZWI1N6I/IhpEcykWdZXAD33J3sON91o
-         EgTrUFDYa+sCqQ0OhfYQvK/qZN7gR5k7PEXSXTFgk7YE1Nf3ewQlFwNHDKgdxeVKl55m
-         1zPPcs1Wx31goy9Sp0CItRqLLCOUtrPZmtMXBqZIDdxcnHEx/LU6CmhlLOwuDGGF5+GK
-         Q7PqhnkOkJjl75TBa0EKjCsR96eP0q7SmMZIfC3dqplGk8Mo5EK/uUrz7e/rb/0M0+cr
-         9K1nd3Rui6k05ffYWn+AidOsCe6FTkEHScao0oXZSSVoITB/en+VUah6mcmMQfvoBP6m
-         tuDw==
+        bh=5UN4MJHJWhGZRl2BKmAWWollmGofp0JDUDYPZQYTGfE=;
+        b=hD7CfI81k680/2Iw4H687kkxnuOy/TgJIQ02BXx8cJWMSBE+7gmtaJGhp+7F9517cJ
+         Xt/yZirhLd/uY+9jo0Ie3HALSJm7fzdqPE8gMS4kR6+IzXpNiO6MlikDvNA7e13OzE75
+         JbsId281hlKu/xvAlgOfu5JxvfQX+9y7qOZHJl47UQC0hlX4cdmvHG1l/HdnIkMqMEeP
+         PIU8cEosbr18bqtcJAiIY3e/4FAkfhDBBmlSWYoqRMEKb4wrkG9NcLWzbRYP45PbxEhb
+         qKBOJBvnLqJT1m8xbt6lEzDMbNeQH9Fg1xiWMimMMVdaiC3HkzbiO9FFZAu8guIl8PXR
+         UrEQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=xmnCu6jL;
-       spf=pass (google.com: domain of srs0=ahpx=mw=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=AHPx=MW=linuxfoundation.org=gregkh@kernel.org"
-Return-Path: <SRS0=AHPx=MW=linuxfoundation.org=gregkh@kernel.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id f87-v6si1088067pfe.4.2018.10.10.11.32.13
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Dj1WTIF3;
+       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::633 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <himanshujha199640@gmail.com>
+Received: from mail-pl1-x633.google.com (mail-pl1-x633.google.com. [2607:f8b0:4864:20::633])
+        by gmr-mx.google.com with ESMTPS id f77-v6si1010569yba.5.2018.10.10.11.10.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 10 Oct 2018 11:32:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of srs0=ahpx=mw=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Wed, 10 Oct 2018 11:10:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::633 as permitted sender) client-ip=2607:f8b0:4864:20::633;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=xmnCu6jL;
-       spf=pass (google.com: domain of srs0=ahpx=mw=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=AHPx=MW=linuxfoundation.org=gregkh@kernel.org"
-Received: from localhost (ip-213-127-77-176.ip.prioritytelecom.net [213.127.77.176])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 6315F2075B;
-	Wed, 10 Oct 2018 18:32:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1539196332;
-	bh=ErYCAvqRYKL+H7cQiVrxgtRtlGkG1+VC2Ro0IVe4eV8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=xmnCu6jL02EvNaoMQAlTfI0ZDMqXNhoR3vtg9x/nWSE/O3d0H7cAVgBoL6C/65iKf
-	 R6MWCsV1r/QHH7U8ulC0RIYuOBsU2oo1rWVNk/EV8CfKiwN61rfS1N1EAHDQUc01is
-	 PlLFa0HcP4H+Q2AHmWWoPatF4RDItKq/H6ytGL/s=
-Date: Wed, 10 Oct 2018 20:32:10 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Dj1WTIF3;
+       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::633 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x633.google.com with SMTP id q17-v6so2904207plr.8
+        for <outreachy-kernel@googlegroups.com>; Wed, 10 Oct 2018 11:10:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=5UN4MJHJWhGZRl2BKmAWWollmGofp0JDUDYPZQYTGfE=;
+        b=Dj1WTIF3SQPa8vMjRhCE6mf4wrlrvUpDWqlCBG1cHppTZu3nfiPJrgXpUtSpGMyTiK
+         8f2BVB7rSJ04kYga7m+mjPxIV0VUbhAqoYJwRDP/j/1CAH6N2BaI3ZwqUpapFUHgseyK
+         NHcUunV9BqzanXjQSdya1xiaD6xqIXcp93A9zg7QM+090xFQbYhTuuCni4qYfzOFmXe3
+         /fqbDJCSjw8EVYyBkSSw07SiOQwcxAMyzZ3IHAXQRN0wKNHXbIbZYjSoCm5qbiD9hur1
+         elEy1WscgHh8UsHp7Y9HH8cjmSziMFraw4brwX0zUWnkvzY0zcBJBqjLnVan8WGW/9fH
+         pzOA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=5UN4MJHJWhGZRl2BKmAWWollmGofp0JDUDYPZQYTGfE=;
+        b=tqoUhQ46MJj8WMjgcHUW7P6dZUFRy3i0vPV1D7KugD+smhzGwZ1nNdcDRPZPLhaq0u
+         OwjeqVRdjrRoy8QX460bNbRYNkfp2a55jU+dznC7Wbv9FN0NdoZPlDkkOmN75OpnjC9P
+         n87jTa0A7L65Lukn10UtRojOFJdhiDt+Y4rIdF4cIDVRBW6Z8Ii+Mc4lXxTqTUXD2z8K
+         awSN1u5Bwlv+OuF/Ypv++vt3oLGJ83DFnDT5xhNH+A6L6pgBQeDRjyukrsNj3BqP9DzG
+         S4XhXWNx+3TEDcQVVLXf4LjDSff/RyRXx0+PMOCkcmomOQ4FzKJN52h9u3MzVcWak6sV
+         Xb5g==
+X-Gm-Message-State: ABuFfoghBKqoSdx3zSG+mmmYSXG5dc4My2dzx+i1w3lueybHxvAa3FLL
+	zV7UL1ymKMedsB9gEoUJ/hyTJdPLC4M=
+X-Received: by 2002:a17:902:6ac7:: with SMTP id i7-v6mr34489279plt.268.1539195010674;
+        Wed, 10 Oct 2018 11:10:10 -0700 (PDT)
+Return-Path: <himanshujha199640@gmail.com>
+Received: from himanshu-Vostro-3559 ([103.233.116.134])
+        by smtp.gmail.com with ESMTPSA id k185-v6sm16386744pgd.2.2018.10.10.11.10.07
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 10 Oct 2018 11:10:09 -0700 (PDT)
+Date: Wed, 10 Oct 2018 23:40:03 +0530
+From: Himanshu Jha <himanshujha199640@gmail.com>
 To: Ioannis Valasakis <code@wizofe.uk>
-Cc: outreachy-kernel@googlegroups.com, aditya.shankar@microchip.com,
-	ganesh.krishna@microchip.com
-Subject: Re: [PATCH 3/3] staging: wilc1000: Change struct members from bool
- to u8
-Message-ID: <20181010183210.GA24096@kroah.com>
+Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
+	aditya.shankar@microchip.com, ganesh.krishna@microchip.com
+Subject: Re: [Outreachy kernel] [PATCH 3/3] staging: wilc1000: Change struct
+ members from bool to u8
+Message-ID: <20181010181003.GA3157@himanshu-Vostro-3559>
 References: <cover.1539182155.git.code@wizofe.uk>
  <e409baf10c6cc043344f1a63712d661611953973.1539182155.git.code@wizofe.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <e409baf10c6cc043344f1a63712d661611953973.1539182155.git.code@wizofe.uk>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
 On Wed, Oct 10, 2018 at 03:48:21PM +0100, Ioannis Valasakis wrote:
 > Recent versions of checkpatch have a new warning based on a documented
@@ -90,11 +113,22 @@ On Wed, Oct 10, 2018 at 03:48:21PM +0100, Ioannis Valasakis wrote:
 > -	bool full;
 > +	u8 full;
 
-No, this reduces the information about the field.  There's no wasted
-space here at all, the end result is the same.  The issue is, as
-Himanshu points out, when using bool instead of a bitfield.
+The disccussion was not about "u8(usigned char) Vs bool" object
+representation but rather about "bitfields Vs bool".
 
-So this patch isn't needed, sorry.
+It is true that the sizeof(__Bool) is implementation defined can be
+1-4 depending upon the implementation.
 
-greg k-h
+Indeed sizeof(usigned char) is *guaranteed* to be 1!
+https://port70.net/~nsz/c/c11/n1570.html#6.5.3.4p4
+
+But would be worthwhile to change it to usigned/signed int full : 1
+instead since we only care about true/false ? 
+
+
+-- 
+Himanshu Jha
+Undergraduate Student
+Department of Electronics & Communication
+Guru Tegh Bahadur Institute of Technology
 
