@@ -1,118 +1,118 @@
-X-GM-THRID: 6673980980256047104
-X-Received: by 2002:a17:902:b7c5:: with SMTP id v5mr1111342plz.10.1553907287274;
-        Fri, 29 Mar 2019 17:54:47 -0700 (PDT)
+X-GM-THRID: 6610740255626625024
+X-Received: by 2002:a2e:988f:: with SMTP id b15-v6mr27368ljj.14.1539247985373;
+        Thu, 11 Oct 2018 01:53:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:6948:: with SMTP id k8ls892262plt.7.gmail; Fri, 29
- Mar 2019 17:54:46 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzi25l1i+PEwzUl1Ln1Ig4bYN0i5h9PnPXkVALCE1Bo9MJz3a5Hbv2+RTpGn8Ep09iaTJK3
-X-Received: by 2002:a17:902:3324:: with SMTP id a33mr1120010plc.72.1553907286516;
-        Fri, 29 Mar 2019 17:54:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553907286; cv=none;
+Received: by 2002:a19:128e:: with SMTP id 14-v6ls331106lfs.9.gmail; Thu, 11
+ Oct 2018 01:53:04 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV61sZ72D/NqOxfKWoHfepxpEeJ81qeCknAWqjCVHrA+D6f1wyyUgVaBmSku6RMfoLmECIa4m
+X-Received: by 2002:a19:7010:: with SMTP id h16-v6mr27213lfc.12.1539247984214;
+        Thu, 11 Oct 2018 01:53:04 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1539247984; cv=pass;
         d=google.com; s=arc-20160816;
-        b=eADQfRQBSLripD7vMtOqNz7FB6QrB+KgjTVh1oeELYkbCvn6KqUO2pTnE85jEfbrjk
-         b8rap4zmLPFWdRfx2Efx/yQfa2vY6PUivvVurFDM62dOPV3YK7V8XkLfXiQKm9eQ5asJ
-         e9IBYNz8nNY9S0eSfmY6kCp/fZGUrJdsBS2nk6gHGZapm0AbMk0OowjYDtHjb3WScY66
-         cuvF1n88XBinpRJ7URizl36cXMpddML31zbKnw3X5ESxF8uaSa+cCr4ja/yELqi1FkcQ
-         jFkN/dJkG20gUzzry1PCDl+WM+HnX92KX9WsVtM8t//NRH88I1wDNMjOoDRmNbP9r+Dd
-         qKgQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Ki6TFWUadJvOiWlzzHzd5oBvrgXx/SbZpsl1bwkc43Y=;
-        b=P8FRfi2Vj51OXWHf58MTSVaphppp98X1rDxejZce+BvWs5bcC7oyyHZP5c5SMRhIDo
-         OAXW8MmD3KuLb4i02SFXs2tbBIuUKsMhyI8GEDTwnDeten7QE4K4qFmDn3ZDzKsWhPg/
-         rpFBH7mdo6AxAqEMnHdGQgP1+WnUbrlax1wdtvlm79DqNsDymFMf+W+AoG7RDy6uL0oi
-         QxwU+Nc2X6I7aQTRPEcbuiS5OPXdQIDMHJZapMu3M3ff0oGZKjaYUX5klzJC7MC3DhpN
-         gJUTnas0V8erguedw34c4KNO0lrRaGrVxNUwB8h8VnlzfMpRHfJ1KD6/Ec/0vovubjfJ
-         hs9w==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZLdPp17S;
-       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <vatsalanarang@gmail.com>
-Received: from mail-pl1-x642.google.com (mail-pl1-x642.google.com. [2607:f8b0:4864:20::642])
-        by gmr-mx.google.com with ESMTPS id h2si333321plk.2.2019.03.29.17.54.46
+        b=jsHPpje2y4VOjBOnFiv0/1rIIe6v7x/OpWKHKCkLl7fg5lT/nSYpfzK3D471fIPNdY
+         0/fMCtel8rZUwPe4yo5A2obYPZFQCrMHdOxRcw3zI1v50W6RFMR1JSVdiZTmcGjxFeSV
+         ApgEVn5Bu3VFvcrW6caPbvSdS84p5g1viyOlNd+RmVljDF+s9cKqGSDLSmkg/0H1wQwx
+         ePuG/LfjTecmCUQlHrDolQYqYfV4RvUWvrXRnAp6I+7tliUniH13vee4bku21XRStYsI
+         ok/sSD93smYNkwKyXlKe89GMGW2yqGWTWAmzp79N3w+WvdgSiWnrpwtckFj9sNLmCGsj
+         lhbw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=6quynyc4fxZwEKqIGmmhiu1oezEr4YG7nw2Y7W74090=;
+        b=v1wwr3enk9JQQYSa7BRSKYA56V2F5tDf2WEWbU548xxVt78s1SeTi6RguCs+piVv9e
+         ByrGjfsi3B0qKszE9We9u4+Sr9ai0tKNFBcD+aEVVFAr4ny8MQbbDhJrwFC8YEmw258J
+         GwOwbDbBwuUzJiSYqN3D5TcVE3B6gWjbzLCbsbS3lFsqj8uYo93nfX9i1NqU+3GugIpN
+         LtvrKPvipSd08e5htj/Yym2/1oPMJuSrjgXBPlhNyi9wcYy3uWO9G9aiy3iIzXv+qWjs
+         ZXyaPbdEBpO3bXyc7g5jLs08B6l7YioDpPttL6CDJWNKFhpxFdM9jB3J08pYN2YCKT18
+         DKYg==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=fLQLHe4q;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 31.186.226.248 as permitted sender) smtp.mailfrom=code@wizofe.uk
+Return-Path: <code@wizofe.uk>
+Received: from sender-of-o52.zoho.eu (sender-of-o52.zoho.eu. [31.186.226.248])
+        by gmr-mx.google.com with ESMTPS id h20-v6si311776ljj.5.2018.10.11.01.53.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Mar 2019 17:54:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) client-ip=2607:f8b0:4864:20::642;
+        Thu, 11 Oct 2018 01:53:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of code@wizofe.uk designates 31.186.226.248 as permitted sender) client-ip=31.186.226.248;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZLdPp17S;
-       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x642.google.com with SMTP id b65so1773890plb.6
-        for <outreachy-kernel@googlegroups.com>; Fri, 29 Mar 2019 17:54:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Ki6TFWUadJvOiWlzzHzd5oBvrgXx/SbZpsl1bwkc43Y=;
-        b=ZLdPp17SBj1HjDSxCyA2LZhguqwQaMuPftFUZ7eOyqpbHVl60ivhvo1ekLI9rZHrHu
-         lvfIqTu9lO4OItCFk+Sl0/v6NguZpRYxcX2VVQJZS0GYHY5s7xW26+kWM6FP2lpQE2NN
-         go+8vv8O2XsA3j7+w5ePVcJ6aKZWl95cHXbp519+mL4fIT483uN1bbf+qMEpsolt1mi4
-         DJ88xXxkmjahET0iwezX0pSTfQ+D+LelXnJolFLSrLzBRXN8fUm32dYhTuKxDz6WkAxt
-         O7ykSyp309SKErPDU+E8uPA2FHdZ5PEywp3eTX+Q51san9B6yRdnGd5sfi8VCUfvTRCV
-         kLzg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Ki6TFWUadJvOiWlzzHzd5oBvrgXx/SbZpsl1bwkc43Y=;
-        b=YdyluhipcG4GOxJ8pYpVf4MCvlknau15RpWE5phtZw0InH/QcjshQyVZ13RbAIrvTO
-         u+r/wAX18N5a7KvNYmSGWnZyS+SRCI2RslOYBN1TMZDZoZxQ1V+3Q5JWeT+wjWSWZdoo
-         GVTXd8gw3Jp0vKLnuwc8SGOpOhVNTfTy3Fuycxa9phj+L4fC7Y6NRx9yc1sqFDmnkvdO
-         iPk/wjI7aKeg9q4Z+HkBK7Yr3kCaJ97npQNFAesN+1sDZl+uZVsd8K+AidriN7cnfony
-         rg7WqrqzzBvRUiisiN4sRqMW0rJzelcN0lxT7s84bNIxxdjCPYNjtcDk+dyaS4+C/8ps
-         7KKg==
-X-Gm-Message-State: APjAAAVAVfhS2Eo0/X4Anp7TNnk6LdhCtYKk00KdR3IKtFew0CUUphCE
-	jGyFgnH53rm6zWyiHXYtXwSjc/dJmTE=
-X-Received: by 2002:a17:902:a506:: with SMTP id s6mr27318802plq.164.1553907286119;
-        Fri, 29 Mar 2019 17:54:46 -0700 (PDT)
-Return-Path: <vatsalanarang@gmail.com>
-Received: from localhost.localdomain ([103.87.57.82])
-        by smtp.gmail.com with ESMTPSA id b26sm10092304pgn.4.2019.03.29.17.54.44
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Mar 2019 17:54:45 -0700 (PDT)
-From: Vatsala Narang <vatsalanarang@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	Vatsala Narang <vatsalanarang@gmail.com>
-Subject: [PATCH] staging: rtl8712: Remove multiple assignments
-Date: Sat, 30 Mar 2019 06:24:29 +0530
-Message-Id: <20190330005429.29931-1-vatsalanarang@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=fLQLHe4q;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 31.186.226.248 as permitted sender) smtp.mailfrom=code@wizofe.uk
+ARC-Seal: i=1; a=rsa-sha256; t=1539247973; cv=none; 
+	d=zoho.eu; s=zohoarc; 
+	b=irdStZI53Q9XJi0Lu8Wh8+Mw4ZMe68EjElPYkKLoPFBAfWP2odDj0U1hFmcR9vLL4Q1pepEZA6DtCXtgrL2fdXyEmo1PqSnJ7U6ECJUJ5SpXHuG3dqIneoQkma5R8qXuVYfb6H6izK1YxKN7dwk7U01uFp6Mbz66ysXxVlsLIko=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
+	t=1539247973; h=Content-Type:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To:ARC-Authentication-Results; 
+	bh=6quynyc4fxZwEKqIGmmhiu1oezEr4YG7nw2Y7W74090=; 
+	b=Jx84do2ZhcMTK4UZh4MHlmOsXAPL66eglMohk1ebSn0TbnmOd+CMZo5zXC8/KYIxrpRECir4dRuOaXVBc3lBHbE8enP0cfxWATbBMXfCot8d/YMuAMwhoXh3gIyUqHe/5JY1lGbaJM5cOLqwasBJ9SbAmp37TDxNl6mKzHe39jY=
+ARC-Authentication-Results: i=1; mx.zoho.eu;
+	dkim=pass  header.i=wizofe.uk;
+	spf=pass  smtp.mailfrom=code@wizofe.uk;
+	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1539247973;
+	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To;
+	l=1500; bh=6quynyc4fxZwEKqIGmmhiu1oezEr4YG7nw2Y7W74090=;
+	b=fLQLHe4qiKTsPimDPHrrjNm8vRJouZtr+9/OnLDEAwumqtwv22/RkTrbOTYi3dRX
+	CQpTzu4YAH4USDpNTbberHU1uaEiCwgA8OdPZKBND+txx4bvjk6mGzk90tOz1a4iNgy
+	mJU86VhmRxXkanmlGx0tbniNUxcny0ODbShH67xU=
+Received: from kvasir.local (88.151.153.114 [88.151.153.114]) by mx.zoho.eu
+	with SMTPS id 153924797164393.42079549309244; Thu, 11 Oct 2018 10:52:51 +0200 (CEST)
+Date: Thu, 11 Oct 2018 09:52:49 +0100
+From: Ioannis Valasakis <code@wizofe.uk>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com, aditya.shankar@microchip.com,
+	ganesh.krishna@microchip.com
+Subject: Re: [PATCH 3/3] staging: wilc1000: Change struct members from bool
+ to u8
+Message-ID: <20181011085249.GA5222@kvasir.local>
+References: <cover.1539182155.git.code@wizofe.uk>
+ <e409baf10c6cc043344f1a63712d661611953973.1539182155.git.code@wizofe.uk>
+ <20181010183210.GA24096@kroah.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20181010183210.GA24096@kroah.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-ZohoMailClient: External
 
-Remove multiple assignments by factorizing them to get rid of checkpatch warning.
-The semantic patch to solve the issue is as follows:
+On Wed, Oct 10, 2018 at 08:32:10PM +0200, Greg KH wrote:
+> On Wed, Oct 10, 2018 at 03:48:21PM +0100, Ioannis Valasakis wrote:
+> > Recent versions of checkpatch have a new warning based on a documented
+> > preference of Linus to not use bool in structures due to wasted space and
+> > the size of bool is implementation dependent.  For more information, see
+> > the email thread at https://lkml.org/lkml/2017/11/21/384.
+> > 
+> > Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
+> > ---
+> >  drivers/staging/wilc1000/coreconfigurator.h   |  4 ++--
+> >  drivers/staging/wilc1000/host_interface.h     |  8 ++++----
+> >  drivers/staging/wilc1000/wilc_wfi_netdevice.h | 10 +++++-----
+> >  3 files changed, 11 insertions(+), 11 deletions(-)
+> > 
+> > diff --git a/drivers/staging/wilc1000/coreconfigurator.h b/drivers/staging/wilc1000/coreconfigurator.h
+> > index b62acb447383..dbea5144395e 100644
+> > --- a/drivers/staging/wilc1000/coreconfigurator.h
+> > +++ b/drivers/staging/wilc1000/coreconfigurator.h
+> > @@ -30,7 +30,7 @@
+> >  #define MAKE_WORD32(lsw, msw) ((((u32)(msw) << 16) & 0xFFFF0000) | (lsw))
+> >  
+> >  struct rssi_history_buffer {
+> > -	bool full;
+> > +	u8 full;
+> 
+> No, this reduces the information about the field.  There's no wasted
+> space here at all, the end result is the same.  The issue is, as
+> Himanshu points out, when using bool instead of a bitfield.
+> 
+> So this patch isn't needed, sorry.
+> 
+> greg k-h
 
-@@
-expression x,y,z;
-@@
+Noted. Learning something every day. Thanks greg.
 
--x=y=z;
-+x=z;
-+y=z;
-
-Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
----
- drivers/staging/rtl8712/xmit_linux.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/rtl8712/xmit_linux.c b/drivers/staging/rtl8712/xmit_linux.c
-index 8bcb0775411f..eb3bc46cc977 100644
---- a/drivers/staging/rtl8712/xmit_linux.c
-+++ b/drivers/staging/rtl8712/xmit_linux.c
-@@ -38,8 +38,10 @@ static uint remainder_len(struct pkt_file *pfile)
- void _r8712_open_pktfile(_pkt *pktptr, struct pkt_file *pfile)
- {
- 	pfile->pkt = pktptr;
--	pfile->cur_addr = pfile->buf_start = pktptr->data;
--	pfile->pkt_len = pfile->buf_len = pktptr->len;
-+	pfile->cur_addr = pktptr->data;
-+	pfile->buf_start = pktptr->data;
-+	pfile->pkt_len = pktptr->len;
-+	pfile->buf_len = pktptr->len;
- 	pfile->cur_buffer = pfile->buf_start;
- }
- 
--- 
-2.17.1
+ioannis
 
 
