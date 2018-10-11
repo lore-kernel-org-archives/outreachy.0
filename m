@@ -1,85 +1,86 @@
 X-GM-THRID: 6611156296380973056
-X-Received: by 2002:a24:f5c3:: with SMTP id k186-v6mr2270313ith.29.1539279995069;
-        Thu, 11 Oct 2018 10:46:35 -0700 (PDT)
+X-Received: by 2002:a17:902:9a86:: with SMTP id w6-v6mr1444087plp.20.1539279895116;
+        Thu, 11 Oct 2018 10:44:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:2e83:: with SMTP id i125-v6ls2783577ita.2.canary-gmail;
- Thu, 11 Oct 2018 10:46:34 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV620DqLy7dnWOgytH4piB3sPF9y541WaMpclIrZE6TmWEgrqjjtdXZJLdAYoKblL9buT0K9n
-X-Received: by 2002:a05:660c:310:: with SMTP id u16mr5213344itj.1.1539279994232;
-        Thu, 11 Oct 2018 10:46:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539279994; cv=none;
+Received: by 2002:a62:9f13:: with SMTP id g19-v6ls5601295pfe.2.gmail; Thu, 11
+ Oct 2018 10:44:54 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV63tZvrICcDsxSXOXsWLA5BtBUWpfQWUmqXQhZZmAs4bcay7RNKV77ytyoJi+OED5iBZk4dv
+X-Received: by 2002:a65:5cc1:: with SMTP id b1-v6mr1260033pgt.82.1539279894408;
+        Thu, 11 Oct 2018 10:44:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539279894; cv=none;
         d=google.com; s=arc-20160816;
-        b=RZzBVZoEdkgwbFgJLF17n1CRIXkkzkkuWDKTPBJAat9o1H35PIduud8EL+92cOiEKA
-         nEkcj2SI+V4DwGiunmRv3jnJJ95T4Xcfa2/4NC2e6J8h0BN7krGKyikKEkMiFWnkodBj
-         Sa1U7tvCujmdBKTXJG/z7iwEwMa1fC+0PmPW8+PhgHXwl5C6uOsIsnUqOLhEj+eqXjuO
-         xPLqpU474RNi1LUqXSZgwtmyQSa62rL0rTzMkOpsDCRQynlDjyA8x9VOc2ULVrhA2KsP
-         RAoEfqJPkhmy8g6kUnro8RnAsfGN4OmId9ME+MIaOHFIJy/347vqkA0EJ50eAYZL+bmc
-         xqgA==
+        b=IMr2sbJ5szr/eSipCzL2W/KdcQ7DFYyVp6LHiAsl0qmc8hWvv2rESJDEq/DqduylpY
+         K56QwdvdKhhZgYWxQj2B6bigMgLXr745XJjpFZSle+W/FXA9uzd6tLDNGwsrBKHNaDyH
+         UA1PVE7wIMrNcUx3+mE+KTZdPMImRP3AAANUYE/grEnadZ177+14Mr/9tUKWhQYQfvoh
+         2PtcZ32oSRrDpeSCXOLAZhPsWgDFTQC+INo1PPtPxnGTLsdFx//a5M4+d7B1D/tqELsb
+         m3wJHVZnLhnRS+5oI4AyPKs1tJDGyJ53AXYZ6VqQW2vcY/Ab7u8CrDlpVvy67eIVpr6x
+         wJIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=Onyn8RMcFIh4kVhSZC2/dF2++X4JhAjy0UaiSn2BMvA=;
-        b=SJFH1hwYEWoTN6faPYkSNJ5eUIhwgms1DrPq89/EHUm2sTsxCOlPKZ6tZTFr2K08rf
-         3k/n6wHkeedmQfE7DVqGG5p3CTBLDzAujsVKdOj/17JkPFlFE4c2TirlKp4dVn72pUMz
-         hNmeREPW6w7b8UQ029HEBg4UZKaTcsMn0sePL2gm6mSVPOQLvFpU3+rDMINmh1g9Jhzz
-         IXWYBtqC3JaE6eE5haEz2u0zFN3MNCDnqOODiQ8xHzl2Ci9rpddCe8Rs4ZWxX5CNL24D
-         Kw3cgatT6LNsdDglFLmKIOluRpLCAWyFm56tBQFd3IaMYVfk9axJfz4wDR67BJV1xHoD
-         Xx+g==
+        bh=/TAMNLqDWlnw9WGqq8hKlEsuFB0t3G7lqIxyOJ8SiZ0=;
+        b=0td5iXzesuhzLh5vw6ht1T/VYPIpViLYIN17eXjMsVjoefdqitRuifdNTdzPNYuQQt
+         PnhDAuKQs+zs0qcCxuRaqJVz/UYFaBYyrCuikBmVXtMnBH+BbSBOdhZq7sKBWAwzihA5
+         Nm3oSuobEOEDxJbhp25BbSFI3Nwuijoh0uNMv1z7mo8QR7A7n87Xi7qDsOMu6lgG7xXr
+         hmBKAgSCH4MRwhtTGaOFpgIgn/8c2xpEvtLBcEe75sHEJ6r7WPJPCGwVGghQbuOse7+J
+         BKipVXhtQLljvdg8IPyck9jM8btkgk4q2XbBfoeJVUw9k4y6IHBDiw6zIIovcuNutPD6
+         +62A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=m5sdetKy;
-       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Z1o6E8BB;
+       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::635 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <mamtashukla555@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id n1-v6si802204ioh.0.2018.10.11.10.46.34
+Received: from mail-pl1-x635.google.com (mail-pl1-x635.google.com. [2607:f8b0:4864:20::635])
+        by gmr-mx.google.com with ESMTPS id f87-v6si1260669pfe.4.2018.10.11.10.44.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 11 Oct 2018 10:46:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        Thu, 11 Oct 2018 10:44:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::635 as permitted sender) client-ip=2607:f8b0:4864:20::635;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=m5sdetKy;
-       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Z1o6E8BB;
+       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::635 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id 23-v6so4513840pgc.8
-        for <outreachy-kernel@googlegroups.com>; Thu, 11 Oct 2018 10:46:34 -0700 (PDT)
+Received: by mail-pl1-x635.google.com with SMTP id u6-v6so1839323plz.4
+        for <outreachy-kernel@googlegroups.com>; Thu, 11 Oct 2018 10:44:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=Onyn8RMcFIh4kVhSZC2/dF2++X4JhAjy0UaiSn2BMvA=;
-        b=m5sdetKyIklDd/LsVUlJ/ITmfi+M5B3Lb9eq10gJKwpluAWlYsvVUir+4oHlqRUQnE
-         NCFlgqAoUA0pZcao9ZuPGsuYRO5eCWyeWgcYmA7pNx8MFGhgiLY2xiZk/e9kG0cKHw3F
-         lgTtrikecJq+TvFgW3ZAkaDqI040NjRos2ZDakVSO7hqRZY/oIRFzjaPfGmkCM2BdQBb
-         Xj9WnjvAJLdYTLOPLsO5hoQPyxRvRrVcl+NxhatvsLPc64kG0YiznkOJEhOBcjao+RRS
-         HV3qGXXvlbjC/3ckwgU3B+mzupYWH9KRBA42aou3nrhvkTmS71RDrh18SLx6MHP0UAWE
-         Y8xg==
+        bh=/TAMNLqDWlnw9WGqq8hKlEsuFB0t3G7lqIxyOJ8SiZ0=;
+        b=Z1o6E8BBGDJqUchxXFghAvQo8WEblZA12eI08peXuGPdFerJ1i7bSqD/RdW0ej7tLW
+         u1QD3E3hMIBXlBbJSGmOytgvo12RHkuDl3jn+Qr/wDdqZJ4/hgTgtOJyJ1NrbcFA4xxV
+         yLZr1Ig/wYMMQKwaGxu3I81r3RD/l26/2RwIxizVQCPrPLjecygj+N/pc1ZdY3lGRt0W
+         HSpEy43X4mCLm1j39T5n7HA7fc28geVwGdgBjzfjGMLNst9HGdIUXDqHNx1nqJOTkoBr
+         amYZSuI4NNdz9AfhiWzybqwnvRYll+hIUEX/CwLmE4Z8LusIQLKHToXaariUDGapNssC
+         0sIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=Onyn8RMcFIh4kVhSZC2/dF2++X4JhAjy0UaiSn2BMvA=;
-        b=hxIv19SQOMMWgR2VCfQVRY1fm1LQRAANype/aE/pfIIpifjkdf+lo2EFwBagwX0t4M
-         QNErq1+ksE1Ciy3BIowH1q3st+/DuCHO6mhVlvsBms1Mqnv1otWolDz0EdYwKHce0Uzm
-         hdyGpMeQVyPDHy1mYet8hk2IIX8WsNbHPUtP6/s+bIKPmk+nL2JWFMUK+nLi8Z7oERs9
-         WL6dkOPOzXKJu9Uwkz/1UX0/RpezwtOzsdwv0uZJpI3G+CJMUpEZ5wOIlwmg0A85K2Yz
-         /Rx5ZMDnyosVpX/qJ29XVcZ0Lc5JPtZ/3rNshYYH0tX7+J3BR1MIGDRgDhAknDwwc3u3
-         bvDg==
-X-Gm-Message-State: ABuFfog+iv0E8cXQGnMnQ/JEEUaGmo+5/YWa92zAijv8RRI4C7IqiLzT
-	sMOstTkQhWVkiSSkjzWfK/Z8wG7YsUg=
-X-Received: by 2002:a62:8559:: with SMTP id u86-v6mr2526840pfd.32.1539279993549;
-        Thu, 11 Oct 2018 10:46:33 -0700 (PDT)
+        bh=/TAMNLqDWlnw9WGqq8hKlEsuFB0t3G7lqIxyOJ8SiZ0=;
+        b=f84OTYG/IZbx7MZcnG6Zy+RppsL+N2Y1MZMsFwgcqOARuD4Fb0w5guyeOfiiNkuYlF
+         mPuy+YkoHAN4sDEaz91QuOJ9XlV9WGRZ0d6sQipSuQA14/UzcFFen+9zJvB4wvfNg5SU
+         r+tnYtWQl7ORfToP1G2vgNFQ2cMq8JRp6JchJ4TeagYlt9NjE71d0/D9wtJA1VqoVO0c
+         tjCk4rgkl4Icf68bq7VyJ640BSMmvHWCHqLXJ39acpzzFKtWihlrOFHP8eEj20jXzBpL
+         xGvuk+jFMKlw/JNkqpVQoFw3/5L+7KvkMxrk1zBnyrR7/LDexRYZtxv+QVnuV+QRZ/dr
+         ojAw==
+X-Gm-Message-State: ABuFfoi+9szSioudkASvGut4qYcXMD8hbxzdTIfWsEJ0txgifxym3aBN
+	UmtXCHxE6xPXa3PUj03SfzI=
+X-Received: by 2002:a17:902:2805:: with SMTP id e5-v6mr2447112plb.169.1539279894061;
+        Thu, 11 Oct 2018 10:44:54 -0700 (PDT)
 Return-Path: <mamtashukla555@gmail.com>
 Received: from armorer ([117.199.59.255])
-        by smtp.gmail.com with ESMTPSA id 64-v6sm39122472pgb.74.2018.10.11.10.46.32
+        by smtp.gmail.com with ESMTPSA id r18-v6sm26080529pgv.17.2018.10.11.10.44.52
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 11 Oct 2018 10:46:32 -0700 (PDT)
-Date: Thu, 11 Oct 2018 23:16:26 +0530
+        Thu, 11 Oct 2018 10:44:53 -0700 (PDT)
+Date: Thu, 11 Oct 2018 23:14:42 +0530
 From: Mamta Shukla <mamtashukla555@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org, Larry.Finger@lwfinger.net,
 	hadess@hadess.net, hdegoede@redhat.com
-Subject: [PATCH 2/3] staging: rtl8723bs: os_dep: Remove space after cast
-Message-ID: <07cc419de89866aa6d8c7cfc424824074872a2e8.1539278377.git.mamtashukla555@gmail.com>
+Subject: [PATCH 1/3] staging: rtl8723bs: os_dep: Remove true and false
+ comparison
+Message-ID: <7520ea70487831d6e2943c37e02e8586af202e87.1539278377.git.mamtashukla555@gmail.com>
 References: <cover.1539278377.git.mamtashukla555@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -87,81 +88,68 @@ Content-Disposition: inline
 In-Reply-To: <cover.1539278377.git.mamtashukla555@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
-Remove space after cast to fix checkpatch issue.
-CHECK: No space is necessary after a cast
+Remove comparison to true and false in if statement.
+Issue found with checkpatch.pl
+CHECK: Using comparison to true is error prone
+CHECK: Using comparison to false is error prone
 
 Signed-off-by: Mamta Shukla <mamtashukla555@gmail.com>
 ---
- drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-index 48a1560..243394e 100644
+index c38298d..48a1560 100644
 --- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
 +++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-@@ -337,7 +337,7 @@ static char *translate_scan(struct adapter *padapter,
- 
- 
- 	#ifdef CONFIG_SIGNAL_DISPLAY_DBM
--	iwe.u.qual.level = (u8) translate_percentage_to_dbm(ss);/* dbm */
-+	iwe.u.qual.level = (u8)translate_percentage_to_dbm(ss);/* dbm */
- 	#else
- 	#ifdef CONFIG_SKIP_SIGNAL_SCALE_MAPPING
- 	{
-@@ -392,7 +392,7 @@ static char *translate_scan(struct adapter *padapter,
- 
- static int wpa_set_auth_algs(struct net_device *dev, u32 value)
- {
--	struct adapter *padapter = (struct adapter *) rtw_netdev_priv(dev);
-+	struct adapter *padapter = (struct adapter *)rtw_netdev_priv(dev);
- 	int ret = 0;
- 
- 	if ((value & WLAN_AUTH_SHARED_KEY) && (value & WLAN_AUTH_OPEN)) {
-@@ -436,7 +436,7 @@ static int wpa_set_encryption(struct net_device *dev, struct ieee_param *param,
- 	param->u.crypt.err = 0;
- 	param->u.crypt.alg[IEEE_CRYPT_ALG_NAME_LEN - 1] = '\0';
- 
--	if (param_len < (u32) ((u8 *) param->u.crypt.key - (u8 *) param) + param->u.crypt.key_len) {
-+	if (param_len < (u32)((u8 *)param->u.crypt.key - (u8 *)param) + param->u.crypt.key_len) {
- 		ret =  -EINVAL;
- 		goto exit;
+@@ -209,9 +209,9 @@ static char *translate_scan(struct adapter *padapter,
+ 		i++;
  	}
-@@ -946,7 +946,7 @@ static int rtw_wx_set_pmkid(struct net_device *dev,
- 	u8          j, blInserted = false;
- 	int         intReturn = false;
- 	struct security_priv *psecuritypriv = &padapter->securitypriv;
--        struct iw_pmksa*  pPMK = (struct iw_pmksa*) extra;
-+        struct iw_pmksa*  pPMK = (struct iw_pmksa*)extra;
-         u8     strZeroMacAddress[ ETH_ALEN ] = { 0x00 };
-         u8     strIssueBssid[ ETH_ALEN ] = { 0x00 };
  
-@@ -1236,7 +1236,7 @@ static int rtw_wx_set_mlme(struct net_device *dev,
- 	int ret = 0;
- 	u16 reason;
- 	struct adapter *padapter = (struct adapter *)rtw_netdev_priv(dev);
--	struct iw_mlme *mlme = (struct iw_mlme *) extra;
-+	struct iw_mlme *mlme = (struct iw_mlme *)extra;
- 
- 
- 	if (mlme == NULL)
-@@ -2390,7 +2390,7 @@ static int rtw_wx_set_channel_plan(struct net_device *dev,
-                                union iwreq_data *wrqu, char *extra)
- {
- 	struct adapter *padapter = (struct adapter *)rtw_netdev_priv(dev);
--	u8 channel_plan_req = (u8) (*((int *)wrqu));
-+	u8 channel_plan_req = (u8)(*((int *)wrqu));
- 
- 	if (_SUCCESS == rtw_set_chplan_cmd(padapter, channel_plan_req, 1, 1))
- 		DBG_871X("%s set channel_plan = 0x%02X\n", __func__, channel_plan_req);
-@@ -2584,7 +2584,7 @@ static int rtw_wps_start(struct net_device *dev,
+-	if (vht_cap == true) {
++	if (vht_cap) {
+ 		max_rate = vht_data_rate;
+-	} else if (ht_cap == true) {
++	} else if (ht_cap) {
+ 		if (mcs_rate&0x8000) { /* MCS15 */
+ 			max_rate = (bw_40MHz) ? ((short_GI)?300:270):((short_GI)?144:130);
+ 		} else if (mcs_rate&0x0080) { /* MCS7 */
+@@ -862,7 +862,7 @@ static int rtw_wx_set_mode(struct net_device *dev, struct iw_request_info *a,
  		goto exit;
  	}
  
--	uintRet = copy_from_user((void*) &u32wps_start, pdata->pointer, 4);
-+	uintRet = copy_from_user((void*)&u32wps_start, pdata->pointer, 4);
- 	if (u32wps_start == 0)
- 		u32wps_start = *extra;
+-	if (padapter->hw_init_completed ==false) {
++	if (!padapter->hw_init_completed) {
+ 		ret = -EPERM;
+ 		goto exit;
+ 	}
+@@ -1295,7 +1295,7 @@ static int rtw_wx_set_scan(struct net_device *dev, struct iw_request_info *a,
+ 		goto exit;
+ 	}
  
+-	if (padapter->hw_init_completed ==false) {
++	if (!padapter->hw_init_completed ) {
+ 		ret = -1;
+ 		goto exit;
+ 	}
+@@ -1303,7 +1303,7 @@ static int rtw_wx_set_scan(struct net_device *dev, struct iw_request_info *a,
+ 	/*  When Busy Traffic, driver do not site survey. So driver return success. */
+ 	/*  wpa_supplicant will not issue SIOCSIWSCAN cmd again after scan timeout. */
+ 	/*  modify by thomas 2011-02-22. */
+-	if (pmlmepriv->LinkDetectInfo.bBusyTraffic == true) {
++	if (pmlmepriv->LinkDetectInfo.bBusyTraffic) {
+ 		indicate_wx_scan_complete_event(padapter);
+ 		goto exit;
+ 	}
+@@ -4229,7 +4229,7 @@ static int rtw_hostapd_ioctl(struct net_device *dev, struct iw_point *p)
+ 	* so, we just check hw_init_completed
+ 	*/
+ 
+-	if (padapter->hw_init_completed ==false) {
++	if (!padapter->hw_init_completed) {
+ 		ret = -EPERM;
+ 		goto out;
+ 	}
 -- 
 1.9.1
 
