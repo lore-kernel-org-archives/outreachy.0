@@ -1,127 +1,426 @@
-X-GM-THRID: 6949235064632770560
-X-Received: by 2002:a37:db11:: with SMTP id e17mr3639900qki.421.1617994873054;
-        Fri, 09 Apr 2021 12:01:13 -0700 (PDT)
+X-GM-THRID: 6611174722012971008
+X-Received: by 2002:a0c:89cb:: with SMTP id 11mr4566568qvs.56.1539343490004;
+        Fri, 12 Oct 2018 04:24:50 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:622a:606:: with SMTP id z6ls998200qta.0.gmail; Fri, 09
- Apr 2021 12:01:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyPvuWAOGggRutItGfeYkFYBnoX/HowKhSha6k3crumlNx9D6IqCxWprprKxHxDaJUFczm9
-X-Received: by 2002:a05:622a:149:: with SMTP id v9mr13501211qtw.172.1617994872005;
-        Fri, 09 Apr 2021 12:01:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617994872; cv=none;
+Received: by 2002:aed:2ce3:: with SMTP id g90-v6ls5089035qtd.8.gmail; Fri, 12
+ Oct 2018 04:24:49 -0700 (PDT)
+X-Received: by 2002:ac8:3068:: with SMTP id g37-v6mr4535791qte.18.1539343489533;
+        Fri, 12 Oct 2018 04:24:49 -0700 (PDT)
+Received: by 2002:a37:4890:0:0:0:0:0 with SMTP id v138-v6msqka;
+        Fri, 12 Oct 2018 04:22:54 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV60GH3615N7TUcJkuu1i6458cEwnzieKd0ec4u0gkKzFy0YscYJH1AgkceF20vpsBD2yhM8T
+X-Received: by 2002:adf:ec4b:: with SMTP id w11-v6mr490347wrn.20.1539343374560;
+        Fri, 12 Oct 2018 04:22:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539343374; cv=none;
         d=google.com; s=arc-20160816;
-        b=MVxLVfZu1empz4X2BA1aN5fM2GLmPUobAoyNxRjKfBWrVEjDgLs11xhkZv6J8KPkZ/
-         d2W0mXgPo63fTlVy10j+fgPb+RhrIqP2DVG4zVyeNdbNMViAgkyghpkWVrUHK6QOcAax
-         dOt1xwTH7JEvLacAD9u2pbuUUdfSRAD2rEkI0Y8a1Su955DwOwOraGR4CtE7YvB0R1Ae
-         ngtwOqBSjU+fQHMBH52dosWglPP7oIjH00T0If+AVJn39i9AzJ1vcM2tRIcrkarBiIEj
-         T2VqHQA8DBlWkr/IbdheiPd0f+vEIZdOl/iBrqwoH4X522O8I6UpDXYRyLtm4hJh/7lY
-         YM0Q==
+        b=YDlJkfBwATc8ipoXqygrLlPXAxkNPwzFX+OloQ4HFQRBXndZ6gmh+iwVu0VagalUdr
+         ErLN9XE3bzTojgAkRCRPJ0E3Ltrylzg24RSmmxD5Ro34uAcU+mjilBH02fMWSHQjQeDA
+         Tke71XC0w/DaVV3Ge7h0OJ1h38BmeMYVoYp+FxNTuvbMBq95+5fUnaltwwm+hlTB0U3N
+         nk57hfMh5wUOLBaatwI6CuzvVBtcSDlp+Zl/qrxI/ZnyTE/BBktqDJPyU8KUzM/sdz2h
+         c4GgqkkPeYhSvnxUwP8wUO4culkiNGY1i/tRfj8QozPEgTRh6gTfeifGCv6N/BKh0Nv2
+         5QKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=dggCkVFWKXm7BbwuV1M/eeJV+LFnVGWYUCSH1BrxITE=;
-        b=GDIENMAg6w1DvHkkcuZJYHVkrIIjQPG7suFg+6X1VWLLi4wJ76NK7JRogzNKLp8nGF
-         xV//vX+kNmiJxMafMFqul8BbzND5Km+Z1u8GpUAqdqhAY/9O2KdeShKWhpJ9LkhNw2mn
-         vSFuH5yWsS4dusL4DgGb/uamsICBPcxryu8wUOloTaYTf/TsX7u5u6sRUMOjQxzzut3n
-         +2u1F0UE3jUlpc0MKAfHmqHlx5WRSBHu0OcZUTdK5HJ7Jz38DPP8iAkmpFwFLUuThCzV
-         2ecHdQ8Ivq4J14Ekxa409UlHIIJVBAGuv5rbms3maTJc6/LFjyIL3sZCY+GVn8wJMTXH
-         hLKw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject;
+        bh=Z5wiJnB0MAVfXFpJ8L4XioSmqyaDrUd+GiZs7XnGj7I=;
+        b=PNjrqdJOVr5enCg+z5vO1ePwxxukWsKdZxm2FgoCVMOIAUHGFr5jrf9HvdQh4G7N3N
+         iRtwZofT7JH5ETATtvP9Bf/0+/N23KBg9B2e+NDEKEvZT4QWkLVQ2BV5vjHl3swq9Zcw
+         P+5DoRyMSGhJ1QRr99bYwbhuapekYZnhOzXrsxs3nketbbPMQxNRNLvXhMcuaTktVt2w
+         qlI5XW6JU9t01Oh9KdEQ9Xf8qcF32knSmJgcuI85JulXD7xAciouD1h68xbaWQcz483s
+         /HzmcA3GROO+RmEVHcF/brUK5hTt4SmRBKONsuQQ2mvCdaT5GyLOmSUuDh7aHzwpwdgw
+         VthQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="eoD/75Lr";
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::734 as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from mail-qk1-x734.google.com (mail-qk1-x734.google.com. [2607:f8b0:4864:20::734])
-        by gmr-mx.google.com with ESMTPS id d3si126117qki.3.2021.04.09.12.01.11
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.31 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
+Return-Path: <hverkuil@xs4all.nl>
+Received: from lb3-smtp-cloud7.xs4all.net (lb3-smtp-cloud7.xs4all.net. [194.109.24.31])
+        by gmr-mx.google.com with ESMTPS id k22-v6si24443wre.4.2018.10.12.04.22.54
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 09 Apr 2021 12:01:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::734 as permitted sender) client-ip=2607:f8b0:4864:20::734;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 12 Oct 2018 04:22:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.31 as permitted sender) client-ip=194.109.24.31;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="eoD/75Lr";
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::734 as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qk1-x734.google.com with SMTP id c3so6894456qkc.5
-        for <outreachy-kernel@googlegroups.com>; Fri, 09 Apr 2021 12:01:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=dggCkVFWKXm7BbwuV1M/eeJV+LFnVGWYUCSH1BrxITE=;
-        b=eoD/75Lry9hYJW+NtaMx1kuHbs6Y9pTzAWqGmRHkW2kF6YA2vILYwTZkysqyIKsT8+
-         TnZeYAmb0U9yvdQvjX09FuGZA0Lz2YEO34j8q5Ikks1lrkPX89+lo8w6ifWmcJo7x7Fj
-         AJDqq5W98PpPeuXUds4KKh7guTwZPgA28JaFWCsCIH9XSeuI3bMLgZB0fRAjqgmXWGR8
-         TdalXAUNp71Ck+dq6p9xpCorY1yXqMs1OfRx88gRqTPUGvopovi0czH2Y3tiRSSlhGhd
-         zjEhQfdyOvasgd6MmcNrPR84DxyYufy25Z1I8aN3qNisWuZdK1oke4VNVNMzAdcpDXKC
-         Vyag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=dggCkVFWKXm7BbwuV1M/eeJV+LFnVGWYUCSH1BrxITE=;
-        b=YubQlTQuBvTOWqV3vQ2oRXkQIzYWw/aS46AKthgFsLtHS3pXevsEC7A6QQNfPJYe55
-         jrmB07G2T7LxMT1PhR3JEOuYdlStoXmUM8vCtovw5My/jTJk8NRKZcEvphBAxKfrQBqj
-         s5RH5fvTYlRoC7InWr9FAU/ZktFqwZ3RfTlTSY+lgdtZx39MnFCCt45s/ASyVVepwahS
-         jv8U90JBVL43iAS9fdK1WTz41OTbh9kFm42zl7MqyScQcqBrve3ms0ztJ3vg+6EMuNKP
-         Y7lS0c4OAZXduEgY6rwhPzYyfri5rARGurnoXDFGlG2n8FPsxXdOzA8pp+i0vG+jTVXf
-         53dg==
-X-Gm-Message-State: AOAM531JEx7oHjEmwPCVtTEF/4z3LvIA9AcsH7vlVR3Jp+KFoVQBW/Pn
-	hoeOxjghaEgJXuwspN+rYiE=
-X-Received: by 2002:a05:620a:244f:: with SMTP id h15mr8950992qkn.235.1617994871845;
-        Fri, 09 Apr 2021 12:01:11 -0700 (PDT)
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from focaruja ([177.220.174.147])
-        by smtp.gmail.com with ESMTPSA id w78sm2409960qkb.11.2021.04.09.12.01.10
-        (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
-        Fri, 09 Apr 2021 12:01:11 -0700 (PDT)
-Date: Fri, 9 Apr 2021 16:01:08 -0300
-From: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
-	alinesantanacordeiro@gmail.com
-Subject: [Outreachy kernel][PATCH 2/2] staging: media: omap4iss: Align line
- break to the open parenthesis in file iss_video.c
-Message-ID: <30cadc4bf072dc592cc82fba96a40685e25787dd.1617994571.git.alinesantanacordeiro@gmail.com>
-References: <cover.1617994571.git.alinesantanacordeiro@gmail.com>
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.31 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
+Received: from [192.168.2.10] ([212.251.195.8])
+	by smtp-cloud7.xs4all.net with ESMTPA
+	id AvWrgn0rrw2L8AvWug5t0X; Fri, 12 Oct 2018 13:22:54 +0200
+Subject: Re: [PATCH vicodec] media: davinci_vpfe: Replace function names with
+ __func__
+To: Dafna Hirschfeld <dafna3@gmail.com>, mchehab@kernel.org,
+ gregkh@linuxfoundation.org, helen.koike@collabora.com
+Cc: outreachy-kernel@googlegroups.com, linux-media@vger.kernel.org
+References: <20181011185410.26268-1-dafna3@gmail.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <64389a68-482e-f048-c1fb-38b249502d2a@xs4all.nl>
+Date: Fri, 12 Oct 2018 13:22:49 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.2.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1617994571.git.alinesantanacordeiro@gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20181011185410.26268-1-dafna3@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-CMAE-Envelope: MS4wfO9dXusCO+idpoJlG/CWhbwCxLcuzEi2EMH202hVI9gVmLGK8uQhGNdMwFCIjLWDhjrHYuQ6BXXJv1q0tzJlOwG8Rk4bpcOb5OYMBWTe2eYQD8OUVKUg
+ Z6RP5IW78dxF1rytI/8jER1EL2m4nZ6nEpBijWLCIS/Dk7kucNLtkQyU5pzx133mm3143Qd9OpUm7dTIVggF/KRg4TuzKCjSyXC0Zrbh+etBdSNzktJ7yOOz
+ FTWsRpcNoXtCOBXu6bnVlgfeFyPefRhyHxZ0gYCtYvMzY+2IbugL3OPQAQ4GVC8QYyMAJePaDGj31gl1II0GIVjuoK3eg/H671VjIFCdUcWJMbVAxMywHg19
+ hk9D6/Qd
 
-Aligns line break with the remaining function arguments
-to the open parenthesis. Issue found by checkpatch.
+On 10/11/2018 08:54 PM, Dafna Hirschfeld wrote:
+> Replace hardcoded function names with `__func__`
+> in debug prints.
+> 
+> Signed-off-by: Dafna Hirschfeld <dafna3@gmail.com>
 
-Signed-off-by: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
----
- drivers/staging/media/omap4iss/iss_video.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Acked-by: Hans Verkuil <hans.verkuil@cisco.com>
 
-diff --git a/drivers/staging/media/omap4iss/iss_video.c b/drivers/staging/media/omap4iss/iss_video.c
-index 66975a3..a2cef7c 100644
---- a/drivers/staging/media/omap4iss/iss_video.c
-+++ b/drivers/staging/media/omap4iss/iss_video.c
-@@ -399,7 +399,7 @@ static void iss_video_buf_queue(struct vb2_buffer *vb)
- 
- 		if (start)
- 			omap4iss_pipeline_set_stream(pipe,
--						ISS_PIPELINE_STREAM_SINGLESHOT);
-+						     ISS_PIPELINE_STREAM_SINGLESHOT);
- 	}
- }
- 
-@@ -957,7 +957,7 @@ iss_video_streamon(struct file *file, void *fh, enum v4l2_buf_type type)
- 		unsigned long flags;
- 
- 		ret = omap4iss_pipeline_set_stream(pipe,
--					      ISS_PIPELINE_STREAM_CONTINUOUS);
-+						   ISS_PIPELINE_STREAM_CONTINUOUS);
- 		if (ret < 0)
- 			goto err_omap4iss_set_stream;
- 		spin_lock_irqsave(&video->qlock, flags);
--- 
-2.7.4
+Thanks!
+
+	Hans
+
+> ---
+>  .../staging/media/davinci_vpfe/dm365_ipipe.c  |  6 +-
+>  .../media/davinci_vpfe/dm365_resizer.c        |  2 +-
+>  .../media/davinci_vpfe/vpfe_mc_capture.c      |  8 +--
+>  .../staging/media/davinci_vpfe/vpfe_video.c   | 56 +++++++++----------
+>  4 files changed, 36 insertions(+), 36 deletions(-)
+> 
+> diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
+> index 95942768..4d09e814 100644
+> --- a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
+> +++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
+> @@ -695,21 +695,21 @@ static int ipipe_get_gamma_params(struct vpfe_ipipe_device *ipipe, void *param)
+>  
+>  	if (!gamma->bypass_r) {
+>  		dev_err(dev,
+> -			"ipipe_get_gamma_params: table ptr empty for R\n");
+> +			"%s: table ptr empty for R\n", __func__);
+>  		return -EINVAL;
+>  	}
+>  	memcpy(gamma_param->table_r, gamma->table_r,
+>  	       (table_size * sizeof(struct vpfe_ipipe_gamma_entry)));
+>  
+>  	if (!gamma->bypass_g) {
+> -		dev_err(dev, "ipipe_get_gamma_params: table ptr empty for G\n");
+> +		dev_err(dev, "%s: table ptr empty for G\n", __func__);
+>  		return -EINVAL;
+>  	}
+>  	memcpy(gamma_param->table_g, gamma->table_g,
+>  	       (table_size * sizeof(struct vpfe_ipipe_gamma_entry)));
+>  
+>  	if (!gamma->bypass_b) {
+> -		dev_err(dev, "ipipe_get_gamma_params: table ptr empty for B\n");
+> +		dev_err(dev, "%s: table ptr empty for B\n", __func__);
+>  		return -EINVAL;
+>  	}
+>  	memcpy(gamma_param->table_b, gamma->table_b,
+> diff --git a/drivers/staging/media/davinci_vpfe/dm365_resizer.c b/drivers/staging/media/davinci_vpfe/dm365_resizer.c
+> index 2b797474..cdf7ea4f 100644
+> --- a/drivers/staging/media/davinci_vpfe/dm365_resizer.c
+> +++ b/drivers/staging/media/davinci_vpfe/dm365_resizer.c
+> @@ -946,7 +946,7 @@ resizer_get_configuration(struct vpfe_resizer_device *resizer,
+>  	if (copy_to_user((void __user *)chan_config->config,
+>  			 (void *)&resizer->config.user_config,
+>  			 sizeof(struct vpfe_rsz_config_params))) {
+> -		dev_err(dev, "resizer_get_configuration: Error in copy to user\n");
+> +		dev_err(dev, "%s: Error in copy to user\n", __func__);
+>  		return -EFAULT;
+>  	}
+>  
+> diff --git a/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c b/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
+> index e55c815b..8cb587d0 100644
+> --- a/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
+> +++ b/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
+> @@ -161,7 +161,7 @@ static irqreturn_t vpfe_isr(int irq, void *dev_id)
+>  {
+>  	struct vpfe_device *vpfe_dev = dev_id;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_isr\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  	vpfe_isif_buffer_isr(&vpfe_dev->vpfe_isif);
+>  	vpfe_resizer_buffer_isr(&vpfe_dev->vpfe_resizer);
+>  	return IRQ_HANDLED;
+> @@ -172,7 +172,7 @@ static irqreturn_t vpfe_vdint1_isr(int irq, void *dev_id)
+>  {
+>  	struct vpfe_device *vpfe_dev = dev_id;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_vdint1_isr\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  	vpfe_isif_vidint1_isr(&vpfe_dev->vpfe_isif);
+>  	return IRQ_HANDLED;
+>  }
+> @@ -182,7 +182,7 @@ static irqreturn_t vpfe_imp_dma_isr(int irq, void *dev_id)
+>  {
+>  	struct vpfe_device *vpfe_dev = dev_id;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_imp_dma_isr\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  	vpfe_ipipeif_ss_buffer_isr(&vpfe_dev->vpfe_ipipeif);
+>  	vpfe_resizer_dma_isr(&vpfe_dev->vpfe_resizer);
+>  	return IRQ_HANDLED;
+> @@ -693,7 +693,7 @@ static int vpfe_remove(struct platform_device *pdev)
+>  {
+>  	struct vpfe_device *vpfe_dev = platform_get_drvdata(pdev);
+>  
+> -	v4l2_info(pdev->dev.driver, "vpfe_remove\n");
+> +	v4l2_info(pdev->dev.driver, "%s\n", __func__);
+>  
+>  	kzfree(vpfe_dev->sd);
+>  	vpfe_detach_irq(vpfe_dev);
+> diff --git a/drivers/staging/media/davinci_vpfe/vpfe_video.c b/drivers/staging/media/davinci_vpfe/vpfe_video.c
+> index 1269a983..b9bb6dac 100644
+> --- a/drivers/staging/media/davinci_vpfe/vpfe_video.c
+> +++ b/drivers/staging/media/davinci_vpfe/vpfe_video.c
+> @@ -521,7 +521,7 @@ static int vpfe_release(struct file *file)
+>  	struct vpfe_device *vpfe_dev = video->vpfe_dev;
+>  	struct vpfe_fh *fh = container_of(vfh, struct vpfe_fh, vfh);
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_release\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  
+>  	/* Get the device lock */
+>  	mutex_lock(&video->lock);
+> @@ -566,7 +566,7 @@ static int vpfe_mmap(struct file *file, struct vm_area_struct *vma)
+>  	struct vpfe_video_device *video = video_drvdata(file);
+>  	struct vpfe_device *vpfe_dev = video->vpfe_dev;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_mmap\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  	return vb2_mmap(&video->buffer_queue, vma);
+>  }
+>  
+> @@ -578,7 +578,7 @@ static __poll_t vpfe_poll(struct file *file, poll_table *wait)
+>  	struct vpfe_video_device *video = video_drvdata(file);
+>  	struct vpfe_device *vpfe_dev = video->vpfe_dev;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_poll\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  	if (video->started)
+>  		return vb2_poll(&video->buffer_queue, file, wait);
+>  	return 0;
+> @@ -610,7 +610,7 @@ static int vpfe_querycap(struct file *file, void  *priv,
+>  	struct vpfe_video_device *video = video_drvdata(file);
+>  	struct vpfe_device *vpfe_dev = video->vpfe_dev;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_querycap\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  
+>  	if (video->type == V4L2_BUF_TYPE_VIDEO_CAPTURE)
+>  		cap->device_caps = V4L2_CAP_VIDEO_CAPTURE | V4L2_CAP_STREAMING;
+> @@ -641,7 +641,7 @@ static int vpfe_g_fmt(struct file *file, void *priv,
+>  	struct vpfe_video_device *video = video_drvdata(file);
+>  	struct vpfe_device *vpfe_dev = video->vpfe_dev;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_g_fmt\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  	/* Fill in the information about format */
+>  	*fmt = video->fmt;
+>  	return 0;
+> @@ -670,7 +670,7 @@ static int vpfe_enum_fmt(struct file *file, void  *priv,
+>  	struct media_pad *remote;
+>  	int ret;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_enum_fmt\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  
+>  	/*
+>  	 * since already subdev pad format is set,
+> @@ -730,7 +730,7 @@ static int vpfe_s_fmt(struct file *file, void *priv,
+>  	struct v4l2_format format;
+>  	int ret;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_s_fmt\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  	/* If streaming is started, return error */
+>  	if (video->started) {
+>  		v4l2_err(&vpfe_dev->v4l2_dev, "Streaming is started\n");
+> @@ -764,7 +764,7 @@ static int vpfe_try_fmt(struct file *file, void *priv,
+>  	struct v4l2_format format;
+>  	int ret;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_try_fmt\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  	/* get adjacent subdev's output pad format */
+>  	ret = __vpfe_video_get_format(video, &format);
+>  	if (ret)
+> @@ -792,7 +792,7 @@ static int vpfe_enum_input(struct file *file, void *priv,
+>  	struct vpfe_ext_subdev_info *sdinfo = video->current_ext_subdev;
+>  	struct vpfe_device *vpfe_dev = video->vpfe_dev;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_enum_input\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  	/* enumerate from the subdev user has chosen through mc */
+>  	if (inp->index < sdinfo->num_inputs) {
+>  		memcpy(inp, &sdinfo->inputs[inp->index],
+> @@ -815,7 +815,7 @@ static int vpfe_g_input(struct file *file, void *priv, unsigned int *index)
+>  	struct vpfe_video_device *video = video_drvdata(file);
+>  	struct vpfe_device *vpfe_dev = video->vpfe_dev;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_g_input\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  
+>  	*index = video->current_input;
+>  	return 0;
+> @@ -843,7 +843,7 @@ static int vpfe_s_input(struct file *file, void *priv, unsigned int index)
+>  	int ret;
+>  	int i;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_s_input\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  
+>  	ret = mutex_lock_interruptible(&video->lock);
+>  	if (ret)
+> @@ -880,7 +880,7 @@ static int vpfe_s_input(struct file *file, void *priv, unsigned int index)
+>  						 s_routing, input, output, 0);
+>  		if (ret) {
+>  			v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev,
+> -				"s_input:error in setting input in decoder\n");
+> +				"%s: error in setting input in decoder\n", __func__);
+>  			ret = -EINVAL;
+>  			goto unlock_out;
+>  		}
+> @@ -914,7 +914,7 @@ static int vpfe_querystd(struct file *file, void *priv, v4l2_std_id *std_id)
+>  	struct vpfe_ext_subdev_info *sdinfo;
+>  	int ret;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_querystd\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  
+>  	ret = mutex_lock_interruptible(&video->lock);
+>  	sdinfo = video->current_ext_subdev;
+> @@ -945,7 +945,7 @@ static int vpfe_s_std(struct file *file, void *priv, v4l2_std_id std_id)
+>  	struct vpfe_ext_subdev_info *sdinfo;
+>  	int ret;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_s_std\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  
+>  	/* Call decoder driver function to set the standard */
+>  	ret = mutex_lock_interruptible(&video->lock);
+> @@ -976,7 +976,7 @@ static int vpfe_g_std(struct file *file, void *priv, v4l2_std_id *tvnorm)
+>  	struct vpfe_video_device *video = video_drvdata(file);
+>  	struct vpfe_device *vpfe_dev = video->vpfe_dev;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_g_std\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  	*tvnorm = video->stdid;
+>  	return 0;
+>  }
+> @@ -1003,7 +1003,7 @@ vpfe_enum_dv_timings(struct file *file, void *fh,
+>  
+>  	timings->pad = 0;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_enum_dv_timings\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  	return v4l2_subdev_call(subdev, pad, enum_dv_timings, timings);
+>  }
+>  
+> @@ -1027,7 +1027,7 @@ vpfe_query_dv_timings(struct file *file, void *fh,
+>  	struct vpfe_device *vpfe_dev = video->vpfe_dev;
+>  	struct v4l2_subdev *subdev = video->current_ext_subdev->subdev;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_query_dv_timings\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  	return v4l2_subdev_call(subdev, video, query_dv_timings, timings);
+>  }
+>  
+> @@ -1049,7 +1049,7 @@ vpfe_s_dv_timings(struct file *file, void *fh,
+>  	struct vpfe_video_device *video = video_drvdata(file);
+>  	struct vpfe_device *vpfe_dev = video->vpfe_dev;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_s_dv_timings\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  
+>  	video->stdid = V4L2_STD_UNKNOWN;
+>  	return v4l2_device_call_until_err(&vpfe_dev->v4l2_dev,
+> @@ -1076,7 +1076,7 @@ vpfe_g_dv_timings(struct file *file, void *fh,
+>  	struct vpfe_device *vpfe_dev = video->vpfe_dev;
+>  	struct v4l2_subdev *subdev = video->current_ext_subdev->subdev;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_g_dv_timings\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  	return v4l2_subdev_call(subdev, video, g_dv_timings, timings);
+>  }
+>  
+> @@ -1105,7 +1105,7 @@ vpfe_buffer_queue_setup(struct vb2_queue *vq,
+>  	struct vpfe_device *vpfe_dev = video->vpfe_dev;
+>  	unsigned long size;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_buffer_queue_setup\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  	size = video->fmt.fmt.pix.sizeimage;
+>  
+>  	if (vq->num_buffers + *nbuffers < 3)
+> @@ -1133,7 +1133,7 @@ static int vpfe_buffer_prepare(struct vb2_buffer *vb)
+>  	struct vpfe_device *vpfe_dev = video->vpfe_dev;
+>  	unsigned long addr;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_buffer_prepare\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  
+>  	if (vb->state != VB2_BUF_STATE_ACTIVE &&
+>  	    vb->state != VB2_BUF_STATE_PREPARED)
+> @@ -1299,7 +1299,7 @@ static void vpfe_buf_cleanup(struct vb2_buffer *vb)
+>  	struct vpfe_cap_buffer *buf = container_of(vbuf,
+>  					struct vpfe_cap_buffer, vb);
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_buf_cleanup\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  	if (vb->state == VB2_BUF_STATE_ACTIVE)
+>  		list_del_init(&buf->list);
+>  }
+> @@ -1329,7 +1329,7 @@ static int vpfe_reqbufs(struct file *file, void *priv,
+>  	struct vb2_queue *q;
+>  	int ret;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_reqbufs\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  
+>  	if (req_buf->type != V4L2_BUF_TYPE_VIDEO_CAPTURE &&
+>  	    req_buf->type != V4L2_BUF_TYPE_VIDEO_OUTPUT){
+> @@ -1386,7 +1386,7 @@ static int vpfe_querybuf(struct file *file, void *priv,
+>  	struct vpfe_video_device *video = video_drvdata(file);
+>  	struct vpfe_device *vpfe_dev = video->vpfe_dev;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_querybuf\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  
+>  	if (buf->type != V4L2_BUF_TYPE_VIDEO_CAPTURE &&
+>  	    buf->type != V4L2_BUF_TYPE_VIDEO_OUTPUT) {
+> @@ -1413,7 +1413,7 @@ static int vpfe_qbuf(struct file *file, void *priv,
+>  	struct vpfe_device *vpfe_dev = video->vpfe_dev;
+>  	struct vpfe_fh *fh = file->private_data;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_qbuf\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  
+>  	if (p->type != V4L2_BUF_TYPE_VIDEO_CAPTURE &&
+>  	    p->type != V4L2_BUF_TYPE_VIDEO_OUTPUT) {
+> @@ -1441,7 +1441,7 @@ static int vpfe_dqbuf(struct file *file, void *priv,
+>  	struct vpfe_video_device *video = video_drvdata(file);
+>  	struct vpfe_device *vpfe_dev = video->vpfe_dev;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_dqbuf\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  
+>  	if (buf->type != V4L2_BUF_TYPE_VIDEO_CAPTURE &&
+>  	    buf->type != V4L2_BUF_TYPE_VIDEO_OUTPUT) {
+> @@ -1473,7 +1473,7 @@ static int vpfe_streamon(struct file *file, void *priv,
+>  	struct vpfe_fh *fh = file->private_data;
+>  	int ret = -EINVAL;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_streamon\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  
+>  	if (buf_type != V4L2_BUF_TYPE_VIDEO_CAPTURE &&
+>  	    buf_type != V4L2_BUF_TYPE_VIDEO_OUTPUT) {
+> @@ -1518,7 +1518,7 @@ static int vpfe_streamoff(struct file *file, void *priv,
+>  	struct vpfe_fh *fh = file->private_data;
+>  	int ret = 0;
+>  
+> -	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_streamoff\n");
+> +	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "%s\n", __func__);
+>  
+>  	if (buf_type != V4L2_BUF_TYPE_VIDEO_CAPTURE &&
+>  	    buf_type != V4L2_BUF_TYPE_VIDEO_OUTPUT) {
+> 
 
 
