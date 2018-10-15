@@ -1,100 +1,130 @@
 X-GM-THRID: 6612482196656619520
-X-Received: by 2002:a24:be49:: with SMTP id i70-v6mr12879206itf.32.1539594637986;
-        Mon, 15 Oct 2018 02:10:37 -0700 (PDT)
+X-Received: by 2002:a1c:93d3:: with SMTP id v202-v6mr1355545wmd.5.1539594213468;
+        Mon, 15 Oct 2018 02:03:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a02:1246:: with SMTP id i67-v6ls6631659jad.0.gmail; Mon, 15
- Oct 2018 02:10:36 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV60424DNPGDp3PKzeplrcevQyRFHaebvTO2+TK+0UESBAcZN+X07Cn1ZLIcKZq/nix5AtNOd
-X-Received: by 2002:a02:ab96:: with SMTP id t22-v6mr14284968jan.6.1539594636861;
-        Mon, 15 Oct 2018 02:10:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539594636; cv=none;
+Received: by 2002:adf:eb04:: with SMTP id s4-v6ls1987102wrn.7.gmail; Mon, 15
+ Oct 2018 02:03:32 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62ibtNYm9yEAAvL7rMkXqu6CZRVZQeQA2fEETHdgL/rGhZS0Ns8k9UBaoetzYJsyneTdvah
+X-Received: by 2002:adf:8b56:: with SMTP id v22-v6mr1425972wra.6.1539594212524;
+        Mon, 15 Oct 2018 02:03:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539594212; cv=none;
         d=google.com; s=arc-20160816;
-        b=brb4sKC8eBy5PPLtCdHxD9Khrol3u9rU4gyFrgQeMUqzpx8/+d1SHvrVSpGsnaA/DL
-         TCvTOHIR440wtcPSel892vqtZk5CHeaqdRhI7uGE4Wbr4f+n/EilBjoCwH3Mwik0lExe
-         m6UbjxzT4cL82xuofNnZhqzsRNSVvMhFHl5lt36SA6d339s568UxCyfcnRTcmrZhN5jT
-         3Ug+2GB/uXZsj8nq48XMDvRtEcO1F8krfxFRpYsFAsmyrLZrs0gYLKCUU0qPZVlJ5hEt
-         qxpVcrzqTQbjix0L6vRbvbRSO/gOTBQidS81ZqMzbqtqzFUH1C52PGu4Ow+9/UhwpDIA
-         Dmvw==
+        b=aGtXOeo3eAxTTeyU+17QZRSNnbDls8Gcn2zc7mrHRdMZ+/OekNcKKI/jvhT1/MQ86k
+         JFxaZDjLvMMv1/HzLnZkoAJ8KzOkecteR3bG0ClN7feXLlbFRTw5D0fJbj36qqGLnQnd
+         +uTBLUXQnIplpuu9CuvvSoqc0O0SJWAHZm76NFODo3xN0UXfiDjrIWlUItc4Wf72HQn9
+         TDJ6aDxZMz0rgh3hukgfBxL9hfBiU85L2GebdhPUhTrNZE4YZ4J52zp/Y8KJ3ubEnI0H
+         0EDywk6q/O3gjuVt5GMVUc5HRJYM+NddR76Jcpmq6yBQNxvBYmJ90qOfV1eSAbpxupnN
+         zYsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=2nmvqxb5K1T0QyhW+IbRz/1RapRIJw9IdZYlfdzCsVE=;
-        b=ThM0QyDjr05q9fu8viFGQRILHVk4x1Gxvo0V2Xm2CXemVDwpo+y2rlPKImWqfmafL1
-         hamZ9pHX7vaTLfTqxsymPsvinBxfXjM3+K0EDwGKb2iX4+UhOBxDz6QYKJZLUVvxdxNC
-         P3qGmreCCHVL5l70OtRqNPmmB8k58dAGQaE04WqJ3Jl5pcCQ3AzYvO/6qAJTpEDSqV5n
-         /v6pDzkPoSZDVquNxd8IB3EzhSgCf8Pn/iVd/dbKIB3mf1rjgRY4QAYLOz9nsGeQSUC8
-         GAK9Rj3/HxW9vaqIBjsJ1+Y0/vwez3wPDqhTlQmnQHseW8lYeP7QY0xJ0nltGFNIJcu6
-         2mDQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=3JSWxjyFxtH4+41BNajRkFlMPO9cjzBOQilGHue7INI=;
+        b=lgoAHcyDrHXQ5TFM+d+2g48M8mcnzdSauJGkd/EKRJeitchI+uekguzRMZIxXAIgaT
+         73XgcRwGoV/TaH2jiMcWlrcfqMS3NlWgpEbWJhXkewneCD31v5x3M9XaYqAPD5GWuqpC
+         x68lGSHf1sdecdFBWBTVgQcfqlwyNql/QXkq4WK+ZOaovENdtOYsPBOdqF4fDzvKuwcc
+         NAYIOh2z8BdKXnmVESzgURFun8GQcn0Jx2szXnP6L7QCWhwiWk9yjZoWoYHd7TDzF7qO
+         x43fKZ+ji9ijapBrErEwfZyW5dc6lcpWzmpVh45bG6geMChZWAT+Biennpc0xBmvrc2D
+         sjKg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=f7euSgHt;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::329 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-ot1-x329.google.com (mail-ot1-x329.google.com. [2607:f8b0:4864:20::329])
-        by gmr-mx.google.com with ESMTPS id b81-v6si526698itb.1.2018.10.15.02.10.36
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 202-v6si400306wmo.1.2018.10.15.02.03.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 15 Oct 2018 02:10:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::329 as permitted sender) client-ip=2607:f8b0:4864:20::329;
+        Mon, 15 Oct 2018 02:03:32 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=f7euSgHt;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::329 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ot1-x329.google.com with SMTP id x4so16788216otg.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 15 Oct 2018 02:10:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=2nmvqxb5K1T0QyhW+IbRz/1RapRIJw9IdZYlfdzCsVE=;
-        b=f7euSgHtxuAl0RFsTHq/V5HoA9DA2Y7OcU/x+l/Jpl7aG+GnKYLM7laRXbvy+Vtyfc
-         4Vsx/JFQ2gJ+G6fDopdwcELE/uMynbc1ZavAeJndQXnG0fekjc9oCr1ZaAdU1rZNXFIM
-         20COtBW+WJyl6oFUn+ARU4iNNmFkyYKiKQ05mXBB1He8XH/x3zGo3Zg/fg6jGLS2oi9T
-         zatcMu59cwaYQL5Sar2QEb4/50bJFWPtfW5LjdnKTI3mZFOesbZg6qhtiq1pVAE/g0P/
-         y36JuwEmT5hSkpq85TFFYDrpB8VZU6FAQGAQNgHvNoJmtafB3U+Ht9VqD3MHGQIoGBwu
-         RyaA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=2nmvqxb5K1T0QyhW+IbRz/1RapRIJw9IdZYlfdzCsVE=;
-        b=GcfGsI+IcuZYVfVTPprRjST7yIP939rHPxFfSPkYE3AeYzPRecxeGMMEEqIq5Pm4z5
-         ED/UmLOs1IoM9eVQM2x10G/OkMRS1TQejp/iAR5PeXGHR3QvPb+5y0Q/71UbZyGXNhHv
-         QAFHuNizY8s1qC4WYTEy6BEdKbbteSYfG0DRuacAcDujOUZDwaPZD2mF3ru/qc9pBohF
-         LuJCKSEbwFFOuAaQM/r+0qH5NG1D6kiL97kyDTkzU/2ZysoDIsMo4Q92ZwDkjH5TjcLP
-         lHdAyTv5yd+MB1IiVyJBk1xhjttEj4yGJtbh+H3RkNy1y5UqEeuRK0oNVZflyJylTYVR
-         0gjg==
-X-Gm-Message-State: ABuFfoh1WjdEcFvut4tEelxAVMpT1Nb9z7G86XLLqn8lB95/eJvJ2lBq
-	rCyJgLz2BHDLzijLH1IApt4KNGWE4QQKGjT7xs4=
-X-Received: by 2002:a9d:ec:: with SMTP id 41mr9973100otk.322.1539594636279;
- Mon, 15 Oct 2018 02:10:36 -0700 (PDT)
-MIME-Version: 1.0
-References: <20181015090009.GA16087@aakashd-VirtualBox> <alpine.DEB.2.20.1810151102530.3442@hadrien>
-In-Reply-To: <alpine.DEB.2.20.1810151102530.3442@hadrien>
-From: Bhanusree Mahesh <bhanusreemahesh@gmail.com>
-Date: Mon, 15 Oct 2018 14:39:15 +0530
-Message-ID: <CAB0Mk-NLreRzM7b34iCJ3KGMdM=dNZLiPvmyn+cWfrR6Z2+HYA@mail.gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.54,384,1534802400"; 
+   d="scan'208";a="351124780"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 15 Oct 2018 11:03:32 +0200
+Date: Mon, 15 Oct 2018 11:03:28 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Bhanusree Pola <bhanusreemahesh@gmail.com>
+cc: outreachy-kernel@googlegroups.com, Eric Anholt <eric@anholt.net>, 
+    Stefan Wahren <stefan.wahren@i2se.com>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, 
+    Scott Branden <sbranden@broadcom.com>, 
+    bcm-kernel-feedback-list@broadcom.com
 Subject: Re: [Outreachy kernel] [Outreachy Kernel][PATCH v2] staging:
  bcm2835-camera: Remove 'ret' variable
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: outreachy-kernel@googlegroups.com, Eric Anholt <eric@anholt.net>, 
-	Stefan Wahren <stefan.wahren@i2se.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, bcm-kernel-feedback-list@broadcom.com
-Content-Type: text/plain; charset="UTF-8"
-
-On Mon, 15 Oct 2018 at 14:33, Julia Lawall <julia.lawall@lip6.fr> wrote:
->
->
->
-> On Mon, 15 Oct 2018, Bhanusree Pola wrote:
->
-> Coccinelli -> Coccinelle :)
-
-Should i mention this ?
+In-Reply-To: <20181015090009.GA16087@aakashd-VirtualBox>
+Message-ID: <alpine.DEB.2.20.1810151102530.3442@hadrien>
+References: <20181015090009.GA16087@aakashd-VirtualBox>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
 
-> Mention that you removed the now useless variable ret by hand.
-Should I mention that i have modified the file by myself and
-Coccinelle did not generate it ?
+
+On Mon, 15 Oct 2018, Bhanusree Pola wrote:
+
+> Return value to be returned without using extra variable 'ret'.
+> Generated by Cocinelli semantic patch ret.cocci
+
+Coccinelli -> Coccinelle :)
+
+> The following is the ret.cocci semantic patch used:
+>
+> @@
+> local idexpression ret;
+> expression e;
+> @@
+>
+> -ret =
+> +return
+>      e;
+> -return ret;
+
+Mention that you removed the now useless variable ret by hand.
+
+julia
+
+> Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+> ---
+> changelog:
+>
+> v2: Include semantic patch used in the commit message
+>
+>  drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
+> index c04bdf0..a124f51 100644
+> --- a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
+> +++ b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
+> @@ -1510,7 +1510,6 @@ static int set_camera_parameters(struct vchiq_mmal_instance *instance,
+>  				 struct vchiq_mmal_component *camera,
+>  				 struct bm2835_mmal_dev *dev)
+>  {
+> -	int ret;
+>  	struct mmal_parameter_camera_config cam_config = {
+>  		.max_stills_w = dev->max_width,
+>  		.max_stills_h = dev->max_height,
+> @@ -1526,10 +1525,9 @@ static int set_camera_parameters(struct vchiq_mmal_instance *instance,
+>  		.use_stc_timestamp = MMAL_PARAM_TIMESTAMP_MODE_RAW_STC
+>  	};
+>
+> -	ret = vchiq_mmal_port_parameter_set(instance, &camera->control,
+> +	return vchiq_mmal_port_parameter_set(instance, &camera->control,
+>  					    MMAL_PARAMETER_CAMERA_CONFIG,
+>  					    &cam_config, sizeof(cam_config));
+> -	return ret;
+>  }
+>
+>  #define MAX_SUPPORTED_ENCODINGS 20
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20181015090009.GA16087%40aakashd-VirtualBox.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
