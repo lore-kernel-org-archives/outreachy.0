@@ -1,119 +1,90 @@
 X-GM-THRID: 6612972487393148928
-X-Received: by 2002:a9d:119b:: with SMTP id v27mr21341557otf.73.1539788306902;
-        Wed, 17 Oct 2018 07:58:26 -0700 (PDT)
+X-Received: by 2002:a1c:9902:: with SMTP id b2-v6mr285384wme.4.1539787795574;
+        Wed, 17 Oct 2018 07:49:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:2947:: with SMTP id d65ls14130732otb.13.gmail; Wed, 17
- Oct 2018 07:58:26 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV63Rft6ssp8oWk1TP+MbTvldtppITGmNQhm/DPs0YDHNi7kab8QoGo/YmZDCzapul/WRg6Y5
-X-Received: by 2002:a9d:411c:: with SMTP id o28mr20184044ote.66.1539788306007;
-        Wed, 17 Oct 2018 07:58:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539788305; cv=none;
+Received: by 2002:adf:f183:: with SMTP id h3-v6ls3294700wro.23.gmail; Wed, 17
+ Oct 2018 07:49:54 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV600Dx1YFUDiDl8V8/TlKxsv29T/em8y2O48kyLd/UzoSRrqnbYSUw6UfJd9ibpydV6CKPSO
+X-Received: by 2002:a5d:5287:: with SMTP id c7-v6mr2376965wrv.14.1539787794535;
+        Wed, 17 Oct 2018 07:49:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539787794; cv=none;
         d=google.com; s=arc-20160816;
-        b=P5z9+YpWQEiTXvfTQw42M0egiGGC6aQ03OvXDbuxXo0iBoBDBEEoowSY8Pr3f1DLL7
-         WpAMtI4SoAql4fyzNECuVrzFy1WVc3BhQhtw5cYUp5p3TTO6MDcCD8t3es83wZ6ShG2Q
-         4P+/bYsTBmF0Mqg7mfG76pAWqSDhzeid8ItVhdMEiaBRWqe0AK1B7pBNCXgUGeS/nt2i
-         Xsz3NEJtWWSEmFrF5f7aqcIzq30yX9sGwjthjLReozDDjk6MveMBWzQbq9dHPuH38mte
-         C6bhDT+317T/vHOotX5qFsVQAS9EbBIH7fxFli1Y0YNrEyrWrED3lFLccYSXqI8Vfae+
-         nxnQ==
+        b=Ukp8JdBu5tgAEKUCWGlKB8/6i4agJPrdgbwAEAveflKK+DyWoDnWINbdqPhEHluZpH
+         YaCR/Ays8jZAAT6MtdZ4pXq2TEFw87vR8G03XVb3FEKdzbrYKZ+0tXON4NxsZjvqrLvq
+         /wxTmatoUlqLEe7B+HCyKYVzBHUEFy4F15hLX8nNHraq9n2rySVAl0u0xG0copt93aZI
+         nSOCCYTEi1lGeuD6gFp+vhK+MU3hYITxC3wwsir+VleOAaOuHk5AklKeazaJHSOGOUzz
+         +H+YZxRULwQeWwGmqUWM4F+10uYBo5B5egCWVWbeYpp/ShH6X4BE1vAPQhtUFc+natlr
+         0rUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=MdiAtzhZ1B2Yf0Zq0AObTI7jcD1hwPM0Z0G5zt2LZFQ=;
-        b=vdvz/kiDV12Fkw7mXPxgaKrxgNb1VTDmH/4YQEzw4Mr3FWDQjGrtCaZGkyU3PI2dS0
-         NiM5PxgpuZDbjl7DLUHpoWI3oZRx878qqIK+S1/Hs1k7DysUsDJwsvESxht/ypjDonBE
-         E/yUZREPHCdCJptmyimU8Rwt09V0IjbI6mxNCZedB3CTWwKfFbIITk8TSAGeCpfReHH8
-         syEdnIA9GD6vmzLjtvsfG+KGFZwFWsB4HRzc309XBLDpDZNM2BppTwehXunV6Kbn1BPk
-         tsDb1+8UARl5CAPDam2spLB9HuQAszE7VRaaojtx4rJpVFAP0m5738jDGXmsXJr9/xLf
-         yGqw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject;
+        bh=lt22cRlZrEYSgbkEbt0lpeGO9pw8OH3WjeyGTxgR464=;
+        b=kMlg0irobz7Bpu7jAIoJ+QPN9KT00gfB+eCA3VerptFZGVAIDJERIfuQUiHOysCnrS
+         35+02QGSuU7QEnsNGCIGxCmQIfgCRmSAjgXcWRFebUcm/KfEJgAOzWYKaAMLIBNMFoNO
+         xFGgbe2wUeaY9uptjvRFHOrKPRV5pomQFfiOFG25d/k/586QtNQNsZQie87liRAyIbRE
+         R4sTKMSLo7qSTXA3QwBz1asatQFtnF3L0kkcxDznKqWMRrEpCv35xx+msn+rkchl8qiS
+         SdVsdN/r1igAMp10V+jvCBI8+Qgiy9exs/rarmdv5sbHiFu6PjalubcYSXEOAGei9LHf
+         B5mQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=TZFWlteU;
-       spf=pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=sashal@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <sashal@kernel.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id x7si1083367oth.4.2018.10.17.07.58.25
+       spf=neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) smtp.mailfrom=lars@metafoo.de
+Return-Path: <lars@metafoo.de>
+Received: from www381.your-server.de (www381.your-server.de. [78.46.137.84])
+        by gmr-mx.google.com with ESMTPS id 204-v6si101205wmw.3.2018.10.17.07.49.54
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 17 Oct 2018 07:58:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 17 Oct 2018 07:49:54 -0700 (PDT)
+Received-SPF: neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) client-ip=78.46.137.84;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=TZFWlteU;
-       spf=pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=sashal@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from localhost (c-73-47-72-35.hsd1.nh.comcast.net [73.47.72.35])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id CA3AC2150F;
-	Wed, 17 Oct 2018 14:58:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1539788305;
-	bh=1YNBN0SBWtjodADNrh/Kwtb41xdMAGI2MpXJSkEap6o=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=TZFWlteUkWITpyDZU2IwBZ2aRRrwFp7ZNwmaltmc7Kengrsz4vJDF5HVpWNe6jxXT
-	 KBbau5+0dnNLhDC3Wrb+45vFdtm9DNyYIpKDO5J3RxyxMwrvCqJQMEJ69b0eB8aMKO
-	 5L1kiiXD2k4X7Pt8X7ZzmI1nuXxqXl+V7CzqqnwQ=
-Date: Wed, 17 Oct 2018 10:58:23 -0400
-From: Sasha Levin <sashal@kernel.org>
-To: Nishad Kamdar <nishadkamdar@gmail.com>
-Cc: Lars-Peter Clausen <lars@metafoo.de>,
-	Michael Hennerich <Michael.Hennerich@analog.com>,
-	Jonathan Cameron <jic23@kernel.org>,
-	Hartmut Knaack <knaack.h@gmx.de>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+       spf=neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) smtp.mailfrom=lars@metafoo.de
+Received: from [78.46.172.2] (helo=sslproxy05.your-server.de)
+	by www381.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
+	(Exim 4.89_1)
+	(envelope-from <lars@metafoo.de>)
+	id 1gCn8u-00072d-1Y; Wed, 17 Oct 2018 16:49:48 +0200
+Received: from eisbaer.ursus-maritimus.org ([78.47.220.141] helo=[127.0.0.1])
+	by sslproxy05.your-server.de with esmtpsa (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256)
+	(Exim 4.89)
+	(envelope-from <lars@metafoo.de>)
+	id 1gCn8s-0003ey-Kj; Wed, 17 Oct 2018 16:49:47 +0200
 Subject: Re: [PATCH v2] staging: iio: ad7816: Switch to the gpio descriptor
  interface
-Message-ID: <20181017145823.GC135013@sasha-vm>
+To: Nishad Kamdar <nishadkamdar@gmail.com>
+Cc: Michael Hennerich <Michael.Hennerich@analog.com>,
+ Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>,
+ Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-iio@vger.kernel.org,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ outreachy-kernel@googlegroups.com
 References: <20181017144716.GA11485@nishad>
+From: Lars-Peter Clausen <lars@metafoo.de>
+Message-ID: <5b077abc-e3c2-6183-4341-627d6edf09ee@metafoo.de>
+Date: Wed, 17 Oct 2018 16:49:42 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.9.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii; format=flowed
-Content-Disposition: inline
 In-Reply-To: <20181017144716.GA11485@nishad>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Authenticated-Sender: lars@metafoo.de
+X-Virus-Scanned: Clear (ClamAV 0.100.1/25045/Wed Oct 17 14:59:46 2018)
 
-On Wed, Oct 17, 2018 at 08:17:20PM +0530, Nishad Kamdar wrote:
->+	chip->rdwr_pin = devm_gpiod_get(&spi_dev->dev, "rdwr", GPIOD_IN);
->+	if (IS_ERR(chip->rdwr_pin)) {
->+		ret = PTR_ERR(chip->rdwr_pin);
->+		dev_err(&spi_dev->dev, "Failed to request rdwr GPIO: %d\n",
->+			ret);
-> 		return ret;
-> 	}
->-	gpio_direction_input(chip->rdwr_pin);
->-	ret = devm_gpio_request(&spi_dev->dev, chip->convert_pin,
->-				spi_get_device_id(spi_dev)->name);
->-	if (ret) {
->-		dev_err(&spi_dev->dev, "Fail to request convert gpio PIN %d.\n",
->-			chip->convert_pin);
->+	chip->convert_pin = devm_gpiod_get(&spi_dev->dev, "convert", GPIOD_IN);
->+	if (IS_ERR(chip->convert_pin)) {
->+		ret = PTR_ERR(chip->convert_pin);
->+		dev_err(&spi_dev->dev, "Failed to request convert GPIO: %d\n",
->+			ret);
-> 		return ret;
-> 	}
->-	gpio_direction_input(chip->convert_pin);
->-	ret = devm_gpio_request(&spi_dev->dev, chip->busy_pin,
->-				spi_get_device_id(spi_dev)->name);
->-	if (ret) {
->-		dev_err(&spi_dev->dev, "Fail to request busy gpio PIN %d.\n",
->-			chip->busy_pin);
->+	chip->busy_pin = devm_gpiod_get(&spi_dev->dev, "busy", GPIOD_IN);
->+	if (IS_ERR(chip->busy_pin)) {
->+		ret = PTR_ERR(chip->busy_pin);
->+		dev_err(&spi_dev->dev, "Failed to request busy GPIO: %d\n",
->+			ret);
-> 		return ret;
-> 	}
+On 10/17/2018 04:47 PM, Nishad Kamdar wrote:
+> Use the gpiod interface for rdwr_pin, convert_pin and busy_pin
+> instead of the deprecated old non-descriptor interface.
+> 
+> Signed-off-by: Nishad Kamdar <nishadkamdar@gmail.com>
 
-Hm, from what I can tell devm_gpio_request() is allocating some memory,
-which makes this a series of 4 allocations.
+Acked-by: Lars-Peter Clausen <lars@metafoo.de>
 
-What happens if the fourth allocation fails? Do we leak the first three?
+Thanks.
 
---
-Thanks,
-Sasha
+> ---
+> Changes in v2:
+>  - Correct the error messages as pin number being showed
+>    has now been replaced by error code.
+> ---
+>  drivers/staging/iio/adc/ad7816.c | 80 ++++++++++++++------------------
+>  1 file changed, 34 insertions(+), 46 deletions(-)
+> 
 
