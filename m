@@ -1,83 +1,83 @@
 X-GM-THRID: 6612972487393148928
-X-Received: by 2002:ae9:e8c2:: with SMTP id a185-v6mr20497368qkg.22.1539788374973;
+X-Received: by 2002:aca:cf87:: with SMTP id f129-v6mr22211416oig.36.1539788374898;
         Wed, 17 Oct 2018 07:59:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:60c:: with SMTP id 12-v6ls10619943qkg.9.gmail; Wed, 17
+Received: by 2002:aca:bdc6:: with SMTP id n189-v6ls3840852oif.9.gmail; Wed, 17
  Oct 2018 07:59:34 -0700 (PDT)
-X-Received: by 2002:ae9:c00b:: with SMTP id u11-v6mr8521046qkk.53.1539788374409;
+X-Received: by 2002:aca:e705:: with SMTP id e5-v6mr22913867oih.35.1539788374499;
         Wed, 17 Oct 2018 07:59:34 -0700 (PDT)
-Received: by 2002:a37:4890:0:0:0:0:0 with SMTP id v138-v6msqka;
-        Tue, 16 Oct 2018 07:46:36 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV624PrMVNxbEMNqMWtQiL72HC+945lg1aIDY8SdLc20GOxdca29MXBCbFV1jE445ySlM2jGQ
-X-Received: by 2002:a0c:943c:: with SMTP id h57mr17803217qvh.61.1539701195932;
-        Tue, 16 Oct 2018 07:46:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539701195; cv=none;
+Received: by 2002:aca:f188:0:0:0:0:0 with SMTP id p130-v6msoih;
+        Wed, 17 Oct 2018 07:47:28 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62wJ9dChj9vMwYFbAmAuLqmFoTPSzNMgVCiI7bNY0+OsHs5UqJ+r4bao8J9UmeL/1sWJd6G
+X-Received: by 2002:a62:105c:: with SMTP id y89-v6mr13216360pfi.58.1539787648610;
+        Wed, 17 Oct 2018 07:47:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539787648; cv=none;
         d=google.com; s=arc-20160816;
-        b=K5uPob38o/3e7DW0tuBUtn5weTjbtMW/tkjzhp7N/qIxIhHUQ/+FJrbgt8wMrH9Vgr
-         wDndMX0rD/At6g//sBlEWfH5LKXt+dxa60lv8Brs5XIH4zmDqOuFWp5GrKqCN5qURG8L
-         uLK0aAHj6I1gOVVbm5Hqr2zN7O9rkfugUvRMZBFa/3rHMdhe9/EjWnUZeMWSqFupI2O/
-         uQO6/SqDqHGy8fBW66GSomuYosriMdhXn87BHbH1jO9EKWSDEv2TQRqdlOkhoYYfxFtu
-         X6SOxY0oNCKmzE34hVUqSsXYcREqUlhgiKEQD1gEliWluXRRJnxBu1s6eXBGPtCMNedN
-         6Wkg==
+        b=xcl9t9qB4iakIw/F8HUYiHxSYzl0ITZnU4yRCn7qCo1bHU3Aq3YrLcY4zGch7SD36l
+         Xa8Mi4qMdwhgLok7d7YUgM9keoeH16g4ATwb55Wyogz+lt1krlEmLgPWoTQPP4uvsiC0
+         Bv+J6Il02y8JxpKEZG8+0lcld29TuKsVm98rOt0CJnU51wIEpkc1O/08R5oIkk4hdQrx
+         dq0FLIbKU70Xp4btjDm040oqNnlq7jpBmWIb/+4VtPZal/P5tTf8dL6MLPTSJfYdCyKX
+         9SsiaZ+AnvbtczJXfTsAkowces9mKfdymX4jVbxYTNC5qmpJnBp6CxdyJEOcZsCvnKBa
+         QRCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:content-disposition:mime-version:message-id:subject:cc
          :to:from:date:dkim-signature;
-        bh=SZZEzm89nUQYCZIMdozLX5yhM1cilHIoym83KXh9g1U=;
-        b=OwBikOzfNaFVnXsLh2i+qs/fSf5g57gkatmr/seQR3jj+kVQvJPErO0ptwkx4gDrWa
-         3Br+bHQZNDldxqS4J8OB/s1Gwlqk0vMEtxUc62oR9HCv7Z3AmhnyXMSOfWnXBXheMCrs
-         U54sQDfnL5jGP5mEk4uN6bBqRMni9fNdZZXoCpjXTGJqL4JMR9HvjcJZhkAKZnSSnTEC
-         59syuT6eJPnaw4UNYJ1pmc8Ik9aWX0a+cwEYRf2YvSDo/vgc3RMYJd9gNrCDGifCHWkB
-         IlsR8RW3zwCrCiFK+oAUmLpnnzxiI3nFVzJxot2XWo+f0Mlkkw3ZHLmCRe0booaCwIE7
-         JX7A==
+        bh=tUUvdP4UNgmpZkA6UF7VLCkX7XSiVsFjtHhMwBS+X4U=;
+        b=Iigs0fZy3yEYpwltGt+IVrD/QLo8g6XcJEMOOx+7LFNPXQCNnh7LXLxlPns5ozivVm
+         l7d/gICBkZD/NY3D1CoiI3hhtpCRZV81NOgOZViqeiNc9d0vGhEnwJXbdrtTZNetJJbv
+         Ni1YcFERPqP2kY08TWZLNvWSDC9SQI7AGdYWa8LmAIoIstNMzF2ECWnrutwZoYuBc3rZ
+         xUwJuWNqyVYRsHmJCY63uO+Fa5K15kIdHvIlXze3UBTmbaAinAQEdjL9Be4VwqfwtUaA
+         L7xwQhoLLmLDxVbP7o6Y6QasRhsfaQzwKFwUIg8ilccVuLjomTf/tNx3XWUKC67IN+hJ
+         SOjw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YLKfNX93;
-       spf=pass (google.com: domain of nishadkamdar@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=nishadkamdar@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=F233+fIx;
+       spf=pass (google.com: domain of nishadkamdar@gmail.com designates 2607:f8b0:4864:20::429 as permitted sender) smtp.mailfrom=nishadkamdar@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <nishadkamdar@gmail.com>
-Received: from mail-pg1-x543.google.com (mail-pg1-x543.google.com. [2607:f8b0:4864:20::543])
-        by gmr-mx.google.com with ESMTPS id x41-v6si730974qth.2.2018.10.16.07.46.35
+Received: from mail-pf1-x429.google.com (mail-pf1-x429.google.com. [2607:f8b0:4864:20::429])
+        by gmr-mx.google.com with ESMTPS id b84-v6si746032pfc.0.2018.10.17.07.47.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 16 Oct 2018 07:46:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishadkamdar@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) client-ip=2607:f8b0:4864:20::543;
+        Wed, 17 Oct 2018 07:47:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nishadkamdar@gmail.com designates 2607:f8b0:4864:20::429 as permitted sender) client-ip=2607:f8b0:4864:20::429;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YLKfNX93;
-       spf=pass (google.com: domain of nishadkamdar@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=nishadkamdar@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=F233+fIx;
+       spf=pass (google.com: domain of nishadkamdar@gmail.com designates 2607:f8b0:4864:20::429 as permitted sender) smtp.mailfrom=nishadkamdar@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x543.google.com with SMTP id g2-v6so10951646pgu.11
-        for <outreachy-kernel@googlegroups.com>; Tue, 16 Oct 2018 07:46:35 -0700 (PDT)
+Received: by mail-pf1-x429.google.com with SMTP id r9-v6so13305734pff.11
+        for <outreachy-kernel@googlegroups.com>; Wed, 17 Oct 2018 07:47:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=SZZEzm89nUQYCZIMdozLX5yhM1cilHIoym83KXh9g1U=;
-        b=YLKfNX93ypOxOhED1Qthu0CAvblmwfBelOC5Lfeb3YiK65TvFdTeQerATwZYbYNAwh
-         lEaSNnik7ocSrJya5HtruL9Z+RJ4GI7lP2ODBRl4wIHIPw5QNLspkEvgpeegAWIC4Qls
-         cFTxBhxC04jdypypm7MA+eFN3tSK5SfsIZjOnRogj4up2KfTnQNeq7SmjXz5EzOk1vum
-         g087R7XYfXwcnHkNzVbCZspMKBy7otx39/D7qHg3FzaaF04hFMy9qxmoLjolg14C8gNf
-         voo/Y7h0BBQhJXF7YB/92/JxxVUi77axvEm0c5HAO1aB8cRIdgsO7tuYgSHHOdCXJdRH
-         k2bw==
+        bh=tUUvdP4UNgmpZkA6UF7VLCkX7XSiVsFjtHhMwBS+X4U=;
+        b=F233+fIxRzY7jwfjKzUuaWjvzx7uwxFcZLa5zbncnuKL/IElvgFk2kAb5b6izxGoUd
+         0+Jc/EbPu0bzFR0U5habCUvrhEDpUpWUXdl0ovjP4GjtYJDmzDQpNNpidzvCyUFLDFEO
+         Hj/CCCrPKXC1e4ule4KiUjVU44Rrt/y3oEQ0Ygon3s7uLKvSQZ/ZWGns1ixLuGond+HU
+         29FWCgYxJg1HldMLtbZT7HAnjfBmyBhi547h3RZxBjPUT8zSgKLEJtC0BeFH62xRhKsH
+         YdCSbQrKqpI77IdCoZa1zEcxALGa1EpyR3X/A7vq0aJhsvB8P07IQhAxmbHQIDSq1cK9
+         cWFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=SZZEzm89nUQYCZIMdozLX5yhM1cilHIoym83KXh9g1U=;
-        b=VtjqJEyOHxJmXsQp2ZxLBeTP0jHTSImOe55PoF3Up0QOZ7Cg9h9JYPlo9vWB1BAVTM
-         43Z3L8uF+8wl9QLCnggJrnfGXXQuhZrZjNAY+LjIkHRCqqUMsrb2N9gz8xY97cmwN+Wt
-         0V6BNhqUb++6HXJ+z4FiXWad28MuOyy3tlFLAFkTqerAA4luAt37dufTpYPru/Q35wkw
-         /Y5yhvYInGw0zc4DbTNq+C8ZZ7XtPrvGrG9lw3pNxomFzmTnya6y/13qIZfIGl4wPhJz
-         BT79bUjE7K/oh4ehsKI+uVs8uR/k3RNg4Cg4Je62t4xnp8wLLQ/qrZ2TptGNPBn1ALNi
-         SyAA==
-X-Gm-Message-State: ABuFfoj8JuSmIahkl3ardmtltKrWCfxJgUatFRb0SbcXL2WDDcr5Gnnt
-	pv4Ikw0qnIYeUkNeTAObxR0M5fQIPWKjhg==
-X-Received: by 2002:a63:9712:: with SMTP id n18-v6mr20848352pge.182.1539701194878;
-        Tue, 16 Oct 2018 07:46:34 -0700 (PDT)
+        bh=tUUvdP4UNgmpZkA6UF7VLCkX7XSiVsFjtHhMwBS+X4U=;
+        b=YAJuaPjsbA7zg4N8wUFcjZvv6VsxW/3Km55W2cRKeE86lW5nW8YHb/PNYREfvNR4u6
+         CI+9rDVFg3lYkszgvut6NAhaOQ43VukMdgNj0J79K9mPser3jlbrtWVIPFF0uKQdtoc4
+         P2zz0AOqotQcl4VCT7vpEcgJFiLms6ED+2mYpRQUVy4GaFD7c++7OuUq7eHoJkSO5Zaj
+         D21gIKXEikekl8WgYQz7VA5Tc/KsqFh4tqjOR1N4t4Oy+auvaaSpFr6gSrNDR+q/2Sh/
+         konvHZDsrjv7yuqg9Rvd0beMpwNn9ouUZ02o1KV8s1V2T0rD4dL7QbwBrDTjAu22ENeP
+         T7Fg==
+X-Gm-Message-State: ABuFfoif17L84sH4likpbOClvssFtaB7Rmr1ozubZbZ/af6GdzJsgDgR
+	8lhZyA7wP2Cx5iofyUO3JHA=
+X-Received: by 2002:a63:9a19:: with SMTP id o25-v6mr24716730pge.440.1539787648256;
+        Wed, 17 Oct 2018 07:47:28 -0700 (PDT)
 Return-Path: <nishadkamdar@gmail.com>
 Received: from nishad ([106.51.27.228])
-        by smtp.gmail.com with ESMTPSA id c8-v6sm16944694pfi.142.2018.10.16.07.46.30
+        by smtp.gmail.com with ESMTPSA id u77-v6sm30763963pfj.40.2018.10.17.07.47.24
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Oct 2018 07:46:34 -0700 (PDT)
-Date: Tue, 16 Oct 2018 20:16:27 +0530
+        Wed, 17 Oct 2018 07:47:27 -0700 (PDT)
+Date: Wed, 17 Oct 2018 20:17:20 +0530
 From: Nishad Kamdar <nishadkamdar@gmail.com>
 To: Lars-Peter Clausen <lars@metafoo.de>
 Cc: Michael Hennerich <Michael.Hennerich@analog.com>,
@@ -87,8 +87,9 @@ Cc: Michael Hennerich <Michael.Hennerich@analog.com>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: iio: ad7816: Switch to the gpio descriptor interface
-Message-ID: <20181016144623.GA9890@nishad>
+Subject: [PATCH v2] staging: iio: ad7816: Switch to the gpio descriptor
+ interface
+Message-ID: <20181017144716.GA11485@nishad>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -99,11 +100,15 @@ instead of the deprecated old non-descriptor interface.
 
 Signed-off-by: Nishad Kamdar <nishadkamdar@gmail.com>
 ---
- drivers/staging/iio/adc/ad7816.c | 72 +++++++++++++-------------------
- 1 file changed, 30 insertions(+), 42 deletions(-)
+Changes in v2:
+ - Correct the error messages as pin number being showed
+   has now been replaced by error code.
+---
+ drivers/staging/iio/adc/ad7816.c | 80 ++++++++++++++------------------
+ 1 file changed, 34 insertions(+), 46 deletions(-)
 
 diff --git a/drivers/staging/iio/adc/ad7816.c b/drivers/staging/iio/adc/ad7816.c
-index bf76a8620bdb..190b751af866 100644
+index bf76a8620bdb..12c4e0ab4713 100644
 --- a/drivers/staging/iio/adc/ad7816.c
 +++ b/drivers/staging/iio/adc/ad7816.c
 @@ -7,7 +7,7 @@
@@ -214,15 +219,17 @@ index bf76a8620bdb..190b751af866 100644
 -	chip->rdwr_pin = pins[0];
 -	chip->convert_pin = pins[1];
 -	chip->busy_pin = pins[2];
- 
+-
 -	ret = devm_gpio_request(&spi_dev->dev, chip->rdwr_pin,
 -				spi_get_device_id(spi_dev)->name);
 -	if (ret) {
+-		dev_err(&spi_dev->dev, "Fail to request rdwr gpio PIN %d.\n",
+-			chip->rdwr_pin);
++
 +	chip->rdwr_pin = devm_gpiod_get(&spi_dev->dev, "rdwr", GPIOD_IN);
 +	if (IS_ERR(chip->rdwr_pin)) {
 +		ret = PTR_ERR(chip->rdwr_pin);
- 		dev_err(&spi_dev->dev, "Fail to request rdwr gpio PIN %d.\n",
--			chip->rdwr_pin);
++		dev_err(&spi_dev->dev, "Failed to request rdwr GPIO: %d\n",
 +			ret);
  		return ret;
  	}
@@ -230,11 +237,12 @@ index bf76a8620bdb..190b751af866 100644
 -	ret = devm_gpio_request(&spi_dev->dev, chip->convert_pin,
 -				spi_get_device_id(spi_dev)->name);
 -	if (ret) {
+-		dev_err(&spi_dev->dev, "Fail to request convert gpio PIN %d.\n",
+-			chip->convert_pin);
 +	chip->convert_pin = devm_gpiod_get(&spi_dev->dev, "convert", GPIOD_IN);
 +	if (IS_ERR(chip->convert_pin)) {
 +		ret = PTR_ERR(chip->convert_pin);
- 		dev_err(&spi_dev->dev, "Fail to request convert gpio PIN %d.\n",
--			chip->convert_pin);
++		dev_err(&spi_dev->dev, "Failed to request convert GPIO: %d\n",
 +			ret);
  		return ret;
  	}
@@ -242,11 +250,12 @@ index bf76a8620bdb..190b751af866 100644
 -	ret = devm_gpio_request(&spi_dev->dev, chip->busy_pin,
 -				spi_get_device_id(spi_dev)->name);
 -	if (ret) {
+-		dev_err(&spi_dev->dev, "Fail to request busy gpio PIN %d.\n",
+-			chip->busy_pin);
 +	chip->busy_pin = devm_gpiod_get(&spi_dev->dev, "busy", GPIOD_IN);
 +	if (IS_ERR(chip->busy_pin)) {
 +		ret = PTR_ERR(chip->busy_pin);
- 		dev_err(&spi_dev->dev, "Fail to request busy gpio PIN %d.\n",
--			chip->busy_pin);
++		dev_err(&spi_dev->dev, "Failed to request busy GPIO: %d\n",
 +			ret);
  		return ret;
  	}
