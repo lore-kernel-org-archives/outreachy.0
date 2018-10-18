@@ -1,135 +1,117 @@
-X-GM-THRID: 6616182090813669376
-X-Received: by 2002:a17:906:c9c2:: with SMTP id hk2-v6mr101629ejb.15.1540449934853;
-        Wed, 24 Oct 2018 23:45:34 -0700 (PDT)
+X-GM-THRID: 6613205640541110272
+X-Received: by 2002:ac8:3432:: with SMTP id u47-v6mr25020996qtb.39.1539888750726;
+        Thu, 18 Oct 2018 11:52:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:69c5:: with SMTP id g5-v6ls1534622ejs.0.gmail; Wed,
- 24 Oct 2018 23:45:34 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5dBuDPl0jL6kDyyacS/ikw/t8GEeCPMi7/JTivGo5aCL+uba+gOmRh1P6Yzm/j59Y+D471h
-X-Received: by 2002:a17:906:25c1:: with SMTP id n1-v6mr103486ejb.12.1540449934106;
-        Wed, 24 Oct 2018 23:45:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540449934; cv=none;
+Received: by 2002:ac8:4408:: with SMTP id j8-v6ls11109867qtn.15.gmail; Thu, 18
+ Oct 2018 11:52:29 -0700 (PDT)
+X-Received: by 2002:ac8:35fa:: with SMTP id l55-v6mr25404978qtb.35.1539888749805;
+        Thu, 18 Oct 2018 11:52:29 -0700 (PDT)
+Received: by 2002:a37:97c7:0:0:0:0:0 with SMTP id z190-v6msqkd;
+        Thu, 18 Oct 2018 11:38:45 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62goI3IpZIPnsTW2xQsBT8t3i38RDUXrABdE9+h0g32QHu93fEY3CGBxSqxbVtx9GVfP+my
+X-Received: by 2002:a1c:b606:: with SMTP id g6-v6mr44410wmf.13.1539887925225;
+        Thu, 18 Oct 2018 11:38:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539887925; cv=none;
         d=google.com; s=arc-20160816;
-        b=j+Bg9efuQdlQwJLNBxbc7C2nOUhmNt/wp9OPC46iRIzkczv7/EEeex5eH6sURbOGbJ
-         j1EZvcK6YddGu+aowaDDr4Xyixwv6J2uUMzlw5tSUPvojphE7IXf99NDX/dE/DFRB0uc
-         J86uHkgTlmZVCkEquRqN8aw4zLfEJlWP52jCg81Hng9iDAxgnmszyDmdg74gzT4/mCUV
-         h6slWU5IrvOqgAKc39ErFg/u2C5brJODgV4u2nGv7jgTgK1fOT90BBKMDzdajmYjfEQ5
-         Y8MELliTwpForX1+47NrFUmV2xLZwedMhAIkRdWt4GbqZZu/M3+s5iB7SlXMwToS+nnN
-         Y/gA==
+        b=O/7tBGgzPUCMPpGF4ULpef1ksmue19jyofPLN5hbl68vCBTZwyCDfvh1FvcBmFVzyl
+         2pZsdR1P84mNj5iM+gS+2alfpLBkfb8pYOuHeF03brG/z3gY7SIscRpQNZJAGGUI5ty6
+         3oOG0Ez99g8IcoYTaR/Jkd7ED10QS/26sSbC+FrzJ0Jx/esBMAE2nlKh7xx2wdLLJRvb
+         04WudEvV06WwFBcnn17ndUZAiIDyDtwkPftm3f59Np0NgxyYKFjWSPq1/VZUWKC59VDY
+         onyXteb9nMe/ij8db7dUcW17cmQR36oLqGhf1RSTGzd8F5G2L4/wYznV1LxgNQT3VcWx
+         x8PQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=M72HlY+576YsFO5V8Pbr0wXWSsNiXk4ZuR0R5AmN1xs=;
-        b=EfMd4fJSK0M2iQithWwQijguRU+LqEosu953pqPxRp2fZoOhPHC3o8deIh66vMBlwd
-         uD8MU0kUBNd3Rmas0yIb7F+Cm57iruZoZyihzQa8pMANLtPd6uvAtNFV3RENPe9XPCQb
-         xNMn8+yZMPN1LTWBRVTDrxRExwm8yHxHwKI4i7ljs82VctmkO/j/lIhSSVB6Atr71DMD
-         ikkVqhIDs6AD/ECmPK+SV8PEOw8TPpB2aULfc8Mc89NTS+JQyXMXZs0xKl043FButI/F
-         68EiJd9tq4JTB5XQl69YOuDwVR0HPT6QePHfjhg1hLTmbdqFp5OHA7qipf0eSzJ24Mhx
-         YAgg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=vXnVhm4qQQP+OlCjdMklIrnj58Hb7/NEuWGjRieHX18=;
+        b=kV611H3LSi//1YhNiJksMBGgzddooRRNBtLtVjAGfQuT9mZ5C7Ie7Jz94tRJeod7b4
+         94MQniIbrEbO3MuTx9mpvSVjOqlRl65tz6xN7UsJV8HBRoCfzzdlIYq/8Bv9V4u0mR8r
+         OVe+OscZt4EgnHyAw0deg+GQQr2BGTTkmy+sk+36sZ36BNQeAD2SJLiEPOy+W3Z8WcLt
+         wYhA6Pp5l4pmQ5lD5MkrrHBt0blefgRydnwfaz0LfwWugUVD0c0HK7SwAMknpq1kKBX7
+         4e9TaRMqsndN69Xt+JtyzJS+NucqkPa8ghIz8Kfqsyo7UJxFA60yCezN8iSidE7rkHPr
+         nMqw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DWxDo4uL;
-       spf=pass (google.com: domain of kim.jamie.bradley@gmail.com designates 2a00:1450:4864:20::331 as permitted sender) smtp.mailfrom=kim.jamie.bradley@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <kim.jamie.bradley@gmail.com>
-Received: from mail-wm1-x331.google.com (mail-wm1-x331.google.com. [2a00:1450:4864:20::331])
-        by gmr-mx.google.com with ESMTPS id m25-v6si158426ejb.1.2018.10.24.23.45.34
+       dkim=pass header.i=@google.com header.s=20161025 header.b=BmIlXILd;
+       spf=pass (google.com: domain of toddpoynor@google.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=toddpoynor@google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <toddpoynor@google.com>
+Received: from mail-wr1-x441.google.com (mail-wr1-x441.google.com. [2a00:1450:4864:20::441])
+        by gmr-mx.google.com with ESMTPS id 191-v6si131109wmv.0.2018.10.18.11.38.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 24 Oct 2018 23:45:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kim.jamie.bradley@gmail.com designates 2a00:1450:4864:20::331 as permitted sender) client-ip=2a00:1450:4864:20::331;
+        Thu, 18 Oct 2018 11:38:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of toddpoynor@google.com designates 2a00:1450:4864:20::441 as permitted sender) client-ip=2a00:1450:4864:20::441;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DWxDo4uL;
-       spf=pass (google.com: domain of kim.jamie.bradley@gmail.com designates 2a00:1450:4864:20::331 as permitted sender) smtp.mailfrom=kim.jamie.bradley@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x331.google.com with SMTP id y144-v6so277468wmd.4
-        for <outreachy-kernel@googlegroups.com>; Wed, 24 Oct 2018 23:45:34 -0700 (PDT)
+       dkim=pass header.i=@google.com header.s=20161025 header.b=BmIlXILd;
+       spf=pass (google.com: domain of toddpoynor@google.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=toddpoynor@google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: by mail-wr1-x441.google.com with SMTP id e4-v6so34792026wrs.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 18 Oct 2018 11:38:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=M72HlY+576YsFO5V8Pbr0wXWSsNiXk4ZuR0R5AmN1xs=;
-        b=DWxDo4uLH0gOi+2L89CMcDxhheNzjCgYlCgtAFJ55YISMOHb65vEVVS6OfC5UsP2cb
-         pRlMHDG7MzdCy+5cQgseWlkwiGJ/pGUpCW/2iuqjzPzkn4y5oS1rSZR63VZ/J6xtnJz4
-         m87mSJedxzbl+6M/kFh3D6e71W2rbTr1FB8rlWda59ZRsH0B+RPCGfnPz5HLk6wQucHa
-         lE3rJvsuEen0buzzS2oeRkuGgPJnLk97q6hPGTHGb5OhW4vkPviUi3XVlyeEMz8ySIAU
-         3+jzFuX62xVoz09xg5KEHvyM8Ul7IM228m52GEI99wGA1ccQ4eOdMyoQPwOBKG93rztb
-         eOag==
+        d=google.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=vXnVhm4qQQP+OlCjdMklIrnj58Hb7/NEuWGjRieHX18=;
+        b=BmIlXILdvE+LmSTHrcL8+USdGvxaSUR3BUP4oSWp9ma8ZQZO+FwXNUV592HY0xxSko
+         BluskP/iBsZ+rrIr6Otr6648G0kJ6iAlzyigziBuRR9kEleNmWW3J5wX5OwaPidsLLUZ
+         AvSpcyOJSp4q9fg2G644f3cE4gFHiwi3nAMAsCifLfV56Getg91rLv5ZCh4I8gSc+3As
+         UjJQmXfXOW1vvIu3gnss5/h8xD8YRNj8YUH7iNF45WUxABXPHaNB5UysOi7FzSdP9dDm
+         m/0BucKzOnanv7wEZGqd5wpSUqF0eA2LB/3wVQK/a6fNVffrc3DQVbcgOP8k6P6kq6Dw
+         XPMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=M72HlY+576YsFO5V8Pbr0wXWSsNiXk4ZuR0R5AmN1xs=;
-        b=MpECZLSsv51XqEEtjPPq3YMX2w8sIpe8vmX+3bvuqikFbOpZ31h9XdHhK7agujLZqi
-         7mzjYl1XMtiKHJ3s/70d0deVd77Q4uP/KhgDLYKeSCLcszsDmVMlyK1hDHAHKv2gQEyG
-         Wyj8msVeAwfCiLNwsUdc2+Ab19dLEch1DjzIHQBXu2gsTXQPBNR0gWhWwPdYVfTs5uWb
-         g7VupD9YMmOBpehPGKUDGhCu1JnDf2iNf9XJxpcvudMlbl5g2enhsMVMVoBCJJ+Kc16L
-         YI6bycSS65AIM7g6WOMjM0iI45gY9wfn9G3h0jVzGHX5cq6iScmv1i7TqeVm4p3mdEaG
-         1f1Q==
-X-Gm-Message-State: AGRZ1gKx25aHLtHAEsPrqKrGTFdvm8Pbsm43WiKFYR8HyMA3G8R1dJz8
-	kd7aO24wHbBrQFL9flrWfVo6fgJdseo=
-X-Received: by 2002:a1c:af07:: with SMTP id y7-v6mr486384wme.12.1540449933454;
-        Wed, 24 Oct 2018 23:45:33 -0700 (PDT)
-Return-Path: <kim.jamie.bradley@gmail.com>
-Received: from xubuntu-vm (host86-167-247-131.range86-167.btcentralplus.com. [86.167.247.131])
-        by smtp.gmail.com with ESMTPSA id 74-v6sm478461wmi.23.2018.10.24.23.45.32
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Oct 2018 23:45:33 -0700 (PDT)
-Date: Thu, 25 Oct 2018 07:45:30 +0100
-From: Kim Bradley <kim.jamie.bradley@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] Staging: rts5208: Fix checkpatch camel-case warning in goto
- statement
-Message-ID: <20181025064527.GA2018@xubuntu-vm>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=vXnVhm4qQQP+OlCjdMklIrnj58Hb7/NEuWGjRieHX18=;
+        b=nRMHg0ipEfpMTdX1iShvyfeB52bM+xHZiissxZFcWegOsY9XJOxJJvAlhdVHIq7zih
+         7ObY/j7krrY9s9p4Ric74790J1Y54JVoR5rgAQGkJcKnh/x/QPzCYDG8wjtkk+Jxy5bE
+         qprAtxuVbi9i2Hny+Mc4b+4J2SfDmfp4GJ7ELqZ8isp2QCqNNVJkb8l556dmdd9GKSFV
+         ChIe6HxKugDU9A9HgMsvRmnQq7cdJHt7bnAieDX4ScO3fVgJ0jViOvInNs/9xZFzvcef
+         EU/ASsiyr8gOHpuCmfCKre4P3n0OLHzuSuHYogpcBw+Di6Nm/pt44uJlWB/922Ihi0cZ
+         GsdQ==
+X-Gm-Message-State: ABuFfojG6NmcQ6kb2v7UYVefvLhCfLb7wrGesa3JkqCa/W+QHRMIEZ3Z
+	myUcCDhI+21U6v6TCc3GTVZrI5Kjs7DqY/q7UcA9TQ==
+X-Received: by 2002:a5d:6883:: with SMTP id h3-v6mr30305332wru.108.1539887924565;
+ Thu, 18 Oct 2018 11:38:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <20181017061519.GA3289@k-vBox>
+In-Reply-To: <20181017061519.GA3289@k-vBox>
+From: Todd Poynor <toddpoynor@google.com>
+Date: Thu, 18 Oct 2018 11:38:32 -0700
+Message-ID: <CAAW3Ypa7Dh7rS6YtgLxCOT1UrCyrPLwe0fAOND=fJuLek+Bc0A@mail.gmail.com>
+Subject: Re: [PATCH] staging: gasket: Remove extra blank line
+To: m.maya.nakamura@gmail.com
+Cc: Rob Springer <rspringer@google.com>, benchan@chromium.org, 
+	Greg KH <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset="UTF-8"
 
-Fix use of camel-case in goto statement and all subsequent uses to
-remove checkpatch warning.
+On Tue, Oct 16, 2018 at 11:15 PM Maya Nakamura
+<m.maya.nakamura@gmail.com> wrote:
+>
+> Remove extra blank line. Issue found by checkpatch.pl.
+>
+> Signed-off-by: Maya Nakamura <m.maya.nakamura@gmail.com>
+> ---
+>  drivers/staging/gasket/apex_driver.c | 1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/drivers/staging/gasket/apex_driver.c b/drivers/staging/gasket/apex_driver.c
+> index 3c7a13a4798e..0578bf1ba1e9 100644
+> --- a/drivers/staging/gasket/apex_driver.c
+> +++ b/drivers/staging/gasket/apex_driver.c
+> @@ -225,7 +225,6 @@ static struct gasket_interrupt_desc apex_interrupts[] = {
+>         },
+>  };
+>
+> -
+>  /* Allows device to enter power save upon driver close(). */
+>  static int allow_power_save = 1;
+>
+> --
+> 2.17.1
+>
 
-Signed-off-by: Kim Bradley <kim.jamie.bradley@gmail.com>
----
- drivers/staging/rts5208/ms.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+Acked-by: Todd Poynor <toddpoynor@google.com>
 
-diff --git a/drivers/staging/rts5208/ms.c b/drivers/staging/rts5208/ms.c
-index a0fcbb83ee8a..9f846e53abec 100644
---- a/drivers/staging/rts5208/ms.c
-+++ b/drivers/staging/rts5208/ms.c
-@@ -4151,7 +4151,7 @@ int mg_set_ICV(struct scsi_cmnd *srb, struct rtsx_chip *chip)
- 		} else {
- 			set_sense_type(chip, lun, SENSE_TYPE_MG_WRITE_ERR);
- 		}
--		goto SetICVFinish;
-+		goto set_ICV_finish;
- 	}
- 
- #ifdef MG_SET_ICV_SLOW
-@@ -4192,7 +4192,7 @@ int mg_set_ICV(struct scsi_cmnd *srb, struct rtsx_chip *chip)
- 					       SENSE_TYPE_MG_WRITE_ERR);
- 			}
- 			retval = STATUS_FAIL;
--			goto SetICVFinish;
-+			goto set_ICV_finish;
- 		}
- 	}
- #else
-@@ -4211,11 +4211,11 @@ int mg_set_ICV(struct scsi_cmnd *srb, struct rtsx_chip *chip)
- 		} else {
- 			set_sense_type(chip, lun, SENSE_TYPE_MG_WRITE_ERR);
- 		}
--		goto SetICVFinish;
-+		goto set_ICV_finish;
- 	}
- #endif
- 
--SetICVFinish:
-+set_ICV_finish:
- 	kfree(buf);
- 	return retval;
- }
--- 
-2.19.1
 
+Thanks!
 
