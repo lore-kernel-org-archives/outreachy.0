@@ -1,93 +1,272 @@
 X-GM-THRID: 6612972487393148928
-X-Received: by 2002:a1c:2355:: with SMTP id j82-v6mr566697wmj.5.1539848439153;
-        Thu, 18 Oct 2018 00:40:39 -0700 (PDT)
+X-Received: by 2002:a25:5457:: with SMTP id i84-v6mr15983511ybb.45.1539847748091;
+        Thu, 18 Oct 2018 00:29:08 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:9645:: with SMTP id y66-v6ls491819wmd.17.gmail; Thu, 18
- Oct 2018 00:40:38 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV60rlUIWhNFGyFtx/gmLTGQU76Im1WkUTp32Us237VUXyCX4W+Ul9cLZqI23I2TQ7LzbDIlk
-X-Received: by 2002:a1c:8681:: with SMTP id i123-v6mr570345wmd.13.1539848438200;
-        Thu, 18 Oct 2018 00:40:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539848438; cv=none;
+Received: by 2002:a25:4206:: with SMTP id p6-v6ls8530666yba.9.gmail; Thu, 18
+ Oct 2018 00:29:07 -0700 (PDT)
+X-Received: by 2002:a25:ab70:: with SMTP id u103-v6mr16746687ybi.22.1539847747551;
+        Thu, 18 Oct 2018 00:29:07 -0700 (PDT)
+Received: by 2002:a81:6cc6:0:0:0:0:0 with SMTP id h189-v6msywc;
+        Thu, 18 Oct 2018 00:28:10 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV601sXmIUJdaHrG8wus7scV+PF/1N3QIT/UqJnoAU3a3h0XASduLj9dmlckSmeA8La4ai5i+
+X-Received: by 2002:a5b:50b:: with SMTP id o11-v6mr12027813ybp.61.1539847690604;
+        Thu, 18 Oct 2018 00:28:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539847690; cv=none;
         d=google.com; s=arc-20160816;
-        b=UxXDYA4LcacRXvzSgZLBjmOZwLNnrZLqomTfCVwZrG0g+bIhJdbQyAR3gaaHpwuWjW
-         byczCHwHXYu46DeAfIR290sB+hluY95xnWpn+AyJuzKVPReQLskLm6aY76YbW0lIVB1q
-         v9umilQGpL7Nqk6HWuZ/zGol5Jw8K/x2Bnaxh8SqgfPe91zJpWHEJdht3lEm7VqkKZS/
-         V53vLg80mSPufa3/ixuPOfWMbFzGIBHlh6ueQ6C3eafX5gGcqun66GR2zlFjPNikx6is
-         DMX2U2PZerJcfVxQLPbK5I0PjHpFhMWeeFw3Q+CrYTx98sb+ngMiBjrW+zdMCZwTh4b6
-         Rm5w==
+        b=TZtYBet1SIbtuuFzokEJ8E9hdLST7dULA4PMBuiApau7uP7srfHQ6+Kzl5LJTf+KA1
+         7MWtj3L70cu6X8W1Ryr1XDxJ/RorC12+26t+1puHESRmfJ6j5K5kUR5wV+w/JvowDINp
+         PuAMssFkOATI549CaYZRK1VWuFzQYVAtNXidWUleedzc8An3L492tNDNTJIKAT+B6UDl
+         W9LRMa0yzVENkcEBtqYQEKB0NytDcRBAooOZ56HoUoTd6L4B9H0prOQLyx9tCWvNnNYm
+         h+ZBi4tRxUwtkTPoAhlxKH/oyjxJi2ALbrxdcqft2pMCHeRO7H67M2Avt+L839He9KoX
+         7myQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=G7tls1vMtOowlCtXjwDKGc1+LLoQ3769F5wAFJXEVKE=;
-        b=CnPefVIay9MJu0yVXZxBWzRJfStFUkRX56ljmtwWwkg4tTzSuGNZF7QE/MgXgaaMKB
-         sPKuqRzB7QrDbpgaI9PKDO+vNkXoENmQlJ5YdJvSYLVUWXNLMBjw4Hqikapo+WDEWg1D
-         KSqd4vzrlrEpENHY7PVvPGeVKOYU5pz9eo7llQGoY7keUzX1r56lkkFNHqa+SJUKnGHF
-         OFjwD/DkvnIf1n+8HaP3Eq3MSss0LM6959LyGLAeB7JosF+p0c0A+9Ubufc1t/GYEqLP
-         yW9qmE+zIWF8dtSt36POHFlc8x1yb13q9J4TTIcj3NJOJYgsYmMYGwSkc6hAGg4vuZ6k
-         Q+Gw==
+        bh=9+3JsRx21E7a6A2DXacDyq8OUtl/5PwII44E8Hkk6Ao=;
+        b=rAFZrRM4IF7L4r5A6t/mIzjVPVsmZIZcH+KmC8vNuKSMFAMPvWoF3aWsdCBxJfMuT1
+         P+npE0jOh6NWDTLgu0BUxR0js4qPCenjUCnPMilVmuDKyM+wi3NfRNaYj+bT70/m7Lty
+         15q9PtIh8bFKDHH0AQZIBINMa/A/cFjUWMdBEUY0Ops1pC1/KDxHu/gZd43H5WDFRq0J
+         hHjQAo4KtB5uVP7LcWefIQNgNEYRnQxIC7FUTDlNeWPqRLLWtz8CPAC2CXY5BKLLGCzV
+         roZOQt3K3SoxzJXzp5r9iHcIdSaNtnei4/m+QPThiZevO70BsRFHRI8l58Qh+1FcUapO
+         8m8Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) smtp.mailfrom=lars@metafoo.de
-Return-Path: <lars@metafoo.de>
-Received: from www381.your-server.de (www381.your-server.de. [78.46.137.84])
-        by gmr-mx.google.com with ESMTPS id z62-v6si59390wmc.2.2018.10.18.00.40.38
+       spf=neutral (google.com: 203.30.46.146 is neither permitted nor denied by best guess record for domain of preid@electromag.com.au) smtp.mailfrom=preid@electromag.com.au
+Return-Path: <preid@electromag.com.au>
+Received: from anchovy2.45ru.net.au (anchovy2.45ru.net.au. [203.30.46.146])
+        by gmr-mx.google.com with ESMTPS id u11-v6si903444ybi.2.2018.10.18.00.28.08
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Oct 2018 00:40:38 -0700 (PDT)
-Received-SPF: neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) client-ip=78.46.137.84;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 18 Oct 2018 00:28:10 -0700 (PDT)
+Received-SPF: neutral (google.com: 203.30.46.146 is neither permitted nor denied by best guess record for domain of preid@electromag.com.au) client-ip=203.30.46.146;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 78.46.137.84 is neither permitted nor denied by best guess record for domain of lars@metafoo.de) smtp.mailfrom=lars@metafoo.de
-Received: from [78.46.172.3] (helo=sslproxy06.your-server.de)
-	by www381.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
-	(Exim 4.89_1)
-	(envelope-from <lars@metafoo.de>)
-	id 1gD2uy-0001JM-86; Thu, 18 Oct 2018 09:40:28 +0200
-Received: from eisbaer.ursus-maritimus.org ([78.47.220.141] helo=[127.0.0.1])
-	by sslproxy06.your-server.de with esmtpsa (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256)
-	(Exim 4.89)
-	(envelope-from <lars@metafoo.de>)
-	id 1gD2ux-0005u0-Su; Thu, 18 Oct 2018 09:40:28 +0200
+       spf=neutral (google.com: 203.30.46.146 is neither permitted nor denied by best guess record for domain of preid@electromag.com.au) smtp.mailfrom=preid@electromag.com.au
+Received: (qmail 1121 invoked by uid 5089); 18 Oct 2018 07:28:05 -0000
+Received: by simscan 1.2.0 ppid: 1026, pid: 1027, t: 0.0831s
+         scanners: regex: 1.2.0 attach: 1.2.0 clamav: 0.88.3/m:40/d:1950
+Return-Path: <preid@electromag.com.au>
+Received: from unknown (HELO ?192.168.0.122?) (preid@electromag.com.au@203.59.235.95)
+  by anchovy3.45ru.net.au with ESMTPA; 18 Oct 2018 07:28:04 -0000
 Subject: Re: [PATCH v2] staging: iio: ad7816: Switch to the gpio descriptor
  interface
-To: Phil Reid <preid@electromag.com.au>,
- Nishad Kamdar <nishadkamdar@gmail.com>
+To: Nishad Kamdar <nishadkamdar@gmail.com>,
+  Lars-Peter Clausen <lars@metafoo.de>
 Cc: Michael Hennerich <Michael.Hennerich@analog.com>,
- Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>,
- Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-iio@vger.kernel.org,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- outreachy-kernel@googlegroups.com
+  Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>,
+  Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-iio@vger.kernel.org,
+  devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+  outreachy-kernel@googlegroups.com
 References: <20181017144716.GA11485@nishad>
- <fdcb085c-cf34-3310-f5ab-5795d5997977@electromag.com.au>
-From: Lars-Peter Clausen <lars@metafoo.de>
-Message-ID: <e3d4308c-9608-db52-c51e-5bb5d126284a@metafoo.de>
-Date: Thu, 18 Oct 2018 09:40:00 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+From: Phil Reid <preid@electromag.com.au>
+Message-ID: <fdcb085c-cf34-3310-f5ab-5795d5997977@electromag.com.au>
+Date: Thu, 18 Oct 2018 15:28:00 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101
  Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <fdcb085c-cf34-3310-f5ab-5795d5997977@electromag.com.au>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Authenticated-Sender: lars@metafoo.de
-X-Virus-Scanned: Clear (ClamAV 0.100.1/25047/Thu Oct 18 06:56:19 2018)
+In-Reply-To: <20181017144716.GA11485@nishad>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-AU
+Content-Transfer-Encoding: 7bit
 
-On 10/18/2018 09:28 AM, Phil Reid wrote:
-[...]
->> +    chip->rdwr_pin = devm_gpiod_get(&spi_dev->dev, "rdwr", GPIOD_IN);
->> +    if (IS_ERR(chip->rdwr_pin)) {
->> +        ret = PTR_ERR(chip->rdwr_pin);
->> +        dev_err(&spi_dev->dev, "Failed to request rdwr GPIO: %d\n",
->> +            ret);
->>           return ret;
->>       }
->> -    gpio_direction_input(chip->rdwr_pin);
+On 17/10/2018 10:47 PM, Nishad Kamdar wrote:
+> Use the gpiod interface for rdwr_pin, convert_pin and busy_pin
+> instead of the deprecated old non-descriptor interface.
 > 
-> The RD/WR pin is an input to the AD78xx. So this doesn't make sense being
-> GPIOD_IN.
+> Signed-off-by: Nishad Kamdar <nishadkamdar@gmail.com>
+> ---
+> Changes in v2:
+>   - Correct the error messages as pin number being showed
+>     has now been replaced by error code.
+> ---
+>   drivers/staging/iio/adc/ad7816.c | 80 ++++++++++++++------------------
+>   1 file changed, 34 insertions(+), 46 deletions(-)
+> 
+> diff --git a/drivers/staging/iio/adc/ad7816.c b/drivers/staging/iio/adc/ad7816.c
+> index bf76a8620bdb..12c4e0ab4713 100644
+> --- a/drivers/staging/iio/adc/ad7816.c
+> +++ b/drivers/staging/iio/adc/ad7816.c
+> @@ -7,7 +7,7 @@
+>    */
+>   
+>   #include <linux/interrupt.h>
+> -#include <linux/gpio.h>
+> +#include <linux/gpio/consumer.h>
+>   #include <linux/device.h>
+>   #include <linux/kernel.h>
+>   #include <linux/slab.h>
+> @@ -44,9 +44,9 @@
+>   
+>   struct ad7816_chip_info {
+>   	struct spi_device *spi_dev;
+> -	u16 rdwr_pin;
+> -	u16 convert_pin;
+> -	u16 busy_pin;
+> +	struct gpio_desc *rdwr_pin;
+> +	struct gpio_desc *convert_pin;
+> +	struct gpio_desc *busy_pin;
+>   	u8  oti_data[AD7816_CS_MAX + 1];
+>   	u8  channel_id;	/* 0 always be temperature */
+>   	u8  mode;
+> @@ -61,28 +61,28 @@ static int ad7816_spi_read(struct ad7816_chip_info *chip, u16 *data)
+>   	int ret = 0;
+>   	__be16 buf;
+>   
+> -	gpio_set_value(chip->rdwr_pin, 1);
+> -	gpio_set_value(chip->rdwr_pin, 0);
+> +	gpiod_set_value(chip->rdwr_pin, 1);
+> +	gpiod_set_value(chip->rdwr_pin, 0);
+>   	ret = spi_write(spi_dev, &chip->channel_id, sizeof(chip->channel_id));
+>   	if (ret < 0) {
+>   		dev_err(&spi_dev->dev, "SPI channel setting error\n");
+>   		return ret;
+>   	}
+> -	gpio_set_value(chip->rdwr_pin, 1);
+> +	gpiod_set_value(chip->rdwr_pin, 1);
+>   
+>   	if (chip->mode == AD7816_PD) { /* operating mode 2 */
+> -		gpio_set_value(chip->convert_pin, 1);
+> -		gpio_set_value(chip->convert_pin, 0);
+> +		gpiod_set_value(chip->convert_pin, 1);
+> +		gpiod_set_value(chip->convert_pin, 0);
+>   	} else { /* operating mode 1 */
+> -		gpio_set_value(chip->convert_pin, 0);
+> -		gpio_set_value(chip->convert_pin, 1);
+> +		gpiod_set_value(chip->convert_pin, 0);
+> +		gpiod_set_value(chip->convert_pin, 1);
+>   	}
+>   
+> -	while (gpio_get_value(chip->busy_pin))
+> +	while (gpiod_get_value(chip->busy_pin))
+>   		cpu_relax();
+>   
+> -	gpio_set_value(chip->rdwr_pin, 0);
+> -	gpio_set_value(chip->rdwr_pin, 1);
+> +	gpiod_set_value(chip->rdwr_pin, 0);
+> +	gpiod_set_value(chip->rdwr_pin, 1);
+>   	ret = spi_read(spi_dev, &buf, sizeof(*data));
+>   	if (ret < 0) {
+>   		dev_err(&spi_dev->dev, "SPI data read error\n");
+> @@ -99,8 +99,8 @@ static int ad7816_spi_write(struct ad7816_chip_info *chip, u8 data)
+>   	struct spi_device *spi_dev = chip->spi_dev;
+>   	int ret = 0;
+>   
+> -	gpio_set_value(chip->rdwr_pin, 1);
+> -	gpio_set_value(chip->rdwr_pin, 0);
+> +	gpiod_set_value(chip->rdwr_pin, 1);
+> +	gpiod_set_value(chip->rdwr_pin, 0);
+>   	ret = spi_write(spi_dev, &data, sizeof(data));
+>   	if (ret < 0)
+>   		dev_err(&spi_dev->dev, "SPI oti data write error\n");
+> @@ -129,10 +129,10 @@ static ssize_t ad7816_store_mode(struct device *dev,
+>   	struct ad7816_chip_info *chip = iio_priv(indio_dev);
+>   
+>   	if (strcmp(buf, "full")) {
+> -		gpio_set_value(chip->rdwr_pin, 1);
+> +		gpiod_set_value(chip->rdwr_pin, 1);
+>   		chip->mode = AD7816_FULL;
+>   	} else {
+> -		gpio_set_value(chip->rdwr_pin, 0);
+> +		gpiod_set_value(chip->rdwr_pin, 0);
+>   		chip->mode = AD7816_PD;
+>   	}
+>   
+> @@ -345,15 +345,9 @@ static int ad7816_probe(struct spi_device *spi_dev)
+>   {
+>   	struct ad7816_chip_info *chip;
+>   	struct iio_dev *indio_dev;
+> -	unsigned short *pins = dev_get_platdata(&spi_dev->dev);
+>   	int ret = 0;
+>   	int i;
+>   
+> -	if (!pins) {
+> -		dev_err(&spi_dev->dev, "No necessary GPIO platform data.\n");
+> -		return -EINVAL;
+> -	}
+> -
+>   	indio_dev = devm_iio_device_alloc(&spi_dev->dev, sizeof(*chip));
+>   	if (!indio_dev)
+>   		return -ENOMEM;
+> @@ -364,34 +358,28 @@ static int ad7816_probe(struct spi_device *spi_dev)
+>   	chip->spi_dev = spi_dev;
+>   	for (i = 0; i <= AD7816_CS_MAX; i++)
+>   		chip->oti_data[i] = 203;
+> -	chip->rdwr_pin = pins[0];
+> -	chip->convert_pin = pins[1];
+> -	chip->busy_pin = pins[2];
+> -
+> -	ret = devm_gpio_request(&spi_dev->dev, chip->rdwr_pin,
+> -				spi_get_device_id(spi_dev)->name);
+> -	if (ret) {
+> -		dev_err(&spi_dev->dev, "Fail to request rdwr gpio PIN %d.\n",
+> -			chip->rdwr_pin);
+> +
+> +	chip->rdwr_pin = devm_gpiod_get(&spi_dev->dev, "rdwr", GPIOD_IN);
+> +	if (IS_ERR(chip->rdwr_pin)) {
+> +		ret = PTR_ERR(chip->rdwr_pin);
+> +		dev_err(&spi_dev->dev, "Failed to request rdwr GPIO: %d\n",
+> +			ret);
+>   		return ret;
+>   	}
+> -	gpio_direction_input(chip->rdwr_pin);
 
-One thing at a time. This patch is a straight forward conversion to the GPIO
-descriptor interface. It keeps the existing semantics of the driver as they are.
+The RD/WR pin is an input to the AD78xx. So this doesn't make sense being GPIOD_IN.
 
-Now these semantics are obviously wrong and should be fixed but that should
-be a separate patch from changing the interface.
+
+> -	ret = devm_gpio_request(&spi_dev->dev, chip->convert_pin,
+> -				spi_get_device_id(spi_dev)->name);
+> -	if (ret) {
+> -		dev_err(&spi_dev->dev, "Fail to request convert gpio PIN %d.\n",
+> -			chip->convert_pin);
+> +	chip->convert_pin = devm_gpiod_get(&spi_dev->dev, "convert", GPIOD_IN);
+> +	if (IS_ERR(chip->convert_pin)) {
+> +		ret = PTR_ERR(chip->convert_pin);
+> +		dev_err(&spi_dev->dev, "Failed to request convert GPIO: %d\n",
+> +			ret);
+>   		return ret;
+>   	}
+> -	gpio_direction_input(chip->convert_pin);
+
+ditto, the CONVST pin is an input to the AD78xx.
+
+> -	ret = devm_gpio_request(&spi_dev->dev, chip->busy_pin,
+> -				spi_get_device_id(spi_dev)->name);
+> -	if (ret) {
+> -		dev_err(&spi_dev->dev, "Fail to request busy gpio PIN %d.\n",
+> -			chip->busy_pin);
+> +	chip->busy_pin = devm_gpiod_get(&spi_dev->dev, "busy", GPIOD_IN);
+> +	if (IS_ERR(chip->busy_pin)) {
+> +		ret = PTR_ERR(chip->busy_pin);
+> +		dev_err(&spi_dev->dev, "Failed to request busy GPIO: %d\n",
+> +			ret);
+>   		return ret;
+>   	}
+> -	gpio_direction_input(chip->busy_pin);
+
+
+The busy pin doesn't exist on the ad7818.
+Which the driver claims to support in the id table:
+
+ > static const struct spi_device_id ad7816_id[] = {
+ > 	{ "ad7816", 0 },
+ > 	{ "ad7817", 0 },
+ > 	{ "ad7818", 0 },
+ > 	{}
+ > };
+
+See:
+https://www.analog.com/media/en/technical-documentation/data-sheets/AD7817_7818.pdf
+Page 9.
+
+
+>   
+>   	indio_dev->name = spi_get_device_id(spi_dev)->name;
+>   	indio_dev->dev.parent = &spi_dev->dev;
+> 
+
+Also should the pin names be documented in a device tree binding doc?
+
+
+-- 
+Regards
+Phil Reid
 
