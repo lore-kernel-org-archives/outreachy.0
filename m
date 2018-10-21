@@ -1,96 +1,81 @@
-X-GM-THRID: 6330158331185856512
-X-Received: by 10.98.23.151 with SMTP id 145mr1609257pfx.5.1473854838676;
-        Wed, 14 Sep 2016 05:07:18 -0700 (PDT)
+X-GM-THRID: 6614920129411022848
+X-Received: by 2002:a5d:4a0a:: with SMTP id m10-v6mr3858184wrq.27.1540160071043;
+        Sun, 21 Oct 2018 15:14:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.27.155 with SMTP id z27ls909828otd.46.gmail; Wed, 14 Sep
- 2016 05:07:18 -0700 (PDT)
-X-Received: by 10.129.55.13 with SMTP id e13mr1706659ywa.9.1473854838244;
-        Wed, 14 Sep 2016 05:07:18 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
-        by gmr-mx.google.com with ESMTPS id si10si1108648pab.1.2016.09.14.05.07.18
+Received: by 2002:adf:8b97:: with SMTP id o23-v6ls6824747wra.15.gmail; Sun, 21
+ Oct 2018 15:14:30 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62yAyltAW8Lg4QbuoNTAqWr3WT9C4oaqy3ILs8cCBaIDdNJNwOVysXqmthtAUKZ+fwwotrO
+X-Received: by 2002:a5d:6112:: with SMTP id v18-v6mr3205830wrt.30.1540160070374;
+        Sun, 21 Oct 2018 15:14:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540160070; cv=none;
+        d=google.com; s=arc-20160816;
+        b=TUEX8Q9OdVqr/K8w6WXkdaqHf8dR+6pErTO+Et2tEUFrlk8vO2ogaoZaEHS24bF3NJ
+         I+nH/pflnA/Bc3wCo7CUrwt+yod7AQRYBAGAPHh8Bpl87B/dicfN+bBqg1nFT93LQ2FF
+         fKvVLXKlfdfo+DqPFsHA37Y6sL+YeSwpmI9ufYV7qlHBhuo1nGNpe4P4zDpqoYA5LVV+
+         jxIwQAev7l4Ai6zXvjjXCIBdF2MssISSU5h7mpaYkbqR1ahr3Nwo4b65d7zp5zjedZud
+         /t2OcPQDTPj2G28lIKnOZNtUFlgK2ONwOqAcNf+gteoYbkTH/DNVxdw2/vWlsbGBiW0B
+         X54A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=qULE7LKUNetjBFw+3rgD77cDD60JEAIDgjHNjc2boRI=;
+        b=VcGY8hWhWFDPraqa7Gs2rCpCVrRRen8Bjc50bAbjY5n5WbK2WOF/o5zyKaRhJlPGev
+         8Baib5z142oQ4vLoo5h6ISvvdds8Zg/J4XWu1Afz15Jskrk/SdZbMp5X8JQpxJvtwv5a
+         0eCse3PBb3xgh+qN8Nm3SBSJwD6lIBB9Bzc/xjFWiS6z8YJIIlhed/vZ0HAE+82SWKzY
+         ZjX1Zq1Pp4KhnMeqWyv/nvBXSKwrQj/3fXyEHadUqnWlfS9PNBR0Mpvi2nZD8ATCoLjB
+         hQBG2OT/KZy+dDqlyIF0NUpT8Ir+gFPCh0LVCctl8ftb+D1Md7azg79bZ0YtCelnIetV
+         e7Jg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id u13-v6si352588wrn.3.2018.10.21.15.14.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Sep 2016 05:07:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
+        Sun, 21 Oct 2018 15:14:30 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x243.google.com with SMTP id vz6so681613pab.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Sep 2016 05:07:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=HErDMgcs0PXuPn/abeUFvv1v5ffs2qeFlE4NKwwvE5I=;
-        b=n2yLJaMH94cXZM3Fo93K38Is96L6Cf9i1CkikvE+nwNWEwJ7Z3kGAAhOfr8Az3BIC5
-         V9eo8STfmhttJuPtwea2fP9BZkdeOYvzmhS6p4Wsi4dNzWvjLk/1I5qMsW2Rz5Y1j4OS
-         pll/n2V8tKT3TJC83z6T2bS3Mb29OYikqunNeuRzFn1yE/ZmwZxG7VHXf/hFkEsbPQJO
-         MmfigutD96Ol7asiawVGcGOd66y61kZmTIHEP/LN1geB82/dH/+92dfIuSuqSFVwEpee
-         Nuy/9k2ODQXDNSJiCpnM2yfG3CPeLt5WaAUWOLtL3oaYYGxRn0s5M5/EsJKXetC3Vzsh
-         4bJg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=HErDMgcs0PXuPn/abeUFvv1v5ffs2qeFlE4NKwwvE5I=;
-        b=ZyLjIlJLC1Oy6181xT/t6bSLhILw/zhZe3YIzLGW1aMcqRBDmv8lNTQCUHXjz3FoPq
-         jMSx+aW2BtA1ndX2syDfnERYegjzK99fSFCiTdZlaHxKPBIompvaRues8wCdG05LJaqo
-         V2rt1SKaZnrynKopmJw0Edm/k5ftKSGS1YHPdGqcWd+goGalavKet69onjYGTGTVBZf+
-         9ivi+6TCKssBprCekH3/OgDKpNyKFTSIw/Eczvwep7YCjTld1lCT99o1cx72+ISphEfa
-         zd6s6EB8jdIM4jU06TZqNnzFD6yIw0MBX1GdwDBkCY62JdYoQkFvMH6lcE1ejQi7zCLs
-         Bv+w==
-X-Gm-Message-State: AE9vXwNTIHZ9+ici+cixbBZdSyiwT+a6gFrHwhGN3ZYNYy/iZc+IkZup+VwydFbnq4cqEg==
-X-Received: by 10.66.224.101 with SMTP id rb5mr3927470pac.45.1473854837877;
-        Wed, 14 Sep 2016 05:07:17 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([182.77.94.114])
-        by smtp.gmail.com with ESMTPSA id h67sm9204731pfg.32.2016.09.14.05.07.15
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 14 Sep 2016 05:07:17 -0700 (PDT)
-Date: Wed, 14 Sep 2016 17:37:51 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: sudipm.mukherjee@gmail.com, teddy.wang@siliconmotion.com,
-	gregkh@linuxfoundation.org
-Subject: [PATCH] Staging: sm750fb: Remove unnecessary blank line
-Message-ID: <20160914120751.GA3656@sandhya>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.54,409,1534802400"; 
+   d="scan'208";a="352130348"
+Received: from 30.9-255-62.static.virginmediabusiness.co.uk (HELO [172.16.7.66]) ([62.255.9.30])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 22 Oct 2018 00:14:30 +0200
+Date: Sun, 21 Oct 2018 23:14:28 +0100 (BST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Ioannis Valasakis <code@wizofe.uk>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 1/2] staging: netlogic
+In-Reply-To: <cover.1540152794.git.code@wizofe.uk>
+Message-ID: <alpine.DEB.2.21.1810212314190.2402@hadrien>
+References: <cover.1540152794.git.code@wizofe.uk>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+Content-Type: text/plain; charset=US-ASCII
 
-Remove unnecessary blank line.
-This patch is detected by checkpatch.pl script .
-CHECK: Blank lines aren't necessary before a close brace '}'
+It looks like this would be 0/2?
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
- drivers/staging/sm750fb/ddk750_display.c | 2 --
- 1 file changed, 2 deletions(-)
+julia
 
-diff --git a/drivers/staging/sm750fb/ddk750_display.c b/drivers/staging/sm750fb/ddk750_display.c
-index ca4973e..f286ffc 100644
---- a/drivers/staging/sm750fb/ddk750_display.c
-+++ b/drivers/staging/sm750fb/ddk750_display.c
-@@ -134,7 +134,6 @@ static void swPanelPowerSequence(int disp, int delay)
- 	reg |= (disp ? PANEL_DISPLAY_CTRL_FPEN : 0);
- 	POKE32(PANEL_DISPLAY_CTRL, reg);
- 	primaryWaitVerticalSync(delay);
--
- }
- 
- void ddk750_setLogicalDispOut(disp_output_t output)
-@@ -159,7 +158,6 @@ void ddk750_setLogicalDispOut(disp_output_t output)
- 		/*se blank off */
- 		reg &= ~CRT_DISPLAY_CTRL_BLANK;
- 		POKE32(CRT_DISPLAY_CTRL, reg);
--
- 	}
- 
- 	if (output & PRI_TP_USAGE) {
--- 
-1.8.2.3
+On Sun, 21 Oct 2018, Ioannis Valasakis wrote:
 
+> Ioannis Valasakis (2):
+>   staging: netlogic: replace old kconfig with new syntax
+>   staging: netlogic: Cleanup parenetheses
+>
+>  drivers/staging/netlogic/Kconfig        |  2 +-
+>  drivers/staging/netlogic/platform_net.c | 16 ++++++++--------
+>  2 files changed, 9 insertions(+), 9 deletions(-)
+>
+> --
+> 2.19.1
+>
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/cover.1540152794.git.code%40wizofe.uk.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
