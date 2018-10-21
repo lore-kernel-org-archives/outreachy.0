@@ -1,132 +1,134 @@
-X-GM-THRID: 6395849810528698368
-X-Received: by 10.157.34.114 with SMTP id o105mr7147863ota.48.1489149828106;
-        Fri, 10 Mar 2017 04:43:48 -0800 (PST)
+X-GM-THRID: 6614906584085561344
+X-Received: by 2002:a5d:5287:: with SMTP id c7-v6mr3880521wrv.14.1540160045257;
+        Sun, 21 Oct 2018 15:14:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.31.6 with SMTP id x6ls7858029otd.46.gmail; Fri, 10 Mar
- 2017 04:43:47 -0800 (PST)
-X-Received: by 10.157.60.72 with SMTP id j8mr7541359ote.52.1489149827787;
-        Fri, 10 Mar 2017 04:43:47 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id 2si1745371pfx.8.2017.03.10.04.43.47
+Received: by 2002:adf:b69b:: with SMTP id j27-v6ls6892199wre.12.gmail; Sun, 21
+ Oct 2018 15:14:04 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5deR4fzfiemOFitsWrtpPaFIVPvVIGNpCKwRiIP26PKsnuSk6R+mAmVz+4vWAtgf4IhD/u5
+X-Received: by 2002:a5d:4883:: with SMTP id g3-v6mr852540wrq.18.1540160044358;
+        Sun, 21 Oct 2018 15:14:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540160044; cv=none;
+        d=google.com; s=arc-20160816;
+        b=unZqWaKNpI+3G86pvlSf4RiUHHPeDHsjnRZryaIdlJpYLgk3k6/y6/6kL87tk52HDn
+         oC3o9dS7Fy+Rjl5qnwyV48n7VSSI4/W7pCcnu4t4OijfiT4n2qaBa9jK6paNfbGRyCGF
+         dZjx7QBZfGaMg2gS7Tq8funP+Fso8XKRfJzMuxnxdj+nG7Cqnva5gem9dIlI5ifPBfUh
+         iLstZ5C3Py1R07of9lOUeBY99hEmUNjZEOnc+nSHSKcmZxSnRA2oA0oQFCgQbo+bPKCn
+         wD8WC6HalzW8AS+OK28LgGuPqTqNvtNz/3A0CpMK0vKjDbwkc4u6exFIJhy2tRwk5Tdz
+         AFiw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=PB7Di+wYloVT0QF2L3k0e0Tc74Y2BEdIX51NKtf86Gs=;
+        b=oCb5708toa/3kpNTfji7BTN2Q5ybCcsw5KwBsa0eWdb2bLNir8lBKw2rjpHcl7XL/3
+         qtWryEXPAm8w6NgUBDe463mi0imH0TsMv724aW5DjJhJS9Kyjww6QPytxTm1ZdvxWLzg
+         +dOQ0ZPdxIAc1l4fpL+Odb0JJZmCguGOM11S5v4Zm0g93KZijq+QH3tULt0tMPuUoaG2
+         6ukO79p3p3iHdjwKOsM8OQODY4xOXdhaXQyJSAc2JMxEL4WZrmRGBlxmHtfmYwIgXp0G
+         qpFi4DYircjM/VtKCpigpXWTd5Mn7Ye0f1kk1zaw0icD3ynKWIDEfZQ2Lyq2PdYdAXmC
+         RCZg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 68-v6si725339wra.5.2018.10.21.15.14.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 10 Mar 2017 04:43:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Sun, 21 Oct 2018 15:14:04 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id j5so10720536pfb.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 04:43:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=unl095Dj+UBSrwKJhSXK6RQ1mNYsYE1zuOKhek+pgcw=;
-        b=ZYSTZl2MhYN/7vJ0LKu8ewWo35JLPeRirEjIu4uryejU4lJduzc3H4Szj5ToA6Bwto
-         dwF0qQgT8S1TDgVe4xK3I9lIennF3Ts67pUGS41/S4jA0fqwQu5vgWj9iOWUhYBQjF0W
-         uslePz6yDylzdTN7es9Dpa0BsWnlOdD/htaghCQN9H8PEO8/B1PWRAaIYbwguYPQ/ccW
-         qWoS88v6STjESxMW16bV2/Ynsz3LHa7VR05com71oykT5vvQRFmS6CpXUQhwocnjUbK5
-         b/HgPRu7/ifoOiSSk708bYJPoEqQY/NbiCg9DBX7HRwnlszuFBKYWDd6yYKayNpHQOzF
-         aWqA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=unl095Dj+UBSrwKJhSXK6RQ1mNYsYE1zuOKhek+pgcw=;
-        b=QDtOHX0rRUjoumdfmHMRt+gDE4f+AGg9zca2pDOFgRP1IO1ai6UPIG4ivizIqUGAL/
-         ebgYwqJe0baRfvYs1frWP0oiOf/q6GELsDSB99pVlnUzDuWzaiz+Przl4gcAxIEDQ9Eo
-         jvZfqkAVcYEpinxsXII/H/lqkYfIm+Ar0G3kUN7+A420QtyG50BdKoQbe63f9PnmIaoR
-         HSO6eVr1Vhzs0bxqJsBjjhZ8rzNJys9QyDk/vftQDT/7/e/Gz4eR//FK8+qiHI2QbXHn
-         ESfvcKHeEbMI0lBN/eqqdNFBtK3QaWr9owiNp/GCXZtKPbO6jW1xCvMU3K2zBLP4O5fv
-         V3Qg==
-X-Gm-Message-State: AMke39nfiIEqjUuztkjA/VJOnCctyaLNgzofJg4PjChfs1UhGh/+PRdzlGcvwsJLS8WY6w==
-X-Received: by 10.84.253.15 with SMTP id z15mr25606464pll.142.1489149827217;
-        Fri, 10 Mar 2017 04:43:47 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id p129sm18599484pfp.118.2017.03.10.04.43.45
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 10 Mar 2017 04:43:46 -0800 (PST)
-Date: Fri, 10 Mar 2017 18:12:31 +0530
-From: simran singhal <singhalsimran0@gmail.com>
-To: abbotti@mev.co.uk
-Cc: hsweeten@visionengravers.com, gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: comedi: amplc_pci224: Convert macro GAT_CONFIG to
- static inline function
-Message-ID: <20170310124231.GA24231@singhal-Inspiron-5558>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.54,409,1534802400"; 
+   d="scan'208";a="352130337"
+Received: from 30.9-255-62.static.virginmediabusiness.co.uk (HELO [172.16.7.66]) ([62.255.9.30])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 22 Oct 2018 00:14:03 +0200
+Date: Sun, 21 Oct 2018 23:14:02 +0100 (BST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Ioannis Valasakis <code@wizofe.uk>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 2/2] staging: netlogic: Cleanup
+ parenetheses
+In-Reply-To: <e7defe7da804d867532182a1fcb387a9f41f9482.1540152794.git.code@wizofe.uk>
+Message-ID: <alpine.DEB.2.21.1810212312570.2402@hadrien>
+References: <cover.1540152794.git.code@wizofe.uk> <e7defe7da804d867532182a1fcb387a9f41f9482.1540152794.git.code@wizofe.uk>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-Convert macro GAT_CONFIG to static inline function as static inline
-functions are preferred over macros. This change is possible since the
-arguments at all call sites have the same type.
 
-This was done using Coccinelle:
 
-@r@
-expression e;
-@@
-- #define GAT_CONFIG(chan, src) e
-+ static inline unsigned int pci230_gat_config(unsigned int chan,
-+                                              unsigned int src)
-+{
-+       return ((chan & 3) << 3) | (src & 7);
-+}
+On Sun, 21 Oct 2018, Ioannis Valasakis wrote:
 
-@r1@
-expression dev,reg,chan,src;
-@@
--GAT_CONFIG(chan, src)
-+pci230_gat_config(chan, src)
+> Cleanup mismatching parentheses.
+> Reported by checkpatch.
 
-Also, the comment describing the macro has been removed manually.
+It doesn't look very nice to me with the function arguments alone on a
+line like that.  Maybe there are other places where newlines could be put.
 
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
----
- drivers/staging/comedi/drivers/amplc_pci224.c | 14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
+julia
 
-diff --git a/drivers/staging/comedi/drivers/amplc_pci224.c b/drivers/staging/comedi/drivers/amplc_pci224.c
-index 2e6decf..46026f5 100644
---- a/drivers/staging/comedi/drivers/amplc_pci224.c
-+++ b/drivers/staging/comedi/drivers/amplc_pci224.c
-@@ -216,8 +216,12 @@
- #define GAT_GND		1	/* GND (i.e. disabled) */
- #define GAT_EXT		2	/* reserved (external gate input) */
- #define GAT_NOUTNM2	3	/* inverted output of channel-2 modulo total */
--/* Macro to construct gate input configuration register value. */
--#define GAT_CONFIG(chan, src)	((((chan) & 3) << 3) | ((src) & 7))
-+
-+static inline unsigned int pci230_gat_config(unsigned int chan,
-+					     unsigned int src)
-+{
-+	return ((chan & 3) << 3) | (src & 7);
-+}
- 
- /*
-  * Summary of CLK_OUTNM1 and GAT_NOUTNM2 connections for PCI224 and PCI234:
-@@ -817,10 +821,12 @@ static void pci224_ao_start_pacer(struct comedi_device *dev,
- 	 * source.
- 	 */
- 	/* Make sure Z2-0 is gated on.  */
--	outb(GAT_CONFIG(0, GAT_VCC), devpriv->iobase1 + PCI224_ZGAT_SCE);
-+	outb(pci230_gat_config(0, GAT_VCC),
-+	     devpriv->iobase1 + PCI224_ZGAT_SCE);
- 	/* Cascading with Z2-2. */
- 	/* Make sure Z2-2 is gated on.  */
--	outb(GAT_CONFIG(2, GAT_VCC), devpriv->iobase1 + PCI224_ZGAT_SCE);
-+	outb(pci230_gat_config(2, GAT_VCC),
-+	     devpriv->iobase1 + PCI224_ZGAT_SCE);
- 	/* Z2-2 needs 10 MHz clock. */
- 	outb(CLK_CONFIG(2, CLK_10MHZ), devpriv->iobase1 + PCI224_ZCLK_SCE);
- 	/* Z2-0 is clocked from Z2-2's output. */
--- 
-2.7.4
-
+>
+> Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
+> ---
+>  drivers/staging/netlogic/platform_net.c | 16 ++++++++--------
+>  1 file changed, 8 insertions(+), 8 deletions(-)
+>
+> diff --git a/drivers/staging/netlogic/platform_net.c b/drivers/staging/netlogic/platform_net.c
+> index abf4c71ee66b..1b1a8a0c9b72 100644
+> --- a/drivers/staging/netlogic/platform_net.c
+> +++ b/drivers/staging/netlogic/platform_net.c
+> @@ -107,8 +107,8 @@ static struct platform_device *gmac_controller2_init(void *gmac0_addr)
+>  		.dev.platform_data = &ndata1,
+>  	};
+>
+> -	gmac4_addr = ioremap(CPHYSADDR(
+> -		nlm_mmio_base(NETLOGIC_IO_GMAC_4_OFFSET)), 0xfff);
+> +	gmac5_addr = ioremap(CPHYSADDR
+> +		(nlm_mmio_base(NETLOGIC_IO_GMAC_4_OFFSET)), 0xfff);
+>  	ndata1.serdes_addr = gmac4_addr;
+>  	ndata1.pcs_addr	= gmac4_addr;
+>  	ndata1.mii_addr	= gmac0_addr;
+> @@ -134,8 +134,8 @@ static void xls_gmac_init(void)
+>  {
+>  	int mac;
+>  	struct platform_device *xlr_net_dev1;
+> -	void __iomem *gmac0_addr = ioremap(CPHYSADDR(
+> -		nlm_mmio_base(NETLOGIC_IO_GMAC_0_OFFSET)), 0xfff);
+> +	void __iomem *gmac0_addr = ioremap(CPHYSADDR
+> +		(nlm_mmio_base(NETLOGIC_IO_GMAC_0_OFFSET)), 0xfff);
+>
+>  	static struct xlr_net_data ndata0 = {
+>  		.rfr_station	= FMN_STNID_GMACRFR_0,
+> @@ -153,8 +153,8 @@ static void xls_gmac_init(void)
+>  	ndata0.mii_addr	= gmac0_addr;
+>
+>  	/* Passing GPIO base for serdes init. Only needed on sgmii ports */
+> -	gpio_addr = ioremap(CPHYSADDR(
+> -		nlm_mmio_base(NETLOGIC_IO_GPIO_OFFSET)), 0xfff);
+> +	gpio_addr = ioremap(CPHYSADDR
+> +		(nlm_mmio_base(NETLOGIC_IO_GPIO_OFFSET)), 0xfff);
+>  	ndata0.gpio_addr = gpio_addr;
+>  	ndata0.cpu_mask = nlm_current_node()->coremask;
+>
+> @@ -214,8 +214,8 @@ static void xlr_gmac_init(void)
+>  		.id		= 0,
+>  		.dev.platform_data = &ndata0,
+>  	};
+> -	ndata0.mii_addr = ioremap(CPHYSADDR(
+> -		nlm_mmio_base(NETLOGIC_IO_GMAC_0_OFFSET)), 0xfff);
+> +	ndata0.mii_addr = ioremap(CPHYSADDR
+> +		(nlm_mmio_base(NETLOGIC_IO_GMAC_0_OFFSET)), 0xfff);
+>
+>  	ndata0.cpu_mask = nlm_current_node()->coremask;
+>
+> --
+> 2.19.1
+>
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/e7defe7da804d867532182a1fcb387a9f41f9482.1540152794.git.code%40wizofe.uk.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
