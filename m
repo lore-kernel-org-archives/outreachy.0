@@ -1,84 +1,85 @@
 X-GM-THRID: 6615237556487323648
-X-Received: by 2002:a5b:490:: with SMTP id n16-v6mr26249074ybp.15.1540230171617;
-        Mon, 22 Oct 2018 10:42:51 -0700 (PDT)
+X-Received: by 2002:a37:7382:: with SMTP id o124-v6mr14308915qkc.2.1540230132398;
+        Mon, 22 Oct 2018 10:42:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5b:487:: with SMTP id n7-v6ls527166ybp.5.gmail; Mon, 22 Oct
- 2018 10:42:50 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5e4IKhqCw5BCB6hSGNWCfS7Ga08Dgj0TfwSPOH7PeAhhWFcef1fyAyP+OSJocKG1iEV5I6x
-X-Received: by 2002:a25:500a:: with SMTP id e10-v6mr5532505ybb.12.1540230170556;
-        Mon, 22 Oct 2018 10:42:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540230170; cv=none;
+Received: by 2002:aed:3722:: with SMTP id i31-v6ls640722qtb.14.gmail; Mon, 22
+ Oct 2018 10:42:11 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62594SWKMwaWJvBuvagfJBhDiRZJQBG9Wp2hGx6j1stbgkxvBDLNGZcVG1uwmYGWl7yI4Qw
+X-Received: by 2002:aed:23ac:: with SMTP id j41-v6mr36088409qtc.5.1540230131887;
+        Mon, 22 Oct 2018 10:42:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540230131; cv=none;
         d=google.com; s=arc-20160816;
-        b=GPq7QvMahaexBaWB5eS+Q4h0LLox5m4aWHay7ksCwIotRgBa/6ApaIfyybREQ45XJK
-         ySnPfXhLQiPyfdVjGCxai8jW0dQE0eJDZaEbXEDzcp/5J9zWMvDrg2599rgA3PKca5jl
-         KJ68Vh73N1N1LfoQBghQL+PYXBNoVt/bqwHfWCSUBODrXbYFkNxAABinSKcq7IW8byqY
-         SXEOLAt2nyqMHPBMHVgvZdkORwoW0WS6F+7E7z6kiSR/rvuLNpJTktExEtKYPH/cFXwZ
-         9LJsPYUQmm6pYQJYMSEMzYwgymsHCnJh6TirtrOvNBTlG7hW4Jz9ic1bgBPMb8wyuVOK
-         5+yQ==
+        b=ff9s5g2YiBPQXWeWtGaSiMyu4BSE0SgKZcfBKkZbtCDDVn5qk5jUjWEbhfa6MUBtYP
+         guWqFne6N2oTfw0OKcv0AATAdFdcH2seX5lFMZPxCi+NRWt6ywDYggz5F7whD/dFcLiN
+         MEItbRqiAnUnEkQLPfXA1gTGGFQtbcTm6jNfwWt0ukqiuE4cPUlTWYVGzAKXjfof3f/2
+         fLrc0ZleyhJ2JaP1OxvJlqgPDwttvV9725vfmkfAm1HBoKc+lzu1rekAykQ0H2nyWx/H
+         YFhi8TIbGV+ORBP8lWNGiazMLEY1ncLYALlYqYwD4HRBSy/kT9QypVnWFqLfWtNtGmbG
+         F+qg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=v/aSFWBVZnNFI83846xlSUISw9kB+v0GopDQ2DGCHIE=;
-        b=emRzRojPmsYDbQ9OXGj9Lwjk6T1oTAivSV+Yt2p/+4Yo/Is7a8GeCeF34eLL8NrAHt
-         YaGh3tgVHLK5LVNbitqbeTFA21VqSKLXOmDYMGqZWgJtKlrH8m1L9F2J4KV+POLk+uqP
-         DmDQe47mbw9E3iDk1JcjwAr2XnfwEfTnfPsmObBdqQI4qW9bAOisJ1P/ZyYgShK5+bkM
-         X2t8VmUzNW0fV4evMS6r+iT6I1x/TAxrfhDxn4F1Pkl1jHRO8jzrT0zHv5t3g0VUSJMY
-         BXJTQeuSJa8rA7C40JtZYiA0IL2e8SLhHqWtl4nanidXm4eWsMkA7jBkxjx/0WFowvwV
-         bAsQ==
+        bh=fVbDii/cR+hIZqoabie3eEVRjIVV9aOoFgcwdH+7BUQ=;
+        b=pbc5y6R2VMSy04yR0jLIdtgbrKPejqreQkxyb0+tCbM/zxYaBqlncSr6BQS+ia6F1e
+         NIO5KoMHTwx9Z0A71KY++WEmsz8uwWfwLYsrvfAICCUo0oLcYDg52xFDb3l7ht482pBk
+         X7Vfw7CaUe+r4YKtM/OGupKzvzxXr+uPS4GEojDNPzU+afDwHpfHZdzAwrvIQCP+LCXf
+         OZyQx6eXzOWi95t9/Qt7dK9SNf7GAbs68QzphNv2oRQMkLSnQi2WghVRdYXIT+mxzxWw
+         kZDvtMqiY5GtM5+2U7L7xWBhi1RNC0cYq3kp1yc1Yp47pp1slKFgVhC5B+5LqkgiFhOt
+         cfRQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ILGxU2rh;
-       spf=pass (google.com: domain of kimbrownkd@gmail.com designates 2607:f8b0:4864:20::341 as permitted sender) smtp.mailfrom=kimbrownkd@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="i/HycOiS";
+       spf=pass (google.com: domain of kimbrownkd@gmail.com designates 2607:f8b0:4864:20::334 as permitted sender) smtp.mailfrom=kimbrownkd@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <kimbrownkd@gmail.com>
-Received: from mail-ot1-x341.google.com (mail-ot1-x341.google.com. [2607:f8b0:4864:20::341])
-        by gmr-mx.google.com with ESMTPS id l21-v6si1370850ywb.5.2018.10.22.10.42.50
+Received: from mail-ot1-x334.google.com (mail-ot1-x334.google.com. [2607:f8b0:4864:20::334])
+        by gmr-mx.google.com with ESMTPS id r25-v6si1726885qtb.0.2018.10.22.10.42.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Oct 2018 10:42:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kimbrownkd@gmail.com designates 2607:f8b0:4864:20::341 as permitted sender) client-ip=2607:f8b0:4864:20::341;
+        Mon, 22 Oct 2018 10:42:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kimbrownkd@gmail.com designates 2607:f8b0:4864:20::334 as permitted sender) client-ip=2607:f8b0:4864:20::334;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ILGxU2rh;
-       spf=pass (google.com: domain of kimbrownkd@gmail.com designates 2607:f8b0:4864:20::341 as permitted sender) smtp.mailfrom=kimbrownkd@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="i/HycOiS";
+       spf=pass (google.com: domain of kimbrownkd@gmail.com designates 2607:f8b0:4864:20::334 as permitted sender) smtp.mailfrom=kimbrownkd@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ot1-x341.google.com with SMTP id w67so40870631ota.7
-        for <outreachy-kernel@googlegroups.com>; Mon, 22 Oct 2018 10:42:50 -0700 (PDT)
+Received: by mail-ot1-x334.google.com with SMTP id a18so547205otl.6
+        for <outreachy-kernel@googlegroups.com>; Mon, 22 Oct 2018 10:42:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=v/aSFWBVZnNFI83846xlSUISw9kB+v0GopDQ2DGCHIE=;
-        b=ILGxU2rhj53MsxCfBesHcQ9GB24rEjE/A84wAOaJZ2S1860+e0MrOiJRm/XHYsCjpr
-         zHsYNR6PcawdNxA0laeJkJGCPXn3nL8uGqysEhp7CfzPY07y1a7INkUsKe/K2Ss8tB17
-         x8XxmGq+x+fvkuK+zBCU7+XpwtXInBDiCmizm/RNKV9bo0/c6Mq3neImkJI6JkE2fnBU
-         fIEs6vgsze4Bb8GDTHfK2hp23+q/gnDE2+us3VR5V+r4JogTQkoa1twL+pamugOP8rXz
-         I85Wej1eMiB2YD0PQ7YOI7yltz+1WR5MEf8PA1dJAD36Y5/4GBnmHVxpmeIMJQzGW9k8
-         E0og==
+        bh=fVbDii/cR+hIZqoabie3eEVRjIVV9aOoFgcwdH+7BUQ=;
+        b=i/HycOiSTcNIlAYL3PXotFedZtBymabuBAaT0pkcP0Mzrd6EYqnXgmW8khtOtJ1kon
+         GdZZ4KvSBIxUC5bUzJXtMfQSsJaWnkTiT0Ajm1bcoX6lT5JfXTW5n9814CcpjJiejeg4
+         LAt9Mw3fW0XaK5FCAhmckeOjac/wqfbP/IViuTfF/KuK5l2zQOhL3mhDsh0nj4CaVgqz
+         E0UswTToFE2n7S1b4niZayXYP50o6V55WstlislAoY7nuhWchw1pwwKT5dgC51NibuV1
+         lh1LqH46Jjs0m3+YAdKghwpLYVOtawINryFQBN9UvUCJ+q4dXuxBE1CBcLjh4QAWhGEE
+         FpPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=v/aSFWBVZnNFI83846xlSUISw9kB+v0GopDQ2DGCHIE=;
-        b=sviECSqErmJ3bROaTnyUa7wiCu28F6NCFbChQt324mmIpTwi7au0GvXhYjvArjFVgR
-         phfVFMC/uwxvFIRsolRDY+dUWkAOsxu4pzh1+O3Ku945pJLlYaqGtPFH58FZnWoDO8L/
-         N/hJXtEI3Spmzzv+uRQ5RD4boqQg/H5HVrD38CRwP9zpQDALGuJ7X0r8tNdFFR8Qv9cb
-         HeAVvrTt6CNzzVwCaWe4n56/BCnT8c/jSZ+A8RLg2ty4PSjERZKRNy5HdaXozfYMuPcL
-         jv+8Nka/cn/xCLA4gY0SC468O6Hz6KPzR5DWlMVwg0ArmFhozuQeGwdUJtYSq+XC5shp
-         /Bcg==
-X-Gm-Message-State: ABuFfohFrUnOQLSv2IjCfx676eya49J1HJ+GJss94dWrB8u1MouRcoFi
-	IG0S7m6/Do4v29m+/oduxOxVZci3gRE=
-X-Received: by 2002:a9d:718c:: with SMTP id o12mr30697598otj.60.1540230169859;
-        Mon, 22 Oct 2018 10:42:49 -0700 (PDT)
+        bh=fVbDii/cR+hIZqoabie3eEVRjIVV9aOoFgcwdH+7BUQ=;
+        b=joDLH04yKthuguHlwNyb1JWVdpOO/09rYPNa9+WsOjlDt/G+dsv5p6aOUUr6pT2Hbb
+         5hqurBKSA9kzfcFf9D6l9FW3OZMCdr5oSTYClZnKuftMW93gD2jpIDpb6aRc+i43RnzX
+         R/cisl3d+QNd5GLW2UqC4uYHcfRy9Zc5/bxaj0jKAEDohrGHjXXJtqX/N7kXY/rMQoNP
+         S26AoljGDcSeRANlfjkOKk4euwkXm/0KVAZCpvQyA22psNuqtv7eCbWUnM3Ubtdn/ERO
+         63i/fpd5w48bdUgxwvQWEWBmIYMbQSEK5c5axnLRoxIiRr0frPMaYe4wpoRxaWhv4YnP
+         s+1A==
+X-Gm-Message-State: ABuFfohNDqrb7fH///ZkSzJ63YoGZIlMNBtIFTA2zSu5Fu3YmfxeTdDi
+	/RSYlucb2OENQJomffR4nvtkY9vl89w=
+X-Received: by 2002:a9d:3205:: with SMTP id t5mr27861807otc.119.1540230131381;
+        Mon, 22 Oct 2018 10:42:11 -0700 (PDT)
 Return-Path: <kimbrownkd@gmail.com>
 Received: from v (68-188-226-58.dhcp.bycy.mi.charter.com. [68.188.226.58])
-        by smtp.gmail.com with ESMTPSA id z9sm11257676ota.44.2018.10.22.10.42.48
+        by smtp.gmail.com with ESMTPSA id q39sm11692879otc.67.2018.10.22.10.42.10
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Oct 2018 10:42:49 -0700 (PDT)
-Date: Mon, 22 Oct 2018 13:42:46 -0400
+        Mon, 22 Oct 2018 10:42:10 -0700 (PDT)
+Date: Mon, 22 Oct 2018 13:42:08 -0400
 From: Kimberly Brown <kimbrownkd@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 3/3] staging:rtl8192u: Fix misspellings in comments - Style
-Message-ID: <552e36244c1487a002b7f130d8b5ee07cb8afff7.1540229302.git.kimbrownkd@gmail.com>
+Subject: [PATCH 2/3] staging:rtl8192u: Fix misspelling in variable name -
+ Style
+Message-ID: <163d3a606f353cd202677af062babe541369560a.1540229302.git.kimbrownkd@gmail.com>
 References: <cover.1540229302.git.kimbrownkd@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -86,45 +87,53 @@ Content-Disposition: inline
 In-Reply-To: <cover.1540229302.git.kimbrownkd@gmail.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 
-Fix two spelling mistakes in comments. 'informations' should be
-'information', and 'imblance' should be 'imbalance'. Issues found by
-checkpatch.
+Fix the spelling mistake in variable name 'txhipower_threshhold'.
+'threshhold' should be 'threshold'. Issue found by checkpatch.
 
 This is a coding style change which should have no impact on runtime
 code execution.
 
 Signed-off-by: Kimberly Brown <kimbrownkd@gmail.com>
 ---
- drivers/staging/rtl8192u/r819xU_cmdpkt.c | 2 +-
- drivers/staging/rtl8192u/r819xU_phyreg.h | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/rtl8192u/r8192U_dm.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/r819xU_cmdpkt.c b/drivers/staging/rtl8192u/r819xU_cmdpkt.c
-index 900f7866d381..e064f43fd8b6 100644
---- a/drivers/staging/rtl8192u/r819xU_cmdpkt.c
-+++ b/drivers/staging/rtl8192u/r819xU_cmdpkt.c
-@@ -243,7 +243,7 @@ static void cmpk_handle_interrupt_status(struct net_device *dev, u8 *pmsg)
- 			cmdpkt_beacontimerinterrupt_819xusb(dev);
+diff --git a/drivers/staging/rtl8192u/r8192U_dm.c b/drivers/staging/rtl8192u/r8192U_dm.c
+index 5fb5f583f703..6c9f9d82477d 100644
+--- a/drivers/staging/rtl8192u/r8192U_dm.c
++++ b/drivers/staging/rtl8192u/r8192U_dm.c
+@@ -2983,7 +2983,7 @@ static void dm_init_dynamic_txpower(struct net_device *dev)
+ static void dm_dynamic_txpower(struct net_device *dev)
+ {
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
+-	unsigned int txhipower_threshhold = 0;
++	unsigned int txhipower_threshold = 0;
+ 	unsigned int txlowpower_threshold = 0;
+ 
+ 	if (priv->ieee80211->bdynamic_txpower_enable != true) {
+@@ -2993,18 +2993,18 @@ static void dm_dynamic_txpower(struct net_device *dev)
+ 	}
+ 	/*printk("priv->ieee80211->current_network.unknown_cap_exist is %d , priv->ieee80211->current_network.broadcom_cap_exist is %d\n", priv->ieee80211->current_network.unknown_cap_exist, priv->ieee80211->current_network.broadcom_cap_exist);*/
+ 	if ((priv->ieee80211->current_network.atheros_cap_exist) && (priv->ieee80211->mode == IEEE_G)) {
+-		txhipower_threshhold = TX_POWER_ATHEROAP_THRESH_HIGH;
++		txhipower_threshold = TX_POWER_ATHEROAP_THRESH_HIGH;
+ 		txlowpower_threshold = TX_POWER_ATHEROAP_THRESH_LOW;
+ 	} else {
+-		txhipower_threshhold = TX_POWER_NEAR_FIELD_THRESH_HIGH;
++		txhipower_threshold = TX_POWER_NEAR_FIELD_THRESH_HIGH;
+ 		txlowpower_threshold = TX_POWER_NEAR_FIELD_THRESH_LOW;
  	}
  
--	/* Other informations in interrupt status we need? */
-+	/* Other information in interrupt status we need? */
+-	/*printk("=======>%s(): txhipower_threshhold is %d, txlowpower_threshold is %d\n", __func__, txhipower_threshhold, txlowpower_threshold);*/
++	/*printk("=======>%s(): txhipower_threshold is %d, txlowpower_threshold is %d\n", __func__, txhipower_threshold, txlowpower_threshold);*/
+ 	RT_TRACE(COMP_TXAGC, "priv->undecorated_smoothed_pwdb = %ld\n", priv->undecorated_smoothed_pwdb);
  
- 	DMESG("<---- cmpk_handle_interrupt_status()\n");
- }
-diff --git a/drivers/staging/rtl8192u/r819xU_phyreg.h b/drivers/staging/rtl8192u/r819xU_phyreg.h
-index 65ee6088324c..dc9ddf100eab 100644
---- a/drivers/staging/rtl8192u/r819xU_phyreg.h
-+++ b/drivers/staging/rtl8192u/r819xU_phyreg.h
-@@ -53,7 +53,7 @@
- /* page c */
- #define rOFDM0_TRxPathEnable		0xc04
- #define rOFDM0_XARxAFE				0xc10  /* RxIQ DC offset, Rx digital filter, DC notch filter */
--#define rOFDM0_XARxIQImbalance		0xc14  /* RxIQ imblance matrix */
-+#define rOFDM0_XARxIQImbalance		0xc14  /* RxIQ imbalance matrix */
- #define rOFDM0_XBRxAFE				0xc18
- #define rOFDM0_XBRxIQImbalance		0xc1c
- #define rOFDM0_XCRxAFE				0xc20
+ 	if (priv->ieee80211->state == IEEE80211_LINKED) {
+-		if (priv->undecorated_smoothed_pwdb >= txhipower_threshhold) {
++		if (priv->undecorated_smoothed_pwdb >= txhipower_threshold) {
+ 			priv->bDynamicTxHighPower = true;
+ 			priv->bDynamicTxLowPower = false;
+ 		} else {
 -- 
 2.17.1
 
