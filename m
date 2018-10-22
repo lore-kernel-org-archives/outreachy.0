@@ -1,112 +1,86 @@
 X-GM-THRID: 6614497774807285760
-X-Received: by 2002:a63:784d:: with SMTP id t74-v6mr2015832pgc.39.1540312885664;
-        Tue, 23 Oct 2018 09:41:25 -0700 (PDT)
+X-Received: by 2002:a37:d48d:: with SMTP id s13-v6mr35711771qks.46.1540236516777;
+        Mon, 22 Oct 2018 12:28:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:85c4:: with SMTP id m65-v6ls1801308pfk.10.gmail; Tue, 23
- Oct 2018 09:41:24 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV63JQvrfmFNSIQib/7NSo4y6P405rjqXPM5Zn7IMn+Tk7TLb7S/0C5VIEyzCAVxkQOAvRnCf
-X-Received: by 2002:a62:ea07:: with SMTP id t7-v6mr15343692pfh.44.1540312884813;
-        Tue, 23 Oct 2018 09:41:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540312884; cv=none;
+Received: by 2002:a0c:b892:: with SMTP id y18ls743980qvf.6.gmail; Mon, 22 Oct
+ 2018 12:28:35 -0700 (PDT)
+X-Received: by 2002:a0c:b91f:: with SMTP id u31mr11457479qvf.9.1540236515147;
+        Mon, 22 Oct 2018 12:28:35 -0700 (PDT)
+Received: by 2002:a37:4890:0:0:0:0:0 with SMTP id v138-v6msqka;
+        Mon, 22 Oct 2018 12:17:25 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV60MBlmAmWZvwWItrsHeuvvhbOZdsRh3JzMH1VmftEuBT7XNc/3OpFDfUvlSWL0Em/F8Nqqa
+X-Received: by 2002:a17:906:4591:: with SMTP id t17-v6mr1306006ejq.6.1540235844723;
+        Mon, 22 Oct 2018 12:17:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540235844; cv=none;
         d=google.com; s=arc-20160816;
-        b=YsU5nUn/UhDX6bu9kt1P5VE3NupEhg7Lv6pVTUbPeWyUiGwJ3acKpXqw7b3GNzFacH
-         MJ/HvTnaKRXjzt6YFtj29Vg0oqzJbjojhZf6omIiHt1W+yHGAmTddB57wk2iKQ9DSryQ
-         Qt11Eyl25UM7BsMvuYi6hovtpThJbnd+UBlYkm1wD2eF27ITWvyFSMVtngDpSDyg5srC
-         ahs9tXOYF0oEbNMnsbcM/8OPo5wvCER3eTwc/RaZZScM21t2F2XgEsjy7oXs4Buo1zN8
-         dMFqMTMUkzuNBStpkSyyh1/zCCEUrJHHUSMnaW8y3RJlajFRKxR61KS9yOsaQXB5iEcP
-         OqfQ==
+        b=OabXv5tHA4C6sRjVO1//X6IPTjEg2cgidjSuYKqyZ3r+IuIahSYG0dYYMNDuiKbaY1
+         kMOMUZcQvJGfbTKYW7kjQgcW4iwuBUpnQWwR3WkQPyCKlXEueEzFzCD1mD+JvbB+qDJ2
+         FRPHngo7wOy0b1TZTBbj2fG+jYe1Sub9A+WNHLZ8tXTbShszGloZviVeAGw0Nsl+aH8o
+         sVYoItdtNaFQUaeGQu7QqJGkkx632N0HxAT/RxNyDc02pKXBeKkyEG/fZBTUabvrs6W8
+         72zIVyWh+3NjqA58KR75MbUtKqSyLXjT2J/HtiiniIRN2ISRf0RUn38/DKjISRFW137D
+         ng3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=WnwZ+so91CP1PhcFGaV4y0ut8tDfKZGzw007y+Z+XfU=;
-        b=cr+pDZy3SKomVSWMXQvTonfaYzNoUYuLiOrPb9Ajj/KjarS6v/eG3DFT6B6t/Q9BDS
-         2aNmDlbvPLF8cY44ZbeuBTQH54iMslCCye3AijDuNqezBbqYiEsxWnUDHDNwCzs7tCoy
-         GMmY8iKxpFPywzeNLHkbn1LN2LLfzxCP1zxyKV4IflifVodp3ATVg9JR+83VG+5XYl/5
-         SYGMEfGJA7jx0WkL5wCsdowcG/mECBGzvUmU2uUBT+QotYlEN3lfnmiJui2OlnKVhaGk
-         7XT6rPNWH62UF0dynMNAawLHXiEgqsMqQsdEZfd7C66uHfabkPrWoowHyyDMIuLvmAgQ
-         wMeg==
+         :message-id:subject:cc:to:from:date;
+        bh=MvdpAlRtu7OSd3AuBLeoBizeZPdJHaTfRCTs1QXGwFM=;
+        b=Kj9VZ7v48y95vZ+jncHue+doP8E6sIQzjyiLqpBeg6ui+/ZTX4xtx1AltLzg+kmTBr
+         LoVmkIT98GCclj55MRv6uLFlkk8huZyz81RBynPVBzzzuEih5KF9zjCDdfyUuUIS8iIq
+         EdwkTtX6Jnxf4DHxruSeMhkzdo92UlOkvbKGVY1Rp0p/p62oAwzHqG8V78NY88w2UJ3c
+         R3iMR96IXQ0TG8JW/EkaD4YN94GGtrX4igHFmU4zUOrso1zYAGThyPkfbLLoPkjjtitq
+         B2PXCLkk00tleyBay9DoFZ05vH6jG0jrU0Fmdw6UDy2QFt20D4hBy2OTBL6FGeB5Bh/Y
+         ZXTg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@poorly.run header.s=google header.b=ZGcs8r6X;
-       spf=pass (google.com: domain of sean@poorly.run designates 2607:f8b0:4864:20::c41 as permitted sender) smtp.mailfrom=sean@poorly.run
-Return-Path: <sean@poorly.run>
-Received: from mail-yw1-xc41.google.com (mail-yw1-xc41.google.com. [2607:f8b0:4864:20::c41])
-        by gmr-mx.google.com with ESMTPS id h13-v6si76396pfd.2.2018.10.23.09.41.24
+       spf=neutral (google.com: 109.247.116.15 is neither permitted nor denied by best guess record for domain of sam@ravnborg.org) smtp.mailfrom=sam@ravnborg.org
+Return-Path: <sam@ravnborg.org>
+Received: from asavdk4.altibox.net (asavdk4.altibox.net. [109.247.116.15])
+        by gmr-mx.google.com with ESMTPS id g31-v6si167546edc.1.2018.10.22.12.17.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 23 Oct 2018 09:41:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sean@poorly.run designates 2607:f8b0:4864:20::c41 as permitted sender) client-ip=2607:f8b0:4864:20::c41;
+        Mon, 22 Oct 2018 12:17:24 -0700 (PDT)
+Received-SPF: neutral (google.com: 109.247.116.15 is neither permitted nor denied by best guess record for domain of sam@ravnborg.org) client-ip=109.247.116.15;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@poorly.run header.s=google header.b=ZGcs8r6X;
-       spf=pass (google.com: domain of sean@poorly.run designates 2607:f8b0:4864:20::c41 as permitted sender) smtp.mailfrom=sean@poorly.run
-Received: by mail-yw1-xc41.google.com with SMTP id j75-v6so811152ywj.10
-        for <outreachy-kernel@googlegroups.com>; Tue, 23 Oct 2018 09:41:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=poorly.run; s=google;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=WnwZ+so91CP1PhcFGaV4y0ut8tDfKZGzw007y+Z+XfU=;
-        b=ZGcs8r6X67o5gDp/G9I1FT+wCkStfJcxSgd4tKxIWCQ7jeJRl+j25VRuo1cZC8/b1w
-         y03GomtGz0zWvvfytW+Vq5w7xDHR/BTY/1kyZc0kfUZ8xQxNdNlQ8jT5p3hhzscy39Es
-         N7pLljm//ShgiBlGn76M5N/eoMcvDwHuDUGEIlUCogrtma70jYl7w5RORTOUZTs3PDnw
-         KHPQTMuX+2yJV+Zvs9jnlSpzm7I/vlTQCHzsvqhpV8GOsjPxKJFx8T6KpdmQf0J5cRPH
-         osbrMiWpa8r9+yI8pdtN6zURKI1TA6yIZXbCpb61u00kE16KjV07KbB/+PDdR+u7uNTz
-         k8yQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=WnwZ+so91CP1PhcFGaV4y0ut8tDfKZGzw007y+Z+XfU=;
-        b=CCTZ3dke4bPoomHX0EHvjaxXpE5D34Ne+hqrRIH2CNZ/wcxiGei+8/UE7FijwsCwlU
-         74ulrFwQZyflTvxN1NMo/r1+wTUEsSmjmdy0HxvY/S+X1unQdJr/ejt334zT7I1vYcmC
-         MIWpr1lD9xmSoLo1Zswgo0bV7Ubm8kgm52RsJ9WmtoJbWEW0CWRPVY/qSIxgruTruE/T
-         TX/l0R6QWPAWeE8158KRZSLR97Nlr1nC3BCIDVlht8Nw27YHHCDEBu1k9kC0yr/XBhp4
-         qpaokRLedrGWWyaVpfAYy6AeBW/PsgnWZL+QCDmBSmDb+gaI99ur/hWcfgWrt7UvIOZj
-         A7BQ==
-X-Gm-Message-State: ABuFfogUpMUiUgrBwmRLdeACDyIlcHqRmNq32TyqpuY/dNwKLxmBVHVr
-	KyVy2dLJ+cau2dvlPrJERy0p3A==
-X-Received: by 2002:a0d:c786:: with SMTP id j128-v6mr35285952ywd.432.1540312883868;
-        Tue, 23 Oct 2018 09:41:23 -0700 (PDT)
-Return-Path: <sean@poorly.run>
-Received: from localhost ([2620:0:1013:11:ad55:b1db:adfe:3b9f])
-        by smtp.gmail.com with ESMTPSA id e194-v6sm90670ywe.106.2018.10.23.09.41.23
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Oct 2018 09:41:23 -0700 (PDT)
-Date: Tue, 23 Oct 2018 12:41:22 -0400
-From: Sean Paul <sean@poorly.run>
-To: Chris Wilson <chris@chris-wilson.co.uk>
-Cc: Mamta Shukla <mamtashukla555@gmail.com>,
-	outreachy-kernel@googlegroups.com, airlied@linux.ie,
+       spf=neutral (google.com: 109.247.116.15 is neither permitted nor denied by best guess record for domain of sam@ravnborg.org) smtp.mailfrom=sam@ravnborg.org
+Received: from ravnborg.org (unknown [158.248.194.18])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by asavdk4.altibox.net (Postfix) with ESMTPS id 4F942803C2;
+	Mon, 22 Oct 2018 21:17:21 +0200 (CEST)
+Date: Mon, 22 Oct 2018 21:17:19 +0200
+From: Sam Ravnborg <sam@ravnborg.org>
+To: Mamta Shukla <mamtashukla555@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, airlied@linux.ie,
 	daniel.vetter@ffwll.ch, sean@poorly.run,
 	dri-devel@lists.freedesktop.org
 Subject: Re: [PATCH DRM] drm: msm: Use DRM_DEV_* instead of dev_*
-Message-ID: <20181023164122.GF154160@art_vandelay>
+Message-ID: <20181022191719.GA28324@ravnborg.org>
 References: <20181020174926.GA32333@armorer>
- <154023617749.9962.9645598871319141504@skylake-alporthouse-com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <154023617749.9962.9645598871319141504@skylake-alporthouse-com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20181020174926.GA32333@armorer>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-CMAE-Score: 0
+X-CMAE-Analysis: v=2.3 cv=UpRNyd4B c=1 sm=1 tr=0
+	a=UWs3HLbX/2nnQ3s7vZ42gw==:117 a=UWs3HLbX/2nnQ3s7vZ42gw==:17
+	a=kj9zAlcOel0A:10 a=WvlMthZRorEj1INjwd4A:9 a=CjuIK1q_8ugA:10
 
-On Mon, Oct 22, 2018 at 08:22:57PM +0100, Chris Wilson wrote:
-> Quoting Mamta Shukla (2018-10-20 18:49:26)
-> > Use DRM_DEV_INFO/ERROR/WARN instead of dev_info/err/debug to generate
-> > drm-formatted specific log messages so that it will be easy to
-> > differentiate in case of multiple instances of driver.
-> 
-> Do you not think this is a bit backwards? Both dev_* and DRM_DEV_*
-> include the device id so that multiple instances can be distinguished.
-> What DRM_DEV_* adds is the function name, which for user facing messages
-> should not be required given a self-encapsulating informative message.
+Hi Mamta.
 
-"given a self-encapsulating informative message." being the key here. I'm not
-sure about i915, but most other drivers have vague/duplicated log messages which
-rely on the function name for differentiation.
+On Sat, Oct 20, 2018 at 11:19:26PM +0530, Mamta Shukla wrote:
+> Use DRM_DEV_INFO/ERROR/WARN instead of dev_info/err/debug to generate
+> drm-formatted specific log messages so that it will be easy to
+> differentiate in case of multiple instances of driver.
 
-Sean
+While touching all these lines we could at the same time get
+rid of the trailing "\n", which today is not needed.
 
-> -Chris
+But I dunno if this is a change that is welcomed.
+Do not jump to do this until someone that knows
+the DRM subsystems says OK.
 
--- 
-Sean Paul, Software Engineer, Google / Chromium OS
+Note: IMO we should only do this because we touch the lines
+anyway. Removing '\n' without any other change is not worth
+the code crunch.
+
+	Sam
 
