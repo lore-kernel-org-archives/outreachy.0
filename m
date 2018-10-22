@@ -1,118 +1,124 @@
 X-GM-THRID: 6615312602732953600
-X-Received: by 2002:a1c:188:: with SMTP id 130-v6mr1984339wmb.6.1540273404135;
-        Mon, 22 Oct 2018 22:43:24 -0700 (PDT)
+X-Received: by 2002:a67:f312:: with SMTP id p18mr45651845vsf.22.1540247491866;
+        Mon, 22 Oct 2018 15:31:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:8d95:: with SMTP id p143-v6ls438551wmd.3.canary-gmail;
- Mon, 22 Oct 2018 22:43:23 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV609sQEm1+YZvXVATJpH2oP/ux5pzoruwSthGnGi81AK0X8Si+AZYS8u0ySoNfF6I1zLBh0P
-X-Received: by 2002:a1c:9655:: with SMTP id y82-v6mr2038921wmd.3.1540273403299;
-        Mon, 22 Oct 2018 22:43:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540273403; cv=none;
+Received: by 2002:a67:d385:: with SMTP id b5ls325978vsj.2.gmail; Mon, 22 Oct
+ 2018 15:31:31 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV63GXpFzQgV7zpU9JC5bFGcjiJMIGDcUhn/lq0muYpKVDS2+j61tH/peHma2/0VBbPeVMB7V
+X-Received: by 2002:a67:dd87:: with SMTP id i7mr860493vsk.37.1540247491202;
+        Mon, 22 Oct 2018 15:31:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540247491; cv=none;
         d=google.com; s=arc-20160816;
-        b=UYpizj+XF2CJCkpkrT3FzzaLp4RMctBErEo+qd8Yx73yi+//RIgUGlKVNZ7ENcWD5b
-         wQZf5DqFoVkJRJjLk7JXXeCRPodfA/DSsKHC2eGu7vl2wvneK9O67yn3QolFHbDweFdn
-         Vk8WvkjA6aDt+HrFU3ljtzeUZiPWA2jui1cPD3NrEANp7A/rUujKOmVilRqaHPLmnF56
-         +RpL+8iJwO7ShgRS+8s3iFanHY+k5/9Va2PuJZYbU6Dfe1GsOcwv4sE2NbNT0nAWhmnn
-         V7Zt+E+kgzpPLh/IopHpjZb04XlzNQdFPB8EYiMU4V7CUtdx2mCeIAMKEy2PxS9+gFvC
-         Dj/g==
+        b=L9UYvApph9+Mx2MU2DIyTfQt1FDniZlh/aFQjVnY7CjtKP1ZN85Zu8ROyJOC83IkPd
+         n/hlI5RYnmrlzCZnXhMcklBrvlc/Q7zOR1mmGd6RORF7gu/oVPQ3nVh+wos4oCXdJPxX
+         yoRa7cdbvPbdkdKKhlBWAeK7+DwvQpganECLST5PnYP7QtivuwuhYgcrVo7Ug2e94NTd
+         frrPupCfpBcbhk06qLPHgZgCEQAot0sl8U409/ldnQ5gTpLubUUf4Imt3/aQtksprDJe
+         hqCmYPn+5alxjIvvlpjKogDNKXLjASrQ2y2oy+2MMIWEd7F98wXDc93NhMZBoET9mOPk
+         rHrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=9Bbw95HrQOTw2bONQmqz6P6tOaZ1A/CgHVcIe4nAo4s=;
-        b=vwWoLkv4UY3UTFPiM6Ls4bmjhLDhsvoQPw/dC7Tu3c7ozN5bf8lXHtvxjbUrVdXrhf
-         6lDtVoR74AwY0OsIWQBrTkdepqr5zBWsBbaTyfaY7CnfF6/THGMEUbPStlhy3IBVKf3I
-         Yb5NNl7GEOEyIZ4KFIZCiPvKA2NwJInhddsbkx5WlHRmS+dg0bhVi9wrFUTaHbl7dLrR
-         L5FgAIW4Hy3CZp1FuQ7T1YepJzf2k/etsIMwkPDL02lkMNNTUhxVCglG6NMzG9tXZnS6
-         3QtxnTGs/8r6H/incJbgWz+g/RthHs373zVZvkbtauFiPu4yKsCz5yxRwvLsMgqM0KIs
-         ghDQ==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=IzquyG2hwJ2BGF+7yaRRqHjroYDcegrh0OUSz7w7QvU=;
+        b=zT9wj5dq+KoWPwrjGbRJyGIKJtHzh5EuqRy+M1DfKuxyKNlZnhG+BtQFOBlpMG5I6A
+         QIjiLYdPIML5tVFZ+r4VTrkHpkSqVU7v2A0/Adao+XMPI+zIU96Y5M6KGU9K9CTpLpI5
+         DKvuGHZcEKDqGrh9t/guJ6UHfOrhbFNoEtcfSqqiIFEblRWw+Y0sIVXvfCDTSXYshuNK
+         rMtrg9tPlQUXiFvf8a7KDOFjDovHasAmORwX6sFqQziFmCSKGT7+XkvfQgUNDQ+Kc7bY
+         IHNiSs4aGhEZ7B3BhWDUmhMHbKaS5dkCn+llcYlvIYQC9iM+ptklD4nfKZlBmU7lDM+a
+         CRjQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id h188-v6si14268wmg.2.2018.10.22.22.43.23
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=F6CUhNFq;
+       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <shayenneluzmoura@gmail.com>
+Received: from mail-qt1-x841.google.com (mail-qt1-x841.google.com. [2607:f8b0:4864:20::841])
+        by gmr-mx.google.com with ESMTPS id c74si1520146vkd.5.2018.10.22.15.31.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Oct 2018 22:43:23 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Mon, 22 Oct 2018 15:31:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) client-ip=2607:f8b0:4864:20::841;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.54,414,1534802400"; 
-   d="scan'208";a="283000269"
-Received: from 30.9-255-62.static.virginmediabusiness.co.uk (HELO [172.16.7.66]) ([62.255.9.30])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 23 Oct 2018 07:43:22 +0200
-Date: Tue, 23 Oct 2018 06:43:21 +0100 (BST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
-cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-    Hans de Goede <hdegoede@redhat.com>, 
-    Michael Thayer <michael.thayer@oracle.com>, devel@driverdev.osuosl.org, 
-    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: vboxvideo: Removed unnecessary
- parentheses
-In-Reply-To: <20181022223126.smnsopiu4cavq6zh@smtp.gmail.com>
-Message-ID: <alpine.DEB.2.21.1810230640320.2343@hadrien>
-References: <20181022223126.smnsopiu4cavq6zh@smtp.gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=F6CUhNFq;
+       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-qt1-x841.google.com with SMTP id x24-v6so16777109qtx.11
+        for <outreachy-kernel@googlegroups.com>; Mon, 22 Oct 2018 15:31:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=IzquyG2hwJ2BGF+7yaRRqHjroYDcegrh0OUSz7w7QvU=;
+        b=F6CUhNFqBm1dX5PtOJQ3IkG7FPlT2shBGdy0fCT3No6oCv0JSjYR2CpQ4zBGcF90l/
+         Y3WtOvT/UIabzUQtZ0hsk9XioyjK9dUmFhgIQ4TBbUqgzxvqshnbO++sqHkA9QyhfjUf
+         gWi3nZiyPRvtNRjwjuyOw6mdg7e7/PZiJfIpu/bzxBr/l5Vkrv2X01TaVPQ3mcOgAM1b
+         zIed4mShgCZgrekmLIgXPso9grnLjKH2uhZetb7RtFDZ3gJj82P8iDwZxwhy848lSI6F
+         yDXEGnIQCRrUpOF3sqtaTSmec/Rz1nhGW1Yz9yxZObMlKB827+QoJVmtwlDaO++v7UC7
+         rmqw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=IzquyG2hwJ2BGF+7yaRRqHjroYDcegrh0OUSz7w7QvU=;
+        b=pWmey17JXjLFG2RIkFq4LS3UkYTAwUrlyOVrlJduaxwxBqwGMPJp9Y9vvHiuIwLyJu
+         pQoBW/b48VahHZDqQcFsdo/kg1yWzFaQk/Xpmj9RsIwvTBMSZsa+/ZAV+Zssamu3j+DS
+         Vw8cZOPCh7AVM6pAzsCZOtTXFg62hxyDtdMw7XQP6lj1H79J69IEuIzHK9RtPOr8k5L+
+         Fb95AruCQ/qF4vz1so47FJwHVHFgeh/RXnjmnrCwCuxj8irL0vuFBtplddCfC8wraJUj
+         mME4xmo7DrMsBpKaTuopmtKaduivcp1DfF7Z1mKigBsb3Xgq11QeVCLhG+9S70YUCLZ/
+         Iv6w==
+X-Gm-Message-State: AGRZ1gIx/yw5UJev9c14lVqtcVYofWaqMAwOAevC1zvirwHi4jovIiXA
+	h5fHTapU8CVdHPvbz1tmtcY=
+X-Received: by 2002:a0c:d7d1:: with SMTP id g17mr12486170qvj.183.1540247490679;
+        Mon, 22 Oct 2018 15:31:30 -0700 (PDT)
+Return-Path: <shayenneluzmoura@gmail.com>
+Received: from smtp.gmail.com ([143.107.45.1])
+        by smtp.gmail.com with ESMTPSA id 35-v6sm26181662qtr.91.2018.10.22.15.31.28
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 22 Oct 2018 15:31:30 -0700 (PDT)
+Date: Mon, 22 Oct 2018 19:31:26 -0300
+From: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Hans de Goede <hdegoede@redhat.com>,
+	Michael Thayer <michael.thayer@oracle.com>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: vboxvideo: Removed unnecessary parentheses
+Message-ID: <20181022223126.smnsopiu4cavq6zh@smtp.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: NeoMutt/20171215
 
+This patch fixes the checkpatch.pl check:
 
+vbox_main.c:119: CHECK: Unnecessary parentheses around 'rects[i].x2 <
+crtc->x'
+vbox_main.c:119: CHECK: Unnecessary parentheses around 'rects[i].y2 <
+crtc->y'
 
-On Mon, 22 Oct 2018, Shayenne da Luz Moura wrote:
+Signed-off-by: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
+---
+ drivers/staging/vboxvideo/vbox_main.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-> This patch fixes the checkpatch.pl check:
->
-> vbox_main.c:119: CHECK: Unnecessary parentheses around 'rects[i].x2 <
-> crtc->x'
-> vbox_main.c:119: CHECK: Unnecessary parentheses around 'rects[i].y2 <
-> crtc->y'
+diff --git a/drivers/staging/vboxvideo/vbox_main.c b/drivers/staging/vboxvideo/vbox_main.c
+index 429f6a453619..10a862674789 100644
+--- a/drivers/staging/vboxvideo/vbox_main.c
++++ b/drivers/staging/vboxvideo/vbox_main.c
+@@ -116,10 +116,10 @@ void vbox_framebuffer_dirty_rectangles(struct drm_framebuffer *fb,
+ 			struct vbva_cmd_hdr cmd_hdr;
+ 			unsigned int crtc_id = to_vbox_crtc(crtc)->crtc_id;
+ 
+-			if ((rects[i].x1 > crtc->x + crtc->hwmode.hdisplay) ||
+-			    (rects[i].y1 > crtc->y + crtc->hwmode.vdisplay) ||
+-			    (rects[i].x2 < crtc->x) ||
+-			    (rects[i].y2 < crtc->y))
++			if (rects[i].x1 > crtc->x + crtc->hwmode.hdisplay ||
++			    rects[i].y1 > crtc->y + crtc->hwmode.vdisplay ||
++			    rects[i].x2 < crtc->x ||
++			    rects[i].y2 < crtc->y)
+ 				continue;
+ 
+ 			cmd_hdr.x = (s16)rects[i].x1;
+-- 
+2.19.1
 
-Please use the imperative, in the subject line and in the patch.  Also,
-try to say something other than "fixes" about what you do, which is not
-very descriptive.  Say what you actually did and why, eg remove unneeded
-parentheses around the arguments of || to reduce clutter.
-
-It is useful to mention that the change was suggested by checkpatch.  It
-is not essential to copy the whole checkpatch message, or at least not all
-of them.
-
-thanks,
-julia
-
->
-> Signed-off-by: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
-> ---
->  drivers/staging/vboxvideo/vbox_main.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/staging/vboxvideo/vbox_main.c b/drivers/staging/vboxvideo/vbox_main.c
-> index 429f6a453619..10a862674789 100644
-> --- a/drivers/staging/vboxvideo/vbox_main.c
-> +++ b/drivers/staging/vboxvideo/vbox_main.c
-> @@ -116,10 +116,10 @@ void vbox_framebuffer_dirty_rectangles(struct drm_framebuffer *fb,
->  			struct vbva_cmd_hdr cmd_hdr;
->  			unsigned int crtc_id = to_vbox_crtc(crtc)->crtc_id;
->
-> -			if ((rects[i].x1 > crtc->x + crtc->hwmode.hdisplay) ||
-> -			    (rects[i].y1 > crtc->y + crtc->hwmode.vdisplay) ||
-> -			    (rects[i].x2 < crtc->x) ||
-> -			    (rects[i].y2 < crtc->y))
-> +			if (rects[i].x1 > crtc->x + crtc->hwmode.hdisplay ||
-> +			    rects[i].y1 > crtc->y + crtc->hwmode.vdisplay ||
-> +			    rects[i].x2 < crtc->x ||
-> +			    rects[i].y2 < crtc->y)
->  				continue;
->
->  			cmd_hdr.x = (s16)rects[i].x1;
-> --
-> 2.19.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20181022223126.smnsopiu4cavq6zh%40smtp.gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
