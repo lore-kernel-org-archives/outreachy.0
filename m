@@ -1,111 +1,140 @@
-X-GM-THRID: 6662096183503093760
-X-Received: by 2002:a24:108b:: with SMTP id 133mr895007ity.29.1551140142296;
-        Mon, 25 Feb 2019 16:15:42 -0800 (PST)
+X-GM-THRID: 6615030775466164224
+X-Received: by 2002:a19:519a:: with SMTP id g26-v6mr771944lfl.2.1540273204017;
+        Mon, 22 Oct 2018 22:40:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a02:9784:: with SMTP id s4ls3229816jaj.2.gmail; Mon, 25 Feb
- 2019 16:15:41 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IbSBPFymgJpA6yYG+P5bMoOJpQE2tF5bdKn+lYawYOW9qs+InafF87xlDEgmBI5y1Mt8hgI
-X-Received: by 2002:a02:89a1:: with SMTP id p30mr9278446jaj.1.1551140141499;
-        Mon, 25 Feb 2019 16:15:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551140141; cv=none;
+Received: by 2002:a19:7412:: with SMTP id v18-v6ls90088lfe.70.gmail; Mon, 22
+ Oct 2018 22:40:03 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV63natlPBye3uPdfVN9+8kqtdnmnvpKFVTJgalaLqi8ua7gohjXI23IY86GuGJBSR4RO48oz
+X-Received: by 2002:a19:6910:: with SMTP id e16mr415092lfc.42.1540273203074;
+        Mon, 22 Oct 2018 22:40:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540273203; cv=none;
         d=google.com; s=arc-20160816;
-        b=megNfDUbVBgh5B3Y87ATmJLhvHa5/osYJzgc9N8qtzCdtNrTLPE+UFdyDNLuk3f1Jm
-         /hSBtjIQEGtbUFqbcKkxHWZc/Gc8cPmxIU55RV3RtrSA5rKjor9MTnoYTR7gmB1r3Mt6
-         IvZa3Ac+ztX09Dj0d4s42M4ocfa+05g55sylChWJUj9DVtGfOLP9sXfc5msESgyr3bw7
-         z04rWRqkroFdp731YepAZ7FGai1gq4r71Bgy8GFyglKO5cZ5IvNP96qTEy3dItYJzeCZ
-         xul2f5ucld2J8t56BP8D27fWiBoppCeNY7SFpIHrK0bUIP9S7t5X38kiGNKmu5H7Wf26
-         7O/A==
+        b=vcCnZGpOpY3e6DDzOe8ahhgx5z/ZFx/XIe3NfZo2K1v6l/rQK36ncDwkXe662he0iR
+         No3WVntDA6qUABUFgFMMmy5XlXaxnhUTKuY8IURZeadz0XObhlZ6yK6p2rdovrTf7w6z
+         uttyaQ6qLLvXIxPSxhcMnhGG9+nqhB5GZFt49zDHpY6zCsyyY//CMwEUqOnKRXkBBf5p
+         jZgFAaoDe3E+eGzOG7SNVw0gip7OQiSakV80LwBeNNgmpIYqh0Lz1pFHy085eqG1Jlk3
+         1ABYtLa0ryrph0bTILs8KLj1PKTmvY87JMax5COB9RDnIZ/hSSok95jGdilFm+C+azzb
+         O7jg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=WyZ3TiRdhhy/r9GrkD4a3hWPzuQDUfUDzrc+4B+RFYI=;
-        b=NEXjBgkAiWy6/qkxxo10kkNO686PbK/xBzVoaRtcRaP0Xhaklz9NCuwIEjLaDjrqBq
-         /8JuAQRUOfNDkqGPBrfciL4Q7aEh8M+J2lEh8swA5MTBAvYYpe+lD4mP3F0UcyT1P1l5
-         ACgGzhU+GHBe4S6TEM4XTOj12b1aXDwJQNJIrDZutkB250bkn+EIK75hjGHtcYUDaHl9
-         M8m7g7AdHWjqgvXz5rhMNcFkc+OZSKIFXvT4n71X0egqsQrTlhu2ERgQ5M8/bMfaCk0G
-         0uUoB8HCJZcYjxicYC9SrA70VvCEBsE/GVoZwHjEw55/PI6tFSEX7c7y6kuNHjfNwRxV
-         uq5A==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=1C3uGgx2DFdJfs+4Mek2td9Zw/m0hZg78JIlP7LdSXE=;
+        b=zUwN46JUKMVKyA0kcpWTS8pr4Uczp68hS/MSzyMx5gp36SkrG+eYNtOw0R0R0I17Ji
+         7DIlK7jzZ3THY5jeDDLGk6ITF61rTmXHBZEHmBCJUM7qH5XdTNYZIIVxB0sZrTLeRp6c
+         RYjxOo3s83v6RGzm+0aMzJStL7hb5N6pTxDOnrdatn19Rx5duu0s/xIjrmAQBXWeRk4U
+         DqhFN4Y54pDNRTp8272+pr7fHUz/sK0yJXMIGlrIIgy2Xusj1G0uc6TGPNM/b3QrqBN/
+         tz0tHcK3e4CbgJisD/FAzxN0PYr/Ybaoy08rKZHr7zAp0nAlHNm2TeEiL9Po5NvAmOv5
+         lf4A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iZlDnOd6;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
-        by gmr-mx.google.com with ESMTPS id d127si593287iof.1.2019.02.25.16.15.41
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id w13-v6si5881lfe.3.2018.10.22.22.40.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Feb 2019 16:15:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
+        Mon, 22 Oct 2018 22:40:03 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iZlDnOd6;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x643.google.com with SMTP id r14so5264645pls.12
-        for <outreachy-kernel@googlegroups.com>; Mon, 25 Feb 2019 16:15:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=WyZ3TiRdhhy/r9GrkD4a3hWPzuQDUfUDzrc+4B+RFYI=;
-        b=iZlDnOd6f/4U2Ducp4KNUMgtMtvRNDv1iHIwqS7Px2MvhcwuogaKmwwqaOtZWSZTwQ
-         jYBCJbvmdciyEnDh28KNy3nCF5pqDLdFpbOln71WYPY+kbFVWC1A4xUXgRG0LNk6Sal8
-         rGAuNWV9wa5OYUvkpM19SaBBb3kIAm7wL8g9eIX2Vh4W9P9opsYgCe8Pi+8nA0EdRM3+
-         S4GyQU62DOeQDvfOi78u7JddIXBiIakRmojxZ/TkH+2VK9TzRaw7DLW0s+e6JlQ4GlZv
-         rhm6hkDZKLCQ5s0JPl55rty8QwNpVJhQzn137CzuGvaBfwzOB41fwr98gah0levbMFVW
-         qLqg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=WyZ3TiRdhhy/r9GrkD4a3hWPzuQDUfUDzrc+4B+RFYI=;
-        b=fIstwIR9K9ZSPdiuJoESTLqKuThNVNDVw2eOEtwjqJdrmdBWJWmm1HS7LqTXgI8vyK
-         ZpIszpigwDzz6lUDO2RZPjQrUnBF3utnnBOnsKT7nZ29Fc0MhFshCQCLautiCttQr2LS
-         645YZjYHSS1+IbcxRSP0bmP+RMxmPGjdCAiSVnsUjEbK8hWLEB2UfZdqUk4fEO4xiN0h
-         90Qd7to7+1dPKF5P8vMHjE+h33NqYZXN1SdxIHdiVz7BnOXrHL15ufbOCezBoBvjy/Dn
-         vw1yEhue0BjBhpg0C8laTwYTmAEBk9vF+FkxLMgTSQFNwVMBz2/UffuJlQejsfMiPDoY
-         j7LQ==
-X-Gm-Message-State: AHQUAua0jZlsi47DD4whz5+rSfj4o+GA8JagCXXEKRqREsxRZABuDY6k
-	eGUNdc5NCjemVfXLdtdVmMVc9gNJ7Vk=
-X-Received: by 2002:a17:902:6508:: with SMTP id b8mr23571711plk.17.1551140140357;
-        Mon, 25 Feb 2019 16:15:40 -0800 (PST)
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from localhost.localdomain ([183.83.84.116])
-        by smtp.googlemail.com with ESMTPSA id e63sm30723858pfc.47.2019.02.25.16.15.38
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Feb 2019 16:15:39 -0800 (PST)
-From: Bhanusree Pola <bhanusreemahesh@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v4] Staging: ks7010: Match alignments with open parenthesis
-Date: Tue, 26 Feb 2019 05:45:23 +0530
-Message-Id: <20190226001523.14838-1-bhanusreemahesh@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.54,414,1534802400"; 
+   d="scan'208";a="283000004"
+Received: from 30.9-255-62.static.virginmediabusiness.co.uk (HELO [172.16.7.66]) ([62.255.9.30])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 23 Oct 2018 07:40:01 +0200
+Date: Tue, 23 Oct 2018 06:40:01 +0100 (BST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Maya Nakamura <m.maya.nakamura@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtlwifi: Remove unnecessary
+ variable
+In-Reply-To: <20181022231706.GA2384@k-vBox>
+Message-ID: <alpine.DEB.2.21.1810230639430.2343@hadrien>
+References: <20181022041747.GA2618@k-vBox> <alpine.DEB.2.21.1810220805200.2325@hadrien> <20181022231706.GA2384@k-vBox>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Adjust parameters of "netdev_dbg" to match alignment with
-open parenthesis.
-Issue found using checkpatch.pl
 
-Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
----
 
-v2: commit log modified to be imperative
-v3: commit log modified
-v4: commit log and subject line corrected
+On Mon, 22 Oct 2018, Maya Nakamura wrote:
 
- drivers/staging/ks7010/ks_hostif.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> On Mon, Oct 22, 2018 at 08:08:10AM +0100, Julia Lawall wrote:
+> >
+> >
+> > On Sun, 21 Oct 2018, Maya Nakamura wrote:
+> >
+> > > Remove an unnecessary variable that is declared and assigned a value only
+> > > to return it. Issue found by Coccinelle's semantic patch results for
+> > > returnvar.cocci.
+> >
+> > Just looking around in this code, just above there is a function with
+> > double { { } } that could be cleaned up.
+> >
+> > Looking further, in phydm_process_rssi_ofdm there appear to be variables
+> > with parentheses around them.  Maybe you can look around in this file for
+> > other things to clean up.
+> >
+> > The following does not look so good either:
+> >
+> > 	if (entry->rssi_stat.ofdm_pkt ==
+> > 	    64) { /* speed up when all packets are OFDM*/
+> >
+> > julia
+>
+> Thank you for explaining to me what more I can do with the same file!
+> I will look for more and resubmit this patch, or I might be able to
+> try my first patchset.
 
-diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
-index d938b0997a53..e48fc36b6ebd 100644
---- a/drivers/staging/ks7010/ks_hostif.c
-+++ b/drivers/staging/ks7010/ks_hostif.c
-@@ -730,7 +730,7 @@ void hostif_scan_indication(struct ks_wlan_private *priv)
- 	priv->scan_ind_count++;
- 	if (priv->scan_ind_count < LOCAL_APLIST_MAX + 1) {
- 		netdev_dbg(priv->net_dev, " scan_ind_count=%d :: aplist.size=%d\n",
--			priv->scan_ind_count, priv->aplist.size);
-+			   priv->scan_ind_count, priv->aplist.size);
- 		get_ap_information(priv, (struct ap_info *)(priv->rxp),
- 				   &priv->aplist.ap[priv->scan_ind_count - 1]);
- 		priv->aplist.size = priv->scan_ind_count;
--- 
-2.17.1
+Make a patchset, because these are different issues.
 
+julia
+
+>
+> Maya
+>
+> > >
+> > > Signed-off-by: Maya Nakamura <m.maya.nakamura@gmail.com>
+> > > ---
+> > >  drivers/staging/rtlwifi/phydm/phydm_hwconfig.c | 3 +--
+> > >  1 file changed, 1 insertion(+), 2 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
+> > > index 90a41c64c0c2..fdc9af56e9d7 100644
+> > > --- a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
+> > > +++ b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
+> > > @@ -491,8 +491,7 @@ static u8 odm_sq_process_patch_rt_cid_819x_lenovo(struct phy_dm_struct *dm,
+> > >  						  u8 is_cck_rate, u8 pwdb_all,
+> > >  						  u8 path, u8 RSSI)
+> > >  {
+> > > -	u8 sq = 0;
+> > > -	return sq;
+> > > +	return 0;
+> > >  }
+> > >
+> > >  static u8 odm_evm_db_to_percentage(s8 value)
+> > > --
+> > > 2.17.1
+> > >
+> > > --
+> > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20181022041747.GA2618%40k-vBox.
+> > > For more options, visit https://groups.google.com/d/optout.
+> > >
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/alpine.DEB.2.21.1810220805200.2325%40hadrien.
+> > For more options, visit https://groups.google.com/d/optout.
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20181022231706.GA2384%40k-vBox.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
