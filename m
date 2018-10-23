@@ -1,86 +1,85 @@
 X-GM-THRID: 6615419425157808128
-X-Received: by 2002:a5b:649:: with SMTP id o9-v6mr7929693ybq.20.1540323372494;
-        Tue, 23 Oct 2018 12:36:12 -0700 (PDT)
+X-Received: by 2002:aa7:828e:: with SMTP id s14-v6mr21374874pfm.15.1540323133519;
+        Tue, 23 Oct 2018 12:32:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:f30c:: with SMTP id c12-v6ls1817639ybs.2.gmail; Tue, 23
- Oct 2018 12:36:11 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5cmk9WfOrYW+gGp4fF3EzTsM8CiY19nnaf85Ep0bcFqV6pBbfgJQERQGnCDzh4UaYa+kDwH
-X-Received: by 2002:a25:7805:: with SMTP id t5-v6mr6000688ybc.41.1540323371686;
-        Tue, 23 Oct 2018 12:36:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540323371; cv=none;
+Received: by 2002:a62:8a54:: with SMTP id y81-v6ls1942409pfd.11.gmail; Tue, 23
+ Oct 2018 12:32:12 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62aTJanwdWrMLw+W+q0vQPqfeMujW9I5JRZokn4e+3i4jsCqDlW5RSQtb4a3FFdDNpzFkob
+X-Received: by 2002:a62:44c3:: with SMTP id m64-v6mr26521431pfi.48.1540323132698;
+        Tue, 23 Oct 2018 12:32:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540323132; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xs6U1N0H5TYntCoqdA+z2N/dSQcucbimIiSW3BQziTJ3AddVXmgQd0pclILG7kf2In
-         58XxjdtVsEcF0NIdwgUpn7FYDIFE0DBX5ed6agDvDd5a8qcc7wRMl095H535Orh6CWiG
-         Yyfii/qy+0llJsjAkn6yI92MELKqOc4nwEi2j5dq+qF8zoSA3nteIYjEAOTsWX3jFb5J
-         s8mabz9mQ5ehCNl0P2C2Yl9faIAFa2VDretG36DLsdOMKCt/QTMNs1E1bzAhj+bvUl0n
-         qCc6CL+yiy7nF179Af3Ny9RXwhb2dnNsTFTemiQ9NepKczm6eaZTtj8fU9rCSG0Did3X
-         QXlw==
+        b=drGxdSuiaLfD/bZfywLwvpL9llyv2rBfeY6oID2isrWzonagC8bCF1caDm3SEFHZGS
+         lYg4cNOoid/dU2PkbfMY5Vc3hKin3a8teFyQ0yI3Tub22bEND0LPYhdgcyhjujqA0yUS
+         kF2SOtjWQl67ADl3wAGEtwAIA5jDXIBrQVZxUy23S5m+kunAK3FmR3jmHpofWK60ysIt
+         pP0q/QZ4wMidG/CBbEliCVSt/8g9nwLJWmOoKZwYn3C62wPkiyktSnNXck/S0MtQc31b
+         C80yAKMPtom7iPAxpLFRU69fqI/Ux2EFZK8o/iHuo2w4QgWZTmuZqw86GayXX07C38R+
+         8gzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
         bh=k7wRywZal5tZkfp4iNr5/9ES1DWPJg2BFOqZjtdFYkY=;
-        b=BimVgvCGv+kULcbWCWaHRedLD4aEy4HSMkwvZVDjhX3MJdlFcCkD+B9hGbF4a/zOOW
-         GgnZe1Oap7MZdAzz7+zOPzj09yNMj76U/L+LatWKN8xm/U45lATeO+Y7ru1PQY7f3DE4
-         djBEVE4gH1zQQb5f31DYMLd3MrsWRKFRBaivftqIRdZn5i+DRE0YxrQQAlCEmOrTNGBW
-         EQYZ4EB5B/+ICmAjPGjxXcd1X4HVCx2SxvnMbgiSyzOmHkhGSb2YXsnsQk+zAkFXg6aI
-         dq4DukfwAifw4GlPo/BsPNLP4egqwqcnVstnq/KUpdLu5oEPLK+j8BOtsvS/+2VfA4kI
-         sZAQ==
+        b=wpRkli2DnqiQ9EZXOnWdU8oMb5ntqEo/J+L54hiGHshDq7r7JOFDKjEzC11d2xq5qh
+         Yv6xUVvtOYg6UVF+bTDqMW5v7BE7AqawYrp35H6ChHljP/aC9llj3ERa6nF9XHJEQPMo
+         AKqbdmqxZlRa82+ni/cqwWzRFDjuvKsDS3bmHwpFOKvdX9l9WbnnMR7lxQfzitGoUOu8
+         UXKY+ECP9NBu6TqyJSink7Xw4rDz6hDh8yBrY1VUc8D6Q/e3nGKXvuWaIDhi0FRkAan7
+         jmhZScJyrOzKhieroKGtAK5P6DZZzqYlueHl71jSgQEiTnKVFXsRQ+6l10drn5LBKTpy
+         CWgg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ie+RAQZ7;
-       spf=pass (google.com: domain of turnerzdp@gmail.com designates 2607:f8b0:4864:20::136 as permitted sender) smtp.mailfrom=turnerzdp@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=EksXl7Vk;
+       spf=pass (google.com: domain of turnerzdp@gmail.com designates 2607:f8b0:4864:20::131 as permitted sender) smtp.mailfrom=turnerzdp@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <turnerzdp@gmail.com>
-Received: from mail-it1-x136.google.com (mail-it1-x136.google.com. [2607:f8b0:4864:20::136])
-        by gmr-mx.google.com with ESMTPS id s132-v6si115647ywg.1.2018.10.23.12.36.11
+Received: from mail-it1-x131.google.com (mail-it1-x131.google.com. [2607:f8b0:4864:20::131])
+        by gmr-mx.google.com with ESMTPS id r130-v6si122906pgr.2.2018.10.23.12.32.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 23 Oct 2018 12:36:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of turnerzdp@gmail.com designates 2607:f8b0:4864:20::136 as permitted sender) client-ip=2607:f8b0:4864:20::136;
+        Tue, 23 Oct 2018 12:32:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of turnerzdp@gmail.com designates 2607:f8b0:4864:20::131 as permitted sender) client-ip=2607:f8b0:4864:20::131;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ie+RAQZ7;
-       spf=pass (google.com: domain of turnerzdp@gmail.com designates 2607:f8b0:4864:20::136 as permitted sender) smtp.mailfrom=turnerzdp@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=EksXl7Vk;
+       spf=pass (google.com: domain of turnerzdp@gmail.com designates 2607:f8b0:4864:20::131 as permitted sender) smtp.mailfrom=turnerzdp@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-it1-x136.google.com with SMTP id c23-v6so3302044itd.5
-        for <outreachy-kernel@googlegroups.com>; Tue, 23 Oct 2018 12:36:11 -0700 (PDT)
+Received: by mail-it1-x131.google.com with SMTP id e81-v6so2384455itc.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 23 Oct 2018 12:32:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+        h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
         bh=k7wRywZal5tZkfp4iNr5/9ES1DWPJg2BFOqZjtdFYkY=;
-        b=Ie+RAQZ7bFmU1Gw17qtZirS+wHJViW9NBRI9J2BaH2IiUHRvDy8IpzFCqzcXcbfVrx
-         f9BNjuFjQqlAw0G8x5jeeplr3AEMwYwQ7JqFLtVL9O8/Ug8Nray06GgUt7h3GaWnJh5Y
-         Za/wl7IzXOp09JbXT+mWwJRQwSKViq3vLNqEZSP9a69MgNOu0Y7+oeHjDZONheKxqKqH
-         dooEW/iWvcXk92zQXyB4iV1wJkMb/KDwlhohckAFX7zrsIKJIG20+J5zRFuAf/QPhYld
-         pBsEsHyBW9AUBg2h+TJMbX37h7tzZ+Oj1NwZ6bo1AV0/VvRmEfsZRf9QPudLS21jyN9W
-         qJnw==
+        b=EksXl7VktoqLe83GG+idPhPLYt7Doi2V6LqdwBroAhB6E48NZxEGN6LdvpvB6SzncY
+         0lIeWxroVyO/qTWWYk3ad+QjAhC+wm6ZWUZLW0/IlhW0bGHOcQGJh+F8+R4Ml1ufC9HW
+         iBvL1hfevSRIa6K4/slMhwBqKCPhR3z/4nDUInPf1jK9r0yqzmju6a9EZFVa4tcrDgXZ
+         JwMzTkyFCRNFCW3BPrtuSfBZ8UUfV0iZnchb8aOpMQHa+x2ttLiQWjn+iErLcXAB8K/5
+         NJUYo5O0uxgYEgLCM7cszG4jKptY8rUEN5ruRhZLINCFX9rIINt5uSc6dYn1QkmvB9DM
+         s5Zg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
         bh=k7wRywZal5tZkfp4iNr5/9ES1DWPJg2BFOqZjtdFYkY=;
-        b=haT/vMpmXH4xQGC0gGNXf5JTq0DFU9eva+Ss77OGdLNprBuUeYYmkBmNVH0mvUdntV
-         ug846P09o/YXrD6JQWFJr2tUF7yqlWnEHmhIoIy3o0kRkgcB08WmNh1G/GOlC35wHgr5
-         jF8R5I1o/Yhy5iGt1Q87pfZEBN8G7K4wRz2nI6MQ6xY29AcJiAZ2mGZHdB36ZDopQOG2
-         Tlil3olAfINH8TOnhg3jtZfWSz1Kt0pN/P4lUm8NWgkf8HvfGV20LAzDcIlkq0j6nSK/
-         l9zpFhSr8lUWPSoeJEYgMVUOM+PIEJBWxPHZBwvZxdBUlSDv0N4TeoiMCOBHpJpGJiCQ
-         aUSQ==
-X-Gm-Message-State: ABuFfoi9hVCwCmv0hLl5AlxoTe3RrJqldAkFRZez/KT/LVDYG6SFtxoc
-	bEBaCjvH8GK9IOWkhHsAD8I=
-X-Received: by 2002:a24:dd05:: with SMTP id t5-v6mr13948622itf.114.1540323371436;
-        Tue, 23 Oct 2018 12:36:11 -0700 (PDT)
+        b=IrnSDTAEYJkLZob5kqhjSq/1YXA07fuT2eyGh9aniSomm0E0avjXlC/Zc+Y1kWbclT
+         LPPu59MYIVQwrR8eOzfyer+74Hxtzsm5D/UIGw7kFMJ7UFPbbgilWMkFwdn9ZwJZXmbO
+         t2+4Su+12AXfxkZhqh1dLs8E6gBQpFlFWfSIS2/1W1L1nrrxFOp4ZAfj2Jmo5IdOhRIY
+         M42lZJUUlKNo1Dramj4i61RXl5K5RomH6hK8OgGYXkAZhnmfO0LV/IcxMb+ZBjVQIN/8
+         V//DqZ7TPIUjhADW3SkRYiOKYDyxXxv/0S82zUdblRcsJXIBomAe4jPR0SL5PFHri69F
+         t87w==
+X-Gm-Message-State: ABuFfoi1e6tOk4yTcPPMY/NiaEPyEfrme2dKmk4eLbJ+vylSghfYZR2F
+	TM+S9mEtOBqz+0ERl9jn1/ZBQm8KCkQ=
+X-Received: by 2002:a02:5f5a:: with SMTP id r87-v6mr39233523jab.22.1540323132166;
+        Tue, 23 Oct 2018 12:32:12 -0700 (PDT)
 Return-Path: <turnerzdp@gmail.com>
 Received: from venus ([2601:285:300:e6d0:b8aa:85e3:42c7:79a7])
-        by smtp.gmail.com with ESMTPSA id s14-v6sm734307ioj.71.2018.10.23.12.36.10
+        by smtp.gmail.com with ESMTPSA id 10-v6sm2136696itl.32.2018.10.23.12.32.10
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Oct 2018 12:36:10 -0700 (PDT)
-Date: Tue, 23 Oct 2018 13:36:09 -0600
+        Tue, 23 Oct 2018 12:32:11 -0700 (PDT)
+Date: Tue, 23 Oct 2018 13:32:10 -0600
 From: Zach Turner <turnerzdp@gmail.com>
 To: gregkh@linuxfoundation.org, hwentland@gmail.com,
 	manasi.d.navare@intel.com, daniel.vetter@ffwll.ch,
 	outreachy-kernel@googlegroups.com
-Cc: jkmaline@cc.hut.fi
 Subject: [PATCH v2] staging: rtl8192e: Add SPDX-License-Identifier - Style
-Message-ID: <20181023193609.GA32288@venus>
+Message-ID: <20181023193210.GA32104@venus>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
