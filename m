@@ -1,110 +1,137 @@
-X-GM-THRID: 6523837369429262336
-X-Received: by 10.36.117.194 with SMTP id y185mr2389521itc.56.1518949253458;
-        Sun, 18 Feb 2018 02:20:53 -0800 (PST)
+X-GM-THRID: 6613801848773017600
+X-Received: by 2002:a50:e70e:: with SMTP id a14-v6mr662247edn.11.1540303200000;
+        Tue, 23 Oct 2018 07:00:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.174.80 with SMTP id x77ls380350ioe.16.gmail; Sun, 18 Feb
- 2018 02:20:52 -0800 (PST)
-X-Google-Smtp-Source: AH8x226h4RmMVOBcBh76JAmbESwZ3vvtnPlst4YCbTQJSuZfUzuIr9nucvAZXM1L8i4eovpFClz8
-X-Received: by 10.107.167.208 with SMTP id q199mr7943956ioe.84.1518949252574;
-        Sun, 18 Feb 2018 02:20:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518949252; cv=none;
+Received: by 2002:a17:906:69c5:: with SMTP id g5-v6ls745115ejs.0.gmail; Tue,
+ 23 Oct 2018 06:59:59 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV617/QFnMFGjenmIWMGTXNIl/aY1G739LXzxHQfKsoPim5KAk902SY6Ht8/Al7qld01UeY7H
+X-Received: by 2002:a17:906:28cf:: with SMTP id p15-v6mr1524336ejd.11.1540303199121;
+        Tue, 23 Oct 2018 06:59:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540303199; cv=none;
         d=google.com; s=arc-20160816;
-        b=A3IG3P3+sRYSS5SlYUoyvtrRIbx+X7O5DR1YsTzvAy7Qq2rGI+gEsZyrMfq2PBf22/
-         w3AIsen+qKsG9Csl6H3FvQEY6E8vRVWmcRSeaPqX/BpGLsHojxvgVtDCFvrlHa4rYGdf
-         4ZmgrB/xEc27vjy8miGBwEZHOphOo81fFEzZO6tvsLKACfSa0nCCyg0bZhpnctMchxYE
-         UGJIjGpN5qHrIXvCK4oXWJY9CnmsYDtFDx1XauSUQ9viP1nUeJMOsAkOBP8HQJSH1Dfg
-         P0lYil4v+/dzXsI+o8sqFmKE5LWyds671kADJPQFoP5z+ee9q69sNri+0jVOot7alfXD
-         NFVA==
+        b=PGo7PZdt7JN0B3tp0tIjRtRIBUlY/Q0YqHf+Qv+CSpnm87ZXP9u6FHBFhqjTwdzlJz
+         YPJutP4PI7gjoJEOMr7w3Jvj+8gsajf7mwMq69Tts77GZ7QOjHGY5yoNkdkPTDU/xQe8
+         ne81BkAOlqlgRjUX7uT6Pp1BY4+CN+znw4+9y7PkN8YhbnCAdYlVxBE0RjOCI4+kNrEp
+         gfEgPynUgzPSFKCnug/J8bpCqY0md5utddsII+e8H9NRNHLqwS6W5PKvFM51oTLyfJx8
+         1mMnyzQkZo4C2hevqopGNuqwJV7yyPNhCY1YekQf7ZtZ1uMkVUtQ02/45F5toOTul5IV
+         c9+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=Ids22nm9trl6dl+9BX+jfTFX8raUx+o5+Uv9AouJc6M=;
-        b=Fk5dLC0ddwRqcha0oMAIT9lyqTy2KjxfSwPILLKDjzPFDgf3oYEardSrlHI+THLnc+
-         LGm0sfi6h3Ji2JUSDKY57hkOqOCuz8+vb539ENO2Sp4JOTs8lyyzWJuxtdwBRGAzrC9J
-         uC56xXsOiqeL4Bg+gTuYYGLqB3zq0sxmBWtBuZ1kKItQAOVaP2YKsY7tjKIQP16t0iwS
-         JBpgKDFdkxe2yhJcUupemcNCI++Xj/cmvr+A0UfDMlvSZl0/gcPu33BWKW7inXcreUAa
-         w1UU9KjMOmbx3kMsGecxXfNZgRQvLH7rWFvasTMNsykpDG/1U8semWi3SXy0NLFXElkA
-         asUA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:sender:dkim-signature;
+        bh=LwlRnl0/QG/aVJevax8uBR8wuTqYjIor10ZhMv1IVu0=;
+        b=YKdokKDP7xJgjeZD/vtAxAhliuOxoBT5FNupI+uZ52Geyu0EGlt3YkRDQreTYu54HX
+         3zkItxk689gBonpEZf/5aPOJMizDBsCAh+xGKy30iDTQ99mr7DafsLTjKdIeJPR8jPbT
+         HFQnlEtr3hnwJf+EnfQ9lpuqeCTKZ8aRywCdSu4Xvw/N4COmykt/zAI48mH8rWsL8DqB
+         popiWeiTBXkxB+dzguIPOJcTIgKn5La+4AKKwx5JMvfTBhePdKfcmB822x3KwJzkVWOZ
+         DxMEcEPHsQn9dm6oOZcKzBsd17OLH0Q9FDkF6PF6OwKGg5KnV8vaAyQk/KBxFOCENx4m
+         6n1w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DyveacI7;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::243 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <santhameena13@gmail.com>
-Received: from mail-pl0-x243.google.com (mail-pl0-x243.google.com. [2607:f8b0:400e:c01::243])
-        by gmr-mx.google.com with ESMTPS id n14si247356ith.1.2018.02.18.02.20.52
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=O1b2WUU1;
+       spf=neutral (google.com: 2a00:1450:4864:20::543 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
+Return-Path: <daniel@ffwll.ch>
+Received: from mail-ed1-x543.google.com (mail-ed1-x543.google.com. [2a00:1450:4864:20::543])
+        by gmr-mx.google.com with ESMTPS id l47-v6si47552edc.2.2018.10.23.06.59.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Feb 2018 02:20:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::243 as permitted sender) client-ip=2607:f8b0:400e:c01::243;
+        Tue, 23 Oct 2018 06:59:59 -0700 (PDT)
+Received-SPF: neutral (google.com: 2a00:1450:4864:20::543 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) client-ip=2a00:1450:4864:20::543;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DyveacI7;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::243 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl0-x243.google.com with SMTP id x19so4105870plr.13
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Feb 2018 02:20:52 -0800 (PST)
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=O1b2WUU1;
+       spf=neutral (google.com: 2a00:1450:4864:20::543 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
+Received: by mail-ed1-x543.google.com with SMTP id z21-v6so1710778edb.11
+        for <outreachy-kernel@googlegroups.com>; Tue, 23 Oct 2018 06:59:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Ids22nm9trl6dl+9BX+jfTFX8raUx+o5+Uv9AouJc6M=;
-        b=DyveacI7kBs01yDpnCjE5gu3Lbhp6iSwgrwb2uaF3X+xtCw31fYSTpixaD+vOiuUnE
-         YFRsuIHJ5TBT+kFLDH6uCIOgqFWqulzmqyvJdoyJycv60d2ss3DovKEIs7GaZOm+VY1w
-         5Y6ujqBd3ln3sp+z1U1uGnVOiAxyo+l1U/lJLofdThPEQyC4jbrCK4dG8nrKo2L9/QpY
-         cpafhDy3jHezNo8War+I+tI2/rAiy0aZOezA8bXH1pbmtj5nW0HjsWwXX7t0xqbDO5V5
-         QSvfiI7/yPCTxA/Z+iU+qU7DJppQrK6WIeRMSSuHiN9mFMUm8URBEjprbYVr5Rv1LbaK
-         leDA==
+        d=ffwll.ch; s=google;
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=LwlRnl0/QG/aVJevax8uBR8wuTqYjIor10ZhMv1IVu0=;
+        b=O1b2WUU1y2LkfNsHS0nput3ImUUYg3aEYzVPyU6pSve1c5084snJQhRFxndTcAgLJ9
+         Xi1xWFmXsqbWQ+a3zA2mMvc1/ZJyIaSSPFit6b7NjQ1KbG/aNMxgQGnghIoANHzdug88
+         abVb2fi66NaBmuoyAYg/r2T8ChmlUNVd8L1DI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Ids22nm9trl6dl+9BX+jfTFX8raUx+o5+Uv9AouJc6M=;
-        b=rMTfzQ3GbvMoCq5ocLICCaZXqm/F8pfVvksBUuSwvWF873eY5MI4ptBtQHaex9ZOG2
-         Oy/NNJO7S8ALEFQQk7ty7sePImH83E4EK4fMNkSTijt3c2R5J0vG3iEYrfCebHB2soHv
-         JgfddVflAUnyQJ0N+do5i9Xkq7LOW4fV/u5BUZT4j4EsPzy0nsFL4fGMDlCXgETSR0/I
-         i8Ng51meQwBgFv1JWI85NXSi+JTGRUnV0CDN/2hFnNe9gc1prjz87O4MF+kX2RiqyBDF
-         1WlbBDTSABCoPO2WfR7iBA68wT95Wp3WKbUnhDQiQGPlwzcnfKzgZ4T8zOusqObEA4vP
-         YKlw==
-X-Gm-Message-State: APf1xPDvRo/ZmSzNeWd7DiqxmWob+qi+xeL/R1QEk2zRoIVMFC8Hn0/I
-	Rueuf5MLeyda28+/d21Cris=
-X-Received: by 2002:a17:902:4383:: with SMTP id j3-v6mr10849207pld.320.1518949252002;
-        Sun, 18 Feb 2018 02:20:52 -0800 (PST)
-Return-Path: <santhameena13@gmail.com>
-Received: from localhost.localdomain (ResNet-23-187.resnet.ucsb.edu. [169.231.23.187])
-        by smtp.gmail.com with ESMTPSA id r78sm12573213pfb.24.2018.02.18.02.20.50
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 18 Feb 2018 02:20:50 -0800 (PST)
-From: Santha Meena Ramamoorthy <santhameena13@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: aditya.shankar@microchip.com,
-	outreachy-kernel@googlegroups.com,
-	Santha Meena Ramamoorthy <santhameena13@gmail.com>
-Subject: [PATCH] Staging: wilc1000: wilc_wfi_cfgoperations: Fixed a coding style issue
-Date: Sun, 18 Feb 2018 02:20:44 -0800
-Message-Id: <1518949244-48499-1-git-send-email-santhameena13@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+         :references:mime-version:content-disposition:in-reply-to:user-agent;
+        bh=LwlRnl0/QG/aVJevax8uBR8wuTqYjIor10ZhMv1IVu0=;
+        b=QUOF9bjjD/BL/ebHxsOU3sjRT8lt1TSJMpOcuaGtt9Xe8T8S38zujb5Rh5Idm2DAtX
+         uPwoppptPc0VNRjA5qCam/Vls/+eddHkarErtglTwC7l+SkO80oI+28q9dNhda6D81ei
+         bmYHh+IKahnyv9aBxaBaks2x++yhtah77JLBao+HXNzhhiz953DOXuDEQZZXjvRWJe2/
+         hStHyCkq3Ak4y0IxnS4+kXDpjuQVty/AT9tAmKEr4GS6Wz5V14aC7Shp5XhhArqEb9DI
+         4g9MqUFNNGv4ttna+aKIg9yXzd5uPe7S8QQ7GW4a5QBmYOoTN/sZR0BFqjq1jcbCNO9G
+         +m+g==
+X-Gm-Message-State: AGRZ1gJTcVBStsA6V1Cv1mAFPKoFgMKGmoTM2ymbk4946VD4gXkIxtpv
+	KtcVWV7GEbp3ZT4UbW1MG8uV5Z0NXJc=
+X-Received: by 2002:aa7:d4c9:: with SMTP id t9-v6mr4212141edr.256.1540303198906;
+        Tue, 23 Oct 2018 06:59:58 -0700 (PDT)
+Return-Path: <daniel@ffwll.ch>
+Received: from phenom.ffwll.local ([2a02:168:569e:0:3106:d637:d723:e855])
+        by smtp.gmail.com with ESMTPSA id b16-v6sm527310edt.70.2018.10.23.06.59.57
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 23 Oct 2018 06:59:58 -0700 (PDT)
+Sender: Daniel Vetter <daniel.vetter@ffwll.ch>
+Date: Tue, 23 Oct 2018 15:59:56 +0200
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Sean Paul <sean@poorly.run>
+Cc: Mamta Shukla <mamtashukla555@gmail.com>,
+	outreachy-kernel@googlegroups.com, Dave Airlie <airlied@linux.ie>,
+	Daniel Vetter <daniel.vetter@ffwll.ch>,
+	dri-devel <dri-devel@lists.freedesktop.org>
+Subject: Re: [PATCH DRM] drm: msm: adreno: Use PTR_ERR_OR_ZERO rather than
+ if(IS_ERR(...)) +PTR_ERR
+Message-ID: <20181023135955.GV324@phenom.ffwll.local>
+References: <20181018204815.GA23390@armorer>
+ <CAMavQKLZu7nKpYb0N45dNZhm2L9bC6LNf87hSHpOrzYrAPK6eQ@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAMavQKLZu7nKpYb0N45dNZhm2L9bC6LNf87hSHpOrzYrAPK6eQ@mail.gmail.com>
+X-Operating-System: Linux phenom 4.18.0-2-amd64 
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-Fixed the checkpatch warning "braces {} are not necessary for single
-statement blocks"
+On Tue, Oct 23, 2018 at 08:54:36AM -0400, Sean Paul wrote:
+> On Thu, Oct 18, 2018 at 7:11 PM Mamta Shukla <mamtashukla555@gmail.com> wrote:
+> >
+> > Use PTR_ERR_OR_ZERO rather than if(IS_ERR(...)) + PTR_ERR because its
+> > better to have inlined function rather than code-opened implementation.
+> >
+> > Signed-off-by: Mamta Shukla <mamtashukla555@gmail.com>
+> 
+> Reviewed-by: Sean Paul <sean@poorly.run>
 
-Signed-off-by: Santha Meena Ramamoorthy <santhameena13@gmail.com>
----
- drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+Applied to drm-misc-next so Julia can easily spot them all. Thanks for
+patch&review.
+-Daniel
+> 
+> > ---
+> >  drivers/gpu/drm/msm/adreno/a5xx_gpu.c | 5 +----
+> >  1 file changed, 1 insertion(+), 4 deletions(-)
+> >
+> > diff --git a/drivers/gpu/drm/msm/adreno/a5xx_gpu.c b/drivers/gpu/drm/msm/adreno/a5xx_gpu.c
+> > index 6a68493..b751b76 100644
+> > --- a/drivers/gpu/drm/msm/adreno/a5xx_gpu.c
+> > +++ b/drivers/gpu/drm/msm/adreno/a5xx_gpu.c
+> > @@ -1222,10 +1222,7 @@ static int a5xx_crashdumper_init(struct msm_gpu *gpu,
+> >                 SZ_1M, MSM_BO_UNCACHED, gpu->aspace,
+> >                 &dumper->bo, &dumper->iova);
+> >
+> > -       if (IS_ERR(dumper->ptr))
+> > -               return PTR_ERR(dumper->ptr);
+> > -
+> > -       return 0;
+> > +       return PTR_ERR_OR_ZERO(dumper->ptr);
+> >  }
+> >
+> >  static void a5xx_crashdumper_free(struct msm_gpu *gpu,
+> > --
+> > 1.9.1
+> >
+> > _______________________________________________
+> > dri-devel mailing list
+> > dri-devel@lists.freedesktop.org
+> > https://lists.freedesktop.org/mailman/listinfo/dri-devel
 
-diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-index 621810d..df04bf80 100644
---- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-+++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-@@ -287,9 +287,8 @@ static void remove_network_from_shadow(struct timer_list *unused)
- 		}
- 	}
- 
--	if (last_scanned_cnt != 0) {
-+	if (last_scanned_cnt != 0)
- 		mod_timer(&hAgingTimer, jiffies + msecs_to_jiffies(AGING_TIME));
--	}
- }
- 
- static void clear_duringIP(struct timer_list *unused)
 -- 
-2.7.4
-
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
 
