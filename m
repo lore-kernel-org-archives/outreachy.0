@@ -1,134 +1,127 @@
 X-GM-THRID: 6615609378154217472
-X-Received: by 2002:a37:1183:: with SMTP id 3-v6mr2445501qkr.40.1540552988810;
-        Fri, 26 Oct 2018 04:23:08 -0700 (PDT)
+X-Received: by 2002:a37:b4c3:: with SMTP id d186-v6mr15420285qkf.56.1540316589939;
+        Tue, 23 Oct 2018 10:43:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:9ad9:: with SMTP id k25ls628252qvf.0.gmail; Fri, 26 Oct
- 2018 04:23:08 -0700 (PDT)
-X-Received: by 2002:a0c:e809:: with SMTP id y9mr2420416qvn.62.1540552988265;
-        Fri, 26 Oct 2018 04:23:08 -0700 (PDT)
-Received: by 2002:a37:9ad5:0:0:0:0:0 with SMTP id c204-v6msqke;
-        Fri, 26 Oct 2018 04:11:14 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5f6U1YBWxUhKwaqo0n04/Oc2JCh5ayZtYLyMLdEWelsa0mxVvwobdEahyJ9EBNy+FBvc80b
-X-Received: by 2002:a50:c982:: with SMTP id w2-v6mr492553edh.12.1540552273795;
-        Fri, 26 Oct 2018 04:11:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540552273; cv=none;
+Received: by 2002:a37:4889:: with SMTP id v131-v6ls2160026qka.3.gmail; Tue, 23
+ Oct 2018 10:43:09 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62stOtm+FwOZEaEHzUep1rhYPDMsaDPd9Q1Ic51gFR6QGqUu0R4TUd8Y/0X/uzqntSoVt2F
+X-Received: by 2002:a37:7382:: with SMTP id o124-v6mr17711744qkc.2.1540316589332;
+        Tue, 23 Oct 2018 10:43:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540316589; cv=none;
         d=google.com; s=arc-20160816;
-        b=Oyqf20uzNPeND4qCYU6VuNGvo7RbF9OUDXOsOgMPRfc0KZkdD4ykubSndzQFFixyXS
-         9kAFBEcOShP/8YmDJwH44ZjGH28AXy8vtHoLpPijIYzZz4fNGOzUcn33OqMnaI/2v3ul
-         dC9//empNkaIcnaAFtkw+eFE4hddSlCslhvoQs73POd7lnCc5eStEzU73hHPBNkJjFpd
-         7koBDxAXfNNVLYkn4/sdMF93Xk6lJIw0ctILR9UVw3zRNM9VqNGfrWU5U7cAPazAHlry
-         YOM9eNG0ywgDCkBrJm1wv2ZA+hEKEjBKEVq8Lz1nLgiuuodKKkLjwFQOmxFRJvN1G9Xz
-         G8Nw==
+        b=ylOom2CpSEGHXJknYE9q6ZslTd989Y7RBJou2vUZD/Ul8Pr7Wzq0jaiwMIGqxlZCu1
+         FrviSN6bZB4NFmYSjnKKzB7NOqWalKwLfSTKinJfWHpD9YdXhWnxPpYYonIr97KJl+eb
+         DdjYt94JQsILfFeXWcJwjDpb78wTlqCgxQLj1/Hl7ybt5zuCVRnPDcGJkFYauxSqvACT
+         jdEPULJuUKIrWsQS7t0fAyorl1gFpVqeNNg31+yYMc6jHuSLzJi5oaf6SVP2J4m7d42/
+         ChiUPbLpfvY0vjJLo5H/igT19dgiEeav0Y+iP+En4s7WlMe//k/LKZSKR0JwO2zax4qm
+         R8ow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=Sk3aqzbcH+P51a7Z1ePWGGB2+48CcYPa0UIpdakUXBM=;
-        b=OLnWiP6kQzWhtQjCqepIX7WigSsRu/FGekzaO8r6FWNTtpbt2D7+FaD/vD4VqusBJD
-         EPdcTfV4KLcvseCifW8A5wusLzrMz8bwR7kpL+0DXxmCGFu3LUgqy4nsO5Tgxr0VKYWl
-         b70pCA9TlhSv0oZ0wuQ0s1kzrZlLx4iEusieUr1Mk/mY6m8MCqucAVjeK6uFi54mvm8g
-         5MGaritiOaAeT76YY2Fsc4asEmr23s9R95UpJllRNISy781wokoamZajeiEXOwjzK79O
-         Vigch11K4+QKSxUA/pZeABLTfLOcFVs/lbJ8sl0pc4q5uVHbWDtVPQHTYxRoFDOetltY
-         WZlw==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=LTQBbN7v01p06gTRf7aJbSH9y9Y2K/1hrzJaEfI2w6g=;
+        b=TlhoDsr/lHTWcOF841+aCsJqjoUe9c+0QnWekR+/CYO3enkDUGlta41RrSC5nv002G
+         7CjRrKUziWuwOEnTv7nbIQ9SOTSwzFuqjWsFipocQzrLWnat6XNQzg66SY3DSWTVt0NG
+         z3fYziONSM1RZgtrUfpEiEmNRwO8OQa2ytIg9KdwmBRJIic6UefbqlnMamXeN3vMFnVK
+         CddQ+uwTGc7gSYXILquGolt9qSDwNtwGZWMwEqFoQxeLuZIQo//SKM2dh9ULM74YjVm+
+         kufDSNFOcOeBWSz/wg/6563I9SfXmhmEUmR4wpHbQPMHFjZnMjTdjbldphaE0zemIMbJ
+         ulKA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of hdegoede@redhat.com designates 209.85.208.68 as permitted sender) smtp.mailfrom=hdegoede@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <hdegoede@redhat.com>
-Received: from mail-ed1-f68.google.com (mail-ed1-f68.google.com. [209.85.208.68])
-        by gmr-mx.google.com with ESMTPS id n20-v6si207329edt.3.2018.10.26.04.11.13
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=f3moeBgi;
+       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::72b as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <shayenneluzmoura@gmail.com>
+Received: from mail-qk1-x72b.google.com (mail-qk1-x72b.google.com. [2607:f8b0:4864:20::72b])
+        by gmr-mx.google.com with ESMTPS id k8-v6si102738qkg.3.2018.10.23.10.43.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Oct 2018 04:11:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hdegoede@redhat.com designates 209.85.208.68 as permitted sender) client-ip=209.85.208.68;
+        Tue, 23 Oct 2018 10:43:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::72b as permitted sender) client-ip=2607:f8b0:4864:20::72b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hdegoede@redhat.com designates 209.85.208.68 as permitted sender) smtp.mailfrom=hdegoede@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: by mail-ed1-f68.google.com with SMTP id y20-v6so921817eds.10
-        for <outreachy-kernel@googlegroups.com>; Fri, 26 Oct 2018 04:11:13 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=f3moeBgi;
+       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::72b as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-qk1-x72b.google.com with SMTP id x11-v6so1381576qkl.7
+        for <outreachy-kernel@googlegroups.com>; Tue, 23 Oct 2018 10:43:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=LTQBbN7v01p06gTRf7aJbSH9y9Y2K/1hrzJaEfI2w6g=;
+        b=f3moeBgiXEmlRXMxcVbbeSMnAbr01S7kNzC5HKP5fox0DzOIjOUGgkz+CAlO9nYGE0
+         nazgPsB7YukROpfOZqpQB46jVOskf1hnPz4RbO+qX08GNcrpwg9wSTX21z0dyG0ydgar
+         nQRhg8By8CWxmnytSyS+IZoFrX0hd7ndSZ475NZQBVydZ/q7cDJTUrrEz11OCo9rFWR5
+         46LSBIjpnjz2dudLX13I+5vc8ddnVw+knzY2FruNQ7Tnf0wpELuKgVV0ZjaoCw5+o2Op
+         5+gFUw6OvlDxUJdYheI1pvjOybgDpmIj4lKtnAKBriO2jxjfBeXnGClFVcB4E8DLzPdN
+         1Xjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=Sk3aqzbcH+P51a7Z1ePWGGB2+48CcYPa0UIpdakUXBM=;
-        b=quPOybOAprYVAh8aCUWMHsmT1y32nGI4kgRc2AulGU6CGbWVQp0xj5HAAiKwC/gq/P
-         MaqYuZOvHJob4SQapCZf6ZSPkenT8hMdZGm1fnGaGAmdLp7a5eHwiCfOxmzSO3EcSpZh
-         cpH3o1LWbQROx1plRSHF83AbC+5nsblADKaa7aYKFxusMEs0sip3bJYf+CwJc9kPfa5W
-         g0X2gw1RvpA2+6abnSBNkKpVMnK+Sc6m/V5zFrZz0opCNnJFWrZiTF4R3y5ftuXIIZif
-         1ZsTQ9N1Q4+hbSbZDstZwfIQZDwWM/+hxx9gL53pPuQQ+k2TweMeeNTafqs4dlKrQ++Y
-         GQ0g==
-X-Gm-Message-State: AGRZ1gJ1df2VxTopLWRG8c7vXFL0Hs+bfRvDft9v1fppbPe4AdRXQaXa
-	yDBwkQth+6EuTXl5GnBXxqeZZ27IjnI=
-X-Received: by 2002:a17:906:1141:: with SMTP id i1-v6mr2119089eja.110.1540552273228;
-        Fri, 26 Oct 2018 04:11:13 -0700 (PDT)
-Return-Path: <hdegoede@redhat.com>
-Received: from shalem.localdomain (546A5441.cm-12-3b.dynamic.ziggo.nl. [84.106.84.65])
-        by smtp.gmail.com with ESMTPSA id g6-v6sm1356856edc.38.2018.10.26.04.11.12
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Oct 2018 04:11:12 -0700 (PDT)
-Subject: Re: [PATCH v2] staging: vboxvideo: Remove unnecessary parentheses
-To: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Michael Thayer <michael.thayer@oracle.com>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=LTQBbN7v01p06gTRf7aJbSH9y9Y2K/1hrzJaEfI2w6g=;
+        b=SfUKfCz21FOP64TjmBpxVpjU8sSDAYry/vpZJ/rBpjFXJ4SgIdAz7Wgr3E8gLEg3zy
+         G7Qa+x+mfEhON5gmoO8Lt4NMQB42SFbDeCkG9CBvvA9RKHxwHAqsKLMeTjfIlApWeNtS
+         xe1LZB6OsQSdMeozCHcGMAURyaCcOoophYdCCbXVb1SJUVir21h2guXFGj59nLE/vFjr
+         frkjR+ct8TwVGqkOgtV32Fmkb8//RrtfnGu5ZNfdLd97qgJkslusa5aNsa50VSQ9iXaV
+         iPcpgnQ+s71NTJnHUSG3cy5HPlkNz1yLMxTKRk0el0708CcFNI9MvA25KwV/IzLDj/mI
+         afJg==
+X-Gm-Message-State: AGRZ1gK2ANBtO4RDnER+DyG8xuevUlg2/1XoCJrjBcnOocMHk6PPMHeA
+	DW/MPe1gnvOUmwA9aI5hLFo=
+X-Received: by 2002:a37:15a5:: with SMTP id 37mr6580495qkv.292.1540316588896;
+        Tue, 23 Oct 2018 10:43:08 -0700 (PDT)
+Return-Path: <shayenneluzmoura@gmail.com>
+Received: from smtp.gmail.com ([143.107.45.1])
+        by smtp.gmail.com with ESMTPSA id z188-v6sm1218662qkz.66.2018.10.23.10.43.06
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 23 Oct 2018 10:43:08 -0700 (PDT)
+Date: Tue, 23 Oct 2018 14:43:04 -0300
+From: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Hans de Goede <hdegoede@redhat.com>,
+	Michael Thayer <michael.thayer@oracle.com>
 Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- outreachy-kernel@googlegroups.com
-References: <20181023174304.iq4ra7vafwujr3ex@smtp.gmail.com>
-From: Hans de Goede <hdegoede@redhat.com>
-Message-ID: <70a66c27-eced-89ae-79fc-af3d0aa06311@redhat.com>
-Date: Fri, 26 Oct 2018 13:11:11 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.8.0
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH v2] staging: vboxvideo: Remove unnecessary parentheses
+Message-ID: <20181023174304.iq4ra7vafwujr3ex@smtp.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20181023174304.iq4ra7vafwujr3ex@smtp.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: NeoMutt/20171215
 
-Hi,
+Remove unneeded parentheses around the arguments of ||. This reduces
+clutter and code behave in the same way.
+Change suggested by checkpatch.pl.
 
-On 23-10-18 19:43, Shayenne da Luz Moura wrote:
-> Remove unneeded parentheses around the arguments of ||. This reduces
-> clutter and code behave in the same way.
-> Change suggested by checkpatch.pl.
-> 
-> vbox_main.c:119: CHECK: Unnecessary parentheses around 'rects[i].x2 <
-> crtc->x'
-> 
-> Signed-off-by: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
+vbox_main.c:119: CHECK: Unnecessary parentheses around 'rects[i].x2 <
+crtc->x'
 
-Patch looks good to me:
+Signed-off-by: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
+---
+Changes in v2:
+  - Make the commit message more clearer.
+ 
+ drivers/staging/vboxvideo/vbox_main.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-Reviewed-by: Hans de Goede <hdegoede@redhat.com>
+diff --git a/drivers/staging/vboxvideo/vbox_main.c b/drivers/staging/vboxvideo/vbox_main.c
+index 429f6a453619..10a862674789 100644
+--- a/drivers/staging/vboxvideo/vbox_main.c
++++ b/drivers/staging/vboxvideo/vbox_main.c
+@@ -116,10 +116,10 @@ void vbox_framebuffer_dirty_rectangles(struct drm_framebuffer *fb,
+ 			struct vbva_cmd_hdr cmd_hdr;
+ 			unsigned int crtc_id = to_vbox_crtc(crtc)->crtc_id;
+ 
+-			if ((rects[i].x1 > crtc->x + crtc->hwmode.hdisplay) ||
+-			    (rects[i].y1 > crtc->y + crtc->hwmode.vdisplay) ||
+-			    (rects[i].x2 < crtc->x) ||
+-			    (rects[i].y2 < crtc->y))
++			if (rects[i].x1 > crtc->x + crtc->hwmode.hdisplay ||
++			    rects[i].y1 > crtc->y + crtc->hwmode.vdisplay ||
++			    rects[i].x2 < crtc->x ||
++			    rects[i].y2 < crtc->y)
+ 				continue;
+ 
+ 			cmd_hdr.x = (s16)rects[i].x1;
+-- 
+2.19.1
 
-Regards,
-
-Hans
-
-
-> ---
-> Changes in v2:
->    - Make the commit message more clearer.
->   
->   drivers/staging/vboxvideo/vbox_main.c | 8 ++++----
->   1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/staging/vboxvideo/vbox_main.c b/drivers/staging/vboxvideo/vbox_main.c
-> index 429f6a453619..10a862674789 100644
-> --- a/drivers/staging/vboxvideo/vbox_main.c
-> +++ b/drivers/staging/vboxvideo/vbox_main.c
-> @@ -116,10 +116,10 @@ void vbox_framebuffer_dirty_rectangles(struct drm_framebuffer *fb,
->   			struct vbva_cmd_hdr cmd_hdr;
->   			unsigned int crtc_id = to_vbox_crtc(crtc)->crtc_id;
->   
-> -			if ((rects[i].x1 > crtc->x + crtc->hwmode.hdisplay) ||
-> -			    (rects[i].y1 > crtc->y + crtc->hwmode.vdisplay) ||
-> -			    (rects[i].x2 < crtc->x) ||
-> -			    (rects[i].y2 < crtc->y))
-> +			if (rects[i].x1 > crtc->x + crtc->hwmode.hdisplay ||
-> +			    rects[i].y1 > crtc->y + crtc->hwmode.vdisplay ||
-> +			    rects[i].x2 < crtc->x ||
-> +			    rects[i].y2 < crtc->y)
->   				continue;
->   
->   			cmd_hdr.x = (s16)rects[i].x1;
-> 
 
