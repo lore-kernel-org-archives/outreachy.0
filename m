@@ -1,110 +1,128 @@
-X-GM-THRID: 6886436790360604672
-X-Received: by 2002:a05:6e02:111:: with SMTP id t17mr1958809ilm.79.1603373510622;
-        Thu, 22 Oct 2020 06:31:50 -0700 (PDT)
+X-GM-THRID: 6614961709570326528
+X-Received: by 2002:a62:8a41:: with SMTP id y62-v6mr23346075pfd.70.1540277830249;
+        Mon, 22 Oct 2018 23:57:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a02:cb4b:: with SMTP id k11ls188105jap.2.gmail; Thu, 22 Oct
- 2020 06:31:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwMIcBlbOmWTof/gj1M8baOCNq3YAoXTb/G9JSuT5ap+LdidjLp2Mdd4mDBW+tZ/VFBl0ua
-X-Received: by 2002:a02:5e04:: with SMTP id h4mr1810791jab.6.1603373509337;
-        Thu, 22 Oct 2020 06:31:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603373509; cv=none;
+Received: by 2002:a65:4289:: with SMTP id j9-v6ls981776pgp.7.gmail; Mon, 22
+ Oct 2018 23:57:09 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV63/qlWu+mYBrmw+3D7l7GfPFgDv1rck++Q9Bh+/u5t31pcdVsNHm6cdKXgolXolyeV1i4gu
+X-Received: by 2002:a63:c40e:: with SMTP id h14-v6mr23756057pgd.53.1540277829267;
+        Mon, 22 Oct 2018 23:57:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540277829; cv=none;
         d=google.com; s=arc-20160816;
-        b=y5d3DU+14VeqWj8DNfjNzqejWqs1kdVn3gqu8DRz3CYTQPHivMp/jv04syreorOoMC
-         ov0LMdNLklS+jP3wBCNofnSlRkmRa1nOlVJfkBjRPAHJ8BE6MwwFoS/H3pXbcuNS3Bj1
-         aDMBI3HYGV/Awf6zLgDUEwWo+CY8iyq7jZvq43BDmEs4Zxc5AV/dS+meUW60eHwFbwBN
-         wTIrbI0R3i3iMwJA4dZOednFCyWujUr1c918b4F2H4cvy+/ubz3Zn7VcW29ysfgjbUuU
-         RzL2DMVXzQzm/TZGTzfn/bLAaD34dnf8soolTRo5Uip8h6RWrqcEaNH3/5W/IeIIYGcK
-         MFew==
+        b=fHZykik6xjsc4yrK24OX3E11UpSlerk/akdFAjZpnvkH9e5lU65i3vxK1nC1k1lHLn
+         56v4z7HtIKnVBc7YU5zmYs5NBW7ItQJTinEcMVhwdAudbbj+gSzKJYY92a2wAIdJ0dzu
+         Ub8utGjt9YE1rBcAfGUMQ+ev7FEtnQ1go/YBswnIraevSTTaNPUs0NuheKKkfQHUL4ny
+         Os3tRBvtZBz4/8+D2aKj0vkxSdyP3fn3yqr4iDzNyx3705cXYygzI4Segy3fXlU6wZ+e
+         JTwutM9qB3S9TRzb7Xu1dkRgAT26khBKSp61SRLpYZD6Ybgv+EZNPi1Q/tPKbb6u4IBQ
+         2Fwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=IuqDlc/9sVmn6w8y6S9W6kIXAO5b3CW/ksiq6MJe4cw=;
-        b=v7qmGtnYlrn/bv9a2ddbu1VUGHq5CMN2k8qdDPlkfFnrsGg2EyNLDNx5KynmCwjz8I
-         0+YbHRoFujTrbrYSmXbbCE4iUsoxAX6TI1xP2zvwVp/7Xc8oCBSdAarBvdjxM25/eI/O
-         Lri2/kNkhQmYbcS9gMECdKtHroshK1i5WQioKFaNqaORjOHEDzYCf6ZDGWfwSKW5cEjt
-         TEnmnbRbHPEipd5wqx81RBUMbZ8wQK+jfKHAgKnJ4Ne5w+dyMtwr0Ckig2JnWDRqZfyN
-         quX9jcAJUIHQ4MCekAEJwbgRFIzwfUDqOJ242UnqYZMpBzocag2gWmTSfPn5QZVL6je0
-         936w==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=OggI3B8pQf9kprABWDItPSV2eTUg6h2TEMUdUBN1aQo=;
+        b=I/FqG2TI/dOkaVYZmwyT/ZXXraKyBEqIK4YmZtqMDWyNvCAOWkcgYvkxVAHVHsfeFW
+         PkvVAtNO5VNpme5lFxfTC0Rg0Gjy9sAq76xbblXaK6diaj1nBfA2aGvmyJRcV9VmaHWx
+         QekOLxl6pYg1NCtNNq82GnlkbVvKwoyYojbm+kGW7SrZ2LtVXGCnovMTGSlNLZqY5hyp
+         coS1ZW0VVvFeNc0gYUYe9dgpju+yGZlAFRBxtLohW2/y73SYzqeHSX7RivmEQM5VDtIx
+         mJzM/ppnuuShrF0E6QbTF46iKJLGN86I5iCtLa/kI+V1t841A5giPPKk/r8h7itUDPDF
+         VEDw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pyopdLJc;
-       spf=pass (google.com: domain of sylphrenadin@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=sylphrenadin@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bh+p26ML;
+       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <sylphrenadin@gmail.com>
-Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id i18si92957ils.5.2020.10.22.06.31.49
+Return-Path: <m.maya.nakamura@gmail.com>
+Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
+        by gmr-mx.google.com with ESMTPS id 184-v6si10613pgb.4.2018.10.22.23.57.09
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 22 Oct 2020 06:31:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sylphrenadin@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 22 Oct 2018 23:57:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) client-ip=2607:f8b0:4864:20::444;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pyopdLJc;
-       spf=pass (google.com: domain of sylphrenadin@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=sylphrenadin@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bh+p26ML;
+       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x544.google.com with SMTP id f38so648081pgm.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2020 06:31:49 -0700 (PDT)
+Received: by mail-pf1-x444.google.com with SMTP id a19-v6so200554pfo.8
+        for <outreachy-kernel@googlegroups.com>; Mon, 22 Oct 2018 23:57:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=IuqDlc/9sVmn6w8y6S9W6kIXAO5b3CW/ksiq6MJe4cw=;
-        b=pyopdLJco+fqduEOt5ILPt3cJRO+Oh6hqy3FINueRwWaaICkuby7DxjIE/WjDf86eA
-         TW2rsYvh0DRiqNCkQKc+UA7H2PbJgRa3sKQpzJi+m94h9KObyhwbRXDlEsw76A/G6ckv
-         13N4r7wVIOLPI09yZUN1LNPby9np3Bn37O2/dUZmuyI7NJKw33Ip/+kw8Xtd9BDwNFO1
-         CHKN7cCNlx8JZCgQmRdU3rMgJQOX5/7Vu2VGyFUrDUkKWdJ3UReATbHuHqKWRlYyG7S1
-         yH93A4+iinPCFxLUOklXe4PZhmQlXsrBzbqNhn5P2SfWA6UXISG5kRTAUgTbbVUvP+hP
-         1k8g==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=OggI3B8pQf9kprABWDItPSV2eTUg6h2TEMUdUBN1aQo=;
+        b=bh+p26MLvBqP6fhpHKl/iV66uWPw6iZ7rZP4ddfcbHF8UUVCTno56HWAf6iPk/dRJk
+         rLpB9levYy9n23AH/YEz0Do+N6NQgvpUKOKw7JCuqK9f2D3B/OuNMBbs4cRcyfJQyfEt
+         u0/batGv6fxHdP7K5m8F1CoHONkoCKM1XWn8l2mFeU61Vi4R1XcyVkudpOGZRixH1zHG
+         ARqDgQCIUIpWSyM87pLjATECqgPSpd5vwOhsdwolqr2vOAKrPRTXJmlF65e/LKFfPs5e
+         VfmiccTtrBM7bnSUZKdkCDD60RQa+cFNKSMrgjL6wDS5YqBrpOcoGDsF0NbKnA0+I+2H
+         DaNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=IuqDlc/9sVmn6w8y6S9W6kIXAO5b3CW/ksiq6MJe4cw=;
-        b=SEPiIDtTxoFiUUKbfzYxx4Gk6yu5QD+6UiXftTNJnMmD/eQypYmqSY838dBlrdb64p
-         0j1LHvjmms5J4r4/Ad3OyBD4ugSNOEyRrYL1KPtSgnk1o6U7jsFz14OW6O0gEePwboit
-         6DAW8K9AyJ2ABoDzsZ7FijiJUR1pG+VLiaJan8iC+qOdYZuVTuQVr/fw9e/w4d/FLihe
-         3LlCaaY+z5V0KOMB6CpLgm3MaK2fZQltxx3pUTawYCVXspUogt5wRXGI63czqyv92mwI
-         XevIkJU4qvZ2+xL82a1k+BSPNio46p6oNJagde3cAocSOtorfuQvsffxLlt374mi2Qef
-         KPUA==
-X-Gm-Message-State: AOAM533TQlS+jmL5L1jieU7zLzW/46zrnzctRYv/N0km9OyH2p9Fclhp
-	rak1P0hbby0FgkwmIheL3rQ=
-X-Received: by 2002:a05:6a00:2a5:b029:152:5652:7191 with SMTP id q5-20020a056a0002a5b029015256527191mr2421478pfs.7.1603373508738;
-        Thu, 22 Oct 2020 06:31:48 -0700 (PDT)
-Return-Path: <sylphrenadin@gmail.com>
-Received: from adolin ([49.207.204.75])
-        by smtp.gmail.com with ESMTPSA id k127sm2324006pgk.10.2020.10.22.06.31.46
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 Oct 2020 06:31:47 -0700 (PDT)
-Date: Thu, 22 Oct 2020 19:01:44 +0530
-From: Sumera Priyadarsini <sylphrenadin@gmail.com>
-To: sylphrenadin@gmail.com
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=OggI3B8pQf9kprABWDItPSV2eTUg6h2TEMUdUBN1aQo=;
+        b=rkY57sCbByjORuY3AFuG6gceWvhA61WP+8Tic1zMqbrSsOpl0jmuvwbeIA9RAuapor
+         KIazba/02RiZSNtkvCTD96eBmXATFtrCd+I6lfoxBV3dcNYVv5Lyb44loSrN5A1K4EE+
+         MtOLzqo9dHaAn5rjXeB3KTP41tbl85rCVbLNGSA3DQaPRzrMCL+uVuqqnBWJ75aMgEwl
+         cLAOYy+YzDabk0xP64foNbuLn+jY05WsgAVVNCaYo/BXk+ABFsQMRzxY30f9FP40ykMU
+         co/r1CglQcBH9XLHv+gdIDPF3tz8sRSOdmgIqj+pqUkW3zAGDezD8oftZz732zh45KXY
+         Sb+A==
+X-Gm-Message-State: ABuFfohOqzyxVZMT/MMLCOX9ZZ5mjdmnOuyeQsdGa5YM0vuj10BbUhmL
+	QmmxeK3IA1/qnKCHbjA23EX4KBdP
+X-Received: by 2002:a62:583:: with SMTP id 125-v6mr36118117pff.186.1540277828867;
+        Mon, 22 Oct 2018 23:57:08 -0700 (PDT)
+Return-Path: <m.maya.nakamura@gmail.com>
+Received: from k-vBox (50-47-85-193.evrt.wa.frontiernet.net. [50.47.85.193])
+        by smtp.gmail.com with ESMTPSA id e2-v6sm572314pgv.25.2018.10.22.23.57.08
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 22 Oct 2018 23:57:08 -0700 (PDT)
+Date: Mon, 22 Oct 2018 23:57:05 -0700
+From: Maya Nakamura <m.maya.nakamura@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
 Cc: outreachy-kernel@googlegroups.com
-Subject: [Outreachy kernel][PATCH 0/5] drm/amdgpu: Replace snprintf() with
- sysfs_emit
-Message-ID: <cover.1603371258.git.sylphrenadin@gmail.com>
+Subject: Re: [PATCH] staging: rtlwifi: Remove an extra pair of braces
+Message-ID: <20181023065703.GA3510@k-vBox>
+References: <20181021234946.GA2183@k-vBox>
+ <20181022082732.GD7068@kroah.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <20181022082732.GD7068@kroah.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-Using snprintf() for show() methods holds the risk of buffer overrun
-as snprintf() does not know the PAGE_SIZE maximum of the temporary
-buffer used to output sysfs content.
+On Mon, Oct 22, 2018 at 09:27:32AM +0100, Greg KH wrote:
+> On Sun, Oct 21, 2018 at 04:49:49PM -0700, Maya Nakamura wrote:
+> > Remove an extra pair of braces. Issue found while reviewing one of
+> > Coccinelle's semantic patch results for returnvar.cocci.
+> > 
+> > Signed-off-by: Maya Nakamura <m.maya.nakamura@gmail.com>
+> > ---
+> >  drivers/staging/rtlwifi/phydm/phydm_hwconfig.c | 4 +---
+> >  1 file changed, 1 insertion(+), 3 deletions(-)
+> > 
+> > diff --git a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
+> > index 4bf86e5a451f..90a41c64c0c2 100644
+> > --- a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
+> > +++ b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
+> > @@ -484,9 +484,7 @@ static u8 odm_query_rx_pwr_percentage(s8 ant_power)
+> >  
+> >  s32 odm_signal_scale_mapping(struct phy_dm_struct *dm, s32 curr_sig)
+> >  {
+> > -	{
+> > -		return curr_sig;
+> > -	}
+> > +	return curr_sig;
+> >  }
+> 
+> 
+> Why is this function needed at all?  Can't it just be removed and only
+> use the curr_sig parameter where it is called?
+> 
+> thanks,
+> 
+> greg k-h
 
-This patchset is a series of Coccinelle cleanups across the staging
-directory to convert snprintf with scnprintf in the relevant files.
+Thank you for suggesting further changes to the file! As you pointed
+out, I can modify where the specific function is called (five places)
+and remove the function's declaration/definition. I will submit a new
+patch.
 
-Sumera Priyadarsini (5):
-  gpu: drm: amdgpu: Replace snprintf() with sysfs_emit()
-  gpu: drm: amdgpu: Replace snprintf() with sysfs_emit()
-  gpu: drm: amdgpu: Replace snprintf() with sysfs_emit()
-  gpu: drm: amdgpu: Replace snprintf() with sysfs_emit()
-  gpu: drm: amdgpu: Replace snprintf() with sysfs_emit()
-
- drivers/gpu/drm/amd/amdgpu/amdgpu_atombios.c | 2 +-
- drivers/gpu/drm/amd/amdgpu/amdgpu_device.c   | 8 ++++----
- drivers/gpu/drm/amd/amdgpu/amdgpu_gtt_mgr.c  | 4 ++--
- drivers/gpu/drm/amd/amdgpu/amdgpu_psp.c      | 2 +-
- drivers/gpu/drm/amd/amdgpu/amdgpu_ras.c      | 4 ++--
- 5 files changed, 10 insertions(+), 10 deletions(-)
-
--- 
-2.25.1
-
+Maya
 
