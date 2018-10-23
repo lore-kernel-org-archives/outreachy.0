@@ -1,127 +1,118 @@
-X-GM-THRID: 6754471161205096448
-X-Received: by 2002:a25:72c1:: with SMTP id n184mr11715856ybc.388.1572647868419;
-        Fri, 01 Nov 2019 15:37:48 -0700 (PDT)
+X-GM-THRID: 6615312602732953600
+X-Received: by 2002:a1c:188:: with SMTP id 130-v6mr1984339wmb.6.1540273404135;
+        Mon, 22 Oct 2018 22:43:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:d98d:: with SMTP id q135ls1299970ybg.9.gmail; Fri, 01
- Nov 2019 15:37:47 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzO8sNJVzEx25hvmUb5u/AAInZQBONfEnPV91tsquysMXq8RQgZTbAA2nMzshQjLBMZNK1P
-X-Received: by 2002:a25:e696:: with SMTP id d144mr7276544ybh.173.1572647867071;
-        Fri, 01 Nov 2019 15:37:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572647867; cv=none;
+Received: by 2002:a1c:8d95:: with SMTP id p143-v6ls438551wmd.3.canary-gmail;
+ Mon, 22 Oct 2018 22:43:23 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV609sQEm1+YZvXVATJpH2oP/ux5pzoruwSthGnGi81AK0X8Si+AZYS8u0ySoNfF6I1zLBh0P
+X-Received: by 2002:a1c:9655:: with SMTP id y82-v6mr2038921wmd.3.1540273403299;
+        Mon, 22 Oct 2018 22:43:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540273403; cv=none;
         d=google.com; s=arc-20160816;
-        b=R4J3ArYA+pimdnOIG+RbuZDw0WKZyOKho7wPlJ8aHtZJXAO1427JdI4EzFg/3SNsqB
-         Pp6IvolP9K/UkHQNV/3fvXwdXm3kISEiOGxpNRhupLHUL/Q6AIeki3KtQlMbg0Yktqm+
-         S8bgxhDgrAmyACwjli1ksEWA7WN/WwR6fZ5U654qIB42npTfNLvmk4nz7WsptcxBHOiS
-         4VdG1HCByv77RO4dP4FTleYbg9w3TuHkOVxxT9I67i6ktkZLUVfuGha6vt0LacGfhnl5
-         Dl6R8zqj+PCLjzI60AmcymQYTLsJjFr7TLJl5Bx0Ir6TWLkd23G6Nr/IA+yHcQ92LEKn
-         g9YQ==
+        b=UYpizj+XF2CJCkpkrT3FzzaLp4RMctBErEo+qd8Yx73yi+//RIgUGlKVNZ7ENcWD5b
+         wQZf5DqFoVkJRJjLk7JXXeCRPodfA/DSsKHC2eGu7vl2wvneK9O67yn3QolFHbDweFdn
+         Vk8WvkjA6aDt+HrFU3ljtzeUZiPWA2jui1cPD3NrEANp7A/rUujKOmVilRqaHPLmnF56
+         +RpL+8iJwO7ShgRS+8s3iFanHY+k5/9Va2PuJZYbU6Dfe1GsOcwv4sE2NbNT0nAWhmnn
+         V7Zt+E+kgzpPLh/IopHpjZb04XlzNQdFPB8EYiMU4V7CUtdx2mCeIAMKEy2PxS9+gFvC
+         Dj/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=LGdeY7oWB17TnAUMaa0RtkRNLL4fGiuy6QxiZRPpPP8=;
-        b=n5vX56pvSz9TiqA4Zy91fczLKZosCLz3+Xqz/tTwvdhfwCy89m12aVGk84x1gKN0he
-         EnSW7IJHh5+hMH4Z3mX2d6H++e4pR0u8vLERpzWl/FuBAoa78L2h5LHbrRkY05m/ZBdO
-         j8eageFO6OTc3cNrurXSjQa3gtD3ioGL4Hfez5o0X6vGDEK9MAmrjtrxgh4st5HLKlvy
-         DiIqLVPdoh6czTE7062nMC/2iXvplzoEtxHaUmzvkrfawr5gVZTJDa5gidCq/+D+RC4R
-         IZC9EWyaMK4GyQn66ZV93Mry6pM0YL1ZWZiQaJ+JHZi6gZQu+NZ0S9buJGbboWx7ATaA
-         +lKg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=9Bbw95HrQOTw2bONQmqz6P6tOaZ1A/CgHVcIe4nAo4s=;
+        b=vwWoLkv4UY3UTFPiM6Ls4bmjhLDhsvoQPw/dC7Tu3c7ozN5bf8lXHtvxjbUrVdXrhf
+         6lDtVoR74AwY0OsIWQBrTkdepqr5zBWsBbaTyfaY7CnfF6/THGMEUbPStlhy3IBVKf3I
+         Yb5NNl7GEOEyIZ4KFIZCiPvKA2NwJInhddsbkx5WlHRmS+dg0bhVi9wrFUTaHbl7dLrR
+         L5FgAIW4Hy3CZp1FuQ7T1YepJzf2k/etsIMwkPDL02lkMNNTUhxVCglG6NMzG9tXZnS6
+         3QtxnTGs/8r6H/incJbgWz+g/RthHs373zVZvkbtauFiPu4yKsCz5yxRwvLsMgqM0KIs
+         ghDQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TNdD3ggU;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <gabrielabittencourt00@gmail.com>
-Received: from mail-qt1-x841.google.com (mail-qt1-x841.google.com. [2607:f8b0:4864:20::841])
-        by gmr-mx.google.com with ESMTPS id u8si638416ybc.2.2019.11.01.15.37.47
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id h188-v6si14268wmg.2.2018.10.22.22.43.23
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 01 Nov 2019 15:37:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) client-ip=2607:f8b0:4864:20::841;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 22 Oct 2018 22:43:23 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TNdD3ggU;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x841.google.com with SMTP id y10so8253906qto.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 01 Nov 2019 15:37:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=LGdeY7oWB17TnAUMaa0RtkRNLL4fGiuy6QxiZRPpPP8=;
-        b=TNdD3ggUUn77JBgZbx0bJOfzDhFbOZLSfI7IOLdB//bieFBARrcHiwoIH87O7YgV0R
-         ak+TPpvIhrrItkHz93pykSwRFdmCQr7bbo+ajQetvP4F4HGS7mB+HIZ/VcnUoPZDFkeg
-         bNN3HibPUGLwJ5C6qD+vjY+bp4BuGxABAxOQGxjk7Uh10EX13HCgH3NCLo1Qa/QFNEu5
-         37RNjHO7LDFzouXUAilGxaIiuZOmhX4QNavQEZI8SKa03uD0mhO7npP0qqjO5Crh0/r5
-         IkQpglJqe5tf/aqELFE4swyCAt5BQLVluT11BfqBPve6t5hS1Lh+iUPpYNtUi7w0NDQo
-         2DYA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=LGdeY7oWB17TnAUMaa0RtkRNLL4fGiuy6QxiZRPpPP8=;
-        b=WHrtNUtEYo60++T6aUgUFYeLzuBa4AVkStpfYQW96JUDz4gNv7qewE8ROUTCiYjPjQ
-         zAtTYDanwHaSNim9BTA7BLMepZ3DMjIHSinK49DNkjRL+EDGgnGX85AVT1M1sXewFYP6
-         JZyZ69VKwEar6gZMS/i8NQXYr4OhG/30Q3df45Xy6XpG+Q8O8gMC8GOnnaoo04mv3MlR
-         3HY+z2qpV4V06JtesWWV/AH4P7XZxZ3pwFsg9ss8VaS6yIH7mf0PJ0HYyUl3g201WBG8
-         lPTpuXu1LtN8bhjWNGe+v4mmCoB0vIHzJWfWpoHTp/Occ6lg/iw+nL00Sb5eyX5BSgFM
-         eDjg==
-X-Gm-Message-State: APjAAAXA0kWnKSnTqN6EtsE15rqRj++jqeQ69kCnVeOOeEINrgquqPt1
-	9sCooI9r+gTrE9+HTnC1axU0UWDxXQY=
-X-Received: by 2002:ac8:74c3:: with SMTP id j3mr1871355qtr.113.1572647866452;
-        Fri, 01 Nov 2019 15:37:46 -0700 (PDT)
-Return-Path: <gabrielabittencourt00@gmail.com>
-Received: from localhost.localdomain (179-241-199-14.3g.claro.net.br. [179.241.199.14])
-        by smtp.gmail.com with ESMTPSA id x64sm4192780qkd.88.2019.11.01.15.37.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 01 Nov 2019 15:37:45 -0700 (PDT)
-From: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	manasi.d.navare@intel.com,
-	rodrigosiqueiramelo@gmail.com,
-	hamohammed.sa@gmail.com,
-	daniel@ffwll.ch,
-	airlied@linux.ie,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	lkcamp@lists.libreplanetbr.org
-Cc: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-Subject: [PATCH] drm/vkms: Update VKMS documentation
-Date: Fri,  1 Nov 2019 19:37:35 -0300
-Message-Id: <20191101223735.2425-1-gabrielabittencourt00@gmail.com>
-X-Mailer: git-send-email 2.20.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.54,414,1534802400"; 
+   d="scan'208";a="283000269"
+Received: from 30.9-255-62.static.virginmediabusiness.co.uk (HELO [172.16.7.66]) ([62.255.9.30])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 23 Oct 2018 07:43:22 +0200
+Date: Tue, 23 Oct 2018 06:43:21 +0100 (BST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
+cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    Hans de Goede <hdegoede@redhat.com>, 
+    Michael Thayer <michael.thayer@oracle.com>, devel@driverdev.osuosl.org, 
+    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: vboxvideo: Removed unnecessary
+ parentheses
+In-Reply-To: <20181022223126.smnsopiu4cavq6zh@smtp.gmail.com>
+Message-ID: <alpine.DEB.2.21.1810230640320.2343@hadrien>
+References: <20181022223126.smnsopiu4cavq6zh@smtp.gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
 
-Small changes in the driver documentation, clarifing the description.
 
-Signed-off-by: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
 
----
+On Mon, 22 Oct 2018, Shayenne da Luz Moura wrote:
 
-Tested using: make htmldocs
----
- drivers/gpu/drm/vkms/vkms_drv.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+> This patch fixes the checkpatch.pl check:
+>
+> vbox_main.c:119: CHECK: Unnecessary parentheses around 'rects[i].x2 <
+> crtc->x'
+> vbox_main.c:119: CHECK: Unnecessary parentheses around 'rects[i].y2 <
+> crtc->y'
 
-diff --git a/drivers/gpu/drm/vkms/vkms_drv.c b/drivers/gpu/drm/vkms/vkms_drv.c
-index 80524a22412a..52e761bd6c2d 100644
---- a/drivers/gpu/drm/vkms/vkms_drv.c
-+++ b/drivers/gpu/drm/vkms/vkms_drv.c
-@@ -3,10 +3,10 @@
- /**
-  * DOC: vkms (Virtual Kernel Modesetting)
-  *
-- * vkms is a software-only model of a kms driver that is useful for testing,
-- * or for running X (or similar) on headless machines and be able to still
-- * use the GPU. vkms aims to enable a virtual display without the need for
-- * a hardware display capability.
-+ * VKMS is a software-only model of a KMS driver that is useful for testing
-+ * and for running X (or similar) on headless machines. VKMS aims to enable
-+ * a virtual display with no need of a hardware display capability, releasing
-+ * the GPU in DRM API tests.
-  */
- 
- #include <linux/module.h>
--- 
-2.20.1
+Please use the imperative, in the subject line and in the patch.  Also,
+try to say something other than "fixes" about what you do, which is not
+very descriptive.  Say what you actually did and why, eg remove unneeded
+parentheses around the arguments of || to reduce clutter.
 
+It is useful to mention that the change was suggested by checkpatch.  It
+is not essential to copy the whole checkpatch message, or at least not all
+of them.
+
+thanks,
+julia
+
+>
+> Signed-off-by: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
+> ---
+>  drivers/staging/vboxvideo/vbox_main.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/staging/vboxvideo/vbox_main.c b/drivers/staging/vboxvideo/vbox_main.c
+> index 429f6a453619..10a862674789 100644
+> --- a/drivers/staging/vboxvideo/vbox_main.c
+> +++ b/drivers/staging/vboxvideo/vbox_main.c
+> @@ -116,10 +116,10 @@ void vbox_framebuffer_dirty_rectangles(struct drm_framebuffer *fb,
+>  			struct vbva_cmd_hdr cmd_hdr;
+>  			unsigned int crtc_id = to_vbox_crtc(crtc)->crtc_id;
+>
+> -			if ((rects[i].x1 > crtc->x + crtc->hwmode.hdisplay) ||
+> -			    (rects[i].y1 > crtc->y + crtc->hwmode.vdisplay) ||
+> -			    (rects[i].x2 < crtc->x) ||
+> -			    (rects[i].y2 < crtc->y))
+> +			if (rects[i].x1 > crtc->x + crtc->hwmode.hdisplay ||
+> +			    rects[i].y1 > crtc->y + crtc->hwmode.vdisplay ||
+> +			    rects[i].x2 < crtc->x ||
+> +			    rects[i].y2 < crtc->y)
+>  				continue;
+>
+>  			cmd_hdr.x = (s16)rects[i].x1;
+> --
+> 2.19.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20181022223126.smnsopiu4cavq6zh%40smtp.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
