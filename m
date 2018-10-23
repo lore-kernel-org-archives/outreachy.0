@@ -1,87 +1,111 @@
-X-GM-THRID: 6253019031634182144
-X-Received: by 10.107.135.93 with SMTP id j90mr8514881iod.27.1455894445069;
-        Fri, 19 Feb 2016 07:07:25 -0800 (PST)
+X-GM-THRID: 6614497774807285760
+X-Received: by 2002:a25:330a:: with SMTP id z10-v6mr30940827ybz.100.1540320410357;
+        Tue, 23 Oct 2018 11:46:50 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.105.75 with SMTP id b69ls174406qgf.53.gmail; Fri, 19 Feb
- 2016 07:07:23 -0800 (PST)
-X-Received: by 10.129.90.84 with SMTP id o81mr7729265ywb.37.1455894443800;
-        Fri, 19 Feb 2016 07:07:23 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pf0-x230.google.com (mail-pf0-x230.google.com. [2607:f8b0:400e:c00::230])
-        by gmr-mx.google.com with ESMTPS id ff2si1754876pad.2.2016.02.19.07.07.23
+Received: by 2002:a25:f507:: with SMTP id a7-v6ls1683534ybe.7.gmail; Tue, 23
+ Oct 2018 11:46:49 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62VH7vENYZLIvtmJBMcek/kuTTO1ylDqAVuNJmTtYuqFijL0QOtKV1Ni86AIh2Wz80kAIEk
+X-Received: by 2002:a25:19c5:: with SMTP id 188-v6mr29529787ybz.76.1540320409541;
+        Tue, 23 Oct 2018 11:46:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540320409; cv=none;
+        d=google.com; s=arc-20160816;
+        b=fJsl2zirvwgepSh1YVA+gRSzxXFZ1ZYlHFFNj6bAKCHp3qK2MyDjKrMhBAESQTilF3
+         4QSA7fnVv75fVaG32ctH113wYR9+mAZRB4BIkhuc2e2RtH2lgETPKmCFh7d9rjCg41Ah
+         gsb6h+v75dfW+sZKvzWN6RLXPKqWVmhBRhrvSSALxqpsilf6mbWutENSjvEf6Os3OYtu
+         47gMEfxR8YueyEEvSIHSoOnaaIAZxFecsJNldppgj2BfosWKbBW7Y+RORQge7BjCf/uF
+         rhaRFwHo4ZqVGeF3oFnSM8yU19Y8ijv4K48RQIPU+DBFCMf+EnnPNNDsTrCjBhl66eS5
+         2QCA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=CN8cJvjavKFTPZzltWkT10qgLIHCBK3mWqnsJOJupJQ=;
+        b=GsMMR+km5E7AyvFA2/+h5v2CUqKr3Rv18TTMe2z29ODc7OqZm3Mxmr+0ndtpxTe7+v
+         bbZ549HKJQY2xGnijnZVGrO4RrKFWV9Q0Xp6ySZeteMO75hhsF++vPD2THgb+akPNn03
+         npRUWtKsZx2XXNmOdxasjEhY3a7j46iDfsCaJoVJSc2fwxPz+xciCylCP+rmLM77XAWe
+         M8OfhyVLNADhbKqievlbr60asCOK1NfC/sjZTuYe/FyGwM1ioKSoXY1D9/3J/MMADuqH
+         3YDz7wbZFkdKMY6MCqWlo21xxpjANbVCF5Sh+7JkCYXbSPzSD/pkYd06EbidXQLzWMRs
+         cCXw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sAbXYimw;
+       spf=pass (google.com: domain of robdclark@gmail.com designates 2607:f8b0:4864:20::130 as permitted sender) smtp.mailfrom=robdclark@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <robdclark@gmail.com>
+Received: from mail-it1-x130.google.com (mail-it1-x130.google.com. [2607:f8b0:4864:20::130])
+        by gmr-mx.google.com with ESMTPS id s132-v6si107449ywg.1.2018.10.23.11.46.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 19 Feb 2016 07:07:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) client-ip=2607:f8b0:400e:c00::230;
+        Tue, 23 Oct 2018 11:46:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of robdclark@gmail.com designates 2607:f8b0:4864:20::130 as permitted sender) client-ip=2607:f8b0:4864:20::130;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x230.google.com with SMTP id x65so52555791pfb.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 19 Feb 2016 07:07:23 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sAbXYimw;
+       spf=pass (google.com: domain of robdclark@gmail.com designates 2607:f8b0:4864:20::130 as permitted sender) smtp.mailfrom=robdclark@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-it1-x130.google.com with SMTP id i191-v6so3438463iti.5
+        for <outreachy-kernel@googlegroups.com>; Tue, 23 Oct 2018 11:46:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=6QC+XYAmkX8lNkDcmRLaBslqd7i2ZcfZZyHw0aPsa/8=;
-        b=nS28Fc6YCBh9aqg2deL7pYvavQZaNLIyVpYPKXTAf4EtyGrb08hv13b5LVM+JKKfVJ
-         +rwceOVrynXZEvSXaZtd5lgx4Y9oe+9IOynTXCnLwdpCmc0eHVPLpryxSEuHK6hqBTUM
-         NYFYd/lz4GKRkVGaB8iB5kalaa4aca9195rYWAnnj46w6QEJu3oUPxQxDlHKKwti8ZJ3
-         VjfC2NSDTmJsO8yU3uBr2jjpiKEWa7DyDTJFTY9BKrtZXzV80ftbn2Jyr9+3AUs5w7ky
-         /1/X1Q7wK9af7xlT4uILvzP5TBrhd8052/D942w7+f2b9tkEgquJ/3RCoDMKV9rxJKaj
-         NQ8Q==
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=CN8cJvjavKFTPZzltWkT10qgLIHCBK3mWqnsJOJupJQ=;
+        b=sAbXYimwS75hW9KBenpYTGOhTomwcgMU2Ch1fJbngW2pRRkk5zJR2Z+PgjqokfnBm4
+         dFOSOW+VUdpDQ4gEUztVv4R9ARzTKPdWgt/LtW4y+zsPGt5N8G7xUOLYYaBAQKo/bz2S
+         JI7fmyGx5cnE5OkLaCJerSxypiCS4cc7enlvw6SkK0UuZRca1I3zDhBzZQlvnEnacz5a
+         HwMuZUS1zCdQmFH9g/WpKiTR8dDwp0/eZTuTzQlWUeW3DVv0YWCbB9HE4Yq6Ph4LZnTk
+         wnDw730otsrRILbOja6nuvZlvvLWV1isNP+B75iIxVBzFTzex3iOv8F7DcM8ZikOX3K5
+         4Z9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=6QC+XYAmkX8lNkDcmRLaBslqd7i2ZcfZZyHw0aPsa/8=;
-        b=dSVuPZbUQHdE9f8vTvrkfj7G5BKLXBlv4Wq87fblEOzS1dKoOuEsKNQtSEefdO3GXg
-         ujjl0FRFUMjNg8pP88LiB8N+YQSf7zIMg6uUjjcVXOZ1BKZPFRlAnJKrTVwDuMWlDhM0
-         fjmEMTNhjUu+f9cvfYiUO+OrB79hk6Z74OUGLYrObqY64/9xxKWWqixydp8CmMJEPw3+
-         W6uGO1hxu+XLo9/T7NstSoJx4C8j4iOwIM2zRWgPSE+KPXeL8yxh5sz9+qUD7j/r0l+b
-         KTU4QsSfT/E31mvAM8NvzkvvCkIDq5uS7mFhc80xeA2+r8HQk4b8LPoz7pfXJsjPZ5jv
-         U3mw==
-X-Gm-Message-State: AG10YOSBagyAsC/+/U7Nkdx8LtX2BJYz3CdMRdKFnJWlhmih6rkyuHNWKq6QzMakDcxR6Q==
-X-Received: by 10.98.64.4 with SMTP id n4mr18707800pfa.58.1455894443589;
-        Fri, 19 Feb 2016 07:07:23 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.69.106.39])
-        by smtp.gmail.com with ESMTPSA id l62sm18541089pfj.7.2016.02.19.07.07.19
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Fri, 19 Feb 2016 07:07:23 -0800 (PST)
-Date: Fri, 19 Feb 2016 20:37:14 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8192e: Replace sprintf with snprintf
-Message-ID: <20160219150713.GA13168@amitoj-Inspiron-3542>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=CN8cJvjavKFTPZzltWkT10qgLIHCBK3mWqnsJOJupJQ=;
+        b=j7vrW9c1bAcyAgcFqYawwhHbZoyTQxp4qUxARVve3gWRfuvPczuU/l67UcRSaiADYa
+         1ZlR9KnIs0pxcpjQe/0cgPJjuATcDcLYGVaBlWAnIhoC4mRLx0quMyizcoDM6nkz0tsh
+         Y+6v4OYveFc5N2QuGog6YhuXPOckEuanVfnn6YfFv2lWMBen22EHwZkh2hRIlISrppn/
+         zgvdi2JXi7Oju7hczphuMp1HvvvaIGDU8cq7ygruMGO3hxWiiKDOWThLg62J24LxTiQn
+         rSWvU9cHbhgbycPdj1p4h4mAvBssaknunWeGuqEKbnMCdELSZMT7WCr7dMIsNkZHDETu
+         FYFg==
+X-Gm-Message-State: ABuFfog6k10NfalW83DZhkuZ9Jm7yqx37ShH11z3b9YsoplDN8ghnTlk
+	Hq5BQwptNPqXCPhGGK/6mV8WykJT/3rKyu4B9Io=
+X-Received: by 2002:a24:9c86:: with SMTP id b128-v6mr14650703ite.104.1540320409173;
+ Tue, 23 Oct 2018 11:46:49 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+References: <20181020174926.GA32333@armorer> <154023617749.9962.9645598871319141504@skylake-alporthouse-com>
+ <20181023164122.GF154160@art_vandelay>
+In-Reply-To: <20181023164122.GF154160@art_vandelay>
+From: Rob Clark <robdclark@gmail.com>
+Date: Tue, 23 Oct 2018 14:46:37 -0400
+Message-ID: <CAF6AEGv0nk1sfOENm_uQuxvRd6N3tCHmB-K5AMdKJ+grv1+O7g@mail.gmail.com>
+Subject: Re: [PATCH DRM] drm: msm: Use DRM_DEV_* instead of dev_*
+To: sean@poorly.run
+Cc: Chris Wilson <chris@chris-wilson.co.uk>, David Airlie <airlied@linux.ie>, 
+	Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel <dri-devel@lists.freedesktop.org>, 
+	outreachy-kernel@googlegroups.com, mamtashukla555@gmail.com
+Content-Type: text/plain; charset="UTF-8"
 
-Replace sprintf with snprintf as sprintf does not check for buffer
-overflow.
+On Tue, Oct 23, 2018 at 12:41 PM Sean Paul <sean@poorly.run> wrote:
+>
+> On Mon, Oct 22, 2018 at 08:22:57PM +0100, Chris Wilson wrote:
+> > Quoting Mamta Shukla (2018-10-20 18:49:26)
+> > > Use DRM_DEV_INFO/ERROR/WARN instead of dev_info/err/debug to generate
+> > > drm-formatted specific log messages so that it will be easy to
+> > > differentiate in case of multiple instances of driver.
+> >
+> > Do you not think this is a bit backwards? Both dev_* and DRM_DEV_*
+> > include the device id so that multiple instances can be distinguished.
+> > What DRM_DEV_* adds is the function name, which for user facing messages
+> > should not be required given a self-encapsulating informative message.
+>
+> "given a self-encapsulating informative message." being the key here. I'm not
+> sure about i915, but most other drivers have vague/duplicated log messages which
+> rely on the function name for differentiation.
+>
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/rtl8192e/rtllib_wx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+agreed about it being nice to have the fxn name in the message.. even
+if it doesn't mean anything to the user, it often means something to
+the person they send an kernel log to..
 
-diff --git a/drivers/staging/rtl8192e/rtllib_wx.c b/drivers/staging/rtl8192e/rtllib_wx.c
-index 84e6272..1116a88 100644
---- a/drivers/staging/rtl8192e/rtllib_wx.c
-+++ b/drivers/staging/rtl8192e/rtllib_wx.c
-@@ -602,7 +602,7 @@ int rtllib_wx_set_encode_ext(struct rtllib_device *ieee,
- 		char tempbuf[100];
- 
- 		memset(tempbuf, 0x00, 100);
--		sprintf(tempbuf, "%s", module);
-+		snprintf(tempbuf, sizeof(tempbuf), "%s", module);
- 		request_module("%s", tempbuf);
- 		ops = lib80211_get_crypto_ops(alg);
- 	}
--- 
-1.9.1
+Thanks Matma, I've pulled this into msm-next
 
+BR,
+-R
 
