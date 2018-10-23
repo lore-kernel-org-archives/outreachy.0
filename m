@@ -1,111 +1,112 @@
 X-GM-THRID: 6614497774807285760
-X-Received: by 2002:a25:330a:: with SMTP id z10-v6mr30940827ybz.100.1540320410357;
-        Tue, 23 Oct 2018 11:46:50 -0700 (PDT)
+X-Received: by 2002:a63:784d:: with SMTP id t74-v6mr2015832pgc.39.1540312885664;
+        Tue, 23 Oct 2018 09:41:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:f507:: with SMTP id a7-v6ls1683534ybe.7.gmail; Tue, 23
- Oct 2018 11:46:49 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV62VH7vENYZLIvtmJBMcek/kuTTO1ylDqAVuNJmTtYuqFijL0QOtKV1Ni86AIh2Wz80kAIEk
-X-Received: by 2002:a25:19c5:: with SMTP id 188-v6mr29529787ybz.76.1540320409541;
-        Tue, 23 Oct 2018 11:46:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540320409; cv=none;
+Received: by 2002:a62:85c4:: with SMTP id m65-v6ls1801308pfk.10.gmail; Tue, 23
+ Oct 2018 09:41:24 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV63JQvrfmFNSIQib/7NSo4y6P405rjqXPM5Zn7IMn+Tk7TLb7S/0C5VIEyzCAVxkQOAvRnCf
+X-Received: by 2002:a62:ea07:: with SMTP id t7-v6mr15343692pfh.44.1540312884813;
+        Tue, 23 Oct 2018 09:41:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540312884; cv=none;
         d=google.com; s=arc-20160816;
-        b=fJsl2zirvwgepSh1YVA+gRSzxXFZ1ZYlHFFNj6bAKCHp3qK2MyDjKrMhBAESQTilF3
-         4QSA7fnVv75fVaG32ctH113wYR9+mAZRB4BIkhuc2e2RtH2lgETPKmCFh7d9rjCg41Ah
-         gsb6h+v75dfW+sZKvzWN6RLXPKqWVmhBRhrvSSALxqpsilf6mbWutENSjvEf6Os3OYtu
-         47gMEfxR8YueyEEvSIHSoOnaaIAZxFecsJNldppgj2BfosWKbBW7Y+RORQge7BjCf/uF
-         rhaRFwHo4ZqVGeF3oFnSM8yU19Y8ijv4K48RQIPU+DBFCMf+EnnPNNDsTrCjBhl66eS5
-         2QCA==
+        b=YsU5nUn/UhDX6bu9kt1P5VE3NupEhg7Lv6pVTUbPeWyUiGwJ3acKpXqw7b3GNzFacH
+         MJ/HvTnaKRXjzt6YFtj29Vg0oqzJbjojhZf6omIiHt1W+yHGAmTddB57wk2iKQ9DSryQ
+         Qt11Eyl25UM7BsMvuYi6hovtpThJbnd+UBlYkm1wD2eF27ITWvyFSMVtngDpSDyg5srC
+         ahs9tXOYF0oEbNMnsbcM/8OPo5wvCER3eTwc/RaZZScM21t2F2XgEsjy7oXs4Buo1zN8
+         dMFqMTMUkzuNBStpkSyyh1/zCCEUrJHHUSMnaW8y3RJlajFRKxR61KS9yOsaQXB5iEcP
+         OqfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=CN8cJvjavKFTPZzltWkT10qgLIHCBK3mWqnsJOJupJQ=;
-        b=GsMMR+km5E7AyvFA2/+h5v2CUqKr3Rv18TTMe2z29ODc7OqZm3Mxmr+0ndtpxTe7+v
-         bbZ549HKJQY2xGnijnZVGrO4RrKFWV9Q0Xp6ySZeteMO75hhsF++vPD2THgb+akPNn03
-         npRUWtKsZx2XXNmOdxasjEhY3a7j46iDfsCaJoVJSc2fwxPz+xciCylCP+rmLM77XAWe
-         M8OfhyVLNADhbKqievlbr60asCOK1NfC/sjZTuYe/FyGwM1ioKSoXY1D9/3J/MMADuqH
-         3YDz7wbZFkdKMY6MCqWlo21xxpjANbVCF5Sh+7JkCYXbSPzSD/pkYd06EbidXQLzWMRs
-         cCXw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=WnwZ+so91CP1PhcFGaV4y0ut8tDfKZGzw007y+Z+XfU=;
+        b=cr+pDZy3SKomVSWMXQvTonfaYzNoUYuLiOrPb9Ajj/KjarS6v/eG3DFT6B6t/Q9BDS
+         2aNmDlbvPLF8cY44ZbeuBTQH54iMslCCye3AijDuNqezBbqYiEsxWnUDHDNwCzs7tCoy
+         GMmY8iKxpFPywzeNLHkbn1LN2LLfzxCP1zxyKV4IflifVodp3ATVg9JR+83VG+5XYl/5
+         SYGMEfGJA7jx0WkL5wCsdowcG/mECBGzvUmU2uUBT+QotYlEN3lfnmiJui2OlnKVhaGk
+         7XT6rPNWH62UF0dynMNAawLHXiEgqsMqQsdEZfd7C66uHfabkPrWoowHyyDMIuLvmAgQ
+         wMeg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sAbXYimw;
-       spf=pass (google.com: domain of robdclark@gmail.com designates 2607:f8b0:4864:20::130 as permitted sender) smtp.mailfrom=robdclark@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <robdclark@gmail.com>
-Received: from mail-it1-x130.google.com (mail-it1-x130.google.com. [2607:f8b0:4864:20::130])
-        by gmr-mx.google.com with ESMTPS id s132-v6si107449ywg.1.2018.10.23.11.46.49
+       dkim=pass header.i=@poorly.run header.s=google header.b=ZGcs8r6X;
+       spf=pass (google.com: domain of sean@poorly.run designates 2607:f8b0:4864:20::c41 as permitted sender) smtp.mailfrom=sean@poorly.run
+Return-Path: <sean@poorly.run>
+Received: from mail-yw1-xc41.google.com (mail-yw1-xc41.google.com. [2607:f8b0:4864:20::c41])
+        by gmr-mx.google.com with ESMTPS id h13-v6si76396pfd.2.2018.10.23.09.41.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 23 Oct 2018 11:46:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of robdclark@gmail.com designates 2607:f8b0:4864:20::130 as permitted sender) client-ip=2607:f8b0:4864:20::130;
+        Tue, 23 Oct 2018 09:41:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sean@poorly.run designates 2607:f8b0:4864:20::c41 as permitted sender) client-ip=2607:f8b0:4864:20::c41;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sAbXYimw;
-       spf=pass (google.com: domain of robdclark@gmail.com designates 2607:f8b0:4864:20::130 as permitted sender) smtp.mailfrom=robdclark@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-it1-x130.google.com with SMTP id i191-v6so3438463iti.5
-        for <outreachy-kernel@googlegroups.com>; Tue, 23 Oct 2018 11:46:49 -0700 (PDT)
+       dkim=pass header.i=@poorly.run header.s=google header.b=ZGcs8r6X;
+       spf=pass (google.com: domain of sean@poorly.run designates 2607:f8b0:4864:20::c41 as permitted sender) smtp.mailfrom=sean@poorly.run
+Received: by mail-yw1-xc41.google.com with SMTP id j75-v6so811152ywj.10
+        for <outreachy-kernel@googlegroups.com>; Tue, 23 Oct 2018 09:41:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=CN8cJvjavKFTPZzltWkT10qgLIHCBK3mWqnsJOJupJQ=;
-        b=sAbXYimwS75hW9KBenpYTGOhTomwcgMU2Ch1fJbngW2pRRkk5zJR2Z+PgjqokfnBm4
-         dFOSOW+VUdpDQ4gEUztVv4R9ARzTKPdWgt/LtW4y+zsPGt5N8G7xUOLYYaBAQKo/bz2S
-         JI7fmyGx5cnE5OkLaCJerSxypiCS4cc7enlvw6SkK0UuZRca1I3zDhBzZQlvnEnacz5a
-         HwMuZUS1zCdQmFH9g/WpKiTR8dDwp0/eZTuTzQlWUeW3DVv0YWCbB9HE4Yq6Ph4LZnTk
-         wnDw730otsrRILbOja6nuvZlvvLWV1isNP+B75iIxVBzFTzex3iOv8F7DcM8ZikOX3K5
-         4Z9Q==
+        d=poorly.run; s=google;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=WnwZ+so91CP1PhcFGaV4y0ut8tDfKZGzw007y+Z+XfU=;
+        b=ZGcs8r6X67o5gDp/G9I1FT+wCkStfJcxSgd4tKxIWCQ7jeJRl+j25VRuo1cZC8/b1w
+         y03GomtGz0zWvvfytW+Vq5w7xDHR/BTY/1kyZc0kfUZ8xQxNdNlQ8jT5p3hhzscy39Es
+         N7pLljm//ShgiBlGn76M5N/eoMcvDwHuDUGEIlUCogrtma70jYl7w5RORTOUZTs3PDnw
+         KHPQTMuX+2yJV+Zvs9jnlSpzm7I/vlTQCHzsvqhpV8GOsjPxKJFx8T6KpdmQf0J5cRPH
+         osbrMiWpa8r9+yI8pdtN6zURKI1TA6yIZXbCpb61u00kE16KjV07KbB/+PDdR+u7uNTz
+         k8yQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=CN8cJvjavKFTPZzltWkT10qgLIHCBK3mWqnsJOJupJQ=;
-        b=j7vrW9c1bAcyAgcFqYawwhHbZoyTQxp4qUxARVve3gWRfuvPczuU/l67UcRSaiADYa
-         1ZlR9KnIs0pxcpjQe/0cgPJjuATcDcLYGVaBlWAnIhoC4mRLx0quMyizcoDM6nkz0tsh
-         Y+6v4OYveFc5N2QuGog6YhuXPOckEuanVfnn6YfFv2lWMBen22EHwZkh2hRIlISrppn/
-         zgvdi2JXi7Oju7hczphuMp1HvvvaIGDU8cq7ygruMGO3hxWiiKDOWThLg62J24LxTiQn
-         rSWvU9cHbhgbycPdj1p4h4mAvBssaknunWeGuqEKbnMCdELSZMT7WCr7dMIsNkZHDETu
-         FYFg==
-X-Gm-Message-State: ABuFfog6k10NfalW83DZhkuZ9Jm7yqx37ShH11z3b9YsoplDN8ghnTlk
-	Hq5BQwptNPqXCPhGGK/6mV8WykJT/3rKyu4B9Io=
-X-Received: by 2002:a24:9c86:: with SMTP id b128-v6mr14650703ite.104.1540320409173;
- Tue, 23 Oct 2018 11:46:49 -0700 (PDT)
-MIME-Version: 1.0
-References: <20181020174926.GA32333@armorer> <154023617749.9962.9645598871319141504@skylake-alporthouse-com>
- <20181023164122.GF154160@art_vandelay>
-In-Reply-To: <20181023164122.GF154160@art_vandelay>
-From: Rob Clark <robdclark@gmail.com>
-Date: Tue, 23 Oct 2018 14:46:37 -0400
-Message-ID: <CAF6AEGv0nk1sfOENm_uQuxvRd6N3tCHmB-K5AMdKJ+grv1+O7g@mail.gmail.com>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=WnwZ+so91CP1PhcFGaV4y0ut8tDfKZGzw007y+Z+XfU=;
+        b=CCTZ3dke4bPoomHX0EHvjaxXpE5D34Ne+hqrRIH2CNZ/wcxiGei+8/UE7FijwsCwlU
+         74ulrFwQZyflTvxN1NMo/r1+wTUEsSmjmdy0HxvY/S+X1unQdJr/ejt334zT7I1vYcmC
+         MIWpr1lD9xmSoLo1Zswgo0bV7Ubm8kgm52RsJ9WmtoJbWEW0CWRPVY/qSIxgruTruE/T
+         TX/l0R6QWPAWeE8158KRZSLR97Nlr1nC3BCIDVlht8Nw27YHHCDEBu1k9kC0yr/XBhp4
+         qpaokRLedrGWWyaVpfAYy6AeBW/PsgnWZL+QCDmBSmDb+gaI99ur/hWcfgWrt7UvIOZj
+         A7BQ==
+X-Gm-Message-State: ABuFfogUpMUiUgrBwmRLdeACDyIlcHqRmNq32TyqpuY/dNwKLxmBVHVr
+	KyVy2dLJ+cau2dvlPrJERy0p3A==
+X-Received: by 2002:a0d:c786:: with SMTP id j128-v6mr35285952ywd.432.1540312883868;
+        Tue, 23 Oct 2018 09:41:23 -0700 (PDT)
+Return-Path: <sean@poorly.run>
+Received: from localhost ([2620:0:1013:11:ad55:b1db:adfe:3b9f])
+        by smtp.gmail.com with ESMTPSA id e194-v6sm90670ywe.106.2018.10.23.09.41.23
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 23 Oct 2018 09:41:23 -0700 (PDT)
+Date: Tue, 23 Oct 2018 12:41:22 -0400
+From: Sean Paul <sean@poorly.run>
+To: Chris Wilson <chris@chris-wilson.co.uk>
+Cc: Mamta Shukla <mamtashukla555@gmail.com>,
+	outreachy-kernel@googlegroups.com, airlied@linux.ie,
+	daniel.vetter@ffwll.ch, sean@poorly.run,
+	dri-devel@lists.freedesktop.org
 Subject: Re: [PATCH DRM] drm: msm: Use DRM_DEV_* instead of dev_*
-To: sean@poorly.run
-Cc: Chris Wilson <chris@chris-wilson.co.uk>, David Airlie <airlied@linux.ie>, 
-	Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel <dri-devel@lists.freedesktop.org>, 
-	outreachy-kernel@googlegroups.com, mamtashukla555@gmail.com
-Content-Type: text/plain; charset="UTF-8"
+Message-ID: <20181023164122.GF154160@art_vandelay>
+References: <20181020174926.GA32333@armorer>
+ <154023617749.9962.9645598871319141504@skylake-alporthouse-com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <154023617749.9962.9645598871319141504@skylake-alporthouse-com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-On Tue, Oct 23, 2018 at 12:41 PM Sean Paul <sean@poorly.run> wrote:
->
-> On Mon, Oct 22, 2018 at 08:22:57PM +0100, Chris Wilson wrote:
-> > Quoting Mamta Shukla (2018-10-20 18:49:26)
-> > > Use DRM_DEV_INFO/ERROR/WARN instead of dev_info/err/debug to generate
-> > > drm-formatted specific log messages so that it will be easy to
-> > > differentiate in case of multiple instances of driver.
-> >
-> > Do you not think this is a bit backwards? Both dev_* and DRM_DEV_*
-> > include the device id so that multiple instances can be distinguished.
-> > What DRM_DEV_* adds is the function name, which for user facing messages
-> > should not be required given a self-encapsulating informative message.
->
-> "given a self-encapsulating informative message." being the key here. I'm not
-> sure about i915, but most other drivers have vague/duplicated log messages which
-> rely on the function name for differentiation.
->
+On Mon, Oct 22, 2018 at 08:22:57PM +0100, Chris Wilson wrote:
+> Quoting Mamta Shukla (2018-10-20 18:49:26)
+> > Use DRM_DEV_INFO/ERROR/WARN instead of dev_info/err/debug to generate
+> > drm-formatted specific log messages so that it will be easy to
+> > differentiate in case of multiple instances of driver.
+> 
+> Do you not think this is a bit backwards? Both dev_* and DRM_DEV_*
+> include the device id so that multiple instances can be distinguished.
+> What DRM_DEV_* adds is the function name, which for user facing messages
+> should not be required given a self-encapsulating informative message.
 
-agreed about it being nice to have the fxn name in the message.. even
-if it doesn't mean anything to the user, it often means something to
-the person they send an kernel log to..
+"given a self-encapsulating informative message." being the key here. I'm not
+sure about i915, but most other drivers have vague/duplicated log messages which
+rely on the function name for differentiation.
 
-Thanks Matma, I've pulled this into msm-next
+Sean
 
-BR,
--R
+> -Chris
+
+-- 
+Sean Paul, Software Engineer, Google / Chromium OS
 
