@@ -1,205 +1,116 @@
 X-GM-THRID: 6615663139748839424
-X-Received: by 2002:ae9:f208:: with SMTP id m8-v6mr1714560qkg.31.1540382208139;
-        Wed, 24 Oct 2018 04:56:48 -0700 (PDT)
+X-Received: by 2002:a62:8590:: with SMTP id m16-v6mr862804pfk.17.1540379394587;
+        Wed, 24 Oct 2018 04:09:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:9e6f:: with SMTP id z47ls3365441qve.10.gmail; Wed, 24
- Oct 2018 04:56:47 -0700 (PDT)
-X-Received: by 2002:a0c:d601:: with SMTP id c1mr1678387qvj.51.1540382207629;
-        Wed, 24 Oct 2018 04:56:47 -0700 (PDT)
-Received: by 2002:a37:ae04:0:0:0:0:0 with SMTP id x4-v6msqke;
-        Wed, 24 Oct 2018 03:45:47 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5dcWI6FB4TiHE7xu6dFYwLbWgVc/AJnsHXcWi0l08RyEekkAt2Y9BX9oZ9fc5DKH7NyiFC6
-X-Received: by 2002:a1c:9c55:: with SMTP id f82-v6mr227708wme.14.1540377946698;
-        Wed, 24 Oct 2018 03:45:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540377946; cv=none;
+Received: by 2002:a65:51cd:: with SMTP id i13-v6ls2049766pgq.1.gmail; Wed, 24
+ Oct 2018 04:09:53 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5f0Ap57hBSj8uzjWcbkuYQic/MdHTDoeu9XIxcw1H/Q7TV1y4RPJrEsYKP+IHcmOA/PDinM
+X-Received: by 2002:a62:44c3:: with SMTP id m64-v6mr924593pfi.48.1540379393748;
+        Wed, 24 Oct 2018 04:09:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540379393; cv=none;
         d=google.com; s=arc-20160816;
-        b=EAPEnz6TA0uohGXTi0RalRJkvMH1qp6Hw3ga2OMyTbkfdO2KRgix9KaQ5EXwjlxjwH
-         vpskcqKQm+cxLexNdbWzfC40MKylM9yji9crmokhRQ75Dsarq58kutb/Y03avxSZb0LP
-         5eosWOdtBLtKbaIsG24v/LgDpksEeiZG89serb/6583JGwrwUwHkv75nOVSGxM5zIFMH
-         xzkyBQCVGiN5PBVwdqhExkZ0bpY0EsqQp0QzA54XnKMdx+NziL0MqOhbKfWSJfvClyFX
-         6uelrsaRC1vWPIAL4laMB6rdlOFCW6D4OzV+2YrPkSttbSZ+Tw1vVWippoZaE/niDmXg
-         myqw==
+        b=mNtg5rxSC7rMWagF8GLt6VQfzZrWJ4duZMHhho62mtSCb/kG9CZFMQxEti/ylyYDx9
+         FPfrfv1202sHqsxi6PHlzx1bkhwFB20Q/8pJVI7tvWCOEK4OtEmkG2rxJJt1TTVfCh2G
+         O48jvOPxWWXsRpRHYbSuC8rKU6dKrg3PeGhEADVoUY/JyJxQ+ymopq4jLY61rq7eKKZA
+         LTAYzkaMbbVlOddBOb2aGp23RUsxSkqlNWfOnHiaasFhYxxLzQ52ewgB72fjFm62mv4C
+         8itmvZUQXDVVLm1N5cpzKu8S8Ys0xyAq9rKGl3UwQCwaNOCLqov2paDz2zHpHco6p5Yy
+         +H4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:cc:to
-         :subject:dkim-signature;
-        bh=2Z1x24zFXOEh96eWa1oNBNP3KJopWafctSfuWyEhL24=;
-        b=jZ5w19fASMdYCTWv8YQ180vjYqweMER1UknfckEQRF7Nghs6lsIm2WW/zMSaZL3GWt
-         q/Vt3+IjOEyTwrCAeBmokU6mQHqvggBEXsGAXRawJ80llbDHTe302MgJnCyIg9x/ihYf
-         rakJCA++HAHD+SZrJAgJa/m0SGJyBy/zGHA6sFOEAbETYVMTmLKhF7yUVnm3h2sIEp8I
-         GGjbYK2db80tBTgyIzr2bNairsrG78Dmt3x/J+3v+YwfxeYbeckiIi7vzvm12S5NqqoY
-         pBjFmjAFueBgHh9U8LpMLaObSCvN5QPCumgKym2PQqQXe2PEFvyaY6n+0L5wqWemXpqZ
-         R0Ng==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=Xb/78hzLIwWTGWw0xNLO4MPSGEvHRJrd1jdXz9sK+NM=;
+        b=bXEOkWAg4g+HVczymTo4BRFmdb5J0YHKXwgVVmK+f4PC+Ncmu5HQLelzxPCzXR58I4
+         rAivmXXcUyhEzHlJ2MZCPW+lLKm/L6Vve9Pf6dh0lS6Nh10XEfrAuBV43jVeGcjQ9+GJ
+         dyQxSji0qvY/PlukRc6XdxZiqaMuaQj5a5cXzNgQF3AI8Gknjll279TZ7ywwFuXEZIdm
+         Fh4Tmd0CcuK4WnfI+0gfvjsfcnAFfhnat19j4XzTTimPldHFI3S9tj4vi4ZwrrLuMvSV
+         zYdp3CrWawCq3+DZST42OmB1130NWxjn8TKfzpMNeZeKwBHKjeROMNE9+aSWf3PhAwDp
+         CllA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=m2a4LdxP;
-       spf=pass (google.com: domain of matthias.bgg@gmail.com designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=matthias.bgg@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <matthias.bgg@gmail.com>
-Received: from mail-wm1-x342.google.com (mail-wm1-x342.google.com. [2a00:1450:4864:20::342])
-        by gmr-mx.google.com with ESMTPS id o9-v6si129035wmh.2.2018.10.24.03.45.46
+       dkim=pass header.i=@oracle.com header.s=corp-2018-07-02 header.b=RXLd5MUd;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.86 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <dan.carpenter@oracle.com>
+Received: from userp2130.oracle.com (userp2130.oracle.com. [156.151.31.86])
+        by gmr-mx.google.com with ESMTPS id f87-v6si190795pfe.4.2018.10.24.04.09.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 24 Oct 2018 03:45:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of matthias.bgg@gmail.com designates 2a00:1450:4864:20::342 as permitted sender) client-ip=2a00:1450:4864:20::342;
+        Wed, 24 Oct 2018 04:09:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.86 as permitted sender) client-ip=156.151.31.86;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=m2a4LdxP;
-       spf=pass (google.com: domain of matthias.bgg@gmail.com designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=matthias.bgg@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x342.google.com with SMTP id 143-v6so4836287wmf.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 24 Oct 2018 03:45:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=subject:to:cc:references:from:openpgp:autocrypt:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=2Z1x24zFXOEh96eWa1oNBNP3KJopWafctSfuWyEhL24=;
-        b=m2a4LdxPoznaDLivY7crzzymPqsJUbg76coq656mTAxrwhFuLgtLstC5zpsCsCAFJ6
-         Fn4hMH/RRlSd+XT6ezHJ3gxZckf6OXw68lxgvUH+KDuZqHHH6zaSMDuU42LDZktyvS3X
-         6opSF+ESTGwPpWk/HAh7hPcCaZ7WOhkfARonvFBJlarGEQhxL40shvgZ7UEz9bUi2MoI
-         Jzoo+r2DECNKB09dra8w7ShdnHXGRGKY45+Dc22hYl25R/yeZQw77tS/rNyd2EFGGhoY
-         TMvlEKJwB6Fe1jc0puQN7y5ramg/HZ3vditzlIvXHFfuAT3prU/h3scVu5F3bY0M8rE/
-         nafg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:autocrypt
-         :message-id:date:user-agent:mime-version:in-reply-to
-         :content-language:content-transfer-encoding;
-        bh=2Z1x24zFXOEh96eWa1oNBNP3KJopWafctSfuWyEhL24=;
-        b=GJ5YROV4XWH1/BtTT+EoX2bo2ovrxyevf1ImKp+uNnykZ/atouLN5FXWGBZHACUl/c
-         6mNNE4E23oGviVjt/rvoFBNy6YD8pTQK7XWmREQsKouG2swsZeswubY/vW+w90ot2waK
-         GpxZ0zNqAePKXau1IPDoIrckt1yjPDCUcOks1UFBS0NP8kT5pQliSTeKY45oWb44SNSy
-         2eGKGFCt3zALwVgGV9TfkF2RoQKWioqDS8J6iHfTsPUq4rQuTLNKLwz8moiVEHjCntJr
-         CXe63pCjOKZUaj99dPwV9SoxWzldIp7Zi6R706Wd9eKPL55+bsJW4ftpsstmvxCuG4zP
-         aNCA==
-X-Gm-Message-State: AGRZ1gJD4M5ygHmfQigTivEw9LKwmKH8NZxdmZ5sna71GjcKPoDQLAnv
-	3GXfl/bjM0SFWv90ULxcDuQ=
-X-Received: by 2002:a1c:1203:: with SMTP id 3-v6mr2058194wms.21.1540377946077;
-        Wed, 24 Oct 2018 03:45:46 -0700 (PDT)
-Return-Path: <matthias.bgg@gmail.com>
-Received: from ziggy.stardust ([167.98.65.38])
-        by smtp.gmail.com with ESMTPSA id 140-v6sm4388408wmx.34.2018.10.24.03.45.44
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 24 Oct 2018 03:45:45 -0700 (PDT)
+       dkim=pass header.i=@oracle.com header.s=corp-2018-07-02 header.b=RXLd5MUd;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.86 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+	by userp2130.oracle.com (8.16.0.22/8.16.0.22) with SMTP id w9OB9nYg186854;
+	Wed, 24 Oct 2018 11:09:49 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2018-07-02;
+ bh=Xb/78hzLIwWTGWw0xNLO4MPSGEvHRJrd1jdXz9sK+NM=;
+ b=RXLd5MUdClHXPq/C3YpeyP9kfplcys8S+6awNTRSP2iTIcSa4o0EtwCSDb+76K8QZ4Gw
+ bsdbsUiGxZPqW0SdIuU//4e1WzQIa8vtw3curfdXWFKu+Naq09tqAldnqNebSuEo5K7U
+ d9GxCiNN+2UIt+pVbzlMoik4Q+0QVsLaHOy/F5JGehx6jWRrfxiDT9g3UJX4nHrTuJeJ
+ +gRYSNmYnFrs68eKmZhe8VIyoplm83aGtlEY+2swos/QcT0O5ELc/h/0xIrxKjXDbU7Y
+ 9kRH5HT5Ze+QjdFq96VIT4LzYyUwyzwJVNBqj/yL/0fUprNSxX9TxglJ6qgD71KzVyLM xg== 
+Received: from aserv0022.oracle.com (aserv0022.oracle.com [141.146.126.234])
+	by userp2130.oracle.com with ESMTP id 2n7usuaw0v-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 24 Oct 2018 11:09:49 +0000
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+	by aserv0022.oracle.com (8.14.4/8.14.4) with ESMTP id w9OB9hZZ009736
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 24 Oct 2018 11:09:43 GMT
+Received: from abhmp0007.oracle.com (abhmp0007.oracle.com [141.146.116.13])
+	by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id w9OB9gHm021475;
+	Wed, 24 Oct 2018 11:09:42 GMT
+Received: from mwanda (/129.205.6.86)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Wed, 24 Oct 2018 04:09:41 -0700
+Date: Wed, 24 Oct 2018 14:09:33 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Kimberly Brown <kimbrownkd@gmail.com>, outreachy-kernel@googlegroups.com,
+        Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+        devel@driverdev.osuosl.org, linux-mediatek@lists.infradead.org,
+        NeilBrown <neil@brown.name>,
+        Christian =?iso-8859-1?Q?L=FCtke-Stetzkamp?= <christian@lkamp.de>,
+        linux-arm-kernel@lists.infradead.org,
+        John Crispin <blogic@openwrt.org>
 Subject: Re: [PATCH v2] staging: mt7621-dma: Add braces around else branches
-To: Kimberly Brown <kimbrownkd@gmail.com>, outreachy-kernel@googlegroups.com,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: NeilBrown <neil@brown.name>,
- =?UTF-8?Q?Christian_L=c3=bctke-Stetzkamp?= <christian@lkamp.de>,
- John Crispin <blogic@openwrt.org>, devel@driverdev.osuosl.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20181023211142.GA2661@v> <20181024045653.GA2864@v>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
- 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
- UXI+r2JwH1CJjrHWeQEI2ucSKsNa8FllDmG/fQ==
-Message-ID: <af4594cc-05c0-672c-d560-b50705ceaab3@gmail.com>
-Date: Wed, 24 Oct 2018 12:45:44 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.2.1
+Message-ID: <20181024110933.ys7obd7sze3a6mgk@mwanda>
+References: <20181023211142.GA2661@v>
+ <20181024045653.GA2864@v>
+ <af4594cc-05c0-672c-d560-b50705ceaab3@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20181024045653.GA2864@v>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <af4594cc-05c0-672c-d560-b50705ceaab3@gmail.com>
+User-Agent: NeoMutt/20170609 (1.8.3)
+X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9055 signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=501
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1807170000 definitions=main-1810240101
 
-Hi Kiberly,
-
-Thanks for adding all the emails in CC.
-I would encourage you for your next patch to distinguish between CC and TO.
-You should send your patch TO important maintainers in the get_maintainers.pl
-list (as default, to all of them). If there is someone you really want to look
-into the patch, then add him/her in TO as well.
-
-Put the rest (people and mailing lists) in CC. Why? Some people filter their
-mails so that they can concentrate on the mails they got send directly and look
-on mails they are in CC with lower priority (maybe not at all, because there are
-too much?). So it is important to have the maintainers in the TO list and not in CC.
-
-Keep up the good work :)
-Matthias
-
-On 24/10/2018 06:56, Kimberly Brown wrote:
-> Add braces around else branches in conditional statements that include
-> branches with multiple statements. This style complies with the Linux
-> kernel coding style and improves consistency and readability. Issues found by
-> checkpatch.
+On Wed, Oct 24, 2018 at 12:45:44PM +0200, Matthias Brugger wrote:
+> Hi Kiberly,
 > 
-> Signed-off-by: Kimberly Brown <kimbrownkd@gmail.com>
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> ---
-> Changes in v2:
-> - Added people and mailing lists from get_maintainer.pl to the CC list
-> - Added Reviewed-by line
+> Thanks for adding all the emails in CC.
+> I would encourage you for your next patch to distinguish between CC and TO.
+> You should send your patch TO important maintainers in the get_maintainers.pl
+> list (as default, to all of them). If there is someone you really want to look
+> into the patch, then add him/her in TO as well.
 > 
->  drivers/staging/mt7621-dma/mtk-hsdma.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
-> index df6ebf41bdea..35556f024aa1 100644
-> --- a/drivers/staging/mt7621-dma/mtk-hsdma.c
-> +++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
-> @@ -418,8 +418,9 @@ static void mtk_hsdma_chan_done(struct mtk_hsdam_engine *hsdma,
->  			vchan_cookie_complete(&desc->vdesc);
->  			chan_issued = gdma_next_desc(chan);
->  		}
-> -	} else
-> +	} else {
->  		dev_dbg(hsdma->ddev.dev, "no desc to complete\n");
-> +	}
->  
->  	if (chan_issued)
->  		set_bit(chan->id, &hsdma->chan_issued);
-> @@ -456,8 +457,9 @@ static void mtk_hsdma_issue_pending(struct dma_chan *c)
->  		if (gdma_next_desc(chan)) {
->  			set_bit(chan->id, &hsdma->chan_issued);
->  			tasklet_schedule(&hsdma->task);
-> -		} else
-> +		} else {
->  			dev_dbg(hsdma->ddev.dev, "no desc to issue\n");
-> +		}
->  	}
->  	spin_unlock_bh(&chan->vchan.lock);
->  }
-> 
+
+I normally just add the first person from get_maintainer.pl to the To:.
+It's basically random I think.  The rest I put in the CC.  This is a
+staging patch so no one is very picky.
+
+There isn't a Fixes tag for this but if there were I add the person who
+wrote the original patch to the To header.  Hopefully, they review
+and Ack my patch.  I feel like that's very important.
+
+regards,
+dan carpenter
+
 
