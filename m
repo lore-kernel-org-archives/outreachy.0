@@ -1,103 +1,190 @@
-X-GM-THRID: 6810632543470092288
-X-Received: by 2002:a62:1894:: with SMTP id 142mr22582221pfy.27.1585723958813;
-        Tue, 31 Mar 2020 23:52:38 -0700 (PDT)
+X-GM-THRID: 6615692944071458816
+X-Received: by 2002:a02:5187:: with SMTP id s129-v6mr906746jaa.16.1540357258759;
+        Tue, 23 Oct 2018 22:00:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90a:982:: with SMTP id 2ls4011628pjo.1.gmail; Tue, 31
- Mar 2020 23:52:37 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKbb1HGAcFU1eOdL1xHcKFuL8XTub7DbOE6Ko21n9p7JuQTsWK7MZ/L4rbAe5+4BtaqosRm
-X-Received: by 2002:a17:90a:ad45:: with SMTP id w5mr3066819pjv.179.1585723957628;
-        Tue, 31 Mar 2020 23:52:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585723957; cv=none;
+Received: by 2002:a02:6605:: with SMTP id k5-v6ls1010967jac.0.gmail; Tue, 23
+ Oct 2018 22:00:57 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5du4TlWtEIMB1SO12cGGJ4/hjsjRdLgI0ySRVXFCeZpFgZukTFuC0TgluhuVL21wCJLn9bm
+X-Received: by 2002:a02:7426:: with SMTP id o38-v6mr917008jac.1.1540357257921;
+        Tue, 23 Oct 2018 22:00:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540357257; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZI9dMAfoENhiuMTMGFK1FfnhsWh4B1B9ELa62dd2N3FUos9DuZ+b9OVF5ZGdWG5eiA
-         rsM3RVNPTRK+vKO149qOWMJaQSzK86MoDqw9KNf6wB8YZQXJ3nTVSfUVUlKfOCCvCoyg
-         eOr7Ztfu6NoqPii2PuZ0KexD318BsmoXyyUR+xxBi5zN/+H5AYM+gnAEQstA4gdKdTkp
-         PE4VxNC+hxTgCYkEvwU0qXO2UPXylRs8XBzSSmkKCl790nYMC5kVQjdeRNCi47bMRWuZ
-         MHSfkphNsWxQBBaFA1C7Fc65H4R0mCk4JylNtlEaOvPjILp+yQJ5vpU2gjHO6b4VpmrF
-         m1fw==
+        b=vR5jcXCDiGh60/Wkoo1OB5wy46MOVCgj3I3CEkAcB9AOVkUAlxDom8hTpHgtHIlXX/
+         YGlY3FT2rK2u5jFh0E8S75Chbz8sfRguJLuntB/zPd+27LkyXq9a/5xDqPME7aAoPYBY
+         nUWWKMZatQDapmRnMF7gH9iyzuPQLzMqhu9kdQJP19SWfXND/uwdre63yYGvwQtEb4Bv
+         tbesrJN0UJENyFJJUyPJ6dKSrot+CVVVdGJ0AmNx9cLqkrZf8Gy59sXTLJYdwux42WKq
+         2Bfhwas5CkVixGvDigEPvSV3f4CDyZ0ZUoa6/3pKR22ApaIqdD58v65DMgBdTHiMZdLK
+         JdIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Ruqnsqo2GKINMPomcd5Tp3Zr42cqG+aT0Kmo0+O4bZw=;
-        b=k75KFGe/N4OFLJmdcxRFgoWYgblziNeqrZMtWsbHciP+GlgIfIHL1hYdlc1gEcnjwV
-         INfeHOJmj+SI5pUEW4WWf/z/bMOAQpE6tGXnbLQapgAvtQAjHxeze7w4Zxrv052yjN4L
-         yY8XZpaDMIZ7F5muTS2yq0ox55yZBuUY8w2Zd18W6UJO8EfwyTIW5m+/E5TpGJ3rweXG
-         RiQcg3+m8ijRAijbzLX5eNzz+fCm60WJ91C/miOzE3UGxTF8ObRXoRUvMq8xzwjaFPTZ
-         Ucpn27zvlMSZY8KGkWQtJW9twg492jttAgO2c7OzisWuqToxsV+6P8JJ5MnpZB+E5ckr
-         mLsw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=S5SrXxu4CJAa2D9CYFsjSZLPZyzHmXrluPB2Eg0KGnE=;
+        b=nmABcUtH3WRe1wwz5u/TSYZgTOzOSnJROSCALk3BvnoTkT71mFG+tkXfBhJg1IPPsO
+         Rl8f0Yqq+D/+MXq5icTGI3fgUMxrvMdWaae9asyqf5BPfF4GNYb26Yd+Ai+vIIvQ1Zny
+         h7mufibZrHl9NQYwnLvtqAJYmMRNGOtqySZRnyrRDxQkqYXRQm3zn3pUimWv0xsd0YaG
+         xCBTXwOEKgBIkF9Kvo7qFPFc4dYvYH8FoKVCLW3gypiswSWNh/6ksvaLjL7K7Jp+vQPF
+         wpV4HlJR87wvM54w+bHK6UQZLi5AsNssyV3ppB2VTUeGDPKUiWGy01jRBW9zeFeOWWma
+         EnAQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oGYz5mBv;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BTOwabtY;
+       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <debsoumyajit100@gmail.com>
-Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id np5si50705pjb.2.2020.03.31.23.52.37
+Return-Path: <m.maya.nakamura@gmail.com>
+Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id n199-v6si1168777itn.1.2018.10.23.22.00.57
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 31 Mar 2020 23:52:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 23 Oct 2018 22:00:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oGYz5mBv;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BTOwabtY;
+       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x441.google.com with SMTP id a24so4818901pfc.8
-        for <outreachy-kernel@googlegroups.com>; Tue, 31 Mar 2020 23:52:37 -0700 (PDT)
+Received: by mail-pf1-x442.google.com with SMTP id r64-v6so1798238pfb.13
+        for <outreachy-kernel@googlegroups.com>; Tue, 23 Oct 2018 22:00:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Ruqnsqo2GKINMPomcd5Tp3Zr42cqG+aT0Kmo0+O4bZw=;
-        b=oGYz5mBvzAs80qL3BZrnvIYQm/JSJJqMKxQ0zw+m6Ct4N91Jzy+lUUhf1eeifZOt4M
-         19CBFebmqSa8w4qeCGgantUCgSqYmX4FWlUjsPxDLEXGr/HknOAqakbXo2kK6kNgioaV
-         FGp+CaZAqdcw75oKfHDyUMnlIMQWlmnaHhygpKwXNFjtdZw3ocI2zDE7mMeZpnJ7mQ3g
-         7xm2cX7WE4K3ILmOo9JickMKTGRA4yPUly+DFqHUY9dxV/wkSGzGYbfErM/2Dbei5sTb
-         7ROyc7V80GJQceIE7wqWFLVvmgv1i+Sw/l5op6I+YWT/iTEj15pRZzQN3IGkrl/PkJFd
-         E/XA==
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=S5SrXxu4CJAa2D9CYFsjSZLPZyzHmXrluPB2Eg0KGnE=;
+        b=BTOwabtYqmP0OFHxti5uBWjuwOlJLorXeFZGEaRw/e8qqOASC//aWS+Lrp4wguB8KP
+         eP3ZwYK0dQ2SDLOc369ii8uyprn5ibgVNkEPEUMQZJiHP8QjT+YCeIg28hweNuCPkNeg
+         jD9mWUqZhU2NNtr2UGKjrDKqPqX3iI3ga4KPsz7eKB0dIbk1P+l7zliZ+3E853aA19Cr
+         86pGZHdx9gxiUZ6aQJVN0isCizy/3GirH3nJ4tGQM8OS67G0lxsW8aWHgL/Zf1PMIFek
+         xgzcOCFH1+OA9yN4nUY43VVEM+IPSoARThQbdk6oofTDc63j3bQ61oFZw8c0YJR5FZZD
+         7UUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Ruqnsqo2GKINMPomcd5Tp3Zr42cqG+aT0Kmo0+O4bZw=;
-        b=lBwrYrcqS8BAC3/E1m++y48TPTrsabhnUaqi9JTjgjVJLsjuxVP1ub/gINyA3DchHD
-         gZJsK7PW1flRXbtBqpRrNbMgrbW9VesGrew8vXDLgjFZNkuEsZ7ZXVOubZ1hGLvg6lEi
-         fu9LtabxAQvSTeorBDKQvyymk2ioIOIr79xa/aE/hP2cPal8D6MbQ0i5gWlWznv0H0Yz
-         CwKLkt+PXD3eYrZ+hEm6i+FOMOp6oZVvoIqSwr4l2XUHe64RMgn8iN1ibfYDQoZCGxIx
-         S580h/y6G0fjaDMzDvLWa03fO3hCxG9OwdWVkKHyyVV+W8YmJC3njAb3Dx4JiD1a0yu9
-         dTBQ==
-X-Gm-Message-State: ANhLgQ0uEoZX7RVSYyeddSB/v7pNQ3mSiRnBI0M0Ps1tjf/vPEE9nZ3E
-	X3COnvgYNIk3Q2bZkpjQyZw=
-X-Received: by 2002:a63:2b54:: with SMTP id r81mr22170382pgr.453.1585723957248;
-        Tue, 31 Mar 2020 23:52:37 -0700 (PDT)
-Return-Path: <debsoumyajit100@gmail.com>
-Received: from localhost.localdomain ([157.42.224.231])
-        by smtp.googlemail.com with ESMTPSA id m68sm4635849pjb.0.2020.03.31.23.52.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 31 Mar 2020 23:52:36 -0700 (PDT)
-From: Soumyajit Deb <debsoumyajit100@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	manishc@marvell.com,
-	sbrivio@redhat.com,
-	GR-Linux-NIC-Dev@marvell.com,
-	Soumyajit Deb <debsoumyajit100@gmail.com>
-Subject: [Outreachy] [PATCH 0/2] staging: qlge: Resolve various warnings reported by checkpatch.pl
-Date: Wed,  1 Apr 2020 12:21:18 +0530
-Message-Id: <20200401065120.17459-1-debsoumyajit100@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=S5SrXxu4CJAa2D9CYFsjSZLPZyzHmXrluPB2Eg0KGnE=;
+        b=p4Tb9kfZvTUNEk6dpINvWkB2NbRwd3yDioOhL1odvkivdHKnZB1JCyxd0ShwrAjHra
+         vofCzGpGDcTeKa6EK6EXvIpHrAAQaFEqsTar/dyaWkDsYmzkCSNUgkjBx8SCtNUcJsAO
+         r0/YlT1EYwh0nldKx0gPhnCrUJmztGJWCkLTk7JEWkp84zJXUATCAt6qpLE6JcMmy801
+         NksIOaUSR/X5wv/fcYCAsIIWW/eMGpLro0CxqV87Fgj9rHG34Rap2hhsMRT44kHyCvjX
+         oeMO3q0bLw0Rsnx+GmwuJh4vSo7Wo0IkNBqnS63f1cmFlaXpfsZMudOmM71IkyrFwOSN
+         Q0Ng==
+X-Gm-Message-State: AGRZ1gIOcT5amjBstcya+TeSQOpUOR1jmcitnCzP9qoIW79jmAj7Fv/f
+	aEmTKEl9+nvCp7l1qzEX8VlYLQQk
+X-Received: by 2002:a63:1624:: with SMTP id w36-v6mr1094960pgl.409.1540357257122;
+        Tue, 23 Oct 2018 22:00:57 -0700 (PDT)
+Return-Path: <m.maya.nakamura@gmail.com>
+Received: from k-vBox (50-47-85-193.evrt.wa.frontiernet.net. [50.47.85.193])
+        by smtp.gmail.com with ESMTPSA id s80-v6sm3910453pfa.114.2018.10.23.22.00.56
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 23 Oct 2018 22:00:56 -0700 (PDT)
+Date: Tue, 23 Oct 2018 22:00:53 -0700
+From: Maya Nakamura <m.maya.nakamura@gmail.com>
+To: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v2] staging: rtlwifi: Remove unnecessary function
+Message-ID: <20181024050052.GA13085@k-vBox>
+References: <20181023230718.GA18724@k-vBox>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20181023230718.GA18724@k-vBox>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-This patchset resolves coding style and indentation issues reported by
-checkpatch.pl
-This patchset removes unnecessary blank lines and properly indents the
-multiline comments by shifting the end of multiline comments "*/" to the
-next line to improve code readability and adhere to the uniform coding
-style, all for the same file qlge_mpi.c present under
-drivers/staging/qlge directory.
+On Tue, Oct 23, 2018 at 04:07:20PM -0700, Maya Nakamura wrote:
+> Because the odm_signal_scale_mapping function is only called to return the
+> second argument, remove the function and change five statements that call
+> it.
+> 
+> Signed-off-by: Maya Nakamura <m.maya.nakamura@gmail.com>
+> ---
+> Changes since v1:
+>  - Remove a function's declaration, definition, and its comment.
+>  - Change five statements that call the function.
+> 
+>  .../staging/rtlwifi/phydm/phydm_hwconfig.c    | 27 ++++---------------
+>  .../staging/rtlwifi/phydm/phydm_hwconfig.h    |  2 --
+>  2 files changed, 5 insertions(+), 24 deletions(-)
+> 
+> diff --git a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
+> index 4bf86e5a451f..fd208581d857 100644
+> --- a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
+> +++ b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
+> @@ -477,18 +477,6 @@ static u8 odm_query_rx_pwr_percentage(s8 ant_power)
+>  		return 100 + ant_power;
+>  }
+>  
+> -/*
+> - * 2012/01/12 MH MOve some signal strength smooth method to MP HAL layer.
+> - * IF other SW team do not support the feature, remove this section.??
+> - */
+> -
+> -s32 odm_signal_scale_mapping(struct phy_dm_struct *dm, s32 curr_sig)
+> -{
+> -	{
+> -		return curr_sig;
+> -	}
+> -}
+> -
+>  static u8 odm_sq_process_patch_rt_cid_819x_lenovo(struct phy_dm_struct *dm,
+>  						  u8 is_cck_rate, u8 pwdb_all,
+>  						  u8 path, u8 RSSI)
+> @@ -749,13 +737,11 @@ static void odm_rx_phy_status92c_series_parsing(
+>  	 */
+>  	/* It is assigned to the BSS List in GetValueFromBeaconOrProbeRsp(). */
+>  	if (is_cck_rate) {
+> -		phy_info->signal_strength = (u8)(
+> -			odm_signal_scale_mapping(dm, pwdb_all)); /*pwdb_all;*/
+> +		phy_info->signal_strength = (u8)pwdb_all;
+>  	} else {
+>  		if (rf_rx_num != 0) {
+>  			phy_info->signal_strength =
+> -				(u8)(odm_signal_scale_mapping(dm, total_rssi /=
+> -								  rf_rx_num));
+> +				(u8)(total_rssi /= rf_rx_num);
+>  		}
+>  	}
+>  
+> @@ -1051,8 +1037,7 @@ static void odm_rx_phy_status_jaguar_series_parsing(
+>  	 */
+>  	/*It is assigned to the BSS List in GetValueFromBeaconOrProbeRsp().*/
+>  	if (is_cck_rate) {
+> -		phy_info->signal_strength = (u8)(
+> -			odm_signal_scale_mapping(dm, pwdb_all)); /*pwdb_all;*/
+> +		phy_info->signal_strength = (u8)pwdb_all;
+>  	} else {
+>  		if (rf_rx_num != 0) {
+>  			/* 2015/01 Sean, use the best two RSSI only,
+> @@ -1062,8 +1047,7 @@ static void odm_rx_phy_status_jaguar_series_parsing(
+>  				avg_rssi = best_rssi;
+>  			else
+>  				avg_rssi = (best_rssi + second_rssi) / 2;
+> -			phy_info->signal_strength =
+> -				(u8)(odm_signal_scale_mapping(dm, avg_rssi));
+> +			phy_info->signal_strength = (u8)avg_rssi;
+>  		}
+>  	}
+>  	dm->rx_pwdb_ave = dm->rx_pwdb_ave + phy_info->rx_pwdb_all;
+> @@ -1874,8 +1858,7 @@ void phydm_rx_phy_status_new_type(struct phy_dm_struct *phydm, u8 *phy_status,
+>  	/* Update signal strength to UI, and phy_info->rx_pwdb_all is the
+>  	 * maximum RSSI of all path
+>  	 */
+> -	phy_info->signal_strength =
+> -		(u8)(odm_signal_scale_mapping(phydm, phy_info->rx_pwdb_all));
+> +	phy_info->signal_strength = (u8)phy_info->rx_pwdb_all;
+>  
+>  	/* Calculate average RSSI and smoothed RSSI */
+>  	phydm_process_rssi_for_dm_new_type(phydm, phy_info, pktinfo);
+> diff --git a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.h b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.h
+> index 6ad5e0292a97..c9833889688c 100644
+> --- a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.h
+> +++ b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.h
+> @@ -216,8 +216,6 @@ odm_config_fw_with_header_file(struct phy_dm_struct *dm,
+>  
+>  u32 odm_get_hw_img_version(struct phy_dm_struct *dm);
+>  
+> -s32 odm_signal_scale_mapping(struct phy_dm_struct *dm, s32 curr_sig);
+> -
+>  /*For 8822B only!! need to move to FW finally */
+>  /*==============================================*/
+>  void phydm_rx_phy_status_new_type(struct phy_dm_struct *phydm, u8 *phy_status,
+> -- 
+> 2.17.1
 
-Soumyajit Deb (2):
-  staging: qlge: Remove extra blank lines
-  staging: qlge: Properly indent the multiline comments
-
- drivers/staging/qlge/qlge_mpi.c | 13 ++++++-------
- 1 file changed, 6 insertions(+), 7 deletions(-)
-
--- 
-2.17.1
-
+Sorry! I will make this part of a patchset. Will you please ignore this
+one? Thank you!
 
