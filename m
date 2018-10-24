@@ -1,197 +1,260 @@
 X-GM-THRID: 6615995606614671360
-X-Received: by 2002:a2e:988f:: with SMTP id b15-v6mr1193867ljj.14.1540804263581;
-        Mon, 29 Oct 2018 02:11:03 -0700 (PDT)
+X-Received: by 2002:a19:a912:: with SMTP id s18-v6mr184992lfe.23.1540406520516;
+        Wed, 24 Oct 2018 11:42:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a19:d819:: with SMTP id p25-v6ls566436lfg.19.gmail; Mon, 29
- Oct 2018 02:11:02 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5eHPp+wo2woFcQEOkHZYmkAI9FeeE7EAI+Sr7fcTX281UoNPMKhENjYmjH8mowdD2ieopBl
-X-Received: by 2002:a19:519a:: with SMTP id g26-v6mr1052321lfl.2.1540804262310;
-        Mon, 29 Oct 2018 02:11:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540804262; cv=none;
+Received: by 2002:a19:f602:: with SMTP id x2-v6ls261918lfe.15.gmail; Wed, 24
+ Oct 2018 11:41:59 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV63M0lHTNYRkUEyFxQ0g9lab8OgYCf5/UDb2TBv78hBoZRyzrtKO8I4f8Rc+QD17k9TH/xkJ
+X-Received: by 2002:a19:f618:: with SMTP id x24-v6mr606591lfe.21.1540406519447;
+        Wed, 24 Oct 2018 11:41:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540406519; cv=none;
         d=google.com; s=arc-20160816;
-        b=kt/kgTZLogyouR3gi/zBqMMXn+gD8IYVBRIP4TlS3nIbPleG1CqksLlq9Tk39wBO4c
-         HPmy/GXlxLiEr9P37UnrUhGLq+ckaa+5DLRQYQ3cHtlAotsItT4TZ2Vy7I1bDhDxgfuN
-         htICwV6deWoeDRK/7cibSEhDFPD3cxKcBx3T7DFky4N5SSN2F0azJbcI883gIT1m2IeP
-         rV5DkxkLpgG/m999zfTdKkSKvzZmFS+hdinKqN11AmZMDxLLZhcCmgjg8jckcHXzH4Uk
-         yRkPqcsw/tMPhi1s/2QUpnEFJ0oJfaGoqGlcXKpJTxP5LoPd2+NFr0hz66zZzaUZe5sX
-         rNlg==
+        b=a6q+DDDfBtwLDwZmcOY8riJkCbQ9sZKKxACMjUf8Kji1atv3azXbe1WWX8qjWlbTEx
+         mkF+RnIbfseR84Bt3OyTP0Ug9mH5EcXuAmxX4zLzQnk1T47UFiAsbq04lbPU/zBM9ql/
+         rGnqpOqFCzmr/1AD2RXATF+Ptfd1wGr+t+0n0pK3UZZQQq0Ohx3InbWKTm2jZNfFV8qF
+         7/zSluyVR2QA8Eg5LC8tAhYMJ2XeMRpRg4jcZwqLcVl+R57O7O8/Qs/EkrzlN8zUc2jh
+         Mg0u1eX3vbsRY0WmoCVvMKYY/D/vUeM7bVevbbFxqUNlay8N/TDGY0wokL+ZRTDBaa2r
+         nmQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=gNpOveRoZbigjD1vlqtAiyHm51UwUcyxly7Q1YF45uA=;
-        b=NyxZElWC4QYBw6bR3bGFJNRzJklCnlwsm6leH4r/tS67WZ6bDuoaH2MfxDE9OoMn6R
-         3F7Vb1H/IvcGsDKJcK4F6QJC9/KI6ON3RsF6fnVzmMPg8n7tGqDCoB08sAgy8dJU7l+7
-         V/HnBX8jkBa32cCc9x/46x+bpiotMo3+QTMKhtByJYe2PPsR8W2nl1L6qXkN87V5PkHv
-         DSaedTukB3rnAkGGliBuAydsvD8mBxc0uuBytZUSc0epmduRpy2O8q+N6LlEDr8rOWvf
-         KK/fJvJNlLi6B450upfKVh7rhL+8GQJ2KabRlLmTEMMnLVH6OBSsHgvUz4JOSLSVs5SI
-         xlfA==
+        h=references:in-reply-to:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature;
+        bh=e2+B8e4BLXNYk7foYf2fgUMtSkXNvJ74auaRGato7mE=;
+        b=RcW0Wu/N8i6TN2In2OxcqWVdzpcngy+lIHv4rSwCiwyjAaI/Ob7gi+QDGr9FWcsQO7
+         Eki/kjpeWCSbv0mhXn3PxqRVpnWA9k97mhWpMfT0Yot4XABexUUCW2psKu1FugvYunud
+         i/ybWih/NNgn2YLYAjHSxagQ3rzsgmXDqLP0JmWLyq0vpJ3lN3O5+CmcyIggyNPnAyeS
+         jv+Rw67kOwkGZ5QI0r468SLlXRPAJjLf54wR2aQwT6knaODjDdm5ss5zIdRgp08MQ/ul
+         8GlRt0YPsKQkAIAS0G3DH3r2935UNPSvKY6/lMO41IJygqNg2L/m9+QCKMv0u3vxUnWL
+         Kpog==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.25 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
-Return-Path: <hverkuil@xs4all.nl>
-Received: from lb2-smtp-cloud8.xs4all.net (lb2-smtp-cloud8.xs4all.net. [194.109.24.25])
-        by gmr-mx.google.com with ESMTPS id u142-v6si376568lja.2.2018.10.29.02.11.02
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WkS7PipL;
+       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:4864:20::42e as permitted sender) smtp.mailfrom=dafna3@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <dafna3@gmail.com>
+Received: from mail-wr1-x42e.google.com (mail-wr1-x42e.google.com. [2a00:1450:4864:20::42e])
+        by gmr-mx.google.com with ESMTPS id 73-v6si60155ljc.5.2018.10.24.11.41.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 29 Oct 2018 02:11:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.25 as permitted sender) client-ip=194.109.24.25;
+        Wed, 24 Oct 2018 11:41:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:4864:20::42e as permitted sender) client-ip=2a00:1450:4864:20::42e;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.25 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
-Received: from [IPv6:2001:983:e9a7:1:5139:d121:18fb:2507] ([IPv6:2001:983:e9a7:1:5139:d121:18fb:2507])
-	by smtp-cloud8.xs4all.net with ESMTPA
-	id H3ZbgG1jf0ZZEH3ZcgqjCw; Mon, 29 Oct 2018 10:11:01 +0100
-Subject: Re: [PATCH 1/3] media: vicodec: prepare support for various number of
- planes
-To: Dafna Hirschfeld <dafna3@gmail.com>, mchehab@kernel.org,
- helen.koike@collabora.com
-Cc: outreachy-kernel@googlegroups.com
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WkS7PipL;
+       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:4864:20::42e as permitted sender) smtp.mailfrom=dafna3@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wr1-x42e.google.com with SMTP id u1-v6so6702390wrn.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 24 Oct 2018 11:41:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=e2+B8e4BLXNYk7foYf2fgUMtSkXNvJ74auaRGato7mE=;
+        b=WkS7PipLzmwPFlUcINa/pXpzylHFCkw2OwABBLgVeWcU87A4KoHIPZEO0VIpuSfiI8
+         7nu4tH3jeGLIKJAWWnjr7VOmnhYhQxfhZvbLDA5eLiftxhfwVoLaBd5GHPEOc3HNIZuA
+         UBaS6ALOlmoYMxEOCiLgc65zWziwE7PFOppKdroStAACBPRZBtTow9bIa39SzpVHTEEh
+         McFyj3AROhK/wnPNSW371on+mosCg/iqwd72r9PpnRE4WMxBvn77dXNsGwIhfC9S8d+9
+         E0VVUx6Pn8249lR6tg49TnDGcdigJjsg2t3SXdYc9Be1VTWLxFIknUksdEzRgmogBGN6
+         9dUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=e2+B8e4BLXNYk7foYf2fgUMtSkXNvJ74auaRGato7mE=;
+        b=UwEsRDBzPh6N0RxaxJz9tl20WJpS/6cZTRgGYtQRR1unjChkPsonThUNNTP8x5zvSp
+         FiCUO3K+4L/7x+sbKq14znp61LjwqylbUcaMBKwP8V9PLt4zUmmrQ6hY0zJkiCmHxPmU
+         T5oLsOAK21ya9dXWQipQbx/tARS121UpmeNFx653GFGgJKb2oysDOotETv402iE+VVdm
+         Xky9s9Y41LZ7QzrUS6PDHJVD1FJ18jnF6oeSeFADTj6Nmk8VY1XLatfJnFkWdhDgct4V
+         gF8vgTpcvC08ZXZD196FQJ6px0jWJLhl1OfO1Wx7asTBfHXO+UpwBoeCLXk6FK5A8rPw
+         3wig==
+X-Gm-Message-State: AGRZ1gJ8eOEuyqNbGA+TKb9km7QyUnNZro2PHp+vBYJMwVNmYtL3eIyT
+	pdqvWkklpAQKTPKcHlBSJoI=
+X-Received: by 2002:adf:8065:: with SMTP id 92-v6mr932847wrk.23.1540406519025;
+        Wed, 24 Oct 2018 11:41:59 -0700 (PDT)
+Return-Path: <dafna3@gmail.com>
+Received: from vdoo.wework.com ([82.166.68.50])
+        by smtp.gmail.com with ESMTPSA id t66-v6sm3282377wmt.5.2018.10.24.11.41.57
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 24 Oct 2018 11:41:57 -0700 (PDT)
+From: Dafna Hirschfeld <dafna3@gmail.com>
+To: mchehab@kernel.org,
+	helen.koike@collabora.com,
+	hverkuil@xs4all.nl
+Cc: Dafna Hirschfeld <dafna3@gmail.com>,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH 3/3] media: vicodec: Add support for 4 planes formats
+Date: Wed, 24 Oct 2018 21:41:49 +0300
+Message-Id: <4a3a350e683aff5a6a917308745f15ee432c84fb.1540404892.git.dafna3@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <cover.1540404892.git.dafna3@gmail.com>
 References: <cover.1540404892.git.dafna3@gmail.com>
- <309c1efee547255a6e28347704415d46196ca5dd.1540404892.git.dafna3@gmail.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Message-ID: <7f69f480-cf39-c3b2-7201-7f5e7e32beef@xs4all.nl>
-Date: Mon, 29 Oct 2018 10:10:59 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
-MIME-Version: 1.0
-In-Reply-To: <309c1efee547255a6e28347704415d46196ca5dd.1540404892.git.dafna3@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-CMAE-Envelope: MS4wfKMXgHONOIhXGH3kNa8kL2bsXiVANFbVMLLmAMQDBYG6/2UQZQsIiQvxYdBZ/PHD+YfpVxZdhMMZbhu3HVoLI4KjhgmDxsFPIoCYATeFkNzWeqZ1tcmm
- iSc60+Mtuizojj0xqA91CjoYWYSE0pkXHRWp8XrB68vvkgmRyLQD3LRyT5dVXmNcxrKZZdOQ+TihY/wVv0RqT+aSKH5YC4w3rOGj1ckC1Z9kFHOfiQwFKiJf
- 31jWfM4bc8tfHMlWR+S2hM7m2PdMFoTH9csm/o8xjE16JGSO+OQ+z+8syISAAmoVX/2VKn0cKOhLLO8ysBi0cC15k7+wz8D/+iJtNmQJxXx23N+u4FWvZnfN
- W3EpyMmp+CPPnSObt9qco1i/Ni36Bw==
+In-Reply-To: <cover.1540404892.git.dafna3@gmail.com>
+References: <cover.1540404892.git.dafna3@gmail.com>
 
-Hi Dafna,
+Add support for formats with 4 planes: V4L2_PIX_FMT_ABGR32,
+V4L2_PIX_FMT_ARGB32.
+Also add alpha plane related flags to the header of the encoded file.
 
-Here is a quick review:
+Signed-off-by: Dafna Hirschfeld <dafna3@gmail.com>
+---
+ drivers/media/platform/vicodec/codec-fwht.c   | 17 +++++++++
+ drivers/media/platform/vicodec/codec-fwht.h   |  6 ++--
+ .../media/platform/vicodec/codec-v4l2-fwht.c  | 35 +++++++++++++++++++
+ drivers/media/platform/vicodec/vicodec-core.c | 12 ++++++-
+ 4 files changed, 67 insertions(+), 3 deletions(-)
 
-On 10/24/2018 08:41 PM, Dafna Hirschfeld wrote:
-> Add fields to the structs `fwht_raw_frame`, `v4l2_fwht_pixfmts`
-> to support various number of planes - formats
-> with alpha channel that have 4 planes and greyscale formats
-> that have 1 plane.
-> 
-> Signed-off-by: Dafna Hirschfeld <dafna3@gmail.com>
-> ---
->  drivers/media/platform/vicodec/codec-fwht.h   |  4 +-
->  .../media/platform/vicodec/codec-v4l2-fwht.c  | 46 ++++++++++---------
->  .../media/platform/vicodec/codec-v4l2-fwht.h  |  1 +
->  drivers/media/platform/vicodec/vicodec-core.c |  2 +-
->  4 files changed, 30 insertions(+), 23 deletions(-)
-> 
-> diff --git a/drivers/media/platform/vicodec/codec-fwht.h b/drivers/media/platform/vicodec/codec-fwht.h
-> index 3e9391fec5fe..5750e21f16ac 100644
-> --- a/drivers/media/platform/vicodec/codec-fwht.h
-> +++ b/drivers/media/platform/vicodec/codec-fwht.h
-> @@ -106,7 +106,9 @@ struct fwht_raw_frame {
->  	unsigned int height_div;
->  	unsigned int luma_step;
->  	unsigned int chroma_step;
-> -	u8 *luma, *cb, *cr;
-> +	unsigned int alpha_step;
+diff --git a/drivers/media/platform/vicodec/codec-fwht.c b/drivers/media/platform/vicodec/codec-fwht.c
+index 91bfd1d9182b..36a08d81807b 100644
+--- a/drivers/media/platform/vicodec/codec-fwht.c
++++ b/drivers/media/platform/vicodec/codec-fwht.c
+@@ -782,6 +782,17 @@ u32 fwht_encode_frame(struct fwht_raw_frame *frm,
+ 			encoding |= FWHT_CR_UNENCODED;
+ 		encoding &= ~FWHT_FRAME_UNENCODED;
+ 	}
++
++	if (frm->components_num == 4) {
++		rlco_max = rlco + size / 2 - 256;
++		encoding = encode_plane(frm->alpha, ref_frm->alpha, &rlco, rlco_max, cf,
++				frm->height, frm->width,
++				frm->alpha_step, is_intra, next_is_intra);
++		if (encoding & FWHT_FRAME_UNENCODED)
++			encoding |= FWHT_ALPHA_UNENCODED;
++		encoding &= ~FWHT_FRAME_UNENCODED;
++	}
++
+ 	cf->size = (rlco - cf->rlc_data) * sizeof(*rlco);
+ 	return encoding;
+ }
+@@ -860,4 +871,10 @@ void fwht_decode_frame(struct fwht_cframe *cf, struct fwht_raw_frame *ref,
+ 		decode_plane(cf, &rlco, ref->cr, h, w,
+ 			hdr_flags & FWHT_FL_CR_IS_UNCOMPRESSED);
+ 	}
++
++
++	if (components_num == 4) {
++		decode_plane(cf, &rlco, ref->alpha, cf->height, cf->width,
++		     hdr_flags & FWHT_FL_ALPHA_IS_UNCOMPRESSED);
++	}
+ }
+diff --git a/drivers/media/platform/vicodec/codec-fwht.h b/drivers/media/platform/vicodec/codec-fwht.h
+index 5e6813aeaa96..40ec137cfd4b 100644
+--- a/drivers/media/platform/vicodec/codec-fwht.h
++++ b/drivers/media/platform/vicodec/codec-fwht.h
+@@ -73,8 +73,9 @@
+ #define FWHT_FL_LUMA_IS_UNCOMPRESSED	BIT(4)
+ #define FWHT_FL_CB_IS_UNCOMPRESSED	BIT(5)
+ #define FWHT_FL_CR_IS_UNCOMPRESSED	BIT(6)
+-#define FWHT_FL_CHROMA_FULL_HEIGHT	BIT(7)
+-#define FWHT_FL_CHROMA_FULL_WIDTH	BIT(8)
++#define FWHT_FL_ALPHA_IS_UNCOMPRESSED	BIT(7)
++#define FWHT_FL_CHROMA_FULL_HEIGHT	BIT(8)
++#define FWHT_FL_CHROMA_FULL_WIDTH	BIT(9)
+ 
+ struct fwht_cframe_hdr {
+ 	u32 magic1;
+@@ -117,6 +118,7 @@ struct fwht_raw_frame {
+ #define FWHT_LUMA_UNENCODED	BIT(2)
+ #define FWHT_CB_UNENCODED	BIT(3)
+ #define FWHT_CR_UNENCODED	BIT(4)
++#define FWHT_ALPHA_UNENCODED	BIT(5)
+ 
+ u32 fwht_encode_frame(struct fwht_raw_frame *frm,
+ 		      struct fwht_raw_frame *ref_frm,
+diff --git a/drivers/media/platform/vicodec/codec-v4l2-fwht.c b/drivers/media/platform/vicodec/codec-v4l2-fwht.c
+index cc9275f3c6cb..42e29a4343c2 100644
+--- a/drivers/media/platform/vicodec/codec-v4l2-fwht.c
++++ b/drivers/media/platform/vicodec/codec-v4l2-fwht.c
+@@ -33,6 +33,8 @@ static const struct v4l2_fwht_pixfmt_info v4l2_fwht_pixfmts[] = {
+ 	{ V4L2_PIX_FMT_RGB32,   4, 4, 1, 4, 4, 1, 1, 3},
+ 	{ V4L2_PIX_FMT_XRGB32,  4, 4, 1, 4, 4, 1, 1, 3},
+ 	{ V4L2_PIX_FMT_HSV32,   4, 4, 1, 4, 4, 1, 1, 3},
++	{ V4L2_PIX_FMT_ARGB32,  4, 4, 1, 4, 4, 1, 1, 4},
++	{ V4L2_PIX_FMT_ABGR32,  4, 4, 1, 4, 4, 1, 1, 4},
+ 
+ };
+ 
+@@ -146,6 +148,20 @@ int v4l2_fwht_encode(struct v4l2_fwht_state *state, u8 *p_in, u8 *p_out)
+ 		rf.cr = rf.cb + 2;
+ 		rf.luma++;
+ 		break;
++	case V4L2_PIX_FMT_ABGR32:
++		rf.cb = rf.luma;
++		rf.cr = rf.cb + 2;
++		rf.luma++;
++		rf.alpha = rf.cr + 1;
++		rf.alpha_step = rf.luma_step;
++		break;
++	case V4L2_PIX_FMT_ARGB32:
++		rf.alpha = rf.luma;
++		rf.cr = rf.luma + 1;
++		rf.cb = rf.cr + 2;
++		rf.luma += 2;
++		rf.alpha_step = rf.luma_step;
++		break;
+ 	default:
+ 		return -EINVAL;
+ 	}
+@@ -177,6 +193,8 @@ int v4l2_fwht_encode(struct v4l2_fwht_state *state, u8 *p_in, u8 *p_out)
+ 		flags |= FWHT_FL_CB_IS_UNCOMPRESSED;
+ 	if (encoding & FWHT_CR_UNENCODED)
+ 		flags |= FWHT_FL_CR_IS_UNCOMPRESSED;
++	if (encoding & FWHT_ALPHA_UNENCODED)
++		flags |= FWHT_FL_ALPHA_IS_UNCOMPRESSED;
+ 	if (rf.height_div == 1)
+ 		flags |= FWHT_FL_CHROMA_FULL_HEIGHT;
+ 	if (rf.width_div == 1)
+@@ -339,6 +357,23 @@ int v4l2_fwht_decode(struct v4l2_fwht_state *state, u8 *p_in, u8 *p_out)
+ 			*p++ = 0;
+ 		}
+ 		break;
++	case V4L2_PIX_FMT_ABGR32:
++		for (i = 0, p = p_out; i < size; i++) {
++			*p++ = state->ref_frame.cb[i];
++			*p++ = state->ref_frame.luma[i];
++			*p++ = state->ref_frame.cr[i];
++			*p++ = state->ref_frame.alpha[i];
++		}
++		break;
++
++	case V4L2_PIX_FMT_ARGB32:
++		for (i = 0, p = p_out; i < size; i++) {
++			*p++ = state->ref_frame.alpha[i];
++			*p++ = state->ref_frame.cr[i];
++			*p++ = state->ref_frame.luma[i];
++			*p++ = state->ref_frame.cb[i];
++		}
++		break;
+ 	default:
+ 		return -EINVAL;
+ 	}
+diff --git a/drivers/media/platform/vicodec/vicodec-core.c b/drivers/media/platform/vicodec/vicodec-core.c
+index 945b54efd4bd..2cfd3b85fa26 100644
+--- a/drivers/media/platform/vicodec/vicodec-core.c
++++ b/drivers/media/platform/vicodec/vicodec-core.c
+@@ -995,7 +995,11 @@ static int vicodec_start_streaming(struct vb2_queue *q,
+ 	unsigned int chroma_div = info->width_div * info->height_div;
+ 	unsigned int total_planes_size;
+ 
+-	if (info->components_num == 1)
++	//we don't know ahead how many components are in the encoding type
++	//V4L2_PIX_FMT_FWHT, so we will allocate space for 4 planes.
++	if (info->id == V4L2_PIX_FMT_FWHT || info->components_num == 4)
++		total_planes_size = 2 * size + 2 * (size / chroma_div);
++	else if (info->components_num == 1)
+ 		total_planes_size = size;
+ 	else
+ 		total_planes_size = size + 2 * (size / chroma_div);
+@@ -1024,6 +1028,12 @@ static int vicodec_start_streaming(struct vb2_queue *q,
+ 		state->ref_frame.cb = NULL;
+ 		state->ref_frame.cr = NULL;
+ 	}
++
++	if (info->id == V4L2_PIX_FMT_FWHT || info->components_num == 4)
++		state->ref_frame.alpha = state->ref_frame.cr + size / chroma_div;
++	else
++		state->ref_frame.alpha = NULL;
++
+ 	ctx->last_src_buf = NULL;
+ 	ctx->last_dst_buf = NULL;
+ 	state->gop_cnt = 0;
+-- 
+2.17.1
 
-You can drop alpha_step: it will always be the same as luma_step.
-
-You can, however, rename luma_step to luma_alpha_step. That would make
-sense.
-
-> +	unsigned int components_num;
-> +	u8 *luma, *cb, *cr, *alpha;
->  };
->  
->  #define FWHT_FRAME_PCODED	BIT(0)
-> diff --git a/drivers/media/platform/vicodec/codec-v4l2-fwht.c b/drivers/media/platform/vicodec/codec-v4l2-fwht.c
-> index e5b68fb38aac..64ad01e99bad 100644
-> --- a/drivers/media/platform/vicodec/codec-v4l2-fwht.c
-> +++ b/drivers/media/platform/vicodec/codec-v4l2-fwht.c
-> @@ -11,27 +11,28 @@
->  #include "codec-v4l2-fwht.h"
->  
->  static const struct v4l2_fwht_pixfmt_info v4l2_fwht_pixfmts[] = {
-> -	{ V4L2_PIX_FMT_YUV420,  1, 3, 2, 1, 1, 2, 2 },
-> -	{ V4L2_PIX_FMT_YVU420,  1, 3, 2, 1, 1, 2, 2 },
-> -	{ V4L2_PIX_FMT_YUV422P, 1, 2, 1, 1, 1, 2, 1 },
-> -	{ V4L2_PIX_FMT_NV12,    1, 3, 2, 1, 2, 2, 2 },
-> -	{ V4L2_PIX_FMT_NV21,    1, 3, 2, 1, 2, 2, 2 },
-> -	{ V4L2_PIX_FMT_NV16,    1, 2, 1, 1, 2, 2, 1 },
-> -	{ V4L2_PIX_FMT_NV61,    1, 2, 1, 1, 2, 2, 1 },
-> -	{ V4L2_PIX_FMT_NV24,    1, 3, 1, 1, 2, 1, 1 },
-> -	{ V4L2_PIX_FMT_NV42,    1, 3, 1, 1, 2, 1, 1 },
-> -	{ V4L2_PIX_FMT_YUYV,    2, 2, 1, 2, 4, 2, 1 },
-> -	{ V4L2_PIX_FMT_YVYU,    2, 2, 1, 2, 4, 2, 1 },
-> -	{ V4L2_PIX_FMT_UYVY,    2, 2, 1, 2, 4, 2, 1 },
-> -	{ V4L2_PIX_FMT_VYUY,    2, 2, 1, 2, 4, 2, 1 },
-> -	{ V4L2_PIX_FMT_BGR24,   3, 3, 1, 3, 3, 1, 1 },
-> -	{ V4L2_PIX_FMT_RGB24,   3, 3, 1, 3, 3, 1, 1 },
-> -	{ V4L2_PIX_FMT_HSV24,   3, 3, 1, 3, 3, 1, 1 },
-> -	{ V4L2_PIX_FMT_BGR32,   4, 4, 1, 4, 4, 1, 1 },
-> -	{ V4L2_PIX_FMT_XBGR32,  4, 4, 1, 4, 4, 1, 1 },
-> -	{ V4L2_PIX_FMT_RGB32,   4, 4, 1, 4, 4, 1, 1 },
-> -	{ V4L2_PIX_FMT_XRGB32,  4, 4, 1, 4, 4, 1, 1 },
-> -	{ V4L2_PIX_FMT_HSV32,   4, 4, 1, 4, 4, 1, 1 },
-> +	{ V4L2_PIX_FMT_YUV420,  1, 3, 2, 1, 1, 2, 2, 3},
-> +	{ V4L2_PIX_FMT_YVU420,  1, 3, 2, 1, 1, 2, 2, 3},
-> +	{ V4L2_PIX_FMT_YUV422P, 1, 2, 1, 1, 1, 2, 1, 3},
-> +	{ V4L2_PIX_FMT_NV12,    1, 3, 2, 1, 2, 2, 2, 3},
-> +	{ V4L2_PIX_FMT_NV21,    1, 3, 2, 1, 2, 2, 2, 3},
-> +	{ V4L2_PIX_FMT_NV16,    1, 2, 1, 1, 2, 2, 1, 3},
-> +	{ V4L2_PIX_FMT_NV61,    1, 2, 1, 1, 2, 2, 1, 3},
-> +	{ V4L2_PIX_FMT_NV24,    1, 3, 1, 1, 2, 1, 1, 3},
-> +	{ V4L2_PIX_FMT_NV42,    1, 3, 1, 1, 2, 1, 1, 3},
-> +	{ V4L2_PIX_FMT_YUYV,    2, 2, 1, 2, 4, 2, 1, 3},
-> +	{ V4L2_PIX_FMT_YVYU,    2, 2, 1, 2, 4, 2, 1, 3},
-> +	{ V4L2_PIX_FMT_UYVY,    2, 2, 1, 2, 4, 2, 1, 3},
-> +	{ V4L2_PIX_FMT_VYUY,    2, 2, 1, 2, 4, 2, 1, 3},
-> +	{ V4L2_PIX_FMT_BGR24,   3, 3, 1, 3, 3, 1, 1, 3},
-> +	{ V4L2_PIX_FMT_RGB24,   3, 3, 1, 3, 3, 1, 1, 3},
-> +	{ V4L2_PIX_FMT_HSV24,   3, 3, 1, 3, 3, 1, 1, 3},
-> +	{ V4L2_PIX_FMT_BGR32,   4, 4, 1, 4, 4, 1, 1, 3},
-> +	{ V4L2_PIX_FMT_XBGR32,  4, 4, 1, 4, 4, 1, 1, 3},
-> +	{ V4L2_PIX_FMT_RGB32,   4, 4, 1, 4, 4, 1, 1, 3},
-> +	{ V4L2_PIX_FMT_XRGB32,  4, 4, 1, 4, 4, 1, 1, 3},
-> +	{ V4L2_PIX_FMT_HSV32,   4, 4, 1, 4, 4, 1, 1, 3},
-> +
->  };
->  
->  const struct v4l2_fwht_pixfmt_info *v4l2_fwht_find_pixfmt(u32 pixelformat)
-> @@ -70,6 +71,9 @@ int v4l2_fwht_encode(struct v4l2_fwht_state *state, u8 *p_in, u8 *p_out)
->  	rf.height_div = info->height_div;
->  	rf.luma_step = info->luma_step;
->  	rf.chroma_step = info->chroma_step;
-> +	rf.alpha_step = 0;
-> +	rf.alpha = NULL;
-> +	rf.components_num = info->components_num;
->  
->  	switch (info->id) {
->  	case V4L2_PIX_FMT_YUV420:
-> diff --git a/drivers/media/platform/vicodec/codec-v4l2-fwht.h b/drivers/media/platform/vicodec/codec-v4l2-fwht.h
-> index 162465b78067..aa73d18d69dd 100644
-> --- a/drivers/media/platform/vicodec/codec-v4l2-fwht.h
-> +++ b/drivers/media/platform/vicodec/codec-v4l2-fwht.h
-> @@ -18,6 +18,7 @@ struct v4l2_fwht_pixfmt_info {
->  	/* Chroma plane subsampling */
->  	unsigned int width_div;
->  	unsigned int height_div;
-> +	unsigned int components_num;
->  };
->  
->  struct v4l2_fwht_state {
-> diff --git a/drivers/media/platform/vicodec/vicodec-core.c b/drivers/media/platform/vicodec/vicodec-core.c
-> index 1eb9132bfc85..fb6d5e9a06ab 100644
-> --- a/drivers/media/platform/vicodec/vicodec-core.c
-> +++ b/drivers/media/platform/vicodec/vicodec-core.c
-> @@ -61,7 +61,7 @@ struct pixfmt_info {
->  };
->  
->  static const struct v4l2_fwht_pixfmt_info pixfmt_fwht = {
-> -	V4L2_PIX_FMT_FWHT, 0, 3, 1, 1, 1, 1, 1
-> +	V4L2_PIX_FMT_FWHT, 0, 3, 1, 1, 1, 1, 1, 0
->  };
->  
->  static void vicodec_dev_release(struct device *dev)
-> 
-
-Regards,
-
-	Hans
 
