@@ -1,55 +1,55 @@
 X-GM-THRID: 6616097415299596288
-X-Received: by 2002:a2e:80d4:: with SMTP id r20-v6mr178313ljg.15.1540477802116;
-        Thu, 25 Oct 2018 07:30:02 -0700 (PDT)
+X-Received: by 2002:a1c:5715:: with SMTP id l21-v6mr274209wmb.17.1540477474098;
+        Thu, 25 Oct 2018 07:24:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a19:5e16:: with SMTP id s22-v6ls372037lfb.8.gmail; Thu, 25
- Oct 2018 07:30:01 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5dQFxnz4mHRoS9qQhtjgHgEJK0Owp+YCTtRpRjTzlQKJngzNke55WHXusL0QPolbRM7Cls5
-X-Received: by 2002:a19:519a:: with SMTP id g26-v6mr159721lfl.2.1540477801287;
-        Thu, 25 Oct 2018 07:30:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540477801; cv=none;
+Received: by 2002:a1c:8309:: with SMTP id f9-v6ls220349wmd.3.gmail; Thu, 25
+ Oct 2018 07:24:33 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5fG3/hoQ9tQRuHyOPM9IeOmRqZZVyek1L6zoW3YPOFP/owOU7aMVBNHBK8BmfEKIA8NUrfu
+X-Received: by 2002:a1c:8354:: with SMTP id f81-v6mr281257wmd.23.1540477473295;
+        Thu, 25 Oct 2018 07:24:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540477473; cv=none;
         d=google.com; s=arc-20160816;
-        b=lyANSltc9hcq8YeykRVWviH0krW0ksECPnRwE43ebenbiRDNb52wqIxJmTw4Mhi/aQ
-         4zfueqv6/ut5A2/HOd7pY/1504KNrZJWsNYQJUGOqTR+YXdep4+pPogM3UwBawheAICz
-         j5TPNCy1Cpgam71e8Yzx3iOAEynewo+o8EkarGKpDbrAXwpClpZQzyfiSGSnxw1b+sJX
-         imtnTE3q4GWYihg1m6JV6OPfvgrDuZns7CugEEiWOIopdlHjiOkSyHaS+99mn+grhBHS
-         ZbL1flB2nb2ROD4y6NYTs8nuHRjY3Q4jjZ2MBKjj2M+OqLUIOJ8Xd2W6bv92NO6MK14B
-         SvXQ==
+        b=lp4K7hdv+Qa3qUW4TmY+keg15AdGWc+3o8xGAl6i30KE1nl1kAiDEogo9wxbxRuzLM
+         2qqvsBqOFkoiiDvL6vvTS9v5dumt1zj7gnSa/kGNuM1ODzG8h0uU489H6mx8+8vXOXGy
+         qASuKnjCnCPzaX92WA9oR/u6W4zznY5SjrfrDnZZ6wG+LSmTiqZCXmcInnRNLbuoB92q
+         o1RBy13P8lOAp8WxSKRSNub7/eZjl+bfFd4u8xbOnYplDParUee9IowsnYSePWTQH+tX
+         H6QnDJwEtRmVQNBpcc92lqcu7pyoLTTnTRZkriVyNn4r5TX/i2lqFuRGIxGDzb6uWoQl
+         siTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:user-agent:references:message-id:in-reply-to:subject
          :cc:to:from:date;
-        bh=yPnHKZE1TRxS3mU7aMYfjizFoVuZX4BQjN7TSYws7SE=;
-        b=QQ0CT3VLW/WEyd1g0bY+DOeIVLk5GBdLgJt+IFxrb1oPPJSWQ/8W5WhBo/pZqh1Cpy
-         X2KdQDxiub4bzPi1XLkyy3r9oNKhH0sE+7XqGsM/qnszAwViii81s8fQT5pCKTGjv1iz
-         y6B5nW7cmWD5LXoSUq57pAFsOyolg69b/Zh5MyvNoyEpxUdPdz4wwipq1OVt08KEGL+3
-         UlAQa9JTPJ6xMfKoWUKmjSqO9LGKBQnGX9YfnWnVFc7LtpGudeeKZlkWMT0hKpAOcbZc
-         KeJ3QUsslnzFytdSMq69aaJlVWpjRRBQsjSxpErPNEPAAjZ76x5isMQ4lAdmCY1A+lKZ
-         nbZg==
+        bh=AhyGB4NQRAyq1PwkXoxLbv7IBzV6JwMTmCMHBEkRsmU=;
+        b=CTULyX6QudMeUoYejk5I8nQakgZv4KY+2+fds0r7CEiPusG9kl3rk+5ToqU6QKTY5z
+         aNoVeMKDNSBbi6Tk0pChVaMzxfmluuvQxKYpIaLMma4Fn1aYVerioi8+HUhn48mIltyL
+         ITlmXBb75VFFoYN/s+ivwcePzzZu30wBWyiW9US3eMxZ/G2PyJ26FkWbRUXIegBOwCcU
+         +7wQcjMrBjl0RunArd3UHKRYXKFrNJCM3k+n5gYGnP8fDXMsjk5P9YVtUSQHliFuxIQU
+         2RZChPzIg/jLBQCnBICbfsSxRaZ6tDc8TGgWJfRlb/w42i0YhiIRwhgN/Vd5v9XSVUpR
+         wgeA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 Return-Path: <julia.lawall@lip6.fr>
 Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id r79-v6si326436ljr.3.2018.10.25.07.30.00
+        by gmr-mx.google.com with ESMTPS id h137-v6si51241wmd.1.2018.10.25.07.24.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Oct 2018 07:30:01 -0700 (PDT)
+        Thu, 25 Oct 2018 07:24:33 -0700 (PDT)
 Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
        spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.54,424,1534802400"; 
-   d="scan'208";a="283330026"
+   d="scan'208";a="283329351"
 Received: from unknown (HELO hadrien) ([167.98.65.38])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 25 Oct 2018 16:30:00 +0200
-Date: Thu, 25 Oct 2018 15:29:59 +0100 (BST)
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 25 Oct 2018 16:24:32 +0200
+Date: Thu, 25 Oct 2018 15:24:32 +0100 (BST)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: Maya Nakamura <m.maya.nakamura@gmail.com>
 cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 1/3] staging: rtlwifi: Remove function
- that only returns the second argument
-In-Reply-To: <0140568914059cf5d16dfd298964983ab3ca1f28.1540428705.git.m.maya.nakamura@gmail.com>
-Message-ID: <alpine.DEB.2.21.1810251528220.2363@hadrien>
-References: <cover.1540428705.git.m.maya.nakamura@gmail.com> <0140568914059cf5d16dfd298964983ab3ca1f28.1540428705.git.m.maya.nakamura@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 2/3] staging: rtlwifi: Remove function
+ that only returns zero
+In-Reply-To: <bfb248e133326fe1cc0ca387f6fae4129656b72c.1540428705.git.m.maya.nakamura@gmail.com>
+Message-ID: <alpine.DEB.2.21.1810251523520.2363@hadrien>
+References: <cover.1540428705.git.m.maya.nakamura@gmail.com> <bfb248e133326fe1cc0ca387f6fae4129656b72c.1540428705.git.m.maya.nakamura@gmail.com>
 User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
@@ -58,115 +58,48 @@ Content-Type: text/plain; charset=US-ASCII
 
 On Wed, 24 Oct 2018, Maya Nakamura wrote:
 
-> Because the odm_signal_scale_mapping function is only called to return the
-> second argument, remove the unnecessary function and change five
-> statements that call it.
+> Because the odm_sq_process_patch_rt_cid_819x_lenovo function is only
+> called to return zero, remove the unnecessary function and change one
+> statement that calls it. Issue found by Coccinelle's semantic patch
+> results for returnvar.cocci.
 >
 > Signed-off-by: Maya Nakamura <m.maya.nakamura@gmail.com>
 > ---
->  .../staging/rtlwifi/phydm/phydm_hwconfig.c    | 27 ++++---------------
->  .../staging/rtlwifi/phydm/phydm_hwconfig.h    |  2 --
->  2 files changed, 5 insertions(+), 24 deletions(-)
+>  drivers/staging/rtlwifi/phydm/phydm_hwconfig.c | 11 +----------
+>  1 file changed, 1 insertion(+), 10 deletions(-)
 >
 > diff --git a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
-> index 4bf86e5a451f..fd208581d857 100644
+> index fd208581d857..335a435caa2c 100644
 > --- a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
 > +++ b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
-> @@ -477,18 +477,6 @@ static u8 odm_query_rx_pwr_percentage(s8 ant_power)
+> @@ -477,14 +477,6 @@ static u8 odm_query_rx_pwr_percentage(s8 ant_power)
 >  		return 100 + ant_power;
 >  }
 >
-> -/*
-> - * 2012/01/12 MH MOve some signal strength smooth method to MP HAL layer.
-> - * IF other SW team do not support the feature, remove this section.??
-> - */
-> -
-> -s32 odm_signal_scale_mapping(struct phy_dm_struct *dm, s32 curr_sig)
+> -static u8 odm_sq_process_patch_rt_cid_819x_lenovo(struct phy_dm_struct *dm,
+> -						  u8 is_cck_rate, u8 pwdb_all,
+> -						  u8 path, u8 RSSI)
 > -{
-> -	{
-> -		return curr_sig;
-> -	}
+> -	u8 sq = 0;
+> -	return sq;
 > -}
 > -
->  static u8 odm_sq_process_patch_rt_cid_819x_lenovo(struct phy_dm_struct *dm,
->  						  u8 is_cck_rate, u8 pwdb_all,
->  						  u8 path, u8 RSSI)
-> @@ -749,13 +737,11 @@ static void odm_rx_phy_status92c_series_parsing(
->  	 */
->  	/* It is assigned to the BSS List in GetValueFromBeaconOrProbeRsp(). */
->  	if (is_cck_rate) {
-> -		phy_info->signal_strength = (u8)(
-> -			odm_signal_scale_mapping(dm, pwdb_all)); /*pwdb_all;*/
-> +		phy_info->signal_strength = (u8)pwdb_all;
+>  static u8 odm_evm_db_to_percentage(s8 value)
+>  {
+>  	/* -33dB~0dB to 0%~99% */
+> @@ -891,8 +883,7 @@ static void odm_rx_phy_status_jaguar_series_parsing(
+>
+>  			if ((dm->support_platform == ODM_WIN) &&
+>  			    (dm->patch_id == RT_CID_819X_LENOVO))
+> -				sq = odm_sq_process_patch_rt_cid_819x_lenovo(
+> -					dm, is_cck_rate, pwdb_all, 0, 0);
+> +				sq = 0;
+>  			else
+>  				sq = phydm_get_signal_quality_8812(phy_info, dm,
+>  								   phy_sta_rpt);
 
-pwdb_all was already a u8 value.  The original code was taking a u8 value,
-casting it to s32 and then casting it back to u8.  It would be good to
-explain whether this can have an impact.  The comment on the
-signal_strength structure field says that the value should be between 0
-and 100.
+Would it be better to just put u8 sq = 0; ?  Then you could negate the
+condition and drop one of the branches.
 
 julia
-
->  	} else {
->  		if (rf_rx_num != 0) {
->  			phy_info->signal_strength =
-> -				(u8)(odm_signal_scale_mapping(dm, total_rssi /=
-> -								  rf_rx_num));
-> +				(u8)(total_rssi /= rf_rx_num);
->  		}
->  	}
->
-> @@ -1051,8 +1037,7 @@ static void odm_rx_phy_status_jaguar_series_parsing(
->  	 */
->  	/*It is assigned to the BSS List in GetValueFromBeaconOrProbeRsp().*/
->  	if (is_cck_rate) {
-> -		phy_info->signal_strength = (u8)(
-> -			odm_signal_scale_mapping(dm, pwdb_all)); /*pwdb_all;*/
-> +		phy_info->signal_strength = (u8)pwdb_all;
->  	} else {
->  		if (rf_rx_num != 0) {
->  			/* 2015/01 Sean, use the best two RSSI only,
-> @@ -1062,8 +1047,7 @@ static void odm_rx_phy_status_jaguar_series_parsing(
->  				avg_rssi = best_rssi;
->  			else
->  				avg_rssi = (best_rssi + second_rssi) / 2;
-> -			phy_info->signal_strength =
-> -				(u8)(odm_signal_scale_mapping(dm, avg_rssi));
-> +			phy_info->signal_strength = (u8)avg_rssi;
->  		}
->  	}
->  	dm->rx_pwdb_ave = dm->rx_pwdb_ave + phy_info->rx_pwdb_all;
-> @@ -1874,8 +1858,7 @@ void phydm_rx_phy_status_new_type(struct phy_dm_struct *phydm, u8 *phy_status,
->  	/* Update signal strength to UI, and phy_info->rx_pwdb_all is the
->  	 * maximum RSSI of all path
->  	 */
-> -	phy_info->signal_strength =
-> -		(u8)(odm_signal_scale_mapping(phydm, phy_info->rx_pwdb_all));
-> +	phy_info->signal_strength = (u8)phy_info->rx_pwdb_all;
->
->  	/* Calculate average RSSI and smoothed RSSI */
->  	phydm_process_rssi_for_dm_new_type(phydm, phy_info, pktinfo);
-> diff --git a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.h b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.h
-> index 6ad5e0292a97..c9833889688c 100644
-> --- a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.h
-> +++ b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.h
-> @@ -216,8 +216,6 @@ odm_config_fw_with_header_file(struct phy_dm_struct *dm,
->
->  u32 odm_get_hw_img_version(struct phy_dm_struct *dm);
->
-> -s32 odm_signal_scale_mapping(struct phy_dm_struct *dm, s32 curr_sig);
-> -
->  /*For 8822B only!! need to move to FW finally */
->  /*==============================================*/
->  void phydm_rx_phy_status_new_type(struct phy_dm_struct *phydm, u8 *phy_status,
-> --
-> 2.17.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/0140568914059cf5d16dfd298964983ab3ca1f28.1540428705.git.m.maya.nakamura%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
