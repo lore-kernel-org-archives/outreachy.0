@@ -1,120 +1,107 @@
 X-GM-THRID: 6616381756005154816
-X-Received: by 2002:ac8:6993:: with SMTP id o19-v6mr2492904qtq.35.1540552988815;
-        Fri, 26 Oct 2018 04:23:08 -0700 (PDT)
+X-Received: by 2002:a81:7c88:: with SMTP id x130-v6mr416533ywc.18.1540496422063;
+        Thu, 25 Oct 2018 12:40:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:b892:: with SMTP id y18ls586433qvf.6.gmail; Fri, 26 Oct
- 2018 04:23:08 -0700 (PDT)
-X-Received: by 2002:a0c:b503:: with SMTP id d3-v6mr2550193qve.28.1540552988270;
-        Fri, 26 Oct 2018 04:23:08 -0700 (PDT)
-Received: by 2002:a37:7783:0:0:0:0:0 with SMTP id s125-v6msqkc;
-        Fri, 26 Oct 2018 03:34:36 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5dD1rN1lpbah1/BrBaREBpJwbSQP2tskpOJGTimwJSLJJDocHRxXlNglsu89HVAAqGb8Bq3
-X-Received: by 2002:a17:906:49d4:: with SMTP id w20-v6mr375187ejv.9.1540550075928;
-        Fri, 26 Oct 2018 03:34:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540550075; cv=none;
+Received: by 2002:a25:bac5:: with SMTP id a5-v6ls4383444ybk.22.gmail; Thu, 25
+ Oct 2018 12:40:21 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5cN6KBV6uBzEGrV6fHF2aYoVr6PfIYKiEh0uuCr/svgwxCJHqL1Eki0GQXDWqzLYCTtP3k6
+X-Received: by 2002:a25:b809:: with SMTP id v9-v6mr421596ybj.2.1540496421047;
+        Thu, 25 Oct 2018 12:40:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540496421; cv=none;
         d=google.com; s=arc-20160816;
-        b=jy+oDXZ7emKwSlsKDsmxobPGi27oSizdwLxLSVmyWy3m4WGAc5xKBr2hi/s3HbzGp2
-         WHhXS6ihx78HZ9iYG2WJCc28xxOg3LUFgvcG84+sVUsa7XAmNp7ArJq59Rpii4tHpsyF
-         sUsBbvsumBVQIh6mdkYgNYDEhXzywERFPyHdrVxiBKZinizJYajyrfqs5Hebsmr7NScQ
-         Nx5qJLnJtrDFsMzJ3YHo6Gzl2eQvmwfRpaNpst6cLHifn0IAggW/d5+67hSBNqKijpoS
-         0sGtNne9bBNh2Ml08UtXh/ChE6HU7PXgPsVeVo7nM2mdpvneQ94wSI5gjmx34azrxK1R
-         sScA==
+        b=esYvfWmXuFppY3GsESGl3IqkMQU8DVsxjgsriatmM8NcE9O5GhWC2+i+VfqALysgEb
+         svHt3XvfzuwiBSnFCYd8hoVetIFKBMTC/xl75vSHyLiOaeO5J+Ah/asw0QezuO65IMXf
+         Q2kLD94bF/9JeLhQaQpwm4rxmN8KqIs2WNWQDG1sbVRi7QKpQ9h3VLvJMbG+vxdRGrrk
+         VKHfooKZch5S3n+IvTRmCiKPvx7KeO8CeDmGiM8IGoB+XlRQJ/z+DSuQg7v1AokZuDlp
+         lRET9dez5oX7e7xOpuHVmVUWyWTMvPZ9yBUyfLfrmYlVvNq6iUM2JfWDPPL2oq4jf5t7
+         v8FA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=XYGUc1ATUYL8gpeUhaZaD4K0YAQd36Xi99NprINFxPs=;
-        b=xW1qW58KRAGD72aPlbTyyN2fLCLtM6BrbgMrQdfrhj9iSTBol2vrmJT7yQ2xu2ItYb
-         fg03uNlMi+3IfnoIQ2SMMsJqLHAv0ZhLEZblF904HFkZqDqef2Te8EiXaM/32YjVZ1Y2
-         1hVjUXfX11sAnPuPqiuSW1WyRvybFN/laRaLqwTLxjgYvn1Ib9jmWeHDbqEiJQe6j/e3
-         2ttHUwXU+7h+aUsP7+iLDgGfD6vSpkoKTem8XjrIgZCMAc/aH6CwZA06MQzhJfIXhFYo
-         hrx4bFyHcK0jmksqsG3sqbBynqk5iBTNeeY8JqpDUPSqBqxPaVvAorOeRc22xu2N4lEY
-         HSlg==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=lbOtJ+IXTmF0J4dzVxEShHiifrkDS0lzDb1R83v1wrE=;
+        b=ZerGRYZ6BOOGbKYth9n3GOYEwdSzlgmJIOzWdH0tiTAWU+vwOxPtXGDLY8QJZCAYGm
+         vyRtg28isuiBcAGXLs6v4AXysW5N9pjsfineng3oDVaFf5tsGeUiLGj2LD0fNM2SS0Em
+         1jqx89XAre1JdBrMVh+MhN6ZgTYKcUrc7RKYAn0nyX0qBRvX+kvcAgrPN6ZdqLL8qPNo
+         YLyoOOOHBWCkWoqTfzFFOMZJNOGAV3PMroJp2Wf/CFnEdhXtCa3gHgKRgDtzuU8Vg7ak
+         zybbOYzG3MGn42G2HuzdzUdaqhJCOqXoBWbDAtRWSzlmM9yTakb1K9pMcUnmaAjXoqaL
+         piQA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of hdegoede@redhat.com designates 209.85.208.67 as permitted sender) smtp.mailfrom=hdegoede@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <hdegoede@redhat.com>
-Received: from mail-ed1-f67.google.com (mail-ed1-f67.google.com. [209.85.208.67])
-        by gmr-mx.google.com with ESMTPS id y16-v6si483364eds.0.2018.10.26.03.34.35
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tS6HZsi4;
+       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::844 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <shayenneluzmoura@gmail.com>
+Received: from mail-qt1-x844.google.com (mail-qt1-x844.google.com. [2607:f8b0:4864:20::844])
+        by gmr-mx.google.com with ESMTPS id 192-v6si333981ybv.0.2018.10.25.12.40.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Oct 2018 03:34:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hdegoede@redhat.com designates 209.85.208.67 as permitted sender) client-ip=209.85.208.67;
+        Thu, 25 Oct 2018 12:40:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::844 as permitted sender) client-ip=2607:f8b0:4864:20::844;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hdegoede@redhat.com designates 209.85.208.67 as permitted sender) smtp.mailfrom=hdegoede@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: by mail-ed1-f67.google.com with SMTP id x31-v6so843899edd.8
-        for <outreachy-kernel@googlegroups.com>; Fri, 26 Oct 2018 03:34:35 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tS6HZsi4;
+       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::844 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-qt1-x844.google.com with SMTP id b22-v6so2307557qtr.11
+        for <outreachy-kernel@googlegroups.com>; Thu, 25 Oct 2018 12:40:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=lbOtJ+IXTmF0J4dzVxEShHiifrkDS0lzDb1R83v1wrE=;
+        b=tS6HZsi4Jrqa7nA/i3rhsefMxFHwVswXw7i6NWeg5m8OAzD/NvZ+vAuC9yYwmIbp/o
+         wjO8wepjnu1RFURvXgk7SW+YkznE868KtnlExbf8GujOn735og0UkWjZnz2BArB4ibZJ
+         KY2Z41XypQAbpLwmMihLM1A7+U4hrm70ZliMN1j9RP03+zH/2RnvmPZ8HaKBZmAARGE5
+         k99xOxGn2cC7LybBf0jbd3AZdATMlG9LFplvMfkTlp+wc9DYZFOHfNYY+QC3D+TQded+
+         TvjbjfaCN9pkArA1wu1oeNK+euJ+dggaKrrcWfMzw7LQBRfof2xBGxOJ2qwY4QjIeINs
+         FUCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=XYGUc1ATUYL8gpeUhaZaD4K0YAQd36Xi99NprINFxPs=;
-        b=MkJ2ISNJalagcjUcQGgdXyfecz3Yy6sUScDhw1WY90y1LOwwRHEcA8zPf0Yj3G1Pet
-         WzhmrtNGjmFdk69Cy5w3/XUi9Osb4ovWG+hh3sigFTGS6h0lBPypFUG63xCAIUSomLBt
-         HXIJFfByAuObsQhoGPDA5QI6w/Aj4TnciEZ0b/ljErB9VHaK7BvW4BY+tq2pCmR/a++j
-         oEMnzBX8PBlX6HpqiaiMG1rGoejdd2Ol0Hr2ka3/7heTzGh4B530P9nUP8INA7kAgzMO
-         hpVOQt2D9ku6tLnxaYgdtyYXVpnSPNtwod7Ph/DHYAJKG3yeyIEDV0IhlMf3ulOkUUkA
-         ZBpA==
-X-Gm-Message-State: AGRZ1gKpqj7CfcVPsSCg6B7PnspvHA2roBoEuiicioxVU5K2BjuBUDjH
-	pHt9bUC0wTIQBsGYjNlaejhyD8WYl3Y=
-X-Received: by 2002:a50:af22:: with SMTP id g31-v6mr2467737edd.106.1540550075282;
-        Fri, 26 Oct 2018 03:34:35 -0700 (PDT)
-Return-Path: <hdegoede@redhat.com>
-Received: from shalem.localdomain (546A5441.cm-12-3b.dynamic.ziggo.nl. [84.106.84.65])
-        by smtp.gmail.com with ESMTPSA id b25-v6sm2210655ejo.74.2018.10.26.03.34.34
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Oct 2018 03:34:34 -0700 (PDT)
-Subject: Re: [PATCH 0/2] staging: vboxvideo: Remove chekpatch issues
-To: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Michael Thayer <michael.thayer@oracle.com>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=lbOtJ+IXTmF0J4dzVxEShHiifrkDS0lzDb1R83v1wrE=;
+        b=efS/tBDkbQUpXR0sy9FuPdntb9FISDKC76jpfWIpcSNKac8j8fpM9pBYRuYkU5E7c5
+         mIl5kAO0xvZdef6+wPLu4rsLdWVb8RnoBkV0PmRLVkR4V8kH4rYUCoZuKX0I/G1Cy+4B
+         1vPWEQ8txfgtyieWuH1CJjntvbejTlfAJ1f9Icb9j0HApyXrHU6jBQ66wCTsMt/vbxj6
+         3kAyLV25XbvAKZvsc2/bMk76Q/+UORE9DzBW9kWjObs8MFLk/IfY5Vj6msPToL5Ou75k
+         TBjO13iMZyzcUS9m0X8Edc+QrhMacqGVjf/94qRIHlE6GeuTZYdJESFtu0169kZRDVzU
+         IFBA==
+X-Gm-Message-State: AGRZ1gJ1TN3/zw/Hi6gYWEbjgz+zWyrNklJpn7h/S60m4NTSbFxQ/oL7
+	bsBTQfLPfgOnGnzUADFENX0=
+X-Received: by 2002:aed:2ec1:: with SMTP id k59-v6mr584811qtd.304.1540496420658;
+        Thu, 25 Oct 2018 12:40:20 -0700 (PDT)
+Return-Path: <shayenneluzmoura@gmail.com>
+Received: from smtp.gmail.com ([143.107.45.1])
+        by smtp.gmail.com with ESMTPSA id 83sm9583078qkz.73.2018.10.25.12.40.18
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 25 Oct 2018 12:40:20 -0700 (PDT)
+Date: Thu, 25 Oct 2018 16:40:15 -0300
+From: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Hans de Goede <hdegoede@redhat.com>,
+	Michael Thayer <michael.thayer@oracle.com>
 Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- outreachy-kernel@googlegroups.com
-References: <cover.1540490962.git.shayenneluzmoura@gmail.com>
-From: Hans de Goede <hdegoede@redhat.com>
-Message-ID: <e59aeb92-b2f9-ae8d-f910-4410ba9c732a@redhat.com>
-Date: Fri, 26 Oct 2018 12:34:33 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.8.0
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH 0/2] staging: vboxvideo: Remove chekpatch issues
+Message-ID: <cover.1540490962.git.shayenneluzmoura@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <cover.1540490962.git.shayenneluzmoura@gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: NeoMutt/20171215
 
-Hi,
+This series cleans the following checkpatch.pl issues:
 
-On 25-10-18 21:40, Shayenne da Luz Moura wrote:
-> This series cleans the following checkpatch.pl issues:
-> 
-> CHECK: Prefer kernel type 'u32' over 'uint32_t'
-> CHECK: Avoid using bool structure members because of possible alignment issues
-> 
-> Shayenne da Luz Moura (2):
->    staging: vboxvideo: Change uint32_t to u32
->    staging: vboxvideo: Use unsigned int instead bool
+CHECK: Prefer kernel type 'u32' over 'uint32_t'
+CHECK: Avoid using bool structure members because of possible alignment issues
 
-Why am I receiving only the cover letter of this series? Please resend
-so that I get all the patches.
+Shayenne da Luz Moura (2):
+  staging: vboxvideo: Change uint32_t to u32
+  staging: vboxvideo: Use unsigned int instead bool
 
-Also at least the first patch is wrong, the drm headers use uint32_t
-in the prototype definition of the callback functions we are defining,
-so the vboxvideo code should use the same even if the compiler does not
-warn about the callback implementation having different parameter types
-in this case.
+ drivers/staging/vboxvideo/vbox_drv.h        | 14 +++++++-------
+ drivers/staging/vboxvideo/vbox_mode.c       |  2 +-
+ drivers/staging/vboxvideo/vboxvideo_guest.h |  2 +-
+ 3 files changed, 9 insertions(+), 9 deletions(-)
 
-Regards,
+-- 
+2.19.1
 
-Hans
-
-
-
-
-> 
->   drivers/staging/vboxvideo/vbox_drv.h        | 14 +++++++-------
->   drivers/staging/vboxvideo/vbox_mode.c       |  2 +-
->   drivers/staging/vboxvideo/vboxvideo_guest.h |  2 +-
->   3 files changed, 9 insertions(+), 9 deletions(-)
-> 
 
