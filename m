@@ -1,218 +1,135 @@
-X-GM-THRID: 6746702482716491776
-X-Received: by 2002:a17:90a:bb98:: with SMTP id v24mr20185723pjr.10.1570839081398;
-        Fri, 11 Oct 2019 17:11:21 -0700 (PDT)
+X-GM-THRID: 6616182090813669376
+X-Received: by 2002:a17:906:c9c2:: with SMTP id hk2-v6mr101629ejb.15.1540449934853;
+        Wed, 24 Oct 2018 23:45:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:7c90:: with SMTP id x138ls2421168pfc.4.gmail; Fri, 11
- Oct 2019 17:11:20 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxq1IZ7lSl0mAlTZyh/UvFvJXbZy3ydJxzM5cv1tQ2NT8XGKowB8C9GrVoczTD5Z0zAUIKj
-X-Received: by 2002:a63:6f02:: with SMTP id k2mr20148374pgc.163.1570839080248;
-        Fri, 11 Oct 2019 17:11:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570839080; cv=none;
+Received: by 2002:a17:906:69c5:: with SMTP id g5-v6ls1534622ejs.0.gmail; Wed,
+ 24 Oct 2018 23:45:34 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5dBuDPl0jL6kDyyacS/ikw/t8GEeCPMi7/JTivGo5aCL+uba+gOmRh1P6Yzm/j59Y+D471h
+X-Received: by 2002:a17:906:25c1:: with SMTP id n1-v6mr103486ejb.12.1540449934106;
+        Wed, 24 Oct 2018 23:45:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540449934; cv=none;
         d=google.com; s=arc-20160816;
-        b=OYK6V8I3A2Uuda28FnifZy/6vPPeCx/hz/t2wO+f15HUXSWh2HM2pd8Mdv+zfB8dyP
-         q3yt/eOwIyTtXY5nokj8HYLXXDv2kOYm6dZ11SpaI0P357td4yR9Fo6zkbxuXQ3IKNGt
-         tMOCdvqvR8iGAqtXLHhzQdJFySPicytw29x4Qn1u/WfTbejD/np8GxpsZU9+U0amYQ6f
-         FXa74Zvu7gtDOPPBKwPfMLLbKjWERIb5ALX9DIILhmBUoG+ebVTHfgMnMIfERdNITL9A
-         AQxhPByhRxR1n/0JWWwmVIa/2AyprFx5Az6XtmM5h6pYHdRng+9oXMlakjbMw7/VNpVF
-         0LmQ==
+        b=j+Bg9efuQdlQwJLNBxbc7C2nOUhmNt/wp9OPC46iRIzkczv7/EEeex5eH6sURbOGbJ
+         j1EZvcK6YddGu+aowaDDr4Xyixwv6J2uUMzlw5tSUPvojphE7IXf99NDX/dE/DFRB0uc
+         J86uHkgTlmZVCkEquRqN8aw4zLfEJlWP52jCg81Hng9iDAxgnmszyDmdg74gzT4/mCUV
+         h6slWU5IrvOqgAKc39ErFg/u2C5brJODgV4u2nGv7jgTgK1fOT90BBKMDzdajmYjfEQ5
+         Y8MELliTwpForX1+47NrFUmV2xLZwedMhAIkRdWt4GbqZZu/M3+s5iB7SlXMwToS+nnN
+         Y/gA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=p97fZJB4ZqOPBodMZslDM6IMgVQDno+CSbtf+gc0KpQ=;
-        b=xQvdQFsrOcs3BWr5QQKYJ7ZF9OphLI2wQFBnmNX0B9NN0ShD1Ka+V6Ed/kp8ke7336
-         tO+9iRM5mUcSshTum/I7ggkuZN9w0eZRGy4FEUFPcTZrMlDgefSnuvFiLqqEsohMo/WQ
-         gp6rVYegK/KI3rKDheMr5MgMp9VQbWtZdsmPTQ2p+/EsI+Nc6h22O9i2HMH5rzVcQb85
-         3YscYnYa1vovMAoW5fovMitzFSzmDbZg6a3jf8p+rfECR7ZGP9kxfig+mZ+R6WIaQ6A7
-         v7Du4OT5QNd/QyI7Xo5RFlXezJs8yxRgI7Jxzq4BT20NhZy0WCZa3Q+DPzm6RmqQVJpF
-         WXmg==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=M72HlY+576YsFO5V8Pbr0wXWSsNiXk4ZuR0R5AmN1xs=;
+        b=EfMd4fJSK0M2iQithWwQijguRU+LqEosu953pqPxRp2fZoOhPHC3o8deIh66vMBlwd
+         uD8MU0kUBNd3Rmas0yIb7F+Cm57iruZoZyihzQa8pMANLtPd6uvAtNFV3RENPe9XPCQb
+         xNMn8+yZMPN1LTWBRVTDrxRExwm8yHxHwKI4i7ljs82VctmkO/j/lIhSSVB6Atr71DMD
+         ikkVqhIDs6AD/ECmPK+SV8PEOw8TPpB2aULfc8Mc89NTS+JQyXMXZs0xKl043FButI/F
+         68EiJd9tq4JTB5XQl69YOuDwVR0HPT6QePHfjhg1hLTmbdqFp5OHA7qipf0eSzJ24Mhx
+         YAgg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=psWudtGz;
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DWxDo4uL;
+       spf=pass (google.com: domain of kim.jamie.bradley@gmail.com designates 2a00:1450:4864:20::331 as permitted sender) smtp.mailfrom=kim.jamie.bradley@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jamal.k.shareef@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id o23si125231pjt.2.2019.10.11.17.11.20
+Return-Path: <kim.jamie.bradley@gmail.com>
+Received: from mail-wm1-x331.google.com (mail-wm1-x331.google.com. [2a00:1450:4864:20::331])
+        by gmr-mx.google.com with ESMTPS id m25-v6si158426ejb.1.2018.10.24.23.45.34
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 11 Oct 2019 17:11:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 24 Oct 2018 23:45:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kim.jamie.bradley@gmail.com designates 2a00:1450:4864:20::331 as permitted sender) client-ip=2a00:1450:4864:20::331;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=psWudtGz;
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DWxDo4uL;
+       spf=pass (google.com: domain of kim.jamie.bradley@gmail.com designates 2a00:1450:4864:20::331 as permitted sender) smtp.mailfrom=kim.jamie.bradley@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id i76so6684709pgc.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 11 Oct 2019 17:11:20 -0700 (PDT)
+Received: by mail-wm1-x331.google.com with SMTP id y144-v6so277468wmd.4
+        for <outreachy-kernel@googlegroups.com>; Wed, 24 Oct 2018 23:45:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=p97fZJB4ZqOPBodMZslDM6IMgVQDno+CSbtf+gc0KpQ=;
-        b=psWudtGzBuTs/WHzXrNPRipuPyf2gcumD7Us8TRmjdESoO2k3IAZCsIsfjIlluM+1E
-         9/iFRMnLHDXYQkfLcyMZhrnEY3ovPmQKE1qBReflqWM/qQ5ezhhWmh1T8v0CqfYROzhq
-         U08Yx9Th/ZLKyqgd875lewEH1hLGymnho479bN+fhHEMr1/BSecN8FRKgh//6ABhjcCY
-         a/LPl8qCaHpM+1KBbhR68YdoZ5GOjOmulyYdiyCWeT4H3K/2xm4M5D7ulCvi1ZhOxN8s
-         7SM7+OLqcbYJQr+m8Kif0+CXwIFq9uFrMD2MM3E4zN4+6mMWU+Ckio51CNIPGbXUW6tg
-         ibrw==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=M72HlY+576YsFO5V8Pbr0wXWSsNiXk4ZuR0R5AmN1xs=;
+        b=DWxDo4uLH0gOi+2L89CMcDxhheNzjCgYlCgtAFJ55YISMOHb65vEVVS6OfC5UsP2cb
+         pRlMHDG7MzdCy+5cQgseWlkwiGJ/pGUpCW/2iuqjzPzkn4y5oS1rSZR63VZ/J6xtnJz4
+         m87mSJedxzbl+6M/kFh3D6e71W2rbTr1FB8rlWda59ZRsH0B+RPCGfnPz5HLk6wQucHa
+         lE3rJvsuEen0buzzS2oeRkuGgPJnLk97q6hPGTHGb5OhW4vkPviUi3XVlyeEMz8ySIAU
+         3+jzFuX62xVoz09xg5KEHvyM8Ul7IM228m52GEI99wGA1ccQ4eOdMyoQPwOBKG93rztb
+         eOag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=p97fZJB4ZqOPBodMZslDM6IMgVQDno+CSbtf+gc0KpQ=;
-        b=K1NsS1FBG8DcpljiCeGNso82/W5EMi8SbPi6ckIqIw2gbVou8wuDewLUT7gVTimd4h
-         bmI4x8RQGw88UVOH9SbTKct2k3xzfbMqZtyC7vbrbyt+xll5rl+2K5w9+GYWrEOb1iTQ
-         mm46FTBcBwYcHw7H5IzGcpLJZuX6RBL4R4PVpVKwS5+5SqRh9X5Ujwoe4nNVNAFVC6Th
-         Ki0OrEg47cJDL8KHQ/FOaKqg6hRCGC+aMqrA/l4MKZlqLMywwQzOBJoG9hq8nxXxrnYk
-         TOZocX3eQJIhE7aWLOtZEW2zAmoqqAE/B002+Av9hO6s4GHUUcZZ5lo4US4rOpfK+eFA
-         zNyw==
-X-Gm-Message-State: APjAAAVg0QjdDEbeknpyo/PuX8+yeut39sGqKFLutFvH2M3FirPid+vy
-	EedUc+LKEpkqbXQxJIPidzmADlqapgs=
-X-Received: by 2002:a63:4181:: with SMTP id o123mr1962850pga.301.1570839079628;
-        Fri, 11 Oct 2019 17:11:19 -0700 (PDT)
-Return-Path: <jamal.k.shareef@gmail.com>
-Received: from jamal-XPS-13-9343 (97-126-66-56.tukw.qwest.net. [97.126.66.56])
-        by smtp.gmail.com with ESMTPSA id y80sm10493490pfc.30.2019.10.11.17.11.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 11 Oct 2019 17:11:18 -0700 (PDT)
-From: Jamal Shareef <jamal.k.shareef@gmail.com>
-To: boqun.feng@microsoft.com,
-	andrea.parri@microsoft.com
-Cc: Jamal Shareef <jamal.k.shareef@gmail.com>,
-	laurent.pinchart@ideasonboard.com,
-	mchehab@kernel.org,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Subject: 
-Date: Fri, 11 Oct 2019 17:10:17 -0700
-Message-Id: <20191012001017.3665-1-jamal.k.shareef@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=M72HlY+576YsFO5V8Pbr0wXWSsNiXk4ZuR0R5AmN1xs=;
+        b=MpECZLSsv51XqEEtjPPq3YMX2w8sIpe8vmX+3bvuqikFbOpZ31h9XdHhK7agujLZqi
+         7mzjYl1XMtiKHJ3s/70d0deVd77Q4uP/KhgDLYKeSCLcszsDmVMlyK1hDHAHKv2gQEyG
+         Wyj8msVeAwfCiLNwsUdc2+Ab19dLEch1DjzIHQBXu2gsTXQPBNR0gWhWwPdYVfTs5uWb
+         g7VupD9YMmOBpehPGKUDGhCu1JnDf2iNf9XJxpcvudMlbl5g2enhsMVMVoBCJJ+Kc16L
+         YI6bycSS65AIM7g6WOMjM0iI45gY9wfn9G3h0jVzGHX5cq6iScmv1i7TqeVm4p3mdEaG
+         1f1Q==
+X-Gm-Message-State: AGRZ1gKx25aHLtHAEsPrqKrGTFdvm8Pbsm43WiKFYR8HyMA3G8R1dJz8
+	kd7aO24wHbBrQFL9flrWfVo6fgJdseo=
+X-Received: by 2002:a1c:af07:: with SMTP id y7-v6mr486384wme.12.1540449933454;
+        Wed, 24 Oct 2018 23:45:33 -0700 (PDT)
+Return-Path: <kim.jamie.bradley@gmail.com>
+Received: from xubuntu-vm (host86-167-247-131.range86-167.btcentralplus.com. [86.167.247.131])
+        by smtp.gmail.com with ESMTPSA id 74-v6sm478461wmi.23.2018.10.24.23.45.32
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 24 Oct 2018 23:45:33 -0700 (PDT)
+Date: Thu, 25 Oct 2018 07:45:30 +0100
+From: Kim Bradley <kim.jamie.bradley@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] Staging: rts5208: Fix checkpatch camel-case warning in goto
+ statement
+Message-ID: <20181025064527.GA2018@xubuntu-vm>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-Subject: [PATCH] staging: media: omap4iss: Fix lines ending with "("
+Fix use of camel-case in goto statement and all subsequent uses to
+remove checkpatch warning.
 
-Fix lines ending with open left parenthesis "(".
-Issue found by checkpatch.
-
-Also fix checkpatch "alignment should match open
-parenthesis" issue.
-
-Signed-off-by: Jamal Shareef <jamal.k.shareef@gmail.com>
+Signed-off-by: Kim Bradley <kim.jamie.bradley@gmail.com>
 ---
- drivers/staging/media/omap4iss/iss.c | 65 +++++++++++++++++-----------
- 1 file changed, 40 insertions(+), 25 deletions(-)
+ drivers/staging/rts5208/ms.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/media/omap4iss/iss.c b/drivers/staging/media/omap4iss/iss.c
-index 1a966cb2f3a6..9d6676b4618a 100644
---- a/drivers/staging/media/omap4iss/iss.c
-+++ b/drivers/staging/media/omap4iss/iss.c
-@@ -559,9 +559,11 @@ static int iss_reset(struct iss_device *iss)
- 	iss_reg_set(iss, OMAP4_ISS_MEM_TOP, ISS_HL_SYSCONFIG,
- 		    ISS_HL_SYSCONFIG_SOFTRESET);
- 
--	timeout = iss_poll_condition_timeout(
--		!(iss_reg_read(iss, OMAP4_ISS_MEM_TOP, ISS_HL_SYSCONFIG) &
--		ISS_HL_SYSCONFIG_SOFTRESET), 1000, 10, 100);
-+	timeout = iss_poll_condition_timeout(!(iss_reg_read(iss,
-+							    OMAP4_ISS_MEM_TOP,
-+							    ISS_HL_SYSCONFIG) &
-+						ISS_HL_SYSCONFIG_SOFTRESET),
-+						1000, 10, 100);
- 	if (timeout) {
- 		dev_err(iss->dev, "ISS reset timeout\n");
- 		return -ETIMEDOUT;
-@@ -583,9 +585,11 @@ static int iss_isp_reset(struct iss_device *iss)
- 
- 	iss_reg_set(iss, OMAP4_ISS_MEM_ISP_SYS1, ISP5_CTRL, ISP5_CTRL_MSTANDBY);
- 
--	timeout = iss_poll_condition_timeout(
--		iss_reg_read(iss, OMAP4_ISS_MEM_ISP_SYS1, ISP5_CTRL) &
--		ISP5_CTRL_MSTANDBY_WAIT, 1000000, 1000, 1500);
-+	timeout =
-+	iss_poll_condition_timeout(iss_reg_read(iss, OMAP4_ISS_MEM_ISP_SYS1,
-+						ISP5_CTRL) &
-+				   ISP5_CTRL_MSTANDBY_WAIT,
-+				   1000000, 1000, 1500);
- 	if (timeout) {
- 		dev_err(iss->dev, "ISP5 standby timeout\n");
- 		return -ETIMEDOUT;
-@@ -595,9 +599,11 @@ static int iss_isp_reset(struct iss_device *iss)
- 	iss_reg_set(iss, OMAP4_ISS_MEM_ISP_SYS1, ISP5_SYSCONFIG,
- 		    ISP5_SYSCONFIG_SOFTRESET);
- 
--	timeout = iss_poll_condition_timeout(
--		!(iss_reg_read(iss, OMAP4_ISS_MEM_ISP_SYS1, ISP5_SYSCONFIG) &
--		ISP5_SYSCONFIG_SOFTRESET), 1000000, 1000, 1500);
-+	timeout =
-+	iss_poll_condition_timeout(!(iss_reg_read(iss, OMAP4_ISS_MEM_ISP_SYS1,
-+						  ISP5_SYSCONFIG) &
-+				     ISP5_SYSCONFIG_SOFTRESET),
-+				     1000000, 1000, 1500);
- 	if (timeout) {
- 		dev_err(iss->dev, "ISP5 reset timeout\n");
- 		return -ETIMEDOUT;
-@@ -964,7 +970,9 @@ iss_register_subdev_group(struct iss_device *iss,
+diff --git a/drivers/staging/rts5208/ms.c b/drivers/staging/rts5208/ms.c
+index a0fcbb83ee8a..9f846e53abec 100644
+--- a/drivers/staging/rts5208/ms.c
++++ b/drivers/staging/rts5208/ms.c
+@@ -4151,7 +4151,7 @@ int mg_set_ICV(struct scsi_cmnd *srb, struct rtsx_chip *chip)
+ 		} else {
+ 			set_sense_type(chip, lun, SENSE_TYPE_MG_WRITE_ERR);
  		}
- 
- 		subdev = v4l2_i2c_new_subdev_board(&iss->v4l2_dev, adapter,
--				board_info->board_info, NULL);
-+						   board_info->board_info,
-+						   NULL);
-+
- 		if (!subdev) {
- 			dev_err(iss->dev, "Unable to register subdev %s\n",
- 				board_info->board_info->type);
-@@ -1108,33 +1116,40 @@ static int iss_create_links(struct iss_device *iss)
+-		goto SetICVFinish;
++		goto set_ICV_finish;
  	}
  
- 	/* Connect the submodules. */
--	ret = media_create_pad_link(
--			&iss->csi2a.subdev.entity, CSI2_PAD_SOURCE,
--			&iss->ipipeif.subdev.entity, IPIPEIF_PAD_SINK, 0);
-+	ret = media_create_pad_link(&iss->csi2a.subdev.entity, CSI2_PAD_SOURCE,
-+				    &iss->ipipeif.subdev.entity,
-+				    IPIPEIF_PAD_SINK, 0);
- 	if (ret < 0)
- 		return ret;
+ #ifdef MG_SET_ICV_SLOW
+@@ -4192,7 +4192,7 @@ int mg_set_ICV(struct scsi_cmnd *srb, struct rtsx_chip *chip)
+ 					       SENSE_TYPE_MG_WRITE_ERR);
+ 			}
+ 			retval = STATUS_FAIL;
+-			goto SetICVFinish;
++			goto set_ICV_finish;
+ 		}
+ 	}
+ #else
+@@ -4211,11 +4211,11 @@ int mg_set_ICV(struct scsi_cmnd *srb, struct rtsx_chip *chip)
+ 		} else {
+ 			set_sense_type(chip, lun, SENSE_TYPE_MG_WRITE_ERR);
+ 		}
+-		goto SetICVFinish;
++		goto set_ICV_finish;
+ 	}
+ #endif
  
--	ret = media_create_pad_link(
--			&iss->csi2b.subdev.entity, CSI2_PAD_SOURCE,
--			&iss->ipipeif.subdev.entity, IPIPEIF_PAD_SINK, 0);
-+	ret = media_create_pad_link(&iss->csi2b.subdev.entity, CSI2_PAD_SOURCE,
-+				    &iss->ipipeif.subdev.entity,
-+				    IPIPEIF_PAD_SINK, 0);
-+
- 	if (ret < 0)
- 		return ret;
- 
--	ret = media_create_pad_link(
--			&iss->ipipeif.subdev.entity, IPIPEIF_PAD_SOURCE_VP,
--			&iss->resizer.subdev.entity, RESIZER_PAD_SINK, 0);
-+	ret = media_create_pad_link(&iss->ipipeif.subdev.entity,
-+				    IPIPEIF_PAD_SOURCE_VP,
-+				    &iss->resizer.subdev.entity,
-+				    RESIZER_PAD_SINK, 0);
-+
- 	if (ret < 0)
- 		return ret;
- 
--	ret = media_create_pad_link(
--			&iss->ipipeif.subdev.entity, IPIPEIF_PAD_SOURCE_VP,
--			&iss->ipipe.subdev.entity, IPIPE_PAD_SINK, 0);
-+	ret = media_create_pad_link(&iss->ipipeif.subdev.entity,
-+				    IPIPEIF_PAD_SOURCE_VP,
-+				    &iss->ipipe.subdev.entity,
-+				    IPIPE_PAD_SINK, 0);
-+
- 	if (ret < 0)
- 		return ret;
- 
--	ret = media_create_pad_link(
--			&iss->ipipe.subdev.entity, IPIPE_PAD_SOURCE_VP,
--			&iss->resizer.subdev.entity, RESIZER_PAD_SINK, 0);
-+	ret = media_create_pad_link(&iss->ipipe.subdev.entity,
-+				    IPIPE_PAD_SOURCE_VP,
-+				    &iss->resizer.subdev.entity,
-+				    RESIZER_PAD_SINK, 0);
-+
- 	if (ret < 0)
- 		return ret;
- 
+-SetICVFinish:
++set_ICV_finish:
+ 	kfree(buf);
+ 	return retval;
+ }
 -- 
-2.17.1
+2.19.1
 
 
