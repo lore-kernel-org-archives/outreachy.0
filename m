@@ -1,114 +1,106 @@
 X-GM-THRID: 6616189865324183552
-X-Received: by 2002:a19:e307:: with SMTP id a7-v6mr1075558lfh.3.1540809510668;
-        Mon, 29 Oct 2018 03:38:30 -0700 (PDT)
+X-Received: by 2002:a1c:6309:: with SMTP id x9-v6mr337411wmb.7.1540485578953;
+        Thu, 25 Oct 2018 09:39:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:4411:: with SMTP id r17-v6ls9560lja.17.gmail; Mon, 29
- Oct 2018 03:38:29 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5f+V7zf6CCQWwu1ZQHOtNgMxuHWgIeoJRDM4gIXd7jf4NvCcySA8vgRzTHKzPnmaHZ2ipCa
-X-Received: by 2002:a2e:9597:: with SMTP id w23-v6mr1240845ljh.25.1540809509399;
-        Mon, 29 Oct 2018 03:38:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540809509; cv=none;
+Received: by 2002:a5d:5287:: with SMTP id c7-v6ls2246015wrv.14.gmail; Thu, 25
+ Oct 2018 09:39:38 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5f9Hnp2I78bdriuu08wifvqQx6sVUSzRdmtbmZDmTUxJreXRdXcxTet22/+1sqL1MQlBYgo
+X-Received: by 2002:a5d:63cc:: with SMTP id c12-v6mr314017wrw.8.1540485578109;
+        Thu, 25 Oct 2018 09:39:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540485578; cv=none;
         d=google.com; s=arc-20160816;
-        b=O4V4qoW1o9RZEitfopNmTOx+EfF3UWfoYU0MsB9F6gS4N0IVWDxZadlVl/NDQBgCsS
-         q5tpWkrDrnBveR7FjV12yrTuBIMqwgHJ+voonQ0EPjEcZi5KCablNiwey2LgaCsVvxdQ
-         8Qz+4sn900W/f9EbqBMUgYSWvg3AS8+lduR0UJGfV8XWIJgBSf6klQsVxhd4TsawTeEs
-         CSK0REbXqRRMCR6zdqJHSGYb9nALvalCi9q7rfcAIy1KOYtdaenHmJKPG3QhdqQ8K5Tp
-         9DWpIBFfegRZD9/1lDiR1rUGpRREPjNUcnjg5X4k7T7StuSf0SnelS4Uc3GKpbbcbarG
-         TSMg==
+        b=FIHcKZzv0KXTM2YRk3RbpcYdTL+ylnvlCipdQB2sc81u8AOsRsnqGDNzswvqO7dYB1
+         rstg4Ev4aFFW8jguGvl6rceOLgBxCq3GEVkz++J6EZpzsqeBkaIiqCf3L3ETHuXuJpQO
+         eGcl+g1KhDbATrYs8XN8EI42ClaEezhk1ZFCjzrPps3srY803n469WsT414qz45A3ajJ
+         cixdNQMdmTCibDE7vAT4QAOtFR/kRFdQNxZ0qOVzSUE8Cyx7HbpqFlamiD3Ha2XUa1NA
+         +H6fLfcN6B+b8YDX42GJok4TkYznIf1GGKkgEzN7kXURxiH5HJbDDCypsjbJIB54yzPA
+         Drjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=WRD2W+u+xcZIDKOP+6eNWnASgiq4x/xAKrRKveH/Ys8=;
-        b=L7YWUNdmhy/FUqAcOG0JVOIA1irQv9hwLSZ65Cotlk0xdEnEGvSMzTS5D5L9fjEQzl
-         qlvVchrQr1CIsTChw+DQDBX7EZu9W1j9C1ouPpxJ28QmqkeUNzqaOY2F0G17vf77RNq0
-         6XbEyHAWVW77v5Bo+T4qsucCJCS8fVSYjPMaoWQuC9FrDStx2n6uRkIv5APGxywASxqA
-         O4JjWWuOMo1qQIKPffSG3lDw/Ig6GepTO2YFzyw7CFkvpp9qNLhKe2cnSN5Me3syxlPO
-         Nsb7wzzq3vflMEEklvA2lTKQdea1FC1d8KAA4ZOeOwLphWAqbomDCVRssJmXQ0G4h1wW
-         JYbQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=kIV+tpeudGbjVH8gqpjG/9lEHRLH6eebElYlAzq69Hc=;
+        b=JWI16RGIeO/r5t4Ye7FqjHlMAxOkRU60ae1pcsY0zdqWuSX9nqMFEg28+96TxW8pz5
+         CtZW2EA6P2FXgoQQXyssSgnhyposnuIIGyljBsqwB93EbcQwDXHNc0MhsTl+sITJi98w
+         76r9NJkhoQzS3L8onlLOyKyhh9GleZvxKXnMYJZ7eFdw7/TQv84JjAqISyvFJYaoie5i
+         fzbtPczypXV0ZPU64Or8TjmRLoLiixnAHG6SXmfx4k+NolrTxfe3TrhS89Kg7f9+nW6X
+         +mze3hFBbZFZV7XASpTo3DpVpP1v8Z4dF3QhKicRa+bheRQ2JtimFyBsXrc9UNrYavM/
+         JYdA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pQia39wm;
-       spf=pass (google.com: domain of kim.jamie.bradley@gmail.com designates 2a00:1450:4864:20::430 as permitted sender) smtp.mailfrom=kim.jamie.bradley@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <kim.jamie.bradley@gmail.com>
-Received: from mail-wr1-x430.google.com (mail-wr1-x430.google.com. [2a00:1450:4864:20::430])
-        by gmr-mx.google.com with ESMTPS id w13-v6si700755lfe.3.2018.10.29.03.38.29
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 202-v6si80141wmo.1.2018.10.25.09.39.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 29 Oct 2018 03:38:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kim.jamie.bradley@gmail.com designates 2a00:1450:4864:20::430 as permitted sender) client-ip=2a00:1450:4864:20::430;
+        Thu, 25 Oct 2018 09:39:38 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pQia39wm;
-       spf=pass (google.com: domain of kim.jamie.bradley@gmail.com designates 2a00:1450:4864:20::430 as permitted sender) smtp.mailfrom=kim.jamie.bradley@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x430.google.com with SMTP id n5-v6so8041975wrw.12
-        for <outreachy-kernel@googlegroups.com>; Mon, 29 Oct 2018 03:38:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=WRD2W+u+xcZIDKOP+6eNWnASgiq4x/xAKrRKveH/Ys8=;
-        b=pQia39wmQ2dPa+wMKCf7O98dbD8oIiSTdExw8u1u0UJQRPkeP6e7InH5P8mR59pIOF
-         mn+IhlOL368kCaLQG8QxwZTUY73uCluOQvDSohbvauZ5nDx/RRt+5DxsA1qACGmaFwPT
-         R+Fo25WdNYfonlREIZ8q+BGQg/XKnpYTEItxQdAHc3HUuC6H1GZm5F/DSJeWPnIQhXeT
-         fOrvSHbcByEswPyCWxBMQ7WiLCpokjaX63/5GwLhIsuvh+/1TYdaLHT89LiBQc04ZxPp
-         a/G8jlubAJ585wB1bvi4bockqsKbhtukLA0BMSUv3ZQgHvdomPhzHXHNGlZ5RRuK5n58
-         Xe4w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=WRD2W+u+xcZIDKOP+6eNWnASgiq4x/xAKrRKveH/Ys8=;
-        b=jW2WauNi0YWLch+/tSnhbj3m3Y9RdSiPBiF2UK3/dRvg7JjTvqt0B7tISSvnmxO0fo
-         hMWqotAmlapcfOYPV0xbkx0OCmuvOLAgFeddyTctpzj6aMAZ4AUKS0wStWmg6Owmktk5
-         RKMNtidIAMZuA0gbLuJBDRj0PBUxqJiV0TQXuwL3X55v3QgHrXpx9h/iFWOLi8sbLq8o
-         GmGlmy+UwmaL10q9UWnZzu5LGNaTwkhyAlsjCDUWFy/qhpo9wINpIuwi7aAX0ZYuBMbm
-         3pPIy8LDsRVhcfT3BVFy2mWg3tu6kDi2kxIzJVN02KX0LsrDoDcAPfwFWJDU6NR7QqM7
-         gM3A==
-X-Gm-Message-State: AGRZ1gIr3huxHfxNjSC4P088oyobGPssn2ObkOwP/ey+UQLecm6h8OTW
-	vat1nXvpKXTq1HKpb0Z4VyuF1HOBebI=
-X-Received: by 2002:adf:8989:: with SMTP id x9-v6mr11642044wrx.184.1540809508294;
-        Mon, 29 Oct 2018 03:38:28 -0700 (PDT)
-Return-Path: <kim.jamie.bradley@gmail.com>
-Received: from xubuntu-vm ([90.192.37.239])
-        by smtp.gmail.com with ESMTPSA id r131-v6sm13886210wmb.32.2018.10.29.03.38.27
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Oct 2018 03:38:27 -0700 (PDT)
-Date: Mon, 29 Oct 2018 10:38:25 +0000
-From: Kim Bradley <kim.jamie.bradley@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCHv2] Staging: rts5208: Capitalise preprocessor variable names
-Message-ID: <20181029103817.GA7719@xubuntu-vm>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.54,424,1534802400"; 
+   d="scan'208";a="352832724"
+Received: from 30.9-255-62.static.virginmediabusiness.co.uk (HELO [172.16.5.17]) ([62.255.9.30])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 25 Oct 2018 18:39:37 +0200
+Date: Thu, 25 Oct 2018 17:39:37 +0100 (BST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Kim Bradley <kim.jamie.bradley@gmail.com>
+cc: outreachy-kernel@googlegroups.com, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCHv2] Staging: rts5208: Capitalise
+ preprocessor variable names
+In-Reply-To: <20181025163303.GA6666@xubuntu-vm>
+Message-ID: <alpine.DEB.2.21.1810251737270.2354@hadrien>
+References: <20181025163303.GA6666@xubuntu-vm>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Type: text/plain; charset=US-ASCII
 
-Capitalise header preprocesser variable names (and all
-occurences) to remove checkpatch camelcase warnings.
 
-Signed-off-by: Kim Bradley <kim.jamie.bradley@gmail.com>
----
-v2: Left some camel-case uses (namely xD) - they may refer to
-xD picture cards, as suggested by Julia Lawall <julia.lawall@lip6.fr>
 
- drivers/staging/rts5208/xd.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On Thu, 25 Oct 2018, Kim Bradley wrote:
 
-diff --git a/drivers/staging/rts5208/xd.h b/drivers/staging/rts5208/xd.h
-index bf21bf0d1616..57b94129b26f 100644
---- a/drivers/staging/rts5208/xd.h
-+++ b/drivers/staging/rts5208/xd.h
-@@ -90,7 +90,7 @@
- #define	NO_OFFSET			0x0
- #define	WITH_OFFSET			0x1
- 
--#define	Sect_Per_Page			4
-+#define	SECT_PER_PAGE			4
- #define	XD_ADDR_MODE_2C			XD_ADDR_MODE_2A
- 
- #define ZONE0_BAD_BLOCK			23
--- 
-2.19.1
+> Capitalise header preprocesser variable names (and all
+> occurences) to remove checkpatch camelcase warnings.
+>
+> v2: Left some camel-case uses (namely xD) - they may refer to
+> xD picture cards, as suggested by Julia Lawall <julia....@lip6.fr>
 
+The v2 discussion goes under the ---, not above it.  The part above the
+--- goes in the commit history, but the previous versions do not.  The
+discussion of previous versions will be meaningless in the commit history.
+On the other hand, the part between the --- and the diff is only visible
+in the mail thread and will be dropped when the patch is applied.  So it's
+fine to put whatever you want there.
+
+julia
+
+>
+> Signed-off-by: Kim Bradley <kim.jamie.bradley@gmail.com>
+> ---
+>  drivers/staging/rts5208/xd.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/rts5208/xd.h b/drivers/staging/rts5208/xd.h
+> index bf21bf0d1616..57b94129b26f 100644
+> --- a/drivers/staging/rts5208/xd.h
+> +++ b/drivers/staging/rts5208/xd.h
+> @@ -90,7 +90,7 @@
+>  #define	NO_OFFSET			0x0
+>  #define	WITH_OFFSET			0x1
+>
+> -#define	Sect_Per_Page			4
+> +#define	SECT_PER_PAGE			4
+>  #define	XD_ADDR_MODE_2C			XD_ADDR_MODE_2A
+>
+>  #define ZONE0_BAD_BLOCK			23
+> --
+> 2.19.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20181025163303.GA6666%40xubuntu-vm.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
