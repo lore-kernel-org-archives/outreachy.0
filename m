@@ -1,87 +1,87 @@
 X-GM-THRID: 6616381756005154816
-X-Received: by 2002:a81:3c06:: with SMTP id j6-v6mr2936333ywa.11.1540580691285;
-        Fri, 26 Oct 2018 12:04:51 -0700 (PDT)
+X-Received: by 2002:a63:4d1e:: with SMTP id a30-v6mr2697227pgb.81.1540580655748;
+        Fri, 26 Oct 2018 12:04:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:a4c4:: with SMTP id g62-v6ls1053957ybi.9.gmail; Fri, 26
- Oct 2018 12:04:50 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5c0KcrgHlfBKi4bzNVq9SFD7Y8c0dHEldB18J5wTjM0xJ3ra6S4rzpWRr80dhRzVOnsdnnP
-X-Received: by 2002:a5b:a83:: with SMTP id h3-v6mr3069052ybq.60.1540580690360;
-        Fri, 26 Oct 2018 12:04:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540580690; cv=none;
+Received: by 2002:a63:688a:: with SMTP id d132-v6ls783331pgc.19.gmail; Fri, 26
+ Oct 2018 12:04:14 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5eirigfIQeNFP5t5xOHV1UioOImg9bfduOdODkg4QOkLwfe6AGN5UZhb0vGmGW4jQIIpjm+
+X-Received: by 2002:a62:c6c8:: with SMTP id x69-v6mr2698618pfk.43.1540580654789;
+        Fri, 26 Oct 2018 12:04:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540580654; cv=none;
         d=google.com; s=arc-20160816;
-        b=dZ1m0L4q3adfeYClOUOZa2DoJV8Ow3JpkI5XouxxtVcetfxsLwmljDnLbqrKGH9X3B
-         2dIAYIYGP3YpL+3SyLQU++dR8qJqMnNLQG/3e7e/GuprrvOZs7UqS28AwwgBuQJyi6l+
-         tnwd0cnzWOoZ0QNn30QaKCepUw7tU6mfWzBDc4oTEECiMXfnmIEZIyNBcnRXzmi3KGAE
-         6O8WNVnembthRNsN1rB7jDYFmjRCC7+Rcd6UkNJ8s1xtJqSwmNY79idtKKfPuWWQ/scu
-         Ra1h/WQOgmmRGQit5L9mqc9j467LuclaY84NJPMAffguEhBym4W/UnxryImXC6/pd39U
-         38gA==
+        b=EKWyFs30zAKmD/ZnOVrZBfxzUD2RScrAL4L+0pA33ZqGJHwkljsQlKQKWXjZUwoQST
+         iGuNPiu0FHewSFdXAANpcpJJUZ8Kw+/MsNsxouA+VLtNik9aLI/MIK9rie/EKVNw3fYh
+         34od9q0AVapimlQrAvltBKEt4CNwxe4SgOQLJyCzVNVMXoOGy7+SvjGBEDuibUdyCUBL
+         4ywumNQ8KD8RzI0FmGwQ4uynM0g6BugnWGx9KDa4BGVKkHUFSNl8Xict9IbOFrS9/7k4
+         X+f5fs2M8Fm9hEfBMXA1lmmVAJnjHjP1vLHr1hgKYbHx9d0AokmHrXEdk0M8UhIy6eU4
+         JHGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=VvHu1C5zv0/vYjXlEVVxM7J02J9JLPYpPuqNHakxEEw=;
-        b=jsxXiKokZxkMPVCLCXrycId7ItyOv5e63x0ZtJ+YAmP+X47YXDnkRw4Dx0afTGHzGS
-         MHDMzAZMsfeKHDEVX3r07Z3ZBAKWMBk0Ztc/MldWQAI6dHfU7Rda1WYKCvlg3xv2fkoV
-         yapQiOGTnSxczgi4vCaFs8KdvoInDtMhFPv59Ka8XVn+/Ko5878QRGMzXpQY4Pep/Hct
-         czvhr4IHWRVebQB7YA76wN4EsEAEpqaT3WMOTT4AxsQ7paWKy7ndH/QF+NvXjR2vxBfA
-         OU0TmOsY63z+yqkGgSCwxW3lP9C8PieZVJq2rKWEJpDgfu+NLhOWhK+eWuAve6aNLLX/
-         0+8A==
+        bh=/T11tt3vJuAf+zMu9ml2T7wwulQeXdHFKE/giNS+b9Y=;
+        b=XlZkj79E+CyUiz16G63GLdz43z9tH/VewKmb1YhVtNq6scyzfB3/9nvE26OSiwksBb
+         I+kj4p50Jb1Y5tzZ9QNJBJql9usEZ6w7YHCkw5ujIoy/gQ0ajYn+njdu69b+FrbmFRSi
+         M+IiDOZt1Rcq7O1hNEdh2u2/NGqW+/x1j8eZ3fzefSpvjpSuVC525fbi/x46BTEBJBWh
+         YKvCkF4aUGtpLY0Ixbh4miFTv5qphQQNqLrzsHzE8BgRkM3KLMgg0O/TR9KttWjZE9mP
+         Bt19kLSoa+7ki54GEAHIUQto9jwdljqSDAWEJI6h4M6sFvHfMdrwq9Aq0q0JII7rknVD
+         vx8g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rEkwOTjy;
-       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::836 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qHDYTRX9;
+       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::832 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <shayenneluzmoura@gmail.com>
-Received: from mail-qt1-x836.google.com (mail-qt1-x836.google.com. [2607:f8b0:4864:20::836])
-        by gmr-mx.google.com with ESMTPS id r2-v6si525071ybb.2.2018.10.26.12.04.50
+Received: from mail-qt1-x832.google.com (mail-qt1-x832.google.com. [2607:f8b0:4864:20::832])
+        by gmr-mx.google.com with ESMTPS id b27-v6si598954pfj.5.2018.10.26.12.04.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Oct 2018 12:04:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::836 as permitted sender) client-ip=2607:f8b0:4864:20::836;
+        Fri, 26 Oct 2018 12:04:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::832 as permitted sender) client-ip=2607:f8b0:4864:20::832;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rEkwOTjy;
-       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::836 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qHDYTRX9;
+       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::832 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x836.google.com with SMTP id i15-v6so2471094qtr.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 26 Oct 2018 12:04:50 -0700 (PDT)
+Received: by mail-qt1-x832.google.com with SMTP id u34-v6so2458946qth.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 26 Oct 2018 12:04:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=VvHu1C5zv0/vYjXlEVVxM7J02J9JLPYpPuqNHakxEEw=;
-        b=rEkwOTjyXZBu9Q2isZSyKRPcOQ/Yzd5Xb1IHBoqC42mKcz3zOeT9lyDkGjG3GmwSiI
-         +lkzLADQWhe7WONV7svoPj0mjVeX9B5Wo+0dbtVGKkvNZK/nP3j8PaXBFe5tiI6l1ac9
-         Zv7bUFcpYemF4nEHLaHNPKn/HhRWg3u0tDEBBKQJFC4dgAgML8+9Ecuac8QFfcQs+dib
-         icVTnq9naPA8+yVYQVIhE2LXVCqiNwTgYDRi8n+KF4OkuRMH5jAo+pgT42zGLs0ts6n3
-         5kE1f82zkT17gf41YrqjtBT7gQJ5isHKqs+qcAyUSVofWAISscAgIgOD4UyL2p6IV6ym
-         ckKw==
+        bh=/T11tt3vJuAf+zMu9ml2T7wwulQeXdHFKE/giNS+b9Y=;
+        b=qHDYTRX96Vz1IhGg0mNqLOp4qg9SAYYotElg05imu/bgVQf7AaXZqCHxT0N9kkxJbQ
+         3RIHrqQjZsD4WFOhncd5Rhl2+NKzliCy0/52D+I/KaoN87LmIy5dGruax6w3rRpYNr8G
+         8/hndggwVjxaR6dHxp4bpEDywcOsbLh8wcEtQi+2xQ94NdrBWRUbXk0LdxpdW6jmmg6x
+         ftneUr9ySdAo51nX1Ix/jqSAWU/iAt+srhLJ6f3CC9exzCYwRA7X1WvrzXgZwUj/Ne6x
+         H8dxLZNy+LFo6kfBYJgEY3B40yYhtpz4Yq0WCp6JpjOaOetiEJPlRzVsiL5GQu/3KhAn
+         gm0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=VvHu1C5zv0/vYjXlEVVxM7J02J9JLPYpPuqNHakxEEw=;
-        b=VeqH/iL3Kc2bqJkmEL+kG7tV5tiyS0yiskRiL19mjgfvSiVwRcgA5tYSoXxmh6Vk4G
-         O3F8KZw2I6XrhQyDZ94TcaLyNTP+tU78TFfEHNd9b864IafS1p6TCnFoORSLw7WI1VXK
-         oIeuaVQHe4fDJHrwcj9TSm9M282jF8O7b36OGwzeOfO0sNf45y5A3nyqLv35a0OTvf9j
-         5vfbxk32pknSa64x8z+u12KyDNynsa2i03Frhk0n3dD9vLBmvdbfavcTGkL4fyNWEDee
-         l+hD3+Yv9zetHtRBaXFaPyDzKuWFz1ZtGfeli3saGyEL0uIXiJwO3yojlr71b1rr07h2
-         P0rQ==
-X-Gm-Message-State: AGRZ1gIYqEkRBYd4J4cm3jdY4x4ZSG1OXLwK4Oh47LhHFuqol6Wppa4r
-	jlnjFpN6I3pjSZKiS9nuPMY=
-X-Received: by 2002:ac8:1c43:: with SMTP id j3-v6mr4521728qtk.320.1540580689979;
-        Fri, 26 Oct 2018 12:04:49 -0700 (PDT)
+        bh=/T11tt3vJuAf+zMu9ml2T7wwulQeXdHFKE/giNS+b9Y=;
+        b=LQt6N7C2oq/jVo8VCyjJmzi/kq2Gy6BKDAsCWaUJzEu2DW1FaF2/NCnW/oxsC3d2OB
+         sGDP21JHatU00+aPYpV1rem9p/DVDIvM6ljQTJchYEYDyd73IduVnp5vELszvympbHEV
+         dj32Xsw73rwtj37NGuvNusq6ACfrNWaeEw0iKF1KhlKpJWE4Q4lhuLA4MxHFafb9dIxm
+         QTAIfc/BW2LWcIlVulrQ5DGCY+8a9jIONdICyvCS6dmkTRiIeIHFuaL6ys0FcwujM3RX
+         WQbtR6ejDWSt4bT17qbsikRaq/bV9cAjB8FprAmt+gUiPU/Bf/Rm9AtYc0Y1PLcW2ot1
+         4chA==
+X-Gm-Message-State: AGRZ1gImtgrcpcyO5KCOuoe23N1U4opVOZE5CDdBUo+ZUnXTHQHN0hzi
+	66tpZyJTzkjzrAuW5KuaaDA=
+X-Received: by 2002:aed:2166:: with SMTP id 93-v6mr4544406qtc.24.1540580654360;
+        Fri, 26 Oct 2018 12:04:14 -0700 (PDT)
 Return-Path: <shayenneluzmoura@gmail.com>
 Received: from smtp.gmail.com ([143.107.45.1])
-        by smtp.gmail.com with ESMTPSA id y42-v6sm1950937qty.42.2018.10.26.12.04.48
+        by smtp.gmail.com with ESMTPSA id s21-v6sm1825308qkg.79.2018.10.26.12.04.12
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Oct 2018 12:04:49 -0700 (PDT)
-Date: Fri, 26 Oct 2018 16:04:45 -0300
+        Fri, 26 Oct 2018 12:04:13 -0700 (PDT)
+Date: Fri, 26 Oct 2018 16:04:10 -0300
 From: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	Hans de Goede <hdegoede@redhat.com>,
 	Michael Thayer <michael.thayer@oracle.com>
 Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
-Subject: [RESEND PATCH 2/2] staging: vboxvideo: Use unsigned int instead bool
-Message-ID: <211701e4ae42acd95afb24713314bce5a4c58ecf.1540580493.git.shayenneluzmoura@gmail.com>
+Subject: [RESEND PATCH 1/2] staging: vboxvideo: Change uint32_t to u32
+Message-ID: <a81ed59de19694f34b5c5d183e06007d6cc50d1f.1540580493.git.shayenneluzmoura@gmail.com>
 References: <cover.1540580493.git.shayenneluzmoura@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -89,84 +89,28 @@ Content-Disposition: inline
 In-Reply-To: <cover.1540580493.git.shayenneluzmoura@gmail.com>
 User-Agent: NeoMutt/20171215
 
-This change was suggested by checkpath.pl. Use unsigned int with bitfield
-allocate only one bit to the boolean variable.
+This change was suggested by checkpath.pl.
 
-CHECK: Avoid using bool structure members because of possible alignment
-issues
+CHECK: Prefer kernel type 'u32' over 'uint32_t'
 
 Signed-off-by: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
 ---
- drivers/staging/vboxvideo/vbox_drv.h        | 14 +++++++-------
- drivers/staging/vboxvideo/vboxvideo_guest.h |  2 +-
- 2 files changed, 8 insertions(+), 8 deletions(-)
+ drivers/staging/vboxvideo/vbox_mode.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/vboxvideo/vbox_drv.h b/drivers/staging/vboxvideo/vbox_drv.h
-index 594f84272957..7d3e329a6b1c 100644
---- a/drivers/staging/vboxvideo/vbox_drv.h
-+++ b/drivers/staging/vboxvideo/vbox_drv.h
-@@ -81,7 +81,7 @@ struct vbox_private {
- 	u8 __iomem *vbva_buffers;
- 	struct gen_pool *guest_pool;
- 	struct vbva_buf_ctx *vbva_info;
--	bool any_pitch;
-+	unsigned int any_pitch:1;
- 	u32 num_crtcs;
- 	/** Amount of available VRAM, including space used for buffers. */
- 	u32 full_vram_size;
-@@ -106,7 +106,7 @@ struct vbox_private {
- 	 * depending on whether they react to a hot-plug event after the initial
- 	 * mode query.
- 	 */
--	bool initial_mode_queried;
-+	unsigned int initial_mode_queried:1;
- 	struct work_struct hotplug_work;
- 	u32 input_mapping_width;
- 	u32 input_mapping_height;
-@@ -114,7 +114,7 @@ struct vbox_private {
- 	 * Is user-space using an X.Org-style layout of one large frame-buffer
- 	 * encompassing all screen ones or is the fbdev console active?
- 	 */
--	bool single_framebuffer;
-+	unsigned int single_framebuffer:1;
- 	u32 cursor_width;
- 	u32 cursor_height;
- 	u32 cursor_hot_x;
-@@ -139,17 +139,17 @@ struct vbox_connector {
- 	struct {
- 		u32 width;
- 		u32 height;
--		bool disconnected;
-+		unsigned int disconnected:1;
- 	} mode_hint;
- };
- 
- struct vbox_crtc {
- 	struct drm_crtc base;
--	bool blanked;
--	bool disconnected;
-+	unsigned int blanked:1;
-+	unsigned int disconnected:1;
- 	unsigned int crtc_id;
- 	u32 fb_offset;
--	bool cursor_enabled;
-+	unsigned int cursor_enabled:1;
- 	u32 x_hint;
- 	u32 y_hint;
- };
-diff --git a/drivers/staging/vboxvideo/vboxvideo_guest.h b/drivers/staging/vboxvideo/vboxvideo_guest.h
-index d09da841711a..7a98fb4fb108 100644
---- a/drivers/staging/vboxvideo/vboxvideo_guest.h
-+++ b/drivers/staging/vboxvideo/vboxvideo_guest.h
-@@ -36,7 +36,7 @@ struct vbva_buf_ctx {
- 	/** Length of the buffer in bytes */
- 	u32 buffer_length;
- 	/** Set if we wrote to the buffer faster than the host could read it */
--	bool buffer_overflow;
-+	unsigned int buffer_overflow:1;
- 	/** VBVA record that we are currently preparing for the host, or NULL */
- 	struct vbva_record *record;
- 	/**
+diff --git a/drivers/staging/vboxvideo/vbox_mode.c b/drivers/staging/vboxvideo/vbox_mode.c
+index 79836c8fb909..8a1b117990b8 100644
+--- a/drivers/staging/vboxvideo/vbox_mode.c
++++ b/drivers/staging/vboxvideo/vbox_mode.c
+@@ -311,7 +311,7 @@ static int vbox_crtc_mode_set(struct drm_crtc *crtc,
+ static int vbox_crtc_page_flip(struct drm_crtc *crtc,
+ 			       struct drm_framebuffer *fb,
+ 			       struct drm_pending_vblank_event *event,
+-			       uint32_t page_flip_flags,
++			       u32 page_flip_flags,
+ 			       struct drm_modeset_acquire_ctx *ctx)
+ {
+ 	struct vbox_private *vbox = crtc->dev->dev_private;
 -- 
 2.19.1
 
