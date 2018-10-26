@@ -1,116 +1,106 @@
 X-GM-THRID: 6616381756005154816
-X-Received: by 2002:a63:4d1e:: with SMTP id a30-v6mr2697227pgb.81.1540580655748;
-        Fri, 26 Oct 2018 12:04:15 -0700 (PDT)
+X-Received: by 2002:a24:da85:: with SMTP id z127-v6mr3622873itg.40.1540580634392;
+        Fri, 26 Oct 2018 12:03:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:688a:: with SMTP id d132-v6ls783331pgc.19.gmail; Fri, 26
- Oct 2018 12:04:14 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5eirigfIQeNFP5t5xOHV1UioOImg9bfduOdODkg4QOkLwfe6AGN5UZhb0vGmGW4jQIIpjm+
-X-Received: by 2002:a62:c6c8:: with SMTP id x69-v6mr2698618pfk.43.1540580654789;
-        Fri, 26 Oct 2018 12:04:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540580654; cv=none;
+Received: by 2002:a02:6605:: with SMTP id k5-v6ls930848jac.0.gmail; Fri, 26
+ Oct 2018 12:03:53 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5dAALYfiK9N6CKdSAz+hPr6tpJUkEQ57tisMRXnHpoCnIDkjG65lo1K4p4+pAws7wCL0aJl
+X-Received: by 2002:a02:7821:: with SMTP id p33-v6mr3941628jac.24.1540580633577;
+        Fri, 26 Oct 2018 12:03:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540580633; cv=none;
         d=google.com; s=arc-20160816;
-        b=EKWyFs30zAKmD/ZnOVrZBfxzUD2RScrAL4L+0pA33ZqGJHwkljsQlKQKWXjZUwoQST
-         iGuNPiu0FHewSFdXAANpcpJJUZ8Kw+/MsNsxouA+VLtNik9aLI/MIK9rie/EKVNw3fYh
-         34od9q0AVapimlQrAvltBKEt4CNwxe4SgOQLJyCzVNVMXoOGy7+SvjGBEDuibUdyCUBL
-         4ywumNQ8KD8RzI0FmGwQ4uynM0g6BugnWGx9KDa4BGVKkHUFSNl8Xict9IbOFrS9/7k4
-         X+f5fs2M8Fm9hEfBMXA1lmmVAJnjHjP1vLHr1hgKYbHx9d0AokmHrXEdk0M8UhIy6eU4
-         JHGw==
+        b=gdbI2ewb0+6npYrNm40eyCwDbpDib9ZgL5/WOq9XjAaC1zpAgjkto1ua9GBVETEF1c
+         7p1kJUovPnQRsXbw+YWGngciCkRmljkps/4B+ZsvsZ1b+JJlN3bMvNlT0hneKHK4WhM/
+         TUHTA81VrzGDOs4Yg776fRl6Nx5pADT1skg5Jqe0SEiV4Y/DbJgMws2Q7AHdQNXBU4BV
+         6d/zkWlmxIySpYNpjbdXe+OsKHK8kAnIewImRutFRS/DMxFjjrC9jPDdKQt5AnU2n5k2
+         qMB5mMN+G4ZRZAU9DvQT8RZu8gjFWnFww8yM0jtoyxl9mHBPahm+Yk3xTPX/4JMykCBW
+         qRkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=/T11tt3vJuAf+zMu9ml2T7wwulQeXdHFKE/giNS+b9Y=;
-        b=XlZkj79E+CyUiz16G63GLdz43z9tH/VewKmb1YhVtNq6scyzfB3/9nvE26OSiwksBb
-         I+kj4p50Jb1Y5tzZ9QNJBJql9usEZ6w7YHCkw5ujIoy/gQ0ajYn+njdu69b+FrbmFRSi
-         M+IiDOZt1Rcq7O1hNEdh2u2/NGqW+/x1j8eZ3fzefSpvjpSuVC525fbi/x46BTEBJBWh
-         YKvCkF4aUGtpLY0Ixbh4miFTv5qphQQNqLrzsHzE8BgRkM3KLMgg0O/TR9KttWjZE9mP
-         Bt19kLSoa+7ki54GEAHIUQto9jwdljqSDAWEJI6h4M6sFvHfMdrwq9Aq0q0JII7rknVD
-         vx8g==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=lbOtJ+IXTmF0J4dzVxEShHiifrkDS0lzDb1R83v1wrE=;
+        b=fsQ2wLSMsUxzszTWxoyKj0Bl6vOu74mfW9TTvawDdU8++x5WbesnpuEff0m1ldfa9c
+         JPy//1aTF5RlAapeLI2DKA4rZ26BYToYxUzCGb31ODfKbcr8mmfENc/lZze1WFvOQzpY
+         Q5HwRyn3JJjaJZ+XkKgfcagAi3Lf4ghWIpwLiriIsks9p4v4CxbZqGm9K/JqTcruSQNB
+         upP9pv3JpyT2FsFfJSCj1+SfydaBUt3ET43hMZB9B5kQaN+/jyTvRgJH6mmZAYzW+9Fy
+         MYNJnAvZocF81OSSrJdsUkamIdsVE/wWLiIOF9k3xAds7bJr90ZvVss0SADeCBRJOjcb
+         g/SQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qHDYTRX9;
-       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::832 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HW5wfNi3;
+       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::834 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <shayenneluzmoura@gmail.com>
-Received: from mail-qt1-x832.google.com (mail-qt1-x832.google.com. [2607:f8b0:4864:20::832])
-        by gmr-mx.google.com with ESMTPS id b27-v6si598954pfj.5.2018.10.26.12.04.14
+Received: from mail-qt1-x834.google.com (mail-qt1-x834.google.com. [2607:f8b0:4864:20::834])
+        by gmr-mx.google.com with ESMTPS id 131-v6si205371ita.2.2018.10.26.12.03.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Oct 2018 12:04:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::832 as permitted sender) client-ip=2607:f8b0:4864:20::832;
+        Fri, 26 Oct 2018 12:03:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::834 as permitted sender) client-ip=2607:f8b0:4864:20::834;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qHDYTRX9;
-       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::832 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HW5wfNi3;
+       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::834 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x832.google.com with SMTP id u34-v6so2458946qth.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 26 Oct 2018 12:04:14 -0700 (PDT)
+Received: by mail-qt1-x834.google.com with SMTP id r22-v6so2447155qtm.5
+        for <outreachy-kernel@googlegroups.com>; Fri, 26 Oct 2018 12:03:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=/T11tt3vJuAf+zMu9ml2T7wwulQeXdHFKE/giNS+b9Y=;
-        b=qHDYTRX96Vz1IhGg0mNqLOp4qg9SAYYotElg05imu/bgVQf7AaXZqCHxT0N9kkxJbQ
-         3RIHrqQjZsD4WFOhncd5Rhl2+NKzliCy0/52D+I/KaoN87LmIy5dGruax6w3rRpYNr8G
-         8/hndggwVjxaR6dHxp4bpEDywcOsbLh8wcEtQi+2xQ94NdrBWRUbXk0LdxpdW6jmmg6x
-         ftneUr9ySdAo51nX1Ix/jqSAWU/iAt+srhLJ6f3CC9exzCYwRA7X1WvrzXgZwUj/Ne6x
-         H8dxLZNy+LFo6kfBYJgEY3B40yYhtpz4Yq0WCp6JpjOaOetiEJPlRzVsiL5GQu/3KhAn
-         gm0w==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=lbOtJ+IXTmF0J4dzVxEShHiifrkDS0lzDb1R83v1wrE=;
+        b=HW5wfNi31M6tS0Cpdyd9A3yrqmghKzZHmymENyM6pWIbGiyVUNDtWlJ9g1/tP6+KF+
+         4RQopEqZaz1KamdvkcxbcWo9HAK4fd9NXRd+pN+ZYrNK2p1EijPQ48YBC6t3X0lLSDrM
+         Q1xFqzuXAl1kz/BoncfwGpsoH2mSFwMHXO/NKfwk/DXok73d6p7lbImeQtHGO+E8rfg/
+         9OegMV/IrhQcUFHGCAiJVl1iotLGTQ5IUiV0VSDhec8+5+rKqetZF5W4+plhhssXijkv
+         UV5Y+HOIBeR3rPuOos+KqWf8CkyHop9GdjxMbeM0p1aVsNinU1u/F3N9H9GPpOe4i7fr
+         hsLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=/T11tt3vJuAf+zMu9ml2T7wwulQeXdHFKE/giNS+b9Y=;
-        b=LQt6N7C2oq/jVo8VCyjJmzi/kq2Gy6BKDAsCWaUJzEu2DW1FaF2/NCnW/oxsC3d2OB
-         sGDP21JHatU00+aPYpV1rem9p/DVDIvM6ljQTJchYEYDyd73IduVnp5vELszvympbHEV
-         dj32Xsw73rwtj37NGuvNusq6ACfrNWaeEw0iKF1KhlKpJWE4Q4lhuLA4MxHFafb9dIxm
-         QTAIfc/BW2LWcIlVulrQ5DGCY+8a9jIONdICyvCS6dmkTRiIeIHFuaL6ys0FcwujM3RX
-         WQbtR6ejDWSt4bT17qbsikRaq/bV9cAjB8FprAmt+gUiPU/Bf/Rm9AtYc0Y1PLcW2ot1
-         4chA==
-X-Gm-Message-State: AGRZ1gImtgrcpcyO5KCOuoe23N1U4opVOZE5CDdBUo+ZUnXTHQHN0hzi
-	66tpZyJTzkjzrAuW5KuaaDA=
-X-Received: by 2002:aed:2166:: with SMTP id 93-v6mr4544406qtc.24.1540580654360;
-        Fri, 26 Oct 2018 12:04:14 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=lbOtJ+IXTmF0J4dzVxEShHiifrkDS0lzDb1R83v1wrE=;
+        b=Bo5Q/9nLpMNfnus++YsliC4GpE7mKl3A0AwicQZ4qHv4ja2Gi5BIo4kQFfN/FRSaUC
+         5TE4rxHNDZJyI0EdXGLHeYTmefQg9gR9OVIC43eC5yxtSvfYz0V33gKYJU5DoXz8KZa4
+         2IbCnMj0QpiExZniccVRLQ8yfK432ZpYAXyw0RgFAWIVoI8nye5MsiW8qcAK+eWkNhc0
+         Xdgi3RW6qWXgr99ktLajgGDf44EzcAP89ZM4OFtNNkDS2KgakyR517lwNrO7h647ZMCV
+         KfiwsXED+vrOhFT936Wo03kRS+OS8BMf0E92HNOLEseEnyjuYikR6fQ5oALsy80W38Hq
+         QrlQ==
+X-Gm-Message-State: AGRZ1gKSAsFYfBqduwruZkWHcl5QI5pxlDbgpBc+TPLx7hWfRcqmffQw
+	LLrhzcuvjPDque99uWie1Dk2DWiadw8=
+X-Received: by 2002:a0c:98a6:: with SMTP id f35mr4291203qvd.224.1540580633136;
+        Fri, 26 Oct 2018 12:03:53 -0700 (PDT)
 Return-Path: <shayenneluzmoura@gmail.com>
 Received: from smtp.gmail.com ([143.107.45.1])
-        by smtp.gmail.com with ESMTPSA id s21-v6sm1825308qkg.79.2018.10.26.12.04.12
+        by smtp.gmail.com with ESMTPSA id u13-v6sm10677197qtu.90.2018.10.26.12.03.50
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Oct 2018 12:04:13 -0700 (PDT)
-Date: Fri, 26 Oct 2018 16:04:10 -0300
+        Fri, 26 Oct 2018 12:03:52 -0700 (PDT)
+Date: Fri, 26 Oct 2018 16:03:48 -0300
 From: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	Hans de Goede <hdegoede@redhat.com>,
 	Michael Thayer <michael.thayer@oracle.com>
 Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
-Subject: [RESEND PATCH 1/2] staging: vboxvideo: Change uint32_t to u32
-Message-ID: <a81ed59de19694f34b5c5d183e06007d6cc50d1f.1540580493.git.shayenneluzmoura@gmail.com>
-References: <cover.1540580493.git.shayenneluzmoura@gmail.com>
+Subject: [RESEND PATCH 0/2] staging: vboxvideo: Remove chekpatch issues
+Message-ID: <cover.1540580493.git.shayenneluzmoura@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1540580493.git.shayenneluzmoura@gmail.com>
 User-Agent: NeoMutt/20171215
 
-This change was suggested by checkpath.pl.
+This series cleans the following checkpatch.pl issues:
 
 CHECK: Prefer kernel type 'u32' over 'uint32_t'
+CHECK: Avoid using bool structure members because of possible alignment issues
 
-Signed-off-by: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
----
- drivers/staging/vboxvideo/vbox_mode.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Shayenne da Luz Moura (2):
+  staging: vboxvideo: Change uint32_t to u32
+  staging: vboxvideo: Use unsigned int instead bool
 
-diff --git a/drivers/staging/vboxvideo/vbox_mode.c b/drivers/staging/vboxvideo/vbox_mode.c
-index 79836c8fb909..8a1b117990b8 100644
---- a/drivers/staging/vboxvideo/vbox_mode.c
-+++ b/drivers/staging/vboxvideo/vbox_mode.c
-@@ -311,7 +311,7 @@ static int vbox_crtc_mode_set(struct drm_crtc *crtc,
- static int vbox_crtc_page_flip(struct drm_crtc *crtc,
- 			       struct drm_framebuffer *fb,
- 			       struct drm_pending_vblank_event *event,
--			       uint32_t page_flip_flags,
-+			       u32 page_flip_flags,
- 			       struct drm_modeset_acquire_ctx *ctx)
- {
- 	struct vbox_private *vbox = crtc->dev->dev_private;
+ drivers/staging/vboxvideo/vbox_drv.h        | 14 +++++++-------
+ drivers/staging/vboxvideo/vbox_mode.c       |  2 +-
+ drivers/staging/vboxvideo/vboxvideo_guest.h |  2 +-
+ 3 files changed, 9 insertions(+), 9 deletions(-)
+
 -- 
 2.19.1
 
