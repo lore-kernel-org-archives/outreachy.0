@@ -1,87 +1,87 @@
 X-GM-THRID: 6616747745212366848
-X-Received: by 2002:a0c:9dc9:: with SMTP id p9mr3996943qvf.47.1540581904228;
-        Fri, 26 Oct 2018 12:25:04 -0700 (PDT)
+X-Received: by 2002:a1f:acc9:: with SMTP id v192-v6mr4448928vke.18.1540581864242;
+        Fri, 26 Oct 2018 12:24:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac8:21a1:: with SMTP id 30-v6ls1135735qty.11.gmail; Fri, 26
- Oct 2018 12:25:03 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5eOxByo24DhAAdgSoVD+3mfuYau/fr9Q/KRPH4ki4CzIw0DOpxNR7C0Y7XyvMkzzF8NC1da
-X-Received: by 2002:ac8:50a:: with SMTP id u10-v6mr3962873qtg.31.1540581903578;
-        Fri, 26 Oct 2018 12:25:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540581903; cv=none;
+Received: by 2002:ab0:9eb:: with SMTP id e43ls522802uah.2.gmail; Fri, 26 Oct
+ 2018 12:24:23 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5elVYWJo5l3+ssby4DbgGYR08H8xXSM1aaIedVlwtk1+g1Pyj/PzgLeCYhTMk6/K+3vfQgZ
+X-Received: by 2002:a9f:2e10:: with SMTP id t16mr353670uaj.24.1540581863643;
+        Fri, 26 Oct 2018 12:24:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540581863; cv=none;
         d=google.com; s=arc-20160816;
-        b=xZ/w5RQOnoLxkWdotuvSXCoHas3VrUpbWOj+8Kwxb6MJCQrDMo7hEH8mvpyIzWr0CL
-         B11m94IFLm/UX9SYdZSSx70FXq7iSLw/oBzlJ10T6pNFXjIBsd5rO2xJW1bhs4OHBKko
-         tJpzFHrjF8necKRZ/I02T7YeKTSxrguCBDSlaUBmAZbuwdWDAjqtAetf0Byi+LA18/uZ
-         zKMOO6jnUMmFy9xkBC5ynQEt3mqJZ3kmYHu4HcwsbjnFu0CxIXiD0FyA+/CPEA0Gqymx
-         CyxD2KKJjvQFEt14ru1JoeeZxaH9Ax4u06UEdC9+qjH/WT2oWRwVJj/dfb9fsc+0Ojk5
-         HK9A==
+        b=GSEoxgd5tgAoQs477GDj/nJk5RmehC+fHQSPMhFYyuViN0+HA9Y6RwAsoZTIUjsdPW
+         9Jbv/zf5bwgQ5mQPZl+RGGiFyRz4+WXmzqRbDte+2FR+4cVkYguvMk1mcLIQ0FKmihHx
+         nWIb8P1qhj+tMBllDL6I8WY+BQXmN1Hqhpy0u2hGKP1RtqOgSSZWdKbqMqM3pcu1XLAu
+         scl2TfGmaPGMyLgSe/nZD0NFOVLghbwjgg7weNNlAMuBVziva5s8jYf+5ndyxOqMv0za
+         IMwefKeGyvx4k+8F1o3yzKochih9NZO+JGzJZ2ZquDdSggpBmrfjYN1SC0g3NOFrAAYo
+         BF8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=oG0AzlyfGvjB8pHJ3pxUdHABNxHH12Ws4GlnVqXoYBM=;
-        b=Fa2v4x+tzm9Fs6dhKp3EdciVxrI7UUmq5hJ+Z/F+oSohtPlPZQUtObZvidkmWMF/AK
-         B04e9ZuKY+fBVunZF927muucw7L0yWRIOJkFg7MpubazlMS5uHW+1Z+8HHcyMKDxvtvV
-         vlaP5uboNzE1kUcAWJnyKB46VRRJv4ipORbZ8JAgLg76Z30bl72/QcOcCY2t8AfSmO6Q
-         /H6hygKYA2JVlXbpIkaJxFrhehnZxwGrvnTi/zpEZKfF2R1diO9lH37Lcc8OFlmBqxnu
-         Py20mti89ru3/4B1YWtKtgLEtuZ8G0iXhJ9MoxzvM2zfJaYH8OixRAlrjPipR2fthzGs
-         m94A==
+        bh=hCzofeQ0bxOb9JH+yn6Hps680QgMg5RDZ0Eg84Xgy8k=;
+        b=ufS7CdcWEcDjgNFhCaereT/eOU6JP2kAVPvmJya/ZsKaDaztzZ1W5Z3U68aMPgp0SS
+         +sH8XCkJbPyj+bflWWqsle5GpJvhxfKmCrijv7ia/Q/i2XWVnpIEEtTnFavvVh9i4HXz
+         snM9bOz82HoN80uuiCpyJIHdun4rJ6e566IKBpt7BwK8FSuPncCBaJib7JhFzUzpyt1D
+         SysJBDdJO5SuWibgjAXRTlHTWVsoC+arnk4tGGOHy6fkJtavHgaKHknHPWuuJSxVeAM6
+         VrK4M6BBjWofq4jnLuO6YQN8qpBH6bkrZa9FKIjHsnvAYhhCf/uK3I02NNVoqUUvqi1m
+         pc2Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Tb25eA06;
-       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::744 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XamnmrYG;
+       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::82d as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <shayenneluzmoura@gmail.com>
-Received: from mail-qk1-x744.google.com (mail-qk1-x744.google.com. [2607:f8b0:4864:20::744])
-        by gmr-mx.google.com with ESMTPS id o2-v6si633670qtc.5.2018.10.26.12.25.03
+Received: from mail-qt1-x82d.google.com (mail-qt1-x82d.google.com. [2607:f8b0:4864:20::82d])
+        by gmr-mx.google.com with ESMTPS id w9si799928uac.0.2018.10.26.12.24.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Oct 2018 12:25:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::744 as permitted sender) client-ip=2607:f8b0:4864:20::744;
+        Fri, 26 Oct 2018 12:24:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::82d as permitted sender) client-ip=2607:f8b0:4864:20::82d;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Tb25eA06;
-       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::744 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XamnmrYG;
+       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::82d as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qk1-x744.google.com with SMTP id n12so1353138qkh.11
-        for <outreachy-kernel@googlegroups.com>; Fri, 26 Oct 2018 12:25:03 -0700 (PDT)
+Received: by mail-qt1-x82d.google.com with SMTP id u34-v6so2532089qth.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 26 Oct 2018 12:24:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=oG0AzlyfGvjB8pHJ3pxUdHABNxHH12Ws4GlnVqXoYBM=;
-        b=Tb25eA06iteRptHaJBAaGhr2fpOwSPNGcb3DIpKXOwxSrvOdTCVSa58rqeJtZPnlGc
-         BNId+QdHc1g9q2z7yOqG0gseEQqPxqlizUObJd7TvojPodxrfZubSI6R33JZ9yLAc/Y5
-         5CfXQ6pf0FesKFob4LXYdLyVVaQoFWgqGOsijKZPmCT2i6tBy0RJ51LmpbvyjtwxIqfK
-         VhKAsultR3p50RnwcIq339FIHuyE+Me1TbwNtyih3htDLgfRbEEHzlpKo/GGUTZbosUm
-         wS7nbyeDN+UMmN+ceOFZsslWOtK99sb27GD+Ea0ESiQ97rKkFBTQ40iCmfvuVfg1lJPu
-         RS9g==
+        bh=hCzofeQ0bxOb9JH+yn6Hps680QgMg5RDZ0Eg84Xgy8k=;
+        b=XamnmrYGwDIsjzdsvUjKhUltvKqjRdvbLCnw93m0v+KYMJAD786RzrU5c+zJ2fPHz5
+         b/lLC7uuTjh8Xjqd70Q+A4UO+hdyWZRhA/djRZ0qLe/vyAwup0Ou0tqCVi675ViSIGed
+         upPGQEfZBJTewOxhXjXsFdEb5p4IwSYWdQGjSl72dQ6l4dfYECQUEQjCs0H5ooJ9lzkh
+         TxF36w6S/e6k5RKOGIpxSx6gxlNUsJEJEX21eZ1LgwrzlkkLkTnHD3xsDarXqQDSPaYH
+         9F6dRwcCfAvViddG7b/5oE1OTCeKmz7afe8eF6H4weKpEb/irVIYW5NO3ZxZshAKMjfU
+         t1Dg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=oG0AzlyfGvjB8pHJ3pxUdHABNxHH12Ws4GlnVqXoYBM=;
-        b=VpllUlsV7oy2APGQPcrZGSIpA/pd4wWuvI+IyUOGOF6ta27AycOCJtqYhcqOu8DvWc
-         AcQ3PdbU95vBa/tutLXT+Q3RLHc3Y2pAZELTvl0a6s11m+pKKsJJkgElHYDoGjYAfEVm
-         5brqNXq44S53TjhGIMczFx+baKlGChveDRu9bvzyRhh7ENm758ePzspSPf6LWm/En67r
-         0G6tnXEjqd2UtHxjyBFCqyBRTWYUAWdQj1if2pNS0Y2yliIkLSHWpVTBLDD7UpK4J8lz
-         gePo1U1TxOymnGeSz+UzvJgEWUd+sELGFjxvIXgu+NucXT72uWrN6FHsGm+aK3NrI8TP
-         xd0A==
-X-Gm-Message-State: AGRZ1gLHv7zrRE3N10rDy2oMEIvAiemdyX4k1X2KrEhVPK6PjNgtJ1Se
-	+dKDVlyU2kxVJiI4Nxq75mc=
-X-Received: by 2002:a37:5003:: with SMTP id e3-v6mr4397179qkb.102.1540581903262;
-        Fri, 26 Oct 2018 12:25:03 -0700 (PDT)
+        bh=hCzofeQ0bxOb9JH+yn6Hps680QgMg5RDZ0Eg84Xgy8k=;
+        b=lq7ZjTlEXGIqM9jBGQcbd37weMlPSGOUaJE9HQzB7u6qSkds2XTxq3eMZCxT6i2uQF
+         ziUZCM2FQqyIEET/BLgWP3UTC9OfQo/PbeF0L6xdbr/MCsMwb0y3UtjgpzPC9O8E/d05
+         XEGC6Tyt+6pxe+A1pHysCbMoNYjImzshbIeoR9sApW70gXyHslPWp2G4S8QchesH/HMs
+         h2yn6VdOVejOf6BhG4x/DI6GZynWA92gtSKmtXo2eqmlett5ehMtjb4+VGt9QJXgEmV8
+         3zW9G5Y4onT5YqedvnJjg5xJrgXiZjx8JE4hBQ84tKqpnZXdY8GdASsjU26Un20Rf7Va
+         JrLA==
+X-Gm-Message-State: AGRZ1gJEQMZGG7sGx2CKe4Zmkn84ov9NkgwvyoAJfBOkNYj/wtqwX+Cd
+	9GQ8qC9PbYI7AATUc8IOulc=
+X-Received: by 2002:a0c:948e:: with SMTP id j14mr4501328qvj.155.1540581863311;
+        Fri, 26 Oct 2018 12:24:23 -0700 (PDT)
 Return-Path: <shayenneluzmoura@gmail.com>
 Received: from smtp.gmail.com ([143.107.45.1])
-        by smtp.gmail.com with ESMTPSA id c79-v6sm11289917qka.83.2018.10.26.12.25.01
+        by smtp.gmail.com with ESMTPSA id y144-v6sm4080661qka.7.2018.10.26.12.24.21
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Oct 2018 12:25:02 -0700 (PDT)
-Date: Fri, 26 Oct 2018 16:24:58 -0300
+        Fri, 26 Oct 2018 12:24:22 -0700 (PDT)
+Date: Fri, 26 Oct 2018 16:24:18 -0300
 From: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
 To: Dave Airlie <airlied@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
 	David Airlie <airlied@linux.ie>
 Cc: virtualization@lists.linux-foundation.org,
 	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCH 6/6] drm/qxl: Use 'unsigned int' instead of 'bool'
-Message-ID: <fcd9d7ea7eec1ac6a3ad9ad16e0fc9ef13c089fd.1540579956.git.shayenneluzmoura@gmail.com>
+Subject: [PATCH 5/6] drm/qxl: Add space before open parentheses
+Message-ID: <1ab3ba05c140aae01bde66f73ff1f3b78bf7dfb3.1540579956.git.shayenneluzmoura@gmail.com>
 References: <cover.1540579956.git.shayenneluzmoura@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -89,53 +89,30 @@ Content-Disposition: inline
 In-Reply-To: <cover.1540579956.git.shayenneluzmoura@gmail.com>
 User-Agent: NeoMutt/20171215
 
-Use 'unsigned int' with bitfield instead of 'bool' to avoid alignment
-issues and remove checkpatch.pl check:
+Add space to remove checkpath.pl error:
 
-CHECK: Avoid using bool structure members because of possible alignment
-issues
+ERROR: space required before the open parenthesis '('
 
 Signed-off-by: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
 ---
- drivers/gpu/drm/qxl/qxl_drv.h | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/gpu/drm/qxl/qxl_display.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/qxl/qxl_drv.h b/drivers/gpu/drm/qxl/qxl_drv.h
-index d78bcb95df3e..14d3fa855708 100644
---- a/drivers/gpu/drm/qxl/qxl_drv.h
-+++ b/drivers/gpu/drm/qxl/qxl_drv.h
-@@ -88,10 +88,10 @@ struct qxl_bo {
+diff --git a/drivers/gpu/drm/qxl/qxl_display.c b/drivers/gpu/drm/qxl/qxl_display.c
+index 5b00e0f26de1..2ce9a8dcec84 100644
+--- a/drivers/gpu/drm/qxl/qxl_display.c
++++ b/drivers/gpu/drm/qxl/qxl_display.c
+@@ -940,8 +940,8 @@ static enum drm_mode_status qxl_conn_mode_valid(struct drm_connector *connector,
+ 	/* TODO: is this called for user defined modes? (xrandr --add-mode)
+ 	 * TODO: check that the mode fits in the framebuffer */
  
- 	/* Constant after initialization */
- 	struct drm_gem_object		gem_base;
--	bool is_primary; /* is this now a primary surface */
--	bool is_dumb;
-+	unsigned int is_primary:1; /* is this now a primary surface */
-+	unsigned int is_dumb:1;
- 	struct qxl_bo *shadow;
--	bool hw_surf_alloc;
-+	unsigned int hw_surf_alloc:1;
- 	struct qxl_surface surf;
- 	uint32_t surface_id;
- 	struct qxl_release *surf_create;
-@@ -128,7 +128,7 @@ struct qxl_output {
- struct qxl_mman {
- 	struct ttm_bo_global_ref        bo_global_ref;
- 	struct drm_global_reference	mem_global_ref;
--	bool				mem_global_referenced;
-+	unsigned int mem_global_referenced:1;
- 	struct ttm_bo_device		bdev;
- };
+-	if(qdev->monitors_config_width == mode->hdisplay &&
+-	   qdev->monitors_config_height == mode->vdisplay)
++	if (qdev->monitors_config_width == mode->hdisplay &&
++	    qdev->monitors_config_height == mode->vdisplay)
+ 		return MODE_OK;
  
-@@ -229,7 +229,7 @@ struct qxl_device {
- 
- 	struct qxl_ram_header *ram_header;
- 
--	bool primary_created;
-+	unsigned int primary_created:1;
- 
- 	struct qxl_memslot	*mem_slots;
- 	uint8_t		n_mem_slots;
+ 	for (i = 0; i < ARRAY_SIZE(common_modes); i++) {
 -- 
 2.19.1
 
