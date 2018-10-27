@@ -1,210 +1,104 @@
 X-GM-THRID: 6616097415299596288
-X-Received: by 2002:a37:9786:: with SMTP id z128-v6mr5731313qkd.39.1540635309109;
-        Sat, 27 Oct 2018 03:15:09 -0700 (PDT)
+X-Received: by 2002:a37:f4b:: with SMTP id z72mr908853qkg.20.1540635174171;
+        Sat, 27 Oct 2018 03:12:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac8:1931:: with SMTP id t46-v6ls1726074qtj.0.gmail; Sat, 27
- Oct 2018 03:15:08 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5eMfEHG/6RoznlsW4S2tRv3XIHRd+NAAUn5UJZDZHF1a1t7UaOoxufniD+fN2XH5dOJa1eY
-X-Received: by 2002:ac8:744f:: with SMTP id h15-v6mr5912239qtr.52.1540635308624;
-        Sat, 27 Oct 2018 03:15:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540635308; cv=none;
+Received: by 2002:a37:4a83:: with SMTP id x125-v6ls1672756qka.12.gmail; Sat,
+ 27 Oct 2018 03:12:53 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5da6yzfZVLLUN5kVHs/7zABSBBcaVZkwgkRzUsoShTQ/7hFNojZOWv9Pog/51+sxacd/bem
+X-Received: by 2002:ae9:c306:: with SMTP id n6-v6mr5953773qkg.0.1540635173529;
+        Sat, 27 Oct 2018 03:12:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540635173; cv=none;
         d=google.com; s=arc-20160816;
-        b=y3juuWWNAi71GgWbsROjNI1NFFnO7/3Lv7u6uMbB/RGfDfxEFNUzcY34AnLYj9dAEn
-         mhPYIaCQ+h6SVU852gRi3wBmipi2s+ieJk9SRgYOvh/JIqbv4cueu2DUQXBAkcgknaP9
-         qZhWD41+R6HwjWZHJfGjpBQ808wp+bmMJEOYpHSldaDnGTThXBAeRrvwIHr6CD3niNO5
-         WTNZS79U5xgO76SImxxmM5zmpDzmtOee2sEl+D3LTKhlcL1kkeIGL09NHOSgkUDy4ZOr
-         cfMUNa/n6dNC0aiZHDHbsE99z+p1MZuJq8T0soBnqezkN8jrO9Fv6O0LOrcmpM8cqoJI
-         zyvA==
+        b=XeH4Gg55oJlISt03mlRI3NlSlbQKV8WkhCZv2YGgMh9yDKftDXpeDFogYa4cSGLkl1
+         1bTDw7Vf5vmPxC+x7yUYQv8typ3JVVRQMV+EjvV9LFkjGxsex2XLlKlcOxg89q51IUDM
+         RowbDijerDvXD+DVyH2RgQLn42NqSP/Kxua6WiGo7aHCGXE4nJEhBM2zekmG7eenbKED
+         ur4c82WlOYxtHxWlZQcdgXiDPeV5Uq1dFjFh4Nyr8ptOIo7xA+KBWEdmpredtGrjJFT3
+         INOoN7n9SfZiKoTJhp8mnPY6d8dBwPjfZjXLJ8m2qlowK2bMW/PxgK4UM1CrUKRDXHkE
+         Y9cQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=On4/QuprfAjyrBSWAGAjr3EOMOShVwU0n1Nhmk7s5f8=;
-        b=fPeYfXmMh0CbuQwO9DDVIoH/QxLa+a1Nwka2w2Bh7lvtmlr/1y1OdW+KNZeMgo0kEA
-         Wqliva4z+eCQ0CaGA6oAqRwR0jvl2BkpNXViDAhHkVoBja3BambIk9yCLMTWN2QAUrbt
-         BSE3Wi3VBMkPzBHqHroZCtMQfg9wfsecCbNYyu8xsjzx42DeBQ+2ufwR2rNy9xcoYDFa
-         63vhDJS8S6MN63F0apdhfnylx02+/lFSjgAGP3YkLYRcQj3GLXmGqZdLPKDGobwaWqZV
-         bG1uXFVs2njlo1psgBze1O9+1XNT5e7IcjsPrdMJdpSLTqWX280PMKByG/gYMSfLB92T
-         mdpw==
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=rgt6mhQiDSAM0HDOhyd5G2yso9ixBO7rk3KTPKSvZnU=;
+        b=n0YS0s5U58h2I8Quu3Mn4z6XGvb6P99T3xiobhmGdgiVKydmRha3Vw+WHh8vbeKBdp
+         erJjKDmngnuF2+4nm0urFevUJR8B43CQ4cWxAU6+6bw3greBBpHXd8hggs4fXiIAwVyu
+         Js9RHXDNVVnvMtzqP7zq64DSuq5trq4z2RYW4BaOpBGn5KGkKOTFQWnCGgRTAqygyb1h
+         9cY+53iXZ003mvOlBTym49W6ivSKdGwNsr2tzhw2VmOpN2UGge9S/zwprGd4u90ipOLo
+         zJ8u/vm04/um0o9ji9EsY4K83i2BKYZ5judjw/v6p898/C3ZV5YC3iaqJ2rq+hCFchum
+         gqTw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="kReyst/t";
-       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Hu2wsoDN;
+       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <m.maya.nakamura@gmail.com>
-Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id x41-v6si664788qth.2.2018.10.27.03.15.08
+Received: from mail-pl1-x641.google.com (mail-pl1-x641.google.com. [2607:f8b0:4864:20::641])
+        by gmr-mx.google.com with ESMTPS id x41-v6si664662qth.2.2018.10.27.03.12.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 27 Oct 2018 03:15:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
+        Sat, 27 Oct 2018 03:12:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) client-ip=2607:f8b0:4864:20::641;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="kReyst/t";
-       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Hu2wsoDN;
+       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x441.google.com with SMTP id f78-v6so1739909pfe.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 27 Oct 2018 03:15:08 -0700 (PDT)
+Received: by mail-pl1-x641.google.com with SMTP id n4-v6so1048622plp.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 27 Oct 2018 03:12:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=On4/QuprfAjyrBSWAGAjr3EOMOShVwU0n1Nhmk7s5f8=;
-        b=kReyst/tj6nmmaJ4wbNovA7PVNejiFTCuDkrwa3OGlyISo7A1XgS8hrs78UA8A4GGs
-         P/xVzUVqzjpz78WxxMKWAjF+zt9TS+yRqFnGJyEfOXHKaqUrvl4IIc7RO+elm3kcqm+y
-         y1DfhfttLR3Ii5CxqiDstlHtjJB4oH53fDoYnNqC6cSBA1SgyYf+c2yPIYK2fow2urim
-         mRmzjDdKY8RpZAyfezaT6WTKgjXgR5OwvFNCgDVxA0uYejby33gav1cPesbuxEzSeHZj
-         lN3+bSrYScdeRCgHhpKDnWn3qffFI+MIBR2DnTC4KTVhpbZXYrSyOZKL8L1M3gReS/RW
-         hwEA==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=rgt6mhQiDSAM0HDOhyd5G2yso9ixBO7rk3KTPKSvZnU=;
+        b=Hu2wsoDN2uwTJ68NfHxle3B2m1HZFjdPeZcQI10K3jWRZq8aEveVSpe5lC/nJbeLuK
+         FtKdxobLGlnQBT+fjV597BEzlYJJpl/Z40foAc7bxmksqk2F4JMF/X29dP1YQKL+J493
+         ZWgMQWTROZRm8QXIYNXXR+1XuJK6gMtFyd5+LoySbK0opJCAnSFd8qqqJgWZCdcexoSk
+         /mxFFXPBrsAklJqUTWLGvBOHMnGmBZd/Mabi7SWYkd1eQ1PXA3Vyde77dJkDocM/oRg2
+         H3gwG97YLohyNiLT9ppUDY1vH1rplUhr06oW36s5ePHkHGw1wCCUJrgAPqRFaPX20VDO
+         EKwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=On4/QuprfAjyrBSWAGAjr3EOMOShVwU0n1Nhmk7s5f8=;
-        b=VJJiP8rSsWAGGeATqO3X5ao38J9jtJZVVr5XXrnUbCFERAMmrPnEDvN2yqohMHlUqP
-         5TUYclhzO/TvGzTFIaDJ/CS8x3+p9+xUihy5wDdu4U/tk8ve7UjjpE1NpQLuGxeuMUN1
-         UMS09lYeR0bYr8PL7OaBkrbU+/S2CizNPyD4l/5uh9BLkPDug3abvplFqAITonR62uXM
-         DpA03PaidGSYRYmyNF//20uHiatcWBSnICVuXGzlgtnzqkOmHI6YNvUQMBmF3RS6QcjG
-         3P/MG+O0bAjOEqikjId3S8Olqz1d4jYc4Wl0LWcgOnjzVY6sFX8As4rflcjHtA084lOr
-         AtQA==
-X-Gm-Message-State: AGRZ1gLL96FDZw7YpsZQcL2vq0wW00LoLH+kMByJAY6CWgaSvBT+X7V9
-	+fTxgoOJC5UEh/O2+l1sL8G/Z0F0
-X-Received: by 2002:a63:b90a:: with SMTP id z10-v6mr6665369pge.221.1540635307568;
-        Sat, 27 Oct 2018 03:15:07 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=rgt6mhQiDSAM0HDOhyd5G2yso9ixBO7rk3KTPKSvZnU=;
+        b=F0gi8OvJyWz+1ZW1mqepXABOeHUlqKXtSCAdpSz42RWyIO3eImbCuF+MEHuJDRvrsz
+         5/oao7exd802ePU5gM0rfQic+QpEWoAqgPJVmHH33I+AvtwwrEQUM2uGVBV/2NDmOnkE
+         PArmsd/xlclT1xZQ/FP2BoKUvSOTXSoAxr2EncUZu8SC73huU+QUxHKn4ily+AnCcw9G
+         RCUZCSdYYCfH8gKqH6j05YGilJSIdWDUBz7VULdWIUU/5DccSpfMmdGPvOrYpUj6PD8l
+         zlTFG7XRnlP3TtRpvldbKBhF4MZlomQL4X2MlvXt30cMoqnlPC8QSPf8fkLpZ/PXACn/
+         jdFg==
+X-Gm-Message-State: AGRZ1gIjhzH48T87QMabqVsF857Hn6L452VOmkB7qpArc47qUnoAc4xu
+	6p3fQCTX3KmQqdLap9wgBBHwK0iE
+X-Received: by 2002:a17:902:6bc9:: with SMTP id m9-v6mr6941351plt.106.1540635172541;
+        Sat, 27 Oct 2018 03:12:52 -0700 (PDT)
 Return-Path: <m.maya.nakamura@gmail.com>
 Received: from k-vBox (50-47-85-193.evrt.wa.frontiernet.net. [50.47.85.193])
-        by smtp.gmail.com with ESMTPSA id x36-v6sm13732413pgl.43.2018.10.27.03.15.06
+        by smtp.gmail.com with ESMTPSA id g123-v6sm36345646pfc.67.2018.10.27.03.12.51
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 27 Oct 2018 03:15:07 -0700 (PDT)
-Date: Sat, 27 Oct 2018 03:15:03 -0700
+        Sat, 27 Oct 2018 03:12:52 -0700 (PDT)
+Date: Sat, 27 Oct 2018 03:12:48 -0700
 From: Maya Nakamura <m.maya.nakamura@gmail.com>
 To: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 1/3] staging: rtlwifi: Remove function that only returns
- the second argument
-Message-ID: <c06674447976d2ed6900e7d9c2ccb92fa67e7104.1540632666.git.m.maya.nakamura@gmail.com>
-References: <cover.1540632666.git.m.maya.nakamura@gmail.com>
+Subject: [PATCH v2 0/3] staging: rtlwifi: Remove unnecessary functions
+Message-ID: <cover.1540632666.git.m.maya.nakamura@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1540632666.git.m.maya.nakamura@gmail.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 
-Because the odm_signal_scale_mapping function is only called to return the
-second argument, remove the unnecessary function and change the statements
-that call it, including removing unneeded braces and adding a blank line.
+This patchset removes functions that only return zero or the second
+argument. It also removes the functions that are not used at all.
 
-Note that removing casts (u8 to s32 and back to u8) will not lose
-information because the value converted should be between 0 and 100.
+For version two, changes are applied based on Julia's feedback and
+checkpatch results. Other modifications include braces and spacing.
 
-Signed-off-by: Maya Nakamura <m.maya.nakamura@gmail.com>
----
-Changes since v1:
- - Remove casts to u8 and a note to the commit message.
- - Remove unneeded braces from if-else statements.
- - Add a blank line after an if-else statement.
+Maya Nakamura (3):
+  staging: rtlwifi: Remove function that only returns the second
+    argument
+  staging: rtlwifi: Remove function that only returns zero
+  staging: rtlwifi: Remove unused functions
 
- .../staging/rtlwifi/phydm/phydm_hwconfig.c    | 55 ++++++-------------
- .../staging/rtlwifi/phydm/phydm_hwconfig.h    |  2 -
- 2 files changed, 17 insertions(+), 40 deletions(-)
+ .../staging/rtlwifi/phydm/phydm_hwconfig.c    | 107 ++++--------------
+ .../staging/rtlwifi/phydm/phydm_hwconfig.h    |  12 --
+ 2 files changed, 20 insertions(+), 99 deletions(-)
 
-diff --git a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
-index 4bf86e5a451f..c71ac1276ebe 100644
---- a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
-+++ b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
-@@ -477,18 +477,6 @@ static u8 odm_query_rx_pwr_percentage(s8 ant_power)
- 		return 100 + ant_power;
- }
- 
--/*
-- * 2012/01/12 MH MOve some signal strength smooth method to MP HAL layer.
-- * IF other SW team do not support the feature, remove this section.??
-- */
--
--s32 odm_signal_scale_mapping(struct phy_dm_struct *dm, s32 curr_sig)
--{
--	{
--		return curr_sig;
--	}
--}
--
- static u8 odm_sq_process_patch_rt_cid_819x_lenovo(struct phy_dm_struct *dm,
- 						  u8 is_cck_rate, u8 pwdb_all,
- 						  u8 path, u8 RSSI)
-@@ -748,16 +736,10 @@ static void odm_rx_phy_status92c_series_parsing(
- 	 * from 0~100.
- 	 */
- 	/* It is assigned to the BSS List in GetValueFromBeaconOrProbeRsp(). */
--	if (is_cck_rate) {
--		phy_info->signal_strength = (u8)(
--			odm_signal_scale_mapping(dm, pwdb_all)); /*pwdb_all;*/
--	} else {
--		if (rf_rx_num != 0) {
--			phy_info->signal_strength =
--				(u8)(odm_signal_scale_mapping(dm, total_rssi /=
--								  rf_rx_num));
--		}
--	}
-+	if (is_cck_rate)
-+		phy_info->signal_strength = pwdb_all;
-+	else if (rf_rx_num != 0)
-+		phy_info->signal_strength = (total_rssi /= rf_rx_num);
- 
- 	/* For 92C/92D HW (Hybrid) Antenna Diversity */
- }
-@@ -1051,21 +1033,19 @@ static void odm_rx_phy_status_jaguar_series_parsing(
- 	 */
- 	/*It is assigned to the BSS List in GetValueFromBeaconOrProbeRsp().*/
- 	if (is_cck_rate) {
--		phy_info->signal_strength = (u8)(
--			odm_signal_scale_mapping(dm, pwdb_all)); /*pwdb_all;*/
--	} else {
--		if (rf_rx_num != 0) {
--			/* 2015/01 Sean, use the best two RSSI only,
--			 * suggested by Ynlin and ChenYu.
--			 */
--			if (rf_rx_num == 1)
--				avg_rssi = best_rssi;
--			else
--				avg_rssi = (best_rssi + second_rssi) / 2;
--			phy_info->signal_strength =
--				(u8)(odm_signal_scale_mapping(dm, avg_rssi));
--		}
-+		phy_info->signal_strength = pwdb_all;
-+	} else if (rf_rx_num != 0) {
-+		/* 2015/01 Sean, use the best two RSSI only,
-+		 * suggested by Ynlin and ChenYu.
-+		 */
-+		if (rf_rx_num == 1)
-+			avg_rssi = best_rssi;
-+		else
-+			avg_rssi = (best_rssi + second_rssi) / 2;
-+
-+		phy_info->signal_strength = avg_rssi;
- 	}
-+
- 	dm->rx_pwdb_ave = dm->rx_pwdb_ave + phy_info->rx_pwdb_all;
- 
- 	dm->dm_fat_table.antsel_rx_keep_0 = phy_sta_rpt->antidx_anta;
-@@ -1874,8 +1854,7 @@ void phydm_rx_phy_status_new_type(struct phy_dm_struct *phydm, u8 *phy_status,
- 	/* Update signal strength to UI, and phy_info->rx_pwdb_all is the
- 	 * maximum RSSI of all path
- 	 */
--	phy_info->signal_strength =
--		(u8)(odm_signal_scale_mapping(phydm, phy_info->rx_pwdb_all));
-+	phy_info->signal_strength = phy_info->rx_pwdb_all;
- 
- 	/* Calculate average RSSI and smoothed RSSI */
- 	phydm_process_rssi_for_dm_new_type(phydm, phy_info, pktinfo);
-diff --git a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.h b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.h
-index 6ad5e0292a97..c9833889688c 100644
---- a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.h
-+++ b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.h
-@@ -216,8 +216,6 @@ odm_config_fw_with_header_file(struct phy_dm_struct *dm,
- 
- u32 odm_get_hw_img_version(struct phy_dm_struct *dm);
- 
--s32 odm_signal_scale_mapping(struct phy_dm_struct *dm, s32 curr_sig);
--
- /*For 8822B only!! need to move to FW finally */
- /*==============================================*/
- void phydm_rx_phy_status_new_type(struct phy_dm_struct *phydm, u8 *phy_status,
 -- 
 2.17.1
 
