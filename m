@@ -1,79 +1,87 @@
 X-GM-THRID: 6617138679585439744
-X-Received: by 2002:a1c:b5cc:: with SMTP id e195-v6mr1157856wmf.17.1540704342075;
-        Sat, 27 Oct 2018 22:25:42 -0700 (PDT)
+X-Received: by 2002:a63:d305:: with SMTP id b5-v6mr521599pgg.47.1540683697086;
+        Sat, 27 Oct 2018 16:41:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:8984:: with SMTP id l126-v6ls714892wmd.4.canary-gmail;
- Sat, 27 Oct 2018 22:25:41 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5dxATUPAWVBSD3+dyYS6p1x2rnKikMsxQ9FlCTUp6EpCnrt7oZsHNssUbgz6ugpfqbH1TUX
-X-Received: by 2002:a1c:f704:: with SMTP id v4-v6mr429059wmh.20.1540704341272;
-        Sat, 27 Oct 2018 22:25:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540704341; cv=none;
+Received: by 2002:a17:902:ab96:: with SMTP id f22-v6ls1937581plr.1.gmail; Sat,
+ 27 Oct 2018 16:41:36 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5f4TdCEhDLaV8LnWYh2xZv3pijXnZfPLzvukWRXtZHPK6bUMOKnIFokjz2Of/+tLug6b2EI
+X-Received: by 2002:a17:902:280a:: with SMTP id e10-v6mr689286plb.45.1540683696305;
+        Sat, 27 Oct 2018 16:41:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540683696; cv=none;
         d=google.com; s=arc-20160816;
-        b=GzDqrF05AcNO+78bI2T3cfuakfnPvsbfY3N5LOz93H6x8KrHsG5b8e+Y93mDLfDIZf
-         uMCdR19lTUV+CZKnkOqCS3GjBVy/cREqZd19oMNlly5CYgNTXKFdaQqMi3QLbpn5DIJx
-         GdtAsOSJmaYNJNyry62PdcwuY9FcqU3VNC9bDMoxSm4E0RJfJPk9Mud/Go3IllXzmrKl
-         ZGZ4yZ4FuzyV7j7Kfij7oIPx+ARzyXnC8HBZGdeBekjp04erp6agSL+oVZM6H4XqMLtg
-         DZyy0AkMFMqz8ZNJils8vaubuCOooMfps+6mWMRbBqUvV235q5ez8rnuaYAwtqc58/Fg
-         cb/A==
+        b=pUsojrTEajPZo7VruPKYtmetaHseXuqUJivpJdkjDc2uc4ZJadlWJHw7vYlH6ldaiK
+         KrvME8SZ7VuilF2iHPsLS+NlErdNArFVGL7o+9cdfimhrHH2DaakoRE6Bsa6OCCFKbzq
+         jr0l1RZUWy/5OuxgVHM9/U1Sx/SMRKZGvo8S6/omtQstEFBgg9CpplZAYly2pTu0AAiG
+         9gA/8d9xqGaJWCG1V0yuo1lN8/evfQt1gJlyA87orRU7tl9GCW0kqv+VGTDOuNNf74zM
+         +mMmjpt8ohN13ZpCjpwFPh3u0OKPGKIOhuPby+qFBNWi8WKG3JBWP5zWsKXJKnHjQPn1
+         FYyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=G3xkDH7wC3ZVtEp30qcssHy3vyisF84FxPR1e4lFCWI=;
-        b=iTcrXvwPo96Q2WHpKIIYGSPDgLvU5TwEaXvhlEoSJkov3TKRl4qRInrpYL92Dwj0ef
-         mVntnqkvfMWGJpNKfT7ZGUXGHcrAc334U+GPZP4a3fyfTjmR91l0WWNs1mgeGt0yhu2f
-         75lYrbgCN54xDgOevmLtJaEJEz+5UV2S911oGRgewblUWd1zGRvabFpG6ARzgKqn8zLj
-         RS5Qm7tODeNgwWEFpcdaJ3/xFV5ZGI1Qbr19TacUO1opdPePWNfENUnDDI1FEEyjjpce
-         3a5CNiKZZ5nRPVyUMFObsbrw745ZSP8Wbn1j5QUFJQ2L+6GvOSyMvxmLRkcuchnknLgn
-         Q9Ng==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=V6A4DN6ydM5M0ZnlUtOf5QeQ+X0DZH9w1jiEqbK4/o4=;
+        b=cJ0OwutEjAxiVEtAP+U2Yo/8VefUgnmdRxzwhwS4BxpiTmqu/KtZQNIZfp7bpi6lQl
+         xMhMMNLb6xALwyWc19VK3Xw/guZnWSN2LMkF8ubx7gzqKkY3iyA09qDiZqWNPbDqX8zO
+         WHngEX1UcGa+qglAjL9Ahzn8q17skX2vLWe526NFZaYr0dl2CmSMdHc3KjYkSpMxtcUy
+         SI3C1Ot0wy3xPQm4g475Gen8TkdIRw0CcYJuF/9KAVrBX64xjKDdmOzAwVS4ZoQrUFIy
+         2WItn67345CGoi3e/3cFFH81cZ2gh/+21CTD2x6p097SSWcQVYvjO1FOf4WPZIj8TFmY
+         ViEQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id h74-v6si381971wmd.4.2018.10.27.22.25.41
+       dkim=pass header.i=@kernel.org header.s=default header.b=ETH1og6b;
+       spf=pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=sashal@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <sashal@kernel.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id az8-v6si49039plb.2.2018.10.27.16.41.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 27 Oct 2018 22:25:41 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sat, 27 Oct 2018 16:41:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.54,434,1534802400"; 
-   d="scan'208";a="353118090"
-Received: from 89-157-201-244.rev.numericable.fr (HELO hadrien) ([89.157.201.244])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 28 Oct 2018 06:25:40 +0100
-Date: Sun, 28 Oct 2018 06:25:40 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Sasha Levin <sashal@kernel.org>
-cc: Dafna Hirschfeld <dafna3@gmail.com>, helen.koike@collabora.com, 
-    hverkuil@xs4all.nl, mchehab@kernel.org, outreachy-kernel@googlegroups.com
+       dkim=pass header.i=@kernel.org header.s=default header.b=ETH1og6b;
+       spf=pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=sashal@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from localhost (c-73-47-72-35.hsd1.nh.comcast.net [73.47.72.35])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id A8B7720848;
+	Sat, 27 Oct 2018 23:41:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1540683696;
+	bh=V6A4DN6ydM5M0ZnlUtOf5QeQ+X0DZH9w1jiEqbK4/o4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ETH1og6b1E20QmuCRmD4QgaXh4mfx8qDfFZjhcBIq6SJbSA60CZ7bqbfpDBVzeWUi
+	 66Is5c7wce4+Fj5yUtdMNKOzl88Rnoa7eXzVS3aZvRJ83O8bezvwhkEeP8WfbMyMU/
+	 dsGgVnlCZcmg0B2R9OGaCRtTE57XtcmWj2hAwpbo=
+Date: Sat, 27 Oct 2018 19:41:34 -0400
+From: Sasha Levin <sashal@kernel.org>
+To: Dafna Hirschfeld <dafna3@gmail.com>
+Cc: helen.koike@collabora.com, hverkuil@xs4all.nl, mchehab@kernel.org,
+	outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH vicodec 1/1] media: vicodec: Add empty
  callbacks to prepare for the request API
-In-Reply-To: <20181027234134.GK2015@sasha-vm>
-Message-ID: <alpine.DEB.2.21.1810280625090.2450@hadrien>
-References: <fb11134ccd7459f5b88f277f52f40b6a1f901bc7.1540672323.git.dafna3@gmail.com> <20181027234134.GK2015@sasha-vm>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+Message-ID: <20181027234134.GK2015@sasha-vm>
+References: <fb11134ccd7459f5b88f277f52f40b6a1f901bc7.1540672323.git.dafna3@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Disposition: inline
+In-Reply-To: <fb11134ccd7459f5b88f277f52f40b6a1f901bc7.1540672323.git.dafna3@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
+On Sat, Oct 27, 2018 at 11:37:19PM +0300, Dafna Hirschfeld wrote:
+>Add the callbacks `_req_validate` `_req_queue` of the struct
+>`media_device_ops` as empty functions.
+>Those will be implemented later.
 
+Hi Dafna,
 
-On Sat, 27 Oct 2018, Sasha Levin wrote:
+In general, unless it's a very complicated functionality, we usually
+don't add code that doesn't have any users.
 
-> On Sat, Oct 27, 2018 at 11:37:19PM +0300, Dafna Hirschfeld wrote:
-> > Add the callbacks `_req_validate` `_req_queue` of the struct
-> > `media_device_ops` as empty functions.
-> > Those will be implemented later.
->
-> Hi Dafna,
->
-> In general, unless it's a very complicated functionality, we usually
-> don't add code that doesn't have any users.
->
-> It's fine to do it as part of a patchset where the usage comes in later
-> patches, but in cases such as these where there are no users,
-> maintainers will usually not take the patch.
+It's fine to do it as part of a patchset where the usage comes in later
+patches, but in cases such as these where there are no users,
+maintainers will usually not take the patch.
 
-I guess she was asked to do this as a small task by the video people?
-
-julia
+--
+Thanks,
+Sasha
 
