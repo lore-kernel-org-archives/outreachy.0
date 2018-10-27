@@ -1,115 +1,166 @@
-X-GM-THRID: 6669419489146175488
-X-Received: by 2002:a25:5789:: with SMTP id l131mr7127158ybb.34.1552845232852;
-        Sun, 17 Mar 2019 10:53:52 -0700 (PDT)
+X-GM-THRID: 6616097415299596288
+X-Received: by 2002:a1f:80f:: with SMTP id 15mr6462602vki.17.1540635469191;
+        Sat, 27 Oct 2018 03:17:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:cdc7:: with SMTP id d190ls3130126ybf.8.gmail; Sun, 17
- Mar 2019 10:53:52 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyX/cr1L3lh6vrKZyI4RYD9UA9PyjwZdXpfC7SNDBYeraGYs9tZVaP4ag+jFHYS3VN9TSAY
-X-Received: by 2002:a25:3291:: with SMTP id y139mr6487547yby.4.1552845231998;
-        Sun, 17 Mar 2019 10:53:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552845231; cv=none;
+Received: by 2002:a67:7681:: with SMTP id r123ls684996vsc.4.gmail; Sat, 27 Oct
+ 2018 03:17:48 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5dUom+dqTVzCdt4cwAXBF35YtIFkFdrJjaLdYdA/MLlOCWmDzjzORjRO1TF1xf/e3ynFOy/
+X-Received: by 2002:a67:7dd3:: with SMTP id y202mr6519830vsc.36.1540635468439;
+        Sat, 27 Oct 2018 03:17:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540635468; cv=none;
         d=google.com; s=arc-20160816;
-        b=pU+sM1B0UMTBQo/huuZrbGtdQuzmpjoXzq+VN3PcoS9JvDhvPl5zv8gpKN0dN+3TlD
-         FOW+Ek9re2Pmd4IF2fgjr9ImF+T9UheLDMwyRVeIiQ7o3kRK0XglNUDMjRn4kWi4puy2
-         u+NTY3sAFQj0ZwuVvktFD+4/MWWq04yWV8qATKV/1BPqmYSky1CuFuirgATkOdmEWRH+
-         cx2GEVTjAJQOfypsSUB3kg7RZTfHaUJVK2cFSy2+DDB672fbILL8NEXd5i76EZZ9LAFE
-         glvTiXTf6abRU3PmWTbaQwr9vHvO9RGqaJcO3bP6YSg/6rvcxo5kvC4AM7nw7cmxs7Eb
-         BJ1A==
+        b=nJuB7NSh/5dJ1b8rlNEKVyq3HkTJQZgOe3aEiz9A6yYL4Kml1qPmbS1vDvwGSBtaJI
+         5Wciq2LvKxtMa89yiungSC4+fWqUAocnfTqfvBYdK7Lpiu7OSrMiUknLt1b5mt6UAm3d
+         rLyRowvnyskGC68pgpHMfQ4ShBGmWPPBV+2I0R6gGCd/NTgh8KHIH7JTz85kQB8m2UUP
+         yhn51Yw/JXabZP1xBcAlYZFmSyzm4nKSyCs9QxAj4OR5zjQtcnj/SltqsbEixYEzbFV1
+         4wOFMDqPWHpXDAkaBpotPEVuOl1Mxjjpa/wQeA/YSEELQDc08s7GjFDP1OcNMEKNyVqI
+         dMbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=fIOXaVxs38HJz5g1E2pFipTatro4AVUYERJLTFPyLWg=;
-        b=yNCMfc+bfntXoDZOtjhmaY9Dd39ndpi7oZyvpS0tQBgZy2RTcFTL6F0VSUbkkUn12w
-         wu7GStNKIUSsNI2VGArs+uy1EWAsHZ0wcEhDywnSIrXYnAhFoB93MAmmbXFj7JdjCpBQ
-         Sk4axakOzKWWUEo9OSYTKbZjrxHj4WLdmfLv7mgAvGqDrUrtqZTFylPb8iipbZ6XfsVD
-         DjllLKTz2lPSD5nJwldkQyXnZKmJM3syEJvifWnBPDrGSZlXbFvhZh8bEaXuBypPe3IL
-         1tQpxEpYlzH7eyl5CVhSiohfwWVNJ6xrjPcZ7WbAMmqdGqKLPzI/FwSIT7ns2SIW2zI5
-         tYkw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=LqdUgJUrMFFT86b3dKUJKznZ31ZG4pm2fMtKBC4wz4M=;
+        b=Xfe+fls2jKEtu1NNmqBA79amzynV5wyNinwTp/varKFv+B1jFU75RqyunQYeN7SHC2
+         0seAIR/E/Xf6HwElD1uq4fUvWPVA8BsFhTMIGBs0DGjsrAsL0O1X6Nz4bIlp3kwyypB+
+         ddaCAer133cK9l1Ccxpe8C0Umw7C6g5U+7RMfPDFH7JEPCFtzcOHcYyooJho9cRF3d5n
+         stWOYfyRq3I6p+8CQatvLb38bLX+7WP7mQ/JbSLYhnWby5K3E02HgzhIcep79q0/+F/3
+         +4togqLRuVZKmzI58+n6vhayYaYTQU4Hz/O0PvpR/Ykt9idwXF3+oQGW93guysm6hupj
+         5XJA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pLSBDhCJ;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::535 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XHfV79YX;
+       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::143 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pg1-x535.google.com (mail-pg1-x535.google.com. [2607:f8b0:4864:20::535])
-        by gmr-mx.google.com with ESMTPS id 62si508363ybf.2.2019.03.17.10.53.51
+Return-Path: <m.maya.nakamura@gmail.com>
+Received: from mail-it1-x143.google.com (mail-it1-x143.google.com. [2607:f8b0:4864:20::143])
+        by gmr-mx.google.com with ESMTPS id y4si642349vsa.2.2018.10.27.03.17.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 10:53:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::535 as permitted sender) client-ip=2607:f8b0:4864:20::535;
+        Sat, 27 Oct 2018 03:17:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::143 as permitted sender) client-ip=2607:f8b0:4864:20::143;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pLSBDhCJ;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::535 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XHfV79YX;
+       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::143 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x535.google.com with SMTP id v1so5048785pgi.5
-        for <outreachy-kernel@googlegroups.com>; Sun, 17 Mar 2019 10:53:51 -0700 (PDT)
+Received: by mail-it1-x143.google.com with SMTP id i191-v6so4548115iti.5
+        for <outreachy-kernel@googlegroups.com>; Sat, 27 Oct 2018 03:17:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=fIOXaVxs38HJz5g1E2pFipTatro4AVUYERJLTFPyLWg=;
-        b=pLSBDhCJ9CKy5bALtT++7GwrTEjzcUc8mDnUDKgxfJWIclDbZfqBzZAzciE7lqEvFU
-         WtVaudMOeMTpzDa+GmnnapBJrbNxcNXywrG42CuL2+j8LdX4NMipNBFr1lmnVwIwuGpV
-         /W7MDvOfW66Qb6lt7XywBqHfQ+nk/ZAJq584NwB1r7UU4ZgSErfhGbcOCQ+Gwzp5vNga
-         MQXY+zVbQ0ZyFLomrBgm1ujIs/Iyo2oGWSHYmxK3+HS49i9CDKLn/Sk4Q/VpbpPO5X3i
-         BzuUgC6NuKxPTSiiXFjdHiSxi+GdUSfqZMbhamaHpB+8uNSGwmIAylBPkUwjcxQgDpeQ
-         +G3A==
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=LqdUgJUrMFFT86b3dKUJKznZ31ZG4pm2fMtKBC4wz4M=;
+        b=XHfV79YXlw1lMOUytG7yiPM5APkpVwwsgdasoA6jGZOsnrAilJUakcicQdge8EsoQM
+         W3rstByae/i5k/RqZcF8ozbo19dg0t/MQtH3Xf8aEHPhWhDl2Avh0Gz13FYxr0OvTNXb
+         jWGHRTOaKNNo1SDODnYzWk27RsOrlqm7MND43gMyZknnsSfKwZU93W2iLeW4jCfcwW/P
+         qYALb8XZqiCofF7kktJDS/CECqL5YZ2A4CWmVoXnCZN1YI93oZrn3WqIJ3IW/7jwrU5k
+         JY4W4KWyhl1W2s9QjaD4LqwqzPbvcS9TMem/PUvNxGmRSbvuSye/5PauC7Wz7Jm8Wjbk
+         U9Fw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=fIOXaVxs38HJz5g1E2pFipTatro4AVUYERJLTFPyLWg=;
-        b=JZvGObHmsSmdF6fKCAuXijYMdBz1ItDMX5mJbruKldySLqA5KUzYkS5zSVWw4Bp051
-         r9onLYUZugJGNnvE8wOYp4vfOCVdzcLNhwoFOnfmq6iGAOkGRYsi3P6lAWBofmGZ/06D
-         lOYBDNScURhIVPLlt3Ng6V94puS0NDZcWZZQnIpCv1tQ1fdGFdcEVDOqudxJj8FiFxkn
-         pVfEX1lHQTmcrSLHxIGkgnqno2FwVlIAd8mJmSvWOJ/xrRopSniots+Ed4S2lLPE3wWy
-         1Qhms3i/GMT+KT2CJ9NbHLh+42kRaHAGixSo4Fc7hDavvpEP54S1zfgu8+iaEjMEvQvy
-         Cz1Q==
-X-Gm-Message-State: APjAAAXAg4oyWtTQWCep1qiIhafGc3VpoGCvfXbMctj83qdJDr8ZuDe4
-	jLFSPjpy3d9922ZuBfAwSORgY9Ys
-X-Received: by 2002:a63:360a:: with SMTP id d10mr13173047pga.361.1552845230899;
-        Sun, 17 Mar 2019 10:53:50 -0700 (PDT)
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from localhost.localdomain ([49.35.84.34])
-        by smtp.gmail.com with ESMTPSA id f192sm18453461pfc.180.2019.03.17.10.53.47
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 17 Mar 2019 10:53:50 -0700 (PDT)
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [PATCH] [Outreachy kernel] staging: greybus: adding ()
-Date: Sun, 17 Mar 2019 23:23:33 +0530
-Message-Id: <1552845213-12653-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=LqdUgJUrMFFT86b3dKUJKznZ31ZG4pm2fMtKBC4wz4M=;
+        b=FGCEM4AhbQJRT5slTvVIpQm2QkvazdE6PUd6RqtxKPN9/cIdK/jCBbo85RP3vX3gzA
+         zCHVNAkzwdQomGaA+pmSlN6VehCKkd08bXvi9z40zAEqa5nK5j6/xHOHecH5PjhZU/tT
+         eiM8bJYWOeDUeli/SkhOSFI7gmL6AixYRgpvFQaU5JG/5KTlJ1qtcmmjEh5AhCUoCchj
+         vcrbSFM0VVOyGe1CjM4LyrN/Fa8xgA/Roq69hzg3IvXS6Bf8L6UmL4cMDJIoPFQXAsJ0
+         77tFQdU7VDKLXPP3ZCQ0/FrYGupgGecsrx0l7tvtJyA3Kirn0TtYN0rxRDhqQrQVjRec
+         zI3Q==
+X-Gm-Message-State: AGRZ1gJw7vt6BlKyxp2hWIFy+jhW8PmW5BCEwOGPcZVrAA+WQ0mVd2FA
+	36koDNwvzRshV2XLKM+fHDEr2KdG
+X-Received: by 2002:a05:660c:3c9:: with SMTP id c9mr5529706itl.130.1540635467645;
+        Sat, 27 Oct 2018 03:17:47 -0700 (PDT)
+Return-Path: <m.maya.nakamura@gmail.com>
+Received: from k-vBox (50-47-85-193.evrt.wa.frontiernet.net. [50.47.85.193])
+        by smtp.gmail.com with ESMTPSA id q185-v6sm2804411itc.30.2018.10.27.03.17.46
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 27 Oct 2018 03:17:47 -0700 (PDT)
+Date: Sat, 27 Oct 2018 03:17:43 -0700
+From: Maya Nakamura <m.maya.nakamura@gmail.com>
+To: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: [PATCH v2 3/3] staging: rtlwifi: Remove unused functions
+Message-ID: <63ef0e8be67b0e79e8bf68b6dd93af77b711ad50.1540632666.git.m.maya.nakamura@gmail.com>
+References: <cover.1540632666.git.m.maya.nakamura@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1540632666.git.m.maya.nakamura@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-Parenthesis added to macro argument ‘gcam’ as (gcam)
-to avoid precedence issues
+Remove the five functions that are not used from the source and header
+files. Issue found by Coccinelle's semantic patch results for
+returnvar.cocci.
 
-Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Signed-off-by: Maya Nakamura <m.maya.nakamura@gmail.com>
 ---
- drivers/staging/greybus/camera.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Changes since v1:
+ - None
 
-diff --git a/drivers/staging/greybus/camera.c b/drivers/staging/greybus/camera.c
-index 615c8e7..b1670b8 100644
---- a/drivers/staging/greybus/camera.c
-+++ b/drivers/staging/greybus/camera.c
-@@ -180,9 +180,9 @@ static const struct gb_camera_fmt_info *gb_camera_get_format_info(u16 gb_fmt)
+ .../staging/rtlwifi/phydm/phydm_hwconfig.c    | 35 -------------------
+ .../staging/rtlwifi/phydm/phydm_hwconfig.h    | 10 ------
+ 2 files changed, 45 deletions(-)
+
+diff --git a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
+index 1b05db36e279..e1544e38944b 100644
+--- a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
++++ b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
+@@ -1848,38 +1848,3 @@ void phydm_rx_phy_status_new_type(struct phy_dm_struct *phydm, u8 *phy_status,
+ 	/* Calculate average RSSI and smoothed RSSI */
+ 	phydm_process_rssi_for_dm_new_type(phydm, phy_info, pktinfo);
+ }
+-
+-u32 query_phydm_trx_capability(struct phy_dm_struct *dm)
+-{
+-	u32 value32 = 0xFFFFFFFF;
+-
+-	return value32;
+-}
+-
+-u32 query_phydm_stbc_capability(struct phy_dm_struct *dm)
+-{
+-	u32 value32 = 0xFFFFFFFF;
+-
+-	return value32;
+-}
+-
+-u32 query_phydm_ldpc_capability(struct phy_dm_struct *dm)
+-{
+-	u32 value32 = 0xFFFFFFFF;
+-
+-	return value32;
+-}
+-
+-u32 query_phydm_txbf_parameters(struct phy_dm_struct *dm)
+-{
+-	u32 value32 = 0xFFFFFFFF;
+-
+-	return value32;
+-}
+-
+-u32 query_phydm_txbf_capability(struct phy_dm_struct *dm)
+-{
+-	u32 value32 = 0xFFFFFFFF;
+-
+-	return value32;
+-}
+diff --git a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.h b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.h
+index c9833889688c..ee4b9f0af2a1 100644
+--- a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.h
++++ b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.h
+@@ -484,14 +484,4 @@ struct phy_status_rpt_jaguar2_type2 {
+ #endif
+ };
  
- #define GB_CAMERA_MAX_SETTINGS_SIZE	8192
- 
--#define gcam_dbg(gcam, format...)	dev_dbg(&gcam->bundle->dev, format)
--#define gcam_info(gcam, format...)	dev_info(&gcam->bundle->dev, format)
--#define gcam_err(gcam, format...)	dev_err(&gcam->bundle->dev, format)
-+#define gcam_dbg(gcam, format...)	dev_dbg(&(gcam)->bundle->dev, format)
-+#define gcam_info(gcam, format...)	dev_info(&(gcam)->bundle->dev, format)
-+#define gcam_err(gcam, format...)	dev_err(&(gcam)->bundle->dev, format)
- 
- static int gb_camera_operation_sync_flags(struct gb_connection *connection,
- 					  int type, unsigned int flags,
+-u32 query_phydm_trx_capability(struct phy_dm_struct *dm);
+-
+-u32 query_phydm_stbc_capability(struct phy_dm_struct *dm);
+-
+-u32 query_phydm_ldpc_capability(struct phy_dm_struct *dm);
+-
+-u32 query_phydm_txbf_parameters(struct phy_dm_struct *dm);
+-
+-u32 query_phydm_txbf_capability(struct phy_dm_struct *dm);
+-
+ #endif /*#ifndef	__HALHWOUTSRC_H__*/
 -- 
-2.7.4
+2.17.1
 
 
