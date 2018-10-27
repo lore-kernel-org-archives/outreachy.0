@@ -1,87 +1,111 @@
 X-GM-THRID: 6617138679585439744
-X-Received: by 2002:a63:d305:: with SMTP id b5-v6mr521599pgg.47.1540683697086;
-        Sat, 27 Oct 2018 16:41:37 -0700 (PDT)
+X-Received: by 2002:a19:2d47:: with SMTP id t7-v6mr748055lft.13.1540672978080;
+        Sat, 27 Oct 2018 13:42:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:ab96:: with SMTP id f22-v6ls1937581plr.1.gmail; Sat,
- 27 Oct 2018 16:41:36 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5f4TdCEhDLaV8LnWYh2xZv3pijXnZfPLzvukWRXtZHPK6bUMOKnIFokjz2Of/+tLug6b2EI
-X-Received: by 2002:a17:902:280a:: with SMTP id e10-v6mr689286plb.45.1540683696305;
-        Sat, 27 Oct 2018 16:41:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540683696; cv=none;
+Received: by 2002:a2e:9999:: with SMTP id w25-v6ls588497lji.20.gmail; Sat, 27
+ Oct 2018 13:42:56 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5drTz2VDGo3bKioe+j032eSrA6/3cS8ENeOMykD2QrmsP6hVE5YwjX2KmiqWMQN8s0Ei40s
+X-Received: by 2002:a2e:8786:: with SMTP id n6-v6mr193498lji.29.1540672976901;
+        Sat, 27 Oct 2018 13:42:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540672976; cv=none;
         d=google.com; s=arc-20160816;
-        b=pUsojrTEajPZo7VruPKYtmetaHseXuqUJivpJdkjDc2uc4ZJadlWJHw7vYlH6ldaiK
-         KrvME8SZ7VuilF2iHPsLS+NlErdNArFVGL7o+9cdfimhrHH2DaakoRE6Bsa6OCCFKbzq
-         jr0l1RZUWy/5OuxgVHM9/U1Sx/SMRKZGvo8S6/omtQstEFBgg9CpplZAYly2pTu0AAiG
-         9gA/8d9xqGaJWCG1V0yuo1lN8/evfQt1gJlyA87orRU7tl9GCW0kqv+VGTDOuNNf74zM
-         +mMmjpt8ohN13ZpCjpwFPh3u0OKPGKIOhuPby+qFBNWi8WKG3JBWP5zWsKXJKnHjQPn1
-         FYyw==
+        b=a2tddtaQuihGIX8zCYySG2W92Oj11DUo6kJA7rHWdfbRAk6XzkDyfRX3XCH0rtEQTu
+         KwqHGWW2X2Vtz3HfaQ/0Eq0XuXufY7S/xEucn4TaZSYGq5/d9vj+EJW3Sfve+m7PhPIi
+         5jAS0zqcZBiqjNddWZlxRDEU1oNkYWLa/JK55jpqfP6gtWoUD/+EfDeskKGqT0xp7Fke
+         ZRR3C5czXitOM9/BJNYiGE2Ea644YD24qiqwk+ew1VEvgLs2qOslPVSJ8QnpNwjpfPWd
+         h+F6ECbGnxkXOp1yzM6EX/fZTE4bLlbbz+FCNbMD1wH08ZLxzdgq8EZgK+yT2whMM6is
+         ix8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=V6A4DN6ydM5M0ZnlUtOf5QeQ+X0DZH9w1jiEqbK4/o4=;
-        b=cJ0OwutEjAxiVEtAP+U2Yo/8VefUgnmdRxzwhwS4BxpiTmqu/KtZQNIZfp7bpi6lQl
-         xMhMMNLb6xALwyWc19VK3Xw/guZnWSN2LMkF8ubx7gzqKkY3iyA09qDiZqWNPbDqX8zO
-         WHngEX1UcGa+qglAjL9Ahzn8q17skX2vLWe526NFZaYr0dl2CmSMdHc3KjYkSpMxtcUy
-         SI3C1Ot0wy3xPQm4g475Gen8TkdIRw0CcYJuF/9KAVrBX64xjKDdmOzAwVS4ZoQrUFIy
-         2WItn67345CGoi3e/3cFFH81cZ2gh/+21CTD2x6p097SSWcQVYvjO1FOf4WPZIj8TFmY
-         ViEQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=rUlH/BeKvCzsAQTv/US7iuXMYOCOqa3ZBeXF5nUVbxQ=;
+        b=pR5n9LiQd8jG5h2Xfkf7AKFNGrPnSHd3fDrUL2GLjr+yBC0nQJst1bWvkrhISfpwQQ
+         o1l5CP28hrsn83uz9+OvBar43I8K3I3OyQ0jLILeyeZ7+k+fVvL1vO82C242xTILnKuZ
+         48A63F57FUb82QIvvR9chki6RnQx1GV5wZWM6zESGhFyWftYnwBH/yeDlqLMAF83QEL0
+         OmufXejcN1Ntr2SJR1Dr0WNStC/MjVC/z60sSO6Ig25HDRw4b2y8S6gT87vqfZYXkhvd
+         TB13THtLZVcZgnEi3OpJEsfxp3Rw++IRTcn7kZ68+OSxlSJ3jinsk5h7nlEbfhKIab/D
+         fVZg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=ETH1og6b;
-       spf=pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=sashal@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <sashal@kernel.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id az8-v6si49039plb.2.2018.10.27.16.41.36
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id a79-v6si505271ljf.1.2018.10.27.13.42.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 27 Oct 2018 16:41:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Sat, 27 Oct 2018 13:42:56 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=ETH1og6b;
-       spf=pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=sashal@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from localhost (c-73-47-72-35.hsd1.nh.comcast.net [73.47.72.35])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id A8B7720848;
-	Sat, 27 Oct 2018 23:41:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1540683696;
-	bh=V6A4DN6ydM5M0ZnlUtOf5QeQ+X0DZH9w1jiEqbK4/o4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ETH1og6b1E20QmuCRmD4QgaXh4mfx8qDfFZjhcBIq6SJbSA60CZ7bqbfpDBVzeWUi
-	 66Is5c7wce4+Fj5yUtdMNKOzl88Rnoa7eXzVS3aZvRJ83O8bezvwhkEeP8WfbMyMU/
-	 dsGgVnlCZcmg0B2R9OGaCRtTE57XtcmWj2hAwpbo=
-Date: Sat, 27 Oct 2018 19:41:34 -0400
-From: Sasha Levin <sashal@kernel.org>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.54,433,1534802400"; 
+   d="scan'208";a="283522700"
+Received: from 89-157-201-244.rev.numericable.fr (HELO hadrien) ([89.157.201.244])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 27 Oct 2018 22:42:55 +0200
+Date: Sat, 27 Oct 2018 22:42:55 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Dafna Hirschfeld <dafna3@gmail.com>
-Cc: helen.koike@collabora.com, hverkuil@xs4all.nl, mchehab@kernel.org,
-	outreachy-kernel@googlegroups.com
+cc: helen.koike@collabora.com, hverkuil@xs4all.nl, mchehab@kernel.org, 
+    outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH vicodec 1/1] media: vicodec: Add empty
  callbacks to prepare for the request API
-Message-ID: <20181027234134.GK2015@sasha-vm>
-References: <fb11134ccd7459f5b88f277f52f40b6a1f901bc7.1540672323.git.dafna3@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii; format=flowed
-Content-Disposition: inline
 In-Reply-To: <fb11134ccd7459f5b88f277f52f40b6a1f901bc7.1540672323.git.dafna3@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Message-ID: <alpine.DEB.2.21.1810272242400.5204@hadrien>
+References: <fb11134ccd7459f5b88f277f52f40b6a1f901bc7.1540672323.git.dafna3@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-On Sat, Oct 27, 2018 at 11:37:19PM +0300, Dafna Hirschfeld wrote:
->Add the callbacks `_req_validate` `_req_queue` of the struct
->`media_device_ops` as empty functions.
->Those will be implemented later.
 
-Hi Dafna,
 
-In general, unless it's a very complicated functionality, we usually
-don't add code that doesn't have any users.
+On Sat, 27 Oct 2018, Dafna Hirschfeld wrote:
 
-It's fine to do it as part of a patchset where the usage comes in later
-patches, but in cases such as these where there are no users,
-maintainers will usually not take the patch.
+> Add the callbacks `_req_validate` `_req_queue` of the struct
+> `media_device_ops` as empty functions.
+> Those will be implemented later.
+>
+> Signed-off-by: Dafna Hirschfeld <dafna3@gmail.com>
+> ---
+>  drivers/media/platform/vicodec/vicodec-core.c | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
+>
+> diff --git a/drivers/media/platform/vicodec/vicodec-core.c b/drivers/media/platform/vicodec/vicodec-core.c
+> index fdd77441a47b..238a59cdf3d6 100644
+> --- a/drivers/media/platform/vicodec/vicodec-core.c
+> +++ b/drivers/media/platform/vicodec/vicodec-core.c
+> @@ -130,6 +130,20 @@ struct vicodec_ctx {
+>  	bool			comp_has_next_frame;
+>  };
+>
+> +static int vicodec_request_validate(struct media_request *req)
+> +{
+> +	return 0;
+> +}
+> +
+> +void vicodec_request_queue(struct media_request *req)
+> +{
+> +}
+> +
+> +static const struct media_device_ops vicodec_m2m_media_ops = {
+> +	.req_validate   = vicodec_request_validate,
+> +	.req_queue      = vicodec_request_queue,
+> +};
+> +
 
---
-Thanks,
-Sasha
+Thanks for making it const :)
+
+julia
+
+>  static inline struct vicodec_ctx *file2ctx(struct file *file)
+>  {
+>  	return container_of(file->private_data, struct vicodec_ctx, fh);
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/fb11134ccd7459f5b88f277f52f40b6a1f901bc7.1540672323.git.dafna3%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
