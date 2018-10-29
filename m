@@ -1,125 +1,107 @@
 X-GM-THRID: 6617138679585439744
-X-Received: by 2002:a19:d8da:: with SMTP id r87-v6mr1118801lfi.7.1540816949562;
-        Mon, 29 Oct 2018 05:42:29 -0700 (PDT)
+X-Received: by 2002:a2e:9e4a:: with SMTP id g10-v6mr340748ljk.26.1540806813799;
+        Mon, 29 Oct 2018 02:53:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a19:a692:: with SMTP id p140-v6ls578874lfe.24.gmail; Mon, 29
- Oct 2018 05:42:28 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5eof6eVLT5kRAAibRAI3pllH04doRJLs93JlqfOF4ftMK3Azuyx+FZD9rOW9Dy34OPi/RWf
-X-Received: by 2002:ac2:410b:: with SMTP id b11-v6mr556614lfi.11.1540816948387;
-        Mon, 29 Oct 2018 05:42:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540816948; cv=none;
+Received: by 2002:a19:7b01:: with SMTP id w1ls123922lfc.9.gmail; Mon, 29 Oct
+ 2018 02:53:32 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5fBMk3y/z3fjY1n+sSrK3ll0hDwKPRbt2/pimh6ajYK/6eazMJr45a5KelzmXsXH7gUQy70
+X-Received: by 2002:a19:a28f:: with SMTP id l137-v6mr1067998lfe.14.1540806812869;
+        Mon, 29 Oct 2018 02:53:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540806812; cv=none;
         d=google.com; s=arc-20160816;
-        b=kfsl3YinlLZ/6rVSLPNZ/I9a26lcxyKm1/5SZvaHXPk9BUCeLRb1U9/VGFXg+ytCNh
-         l5+zkOKKHuAALdirlAtrz522zhDhOY1hwIQUgbH0IEW1NH09EEBg2hpRgoG6X9b417a7
-         +R1GbGYM708i9RXQzT3aCblxWnsjiewQOLa9n6M8Q8yt5Pj1WrRn9HDHJiff4VDIGaKN
-         /rI9OK7rx5dnZHhQN7cNTReV+hAxJ8b2QqlgEEsssoZgNTYF93xaWCmM+DSfd9S3LNN7
-         BbdtxOx/FYI0jFXbsz/6DeR3/wIPMWmAc12mlJ2DbpjQS3PwrU/Dr4Kq6Prz0ARdYQ+i
-         K41Q==
+        b=xDvSeK7hgO3MPmsH4Wr3/G4JAKvkCLCy1Ojs890ajK3vrdgBDgTQvEp3v/Iap72REQ
+         J85tDFmpt7nyNNwtGpXs0G5jbhLEjzk0vP3bay0iW9qAB7qgUTkj2vZONP37vBpZb7sK
+         jRkoo2mCqbDW5OmDpzWKrtB+Tgh8Qgp7ueOysp6I4ZVjEdT9cQSCDoHyxdqnDvSMzaJH
+         UsyB9WOe4si1J7jW9N3HZFxJpf3GAt3cNSfs60W/5nblF5em8VfD0H44xcMrx6qYJOJN
+         0h/R/ze3UvCwK1Zu7K+4xXv5B2+y7DyNOBEDYQhrT3rvRF80h8qxk/b3k8r3YDFgC+LE
+         +eNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=4erUbHI+GeXHEWRoH6cU7CHPqzu2jkWoDUY7bFL/bb8=;
-        b=JI8/0scTdvLnb6JhYsxGNeiC1g6UJvsFmCXgVwMgWbH7Adk761Tl1OFP4dbOZpX02C
-         VpeEmExDXjwfwjK7wYIW64b1mnoxP0mug5v9AZvviSnm87sELmd9aQ++54SC7HKD9H/Z
-         fzps4w5DcIBCHS2tgYFqgj3mM8Q4yPijUqUCQPnzjvSNeU8u0RYfBDp1jV9PhGj1sEJ9
-         iLmrr8nKPS+u6WX4KGZHw3PJy4mZwUfpu0oi1c1vGKxujo9GfIfuT/LpOZeaNDd4dDds
-         pmxT3HLN8QLBMxHM0KhUoFpapZmfVcF0i5FZImsfA3U/G4lYPrQfp0L+uIy/zK0usI1W
-         uvFQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject;
+        bh=edjjHeMsFaWoz4XqfQDTC+XQzspBOOcSR5KGYmg1bi8=;
+        b=hGav9lfcxVIJ7fgpELIBvZgMLvJPvb8p1YShID1Th4iDI3ZVD92jkmS7Z4Jtw5i1Cq
+         gmZShowC6XT2AowbzVfl/Fx94NEivVywr4X5VYg8ZPXcj9kMEowq6CF3rS6RvxMTKnZa
+         34r2joNbu4zaNQ+0n1O1ww9kyOWS79f58KqX4IvQ9Z3Vjc98Ls9/YQHyOhov8PVJuBIA
+         Lff00BesdF/5MFbGFjN/lzGzJVr+IE6MyUSo0GwsiLPeSIr5As7sccNdFvz+CY3DyPoC
+         8UvS3E9SVnYAvj7UaoPF8YeD/Q5fKVANYrtq1KI+FjPUF72ji6GZagyy5MMV+wC9GuIV
+         SGMg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=heSs1Jcv;
-       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=dafna3@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <dafna3@gmail.com>
-Received: from mail-wr1-x443.google.com (mail-wr1-x443.google.com. [2a00:1450:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id u142-v6si393765lja.2.2018.10.29.05.42.28
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.29 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
+Return-Path: <hverkuil@xs4all.nl>
+Received: from lb3-smtp-cloud8.xs4all.net (lb3-smtp-cloud8.xs4all.net. [194.109.24.29])
+        by gmr-mx.google.com with ESMTPS id f192-v6si526704lff.4.2018.10.29.02.53.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 29 Oct 2018 05:42:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) client-ip=2a00:1450:4864:20::443;
+        Mon, 29 Oct 2018 02:53:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.29 as permitted sender) client-ip=194.109.24.29;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=heSs1Jcv;
-       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=dafna3@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x443.google.com with SMTP id y16so8519619wrw.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 29 Oct 2018 05:42:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=4erUbHI+GeXHEWRoH6cU7CHPqzu2jkWoDUY7bFL/bb8=;
-        b=heSs1JcvOVVzKx492ldqbh9RR5lpEfIFeiEf0dtlYjvgbzQlmDmd5vQcCrUxrAF++z
-         neYdz7z9u5IDe5suHNG5HEM60GnMIi87NOJQ51mU55OTbl6iaGHRUKwkfu1uzVsdppk6
-         y4Sys7fNLSXp8XEXPljPAsRU1Ax6smzim8fw83NhkAt4z+DyJcrqo4QFU+Hz0WjQWVSM
-         W3XtqfntGeYqDtB4/vW/BqE8gLjWaIJFxAF2fhgioI/rWzja4qxxK7hMU+MvhTpVVFQ/
-         oVyEm06q6AdKgJcUDCRg2pOvXgz5njW9FJF5gnnbHTT44mjw2UH49mq1hwyVR84F1Q1k
-         WX5Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=4erUbHI+GeXHEWRoH6cU7CHPqzu2jkWoDUY7bFL/bb8=;
-        b=nZp47onHR8aV2epmAWIgbGECPxb4oq/LcBoNbnZ1kso9wlIZcbWrj3rAs7W9qSXBGo
-         2u01aDS14b8NDRpSH22ZxCayLhVylhSP3Wndn7TGSRxVttotKxLqhRHdgmKonwgFoI2z
-         2eh6Bcf6ASMwmVcDkugjtp3G2dQdSw1rpVWox4JqSnDwN+/andCg3Kcp8/6JwVYvfaNO
-         zbxTl5uwk1yRwUsvSKaq80+VRrprcgHQ0Q4fSkCIR0Y2Cz68TV/AfhFnlb223gnfw2kR
-         yPGnM+bJxhZHwS/ucyvs5yM58qWJyocWN1Xm93kKf3MhHTMjRkRmuK0iaMUMff7e1DHR
-         YjQg==
-X-Gm-Message-State: AGRZ1gIcAvev+qleBAoYztFrtme1Elpa4M7kF4iM6RONLL5eJXNiH4N/
-	SYMBuU+moH3HMUW8nn4Y9QXmE36pJ2fIyA==
-X-Received: by 2002:adf:b612:: with SMTP id f18-v6mr13374948wre.120.1540816947632;
-        Mon, 29 Oct 2018 05:42:27 -0700 (PDT)
-Return-Path: <dafna3@gmail.com>
-Received: from vdoo.wework.com ([82.166.68.50])
-        by smtp.gmail.com with ESMTPSA id z185-v6sm25152760wmz.47.2018.10.29.05.42.26
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 29 Oct 2018 05:42:26 -0700 (PDT)
-From: Dafna Hirschfeld <dafna3@gmail.com>
-To: helen.koike@collabora.com,
-	hverkuil@xs4all.nl,
-	mchehab@kernel.org
-Cc: Dafna Hirschfeld <dafna3@gmail.com>,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH vicodec v2] media: vicodec: Add empty callbacks to prepare for the request API
-Date: Mon, 29 Oct 2018 14:42:23 +0200
-Message-Id: <dec3fa1828acce7720c56a1160d24f327914bf0c.1540816621.git.dafna3@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <fb11134ccd7459f5b88f277f52f40b6a1f901bc7.1540672323.git.dafna3@gmail.com>
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.29 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
+Received: from [IPv6:2001:983:e9a7:1:5139:d121:18fb:2507] ([IPv6:2001:983:e9a7:1:5139:d121:18fb:2507])
+	by smtp-cloud8.xs4all.net with ESMTPA
+	id H4ElgGU2o0ZZEH4Emgqvuy; Mon, 29 Oct 2018 10:53:32 +0100
+Subject: Re: [PATCH vicodec 1/1] media: vicodec: Add empty callbacks to
+ prepare for the request API
+To: Dafna Hirschfeld <dafna3@gmail.com>, helen.koike@collabora.com,
+ mchehab@kernel.org
+Cc: outreachy-kernel@googlegroups.com
 References: <fb11134ccd7459f5b88f277f52f40b6a1f901bc7.1540672323.git.dafna3@gmail.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <e5063a91-be61-9580-a4ec-b08068c548aa@xs4all.nl>
+Date: Mon, 29 Oct 2018 10:53:31 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.9.1
+MIME-Version: 1.0
+In-Reply-To: <fb11134ccd7459f5b88f277f52f40b6a1f901bc7.1540672323.git.dafna3@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-CMAE-Envelope: MS4wfHnUvH4NhoGMTsLIc64jXHNr4ltANLGWTSEwvPABI4K/jMtCb9soBOnVt2vFFVEU5k5r5B9hVPlVd2kS7+QglWA0pAMhTcu/G58NDHrEC+DdHpGK3mr/
+ eoB6cZXRhRRZWAuKOtoplNQBX2E1TZ5mOGJN2XMQ85EGTQ6TLNvZ5PMVT6NNLt91AHvSq4bcj4MJX8kflopO8gT6W3tcugt+GZHKuUwebp5aLOqddkTWZ4/A
+ 2k0uoEH5IuBcDWPufMDEwhWAij9g7gDFQsPOAMfmuJdWPMDL2K5cR2TVpRTvdT0pG96eHnzck8oWuYVwCkrlonZzaXEpFKIvToJ7b5q+UF0z/zuc+xR6GWs6
+ du78LK2KGosc/DFNWNPGeFOMdHX9bw==
 
-Add the callbacks `req_validate` `req_queue` of the struct
-`media_device_ops` as empty functions.
-Those will be implemented later.
+On 10/27/2018 10:37 PM, Dafna Hirschfeld wrote:
+> Add the callbacks `_req_validate` `_req_queue` of the struct
 
-Signed-off-by: Dafna Hirschfeld <dafna3@gmail.com>
----
- drivers/media/platform/vicodec/vicodec-core.c | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+Where does the '_' prefix come from?
 
-diff --git a/drivers/media/platform/vicodec/vicodec-core.c b/drivers/media/platform/vicodec/vicodec-core.c
-index fdd77441a47b..238a59cdf3d6 100644
---- a/drivers/media/platform/vicodec/vicodec-core.c
-+++ b/drivers/media/platform/vicodec/vicodec-core.c
-@@ -130,6 +130,20 @@ struct vicodec_ctx {
- 	bool			comp_has_next_frame;
- };
- 
-+static int vicodec_request_validate(struct media_request *req)
-+{
-+	return 0;
-+}
-+
-+void vicodec_request_queue(struct media_request *req)
-+{
-+}
-+
-+static const struct media_device_ops vicodec_m2m_media_ops = {
-+	.req_validate   = vicodec_request_validate,
-+	.req_queue      = vicodec_request_queue,
-+};
-+
- static inline struct vicodec_ctx *file2ctx(struct file *file)
- {
- 	return container_of(file->private_data, struct vicodec_ctx, fh);
--- 
-2.17.1
+Regards,
+
+	Hans
+
+> `media_device_ops` as empty functions.
+> Those will be implemented later.
+> 
+> Signed-off-by: Dafna Hirschfeld <dafna3@gmail.com>
+> ---
+>  drivers/media/platform/vicodec/vicodec-core.c | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
+> 
+> diff --git a/drivers/media/platform/vicodec/vicodec-core.c b/drivers/media/platform/vicodec/vicodec-core.c
+> index fdd77441a47b..238a59cdf3d6 100644
+> --- a/drivers/media/platform/vicodec/vicodec-core.c
+> +++ b/drivers/media/platform/vicodec/vicodec-core.c
+> @@ -130,6 +130,20 @@ struct vicodec_ctx {
+>  	bool			comp_has_next_frame;
+>  };
+>  
+> +static int vicodec_request_validate(struct media_request *req)
+> +{
+> +	return 0;
+> +}
+> +
+> +void vicodec_request_queue(struct media_request *req)
+> +{
+> +}
+> +
+> +static const struct media_device_ops vicodec_m2m_media_ops = {
+> +	.req_validate   = vicodec_request_validate,
+> +	.req_queue      = vicodec_request_queue,
+> +};
+> +
+>  static inline struct vicodec_ctx *file2ctx(struct file *file)
+>  {
+>  	return container_of(file->private_data, struct vicodec_ctx, fh);
+> 
 
 
