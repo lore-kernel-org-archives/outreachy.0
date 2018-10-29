@@ -1,143 +1,141 @@
 X-GM-THRID: 6617780359505379328
-X-Received: by 2002:a25:4088:: with SMTP id n130-v6mr8476606yba.6.1540822176574;
-        Mon, 29 Oct 2018 07:09:36 -0700 (PDT)
+X-Received: by 2002:a7b:c00f:: with SMTP id c15-v6mr1271137wmb.7.1540822060905;
+        Mon, 29 Oct 2018 07:07:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:780e:: with SMTP id t14-v6ls3720040ybc.16.gmail; Mon, 29
- Oct 2018 07:09:35 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5eog38kb+QCa7KtffDpUpM7kkxsfK884SJa27f1BBwfaaR9xWCpwVr/TnkgiseVJV05YBN8
-X-Received: by 2002:a25:cc03:: with SMTP id l3-v6mr8579854ybf.35.1540822175876;
-        Mon, 29 Oct 2018 07:09:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540822175; cv=none;
+Received: by 2002:a1c:834f:: with SMTP id f76-v6ls192199wmd.22.canary-gmail;
+ Mon, 29 Oct 2018 07:07:39 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5f/NpL3kbhRaKAc+6eFE6vF+RhgmT7KdJHycRH4+VVuXIKOl0Liv4/ucDx4/iRr5I9ot3Jh
+X-Received: by 2002:a1c:2d4b:: with SMTP id t72-v6mr2239062wmt.18.1540822059690;
+        Mon, 29 Oct 2018 07:07:39 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1540822059; cv=pass;
         d=google.com; s=arc-20160816;
-        b=y7TlMN6HW1RZpy1b+7YoN11fFC9ExTMLbuxAu67RgZmXQwdEEEH4oMd0yKng8ZGlUB
-         DM6rR419g5tvPfy/GAj5QXcqzlXT8OivWrcl7hx3GTqbbTwM5HCvbB0ZLPW3DlZNC0Nh
-         +m/EvsXgVGR2VoQax3irKqawEiGIvIYBndiRldh4vu3dGTHmCYVRuR20mBjK8CmZGkLs
-         3d0NVvScIb1OAVm52AjXEWVM9YYuMSFZNHiZuC4jNA/Y9I3U38GQDviOsoIpGv6XufoJ
-         5qOovlVZJujrkLJVkqH8EcNlLJLHf1dTs1+a6O3Uwm4/gIjU20cQdf/HqU6dzxsZyQt6
-         +HOA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version;
-        bh=efoXAtocOq8r564FtNC7W7MV8S5YzeMKfeMFve5rYsU=;
-        b=kFgN9i23BRCFHwzYZzv5y3gdmCJHH4DFsgReyTDEc2Y5ya1J6/znw2fqLzDxwuiPGU
-         F4pgb9cNUgh5hMJ23Np51E9T7EaCgqIuwhlJ3587xOcVJEv5kXzdtC6mWYeFZ6GiqqsS
-         ZiACMEeUEtxJ+lp9XsOSO7Nz9HKcg6W5LbCLTh+tsd3fVYNPxSMOJru1/KmpT5kwWMTO
-         1x96CWwn5QDKj5K2WV6T9fFdM2WmJ2xKolUxcgV+in+yPrw+dkHQtLMInhYVLQvP/M9Y
-         wK9cPumsoqVn/cT/OUX42qT2EFnbOPMGadptZa2v4iNbNxoo0XFAoKqyZPNp+GAZfB1v
-         VCaA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.192.103 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
-Return-Path: <vthakkar@vaishalithakkar.in>
-Received: from p3plsmtpa06-02.prod.phx3.secureserver.net (p3plsmtpa06-02.prod.phx3.secureserver.net. [173.201.192.103])
-        by gmr-mx.google.com with ESMTPS id b71-v6si973613ywb.3.2018.10.29.07.09.35
+        b=Kk7oIiiUF6KevgvkKWCoKGiNVZ9bmTVVST6u+hbTAjsi1zcgCyCJnPW5Y72RhFe1dO
+         QRLzJnY+toyHiA4mKv8AIyV7R64ET3KAWR31Uvea3HhTpGE8REKdvOQGOoeK+r6woHRJ
+         ZpJzuuON4WcIA6Uatshc+AOs0nrIXMlcRwa5716xHs4xlnR09EldBB43TDhRs63BNVzz
+         xBcm/T7UL0Ou/CCWkPHe1FCvIMXMzq7XiU3kHMPltBNWrW4ljMA7jsva53wv7h8UVtF2
+         a4HIa0D2ssinMKSXRl+vtg/uiYV4Lv1y1lLlUylMRZ5xcDqdMGARXLNBd3OX6R0DLxnY
+         X7wg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=oOu/1USenraJQhZNzRI8q/uk8rvFdJpj+LOwIbR1TRE=;
+        b=O0Nidh0BswbnauTwNiiiFnyZBlQ6k3x6HNCpO9sQochFTGRI/PAEp9cBLhpio6StfA
+         K/VCr2IYj5H7TrlVPhNaWrd1tnAvRKsI4b/lRrNzVOLBHZeWuryXCohdiPT7c9qmoiGp
+         9ZTG7/Qq7SBrdG5CpcA1rpHnAjWFPJvhsSc4AoHMSeMpyoOr1AZLpttAjazGCEUGyupI
+         fQ4JA0wolxEWfJBm7rDXbP0VK9AeVNJpJ6kJpa4dhbE7uG50+8L6NEt47GCfaN5v93Lu
+         N11l3+AJO8RQycwPYei36ivTlafmNfTK1Ztd8VRYhkSZRMPHgl01x79uLH/8e4e5EWqh
+         twRA==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=AGt7I0eP;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
+Return-Path: <code@wizofe.uk>
+Received: from sender-of-o51.zoho.eu (sender-of-o51.zoho.eu. [185.20.209.243])
+        by gmr-mx.google.com with ESMTPS id z129-v6si310078wmc.0.2018.10.29.07.07.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 29 Oct 2018 07:09:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.192.103 as permitted sender) client-ip=173.201.192.103;
+        Mon, 29 Oct 2018 07:07:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) client-ip=185.20.209.243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.192.103 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
-Received: from mail-wm1-f45.google.com ([209.85.128.45])
-	by :SMTPAUTH: with ESMTPSA
-	id H8EYgZJuLOvBPH8EYgZmcK; Mon, 29 Oct 2018 07:09:35 -0700
-Received: by mail-wm1-f45.google.com with SMTP id h2-v6so4585643wmb.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 29 Oct 2018 07:09:34 -0700 (PDT)
-X-Gm-Message-State: AGRZ1gLXaAK7eSjDd/n372nS/ImuMXQAEn+6Q9cCf7ZDqZbnXK2NA0Y4
-	CG8AK22qOeAwIvdWuOipaT/MVUujMlJ2eHRIbeA=
-X-Received: by 2002:a1c:88cc:: with SMTP id k195-v6mr2119589wmd.84.1540822173908;
- Mon, 29 Oct 2018 07:09:33 -0700 (PDT)
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=AGt7I0eP;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
+ARC-Seal: i=1; a=rsa-sha256; t=1540822056; cv=none; 
+	d=zoho.eu; s=zohoarc; 
+	b=OoCJn3AnAuYj2PN4MF9XkQDsY/wGr8/klBcP3kasie9cygCNF+34Pxd0odEtOwcvpuyBrwcnS2KQYLX2yik+BSFS9EtcByXVo7V/AOvXw+kixtMGaFaXCtdPMTxyob6Lo5EOmBRy5z4QeRsVxUi9lOAY1kb5L4m0JK+bgqDdzL8=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
+	t=1540822056; h=Content-Type:Cc:Date:From:MIME-Version:Message-ID:Subject:To:ARC-Authentication-Results; 
+	bh=oOu/1USenraJQhZNzRI8q/uk8rvFdJpj+LOwIbR1TRE=; 
+	b=X4hnnb3wVo1/nVXgpjNCGfmB/h1VLHTqAxGJQJmScd3/hpIHoxE6MYSbKo0D4rR9H6BtQ+/GIkiNbFWwKT5YstsRB+IvsJQtenuHdGXGpG6xelD60t2OdOPa2m9+fjZHsLF1d6GyhvWn9Ir2s2hJyYpmUMA2E+shkdt2RC+/sLI=
+ARC-Authentication-Results: i=1; mx.zoho.eu;
+	dkim=pass  header.i=wizofe.uk;
+	spf=pass  smtp.mailfrom=code@wizofe.uk;
+	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1540822056;
+	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
+	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type;
+	l=1829; bh=oOu/1USenraJQhZNzRI8q/uk8rvFdJpj+LOwIbR1TRE=;
+	b=AGt7I0ePOr6N5mzXJpWAHnzc+RJmg7jKmESjPonhgzsUowlEEUsoJy9AZjJIeisc
+	j0FpvGSPJES5JAw1ZWTuOOwTt8ZK+XN/s+rRRuETjxD/OA9Tjytug7LuO5NjB5cabfq
+	Y19zrn0oDQFWBDNcn+Jtvw76S62CXOtrA6ehwcEM=
+Received: from kvasir.local (88.151.153.114 [88.151.153.114]) by mx.zoho.eu
+	with SMTPS id 1540822054498602.4043268521312; Mon, 29 Oct 2018 15:07:34 +0100 (CET)
+Date: Mon, 29 Oct 2018 14:07:31 +0000
+From: Ioannis Valasakis <code@wizofe.uk>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org, rspringer@google.com
+Subject: [PATCH] staging: gasket Create a memory allocation path
+Message-ID: <20181029140731.GA18826@kvasir.local>
 MIME-Version: 1.0
-References: <20181029140731.GA18826@kvasir.local>
-In-Reply-To: <20181029140731.GA18826@kvasir.local>
-From: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
-Date: Mon, 29 Oct 2018 19:39:22 +0530
-X-Gmail-Original-Message-ID: <CAK-LDbKH0Z=te4vhAp49TcnUib=sHFq5vs7-OWa11fy4ygGx4A@mail.gmail.com>
-Message-ID: <CAK-LDbKH0Z=te4vhAp49TcnUib=sHFq5vs7-OWa11fy4ygGx4A@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: gasket Create a memory
- allocation path
-To: code@wizofe.uk
-Cc: outreachy-kernel@googlegroups.com, Greg KH <gregkh@linuxfoundation.org>, 
-	Rob Springer <rspringer@google.com>
-Content-Type: text/plain; charset="UTF-8"
-X-CMAE-Envelope: MS4wfJKCMI9P/5+4SCjYkzsr8OPzYLne+j8Ugk2R8sRXzUH6s+oxn+tro34NStjNCDkjPhi88EKTvVfz1hCu4GDBW6vO+f+QvXF9Q3e8FfxbKDihoEl+2oDv
- NOcWhuX62ka/iv0vLxW7PEAllWht8F4goGkg6w2uf2ReJZCEyLvTOyUIKWFvzeXi5tRJv2+B58Z6UzgerLN3XTZoGGLQisn5iuk=
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-ZohoMailClient: External
 
-On Mon, Oct 29, 2018 at 7:37 PM Ioannis Valasakis <code@wizofe.uk> wrote:
->
-> toddpoynor@google.com, benchan@chromium.org
-> Bcc:
-> Subject: [PATCH] staging: gasket: Create a memory allocation  error handling
->  path
-> Reply-To:
+toddpoynor@google.com, benchan@chromium.org
+Bcc: 
+Subject: [PATCH] staging: gasket: Create a memory allocation  error handling
+ path
+Reply-To: 
 
-Hi Ioannis,
+Create an error handling path for memory allocation. It avoid repeating
+the same assignments and returns the respective ENOMEM.
 
-This didn't work properly. Please send again and always check by sending
-it to yourself first. :)
+Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
+---
+ drivers/staging/gasket/gasket_interrupt.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-> Create an error handling path for memory allocation. It avoid repeating
-> the same assignments and returns the respective ENOMEM.
->
-> Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
-> ---
->  drivers/staging/gasket/gasket_interrupt.c | 18 +++++++++---------
->  1 file changed, 9 insertions(+), 9 deletions(-)
->
-> diff --git a/drivers/staging/gasket/gasket_interrupt.c b/drivers/staging/gasket/gasket_interrupt.c
-> index 1cfbc120f228..cdfb72af1c52 100644
-> --- a/drivers/staging/gasket/gasket_interrupt.c
-> +++ b/drivers/staging/gasket/gasket_interrupt.c
-> @@ -348,27 +348,21 @@ int gasket_interrupt_init(struct gasket_dev *gasket_dev, const char *name,
->                                                sizeof(struct msix_entry),
->                                                GFP_KERNEL);
->         if (!interrupt_data->msix_entries) {
-> -               kfree(interrupt_data);
-> -               return -ENOMEM;
-> +               goto err_alloc;
->         }
->
->         interrupt_data->eventfd_ctxs = kcalloc(num_interrupts,
->                                                sizeof(struct eventfd_ctx *),
->                                                GFP_KERNEL);
->         if (!interrupt_data->eventfd_ctxs) {
-> -               kfree(interrupt_data->msix_entries);
-> -               kfree(interrupt_data);
-> -               return -ENOMEM;
-> +               goto err_alloc;
->         }
->
->         interrupt_data->interrupt_counts = kcalloc(num_interrupts,
->                                                    sizeof(ulong),
->                                                    GFP_KERNEL);
->         if (!interrupt_data->interrupt_counts) {
-> -               kfree(interrupt_data->eventfd_ctxs);
-> -               kfree(interrupt_data->msix_entries);
-> -               kfree(interrupt_data);
-> -               return -ENOMEM;
-> +               goto err_alloc;
->         }
->
->         switch (interrupt_data->type) {
-> @@ -402,6 +396,12 @@ int gasket_interrupt_init(struct gasket_dev *gasket_dev, const char *name,
->                                     interrupt_sysfs_attrs);
->
->         return 0;
-> +
-> +err_alloc:
-> +       kfree(interrupt_data);
-> +       kfree(interrupt_data->msix_entries);
-> +       kfree(interrupt_data->eventfd_ctxs);
-> +       return -ENOMEM;
->  }
->
->  static void
-> --
-> 2.19.1
->
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20181029140731.GA18826%40kvasir.local.
-> For more options, visit https://groups.google.com/d/optout.
+diff --git a/drivers/staging/gasket/gasket_interrupt.c b/drivers/staging/gasket/gasket_interrupt.c
+index 1cfbc120f228..cdfb72af1c52 100644
+--- a/drivers/staging/gasket/gasket_interrupt.c
++++ b/drivers/staging/gasket/gasket_interrupt.c
+@@ -348,27 +348,21 @@ int gasket_interrupt_init(struct gasket_dev *gasket_dev, const char *name,
+ 					       sizeof(struct msix_entry),
+ 					       GFP_KERNEL);
+ 	if (!interrupt_data->msix_entries) {
+-		kfree(interrupt_data);
+-		return -ENOMEM;
++		goto err_alloc;
+ 	}
+ 
+ 	interrupt_data->eventfd_ctxs = kcalloc(num_interrupts,
+ 					       sizeof(struct eventfd_ctx *),
+ 					       GFP_KERNEL);
+ 	if (!interrupt_data->eventfd_ctxs) {
+-		kfree(interrupt_data->msix_entries);
+-		kfree(interrupt_data);
+-		return -ENOMEM;
++		goto err_alloc;
+ 	}
+ 
+ 	interrupt_data->interrupt_counts = kcalloc(num_interrupts,
+ 						   sizeof(ulong),
+ 						   GFP_KERNEL);
+ 	if (!interrupt_data->interrupt_counts) {
+-		kfree(interrupt_data->eventfd_ctxs);
+-		kfree(interrupt_data->msix_entries);
+-		kfree(interrupt_data);
+-		return -ENOMEM;
++		goto err_alloc;
+ 	}
+ 
+ 	switch (interrupt_data->type) {
+@@ -402,6 +396,12 @@ int gasket_interrupt_init(struct gasket_dev *gasket_dev, const char *name,
+ 				    interrupt_sysfs_attrs);
+ 
+ 	return 0;
++
++err_alloc:
++	kfree(interrupt_data);
++	kfree(interrupt_data->msix_entries);
++	kfree(interrupt_data->eventfd_ctxs);
++	return -ENOMEM;
+ }
+ 
+ static void
+-- 
+2.19.1
+
+
 
