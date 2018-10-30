@@ -1,118 +1,88 @@
-X-GM-THRID: 6388480168644575232
-X-Received: by 10.157.54.253 with SMTP id s58mr4235635otd.41.1487433949098;
-        Sat, 18 Feb 2017 08:05:49 -0800 (PST)
+X-GM-THRID: 6616747745212366848
+X-Received: by 2002:a0c:fac8:: with SMTP id p8mr438976qvo.32.1540881121415;
+        Mon, 29 Oct 2018 23:32:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.87.199 with SMTP id u190ls1240769ita.8.canary-gmail; Sat,
- 18 Feb 2017 08:05:48 -0800 (PST)
-X-Received: by 10.36.225.139 with SMTP id n133mr55291ith.9.1487433948283;
-        Sat, 18 Feb 2017 08:05:48 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id s64si687767pfk.0.2017.02.18.08.05.48
+Received: by 2002:a0c:b995:: with SMTP id v21ls4323999qvf.12.gmail; Mon, 29
+ Oct 2018 23:32:00 -0700 (PDT)
+X-Received: by 2002:a0c:b79d:: with SMTP id l29mr14127997qve.53.1540881120867;
+        Mon, 29 Oct 2018 23:32:00 -0700 (PDT)
+Received: by 2002:a37:ae04:0:0:0:0:0 with SMTP id x4-v6msqke;
+        Mon, 29 Oct 2018 23:15:32 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5cYuQ3lJZgoTuZP3wFND6WftGRiimzZnagAZNnC+j8eewUifkszUKWLiQTAALc4oysqBE3z
+X-Received: by 2002:a37:b3c1:: with SMTP id c184-v6mr14044255qkf.3.1540880132679;
+        Mon, 29 Oct 2018 23:15:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540880132; cv=none;
+        d=google.com; s=arc-20160816;
+        b=WgpX0gLFImZFnZtpjBePlV7nlnnyxpi9YTExK9PsgI77oTFE6KOgIAfB4/tCtGn1pS
+         maSD1z6npvnIz0Zeq7vNNZsLQ4R9WgzZmEOfFAdrIesn7tNnQ+kNvECaEt/CcrRIYZS0
+         p/EuERrCkUsSNJoH+RJk74ohMOLyMHAXo2DlBQgYHRahMoHytZLUsNcjdGXo2TfjDei2
+         3t29ScFdCIRDW1/RVvs/REReMYG96PY6BdBXzsOAL3vvr1McghOGaFIfEQnDJYaKstOx
+         6Ag2M/ulb4+5nmDyYGbKNJmnn7dxbPhQ9mf5wvVqEMHVoeQ9V3TwLeaEUzyGnBhfV3DR
+         9+Ig==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date;
+        bh=V5XsXTIpYBMgSCDCY9lYJpfpnh9QTefWOsyTVquXFGQ=;
+        b=QuJbrbZJ96KlgiBpgPD7hWrgE0lcPZ7SZ8wuLdaD1hy+XdrlsrfXPKMrWqKdJRcTxZ
+         dxHyXFEOUSUFh0b5rvifIcNcCiXYv2UcdD6bvJeWkAJRFM6jn1rRnGI5+IFyqQyN7BMT
+         6SzOW++OBsGF3U4IRJcyT5FYAere1j0haXwKPbn6spuABxJdOAXO6Pid4S9ACpR7Y2OT
+         eUJffToJETseRFar8ITzi6dplmA5or7QUzTqqGlWvMMSEcRhjv3vLrofSecVaZQpN99Z
+         5/W8IAj96O7fp5P6x9KHKsctat5+KA6M44035HGDEqhsuCif6YcukJvR+tfO5eVJBCky
+         EBng==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of kraxel@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kraxel@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by gmr-mx.google.com with ESMTPS id f6-v6si238428qkg.0.2018.10.29.23.15.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 18 Feb 2017 08:05:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Mon, 29 Oct 2018 23:15:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kraxel@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id c193so1644961pfb.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 18 Feb 2017 08:05:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=4KnkEqxW0tN1vWP58JfL469s8CbnhQJztjv7KQMaboA=;
-        b=EjlkOwRLx/zkmODE0xhgv9qeVYh9jcWSW5a+uXThutWwquVVK65Lcey9sLKArUPUu+
-         R3VY18mVP1lE4eXYYVhn1V+aPoqwNZ2iOiGwgglDewBrQmNRYGd8m8rPtVDvMuxFYnM3
-         fIRrPpMxD350/G1xw5kkh5DJT+p//Ff+qGgCYCv10FSbuKTMpWB2suER2oLZtM+V7Ra0
-         0g6MGyVSx5C5cbhXPYmZBlr9JgiMeYgzjYn3z9gLmR1q8pqar4uAV8Aon7G/55m6o0MM
-         rdxuEjWvmDsH2shSjnOBFHi08DXzCTbJ8A3Ma0LS+jgs4LXtNX8rB5oJRfNDHjyW1fl3
-         a5GA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=4KnkEqxW0tN1vWP58JfL469s8CbnhQJztjv7KQMaboA=;
-        b=Q3f3uMoHw1dc0j83ySVDzmwR/UJaaWYhcoRb7yeMzM0xp6gmsq8JRj8TddMVc060Wz
-         8/IW1irIs+dPdsnAG97IsbBYCnjFh68j9OXsTaFY0rH63GvTlvjHfzqIsxrujKBh5XGC
-         05DTUjU2UkXdylcStusuFiWFx8oX6mwlPdN8edY/r+woQ5hrgnYqHrLiAZ/SXL3taer4
-         CrT1im5U/iZfrJrIr4A7jiFaOXTaJzBPMF0iorfLXjO4LBkn+meMYk/vExM1rbg0v9Nm
-         zTbv7aIt3mcnrO3NYap43Bh5mO+zMjJ02VPc38vXMyLrRNclfaJegwFCeK11ZeD+9GSO
-         0sxA==
-X-Gm-Message-State: AMke39mewajWmw7xaaxPpC7JvcBd4Y20eQ0MZWZ3o3Q9DI89YUZS7uaq6qwdNWE8Hyjnpw==
-X-Received: by 10.99.105.66 with SMTP id e63mr16977982pgc.104.1487433948082;
-        Sat, 18 Feb 2017 08:05:48 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id w16sm26225139pgc.15.2017.02.18.08.05.46
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 18 Feb 2017 08:05:47 -0800 (PST)
-Date: Sat, 18 Feb 2017 21:35:45 +0530
-From: simran singhal <singhalsimran0@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+       spf=pass (google.com: domain of kraxel@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=kraxel@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E219FC049585;
+	Tue, 30 Oct 2018 06:15:31 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-116-158.ams2.redhat.com [10.36.116.158])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 9BAEF29363;
+	Tue, 30 Oct 2018 06:15:31 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+	id A924EB3DC7; Tue, 30 Oct 2018 07:15:30 +0100 (CET)
+Date: Tue, 30 Oct 2018 07:15:30 +0100
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
+Cc: Dave Airlie <airlied@redhat.com>, David Airlie <airlied@linux.ie>,
+	virtualization@lists.linux-foundation.org,
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCH 5/6] staging: rtl8192e: Fixes multiple blank lines issue
-Message-ID: <20170218160545.GA32279@singhal-Inspiron-5558>
+Subject: Re: [PATCH 0/6] drm/qxl: Remove checkpatch issues
+Message-ID: <20181030061530.3npr2e3m6uwwxbza@sirius.home.kraxel.org>
+References: <cover.1540579956.git.shayenneluzmoura@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <cover.1540579956.git.shayenneluzmoura@gmail.com>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.31]); Tue, 30 Oct 2018 06:15:32 +0000 (UTC)
 
-This patch fixes the checkpatch.pl issue:
-Please don't use multiple blank lines
+On Fri, Oct 26, 2018 at 04:20:30PM -0300, Shayenne da Luz Moura wrote:
+> This series cleans the following checkpatch.pl issues:
+> 
+> ERROR: trailing whitespace
+> WARNING: Missing a blank line after declarations
+> CHECK: Please don't use multiple blank lines
+> WARNING: Prefer 'unsigned int' to bare use of 'unsigned'
+> ERROR: space required before the open parenthesis '('
+> CHECK: Avoid using bool structure members because of possible alignment issues
 
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
----
- drivers/staging/rtl8192e/rtl819x_HT.h | 5 -----
- 1 file changed, 5 deletions(-)
+Patches queued up.
 
-diff --git a/drivers/staging/rtl8192e/rtl819x_HT.h b/drivers/staging/rtl8192e/rtl819x_HT.h
-index f53903e..eceb548 100644
---- a/drivers/staging/rtl8192e/rtl819x_HT.h
-+++ b/drivers/staging/rtl8192e/rtl819x_HT.h
-@@ -53,7 +53,6 @@ struct ht_capab_ele {
- 
- 	u8	MCS[16];
- 
--
- 	u16	ExtHTCapInfo;
- 
- 	u8	TxBFCap[4];
-@@ -62,7 +61,6 @@ struct ht_capab_ele {
- 
- } __packed;
- 
--
- struct ht_info_ele {
- 	u8	ControlChl;
- 
-@@ -101,7 +99,6 @@ enum ht_aggre_mode {
- 	HT_AGG_FORCE_DISABLE = 2,
- };
- 
--
- struct rt_hi_throughput {
- 	u8				bEnableHT;
- 	u8				bCurrentHTSupport;
-@@ -120,14 +117,12 @@ struct rt_hi_throughput {
- 
- 	enum ht_spec_ver ePeerHTSpecVer;
- 
--
- 	struct ht_capab_ele SelfHTCap;
- 	struct ht_info_ele SelfHTInfo;
- 
- 	u8				PeerHTCapBuf[32];
- 	u8				PeerHTInfoBuf[32];
- 
--
- 	u8				bAMSDU_Support;
- 	u16				nAMSDU_MaxSize;
- 	u8				bCurrent_AMSDU_Support;
--- 
-2.7.4
+thanks,
+  Gerd
 
 
