@@ -1,223 +1,180 @@
 X-GM-THRID: 6616381756005154816
-X-Received: by 2002:a5b:18f:: with SMTP id r15-v6mr145476ybl.25.1540931620064;
-        Tue, 30 Oct 2018 13:33:40 -0700 (PDT)
+X-Received: by 2002:ac2:4187:: with SMTP id z7-v6mr17089lfh.0.1540931118456;
+        Tue, 30 Oct 2018 13:25:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:ba08:: with SMTP id t8-v6ls5576529ybg.19.gmail; Tue, 30
- Oct 2018 13:33:39 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5d5lMqTJuo9z+PNuwuQdhQKS/w0fW/jnr0hZuu1SZo4c9duGvUZVA+rtV2QumJ7FQtXd/BX
-X-Received: by 2002:a25:ed5:: with SMTP id 204-v6mr188736ybo.10.1540931619164;
-        Tue, 30 Oct 2018 13:33:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540931619; cv=none;
+Received: by 2002:a2e:424d:: with SMTP id p74-v6ls54481lja.4.gmail; Tue, 30
+ Oct 2018 13:25:16 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5fAiYwS3XLUCMiys+dM1U1zNW8wEK2KriAb5IIwMl7Yz9Il1NTO6eXwTjxNH1+TzMnB/rlj
+X-Received: by 2002:a2e:350e:: with SMTP id z14-v6mr18918ljz.14.1540931116784;
+        Tue, 30 Oct 2018 13:25:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540931116; cv=none;
         d=google.com; s=arc-20160816;
-        b=MAchvkMa5sNlBaU5O4ztM/XWX2sC0upvjx4X2wH8B35Zu9XdmkfvfnQdUQWHLge4RU
-         wsSpU7i0niqZwWAm/BLzTG1Xxd5gUKhDlGmrgwVOu0L9i+2Y/HSliGNyLTzC0EROH9lo
-         wVW6KtaNahr53HJgn8E7jexq9WT7YJTxMDipCU87ALRE79tnmFPecRjno4GjTsVO6wuC
-         WatlaQcHSdtjs548YbtxQ+B0TgQ5Z2i60wkam9NuPGk/VpFUVAuzscYJOgFor4EEFQ6E
-         zyDUon66zzPdl07mRlNH+RnjaH5VgqNDbhHKDelEyCLxAqqPSZOKbgy6e1G8Eth0e77t
-         5X7A==
+        b=kkzIJ/4HMo9tb3NQskYimLawhApYtLLvtKxiUijpKnllMNEfgpLz8DuYKxPLe+CJS6
+         XdwkpGt2IWJh+/w8PGwPaeShcMVKwkTEmLTqdijsrRHaQ0gkcy13sgtqdhzpipSFF6Xl
+         vmotKl+ctGLwpmtSzL5jm7Ya6/PDmAOSKHaQye0h/kcJ3rsDe2ylxRw3B9pevRDnM6Sl
+         0kWuTPuyaWvpgxgp+B+f5XAFwuRZm0IXSuDVztAtV6HkiFj1egnMJuDncFIjlErXkS90
+         U1Ot0eSO7UCFJDOmBPaEH14zlFqjwhyAQtP0u++xs/g8R8ujqhIU52yD76tZfvfUDb78
+         2TrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=PvVU6/4hfEVaWtqaOqNuHWJ/edwbT7cUJ+lxdx0olMA=;
-        b=rVTGEiXbWkLVqJQaRUnknPeE8WaVAydBKGEyUA2Pon7tdf1Ef0kBrfna390ooYxLRN
-         tofjzNTQlRHoYlIHMhKKj+nRy+4KPk2zjS1d5hdLVXoi6jUBTOsqVqUEeSDJuUe5b30R
-         zMbByQvX5FMUMXVVhs/JNOxmKN2WUGIN7efNOPoGcYXpLiBLNB+J4PkZ/W2pnWp58yDO
-         vzdBhffD4yjMB2zVFAs/XG2VyBpVU72zBE13BrqIHbCRH3AnobtpbC1qyK1GA0Ul41cZ
-         wKhL0EGK30EmTgkYJtQPbzd3O+v7UboebKZBLrPs5WdwgT/VLxZNsGWXMKd7WOmi3Icr
-         0fBA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=UgJnORwgO+QuRDcafDyAztCd93xQMyEdLxV+WNkWvz4=;
+        b=Pgn7QWQL0+myl+Wp6wgqXtwtEnGW3E81X6NwRkTeffj7pwcoCstrUY/kDUzc+ggSuY
+         q/ctN3idq+S6eu9zZ9zX/rl0ERLGWYDQe3H9WiFW+hVAmPCJXvRpl06pq4nUxRso7xL2
+         L5NGghtZOSzZj6wdaUpmHxBq/31k0pB6QK8xpbPO3Lr4+CelwUEsIvpUXdl0gVSg11AW
+         Lu7bnQq6yjevSefSRabwjcmFZ9j15GjfbSgAsr1srct0CNLcu1IpMgBlhEVbotJFYNgN
+         WXa1AO23H50f3lcNr2xvU6bNvioblfsieaslBenaVaaHcPbsikoMh1wJgxkRpCh6T2Qz
+         qePw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=IdxLzXka;
-       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <shayenneluzmoura@gmail.com>
-Received: from mail-qt1-x841.google.com (mail-qt1-x841.google.com. [2607:f8b0:4864:20::841])
-        by gmr-mx.google.com with ESMTPS id s132-v6si1012505ywg.1.2018.10.30.13.33.39
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id z13-v6si695499ljb.4.2018.10.30.13.25.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 30 Oct 2018 13:33:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) client-ip=2607:f8b0:4864:20::841;
+        Tue, 30 Oct 2018 13:25:16 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=IdxLzXka;
-       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x841.google.com with SMTP id d14-v6so15210348qto.4
-        for <outreachy-kernel@googlegroups.com>; Tue, 30 Oct 2018 13:33:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=PvVU6/4hfEVaWtqaOqNuHWJ/edwbT7cUJ+lxdx0olMA=;
-        b=IdxLzXkaNfdilLzkRAChtXdvfeD7jrP+/ULzxFCiExZGrFThQMnOIfvDn6+ifHUeSk
-         xItZ5bNNbKVtJikpSF+Bc5IrfozAH1zlAv/hAEmtPx8Ow3ks5C3Xlx59EKPTDxHfJYCn
-         OINv7rsnMQBwkO63TT72n5PuM3b2AdVGvU6CdpHeVQsKvRmxb8RYpJ8QhKqbyGZlb4WO
-         xtpqUaVb9ViOtidlAhidUaOuv1Aj/KXCsK/bTWhLTayAS2eLf+1Sp/iYK0xq1cEeN7iD
-         tQS50UyE3c8WFYFgmJjY9PuY1s1Av1P5swNkKrToOzUUV7zmZH01eyT+1r9NG3EzjCng
-         05pw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=PvVU6/4hfEVaWtqaOqNuHWJ/edwbT7cUJ+lxdx0olMA=;
-        b=d/8ns/EgpTyAzmmWTg0VT+Lcv+fx19jCV73EP9uEDiONpg2k2rzCpXDtHLhyKLD0GX
-         7Vq7vyLKcIzIArJpgFvi00iQsIRfIOoP9UcZtFW24W9GwSW1ZP/tn8fYa/HorvPYXNkN
-         KHRJM6XhfHxNZ4w42Fs7zxTwcpT0gmaCREirwcpsO8kt9LBgE6t5HJLC1nC2jJQwAZD4
-         pcaZk8Slqw8EtcDms+XpkP067xbtvVGoYwztiUniKIw4HNPn2rOdH/AqZTpNbj2RZbRi
-         Y4ZzGI91mFSkhwfsB/aT2CVLX2eP/Jd2OkFyrsgwcWeRGaYpOfbZSv85VuoMosatAA6P
-         eAew==
-X-Gm-Message-State: AGRZ1gK6iLQxFLhfAKO0+TXKDaOq7Vv/7I7QjcbOMOt0n0cb0T8HAYXE
-	2GsFAlaPp7KYkzqtaW+31MI=
-X-Received: by 2002:ac8:4419:: with SMTP id j25-v6mr208110qtn.243.1540931618671;
-        Tue, 30 Oct 2018 13:33:38 -0700 (PDT)
-Return-Path: <shayenneluzmoura@gmail.com>
-Received: from smtp.gmail.com ([143.107.45.1])
-        by smtp.gmail.com with ESMTPSA id f75sm1788546qkf.96.2018.10.30.13.33.36
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Oct 2018 13:33:38 -0700 (PDT)
-Date: Tue, 30 Oct 2018 17:33:33 -0300
-From: Shayenne Moura <shayenneluzmoura@gmail.com>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: Himanshu Jha <himanshujha199640@gmail.com>,
-	Sasha Levin <sashal@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Hans de Goede <hdegoede@redhat.com>,
-	Michael Thayer <michael.thayer@oracle.com>,
-	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.54,445,1534802400"; 
+   d="scan'208";a="353523191"
+Received: from 89-157-201-244.rev.numericable.fr (HELO hadrien) ([89.157.201.244])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 30 Oct 2018 21:25:15 +0100
+Date: Tue, 30 Oct 2018 21:25:15 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Shayenne Moura <shayenneluzmoura@gmail.com>
+cc: Himanshu Jha <himanshujha199640@gmail.com>, 
+    Sasha Levin <sashal@kernel.org>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    Hans de Goede <hdegoede@redhat.com>, 
+    Michael Thayer <michael.thayer@oracle.com>, devel@driverdev.osuosl.org, 
+    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [RESEND PATCH 2/2] staging: vboxvideo: Use
  unsigned int instead bool
-Message-ID: <20181030203333.2eh7hcpcndukjs52@smtp.gmail.com>
-References: <cover.1540580493.git.shayenneluzmoura@gmail.com>
- <211701e4ae42acd95afb24713314bce5a4c58ecf.1540580493.git.shayenneluzmoura@gmail.com>
- <20181026204225.GH2015@sasha-vm>
- <20181028075209.GA1938@himanshu-Vostro-3559>
- <alpine.DEB.2.21.1810280932030.2450@hadrien>
- <20181028112011.GA5157@himanshu-Vostro-3559>
- <alpine.DEB.2.21.1810281243420.2433@hadrien>
- <20181030201816.joihhwd7htgixo5i@smtp.gmail.com>
- <alpine.DEB.2.21.1810302122290.2949@hadrien>
+In-Reply-To: <20181030201816.joihhwd7htgixo5i@smtp.gmail.com>
+Message-ID: <alpine.DEB.2.21.1810302122290.2949@hadrien>
+References: <cover.1540580493.git.shayenneluzmoura@gmail.com> <211701e4ae42acd95afb24713314bce5a4c58ecf.1540580493.git.shayenneluzmoura@gmail.com> <20181026204225.GH2015@sasha-vm> <20181028075209.GA1938@himanshu-Vostro-3559> <alpine.DEB.2.21.1810280932030.2450@hadrien>
+ <20181028112011.GA5157@himanshu-Vostro-3559> <alpine.DEB.2.21.1810281243420.2433@hadrien> <20181030201816.joihhwd7htgixo5i@smtp.gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.21.1810302122290.2949@hadrien>
-User-Agent: NeoMutt/20171215
+Content-Type: text/plain; charset=US-ASCII
 
-On 10/30, Julia Lawall wrote:
-> 
-> On Tue, 30 Oct 2018, Shayenne Moura wrote:
-> 
-> > Hi,
+
+
+On Tue, 30 Oct 2018, Shayenne Moura wrote:
+
+> Hi,
+>
+> > On Sun, 28 Oct 2018, Himanshu Jha wrote:
 > >
-> > > On Sun, 28 Oct 2018, Himanshu Jha wrote:
-> > >
-> > > > On Sun, Oct 28, 2018 at 09:47:15AM +0100, Julia Lawall wrote:
-> > > > > > The "possible alignement issues" in CHECK report is difficult to figure
-> > > > > > out by just doing a glance analysis. :)
-> > > > > >
-> > > > > > Linus also suggested to use bool as the base type i.e., `bool x:1` but
-> > > > > > again sizeof(_Bool) is implementation defined ranging from 1-4 bytes.
+> > > On Sun, Oct 28, 2018 at 09:47:15AM +0100, Julia Lawall wrote:
+> > > > > The "possible alignement issues" in CHECK report is difficult to figure
+> > > > > out by just doing a glance analysis. :)
 > > > > >
-> > > > > If bool x:1 has the size of bool, then wouldn't int x:1 have the size of
-> > > > > int?  But my little experiments suggest that the size is the smallest that
-> > > > > fits the requested bits and alignment chosen by the compiler, regardless of
-> > > > > the type.
+> > > > > Linus also suggested to use bool as the base type i.e., `bool x:1` but
+> > > > > again sizeof(_Bool) is implementation defined ranging from 1-4 bytes.
 > > > >
-> > > > Yes, correct!
-> > > > And we can't use sizeof on bitfields *directly*, nor reference it using a
-> > > > pointer.
-> > > >
-> > > > It can be applied only when these bitfields are wrapped in a structure.
-> > > >
-> > > > Testing:
-> > > >
-> > > > #include <stdio.h>
-> > > > #include <stdbool.h>
-> > > >
-> > > > struct S {
-> > > > bool a:1;
-> > > > bool b:1;
-> > > > bool c:1;
-> > > > bool d:1;
-> > > > };
-> > > >
-> > > > int main(void)
-> > > > {
-> > > >     printf("%zu\n", sizeof(struct S));
-> > > > }
-> > > >
-> > > > Output: 1
-> > > >
-> > > > If I change all bool to unsigned int, output is: *4*.
-> > > >
-> > > > So, conclusion is compiler doesn't squeeze the size less than
-> > > > native size of the datatype i.e., if we changed all members to
-> > > > unsigned int:1,
-> > > > total width = 4 bits
-> > > > padding = 4 bits
-> > > >
-> > > > Therefore, total size should have been = 1 byte!
-> > > > But since sizeof(unsigned int) == 4, it can't be squeezed to
-> > > > less than it.
+> > > > If bool x:1 has the size of bool, then wouldn't int x:1 have the size of
+> > > > int?  But my little experiments suggest that the size is the smallest that
+> > > > fits the requested bits and alignment chosen by the compiler, regardless of
+> > > > the type.
 > > >
-> > > This conclusion does not seem to be correct, if you try the following
-> > > program.  I get 4 for everything, meaning that the four unsigned int bits
-> > > are getting squeezed into one byte when it is convenient.
+> > > Yes, correct!
+> > > And we can't use sizeof on bitfields *directly*, nor reference it using a
+> > > pointer.
+> > >
+> > > It can be applied only when these bitfields are wrapped in a structure.
+> > >
+> > > Testing:
 > > >
 > > > #include <stdio.h>
 > > > #include <stdbool.h>
 > > >
-> > > struct S1 {
+> > > struct S {
 > > > bool a:1;
 > > > bool b:1;
 > > > bool c:1;
 > > > bool d:1;
-> > > char a1;
-> > > char a2;
-> > > char a3;
-> > > };
-> > >
-> > > struct S2 {
-> > > unsigned int a:1;
-> > > unsigned int b:1;
-> > > unsigned int c:1;
-> > > unsigned int d:1;
-> > > char a1;
-> > > char a2;
-> > > char a3;
 > > > };
 > > >
 > > > int main(void)
 > > > {
-> > >     printf("%zu\n", sizeof(struct S1));
-> > >     printf("%zu\n", sizeof(struct S2));
-> > >     printf("%zu\n", sizeof(unsigned int));
+> > >     printf("%zu\n", sizeof(struct S));
 > > > }
 > > >
-> > > > Well, int x:1 can either have 0..1 or -1..0 range due implementation
-> > > > defined behavior as I said in the previous reply.
-> > > >
-> > > > If you really want to consider negative values, then make it explicit
-> > > > using `signed int x:1` which make range guaranteed to be -1..0
+> > > Output: 1
 > > >
-> > > The code wants booleans, not negative values.
+> > > If I change all bool to unsigned int, output is: *4*.
 > > >
-> > > julia
+> > > So, conclusion is compiler doesn't squeeze the size less than
+> > > native size of the datatype i.e., if we changed all members to
+> > > unsigned int:1,
+> > > total width = 4 bits
+> > > padding = 4 bits
+> > >
+> > > Therefore, total size should have been = 1 byte!
+> > > But since sizeof(unsigned int) == 4, it can't be squeezed to
+> > > less than it.
 > >
-> > Thank you all for the discussion!
+> > This conclusion does not seem to be correct, if you try the following
+> > program.  I get 4 for everything, meaning that the four unsigned int bits
+> > are getting squeezed into one byte when it is convenient.
 > >
-> > However, I think I do not understand the conclusion.
+> > #include <stdio.h>
+> > #include <stdbool.h>
 > >
-> > It means that the best way is to use only boolean instead of use unsigned
-> > int with bitfield? I mean specifically in the case of my patch, where there
-> > are some boolean variables are mixed with other variables types.
-> 
-> To my recollection, your code had a bool with larger types on either side.
-> In that case, I think bool is fine.  The compiler it likely to align those
-> larger typed values such that the field with the bool type will get more
-> than one byte no matter what type you use.  If there are several fields
-> with very small types adjacent, there might be some benefit to thinking
-> about what the type should be.
-> 
-> julia
+> > struct S1 {
+> > bool a:1;
+> > bool b:1;
+> > bool c:1;
+> > bool d:1;
+> > char a1;
+> > char a2;
+> > char a3;
+> > };
+> >
+> > struct S2 {
+> > unsigned int a:1;
+> > unsigned int b:1;
+> > unsigned int c:1;
+> > unsigned int d:1;
+> > char a1;
+> > char a2;
+> > char a3;
+> > };
+> >
+> > int main(void)
+> > {
+> >     printf("%zu\n", sizeof(struct S1));
+> >     printf("%zu\n", sizeof(struct S2));
+> >     printf("%zu\n", sizeof(unsigned int));
+> > }
+> >
+> > > Well, int x:1 can either have 0..1 or -1..0 range due implementation
+> > > defined behavior as I said in the previous reply.
+> > >
+> > > If you really want to consider negative values, then make it explicit
+> > > using `signed int x:1` which make range guaranteed to be -1..0
+> >
+> > The code wants booleans, not negative values.
+> >
+> > julia
+>
+> Thank you all for the discussion!
+>
+> However, I think I do not understand the conclusion.
+>
+> It means that the best way is to use only boolean instead of use unsigned
+> int with bitfield? I mean specifically in the case of my patch, where there
+> are some boolean variables are mixed with other variables types.
 
-Got it! Thank you!
+To my recollection, your code had a bool with larger types on either side.
+In that case, I think bool is fine.  The compiler it likely to align those
+larger typed values such that the field with the bool type will get more
+than one byte no matter what type you use.  If there are several fields
+with very small types adjacent, there might be some benefit to thinking
+about what the type should be.
+
+julia
 
