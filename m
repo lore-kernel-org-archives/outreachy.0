@@ -1,138 +1,127 @@
 X-GM-THRID: 6615609378154217472
-X-Received: by 2002:a9f:2e10:: with SMTP id t16mr779784uaj.24.1540943311682;
-        Tue, 30 Oct 2018 16:48:31 -0700 (PDT)
+X-Received: by 2002:a5e:8213:: with SMTP id l19-v6mr558086iom.3.1540941482876;
+        Tue, 30 Oct 2018 16:18:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ab0:3242:: with SMTP id r2ls1165663uan.1.gmail; Tue, 30 Oct
- 2018 16:48:30 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5dSCT8NI46SRWDo7t9GC01pvtzwXCnuVQyuLZQCa1MUSGTX/9Ust4izBG3cLG6AL8qisId3
-X-Received: by 2002:ab0:2151:: with SMTP id t17mr800105ual.8.1540943310894;
-        Tue, 30 Oct 2018 16:48:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540943310; cv=none;
+Received: by 2002:a6b:b007:: with SMTP id z7-v6ls3845088ioe.6.gmail; Tue, 30
+ Oct 2018 16:18:01 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5cgsLF7hVDX0bhyIz6HFexBzOuXP6VGq8+yRj/71PUybn5ekOraa32ASXUvEqVt3QFWSsPB
+X-Received: by 2002:a6b:3c04:: with SMTP id k4-v6mr532704iob.37.1540941481918;
+        Tue, 30 Oct 2018 16:18:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540941481; cv=none;
         d=google.com; s=arc-20160816;
-        b=n2RSkB5mpJmEWQuuYKfiENowHWFNlckxuPSTuIx50uMOnN5tcCjsd4N56wz4jxWtud
-         oFnl7CIBrd05Bs+FkB1PwmRUJCC8E5JlVYK2khv6TYEgRVtAJPTOc4sDXyE07anvbqdh
-         PPZYXD8PHSMHl6+i637D6AVG7SQA10AFPThwjskucjq6sVMLXRzLYyaGZW68SqaVicVG
-         SZrwg9Y2TbWMMLvyTCQfhazbLKX9X+nOBZV0YF5zUTXovzOw0unXXTJp6ENZNSLgrKJM
-         EZiK5clcvxQngJrMiNMZMeIxOuWaQ/FinLPl/Law+T9LHw5CLTRiFfudd9pNB+Hcgzy6
-         7T/g==
+        b=JLgZIX6pIB074Q9jE1NSQIrwOMSZymXHzFRwPXdqabUK+qLPM/6xc7xu/pgW6Hs/7R
+         f1ZWhcPNxhAFwp0JWLhibzGJz5ZaECaiiGGtAeA3vnQ3p8bZOXS0f9+DbjXwW8j57IkN
+         buGEgywyKa4kHSFBC1z529Z3qdNhmbjnSIz8gj1gLnfvZcU/wIHMPyiuSqiMfUiFCnEU
+         92cT4fb8gVmz8Y3e6g787Zfxxtsl2jie2ObOHMsfBDzvVPFkpga4PdFuV9vZMU3OmF+d
+         sUBDM5RlpVHhKkiB5Q58NJiYsMUdkgAcxAWAvElU/qgzsG5TVWBJ7IBafDsBBH6C4TW4
+         3dgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=uzlRdCP6eEWgmNRew0+XT2kujO4ROMcVJLTenLnnJyE=;
-        b=N+7YsBQqVatk8/zhsUcfkc+bzGv8R1Tn4XkzsA/KlFLzmkajYIBppBDkRTKK4Qgc72
-         frPmET5QeEFiu9rGlZsf1wkJg6e0sP9W8tGUmrAO0M7WTwfXrcFLK3qruMsN3OFEfLrv
-         3LKy09CqXfYvLrT0FivjSpaZ4Cwb9G4iDrNdReeazOCjC5AFKetVuhzfRHGOwcYEAAMt
-         nlvq45uNOntXQLGQ20uF/n3xSSNf9aQeQ+PNiEg317hcWJ1U9yG7o6X4mrWWLeOKsolv
-         bumAK+ZxwtyZ8e8YShVHICEUdoALSIPcTTqEawVhNrlSugyj01PukLJzRETfS913VGtC
-         lOug==
+        bh=R4FfmyudWt22yr3GuUsX1lBmqq2M04khVTuNGRj1dc4=;
+        b=bV7g0FLZLDKUq0InKf0wkqgk5ILw8VJXwTkccB4mIdEIuCSLFTzQM+gU8I1KL8wFRF
+         bavcYHUoJXxz+g8ZwQ345WJk2gcFpN60qIRsqcRDQvQlBQZLrUQvU4sharSg4GfjrmnG
+         g7KvUgVrPMYexZEcgna5FDJL8ZfQ8Vy/JpMarKbi9H+vqelfngHf/eo8EXTssJ24RAUm
+         JuQ8h6vSD9hea3tgEHeKM0ShCAXZJoecZ9TxU00OlQcOZK+jef3u6C3Bfj4rNdZib8+n
+         wS9BgaSytwoBuFaKPKR0aNgoT8MdLp7RpzgMwp94yHdRny8lYSgOHVu6Z4WMKzB++YvW
+         jMqQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=YPsFXy1l;
-       spf=pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=sashal@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <sashal@kernel.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id w9si1663307uac.0.2018.10.30.16.48.30
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FSiijJ+q;
+       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::72f as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <shayenneluzmoura@gmail.com>
+Received: from mail-qk1-x72f.google.com (mail-qk1-x72f.google.com. [2607:f8b0:4864:20::72f])
+        by gmr-mx.google.com with ESMTPS id b1-v6si226902itj.2.2018.10.30.16.18.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 30 Oct 2018 16:48:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Tue, 30 Oct 2018 16:18:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::72f as permitted sender) client-ip=2607:f8b0:4864:20::72f;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=YPsFXy1l;
-       spf=pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=sashal@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from localhost (c-73-47-72-35.hsd1.nh.comcast.net [73.47.72.35])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 4F57E20664;
-	Tue, 30 Oct 2018 23:48:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1540943309;
-	bh=tQvdvlGKC1GYeWAqrIHE3DZX2qLlzwJgnExnwbLwi1k=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YPsFXy1lqVid3qsFTFXsq3CfwvXYUgnkeV/XvwIerRdr7UWSKKXW7FY7Yonr/RmoX
-	 EzMcYZAPGZ5OFC6yMlwNqxi9vo82rNxigIvWPVrMpLb0Lshm8jMF82+kE8AUIZUoSy
-	 7nn/GEujdPuNz8sms4QLC6xn317H2AqdH+kgWMY0=
-Date: Tue, 30 Oct 2018 19:48:26 -0400
-From: Sasha Levin <sashal@kernel.org>
-To: Shayenne Moura <shayenneluzmoura@gmail.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Hans de Goede <hdegoede@redhat.com>,
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FSiijJ+q;
+       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::72f as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-qk1-x72f.google.com with SMTP id o89so8430556qko.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 30 Oct 2018 16:18:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=R4FfmyudWt22yr3GuUsX1lBmqq2M04khVTuNGRj1dc4=;
+        b=FSiijJ+qyZc8Gd3BrQEIT4zszQZz8FY2xCdyIVFNQkundmNKxd0cqC11QWPUrVDQdU
+         4WgU0LyH/3IGr57y04ElyyY2zxklvZURb36l2HQgv9RLacYYMZSkrcKcj//RkWBFvoLn
+         Hl2kmBCX90wVXHHb6BrZOIzQ94pvdATh7Ck+Jk42uG5HRjwlGR+sA5iQ7seU2aiWbZBw
+         UuJ1Owr4AOp0c1o0ex87065mMhwhNsAaMvrIxFjYyTALMaEQ1bfQvLkjtC9KPBfsdZRq
+         QQOJ7bBRID4Nlc/H9nond8l8t0GNRdOV9CGUzEZjj+9A9Ba6npNbNr2ZMLhzDaUb5q+S
+         Wy3w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=R4FfmyudWt22yr3GuUsX1lBmqq2M04khVTuNGRj1dc4=;
+        b=ZNoQkky2t0YK+2+Op3EZgPAHfsx95x9StiJxBdPqMnwlmkr1IDwsZKWzE54k/8ZXk7
+         VqGkCG/JQQrPzNqeCU4SKfv1FCmc9tPtnxyzpPGNW5dhnSAs52PsJJVTbD+9S9Sjhscj
+         WpOAfrAojc+QL5QgSag51D4GSLDZNGYK8+iITcfhw1Sydptr7+sxQGNBkOvXoT9o2oS6
+         ugF4vEJOIDBRsy7roYP1p31ebZTQ1LJKgxgBqxOn9gEW96P30nj/ZS297vd65rzQv1Nu
+         UTT3XaO2so9DZAZfPUeyQWPccX2Sh2heI2FwZQVY+ryfvtHNjTdf/J9dhq8JWuWpAnph
+         7joQ==
+X-Gm-Message-State: AGRZ1gKGfNIAk5Rw44GsPdlenj6E/K1qg0Y0zq5HOOFUITEniIQVZ5PU
+	xgfpuAW8dM/p4EAoBhmJtNEK0KhdlYg=
+X-Received: by 2002:a37:a09:: with SMTP id 9mr591188qkk.339.1540941481438;
+        Tue, 30 Oct 2018 16:18:01 -0700 (PDT)
+Return-Path: <shayenneluzmoura@gmail.com>
+Received: from smtp.gmail.com ([143.107.45.1])
+        by smtp.gmail.com with ESMTPSA id c79-v6sm21125836qka.83.2018.10.30.16.17.59
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 30 Oct 2018 16:18:00 -0700 (PDT)
+Date: Tue, 30 Oct 2018 20:17:57 -0300
+From: Shayenne Moura <shayenneluzmoura@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Hans de Goede <hdegoede@redhat.com>,
 	Michael Thayer <michael.thayer@oracle.com>,
 	devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com,
 	linux-kernel@vger.kernel.org
-Subject: Re: [Outreachy kernel] Re: [PATCH v2] staging: vboxvideo: Remove
- unnecessary parentheses
-Message-ID: <20181030234826.GE194472@sasha-vm>
+Subject: Re: [PATCH v2] staging: vboxvideo: Remove unnecessary parentheses
+Message-ID: <20181030231757.24ooubt25oykmgkt@smtp.gmail.com>
 References: <20181023174304.iq4ra7vafwujr3ex@smtp.gmail.com>
  <20181030092539.GA10009@kroah.com>
- <20181030231757.24ooubt25oykmgkt@smtp.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20181030231757.24ooubt25oykmgkt@smtp.gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <20181030092539.GA10009@kroah.com>
+User-Agent: NeoMutt/20171215
 
-On Tue, Oct 30, 2018 at 08:17:57PM -0300, Shayenne Moura wrote:
->On 10/30, Greg Kroah-Hartman wrote:
->> On Tue, Oct 23, 2018 at 02:43:04PM -0300, Shayenne da Luz Moura wrote:
->> > Remove unneeded parentheses around the arguments of ||. This reduces
->> > clutter and code behave in the same way.
->> > Change suggested by checkpatch.pl.
->> >
->> > vbox_main.c:119: CHECK: Unnecessary parentheses around 'rects[i].x2 <
->> > crtc->x'
->> >
->> > Signed-off-by: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
->> > Reviewed-by: Hans de Goede <hdegoede@redhat.com>
->> > ---
->> > Changes in v2:
->> >   - Make the commit message more clearer.
->>
->> This patch does not apply to the latest kernel tree at all :(
->>
->> Please fix up and resend.
->>
->> thanks,
->>
->> greg k-h
->
->Hi Greg!
->
->Sorry, I do not know what branch are expected to be used.
->I used the drm-misc-next to create this patch and I could not
->find any merge problem.
->
->Could you please tell me the details?
+On 10/30, Greg Kroah-Hartman wrote:
+> On Tue, Oct 23, 2018 at 02:43:04PM -0300, Shayenne da Luz Moura wrote:
+> > Remove unneeded parentheses around the arguments of ||. This reduces
+> > clutter and code behave in the same way.
+> > Change suggested by checkpatch.pl.
+> > 
+> > vbox_main.c:119: CHECK: Unnecessary parentheses around 'rects[i].x2 <
+> > crtc->x'
+> > 
+> > Signed-off-by: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
+> > Reviewed-by: Hans de Goede <hdegoede@redhat.com>
+> > ---
+> > Changes in v2:
+> >   - Make the commit message more clearer.
+> 
+> This patch does not apply to the latest kernel tree at all :(
+> 
+> Please fix up and resend.
+> 
+> thanks,
+> 
+> greg k-h
 
-Hi Shayenne,
+Hi Greg!
 
-There's an easy trick for this: the kernel tree has a script that can
-help you find both the relevant maintainers, and their development tree
-for each file in the kernel.
+Sorry, I do not know what branch are expected to be used.
+I used the drm-misc-next to create this patch and I could not
+find any merge problem.
 
-Simply run:
+Could you please tell me the details?
 
-	./scripts/get_maintainer.pl --scm -f [filename]
-
-For example, in this case, you'd run:
-
-	$ ./scripts/get_maintainer.pl --scm -f drivers/staging/vboxvideo/vbox_main.c
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org> (supporter:STAGING SUBSYSTEM,commit_signer:10/10=100%)
-	Hans de Goede <hdegoede@redhat.com> (commit_signer:7/10=70%,authored:6/10=60%,added_lines:31/37=84%,removed_lines:153/159=96%)
-	Fabio Rafael da Rosa <fdr@pid42.net> (commit_signer:1/10=10%,authored:1/10=10%)
-	Alexander Kapshuk <alexander.kapshuk@gmail.com> (commit_signer:1/10=10%,authored:1/10=10%)
-	Nicholas Mc Guire <der.herr@hofr.at> (commit_signer:1/10=10%)
-	Thomas Zimmermann <tzimmermann@suse.de> (authored:1/10=10%,added_lines:2/37=5%)
-	Daniel Junho <djunho@gmail.com> (authored:1/10=10%,added_lines:2/37=5%)
-	devel@driverdev.osuosl.org (open list:STAGING SUBSYSTEM)
-	linux-kernel@vger.kernel.org (open list)
-	git git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
-
-The list of people and mailing lists are the ones that should be the
-recipients of your patch, and the last line is the git tree on which the
-patch should be based on.
-
---
 Thanks,
-Sasha
+
+Shayenne
 
