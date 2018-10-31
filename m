@@ -1,120 +1,140 @@
-X-GM-THRID: 6671534120557871104
-X-Received: by 2002:aed:3a41:: with SMTP id n59mr12509679qte.344.1553337583292;
-        Sat, 23 Mar 2019 03:39:43 -0700 (PDT)
+X-GM-THRID: 6615609378154217472
+X-Received: by 2002:a0c:baa5:: with SMTP id x37-v6mr2367746qvf.41.1541000018154;
+        Wed, 31 Oct 2018 08:33:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:8b55:: with SMTP id d21ls590640qvc.2.gmail; Sat, 23 Mar
- 2019 03:39:42 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw9aFKIHmbMJIc4KHPodXw3yktB7bvGE/TtOYxIL58bxG5hSRFxyksHr3FBLXix8S5uwqQT
-X-Received: by 2002:a0c:9524:: with SMTP id l33mr11813742qvl.41.1553337582661;
-        Sat, 23 Mar 2019 03:39:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553337582; cv=none;
+Received: by 2002:ac8:ca:: with SMTP id d10-v6ls283531qtg.5.gmail; Wed, 31 Oct
+ 2018 08:33:37 -0700 (PDT)
+X-Received: by 2002:ac8:520b:: with SMTP id r11-v6mr2497148qtn.4.1541000017750;
+        Wed, 31 Oct 2018 08:33:37 -0700 (PDT)
+Received: by 2002:a37:3411:0:0:0:0:0 with SMTP id b17msqka;
+        Wed, 31 Oct 2018 08:32:11 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5fzqsxK6gscajpcPoxkeMEzwIP344beNxbpa/fIxB2k1zB+WzGsNcgClNbR3ZIa0JTpyosb
+X-Received: by 2002:aa7:da54:: with SMTP id w20-v6mr604970eds.7.1540999930550;
+        Wed, 31 Oct 2018 08:32:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540999930; cv=none;
         d=google.com; s=arc-20160816;
-        b=nGores+69w82zIOBrA5f19JbyweJEvrTw1sNEo+V5Y6FfbJ8WPisC7YHiPRI1zEk81
-         wCay8uRW6rmtWNCdJMgtdfAoT86o4Qfi7bbhWiWL27eUhqoITvFHZSDy4pj8TUyPpOqk
-         hrOEJ/gYaCuWzHUPUYOQBZ1Jx5K0JA9DpTDAWANLxOhNYHK77dTpdYjGYbKW+zxNyLGw
-         uX37mDL1snMowFLEAG+KziT6YNvazuZttz6SvkApcF9PT3cIR3ek+qTRy28QN0NnPLxq
-         8uSD0oZR28BKSEF7FUz/nylVG1KlZQRvmp7qX3402RPe+GIiL74h+jjrPKi8GGQEHIRq
-         5zOg==
+        b=YoqKsWQ1hSraQ2wL4K+wszH7TXnMeXC07FHbO4S4toacPCajjDWn3loVywgUBidp7L
+         qHqC7f2TaE5WagXKtIWr4N6fbrtsGuWkl8wkdD03v3iioLDfWOrs56g1yl7XPWkMSkDM
+         ufsVELJpThuiVWw2K0SfB7H9/4gx3d2djIYdjuFo804Fwap+90FY1eZnyP13IwybEKBc
+         hxb+H/LzUhBEg+6C60g06iPX6esm4WJyaVuCynEOn52V5lxG7rqrzihl6NlOIhSN/VYs
+         6qdIgcxOcE6gXZKjrsyGYWRtgBXxVc65xcJ/hCZK6lIaCIMfZ8X8n3SWz5F00bYRdDdL
+         IjPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ThU9cMNLVWdkfgeChg+TvlSDMW9sxI9Xs5ZnPczGJNk=;
-        b=V5RS853AzjAdJOu/wm72/FyYMS45+i00O5rCNaTlhVNFMVacEV6Q38oy579xXYQZm/
-         wh555CEikVT5VDaS7wmV4lUQZzUUK5qFe7QcXkXvtKLHLZ9FVPPYZVCpR+Eci4S/2X04
-         waNp+NzqYwnW+7GPu7TeM7oe2vQoY/15OFk47YQiyGU16C2zTiavujlAP+kR70xbjJUn
-         lhaJFBfPgBe6cqC8KeDwPpfNIAWheN5HR92ZAet+gigsxxHxe4smZ4NrZBqQINX0Ivw7
-         uXxow9qtfTt0kU3sgGmeym79B0B9DeYoSA8hed8Rbou3g4N+ZOl1uc7P3o9lRH5MHe9H
-         5sYQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject;
+        bh=dFuuzzVervNWZbqFaBXGxKSUYAoP4Ka5Yu9PHg0JzAo=;
+        b=g/bD+IAeQ7uBcsLWYqtXV7xUPW0FnwftW3FNsH4YyG7fCanz2HZ/hgmfRmski2l1HF
+         BVfXyYFWoU8jGrIP0BKEByztpjqLyhRf5pjNRyqFQlftKv+pOecCAxSz00g6NOh2Cf6i
+         9YOAdfIKy43YUlxkOk1TURlA/yZd9fHTVftqcASCtU2MFo75/zub4JqkgIuNo8wCi7rO
+         quk1GIYfRSJ9Vnk9EWn1gY1UrcokY6psRhYpGkl2E2aCzU/+sqT20pTiIbU1crO7/5J4
+         SIpU5k9z5XOes5EW4aF7QbD+EEbbn9/MhC4+sntZq7+RiTTSLq/Av3z6Xl1IGnQbd3NK
+         u9Ag==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=um5wAclj;
-       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::533 as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <vatsalanarang@gmail.com>
-Received: from mail-pg1-x533.google.com (mail-pg1-x533.google.com. [2607:f8b0:4864:20::533])
-        by gmr-mx.google.com with ESMTPS id y1si434030qth.5.2019.03.23.03.39.42
+       spf=pass (google.com: domain of hdegoede@redhat.com designates 209.85.221.66 as permitted sender) smtp.mailfrom=hdegoede@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <hdegoede@redhat.com>
+Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com. [209.85.221.66])
+        by gmr-mx.google.com with ESMTPS id x43-v6si826463edd.4.2018.10.31.08.32.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Mar 2019 03:39:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::533 as permitted sender) client-ip=2607:f8b0:4864:20::533;
+        Wed, 31 Oct 2018 08:32:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hdegoede@redhat.com designates 209.85.221.66 as permitted sender) client-ip=209.85.221.66;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=um5wAclj;
-       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::533 as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x533.google.com with SMTP id b12so3233230pgk.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 23 Mar 2019 03:39:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=ThU9cMNLVWdkfgeChg+TvlSDMW9sxI9Xs5ZnPczGJNk=;
-        b=um5wAcljMQOhRvMM8rPw3U0vf1wXg0DV1ttGOY1YbEpiKcsqv7xPjnh0uAlMcxn/Iw
-         93Vq/2bFuUHJ/T/xyw1cPodh5mHKsXSQ0z88bSgG7Au0zA0bJtd5Y19h01SpS1O55Uj0
-         YUi7eRctGnmo8GQf1rXQL92rUCL8xwtmNf58UX9Y42u2hD0inOTzBzDohx1i53rdlJYz
-         Gl7i8HWcd/WPeBUXttCuub1OSEO0qfwYdmTyPcE5R7IKcyb3gP6P7HPffcWtrkFN/2od
-         THzeGreGQ2ACpQFeVerSy6IhezbAbx4i2gAaoVk+op+51GPRf3F88x8HHLElHeITHG3C
-         h6GQ==
+       spf=pass (google.com: domain of hdegoede@redhat.com designates 209.85.221.66 as permitted sender) smtp.mailfrom=hdegoede@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: by mail-wr1-f66.google.com with SMTP id r10-v6so16988354wrv.6
+        for <outreachy-kernel@googlegroups.com>; Wed, 31 Oct 2018 08:32:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=ThU9cMNLVWdkfgeChg+TvlSDMW9sxI9Xs5ZnPczGJNk=;
-        b=AwHM4K3fv9S7oaPCcgbVA+H7Ri15PIBzTXXGGe0HTohgYwzT1dXG3PCbDKOEqpdoxQ
-         2A+6z8ApNRnIM03Ba3rMl4bkFsr1RK+4i3bSDCcKM9l6ktw8M1+KCKnLCO/5wwrBlTtF
-         h268d8Lz8pcbXfkmSRA0vMhQpXURZXY9crfWjOilJ4sLqYVdOge+nMn8oydf5MVNsjkQ
-         6t70gFQ1clPFMeDv2fuRCJj6TL2ZR5y0E1nfwuMBuzdWyUTDFGcsUmNAGr+mhC4f65dh
-         WIgLVCTpAKeA7tCj+kLKJF8i+UCAJfq432TaxvmHK3wxi+Qcj3cjxJye8sIISdp+6mGm
-         dXEQ==
-X-Gm-Message-State: APjAAAUTB5w466j7JGRYV01tSpokn3GQRc2tq2DAY7FXt8chnUMCbIsz
-	tmHC21GBvexnCktbnGLfDa6tMMwjBCY=
-X-Received: by 2002:a62:7042:: with SMTP id l63mr13689601pfc.1.1553337582096;
-        Sat, 23 Mar 2019 03:39:42 -0700 (PDT)
-Return-Path: <vatsalanarang@gmail.com>
-Received: from localhost.localdomain ([103.87.57.188])
-        by smtp.gmail.com with ESMTPSA id n9sm10401301pff.43.2019.03.23.03.39.38
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=dFuuzzVervNWZbqFaBXGxKSUYAoP4Ka5Yu9PHg0JzAo=;
+        b=G6WQv3YfMZa4EMZZCtW2OHi0utoZ6tHbl3t/bc60OLwGxjIMz70+fnfLDITsfeNcvw
+         ZiQHh8Kb/W0aj+Z754sqUxHy+Oeekae5mQUq5E4XaHQjdjYv1XGEpZHaSTLP62kM70RA
+         PLvLkKaJT62nmHSXwiEcqA9iBuKoeBkk8S3iT9SepLMVpIf3l13JefGLeXlW3tAFIk2C
+         XF1rmIQTdmpsmkVmU/CwQ/Dldxc3UliCGVT/VqIQGnXAe1PEvz0m6nHz6nSwD+pLoPiI
+         lQ//qCtgO42MbHq7XiQXLs9a/CU3JqyPROOu9DF04T5rhTlX3Hp39sxS17CmVZz5gtFi
+         yHiQ==
+X-Gm-Message-State: AGRZ1gIcIXJ2TZVzSnev4zyWRcGXTrVNwcSl89xFhCNdo7TOnkO52dyi
+	9NnyZmrmWLjZr2CqYOHXjrC8NL5qbco=
+X-Received: by 2002:adf:c389:: with SMTP id p9-v6mr3397285wrf.68.1540999929555;
+        Wed, 31 Oct 2018 08:32:09 -0700 (PDT)
+Return-Path: <hdegoede@redhat.com>
+Received: from shalem.localdomain (546A5441.cm-12-3b.dynamic.ziggo.nl. [84.106.84.65])
+        by smtp.gmail.com with ESMTPSA id y138-v6sm13535252wmd.2.2018.10.31.08.32.08
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Mar 2019 03:39:40 -0700 (PDT)
-From: Vatsala Narang <vatsalanarang@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	Vatsala Narang <vatsalanarang@gmail.com>
-Subject: [PATCH] staging: rtl8723bs: include: Fix spelling mistake
-Date: Sat, 23 Mar 2019 16:09:24 +0530
-Message-Id: <20190323103924.30638-1-vatsalanarang@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        Wed, 31 Oct 2018 08:32:08 -0700 (PDT)
+Subject: Re: [PATCH v3] staging: vboxvideo: Remove unnecessary parentheses
+To: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Michael Thayer <michael.thayer@oracle.com>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ outreachy-kernel@googlegroups.com
+References: <20181031150326.yikoivqgwfurtrg4@smtp.gmail.com>
+From: Hans de Goede <hdegoede@redhat.com>
+Message-ID: <989f41f2-8b65-421a-7af3-69c35e7d2594@redhat.com>
+Date: Wed, 31 Oct 2018 16:32:08 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.8.0
+MIME-Version: 1.0
+In-Reply-To: <20181031150326.yikoivqgwfurtrg4@smtp.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 
-Replace negoitation with negotiation to get rid of checkpatch warning.
+Hi,
 
-Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
----
- drivers/staging/rtl8723bs/include/wifi.h | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+On 31-10-18 16:03, Shayenne da Luz Moura wrote:
+> Remove unneeded parentheses around the arguments of ||. This reduces
+> clutter and code behave in the same way.
+> Change suggested by checkpatch.pl.
+> 
+> vbox_main.c:119: CHECK: Unnecessary parentheses around 'rects[i].x2 <
+> crtc->x'
+> 
+> Signed-off-by: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
 
-diff --git a/drivers/staging/rtl8723bs/include/wifi.h b/drivers/staging/rtl8723bs/include/wifi.h
-index 559bf2606fb7..e729ecd5e9ab 100644
---- a/drivers/staging/rtl8723bs/include/wifi.h
-+++ b/drivers/staging/rtl8723bs/include/wifi.h
-@@ -1070,9 +1070,9 @@ enum P2P_STATE {
- 	P2P_STATE_TX_PROVISION_DIS_REQ = 6,			/* 	In P2P provisioning discovery */
- 	P2P_STATE_RX_PROVISION_DIS_RSP = 7,
- 	P2P_STATE_RX_PROVISION_DIS_REQ = 8,
--	P2P_STATE_GONEGO_ING = 9,						/* 	Doing the group owner negoitation handshake */
--	P2P_STATE_GONEGO_OK = 10,						/* 	finish the group negoitation handshake with success */
--	P2P_STATE_GONEGO_FAIL = 11,					/* 	finish the group negoitation handshake with failure */
-+	P2P_STATE_GONEGO_ING = 9,						/* 	Doing the group owner negotiation handshake */
-+	P2P_STATE_GONEGO_OK = 10,						/* 	finish the group negotiation handshake with success */
-+	P2P_STATE_GONEGO_FAIL = 11,					/* 	finish the group negotiation handshake with failure */
- 	P2P_STATE_RECV_INVITE_REQ_MATCH = 12,		/* 	receiving the P2P Invitation request and match with the profile. */
- 	P2P_STATE_PROVISIONING_ING = 13,				/* 	Doing the P2P WPS */
- 	P2P_STATE_PROVISIONING_DONE = 14,			/* 	Finish the P2P WPS */
-@@ -1082,8 +1082,8 @@ enum P2P_STATE {
- 	P2P_STATE_RECV_INVITE_REQ_GO = 18,			/* 	receiving the P2P Invitation request and this wifi is GO. */
- 	P2P_STATE_RECV_INVITE_REQ_JOIN = 19,			/* 	receiving the P2P Invitation request to join an existing P2P Group. */
- 	P2P_STATE_RX_INVITE_RESP_FAIL = 20,			/* 	recveing the P2P Invitation response with failure */
--	P2P_STATE_RX_INFOR_NOREADY = 21,			/*  receiving p2p negoitation response with information is not available */
--	P2P_STATE_TX_INFOR_NOREADY = 22,			/*  sending p2p negoitation response with information is not available */
-+	P2P_STATE_RX_INFOR_NOREADY = 21,			/*  receiving p2p negotiation response with information is not available */
-+	P2P_STATE_TX_INFOR_NOREADY = 22,			/*  sending p2p negotiation response with information is not available */
- };
- 
- enum P2P_WPSINFO {
--- 
-2.17.1
+Thank you.
 
+Still looks good to me:
+
+Acked-by: Hans de Goede <hdegoede@redhat.com>
+
+Regards,
+
+Hans
+
+
+
+> ---
+> Changes in v2:
+>    - Make the commit message more clearer.
+> 
+> Changes in v3:
+>    - Update to apply patch to the latest kernel tree
+> 
+>   drivers/staging/vboxvideo/vbox_main.c | 8 ++++----
+>   1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/staging/vboxvideo/vbox_main.c b/drivers/staging/vboxvideo/vbox_main.c
+> index 7466c1103ff6..ad0e0b62bd1e 100644
+> --- a/drivers/staging/vboxvideo/vbox_main.c
+> +++ b/drivers/staging/vboxvideo/vbox_main.c
+> @@ -122,10 +122,10 @@ void vbox_framebuffer_dirty_rectangles(struct drm_framebuffer *fb,
+>   			struct vbva_cmd_hdr cmd_hdr;
+>   			unsigned int crtc_id = to_vbox_crtc(crtc)->crtc_id;
+>   
+> -			if ((rects[i].x1 > crtc_x + mode->hdisplay) ||
+> -			    (rects[i].y1 > crtc_y + mode->vdisplay) ||
+> -			    (rects[i].x2 < crtc_x) ||
+> -			    (rects[i].y2 < crtc_y))
+> +			if (rects[i].x1 > crtc_x + mode->hdisplay ||
+> +			    rects[i].y1 > crtc_y + mode->vdisplay ||
+> +			    rects[i].x2 < crtc_x ||
+> +			    rects[i].y2 < crtc_y)
+>   				continue;
+>   
+>   			cmd_hdr.x = (s16)rects[i].x1;
+> 
 
