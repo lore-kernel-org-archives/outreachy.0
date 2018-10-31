@@ -1,143 +1,118 @@
 X-GM-THRID: 6618532112309944320
-X-Received: by 2002:a2e:9085:: with SMTP id l5-v6mr23397ljg.6.1541061010578;
-        Thu, 01 Nov 2018 01:30:10 -0700 (PDT)
+X-Received: by 2002:a0c:8a7c:: with SMTP id 57mr2739015qvu.45.1541007870579;
+        Wed, 31 Oct 2018 10:44:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a19:d201:: with SMTP id j1-v6ls1211293lfg.18.gmail; Thu, 01
- Nov 2018 01:30:09 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5dPwWhiauYMqwWqAmwEn0rJ/h8dUHG7Lhui4bRQTxRrU4J4ZmBrMGPTHU0GjmYVxKj8HYns
-X-Received: by 2002:a19:d00d:: with SMTP id h13mr149933lfg.7.1541061009250;
-        Thu, 01 Nov 2018 01:30:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1541061009; cv=none;
+Received: by 2002:a0c:aee3:: with SMTP id n35-v6ls6672977qvd.11.gmail; Wed, 31
+ Oct 2018 10:44:30 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5cPESyMCB4bqJx/hAAuzCiY6QZ6/LWYc+R7hb52jw5ETIUjL6mkERWxjphfyczpKk62G0mb
+X-Received: by 2002:a0c:879a:: with SMTP id 26mr2778822qvj.62.1541007870010;
+        Wed, 31 Oct 2018 10:44:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1541007869; cv=none;
         d=google.com; s=arc-20160816;
-        b=jtf0vWxz0yBSgPp7905XP+OGKMbw0oqZA0o/IjJW4oXcyY0na4FGyGY3xtICm+OETX
-         EEI099nUlpoTCxxo1/Xy4uQOG5P2dMdtDTXSNKbiLtktK8zbWHmRrChS7RHMouOOnFvL
-         M6c4GCf71kzyqv5S+uqFf1UmHSDfIUi5qEUk3elLjld4XzKG7NDlt/WuS9+UwqVv2b6W
-         TXPWeebQxKqMCBEFzrXQP++rIehjuritNgTkQXOrClra5Qlz5Cc5B6KRO7rSWKZCI0av
-         Dz6X5221/a64LZk4706TZyE1pRNm9p1wdyeOdK8H2H5r1eQIhJtZJADRw4MSvDZ3abgl
-         +WuQ==
+        b=Rwab//e+yx0/yxr53R6Mq1ohuv6vvj7CJki3Nr00N3BDhvX8t7XvKlLyFFDYub4a7w
+         6AShhKiI7+mPDrjL8nwgdy7sxKLN+Zspt30R9u3T9MiJeJr20g/J4JVIAaB2XI+1ImPH
+         I/y1WmM8HxcLR/GMaQYQ1lnI6oylkCJCG5zat3PI7Ned8srDzvOBk+AZO/bhxyw2sh3W
+         KAx0AXzF4pVfLzq9sZXn2hGdSueUzxRkB6ozC/rbDFbFvqtbxbWac0uAb2s65Hsa9T3Y
+         97Pq6tzdX0+s66OVNgV6s/q/D7R4BVffhyQ+OEhlkQgrnnnwn42ysGLZgzURpUx3ERT+
+         NHAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :mail-followup-to:message-id:subject:cc:to:from:date:sender
-         :dkim-signature;
-        bh=/J12Bw/Qsfna16g+PFOdV+6ud+rYvff1d2xZWlM+Igw=;
-        b=NsNbetzJrv3DQpyh2pweoIxeO1fnBNwgKxtIaceOSex6XGNRq+dpZqYbHNz/AkY0xp
-         VUHK1ATayE1SxL+rdkj3GCektyoCB2W4QPXORwjWIyfbZzDiT6TrbRsAFDJRLhrZpXT/
-         4TnppxXpqV6kp+lll6FOSrKKF3U9vH6TueMD2VYhPx1A5enxwx35H4fq0UuVpYA8NoX2
-         cmAWH4u1bVyvbGvljQ+SzpLhk3FwMjhJViNLzN0m5u8FI1MyrapQhxFACs8vjqxWITRe
-         OXVXXl4hsygkZ4cO2n0WpXbF3T8E8F/vGtBFSr1TKjdvsodLryXSgWkqanOUXBnGnjQS
-         FCvg==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=5h9H/t/58iT5wJlL5hclCitkHk3Y96u4UemtKet/OsI=;
+        b=KVPacd9UrvEKfhwcNxS4HdsHm4Gq6d58GOZf352KieV8iYFxGbZ72UiReElMjKNXVl
+         B/YODlETm83rKEk2Apexn9yiDYt1kHYkEFXT9e8hp6YDYaqJZMTxBXZSm4Cee/AMTHjA
+         c5l1E+2D2U0i7MSHuP7otFchx6JmIsbi/3v9OiYybMktMfW0aDcGzoWlv54OO/xr/Fvs
+         N2Z23HHMLIiBOrboXlHex634i5dQrLWPeGkz4cxQIppK4uzU/1bIgoKdwI0KnlzdRJjL
+         ctMqYiYo525+U844S709fxev+4yBoAhd9MOEczdejQ9oRSyKXuVrlxwopNDfMk2K0fuA
+         NQvw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ffwll.ch header.s=google header.b=IITSHWBL;
-       spf=neutral (google.com: 2a00:1450:4864:20::544 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
-Return-Path: <daniel@ffwll.ch>
-Received: from mail-ed1-x544.google.com (mail-ed1-x544.google.com. [2a00:1450:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id d14-v6si315950lfk.0.2018.11.01.01.30.08
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="FTajQg8/";
+       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <shayenneluzmoura@gmail.com>
+Received: from mail-qt1-x841.google.com (mail-qt1-x841.google.com. [2607:f8b0:4864:20::841])
+        by gmr-mx.google.com with ESMTPS id k8-v6si1447238qkg.3.2018.10.31.10.44.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Nov 2018 01:30:08 -0700 (PDT)
-Received-SPF: neutral (google.com: 2a00:1450:4864:20::544 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) client-ip=2a00:1450:4864:20::544;
+        Wed, 31 Oct 2018 10:44:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) client-ip=2607:f8b0:4864:20::841;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ffwll.ch header.s=google header.b=IITSHWBL;
-       spf=neutral (google.com: 2a00:1450:4864:20::544 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
-Received: by mail-ed1-x544.google.com with SMTP id d6-v6so7792686edi.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 01 Nov 2018 01:30:08 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="FTajQg8/";
+       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-qt1-x841.google.com with SMTP id l41-v6so18064975qtl.8
+        for <outreachy-kernel@googlegroups.com>; Wed, 31 Oct 2018 10:44:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ffwll.ch; s=google;
-        h=sender:date:from:to:cc:subject:message-id:mail-followup-to
-         :references:mime-version:content-disposition:in-reply-to:user-agent;
-        bh=/J12Bw/Qsfna16g+PFOdV+6ud+rYvff1d2xZWlM+Igw=;
-        b=IITSHWBLMflN9Q2R1hMUK/xqZMkPt/6Bi4AOM9zA1/HDTwFOCKTVu/+naLCH2ZDy7T
-         X4A5noI2wrhhRqQYXOXnytZBZL8nJgNs+jXaKq8b4wFgDnVh15n174U5QZja9IG8NBR4
-         4NAq/s5jnUDIOI5cMBRjExBlM6So6kY3h/0fM=
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=5h9H/t/58iT5wJlL5hclCitkHk3Y96u4UemtKet/OsI=;
+        b=FTajQg8/qHkirymCjQyRFhKri7SKuVSwg/+2L9okOxvQHNS/uHTVhWocZf3o51lF+y
+         ua9QtAmDP9eWFu3xHG+4onqFQGdr5Vf5rSh3lBNroDG1HAB+iq4EOme33k6DAnfiN/yt
+         rFNxxspnvZ0uW1sEHQdu22ADQMjYnAonZlcF0LEMeN6iE1pLbEIhpa10WEjG1Mb8SNne
+         u9P7IjpO+cUYCelgZb61CKKEwPxxw4wZdyuEwonWA+C4y5S9xP/OcsF2zeUORZ7KTkrJ
+         ke20Ojsl3DsMvu89NP1cqQ/X1yhoYfFB5ykI/cIS4qETLi5dUuCjlt6biVTWw1/wg15i
+         jfDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
-         :mail-followup-to:references:mime-version:content-disposition
-         :in-reply-to:user-agent;
-        bh=/J12Bw/Qsfna16g+PFOdV+6ud+rYvff1d2xZWlM+Igw=;
-        b=VzSiIW4SBTYvxH1UNUrRajVnr9JoiL/rs231jmNTuG6JcGDF6ciQ+u09CFO/BTRty8
-         nTAB45sD9y8Qsl768VK7xdf/hlif5VpEqAov95e/wx1nchl14nJ1d6pFiS+WmI+5Bifs
-         lEv24wBCyFYxBfGquVkyBP/Dpw+AD7IMXnqIiBOlDQgBsneY1xQ2xaApQQCpn57+ZrJL
-         8Sk8f5wLsoMJx9dT8i7UgGZ6mN6L5ivMW4sauA/SE3l/169OTGJAXrrwmXl+YRtLz35f
-         AB9rNt4rPodiYeSM+PbX6/SMBG+3Y4kqaUE0J9BcHBxFUxcpVx0XE6DXgevA688zg4y/
-         U8eA==
-X-Gm-Message-State: AGRZ1gL1oROTI699MyioIZCoGEp87eaxPGbqZltundExJGPJ8sDxL/n0
-	FFTRXdUH7UL1k2XzbD0I11pFsA==
-X-Received: by 2002:a50:8636:: with SMTP id o51-v6mr4402528edo.209.1541061008616;
-        Thu, 01 Nov 2018 01:30:08 -0700 (PDT)
-Return-Path: <daniel@ffwll.ch>
-Received: from phenom.ffwll.local ([2a02:168:569e:0:3106:d637:d723:e855])
-        by smtp.gmail.com with ESMTPSA id d11-v6sm54092ejl.7.2018.11.01.01.30.07
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=5h9H/t/58iT5wJlL5hclCitkHk3Y96u4UemtKet/OsI=;
+        b=dVoOrOtnhPoQJYdxH3BEHv/VCYVbHoBXGntMbhlwl65dcooHnCJcVXYTqI5xkhQ48m
+         GwsviL37NyYk2GP8w6An9QvrTPGUQSbNllOpikV9jdPIKGxxQ9BHmfGYFqxC+T8qxLAh
+         uf9hJ65ItD4HwL7jui1mtvERb+ixjxmAQLHQGQYlmo1ckGGZL9GytFJ+a27Qss3TFP2E
+         HZLhkpH2SW3xXhIMuj1QaCgrxKuj7p5ekwnadS7avr2f5xJBgc8yVChUMZPpSYY/AgWh
+         zV2/W7hTBO5BY9Rjj4YjvmNFjWN8tUeGjxoKufLgVVT3b+HeAZy27fg0GueZuL2hGn+o
+         ft7g==
+X-Gm-Message-State: AGRZ1gLEgzwXtZFzfzAugLBU287G+jpfFg2pCU5QIGmyV+eEG8GQNmAN
+	Cq8Q5QSxWAEvVIpE42v227I=
+X-Received: by 2002:a0c:b0c3:: with SMTP id p3mr3642744qvc.174.1541007869688;
+        Wed, 31 Oct 2018 10:44:29 -0700 (PDT)
+Return-Path: <shayenneluzmoura@gmail.com>
+Received: from smtp.gmail.com ([143.107.45.1])
+        by smtp.gmail.com with ESMTPSA id e4sm1357430qka.31.2018.10.31.10.44.27
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Nov 2018 01:30:07 -0700 (PDT)
-Sender: Daniel Vetter <daniel.vetter@ffwll.ch>
-Date: Thu, 1 Nov 2018 09:30:05 +0100
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+        Wed, 31 Oct 2018 10:44:29 -0700 (PDT)
+Date: Wed, 31 Oct 2018 14:44:24 -0300
+From: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 	Maxime Ripard <maxime.ripard@bootlin.com>,
-	Sean Paul <sean@poorly.run>, David Airlie <airlied@linux.ie>,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	Sean Paul <sean@poorly.run>, David Airlie <airlied@linux.ie>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2] drm: Remove 80-column line in
- drm_mode_object.c
-Message-ID: <20181101083005.GX21967@phenom.ffwll.local>
-Mail-Followup-To: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <maxime.ripard@bootlin.com>,
-	Sean Paul <sean@poorly.run>, David Airlie <airlied@linux.ie>,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-References: <20181031174424.odljb6obj25wm47d@smtp.gmail.com>
+Subject: [PATCH v2] drm: Remove 80-column line in drm_mode_object.c
+Message-ID: <20181031174424.odljb6obj25wm47d@smtp.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20181031174424.odljb6obj25wm47d@smtp.gmail.com>
-X-Operating-System: Linux phenom 4.18.0-2-amd64 
-User-Agent: Mutt/1.10.1 (2018-07-13)
+User-Agent: NeoMutt/20171215
 
-On Wed, Oct 31, 2018 at 02:44:24PM -0300, Shayenne da Luz Moura wrote:
-> Break line after NULL to decrease the line size.
-> 
-> Signed-off-by: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
-> 
-> ---
-> Changes in v2:
->   - Remove aditional variable added in v1 and add a line break
+Break line after NULL to decrease the line size.
 
-Applied, thanks.
--Daniel
+Signed-off-by: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
 
-> 
->  drivers/gpu/drm/drm_mode_object.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/drm_mode_object.c b/drivers/gpu/drm/drm_mode_object.c
-> index be8b754eaf60..cd9bc0ce9be0 100644
-> --- a/drivers/gpu/drm/drm_mode_object.c
-> +++ b/drivers/gpu/drm/drm_mode_object.c
-> @@ -38,7 +38,8 @@ int __drm_mode_object_add(struct drm_device *dev, struct drm_mode_object *obj,
->  	int ret;
->  
->  	mutex_lock(&dev->mode_config.idr_mutex);
-> -	ret = idr_alloc(&dev->mode_config.crtc_idr, register_obj ? obj : NULL, 1, 0, GFP_KERNEL);
-> +	ret = idr_alloc(&dev->mode_config.crtc_idr, register_obj ? obj : NULL,
-> +			1, 0, GFP_KERNEL);
->  	if (ret >= 0) {
->  		/*
->  		 * Set up the object linking under the protection of the idr
-> -- 
-> 2.19.1
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20181031174424.odljb6obj25wm47d%40smtp.gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
+---
+Changes in v2:
+  - Remove aditional variable added in v1 and add a line break
 
+ drivers/gpu/drm/drm_mode_object.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/drm_mode_object.c b/drivers/gpu/drm/drm_mode_object.c
+index be8b754eaf60..cd9bc0ce9be0 100644
+--- a/drivers/gpu/drm/drm_mode_object.c
++++ b/drivers/gpu/drm/drm_mode_object.c
+@@ -38,7 +38,8 @@ int __drm_mode_object_add(struct drm_device *dev, struct drm_mode_object *obj,
+ 	int ret;
+ 
+ 	mutex_lock(&dev->mode_config.idr_mutex);
+-	ret = idr_alloc(&dev->mode_config.crtc_idr, register_obj ? obj : NULL, 1, 0, GFP_KERNEL);
++	ret = idr_alloc(&dev->mode_config.crtc_idr, register_obj ? obj : NULL,
++			1, 0, GFP_KERNEL);
+ 	if (ret >= 0) {
+ 		/*
+ 		 * Set up the object linking under the protection of the idr
 -- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+2.19.1
+
 
