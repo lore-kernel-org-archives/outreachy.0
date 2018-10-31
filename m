@@ -1,228 +1,127 @@
 X-GM-THRID: 6618628196583604224
-X-Received: by 2002:a62:c52:: with SMTP id u79-v6mr9298978pfi.102.1541521217918;
-        Tue, 06 Nov 2018 08:20:17 -0800 (PST)
+X-Received: by 2002:aca:6b89:: with SMTP id g131-v6mr5080471oic.17.1541071482659;
+        Thu, 01 Nov 2018 04:24:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aa7:8219:: with SMTP id k25-v6ls4444406pfi.5.gmail; Tue, 06
- Nov 2018 08:20:17 -0800 (PST)
-X-Google-Smtp-Source: AJdET5ey4cUVFKlfwUBjtZDF/Y0yeB+vb/CAR26lJwkJgmxOqYEVx8E16i1Q/1OVvNVyGOmZ3yxY
-X-Received: by 2002:a63:a01:: with SMTP id 1mr1336273pgk.149.1541521217170;
-        Tue, 06 Nov 2018 08:20:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541521217; cv=none;
+Received: by 2002:a9d:2cd5:: with SMTP id e21ls650683otd.0.gmail; Thu, 01 Nov
+ 2018 04:24:42 -0700 (PDT)
+X-Received: by 2002:a9d:2350:: with SMTP id k16mr4080619otd.63.1541071482057;
+        Thu, 01 Nov 2018 04:24:42 -0700 (PDT)
+Received: by 2002:aca:c202:0:0:0:0:0 with SMTP id s2-v6msoif;
+        Wed, 31 Oct 2018 16:30:19 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5dg4gOdSE9eBIO2QCpFBpxeuwHOD3SVEOvf/XFB/vaqwTrWTC77Ar7x/+FNky4hY+eHBqCr
+X-Received: by 2002:a6b:3b4b:: with SMTP id i72-v6mr1624160ioa.6.1541028619578;
+        Wed, 31 Oct 2018 16:30:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1541028619; cv=none;
         d=google.com; s=arc-20160816;
-        b=iu0OcQgz1i5qB5uSxfwgLBVgv3i6lz85y2Wo3DjIG2GYHTyjfO1q7W+iniNNaviuzs
-         jwY/d4py8hFReZI+tyrWehuprGYctnFz397uEFW3LMQYoiW7hE2hH3SBB86SoiULjRsX
-         oXJJS0rMifHK5Pv0myaczhiQHcd3Q769A4ixgKupcyd88KyuICSG5usoMXzh0PNrtzFZ
-         YpoPrHjxD2fuxy1ogCuFZBuZAMjJiO0Va47HtQ0pT7ZgMhMjwui1KLFV5DMbuA3UeHs8
-         Yidg8RqqAnA4qPFEYK8EpGhojGTI7Jhg27Rp3BUCf6idET7JGuezLNQytp1SEDiNAufS
-         gzWg==
+        b=aPVImzFlubhOexiijS8VjPYPUXKOJcgqwsEoLsWL3/lnmZug/N43UkMBWTCcHxC1Tq
+         yzPg9igI+5D8X7vEQ3g945YGYmBUSgtG6/BtHQn2+3yTAeFmRw8NvL1Y/RQOkX0N342N
+         msXEIGFkyn8ISfLYiB92y+d9z3vErXx+0yZPCA200zlKEYpwg1GShHi7rwazAtvg+yjK
+         y2hrKIcWeGLQpYF/+Xr6hCE2KJekQ//YmwtvN8ubwzMJ98R8lgp43rQEd29bfRt9jZJd
+         6AGpIfMdGia3HkdUX3cf783lGvQkfu92igJGe4EvcVfESOTJVGzXGdyfg8MkyfOc4wJL
+         IVHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=M1jct51NouuWowl8d6PZRlHpN7bjDs8mqzL9LudzrXg=;
-        b=OySGTnORuxeNSSgPm4PH8wtYCzAgeiu+z9etYvFAAbsJkZkUL6HOo5MkPGmmimlrKk
-         HzVeG9CIUVxM3dAAtT4U+7faeckpdhJIJVxjPHuU9e/5DqmTkBLYbosRb0dWbODytPo1
-         0+QF4cujqYOT9iIVZuWwYBS88IadcPbQXrdPotQQ9fxjTEbPmtbf7heHMjkLPLFfMeMt
-         ZiWccZ7+EyA3aRyFRaqLO87ZNZj2c6t7V9BTDnQPiAd7zbUH49r6NwksIkHnn20asp8v
-         zsKeVLqjJacquf9y6ayl8dVHV4Sr01a7wBdX1IWkLKr9MkjBk5UNhpNMxNcaXsvf+8ep
-         0vlQ==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=OtQH7+VlIPJvqHuErN8wezZ8VBDVAx5jnhNjxzFm3kA=;
+        b=VyLsBUP+qRi2Wtko13e0XxTgn7Ivuvcsp/b/ZURXJqUf42KIiu4vdxBrK4DDUKOqeP
+         tHZHxln1595Xg4eP8XvT30AOgDphBR6zmdojGT8+kSb56335ebzatb1V8OvZeXtp53uj
+         eMkG4gfoNRvoDR8ShxU7Eon3arlKlfp9EgRvgzfHYK4+FKzpYSmFBMF7Y3q5gR4k/uP8
+         OQRI8OXk5bk0sNIkBmk4WPq51FR8p1lbMbw1npdOqc/OKvBtuoEYr+laHQ8YkTDMPwL5
+         H3/376i51MfvYPwQ9nU3SHSpQKsj27h/4tlzC9frhGdkauf8pf2aNEJBlrs6eui/rxqO
+         Q6oA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=e2vNpSVN;
-       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::82f as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qrEsewnY;
+       spf=pass (google.com: domain of emil.l.velikov@gmail.com designates 2607:f8b0:4864:20::e29 as permitted sender) smtp.mailfrom=emil.l.velikov@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <shayenneluzmoura@gmail.com>
-Received: from mail-qt1-x82f.google.com (mail-qt1-x82f.google.com. [2607:f8b0:4864:20::82f])
-        by gmr-mx.google.com with ESMTPS id y18-v6si843339pll.0.2018.11.06.08.20.17
+Return-Path: <emil.l.velikov@gmail.com>
+Received: from mail-vs1-xe29.google.com (mail-vs1-xe29.google.com. [2607:f8b0:4864:20::e29])
+        by gmr-mx.google.com with ESMTPS id m5-v6si459685iok.3.2018.10.31.16.30.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 06 Nov 2018 08:20:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::82f as permitted sender) client-ip=2607:f8b0:4864:20::82f;
+        Wed, 31 Oct 2018 16:30:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of emil.l.velikov@gmail.com designates 2607:f8b0:4864:20::e29 as permitted sender) client-ip=2607:f8b0:4864:20::e29;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=e2vNpSVN;
-       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::82f as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qrEsewnY;
+       spf=pass (google.com: domain of emil.l.velikov@gmail.com designates 2607:f8b0:4864:20::e29 as permitted sender) smtp.mailfrom=emil.l.velikov@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x82f.google.com with SMTP id p35so3229393qtc.4
-        for <outreachy-kernel@googlegroups.com>; Tue, 06 Nov 2018 08:20:17 -0800 (PST)
+Received: by mail-vs1-xe29.google.com with SMTP id l6so11154758vsj.13
+        for <outreachy-kernel@googlegroups.com>; Wed, 31 Oct 2018 16:30:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=M1jct51NouuWowl8d6PZRlHpN7bjDs8mqzL9LudzrXg=;
-        b=e2vNpSVNczut6eRRvvLujWjNlYKxsLLyyLEJRxHUgYHueZedm8prLc/yXHDxjFRLBX
-         QoFfPfFDjvYmxVikudZe4tZl/up62lXzob6rsoLwdrgJJH4EheYnensHtIFaLRUwk1Zb
-         NMeNy6Do7tieuoleIkYJoMl0PnfAFhIKBRZskVzLj+zb26xvcJOyEcjglOErgOBPPmh3
-         JE1SPSCzt+DRJvdPp+3ZZKmyH+XdfYhJrQlbQbs0v7CRT9HVin6p2jfpPj7sIMXYAEGg
-         IFP6GyQoNjP8Nrn3kRbHkdlkFc5ez5EkAn8Oe/JHYTx8GdEzesRs6ydmIYFeJErLw7pP
-         shsg==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=OtQH7+VlIPJvqHuErN8wezZ8VBDVAx5jnhNjxzFm3kA=;
+        b=qrEsewnY+t4jX4U05jF/Kx4jTbnEe38Z2ihgWj77fURbXyk+e6LLFsBpcmavx68skf
+         OGEIwQLKR8iD+WyW42XZS6MSkDMbegQfik2GGRHVB2zZdVgqFGHtGwB/IxhntvBd1+5J
+         32Rcg/KK9mza3H29w7X9kF7TeC8g9YlTFbDhatsHePgsrKyMFAQ+j/9OL4R4RUK0OyX8
+         uiCxGBZi9m+e5qji+4C/Oq/vmKDvWPE6mm4Fqh37UYrWug3gBHtDIJ8yED2ztWJYWKtp
+         aZ4fANm03MGwOp3rTS3cF6sn5WRJe98blNqhSMmq1XK683b08rkaHVTIMQONuL8SByVv
+         JVTw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=M1jct51NouuWowl8d6PZRlHpN7bjDs8mqzL9LudzrXg=;
-        b=I9zHko/9PJrD6TqEXD16canoGiDs0jpCySyxsg1pRqOYu4fQc0+f2pbnextXq3amMd
-         5m6LL/IEt3zexzUe7xvZe9HsSMRhapLjwMT2Ne40c0M/4SOoh+9besWj7Tzdw3B0MFqq
-         L6XisQyPTwseqO5XUzjL/RZqYNkyqR2k7U8966lUmWQcvu+Bq33QwoVRiiRgfBldyf3g
-         JpuVgOYoddN9wVDtNWn2CSO3PzmLLlW4TkaQB1D53Wb6WZ2BhCarIjRErn7LMNCXgBhz
-         7dolXI5INEhIyabFi2qG0wgJQlDULue1uuwkUEE9EVYOpYK2kWd6ZG/4RCigXKgdE/KN
-         UnTA==
-X-Gm-Message-State: AGRZ1gI8N2Pv/z02hz1RsyH8scHELTDJZCL5PywzSDRmJKBb10mgy3Gs
-	tOtgg2XOVq1WaJZ+lz8DlpM=
-X-Received: by 2002:a0c:c611:: with SMTP id v17mr13651778qvi.68.1541521216559;
-        Tue, 06 Nov 2018 08:20:16 -0800 (PST)
-Return-Path: <shayenneluzmoura@gmail.com>
-Received: from smtp.gmail.com ([143.107.45.1])
-        by smtp.gmail.com with ESMTPSA id 74-v6sm16436154qta.45.2018.11.06.08.20.14
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Nov 2018 08:20:16 -0800 (PST)
-Date: Tue, 6 Nov 2018 14:20:11 -0200
-From: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <maxime.ripard@bootlin.com>,
-	Sean Paul <sean@poorly.run>, David Airlie <airlied@linux.ie>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] drm: Rename crtc_idr as object_idr to KMS cleanups
-Message-ID: <20181106162011.daqwi2gt2eblzgub@smtp.gmail.com>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=OtQH7+VlIPJvqHuErN8wezZ8VBDVAx5jnhNjxzFm3kA=;
+        b=sAlYkjpadaIamwQ8cGJZyppvHjKKIuKSbSbJ9TaSVnmP1WJwwonlmEBddPn2Qj6AvY
+         8hm5Vgml3/JQrS0j8cSIvfAwTvo4JSCJ+RXA78+pj/IDxHsFrfBMMO/sxeYJfhXgQ/XW
+         sYQeGwyEWO40WwK5jUd7tc8S/kFBg+OCEoyPrSwrv61PFT7HvDRC+N4/F5hbMnaMt9x1
+         hpFQLUKEgr6k2BGDS0/iuGk7ob/kQi5OBfxQn/g9V+uZ6SvMz8SnDCwtKcj5BZNzWufL
+         IcvP/K3Ui7FP6Omsi/WaioFHCd4NDRRMiSNmmVizEiTAEU/TyjrMOJdhvLuutnbi/Gs5
+         layQ==
+X-Gm-Message-State: AGRZ1gKuFvYN38OgP1oZh7iapQ0vC+w9JpXe9VUTe6oTHyXgJ3SvCIzS
+	7ujEBrjhp9efxBziCi8mZlzpdNNXK86j1HvUTLM=
+X-Received: by 2002:a67:60c7:: with SMTP id u190mr2253775vsb.85.1541028619223;
+ Wed, 31 Oct 2018 16:30:19 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: NeoMutt/20171215
+References: <20181031205737.cingeaqget7hkbs6@smtp.gmail.com>
+In-Reply-To: <20181031205737.cingeaqget7hkbs6@smtp.gmail.com>
+From: Emil Velikov <emil.l.velikov@gmail.com>
+Date: Wed, 31 Oct 2018 23:28:59 +0000
+Message-ID: <CACvgo535WoPfiaHzwd=UW11iKid7a2VPg+fYX1_VTLjO-WRzMg@mail.gmail.com>
+Subject: Re: [PATCH] drm: Rename crtc_idr as object_idr to KMS cleanups
+To: shayenneluzmoura@gmail.com
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>, 
+	David Airlie <airlied@linux.ie>, outreachy-kernel@googlegroups.com, 
+	"Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>, 
+	ML dri-devel <dri-devel@lists.freedesktop.org>
+Content-Type: text/plain; charset="UTF-8"
 
-This patch solves this TODO task:
- drm_mode_config.crtc_idr is misnamed, since it contains all KMS object.
- Should be renamed to drm_mode_config.object_idr.
+Hi Shayenne,
 
-Signed-off-by: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
+Welcome to DRM.
 
----
-Changes in v2:
- - Make commit message more clear and change header file
+As far as I can see you're a newcomer to kernel development, so I'd
+recommend watch a recent talk from Marc [1]
+He provides a very good introduction, both for newbies and for people
+willing the know the deeper reasons behind.
 
- drivers/gpu/drm/drm_lease.c       | 6 +++---
- drivers/gpu/drm/drm_mode_config.c | 4 ++--
- drivers/gpu/drm/drm_mode_object.c | 8 ++++----
- include/drm/drm_mode_config.h     | 6 +++---
- 4 files changed, 12 insertions(+), 12 deletions(-)
+That said, here's some suggestions:
 
-diff --git a/drivers/gpu/drm/drm_lease.c b/drivers/gpu/drm/drm_lease.c
-index 977f069f6d90..b2cbb58834bc 100644
---- a/drivers/gpu/drm/drm_lease.c
-+++ b/drivers/gpu/drm/drm_lease.c
-@@ -218,7 +218,7 @@ static struct drm_master *drm_lease_create(struct drm_master *lessor, struct idr
- 
- 	idr_for_each_entry(leases, entry, object) {
- 		error = 0;
--		if (!idr_find(&dev->mode_config.crtc_idr, object))
-+		if (!idr_find(&dev->mode_config.object_idr, object))
- 			error = -ENOENT;
- 		else if (!_drm_lease_held_master(lessor, object))
- 			error = -EACCES;
-@@ -434,7 +434,7 @@ static int fill_object_idr(struct drm_device *dev,
- 		/*
- 		 * We're using an IDR to hold the set of leased
- 		 * objects, but we don't need to point at the object's
--		 * data structure from the lease as the main crtc_idr
-+		 * data structure from the lease as the main object_idr
- 		 * will be used to actually find that. Instead, all we
- 		 * really want is a 'leased/not-leased' result, for
- 		 * which any non-NULL pointer will work fine.
-@@ -675,7 +675,7 @@ int drm_mode_get_lease_ioctl(struct drm_device *dev,
- 
- 	if (lessee->lessor == NULL)
- 		/* owner can use all objects */
--		object_idr = &lessee->dev->mode_config.crtc_idr;
-+		object_idr = &lessee->dev->mode_config.object_idr;
- 	else
- 		/* lessee can only use allowed object */
- 		object_idr = &lessee->leases;
-diff --git a/drivers/gpu/drm/drm_mode_config.c b/drivers/gpu/drm/drm_mode_config.c
-index ee80788f2c40..ab553b6465e2 100644
---- a/drivers/gpu/drm/drm_mode_config.c
-+++ b/drivers/gpu/drm/drm_mode_config.c
-@@ -381,7 +381,7 @@ void drm_mode_config_init(struct drm_device *dev)
- 	INIT_LIST_HEAD(&dev->mode_config.property_list);
- 	INIT_LIST_HEAD(&dev->mode_config.property_blob_list);
- 	INIT_LIST_HEAD(&dev->mode_config.plane_list);
--	idr_init(&dev->mode_config.crtc_idr);
-+	idr_init(&dev->mode_config.object_idr);
- 	idr_init(&dev->mode_config.tile_idr);
- 	ida_init(&dev->mode_config.connector_ida);
- 	spin_lock_init(&dev->mode_config.connector_list_lock);
-@@ -484,7 +484,7 @@ void drm_mode_config_cleanup(struct drm_device *dev)
- 
- 	ida_destroy(&dev->mode_config.connector_ida);
- 	idr_destroy(&dev->mode_config.tile_idr);
--	idr_destroy(&dev->mode_config.crtc_idr);
-+	idr_destroy(&dev->mode_config.object_idr);
- 	drm_modeset_lock_fini(&dev->mode_config.connection_mutex);
- }
- EXPORT_SYMBOL(drm_mode_config_cleanup);
-diff --git a/drivers/gpu/drm/drm_mode_object.c b/drivers/gpu/drm/drm_mode_object.c
-index cd9bc0ce9be0..bb1dd46496cd 100644
---- a/drivers/gpu/drm/drm_mode_object.c
-+++ b/drivers/gpu/drm/drm_mode_object.c
-@@ -38,7 +38,7 @@ int __drm_mode_object_add(struct drm_device *dev, struct drm_mode_object *obj,
- 	int ret;
- 
- 	mutex_lock(&dev->mode_config.idr_mutex);
--	ret = idr_alloc(&dev->mode_config.crtc_idr, register_obj ? obj : NULL,
-+	ret = idr_alloc(&dev->mode_config.object_idr, register_obj ? obj : NULL,
- 			1, 0, GFP_KERNEL);
- 	if (ret >= 0) {
- 		/*
-@@ -79,7 +79,7 @@ void drm_mode_object_register(struct drm_device *dev,
- 			      struct drm_mode_object *obj)
- {
- 	mutex_lock(&dev->mode_config.idr_mutex);
--	idr_replace(&dev->mode_config.crtc_idr, obj, obj->id);
-+	idr_replace(&dev->mode_config.object_idr, obj, obj->id);
- 	mutex_unlock(&dev->mode_config.idr_mutex);
- }
- 
-@@ -99,7 +99,7 @@ void drm_mode_object_unregister(struct drm_device *dev,
- {
- 	mutex_lock(&dev->mode_config.idr_mutex);
- 	if (object->id) {
--		idr_remove(&dev->mode_config.crtc_idr, object->id);
-+		idr_remove(&dev->mode_config.object_idr, object->id);
- 		object->id = 0;
- 	}
- 	mutex_unlock(&dev->mode_config.idr_mutex);
-@@ -131,7 +131,7 @@ struct drm_mode_object *__drm_mode_object_find(struct drm_device *dev,
- 	struct drm_mode_object *obj = NULL;
- 
- 	mutex_lock(&dev->mode_config.idr_mutex);
--	obj = idr_find(&dev->mode_config.crtc_idr, id);
-+	obj = idr_find(&dev->mode_config.object_idr, id);
- 	if (obj && type != DRM_MODE_OBJECT_ANY && obj->type != type)
- 		obj = NULL;
- 	if (obj && obj->id != id)
-diff --git a/include/drm/drm_mode_config.h b/include/drm/drm_mode_config.h
-index d643d268693e..4750fccb5b4a 100644
---- a/include/drm/drm_mode_config.h
-+++ b/include/drm/drm_mode_config.h
-@@ -385,18 +385,18 @@ struct drm_mode_config {
- 	/**
- 	 * @idr_mutex:
- 	 *
--	 * Mutex for KMS ID allocation and management. Protects both @crtc_idr
-+	 * Mutex for KMS ID allocation and management. Protects both @object_idr
- 	 * and @tile_idr.
- 	 */
- 	struct mutex idr_mutex;
- 
- 	/**
--	 * @crtc_idr:
-+	 * @object_idr:
- 	 *
- 	 * Main KMS ID tracking object. Use this idr for all IDs, fb, crtc,
- 	 * connector, modes - just makes life easier to have only one.
- 	 */
--	struct idr crtc_idr;
-+	struct idr object_idr;
- 
- 	/**
- 	 * @tile_idr:
--- 
-2.19.1
+On Wed, 31 Oct 2018 at 20:58, Shayenne da Luz Moura
+<shayenneluzmoura@gmail.com> wrote:
+>
+I'd rename the title to "drm: rename drm_mode_config::crtc_idr to object_idr"
+The "... as ... to KMS cleanups" translation is very strange in
+English. It confused me and I've read the TODO over a dozen times ;-)
 
+> Rename 'drm_mode_config.crtc_idr' as 'drm_mode_config.object_idr',
+> as proposed in the task description in TODO list for KMS cleanups.
+>
+Similarly here.
+
+> Signed-off-by: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
+> ---
+>  drivers/gpu/drm/drm_lease.c       | 6 +++---
+>  drivers/gpu/drm/drm_mode_config.c | 4 ++--
+>  drivers/gpu/drm/drm_mode_object.c | 8 ++++----
+>  3 files changed, 9 insertions(+), 9 deletions(-)
+>
+As pointed out in the talk - always self review and ensure patches
+don't break things.
+Here, DRM doesn't build which is obviously not correct and breaks things.
+
+HTH
+Emil
+[1] https://www.youtube.com/watch?v=LIdznotOxvg
 
