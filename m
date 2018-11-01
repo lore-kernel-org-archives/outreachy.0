@@ -1,127 +1,109 @@
 X-GM-THRID: 6618628196583604224
-X-Received: by 2002:aca:6b89:: with SMTP id g131-v6mr5080471oic.17.1541071482659;
-        Thu, 01 Nov 2018 04:24:42 -0700 (PDT)
+X-Received: by 2002:a50:a702:: with SMTP id h2-v6mr1025378edc.6.1541053758664;
+        Wed, 31 Oct 2018 23:29:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:2cd5:: with SMTP id e21ls650683otd.0.gmail; Thu, 01 Nov
- 2018 04:24:42 -0700 (PDT)
-X-Received: by 2002:a9d:2350:: with SMTP id k16mr4080619otd.63.1541071482057;
-        Thu, 01 Nov 2018 04:24:42 -0700 (PDT)
-Received: by 2002:aca:c202:0:0:0:0:0 with SMTP id s2-v6msoif;
-        Wed, 31 Oct 2018 16:30:19 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5dg4gOdSE9eBIO2QCpFBpxeuwHOD3SVEOvf/XFB/vaqwTrWTC77Ar7x/+FNky4hY+eHBqCr
-X-Received: by 2002:a6b:3b4b:: with SMTP id i72-v6mr1624160ioa.6.1541028619578;
-        Wed, 31 Oct 2018 16:30:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1541028619; cv=none;
+Received: by 2002:a50:fb93:: with SMTP id e19-v6ls111459edq.4.gmail; Wed, 31
+ Oct 2018 23:29:17 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5fzPLvFfPu7hHt+odn+nxLaZh06YCw6R5XX7IWyimfpKrifvxMCGWjmIAdwxb7rx8KiQXUW
+X-Received: by 2002:a50:be0b:: with SMTP id a11-v6mr459071edi.10.1541053757844;
+        Wed, 31 Oct 2018 23:29:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1541053757; cv=none;
         d=google.com; s=arc-20160816;
-        b=aPVImzFlubhOexiijS8VjPYPUXKOJcgqwsEoLsWL3/lnmZug/N43UkMBWTCcHxC1Tq
-         yzPg9igI+5D8X7vEQ3g945YGYmBUSgtG6/BtHQn2+3yTAeFmRw8NvL1Y/RQOkX0N342N
-         msXEIGFkyn8ISfLYiB92y+d9z3vErXx+0yZPCA200zlKEYpwg1GShHi7rwazAtvg+yjK
-         y2hrKIcWeGLQpYF/+Xr6hCE2KJekQ//YmwtvN8ubwzMJ98R8lgp43rQEd29bfRt9jZJd
-         6AGpIfMdGia3HkdUX3cf783lGvQkfu92igJGe4EvcVfESOTJVGzXGdyfg8MkyfOc4wJL
-         IVHw==
+        b=stbsssxqdCIdzxorV0KzXnyGH+1FX++0Hj5i+XeYqIfTHXq/7dAQEsWSwRz/N8BkSY
+         dbKA2aGV+sEz74T7DJVeqkdoP5OXm2rj1NoRTTZKL/cH+bFMbDLFB+vDXFzfu1m/ASrZ
+         Y7TqEVF291YKrT72fYUOu79x7npd/VdkkRLYjDhOYhid850MJXTwUTjFL8YC64rA4eJk
+         /ul7Sboowv2anQ9q/pE5oHq5xZRIM7IMuOQLsfFP4f04jl7TcpFmY0VqkWtDcJMZaSwm
+         NsojQEkAXxNH+vh1bo8q8ytkCVA7K6Cb42yNQT9JEOhUK3qtaA8nrc1blqzcLwIGGfMU
+         YE+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=OtQH7+VlIPJvqHuErN8wezZ8VBDVAx5jnhNjxzFm3kA=;
-        b=VyLsBUP+qRi2Wtko13e0XxTgn7Ivuvcsp/b/ZURXJqUf42KIiu4vdxBrK4DDUKOqeP
-         tHZHxln1595Xg4eP8XvT30AOgDphBR6zmdojGT8+kSb56335ebzatb1V8OvZeXtp53uj
-         eMkG4gfoNRvoDR8ShxU7Eon3arlKlfp9EgRvgzfHYK4+FKzpYSmFBMF7Y3q5gR4k/uP8
-         OQRI8OXk5bk0sNIkBmk4WPq51FR8p1lbMbw1npdOqc/OKvBtuoEYr+laHQ8YkTDMPwL5
-         H3/376i51MfvYPwQ9nU3SHSpQKsj27h/4tlzC9frhGdkauf8pf2aNEJBlrs6eui/rxqO
-         Q6oA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=l1cSIeL6DKeQXNKnsh4i1tsW7uQYdRDCPpyZFqUvAuI=;
+        b=V3CHEYYib6Tgx+Uk05k76QJc+KcW0SLCSRKLxwuy5WIsq08o9l1KJN9fC+I8MGkP6x
+         fQKaaLwF292MD7MphyH8Veq7OVmseLNtREodBYg8GLsOjZpI0AzLAuqxOe+T8gevCdqW
+         d6a51JfsiA9fMqKzVcbbRAxx5XMOMVUHvUvhVlWxnSPICYxBnyg7MrHY1xqiI7OVH7Qj
+         hWM8FJJugM1DDJxPMoOwCQCrFuvZ4DfnfTsi65uAfq9lmcAgsNlbRurX2Q02++R6rS0t
+         8+JWQtqWL3d4M1Cywsj6H8Be5k1PViLZq0N6diKt+RyB5w2jyQXID6McncPlgCpDOZMI
+         OkaA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qrEsewnY;
-       spf=pass (google.com: domain of emil.l.velikov@gmail.com designates 2607:f8b0:4864:20::e29 as permitted sender) smtp.mailfrom=emil.l.velikov@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <emil.l.velikov@gmail.com>
-Received: from mail-vs1-xe29.google.com (mail-vs1-xe29.google.com. [2607:f8b0:4864:20::e29])
-        by gmr-mx.google.com with ESMTPS id m5-v6si459685iok.3.2018.10.31.16.30.19
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id m25-v6si856890ejb.1.2018.10.31.23.29.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 31 Oct 2018 16:30:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of emil.l.velikov@gmail.com designates 2607:f8b0:4864:20::e29 as permitted sender) client-ip=2607:f8b0:4864:20::e29;
+        Wed, 31 Oct 2018 23:29:17 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qrEsewnY;
-       spf=pass (google.com: domain of emil.l.velikov@gmail.com designates 2607:f8b0:4864:20::e29 as permitted sender) smtp.mailfrom=emil.l.velikov@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-vs1-xe29.google.com with SMTP id l6so11154758vsj.13
-        for <outreachy-kernel@googlegroups.com>; Wed, 31 Oct 2018 16:30:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=OtQH7+VlIPJvqHuErN8wezZ8VBDVAx5jnhNjxzFm3kA=;
-        b=qrEsewnY+t4jX4U05jF/Kx4jTbnEe38Z2ihgWj77fURbXyk+e6LLFsBpcmavx68skf
-         OGEIwQLKR8iD+WyW42XZS6MSkDMbegQfik2GGRHVB2zZdVgqFGHtGwB/IxhntvBd1+5J
-         32Rcg/KK9mza3H29w7X9kF7TeC8g9YlTFbDhatsHePgsrKyMFAQ+j/9OL4R4RUK0OyX8
-         uiCxGBZi9m+e5qji+4C/Oq/vmKDvWPE6mm4Fqh37UYrWug3gBHtDIJ8yED2ztWJYWKtp
-         aZ4fANm03MGwOp3rTS3cF6sn5WRJe98blNqhSMmq1XK683b08rkaHVTIMQONuL8SByVv
-         JVTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=OtQH7+VlIPJvqHuErN8wezZ8VBDVAx5jnhNjxzFm3kA=;
-        b=sAlYkjpadaIamwQ8cGJZyppvHjKKIuKSbSbJ9TaSVnmP1WJwwonlmEBddPn2Qj6AvY
-         8hm5Vgml3/JQrS0j8cSIvfAwTvo4JSCJ+RXA78+pj/IDxHsFrfBMMO/sxeYJfhXgQ/XW
-         sYQeGwyEWO40WwK5jUd7tc8S/kFBg+OCEoyPrSwrv61PFT7HvDRC+N4/F5hbMnaMt9x1
-         hpFQLUKEgr6k2BGDS0/iuGk7ob/kQi5OBfxQn/g9V+uZ6SvMz8SnDCwtKcj5BZNzWufL
-         IcvP/K3Ui7FP6Omsi/WaioFHCd4NDRRMiSNmmVizEiTAEU/TyjrMOJdhvLuutnbi/Gs5
-         layQ==
-X-Gm-Message-State: AGRZ1gKuFvYN38OgP1oZh7iapQ0vC+w9JpXe9VUTe6oTHyXgJ3SvCIzS
-	7ujEBrjhp9efxBziCi8mZlzpdNNXK86j1HvUTLM=
-X-Received: by 2002:a67:60c7:: with SMTP id u190mr2253775vsb.85.1541028619223;
- Wed, 31 Oct 2018 16:30:19 -0700 (PDT)
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.54,451,1534802400"; 
+   d="scan'208";a="353738443"
+Received: from 89-157-201-244.rev.numericable.fr (HELO hadrien) ([89.157.201.244])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 01 Nov 2018 07:28:59 +0100
+Date: Thu, 1 Nov 2018 07:28:59 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Shayenne Moura <shayenneluzmoura@gmail.com>
+cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+    Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>, 
+    David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, 
+    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] drm: Rename crtc_idr as object_idr
+ to KMS cleanups
+In-Reply-To: <20181031232915.rvni33tf6m2orbbx@smtp.gmail.com>
+Message-ID: <alpine.DEB.2.21.1811010728140.2790@hadrien>
+References: <20181031205737.cingeaqget7hkbs6@smtp.gmail.com> <alpine.DEB.2.21.1810312200520.2391@hadrien> <20181031211935.p2pxr7fh26m5dc7v@smtp.gmail.com> <alpine.DEB.2.21.1810312229530.5416@hadrien> <20181031232915.rvni33tf6m2orbbx@smtp.gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-References: <20181031205737.cingeaqget7hkbs6@smtp.gmail.com>
-In-Reply-To: <20181031205737.cingeaqget7hkbs6@smtp.gmail.com>
-From: Emil Velikov <emil.l.velikov@gmail.com>
-Date: Wed, 31 Oct 2018 23:28:59 +0000
-Message-ID: <CACvgo535WoPfiaHzwd=UW11iKid7a2VPg+fYX1_VTLjO-WRzMg@mail.gmail.com>
-Subject: Re: [PATCH] drm: Rename crtc_idr as object_idr to KMS cleanups
-To: shayenneluzmoura@gmail.com
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>, 
-	David Airlie <airlied@linux.ie>, outreachy-kernel@googlegroups.com, 
-	"Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>, 
-	ML dri-devel <dri-devel@lists.freedesktop.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=US-ASCII
 
-Hi Shayenne,
 
-Welcome to DRM.
 
-As far as I can see you're a newcomer to kernel development, so I'd
-recommend watch a recent talk from Marc [1]
-He provides a very good introduction, both for newbies and for people
-willing the know the deeper reasons behind.
+On Wed, 31 Oct 2018, Shayenne Moura wrote:
 
-That said, here's some suggestions:
-
-On Wed, 31 Oct 2018 at 20:58, Shayenne da Luz Moura
-<shayenneluzmoura@gmail.com> wrote:
+> On 10/31, Julia Lawall wrote:
+> >
+> >
+> > On Wed, 31 Oct 2018, Shayenne Moura wrote:
+> >
+> > > On 10/31, Julia Lawall wrote:
+> > > >
+> > > >
+> > > > On Wed, 31 Oct 2018, Shayenne da Luz Moura wrote:
+> > > >
+> > > > > Rename 'drm_mode_config.crtc_idr' as 'drm_mode_config.object_idr',
+> > > > > as proposed in the task description in TODO list for KMS cleanups.
+> > > >
+> > > > Is object_idr a field that already exists?  If so, "Rename" is not the
+> > > > best choice of words.  It should be something like "use the object_idr
+> > > > field instead of the crtc_idr field" and then explain why.  "task
+> > > > description in TODO list for KMS cleanups" isn't very helpful to
+> > > > understand why the change should be made.
+> > > >
+> > > > julia
+> > >
+> > > Hi Julia,
+> > >
+> > > Thank you for your review!
+> > >
+> > > This patch is to solve this TODO task:
+> > >  drm_mode_config.crtc_idr is misnamed, since it contains all KMS object.
+> > >  Should be renamed to drm_mode_config.object_idr.
+> > >
+> > > Do you think I need to use this description in my commit message?
+> >
+> > That seems more helpful.
+> >
+> > But it seems that the name should actually be changed.  Which means that
+> > the structure definition should be changed too.  Was that done?
+> >
+> > julia
 >
-I'd rename the title to "drm: rename drm_mode_config::crtc_idr to object_idr"
-The "... as ... to KMS cleanups" translation is very strange in
-English. It confused me and I've read the TODO over a dozen times ;-)
+> Yes, you are right. I did not add the header file.
 
-> Rename 'drm_mode_config.crtc_idr' as 'drm_mode_config.object_idr',
-> as proposed in the task description in TODO list for KMS cleanups.
->
-Similarly here.
+Compilation should have given an error message.  If you thought you
+compiled, then you don't have the right configuration to actually compile
+the code that you changed.
 
-> Signed-off-by: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
-> ---
->  drivers/gpu/drm/drm_lease.c       | 6 +++---
->  drivers/gpu/drm/drm_mode_config.c | 4 ++--
->  drivers/gpu/drm/drm_mode_object.c | 8 ++++----
->  3 files changed, 9 insertions(+), 9 deletions(-)
->
-As pointed out in the talk - always self review and ensure patches
-don't break things.
-Here, DRM doesn't build which is obviously not correct and breaks things.
-
-HTH
-Emil
-[1] https://www.youtube.com/watch?v=LIdznotOxvg
+julia
 
