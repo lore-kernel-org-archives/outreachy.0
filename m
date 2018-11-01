@@ -1,69 +1,101 @@
 X-GM-THRID: 6618634579794198528
-X-Received: by 2002:a5d:6112:: with SMTP id v18-v6mr644839wrt.30.1541053649762;
-        Wed, 31 Oct 2018 23:27:29 -0700 (PDT)
+X-Received: by 2002:a0c:ae61:: with SMTP id z30mr4642319qvc.11.1541046980342;
+        Wed, 31 Oct 2018 21:36:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:858f:: with SMTP id h137-v6ls59664wmd.22.gmail; Wed, 31
- Oct 2018 23:27:28 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5d23rlB0WTOU6O3wHQfR+pzrPaFWJbdltMPhbAPfu9yUGfVJWYYZjoTKHazIqUojm+tVucb
-X-Received: by 2002:a1c:1592:: with SMTP id 140-v6mr644658wmv.25.1541053648766;
-        Wed, 31 Oct 2018 23:27:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1541053648; cv=none;
+Received: by 2002:a0c:ad35:: with SMTP id u50ls7598799qvc.8.gmail; Wed, 31 Oct
+ 2018 21:36:19 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5cpkUkAzBcxVIsQXCHviLhCiuuKT4rSe7jU4jUu+c3yCQXaOfgc3YORPnovpM9FcRaF60YQ
+X-Received: by 2002:a0c:d7cc:: with SMTP id g12-v6mr4524490qvj.55.1541046979847;
+        Wed, 31 Oct 2018 21:36:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1541046979; cv=none;
         d=google.com; s=arc-20160816;
-        b=ppeJVn3dPO25/ZV1MSQB+IZE+0lX5x5COjdUcT6DP4LnwItRHMgk6P/4GrD3CjmJK5
-         A1fBS/sEE3mFUHbM7l8WS7ViNYxwWPVCpMMSgjt8ux2BqkaAZEiQVMfphJPUCZOjX71v
-         U5mSAsTgMFurT1DMcGAu4GA3/eqpqf+b28tMdnUs5K83JJ96HQmcl+azQeklYYzFOI0j
-         PoJ9+P1GCXTCPQRE0KZ93s/pQfmGrT/8cSij79ptL/uIHtTjo+L87esjd7zDgPRVHNpq
-         3gm1y2oxVYcnjR7HIrD+ot1NNeO19tPjs45ju1WnPXhTNvT/Qcg9WwKPZBygLDifzFe4
-         d2Ow==
+        b=iiH3M7kafhFwHS+K7bxweVk/m3geZrCLWucP4UEVayL6jMQLlt3WcWLtC1/aR6jGoI
+         d9giy3KeRpSQIAi4F+96B2ulTTKDBEANKfbd7fYnwjPOochmX/x3iFfozO20YfVaRhNB
+         EvuKdZBQKJLfZey3eXjRh+AannjFnYE7zAClf3sGk5iZu+rQv6cb2gGiDaQzbmlXH5kD
+         Wyr9qH3bhlNl6j8q9ztjm3kUoZCoCk7yeHtXXIE+mm+gDQI+gJ+hhdUSdQ3HccfsC5wM
+         SUCQnqBOW/KA02lW8GYCGPlygY0L1pPSG3LaecrbHVcFmGjnBaQlb/YWWqiTjsuFc5+V
+         CRkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=fR0+vFCVVP5AuTg0efGr09jx6WDXwqwmn4mIapZodxE=;
-        b=V60ghb1ayCa1MJfOJUREzfA/cxwWH9bqN6xrFoSNxsb9Nw6otuoBPMhavDyFl6PW3b
-         D3YIQL7OU++xbQP3zWxrH3xmSyasydDCYBiPDsMJE0hOADtria42sL4C5LYg/YRyXx1J
-         /oLPucnYyAwKpjUH94GvBZtGf6cQVOmHsArKALcCCzYhaEMb3M7h7+obMYKXQoNEOIck
-         LW2sf6BNV6kFfVZq87r3atqrQg6DsTxjNEUO26V7q5TDYWg+sTxI8Px3BYB2QapkzDnk
-         jDALhLyTiAJaT73Ahlv8bs7TO3xl999CJfkS3K3UAU5P20/jnB8R8WUu2PR4Adu/1x7c
-         64vg==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=Z5klqL1f4i8gj/xavHjhL1Df7LLPa/naA6tj/nrqrWY=;
+        b=ge8y33AJ+bgINEBtZ7G2m7cB4W13g5yCSz1v5wLqFLZcorjEHWZQf7bPUYyoIX1bwX
+         Miall1FqPlRtOJCIDfHQk1PBK2DiQSLaSymXXb0yfyx78Kty76ASHx7MR2tgVkqyE7uJ
+         xO0xuz1qJ4ilkfB3WFSlKry/ogc5ipQO8L4RisJp8QYBgs1at+SgEVR+QBr/Gwald9i7
+         Lh3IHptBV2Mxak/v8q/RZwgOvOtzhQogOxFkp5dzhJf2bQRHh6bDjJUan/FtMxIgH81x
+         rh8UFkXHsQhjEIFt2kc3UYXIT8m58re6hsrGpOK4wdDh93kNxcC3gPNVUmY5aH58iW8H
+         SSLA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id l15-v6si24734wmc.4.2018.10.31.23.27.28
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OyLQEZXk;
+       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <himanshujha199640@gmail.com>
+Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id q49-v6si1430258qte.3.2018.10.31.21.36.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 31 Oct 2018 23:27:28 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Wed, 31 Oct 2018 21:36:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.54,451,1534802400"; 
-   d="scan'208";a="353738368"
-Received: from 89-157-201-244.rev.numericable.fr (HELO hadrien) ([89.157.201.244])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 01 Nov 2018 07:27:28 +0100
-Date: Thu, 1 Nov 2018 07:27:28 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OyLQEZXk;
+       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x442.google.com with SMTP id j22-v6so4880238pfh.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 31 Oct 2018 21:36:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=Z5klqL1f4i8gj/xavHjhL1Df7LLPa/naA6tj/nrqrWY=;
+        b=OyLQEZXkKMtN1nnkyOr3wQggrXxl+/0Sokem2DeqlVVE2dHNmrZ9BrEXdsVGJ1R9oL
+         06KTnFTsTF1YhAlLwi5QEMHDvJE3JwmEh34feoVLpuYMN4UNaXIXmITSb+52kCoJajml
+         t5br1OLHEBNqWcI4c9s3D/1kRGjv0yNTnedEE+oIubRAWD3viKVl4Y40YjFCMiJgSuYv
+         huhg/0lZurwPqrOTeovCMzKZIixGzu8EN0p+hVisHlYmL+C1CLfv+rjAg/0MalCq+GF/
+         5U9MOdilnNclk6cLubyh3pWuWT659ecwsB+K6lVRb5pl/kVp3IjQqyX0Ktv9yWsvrMob
+         NVoA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=Z5klqL1f4i8gj/xavHjhL1Df7LLPa/naA6tj/nrqrWY=;
+        b=A47/VFDhD0M+P2BadwqGEMSJw8NZSrm+f8F9lV5srcAUdFyfJUURYiAFKGIvWDIHP9
+         toFsDoL9MA3MF4YZlJosyR5DRuE6Rh/9vLsWobeFqO2Tkxw6e4gevPG7tI502UFl3dhi
+         w1gh/Fu0anD1NQK0d9LI8LE3NjdzWG59TYkuxZ97jE+EMnHqLw7RyDLP1ZuezAn4VAKU
+         3AI0MiQnOwXZVrQbfdJ+baSIsdFfN42ojKli32JbCX8soOmBnEWHUWV97rsxr+WYlkrs
+         lOUeb7H2xVnNfna/8JD+T1wZ0Bn6A9dYnER1ZyXCJ3RHpEH96GA8UQJ8icPrgTfb7Ypy
+         Tkyw==
+X-Gm-Message-State: AGRZ1gKKmwRrCt6m5jer4UWjH8u7UisZj2zMGPMVIhLy2azt1GprCmed
+	ASrvkF+1MPr35KrUP1ILO/g=
+X-Received: by 2002:a63:eb42:: with SMTP id b2-v6mr5779718pgk.348.1541046979346;
+        Wed, 31 Oct 2018 21:36:19 -0700 (PDT)
+Return-Path: <himanshujha199640@gmail.com>
+Received: from himanshu-Vostro-3559 ([103.233.116.134])
+        by smtp.gmail.com with ESMTPSA id m11-v6sm40949702pfi.102.2018.10.31.21.36.16
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 31 Oct 2018 21:36:18 -0700 (PDT)
+Date: Thu, 1 Nov 2018 10:06:12 +0530
+From: Himanshu Jha <himanshujha199640@gmail.com>
 To: Ioannis Valasakis <code@wizofe.uk>
-cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
-    alexander.levin@microsoft.com
+Cc: Julia Lawall <julia.lawall@lip6.fr>, outreachy-kernel@googlegroups.com,
+	gregkh@linuxfoundation.org, alexander.levin@microsoft.com
 Subject: Re: [Outreachy kernel] [PATCH v5] staging: gasket: Create a free
  memory error path
-In-Reply-To: <20181031220243.GA21269@kvasir.local>
-Message-ID: <alpine.DEB.2.21.1811010719200.2790@hadrien>
-References: <20181031213742.GA18868@kvasir.local> <alpine.DEB.2.21.1810312244040.5416@hadrien> <20181031220243.GA21269@kvasir.local>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+Message-ID: <20181101043611.GA2207@himanshu-Vostro-3559>
+References: <20181031213742.GA18868@kvasir.local>
+ <alpine.DEB.2.21.1810312244040.5416@hadrien>
+ <20181031220243.GA21269@kvasir.local>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20181031220243.GA21269@kvasir.local>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-
-
-On Wed, 31 Oct 2018, Ioannis Valasakis wrote:
-
+On Wed, Oct 31, 2018 at 10:02:43PM +0000, Ioannis Valasakis wrote:
 > On Wed, Oct 31, 2018 at 10:45:33PM +0100, Julia Lawall wrote:
-> >
-> >
+> > 
+> > 
 > > On Wed, 31 Oct 2018, Ioannis Valasakis wrote:
-> >
+> > 
 > > > Create an error handling path for memory allocation. It avoids repeating
 > > > the same assignments and returns the respective ENOMEM.
 > > >
@@ -71,85 +103,33 @@ On Wed, 31 Oct 2018, Ioannis Valasakis wrote:
 > > > ---
 > > > Changes in v5:
 > > > 	- Typo on the error handling label
-> >
+> > 
 > > Compilation should have found this error.
 > It would indeed but it still's going on since an hour now so I wanted to
 > get your feedback meanwhile and understand my mistakes! Me rushing isn't
 > good but after it compiles with all the new changes I should have a very
-> fast turnaround :)
+> fast turnaround :) 
 
-You can often compile just the file you are working on by saying make
-foo.o.  You can reread the Compiling only part of the kernel section of
-the tutorial.
+Wait..what ?
 
-> > > drivers/staging/gasket/gasket_interrupt.c | 13 ++++++++-----
-> > >  1 file changed, 8 insertions(+), 5 deletions(-)
-> > >
-> > > diff --git a/drivers/staging/gasket/gasket_interrupt.c b/drivers/staging/gasket/gasket_interrupt.c
-> > > index 49d47afad64f..1a3e8b17e714 100644
-> > > --- a/drivers/staging/gasket/gasket_interrupt.c
-> > > +++ b/drivers/staging/gasket/gasket_interrupt.c
-> > > @@ -340,17 +340,14 @@ int gasket_interrupt_init(struct gasket_dev *gasket_dev)
-> > >  					       sizeof(struct eventfd_ctx *),
-> > >  					       GFP_KERNEL);
-> > >  	if (!interrupt_data->eventfd_ctxs) {
-> > > -		kfree(interrupt_data);
-> > > -		return -ENOMEM;
-> > > +		goto err_free_ctxs;
-> >
-> > Your labels describe where you are coming from.  Dan suggests to make the
-> > labels descibe what will happen when you get there.  Here you aren't going
-> > to be freeing ctxs.  That is the allocation that failed.
-> >
-> In that case is err_free_eventfd and err_free_data a good naming scheme?
+Are you compiling the whole kernel for this and past checkpatch changes ?
 
-Maybe err_free_ctxs.
+If you are, then please look at partial building techniques such as:
 
-julia
+# make drivers/staging/gasket/gasket_interrupt.o
 
->
-> ta
-> Ioannis
->
-> > julia
-> >
-> > >  	}
-> > >
-> > >  	interrupt_data->interrupt_counts = kcalloc(driver_desc->num_interrupts,
-> > >  						   sizeof(ulong),
-> > >  						   GFP_KERNEL);
-> > >  	if (!interrupt_data->interrupt_counts) {
-> > > -		kfree(interrupt_data->eventfd_ctxs);
-> > > -		kfree(interrupt_data);
-> > > -		return -ENOMEM;
-> > > +		goto err_free_counts;
-> > >  	}
-> > >
-> > >  	switch (interrupt_data->type) {
-> > > @@ -379,6 +376,12 @@ int gasket_interrupt_init(struct gasket_dev *gasket_dev)
-> > >  				    interrupt_sysfs_attrs);
-> > >
-> > >  	return 0;
-> > > +
-> > > +err_free_counts:
-> > > +	kfree(interrupt_data->eventfd_ctxs);
-> > > +err_free_ctxs:
-> > > +	kfree(interrupt_data);
-> > > +	return -ENOMEM;
-> > >  }
-> > >
-> > >  static void
-> > > --
-> > > 2.19.1
-> > >
-> > >
-> > > --
-> > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20181031213742.GA18868%40kvasir.local.
-> > > For more options, visit https://groups.google.com/d/optout.
-> > >
->
->
+or
+
+# make M=drivers/staging/gasket/
+
+and you could use -j(jobs) to speed up compilation.
+
+Read Linux kernel in a Nutshell for more detailed info.
+
+
+-- 
+Himanshu Jha
+Undergraduate Student
+Department of Electronics & Communication
+Guru Tegh Bahadur Institute of Technology
 
