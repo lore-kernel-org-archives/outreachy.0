@@ -1,115 +1,122 @@
-X-GM-THRID: 6528466201738215424
-X-Received: by 10.157.86.134 with SMTP id o6mr3677336oth.45.1520026987268;
-        Fri, 02 Mar 2018 13:43:07 -0800 (PST)
+X-GM-THRID: 6618902461805494272
+X-Received: by 2002:a50:b67b:: with SMTP id c56-v6mr1373771ede.4.1541083320721;
+        Thu, 01 Nov 2018 07:42:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.202.90.133 with SMTP id o127ls1310220oib.7.gmail; Fri, 02 Mar
- 2018 13:43:06 -0800 (PST)
-X-Google-Smtp-Source: AG47ELuZ+fAUsazILOJtyerVcwJPiqnk+SFv7H4iPtWBeM0Pa4bCaddNQGysZcQdUkWQLvqcsRM4
-X-Received: by 10.202.76.13 with SMTP id z13mr3169843oia.66.1520026986333;
-        Fri, 02 Mar 2018 13:43:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520026986; cv=none;
+Received: by 2002:a17:906:1142:: with SMTP id i2-v6ls1210060eja.2.gmail; Thu,
+ 01 Nov 2018 07:41:59 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5fSi3b0UI20/sifZiEfSNOA6ygwjwyv6Hb4ZNOhitTLO575kwU95v2WWvYwZMZKVcFFHU/O
+X-Received: by 2002:a17:906:943:: with SMTP id j3-v6mr397792ejd.16.1541083319802;
+        Thu, 01 Nov 2018 07:41:59 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1541083319; cv=pass;
         d=google.com; s=arc-20160816;
-        b=LJFHPnHjJjsSIUh6d4QoREPrtjVkqqOicyiPm09ESyKKanuMndXcJ4oIwOYLuPMGgy
-         qSPstuhkYPQ2GhwXHzuN6IpOfk6pc7CyfEYbUX7zMWlsbHgsYIP/1HbeAbqTvPamV2km
-         QZWPks52KrJOp+go1BZyW7osQ2+ccdpoiukqb/xRW90ylO5ZYY65ofoXQc83volYGsJj
-         kw+VhoP0+vQ4giCmmmZuvjXbIff4/nkk6g1FJbJ9P/JVOBn/GnXn9Q9UNqY80y5uHAzr
-         d+bBqq7rxjnqYxy7SHdXh/nwiGODOpCJjC1cCh+I62VtsQ2FhaGXHFQroxttDHT7tsBY
-         pyeQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=HWNyyHa7g4hkFUHgN6zhhvOKy/IsD3Ywz8W2lovMN/0=;
-        b=a/H7MvaPSf7ymKJSdgnWLLMxNI2UpWXsijEvWKhXzKzqeUv7c0ruph6q+Tp8nNE40V
-         NgXi8glxCSetYgPfqEBtSqxovE3XM543wfx/1NbdD0I/7nHtpRbAns7rC+kZHfMiXGxW
-         RxiLhuzlFpDVGqZikG6IG8/FnZ62FA0xSLmV2JzRKkfNrneAbHPKm//iWzzAkOBPaFEy
-         ueYSd8KzFJ3jym7zMCluQoSld4HSo8vsrXtA2ZF1uLk8ENOAIuAqB3srPI6DcRjh7U2R
-         qC77u/sCkf0C4D0SH/Zze6lXHe1nAN3WS2va5N/5qo4MxasQV7D9zBxozh1SS3vZZxtw
-         oJpg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZOnNwUK0;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id b13si519061otf.2.2018.03.02.13.43.06
+        b=XvQm7rHjKRR09vRUSo3nX05ssbuCzeAZBOTeZpBoac5vLOzQQrh3Su7m9lRkyHDVMa
+         iq5/7xiiYqReXD81YbDmvBF3KGnbLu6Bj4VrofXY1DhtpDXpV0HJ8/+AIZbrIGgsyDfC
+         xqBh1wkht6JUWEouOfCR+E2md6NWc4TmYRDguMSGS5RKFIBXWLGMM3ipMzwMYHTPB6jW
+         /Ggp682F93sFYfQ6yttDJD29ICuqAig24dVA6Bq39vtvKyr4FIyjHwGOl1ZxzuFjPqlk
+         1FywXJKYuaBFf+upKyXXL2shw4rwIyK4I9RTrSw5x1J6zSSfdjmj9o7MoNFB5GMFL+7B
+         RfwA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=WlrKr7Zcprz4RQseipaC5omIE6UxEyTD9C1C0FE4CGk=;
+        b=y0UxsFBQEy1m5vd1DuW290gHqsCRjU8sZMUC/xcLV+2Gcbudp8aXdd2K9h2m3gDpBB
+         DoTgU9ombF3E86fysBC0+E9poSwPoz/ADAnBrZ2iysAB25CMCIhwa1pBIkFvyAAuRrgL
+         Thkig6hF9Cs7UTdsRWgjs+NY57+vvG5wFK4+c8M4lrb2oY5BsXEHQWG0Y18PeECS7nDT
+         CODzhNzkGzL+1AnSq3me/Mx4bTIqTWFqn84zDW9HsdyoD9bCnLZahRcot857esgwO4XO
+         Q97H/qQYwBDesD7tEQJ0kkULTD8SIA5+clG8TXTtAXj1lOFj/BWtkrdUKUA0fb6DiCg+
+         us7Q==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=LE0ZZBdD;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
+Return-Path: <code@wizofe.uk>
+Received: from sender-of-o51.zoho.eu (sender-of-o51.zoho.eu. [185.20.209.243])
+        by gmr-mx.google.com with ESMTPS id o10-v6si956566ejc.0.2018.11.01.07.41.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 02 Mar 2018 13:43:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Thu, 01 Nov 2018 07:41:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) client-ip=185.20.209.243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZOnNwUK0;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id g2so4288770pgn.7
-        for <outreachy-kernel@googlegroups.com>; Fri, 02 Mar 2018 13:43:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=HWNyyHa7g4hkFUHgN6zhhvOKy/IsD3Ywz8W2lovMN/0=;
-        b=ZOnNwUK0jPzk8XvroSeYsyJ3yAH4ZHa+KgKyHhcECIFIOgh6sVOTJwv1ndGIkoVDRS
-         LCnHuhdXEP3vnmXNyuRBekeKv0FemHlOjR3lqoNA2dmhRRO81288Clqs4sSNm/AnjJRl
-         zAUNoRRjdTVn9uL2BehmK+a8JtAIOaDAduAjeCEpRwyznsFe7CICx5YoEFbgJu6tCKZc
-         J7OkVxjrpruxyrZyPOa1c+tUbQkzJeThWQakmLbXBUef+8OuuK+HxcDrW3Frl424kQvP
-         42EhP+USK810TmK9cdChfD70KardeAX8Mk4D+zRF45EmNiLEbYzuKYUckLMM4ablcHRK
-         TftQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=HWNyyHa7g4hkFUHgN6zhhvOKy/IsD3Ywz8W2lovMN/0=;
-        b=dds6rh4IQvfeZe0c4s72WRaExqlczsfSd04ZndwHclrcp89cbtox0r88YYRM3pXUqS
-         u+Eulz6i6MvvefSMttryCBuL9oooqvBngvRrdhxEakpvMiWubqWpHx2nKOgcdh3IwT9D
-         /BQrY13MUPIpOs6YMyvhULadrOYwaXfWNNojtscY0N73mCjN/x3D68qc7NfzqAh8isUi
-         vC4Dsj+BDRbwsE5oM8A0dBfNy3dl5bE7L8sCOicKRSGLI9HLG0th3fQImbM9JpYOX05l
-         weII5RFVDpKINklHa4Drg7i6bDsn+eO2o03Td0LjWk+Cf4EbY+BgfplLs07O/gkd5mPN
-         QXEg==
-X-Gm-Message-State: APf1xPDq+PM4564MIVaPvUANP802PnCZAG1nUwr7EQ8f7qr7jKXsnFvk
-	di4nyYRH6HNJBTudamG7hH0=
-X-Received: by 10.101.82.139 with SMTP id y11mr5612511pgp.68.1520026985651;
-        Fri, 02 Mar 2018 13:43:05 -0800 (PST)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from seema-Inspiron-15-3567.iiit.ac.in ([14.139.82.6])
-        by smtp.googlemail.com with ESMTPSA id a28sm13774531pfe.70.2018.03.02.13.43.01
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 02 Mar 2018 13:43:04 -0800 (PST)
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: Larry.Finger@lwfinger.net
-Cc: outreachy-kernel@googlegroups.com,
-	florian.c.schilhabel@googlemail.com,
-	gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	Arushi Singhal <arushisinghal19971997@gmail.com>
-Subject: [PATCH 0/4] staging: rtl8712: fix coding style issues
-Date: Sat,  3 Mar 2018 03:12:17 +0530
-Message-Id: <1520026941-16548-1-git-send-email-arushisinghal19971997@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=LE0ZZBdD;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
+ARC-Seal: i=1; a=rsa-sha256; t=1541083317; cv=none; 
+	d=zoho.eu; s=zohoarc; 
+	b=ZAwP1Qsfn79dctNji7W3S13qh73oTjIIMAhSlrRpUXlq8heagG2JnySWhTu5jpLJmHX6NLikpIvbloxOSjdYVmcdpQkqZ7FkFPP9FUYYdHQqnofJ0iws7xnamr4dCb6Vsaq/ybwDTfgpDyrdRMbYFTD6mAs32jIeEqebNQNrQI8=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
+	t=1541083317; h=Content-Type:Cc:Date:From:MIME-Version:Message-ID:Subject:To:ARC-Authentication-Results; 
+	bh=WlrKr7Zcprz4RQseipaC5omIE6UxEyTD9C1C0FE4CGk=; 
+	b=D9pZMre096+8mniw+Ak7poi7vMMR/sqpor4+v2Anj/14J3NhnexRPixoL2vIxX6mOkC4Xjl3IKqBeutbi/eB6hAScmtAjfeadh44EkfxQAqRTLhy0VlxhxHwbNrUQ0TskrM7HDy74xX6gbfSOFrvT1DRKo7YpaWUz1y2OEqOdrk=
+ARC-Authentication-Results: i=1; mx.zoho.eu;
+	dkim=pass  header.i=wizofe.uk;
+	spf=pass  smtp.mailfrom=code@wizofe.uk;
+	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541083317;
+	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
+	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type;
+	l=1525; bh=WlrKr7Zcprz4RQseipaC5omIE6UxEyTD9C1C0FE4CGk=;
+	b=LE0ZZBdDvJKGAJgyottiX+l5wn8TVYGCPGPDJAWlCiTUkFbFWv1ythZwg2x30dAO
+	xGMcl6rKf8DuYuw0mHfWKSzi5fq1rdJiNokhjzfVe/QS3V86CVKn9YtiP5R9c6EYMXh
+	zuI0C+OkAu6adkdvuq2+/oWgHRHKX31tyF8Vrkmo=
+Received: from kvasir.local (pat-pool-138.crick.ac.uk [212.219.94.138]) by mx.zoho.eu
+	with SMTPS id 1541083316414117.91412268852923; Thu, 1 Nov 2018 15:41:56 +0100 (CET)
+Date: Thu, 1 Nov 2018 14:41:54 +0000
+From: Ioannis Valasakis <code@wizofe.uk>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: octeon: Fix style issues
+Message-ID: <20181101144154.GA23517@kvasir.local>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-ZohoMailClient: External
 
-Fix issues found with checkpatch.pl for rtl8712 driver.
+Fix mismatch parentheses and style issues.
+Reported by checkpatch.
 
-Arushi Singhal (4):
-  staging: rtl8712: Remove multiple blank line(s)
-  staging: rtl8712: Added spaces around '+'.
-  staging: rtl8712: Add spaces around '|'
-  staging: rtl8712: remove unnecessary parentheses
+Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
+---
+ drivers/staging/octeon/ethernet.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
- drivers/staging/rtl8712/os_intfs.c                 |  1 -
- drivers/staging/rtl8712/recv_linux.c               |  4 +-
- drivers/staging/rtl8712/rtl8712_bitdef.h           |  1 -
- drivers/staging/rtl8712/rtl8712_cmd.c              |  8 +--
- drivers/staging/rtl8712/rtl8712_cmd.h              |  4 +-
- drivers/staging/rtl8712/rtl8712_cmdctrl_bitdef.h   |  2 +-
- drivers/staging/rtl8712/rtl8712_cmdctrl_regdef.h   |  2 -
- drivers/staging/rtl8712/rtl8712_debugctrl_bitdef.h |  1 -
- drivers/staging/rtl8712/rtl8712_debugctrl_regdef.h |  2 -
- drivers/staging/rtl8712/rtl8712_fifoctrl_bitdef.h  |  1 -
- drivers/staging/rtl8712/rtl8712_fifoctrl_regdef.h  |  2 -
- drivers/staging/rtl8712/rtl8712_gp_bitdef.h        |  2 +-
- drivers/staging/rtl8712/rtl8712_gp_regdef.h        |  1 -
- drivers/staging/rtl8712/rtl8712_interrupt_bitdef.h |  1 -
- drivers/staging/rtl8712/rtl8712_led.c              | 70 +++++++++++-----------
- 15 files changed, 45 insertions(+), 57 deletions(-)
-
+diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/ethernet.c
+index 9b15c9ed844b..efbc48b96f70 100644
+--- a/drivers/staging/octeon/ethernet.c
++++ b/drivers/staging/octeon/ethernet.c
+@@ -141,8 +141,8 @@ static void cvm_oct_periodic_worker(struct work_struct *work)
+ 	if (priv->poll)
+ 		priv->poll(cvm_oct_device[priv->port]);
+ 
+-	cvm_oct_device[priv->port]->netdev_ops->ndo_get_stats(
+-						cvm_oct_device[priv->port]);
++	cvm_oct_device[priv->port]->netdev_ops->ndo_get_stats
++						(cvm_oct_device[priv->port]);
+ 
+ 	if (!atomic_read(&cvm_oct_poll_queue_stopping))
+ 		schedule_delayed_work(&priv->port_periodic_work, HZ);
+@@ -621,8 +621,8 @@ static const struct net_device_ops cvm_oct_pow_netdev_ops = {
+ #endif
+ };
+ 
+-static struct device_node *cvm_oct_of_get_child(
+-				const struct device_node *parent, int reg_val)
++static struct device_node *cvm_oct_of_get_child
++				(const struct device_node *parent, int reg_val)
+ {
+ 	struct device_node *node = NULL;
+ 	int size;
+@@ -818,7 +818,7 @@ static int cvm_oct_probe(struct platform_device *pdev)
+ 			priv = netdev_priv(dev);
+ 			priv->netdev = dev;
+ 			priv->of_node = cvm_oct_node_for_port(pip, interface,
+-								port_index);
++							      port_index);
+ 
+ 			INIT_DELAYED_WORK(&priv->port_periodic_work,
+ 					  cvm_oct_periodic_worker);
 -- 
-2.7.4
+2.19.1
+
 
 
