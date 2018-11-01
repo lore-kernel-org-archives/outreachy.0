@@ -1,83 +1,84 @@
 X-GM-THRID: 6618737831817773056
-X-Received: by 2002:a67:8c2:: with SMTP id 185mr5169634vsi.6.1541045192837;
-        Wed, 31 Oct 2018 21:06:32 -0700 (PDT)
+X-Received: by 2002:a6b:b20a:: with SMTP id b10-v6mr4382298iof.39.1541045093281;
+        Wed, 31 Oct 2018 21:04:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:1002:: with SMTP id 2ls1310954vsq.7.gmail; Wed, 31 Oct
- 2018 21:06:31 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5fT/OicQpXBSZiXtlngoWFlR/o9bgeupBUZM2O678rmeXpKzSu1xwG+8JcBQ+WFCIq2Loha
-X-Received: by 2002:a67:8e42:: with SMTP id q63mr5164946vsd.35.1541045191933;
-        Wed, 31 Oct 2018 21:06:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1541045191; cv=none;
+Received: by 2002:a5e:d702:: with SMTP id v2-v6ls2720618iom.9.gmail; Wed, 31
+ Oct 2018 21:04:52 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5di2h/5jCgjD4VwOjNd5F+c3sHOw0fv4rQaH54TZx/n0WjPlZ+KUecyXdxk/ML3nuYiVZGn
+X-Received: by 2002:a6b:c80a:: with SMTP id y10-v6mr4331335iof.8.1541045092351;
+        Wed, 31 Oct 2018 21:04:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1541045092; cv=none;
         d=google.com; s=arc-20160816;
-        b=DOOQRf5vMpWaVAuQchH/616doXiMlChYwK22076EQAyZXdYSIT9vr0bvjF6KPzDzbS
-         d+1oX34uSlrIhuimWPu8gxJonBl5u37wnwYgHSzPrN1Ki6pYloINiPrTR/kPWUY38eFb
-         f7XtwqfwVZMF4m7MwlLltCO8bc+SeGozbsWuLf3NzC/DbGz1ajPefi41fn0mxRmqXU3w
-         wh5OohgOr311yRQqjQS9EkIJUxwbuqCJjk3NPmyVP4kaiupK0ZhrtV/wEYs1xASn3EiM
-         ULZadvYgL1NnjSnEzxr0uAAs9+S5vWZed7qK/iTimIn/L1nkdz9SmE5tzFqZ33Cp/XDl
-         SyFQ==
+        b=pWijYlkdNab+8L9qSVBKyqBePoCAmmn5ethYNeRlnLLEfj35fd4G0mOHqo7CrEJAci
+         uclxgselH4SmcO2ZlspWlVxtDWtlu1+0kwCi1v/k2HdPBAXZvnh50dUI23rGSShImsdC
+         HcSvYSdj71coMPSo6dKaxvTZhk9naKx8IoohYAKwfG25LbI6Umt0mVCfytGDKMN8QDVP
+         xQzugl03pqdoFCi6cgm4Qznn2loKOQHGzj/czDwvwWldaE2bZFHLqqMW4aXR2STXPU0d
+         dzmjpe8iHn5tMBDSDqjabvjBI5h0HsoktF8mY0XKAQEmUKoCIpyXhPHAb6jqp64tkZMU
+         RAvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:to:from:date:dkim-signature;
-        bh=L9CSS/rlLvfJepnhiuWiLFYQrqseVNa+OGYfMplnJOM=;
-        b=lt1+s99IXnEJ22/PBvppdpp0+/HESxvz8bnAIGvreGnmkK6T6iNupgDHvQ7vdNVLOC
-         O2h+IBbBZRrPWWZAGQ+TynA4Zsv8qlzrZRFmom6d3gyLVWI3f76IVSDn4c3UTYmCosLD
-         woIKomUjEjfeoOQl6PQvXt5EsYvmB0EFwzdLUu6G7qQaNwQn4DMMaO4TVOIWOCG0cV6I
-         FjH0iAkXzlA6yqAvRV8o3ob8po7v0/lQJ3lHom0IwAKe+hA42Fnk5CpvpfMFjQKzT6J/
-         6Zlunws0q72Jbt5WE7GC8CiG/7/Sua2Ga083hov5Fb4s5qTivMLNLEzinqdt+UCRnQxu
-         A/GQ==
+        bh=H/lJjsYyC5y152qNoHl5jP88sAvvh4fky7RouRBE2Jo=;
+        b=kK9tAOPsBq/5RgSYtgyjsgZYPWi/uErqzOcEA46DatrGniLMrJGrt8ud618GCISi+L
+         clklIodTCZjLAG+lpWpsGSH+abr+cVAtaoP3FFeBrAoo9Jh2fI/iTtNCZbHyrGLMejV8
+         nVuW3NK+dtakZMZdCnM2jBVd+E2kLqtTKg9XCGcfu/9TpzywtoU6Cye2KlfoiG4Bk7DW
+         lQWzX4gUDFHoe0+Q3TRJfdIn0thlxlCTSY1RmhtFMZz3DTxB93pUuWep+YrY1gBCIveK
+         CpWSKT/VCreyDS/iMRoqMeB5pzClxRwX+v6R1FSAlFFTQM600GW7pVXikbj6CwjEuEAt
+         lneg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oMm5pyYl;
-       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CdiOVxP2;
+       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::144 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <m.maya.nakamura@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id w9si1938733uac.0.2018.10.31.21.06.31
+Received: from mail-it1-x144.google.com (mail-it1-x144.google.com. [2607:f8b0:4864:20::144])
+        by gmr-mx.google.com with ESMTPS id 17-v6si11845itv.2.2018.10.31.21.04.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 31 Oct 2018 21:06:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        Wed, 31 Oct 2018 21:04:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::144 as permitted sender) client-ip=2607:f8b0:4864:20::144;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oMm5pyYl;
-       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CdiOVxP2;
+       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::144 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id n10-v6so8371700pgv.10
-        for <outreachy-kernel@googlegroups.com>; Wed, 31 Oct 2018 21:06:31 -0700 (PDT)
+Received: by mail-it1-x144.google.com with SMTP id s16so430414itj.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 31 Oct 2018 21:04:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=L9CSS/rlLvfJepnhiuWiLFYQrqseVNa+OGYfMplnJOM=;
-        b=oMm5pyYlSDi65GDFKKwN4wuMUXoXG0ax+sdg4HTnzyEuVbXmbaij9jWZL9a/bjyufq
-         UDPRokvUBAO8X3NTBwa/AYiLla1nNVIBdrNj3KB5DoADBtAub3UC/bkjNXwyvkmQndy9
-         pFjutu80XP9WQ2PJzNfrmN3WTk8NP5Uosm3HH42IgDdgH8b4FI2hhGpYVVY3Lf8Tootg
-         V8C6ghsA7LTs8vdG6UmxF2FxzJVRZIRiy9U0zS/iA9/qrOR1ShT+mRypCYdrLhUu5GeI
-         9K4TSYqUuyNCiir5EcnxRsvP5h69y3MFsWiYsSpN0VDd5IU0DS1c9kRt5Sl/e46CF74Q
-         gNmQ==
+        bh=H/lJjsYyC5y152qNoHl5jP88sAvvh4fky7RouRBE2Jo=;
+        b=CdiOVxP2EngJoCRAhGZzoAmPHX8xQxYZlnhaB/lRond8PXYRHmH4JXLdCbXcJwEDAS
+         XHCwmiJR0JzzO19MY7eZOUAKXS2GWDHOIqLgLYDzoqkmw8yXxe4cvLJhpv5V04ftr/2u
+         wcRfb64nHtomcNn0ofDBXCNRA+tmntnI0rZb2QOXSDTi9//JXWuhK1jiY1VLGOqinZbv
+         N2gpRbM9pEjuYzeDltJFpDtfFHKxdgkqSDJRgivXSAO169vWsit+Pht86EZqCxiBDH3/
+         IBeCfTmXDb5dmhnn/G1v3hgh3Cdgt+yjO1o5v9QBb7bVq96vGMQ9qKTV86aUF8/PB1/7
+         H6og==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=L9CSS/rlLvfJepnhiuWiLFYQrqseVNa+OGYfMplnJOM=;
-        b=XiNvnH1HWU029/ZBCVoDO6xF/GbL3mgYRv3+Vonah7CoOB6FFi4xiFUvO7OMsqjm09
-         1QR3B3gp45d/xVZ3v5lDDKxRIJpmdaSVT5Hwp76Nhxcm3tvP71wEEeiisnWfj70AjSIL
-         pBRQriw7UkPtyxcqysP6oATRTaGXIOPLVxwYUMzCs7lj3kSfwWA1RULdHKPZqlcWO4Vj
-         4OdO/F4ow7vw32aF88BanTyO3v1HuON1ijTumww3c6iAcgRg2CBAXP7iaJqdKJBrihSA
-         vuyAfGIzmNysSnIg0PwGEimmbHkPHYOUX/x6R5JfIx+bez2uL/w2G5qGU5ztuKDHNgEi
-         1/+g==
-X-Gm-Message-State: AGRZ1gKEonuVKLDk+pQL4q4ogEoUR+0V9gxltcLsXO3aqNPY3qVooyDQ
-	fSdtal86p5tnSyw2W3LQ3JhovH+K
-X-Received: by 2002:a63:f210:: with SMTP id v16-v6mr5562305pgh.371.1541045190779;
-        Wed, 31 Oct 2018 21:06:30 -0700 (PDT)
+        bh=H/lJjsYyC5y152qNoHl5jP88sAvvh4fky7RouRBE2Jo=;
+        b=h1GRRZbSejonvoOOfVjWM6GRZPBf8F3kjSbI1G/qp06Ch6SHRWDF6YwgCOEeq0RO7U
+         G5F3kdnep1TlZFCdyIN0zn4QyIlei0LnX9WLvTpy6s0wABoPq9zgBhmsxfKrfpSndFMG
+         iqRZAQfQKUENtMyQkXiJBYfVN1DHLVrYMNGH9hRoIspXnM1MBCydXIiItjLQCO3ir62I
+         wyVQ8/63H+Y+o0uAROH10ZYT2muyRHT3ztr81OnyJCYH0NwQzLSir1UDdqZi3ie4I5Z5
+         Bj6h+ynCfyLjh9VMQd9py/IhIRzyAnQ6QdDD/rPNu2OjRA84VYxINrCK0rMMZDFUJ+O0
+         f5Xg==
+X-Gm-Message-State: AGRZ1gIHqRnd4PHMOR3VioA9eYFfpberVHjpM2XBTg/grrN92l5Qcm7y
+	FLUgcTkmiUjrgKd7VZL3Olx/3OAM
+X-Received: by 2002:a02:4b86:: with SMTP id q128-v6mr4911065jaa.63.1541045091845;
+        Wed, 31 Oct 2018 21:04:51 -0700 (PDT)
 Return-Path: <m.maya.nakamura@gmail.com>
 Received: from k-vBox (50-47-85-193.evrt.wa.frontiernet.net. [50.47.85.193])
-        by smtp.gmail.com with ESMTPSA id i26-v6sm17303736pgb.9.2018.10.31.21.06.30
+        by smtp.gmail.com with ESMTPSA id a71-v6sm10207822ita.14.2018.10.31.21.04.51
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 Oct 2018 21:06:30 -0700 (PDT)
-Date: Wed, 31 Oct 2018 21:06:27 -0700
+        Wed, 31 Oct 2018 21:04:51 -0700 (PDT)
+Date: Wed, 31 Oct 2018 21:04:48 -0700
 From: Maya Nakamura <m.maya.nakamura@gmail.com>
 To: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/2] staging: rtlwifi: Change line and comment spacing
-Message-ID: <a0c1be6312a62595a5f8f7e0b02ced685933052d.1541037077.git.m.maya.nakamura@gmail.com>
+Subject: [PATCH 1/2] staging: rtlwifi: Replace 1 with true and remove
+ comparison for bool
+Message-ID: <19fc6a990d8bae50fc4ff8bd26890b66a2befac3.1541037077.git.m.maya.nakamura@gmail.com>
 References: <cover.1541037077.git.m.maya.nakamura@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -85,84 +86,51 @@ Content-Disposition: inline
 In-Reply-To: <cover.1541037077.git.m.maya.nakamura@gmail.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 
-Add blank lines at the end of if statements and spaces before and after
-comments. Edit statements so that the line does not end with an assignment
-operator or a parenthesis. Remove a blank comment, too.
+Replace 1 with true for bool assignments and remove a comparison of a bool
+with 1. Issues found by Coccinelle's semantic patch results for
+boolinit.cocci.
 
 Signed-off-by: Maya Nakamura <m.maya.nakamura@gmail.com>
 ---
- drivers/staging/rtlwifi/phydm/phydm_adc_sampling.c | 10 +++++-----
- drivers/staging/rtlwifi/phydm/phydm_ccx.c          |  8 +++++---
- 2 files changed, 10 insertions(+), 8 deletions(-)
+ drivers/staging/rtlwifi/phydm/phydm_adc_sampling.c | 2 +-
+ drivers/staging/rtlwifi/phydm/phydm_ccx.c          | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/staging/rtlwifi/phydm/phydm_adc_sampling.c b/drivers/staging/rtlwifi/phydm/phydm_adc_sampling.c
-index 7853031ee91f..f94c9d19491e 100644
+index d6cea73fa185..7853031ee91f 100644
 --- a/drivers/staging/rtlwifi/phydm/phydm_adc_sampling.c
 +++ b/drivers/staging/rtlwifi/phydm/phydm_adc_sampling.c
-@@ -551,10 +551,9 @@ void phydm_lamode_trigger_setting(void *dm_void, char input[][16], u32 *_used,
- 		/*dbg_print("echo cmd input_num = %d\n", input_num);*/
- 
- 		if ((strcmp(input[1], help) == 0)) {
--			PHYDM_SNPRINTF(
--				output + used, out_len - used,
--				"{En} {0:BB,1:BB_MAC,2:RF0,3:RF1,4:MAC}\n {BB:dbg_port[bit],BB_MAC:0-ok/1-fail/2-cca,MAC:ref} {DMA type} {TrigTime}\n {polling_time/ref_mask} {dbg_port} {0:P_Edge, 1:N_Edge} {SpRate:0-80M,1-40M,2-20M} {Capture num}\n");
--			/**/
-+			PHYDM_SNPRINTF(output + used,
-+				       out_len - used,
-+				       "{En} {0:BB,1:BB_MAC,2:RF0,3:RF1,4:MAC}\n {BB:dbg_port[bit],BB_MAC:0-ok/1-fail/2-cca,MAC:ref} {DMA type} {TrigTime}\n {polling_time/ref_mask} {dbg_port} {0:P_Edge, 1:N_Edge} {SpRate:0-80M,1-40M,2-20M} {Capture num}\n");
- 		} else if (is_enable_la_mode) {
+@@ -555,7 +555,7 @@ void phydm_lamode_trigger_setting(void *dm_void, char input[][16], u32 *_used,
+ 				output + used, out_len - used,
+ 				"{En} {0:BB,1:BB_MAC,2:RF0,3:RF1,4:MAC}\n {BB:dbg_port[bit],BB_MAC:0-ok/1-fail/2-cca,MAC:ref} {DMA type} {TrigTime}\n {polling_time/ref_mask} {dbg_port} {0:P_Edge, 1:N_Edge} {SpRate:0-80M,1-40M,2-20M} {Capture num}\n");
+ 			/**/
+-		} else if (is_enable_la_mode == 1) {
++		} else if (is_enable_la_mode) {
  			PHYDM_SSCANF(input[2], DCMD_DECIMAL, &var1[1]);
  
-@@ -564,6 +563,7 @@ void phydm_lamode_trigger_setting(void *dm_void, char input[][16], u32 *_used,
- 				PHYDM_SSCANF(input[3], DCMD_HEX, &var1[2]);
- 			else
- 				PHYDM_SSCANF(input[3], DCMD_DECIMAL, &var1[2]);
-+
- 			trig_sig_sel = var1[2];
- 
- 			PHYDM_SSCANF(input[4], DCMD_DECIMAL, &var1[3]);
-@@ -575,7 +575,7 @@ void phydm_lamode_trigger_setting(void *dm_void, char input[][16], u32 *_used,
- 			PHYDM_SSCANF(input[10], DCMD_DECIMAL, &var1[9]);
- 
- 			dma_data_sig_sel = (u8)var1[3];
--			trigger_time_mu_sec = var1[4]; /*unit: us*/
-+			trigger_time_mu_sec = var1[4]; /* unit: us */
- 
- 			adc_smp->la_mac_ref_mask = var1[5];
- 			adc_smp->la_dbg_port = var1[6];
+ 			trig_mode = (u8)var1[1];
 diff --git a/drivers/staging/rtlwifi/phydm/phydm_ccx.c b/drivers/staging/rtlwifi/phydm/phydm_ccx.c
-index f292b23a2db1..80679a6d5047 100644
+index 57138606d9be..f292b23a2db1 100644
 --- a/drivers/staging/rtlwifi/phydm/phydm_ccx.c
 +++ b/drivers/staging/rtlwifi/phydm/phydm_ccx.c
-@@ -317,7 +317,7 @@ void phydm_get_nhm_result(void *dm_void)
- 		ccx_info->NHM_result[10] = (u8)((value32 & MASKBYTE2) >> 16);
- 		ccx_info->NHM_result[11] = (u8)((value32 & MASKBYTE3) >> 24);
- 
--		/*Get NHM duration*/
-+		/* Get NHM duration */
- 		value32 = odm_read_4byte(dm, ODM_REG_NHM_CNT10_TO_CNT11_11N);
- 		ccx_info->NHM_duration = (u16)(value32 & MASKLWORD);
- 	}
-@@ -331,8 +331,9 @@ bool phydm_check_nhm_ready(void *dm_void)
- 	bool ret = false;
- 
- 	if (dm->support_ic_type & ODM_IC_11AC_SERIES) {
--		value32 =
--			odm_get_bb_reg(dm, ODM_REG_CLM_RESULT_11AC, MASKDWORD);
-+		value32 = odm_get_bb_reg(dm,
-+					 ODM_REG_CLM_RESULT_11AC,
-+					 MASKDWORD);
- 
- 		for (i = 0; i < 200; i++) {
+@@ -338,7 +338,7 @@ bool phydm_check_nhm_ready(void *dm_void)
  			ODM_delay_ms(1);
-@@ -356,6 +357,7 @@ bool phydm_check_nhm_ready(void *dm_void)
+ 			if (odm_get_bb_reg(dm, ODM_REG_NHM_DUR_READY_11AC,
+ 					   BIT(17))) {
+-				ret = 1;
++				ret = true;
+ 				break;
  			}
  		}
- 	}
-+
- 	return ret;
- }
- 
+@@ -351,7 +351,7 @@ bool phydm_check_nhm_ready(void *dm_void)
+ 			ODM_delay_ms(1);
+ 			if (odm_get_bb_reg(dm, ODM_REG_NHM_DUR_READY_11AC,
+ 					   BIT(17))) {
+-				ret = 1;
++				ret = true;
+ 				break;
+ 			}
+ 		}
 -- 
 2.17.1
 
