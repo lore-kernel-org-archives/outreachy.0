@@ -1,107 +1,106 @@
 X-GM-THRID: 6619413531629453312
-X-Received: by 2002:a1c:b5cc:: with SMTP id e195-v6mr4096wmf.17.1541228274801;
-        Fri, 02 Nov 2018 23:57:54 -0700 (PDT)
+X-Received: by 2002:adf:81a1:: with SMTP id 30-v6mr1368943wra.13.1541202313187;
+        Fri, 02 Nov 2018 16:45:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:b186:: with SMTP id a128-v6ls625877wmf.13.canary-gmail;
- Fri, 02 Nov 2018 23:57:54 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5fp8PDW14iIWD1l2e6Pwe+fot0rubSPtcGyUmPj8Ylj39TucBgSOYmYRxqnT0ikXCKS6glK
-X-Received: by 2002:a1c:7a04:: with SMTP id v4-v6mr5042wmc.2.1541228274154;
-        Fri, 02 Nov 2018 23:57:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1541228274; cv=none;
+Received: by 2002:a5d:5287:: with SMTP id c7-v6ls4463062wrv.14.gmail; Fri, 02
+ Nov 2018 16:45:12 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5dTWXz7c2kO6I3wA47WZDvTHrjEpAMC0TmZtARqha1JIlmS9ZvDiCpWC8vPQjocykdUwQJ9
+X-Received: by 2002:adf:fb0c:: with SMTP id c12-v6mr1398193wrr.22.1541202312386;
+        Fri, 02 Nov 2018 16:45:12 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1541202312; cv=pass;
         d=google.com; s=arc-20160816;
-        b=E/ESp0DHtmiq+gZLeDKiXAKX/PYXbXJ52lEGVVysKjPyQ1/RzbK0gJt8qgw7ysQc9O
-         8QCFroxPx9G5eOQjxMjEJjOyQswPm36m7gY3yqxwV9MOgUp5aiNTAvEHGYwUpSYVpIUw
-         K0C9qJhQWGAcCdvhRm6gpukLaPdjxcjRv/c57OGS7m/GjEDKht8EjZ0ZdO09Kclm8XKv
-         wmuF2NzNazaCMcUq8xrAZsdkt6TrV0tVhigLRLIPvPzkCpfkW2TUu6/iDspb+QS+2eu/
-         JAXjoTakn4A0u9V3yEPyQ+WYp5Khicgbe1MOreOOSfluLSFieTJg0aeIbN/AZ7uCg+aM
-         F9NA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=JETsIOOeumOyj52KAdDuztvjVAk/TKRoktsSFgWr+z0=;
-        b=SgIKctD2J5GmvVh356lSz5cnvHZOxUsDP3T2kzmsiJ9B++BbIwnYbpb+lbBCm2EtPl
-         bIByrMopPmEYh8jI3Sr96++QQYGTKfacjJ59utba4tbdMSk+qNCFHVvZIjvt0+uSGVx7
-         P91BxIsJfeexHg6PY/BySEymyvyALRM7B4qcAWNNJzMNmMvGQlNzJqhfXQ0PEb0XOTvK
-         r1OODtu3/Ldf4fLG8ZQxvxAPjDXZ06pW85h2f8cQ3m7gvafxaZ0TygEawAH5/RYMIs7k
-         mE1N6a51QRajO/h9tdx5WOR2Y+jKQEGYwAWhvY/jNMBU1I3OsBFSxx27a6SjlcFjlfCy
-         OL7Q==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id e5-v6si976159wru.1.2018.11.02.23.57.54
+        b=JW8OoTVLmufvl31aJTp8pl84uq338DD2bq9QuGQX3uObPswz3s82Fuur26MdHb/vNQ
+         8bNoyZiOc0hcbJuyGhQRjESoWHMIdT+1LgtBch4k1M4kAABtlf1ArIgXfBayRaT8rHKq
+         cEyW6QakraKR/7s5mwGxrH8r5f/riqU9MLwuxW3p0qDVFfWXm4zyufUa9oGDuNfRv+GM
+         2HE82jB4K5kSrdDXK3OEOLi+miBL58/WA/y32keIFn/FvCB9ni7lv7dDElZOVUf1LXhI
+         ImUQ3mXGXz3XPO6Q2FYOavCZhi1M+A6vKLbj90d9H1QEMoUSXyMramPgCnYT0wi1PXNh
+         Kr/w==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=u+iL9dsimGzsuxWxrxWZXxUkfscn+p8u+AFlgtZm1Jk=;
+        b=UWV3VJ70Hir2fyFsCRFwpO3KslyU4B7c1ps/vpKZl0z2f2btx7NNqgQ4pjQg66adnk
+         WGZZNSA7bj0AGin03jKEcG//LyoMb+rDNqZUYKKEAVO1Q2oRZjwVMJ5N84L2EyWSCP5Y
+         VaeHeCvdq83cTcVoQciYdQVh7AsCac/repmJoayIRI1R35o1WNpDarLsKTLvWV7yZEJJ
+         V0+aTC4/MoDkpHiWoVZpQOyK2QM/nmWNyiEwkDsHzjmqnpgrTkMu2lm31qQSBcGMVOOT
+         GM7w6S+IEDOFt98aXRBu9X2meeZtZnHqFyUAiWUsoYLyWMn/Ozt2kWiEEeU0IcgJ8mDy
+         Qh6Q==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=OQTrLDGb;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
+Return-Path: <code@wizofe.uk>
+Received: from sender-of-o51.zoho.eu (sender-of-o51.zoho.eu. [185.20.209.243])
+        by gmr-mx.google.com with ESMTPS id p19-v6si96016wmc.1.2018.11.02.16.45.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 02 Nov 2018 23:57:54 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Fri, 02 Nov 2018 16:45:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) client-ip=185.20.209.243;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.54,459,1534802400"; 
-   d="scan'208";a="284221057"
-Received: from 89-157-201-244.rev.numericable.fr (HELO hadrien) ([89.157.201.244])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 03 Nov 2018 07:57:53 +0100
-Date: Sat, 3 Nov 2018 07:57:53 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Ioannis Valasakis <code@wizofe.uk>
-cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
-Subject: Re: [Outreachy kernel] [PATCH] staging: greybus: remove extra space
- before tab
-In-Reply-To: <20181102234508.GA27353@kvasir.local>
-Message-ID: <alpine.DEB.2.21.1811030757170.2922@hadrien>
-References: <20181102234508.GA27353@kvasir.local>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=OQTrLDGb;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
+ARC-Seal: i=1; a=rsa-sha256; t=1541202310; cv=none; 
+	d=zoho.eu; s=zohoarc; 
+	b=SQdQxXuA1+/OYdIYG1ak6gxY/iTtDvsgTw7VI1yBuq3TRggRyQClnW++rGp7CHQQCOFiUO/+zn1EBLE3yZQUhwdC1beASnGZ3lifkOQ5M2bgEqMdU4DfFF6YnPlelz3eIyTbuqpf7Q/PCVL32O4x662ezbvU6n62XDgWGo6nGO4=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
+	t=1541202310; h=Content-Type:Cc:Date:From:MIME-Version:Message-ID:Subject:To:ARC-Authentication-Results; 
+	bh=u+iL9dsimGzsuxWxrxWZXxUkfscn+p8u+AFlgtZm1Jk=; 
+	b=T28XFDbQu8TFlrVhy+1iWpEja919Q2qtaP5be3jVWtFuGhcar7Mwt2FJ1dV1MuydQlv2XbqP+uovgQF638mTPp8juOnV6MZeUnKRjOkbylpdT+ONvCz3Ovj9EwC3LnL/LZrxVfZzAfTnHFgLMlWHTAGWbs9bBFiXRp8NXuqXIKU=
+ARC-Authentication-Results: i=1; mx.zoho.eu;
+	dkim=pass  header.i=wizofe.uk;
+	spf=pass  smtp.mailfrom=code@wizofe.uk;
+	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541202310;
+	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
+	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type;
+	l=1193; bh=u+iL9dsimGzsuxWxrxWZXxUkfscn+p8u+AFlgtZm1Jk=;
+	b=OQTrLDGb5aYigp1ZHbRWvAvcp6OYH+DiZCVSAtRYY+Rck6Sg00yE7mW/khDXINL2
+	wCSDUsiPMucBq9tTd6haRMd6YPlPWkss3PJqjZNIBXV56Lu1RdldI85RrHdWct6VcT8
+	npIkXwtmME4rwcZg/JFu/1dMHbzmx+ZGDeLRHSUE=
+Received: from kvasir.local (90.242.56.176 [90.242.56.176]) by mx.zoho.eu
+	with SMTPS id 1541202309688623.7363008411559; Sat, 3 Nov 2018 00:45:09 +0100 (CET)
+Date: Fri, 2 Nov 2018 23:45:08 +0000
+From: Ioannis Valasakis <code@wizofe.uk>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: greybus: remove extra space before tab
+Message-ID: <20181102234508.GA27353@kvasir.local>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-ZohoMailClient: External
+
+Remove extra spaces before the tab character inside a comment section.
+Reported by checkpatch.
+
+Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
+---
+ drivers/staging/greybus/greybus_protocols.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/greybus/greybus_protocols.h b/drivers/staging/greybus/greybus_protocols.h
+index 5783f715bdc2..429a952c5200 100644
+--- a/drivers/staging/greybus/greybus_protocols.h
++++ b/drivers/staging/greybus/greybus_protocols.h
+@@ -918,8 +918,8 @@ struct gb_spi_device_config_response {
+  *	0 the default (from @spi_device) is used.
+  * @len: size of rx and tx buffers (in bytes)
+  * @delay_usecs: microseconds to delay after this transfer before (optionally)
+- * 	changing the chipselect status, then starting the next transfer or
+- * 	completing this spi_message.
++ *	changing the chipselect status, then starting the next transfer or
++ *	completing this spi_message.
+  * @cs_change: affects chipselect after this transfer completes
+  * @bits_per_word: select a bits_per_word other than the device default for this
+  *	transfer. If 0 the default (from @spi_device) is used.
+-- 
+2.19.1
 
 
+-- 
+ta
+ioannis
 
-On Fri, 2 Nov 2018, Ioannis Valasakis wrote:
-
-> Remove extra spaces before the tab character inside a comment section.
-> Reported by checkpatch.
->
-> Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
-> ---
->  drivers/staging/greybus/greybus_protocols.h | 4 ++--
-
-You seem to have sent three patches on this file.  Greg will want them to
-be in a series, to reduce ambiguity about how they should be applied.
-
-Likewise for the other files.
-
-julia
-
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/staging/greybus/greybus_protocols.h b/drivers/staging/greybus/greybus_protocols.h
-> index 5783f715bdc2..429a952c5200 100644
-> --- a/drivers/staging/greybus/greybus_protocols.h
-> +++ b/drivers/staging/greybus/greybus_protocols.h
-> @@ -918,8 +918,8 @@ struct gb_spi_device_config_response {
->   *	0 the default (from @spi_device) is used.
->   * @len: size of rx and tx buffers (in bytes)
->   * @delay_usecs: microseconds to delay after this transfer before (optionally)
-> - * 	changing the chipselect status, then starting the next transfer or
-> - * 	completing this spi_message.
-> + *	changing the chipselect status, then starting the next transfer or
-> + *	completing this spi_message.
->   * @cs_change: affects chipselect after this transfer completes
->   * @bits_per_word: select a bits_per_word other than the device default for this
->   *	transfer. If 0 the default (from @spi_device) is used.
-> --
-> 2.19.1
->
->
-> --
-> ta
-> ioannis
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20181102234508.GA27353%40kvasir.local.
-> For more options, visit https://groups.google.com/d/optout.
->
 
