@@ -1,118 +1,103 @@
-X-GM-THRID: 6669782350096760832
-X-Received: by 2002:a5d:8c8f:: with SMTP id g15mr1760081ion.36.1552929717084;
-        Mon, 18 Mar 2019 10:21:57 -0700 (PDT)
+X-GM-THRID: 6619404937628483584
+X-Received: by 2002:a1c:814d:: with SMTP id c74-v6mr14708wmd.19.1541200312461;
+        Fri, 02 Nov 2018 16:11:52 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:194d:: with SMTP id b74ls112133itb.3.canary-gmail; Mon,
- 18 Mar 2019 10:21:55 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzVv0itwYvx8XXPk3HBx1YVLJBpnpY6XpcevyaV58MawYnal5Gz/59MMokcvF9D7kk27PBD
-X-Received: by 2002:a24:18e:: with SMTP id 136mr1381itk.4.1552929715843;
-        Mon, 18 Mar 2019 10:21:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552929715; cv=none;
+Received: by 2002:a1c:cc1a:: with SMTP id h26-v6ls630752wmb.18.gmail; Fri, 02
+ Nov 2018 16:11:51 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5e+mYM6WTmYsmodcnH9LMigxPr3zFaZRpA0fXg+k9OwFqjobOaTDGz4lpETtqC4mRXgUpJP
+X-Received: by 2002:a1c:f308:: with SMTP id q8-v6mr16791wmq.0.1541200311367;
+        Fri, 02 Nov 2018 16:11:51 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1541200311; cv=pass;
         d=google.com; s=arc-20160816;
-        b=ksKZBEGSI6mA7WyoD9cMtPi5cXdadPJtG9WYhpcNczYPLUeHTimKNfoz/D+4qZbNze
-         XCgC+S5ovlXiFPdwPC3EWZqJDYcj2uoGfpaRpyNhHujPfem5dg8COMSA2Was1rcuQTXR
-         O/rH60D6GpAj01xXfJku52GpvcimFQZO9UXOKqGL35ylM8rtB6MTyZ21xWI3NRCoA770
-         QOMBZ5zkbxAPcKZugspLE/i3u3J78GjThKlBnfG7KFtPFmnTtU+QO+n302Rbpb9jMZF+
-         kJAeihMQlN8kAfCTDl+UolqucbZ8nDYxwzFyEUk/R31zKnaOiV7ts19gPPxP2lveSy9v
-         3J9g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=LfeO3LMyv2nke2ghBOVeF/3skmG/LByhfRUgfjwmZGQ=;
-        b=fJCFCnMj1+EK06bHDD+aEtJcdhSg3y+Q/+TZoOFUOj+dU0iHkwQ+h4A9SkHOy/Vrwu
-         44i+nfXSt3KryjJ3DbLWA9/6rhpwgYiosV9dsTkqMe8vN9CdwXceqq6axGLqavk+UVkm
-         5vdIBEhMAWP3agckmL/J8nJK61U8sAGRa7yPfhnae2GQkYQmSnLjxXaLFgY1zr5m6oNC
-         kg1OnUi9e6XbIc9umcC5+8UTjFFxZ3sBmyGrA/F/R3iD0SWQLYpxZJkiMhbVlOdp7UIF
-         J57cPzAWHZpOTrVuoZD34jd2o0Z1YJI+EWKsqzjrFkt41j0Jnjvv4QwlcOJ6ESQ25Kfr
-         iHrg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nNAdOz2V;
-       spf=pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::129 as permitted sender) smtp.mailfrom=brandonbonaby94@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <brandonbonaby94@gmail.com>
-Received: from mail-it1-x129.google.com (mail-it1-x129.google.com. [2607:f8b0:4864:20::129])
-        by gmr-mx.google.com with ESMTPS id j2si618452iop.0.2019.03.18.10.21.55
+        b=snNc9gEWt07IUhlhYZsWhOhIezZd/PNnS/Y8qZLATgxfEJiwmoOx68Ey0BtkAS62XW
+         3WLTscq5OkHEup9PKoEc/tBpPs01fiFxEt+5UcPSIuFrscSvAkhZF2yntExvbhVkrOCJ
+         tnKwHPSI42a+RR0jDpnNvkEKENDi5NSVnfWfF1+QpfbL2E5a+CN5H/fsZD3Vxwdz8MEt
+         XJJQgoeGbu6z207YvKyMJlRpkYEItVpTMAQ79GaJXa2scT5DA+N846RZZ2gd+YcQ7BUP
+         g+Srty2Vwx+2SIoijaX5qNo+3W2wXa0/57xPLYN+kuBdpLBTScm51LX9OH7e6wQKxdfN
+         V/pg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=gR4Rnyp8okiMtxwxUcYpIdtoxtwbjlsvct8KXxWRK5U=;
+        b=N8n5c62pdSMQGIRS5Y/WJmZPxar1kuG4f4J6CF8rPkDR4jSEUCcxMqiiVbRRkNJHW7
+         gUjktN9uG/jqKn+oDS7TqSP1jwK4TzPjxIvYgVzLjtwu2pew/xGnbn20H3Bd19/k6Jc5
+         UyhrVQ5UYuyD/iGvDjqe8Ts2CWPIJLtVWsqda/qBhofT0m5ntuB48w8MVNUfM0br9fDU
+         aYsLSDvggbzgmtEiuwRdBCrchlHV7wNSzXVWFi8OHw8OyDjqCWODXcW34f5H2ot5ifll
+         YwaIMq9sBGsEEea2sV9okbQXKdvDbvs2iiaLHYcRuSPWvmwUl7p1/RTfl8MNM2SBYjn5
+         CHKQ==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=flaqCDum;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
+Return-Path: <code@wizofe.uk>
+Received: from sender-of-o51.zoho.eu (sender-of-o51.zoho.eu. [185.20.209.243])
+        by gmr-mx.google.com with ESMTPS id z139-v6si552403wmc.0.2018.11.02.16.11.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 18 Mar 2019 10:21:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::129 as permitted sender) client-ip=2607:f8b0:4864:20::129;
+        Fri, 02 Nov 2018 16:11:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) client-ip=185.20.209.243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nNAdOz2V;
-       spf=pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::129 as permitted sender) smtp.mailfrom=brandonbonaby94@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-it1-x129.google.com with SMTP id g17so21682639ita.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 18 Mar 2019 10:21:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to;
-        bh=LfeO3LMyv2nke2ghBOVeF/3skmG/LByhfRUgfjwmZGQ=;
-        b=nNAdOz2V2XwhTTX7pZKxtKOtjq3PaT4l6uJ+HsvF8oFgIDIDfFjeqLwyJB6zwvCR2d
-         9kkZGIsnw9mUPsB8YiVR3R/k3AyUa9IfkEfgP+M7WD9P1pwOtctWz4qgRi4CyRYiw9+Z
-         QRsgBxy45VuaJbnUBUP1TGcnbYuTbM/SLy7EOCk5ox3a4OS6TLh9j57kf44OEkD+C2ar
-         rpzvw/T4r3382nkc6mxLwaCYwc+W9gQxIKKv4iq6n+GOJqAg+gX3fPuzDdfl4RH04wl0
-         0FwvlFqnuBB5gXMIudRpwwJ0bAjCla3HIcDmhMrxm+VPDfzKPpdAMHvYLRIK87s1LQM0
-         9h2g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to;
-        bh=LfeO3LMyv2nke2ghBOVeF/3skmG/LByhfRUgfjwmZGQ=;
-        b=RazFMQNC6EuNzCITE6/2vUCIVUWHWNLT4zGxSNwe2H7EmmRWiBvsygR0JCF9YYxdf5
-         xrdjm76A5c13VNUy2M/pEIqKQ3ZNcUowelQt75q44Jg7tXTHfB2MCvyZqRUzoMcgPU8/
-         ptzlDOJ38oQOOuit8aSIirosC2EF8LBu5cisvSHHKRammnN135pOGfw/QGLkH80CIZ3I
-         E9dYq7+nO+3VBKiN4bUNDFKG2VSgYioxpmZ59dQC8CtO4rnV0G2CWoNjJmEBtZKc0S+g
-         /gHOlDLQEx7cxgVg4jMMFUxKKMm7jNl7wucS0eusINPmFUWh574b8g1lIdwrOH0muWkM
-         I0HQ==
-X-Gm-Message-State: APjAAAUYLFqyAczJsV9gWz0FW4qPx3Vstf/BRiPlBs4cPmQgEXgd/nbG
-	CEkqtqTAs3az5Cv8yoxf/wR0BPqNI/h2
-X-Received: by 2002:a24:4c82:: with SMTP id a124mr1973086itb.163.1552929715621;
-        Mon, 18 Mar 2019 10:21:55 -0700 (PDT)
-Return-Path: <brandonbonaby94@gmail.com>
-Received: from branx011-Vostro-430 ([2607:fea8:29a0:ff5:10b9:a837:3f7e:30cf])
-        by smtp.gmail.com with ESMTPSA id o141sm450027ito.14.2019.03.18.10.21.54
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Mar 2019 10:21:55 -0700 (PDT)
-From: Branden Bonaby <brandonbonaby94@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	Branden Bonaby <brandonbonaby94@gmail.com>
-Subject: [PATCH v3 1/2] staging: wlan-ng: Tabspaces in macro definition
-Date: Mon, 18 Mar 2019 13:21:44 -0400
-Message-Id: <4ac095466db03b6d17609ffac12a95a7daeb4df7.1552927880.git.brandonbonaby94@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: cover.1552927880.git.brandonbonaby94@gmail.com
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=flaqCDum;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
+ARC-Seal: i=1; a=rsa-sha256; t=1541200307; cv=none; 
+	d=zoho.eu; s=zohoarc; 
+	b=OwLE3Il+RCqiDIs1qutDC19aDMa8XVCb5+NWab6qUfD/2RRE35CSB+ubJiy2my3XbZxqwliXrj1TV+mGmFZ5/xorYLJIZ7uRNpsutxuYN8DTjC5qUojlrvpFmXrRjSLBbYuhvzXWQ3iWt/JglmhLzAUtK+OE0NPh9YC3QhKnfFw=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
+	t=1541200307; h=Content-Type:Cc:Date:From:MIME-Version:Message-ID:Subject:To:ARC-Authentication-Results; 
+	bh=gR4Rnyp8okiMtxwxUcYpIdtoxtwbjlsvct8KXxWRK5U=; 
+	b=H87b4sAsbgUaLmr5OvhiBD3R6N+UxQjuSc575eghyl0UAUsh2+t2RNQDOZ2rPn8TyglJbEzLVLvbbGBt7mRzOBNtaSBdNdQbVIRqpYWMxLTSOQAV+50qoAAXaZd3zRXXtepqhZNRXXeGuYvjPXJEwN/oP1QSsXbc6CASXQNPcFw=
+ARC-Authentication-Results: i=1; mx.zoho.eu;
+	dkim=pass  header.i=wizofe.uk;
+	spf=pass  smtp.mailfrom=code@wizofe.uk;
+	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541200307;
+	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
+	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type;
+	l=642; bh=gR4Rnyp8okiMtxwxUcYpIdtoxtwbjlsvct8KXxWRK5U=;
+	b=flaqCDumgc9h6GFvE3rxm9ZI91+b+GnerpkkT8kd67cEuUWrqRze958yCXvZ8yEA
+	UW7vrxy35NUHyc5epEx1dPKtwwjWk/gp07I7eo9xjiBAuEWg7I2h2pUDLpNlVZpPYdP
+	zSE2qTOhEoN6H7buNfqKMcxDnmD3W49baJIDos0U=
+Received: from kvasir.local (90.242.56.176 [90.242.56.176]) by mx.zoho.eu
+	with SMTPS id 154120030576366.3051862584224; Sat, 3 Nov 2018 00:11:45 +0100 (CET)
+Date: Fri, 2 Nov 2018 23:11:44 +0000
+From: Ioannis Valasakis <code@wizofe.uk>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: greybus Insert empty line after struct
+Message-ID: <20181102231144.GA27291@kvasir.local>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-ZohoMailClient: External
 
-Remove tabspace in macro definition to conform to Linux kernel
-coding style. Replaced each tabspace with a single white space.
+Insert empty line after struct definition
+Reported by checkpatch
 
-Signed-off-by: Branden Bonaby <brandonbonaby94@gmail.com>
+Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
 ---
- drivers/staging/wlan-ng/hfa384x.h | 13 ++++++-------
- 1 file changed, 6 insertions(+), 7 deletions(-)
+ drivers/staging/greybus/bundle.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/staging/wlan-ng/hfa384x.h b/drivers/staging/wlan-ng/hfa384x.h
-index 992ebaa1071f..da4e6db36679 100644
---- a/drivers/staging/wlan-ng/hfa384x.h
-+++ b/drivers/staging/wlan-ng/hfa384x.h
-@@ -517,13 +517,12 @@ struct hfa384x_tx_frame {
- 	HFA384x_TXSTATUS_DISCON | HFA384x_TXSTATUS_AGEDERR | \
- 	HFA384x_TXSTATUS_RETRYERR))
+diff --git a/drivers/staging/greybus/bundle.h b/drivers/staging/greybus/bundle.h
+index ffcfd43802cc..a69200c786d0 100644
+--- a/drivers/staging/greybus/bundle.h
++++ b/drivers/staging/greybus/bundle.h
+@@ -31,6 +31,7 @@ struct gb_bundle {
  
--#define	HFA384x_TX_SET(v, m, s)		((((u16)(v)) << ((u16)(s))) & ((u16)(m)))
--
--#define	HFA384x_TX_MACPORT_SET(v)	HFA384x_TX_SET(v, HFA384x_TX_MACPORT, 8)
--#define	HFA384x_TX_STRUCTYPE_SET(v)	HFA384x_TX_SET(v, \
--						HFA384x_TX_STRUCTYPE, 3)
--#define	HFA384x_TX_TXEX_SET(v)		HFA384x_TX_SET(v, HFA384x_TX_TXEX, 2)
--#define	HFA384x_TX_TXOK_SET(v)		HFA384x_TX_SET(v, HFA384x_TX_TXOK, 1)
-+#define HFA384x_TX_SET(v, m, s) ((((u16)(v)) << ((u16)(s))) & ((u16)(m)))
-+#define HFA384x_TX_MACPORT_SET(v) HFA384x_TX_SET(v, HFA384x_TX_MACPORT, 8)
-+#define HFA384x_TX_STRUCTYPE_SET(v) HFA384x_TX_SET(v, \
-+						    HFA384x_TX_STRUCTYPE, 3)
-+#define HFA384x_TX_TXEX_SET(v) HFA384x_TX_SET(v, HFA384x_TX_TXEX, 2)
-+#define HFA384x_TX_TXOK_SET(v) HFA384x_TX_SET(v, HFA384x_TX_TXOK, 1)
- /*--------------------------------------------------------------------
-  * Communication Frames: Receive Frames
-  *--------------------------------------------------------------------
+ 	struct list_head	links;	/* interface->bundles */
+ };
++
+ #define to_gb_bundle(d) container_of(d, struct gb_bundle, dev)
+ 
+ /* Greybus "private" definitions" */
 -- 
-2.17.1
+2.19.1
+
+
+-- 
+ta
+ioannis
 
 
