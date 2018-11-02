@@ -1,71 +1,71 @@
 X-GM-THRID: 6619077441472167936
-X-Received: by 2002:a9d:6552:: with SMTP id q18mr6602202otl.37.1541124298892;
-        Thu, 01 Nov 2018 19:04:58 -0700 (PDT)
+X-Received: by 2002:a2e:3805:: with SMTP id f5-v6mr939010lja.24.1541124253570;
+        Thu, 01 Nov 2018 19:04:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:4106:: with SMTP id o6-v6ls7347439oia.5.gmail; Thu, 01
- Nov 2018 19:04:57 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5exmzDy+7dkuVwbEVWo0wfNCJr4ZiifvHt9Ma9v5GtLy/JYwgY5mISNpoHh+ZveoN91ttNd
-X-Received: by 2002:aca:ef8a:: with SMTP id n132-v6mr7081964oih.36.1541124297640;
-        Thu, 01 Nov 2018 19:04:57 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1541124297; cv=pass;
+Received: by 2002:a2e:67:: with SMTP id 100-v6ls2146706lja.15.gmail; Thu, 01
+ Nov 2018 19:04:12 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5cbdcKHvnIlHUn8JEaI/prutaY6x6rp3IdO+n3zFTEeG8wJeAhZ3TWpYtGCGvoC38mhoQbv
+X-Received: by 2002:a2e:3910:: with SMTP id g16-v6mr942987lja.13.1541124252689;
+        Thu, 01 Nov 2018 19:04:12 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1541124252; cv=pass;
         d=google.com; s=arc-20160816;
-        b=EKa/ynx2UM3W9/ECJu7afDk9wqV8N0d2iWVEt5OnGW91Map8LQCwKugj9NNSmsN6CS
-         JSz7yu1AyTd1VF3HXSXjgYOymNh7SQvmEZpJ+qJJfQNl0itknY9iRHDRG+IiHAen+VLS
-         sVCFNRI1KEBcDqBdIIngz4hJ6LyaJm46eVjVIzCCa3O60JE4luw/lGoiklLwcVC+BVUt
-         myYohq0fuCY7COdgZtbkNM9wOgVoiDKyJoOGyJwuOwM4sBsBpGWJ4iGttH6mszo5kmTX
-         NoFwCHy8T+BHr06GJSDN24mW1Z6DIPCGj8JCUWYSa38yszXquc4+c7aYpj1PlrN0xG50
-         7zxg==
+        b=iExxw3FBc1dqNXZ2RunAbs+yFNwQGJt8WdkOGvmgFMMbmocrv+r7CEUr2zJdzJ1EMr
+         HRM6OpTJmm4gpmkLOKeHxyNKz/SL5sVUqbHLWw4sJNKHY5h8IqWvnyEkQCRBKyfyLu1w
+         x7PRos31M7s3TyIRrHC+6YYBOTN4O+OsTbOlZKuGlkY7XH3zxGBynefjqNeb8kkUXv1v
+         kCpwBFpPMQRhQZ+TkSeuCcW2eDlXm9LSB1OhU+1k/gjCvqCuU8sXsI8stI879kyLzstL
+         yQpTqvSV1dV9seChy9T91Uk3bK3nTCyKxQehTHxbLa4d4KzTedo7Yk8+6rr1cXw59+Cl
+         6laA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=BL/qEvYJ5N9fRsiaal25GB5tlyZM7khNTaEeWAOxh+s=;
-        b=RZ9wkLZbi2QZf+KdsWr3c6UCxkYi9xVjXDmHsKDw8pf4Hzu2f7sfGPfQTz4+Qe/L0G
-         Ke1BzKGlS7ekMlgPTo8ajTg8MtHQfDTiwttdB4flLD824zge/UW1DXuHEhoJkgAj/zbk
-         d6sCExlMK1sndIT2cG9iYmxW8M8UrbbBWTAl/FTzwDAKY5BP5hlmfZKJVdDFG2J4+0GZ
-         eFTT+PBi9QM5gvgQ+Dd0SiTx9OQkuleemn3GObhl5trOzwv0qsEQyy/320xVAluam7+x
-         jaLyXtIRvDWqMv1TmI4COxLz1VWO5hdL+BfQHQPGyseMbkB8jPP9xq1mC+RzkgdazcIX
-         e5Vg==
+        bh=WCJSPJ/DxQJSKaVK8s4p7mgaXOH5rxd3XRDYAk1nBck=;
+        b=zD4gZUipISKOF8M5+lAmnirUKsNY7yLAWn79h7zmaIbEAXBbmlIc2JvlglDQ/U0/bK
+         PACN9CwjGAKFm/ip5kXBPdHO7tmaP+I3Oep366KLxYqKNEYrq5Zyn7B6GE9CZ4c5A67A
+         eWV9mWcj1F0SSLTX92arBIpg5fArz5vttfO7PfCzDcUPyZqhUp8M0SBhcZrPh0va+ygb
+         fmnfY/ocHVQsoI6gezboHP8BZ+k8CEdUzHH6wAfuvj/AzdruaOeQNIoERnFM8Zw84cXY
+         D16661W8nwKKKwgXT59iFtVoUsDAjjeQH2r2mXlAs4cYfScPeX6yr/mlwB+ziruQt6tI
+         nRBg==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=gwlm6Q5T;
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=YBn5o+97;
        arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
        spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
 Return-Path: <code@wizofe.uk>
 Received: from sender-of-o51.zoho.eu (sender-of-o51.zoho.eu. [185.20.209.243])
-        by gmr-mx.google.com with ESMTPS id p84-v6si298719oih.1.2018.11.01.19.04.56
+        by gmr-mx.google.com with ESMTPS id d14-v6si390181lfk.0.2018.11.01.19.04.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Nov 2018 19:04:57 -0700 (PDT)
+        Thu, 01 Nov 2018 19:04:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) client-ip=185.20.209.243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=gwlm6Q5T;
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=YBn5o+97;
        arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
        spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
-ARC-Seal: i=1; a=rsa-sha256; t=1541124292; cv=none; 
+ARC-Seal: i=1; a=rsa-sha256; t=1541124249; cv=none; 
 	d=zoho.eu; s=zohoarc; 
-	b=BCq8TNTSdOhzMCUo0oivi7u6gAcyfFtldGLDanzl/XgDLLKNP6/9+eolmJJ/e+b0i8dUAhXN/BhWtn2bUmvCzaxSB2mQoGqYYZxBuUxUxp5J7ljDMMikf2DHiQzxb0hN4OTUg1W3f/5mJF9kwFbQsqKaF+VbezbWJ7ddfX4kk9E=
+	b=V0HwbnK+VfpyO6giqCx7A1Kb3sfxl55Z7w1R4SUdF0r7aybypLE13kP512aalg1RcmCV+670HsYU7erl33JfTqn59oGhsQavE6BZ7w9OhzF7+stTTdFmjWa2eBL4+K/4hoQaS1zGK5v/szJStzEcJXntReGxSHeWW29Av0ffN8w=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
-	t=1541124292; h=Content-Type:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To:ARC-Authentication-Results; 
-	bh=BL/qEvYJ5N9fRsiaal25GB5tlyZM7khNTaEeWAOxh+s=; 
-	b=AxPa01XyeL65hIDQe75xLa6uKxcsVC6kWzwcdGiOO8F0Oyu/2F5e8XiFKsWZXAIYZ9PQKhylsy9sU/eWhuJZC3Cgk4AI4R7iz4nM2AUI2Ll8L70Cp+pQAZ7D6Xo2i4tge8F1N4ZU8aVrlJuSr2QjaJVyvW/z7iTB17sekf4UCN0=
+	t=1541124249; h=Content-Type:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To:ARC-Authentication-Results; 
+	bh=WCJSPJ/DxQJSKaVK8s4p7mgaXOH5rxd3XRDYAk1nBck=; 
+	b=gO4Dzh0+L/djka7aUlfHkna4U9PogIDq7ayTKtCpHp5PCH898UjHI//x8PYdXX1ZNcpj8aaRXA6JCVpMVKlnqE39keP11AC+P1SRUn0NikSs7mTesx7qrDFuzd24DcGR6DfFv3UoBzhEBb55b3h0kU7w77CJ6cLclTOowPWkRD0=
 ARC-Authentication-Results: i=1; mx.zoho.eu;
 	dkim=pass  header.i=wizofe.uk;
 	spf=pass  smtp.mailfrom=code@wizofe.uk;
 	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541124292;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541124249;
 	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To;
-	l=988; bh=BL/qEvYJ5N9fRsiaal25GB5tlyZM7khNTaEeWAOxh+s=;
-	b=gwlm6Q5TknW45arG3wUOF00FBhSdKJMRvTp4Fooc/PeU5o4hwgT1iQMaUEvz3JtJ
-	vY7FU2S6nQ0KL4ULz/TmEbHXFbQtTjxOmzbtuxG4O6UTIq6YndawjZyrJAcIweSTA0b
-	G4FsS9HUOoe66Et0ZSXIQxMoSmApaLJKItEXPXLM=
+	l=656; bh=WCJSPJ/DxQJSKaVK8s4p7mgaXOH5rxd3XRDYAk1nBck=;
+	b=YBn5o+97Y52K5COAqPFnpadGVG44lzYrjFNnU2TVPqiM954hMzBawuUxPw8bPql3
+	uwtHDfhzBa6rfiG3BaBhGuIIs+odhx4YJX6cY7JWMoJptf4+KOpfGBDG6G0rM7IwXeG
+	9lLZe+7a6kTKoGBzM8bZFugrUZQLvamd4xig6Qak=
 Received: from kvasir.local (90.242.56.176 [90.242.56.176]) by mx.zoho.eu
-	with SMTPS id 154112429097892.31691123036796; Fri, 2 Nov 2018 03:04:50 +0100 (CET)
-Date: Fri, 2 Nov 2018 02:04:49 +0000
+	with SMTPS id 1541124248184411.6808974111399; Fri, 2 Nov 2018 03:04:08 +0100 (CET)
+Date: Fri, 2 Nov 2018 02:04:06 +0000
 From: Ioannis Valasakis <code@wizofe.uk>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org
-Subject: [PATCH 4/5] staging: greybus Match with open parentheses
-Message-ID: <202cacec28435d2bb33fa9873f8fef9e451dada7.1541123999.git.code@wizofe.uk>
+Subject: [PATCH 3/5] staging: greybus Add a blank line after declaration
+Message-ID: <2e561efdbad10ccafa39580d2afa580611d056bf.1541123999.git.code@wizofe.uk>
 References: <cover.1541123999.git.code@wizofe.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -74,27 +74,26 @@ In-Reply-To: <cover.1541123999.git.code@wizofe.uk>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-ZohoMailClient: External
 
-Fix the arguments by open parentheses
+Add a blank line after the struct declaration
 Reported by checkpatch.
 
 Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
 ---
- drivers/staging/greybus/control.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/greybus/control.h | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/drivers/staging/greybus/control.h b/drivers/staging/greybus/control.h
-index 9c453e0b1b33..08a51c652a10 100644
+index 643ddb9e0f92..9c453e0b1b33 100644
 --- a/drivers/staging/greybus/control.h
 +++ b/drivers/staging/greybus/control.h
-@@ -41,7 +41,7 @@ int gb_control_get_bundle_versions(struct gb_control *control);
- int gb_control_connected_operation(struct gb_control *control, u16 cport_id);
- int gb_control_disconnected_operation(struct gb_control *control, u16 cport_id);
- int gb_control_disconnecting_operation(struct gb_control *control,
--					u16 cport_id);
-+				       u17 cport_id);
- int gb_control_mode_switch_operation(struct gb_control *control);
- void gb_control_mode_switch_prepare(struct gb_control *control);
- void gb_control_mode_switch_complete(struct gb_control *control);
+@@ -24,6 +24,7 @@ struct gb_control {
+ 	char *vendor_string;
+ 	char *product_string;
+ };
++
+ #define to_gb_control(d) container_of(d, struct gb_control, dev)
+ 
+ struct gb_control *gb_control_create(struct gb_interface *intf);
 -- 
 2.19.1
 
