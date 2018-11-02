@@ -1,229 +1,133 @@
-X-GM-THRID: 6253387026836488192
-X-Received: by 10.66.146.231 with SMTP id tf7mr17532666pab.6.1455980126387;
-        Sat, 20 Feb 2016 06:55:26 -0800 (PST)
+X-GM-THRID: 6619077441472167936
+X-Received: by 2002:a5d:6112:: with SMTP id v18-v6mr1222304wrt.30.1541169240999;
+        Fri, 02 Nov 2018 07:34:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.46.155 with SMTP id u27ls416627iou.35.gmail; Sat, 20 Feb
- 2016 06:55:25 -0800 (PST)
-X-Received: by 10.50.13.69 with SMTP id f5mr2404514igc.7.1455980125922;
-        Sat, 20 Feb 2016 06:55:25 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id ui7si2244113pab.0.2016.02.20.06.55.25
+Received: by 2002:a1c:c12:: with SMTP id 18-v6ls491264wmm.18.canary-gmail;
+ Fri, 02 Nov 2018 07:34:00 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5edNgsUPhVlcYtsZcDZ6dcG4USe5LwcJnReNq39lJMaszCCDYvGtYVITAgJdciSR04tbNx6
+X-Received: by 2002:a1c:f704:: with SMTP id v4-v6mr18950wmh.20.1541169240022;
+        Fri, 02 Nov 2018 07:34:00 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1541169239; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=VdbI2d4kF+9LU2rKPCA0OJVaObPVZLlwkbeUBw+zY57GW0zsD8AouHVhlBu5c+xcvl
+         qutiMxE+GSwLSZfdnJPQ7/PLhzDxncTnBZRQrKadZFicrVzPkjNWwALoXjMMHP4Ws7oX
+         mOHf0k1Tazg+yOGAVQDmwiGrAAu+XKI+1NfMBNjTS7yYCCkpFn1l8Rphtp+FE7IiazCx
+         Jr4n+CqeMfn71HD7nCIm32MFHr9+fosoq6SJhFcuhvWt7YkslAh7FR9k6OOccn3AiqN7
+         mYzacP9iERDqfbDyPOkESXxlnEKETW1WEhpSiBWbjsCATse6u8nkSRgzAfIC58kzwuHs
+         Shzg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=qe6r9/d36SreikXd1jwDUjDZdTat3IFG4eCVuLEqRX4=;
+        b=BHxZ3QAhFxk4EJyQRVhyWhB3P5C5uA6qcpUJxgJPzqU2fvRRn+mAeXBdkncnodvVOr
+         ZKWTosGkWOf2Fha59mjBUVX4xfYLWKtDnrkJQLAKpGHWm7bNyqfPDkVCC/GJrURvdoOd
+         jyPzkafczI2ghIQ6/BIpb1MSCKyUT100J754pV21tf4dh6z/fKHeKpKDmkvYfBeorDDd
+         Wmmc/ZIwZ8HnoKIZ7yvokAcp1Hbbpi5XCLbvPMoGFj5rNTDsi6ETC2gdv2XZ+eZQkGDT
+         o1ASx0Z4ie47P7JbMXHgk3xbk2pVPFc19we5De6SP+7Vcyw5pRauYEVy6gDLKgC9KJ+g
+         3j9w==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=WfnMHgBF;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
+Return-Path: <code@wizofe.uk>
+Received: from sender-of-o51.zoho.eu (sender-of-o51.zoho.eu. [185.20.209.243])
+        by gmr-mx.google.com with ESMTPS id h188-v6si870706wmg.2.2018.11.02.07.33.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 20 Feb 2016 06:55:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        Fri, 02 Nov 2018 07:33:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) client-ip=185.20.209.243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x229.google.com with SMTP id ho8so68008765pac.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 20 Feb 2016 06:55:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=OiKUhd+oreXmdHTMulm+xheUNb99SYJmeVF4O4xG/xA=;
-        b=smYj1cumcCyhNi1QRzUIFZN/sROKIJ4Rummc/VfZRvXJKLKanbXld7DoQLt1HnnmTQ
-         cRqWtGaWkl+/4PuG3MZoU6JhNFFqPDw3YvtRSihsHwRPBXZT7LpTrNNIGXGtJGUnithN
-         ukaYBoaDnmWklVnL+NGt4wyLs5MU7GW8EcOsxCJtPZusOc6NuS7+WQRfC8rUS9xfglYL
-         KGpmD5tnvyJVOMOcMzQUvVMRRkq9MGo82mmKbPlzqVEweeTuzybCaDJPeQ48MD9y9V1o
-         ku/1L8+jVrqHd4z3LyEv0EuQ2fjWbQXPznir7P7e6OhWlFYpI3taXgeQJdJY2fUl50VM
-         NMGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=OiKUhd+oreXmdHTMulm+xheUNb99SYJmeVF4O4xG/xA=;
-        b=meZ9vLh0CW7XedDUAvIxsc+QlNP+aDYM9OsetMrIfXqumPacZ2Wdzk3Sy2UnFkI6hF
-         78EmQnOLmAYQUvjWzL8B8/A0Sz73CNm53yLdJTsuLp2vQVG/nvvV595H90mM9j0KGv8E
-         rPX6lnFggff/xvTdTZOwQq8ua6PK/IiixK7akr/Wk5ZBLHtLhtchsRwdO4y4OLgl2T9Q
-         MnvwE50DSgD1YDzB1+lyWV0cSB10J13hC5Ubm8PDXMhiOPE09m4CzLJ45MzEJIm2mt/E
-         sDwGSieWF96ZIui18epbaMFoG10ad04pfGHid58msxETZo/nanI1wOi0xc+L2ROD8fgq
-         dTnA==
-X-Gm-Message-State: AG10YORVOIOCzSabSAot3YAliW/DwjTZ00SMs46/mnYM3lP+vbfzuhOU/GVHwJxOI11yeA==
-X-Received: by 10.66.222.129 with SMTP id qm1mr25581144pac.22.1455980125779;
-        Sat, 20 Feb 2016 06:55:25 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from bhumirks@gmail.com ([106.215.184.176])
-        by smtp.gmail.com with ESMTPSA id z67sm25106162pfa.71.2016.02.20.06.55.19
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 20 Feb 2016 06:55:25 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Sat, 20 Feb 2016 20:25:12 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: iio: light: Remove __func__ from dev_err
-Date: Sat, 20 Feb 2016 20:25:11 +0530
-Message-Id: <1455980111-15231-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=WfnMHgBF;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
+ARC-Seal: i=1; a=rsa-sha256; t=1541169233; cv=none; 
+	d=zoho.eu; s=zohoarc; 
+	b=eo4ihSD38ny/bftHZERtFoVDiyGN6os+mb9d2kzf3bzDbkFB0ZzZosCkcHC885sZOHNY3eppYBFiWScA2iJfamLd0WqnWHz0ilW/F+mp5FCkBNDKqhFvqpXdwsYG+efYFHvKIsy0jaMirsBd23Uhl2TeJ6CVbilU8i3TWYcs/ww=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
+	t=1541169233; h=Content-Type:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To:ARC-Authentication-Results; 
+	bh=qe6r9/d36SreikXd1jwDUjDZdTat3IFG4eCVuLEqRX4=; 
+	b=gb1rtCDb5bs6LJha84DmhF61fb5a4VbkWYdcR2QWQglTN4y9lyaB79wdVSwB6VoO2oOZAVG0jy/v4C5h7s0bWUUA5HgG528Y2eruWws4YYEKVhxmApy0/WY6dFfI9Fm5d/vcCY7NC3P5w7JjHV/pIFZ6h1pt1Zxj41BNsJY0UnA=
+ARC-Authentication-Results: i=1; mx.zoho.eu;
+	dkim=pass  header.i=wizofe.uk;
+	spf=pass  smtp.mailfrom=code@wizofe.uk;
+	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541169233;
+	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To;
+	l=1944; bh=qe6r9/d36SreikXd1jwDUjDZdTat3IFG4eCVuLEqRX4=;
+	b=WfnMHgBFJEVS2xoZcor5tdvXxnxQEHtw9MVMuSm8+ROSpv8EQVgDj1z/VGXxTCw2
+	teXocc1AQEQhkvttpJbtNZR9ELFagG2Q9FWf1ZUKY38gnsyY8GrB8aiLlXBnmxpRThi
+	/xIsTT8Myh8AETxJqTXaZNEDHSZrapaSoVaQvsYA=
+Received: from kvasir.local (90.242.56.176 [90.242.56.176]) by mx.zoho.eu
+	with SMTPS id 154116923232710.359126237323721; Fri, 2 Nov 2018 15:33:52 +0100 (CET)
+Date: Fri, 2 Nov 2018 14:33:50 +0000
+From: Ioannis Valasakis <code@wizofe.uk>
+To: Sasha Levin <sashal@kernel.org>
+Cc: Julia Lawall <julia.lawall@lip6.fr>,
+	Greg KH <gregkh@linuxfoundation.org>,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] Re: [PATCH 4/5] staging: greybus Match with
+ open parentheses
+Message-ID: <20181102143350.GB12871@kvasir.local>
+References: <cover.1541123999.git.code@wizofe.uk>
+ <202cacec28435d2bb33fa9873f8fef9e451dada7.1541123999.git.code@wizofe.uk>
+ <20181102045300.GA11843@kroah.com>
+ <20181102122539.GA1372@kvasir.local>
+ <alpine.DEB.2.20.1811021343160.3863@hadrien>
+ <20181102143114.GG194472@sasha-vm>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20181102143114.GG194472@sasha-vm>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-ZohoMailClient: External
 
-This patch removes __func__ argument from dev_err as dev_err includes
-the function name in the log printout, so there is no need to
-include it manually.
-Found using coccinelle:
-
-@a@
-expression E;
-expression  msg;
-@@
-
-dev_err(E, msg, __func__);
-
-@script:python b@
-e << a.msg;
-y;
-@@
-
-if(e.find("%s: ") == True):
-        m = e.replace("%s: ", "");
-        coccinelle.y = m;
-elif(e.find("%s ") == True):
-        m = e.replace("%s ", "");
-        coccinelle.y = m;
-else:
-        m = e.replace("%s", "");
-
-@c@
-expression a.E, a.msg;
-identifier  b.y;
-@@
-
-- dev_err(E, msg, __func__);
-+ dev_err(E, y);
-
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
- drivers/staging/iio/light/tsl2x7x_core.c | 38 +++++++++++---------------------
- 1 file changed, 13 insertions(+), 25 deletions(-)
-
-diff --git a/drivers/staging/iio/light/tsl2x7x_core.c b/drivers/staging/iio/light/tsl2x7x_core.c
-index 2a62718..348c9c2 100644
---- a/drivers/staging/iio/light/tsl2x7x_core.c
-+++ b/drivers/staging/iio/light/tsl2x7x_core.c
-@@ -348,8 +348,7 @@ static int tsl2x7x_get_lux(struct iio_dev *indio_dev)
- 
- 	if (chip->tsl2x7x_chip_status != TSL2X7X_CHIP_WORKING) {
- 		/* device is not enabled */
--		dev_err(&chip->client->dev, "%s: device is not enabled\n",
--				__func__);
-+		dev_err(&chip->client->dev, "device is not enabled\n");
- 		ret = -EBUSY;
- 		goto out_unlock;
- 	}
-@@ -357,14 +356,12 @@ static int tsl2x7x_get_lux(struct iio_dev *indio_dev)
- 	ret = tsl2x7x_i2c_read(chip->client,
- 		(TSL2X7X_CMD_REG | TSL2X7X_STATUS), &buf[0]);
- 	if (ret < 0) {
--		dev_err(&chip->client->dev,
--			"%s: Failed to read STATUS Reg\n", __func__);
-+		dev_err(&chip->client->dev, "Failed to read STATUS Reg\n");
- 		goto out_unlock;
- 	}
- 	/* is data new & valid */
- 	if (!(buf[0] & TSL2X7X_STA_ADC_VALID)) {
--		dev_err(&chip->client->dev,
--			"%s: data not valid yet\n", __func__);
-+		dev_err(&chip->client->dev, "data not valid yet\n");
- 		ret = chip->als_cur_info.lux; /* return LAST VALUE */
- 		goto out_unlock;
- 	}
-@@ -482,8 +479,7 @@ static int tsl2x7x_get_prox(struct iio_dev *indio_dev)
- 	struct tsl2X7X_chip *chip = iio_priv(indio_dev);
- 
- 	if (mutex_trylock(&chip->prox_mutex) == 0) {
--		dev_err(&chip->client->dev,
--			"%s: Can't get prox mutex\n", __func__);
-+		dev_err(&chip->client->dev, "Can't get prox mutex\n");
- 		return -EBUSY;
- 	}
- 
-@@ -586,8 +582,7 @@ static int tsl2x7x_als_calibrate(struct iio_dev *indio_dev)
- 	reg_val = i2c_smbus_read_byte(chip->client);
- 	if ((reg_val & (TSL2X7X_CNTL_ADC_ENBL | TSL2X7X_CNTL_PWR_ON))
- 		!= (TSL2X7X_CNTL_ADC_ENBL | TSL2X7X_CNTL_PWR_ON)) {
--		dev_err(&chip->client->dev,
--			"%s: failed: ADC not enabled\n", __func__);
-+		dev_err(&chip->client->dev, "failed: ADC not enabled\n");
- 		return -1;
- 	}
- 
-@@ -602,14 +597,13 @@ static int tsl2x7x_als_calibrate(struct iio_dev *indio_dev)
- 	reg_val = i2c_smbus_read_byte(chip->client);
- 	if ((reg_val & TSL2X7X_STA_ADC_VALID) != TSL2X7X_STA_ADC_VALID) {
- 		dev_err(&chip->client->dev,
--			"%s: failed: STATUS - ADC not valid.\n", __func__);
-+			"failed: STATUS - ADC not valid.\n");
- 		return -ENODATA;
- 	}
- 
- 	lux_val = tsl2x7x_get_lux(indio_dev);
- 	if (lux_val < 0) {
--		dev_err(&chip->client->dev,
--		"%s: failed to get lux\n", __func__);
-+		dev_err(&chip->client->dev, "failed to get lux\n");
- 		return lux_val;
- 	}
- 
-@@ -701,8 +695,7 @@ static int tsl2x7x_chip_on(struct iio_dev *indio_dev)
- 	ret = i2c_smbus_write_byte_data(chip->client,
- 		TSL2X7X_CMD_REG | TSL2X7X_CNTRL, utmp);
- 	if (ret < 0) {
--		dev_err(&chip->client->dev,
--			"%s: failed on CNTRL reg.\n", __func__);
-+		dev_err(&chip->client->dev, "failed on CNTRL reg.\n");
- 		return ret;
- 	}
- 
-@@ -729,8 +722,7 @@ static int tsl2x7x_chip_on(struct iio_dev *indio_dev)
- 	ret = i2c_smbus_write_byte_data(chip->client,
- 			TSL2X7X_CMD_REG | TSL2X7X_CNTRL, utmp);
- 	if (ret < 0) {
--		dev_err(&chip->client->dev,
--			"%s: failed on 2nd CTRL reg.\n", __func__);
-+		dev_err(&chip->client->dev, "failed on 2nd CTRL reg.\n");
- 		return ret;
- 	}
- 
-@@ -749,8 +741,7 @@ static int tsl2x7x_chip_on(struct iio_dev *indio_dev)
- 			(TSL2X7X_CMD_REG | TSL2X7X_CNTRL), reg_val);
- 		if (ret < 0)
- 			dev_err(&chip->client->dev,
--				"%s: failed in tsl2x7x_IOCTL_INT_SET.\n",
--				__func__);
-+				"failed in tsl2x7x_IOCTL_INT_SET.\n");
- 
- 		/* Clear out any initial interrupts  */
- 		ret = i2c_smbus_write_byte(chip->client,
-@@ -758,8 +749,7 @@ static int tsl2x7x_chip_on(struct iio_dev *indio_dev)
- 			TSL2X7X_CMD_PROXALS_INT_CLR);
- 		if (ret < 0) {
- 			dev_err(&chip->client->dev,
--				"%s: Failed to clear Int status\n",
--				__func__);
-+				"Failed to clear Int status\n");
- 		return ret;
- 		}
- 	}
-@@ -1919,8 +1909,7 @@ static int tsl2x7x_probe(struct i2c_client *clientp,
- 						"TSL2X7X_event",
- 						indio_dev);
- 		if (ret) {
--			dev_err(&clientp->dev,
--				"%s: irq request failed", __func__);
-+			dev_err(&clientp->dev, "irq request failed");
- 			return ret;
- 		}
- 	}
-@@ -1932,8 +1921,7 @@ static int tsl2x7x_probe(struct i2c_client *clientp,
- 
- 	ret = iio_device_register(indio_dev);
- 	if (ret) {
--		dev_err(&clientp->dev,
--			"%s: iio registration failed\n", __func__);
-+		dev_err(&clientp->dev, "iio registration failed\n");
- 		return ret;
- 	}
- 
+On Fri, Nov 02, 2018 at 10:31:14AM -0400, Sasha Levin wrote:
+> On Fri, Nov 02, 2018 at 01:43:42PM +0100, Julia Lawall wrote:
+> > 
+> > 
+> > On Fri, 2 Nov 2018, Ioannis Valasakis wrote:
+> > 
+> > > On Fri, Nov 02, 2018 at 05:53:00AM +0100, Greg KH wrote:
+> > > > On Fri, Nov 02, 2018 at 02:04:49AM +0000, Ioannis Valasakis wrote:
+> > > > > Fix the arguments by open parentheses
+> > > > > Reported by checkpatch.
+> > > > >
+> > > > > Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
+> > > > > ---
+> > > > >  drivers/staging/greybus/control.h | 2 +-
+> > > > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > > > >
+> > > > > diff --git a/drivers/staging/greybus/control.h b/drivers/staging/greybus/control.h
+> > > > > index 9c453e0b1b33..08a51c652a10 100644
+> > > > > --- a/drivers/staging/greybus/control.h
+> > > > > +++ b/drivers/staging/greybus/control.h
+> > > > > @@ -41,7 +41,7 @@ int gb_control_get_bundle_versions(struct gb_control *control);
+> > > > >  int gb_control_connected_operation(struct gb_control *control, u16 cport_id);
+> > > > >  int gb_control_disconnected_operation(struct gb_control *control, u16 cport_id);
+> > > > >  int gb_control_disconnecting_operation(struct gb_control *control,
+> > > > > -					u16 cport_id);
+> > > > > +				       u17 cport_id);
+> > > >
+> > > > I don't think you built this code :(
+> > > I did built it indeed but I didn't include the module on the make
+> > > menuconfig, so I had the false impression of compiling. Silly me.
+> > 
+> > You can check for a .o file of the .c file you have modified.
+> 
+> My local workflow for this is to do a 'make allmodconfig' to enable
+> pretty much everything, and then just do targetted builds of subsystems
+> I touch. In this case I would do 'make drivers/staging/greybus/'.
+> 
+> This way you don't have to worry about enabling the right things in
+> menuconfig.
+> 
+> --
+> Thanks,
+> Sasha
+That is very useful, thank you! Noted.
 -- 
-1.9.1
+ta
+ioannis
 
 
