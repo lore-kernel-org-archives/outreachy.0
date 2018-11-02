@@ -1,115 +1,215 @@
-X-GM-THRID: 6885724039617183744
-X-Received: by 2002:a05:622a:216:: with SMTP id b22mr2897199qtx.372.1603207560469;
-        Tue, 20 Oct 2020 08:26:00 -0700 (PDT)
+X-GM-THRID: 6619410062845673472
+X-Received: by 2002:aa7:dcc5:: with SMTP id w5-v6mr296530edu.5.1541201505341;
+        Fri, 02 Nov 2018 16:31:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac8:470c:: with SMTP id f12ls820063qtp.9.gmail; Tue, 20 Oct
- 2020 08:25:59 -0700 (PDT)
-X-Received: by 2002:ac8:1a30:: with SMTP id v45mr2870557qtj.345.1603207559400;
-        Tue, 20 Oct 2020 08:25:59 -0700 (PDT)
-Received: by 2002:a37:b2c1:0:b029:12b:28f0:4e2b with SMTP id b184-20020a37b2c10000b029012b28f04e2bmsqkf;
-        Tue, 20 Oct 2020 08:07:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyzJHQuoDmNFltkBOagPMQqjrDvAGnFpucdtUCaRLb3VReFrSJiUhZiJcTcdi0KrCPsdKVg
-X-Received: by 2002:a2e:2c17:: with SMTP id s23mr1436920ljs.436.1603206457076;
-        Tue, 20 Oct 2020 08:07:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603206457; cv=none;
+Received: by 2002:a17:906:c55:: with SMTP id t21-v6ls3220801ejf.14.gmail; Fri,
+ 02 Nov 2018 16:31:44 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5e4hgeUmQS1/ZMc91XKfTcsObrapMtNTEaDbZk99UZaQP6HP8jjrXTuhoJ1GviI2+wvAw6l
+X-Received: by 2002:a17:906:f0f:: with SMTP id z15-v6mr1823099eji.0.1541201504543;
+        Fri, 02 Nov 2018 16:31:44 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1541201504; cv=pass;
         d=google.com; s=arc-20160816;
-        b=0Iy1NbmVnfvFSv8YK44Psh+Fn9NdZoBlm8REJL/wv8RQ4OzhErpoNCd1NW2n03F45i
-         Qda/jfz8UMrzwqGvpuWs+EpyOGmfDVrtdPSA3MxHe2aago4zmfTuLtL6Wadh9gKtkryc
-         RnClc5PiUJv+KGBA7sIkj0F6SwI5VHNsPs9QJ+cI3dk4zeyHAV5rfPzZMWB7I9QIBfum
-         8P6l38mi8xwxfVubKTlcQKEA7KDuuWVaQjnUBIvzDjmDLlYwxDtmT2VWntdqHnXwGgBS
-         0NNORu76fOzh5GFbHGGvy352p/PnleSocktVu4ZiWhroqYx1Cj6QZsS2hk9VOdPJ9YnE
-         zVGQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=hWp6NSMp247SAdz6iVX4ALjI7Mu9VJRlD2AaL4lhjdo=;
-        b=bcRtmV2rhR9LWuCDcEdeDq5OfrtiDDUpudUQUJ81YnSGK1SxNerqkgXPjawtfs1nbJ
-         RrishBtpbn0N3xVSvtrIHQIsIr8JBaT7Luy3+GxtQlErY8t3NrVRATdfQoHxXPg6yaAf
-         XEt2SixJL7rVfZC5Y6Z9WstK7phRbZVZjJyTELh0/xZ2G03H/cyXoGVcKw1GQ98PntHf
-         h65k5sE7bDt107FWjUGFYnuxkbKlFLJhTJJXpLd+bSWsz+HTgDKEOLzEY68Eay7F1jTt
-         fhk0YdTXKIzz02lE+HBbBGt/s6oshidyIJJfhMyHMjMxj3rWIjgKmG/ASH809UmtthOv
-         a43A==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sUJHXhzY;
-       spf=pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::243 as permitted sender) smtp.mailfrom=eafanasova@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <eafanasova@gmail.com>
-Received: from mail-lj1-x243.google.com (mail-lj1-x243.google.com. [2a00:1450:4864:20::243])
-        by gmr-mx.google.com with ESMTPS id w28si77132lfq.3.2020.10.20.08.07.37
+        b=GzjeQxo+w4Q7RlAlF+ZWItlrnmh8RfQ9Tuywtfq9bcwDzzvXpwO2U760COpbBf0bzf
+         7XccpE6XqC+LZF8ayo2dbgGk0BagYPQcaEz5EnanyG122N12BJV0flU4S+2J4tKIeRes
+         H7vIk99/AO9nbaORvB6olX7hY4jLbzoD1j4WM4k5xFz7jloaGewRvp7iDeN91QrjFSsT
+         J3Nr4uccDDyyhg0ie+7382LfsI78YjOpJ7L1TkMSFZSrK9W483iUY4eoCJUhsLwtV9AY
+         Be66KclhHBm0cJ3170uEeeWDSuUkFWqeIB5ALQk9u4JR8uZaD3Rr9JCusNIPSLB9628H
+         oMDg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=OjVS7ewyixQwa3+oQu0sukVi8nbGvoSLpLi0GWWY+/4=;
+        b=0CAoyun8S/KclkNlRrI+Tc1DfsRQ9KiJARXw9E+SO+5RqAd0+i9WStkatBY5M8LSmI
+         Rkhxnu8WXOfxSaVClRighlXf2cABrRszlCANiZ5UJVkpRLT4CwkWClGTXuKj4RaS3Dnt
+         xfLLurBYT42LsjI+Ld0TQcbaLv0cb5yqHU0V80JRj27mOiEpWy6qArsyWXktCjjlXm+Z
+         8ays9Pb9Wd4B7Q1xAO2BUURaVt8TpCo+wjXJEW2m4kXWodCNw4D48Ow+Iii/mYqn4yfw
+         PfhmEoK7OvARQpoHjvk+wzjyYS6zOEaUV09zUBDHVzDAY5GQkWIXjF42m3nNsV31gizD
+         uXcA==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b="bt/EbIdY";
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
+Return-Path: <code@wizofe.uk>
+Received: from sender-of-o51.zoho.eu (sender-of-o51.zoho.eu. [185.20.209.243])
+        by gmr-mx.google.com with ESMTPS id z4-v6si565242edp.1.2018.11.02.16.31.44
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 20 Oct 2020 08:07:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::243 as permitted sender) client-ip=2a00:1450:4864:20::243;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 02 Nov 2018 16:31:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) client-ip=185.20.209.243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sUJHXhzY;
-       spf=pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::243 as permitted sender) smtp.mailfrom=eafanasova@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lj1-x243.google.com with SMTP id m16so2386252ljo.6
-        for <outreachy-kernel@googlegroups.com>; Tue, 20 Oct 2020 08:07:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=hWp6NSMp247SAdz6iVX4ALjI7Mu9VJRlD2AaL4lhjdo=;
-        b=sUJHXhzYv7FKEm9Swp03YHH1Y56chpz28irJ2Ntim+erm++ovTgoI4fSi4wu3Mha/B
-         tzBoZ8snhrC0lWfdXft7Swo6qY4VFsZ/+HOqaOWjdLHDz3TKWzjKQLwUKpBFndJzyHN/
-         ot4eQBoa69PXIwttJVviR446hZXsNNLHvk+GGYx/ASj9E+T4Zutw33qHgPswj2dCdwDh
-         ZbJUuwYulteT/HfvMss//Q3aUb5vTlxIIwTzcjj8XB3IEKOUa23cp124mogyAQObzp7O
-         ITXQogIF3emboJAKBMi3TLQ3HrrApHhPSIgEpELjsU8lup1QXAZhluc4KEFaQl3AVTxI
-         rHIA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=hWp6NSMp247SAdz6iVX4ALjI7Mu9VJRlD2AaL4lhjdo=;
-        b=kUVfNocmofwizFgGS3Ib7dn7gq09MgskNaGR+HD6FfFmadLYigyxiYbPS9N67xYF1h
-         fCijv0ngt7cyiZ/IBMifRgBvXlqfh2chFPvq5b2gflOi9ABUnIxdFBPo1WIvWt9m5OJR
-         t//TCdZH6iwA7eoim2ZpejTA5lK5XantLwkU5wgz0hH99Up44StVtpdUO2sH1a3Af2ie
-         6kJnahFTZQYCb7y90oWU7PwO518n7dKBNf5SM/4H7RVQwLu8NLeWwkvM/R2I0/Ut7sjK
-         HorT3mRAChZMPihdznoZN58UjzH7nps7SykKntY+f2ED2G1HMPM8voWqimVXvK9+i3vj
-         RpdA==
-X-Gm-Message-State: AOAM532obCbQIGXCBpkwYtPYvG0XniqvekdpzeA1AzI/k1K4ro8vB17D
-	/6xNjK0mzJwkMqa+3m+Oo/I=
-X-Received: by 2002:a05:651c:11d2:: with SMTP id z18mr1323023ljo.423.1603206456842;
-        Tue, 20 Oct 2020 08:07:36 -0700 (PDT)
-Return-Path: <eafanasova@gmail.com>
-Received: from localhost.localdomain (37-145-186-126.broadband.corbina.ru. [37.145.186.126])
-        by smtp.gmail.com with ESMTPSA id z21sm359399lfb.20.2020.10.20.08.07.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 20 Oct 2020 08:07:36 -0700 (PDT)
-From: Elena Afanasova <eafanasova@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org,
-	outreachy-kernel@googlegroups.com,
-	Elena Afanasova <eafanasova@gmail.com>
-Subject: [PATCH] staging/qlge: fix typo
-Date: Tue, 20 Oct 2020 08:05:59 -0700
-Message-Id: <20201020150559.35667-1-eafanasova@gmail.com>
-X-Mailer: git-send-email 2.25.1
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b="bt/EbIdY";
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
+ARC-Seal: i=1; a=rsa-sha256; t=1541201503; cv=none; 
+	d=zoho.eu; s=zohoarc; 
+	b=TbqYM2d/ArxppD9dQJ+0a3dm4wfSNTh1WubjTioxAd0SB94GnoGCCNWK9awPUxCdKU4pSCzId4zGSQIOTV24AC+F7HSlQEANjfCPnftX+59POegA7SdjYgbNE2EzdbzdIpk+dmSkTgPb17nh2HMxVpzMZqsXfEFCdFw3c6yrYOo=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
+	t=1541201503; h=Content-Type:Cc:Date:From:MIME-Version:Message-ID:Subject:To:ARC-Authentication-Results; 
+	bh=OjVS7ewyixQwa3+oQu0sukVi8nbGvoSLpLi0GWWY+/4=; 
+	b=iexWkWFB3wXYSh7Rm2YPBmyaifpwOEqgUTgoW3bYwzwekSeA6LJeS15NPeV7ofZwTMe6Lgc/iIhIf/twWnYXLtpEMrYmV1TRmXJwdOzjvGeIz7S1CtBYbzTXSwZed6wuqHxW9iuKX1GRiVGRPECK0aVNLGvSnzPNnJv8Af0GgIc=
+ARC-Authentication-Results: i=1; mx.zoho.eu;
+	dkim=pass  header.i=wizofe.uk;
+	spf=pass  smtp.mailfrom=code@wizofe.uk;
+	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541201503;
+	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
+	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type;
+	l=3186; bh=OjVS7ewyixQwa3+oQu0sukVi8nbGvoSLpLi0GWWY+/4=;
+	b=bt/EbIdY1r7pl3pE8XRH2kRsj1kH5U1ULnv9RNAycs/peg3BuIFsVWNdRgAZnzjY
+	q5x6W7qM/tv3ujAmAhK8WFs3d7wLRJetINNmGHNUuoGfTZKHnzGuFouWSIbSDBcTv6y
+	J0dG5odDW7EzorYTHyFmlTHD0T5QjSHhPAW4Tgmg=
+Received: from kvasir.local (90.242.56.176 [90.242.56.176]) by mx.zoho.eu
+	with SMTPS id 1541201502930834.7760201259239; Sat, 3 Nov 2018 00:31:42 +0100 (CET)
+Date: Fri, 2 Nov 2018 23:31:41 +0000
+From: Ioannis Valasakis <code@wizofe.uk>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: greybus: remove multiple blank lines
+Message-ID: <20181102233141.GA21283@kvasir.local>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-ZohoMailClient: External
 
-Reported by checkpatch.pl.
+Remove extra blank lines to conform with the warning.
+Reported by checkpatch.
 
-Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
+Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
 ---
- drivers/staging/qlge/qlge_mpi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/greybus/greybus_protocols.h | 15 ---------------
+ 1 file changed, 15 deletions(-)
 
-diff --git a/drivers/staging/qlge/qlge_mpi.c b/drivers/staging/qlge/qlge_mpi.c
-index 143a886080c5..2ff3db2661a9 100644
---- a/drivers/staging/qlge/qlge_mpi.c
-+++ b/drivers/staging/qlge/qlge_mpi.c
-@@ -91,7 +91,7 @@ int ql_soft_reset_mpi_risc(struct ql_adapter *qdev)
- 	return ql_write_mpi_reg(qdev, 0x00001010, 1);
- }
+diff --git a/drivers/staging/greybus/greybus_protocols.h b/drivers/staging/greybus/greybus_protocols.h
+index 9bd7b6dfb476..f38f4a8db2b7 100644
+--- a/drivers/staging/greybus/greybus_protocols.h
++++ b/drivers/staging/greybus/greybus_protocols.h
+@@ -65,7 +65,6 @@
+ #define GB_CONTROL_BUNDLE_ID			0
+ #define GB_CONTROL_CPORT_ID			0
  
--/* Determine if we are in charge of the firwmare. If
-+/* Determine if we are in charge of the firmware. If
-  * we are the lower of the 2 NIC pcie functions, or if
-  * we are the higher function and the lower function
-  * is not enabled.
+-
+ /*
+  * All operation messages (both requests and responses) begin with
+  * a header that encodes the size of the message (header included).
+@@ -95,7 +94,6 @@ struct gb_operation_msg_hdr {
+ 	__u8	pad[2];		/* must be zero (ignore when read) */
+ } __packed;
+ 
+-
+ /* Generic request types */
+ #define GB_REQUEST_TYPE_CPORT_SHUTDOWN		0x00
+ #define GB_REQUEST_TYPE_INVALID			0x7f
+@@ -104,7 +102,6 @@ struct gb_cport_shutdown_request {
+ 	__u8 phase;
+ } __packed;
+ 
+-
+ /* Control Protocol */
+ 
+ /* Greybus control request types */
+@@ -249,7 +246,6 @@ struct gb_apb_request_cport_flags {
+ #define GB_APB_CPORT_FLAG_HIGH_PRIO		0x02
+ } __packed;
+ 
+-
+ /* Firmware Download Protocol */
+ 
+ /* Request Types */
+@@ -286,7 +282,6 @@ struct gb_fw_download_release_firmware_request {
+ } __packed;
+ /* firmware download release firmware response has no payload */
+ 
+-
+ /* Firmware Management Protocol */
+ 
+ /* Request Types */
+@@ -368,7 +363,6 @@ struct gb_fw_mgmt_backend_fw_updated_request {
+ } __packed;
+ /* firmware management backend firmware updated response has no payload */
+ 
+-
+ /* Component Authentication Protocol (CAP) */
+ 
+ /* Request Types */
+@@ -405,7 +399,6 @@ struct gb_cap_authenticate_response {
+ 	__u8			signature[0];
+ } __packed;
+ 
+-
+ /* Bootrom Protocol */
+ 
+ /* Version of the Greybus bootrom protocol we support */
+@@ -474,7 +467,6 @@ struct gb_bootrom_get_vid_pid_response {
+ 	__le32			product_id;
+ } __packed;
+ 
+-
+ /* Power Supply */
+ 
+ /* Greybus power supply request types */
+@@ -648,7 +640,6 @@ struct gb_power_supply_event_request {
+ #define GB_POWER_SUPPLY_UPDATE		0x01
+ } __packed;
+ 
+-
+ /* HID */
+ 
+ /* Greybus HID operation types */
+@@ -694,7 +685,6 @@ struct gb_hid_input_report_request {
+ 	__u8				report[0];
+ } __packed;
+ 
+-
+ /* I2C */
+ 
+ /* Greybus i2c request types */
+@@ -730,7 +720,6 @@ struct gb_i2c_transfer_response {
+ 	__u8				data[0];	/* inbound data */
+ } __packed;
+ 
+-
+ /* GPIO */
+ 
+ /* Greybus GPIO request types */
+@@ -829,7 +818,6 @@ struct gb_gpio_irq_event_request {
+ } __packed;
+ /* irq event has no response */
+ 
+-
+ /* PWM */
+ 
+ /* Greybus PWM operation types */
+@@ -1317,7 +1305,6 @@ struct gb_svc_intf_oops_request {
+ } __packed;
+ /* intf_oops response has no payload */
+ 
+-
+ /* RAW */
+ 
+ /* Greybus raw request types */
+@@ -1328,7 +1315,6 @@ struct gb_raw_send_request {
+ 	__u8	data[0];
+ } __packed;
+ 
+-
+ /* UART */
+ 
+ /* Greybus UART operation types */
+@@ -2204,7 +2190,6 @@ struct gb_audio_send_data_request {
+ 	__u8	data[0];
+ } __packed;
+ 
+-
+ /* Log */
+ 
+ /* operations */
 -- 
-2.25.1
+2.19.1
+
+
+-- 
+ta
+ioannis
 
 
