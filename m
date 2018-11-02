@@ -1,85 +1,86 @@
 X-GM-THRID: 6619343178555195392
-X-Received: by 2002:adf:afdd:: with SMTP id y29-v6mr877305wrd.20.1541189683084;
-        Fri, 02 Nov 2018 13:14:43 -0700 (PDT)
+X-Received: by 2002:a1c:c48d:: with SMTP id u135-v6mr5722wmf.4.1541189334031;
+        Fri, 02 Nov 2018 13:08:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:f94c:: with SMTP id q12-v6ls3246333wrr.15.gmail; Fri, 02
- Nov 2018 13:14:42 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5c4E6OUZM2Ah56PcdPPMO1O2H5bkbVI7w9PWpAEVts0vx6bmHUYYuFQ9RAD1B6cvHvkL0+X
-X-Received: by 2002:a5d:4d4f:: with SMTP id a15-v6mr1308133wru.5.1541189682214;
-        Fri, 02 Nov 2018 13:14:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1541189682; cv=none;
+Received: by 2002:adf:f94c:: with SMTP id q12-v6ls3244641wrr.15.gmail; Fri, 02
+ Nov 2018 13:08:53 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5eX2AauU5H7NCp++gb34jl6nFZnWCt6nvbN7687DAUuZujVjvM2ssp/OcOBXlRZNJYtgtt3
+X-Received: by 2002:a5d:4349:: with SMTP id u9-v6mr1352140wrr.29.1541189333041;
+        Fri, 02 Nov 2018 13:08:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1541189333; cv=none;
         d=google.com; s=arc-20160816;
-        b=aYNkTxTo2kqIbm5YJwqhy25fH6rrhbjusZVbMiAvGBdK5UpOfftCSMkHaVdWuTD69T
-         9Uhbj2HYNXPD6u7M/T98Bd+uk06SV5WzkFIF7GWcclezzsMpmMEWkJ5m7c30XdxN4vun
-         BHGc638ek4G2JnkqYYh5mQeFwQQgjCkczFL+79gL0x5P63AqdM5QGjI9+1y3RemuYKfQ
-         GeNHoqM+stmdOe4Yau+9uGYdGqES2KiTB2FwNU2f4RsKya0QkSCTmMrgktFYHo52xg8B
-         32A0p4zMFsEw4LfFtIRVJliDDLUivjFjUAnFQxac3Ub2IJkUqO7LYOpTQot2huwqbq22
-         lZXw==
+        b=n6sIiF/I9lufvvL2sEfXBeQLkEAX5De8Rp0j7NAA1rpEDG8SseMGSvt/hxrBWsp4uT
+         0LaZlpcoZd/ZBpyJjT49ajFZipS4sL8LvXZmk32qE+B2urqzHRA8imjHdoeqGGSCSh+v
+         pBxjtLhYkPcxIDfrVsAp0dgmZm4zj0Bitwq1t7ajvOgCaiREV7kGkwSc67AmRky9KNNy
+         iioGtVCCpNgN4Edc0E3owNQKRPw/PdRmit68C6ZayKcmq/k8fHgz4cVidn8A/zSwg9gI
+         E+8NMr/Qb64NLOF7dqT7lprmI6rgDL2/dFBWjZqCEy1xvMpbbXUfTsDt8xlovY+qlkYK
+         VIeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:dkim-signature;
         bh=nBuzoHLDUgeAAa2Dmh512cplfqgk2hzP/MG02QGWOfM=;
-        b=xMHLByS+fXSYp3Gk/sISFi4kN3437G6CAgy0ntbar7SxWm6ePE9dAzqgnYiYyEX2nK
-         3vwcubJP5G4kO2X6O+/mm/4WVjnuC+QgZXzUTWl7VKVvBqAf45X/bv5Si0UMIVk9fHEk
-         pG4yWJ72eYUfC6owQ9EXzcmIObvGbc6qujKwNdwirjWhTAInH0OuvbN0x9IMC2H22Idk
-         c3FB3JxML4H7f7EHlyx08OLupj8H8lcokNORANF2W+0bFRtM01+97bI3CFeQxMtU24R/
-         YexzcPR2N1PnO+SuLuDLaeIMqFfIJwC4EPHBtm/bDqmmx0ZDR11j7CO4a7K5jQPOsfXo
-         RvNQ==
+        b=GNF1eal0T3jkCyMKU40aqQhdwE7zzikqjQvkC6ybTaMGKQKTyXuxJeBQEGj9iSOP5W
+         rRI8mMEHI+e0oFDzJkA2y/1wCCev68bxPvmpWvyalnxZ+MpXaqsAZHeZeSL4WvRw/1po
+         GJQ8nDsAhNt9+85DEluQoONKbKya8TfKiC7oEb9Qom5PVTAArGwn+rbjIoKeqbJrdxFB
+         nl0Bm5FaalcjUKzd8RJ9Nx7yj/s7l2Lk1S9dYdHSR+KhyVORRjq9MPc4BC57fGIRkBMz
+         W8W2rRUMACur9yu0vvQ+wA5t/hDAoeKC9y9VzoHChBRwwRstrmUo9V3/bd+tNeRCXOoR
+         tf3w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=a4Wg64yu;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=avQWc71F;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::42a as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wm1-x343.google.com (mail-wm1-x343.google.com. [2a00:1450:4864:20::343])
-        by gmr-mx.google.com with ESMTPS id b12-v6si319810wme.1.2018.11.02.13.14.42
+Received: from mail-wr1-x42a.google.com (mail-wr1-x42a.google.com. [2a00:1450:4864:20::42a])
+        by gmr-mx.google.com with ESMTPS id n6-v6si500294wrj.4.2018.11.02.13.08.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 02 Nov 2018 13:14:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) client-ip=2a00:1450:4864:20::343;
+        Fri, 02 Nov 2018 13:08:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::42a as permitted sender) client-ip=2a00:1450:4864:20::42a;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=a4Wg64yu;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=avQWc71F;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::42a as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x343.google.com with SMTP id q12-v6so2880058wmq.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 02 Nov 2018 13:14:42 -0700 (PDT)
+Received: by mail-wr1-x42a.google.com with SMTP id z16-v6so3180760wrv.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 02 Nov 2018 13:08:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
         bh=nBuzoHLDUgeAAa2Dmh512cplfqgk2hzP/MG02QGWOfM=;
-        b=a4Wg64yuCeIT4bani+dE14ju6hyWxMocsAKR02abe83fOcYnViHoMTjGmUNkYlzrD+
-         FiPm46q9tLVc4lHMk+5Y9RhndhTcOnluUDrlBZluLUaNSz/jQLA79aqnF7ASCYUOwHTI
-         1ZYDyj1pLgT/SQP1EJuGWy15GpHrIm1qgb/sIecJzDM62+aZu4L0qT/1jsPl3f+acFvc
-         riTJq466l63tUVWkE7WhdQOZGziZawLKp208dwPJ1u9G9uJ+EZgcSHkMFKgeJECIZnD7
-         Rh1VWnMdd7WIc4/uebRvOboGJCiSEHs47V/gt4Ux37wWznvPg+m/jTTq3RxlZ9hgMfo+
-         uxIw==
+        b=avQWc71F1i6fndIYHk5qd3pGItu5VpwRwuMV3I4vwKQIpin0L//tWvS1Su8Tcep2c4
+         MPR6VpHPlFdIitXDGlK9Nbfmp/k3gO4Di07I7Bqup+m4sgr989d7zeAiTFf+1m+PdS9o
+         u0BAI3KcAoOjh30RH14wwFqhAaxuRWVH/v06cSQQO9qkRR+jmEF8xPwgfYgttGqdX01v
+         qlFhoNyVTitpS/FuIuONA1iDKhNJHHqzFX3oPrBE+40rGV6n7ubo5ONV+Sa38Ss1l+7J
+         vWu9lqIpvZPzMIQanCupKOy/F9sWfeiZtB5maxuR1+YWcTtJqDp3gxVFK6nKEnl8DpKe
+         UXBA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
         bh=nBuzoHLDUgeAAa2Dmh512cplfqgk2hzP/MG02QGWOfM=;
-        b=X5KpDuk/jjgjhJ7nM/nR/QrmQ48zHRs05L/Z0krgiurfGgb196cvAOKhPm3mE2ypNS
-         2AwYfuaziLCVYLvoCiXmLj4YFj+WiOVK7OWO2HoP3ahf5TnE5Lz0hU1P+owG1svs+hYf
-         I8onl2cYNyvwIw4LUOfjqNR3/+uolw+UBLrMqXhqS3JoFssvfGLo4BGrSFIdwXlfAuDF
-         xC9uKSicE0aahHn+rAG0q41MlC1owN7oA/8gsykkD/5COOZ4rQfBBCCPNFi64XUeC7uz
-         Ybq9VSMoQywRYN7mE8tqbsL/2gzOex9itYqVdAiGbAoAYCejZ86LQmz6ZUJqT1EyKukB
-         CHkA==
-X-Gm-Message-State: AGRZ1gLxuOuBWBBmoGYHgit5g/+XUIXa8Kxb69PPxeen+cwM/hxJjhQy
-	sFOdaI8XBa52+A2kH6Cl7IjfeAc=
-X-Received: by 2002:a1c:1a48:: with SMTP id a69-v6mr59615wma.9.1541189681301;
-        Fri, 02 Nov 2018 13:14:41 -0700 (PDT)
+        b=sJoyxVfyd/L/8kGT84pYpF4yh6vv57bWyR0uILxXd/jnTIqfvA0koRtepWoA7nce7P
+         E6rbKejYyTVk84nK50Z24ojwgXS9njoMRVJK9iiLmrErd5m516aupAIcY8DxO5GfKbJP
+         XAM8r7un2Vy5KwdFiTlmQieUaoe49tHG5yt3vkBo1zDZ8ZfsHYgGxp4nsE5yc7cUO7oZ
+         YSX3MRC+51otWvVDEht6pZXGMowsJeYpk1ZeWoY77RShNLFOs3/5Zx/U/fcIX/fpyrN1
+         wWmDadmcImzoolF2B3s7TBQcxniCibFrymGuEKrbEJJfbzTL8Mt8gS2FL6wxx3gvvhDY
+         RFvQ==
+X-Gm-Message-State: AGRZ1gJ1vn5iurBa+HVGwW3CdsZFqZdL5u46GnGRfRX518vPM4EZN7+E
+	qk89Q7IQX+jHd2jByusR/oxtiIE=
+X-Received: by 2002:a5d:5445:: with SMTP id w5-v6mr5807545wrv.4.1541189332142;
+        Fri, 02 Nov 2018 13:08:52 -0700 (PDT)
 Return-Path: <jbi.octave@gmail.com>
 Received: from localhost.localdomain (cpc114784-brad22-2-0-cust310.17-1.cable.virginm.net. [92.239.7.55])
-        by smtp.googlemail.com with ESMTPSA id o126-v6sm22734881wmo.3.2018.11.02.13.14.40
+        by smtp.googlemail.com with ESMTPSA id g16-v6sm6823573wrr.38.2018.11.02.13.08.50
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Nov 2018 13:14:40 -0700 (PDT)
+        Fri, 02 Nov 2018 13:08:51 -0700 (PDT)
 From: Irenge Jules Bashizi <jbi.octave@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: jules.octave@outlook.com,
+Cc: gregkh@linuxfoundation.org,
+	mchehab@kernel.org,
 	Irenge Jules Bashizi <jbi.octave@gmail.com>
 Subject: [PATCH] Staging:media:Add paragraph about the config symbol
-Date: Fri,  2 Nov 2018 20:14:30 +0000
-Message-Id: <20181102201430.11378-1-jbi.octave@gmail.com>
+Date: Fri,  2 Nov 2018 20:08:38 +0000
+Message-Id: <20181102200838.11193-1-jbi.octave@gmail.com>
 X-Mailer: git-send-email 2.17.2
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
