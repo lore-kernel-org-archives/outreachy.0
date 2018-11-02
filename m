@@ -1,159 +1,126 @@
-X-GM-THRID: 6807124771342385152
-X-Gmail-Labels: Topic type: DISCUSSION
-Date: Sun, 22 Mar 2020 13:00:41 -0700 (PDT)
-From: jacob smith <s78349435@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <21fbec63-d741-44fd-b5fc-64f64ce1b3f9@googlegroups.com>
-Subject: where to buy Best and Top Quality Cannabis Online.......weedsmj.com
+X-GM-THRID: 6619404446121066496
+X-Received: by 2002:a2e:9006:: with SMTP id h6-v6mr1262505ljg.22.1541200197684;
+        Fri, 02 Nov 2018 16:09:57 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 2002:a2e:4a09:: with SMTP id x9-v6ls475847lja.18.gmail; Fri, 02
+ Nov 2018 16:09:56 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5cUzO5gfNZhqjIuCWIKz2BbeQpX/UofbZ3cyAS0PhvK7GDml4Nlt44a3/lqix180+5Iegr8
+X-Received: by 2002:a2e:9989:: with SMTP id w9-v6mr1273894lji.21.1541200196474;
+        Fri, 02 Nov 2018 16:09:56 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1541200196; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=xp59ORlWPQ9H8pgwJUQ7XZyUyS19Rs/cTcIPrWOize3Eywblv2mcEOLXBVsMZpOv3B
+         a+6SzLIDv0viADmx0i/d90WINhwGITRcYMmfb+DiasAIRn8IO1DyB+AHuYoJGk0jc1Ff
+         WuZAzshQS9qytGg9ja3I1eWF+ZQS6BFydy4BNnCWafn7ivsXRxBM3CPEVea+G99fvOSJ
+         731kxkqr7Bn5hDqM9A4f/8x09px4jL7klB6yKU3Cji+gmP65zZiqXV6PLIa5z3Le18l0
+         cfIUi6EFDMD7O29bOeWbmrd89XrUjloo62JtamWY3GgsqO4WYATjnP/qaUIrjnkA174V
+         0F+g==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=+twN54/aWx5yTfx525Sn+8T4Z1T6fablDG4zrK/NJtU=;
+        b=Pzf6IMu6530OECrcfYIITI+d8dnTSFaaUppLLG0G1SmCNMHyLh7G6JoQmKGrxrr5zq
+         Fe3KeeurUHOoyambWoLHUQQM6JCCUmlrGANnM06iE0a6l7GTqmgq8WY/3FsiIJg8+xLC
+         +dL86fybgTTQ0O34PWc3U+5D/TRDMbWd4mwPpt1LIAVcIc4O90YVa2R+Qn/VPHJfBZG5
+         TceXv7Tt1oAvHHbUDXF/dvMiMU/DTc+oR/btpIlQAehqcAN7d/z2ffl+2ZfRCKZ+KTwA
+         JPlE9OjajsZACzWU61/jcDqURgNZRCbZVOm01x5QZZ+0eVx5Imf1mTwCaYaEqZ08KafI
+         fvHg==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=h1fd5xLm;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
+Return-Path: <code@wizofe.uk>
+Received: from sender-of-o51.zoho.eu (sender-of-o51.zoho.eu. [185.20.209.243])
+        by gmr-mx.google.com with ESMTPS id d9-v6si941236lfi.5.2018.11.02.16.09.56
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 02 Nov 2018 16:09:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) client-ip=185.20.209.243;
+Authentication-Results: gmr-mx.google.com;
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=h1fd5xLm;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
+ARC-Seal: i=1; a=rsa-sha256; t=1541200194; cv=none; 
+	d=zoho.eu; s=zohoarc; 
+	b=Oe/tisgQ9dLGxSD45iURxkfdn9Ny7qS5ufjQN8cttjWqYiSId4Yn3OuIA0Ke96AAtNvB2A4AhvhsQIB48bh7a7kQTTW+WWN1Qy/MiKISRzHAWr7su+knacWtKB3zvkgvKpnhYVgHrIPD9j6abHR/zF+WhNiz61l7YMc5Oo3wHfs=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
+	t=1541200194; h=Content-Type:Cc:Date:From:MIME-Version:Message-ID:Subject:To:ARC-Authentication-Results; 
+	bh=+twN54/aWx5yTfx525Sn+8T4Z1T6fablDG4zrK/NJtU=; 
+	b=RXofDu4BMCfEcG/i7xgH09oqiXm4MrhINuma6gC8k6FVg9zBwSF9Gjq595N18QQZiiY6flITWi8jDNct8eGHcw7GIEDZPHOiPelOPGyPdkNERp/rM5KpdwWbR2/DR7TTcw56lhkUJmXUj5jpavHE4O9yn6h817v2iHqmx0W75nE=
+ARC-Authentication-Results: i=1; mx.zoho.eu;
+	dkim=pass  header.i=wizofe.uk;
+	spf=pass  smtp.mailfrom=code@wizofe.uk;
+	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541200194;
+	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
+	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type;
+	l=1343; bh=+twN54/aWx5yTfx525Sn+8T4Z1T6fablDG4zrK/NJtU=;
+	b=h1fd5xLmsA8epTTdzNg0XLPaKY89qvGBdSRcXYGlsaSXP9h/HknlZmqaxVeu5qw3
+	1Tb63AVHRTm/+AtqNEgUIBu4P0QdrczTypT0NCssuz9lM3ZroAp5ZEfkNLe6KtYk9h1
+	69tePJlqh8r2RTvlwklclV7mz53c1Qf7Y2oWkO3o=
+Received: from kvasir.local (90.242.56.176 [90.242.56.176]) by mx.zoho.eu
+	with SMTPS id 1541200192910493.59675350861676; Sat, 3 Nov 2018 00:09:52 +0100 (CET)
+Date: Fri, 2 Nov 2018 23:09:51 +0000
+From: Ioannis Valasakis <code@wizofe.uk>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: greybus Remove multiple blank lines
+Message-ID: <20181102230951.GA12075@kvasir.local>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_1248_1446486233.1584907241746"
-X-Google-Token: EOmH3_MFeZbiqbzcAyY0
-X-Google-IP: 41.202.219.255
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-ZohoMailClient: External
 
-------=_Part_1248_1446486233.1584907241746
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_1249_1052759174.1584907241746"
+Remove continuous multiple blank lines
+Reported by checkpatch.
 
-------=_Part_1249_1052759174.1584907241746
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
+---
+ drivers/staging/greybus/arche-apb-ctrl.c | 1 -
+ drivers/staging/greybus/connection.c     | 4 ----
+ 2 files changed, 5 deletions(-)
 
-Medical Cannabis buy and sell'
-        TEXT: (..+16197860443...... High Grade Medical Marijuana Sativa and=
-=20
-Indica strains, Hash, (RSO), BHO, HEMP OILS, THC OILS, Cannabis Oil and=20
-Edibles FOR SALE.
-website Weedsmj.com
-High Grade Medical Marijuana Sativa and Indica strains, Hash, (RSO), BHO,=
-=20
-HEMP OILS, THC OILS, Cannabis Oil and Edibles
-FOR SALE . These Strains helps people with the following:=20
-*Insomnia,Cancer,HIV/AIDS,Anxiety Disorders,Major Depression,Back Pain,Back=
-=20
-Sprain,Bipolar Disorder(Nightmares),Cancer Chronic=20
-Pain,Seizures,Diabetes,Epilepsy,Fibromyalgia,Glaucoma E.T.C if you are=20
-interested do get back to us with your order. INDICA and SATIVA strains are=
-=20
-available.
-We are California based, we offer discrete efficient and reliable out of=20
-state shipping.
-For more information about us and our strains, please contact us via our=20
-e-mail or number as below:
-
-WE HAVE HIGH GRADE SATIVA AND INDICA STRAINS.
-We grow them at our farm and sell to our customers directly. It means we=20
-can offer them at very good prices and we are sure of their quality.
-We got some GOOD MEDICAL marijuana/weeds,hemp oil,wax and their SEEDS such=
-=20
-as Sour Diesel, Moon Rock, GrandDaddy Purple,OG Kush, Sour Og Kush, Green=
-=20
-Crack, Jack Dream, AK-47, Purple Kush, Bubba Kush, Bubblegum=20
-Kush,Blueberry,Purple-Skunk,
-Master Kush, Purple Haze,Banana Kush,pineapple express, Orange kush,Night=
-=20
-Queen,Big Bud, Cheese, BlueDream, White Russia, White Widow, G13,hash oils=
-=20
-and seeds etc,
-BUDS / FLOWERS PRICE LIST:
-1 Pound =3D $ 1200 USD
-1/2 Pound =3D $ 650 USD
-1/4 Pound =3D $ 450 USD
-1/8 Pound =3D $ 350 USD
-1 Oz =3D$ 200 USD
-
-OIL PRICE LIST:
-10g =3D $250 USD
-15g =3D $400 USD
-30g =3D $900 USD
-60g =3D $1600 USD
-
-AVAILABLE OILS FOR SALE
-Butane Hash Oil (BHO)
-CO2 Oil
-Rick Simpson Oil (RSO)
-Tinctures
-Hash
-Black oil,
-Indian oil,
-BHO
-red oil,
-honey oil,
-cherry leb oil
-Afghani oil
-Organic Hemp Oil 16 fl oz Liquid
-Kosher Organic Cold Pressed Hemp Oil 8 OZ
-Hemp Oil Essential Fatty Acid
-WAX OIL
-BUTANE OIL
+diff --git a/drivers/staging/greybus/arche-apb-ctrl.c b/drivers/staging/greybus/arche-apb-ctrl.c
+index cc8d6fc831b4..be5ffed90bcf 100644
+--- a/drivers/staging/greybus/arche-apb-ctrl.c
++++ b/drivers/staging/greybus/arche-apb-ctrl.c
+@@ -20,7 +20,6 @@
+ #include <linux/spinlock.h>
+ #include "arche_platform.h"
+ 
+-
+ static void apb_bootret_deassert(struct device *dev);
+ 
+ struct arche_apb_ctrl_drvdata {
+diff --git a/drivers/staging/greybus/connection.c b/drivers/staging/greybus/connection.c
+index 2103168b585e..56ae30533a70 100644
+--- a/drivers/staging/greybus/connection.c
++++ b/drivers/staging/greybus/connection.c
+@@ -11,17 +11,13 @@
+ #include "greybus.h"
+ #include "greybus_trace.h"
+ 
+-
+ #define GB_CONNECTION_CPORT_QUIESCE_TIMEOUT	1000
+ 
+-
+ static void gb_connection_kref_release(struct kref *kref);
+ 
+-
+ static DEFINE_SPINLOCK(gb_connections_lock);
+ static DEFINE_MUTEX(gb_connection_mutex);
+ 
+-
+ /* Caller holds gb_connection_mutex. */
+ static bool gb_connection_cport_in_use(struct gb_interface *intf, u16 cport_id)
+ {
+-- 
+2.19.1
 
 
-We guarantee the safety passage of your package ,all our packages are=20
-customized and diplomatic sealed packages this means that they are custom=
-=20
-free. We offer triple vacuum seal and stealth package on all orders so it=
-=20
-can=E2=80=99t be scent detected by canine (dogs) or electronic sniffers, We=
- do=20
-provide refunds or replace your order if there is a failure in delivering.=
-=20
-Weed for sale, Where to buy weed, Hash oil for sale, Cannabis oil for sale,=
-=20
-Buy marijuana online, THC oil for sale, How to buy weed online, Marijuana=
-=20
-for sale, Order weed online, Buy medical marijuana online
-whatsapp me.........+16197860443
-Text or call: +16197860443
-e-mail : morgancortex00@gmail.com
-website:weedsmj.com
+-- 
+ta
+ioannis
 
-------=_Part_1249_1052759174.1584907241746
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Medical Cannabis buy and sell&#39;<br>=C2=A0 =C2=A0 =C2=A0=
- =C2=A0 TEXT: (..+16197860443...... High Grade Medical Marijuana Sativa and=
- Indica strains, Hash, (RSO), BHO, HEMP OILS, THC OILS, Cannabis Oil and Ed=
-ibles FOR SALE.<br>website Weedsmj.com<br>High Grade Medical Marijuana Sati=
-va and Indica strains, Hash, (RSO), BHO, HEMP OILS, THC OILS, Cannabis Oil =
-and Edibles<br>FOR SALE . These Strains helps people with the following: *I=
-nsomnia,Cancer,HIV/AIDS,<wbr>Anxiety Disorders,Major Depression,Back Pain,B=
-ack Sprain,Bipolar Disorder(Nightmares),Cancer Chronic Pain,Seizures,Diabet=
-es,<wbr>Epilepsy,Fibromyalgia,Glaucoma E.T.C if you are interested do get b=
-ack to us with your order. INDICA and SATIVA strains are available.<br>We a=
-re California based, we offer discrete efficient and reliable out of state =
-shipping.<br>For more information about us and our strains, please contact =
-us via our e-mail or number as below:<br><br>WE HAVE HIGH GRADE SATIVA AND =
-INDICA STRAINS.<br>We grow them at our farm and sell to our customers direc=
-tly. It means we can offer them at very good prices and we are sure of thei=
-r quality.<br>We got some GOOD MEDICAL marijuana/weeds,hemp oil,wax and the=
-ir SEEDS such as Sour Diesel, Moon Rock, GrandDaddy Purple,OG Kush, Sour Og=
- Kush, Green Crack, Jack Dream, AK-47, Purple Kush, Bubba Kush, Bubblegum K=
-ush,Blueberry,Purple-Skunk,<br>Master Kush, Purple Haze,Banana Kush,pineapp=
-le express, Orange kush,Night Queen,Big Bud, Cheese, BlueDream, White Russi=
-a, White Widow, G13,hash oils and seeds etc,<br>BUDS / FLOWERS PRICE LIST:<=
-br>1 Pound =3D $ 1200 USD<br>1/2 Pound =3D $ 650 USD<br>1/4 Pound =3D $ 450=
- USD<br>1/8 Pound =3D $ 350 USD<br>1 Oz =3D$ 200 USD<br><br>OIL PRICE LIST:=
-<br>10g =3D $250 USD<br>15g =3D $400 USD<br>30g =3D $900 USD<br>60g =3D $16=
-00 USD<br><br>AVAILABLE OILS FOR SALE<br>Butane Hash Oil (BHO)<br>CO2 Oil<b=
-r>Rick Simpson Oil (RSO)<br>Tinctures<br>Hash<br>Black oil,<br>Indian oil,<=
-br>BHO<br>red oil,<br>honey oil,<br>cherry leb oil<br>Afghani oil<br>Organi=
-c Hemp Oil 16 fl oz Liquid<br>Kosher Organic Cold Pressed Hemp Oil 8 OZ<br>=
-Hemp Oil Essential Fatty Acid<br>WAX OIL<br>BUTANE OIL<br><br><br>We guaran=
-tee the safety passage of your package ,all our packages are customized and=
- diplomatic sealed packages this means that they are custom free. We offer =
-triple vacuum seal and stealth package on all orders so it can=E2=80=99t be=
- scent detected by canine (dogs) or electronic sniffers, We do provide refu=
-nds or replace your order if there is a failure in delivering. Weed for sal=
-e, Where to buy weed, Hash oil for sale, Cannabis oil for sale, Buy marijua=
-na online, THC oil for sale, How to buy weed online, Marijuana for sale, Or=
-der weed online, Buy medical marijuana online<br>whatsapp me.........+16197=
-860443<br>Text or call: +16197860443<br>e-mail :=C2=A0<a href=3D"mailto:mor=
-gancortex00@gmail.com" target=3D"_blank" rel=3D"nofollow" style=3D"cursor: =
-pointer;">morgancortex00@gmail.com</a><br>website:<a href=3D"http://weedsmj=
-.com/" target=3D"_blank" rel=3D"nofollow" style=3D"cursor: pointer;">weedsm=
-j.com</a><br></div>
-------=_Part_1249_1052759174.1584907241746--
-
-------=_Part_1248_1446486233.1584907241746--
 
