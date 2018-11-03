@@ -1,105 +1,106 @@
 X-GM-THRID: 6619601914535346176
-X-Received: by 2002:a7b:c018:: with SMTP id c24-v6mr119970wmb.7.1541254429049;
-        Sat, 03 Nov 2018 07:13:49 -0700 (PDT)
+X-Received: by 2002:a1c:7305:: with SMTP id d5-v6mr82422wmb.1.1541246230161;
+        Sat, 03 Nov 2018 04:57:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:da01:: with SMTP id r1-v6ls802073wmg.24.gmail; Sat, 03
- Nov 2018 07:13:48 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5dpmlmr0DWxxRH4f0VYE7xcmYcm9MYOJGZNoPIn9RCZzJ5POwHNMyEiIiKyxBw/KqBgK1T1
-X-Received: by 2002:a7b:c018:: with SMTP id c24-v6mr119966wmb.7.1541254428063;
-        Sat, 03 Nov 2018 07:13:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1541254428; cv=none;
+Received: by 2002:a1c:2802:: with SMTP id o2-v6ls723122wmo.24.canary-gmail;
+ Sat, 03 Nov 2018 04:57:09 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5cyO4DJvq4opUypwQx+7qbiyVHMk/3fs1Vw1SNIvit+mStO81iQQolKFMqyqz1DDf1kfuX1
+X-Received: by 2002:a1c:9c01:: with SMTP id f1-v6mr82547wme.10.1541246229188;
+        Sat, 03 Nov 2018 04:57:09 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1541246229; cv=pass;
         d=google.com; s=arc-20160816;
-        b=owJV+3faHLSI7Z5bbNVYiadafCxVlvByzHGVHmXbtZlcxrM/vs4NXyiXQwir/wnFme
-         3rq+vdyj3TSbAOs7Zzw00PoUhv8DD29axSpGT+rA8IWh1H/WrYAb/7qoNkP68BeyrTFb
-         lWRjuNBKqfUl0RFVj2Lwp/XPxoWffGeFjsp/qnJTzmwt4g8KqPRL1mt1srEwamoIo1s3
-         8k+saW2zE6ikHuFjoxX+KeISBZ31pWLrdPYgUHReqCuVcH3Qcs0+908wHQyex3E+jezW
-         fR1TeiOFyAKfB5NvMPHL7zOXNSiy92vaAqjYfxiErv6ZtbqVtJBg0rqJbD5HLLuVVsSF
-         v7/Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=gUmSdelHuyqaIzH4x6ni/eK0OIv/t1fFbsYuhjljS7U=;
-        b=bQIAXEYcayOobqqJDGf2wc7lO8mF5MrtMWDa23e27KZUObOnqoRyZAQPRh2NV22bSr
-         F3TR4hVfPCBqNXZ72rXov6nuasBdxGIHIiFQtCVolNOzppe/IgyqlXHERqU+KxlJEzLl
-         0g95ZBqeH1Cm3a2HvDyHZMSGhRhNoKYzTmFBh07LuPielcsggOtwJJHxgwDbCSGx1ItI
-         3vKho2PcaTHrHunj2+hbznijHZpOmbbIHR992RD1gWAZNVwPWVxc87F7w6y20OHHQZnN
-         od1o3Z6Mob0ZzjcwQK39SPVTV1QeCohU4a1I69voMimm4+EXF0WYg1M7+9L07EHxd6pW
-         aP0g==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id v6-v6si1173288wrn.0.2018.11.03.07.13.48
+        b=RLaqt5cXaZqkNIgQTWC36lNZ4N4ac87THFN6KsUUMnSQguGDPmmgZEmn9XkiUCiOBc
+         d7NkEQX9fnM/3n4uojFLu7GpxtIIjt1J9CJtMNsr7/ODO3khnSL9rCS8U0YLykoyW3lg
+         hspFmqfnEr5qX0DetQf7v+mi0IIUvhv3UGZeVUux+ttfgPUFy7Ap+vrTFsHwfkRndrvd
+         OAZiilYEfm2kvoYr7KC/cRBdxaksxW87ycJ4Ccz6uun7RQQAyU+KKB8+tguq29dklKMc
+         PId0YMN/fgOzLrWuU35tD49WGvgMKsNcfL4SwRaiwD0WFz2LlybRm3SBu7OQIu6lEyxH
+         anjQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=xFm+aLKDO5eMd73A1zyGoSZ2LdrQSgUh921v9igh1+A=;
+        b=xcRgG8P3DqeqpzH3nb1LEzQzKXQtkM2KY07K/3h/8bS4RmLOSyerqsgBtdF7J4Z7qQ
+         DIm6XvJg8ZKqGtF4t0OCETvP/AJsV+XxNmORyZhDqbe3i5Su6s6vaY8+qrcnILxKPMT+
+         goHMbALwJWLrIz9kdIjzRW+96GUWn5VTcO6M1+Z0djVc0W6WOS6vLn/46BL4rwuOlWCl
+         VIuTwdRE4KT+YJt+uz+9bYlCTIoOL1G6TPus/U4xi1GEgl/FY6u8nDAYBKipS66kerZj
+         DawMSHisPLziEAfNfc8ltNyvaO3tiE1cx6vuusyD8hB4mfaFvZCZj4S1E0Mwed8SR4ig
+         443A==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=D3duuQwm;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
+Return-Path: <code@wizofe.uk>
+Received: from sender-of-o51.zoho.eu (sender-of-o51.zoho.eu. [185.20.209.243])
+        by gmr-mx.google.com with ESMTPS id 204-v6si149170wmw.3.2018.11.03.04.57.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 03 Nov 2018 07:13:48 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sat, 03 Nov 2018 04:57:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) client-ip=185.20.209.243;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.54,460,1534802400"; 
-   d="scan'208";a="353984750"
-Received: from 89-157-201-244.rev.numericable.fr (HELO hadrien) ([89.157.201.244])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 03 Nov 2018 15:13:47 +0100
-Date: Sat, 3 Nov 2018 15:13:47 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Ioannis Valasakis <code@wizofe.uk>
-cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
-Subject: Re: [Outreachy kernel] [PATCH v4 2/5] staging: greybus: shorten
- comparison to NULL
-In-Reply-To: <f4c8e02349e53545f542f02e453bf18f340ed897.1541246060.git.code@wizofe.uk>
-Message-ID: <alpine.DEB.2.21.1811031513180.2416@hadrien>
-References: <cover.1541246060.git.code@wizofe.uk> <f4c8e02349e53545f542f02e453bf18f340ed897.1541246060.git.code@wizofe.uk>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=D3duuQwm;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
+ARC-Seal: i=1; a=rsa-sha256; t=1541246226; cv=none; 
+	d=zoho.eu; s=zohoarc; 
+	b=ZcU7mFLkjr4Bsue+HCkHvhlkZ1/BruE4NFrI7+MSVS59QUejvfeliUBDHy7cdiu+C9VnB1OESNDUS2D74mrqIviLlohCCDqgg/FwiEIe3rrIpiPd+ykP8sWVb/1r6QSUgtG5j7j2zoh85f0XdywzELHSWun8yWCUVeyIOBcxOkc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
+	t=1541246226; h=Content-Type:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To:ARC-Authentication-Results; 
+	bh=xFm+aLKDO5eMd73A1zyGoSZ2LdrQSgUh921v9igh1+A=; 
+	b=ODUTow6t8lSluhYhjVtDZS0TjjWiJpDz+QnVSjJ5ksEZhWNrBmF1yIt8OVYJSUHCtnpVgjqzwbylDCS9b2UoiQaeGSZf+MOb/EJuGQsI+v6/SjFfH2Xw6PCZe8x6wKX1TqA4ahYIgrPDqPambG8makZ4H/9y62D/GO/69UgIvmo=
+ARC-Authentication-Results: i=1; mx.zoho.eu;
+	dkim=pass  header.i=wizofe.uk;
+	spf=pass  smtp.mailfrom=code@wizofe.uk;
+	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541246226;
+	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To;
+	l=1037; bh=xFm+aLKDO5eMd73A1zyGoSZ2LdrQSgUh921v9igh1+A=;
+	b=D3duuQwmCSuoWfAy1OYgPgWL7tM4M2TXcGgPDWoEObzOffExqlWjBOnuYKkamXnn
+	4zqYCVQob1MWeGZFsItqtZD7n63IdjABLgQPwClbTYTTeyBTSe+u00mT3I8apUcgbmD
+	iku78yvtu+Im1AnOa4WUUNaSMP2MwAP03FhDuBpU=
+Received: from kvasir.local (90.242.56.176 [90.242.56.176]) by mx.zoho.eu
+	with SMTPS id 1541246225838540.9654936470869; Sat, 3 Nov 2018 12:57:05 +0100 (CET)
+Date: Sat, 3 Nov 2018 11:57:04 +0000
+From: Ioannis Valasakis <code@wizofe.uk>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org
+Subject: [PATCH v4 5/5] staging: greybus: align arguments with parentheses
+Message-ID: <49ea0a08d52c2bf07128d57b1e8f41f0d6e5232b.1541246060.git.code@wizofe.uk>
+References: <cover.1541246060.git.code@wizofe.uk>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1541246060.git.code@wizofe.uk>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-ZohoMailClient: External
+
+Align arguments with the right side of the open left parentheses.
+Reported by checkpatch.
+
+Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
+---
+ drivers/staging/greybus/control.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/greybus/control.h b/drivers/staging/greybus/control.h
+index ebb7a2ee17dc..5a45d55349a1 100644
+--- a/drivers/staging/greybus/control.h
++++ b/drivers/staging/greybus/control.h
+@@ -41,7 +41,7 @@ int gb_control_get_bundle_versions(struct gb_control *control);
+ int gb_control_connected_operation(struct gb_control *control, u16 cport_id);
+ int gb_control_disconnected_operation(struct gb_control *control, u16 cport_id);
+ int gb_control_disconnecting_operation(struct gb_control *control,
+-					u16 cport_id);
++				       u16 cport_id);
+ int gb_control_mode_switch_operation(struct gb_control *control);
+ void gb_control_mode_switch_prepare(struct gb_control *control);
+ void gb_control_mode_switch_complete(struct gb_control *control);
+-- 
+2.19.1
 
 
+-- 
+ta
+ioannis
 
-On Sat, 3 Nov 2018, Ioannis Valasakis wrote:
-
-> Shorten pointer NULL check by simple truth test
-> Reported by checkpatch.
->
-> Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
-> ---
->  drivers/staging/greybus/core.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/greybus/core.c b/drivers/staging/greybus/core.c
-> index 6b1f3a27fa9d..d6b0d49130c0 100644
-> --- a/drivers/staging/greybus/core.c
-> +++ b/drivers/staging/greybus/core.c
-> @@ -48,7 +48,7 @@ static bool greybus_match_one_id(struct gb_bundle *bundle,
->  static const struct greybus_bundle_id *
->  greybus_match_id(struct gb_bundle *bundle, const struct greybus_bundle_id *id)
->  {
-> -	if (id == NULL)
-> +	if (!id)
-
-This seems to have the right start and end now.
-
->  		return NULL;
->
->  	for (; id->vendor || id->product || id->class || id->driver_info;
-> --
-> 2.19.1
->
->
-> --
-> ta
-> ioannis
-
-You don't need to put anything down here.
-
-julia
-
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/f4c8e02349e53545f542f02e453bf18f340ed897.1541246060.git.code%40wizofe.uk.
-> For more options, visit https://groups.google.com/d/optout.
->
 
