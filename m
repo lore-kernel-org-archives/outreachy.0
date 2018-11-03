@@ -1,147 +1,139 @@
-X-GM-THRID: 6253388834415837184
-X-Received: by 10.140.252.131 with SMTP id x125mr17871126qhc.12.1455980547355;
-        Sat, 20 Feb 2016 07:02:27 -0800 (PST)
+X-GM-THRID: 6619413531629453312
+X-Received: by 2002:a50:cb87:: with SMTP id k7-v6mr2201667edi.1.1541254700694;
+        Sat, 03 Nov 2018 07:18:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.10.141 with SMTP id 13ls417960iok.51.gmail; Sat, 20 Feb
- 2016 07:02:27 -0800 (PST)
-X-Received: by 10.66.244.171 with SMTP id xh11mr18345729pac.32.1455980547016;
-        Sat, 20 Feb 2016 07:02:27 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pf0-x22e.google.com (mail-pf0-x22e.google.com. [2607:f8b0:400e:c00::22e])
-        by gmr-mx.google.com with ESMTPS id yd9si2213520pab.1.2016.02.20.07.02.26
+Received: by 2002:a50:bc02:: with SMTP id j2-v6ls569237edh.3.gmail; Sat, 03
+ Nov 2018 07:18:19 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5dJIKSHaL8vrYK4Nww7DOnz9dLnd+0PArNKedABGknh2bUcRSLG6Vh2ZJigtzzZp2GyuqwW
+X-Received: by 2002:a50:cb87:: with SMTP id k7-v6mr2201665edi.1.1541254699889;
+        Sat, 03 Nov 2018 07:18:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1541254699; cv=none;
+        d=google.com; s=arc-20160816;
+        b=T9VQzGywrepaJV5fvkiAMsjA4nqAsliagt7FiBq0DN+klFYTv2kj3LO5VDLjPM6qd/
+         4jHRk3GAGON+nFsjQM8gdPxBdtMDx+QwHljyrpLhPgbzlT+dnlcrqYo58RLB3Iwu0a8l
+         7Re93eZe/q1X5MoUSRPGgp836pJRTaT0Pd9Cy4V2DUKo0+evOT0YhWkxpG6yh3+lNTpj
+         qUlqnOfYXZ97wm40S1rRgpJ/Tc6X2efdyLueTlcpO903qhgS5beq0G9Z2QeweD1pyg7r
+         Looj6aGdrV3B07b4JA/Owv2OBOiPTAsZjOv0numEupY2JUxcWfkFkbj2PzTzoEGUdMsE
+         fSDQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=hgi7fhbWIijCVP4Nu+cizDW2+OKlhfTyEdERfW0emLc=;
+        b=bFPmhfBWruzTZTPImsd362hodXhqj3UzdMrCf3nGhQoZdzHuKKe//VRBDllUGxNPTH
+         gqfHLaCFzrtUlInIjW3BdK5od5PGSX/8WtMoNdairB+5VMlzk/0PzFIg6G4GmM/2mRao
+         oIL+TmVcRWMAnCRpgyhkR5S0XHb6BuyQmaXqbn4/L2Q8i6FA4TbWZD6BTMlAeZ3E1tNy
+         5fS5PAh+ux06F8FW3rzHh/PzprTqr5QNCyUSDs9it7J5H3L4b/qZt7e5HMB7SzFJh6Sr
+         R0HerVafIU+0cbNlHb1Eg697wU5UbX0kD9HBeWH6GJ60as8rySkWsJUwSY5L4zZaQHSl
+         mjxg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id m25-v6si1056999ejb.1.2018.11.03.07.18.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 20 Feb 2016 07:02:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::22e as permitted sender) client-ip=2607:f8b0:400e:c00::22e;
+        Sat, 03 Nov 2018 07:18:19 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::22e as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22e.google.com with SMTP id x65so67569228pfb.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 20 Feb 2016 07:02:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=RIf6iYO+yx3eKW8IcHKuslhBT7UzefKCy1rEtK4Iw3o=;
-        b=YXYLb5kAzXHvPiU5fNooY8ia0x8e+p7Jr3zGX7oymEKMVtvkztZUETR5m8zGczJ+qV
-         5JspwIkr+ClQbOybxShCqj2MU29jbVWLuWW16mUmFSdSvR7GtbYZ02mE+AWopXwFXbhf
-         srjQqhizH7NfaFI2VoRESps2h42MIru69jaOAWlNoR23nL3ay0jr9/ow6dqux5ASW0wg
-         LzsALwnukbZLyU01KgJx1lmb8nBfzIWKJm7isbleuWe3gC45zsjHl7F70pwUZEN/a/oI
-         qx9gcgAugVQz27VJt4l5QWoX/+tnFh0kRPuVHl+BiMIxoluGKdfDLl4CbIT+WGL3SLr/
-         RrkA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=RIf6iYO+yx3eKW8IcHKuslhBT7UzefKCy1rEtK4Iw3o=;
-        b=T4JzunLTnmU7UkWLmVDoXCU8pjQ1QBmgpa8jXVtp2p4b1ULP1HdLoSEYHPFds/lwJO
-         MGH2dVRojnIaS7TULJSsKo28wVV3jA86IRSqAmiPnrWhP7Sy9hX8EqOhDDazE8TxHhX5
-         /yBZZGyiXXvJuV7bigSwRDOoY63dhFRQzjm+CTTY1uwgeZ9q8sAWg3nXLiVSgnyvfMYH
-         34B1tAxijS6kkRcqMAEwbfJAXSO8ODreXg/zVgsWGNKGNwf5Mdd7iExJ5EtpFcFEpvyx
-         RDRbwiQq91BO5zdHoepj9FiuwC93+1p/dixe9w8lU1/4xJZiz+Q/FoWqXLq8qsPCgWMR
-         7biw==
-X-Gm-Message-State: AG10YORtO4HpGMbP/vyM2yvl+X6wdPVDuuxv0fFNn9SVjMoeschWJuLwc3E2JAbcaG+xBw==
-X-Received: by 10.98.73.149 with SMTP id r21mr26043691pfi.140.1455980546910;
-        Sat, 20 Feb 2016 07:02:26 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from bhumirks@gmail.com ([106.215.190.120])
-        by smtp.gmail.com with ESMTPSA id a21sm25226332pfj.40.2016.02.20.07.02.22
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 20 Feb 2016 07:02:26 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Sat, 20 Feb 2016 20:32:16 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: slicoss: Remove __func__ from dev_err
-Date: Sat, 20 Feb 2016 20:32:16 +0530
-Message-Id: <1455980536-16152-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.54,460,1534802400"; 
+   d="scan'208";a="353984931"
+Received: from 89-157-201-244.rev.numericable.fr (HELO hadrien) ([89.157.201.244])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 03 Nov 2018 15:18:19 +0100
+Date: Sat, 3 Nov 2018 15:18:19 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: tungolcild@gmail.com
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: greybus: remove extra space
+ before tab
+In-Reply-To: <a43ce3ad-9062-4294-a23c-f9898fe44276@googlegroups.com>
+Message-ID: <alpine.DEB.2.21.1811031518040.2416@hadrien>
+References: <20181102234508.GA27353@kvasir.local> <alpine.DEB.2.21.1811030757170.2922@hadrien> <a43ce3ad-9062-4294-a23c-f9898fe44276@googlegroups.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="8323329-539196242-1541254699=:2416"
 
-This patch removes __func__ argument from dev_err as dev_err includes
-the function name in the log printout, so there is no need to
-include it  manually.
-Found using coccinelle:
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-@a@
-expression E;
-expression  msg;
-@@
+--8323329-539196242-1541254699=:2416
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-dev_err(E, msg, __func__);
 
-@script:python b@
-e << a.msg;
-y;
-@@
 
-if(e.find("%s: ") == True):
-        m = e.replace("%s: ", "");
-        coccinelle.y = m;
-elif(e.find("%s ") == True):
-        m = e.replace("%s ", "");
-        coccinelle.y = m;
-else:
-        m = e.replace("%s", "");
+On Sat, 3 Nov 2018, tungolcild@gmail.com wrote:
 
-@c@
-expression a.E, a.msg;
-identifier  b.y;
-@@
+> On Saturday, November 3, 2018 at 6:57:54 AM UTC, Julia Lawall wrote:
+>
+>
+>       On Fri, 2 Nov 2018, Ioannis Valasakis wrote:
+>
+>       > Remove extra spaces before the tab character inside a comment section.
+>       > Reported by checkpatch.
+>       >
+>       > Signed-off-by: Ioannis Valasakis <co...@wizofe.uk>
+>       > ---
+>       >  drivers/staging/greybus/greybus_protocols.h | 4 ++--
+>
+>       You seem to have sent three patches on this file.  Greg will want them to
+>       be in a series, to reduce ambiguity about how they should be applied.
+>
+>       Likewise for the other files.
+>
+>       julia
+>
+>
+> By series do you mean that I need to create a patchset? 
 
-- dev_err(E, msg, __func__);
-+ dev_err(E, y);
+Yes, that makes the application order clear.
 
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
- drivers/staging/slicoss/slicoss.c | 14 ++++++--------
- 1 file changed, 6 insertions(+), 8 deletions(-)
+julia
 
-diff --git a/drivers/staging/slicoss/slicoss.c b/drivers/staging/slicoss/slicoss.c
-index a91c60a..5881562 100644
---- a/drivers/staging/slicoss/slicoss.c
-+++ b/drivers/staging/slicoss/slicoss.c
-@@ -1543,8 +1543,8 @@ retry_rcvqfill:
- 			skb->next = NULL;
- #ifdef KLUDGE_FOR_4GB_BOUNDARY
- 			if (paddrl == 0) {
--				dev_err(dev, "%s: LOW 32bits PHYSICAL ADDRESS == 0\n",
--					__func__);
-+				dev_err(dev,
-+					"LOW 32bits PHYSICAL ADDRESS == 0\n");
- 				dev_err(dev, "skb[%p] PROBLEM\n", skb);
- 				dev_err(dev, "         skbdata[%p]\n",
- 						skb->data);
-@@ -1563,8 +1563,8 @@ retry_rcvqfill:
- 			}
- #else
- 			if (paddrl == 0) {
--				dev_err(dev, "%s: LOW 32bits PHYSICAL ADDRESS == 0\n",
--					__func__);
-+				dev_err(dev,
-+					"LOW 32bits PHYSICAL ADDRESS == 0\n");
- 				dev_err(dev, "skb[%p] PROBLEM\n", skb);
- 				dev_err(dev, "         skbdata[%p]\n",
- 						skb->data);
-@@ -1699,8 +1699,7 @@ static u32 slic_rcvqueue_reinsert(struct adapter *adapter, struct sk_buff *skb)
- 
- 	if (paddrl == 0) {
- 		dev = &adapter->netdev->dev;
--		dev_err(dev, "%s: LOW 32bits PHYSICAL ADDRESS == 0\n",
--			__func__);
-+		dev_err(dev, "LOW 32bits PHYSICAL ADDRESS == 0\n");
- 		dev_err(dev, "skb[%p] PROBLEM\n", skb);
- 		dev_err(dev, "         skbdata[%p]\n", skb->data);
- 		dev_err(dev, "         skblen[%x]\n", skb->len);
-@@ -2305,8 +2304,7 @@ static int slic_if_init(struct adapter *adapter, unsigned long *flags)
- 
- 	/* adapter should be down at this point */
- 	if (adapter->state != ADAPT_DOWN) {
--		dev_err(&dev->dev, "%s: adapter->state != ADAPT_DOWN\n",
--			__func__);
-+		dev_err(&dev->dev, "adapter->state != ADAPT_DOWN\n");
- 		rc = -EIO;
- 		goto err;
- 	}
--- 
-1.9.1
-
+>
+> ta
+> ioannis 
+>       >  1 file changed, 2 insertions(+), 2 deletions(-)
+>       >
+>       > diff --git a/drivers/staging/greybus/greybus_protocols.h b/drivers/staging/greybus/greybus_protocols.h
+>       > index 5783f715bdc2..429a952c5200 100644
+>       > --- a/drivers/staging/greybus/greybus_protocols.h
+>       > +++ b/drivers/staging/greybus/greybus_protocols.h
+>       > @@ -918,8 +918,8 @@ struct gb_spi_device_config_response {
+>       >   *        0 the default (from @spi_device) is used.
+>       >   * @len: size of rx and tx buffers (in bytes)
+>       >   * @delay_usecs: microseconds to delay after this transfer before (optionally)
+>       > - *         changing the chipselect status, then starting the next transfer or
+>       > - *         completing this spi_message.
+>       > + *        changing the chipselect status, then starting the next transfer or
+>       > + *        completing this spi_message.
+>       >   * @cs_change: affects chipselect after this transfer completes
+>       >   * @bits_per_word: select a bits_per_word other than the device default for this
+>       >   *        transfer. If 0 the default (from @spi_device) is used.
+>       > --
+>       > 2.19.1
+>       >
+>       >
+>       > --
+>       > ta
+>       > ioannis
+>       >
+>       > --
+>       > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>       > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kern...@googlegroups.com.
+>       > To post to this group, send email to outreach...@googlegroups.com.
+>       > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20181102234508.GA27353%40kvasir.local.
+>       > For more options, visit https://groups.google.com/d/optout.
+>       >
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/a43ce3ad-9062-4294-a23c-f9898fe44276%40googlegroups.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-539196242-1541254699=:2416--
 
