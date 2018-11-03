@@ -1,128 +1,113 @@
-X-GM-THRID: 6806652966405144576
-X-Received: by 2002:a5d:4a0c:: with SMTP id m12mr17924531wrq.246.1584797391148;
-        Sat, 21 Mar 2020 06:29:51 -0700 (PDT)
+X-GM-THRID: 6619709511585234944
+X-Received: by 2002:a6b:691c:: with SMTP id e28-v6mr12383146ioc.25.1541271226170;
+        Sat, 03 Nov 2018 11:53:46 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:afd4:: with SMTP id y20ls121937wrd.5.gmail; Sat, 21 Mar
- 2020 06:29:49 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvU0HmW550uri7tjTKbmIYVbQ1waJazpxDGnum3O71iyQBuYVVqYpBhDz97Z/UecAX56bDf
-X-Received: by 2002:adf:f503:: with SMTP id q3mr17572164wro.135.1584797389812;
-        Sat, 21 Mar 2020 06:29:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584797389; cv=none;
+Received: by 2002:a02:85ae:: with SMTP id d43-v6ls7009584jai.2.gmail; Sat, 03
+ Nov 2018 11:53:45 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5f2F8HclObIQrQIIUiIyHKR/ppVB4tnrHO9nkTfmLYurbrOMfwjrRtg3PgFl2wN8uwqodey
+X-Received: by 2002:a02:4d95:: with SMTP id t21-v6mr13470141jad.2.1541271225000;
+        Sat, 03 Nov 2018 11:53:45 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1541271224; cv=pass;
         d=google.com; s=arc-20160816;
-        b=buqXPa1s43gK53V59n0VuQcIPCb8bmMxaAqCW0WBZPMH6aR9ye9CbgOBSKU3EmXy5S
-         CYEtymoSM1eBmtEktsBnZ4pxleTtXCC0UzDV3Xaseo2oMJ46zuqe2uWxZJ79N8XcDLsx
-         Cpj2oX5ve8OTXgDVIDBqXmQ6V6+fClFosfzT/Hq3RSYsWv9n2GBh84+LbFOdkegUujsM
-         1x+rh3hs6SVgI9JcrYy84ULfSjaZBFzjIopnRnjX9N9UGotcz2/7jCjQF4ahR29d6jSG
-         XtOWFX3KnNZHnCsjXAJhx6a4r6ahcyYJmUS/gptKQ9ztYCkRy+dWVjtKtrssmn/DB8Cl
-         IWXQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=li8GZuCfqCfdidXJMfq42qruKtkyzSxRsu4o2TpzJYs=;
-        b=BTsIiiKEP95YKTLhLESrVhikZev3l9YnLal4XONXq8TUUpqimw1VP4kK7pgFI8rYmm
-         Yi8Zf1Hs55inov9D+sdjko80AY+o7kpUt1FL7hC79LKJh+l3rwjAJpKejk5ag/W3CMqO
-         DVZAN+paWhGxKOR+hm3IKzLgkTgOEPAC56F8olz6rS/HGneawse7Ah0NVscPldHVCg2G
-         gEseLE1XjmhuTJVVTxGsu2O/t5YtFDw0L5Hzt3PHQ4RkP+E30gUoBWXQ4n/fXLYIbuJ/
-         3yTvH2WRK4o3if+AIwdhygCPpy6fnwaChlqfS9qNerR8+6YETx405g1WrMGlKKcqFJ1a
-         hEeg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=V+mDoRTE;
-       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jane.pnx9@gmail.com>
-Received: from mail-wr1-x443.google.com (mail-wr1-x443.google.com. [2a00:1450:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id a18si410402wra.0.2020.03.21.06.29.49
+        b=N7ytmpdwkPNA3DJrFYvHjJd8UBoA00Zv3a5vbyJQaWBQ5R36JB+r1/E9DdmMGgaAXX
+         YuekhaWAZeZGSN4DEGBk91wzMq75zjyjtzKNxQeVCOmPgYtRfCppBOwZLQm7n1/diiij
+         eSaorSK6ayQlBoxiilk5jT+hr5R4PJVM0MFzXm6M7IuqEi3+lcS4ppRGr5WnFWEwyI2v
+         MsRqVyJeaTPn4TXCFn7h5RpsBBJTrU7/z8ahIP4YeZFv8Jk5gHKnWMejyvTzzeHROHw4
+         cdNC91CUizxUujd1U/6Dwthy2mNJ+5vemmggL6e8zowOaUg7V7ZTT3jobZcxukuMWQkE
+         Q0Fg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=fsVsJyZjrffCdcqGhxwgjKD5QZOAMO1DtiGEl4B2a6k=;
+        b=qREg3ZtNOHIW97J7/R2inC9T1AE7yqfZsQh0gkeds4hobi62nUB0BWXcbr7J6oESiw
+         kDit2XJnMC+IXSQ7RbiTIjh9akHBUABpFvTWAXt35mWbCmNLiQ36FisU4wDu31djZ61l
+         Q2ZXaTnyekEQY6QtZOK/9Pw+8Bq4ObxrB4aNdMcfY8zJbGjIvvJoW32uIOAF06lqCLfn
+         DY6DVjt+1p83RjuE1XGlimU/jBpGNZcQpGTTfwm3RKNnixf+iMICD+6juewgUv23hQmn
+         gEbieD8hwDMNyV76BhDCBVYSbuWVB/sw+HKN3PpLUDpyDixH8PdU+fxkMx2WgHQ9mgev
+         m29w==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=hvyBi4ng;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
+Return-Path: <code@wizofe.uk>
+Received: from sender-of-o51.zoho.eu (sender-of-o51.zoho.eu. [185.20.209.243])
+        by gmr-mx.google.com with ESMTPS id c188-v6si1175974ite.0.2018.11.03.11.53.44
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 21 Mar 2020 06:29:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) client-ip=2a00:1450:4864:20::443;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 03 Nov 2018 11:53:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) client-ip=185.20.209.243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=V+mDoRTE;
-       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x443.google.com with SMTP id t7so6134108wrw.12
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Mar 2020 06:29:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=li8GZuCfqCfdidXJMfq42qruKtkyzSxRsu4o2TpzJYs=;
-        b=V+mDoRTERY74Vj7zX7ESMcPP7iyMWF5YrBDKxGp5A+85BFF6J/ZtK8cTLtFEJwsIhA
-         QuszjFhKj2UhEcHEdrgp4GTo9LtQOYgYKO32EB9/TP0yEkYxzLpX0y4Z6iaxYdTi/rGL
-         yY5mC+7GbRUn/Pq5+gWJuosWzD6UK+ZK2AqS4bDXSuSErgVinTQXS18s1OAFVgjDiZoo
-         5WFLZAItV3D9HL69KLTB8YY7bz/cMrT1/b9NujCOUeA2xf9C5VuCNGHv247Qdrh36nlY
-         lOCL7SUS/hr2X6IDHAIXi/g5hYQYzY0NXLaW8ryaAFFZxM8vmoZ8ngIvssFxZTJHMDd5
-         MR9g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=li8GZuCfqCfdidXJMfq42qruKtkyzSxRsu4o2TpzJYs=;
-        b=IACNR7gGYRicUggMuGWTAiSA4Q1RLySbQ4wr9phx/+uU0JVx/9jfZWJbXNFcEVFaF5
-         XeoLy4CbmzImbDM+1mX+BPmymhNf83EH/WnX6b5LQcI1/1INL1N7/lvvDKeVRb/dAXcG
-         Rz4rVcrimPdE0kSzyEMT7Pu2BQW/RHPaFhI1JI7EtvDXdIbbYKz+yP39pztAfvmnp8rP
-         EFqAMa0ELL6zCcjTDFrKXRsckpEyuBGt3o7J4jb6z+gtNv0ONKtfd17w8Pz9k3UWz8W1
-         T7e9FjA3mZmj26AXeP9ku/mr//rmDnp51igjMLpLKTihSwpsQRqZaFO56GKWyO1Q01e1
-         Sgbw==
-X-Gm-Message-State: ANhLgQ1jIJgTpjd3aImjpx2prKdYQxrOGNSdJGhpXWuNfAmlIbFLIU4j
-	KHVCvgu60ihO4tk8UvA9msk=
-X-Received: by 2002:a5d:5230:: with SMTP id i16mr4361972wra.15.1584797389451;
-        Sat, 21 Mar 2020 06:29:49 -0700 (PDT)
-Return-Path: <jane.pnx9@gmail.com>
-Received: from localhost.localdomain ([197.34.115.229])
-        by smtp.gmail.com with ESMTPSA id p15sm13285663wro.68.2020.03.21.06.29.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 21 Mar 2020 06:29:48 -0700 (PDT)
-From: Sam Muhammed <jane.pnx9@gmail.com>
-To: Jaroslav Kysela <perex@perex.cz>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	outreachy-kernel@googlegroups.com
-Cc: Sam Muhammed <jane.pnx9@gmail.com>
-Subject: [PATCH] Staging: hp: Replace printk(KERN_WARNING ..) with netdev_warn().
-Date: Sat, 21 Mar 2020 09:29:19 -0400
-Message-Id: <20200321132919.27704-1-jane.pnx9@gmail.com>
-X-Mailer: git-send-email 2.20.1
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=hvyBi4ng;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
+ARC-Seal: i=1; a=rsa-sha256; t=1541271220; cv=none; 
+	d=zoho.eu; s=zohoarc; 
+	b=c6vAIc4vX2fmYQLk8md1klh9nOBBTDvcMxxk5xJ3mVF7wDpcLbByfZ74W0+TkSNUcoEQRBmIE+EdL4autiJsBXGq8BeIeeM/QwIYxdUWrNdEqu59d+5MzqCavAPMyp+1zpch2veuSQjqASnE5oDVA2VfKkfRwUUGXz8KkznsNxc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
+	t=1541271220; h=Content-Type:Cc:Date:From:MIME-Version:Message-ID:Subject:To:ARC-Authentication-Results; 
+	bh=fsVsJyZjrffCdcqGhxwgjKD5QZOAMO1DtiGEl4B2a6k=; 
+	b=E5Rr/n6ZgpeaQH9mgCRo04JwgaUvaPhBhORBdB8EMrGb6GK6wQBTHGvPgsBlbU1ayoVDWTPMGUt+omut4wsLyvUzVL1RfwR2xZTK9rmWD9JtunzLQYyfbyLtmJWhI14Ujcp46GeTPdZR9w4/JYiapNSXkEZ29blCwQ5Yub8ZZQw=
+ARC-Authentication-Results: i=1; mx.zoho.eu;
+	dkim=pass  header.i=wizofe.uk;
+	spf=pass  smtp.mailfrom=code@wizofe.uk;
+	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541271220;
+	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
+	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type;
+	l=1446; bh=fsVsJyZjrffCdcqGhxwgjKD5QZOAMO1DtiGEl4B2a6k=;
+	b=hvyBi4ngBIOBJm5N5rxqIxqEJicGaHYHhVkVu2yyd3zg/UEHaRQHINtCVmqXhyK4
+	dRDzW/oMBPXru+WQ44tfqD7axzvpTxGnycQ4HmQq7T9/CJZt0Dy/I08ouPf7pnLaUAI
+	IJLhDeS+He6mRLZ8tyNgyl6KX3jpgWeDb2AD9L7Q=
+Received: from kvasir.local (90.242.56.176 [90.242.56.176]) by mx.zoho.eu
+	with SMTPS id 1541271218553848.9554310511209; Sat, 3 Nov 2018 19:53:38 +0100 (CET)
+Date: Sat, 3 Nov 2018 18:53:37 +0000
+From: Ioannis Valasakis <code@wizofe.uk>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org
+Subject: [PATCH v2] staging: greybus: add space around OR operator
+Message-ID: <20181103185337.GA21317@kvasir.local>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-ZohoMailClient: External
 
-Fixup the following Checkpatch.pl WARNING:
-WARNING: Prefer [subsystem eg: netdev]_warn([subsystem]dev, ...
-then dev_warn(dev, ... then pr_warn(...  to printk(KERN_WARNING ...
+Add spaces around the OR operator.
+Reported by checkpatch.
 
-Signed-off-by: Sam Muhammed <jane.pnx9@gmail.com>
+Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
 ---
- drivers/staging/hp/hp100.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+Changed in v2:
+	- Rephrased commit per suggestion from Julia Lawall
 
-diff --git a/drivers/staging/hp/hp100.c b/drivers/staging/hp/hp100.c
-index b89c4dcf53f5..89af70571661 100644
---- a/drivers/staging/hp/hp100.c
-+++ b/drivers/staging/hp/hp100.c
-@@ -469,8 +469,8 @@ static int hp100_probe1(struct net_device *dev, int ioaddr, u_char bus,
- 
- 	eid = hp100_read_id(ioaddr);
- 	if (eid == NULL) {	/* bad checksum? */
--		printk(KERN_WARNING "%s: bad ID checksum at base port 0x%x\n",
--		       __func__, ioaddr);
-+		netdev_warn(dev,
-+			    " : bad ID checksum at base port 0x%x\n", ioaddr);
- 		goto out2;
- 	}
- 
-@@ -478,9 +478,9 @@ static int hp100_probe1(struct net_device *dev, int ioaddr, u_char bus,
- 	for (i = uc = 0; i < 7; i++)
- 		uc += hp100_inb(LAN_ADDR + i);
- 	if (uc != 0xff) {
--		printk(KERN_WARNING
--		       "%s: bad lan address checksum at port 0x%x)\n",
--		       __func__, ioaddr);
-+		netdev_warn(dev,
-+			    " : bad lan address checksum at port 0x%x)\n",
-+			    ioaddr);
- 		err = -EIO;
- 		goto out2;
- 	}
+ drivers/staging/greybus/greybus_protocols.h | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/staging/greybus/greybus_protocols.h b/drivers/staging/greybus/greybus_protocols.h
+index 9bd7b6dfb476..ddc73f10eb22 100644
+--- a/drivers/staging/greybus/greybus_protocols.h
++++ b/drivers/staging/greybus/greybus_protocols.h
+@@ -878,10 +878,10 @@ struct gb_pwm_disable_request {
+ /* Should match up with modes in linux/spi/spi.h */
+ #define GB_SPI_MODE_CPHA		0x01		/* clock phase */
+ #define GB_SPI_MODE_CPOL		0x02		/* clock polarity */
+-#define GB_SPI_MODE_MODE_0		(0|0)		/* (original MicroWire) */
+-#define GB_SPI_MODE_MODE_1		(0|GB_SPI_MODE_CPHA)
+-#define GB_SPI_MODE_MODE_2		(GB_SPI_MODE_CPOL|0)
+-#define GB_SPI_MODE_MODE_3		(GB_SPI_MODE_CPOL|GB_SPI_MODE_CPHA)
++#define GB_SPI_MODE_MODE_0		(0 | 0)		/* (original MicroWire) */
++#define GB_SPI_MODE_MODE_1		(0 | GB_SPI_MODE_CPHA)
++#define GB_SPI_MODE_MODE_2		(GB_SPI_MODE_CPOL | 0)
++#define GB_SPI_MODE_MODE_3		(GB_SPI_MODE_CPOL | GB_SPI_MODE_CPHA)
+ #define GB_SPI_MODE_CS_HIGH		0x04		/* chipselect active high? */
+ #define GB_SPI_MODE_LSB_FIRST		0x08		/* per-word bits-on-wire */
+ #define GB_SPI_MODE_3WIRE		0x10		/* SI/SO signals shared */
 -- 
-2.20.1
+2.19.1
+
+
+-- 
+ta
+ioannis
 
 
