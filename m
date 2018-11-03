@@ -1,109 +1,123 @@
-X-GM-THRID: 6673507471560015872
-X-Received: by 2002:a25:355:: with SMTP id 82mr2708760ybd.60.1553797040472;
-        Thu, 28 Mar 2019 11:17:20 -0700 (PDT)
+X-GM-THRID: 6619380955766325248
+X-Received: by 2002:a1c:2d4b:: with SMTP id t72-v6mr7540wmt.18.1541229430431;
+        Sat, 03 Nov 2018 00:17:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:5bc4:: with SMTP id p187ls8460097ybb.14.gmail; Thu, 28
- Mar 2019 11:17:19 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz1H+F9FWA/iJ2nDeqqH4bF77TpfroaqfVxEtcUOES9YShmxAH7vKt0HNsjxq7AU6q2hP5t
-X-Received: by 2002:a5b:44e:: with SMTP id s14mr2835766ybp.100.1553797039721;
-        Thu, 28 Mar 2019 11:17:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553797039; cv=none;
+Received: by 2002:a1c:60f:: with SMTP id 15-v6ls639023wmg.19.gmail; Sat, 03
+ Nov 2018 00:17:09 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5cSZlh6/o/77NRfhn3K1eTiNVZWfhOQY+fcMUt9Kgkv4kmfHoh5CXEhwHIiOPusS0uk1t3e
+X-Received: by 2002:a1c:f308:: with SMTP id q8-v6mr7929wmq.0.1541229429523;
+        Sat, 03 Nov 2018 00:17:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1541229429; cv=none;
         d=google.com; s=arc-20160816;
-        b=cFHmgWDKr4XeZ3Xq/R45InWLdJ3EkI0DUgdjNl4Igq83Q6LRXOz9O+w0nbI9Wt++BW
-         wq7NQmhjOmEtvpML17NhC03m4WOVFjCzywbrfB4uClLiS3+8nhf0fhx9JcHU7AVNzwTU
-         cF5vzv2+w6pKfENMOl7DbKaRaDhlVvPhw+OjooJCNUh5OgBrsX2yu+j6j18BDDw9lCZY
-         KX8Z8SmxHaKcIHTBS69DmnRwPeMT5axXoPoEoRp3oG9BbEmM7inaE+uIBY7KVKB3N26r
-         syNcJcApM3igE7oFyJKSKqXFDSgvDnX/jFZAODkDhetGLm2YRM6xOc0mmdnQSdJ4vDXm
-         UT7g==
+        b=QEjQY7SkZQbzkQIbV7bStu3nCJ0fL/gVJtRSIDhu3XN0+7pTvD5URZWGzW1GM/uKau
+         EupraREsW9myIFqQN6mGiwW+BL9MhpM+rkG0MnIucEOOOqVn2d3mDsk8qhOW/7HsLmpj
+         XcbfWP2wbYlvIQmIBdZBb5ecSPuJ+n3f2apyCSX4xQ8DFRLnsXA/mmDEiF9Kve6zu3L9
+         DIRXJvRMbvD1AjcFijpFfYb4rPH03WiTqHLBc9eYMq6GhvR/TVeZPp3+zg5kDYPvKnf6
+         431NAhrUTIwe/ewaYivfzTQYS0Kuny6MwPPHn4vETjuN2WU58U9OLTuTg3qOWNDvc0Lm
+         Vo6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=AF1POr1kzrZSWz5R1fBZnK5yaSdNWnWTcrxsQom1FpA=;
-        b=Z12qfDNrFw4J8VFSyHLyncVrIMgN8KWPQW89ovOdMz3mbvODfrYXmkwLPXfBrAZKvR
-         2379kFP3zAWwjPDtyRLPUD2gLQjJpMhD2CXYkFgpHv6BjoKIjZQCKuGO0apnZiA/sAku
-         D7Pg52SnRuQE15xNKqphqR5JxdlR+G7MmQJm5tjSJ9y+6GP1YC5ve/3Q4+QrKjaH1LfE
-         qKzRb6RenkKiDot7FzrFGJTVaIk8gkjN1EYnyK67MMm1JpD6KZipis3NEJVBeB2rZlTo
-         BWRPwNC1mGaFYDf6+cmdsKmpN5g15qe0wmGFcsIxc9XYaehU761C30dWO/2aTvuMuhgW
-         oEUQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=NAqSVB6bRjsClnpL+KqPG7zQEnlHmVWEOayOOP+y1Dg=;
+        b=QojXfslrPlYmXKWPh9xmwriYTdFDxlsdM8if9Qn8VWPyQMp7tI9k3o/taOyuZxxi/5
+         i9YzE2MaAtcvv/wHNP7zsD1TtUo+Ys8p5u5s1/4hm3J/tn15i776KrokDeaTWbgVB8U7
+         ROKos2oNrA/XRCnRjBermTkb1xHetcbIqMTbPGXXIhs5JVOKKeSRndL48MErsy5Pdg5F
+         uBtoKNRg80f2Zz8RzAXJlYlbW+xjuUYxNqXAGZxnZcCOxBdbqWKE/uJM4BwrWiFfdIRF
+         Ap12CWuZsSYrOgL9SWwOfid59LI5xUEItvJdr/RZgXpP/yFhNdjPsbxIJSOlt32q/4ni
+         dbjg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=INtynTkZ;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pg1-x543.google.com (mail-pg1-x543.google.com. [2607:f8b0:4864:20::543])
-        by gmr-mx.google.com with ESMTPS id s11si1495240ywg.3.2019.03.28.11.17.19
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 191-v6si135664wmv.0.2018.11.03.00.17.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 28 Mar 2019 11:17:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) client-ip=2607:f8b0:4864:20::543;
+        Sat, 03 Nov 2018 00:17:09 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=INtynTkZ;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x543.google.com with SMTP id j26so9989539pgl.5
-        for <outreachy-kernel@googlegroups.com>; Thu, 28 Mar 2019 11:17:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=AF1POr1kzrZSWz5R1fBZnK5yaSdNWnWTcrxsQom1FpA=;
-        b=INtynTkZnB4zYAYJX40fVlV3UZQxKxXvwM34SP24FN3gUIbCt4YGpLWIQ4V1uFwaGk
-         gW2i4Z3z5il3ka/8uET2ddlAVICFEAXgx1AY8pl/2PHCN4XkI3/VIPcOpZcAJXpH1S3F
-         JuSWeWVe0FM+AaTq9aizNcx8zKsmlOXlAXsxs7DiBdrlIsJE9cwdNB2f7Y6VhAd0xQaQ
-         uHuC2v1BZJVk1cxrU1CjAI+xtkPyzK42BY8v8eOloaIpm86X1ucS/BcNFfXa1n5wOv3R
-         yQnOAONJASm8ek6HqJbSuKNN+4l6DMs+yd3qsPPFb1Fhn7Bd/e5JJgAQU59AyA3F1tjW
-         RyRA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=AF1POr1kzrZSWz5R1fBZnK5yaSdNWnWTcrxsQom1FpA=;
-        b=SQrVbhiubukAzRmpWN4mQRt3Ka5Ew0xgqHBKfa70kiHyixfQmCUhKatbSVAY1qAkwl
-         L/YJw5BOVm+w9Pkdr/RlLOmzbcvRhU9SCfP+ZC59JTu3cQEUDWuohp6S0eiw/rAaVqRl
-         tfeb+/sKIO0EimxFNnrKqqYiF+RtYHAaDy829i5vLvGJYZekrLFxmtGZ+ck49alVCwpu
-         W3cFZCvSd6JCWHq6nRHUEi22wgL6LtkOYJE89sT9UZk1UAZmn9oEiP8FMSXj6eRgp1+E
-         0MmCF05zZGwmJyxrSs4XlxMRchfFY1XqhUut1aub0OpgQadH9PZh3CJMStteB4vUXMOC
-         yrNQ==
-X-Gm-Message-State: APjAAAWW8pxYlYtkl/tRyrw7080QfD4a+KICeZBmuJxPPbjBk0pzwxZF
-	OTdxCJdgvwt6qcXa6GBkkVs=
-X-Received: by 2002:a62:6f06:: with SMTP id k6mr42228337pfc.257.1553797038990;
-        Thu, 28 Mar 2019 11:17:18 -0700 (PDT)
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from localhost.localdomain ([2405:204:6105:9194:4d26:756d:e157:1b31])
-        by smtp.googlemail.com with ESMTPSA id z6sm39320531pfz.65.2019.03.28.11.17.15
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 28 Mar 2019 11:17:17 -0700 (PDT)
-From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: wilc1000: Avoid unnecessary braces around else.
-Date: Thu, 28 Mar 2019 23:47:05 +0530
-Message-Id: <20190328181705.32572-1-sanjana99reddy99@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.54,459,1534802400"; 
+   d="scan'208";a="284221899"
+Received: from 89-157-201-244.rev.numericable.fr (HELO hadrien) ([89.157.201.244])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 03 Nov 2018 08:17:08 +0100
+Date: Sat, 3 Nov 2018 08:17:08 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Ioannis Valasakis <code@wizofe.uk>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH v3 1/5] staging: greybus Align parameters
+ to parentheses
+In-Reply-To: <537e6bd9f572df1cce6fc8624471a9c7c2714c35.1541194567.git.code@wizofe.uk>
+Message-ID: <alpine.DEB.2.21.1811030816270.2922@hadrien>
+References: <cover.1541194567.git.code@wizofe.uk> <537e6bd9f572df1cce6fc8624471a9c7c2714c35.1541194567.git.code@wizofe.uk>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Remove unnecessary brace around else statement.
-Issue found using checkpatch.pl
 
-WARNING: braces {} are not necessary for single statement blocks
 
-Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
----
- drivers/staging/wilc1000/host_interface.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+On Fri, 2 Nov 2018, Ioannis Valasakis wrote:
 
-diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
-index a10c31bce07f..150ba033198f 100644
---- a/drivers/staging/wilc1000/host_interface.c
-+++ b/drivers/staging/wilc1000/host_interface.c
-@@ -1399,9 +1399,8 @@ int wilc_set_join_req(struct wilc_vif *vif, u8 *bssid, const u8 *ies,
- 	if (ies) {
- 		conn_info->req_ies_len = ies_len;
- 		conn_info->req_ies = kmemdup(ies, ies_len, GFP_KERNEL);
--		if (!conn_info->req_ies) {
-+		if (!conn_info->req_ies)
- 			return -ENOMEM;
--		}
- 	}
- 
- 	result = wilc_send_connect_wid(vif);
--- 
-2.17.1
+> Align parameters to the right side of the left parentheses
+> Reported by checkpatch.
+>
+> Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
+> ---
+>  drivers/staging/greybus/core.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/greybus/core.c b/drivers/staging/greybus/core.c
+> index dafa430d176e..d28773e06838 100644
+> --- a/drivers/staging/greybus/core.c
+> +++ b/drivers/staging/greybus/core.c
+> @@ -28,7 +28,7 @@ int greybus_disabled(void)
+>  EXPORT_SYMBOL_GPL(greybus_disabled);
+>
+>  static bool greybus_match_one_id(struct gb_bundle *bundle,
+> -				     const struct greybus_bundle_id *id)
+> +				 const struct greybus_bundle_id *id)
+>  {
+>  	if ((id->match_flags & GREYBUS_ID_MATCH_VENDOR) &&
+>  	    (id->vendor != bundle->intf->vendor_id))
+> @@ -48,7 +48,7 @@ static bool greybus_match_one_id(struct gb_bundle *bundle,
+>  static const struct greybus_bundle_id *
+>  greybus_match_id(struct gb_bundle *bundle, const struct greybus_bundle_id *id)
+>  {
+> -	if (id == NULL)
+> +	if (!id == NULL)
 
+This change is still wrong and is still not coveredby the log message.
+
+I think it would be better to start over rather than trying to fix up this
+series, because it is not progressing.
+
+julia
+
+>  		return NULL;
+>
+>  	for (; id->vendor || id->product || id->class || id->driver_info;
+> @@ -266,7 +266,7 @@ static int greybus_remove(struct device *dev)
+>  }
+>
+>  int greybus_register_driver(struct greybus_driver *driver, struct module *owner,
+> -		const char *mod_name)
+> +			    const char *mod_name)
+>  {
+>  	int retval;
+>
+> --
+> 2.19.1
+>
+>
+> --
+> ta
+> ioannis
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/537e6bd9f572df1cce6fc8624471a9c7c2714c35.1541194567.git.code%40wizofe.uk.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
