@@ -1,83 +1,135 @@
 X-GM-THRID: 6619835502508900352
-X-Received: by 2002:a02:3b58:: with SMTP id i24-v6mr18487575jaf.25.1541426088758;
-        Mon, 05 Nov 2018 05:54:48 -0800 (PST)
+X-Received: by 2002:a2e:834f:: with SMTP id l15-v6mr1125052ljh.19.1541313278892;
+        Sat, 03 Nov 2018 23:34:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:6756:: with SMTP id u83-v6ls2183096itc.5.gmail; Mon, 05
- Nov 2018 05:54:48 -0800 (PST)
-X-Google-Smtp-Source: AJdET5c6s1I1qz20z4a5pK4CwoqcuHCrSatUt9XrJHxbVPXunrvMLNEM5RH+RFg9XtavdsfjVoJn
-X-Received: by 2002:a24:7b10:: with SMTP id q16-v6mr6338166itc.1.1541426088043;
-        Mon, 05 Nov 2018 05:54:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541426088; cv=none;
+Received: by 2002:a2e:6317:: with SMTP id x23-v6ls66357ljb.21.gmail; Sat, 03
+ Nov 2018 23:34:38 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5erpGrfV3FESnhSz8ZvN0s1wpyuZwAA3Ro8un92Udvf+bps8k8XjRutN55vZ+3+sybzMVhf
+X-Received: by 2002:a2e:9e4a:: with SMTP id g10-v6mr1531827ljk.26.1541313278125;
+        Sat, 03 Nov 2018 23:34:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1541313278; cv=none;
         d=google.com; s=arc-20160816;
-        b=jvLVR+QylpbSWv4nFuy59TOwodKbKAQU2DwVNbP5eNzfRKfi8l7Ty6fdGcnFxauG5q
-         zb/DOZX9qezsH1J65+uJ3m6iWt/zupB3WYtZnVhUfgjxwBGRF5ZJfa+T4Q+AeUek6BdZ
-         iyBZyyvcBtzZcCavohzLaVTwUJwVViQxlFdxD3LW8XKqYyyUQyqZOeesZoP9F5bqDsdu
-         zqXYwHkHkDKBfL4KyvcqXhn2QC19ZgcxMruuvKAWBzYABHkR7KL8NnQUk6mciHcRKB0u
-         bUPuAC1GsHXQQoBAYqrOvTnv+nluuGL4jrhIFwhvqA9gdsLBPgnGaSEep3IOF0bs8UMD
-         I9sg==
+        b=TgPPBcY0LWTVjruQaXD6t3+xbCXp7+D9GFyoCOuUUg9483HCLVai3I8zqp/XFb63kE
+         TwWr/d5extVBkG9ESL0bt6v1niHFbcc+ZDcf/7jkLNeopv5e0zoP7CeHY6OirPvd7u6W
+         9OqejMZIFHYqHoc5edtFyNMicaFEZ5xAqTvr+Ys7HMSEW6wCpBrG3HV+EtoH6czH2muL
+         FZkLkg8dZF07t7fR6GguhIN2fsvuagVSZX5kEf4wRxyvDs0Iru+TC+C6eW3eYHeaaaJv
+         zZyz5J38/pxFsoD5aimbdLOLto6WYn7FXZb/jlcPvRKqKokQKFgvcLJ77++pSw6wCLLS
+         mkCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=qiHa6pzw7wQkvueKZTpv/chhki7wYkK8uMRAjZYAQB8=;
-        b=LcQNzILuUygkc7kogR0DzNknOZQirUsCl6WerwoZCACr8OaVhB3kFbwG8bDzGqlOW1
-         p7m16LtAxL5ZmKBAzlrmh2SOx3huNUprriwTEs6A+tjYA7Ni/3aR/tmKOWTLsujLFRn+
-         XYGfoeNGNelt15PnjW5KglU1hnKz+ZRPF0xROmHj1g1b48UdC3B8t0Q2RdQxptkpvsdH
-         9+9vK0RmAvxfvHCJdB1P30v3Jho0MmvNGjtXWq0zHAm0WS2c9E4Vvn/5rrQB4O/nFa2Q
-         6pwdq51qs3oDhRziMrsyjgrON8ZnbUwG4MaxdLSWGmMryJxVedSvbYLfHAy5alcZQC5S
-         NLLg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=jlbAHAaXeEBGYaFgWSsFZTF/45UQ9unz9LYCKOztc4c=;
+        b=H+U3V7RdfFuRR0y26emU0IqlxfRS5IRwRw1/zr0QWkiqzYAvEFqTga2A7semjPwCcb
+         2m01+4ksQRgLfU1Bdw2AO6ewcCFp1aPTP+eNdRWRupcUnA8Xf4xo2q/AYUTiNkwL8nc3
+         IHsLEcV3KeFNDQ71AXyD9KsOYStxD3GJsmMbA051hEjcUTNo4/wjlQp8NwkCyV1QhCYa
+         HOjVQOoQ9UjtegxvIiZXQCrWwCkAkORcgn39ib2lNG3HFcJwxGfF/x8lgpCXIVXd86u3
+         xDq8BpyddQYvP37QhLzdf7Up94qw4/HsOIaO4nNTj4lfE5bfn1F8j/SACQ5d4DPZ+T9O
+         BvOQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=CNUcg24l;
-       spf=pass (google.com: domain of srs0=afov=nq=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=AFoV=NQ=linuxfoundation.org=gregkh@kernel.org"
-Return-Path: <SRS0=AFoV=NQ=linuxfoundation.org=gregkh@kernel.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id b133-v6si385311itc.3.2018.11.05.05.54.47
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id d14-v6si548810lfk.0.2018.11.03.23.34.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 05 Nov 2018 05:54:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of srs0=afov=nq=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Sat, 03 Nov 2018 23:34:38 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=CNUcg24l;
-       spf=pass (google.com: domain of srs0=afov=nq=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=AFoV=NQ=linuxfoundation.org=gregkh@kernel.org"
-Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id BDA4F20827;
-	Mon,  5 Nov 2018 13:54:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1541426087;
-	bh=UJEI3n69u8GVn4leeEFtJQoEqwfl3h9elESGwr2saak=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=CNUcg24lr+OgNFBeBRHeuZW+37g5RLZlMfDu12UHLUgwagueiqfbtjeJQWHEV1Qgd
-	 4454oXVDVxCTOPl8mWJtU12COBPuGjo5p/f7OeNegC7KOy3iL7MzmgrB9dXWZ8H8eh
-	 dpftnfWMLm72Ch0xClPTzZNNk/LWw1MuKTdBuSis=
-Date: Mon, 5 Nov 2018 14:54:38 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.54,463,1534802400"; 
+   d="scan'208";a="284263955"
+Received: from 89-157-201-244.rev.numericable.fr (HELO hadrien) ([89.157.201.244])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 04 Nov 2018 07:34:37 +0100
+Date: Sun, 4 Nov 2018 07:34:36 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Ioannis Valasakis <code@wizofe.uk>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH 2/2] staging: zoran: remove unnecessary braces
-Message-ID: <20181105135438.GA13489@kroah.com>
-References: <cover.1541300498.git.code@wizofe.uk>
- <7a011559cd164a16c8656ca19e4c11306c891ddc.1541300498.git.code@wizofe.uk>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH 1/2] staging: zoran: replace masking
+ with BIT macro
+In-Reply-To: <e1f47470988dd3e5a8e7d39bf6a051e6de2637a3.1541300498.git.code@wizofe.uk>
+Message-ID: <alpine.DEB.2.21.1811040732240.2448@hadrien>
+References: <cover.1541300498.git.code@wizofe.uk> <e1f47470988dd3e5a8e7d39bf6a051e6de2637a3.1541300498.git.code@wizofe.uk>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <7a011559cd164a16c8656ca19e4c11306c891ddc.1541300498.git.code@wizofe.uk>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Type: text/plain; charset=US-ASCII
 
-On Sun, Nov 04, 2018 at 03:03:00AM +0000, Ioannis Valasakis wrote:
-> Braces are not necessary for single statement blocks therefore there
-> were removed. Reported by checkpatch.
-> 
+
+
+On Sun, 4 Nov 2018, Ioannis Valasakis wrote:
+
+> Replace bit masking with the more preferable BIT macro.
+>
 > Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
 > ---
->  drivers/staging/media/zoran/zoran_device.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
+>  drivers/staging/media/zoran/zoran_device.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/staging/media/zoran/zoran_device.c b/drivers/staging/media/zoran/zoran_device.c
+> index 40adceebca7e..1e6782b72369 100644
+> --- a/drivers/staging/media/zoran/zoran_device.c
+> +++ b/drivers/staging/media/zoran/zoran_device.c
+> @@ -92,7 +92,7 @@ GPIO (struct zoran *zr,
+>  	/* Make sure the bit number is legal
+>  	 * A bit number of -1 (lacking) gives a mask of 0,
+>  	 * making it harmless */
+> -	mask = (1 << (24 + bit)) & 0xff000000;
+> +	mask = (BIT((24 + bit))) & 0xff000000;
 
-This patch does not apply to my tree at all :(
+In addition to not needing the parentheses around the call to BIT, you
+also don't need the extra parentheses around the argument.  Macros should
+be written in a defensive way, which is the case of BIT:
 
-Please rebase and resend it.
+#define BIT(nr)			(1UL << (nr))
 
-thanks,
+If the macro is not written in a defensive way, then you should fix the
+macro instead of adding extra parentheses at all of the call sites.
 
-greg k-h
+julia
+
+>  	reg = btread(ZR36057_GPPGCR1) & ~mask;
+>  	if (value) {
+>  		reg |= mask;
+> @@ -285,8 +285,8 @@ zr36057_adjust_vfe (struct zoran          *zr,
+>  	case BUZ_MODE_MOTION_DECOMPRESS:
+>  		btand(~ZR36057_VFESPFR_ExtFl, ZR36057_VFESPFR);
+>  		reg = btread(ZR36057_VFEHCR);
+> -		if ((reg & (1 << 10)) && zr->card.type != LML33R10) {
+> -			reg += ((1 << 10) | 1);
+> +		if ((reg & (BIT(10))) && zr->card.type != LML33R10) {
+> +			reg += ((BIT(10)) | 1);
+>  		}
+>  		btwrite(reg, ZR36057_VFEHCR);
+>  		break;
+> @@ -300,8 +300,8 @@ zr36057_adjust_vfe (struct zoran          *zr,
+>  		else
+>  			btor(ZR36057_VFESPFR_ExtFl, ZR36057_VFESPFR);
+>  		reg = btread(ZR36057_VFEHCR);
+> -		if (!(reg & (1 << 10)) && zr->card.type != LML33R10) {
+> -			reg -= ((1 << 10) | 1);
+> +		if (!(reg & (BIT(10))) && zr->card.type != LML33R10) {
+> +			reg -= ((BIT(10)) | 1);
+>  		}
+>  		btwrite(reg, ZR36057_VFEHCR);
+>  		break;
+> @@ -407,7 +407,7 @@ zr36057_set_vfe (struct zoran              *zr,
+>  	} else if (HorDcm >= 32) {
+>  		reg |= 2 << ZR36057_VFESPFR_HFilter;	/* 4 tap filter */
+>  	} else if (HorDcm >= 16) {
+> -		reg |= 1 << ZR36057_VFESPFR_HFilter;	/* 3 tap filter */
+> +		reg |= BIT(ZR36057_VFESPFR_HFilter);	/* 3 tap filter */
+>  	}
+>  	reg |= format->vfespfr;
+>  	btwrite(reg, ZR36057_VFESPFR);
+> --
+> 2.19.1
+>
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/e1f47470988dd3e5a8e7d39bf6a051e6de2637a3.1541300498.git.code%40wizofe.uk.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
