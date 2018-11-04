@@ -1,56 +1,57 @@
 X-GM-THRID: 6620077565776232448
-X-Received: by 2002:a1c:e583:: with SMTP id c125-v6mr502288wmh.21.1541357580535;
-        Sun, 04 Nov 2018 10:53:00 -0800 (PST)
+X-Received: by 2002:a17:906:12d2:: with SMTP id l18-v6mr1285274ejb.3.1541357421796;
+        Sun, 04 Nov 2018 10:50:21 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:a05:: with SMTP id 5-v6ls1022304wmk.17.canary-gmail;
- Sun, 04 Nov 2018 10:52:59 -0800 (PST)
-X-Google-Smtp-Source: AJdET5c9hRljvuLi095WKdSxPZKyXBJwlT1ECC4lufNJcok5Jexgbka8+sQ3eJr/JyYHZx5GS4xd
-X-Received: by 2002:a1c:814d:: with SMTP id c74-v6mr549011wmd.19.1541357579488;
-        Sun, 04 Nov 2018 10:52:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541357579; cv=none;
+Received: by 2002:a17:906:d194:: with SMTP id c20-v6ls2451876ejz.4.gmail; Sun,
+ 04 Nov 2018 10:50:20 -0800 (PST)
+X-Google-Smtp-Source: AJdET5f6mIpWFY1o32dLzzjjnrg8o9f+67Mx+3mdaI4LPXRRtK4DWIDpTPAB0hGW8rQRCSN0BeUu
+X-Received: by 2002:a17:906:558d:: with SMTP id y13-v6mr299187ejp.11.1541357420895;
+        Sun, 04 Nov 2018 10:50:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541357420; cv=none;
         d=google.com; s=arc-20160816;
-        b=zuK2vN+X4XdpTnway2ETRTD1mMCJIeHEgR7XdEM3nNHEDm2RePF81/dO7EafIYgzhe
-         tfDbGcKkYLXVGG8JR8rDM5bOcqocrFr0WUpPzpdV8CTPE0a4le7j51NXunoG3KSwAwL+
-         j/wF1F09w508NvAydeeDaS+3WArGBCmekSRiVfBcbixdtUFDtopo/DpsfB8QaBY5mKPn
-         kYpbQxwR8F8Gjd5eU40JCI0LNLMvdJCQqjigrK6fiG+a62egwbtMtyarvPj1CJGmKHAs
-         Np0fHgi+kURpGhBTENQQ4NWFkLqtIlbBcxn3jvKD9G4u+3jz8XNKYU7eM1Ix+yAV10OT
-         PQBg==
+        b=ao2yx09Qko80o0lfTA3ig6kJaxKcPtp+TO3mWjKIC0k7E+JOpgmVlPktEgDvVuOGYY
+         4kEsfbmrMpevwJn+pT9twL5c4lX7H23VZIt5Qmq6CjvFZBCGUGgTV0fCVvUt1Y/O24s4
+         OnEyZpoCZwSmTjh8ExfspUp0vV35p7tJWnMs0KwzGfJwXpeQG1PjQEUusJvm+9WW9PX0
+         +0Lx016sEu4t3DPwjQUmUKcrcaM7APw6Fi6zCemUtwaB/2qUanPcr+ZJ6i98iB7PnnmX
+         4ZF/w0Ponfsb3QqjZRHzu/1g+f2od4zoRlOsSUPr0eON+ui3uD7F03n8hzaV/FfalrPv
+         e6Mw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:user-agent:references:message-id:in-reply-to:subject
          :cc:to:from:date;
-        bh=QvKP4+TUkxKr3osSuAFcpXOw1BC0X7mCrLUdiwf63R8=;
-        b=ddbFn/4W6ruusQty9cdpVZeYOrXIIPgu0Ih7j4erx+Yc13+D4zCvkz+WE4cb+KnGUI
-         p9sgtzpcpGCvUdDUhcY0gUukCABsWtPZVt5SSqjO9KMShzG9B/neuCn2GLBp+y+d/MB6
-         xCR1LwpVyadNddAKCShy89Mp5tMXA1boGn+iB9h6vM0rStTRZZGc825Bviee3we7dAoR
-         99yathpYuz5R+O0qnnYuQce1AEvk1JYVHu4/l5+0nPMtnUo6LBUDPyYbFDaGzi8Q9+cz
-         9V1ISGQP51fFtNRwlm7rkQ4VPwm3VJP1oN5a2NOFfcz59p9kPLZHmtQ0Sr2LkdTEeOl7
-         THuA==
+        bh=Qp7CFXFq3DiiSePjp/Exyel/pQjg7KbBBu8UAkirDos=;
+        b=IC71zXHpYrDH7RjI9925S+ugTECQ7hhoEMRvAosMC94ukQGgq9sUuI77vvQAA56q0v
+         810EBDGq9H77SwLgXszUBYHFn7EJV6mxm/LV1gHM9IXzDsYXVF/IHAdIiojhWIhW/C+6
+         lV5Yx1nmqo3tWd2dGvt9P0yts9qCML2t60X4c4gyBaCKNWMwLZDxghBE3wPm3x3PTCd9
+         E5ibrlYsKFKGH1ObphQTGgoCNigaIyXb9+1bNeF4kjyexfuWhOKv4q93vWgRkCidJ9dc
+         kgdnUJKjs2MII6DQnQ+UvfSHJEJXeljnr0Kbdg8EdCF3JDlbqq7wxTVsHD5j/NyTCP8f
+         Ix4A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 Return-Path: <julia.lawall@lip6.fr>
 Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id n6-v6si714334wrj.4.2018.11.04.10.52.59
+        by gmr-mx.google.com with ESMTPS id n20-v6si742663edt.3.2018.11.04.10.50.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 04 Nov 2018 10:52:59 -0800 (PST)
+        Sun, 04 Nov 2018 10:50:20 -0800 (PST)
 Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
        spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.54,465,1534802400"; 
-   d="scan'208";a="354056753"
+   d="scan'208";a="354056698"
 Received: from 89-157-201-244.rev.numericable.fr (HELO hadrien) ([89.157.201.244])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 04 Nov 2018 19:52:59 +0100
-Date: Sun, 4 Nov 2018 19:52:58 +0100 (CET)
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 04 Nov 2018 19:50:20 +0100
+Date: Sun, 4 Nov 2018 19:50:20 +0100 (CET)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: "Bhagyashri P. Dighole" <digholebhagyashri@gmail.com>
-cc: Sasha Levin <Alexander.Levin@microsoft.com>, 
-    outreachy-kernel@googlegroups.com
+cc: Gao Xiang <gaoxiang25@huawei.com>, Chao Yu <yuchao0@huawei.com>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    Outreachy <outreachy-kernel@googlegroups.com>
 Subject: Re: [Outreachy kernel] [PATCH] staging: erofs: Fix alignment issues
  and warnings.
-In-Reply-To: <20181104184947.GA16811@bhagyashri-Lenovo-G570>
-Message-ID: <alpine.DEB.2.21.1811041951120.2360@hadrien>
-References: <20181104184947.GA16811@bhagyashri-Lenovo-G570>
+In-Reply-To: <20181104184153.GA16136@bhagyashri-Lenovo-G570>
+Message-ID: <alpine.DEB.2.21.1811041948210.2360@hadrien>
+References: <20181104184153.GA16136@bhagyashri-Lenovo-G570>
 User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
@@ -63,11 +64,10 @@ On Mon, 5 Nov 2018, Bhagyashri P. Dighole wrote:
 > as per the coding standards. Also, this patch includes fix
 > for syntanctical and logical errors.
 
-This is the same as the previous patch, but to a different recipient list?
-If th problem is that you forgot to include Sasha, it would be better to
-send the whole thing again to everyone, including Sasha, so that everyone
-sees any replies, and most importantly to explain under the --- why you
-are sending the same thing twice.
+A patch should only do one thing.  So this should be split up into a
+series of patches.  What are the logical errors?  If you are actually
+changing the semantics of something, then it should be made clear what is
+wrong and why the change represents a fix.
 
 julia
 
@@ -278,7 +278,7 @@ julia
 > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
 > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
 > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20181104184947.GA16811%40bhagyashri-Lenovo-G570.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20181104184153.GA16136%40bhagyashri-Lenovo-G570.
 > For more options, visit https://groups.google.com/d/optout.
 >
 
