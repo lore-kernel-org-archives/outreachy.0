@@ -1,134 +1,148 @@
-X-GM-THRID: 6889250886437044224
-X-Received: by 2002:a17:90a:aa15:: with SMTP id k21mr319740pjq.169.1604028718556;
-        Thu, 29 Oct 2020 20:31:58 -0700 (PDT)
+X-GM-THRID: 6620096919809032192
+X-Received: by 2002:adf:eed2:: with SMTP id a18-v6mr233956wrp.27.1541399089600;
+        Sun, 04 Nov 2018 22:24:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:b093:: with SMTP id p19ls2219506plr.2.gmail; Thu, 29
- Oct 2020 20:31:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyGWb78NCDp5mvyS+x9yw2MdhCDdS06z9cON85ZKiQdt4gh5iYYGAsoXiE+qT83sb66yaDU
-X-Received: by 2002:a17:902:8a8a:b029:d5:ab9e:1d5d with SMTP id p10-20020a1709028a8ab02900d5ab9e1d5dmr7057246plo.32.1604028716979;
-        Thu, 29 Oct 2020 20:31:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1604028716; cv=none;
+Received: by 2002:a5d:4302:: with SMTP id h2-v6ls5280422wrq.8.gmail; Sun, 04
+ Nov 2018 22:24:48 -0800 (PST)
+X-Google-Smtp-Source: AJdET5f5WBBDJI5DEzCdmrLp9GkN38UAbyjJ3XFYIoyZev9ffdL6bdUoGkAdkL+w30prFuAXshVE
+X-Received: by 2002:adf:eed2:: with SMTP id a18-v6mr233953wrp.27.1541399088860;
+        Sun, 04 Nov 2018 22:24:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541399088; cv=none;
         d=google.com; s=arc-20160816;
-        b=U6ipDaU9c5PMX+GoB8KoLJ5YpwGKM18dWLdDh3wLudhX7s9ChXyzs54XogldxR6cTW
-         McEWQpANESA3qm3uHqC7P7VK2PcS/ul1g0hfRSVOWoNekiqe1+NXev5KaKrRza5hPWNd
-         MTM+4WppK6UZLcAETPBSvuXXx5FQLu3fjqvS4s3Z1/mnWsW0ZrD2fyvO9Sr7JTEJBSqm
-         /Ko1+qn0lqNCNfkw4+GWOBrK/6fmPZA2diOfzur1W2Wos7ESUEV2iMuSVE5oP0YBj4Sk
-         ynBdS5XXuugMk1c1EDIpuqn3DjOoR2Pw2RRVXEQH5d1jLNFOdY0W7jimIC8PMzB8YJ0A
-         UTzg==
+        b=FKbTwOzJnkG+9myrT8m8ekKsH3y+kAa2p3fwhlMtuc0QPf2aEax6QJA+bimz3nqan3
+         eyf6xoHIJ3Gp3B4Pv0SSv/qMYLUcT1PueejawrryrYC14hf0OBaAgURjKvTxLnoVY1ZN
+         wXQm2qyWLxJ1iX5/WAN6OwbHs5WYMoe+Jr6qGFiFhVyJliblS7fOBMml6yLdnxcZYV2d
+         o4gZTaC35rsJGSptT0BCJDtrudzp8nizZJoad87dfDDTnDlF7LWbKqFagTZMBv0PVSCc
+         07jwLjHPQLEX9Iryx03u80YkGXOYetNggG2Le5a0zpCWuE0S9AzEWMm0Zm36bruVGS3d
+         3hPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=/T4zGmBDffm929p//CkvLaNebm6nyFAD9zUf2m9Khc4=;
-        b=nilWPi3bWMQNDEHrfhtm4W1ZMvJRgK8hTT5IYy70EshvXIju5rz2WzJ06lWhvXcWIV
-         i4pTSGu+rYkDbkuMV9aDltF0KeAm+H15CmFSzNWcIBGYy+sIA1JzzeHjIRMy+Hk4GgUQ
-         Gx1mbFEGKHCgPSRIfZcatbrSd1CpnEed+cimc9AngWrTvib1xdRxU6Ux+KYU8rzT1ECh
-         RrjHdgnYT8tWOT5QaTlYQq0UDgveHI72oKAMrB/29qUP1CoiagPvnuzHJV7fMEn76rPp
-         xPULASgPk1RhEUCJr7EiTiSf3jydqspdihEhBspvtfYVviY7sIm4PUk220oJzSxe7J5k
-         j1bA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=YImfyKgoYL11LxAWh2qEBfRncUkYo4DQTiMkDyXmFvg=;
+        b=H33KUZmYuo2WfdfQU1FgYhL+dy0FdmKCUzAMcbEI7Pdo7UjJbHAk4clWB3iqAt8WPe
+         Lpq7E3x5+8EPt9OqBAftGW63bLiO1x91kDFkWjx27vBote8945GXUA7GLOJ7qOE2XnkS
+         jJ8p33OUanc7AmaxnoN2nlR9X0D4zlSw5BUgB0rbngmRzd6srxaeMimxl+Ndv8fAr0M8
+         oN8WxqEdcgGX5J081GkohbXf0OI+MJkiZlTFKukVUqlPeOZZJ0cupinJuTHuswF9msnC
+         JsEvd47HngYOx+pBZf5iTKJUvKxvk98CnccIS9RKByFTYXQJNCY3RNRqC1+y9TbuZ1r2
+         zqgA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=X1UWJ4sP;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id t13si305927ply.2.2020.10.29.20.31.56
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id n6-v6si761336wrj.4.2018.11.04.22.24.48
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 29 Oct 2020 20:31:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 04 Nov 2018 22:24:48 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=X1UWJ4sP;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x544.google.com with SMTP id r10so4029983pgb.10
-        for <outreachy-kernel@googlegroups.com>; Thu, 29 Oct 2020 20:31:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=/T4zGmBDffm929p//CkvLaNebm6nyFAD9zUf2m9Khc4=;
-        b=X1UWJ4sPXdTWBIvP+F+d5R4n1cI/VqlbKPsD5DFU8zgNOzIuU0AC9ZGBu9xoK1nvc9
-         nLQpLTzbDXu6GLCZo8rs9F21QC1I/ouTPmpeh9aZRrsPJmQsdSz1mmWiVUDlJ2pxCFBQ
-         HsUC+ecXEg0DEsWwh1r1i7yZZrhGSZ3sVXc+21L8sIz1N0MiX+FBnYm9qRkgAol30CU9
-         gRgT+nzRfWjSCo4tfKtNOWkwE+WpXvnFmyjFz6L8aXVDOX+8DriE1vxyPtxNOs1NbTPq
-         K6vUU6cObxxoRI09vmq3cdOPXcYnXPouUZzw9wcZwy++N2E4Sx1IY1REOHmCj4ER+4Yt
-         K3Fw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=/T4zGmBDffm929p//CkvLaNebm6nyFAD9zUf2m9Khc4=;
-        b=WJhzpUIgmeNjawOx58bwrsY+ifr+KvEl6p4f1k4ld3C6QQAJ1d3muM7OJIrCIR/Cfl
-         HDG9KmkNnZcE7UUDWr+qBhP8+CWZ57dme/GmAhJJA+GSEn1JnlbJmA4l9ZKiyr8daevE
-         ZFTVijeGZ+uC5zoCBU+q1Il8Sw+n3xxBghyy9fAYkqfhCHBsvgoJrAmBHy0hcA+oGQG1
-         d8iV7xePFMstybxMeoj8V1u2q319Ep74uqLTgpeYJncIcnxNt93BfnwVkojQHFMY0BUV
-         aFPC7IrNMzyC91os97gf2p91yPP7KdZfjggncRm2GczmFfnPjFfvhPx/LiSUXcXeo0H1
-         gHoQ==
-X-Gm-Message-State: AOAM533vlpICFXpZWoOgAHx6U9/HVikiXaJDesnWVy4aZfaZb9p4usF4
-	MjKvowbyirxV2ignEZ82HVbopgJKMN4=
-X-Received: by 2002:a17:90a:ba8d:: with SMTP id t13mr376040pjr.38.1604028716631;
-        Thu, 29 Oct 2020 20:31:56 -0700 (PDT)
-Return-Path: <mh12gx2825@gmail.com>
-Received: from my--box ([103.98.79.70])
-        by smtp.gmail.com with ESMTPSA id b17sm3932152pgb.94.2020.10.29.20.31.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 29 Oct 2020 20:31:56 -0700 (PDT)
-Date: Fri, 30 Oct 2020 09:01:50 +0530
-From: Deepak R Varma <mh12gx2825@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	Guido =?iso-8859-1?Q?G=FCnther?= <agx@sigxcpu.org>,
-	Purism Kernel Team <kernel@puri.sm>,
-	Ondrej Jirman <megous@megous.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Sam Ravnborg <sam@ravnborg.org>, David Airlie <airlied@linux.ie>,
-	Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org
-Cc: mh12gx2825@gmail.com, melissa.srw@gmail.com, daniel.vetter@ffwll.ch
-Subject: [PATCH] drm/panel: st7703: use DEFINE_DEBUGFS_ATTRIBUTE with
- debugfs_create_file_unsafe()
-Message-ID: <20201030033150.GA275009@my--box>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.54,467,1534802400"; 
+   d="scan'208";a="354084881"
+Received: from 89-157-201-244.rev.numericable.fr (HELO hadrien) ([89.157.201.244])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 05 Nov 2018 07:24:26 +0100
+Date: Mon, 5 Nov 2018 07:24:26 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Bhagyashri Dighole <digholebhagyashri@gmail.com>
+cc: Gao Xiang <gaoxiang25@huawei.com>, Chao Yu <yuchao0@huawei.com>, 
+    gregkh@linuxfoundation.org, Sasha Levin <sashal@kernel.org>, 
+    Outreachy <outreachy-kernel@googlegroups.com>, 
+    linux-erofs@lists.ozlabs.org
+Subject: Re: [Outreachy kernel] Re: [PATCH v2 1/2] staging: erofs: Modify
+ conditional check.
+In-Reply-To: <CAOMPgjjF3_JYc6H8FuMXXmNHov30uxy2N+ZtTTtVhSxzmbsnFQ@mail.gmail.com>
+Message-ID: <alpine.DEB.2.21.1811050721560.2654@hadrien>
+References: <3db6ea6f3a7b1fab94e5dacc1ec4a026e38548c2.1541394756.git.digholebhagyashri@example.com> <5d7fc290-08ad-0c83-d030-de255de81c47@huawei.com> <CAOMPgjjF3_JYc6H8FuMXXmNHov30uxy2N+ZtTTtVhSxzmbsnFQ@mail.gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: multipart/mixed; boundary="8323329-421853641-1541399066=:2654"
 
-Using DEFINE_DEBUGFS_ATTRIBUTE macro with debugfs_create_file_unsafe()
-function in place of the debugfs_create_file() function will make the
-file operation struct "reset" aware of the file's lifetime. Additional
-details here: https://lists.archive.carbon60.com/linux/kernel/2369498
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Issue reported by Coccinelle script:
-scripts/coccinelle/api/debugfs/debugfs_simple_attr.cocci
+--8323329-421853641-1541399066=:2654
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
----
-Please Note: This is a Outreachy project task patch.
 
- drivers/gpu/drm/panel/panel-sitronix-st7703.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/panel/panel-sitronix-st7703.c b/drivers/gpu/drm/panel/panel-sitronix-st7703.c
-index c22e7c49e077..89b71d4f810d 100644
---- a/drivers/gpu/drm/panel/panel-sitronix-st7703.c
-+++ b/drivers/gpu/drm/panel/panel-sitronix-st7703.c
-@@ -502,15 +502,14 @@ static int allpixelson_set(void *data, u64 val)
- 	return 0;
- }
- 
--DEFINE_SIMPLE_ATTRIBUTE(allpixelson_fops, NULL,
--			allpixelson_set, "%llu\n");
-+DEFINE_DEBUGFS_ATTRIBUTE(allpixelson_fops, NULL, allpixelson_set, "%llu\n");
- 
- static void st7703_debugfs_init(struct st7703 *ctx)
- {
- 	ctx->debugfs = debugfs_create_dir(DRV_NAME, NULL);
- 
--	debugfs_create_file("allpixelson", 0600, ctx->debugfs, ctx,
--			    &allpixelson_fops);
-+	debugfs_create_file_unsafe("allpixelson", 0600, ctx->debugfs, ctx,
-+				   &allpixelson_fops);
- }
- 
- static void st7703_debugfs_remove(struct st7703 *ctx)
--- 
-2.25.1
+On Mon, 5 Nov 2018, Bhagyashri Dighole wrote:
 
+> Thanks Gao. As per discussion in previous mails, I thought we need to submit
+> one change at a time in a patch that's why I modified accordingly. As you
+> suggested it makes sense to fix all similar issues at once and create a
+> single patch for those issues. I will update patch accordingly.
+
+Sorry for not being clear.  It is one kind of change at a time.
+
+julia
+
+>
+>  Thanks 
+>
+> On Mon, Nov 5, 2018, 10:58 AM Gao Xiang <gaoxiang25@huawei.com> wrote:
+>       Hi Bhagyashri,
+>
+>       On 2018/11/5 13:13, Bhagyashri P. Dighole wrote:
+>       > Found issue using checkpatch.
+>       > Use ! for NULL test rather than explicitly comparing to NULL.
+>       >
+>       > Signed-off-by: Bhagyashri P. Dighole
+>       <digholebhagyashri@gmail.com>
+>       > ---
+>       >  drivers/staging/erofs/data.c | 2 +-
+>       >  1 file changed, 1 insertion(+), 1 deletion(-)
+>       >
+>       > diff --git a/drivers/staging/erofs/data.c
+>       b/drivers/staging/erofs/data.c
+>       > index 6384f73..a671ad4 100644
+>       > --- a/drivers/staging/erofs/data.c
+>       > +++ b/drivers/staging/erofs/data.c
+>       > @@ -240,7 +240,7 @@ static inline struct bio
+>       *erofs_read_raw_page(
+>       >               bio = NULL;
+>       >       }
+>       > 
+>       > -     if (bio == NULL) {
+>       > +     if (!bio) {
+>       >               struct erofs_map_blocks map = {
+>       >                       .m_la = blknr_to_addr(current_block),
+>       >               };
+>       >
+>
+>       Could you please fix pointer comparisons to NULL all in once?
+>       at least for a specific file (eg. for the staging/erofs/data.c
+>       only)?
+>
+>       It is somewhat weird to just fix one place only of data.c +243
+>       as above,
+>       this is my personal suggestion...
+>
+>       Thanks,
+>       Gao Xiang
+>
+>       --
+>       You received this message because you are subscribed to the
+>       Google Groups "outreachy-kernel" group.
+>       To unsubscribe from this group and stop receiving emails from
+>       it, send an email to
+>       outreachy-kernel+unsubscribe@googlegroups.com.
+>       To post to this group, send email to
+>       outreachy-kernel@googlegroups.com.
+>       To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/5d7fc290-08ad-0c83-d030-
+>       de255de81c47%40huawei.com.
+>       For more options, visit https://groups.google.com/d/optout.
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CAOMPgjjF3_JYc6H8FuMXXmN
+> Hov30uxy2N%2BZtTTtVhSxzmbsnFQ%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-421853641-1541399066=:2654--
 
