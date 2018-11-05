@@ -1,106 +1,91 @@
-X-GM-THRID: 6808044843867045888
-X-Received: by 2002:a17:90a:7182:: with SMTP id i2mr1792817pjk.74.1585121463113;
-        Wed, 25 Mar 2020 00:31:03 -0700 (PDT)
+X-GM-THRID: 6620120308618625024
+X-Received: by 2002:a02:9914:: with SMTP id r20-v6mr18534562jaj.23.1541426769100;
+        Mon, 05 Nov 2018 06:06:09 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:1853:: with SMTP id 80ls919268pfy.11.gmail; Wed, 25 Mar
- 2020 00:31:01 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvqxJDqSulfgxkWFCGkjQcn99CqrSwSzHqAeB4KjHvNLt6iw/vzld/KRRGTHOGR/IwdiBut
-X-Received: by 2002:a65:4081:: with SMTP id t1mr1928282pgp.134.1585121461341;
-        Wed, 25 Mar 2020 00:31:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585121461; cv=none;
+Received: by 2002:a6b:c301:: with SMTP id t1-v6ls7976694iof.8.gmail; Mon, 05
+ Nov 2018 06:06:08 -0800 (PST)
+X-Google-Smtp-Source: AJdET5exX1jtFjXToy9ntYPlaNV9eGuBVhuDL7HJjiCZAiHruMouZXLuJpCxdkbHvH4gnHJxdDbv
+X-Received: by 2002:a6b:691c:: with SMTP id e28-v6mr17194677ioc.25.1541426768260;
+        Mon, 05 Nov 2018 06:06:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541426768; cv=none;
         d=google.com; s=arc-20160816;
-        b=FmMJlB81ELOcStkpnbndF0twoAv5J33EVN+rJz93T41vpydyX3e7eyA7sVxk0a1YzR
-         fqajf4kbjwB/saicza0DFxzPvH4q4xb/Pz2YRX6lKzpnnge55q8Ej9CVbmDKL+YbdDNi
-         XO3JaSEbkGf7Y8NrkFLJnWfQCeo6cY8YJ0DlLumi5GiOz4nIQbsftjy4ntYYNVtj4Nwr
-         BWcBh9FTCPFQomk+v35luSqeTOF4jma1SxOlcM9gRqD8Yss/GyVlmvQZMyN21n46lPqz
-         rMUzta0OZogOmd1IXNZBojCL6O8caIcZSOGvlX9VRkBmPRjkh70BU/UQSaqIz/M4mC01
-         O54Q==
+        b=xbhdzrBOtzpbLFw99ibY+e2311h0go5WdcTBOUJZHU9RE3DT2Njr9eL9ZhIhEO+kew
+         3JPJr5A56VO2r3uRyt/fI8Hp+5JDMlaCZ6M5Q83PUCT302JtEWZWseHlAKCCsndrBSq5
+         m0ZOSmsMj3e1radT0I8wEH0pD3UaXopy/Xcu/4LOI6ClnujYjX0XmS5NZcqJUtndWuLZ
+         fTXLa7zoG4bNZo2PUc/GCE1mOgCTk7uEqnnpi9bmMkdCGPYOcoyZHUkqTDvmLZnM6XGd
+         K7yJCF7jdySQAG15WnffzlUQLp0wAb7RqoVwBn62ov/LMKiPCzIGjxDkCKeg5nDm7va6
+         hMKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=I+3yqbTV58Mhx/4oyhMJJep+cvPGOp5j2CMrv4j4VQE=;
-        b=Q6XdA7bZ4TT5C3Se8pl/GKjqvyTspbwnEyyWn1uWtsxps25X56iokrwfSpKzou01jX
-         lP5WNnAgAYsX1X4LfFiWL7w6YEZZB51BEYiHtrkks7XbuWRAqKA3eY+JvdHp5CDbIUV2
-         FCEXsm+Wm7kw1FuHV9se/GamNqE3YWNGovSxMDZM6GQhOZhc0nopf+Esrism1m7CsQlB
-         +CyO8qWAXfbVrok37jA4QuBcZGi6meh0AMPUkfbu+pqFpLEKVV95RXdEMAvPfpaaG2IM
-         pgcgp2L2ABYTqt427/s/mcLqEY6ZCEQH4NMNybEDbgi8YYgVw8/1mG36puKiym0coxlJ
-         2Uyw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=S2fVUJ1tqa52JDZcaHYxrZKdYTtPfiWxUGB/5jlyap8=;
+        b=nkpJ5LEvew4/JB9FQWub6+NMnjyY+c4KC9Q2FdE8LzZFsu3DlbLXS1/Lf4YgXOvXHC
+         R3FPClXod6Qz8ctwbuo3tzqTauAkqS8cR0KijN9/b0s5BBUQCtZV84ajIm9tjl/D4pPb
+         tHYJ3pEOmiMEtLGdYjft3W1qiSa4tjji9OXbjow0jvMDYXVopu2KO/Mi4rM4gLnSQkl4
+         +xoBb/+gYb19g4JErUuwidpum05bhNnUmxVTV+NmlKWxez99ALzBXetbAauZTGrFTPkT
+         CzNn8fNEDCUAb7r1yh4cMX3GDJ15IxpMmxz9H+NMUXzVq4LCPBTQWDZJ/X1OMLFC0Ueo
+         0cNw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="SkpAI/mz";
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <debsoumyajit100@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id f8si337452pjw.3.2020.03.25.00.31.01
+       dkim=pass header.i=@kernel.org header.s=default header.b=E4wIZnVa;
+       spf=pass (google.com: domain of srs0=afov=nq=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=AFoV=NQ=linuxfoundation.org=gregkh@kernel.org"
+Return-Path: <SRS0=AFoV=NQ=linuxfoundation.org=gregkh@kernel.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id b133-v6si387223itc.3.2018.11.05.06.06.08
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 25 Mar 2020 00:31:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 05 Nov 2018 06:06:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of srs0=afov=nq=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="SkpAI/mz";
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id d37so236673pgl.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 25 Mar 2020 00:31:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=I+3yqbTV58Mhx/4oyhMJJep+cvPGOp5j2CMrv4j4VQE=;
-        b=SkpAI/mzUDKmCmiQoV+HRAy8NFxcbWo8yxrnmI9kgLsjaBwj0xpbIyevOR6QT/y2dk
-         mu/34Lyz4nUb4g9LpnVccylAKYJGneNoDhA2ZfiLU0BV9UB57cOUR8/sFz309rUBrvk+
-         Qb6Ia2eZVM+E2/Vm/IiMdKL9JN3f64zwadKOvMvT68o3Nol2aEqKTCUbFag9HmclFhRD
-         MTQinjrbDhytfUoMMGYEVGEUcI6RRjopOCZ1OOMLnB/CR9QYFew/9ZCJncLel1LqO1zz
-         /Z3W6rQFKzl8+qeKm5iPxCPshnDZfwjAU4+tz8TuagRfmhy70gdConUvkIY4QA5j1HdI
-         ob7Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=I+3yqbTV58Mhx/4oyhMJJep+cvPGOp5j2CMrv4j4VQE=;
-        b=hosoJTErBUZdX8/gn09IYJwJUWpybA5URcQgNSvhNWE5z6uPoHG2C7m43QIemE1DHH
-         TkBJz6H6RN1bMNCpu39QSRHBKOe6V6BQ/q+be/zH9i4TXYlqsOcLMGyjGND/6ixcK5Rv
-         vffb0qyhDFQbIbVJChes9XhYC2FTU2Ae77xqFQV1UcByC7vqDkzTy4FBEP50PafS2mm6
-         37i1i/vune1PUoclAnL/frDO5uXxn1RgIhPDRrJHsGcOONJh0OGA9ULlxRANc68gF8L9
-         oe5RHIewOIKd9HbhSxIsRj9gsTSr7NdOEH1MVw1ZZRBwDDjDVQBeJBWzcieDPqVyzT4l
-         MpCA==
-X-Gm-Message-State: ANhLgQ2DVdujzrRfOkph/Hl86iuNixbOirPz5nhrJ38h98URExsluH5U
-	9DGhgMS4RVL0Nmgw+6eI69fdi7bZTP8P0qjD
-X-Received: by 2002:a63:1d7:: with SMTP id 206mr1598400pgb.99.1585121460198;
-        Wed, 25 Mar 2020 00:31:00 -0700 (PDT)
-Return-Path: <debsoumyajit100@gmail.com>
-Received: from localhost.localdomain ([47.29.229.149])
-        by smtp.googlemail.com with ESMTPSA id m11sm3896670pjl.18.2020.03.25.00.30.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Mar 2020 00:30:59 -0700 (PDT)
-From: Soumyajit Deb <debsoumyajit100@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	perex@perex.cz,
-	sbrivio@redhat.com,
-	Soumyajit Deb <debsoumyajit100@gmail.com>
-Subject: [PATCH 0/6] staging: hp100: Remove spaces and extra blank lines
-Date: Wed, 25 Mar 2020 12:58:59 +0530
-Message-Id: <20200325072905.29066-1-debsoumyajit100@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       dkim=pass header.i=@kernel.org header.s=default header.b=E4wIZnVa;
+       spf=pass (google.com: domain of srs0=afov=nq=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=AFoV=NQ=linuxfoundation.org=gregkh@kernel.org"
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 08C9E2081D;
+	Mon,  5 Nov 2018 14:06:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1541426767;
+	bh=TFZWujfYs6i5xotyTRHhfwvE8B585O5ltRFHxsCa6EY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=E4wIZnVad3fjF0UIx0FNltP5HxYD3rnbEEhB77o42gMOeLrqwpXDmLdbg/exk3Ygb
+	 DaOvAdcbWT41rKdO1OLCXFILOVZ3odgjoCcOPgBLkB63Qw/zXf9ebOveXkmowD3vRd
+	 6E+abzI+zkQMUucaF+s/X8lBZ2HUF9hLW4OWgm9E=
+Date: Mon, 5 Nov 2018 15:06:05 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Ioannis Valasakis <code@wizofe.uk>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH 2/2] staging: graybus: match open parentheses
+Message-ID: <20181105140605.GB20480@kroah.com>
+References: <cover.1541366816.git.code@wizofe.uk>
+ <03e7603e693aaf17879365814b2be3e5b9765eba.1541366816.git.code@wizofe.uk>
+ <20181105135314.GC9626@kroah.com>
+ <20181105135904.GA15852@kvasir.local>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20181105135904.GA15852@kvasir.local>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-This patchset properly indents the multiline comments, add blank line
-between end of multiline comment "*/" and function definition, correct
-typo in comment,remove space after * in pointer declarations,add space
-after "," in function arguments and remove space after opening
-parenthesis "(" in if statement for the same file hp100.c present under 
-drivers/staging/hp directory.
+On Mon, Nov 05, 2018 at 01:59:04PM +0000, Ioannis Valasakis wrote:
+> On Mon, Nov 05, 2018 at 02:53:14PM +0100, Greg KH wrote:
+> > On Sun, Nov 04, 2018 at 09:28:06PM +0000, Ioannis Valasakis wrote:
+> > > Match open parentheses by indenting.
+> > > Reported by checkpatch.
+> > > 
+> > > Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
+> > > ---
+> > >  drivers/staging/greybus/es2.c | 2 +-
+> > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > Ah, this is the 2/2 patch, it didn't show up in my searching as you
+> > mispelled "greybus" on the Subject: line :(
+> Oh, I am sorry about this! Do you still need the whole series of greybus
+> to be send as a patchset? thanks 
 
-Soumyajit Deb (6):
-  staging: hp100: Properly indent the multiline comment
-  staging: hp100: Add blank line between end of comment and function
-    definition
-  Correct typo in the comment
-  staging: hp100: Remove space after * in pointer declaration.
-  Staging: hp100: Add space after "," in function arguments.
-  staging: hp100: Remove space after opening parenthesis "("
+Yes, all of the patches have now been processed by me, so if I did not
+apply them, please redo and resend.
 
- drivers/staging/hp/hp100.c | 33 +++++++++++++++++++++++----------
- 1 file changed, 23 insertions(+), 10 deletions(-)
+thanks,
 
--- 
-2.17.1
-
+greg k-h
 
