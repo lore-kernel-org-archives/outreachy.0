@@ -1,67 +1,64 @@
 X-GM-THRID: 6619842705607360512
-X-Received: by 2002:aca:5101:: with SMTP id f1-v6mr9189972oib.23.1541399750625;
-        Sun, 04 Nov 2018 22:35:50 -0800 (PST)
+X-Received: by 2002:a1c:f912:: with SMTP id x18-v6mr685848wmh.11.1541399137673;
+        Sun, 04 Nov 2018 22:25:37 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:3f06:: with SMTP id m6ls4162780otc.7.gmail; Sun, 04 Nov
- 2018 22:35:49 -0800 (PST)
-X-Google-Smtp-Source: AJdET5fw6XewcyeutQNftAzs/E6WpYL8bd/QIlIcwZE2ssNvvZGwRHmLCTLgC31e+KVv/3jYb2Cl
-X-Received: by 2002:a9d:3d21:: with SMTP id a30mr15875508otc.26.1541399749430;
-        Sun, 04 Nov 2018 22:35:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541399749; cv=none;
+Received: by 2002:a5d:5651:: with SMTP id j17-v6ls1346525wrw.28.gmail; Sun, 04
+ Nov 2018 22:25:36 -0800 (PST)
+X-Google-Smtp-Source: AJdET5e2k73maEeCWGd1PspZIRJc4tLE0Jg59OHNTZp5JksptsrhVxdZednvMtZw15rsWbxOJ+6g
+X-Received: by 2002:adf:fb0c:: with SMTP id c12-v6mr2003053wrr.22.1541399136895;
+        Sun, 04 Nov 2018 22:25:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541399136; cv=none;
         d=google.com; s=arc-20160816;
-        b=T3QLzXuBpq5BZNtgtWmqgmHvuEK42GLJ/jEfI9aRTmecky0xl6QzekZJJj+hU7ffEY
-         8DjCCnsOVHcUSAi4HATWRR4SsmDsp13ILnabCRzYsWppQF8wQMr+11vgOJv+VnBdTjJK
-         asj3il1wHbO/wYt/iuxhagXOYBpl9q1He19TjL0zCmBK1l5h/cLUOBaF2kcnD3so1wn7
-         iefBLZxzNpb9fEn7silv0+XRw9qQQRfR1eZ3wlgA4VM57vsuMIVgJNNJ+fVbQt2AbTIo
-         AzBBhUQe/AfrgqA1wyCirH0J7rIO0IJLVZbmpbdVcUb96dAIos7j/9FQGlPEXYi4K7+a
-         h85w==
+        b=Lh7LxPFrAWcdbxlJW/jhAcOWWgFn8nv7r6Hfmr3hSzg7E3LP8Qzi3yzeqoK3sJaz7H
+         HD08nBiP0CXC/JHJF29vRkb3yG+eVOrdzoeGHZ+TynT42shoJn/SjMFah6CUigpSxCWV
+         5PPv2wwSFlAU7qWaYGJon0+yyggkeXi/hjZXNRjcp0yrT0fs4cjWvYBmEiyj1saBWVMz
+         Y8u8jqcr4tY3pcWZMOndJoxGHmau1UeE5S+QWr/HlPJRj1+6Vh5A8Rh+rUMJfR+bN4qa
+         KLgUvlOXHlA4/H6llsmwisDtGb4ZSy8FQJ4I3ZuTZLMnNP6xL9FLcKLV8StBPbaOl0Vo
+         jQsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version;
-        bh=ju5dqHelmgtPNGD3ZntPoAcc+PRMNqsgSk7J/Yuz2YY=;
-        b=BQ3wx9ZoH5nCm86t+jseFDcQxnIXdVEfp9PWH0USap0DLuD7EOSJZLa4jri8MQZHjM
-         rhp1AxqiiBwtrAChAvN/55oXDsJsCcvOxGs5rxe4AP0JPcD1xsRi76FYe72w8IvGcMcI
-         0nTT1xOKdN5+qJi92DmyLV9Yuaynets/b+9OYssy4c3YuN+ElGr4KzRqZOmu0aDq49Ge
-         xdfGJsxnevZt6+cQQf0xaooihCmLxzIUUHHe8Z+Z5pq5VYvjMVcYJQe7ncub3yWUWiva
-         L/7TE1keq+CKkWXnrIJndhupr4AEGwIKKccsJBBhPHz1lLswfjz81FNbE2G7l8TweuG6
-         xigg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=SJKbIS19heE+O3DImzVjL6t6jhgfUsd3JlU2Rrg6Jww=;
+        b=jXorSOp9O0+HjbGIO1PgVKZIOf2k44Y/Ob2c45Innnq4H+RkMPNIbKQdrlX7hBpGR3
+         vLbMqtAmVybSjALGunsEXe0kNbxvlv9oZhzNtNivOy3JHv8YRuDsmIqPV/ZelqHOOWkM
+         Gvwfl7BiotoQW/eDJnLxk5vSI5gM+gOHBbTI3Npu6f48figlRwG0FTB2lSPpOPgKtC71
+         bJOts8DCEGzXQU42vysMFhl0n1dzCp7jjrDz8d/MyCUzlDYt+3x3swx+NwAwDJmnqWAi
+         SkJf+73nyXNDSCsoDRFcCCDymMn7unhWt/yqq/FL/Fn5u+m7nZ0dzL1e1ZFf0s2yqTpd
+         EN6w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.238 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
-Return-Path: <vthakkar@vaishalithakkar.in>
-Received: from p3plsmtpa09-09.prod.phx3.secureserver.net (p3plsmtpa09-09.prod.phx3.secureserver.net. [173.201.193.238])
-        by gmr-mx.google.com with ESMTPS id g9si52629otk.0.2018.11.04.22.35.49
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 204-v6si338655wmw.3.2018.11.04.22.25.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 04 Nov 2018 22:35:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.238 as permitted sender) client-ip=173.201.193.238;
+        Sun, 04 Nov 2018 22:25:36 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.238 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
-Received: from mail-wr1-f50.google.com ([209.85.221.50])
-	by :SMTPAUTH: with ESMTPSA
-	id JYUFgdKMYqFgMJYUGgoDaV; Sun, 04 Nov 2018 23:35:48 -0700
-Received: by mail-wr1-f50.google.com with SMTP id z13-v6so5728247wrs.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 04 Nov 2018 22:35:48 -0800 (PST)
-X-Gm-Message-State: AGRZ1gKZO0fGnMVPzlX768DbiOCiWcNQbPv/sR9mQ7ybWqZ/hqy9h9Ql
-	ZmswZMb/sORJdLqdsQms9pO2OhoZLWJb3Fl1Wjw=
-X-Received: by 2002:a05:6000:110b:: with SMTP id z11mr17581518wrw.136.1541399747339;
- Sun, 04 Nov 2018 22:35:47 -0800 (PST)
-MIME-Version: 1.0
-References: <CAK-LDbJoMEKgjyyion0O6RWn3p4j04mwupEwY7CK1wZqJWkd3g@mail.gmail.com>
- <20181105055411.GA2334@k-vBox>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.54,467,1534802400"; 
+   d="scan'208";a="354084954"
+Received: from 89-157-201-244.rev.numericable.fr (HELO hadrien) ([89.157.201.244])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 05 Nov 2018 07:25:36 +0100
+Date: Mon, 5 Nov 2018 07:25:36 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Maya Nakamura <m.maya.nakamura@gmail.com>
+cc: Vaishali Thakkar <vthakkar@vaishalithakkar.in>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [Announcement] Outreachy application
+ reminder
 In-Reply-To: <20181105055411.GA2334@k-vBox>
-From: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
-Date: Mon, 5 Nov 2018 12:05:33 +0530
-X-Gmail-Original-Message-ID: <CAK-LDbJx-ChyexGjOBhkqBicagxznh+uNoG3K2QFZnCLmGN+JQ@mail.gmail.com>
-Message-ID: <CAK-LDbJx-ChyexGjOBhkqBicagxznh+uNoG3K2QFZnCLmGN+JQ@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [Announcement] Outreachy application reminder
-To: "M. Nakamura" <m.maya.nakamura@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Content-Type: text/plain; charset="UTF-8"
-X-CMAE-Envelope: MS4wfJ3rrm+FzAe76nQZnSmxCfb9+t7wanQZR08LRlAaNa80HxaPx64MyVip/nXtV7QFoGEKUY3RvWrW074BXB5nMOcM4uZQhC8TKLvT5KCOYrhKum3GCIR3
- GaVb2COpckJZ1T0ROk+inHB2B0iB2svNhh7Crwj44/2kBQWCUJwqnVd8FF2dOLW/ZfjSA3N5QUalWwam+AeSBzc0Zs21N2iQvl8=
+Message-ID: <alpine.DEB.2.21.1811050724580.2654@hadrien>
+References: <CAK-LDbJoMEKgjyyion0O6RWn3p4j04mwupEwY7CK1wZqJWkd3g@mail.gmail.com> <20181105055411.GA2334@k-vBox>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-On Mon, Nov 5, 2018 at 11:24 AM Maya Nakamura <m.maya.nakamura@gmail.com> wrote:
->
+
+
+On Sun, 4 Nov 2018, Maya Nakamura wrote:
+
 > On Sun, Nov 04, 2018 at 09:00:13AM +0530, Vaishali Thakkar wrote:
 > > Hi All,
 > >
@@ -93,12 +90,11 @@ On Mon, Nov 5, 2018 at 11:24 AM Maya Nakamura <m.maya.nakamura@gmail.com> wrote:
 > Am I right that I should rank the projects that I am applying for to
 > answer the question?
 
-Yes, you need to submit a separate application for each project.
-What you can do is under the question I mentioned above,
-you can just say that this is your 1st preferred project and in
-the other project you can write that it is your 2nd preferred
-project so that we know which project you're most interested in.
+Please do that.  Otherwise, there is no way to know which you prefer.
 
+julia
+
+>
 > Maya
 >
 > > --
@@ -114,4 +110,5 @@ project so that we know which project you're most interested in.
 > To post to this group, send email to outreachy-kernel@googlegroups.com.
 > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20181105055411.GA2334%40k-vBox.
 > For more options, visit https://groups.google.com/d/optout.
+>
 
