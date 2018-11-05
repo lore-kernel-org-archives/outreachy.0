@@ -1,96 +1,92 @@
 X-GM-THRID: 6620347424824098816
-X-Received: by 2002:ac8:32d6:: with SMTP id a22mr9866173qtb.58.1541444639989;
-        Mon, 05 Nov 2018 11:03:59 -0800 (PST)
+X-Received: by 2002:a0c:95d2:: with SMTP id t18mr18094163qvt.3.1541444320070;
+        Mon, 05 Nov 2018 10:58:40 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:ad35:: with SMTP id u50ls12603527qvc.8.gmail; Mon, 05
- Nov 2018 11:03:59 -0800 (PST)
-X-Google-Smtp-Source: AJdET5eGQYOloxS6mtFMKKdbrM3EmQRktdguv3I+912DLsc3eVSgdHuCwU/ncmYlWLhxGsi8yeEP
-X-Received: by 2002:a0c:9252:: with SMTP id 18mr18366408qvz.37.1541444639320;
-        Mon, 05 Nov 2018 11:03:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541444639; cv=none;
+Received: by 2002:ac8:21a1:: with SMTP id 30-v6ls3253036qty.11.gmail; Mon, 05
+ Nov 2018 10:58:39 -0800 (PST)
+X-Google-Smtp-Source: AJdET5ceQbKEs73oMm/jFUgTStISQmetAvZP0HN6XQ/DHwl7Df7q8zzDIN34TVYW/fAXZJNmE5FW
+X-Received: by 2002:ac8:17e6:: with SMTP id r35mr1366014qtk.45.1541444319428;
+        Mon, 05 Nov 2018 10:58:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541444319; cv=none;
         d=google.com; s=arc-20160816;
-        b=mcE6IJ1BdZNue4aGn7pSO3MhRRjeRi7/uP8zDRuLSrwPahfv94+5cLVdNqt7dlyPmc
-         hKQU4VHm0FjTwYS0sOEXWjPtVxiE+GicyQSgWVZUynkVyGpNP9kEbM+c8lnBtv3Ka38L
-         w83C9hOXZgDHAfl2BZG61VhMZCd5KPu4YbHrwnZ6rHaS4hA8qx0X9gk7JoDrdEZCfITr
-         TLUTXChWraDezspA6RGzxVe75fO5dVkbgwxCs5VUWyhea9t5HKhsZVKLUabPCL0yWbsM
-         ChLwIh2KtAJftjTqnK28PGYhSs+eupaGfZQsNMBndADesInVjD5ugGz9h50SA9E+XsiF
-         FwZw==
+        b=kOqmJFhkmLt4/fJM8aNHpXHzA5uQMdlGQ95ltmHL1qo8ZuOagufrWYFX0KqtDpPuHW
+         tYolypiQsz2WaGQ/hTKWXHrVowAK/iCfdA57gGaIERbwHzL2M914rLLaMR1bQcWacEH0
+         5qoSIaNPhNuVU1xma7L/LgfduxSVJmJ1w3vlTEMqwDpCV4MLp9NzavB2+XNQHzY3Tu7i
+         28xqfMq+6cduSK6STuQmqBGPSSHEUuTwMYaUQ5RSmeKqdUwq3HXVn83RTS6q3opRcU3k
+         7dMNHut94z6667ZfZQrPs2IupKqWeMOEF5qi2Nn6fHuvJ/tRleqW0xjzos4x85jn6Lqk
+         j/eg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=CQqnRnu8sYCOvKn17Iakg6ozsgKiTy231yFJd/iW/Yw=;
-        b=S+BOpcbGVpj8aCUEKjMEMYBAOft9eUAQrWY/iRYCm0DBa08d8k01sNYg0EVCJjlvab
-         Hkv8Ysh88jijynxRoMikN48zKJNmaP1qxaCFf8gF4LUdSeRuvIEFEs00SOg4YBN4kpjf
-         +rFx7MZUErf99QloJPqZ2vqOtbUaX0jqUXOKwbcXr16LMu7RZOyHFFCsdpAZnRIf0388
-         y/pKCZJsyPKyS7KtkJaOKYS1WxP1u02vmRqaKLMC2nKDn8vrT+NC7ChQeo1vJu1l8fi0
-         xyMnXwSmYdve6YO3GhFAhgWPCvYfiMhOsilY4nQqDekAstDd4tZ0BHG5luVVO8dQAnYt
-         WwdQ==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=gdbXomgk+MZ0t7+v9BT7kwYAKFTBAo19asR+YaFYeM0=;
+        b=YOgz3M6vBy8Xds+BuhstsnUbwRZIM8XkFZOtqzRBDse8Xx3/EOU44pAOCvI7pyQ0Pm
+         135qWV+yIFK/pipsQlvpSdIRxuSk6fcQuezte1Mk+AJVsljeZ6yTKoEaOXrZqfSM/iaQ
+         QPGQ2Ssja53is5aE20YK1ijl0CF9fLXLFZQtsQwUAbi/8plgI37BRVdoUpZuAhPNWhNJ
+         XBxF+XtctRbyu4beiAe7/4TFx6Wy0EpLCUKQo+8UGD/qQy4710CtEx9gktK7h8Au3dh3
+         evRgK5abzK3FyiDGv73XD7xNBoyxgnda0nEBiCYBSOXwWAYEDc2zlpa6fDTsRNoRKpaj
+         t3FQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Hd2w3HoO;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="EK/8ns0t";
+       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::436 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <digholebhagyashri@gmail.com>
-Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
-        by gmr-mx.google.com with ESMTPS id k8-v6si2197654qkg.3.2018.11.05.11.03.59
+Received: from mail-pf1-x436.google.com (mail-pf1-x436.google.com. [2607:f8b0:4864:20::436])
+        by gmr-mx.google.com with ESMTPS id s34si331417qtk.1.2018.11.05.10.58.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 05 Nov 2018 11:03:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
+        Mon, 05 Nov 2018 10:58:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::436 as permitted sender) client-ip=2607:f8b0:4864:20::436;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Hd2w3HoO;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="EK/8ns0t";
+       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::436 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x442.google.com with SMTP id r64-v6so4857754pfb.13
-        for <outreachy-kernel@googlegroups.com>; Mon, 05 Nov 2018 11:03:59 -0800 (PST)
+Received: by mail-pf1-x436.google.com with SMTP id r64-v6so4850901pfb.13
+        for <outreachy-kernel@googlegroups.com>; Mon, 05 Nov 2018 10:58:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=CQqnRnu8sYCOvKn17Iakg6ozsgKiTy231yFJd/iW/Yw=;
-        b=Hd2w3HoOtX7KBbUiZdF6RZQN+oeNF6ocPsMsyPGOx/yiMPrZoI6j4mo/caO9laBhhE
-         u3R6dzGGSawtPExGzwsuEVLNLbx9BygjL83nllb9c8TDh8Rp5YW+GPTtbZsBGOzCduh2
-         6ssFeC/ZlImst11du8L6P7Pv/SUOrgGPSiQR2P+9urNwNwQAlMPwOLHTR/7i72Hy0PwJ
-         weqoh++ZVq0cXJpT2mvR6tXqFOtP4me0E1xmAOri8y3oEuJhF/0IJTjik4MbI409qoPL
-         NpQH9t1IeTH4EuUSlXMTjv5R4JB5C6xNl5F3bGS55oEbJ1Zt//cLXQHHbjiUEVjr/B1c
-         9L7w==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=gdbXomgk+MZ0t7+v9BT7kwYAKFTBAo19asR+YaFYeM0=;
+        b=EK/8ns0t8S6T7pC1u7YRsZ39xjMp50EXAfN8FUQAQk6x6ejU1MAJWqlPb3vtq/dxp8
+         fZn2N34HQXq72iRSddTwU187itQ3iNsj0ZDV9OAA2NIsaPRc8iJ6AJbzarjTfekq49LS
+         yOW6x3RIEtAz7puWJxzYaFvLDtC195n78z2oQTDEwqs0ZL5EprS/wW865gwVHkIlBM5m
+         qMcTyR7zEpWywLrIjE1q40DcLe1couImeUZJ0AxS3NNVyqkDtRXDn8lA5HInLzNs0in6
+         /ZFitSw63GeEXlOat04jQVi583iS2SEyhT5MeRN5z1N0H8akOHEq52sMgcf4y3q3gLyO
+         4Xtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=CQqnRnu8sYCOvKn17Iakg6ozsgKiTy231yFJd/iW/Yw=;
-        b=Fb1+yKJVR4gk9bC2SxG84doh5xJ8XJcRApmzDX/fjBZVu9JUUdQK3ebINzeqYud3/C
-         4jV1ipIfhUN5iJKVCFbON77KP7za4hKLrWGGlHhdGCPCFF3uFrEDGr86bRgUOgKZkyNI
-         L8U7SVTw72HGgKOSC4L0cOzt7TZ7nCNkITM67Ai9EcsukyZl3MU7ybAb3Gh0B/6cgVUM
-         5LHMQpbSQMTAFb45mvi/cX7zU60ZpPYxerLUfutB/pOyaqpKmKnAXEz/foYh5tIEAnal
-         tPlCB84/GaxFfjAgoAXjEN1npFFC0L4yhOO1nraGZP+ONW1w4wLfT8aLIpWj2VUyz9fU
-         zAXw==
-X-Gm-Message-State: AGRZ1gLG2HxCrUgw9H7sfbODXN62QuhgrtoAHIYLWkWnLGOyFatF0Bb7
-	IiS8Dl7F8vH1vhneUf+P8GA=
-X-Received: by 2002:a63:9402:: with SMTP id m2mr6499605pge.93.1541444638307;
-        Mon, 05 Nov 2018 11:03:58 -0800 (PST)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=gdbXomgk+MZ0t7+v9BT7kwYAKFTBAo19asR+YaFYeM0=;
+        b=tNPX44cStFc3kIRZnmsnGKQElA25RUSScBqTQ21DgqWS2uTjhdBJ7/Q8eUzzaxO1oh
+         4JpuOKQq1FN7Thl1rXnWx08WSGgNRF0By0bSjbhb8tx9wj+K+FUkTkvnCWcjjtD4Y3ff
+         IEM+zRvB1KV2yLsqRGJGnmMQz43z9vsIcpFwBeg5mfx8aDLGfo5anEgfRhICnZKqsguc
+         7n+l9LExPKxtxHlnMPHvj0YM3vDxo3UYFKHv4n+PYDiea2Y98H9PjJu/xGEch5AbIBb6
+         TnlFdF82x2hRZA9wjtff37dJ0GrzoFitWBhfDw6mnXbJzPK6N+dllk5kz7JF522FFUMq
+         VKhg==
+X-Gm-Message-State: AGRZ1gKOkdlXpqzt9DMnjpLZg7qFzGt3t9DpHUlg9voz0uIo5VQlPee3
+	cQ6ShJmFa5wzWh2S91mX0L/bIbp1nGJffE77
+X-Received: by 2002:a62:1954:: with SMTP id 81-v6mr23157857pfz.237.1541444318821;
+        Mon, 05 Nov 2018 10:58:38 -0800 (PST)
 Return-Path: <digholebhagyashri@gmail.com>
 Received: from dev ([12.97.16.194])
-        by smtp.gmail.com with ESMTPSA id u19-v6sm69340982pfj.115.2018.11.05.11.03.57
+        by smtp.gmail.com with ESMTPSA id z5-v6sm46919997pfd.99.2018.11.05.10.58.38
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 05 Nov 2018 11:03:57 -0800 (PST)
-Date: Mon, 5 Nov 2018 19:03:56 +0000
+        Mon, 05 Nov 2018 10:58:38 -0800 (PST)
+Date: Mon, 5 Nov 2018 18:58:37 +0000
 From: "Bhagyashri P. Dighole" <digholebhagyashri@gmail.com>
-To: Gao Xiang <gaoxiang25@huawei.com>, Chao Yu <yuchao0@huawei.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Sasha Levin <sashal@kernel.org>
+To: shrikantchaudhari6548@gmail.com
 Cc: Outreachy <outreachy-kernel@googlegroups.com>,
 	linux-erofs@lists.ozlabs.org
-Subject: [PATCH v4 2/2] staging: erofs: Modify conditional checks
-Message-ID: <b36253c9dacce060a90e84f3e8d854749800d720.1541443947.git.digholebhagyashri@gmail.com>
-References: <b14ab748b6c00632bb2234000d96a7e1912e2b1b.1541443947.git.digholebhagyashri@gmail.com>
+Subject: [PATCH v4 1/2] staging: erofs: Modify coding style alignments
+Message-ID: <b14ab748b6c00632bb2234000d96a7e1912e2b1b.1541443947.git.digholebhagyashri@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <b14ab748b6c00632bb2234000d96a7e1912e2b1b.1541443947.git.digholebhagyashri@gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 
 Fix coding style alignment issues detected by checkpatch.pl
-Use ! for NULL test rather than explicitly comparing to NULL.
+Matched alignments with parenthesis.
 
 Signed-off-by: Bhagyashri P. Dighole <digholebhagyashri@gmail.com>
 ---
@@ -108,76 +104,155 @@ Changes in v2:
 Changes in v1:
 - Change for all issues in data.c detected by checkpatch.pl
 
-drivers/staging/erofs/data.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ drivers/staging/erofs/data.c | 51 ++++++++++++++++++------------------
+ 1 file changed, 26 insertions(+), 25 deletions(-)
 
 diff --git a/drivers/staging/erofs/data.c b/drivers/staging/erofs/data.c
-index b66191ad44aa..5a55f0bfdfbb 100644
+index 6384f73e5418..b66191ad44aa 100644
 --- a/drivers/staging/erofs/data.c
 +++ b/drivers/staging/erofs/data.c
-@@ -53,7 +53,7 @@ struct page *__erofs_get_meta_page(struct super_block *sb,
+@@ -40,7 +40,7 @@ static inline void read_endio(struct bio *bio)
  
- repeat:
- 	page = find_or_create_page(mapping, blkaddr, gfp);
--	if (unlikely(page == NULL)) {
-+	if (unlikely(!page)) {
- 		DBG_BUGON(nofail);
- 		return ERR_PTR(-ENOMEM);
- 	}
-@@ -177,7 +177,7 @@ int erofs_map_blocks_iter(struct inode *inode,
+ /* prio -- true is used for dir */
+ struct page *__erofs_get_meta_page(struct super_block *sb,
+-	erofs_blk_t blkaddr, bool prio, bool nofail)
++				   erofs_blk_t blkaddr, bool prio, bool nofail)
+ {
+ 	struct inode *const bd_inode = sb->s_bdev->bd_inode;
+ 	struct address_space *const mapping = bd_inode->i_mapping;
+@@ -76,7 +76,7 @@ struct page *__erofs_get_meta_page(struct super_block *sb,
+ 		}
+ 
+ 		__submit_bio(bio, REQ_OP_READ,
+-			REQ_META | (prio ? REQ_PRIO : 0));
++			     REQ_META | (prio ? REQ_PRIO : 0));
+ 
+ 		lock_page(page);
+ 
+@@ -107,8 +107,8 @@ struct page *__erofs_get_meta_page(struct super_block *sb,
+ }
+ 
+ static int erofs_map_blocks_flatmode(struct inode *inode,
+-	struct erofs_map_blocks *map,
+-	int flags)
++				     struct erofs_map_blocks *map,
++				     int flags)
+ {
+ 	int err = 0;
+ 	erofs_blk_t nblocks, lastblk;
+@@ -151,7 +151,7 @@ static int erofs_map_blocks_flatmode(struct inode *inode,
+ 		map->m_flags |= EROFS_MAP_META;
+ 	} else {
+ 		errln("internal error @ nid: %llu (size %llu), m_la 0x%llx",
+-			vi->nid, inode->i_size, map->m_la);
++		      vi->nid, inode->i_size, map->m_la);
+ 		DBG_BUGON(1);
+ 		err = -EIO;
+ 		goto err_out;
+@@ -167,12 +167,13 @@ static int erofs_map_blocks_flatmode(struct inode *inode,
+ 
+ #ifdef CONFIG_EROFS_FS_ZIP
+ extern int z_erofs_map_blocks_iter(struct inode *,
+-	struct erofs_map_blocks *, struct page **, int);
++				   struct erofs_map_blocks *,
++				   struct page **, int);
+ #endif
+ 
+ int erofs_map_blocks_iter(struct inode *inode,
+-	struct erofs_map_blocks *map,
+-	struct page **mpage_ret, int flags)
++			  struct erofs_map_blocks *map,
++			  struct page **mpage_ret, int flags)
  {
  	/* by default, reading raw data never use erofs_map_blocks_iter */
  	if (unlikely(!is_inode_layout_compression(inode))) {
--		if (*mpage_ret != NULL)
-+		if (*mpage_ret)
- 			put_page(*mpage_ret);
- 		*mpage_ret = NULL;
+@@ -192,7 +193,7 @@ int erofs_map_blocks_iter(struct inode *inode,
+ }
  
-@@ -200,7 +200,7 @@ int erofs_map_blocks(struct inode *inode,
- 		int err;
+ int erofs_map_blocks(struct inode *inode,
+-	struct erofs_map_blocks *map, int flags)
++		     struct erofs_map_blocks *map, int flags)
+ {
+ 	if (unlikely(is_inode_layout_compression(inode))) {
+ 		struct page *mpage = NULL;
+@@ -206,13 +207,12 @@ int erofs_map_blocks(struct inode *inode,
+ 	return erofs_map_blocks_flatmode(inode, map, flags);
+ }
  
- 		err = erofs_map_blocks_iter(inode, map, &mpage, flags);
--		if (mpage != NULL)
-+		if (mpage)
- 			put_page(mpage);
- 		return err;
- 	}
-@@ -232,7 +232,7 @@ static inline struct bio *erofs_read_raw_page(struct bio *bio,
- 	}
+-static inline struct bio *erofs_read_raw_page(
+-	struct bio *bio,
+-	struct address_space *mapping,
+-	struct page *page,
+-	erofs_off_t *last_block,
+-	unsigned int nblocks,
+-	bool ra)
++static inline struct bio *erofs_read_raw_page(struct bio *bio,
++					      struct address_space *mapping,
++					      struct page *page,
++					      erofs_off_t *last_block,
++					      unsigned int nblocks,
++					      bool ra)
+ {
+ 	struct inode *inode = mapping->host;
+ 	erofs_off_t current_block = (erofs_off_t)page->index;
+@@ -233,8 +233,8 @@ static inline struct bio *erofs_read_raw_page(
  
  	/* note that for readpage case, bio also equals to NULL */
--	if (bio != NULL &&
-+	if (bio &&
- 	    /* not continuous */
- 	    *last_block + 1 != current_block) {
+ 	if (bio != NULL &&
+-		/* not continuous */
+-		*last_block + 1 != current_block) {
++	    /* not continuous */
++	    *last_block + 1 != current_block) {
  submit_bio_retry:
-@@ -240,7 +240,7 @@ static inline struct bio *erofs_read_raw_page(struct bio *bio,
+ 		__submit_bio(bio, REQ_OP_READ, 0);
  		bio = NULL;
- 	}
+@@ -307,7 +307,7 @@ static inline struct bio *erofs_read_raw_page(
+ 			nblocks = BIO_MAX_PAGES;
  
--	if (bio == NULL) {
-+	if (!bio) {
- 		struct erofs_map_blocks map = {
- 			.m_la = blknr_to_addr(current_block),
- 		};
-@@ -342,7 +342,7 @@ static inline struct bio *erofs_read_raw_page(struct bio *bio,
- 	unlock_page(page);
+ 		bio = erofs_grab_bio(inode->i_sb,
+-			blknr, nblocks, read_endio, false);
++				     blknr, nblocks, read_endio, false);
  
- 	/* if updated manually, continuous pages has a gap */
--	if (bio != NULL)
-+	if (bio)
- submit_bio_out:
- 		__submit_bio(bio, REQ_OP_READ, 0);
+ 		if (IS_ERR(bio)) {
+ 			err = PTR_ERR(bio);
+@@ -361,7 +361,7 @@ static int erofs_raw_access_readpage(struct file *file, struct page *page)
+ 	trace_erofs_readpage(page, true);
  
-@@ -408,7 +408,7 @@ static int erofs_raw_access_readpages(struct file *filp,
- 	DBG_BUGON(!list_empty(pages));
+ 	bio = erofs_read_raw_page(NULL, page->mapping,
+-		page, &last_block, 1, false);
++				  page, &last_block, 1, false);
  
- 	/* the rare case (end in gaps) */
--	if (unlikely(bio != NULL))
-+	if (unlikely(bio))
- 		__submit_bio(bio, REQ_OP_READ, 0);
- 	return 0;
+ 	if (IS_ERR(bio))
+ 		return PTR_ERR(bio);
+@@ -371,8 +371,9 @@ static int erofs_raw_access_readpage(struct file *file, struct page *page)
  }
+ 
+ static int erofs_raw_access_readpages(struct file *filp,
+-	struct address_space *mapping,
+-	struct list_head *pages, unsigned int nr_pages)
++				      struct address_space *mapping,
++				      struct list_head *pages,
++				      unsigned int nr_pages)
+ {
+ 	erofs_off_t last_block;
+ 	struct bio *bio = NULL;
+@@ -389,13 +390,13 @@ static int erofs_raw_access_readpages(struct file *filp,
+ 
+ 		if (!add_to_page_cache_lru(page, mapping, page->index, gfp)) {
+ 			bio = erofs_read_raw_page(bio, mapping, page,
+-				&last_block, nr_pages, true);
++						  &last_block, nr_pages, true);
+ 
+ 			/* all the page errors are ignored when readahead */
+ 			if (IS_ERR(bio)) {
+ 				pr_err("%s, readahead error at page %lu of nid %llu\n",
+-					__func__, page->index,
+-					EROFS_V(mapping->host)->nid);
++				       __func__, page->index,
++				       EROFS_V(mapping->host)->nid);
+ 
+ 				bio = NULL;
+ 			}
 -- 
 2.19.1
 
