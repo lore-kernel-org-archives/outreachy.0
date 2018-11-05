@@ -1,103 +1,79 @@
 X-GM-THRID: 6618737831817773056
-X-Received: by 2002:ab0:64c9:: with SMTP id j9mr2875961uaq.7.1541661608595;
-        Wed, 07 Nov 2018 23:20:08 -0800 (PST)
+X-Received: by 2002:a17:902:2881:: with SMTP id f1-v6mr1688979plb.147.1541425658920;
+        Mon, 05 Nov 2018 05:47:38 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1f:304d:: with SMTP id w74ls140011vkw.1.gmail; Wed, 07 Nov
- 2018 23:20:07 -0800 (PST)
-X-Google-Smtp-Source: AJdET5dSjycwHetMMf0G+uWqon76ag46uNtb1Eft65t4bL/u0blFUZS2k5PmNsWccCaYoBsMrN8n
-X-Received: by 2002:a1f:2e81:: with SMTP id u123mr2901450vku.12.1541661607709;
-        Wed, 07 Nov 2018 23:20:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541661607; cv=none;
+Received: by 2002:a62:8adb:: with SMTP id o88-v6ls398632pfk.6.gmail; Mon, 05
+ Nov 2018 05:47:38 -0800 (PST)
+X-Google-Smtp-Source: AJdET5eliyIpmSdyVXCoHdD3yNaCkNHdriqrP2AytOC2DE3X1eeeap0/8BhYCXjCBKgv+vgB5eN+
+X-Received: by 2002:a62:e110:: with SMTP id q16-v6mr602682pfh.63.1541425658253;
+        Mon, 05 Nov 2018 05:47:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541425658; cv=none;
         d=google.com; s=arc-20160816;
-        b=D830p+Sh/311+BRrVvRAbBWk3/7qNJLw7s61JQovvwxXGoiEZ1wAmeLozmD3S+7/Ku
-         5DLKTPYoaBFEJbKKka2yUnTWtQHFiyAjF7K6FsHmgYPUEiTQYTmMG6Za98QzYNwANZgz
-         gL/s5dkXteEnSVH2m5nJNgqfT5CvWzICZcaeP4BRcbF6Pi3wd6v3pez+C+WSUqeSHVFQ
-         oUQnvZ7RiQOcUaQlQkiArS1WATl8cqT8CA6wJmWLqWgkDnw/1k4rxhQBvZrVBBrkQPnQ
-         oy8BlhaCjF6ro01+nLCjDTsdAB2Tfv6CrJBSPTJ7aRwWmCLbGT/ortgVCnmu5x5VkuYr
-         j4gQ==
+        b=TZPxaN4SBKjCfX3IdRJL3e0zgI1ezd9GmpozGJJNDX0D4T2Y2r9LVqCPkXhrq2TRvl
+         2F5NjJeCqGqeC+mcrdPYA8eF0+i54ev+P+AWNNqXKKzlfY9DfzyjRxfbSgQvIURv09WK
+         yZdj06w2xNPjB4iv45/Pu44lxLm4RCst5udCa8xDvV2J9I6uqt/SWHn3YzJuiGwcSkEt
+         5uXav07lXAsHbLM8wzeEafK1E4cRS1q57uOh9EpdYUeekuZ6X192hnaT/Jef/ftBpUjV
+         RfaeGx0oX/BnNyLBir1STR9Ls5dBNM1GBFK23aPPvt0xwtQGadEnZ/T1YyuhYJuTT4AY
+         Y7Jw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=jtB/cbeXlxkhH1du9vZ74kBS1qgtMho9Y9HdiWtqkCI=;
-        b=q/ki2cf2+oILvD30qGOmJBKyVKHSGpWy4+y2G23tY3aRxpllXThmH3xf8Ku3pDAmCx
-         KY0SQ8ZYgcFoqQ+HrXAMppY4jOD9guanUUMbKHB4TUOVWjtIk66qK0X850d/Zzik7Vnx
-         9QA15DyTu7dxgPSwEBoiMkV/g3RwtbRp1SoFDKpwxDnETZKU7rO/2u2PdOvris2en56n
-         e3xAEt+xgC8zuWBL0WjVgsF3lId33+hVuzVnPw1o17OBtPPxIwSCNXunW3IThVsdtrHp
-         xbWLQWK3bp2rHn8ouSq/q5npDZokAj648nrmLNTNFwjJX6Pw9+K2LuHRamR5vSjnHen7
-         LhBw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=+2febFZz3LI/y1Q3KXnJATKjgVO8TUC1YZIept280Og=;
+        b=0Z8XlbgVKzpPnKgv95Q9fQZrO4RJ524oxmuXgBJlprkG2KZ9VhopyAWkOKy3cqIWgP
+         BdtMUFKiN1EntEmISkCdC19NQDITQzgrX+hmxSU9KCQ/oVlGJpEukNYARfLIoBiwAZ/Y
+         zm+Af23gMlYo2TMAGvgydgkKQUqRr2QLwTeGwFF1/PdDfQQKg+TttMPyeS9Xxjxxw8Ik
+         E+SUmh9dYjqeDDB0DQ/iPOVwZEGIX1zGpZk5J23q+pF3rHB7rUtoKMPENZtZsTNPMzb1
+         C+N4iXXeGmqAz9zILE+/crQRmEt61GZrDAHMtgu6b+Ky8P/POKffm8HFV1AyVT2IT+yf
+         /9yg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="dqDe/vBv";
-       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <m.maya.nakamura@gmail.com>
-Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id e2si143317uah.0.2018.11.07.23.20.07
+       dkim=pass header.i=@kernel.org header.s=default header.b=Na00bh1e;
+       spf=pass (google.com: domain of srs0=afov=nq=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=AFoV=NQ=linuxfoundation.org=gregkh@kernel.org"
+Return-Path: <SRS0=AFoV=NQ=linuxfoundation.org=gregkh@kernel.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id p85-v6si2152460pfa.3.2018.11.05.05.47.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 07 Nov 2018 23:20:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
+        Mon, 05 Nov 2018 05:47:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of srs0=afov=nq=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="dqDe/vBv";
-       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x544.google.com with SMTP id i4-v6so8470199pgq.9
-        for <outreachy-kernel@googlegroups.com>; Wed, 07 Nov 2018 23:20:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=jtB/cbeXlxkhH1du9vZ74kBS1qgtMho9Y9HdiWtqkCI=;
-        b=dqDe/vBvn4onsP9HMYJt0VHyR9T6cLHX9ljol5X8IbAqKVEiHh8r1O+G1YN8XanMPt
-         oNHe2cQtgXm67ndbxQWUBSSwZI0Y3uqWTz5yxAanvlI+2xYqMVGL9RhNU8uSQnb0V1mz
-         LbpCJOF8NV4qdV3jSiNfLv9JCCetdNMykZlR3z8yBllahTInGQu/QL2A5kvr5RkBc3Ub
-         tjTjRVFm58ipR4UK5eC01ETOrjwMs+h4xDrQEJ2p9ggjPWhg1HJyU4iVXazWzTVllfOJ
-         CNLa+dWYDJh67mvJWsmabPeZtm7oOTpRUjyaOCUnHfWELr5luQz8i+vApMq4Txc4MqL9
-         UUaA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=jtB/cbeXlxkhH1du9vZ74kBS1qgtMho9Y9HdiWtqkCI=;
-        b=d7hfYLcAoosIsikVYTBuuWsZyvb0TmvR5Mh3c1rxeVUzVpJASvo496ZDaAi9FlabWQ
-         dE++Wi+pwzdmUSTHg8VGFSaXp+mZPRPeFZs5dJFm1e4yC7xGov/BlutQZmg6o2Dihc6c
-         dpXpGs2u4rZ5P/a3isFbyMdN0ZqgAYruxlYqY4wCdv6Vy5DfkPWdRpJKrKps/r4ljjLA
-         kb082yykInVcsX9TfICWWHo/wryl8eCVD+9Ar4c9DfIMDrVbWh4lxuQAv5SWtTZjf1XZ
-         T5yXTPpvw+NudRxf2YoUK/Cpdd437mwhqqOEyjCu/u3YrzNoPMG+AGgPgqwQl4p11PKi
-         uT7Q==
-X-Gm-Message-State: AGRZ1gJ4SeRDdLKn/vrVIUWOBn4sFxd0MCZAITi0NLwiQZUBSyYBgLku
-	JNNKF4jHUF2Hd/PPCmYad+ETVzop
-X-Received: by 2002:a62:995c:: with SMTP id d89-v6mr3448470pfe.11.1541661606653;
-        Wed, 07 Nov 2018 23:20:06 -0800 (PST)
-Return-Path: <m.maya.nakamura@gmail.com>
-Received: from m-hyperV (50-47-85-193.evrt.wa.frontiernet.net. [50.47.85.193])
-        by smtp.gmail.com with ESMTPSA id n23-v6sm5085140pfg.84.2018.11.07.23.20.05
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Nov 2018 23:20:06 -0800 (PST)
-Date: Wed, 7 Nov 2018 23:20:05 -0800
-From: Maya Nakamura <m.maya.nakamura@gmail.com>
-To: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/4] staging: rtlwifi: Change line and comment spacing
-Message-ID: <cover.1541660015.git.m.maya.nakamura@gmail.com>
+       dkim=pass header.i=@kernel.org header.s=default header.b=Na00bh1e;
+       spf=pass (google.com: domain of srs0=afov=nq=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=AFoV=NQ=linuxfoundation.org=gregkh@kernel.org"
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 67DA72085A;
+	Mon,  5 Nov 2018 13:47:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1541425657;
+	bh=VwAZ5SOmNduL3xBxTI2PTPTyt+rt1bl8ftDf+R4SUqA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Na00bh1eQdm/n3G7uN3lUUXtvZHY87Gcw1vN/mHEaUqApvw9RIic+eCfiS9A7fiVD
+	 +X4QI4QzDCK+9iyC6ENNUpXkTRoNLCERgHAiSEKB4U2cWoA1GmWNyRe/6HS1KmQMnO
+	 nzO/NtGk4p5JrTlOQhtMLg+ixdwPkw5hBJ9A3krA=
+Date: Mon, 5 Nov 2018 14:47:35 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Maya Nakamura <m.maya.nakamura@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH 2/2] staging: rtlwifi: Change line and comment spacing
+Message-ID: <20181105134735.GC8389@kroah.com>
+References: <cover.1541037077.git.m.maya.nakamura@gmail.com>
+ <a0c1be6312a62595a5f8f7e0b02ced685933052d.1541037077.git.m.maya.nakamura@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <a0c1be6312a62595a5f8f7e0b02ced685933052d.1541037077.git.m.maya.nakamura@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-Add blank lines at the end of if statements and spaces before and after
-comments. Edit statements so that the line does not end with an assignment
-operator or a parenthesis. Remove a blank comment, too.
+On Wed, Oct 31, 2018 at 09:06:27PM -0700, Maya Nakamura wrote:
+> Add blank lines at the end of if statements and spaces before and after
+> comments. Edit statements so that the line does not end with an assignment
+> operator or a parenthesis. Remove a blank comment, too.
 
-Maya Nakamura (4):
-  staging: rtlwifi: Improve line endings
-  staging: rtlwifi: Remove empty comment
-  staging: rtlwifi: Add blank lines
-  staging: rtlwifi: Add spaces for comments
+That is a lot of different things all in one patch.  Please only do one
+"logical" type of thing.  This should be broken up into multiple patches
+please.
 
- drivers/staging/rtlwifi/phydm/phydm_adc_sampling.c | 10 +++++-----
- drivers/staging/rtlwifi/phydm/phydm_ccx.c          |  8 +++++---
- 2 files changed, 10 insertions(+), 8 deletions(-)
+thanks,
 
--- 
-2.17.1
-
+greg k-h
 
