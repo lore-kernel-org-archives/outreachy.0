@@ -1,77 +1,73 @@
-X-GM-THRID: 6259744674784739328
-X-Received: by 10.182.240.137 with SMTP id wa9mr21879657obc.16.1457460381324;
-        Tue, 08 Mar 2016 10:06:21 -0800 (PST)
+X-GM-THRID: 6620377102815330304
+X-Received: by 2002:a25:840a:: with SMTP id u10-v6mr3468749ybk.14.1541426662758;
+        Mon, 05 Nov 2018 06:04:22 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.129.73 with SMTP id nu9ls294512igb.15.gmail; Tue, 08 Mar
- 2016 10:06:20 -0800 (PST)
-X-Received: by 10.66.163.97 with SMTP id yh1mr569153pab.11.1457460380670;
-        Tue, 08 Mar 2016 10:06:20 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id ui7si734939pab.0.2016.03.08.10.06.20
+Received: by 2002:a25:d209:: with SMTP id j9-v6ls1124290ybg.9.gmail; Mon, 05
+ Nov 2018 06:04:21 -0800 (PST)
+X-Google-Smtp-Source: AJdET5cJsgutBDoKV99yYBSeEvRgJ1i6H1swXf5ZeuGQsSDOOtYHULD/EpQ65ma67Nrkn/mhcr3r
+X-Received: by 2002:a5b:441:: with SMTP id s1-v6mr7265339ybp.80.1541426661903;
+        Mon, 05 Nov 2018 06:04:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541426661; cv=none;
+        d=google.com; s=arc-20160816;
+        b=VuRoUP/ko3mQtM+0Y5xSw1OrwRR+8mXwiGhPsTzFcj4iIIuILKAA/6xKMDLNuKi1lW
+         3JsX2TW7LupSbjuxGnVsHcpAywOZr3XFw5ma9q3lWAfFzx0Xcx0tbxSZBNZ+r16QLe0R
+         uYTDUV+E4oPTsgNCKOL6cBb9G0TcEq/c1/g6XS+AnQ0i44GjwmcCiJA43JkQwWD3Kboy
+         q/VnOVWk3JrtWzUAn7+RZVF3H5utZZgZCSMC5bLTYPw/MInhXOrrnYHZk1Bq1klviKWY
+         zX+3+4FN59BG66rRkxWRaAiz3h4zPjV+zMdAM7T8y2uWx6n1md0BCKHRFvqe2kIPAyDy
+         dBeQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=+CtBXUSu1PLMvxmU3nfwlfhkXdQHlTprj/Bsp+L+VMY=;
+        b=pt/l/gsXoHb2ZH58rJ2/PRMvTocJd6u+X4cROgro4SqFHV7EYiA1yBRa4jVQN1HvZJ
+         QG99TIybZue2M0EIhVzUhHlZcO5yd049QFLZLUQR2qPf/Hw4Hjh1AKKWT7eHGNiMFIrd
+         CV6T0xe5hl6y2t8uLmGqZUVZLXpJ76v7Kh3klQ1wVc+Ew4Ub5WCLpZP8eqpa37MrQYC4
+         2UJmWroNQqu1TSvyT1pk4zrI88iJ61lPopwQv3pwJhN4q+0CxD2xRBfW4HYVmRFkDPt0
+         fk4sARIu8RdvhSyF2FrGxmlrlJ3XFtjU/ZZB0tCiU5oIn5A3Q/9fnaF85C1Gr5arMvpJ
+         v2pA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b=HjIuJm4X;
+       spf=pass (google.com: domain of srs0=afov=nq=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=AFoV=NQ=linuxfoundation.org=gregkh@kernel.org"
+Return-Path: <SRS0=AFoV=NQ=linuxfoundation.org=gregkh@kernel.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id z68-v6si793954ywe.1.2018.11.05.06.04.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 08 Mar 2016 10:06:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
+        Mon, 05 Nov 2018 06:04:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of srs0=afov=nq=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x241.google.com with SMTP id hj7so1621578pac.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 08 Mar 2016 10:06:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=3PgTcYaZfdXpsg9LhV4rZfSwHD5XhrjSuHtcfnNUNno=;
-        b=tKOkRvIR9mLttu7EMswqWxY4jyrsJTT10moajweF0SL19aB++bRHVorSPmJ4Rl3Dk1
-         wC+kjn9qObusZOzJFpWra0yB2dqXbPqHj10b0qq69+VfodKrZ+MzX6E4sagn+0A7DdWS
-         AUJrFifqlgCT+1mbH8Aog0B8zDEzQ8xKUKSRhU8rAZAYJuTyfSbJag690JAXWiHeoGOh
-         huVoc7bqgSD5HvIa9jc+FbFOckqN2diNfz6mACKIK392qHX/QeT/QpH4GApUYtofnN/8
-         p21X+1ByBuwBxS7wq4DxCwo7viVGbVSah0srWsBR2uKi4w0detDaSEvYuRsr3cvTMLJH
-         9EoQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=3PgTcYaZfdXpsg9LhV4rZfSwHD5XhrjSuHtcfnNUNno=;
-        b=EWxNiI6z7Ub1X7r/e1nsuwhQ3c3X+GYHyAhGThYiG110cdoMSc6yWvjvAVZI7xH1h2
-         G8ybxmtag5SSdIQuyy3mTjKIZdc43qyCZjDNaiU86ZSzX/j8e+ZubBDVY3JXIeoAN4UH
-         b4ZZAmiDXu3+8Xe/hVEPrSbeERwc3MqVgsMo6DNUA7f3Vj3kpJOmQwYJptqHLncD890c
-         Lw1BkGsJJzTX1pKQ0EOHAuxwld4zETdgiXZQCu/2KudSD8Bkmr1wQ0B8GV6FOyTzmmp+
-         QXFm6aDsOmok64cImDfkZ/hDm42ufjrDzv6gD2Vu8pnhiGNdXC5+pirSjP+ynUD56tft
-         GwgQ==
-X-Gm-Message-State: AD7BkJLTvvrYg0bDx5XwalChpFf5775mx3kWF1QcETsf86acDY+oZoPXXHADljLbHtfJXA==
-X-Received: by 10.66.218.225 with SMTP id pj1mr43132679pac.83.1457460380546;
-        Tue, 08 Mar 2016 10:06:20 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id p5sm6451674pfi.94.2016.03.08.10.06.19
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 08 Mar 2016 10:06:19 -0800 (PST)
-Date: Tue, 8 Mar 2016 23:24:06 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+       dkim=pass header.i=@kernel.org header.s=default header.b=HjIuJm4X;
+       spf=pass (google.com: domain of srs0=afov=nq=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=AFoV=NQ=linuxfoundation.org=gregkh@kernel.org"
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 5DE9820827;
+	Mon,  5 Nov 2018 14:04:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1541426660;
+	bh=gbzfqWVCHzWExvXiNw8uncCv1bMO52Q9NxugmmeOOKE=;
+	h=Date:From:To:Subject:From;
+	b=HjIuJm4XoC1jVJ/0jHgWpf3iN+MK+kvvwva4fJ+5tc7PnGBpyNEeg8eKKLKoe4iHE
+	 gXJI0c1PPdAoPOdmX5u5VI7rBKthS3QeVdskacGh4XFxTb3Spf4CvCMq7pA3LVqclx
+	 EFZYHhxqmngdzN7p/pu39Swm04OOEqhy/xtpfnWQ=
+Date: Mon, 5 Nov 2018 15:04:18 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3 0/2] Use macro DIV_ROUND_UP
-Message-ID: <20160308175406.GA30261@Karyakshetra>
+Subject: Outreachy patches caught up on again
+Message-ID: <20181105140418.GA20313@kroah.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-This patchset replaces occurences of (((n) + (d) - 1) /(d))
-with the kernel.h macro DIV_ROUND_UP.
+Hi all,
 
-Bhaktipriya Shridhar (2):
-  staging: rtl8723au: hal: Use macro DIV_ROUND_UP
-  staging: rtl8192e: Prefer using macro DIV_ROUND_UP
+Once again, all submitted outreachy patches have been processed.  If you
+did not get an email from my system saying your patch was accepted, or
+some other email from my saying it was rejected, please assume it is
+lost so please rebase it against my latest tree and resend.
 
- drivers/staging/rtl8192e/rtllib_crypt_ccmp.c | 4 ++--
- drivers/staging/rtl8723au/hal/usb_halinit.c  | 3 +--
- 2 files changed, 3 insertions(+), 4 deletions(-)
+thanks,
 
---
-2.1.4
-
+greg k-h
 
