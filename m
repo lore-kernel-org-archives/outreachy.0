@@ -1,90 +1,117 @@
-X-GM-THRID: 6387814559590121472
-X-Received: by 10.129.181.4 with SMTP id t4mr1324083ywh.154.1487278975376;
-        Thu, 16 Feb 2017 13:02:55 -0800 (PST)
+X-GM-THRID: 6619842705607360512
+X-Received: by 2002:aca:5101:: with SMTP id f1-v6mr9189972oib.23.1541399750625;
+        Sun, 04 Nov 2018 22:35:50 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.14.179 with SMTP id 48ls1251863otj.27.gmail; Thu, 16 Feb
- 2017 13:02:55 -0800 (PST)
-X-Received: by 10.157.7.16 with SMTP id 16mr1298675ote.28.1487278974983;
-        Thu, 16 Feb 2017 13:02:54 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id h130si310464pfe.1.2017.02.16.13.02.54
+Received: by 2002:a9d:3f06:: with SMTP id m6ls4162780otc.7.gmail; Sun, 04 Nov
+ 2018 22:35:49 -0800 (PST)
+X-Google-Smtp-Source: AJdET5fw6XewcyeutQNftAzs/E6WpYL8bd/QIlIcwZE2ssNvvZGwRHmLCTLgC31e+KVv/3jYb2Cl
+X-Received: by 2002:a9d:3d21:: with SMTP id a30mr15875508otc.26.1541399749430;
+        Sun, 04 Nov 2018 22:35:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541399749; cv=none;
+        d=google.com; s=arc-20160816;
+        b=T3QLzXuBpq5BZNtgtWmqgmHvuEK42GLJ/jEfI9aRTmecky0xl6QzekZJJj+hU7ffEY
+         8DjCCnsOVHcUSAi4HATWRR4SsmDsp13ILnabCRzYsWppQF8wQMr+11vgOJv+VnBdTjJK
+         asj3il1wHbO/wYt/iuxhagXOYBpl9q1He19TjL0zCmBK1l5h/cLUOBaF2kcnD3so1wn7
+         iefBLZxzNpb9fEn7silv0+XRw9qQQRfR1eZ3wlgA4VM57vsuMIVgJNNJ+fVbQt2AbTIo
+         AzBBhUQe/AfrgqA1wyCirH0J7rIO0IJLVZbmpbdVcUb96dAIos7j/9FQGlPEXYi4K7+a
+         h85w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version;
+        bh=ju5dqHelmgtPNGD3ZntPoAcc+PRMNqsgSk7J/Yuz2YY=;
+        b=BQ3wx9ZoH5nCm86t+jseFDcQxnIXdVEfp9PWH0USap0DLuD7EOSJZLa4jri8MQZHjM
+         rhp1AxqiiBwtrAChAvN/55oXDsJsCcvOxGs5rxe4AP0JPcD1xsRi76FYe72w8IvGcMcI
+         0nTT1xOKdN5+qJi92DmyLV9Yuaynets/b+9OYssy4c3YuN+ElGr4KzRqZOmu0aDq49Ge
+         xdfGJsxnevZt6+cQQf0xaooihCmLxzIUUHHe8Z+Z5pq5VYvjMVcYJQe7ncub3yWUWiva
+         L/7TE1keq+CKkWXnrIJndhupr4AEGwIKKccsJBBhPHz1lLswfjz81FNbE2G7l8TweuG6
+         xigg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.238 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
+Return-Path: <vthakkar@vaishalithakkar.in>
+Received: from p3plsmtpa09-09.prod.phx3.secureserver.net (p3plsmtpa09-09.prod.phx3.secureserver.net. [173.201.193.238])
+        by gmr-mx.google.com with ESMTPS id g9si52629otk.0.2018.11.04.22.35.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 16 Feb 2017 13:02:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Sun, 04 Nov 2018 22:35:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.238 as permitted sender) client-ip=173.201.193.238;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id v184so2901325pgv.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 16 Feb 2017 13:02:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=JTu2ybvlDUFcU1tuZ5NFqKnrwwz9jSLzmX4p7vRQfSI=;
-        b=FYQ/GB7Ox4A3IHgVKe9k1t616mcuh5lJLnpT+DX6fnq87QrMq/aHgIASf5ZMyOiZr2
-         d/y7gmHTsypl9+uYKnfWGd9UF/dJrpK7mExnahcE3zwHZM5ZqM5wNGV7qtfHO9oyA9/9
-         J7zYdz75WWny/KEr/v/okE/7ZU6AOlV1Opde1YrMb3zSKSPo/zp/SkHuYGPKbUmXNnhE
-         Thh3rjcLeWI0v20qwxfDPU4qDQhS+qARNDRs8bGUdRJNqyU30jrpE19ApDv+2uJJyFx/
-         wwbP40UFRchzsZlG7HzDK6aex3IJ9CrJN3GwXMh3+hDv0agO06T+S9EE9yej0orE2FkS
-         K+vQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=JTu2ybvlDUFcU1tuZ5NFqKnrwwz9jSLzmX4p7vRQfSI=;
-        b=JTRa7Tu+atCa8h5JJFaIAdYQsL2kpQcMDjgYknWaOTtONL65NdA1FaQZqP8ghRpSI4
-         t/godNK1EVBie5/ATcrkxAZBz2EywlsQVhdFv9PBqBAX8zv7o5gwsj9QNynetN+4cWNh
-         j6tkoRYpt/B4XjdlygP8+cp06eJea34zzyNiejcdMC/zX4AMZTLqFP/WrqZT/Uj1PgWD
-         pA0NUXBoa6IIW/jR+ULZ2x4VdofgtW01TN70HgtmQNKjvi5fEbI6CQqejQ7wkFBn1GGd
-         XXEL6dT+js4+1sndKF2yhJxvXeYHjj5s0HrY2B4vi5BSlozB9xdpLghjzTeK1D7i9ofZ
-         8kBA==
-X-Gm-Message-State: AMke39lIXOEoT6gI9sRI8GoKF2d5hiWwOqsq/WLpxGF1MXk8WmhJaxIy2Uw0MXE8LlIgMw==
-X-Received: by 10.98.95.70 with SMTP id t67mr4954602pfb.37.1487278974446;
-        Thu, 16 Feb 2017 13:02:54 -0800 (PST)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 188sm15235190pfg.99.2017.02.16.13.02.52
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 16 Feb 2017 13:02:53 -0800 (PST)
-Date: Fri, 17 Feb 2017 02:32:50 +0530
-From: simran singhal <singhalsimran0@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/3] staging: rtl8192u: Fixed 'tabstop' coding style warnings
-Message-ID: <20170216210249.GA28497@singhal-Inspiron-5558>
+       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.238 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
+Received: from mail-wr1-f50.google.com ([209.85.221.50])
+	by :SMTPAUTH: with ESMTPSA
+	id JYUFgdKMYqFgMJYUGgoDaV; Sun, 04 Nov 2018 23:35:48 -0700
+Received: by mail-wr1-f50.google.com with SMTP id z13-v6so5728247wrs.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 04 Nov 2018 22:35:48 -0800 (PST)
+X-Gm-Message-State: AGRZ1gKZO0fGnMVPzlX768DbiOCiWcNQbPv/sR9mQ7ybWqZ/hqy9h9Ql
+	ZmswZMb/sORJdLqdsQms9pO2OhoZLWJb3Fl1Wjw=
+X-Received: by 2002:a05:6000:110b:: with SMTP id z11mr17581518wrw.136.1541399747339;
+ Sun, 04 Nov 2018 22:35:47 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+References: <CAK-LDbJoMEKgjyyion0O6RWn3p4j04mwupEwY7CK1wZqJWkd3g@mail.gmail.com>
+ <20181105055411.GA2334@k-vBox>
+In-Reply-To: <20181105055411.GA2334@k-vBox>
+From: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
+Date: Mon, 5 Nov 2018 12:05:33 +0530
+X-Gmail-Original-Message-ID: <CAK-LDbJx-ChyexGjOBhkqBicagxznh+uNoG3K2QFZnCLmGN+JQ@mail.gmail.com>
+Message-ID: <CAK-LDbJx-ChyexGjOBhkqBicagxznh+uNoG3K2QFZnCLmGN+JQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [Announcement] Outreachy application reminder
+To: "M. Nakamura" <m.maya.nakamura@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset="UTF-8"
+X-CMAE-Envelope: MS4wfJ3rrm+FzAe76nQZnSmxCfb9+t7wanQZR08LRlAaNa80HxaPx64MyVip/nXtV7QFoGEKUY3RvWrW074BXB5nMOcM4uZQhC8TKLvT5KCOYrhKum3GCIR3
+ GaVb2COpckJZ1T0ROk+inHB2B0iB2svNhh7Crwj44/2kBQWCUJwqnVd8FF2dOLW/ZfjSA3N5QUalWwam+AeSBzc0Zs21N2iQvl8=
 
-Replace a mix of tabs and spaces indentation by tabs only.
+On Mon, Nov 5, 2018 at 11:24 AM Maya Nakamura <m.maya.nakamura@gmail.com> wrote:
+>
+> On Sun, Nov 04, 2018 at 09:00:13AM +0530, Vaishali Thakkar wrote:
+> > Hi All,
+> >
+> > As you know, Outreachy deadline for Linux kernel projects is November
+> > 6, 2018. So, don't forget to submit your application before deadline.
+> > Here, are bunch of points you need to take care of:
+> >
+> > - Record your contributions on Outreachy's website. Remember that for
+> > each project you want to apply for, you will need to record separate
+> > contributions and fill separate application. Make sure that you put
+> > links to patches when you record the contributions. If you have
+> > written any blog post etc related to your Linux kernel experience,
+> > feel free to put links as well.
+> >
+> > - We normally advise each applicant to apply for at least 2 projects.
+> > Make sure to add your project preferences under the question
+> > 'Community-specific Questions' in the application.
+> >
+> > All the best and we're looking forward to reviewing your applications.
+> > Feel free to ask questions, if any.
+>
+> Hi Vaishali,
+>
+> Thank you for the application reminder!
+>
+> For the final application, there is an optional Community-specific
+> Question section, and you instructed us to add our project preferences.
+> I am confused because the final application is for a specific project.
+> Am I right that I should rank the projects that I am applying for to
+> answer the question?
 
-Fixed checkpatch warning "Statements should start on a tabstop" in
-rtl8192u module.
+Yes, you need to submit a separate application for each project.
+What you can do is under the question I mentioned above,
+you can just say that this is your 1st preferred project and in
+the other project you can write that it is your 2nd preferred
+project so that we know which project you're most interested in.
 
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
----
- drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c
-index 563d7fe..814ab5a 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c
-@@ -666,7 +666,7 @@ int ieee80211_wx_set_encode_ext(struct ieee80211_device *ieee,
- 	if (ieee->set_security)
- 		ieee->set_security(ieee->dev, &sec);
- 
--	 if (ieee->reset_on_keychange &&
-+	if (ieee->reset_on_keychange &&
- 	    ieee->iw_mode != IW_MODE_INFRA &&
- 	    ieee->reset_port && ieee->reset_port(dev)) {
- 		IEEE80211_DEBUG_WX("%s: reset_port failed\n", dev->name);
--- 
-2.7.4
-
+> Maya
+>
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAK-LDbJoMEKgjyyion0O6RWn3p4j04mwupEwY7CK1wZqJWkd3g%40mail.gmail.com.
+> > For more options, visit https://groups.google.com/d/optout.
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20181105055411.GA2334%40k-vBox.
+> For more options, visit https://groups.google.com/d/optout.
 
