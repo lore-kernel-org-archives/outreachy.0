@@ -1,100 +1,272 @@
-X-GM-THRID: 6670195041552564224
-X-Received: by 2002:a25:41c2:: with SMTP id o185mr1213877yba.96.1553025804907;
-        Tue, 19 Mar 2019 13:03:24 -0700 (PDT)
+X-GM-THRID: 6620513084586852352
+X-Received: by 2002:a50:cb87:: with SMTP id k7-v6mr3867276edi.1.1541458322083;
+        Mon, 05 Nov 2018 14:52:02 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:cdc7:: with SMTP id d190ls21253ybf.8.gmail; Tue, 19 Mar
- 2019 13:03:24 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxvHeRfXyNr/W5l+vs7Vw8sukgweqm50mqre+/NIIn2v6pRpsiMeL+eedMWtR2DtV14SdMW
-X-Received: by 2002:a25:c41:: with SMTP id 62mr1471607ybm.52.1553025804304;
-        Tue, 19 Mar 2019 13:03:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553025804; cv=none;
+Received: by 2002:a17:906:66c1:: with SMTP id k1-v6ls811574ejp.7.gmail; Mon,
+ 05 Nov 2018 14:52:01 -0800 (PST)
+X-Google-Smtp-Source: AJdET5ctgYTI9AG6gnnR6kxUW+bxMkYo3/UpFXzilm52fLbTsIW82XCbQm9EJ6J8IXdhE+f8dkG5
+X-Received: by 2002:a17:906:328b:: with SMTP id 11-v6mr2800874ejw.14.1541458321120;
+        Mon, 05 Nov 2018 14:52:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541458321; cv=none;
         d=google.com; s=arc-20160816;
-        b=YBh0Xwjidxa+mRhxzouz4CkbmtvSoDJFGUasYf4NrIQHlx4MOYyZcwHqywXXEBzYXR
-         5BMUnRnnN6E1Pqg6wTGmoSbjv9v0Rn6j++xoTqkW7dwVqZwyARZGoKo5kiGlOmDQVpeN
-         6yuBHPnNPkbP7dVE8TkhN0bN6zatvU14BUO02ByQdyGfO/6zzFSMRpH4eWLPgvSLsoVm
-         +I7VLs23t4qh6Jwj743EHJ3IqbQ1gRpIOpF90tXgylmav3NovAswluRiNHRJGej6JDSN
-         mdCO85gAoK61IoUhUvLBDQd6Y3b29xTiN28SdwT5Levo/84uOTC22FZlzg3770Hv6lyu
-         Dc6g==
+        b=Fj7q/kEoA/q2Kcb2zJBA2QnmU7Tx5HCUoqtu8Mu3TUqj2t70TyMm2c07G3KlstIUu6
+         F3jJGXuXr/xxKpcLj5lUhJd/XCOFJP2zZaeg86QClvwJP2+U9XhwUcOyjIZXvGn3CDGg
+         zF/tQQuVG6lFnVXDFV/lqBSVNGunut3UqYW9mDY/nApwai4jnDrDB7rt/J2AE4YUEttB
+         dHUR+hO2ce+ht27PVVIboi+lZJFTBZmEDTdohS6QkcVHXVEEvk31gjZosvVxNB9tC+0f
+         sOV13dlsSRXgno20sCROGew8jfkPLP8YVK9qB/1yVyRw4sr2u9p7RUM/Si8TBq8eU/Xm
+         6fIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=ZDEmeLtqL9kCxtIQW3k5OSuyWMm2naf8pu65n7SvVJg=;
-        b=vHWY8u9FKPvZKsMVF7l6X61AZmz4sxw1zgNf4XUFxqBGWIDLGdT4SEjPKWEZLYvDWq
-         FKuJMkhEo+plQP+alfwdR9kpRkR8avBfK7vykSqWacv4n19hWhjwkXT5WU17UwJqpFRH
-         IbydoatWQ8uv7kCYLUXFjMKeJOIdYFMMHFgHtID6EPO04puC+oCBi3zzpzCaLvPh1iee
-         Vgsd7rEpIXmX6mdob+FWkvjCMKFx3B30tycTx+vuElb33NRr8BzowpOuQpHoqbV9MXHA
-         ZQ1XpmAyFAjoFh2yqJcQm9GkrFqE9NwKmBfm8h7rW8gdZIgzS+qVLibnWMjHPyPFemzR
-         E6Vg==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=4UfQMuXz12XAEfPyxCrxXrCVZ5PYIyhMf7TdXah5gkw=;
+        b=FFLgW4yMCTrxQzrirCkTO/AX2YZVM4yRycnv0vOmr04puSVB14FxG3sysbUhTxhzsS
+         DwLR69cGfYESnS3yVnFobee2hGTrQnT7HBiFzpUFu5U6XYTEj8uFTM/cLaGvqm4hk0RS
+         yB6CqsR/FVWJZtarELh5580jQ6LpBgRlINoQFZl9wT3KMiewKs9CtHzpcSOY3MSpyVpe
+         tpugJaUxhBac0ZvdMi6qY6soMCqViPK0Na7k75bzs1hdFapZM/PyJgiuDd5kPxYn4Hu9
+         T3i5EToYbGMV+5fYfmC0q5v2tJzCvW9I+hSD9VWKsVTS252XmKUSR1CetepZKHM4UcNZ
+         naIQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=pAEUesDm;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.83 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-Return-Path: <nishka.dasgupta@yahoo.com>
-Received: from sonic309-20.consmr.mail.sg3.yahoo.com (sonic309-20.consmr.mail.sg3.yahoo.com. [106.10.244.83])
-        by gmr-mx.google.com with ESMTPS id k15si703151ybk.0.2019.03.19.13.03.23
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CthBM1bj;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jbi.octave@gmail.com>
+Received: from mail-wm1-x343.google.com (mail-wm1-x343.google.com. [2a00:1450:4864:20::343])
+        by gmr-mx.google.com with ESMTPS id a35-v6si353340edd.1.2018.11.05.14.52.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Mar 2019 13:03:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.83 as permitted sender) client-ip=106.10.244.83;
+        Mon, 05 Nov 2018 14:52:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) client-ip=2a00:1450:4864:20::343;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=pAEUesDm;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.83 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1553025801; bh=ZDEmeLtqL9kCxtIQW3k5OSuyWMm2naf8pu65n7SvVJg=; h=From:To:Cc:Subject:Date:From:Subject; b=pAEUesDmlFZOQmU4w+7yCfQ6e50kK6J9TUZMlCFuZSfpiMlUXU6rzHnTjIeDqKv7sRnqnPRju4IOENi7keqDZy6lAMR2J9Ppp5N9WLgh6JuEt01Z9KAdDu0HdFVN3Jq+uk2WJhfUJRFf8e7pTfmZx3w6Xueb/T3BkANETwVtseuEobBEk1yK63orhzSQCK3NrUbcH5Fqr8z229vuBCqd6XGW2tBrCK0uAofXX4dzm7oSbhVy7YvrqONPHQVAKYlNL4uAz1qLl7p8rFwVlov3twyJd5kUnuDztFXcNV5htfB7fkc849KaggRoUlZxygFH8zo6bnf45LnI936gK6tGOw==
-X-YMail-OSG: ii_.MaEVM1nvgWe0GsyM6Of6Zpk645KkMzM7nQpJnOsQSPGBJJ90rEujIBbyKRg
- kVyKaApKuH.4fWlf4KYdZah3Fft9s63vjTqbTK13rJDVCV.fe4SYHe0zw5n0eyAUY3Fjpq9MKcMC
- sxDKHscbR6jaE4GoSWAZloNZuh7TCeabsLbqxlOXHZL29LJz0WyShg9ep.967WWF0YjiFzKdh5NZ
- 14kOG54ipEr3s.BJSQUvgfdk7yd0GkNEtrbgDHFU.Z6NXJqvpmSZQOG9S0u0Hd4Ofzlr2YC1vfH4
- 0KFfUYUFtz_hkRHzGf3dvzA6Rdw1AqgBCV1csOQNTsOZN_Bppjrc7AYUTH1GHjABjdZeZY0D9l7o
- e_q1oIcVbFoWrgZ59lcTvAEm88Zh3mHQ1gckBSz.vqENRHiUwOGreC10JDs7QTwJtKpl2N3I.Ph6
- XcPJ1dwVHqjNMA7tQoZWdPQnhRv1mGdeaydvD5GOv5yHUJmeuomt8eIEeyNOPx64n.uzOaDc4eIJ
- 8hGor86kJRZ0DxA6wa9Zk_W3HPaYMfeHHCSpzpA3ElysSdPwG88SFrJaYCHqWlQG9vA2x3woz6TV
- HfaB32_AQ4tNejPYstZwF.cWFj..yOh3A2OmTEvd6eUTtFdj5Z5yEtWYe5s4M_5FvkOofKu40uNi
- aJTLNGqz695bOF.3yHetCYophd14AdfLuk._caG8xqgqk5HSupjAhXSxqmD6XsboqIEYv5_4CB45
- W7NTDlo.hqgZ1walI4aU9RIy9n_09tLpO_cTfZk2FknQa.v_jiFt_5rEjMJXPLS94AxbHqAlH6fO
- z6b2zdP0nxq7YJ15FHq82eRuU0OqveeGiutDldANpCxyxDKg_x8BnSos9Z5WwXiPCu91_WpnT2mq
- 1yefETkRbNYCFOFDgFm1NzZzoh0S2wHN1rYwY3hm7.vgcACdODgG7dEvMKfkMGwBCrXknPKI1vSI
- ms8q3pnzNNT8V8w_GCeWGF9Dn7cm781jO3bT3X6K4rOqsZwSqL5b0usGoXBfyBtZrBCgVHueEutO
- YKKrqA8TyAmVlF3aIgiCK8MDEz64hveU9Rg0FpidWfHPuLbKUU.tX50OiK8aAt6mN1C6rlpCmmYc
- YF94sDFfpUpS09VSpor5YA5P8VX_vRDj7MpRs1uBr
-Received: from sonic.gate.mail.ne1.yahoo.com by sonic309.consmr.mail.sg3.yahoo.com with HTTP; Tue, 19 Mar 2019 20:03:21 +0000
-Received: from 103.7.128.210 (EHLO localhost.localdomain) ([103.7.128.210])
-          by smtp417.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID 515ac56d8da6f887d801b806047a4e3d;
-          Tue, 19 Mar 2019 20:03:19 +0000 (UTC)
-From: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-To: johan@kernel.org,
-	elder@kernel.org,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-Subject: [PATCH] staging: greybus: Remove parentheses around variable
-Date: Wed, 20 Mar 2019 01:33:08 +0530
-Message-Id: <20190319200308.10710-1-nishka.dasgupta@yahoo.com>
-X-Mailer: git-send-email 2.19.1
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CthBM1bj;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wm1-x343.google.com with SMTP id b203-v6so9679437wme.5
+        for <outreachy-kernel@googlegroups.com>; Mon, 05 Nov 2018 14:52:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=4UfQMuXz12XAEfPyxCrxXrCVZ5PYIyhMf7TdXah5gkw=;
+        b=CthBM1bjXInxpoWCMS7yrtUbzqhEMq2dh9sjuCegei++iA9IutPIWI1QJEcoyccfBW
+         JyLbrxPtueyP9R7Sfq3wi1FPq9+dAbG0CSwo6N//HlM61fR8dOF3JGUNBTX+6OKZasS0
+         kuk5nypNC/hXl3visBRG4sjYconuzaxSBZ63b72WMwbRthbp76YBlcVPV+tmAknUJItx
+         E/yqm0uErP+IEGLPd3RtV5OG5B5MbUfkHZanDeNKwb6HH/bbljSlGtK/w6mAK2R2OHus
+         Rt7Ezs9JJ5mFhafLZ191ahhKn1vzFqYaDUQeuP4gtcT+ftXHHeKOi93LClwGc5K62Soq
+         WF9Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=4UfQMuXz12XAEfPyxCrxXrCVZ5PYIyhMf7TdXah5gkw=;
+        b=tRNPcKCzKkba9k8IZ2O19nu6W2aJZpPK+VzTDE98AfnoRlvJqe9azfI0eN5AYafIbw
+         rcOap2mmAxPtw4aui3CQxKTsR3EUovyjofv0xIi5/JgCAiXAqL5UaLj5xgCaUOemHUKS
+         qa80AwAehrZtFRcnZdjO9uVmfBMfHWcCZUb5zUrp/J6e/3/Tyh7WfxiLqTmCtmXFdHy2
+         oFnbBcXaxrEng2YmXerqgQLf/qiLTG22quoa7jFZCpUR7Yss/IPof95M25ZqQikRCi3a
+         drzlvroXa9oCacJBu9+WWAdOuHVmaeK6eRXBnkgyXcQ/MyiFjD09qFBE5tO9iBqvVmXT
+         Tl8g==
+X-Gm-Message-State: AGRZ1gL2zzax1sYMXep+rCOIAKhdJ7/B8RBdY5tdBgTUAgxkmD75RuJG
+	U1/3AJmuXW9XUOwXZugB4g==
+X-Received: by 2002:a1c:9ed2:: with SMTP id h201-v6mr43538wme.31.1541458320321;
+        Mon, 05 Nov 2018 14:52:00 -0800 (PST)
+Return-Path: <jbi.octave@gmail.com>
+Received: from localhost.localdomain (cpc114784-brad22-2-0-cust310.17-1.cable.virginm.net. [92.239.7.55])
+        by smtp.gmail.com with ESMTPSA id x8-v6sm106139903wrd.54.2018.11.05.14.51.59
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 05 Nov 2018 14:51:59 -0800 (PST)
+From: Irenge Jules Bashizi <jbi.octave@gmail.com>
+To: mchehab@kernel.org
+Cc: gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com,
+	Irenge Jules Bashizi <jbi.octave@gmail.com>
+Subject: [PATCH] staging: davinci_vpfe: Add spdx license identifier
+Date: Mon,  5 Nov 2018 22:51:46 +0000
+Message-Id: <20181105225146.27284-1-jbi.octave@gmail.com>
+X-Mailer: git-send-email 2.17.2
 
-Remove parentheses around variable.
+Add spdx license identifier to fix all warnings of malformed license.
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+Signed-off-by: Irenge Jules Bashizi <jbi.octave@gmail.com>
 ---
- drivers/staging/greybus/bundle.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h  | 1 +
+ drivers/staging/media/davinci_vpfe/dm365_ipipe.c        | 1 +
+ drivers/staging/media/davinci_vpfe/dm365_ipipe.h        | 1 +
+ drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c     | 1 +
+ drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.h     | 1 +
+ drivers/staging/media/davinci_vpfe/dm365_ipipeif.c      | 1 +
+ drivers/staging/media/davinci_vpfe/dm365_ipipeif.h      | 1 +
+ drivers/staging/media/davinci_vpfe/dm365_ipipeif_user.h | 1 +
+ drivers/staging/media/davinci_vpfe/dm365_isif.c         | 1 +
+ drivers/staging/media/davinci_vpfe/dm365_isif.h         | 1 +
+ drivers/staging/media/davinci_vpfe/dm365_isif_regs.h    | 1 +
+ drivers/staging/media/davinci_vpfe/dm365_resizer.c      | 1 +
+ drivers/staging/media/davinci_vpfe/dm365_resizer.h      | 1 +
+ drivers/staging/media/davinci_vpfe/vpfe.h               | 1 +
+ drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c    | 1 +
+ drivers/staging/media/davinci_vpfe/vpfe_mc_capture.h    | 1 +
+ drivers/staging/media/davinci_vpfe/vpfe_video.c         | 1 +
+ drivers/staging/media/davinci_vpfe/vpfe_video.h         | 1 +
+ 18 files changed, 18 insertions(+)
 
-diff --git a/drivers/staging/greybus/bundle.c b/drivers/staging/greybus/bundle.c
-index 376ca53f0d83..3f702db9e098 100644
---- a/drivers/staging/greybus/bundle.c
-+++ b/drivers/staging/greybus/bundle.c
-@@ -32,7 +32,7 @@ static ssize_t state_show(struct device *dev, struct device_attribute *attr,
- {
- 	struct gb_bundle *bundle = to_gb_bundle(dev);
- 
--	if (!(bundle->state))
-+	if (!bundle->state)
- 		return sprintf(buf, "\n");
- 
- 	return sprintf(buf, "%s\n", bundle->state);
+diff --git a/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h b/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h
+index 7cc115c9ebe6..69594bb70a2b 100644
+--- a/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h
++++ b/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 */
+ /*
+  * Copyright (C) 2012 Texas Instruments Inc
+  *
+diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
+index 30cb98d48565..1419c6b9a270 100644
+--- a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
++++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
+@@ -1,3 +1,4 @@
++// SPDX-License-Identifier: GPL-2.0
+ /*
+  * Copyright (C) 2012 Texas Instruments Inc
+  *
+diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe.h b/drivers/staging/media/davinci_vpfe/dm365_ipipe.h
+index d81b29e19309..39bd29a3aa89 100644
+--- a/drivers/staging/media/davinci_vpfe/dm365_ipipe.h
++++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 */
+ /*
+  * Copyright (C) 2012 Texas Instruments Inc
+  *
+diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c b/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c
+index dbb7ddc70bef..76d1d0fe982c 100644
+--- a/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c
++++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c
+@@ -1,3 +1,4 @@
++// SPDX-License-Identifier: GPL-2.0
+ /*
+  * Copyright (C) 2012 Texas Instruments Inc
+  *
+diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.h b/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.h
+index 7ee157233047..4728aff84480 100644
+--- a/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.h
++++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0*/
+ /*
+  * Copyright (C) 2012 Texas Instruments Inc
+  *
+diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c b/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c
+index a53231b08d30..24bb1e93af23 100644
+--- a/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c
++++ b/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c
+@@ -1,3 +1,4 @@
++// SPDX-License-Identifier: GPL-2.0
+ /*
+  * Copyright (C) 2012 Texas Instruments Inc
+  *
+diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipeif.h b/drivers/staging/media/davinci_vpfe/dm365_ipipeif.h
+index cea3d61335af..a27b76fb593c 100644
+--- a/drivers/staging/media/davinci_vpfe/dm365_ipipeif.h
++++ b/drivers/staging/media/davinci_vpfe/dm365_ipipeif.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 */
+ /*
+  * Copyright (C) 2012 Texas Instruments Inc
+  *
+diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipeif_user.h b/drivers/staging/media/davinci_vpfe/dm365_ipipeif_user.h
+index e2a69b59554a..0296ef5a1116 100644
+--- a/drivers/staging/media/davinci_vpfe/dm365_ipipeif_user.h
++++ b/drivers/staging/media/davinci_vpfe/dm365_ipipeif_user.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0*/
+ /*
+  * Copyright (C) 2012 Texas Instruments Inc
+  *
+diff --git a/drivers/staging/media/davinci_vpfe/dm365_isif.c b/drivers/staging/media/davinci_vpfe/dm365_isif.c
+index 39eb0819ab4e..728a443ea60d 100644
+--- a/drivers/staging/media/davinci_vpfe/dm365_isif.c
++++ b/drivers/staging/media/davinci_vpfe/dm365_isif.c
+@@ -1,3 +1,4 @@
++// SPDX-License-Identifier: GPL-2.0
+ /*
+  * Copyright (C) 2012 Texas Instruments Inc
+  *
+diff --git a/drivers/staging/media/davinci_vpfe/dm365_isif.h b/drivers/staging/media/davinci_vpfe/dm365_isif.h
+index 89e814e9c0d7..732da81a1552 100644
+--- a/drivers/staging/media/davinci_vpfe/dm365_isif.h
++++ b/drivers/staging/media/davinci_vpfe/dm365_isif.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0*/
+ /*
+  * Copyright (C) 2012 Texas Instruments Inc
+  *
+diff --git a/drivers/staging/media/davinci_vpfe/dm365_isif_regs.h b/drivers/staging/media/davinci_vpfe/dm365_isif_regs.h
+index 64fbb459baa2..915a05baa7ab 100644
+--- a/drivers/staging/media/davinci_vpfe/dm365_isif_regs.h
++++ b/drivers/staging/media/davinci_vpfe/dm365_isif_regs.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0*/
+ /*
+  * Copyright (C) 2012 Texas Instruments Inc
+  *
+diff --git a/drivers/staging/media/davinci_vpfe/dm365_resizer.c b/drivers/staging/media/davinci_vpfe/dm365_resizer.c
+index 72bbbc34d18c..ca1ddae50c22 100644
+--- a/drivers/staging/media/davinci_vpfe/dm365_resizer.c
++++ b/drivers/staging/media/davinci_vpfe/dm365_resizer.c
+@@ -1,3 +1,4 @@
++// SPDX-License-Identifier: GPL-2.0
+ /*
+  * Copyright (C) 2012 Texas Instruments Inc
+  *
+diff --git a/drivers/staging/media/davinci_vpfe/dm365_resizer.h b/drivers/staging/media/davinci_vpfe/dm365_resizer.h
+index cf560a33d862..17eba2e35f23 100644
+--- a/drivers/staging/media/davinci_vpfe/dm365_resizer.h
++++ b/drivers/staging/media/davinci_vpfe/dm365_resizer.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0*/
+ /*
+  * Copyright (C) 2012 Texas Instruments Inc
+  *
+diff --git a/drivers/staging/media/davinci_vpfe/vpfe.h b/drivers/staging/media/davinci_vpfe/vpfe.h
+index 0587bc52a840..2e03b95b937f 100644
+--- a/drivers/staging/media/davinci_vpfe/vpfe.h
++++ b/drivers/staging/media/davinci_vpfe/vpfe.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0*/
+ /*
+  * Copyright (C) 2012 Texas Instruments Inc
+  *
+diff --git a/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c b/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
+index bdf6ee5ad96c..da2b5dcbd269 100644
+--- a/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
++++ b/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
+@@ -1,3 +1,4 @@
++// SPDX-License-Identifier: GPL-2.0
+ /*
+  * Copyright (C) 2012 Texas Instruments Inc
+  *
+diff --git a/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.h b/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.h
+index 8ad8d743f4e0..f232acc3e238 100644
+--- a/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.h
++++ b/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0*/
+ /*
+  * Copyright (C) 2012 Texas Instruments Inc
+  *
+diff --git a/drivers/staging/media/davinci_vpfe/vpfe_video.c b/drivers/staging/media/davinci_vpfe/vpfe_video.c
+index 5e9769ea8a50..204bc238d67b 100644
+--- a/drivers/staging/media/davinci_vpfe/vpfe_video.c
++++ b/drivers/staging/media/davinci_vpfe/vpfe_video.c
+@@ -1,3 +1,4 @@
++// SPDX-License-Identifier: GPL-2.0
+ /*
+  * Copyright (C) 2012 Texas Instruments Inc
+  *
+diff --git a/drivers/staging/media/davinci_vpfe/vpfe_video.h b/drivers/staging/media/davinci_vpfe/vpfe_video.h
+index 4bbd219e8329..2be00e782505 100644
+--- a/drivers/staging/media/davinci_vpfe/vpfe_video.h
++++ b/drivers/staging/media/davinci_vpfe/vpfe_video.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0*/
+ /*
+  * Copyright (C) 2012 Texas Instruments Inc
+  *
 -- 
-2.19.1
+2.17.2
 
 
