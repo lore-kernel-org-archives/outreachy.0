@@ -1,191 +1,171 @@
-X-GM-THRID: 6396716918154199040
-X-Received: by 10.157.82.78 with SMTP id q14mr12933040otg.80.1489351717407;
-        Sun, 12 Mar 2017 13:48:37 -0700 (PDT)
+X-GM-THRID: 6620726648786386944
+X-Received: by 2002:a5e:8c0f:: with SMTP id n15-v6mr5521063ioj.0.1541519686931;
+        Tue, 06 Nov 2018 07:54:46 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.160.68 with SMTP id j65ls3703279ioe.35.gmail; Sun, 12 Mar
- 2017 13:48:36 -0700 (PDT)
-X-Received: by 10.99.3.78 with SMTP id 75mr13020701pgd.7.1489351716588;
-        Sun, 12 Mar 2017 13:48:36 -0700 (PDT)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id 2si2858523pfx.8.2017.03.12.13.48.36
+Received: by 2002:a24:6756:: with SMTP id u83-v6ls3058501itc.5.gmail; Tue, 06
+ Nov 2018 07:54:45 -0800 (PST)
+X-Google-Smtp-Source: AJdET5fBsVlWKDiHvlHsxpQBUPY7nMcsqIf953aav3ap33OOUeaPPk9PLzU1P8NV67mqH1K2SAvO
+X-Received: by 2002:a24:3303:: with SMTP id k3-v6mr1972369itk.2.1541519685903;
+        Tue, 06 Nov 2018 07:54:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541519685; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Zmxugrc6YCcqIQcQd7ddOzz3y+4LDiwSjk+2oLGu/szTweGzMMjdQfualTs3VtSlhZ
+         FMiMBjhZKi4zCUHVoO520erlbGVo5OU5DhkaMo6Y8CzLdLS1P77aHYxqs8jETW89JjZ1
+         2RaoCykKSIdaB5zfPKydPZAX4Q8VV5WEfX+4MN3+DZPcPnbZhxXVGnmt7R9kok+JcAhi
+         LZs5/N8KbPjolbOPPMhiPRpV5iwZP/t/GIIQS2xdAOKoPOIq22UoiqmH359dz9HVwrT0
+         DFbrbv4STQq5PxVMHLuw0D39LLN0BfB+zzfOr9P2z5430GExr7O3xBYwhsFVIlH3Soxa
+         iMuw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=9wAF3g3GnmRVThalUzwGBWNCGnBL14vNC4FtWdiN4yY=;
+        b=fBc6VCY9JOtIz60h5W6xnBiGH9VF7mdGrK11nl9Sg4hFSEFmPU8YaagMQUNbW7SNY1
+         6WrMndhu+42Y71i3R/04f9sDS69bIza48eCS1nODYSZYQ1/Yad4qY53RbzlrCmiB05c9
+         dnbTYG5SgcilS6PaT4vRpeCpc7pLNK1Vvwo2MVzDOXkBZ1odpAX+XqeKXaseOSuWrWuL
+         Q4/8ArxRq6LfLTrFJP7JXRGmOTfwcbF3OKfes4+0+gVGR/CRPQwMmQr8W3zqfozHxg1w
+         x0AWrTAXBKihCGiOFBIKi1fE4Qqp7YbpGWzpVRhnlj4vfirOYRptXns3DLs285K+CpsC
+         a87g==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qBEuqPYq;
+       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <himanshujha199640@gmail.com>
+Received: from mail-pl1-x642.google.com (mail-pl1-x642.google.com. [2607:f8b0:4864:20::642])
+        by gmr-mx.google.com with ESMTPS id x6-v6si1872065iob.5.2018.11.06.07.54.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 12 Mar 2017 13:48:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Tue, 06 Nov 2018 07:54:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) client-ip=2607:f8b0:4864:20::642;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id 67so16892825pfg.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 12 Mar 2017 13:48:36 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qBEuqPYq;
+       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x642.google.com with SMTP id q19-v6so3398644pll.7
+        for <outreachy-kernel@googlegroups.com>; Tue, 06 Nov 2018 07:54:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=7/8lNgPqBSCnRqE9COlXsXU8jjW9fosR6QqvyuRrXKo=;
-        b=qQsDMWXuEdLVUACeo7WzQGg7orN/gVxfOp1duYdKoq27+vNKwlRU/St3REDsTvzTWu
-         CzAzZ/jyvpkGNqUBash3Os+XcZLn1kfM1t3yK7KqYYws4Wf0DONlaK7ZFhLi+5Anl3nU
-         u6xNWz19CrTytiOXtdDvRQY7s+algWZtlUBA2E+7kQrYquwUvSZ/3mKeeTQVDzeHhkUE
-         8Xrz4oz7fLEGlDNivvPgaACVZkHFd1+GD+IEPvaznYCa/jaC1x6t29r1SVHSXmJ+3/RJ
-         tgnmYZS4agR80RqGg2VVgHc2MDSWPgtWQwYSiWGKEfOf2KjSP+q3VqEhN90YxqA0KTyY
-         f6FQ==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=9wAF3g3GnmRVThalUzwGBWNCGnBL14vNC4FtWdiN4yY=;
+        b=qBEuqPYqL6u7k0DNVye0cTDB0OUPHbuuPhPJvw8ufQ1Q9w8wMdriDBQ+NQlxLbxf13
+         F9slGh4ZhrskdzbsdI6sjlfePxio/P86QD2UcexZlhUNzKukPPRGeHVvF1ZWCphNPnLk
+         MbgUIanE+Rxx+HQn6AfA2lGamO8yhLCq+xS5aD+uTRoToAE+HukbPSWZeMd4JOqGQ2+s
+         Rnt2kwYqkaztfWAVFmtFuipOPg3kNamdzz5ZqY3lwxDvyNyyOezO+6FTPE32ANMhmn9h
+         /No4LqOkHy2offpq4ycr4hbpEDs9O+mTqhQv43YiZqyJg7l+QnU62adh80VWX9CEtYfv
+         lfGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=7/8lNgPqBSCnRqE9COlXsXU8jjW9fosR6QqvyuRrXKo=;
-        b=XNIGX7UoQasPJQ9h6/9AoTfgLcpYb/GDvQSdmTIk6Y96Had6Lsz4vdkTdh9AbDdM65
-         YdsOSO1NJT6djTinpKI6jKWJ8SXRFeDEWWA1LAns4vfd4elyGQiHgz1+tJOrw70a+A7+
-         8DLESK9YqJSdqduD/ZJSpr+dl2+f+Ya9TF8nCgji8EZstYMyClVXVTw+FnIeSQnafvAA
-         Rp9IJa7zn65ux8XFg+JE9zKDNzSc3USnZmzDN+VnvONAcVrUUNczbKDfb5yHh5pYDDnV
-         mth8rvsYQAkIPB5ao1VreXdlhOe7gGrydzChoSamNlPB6b+ILYKxxG/1GTimlw3XDdtt
-         VMVA==
-X-Gm-Message-State: AMke39lE8XKZSSvVxxJuKSKJuprJkgqqOm18x0kGSfqi1+G7TJHWAajm+OL4JgWGZFJ91g==
-X-Received: by 10.84.248.4 with SMTP id p4mr42329293pll.72.1489351716301;
-        Sun, 12 Mar 2017 13:48:36 -0700 (PDT)
-Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id t6sm29903235pgt.8.2017.03.12.13.48.33
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 12 Mar 2017 13:48:35 -0700 (PDT)
-From: Gargi Sharma <gs051095@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: lars@metafoo.de,
-	Michael.Hennerich@analog.com,
-	jic23@kernel.org,
-	knaack.h@gmx.de,
-	pmeerw@pmeerw.net,
-	linux-iio@vger.kernel.org,
-	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH] staging: iio: adc: Replace mlock with driver private lock
-Date: Mon, 13 Mar 2017 02:15:46 +0530
-Message-Id: <1489351546-21008-1-git-send-email-gs051095@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=9wAF3g3GnmRVThalUzwGBWNCGnBL14vNC4FtWdiN4yY=;
+        b=T658ALtv/+r6D8OYqWq7aZjiePBMiPS0KQJNozSZ7xnR3nK2BkFKv+KYN8fGcW63P6
+         pulvHjzIciKhgI9ff1wHUTo/G7gQo+WzQGMU19l4thjUY5zmhfEyR6+zJi7v8Ou9yU4h
+         fePPibL+uG3JOqwj2rkIxLlZhOR0t2iAF7nZLjO1HuEprUDCvaqCc6PerMKtDV0GyEZ3
+         0q4UqM1vTpa+khOSS9nRq19DOX001jlfp+S4Wp4vrTZ6Y3WeUveBJBBk169vFc1FjHrK
+         9JhZ2Envzs+LwbSDg36lzmu+MrhagnycI/nrJt4tPvWyMhCA9g7vowgxVTuHMhnnx3pE
+         m3TA==
+X-Gm-Message-State: AGRZ1gKccG9qR3tn4HZ//YjZNypjqmh4byx0W7w6b0ppA5Y0hR+AfCav
+	0OiuwVd5lXbpnulqgCn3fNE=
+X-Received: by 2002:a17:902:263:: with SMTP id 90-v6mr26755668plc.190.1541519685106;
+        Tue, 06 Nov 2018 07:54:45 -0800 (PST)
+Return-Path: <himanshujha199640@gmail.com>
+Received: from himanshu-Vostro-3559 ([103.233.116.134])
+        by smtp.gmail.com with ESMTPSA id o81-v6sm5688464pfa.170.2018.11.06.07.54.42
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 06 Nov 2018 07:54:44 -0800 (PST)
+Date: Tue, 6 Nov 2018 21:24:39 +0530
+From: Himanshu Jha <himanshujha199640@gmail.com>
+To: Ioannis Valasakis <code@wizofe.uk>
+Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH v2 2/2] staging: davinci: add SPDX
+ License Identifier
+Message-ID: <20181106155439.GA21830@himanshu-Vostro-3559>
+References: <cover.1541507973.git.code@wizofe.uk>
+ <c2b97c7922c4b66b3ebff295592689f8ed184738.1541507973.git.code@wizofe.uk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <c2b97c7922c4b66b3ebff295592689f8ed184738.1541507973.git.code@wizofe.uk>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-The IIO subsystem is redefining iio_dev->mlock to be used by
-the IIO core only for protecting device operating mode changes.
-ie. Changes between INDIO_DIRECT_MODE, INDIO_BUFFER_* modes.
+On Tue, Nov 06, 2018 at 12:40:58PM +0000, Ioannis Valasakis wrote:
+> Add missing SPDX License Identifier to the source and header files.
+> Reported by checkpatch.
+> 
+> Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
+> ---
+>  drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h  | 1 +
+>  drivers/staging/media/davinci_vpfe/dm365_ipipe.c        | 1 +
+>  drivers/staging/media/davinci_vpfe/dm365_ipipe.h        | 1 +
+>  drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c     | 1 +
+>  drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.h     | 1 +
+>  drivers/staging/media/davinci_vpfe/dm365_ipipeif.c      | 1 +
+>  drivers/staging/media/davinci_vpfe/dm365_ipipeif.h      | 1 +
+>  drivers/staging/media/davinci_vpfe/dm365_ipipeif_user.h | 1 +
+>  drivers/staging/media/davinci_vpfe/dm365_isif.c         | 1 +
+>  drivers/staging/media/davinci_vpfe/dm365_isif.h         | 1 +
+>  drivers/staging/media/davinci_vpfe/dm365_isif_regs.h    | 1 +
+>  drivers/staging/media/davinci_vpfe/dm365_resizer.c      | 1 +
+>  drivers/staging/media/davinci_vpfe/dm365_resizer.h      | 1 +
+>  drivers/staging/media/davinci_vpfe/vpfe.h               | 1 +
+>  drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c    | 1 +
+>  drivers/staging/media/davinci_vpfe/vpfe_mc_capture.h    | 1 +
+>  drivers/staging/media/davinci_vpfe/vpfe_video.c         | 1 +
+>  drivers/staging/media/davinci_vpfe/vpfe_video.h         | 1 +
+>  18 files changed, 18 insertions(+)
+> 
+> diff --git a/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h b/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h
+> index fefb0f1f4695..8d772029c91d 100644
+> --- a/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h
+> +++ b/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h
+> @@ -1,3 +1,4 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+>  /*
+>   * Copyright (C) 2012 Texas Instruments Inc
+>   *
 
-In this driver, mlock was being used to protect hardware state
-changes.  Replace it with a lock in the devices global data.
-This was done using Coccinelle Script.
+diff --git a/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h b/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h
+index 7cc115c9ebe6..61ad647b15c2 100644
+--- a/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h
++++ b/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h
+@@ -1,19 +1,7 @@
++/* SPDX-License-Identifier: GPL-2.0 */
+ /*
+  * Copyright (C) 2012 Texas Instruments Inc
+  *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License as
+- * published by the Free Software Foundation version 2.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+- *
+  * Contributors:
+  *      Manjunath Hadli <manjunath.hadli@ti.com>
+  *      Prabhakar Lad <prabhakar.lad@ti.com>
 
-@r1@
-identifier xxx_state;
-@@
-struct xxx_state {
+=> Documentation/process/license-rules.rst
+   ---------------------------------------
+
+... 
+..
+
+" 45 An alternative to boilerplate text is the use of Software Package Data
+  46 Exchange (SPDX) license identifiers in each source file. "
+
+..
 ...
-+ struct mutex          lock; /* protect sensor state */
-};
 
-@r2@
-expression e;
-@@
-- mutex_lock(e);
-+ mutex_lock(&st->lock);
 
-@r3@
-expression e;
-@@
-- mutex_unlock(e);
-+ mutex_unlock(&st->lock);
-
-Signed-off-by: Gargi Sharma <gs051095@gmail.com>
----
- drivers/staging/iio/adc/ad7280a.c | 21 +++++++++++----------
- 1 file changed, 11 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/staging/iio/adc/ad7280a.c b/drivers/staging/iio/adc/ad7280a.c
-index ee679ac..27a3ce3 100644
---- a/drivers/staging/iio/adc/ad7280a.c
-+++ b/drivers/staging/iio/adc/ad7280a.c
-@@ -136,6 +136,7 @@ struct ad7280_state {
- 	unsigned char			cb_mask[AD7280A_MAX_CHAIN];
- 
- 	__be32				buf[2] ____cacheline_aligned;
-+	struct mutex			lock;  /* protect sensor state */
- };
- 
- static void ad7280_crc8_build_table(unsigned char *crc_tab)
-@@ -410,7 +411,7 @@ static ssize_t ad7280_store_balance_sw(struct device *dev,
- 	devaddr = this_attr->address >> 8;
- 	ch = this_attr->address & 0xFF;
- 
--	mutex_lock(&indio_dev->mlock);
-+	mutex_lock(&st->lock);
- 	if (readin)
- 		st->cb_mask[devaddr] |= 1 << (ch + 2);
- 	else
-@@ -418,7 +419,7 @@ static ssize_t ad7280_store_balance_sw(struct device *dev,
- 
- 	ret = ad7280_write(st, devaddr, AD7280A_CELL_BALANCE,
- 			   0, st->cb_mask[devaddr]);
--	mutex_unlock(&indio_dev->mlock);
-+	mutex_unlock(&st->lock);
- 
- 	return ret ? ret : len;
- }
-@@ -433,10 +434,10 @@ static ssize_t ad7280_show_balance_timer(struct device *dev,
- 	int ret;
- 	unsigned int msecs;
- 
--	mutex_lock(&indio_dev->mlock);
-+	mutex_lock(&st->lock);
- 	ret = ad7280_read(st, this_attr->address >> 8,
- 			  this_attr->address & 0xFF);
--	mutex_unlock(&indio_dev->mlock);
-+	mutex_unlock(&st->lock);
- 
- 	if (ret < 0)
- 		return ret;
-@@ -466,11 +467,11 @@ static ssize_t ad7280_store_balance_timer(struct device *dev,
- 	if (val > 31)
- 		return -EINVAL;
- 
--	mutex_lock(&indio_dev->mlock);
-+	mutex_lock(&st->lock);
- 	ret = ad7280_write(st, this_attr->address >> 8,
- 			   this_attr->address & 0xFF,
- 			   0, (val & 0x1F) << 3);
--	mutex_unlock(&indio_dev->mlock);
-+	mutex_unlock(&st->lock);
- 
- 	return ret ? ret : len;
- }
-@@ -655,7 +656,7 @@ static ssize_t ad7280_write_channel_config(struct device *dev,
- 
- 	val = clamp(val, 0L, 0xFFL);
- 
--	mutex_lock(&indio_dev->mlock);
-+	mutex_lock(&st->lock);
- 	switch ((u32)this_attr->address) {
- 	case AD7280A_CELL_OVERVOLTAGE:
- 		st->cell_threshhigh = val;
-@@ -674,7 +675,7 @@ static ssize_t ad7280_write_channel_config(struct device *dev,
- 	ret = ad7280_write(st, AD7280A_DEVADDR_MASTER,
- 			   this_attr->address, 1, val);
- 
--	mutex_unlock(&indio_dev->mlock);
-+	mutex_unlock(&st->lock);
- 
- 	return ret ? ret : len;
- }
-@@ -792,13 +793,13 @@ static int ad7280_read_raw(struct iio_dev *indio_dev,
- 
- 	switch (m) {
- 	case IIO_CHAN_INFO_RAW:
--		mutex_lock(&indio_dev->mlock);
-+		mutex_lock(&st->lock);
- 		if (chan->address == AD7280A_ALL_CELLS)
- 			ret = ad7280_read_all_channels(st, st->scan_cnt, NULL);
- 		else
- 			ret = ad7280_read_channel(st, chan->address >> 8,
- 						  chan->address & 0xFF);
--		mutex_unlock(&indio_dev->mlock);
-+		mutex_unlock(&st->lock);
- 
- 		if (ret < 0)
- 			return ret;
 -- 
-2.7.4
-
+Himanshu Jha
+Undergraduate Student
+Department of Electronics & Communication
+Guru Tegh Bahadur Institute of Technology
 
