@@ -1,162 +1,355 @@
-X-GM-THRID: 6469100544041418752
-X-Received: by 10.46.85.13 with SMTP id j13mr142265ljb.5.1506204843256;
-        Sat, 23 Sep 2017 15:14:03 -0700 (PDT)
+X-GM-THRID: 6620561568029474816
+X-Received: by 2002:a19:ed08:: with SMTP id y8mr1975158lfy.10.1541487854922;
+        Mon, 05 Nov 2018 23:04:14 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.143.66 with SMTP id r63ls632294wmd.7.canary-gmail; Sat, 23
- Sep 2017 15:14:02 -0700 (PDT)
-X-Received: by 10.28.229.16 with SMTP id c16mr175535wmh.13.1506204842243;
-        Sat, 23 Sep 2017 15:14:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506204842; cv=none;
+Received: by 2002:ac2:4145:: with SMTP id c5-v6ls2002857lfi.13.gmail; Mon, 05
+ Nov 2018 23:04:14 -0800 (PST)
+X-Google-Smtp-Source: AJdET5e8BZN7lCUoTNgNb53GPBkLnb/1e27UJsItyTgRDzyvMBOE1q5xMAQWwwwlgQsY1nclEA2w
+X-Received: by 2002:a19:a28f:: with SMTP id l137-v6mr1982845lfe.14.1541487854020;
+        Mon, 05 Nov 2018 23:04:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541487853; cv=none;
         d=google.com; s=arc-20160816;
-        b=VNcUlX31GeylH6QeFwmLmm3gZNmJug61uIdLDeRFfJleaVxuFVdlNkb4NLRQ3xLdyq
-         IknTo9yF+mqFx/k0GUtCLoYqGmBVhiEZ8VsZMsQzAToxgTcfLIZR7b/ji6Nps5nHP6xQ
-         fgj0F5pXdXaPXkLQkDVZvR+YfCxnxU80unfGX1WaREOo1mE20X5isqeZP0f3sBjKJZMd
-         v4puVuvpNkiUj4k1QCv3whTKp+YavEMQXe0IWavZE5zEiELgZpTiJfPXhD60sYnXzvio
-         5gZ/mXnAHVqwTbvAoVJcfHObQOhM7KXkpq2ks3nmnU/pr58T8GmUnGvFGIiswjIkkWiR
-         pKWw==
+        b=w8IDa5eNVFsn0x2vip/6LgTcNOXFPAleH6vkgTtvcVyG5T6EG7PwbTBJ5KfL3rL7B8
+         Fakf9UBI4kvpOnRaWdiQJ+2kLJY29BzudKzsstw0WCOoVa9efrH3Jm8zeVwVYsDCsrKC
+         cUaAr9V+GEbvDQmK6pckVpqdXF2Y2Gsij5qe3QQLPYPGjEhgGhIrkaLM6Qen0bRfwsYx
+         aT3KY+gc5j/+WUH7Hm6RiPQKLXKgUHEAvWjiCIRY9/VHNJoXtrlIVdG5F0q17vdB/h38
+         xDF8Cq2RFHxjJGqnf9Z41/Q0Ck2z1ljQOzG4NXqKDZDcO4jl8u7qB48CNz7SdltqhGtF
+         w4ZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=ZA18o1KZJS+w/COeAGt+qwC6fmh53UHYieHx6CTRgFw=;
-        b=E/23ZocUZpMOUEs/BEna4nPVs2HKD5AH8kJB2z5VC5Zri4yaJPwPmAc9QuEveSjHFl
-         DWEa0MDY9kYTvgnjwa5DD9r3WN17rLH74QXXNUOiO8jiUDUdx2xkv9F2dJ1DGXwsk3mR
-         wHYBZiZsAj2dzxIRtmAqyAdmOgUBXh9K82wcxHJ3Tj6wMS3dOSvs7C+Gdb5YOfcM2sv5
-         KqzP0IQqwKDQ4abOu3V5vLni8Aw7JjTjI4KVEp7PAWc/re8SnupxD5bKJvsy1rAfeAox
-         r6phLAlQtQXbv0qGWm5ikEvNy7zdi2OzznLuLsl1XOIcq7UIANDCmMgZqanghScBDxcY
-         dDVw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=aapWX8DW2nm5QkxSPIyNorDg1nBv7+avVybr5iXee0Q=;
+        b=hj5VfzlaivJoxTBEYld9S0N77xMyqYMcnkcFo0+9L/haYM8/o6DdIssdYhNwnhtWkD
+         RuoZ9xXF0M6XlhRgiUZdn2AzfNhufng0Sb5ZvopeZyMMTMSRJY+bmLBpeWDIPG9VHtJZ
+         Afy1HmhQPyCAF3xpbo/3FcgSHkjTyDOD2b9Fx2K9zITf8OvMDdZ6/uqsRC5N8gWmSFUU
+         LTzWGXStvcINPrF3iiPWdNfla9c6A1DYWFYj9U6nsHKO9ixDY/dNalEznShbRVFDO7vY
+         Wbev3dqso06B7mZMQNZTF33yeFQqJA5sIstjApDlpLRXBhMCN8w4sMvlA0mEsyVMjYeq
+         GuSQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jBDezf7A;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from mail-wr0-x241.google.com (mail-wr0-x241.google.com. [2a00:1450:400c:c0c::241])
-        by gmr-mx.google.com with ESMTPS id m74si187685wma.0.2017.09.23.15.14.02
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id t5-v6si322863lje.3.2018.11.05.23.04.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Sep 2017 15:14:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) client-ip=2a00:1450:400c:c0c::241;
+        Mon, 05 Nov 2018 23:04:13 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jBDezf7A;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x241.google.com with SMTP id g50so2291675wra.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 23 Sep 2017 15:14:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=ZA18o1KZJS+w/COeAGt+qwC6fmh53UHYieHx6CTRgFw=;
-        b=jBDezf7A1MUHKeiIX9WH355ccEvJN9VNK7YiMD01Lp0K4pAS3bWhC5WNeC96qI6Ocu
-         DNSpLLrBo0GnfQbLONNDQTm2fmT7Gl1rMvjiNiBk3lbRntiPZsWYPl24EYb7wnb6pKAq
-         l+hcmvJXUCHOVXH8BkYcxfYXO6f0HWZxFf/sm0wfzimBbHy+XZqYDlGKRBO50Z//j8Oy
-         T5rt/XoWjdS2Esv2G0TuimVURsTfYqQjE9jlYF5dUOyzMxhanpYzMfjcPjEtYCeE8Dr+
-         HFnqNIakxoj5UvJiFsJzyejqYU5rtWxIedNhkrkNQFVCcB6t56Z7MyNFe/h0L4tOYv9C
-         v+Hg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=ZA18o1KZJS+w/COeAGt+qwC6fmh53UHYieHx6CTRgFw=;
-        b=tO+snNkO3Olb3Y7iec+zEZrjIM1nFLGCLRbwU0XuuH3pAJqItq8y2wNlGQu+ijfoSI
-         9FaUaoFvYB6rlvIZudTcM/hLKzStbSlmJmeOCqp5Mk9HdAq93MZwhEd7BBsp2fbMQcyF
-         6hpJaKknGW/iZLY6k/WfRRVuZcSbsY5kObTldcSRHHhf/sOI8zGmFYW3l/ageQfnrcu8
-         sSYWVwj86YPWHTPHh4BzcOSFcNGst2GC+JROKrVxGB7e2G4JObH0FJu4F32upj+ehUKf
-         ab0F/NgiwpTXHbeQJowNFfAm11tDW7MAjCSnEA4RpddmK6LNRqB3bZnHM8bPTTatC2hl
-         40lA==
-X-Gm-Message-State: AHPjjUgt30WWFo/+ttTfGlVRyYxB2GNAbu2HUobIKURhFXQmXHsd/nb7
-	5+SO3Jbh1XJ6U4Co25o/Gxk=
-X-Google-Smtp-Source: AOwi7QDKzbti0R8firX8dV+ZPNodWC/UwYcZY7SohvyNpHYKvCPu0U91vXvz0V3/V22OvpbregUscw==
-X-Received: by 10.223.176.133 with SMTP id i5mr2582092wra.17.1506204841847;
-        Sat, 23 Sep 2017 15:14:01 -0700 (PDT)
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from fireworks ([86.127.134.154])
-        by smtp.gmail.com with ESMTPSA id j15sm1033804wre.87.2017.09.23.15.14.00
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 23 Sep 2017 15:14:01 -0700 (PDT)
-From: Georgiana Chelu <georgiana.chelu93@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Samuel Ortiz <samuel@sortiz.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] Staging: irda: drivers: Replace seq_printf with seq_puts or seq_putc
-Date: Sun, 24 Sep 2017 01:13:44 +0300
-Message-Id: <20170923221344.18632-1-georgiana.chelu93@gmail.com>
-X-Mailer: git-send-email 2.11.0
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.54,470,1534802400"; 
+   d="scan'208";a="284456875"
+Received: from 89-157-201-244.rev.numericable.fr (HELO hadrien) ([89.157.201.244])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 06 Nov 2018 08:04:12 +0100
+Date: Tue, 6 Nov 2018 08:04:12 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Ioannis Valasakis <code@wizofe.uk>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH 2/2] staging: davinci: remove FSF mail
+ address from copyright
+In-Reply-To: <cad49c8a7691fa02cb0143d00b7a5bbe94c588d7.1541469543.git.code@wizofe.uk>
+Message-ID: <alpine.DEB.2.21.1811060803500.2437@hadrien>
+References: <cover.1541469543.git.code@wizofe.uk> <cad49c8a7691fa02cb0143d00b7a5bbe94c588d7.1541469543.git.code@wizofe.uk>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Replace seq_printf with seq_puts or seq_putc when
-there is no argument list.
 
-Fix the checkpatch warning:
-WARNING: Prefer seq_puts to seq_printf
 
-Signed-off-by: Georgiana Chelu <georgiana.chelu93@gmail.com>
----
- drivers/staging/irda/drivers/vlsi_ir.c | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+On Tue, 6 Nov 2018, Ioannis Valasakis wrote:
 
-diff --git a/drivers/staging/irda/drivers/vlsi_ir.c b/drivers/staging/irda/drivers/vlsi_ir.c
-index 6638784c082e..3dff3c55ddf5 100644
---- a/drivers/staging/irda/drivers/vlsi_ir.c
-+++ b/drivers/staging/irda/drivers/vlsi_ir.c
-@@ -170,10 +170,10 @@ static void vlsi_proc_pdev(struct seq_file *seq, struct pci_dev *pdev)
- 	seq_printf(seq, "pci-power-state: %u\n", (unsigned) pdev->current_state);
- 	seq_printf(seq, "resources: irq=%u / io=0x%04x / dma_mask=0x%016Lx\n",
- 		   pdev->irq, (unsigned)pci_resource_start(pdev, 0), (unsigned long long)pdev->dma_mask);
--	seq_printf(seq, "hw registers: ");
-+	seq_puts(seq, "hw registers: ");
- 	for (i = 0; i < 0x20; i++)
- 		seq_printf(seq, "%02x", (unsigned)inb((iobase+i)));
--	seq_printf(seq, "\n");
-+	seq_putc(seq, '\n');
- }
- 		
- static void vlsi_proc_ndev(struct seq_file *seq, struct net_device *ndev)
-@@ -193,7 +193,7 @@ static void vlsi_proc_ndev(struct seq_file *seq, struct net_device *ndev)
- 	if (!netif_running(ndev))
- 		return;
- 
--	seq_printf(seq, "\nhw-state:\n");
-+	seq_puts(seq, "\nhw-state:\n");
- 	pci_read_config_byte(idev->pdev, VLSI_PCI_IRMISC, &byte);
- 	seq_printf(seq, "IRMISC:%s%s%s uart%s",
- 		(byte&IRMISC_IRRAIL) ? " irrail" : "",
-@@ -274,7 +274,7 @@ static void vlsi_proc_ndev(struct seq_file *seq, struct net_device *ndev)
- 	word = inw(iobase+VLSI_PIO_RCVBCNT) & RCVBCNT_MASK;
- 	seq_printf(seq, "RCVBCNT: rx-fifo filling level = %u\n", word);
- 
--	seq_printf(seq, "\nsw-state:\n");
-+	seq_puts(seq, "\nsw-state:\n");
- 	seq_printf(seq, "IrPHY setup: %d baud - %s encoding\n", idev->baud, 
- 		(idev->mode==IFF_SIR)?"SIR":((idev->mode==IFF_MIR)?"MIR":"FIR"));
- 	sec = div_s64_rem(ktime_us_delta(ktime_get(), idev->last_rx),
-@@ -305,10 +305,10 @@ static void vlsi_proc_ring(struct seq_file *seq, struct vlsi_ring *r)
- 	t = atomic_read(&r->tail) & r->mask;
- 	seq_printf(seq, "head = %d / tail = %d ", h, t);
- 	if (h == t)
--		seq_printf(seq, "(empty)\n");
-+		seq_puts(seq, "(empty)\n");
- 	else {
- 		if (((t+1)&r->mask) == h)
--			seq_printf(seq, "(full)\n");
-+			seq_puts(seq, "(full)\n");
- 		else
- 			seq_printf(seq, "(level = %d)\n", ((unsigned)(t-h) & r->mask)); 
- 		rd = &r->rd[h];
-@@ -355,13 +355,13 @@ static int vlsi_seq_show(struct seq_file *seq, void *v)
- 			seq_printf(seq, "\nPCI controller down - resume_ok = %d\n",
- 				idev->resume_ok);
- 		if (netif_running(ndev) && idev->rx_ring && idev->tx_ring) {
--			seq_printf(seq, "\n--------- RX ring -----------\n\n");
-+			seq_puts(seq, "\n--------- RX ring -----------\n\n");
- 			vlsi_proc_ring(seq, idev->rx_ring);
--			seq_printf(seq, "\n--------- TX ring -----------\n\n");
-+			seq_puts(seq, "\n--------- TX ring -----------\n\n");
- 			vlsi_proc_ring(seq, idev->tx_ring);
- 		}
- 	}
--	seq_printf(seq, "\n");
-+	seq_putc(seq, '\n');
- 	spin_unlock_irqrestore(&idev->lock, flags);
- 
- 	return 0;
--- 
-2.11.0
+> Remove the mail address from the copyright notice as it may change in
+> the future. Reported by checkpatch.
 
+It looks like this results in two consecutive blank lines, which doesn't
+seem desirable.
+
+julia
+
+>
+> Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
+> ---
+>  drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h  | 3 ---
+>  drivers/staging/media/davinci_vpfe/dm365_ipipe.c        | 3 ---
+>  drivers/staging/media/davinci_vpfe/dm365_ipipe.h        | 3 ---
+>  drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c     | 3 ---
+>  drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.h     | 3 ---
+>  drivers/staging/media/davinci_vpfe/dm365_ipipeif.c      | 3 ---
+>  drivers/staging/media/davinci_vpfe/dm365_ipipeif.h      | 3 ---
+>  drivers/staging/media/davinci_vpfe/dm365_ipipeif_user.h | 3 ---
+>  drivers/staging/media/davinci_vpfe/dm365_isif.c         | 3 ---
+>  drivers/staging/media/davinci_vpfe/dm365_isif.h         | 3 ---
+>  drivers/staging/media/davinci_vpfe/dm365_isif_regs.h    | 3 ---
+>  drivers/staging/media/davinci_vpfe/dm365_resizer.c      | 3 ---
+>  drivers/staging/media/davinci_vpfe/dm365_resizer.h      | 3 ---
+>  drivers/staging/media/davinci_vpfe/vpfe.h               | 3 ---
+>  drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c    | 3 ---
+>  drivers/staging/media/davinci_vpfe/vpfe_mc_capture.h    | 3 ---
+>  drivers/staging/media/davinci_vpfe/vpfe_video.c         | 3 ---
+>  drivers/staging/media/davinci_vpfe/vpfe_video.h         | 3 ---
+>  18 files changed, 54 deletions(-)
+>
+> diff --git a/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h b/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h
+> index 69594bb70a2b..6d2570a63529 100644
+> --- a/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h
+> +++ b/drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h
+> @@ -11,9 +11,6 @@
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>   * GNU General Public License for more details.
+>   *
+> - * You should have received a copy of the GNU General Public License
+> - * along with this program; if not, write to the Free Software
+> - * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+>   *
+>   * Contributors:
+>   *      Manjunath Hadli <manjunath.hadli@ti.com>
+> diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
+> index 85151113ca91..0c896e10edc1 100644
+> --- a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
+> +++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
+> @@ -11,9 +11,6 @@
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>   * GNU General Public License for more details.
+>   *
+> - * You should have received a copy of the GNU General Public License
+> - * along with this program; if not, write to the Free Software
+> - * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+>   *
+>   * Contributors:
+>   *      Manjunath Hadli <manjunath.hadli@ti.com>
+> diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe.h b/drivers/staging/media/davinci_vpfe/dm365_ipipe.h
+> index 39bd29a3aa89..68a9e3692f9a 100644
+> --- a/drivers/staging/media/davinci_vpfe/dm365_ipipe.h
+> +++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe.h
+> @@ -11,9 +11,6 @@
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>   * GNU General Public License for more details.
+>   *
+> - * You should have received a copy of the GNU General Public License
+> - * along with this program; if not, write to the Free Software
+> - * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+>   *
+>   * Contributors:
+>   *      Manjunath Hadli <manjunath.hadli@ti.com>
+> diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c b/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c
+> index 76d1d0fe982c..d1d97879c0bb 100644
+> --- a/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c
+> +++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c
+> @@ -11,9 +11,6 @@
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>   * GNU General Public License for more details.
+>   *
+> - * You should have received a copy of the GNU General Public License
+> - * along with this program; if not, write to the Free Software
+> - * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+>   *
+>   * Contributors:
+>   *      Manjunath Hadli <manjunath.hadli@ti.com>
+> diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.h b/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.h
+> index 84c152611712..ce01ce2cb28c 100644
+> --- a/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.h
+> +++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.h
+> @@ -11,9 +11,6 @@
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>   * GNU General Public License for more details.
+>   *
+> - * You should have received a copy of the GNU General Public License
+> - * along with this program; if not, write to the Free Software
+> - * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+>   *
+>   * Contributors:
+>   *      Manjunath Hadli <manjunath.hadli@ti.com>
+> diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c b/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c
+> index 24bb1e93af23..19e3026ed8d2 100644
+> --- a/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c
+> +++ b/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c
+> @@ -11,9 +11,6 @@
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>   * GNU General Public License for more details.
+>   *
+> - * You should have received a copy of the GNU General Public License
+> - * along with this program; if not, write to the Free Software
+> - * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+>   *
+>   * Contributors:
+>   *      Manjunath Hadli <manjunath.hadli@ti.com>
+> diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipeif.h b/drivers/staging/media/davinci_vpfe/dm365_ipipeif.h
+> index a27b76fb593c..14f4608645f3 100644
+> --- a/drivers/staging/media/davinci_vpfe/dm365_ipipeif.h
+> +++ b/drivers/staging/media/davinci_vpfe/dm365_ipipeif.h
+> @@ -11,9 +11,6 @@
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>   * GNU General Public License for more details.
+>   *
+> - * You should have received a copy of the GNU General Public License
+> - * along with this program; if not, write to the Free Software
+> - * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+>   *
+>   * Contributors:
+>   *      Manjunath Hadli <manjunath.hadli@ti.com>
+> diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipeif_user.h b/drivers/staging/media/davinci_vpfe/dm365_ipipeif_user.h
+> index c04d0535cbc5..1c4960720c63 100644
+> --- a/drivers/staging/media/davinci_vpfe/dm365_ipipeif_user.h
+> +++ b/drivers/staging/media/davinci_vpfe/dm365_ipipeif_user.h
+> @@ -11,9 +11,6 @@
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>   * GNU General Public License for more details.
+>   *
+> - * You should have received a copy of the GNU General Public License
+> - * along with this program; if not, write to the Free Software
+> - * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+>   *
+>   * Contributors:
+>   *      Manjunath Hadli <manjunath.hadli@ti.com>
+> diff --git a/drivers/staging/media/davinci_vpfe/dm365_isif.c b/drivers/staging/media/davinci_vpfe/dm365_isif.c
+> index 728a443ea60d..54da444e8a69 100644
+> --- a/drivers/staging/media/davinci_vpfe/dm365_isif.c
+> +++ b/drivers/staging/media/davinci_vpfe/dm365_isif.c
+> @@ -11,9 +11,6 @@
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>   * GNU General Public License for more details.
+>   *
+> - * You should have received a copy of the GNU General Public License
+> - * along with this program; if not, write to the Free Software
+> - * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+>   *
+>   * Contributors:
+>   *      Manjunath Hadli <manjunath.hadli@ti.com>
+> diff --git a/drivers/staging/media/davinci_vpfe/dm365_isif.h b/drivers/staging/media/davinci_vpfe/dm365_isif.h
+> index 44ec7249ccfd..389412a041fe 100644
+> --- a/drivers/staging/media/davinci_vpfe/dm365_isif.h
+> +++ b/drivers/staging/media/davinci_vpfe/dm365_isif.h
+> @@ -11,9 +11,6 @@
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>   * GNU General Public License for more details.
+>   *
+> - * You should have received a copy of the GNU General Public License
+> - * along with this program; if not, write to the Free Software
+> - * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+>   *
+>   * Contributors:
+>   *      Manjunath Hadli <manjunath.hadli@ti.com>
+> diff --git a/drivers/staging/media/davinci_vpfe/dm365_isif_regs.h b/drivers/staging/media/davinci_vpfe/dm365_isif_regs.h
+> index fafdc693a9bd..5e9867cea249 100644
+> --- a/drivers/staging/media/davinci_vpfe/dm365_isif_regs.h
+> +++ b/drivers/staging/media/davinci_vpfe/dm365_isif_regs.h
+> @@ -11,9 +11,6 @@
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>   * GNU General Public License for more details.
+>   *
+> - * You should have received a copy of the GNU General Public License
+> - * along with this program; if not, write to the Free Software
+> - * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+>   *
+>   * Contributors:
+>   *      Manjunath Hadli <manjunath.hadli@ti.com>
+> diff --git a/drivers/staging/media/davinci_vpfe/dm365_resizer.c b/drivers/staging/media/davinci_vpfe/dm365_resizer.c
+> index ca1ddae50c22..ca64f112a5b9 100644
+> --- a/drivers/staging/media/davinci_vpfe/dm365_resizer.c
+> +++ b/drivers/staging/media/davinci_vpfe/dm365_resizer.c
+> @@ -11,9 +11,6 @@
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>   * GNU General Public License for more details.
+>   *
+> - * You should have received a copy of the GNU General Public License
+> - * along with this program; if not, write to the Free Software
+> - * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+>   *
+>   * Contributors:
+>   *      Manjunath Hadli <manjunath.hadli@ti.com>
+> diff --git a/drivers/staging/media/davinci_vpfe/dm365_resizer.h b/drivers/staging/media/davinci_vpfe/dm365_resizer.h
+> index 74f359a96160..bec0f9587d3f 100644
+> --- a/drivers/staging/media/davinci_vpfe/dm365_resizer.h
+> +++ b/drivers/staging/media/davinci_vpfe/dm365_resizer.h
+> @@ -11,9 +11,6 @@
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>   * GNU General Public License for more details.
+>   *
+> - * You should have received a copy of the GNU General Public License
+> - * along with this program; if not, write to the Free Software
+> - * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+>   *
+>   * Contributors:
+>   *      Manjunath Hadli <manjunath.hadli@ti.com>
+> diff --git a/drivers/staging/media/davinci_vpfe/vpfe.h b/drivers/staging/media/davinci_vpfe/vpfe.h
+> index 06dd68ef3712..c91ad025f2d2 100644
+> --- a/drivers/staging/media/davinci_vpfe/vpfe.h
+> +++ b/drivers/staging/media/davinci_vpfe/vpfe.h
+> @@ -11,9 +11,6 @@
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>   * GNU General Public License for more details.
+>   *
+> - * You should have received a copy of the GNU General Public License
+> - * along with this program; if not, write to the Free Software
+> - * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+>   *
+>   * Contributors:
+>   *      Manjunath Hadli <manjunath.hadli@ti.com>
+> diff --git a/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c b/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
+> index da2b5dcbd269..7e9b246f6f05 100644
+> --- a/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
+> +++ b/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
+> @@ -11,9 +11,6 @@
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>   * GNU General Public License for more details.
+>   *
+> - * You should have received a copy of the GNU General Public License
+> - * along with this program; if not, write to the Free Software
+> - * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+>   *
+>   * Contributors:
+>   *      Manjunath Hadli <manjunath.hadli@ti.com>
+> diff --git a/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.h b/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.h
+> index 3df319cde290..2de8c2d655c6 100644
+> --- a/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.h
+> +++ b/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.h
+> @@ -11,9 +11,6 @@
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>   * GNU General Public License for more details.
+>   *
+> - * You should have received a copy of the GNU General Public License
+> - * along with this program; if not, write to the Free Software
+> - * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+>   *
+>   * Contributors:
+>   *      Manjunath Hadli <manjunath.hadli@ti.com>
+> diff --git a/drivers/staging/media/davinci_vpfe/vpfe_video.c b/drivers/staging/media/davinci_vpfe/vpfe_video.c
+> index 204bc238d67b..bf0620186a84 100644
+> --- a/drivers/staging/media/davinci_vpfe/vpfe_video.c
+> +++ b/drivers/staging/media/davinci_vpfe/vpfe_video.c
+> @@ -11,9 +11,6 @@
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>   * GNU General Public License for more details.
+>   *
+> - * You should have received a copy of the GNU General Public License
+> - * along with this program; if not, write to the Free Software
+> - * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+>   *
+>   * Contributors:
+>   *      Manjunath Hadli <manjunath.hadli@ti.com>
+> diff --git a/drivers/staging/media/davinci_vpfe/vpfe_video.h b/drivers/staging/media/davinci_vpfe/vpfe_video.h
+> index c6b9befff401..e596101ab260 100644
+> --- a/drivers/staging/media/davinci_vpfe/vpfe_video.h
+> +++ b/drivers/staging/media/davinci_vpfe/vpfe_video.h
+> @@ -11,9 +11,6 @@
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>   * GNU General Public License for more details.
+>   *
+> - * You should have received a copy of the GNU General Public License
+> - * along with this program; if not, write to the Free Software
+> - * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+>   *
+>   * Contributors:
+>   *      Manjunath Hadli <manjunath.hadli@ti.com>
+> --
+> 2.19.1
+>
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/cad49c8a7691fa02cb0143d00b7a5bbe94c588d7.1541469543.git.code%40wizofe.uk.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
