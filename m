@@ -1,200 +1,125 @@
-X-GM-THRID: 6155043602432
-X-Received: by 10.236.14.196 with SMTP id d44mr29785275yhd.52.1425368309630;
-        Mon, 02 Mar 2015 23:38:29 -0800 (PST)
+X-GM-THRID: 6620551130625605632
+X-Received: by 2002:a1c:f912:: with SMTP id x18-v6mr137408wmh.11.1541487243664;
+        Mon, 05 Nov 2018 22:54:03 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.14.77 with SMTP id 74ls94463ioo.38.gmail; Mon, 02 Mar 2015
- 23:38:29 -0800 (PST)
-X-Received: by 10.66.151.101 with SMTP id up5mr30265047pab.10.1425368309291;
-        Mon, 02 Mar 2015 23:38:29 -0800 (PST)
-Return-Path: <vthakkar1994@gmail.com>
-Received: from mail-pa0-x229.google.com (mail-pa0-x229.google.com. [2607:f8b0:400e:c03::229])
-        by gmr-mx.google.com with ESMTPS id gb13si1661pac.2.2015.03.02.23.38.29
+Received: by 2002:adf:9d17:: with SMTP id k23-v6ls2295773wre.17.gmail; Mon, 05
+ Nov 2018 22:54:03 -0800 (PST)
+X-Google-Smtp-Source: AJdET5eHE40CfK2ZFFF0qCUF3fNxlvL8/yWesZoilobuwdLCKOjWEvWsM5eoBLaUN8MB4AqhB7fT
+X-Received: by 2002:adf:9d83:: with SMTP id p3-v6mr1642096wre.31.1541487243138;
+        Mon, 05 Nov 2018 22:54:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541487243; cv=none;
+        d=google.com; s=arc-20160816;
+        b=F/FD48j802lHGCZpL0iJNOR96zdfb/JqmMTfIyejvLIX5Sv7um89gzxdFZo1pS4zft
+         sO9K9KhXgCJIHjrnn4aAu17QcAPqphEwBtzox3DHX4PNuOCNOti2GyGtJhG914jJ8NP1
+         FN+1yBAmbM2AKD3sES87VQg3jcfvMQZNEqK//3wlRLxdw87fNfLNhEF4lfHBD9ybIjg9
+         mJL6/EoRQqu0wZAfVTffoR31YK3iojB09MpALIX/SbtU2EDBwjwrpv7kNt/tETEUMvK6
+         /D4YuP/qYbwB3KCjSXGjOdcnyzOQQNyqaBEydhLV/BNGRRru6E3b/g6KLhsjISonIq4A
+         94Hw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=hg+gG9HlJemGJhfv1y+UQXN6YokM/0HLuNWMXpBophA=;
+        b=dfhbW9KUsuL6dGo2AuqTbpVSVPP1yhDxcjAES7Pq9CVCzxqVn8RjqXGctmG9Qgz9/5
+         I25IU9LjlsrLVJPGHMJtm42qOMyqkZ8D85FwzQNwL5Z1lwjgtgqEtIaJsxeUEe3vZssh
+         woWjgmH/v0iGinPgltAtj/UPi1c6y0U8TL0gm1GrCv8O3wI1BdBgU3aBzEKaVC/llI9v
+         1LN1re9dztcT4C4WeKRESq1vKWEXayPTBWQcHbp/mOWRQkQcGHu5S2gP8rI/Bcwk44GQ
+         KIJugz9VLiFDXWRNp+l/YBCa/e2O+LvnJbNfl/sjNlqLJ0S7UBd2ppI/0DiHBnQiE6G8
+         Oucw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id l9-v6si49082wru.5.2018.11.05.22.54.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 02 Mar 2015 23:38:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) client-ip=2607:f8b0:400e:c03::229;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 05 Nov 2018 22:54:03 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar1994@gmail.com designates 2607:f8b0:400e:c03::229 as permitted sender) smtp.mail=vthakkar1994@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by padfb1 with SMTP id fb1so12512166pad.7
-        for <outreachy-kernel@googlegroups.com>; Mon, 02 Mar 2015 23:38:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=2IDdDJTy5rBHElJ/fo/iKrmTHKGCImhVNR5x2ACROPU=;
-        b=JzMlfokOkkl0XXFc2Utru4n7X8B3/34bg0sCLNY94dDYSTrHEQMqMeBKBvQhxYyCBx
-         sfyN1HJmTnFrQmRfP1wUSDsXBsNmJa0DJm+zPJOLhosvzxBmNV8a0k3361DqjMCXBBpS
-         Lz0D7u2i9LBNrj2qOOrRd3bU4uMbSUte5GJiASFyHu8F+Aw4NITREXpnl6vJbKMv/D46
-         nlNnywofe4bzEsT+Dqlzvja7K9Y3Wx7sK/BpVzhXmHsRLXSki2UKF45a8aBJGUeyO6mE
-         uulba9zvH5MBrymaVaYjKgVY58nUI0BB3iOBPFTT1yNbxwIRdhawon9R18XcUP8nge8B
-         ibcw==
-X-Received: by 10.68.65.104 with SMTP id w8mr11420663pbs.57.1425368309149;
-        Mon, 02 Mar 2015 23:38:29 -0800 (PST)
-Return-Path: <vthakkar1994@gmail.com>
-Received: from vaishali-Ideapad-Z570 ([43.249.235.152])
-        by mx.google.com with ESMTPSA id bc5sm9246pdb.47.2015.03.02.23.38.27
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Mon, 02 Mar 2015 23:38:28 -0800 (PST)
-Date: Tue, 3 Mar 2015 13:08:24 +0530
-From: Vaishali Thakkar <vthakkar1994@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8192e: Eliminate use of macro IS_NIC_DOWN
-Message-ID: <e2262f725df348fdad3c4ef0d9abfb19720e99ff.1425367678.git.vthakkar1994@gmail.com>
-References: <cover.1425367678.git.vthakkar1994@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.54,470,1534802400"; 
+   d="scan'208";a="284456002"
+Received: from 89-157-201-244.rev.numericable.fr (HELO hadrien) ([89.157.201.244])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 06 Nov 2018 07:54:02 +0100
+Date: Tue, 6 Nov 2018 07:54:02 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Irenge Jules Bashizi <jbi.octave@gmail.com>
+cc: mchehab@kernel.org, gregkh@linuxfoundation.org, 
+    outreachy-kernel@googlegroups.com, jules.octave@outlook.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: davinci_vpfe: Correct
+ misspelled words
+In-Reply-To: <20181106012426.24099-1-jbi.octave@gmail.com>
+Message-ID: <alpine.DEB.2.21.1811060752010.2437@hadrien>
+References: <20181106012426.24099-1-jbi.octave@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1425367678.git.vthakkar1994@gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: text/plain; charset=US-ASCII
 
-This patch eliminates use of unnecessory macro IS_NIC_DOWN
-and replaces it with standard code.
 
-Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
----
- drivers/staging/rtl8192e/rtl8192e/r8192E_phy.c | 10 +++++-----
- drivers/staging/rtl8192e/rtl8192e/rtl_core.c   | 10 +++++-----
- drivers/staging/rtl8192e/rtl8192e/rtl_core.h   |  2 --
- drivers/staging/rtl8192e/rtl8192e/rtl_dm.c     |  4 ++--
- 4 files changed, 12 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/staging/rtl8192e/rtl8192e/r8192E_phy.c b/drivers/staging/rtl8192e/rtl8192e/r8192E_phy.c
-index 8c08ef6..cd3c662 100644
---- a/drivers/staging/rtl8192e/rtl8192e/r8192E_phy.c
-+++ b/drivers/staging/rtl8192e/rtl8192e/r8192E_phy.c
-@@ -996,7 +996,7 @@ static void rtl8192_phy_FinishSwChnlNow(struct net_device *dev, u8 channel)
- 	      &priv->SwChnlStep, &delay)) {
- 		if (delay > 0)
- 			msleep(delay);
--		if (IS_NIC_DOWN(priv))
-+		if (!priv->up)
- 			break;
- 	}
- }
-@@ -1020,7 +1020,7 @@ u8 rtl8192_phy_SwChnl(struct net_device *dev, u8 channel)
- 	struct r8192_priv *priv = rtllib_priv(dev);
- 
- 	RT_TRACE(COMP_PHY, "=====>%s()\n", __func__);
--	if (IS_NIC_DOWN(priv)) {
-+	if (!priv->up) {
- 		RT_TRACE(COMP_ERR, "%s(): ERR !! driver is not up\n", __func__);
- 		return false;
- 	}
-@@ -1060,7 +1060,7 @@ u8 rtl8192_phy_SwChnl(struct net_device *dev, u8 channel)
- 	priv->SwChnlStage = 0;
- 	priv->SwChnlStep = 0;
- 
--	if (!IS_NIC_DOWN(priv))
-+	if (priv->up)
- 		rtl8192_SwChnl_WorkItem(dev);
- 	priv->SwChnlInProgress = false;
- 	return true;
-@@ -1186,7 +1186,7 @@ void rtl8192_SetBWModeWorkItem(struct net_device *dev)
- 		priv->SetBWModeInProgress = false;
- 		return;
- 	}
--	if (IS_NIC_DOWN(priv)) {
-+	if (!priv->up) {
- 		RT_TRACE(COMP_ERR, "%s(): ERR!! driver is not up\n", __func__);
- 		return;
- 	}
-@@ -1309,7 +1309,7 @@ void InitialGain819xPci(struct net_device *dev, u8 Operation)
- 	u32 BitMask;
- 	u8 initial_gain;
- 
--	if (!IS_NIC_DOWN(priv)) {
-+	if (priv->up) {
- 		switch (Operation) {
- 		case IG_Backup:
- 			RT_TRACE(COMP_SCAN, "IG_Backup, backup the initial"
-diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-index 7dda904..a603acc 100644
---- a/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-+++ b/drivers/staging/rtl8192e/rtl8192e/rtl_core.c
-@@ -1506,7 +1506,7 @@ RESET_START:
- 		if (priv->rtllib->state == RTLLIB_LINKED)
- 			LeisurePSLeave(dev);
- 
--		if (IS_NIC_DOWN(priv)) {
-+		if (priv->up) {
- 			RT_TRACE(COMP_ERR, "%s():the driver is not up! "
- 				 "return\n", __func__);
- 			up(&priv->wx_sem);
-@@ -1650,7 +1650,7 @@ void	rtl819x_watchdog_wqcallback(void *data)
- 	bool	bHigherBusyRxTraffic = false;
- 	bool bEnterPS = false;
- 
--	if (IS_NIC_DOWN(priv) || priv->bHwRadioOff)
-+	if (!priv->up || priv->bHwRadioOff)
- 		return;
- 
- 	if (priv->rtllib->state >= RTLLIB_LINKED) {
-@@ -1882,7 +1882,7 @@ void rtl8192_hard_data_xmit(struct sk_buff *skb, struct net_device *dev,
- 				    MAX_DEV_ADDR_SIZE);
- 	u8 queue_index = tcb_desc->queue_index;
- 
--	if ((priv->rtllib->eRFPowerState == eRfOff) || IS_NIC_DOWN(priv) ||
-+	if ((priv->rtllib->eRFPowerState == eRfOff) || !priv->up ||
- 	     priv->bResetInProgress) {
- 		kfree_skb(skb);
- 		return;
-@@ -1916,7 +1916,7 @@ int rtl8192_hard_start_xmit(struct sk_buff *skb, struct net_device *dev)
- 
- 	if (queue_index != TXCMD_QUEUE) {
- 		if ((priv->rtllib->eRFPowerState == eRfOff) ||
--		     IS_NIC_DOWN(priv) || priv->bResetInProgress) {
-+		     !priv->up || priv->bResetInProgress) {
- 			kfree_skb(skb);
- 			return 0;
- 		}
-@@ -3032,7 +3032,7 @@ bool NicIFEnableNIC(struct net_device *dev)
- 	struct rt_pwr_save_ctrl *pPSC = (struct rt_pwr_save_ctrl *)
- 					(&(priv->rtllib->PowerSaveControl));
- 
--	if (IS_NIC_DOWN(priv)) {
-+	if (!priv->up) {
- 		RT_TRACE(COMP_ERR, "ERR!!! %s(): Driver is already down!\n",
- 			 __func__);
- 		priv->bdisable_nic = false;
-diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_core.h b/drivers/staging/rtl8192e/rtl8192e/rtl_core.h
-index d1438c2..113174b 100644
---- a/drivers/staging/rtl8192e/rtl8192e/rtl_core.h
-+++ b/drivers/staging/rtl8192e/rtl8192e/rtl_core.h
-@@ -98,8 +98,6 @@
- #define BIT(_i)				(1<<(_i))
- #endif
- 
--#define IS_NIC_DOWN(priv)	(!(priv)->up)
--
- #define IS_ADAPTER_SENDS_BEACON(dev) 0
- 
- #define IS_UNDER_11N_AES_MODE(_rtllib)		\
-diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c b/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-index b8891c6..bdb9274 100644
---- a/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-+++ b/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
-@@ -267,7 +267,7 @@ static void dm_check_rate_adaptive(struct net_device *dev)
- 	bool bshort_gi_enabled = false;
- 	static u8 ping_rssi_state;
- 
--	if (IS_NIC_DOWN(priv)) {
-+	if (!priv->up) {
- 		RT_TRACE(COMP_RATE, "<---- dm_check_rate_adaptive(): driver is going to unload\n");
- 		return;
- 	}
-@@ -1569,7 +1569,7 @@ void dm_restore_dynamic_mechanism_state(struct net_device *dev)
- 	u32	reg_ratr = priv->rate_adaptive.last_ratr;
- 	u32 ratr_value;
- 
--	if (IS_NIC_DOWN(priv)) {
-+	if (!priv->up) {
- 		RT_TRACE(COMP_RATE, "<---- dm_restore_dynamic_mechanism_state(): driver is going to unload\n");
- 		return;
- 	}
--- 
-1.9.1
+On Tue, 6 Nov 2018, Irenge Jules Bashizi wrote:
 
+> Correct misspelled words checkpatch complains: parameters and initialize.
+
+Why did you send the same thing twice?  It's actually very confusing for
+the recipient.  One has no way to know if one corrects the other and if so
+if they have arrived in the right order.  If you feel like sending exactly
+the same thing again, perhaps because of a mailer issue, put RESEND after
+patch and explain what is going on under the ---.  If you have made a
+change, but v2 after PATCH and explain what changed under the ---.
+
+julia
+
+>
+> Signed-off-by: Irenge Jules Bashizi <jbi.octave@gmail.com>
+> ---
+>  drivers/staging/media/davinci_vpfe/dm365_isif.c      | 4 ++--
+>  drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c | 2 +-
+>  2 files changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/media/davinci_vpfe/dm365_isif.c b/drivers/staging/media/davinci_vpfe/dm365_isif.c
+> index 39eb0819ab4e..5172822d7e6f 100644
+> --- a/drivers/staging/media/davinci_vpfe/dm365_isif.c
+> +++ b/drivers/staging/media/davinci_vpfe/dm365_isif.c
+> @@ -678,7 +678,7 @@ static void isif_config_bclamp(struct vpfe_isif_device *isif,
+>  	val = (bc->bc_mode_color & ISIF_BC_MODE_COLOR_MASK) <<
+>  		ISIF_BC_MODE_COLOR_SHIFT;
+>
+> -	/* Enable BC and horizontal clamp calculation paramaters */
+> +	/* Enable BC and horizontal clamp calculation parameters */
+>  	val = val | 1 | ((bc->horz.mode & ISIF_HORZ_BC_MODE_MASK) <<
+>  	      ISIF_HORZ_BC_MODE_SHIFT);
+>
+> @@ -715,7 +715,7 @@ static void isif_config_bclamp(struct vpfe_isif_device *isif,
+>  		isif_write(isif->isif_cfg.base_addr, val, CLHWIN2);
+>  	}
+>
+> -	/* vertical clamp calculation paramaters */
+> +	/* vertical clamp calculation parameters */
+>  	/* OB H Valid */
+>  	val = bc->vert.ob_h_sz_calc & ISIF_VERT_BC_OB_H_SZ_MASK;
+>
+> diff --git a/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c b/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
+> index bdf6ee5ad96c..257bd96bf730 100644
+> --- a/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
+> +++ b/drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c
+> @@ -531,7 +531,7 @@ static void vpfe_cleanup_modules(struct vpfe_device *vpfe_dev,
+>   * @vpfe_dev - ptr to vpfe capture device
+>   * @pdev - pointer to platform device
+>   *
+> - * intialize all v4l2 subdevs and media entities
+> + * initialize all v4l2 subdevs and media entities
+>   */
+>  static int vpfe_initialize_modules(struct vpfe_device *vpfe_dev,
+>  				   struct platform_device *pdev)
+> --
+> 2.17.2
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20181106012426.24099-1-jbi.octave%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
