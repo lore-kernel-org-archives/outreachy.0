@@ -1,99 +1,86 @@
 X-GM-THRID: 6620566870307110912
-X-Received: by 2002:aca:d543:: with SMTP id m64-v6mr18628230oig.43.1541470855974;
-        Mon, 05 Nov 2018 18:20:55 -0800 (PST)
+X-Received: by 2002:a1c:d8:: with SMTP id 207-v6mr68616wma.12.1541470845694;
+        Mon, 05 Nov 2018 18:20:45 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:5085:: with SMTP id e127-v6ls902164oib.11.gmail; Mon, 05
- Nov 2018 18:20:55 -0800 (PST)
-X-Google-Smtp-Source: AJdET5eGBKU/PLtHWnjfIJTq/jm8FRGwYubNaUE6yrfYUiXJaE8vtesC8FCt3haRWNmKR8PsGWO3
-X-Received: by 2002:aca:689e:: with SMTP id o30-v6mr8392470oik.27.1541470855092;
-        Mon, 05 Nov 2018 18:20:55 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1541470855; cv=pass;
+Received: by 2002:adf:b698:: with SMTP id j24-v6ls2409941wre.16.gmail; Mon, 05
+ Nov 2018 18:20:44 -0800 (PST)
+X-Google-Smtp-Source: AJdET5fxczqfwrpAnilJwz4/pTBMI/RleOgFRn4cZ54dxgOkMXFyV406O8JZFGQxH6CBnXqrjz9k
+X-Received: by 2002:adf:f389:: with SMTP id m9-v6mr2024981wro.11.1541470844855;
+        Mon, 05 Nov 2018 18:20:44 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1541470844; cv=pass;
         d=google.com; s=arc-20160816;
-        b=r59g7EK+KNCUPmbQvGPBvNC2lBNp8FN5cnsssmqN7YhXmykIJMIgQiYGNT6UIGiY1F
-         MNbT5/OIfFTC75MeCH7h3bfHRC+Ejld7C94BiDytqRDx7GsHIMo2Wu7wqLfPdI6aZ1oE
-         yeX1Di0JzUkME542Ro5XFQw4ZfGwpfDio/QYvU/0mAclC7fwYh+hcV2swHh5zQPsuQKF
-         diL8vOJBppwbCZiFSGarDfoPB41U2eR41z9LCigaE7plCIHXFtyPx8LzB+4O+nP9tZU/
-         3BJQw4636o8TVOkB5G1bKgUYlRjP1S1ljzDV1nZDEyJoCAPmzZbxk5e+gBLLSBj34VsX
-         ud7Q==
+        b=uwZBcaDVzyjnQ1aXLoNNcatRmDRANrBFiPB5zOjcgTT4OGjqsyhAIC0V1Zb1PYxvO6
+         OQufdNYR35BaHs3huTTdE14tVBHKgPO/sIzCP8QATKI0s1fi/P0dDUAeu4KB77bjrZ/n
+         0DTNH9pBBQ/Jk9w9q455iQXsw6Y+ee0yCPHzPZb+KCiKfdQvkfUT974rkSRK82XWzd0m
+         fw/liLtUmvneGn+xxV4vTMGiCsoxnhyMekpF+aKEkEG3Gu9CetCKNCN8hC2Pydl0Y2vx
+         UMg45/HmwHGJcmW5EF6neI0aWfNCyKCU4rniBPyAl7YWfWlb+G6105S8u6WCX+7tUINh
+         xeJg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=kCs0iydGom1cEJCziCTxXfFo/7N4owSdCmBg6Vv/iEA=;
-        b=o+hEb9KVXJRlz94QUqO/bvH/W+4AMa1fdQJSBx9nkZ5HRJQCfYVIPeAfFBMFp6/a9z
-         HwDyz74dX+01eH6DwJjm8tXpPB74s7RKLkA5jQw/cYob0BSSglDsPmDD83cFaQYIHRaJ
-         z9W8moeEakwreTufFELcRG3s5jVQyYOgf3blDdFQmLv4yxwioMwScZn7LiwHCzJWgic2
-         Q4pvvValovt2RToB8yoCI0ShyBqbWsnNACL16l/IJ0lODF1X2qb9sW4NREBL2xLCO18X
-         SWjA3JT911Maf9Qlt/OX5fCHI12EVqsXqyHdQlki7qtU4baKjY89FASiGPbNWJE8ieJ8
-         6Vqw==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=cVO93lX+jwpkYj/ZnVb7lr3FEzkBjC+A3RQ7W1x5xEU=;
+        b=X6LAUBIvHq+jPgCiDdccSeAzxile5lhfwiL4Mz1t3O5FU1iiZDvpIE2+dSXLJOTy5L
+         +o72fGCFIKXzJCOhCjIITYYdlSLo6Ccag9V06vXmGi0dxrERLn/yVIy+th8KhRFVKl9Z
+         drq/tpwMWzTKFzFyGRVSlDImu2L8IDRJ6u2061OBMlV6Z4D7yDw5TWU+iZaa+oBrZdJ2
+         5m3u6GO954A9hgkFadnq53UNewj37QfCwio+JSkCZInuEGEv4tZIjkqs6yxyivrgPII7
+         SuMVa49ACP7gVpi46Ys1t1LOPo7miiNpJn1R01nnP64S2UHalvG6w3dVPyhrfENay4wW
+         csHA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=fZ4f2xfi;
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=WbuiL0Iw;
        arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
        spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
 Return-Path: <code@wizofe.uk>
 Received: from sender-of-o51.zoho.eu (sender-of-o51.zoho.eu. [185.20.209.243])
-        by gmr-mx.google.com with ESMTPS id p84-v6si857100oih.1.2018.11.05.18.20.54
+        by gmr-mx.google.com with ESMTPS id z129-v6si21918wmc.0.2018.11.05.18.20.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 05 Nov 2018 18:20:55 -0800 (PST)
+        Mon, 05 Nov 2018 18:20:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) client-ip=185.20.209.243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=fZ4f2xfi;
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=WbuiL0Iw;
        arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
        spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
-ARC-Seal: i=1; a=rsa-sha256; t=1541470852; cv=none; 
+ARC-Seal: i=1; a=rsa-sha256; t=1541470842; cv=none; 
 	d=zoho.eu; s=zohoarc; 
-	b=BBya5BGgR0l4TRyjp0V/zueqjYtcSjR8zGJOn95L/dpq2ay9MMqP+yAiZRlbcpLYA0a2PZZX1QPBAX1eIUZfThcxbhuu9m6LmVYuKeWxkPVPJlQ1Rj9owccwHqV0n9s8WVl+IFudvS8iJevb7Jylt/MBc00IllJRCYhtAEObQh4=
+	b=VvWrEsh48vab3DGQN4B3nm9E5Qa5+xCvadZO1jrCqM487VGezYlepZYCTy73GiO4RAp/pH8xvjuaXag/XUgmUinR2YOKAVxztUftKdhx/EMOIScwzyhFTrpQQR/RXaBsOS0049GbMACeu5D7aqBcUfPIbeowUE5P8Ajq6E8u6U8=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
-	t=1541470852; h=Content-Type:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To:ARC-Authentication-Results; 
-	bh=kCs0iydGom1cEJCziCTxXfFo/7N4owSdCmBg6Vv/iEA=; 
-	b=QmK/QXkRj9V+aHME2i6X2SsvyVOUwCODyQCRoTKbpe+1ajqDU1fuHztYmQAuQ2L+PawKeQ17U98HEYCSGyTKtec4WLRo1kcfs4QJanGhlQlrR1cTWv3YdA13uLaOJtlxeyI197RvsXgUXhy9cb64Qi5C3nG8NCvX6l4SD2Hfyq0=
+	t=1541470842; h=Content-Type:Cc:Date:From:MIME-Version:Message-ID:Subject:To:ARC-Authentication-Results; 
+	bh=cVO93lX+jwpkYj/ZnVb7lr3FEzkBjC+A3RQ7W1x5xEU=; 
+	b=J1q8RrIZloUaXvRcML53FDbGSGNHj+4Mqj+1B1X2N1MZ5aOIn6wwHAMCyzV509oKHbUuyw83+0SXULwzeT7BSDNNSfowXv2tK/+An4YAsVVnVSBfEEHmdE0sPW0DqD/9Dk/5ctLF3eQOTelx2SREUBxaGrm8lmvujXKjGshrsxE=
 ARC-Authentication-Results: i=1; mx.zoho.eu;
 	dkim=pass  header.i=wizofe.uk;
 	spf=pass  smtp.mailfrom=code@wizofe.uk;
 	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541470852;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541470842;
 	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To;
-	l=753; bh=kCs0iydGom1cEJCziCTxXfFo/7N4owSdCmBg6Vv/iEA=;
-	b=fZ4f2xfil/N9KMCI43sYK1qwCjDWFzIUnckpqqUyhS1r9EnXZ5TI5xJjGy+bjKgw
-	Bjel/hUGeyrk0ro+Lwp/MfFr2cQpHUMTP1QsTL7vq/X6Cz4awBNatYNSA1oUY4MI4fN
-	iYbpgzpNeLBsG6YnvuFwv6BBzm7+8JOBkqKM+lTQ=
+	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type;
+	l=288; bh=cVO93lX+jwpkYj/ZnVb7lr3FEzkBjC+A3RQ7W1x5xEU=;
+	b=WbuiL0IwiY9ywgSX5rohF8Q0LowE7rfyvF8DO3icySRK2nFwI+fI0V6l3heElbsK
+	PVkmWR0MyuwQiDfbqdU8pRjkNxWyktwN4E533xdM9hPx0lFDc06BrtyJ3UBJ4JlPAwz
+	/VUngvWrn8MO7u0h7WtMSryHJZ0Ul/WYfwf9ayd8=
 Received: from kvasir.local (90.252.88.110 [90.252.88.110]) by mx.zoho.eu
-	with SMTPS id 1541470850377693.0239498173096; Tue, 6 Nov 2018 03:20:50 +0100 (CET)
-Date: Tue, 6 Nov 2018 02:20:49 +0000
+	with SMTPS id 1541470841791830.6061915526494; Tue, 6 Nov 2018 03:20:41 +0100 (CET)
+Date: Tue, 6 Nov 2018 02:20:40 +0000
 From: Ioannis Valasakis <code@wizofe.uk>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org
-Subject: [PATCH 1/2] staging: speakup: add spaces around minus
-Message-ID: <fc3492ff589743a2e9b2742724e2c0d935d483ed.1541470798.git.code@wizofe.uk>
-References: <cover.1541470798.git.code@wizofe.uk>
+Subject: [PATCH 0/2] staging: speakup fix code styling
+Message-ID: <cover.1541470798.git.code@wizofe.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1541470798.git.code@wizofe.uk>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-ZohoMailClient: External
 
-Add spaces around minus operator. Reported by checkpatch.
+Fix code styling reported by checkpatch.
 
-Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
----
- drivers/staging/speakup/speakup_acntpc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Ioannis Valasakis (2):
+  staging: speakup: add spaces around minus
+  staging: speakup: move arguments to reduce 80 chars limit
 
-diff --git a/drivers/staging/speakup/speakup_acntpc.c b/drivers/staging/speakup/speakup_acntpc.c
-index 28519754b2f0..d44ada9869ae 100644
---- a/drivers/staging/speakup/speakup_acntpc.c
-+++ b/drivers/staging/speakup/speakup_acntpc.c
-@@ -298,7 +298,7 @@ static void accent_release(void)
- {
- 	spk_stop_serial_interrupt();
- 	if (speakup_info.port_tts)
--		synth_release_region(speakup_info.port_tts-1, SYNTH_IO_EXTENT);
-+		synth_release_region(speakup_info.port_tts - 1, SYNTH_IO_EXTENT);
- 	speakup_info.port_tts = 0;
- }
- 
+ drivers/staging/speakup/speakup_acntpc.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
 -- 
 2.19.1
 
