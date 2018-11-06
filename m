@@ -1,71 +1,71 @@
 X-GM-THRID: 6620547167797903360
-X-Received: by 2002:a17:906:66d9:: with SMTP id k25-v6mr1954358ejp.4.1541466354159;
-        Mon, 05 Nov 2018 17:05:54 -0800 (PST)
+X-Received: by 2002:a2e:3e11:: with SMTP id l17-v6mr2150717lja.7.1541466346219;
+        Mon, 05 Nov 2018 17:05:46 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:2a93:: with SMTP id l19-v6ls1362030eje.8.gmail; Mon,
- 05 Nov 2018 17:05:53 -0800 (PST)
-X-Google-Smtp-Source: AJdET5eYd4OUOyrSjrNxpZ3PMzSgSzbCXUm245XB84HK7VgSkQ/ugBMGJqdcdaBo5mULOjgXTqVc
-X-Received: by 2002:a17:906:66d9:: with SMTP id k25-v6mr1954350ejp.4.1541466353373;
-        Mon, 05 Nov 2018 17:05:53 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1541466353; cv=pass;
+Received: by 2002:a2e:9e54:: with SMTP id g20-v6ls988889ljk.9.gmail; Mon, 05
+ Nov 2018 17:05:45 -0800 (PST)
+X-Google-Smtp-Source: AJdET5dFzxIORJ43RDFg3pQ2rvEYrkxlSYGGbRmSgxBs1JSK3b9B1Tl++t8OUZ+Cioq74U8FVMU5
+X-Received: by 2002:a2e:165c:: with SMTP id 28-v6mr504175ljw.25.1541466345485;
+        Mon, 05 Nov 2018 17:05:45 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1541466345; cv=pass;
         d=google.com; s=arc-20160816;
-        b=vsRUMdObyjHVi0ldrUFt/D4WKwA2cbteIU3Y6cs9SIJDoYf6I4++9q2woMSZONV6Z7
-         ZTJ2tGwWtOskBar18rViYgb06cGQEn0OGBJp1yxqOFOzTGiShL9btk1BOn5l1ICc3jsL
-         NJSNiggQeStIBsRAK1bQDP3IYhWwH5Gd/X+/hgZrZigh/t5/dKlSRUa5WnN8v5aLaUYX
-         3vGScv2uuXdNXI8Ip93d1L2gH1scQQTGz5a9RTAZrmXE1To81s04skU/mlBCU5R4eD5B
-         oSRu9aqwME1swmGb0+1uLPOEok1ZAYG48/B43yTf6De363LTGa/FKVlZvcNKqiGtqXKh
-         YhGg==
+        b=zAeuB5U5amZ2rKouSfOcLglQgHb2e5myikDx+IXg4blWYfU8lRlkXnl6XbDHeJeaUX
+         /M9ZhArxm0WT2Fu1Kx6VDBpZTe0/OTcuXm47NaN9Z1tl/rwVW50NCJdO9Ci7DL6vbxiI
+         7pV0/ImGnTOt0JF4jMd4vCxMMWwzju2jDoBrdVZqQHKl4OsYI8LJMO8plKz/RathJxib
+         Y/5DsSLhf2atn7w4HHEp0Nj6Svs4EtvjuIICOcvJ+jKxQpz6vlE339lGtAS8Cd9Rduhx
+         43yzipN/Qw82RdVa6yt6sXCyoZqAxfN8tN4rRpR5kc9o1Ih+/3TaaAIKx8rLYzzOOgeD
+         bQGQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=v8zW8UEHt8Uo49CegczvBtfbJ6Q4MuDAMJmX9TbzykY=;
-        b=H+q5FUaSLvxy7owyf8icR77Q6KhpyyYc4yjhS6x/smwnE8m/fzDlhDjmdzUYpKqB76
-         YpOpQ4K5mp8zxXi+lE4HJJUalAAF+yinUc/Wbk5pTqvwnHJhyJWLwRXMKNVfbEwfVd9y
-         1arvSiwaN/mxaeE4anwwIXPj6J3UmeMPasJtejPrBQ993FiSDLAKxj5H2HdpDK/K8Mmq
-         Cc7zT3VuTXq3AWLlZdbC5FZYFf0HEQmIyP1pr0rhUlC26CHDqtQpTm6Kv436l2q20Ugm
-         4EhKj5hP8QP8xkQYy7zw4N/g6BsPXXcFF1zmKZVpU6L2axlO9fxnFhHseDHeORLhiqts
-         hGhw==
+        bh=cfGf0qV7Kbqhmzy/141iJLC4Sj4gzOstEXk66bPHVFM=;
+        b=jegWFi3hnllVPmmJNFFXz+t8qXS87atHFVSjVKxcvWXWz0cudSuWoxRJtbkASc3NyG
+         cLPgHuezRmf2y3IMMoC+952GFuc2xPzR/iXxgAddN2tcCM9rVt3+wueYTTzgdeTx9djy
+         6GBZSgXhOTUYwvNo7xC3e4wAOleUJZ1yAa4lgy5bo2+bnk82VoIepUAtVPRAjh71XPx3
+         fWlg0utfk6S/gYOjHRm7ss+clwKM9xje+G5VpLks7cmSEf5Xk/U2YTPld2fCD40iaJp5
+         tqqflWKZ/5sFryZ+m6ce1vmNfIq/c53cveZglv66otV8qYn3x26QhERXmnyaxXf4lFcO
+         9fgA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=FQzYyFNQ;
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b="Wu/pjehq";
        arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
        spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
 Return-Path: <code@wizofe.uk>
 Received: from sender-of-o51.zoho.eu (sender-of-o51.zoho.eu. [185.20.209.243])
-        by gmr-mx.google.com with ESMTPS id c7-v6si309128edi.2.2018.11.05.17.05.53
+        by gmr-mx.google.com with ESMTPS id l5-v6si507391ljh.4.2018.11.05.17.05.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 05 Nov 2018 17:05:53 -0800 (PST)
+        Mon, 05 Nov 2018 17:05:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) client-ip=185.20.209.243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=FQzYyFNQ;
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b="Wu/pjehq";
        arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
        spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
-ARC-Seal: i=1; a=rsa-sha256; t=1541466350; cv=none; 
+ARC-Seal: i=1; a=rsa-sha256; t=1541466343; cv=none; 
 	d=zoho.eu; s=zohoarc; 
-	b=g3IzWvsSxvG6X8EEaIQ0EWyBC5qhwnvwFF2qX4hp7HKsvF+AnbwDXLH/l7hjjLDOHml6eo96S29wKC6/Jpmu/zFeyZIxaBfDY7ElRAaOIaubE9lQdb7JzCUaLTi6LqnmXVg74wlt1aalec72QKzi7CbCMjXEYusWCHKX9aUeHJ4=
+	b=Q5jpTDqbXjkLZHePiwNkQ+19v84YjRqpVnQq4Yu43Tp2CA1+9/UDALvWu9O+b4jyNh6aqd4Du0i0p4sODIQNb3rnuMif2cc90Rb5ZDLWKob8oQeKlz/LLFSSUP7xn3B/6yGyDeORuBm1E5ybx3UNkOmr2oUJ4mxL+DEyLt9/uIw=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
-	t=1541466350; h=Content-Type:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To:ARC-Authentication-Results; 
-	bh=v8zW8UEHt8Uo49CegczvBtfbJ6Q4MuDAMJmX9TbzykY=; 
-	b=evRSOVjQukcU9odyclnUIlnhpb/VJnqa4jzsiZbDbRIYzY4rDDpi2oNMX7YHh9Nw9wuprGGIietsyMLze+iE37vIM6rgDk+bAW65AZx6HR/Mjtd/nAZM4p8+FCZ1k94Y0MmCHZpKd4kQ4EbAT3X5Lc2Bumo5PpNKObC2I8ksK7s=
+	t=1541466342; h=Content-Type:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To:ARC-Authentication-Results; 
+	bh=cfGf0qV7Kbqhmzy/141iJLC4Sj4gzOstEXk66bPHVFM=; 
+	b=D2meiUGEJmDpwsKSNj2fNtsx+tJBJAOMwyrEhs8ABt+pPI7FtjrqaHCmbXzDekcSzIgH3EZ6ecaI70UCjrpYj38kamtG53ijqaxuZmHCxn9E1tGucP6gG7eMQ+CwcITD0j/oTMemN0kbVkeCost9brGHt/u4QrxGqG0bHZgkub0=
 ARC-Authentication-Results: i=1; mx.zoho.eu;
 	dkim=pass  header.i=wizofe.uk;
 	spf=pass  smtp.mailfrom=code@wizofe.uk;
 	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541466350;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541466342;
 	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To;
-	l=6864; bh=v8zW8UEHt8Uo49CegczvBtfbJ6Q4MuDAMJmX9TbzykY=;
-	b=FQzYyFNQYdOvWG0mrOXKpFZQeivKIWjQ8DYkhfgCdFxPSAwksinDYICQmaQ8OCzq
-	9xWPqDXrnvcpBDu3/mUE8F7mXWQdyi9lmMm37rUafcWqps03UqelvPpPm+CatBC/Y7z
-	MjzW8q+OqgHj+1PW1KOyhlUZs08MDywRjrfdcZPg=
+	l=1101; bh=cfGf0qV7Kbqhmzy/141iJLC4Sj4gzOstEXk66bPHVFM=;
+	b=Wu/pjehqXg2UfK5DKaceO0A8io/0/V5wCMWMkHXG3tWsLffcorLdsj9KZQ42AAW9
+	cVVDpSkVNwojtstbn0JHwKPEhJLsX1NeG5GfQ/SMVNKWDcmHYFpLked5qMA9DATaWyN
+	3+aDHG/A1A7Zn8zfKRyZeh/IrtxVcNHoRcNICLvM=
 Received: from kvasir.local (90.252.88.110 [90.252.88.110]) by mx.zoho.eu
-	with SMTPS id 1541466349862638.3279864414429; Tue, 6 Nov 2018 02:05:49 +0100 (CET)
-Date: Tue, 6 Nov 2018 01:05:48 +0000
+	with SMTPS id 1541466341889467.30754004181097; Tue, 6 Nov 2018 02:05:41 +0100 (CET)
+Date: Tue, 6 Nov 2018 01:05:40 +0000
 From: Ioannis Valasakis <code@wizofe.uk>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org
-Subject: [PATCH 13/15] staging: greybus: correct SPDX license identifiers
-Message-ID: <2050e6df7f08c64aa6c390bb1f1b6d3c04d3683e.1541466185.git.code@wizofe.uk>
+Subject: [PATCH 12/15] staging: greybus: remove extra space before tab
+Message-ID: <9cbaef5c06e4a668e7a98ea14d4e6f0addb0388e.1541466185.git.code@wizofe.uk>
 References: <cover.1541466184.git.code@wizofe.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -74,189 +74,29 @@ In-Reply-To: <cover.1541466184.git.code@wizofe.uk>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-ZohoMailClient: External
 
-Correct the SPDX License Identifiers by replacing the comment to C-style
-comment. Reported by checkpatch.
+Remove extra spaces before the tab character inside a comment section.
+Reported by checkpatch.
 
 Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
 ---
- drivers/staging/greybus/firmware.h               | 2 +-
- drivers/staging/greybus/gb-camera.h              | 2 +-
- drivers/staging/greybus/gbphy.h                  | 2 +-
- drivers/staging/greybus/greybus.h                | 2 +-
- drivers/staging/greybus/greybus_authentication.h | 2 +-
- drivers/staging/greybus/greybus_firmware.h       | 2 +-
- drivers/staging/greybus/greybus_manifest.h       | 2 +-
- drivers/staging/greybus/greybus_protocols.h      | 2 +-
- drivers/staging/greybus/greybus_trace.h          | 2 +-
- drivers/staging/greybus/hd.h                     | 2 +-
- drivers/staging/greybus/interface.h              | 2 +-
- drivers/staging/greybus/manifest.h               | 2 +-
- drivers/staging/greybus/module.h                 | 2 +-
- drivers/staging/greybus/operation.h              | 2 +-
- drivers/staging/greybus/spilib.h                 | 2 +-
- drivers/staging/greybus/svc.h                    | 2 +-
- 16 files changed, 16 insertions(+), 16 deletions(-)
+ drivers/staging/greybus/greybus_protocols.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/greybus/firmware.h b/drivers/staging/greybus/firmware.h
-index 946221307ef6..72dfabfa4704 100644
---- a/drivers/staging/greybus/firmware.h
-+++ b/drivers/staging/greybus/firmware.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Greybus Firmware Management Header
-  *
-diff --git a/drivers/staging/greybus/gb-camera.h b/drivers/staging/greybus/gb-camera.h
-index ee293e461fc3..5fc469101fc1 100644
---- a/drivers/staging/greybus/gb-camera.h
-+++ b/drivers/staging/greybus/gb-camera.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Greybus Camera protocol driver.
-  *
-diff --git a/drivers/staging/greybus/gbphy.h b/drivers/staging/greybus/gbphy.h
-index 99463489d7d6..087928a586fb 100644
---- a/drivers/staging/greybus/gbphy.h
-+++ b/drivers/staging/greybus/gbphy.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Greybus Bridged-Phy Bus driver
-  *
-diff --git a/drivers/staging/greybus/greybus.h b/drivers/staging/greybus/greybus.h
-index d03ddb7c9df0..f0488ffff93e 100644
---- a/drivers/staging/greybus/greybus.h
-+++ b/drivers/staging/greybus/greybus.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Greybus driver and device API
-  *
-diff --git a/drivers/staging/greybus/greybus_authentication.h b/drivers/staging/greybus/greybus_authentication.h
-index 03ea9615b217..d654760cf175 100644
---- a/drivers/staging/greybus/greybus_authentication.h
-+++ b/drivers/staging/greybus/greybus_authentication.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: (GPL-2.0 OR BSD-3-Clause)
-+/* SPDX-License-Identifier: (GPL-2.0 OR BSD-3-Clause) */
- /*
-  * Greybus Component Authentication User Header
-  *
-diff --git a/drivers/staging/greybus/greybus_firmware.h b/drivers/staging/greybus/greybus_firmware.h
-index b58281a63ba4..13ef3aa5279e 100644
---- a/drivers/staging/greybus/greybus_firmware.h
-+++ b/drivers/staging/greybus/greybus_firmware.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: (GPL-2.0 OR BSD-3-Clause)
-+/* SPDX-License-Identifier: (GPL-2.0 OR BSD-3-Clause) */
- /*
-  * Greybus Firmware Management User Header
-  *
-diff --git a/drivers/staging/greybus/greybus_manifest.h b/drivers/staging/greybus/greybus_manifest.h
-index 2cec5cf7a846..db68f7e7d5a7 100644
---- a/drivers/staging/greybus/greybus_manifest.h
-+++ b/drivers/staging/greybus/greybus_manifest.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Greybus manifest definition
-  *
 diff --git a/drivers/staging/greybus/greybus_protocols.h b/drivers/staging/greybus/greybus_protocols.h
-index a0eb72cb225b..071d946bd14f 100644
+index 5783f715bdc2..a0eb72cb225b 100644
 --- a/drivers/staging/greybus/greybus_protocols.h
 +++ b/drivers/staging/greybus/greybus_protocols.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: (GPL-2.0 OR BSD-3-Clause)
-+/* SPDX-License-Identifier: (GPL-2.0 OR BSD-3-Clause) */
- /*
-  * This file is provided under a dual BSD/GPLv2 license.  When using or
-  * redistributing this file, you may do so under either license.
-diff --git a/drivers/staging/greybus/greybus_trace.h b/drivers/staging/greybus/greybus_trace.h
-index 7b5e2c6b1f6b..1bc9f1275c65 100644
---- a/drivers/staging/greybus/greybus_trace.h
-+++ b/drivers/staging/greybus/greybus_trace.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Greybus driver and device API
-  *
-diff --git a/drivers/staging/greybus/hd.h b/drivers/staging/greybus/hd.h
-index 6cf024a20a58..348b76fabc9a 100644
---- a/drivers/staging/greybus/hd.h
-+++ b/drivers/staging/greybus/hd.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Greybus Host Device
-  *
-diff --git a/drivers/staging/greybus/interface.h b/drivers/staging/greybus/interface.h
-index 1c00c5bb3ec9..8fb1eacda302 100644
---- a/drivers/staging/greybus/interface.h
-+++ b/drivers/staging/greybus/interface.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Greybus Interface Block code
-  *
-diff --git a/drivers/staging/greybus/manifest.h b/drivers/staging/greybus/manifest.h
-index f3c95a255631..88aa7e44cad5 100644
---- a/drivers/staging/greybus/manifest.h
-+++ b/drivers/staging/greybus/manifest.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Greybus manifest parsing
-  *
-diff --git a/drivers/staging/greybus/module.h b/drivers/staging/greybus/module.h
-index b1ebcc6636db..2a27e520ee94 100644
---- a/drivers/staging/greybus/module.h
-+++ b/drivers/staging/greybus/module.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Greybus Module code
-  *
-diff --git a/drivers/staging/greybus/operation.h b/drivers/staging/greybus/operation.h
-index 40b7b02fff88..17ba3daf111b 100644
---- a/drivers/staging/greybus/operation.h
-+++ b/drivers/staging/greybus/operation.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Greybus operations
-  *
-diff --git a/drivers/staging/greybus/spilib.h b/drivers/staging/greybus/spilib.h
-index 043d4d32c3ee..9d416839e3be 100644
---- a/drivers/staging/greybus/spilib.h
-+++ b/drivers/staging/greybus/spilib.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Greybus SPI library header
-  *
-diff --git a/drivers/staging/greybus/svc.h b/drivers/staging/greybus/svc.h
-index ad01783bac9c..e7452057cfe4 100644
---- a/drivers/staging/greybus/svc.h
-+++ b/drivers/staging/greybus/svc.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Greybus SVC code
-  *
+@@ -914,8 +914,8 @@ struct gb_spi_device_config_response {
+ 
+ /**
+  * struct gb_spi_transfer - a read/write buffer pair
+- * @speed_hz: Select a speed other than the device default for this transfer. If
+- *	0 the default (from @spi_device) is used.
++ * @speed_hz: Select a speed other than the device default for this transfer.
++ * If 0 the default (from @spi_device) is used.
+  * @len: size of rx and tx buffers (in bytes)
+  * @delay_usecs: microseconds to delay after this transfer before (optionally)
+  * 	changing the chipselect status, then starting the next transfer or
 -- 
 2.19.1
 
