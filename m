@@ -1,140 +1,105 @@
-X-GM-THRID: 6885024139738873856
-X-Received: by 2002:a17:90a:ae12:: with SMTP id t18mr14463854pjq.147.1603044602218;
-        Sun, 18 Oct 2020 11:10:02 -0700 (PDT)
+X-GM-THRID: 6620567997579788288
+X-Received: by 2002:a5d:6251:: with SMTP id m17-v6mr2458549wrv.7.1541486710834;
+        Mon, 05 Nov 2018 22:45:10 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90b:709:: with SMTP id s9ls3899691pjz.1.canary-gmail;
- Sun, 18 Oct 2020 11:10:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxzAIc2aC4XdopBlV2J1Ri87yzqs8Dd0+/NX0SNbgHgZog/o5N5J6dql8/kggStk+BqU6cD
-X-Received: by 2002:a17:902:b18f:b029:d5:e3d3:9b87 with SMTP id s15-20020a170902b18fb02900d5e3d39b87mr2627237plr.78.1603044600791;
-        Sun, 18 Oct 2020 11:10:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603044600; cv=none;
+Received: by 2002:a5d:5287:: with SMTP id c7-v6ls5868540wrv.14.gmail; Mon, 05
+ Nov 2018 22:45:10 -0800 (PST)
+X-Google-Smtp-Source: AJdET5ei54Ex4obsdLiW6V1SthMGZfkqDPeolRgczft/nv2h6pnGk4v76TVkqxCvhfKWDWAuGffU
+X-Received: by 2002:a5d:5287:: with SMTP id c7-v6mr2474364wrv.14.1541486710090;
+        Mon, 05 Nov 2018 22:45:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541486710; cv=none;
         d=google.com; s=arc-20160816;
-        b=oud0QYfI0eeqh1+/+3Pe4IFEXVDXL26oRQy6FamwN+onWJPrdaB76nQlJ6szB0/Fzu
-         bfgX7uDIcSITCChcuu8NaDBTjuASTA37bT/RUrErm2pZUEjQf8/Krij2WXW2sr49SZb/
-         ujHGknBoN2PorDBzFVoSJj5LSNOgcpEd4iz8NHABWyDoMfK//6rvkYQFIis7uiafFzLH
-         ju0xna/p1/APdr/UH6zXn8xmunA8ibsl3HpWCXKD0BlLEDVbPoKQ5xqLX5ZgL0Et8m9X
-         JP4PcPdUEL5u3i/XOQU7qWXyNHpMWJd7IQ0pJgreC98seGACqdcal1WAolIro8NoDKyX
-         qAbw==
+        b=cqLpV2iq/xH1YfkbnIc+7r9VGAGf57ikc44UoyvgWkBdAW4sFWDGl1y+dvrJrEscAW
+         1eLxGN1QX2KMwLOwYL3PQ9rR5kDj1jJMsAK4vWPVLIDb6R+cYai+md1c2wUXzREQ4mjt
+         iyYGXys+M6LWkBygIGC/WqZlPR6UhvQFzYfZgjiZuuy4uqUV/Z725TtAcjudVlceI77l
+         sruzV541fPIxg+XuZMbK7PSyeCzqzt/bFvOuxV7QXD4/eOas2ZGreyh7Qcg+mkssieAn
+         IfoIRs8bFn5BCn4U3HZvrXZJz6oN7NgMbp+BKoXMxANi2ciXIBam9gjSVDZgpTgryT5c
+         BUNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=6IV1UegD7i0NkuDYVmXcB2wmQ6rD43D6zVCkjbc0Rks=;
-        b=D8rGcyRLIjNF9ihAdLTW9UZvq6Lo+8oM/PR1Fx3yObbIDTtaMMIOkPojESEljKF+NS
-         Mn7RsPo1g7BEw3952uCVhu/650FAhlS0pZQw2TjWmlGo9cldusszSkV8Voru2esnLjt2
-         MfJ5eJHLz2g5Fmpc4wBKh9+H9+NOuAxrvxb3sTRoFeJfyJ2Qo3ETAPwFEBNKlBvFZTYI
-         fiKy2L75x/D71zZUhV+kUjwwP1KykMwjhd6kLADu1rNEFZc2KODu9NT3zjFTmUxBWuu1
-         MBHcDKkE+/5arnTwWhVv9XneXVmIu5LCu2/SF3MaSGnNnLjFflSk+h04sRP7kv4EjKnw
-         4CeQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=MIrNukbEF1BS6ZB2Z8qdSZd58jQZBXn+eIMH0tuMRkw=;
+        b=Hrwmp0nT/X4pOAVa3f/Y4jz7M2cV1IEK3HPTRohE+NTOSob7C5/QXDodPeL3YfDOr2
+         ca11YCKBJqbcvKvpndEZHAvLy/hrZs3aUQPIhz7nZ63qXTsCns8eZBg4f4PLYIqFJUXl
+         lYqZ12m9EpCIHlRwnMK0R6g6gEsJRAxBwGQR8d9LdEgm08O85VD+I17ywNhRkjp9CTJG
+         M0ugGmPi5QRkbBORdr6TrwvKKs5Bjf/fsI2ExTj09gz5ImLMCkSS9RIXnC2+BxlFd8XC
+         2BJxLdtaKorp/034zQgqC8pqMdNYuXOG09s6Xh9AUqgKP4DiLhcAeXNf0YWUwJHxOn99
+         3NpA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=suBBoApd;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id v24si465268plo.1.2020.10.18.11.10.00
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id z139-v6si28249wmc.0.2018.11.05.22.45.09
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 18 Oct 2020 11:10:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 05 Nov 2018 22:45:10 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=suBBoApd;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x441.google.com with SMTP id 10so4629205pfp.5
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Oct 2020 11:10:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=6IV1UegD7i0NkuDYVmXcB2wmQ6rD43D6zVCkjbc0Rks=;
-        b=suBBoApd3OiLb724cldZkpqxTWwI9pWJ4AinRj4RjiW4K8VARPFF0jVbgoNKqXIxiC
-         jz4sMXOJ+HUSsO6tfSilfbtOtYJs0hdmX336TFMV57PqLnM/iJj2vxhRUVjQytqnnNzX
-         b8GMJfObYQ88HdUlu1EWOqoAF7eWjS7QoTgnrHmCn+2Vnixrkzv0Uy2AldaJeZsOj54l
-         JgXI+MgFDbJVI7+zS4QdBdTlaSshL9if2wYcszy/Pev84YNBxGNMJAorYhBXyJO7Azv1
-         X1fmiH+8iqrZVyEwHvJHT/UE4opCot1wcMRwz2ehwjaOkxOVzf9n4BUmxG7xRv8db5Uz
-         VjmA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=6IV1UegD7i0NkuDYVmXcB2wmQ6rD43D6zVCkjbc0Rks=;
-        b=EC0RqE1hyQD1WjVgkoMxxqY86CDKFZBHq4fahcToDusEtWLAydln/TQ63SBCOC+hYi
-         Hmw61u0sj5Tf0t0eXCK41uIrMoH6FptknRkRxdqn9CQt7CH3oi9T+oFY4AJhLi02e6V4
-         x7h3dQ6YSX4c3ThzeKHFfhfCfw84u+ueUL7G2yENRnG5F7t7KGh/1i1gnh32O5M4NJ0t
-         hsQM5IEWag5uPaTSFweFJDK50MqSS73eXePDuRRcJkWQl9r+d/ZVtKKHLNrEwuOcYzqD
-         nKMfj9nfatVZwcBG7TlTIpLtTyO+HdNMcLmShGFtJjrBDwhF/W9r2VDTLGHHN6F/1XsM
-         ihCg==
-X-Gm-Message-State: AOAM533tOc+uDvc/h2sIDJf0bGNj3fWfiRwhczuCBYl5PjM7x9LrZA+b
-	YJYQrJ9zMQetKkjm/g//G1jk9Bhoj6hmNg==
-X-Received: by 2002:a63:e703:: with SMTP id b3mr11037974pgi.265.1603044600369;
-        Sun, 18 Oct 2020 11:10:00 -0700 (PDT)
-Return-Path: <mh12gx2825@gmail.com>
-Received: from ubuntu204 ([103.108.75.206])
-        by smtp.gmail.com with ESMTPSA id n203sm9941683pfd.81.2020.10.18.11.09.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 18 Oct 2020 11:09:59 -0700 (PDT)
-Date: Sun, 18 Oct 2020 23:39:54 +0530
-From: Deepak R Varma <mh12gx2825@gmail.com>
-To: outreachy-kernel@googlegroups.com, Ian Abbott <abbotti@mev.co.uk>,
-	H Hartley Sweeten <hsweeten@visionengravers.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: mh12gx2825@gmail.com
-Subject: [PATCH] staging: comedi: Use sysfs_emit for show(device *...)
- functions
-Message-ID: <20201018180954.GA39024@ubuntu204>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.54,470,1534802400"; 
+   d="scan'208";a="284455433"
+Received: from 89-157-201-244.rev.numericable.fr (HELO hadrien) ([89.157.201.244])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 06 Nov 2018 07:45:09 +0100
+Date: Tue, 6 Nov 2018 07:45:09 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Ioannis Valasakis <code@wizofe.uk>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH] staging: speakup: move comment up to
+ reduce 80 chars limit
+In-Reply-To: <20181106022504.GA12155@kvasir.local>
+Message-ID: <alpine.DEB.2.21.1811060744320.2437@hadrien>
+References: <20181106022504.GA12155@kvasir.local>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: text/plain; charset=US-ASCII
 
-Convert snprintf calls in device show functions to sysfs_emit
-for PAGE_SIZE buffer safety.
-Warning generated by: scripts/coccinelle/api/device_attr_show.cocci
 
-Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
----
- drivers/staging/comedi/comedi_fops.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/comedi/comedi_fops.c b/drivers/staging/comedi/comedi_fops.c
-index d99231c737fb..5b8ba0c84a8e 100644
---- a/drivers/staging/comedi/comedi_fops.c
-+++ b/drivers/staging/comedi/comedi_fops.c
-@@ -396,7 +396,7 @@ static ssize_t max_read_buffer_kb_show(struct device *csdev,
- 	mutex_unlock(&dev->mutex);
- 
- 	comedi_dev_put(dev);
--	return snprintf(buf, PAGE_SIZE, "%u\n", size);
-+	return sysfs_emit(buf, "%u\n", size);
- }
- 
- static ssize_t max_read_buffer_kb_store(struct device *csdev,
-@@ -452,7 +452,7 @@ static ssize_t read_buffer_kb_show(struct device *csdev,
- 	mutex_unlock(&dev->mutex);
- 
- 	comedi_dev_put(dev);
--	return snprintf(buf, PAGE_SIZE, "%u\n", size);
-+	return sysfs_emit(buf, "%u\n", size);
- }
- 
- static ssize_t read_buffer_kb_store(struct device *csdev,
-@@ -509,7 +509,7 @@ static ssize_t max_write_buffer_kb_show(struct device *csdev,
- 	mutex_unlock(&dev->mutex);
- 
- 	comedi_dev_put(dev);
--	return snprintf(buf, PAGE_SIZE, "%u\n", size);
-+	return sysfs_emit(buf, "%u\n", size);
- }
- 
- static ssize_t max_write_buffer_kb_store(struct device *csdev,
-@@ -565,7 +565,7 @@ static ssize_t write_buffer_kb_show(struct device *csdev,
- 	mutex_unlock(&dev->mutex);
- 
- 	comedi_dev_put(dev);
--	return snprintf(buf, PAGE_SIZE, "%u\n", size);
-+	return sysfs_emit(buf, "%u\n", size);
- }
- 
- static ssize_t write_buffer_kb_store(struct device *csdev,
--- 
-2.25.1
+On Tue, 6 Nov 2018, Ioannis Valasakis wrote:
 
+> Move two line comments up in order to reduce the 80 chars exceeding
+> limit. Reported by checkpatch.
+
+"in order to avoid exceeding 80 chars" would be a bit clearer.
+
+julia
+
+>
+> Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
+> ---
+>  drivers/staging/speakup/spk_priv_keyinfo.h | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/speakup/spk_priv_keyinfo.h b/drivers/staging/speakup/spk_priv_keyinfo.h
+> index cc99fcd1bc6e..493f4ebb3473 100644
+> --- a/drivers/staging/speakup/spk_priv_keyinfo.h
+> +++ b/drivers/staging/speakup/spk_priv_keyinfo.h
+> @@ -61,11 +61,13 @@
+>  #define SPEAKUP_HELP		0x2d
+>  #define TOGGLE_CURSORING	0x2e
+>  #define READ_ALL_DOC		0x2f
+> -#define SPKUP_MAX_FUNC		0x30 /* one greater than the last func handler */
+> +/* one greater than the last func handler */
+> +#define SPKUP_MAX_FUNC		0x30
+>  #define SPK_KEY		0x80
+>  #define FIRST_EDIT_BITS	0x22
+>  #define FIRST_SET_VAR SPELL_DELAY
+> -#define VAR_START		0x40 /* increase if adding more than 0x3f functions */
+> +/* increase if adding more than 0x3f functions */
+> +#define VAR_START		0x40
+>
+>  /* keys for setting variables, must be ordered same as the enum for var_ids */
+>  /* with dec being even and inc being 1 greater */
+> --
+> 2.19.1
+>
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20181106022504.GA12155%40kvasir.local.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
