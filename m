@@ -1,83 +1,83 @@
 X-GM-THRID: 6618737831817773056
-X-Received: by 2002:a1f:2c4c:: with SMTP id s73mr2895364vks.7.1541661833342;
-        Wed, 07 Nov 2018 23:23:53 -0800 (PST)
+X-Received: by 2002:a9d:ae:: with SMTP id w43mr2331813oti.41.1541661790363;
+        Wed, 07 Nov 2018 23:23:10 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1f:8a95:: with SMTP id m143ls86395vkd.3.gmail; Wed, 07 Nov
- 2018 23:23:52 -0800 (PST)
-X-Google-Smtp-Source: AJdET5cvVR13RHatPLf9l5bDDRPPZEzeu4n3UwNgG1LpXNRrwtd+wkDDCMmGDxPHKCTBOmy31uaM
-X-Received: by 2002:a1f:3456:: with SMTP id b83mr2885106vka.25.1541661832718;
-        Wed, 07 Nov 2018 23:23:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541661832; cv=none;
+Received: by 2002:a9d:3f06:: with SMTP id m6ls496115otc.7.gmail; Wed, 07 Nov
+ 2018 23:23:09 -0800 (PST)
+X-Google-Smtp-Source: AJdET5e8waZQyTzaY77UKccbArcrjZ1a4bb96IHCsbK3pQin53+diEeYrAh1V23SiFyUuHjH4i2k
+X-Received: by 2002:a9d:5753:: with SMTP id x19mr2170586oti.22.1541661789385;
+        Wed, 07 Nov 2018 23:23:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541661789; cv=none;
         d=google.com; s=arc-20160816;
-        b=cEvPNuTbotXeWf5w5XRkpNEhCS9lZkpb4X9BYiKhx/mjeolO1xh7a6V+sEtDf9v2xD
-         yUdskvdU2hghyhFNwyu6ZFyd2SfkOzrAWkLaodQD6EMeB5O90yMLPOZjc4DyJl4XsVuW
-         RjbqrjcLqyi9NpW2IWZUnC4MluMWOiNIF6GCG6Q8if7QyxTakvSAnPO4QMnLp9JJ6hyk
-         tGj4temVUOZJOU/2FK+8rXZxM0hAJ7nr+p2Sm5edPrOGVWcjubSNrgTtA7xvYSOWCwZ3
-         5w4TEnj5vpHYURMpPaaz9H1vkgwxY/DOtY2PvLUE7VYXwtqLef6wyS6lVagCQClCK8m6
-         tu7w==
+        b=bxGsK1tSK8xX0UJp1O9H0Njpsadv8VsYK3pYR140LyEyLbxpskJ3eTFW+8fsgGZr5/
+         DWs8NxzTB1Mwildq6eG45J+ksj+8Cj+E+f5djd2lMH1WsS+6qlXfidsLeJSVB9S5gOhr
+         b03ez5Spw/S6nIjqwesGis79xcN4hINsyg9JNFX98SyJuy4mWc8PoN27jL3Dr6UJAWwz
+         Pj6EXT6YmGYy3oHgoxKbrSdtFsVBOFeUDbNZEtC3za7wmD4LXwEICktt3UVhRYhYIc48
+         zXmAJemE9q0mR4mrLaNzfQgdQTm0xlW4oxEHwJWlTtmZ/BRJujVas2/qCmNOLU601rRV
+         /HRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:to:from:date:dkim-signature;
-        bh=afM1oRSU29nI7PYYDBTFtTTBPgyNd9C8oJIZCJDCebM=;
-        b=0VBnBZWrRGpe6aI6etk+/b/LECx7LVC58pMi2dalwVPekwmlp5ojWgSpXfaDC4MD+d
-         L8HpwVXWC4lCtENzbbZ/fsb5doS2veI+Rsuo9hgUHNUNc54f52JoJ9EgIjz6T7U0HuIC
-         5BP/jMIYFYPzpE+zSCJRZrpdA0jrGvgySi0igU0XtedOrWQbWv33dbZBOnL8dmgDAAYs
-         X9CnusbnE/jKDhBLQp4AwqzIB8tHEVMraLSC+1nDkbFF6Rf4H3cYGL01p5MigUIm5kK5
-         MWp9q1JfhXfUIJSy3aLVx8bsRokRdKiG8JvDDWwDDEMel1HceMcvLLuLvGG0KrmNGdi5
-         RdEg==
+        bh=aZN4x+XyBmuCUQepXpr48mKuBdTXLjJlnrd7As95bjg=;
+        b=d7XjFfIkoo6OqpSZlKV8DNuFyU2wVxV5Iu3domw+sI/mbRibNy6GVIJscksKFnFBf1
+         Xk8oImuu8hK27qCGmcCYPe+v94TiU2X9+hMI89cNtc2SK2XG7MOAieZYgZDGI/5hc5YJ
+         z9Q411E70rOqMc6A8QwXaMegTdiq5urZMZGvxYIG/M7kOagHUmZB0brfajRiyj1Fw0EO
+         nY/6y76Tq2Sy07hDStP7JNHmLz/BPWP9y2WopHL4Yv5P0pJMQCqcdCAN2HkZwML/3E5w
+         n9Ldw9YVqcgELyOHbymbKrh2mmxttynz7OsFzUyB+S3qhJ6tELc3nkAasFQSV2zwtmOP
+         e5Tw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZAGBv3Dm;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZTk1jqLW;
        spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <m.maya.nakamura@gmail.com>
 Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id x21si20298vsf.1.2018.11.07.23.23.52
+        by gmr-mx.google.com with ESMTPS id p24si150795otk.4.2018.11.07.23.23.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 07 Nov 2018 23:23:52 -0800 (PST)
+        Wed, 07 Nov 2018 23:23:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZAGBv3Dm;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZTk1jqLW;
        spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id g7-v6so6647150pfo.10
-        for <outreachy-kernel@googlegroups.com>; Wed, 07 Nov 2018 23:23:52 -0800 (PST)
+Received: by mail-pf1-x443.google.com with SMTP id s9-v6so1558596pfm.13
+        for <outreachy-kernel@googlegroups.com>; Wed, 07 Nov 2018 23:23:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=afM1oRSU29nI7PYYDBTFtTTBPgyNd9C8oJIZCJDCebM=;
-        b=ZAGBv3DmjfBCTHt27Ffxr2jkod/mXUm3VwGVbXfx9uFZBkWybX8Dg3lRDVKzdE1/3u
-         Cu/zCOwuSkQr7oZMk3Sjbx9njZ0Lz7xJvdgKKVdxNHFh1jnyEoyx1ZnpL8QGxRuabhVk
-         EqK8r9BKbhdyIwxo66/DCsujgfUUSvd2is7lOVsorHnzqFaeQoktmozZimZYY+U47IPv
-         Wea9x859KKwjyC1xZGUWnq+kUY6+61ZB1XErESsdnS///AgPjQuuVBusJvE11PZAsk9b
-         kcuegUzPzukHYHQdXsP9af7acscBL7RX+Iv1scIUUKlAuhBaNZOQ2CeySq93C/aKdVqd
-         FyJQ==
+        bh=aZN4x+XyBmuCUQepXpr48mKuBdTXLjJlnrd7As95bjg=;
+        b=ZTk1jqLWeSpe8NkT2Pi299I6wLaUxMVCxKY4VzbFWRTbmT5feq1GoOsj5YyUvgjSNE
+         qYDnUl5WpX1hh1CDIhQFFab9Wumi91Gw/3414U+VYkmAriiWDVaNBeRJK2i39QVvwxSg
+         uJjyRtg6ZjBga1uNlK8VlBSsgPN5khQGkiI6bOIkYxfMcKYwJqNx81JEXkIXD+mLhK4O
+         3Mwvs/PA6iujOYY1o+ed+3LG6CqbB8lBuF2rfJz4QLbF7eTkro/rbWtofkQYOQ1MPZsw
+         HN7gr657PHO2VwrdKBDcIL5AMY96HVwYbXNPmCAZtZY5QD/jlftCeZEPUBi0OAzyOpTg
+         miXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=afM1oRSU29nI7PYYDBTFtTTBPgyNd9C8oJIZCJDCebM=;
-        b=NxdQLEFy1pywR43Tb9rhHE3cKuZ9+eqTFSRTTN9MQN/PNWQcYKmIpvwRIeBRGOi2PN
-         TLYY7e129kOA0K48PGuAO3wVt32lGOiOEt5b5ihl0q0MWE6OwB4kpFQQxE3ixjlXtIgb
-         hlOuuoc1pAQpjIHfAAC4jZuK/i3WUYsTamINKYAhcWb9PcmmVcS6VyBPkMEgZU7J4rJZ
-         sqxNlS8ozkY4CK9YB+VFNULe6Xuxpb4/2svWXKJOoEDO7IzvhYKsuf7IeWovMLREDPGl
-         22TRCQKIU9Vm+tt28uIumA+6mDronQDbzaWLD6hbTCUIEBX6QkyVpZHElOBAResVGtGP
-         Mt+Q==
-X-Gm-Message-State: AGRZ1gKkgukR1om6oevyd2Mc89Zme6X90LTc6goPC6hxH2CIZQp6Ql8w
-	kswvgR9CTQwKOMp6XltBL/Yiq3o1
-X-Received: by 2002:a63:bf0b:: with SMTP id v11mr3009954pgf.302.1541661831651;
-        Wed, 07 Nov 2018 23:23:51 -0800 (PST)
+        bh=aZN4x+XyBmuCUQepXpr48mKuBdTXLjJlnrd7As95bjg=;
+        b=ZwymzXD8MnEn374EIH4MLhqyM8LwYh8nwZZz/XKYpCtZl1kYl9H9RAsBfCHvGHDRdH
+         bn/ovMXrW1vHej5PWupl5CcF0f/pYPN/ajCRPAXm06kkUjs94dK0rsi1T8m84xTOyYEx
+         BPyWJvj+7rTkvR+A2QxUAj3zbbQNzy6PzcFSOFBdu6pkW5YE7qxZP4CJFyeHhtH3aFqg
+         W5VPouaBJPn53UgXq6I0Ew+LjtRnyy+hEziWFKb9GM2XQpOy+Smv4qpwWaoiO4uHH/oV
+         OOVJkDR27cD9SC0Nm2+/VZszGmMS5XZ5JAu1a7O1hc7Kco4SoD3QgLbzvY2vThQjVrMo
+         Q/+g==
+X-Gm-Message-State: AGRZ1gJSHEilL5aWHZpMWCqxWlNjKh3qP0eBuu154cfD7dDctkh8k6fX
+	pt0PVlEOLqdiKNvkmfFHOZ3Doi8d
+X-Received: by 2002:a62:8208:: with SMTP id w8-v6mr3481921pfd.150.1541661788569;
+        Wed, 07 Nov 2018 23:23:08 -0800 (PST)
 Return-Path: <m.maya.nakamura@gmail.com>
 Received: from m-hyperV (50-47-85-193.evrt.wa.frontiernet.net. [50.47.85.193])
-        by smtp.gmail.com with ESMTPSA id f22-v6sm739550pfn.177.2018.11.07.23.23.51
+        by smtp.gmail.com with ESMTPSA id m10-v6sm4713155pfg.180.2018.11.07.23.23.08
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Nov 2018 23:23:51 -0800 (PST)
-Date: Wed, 7 Nov 2018 23:23:50 -0800
+        Wed, 07 Nov 2018 23:23:08 -0800 (PST)
+Date: Wed, 7 Nov 2018 23:23:07 -0800
 From: Maya Nakamura <m.maya.nakamura@gmail.com>
 To: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH 4/4] staging: rtlwifi: Add spaces for comments
-Message-ID: <ff1118ecc38e3ef54248722b074a8d64aceb4e42.1541660015.git.m.maya.nakamura@gmail.com>
+Subject: [PATCH 3/4] staging: rtlwifi: Add blank lines
+Message-ID: <9082236333474f4af69913c7e3e3566729d04181.1541660015.git.m.maya.nakamura@gmail.com>
 References: <cover.1541660015.git.m.maya.nakamura@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -85,40 +85,38 @@ Content-Disposition: inline
 In-Reply-To: <cover.1541660015.git.m.maya.nakamura@gmail.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 
-Add spaces before and after text in comments.
+Add blank lines after if statements.
 
 Signed-off-by: Maya Nakamura <m.maya.nakamura@gmail.com>
 ---
- drivers/staging/rtlwifi/phydm/phydm_adc_sampling.c | 2 +-
- drivers/staging/rtlwifi/phydm/phydm_ccx.c          | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/rtlwifi/phydm/phydm_adc_sampling.c | 1 +
+ drivers/staging/rtlwifi/phydm/phydm_ccx.c          | 1 +
+ 2 files changed, 2 insertions(+)
 
 diff --git a/drivers/staging/rtlwifi/phydm/phydm_adc_sampling.c b/drivers/staging/rtlwifi/phydm/phydm_adc_sampling.c
-index 7d578241326b..f94c9d19491e 100644
+index 7eb54d2e48f3..7d578241326b 100644
 --- a/drivers/staging/rtlwifi/phydm/phydm_adc_sampling.c
 +++ b/drivers/staging/rtlwifi/phydm/phydm_adc_sampling.c
-@@ -575,7 +575,7 @@ void phydm_lamode_trigger_setting(void *dm_void, char input[][16], u32 *_used,
- 			PHYDM_SSCANF(input[10], DCMD_DECIMAL, &var1[9]);
+@@ -563,6 +563,7 @@ void phydm_lamode_trigger_setting(void *dm_void, char input[][16], u32 *_used,
+ 				PHYDM_SSCANF(input[3], DCMD_HEX, &var1[2]);
+ 			else
+ 				PHYDM_SSCANF(input[3], DCMD_DECIMAL, &var1[2]);
++
+ 			trig_sig_sel = var1[2];
  
- 			dma_data_sig_sel = (u8)var1[3];
--			trigger_time_mu_sec = var1[4]; /*unit: us*/
-+			trigger_time_mu_sec = var1[4]; /* unit: us */
- 
- 			adc_smp->la_mac_ref_mask = var1[5];
- 			adc_smp->la_dbg_port = var1[6];
+ 			PHYDM_SSCANF(input[4], DCMD_DECIMAL, &var1[3]);
 diff --git a/drivers/staging/rtlwifi/phydm/phydm_ccx.c b/drivers/staging/rtlwifi/phydm/phydm_ccx.c
-index c0da601be6cf..80679a6d5047 100644
+index ded6642bdf64..c0da601be6cf 100644
 --- a/drivers/staging/rtlwifi/phydm/phydm_ccx.c
 +++ b/drivers/staging/rtlwifi/phydm/phydm_ccx.c
-@@ -317,7 +317,7 @@ void phydm_get_nhm_result(void *dm_void)
- 		ccx_info->NHM_result[10] = (u8)((value32 & MASKBYTE2) >> 16);
- 		ccx_info->NHM_result[11] = (u8)((value32 & MASKBYTE3) >> 24);
- 
--		/*Get NHM duration*/
-+		/* Get NHM duration */
- 		value32 = odm_read_4byte(dm, ODM_REG_NHM_CNT10_TO_CNT11_11N);
- 		ccx_info->NHM_duration = (u16)(value32 & MASKLWORD);
+@@ -357,6 +357,7 @@ bool phydm_check_nhm_ready(void *dm_void)
+ 			}
+ 		}
  	}
++
+ 	return ret;
+ }
+ 
 -- 
 2.17.1
 
