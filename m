@@ -1,100 +1,130 @@
 X-GM-THRID: 6621495393645494272
-X-Received: by 2002:a2e:8842:: with SMTP id z2-v6mr516023ljj.29.1541687048978;
-        Thu, 08 Nov 2018 06:24:08 -0800 (PST)
+X-Received: by 2002:a17:902:1125:: with SMTP id d34-v6mr161550pla.7.1541687034399;
+        Thu, 08 Nov 2018 06:23:54 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a19:5914:: with SMTP id n20-v6ls157207lfb.25.gmail; Thu, 08
- Nov 2018 06:24:07 -0800 (PST)
-X-Google-Smtp-Source: AJdET5fH9gDNythEFFwNEEXBTawOVYAyYsG+Vt/brZbMfYV0C+p809IGZi3YGhDnjCEIM/7FZ0kj
-X-Received: by 2002:a19:7510:: with SMTP id y16mr474494lfe.9.1541687047113;
-        Thu, 08 Nov 2018 06:24:07 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1541687047; cv=pass;
+Received: by 2002:a62:4494:: with SMTP id m20-v6ls915874pfi.10.gmail; Thu, 08
+ Nov 2018 06:23:53 -0800 (PST)
+X-Google-Smtp-Source: AJdET5cQ6vyh3ulGoNS5vl+CSjMO+ugxcHsyS0/TWiJO5spEWnQVTwANB0aSVwPhz76qwttCax1v
+X-Received: by 2002:a62:4b0b:: with SMTP id y11-v6mr2004321pfa.99.1541687033414;
+        Thu, 08 Nov 2018 06:23:53 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1541687033; cv=pass;
         d=google.com; s=arc-20160816;
-        b=mLfpD/J4vhv40pmoEXgflVTLFk5I9K3ipX44y/T3KZvYR71nQEcSoKrSz76ZJXEBXR
-         U5fkJ1mG/xsTyjXiHxNDTab0RmqRK48TMxcGPjiNrrZMzuzs2NhINf5eaWCPk/0X+s2F
-         uHyIbiKI0mt3ek1hf/QxqSxDOv6m+dTYtBmBf59eL8Ae0uz7rTrUsr+4bY59BxKGE1xP
-         kQCArfgf09zUhfx953VnvQRsH97LZoh0ndqkFDpA+d6et6Q1VgkzCdGc+pqgGWaUFl2n
-         faOBN4egK9e4TzTgmblH1kBFp7zliLRsdq7rcGg9PB7UuxE0L2nZ+THFcCkVEW4AvkIN
-         eRSg==
+        b=MIbN3XEsO18+B1CGgXTGUGW6eIo94IKNK+I8FjljlLYTFwafrnem34yF7o9twDvYoe
+         YZ/1y4g53dpzf0BsUARjvzHw8c3BTh+Ut/sHjNks8Q4IQ5MQ155V2ISEB4Dzz/QDU2aX
+         vW0tCIbeo8/j6MHraZvt6XCCARXxG5j4eMiuO2lv18k2Q1J2C8O+GReg6IWFBm8vwNub
+         w4YvWgdyeqns0Yx2CmjounP1vhGiC9DEth+vEUxbSbBK3XkkCOVcLTYEaMMp1CsVuDYV
+         YdMkHUAoWWBItWoMfVXaMmdW37sVfPc18mNtfIHRTX5OeQ3e0JrhOxCDLPfuMzbvhY+s
+         FWCw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=ZZ8dnVAXhUB7bGC1mQSAyft/JnpsiPez/ozCQl81obo=;
-        b=gc0wng4/anUhFHDAoe7xLuav58/bqKqtffu6HbiXbqQYSxkGYWuDVZnPTo63K+ztM1
-         5euP0NVv7CQnHitlleI4uEDmPFAaH7jOb016qipoLNFLb8igaH2iszLxGSNV54xFxyHM
-         RTFd3WtsrWUW+XCdEaS5DTaI1kZOti4ceKI6H3oafsXsKpr1CA+jvNuJkMZuJIStdKA/
-         /d+3vb4EOwTBPV7FAdiGEJmWsUDYyPC1gfa+NA+0ReDyDRHxdq0HuhB5OyxdEnTxpY8J
-         /NM3wiRdrbuPGhAuBkys4izM+5hJCGg2+ZnBmo8sNw0YzhnUnkW+H7De0iDG6m5q1jbS
-         asdg==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=OFCgxlyTNDS8XTXDeHRNe2jaUxrjfnlAVfAI5+sBNag=;
+        b=mNDnytnLBEo3rnFGCv56SVf7UFTlHSM8LrGBAaLwl6UVDB6TI7IJRfWuftNxt2n/X0
+         aZUt9mZ1qLi+aT1w1hqMptnW0JMWY10kPg+eiueuCmRiI8qmPEdGK6uKhdjv5dZt4I1J
+         cjMVgdg+cQ5ppDQ5skswmfC1BZrRVhRNHRM8n5V4S+1k8TXQxARiI4pnE7FuKPq6+Sca
+         HP+Q8hICnWXIplIfCz9EzRpFuyTfy41o4Xn50b42SBiu3x19fa6kPDlCpNbXYCpXAIg9
+         +Lyxeo8v4U3K4+htRNfXnlfW/24dSWdzZIqZwvSUYKVeNOBLLmk+qysCjFWtCScvKUTk
+         i6HA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=FcC6wcIa;
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=h9KapuPW;
        arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
        spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
 Return-Path: <code@wizofe.uk>
 Received: from sender-of-o51.zoho.eu (sender-of-o51.zoho.eu. [185.20.209.243])
-        by gmr-mx.google.com with ESMTPS id w13-v6si168525lfe.3.2018.11.08.06.24.06
+        by gmr-mx.google.com with ESMTPS id o9-v6si133575pfi.5.2018.11.08.06.23.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 08 Nov 2018 06:24:06 -0800 (PST)
+        Thu, 08 Nov 2018 06:23:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) client-ip=185.20.209.243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=FcC6wcIa;
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=h9KapuPW;
        arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
        spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
-ARC-Seal: i=1; a=rsa-sha256; t=1541687044; cv=none; 
+ARC-Seal: i=1; a=rsa-sha256; t=1541687029; cv=none; 
 	d=zoho.eu; s=zohoarc; 
-	b=UqLriWjyQptNguZQfnGKHsbdu9tMTcjOVRayhhBDhuMn42Vd+KTgNFw5H6zCSMdRfkZt72pOnpZoLaq/4rVlKwP79jGg3yU8IlKCrbFe4BOJlfzF4Z27Z18UhiBTcDn+vUzlgcdNu8p0y973aXTgz4Rx7/CpTveN4XQB+SXT5ik=
+	b=Bk4qUiMoDm2aIo6vDwZh3FFDDFpS6oihFVbhLG0TzWfsrllmXU6hM0pmTTTpgU+Klsja6H3qTCaIpjNrIInC1uSNXaWDC0Zqk+otCdV+EMsvnukh4VjgijyFuOHeHcx4H671iw+UDYoRo0JdKfmpg4p99tdoRqZRsf7UZ8iJEc4=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
-	t=1541687044; h=Content-Type:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To:ARC-Authentication-Results; 
-	bh=ZZ8dnVAXhUB7bGC1mQSAyft/JnpsiPez/ozCQl81obo=; 
-	b=YbiF7Wq34+ny0hupvoUIYTbBtqGRVJrQyt6DZdPBIk1M3+8A7/exYeDZVjat4/sF+0drakzopN0uXsqOSTptPYmFFJt51V1Pm6EfmNa1P6hO+BCl09xNeu+AZT20x0TEyfQdk6OPgtNq9w8sJQL7vCJeb6m1iVCu5LtiuvC4gEo=
+	t=1541687029; h=Content-Type:Cc:Date:From:MIME-Version:Message-ID:Subject:To:ARC-Authentication-Results; 
+	bh=OFCgxlyTNDS8XTXDeHRNe2jaUxrjfnlAVfAI5+sBNag=; 
+	b=e4AQ6laahxfhhgXobfJSGghULUJ9ogFX8NCdraqASJgtSeaMbu1CD65f7zzZFGtE/qwaHJUMbSLSWoSwFtDkNfg/IDC7npgJwt4kkMdTL2UtT+GYBLrEmvAIS+oFJAyZIRUlpud6IoV8NW//X4kiLlHMigdocjlEBx/nX8SS82s=
 ARC-Authentication-Results: i=1; mx.zoho.eu;
 	dkim=pass  header.i=wizofe.uk;
 	spf=pass  smtp.mailfrom=code@wizofe.uk;
 	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541687044;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541687029;
 	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To;
-	l=751; bh=ZZ8dnVAXhUB7bGC1mQSAyft/JnpsiPez/ozCQl81obo=;
-	b=FcC6wcIaD0U1Hr8OFeJe6NrTPtfoYDhJjNHt47JMnJERX/zTIGhKtPRLC50mQbyK
-	so3IJbDnpmKAj3cGC7IUqNFQBXT/dD/rnwC7bb+Y1H6VGFvBDwRFI1G0/TCp6a4giCX
-	V00z/HCMUxmPIMC/Xi+2AJ4+wXyXMElel8eHcRf8=
+	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type;
+	l=2323; bh=OFCgxlyTNDS8XTXDeHRNe2jaUxrjfnlAVfAI5+sBNag=;
+	b=h9KapuPWu393YOMfMn/xx/e1wEM8G5oGXZ/J6tYu459bZlrALAZxUbavocRxc+RK
+	GvmMYp0t9hPaj56HlzP3r4tSDT/Uto0avniVyOHhIxoZVMhth1ibC5cL2As6/uPkyhU
+	ayH8yn9tkxf7kfouF9cZ4Y1bZ841OE9VocOeWJ+w=
 Received: from kvasir.local (94.117.81.61 [94.117.81.61]) by mx.zoho.eu
-	with SMTPS id 1541687042060621.1845053299447; Thu, 8 Nov 2018 15:24:02 +0100 (CET)
-Date: Thu, 8 Nov 2018 14:23:59 +0000
+	with SMTPS id 1541687029072505.2179977959822; Thu, 8 Nov 2018 15:23:49 +0100 (CET)
+Date: Thu, 8 Nov 2018 14:23:46 +0000
 From: Ioannis Valasakis <code@wizofe.uk>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org
-Subject: [PATCH v2 01/15] staging: greybus: shorten comparison to NULL
-Message-ID: <f4fada1fea82778ede6d95b1b99f4a3e714037be.1541686942.git.code@wizofe.uk>
-References: <cover.1541686942.git.code@wizofe.uk>
+Subject: [PATCH v2 00/15] staging: greybus: fix coding style issues
+Message-ID: <cover.1541686942.git.code@wizofe.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1541686942.git.code@wizofe.uk>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-ZohoMailClient: External
 
-Shorten pointer NULL check by simple truth test.
-Reported by checkpatch.
+Changed in V2:
+	- Change the subject title
 
-Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
----
- drivers/staging/greybus/core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Ioannis Valasakis (15):
+  staging: greybus: shorten comparison to NULL
+  staging: greybus: align parameters to parentheses
+  staging: greybus: add a blank line after declaration
+  staging: greybus: fix SPDX License Identifier
+  greybus: staging: align arguments with parentheses
+  staging: greybus: correct SPDX License Identifier
+  staging: greybus: remove multiple blank lines
+  staging: greybus: insert empty line after struct
+  staging: greybus: remove space before tab
+  staging: greybus: remove multiple blank lines
+  staging: greybus: add extra space around OR operator
+  staging: greybus: remove extra space before tab
+  staging: greybus: correct SPDX license identifiers
+  staging: greybus: remove comparison to BOOL
+  staging: greybus: remove unmatched right bracket
 
-diff --git a/drivers/staging/greybus/core.c b/drivers/staging/greybus/core.c
-index dafa430d176e..5d14a4e8dada 100644
---- a/drivers/staging/greybus/core.c
-+++ b/drivers/staging/greybus/core.c
-@@ -48,7 +48,7 @@ static bool greybus_match_one_id(struct gb_bundle *bundle,
- static const struct greybus_bundle_id *
- greybus_match_id(struct gb_bundle *bundle, const struct greybus_bundle_id *id)
- {
--	if (id == NULL)
-+	if (!id)
- 		return NULL;
- 
- 	for (; id->vendor || id->product || id->class || id->driver_info;
+ drivers/staging/greybus/arche-apb-ctrl.c      |  1 -
+ drivers/staging/greybus/arche_platform.h      |  2 +-
+ drivers/staging/greybus/arpc.h                |  2 +-
+ drivers/staging/greybus/audio_apbridgea.h     |  2 +-
+ drivers/staging/greybus/audio_codec.h         |  2 +-
+ drivers/staging/greybus/audio_manager.h       |  2 +-
+ .../staging/greybus/audio_manager_private.h   |  2 +-
+ drivers/staging/greybus/bundle.h              |  3 +-
+ drivers/staging/greybus/camera.c              |  1 -
+ drivers/staging/greybus/connection.c          |  4 ---
+ drivers/staging/greybus/connection.h          |  2 +-
+ drivers/staging/greybus/control.h             |  5 ++--
+ drivers/staging/greybus/core.c                |  4 +--
+ drivers/staging/greybus/es2.c                 |  4 +--
+ drivers/staging/greybus/firmware.h            |  2 +-
+ drivers/staging/greybus/gb-camera.h           |  2 +-
+ drivers/staging/greybus/gbphy.h               |  2 +-
+ drivers/staging/greybus/greybus.h             |  2 +-
+ .../staging/greybus/greybus_authentication.h  |  2 +-
+ drivers/staging/greybus/greybus_firmware.h    |  2 +-
+ drivers/staging/greybus/greybus_manifest.h    |  2 +-
+ drivers/staging/greybus/greybus_protocols.h   | 29 +++++--------------
+ drivers/staging/greybus/greybus_trace.h       |  2 +-
+ drivers/staging/greybus/hd.h                  |  2 +-
+ drivers/staging/greybus/interface.h           |  2 +-
+ drivers/staging/greybus/manifest.h            |  2 +-
+ drivers/staging/greybus/module.h              |  2 +-
+ drivers/staging/greybus/operation.h           |  2 +-
+ drivers/staging/greybus/spilib.h              |  2 +-
+ drivers/staging/greybus/svc.h                 |  2 +-
+ drivers/staging/greybus/uart.c                |  4 +--
+ 31 files changed, 40 insertions(+), 59 deletions(-)
+
 -- 
 2.19.1
 
