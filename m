@@ -1,103 +1,142 @@
-X-GM-THRID: 6532869391138160640
-X-Received: by 10.200.6.140 with SMTP id f12mr3691100qth.16.1521052185786;
-        Wed, 14 Mar 2018 11:29:45 -0700 (PDT)
+X-GM-THRID: 6618737831817773056
+X-Received: by 2002:a24:5c92:: with SMTP id q140-v6mr1456867itb.29.1541758536813;
+        Fri, 09 Nov 2018 02:15:36 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.200.68.10 with SMTP id j10ls1406551qtn.6.gmail; Wed, 14 Mar
- 2018 11:29:45 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELug16LQ4h1Odl5hQsvbI0E8e9EG6DKFAWSzbgtLY8YnBk4j5cOxf3tbf2+lzJSY6IlSBPUq
-X-Received: by 10.200.14.129 with SMTP id v1mr3875885qti.14.1521052185039;
-        Wed, 14 Mar 2018 11:29:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521052185; cv=none;
+Received: by 2002:a6b:8b46:: with SMTP id n67-v6ls399226iod.6.gmail; Fri, 09
+ Nov 2018 02:15:35 -0800 (PST)
+X-Google-Smtp-Source: AJdET5fWTo1kPiOLM9kVGyAN3mv1EZTMQQ3bOz8pgfiBHRPXgRuXFllrLRM7ugI0w5qyGwJ1B+qx
+X-Received: by 2002:a6b:e908:: with SMTP id u8-v6mr6448031iof.9.1541758535801;
+        Fri, 09 Nov 2018 02:15:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541758535; cv=none;
         d=google.com; s=arc-20160816;
-        b=ej8FCtcPjV2hkfJqck+suYIFPfIiEq4q4ApVsq3vLdIjlqptChjK46UVDbZlYWmGZU
-         NDkPnVR4cn9j304Es7dveNBoQ81oWS0MCe8TP8zytZ2fOM8bJnQRlv0H8KooZdoaJFX5
-         V96w0X7O4+csZp9NCgrZRd64w84jYb3sTGAy2DEkyNiICTU+yrRMc1dPkxIhkDlo4hJi
-         azbRe6TXFwZxDpDtHD0zexEhOfMOVW7A5hLHtDrlXVCtaKdTm3RRc6Q274T1DjML/1D0
-         P6NX0+YKKo3grQQW7bw+fNhd2wMchqT2WbSdjm2c7YYidSKcOY0g3mjy0dYNXa6XksUM
-         Aeog==
+        b=LT5WSMlDyQ16j7+U3J7VBBhF4I9SAHlA01vsMdD+OWD7cQnPhzgcWmQCVLPnIqphAA
+         r+cKEiS3cOe4OBO4QTKFhW/8c4ocrrRqNIh/Kr/ZbK8veuQkQzfN4+ADnryx0aqVo60u
+         uCwPWUbzTG57Kh5ZQ9EsgeHB6O2YLUpKxn2H63LIPZI3DRXHVwnwTRW2jDKiEA/DgDYC
+         uRKIA4G3Hy4VouwK70VIbmdQ+QP0+QLKKvMozVV5U++MaWzZAhlqvVR7BrWMgT4T8COr
+         2UYlWgwe+IssMd3FixLI9CoM/jtC2M+NUYR6alatNA4i80k1H2+/jxvYgVVrIvBJ2tZT
+         IDpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=ufbwT8EnWgSCIPXRva6LBKsNllFTPn824G1rSMMmMuw=;
-        b=M47/50vjtfuco4pYwVRzObvCOG9tdxHrj4hbsNxEaEHHE+kKbPSXKIaqu4hkGqWxRh
-         wGKCktXX+kSrcC+Ue6WYFdNET+dqioEgTWMFWXESOw82OnMY0djBqpUXzwkSJTl8u8tk
-         wbt8x4PZOYK/3Tuv3vkZAAunMj/bUtM5JJnhOE5weK+dAM4QwsOlviMXozawtRCti97K
-         Hb6hvA1gpsnJJqgc+PpPYLTBf6hiLZ81yKZNgF/ceoBtgFElL8sh04Qo4I5P0h5d3V23
-         GemGvsa9py0Ff2gO7KaGunB4L5FZuazL/EgQxlUB/y+IQ1gAgzyuqV8Abfn7bBuNqKc1
-         xcqQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=Z0/1e57C284GnFVIml8ERRhIooEyUrNEZJZv2ut3tIo=;
+        b=fE37oG0oe30o9dFmrjCuXCIWv5CJHDVmtMpcn4nl5YCHHkvMhsvZXdQm9cu3z/Mw4M
+         OZ3NVoNwqQb02y4jsE/RT4jZNFX1RQiJTAEtWTMfzxhSGyFruWLi8gBVjoM+CsbDCYzA
+         A2m98zRnDElicj8YzIx1vx/w8scl/oaEDlDHb1P9xb3q+tsEyDh6yh7PEofClDxVCAwW
+         +Lo2FVsDl0o5hAYMOPyjfR0U0xD9jvyuLvM0X36Z9oMxKDPNxl2zstm+E0hvdD4/AgX1
+         4gumeyrw2NcmPvyNWXEq8uT6M9Sfy6zB9u15w4eoqXt4Le67Km8AX88BbCBtj9Evuhvq
+         tvAw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=eh5Gi7jn;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::22f as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from mail-pl0-x22f.google.com (mail-pl0-x22f.google.com. [2607:f8b0:400e:c01::22f])
-        by gmr-mx.google.com with ESMTPS id a19si96121qtj.0.2018.03.14.11.29.44
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NBYvQhEt;
+       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::130 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <m.maya.nakamura@gmail.com>
+Received: from mail-it1-x130.google.com (mail-it1-x130.google.com. [2607:f8b0:4864:20::130])
+        by gmr-mx.google.com with ESMTPS id z137-v6si299970iof.2.2018.11.09.02.15.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Mar 2018 11:29:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::22f as permitted sender) client-ip=2607:f8b0:400e:c01::22f;
+        Fri, 09 Nov 2018 02:15:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::130 as permitted sender) client-ip=2607:f8b0:4864:20::130;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=eh5Gi7jn;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::22f as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Received: by mail-pl0-x22f.google.com with SMTP id ay1-v6so2182243plb.7
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Mar 2018 11:29:44 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NBYvQhEt;
+       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::130 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-it1-x130.google.com with SMTP id v11so2457558itj.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Nov 2018 02:15:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ashoka.edu.in; s=google;
-        h=from:to:cc:subject:date:message-id;
-        bh=ufbwT8EnWgSCIPXRva6LBKsNllFTPn824G1rSMMmMuw=;
-        b=eh5Gi7jnhVzkL55PnoHOuPVe6C/zwA/PtMH63qhz+Ynnw83tuHEW0u6B5rb8TAkHqr
-         ypxfYqHIfuzgZDUSJN7u9PN2Qy2Ylw5H2QGFUDUPWhj1DndLZWAjsiMSW1aCu2DJK/Wv
-         ED+kje/ds/b+u757HiQRnnISve3FFPMARRDm0=
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=Z0/1e57C284GnFVIml8ERRhIooEyUrNEZJZv2ut3tIo=;
+        b=NBYvQhEt64Es0pOZb7RkCFF7OTh/nCKUwH61OiPhuRoZ18SGpXjXYNa5hOxnX+ukw9
+         kxdLzrgTsVjsioPGgSz4TCpyQUK6e+jbA2kfucqfY+NJ98ZZoPYKT7KJ+BHqcE2uJBNv
+         DDEcYmizH3q38cifZOTMpLedmRda8xF4OLGCk7WU6T2lVvZbUYamccStAd50YTAthOyv
+         FGe9pdYKWhSMqUibxShvYZQBVx2Rl1YllKz4Q5TQrek+OQM57XSU1LOBVFOqfBbTDXGg
+         S026yKGugmM4wop21vNhQTCxCrCuzEqkQicUTRGH1PK9Acc/w1PSAGHCwNZ+JfsLDZNr
+         4G4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=ufbwT8EnWgSCIPXRva6LBKsNllFTPn824G1rSMMmMuw=;
-        b=qYC6z6Chn5NFMDuxFAsiG8ITqcnsQi9vnxFdujR3OkqmsQp+JMcqllE8G3ud2b9zZ/
-         dDfmNlocAYlOSQ31C8SzZfJVd96ctWH7LoMiT1YZEb+uoZdLL6U66wB1MsrcbVmxSohI
-         //jRPlzvLBgW3QzuwOimwVvad1S+1dtags98Q4SgHWIVQGPbCQKNO14OWL0Q2QIm1pM/
-         1ajiEal+6eoZCvH3Jbdr5A7/WrKaR6REKD19zZxVXzM3WUs7rFLkeIJ7rvFQKga59DMu
-         gljHuv4nIrR9uQTlzviWKJBXK4mOmc97GF37kReSc9y/ZHQ4i4IzsAC05ueNDNq+A6/+
-         hKEQ==
-X-Gm-Message-State: AElRT7GbgNnqTyKFYdBxCkoX8VyfkbW2vQR8xIR9FxN7TS+I6fz2gJus
-	1A1S/nm+obB+IlCnuA6m2rhiwQ==
-X-Received: by 2002:a17:902:c6b:: with SMTP id 98-v6mr4901011pls.267.1521052184536;
-        Wed, 14 Mar 2018 11:29:44 -0700 (PDT)
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from localhost.localdomain ([139.59.85.247])
-        by smtp.gmail.com with ESMTPSA id y3sm5697339pgc.81.2018.03.14.11.29.42
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 14 Mar 2018 11:29:43 -0700 (PDT)
-From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-Subject: [PATCH] staging: ks7010: Remove braces around single statement
-Date: Wed, 14 Mar 2018 18:29:30 +0000
-Message-Id: <1521052170-27685-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=Z0/1e57C284GnFVIml8ERRhIooEyUrNEZJZv2ut3tIo=;
+        b=ZkN2e64KnG3AqmSTAZx5qz79RmuNFQE86dN5NDKp/KROCoZW4VZt/XEREzzbu8RhTv
+         V+Dcwsc0dwZeturGud6ohei3xI8oGJPtppYWtrfC+kTNduU7N0DeXH8Z3c3aGl4Zf1Pa
+         LP3wTz+7LO6sGtZUyiEgTdzlsup2mGeaVLFl4nCU0tgg/fol4Q5+oC5mZiJj9+vhMOf/
+         WtG9pHDUhThbc3HJR0i89kAqlOzjNwk6MhZFL4QUL/P4tNeqCWCXUfCY3bcDNDhnfluB
+         rReTr5mnv4j4inV4LPFj3FkbxynpuaG69YGyIfw/friNHtLQbfqVkwzhcGakv8D/06Za
+         l2yA==
+X-Gm-Message-State: AGRZ1gIO/SgEGH9h0RfjOgowUKCwNynW6nYne4msTYVKxxfTE2pKfve4
+	UUKhSsftp3YtoTWBCGBHM4z2U603
+X-Received: by 2002:a24:7c81:: with SMTP id a123-v6mr1715318itd.29.1541758535141;
+        Fri, 09 Nov 2018 02:15:35 -0800 (PST)
+Return-Path: <m.maya.nakamura@gmail.com>
+Received: from m-hyperV (50-47-85-193.evrt.wa.frontiernet.net. [50.47.85.193])
+        by smtp.gmail.com with ESMTPSA id r14-v6sm467082ita.22.2018.11.09.02.15.34
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 09 Nov 2018 02:15:34 -0800 (PST)
+Date: Fri, 9 Nov 2018 02:15:32 -0800
+From: Maya Nakamura <m.maya.nakamura@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH 3/4] staging: rtlwifi: Add blank lines
+Message-ID: <20181109101531.GA121437@m-hyperV>
+References: <cover.1541660015.git.m.maya.nakamura@gmail.com>
+ <9082236333474f4af69913c7e3e3566729d04181.1541660015.git.m.maya.nakamura@gmail.com>
+ <20181108112857.GB23141@kroah.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20181108112857.GB23141@kroah.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-Remove braces around single statement. Issue found with checkpatch.
+On Thu, Nov 08, 2018 at 03:28:57AM -0800, Greg KH wrote:
+> On Wed, Nov 07, 2018 at 11:23:07PM -0800, Maya Nakamura wrote:
+> > Add blank lines after if statements.
+> 
+> That says what you did, but not _why_ you did this.
+> 
+> > 
+> > Signed-off-by: Maya Nakamura <m.maya.nakamura@gmail.com>
+> > ---
+> >  drivers/staging/rtlwifi/phydm/phydm_adc_sampling.c | 1 +
+> >  drivers/staging/rtlwifi/phydm/phydm_ccx.c          | 1 +
+> >  2 files changed, 2 insertions(+)
+> > 
+> > diff --git a/drivers/staging/rtlwifi/phydm/phydm_adc_sampling.c b/drivers/staging/rtlwifi/phydm/phydm_adc_sampling.c
+> > index 7eb54d2e48f3..7d578241326b 100644
+> > --- a/drivers/staging/rtlwifi/phydm/phydm_adc_sampling.c
+> > +++ b/drivers/staging/rtlwifi/phydm/phydm_adc_sampling.c
+> > @@ -563,6 +563,7 @@ void phydm_lamode_trigger_setting(void *dm_void, char input[][16], u32 *_used,
+> >  				PHYDM_SSCANF(input[3], DCMD_HEX, &var1[2]);
+> >  			else
+> >  				PHYDM_SSCANF(input[3], DCMD_DECIMAL, &var1[2]);
+> > +
+> >  			trig_sig_sel = var1[2];
+> >  
+> >  			PHYDM_SSCANF(input[4], DCMD_DECIMAL, &var1[3]);
+> > diff --git a/drivers/staging/rtlwifi/phydm/phydm_ccx.c b/drivers/staging/rtlwifi/phydm/phydm_ccx.c
+> > index ded6642bdf64..c0da601be6cf 100644
+> > --- a/drivers/staging/rtlwifi/phydm/phydm_ccx.c
+> > +++ b/drivers/staging/rtlwifi/phydm/phydm_ccx.c
+> > @@ -357,6 +357,7 @@ bool phydm_check_nhm_ready(void *dm_void)
+> >  			}
+> >  		}
+> >  	}
+> > +
+> 
+> Is this one really needed?
+> 
+> thanks,
+> 
+> greg k-h
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
----
- drivers/staging/ks7010/ks_hostif.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+Hi Greg,
 
-diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
-index 05f7be4..c05102d 100644
---- a/drivers/staging/ks7010/ks_hostif.c
-+++ b/drivers/staging/ks7010/ks_hostif.c
-@@ -1385,9 +1385,8 @@ static __le16 ks_wlan_cap(struct ks_wlan_private *priv)
- {
- 	u16 capability = 0x0000;
- 
--	if (priv->reg.preamble == SHORT_PREAMBLE) {
-+	if (priv->reg.preamble == SHORT_PREAMBLE)
- 		capability |= WLAN_CAPABILITY_SHORT_PREAMBLE;
--	}
- 
- 	capability &= ~(WLAN_CAPABILITY_PBCC);	/* pbcc not support */
- 
--- 
-2.7.4
+Thank you for accepting three of my four patches in this patchset!
 
+I read several examples that use if statements in K&R and didn't find a
+blank line between them and the next statements. I thought that it is
+easier to read with a blank line, but it is just my personal preference,
+so it is not necessary. Therefore, I won't resubmit this patch.
+
+Maya
 
