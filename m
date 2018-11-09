@@ -1,96 +1,102 @@
-X-GM-THRID: 6670930948020764672
-X-Received: by 2002:a0c:ba9d:: with SMTP id x29mr4632225qvf.112.1553197146937;
-        Thu, 21 Mar 2019 12:39:06 -0700 (PDT)
+X-GM-THRID: 6619601914535346176
+X-Received: by 2002:a5b:305:: with SMTP id j5-v6mr4334508ybp.43.1541771641057;
+        Fri, 09 Nov 2018 05:54:01 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:c583:: with SMTP id a3ls2858962qvj.4.gmail; Thu, 21 Mar
- 2019 12:39:06 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx0wSy9oGFCS6jgUqpGtXDZORHeK8O5crLSOevmlQYwvVjgfEPq0pbqQIY5tHLJ54ITAb7s
-X-Received: by 2002:a0c:ac93:: with SMTP id m19mr4618943qvc.27.1553197146379;
-        Thu, 21 Mar 2019 12:39:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553197146; cv=none;
+Received: by 2002:a81:5542:: with SMTP id j63-v6ls892187ywb.2.gmail; Fri, 09
+ Nov 2018 05:54:00 -0800 (PST)
+X-Google-Smtp-Source: AJdET5fIyFqyYbj/GXwIi1DlGq1Qlv9jnuJY0MtZ/FZNGtqZQONx51LSbe2SbG4aD1NlIXkTAwkh
+X-Received: by 2002:a0d:db82:: with SMTP id d124-v6mr4417915ywe.4.1541771640151;
+        Fri, 09 Nov 2018 05:54:00 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1541771640; cv=pass;
         d=google.com; s=arc-20160816;
-        b=fZ/sq6A1Dmx7tz7vJRMZwQTpMzr7Hcdqk6AIrCvjqgeTCoKq5pmDfMS27tAVbVnr4l
-         6r2vIQSGkCuvWGQK3eOoYOHHgSDBcn9ebgS5glyr0FWz7bL64Y5QStp2cZED2yAk8SKr
-         HI+eh27b3pRtE6k8M5Du1ndsMngi1YG0KN3lc+B8/ddGmK7L9c1mO01NMi6MZt14ffXi
-         dguAgIO2mZ5wJiCM3M6wtd+0NI48tFE76kss7ez9V0ywdkQfj4BmZf32SJQtQYkJiWbh
-         iN9FDK3G1kObgvN/7USMnNoWCVvRoNBrYP2bn9pGxaI4U/dI+S8N7e9a8fF6YWlh/hPP
-         BQrg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=9NNSoUSqBPtf10oa+1FrJ8QHST7x5Gy2sBNXUk152Uk=;
-        b=vhYjiA6LRwFlr8h2MuKMHHqKmr1BZWVmGi7IyuX9BC7b96SeJpTqUBSb+6Zt7y4SCz
-         E3cghVs5THGnUUfHdM2UFYCsiUGBXUI6nocV/UKfEXxMZrS25mHY7wzZxgTOO8KqnayC
-         lRs8A0N5rXoE55s54QmsXAp9ktxaPxQZW4joZrh0jaxpnrHADZlT7CGzEpkVr5RcJBBY
-         mlJ7Bm25O+3o7A9w+Bn3qrdpUvt0AH99OVCN/vl/6LxyK59++xImPdR0rb2+UunJrKSC
-         qRSDAeXHSGa1guEmXHfJCWkZmUAzlY5Td6gxksgHk1UIqoma2loMFjEbsLj0iZU4MMkg
-         jLzw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=oBH1G4Lp;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.38 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-Return-Path: <nishka.dasgupta@yahoo.com>
-Received: from sonic311-21.consmr.mail.sg3.yahoo.com (sonic311-21.consmr.mail.sg3.yahoo.com. [106.10.244.38])
-        by gmr-mx.google.com with ESMTPS id p1si410725qkg.3.2019.03.21.12.39.05
+        b=pmVM2u8Zs37sb/V/2njJ6VpxkDLtY0yPUshW7qDKOZ4sbNQO8vUtQJh7ZOm7aKOBtd
+         QqbXSeIEUgmRocv+ls5hHf+H1uz269i6SkVxzrFPfoQfxIYdJbAQKwL1StZnKWcKsRSi
+         0psRiMsbvj8l+548FOCvw2HWWRgfBRs2JxZJbT8Z+ii2swaCd8j/cPxKW2nPHShF4K8I
+         kUBkULNpv8ezkdYwdu7r7PMTV1rco5rGB1jG/sOeZL1swmZ2Nwy+v6YmaC7Gw19x+cbb
+         4zp0R2kiV5k09+a64UXO48cjwpmS/I/R9EvN9xnAI1qqAQnsdfW1YdzxStNKjBlENJux
+         PQgg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=e+9PHUjLy0p/On310ynZqA395U7X0UXU/V1lhL1AC8k=;
+        b=HzeeCqFshWEKUNOzwZHIOOgGxOKPmnzZ6n0jw3+Umu+2I0qpxh6+aifZ72b4EaldPX
+         J3NcGCaBcnYaAK3lV3ez/vEcpcOMRO5d7EPEumOJLqcytz2b5Fy5I226KP7KR63D/Lkj
+         5gvDPjHprxoVYBKFDNxf3QnqXVvCVOkbJxCyp4jxVAHNdR90wuMUSsuSoThlSJbx4sx+
+         DkujtAy1S7DXdpIONzLmVXRVqpeJgZHNR9/l252O4/avPtPQwpsv3a+/PTxV6zg9wZ+l
+         It6pDxIzwjUMroj60eMxh9dgX1NYB+iyNPdTKOgxwzZebZkCO7r6Bry8Wi8phmCvo0av
+         2XaA==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=dwm850OZ;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
+Return-Path: <code@wizofe.uk>
+Received: from sender-of-o51.zoho.eu (sender-of-o51.zoho.eu. [185.20.209.243])
+        by gmr-mx.google.com with ESMTPS id j21-v6si309880ybg.5.2018.11.09.05.53.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 12:39:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.38 as permitted sender) client-ip=106.10.244.38;
+        Fri, 09 Nov 2018 05:54:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) client-ip=185.20.209.243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=oBH1G4Lp;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.38 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1553197143; bh=9NNSoUSqBPtf10oa+1FrJ8QHST7x5Gy2sBNXUk152Uk=; h=From:To:Cc:Subject:Date:From:Subject; b=oBH1G4LpHSVXFnhwMfFLuMazN+Mkk1zQ9TXmNgLt674f/w98Dne2iOXm8tLlNu309GWiWb23+WSHH+aNCup6l51nYeULDlGx7uDa9cud69aaR62XqS1zbMRoQ8ESCSg+Jd9ozLUBzXI8wQETjyRIWM4dspIu5vC/MoUEsWMKVZWlH7xiZhnKNLrq+Z3TLlXDxq/Kz7h2zPlUTaybKegV91e/q9SCktOBfytPBdOkEFIBlFW6p6mvZzzvp5rgMJqzSC0lGDJfk9YogyG7Ap6YGAFyGmndQGxjeBPa/7fYgIXddim4CNV7eeiakjVAO+pLd/YtBXMkzc8snQXq2zZwMg==
-X-YMail-OSG: tXwZczkVM1lYSkTyTc81gs4SeQHwQkvDw9CiIPNCUcss6BnIigMerfxrc7Kwju8
- ItM5RE95ui5U2cgeWOOgRZEzJoeVme.TeKEgpQrfx4XOiao4yXDr8E_LRw4FQTkXsS64esv5Z7mF
- IrLZpA63SjUp7iSJeBEmf9Q9QzpSeqLPzzEEFfcYET8LR2wkW2gNuvnL0GxIl0RJ67qcOoz8_ZLz
- 9WKTtIj3MRQX9gSlEiylyRIwulkMqdOaE7QkGvjyhs8dy_6nkWnSy4jtZAl_14.fAwVXL7kDDrrg
- GUI.guLD1sAv1rkLOe5ynPBY2SlpW9IcrtcKSZyjqCPlQQQqr5LqaNTbT4QU3LTb_tKdiW6ADmNB
- bF2EYeB.nQNF0p8x8hq4R_bHm1aWhItgFTT_lrR15i3iN2krhpbud602GNYvl6q84n04.m1vOeau
- bbhGrYxo0PcBf6KjYS9w4eaB2bxfya7hH4knRKTBFKfSoQwafMRB1Cf00zkSK2NflOA5ej1u87MU
- oI7P3dvF9gFe10pvP4x6XGeCyuqpqGeIQh7pF_iktRC_uvksfO_mVgD6zD6rK845eaZOG24TIBfy
- DZe7Zgl3m9HhKVmzfC0RB_111wl7q7eDL2DOCES2c.jqEVwNMj9WoNY0qDU40MtbgTIvqpqwjaPV
- iX6NpUzIZj9mO7AcbsLaidxD3JrSAmWjb0ZG_FEBDW._YfncctnTujOVOUozV505Y4jig.GV_zLy
- m_oV1ZOqusUO7bDY060STIh2826nEd4_qSuN6UxBT4rLWdRQiTR8DaW_5haZBEddUPMx2baJrUxj
- hqn4sWTb4vbrHAkoOxDsrIPe.TOR0LJ6v2QFLwLeTLh5v0QV4LZ2BT3E4.aAEkzl6YWAAHy6K0AN
- OhrNdRuDVh90_FU4y_Je_Ljx00CpPw99t8PNWZDUA8ImADlOW9._XpPArWwZOG.tiWsDSOGNbL4V
- 8YWz4h5pw85SCwKpC8y0zPqUPuWRK1.9X0pvevXNIPXR8whB30Z6qp_t.6fHpzykmXlUKh5m1j_X
- pVXaNjmZkPFH2R7AzGKYUCxMG0wkgyBKw3ZmyjboNj8j95NNDn14DJfSyF3MK2jFiF9rqhgX_5we
- tW4GcZXjMdujO18tsNtyHzNKymNey
-Received: from sonic.gate.mail.ne1.yahoo.com by sonic311.consmr.mail.sg3.yahoo.com with HTTP; Thu, 21 Mar 2019 19:39:03 +0000
-Received: from 103.7.128.210 (EHLO localhost.localdomain) ([103.7.128.210])
-          by smtp420.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID b64ca48adecac070043993237cf92324;
-          Thu, 21 Mar 2019 19:38:59 +0000 (UTC)
-From: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com,
-	ajay.kathat@microchip.com,
-	adham.abozaeid@microchip.com
-Cc: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-Subject: [PATCH v3 0/2] Remove return variables in wilc1000
-Date: Fri, 22 Mar 2019 01:08:40 +0530
-Message-Id: <20190321193842.4327-1-nishka.dasgupta@yahoo.com>
-X-Mailer: git-send-email 2.19.1
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=dwm850OZ;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
+ARC-Seal: i=1; a=rsa-sha256; t=1541771637; cv=none; 
+	d=zoho.eu; s=zohoarc; 
+	b=ghDXTZcU+UwE+uAqX+ZZBxgrzAsuktN4ZAzTEdAoCtiayP3q9Wik2AZnI4dzfah0SKTK7wxELinch9Ew/E7rhUWaoObuTiLmyR06fPgJO/rji5CWI834UuMdIRW51Tv8PJHRLTTGZ1IpDeJpqyjsun8KOAf1Jh6HZVdxPOFq7K0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
+	t=1541771637; h=Content-Type:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To:ARC-Authentication-Results; 
+	bh=e+9PHUjLy0p/On310ynZqA395U7X0UXU/V1lhL1AC8k=; 
+	b=WnyY1ImqF7LCAk6ozAgYvsRaNbRqOUv5KXEYv5AgAz1iyURJAohhLPXPYHmIjqpkc4XVHwrCWsGbQQqvfKiwhaYIBEV8bNJjTTxTbRrWsRqFK/ZHbpMw6qxSTyKaXIKmTptZZ2uk+KPyGZ14IL1YsH/3VVFhZQIpXQf8yH00oMw=
+ARC-Authentication-Results: i=1; mx.zoho.eu;
+	dkim=pass  header.i=wizofe.uk;
+	spf=pass  smtp.mailfrom=code@wizofe.uk;
+	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541771637;
+	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To;
+	l=1016; bh=e+9PHUjLy0p/On310ynZqA395U7X0UXU/V1lhL1AC8k=;
+	b=dwm850OZkLBXZeMz3I0AhXQLvMY3OeAczTEK6kr1GYc8HYocxxwM1kiSyy+IgyJ6
+	LqkcZxZfHO6juVsYX3McFYpa5H2WZ4TQQlT/bWPlD1xNZwUilGGTTJ5UfGSj+7D/TUl
+	1mCf+veqD105MA72BDcWUv9nK3slIiQPUUOPVb8E=
+Received: from kvasir.local (88.151.153.114 [88.151.153.114]) by mx.zoho.eu
+	with SMTPS id 1541771636138140.0948864732892; Fri, 9 Nov 2018 14:53:56 +0100 (CET)
+Date: Fri, 9 Nov 2018 13:53:54 +0000
+From: Ioannis Valasakis <code@wizofe.uk>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org
+Subject: [PATCH v3 05/15] staging: greybus: align arguments with parentheses
+Message-ID: <92b5525f314154e4d2f648c64cab89233091a828.1541771591.git.code@wizofe.uk>
+References: <cover.1541771591.git.code@wizofe.uk>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1541771591.git.code@wizofe.uk>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-ZohoMailClient: External
 
-Remove unnecessary local variables in wilc1000 and return required
-values directly. Issues found with Coccinelle using ret.cocci.
+Align arguments with the right side of the open left parentheses.
+Reported by checkpatch.
 
-Nishka Dasgupta (2):
-  staging: wilc1000: Remove return variable from host_interface.c
-  staging: wilc1000: Remove return variable in wilc_spi.c
+Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
+---
+ drivers/staging/greybus/control.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- drivers/staging/wilc1000/host_interface.c | 20 ++++++--------------
- drivers/staging/wilc1000/wilc_spi.c       | 10 ++++------
- 2 files changed, 10 insertions(+), 20 deletions(-)
-
+diff --git a/drivers/staging/greybus/control.h b/drivers/staging/greybus/control.h
+index ebb7a2ee17dc..5a45d55349a1 100644
+--- a/drivers/staging/greybus/control.h
++++ b/drivers/staging/greybus/control.h
+@@ -41,7 +41,7 @@ int gb_control_get_bundle_versions(struct gb_control *control);
+ int gb_control_connected_operation(struct gb_control *control, u16 cport_id);
+ int gb_control_disconnected_operation(struct gb_control *control, u16 cport_id);
+ int gb_control_disconnecting_operation(struct gb_control *control,
+-					u16 cport_id);
++				       u16 cport_id);
+ int gb_control_mode_switch_operation(struct gb_control *control);
+ void gb_control_mode_switch_prepare(struct gb_control *control);
+ void gb_control_mode_switch_complete(struct gb_control *control);
 -- 
-Changes in v3:
-- Remove declarations of now-unused return variables
-- Remove trailing whitespace
-- Merge Patch 1/3 and Patch 2/3 (Acked-by Julia Lawall
-  <julia.lawall@lip6.fr>) into one patch
 2.19.1
+
 
 
