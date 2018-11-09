@@ -1,94 +1,100 @@
 X-GM-THRID: 6621495393645494272
-X-Received: by 2002:ab0:23c7:: with SMTP id c7mr8211073uan.17.1541785639317;
-        Fri, 09 Nov 2018 09:47:19 -0800 (PST)
+X-Received: by 2002:a1c:9645:: with SMTP id y66-v6mr459769wmd.6.1541771714775;
+        Fri, 09 Nov 2018 05:55:14 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ab0:2145:: with SMTP id t5ls232554ual.5.gmail; Fri, 09 Nov
- 2018 09:47:18 -0800 (PST)
-X-Google-Smtp-Source: AJdET5eVUStCaHvE+MMYxGgPSwxK8qR7kKG0tkoBJ+AM2PZAqgA6WGh6QC9V0H4cZl09B5Pjc2dO
-X-Received: by 2002:ab0:6401:: with SMTP id x1mr8210603uao.19.1541785638560;
-        Fri, 09 Nov 2018 09:47:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541785638; cv=none;
+Received: by 2002:adf:f0d0:: with SMTP id x16-v6ls444379wro.22.gmail; Fri, 09
+ Nov 2018 05:55:14 -0800 (PST)
+X-Google-Smtp-Source: AJdET5f6xrPGIreskubedQAg6zE5h3Hzf5i876sgQb4zrLBKAqcqxwB0uNoh6PSbUvC6EyiysOJ3
+X-Received: by 2002:adf:e50f:: with SMTP id j15-v6mr1732223wrm.5.1541771714084;
+        Fri, 09 Nov 2018 05:55:14 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1541771714; cv=pass;
         d=google.com; s=arc-20160816;
-        b=oObkR3Huy+A3dEEcv5+zTqZw9qVrrTswakJ16bStwMeBTsR+cGA4DOaAWeq+z8c1cj
-         F0i/BPJIRAGq2v3cs/OXRVfMTTh2vPaAWXL9bU1tAkArFzwZMs0DAqxTnEk4k1oDydm9
-         eeyKAIMoWfzcY3X7+uylH9lFjCN6YArcbFgzmDFRvF67WzLN00H5Ucon3eJVss6dS2Rr
-         WE/KqKT3aRqr1RX27K5pp8Oq5OvLvGYegsStPK+HX0EJZRDuWi8oFpD5Wffl/rJ6iLnl
-         ckkqA/33lfb8M7LwPqX2CoJUZzA9pZ/OrW7ndANa/PqzzGNswb7GAq+3kxQc4zs5nXp7
-         1Acg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=p6jjNp2atmalaj3qKn4bnVPdnOTvZoa/fiBTv+0fbW4H35V9W7mOmrJIM2OuXoASgc
+         VSho5nh5bh+2AG5F8cF+kOfKQoNcPiCXdKYxUvsU/W5CywfNnX8a5o25dBGsKiEEQLle
+         Q/Qtnexa7vgTDAs3G8CuyKvdBkjPPd5LcKExQea98mJHPSMVGn4TbJRojPZU9gnUmTHj
+         GUzWxaDoXi8UE0neRgwIBLaBGabEL8ZXHZG3mvVvtWklpPaJVlcpoVGrWiCRI1Py8XzQ
+         f4OuK/a4F8UAYrLD81GkJWM5xk9tpVbHZ8pAWSBm2hF900DkK0by9N5LWfOoi9Jmb08R
+         aInw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=gGNpWvUWmoHGr0UscrZOMRSVdwnkVsCo5+IoLoH+vsU=;
-        b=fVnvO4L5e1+P4F8rcJzQ+5l3b/JotGdk9RzL3rDeUH5iX4SrRoZIVrEjpuqPl/QpGw
-         bV7Wjce2qEsna6bhUchnUGkS0CLGfLNjumaZTP2KHc4c8xqWhWgZGylG5OQJGD5bXe77
-         FCzvzEL6TRg7NrFa+WxPgRWiJ/Pbg/jAI2BR4oIe5wCdQsafRc1q/uxEivMSWIriQknF
-         asme/OYGgsbiFhkrHpOjRm4ke7QVg5agmbDBfBcpdARPGuR/z94ALytMDHf3pJ4ww3iK
-         i4krrcXivUNSCOUs7SDjC0hlP0SS80K56fS9bIC/ASewqz2w30LyoExibinBX80GVqgm
-         rLVA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b="RzxBh/lF";
-       spf=pass (google.com: domain of srs0=8jp/=nu=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=8JP/=NU=linuxfoundation.org=gregkh@kernel.org"
-Return-Path: <SRS0=8JP/=NU=linuxfoundation.org=gregkh@kernel.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id t15si475940ual.1.2018.11.09.09.47.18
+        bh=2upHcN5xslBz+xuZ5VlC3tL8qIFV5c98ufDNwjVHfcA=;
+        b=PDYuFIuuJFVul6Pb2agufZZhfWKm25PyL05kzIUkLtD3324WerkKp3yjQB1+1M1sve
+         NnqiuvenlFiRvltoCPCIVMiRvGH6qkDQDD47E86q76GJQyeZUOvtBlv525fYVhQ4PZRz
+         GYclB4gWKjiMmHBLDMfAHadt83z0OuArz3u5eQapm+L1Nz/48lAWrlEQSdlhEpdP8of5
+         RRtS/1E5sh6CMrAJm3hBqziGzF0XwzAa0E8NCYtm7B2gMAoemjGX10Meh/KGXlSLoNjJ
+         TzxbMjNQJ6PVZMbPXkq/QX2seBycnzgTKM0fCzMKaDncqvCCzGPoS/vWPf53c/6AJ0QD
+         bGjQ==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=BaHog50B;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
+Return-Path: <code@wizofe.uk>
+Received: from sender-of-o51.zoho.eu (sender-of-o51.zoho.eu. [185.20.209.243])
+        by gmr-mx.google.com with ESMTPS id o8-v6si55427wmd.2.2018.11.09.05.55.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Nov 2018 09:47:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of srs0=8jp/=nu=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Fri, 09 Nov 2018 05:55:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) client-ip=185.20.209.243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b="RzxBh/lF";
-       spf=pass (google.com: domain of srs0=8jp/=nu=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=8JP/=NU=linuxfoundation.org=gregkh@kernel.org"
-Received: from localhost (71-6-98-120.static-ip.telepacific.net [71.6.98.120])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 2F71620827;
-	Fri,  9 Nov 2018 17:47:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1541785637;
-	bh=J4fKoqtGvTOL1AiRUx2X6BdEBCuKktNxulAFnQnKoDo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RzxBh/lFdjwG2N8QMXD2wrwKP99SN1mur7U1yssYWDp54B5xCxh3OCHkI3sDIr6D4
-	 tFGSc3FdDSfnGh+SEKPvSS96WgTxtTiYfblr4cogqZiqQKUgrtFd6+1kembz1J40E4
-	 4wXTg84vFziwO6G7mGM3AIy1cc3oZ5jL99dhBZ5A=
-Date: Fri, 9 Nov 2018 09:47:16 -0800
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Ioannis Valasakis <code@wizofe.uk>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH v3 03/15] staging: greybus: add a blank line after
- declaration
-Message-ID: <20181109174716.GA5821@kroah.com>
+       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=BaHog50B;
+       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
+       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
+ARC-Seal: i=1; a=rsa-sha256; t=1541771711; cv=none; 
+	d=zoho.eu; s=zohoarc; 
+	b=DKjYbm+Zf/yUsDFLdGZ5VTmm94cOirIUwvgZe18DclBaAxIrmRH9fQFnG5kvrGQNTQtA3vaQymH5eGVx4Ii7BhDpkaq6NdlQt4DwbdGPaWxStmPwHGVtN8Hmecew5mhkAHNvEi3Fa33FrDwtVho/Y8xkvtNkna+T2Zhes2CbV7Q=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
+	t=1541771711; h=Content-Type:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To:ARC-Authentication-Results; 
+	bh=2upHcN5xslBz+xuZ5VlC3tL8qIFV5c98ufDNwjVHfcA=; 
+	b=MvWl1FB5VnQU2hgHL8T7D4EF+crVguYnxRrVNgm4akeuj9Lc3WRzUjva3BB4xNpInbWKSMsNlnHzvXNo4c9y+9oTYgVR6WEG/5NfKl/L5KOe4st2IeBBduqnJkXg5Go8bnksBb1EwAurE244LluLSujbQ5khrcINhXbVbs+iix0=
+ARC-Authentication-Results: i=1; mx.zoho.eu;
+	dkim=pass  header.i=wizofe.uk;
+	spf=pass  smtp.mailfrom=code@wizofe.uk;
+	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541771711;
+	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To;
+	l=612; bh=2upHcN5xslBz+xuZ5VlC3tL8qIFV5c98ufDNwjVHfcA=;
+	b=BaHog50Blr6Wudgw61JNJaKVYhNPR8beWW49UjhZwHytM/ZdyP3ncQkT4HoihE87
+	2JbcDGA4VV5KlKn5igMhydiPU1ywt2ZpM5Lpl48I5czUBOsOkY06ZX322UWNFVUDahi
+	lXf621aWN8RUWEY+Fy8Ht5rVEbRwxAw91F6LadRM=
+Received: from kvasir.local (88.151.153.114 [88.151.153.114]) by mx.zoho.eu
+	with SMTPS id 1541771711205277.255801586531; Fri, 9 Nov 2018 14:55:11 +0100 (CET)
+Date: Fri, 9 Nov 2018 13:55:09 +0000
+From: Ioannis Valasakis <code@wizofe.uk>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org
+Subject: [PATCH v3 15/15] staging: greybus: remove unmatched right bracket
+Message-ID: <91ac701620e557495b058bb58aafbdab2d97837e.1541771591.git.code@wizofe.uk>
 References: <cover.1541771591.git.code@wizofe.uk>
- <8a1f2c0553ce7d4719c5684370c78c0638624378.1541771591.git.code@wizofe.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <8a1f2c0553ce7d4719c5684370c78c0638624378.1541771591.git.code@wizofe.uk>
+In-Reply-To: <cover.1541771591.git.code@wizofe.uk>
 User-Agent: Mutt/1.10.1 (2018-07-13)
+X-ZohoMailClient: External
 
-On Fri, Nov 09, 2018 at 01:53:39PM +0000, Ioannis Valasakis wrote:
-> Add a blank line after the struct declaration.
-> Reported by checkpatch.
-> 
-> Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
-> ---
->  drivers/staging/greybus/control.h | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/staging/greybus/control.h b/drivers/staging/greybus/control.h
-> index 643ddb9e0f92..9c453e0b1b33 100644
-> --- a/drivers/staging/greybus/control.h
-> +++ b/drivers/staging/greybus/control.h
-> @@ -24,6 +24,7 @@ struct gb_control {
->  	char *vendor_string;
->  	char *product_string;
->  };
-> +
->  #define to_gb_control(d) container_of(d, struct gb_control, dev)
+Remove unmatched right bracket. Reported by uncrustify.
 
-Traditionally the "to_SOMETHING" #defines are right after the structure
-definition.  So this is fine as-is.  I'll just drop it from the queue.
+Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
+---
+ drivers/staging/greybus/camera.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-thanks,
+diff --git a/drivers/staging/greybus/camera.c b/drivers/staging/greybus/camera.c
+index 6dded10f4155..c6d65430ea4c 100644
+--- a/drivers/staging/greybus/camera.c
++++ b/drivers/staging/greybus/camera.c
+@@ -1190,7 +1190,6 @@ static int gb_camera_debugfs_init(struct gb_camera *gcam)
+ 		debugfs_create_file(entry->name, entry->mask,
+ 				    gcam->debugfs.root, gcam,
+ 				    &gb_camera_debugfs_ops);
+-		}
+ 	}
+ 
+ 	return 0;
+-- 
+2.19.1
 
-greg k-h
+
 
