@@ -1,110 +1,105 @@
-X-GM-THRID: 6950732007035895808
-X-Received: by 2002:a17:90b:3648:: with SMTP id nh8mr1704853pjb.150.1618343407342;
-        Tue, 13 Apr 2021 12:50:07 -0700 (PDT)
+X-GM-THRID: 6621630836870479872
+X-Received: by 2002:a17:906:1603:: with SMTP id m3-v6mr194616ejd.16.1541743951156;
+        Thu, 08 Nov 2018 22:12:31 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:903:1c5:: with SMTP id e5ls3715115plh.6.gmail; Tue, 13
- Apr 2021 12:50:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxkIIwrmP1cTLIxSokLJDQ1qzGeWTzTCKLIcGqIwZfNhk2nLanADJXoN161b234hzSciL+W
-X-Received: by 2002:a17:903:31cc:b029:e4:bd48:c8e3 with SMTP id v12-20020a17090331ccb02900e4bd48c8e3mr33131106ple.40.1618343406220;
-        Tue, 13 Apr 2021 12:50:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618343406; cv=none;
+Received: by 2002:a17:906:5fc7:: with SMTP id k7-v6ls137688ejv.15.gmail; Thu,
+ 08 Nov 2018 22:12:30 -0800 (PST)
+X-Google-Smtp-Source: AJdET5d3oW22LIE82pqnKfQ1bO/jiuf4QdEouwlRIB8qYs7SaGn3vlLYYSm0vi8MQUNEcRJoyfR9
+X-Received: by 2002:a17:906:e82:: with SMTP id p2-v6mr196756ejf.13.1541743947346;
+        Thu, 08 Nov 2018 22:12:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541743947; cv=none;
         d=google.com; s=arc-20160816;
-        b=XgmfuSYmFxkwYgTKn98HwkabML5O1P5qzXNhGEGtap5Ccyf4unHZWlD751+br+JBUo
-         KlNPO27I5qQamwyBsepPTzuH3JN41IBUFAq+wdF0p8gWUJOUM1Sw3VID4SBlP5hmGTSa
-         /5pviUePKNkrcmvmlaeRKaMfKtNxvIuUQ9VEbMoqYoOr8oM8jusHXKkPL+MUIV2gNMcc
-         CVpgD43h39GmQy1LrLJMRPIo3IPIEDsmd9R6xQ/4ZEDMCf7qq6CkJ9Ix7bnn1qYkhvNe
-         vw9eCGPY//wVS7yc8qLA4AgdOpd9vGCatrEKin52SydDZZ66PRsr6D3pcg3kBuHvQWV8
-         YNxg==
+        b=AJR2DTT/eUvA67YZ5TA40z3FSNOvMERSHxdbhVhESSiN3RgfUyjCLDdAU9YY5E27W1
+         Y3+0fxS4TF7MZ2MQXPO8A22VphsfeV8qBPlnyLTP09sGsduzVpDE0+Q76ZuE55YzYfgK
+         XntYY8tRgOTRPwChYWhAAPKy/H5Ey93/M2o4UJHaJUgD40UCanFilY+clflXS23AqAFH
+         Cxi7ORgM2ub99VzxZoFMlL6OmBmTHgj5C2lMgPTqCHYTYaWzEcMcRO973dS2w2RuJ1je
+         QwqREZBX6x73Ow/rIABSfkxdf/zO650hhLUBNf3Ij3ZwGvsLyW+3dR7n7RHQl91h2SO0
+         Uk5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=d5JQs8Tx+1jZkGxhLa1z0jf/2TQov6WAQJIdCWJLtFk=;
-        b=Xh2sqhCkShEaiTvpPyKfA5O1bFVkSDeE43wR/qndEFd31D6no49P2EpOeePUWngocU
-         UOy/4JlFpZBtpLaCOZveY3G7bHi6rIGfrqwA59GgOncHB5lqn49rwdWZM6SdRnR0XslT
-         KLUS07Hkwt3NSOhgANwJKUt2+KomScPIqLTAxr3LUOSUhIS8koQthUXdRhi0PRKKsejQ
-         VtS1qyd3BaXN9EaxJhJgKeslULkTIWVRmqy02mltgekFcXXIfo0v1TqAY8HutMNWT8Q9
-         4Qde4q08LIAjAGLuLa10tIbYxYhCA942NcEbQqArDGF209ZQSpOYcSQlaakx+ipcZRTo
-         47YA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=jEcBlxEKeYewciU43jCWaT7FOFeYAQAtXC/VtDFqpVg=;
+        b=CzEmauysTM++aeqqYHRElKO3k0Iue+wOqGTJBbKdaHPm0lA+mZcAzKxy4tsLcwtA2M
+         lzBxC05w8ICWNYD7VoFPF685tIHbUWZdCySG6rHbebnWF3RoW6lMfzGf6Fn3bXj+WVnN
+         9oEaKZMxRB0PCLNI4v8WZmDbTSNXSPe92eR6JJHZXMiZzVgHt6v3tBHZjxp5QFyyjlxk
+         ZPhKbttxHz2yZZNUxDG1NvDlBuAg3r3IocmH8gHOCbLfLBMCpa+Gc3DTdKONw9E/xdp9
+         H4DQR7VH4ocIKfNFm7VH5xJ8RpU8UPP6KY0dsNL5iP3VTbaogrIaGUtHjgA/N7LkvqUG
+         leoQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QO5ZH0XW;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::102d as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from mail-pj1-x102d.google.com (mail-pj1-x102d.google.com. [2607:f8b0:4864:20::102d])
-        by gmr-mx.google.com with ESMTPS id t5si1409527pgv.4.2021.04.13.12.50.06
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id a35-v6si353293edd.1.2018.11.08.22.12.27
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 13 Apr 2021 12:50:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::102d as permitted sender) client-ip=2607:f8b0:4864:20::102d;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 08 Nov 2018 22:12:27 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QO5ZH0XW;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::102d as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x102d.google.com with SMTP id u14-20020a17090a1f0eb029014e38011b09so4735490pja.5
-        for <outreachy-kernel@googlegroups.com>; Tue, 13 Apr 2021 12:50:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=d5JQs8Tx+1jZkGxhLa1z0jf/2TQov6WAQJIdCWJLtFk=;
-        b=QO5ZH0XWGCAtSnFQasOblaMQqYmA7DsyCoftBXbx1i3qQ263FErvWqdiQuSnH2EOKP
-         PEe6WigtGLK5Az5GBaaABOIj3PBGmfUoePMX/7fhc4A1B9nEJHRCXe0EpX1X3TMf2zYy
-         dw1idnzkClh6WfP874wu34eSBc/wNP10brzFHT46QNjjG8iiTV2s4e2kyt+bPj8HqxWA
-         RBmxmwQ1yCa232XdNRcsdjjJfCf4Ce45obhz0nu2AboimowAiPseA3sQwS2h7L0OEtg5
-         ydM7A4DZgH6mhkA/72zbW8trxYbj22pxI6GFkWMDiub5jnp0PGMK/63HtvO/NfCuVTqC
-         vWaQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=d5JQs8Tx+1jZkGxhLa1z0jf/2TQov6WAQJIdCWJLtFk=;
-        b=lUtRDBS2QwzK678+QPi5HAOIm+y/idKV6jkltjgwWtox0mZyUpqIuJ02j3AiExHFOI
-         PMDryDEA45i9ixgrfl1M8caw99leshiouM3wbkrLPUzMnVaA/13A7pQ+dICEHfLfoI84
-         TPZKm09OR8SfmvlK+un7X1pwtRge2eR3/benhh7bE+LlVnYox/uUtGkFY4W7RBNnzNJ4
-         xHFpCS0gGdM1/hmGDjPdwJ3skxxAwjRxDg0O2knHpGu32/H8bLNJc3Gqq7L7EdkZHzbL
-         igSgZBdu4uluQvFcuBm4osIx0ilGHxSclSgkQfKgebkRI4FrKjtLnBhLariGdz2nNnux
-         EmsA==
-X-Gm-Message-State: AOAM5304TwYPHSEgNpewyKZ9c3OfIER3lSUV6/AGBiCnQAyAHbUzUIdi
-	F6yIF/dAPQrOoMhIACOriyI=
-X-Received: by 2002:a17:90a:7f8b:: with SMTP id m11mr1631827pjl.221.1618343405874;
-        Tue, 13 Apr 2021 12:50:05 -0700 (PDT)
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from kali ([103.141.87.253])
-        by smtp.gmail.com with ESMTPSA id c1sm13350924pfi.142.2021.04.13.12.50.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 Apr 2021 12:50:05 -0700 (PDT)
-Date: Wed, 14 Apr 2021 01:20:00 +0530
-From: Mitali Borkar <mitaliborkar810@gmail.com>
-To: clabbe@baylibre.com, mchehab@kernel.org, gregkh@linuxfoundation.org
-Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
-	mitali_s@me.iitr.ac.in
-Subject: [PATCH v4 0/2] staging: media: zoran: Cleanup patchset for style
- issues in zr36057.h 
-Message-ID: <cover.1618342050.git.mitaliborkar810@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.54,482,1534802400"; 
+   d="scan'208";a="284871053"
+Received: from 89-157-201-244.rev.numericable.fr (HELO hadrien) ([89.157.201.244])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 09 Nov 2018 07:12:26 +0100
+Date: Fri, 9 Nov 2018 07:12:26 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Irenge Jules Bashizi <jbi.octave@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com, 
+    jules.octave@outlook.com
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: davinci_vpfe: Remove one
+ blank space
+In-Reply-To: <20181108230918.4477-1-jbi.octave@gmail.com>
+Message-ID: <alpine.DEB.2.21.1811090712090.2471@hadrien>
+References: <20181108230918.4477-1-jbi.octave@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: text/plain; charset=US-ASCII
 
-Changes from v3:- Rebased these patches and made changes against
-mainline code.
 
-Changes from v2:-
-[PATCH 1/2]:- No changes.
-[PATCH 2/2]:- Aligned the code using tabs.
 
-Changes from v1:- 
-[PATCH 1/2]:- No changes.
-[PATCH 2/2]:- Aligned the code using tabs and readjusted the
-comments line.
+On Thu, 8 Nov 2018, Irenge Jules Bashizi wrote:
 
-Mitali Borkar (2):
-  staging: media: zoran: add spaces around '<<' operator
-  staging: media: zoran: add BIT() macro and align code
+> Remove one blank space complained by checkpatch
+>
+> Signed-off-by: Irenge Jules Bashizi <jbi.octave@gmail.com>
+> ---
+>  drivers/staging/media/davinci_vpfe/dm365_ipipe.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
+> index 81b369b28a47..79f7f7f9a36b 100644
+> --- a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
+> +++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
+> @@ -1466,7 +1466,7 @@ ipipe_set_format(struct v4l2_subdev *sd, struct v4l2_subdev_pad_config *cfg,
+>  	struct v4l2_mbus_framefmt *format;
+>
+>  	format = __ipipe_get_format(ipipe, cfg, fmt->pad, fmt->which);
+> -	if (format == NULL)
+> +	if (!format)
+>  		return -EINVAL;
 
- drivers/staging/media/zoran/zr36057.h | 312 ++++++++++++++------------
- 1 file changed, 172 insertions(+), 140 deletions(-)
+This change was part of another patch.
 
--- 
-2.30.2
+julia
 
+>
+>  	ipipe_try_format(ipipe, cfg, fmt->pad, &fmt->format, fmt->which);
+> @@ -1818,7 +1818,6 @@ vpfe_ipipe_init(struct vpfe_ipipe_device *ipipe, struct platform_device *pdev)
+>  			  V4L2_CID_CONTRAST, 0,
+>  			  IPIPE_CONTRAST_HIGH, 1, 16);
+>
+> -
+>  	v4l2_ctrl_handler_setup(&ipipe->ctrls);
+>  	sd->ctrl_handler = &ipipe->ctrls;
+>
+> --
+> 2.17.2
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20181108230918.4477-1-jbi.octave%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
