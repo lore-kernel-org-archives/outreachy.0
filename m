@@ -1,160 +1,140 @@
 X-GM-THRID: 6614501510595215360
-X-Received: by 2002:a25:55c5:: with SMTP id j188-v6mr4720716ybb.24.1541791429622;
-        Fri, 09 Nov 2018 11:23:49 -0800 (PST)
+X-Received: by 2002:aed:35a4:: with SMTP id c33mr5650225qte.40.1541772347787;
+        Fri, 09 Nov 2018 06:05:47 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:ab26:: with SMTP id u35-v6ls924224ybi.10.gmail; Fri, 09
- Nov 2018 11:23:48 -0800 (PST)
-X-Google-Smtp-Source: AJdET5cMxPu0a8IglDGZgLdTnYnzoqb5xi+zkbJ7w+svjo+BSzjDfuysL6sMfpiZgV2MJn4G1ATC
-X-Received: by 2002:a5b:a83:: with SMTP id h3-v6mr5311080ybq.60.1541791428880;
-        Fri, 09 Nov 2018 11:23:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541791428; cv=none;
+Received: by 2002:a0c:b5a0:: with SMTP id g32ls793627qve.5.gmail; Fri, 09 Nov
+ 2018 06:05:47 -0800 (PST)
+X-Google-Smtp-Source: AJdET5fXKhipGC5W8qmo7aOGPb5B+gs2gK/r3ahtcwXv64AqR3RCixN7n3Coz+320KI0CkH9spLg
+X-Received: by 2002:a0c:b5de:: with SMTP id o30mr5888113qvf.39.1541772347113;
+        Fri, 09 Nov 2018 06:05:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541772346; cv=none;
         d=google.com; s=arc-20160816;
-        b=0EpUJE0fuieDVl/zWbmzznRRvbWGMJCgoI0yoOvBf6T6fthSAUrt4PKk4JGaq7JaPH
-         LoPNJXm10KB3XAOhlQS0ssvJcJeLLBGVjv7UXKFLnpWn/bLbU1duWE9XLuwXrgOkXaMP
-         hz4gJDUxAZw83+01ZGle+4U0/Q1LrdLqj46GjkHQT2D9hkfkwFs8rYGLzCcDoxD+0+5c
-         aMVi/JdIJcmOdjefK0A9NBLvwWl4l0nDP/UyWcmFcZPc7BGaNya6/sZ7gauk/+NTO8bl
-         b+CNsXl5vu+tv3bPe8fVUtZ4SWUKiKilmOFJncJR2N3l2k87b2WIUSw8y5sj1kyHNuJO
-         wWBQ==
+        b=xfVxvdbyhfbwGsWAm2XqkSPKEfkPUBoutlG3/CN3YkSAhq5HpAJh6vcMMjrAneO5nn
+         7dsTK8hTpm0tpRMN15GVNRVww2z9AlSFyY3VLPYhrEFWxGl1EUWEhRGzmuwd9c/jX0bo
+         G6L/cPh2eu8z67BtpxYICi2p1nmU6KY6x8S5BEVXvVDMl1g5hY+YZ+APb64u6n8Ef8/X
+         6CrmCHKKuQINyJiciuziNwt93wgGTTvomhgZI1azwlqfFqvu0JwjATtjnIvyWRvtn11a
+         om1TIv8qVMLGXtCjAxv6icxb/SQaMFLl+J0MN/37XpOKxH9/CJcjb+i0FKYPA6IY3sMh
+         swGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=my9+v4CKApJhBOa43HWf7rS2l5KJB6bXsYbPQDOWyAI=;
-        b=zSAltOAVHzEeT8FWrOut67Ga4P9yfLhULtkuoQPRGQ2aKx0BErWsmsr6okR2YiEaoO
-         zd5+QDb8LBnE0DgSbmq6bGNiZVgKNQ5wf6aOPI8LR8lhlfevPVEPHdSUBWoZUaTSPA8t
-         EgDk0AWAvERGIXMT8Ax3Nrnjm/HNWkFlriuOlmrN63WfJQ6iT03gzV3ulff5pOWrmK2V
-         sJR6RWMtRw6xHV3+RwOAK2zoip2CWetTI1WZx/46ByYVeNWHpJiXaUPrVagBwg4PtctZ
-         yA7ArHlvDDVs4MFEE2wWI5gT4xRdvdS+PWtm9Vrrq5E2mKxJ+lh120ty/ilN+OXlWuei
-         e+xw==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=l+gXlwe8dqT+YbF9EW3l7NYGMqSPvGSj9D1Apz7zx9A=;
+        b=VJ48/Bd2kotW1ygarw3YOoUML95uiPLhOPhb+VqDmkgSKHGUAK+ZbMrGZRbG/UiAAI
+         2yvsTxIkpjcO/+fP5fDgg3i0du+bxixlVQvrLBiCPu1vJH7tYVMRINCM5g9LZWcXgpI1
+         HY0SEnq3rveFSJ+RyMbPI6Ijym/Udk/a/7eO1kz7+4WkE6ILyGcly3ggqWwucxbOcyyo
+         xJH4m0I6Ofzzla7X+MfsacqSPiPdar3dvsW3VsFNuIyXj6dhZ/Z6m0bpqOA6ciu6fSQr
+         FWqVOo1hO7I6Vw+wcqALDprr51+m43lAl4xbe9ExkphAn5uVJtB7zGbxFqNnEHnnvi6Z
+         qR9A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@poorly.run header.s=google header.b=GyQ1LrRV;
-       spf=pass (google.com: domain of sean@poorly.run designates 2607:f8b0:4864:20::b2d as permitted sender) smtp.mailfrom=sean@poorly.run
-Return-Path: <sean@poorly.run>
-Received: from mail-yb1-xb2d.google.com (mail-yb1-xb2d.google.com. [2607:f8b0:4864:20::b2d])
-        by gmr-mx.google.com with ESMTPS id t186-v6si328917ywc.2.2018.11.09.11.23.48
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YQ7DhRoY;
+       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::143 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mamtashukla555@gmail.com>
+Received: from mail-it1-x143.google.com (mail-it1-x143.google.com. [2607:f8b0:4864:20::143])
+        by gmr-mx.google.com with ESMTPS id d124si241118qka.5.2018.11.09.06.05.46
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Nov 2018 11:23:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of sean@poorly.run designates 2607:f8b0:4864:20::b2d as permitted sender) client-ip=2607:f8b0:4864:20::b2d;
+        Fri, 09 Nov 2018 06:05:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::143 as permitted sender) client-ip=2607:f8b0:4864:20::143;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@poorly.run header.s=google header.b=GyQ1LrRV;
-       spf=pass (google.com: domain of sean@poorly.run designates 2607:f8b0:4864:20::b2d as permitted sender) smtp.mailfrom=sean@poorly.run
-Received: by mail-yb1-xb2d.google.com with SMTP id w17-v6so1492006ybl.6
-        for <outreachy-kernel@googlegroups.com>; Fri, 09 Nov 2018 11:23:48 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YQ7DhRoY;
+       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::143 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-it1-x143.google.com with SMTP id b7-v6so3126777itd.5
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Nov 2018 06:05:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=poorly.run; s=google;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=my9+v4CKApJhBOa43HWf7rS2l5KJB6bXsYbPQDOWyAI=;
-        b=GyQ1LrRVUTxzknbON9H3BbsrFRli3/qu0rjZbshD4RDSANC7308l62o6saJAKeCUDd
-         y3fr2ZowHqPwIWaxEcBqlfVueyfCJT2+IROa05aCXg5R/Ot0CRtc7CKc1f1sxzDPgWMK
-         UpmvOyMgt88U350c5aWuVV48tvw4tKxX58fMBv818RSSeFPeFDudpl/ePeyLCmS/Qa5F
-         8GobrfoMidRKA1pHGi9Saf5H8N7a99/jMAcyo2ceKJCJWBEDwOVif2eAHo5Aa1/GCthv
-         K8f7dKclWWR5FKFcFJMGGZ2t4SO+FzcPxyAxxuD1LZFhuAnoOdsazoyEk9ipwjIw+LT6
-         cjvg==
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=l+gXlwe8dqT+YbF9EW3l7NYGMqSPvGSj9D1Apz7zx9A=;
+        b=YQ7DhRoYJ6QxsoR8WqllxtBK6abLLy6SJo01giFXdJO8dshnYBGdB3MLeLIhncWgRC
+         MZIQsfEa2Qw8f5UMVqkH3Akd5xxco8bQD6g5YsoGCK4i9afs5W2b7j0DWsIUUqF9R4tE
+         gP2XnSZpzfRG8KtqGnV9ykcCb7s9ax5LXDgO7PhjT6O19J7pd+P+2LXPtk4/PzRxspU2
+         j2grgL+NM5DhhDhK88UpPpyJ4kTFyySKojEiI9u9JmOoG4D9pq7kZDb/3sVmFjuNXZ4W
+         6kvyUkIJ+hu4e/gJQtpkZjZ+e2RWzR9/jRXX79tT5OI5On1aIok3BpUJcncbjfbs2MBN
+         KwDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=my9+v4CKApJhBOa43HWf7rS2l5KJB6bXsYbPQDOWyAI=;
-        b=H8adso9syyuf1kRHpFk01Ub8KwuttoSddw1pWX04iNV/TUTr2PgguKRCBKQkLNeJBk
-         Rv6wTfjCPsAR/NOeDeroGMWWbEZhmm8vJXOkSHKDEyEllA4ce4Ga+46hbuK+7Op7LUh4
-         xja8POk353xMB2qrZwUDVUBFwgES35DjpToxYgiu2C/GYQ6BxBOY9pT9zgKMEPJRLhRc
-         6rob7HLu1EidDEd+Uv0XIcek7Aby23m/2XDFzlHpYEVNevNm+X2kaqHsJLiM+qetRfDu
-         BR7S/nXa02nXmY3+0/EjRPdQNf8pgtAqur32z8+YfifuSRjhRD+rYsnelFEBBOPf0Zdl
-         e6ow==
-X-Gm-Message-State: AGRZ1gJmxcuxJ3e0OWchiTRK5sF0AwcG6EtbjDD6YeU0PtHQDVB5IsRj
-	a+nFaoTU1MJM74488v6gUP26E7uhDp+vlw==
-X-Received: by 2002:a25:5208:: with SMTP id g8-v6mr10445151ybb.65.1541791428406;
-        Fri, 09 Nov 2018 11:23:48 -0800 (PST)
-Return-Path: <sean@poorly.run>
-Received: from localhost ([2620:0:1013:11:ad55:b1db:adfe:3b9f])
-        by smtp.gmail.com with ESMTPSA id c144-v6sm503521ywb.26.2018.11.09.11.23.47
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 Nov 2018 11:23:47 -0800 (PST)
-Date: Fri, 9 Nov 2018 14:23:46 -0500
-From: Sean Paul <sean@poorly.run>
-To: Mamta Shukla <mamtashukla555@gmail.com>
-Cc: sean@poorly.run, outreachy-kernel@googlegroups.com,
-	dri-devel@lists.freedesktop.org,
-	Daniel Vetter <daniel.vetter@ffwll.ch>,
-	Rob Clark <robdclark@gmail.com>, airlied@linux.ie
-Subject: Re: [PATCH DRM] drm: msm: disp: dpu1: Use DRM_DEV_* instead of DPU_*
-Message-ID: <20181109192346.GE154160@art_vandelay>
-References: <20181020180354.GA338@armorer>
- <20181106185527.GW154160@art_vandelay>
- <CAMNCNOW3P7F0f_OQESA4xTh_Mesf2M+C4pHHFw5Aoye-6DQPqA@mail.gmail.com>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=l+gXlwe8dqT+YbF9EW3l7NYGMqSPvGSj9D1Apz7zx9A=;
+        b=BarI7aAy5IGX/f1M5CewS76Pc7MfYW+2b50V7ln3dut97zJgiL+hqPF7cx+Ppr/Eyl
+         6qPTr89+TAtB3PP+18OyygkOhWf4Znn7CP76QS2ISJNSNcmRgQcyYGnkbUxcqBNQVPka
+         F5hr01jgyZbJ59lLyDlK4os8Xwt9/A/GA8CVBjX+mRvke1qEZzOjwSpYOZkpnsiHpcbG
+         SXrbLOxJ+lSQ7HWxUOcZurvXSsJOZM5ViQ7LZ088A5yQNYtFpSZKTMQvrwn6WvVN/qv5
+         GCDD9og9x60GM4EyTut6cfU4pK05fp14V1hpuSNhwvDne6VLfP0CN+UvJVbowaygASuy
+         Ehdg==
+X-Gm-Message-State: AGRZ1gKdQFCab9Whao1O8PIgbqgRZiIm0n8WfXW4x9P1DT+kPMze9BEL
+	C3O9zsPgW9OSbnFzxQ++PZBW/gaZz3yiLRRXf4M=
+X-Received: by 2002:a24:684a:: with SMTP id v71-v6mr1040764itb.137.1541772346402;
+ Fri, 09 Nov 2018 06:05:46 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAMNCNOW3P7F0f_OQESA4xTh_Mesf2M+C4pHHFw5Aoye-6DQPqA@mail.gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <20181020180354.GA338@armorer> <20181106185527.GW154160@art_vandelay>
+In-Reply-To: <20181106185527.GW154160@art_vandelay>
+From: Mamta Shukla <mamtashukla555@gmail.com>
+Date: Fri, 9 Nov 2018 19:35:33 +0530
+Message-ID: <CAMNCNOW3P7F0f_OQESA4xTh_Mesf2M+C4pHHFw5Aoye-6DQPqA@mail.gmail.com>
+Subject: Re: [PATCH DRM] drm: msm: disp: dpu1: Use DRM_DEV_* instead of DPU_*
+To: sean@poorly.run
+Cc: outreachy-kernel@googlegroups.com, dri-devel@lists.freedesktop.org, 
+	Daniel Vetter <daniel.vetter@ffwll.ch>, Rob Clark <robdclark@gmail.com>, airlied@linux.ie
+Content-Type: text/plain; charset="UTF-8"
 
-On Fri, Nov 09, 2018 at 07:35:33PM +0530, Mamta Shukla wrote:
-> On Wed, Nov 7, 2018 at 12:25 AM Sean Paul <sean@poorly.run> wrote:
+On Wed, Nov 7, 2018 at 12:25 AM Sean Paul <sean@poorly.run> wrote:
+>
+> On Sat, Oct 20, 2018 at 11:33:54PM +0530, Mamta Shukla wrote:
+> > Use DRM_DEV_ERROR/DEBUG instead of DPU_ERROR/DEBUG  to generate
+> > drm-formatted specific log messages in the Kernel log in case of
+> > multiple instances.
 > >
-> > On Sat, Oct 20, 2018 at 11:33:54PM +0530, Mamta Shukla wrote:
-> > > Use DRM_DEV_ERROR/DEBUG instead of DPU_ERROR/DEBUG  to generate
-> > > drm-formatted specific log messages in the Kernel log in case of
-> > > multiple instances.
-> > >
-> > > Signed-off-by: Mamta Shukla <mamtashukla555@gmail.com>
-> >
-> > Hi Mamta,
-> > Thanks for sending this patch, but I don't think it's going to even compile.
-> > DRM_DEV_* takes a struct device * pointer as the first argument, and it's not
-> > being passed in anywhere. Make sure you compile test with CONFIG_DRM_MSM enabled
-> >
-> Thank you for pointing this out. Definitely DRM_DEV_* requires pointer
-> to function or the device pointer along with
-> message string. I had compiled this before submitting the patch. But I
-> missed out enabling the DRM_MSM.
-> Is it good to write v2 of above patch with mentioning/stating pointer
-> to function so that in DEBUG message function
-> name is also available with error message?
+> > Signed-off-by: Mamta Shukla <mamtashukla555@gmail.com>
+>
+> Hi Mamta,
+> Thanks for sending this patch, but I don't think it's going to even compile.
+> DRM_DEV_* takes a struct device * pointer as the first argument, and it's not
+> being passed in anywhere. Make sure you compile test with CONFIG_DRM_MSM enabled
+>
+Thank you for pointing this out. Definitely DRM_DEV_* requires pointer
+to function or the device pointer along with
+message string. I had compiled this before submitting the patch. But I
+missed out enabling the DRM_MSM.
+Is it good to write v2 of above patch with mentioning/stating pointer
+to function so that in DEBUG message function
+name is also available with error message?
 
-Yes, to do this right, you'd pass the device pointer where applicable (most
-everwhere). You'll also want to convert the dev_*/pr_*/DRM_* instances to
-DRM_DEV_*.
 
-Sean
+> > ---
+> >  drivers/gpu/drm/msm/disp/dpu1/dpu_core_irq.c       |  58 +++----
+> >  drivers/gpu/drm/msm/disp/dpu1/dpu_core_perf.c      |  60 +++----
+> >  drivers/gpu/drm/msm/disp/dpu1/dpu_crtc.c           | 176 ++++++++++-----------
+> >  drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c        | 134 ++++++++--------
+> >  .../gpu/drm/msm/disp/dpu1/dpu_encoder_phys_cmd.c   |  40 ++---
+> >  .../gpu/drm/msm/disp/dpu1/dpu_encoder_phys_vid.c   |  42 ++---
+> >  drivers/gpu/drm/msm/disp/dpu1/dpu_formats.c        |  10 +-
+> >  drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.c     |   2 +-
+> >  drivers/gpu/drm/msm/disp/dpu1/dpu_hw_cdm.c         |   2 +-
+> >  drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.c         |   2 +-
+> >  drivers/gpu/drm/msm/disp/dpu1/dpu_hw_intf.c        |   2 +-
+> >  drivers/gpu/drm/msm/disp/dpu1/dpu_hw_lm.c          |   2 +-
+> >  drivers/gpu/drm/msm/disp/dpu1/dpu_hw_pingpong.c    |   2 +-
+> >  drivers/gpu/drm/msm/disp/dpu1/dpu_hw_sspp.c        |   2 +-
+> >  drivers/gpu/drm/msm/disp/dpu1/dpu_hw_top.c         |   2 +-
+> >  drivers/gpu/drm/msm/disp/dpu1/dpu_irq.c            |   4 +-
+> >  drivers/gpu/drm/msm/disp/dpu1/dpu_kms.c            |  90 +++++------
+> >  drivers/gpu/drm/msm/disp/dpu1/dpu_mdss.c           |  10 +-
+> >  drivers/gpu/drm/msm/disp/dpu1/dpu_plane.c          | 134 ++++++++--------
+> >  drivers/gpu/drm/msm/disp/dpu1/dpu_rm.c             |  96 +++++------
+> >  drivers/gpu/drm/msm/disp/dpu1/dpu_vbif.c           |  32 ++--
+> >  21 files changed, 451 insertions(+), 451 deletions(-)
+> >
+>
+> /snip
+>
+> --
+> Sean Paul, Software Engineer, Google / Chromium OS
 
-> 
-> 
-> > > ---
-> > >  drivers/gpu/drm/msm/disp/dpu1/dpu_core_irq.c       |  58 +++----
-> > >  drivers/gpu/drm/msm/disp/dpu1/dpu_core_perf.c      |  60 +++----
-> > >  drivers/gpu/drm/msm/disp/dpu1/dpu_crtc.c           | 176 ++++++++++-----------
-> > >  drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c        | 134 ++++++++--------
-> > >  .../gpu/drm/msm/disp/dpu1/dpu_encoder_phys_cmd.c   |  40 ++---
-> > >  .../gpu/drm/msm/disp/dpu1/dpu_encoder_phys_vid.c   |  42 ++---
-> > >  drivers/gpu/drm/msm/disp/dpu1/dpu_formats.c        |  10 +-
-> > >  drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.c     |   2 +-
-> > >  drivers/gpu/drm/msm/disp/dpu1/dpu_hw_cdm.c         |   2 +-
-> > >  drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.c         |   2 +-
-> > >  drivers/gpu/drm/msm/disp/dpu1/dpu_hw_intf.c        |   2 +-
-> > >  drivers/gpu/drm/msm/disp/dpu1/dpu_hw_lm.c          |   2 +-
-> > >  drivers/gpu/drm/msm/disp/dpu1/dpu_hw_pingpong.c    |   2 +-
-> > >  drivers/gpu/drm/msm/disp/dpu1/dpu_hw_sspp.c        |   2 +-
-> > >  drivers/gpu/drm/msm/disp/dpu1/dpu_hw_top.c         |   2 +-
-> > >  drivers/gpu/drm/msm/disp/dpu1/dpu_irq.c            |   4 +-
-> > >  drivers/gpu/drm/msm/disp/dpu1/dpu_kms.c            |  90 +++++------
-> > >  drivers/gpu/drm/msm/disp/dpu1/dpu_mdss.c           |  10 +-
-> > >  drivers/gpu/drm/msm/disp/dpu1/dpu_plane.c          | 134 ++++++++--------
-> > >  drivers/gpu/drm/msm/disp/dpu1/dpu_rm.c             |  96 +++++------
-> > >  drivers/gpu/drm/msm/disp/dpu1/dpu_vbif.c           |  32 ++--
-> > >  21 files changed, 451 insertions(+), 451 deletions(-)
-> > >
-> >
-> > /snip
-> >
-> > --
-> > Sean Paul, Software Engineer, Google / Chromium OS
-> 
-> 
-> 
-> -- 
-> Mamta Shukla
+
 
 -- 
-Sean Paul, Software Engineer, Google / Chromium OS
+Mamta Shukla
 
