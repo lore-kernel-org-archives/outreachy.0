@@ -1,87 +1,153 @@
-X-GM-THRID: 6251919067627651072
-X-Received: by 10.66.102.69 with SMTP id fm5mr22354576pab.47.1455638340195;
-        Tue, 16 Feb 2016 07:59:00 -0800 (PST)
+X-GM-THRID: 6631766247288602624
+X-Received: by 2002:ac8:4307:: with SMTP id z7mr19864428qtm.7.1544078403731;
+        Wed, 05 Dec 2018 22:40:03 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.214.7 with SMTP id nw7ls1766349obc.93.gmail; Tue, 16 Feb
- 2016 07:58:59 -0800 (PST)
-X-Received: by 10.182.236.34 with SMTP id ur2mr21505369obc.10.1455638339539;
-        Tue, 16 Feb 2016 07:58:59 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-ig0-x22e.google.com (mail-ig0-x22e.google.com. [2607:f8b0:4001:c05::22e])
-        by gmr-mx.google.com with ESMTPS id mu6si1256051igb.1.2016.02.16.07.58.59
+Received: by 2002:ac8:3854:: with SMTP id r20ls6990289qtb.9.gmail; Wed, 05 Dec
+ 2018 22:40:03 -0800 (PST)
+X-Received: by 2002:ac8:2d46:: with SMTP id o6mr20425228qta.35.1544078403031;
+        Wed, 05 Dec 2018 22:40:03 -0800 (PST)
+Received: by 2002:a37:a4c2:0:0:0:0:0 with SMTP id n185msqke;
+        Wed, 5 Dec 2018 22:38:47 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/UxLkxjklzvuqAuQeYZAZnJyGqGm4YPEENQhtrHi3L61GRr0il38Seq2y7spYbfGjYaSgwV
+X-Received: by 2002:a1c:6e11:: with SMTP id j17-v6mr2850841wmc.0.1544078327499;
+        Wed, 05 Dec 2018 22:38:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544078327; cv=none;
+        d=google.com; s=arc-20160816;
+        b=jYEMCLYhL1LfI1lR3/LONF50mVaRpyDZEAQUzcxfEXGhOIzngSEArRSFpGzHLLnWhM
+         3oQkPNCtG7yi/JXqmwyI/floKKjSMct67r9vylUAunpbxWIFjN2AtaRXAOjXd6x3yZBR
+         mYbeG1I8jUwSc1Qgh9u9MYiRKU/LtXb4Ptwt0hvJLT9ZTquYQP+MUnZH/JKYmte70PXL
+         2m3idamTZQ/dqobKNZXKe6DL98ydYYjELH0N+uO6vFrQafzV2cScl7Um8PxXazDctj95
+         DdQryL/4Zb1k13N8ONvUfCsHwQxGlIiyz83TmFyfv6Oifhx1JMbka6ldzTyeszTK8J5r
+         6HsA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:content-transfer-encoding:message-id:content-language
+         :in-reply-to:user-agent:date:from:to:references:subject;
+        bh=erZCP9cv0/smqlgzcNh1MUHj7NEcyYh/F3pTcQ3fCpk=;
+        b=fNcz1EhSqMMwrBkUvOdetsL8WtJPl3FDbXXsYvSg6Pj0lu0qROihZuEEsnhg9/yJUz
+         mxc7UtQlwPATRJa92VrnLxPHIlXUGdMnnYvqMatHb/L/mUovC1glyHMCm4DI7HiunaBH
+         EC96fjPnVF3EaKhgqk3FOF7O4257jBYHYgum3dgYvAoss264bzRMeuVrmL3iwmCR/tOp
+         wrq1Os8NHjNoigFM3mraHZw/UyX50XsIR0Nb/TslGiZ8aQmyC/DDdj6qw45wB9KefgaV
+         sJbixE9axD0DpmLaFH/JqWlzz8H9kev9ZR8aF+ApOQZu7RO+3lSKVp8uullS6sy07DAK
+         5GPw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of andrew.donnellan@au1.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=andrew.donnellan@au1.ibm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <andrew.donnellan@au1.ibm.com>
+Received: from mx0a-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
+        by gmr-mx.google.com with ESMTPS id h6si575761wmc.2.2018.12.05.22.38.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 16 Feb 2016 07:58:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::22e as permitted sender) client-ip=2607:f8b0:4001:c05::22e;
+        Wed, 05 Dec 2018 22:38:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of andrew.donnellan@au1.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::22e as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-ig0-x22e.google.com with SMTP id 5so81313279igt.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 16 Feb 2016 07:58:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=M0fS8sBxe2Y2ancgT9rzQzACgdGzmVoBd+W4LnPQTnY=;
-        b=vutQdTKnjHr25U6qG9gdmHkHj1x6XEiXAo4+DvoWztFC+4ctPrMzL2b/ZzaTAoMYe8
-         OuBYAV+bYdDufNe/LtwGpriQ42RSDb1OkqmVZZFcfZhwlW/kQ3LDIKW9gVIqHItbEqtU
-         7YMioUR/Bcmnacvvo390XC6LSjNSNDWhsIMYJEQyJqs8E8TCOlpDUBMAe7mkJfvoIJFN
-         18OpAubaXLIpYY8Fc8MIQ3HMI1/BMLyUB2DmgetYmR/DRS+zy+S35cxtx6zBUAP++D36
-         eee8UX1hjgAZyV852vwd8cVIOITr81w8Lm6KoFH2eZ5Uhq56Z+o01uyT8/q0eHGwT65a
-         8HlQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=M0fS8sBxe2Y2ancgT9rzQzACgdGzmVoBd+W4LnPQTnY=;
-        b=IfMtJ1pwz5P+sK27BIetR3KU8/cOmj6zLigPweWjG6HQr6TXXaIymf6gXJNm2+nyEP
-         ZSfJ6Sw4ZeLVEEBsAuMLVvF0uMIO+v66bWTpiEnjCDCserXMhkuE+ftsmneO2UjsRNEb
-         NxF8vgJrcI0sPyrei5pNw1NskCCs1VuUbu5lQJGzcx8g8bvjtr4n6RL+kRksrXUYRwdj
-         2ufLPtt9aakuzRalt5vqgq7sMRyEnWE+G2bYpxRwk6juONeoPZgplzN5bwjW6vAGRGEA
-         6aMsQKQH8NeHx4LVYv8YYmmDCrYUMwPnc1wyThT9wcX27RA9WXMdpZjj0oHxiFAmQJI6
-         z28w==
-X-Gm-Message-State: AG10YORv82FMjxkbGl/5aOGqbEHZUXfYJCkSZdiCxJQHq/jhHVnIOPVREGfogRkHl1EI3w==
-X-Received: by 10.50.73.168 with SMTP id m8mr20080455igv.53.1455638339376;
-        Tue, 16 Feb 2016 07:58:59 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id k16sm8839787igf.0.2016.02.16.07.58.58
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 16 Feb 2016 07:58:58 -0800 (PST)
-Date: Tue, 16 Feb 2016 15:58:17 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
+       spf=pass (google.com: domain of andrew.donnellan@au1.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=andrew.donnellan@au1.ibm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from pps.filterd (m0098419.ppops.net [127.0.0.1])
+	by mx0b-001b2d01.pphosted.com (8.16.0.22/8.16.0.22) with SMTP id wB66YddY145529
+	for <outreachy-kernel@googlegroups.com>; Thu, 6 Dec 2018 01:38:46 -0500
+Received: from e06smtp05.uk.ibm.com (e06smtp05.uk.ibm.com [195.75.94.101])
+	by mx0b-001b2d01.pphosted.com with ESMTP id 2p6xem8kbn-1
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
+	for <outreachy-kernel@googlegroups.com>; Thu, 06 Dec 2018 01:38:45 -0500
+Received: from localhost
+	by e06smtp05.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only! Violators will be prosecuted
+	for <outreachy-kernel@googlegroups.com> from <andrew.donnellan@au1.ibm.com>;
+	Thu, 6 Dec 2018 06:38:44 -0000
+Received: from b06cxnps3075.portsmouth.uk.ibm.com (9.149.109.195)
+	by e06smtp05.uk.ibm.com (192.168.101.135) with IBM ESMTP SMTP Gateway: Authorized Use Only! Violators will be prosecuted;
+	(version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
+	Thu, 6 Dec 2018 06:38:42 -0000
+Received: from d06av21.portsmouth.uk.ibm.com (d06av21.portsmouth.uk.ibm.com [9.149.105.232])
+	by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id wB66cfkr52887604
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL)
+	for <outreachy-kernel@googlegroups.com>; Thu, 6 Dec 2018 06:38:41 GMT
+Received: from d06av21.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 2569E52051
+	for <outreachy-kernel@googlegroups.com>; Thu,  6 Dec 2018 06:38:41 +0000 (GMT)
+Received: from ozlabs.au.ibm.com (unknown [9.192.253.14])
+	by d06av21.portsmouth.uk.ibm.com (Postfix) with ESMTP id C74DE5204F
+	for <outreachy-kernel@googlegroups.com>; Thu,  6 Dec 2018 06:38:40 +0000 (GMT)
+Received: from [10.61.2.125] (haven.au.ibm.com [9.192.254.114])
+	(using TLSv1.2 with cipher AES128-SHA (128/128 bits))
+	(No client certificate requested)
+	by ozlabs.au.ibm.com (Postfix) with ESMTPSA id 79D35A0231
+	for <outreachy-kernel@googlegroups.com>; Thu,  6 Dec 2018 17:38:39 +1100 (AEDT)
+Subject: Fwd: [ANNOUNCE] Call for Papers - linux.conf.au Kernel Miniconf,
+ Christchurch NZ, 21-25 Jan 2019
+References: <4e8f907e-ce44-191e-8ded-29ba9ab1cd08@au1.ibm.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: wilc1000: Use kmalloc_array instead of kmalloc
-Message-ID: <20160216205817.GA16090@janani-Inspiron-3521>
+From: Andrew Donnellan <andrew.donnellan@au1.ibm.com>
+X-Forwarded-Message-Id: <4e8f907e-ce44-191e-8ded-29ba9ab1cd08@au1.ibm.com>
+Date: Thu, 6 Dec 2018 17:38:39 +1100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.3.0
+In-Reply-To: <4e8f907e-ce44-191e-8ded-29ba9ab1cd08@au1.ibm.com>
+Content-Language: en-AU
+X-TM-AS-GCONF: 00
+x-cbid: 18120606-0020-0000-0000-000002F34CCD
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 18120606-0021-0000-0000-000021435A6A
+Message-Id: <fd6b9298-90ea-b40e-2797-8f1d400769e6@au1.ibm.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: Quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:,, definitions=2018-12-06_01:,,
+ signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501
+ malwarescore=0 suspectscore=1 phishscore=0 bulkscore=0 spamscore=0
+ clxscore=1011 lowpriorityscore=0 mlxscore=0 impostorscore=0
+ mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-1810050000 definitions=main-1812060060
 
-Use kmalloc_array instead of kmalloc for arrays to prevent integer
-overflows.
+If any outreachy kernel interns or ex-interns are coming to=20
+linux.conf.au next month, please consider submitting a talk to the=20
+Kernel Miniconf - I would love to have you speak!
 
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
----
- drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-index 81a2ee9..7554cd4 100644
---- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-+++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-@@ -664,7 +664,7 @@ static int scan(struct wiphy *wiphy, struct cfg80211_scan_request *request)
- 		PRINT_D(CFG80211_DBG, "Number of SSIDs %d\n", request->n_ssids);
- 
- 		if (request->n_ssids >= 1) {
--			strHiddenNetwork.net_info = kmalloc(request->n_ssids * sizeof(struct hidden_network), GFP_KERNEL);
-+			strHiddenNetwork.net_info = kmalloc_array(request->n_ssids, sizeof(struct hidden_network), GFP_KERNEL);
- 			strHiddenNetwork.n_ssids = request->n_ssids;
- 
- 
--- 
-2.5.0
+Andrew
+
+
+-------- Forwarded Message --------
+Subject: [ANNOUNCE] Call for Papers - linux.conf.au Kernel Miniconf,=20
+Christchurch NZ, 21-25 Jan 2019
+Date: Sun, 21 Oct 2018 12:10:53 +1100
+From: Andrew Donnellan <andrew.donnellan@au1.ibm.com>
+To: LKML <linux-kernel@vger.kernel.org>
+CC: lwn@lwn.net
+
+The linux.conf.au Kernel Miniconf is happening once again, this time in=20
+Christchurch on 22 Jan 2019.
+
+*** Submissions close on 2018-12-16, 23:59 AoE, with early submissions=20
+(before 2018-11-16, 23:59 AoE) given priority. ***
+
+*** Submission details: http://lca-kernel.ozlabs.org/2019-cfp.html ***
+
+The Kernel Miniconf is a 1 day stream alongside the main LCA conference=20
+to talk about kernel stuff.
+
+We invite submissions on anything related to kernel and low-level=20
+systems programming. We welcome submissions from developers of all=20
+levels of experience in the kernel community, covering a broad range of=20
+topics.
+
+Past Kernel Miniconfs have included technical talks on topics such as=20
+memory management, RCU, scheduling and filesystems, as well as talks on=20
+Linux kernel community topics such as licensing and Linux kernel=20
+development process.
+
+We strongly encourage both first-time and seasoned speakers from all=20
+backgrounds, ages, genders, nationalities, ethnicities, religions and=20
+abilities. Like the main LCA conference itself, we respect and encourage=20
+diversity at our miniconf.
+
+Speakers will need to purchase an LCA ticket to attend.
+
+See http://lca-kernel.ozlabs.org/2019-cfp.html for full details and the=20
+submission form.
+
+--=20
+Andrew Donnellan              OzLabs, ADL Canberra
+andrew.donnellan@au1.ibm.com  IBM Australia Limited
 
 
