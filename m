@@ -1,142 +1,117 @@
 X-GM-THRID: 6634615271359250432
-X-Received: by 2002:a2e:4253:: with SMTP id p80-v6mr163016lja.13.1544776559407;
-        Fri, 14 Dec 2018 00:35:59 -0800 (PST)
+X-Received: by 2002:aca:ed17:: with SMTP id l23mr581318oih.48.1544741744492;
+        Thu, 13 Dec 2018 14:55:44 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:5d9d:: with SMTP id v29-v6ls624526lje.12.gmail; Fri, 14
- Dec 2018 00:35:57 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/WyN4AHx3ZCxulcSw2uy9XOdVEqeE/LS5fhW6Dez+XiCWk2bPEAKWPHVx8cuNbAcjb9xC3t
-X-Received: by 2002:a2e:80c8:: with SMTP id r8-v6mr153134ljg.23.1544776557889;
-        Fri, 14 Dec 2018 00:35:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544776557; cv=none;
+Received: by 2002:a9d:bea:: with SMTP id 97ls2422351oth.8.gmail; Thu, 13 Dec
+ 2018 14:55:43 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/XHfns1QXr6wyZyIn/DHIouQw3FPC78ixRWZ14dMQ2aLrAnA4vJ95JyM4COu/O6YykHvX3V
+X-Received: by 2002:a9d:4803:: with SMTP id c3mr601653otf.2.1544741743860;
+        Thu, 13 Dec 2018 14:55:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544741743; cv=none;
         d=google.com; s=arc-20160816;
-        b=aAccXTn1IOMCUqn//HddIk5TekDnku5vnwQpmLAabcMh2CoOtVWnyrPyEZ6nYKCnQU
-         X01pSlK1FzxsEFhR4o6auYV0j42Ct6J1iWjDPnA2mWF6Kj6IlblmI3h/+34coJrvUNx0
-         8MmV0mq6lJblQwElSIrKkZKFv3B6o8nttt2kzi9kmCyr4c2dxxyZ6ysh470GzV6tVQjF
-         uF8GU40WWOO/M3l7X5n2jblABpl7Ki8EQqU2LfEXdxKiED5ieE5tB9BCxcmXkLi3V5zD
-         /Uifu2xFN3lxDJjc+p3hNlR2CDYwcA4fvlr/UQr8rrjOisgyd3PKdpyh0mcYvp509tF3
-         8xOA==
+        b=dIUZLvKApHvPz95OGhyEaUPtu7cRfyBogEGMm2ntG6msNL+mHh49koUX2mthJFeryu
+         QCnhio/CtRmfMHsGXL/aAWMj7LRWKe/90OOtAZKS4wI5Mog7RvsrePRiRYopfewJGnst
+         289Swu54XMk7HEa+BW/SvMPGV0iWuO3exmY9r1pxQKO+S/WKtVJAEJoY/wVIFBHu69sN
+         LyppgJNkXGi9UIxBSp0i6h5/W6HjYaH5bNrOB4hFv47k/60HfG7p+zzlwg+9G6/mkgvt
+         NOICAg4HHiUzQWU5XUHAhtKsGjoYKKETRHvO5AZ3KgXkRftFXpcvSkoi36CBOr8Jp3jH
+         t96A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :mail-followup-to:message-id:subject:cc:to:from:date:sender
-         :dkim-signature;
-        bh=a+mFNmUevWa0Q8JtSm+PvQ2RmPSbBdvcBYcdTdDpGtI=;
-        b=SyPCvVP8V0jPH9YPuetGojkk2JT608Ps1UmQm9S3G/W7p0qJh5k3nwdTiZCVP+Ppk8
-         Q3HLbGhppyztcIO7UVQVYltCYKf5VcdGT5DAgyUV/ibW/+VPH8Ya06WjEtJTpOUmbmns
-         0KH9BmIJ3huepIdbm7OYB7prnnxcbMXVgogB9luROaVzHtqp/8q+EMAKXIeBP/7dx/W/
-         35HcY1VD2R8r+kFxKKonisvq4o55THtTV+srMX9JP0IEfhOJbVzwEyQUKfWwvYanUMv3
-         OYIDegS8tPCTfvjgfLc5dGMbkNwhG85b/+swxYdHyMx0JBFak/qgnTC2ZpeA0YuestPB
-         Ao4Q==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=FlmgjsOljKHoCliMfpygHF2ImS5ElP2rgSghsY1VUG4=;
+        b=XOtrzwiH2XhTayR3KCvxsyd9uuEhqnbguoOd0o6IBLHuXH1F/msZ0pe1d671glK9SM
+         xWC8uYFH2a+Vls8zoV6FbfVCrSymS3pQeIEA+ZJ99rlCqVybrgG3xQXaelyM8JxESwqj
+         8a3UEHopcft9Aa4oBR2CabwMlQlc1fJ5y04zCHoTIZnj8pjYrQ1tlSALkWul/Oio4I3S
+         v48/uYLP3brlFn/GkO5WLZRuP2GAB4Cig1Q9EdCt3fNEMuyEG4L4Telharxwtf+L1XFW
+         85aQBOS/DPtnf2k6pCkS7vnfgv2UmKkB1RgS8H52ChnLRfmsJ0Wjo9FPZJF0ZlwOCqLs
+         Q4cQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ffwll.ch header.s=google header.b=WThiPVrv;
-       spf=neutral (google.com: 2a00:1450:4864:20::530 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
-Return-Path: <daniel@ffwll.ch>
-Received: from mail-ed1-x530.google.com (mail-ed1-x530.google.com. [2a00:1450:4864:20::530])
-        by gmr-mx.google.com with ESMTPS id y18si197403lfe.3.2018.12.14.00.35.57
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WJmU4cXa;
+       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <shayenneluzmoura@gmail.com>
+Received: from mail-qt1-x842.google.com (mail-qt1-x842.google.com. [2607:f8b0:4864:20::842])
+        by gmr-mx.google.com with ESMTPS id 17si92607otj.4.2018.12.13.14.55.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 14 Dec 2018 00:35:57 -0800 (PST)
-Received-SPF: neutral (google.com: 2a00:1450:4864:20::530 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) client-ip=2a00:1450:4864:20::530;
+        Thu, 13 Dec 2018 14:55:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) client-ip=2607:f8b0:4864:20::842;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ffwll.ch header.s=google header.b=WThiPVrv;
-       spf=neutral (google.com: 2a00:1450:4864:20::530 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
-Received: by mail-ed1-x530.google.com with SMTP id y56so4247440edd.11
-        for <outreachy-kernel@googlegroups.com>; Fri, 14 Dec 2018 00:35:57 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WJmU4cXa;
+       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-qt1-x842.google.com with SMTP id k12so4182721qtf.7
+        for <outreachy-kernel@googlegroups.com>; Thu, 13 Dec 2018 14:55:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ffwll.ch; s=google;
-        h=sender:date:from:to:cc:subject:message-id:mail-followup-to
-         :references:mime-version:content-disposition:in-reply-to:user-agent;
-        bh=a+mFNmUevWa0Q8JtSm+PvQ2RmPSbBdvcBYcdTdDpGtI=;
-        b=WThiPVrvKOY/ootaKYQI/S8dllUFxsfTiwgzoYHmlwYt1KZJsha2nxXOkYp+vkAUg6
-         C9T0QIbmCW22R3ov67TjD2Te+clHm73oE9WT5QYTgIPwNduM5AhdbIVPCdvGgAA2VIqH
-         nBqDG66sbp+5aD5kZwQyG/PE0BwhVDIojFDNg=
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=FlmgjsOljKHoCliMfpygHF2ImS5ElP2rgSghsY1VUG4=;
+        b=WJmU4cXa0SW769aIk9PD188enT2/HNUcJX2GpnuZiILCQOlhh4g1qR1PqNmjn4vd+b
+         mvxokEgskfZpD7IbSwnBWmmVfjxtu07gyNv4LjVfNDIOEDH4HrUQ4WHRnofcSGmFr5rZ
+         t6P0U3EphYSWspgpBthiTCUX5cPnm6kKZIxLW00O8QlEU5IgKGmGE4Bf+YtwZBfnNyxe
+         ndqjWBZY2e3I2TP4YVMQJtBX1chDyEtSzUt35qDHLPXtvv20YMjop4hyKsHq+JEKjk2F
+         RrVCo7Hq5n6lv/E1q7NbF4wgO/Bo5XoeyIglFgp1Kr8lTYDJ87nOf0hKXA/KHKqGEzBe
+         bNfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
-         :mail-followup-to:references:mime-version:content-disposition
-         :in-reply-to:user-agent;
-        bh=a+mFNmUevWa0Q8JtSm+PvQ2RmPSbBdvcBYcdTdDpGtI=;
-        b=ppjpL7my9v5M2jyuCjiyLmSS2cYRjDRjyUqcImLFlK26GJgrHtZB9aXamWFfFRpEj1
-         BCSAh7Y6+PdbfgJEIgkQxrCijmrqqCD0Y9Y2xh70n4s/vabpHBbwhNann/7gkAEe3HFa
-         t85HtjF/4bbdUv14sGU8nPLAesReVdSImF8yprBNQivFISu9aVQmCsbYAXFt4aBB3rFA
-         Nb9KBr1z/0DLZekMhY3npmiFR5WPRDARMsDH8aCVIonTcKCXHNEvX/ozhKDy3MWJsr8Q
-         YstD2bK9NbrQbBbzRB+UzhQYyTIYPva9NDHKtjjbu+kL2u9va0qAHn7LaErQ5WCwfgNa
-         0W7w==
-X-Gm-Message-State: AA+aEWZ/bOIuW7kmBsgta/xvhSRMwR/vSk2KZEPeXK5fd4HFgDcLQ1Sb
-	SdlKznj7dBs0N0Rs6XrJSwC1zfWZmh0=
-X-Received: by 2002:a17:906:44d:: with SMTP id e13-v6mr1773292eja.197.1544776557311;
-        Fri, 14 Dec 2018 00:35:57 -0800 (PST)
-Return-Path: <daniel@ffwll.ch>
-Received: from phenom.ffwll.local ([2a02:168:569e:0:3106:d637:d723:e855])
-        by smtp.gmail.com with ESMTPSA id a11sm1293605edc.28.2018.12.14.00.35.56
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=FlmgjsOljKHoCliMfpygHF2ImS5ElP2rgSghsY1VUG4=;
+        b=joDBwt5bqITQne5dEsi+zPTf87iAlSkrae1gp7KGKkMJN0/pxaRxakbmWGEvM83oyW
+         l68wqrra8U0t7zVLGtzHGv1qri+SBwpewOq0n7vepnvwDORVL9mchjRP7OAPGLOtgZeu
+         Ih5jarGhuAjWx7ahA6YWUBEUAes49RayWLQw7BSOLFH1RU2ndKUO+jUSLb1KBfSF2mMD
+         L4Tvui3il470BwQ9F4r28F36JnXftDYmjJyRf166osNmPcUseFbhlKXxPMRCgY0Y/BF0
+         Mjx1pYxm5JhPj0t1Bbgx4S8TDZLddDNE1OCDpq8j2SZ9TEh0QddPMyy7IZIZo5Qoo8i7
+         Rhjg==
+X-Gm-Message-State: AA+aEWZp/szHhpajQHPZ9Kbakh/dtz0uwwIFDc/2wmc87LGtvttFOYfw
+	L2MjITrxtjAZwtBDB0+rzXY=
+X-Received: by 2002:a0c:9144:: with SMTP id q62mr643242qvq.87.1544741743495;
+        Thu, 13 Dec 2018 14:55:43 -0800 (PST)
+Return-Path: <shayenneluzmoura@gmail.com>
+Received: from smtp.gmail.com ([143.107.45.1])
+        by smtp.gmail.com with ESMTPSA id m68sm1723068qte.49.2018.12.13.14.55.40
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Dec 2018 00:35:56 -0800 (PST)
-Sender: Daniel Vetter <daniel.vetter@ffwll.ch>
-Date: Fri, 14 Dec 2018 09:35:54 +0100
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+        Thu, 13 Dec 2018 14:55:42 -0800 (PST)
+Date: Thu, 13 Dec 2018 20:55:37 -0200
+From: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 	Maxime Ripard <maxime.ripard@bootlin.com>,
-	Sean Paul <sean@poorly.run>, David Airlie <airlied@linux.ie>,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	Sean Paul <sean@poorly.run>, David Airlie <airlied@linux.ie>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] drm: Remove complete task from TODO
- documentation
-Message-ID: <20181214083554.GJ21184@phenom.ffwll.local>
-Mail-Followup-To: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <maxime.ripard@bootlin.com>,
-	Sean Paul <sean@poorly.run>, David Airlie <airlied@linux.ie>,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-References: <20181213225537.nq4dwidn6tma33iv@smtp.gmail.com>
+Subject: [PATCH] drm: Remove complete task from TODO documentation
+Message-ID: <20181213225537.nq4dwidn6tma33iv@smtp.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20181213225537.nq4dwidn6tma33iv@smtp.gmail.com>
-X-Operating-System: Linux phenom 4.18.0-2-amd64 
-User-Agent: Mutt/1.10.1 (2018-07-13)
+User-Agent: NeoMutt/20171215
 
-On Thu, Dec 13, 2018 at 08:55:37PM -0200, Shayenne da Luz Moura wrote:
-> This patch remove the follow complete task from TODO documentation:
-> 
->   drm_mode_config.crtc_idr is misnamed, since it contains all KMS object.
->   Should be renamed to drm_mode_config.object_idr.
-> 
-> Signed-off-by: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
+This patch remove the follow complete task from TODO documentation:
 
-Applied, thanks for your patch.
--Daniel
+  drm_mode_config.crtc_idr is misnamed, since it contains all KMS object.
+  Should be renamed to drm_mode_config.object_idr.
 
-> ---
->  Documentation/gpu/todo.rst | 3 ---
->  1 file changed, 3 deletions(-)
-> 
-> diff --git a/Documentation/gpu/todo.rst b/Documentation/gpu/todo.rst
-> index 14191b64446d..41da7b06195c 100644
-> --- a/Documentation/gpu/todo.rst
-> +++ b/Documentation/gpu/todo.rst
-> @@ -354,9 +354,6 @@ KMS cleanups
->  
->  Some of these date from the very introduction of KMS in 2008 ...
->  
-> -- drm_mode_config.crtc_idr is misnamed, since it contains all KMS object. Should
-> -  be renamed to drm_mode_config.object_idr.
-> -
->  - drm_display_mode doesn't need to be derived from drm_mode_object. That's
->    leftovers from older (never merged into upstream) KMS designs where modes
->    where set using their ID, including support to add/remove modes.
-> -- 
-> 2.19.2
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20181213225537.nq4dwidn6tma33iv%40smtp.gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
+Signed-off-by: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
+---
+ Documentation/gpu/todo.rst | 3 ---
+ 1 file changed, 3 deletions(-)
 
+diff --git a/Documentation/gpu/todo.rst b/Documentation/gpu/todo.rst
+index 14191b64446d..41da7b06195c 100644
+--- a/Documentation/gpu/todo.rst
++++ b/Documentation/gpu/todo.rst
+@@ -354,9 +354,6 @@ KMS cleanups
+ 
+ Some of these date from the very introduction of KMS in 2008 ...
+ 
+-- drm_mode_config.crtc_idr is misnamed, since it contains all KMS object. Should
+-  be renamed to drm_mode_config.object_idr.
+-
+ - drm_display_mode doesn't need to be derived from drm_mode_object. That's
+   leftovers from older (never merged into upstream) KMS designs where modes
+   where set using their ID, including support to add/remove modes.
 -- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+2.19.2
+
 
