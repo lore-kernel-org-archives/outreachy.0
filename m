@@ -1,106 +1,161 @@
-X-GM-THRID: 6479957249539178496
-X-Received: by 10.55.79.212 with SMTP id d203mr10015091qkb.10.1508732617828;
-        Sun, 22 Oct 2017 21:23:37 -0700 (PDT)
+X-GM-THRID: 6641541425255153664
+X-Gmail-Labels: Topic type: DISCUSSION
+X-Received: by 2002:aca:c796:: with SMTP id x144mr34584269oif.29.1546377139887;
+        Tue, 01 Jan 2019 13:12:19 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.200.19.197 with SMTP id i5ls2129740qtj.13.gmail; Sun, 22 Oct
- 2017 21:23:37 -0700 (PDT)
-X-Received: by 10.55.162.204 with SMTP id l195mr9274721qke.8.1508732617299;
-        Sun, 22 Oct 2017 21:23:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508732617; cv=none;
+Received: by 2002:aca:5412:: with SMTP id i18ls9973416oib.5.gmail; Tue, 01 Jan
+ 2019 13:12:18 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/XvCVS1iwvWCSM50/o4XU7x9onwAiZDMAibQeYFIw23z+9tooETZgqD9JLCO4TqHk3hZx8M
+X-Received: by 2002:aca:b2d4:: with SMTP id b203mr36107054oif.57.1546377138806;
+        Tue, 01 Jan 2019 13:12:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1546377138; cv=none;
         d=google.com; s=arc-20160816;
-        b=hXYjcR9CVc2arn1n4BoPjl+tBUrhudGvEupoC8vIyxgsgKtGyuLmHYl0YuzhM5+PII
-         04H5usksfSrVwj9ljKY9+fsC1kQGuMTLLmC+ARbMadylv6L4K1OqUuvwKbKk0qFoCu2q
-         L5oOqlIN/R5W04gV4pJs7ZrTfstUJFKnMwQHoa6EtKOceEJmpKeTVDwOGviNasuRJ0Xa
-         NIz64RlH2xsE4T5wkWfpS813s6GqC/Fc9tMgjRuvBFYIHV/hXJ+Lia8ZqPGSLMqUu/O7
-         FZrR8w8b9Vlfg5zsfctOxP3Iol5muUmMGmWCHAa+GptR4W46LshjDfygWaSzhcV3ak4t
-         oRkw==
+        b=RnhWP3Yx+oI5RWCO3Qn/dplDA37Z+ln24sjZE1P0yZZdLCOKxswJDTj1rlO48iXPqE
+         +/DHCc/rkFc1U/gWXGhdDcjkXbzuLqJ/9sQrq46vOQh2IGmIqPI6KskeWBvi3sYPwk4h
+         SOkRNYOuBshsz3z8L4rdRSBpVxnYzdUqGlkD7nIsUIuzBEZE78P9JxWE0QCoGKspqjnm
+         SDbhKnudHvMsmncv7JEBkE2/cdrTpeFaMCwm1mp5IqrN/uzqFYKho9XXJ0BdFQicW9ny
+         GUBQCkzXwKQbL1X1I+jHcKeuUWGdWmQutQH9uEBpfzDzoAo0tljaT8MDXLVChmLxpZE4
+         LRKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=EggxX/JreqBxXKZyxhTDyxcwL0OBEA7de9LgY05i2EM=;
-        b=khMbj8bM1zGIqccZnk3gtPdRI9BTLZNCQWrZsSAYfGAQ7mivjsJlQ1vc164hX93eAb
-         HYtkcyZgjfs/Xm5X+ZQebPq7hSJZ0KUF1I19AjO9rrOMUo8foonuKfp/uAp10dL4QFNU
-         mzcU+61zURLiAUAg6jvoCVNd/+wvQ/ibH3ycrTEi4pV0yblazlbX8ScpyN9W4D3zGPx8
-         jKc94ARZlNc2bo5fxyNMK72DZrOQWCAbx+cvo/pJcFXueU1VhfVK2wQJuLHEjGEtZkjJ
-         YAFzaaLJxcbrmiHR0xO0lroH4l1XvS/VJTeZ0ifg6HY07wHBrHmV6iGE2qS3tpssS5WN
-         l9bg==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=X0EAYqG3WZAGQdaAhkVbHFVwi5hizi50J0NLxqJA0us=;
+        b=pkirNyQkCzF8zfb49SBrEahKw7VRjOgdTlcznZdeJ2xBeeBwSPznWazhlQhNoeuL8O
+         3vbSPSgOSqaI0r0dozPsT4wKw8V+MgdB2EFeRBADnJpcxCJY07zsm9z4X3QIf5CJz0O3
+         nX1act7IegYXeCHldVYpeEaiYufEi9AisrM1cgFz68i+FjU485OZEV9CgMuvjBOylx5L
+         Av1idjWiqE2F9ylsSjjVIZXwv+hqiU8IMDdPy/sXr9RsvfniYSgAcw5ybtdvMREkJtTY
+         RXaJUp7wFmoGB3KaiL9TW2ap2/PEoHwSm0c+rPjyRVY0Vzq0NZpGAdxMc4K4T6fzMFQf
+         JLdA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Gojl7fAN;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id x10si429311qkl.5.2017.10.22.21.23.37
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mJ7UxVHu;
+       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <himanshujha199640@gmail.com>
+Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
+        by gmr-mx.google.com with ESMTPS id g23si2591197otk.0.2019.01.01.13.12.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Oct 2017 21:23:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Tue, 01 Jan 2019 13:12:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Gojl7fAN;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id e64so16153943pfk.9
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Oct 2017 21:23:37 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mJ7UxVHu;
+       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x544.google.com with SMTP id w6so13803899pgl.6
+        for <outreachy-kernel@googlegroups.com>; Tue, 01 Jan 2019 13:12:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=EggxX/JreqBxXKZyxhTDyxcwL0OBEA7de9LgY05i2EM=;
-        b=Gojl7fANB9ANWhJVzjDVry3BVF0ISHrlHNmCiW9QQTh0l6cr8n7VpKU/GgR+/fymXa
-         RRbkx6So/DApy2eX8JRZj0dxCcTtIwgCGn6LVFho/QavMLeDW4J/5Z2uym+1PveebjDr
-         c57kRNJaclmne882CNLhRFmUg3t0Oc/dALho2a1S82irf6rKDvhhh+wUUgMoNYPYDm6a
-         sO7hSmKaxhplCHO6nOz1omyjOYpWg3CHPrRIUxDqWQeNvha1YniHTYA5uzOr8rA/9teN
-         c+XWxrUS5HxnLxI8pVUSJQ1dyNMQubx+fxjG9h9q/NHS7mhNRq8tMKyGuVcuSoe4Exqf
-         UAPw==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=X0EAYqG3WZAGQdaAhkVbHFVwi5hizi50J0NLxqJA0us=;
+        b=mJ7UxVHutOrbc/kehLq6duemk7kDPUoHRjGTByqtTf2nidmpc28bWtH/IsOzAgCaDV
+         MWUhVIbAI81Yhrl21moLTyrX/iXkO8jqcx5YF4paPqJoQPe/zX6n4BI4nAONzeDWfVuw
+         WnwXUk1lIHvYdyw+/KmcRNdvilEytaBnjeJTsbO3QSDlBTO9wE6kdJ2KItvn2DtZIzK/
+         LMsLd1u5xADrro0rk6mw5/b2Rs/ZX5rQSESHT+evLBLufISQ42SrUm95VbTBeRrI9gEL
+         EbHi1uxOoYYaanSSHvERrqv3S4A3Jz01QDYSsPxV25tpZVyZfiZv8fE4nmqoKRvdFfof
+         +bFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=EggxX/JreqBxXKZyxhTDyxcwL0OBEA7de9LgY05i2EM=;
-        b=BDz+QGuH+HSICMqw/feQkiFaTtBfATq04GLL0fx7h6f98/z9VfpkOpl2qDXMEI2Jl8
-         kGhbouVnyr3JIpeYtuwW2VUeGKe3v8sqkXEejQr5dC+2h1zky8oEfODv/UzFkQp1lAzc
-         JWOvDyhxfxql5nGnHvlMuwj5vqdQxmIdsoTI5ivdhsnTq1PCoC09bGXKbY+gn9Esk24i
-         xHw6r1cQhAhbtD6Ondqq0Y83gbWYwibZi7zsbwm52YK9El1R6nDIuDU9/LYSAStcRv0K
-         AGNlwRYs8uKibrujZOJR0FxMVsrAI3K3s0kTRWEh3ksIgO4aULXGAVsKrwVmv5Y3/Le0
-         7Aow==
-X-Gm-Message-State: AMCzsaVBas3u2VCZfw0gg+wTpviikseCDLqlkmMtsDu6vRES6lkFE0X3
-	d/IoKq0xrn0KuCkqhpQmUKXX+A8T
-X-Google-Smtp-Source: ABhQp+Q9/CGpHQ8fzvwn6p9y5soJOIvjKYiBflR2hR1bXSJKO1Yf6WmYjiCxztMHG2UWQh9rRVmUsA==
-X-Received: by 10.84.194.37 with SMTP id g34mr9302272pld.132.1508732616764;
-        Sun, 22 Oct 2017 21:23:36 -0700 (PDT)
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from localhost.localdomain ([103.37.201.122])
-        by smtp.gmail.com with ESMTPSA id c8sm10663740pfm.47.2017.10.22.21.23.34
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Oct 2017 21:23:36 -0700 (PDT)
-From: Harsha Sharma <harshasharmaiitr@gmail.com>
-To: pablo@netfilter.org
-Cc: netfilter-devel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Harsha Sharma <harshasharmaiitr@gmail.com>
-Subject: [PATCH] extensions: add tests for ipcomp protocol
-Date: Mon, 23 Oct 2017 09:53:16 +0530
-Message-Id: <20171023042316.4278-1-harshasharmaiitr@gmail.com>
-X-Mailer: git-send-email 2.11.0
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=X0EAYqG3WZAGQdaAhkVbHFVwi5hizi50J0NLxqJA0us=;
+        b=qQM/7LX85AjuEumGxSR/Ljo1kr3uFGkKdyomAOyhjbNlLqVISq7A0VMzum4uFCQJL0
+         4wS6iPmXLVAVOopq81L67fUn3qy4RG5H03CpE99W9QXKOQHKyblKREi262yjWaZY7ZxC
+         1HO40BnsudTZMfjIygczxm/c/iAA29t4fdFudM5wWhsp5hC9vvcJ7VapNTFUlHJzsFLK
+         Wv+zZXUWNYoGjnbJOJysaLHHxmJWuPgXK8wn9WX+LManMGLW+JriS9uH0n26bmw1YVeX
+         DTT1wKK+D+630AwNyQpYvo6Tz1pzdrReKpBVqfpnI8gYcHwFr4XE0FaotuYAnDIvWGJ7
+         hZUQ==
+X-Gm-Message-State: AJcUukcDVf1rtaBZBhp9CIUouCRBXykHO7KF8I/idBI7qH7KzCWQ2Rh6
+	6LKiy8743exOz6e6wfvTdGY=
+X-Received: by 2002:a62:13c3:: with SMTP id 64mr42243769pft.93.1546377137915;
+        Tue, 01 Jan 2019 13:12:17 -0800 (PST)
+Return-Path: <himanshujha199640@gmail.com>
+Received: from himanshu-Vostro-3559 ([103.233.116.134])
+        by smtp.gmail.com with ESMTPSA id c67sm65053441pfg.170.2019.01.01.13.12.15
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 01 Jan 2019 13:12:17 -0800 (PST)
+Date: Wed, 2 Jan 2019 02:42:12 +0530
+From: Himanshu Jha <himanshujha199640@gmail.com>
+To: himadri18.07@gmail.com
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8192e: rename Channel to
+ channel style
+Message-ID: <20190101211211.GB5858@himanshu-Vostro-3559>
+References: <dc077f72-2857-4ed2-809b-cff2f5c32cf3@googlegroups.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <dc077f72-2857-4ed2-809b-cff2f5c32cf3@googlegroups.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-This patch adds test for ipcomp protocol.
+On Tue, Jan 01, 2019 at 06:52:44AM -0800, himadri18.07@gmail.com wrote:
+> This patch fixes the checkpatch.pl warning:
 
-Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
----
- extensions/libxt_ipcomp.t | 5 +++++
- 1 file changed, 5 insertions(+)
- create mode 100644 extensions/libxt_ipcomp.t
+"This patch... That patch..."
 
-diff --git a/extensions/libxt_ipcomp.t b/extensions/libxt_ipcomp.t
-new file mode 100644
-index 00000000..ce111142
---- /dev/null
-+++ b/extensions/libxt_ipcomp.t
-@@ -0,0 +1,5 @@
-+:INPUT,FORWARD
-+-m policy --dir in --pol ipsec --proto ipcomp;=;OK
-+-m policy --dir in --pol none --proto ipcomp;;FAIL
-+-m policy --dir in --pol ipsec --strict --reqid 1 --spi 0x1 --proto ipcomp;=;OK
-+-m policy --dir in --pol ipsec --strict --reqid 1 --spi 0x1 --proto ipcomp --mode tunnel --tunnel-dst 10.0.0.0/8 --tunnel-src 10.0.0.0/8 --next --reqid 2;=;OK
+https://www.kernel.org/doc/html/latest/process/submitting-patches.html#describe-your-changes
+
+>         CHECK: Avoid CamelCase: <Channel>
+> 
+> Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
+> ---
+
+That patch seems broken as you sent as an attachement
+through Gmail ?
+
+Tabs are converted to spaces.
+
+When sending a new patch send either using Mutt as explained
+in the tutorial or `git send-email` whichever suits you better.
+
++ suggestion from Julia.
+
+>  drivers/staging/rtl8192e/dot11d.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8192e/dot11d.c 
+> b/drivers/staging/rtl8192e/dot11d.c
+> index a1c096124683..687deac19796 100644
+> --- a/drivers/staging/rtl8192e/dot11d.c
+> +++ b/drivers/staging/rtl8192e/dot11d.c
+> @@ -15,7 +15,7 @@
+>  #include "dot11d.h"
+> 
+>  struct channel_list {
+> -       u8      Channel[32];
+> +       u8      channel[32];
+>         u8      Len;
+>  };
+> 
+> @@ -66,11 +66,11 @@ void Dot11d_Channelmap(u8 channel_plan, struct 
+> rtllib_device *ieee)
+>                 memset(GET_DOT11D_INFO(ieee)->channel_map, 0,
+>                        sizeof(GET_DOT11D_INFO(ieee)->channel_map));
+>                 for (i = 0; i < ChannelPlan[channel_plan].Len; i++) {
+> -                       if (ChannelPlan[channel_plan].Channel[i] < min_chan 
+> ||
+> -                           ChannelPlan[channel_plan].Channel[i] > max_chan)
+> +                       if (ChannelPlan[channel_plan].channel[i] < min_chan 
+> ||
+> +                           ChannelPlan[channel_plan].channel[i] > max_chan)
+>                                 break;
+>                         GET_DOT11D_INFO(ieee)->channel_map[ChannelPlan
+> -                                       [channel_plan].Channel[i]] = 1;
+> +                                       [channel_plan].channel[i]] = 1;
+>                 }
+>         }
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/dc077f72-2857-4ed2-809b-cff2f5c32cf3%40googlegroups.com.
+> For more options, visit https://groups.google.com/d/optout.
+
+
 -- 
-2.11.0
-
+Himanshu Jha
+Undergraduate Student
+Department of Electronics & Communication
+Guru Tegh Bahadur Institute of Technology
 
