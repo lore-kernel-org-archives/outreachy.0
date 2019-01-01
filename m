@@ -1,130 +1,107 @@
 X-GM-THRID: 6641541425255153664
-X-Received: by 2002:a2e:6c0c:: with SMTP id h12-v6mr2522995ljc.9.1546354597569;
-        Tue, 01 Jan 2019 06:56:37 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:9c6:: with SMTP id 189-v6ls3229214ljj.8.gmail; Tue, 01
- Jan 2019 06:56:36 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/Xj5HzcnKQALfT4Ss6Ed4KIH+aWBBMWbeoCCnAjm4dV3JS58zXW2S/ssiokHCTRmBxfsAQn
-X-Received: by 2002:a2e:541c:: with SMTP id i28-v6mr2466135ljb.20.1546354596669;
-        Tue, 01 Jan 2019 06:56:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1546354596; cv=none;
-        d=google.com; s=arc-20160816;
-        b=I/TBWaOfVL1x5xfNE1rzubr0W7vBQaWpQLUsceM05k8ib5zVbg2Ns2A1oOm5jAh3Nq
-         teA9pIJ4b9pMBB04VypPHop7Pm7VPjL0FthqxmijyItUMgdacfw2OA9Gr/b4TjobEXFn
-         tZaXYQiiXkxo7zL0DVpqQQUw9J12DycUOZXWh7TVFiw9CTMvV7y0cWVHrVu0SCAJsIJa
-         1y/wsG45kcXU324G3ab3e/tzn1+leun+EPl6cxx9k7ZwvaOM5yA/hBwfl7JKYnl+zeF3
-         B8slLCUaOcby4GMcSnsjdoZPVNON9FN3IuPVAcTD6uZpT5RajSNhZIfowrGVEzvZKnxV
-         gLwA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=R5e6u44ccaJ22IjJGFn9hdDYIEmFFEPan6RqAa7sExc=;
-        b=Ure4feXw0Dt0AROtMJ18kr+qJUByAaGL6YlamAowP97UPxdpz3L0wRTs76uFsRVDwl
-         QX0QDdwyGOqObjPINq6iwjvRS3KCqrfCUhs3dxzlgAfIRGPTN2uxuMXcje4OqtzYJX09
-         3G35ON0w3qn+Y3Q9HYo1RRmlgzQykOUKtlzW5ak3sMfM92+LO8acRLL5imYaIC5LxNib
-         qY6gRs2x1n/X2dsofeGFmrb5RFjQvDauKGMDrrupGvMiLBd8eOFWZyz7qoSSaAWh+gXT
-         ya3d0r0V1RkeaEs69FKJfx8h4997KqWchCwLNziiA5Zp3JU38/9gqBxW0X2K1kv95J/g
-         0iHw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id q10-v6si2726604lji.4.2019.01.01.06.56.36
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 01 Jan 2019 06:56:36 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
-Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.56,427,1539640800"; 
-   d="scan'208";a="290528890"
-Received: from abo-91-111-68.mrs.modulonet.fr (HELO hadrien) ([85.68.111.91])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 01 Jan 2019 15:56:35 +0100
-Date: Tue, 1 Jan 2019 15:56:35 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: himadri18.07@gmail.com
-cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8192e: rename Channel to
- channel style
-In-Reply-To: <dc077f72-2857-4ed2-809b-cff2f5c32cf3@googlegroups.com>
-Message-ID: <alpine.DEB.2.21.1901011554520.3256@hadrien>
-References: <dc077f72-2857-4ed2-809b-cff2f5c32cf3@googlegroups.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+Date: Tue, 1 Jan 2019 06:52:44 -0800 (PST)
+From: himadri18.07@gmail.com
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <dc077f72-2857-4ed2-809b-cff2f5c32cf3@googlegroups.com>
+Subject: [PATCH] staging: rtl8192e: rename Channel to channel style
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-1554276266-1546354595=:3256"
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_159_539636694.1546354364327"
+X-Google-Token: ELz9reEFZWnkYJGgh1I0
+X-Google-IP: 14.139.122.120
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+------=_Part_159_539636694.1546354364327
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_160_197998827.1546354364327"
 
---8323329-1554276266-1546354595=:3256
+------=_Part_160_197998827.1546354364327
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7bit
 
-Hello,
+This patch fixes the checkpatch.pl warning:
+        CHECK: Avoid CamelCase: <Channel>
 
-Thanks for the patch, but it's not the time of the outreachy application
-period now.  The application period for the ext round will open in
-February: https://www.outreachy.org/
+Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
+---
+ drivers/staging/rtl8192e/dot11d.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-You are welcome to submit this patch in the normal way for the Linux
-kernel.  You can see who to send it to using the get_maintainers command
-described in the outreachy tutorial.
+diff --git a/drivers/staging/rtl8192e/dot11d.c 
+b/drivers/staging/rtl8192e/dot11d.c
+index a1c096124683..687deac19796 100644
+--- a/drivers/staging/rtl8192e/dot11d.c
++++ b/drivers/staging/rtl8192e/dot11d.c
+@@ -15,7 +15,7 @@
+ #include "dot11d.h"
 
-julia
+ struct channel_list {
+-       u8      Channel[32];
++       u8      channel[32];
+        u8      Len;
+ };
 
-On Tue, 1 Jan 2019, himadri18.07@gmail.com wrote:
+@@ -66,11 +66,11 @@ void Dot11d_Channelmap(u8 channel_plan, struct 
+rtllib_device *ieee)
+                memset(GET_DOT11D_INFO(ieee)->channel_map, 0,
+                       sizeof(GET_DOT11D_INFO(ieee)->channel_map));
+                for (i = 0; i < ChannelPlan[channel_plan].Len; i++) {
+-                       if (ChannelPlan[channel_plan].Channel[i] < min_chan 
+||
+-                           ChannelPlan[channel_plan].Channel[i] > max_chan)
++                       if (ChannelPlan[channel_plan].channel[i] < min_chan 
+||
++                           ChannelPlan[channel_plan].channel[i] > max_chan)
+                                break;
+                        GET_DOT11D_INFO(ieee)->channel_map[ChannelPlan
+-                                       [channel_plan].Channel[i]] = 1;
++                                       [channel_plan].channel[i]] = 1;
+                }
+        }
 
-> This patch fixes the checkpatch.pl warning:
->         CHECK: Avoid CamelCase: <Channel>
->
-> Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
-> ---
->  drivers/staging/rtl8192e/dot11d.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/staging/rtl8192e/dot11d.c
-> b/drivers/staging/rtl8192e/dot11d.c
-> index a1c096124683..687deac19796 100644
-> --- a/drivers/staging/rtl8192e/dot11d.c
-> +++ b/drivers/staging/rtl8192e/dot11d.c
-> @@ -15,7 +15,7 @@
->  #include "dot11d.h"
->
->  struct channel_list {
-> -       u8      Channel[32];
-> +       u8      channel[32];
->         u8      Len;
->  };
->
-> @@ -66,11 +66,11 @@ void Dot11d_Channelmap(u8 channel_plan, struct
-> rtllib_device *ieee)
->                 memset(GET_DOT11D_INFO(ieee)->channel_map, 0,
->                        sizeof(GET_DOT11D_INFO(ieee)->channel_map));
->                 for (i = 0; i < ChannelPlan[channel_plan].Len; i++) {
-> -                       if (ChannelPlan[channel_plan].Channel[i] < min_chan
-> ||
-> -                           ChannelPlan[channel_plan].Channel[i] > max_chan)
-> +                       if (ChannelPlan[channel_plan].channel[i] < min_chan
-> ||
-> +                           ChannelPlan[channel_plan].channel[i] > max_chan)
->                                 break;
->                         GET_DOT11D_INFO(ieee)->channel_map[ChannelPlan
-> -                                       [channel_plan].Channel[i]] = 1;
-> +                                       [channel_plan].channel[i]] = 1;
->                 }
->         }
->
-> --
-> You received this message because you are subscribed to the Google Groups
-> "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an
-> email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/dc077f72-2857-4ed2-809b-
-> cff2f5c32cf3%40googlegroups.com.
-> For more options, visit https://groups.google.com/d/optout.
->
->
---8323329-1554276266-1546354595=:3256--
+------=_Part_160_197998827.1546354364327
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>This patch fixes the checkpatch.pl warning:<br></div>=
+<div>=C2=A0 =C2=A0 =C2=A0 =C2=A0 CHECK: Avoid CamelCase: &lt;Channel&gt;</d=
+iv><div><br></div><div>Signed-off-by: Himadri Pandya &lt;himadri18.07@gmail=
+.com&gt;</div><div>---</div><div>=C2=A0drivers/staging/rtl8192e/dot11d.c | =
+8 ++++----</div><div>=C2=A01 file changed, 4 insertions(+), 4 deletions(-)<=
+/div><div><br></div><div>diff --git a/drivers/staging/rtl8192e/dot11d.c b/d=
+rivers/staging/rtl8192e/dot11d.c</div><div>index a1c096124683..687deac19796=
+ 100644</div><div>--- a/drivers/staging/rtl8192e/dot11d.c</div><div>+++ b/d=
+rivers/staging/rtl8192e/dot11d.c</div><div>@@ -15,7 +15,7 @@</div><div>=C2=
+=A0#include &quot;dot11d.h&quot;</div><div><br></div><div>=C2=A0struct chan=
+nel_list {</div><div>-=C2=A0 =C2=A0 =C2=A0 =C2=A0u8=C2=A0 =C2=A0 =C2=A0 Cha=
+nnel[32];</div><div>+=C2=A0 =C2=A0 =C2=A0 =C2=A0u8=C2=A0 =C2=A0 =C2=A0 chan=
+nel[32];</div><div>=C2=A0 =C2=A0 =C2=A0 =C2=A0 u8=C2=A0 =C2=A0 =C2=A0 Len;<=
+/div><div>=C2=A0};</div><div><br></div><div>@@ -66,11 +66,11 @@ void Dot11d=
+_Channelmap(u8 channel_plan, struct rtllib_device *ieee)</div><div>=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 memset(GET_DOT11D_INFO(iee=
+e)-&gt;channel_map, 0,</div><div>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0sizeof(GET_DOT11D_INFO(ieee)-&gt;c=
+hannel_map));</div><div>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 for (i =3D 0; i &lt; ChannelPlan[channel_plan].Len; i++) {</div><div=
+>-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0if (ChannelPlan[channel_plan].Channel[i] &lt; min_chan ||</div><d=
+iv>-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0ChannelPlan[channel_plan].Channel[i] &gt; max_ch=
+an)</div><div>+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0if (ChannelPlan[channel_plan].channel[i] &lt; min_c=
+han ||</div><div>+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ChannelPlan[channel_plan].channel[=
+i] &gt; max_chan)</div><div>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;</=
+div><div>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 GET_DOT11D_INFO(ieee)-&gt;channel_map[ChannelPlan</div><d=
+iv>-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0[chann=
+el_plan].Channel[i]] =3D 1;</div><div>+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0[channel_plan].channel[i]] =3D 1;</div><div>=
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }</div><div>=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 }</div></div>
+------=_Part_160_197998827.1546354364327--
+
+------=_Part_159_539636694.1546354364327--
 
