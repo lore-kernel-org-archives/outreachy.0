@@ -1,123 +1,94 @@
-X-GM-THRID: 6673915321016909824
-X-Received: by 2002:a0c:b204:: with SMTP id x4mr3548605qvd.17.1553891999981;
-        Fri, 29 Mar 2019 13:39:59 -0700 (PDT)
+X-GM-THRID: 6656651051112857600
+X-Gmail-Labels: Topic type: DISCUSSION
+X-Received: by 2002:a7b:c8d0:: with SMTP id f16mr628932wml.16.1549872692089;
+        Mon, 11 Feb 2019 00:11:32 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:ade3:: with SMTP id x32ls206188qvc.1.gmail; Fri, 29 Mar
- 2019 13:39:59 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzS542Zs/EPHIVD1PIj01FN84s+qR6i3/1boRTxBHIESmR0cjRbhP2kY3uJxJmrXt7rD4lO
-X-Received: by 2002:a0c:ad17:: with SMTP id u23mr4258559qvc.41.1553891999326;
-        Fri, 29 Mar 2019 13:39:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553891999; cv=none;
+Received: by 2002:adf:fb8c:: with SMTP id a12ls2328150wrr.2.gmail; Mon, 11 Feb
+ 2019 00:11:30 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IanknaizlBOibOgkCDNDihsv88/tf4VT7AX/sXkDlrrPBLuYgv7ilbttiuBheN5JSI6UIW5
+X-Received: by 2002:adf:f5c8:: with SMTP id k8mr1613419wrp.26.1549872690532;
+        Mon, 11 Feb 2019 00:11:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1549872690; cv=none;
         d=google.com; s=arc-20160816;
-        b=QbwO4YbBOpNVeE9yvuMtarqLtkiR8NMOGGq4rZq4ulyoDLB33A6812iSqfLHUmmXx9
-         5+6P2I70xTky1Z07fPsL9BxSZukIDsiHr0xC+3Ns3RCjwDuqq689uZeaB/zFdDewgzkh
-         sHYcwp5YpXqs2a7nbTQlbpQ4r6qK0KU/VPUhmNfaL4CtbLyDVVBfL3iEci+no8jGEUKh
-         AVz8ppo5I49+QCOvGc634ZJeiOScWAls5tANo71FY+AJou+Vd7rMcRnthFceQ/z0wo/u
-         mpc3R89Zr3AtVV13XNwdWqDWK5+U6VgvconT7c9mUjhB8hVEBUfF93+lanEculsdZWVw
-         JMrA==
+        b=CvmikS0li6UsU3G6J8L64O3eMrnQZ4BxaA2CwZG4d2sa1QF6oeQIwsu4VKiREVRPZ1
+         qKA0NzDqyS+r6SFZMzbo4BaXQWuJSWv1IbgNyMZPogWanjuIe73KmqRTBWlDQ5F2+6Wp
+         Tp+wpV+DsfVLnem31McCsYIsS2ccYZUOfFDdFA6/yn53tUFpi9hxK1MiKuRXKPejFAcF
+         hoCjal72O3IC5jjrMiUannrKF6FdX9cLZLVK2aFMgfq3wr7TLY9S67GN+OSYqlRWgNt4
+         noe5fkyT5Xqi4dfrveojq3hwaWKFP7z2c5XMJO/VB9jD+m1w1wkD4pdDFaLBdwONgbUi
+         S3rg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:date:cc:to:from
-         :subject:message-id:dkim-signature;
-        bh=bAAJW5OMDtXQLBfhDUCKd9y8vnOW78wW9AEwwBn4BQI=;
-        b=SnwmpWtnruMbKAq+lS24VrveTMcvifMZuE68zROlo8x3UrL4mb9BZE5xanKLOlERoU
-         mVQ+9qyNkK/5STGGMFIXv5WPje/fVgnIXNv8Jqv+VIu0QNyuSZpQlM4x3DyGtjjtZImq
-         IoyaNsyXTPVOJNcAzoiYOfZTRPkxIhgi2aKXaNO5hZspTbJFpyhVK+iz6A/+MhU58WT3
-         oPf/4wyopAhxSv1mTtLAByJ3nfbKOCfjI2LSuiRftCHLwigryeT/zy3/KrbB8+7GcpE+
-         P2Mh1Nl7J9lwwzHvy9AmOwlAMtt0NEFW2luo5QKSWI5qyniFMNJcixmIvYM1RMMXWdhZ
-         h3pg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=b5J9rkiKASk3y2FKm0+Qw81xn6Sf+qh7GckLM9S+8rE=;
+        b=uEBdonbZUORGm6QyM0gMgUEtkMxi3ypTPCy7hBjUm6PijGvHZLPSu2NJwHpfx9OTcE
+         B8pkWZVFLeb0Hu43Nh+1QJGzh9/49fA4NJVEGxp3h0qjjisElI2rZ+t7JYLHzWEAStn7
+         bP6yB2taRhpkvQydV42nEN34AlKgIvm+52D1eeI5Xq5FICjHUAtxZTf58XvUDLT4E3d5
+         y2nUb+x/WzUvOJ6Lsqq1qoznY0nqwqkpCsalkeRWGEasW0cRdg5EP9wS1w5UMwJMvCI2
+         MNoQBHJSRPtOs6W4lLcTx99pDIE1vrVLFYyq8YqK3waee1+JuQJVg19e7jeemeDBC5wy
+         NBvg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZaOBPLZC;
-       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <briana.oursler@gmail.com>
-Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
-        by gmr-mx.google.com with ESMTPS id h186si233577qkc.1.2019.03.29.13.39.59
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id c12si392521wrn.5.2019.02.11.00.11.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Mar 2019 13:39:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
+        Mon, 11 Feb 2019 00:11:30 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZaOBPLZC;
-       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x643.google.com with SMTP id b65so1546268plb.6
-        for <outreachy-kernel@googlegroups.com>; Fri, 29 Mar 2019 13:39:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:subject:from:to:cc:date:user-agent:mime-version
-         :content-transfer-encoding;
-        bh=bAAJW5OMDtXQLBfhDUCKd9y8vnOW78wW9AEwwBn4BQI=;
-        b=ZaOBPLZCox4TZ2WO3tztRjKFCHdzphBteITv4nVp03an/4sVegCxFpp5z//CP9kZN5
-         4lF0LvA7v+P/lUL5nDWFZa3gVH9gH5PKWT4TKFo5HH6wmcCH62de/2q6PpgBr/JA4A6Q
-         mrYzWjVxvZOEBPvG/1uypFax+LmCsAah0T38qYQMLrhMuf9TK+0Umhd5TrazLszyrg37
-         MiBzHDA5rKMCe6brHi5Tfn//08vx3s19iwDTPkt6/7SYRIq6dALnLtpXjSwvA9KqFkN4
-         JdVOwWgDq9VWryAksSZwFjh0dH/UoY6mU+3kYfMw+OOSpC4fns1Y5NhijtHbpqIpOcDl
-         jzcA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:subject:from:to:cc:date:user-agent
-         :mime-version:content-transfer-encoding;
-        bh=bAAJW5OMDtXQLBfhDUCKd9y8vnOW78wW9AEwwBn4BQI=;
-        b=nnKozQT0d9Ojb9lrr3Cw4qW27s8QAcjF81rLVWM/Pmyh2ODFBpm9Wnvt7zWugWsI33
-         j6v0EShGlA5+Af+lUvV+SVwG7Mu6Oknu80a8HyTEFHa7hiBxJg5Ma6mjZPD2QG4yOLi7
-         0/48l529JVEN8DqzbZk6Hu5g/taBi3H/4SSwKADVoVNrWJKrUK9BMTjkmMjS/k5LkYzo
-         btszpLoB71+oaIuxPBM7V2mez+xBK+ry9Q6PLyXGG1tuiR8CzOFGkzVfenkxFMRNI1nf
-         lK0o8Fv6tKsKd3nYHGb16I6/y7pCAMvUzr6iUpdp2KFepeOSgwHwHp57ahGCMz56vFDQ
-         TfEg==
-X-Gm-Message-State: APjAAAUQHIiLQejEHwTaDoBN5S59Pi/0fhWdvDSSDtFYMc4M3uffoKR4
-	/787QELQb12lF6P+z05j21vIofqe88LUaQ==
-X-Received: by 2002:a17:902:b617:: with SMTP id b23mr48320202pls.200.1553891998566;
-        Fri, 29 Mar 2019 13:39:58 -0700 (PDT)
-Return-Path: <briana.oursler@gmail.com>
-Received: from supernova (184-98-140-144.phnx.qwest.net. [184.98.140.144])
-        by smtp.gmail.com with ESMTPSA id i31sm5488032pgi.36.2019.03.29.13.39.57
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 29 Mar 2019 13:39:57 -0700 (PDT)
-Message-ID: <1b8f45c76effdf0b4483c71afd02b2f773812788.camel@gmail.com>
-Subject: Subject: [PATCH] staging: greybus: line over 80 characters
-From: Briana Oursler <briana.oursler@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org, elder@kernel.org, johan@kernel.org, 
-	hvaibhav.linux@gmail.com
-Date: Fri, 29 Mar 2019 13:39:56 -0700
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.32.0 
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,358,1544482800"; 
+   d="scan'208";a="295727237"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 11 Feb 2019 09:11:30 +0100
+Date: Mon, 11 Feb 2019 09:11:29 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: afshanmassarat@gmail.com
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] I don't get the message ,"I can modify the
+ Linux kernel!\n" in log files
+In-Reply-To: <93b12a4e-5839-45ad-982d-76682ab53098@googlegroups.com>
+Message-ID: <alpine.DEB.2.21.1902110909180.2626@hadrien>
+References: <93b12a4e-5839-45ad-982d-76682ab53098@googlegroups.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-
-Replace function call within if-statement with variable to shorten line
-length. Issue found by checkpatch.
-
-Signed-off-by: Briana Oursler <briana.oursler@gmail.com>
----
- drivers/staging/greybus/arche-platform.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
-index 6eb842040c22..b839a9eecc55 100644
---- a/drivers/staging/greybus/arche-platform.c
-+++ b/drivers/staging/greybus/arche-platform.c
-@@ -155,7 +155,9 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
- {
- 	struct arche_platform_drvdata *arche_pdata = devid;
- 	unsigned long flags;
-+	unsigned long cold_jiffies;
- 
-+	cold_jiffies = msecs_to_jiffies(WD_COLDBOOT_PULSE_WIDTH_MS);
- 	spin_lock_irqsave(&arche_pdata->wake_lock, flags);
- 
- 	if (gpiod_get_value(arche_pdata->wake_detect)) {
-@@ -169,7 +171,7 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
- 		if (arche_pdata->wake_detect_state == WD_STATE_BOOT_INIT) {
- 			if (time_before(jiffies,
- 					arche_pdata->wake_detect_start +
--					msecs_to_jiffies(WD_COLDBOOT_PULSE_WIDTH_MS))) {
-+					cold_jiffies)) {
- 				arche_platform_set_wake_detect_state(arche_pdata,
- 								     WD_STATE_IDLE);
- 			} else {
--- 
-2.21.0
+Content-Type: text/plain; charset=US-ASCII
 
 
+
+On Mon, 11 Feb 2019, afshanmassarat@gmail.com wrote:
+
+> I am following the link"https://kernelnewbies.org/Outreachyfirstpatch?action=show&redirect=OPWfirs
+> tpatch#kernel-setup-
+>
+> done" and modifying the driver in native Linux. I made a change in the
+> e1000_main.c file i.e inserted the line
+>
+> "printk(KERN_DEBUG "I can modify the Linux kernel!\n");" After recompiling
+> the kernel and rebooting it, I don't get the message
+>
+> "I can modify the Linux kernel!\" in the log files on typing "dmesg | less".
+> How should I proceed further?
+
+Perhaps e1000_main.c is not actually part of a driver that is used on your
+machine?
+
+Actually, this list should not be used until the application period
+starts, which is one week from today.
+
+julia
+
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/93b12a4e-5839-45ad-982d-
+> 76682ab53098%40googlegroups.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
 
