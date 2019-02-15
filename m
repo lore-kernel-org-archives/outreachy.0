@@ -1,120 +1,106 @@
 X-GM-THRID: 6658167413174960128
-X-Received: by 2002:a63:5d1c:: with SMTP id r28mr3894341pgb.93.1550591992819;
-        Tue, 19 Feb 2019 07:59:52 -0800 (PST)
+X-Received: by 2002:a7b:cd83:: with SMTP id y3mr703136wmj.7.1550241609098;
+        Fri, 15 Feb 2019 06:40:09 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:a514:: with SMTP id s20ls5617576plq.0.gmail; Tue, 19
- Feb 2019 07:59:52 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Iap4buMjd4PMyQAhx74l0gGK0dThhXqcot5tl/pTC67R7+ir+4sjvOcNWbuAaLMtjMhhktB
-X-Received: by 2002:a17:902:2a47:: with SMTP id i65mr9441628plb.20.1550591992176;
-        Tue, 19 Feb 2019 07:59:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550591992; cv=none;
+Received: by 2002:adf:a1c3:: with SMTP id v3ls1290478wrv.17.gmail; Fri, 15 Feb
+ 2019 06:40:08 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZxy3z73rMmtQbctm10qPuvBic8Hmiy7FdOrBb6mQq1QRbzbal6h4Azg8cvYF05s8cmoFgV
+X-Received: by 2002:adf:f248:: with SMTP id b8mr590431wrp.9.1550241608133;
+        Fri, 15 Feb 2019 06:40:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550241608; cv=none;
         d=google.com; s=arc-20160816;
-        b=Bm5rwMUi3MkF3uCWZRvPdeTQ6tzt9ufAgxP5zV+Y0aSjlew5km4oT6JYPjE8Mc0D/s
-         kA+G2LfCeJo+4/6wZTdzBJTT4j61xlD37Pf3f0prfkqznjJ+5LRVlIb5huuWAwBnk7h1
-         pfWc/voXuTz8IWfQar6FuUMfFNJ2PElxRli5ePV/sb+xVRcRY6c/g4MXPu5Kh0yaCdsg
-         k6orG6YEUOXjta2H5YPdzfMDVrV0DkapZS2VdhmM9mPkPX1BjBHnCPQA/TCpGx4pTgnz
-         yEx3T0syVwKcJ/lGqxoGS0OwTE0JrcWaCA79pM21bUq3CnBLvWguURTo5k7e9lgS56Pa
-         B03w==
+        b=xFliT23eW82dsEkE3v3e+jmekBoCfRhUQBj+r3me4W6xaLDKwO/euqIh0zi+coPngO
+         oQbNw/1PR6Efd5hmSoHDfMM5KiesRNC3vXjvfyps8Q/kLAdJWJBbbl3LOHjhfNsdbxM3
+         wsAEtd4H85QmVv4ZJQ6rQk97yzw0O9V2QKZk98DRmoOpxKCjn635D1z/Vdvx+ApV4ARN
+         WHd6P3xZBVE/1brOhrPZGkCb7/pyUcR0m/M60k6K44jMSpD7bhEqyxiuqL1aH/sZ1u5w
+         RsSBxV8LRf6fTlO4yBupmeSWHln5kzIIGzm5UK9qbtp9wz1xujEJkDCOKYPNoy5aGVN0
+         6yOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=5Wwfq6gKWsUdJ89HgjemLxuPT19CuVnLiBUStrbp6Jg=;
-        b=qxbuFE6eBToMlSSM+66VdqLC9iSsLii/sjaD5MiHbU1JE2vdGzStQ6JZfIPIOyEr8h
-         0dq9BUAMv1z9ptVHNFbYqf3zpHYQsFuylH9hxiW4M1AtXiWCVwjM7Ro5BVPkVgzel/AM
-         RfX41AFaxcNtmQuHWN8u0Ldda9Qq2Vz6Bxkl3VMXMNzCuDC2XZpU6TZSSSnsga60pmZA
-         8XnzBOPgfs62e++//+84fhk4ETWFpBuvtZ2ny+K3DI/E/R5fEjWGDbYB0uOqom1cliWL
-         JheFLgCjkbhunnkj/iTWO26RKeRKYajneM0EdCUd9Ct06lAG6+FghCtYNiCp29naAdXD
-         7Rxw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=B4FztvQeLI838RAMiD0cNyjL2ZWTKh007mxXCCe5Tfg=;
+        b=vbKo9VqdeHYXxTkLIJU8uhtbEwckScZsT7JLSnfkPCTmrMM9ZDfuqXDN2LjlbI34Wk
+         MG/qno4NqjQcjBtx9VEKwZY7dYHTp4i2z2Jl8naOCjpK35UesB2f8dY6kG4kAVgvimTf
+         2pFw1LFpU3hx0kgXkmYIGVJkDJJ46TCuwi8YVS5H4W4aBGFYlByl8jzVDjSawtMluXuW
+         YP5a7sI49mTF0pcSwFBJ8KjITVmA0N+TWRQDkJxCWjQxupzx5UJUjbyi+IuIqNkD/Gs0
+         mizQfMycMK8zMGHlkWj329oXjWaBzIz5/R8vWjTrPhlP8LvTSN9p0J6uxQPE6CKDXOBv
+         DX5Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aZjAZNU9;
-       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::529 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <himanshujha199640@gmail.com>
-Received: from mail-pg1-x529.google.com (mail-pg1-x529.google.com. [2607:f8b0:4864:20::529])
-        by gmr-mx.google.com with ESMTPS id z184si38457pgd.0.2019.02.19.07.59.52
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id j21si207911wmh.0.2019.02.15.06.40.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Feb 2019 07:59:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::529 as permitted sender) client-ip=2607:f8b0:4864:20::529;
+        Fri, 15 Feb 2019 06:40:08 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aZjAZNU9;
-       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::529 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x529.google.com with SMTP id y4so10318522pgc.12
-        for <outreachy-kernel@googlegroups.com>; Tue, 19 Feb 2019 07:59:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=5Wwfq6gKWsUdJ89HgjemLxuPT19CuVnLiBUStrbp6Jg=;
-        b=aZjAZNU9xiJuRdxW7VYXPEm3ZWBxkJ4JDttPbgIeGWcW3krwRC5PCWUPTLGAgk+GLe
-         Z9gRakG8VWdlOP7fpfPYGlmGmYKKCy6JnIi2TjrlmjVk7sLgs1hlUOanAj1A+YNyqO4X
-         WrxnlaWpwwF7JNwGIo0sqd97gbHV3z62ucfd30A4MEFUQGXm009Hped1YiEfBLeFOqLu
-         hy1VY9OUqvGwk0VYfIvlEStnLNqEWgx8J2MsvnyFe7JXcmEvUXtiJgHQJy2NuhcEg8Fp
-         KTyeFuEaPliKwNVnx29FL90ed8C4UYl7kHHFo1VpU2DNS8WJl55cWlz86s4x0/8guXUN
-         vW0w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=5Wwfq6gKWsUdJ89HgjemLxuPT19CuVnLiBUStrbp6Jg=;
-        b=gFZ1lTAOor7cosDBc5IK08vHXvT2UQqCkIliKh2RB502yrejW6vPStWBdyXHlFJQzo
-         IEq4ceRyPLVuOVmum3z34RtNh8puqrTl1TG1m4oV8a6H/Uk5WElzDKLEwNRFK4TLKesE
-         RDWaE9zNulcRmnMADS1nWcOKvYUPyzljVMbhzB+aWlcONuvg7LbyexuNm7cKluQMwZEZ
-         WBfTIChHFRkuyf++ZfkT71W81Rb7dzFZTjVRcFTiJsChS5ZXQzuEG7t4amXgod8EDiGy
-         09izbUyoVng2jvXlUTI12C3MsInmgrZBkWfREo8t7uKBPYiB17JkhhIn6amBGU4ql8+9
-         kDvQ==
-X-Gm-Message-State: AHQUAubGl8ICkZyLxe1LvZQEMLz5oWrUykNRHl+oBaMWSsqP/XNVdKVO
-	cmXy2QCRs7W12pM9/kQZ1pemr3l8
-X-Received: by 2002:a63:ff60:: with SMTP id s32mr27997848pgk.266.1550591991702;
-        Tue, 19 Feb 2019 07:59:51 -0800 (PST)
-Return-Path: <himanshujha199640@gmail.com>
-Received: from himanshu-Vostro-3559 ([103.77.43.221])
-        by smtp.gmail.com with ESMTPSA id n10sm29935934pfj.14.2019.02.19.07.59.49
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Feb 2019 07:59:51 -0800 (PST)
-Date: Tue, 19 Feb 2019 21:29:42 +0530
-From: Himanshu Jha <himanshujha199640@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,372,1544482800"; 
+   d="scan'208";a="369595719"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 15 Feb 2019 15:40:07 +0100
+Date: Fri, 15 Feb 2019 15:40:07 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: supriya supugade <supu024135@gmail.com>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
 Subject: Re: [Outreachy kernel] I didnt get message in log like "I can modify
  the Linux kernel!"
-Message-ID: <20190219155942.GB18454@himanshu-Vostro-3559>
-References: <8f0752e6-39e1-4047-8899-19866fdfe045@googlegroups.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 In-Reply-To: <8f0752e6-39e1-4047-8899-19866fdfe045@googlegroups.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Message-ID: <alpine.DEB.2.20.1902151537500.3617@hadrien>
+References: <8f0752e6-39e1-4047-8899-19866fdfe045@googlegroups.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-On Fri, Feb 15, 2019 at 02:10:04AM -0800, supriya supugade wrote:
->  
+
+
+On Fri, 15 Feb 2019, supriya supugade wrote:
+
 > I am following the link "https://kernelnewbies.org/FirstKernelPatch"
-> 
-> and modifying the driver in native Linux. I made a change in the 
-> e1000_main.c file i.e inserted the line 
-> 
-> "printk(KERN_DEBUG "I can modify the Linux kernel!\n");" After recompiling 
-> the kernel and rebooting it, I don't get the 
-> 
-> message "I can modify the Linux kernel!\" in the log files on typing "dmesg 
+>
+> and modifying the driver in native Linux. I made a change in the
+> e1000_main.c file i.e inserted the line
+>
+> "printk(KERN_DEBUG "I can modify the Linux kernel!\n");" After recompiling
+> the kernel and rebooting it, I don't get the
+>
+> message "I can modify the Linux kernel!\" in the log files on typing "dmesg
 > | less". I am getting following error during installing changes.
-> 
+>
 > Makefile:1281: recipe for target '_modinst_' failed
 > make[1]: *** [_modinst_] Error 2
 > Makefile:296: recipe for target '__build_one_by_one' failed
 > make: *** [__build_one_by_one] Error 2
-> 
+>
 > How should I proceed further?
+> [IMAGE]
+> Feb 11
 
-Post your .config and full logs using pastebin.
+The application period doesn't start until Monday at 4pm UTC, so you
+should hold off on writing to this mailing list until then.
 
-I saw one more fellow struggling with this on kernelnewbies.
+In your case, it looks like you should try compiling your module
+independently, to be able to see what the build problem is.
+
+You should also be sure that the driver that you are changing is really
+the on used by your machine, but it seems that you have not gottent to
+that point yet.
+
+julia
 
 
--- 
-Himanshu Jha
-Undergraduate Student
-Department of Electronics & Communication
-Guru Tegh Bahadur Institute of Technology
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/8f0752e6-39e1-4047-8899-
+> 19866fdfe045%40googlegroups.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
 
