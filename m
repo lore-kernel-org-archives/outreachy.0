@@ -1,131 +1,114 @@
 X-GM-THRID: 6659597331609944064
-X-Received: by 2002:ab0:3246:: with SMTP id r6mr19003398uan.1.1550591808377;
-        Tue, 19 Feb 2019 07:56:48 -0800 (PST)
+X-Received: by 2002:a17:906:228b:: with SMTP id p11mr3185238eja.1.1550590947167;
+        Tue, 19 Feb 2019 07:42:27 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9f:2706:: with SMTP id a6ls3481654uaa.0.gmail; Tue, 19 Feb
- 2019 07:56:47 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IZZXUhaAwJ9J4u4aRgqCYDfqU7VXgc70yUB1qm9pZ7uuTITJFPWzPS+QFkSRnrdKt8CYPPR
-X-Received: by 2002:ab0:4e23:: with SMTP id g35mr19023664uah.0.1550591807736;
-        Tue, 19 Feb 2019 07:56:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550591807; cv=none;
+Received: by 2002:a17:906:358c:: with SMTP id o12ls1590545ejb.0.gmail; Tue, 19
+ Feb 2019 07:42:26 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IbPVHnpGfpQklFL05woaCpSaO6YrHwDt/bzu+OJW32VTzmkAjPnrZoNJYR8Y1+anzr4NFEd
+X-Received: by 2002:a17:906:1589:: with SMTP id k9mr2043310ejd.5.1550590946375;
+        Tue, 19 Feb 2019 07:42:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550590946; cv=none;
         d=google.com; s=arc-20160816;
-        b=lVnwgfKOZipiz9p+tGofm6x61fORUuMO3gx9rygOle8Wy/73ne/MbTh+a5g0ZSGl08
-         IzKD+4uuo3ehGi6pf0hYkjzU1rvf+Oyfj6VlHVD4G49b7RfQXQvxMehj4lSmWpOhkSCm
-         G92IUKrW4ZR4MNwKl3IHmcX5vpVSpngZECkUwWRWs3IgEl/2Gd8x67bu3Y/mrgcZm+eQ
-         Yjt+j7sOVG6OjmcC0noOvVOjd4OjPbKJTq7IgV4ibjI7HiKZS7aS8KwV7Of2vCJqsvt1
-         PnuoxxMDe3B3EVWGxR0+9FmDIBk9lDQPSHRVbQkMEgXxjW1XJNNf7wcSM9620hx7+ro+
-         ErTg==
+        b=hJa1lJcRT06+7wK0/iHJEitDUgml5TSBDPqoI5s366qVUEvMfiJ+BngA8x4NoYLGnh
+         pkbQSnkYL0NzatJEopHO1Ki+a76DsAKGb7rkRGpdX7Y5upPugpKuyeANAW0SVJnGi0aK
+         4k42Ui4TrABvKWfFK358Sqm6STynG7m/cLSXA+x2rJke1jFlL5ev5sGwPx0NOlZlTi01
+         pH99TqeOwkkCyFutaOlaapuCFMvfXk1cG1B/DQL2UDBhpJ4NOZk29HYWTpgp4QE+aUmn
+         rTf5utUZCrGk6EmCqktE0PwzYPOjFs2u4c8kirM0IPO0KZ6TaRHBu03f+Z+8dECApiYd
+         akCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=SnPMPBYhwas1IyYhjoKK/O0zkxaaqtWg4iDcAAftVQc=;
-        b=Kc75Z/uj5D15aK1e3143D9P3CkqWB4qm0Bw+wek6NwvMfaFJZ/vFSWvO6zQ15Xmkck
-         vNwgTMZ/YvKwRMV33cLCMRX7e0BlzHkblV3WTXbne5DAjQZJ0r4Pio2ulFKUJup7ahM8
-         NPmvsDgd9LPMgPlNcmTlai+6hW9S6HxB4be5JUeEd4fV7JJmntyLffLKzZ5QvGRUMuHp
-         b9QMDHJlzncsCngeUEQJxqV03dqOEkmgwCDAE1oKatCxICtReS91I8EF7ZAjtj1gkYD2
-         AbKeyqSjWISlMHNC+FfBbmmhJyRyIU4VP3XQ59jazXCWrq3OO+YxfjDhz7OkVkIGlPti
-         Ru+Q==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=LyYt+9fPOwVnditQoylxcvBRkMccx0DRXufjNbnqfRo=;
+        b=S0j9lP1xhYCLe4Y64yrUBxjb3pJtVmKl8U7ZFMme+fABiCd+Ra8bIxYTPmTj88iOPp
+         45kj7crgzHFG+SLtAYlBaeW5jzn1SAl3GjG+SNzy+51wB8kjkHNI9M/Iom1/Xt6TPTko
+         jaOeBp8WrDNHV7oAzeyhVboboIXbRRymj5whUJ1ePg4SUIqKRb5Bj3UgfFU87l38BVUX
+         kOfM9Pe96qScYRiLfqLsHI06XFfYkJ0EjG0tpIV77Q3eASxze6+RtguESGfpVwpBJikL
+         lHZgcwCv5aZIeOmKxrcJBScCjZXgsxj2GIXGsq6oAHe/n1ptFIMfimmgfuxh6byfVSSc
+         bRZg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dTrLCbCn;
-       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <himanshujha199640@gmail.com>
-Received: from mail-pl1-x641.google.com (mail-pl1-x641.google.com. [2607:f8b0:4864:20::641])
-        by gmr-mx.google.com with ESMTPS id s73si61177vkd.1.2019.02.19.07.56.47
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id i17si662731edg.2.2019.02.19.07.42.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Feb 2019 07:56:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) client-ip=2607:f8b0:4864:20::641;
+        Tue, 19 Feb 2019 07:42:26 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dTrLCbCn;
-       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x641.google.com with SMTP id o6so10630684pls.13
-        for <outreachy-kernel@googlegroups.com>; Tue, 19 Feb 2019 07:56:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=SnPMPBYhwas1IyYhjoKK/O0zkxaaqtWg4iDcAAftVQc=;
-        b=dTrLCbCnxT2yX6f72VtyKcqg0hlUTgSyIkU62z5tx+YI4Pg27qONYoZDYl4kbi1so8
-         sRZjs2tFbpNEugEp1JhWEUSsvWhnGqZJXTzn7RfFqkiexAGXOuM22wN5tJuQHXazZlnO
-         ybkAhvMFXicEGaYJUeifLOced1+p997kUJC5J5FmNDIiYnveZUe2EZslcbl60nuBAdpf
-         W24PvFV7OYb2Qqvl0u0gQJXrjrbOrUY2IkyrJwhvkJePff/bVBwyGD7bzdGafCg2ga/+
-         Sn78hTf6s7qS0LXvUJ+4HLnI8IB4AWdQXwGp5fDnXYML42mc+nWnVIMw8a+InXCw63PF
-         wCdQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=SnPMPBYhwas1IyYhjoKK/O0zkxaaqtWg4iDcAAftVQc=;
-        b=nT6DXHsjJON18J1iu7jOG6hR3UxcAkWjWbu0ft6yXYkLuZE8CVqUh163TVXROIAAiV
-         l4I6QAQe++ekFRgYzh7M/JM98PTaKeTDgUBDUXxGvW+Up6PuP+UZyu5GbAe0GhPHD820
-         YgA3bDGKGU/GYjSoi5vapUGZVsZmA+VOM2VryGdEhCXPBCEhW3s39JF0GzRiuxidjGyk
-         cSzzcbhNbW+L0eF1H29u0FqO8i26WB12JcQxY1gSa7JySmXGP6mrSahI3qrP6QQ8LBbJ
-         TFU0LDAaouKDIQy6w74PIRnP9QLGGZb796cUIgRAdOylmatAqXnAB87uszAz6X0mR/Vt
-         peLA==
-X-Gm-Message-State: AHQUAua8RrZslNXSXbeLSV14xe5sgTNkr+G77AxoeTrDrRFysAis/8Wx
-	yf1w89PUowVU66FFwJFmEPw=
-X-Received: by 2002:a17:902:59c3:: with SMTP id d3mr21107283plj.214.1550591806671;
-        Tue, 19 Feb 2019 07:56:46 -0800 (PST)
-Return-Path: <himanshujha199640@gmail.com>
-Received: from himanshu-Vostro-3559 ([103.77.41.93])
-        by smtp.gmail.com with ESMTPSA id u87sm40334900pfi.2.2019.02.19.07.56.43
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Feb 2019 07:56:45 -0800 (PST)
-Date: Tue, 19 Feb 2019 21:26:36 +0530
-From: Himanshu Jha <himanshujha199640@gmail.com>
-To: Bhanusree Pola <bhanusreemahesh@gmail.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [Outreachy kernel] [Outreachy Kernel][PATCH]staging:mt7621-mmc:
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,388,1544482800"; 
+   d="scan'208";a="370050462"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 19 Feb 2019 16:42:25 +0100
+Date: Tue, 19 Feb 2019 16:42:23 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Matthias Brugger <matthias.bgg@gmail.com>
+cc: Bhanusree Pola <bhanusreemahesh@gmail.com>, 
+    outreachy-kernel@googlegroups.com, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] Re: [Outreachy Kernel][PATCH]staging:mt7621-mmc:
  Prefer using BIT macro
-Message-ID: <20190219155635.GA18454@himanshu-Vostro-3559>
-References: <20190219063848.GA2994@bhanusree-MacBookAir>
+In-Reply-To: <3d66e3f3-74d3-2da7-57cb-8b04427ae680@gmail.com>
+Message-ID: <alpine.DEB.2.20.1902191641050.3588@hadrien>
+References: <20190219063848.GA2994@bhanusree-MacBookAir> <3d66e3f3-74d3-2da7-57cb-8b04427ae680@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190219063848.GA2994@bhanusree-MacBookAir>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-
-On Tue, Feb 19, 2019 at 12:08:48PM +0530, Bhanusree Pola wrote:
-> Use BIT(x) instead of (1<<x), reported by checkpatch.pl.
-> 
-> Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
-> ---
->  drivers/staging/mt7621-mmc/mt6575_sd.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/mt7621-mmc/mt6575_sd.h b/drivers/staging/mt7621-mmc/mt6575_sd.h
-> index 4e287c140acb..038a484a9476 100644
-> --- a/drivers/staging/mt7621-mmc/mt6575_sd.h
-> +++ b/drivers/staging/mt7621-mmc/mt6575_sd.h
-> @@ -363,7 +363,7 @@ enum {
->  #define MSDC_CKGEN_MSDC_DLY_SEL   (0x1F << 10)
->  #define MSDC_INT_DAT_LATCH_CK_SEL  (0x7 << 7)
->  #define MSDC_CKGEN_MSDC_CK_SEL     (0x1 << 6)
-
-This could also be changed as well ?
-Likewise others present(if any) in the header file.
-
-FYI, a simple cocci script could also be written to complete
-this task.
-
-Now that I see this patch has been already been applied, so
-its fine for now and an explicit "Patch applied." from Greg
-would have been better IMHO.
-
-Times up for Ack-by and discussions Matthias.
-
-> -#define CARD_READY_FOR_DATA             (1 << 8)
-> +#define CARD_READY_FOR_DATA		BIT(8)
->  #define CARD_CURRENT_STATE(x)           ((x & 0x00001E00) >> 9)
+Content-Type: text/plain; charset=US-ASCII
 
 
--- 
-Himanshu Jha
-Undergraduate Student
-Department of Electronics & Communication
-Guru Tegh Bahadur Institute of Technology
+
+On Tue, 19 Feb 2019, Matthias Brugger wrote:
+
+>
+>
+> On 19/02/2019 07:38, Bhanusree Pola wrote:
+> > Use BIT(x) instead of (1<<x), reported by checkpatch.pl.
+> >
+> > Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+> > ---
+> >  drivers/staging/mt7621-mmc/mt6575_sd.h | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/staging/mt7621-mmc/mt6575_sd.h b/drivers/staging/mt7621-mmc/mt6575_sd.h
+> > index 4e287c140acb..038a484a9476 100644
+> > --- a/drivers/staging/mt7621-mmc/mt6575_sd.h
+> > +++ b/drivers/staging/mt7621-mmc/mt6575_sd.h
+> > @@ -363,7 +363,7 @@ enum {
+> >  #define MSDC_CKGEN_MSDC_DLY_SEL   (0x1F << 10)
+> >  #define MSDC_INT_DAT_LATCH_CK_SEL  (0x7 << 7)
+> >  #define MSDC_CKGEN_MSDC_CK_SEL     (0x1 << 6)
+> > -#define CARD_READY_FOR_DATA             (1 << 8)
+> > +#define CARD_READY_FOR_DATA		BIT(8)
+>
+> To be honest, I'm not sure if this is the right thing to do here, given that all
+> other defines use the shift operator.
+>
+> Apart from that git grep tells me that CARD_READY_FOR_DATA is not used in the
+> driver. Maybe that would be a better first patch: check if the defines are used
+> in the driver and delete all these that are not used :)
+
+I think that Greg has expressed the desire to keep them in the past, but
+perhaps that was only for names that fit into a series, eg 1 << 0, 1 << 1,
+1 << 2, etc.  This one seems different from the ones defined nearby it at
+least.
+
+julia
+
+>
+> Regards,
+> Matthias
+>
+> >  #define CARD_CURRENT_STATE(x)           ((x & 0x00001E00) >> 9)
+> >
+> >  /*--------------------------------------------------------------------------*/
+> >
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/3d66e3f3-74d3-2da7-57cb-8b04427ae680%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
