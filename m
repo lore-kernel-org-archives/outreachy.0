@@ -1,159 +1,143 @@
 X-GM-THRID: 6658167413174960128
-X-Received: by 2002:ac8:1c7a:: with SMTP id j55mr17356594qtk.16.1550594147144;
-        Tue, 19 Feb 2019 08:35:47 -0800 (PST)
+X-Received: by 2002:a6b:f105:: with SMTP id e5mr4657353iog.7.1550593227811;
+        Tue, 19 Feb 2019 08:20:27 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:8302:: with SMTP id f2ls8159799qkd.0.gmail; Tue, 19 Feb
- 2019 08:35:46 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IZrXk7aBnOsISJ0gASXz4wCaIWruZlDP9WW/qhG5cMZZ3HPezvFz2x7RDQsdMBMqIPuPkEf
-X-Received: by 2002:ae9:f106:: with SMTP id k6mr16984933qkg.18.1550594146598;
-        Tue, 19 Feb 2019 08:35:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550594146; cv=none;
+Received: by 2002:a24:1cf:: with SMTP id 198ls855184itk.2.canary-gmail; Tue,
+ 19 Feb 2019 08:20:26 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZUwzpFkXI2Ip/ZLGIjxqA4nNwn1eRBREHlsEtYobcfko2bq4yKtTthAfYhKDWcvp7K+4LB
+X-Received: by 2002:a24:5dc9:: with SMTP id w192mr2839803ita.33.1550593226889;
+        Tue, 19 Feb 2019 08:20:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550593226; cv=none;
         d=google.com; s=arc-20160816;
-        b=ACIXi0qwc3kkNJxQbxBWgbgFD0TI7qxXNOu/Jr4fIAhvALRRPr7K2HNVXLqvkXE70m
-         UrehToNlciveQiM6c71c7NqpP4dirBZp2mlMXwIKGTgzvKI2KuegcC6VSPFQQwrtI75U
-         pP0/JckIWczgi22GuL6VAjvf9I4wrOzgIZpfUn0nqCoPeXBQl6LWzIFOPjX2qP0/8yo1
-         xCRrumNTb8wRR6/z+YrUVV0d/dlIkw7pVLqhjZ+Riu6SlYDNY+N8kBNWz4knJk4kFql3
-         IoL2Z2dWkTbkk0090BhZ+TnTpWc0mx88hgCX8382GAFI50uyY7WGKPhTFeXSfQ638N89
-         rAgA==
+        b=XALrn9EGGzh9tCIaG/wWDBfBmPRysB/wZa/Bc1kdWjoyAluiU940DksjV1iXzIE6Fi
+         iuD0z9khY+xeK4KdFqz6RF+M0TemdQAc/ly0hh8wvuga0VJVTeJNnswn/xzxHJpv/S7g
+         Wn+jBjRJv6vpjiNU2UoIfLfmrkBxSAiF96zQzAOYmZi5Ivek+LMenc7V7lI/nUaIO9Z7
+         fZOshfLcwAYVXj45dONtr8vl8TCcklt0QDHlfXYkdNx/Wyqp62KzTxGqf5COF/dUJt27
+         JLfbGGChJc2k5geEKXA4W0lrlz2z/JIQFqYuKE4PbkWyVJSDKY6/bsMIkTIyhhcWwxhe
+         +kqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=jvhQY19aNRxMIBBHHcUN9/ezh8vXFUlQdXxPC3nq3yE=;
-        b=xOJ5W3EXI6iHHHkoeRo/lqjZEeYIOMmZSKpRIu2pEcZnw+UodnCM1FZQCXbJfOlrFs
-         01e7tBkcQGOZtVMZl11jRWoOGkJ8m+bI4fX83jS72ABxrqFz3mp4d9DqN0vxYxEL6Ep/
-         Ut9eeWpRin1GhBuhbcf0SbZFyYA5+EbPsEZ3l5wVDJUfeN6Epn3BVGv+n4inn8loymJq
-         GivsY8qefNHmoA45omT1rgUliEBuRWEi+Oc/C+mf2RHz1WLtF1NLPzyVCPHArmb1eMP/
-         pYatikH2BOVwTLY4+F790PmQ9d3YceqdtV0T5k6vuUdsoNz55Kw0pifgDSLPow4aiTq3
-         Bjnw==
+        bh=pr9tl/JDHwdzt1+tSKVFFw3SPXQle0nQ1ylbiCPnhaE=;
+        b=aGjCVphAhg6DdDhTQTqu5+DQbc13LbDP+gT2FgOoHwvCWZvZBqn78Zm1KISRCEsHbM
+         NqT5zV52rQ6f1pT70+yBVVv+9EfXVwh7U/tbG3ruL1EUJ5vUKdNfeUyU3b7lYOxzz8ez
+         Nj9Uoa8GAyqyOYZcGtmlNOtNpRiqQW8yt4BIIS5nT27m9JqhtLJnSUmaNzQhsD+PjkRA
+         qTyTH2ErMNuYzw35cLP+IZBQ6WGJ5pXEWC+gINVvH2n9I1V3ItYr2jkK5cETj7sCXghd
+         JvKZ3rgJPOqQjorOgSrrP0SH/EFbYxUKGYsJh1cn6X088rLsJmyS/QlhpSVBedPipK0G
+         v+hQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kFmSaQfP;
-       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Y8CMhF/a";
+       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::633 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <himanshujha199640@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id g23si199902qtg.4.2019.02.19.08.35.46
+Received: from mail-pl1-x633.google.com (mail-pl1-x633.google.com. [2607:f8b0:4864:20::633])
+        by gmr-mx.google.com with ESMTPS id j6si98834itb.0.2019.02.19.08.20.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Feb 2019 08:35:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        Tue, 19 Feb 2019 08:20:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::633 as permitted sender) client-ip=2607:f8b0:4864:20::633;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kFmSaQfP;
-       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Y8CMhF/a";
+       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::633 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id q206so10383351pgq.4
-        for <outreachy-kernel@googlegroups.com>; Tue, 19 Feb 2019 08:35:46 -0800 (PST)
+Received: by mail-pl1-x633.google.com with SMTP id p8so10674434plo.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 19 Feb 2019 08:20:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=jvhQY19aNRxMIBBHHcUN9/ezh8vXFUlQdXxPC3nq3yE=;
-        b=kFmSaQfPqRTkOwz+d9EajeFMyuE338i1cftvit2EgiiV2IyIzbsXsLDSOV9pNutVJ7
-         rCDKtWjCc6FUX0EuElKq4cEtlZL0JjxbF0p5I8Q5VfOOs5G32wbqvxGZVLMF0nH+dn8e
-         QdDo4M8CUAzboup6FPfFWBENzqDvgP57JR52f4QA5OYc1BgQxJufoCzWCOylIPR73oj8
-         ZYkXa83JsavctLWmP32vqrBd2WJmhu8bxF9q3krnlt+tHATEA1YmWk9OfpzYuoeHGi8B
-         Kbp32nURS4LHAPBXZciY0UHBZiOpNKmkGU2fQapqr+y3HUVpVUCa+KoN8cVH9DbguhBF
-         3VYQ==
+        bh=pr9tl/JDHwdzt1+tSKVFFw3SPXQle0nQ1ylbiCPnhaE=;
+        b=Y8CMhF/apP2jGBnn6HMHhQCsqmgJf2SZgdDopz0To6OLKg8KNHY7rQ3l6N56+HkWP4
+         7z8ZIyAucrgP9rXS4R9QoFPRnbFJC8cfbqP3PAbDptcEWJYwhK1jI2fcFZSh5IYOoA+n
+         l413EyJowV23TtfaYhMIBDyzSNTOB+51cCHLEDIsG9HL2eXhnw9sjQMfg2fHX7dYkVf3
+         C1Dbc9UplTH8SSj5Ju8W4j94knt5OZ3joNJWrO7AJPgfDt60TGfibq4g+65oYI/pMKYI
+         P4XnXwoTQ9XRADK1tywrT6+M8Utr6u6kjd8ExWuaM9boKkbSO/silm3GzOFVc1yDSp7s
+         wlPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=jvhQY19aNRxMIBBHHcUN9/ezh8vXFUlQdXxPC3nq3yE=;
-        b=XwSjFBwUSMOag7Ua4oLNecinzX8kcsqRQWm/OqRmM5NYp1oQaj/KfnC16EY24sPqFc
-         jvOSLKFTMvQqpsC0JOVp3RTRdWuIjFRJAJxCpQx30rYts6jl0UgDPMlyVojgW0Vf1NHp
-         GrwNXVGiDC6wSNNjZZyyICd1pBK9FOXTNGzd6mvHRTNYdADWoW+kxHwwmHmznf4f7HAE
-         3yMesnewwHgUqcE6CvOZHDfb1u/GMVD1Zd+KuQbJ8YcdmiQ3vL+RhxzJAihBnolQ9c/T
-         VSPxoxl1EIVTrNAP/192rIT+Az6SkhvndRDL46hyYWQ7k1htM9+xzOUwSzHAXx51UkpX
-         q95Q==
-X-Gm-Message-State: AHQUAuYlwwqgjUf49Yyctd0N701ppGefU6LN3Mytr1PJWMbrxEItGilX
-	pEhOukbkCK0yC8mLG7lfzAU=
-X-Received: by 2002:a63:305:: with SMTP id 5mr18614790pgd.57.1550594146175;
-        Tue, 19 Feb 2019 08:35:46 -0800 (PST)
+        bh=pr9tl/JDHwdzt1+tSKVFFw3SPXQle0nQ1ylbiCPnhaE=;
+        b=i78aZQgEmABH6dUCZXYJ83N4WakyvkGvBb30STmKW2Do1lzRhu1H8tQq3ua/EdO8bL
+         +SSkopJ+esl/u6DJKfpIQ8i4sxmcrzrzrgJ7mOi984uSBWosXoxUEeYXUs3ky+Mz1dK5
+         PR5vnfRHp0stOrqr2V2t9DObgoPk3gEsaMhtYH1ltm61eJKSbJsbO8VpSSm6BWMnept/
+         dxX7x+Ze33t0s91LZJ0NPHUavqzcFaM629HbH4MYS1bcNX79f1SFTICjXWiKGyDOnIlz
+         PlNnVjAV4xkUQCpRH3k3i8yfZ0W697c3Wbgs+Wk8F1Yg+mvHPO6yNgRX3nIJZP98kUNL
+         bE4A==
+X-Gm-Message-State: AHQUAub3W+kk/PIIL8HATNJTGh1imlQ7RCWqesPz/q3JGz8vazbQx3TH
+	47G4PUFN+MgkiWzojRLCd1o=
+X-Received: by 2002:a17:902:6949:: with SMTP id k9mr32226712plt.188.1550593226528;
+        Tue, 19 Feb 2019 08:20:26 -0800 (PST)
 Return-Path: <himanshujha199640@gmail.com>
-Received: from himanshu-Vostro-3559 ([103.77.43.148])
-        by smtp.gmail.com with ESMTPSA id 64sm26014345pfe.143.2019.02.19.08.35.43
+Received: from himanshu-Vostro-3559 ([103.77.40.122])
+        by smtp.gmail.com with ESMTPSA id j68sm5363309pfc.64.2019.02.19.08.20.23
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Feb 2019 08:35:45 -0800 (PST)
-Date: Tue, 19 Feb 2019 22:05:39 +0530
+        Tue, 19 Feb 2019 08:20:25 -0800 (PST)
+Date: Tue, 19 Feb 2019 21:50:19 +0530
 From: Himanshu Jha <himanshujha199640@gmail.com>
 To: Julia Lawall <julia.lawall@lip6.fr>
 Cc: supriya supugade <supu024135@gmail.com>,
 	outreachy-kernel <outreachy-kernel@googlegroups.com>
 Subject: Re: [Outreachy kernel] I didnt get message in log like "I can modify
  the Linux kernel!"
-Message-ID: <20190219163539.GA19366@himanshu-Vostro-3559>
+Message-ID: <20190219162019.GD18454@himanshu-Vostro-3559>
 References: <8f0752e6-39e1-4047-8899-19866fdfe045@googlegroups.com>
  <20190219155942.GB18454@himanshu-Vostro-3559>
  <alpine.DEB.2.20.1902191703400.3588@hadrien>
- <20190219162019.GD18454@himanshu-Vostro-3559>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20190219162019.GD18454@himanshu-Vostro-3559>
+In-Reply-To: <alpine.DEB.2.20.1902191703400.3588@hadrien>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 
-+Cc Bharath Vedartham[1]
-
-On Tue, Feb 19, 2019 at 09:50:19PM +0530, Himanshu Jha wrote:
-> On Tue, Feb 19, 2019 at 05:04:53PM +0100, Julia Lawall wrote:
-> > 
-> > 
-> > On Tue, 19 Feb 2019, Himanshu Jha wrote:
-> > 
-> > > On Fri, Feb 15, 2019 at 02:10:04AM -0800, supriya supugade wrote:
-> > > >
-> > > > I am following the link "https://kernelnewbies.org/FirstKernelPatch"
-> > > >
-> > > > and modifying the driver in native Linux. I made a change in the
-> > > > e1000_main.c file i.e inserted the line
-> > > >
-> > > > "printk(KERN_DEBUG "I can modify the Linux kernel!\n");" After recompiling
-> > > > the kernel and rebooting it, I don't get the
-> > > >
-> > > > message "I can modify the Linux kernel!\" in the log files on typing "dmesg
-> > > > | less". I am getting following error during installing changes.
-> > > >
-> > > > Makefile:1281: recipe for target '_modinst_' failed
-> > > > make[1]: *** [_modinst_] Error 2
-> > > > Makefile:296: recipe for target '__build_one_by_one' failed
-> > > > make: *** [__build_one_by_one] Error 2
-> > > >
-> > > > How should I proceed further?
+On Tue, Feb 19, 2019 at 05:04:53PM +0100, Julia Lawall wrote:
+> 
+> 
+> On Tue, 19 Feb 2019, Himanshu Jha wrote:
+> 
+> > On Fri, Feb 15, 2019 at 02:10:04AM -0800, supriya supugade wrote:
 > > >
-> > > Post your .config and full logs using pastebin.
+> > > I am following the link "https://kernelnewbies.org/FirstKernelPatch"
 > > >
-> > > I saw one more fellow struggling with this on kernelnewbies.
-> > 
-> > Did you see the discussion here:
-> > 
-> > https://www.linuxquestions.org/questions/linux-software-2/kernel-building-install-error-4175608377/
+> > > and modifying the driver in native Linux. I made a change in the
+> > > e1000_main.c file i.e inserted the line
+> > >
+> > > "printk(KERN_DEBUG "I can modify the Linux kernel!\n");" After recompiling
+> > > the kernel and rebooting it, I don't get the
+> > >
+> > > message "I can modify the Linux kernel!\" in the log files on typing "dmesg
+> > > | less". I am getting following error during installing changes.
+> > >
+> > > Makefile:1281: recipe for target '_modinst_' failed
+> > > make[1]: *** [_modinst_] Error 2
+> > > Makefile:296: recipe for target '__build_one_by_one' failed
+> > > make: *** [__build_one_by_one] Error 2
+> > >
+> > > How should I proceed further?
+> >
+> > Post your .config and full logs using pastebin.
+> >
+> > I saw one more fellow struggling with this on kernelnewbies.
 > 
-> I just googled "make: *** [__build_one_by_one] Error 2" and
-> this pops up as the very first link.
+> Did you see the discussion here:
 > 
-> If this is the solution you guys are looking, then it very
-> sad :(
+> https://www.linuxquestions.org/questions/linux-software-2/kernel-building-install-error-4175608377/
+
+I just googled "make: *** [__build_one_by_one] Error 2" and
+this pops up as the very first link.
+
+If this is the solution you guys are looking, then it very
+sad :(
+
+I didn't check this becuase I saw this question atleast posted
+thrice and assumed some new issue has popped up.
+
+> It concludes with:
 > 
-> I didn't check this becuase I saw this question atleast posted
-> thrice and assumed some new issue has popped up.
-> 
-> > It concludes with:
-> > 
-> > I suggest you go through the building process in separate steps instead of
-> > "make ... install" in one go.
-
-Julia, I think you are absolutely correct on this and all of them had
-followed what is actually written on the HowTo page below:
-
-https://kernelnewbies.org/FirstKernelPatch#Install_your_changes
-
-	sudo make modules_install -jN && sudo make install -jN
-
-should be the clean solution.
-
-Bharat, Supriya: Try this and confirm!
+> I suggest you go through the building process in separate steps instead of
+> "make ... install" in one go.
 
 
-[1] https://lore.kernel.org/kernelnewbies/20190205060053.GA309@bharath12345-Inspiron-5559/
 
 -- 
 Himanshu Jha
