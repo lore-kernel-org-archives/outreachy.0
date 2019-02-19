@@ -1,82 +1,131 @@
 X-GM-THRID: 6659597331609944064
-X-Received: by 2002:a25:cb02:: with SMTP id b2mr13947983ybg.11.1550658304679;
-        Wed, 20 Feb 2019 02:25:04 -0800 (PST)
+X-Received: by 2002:ab0:3246:: with SMTP id r6mr19003398uan.1.1550591808377;
+        Tue, 19 Feb 2019 07:56:48 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:6b0a:: with SMTP id g10ls5200518ybc.13.gmail; Wed, 20
- Feb 2019 02:25:03 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IZqSpMZ5n8Hccz9GaWJ6RsavxLthkl+z1922LhkylmYFB7hxWYyYL7Dwo86fHHJnEFNmG47
-X-Received: by 2002:a25:9c88:: with SMTP id y8mr569209ybo.2.1550658303910;
-        Wed, 20 Feb 2019 02:25:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550658303; cv=none;
+Received: by 2002:a9f:2706:: with SMTP id a6ls3481654uaa.0.gmail; Tue, 19 Feb
+ 2019 07:56:47 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZZXUhaAwJ9J4u4aRgqCYDfqU7VXgc70yUB1qm9pZ7uuTITJFPWzPS+QFkSRnrdKt8CYPPR
+X-Received: by 2002:ab0:4e23:: with SMTP id g35mr19023664uah.0.1550591807736;
+        Tue, 19 Feb 2019 07:56:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550591807; cv=none;
         d=google.com; s=arc-20160816;
-        b=aw3AyLHSIK34l3egvvs4Owkgpep5Sq/R6/aut9kpolU3EyGLbRUYus6x69EHOz+hOG
-         4DC0XyzAt6RfyyKpHuK9NHIvXAWMiGoAQ3Tds6r5CvGvlXE253BS0cWeEjlep6xYZo41
-         8Ftjd6hDw8rh230TquhdTu7LVeOHDNIyiQZTwR07nrxEoefLxS9gS21gfWMDy3YG6bVT
-         Gq4QPwxEkSTvIu7wq7VUDE31gfCs4y75T9Jl8ooblQVByOvgmRRl+YhwJZqOjoPrxfEY
-         n8QCNIb45nUeGGA4PyMDXONPRqRpAxnAmJ11zqB65YCxM+TA3OLJadf7Vw44UvG++s+Q
-         RgOA==
+        b=lVnwgfKOZipiz9p+tGofm6x61fORUuMO3gx9rygOle8Wy/73ne/MbTh+a5g0ZSGl08
+         IzKD+4uuo3ehGi6pf0hYkjzU1rvf+Oyfj6VlHVD4G49b7RfQXQvxMehj4lSmWpOhkSCm
+         G92IUKrW4ZR4MNwKl3IHmcX5vpVSpngZECkUwWRWs3IgEl/2Gd8x67bu3Y/mrgcZm+eQ
+         Yjt+j7sOVG6OjmcC0noOvVOjd4OjPbKJTq7IgV4ibjI7HiKZS7aS8KwV7Of2vCJqsvt1
+         PnuoxxMDe3B3EVWGxR0+9FmDIBk9lDQPSHRVbQkMEgXxjW1XJNNf7wcSM9620hx7+ro+
+         ErTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=mjJceIiOEyPmHfu9iXYmMl15krF/fha0YvZGxaQqp3M=;
-        b=B+vvhiTQmcwAV+YoItViRVm2gU38wRLT5F75rXiDVrnN9y/QTaYI2Zqx2M6HdS8/RM
-         FFAjirn9TOdWfIGwfqfy6v3MS5MJ4LAeD9OPO9oyhMLokx8MI0Tj7ZXPnUrZuuHPRFI/
-         kiYuJS/EjHcd3q3GEpWdkLxwVP0G3Az0+ZM7EGKobO1G/QvN6nrzkEUsNMABavGls/do
-         wHfo97UEM95WKbYZpa8f9E854Q64+3Zvk0St6/hbYTooSpbRyhTyxj0FEdYywZoChJS5
-         SXfTqNW+hvcQUmpOVurRz8vKhslsgFZZOhkv5sAYfdFntY7FX9GTr67KvsaCHLHGL/4m
-         Md0Q==
+        bh=SnPMPBYhwas1IyYhjoKK/O0zkxaaqtWg4iDcAAftVQc=;
+        b=Kc75Z/uj5D15aK1e3143D9P3CkqWB4qm0Bw+wek6NwvMfaFJZ/vFSWvO6zQ15Xmkck
+         vNwgTMZ/YvKwRMV33cLCMRX7e0BlzHkblV3WTXbne5DAjQZJ0r4Pio2ulFKUJup7ahM8
+         NPmvsDgd9LPMgPlNcmTlai+6hW9S6HxB4be5JUeEd4fV7JJmntyLffLKzZ5QvGRUMuHp
+         b9QMDHJlzncsCngeUEQJxqV03dqOEkmgwCDAE1oKatCxICtReS91I8EF7ZAjtj1gkYD2
+         AbKeyqSjWISlMHNC+FfBbmmhJyRyIU4VP3XQ59jazXCWrq3OO+YxfjDhz7OkVkIGlPti
+         Ru+Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=aXlLMFt7;
-       spf=pass (google.com: domain of srs0=vgux=q3=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=vgUX=Q3=linuxfoundation.org=gregkh@kernel.org"
-Return-Path: <SRS0=vgUX=Q3=linuxfoundation.org=gregkh@kernel.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id c6si1227977ybo.0.2019.02.20.02.25.03
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dTrLCbCn;
+       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <himanshujha199640@gmail.com>
+Received: from mail-pl1-x641.google.com (mail-pl1-x641.google.com. [2607:f8b0:4864:20::641])
+        by gmr-mx.google.com with ESMTPS id s73si61177vkd.1.2019.02.19.07.56.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 20 Feb 2019 02:25:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of srs0=vgux=q3=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Tue, 19 Feb 2019 07:56:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) client-ip=2607:f8b0:4864:20::641;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=aXlLMFt7;
-       spf=pass (google.com: domain of srs0=vgux=q3=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=vgUX=Q3=linuxfoundation.org=gregkh@kernel.org"
-Received: from localhost (unknown [195.134.171.12])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 657602146E;
-	Wed, 20 Feb 2019 10:25:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1550658302;
-	bh=qU/Tm+qpAFTXlhMqxpqxbp64Q8CnIrZMLi+Y/jkSIag=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=aXlLMFt74o/KDN49NQQ458wU1gVczcM+MH5XwkRDfZiIVrsXrn+FyX4FhgRvEQ+XH
-	 I64ogQFQtsd59A4giBW08+0rBiwZ6kjt2hdbcp5sSsXm7YWj9/Wy5RKSrR82ACDrbe
-	 6XX61ab2NzxTSVV5fHqhTAMs/VZfrGi5o4WYsF8s=
-Date: Wed, 20 Feb 2019 11:24:58 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Himanshu Jha <himanshujha199640@gmail.com>
-Cc: Bhanusree Pola <bhanusreemahesh@gmail.com>,
-	outreachy-kernel@googlegroups.com,
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dTrLCbCn;
+       spf=pass (google.com: domain of himanshujha199640@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=himanshujha199640@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x641.google.com with SMTP id o6so10630684pls.13
+        for <outreachy-kernel@googlegroups.com>; Tue, 19 Feb 2019 07:56:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=SnPMPBYhwas1IyYhjoKK/O0zkxaaqtWg4iDcAAftVQc=;
+        b=dTrLCbCnxT2yX6f72VtyKcqg0hlUTgSyIkU62z5tx+YI4Pg27qONYoZDYl4kbi1so8
+         sRZjs2tFbpNEugEp1JhWEUSsvWhnGqZJXTzn7RfFqkiexAGXOuM22wN5tJuQHXazZlnO
+         ybkAhvMFXicEGaYJUeifLOced1+p997kUJC5J5FmNDIiYnveZUe2EZslcbl60nuBAdpf
+         W24PvFV7OYb2Qqvl0u0gQJXrjrbOrUY2IkyrJwhvkJePff/bVBwyGD7bzdGafCg2ga/+
+         Sn78hTf6s7qS0LXvUJ+4HLnI8IB4AWdQXwGp5fDnXYML42mc+nWnVIMw8a+InXCw63PF
+         wCdQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=SnPMPBYhwas1IyYhjoKK/O0zkxaaqtWg4iDcAAftVQc=;
+        b=nT6DXHsjJON18J1iu7jOG6hR3UxcAkWjWbu0ft6yXYkLuZE8CVqUh163TVXROIAAiV
+         l4I6QAQe++ekFRgYzh7M/JM98PTaKeTDgUBDUXxGvW+Up6PuP+UZyu5GbAe0GhPHD820
+         YgA3bDGKGU/GYjSoi5vapUGZVsZmA+VOM2VryGdEhCXPBCEhW3s39JF0GzRiuxidjGyk
+         cSzzcbhNbW+L0eF1H29u0FqO8i26WB12JcQxY1gSa7JySmXGP6mrSahI3qrP6QQ8LBbJ
+         TFU0LDAaouKDIQy6w74PIRnP9QLGGZb796cUIgRAdOylmatAqXnAB87uszAz6X0mR/Vt
+         peLA==
+X-Gm-Message-State: AHQUAua8RrZslNXSXbeLSV14xe5sgTNkr+G77AxoeTrDrRFysAis/8Wx
+	yf1w89PUowVU66FFwJFmEPw=
+X-Received: by 2002:a17:902:59c3:: with SMTP id d3mr21107283plj.214.1550591806671;
+        Tue, 19 Feb 2019 07:56:46 -0800 (PST)
+Return-Path: <himanshujha199640@gmail.com>
+Received: from himanshu-Vostro-3559 ([103.77.41.93])
+        by smtp.gmail.com with ESMTPSA id u87sm40334900pfi.2.2019.02.19.07.56.43
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 19 Feb 2019 07:56:45 -0800 (PST)
+Date: Tue, 19 Feb 2019 21:26:36 +0530
+From: Himanshu Jha <himanshujha199640@gmail.com>
+To: Bhanusree Pola <bhanusreemahesh@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com,
 	Matthias Brugger <matthias.bgg@gmail.com>
 Subject: Re: [Outreachy kernel] [Outreachy Kernel][PATCH]staging:mt7621-mmc:
  Prefer using BIT macro
-Message-ID: <20190220102458.GC5535@kroah.com>
+Message-ID: <20190219155635.GA18454@himanshu-Vostro-3559>
 References: <20190219063848.GA2994@bhanusree-MacBookAir>
- <20190219155635.GA18454@himanshu-Vostro-3559>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20190219155635.GA18454@himanshu-Vostro-3559>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+In-Reply-To: <20190219063848.GA2994@bhanusree-MacBookAir>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Tue, Feb 19, 2019 at 09:26:36PM +0530, Himanshu Jha wrote:
+On Tue, Feb 19, 2019 at 12:08:48PM +0530, Bhanusree Pola wrote:
+> Use BIT(x) instead of (1<<x), reported by checkpatch.pl.
 > 
-> Now that I see this patch has been already been applied, so
-> its fine for now and an explicit "Patch applied." from Greg
-> would have been better IMHO.
+> Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+> ---
+>  drivers/staging/mt7621-mmc/mt6575_sd.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/mt7621-mmc/mt6575_sd.h b/drivers/staging/mt7621-mmc/mt6575_sd.h
+> index 4e287c140acb..038a484a9476 100644
+> --- a/drivers/staging/mt7621-mmc/mt6575_sd.h
+> +++ b/drivers/staging/mt7621-mmc/mt6575_sd.h
+> @@ -363,7 +363,7 @@ enum {
+>  #define MSDC_CKGEN_MSDC_DLY_SEL   (0x1F << 10)
+>  #define MSDC_INT_DAT_LATCH_CK_SEL  (0x7 << 7)
+>  #define MSDC_CKGEN_MSDC_CK_SEL     (0x1 << 6)
 
-Patch authors get that type of email from my scripts, I do not send them
-to the mailing lists as it would just be too noisy.
+This could also be changed as well ?
+Likewise others present(if any) in the header file.
 
-thanks,
+FYI, a simple cocci script could also be written to complete
+this task.
 
-greg k-h
+Now that I see this patch has been already been applied, so
+its fine for now and an explicit "Patch applied." from Greg
+would have been better IMHO.
+
+Times up for Ack-by and discussions Matthias.
+
+> -#define CARD_READY_FOR_DATA             (1 << 8)
+> +#define CARD_READY_FOR_DATA		BIT(8)
+>  #define CARD_CURRENT_STATE(x)           ((x & 0x00001E00) >> 9)
+
+
+-- 
+Himanshu Jha
+Undergraduate Student
+Department of Electronics & Communication
+Guru Tegh Bahadur Institute of Technology
 
