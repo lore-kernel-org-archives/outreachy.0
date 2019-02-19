@@ -1,114 +1,278 @@
-X-GM-THRID: 6754389089918648320
-X-Received: by 2002:a63:e26:: with SMTP id d38mr13683424pgl.44.1572628759639;
-        Fri, 01 Nov 2019 10:19:19 -0700 (PDT)
+X-GM-THRID: 6658167413174960128
+X-Gmail-Labels: Topic type: DISCUSSION
+X-Received: by 2002:a37:6292:: with SMTP id w140mr9694528qkb.2.1550598764406;
+        Tue, 19 Feb 2019 09:52:44 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:5a66:: with SMTP id k38ls1124924pgm.14.gmail; Fri, 01
- Nov 2019 10:19:18 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw+bMLhKsbCzqKbX/rzE3DayK9GycWTfT7uaMUhbNxJrEGw7I6+TW+tk9TRbkvKdC+wUee5
-X-Received: by 2002:a63:e60b:: with SMTP id g11mr14986467pgh.119.1572628758403;
-        Fri, 01 Nov 2019 10:19:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572628758; cv=none;
+Received: by 2002:a0c:e742:: with SMTP id g2ls8554970qvn.3.gmail; Tue, 19 Feb
+ 2019 09:52:43 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IbuWKdna6O86KWsVHkg+mdq9u08Wi+vFmVi8E5RyMumUZxT/NKfHu8yDY4dzR7Riac8suom
+X-Received: by 2002:a0c:9dd5:: with SMTP id p21mr17384508qvf.31.1550598763840;
+        Tue, 19 Feb 2019 09:52:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550598763; cv=none;
         d=google.com; s=arc-20160816;
-        b=sYZCt8ug1Nlf7EHmoB/mhefKxsRef8p2Rui4bWhebK0ubeCSvyBXDdt5vmy1v7i5MO
-         AvmEmsaXfnRBu2PeFaC6pzocI7juZRBREjfH0SdA8OqRwskCBjlo8+RWb5MvuATaG/wJ
-         96oKa7f2wBxFaJreDMcViWFQKP7r1+bX8g4Jdd7OTGzS5rIFpN+kfqvHmY3f5ZqGwdhx
-         ka23H3PYxcn2QVy3YyhRV6d2J8zWQx4sS0xR2Ani7SFYrwx++KFb41D4ki6ljzgR5zom
-         8qBMCrQoW5LAq0+D15WEAHpaTr3R5qrqnfJIhOZedv2EVmTEKoGR8641+5nqWSVLOICF
-         gbcw==
+        b=nhSUk0Ms+71A6XM+eYDA0qrtKnXvRYqoyXgR4EmwOL+2k1G3JHjAHrHLNebqzJ1kCG
+         3CRIrpaiTzQ04M91sna4MiKkyl7Ujf44VdpBRYVl0XYapquq0L6n/nE52r/6jv5rovcV
+         +mrkG3AKj/hk9oWuzIfYTeN2j2qLR6FgdV5R5aE8Fd2RQbTlTLD2QDEibDOZ4hmHTgiy
+         mz1TaRsMhlXi9bkFpvTsDAcY3orJQGInyPmh6ExnMPjFu3KMaf4meOcl3ePxxRFHi0vU
+         Sd68S4r88iSkC24k8v0qzCv070tHffqba0UlK+NGNt6kc0GI0RzeIzMI4hUOkcIEBgLA
+         GY0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:mail-followup-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=8PSciHQygIb8++gwPZ3veWQvaclhCxH8INunNwj+mm4=;
-        b=yljp5kD6cYEEeB2IosxQ3fhPjD+BRSZRZ2I8PUh4WSR2JDzjzg1Qr8tHFBDCSwYtek
-         SvDNGzIBeZnng/Zgx2USSX2gSF1XqqKBJ2vI6AxQT/77UgHEQI/pJQVKst53iqjWW/p6
-         TYI9/Yhw5PvIe/BpDz8j4RiDuCsUjqqnQUcfqDvasPvk/z0H7oyZ0evB5P3OcJymISOR
-         3kyRDctn8CkXUT9qqHru9WvW82Rtit/7/uvEU7yeXRe8+AJzLfRi8rkQOfU9Az+T3fe7
-         XX4INes8qeBHSyHnunxrxOM80ZygbaWR2mPsAlkUAZRqZ7ZY94/adeH7IUE+eunrPuHm
-         2u2g==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=R34gLd8HCpTIcVydkjg2UDxK9RGvm+6gLb213CyimEM=;
+        b=RIWNDb+Op7omHcxh8cflBTwosUZqEkoXOLMF+6CTw4d6xnIxxuUq9sGiCvBT+QqCS8
+         D8Bdj/CH+wgyHVw5O68+pQ5JAjEWxeB3xBRIeSHJCnCgUyArdIB+pi2S1hBagNRWeZd1
+         zYMKhEnzraMo+iwjVJl+JMsItokZFzOgLqkXBEc656wEqnfmNmg8H8gJZYca0t0g2nqr
+         CeJfUyIgyYme8pZ5z3Cq+czn1svW2sLAIr+thKUvzbg3X9aeB6+gFD6byy8YDA9pHYjm
+         U8jugNXUNQQZTiqhblYMETmawoxW8ZaWPt4PFGrWcL/FAiB/2dZtxt7EQfXT4/tUqS5t
+         QGjA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BmAZS3wW;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JqA1Y7HR;
+       spf=pass (google.com: domain of supu024135@gmail.com designates 2607:f8b0:4864:20::32d as permitted sender) smtp.mailfrom=supu024135@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jarias.linux@gmail.com>
-Received: from mail-pl1-x644.google.com (mail-pl1-x644.google.com. [2607:f8b0:4864:20::644])
-        by gmr-mx.google.com with ESMTPS id t71si469129pjb.2.2019.11.01.10.19.18
+Return-Path: <supu024135@gmail.com>
+Received: from mail-ot1-x32d.google.com (mail-ot1-x32d.google.com. [2607:f8b0:4864:20::32d])
+        by gmr-mx.google.com with ESMTPS id m33si710839qte.5.2019.02.19.09.52.43
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 01 Nov 2019 10:19:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) client-ip=2607:f8b0:4864:20::644;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 19 Feb 2019 09:52:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of supu024135@gmail.com designates 2607:f8b0:4864:20::32d as permitted sender) client-ip=2607:f8b0:4864:20::32d;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BmAZS3wW;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JqA1Y7HR;
+       spf=pass (google.com: domain of supu024135@gmail.com designates 2607:f8b0:4864:20::32d as permitted sender) smtp.mailfrom=supu024135@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x644.google.com with SMTP id a18so3505094plm.10
-        for <outreachy-kernel@googlegroups.com>; Fri, 01 Nov 2019 10:19:18 -0700 (PDT)
+Received: by mail-ot1-x32d.google.com with SMTP id t7so19277634otk.8
+        for <outreachy-kernel@googlegroups.com>; Tue, 19 Feb 2019 09:52:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mail-followup-to:mime-version
-         :content-disposition;
-        bh=8PSciHQygIb8++gwPZ3veWQvaclhCxH8INunNwj+mm4=;
-        b=BmAZS3wWqGLrdwMQLvAVqydQBRVsxI2TSRoYRCPkY1TBdSv62Yf3eTY0QpyjFhRdzx
-         MkCU10ugrHcif3Ey9dGyO9vKDardCvlqSARpD1BF4c5fMmbTay0R4tK+xvkWB6/MDNEC
-         dcYzjvdShD27dqe/pPGskuqv3MxsJjHBwZgvEwZEp6nEM5xIV0GQQ18K7+PgYYZi3hkI
-         ZjL3Sxv+Zg33rqCBndgbvBCnTrtbkav67NjUY3k93+YYf1LGzX3l5kB6H6BK5aoOQWr5
-         /CBPMwGHu9AVVyvP/29uV0wEsIzIjgk3NXT6clJ2AUcI1GMEtv1M2TAerF2Cb9MNgv9U
-         28GA==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=R34gLd8HCpTIcVydkjg2UDxK9RGvm+6gLb213CyimEM=;
+        b=JqA1Y7HR5fX2Rp3pHaQ1XUdjYY96ftq3meyO4ekpNp+aMXtto5vpWkKPQOBBJttw5J
+         lCeAijy2Z9HzRZVouVzrivDeZEocT5pcjxwHOQEP3xVdCP1YoHnZXVaFwGXM4MUgM5yH
+         TVwRUH5r7O+nEWktn8/cvODO2wm0XBMRd923UMcYhNABpCb8Y3ystVVQNHaI51jhr/p0
+         wY4IaJCvUhGR4k86r9GcJL8Jd9vnCOTI2SMJwZo+76iSkFPZ/0cuT7kSK2m71mDi43Fz
+         IQ+qHO6jR1nLtxh79RzBJRyLWAbiXPjF+XUfJXIkJGwg8g4EWsgx4X2ozlKSy8ZgNRXH
+         muhQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id
-         :mail-followup-to:mime-version:content-disposition;
-        bh=8PSciHQygIb8++gwPZ3veWQvaclhCxH8INunNwj+mm4=;
-        b=ISd833T1PU/GDiOHwmcRDUiKPXvCieZExAnPqwz2evSrtNTPPOkp15fpGze/PvAeaG
-         9y3ZrjiRKpTsczjQ+qjqLz5rae3hE9JuxwCVpeOBVi5kVMr4yvWRQ77GbMMU296t0mBS
-         ESvkYYnYuq1SqmAXxetwWEiO9Dk9d1vwhSVk5xgQ5NPKTTRiumXugi/oSZq0QAfWWSHz
-         uITallBDIVps3tYRB/X55pSNmLCUTq4K1a+JAqXRs5X3N5i/57UdJxtegZkIrnY5wp26
-         famW6K2nx32YwuNJlUgVhyEjRzJv/8KqCMS5FPkbwClqjyFxUtpQkMokE2jQXlDKE0TF
-         StbA==
-X-Gm-Message-State: APjAAAUyMgRrm42JV4qNOUeS+IqoEgUye6Y4lU6Jc4/JMzTw6Q75RNzZ
-	bkD5PIPrdbaFE5Jha6ALuALYyORIs30=
-X-Received: by 2002:a17:902:a98c:: with SMTP id bh12mr13506602plb.289.1572628758116;
-        Fri, 01 Nov 2019 10:19:18 -0700 (PDT)
-Return-Path: <jarias.linux@gmail.com>
-Received: from gmail.com ([104.216.216.194])
-        by smtp.gmail.com with ESMTPSA id z11sm10633674pfg.117.2019.11.01.10.19.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 01 Nov 2019 10:19:17 -0700 (PDT)
-Date: Fri, 1 Nov 2019 12:19:14 -0500
-From: "Javier F. Arias" <jarias.linux@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] media: staging/intel-ipu3: Fix wrong assignment to boolean
- variable
-Message-ID: <20191101171914.rphvreggpu6qj77e@gmail.com>
-Mail-Followup-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=R34gLd8HCpTIcVydkjg2UDxK9RGvm+6gLb213CyimEM=;
+        b=eX5TnN1wk8/OHgnJ0gam6fxFvfyG9Xpx3+saRfapoIlIjuj6qet1qc5KZZns4IQ7QC
+         YV6c2WryM+xZztwhb7msRXldRc3mubtcT1y7/f0djZAR307WtvzX0rpkWtP2lONRXIp9
+         0Fk2ny9BpHby4RAHkN4JPBX+pmwg37h9QKhpMq6z/vfeDIrNhjmT0A8UyP7E/k65CJ9T
+         UXRvXNyKw6FPVWKJhknp4WdZGIRIHWbu3vkHi5GTduk3k79VPL4Zja94RbTMNI23sODQ
+         n/H4BnI3Wm6sZ9b0x3Ly4gFckKYUyHc2pY1xkR9cK0I79u057xmv2mLRHzOMNqno+l0z
+         78wQ==
+X-Gm-Message-State: AHQUAuaA3XLUEerkOx4xFUl+OGQ3OLsi0LtyKdkjlpAFVUPyny8zLRhs
+	7zOZb/Isl6jr9pPjceeThq+HKP/SraX8mCsj/1RY9/mU
+X-Received: by 2002:aca:3c83:: with SMTP id j125mr3347291oia.34.1550598763124;
+ Tue, 19 Feb 2019 09:52:43 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+References: <8f0752e6-39e1-4047-8899-19866fdfe045@googlegroups.com>
+ <20190219155942.GB18454@himanshu-Vostro-3559> <alpine.DEB.2.20.1902191703400.3588@hadrien>
+ <20190219162019.GD18454@himanshu-Vostro-3559> <20190219163539.GA19366@himanshu-Vostro-3559>
+In-Reply-To: <20190219163539.GA19366@himanshu-Vostro-3559>
+From: supriya supugade <supu024135@gmail.com>
+Date: Tue, 19 Feb 2019 23:22:29 +0530
+Message-ID: <CAFDeA1iH7jA-Rg-CyVC5FH1b-6zJVr5=4n8sy1xokYhAT9DCvw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] I didnt get message in log like "I can modify
+ the Linux kernel!"
+To: Himanshu Jha <himanshujha199640@gmail.com>
+Cc: Julia Lawall <julia.lawall@lip6.fr>, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: multipart/alternative; boundary="000000000000771d7d058242e891"
 
-This patch fixes a warning by replacing the incorrect value with
-a boolean.
-Issue found by Coccinelle.
+--000000000000771d7d058242e891
+Content-Type: text/plain; charset="UTF-8"
 
-Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
----
- drivers/staging/media/ipu3/ipu3-css.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Thank you so much for help. I will try this and let you know.
 
-diff --git a/drivers/staging/media/ipu3/ipu3-css.c b/drivers/staging/media/ipu3/ipu3-css.c
-index fd1ed84c400c..f36de501edc6 100644
---- a/drivers/staging/media/ipu3/ipu3-css.c
-+++ b/drivers/staging/media/ipu3/ipu3-css.c
-@@ -1450,7 +1450,7 @@ bool imgu_css_pipe_queue_empty(struct imgu_css *css, unsigned int pipe)
- bool imgu_css_queue_empty(struct imgu_css *css)
- {
- 	unsigned int pipe;
--	bool ret = 0;
-+	bool ret = false;
- 
- 	for (pipe = 0; pipe < IMGU_MAX_PIPE_NUM; pipe++)
- 		ret &= imgu_css_pipe_queue_empty(css, pipe);
--- 
-2.20.1
+Thank and regards,
+Supriya Supugade
 
+On Tue, Feb 19, 2019, 10:05 PM Himanshu Jha <himanshujha199640@gmail.com
+wrote:
+
+> +Cc Bharath Vedartham[1]
+>
+> On Tue, Feb 19, 2019 at 09:50:19PM +0530, Himanshu Jha wrote:
+> > On Tue, Feb 19, 2019 at 05:04:53PM +0100, Julia Lawall wrote:
+> > >
+> > >
+> > > On Tue, 19 Feb 2019, Himanshu Jha wrote:
+> > >
+> > > > On Fri, Feb 15, 2019 at 02:10:04AM -0800, supriya supugade wrote:
+> > > > >
+> > > > > I am following the link "
+> https://kernelnewbies.org/FirstKernelPatch"
+> > > > >
+> > > > > and modifying the driver in native Linux. I made a change in the
+> > > > > e1000_main.c file i.e inserted the line
+> > > > >
+> > > > > "printk(KERN_DEBUG "I can modify the Linux kernel!\n");" After
+> recompiling
+> > > > > the kernel and rebooting it, I don't get the
+> > > > >
+> > > > > message "I can modify the Linux kernel!\" in the log files on
+> typing "dmesg
+> > > > > | less". I am getting following error during installing changes.
+> > > > >
+> > > > > Makefile:1281: recipe for target '_modinst_' failed
+> > > > > make[1]: *** [_modinst_] Error 2
+> > > > > Makefile:296: recipe for target '__build_one_by_one' failed
+> > > > > make: *** [__build_one_by_one] Error 2
+> > > > >
+> > > > > How should I proceed further?
+> > > >
+> > > > Post your .config and full logs using pastebin.
+> > > >
+> > > > I saw one more fellow struggling with this on kernelnewbies.
+> > >
+> > > Did you see the discussion here:
+> > >
+> > >
+> https://www.linuxquestions.org/questions/linux-software-2/kernel-building-install-error-4175608377/
+> >
+> > I just googled "make: *** [__build_one_by_one] Error 2" and
+> > this pops up as the very first link.
+> >
+> > If this is the solution you guys are looking, then it very
+> > sad :(
+> >
+> > I didn't check this becuase I saw this question atleast posted
+> > thrice and assumed some new issue has popped up.
+> >
+> > > It concludes with:
+> > >
+> > > I suggest you go through the building process in separate steps
+> instead of
+> > > "make ... install" in one go.
+>
+> Julia, I think you are absolutely correct on this and all of them had
+> followed what is actually written on the HowTo page below:
+>
+> https://kernelnewbies.org/FirstKernelPatch#Install_your_changes
+>
+>         sudo make modules_install -jN && sudo make install -jN
+>
+> should be the clean solution.
+>
+> Bharat, Supriya: Try this and confirm!
+>
+>
+> [1]
+> https://lore.kernel.org/kernelnewbies/20190205060053.GA309@bharath12345-Inspiron-5559/
+>
+> --
+> Himanshu Jha
+> Undergraduate Student
+> Department of Electronics & Communication
+> Guru Tegh Bahadur Institute of Technology
+>
+
+--000000000000771d7d058242e891
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto">Thank you so much for help. I will try this and let you k=
+now.<div dir=3D"auto"><br></div><div dir=3D"auto">Thank and regards,</div><=
+div dir=3D"auto">Supriya Supugade</div></div><br><div class=3D"gmail_quote"=
+><div dir=3D"ltr">On Tue, Feb 19, 2019, 10:05 PM Himanshu Jha &lt;<a href=
+=3D"mailto:himanshujha199640@gmail.com">himanshujha199640@gmail.com</a> wro=
+te:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;b=
+order-left:1px #ccc solid;padding-left:1ex">+Cc Bharath Vedartham[1]<br>
+<br>
+On Tue, Feb 19, 2019 at 09:50:19PM +0530, Himanshu Jha wrote:<br>
+&gt; On Tue, Feb 19, 2019 at 05:04:53PM +0100, Julia Lawall wrote:<br>
+&gt; &gt; <br>
+&gt; &gt; <br>
+&gt; &gt; On Tue, 19 Feb 2019, Himanshu Jha wrote:<br>
+&gt; &gt; <br>
+&gt; &gt; &gt; On Fri, Feb 15, 2019 at 02:10:04AM -0800, supriya supugade w=
+rote:<br>
+&gt; &gt; &gt; &gt;<br>
+&gt; &gt; &gt; &gt; I am following the link &quot;<a href=3D"https://kernel=
+newbies.org/FirstKernelPatch" rel=3D"noreferrer noreferrer" target=3D"_blan=
+k">https://kernelnewbies.org/FirstKernelPatch</a>&quot;<br>
+&gt; &gt; &gt; &gt;<br>
+&gt; &gt; &gt; &gt; and modifying the driver in native Linux. I made a chan=
+ge in the<br>
+&gt; &gt; &gt; &gt; e1000_main.c file i.e inserted the line<br>
+&gt; &gt; &gt; &gt;<br>
+&gt; &gt; &gt; &gt; &quot;printk(KERN_DEBUG &quot;I can modify the Linux ke=
+rnel!\n&quot;);&quot; After recompiling<br>
+&gt; &gt; &gt; &gt; the kernel and rebooting it, I don&#39;t get the<br>
+&gt; &gt; &gt; &gt;<br>
+&gt; &gt; &gt; &gt; message &quot;I can modify the Linux kernel!\&quot; in =
+the log files on typing &quot;dmesg<br>
+&gt; &gt; &gt; &gt; | less&quot;. I am getting following error during insta=
+lling changes.<br>
+&gt; &gt; &gt; &gt;<br>
+&gt; &gt; &gt; &gt; Makefile:1281: recipe for target &#39;_modinst_&#39; fa=
+iled<br>
+&gt; &gt; &gt; &gt; make[1]: *** [_modinst_] Error 2<br>
+&gt; &gt; &gt; &gt; Makefile:296: recipe for target &#39;__build_one_by_one=
+&#39; failed<br>
+&gt; &gt; &gt; &gt; make: *** [__build_one_by_one] Error 2<br>
+&gt; &gt; &gt; &gt;<br>
+&gt; &gt; &gt; &gt; How should I proceed further?<br>
+&gt; &gt; &gt;<br>
+&gt; &gt; &gt; Post your .config and full logs using pastebin.<br>
+&gt; &gt; &gt;<br>
+&gt; &gt; &gt; I saw one more fellow struggling with this on kernelnewbies.=
+<br>
+&gt; &gt; <br>
+&gt; &gt; Did you see the discussion here:<br>
+&gt; &gt; <br>
+&gt; &gt; <a href=3D"https://www.linuxquestions.org/questions/linux-softwar=
+e-2/kernel-building-install-error-4175608377/" rel=3D"noreferrer noreferrer=
+" target=3D"_blank">https://www.linuxquestions.org/questions/linux-software=
+-2/kernel-building-install-error-4175608377/</a><br>
+&gt; <br>
+&gt; I just googled &quot;make: *** [__build_one_by_one] Error 2&quot; and<=
+br>
+&gt; this pops up as the very first link.<br>
+&gt; <br>
+&gt; If this is the solution you guys are looking, then it very<br>
+&gt; sad :(<br>
+&gt; <br>
+&gt; I didn&#39;t check this becuase I saw this question atleast posted<br>
+&gt; thrice and assumed some new issue has popped up.<br>
+&gt; <br>
+&gt; &gt; It concludes with:<br>
+&gt; &gt; <br>
+&gt; &gt; I suggest you go through the building process in separate steps i=
+nstead of<br>
+&gt; &gt; &quot;make ... install&quot; in one go.<br>
+<br>
+Julia, I think you are absolutely correct on this and all of them had<br>
+followed what is actually written on the HowTo page below:<br>
+<br>
+<a href=3D"https://kernelnewbies.org/FirstKernelPatch#Install_your_changes"=
+ rel=3D"noreferrer noreferrer" target=3D"_blank">https://kernelnewbies.org/=
+FirstKernelPatch#Install_your_changes</a><br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 sudo make modules_install -jN &amp;&amp; sudo m=
+ake install -jN<br>
+<br>
+should be the clean solution.<br>
+<br>
+Bharat, Supriya: Try this and confirm!<br>
+<br>
+<br>
+[1] <a href=3D"https://lore.kernel.org/kernelnewbies/20190205060053.GA309@b=
+harath12345-Inspiron-5559/" rel=3D"noreferrer noreferrer" target=3D"_blank"=
+>https://lore.kernel.org/kernelnewbies/20190205060053.GA309@bharath12345-In=
+spiron-5559/</a><br>
+<br>
+-- <br>
+Himanshu Jha<br>
+Undergraduate Student<br>
+Department of Electronics &amp; Communication<br>
+Guru Tegh Bahadur Institute of Technology<br>
+</blockquote></div>
+
+--000000000000771d7d058242e891--
 
