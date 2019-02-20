@@ -1,108 +1,90 @@
-X-GM-THRID: 6661078107431108608
-X-Received: by 2002:a1f:fcc5:: with SMTP id a188mr1428541vki.12.1550903103040;
-        Fri, 22 Feb 2019 22:25:03 -0800 (PST)
+X-GM-THRID: 6659918417753014272
+X-Received: by 2002:a0c:b08f:: with SMTP id o15mr10214455qvc.36.1550686004125;
+        Wed, 20 Feb 2019 10:06:44 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1f:4247:: with SMTP id p68ls1568671vka.3.gmail; Fri, 22 Feb
- 2019 22:25:02 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IbOV2e2eWIHu8RbzB0GetW5OOQ8YDCnhsdmvKCP90/OL5xw3E5JRKh1T3IzOvsXJtmVlTFq
-X-Received: by 2002:a1f:34d2:: with SMTP id b201mr1426175vka.24.1550903102341;
-        Fri, 22 Feb 2019 22:25:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550903102; cv=none;
+Received: by 2002:a37:7344:: with SMTP id o65ls9906890qkc.8.gmail; Wed, 20 Feb
+ 2019 10:06:43 -0800 (PST)
+X-Received: by 2002:a37:a5c1:: with SMTP id o184mr19831828qke.42.1550686003464;
+        Wed, 20 Feb 2019 10:06:43 -0800 (PST)
+Received: by 2002:a37:788:0:0:0:0:0 with SMTP id 130msqkh;
+        Wed, 20 Feb 2019 06:46:21 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IYKuDvEmXEE68twQGxUBUMY7zHwfgRcgnkGWJOrtUQjrvTe2JXGe30xN5loUS3XysH8T+U6
+X-Received: by 2002:a50:b781:: with SMTP id h1mr4432341ede.3.1550673981060;
+        Wed, 20 Feb 2019 06:46:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550673981; cv=none;
         d=google.com; s=arc-20160816;
-        b=GO/im09HtAUzy44s6SCE9j6naQZ+d21inx0vE95/hJ1a1UBx0oOw7/yadyU11nHo/w
-         ZgQQNqpq3IN9L4POGsVlPDaZDOlg+1QwWqKPItrbAvosTKtzaG6Pnw79p9uCPssZKFbj
-         17lCm3tAE30y1u+mKmD6bRXSrsohAKe0eHzde/Y4+sZqMrTXZKUJSE1Sc1Jpg2ie/ZiJ
-         whX+dMgY0IFFV7+1+bBM/tO8Y19wcXjXRjUGO8EEWYc7ToUa8NudBpUleeAopL+ETJv2
-         9GutA0ytUuyMXFTorQq4exT/E9MBDssP4b/1RtRV3q3Mls9c1FHLoPnI6NghRuzMO+Jb
-         +B6g==
+        b=USQsLDb3MPk1mPF/m8l7vTaOzjVZ0+h4JZp0WwjgFBN57NO0fMXAOw+ac8OCNTsfOl
+         ja3J7IHMxVy6ZXV5/G8qqgN8vO5xQ0Wfh6DKHXh2NLNTonzlC3VoQbFqObPeofpXbpSm
+         i42TwloTfdXapUTR5DHsJpXMEm+JNnuKES3sS5xPdeJ7DRVPp7xjji5N4XY53KmOeIxa
+         59fIWlWR8MMScROChJIh57dHvxUr0POafyCbcv3QUoVSFRJ//uvY3fbMtu4rAQ+//Yeq
+         Ot1Tv1Tf1zuWG4hP20+aj2jO10mCdoOM5IbvpNwFOW7Xkuu0La19RzUBgW5/m3F7vfW1
+         f3/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=GR2wQC8qD16jYvH+5+VJtBYXjQFfWapYvJ6SIkGEXe4=;
-        b=pjyn0m06Pz8nJosUJQxAcLMRefW3YKxv+hVPZS1RYZFFroFdcN9g8qj578rhBb6zXJ
-         dcWszLvVtq8HxjaXUk/KEbfMRlJTSvf4qeqyXaMxnBhH29wM/sNNoWC63cqZclBYS10A
-         P9QcvjyOOknBnVO8av12hfWSRxMQvc2yI/a+N9qQnJftqIYcv4Yd1sQd+I+kGKjNf9WM
-         1MUzx704OWMmmKNY1bYce2c63NjX3gzNp/hGLKcZh31UKrAwwY5G6RjZ8fo9uc68eExs
-         68+ELhSRScgQf5F3o3gCfDhMlCySq9paDLHo/UrjQYqL4wv15KhzEtKgwS3gCdT1caXv
-         skMQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=FBSGO7mNl/Pi41kqMJI6nQsXA6eeq25iro3uZA1HouE=;
+        b=epDI7hhjTbcsG9fHFAnHyB1DJFqPyffA7lRs6hpN1VjKbj0X5NgQR9PLWsAXVxqXoM
+         ppZHghDFFH+GIV2DCD6j7qtjJbusJOHPwrwum+evJ9Vor0qOn7D4FidNXih8Gj0FI+tD
+         qLD6oxtOc6bDjpzlzEYt/8JJi9pDRC2Dfzn2Ziu2rJg/z7zEbS/4SdjWjRJPs4xS+SJ6
+         NhQagHYzZA/7zhbSjOLPOF+TaCDaJb/sCKuhXYnVLSh/x1rDvDW1lqoj44YXD1tHUpsr
+         lQGDTYfFDohRvLqsd0U46DgzGyfORkgGiM0bOfOC7z9UxEmAZTjc6s8jUFnxylodIjlz
+         YBJg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VdADQ7ws;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
-        by gmr-mx.google.com with ESMTPS id v187si122708vkd.5.2019.02.22.22.25.02
+       dkim=pass header.i=@lunn.ch header.s=20171124 header.b=tY1Tfumj;
+       spf=pass (google.com: domain of andrew@lunn.ch designates 185.16.172.187 as permitted sender) smtp.mailfrom=andrew@lunn.ch
+Return-Path: <andrew@lunn.ch>
+Received: from vps0.lunn.ch (vps0.lunn.ch. [185.16.172.187])
+        by gmr-mx.google.com with ESMTPS id u9si1085879edp.1.2019.02.20.06.46.16
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Feb 2019 22:25:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) client-ip=2607:f8b0:4864:20::444;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 20 Feb 2019 06:46:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of andrew@lunn.ch designates 185.16.172.187 as permitted sender) client-ip=185.16.172.187;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VdADQ7ws;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x444.google.com with SMTP id d25so2082061pfn.8
-        for <outreachy-kernel@googlegroups.com>; Fri, 22 Feb 2019 22:25:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=GR2wQC8qD16jYvH+5+VJtBYXjQFfWapYvJ6SIkGEXe4=;
-        b=VdADQ7ws0y7O4GzfjejDMFgc7WqKXbvhE87I/VJEvomWbPdvbuVUZqqF/GwlG2wy9n
-         01t2/YWnLOG081ojHqmIQAjxSnkRau2ICRrvfhmO88XgyAtNiacTlFkiF57Ta3QN2Xka
-         ixOePRT8TYsYhg9knCSmQVHMcARah15ObVk95vDUSMGk4Vqsof0j+bEUtqGxg9Mzb69D
-         ATKhX4vqM+0PomkZatFYWPCEFRwSehBzaKTuS9pJqC5Ecjz+3M9iomU1lqqLPaZVzVgb
-         XlXZNPMys6TcFr26M+87Lo+IW12ymiluMRZNnnqNqR2EvUGjFaJ/vVVKjvb68FCA1AqI
-         t56g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=GR2wQC8qD16jYvH+5+VJtBYXjQFfWapYvJ6SIkGEXe4=;
-        b=nZyC1F9vuAPxV75Rb6buIcfRLu0DAg9UOoLcdne+l0FsL9PglLU55NYLq/voelK/80
-         7QL6faLlSOPaf2mRpNW4dc4VC9Wjs28Q/Yx/TVj9EaIC8Px1j8GFxMFTKo3UVzFn6gp9
-         y9XY0HSQBn5htuIkxwRQU2DY0hsOSOBKTGo27dZ4MTJOi/MPqXyLAU5r4bzmUvrJEL7g
-         eaF5sQpVYI77/jM9Vh3q4tcZhnNpJUyaE42cZ24k1COYNa/n/seVxRZaQ26KUwotVoqO
-         RaybiIr/3w/BRtk/u4JdcsgwtpZff/EWrXIBSCg6xVj62JKiuwGJe/fkqtLA/aP1yBy6
-         ftYA==
-X-Gm-Message-State: AHQUAuaY4mFYovMMMzASiRMuxKRJAe8RULfdbMVM+iFhkI0Mnq6Yjx6H
-	U/QzQUvfiIUeGsYxJWbdQO1PyixsVPo=
-X-Received: by 2002:a63:c310:: with SMTP id c16mr7314393pgd.233.1550903101171;
-        Fri, 22 Feb 2019 22:25:01 -0800 (PST)
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from bhagyashri-Lenovo-G570 ([49.35.247.83])
-        by smtp.gmail.com with ESMTPSA id a20sm8145300pfj.5.2019.02.22.22.24.59
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 22 Feb 2019 22:25:00 -0800 (PST)
-Date: Sat, 23 Feb 2019 11:54:55 +0530
-From: Bhagyashri Dighole <digholebhagyashri@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Outreachy <outreachy-kernel@googlegroups.com>
-Subject: [PATCH] staging: netlogic: Add SPDX-License-Identifier tag
-Message-ID: <20190223062455.GA11432@bhagyashri-Lenovo-G570>
+       dkim=pass header.i=@lunn.ch header.s=20171124 header.b=tY1Tfumj;
+       spf=pass (google.com: domain of andrew@lunn.ch designates 185.16.172.187 as permitted sender) smtp.mailfrom=andrew@lunn.ch
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+	List-Post:List-Owner:List-Archive;
+	bh=FBSGO7mNl/Pi41kqMJI6nQsXA6eeq25iro3uZA1HouE=; b=tY1TfumjBTSrc3bM+BDdF7d+IY
+	fuvGf4liP/fROP/9hDXIbhiNxkBE4CabUyFtX+OBCME2JJnqky/TZt9eZow5NbeFS8cRKbTFjo8q4
+	ah6/cafI1yhSF5Q2mxQNbOt0rgaP7bV3qRAZo+dn04N0ujmB35SJkjWFGvGeauNEu+jw=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.89)
+	(envelope-from <andrew@lunn.ch>)
+	id 1gwT8Y-0006a8-Tr; Wed, 20 Feb 2019 15:46:14 +0100
+Date: Wed, 20 Feb 2019 15:46:14 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Himadri Pandya <himadri18.07@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, julia.lawall@lip6.fr,
+	f.fainelli@gmail.com, davem@davemloft.net, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] net: dsa: add missing of_node_put
+Message-ID: <20190220144614.GG13075@lunn.ch>
+References: <20190220032432.2878-1-himadri18.07@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20190220032432.2878-1-himadri18.07@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Adds the SPDX GPL-2.0 or BSD-2-clause license identifier, which solves the
-checkpatch.pl warning:
-"WARNING: Missing or malformed SPDX-License-Identifier tag in line 1".
+On Wed, Feb 20, 2019 at 08:54:32AM +0530, Himadri Pandya wrote:
+> Decrement the reference count on port while returning out of the loop.
+> 
+> Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
 
-Signed-off-by: Bhagyashri Dighole <digholebhagyashri@gmail.com>
----
- drivers/staging/netlogic/platform_net.c | 1 +
- 1 file changed, 1 insertion(+)
+Hi Himadri
 
-diff --git a/drivers/staging/netlogic/platform_net.c b/drivers/staging/netlogic/platform_net.c
-index abf4c71..2637fb1 100644
---- a/drivers/staging/netlogic/platform_net.c
-+++ b/drivers/staging/netlogic/platform_net.c
-@@ -1,3 +1,4 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
- /*
-  * Copyright (c) 2003-2012 Broadcom Corporation
-  * All Rights Reserved
--- 
-2.7.4
+Thanks for the patch. The code changes themselves look good.
 
+Netdev has a few additional processes for submitting patches. Please
+take a look at
+
+https://www.kernel.org/doc/Documentation/networking/netdev-FAQ.txt
+
+Please base this patch on net-next.
+
+Thanks
+	Andrew
 
