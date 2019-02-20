@@ -1,110 +1,161 @@
-X-GM-THRID: 6465168256299696128
-X-Received: by 10.31.162.7 with SMTP id l7mr9284732vke.108.1505289286873;
-        Wed, 13 Sep 2017 00:54:46 -0700 (PDT)
+X-GM-THRID: 6659803062561931264
+X-Received: by 2002:adf:e412:: with SMTP id g18mr1092035wrm.9.1550644999190;
+        Tue, 19 Feb 2019 22:43:19 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.69.1 with SMTP id s1ls2515350ioa.32.gmail; Wed, 13 Sep
- 2017 00:54:46 -0700 (PDT)
-X-Received: by 10.200.6.5 with SMTP id d5mr2476446qth.9.1505289286082;
-        Wed, 13 Sep 2017 00:54:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505289286; cv=none;
+Received: by 2002:a1c:f603:: with SMTP id w3ls660034wmc.13.gmail; Tue, 19 Feb
+ 2019 22:43:18 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IYHQpPNCSqHa5Df4TP50ejYNCq0S9HPjoPH0+dKMDRdPusfy9F4e4dTvjP2kwUD1fvll0XU
+X-Received: by 2002:a1c:7dce:: with SMTP id y197mr520455wmc.16.1550644998329;
+        Tue, 19 Feb 2019 22:43:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550644998; cv=none;
         d=google.com; s=arc-20160816;
-        b=Lt2VMDtN2ZGADYGdFMP0Ecq7uvgYSFC/wVnb/RcFzhQw9/oFKzCXWxXxf6Tch7cbVJ
-         V8YUiZ3HgI0UkWf8OQlLW27WTgq+2IKFcJ+Cx+7nTV7h4/duTaWEY0Mw7QsU44U17jqA
-         4k+pBUBs5xPJetEs/XkGFOAVgvN4SvQGsPbw1yqQYbbKNMEOhYF9Ty6zYWSB/MUq88ti
-         npcVR+vRKv20SJ+Zf42af7xd9bZuR6awfqU2+rtZOG3CxqCprWFkCfDZQKw3l1Z2WoBN
-         n1qXwhp2c6WaYNejkSveL7oq3T8Thy+BSoPBVNeQ3UGQW0Flb0MK3ELmwFCf03+DtK3d
-         KHPg==
+        b=XCSkXeNP5xWOA0lSqQ4iJg/iq46oois1Wuf6YPLnWoWVTGcxMjezNPnzfg8RmuZQTg
+         ldg4tgaOdgmCD6PerA57ddajBKcKOxbAvRJCfOBa6mr2vT35GBUt2qPOj6npN3la2Gbu
+         WpmG0CUn8WW7fiwaomyc5zxdoc63us6UpODMH3AsFQSqgy10uq5uqyB5BD6H3aJLcy7V
+         pfeeXfRMKDUvSTIER2t1UXkrs2C3zCyM9WfsOyzYFi0Decw3BAtDEjMUF89F0NW5nKtU
+         kkfNoR1iJozFkeMnqHLgT31Vc1CCPKiT9RSl3sa9xOvmykmJdP/xfXnwa3x6XAZJVsJf
+         9DGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature:arc-authentication-results;
-        bh=Zn5axq+ixQXuf3n8oYidzibxOjhi0Bjxl+ov0Ie2Fxw=;
-        b=ITVcBtWIDHkZoKqe9Wo0rWDanqqDS0HZ+OILMwqGLppb9CH414vnRXTIMrkeFUpcaB
-         /IOtll2W+GubKdiwt64Pr2I6ymWmd38GGYk15zo7TAZYoop0fzzrjqaAVLpf+JDWk/MY
-         xa5OzfBcA+i2OEeN5DGU4pIiSn2nFfYWzevfxgfqHp4VHLPJ6aa1J6HOtEyEggtb8wxs
-         T/8/s3sZmYoTK5tgzE1+hCpEwTucB5AgDlU6QDu+HuqZfaIBbB6tZhe6e3vy6kMTO1+2
-         LwzpCnkyCTTQiJVxhv6alwsD30TRQZMhePnVI8t9h+n0IWTgtTFGFDJvhGdZxTF6C0dB
-         dldw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=uNrAL3H3LfZpkUg0IZZa00qJOQA4NIzU9P5kPZsH4Fw=;
+        b=ZpEuSGpkrQYBmDhMKsxVK9wSLWGDIVrRffn1lks5P8sK3Kpy6U7Z00X6y0ka49YPH7
+         HXhgiZ90utgvAP38yMO8Xfj+On3VPiy5K/fE+IGB6cG5GbfB6BiMJ/4+fxfL7e9o+q1y
+         yCH84oVHLRRXJ6lzVdoenHpXWa5tq0FyxaXjF2x39PFuUmbXVSLwq2bH7cgb0rgLYAdZ
+         PQuCYKEJBj8dF0LO56lwaXu1DqtL+d59zzBXvlNZ4wzBoVkMMpLdZcPcb5Bm4ZUh9mGs
+         TNxgOZY5amlf6tfC/G2y4CH7NGm+12QerQr8Zqrnww7zL5vpVySf0OuJx24UQoSjgtJ8
+         2CFw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=W2TlzKNS;
-       spf=pass (google.com: domain of himshijain.hj@gmail.com designates 2607:f8b0:4001:c0b::244 as permitted sender) smtp.mailfrom=himshijain.hj@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <himshijain.hj@gmail.com>
-Received: from mail-it0-x244.google.com (mail-it0-x244.google.com. [2607:f8b0:4001:c0b::244])
-        by gmr-mx.google.com with ESMTPS id t84si430445ywf.14.2017.09.13.00.54.46
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 109si909640wrb.0.2019.02.19.22.43.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 13 Sep 2017 00:54:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of himshijain.hj@gmail.com designates 2607:f8b0:4001:c0b::244 as permitted sender) client-ip=2607:f8b0:4001:c0b::244;
+        Tue, 19 Feb 2019 22:43:18 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=W2TlzKNS;
-       spf=pass (google.com: domain of himshijain.hj@gmail.com designates 2607:f8b0:4001:c0b::244 as permitted sender) smtp.mailfrom=himshijain.hj@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-it0-x244.google.com with SMTP id b76so6972495itb.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 13 Sep 2017 00:54:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=Zn5axq+ixQXuf3n8oYidzibxOjhi0Bjxl+ov0Ie2Fxw=;
-        b=W2TlzKNSEzJkRyjkueIBNtxCAiunn7Aw82fzPSDXgitDHznOvTsKrGN01ZsSzUPExY
-         tsHjeWrkS9hv9n473y+SRm5TaijYKdGq5rLb815D0d/HyHKr0eqcZGQtlbi46+R4Y8Wu
-         NYPwWuiDkcSTQT2fNDtdKG599mlGM2gy7bKOxUOEKNpcecS/QFoNNyY8CDPcjyqkacpf
-         Sol3zMYiRTp6bAmI6Jm4FGoN8QAxHJIlNNoG8tYOnzqTS5XgGUvG/N27kuQ1YgFCID3b
-         Ji4wXDnCT4ZQyBeeMf1dnGnbl/UJHE2XanAIhJpzATuHrZ2J9KKkParcMpzsluvqCNzx
-         pPhw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=Zn5axq+ixQXuf3n8oYidzibxOjhi0Bjxl+ov0Ie2Fxw=;
-        b=Bd1FhRKndwmNo/1hdvaGYt3fgOr12UxbT2oScCPkC9/lYWENqI9eRsxgip7LZAC8NB
-         qtK0ec4+PMObpEI2/5OM6iyjOI957YoMwziHne73JGdGuedHWefzc3Ri3+aZltaJ5uO3
-         rQMYm3iRxotQiaFfRAo9gA6s3SgGZwyARBUY6JQS7oH4SjoZ3AZ5y0dDGCV3SazG48xl
-         c/3GhAIS8HcQS35ou8G3fiZ/PJJ/oC7eablcjfsfJl1QbkVc2jy4dyV2vwkRkZQ/BokN
-         XKicNuJ1wv5YDCAAkjY3A8d50JP0TIXjYlzRJpqeDV19HDvcJZ4njVkks+TnWia57nXL
-         l/8A==
-X-Gm-Message-State: AHPjjUhZz8xmfVweZ6ljjFaWzsxhAmGj+LoJ+BABvqi2j1PwuprgPu9p
-	KL29h03UwN5feJldsx8=
-X-Google-Smtp-Source: AOwi7QAsp+EHZCXut4nP2+HJt88JAnvSMRZDjhgTR1r/zaaDCeEntWfWMg+woMSVSUuuMqoPuh0gOQ==
-X-Received: by 10.36.107.21 with SMTP id v21mr3117864itc.43.1505289285319;
-        Wed, 13 Sep 2017 00:54:45 -0700 (PDT)
-Return-Path: <himshijain.hj@gmail.com>
-Received: from localhost ([223.179.135.67])
-        by smtp.gmail.com with ESMTPSA id t127sm6877928iod.26.2017.09.13.00.54.44
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Wed, 13 Sep 2017 00:54:44 -0700 (PDT)
-Date: Wed, 13 Sep 2017 13:24:41 +0530
-From: Himanshi Jain <himshijain.hj@gmail.com>
-To: outreachy-kernel@googlegroups.com, lars@metafoo.de,
-	Michael.Hennerich@analog.com, jic23@kernel.org, knaack.h@gmx.de,
-	pmeerw@pmeerw.net, gregkh@linuxfoundation.org,
-	linux-iio@vger.kernel.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, nick.desaulniers@gmail.com,
-	daniel.baluta@gmail.com
-Subject: [PATCH 0/2] Rewrite the IIO_DEVICE_ATTR_NAMED API to pass name as
- string.
-Message-ID: <cover.1505288677.git.himshijain.hj@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,388,1544482800"; 
+   d="scan'208";a="296722230"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 20 Feb 2019 07:43:17 +0100
+Date: Wed, 20 Feb 2019 07:43:17 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
+cc: Bhanusree Pola <bhanusreemahesh@gmail.com>, 
+    outreachy-kernel@googlegroups.com, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [Outreachy Kernel][PATCH 1/2] Staging: rts5208:
+ Fix Avoid Camel Case - style
+In-Reply-To: <CAK-LDbLfqrqJyrjtb11xq-WqhuCksEJwcuNd3T3Rtu9GM2wcpQ@mail.gmail.com>
+Message-ID: <alpine.DEB.2.21.1902200742390.14143@hadrien>
+References: <20190219195708.GA16266@bhanusree-MacBookAir> <CAK-LDbLfqrqJyrjtb11xq-WqhuCksEJwcuNd3T3Rtu9GM2wcpQ@mail.gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: text/plain; charset=US-ASCII
 
-This patchset is to rewrite the IIO_DEVICE_ATTR_NAMED API to pass name
-as string.
 
-Himanshi Jain (2):
-  include: linux: sysfs: Add __ATTR_NAMED macro
-  iio: Use __ATTR_NAMED to allow passing name as string to
-    IIO_DEVICE_ATTR_NAMED and change usage to pass string
 
- drivers/iio/adc/ad7793.c          | 2 +-
- drivers/staging/iio/adc/ad7192.c  | 2 +-
- drivers/staging/iio/adc/ad7280a.c | 4 ++--
- include/linux/iio/sysfs.h         | 6 +++++-
- include/linux/sysfs.h             | 7 +++++++
- 5 files changed, 16 insertions(+), 5 deletions(-)
+On Wed, 20 Feb 2019, Vaishali Thakkar wrote:
 
--- 
-1.9.1
+> On Wed, Feb 20, 2019 at 1:27 AM Bhanusree Pola
+> <bhanusreemahesh@gmail.com> wrote:
+> >
+> > Fixes Avoid Camel Case for various Macros
+>
+> Hi Bhanusree,
+>
+> Thanks for the patch. Please write more detailed commit log. It
+> should generally mention why this change is required and if the issue
+> is identified by any tool then give credit to the tool. [in this case,
+> I assume it's checkpatch.pl].
 
+If you just follow the rule "Never use fix in a log message" then you will
+sort of be forced to do the right thing :)
+
+julia
+
+>
+> > Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+> > ---
+> >  drivers/staging/rts5208/xd.c | 8 ++++----
+> >  drivers/staging/rts5208/xd.h | 6 +++---
+> >  2 files changed, 7 insertions(+), 7 deletions(-)
+> >
+> > diff --git a/drivers/staging/rts5208/xd.c b/drivers/staging/rts5208/xd.c
+> > index c5ee04ecd1c9..1187c75d764a 100644
+> > --- a/drivers/staging/rts5208/xd.c
+> > +++ b/drivers/staging/rts5208/xd.c
+> > @@ -630,13 +630,13 @@ static int reset_xd(struct rtsx_chip *chip)
+> >                         xd_card->zone_cnt = 32;
+> >                         xd_card->capacity = 1024000;
+> >                         break;
+> > -               case xD_1G_X8_512:
+> > +               case XD_1G_X8_512:
+> >                         XD_PAGE_512(xd_card);
+> >                         xd_card->addr_cycle = 4;
+> >                         xd_card->zone_cnt = 64;
+> >                         xd_card->capacity = 2048000;
+> >                         break;
+> > -               case xD_2G_X8_512:
+> > +               case XD_2G_X8_512:
+> >                         XD_PAGE_512(xd_card);
+> >                         xd_card->addr_cycle = 4;
+> >                         xd_card->zone_cnt = 128;
+> > @@ -669,10 +669,10 @@ static int reset_xd(struct rtsx_chip *chip)
+> >                 return STATUS_FAIL;
+> >         }
+> >
+> > -       retval = xd_read_id(chip, READ_xD_ID, id_buf, 4);
+> > +       retval = xd_read_id(chip, READ_XD_ID, id_buf, 4);
+> >         if (retval != STATUS_SUCCESS)
+> >                 return STATUS_FAIL;
+> > -       dev_dbg(rtsx_dev(chip), "READ_xD_ID: 0x%x 0x%x 0x%x 0x%x\n",
+> > +       dev_dbg(rtsx_dev(chip), "READ_XD_ID: 0x%x 0x%x 0x%x 0x%x\n",
+> >                 id_buf[0], id_buf[1], id_buf[2], id_buf[3]);
+> >         if (id_buf[2] != XD_ID_CODE)
+> >                 return STATUS_FAIL;
+> > diff --git a/drivers/staging/rts5208/xd.h b/drivers/staging/rts5208/xd.h
+> > index 57b94129b26f..98c00f268e56 100644
+> > --- a/drivers/staging/rts5208/xd.h
+> > +++ b/drivers/staging/rts5208/xd.h
+> > @@ -36,7 +36,7 @@
+> >  #define        BLK_ERASE_1                     0x60
+> >  #define        BLK_ERASE_2                     0xD0
+> >  #define READ_STS                       0x70
+> > -#define READ_xD_ID                     0x9A
+> > +#define READ_XD_ID                     0x9A
+> >  #define        COPY_BACK_512                   0x8A
+> >  #define        COPY_BACK_2K                    0x85
+> >  #define        READ1_1_2                       0x30
+> > @@ -72,8 +72,8 @@
+> >  #define        XD_128M_X16_2048                0xC1
+> >  #define        XD_4M_X8_512_1                  0xE3
+> >  #define        XD_4M_X8_512_2                  0xE5
+> > -#define        xD_1G_X8_512                    0xD3
+> > -#define        xD_2G_X8_512                    0xD5
+> > +#define        XD_1G_X8_512                    0xD3
+> > +#define        XD_2G_X8_512                    0xD5
+> >
+> >  #define        XD_ID_CODE                      0xB5
+> >
+> > --
+> > 2.17.1
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190219195708.GA16266%40bhanusree-MacBookAir.
+> > For more options, visit https://groups.google.com/d/optout.
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAK-LDbLfqrqJyrjtb11xq-WqhuCksEJwcuNd3T3Rtu9GM2wcpQ%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
