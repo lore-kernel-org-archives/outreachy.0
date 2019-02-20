@@ -1,97 +1,113 @@
 X-GM-THRID: 6659981654376841216
-X-Received: by 2002:a5d:8794:: with SMTP id f20mr24116161ion.32.1550649234832;
-        Tue, 19 Feb 2019 23:53:54 -0800 (PST)
+X-Received: by 2002:a67:ee8e:: with SMTP id n14mr21798526vsp.45.1550647815256;
+        Tue, 19 Feb 2019 23:30:15 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a02:4594:: with SMTP id o20ls219957jad.2.gmail; Tue, 19 Feb
- 2019 23:53:54 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Ibavbf/18m+2ObD4GphEh3k8sn+6pzMGUqtd+5d6OCoITvyYQOw4DB1qf8vvOcKSvHoWhFS
-X-Received: by 2002:a02:9d52:: with SMTP id m18mr437534jal.1.1550649234110;
-        Tue, 19 Feb 2019 23:53:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550649234; cv=none;
+Received: by 2002:ab0:76cd:: with SMTP id w13ls1895427uaq.2.gmail; Tue, 19 Feb
+ 2019 23:30:14 -0800 (PST)
+X-Google-Smtp-Source: AHgI3Ibp/3WWottwvlKnhGRjawpt619bfeVWWlx3gmU8z5VXArmihjS9sA0iGwXZfi6HLsRAmgN0
+X-Received: by 2002:a9f:2f17:: with SMTP id x23mr21230785uaj.24.1550647814619;
+        Tue, 19 Feb 2019 23:30:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550647814; cv=none;
         d=google.com; s=arc-20160816;
-        b=a0SUK75IJ3c/Dzc1bMvD81rsyCohc0yBivgPs1CABUHJPgLn9WCBTcpSD1kQHBx50+
-         BYssBUASDk8f7A3KUNDEvTqr3Q/eUSudLtocrQCP9zG1gn60KWtJpNkW0efGuzc49QWf
-         HJzxHnx070TSx7S89G8fbB+vvJpfPrdPeyvWUr1dpZFn9XvIoDy/wcD1Gr5ZZouhkHzR
-         TBuKhrKQfew36ZzzJlRUIlT6g0n6H0oT/d8q8x+lm7TLOkMAH995OJnaxRg6i36sWr9K
-         mAOmI1SwofmKrlDUJ7+CqgJT6rNRax0FpN6ZBPkX9/rnU1vfkhpsTWv2d20LZD70sKod
-         EZCw==
+        b=B37gdftV0frQVu+402JGkBGvWmGYf65/56lgq9ZwWN2d13/dr+6ahx1D/TnX4cMevh
+         shNACJdm4gXnrMQsmRMEO6y2Ha713ovi6vMFbqONysLT7BSvMDpt6Z+K6yqrlHmvLAiR
+         +mGsKeR6HUutX8z6fltNbgsdz+oGsbK0vFmEf1qeWe4Xc1jfOANRIRnmol/pSmGgeD38
+         y64Cy7ugwQCpYm5HAlAhu1Ou1GIOlT98uUp1puUZ3UanIv4RJKGRvLIHSkmoZQLmIQou
+         tXgo70xzSc1TqFpRNCdY6IdFKN2FZg6Isy5F3vhIpBZJu/GFlff5YnGEAQkuByYPXkkg
+         MkeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=BHqMCIxkZOMw84nuFOHB9KPlLjhWZj/Nz6emwpgqZTA=;
-        b=FuArmhIun4JyrsGvReNL6LXI/oANfWVF0zojO9hQ0AGaBl/XdYH8l0ATcsYuJNjgtU
-         6QyIyktf5ALH4CBXtlwu7kA37/a60XS+K33B0GCFeEkyftS6AHPJkgZ/Mulzp/vKAm9y
-         22B8BOsiTCVbddJTWuSS+beJyiiH8qJYHE9bu68ohYjlxsQhQt+g894IG2OueoxYKZY1
-         ybvshN/2mqfkHypgOsU5kzBg9GU83GzSHwvnOrjgH/W46gp+cw7UjFC+hbR1Jg+3dhto
-         XGg7/i5es/foJnokOqATh0niL50hz4vaLmqyekHzPMhhIzWQXLKAaZi0ErPD8b54x/6d
-         m9bw==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=HSQLJcFjQwnBej5gQJtLdLmN0pKyMZBACrMvKN4d2Qk=;
+        b=erhEc4cHyq5HYUs/kq6LpehAdW1+9Zp/4rEUB9Yc9ZJAkILlmzVEVLM/qtH/guTohS
+         uFI3F5/8t/01aHRRT+80UYkhJmjA5ekXySMZE7dphVj79etNQFT1cJ2PCTECNJQ39NLU
+         SpL7EeV6dJAUFHkIzJh2D01tGWPjFJjD7tV+RoPrw7uiwIcu8/MOxA0GR+7NUaHBTVFj
+         NDrbrIK8O8mHBeVHlRiacwarB7u3pqvtmUyQIwVMinKU1HWV4YHviXpC0uTsXkpwAOn+
+         77Z9bVRcwssnnGkiw+tqIp0kZ2IFnWnTnUvLeuviVuAHX6kLWV/8i9K8oOzY5orgBzMU
+         0XCg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=Iw9RisuO;
-       spf=pass (google.com: domain of srs0=vgux=q3=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=vgUX=Q3=linuxfoundation.org=gregkh@kernel.org"
-Return-Path: <SRS0=vgUX=Q3=linuxfoundation.org=gregkh@kernel.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id 77si153915ita.2.2019.02.19.23.53.54
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dnxACSSJ;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::42c as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <bhanusreemahesh@gmail.com>
+Received: from mail-pf1-x42c.google.com (mail-pf1-x42c.google.com. [2607:f8b0:4864:20::42c])
+        by gmr-mx.google.com with ESMTPS id e64si840487vsd.2.2019.02.19.23.30.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Feb 2019 23:53:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of srs0=vgux=q3=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Tue, 19 Feb 2019 23:30:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::42c as permitted sender) client-ip=2607:f8b0:4864:20::42c;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=Iw9RisuO;
-       spf=pass (google.com: domain of srs0=vgux=q3=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=vgUX=Q3=linuxfoundation.org=gregkh@kernel.org"
-Received: from localhost (unknown [145.15.244.27])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 41B2E2083B;
-	Wed, 20 Feb 2019 07:53:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1550649233;
-	bh=5BkS3kG5CFvBRiFDUXg1BalqKw6QlSMq/poKXmRTPbQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Iw9RisuO+XdJUwHwXFn5qTeRCP148yBpPLuiOU4MJVunnFzoExsM4LYW6uqttvie4
-	 aOmBr3qVKQq/KUHJrm/CWvlKjITBbk9IHbVL5V04tay842BLZJIgHmupXLP0YOWkVx
-	 73FRxIhdeLX/Vqzoqhl4bFgrSZrGs19lJ4v8pAGg=
-Date: Wed, 20 Feb 2019 08:53:48 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Bhanusree Pola <bhanusreemahesh@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH 2/2] Staging: rtl8192e: Avoid using bool structure members
-Message-ID: <20190220075348.GA14929@kroah.com>
-References: <20190220073011.GA21216@bhanusree-MacBookAir>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dnxACSSJ;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::42c as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x42c.google.com with SMTP id a3so1665962pff.11
+        for <outreachy-kernel@googlegroups.com>; Tue, 19 Feb 2019 23:30:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=HSQLJcFjQwnBej5gQJtLdLmN0pKyMZBACrMvKN4d2Qk=;
+        b=dnxACSSJSMOy+v029XIHjg6SF6cWOb0oOKk9mxQeE1he2fstPvsXRRFTkaDcVA+24V
+         bgO+BGV1oiEuTk26UJ2kJO2eCXalS7KpL8fEtjVvTtfy0rnSawkgAZUp8nHTaHafdhXY
+         hSuil2fCmzODKKv8oOG7ESvBZV7F0azuj5KCaO5bJt0eyJweJWvbJ4To6gLcHThMW7zT
+         Wz2qdE3HA90ew6jCgR73th1z+Eu2vzoWcLeY+8wVIcctRXrbPwwO9M0vxmBOp4/ePmKb
+         qHsczDqgnzUaKqwkzMplrzdOmWb0EZ38iyQSHPCvW9sp+0RkZKTxI8/qjCyP1Safaq2+
+         YTlw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=HSQLJcFjQwnBej5gQJtLdLmN0pKyMZBACrMvKN4d2Qk=;
+        b=jAMwou5fYh2oRO+HQNM0FXHu/tm8zWH01OMW/Ps84j4G1QB+0hJHzO/oOFXrgLrZv9
+         sViYmYdrnqIhsmFgR+vVgLJONv81HDYAom1HVPuN9ZkGTzcDMqnWUc0fn+ai3MlPqwDa
+         OK18DOpmHRy5Ks+syot9YTHhKzc3B+5Zirl9Zfz947I6o6cGMi7ZjyQPVboW2Zt87cjZ
+         tlMB05uUm6iZf51tq8tLXT4ohrtQi+/Z9aKvAl3L8iNdBMvRgVs1mZPQVPa5QKwru4ke
+         QF4jS/lDIUzaTgeFYE8HR/Hwvdml4c5IEZhcriQB5Rgtp2/dcATwpXxBd7teF9Hrw4+u
+         MmWg==
+X-Gm-Message-State: AHQUAubqT9+ulAOwMGOQnt2LnFIGGEW9dUdtlpBrR5mf0qZjOoXYWKxv
+	fubjGOv/AW3BxceMBcfh5qE=
+X-Received: by 2002:a63:9402:: with SMTP id m2mr26981559pge.93.1550647814264;
+        Tue, 19 Feb 2019 23:30:14 -0800 (PST)
+Return-Path: <bhanusreemahesh@gmail.com>
+Received: from bhanusree-MacBookAir ([183.83.84.116])
+        by smtp.gmail.com with ESMTPSA id s2sm34862947pfa.167.2019.02.19.23.30.13
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 19 Feb 2019 23:30:13 -0800 (PST)
+Date: Wed, 20 Feb 2019 13:00:11 +0530
+From: Bhanusree Pola <bhanusreemahesh@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH 2/2] Staging: rtl8192e: Avoid using bool structure members
+Message-ID: <20190220073011.GA21216@bhanusree-MacBookAir>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20190220073011.GA21216@bhanusree-MacBookAir>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Wed, Feb 20, 2019 at 01:00:11PM +0530, Bhanusree Pola wrote:
-> Use 'u8' with bitfield instead of 'bool' to avoid alignment
-> issues and remove checkpatch.pl check:
-> CHECK: Avoid using bool structure members because of possible alignment
-> issues
-> 
-> Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
-> ---
->  drivers/staging/rtl8192e/dot11d.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/rtl8192e/dot11d.h b/drivers/staging/rtl8192e/dot11d.h
-> index 44f11f629922..f3e8373b1312 100644
-> --- a/drivers/staging/rtl8192e/dot11d.h
-> +++ b/drivers/staging/rtl8192e/dot11d.h
-> @@ -29,7 +29,7 @@ enum dot11d_state {
->   */
->  
->  struct rt_dot11d_info {
-> -	bool enabled;
-> +	u8 enabled:1;
+Use 'u8' with bitfield instead of 'bool' to avoid alignment
+issues and remove checkpatch.pl check:
+CHECK: Avoid using bool structure members because of possible alignment
+issues
 
-Ick, no, that might just have caused a lot more work to have happen to
-access that variable (think about how a bool is stored and accessed vs.
-a bitfield).
+Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+---
+ drivers/staging/rtl8192e/dot11d.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-There's nothing wrong with this bool as-is, I would leave it alone.
+diff --git a/drivers/staging/rtl8192e/dot11d.h b/drivers/staging/rtl8192e/dot11d.h
+index 44f11f629922..f3e8373b1312 100644
+--- a/drivers/staging/rtl8192e/dot11d.h
++++ b/drivers/staging/rtl8192e/dot11d.h
+@@ -29,7 +29,7 @@ enum dot11d_state {
+  */
+ 
+ struct rt_dot11d_info {
+-	bool enabled;
++	u8 enabled:1;
+ 
+ 	u16 country_len;
+ 	u8  country_buffer[MAX_IE_LEN];
+-- 
+2.17.1
 
-thanks,
-
-greg k-h
 
