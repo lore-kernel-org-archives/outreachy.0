@@ -1,78 +1,151 @@
 X-GM-THRID: 6659803762561908736
-X-Received: by 2002:a17:902:29ab:: with SMTP id h40mr10083607plb.32.1550658240688;
-        Wed, 20 Feb 2019 02:24:00 -0800 (PST)
+X-Received: by 2002:a5d:914f:: with SMTP id y15mr7451023ioq.18.1550651114689;
+        Wed, 20 Feb 2019 00:25:14 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:5751:: with SMTP id h17ls3321892pgm.4.gmail; Wed, 20 Feb
- 2019 02:24:00 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IZv6MRwFRnLcbVDp1eWF82vHD4Je3fQ0D+raj63gw+Jls5Eb0UUZNoH/oWpRHdmixQgOymS
-X-Received: by 2002:aa7:9211:: with SMTP id 17mr12103737pfo.115.1550658240136;
-        Wed, 20 Feb 2019 02:24:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550658240; cv=none;
+Received: by 2002:a24:228e:: with SMTP id o136ls1542574ito.0.canary-gmail;
+ Wed, 20 Feb 2019 00:25:14 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IabcLxtzY05qpUT9ENDw1FOq+wM3JaetY+AGCe3kU2pPRH0gO19buN5gasH8GV56rhBqPso
+X-Received: by 2002:a24:69c6:: with SMTP id e189mr4920868itc.8.1550651114103;
+        Wed, 20 Feb 2019 00:25:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550651114; cv=none;
         d=google.com; s=arc-20160816;
-        b=brYrRZXCe580VP9nbIs9KumFMe4KqjoisioyqkFgaO405KqHpNiSPrlOztNIkxxku/
-         2Nvgkmp4nUg80qpOQXYJQoHmMITv4NxcW8+EurBJfmzTBRti1YmBJCR0TBsoHETbmZYf
-         VyeiCHtKdICJYA6bJufqFNuUXunJQBhdlwzQhAzDO4ZEs5Z3ZtWwPtXPII32F5pYvtH9
-         GWoWFmmUhauUy+El+ggkOe1ZWAHzVe8drKCy70oxbPWIPwMskeOOnk/oe9Q2i6g6inGW
-         2Y0eUHRljTwwRQDrIYgSmdotwVhIr3JPzymuWP+aD70cetlJHSLCGg97OuiST0Xvj9om
-         kK+w==
+        b=FTxkvphWDhm9ORDfdhMRi7Oo1qtq1jgEDT9IfZ9t65oMqoIWBsCwFrMZuloIFDNTCI
+         v1b/H0oCQmuokEyaiJS812YimIBqyVVZfUan5IFBKoycf/0TMTXZbg+RTdVbZYcWiVkB
+         DR16g7JlDcOdMDpNPOKyYc4M4A3P6amhE9cJPjy7i/sHxM/NzF5RpTUPPvtOYN5r9kge
+         bxUpvEmz3R7K1hNtpACrCZZJQYVVl4NOaQqz19b/JwhdYc6JKTwXtpfdm9B+iTL3E8In
+         1suGlT6G9DdKZydBqKpPhwmaSbEmQgYWffnUDgq+DzXrcVS1MMct4mLPtxKxH7GSKObi
+         LHKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=x+hv3MLeK588CkrRZJ1EzRZMEhHbVtwd2WoRm5TzFZI=;
-        b=SFbAyd1XzGgUPwBB3l49y90bOBwxjvvHKqQJLBXGsot4cOLHFHe3SoggSBRcXym7TH
-         ZWuRGt421hrX/VzC3KkTyMxuoJTxu78xi3wTPBy9jI5XoJmWh547/4UhaQsLqWek+Vwg
-         kazEYKoIElovdfjXVUTNko8XRSldoLixKtNS6RbwMM0IsoFbLEvVh0Pw3xLEOkO8pQ2c
-         07W14c+w8zsCAsuuy/FkTu/FXzcj86Xs26xFtTCKygj/I5cSDrB1SuzZdNM5SkCLTaPL
-         KA8wyVYQaeF7TsVCDHPYJnA8u04ldme/4yWHsf2soYYyJVPd8hyTrzqZ99MCaTZMhU+K
-         jL1g==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=GvR78ZvdeWGPKobYh6NKTi8kEKloNIs8HIu1IxmxlFw=;
+        b=RkPTwbrWObyYZHkVtJScOKqxKMXwoG/y6fZuBdK4f5vEnORFfQWRJbtkRbX0xrfCa+
+         Es34gFROsQH3ueD3F8TKRJiiyu/tADoUVE5sguo0WswMbhJ2lbDLeWoWBjAkhfEgNgdP
+         hYRrTnt7uKOiQwa56F4ZgG63dZu1+x2ePlQYkvLDnlVPHUyEDdwOy7FniHojkTU/2S4Z
+         pAJB362fPx1COywv78gl/GYOoSZhwaBPD0vxArhkocOStanQSK+S4NHv6ig5Hd0kJx9L
+         yd+J0ezmGfrduqPI52F+yBvHI7PbTQC29bkxi796GD4iqAqn7ay4sWa7j4k+68FYzRSx
+         bJRQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=viCGjzGE;
-       spf=pass (google.com: domain of srs0=vgux=q3=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=vgUX=Q3=linuxfoundation.org=gregkh@kernel.org"
-Return-Path: <SRS0=vgUX=Q3=linuxfoundation.org=gregkh@kernel.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id g25si883829pfe.1.2019.02.20.02.24.00
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rIHPzKKc;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::329 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <bhanusreemahesh@gmail.com>
+Received: from mail-ot1-x329.google.com (mail-ot1-x329.google.com. [2607:f8b0:4864:20::329])
+        by gmr-mx.google.com with ESMTPS id 184si1270165iou.3.2019.02.20.00.25.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 20 Feb 2019 02:24:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of srs0=vgux=q3=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Wed, 20 Feb 2019 00:25:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::329 as permitted sender) client-ip=2607:f8b0:4864:20::329;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=viCGjzGE;
-       spf=pass (google.com: domain of srs0=vgux=q3=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=vgUX=Q3=linuxfoundation.org=gregkh@kernel.org"
-Received: from localhost (unknown [195.134.171.12])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 4FA912146E;
-	Wed, 20 Feb 2019 10:23:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1550658239;
-	bh=CVl/jRJM17tr7yoceXEeHEXSeCjgWBydRTjJldcZCqE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=viCGjzGEWN0MsSpZPg0XBz0l1EnCUJpJFu6gf/kbzChlpg984VWZOW7E1Lsx65YDw
-	 XpHofoXh2VxmRkXKH0M29tqnXa3sdcV5AvOFXN8r96+xATrrns5gwUEE4kVKTBRFdx
-	 El+rLoc5q0w1iqACVcJposlDOh11fRJW8PiNhMaU=
-Date: Wed, 20 Feb 2019 11:23:55 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Bhanusree Pola <bhanusreemahesh@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy Kernel][PATCH 2/2] Staging: rts5208: Fix Macro
- argument reuse
-Message-ID: <20190220102355.GB5535@kroah.com>
-References: <20190219195951.GA16325@bhanusree-MacBookAir>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rIHPzKKc;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::329 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-ot1-x329.google.com with SMTP id i20so38906817otl.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 20 Feb 2019 00:25:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=GvR78ZvdeWGPKobYh6NKTi8kEKloNIs8HIu1IxmxlFw=;
+        b=rIHPzKKcECLM3t0qrSldyBfQb6FXjzJmSCXpBAaMUbLkTEkD7sVCytRJ1WtMnHZAWW
+         f1USzcBZ40gJFjt9lrbwvDrsUPe3n9bAYCnV2w66jaiMn0rFEv2a+EWz1rpC8yElX2C6
+         e8LHDs7bGfxPUuJ1ZIeDsD/64Jxuiiynf4S1BBA8iI4h49V958V/HVhbW3A2shGgZk1B
+         MwaEHZ5igfhxCjvXeSEfOvzuPcHYGSGCCWmoltxfyIResRpNcmtTh9BVmSGG73Gw4myt
+         gCxvTpz6esIXrrwRZQy/JkfoSSua/QXpGs3JdmSX/F4MCWKuqWF0jq8Jp4IsWiedNpmq
+         CiTA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=GvR78ZvdeWGPKobYh6NKTi8kEKloNIs8HIu1IxmxlFw=;
+        b=TRfngeIMEl2HGcV1mYjAsj4/h1nQmWyGFXf/ws3W9V++ZuF/uRYbaf35cg+ZrWVnaY
+         Hi9CzF7qdYwvYc0/s0nvRiEsu3oxDyUxTbFoMkI83gUnJpAeK6Ksa2NaH7xzBRtwHICb
+         YPEdyYRxWx46cYZy2XzU7jVc8CsNKBZ9KphDGlZ6RtRLlryk3G1rqh+vlwMIQ9FTmGWd
+         Qnpb2GkFW+rMaAPK+MzreF9VyPnEMhsACRzzn8aU4F0wD78n0Iau3PTi1YeIqlfej4RZ
+         p+Z58Bp5b8/deNdZ+jaRNSaN5NPJLlMqTyJTPNinKpagJWFqF1D8EvDrjd0MlMOXIrqW
+         TxgQ==
+X-Gm-Message-State: AHQUAubTc+40HDpphT9rtn+ZxT7Pd+7IbalKUyiSYlthS15Pa+EZZpo+
+	qIZLtZL/bSv8OCt9BmU/9OjzDLnuXginphBExWg=
+X-Received: by 2002:aca:ac45:: with SMTP id v66mr4933754oie.134.1550651113725;
+ Wed, 20 Feb 2019 00:25:13 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190219195951.GA16325@bhanusree-MacBookAir>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+References: <20190220050522.GA19976@bhanusree-MacBookAir> <alpine.DEB.2.21.1902200825590.14914@hadrien>
+In-Reply-To: <alpine.DEB.2.21.1902200825590.14914@hadrien>
+From: Bhanusree Mahesh <bhanusreemahesh@gmail.com>
+Date: Wed, 20 Feb 2019 13:54:51 +0530
+Message-ID: <CAB0Mk-PfG9DENHZObXhL+=T1-tkbSc3sJr_VEn8TF+FDcbPepw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2 2/2] Staging: rts5208: Fix Macro
+ argument reuse
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: outreachy-kernel@googlegroups.com, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Content-Type: text/plain; charset="UTF-8"
 
-On Wed, Feb 20, 2019 at 01:29:51AM +0530, Bhanusree Pola wrote:
-> Fix Macro argument reuse to avoid possible side effects
+On Wed, 20 Feb 2019 at 12:58, Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+>
+> On Wed, 20 Feb 2019, Bhanusree Pola wrote:
+>
+> > Fixes Macro argument reuse issue
+> > typeof is used to avoid possible side effects
+> > Issue found with checkpatch.pl
+> >
+> > Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+> > ---
+> >  drivers/staging/rts5208/xd.h | 9 +++++----
+> >  1 file changed, 5 insertions(+), 4 deletions(-)
+> >
+> > diff --git a/drivers/staging/rts5208/xd.h b/drivers/staging/rts5208/xd.h
+> > index 98c00f268e56..5e9b3805c33a 100644
+> > --- a/drivers/staging/rts5208/xd.h
+> > +++ b/drivers/staging/rts5208/xd.h
+> > @@ -99,11 +99,12 @@
+> >  #define      XD_RW_ADDR                      0x01
+> >  #define      XD_ERASE_ADDR                   0x02
+> >
+> > -#define      XD_PAGE_512(xd_card)            \
+> > +#define      XD_PAGE_512(_card)              \
+> > +(typeof(_card) (card) = (_card);     \
+> >  do {                                 \
+> > -     (xd_card)->block_shift = 5;     \
+> > -     (xd_card)->page_off = 0x1F;     \
+> > -} while (0)
+> > +     (card)->block_shift = 5;        \
+> > +     (card)->page_off = 0x1F;        \
+> > +} while (0))
+>
+> Is it useful to reuse this macro?  Other types may not have the same
+> fields, with the same semantics.  On the other hand, I wonder why this is
+> a macro at all, and not an inline function?  Likewise for the next two
+> macros.  Then you would have proper typed parameters.
+>
+Should I change it to inline function or leave it as a macro?
+Should I also modify for the next two macros?
 
-What side effects?  Always be specific.
-
-And if you do something like this, make it an inline function, that way
-the type can be properly checked.
-
-thanks,
-
-greg k-h
+> I haven't checked on the uses, though.  Perhaps there are many closely
+> related types with the same field names and so having a macro is useful.
+>
+> julia
+>
+> >
+> >  #define      XD_SET_BAD_NEWBLK(xd_card)      ((xd_card)->multi_flag |= 0x01)
+> >  #define      XD_CLR_BAD_NEWBLK(xd_card)      ((xd_card)->multi_flag &= ~0x01)
+> > --
+> > 2.17.1
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190220050522.GA19976%40bhanusree-MacBookAir.
+> > For more options, visit https://groups.google.com/d/optout.
+> >
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/alpine.DEB.2.21.1902200825590.14914%40hadrien.
+> For more options, visit https://groups.google.com/d/optout.
 
