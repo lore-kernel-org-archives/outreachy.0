@@ -1,97 +1,117 @@
 X-GM-THRID: 6660473705806692352
-X-Received: by 2002:ac8:7516:: with SMTP id u22mr23844789qtq.36.1550764856149;
-        Thu, 21 Feb 2019 08:00:56 -0800 (PST)
+X-Received: by 2002:a0c:d05d:: with SMTP id d29mr16870673qvh.44.1550762379384;
+        Thu, 21 Feb 2019 07:19:39 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ae9:ec05:: with SMTP id h5ls1279281qkg.2.gmail; Thu, 21 Feb
- 2019 08:00:55 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Ia648KIdlOVVuUUhy1mCNslZMfp4czh6XLe8Zoml0D4ga1hXyXq2ZrFC3tDEW5h+nTjP9Nv
-X-Received: by 2002:a37:d654:: with SMTP id t81mr23379480qki.4.1550764855544;
-        Thu, 21 Feb 2019 08:00:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550764855; cv=none;
+Received: by 2002:a0c:92c7:: with SMTP id c7ls1255665qvc.7.gmail; Thu, 21 Feb
+ 2019 07:19:38 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IYtN3AUUflwYyy6BsKE5BelDack9+tBQOFJy/qMdvFxSxkylPTOH/S0qMD2wQ32ArisPc/8
+X-Received: by 2002:a0c:c125:: with SMTP id f34mr15471478qvh.48.1550762378556;
+        Thu, 21 Feb 2019 07:19:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550762378; cv=none;
         d=google.com; s=arc-20160816;
-        b=Tjmg/aeHRbQ/9ywqOq7/K3pckn4xBizR6NvcHpj1y3KJH/bjhq6OZuze25k4BICplJ
-         LzGbndzPO3eM+DojQc5BWxLMn8+/x2nGVJ/UISAkbBVUuLyRAPMhBs9MQF3pUxh5PJNT
-         /z1zTvaYwRtzvI2MeqwRe8dsFL+QlyCSAulWZCfc66F3Ctygoa8JegsJ6Im8W7ZQO444
-         OB87YYROEpo7foHuEQppm6btP4yfpuhzx5W/rd2bKmP6Bq+tPBi49K3OI6G5pVLiVNPz
-         HC4fzVWwdFhOHPVLXN5ezpJxvBC9UsJ1PDfLMza3gu3xqmXP1wqmblDXBbL2LfX1+RDu
-         dH6Q==
+        b=oxtGYX8CgUCmYj9GcOwmT9iQBOl1gdWPwO4FGx9ZxSoxZfmWc0rs2FBaatbejTmVgf
+         Z/1KrlmUlZ09awpgz4H4cud8u+lBKGZ07sd5kMi6m+hWId0jNwgYD33nB3C32tXrNiJ8
+         aFM2o3+rA9h3OfrgsOAH9JM52kzo6JLRJCFpCYizFBTfRLuvPV8Q/RzT38nBV902Unfe
+         nrAezQ9WXk1YFP0/Ub4PIf7G99TyWTxkU5x+STkBPKuxlJ8VZ9LfNzvtzxzCqr+wNI4p
+         oo+VHidvMzHgVsHqxqD+UaUWykuuh8bPPV78IVSFnxBQ+M8cFJi//Z1O3T/6aCuaFo5x
+         NjtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=aF5+U4gzRSO33RRHxTtkKB5a4Kt/tTHo4SxZ+QH9yAU=;
-        b=ZXAbkhBhpb68E1zHQED+yb1copyRj6WRbvFMjv2veSE6RNbpqnra6rRP/E9FRIAxDn
-         9SSdJwpIGfcampfXweKrgVOwA/ATZUSUhN28v0AhM4Q0OUdkOxSXyi/EZ/Ss9NTc1T0k
-         qq6DHgbJ+1Cn53smZAkmm67nNMe85nYlMd4gDYXH8ny+uccDvYEBfgXxnuZOGmZqYeq4
-         cOfZdFjFznKmC0JDOR9Weyp2EdHcez71Tjq/wdaR3voMPWHc4raeqoEHXFePMo/uTFtO
-         cC3NQdXgm2qr30PLmXN3iZW3TjYM8GSRH8AhlEkGDtTAeICyB/Yqn/J7HCmjBFGZGmOJ
-         7YVQ==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=0+8jtrEyTuREfkZHFV2SQHYsyP7jVqTA093PeiZv+qk=;
+        b=vJurgsfWt3yi5ha2ykE1qr7AM7VZYnXpt+kuV8KWjRTrJMhY+TozsmIPdyzzoWpP2Z
+         QW0Pmuz6ghISGiY33PbqqKq8zFpb0dtITU3Tgm/L+UvBQ/lwv4Mydh1ZWIleI4zVKvN0
+         cCCfWLnMWQKsc4SbEtV/WPfI8GJ1AMDO4Bh7VM17oZ9LJ01cNpokLmXHbxLMtv1Qu9zV
+         eJxI0DGd1stIzR/tMcUJjmU0/9lzDQYX4H272YePalSAUJvSZjcnABd49bPRN1kT2Y0D
+         LZx8mplFpKTPyrUj+IQh665Nla5ktgKj3kPVtks8LWXGRQzlxLJua+Gr8iJXh/QAS/as
+         W83g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=tyAio3Uy;
-       spf=pass (google.com: domain of srs0=u/6v=q4=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=u/6V=Q4=linuxfoundation.org=gregkh@kernel.org"
-Return-Path: <SRS0=u/6V=Q4=linuxfoundation.org=gregkh@kernel.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id p1si1395860qkg.3.2019.02.21.08.00.55
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="OrD/krBt";
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <bhanusreemahesh@gmail.com>
+Received: from mail-pl1-x641.google.com (mail-pl1-x641.google.com. [2607:f8b0:4864:20::641])
+        by gmr-mx.google.com with ESMTPS id o22si1566716qtm.1.2019.02.21.07.19.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Feb 2019 08:00:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of srs0=u/6v=q4=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Thu, 21 Feb 2019 07:19:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) client-ip=2607:f8b0:4864:20::641;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=tyAio3Uy;
-       spf=pass (google.com: domain of srs0=u/6v=q4=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=u/6V=Q4=linuxfoundation.org=gregkh@kernel.org"
-Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 07DF22083E;
-	Thu, 21 Feb 2019 16:00:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1550764854;
-	bh=ie9r6xx8apIzOnS38s48xiWzrmHRdzu/FR5aq7MHJuM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=tyAio3UywVA54sx0NcgrS0RbW9v9QSX9ORHA/If97xBAMU0n0VaeLs47dWOvcNavD
-	 n3m1x87xG4YMs/NeKJJf9aQikiyWAeDDuGbDAfH71Z4pyuXmXuPOhbYgsMN+ISlkHY
-	 Nu2oAaZjTZBZRPqp4PbROuwtu14ZtrThGbXrKrEU=
-Date: Thu, 21 Feb 2019 17:00:51 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Bhanusree Pola <bhanusreemahesh@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH 2/3] Staging: fbtft: Declare Exprot symbols immediately
-Message-ID: <20190221160051.GB23121@kroah.com>
-References: <20190221151935.GA1946@bhanusree-MacBookAir>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="OrD/krBt";
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x641.google.com with SMTP id c4so9296175pls.11
+        for <outreachy-kernel@googlegroups.com>; Thu, 21 Feb 2019 07:19:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=0+8jtrEyTuREfkZHFV2SQHYsyP7jVqTA093PeiZv+qk=;
+        b=OrD/krBtZDGia9kUfjUyde22zQuNKD/3eRSFatYx3G1uRHsihZ7XIAy7D4+9b4h5Jb
+         DKUGKA833GyRRQvmdtvAr+9Fw9fONV1vXOXxO3EYUpWcIQbCjWfqNfySeWSYfC27n+kP
+         eQ5g0Z5BLh0iWIN5rivaxrPprT84HzOmINbm8Obg1j+7VVHNZ5QMmI1T2DZ4TVA5jWYa
+         NWtWFGlLVz/NEk23/86t1BOLwhnHlTq+7QMcHEXtua8+ooc73TPUqDoxQWbR40wuCbvu
+         6R9BiMsZGqQpC7IIYL6CpM08+Jr+xhRK+NNjqB9P5PSmhXByaLBQHzfajyg1JzEYqs56
+         qbJQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=0+8jtrEyTuREfkZHFV2SQHYsyP7jVqTA093PeiZv+qk=;
+        b=Jy3pkP07kNa4NV178Q1jXpXGIxqpLwjy+NHEVVo/QDITZMb2XR52eE0nfDwqBT/EpW
+         1eCzyr5WKEQ7lsQCrf0L/SmU1KGQgchyeQSTHW7IEYF9W9eB/F8lTfK3j0F6ZNQTFkk4
+         fw2IPWt9A1lKeC2M0XTtlC0jE5DkjE7OWlpm3LZbE6m52IGDdjrQxyL4S8cw8BBrlxos
+         15n+P5s03LadZR1a9kqA4mjLD6tyH9panj4A4ngTCirREZYqhO4t5hJWMnA+8xUAjjIM
+         kHebbU9iA5D8+90xfmIG0kgO+M1LGpPbd6C84381svgcY41MO2MoMp7LoHS6wD6niY6n
+         npcg==
+X-Gm-Message-State: AHQUAuYwfYb9XsX6a0kv+eK1kWhkrMX6n1OS+URP1nXqMpxFfZRKez1k
+	uDr5whkZIKHX/JtDQFBaKdM=
+X-Received: by 2002:a17:902:7b85:: with SMTP id w5mr38840249pll.288.1550762378166;
+        Thu, 21 Feb 2019 07:19:38 -0800 (PST)
+Return-Path: <bhanusreemahesh@gmail.com>
+Received: from bhanusree-MacBookAir ([183.83.84.116])
+        by smtp.gmail.com with ESMTPSA id h79sm33776040pfj.186.2019.02.21.07.19.37
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 21 Feb 2019 07:19:37 -0800 (PST)
+Date: Thu, 21 Feb 2019 20:49:35 +0530
+From: Bhanusree Pola <bhanusreemahesh@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH 2/3] Staging: fbtft: Declare Exprot symbols immediately
+Message-ID: <20190221151935.GA1946@bhanusree-MacBookAir>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20190221151935.GA1946@bhanusree-MacBookAir>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Thu, Feb 21, 2019 at 08:49:35PM +0530, Bhanusree Pola wrote:
-> Declaring EXPORT_SYMBOLS immediately after function/variable would be
-> more appropriate.
-> This solves the checkpatch.pl warning:
-> WARNING: EXPORT_SYMBOL(foo); should immediately follow its function/variable
-> 
-> Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
-> ---
->  drivers/staging/fbtft/fbtft-core.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/fbtft/fbtft-core.c b/drivers/staging/fbtft/fbtft-core.c
-> index 9d78ce6e819f..a5cdce4766bb 100644
-> --- a/drivers/staging/fbtft/fbtft-core.c
-> +++ b/drivers/staging/fbtft/fbtft-core.c
-> @@ -212,10 +212,10 @@ void fbtft_register_backlight(struct fbtft_par *par)
->  }
->  #else
->  void fbtft_register_backlight(struct fbtft_par *par) { };
-> -void fbtft_unregister_backlight(struct fbtft_par *par) { };
-> -#endif
->  EXPORT_SYMBOL(fbtft_register_backlight);
-> +void fbtft_unregister_backlight(struct fbtft_par *par) { };
->  EXPORT_SYMBOL(fbtft_unregister_backlight);
-> +#endif
+Declaring EXPORT_SYMBOLS immediately after function/variable would be
+more appropriate.
+This solves the checkpatch.pl warning:
+WARNING: EXPORT_SYMBOL(foo); should immediately follow its function/variable
 
-Nah, the original is nicer to read, I would just leave it alone.
+Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+---
+ drivers/staging/fbtft/fbtft-core.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-thanks,
+diff --git a/drivers/staging/fbtft/fbtft-core.c b/drivers/staging/fbtft/fbtft-core.c
+index 9d78ce6e819f..a5cdce4766bb 100644
+--- a/drivers/staging/fbtft/fbtft-core.c
++++ b/drivers/staging/fbtft/fbtft-core.c
+@@ -212,10 +212,10 @@ void fbtft_register_backlight(struct fbtft_par *par)
+ }
+ #else
+ void fbtft_register_backlight(struct fbtft_par *par) { };
+-void fbtft_unregister_backlight(struct fbtft_par *par) { };
+-#endif
+ EXPORT_SYMBOL(fbtft_register_backlight);
++void fbtft_unregister_backlight(struct fbtft_par *par) { };
+ EXPORT_SYMBOL(fbtft_unregister_backlight);
++#endif
+ 
+ static void fbtft_set_addr_win(struct fbtft_par *par, int xs, int ys, int xe,
+ 			       int ye)
+-- 
+2.17.1
 
-greg k-h
 
