@@ -1,118 +1,110 @@
-X-GM-THRID: 6754405077776072704
-X-Received: by 2002:a1f:608a:: with SMTP id u132mr6136855vkb.95.1572632481810;
-        Fri, 01 Nov 2019 11:21:21 -0700 (PDT)
+X-GM-THRID: 6660473673127821312
+X-Received: by 2002:a17:902:280b:: with SMTP id e11mr690849plb.55.1550762372574;
+        Thu, 21 Feb 2019 07:19:32 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:f652:: with SMTP id u18ls640275vso.16.gmail; Fri, 01 Nov
- 2019 11:21:20 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwBEgmPeh1jK/XBGIHsMfWuHcP/cG8vkVlLeCVZlxpkRNzBONxaDnLLLqAjd0HFurWKHiiE
-X-Received: by 2002:a67:ef4e:: with SMTP id k14mr1261589vsr.165.1572632480822;
-        Fri, 01 Nov 2019 11:21:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572632480; cv=none;
+Received: by 2002:a62:47ca:: with SMTP id p71ls1279711pfi.1.gmail; Thu, 21 Feb
+ 2019 07:19:31 -0800 (PST)
+X-Google-Smtp-Source: AHgI3Ib6vdiS5tQdrdhgwFytf/bMLhk308w5eDy0C1oWLkUsLKysO0Z22u4NsZ7DTtx0hlgZmEzQ
+X-Received: by 2002:a63:2c06:: with SMTP id s6mr3027138pgs.120.1550762371880;
+        Thu, 21 Feb 2019 07:19:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550762371; cv=none;
         d=google.com; s=arc-20160816;
-        b=jja68lCBHo4AHEMiii6iD2e+5tT8X77fpHZyfrojF0ex7CqZ7fOrXAOe7opFbcnMzq
-         YsjEniexK4q03uW00o5UKEAZOHcxhU7NW6sNgnzNMKiP+NSW9FZCgaSGMA5h8y+H7s0O
-         r7ZbwALQquuseTMO+l+Xz+Sd1pexIK5TsuD9VHXYCluRg8TwofzP+GWavSIDZV/nKY8S
-         7KmUIxk4/SIpNNyPekcXGdql8aEwlttg/TKh3icll2afd4w6aHLgva/ydjZTm1gUnR9G
-         BMHr7Ggbnl6HK+5ZkX6DT8EkIGaetCX3R5GVuVRQexBQA5t9XWRZOPEBBGvgADt3rar6
-         U08w==
+        b=xXKiok+VBzWhGWVD5T6Q6Fn9GCorr6H4ZQQcytop3ut/BYUBbf6oSbCsVfVz8Q+D5H
+         SeTI+6L4DoY+98kO2GYgwvjMOQyda0y4MrMaTobydJLPNZq5LMGvvbZj6p9+IbyuNKZk
+         411I47MA7uykMmmHP1sw7bEMgKMfUXtJTYYhpgYL7UfEeR7ypdcSNvryfvSjIontrvWN
+         u5XnmhNL0URum4ueCMnquX4yV1cis9rKycf07XuaYfHNPPNE73i0nZ+O/XaeRP6LXCFI
+         7lsI2Nxf6Mrve6usHksONRcf50TSI+18pueWfsP2eIHmf2dH4LZR5Cs0QVc2q0fNuhUY
+         D/Kw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=xfChniPxmFbZU2S4qrE7c3GqiFqrYlUdrzoxXGWQIRg=;
-        b=iJ670Yu4Co1rhNLls6MlUuEUekEkktiqILKSFCLt0ZfX6E53mEkMmhniwWe4Mz4ukz
-         R4YPEDqB5trLlp7NK2e9jFv8fCJ9W11AmcFpS6P1Jcu3Y0DLnpF+TgQdFt+IBwv2ihXU
-         eCBtNfV09WJCgPzhSOvDC1PxkxYI3CqNNRvIsO9mXZ9K6SpodjfuZDTHcqd03e0v/23v
-         A04BVmYxCYqTEUY5ZxhNpt+fS3bfhbQgEUf4DgnjyJ4IlsCGbmCZwrur/g7/vdHOux0r
-         dv+E2A4lo0m+sAOVyK8e7O3OleMGIEPGajuot4fqBm2BxwXujL5ugEHyBaefVMpfwZ8Z
-         P0/Q==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=pNJHhgyEbuJcp6bukW8ShxBT1fizDqIn4FabNb/Ilfc=;
+        b=n0khr7TEbwJDPPRrtSFLXNGS5tTQtFvFn1oBbdmzpe4618bPo3Ll016Mv8kul3WsKS
+         9JoJjfQ8aqL9ANbuzUVFIumdeh0aVZKncOuKvAyvEhZzMMF6RQ8/GakBbpy25KA1tS3h
+         B5Aphkc5taB3l7x9y3SnBIV4+m+RJh/nGFOshMKG9KShv41gsenB0aNwOVOnT1XkcYRB
+         cqnvUcEy6l0ni2GkMtGq+CyV4uesbzJdp/8klEIhm1VU+X0siF8hXm1+L8as5hLJNL7r
+         WUSUnStPzI0uGSMS8eT/nwFYSoqILb7L5ha8ONtxpixNoQVzwY/kVbJPNg3YKqsrhbqT
+         wRZQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I3SMuVHn;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::741 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=U1FKc8By;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <gabrielabittencourt00@gmail.com>
-Received: from mail-qk1-x741.google.com (mail-qk1-x741.google.com. [2607:f8b0:4864:20::741])
-        by gmr-mx.google.com with ESMTPS id o206si489176vka.4.2019.11.01.11.21.20
+Return-Path: <bhanusreemahesh@gmail.com>
+Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
+        by gmr-mx.google.com with ESMTPS id d26si82044pfj.2.2019.02.21.07.19.31
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 01 Nov 2019 11:21:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::741 as permitted sender) client-ip=2607:f8b0:4864:20::741;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 21 Feb 2019 07:19:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I3SMuVHn;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::741 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=U1FKc8By;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qk1-x741.google.com with SMTP id h15so1841512qka.13
-        for <outreachy-kernel@googlegroups.com>; Fri, 01 Nov 2019 11:21:20 -0700 (PDT)
+Received: by mail-pl1-x643.google.com with SMTP id m10so4664529plt.10
+        for <outreachy-kernel@googlegroups.com>; Thu, 21 Feb 2019 07:19:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=xfChniPxmFbZU2S4qrE7c3GqiFqrYlUdrzoxXGWQIRg=;
-        b=I3SMuVHnefRGev7pKBa/p/vIdpNEst8AexAfUrQVntypTFJVSOseXJZcgDIgmsGXAu
-         cmQ89JtTQy3tV7nJmJSSSCu2kN5AbiWclNGyInwZ+03vGsEw1Fht3wC53e4eokh/j8Zb
-         JrI0B+PU7qmLMAlxCXiYY3BNoX9XEZZkHyvUEErAI8XoNu4k12MUMDK81fyYkVKRsDf/
-         v3GW+n4KTacJVvKZKAnnUsAmfx8KxoCBiCZBCxf0XGxn/EWOVRDtHsGFN7hwzQXWjAht
-         TJiML7FmEkeePOp6uv6E7gPfPfdrLtkU23vwXgdnNWyy9n5D9Q8/CG/+76SzYZV8eLCL
-         F23Q==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=pNJHhgyEbuJcp6bukW8ShxBT1fizDqIn4FabNb/Ilfc=;
+        b=U1FKc8By9AlXzlGPgq63BnZJ/jrNN0MvDnbPbZz57rCiLW/qR2dkW72wFwT/swDTxk
+         Z9DHITTqlPEQMQlJ2h0xb4JaK5cPJnftzL20S6S2+MiRExejMaR+oV0R9V7ODlBNotMT
+         cp4K8mWXGuR8dm9WRvBF65QJSnlTcf+IrFaMbyTOFXEjdMytdsJy+i0hXzmia4X0Ewg3
+         kLKHh8CuRxjzSQ67onq0dSnmVZ2/GuV/55reLn7MNwMvnjOG0KzQ/7SxV8h5zcQ0w4lJ
+         qtolzBtAVasR1XoPoro1Pd6ha2y7oTHEBAlVDwxHDsWNH6Z08dnLJanQXDkR9+boOsOE
+         04Wg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=xfChniPxmFbZU2S4qrE7c3GqiFqrYlUdrzoxXGWQIRg=;
-        b=UUb+TyScovZ2/fgZMu4yfy5g4upngcBzsQYqj5IsU1OiGGOYkU3UKY9oZY3byz4xLf
-         bt/zBe/UT4F6/OrJPRcfYB+fGPXwRK1nvKt71HgLpqkHc51LFi+03xqAAskfPEAYcHZe
-         Wh+dbf0I6MhHKWYyBpJHh8U/eGXUrfUw8o0kdFi7478vA3fk4sw/kiD3mx7FvDKoBbyv
-         5Uqxq3d6+xW5HEZOnU5MpzBm3UzcIHynYs40mP0ah12UtVvo8WYhaEYRW9GqYrEAagoN
-         doxKImWBZj3lK+Ti9X7XtU813jFLiVI2uniT+TZ7RLzQxG9OJl6ONIEsiJ/gqFZNG8K3
-         vunw==
-X-Gm-Message-State: APjAAAViCQWjyAzoNy1TPdzl9O1Lw+SrGiqems7YZeIXJJGT6BFFWhv5
-	c6QIcXwsW44CkPCKF+FwMXtfuKPJS9U=
-X-Received: by 2002:a37:b046:: with SMTP id z67mr1749300qke.343.1572632480189;
-        Fri, 01 Nov 2019 11:21:20 -0700 (PDT)
-Return-Path: <gabrielabittencourt00@gmail.com>
-Received: from GBdebian.ic.unicamp.br (wifi-177-220-84-14.wifi.ic.unicamp.br. [177.220.84.14])
-        by smtp.gmail.com with ESMTPSA id x38sm5106688qtc.64.2019.11.01.11.21.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 01 Nov 2019 11:21:19 -0700 (PDT)
-From: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	manasi.d.navare@intel.com,
-	rodrigosiqueiramelo@gmail.com,
-	hamohammed.sa@gmail.com,
-	daniel@ffwll.ch,
-	airlied@linux.ie,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	lkcamp@lists.libreplanetbr.org,
-	trivial@kernel.org
-Cc: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-Subject: [PATCH] drm/vkms: Fix typo in function documentation
-Date: Fri,  1 Nov 2019 15:21:02 -0300
-Message-Id: <20191101182102.30358-1-gabrielabittencourt00@gmail.com>
-X-Mailer: git-send-email 2.20.1
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=pNJHhgyEbuJcp6bukW8ShxBT1fizDqIn4FabNb/Ilfc=;
+        b=nIaBE/749PrRT8E3/0NsMWV8tBkRdRpmT7h4ZtIZW9/k8ULOl48tVESeJheTrTg5Ou
+         lRfmxw6wowqrUT06+Bg1/WYh68pxF02rGISmbFKxwjbDeiuFLpBHzLdDuz31LSIA5lyb
+         ERbEwHee26sa7AsQvqcLwQtmkVe5goufr0KkOq4uJ3Rp6BZjLz62JFdz5jL0JI9Lv1Dw
+         uRaxtHdC/uWnQ6sq6pFmHe5+pGjK10ZixVvWGhuR07BAPkxBLJd1OxBX5rf+9ocsiQbj
+         kzwvos3leVk5DU5gVX0KjNlY/iOSqMGd6jfNQm8PXzy5Il0Cq2ll6Y/2UlLLWanaVPTK
+         jaxQ==
+X-Gm-Message-State: AHQUAubKq3+oH8PgWzDC42lhKR9TfAcWH4Bz7TJsGdfsRtVjigpYE4kJ
+	12dMWBJGVxb5kHmnJ0qgOZ3lDlke9Ug=
+X-Received: by 2002:a17:902:8687:: with SMTP id g7mr42841415plo.96.1550762371600;
+        Thu, 21 Feb 2019 07:19:31 -0800 (PST)
+Return-Path: <bhanusreemahesh@gmail.com>
+Received: from bhanusree-MacBookAir ([183.83.84.116])
+        by smtp.gmail.com with ESMTPSA id g6sm26274261pgq.18.2019.02.21.07.19.30
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 21 Feb 2019 07:19:31 -0800 (PST)
+Date: Thu, 21 Feb 2019 20:49:28 +0530
+From: Bhanusree Pola <bhanusreemahesh@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH 1/3] Staging: fbtft: Remove extra blank line before '}'
+Message-ID: <20190221151928.GA1864@bhanusree-MacBookAir>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-Fix typo in word 'blend' in function 'compute_crc' documentation.
+Removes unnecesessary extra blank line before the closing brace '}'
+which solves the checkpatch.pl warning.
 
-Signed-off-by: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
+Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
 ---
- drivers/gpu/drm/vkms/vkms_composer.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/fbtft/fbtft-core.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/vkms/vkms_composer.c b/drivers/gpu/drm/vkms/vkms_composer.c
-index d5585695c64d..15efccdcce1b 100644
---- a/drivers/gpu/drm/vkms/vkms_composer.c
-+++ b/drivers/gpu/drm/vkms/vkms_composer.c
-@@ -43,7 +43,7 @@ static uint32_t compute_crc(void *vaddr_out, struct vkms_composer *composer)
- }
- 
- /**
-- * blend - belnd value at vaddr_src with value at vaddr_dst
-+ * blend - blend value at vaddr_src with value at vaddr_dst
-  * @vaddr_dst: destination address
-  * @vaddr_src: source address
-  * @dest_composer: destination framebuffer's metadata
+diff --git a/drivers/staging/fbtft/fbtft-core.c b/drivers/staging/fbtft/fbtft-core.c
+index de3f431abc15..9d78ce6e819f 100644
+--- a/drivers/staging/fbtft/fbtft-core.c
++++ b/drivers/staging/fbtft/fbtft-core.c
+@@ -87,7 +87,6 @@ static int fbtft_request_one_gpio(struct fbtft_par *par,
+ 			dev_err(dev,
+ 				"Failed to request %s GPIO:%d\n", name, ret);
+ 			return ret;
+-
+ 		}
+ 		fbtft_par_dbg(DEBUG_REQUEST_GPIOS, par, "%s: '%s' GPIO\n",
+ 			      __func__, name);
 -- 
-2.20.1
+2.17.1
 
 
