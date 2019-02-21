@@ -1,84 +1,84 @@
 X-GM-THRID: 6660411535314124800
-X-Received: by 2002:a62:9654:: with SMTP id c81mr14369490pfe.89.1550748080393;
-        Thu, 21 Feb 2019 03:21:20 -0800 (PST)
+X-Received: by 2002:ac8:28b7:: with SMTP id i52mr21944638qti.8.1550747989062;
+        Thu, 21 Feb 2019 03:19:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:294a:: with SMTP id g68ls1295750plb.6.gmail; Thu, 21
- Feb 2019 03:21:19 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IaBg/g/UG+FuJvCWT86ooGR12vd3g4i67/F2/CZFIOgSMTur8OV7Z3fC4gJf3dTNkv6vwnI
-X-Received: by 2002:a17:902:ba88:: with SMTP id k8mr9165513pls.39.1550748079695;
-        Thu, 21 Feb 2019 03:21:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550748079; cv=none;
+Received: by 2002:ac8:2ea6:: with SMTP id h35ls990712qta.5.gmail; Thu, 21 Feb
+ 2019 03:19:48 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZe8o1kctCHC3f6JSpWqn2dQLyDB4yesDWiG0U6bU7P/6gMCjraPMD31F7M8mfQN3AgOL6Q
+X-Received: by 2002:ac8:36a6:: with SMTP id a35mr22282970qtc.43.1550747988486;
+        Thu, 21 Feb 2019 03:19:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550747988; cv=none;
         d=google.com; s=arc-20160816;
-        b=fpbwlOobt7erjzQHFbuFp1OUDorhBVF1Wbop84jW8OntHv2ZoQ3cKatLFlzQr7D/rd
-         Oc+DV3Kh4IXyL30INpOaNHFXsOMgbXS66Wk0DtwErsK9MAwolie7sP8lq1GOP/dR8Z6+
-         29lI2jOxMVjdg0ycajZ1k9ytTFA0fDL3iyqDQ7hus2+3yrk4LsrEv1nMGi/Iv+pcwDaL
-         pNVg9pF6qt34TUfh05OZ/tEtGNp/GT3CZSxYKIiiqlia/D1MkliAqYntE1CnyjWMAVtB
-         18U1VWqLg5k/JSDiTtjnX2+4gPOy/i3zFyZ84L6NZPDyrTvNCON/y++D1Bnt01DMfRJN
-         DJUg==
+        b=gBVnvC6TQ1K5nTBlxX6K+Znu4G9GtVx18rInGKUfSRY79nnU98oi+GOWqWxXRvw0Jg
+         r0rUSueSyq/ivvi2R1NsfwghBYAE0gI/tKjNnp0/eboCMUv44bPUvGBSSEewNZPvytxB
+         bbWZEV7Jw15DULQLoSwwPv7iPX4hw8UDdz0X55q/oSLx7y/LsWIK+3nT5HtyKZgJ8C8s
+         p077VKpyOk+3Lxb18mPbW/EbaUvErrZ+R9ai+F3cuUpmyQ+u4hdFlx8Lz/v/gTpdzrEo
+         VuKmmnUDrg6c53Cf3LuosxXEKuBTJ2UivHvD2dtwka7bcViciYMWBOZeZpj1Q8B/u/Bv
+         apBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:content-disposition:mime-version:message-id:subject:cc
          :to:from:date:dkim-signature;
-        bh=tfGdygzk6kYF9lfaqkLrocTFrG/0lGBXqdV6mIHOPIA=;
-        b=kEImOnFABQuz8Go5dqluLRR4ZSnf+HtXs1IuDnsE4iYMR25ld1mayxmL972tG/Xw/d
-         mM66Eiwpqdz8HcRnwwXkb4ab7kvhq8Eao0IZbIYAar5BzLqJG7BguZsjPcdjq9KA3ONB
-         WU6yN0iaYxFKXNYzzc5FMFwFR8QWIzkZJR9B42Npr3MxnUdn8JgRJnOO1RDPn6VA2F/D
-         f8tfdZ6IpZgxNO8WpohdmOOd5B0roLKWzZglq+g49LUfgW6lBBLlR/IwNYonZGTBnLWb
-         SZapYEEAoI94C4p/sUVCCb7PAZwDvSm3q6O5M2FBLgZAf/cTRryleo6RiWbygTernPko
-         l1Fw==
+        bh=Ok6jxkzCEmX7P8/8vekBNWZnDFZee1cnzp3XsXvLq5c=;
+        b=SNBkupKOEqphgkcEna8T/zj6Vr1Ro5v0lqMHYa5XAhCLjsYxbfcSekTu3qchn5sUXl
+         1RarEc1oF650ywBjTKf0/uExsNL/dlL9svQXdS1VoQo1/D8GA1/X+KstSDxY9QLhGdvM
+         9FpJrR3MH/7vMwPprETI9UijTqC6D0NLKewntavNuETOZB43lilaAlwDWjWQ7nNQeDeP
+         fq/m5RnnfkORwlQyGlDrug3L0NDmgV2fD3/72iSguhEGnCkJF8U7sSFSGnuEu1Dl+v3i
+         Jnqk5ucQ6NVorAlp80Dg79miLvVkpxIC9PZ2fwoUsF4DAG0IhbtFlhvozVT/e9s4Cbcf
+         abZw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=E74yHTFH;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tfyS9Umb;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id 23si1040873pgc.4.2019.02.21.03.21.19
+Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
+        by gmr-mx.google.com with ESMTPS id z129si1185734qka.2.2019.02.21.03.19.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Feb 2019 03:21:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
+        Thu, 21 Feb 2019 03:19:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=E74yHTFH;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tfyS9Umb;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x441.google.com with SMTP id i20so3180536pfo.6
-        for <outreachy-kernel@googlegroups.com>; Thu, 21 Feb 2019 03:21:19 -0800 (PST)
+Received: by mail-pl1-x643.google.com with SMTP id bj4so14025593plb.7
+        for <outreachy-kernel@googlegroups.com>; Thu, 21 Feb 2019 03:19:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=tfGdygzk6kYF9lfaqkLrocTFrG/0lGBXqdV6mIHOPIA=;
-        b=E74yHTFH8Y7Bge0SXvgxun6GjZpQV+w1Dx+udOsStdSBS2JcAGm57aAoso44ckilfB
-         uSjCIj5TthKHID8CtAGEs9XQFbKKYnPuC2Yxist53CidYbIIbED174xudiU+zwPDPPAm
-         Nx5oWdaxXgzHyDXLcfl5CfZ8IU0JtKKYctovo3GvY4bDyRrszdriBSlTpE3g+m8PrSfs
-         Fv+Z8FmMVgONtGAJbKBGyJTxthq8yiBsT605zjegmDytwbAfKst4w+09fbyzhICodqHK
-         0mz3LJgK3YRf8aBZq7Ajj9tSdtkxNd1zvrBcNRhzOA6aipRZT9AswbwBkL9MgM2Y2wo5
-         ylMw==
+        bh=Ok6jxkzCEmX7P8/8vekBNWZnDFZee1cnzp3XsXvLq5c=;
+        b=tfyS9UmbvOs2spJXrqujBOJEMiT7RP2HDUHJPi/N0egpPIL9Ns8uqD9FXah4lhWKLy
+         X0kx7HHoPcZ9dxlQjt+x6yQjdaK9W2OW1rOIrqwt0kU79Nd/sOG4VgzRZhRA5onLrIcG
+         BkuYkWOgnpzjm6aCbwwBUE7IZM9AYDmDlZXdZSwDTWf6GIGckxjpEHaCAmJlIPe3zDD1
+         kr2eJptjts9fOJC8PSZ7QyIDj8vgp1YOKPY4yit6NPEwy0Y0uxvDBvpzf3xi2SZi/iIG
+         EzVDLr7B933iyVyj4H41b9C0C7/v6g7w/n5uEW75O483SfZ17TnqF5Bzw1orbhdVR1AS
+         wsMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=tfGdygzk6kYF9lfaqkLrocTFrG/0lGBXqdV6mIHOPIA=;
-        b=Qxxfxc8pMG1FMZTECyG5ilaarPnqXrpCsExg2oV6UCtNY9dQa02hBJ1vcBU10vqXNX
-         Z2RUK0jIyOFLfNpZ1o3YcsYtRjpESP2YvQz8+r2WOffqpDQgnpLUVMEP9k8WxCu0dv1H
-         9LCMv7ZonaBBWUsbDDI9LXkFa3yqfB4IZ+rqGakAcm8XyLlEVRn8uEa2030RlbVbBlei
-         AHw5f039t2Ajh2N6TIfoP9eVi+ZvTtjS2suQfzQIIQVgZ5v9cgWc+kWpJC5uTE0ug4Cl
-         RVYOzlh08RTv2uZ1LNm4PSwK2FIbnHPIZnDYInoTOp//BeUGUXyjb87Aqh/MTGwdXQOD
-         mhHQ==
-X-Gm-Message-State: AHQUAuZHmEJP6OkWWA3ZtUfmoC9CJaEDA9hGkRsoCxKkPZnZos1FpmEd
-	Bu7xHzHEOirvyw9H2zCuJ7m5+LvVtvI=
-X-Received: by 2002:a62:b608:: with SMTP id j8mr41044613pff.183.1550748079391;
-        Thu, 21 Feb 2019 03:21:19 -0800 (PST)
+        bh=Ok6jxkzCEmX7P8/8vekBNWZnDFZee1cnzp3XsXvLq5c=;
+        b=ts4eTBXKsv+J9igxDhbVg482pYPRczNbfTZ9knspu73EwcjLzPbJqNJ7t0aM8rygTL
+         clv/afjl8/SRDOu47k6GMaO3Y39KT4oqDGXbRP/AF+Py6PdcOQU1MQhHajhu3YLxUT0O
+         OuED7ggYt7AWc7MCrm9iOBXd1FZrrVoLC2i9e7UE2xt3TUIJoHjjpZKCFz9ZWgMQW8+x
+         6Bd79xxQXC8WXQuiaHbT45yhl8h6Tkf2JjxMQ+XUmjsd2YCyvyd/orjALdbqCdXX6EKa
+         +PqIBoojo4DUxiyzSC5A16NByRDgypC+SU57LcpPVRQU9C2BQg/vOZEM9qmMGQB0Km7e
+         TvLA==
+X-Gm-Message-State: AHQUAuYQwE4xZFTWe8xBDuKsHRHhFzFYAUoWKh57QAxA996xGonWJ9s+
+	CAjuomKxNnfUQkz/UOjyTOY=
+X-Received: by 2002:a17:902:e60e:: with SMTP id cm14mr4220254plb.192.1550747987595;
+        Thu, 21 Feb 2019 03:19:47 -0800 (PST)
 Return-Path: <bhanusreemahesh@gmail.com>
 Received: from bhanusree-MacBookAir ([183.83.84.116])
-        by smtp.gmail.com with ESMTPSA id b68sm40899182pfc.128.2019.02.21.03.21.18
+        by smtp.gmail.com with ESMTPSA id y20sm45162658pfd.161.2019.02.21.03.19.46
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Feb 2019 03:21:18 -0800 (PST)
-Date: Thu, 21 Feb 2019 16:51:16 +0530
+        Thu, 21 Feb 2019 03:19:47 -0800 (PST)
+Date: Thu, 21 Feb 2019 16:49:44 +0530
 From: Bhanusree Pola <bhanusreemahesh@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 4/4] Staging: netlogic: Add SPDX License Identifier
-Message-ID: <20190221112116.GA29140@bhanusree-MacBookAir>
+Subject: [PATCH 3/4] Staging: netlogic: Add SPDX License Identifier
+Message-ID: <20190221111944.GA29109@bhanusree-MacBookAir>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -90,15 +90,15 @@ Issue found with checkpatch.pl warning:
 
 Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
 ---
- drivers/staging/netlogic/platform_net.c | 1 +
+ drivers/staging/netlogic/platform_net.h | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/drivers/staging/netlogic/platform_net.c b/drivers/staging/netlogic/platform_net.c
-index abf4c71ee66b..3886c99c1f68 100644
---- a/drivers/staging/netlogic/platform_net.c
-+++ b/drivers/staging/netlogic/platform_net.c
+diff --git a/drivers/staging/netlogic/platform_net.h b/drivers/staging/netlogic/platform_net.h
+index e1b27f649590..1d994f0d0995 100644
+--- a/drivers/staging/netlogic/platform_net.h
++++ b/drivers/staging/netlogic/platform_net.h
 @@ -1,3 +1,4 @@
-+// SPDX-License-Identifier: GPL-2.0
++/* SPDX-License-Identifier: GPL-2.0 */
  /*
   * Copyright (c) 2003-2012 Broadcom Corporation
   * All Rights Reserved
