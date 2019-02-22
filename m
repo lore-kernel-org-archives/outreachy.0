@@ -1,103 +1,107 @@
-X-GM-THRID: 6390391577465847808
-X-Received: by 10.98.90.3 with SMTP id o3mr8728788pfb.6.1487878984261;
-        Thu, 23 Feb 2017 11:43:04 -0800 (PST)
+X-GM-THRID: 6660904414895669248
+X-Received: by 2002:aa7:8718:: with SMTP id b24mr1277451pfo.139.1550862662754;
+        Fri, 22 Feb 2019 11:11:02 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.36.230 with SMTP id z93ls4373786ota.44.gmail; Thu, 23 Feb
- 2017 11:43:03 -0800 (PST)
-X-Received: by 10.31.124.8 with SMTP id x8mr10015010vkc.10.1487878983874;
-        Thu, 23 Feb 2017 11:43:03 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id f7si1075531pfk.5.2017.02.23.11.43.03
+Received: by 2002:a17:902:9881:: with SMTP id s1ls3555480plp.3.gmail; Fri, 22
+ Feb 2019 11:11:01 -0800 (PST)
+X-Google-Smtp-Source: AHgI3Ibj3OEke/UFMqQ9E4IdB58gZXR/QANZTYSDLCQ8eK0WFvIWq1I3uxnDFwL2PY8g+wpzOj3C
+X-Received: by 2002:a17:902:3225:: with SMTP id y34mr1720303plb.90.1550862661940;
+        Fri, 22 Feb 2019 11:11:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550862661; cv=none;
+        d=google.com; s=arc-20160816;
+        b=mfIZaHFgV8wod5A+NpaYG/LUGBF20SZx93Bj8p5Bo9yLFVLYAs9zd3RAjTtYiMAkd6
+         joJ810fEfvLVb9k/CEV85j9aFOHyg9mkfzcncG884ceISnEzcMF2p2t54P5ARq6Hj2y8
+         vJg1SF4S41Fg4jWDeKtMerZNl+SV/9bvkwvVasFJ09EzoQ3qTSY+7D9qsK+jwQ4BTd3W
+         fualPWh1UAfNR9YBcJay9zPx4fEdvKCTW9kLL7wkPZe0u6RxP1Sx//EfCuWVfEB3Hz1r
+         ibOCmpez51TY+EP8u6ahyuhelkERp8DcI/Ihup35iz5xZ95aKaS5kQT6y86vR5Rgd3JM
+         PMAA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=SgM8jQD/CbhO1QIWRhFH1pMgu4C6fO/x9SIGF450nSM=;
+        b=IGmd9OfYkuSFtsXIappcm4rVeurlP+JPsSip7/lS1euFksLA4cavU/aRzvOuC07u6i
+         /5gTyFn1S9QsRIFSs0ycQSWBCHR9TYGTKZGhQ4YBO7PVplmYIjOsPMVWw9IjPDvrDs+i
+         wflK7v6ZKfeTV+jFakscWSGeaiSBYnYXoDagVX0k8h9R450Fru+Giiv8aNnlKrjkE12E
+         Xl8f0gWOvsiE4k6zvcF7J69anVladcP8BTMJJ8CO96OReykWTLkpiFwdioTlcVpgtIN5
+         TBSOZ+48WP+Wt4Xl/d7o7pjfh1ckmRwFnyBYbb/UdKx0c7mGcldmRXc37xLafv+kWAsh
+         vo1w==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=g2swQmQj;
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:4864:20::730 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <shraddha.6596@gmail.com>
+Received: from mail-qk1-x730.google.com (mail-qk1-x730.google.com. [2607:f8b0:4864:20::730])
+        by gmr-mx.google.com with ESMTPS id f79si119776pff.4.2019.02.22.11.11.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 23 Feb 2017 11:43:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Fri, 22 Feb 2019 11:11:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:4864:20::730 as permitted sender) client-ip=2607:f8b0:4864:20::730;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id z128so111815pgb.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 23 Feb 2017 11:43:03 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=g2swQmQj;
+       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:4864:20::730 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-qk1-x730.google.com with SMTP id p15so1794033qkl.5
+        for <outreachy-kernel@googlegroups.com>; Fri, 22 Feb 2019 11:11:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=mfP1yHinUlVvF5B9xe2fLm0Ms0g9WMoSJ5UmL2X66BY=;
-        b=Wz722XYW43rmT89fD0dSyThQMk9p2xtkxUafcY5hWFNFxpxRFqW6NlAy5NsWb1LRn+
-         R1+/UaRW0vWRktSrHwHIHv7pGwL63zLuVDmxQn/tEU4oyN0c6r2EQdKrTtNrP8amDH8c
-         mC7V1+toK2ts5iWwdH0JYzqw9xMyLfdFjPp7IR4DOIouIsvtoVio6F6WviLmeHy7gs4K
-         rVDk9TmyttGlr34tCtufUxvzy08SsFSnNDWFGqyUUdKh4Cz9rSBzEPRXYmxIVppatoqY
-         D7exkkjV0VIpzHpjsNgtMxaxsReg24PjBknrIsBGeZeilJ77cTpqxllo5QBjFn9jo9px
-         ciQg==
+        h=mime-version:from:date:message-id:subject:to:cc;
+        bh=SgM8jQD/CbhO1QIWRhFH1pMgu4C6fO/x9SIGF450nSM=;
+        b=g2swQmQj/PaSq+PHAHiRVHUhVyMn28L0TjcWK9gpu4UI8JK8zEIfvUF7HUV6Zm36uz
+         dj9w9IswEm8eApUpLrJvMlNvG17AUTy09Gndjg/CY5TgVM8dCij8TzITeXBsD8l7UZNw
+         CcThtjNiyqX9Oxo+80IM2l768NinKOmEqpTjWGqv/C+5a/+BCexPU9Svx7TQ6iORumDZ
+         AuWsCyj5zOOXphp0Y+egjdMIrpLDDBTxT5JkL5dSRbiFxjyEnzbhLzvw2FQs90ifcOF8
+         zT/jtJtp7oTwMYPzsv1sqxdGaRMIvLmK1Kf/QsZ+gpwTkrp8d64TedHig70WQ29pu18C
+         +GaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=mfP1yHinUlVvF5B9xe2fLm0Ms0g9WMoSJ5UmL2X66BY=;
-        b=UmaE1KXGc1vh6Xg/ibbeCoP42PFrI5uz3SH6DAe3UiKeJt1CXBpMh4iqqW1BvJFfwF
-         JkN8MxvRPximg20n5/qn64SIhvLGZPo3zIUFTuaDp3M/NbR8Xo29LEAcm7aKgrM9R7bv
-         eXxSVqlixR0qbiVLafMQ/O0C7uuIijdmTGsBTa3HCkyF7+XhMVQB5eYxCgefs7vhI38a
-         yLdDUMy1IHI7/D5+hzuy8nRSGO5/VPUB1FRelTrVAPQYPxOSmW+G+oNnRnCEZOh2JB48
-         ELIjah/SaNTcVkcX5/mWFwtqnJ27+ePZbDqoDqNkun3u+t05kPusDcGg1UBMKiLLhpxr
-         KMyg==
-X-Gm-Message-State: AMke39lS8eqX1ys0XdxC+QD2CqFf9Ul3FzMv545a/GU9nadYmqA+5MgtFi5bmwQ3xTdR7Q==
-X-Received: by 10.99.150.10 with SMTP id c10mr50285673pge.160.1487878983481;
-        Thu, 23 Feb 2017 11:43:03 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id g28sm11345397pgn.3.2017.02.23.11.43.01
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 23 Feb 2017 11:43:02 -0800 (PST)
-From: Gargi Sharma <gs051095@gmail.com>
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+        bh=SgM8jQD/CbhO1QIWRhFH1pMgu4C6fO/x9SIGF450nSM=;
+        b=eGWZqUUcXio0LeHEA6oHNwgTgI2ohyGKyvLZlaiwY/ueJmV/KES2AAZErB8SzOAwwD
+         fD0vPb7udfs0t82QtIBW4bNrL5C4Rf9ihqgqJlm3zBBS4OY5BBWyjvmNIw5nLm5+sGlC
+         UP0dqazIUjOF1plY4ZJlznYpFNiooGgfLm/HKyepSQ+o6xaDpyKGtSSxELhZXI1f/ljZ
+         5ensqY4RVLqmGK774dEfBGKFhNsrPBXzop9la+GeG8oZDA2TYWGAOP1JcqG7zoYtcsfT
+         nSPdwFhuYET0Jxw4EPrWBcpdXxGAhm0WJnScXL7KoFKQGpJEhqwa2S61oEB169zB7YEt
+         u5Hg==
+X-Gm-Message-State: AHQUAuZ2aTj8ExhSj3qjE19NRbE9kgKpgPzPcYEdIGagVL5hjnC4hBsI
+	3IOO18w3I9qJV+qnMJRS3PA8QTKSSFO+VNxorQz5Gg==
+X-Received: by 2002:a37:a4c1:: with SMTP id n184mr4095044qke.229.1550862661298;
+ Fri, 22 Feb 2019 11:11:01 -0800 (PST)
+MIME-Version: 1.0
+From: Shraddha Barke <shraddha.6596@gmail.com>
+Date: Fri, 22 Feb 2019 11:10:50 -0800
+Message-ID: <CAO393AB_5nQNfDjScrU5v25SJ_iNz1kHpPHXJGJ8t9ZyC2V31g@mail.gmail.com>
+Subject: Projects will be posted soon!
 To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH] staging: rtl8188eu: replace explicit NULL comparison
-Date: Fri, 24 Feb 2017 01:10:51 +0530
-Message-Id: <1487878851-27132-1-git-send-email-gs051095@gmail.com>
-X-Mailer: git-send-email 2.7.4
+Cc: himadri18.07@gmail.com
+Content-Type: multipart/alternative; boundary="00000000000005b0ca0582805a20"
 
-Replace explicit NULL comparison with ! operator to
-simplify code.
+--00000000000005b0ca0582805a20
+Content-Type: text/plain; charset="UTF-8"
 
-Found with Coccinelle script:
-@@
-expression ptr;
-position p;
-statement s0;
-@@
+Hello everyone,
 
-ptr@p =
-\(kmalloc\|devm_kzalloc\|kmalloc_array\|devm_ioremap\|usb_alloc_urb\|
-alloc_netdev\|dev_alloc_skb\)(...)
-... when != ptr
+Linux Kernel will be posting projects for the May-August round on the
+Outreachy website soon. Meanwhile, we encourage you to submit cleanup
+patches and get familiar with the patch submission process. We will notify
+you when the projects are live here
+<https://www.outreachy.org/apply/project-selection/>!
 
-if (
-(
-+ !
-ptr
-- == NULL
-)
-) s0
 
-Signed-off-by: Gargi Sharma <gs051095@gmail.com>
----
- drivers/staging/rtl8188eu/os_dep/xmit_linux.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8188eu/os_dep/xmit_linux.c b/drivers/staging/rtl8188eu/os_dep/xmit_linux.c
-index e097c61..8bf8248 100644
---- a/drivers/staging/rtl8188eu/os_dep/xmit_linux.c
-+++ b/drivers/staging/rtl8188eu/os_dep/xmit_linux.c
-@@ -72,7 +72,7 @@ int rtw_os_xmit_resource_alloc(struct adapter *padapter, struct xmit_buf *pxmitb
- 
- 	for (i = 0; i < 8; i++) {
- 		pxmitbuf->pxmit_urb[i] = usb_alloc_urb(0, GFP_KERNEL);
--		if (pxmitbuf->pxmit_urb[i] == NULL) {
-+		if (!pxmitbuf->pxmit_urb[i]) {
- 			DBG_88E("pxmitbuf->pxmit_urb[i]==NULL");
- 			return _FAIL;
- 		}
 -- 
-2.7.4
+Shraddha
 
+--00000000000005b0ca0582805a20
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hello everyone,</div><div><br></div><div>Linux Kernel=
+ will be posting projects for the May-August round on the Outreachy website=
+ soon. Meanwhile, we encourage you to submit cleanup patches and get famili=
+ar with the patch submission process. We will notify you when the projects =
+are live <a href=3D"https://www.outreachy.org/apply/project-selection/">her=
+e</a>!<br></div><div><br></div><div><br></div><div><br>-- <br><div dir=3D"l=
+tr" class=3D"gmail_signature" data-smartmail=3D"gmail_signature"><div dir=
+=3D"ltr">Shraddha<br></div></div></div></div>
+
+--00000000000005b0ca0582805a20--
 
