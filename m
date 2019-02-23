@@ -1,172 +1,266 @@
-X-GM-THRID: 6470708862295998464
-X-Received: by 10.84.233.69 with SMTP id k5mr389724plt.8.1506579309607;
-        Wed, 27 Sep 2017 23:15:09 -0700 (PDT)
+X-GM-THRID: 6661131417444941824
+X-Received: by 2002:a25:2007:: with SMTP id g7mr1259993ybg.17.1550915515875;
+        Sat, 23 Feb 2019 01:51:55 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.84.130.66 with SMTP id 60ls1025922plc.14.gmail; Wed, 27 Sep
- 2017 23:15:08 -0700 (PDT)
-X-Received: by 10.98.204.139 with SMTP id j11mr396571pfk.11.1506579308625;
-        Wed, 27 Sep 2017 23:15:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506579308; cv=none;
+Received: by 2002:a25:50cb:: with SMTP id e194ls2586444ybb.12.gmail; Sat, 23
+ Feb 2019 01:51:55 -0800 (PST)
+X-Google-Smtp-Source: AHgI3Ia3YPhnUVm4LDyFo3imrqIel7KTtdvOjKFWTOGZ9NTJCNDBbQkhoMl0fIWeqT4smc/OPaeu
+X-Received: by 2002:a25:ddc4:: with SMTP id u187mr1304841ybg.42.1550915515402;
+        Sat, 23 Feb 2019 01:51:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550915515; cv=none;
         d=google.com; s=arc-20160816;
-        b=RipYpp1vTsUNDS+WHoHoAV41d3AKZlrsfvHpH510M7kleD4DTECaf4N7hNJ28+PLdC
-         fDfQBIyT1qSWZCT6/aaOcpjiQLO6nU1d5IKvQZFV75IWE7oE7DMzL1weCv6RihbfRtTW
-         VYGNJnifDt/LXZXanJ0MHOg39M3qsYipVQHEURkylyCr2XTdgF5dAjehGmwLmvKkQFY5
-         p9farvtlxwH10Spk358uifTc2ES8PkLYBhZV43Iq18C2T/8qaPACkEF37nZsFwXgcMqQ
-         pSTKsEltaWDMc11H67T6L3hAh88HpmdWLJ2d0ZkEs+Wcqpyt6M1xzsa66itQjdcdBj8h
-         DuJA==
+        b=zkyJ3SdsOmh6iAgBvFBY6wXf1WR8eBP26+UrRNVvXIybz6dgmGimUUa+oM71XD+mvM
+         Sawxm6TI+oqbR6+5Zz1KXPQ+5sPpotDu9MFc4vhUZAUmlag5i3OYYMAyngd/sEY9NA5x
+         mPJAIziU5NMgihyEcNz5E1kDfSX/kITGcoVsKiiXcQbOjZ21uaY8aZtDSSRdAZ71ECp6
+         DjhO8zN/T5W6UOkIa5eYZgrMQNjrv1wWPY56viygXD/Q1Qr9Y3Yf56zifFaDEJJEvN0o
+         zbMJOQd3Y+rB7M6w4p8eF+CNN7ATXwGYaHbGRPdszgREEcTKa8q+axkm2r2NACfzeAN2
+         5pEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:reply-to:message-id
-         :subject:to:from:date:dkim-signature:arc-authentication-results;
-        bh=mTGI+xn7XFHQbXZd4jINmdDnuoboNdl6DAaPjoGTpxk=;
-        b=M93Uyb2QeY3SZeoujG+aIJutCn/yfnuwxiSkQMoO5XJ4iw3qnQuj+4zs7M2dkToOv/
-         Tya0ojOc5C0IYkIgwBTfiDEgvImPwKppHKyX2OuokEQdcnvExp6XF5r6+MOJtEgl8R6/
-         Xn1VA4g5NacnNLGuhmbgjcP10yoNhKvs4/AKCQVwDOgrKChFFkUpUiVw/UaXP60GuDXb
-         D4fYAXAVJyV6W7Kt+UfV/bYE7ApfQJ36El0RZ/kgm9GroBchFXVJq/BmllJHVVYSHpqX
-         ye1kxOBDbXBNIoTCzGgBsK9d3b8ulGjfgEiyZ6wvSSLRtKwP/65IZ9j24SP5cQCyNEzW
-         H1gQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=5D9kXgYhP2qI+xYy8EzVkBOXRaN6Wdz1evAx/IwSUpg=;
+        b=I7apIRlldwsdIg2s5RiE/pGDcVZkT6I8t4dwV45WPE+yL4Y/0AxGkIQeeNBSFJnS1Y
+         4HaimMQnkjzAkYUGc4x67mQHaXC3MozXEtuhuSacTKTlU7X89w+9uUHUCe8A1URzzwyf
+         WYX7q9B5Ys6lPf9p5cR1pNxn60wwdUHk29Ap5tm4vXW2ovg8e8cE+TMI7B2l30Id04UH
+         eJXWJLyMo/1C83QSBG50lMZjZb8oapntNjcNJH6mqEMIqu4pk6cnQXrOXgjwJkaHtx2w
+         9LZ4b1LyGQ+oH4rrOx1fqixJ7fDVVE+fTkDbaaTnqNkd1ieU8hoAmayMQrroyyzcSPmp
+         3HAg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Zwmh5XEK;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <meghana.madhyastha@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id h3si112381pfk.9.2017.09.27.23.15.08
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="XXc/SFQ/";
+       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::42e as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <digholebhagyashri@gmail.com>
+Received: from mail-pf1-x42e.google.com (mail-pf1-x42e.google.com. [2607:f8b0:4864:20::42e])
+        by gmr-mx.google.com with ESMTPS id l39si294848ywh.5.2019.02.23.01.51.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 27 Sep 2017 23:15:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Sat, 23 Feb 2019 01:51:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::42e as permitted sender) client-ip=2607:f8b0:4864:20::42e;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Zwmh5XEK;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id u18so809956pgo.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 27 Sep 2017 23:15:08 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="XXc/SFQ/";
+       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::42e as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x42e.google.com with SMTP id j5so2243712pfa.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 23 Feb 2019 01:51:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:reply-to:mime-version
-         :content-disposition:user-agent;
-        bh=mTGI+xn7XFHQbXZd4jINmdDnuoboNdl6DAaPjoGTpxk=;
-        b=Zwmh5XEKUs2DrT8D9gJ+QzuoDcsnTDX+NiTfVEerqWKx+KaedYZeVdjt/SnhSSK+IU
-         bawH2f9l+8tDNK9NaWxHJWV9s6DQ9NWCP/SHdJWCb8arWUVftDIIY3gFkOc05PtlBB10
-         Ch75x7L8QBLfnTaBZhLim+8w3I0p6Kfv4hAWVSlkkod8WuG8PU3E6FNKEQTU2x7d3Ttt
-         0yAvuEa4cbfzuyq1gff8UL0v/JFTgXOE6OzDXaZrzRI0J+3VUUpmMtt1vY8SQmAPmNfa
-         4Q4Pq2kfanHrKoFvHZR9IR6jSKC0hR0qwPTuOM9bQAqWem44bdsUllxU+Ie2a1Icg4j0
-         c/pg==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=5D9kXgYhP2qI+xYy8EzVkBOXRaN6Wdz1evAx/IwSUpg=;
+        b=XXc/SFQ/xUa+82LGtMaX+pDMku4DMIPG1bG/IPsDAvLwWBo8UtUOhqlJ0AvvghGCWh
+         R3At1UELM1RTKO6mGfC69WaG4yRK3L9EVKI9t8IUCTO0w6ZJVVkPv+1hJCZksd/xQAJ5
+         AjQdWppFbrcAC7dg75QC8rQJ00Qvwho9uiJPB3Sf0DKRo/e4pz/QGj5RqCuUgzzv+/TI
+         34XrxlBdh2acwauSu0be4U3kVxgougdAKwdISo59oRr2zdbq4vmK/xnkO6MMxfkcCj2r
+         PmfH2WjLL9cYn/ueq2c9YPCvsnSGZRZJlxBlB0CyLcwrYay3YYIMH7GYNXIO09O0uiKJ
+         pwfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:reply-to
-         :mime-version:content-disposition:user-agent;
-        bh=mTGI+xn7XFHQbXZd4jINmdDnuoboNdl6DAaPjoGTpxk=;
-        b=NvKcsHL/mAU77xXUDPfluqgB4jRZ5B1pw/VzxKzVModUmpj+/fxTxGqo3hjHvt8FGe
-         iEhgQcuXrOh9qJCdGQkvucmDce0XCgRhbaXmNWEu88Tn7t5/aPEuifz4qG5LPqIpN+9L
-         zAd4wH1oqb64IKssxUH8vNRgbdTlzhPoGeDX2GaAEeBtGjsnKw9NaNHARtDB8bGpCinD
-         B3C8m2foQxXT+dQLPkSSCYzebV9Ezq+K0YiWBlbvdEkLfdWS/VUDe6DG7ABFa+PU6xVd
-         gArZHJFRBEAI0LWWtVDmIY+UTm7zPFPXXJN2g/euRjndpE5Eu/qolukJhnZ93FuHjYgs
-         BGyg==
-X-Gm-Message-State: AHPjjUjFa1Kllqsxr7pWh2hlc50QI4WA5X1tijMoHr4nKHVBCY0ycJMw
-	Ei6qnyg7DURRufAHYcvrTZA=
-X-Google-Smtp-Source: AOwi7QB5uQQV+pR+yyI602I4CB9xMhdvVF1I+pR7FPM1lTiAcru1Druf/JiFLikZLkV4nBtRg/2eCg==
-X-Received: by 10.98.11.19 with SMTP id t19mr3411294pfi.212.1506579308373;
-        Wed, 27 Sep 2017 23:15:08 -0700 (PDT)
-Return-Path: <meghana.madhyastha@gmail.com>
-Received: from meghana-HP-Pavilion-Notebook ([122.171.83.22])
-        by smtp.gmail.com with ESMTPSA id t76sm1301716pfj.43.2017.09.27.23.15.05
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 27 Sep 2017 23:15:07 -0700 (PDT)
-Date: Thu, 28 Sep 2017 11:45:01 +0530
-From: Meghana Madhyastha <meghana.madhyastha@gmail.com>
-To: daniel@ffwll.ch, noralf@tronnes.org, outreachy-kernel@googlegroups.com,
-	dri-devel@lists.freedesktop.org
-Subject: [PATCH v2 3/3] drm/tinydrm: Add devres versions of
- drm_of_find_backlight
-Message-ID: <20170928061456.GA30919@meghana-HP-Pavilion-Notebook>
-Reply-To: cover.1506578051.git.meghana.madhyastha@gmail.com
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=5D9kXgYhP2qI+xYy8EzVkBOXRaN6Wdz1evAx/IwSUpg=;
+        b=rsGB86q4+mCTNg+KZ1L87bedFfEta2qErJRM1y/lEQjy/B6EASuDLIlquGDR8m0KUl
+         1SX/Mrld60NhqlhyWY8qA7iLFH44pHlktJj+tHC2kwiiXJQEjoKxeQ6k3UWm6f2JEYe1
+         WFauVE4MyrgWFYvAPlcB5p8CcUmf9opBdogvpWVSVGTYGxn/hlOGSyowtzldZWjb+cYU
+         jw0Lo6FhL3MhF/tzK8JRgGGkpFZMMcHV/NSDvG57z6w5q/I9D8O/pdPsWEkW59wHnRQn
+         mhlz/P1n9jfTDCYXnzqxcH8L5oFE4YgsXqP9WLw/92Xvym8LGwJj0aWV1Ijsvhv9ev5p
+         Gz1Q==
+X-Gm-Message-State: AHQUAuZPU31FTLCJVDAeUb7Pg6oHAtTHJYaDeVanyI37/8vM28xZZQrj
+	AXiabjMROZ6KIJ7wXCL+YixNpqRt6T0=
+X-Received: by 2002:a62:3a0d:: with SMTP id h13mr8492881pfa.156.1550915514675;
+        Sat, 23 Feb 2019 01:51:54 -0800 (PST)
+Return-Path: <digholebhagyashri@gmail.com>
+Received: from bhagyashri-Lenovo-G570 ([49.35.247.83])
+        by smtp.gmail.com with ESMTPSA id 33sm10817047pgs.81.2019.02.23.01.51.53
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sat, 23 Feb 2019 01:51:54 -0800 (PST)
+Date: Sat, 23 Feb 2019 15:21:49 +0530
+From: Bhagyashri Dighole <digholebhagyashri@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Outreachy <outreachy-kernel@googlegroups.com>
+Subject: [PATCH 2/2] staging: netlogic: Remove boilerplate license text
+Message-ID: <923dfed2e1f5d4b58b4ff31b434d40d22aea8249.1550915042.git.digholebhagyashri@gmail.com>
+References: <cover.1550915042.git.digholebhagyashri@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <cover.1550915042.git.digholebhagyashri@gmail.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Add devm_drm_of_find_backlight and the corresponding release
-function because some drivers such as tinydrm use devres versions
-of functions for requiring device resources.
+Removes the boilerplate license text.
 
-Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
+Signed-off-by: Bhagyashri Dighole <digholebhagyashri@gmail.com>
 ---
-Changes in v2:
--This was not present in the initial version.
+ drivers/staging/netlogic/platform_net.c | 30 ------------------------------
+ drivers/staging/netlogic/platform_net.h | 29 -----------------------------
+ drivers/staging/netlogic/xlr_net.c      | 30 +-----------------------------
+ drivers/staging/netlogic/xlr_net.h      | 30 +-----------------------------
+ 4 files changed, 2 insertions(+), 117 deletions(-)
 
- drivers/gpu/drm/drm_of.c | 47 +++++++++++++++++++++++++++++++++++++++++++++++
- include/drm/drm_of.h     |  2 ++
- 2 files changed, 49 insertions(+)
-
-diff --git a/drivers/gpu/drm/drm_of.c b/drivers/gpu/drm/drm_of.c
-index d878d3a..26090e1 100644
---- a/drivers/gpu/drm/drm_of.c
-+++ b/drivers/gpu/drm/drm_of.c
-@@ -304,3 +304,50 @@ struct backlight_device *drm_of_find_backlight(struct device *dev)
- 	return backlight;
- }
- EXPORT_SYMBOL(drm_of_find_backlight);
+diff --git a/drivers/staging/netlogic/platform_net.c b/drivers/staging/netlogic/platform_net.c
+index 2637fb1..5ab84d2 100644
+--- a/drivers/staging/netlogic/platform_net.c
++++ b/drivers/staging/netlogic/platform_net.c
+@@ -2,36 +2,6 @@
+ /*
+  * Copyright (c) 2003-2012 Broadcom Corporation
+  * All Rights Reserved
+- *
+- * This software is available to you under a choice of one of two
+- * licenses.  You may choose to be licensed under the terms of the GNU
+- * 1. Redistributions of source code must retain the above copyright
+- * General Public License (GPL) Version 2, available from the file
+- * COPYING in the main directory of this source tree, or the Broadcom
+- * license below:
+- *
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- *
+- * 1. Redistributions of source code must retain the above copyright
+- *    notice, this list of conditions and the following disclaimer.
+- * 2. Redistributions in binary form must reproduce the above copyright
+- *    notice, this list of conditions and the following disclaimer in
+- *    the documentation and/or other materials provided with the
+- *    distribution.
+- *
+- * THIS SOFTWARE IS PROVIDED BY BROADCOM ``AS IS'' AND ANY EXPRESS OR
+- * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- * ARE DISCLAIMED. IN NO EVENT SHALL BROADCOM OR CONTRIBUTORS BE LIABLE
+- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+- * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+- * BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+- * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+- * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  */
+ 
+ #include <linux/device.h>
+diff --git a/drivers/staging/netlogic/platform_net.h b/drivers/staging/netlogic/platform_net.h
+index f7e7c8a..f152d84 100644
+--- a/drivers/staging/netlogic/platform_net.h
++++ b/drivers/staging/netlogic/platform_net.h
+@@ -2,35 +2,6 @@
+  *
+  * Copyright (c) 2003-2012 Broadcom Corporation
+  * All Rights Reserved
+- *
+- * This software is available to you under a choice of one of two
+- * licenses.  You may choose to be licensed under the terms of the GNU
+- * General Public License (GPL) Version 2, available from the file
+- * COPYING in the main directory of this source tree, or the Broadcom
+- * license below:
+- *
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- *
+- * 1. Redistributions of source code must retain the above copyright
+- *    notice, this list of conditions and the following disclaimer.
+- * 2. Redistributions in binary form must reproduce the above copyright
+- *    notice, this list of conditions and the following disclaimer in
+- *    the documentation and/or other materials provided with the
+- *    distribution.
+- *
+- * THIS SOFTWARE IS PROVIDED BY BROADCOM ``AS IS'' AND ANY EXPRESS OR
+- * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- * ARE DISCLAIMED. IN NO EVENT SHALL BROADCOM OR CONTRIBUTORS BE LIABLE
+- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+- * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+- * BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+- * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+- * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  */
+ 
+ #define PORTS_PER_CONTROLLER		4
+diff --git a/drivers/staging/netlogic/xlr_net.c b/drivers/staging/netlogic/xlr_net.c
+index a4d6a73..8554fcf 100644
+--- a/drivers/staging/netlogic/xlr_net.c
++++ b/drivers/staging/netlogic/xlr_net.c
+@@ -2,36 +2,8 @@
+ /*
+  * Copyright (c) 2003-2012 Broadcom Corporation
+  * All Rights Reserved
+- *
+- * This software is available to you under a choice of one of two
+- * licenses.  You may choose to be licensed under the terms of the GNU
+- * General Public License (GPL) Version 2, available from the file
+- * COPYING in the main directory of this source tree, or the Broadcom
+- * license below:
+- *
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- *
+- * 1. Redistributions of source code must retain the above copyright
+- *    notice, this list of conditions and the following disclaimer.
+- * 2. Redistributions in binary form must reproduce the above copyright
+- *    notice, this list of conditions and the following disclaimer in
+- *    the documentation and/or other materials provided with the
+- *    distribution.
+- *
+- * THIS SOFTWARE IS PROVIDED BY BROADCOM ``AS IS'' AND ANY EXPRESS OR
+- * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- * ARE DISCLAIMED. IN NO EVENT SHALL BROADCOM OR CONTRIBUTORS BE LIABLE
+- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+- * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+- * BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+- * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+- * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  */
 +
-+/**
-+ * devm_drm_of_find_backlight - Find backlight device in device-tree
-+ * devres version of the function
-+ * @dev: Device
-+ *
-+ * This is the devres version of the function drm_of_find_backlight.
-+ * Some drivers such as tinydrm use devres versions of functions for
-+ * requiring device resources.
-+ *
-+ * Returns:
-+ * NULL if there's no backlight property.
-+ * Error pointer -EPROBE_DEFER if the DT node is found, but no backlight device
-+ * is found.
-+ * If the backlight device is found, a pointer to the structure is returned.
-+ */
-+struct backlight_device *devm_drm_of_find_backlight(struct device *dev)
-+{
-+	struct backlight_device *backlight;
-+	int ret;
+ #include <linux/phy.h>
+ #include <linux/delay.h>
+ #include <linux/netdevice.h>
+diff --git a/drivers/staging/netlogic/xlr_net.h b/drivers/staging/netlogic/xlr_net.h
+index 0a830ef..518ea80 100644
+--- a/drivers/staging/netlogic/xlr_net.h
++++ b/drivers/staging/netlogic/xlr_net.h
+@@ -2,36 +2,8 @@
+  *
+  * Copyright (c) 2003-2012 Broadcom Corporation
+  * All Rights Reserved
+- *
+- * This software is available to you under a choice of one of two
+- * licenses.  You may choose to be licensed under the terms of the GNU
+- * General Public License (GPL) Version 2, available from the file
+- * COPYING in the main directory of this source tree, or the Broadcom
+- * license below:
+- *
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- *
+- * 1. Redistributions of source code must retain the above copyright
+- *    notice, this list of conditions and the following disclaimer.
+- * 2. Redistributions in binary form must reproduce the above copyright
+- *    notice, this list of conditions and the following disclaimer in
+- *    the documentation and/or other materials provided with the
+- *    distribution.
+- *
+- * THIS SOFTWARE IS PROVIDED BY BROADCOM ``AS IS'' AND ANY EXPRESS OR
+- * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- * ARE DISCLAIMED. IN NO EVENT SHALL BROADCOM OR CONTRIBUTORS BE LIABLE
+- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+- * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+- * BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+- * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+- * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  */
 +
-+	backlight = drm_of_find_backlight(dev);
-+	if (IS_ERR_OR_NULL(backlight))
-+		return backlight;
-+
-+	ret = devm_add_action(dev, devm_drm_of_find_backlight_release,
-+			      backlight->dev);
-+	if (ret) {
-+		put_device(backlight->dev);
-+		return ERR_PTR(ret);
-+	}
-+
-+	return backlight;
-+}
-+EXPORT_SYMBOL(devm_drm_of_find_backlight);
-+
-+/**
-+ * devm_drm_of_find_backlight_release - Release backlight device
-+ *
-+ * This is the release function corresponding to the devm_drm_of_find_backlight.
-+ * Each devres entry is associated with a release function.
-+ */
-+static void devm_drm_of_find_backlight_release(void *data)
-+{
-+	put_device(data);
-+}
-+EXPORT_SYMBOL(devm_drm_of_find_backlight_release)
-diff --git a/include/drm/drm_of.h b/include/drm/drm_of.h
-index e8fba5b..89a37da 100644
---- a/include/drm/drm_of.h
-+++ b/include/drm/drm_of.h
-@@ -30,6 +30,8 @@ int drm_of_find_panel_or_bridge(const struct device_node *np,
- 				struct drm_panel **panel,
- 				struct drm_bridge **bridge);
- struct backlight_device *drm_of_find_backlight(struct device *dev);
-+struct backlight_device *devm_drm_of_find_backlight(struct device *dev)
-+static void devm_drm_of_find_backlight_release(void *data)
- #else
- static inline uint32_t drm_of_find_possible_crtcs(struct drm_device *dev,
- 						  struct device_node *port)
+ /* #define MAC_SPLIT_MODE */
+ 
+ #define MAC_SPACING                 0x400
 -- 
 2.7.4
 
