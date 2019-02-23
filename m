@@ -1,294 +1,116 @@
-X-GM-THRID: 6620077565776232448
-X-Received: by 2002:ac8:6993:: with SMTP id o19-v6mr15215772qtq.35.1541356920345;
-        Sun, 04 Nov 2018 10:42:00 -0800 (PST)
+X-GM-THRID: 6661198938033356800
+X-Received: by 2002:adf:e412:: with SMTP id g18mr496802wrm.9.1550931723237;
+        Sat, 23 Feb 2019 06:22:03 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:bd87:: with SMTP id n129-v6ls7688322qkf.0.gmail; Sun, 04
- Nov 2018 10:41:59 -0800 (PST)
-X-Google-Smtp-Source: AJdET5ewnLzGvJEkfYyRTLmdH75jqHyk6qKZ5gcFp+g8GU3RJrdNlMKZ3EGj4bLhpljD6l6fN2Mm
-X-Received: by 2002:a37:d611:: with SMTP id t17mr2237131qki.58.1541356919705;
-        Sun, 04 Nov 2018 10:41:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541356919; cv=none;
+Received: by 2002:a1c:280a:: with SMTP id o10ls1057544wmo.11.gmail; Sat, 23
+ Feb 2019 06:22:02 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IagXyfVSLww4bF6wfsvlffjkAPG+1ozaCqjxAVW/jTmrhFysT6rXQkR55odXOcImOAJjQJh
+X-Received: by 2002:a7b:c3d8:: with SMTP id t24mr514457wmj.6.1550931722044;
+        Sat, 23 Feb 2019 06:22:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550931722; cv=none;
         d=google.com; s=arc-20160816;
-        b=TN6oInemrADe4n92tr1XFq60M48A7rdTTye3P5GjVdNJlYZ45iA80UhYY28eqeHML2
-         fL28aOff3vTs/ZkmN/vAz7rBRAn9h/cTe3/iExuEdRuQPefMRlrDHI//C2Y0/3x/rct/
-         LJA7tISr9WduitYWE5nbBJx9gOlKa8OoMHoFKcVsqTQGHzLf2o+lneKWQ1cvakXJtTKX
-         d43MP3hw0pV8LvMdgbG7+59msBVjXkG+wh8i2SxcLtijhzrIFnWMQ13bmQcrwSs8ZQq1
-         rQYHr6yJwLbA3dingYvJDR/ItvVc1SqvGo//0Nq5sRns2mFqkTXKD+IT8v2nIdRSdJz6
-         KGIA==
+        b=Lc9rNJ1G2+1kEDvlfGwHraXNEKer7zXFXE66KIz5ghbCg6qmHU16jnphV589pxTy5F
+         kWqs3DUEV6rXEmod28jmWoKvBh3Mu07tewxkMwtzVmdVlk9fCc7Bjp+OvhL6T4Ko9wYN
+         3/q7WrbA61RSZdmzLJe/ez+6Smxl9avom0onuGEJY8ANpmFjbrEtcgLObVsE1pQn4Eg9
+         LldF2rYDW8vai3utkQSgPmtEAE+O0SbSl4cD1c25q9NRLX75E4oiM3leljfwvxgO/ES8
+         PrzhfnfCc8KTRKUccKYuLNTfy0ku2jjRO87yviqh0Eo3XUAxzeSDiTDKDCrtjGx5mkfE
+         JKrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=JJNvxYwijTyvUF3fbUw+m+zz1+Bu5b/5NfryZugox0Q=;
-        b=etCU/Cl4zlwSZNQNMrLHm3OK7jZgkFtyZxqsJhHRvQo8FzJ769nQz7wvwalGO7IIMi
-         L2RSJFbilunfSotM8sfLSJCSqo+doHcUl8oQQqvlAAs4rSb5wNGeJIr2z0LWE4f/BpZ+
-         tGnd3COOspYcLgpHlQTBvoaW0ZRbJivoKrEbIy6BdertCvy58Lqr8KdzgPAoVCUO+y5c
-         HUK3UgIwi86rF+dpxIP/25iVku/Ilm2W0H97QA1R/OL+BkBhypFcs9zyjwFQtDX7Ga14
-         kZ+erlAEZttNvbujuXnFx/7ox/Ix2JD5s1V64abe1iSrUotj7Lcmv1L1ubPn8tfKyFJj
-         eHvA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=nFIcQizVk0RlIt7YvUG1bb7s0Ndg6an2+tFmSTt/XfA=;
+        b=v9+UCse5yvgQ+dhnoptQ2IuAiIVB3eXrA1hSs0vuMvrl6xoO3ngkvVAmfxQ4ZZtdHy
+         rP9qj8spPgpGcDocIivYshKTLQZu1VVl7N+fsSCjgEgS+MjUtu/98cdK2+9r7ccextHI
+         +oiUVjkbhq8+1RFe00JLYIftAsuIvgyp9O2ovz949wVE63QyRaouaOxkoz4YzuAHQbFU
+         93C8Q2asqUS2JYRul+zIDZc95FyEnjtg/4fcwDhEArDWp+BqNthvJgRa9zHicl3WU58w
+         E5XB/ZPxeMsOFebRQNFOulpEwjKHNn6TLNtt+oxh8gAbkFFJIjOpjCe3xPXZydO2hhW5
+         6erw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=K82UAaIH;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::42d as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from mail-pf1-x42d.google.com (mail-pf1-x42d.google.com. [2607:f8b0:4864:20::42d])
-        by gmr-mx.google.com with ESMTPS id s34si144156qtk.1.2018.11.04.10.41.59
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id q192si160917wme.3.2019.02.23.06.22.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 04 Nov 2018 10:41:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::42d as permitted sender) client-ip=2607:f8b0:4864:20::42d;
+        Sat, 23 Feb 2019 06:22:02 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=K82UAaIH;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::42d as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x42d.google.com with SMTP id v9-v6so999823pff.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 04 Nov 2018 10:41:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=JJNvxYwijTyvUF3fbUw+m+zz1+Bu5b/5NfryZugox0Q=;
-        b=K82UAaIHFzou7EgILy889lRBSVPRP5nIx9zd2SjGKd/H0Qe3iMOZXK8ifbAh07nR1A
-         i0o/3P87GC+FLHHX/PXBxX9wN6uVOQ4AE/8dI4Y2TzXa6xAjP5VqDg9zjcpEtxpsluXd
-         if2T6hIVFlQ4Hp8yxiWcBeJWn/GYBCsxCrH16KCwHh1mZuksSEUVjIyhW1SLQPBwKnh1
-         j8E+yrtjIU+n0Ukx/4mwt1YeK+R8fT5rB6/pxTMrQlEHv9GJqbLbJ5bT3Ee8ijaQemQL
-         YlYJoLR0p5mN+URFJ+8FtRWMfGu1MzF81qeZyuTT83uINKDeXm0ew2HVGdLWWh1AYU/l
-         OheQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=JJNvxYwijTyvUF3fbUw+m+zz1+Bu5b/5NfryZugox0Q=;
-        b=Ex9dDrRQoTts+NDRkZWVg0MHJ1A+BcyQxg94YHZT2gNxBRcUAZi6u3dnVm/JMXR9mK
-         gezTTLJeFgGIsQQ+ukBpJKDKa2m4ssy5IQo4TSl/28zDNxZkgDGO0ACdVpTk8P6lMBxv
-         iw7sc327iCktkY+eWhh5u/syw2y7jy2TuWNoo+XukBpNF7HAeSojPOL/PnDd0sq/pXWv
-         aTaIpO/8R7StQbDcHkNZgu377kJCOMfYWYsU8LflKkODPPxS8Had6q243Lzr/9eZlFBX
-         W/8Ms+Y0IGwimeQMlv2Pdq/xL3BlME0zKyv8Twr/uHJm51wKM5pdW/7g1RTT9HTGt9/l
-         SQzA==
-X-Gm-Message-State: AGRZ1gIYvER/GejT+DvmBsrNvZOmYs1KMwbpU/UKmuR+zrvzId5o7ZlO
-	3gv3dr1MuHo0CLRXuBHHwH/s0QMs9Lc=
-X-Received: by 2002:a62:5b43:: with SMTP id p64-v6mr19846460pfb.122.1541356918939;
-        Sun, 04 Nov 2018 10:41:58 -0800 (PST)
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from bhagyashri-Lenovo-G570 ([49.35.118.235])
-        by smtp.gmail.com with ESMTPSA id q145-v6sm11597040pfq.143.2018.11.04.10.41.57
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 04 Nov 2018 10:41:58 -0800 (PST)
-Date: Mon, 5 Nov 2018 00:11:54 +0530
-From: "Bhagyashri P. Dighole" <digholebhagyashri@gmail.com>
-To: Gao Xiang <gaoxiang25@huawei.com>, Chao Yu <yuchao0@huawei.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Outreachy <outreachy-kernel@googlegroups.com>
-Subject: [PATCH] staging: erofs: Fix alignment issues and warnings.
-Message-ID: <20181104184153.GA16136@bhagyashri-Lenovo-G570>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,404,1544482800"; 
+   d="scan'208";a="297106322"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 23 Feb 2019 15:21:45 +0100
+Date: Sat, 23 Feb 2019 15:21:45 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Bhanusree Pola <bhanusreemahesh@gmail.com>
+cc: outreachy-kernel@googlegroups.com, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtlwifi: Remove code guarded
+ by undefined macros
+In-Reply-To: <20190223141335.6650-1-bhanusreemahesh@gmail.com>
+Message-ID: <alpine.DEB.2.21.1902231518560.2551@hadrien>
+References: <20190223141335.6650-1-bhanusreemahesh@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-This patch includes modifications for alignment and warnings
-as per the coding standards. Also, this patch includes fix
-for syntanctical and logical errors.
 
-Signed-off-by: Bhagyashri P. Dighole <digholebhagyashri@gmail.com>
----
- drivers/staging/erofs/data.c | 65 ++++++++++++++++++++++----------------------
- 1 file changed, 33 insertions(+), 32 deletions(-)
 
-diff --git a/drivers/staging/erofs/data.c b/drivers/staging/erofs/data.c
-index 6384f73..6fec5e6 100644
---- a/drivers/staging/erofs/data.c
-+++ b/drivers/staging/erofs/data.c
-@@ -40,7 +40,7 @@ static inline void read_endio(struct bio *bio)
- 
- /* prio -- true is used for dir */
- struct page *__erofs_get_meta_page(struct super_block *sb,
--	erofs_blk_t blkaddr, bool prio, bool nofail)
-+				   erofs_blk_t blkaddr, bool prio, bool nofail)
- {
- 	struct inode *const bd_inode = sb->s_bdev->bd_inode;
- 	struct address_space *const mapping = bd_inode->i_mapping;
-@@ -53,7 +53,7 @@ struct page *__erofs_get_meta_page(struct super_block *sb,
- 
- repeat:
- 	page = find_or_create_page(mapping, blkaddr, gfp);
--	if (unlikely(page == NULL)) {
-+	if (unlikely(!page)) {
- 		DBG_BUGON(nofail);
- 		return ERR_PTR(-ENOMEM);
- 	}
-@@ -76,7 +76,7 @@ struct page *__erofs_get_meta_page(struct super_block *sb,
- 		}
- 
- 		__submit_bio(bio, REQ_OP_READ,
--			REQ_META | (prio ? REQ_PRIO : 0));
-+			     REQ_META | (prio ? REQ_PRIO : 0));
- 
- 		lock_page(page);
- 
-@@ -107,8 +107,8 @@ struct page *__erofs_get_meta_page(struct super_block *sb,
- }
- 
- static int erofs_map_blocks_flatmode(struct inode *inode,
--	struct erofs_map_blocks *map,
--	int flags)
-+				     struct erofs_map_blocks *map,
-+				     int flags)
- {
- 	int err = 0;
- 	erofs_blk_t nblocks, lastblk;
-@@ -151,7 +151,7 @@ static int erofs_map_blocks_flatmode(struct inode *inode,
- 		map->m_flags |= EROFS_MAP_META;
- 	} else {
- 		errln("internal error @ nid: %llu (size %llu), m_la 0x%llx",
--			vi->nid, inode->i_size, map->m_la);
-+		      vi->nid, inode->i_size, map->m_la);
- 		DBG_BUGON(1);
- 		err = -EIO;
- 		goto err_out;
-@@ -167,16 +167,17 @@ static int erofs_map_blocks_flatmode(struct inode *inode,
- 
- #ifdef CONFIG_EROFS_FS_ZIP
- extern int z_erofs_map_blocks_iter(struct inode *,
--	struct erofs_map_blocks *, struct page **, int);
-+				   struct erofs_map_blocks *,
-+				   struct page **, int);
- #endif
- 
- int erofs_map_blocks_iter(struct inode *inode,
--	struct erofs_map_blocks *map,
--	struct page **mpage_ret, int flags)
-+			  struct erofs_map_blocks *map,
-+			  struct page **mpage_ret, int flags)
- {
- 	/* by default, reading raw data never use erofs_map_blocks_iter */
- 	if (unlikely(!is_inode_layout_compression(inode))) {
--		if (*mpage_ret != NULL)
-+		if (*mpage_ret)
- 			put_page(*mpage_ret);
- 		*mpage_ret = NULL;
- 
-@@ -192,27 +193,26 @@ int erofs_map_blocks_iter(struct inode *inode,
- }
- 
- int erofs_map_blocks(struct inode *inode,
--	struct erofs_map_blocks *map, int flags)
-+		     struct erofs_map_blocks *map, int flags)
- {
- 	if (unlikely(is_inode_layout_compression(inode))) {
- 		struct page *mpage = NULL;
- 		int err;
- 
- 		err = erofs_map_blocks_iter(inode, map, &mpage, flags);
--		if (mpage != NULL)
-+		if (mpage)
- 			put_page(mpage);
- 		return err;
- 	}
- 	return erofs_map_blocks_flatmode(inode, map, flags);
- }
- 
--static inline struct bio *erofs_read_raw_page(
--	struct bio *bio,
--	struct address_space *mapping,
--	struct page *page,
--	erofs_off_t *last_block,
--	unsigned int nblocks,
--	bool ra)
-+static inline struct bio *erofs_read_raw_page(struct bio *bio,
-+					      struct address_space *mapping,
-+					      struct page *page,
-+					      erofs_off_t *last_block,
-+					      unsigned int nblocks,
-+					      bool ra)
- {
- 	struct inode *inode = mapping->host;
- 	erofs_off_t current_block = (erofs_off_t)page->index;
-@@ -232,15 +232,15 @@ static inline struct bio *erofs_read_raw_page(
- 	}
- 
- 	/* note that for readpage case, bio also equals to NULL */
--	if (bio != NULL &&
--		/* not continuous */
--		*last_block + 1 != current_block) {
-+	if (bio &&
-+	    /* not continuous */
-+	    *last_block + 1 != current_block) {
- submit_bio_retry:
- 		__submit_bio(bio, REQ_OP_READ, 0);
- 		bio = NULL;
- 	}
- 
--	if (bio == NULL) {
-+	if (bio) {
- 		struct erofs_map_blocks map = {
- 			.m_la = blknr_to_addr(current_block),
- 		};
-@@ -307,7 +307,7 @@ static inline struct bio *erofs_read_raw_page(
- 			nblocks = BIO_MAX_PAGES;
- 
- 		bio = erofs_grab_bio(inode->i_sb,
--			blknr, nblocks, read_endio, false);
-+				     blknr, nblocks, read_endio, false);
- 
- 		if (IS_ERR(bio)) {
- 			err = PTR_ERR(bio);
-@@ -342,7 +342,7 @@ static inline struct bio *erofs_read_raw_page(
- 	unlock_page(page);
- 
- 	/* if updated manually, continuous pages has a gap */
--	if (bio != NULL)
-+	if (!bio)
- submit_bio_out:
- 		__submit_bio(bio, REQ_OP_READ, 0);
- 
-@@ -361,7 +361,7 @@ static int erofs_raw_access_readpage(struct file *file, struct page *page)
- 	trace_erofs_readpage(page, true);
- 
- 	bio = erofs_read_raw_page(NULL, page->mapping,
--		page, &last_block, 1, false);
-+				  page, &last_block, 1, false);
- 
- 	if (IS_ERR(bio))
- 		return PTR_ERR(bio);
-@@ -371,8 +371,9 @@ static int erofs_raw_access_readpage(struct file *file, struct page *page)
- }
- 
- static int erofs_raw_access_readpages(struct file *filp,
--	struct address_space *mapping,
--	struct list_head *pages, unsigned int nr_pages)
-+				      struct address_space *mapping,
-+				      struct list_head *pages,
-+				      unsigned int nr_pages)
- {
- 	erofs_off_t last_block;
- 	struct bio *bio = NULL;
-@@ -389,13 +390,13 @@ static int erofs_raw_access_readpages(struct file *filp,
- 
- 		if (!add_to_page_cache_lru(page, mapping, page->index, gfp)) {
- 			bio = erofs_read_raw_page(bio, mapping, page,
--				&last_block, nr_pages, true);
-+						  &last_block, nr_pages, true);
- 
- 			/* all the page errors are ignored when readahead */
- 			if (IS_ERR(bio)) {
- 				pr_err("%s, readahead error at page %lu of nid %llu\n",
--					__func__, page->index,
--					EROFS_V(mapping->host)->nid);
-+				       __func__, page->index,
-+				       EROFS_V(mapping->host)->nid);
- 
- 				bio = NULL;
- 			}
-@@ -407,7 +408,7 @@ static int erofs_raw_access_readpages(struct file *filp,
- 	DBG_BUGON(!list_empty(pages));
- 
- 	/* the rare case (end in gaps) */
--	if (unlikely(bio != NULL))
-+	if (unlikely(bio))
- 		__submit_bio(bio, REQ_OP_READ, 0);
- 	return 0;
- }
--- 
-2.7.4
+On Sat, 23 Feb 2019, Bhanusree Pola wrote:
 
+> removes the code block guarded by never set CONFIG_PM defines
+
+Imperative means no "s".  Each sentence in the log message should start
+with a capital letter and end with a period.
+
+How do you know that CONFIG_PM is never set?  The CONFIG means that it is
+part of the configuration system, so you shouldn't be looking for a
+#define.  You would need to poke around in make menuconfig, maks xconfig,
+etc, but this could be complex.
+
+julia
+
+>
+> Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+> ---
+>  drivers/staging/rtlwifi/base.c | 15 ---------------
+>  1 file changed, 15 deletions(-)
+>
+> diff --git a/drivers/staging/rtlwifi/base.c b/drivers/staging/rtlwifi/base.c
+> index 35df2cf60619..88838ab9e428 100644
+> --- a/drivers/staging/rtlwifi/base.c
+> +++ b/drivers/staging/rtlwifi/base.c
+> @@ -423,21 +423,6 @@ static void _rtl_init_mac80211(struct ieee80211_hw *hw)
+>  	/* hw->max_rates = 1; */
+>  	hw->sta_data_size = sizeof(struct rtl_sta_info);
+>
+> -/* wowlan is not supported by kernel if CONFIG_PM is not defined */
+> -#ifdef CONFIG_PM
+> -	if (rtlpriv->psc.wo_wlan_mode) {
+> -		if (rtlpriv->psc.wo_wlan_mode & WAKE_ON_MAGIC_PACKET)
+> -			rtlpriv->wowlan.flags = WIPHY_WOWLAN_MAGIC_PKT;
+> -		if (rtlpriv->psc.wo_wlan_mode & WAKE_ON_PATTERN_MATCH) {
+> -			rtlpriv->wowlan.n_patterns =
+> -				MAX_SUPPORT_WOL_PATTERN_NUM;
+> -			rtlpriv->wowlan.pattern_min_len = MIN_WOL_PATTERN_SIZE;
+> -			rtlpriv->wowlan.pattern_max_len = MAX_WOL_PATTERN_SIZE;
+> -		}
+> -		hw->wiphy->wowlan = &rtlpriv->wowlan;
+> -	}
+> -#endif
+> -
+>  	/* <6> mac address */
+>  	if (is_valid_ether_addr(rtlefuse->dev_addr)) {
+>  		SET_IEEE80211_PERM_ADDR(hw, rtlefuse->dev_addr);
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190223141335.6650-1-bhanusreemahesh%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
