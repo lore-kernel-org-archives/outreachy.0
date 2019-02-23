@@ -1,172 +1,155 @@
-X-GM-THRID: 8624928718848
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,e66bcd52f43b80f6,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.112.120.136 with SMTP id lc8mr6361870lbb.24.1426525271384;
-        Mon, 16 Mar 2015 10:01:11 -0700 (PDT)
+X-GM-THRID: 6661069764566188032
+X-Received: by 2002:a81:8546:: with SMTP id v67mr1383901ywf.1.1550915491389;
+        Sat, 23 Feb 2019 01:51:31 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.44.136 with SMTP id e8ls765239lam.91.gmail; Mon, 16 Mar
- 2015 10:01:10 -0700 (PDT)
-X-Received: by 10.112.77.101 with SMTP id r5mr9655985lbw.4.1426525270900;
-        Mon, 16 Mar 2015 10:01:10 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-we0-x22a.google.com (mail-we0-x22a.google.com. [2a00:1450:400c:c03::22a])
-        by gmr-mx.google.com with ESMTPS id gj20si735293wic.1.2015.03.16.10.01.10
+Received: by 2002:a81:4986:: with SMTP id w128ls3303965ywa.7.gmail; Sat, 23
+ Feb 2019 01:51:30 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZLP0rQPedSbyVL52iq/PawEo9XeisngrHvMvvhumdG4SZaT8Jwa5oJwoiH+ethV5lf3FbT
+X-Received: by 2002:a0d:e694:: with SMTP id p142mr1382846ywe.8.1550915490721;
+        Sat, 23 Feb 2019 01:51:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550915490; cv=none;
+        d=google.com; s=arc-20160816;
+        b=nT2Wzuog7Nq1tCgWaD/tWjiFwfDL15at/oRo16WMBD8b9fTTJYS6j2FfPNFQPyLIpe
+         soWVxcHoee2k+tJyfkeYh4kIEwHcsXTOfj5uocEh5SY+ITlkgbrOcU+1mjslVGDxORX7
+         EEypHcgZ+MuK+pRwYp6hfAtbT0G7meQRfTPTTGZ1MDC/pzE77N09JbCYHhLY5ALCmQpS
+         pre3c6g21vBtk92jHj9ZXQo4+VF/p0cZ4KzCFzRhyaWH2itAirFYcJwzd5n5Eohy8K8j
+         oUkHgrkxZSg9FIn9jzq61MkAJcpmS8fMRFiP7beI4zwcQfe9YzRa8k2oD+MRyAWbCwXb
+         wv5A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=DvF8x2psm5BVXATWxFBs8BLYeBkYj8gXn8J8PSc9atQ=;
+        b=VJRTUHwmTDZH/sY/XRrjeYBwfAMbAT7tx1T/unaYoZHsLyEtUGTMm59WVvjWVDk8GS
+         g5DGpe2l2mbzYV+fcoDEWv16j7zMddMOOmwLuDpLEWRodKkRMVXNj2NeN68OFVDNBtwM
+         rfIy7LUq7nfe5bzqvNgiixdFrb7YYnFsV9TVaJ4aE55goOnesLuPJSSg+AQdogVqRVso
+         fPcfcDg0Tnto8hqHNzve7J3jVXoCALB/e0j4b60tjFw/blesFM46RKSK0x0/vXVgH/7z
+         IQAd8gv5AwMRVxd6j4b3mpy/W6/7D3UPrPtemnseJTAqUJ3NskTMglgErrH4ovGH52WX
+         oYyA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b=Ts85mYSG;
+       spf=pass (google.com: domain of srs0=0uj0=q6=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=0UJ0=Q6=linuxfoundation.org=gregkh@kernel.org"
+Return-Path: <SRS0=0UJ0=Q6=linuxfoundation.org=gregkh@kernel.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id r128si328024ywd.0.2019.02.23.01.51.30
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Mar 2015 10:01:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22a as permitted sender) client-ip=2a00:1450:400c:c03::22a;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 23 Feb 2019 01:51:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of srs0=0uj0=q6=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::22a as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22a.google.com with SMTP id p45so17618801weo.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 16 Mar 2015 10:01:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=k14P60T1Q7Sx0TXVvNRwSEDiKUZwa+ulmIZWIfm7fDg=;
-        b=RyzzV+Yjo5ZiL4qn1LFa4VjEUerG22/Jsiy5CS1zE32vZnxrI44WGQU5TMl1Xu4wgf
-         9HgW11h1gIOkkkl98IAglQBhCCgFX11HmP2VzMaa30EKIfDXP6tD9KUjotoUbj0u2I+i
-         Vo2Z0jK9Cgg9sOyRcBvGmMIjswGuxSpc7FfIndBzFLTnTTcOCMoue3nljSYTCg7pHAFY
-         6ZUER1UYHg4hgAf8P70yBw0pZ17lHUYP9oagWVrIF8XhLA0P6zygsNSx1hia8pmq8Jio
-         p5GSMtOQXRfMShcQzfhcy7Krccp3sVOJSsBP4pO2SifIj8ro6QwXFooS9llwjPo8vvN3
-         VybQ==
-X-Received: by 10.180.38.15 with SMTP id c15mr63375955wik.74.1426525270651;
-        Mon, 16 Mar 2015 10:01:10 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from haneen-vb ([79.170.55.48])
-        by mx.google.com with ESMTPSA id ev7sm16175441wjb.47.2015.03.16.10.01.06
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Mar 2015 10:01:09 -0700 (PDT)
-Received: by haneen-vb (Postfix, from userid 1000)
-	id 5BFD3C1F5A; Mon, 16 Mar 2015 20:00:56 +0300 (AST)
-From: Haneen Mohammed <hamohammed.sa@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH] Staging: lustre: Fix spelling mistakes
-Date: Mon, 16 Mar 2015 20:00:55 +0300
-Message-Id: <1426525255-8523-1-git-send-email-hamohammed.sa@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       dkim=pass header.i=@kernel.org header.s=default header.b=Ts85mYSG;
+       spf=pass (google.com: domain of srs0=0uj0=q6=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=0UJ0=Q6=linuxfoundation.org=gregkh@kernel.org"
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 35C602084F;
+	Sat, 23 Feb 2019 09:51:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1550915489;
+	bh=k0+9GHhSsBWcrrV8liEkZfH8L9+18hVG6Oh9HI26FVk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Ts85mYSG60ESl48T0r155c3meJ1redzO7jhx3LAH/GHDhFHsTWyYdye9MBVgoBONS
+	 iOuwtfctbVac9VOSaHogBd24R5T65shCkr1H2DQpnFOHF4bPL1D4ynUb4aaUPTK4ao
+	 BXXO1Wt3s7RVvhg8yjOJw97h45+CGnWEccN7Em38=
+Date: Sat, 23 Feb 2019 10:51:27 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Bhanusree Mahesh <bhanusreemahesh@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] Re: [PATCH v2] Staging: gasket: Replaces
+ symbolic permissions
+Message-ID: <20190223095127.GA11354@kroah.com>
+References: <20190223055207.3792-1-bhanusreemahesh@gmail.com>
+ <20190223075641.GB2640@kroah.com>
+ <20190223084254.GC4902@kroah.com>
+ <CAB0Mk-O+S5OveTKh-hMxFGnWenjWg=AxY1-FGo0Xe6yAd6_vmw@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAB0Mk-O+S5OveTKh-hMxFGnWenjWg=AxY1-FGo0Xe6yAd6_vmw@mail.gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
-This patch fix the following spelling mistakes found using checkpatch.pl: interoprability, SEPERATOR, defult.
+On Sat, Feb 23, 2019 at 03:04:21PM +0530, Bhanusree Mahesh wrote:
+> On Sat, 23 Feb 2019 at 14:12, Greg Kroah-Hartman
+> <gregkh@linuxfoundation.org> wrote:
+> >
+> > On Sat, Feb 23, 2019 at 08:56:41AM +0100, Greg Kroah-Hartman wrote:
+> > > On Sat, Feb 23, 2019 at 11:22:07AM +0530, Bhanusree Pola wrote:
+> > > > Replaces Symbolic Permissions with Octal Permission which solves the
+> > > > checkpatch.pl warning:
+> > > > WARNING: Symbolic permissions 'S_IRUGO' are not preferred. Consider using octal permissions '0444'.
+> > > >
+> > > > Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+> > > > ---
+> > > >
+> > > > v2: Subject line modified
+> > > >
+> > > >  drivers/staging/gasket/gasket_sysfs.h | 4 ++--
+> > > >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > > >
+> > > > diff --git a/drivers/staging/gasket/gasket_sysfs.h b/drivers/staging/gasket/gasket_sysfs.h
+> > > > index 151e8edd28ea..60590ea4b760 100644
+> > > > --- a/drivers/staging/gasket/gasket_sysfs.h
+> > > > +++ b/drivers/staging/gasket/gasket_sysfs.h
+> > > > @@ -40,7 +40,7 @@
+> > > >   */
+> > > >  #define GASKET_END_OF_ATTR_ARRAY                                               \
+> > > >     {                                                                      \
+> > > > -           .attr = __ATTR(GASKET_ARRAY_END_TOKEN, S_IRUGO, NULL, NULL),   \
+> > > > +           .attr = __ATTR(GASKET_ARRAY_END_TOKEN, 0444, NULL, NULL),   \
+> > >
+> > > The trailing "\" is now messed up :(
+> > >
+> > > But, as I have said before when people try to fix this up, this whole
+> > > macro is not needed at all.  Please just remove it and use the proper
+> > > logic in the code.
+> > >
+> > > >             .data.attr_type = 0,                                           \
+> > > >     }
+> > > >
+> > > > @@ -75,7 +75,7 @@ struct gasket_sysfs_attribute {
+> > > >
+> > > >  #define GASKET_SYSFS_RO(_name, _show_function, _attr_type)                     \
+> > > >     {                                                                      \
+> > > > -           .attr = __ATTR(_name, S_IRUGO, _show_function, NULL),          \
+> > > > +           .attr = __ATTR(_name, 0444, _show_function, NULL),          \
+> > >
+> > > Trailing \ is not aligned here either.
+> > >
+> > > Also, this should be using __ATTR_RO(), right?
+> >
+> > Really, all of the sysfs stuff in this driver needs to be fixed up
+> > "properly".  I think it's even a TODO item, but that might take a lot
+> > more work than just a simple "coding style" cleanup patch would entail.
+> > I would recommend just leaving this mess alone for now.
+> >
+> I'm really interested in trying this if you say so. Please give me
+> some link on this.
+> I will understand and try to fix them up.
 
-Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
----
- drivers/staging/lustre/lustre/llite/lproc_llite.c   | 12 ++++++------
- drivers/staging/lustre/lustre/obdclass/obd_mount.c  |  4 ++--
- drivers/staging/lustre/lustre/ptlrpc/niobuf.c       |  4 ++--
- drivers/staging/lustre/lustre/ptlrpc/pack_generic.c |  4 ++--
- 4 files changed, 12 insertions(+), 12 deletions(-)
+The last item in the TODO file in this directory is the short summary of
+the problem:
+	- "drivers" should never be dealing with "raw" sysfs calls or
+	  mess around with kobjects at all. The driver core should
+	  handle all of this for you automaically. There should not be a
+	  need for raw attribute macros.
 
-diff --git a/drivers/staging/lustre/lustre/llite/lproc_llite.c b/drivers/staging/lustre/lustre/llite/lproc_llite.c
-index 2b8f147..83a9b85 100644
---- a/drivers/staging/lustre/lustre/llite/lproc_llite.c
-+++ b/drivers/staging/lustre/lustre/llite/lproc_llite.c
-@@ -727,7 +727,7 @@ static int ll_max_easize_seq_show(struct seq_file *m, void *v)
- }
- LPROC_SEQ_FOPS_RO(ll_max_easize);
- 
--static int ll_defult_easize_seq_show(struct seq_file *m, void *v)
-+static int ll_default_easize_seq_show(struct seq_file *m, void *v)
- {
- 	struct super_block *sb = m->private;
- 	struct ll_sb_info *sbi = ll_s2sbi(sb);
-@@ -741,7 +741,7 @@ static int ll_defult_easize_seq_show(struct seq_file *m, void *v)
- 	seq_printf(m, "%u\n", ealen);
- 	return 0;
- }
--LPROC_SEQ_FOPS_RO(ll_defult_easize);
-+LPROC_SEQ_FOPS_RO(ll_default_easize);
- 
- static int ll_max_cookiesize_seq_show(struct seq_file *m, void *v)
- {
-@@ -759,7 +759,7 @@ static int ll_max_cookiesize_seq_show(struct seq_file *m, void *v)
- }
- LPROC_SEQ_FOPS_RO(ll_max_cookiesize);
- 
--static int ll_defult_cookiesize_seq_show(struct seq_file *m, void *v)
-+static int ll_default_cookiesize_seq_show(struct seq_file *m, void *v)
- {
- 	struct super_block *sb = m->private;
- 	struct ll_sb_info *sbi = ll_s2sbi(sb);
-@@ -773,7 +773,7 @@ static int ll_defult_cookiesize_seq_show(struct seq_file *m, void *v)
- 	seq_printf(m, "%u\n", cookielen);
- 	return 0;
- }
--LPROC_SEQ_FOPS_RO(ll_defult_cookiesize);
-+LPROC_SEQ_FOPS_RO(ll_default_cookiesize);
- 
- static int ll_sbi_flags_seq_show(struct seq_file *m, void *v)
- {
-@@ -862,9 +862,9 @@ static struct lprocfs_vars lprocfs_llite_obd_vars[] = {
- 	{ "statahead_stats",  &ll_statahead_stats_fops, NULL, 0 },
- 	{ "lazystatfs",       &ll_lazystatfs_fops, NULL },
- 	{ "max_easize",       &ll_max_easize_fops, NULL, 0 },
--	{ "default_easize",   &ll_defult_easize_fops, NULL, 0 },
-+	{ "default_easize",   &ll_default_easize_fops, NULL, 0 },
- 	{ "max_cookiesize",   &ll_max_cookiesize_fops, NULL, 0 },
--	{ "default_cookiesize", &ll_defult_cookiesize_fops, NULL, 0 },
-+	{ "default_cookiesize", &ll_default_cookiesize_fops, NULL, 0 },
- 	{ "sbi_flags",	      &ll_sbi_flags_fops, NULL, 0 },
- 	{ "xattr_cache",      &ll_xattr_cache_fops, NULL, 0 },
- 	{ NULL }
-diff --git a/drivers/staging/lustre/lustre/obdclass/obd_mount.c b/drivers/staging/lustre/lustre/obdclass/obd_mount.c
-index 3c0c910..3a74041 100644
---- a/drivers/staging/lustre/lustre/obdclass/obd_mount.c
-+++ b/drivers/staging/lustre/lustre/obdclass/obd_mount.c
-@@ -645,10 +645,10 @@ int lustre_put_lsi(struct super_block *sb)
- }
- 
- /*** SERVER NAME ***
-- * <FSNAME><SEPERATOR><TYPE><INDEX>
-+ * <FSNAME><SEPARATOR><TYPE><INDEX>
-  * FSNAME is between 1 and 8 characters (inclusive).
-  *	Excluded characters are '/' and ':'
-- * SEPERATOR is either ':' or '-'
-+ * SEPARATOR is either ':' or '-'
-  * TYPE: "OST", "MDT", etc.
-  * INDEX: Hex representation of the index
-  */
-diff --git a/drivers/staging/lustre/lustre/ptlrpc/niobuf.c b/drivers/staging/lustre/lustre/ptlrpc/niobuf.c
-index f715e9a..dc3f6c6 100644
---- a/drivers/staging/lustre/lustre/ptlrpc/niobuf.c
-+++ b/drivers/staging/lustre/lustre/ptlrpc/niobuf.c
-@@ -383,12 +383,12 @@ int ptlrpc_send_reply(struct ptlrpc_request *req, int flags)
- 		       req->rq_export->exp_obd->obd_minor);
- 	}
- 
--	/* In order to keep interoprability with the client (< 2.3) which
-+	/* In order to keep interoperability with the client (< 2.3) which
- 	 * doesn't have pb_jobid in ptlrpc_body, We have to shrink the
- 	 * ptlrpc_body in reply buffer to ptlrpc_body_v2, otherwise, the
- 	 * reply buffer on client will be overflow.
- 	 *
--	 * XXX Remove this whenever we drop the interoprability with such client.
-+	 * XXX Remove this whenever we drop the interoperability with such client.
- 	 */
- 	req->rq_replen = lustre_shrink_msg(req->rq_repmsg, 0,
- 					   sizeof(struct ptlrpc_body_v2), 1);
-diff --git a/drivers/staging/lustre/lustre/ptlrpc/pack_generic.c b/drivers/staging/lustre/lustre/ptlrpc/pack_generic.c
-index eb6ff90..b51af9b 100644
---- a/drivers/staging/lustre/lustre/ptlrpc/pack_generic.c
-+++ b/drivers/staging/lustre/lustre/ptlrpc/pack_generic.c
-@@ -119,11 +119,11 @@ int lustre_msg_early_size(void)
- {
- 	static int size;
- 	if (!size) {
--		/* Always reply old ptlrpc_body_v2 to keep interoprability
-+		/* Always reply old ptlrpc_body_v2 to keep interoperability
- 		 * with the old client (< 2.3) which doesn't have pb_jobid
- 		 * in the ptlrpc_body.
- 		 *
--		 * XXX Remove this whenever we drop interoprability with such
-+		 * XXX Remove this whenever we drop interoperability with such
- 		 *     client.
- 		 */
- 		__u32 pblen = sizeof(struct ptlrpc_body_v2);
--- 
-1.9.1
+Note, it's not an easy or simple thing to fix up, it requires messing
+with how the code interacts with the driver model.  I'm not going to say
+you shouldn't do it, but I personally don't have the time right now to
+mentor anyone to do it.  The driver core isn't the easiest thing to
+understand in places, sorry.
 
+In the long run, this whole driver is going to be deleted anyway, as it
+should be using the UIO api instead.  But that's a much more complex and
+difficult task as it requires also changing the userspace code that
+interacts with this driver (and I have no idea where that is), and would
+require access to the hardware involved to make sure it all works (and I
+have no idea how to get access to that hardware.)
+
+sorry,
+
+greg k-h
+> 
+> thanks,
+> 
+> Bhanusree Pola.
 
