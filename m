@@ -1,141 +1,103 @@
 X-GM-THRID: 6661092310784147456
-X-Received: by 2002:ab0:2495:: with SMTP id i21mr8439356uan.9.1551105257504;
-        Mon, 25 Feb 2019 06:34:17 -0800 (PST)
+X-Received: by 2002:a1c:700d:: with SMTP id l13mr1104261wmc.14.1551105174951;
+        Mon, 25 Feb 2019 06:32:54 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9f:2706:: with SMTP id a6ls3104821uaa.0.gmail; Mon, 25 Feb
- 2019 06:34:16 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IZgHgovNHz+OOTJTVGTrhNnK8nGhfuTSKSQYmk3NuxXp3soUdr4+EyNR97wEF+8ChvzuXXS
-X-Received: by 2002:a9f:2f17:: with SMTP id x23mr8441728uaj.24.1551105256751;
-        Mon, 25 Feb 2019 06:34:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551105256; cv=none;
+Received: by 2002:a1c:3581:: with SMTP id c123ls1647983wma.9.gmail; Mon, 25
+ Feb 2019 06:32:54 -0800 (PST)
+X-Google-Smtp-Source: AHgI3Ib8MZXrWXN797xRDTLnRL+vs4CNs60pkznq/F/7c8E4/LHI4Dl9x8LDLoMMv3bnNer29+Vl
+X-Received: by 2002:a1c:e3d6:: with SMTP id a205mr1098379wmh.19.1551105174097;
+        Mon, 25 Feb 2019 06:32:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551105174; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ln+2S5uiAAY4/G30lTkSgcgo6TTUI89Uz7blh1u26yQBoKYj/bYWgv7VgA0DmHCPir
-         ufjNXcj/gfODVK1IItcAUfbtP960ZH0eFp19RB5/+FHoLepggLEw2V48ly/Cmhofaxca
-         6UYLoIlRIZ3rrv1zRNkGfXQu1+zcZG3sojRY5VsyQED9tZxVN62h4E8ysfQ7IHNxkUUM
-         AjpsMdbr7xTRDsVcyFMn5V7AcWA1AM84OITDUqJ591kxowUZCNwmNNYKeZxKcYpKuNGM
-         YShBK756lUtNwgH/weskb1AlMA4cmSn3Qbsp46n8/WaZq2g7d0x6MoZa1vyNA2nX6zOz
-         lS7Q==
+        b=DGQwZUVvef8ErO1Cf9g7WKCAe2/pAtmQvDQyeP0DfBxuuy9/yvm/w2mNvoh3uvjb0Y
+         EH9+fg0lvuoB1FAqx6SPUI14B/fxmfC53xKPULOlx8hy5L2s2eWMFUKqoYExYEKPC8A4
+         ziydtfXMHM6jHOdPAq67OCGakRtwO5smtzy4WbISLS+x9q3EQ0FwI+u/9eciBnYPRHAR
+         S8QeRU6rQ7fUoNVG9w8Vgj16xv6SHzhxvXWDNhixl9UgmYIZ7Hy8xmaYx0vjEqTteigp
+         iiKI2rGuQwUUbROboI1p3W7I6jOajtwMh0u2364h2MZhEjKXQOzlvr9oqz2L0z9xelgI
+         kCeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=Pxj/c85ww/6ooiH9xyR4IIDLw4wLDKqvrLyEg92rIBI=;
-        b=ZUhaD3GEFewUSMaOjlkMX5vAVvvmDBevfXogFYMwolr0SOgVE5V6hkLQhz/KCa4/3Y
-         1j/P7SaVEik7ju0gilScNnfWFlGXg19APlyueXXEizyMlkITbrDtd1qDAlCld8lyFntY
-         dpTF/vbYtC1+I/uer3GffIhmn3JuOsRKRxENvQnicOcH/J4HMt68giEKBNIWiI0er6Lt
-         jZtccqiuILD/g5ZuDFtV86Da9w8ZK5W4IC66CSulv0cnowZq6r8n7hcgn5TNM+6aK/Cm
-         TIZ/VMH2hXbs0dSpwLOkQ1H100yzxAmUoWSpj7hbMt0jKc4f0kAWyZiIdAf5d0Rmrb/+
-         g35g==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=zIzk0BRE05B6lXU+emxNfp4YCL/cixZLwuCV/aD2jKY=;
+        b=ehenihkEdPIt3I5m2ov+EvnW8OW7mcuFRH+ETzSnozj/4VaSQr+Fbg3Z9yc3dj8WtX
+         t7oiFqoqAkw3zJZZf25aMrz1s1y5GetG58bNzjsGgwFjx3Dy8oqqedYtoCRH3hZm6eKH
+         1Nz0wn0EqirPkgCBPHeRDamqC4H9EQixSyD7E5ClsBtxqL5p7stANk4mfOjh1S+KLF9j
+         kDksi02FilGPGf8H9914PtGOJJdAo/tFHmAYYJRsDChm3AGwQ4BLVjwIr/lfmFx5C2tf
+         qk0AC+VoTerNLmj5gh8L345yp6URV5jifiQpwtku0rloTsf926aZpzZ27A1ZA3fj82+U
+         Elxw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lNCk9rvu;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::342 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-ot1-x342.google.com (mail-ot1-x342.google.com. [2607:f8b0:4864:20::342])
-        by gmr-mx.google.com with ESMTPS id c15si111978vsp.2.2019.02.25.06.34.16
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id r15si423845wmc.4.2019.02.25.06.32.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Feb 2019 06:34:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::342 as permitted sender) client-ip=2607:f8b0:4864:20::342;
+        Mon, 25 Feb 2019 06:32:54 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lNCk9rvu;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::342 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ot1-x342.google.com with SMTP id b3so7977006otp.4
-        for <outreachy-kernel@googlegroups.com>; Mon, 25 Feb 2019 06:34:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=Pxj/c85ww/6ooiH9xyR4IIDLw4wLDKqvrLyEg92rIBI=;
-        b=lNCk9rvuaKtrbvzA/ms7IwOdL7OziW0PG/D6kkK282j+yto8OpiF0502QE7OunIPSf
-         JRy9SHHCs82Z/3z8h8J2Torz/Vs7AHJVwM/Vh0/a2sQoZeHkcAyeadVeYjfCdbXWk6Q4
-         0WEYwayadVYd3QDQqnJK8hnJsqH3xUDNw3IlYdRq7gB+wACWxUSBOfvxTOpMK61VCkhU
-         5S4FYzRwYE3cMhtloXDp4s+u2e5aatc44k7qSmXdneW4Do+SiTKejnkR7V6klp6VjYX6
-         cHD65lgo2TQWbfG1lALGWEIQrt530m/yd55JGJOvvF0jegOMZhJ7bqZi0WQ15Q8NUpw/
-         XTUw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=Pxj/c85ww/6ooiH9xyR4IIDLw4wLDKqvrLyEg92rIBI=;
-        b=sG7fCNbF5KQhzEXNgQgXUV2OMaTkJGVpnlBmeRFLMYOS27MCOaf7TG4E63BJrEY5sy
-         f6+tnoaZWZ9I7Fyt5qO02f9HwvITGQW2pWzAbVBDBduWf52lnLusfUP7IlawN46PGhi5
-         3fCLlbAC1sYENlGAriowfD1TSWb9LjkDBckxxJmJt91OgksEV92pfhic8rMk3PqD3sOL
-         DSBWYdIR16gD/EDrMVZcQZ9yW7I64RVe8Sw1nH1+BUyHzPdR5/0a+aYytbZBihRofTvp
-         osAquLnqZG4LGn4Y/SEn1xny7BLT2cJGntNjoAE5NDMTqGtAMBF7Q52Lu3z3KKoiiL0W
-         jb7A==
-X-Gm-Message-State: AHQUAuaRtuML69Ws1Ng1xb0bDo8ua+O0KJdeCey4D+DCaW/Wvp/9iCQU
-	Wbsl2R4xVv8pUAF980XmVynrPykOp9JymaC78ow=
-X-Received: by 2002:a9d:730d:: with SMTP id e13mr7787211otk.281.1551105256123;
- Mon, 25 Feb 2019 06:34:16 -0800 (PST)
-MIME-Version: 1.0
-References: <20190225143052.8331-1-bhanusreemahesh@gmail.com> <alpine.DEB.2.20.1902251532190.3474@hadrien>
-In-Reply-To: <alpine.DEB.2.20.1902251532190.3474@hadrien>
-From: Bhanusree Mahesh <bhanusreemahesh@gmail.com>
-Date: Mon, 25 Feb 2019 20:04:04 +0530
-Message-ID: <CAB0Mk-OhQJ8i0C5g63hP52ogv_nw_4VJE3MXshOGhbFv32ZB0A@mail.gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,411,1544482800"; 
+   d="scan'208";a="370810873"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 25 Feb 2019 15:32:53 +0100
+Date: Mon, 25 Feb 2019 15:32:51 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Bhanusree Pola <bhanusreemahesh@gmail.com>
+cc: outreachy-kernel@googlegroups.com, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Subject: Re: [Outreachy kernel] [PATCH v2] Staging: ks7010: Match alignments
  with open paranthesis
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: outreachy-kernel@googlegroups.com, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <20190225143052.8331-1-bhanusreemahesh@gmail.com>
+Message-ID: <alpine.DEB.2.20.1902251532190.3474@hadrien>
+References: <20190225143052.8331-1-bhanusreemahesh@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-On Mon, 25 Feb 2019 at 20:02, Julia Lawall <julia.lawall@lip6.fr> wrote:
->
->
->
-> On Mon, 25 Feb 2019, Bhanusree Pola wrote:
->
-> > Parameters of "netdev_dbg" are adjusted to match alignment with open
-> > paranthesis.
-> > Issue found using checkpatch.pl
-> >
-> > Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
-> > ---
-> >
-> > v2: commit log modified to be imperative
->
-> Our messages probably crossed, but this one is not imperative either.  It
-> should be Adjust parameters...
 
-i'll fix them up.
-thank you. :)
+
+On Mon, 25 Feb 2019, Bhanusree Pola wrote:
+
+> Parameters of "netdev_dbg" are adjusted to match alignment with open
+> paranthesis.
+> Issue found using checkpatch.pl
 >
-> julia
+> Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+> ---
 >
-> >
-> >  drivers/staging/ks7010/ks_hostif.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
-> > index d938b0997a53..e48fc36b6ebd 100644
-> > --- a/drivers/staging/ks7010/ks_hostif.c
-> > +++ b/drivers/staging/ks7010/ks_hostif.c
-> > @@ -730,7 +730,7 @@ void hostif_scan_indication(struct ks_wlan_private *priv)
-> >       priv->scan_ind_count++;
-> >       if (priv->scan_ind_count < LOCAL_APLIST_MAX + 1) {
-> >               netdev_dbg(priv->net_dev, " scan_ind_count=%d :: aplist.size=%d\n",
-> > -                     priv->scan_ind_count, priv->aplist.size);
-> > +                        priv->scan_ind_count, priv->aplist.size);
-> >               get_ap_information(priv, (struct ap_info *)(priv->rxp),
-> >                                  &priv->aplist.ap[priv->scan_ind_count - 1]);
-> >               priv->aplist.size = priv->scan_ind_count;
-> > --
-> > 2.17.1
-> >
-> > --
-> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190225143052.8331-1-bhanusreemahesh%40gmail.com.
-> > For more options, visit https://groups.google.com/d/optout.
-> >
+> v2: commit log modified to be imperative
+
+Our messages probably crossed, but this one is not imperative either.  It
+should be Adjust parameters...
+
+julia
+
+>
+>  drivers/staging/ks7010/ks_hostif.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
+> index d938b0997a53..e48fc36b6ebd 100644
+> --- a/drivers/staging/ks7010/ks_hostif.c
+> +++ b/drivers/staging/ks7010/ks_hostif.c
+> @@ -730,7 +730,7 @@ void hostif_scan_indication(struct ks_wlan_private *priv)
+>  	priv->scan_ind_count++;
+>  	if (priv->scan_ind_count < LOCAL_APLIST_MAX + 1) {
+>  		netdev_dbg(priv->net_dev, " scan_ind_count=%d :: aplist.size=%d\n",
+> -			priv->scan_ind_count, priv->aplist.size);
+> +			   priv->scan_ind_count, priv->aplist.size);
+>  		get_ap_information(priv, (struct ap_info *)(priv->rxp),
+>  				   &priv->aplist.ap[priv->scan_ind_count - 1]);
+>  		priv->aplist.size = priv->scan_ind_count;
+> --
+> 2.17.1
 >
 > --
 > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
 > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
 > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/alpine.DEB.2.20.1902251532190.3474%40hadrien.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190225143052.8331-1-bhanusreemahesh%40gmail.com.
 > For more options, visit https://groups.google.com/d/optout.
+>
 
