@@ -1,77 +1,75 @@
 X-GM-THRID: 6661088091510407168
-X-Received: by 2002:a17:902:aa06:: with SMTP id be6mr5810993plb.58.1551108970229;
-        Mon, 25 Feb 2019 07:36:10 -0800 (PST)
+X-Received: by 2002:a25:4e88:: with SMTP id c130mr6872421ybb.94.1551108966254;
+        Mon, 25 Feb 2019 07:36:06 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:93:: with SMTP id 141ls5510156pga.1.gmail; Mon, 25 Feb
- 2019 07:36:08 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IZvB2WkpBY38evx8twckUDAd6PRCyfhk/nIRchGwQaPh2WUSPgEoxyqnLInx57xfkCpIuU5
-X-Received: by 2002:a62:bd0e:: with SMTP id a14mr6839761pff.71.1551108968140;
-        Mon, 25 Feb 2019 07:36:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551108968; cv=none;
+Received: by 2002:a25:41d4:: with SMTP id o203ls2261031yba.0.gmail; Mon, 25
+ Feb 2019 07:36:05 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IYB6kX/+6LrJmKp5wOrSeXx3dTyAgYRIOPKMTzxNZfa06ydSN1boc6Oc5WyKXcV2jcI0cIq
+X-Received: by 2002:a25:b81:: with SMTP id 123mr260021ybl.40.1551108965651;
+        Mon, 25 Feb 2019 07:36:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551108965; cv=none;
         d=google.com; s=arc-20160816;
-        b=LZFDGq3/LM1y17G4Te8DsEnP8eaOj6M1HBN18Qpy5OMbchIfdDHCLM1/3MCv79TYI7
-         hepd6HpUvojBby5IDXdmJ0aHQ8lsZNOl4ys4ejmty5M5XnNbbXOaO6/4wrGTrI2UgE3U
-         IWtuZHzk9X4nsL+ARLc8GjjglCuSQHMVlWWoeJyIjAnSZpmfEppEOPtBOda3EMwQDJPM
-         qG0xMvDsbS+NfFPas7W/Amog/HOm3sx6Yh7w38AKELdzPkr5aKrGgLlsX58uq0N0H1ZY
-         sAD3eNDF7DBmmh6sZ0I4mQXbT/bmkijaC5ljUQdWVvWTpgiuC66hi6zdBGdzqnN0+Zi2
-         briw==
+        b=fmis2mCRViNk+jBmmhXG3MrvcIrZXekx/mherPDFoima/kc1ihxpKcrRQA0ABmoYlf
+         aq8RWJ83TOBFO5U62BLFApvLYPU1/4eVdfjHMXS0wyt5B/pTxIddrNgZOFzsl70Ag2Ak
+         5cZI6Nn2McHX5VsOo4scyerag9uFndZurI/J8PDAughX9lwcKYZsb5xupyKoX3SLowk0
+         xiAnyB3X3g2WgSXdPi1RIMiCjpvDrGhcPO8+fwg0v0UYHp4408DQHq29hRk+k3kTLWLD
+         x/yQf46ptE2SMEqwXuSXEi+qeNo350fPE+nihfNbErHW4+LmhbkzNfdcPMqKmhaIqYcG
+         8y6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=NgrstxaF8PQt2r9Rd/ZYvpI2c185vMa+bUu+XZUphUw=;
-        b=rj3bYN+mCZj8cu+xzLw2GyNmFCtqfam9VMe5vhzvPD91zBAsie7FwHGKKJDP8dPzBo
-         O3RCEaKY+udQm6BF4BV5V0LpNdWjgVZQ+zL7oZICTnWpqzSGYFpuvntT7XT+S0/EbChw
-         txn/WsgxrkcKVZ6pHLp5QO5x3hIut+VgZ7Hw8FifOLC9xpmDQ0sSzSmXUncpLImY609D
-         7B4oqNDWASMOyMLIo6DLyfjqZEU67LJ02IwMkXUPqiWFBjYdGctzO+ISiYkDmC42hpzs
-         aE1vu0kJW/NYPVE3s9EjSk/o8xDu/GJVmYkUX+Xny7YotYTo3xsQ6iZg2DLsFVS3QMm/
-         /gDA==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=9nr9R3xJ7vfZKLyFlfFeiEkRpb5Zuhrm+nXQmcVvrmI=;
+        b=djdl5L7ghmCBS1hZ4ZsbYb1W4J3DVCVl9JgJ78WJuU+C5zvMN1E4Gg86/9nJLYP8S/
+         c1jJpwQlm/m2ir8rTttQ0X9G2YVweePoYjzcii/OvI2T8k5cpAhk8KEcxrdpYSLcR3Dq
+         O6dfcwamHQwsd3m5ujUX0JQ9WiQrMF8MgqqVE+lunaCKjBYwOiksN+R95+iEkHiOc5eT
+         ou/yRt0Kag1ALcGJQnX9VsQsEIZaP4baTEbVRdOh3xs43uk+rvUKV8NOVqUrm459zMRb
+         TDJ+uszcDa933M3BoOy+th1C5n0zsXvBm7fKSai3OXLv6lotTtn8GW9EhynwzvMbPrdD
+         HI+g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LGHaGNbt;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Tf2DKjhK;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::529 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pg1-x541.google.com (mail-pg1-x541.google.com. [2607:f8b0:4864:20::541])
-        by gmr-mx.google.com with ESMTPS id t24si338575plo.2.2019.02.25.07.36.08
+Received: from mail-pg1-x529.google.com (mail-pg1-x529.google.com. [2607:f8b0:4864:20::529])
+        by gmr-mx.google.com with ESMTPS id i189si414621yba.2.2019.02.25.07.36.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Feb 2019 07:36:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) client-ip=2607:f8b0:4864:20::541;
+        Mon, 25 Feb 2019 07:36:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::529 as permitted sender) client-ip=2607:f8b0:4864:20::529;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LGHaGNbt;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Tf2DKjhK;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::529 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x541.google.com with SMTP id 196so4632477pgf.13
-        for <outreachy-kernel@googlegroups.com>; Mon, 25 Feb 2019 07:36:08 -0800 (PST)
+Received: by mail-pg1-x529.google.com with SMTP id e17so2607012pgd.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 25 Feb 2019 07:36:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=NgrstxaF8PQt2r9Rd/ZYvpI2c185vMa+bUu+XZUphUw=;
-        b=LGHaGNbt3HP98+pNSz9TY8gEXdBxAWinieuzm0+g+wwBvlFZBovleWR4aDsuzrEW8w
-         HyBzKlddVbzPgUhHv1CbtdM/VbFuocrLp8n2VtYxXFhticf9lMn+XIy4K8DLu7JUdHnC
-         59lBoPBCgIjZ07l54gbSTAYa8SP4mA+bLOBjCp/WaLcFdN6fSkLUubS3iqEgIM60lHH9
-         gap7Gvun68z4s3UNbt6FfAAc7bQT9KghdsD+jSVFfLCjH6Psyrb5LNZ9+2gJRQUBL3PZ
-         9Ufgz9/jlsIAPwcXnEVOud93tORXxBrp/z4JK6tupAdSJG5rv1vdPszRg4+7KW44ONCV
-         cmXQ==
+        h=from:to:cc:subject:date:message-id;
+        bh=9nr9R3xJ7vfZKLyFlfFeiEkRpb5Zuhrm+nXQmcVvrmI=;
+        b=Tf2DKjhKviAldWTgyaS293xNCw8ej58eaEL7KQJVWusYuu1+Fe5k0q7v/qJeCZk1PX
+         MvthukKqRIJme31rYqFakJArVMxwmPDJDYL4a+EWjcZt4DOfpixd2Irr7ieR1eNfrn4T
+         fBHKotNmd36rBYi0XP/z+dPlqOrDh8KmYlKBSo11PjIhmLA0BA+srfRaiNzQssWaFBWk
+         jarnVjfcETQmlUH78Gmyu2HPZ6Ou3fmnjVtK7bmpFxOxka8yZsCohmGVuyIagUz8lc5l
+         bKVp52FnRdIn7dWFs3GYWQKaak0Qsj4CZ7zeO/J+4ScK4kIG8/c+Tfhb94obV6Hzk9dL
+         nHnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=NgrstxaF8PQt2r9Rd/ZYvpI2c185vMa+bUu+XZUphUw=;
-        b=afE1jhDTyJZvNobeAsPXFqvw7uHANCCqXsx7gzW1etZZOgMTtDTUY3Y3i+TGqNcwIi
-         dffrQpeha1tTLrX6jP1uI4lLS0wKJ3XymUkyy5kcKVephJdhpSGt7NxM989924t/OtIS
-         CXNWOMmpe+1zoDF6HRccozq2tDvtLccg/vjeWOmBsgEzDkSUdywJEYAloU8toYQwEb6d
-         fOdTIHFofLeRPSYAWZI5osJwgFBfeZ8+tmim3yCvyVrFLUMBF5V3nfQ8KHvYX3k0IPl1
-         g92sWOP+5DoLKJGiAmg+/iD7grKDQNlNHlK6ei+hm8N+ZxL/+0oFVagnHqbJwFpFocMt
-         sWRw==
-X-Gm-Message-State: AHQUAuYlz55WHwvf68qMPAnSNqUjaZRwUIojpIqh9C1qjy4qxU3cU5pK
-	4tiOrqGGozMXLyKFRZBI3e+1LJEoJuU=
-X-Received: by 2002:a65:62ce:: with SMTP id m14mr529571pgv.101.1551108967649;
-        Mon, 25 Feb 2019 07:36:07 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=9nr9R3xJ7vfZKLyFlfFeiEkRpb5Zuhrm+nXQmcVvrmI=;
+        b=uBw8hqinuJCXFt8StpPkaG9wMRjXdVc/Zc4mGgW02FOt6IgRhXrBscdRCvD+vKLD4V
+         2QWj4QFwabWkfrq/kXaxJ08A9Y8KGHqa0QgTqdBukNniEds/RTzGlSCuEChJhBaHcMYr
+         fKOiih/OEBmIZpBVXz6hWTp7+u1b7y4Tq4UC46vCKtfBsMxn8SHzwsqd0kT2LoBn5LM2
+         xaHujhLiHAzrtIBiuTgNlDEC+qG6RDUUmHXSqRQp+6lg75wQHG/QzAs6ElbqrGQBKUL8
+         dMw8jGAilUC5nzlHl8lYc50mk8Q5g0k3t5WpidDaxYT+hvamh28knqwpWnJX+oiY4CXd
+         1GgQ==
+X-Gm-Message-State: AHQUAubxOsuLdmXUUfMMvd0RlIMOBfLsfpE1aDK8UefuWmtrl8pW8/jU
+	3yeA75YN1qe7dfb/tawRpd2itePhCKI=
+X-Received: by 2002:aa7:918b:: with SMTP id x11mr14001981pfa.228.1551108965086;
+        Mon, 25 Feb 2019 07:36:05 -0800 (PST)
 Return-Path: <bhanusreemahesh@gmail.com>
 Received: from localhost.localdomain ([183.83.84.116])
-        by smtp.googlemail.com with ESMTPSA id f18sm14048855pgf.26.2019.02.25.07.36.05
+        by smtp.googlemail.com with ESMTPSA id f18sm14048855pgf.26.2019.02.25.07.36.02
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Feb 2019 07:36:07 -0800 (PST)
+        Mon, 25 Feb 2019 07:36:04 -0800 (PST)
 From: Bhanusree Pola <bhanusreemahesh@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -79,65 +77,40 @@ Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	Mark Greer <mgreer@animalcreek.com>,
 	Johan Hovold <johan@kernel.org>,
 	Alex Elder clear <elder@kernel.org>
-Subject: [PATCH v3 1/4] Staging: greybus: Alignment should match open paranthesis
-Date: Mon, 25 Feb 2019 21:05:43 +0530
-Message-Id: <20190225153546.10484-2-bhanusreemahesh@gmail.com>
+Subject: [PATCH v3 0/4] Staging: greybus: Fix various checkpatch.pl issues
+Date: Mon, 25 Feb 2019 21:05:42 +0530
+Message-Id: <20190225153546.10484-1-bhanusreemahesh@gmail.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190225153546.10484-1-bhanusreemahesh@gmail.com>
-References: <20190225153546.10484-1-bhanusreemahesh@gmail.com>
 
-Clean checkpatch.pl issue in various files:
+Staging: greybus: Fix various checkpatch.pl issuesThis patch series cleans various checkpatch.pl issues
 CHECK: Alignment should match open parenthesis
+CHECK: Blank lines aren't necessary before a close brace '}'
+CHECK: Please use a blank line after function/struct/union/enum declarations
+CHECK: Please don't use multiple blank lines
 
-Adjust parameters to match alignment with open paranthesis
+v2:
+   [PATCH 1/4]: Commit log modified
+   [PATCH 2/4]: Commit log modified
+   [PATCH 3/4]: Commit log modified
+   [PATCH 4/4]: Commit log modified
+v3:
+  Include all the mailing list
 
-Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+Bhanusree Pola (4):
+  Staging: greybus: Alignment should match open paranthesis
+  Staging: greybus: Blank lines not required before '}'
+  Staging: greybus: Use a blank line after declarations
+  Staging: greybus: Do not use multiple blank lines
 
----
- drivers/staging/greybus/bundle.c     | 2 +-
- drivers/staging/greybus/connection.h | 2 +-
- drivers/staging/greybus/core.c       | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/greybus/audio_topology.c | 1 -
+ drivers/staging/greybus/bundle.c         | 2 +-
+ drivers/staging/greybus/bundle.h         | 1 +
+ drivers/staging/greybus/connection.h     | 2 +-
+ drivers/staging/greybus/control.c        | 1 -
+ drivers/staging/greybus/control.h        | 1 +
+ drivers/staging/greybus/core.c           | 2 +-
+ 7 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/staging/greybus/bundle.c b/drivers/staging/greybus/bundle.c
-index 81c018da1248..e97b2b87ba47 100644
---- a/drivers/staging/greybus/bundle.c
-+++ b/drivers/staging/greybus/bundle.c
-@@ -65,7 +65,7 @@ static struct attribute *bundle_attrs[] = {
- ATTRIBUTE_GROUPS(bundle);
- 
- static struct gb_bundle *gb_bundle_find(struct gb_interface *intf,
--							u8 bundle_id)
-+					u8 bundle_id)
- {
- 	struct gb_bundle *bundle;
- 
-diff --git a/drivers/staging/greybus/connection.h b/drivers/staging/greybus/connection.h
-index 8deeb1d5f008..5ca3befc0636 100644
---- a/drivers/staging/greybus/connection.h
-+++ b/drivers/staging/greybus/connection.h
-@@ -88,7 +88,7 @@ void gb_connection_mode_switch_prepare(struct gb_connection *connection);
- void gb_connection_mode_switch_complete(struct gb_connection *connection);
- 
- void greybus_data_rcvd(struct gb_host_device *hd, u16 cport_id,
--			u8 *data, size_t length);
-+		       u8 *data, size_t length);
- 
- void gb_connection_latency_tag_enable(struct gb_connection *connection);
- void gb_connection_latency_tag_disable(struct gb_connection *connection);
-diff --git a/drivers/staging/greybus/core.c b/drivers/staging/greybus/core.c
-index 412337daf45c..d6b0d49130c0 100644
---- a/drivers/staging/greybus/core.c
-+++ b/drivers/staging/greybus/core.c
-@@ -266,7 +266,7 @@ static int greybus_remove(struct device *dev)
- }
- 
- int greybus_register_driver(struct greybus_driver *driver, struct module *owner,
--		const char *mod_name)
-+			    const char *mod_name)
- {
- 	int retval;
- 
 -- 
 2.17.1
 
