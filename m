@@ -1,73 +1,110 @@
 X-GM-THRID: 6661092310784147456
-X-Received: by 2002:a37:ef19:: with SMTP id j25mr10638429qkk.5.1551131255084;
-        Mon, 25 Feb 2019 13:47:35 -0800 (PST)
+X-Received: by 2002:a17:902:bc49:: with SMTP id t9mr5765713plz.70.1551106706813;
+        Mon, 25 Feb 2019 06:58:26 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:8302:: with SMTP id f2ls6564445qkd.0.gmail; Mon, 25 Feb
- 2019 13:47:34 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IZRncT5gY67qEGpXPNHz2wXbyJASsXqqePn6uB6ak/zIeCBojC896X+9nueyE+en539YYiO
-X-Received: by 2002:a37:4fd7:: with SMTP id d206mr6775263qkb.57.1551131254570;
-        Mon, 25 Feb 2019 13:47:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551131254; cv=none;
+Received: by 2002:a17:902:6948:: with SMTP id k8ls7133881plt.7.gmail; Mon, 25
+ Feb 2019 06:58:26 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IY7GQIRJuOrJzz6ofjq7csutMeaTwUAUDzsyMuXo5hlooqKkZeeaz/U3/YgE1M51N0+fZWu
+X-Received: by 2002:a17:902:3225:: with SMTP id y34mr5672543plb.90.1551106706308;
+        Mon, 25 Feb 2019 06:58:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551106706; cv=none;
         d=google.com; s=arc-20160816;
-        b=WwEWJyEnE3aMzBpPST9FdBOl45eS7zeYAO+F1rHtM/rxV+Y0aGSwTkWxP9cmM4tpfL
-         G4pLPkrjQoFiLZ5UaGH7MJRlNBN591vHKcjJ4FCT/vUg4vDi+yCHP82zWqgm+oKtpCLj
-         8BT4D/nqNdQthP6pHx+3ptEpxz7qt4mbc3vDUQTkZM0EHHD3eKxl+TSjRi5JvRzZxfs/
-         e6d7SxKB2LCe2LqixRmON4EdC5NVI8U6h5ihMqhqn/nXAqmckg4JxFQnlAh1+LgwiOVb
-         Am/DABC0AOUzDEnLRLgeTIFsa6n6ZaqKOVPvAhgj7WRLK1fW+jsxXw10e7HFpwOvQQyG
-         v5kg==
+        b=qp8HfxG6AHChW2upBYeoq7UZQtc9jzhmU+TZuibyfLFXom6ZKANJT7+Mq4r4VEbJ9t
+         UtANhrYIXwDg+sNcoDtCgvnUGYzqfLmu07AAy362Wwndpbf2rUkM+RECnCWh55Rk7iHp
+         yTwbh/LRv+aQQmOj1Z1R8efh0dy2baNecCX44x4Ep+kPqhSkG08L8BLaw99h4/MWCasn
+         erdp7grZz9SBbr9R+0C1XTDcoyc6Nh4f/luTNuuKAzv++jDkPKEetGqTsnEqpnG1u/s2
+         ULQGSBRFRZ80rpMPhr/4dr2zyHAypsBj/jjV3x1hGA4Bpcx0oeoUOwm2oNDuoLcRDdX5
+         RWsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=zoHz4vl5hN2vAwlNgdY40tkKJLYcnznhRh8Y9X9RhdA=;
-        b=s/dMHGiHEIKQj1cO0iyjVJhZ9rn86oc6Fsvg3j7+SFLqJeFK26q2+S+oTA+PAfRMvO
-         kugynT+vFQErCo/j+PcexWob/7IKBH/Hvb9bTAfaR/MixOMYIeL+hCxaV3+pQFxgU1o7
-         AVxCyZx3dzLsFDBhjhKueB2TRa3iUjEXAO+QwHO6DnCNDZKNlif/fvYD9ElwJWSegpK9
-         Tz3gdTkFICXxYj627l1nZuF3ApiHiETQ1Gx5LJ/cqCOdhx7egHMElIN2SBLGfOKDnwAP
-         k/QhhG8pDT3L5MMVutMxJPD4gXfrXT3JkEsppD1ILJiDpHaUYlhjyt6Fo/O0k6iRlEWq
-         lhwQ==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=9CNS1EByQdISyJaVKB1BHfV0c+uSrG0QJg71VXeJXCY=;
+        b=a5PVcYYWyDfAChoAiO/V3UZQGXvGh+hoqpN27XVMU0cHh1ImlbYoAERctjcBoVrZQR
+         J3r+b856rLmLsx7X/EdMhpYT8SmSbxJW01rytTno+vdvQ+LVh/UGvTNQ7tt0kJd9pH3T
+         ROuQf6UfdsKTEsoUVjBmvo3/zukvLbQ2MW1iJnHvfetAmiVTcRTPs+y05HuG+ObbC1C0
+         I7AmnWaZha9XwA6aDzTH9h96u0bYSrmDCQap/3FNHKVh8hEifLMLS/a2tnDA/ndX6xDZ
+         2cXooa/2LOv5Bmv+TCw177GgGLm2SrWugseliVj6LPhI1F3FVMCLlTgMh1yE2UVEvz3M
+         o93w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=GFDAWOeD;
-       spf=pass (google.com: domain of srs0=mf0b=ra=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=mF0B=RA=linuxfoundation.org=gregkh@kernel.org"
-Return-Path: <SRS0=mF0B=RA=linuxfoundation.org=gregkh@kernel.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id e12si389710qtg.5.2019.02.25.13.47.34
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jyNOLqnl;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <bhanusreemahesh@gmail.com>
+Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
+        by gmr-mx.google.com with ESMTPS id f79si590457pff.4.2019.02.25.06.58.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Feb 2019 13:47:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of srs0=mf0b=ra=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Mon, 25 Feb 2019 06:58:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=GFDAWOeD;
-       spf=pass (google.com: domain of srs0=mf0b=ra=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=mF0B=RA=linuxfoundation.org=gregkh@kernel.org"
-Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 0A40F2147C;
-	Mon, 25 Feb 2019 21:47:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1551131253;
-	bh=zoHz4vl5hN2vAwlNgdY40tkKJLYcnznhRh8Y9X9RhdA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=GFDAWOeDzjPYyZ1v40z/TnNahV11XnUvTwIE8qpXsmHX00mzHgB55q/13j/qbPQx+
-	 qsAPNTM7GYAzx1+rtOlxyGsnS6e2SFo4AR8Xcioc7etfOC5cYgqDNiEncZntXx0JMA
-	 MVEUKMCg1KRtQcJavySEMCUxEbQRR3VYGQ+5YvOo=
-Date: Mon, 25 Feb 2019 22:47:15 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Bhanusree Pola <bhanusreemahesh@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH v3] Staging: ks7010: Match alignments with open
- paranthesis
-Message-ID: <20190225214715.GA8237@kroah.com>
-References: <20190225145807.9255-1-bhanusreemahesh@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190225145807.9255-1-bhanusreemahesh@gmail.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jyNOLqnl;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x441.google.com with SMTP id n22so4627951pfa.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 25 Feb 2019 06:58:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=9CNS1EByQdISyJaVKB1BHfV0c+uSrG0QJg71VXeJXCY=;
+        b=jyNOLqnl9bB1ButS07Obiz2iuaMVn1kITkebOiZuCvNbQcBN0ljqRSb0n4qJ6eIP/N
+         efOh145lcVqrqkR5hv+ZLmjoc69FhClXISbqge3fwbq434dXvtMoVtafpPhoFC1iSvh/
+         9/+p/02XHIcucyY4QpBGLOzUis9a3tNCbU9HtGU51dQBUuVFEAuMGxgbh8ypeToRjxEs
+         fdUeizyhKFgFqF7IDsMX1W62HfrEkCB5BHQH6L3GuNeejp2ZSBuXKWn15hCqoOk2u6WT
+         goKErV9IPxuzXXSguwxFfPtWjgiQNQFBhyN8Rreu0LeF7nvw5Aexyj5bKe9g9C5+q557
+         9d7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=9CNS1EByQdISyJaVKB1BHfV0c+uSrG0QJg71VXeJXCY=;
+        b=M0g1H1g56kir9QVLI78arz618Rqt7ONUtbbd4naHBuXV0OT46+33NlR6WGi2bWvaDp
+         7Lokz2E/h4bLUEcQqABsl9yZJtkowzQyvZwKpiTVb6Du+LRimjMbdIIPwQTlLeNXTaBb
+         vrpnA/XFanT1kT/AW3hjD83FC/FLtXnM53IN9vpJ/IV0e+p/5G3uHKF5KqacmqsgFEhV
+         nW5HIjRnY/O3R32uVzzIOieiO6pn086XAFHvgFo7PDpG6xJcpdrGZngVsEYw7APeX9pb
+         cDqX+O3OW8QaLz1drnzIBkGFXcjHFolnPmc0vXn42SJ9DUZYGSqVeShrASSbfjkY/FQ/
+         8pVg==
+X-Gm-Message-State: AHQUAuaoAWuU5AUAtX4GN0HvTtgYLeGjARKf67HZA/kCUEdUpw7RI5Pr
+	JplCbdJXYgcNzfXKhs48Z0yPbRJdI60=
+X-Received: by 2002:a63:f412:: with SMTP id g18mr19550904pgi.444.1551106705901;
+        Mon, 25 Feb 2019 06:58:25 -0800 (PST)
+Return-Path: <bhanusreemahesh@gmail.com>
+Received: from localhost.localdomain ([2401:4900:16b1:6abd:a897:24ba:190d:c029])
+        by smtp.googlemail.com with ESMTPSA id u18sm25414039pfa.176.2019.02.25.06.58.24
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 25 Feb 2019 06:58:25 -0800 (PST)
+From: Bhanusree Pola <bhanusreemahesh@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH v3] Staging: ks7010: Match alignments with open paranthesis
+Date: Mon, 25 Feb 2019 20:28:07 +0530
+Message-Id: <20190225145807.9255-1-bhanusreemahesh@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-On Mon, Feb 25, 2019 at 08:28:07PM +0530, Bhanusree Pola wrote:
-> Adjust parameters of "netdev_dbg" to match alignment with
-> open paranthesis.
+Adjust parameters of "netdev_dbg" to match alignment with
+open paranthesis.
+Issue found using checkpatch.pl
 
-Odd spelling of that last word here, and in the subject line :(
+Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+---
+
+v2: commit log modified to be imperative
+v3: commit log modified
+
+ drivers/staging/ks7010/ks_hostif.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
+index d938b0997a53..e48fc36b6ebd 100644
+--- a/drivers/staging/ks7010/ks_hostif.c
++++ b/drivers/staging/ks7010/ks_hostif.c
+@@ -730,7 +730,7 @@ void hostif_scan_indication(struct ks_wlan_private *priv)
+ 	priv->scan_ind_count++;
+ 	if (priv->scan_ind_count < LOCAL_APLIST_MAX + 1) {
+ 		netdev_dbg(priv->net_dev, " scan_ind_count=%d :: aplist.size=%d\n",
+-			priv->scan_ind_count, priv->aplist.size);
++			   priv->scan_ind_count, priv->aplist.size);
+ 		get_ap_information(priv, (struct ap_info *)(priv->rxp),
+ 				   &priv->aplist.ap[priv->scan_ind_count - 1]);
+ 		priv->aplist.size = priv->scan_ind_count;
+-- 
+2.17.1
 
 
