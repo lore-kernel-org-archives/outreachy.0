@@ -1,125 +1,76 @@
-X-GM-THRID: 6664550081215070208
-X-Received: by 2002:a17:906:228b:: with SMTP id p11mr2183224eja.1.1551711485287;
-        Mon, 04 Mar 2019 06:58:05 -0800 (PST)
+X-GM-THRID: 6661704407651975168
+X-Received: by 2002:a63:8d43:: with SMTP id z64mr6139661pgd.52.1551077524460;
+        Sun, 24 Feb 2019 22:52:04 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:32c1:: with SMTP id k1ls3512888ejk.9.gmail; Mon, 04
- Mar 2019 06:58:04 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwJUscJNlRu9/wrxUTEj5LeODg6jEZZoHPJ1xeYQ+IYYTI7vJkgn526ZGKcDcB8V2sx5nMN
-X-Received: by 2002:a17:906:4312:: with SMTP id j18mr1343206ejm.12.1551711484369;
-        Mon, 04 Mar 2019 06:58:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551711484; cv=none;
+Received: by 2002:a62:4393:: with SMTP id l19ls5599850pfi.6.gmail; Sun, 24 Feb
+ 2019 22:52:03 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IYQKIUgmdrB0Yg8x1TtG/uoZG+9Z+E9XC0r1TNDCdngvWwBYq7zsTun+mFQ6nSV6DX3SZAC
+X-Received: by 2002:a65:6099:: with SMTP id t25mr6060661pgu.51.1551077523921;
+        Sun, 24 Feb 2019 22:52:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551077523; cv=none;
         d=google.com; s=arc-20160816;
-        b=alRIWpzaovrJg54TqxIiFTQ8suWaSL14b5eRDKOZ/QAhSzhfwP1ePZWfWVN534cboe
-         9qUvOPH/6jwfBAa6KBPySdRuN6wWwLbMGnK5p12zTymyD4qnwpu7Fiq1pYejX99SEXmu
-         Cw+M2mYZQT/qwkvPmTAsvr7DmmWWaWZyEHD/f5TRPOG2DMWysVllaE3zA1R+GsCK4l55
-         8UMdxcEOIocTdO2yjhD9IdTy+E/xo8LfPERJKvStT1aMS2iN0HHnBh/8zlTDqVWAtIiw
-         KmWu/2j9s32wI9xx3cb24Yt9zffBYsyRF7z9TqZmy6/pFG8BJRvj233tBPHU/UUs4CDM
-         nbYg==
+        b=hMCpPePHtPmxtF5w33rPoDqlUeDFdAHeM/HKV2HXnS4kky0nxMfmnZKVTzWDlIvGS/
+         hKVXEixmY09WBQiIZ4QYBFkok8zBq4AdDwEFi7ZiK08KNl4MVS7RHBlxccNotZf2twcJ
+         wrfFBaKSbReIi2qg2ZFHRXzz3uWYpCQF39clU39hIQghb1/GOeyGtVW6X33h2yT76l5I
+         AJgZx48g6rDYGyLWNLNhQdMu/akIbei056EgwNWF6wLiBXuIkkyIUAgjhStcq7ldDD3E
+         Za00EUPng3+IVgWOwUehSOXaedb6H7fnmsX3Hp8rdEWtYJyebwYGDehINV2/uj+iD7mX
+         N9+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=PTa8eRjMJbKegBf8yuyKu6db+wnziVeStSBazYzkDW8=;
-        b=mObM0FtuXv6MfHchI81ZSLn3C0sRTYh/PukIxBse/G3yFUpNXGwSBctnXP4J34w5jA
-         JJcrFxUwqBYrpA8/W/WoZ1k4xEiZd/p6w9bNuWvGSu73JPcZn4m/2BsdGJgtjhIAije4
-         VK3A/mKNFmfUjKYAcnYc7LvLO31lY3DxDj9PCj6Fr/yKIISUdguia+MVjqz5iQ1AKr+n
-         lG/7KZW3/wegFwwFIOr6VyjPglRb3093R4eXDhYtNRMch44OvWeL7jTAeDawp4mZm1iv
-         sF5H47/v75nTeGpyHSlUNoCXdyXlzJoGe/uyKKh3oHbP5yylPLY9FRlCAruKDtLR4for
-         4OzQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=v9FQxOT4aWtWt/qgd//yJz/gyKoWE8h/lDFNd4g+1/s=;
+        b=dPUbwBtVxvZ15XU/94tbL2NxHISd7gJ6zo8glCQ3oftm6lN1q6df5V8nLQOke3ZEUW
+         WjNWwDryKiMaPACBZRXqZb83M+AoJGcrb3hddQSG8ioBorOKXvVZiJvImlxuxyux2yKm
+         e+E+8JH1B9DXmmzyvY5E9eOc51wseA99g+XFzUNjjpwjPbkGaKLD8JWa6reBVFTAHTKR
+         Y69P7+ztRaunCja6GV0rh/E0mQdFSkEs6KEKaD83SzYDd4MkfnHVY3VQWFwMduG93tWE
+         bKRxG7jNg99Goy6PwrOF3L3k6jAwbZCUEW2E0ZPD7SnZr/enoGWS9qD85dxHqAbRR5WB
+         iRSQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gSA6nPhv;
-       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <daniela.mormocea@gmail.com>
-Received: from mail-wr1-x443.google.com (mail-wr1-x443.google.com. [2a00:1450:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id i16si358950ede.0.2019.03.04.06.58.04
+       dkim=pass header.i=@kernel.org header.s=default header.b=w0PwsaWE;
+       spf=pass (google.com: domain of srs0=mf0b=ra=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=mF0B=RA=linuxfoundation.org=gregkh@kernel.org"
+Return-Path: <SRS0=mF0B=RA=linuxfoundation.org=gregkh@kernel.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id t11si352312plz.4.2019.02.24.22.52.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 04 Mar 2019 06:58:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) client-ip=2a00:1450:4864:20::443;
+        Sun, 24 Feb 2019 22:52:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of srs0=mf0b=ra=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gSA6nPhv;
-       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x443.google.com with SMTP id i12so5892144wrw.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 04 Mar 2019 06:58:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=PTa8eRjMJbKegBf8yuyKu6db+wnziVeStSBazYzkDW8=;
-        b=gSA6nPhvEnS/ck2QCh0X7bjKr8H1Sz/h/VZfxh+D4UQtP1YJtUtyp5vo3DpoEQGjY/
-         OtALoKH0ecIuuOeCX6dReo7SyV78UBSeVFMOIeqB+c4Qgwmp6BcKbCLlaL7dc+CzI8kW
-         ZAyb7bX3M1arkbfn9XmlO2Cm7zDlLFoCbc/c59fTwE+gQR6cu5mhRWERChNQwFQI4jpF
-         BDYoBUkysTxOfAikYrCnC2u0u8UBvek+AHdBOJAhUqKjzyGHCXDfzwNsd2rudtomTx16
-         23wQ+mtXVSbJ5QBw8pUeeNh+HoBkRL7UySsEv3goa4FXKcEbNcnnlyzrQoViZJQMfLYH
-         1sZg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=PTa8eRjMJbKegBf8yuyKu6db+wnziVeStSBazYzkDW8=;
-        b=f5xkIHyva6KZQfaZ6bjMWBI7yl2O7aW0p4TtAQNrkLYltBtNUGV8aZndpTgC/nONpB
-         mh93UrWYWwLfR65fkuIy5eCmkbBvPmrdpzF/72+Zd1T36vdlbkrIuPWc3Si1OyAV4OXx
-         yBbXi+XyFAwOYWFEzUQoJ5eBZFNhmW1uoVRvgJV2zchsKlk0LIPaXgPL5Ts25Hx7cbs0
-         NoIQE55S9cag7evxCUWxxi9+dEmkC29G9zxhNhhVygp5r1UQmT+b98FOPiD7G4n5+mlJ
-         wh2PLiVWU49IiF3y+kE0U+yMQjuhSNBqC22AXrsD0ei+ReNUg9RULLSPdqmSVn2GhvQ1
-         8MUQ==
-X-Gm-Message-State: APjAAAUzKhBrptf7H8n2SRVfjJbC1wIGREh+rt0GAQCYVsUyPFGFeWkj
-	TPcafCdNCJQACCo+4Qq8w5z+GhEE
-X-Received: by 2002:adf:ff81:: with SMTP id j1mr13252697wrr.261.1551711483825;
-        Mon, 04 Mar 2019 06:58:03 -0800 (PST)
-Return-Path: <daniela.mormocea@gmail.com>
-Received: from pthm ([141.85.233.103])
-        by smtp.gmail.com with ESMTPSA id d21sm22780043wrc.44.2019.03.04.06.58.03
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 04 Mar 2019 06:58:03 -0800 (PST)
-Date: Mon, 4 Mar 2019 16:58:01 +0200
-From: Daniela Mormocea <daniela.mormocea@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [Outreachy Kernel][PATCH] First clean-up patch
-Message-ID: <20190304145801.GA28407@pthm>
+       dkim=pass header.i=@kernel.org header.s=default header.b=w0PwsaWE;
+       spf=pass (google.com: domain of srs0=mf0b=ra=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=mF0B=RA=linuxfoundation.org=gregkh@kernel.org"
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id D384720842;
+	Mon, 25 Feb 2019 06:52:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1551077523;
+	bh=1ZCsvbe0F2lVWImudTOZoQle+fXqxsHwO/zmUwGxgbI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=w0PwsaWETHXfdOUdN9g/DBA1j5uFKEmKk8XuYGsljtNFXDQ/YLHwW0bttSrvErOcR
+	 0jeZHC2xO011mJA/lZ4HHo2CH3vzVC+oW07nfZYFblSDecGbHKYz2oSMMYcsFCEbks
+	 e9d4Tu1OreBPAS9leLrv/iBO2MNxopT8LvQZnT0w=
+Date: Mon, 25 Feb 2019 07:52:00 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Jules Irenge <jbi.octave@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] staging: mt7621-eth: adds SPDX GPL-2.0 license
+ identifier to fix checkpatch.pl warning
+Message-ID: <20190225065200.GA16881@kroah.com>
+References: <20190224225512.24332-1-jbi.octave@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20190224225512.24332-1-jbi.octave@gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
-Fixed alignment issue with parenthesis.
+On Sun, Feb 24, 2019 at 10:55:12PM +0000, Jules Irenge wrote:
+> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> ---
+>  drivers/staging/mt7621-eth/ethtool.h | 1 +
+>  1 file changed, 1 insertion(+)
 
-Signed-off-by: Daniela Mormocea <daniela.mormocea@gmail.com>
----
- drivers/staging/wlan-ng/cfg80211.c | 9 +++------
- 1 file changed, 3 insertions(+), 6 deletions(-)
+I can not take patches without any changelog text at all, sorry.
 
-diff --git a/drivers/staging/wlan-ng/cfg80211.c b/drivers/staging/wlan-ng/cfg80211.c
-index 8a862f7..7c4e8f1f8 100644
---- a/drivers/staging/wlan-ng/cfg80211.c
-+++ b/drivers/staging/wlan-ng/cfg80211.c
-@@ -332,8 +332,7 @@ static int prism2_scan(struct wiphy *wiphy,
- 		(i < request->n_channels) && i < ARRAY_SIZE(prism2_channels);
- 		i++)
- 		msg1.channellist.data.data[i] =
--			ieee80211_frequency_to_channel(
--				request->channels[i]->center_freq);
-+			ieee80211_frequency_to_channel(request->channels[i]->center_freq);
- 	msg1.channellist.data.len = request->n_channels;
- 
- 	msg1.maxchanneltime.data = 250;
-@@ -372,11 +371,9 @@ static int prism2_scan(struct wiphy *wiphy,
- 			(const u8 *)&msg2.bssid.data.data,
- 			msg2.timestamp.data, msg2.capinfo.data,
- 			msg2.beaconperiod.data,
--			ie_buf,
--			ie_len,
-+			ie_buf, ie_len,
- 			(msg2.signal.data - 65536) * 100, /* Conversion to signed type */
--			GFP_KERNEL
--		);
-+			GFP_KERNEL);
- 
- 		if (!bss) {
- 			err = -ENOMEM;
--- 
-2.7.4
-
+greg k-h
 
