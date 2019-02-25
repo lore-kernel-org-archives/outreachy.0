@@ -1,132 +1,111 @@
-X-GM-THRID: 6664981263437266944
-X-Received: by 2002:a1f:a94c:: with SMTP id s73mr1529417vke.16.1551811877063;
-        Tue, 05 Mar 2019 10:51:17 -0800 (PST)
+X-GM-THRID: 6660892236702547968
+X-Received: by 2002:a25:3246:: with SMTP id y67mr975356yby.14.1551106872172;
+        Mon, 25 Feb 2019 07:01:12 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9f:2743:: with SMTP id a61ls2000010uaa.0.gmail; Tue, 05 Mar
- 2019 10:51:16 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyIDs5nMWJn1o6RBCDYezyV4EEO4D7FL7QCQEg8knkiRWfQNqJ7OnaBGhMUsGRDHapUQMwt
-X-Received: by 2002:ab0:7103:: with SMTP id x3mr2517693uan.14.1551811876296;
-        Tue, 05 Mar 2019 10:51:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551811876; cv=none;
+Received: by 2002:a25:7ac3:: with SMTP id v186ls4413312ybc.8.gmail; Mon, 25
+ Feb 2019 07:01:11 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IYyYYsCSh3MxRqTcd3OaWLjUVpBIHSopp+5gkLz32X8QCEE1EFJR8v1DoXHsRKcgg7AVxEZ
+X-Received: by 2002:a25:c407:: with SMTP id u7mr5923581ybf.59.1551106871129;
+        Mon, 25 Feb 2019 07:01:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551106871; cv=none;
         d=google.com; s=arc-20160816;
-        b=fVg1SrHm3mhrijpfpSPUrOQ4a1VjLYWAgZ60rFui7k7NclmTG3y8Ep4mlQVmWPBj9f
-         gmJTKrZfqwl6vQL51+xPinAAlpp/2/HLwf6hf57MzkvQuTAqLTUoaNQW6Pg7XGYy7JlB
-         lv3Ewyc0BM5z2eVsRZJqvDcllAh1XDVxEFOFOW/3pOgYixQvjiWYBIrUuV8IjkLu1CT+
-         GmQz0JtWWAHG3maecRzuF3ToVfWvw7EoCFG9n/5gKf4jFIZLov4Bt40lE9Rs70wb8/v/
-         1YIPsHh0nxRWfbf6ZKAfd8tBBcCaqKT3q1sPbO4RyoqWPcpkzdAB8gLF9gwU3LwfjEtf
-         pyfg==
+        b=bgEnQXj6KmOofgQAOAo3dLC5yh1zOWfAkMJ1VMb6Mi60/eLbeQkFH4yPQUigBsAFnc
+         Ap+ntz+cfvK3m322gbmwI8yMkpwKnOkXjeOozEzRfanHFvDJFDxWEBEUA3is4mmX41LC
+         LHXcneCkpn+zINkFK46HWja1yGp//94Z5ZXAUlBDTiaN8Q7b7oLsWRgn1lkaItoK6v/V
+         rJ2zehPNKmBR/PwBoCn/MPj7OIDLefq0ooQw4gFBnA+KVB00i1M/d4P3crHKAdpfX4Bi
+         t4r/3wux6TGxFIEj3tIawqz500FwIL4pNeGBKz4vmbnyuU3371bBF8Xh6+T5bOdxaWys
+         IcXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=6qK+o6FVtdDomzy2itKjRQseNWBhfsZIEjRtiWbjumo=;
-        b=TCNgtaVr/em/CyG7QADgH5tSWtwULLHgasKRlJW1YMGLyPALaaGzhzFRjjVNVMU9WN
-         SVl1DNrS0k0NkIRQ3Bg/hqegRKrLmhcN5hSyPBUWhvpXhy3ditDN27gov61e7wGNgh6O
-         Tl+ZrVBviEbarC5aozFpUYpndZam3aSTObq3QpTbJEHUS5HNBxmcdnuf6MMdprqJ7TCt
-         fm8qwIsLoiUU1UewDdpa85uVKYomnARiZnPBGkDGVGuuEODfVnCF3g0n9yHl+Ht613xD
-         BK53cBDSXCeuEZW/kOOFAgMjTcB0iMjLsELO0jtar7oAneaW6S5mrH9LkaeWECLHkyCo
-         TWNw==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=sYa+QOqQEBzFwW9ajVpVyh0ur8DKY43IT+9qtI0f45Q=;
+        b=EzMUj2bgcvTmUw1tAb5CAE0ZRcCiUbaFFfPYZvaQfigbvgBUJFtsATUtUe2GW18+yd
+         PvbL6S3oxw/lRU7PaCTux08/d7MSSh6ZLsMSE5esMNGOakJCB33TmhSQudEoZbqGmRXE
+         HyKwpHL/pEOYWnnMeBldh1U8DGSU3r0ooHIbtw33DrjTeHRZqNyEfl/KtmNMI/jVKW9J
+         JJ+6gLA65EPpyiRaLPEMzaIbR19KGWLAC/wLJ6EwwZ05cZEysuJjDoBnkw+OzPToM8NK
+         nq0eF5x9zfQ73ptwBQN5eOZksuozImIf+o9yXsMK1LIawGHcYQ0ejF7VIh4iwxQ4QsII
+         0oIg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iTzU11aL;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VyEDsdt0;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
-        by gmr-mx.google.com with ESMTPS id c15si537501vsp.2.2019.03.05.10.51.16
+Return-Path: <bhanusreemahesh@gmail.com>
+Received: from mail-pl1-x641.google.com (mail-pl1-x641.google.com. [2607:f8b0:4864:20::641])
+        by gmr-mx.google.com with ESMTPS id z185si415626ywa.3.2019.02.25.07.01.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 05 Mar 2019 10:51:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) client-ip=2607:f8b0:4864:20::444;
+        Mon, 25 Feb 2019 07:01:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) client-ip=2607:f8b0:4864:20::641;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iTzU11aL;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VyEDsdt0;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x444.google.com with SMTP id v21so6369314pfm.12
-        for <outreachy-kernel@googlegroups.com>; Tue, 05 Mar 2019 10:51:16 -0800 (PST)
+Received: by mail-pl1-x641.google.com with SMTP id s1so4610335plp.9
+        for <outreachy-kernel@googlegroups.com>; Mon, 25 Feb 2019 07:01:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=6qK+o6FVtdDomzy2itKjRQseNWBhfsZIEjRtiWbjumo=;
-        b=iTzU11aLZdWLnYcGu9xLKKZwznfQFnufb1Q7VTxYG0kPHLvWsLgoVv/RTDmMhfaIVK
-         daNthc97q9Jgz2jKODCNG3kb/ooSS1AAKt1nDzB6ibsDi+CjlISkQNW9zNyZbd1J1Mpj
-         bs6clXKkV22o4yo/ttg4zEy2qTf84HZW8VZuABlP8eM+C+iEAhCcEffYpO0r9RSEhRmN
-         +vkX9lYHvt7ltq7jhPlcscH2rLuXKtwdJF6KylN9DScaXE+CfI3am03d3hX95HJS4Bv6
-         1n9TCWBVX4ePxX4icPmNcfP8Fu1rJs91CrDf9sV4CfaV5x8MPmrJec+ixyUqyi3jkQi/
-         QPDg==
+        h=from:to:cc:subject:date:message-id;
+        bh=sYa+QOqQEBzFwW9ajVpVyh0ur8DKY43IT+9qtI0f45Q=;
+        b=VyEDsdt0FfAWWTPGiWugjHKiGbsOA73nwzFo+B4tiVH/5V8exkm2ZKr8jj7e3FHkyN
+         EhGA9gkJw7AdBh/vZKrNrfoFt3iIVVoKXGu+EbBoGmIaq3ogKyA+T6OHYfMTQk7NfJ+A
+         pQygnCL7sHRziDGMiYSnnjjqiLZjChD3eg6Wto01JPzsRGTRNSmeePjAcmGb2zFyyBCL
+         /LyE5U5q9UQ1K+OyrWTSk92l1NpPJ7FKrMV6aTXtcUwykjVaab8VgjsEFfSTEqRz2yOb
+         PN1wtDSwvM68USZGu+rUJ8neEdrkU9p22vF+CD0iZ3Y81XAOVl6QeVUAfQjLwodqd4RT
+         /kRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=6qK+o6FVtdDomzy2itKjRQseNWBhfsZIEjRtiWbjumo=;
-        b=J0RdA6Mg+XIkDXqWFLOyPps+bNcxS+iniDctcuwkIx6bX4jh16kq8Ki4scdemkPhrS
-         GHsBhuyOIvh82JTX/783k9oYWQ3d/53ob1MrbkHAfXArYSMrUn8M7LsniKu1wHp973kj
-         SrIHpU95NIybYb3IhQlDYbqzdpVUeEg03Oh4skpQh9GRyb92ACJcT/rTqZWAKyIV4w8R
-         oOctFp/MdPvgiOL4/KX5buMeTU72KrTQ/mRwmgPC+fiCC1VqzcLgBRNC9o5Ec5WVvJGx
-         NtylQQOaSlnk2B/o2w3hUwp7T7eCAwKhAsaekCMhGv4R/WNDeM7LrwDE/lnlipQPuI2e
-         kdjA==
-X-Gm-Message-State: APjAAAVr+t1m5XhErz7OlC0rYBuoCNPeiGL9wkwRac97/0sMiEgR6297
-	qUP0G/Q9FNF3PGuKn2kyz7Gwmy9xe9af+g==
-X-Received: by 2002:a63:5459:: with SMTP id e25mr2716445pgm.131.1551811875050;
-        Tue, 05 Mar 2019 10:51:15 -0800 (PST)
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from bhagyashri-Lenovo-G570 ([2409:4042:2e88:a284:c1b4:4aa8:71c5:d127])
-        by smtp.gmail.com with ESMTPSA id v5sm13779192pfn.81.2019.03.05.10.51.13
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 05 Mar 2019 10:51:14 -0800 (PST)
-Date: Wed, 6 Mar 2019 00:21:09 +0530
-From: Bhagyashri Dighole <digholebhagyashri@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Outreachy <outreachy-kernel@googlegroups.com>
-Subject: [PATCH v3 1/1] staging: fbtft: convert a macro to a function.
-Message-ID: <20190305185109.GA2942@bhagyashri-Lenovo-G570>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=sYa+QOqQEBzFwW9ajVpVyh0ur8DKY43IT+9qtI0f45Q=;
+        b=eQO+wfBEPVuz09Cq5YWQRwsftmNSN/XNrvtT0mCFrUjnl22TRWfKaWC1BwvxUt+scP
+         1MXMxmfBrxf+N0YrFS1DQ4W5raU+9VOifzYlCejagNyLUUqtoWjuNJ/mtWAFjizR3zIC
+         nZiswqNXjikJYgltyvCnfc3X9qvOL0v0iX2MpgGWGMsXOeY50lCr5P5I3BnUv7N8jQkY
+         7PlHc5I/gvvPHTWtnZQIual63JsVw0tq2H9+5K71NxJggi00qxcoTa95UafZ+w+QAsvi
+         M3v/7y/hkEJ4D8lBJcEL84qmWQpbPERVjf1mGR40wER309MPnRRC8znz6CUAWV5qTzLr
+         Fmpw==
+X-Gm-Message-State: AHQUAuaDW8LnVcz3WoPFj3z7kMQ2gxt3noJZ3G2qBGnMBRWpr5SVt4JG
+	519IWGxX77U2Ry0dbnOG1NXOC/Q6sfs=
+X-Received: by 2002:a17:902:b117:: with SMTP id q23mr21315501plr.160.1551106870198;
+        Mon, 25 Feb 2019 07:01:10 -0800 (PST)
+Return-Path: <bhanusreemahesh@gmail.com>
+Received: from localhost.localdomain ([2401:4900:16b1:6abd:a897:24ba:190d:c029])
+        by smtp.googlemail.com with ESMTPSA id q5sm15228832pga.71.2019.02.25.07.01.08
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 25 Feb 2019 07:01:09 -0800 (PST)
+From: Bhanusree Pola <bhanusreemahesh@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH v3] Staging: fwserial: Add blank line after declarations
+Date: Mon, 25 Feb 2019 20:30:51 +0530
+Message-Id: <20190225150051.9355-1-bhanusreemahesh@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-Convert a macro to an inline function to improve type safety and make
-the code simpler.
+Add blank line after the structure declaration,
+struct fwtty_port *port = tty->driver_data;
+Issue found using checkpatch.pl
 
-Signed-off-by: Bhagyashri Dighole <digholebhagyashri@gmail.com>
+Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
 ---
-Changes in v3:
-  -- Change the subject line according to log messages.
-  -- Remove extra spaces.
 
-Changes in v2:
-  -- Make the converion from macro to inline function.
+v2:
+   Commit log modified to be imperative.
+v3:
+   Commit log modified.
 
- drivers/staging/fbtft/fb_watterott.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ drivers/staging/fwserial/fwserial.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/staging/fbtft/fb_watterott.c b/drivers/staging/fbtft/fb_watterott.c
-index 502d67f..40e5427 100644
---- a/drivers/staging/fbtft/fb_watterott.c
-+++ b/drivers/staging/fbtft/fb_watterott.c
-@@ -90,9 +90,10 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
- 	return 0;
- }
- 
--#define RGB565toRGB332(c) ((((c) & 0xE000) >> 8) |\
--			   (((c) & 000700) >> 6) |\
--			   (((c) & 0x0018) >> 3))
-+inline int rgb565_to_rgb332(u16 c)
-+{
-+	return ((c & 0xE000) >> 8)| ((c & 000700) >> 6)| ((c & 0x0018) >> 3);
-+}
- 
- static int write_vmem_8bit(struct fbtft_par *par, size_t offset, size_t len)
+diff --git a/drivers/staging/fwserial/fwserial.c b/drivers/staging/fwserial/fwserial.c
+index 3e416f5bbcba..a1b90ea7fcb8 100644
+--- a/drivers/staging/fwserial/fwserial.c
++++ b/drivers/staging/fwserial/fwserial.c
+@@ -1213,6 +1213,7 @@ static int get_serial_info(struct tty_struct *tty,
+ 			   struct serial_struct *ss)
  {
-@@ -116,7 +117,7 @@ static int write_vmem_8bit(struct fbtft_par *par, size_t offset, size_t len)
- 	for (i = start_line; i <= end_line; i++) {
- 		pos[1] = cpu_to_be16(i);
- 		for (j = 0; j < par->info->var.xres; j++) {
--			buf8[j] = RGB565toRGB332(*vmem16);
-+			buf8[j] = rgb565_to_rgb332(*vmem16);
- 			vmem16++;
- 		}
- 		ret = par->fbtftops.write(par,
+ 	struct fwtty_port *port = tty->driver_data;
++
+ 	mutex_lock(&port->port.mutex);
+ 	ss->type =  PORT_UNKNOWN;
+ 	ss->line =  port->port.tty->index;
 -- 
-2.7.4
+2.17.1
 
 
